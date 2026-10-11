@@ -129,12 +129,12 @@ B=\pi_\psi(N)',\qquad \chi=\psi^{\mathrm{opp}},
 **Theorem.** The following maps are inverse bijections:
 
 \[
-\begin{split}
+\begin{aligned}
 D_\psi&\longrightarrow\{X\in\mathcal X:\chi(X^*X)<\infty\},
 &\xi&\longmapsto R_\psi(\xi),\\
 \{X\in\mathcal X:\chi(X^*X)<\infty\}&\longrightarrow D_\psi,
 &X&\longmapsto\eta(X).
-\end{split}
+\end{aligned}
 \tag{SI.10}
 \]
 

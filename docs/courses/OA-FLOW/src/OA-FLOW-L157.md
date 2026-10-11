@@ -1,6 +1,6 @@
 # Logarithmic products and bounded perturbations
 
-*Original exposition and illustration sources are dedicated under CC0-1.0 to the extent of any rights held. Independently reviewed at the stated earlier inputs.*
+*Original exposition and illustration sources are dedicated under CC0-1.0 to the extent of any rights held.*
 
 For self-adjoint operators, a bounded derivative of the product of their spectral groups determines their entire common domain. Conversely, a bounded difference on that domain determines the actual product by a vector integral. The statement concerns arbitrary Hilbert spaces and every normal positive functional.
 

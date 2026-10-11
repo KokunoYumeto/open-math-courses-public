@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Summable scale comparisons and timed orbit bounds</title><link rel="stylesheet" href="reader.css"></head><body><a class="skip" href="#main">Skip to the lesson</a><header><a href="index.html">Discrete dynamics, coding and probability</a> · <a href="src/NT-COLLATZ-24.md">Lesson source</a></header><main id="main"><h1 id="summable-scale-comparisons-and-timed-orbit-bounds">Summable
+scale comparisons and timed orbit bounds</h1>
+<p><em>Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026.
+Self-checked by the writing AI. Original exposition, proofs and
+exercises: CC0 1.0.</em></p>
+<p>An estimate at one scale can describe arbitrarily large inputs when
+its errors remain summable as the scale changes. There is a second
+question when the estimate concerns a trajectory: can we retain how long
+the trajectory takes? Closeness of two endpoint distributions alone says
+nothing about their travel times. To retain time, we will compare sets
+of endpoints from which a suitable continuation can be completed within
+a stated budget.</p>
+<p>This lesson joins three methods. A geometric series controls repeated
+distributional comparisons. A concentration estimate determines a
+suitable time allowance. Disjoint intervals turn local probability
+bounds into a count of all starting integers. The combination gives a
+quantitative natural-density conclusion for the odd-return Collatz map,
+with an explicit leading time coefficient and an error allowance of
+order
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi></mrow></msqrt><annotation encoding="application/x-tex">\sqrt{\log N\,\log\log N}</annotation></semantics></math>.</p>
+<p>We use <a
+href="NT-COLLATZ-04.html#nested-targets-compose-exactly">nested
+first-passage maps and finite-chain transport</a>, <a
+href="NT-COLLATZ-06.html#an-exponential-estimate-with-explicit-constants">geometric
+concentration</a>, and the complete <a
+href="NT-COLLATZ-23.html#a-common-entrance-profile">uniform-input entrance
+comparison</a>. These internal lessons provide the required proofs.
+Basic references are Tao’s Section 3 on scale iteration and Allikvere’s
+Sections 7–8 on uniform sampling and timed target sets. The sharper time
+allowance below follows by keeping the explicit concentration estimate
+rather than replacing it by a fixed power such as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>4</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(\log N)^{4/5}</annotation></semantics></math>.</p>
+<h2 id="the-entrance-estimate-on-a-geometric-sequence-of-scales">The
+entrance estimate on a geometric sequence of scales</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+be the odd-return map on positive odd integers,
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mn>3</mn><mi>N</mi><mo>+</mo><mn>1</mn></mrow><msup><mn>2</mn><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>N</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+S(N)=\frac{3N+1}{2^{\nu_2(3N+1)}}.
+</annotation></semantics></math></span> Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">T_z(N)</annotation></semantics></math>
+for the first time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mi>j</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">S^j(N)\leq z</annotation></semantics></math>,
+including time zero, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p_z(N)</annotation></semantics></math>
+for that first value. If the orbit never enters, set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">T_z(N)=\infty</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>†</mi></mrow><annotation encoding="application/x-tex">p_z(N)=\dagger</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>†</mi><annotation encoding="application/x-tex">\dagger</annotation></semantics></math>
+is distinct from every integer. For sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>y</mi></msub><annotation encoding="application/x-tex">U_y</annotation></semantics></math>
+be uniform on the positive odd integers in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mo>,</mo><msup><mi>y</mi><mi>α</mi></msup><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[y,y^\alpha]</annotation></semantics></math>,
+where
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>1001</mn><mi>/</mi><mn>1000</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>d</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>/</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>τ</mi><mo>=</mo><mfrac><mn>5097587</mn><mn>77645938</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\alpha=1001/1000,\qquad d=\log(4/3),
+\qquad \tau=\frac{5097587}{77645938}.
+\tag{1}
+</annotation></semantics></math><span class="equation-number">(1)</span></span></span> All constants in this lesson may depend
+on this fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.
+No uniform estimate as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>↓</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha\downarrow1</annotation></semantics></math>
+is asserted.</p>
+<p>The preceding entrance theorem, with coarse exponent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">2/5</annotation></semantics></math>,
+supplies constants
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>,</mo><mi>D</mi><mo>,</mo><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A,D,b&gt;0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mo>*</mo></msub><annotation encoding="application/x-tex">z_*</annotation></semantics></math>
+such that
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="postfix">∥</mo><msub><mrow><mi mathvariant="normal">Law</mi><mo>&#8289;</mo></mrow><msub><mi>U</mi><msup><mi>z</mi><mi>α</mi></msup></msub></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>p</mi><mi>z</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msub><mrow><mi mathvariant="normal">Law</mi><mo>&#8289;</mo></mrow><msub><mi>U</mi><msup><mi>z</mi><msup><mi>α</mi><mn>2</mn></msup></msup></msub></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>p</mi><mi>z</mi></msub><mo stretchy="false" form="postfix">)</mo><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>U</mi><msup><mi>z</mi><mi>α</mi></msup></msub><mo stretchy="false" form="prefix">{</mo><msub><mi>T</mi><mi>z</mi></msub><mo>=</mo><mi>∞</mi><mo stretchy="false" form="postfix">}</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mi>D</mi><msup><mi>z</mi><mrow><mi>−</mi><mi>b</mi></mrow></msup><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>≥</mo><msub><mi>z</mi><mo>*</mo></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\|\operatorname{Law}_{U_{z^\alpha}}(p_z)
+-\operatorname{Law}_{U_{z^{\alpha^2}}}(p_z)\|_1
+&amp;\leq A(\log z)^{-\tau},\\
+U_{z^\alpha}\{T_z=\infty\}&amp;\leq Dz^{-b}
+\qquad(z\geq z_*).
+\end{aligned}
+\tag{2}
+</annotation></semantics></math><span class="equation-number">(2)</span></span></span> The norm is the full sum of absolute
+atom differences. Both laws include the failure state. In particular,
+the first inequality applies to every fixed subset of possible entrance
+values.</p>
+<p>For comparison errors of size
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(\log z)^{-\tau}</annotation></semantics></math>,
+the sequence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>j</mi></msub><mo>=</mo><msup><mi>u</mi><msup><mi>α</mi><mi>j</mi></msup></msup></mrow><annotation encoding="application/x-tex">z_j=u^{\alpha^j}</annotation></semantics></math>
+has
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mo accent="false">∞</mo></munderover><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msub><mi>z</mi><mi>j</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>u</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup></mrow><mrow><mn>1</mn><mo>−</mo><msup><mi>α</mi><mrow><mi>−</mi><mi>τ</mi></mrow></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{j=0}^{\infty}(\log z_j)^{-\tau}
+=\frac{(\log u)^{-\tau}}{1-\alpha^{-\tau}}.
+\tag{3}
+</annotation></semantics></math><span class="equation-number">(3)</span></span></span> Indeed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msub><mi>z</mi><mi>j</mi></msub><mo>=</mo><msup><mi>α</mi><mi>j</mi></msup><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">\log z_j=\alpha^j\log u</annotation></semantics></math>,
+so the finite sums are geometric sums with ratio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>α</mi><mrow><mi>−</mi><mi>τ</mi></mrow></msup><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha^{-\tau}&lt;1</annotation></semantics></math>,
+and their omitted last powers tend to zero. A fixed error at each step
+would accumulate indefinitely; an error decreasing on this sequence does
+not.</p>
+<p>An immediate application of <a
+href="NT-COLLATZ-04.html#geometrically-separated-logarithmic-scales">the
+summable transport theorem</a>, Theorem 3, is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>y</mi></msub><mo stretchy="false" form="prefix">{</mo><mi>N</mi><mo>:</mo><msup><mi>S</mi><mi>j</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>H</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> for every </mtext><mspace width="0.333em"></mspace></mrow><mi>j</mi><mo>≥</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo><mo>≤</mo><mi>D</mi><msup><mi>H</mi><mrow><mi>−</mi><mi>b</mi><mi>/</mi><msup><mi>α</mi><mn>3</mn></msup></mrow></msup><mo>+</mo><mfrac><mrow><mi>A</mi><msup><mi>α</mi><mrow><mn>3</mn><mi>τ</mi></mrow></msup></mrow><mrow><mn>1</mn><mo>−</mo><msup><mi>α</mi><mrow><mi>−</mi><mi>τ</mi></mrow></msup></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">
+U_y\{N:S^j(N)&gt;H\text{ for every }j\geq0\}
+\leq D H^{-b/\alpha^3}
++\frac{A\alpha^{3\tau}}{1-\alpha^{-\tau}}(\log H)^{-\tau}
+\tag{4}
+</annotation></semantics></math><span class="equation-number">(4)</span></span></span> for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>≥</mo><msubsup><mi>z</mi><mo>*</mo><msup><mi>α</mi><mn>3</mn></msup></msubsup></mrow><annotation encoding="application/x-tex">H\geq z_*^{\alpha^3}</annotation></semantics></math>
+and every defined block law
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>y</mi></msub><annotation encoding="application/x-tex">U_y</annotation></semantics></math>.
+To match the theorem exactly, its chosen law is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ν</mi><mi>z</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>p</mi><mi>z</mi></msub><msub><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msub><msub><mi>U</mi><msup><mi>z</mi><mi>α</mi></msup></msub></mrow><annotation encoding="application/x-tex">\nu_z=(p_z)_*U_{z^\alpha}</annotation></semantics></math>.
+Nested passage gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>p</mi><mi>z</mi></msub><msub><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msub><msub><mi>ν</mi><msup><mi>z</mi><mi>α</mi></msup></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>p</mi><mi>z</mi></msub><msub><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msub><msub><mi>U</mi><msup><mi>z</mi><msup><mi>α</mi><mn>2</mn></msup></msup></msub></mrow><annotation encoding="application/x-tex">(p_z)_*\nu_{z^\alpha}=(p_z)_*U_{z^{\alpha^2}}</annotation></semantics></math>,
+so its comparison error is precisely the first quantity in (2). Its
+initial failure mass is the second quantity. Formula (3) evaluates the
+bound in that theorem. Thus the distribution of the orbit minimum is
+uniformly tight under these uniform block laws. We now retain a time
+bound as well.</p>
+<h2 id="choosing-a-time-allowance-from-concentration">Choosing a time
+allowance from concentration</h2>
+<p>Define, for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t\geq0</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msqrt><mrow><mi>t</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow></msqrt><mi>.</mi></mrow><annotation encoding="application/x-tex">
+h(t)=\sqrt{t\log(t+2)}.
+\tag{5}
+</annotation></semantics></math><span class="equation-number">(5)</span></span></span> It is increasing, vanishes at zero, and
+satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>o</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">h(t)=o(t)</annotation></semantics></math>.
+Moreover
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mo stretchy="false" form="prefix">(</mo><msqrt><mi>α</mi></msqrt><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mn>2</mn><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+h(\alpha t)-h(t)\geq(\sqrt\alpha-1)h(t),
+\qquad h(\alpha t)\leq2h(t).
+\tag{6}
+</annotation></semantics></math><span class="equation-number">(6)</span></span></span> For the first inequality, use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mi>t</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\log(\alpha t+2)\geq\log(t+2)</annotation></semantics></math>
+and take square roots. For the second,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\alpha&lt;2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mi>t</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mn>2</mn><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\log(\alpha t+2)\leq\log(2(t+2))\leq2\log(t+2)</annotation></semantics></math>.
+Finally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>t</mi><mo>=</mo><msqrt><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>t</mi></mrow></msqrt><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h(t)/t=\sqrt{\log(t+2)/t}\to0</annotation></semantics></math>.
+For example, the integral expression for the logarithm, split at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>t</mi></msqrt><annotation encoding="application/x-tex">\sqrt t</annotation></semantics></math>,
+proves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>t</mi><mo>=</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msqrt><mi>t</mi></msqrt><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\log t=O(\sqrt t)</annotation></semantics></math>,
+which suffices for this limit. The same argument with any positive power
+in place of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>
+shows
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>o</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>t</mi><mi>p</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">h(t)=o(t^p)</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&gt;</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">p&gt;1/2</annotation></semantics></math>.</p>
+<p>The first inequality in (6) is especially useful. Increasing the
+scale from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>z</mi><mi>α</mi></msup><annotation encoding="application/x-tex">z^\alpha</annotation></semantics></math>
+creates a definite additional time allowance proportional to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">h(\log z)</annotation></semantics></math>,
+exactly the size of the local timing error we will obtain.</p>
+<p><strong>Lemma 1 (A smaller simultaneous timing error).</strong> Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">L=\log x</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>0</mn></msub><mo>=</mo><mo stretchy="false" form="prefix">⌊</mo><mi>L</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>10</mn><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⌋</mo></mrow><annotation encoding="application/x-tex">n_0=\lfloor L/(10\log2)\rfloor</annotation></semantics></math>.
+For either uniform input law
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><msup><mi>x</mi><mi>α</mi></msup></msub><annotation encoding="application/x-tex">U_{x^\alpha}</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><msup><mi>x</mi><msup><mi>α</mi><mn>2</mn></msup></msup></msub><annotation encoding="application/x-tex">U_{x^{\alpha^2}}</annotation></semantics></math>,
+there is an event
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>x</mi></msub><annotation encoding="application/x-tex">G_x</annotation></semantics></math>
+with
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msubsup><mi>G</mi><mi>x</mi><mi>c</mi></msubsup><mo stretchy="false" form="postfix">)</mo><mo>≪</mo><msup><mi>L</mi><mrow><mi>−</mi><mn>20</mn></mrow></msup></mrow><annotation encoding="application/x-tex">
+\mathbb P(G_x^c)\ll L^{-20}
+\tag{7}
+</annotation></semantics></math><span class="equation-number">(7)</span></span></span> such that, on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>x</mi></msub><annotation encoding="application/x-tex">G_x</annotation></semantics></math>,
+the first entrance below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+exists by time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>n</mi><mn>0</mn></msub><annotation encoding="application/x-tex">n_0</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>T</mi><mi>x</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mi>/</mi><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>d</mi></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mi>C</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\left|T_x(N)-\frac{\log(N/x)}d\right|\leq C h(L),
+\tag{8}
+</annotation></semantics></math><span class="equation-number">(8)</span></span></span> and uniformly for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>j</mi><mo>≤</mo><msub><mi>n</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">0\leq j\leq n_0</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>S</mi><mi>j</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mo>−</mo><mi>d</mi><mi>j</mi><mo>+</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\log S^j(N)=\log N-dj+O(h(L)).
+\tag{9}
+</annotation></semantics></math><span class="equation-number">(9)</span></span></span> The constants are independent of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+and the chosen input value.</p>
+<p><strong>Proof.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>j</mi></msub><annotation encoding="application/x-tex">A_j</annotation></semantics></math>
+be the sum of the first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+valuations. Use the event
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>A</mi><mi>j</mi></msub><mo>−</mo><mn>2</mn><mi>j</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mn>8</mn><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>≤</mo><mi>j</mi><mo>≤</mo><msub><mi>n</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|A_j-2j|&lt;8h(L)\qquad(0\leq j\leq n_0).
+\tag{10}
+</annotation></semantics></math><span class="equation-number">(10)</span></span></span> The actual valuation-vector law differs
+in full norm from independent positive geometric variables by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>x</mi><mrow><mi>−</mi><mi>η</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(x^{-\eta})</annotation></semantics></math>,
+as proved in Proposition 2 of <a
+href="NT-COLLATZ-23.html#concentration-for-the-actual-integer-trajectories">Counting
+trajectories and comparing entrance distributions</a>. This estimate is
+for the whole vector, so it is added only once.</p>
+<p>For an independent prefix of length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>,
+the geometric concentration theorem bounds failure at height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+by
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>−</mi><mi mathvariant="normal">min</mi><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><mrow><mn>12</mn><mi>j</mi></mrow></mfrac><mo>,</mo><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+2\exp\left[-\min\left(\frac{v^2}{12j},\frac{dv}{2}\right)\right].
+</annotation></semantics></math></span> Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo>&gt;</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\log2&gt;1/2</annotation></semantics></math>,
+one has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>0</mn></msub><mo>≤</mo><mi>L</mi><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">n_0\leq L/5</annotation></semantics></math>.
+At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mn>8</mn><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">v=8h(L)</annotation></semantics></math>,
+the quadratic exponent is therefore at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="false"><mfrac><mn>80</mn><mn>3</mn></mfrac></mstyle><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\tfrac{80}{3}\log(L+2)</annotation></semantics></math>.
+The linear exponent is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>d</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">4dh(L)</annotation></semantics></math>,
+which eventually also exceeds that quantity, because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">h(L)/\log(L+2)\to\infty</annotation></semantics></math>.
+Summing over at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">L/5</annotation></semantics></math>
+prefixes gives
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msubsup><mi>G</mi><mi>x</mi><mi>c</mi></msubsup><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>C</mi><mi>L</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo>+</mo><mn>2</mn><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>80</mn><mi>/</mi><mn>3</mn></mrow></msup><mo>+</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>x</mi><mrow><mi>−</mi><mi>η</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>L</mi><mrow><mi>−</mi><mn>20</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb P(G_x^c)\leq
+C L(L+2)^{-80/3}+O(x^{-\eta})=O(L^{-20}).
+\tag{11}
+</annotation></semantics></math><span class="equation-number">(11)</span></span></span></p>
+<p>The exact affine formula from the preceding lesson is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mi>j</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>3</mn><mi>j</mi></msup><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>A</mi><mi>j</mi></msub></mrow></msup><mi>N</mi><mo>+</mo><msub><mi>F</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">S^j(N)=3^j2^{-A_j}N+F_j</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>F</mi><mi>j</mi></msub><mo>&lt;</mo><msup><mn>3</mn><mi>j</mi></msup></mrow><annotation encoding="application/x-tex">0\leq F_j&lt;3^j</annotation></semantics></math>.
+On (10), its linear term is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">[</mo><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mo>−</mo><mi>d</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>10</mn><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>L</mi><mo>−</mo><mn>8</mn><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">\exp[(\alpha-d/(10\log2))L-8(\log2)h(L)]</annotation></semantics></math>.
+The coefficient of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+exceeds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.951</mn><annotation encoding="application/x-tex">0.951</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>o</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">h(L)=o(L)</annotation></semantics></math>,
+so this term exceeds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mn>0.95</mn></msup><annotation encoding="application/x-tex">x^{0.95}</annotation></semantics></math>
+eventually. The offset is less than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mn>0.16</mn></msup><annotation encoding="application/x-tex">x^{0.16}</annotation></semantics></math>.
+Consequently the logarithmic offset error is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>x</mi><mrow><mi>−</mi><mn>3</mn><mi>/</mi><mn>4</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(x^{-3/4})</annotation></semantics></math>,
+and
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>S</mi><mi>j</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mo>−</mo><mi>d</mi><mi>j</mi><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>A</mi><mi>j</mi></msub><mo>−</mo><mn>2</mn><mi>j</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>x</mi><mrow><mi>−</mi><mn>3</mn><mi>/</mi><mn>4</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\log S^j(N)=\log N-dj-(\log2)(A_j-2j)+O(x^{-3/4}),
+</annotation></semantics></math></span> which proves (9). The strict
+coefficient inequalities follow from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mn>2</mn></msup><mo>&gt;</mo><msup><mn>2</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">3^2&gt;2^3</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mn>5</mn></msup><mo>&lt;</mo><msup><mn>2</mn><mn>8</mn></msup></mrow><annotation encoding="application/x-tex">3^5&lt;2^8</annotation></semantics></math>,
+as in that lesson; they are unchanged by this smaller deviation
+allowance.</p>
+<p>At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><msub><mi>n</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">j=n_0</annotation></semantics></math>,
+the upper linear coefficient is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>α</mi><mn>3</mn></msup><mo>−</mo><mi>d</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>10</mn><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><msup><mi>α</mi><mn>3</mn></msup><mo>−</mo><mn>1</mn><mi>/</mi><mn>25</mn><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha^3-d/(10\log2)&lt;\alpha^3-1/25&lt;1</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><msub><mi>n</mi><mn>0</mn></msub></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">S^{n_0}(N)&lt;x</annotation></semantics></math>
+for large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+Since the input is above
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+its first time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+is positive. Apply (9) at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t-1</annotation></semantics></math>,
+where the value exceeds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+and at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+where it is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+The two inequalities give (8), absorbing the bounded difference of one
+step into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C h(L)</annotation></semantics></math>.
+∎</p>
+<p>The argument did not alter the entrance-distribution theorem (2),
+whose proof retains its original bands and cutoffs. It improved the
+separate timing event. The two facts can be used together because both
+concern the same actual input law.</p>
+<h2 id="putting-the-continuation-time-into-a-target-set">Putting the
+continuation time into a target set</h2>
+<p>Fix an integer target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">H\geq2</annotation></semantics></math>.
+The letter
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+now denotes a target height; the lower-case function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+remains the allowance (5). Set
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>H</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>α</mi><mrow><mi>−</mi><mn>3</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi></mrow><mi>d</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Delta_H=(1-\alpha^{-3})\frac{\log H}{d}.
+\tag{12}
+</annotation></semantics></math><span class="equation-number">(12)</span></span></span> For a constant
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">B&gt;0</annotation></semantics></math>
+to be fixed, define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>z</mi></msub><annotation encoding="application/x-tex">E_z</annotation></semantics></math>
+to consist of positive odd
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≤</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">M\leq z</annotation></semantics></math>
+for which there exists an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\geq0</annotation></semantics></math>
+such that
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>H</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>k</mi><mo>≤</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mi>/</mi><mi>H</mi><mo stretchy="false" form="postfix">)</mo><msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo></msub></mrow><mi>d</mi></mfrac><mo>+</mo><msub><mi mathvariant="normal">Δ</mi><mi>H</mi></msub><mo>+</mo><mi>B</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+S^k(M)\leq H,\qquad
+k\leq\frac{(\log(M/H))_+}{d}+\Delta_H+B h(\log z).
+\tag{13}
+</annotation></semantics></math><span class="equation-number">(13)</span></span></span> Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mo>+</mo></msub><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">u_+=\max(u,0)</annotation></semantics></math>.
+In particular every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≤</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">M\leq H</annotation></semantics></math>
+belongs to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>z</mi></msub><annotation encoding="application/x-tex">E_z</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≤</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">M\leq z</annotation></semantics></math>,
+with witness
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k=0</annotation></semantics></math>.
+The set depends on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>,
+but not on the random input used to sample it. It is therefore a valid
+target set in (2).</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">ℬ</mi><mi>z</mi></msub><annotation encoding="application/x-tex">\mathcal B_z</annotation></semantics></math>
+be the following event under the input law
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><msup><mi>z</mi><mi>α</mi></msup></msub><annotation encoding="application/x-tex">U_{z^\alpha}</annotation></semantics></math>:
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>∞</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>T</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mi>/</mi><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>d</mi></mfrac><mo>+</mo><mi>B</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>p</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msub><mi>E</mi><mi>z</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+T_z(N)&lt;\infty,\qquad
+T_z(N)\leq\frac{\log(N/z)}d+B h(\log z),
+\qquad p_z(N)\in E_z.
+\tag{14}
+</annotation></semantics></math><span class="equation-number">(14)</span></span></span> This event combines a bounded first leg
+with a bounded continuation. It does not assert independence of those
+two parts.</p>
+<p><strong>Proposition 2 (A timed comparison step).</strong> Constants
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>,</mo><msub><mi>z</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">B,z_*</annotation></semantics></math>
+can be chosen independently of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+so that
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">ℬ</mi><mi>z</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mn>1</mn><mo>−</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>20</mn></mrow></msup><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><msub><mi>z</mi><mo>*</mo></msub><mo>≤</mo><mi>z</mi><mo>≤</mo><mi>H</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\mathbb P(\mathcal B_z)\geq1-C(\log z)^{-20}
+\quad(z_*\leq z\leq H),
+\tag{15}
+</annotation></semantics></math><span class="equation-number">(15)</span></span></span> and
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">ℬ</mi><msup><mi>z</mi><mi>α</mi></msup></msub><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">ℬ</mi><mi>z</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msup><mi>C</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>≥</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>z</mi><mo>*</mo></msub><mo>,</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><msup><mi>α</mi><mn>3</mn></msup></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb P(\mathcal B_{z^\alpha})
+\geq\mathbb P(\mathcal B_z)-C&#39;(\log z)^{-\tau}
+\quad(z\geq\max(z_*,H^{1/\alpha^3})).
+\tag{16}
+</annotation></semantics></math><span class="equation-number">(16)</span></span></span></p>
+<p><strong>Proof.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≤</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">z\leq H</annotation></semantics></math>,
+every successful entrance value is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>,
+so its continuation witness is zero. Lemma 1 gives the time clause of
+(14) on its event once
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+is large enough. This proves (15).</p>
+<p>For the step, use one common input
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>∼</mo><msub><mi>U</mi><msup><mi>z</mi><msup><mi>α</mi><mn>2</mn></msup></msup></msub></mrow><annotation encoding="application/x-tex">N\sim U_{z^{\alpha^2}}</annotation></semantics></math>.
+It is an allowed input of Lemma 1 both at target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+and at target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>z</mi><mi>α</mi></msup><annotation encoding="application/x-tex">z^\alpha</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+be the intersection of the two events, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>G</mi><mi>c</mi></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>20</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbb P(G^c)=O((\log z)^{-20})</annotation></semantics></math>.
+On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>,
+put
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><msub><mi>p</mi><msup><mi>z</mi><mi>α</mi></msup></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>M</mi><mo>′</mo></msup><mo>=</mo><msub><mi>p</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>t</mi><mo>=</mo><msub><mi>T</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>T</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msub><mi>T</mi><msup><mi>z</mi><mi>α</mi></msup></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+M=p_{z^\alpha}(N),\qquad M&#39;=p_z(N),\qquad
+t=T_z(M)=T_z(N)-T_{z^\alpha}(N).
+\tag{17}
+</annotation></semantics></math><span class="equation-number">(17)</span></span></span> The time identity is the exact
+nested-passage theorem; in particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mo>′</mo></msup><mo>=</mo><msup><mi>S</mi><mi>t</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">M&#39;=S^t(M)</annotation></semantics></math>.
+Subtracting the upper estimate at target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+and the lower estimate at target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>z</mi><mi>α</mi></msup><annotation encoding="application/x-tex">z^\alpha</annotation></semantics></math>
+gives
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≤</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>z</mi><mi>α</mi></msup><mi>/</mi><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>d</mi></mfrac><mo>+</mo><mi>C</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+t\leq\frac{\log(z^\alpha/z)}d+C h(\log z).
+\tag{18}
+</annotation></semantics></math><span class="equation-number">(18)</span></span></span> Both errors are of this size because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mn>2</mn><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">h(\alpha\log z)\leq2h(\log z)</annotation></semantics></math>.</p>
+<p>Apply (9) at the actual time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><msup><mi>z</mi><mi>α</mi></msup></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">T_{z^\alpha}(N)</annotation></semantics></math>,
+and use (8) for that time. It follows that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>M</mi><mo>≥</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>z</mi><mi>α</mi></msup><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>C</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\log M\geq\log(z^\alpha)-C h(\log z)</annotation></semantics></math>.
+Combining with (18) gives the useful same-orbit estimate
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≤</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mi>/</mi><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>d</mi></mfrac><mo>+</mo><msub><mi>C</mi><mn>2</mn></msub><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+t\leq\frac{\log(M/z)}d+C_2 h(\log z).
+\tag{19}
+</annotation></semantics></math><span class="equation-number">(19)</span></span></span> No uniform sampling assertion at the
+intermediate point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is used.</p>
+<p>Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+holds and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mo>′</mo></msup><mo>∈</mo><msub><mi>E</mi><mi>z</mi></msub></mrow><annotation encoding="application/x-tex">M&#39;\in E_z</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≤</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">M\leq H</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>∈</mo><msub><mi>E</mi><msup><mi>z</mi><mi>α</mi></msup></msub></mrow><annotation encoding="application/x-tex">M\in E_{z^\alpha}</annotation></semantics></math>
+with witness zero. Suppose instead that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>&gt;</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">M&gt;H</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≥</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">z\geq H</annotation></semantics></math>,
+concatenate the leg of length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+with a witness
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mn>2</mn></msub><annotation encoding="application/x-tex">k_2</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>M</mi><mo>′</mo></msup><annotation encoding="application/x-tex">M&#39;</annotation></semantics></math>
+in (13). Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mo>′</mo></msup><mo>≤</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">M&#39;\leq z</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>t</mi><mo>+</mo><msub><mi>k</mi><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mi>/</mi><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>d</mi></mfrac><mo>+</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mi>/</mi><mi>H</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>d</mi></mfrac><mo>+</mo><msub><mi mathvariant="normal">Δ</mi><mi>H</mi></msub><mo>+</mo><mi>B</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>C</mi><mn>2</mn></msub><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mi>/</mi><mi>H</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>d</mi></mfrac><mo>+</mo><msub><mi mathvariant="normal">Δ</mi><mi>H</mi></msub><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo>+</mo><msub><mi>C</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+t+k_2
+&amp;\leq\frac{\log(M/z)}d+
+\frac{\log(z/H)}d+\Delta_H+B h(\log z)+C_2h(\log z)\\
+&amp;=\frac{\log(M/H)}d+\Delta_H+(B+C_2)h(\log z).
+\end{aligned}
+\tag{20}
+</annotation></semantics></math><span class="equation-number">(20)</span></span></span> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&lt;</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">z&lt;H</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mo>′</mo></msup><mo>≤</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">M&#39;\leq H</annotation></semantics></math>,
+so use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_2=0</annotation></semantics></math>.
+The scale restriction gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>H</mi><mi>/</mi><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>d</mi><mo>≤</mo><msub><mi mathvariant="normal">Δ</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">\log(H/z)/d\leq\Delta_H</annotation></semantics></math>.
+Equation (19) then gives the same upper bound in (20), with its
+nonnegative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">B h</annotation></semantics></math>
+term unnecessary.</p>
+<p>Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+large enough that
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>2</mn></msub><mo>≤</mo><mi>B</mi><mo stretchy="false" form="prefix">(</mo><msqrt><mi>α</mi></msqrt><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_2\leq B(\sqrt\alpha-1).
+\tag{21}
+</annotation></semantics></math><span class="equation-number">(21)</span></span></span> By (6),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo>+</mo><msub><mi>C</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>B</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>z</mi><mi>α</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(B+C_2)h(\log z)\leq B h(\log z^\alpha)</annotation></semantics></math>.
+Thus (20) is the required witness bound for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>∈</mo><msub><mi>E</mi><msup><mi>z</mi><mi>α</mi></msup></msub></mrow><annotation encoding="application/x-tex">M\in E_{z^\alpha}</annotation></semantics></math>.
+The direct upper estimate from Lemma 1 at target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>z</mi><mi>α</mi></msup><annotation encoding="application/x-tex">z^\alpha</annotation></semantics></math>
+also supplies the first-leg time clause in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">ℬ</mi><msup><mi>z</mi><mi>α</mi></msup></msub><annotation encoding="application/x-tex">\mathcal B_{z^\alpha}</annotation></semantics></math>,
+after increasing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+if needed. We have proved the inclusion
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∩</mo><mo stretchy="false" form="prefix">{</mo><msub><mi>p</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msub><mi>E</mi><mi>z</mi></msub><mo stretchy="false" form="postfix">}</mo><mo>⊆</mo><msub><mi mathvariant="script">ℬ</mi><msup><mi>z</mi><mi>α</mi></msup></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+G\cap\{p_z(N)\in E_z\}\subseteq\mathcal B_{z^\alpha}.
+\tag{22}
+</annotation></semantics></math><span class="equation-number">(22)</span></span></span></p>
+<p>Compare the probabilities of the fixed set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>z</mi></msub><annotation encoding="application/x-tex">E_z</annotation></semantics></math>
+under the two laws in (2). The event
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">ℬ</mi><mi>z</mi></msub><annotation encoding="application/x-tex">\mathcal B_z</annotation></semantics></math>
+is contained in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>p</mi><mi>z</mi></msub><mo>∈</mo><msub><mi>E</mi><mi>z</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{p_z\in E_z\}</annotation></semantics></math>
+for the smaller input law. Therefore (22) implies
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">ℬ</mi><msup><mi>z</mi><mi>α</mi></msup></msub><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">ℬ</mi><mi>z</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup><mo>−</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>20</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb P(\mathcal B_{z^\alpha})
+\geq\mathbb P(\mathcal B_z)
+-A(\log z)^{-\tau}-C(\log z)^{-20}.
+</annotation></semantics></math></span> Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>&lt;</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">\tau&lt;20</annotation></semantics></math>,
+this is (16). The constants and the enlargement of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mo>*</mo></msub><annotation encoding="application/x-tex">z_*</annotation></semantics></math>
+depend on the concentration and entrance estimates, not on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>.
+∎</p>
+<div class="figure-scroll"><p><img src="figures/timed-scales.svg"
+alt="The same input N first enters below z to the alpha at M and then below z at M prime. The later continuation is joined to the intervening leg. Increasing the allowance from B h(log z) to B h(alpha log z) pays for the local timing error." /></p></div>
+<p><em>The timed inclusion (22). The distribution comparison is applied
+only to membership of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>M</mi><mo>′</mo></msup><annotation encoding="application/x-tex">M&#39;</annotation></semantics></math>
+in the fixed set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>z</mi></msub><annotation encoding="application/x-tex">E_z</annotation></semantics></math>.
+The trajectory identities and inequality (21) then transfer a
+time-bounded witness to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+This is a schematic sequence: either later leg may have length zero. No
+joint distributional limit for location and time is asserted.</em></p>
+<p>For perspective, a power allowance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">B(\log z)^p</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&gt;</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">p&gt;1/2</annotation></semantics></math>,
+could also dominate the error in Lemma 1 for sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+The function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+keeps the smaller concentration scale itself. Its growth from one scale
+to the next has the definite factor in (6), which is why no larger power
+is required.</p>
+<h2 id="the-time-bound-on-every-input-interval">The time bound on every
+input interval</h2>
+<p><strong>Theorem 3 (A target-independent clock for odd
+returns).</strong> There are constants
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>K</mi></msub><mo>,</mo><msub><mi>C</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">C_K,C_0</annotation></semantics></math>
+such that, with
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi></mrow><mi>d</mi></mfrac><mo>+</mo><msub><mi>C</mi><mi>K</mi></msub><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+K(N)=\frac{\log N}{d}+C_K h(\log(N+2)),
+\tag{23}
+</annotation></semantics></math><span class="equation-number">(23)</span></span></span> let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>H</mi></msub><annotation encoding="application/x-tex">\mathcal A_H</annotation></semantics></math>
+be the set of positive odd inputs
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+for which no integer time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mi>K</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">0\leq k\leq K(N)</annotation></semantics></math>
+satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">S^k(N)\leq H</annotation></semantics></math>.
+Then for every integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">H\geq2</annotation></semantics></math>
+and every sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>y</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">𝒜</mi><mi>H</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msub><mi>C</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+U_y(\mathcal A_H)\leq C_0(\log H)^{-\tau}.
+\tag{24}
+</annotation></semantics></math><span class="equation-number">(24)</span></span></span> The clock
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+does not depend on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> First take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+large enough that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><msup><mi>α</mi><mn>3</mn></msup></mrow></msup><mo>≥</mo><msub><mi>z</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">H^{1/\alpha^3}\geq z_*</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>y</mi><mi>α</mi></msup><mo>≤</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">y^\alpha\leq H</annotation></semantics></math>,
+every input has witness zero. Otherwise let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">J\geq1</annotation></semantics></math>
+be the least integer such that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><msup><mi>y</mi><msup><mi>α</mi><mrow><mi>−</mi><mi>J</mi></mrow></msup></msup><mo>&lt;</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><mi>α</mi></mrow></msup></mrow><annotation encoding="application/x-tex">v=y^{\alpha^{-J}}&lt;H^{1/\alpha}</annotation></semantics></math>.
+Then
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><msup><mi>α</mi><mn>2</mn></msup></mrow></msup><mo>≤</mo><mi>v</mi><mo>&lt;</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><mi>α</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>z</mi><mi>j</mi></msub><mo>=</mo><msup><mi>v</mi><msup><mi>α</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msup></msup><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>≤</mo><mi>j</mi><mo>≤</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H^{1/\alpha^2}\leq v&lt;H^{1/\alpha},\qquad
+z_j=v^{\alpha^{j-1}}\quad(0\leq j\leq J).
+\tag{25}
+</annotation></semantics></math><span class="equation-number">(25)</span></span></span> These satisfy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msubsup><mi>z</mi><mi>j</mi><mi>α</mi></msubsup></mrow><annotation encoding="application/x-tex">z_{j+1}=z_j^\alpha</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>≥</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><msup><mi>α</mi><mn>3</mn></msup></mrow></msup></mrow><annotation encoding="application/x-tex">z_0\geq H^{1/\alpha^3}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>&lt;</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">z_0&lt;H</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>J</mi></msub><mo>=</mo><msup><mi>y</mi><mrow><mn>1</mn><mi>/</mi><mi>α</mi></mrow></msup></mrow><annotation encoding="application/x-tex">z_J=y^{1/\alpha}</annotation></semantics></math>.
+In particular the source law at the last step is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>y</mi></msub><annotation encoding="application/x-tex">U_y</annotation></semantics></math>.</p>
+<p>Start with (15) at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>,
+and apply (16) up the sequence. By (3),
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mn>1</mn><mo>−</mo><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">ℬ</mi><msub><mi>z</mi><mi>J</mi></msub></msub><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msub><mi>z</mi><mn>0</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>20</mn></mrow></msup><mo>+</mo><mfrac><msup><mi>C</mi><mo>′</mo></msup><mrow><mn>1</mn><mo>−</mo><msup><mi>α</mi><mrow><mi>−</mi><mi>τ</mi></mrow></msup></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msub><mi>z</mi><mn>0</mn></msub><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≪</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+1-\mathbb P(\mathcal B_{z_J})
+&amp;\leq C(\log z_0)^{-20}
++\frac{C&#39;}{1-\alpha^{-\tau}}(\log z_0)^{-\tau}\\
+&amp;\ll (\log H)^{-\tau}.
+\end{aligned}
+\tag{26}
+</annotation></semantics></math><span class="equation-number">(26)</span></span></span> The potentially large fixed factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>α</mi><mrow><mi>−</mi><mi>τ</mi></mrow></msup><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(1-\alpha^{-\tau})^{-1}</annotation></semantics></math>
+is part of the constant, not omitted from the argument.</p>
+<p>For an input in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">ℬ</mi><msub><mi>z</mi><mi>J</mi></msub></msub><annotation encoding="application/x-tex">\mathcal B_{z_J}</annotation></semantics></math>,
+abbreviate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><msub><mi>z</mi><mi>J</mi></msub></mrow><annotation encoding="application/x-tex">z=z_J</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≤</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">N\leq H</annotation></semantics></math>,
+use time zero. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>&gt;</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">N&gt;H</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≥</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">z\geq H</annotation></semantics></math>,
+concatenate the first leg with the witness for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msub><mi>E</mi><mi>z</mi></msub></mrow><annotation encoding="application/x-tex">p_z(N)\in E_z</annotation></semantics></math>;
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>z</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">p_z(N)\leq z</annotation></semantics></math>,
+the resulting time is at most
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mi>/</mi><mi>H</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>d</mi></mfrac><mo>+</mo><msub><mi mathvariant="normal">Δ</mi><mi>H</mi></msub><mo>+</mo><mn>2</mn><mi>B</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{\log(N/H)}d+\Delta_H+2B h(\log z).
+\tag{27}
+</annotation></semantics></math><span class="equation-number">(27)</span></span></span> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>&gt;</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">N&gt;H</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&lt;</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">z&lt;H</annotation></semantics></math>,
+the first passage itself suffices. The inequality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≥</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><msup><mi>α</mi><mn>3</mn></msup></mrow></msup></mrow><annotation encoding="application/x-tex">z\geq H^{1/\alpha^3}</annotation></semantics></math>
+bounds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>H</mi><mi>/</mi><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">\log(H/z)/d</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Δ</mi><mi>H</mi></msub><annotation encoding="application/x-tex">\Delta_H</annotation></semantics></math>,
+giving (27) again. Thus mixed intervals containing inputs on both sides
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+are included.</p>
+<p>By the exact choice in (12), (27) equals
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi></mrow><mi>d</mi></mfrac><mo>−</mo><mfrac><mrow><msup><mi>α</mi><mrow><mi>−</mi><mn>3</mn></mrow></msup><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi></mrow><mi>d</mi></mfrac><mo>+</mo><mn>2</mn><mi>B</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi></mrow><mi>d</mi></mfrac><mo>+</mo><mn>2</mn><mi>B</mi><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{\log N}{d}-\frac{\alpha^{-3}\log H}{d}
++2B h(\log z)
+\leq\frac{\log N}{d}+2B h(\log(N+2)).
+\tag{28}
+</annotation></semantics></math><span class="equation-number">(28)</span></span></span> Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≥</mo><mi>y</mi><mo>=</mo><msup><mi>z</mi><mi>α</mi></msup><mo>&gt;</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">N\geq y=z^\alpha&gt;z</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+is increasing. We may therefore take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>K</mi></msub><mo>=</mo><mn>2</mn><mi>B</mi></mrow><annotation encoding="application/x-tex">C_K=2B</annotation></semantics></math>,
+independently of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>.</p>
+<p>The remaining targets lie in a fixed bounded range. Increase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mn>0</mn></msub><annotation encoding="application/x-tex">C_0</annotation></semantics></math>
+so that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">C_0(\log H)^{-\tau}\geq1</annotation></semantics></math>
+on that range. The probability bound is then automatic. No probability
+on an empty short interval has been used: throughout the statement
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+is beyond one fixed threshold, where its odd-input interval is nonempty.
+∎</p>
+<p><em>Reference:</em> Allikvere’s timed target-set iteration gives the
+same leading coefficient with a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>4</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(\log N)^{4/5}</annotation></semantics></math>
+allowance. Lemma 1 and inequality (6) replace that allowance here by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">h(\log(N+2))</annotation></semantics></math>,
+while the preceding entrance synthesis supplies the exponent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+in (24). This is a deduction from those arguments, not an assertion of
+an optimal second-order term or a numerical value for the first valid
+asymptotic threshold.</p>
+<h2 id="counting-every-starting-interval">Counting every starting
+interval</h2>
+<p>A local probability theorem gives a proportion inside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mo>,</mo><msup><mi>y</mi><mi>α</mi></msup><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[y,y^\alpha]</annotation></semantics></math>.
+Keeping only the largest such interval below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+would leave the lower integers untreated. The following elementary count
+uses all intervals and keeps their boundary conventions exact.</p>
+<p><strong>Lemma 4 (Disjoint intervals from closed-interval
+bounds).</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha&gt;1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">H\geq1</annotation></semantics></math>,
+and suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>t</mi><mi>α</mi></msup><mo>−</mo><mi>t</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t^\alpha-t&gt;2</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≥</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><mi>α</mi></mrow></msup></mrow><annotation encoding="application/x-tex">t\geq H^{1/\alpha}</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+be a set of positive odd integers with no element at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>.
+If
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>#</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mi>t</mi><mo>,</mo><msup><mi>t</mi><mi>α</mi></msup><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>ε</mi><mspace width="0.167em"></mspace><mi>#</mi><mo stretchy="false" form="prefix">{</mo><mi>N</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> odd</mtext></mrow><mo>:</mo><mi>t</mi><mo>≤</mo><mi>N</mi><mo>≤</mo><msup><mi>t</mi><mi>α</mi></msup><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">
+\#(A\cap[t,t^\alpha])
+\leq\varepsilon\,\#\{N\text{ odd}:t\leq N\leq t^\alpha\}
+\tag{29}
+</annotation></semantics></math><span class="equation-number">(29)</span></span></span> for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≥</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><mi>α</mi></mrow></msup></mrow><annotation encoding="application/x-tex">t\geq H^{1/\alpha}</annotation></semantics></math>,
+then for every real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">X\geq1</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>#</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mi>X</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mn>2</mn><mi>ε</mi><mspace width="0.167em"></mspace><mi>#</mi><mo stretchy="false" form="prefix">{</mo><mi>N</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> positive odd</mtext></mrow><mo>:</mo><mi>N</mi><mo>≤</mo><mi>X</mi><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\#(A\cap[1,X])
+\leq2\varepsilon\,\#\{N\text{ positive odd}:N\leq X\}.
+\tag{30}
+</annotation></semantics></math><span class="equation-number">(30)</span></span></span></p>
+<p><strong>Proof.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>≤</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">X\leq H</annotation></semantics></math>,
+there is nothing to count. Otherwise set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>=</mo><msup><mi>X</mi><msup><mi>α</mi><mrow><mi>−</mi><mi>j</mi></mrow></msup></msup></mrow><annotation encoding="application/x-tex">t_j=X^{\alpha^{-j}}</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+be the first index for which
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>J</mi></msub><mo>≤</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">t_J\leq H</annotation></semantics></math>.
+The intervals
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(t_{j+1},t_j]</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>j</mi><mo>&lt;</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">0\leq j&lt;J</annotation></semantics></math>,
+are disjoint and cover
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mi>J</mi></msub><mo>,</mo><mi>X</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(t_J,X]</annotation></semantics></math>.
+Moreover
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>&gt;</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><mi>α</mi></mrow></msup></mrow><annotation encoding="application/x-tex">t_{j+1}&gt;H^{1/\alpha}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>=</mo><msubsup><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow><mi>α</mi></msubsup></mrow><annotation encoding="application/x-tex">t_j=t_{j+1}^\alpha</annotation></semantics></math>.
+Each interval has length greater than two and therefore contains at
+least one odd integer. Closing its lower endpoint adds at most one odd
+integer, so its closed odd count is at most twice its half-open odd
+count. Bound each contribution of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+by (29), and sum the disjoint half-open counts. Below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>J</mi></msub><mo>≤</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">t_J\leq H</annotation></semantics></math>
+there are no members of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+This proves (30), including integer endpoint coincidences. ∎</p>
+<p>For example, at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>2</mn><mo>,</mo><mi>H</mi><mo>=</mo><mn>9</mn><mo>,</mo><mi>X</mi><mo>=</mo><mn>81</mn></mrow><annotation encoding="application/x-tex">\alpha=2,H=9,X=81</annotation></semantics></math>,
+the single interval is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>9</mn><mo>,</mo><mn>81</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(9,81]</annotation></semantics></math>.
+It contains 36 odd integers. Its closed version has 37, with the
+additional integer nine not in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Ignoring the distinction would overcount at shared boundaries in a
+longer sequence; the factor two handles every interval uniformly.</p>
+<p><strong>Corollary 5 (A uniform timed count).</strong> With the clock
+(23), for every real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">X\geq2</annotation></semantics></math>
+and every integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">H\geq2</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>#</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">𝒜</mi><mi>H</mi></msub><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mi>X</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo></mrow><mi>X</mi></mfrac><mo>≪</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{\#(\mathcal A_H\cap[1,X])}{X}\ll(\log H)^{-\tau}.
+\tag{31}
+</annotation></semantics></math><span class="equation-number">(31)</span></span></span></p>
+<p><strong>Proof.</strong> Take the failure set in (24). It contains no
+integer at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>,
+because zero is an allowed time. For sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>,
+every interval with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≥</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><mi>α</mi></mrow></msup></mrow><annotation encoding="application/x-tex">t\geq H^{1/\alpha}</annotation></semantics></math>
+is in the range of Theorem 3. Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>t</mi><mi>α</mi></msup><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">t^\alpha-t</annotation></semantics></math>
+increases to infinity on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[1,\infty)</annotation></semantics></math>:
+its derivative is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><msup><mi>t</mi><mrow><mi>α</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><mn>1</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha t^{\alpha-1}-1&gt;0</annotation></semantics></math>.
+Thus the width hypothesis of Lemma 4 holds after increasing one fixed
+lower bound on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>.</p>
+<p>Apply that lemma with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><msub><mi>C</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\varepsilon=C_0(\log H)^{-\tau}</annotation></semantics></math>.
+Since twice the odd population below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>+</mo><mn>1</mn><mo>≤</mo><mn>3</mn><mi>X</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">X+1\leq3X/2</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">X\geq2</annotation></semantics></math>,
+(31) follows. Bounded targets are absorbed into the implied constant as
+before. There is no remaining error depending on a discarded lower
+segment of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mi>X</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[1,X]</annotation></semantics></math>.
+∎</p>
+<h2 id="from-fixed-targets-to-arbitrary-diverging-targets">From fixed
+targets to arbitrary diverging targets</h2>
+<p><strong>Corollary 6 (Natural density with one clock).</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+be any function from the positive odd integers to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">f(N)\to\infty</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>f</mi></msub><annotation encoding="application/x-tex">\mathcal A_f</annotation></semantics></math>
+consist of those inputs
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+for which no integer time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mi>K</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">0\leq k\leq K(N)</annotation></semantics></math>
+satisfies the strict inequality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mi>k</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">S^k(N)&lt;f(N)</annotation></semantics></math>.
+Then
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>#</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">𝒜</mi><mi>f</mi></msub><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mi>X</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>o</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\#(\mathcal A_f\cap[1,X])=o(X).
+\tag{32}
+</annotation></semantics></math><span class="equation-number">(32)</span></span></span> The time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is an integer. The same
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+works for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>;
+the exceptional set may depend on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Define
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">inf</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>:</mo><mi>N</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> positive odd</mtext></mrow><mo>,</mo><mspace width="0.222em"></mspace><mi>N</mi><mo>≥</mo><msqrt><mi>X</mi></msqrt><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+b(X)=\inf\{f(N):N\text{ positive odd},\ N\geq\sqrt X\}.
+</annotation></semantics></math></span> For large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+this is finite and exceeds three. It tends to infinity by the definition
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">f(N)\to\infty</annotation></semantics></math>;
+finiteness follows by evaluating
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+at any one odd integer in the nonempty tail. Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">⌈</mo><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⌉</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">H(X)=\lceil b(X)\rceil-1</annotation></semantics></math>.
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>≤</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">2\leq H(X)&lt;b(X)</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">H(X)\to\infty</annotation></semantics></math>.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≥</mo><msqrt><mi>X</mi></msqrt></mrow><annotation encoding="application/x-tex">N\geq\sqrt X</annotation></semantics></math>,
+any iterate at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H(X)</annotation></semantics></math>
+is strictly below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(N)</annotation></semantics></math>.
+Formula (31) bounds the exceptions above
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>X</mi></msqrt><annotation encoding="application/x-tex">\sqrt X</annotation></semantics></math>,
+while the omitted lower segment contains at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>X</mi></msqrt><annotation encoding="application/x-tex">\sqrt X</annotation></semantics></math>
+integers. The failure proportion is therefore at most
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>X</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo>+</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>τ</mi></mrow></msup><mo>→</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+X^{-1/2}+C(\log H(X))^{-\tau}\longrightarrow0.
+</annotation></semantics></math></span> This proves (32). No monotonicity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>,
+or rate at which it tends to infinity, has been assumed. ∎</p>
+<p>The conclusion concerns natural counting density among odd starting
+integers. It supplies an actual orbit witness within the stated
+odd-return clock. Passing to all positive integers and to the
+unaccelerated Collatz clock is a further exact change of coordinates and
+elapsed time, not a change of the meaning of (32).</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<h3 id="why-the-logarithmic-scale-is-geometric">1 Why the logarithmic
+scale is geometric</h3>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>&gt;</mo><mn>1</mn><mo>,</mo><mi>c</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mi>u</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha&gt;1,c&gt;0,u&gt;1</annotation></semantics></math>,
+sum
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>J</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>u</mi><msup><mi>α</mi><mi>j</mi></msup></msup><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>c</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\sum_{j=0}^{J-1}(\log(u^{\alpha^j}))^{-c}</annotation></semantics></math>.
+Contrast it with using the scales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><msup><mi>α</mi><mi>j</mi></msup></mrow><annotation encoding="application/x-tex">u\alpha^j</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>c</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;c\leq1</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> The first sum is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>u</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>c</mi></mrow></msup><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>α</mi><mrow><mi>−</mi><mi>c</mi><mi>J</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>α</mi><mrow><mi>−</mi><mi>c</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\log u)^{-c}(1-\alpha^{-cJ})/(1-\alpha^{-c})</annotation></semantics></math>,
+bounded independently of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>.
+The second is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mrow><mi>j</mi><mo>&lt;</mo><mi>J</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>u</mi><mo>+</mo><mi>j</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>α</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>c</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\sum_{j&lt;J}(\log u+j\log\alpha)^{-c}</annotation></semantics></math>.
+Its terms form a decreasing sequence. Comparison with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mi>J</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>u</mi><mo>+</mo><mi>t</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>α</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>c</mi></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\int_0^J(\log u+t\log\alpha)^{-c}\,dt</annotation></semantics></math>
+shows divergence as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">J\to\infty</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c\leq1</annotation></semantics></math>:
+logarithmically at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c=1</annotation></semantics></math>,
+and as a positive power at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c&lt;1</annotation></semantics></math>.
+The choice of scales is part of the summability argument.</p>
+<h3 id="select-the-coefficient-of-the-time-allowance">2 Select the
+coefficient of the time allowance</h3>
+<p>Suppose the intervening-leg error in (19) is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>17</mn><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">17h(\log z)</annotation></semantics></math>.
+Give an exact sufficient choice of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+for (21), and show directly why it absorbs that error at every scale.
+Compare with an allowance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">B\log\log z</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mn>17</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msqrt><mi>α</mi></msqrt><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">B=17/(\sqrt\alpha-1)</annotation></semantics></math>.
+Equation (6) gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo stretchy="false" form="prefix">[</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo><mo>≥</mo><mn>17</mn><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">B[h(\alpha\log z)-h(\log z)]\geq17h(\log z)</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">B\log\log z</annotation></semantics></math>,
+the increment is only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">B\log\alpha</annotation></semantics></math>,
+independent of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+whereas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">h(\log z)\to\infty</annotation></semantics></math>.
+No fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+of that form absorbs the stated error. This is a comparison of available
+bounds, not a proof that no better timing theorem exists.</p>
+<h3 id="the-target-margin-has-a-precise-role">3 The target margin has a
+precise role</h3>
+<p>Assume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≥</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><msup><mi>α</mi><mn>3</mn></msup></mrow></msup></mrow><annotation encoding="application/x-tex">z\geq H^{1/\alpha^3}</annotation></semantics></math>
+but
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&lt;</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">z&lt;H</annotation></semantics></math>.
+Prove the inequality used to concatenate a first leg when the next
+landing is already below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>.
+Then explain why the target-dependent term disappears from the final
+clock.</p>
+<p><strong>Solution.</strong> Taking logarithms gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>z</mi><mo>≥</mo><msup><mi>α</mi><mrow><mi>−</mi><mn>3</mn></mrow></msup><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">\log z\geq\alpha^{-3}\log H</annotation></semantics></math>.
+Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>H</mi><mi>/</mi><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>d</mi><mo>≤</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>α</mi><mrow><mi>−</mi><mn>3</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi><mi>/</mi><mi>d</mi><mo>=</mo><msub><mi mathvariant="normal">Δ</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">\log(H/z)/d\leq(1-\alpha^{-3})\log H/d=\Delta_H</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mi>/</mi><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>d</mi><mo>≤</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mi>/</mi><mi>H</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>d</mi><mo>+</mo><msub><mi mathvariant="normal">Δ</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">\log(M/z)/d\leq\log(M/H)/d+\Delta_H</annotation></semantics></math>,
+exactly the needed comparison. At the final concatenation,
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mi>/</mi><mi>H</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>d</mi></mfrac><mo>+</mo><msub><mi mathvariant="normal">Δ</mi><mi>H</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi></mrow><mi>d</mi></mfrac><mo>−</mo><mfrac><mrow><msup><mi>α</mi><mrow><mi>−</mi><mn>3</mn></mrow></msup><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>H</mi></mrow><mi>d</mi></mfrac></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi></mrow><mi>d</mi></mfrac><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\frac{\log(N/H)}d+\Delta_H
+&amp;=\frac{\log N}d-\frac{\alpha^{-3}\log H}d\\
+&amp;\leq\frac{\log N}d.
+\end{aligned}
+</annotation></semantics></math></span> The disappearance is an inequality with
+a known nonpositive term, not a replacement of the target by a
+constant.</p>
+<h3 id="keep-endpoint-counts-and-strict-thresholds">4 Keep endpoint
+counts and strict thresholds</h3>
+<p>List the odd integers in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo>,</mo><mn>9</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(3,9]</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>3</mn><mo>,</mo><mn>9</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[3,9]</annotation></semantics></math>.
+Explain the factor-two comparison when every half-open interval contains
+at least one odd integer. If a diverging lower bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">b(X)</annotation></semantics></math>
+happens to be an integer, which choice of integer target guarantees a
+strict final inequality below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">b(X)</annotation></semantics></math>?</p>
+<p><strong>Solution.</strong> The sets are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>5</mn><mo>,</mo><mn>7</mn><mo>,</mo><mn>9</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{5,7,9\}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>7</mn><mo>,</mo><mn>9</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{3,5,7,9\}</annotation></semantics></math>.
+In general the closed count is at most the half-open count plus one. If
+the latter is at least one, this is at most twice that count. The choice
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⌈</mo><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⌉</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lceil b(X)\rceil-1</annotation></semantics></math>
+is strictly below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">b(X)</annotation></semantics></math>
+both when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">b(X)</annotation></semantics></math>
+is integral and when it is not. Choosing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⌊</mo><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor b(X)\rfloor</annotation></semantics></math>
+would not guarantee strictness in the integral case.</p>
+<h2 id="the-reusable-mechanism">The reusable mechanism</h2>
+<p>The endpoint comparison is applied to a set with an explicit
+continuation property. A deterministic inclusion carries that property
+to the preceding scale, and a growing allowance pays for its local
+timing error. Summable distributional errors then permit arbitrarily
+many comparisons. Finally, disjoint counting intervals retain every
+starting integer and make the fixed-target estimate uniform in the outer
+cutoff.</p>
+<p>These are useful techniques for induced dynamics and quantitative
+probability transport beyond this example. In the Collatz application,
+the concentration scale sharpens the time allowance, while the weighted
+arithmetic and approximation estimates determine the exceptional-set
+exponent. The two improvements enter at different places and have been
+carried through the complete argument separately.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <em>Almost all orbits of the Collatz map attain almost
+bounded values</em>, Forum of Mathematics, Pi 10 (2022), e12; <a
+href="https://arxiv.org/abs/1909.03562v7">arXiv:1909.03562v7</a>,
+Sections 1.3 and 3 on summable scale iteration and Section 5 on
+valuation drift and passage times. The general transport argument is
+proved in the linked earlier lesson.</li>
+<li>Jaan Allikvere, <em>Almost all Collatz orbits attain almost bounded
+values in natural density</em>, version 2, <a
+href="https://doi.org/10.5281/zenodo.21499244">Zenodo 21499244</a>,
+Section 7, “Proof of the main theorem,” and Section 8, “A time budget
+and an explicit rate.” The timed target-set mechanism is attributed to
+this work; the smaller allowance and disjoint-interval count are proved
+above.</li>
+</ul>
+<nav aria-label="Lesson sequence"><p><a href="NT-COLLATZ-23.html">Previous: Counting trajectories and comparing entrance distributions</a><br><a href="NT-COLLATZ-25.html">Next: First entrances and quantitative changes of clock</a></p></nav></main><footer>Original mathematical exposition and illustrations: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. References retain their own authorship and terms.</footer></body></html>

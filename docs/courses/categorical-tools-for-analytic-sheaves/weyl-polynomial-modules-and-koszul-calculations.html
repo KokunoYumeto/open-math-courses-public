@@ -1,0 +1,429 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Weyl polynomial modules and their Koszul calculations</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="weyl-polynomial-modules-and-their-koszul-calculations">Weyl polynomial modules and their Koszul calculations</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>The tensor product of polynomial densities and polynomial functions can be zero even though their derived tensor product is not. The missing class occurs in the number of variables, whereas the self-Ext of the function module occurs in degree zero. We compute both using the same finite free resolution. The side of each module and the sign of differentiation determine these degrees and maps.</p>
+<p>Use the <span class="unlinked">universe conventions</span>. Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field and <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span> an integer. All modules are small in the fixed universe. Sections 1–4 work over every field; characteristic zero is imposed in Sections 5–6. Write <span class="math" data-tex="\(A=W_n(k)\)">\(A=W_n(k)\)</span> for the unital algebra with generators <span class="math" data-tex="\(x_1,\ldots,x_n,\partial_1,\ldots,\partial_n\)">\(x_1,\ldots,x_n,\partial_1,\ldots,\partial_n\)</span> and relations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+[x_i,x_j]=0,\qquad [\partial_i,\partial_j]=0,
+\qquad \partial_i x_j-x_j\partial_i=\delta_{ij}1.
+\tag{0.1}
+\]">\[
+[x_i,x_j]=0,\qquad [\partial_i,\partial_j]=0,
+\qquad \partial_i x_j-x_j\partial_i=\delta_{ij}1.
+\tag{0.1}
+\]</span>
+<p>For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, this means <span class="math" data-tex="\(A=k\)">\(A=k\)</span>. Put <span class="math" data-tex="\(E=k^n\)">\(E=k^n\)</span>, with the ordered basis <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span>. Exterior powers are alternating, including in characteristic two. We use cochain differentials of degree <span class="math" data-tex="\(+1\)">\(+1\)</span>. A chain resolution <span class="math" data-tex="\(P_p\)">\(P_p\)</span> will be viewed as the cochain complex <span class="math" data-tex="\(P^{-p}=P_p\)">\(P^{-p}=P_p\)</span>, with its same boundary.</p>
+<p>The complete signs and regularity criterion are in <a href="determinant-signs-and-subset-koszul-complexes.html">Determinant signs and subset Koszul complexes</a>, Sections 1–5. The normalized Hom differential and the single projective computations of derived Hom and tensor are in <a href="derived-hom-and-bounded-resolution-pairs.html">Derived Hom and bounded resolution pairs</a>, Sections 1–2 and 6–7. <a href="signed-bifunctors-and-sum-product-total-complexes.html">Signed bifunctors and sum and product total complexes</a>, Sections 4 and 6–8, gives their total and balanced tensor conventions. We also prove the finite-resolution exactness and the contractions needed for the present calculations directly.</p>
+<h2 id="1-two-ordered-bases-without-a-faithfulness-assumption">1. Two ordered bases, without a faithfulness assumption</h2>
+<p><strong>Proposition 1.1.</strong> Both families</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\{x^\alpha\partial^\beta:\alpha,\beta\in\mathbb N^n\},
+\qquad
+\{\partial^\beta x^\alpha:\alpha,\beta\in\mathbb N^n\}
+\tag{1.1}
+\]">\[
+\{x^\alpha\partial^\beta:\alpha,\beta\in\mathbb N^n\},
+\qquad
+\{\partial^\beta x^\alpha:\alpha,\beta\in\mathbb N^n\}
+\tag{1.1}
+\]</span>
+<p>are <span class="math" data-tex="\(k\)">\(k\)</span>-bases of <span class="math" data-tex="\(A\)">\(A\)</span>, over every field.</p>
+<p><strong>Proof.</strong> To span by the first family, commute an out-of-order adjacent pair <span class="math" data-tex="\(\partial_i x_j\)">\(\partial_i x_j\)</span> using (0.1). The swapped term has one fewer inversion between a derivative and a variable, and the scalar term has shorter word length. Induction first on length and then on this inversion count terminates the procedure. The variables commute among themselves, as do the derivatives, so each resulting word has the indicated multi-index form.</p>
+<p>For independence, let <span class="math" data-tex="\(A\)">\(A\)</span> act on <span class="math" data-tex="\(k[u_1,\ldots,u_n,z_1,\ldots,z_n]\)">\(k[u_1,\ldots,u_n,z_1,\ldots,z_n]\)</span>: <span class="math" data-tex="\(x_i\)">\(x_i\)</span> acts by multiplication by <span class="math" data-tex="\(u_i\)">\(u_i\)</span>, and <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> acts by <span class="math" data-tex="\(\partial/\partial u_i+z_i\)">\(\partial/\partial u_i+z_i\)</span>. The latter operators commute; their commutator with multiplication by <span class="math" data-tex="\(u_j\)">\(u_j\)</span> is <span class="math" data-tex="\(\delta_{ij}\)">\(\delta_{ij}\)</span>, so the defining relations hold. Since differentiation in <span class="math" data-tex="\(u_i\)">\(u_i\)</span> kills every polynomial in the <span class="math" data-tex="\(z\)">\(z\)</span>'s,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+x^\alpha\partial^\beta(1)=u^\alpha z^\beta.
+\tag{1.2}
+\]">\[
+x^\alpha\partial^\beta(1)=u^\alpha z^\beta.
+\tag{1.2}
+\]</span>
+<p>A linear relation between the ordered monomials would therefore give a relation between distinct monomials of an ordinary polynomial ring. Every coefficient is zero. This representation is used to prove independence, not assumed faithful in advance; the argument remains valid in positive characteristic.</p>
+<p>Define an anti-involution <span class="math" data-tex="\(t:A\to A\)">\(t:A\to A\)</span> by reversing products and setting <span class="math" data-tex="\(t(x_i)=x_i\)">\(t(x_i)=x_i\)</span>, <span class="math" data-tex="\(t(\partial_i)=-\partial_i\)">\(t(\partial_i)=-\partial_i\)</span>. The variable and derivative commutators remain zero. The image of the mixed relation is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+-x_j\partial_i+\partial_i x_j-\delta_{ij}1=0.
+\]">\[
+-x_j\partial_i+\partial_i x_j-\delta_{ij}1=0.
+\]</span>
+<p>Thus the map on the free algebra descends. Its square fixes every generator, hence is the identity. Applying this invertible linear map to the first basis gives <span class="math" data-tex="\((-1)^{|\beta|}\partial^\beta x^\alpha\)">\((-1)^{|\beta|}\partial^\beta x^\alpha\)</span>, so the second family is also a basis. The signs are units in every field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(A\)">\(A\)</span>, as a right module over <span class="math" data-tex="\(k[\partial_1,\ldots,\partial_n]\)">\(k[\partial_1,\ldots,\partial_n]\)</span>, is free with basis <span class="math" data-tex="\(x^\alpha\)">\(x^\alpha\)</span>. This assertion means that every operator has one unique finite expression <span class="math" data-tex="\(\sum_\alpha x^\alpha q_\alpha(\partial)\)">\(\sum_\alpha x^\alpha q_\alpha(\partial)\)</span>. It does not make that polynomial subalgebra central in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="2-functions-on-the-left-and-densities-on-the-right">2. Functions on the left and densities on the right</h2>
+<p>Let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+J_L=\sum_i A\partial_i,\qquad
+J_R=\sum_i\partial_i A,\qquad
+L=A/J_L,
+\qquad R=A/J_R.
+\tag{2.1}
+\]">\[
+J_L=\sum_i A\partial_i,\qquad
+J_R=\sum_i\partial_i A,\qquad
+L=A/J_L,
+\qquad R=A/J_R.
+\tag{2.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(J_L\)">\(J_L\)</span> is a left ideal and <span class="math" data-tex="\(L\)">\(L\)</span> is a left module; <span class="math" data-tex="\(J_R\)">\(J_R\)</span> is a right ideal and <span class="math" data-tex="\(R\)">\(R\)</span> is a right module. They are not being declared two-sided ideals. In either sum the empty case is zero.</p>
+<p>On <span class="math" data-tex="\(k[x_1,\ldots,x_n]\)">\(k[x_1,\ldots,x_n]\)</span>, multiplication by <span class="math" data-tex="\(x_i\)">\(x_i\)</span> and differentiation by <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> satisfy (0.1). The map <span class="math" data-tex="\(A\to k[x]\)">\(A\to k[x]\)</span>, <span class="math" data-tex="\(a\mapsto a(1)\)">\(a\mapsto a(1)\)</span>, is a left-module map from the left regular module to this representation. In the first basis (1.1), its kernel is exactly the span of monomials with <span class="math" data-tex="\(\beta\ne0\)">\(\beta\ne0\)</span>, which is <span class="math" data-tex="\(J_L\)">\(J_L\)</span>; its image contains every <span class="math" data-tex="\(x^\alpha\)">\(x^\alpha\)</span>. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+L\simeq k[x],\qquad
+x_i f=x_if,\qquad \partial_i f=\frac{\partial f}{\partial x_i}.
+\tag{2.2}
+\]">\[
+L\simeq k[x],\qquad
+x_i f=x_if,\qquad \partial_i f=\frac{\partial f}{\partial x_i}.
+\tag{2.2}
+\]</span>
+<p>Transport that representation through the anti-involution to obtain a right action <span class="math" data-tex="\(f\cdot a=t(a)f\)">\(f\cdot a=t(a)f\)</span>. Indeed <span class="math" data-tex="\((f\cdot a)\cdot b=t(b)t(a)f=t(ab)f=f\cdot(ab)\)">\((f\cdot a)\cdot b=t(b)t(a)f=t(ab)f=f\cdot(ab)\)</span>. We write its underlying polynomials as <span class="math" data-tex="\(\rho f\)">\(\rho f\)</span>, where <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is the class of <span class="math" data-tex="\(1\)">\(1\)</span> and fixes a generator. The second basis (1.1) proves, by applying <span class="math" data-tex="\(a\mapsto\rho\cdot a\)">\(a\mapsto\rho\cdot a\)</span>, that its kernel is <span class="math" data-tex="\(J_R\)">\(J_R\)</span>, so</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+R\simeq \rho k[x],\qquad
+(\rho f)\cdot x_i=\rho x_if,
+\qquad
+(\rho f)\cdot\partial_i=-\rho\frac{\partial f}{\partial x_i}.
+\tag{2.3}
+\]">\[
+R\simeq \rho k[x],\qquad
+(\rho f)\cdot x_i=\rho x_if,
+\qquad
+(\rho f)\cdot\partial_i=-\rho\frac{\partial f}{\partial x_i}.
+\tag{2.3}
+\]</span>
+<p>For example, the right mixed relation acts as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+((\rho f)\cdot\partial_i)\cdot x_j
+-((\rho f)\cdot x_j)\cdot\partial_i
+=\delta_{ij}\rho f.
+\tag{2.4}
+\]">\[
+((\rho f)\cdot\partial_i)\cdot x_j
+-((\rho f)\cdot x_j)\cdot\partial_i
+=\delta_{ij}\rho f.
+\tag{2.4}
+\]</span>
+<p>This also checks the minus in (2.3) directly. The term “density” names this specified right module; no integration or analytic completion is used. The polynomial representations in (2.2) and (2.3) need not be faithful representations of the whole algebra. Neither quotient is being used as an algebra quotient.</p>
+<h2 id="3-regular-right-multiplications-and-the-top-quotient">3. Regular right multiplications and the top quotient</h2>
+<p>Consider the commuting endomorphisms <span class="math" data-tex="\(r_i:A\to A\)">\(r_i:A\to A\)</span>, <span class="math" data-tex="\(a\mapsto a\partial_i\)">\(a\mapsto a\partial_i\)</span>, of the <strong>left</strong> regular module. They are left <span class="math" data-tex="\(A\)">\(A\)</span>-linear: <span class="math" data-tex="\(r_i(ba)=br_i(a)\)">\(r_i(ba)=br_i(a)\)</span>. Commutativity of the derivatives gives their commutativity and makes <span class="math" data-tex="\(r_i\)">\(r_i\)</span> preserve every earlier image sum.</p>
+<p><strong>Theorem 3.1.</strong> The list <span class="math" data-tex="\(r_1,\ldots,r_n\)">\(r_1,\ldots,r_n\)</span> is an ordered regular sequence of left-module endomorphisms. Its cochain Koszul complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+K^q=A\otimes_k\bigwedge^qE,\qquad
+d(a\otimes\omega)=\sum_i a\partial_i\otimes(e_i\wedge\omega)
+\quad(0\le q\le n)
+\tag{3.1}
+\]">\[
+K^q=A\otimes_k\bigwedge^qE,\qquad
+d(a\otimes\omega)=\sum_i a\partial_i\otimes(e_i\wedge\omega)
+\quad(0\le q\le n)
+\tag{3.1}
+\]</span>
+<p>has zero cohomology except in degree <span class="math" data-tex="\(n\)">\(n\)</span>, where</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+H^nK\simeq L\otimes_k\det E.
+\tag{3.2}
+\]">\[
+H^nK\simeq L\otimes_k\det E.
+\tag{3.2}
+\]</span>
+<p>The given order identifies the last line with <span class="math" data-tex="\(L\)">\(L\)</span> by <span class="math" data-tex="\(e_1\wedge\cdots\wedge e_n\mapsto1\)">\(e_1\wedge\cdots\wedge e_n\mapsto1\)</span>; changing the orientation changes that identification by its determinant sign.</p>
+<p><strong>Proof.</strong> The left ideal <span class="math" data-tex="\(\sum_{j&lt;i}A\partial_j\)">\(\sum_{j&lt;i}A\partial_j\)</span> has as a vector-space basis exactly the normal monomials <span class="math" data-tex="\(x^\alpha\partial^\beta\)">\(x^\alpha\partial^\beta\)</span> with some <span class="math" data-tex="\(\beta_j&gt;0\)">\(\beta_j&gt;0\)</span>, <span class="math" data-tex="\(j&lt;i\)">\(j&lt;i\)</span>. One inclusion follows by appending <span class="math" data-tex="\(\partial_j\)">\(\partial_j\)</span> to normal words. For the other, factor such a monomial as <span class="math" data-tex="\((x^\alpha\partial^{\beta-e_j})\partial_j\)">\((x^\alpha\partial^{\beta-e_j})\partial_j\)</span>. Therefore the successive quotient has the basis of normal monomials with <span class="math" data-tex="\(\beta_j=0\)">\(\beta_j=0\)</span> for every <span class="math" data-tex="\(j&lt;i\)">\(j&lt;i\)</span>. Appending <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> maps this basis injectively to distinct members of the same quotient basis. This proves the required monicity at every step, including the first. The final quotient is <span class="math" data-tex="\(A/J_L=L\)">\(A/J_L=L\)</span> with its actual left action, not just a vector space of the same dimension.</p>
+<p>Exterior anti-commutation and the commuting <span class="math" data-tex="\(r_i\)">\(r_i\)</span> make <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>. The complete one-endomorphism criterion in the Koszul prerequisite, Section 4, then proves by induction on these regular prefixes that this cochain complex has only top cohomology. In that top term, each incoming component has image <span class="math" data-tex="\(A\partial_i\otimes\det E\)">\(A\partial_i\otimes\det E\)</span>: its wedge coefficient is invertible on the corresponding determinant line. The incoming image is the sum of those submodules, so its cokernel is exactly (3.2). For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, <span class="math" data-tex="\(K\)">\(K\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero and the empty determinant is <span class="math" data-tex="\(k\)">\(k\)</span>, giving both assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-complete-free-resolution-and-why-it-computes">4. The complete free resolution and why it computes</h2>
+<p>Put <span class="math" data-tex="\(P_p=A\otimes_k\bigwedge^pE\)">\(P_p=A\otimes_k\bigwedge^pE\)</span>, for <span class="math" data-tex="\(0\le p\le n\)">\(0\le p\le n\)</span>, and zero otherwise. Its ordered boundary is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\begin{split}
+b_p(a\otimes e_{i_1}\wedge\cdots\wedge e_{i_p})
+={}&amp;\sum_{s=1}^p(-1)^{s-1}a\partial_{i_s}\otimes
+e_{i_1}\wedge\cdots\widehat{e_{i_s}}\cdots\wedge e_{i_p},\\
+&amp;i_1&lt;\cdots&lt;i_p.
+\end{split}
+\tag{4.1}
+\]">\[
+\begin{split}
+b_p(a\otimes e_{i_1}\wedge\cdots\wedge e_{i_p})
+={}&amp;\sum_{s=1}^p(-1)^{s-1}a\partial_{i_s}\otimes
+e_{i_1}\wedge\cdots\widehat{e_{i_s}}\cdots\wedge e_{i_p},\\
+&amp;i_1&lt;\cdots&lt;i_p.
+\end{split}
+\tag{4.1}
+\]</span>
+<p>The augmentation <span class="math" data-tex="\(\epsilon:P_0=A\to L\)">\(\epsilon:P_0=A\to L\)</span> is <span class="math" data-tex="\(a\mapsto a(1)\)">\(a\mapsto a(1)\)</span>. All maps are left <span class="math" data-tex="\(A\)">\(A\)</span>-linear. In the square of the boundary, removing two distinct indices in the two orders gives the same coefficient <span class="math" data-tex="\(a\partial_i\partial_j\)">\(a\partial_i\partial_j\)</span> and opposite exterior signs; removing an index twice contributes zero. Thus <span class="math" data-tex="\(b^2=0\)">\(b^2=0\)</span>, and <span class="math" data-tex="\(\epsilon b_1=0\)">\(\epsilon b_1=0\)</span> by (2.1).</p>
+<p><strong>Theorem 4.1.</strong> The augmented complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow P_n\xrightarrow b\cdots\xrightarrow bP_1
+\xrightarrow bP_0\xrightarrow\epsilon L\longrightarrow0
+\tag{4.2}
+\]">\[
+0\longrightarrow P_n\xrightarrow b\cdots\xrightarrow bP_1
+\xrightarrow bP_0\xrightarrow\epsilon L\longrightarrow0
+\tag{4.2}
+\]</span>
+<p>is exact. Each <span class="math" data-tex="\(P_p\)">\(P_p\)</span> is free of rank <span class="math" data-tex="\(\binom np\)">\(\binom np\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>. This holds over every field.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(S=k[t_1,\ldots,t_n]\)">\(S=k[t_1,\ldots,t_n]\)</span>. By the first ordered basis, the underlying vector complex in (4.2), before augmentation, is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+k[x]\otimes_k K_\bullet(t_1,\ldots,t_n;S),
+\tag{4.3}
+\]">\[
+k[x]\otimes_k K_\bullet(t_1,\ldots,t_n;S),
+\tag{4.3}
+\]</span>
+<p>where the latter chain boundary removes <span class="math" data-tex="\(e_i\)">\(e_i\)</span> and multiplies by <span class="math" data-tex="\(t_i\)">\(t_i\)</span>. This identification sends <span class="math" data-tex="\(x^\alpha\partial^\beta\otimes\omega\)">\(x^\alpha\partial^\beta\otimes\omega\)</span> to <span class="math" data-tex="\(x^\alpha\otimes t^\beta\otimes\omega\)">\(x^\alpha\otimes t^\beta\otimes\omega\)</span>. It respects (4.1) because the derivatives are appended on the right. We now verify exactness of this polynomial chain complex without assuming a Koszul theorem for a noncommutative ring.</p>
+<p>For one variable let <span class="math" data-tex="\(U_1=k[t]e\)">\(U_1=k[t]e\)</span>, <span class="math" data-tex="\(U_0=k[t]\)">\(U_0=k[t]\)</span>, with boundary <span class="math" data-tex="\(ge\mapsto tg\)">\(ge\mapsto tg\)</span>. Let <span class="math" data-tex="\(p\)">\(p\)</span> be evaluation at zero in degree zero and zero in degree one; let <span class="math" data-tex="\(j:k\to U_0\)">\(j:k\to U_0\)</span> be constants. Define <span class="math" data-tex="\(h:U_0\to U_1\)">\(h:U_0\to U_1\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+h(f)=\frac{f-f(0)}t e,
+\qquad h|_{U_1}=0.
+\tag{4.4}
+\]">\[
+h(f)=\frac{f-f(0)}t e,
+\qquad h|_{U_1}=0.
+\tag{4.4}
+\]</span>
+<p>The numerator is divisible by <span class="math" data-tex="\(t\)">\(t\)</span>, so this is a polynomial map over every field. Direct calculation gives <span class="math" data-tex="\(bh+hb=1-jp\)">\(bh+hb=1-jp\)</span> in both degrees: in degree one, <span class="math" data-tex="\(h(tg)=ge\)">\(h(tg)=ge\)</span>. Also <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> are chain maps, with <span class="math" data-tex="\(pj=1\)">\(pj=1\)</span>.</p>
+<p>Take the tensor product over <span class="math" data-tex="\(k\)">\(k\)</span> of the <span class="math" data-tex="\(n\)">\(n\)</span> one-variable complexes. Its boundary on homogeneous tensors is the sum of the factor boundaries with coefficient <span class="math" data-tex="\((-1)^{p_1+\cdots+p_{i-1}}\)">\((-1)^{p_1+\cdots+p_{i-1}}\)</span> on factor <span class="math" data-tex="\(i\)">\(i\)</span>. Identify a degree-one choice in factors <span class="math" data-tex="\(i_1&lt;\cdots&lt;i_p\)">\(i_1&lt;\cdots&lt;i_p\)</span> with the ordered wedge <span class="math" data-tex="\(e_{i_1}\wedge\cdots\wedge e_{i_p}\)">\(e_{i_1}\wedge\cdots\wedge e_{i_p}\)</span>. This differential is precisely the boundary in (4.3).</p>
+<p>Here is an explicit contraction of that tensor product. Put <span class="math" data-tex="\(q_i=j_ip_i\)">\(q_i=j_ip_i\)</span> on factor <span class="math" data-tex="\(i\)">\(i\)</span>, and use</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+H=\sum_{i=1}^n
+q_1\otimes\cdots\otimes q_{i-1}\otimes h_i\otimes1\otimes\cdots\otimes1.
+\tag{4.5}
+\]">\[
+H=\sum_{i=1}^n
+q_1\otimes\cdots\otimes q_{i-1}\otimes h_i\otimes1\otimes\cdots\otimes1.
+\tag{4.5}
+\]</span>
+<p>A tensor of graded maps acts with the usual sign: the degree-one <span class="math" data-tex="\(h_i\)">\(h_i\)</span> contributes <span class="math" data-tex="\((-1)^{p_1+\cdots+p_{i-1}}\)">\((-1)^{p_1+\cdots+p_{i-1}}\)</span> on a tensor whose preceding factor degrees are <span class="math" data-tex="\(p_1,\ldots,p_{i-1}\)">\(p_1,\ldots,p_{i-1}\)</span>. Each <span class="math" data-tex="\(q_i\)">\(q_i\)</span> has degree zero and is a chain map. In <span class="math" data-tex="\(bH+Hb\)">\(bH+Hb\)</span>, the boundary terms in factors different from <span class="math" data-tex="\(i\)">\(i\)</span> cancel by this graded sign; the remaining term is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+q_1\otimes\cdots\otimes q_{i-1}\otimes(1-q_i)\otimes1\otimes\cdots\otimes1.
+\]">\[
+q_1\otimes\cdots\otimes q_{i-1}\otimes(1-q_i)\otimes1\otimes\cdots\otimes1.
+\]</span>
+<p>Summing these terms telescopes to <span class="math" data-tex="\(1-q_1\otimes\cdots\otimes q_n\)">\(1-q_1\otimes\cdots\otimes q_n\)</span>. Thus the polynomial complex retracts onto its constants in degree zero. Tensor with <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span> and obtain homology <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span> only in degree zero. Its projection is exactly the augmentation <span class="math" data-tex="\(a\mapsto a(1)\)">\(a\mapsto a(1)\)</span>, by the ordered basis. These are vector-space contractions, not asserted to be left <span class="math" data-tex="\(A\)">\(A\)</span>-linear. Exactness as vector spaces proves exactness of the displayed left-module complex, since all its differentials and augmentation are already left-module maps. Its terms have the claimed explicit free bases. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the tensor product is <span class="math" data-tex="\(k\)">\(k\)</span>, the augmentation is the identity, and the contraction sum is empty. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>To connect this resolution with derived functors, let <span class="math" data-tex="\(P^{-p}=P_p\)">\(P^{-p}=P_p\)</span>. Its only cohomology is <span class="math" data-tex="\(L\)">\(L\)</span> in degree zero. A finite free module is projective: a map to a quotient lifts by choosing a lift of each of its finitely many basis images. It is also flat, since tensoring with it is a finite direct sum of the other module. For an acyclic complex <span class="math" data-tex="\(Z\)">\(Z\)</span>, each column of <span class="math" data-tex="\(\operatorname{Hom}_A(P,Z)\)">\(\operatorname{Hom}_A(P,Z)\)</span> is therefore acyclic; each column of <span class="math" data-tex="\(Z\otimes_AP\)">\(Z\otimes_AP\)</span> is acyclic as well. A finite column filtration proves that each total complex is acyclic: successively adjoining a column gives a short exact sequence of complexes and its cohomology sequence. There are only finitely many columns, even when <span class="math" data-tex="\(Z\)">\(Z\)</span> is unbounded.</p>
+<p>Consequently this finite resolution is both K-projective and K-flat in the corresponding inputs. The single-replacement theorems in the prerequisite apply with the actual augmentation (4.2). In particular</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.6); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+R\operatorname{Hom}_A(L,L)&amp;\simeq\operatorname{Hom}_A(P,L),\\
+R\otimes_A^{\mathbf L}L&amp;\simeq R\otimes_AP,\\
+\operatorname{Ext}_A^q(L,L)&amp;=H^q\operatorname{Hom}_A(P,L),\\
+\operatorname{Tor}_p^A(R,L)&amp;=H^{-p}(R\otimes_AP).
+\end{aligned}
+\tag{4.6}
+\]">\[
+\begin{aligned}
+R\operatorname{Hom}_A(L,L)&amp;\simeq\operatorname{Hom}_A(P,L),\\
+R\otimes_A^{\mathbf L}L&amp;\simeq R\otimes_AP,\\
+\operatorname{Ext}_A^q(L,L)&amp;=H^q\operatorname{Hom}_A(P,L),\\
+\operatorname{Tor}_p^A(R,L)&amp;=H^{-p}(R\otimes_AP).
+\end{aligned}
+\tag{4.6}
+\]</span>
+<p>The Hom differential is <span class="math" data-tex="\(d_Lf-(-1)^qf d_P\)">\(d_Lf-(-1)^qf d_P\)</span> in degree <span class="math" data-tex="\(q\)">\(q\)</span>; tensor has the usual signed total differential. These conventions fix every degree and sign in the following calculations. They also show that negative Tor indices and negative Ext degrees vanish here.</p>
+<h2 id="5-self-ext-is-the-normalized-polynomial-de-rham-complex">5. Self-Ext is the normalized polynomial de Rham complex</h2>
+<p>Assume now that <span class="math" data-tex="\(k\)">\(k\)</span> has characteristic zero. For <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>, evaluation on the free generators identifies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_A(P_q,L)\simeq
+k[x]\otimes_k\bigwedge^qE^*.
+\tag{5.1}
+\]">\[
+\operatorname{Hom}_A(P_q,L)\simeq
+k[x]\otimes_k\bigwedge^qE^*.
+\tag{5.1}
+\]</span>
+<p>Write <span class="math" data-tex="\(D_i=\partial/\partial x_i\)">\(D_i=\partial/\partial x_i\)</span>, and let <span class="math" data-tex="\(\alpha_q\)">\(\alpha_q\)</span> denote this evaluation identification. For an ordered wedge in <span class="math" data-tex="\(P_{q+1}\)">\(P_{q+1}\)</span>, evaluation of <span class="math" data-tex="\(f b\)">\(f b\)</span> gives the alternating sum of <span class="math" data-tex="\(D_{i_s}\)">\(D_{i_s}\)</span> applied to its omitted-index coefficient: left <span class="math" data-tex="\(A\)">\(A\)</span>-linearity gives <span class="math" data-tex="\(f(\partial_i\otimes\omega)=\partial_i f(1\otimes\omega)\)">\(f(\partial_i\otimes\omega)=\partial_i f(1\otimes\omega)\)</span>. In our standard cochain Hom convention <span class="math" data-tex="\(L\)">\(L\)</span> has zero differential, so</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\alpha_{q+1}d_{\mathrm{Hom}}\alpha_q^{-1}
+=(-1)^{q+1}d_{\mathrm{dR}},
+\qquad
+d_{\mathrm{dR}}(f\otimes\eta)
+=\sum_iD_i f\otimes(e_i^*\wedge\eta).
+\tag{5.2}
+\]">\[
+\alpha_{q+1}d_{\mathrm{Hom}}\alpha_q^{-1}
+=(-1)^{q+1}d_{\mathrm{dR}},
+\qquad
+d_{\mathrm{dR}}(f\otimes\eta)
+=\sum_iD_i f\otimes(e_i^*\wedge\eta).
+\tag{5.2}
+\]</span>
+<p>Define <span class="math" data-tex="\(\varepsilon_q=(-1)^{q(q+1)/2}\)">\(\varepsilon_q=(-1)^{q(q+1)/2}\)</span>. The actual chain isomorphism from the Hom complex to this de Rham complex is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+J^q=\varepsilon_q\alpha_q.
+\tag{5.3}
+\]">\[
+J^q=\varepsilon_q\alpha_q.
+\tag{5.3}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\varepsilon_{q+1}(-1)^{q+1}=\varepsilon_q\)">\(\varepsilon_{q+1}(-1)^{q+1}=\varepsilon_q\)</span>, which proves <span class="math" data-tex="\(Jd_{\mathrm{Hom}}=d_{\mathrm{dR}}J\)">\(Jd_{\mathrm{Hom}}=d_{\mathrm{dR}}J\)</span>. Each multiplier is its own inverse. Degree zero has multiplier one, retaining the ordinary Hom identification. Thus the identification is a chain isomorphism with its signs, not just a correspondence between the terms of two complexes.</p>
+<p><strong>Theorem 5.1.</strong> For every integer <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}_A^q(L,L)=
+\begin{cases}k,&amp;q=0,\\0,&amp;q\ne0.\end{cases}
+\tag{5.4}
+\]">\[
+\operatorname{Ext}_A^q(L,L)=
+\begin{cases}k,&amp;q=0,\\0,&amp;q\ne0.\end{cases}
+\tag{5.4}
+\]</span>
+<p>The map <span class="math" data-tex="\(k\to\operatorname{Ext}^0_A(L,L)\)">\(k\to\operatorname{Ext}^0_A(L,L)\)</span> sends <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to <span class="math" data-tex="\(\lambda1_L\)">\(\lambda1_L\)</span>, and <span class="math" data-tex="\(R\operatorname{Hom}_A(L,L)\simeq k\)">\(R\operatorname{Hom}_A(L,L)\simeq k\)</span> in degree zero.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(w_i\)">\(w_i\)</span> denote wedge multiplication by <span class="math" data-tex="\(e_i^*\)">\(e_i^*\)</span> and <span class="math" data-tex="\(\iota_i\)">\(\iota_i\)</span> contraction by its dual basis vector. On an ordered wedge contraction removes the matching label with coefficient <span class="math" data-tex="\((-1)^{s-1}\)">\((-1)^{s-1}\)</span>. Expanding on basis wedges gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+\iota_jw_i+w_i\iota_j=\delta_{ij}1,
+\qquad
+\sum_iw_i\iota_i=q\,1\quad\text{on }\bigwedge^qE^*.
+\tag{5.5}
+\]">\[
+\iota_jw_i+w_i\iota_j=\delta_{ij}1,
+\qquad
+\sum_iw_i\iota_i=q\,1\quad\text{on }\bigwedge^qE^*.
+\tag{5.5}
+\]</span>
+<p>The first identity includes the case in which a label is already present: insertion then gives zero in one order and removal followed by insertion supplies the surviving term. Summing the second counts each of the <span class="math" data-tex="\(q\)">\(q\)</span> present labels once.</p>
+<p>Put <span class="math" data-tex="\(h_0=\sum_i x_i\iota_i\)">\(h_0=\sum_i x_i\iota_i\)</span>, of cochain degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. The polynomial identity <span class="math" data-tex="\(D_i x_j=x_jD_i+\delta_{ij}\)">\(D_i x_j=x_jD_i+\delta_{ij}\)</span> and (5.5) yield</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+d_{\mathrm{dR}}h_0+h_0d_{\mathrm{dR}}
+=\sum_i x_iD_i+\sum_iw_i\iota_i.
+\tag{5.6}
+\]">\[
+d_{\mathrm{dR}}h_0+h_0d_{\mathrm{dR}}
+=\sum_i x_iD_i+\sum_iw_i\iota_i.
+\tag{5.6}
+\]</span>
+<p>For a polynomial homogeneous of degree <span class="math" data-tex="\(m\)">\(m\)</span> with exterior degree <span class="math" data-tex="\(q\)">\(q\)</span>, the right side is <span class="math" data-tex="\((m+q)1\)">\((m+q)1\)</span>. The differential decreases polynomial degree by one and increases exterior degree by one; <span class="math" data-tex="\(h_0\)">\(h_0\)</span> does the reverse. Both therefore preserve the weight <span class="math" data-tex="\(m+q\)">\(m+q\)</span>. Every element is a finite sum of such homogeneous components.</p>
+<p>On each positive-weight component define <span class="math" data-tex="\(h=h_0/(m+q)\)">\(h=h_0/(m+q)\)</span>; set <span class="math" data-tex="\(h=0\)">\(h=0\)</span> on weight zero. Every positive integer is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>, which is the exact use of characteristic zero. The weight-zero subspace is the constants in exterior degree zero. Its inclusion <span class="math" data-tex="\(j:k\to\Omega^\bullet\)">\(j:k\to\Omega^\bullet\)</span> and projection <span class="math" data-tex="\(p:\Omega^\bullet\to k\)">\(p:\Omega^\bullet\to k\)</span> are chain maps, and (5.6) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.7); horizontal scroll when needed" data-tex="\[
+d_{\mathrm{dR}}h+hd_{\mathrm{dR}}=1-jp,
+\qquad pj=1.
+\tag{5.7}
+\]">\[
+d_{\mathrm{dR}}h+hd_{\mathrm{dR}}=1-jp,
+\qquad pj=1.
+\tag{5.7}
+\]</span>
+<p>This proves the stated chain homotopy equivalence, hence every cohomology group. Under (5.1) in degree zero, a constant coefficient is the left-module map <span class="math" data-tex="\(a(1)\mapsto a(\lambda)=\lambda a(1)\)">\(a(1)\mapsto a(\lambda)=\lambda a(1)\)</span>; it is <span class="math" data-tex="\(\lambda1_L\)">\(\lambda1_L\)</span>. The multiplier in (5.3) is one there. Thus the scalar identification is the actual normalized Hom identification. Negative degrees and degrees above <span class="math" data-tex="\(n\)">\(n\)</span> are zero terms of the computing complex. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the complex is already <span class="math" data-tex="\(k\)">\(k\)</span>, and the empty contraction gives the same conclusions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-tensor-reverses-the-degree-of-the-surviving-class">6. Tensor reverses the degree of the surviving class</h2>
+<p>The balanced relation <span class="math" data-tex="\(r\otimes a\otimes\omega=(r\cdot a)\otimes1\otimes\omega\)">\(r\otimes a\otimes\omega=(r\cdot a)\otimes1\otimes\omega\)</span> gives inverse isomorphisms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+R\otimes_AP_p\simeq R\otimes_k\bigwedge^pE,
+\qquad
+r\otimes(a\otimes\omega)\longmapsto(r\cdot a)\otimes\omega.
+\tag{6.1}
+\]">\[
+R\otimes_AP_p\simeq R\otimes_k\bigwedge^pE,
+\qquad
+r\otimes(a\otimes\omega)\longmapsto(r\cdot a)\otimes\omega.
+\tag{6.1}
+\]</span>
+<p>Using (2.3), the boundary of this homological complex is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+B(\rho f\otimes\omega)
+=-\sum_i\rho D_if\otimes\iota_i\omega,
+\tag{6.2}
+\]">\[
+B(\rho f\otimes\omega)
+=-\sum_i\rho D_if\otimes\iota_i\omega,
+\tag{6.2}
+\]</span>
+<p>where <span class="math" data-tex="\(\iota_i\)">\(\iota_i\)</span> now removes <span class="math" data-tex="\(e_i\)">\(e_i\)</span> from <span class="math" data-tex="\(\bigwedge E\)">\(\bigwedge E\)</span>, with the same ordered removal signs. The minus is the right density action. It is not introduced by interchanging two tensor inputs.</p>
+<p><strong>Theorem 6.1.</strong> For every integer <span class="math" data-tex="\(p\)">\(p\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Tor}_p^A(R,L)=
+\begin{cases}k\rho\otimes_k\det E,&amp;p=n,\\0,&amp;p\ne n.\end{cases}
+\tag{6.3}
+\]">\[
+\operatorname{Tor}_p^A(R,L)=
+\begin{cases}k\rho\otimes_k\det E,&amp;p=n,\\0,&amp;p\ne n.\end{cases}
+\tag{6.3}
+\]</span>
+<p>The nonzero line is represented by <span class="math" data-tex="\(\rho\otimes e_1\wedge\cdots\wedge e_n\)">\(\rho\otimes e_1\wedge\cdots\wedge e_n\)</span>; the fixed generator and order identify it with <span class="math" data-tex="\(k\)">\(k\)</span>. In cohomological grading,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+R\otimes_A^{\mathbf L}L\simeq
+(k\rho\otimes_k\det E)[n].
+\tag{6.4}
+\]">\[
+R\otimes_A^{\mathbf L}L\simeq
+(k\rho\otimes_k\det E)[n].
+\tag{6.4}
+\]</span>
+<p>In particular the ordinary tensor product is zero when <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, and is <span class="math" data-tex="\(k\)">\(k\)</span> when <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(w_i\)">\(w_i\)</span> be wedge multiplication by <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, and define the homological degree-one operator <span class="math" data-tex="\(S_0=-\sum_i x_iw_i\)">\(S_0=-\sum_i x_iw_i\)</span>. The minus occurs in both <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(S_0\)">\(S_0\)</span>. The same wedge/contraction identity as (5.5) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+BS_0+S_0B=\sum_i x_iD_i+\sum_i\iota_iw_i.
+\tag{6.5}
+\]">\[
+BS_0+S_0B=\sum_i x_iD_i+\sum_i\iota_iw_i.
+\tag{6.5}
+\]</span>
+<p>Here <span class="math" data-tex="\(\sum_i\iota_iw_i=(n-p)1\)">\(\sum_i\iota_iw_i=(n-p)1\)</span> on <span class="math" data-tex="\(\bigwedge^pE\)">\(\bigwedge^pE\)</span>: a missing label contributes one and a present label contributes zero. This is also obtained by subtracting <span class="math" data-tex="\(\sum_iw_i\iota_i=p1\)">\(\sum_iw_i\iota_i=p1\)</span> from the sum of the first identity in (5.5). Therefore a component with polynomial degree <span class="math" data-tex="\(m\)">\(m\)</span> and chain degree <span class="math" data-tex="\(p\)">\(p\)</span> has weight</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.6); horizontal scroll when needed" data-tex="\[
+v=m+n-p\geq0.
+\tag{6.6}
+\]">\[
+v=m+n-p\geq0.
+\tag{6.6}
+\]</span>
+<p>Both <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(S_0\)">\(S_0\)</span> preserve this weight, since the former decreases both <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> by one and the latter increases both by one. Set <span class="math" data-tex="\(S=S_0/v\)">\(S=S_0/v\)</span> on positive weights and zero on weight zero. Weight zero consists exactly of constant densities in chain degree <span class="math" data-tex="\(n\)">\(n\)</span>. Let <span class="math" data-tex="\(j\)">\(j\)</span> include that line and let <span class="math" data-tex="\(p_{\mathrm{top}}\)">\(p_{\mathrm{top}}\)</span> project to its constant coefficient, killing all other degrees. They are chain maps: the included constants have zero derivative, and there is no boundary entering degree <span class="math" data-tex="\(n\)">\(n\)</span>. Equation (6.5) now gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.7); horizontal scroll when needed" data-tex="\[
+BS+SB=1-jp_{\mathrm{top}},\qquad p_{\mathrm{top}}j=1.
+\tag{6.7}
+\]">\[
+BS+SB=1-jp_{\mathrm{top}},\qquad p_{\mathrm{top}}j=1.
+\tag{6.7}
+\]</span>
+<p>All these maps are <span class="math" data-tex="\(k\)">\(k\)</span>-linear, which is precisely the target category of the tensor computation. This is a homotopy equivalence with the stated line, rather than merely a vanishing test in selected degrees. Chain degree <span class="math" data-tex="\(n\)">\(n\)</span> is cochain degree <span class="math" data-tex="\(-n\)">\(-n\)</span>, hence the shift <span class="math" data-tex="\([n]\)">\([n]\)</span> in (6.4). There are no terms for negative chain degrees or above <span class="math" data-tex="\(n\)">\(n\)</span>, giving every index in (6.3). The augmentation calculation in (4.6) identifies degree-zero homology with the ordinary balanced tensor product, proving the last assertion, including the empty case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 6.2 (one variable).</strong> For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, tensor is <span class="math" data-tex="\(\rho k[x]e\xrightarrow{-D}\rho k[x]\)">\(\rho k[x]e\xrightarrow{-D}\rho k[x]\)</span>. Differentiation is onto in characteristic zero, because <span class="math" data-tex="\(x^r\)">\(x^r\)</span> has antiderivative <span class="math" data-tex="\(x^{r+1}/(r+1)\)">\(x^{r+1}/(r+1)\)</span>. Its kernel is the constants. Thus the surviving density is in chain degree one. The normalized Hom computation is <span class="math" data-tex="\(k[x]\xrightarrow{D}k[x]e^*\)">\(k[x]\xrightarrow{D}k[x]e^*\)</span>, whose kernel is the constants and whose cokernel is zero. The actual degree-zero standard Hom differential before (5.3) is <span class="math" data-tex="\(-D\)">\(-D\)</span>. Keeping these three complexes distinct accounts for the same scalar answer in two different degrees.</p>
+<p>One can also see the ordinary tensor vanish directly: <span class="math" data-tex="\(R\otimes_AL\)">\(R\otimes_AL\)</span> is generated by <span class="math" data-tex="\((\rho f)\otimes1\)">\((\rho f)\otimes1\)</span>, since all variable factors in <span class="math" data-tex="\(L\)">\(L\)</span> can be moved to the right input by balancing. Every <span class="math" data-tex="\(\rho f\)">\(\rho f\)</span> has the form <span class="math" data-tex="\((\rho g)\cdot\partial_1\)">\((\rho g)\cdot\partial_1\)</span> by integration. Then <span class="math" data-tex="\((\rho f)\otimes1=(\rho g)\otimes\partial_1(1)=0\)">\((\rho f)\otimes1=(\rho g)\otimes\partial_1(1)=0\)</span>. This argument needs <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span> and characteristic zero. The derived top class measures what this ordinary quotient forgets.</p>
+<h2 id="7-four-graded-exercises-with-complete-solutions">7. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (10 points).</strong> In one variable, decide whether <span class="math" data-tex="\(J_L=A\partial\)">\(J_L=A\partial\)</span> is a two-sided ideal. Compute the left action of <span class="math" data-tex="\(\partial\)">\(\partial\)</span> on the class of <span class="math" data-tex="\(x^3\)">\(x^3\)</span>, and the right action of <span class="math" data-tex="\(\partial\)">\(\partial\)</span> on <span class="math" data-tex="\(\rho x^3\)">\(\rho x^3\)</span>. Check the right mixed relation on <span class="math" data-tex="\(\rho x^2\)">\(\rho x^2\)</span>, in any characteristic.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(J_L\)">\(J_L\)</span> were a right ideal as well, then <span class="math" data-tex="\(\partial x\in J_L\)">\(\partial x\in J_L\)</span>, since <span class="math" data-tex="\(\partial\in J_L\)">\(\partial\in J_L\)</span>. Also <span class="math" data-tex="\(x\partial\in J_L\)">\(x\partial\in J_L\)</span>, and <span class="math" data-tex="\(\partial x-x\partial=1\)">\(\partial x-x\partial=1\)</span> would put <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(J_L\)">\(J_L\)</span>. The ordered basis proves that <span class="math" data-tex="\(1\notin J_L\)">\(1\notin J_L\)</span>, so it is not two-sided. In the left quotient, <span class="math" data-tex="\(\partial x^3=x^3\partial+3x^2\)">\(\partial x^3=x^3\partial+3x^2\)</span> has class <span class="math" data-tex="\(3x^2\)">\(3x^2\)</span>. In the right quotient the action is <span class="math" data-tex="\(-3\rho x^2\)">\(-3\rho x^2\)</span>. These equations remain valid when an integer coefficient becomes zero in the field. On <span class="math" data-tex="\(\rho x^2\)">\(\rho x^2\)</span>, first differentiation and then multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-tex="\(-2\rho x^2\)">\(-2\rho x^2\)</span>; first multiplication and then differentiation gives <span class="math" data-tex="\(-3\rho x^2\)">\(-3\rho x^2\)</span>. Their difference is <span class="math" data-tex="\(\rho x^2\)">\(\rho x^2\)</span>, as required. Thus the displayed relation holds also in characteristics two and three.</p>
+<p><strong>Exercise 2 (14 points).</strong> For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> over a field of characteristic zero, write <span class="math" data-tex="\(b_2\)">\(b_2\)</span> and <span class="math" data-tex="\(b_1\)">\(b_1\)</span> of the free resolution and verify their composite. Write the two density boundaries. Find explicit boundaries for the chain-degree-one cycles <span class="math" data-tex="\(\rho e_1\)">\(\rho e_1\)</span> and <span class="math" data-tex="\(\rho(x_1e_1-x_2e_2)\)">\(\rho(x_1e_1-x_2e_2)\)</span>, and identify the top homology generator.</p>
+<p><strong>Solution.</strong> The free boundaries are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+b_2(ae_{12})=a\partial_1e_2-a\partial_2e_1,
+\qquad b_1(ae_1+be_2)=a\partial_1+b\partial_2.
+\]">\[
+b_2(ae_{12})=a\partial_1e_2-a\partial_2e_1,
+\qquad b_1(ae_1+be_2)=a\partial_1+b\partial_2.
+\]</span>
+<p>Their composite is <span class="math" data-tex="\(a\partial_1\partial_2-a\partial_2\partial_1=0\)">\(a\partial_1\partial_2-a\partial_2\partial_1=0\)</span>. Tensor gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+B_2(\rho fe_{12})=\rho(D_2f)e_1-\rho(D_1f)e_2,
+\qquad B_1(\rho ge_1+\rho he_2)=-\rho(D_1g+D_2h).
+\]">\[
+B_2(\rho fe_{12})=\rho(D_2f)e_1-\rho(D_1f)e_2,
+\qquad B_1(\rho ge_1+\rho he_2)=-\rho(D_1g+D_2h).
+\]</span>
+<p>The two asked-for preimages are <span class="math" data-tex="\(\rho x_2e_{12}\)">\(\rho x_2e_{12}\)</span> and <span class="math" data-tex="\(\rho x_1x_2e_{12}\)">\(\rho x_1x_2e_{12}\)</span>, respectively. Substitution into <span class="math" data-tex="\(B_2\)">\(B_2\)</span> gives exactly the specified cycles, including the negative coefficient on <span class="math" data-tex="\(e_2\)">\(e_2\)</span>; applying <span class="math" data-tex="\(B_1\)">\(B_1\)</span> also gives zero. In chain degree two, a cycle has <span class="math" data-tex="\(D_1f=D_2f=0\)">\(D_1f=D_2f=0\)</span>. Over characteristic zero this means <span class="math" data-tex="\(f\)">\(f\)</span> is constant, by its monomial coefficients. There is no incoming term in degree three. Thus <span class="math" data-tex="\(\rho e_{12}\)">\(\rho e_{12}\)</span> generates top homology. Every degree-one cycle is a boundary by (6.7); the exhibited preimages check this explicitly for the chosen examples. Degree-zero homology is zero, again by (6.7).</p>
+<p><strong>Exercise 3 (18 points).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> have prime characteristic <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span>, and take <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Using the same free resolution, compute every <span class="math" data-tex="\(\operatorname{Ext}_A^q(L,L)\)">\(\operatorname{Ext}_A^q(L,L)\)</span> and <span class="math" data-tex="\(\operatorname{Tor}_p^A(R,L)\)">\(\operatorname{Tor}_p^A(R,L)\)</span>. Specify polynomial representatives for the nonzero groups. Explain precisely why the characteristic-zero contraction cannot be used.</p>
+<p><strong>Solution.</strong> The basis and free-resolution proofs did not divide by any integer, so the resolution remains valid. Differentiation gives <span class="math" data-tex="\(D(x^a)=a x^{a-1}\)">\(D(x^a)=a x^{a-1}\)</span>. Its kernel has basis <span class="math" data-tex="\(x^{\ell r}\)">\(x^{\ell r}\)</span>, <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, and is <span class="math" data-tex="\(k[x^\ell]\)">\(k[x^\ell]\)</span>. Its image has basis the monomials <span class="math" data-tex="\(x^a\)">\(x^a\)</span> with <span class="math" data-tex="\(a+1\)">\(a+1\)</span> not divisible by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Therefore its cokernel has unique representatives in <span class="math" data-tex="\(x^{\ell-1}k[x^\ell]\)">\(x^{\ell-1}k[x^\ell]\)</span>. The minus on a differential has no effect on these kernel and cokernel statements.</p>
+<p>With the normalized Hom identification (5.3),</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^0_A(L,L)=k[x^\ell],\qquad
+\operatorname{Ext}^1_A(L,L)\simeq x^{\ell-1}k[x^\ell]e^*.
+\]">\[
+\operatorname{Ext}^0_A(L,L)=k[x^\ell],\qquad
+\operatorname{Ext}^1_A(L,L)\simeq x^{\ell-1}k[x^\ell]e^*.
+\]</span>
+<p>The first group acts by multiplication by its indicated polynomial; its derivative is zero, so it commutes with the left action. The second group is a cokernel with the displayed representative subspace. Tensor instead gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{Tor}_1^A(R,L)=\rho k[x^\ell]e,
+\qquad
+\operatorname{Tor}_0^A(R,L)\simeq\rho x^{\ell-1}k[x^\ell].
+\]">\[
+\operatorname{Tor}_1^A(R,L)=\rho k[x^\ell]e,
+\qquad
+\operatorname{Tor}_0^A(R,L)\simeq\rho x^{\ell-1}k[x^\ell].
+\]</span>
+<p>All other integer Ext degrees and Tor indices vanish, since both computing complexes have only degrees zero and one in their respective gradings. These identifications are also linear over the central polynomial ring <span class="math" data-tex="\(k[x^\ell]\)">\(k[x^\ell]\)</span>: the commutator <span class="math" data-tex="\([\partial,x^\ell]=\ell x^{\ell-1}\)">\([\partial,x^\ell]=\ell x^{\ell-1}\)</span> is zero. In (5.6), for instance, <span class="math" data-tex="\(x^\ell\)">\(x^\ell\)</span> has positive integer weight <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, but that scalar is zero in <span class="math" data-tex="\(k\)">\(k\)</span>. The same obstruction occurs in (6.5). A division by that weight is unavailable, and the additional classes above prove that no contraction to the characteristic-zero answer could exist.</p>
+<p><strong>Exercise 4 (24 points).</strong> Work again in characteristic zero. For <span class="math" data-tex="\(\lambda,\mu\in k^n\)">\(\lambda,\mu\in k^n\)</span>, let <span class="math" data-tex="\(L_\lambda\)">\(L_\lambda\)</span> have left actions <span class="math" data-tex="\(x_i f=x_if\)">\(x_i f=x_if\)</span>, <span class="math" data-tex="\(\partial_i f=D_if+\lambda_if\)">\(\partial_i f=D_if+\lambda_if\)</span>, and let <span class="math" data-tex="\(R_\mu=\rho k[x]\)">\(R_\mu=\rho k[x]\)</span> have right actions <span class="math" data-tex="\((\rho f)x_i=\rho x_if\)">\((\rho f)x_i=\rho x_if\)</span>, <span class="math" data-tex="\((\rho f)\partial_i=\rho(-D_if+\mu_if)\)">\((\rho f)\partial_i=\rho(-D_if+\mu_if)\)</span>. Compute every <span class="math" data-tex="\(\operatorname{Ext}_A^q(L_\lambda,L_\mu)\)">\(\operatorname{Ext}_A^q(L_\lambda,L_\mu)\)</span> and <span class="math" data-tex="\(\operatorname{Tor}_p^A(R_\mu,L_\lambda)\)">\(\operatorname{Tor}_p^A(R_\mu,L_\lambda)\)</span>, including <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. Give a contraction when <span class="math" data-tex="\(\lambda\ne\mu\)">\(\lambda\ne\mu\)</span>.</p>
+<p><strong>Solution.</strong> Adding the specified scalars to the derivative operators does not change any commutator, so these are actual modules. The automorphism fixing the <span class="math" data-tex="\(x_i\)">\(x_i\)</span> and translating the <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> by constants transports the ordered-basis and regularity proofs. In particular <span class="math" data-tex="\(L_\lambda=A/\sum_iA(\partial_i-\lambda_i)\)">\(L_\lambda=A/\sum_iA(\partial_i-\lambda_i)\)</span>, and replacing every <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> by <span class="math" data-tex="\(\partial_i-\lambda_i\)">\(\partial_i-\lambda_i\)</span> in (4.1) gives its exact free resolution. The right quotient is <span class="math" data-tex="\(R_\mu=A/\sum_i(\partial_i-\mu_i)A\)">\(R_\mu=A/\sum_i(\partial_i-\mu_i)A\)</span>, by the derivative-first basis.</p>
+<p>Put <span class="math" data-tex="\(c_i=\mu_i-\lambda_i\)">\(c_i=\mu_i-\lambda_i\)</span>. The normalized Hom differential is <span class="math" data-tex="\(\delta=\sum_i(D_i+c_i)w_i\)">\(\delta=\sum_i(D_i+c_i)w_i\)</span> on <span class="math" data-tex="\(k[x]\otimes\bigwedge E^*\)">\(k[x]\otimes\bigwedge E^*\)</span>. The density boundary is <span class="math" data-tex="\(B=\sum_i(-D_i+c_i)\iota_i\)">\(B=\sum_i(-D_i+c_i)\iota_i\)</span> on <span class="math" data-tex="\(\rho k[x]\otimes\bigwedge E\)">\(\rho k[x]\otimes\bigwedge E\)</span>. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, these are exactly Sections 5–6. Thus the Ext groups are <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero and zero elsewhere; the Tor groups are <span class="math" data-tex="\(k\rho\otimes\det E\)">\(k\rho\otimes\det E\)</span> in degree <span class="math" data-tex="\(n\)">\(n\)</span> and zero elsewhere.</p>
+<p>If <span class="math" data-tex="\(c_j\ne0\)">\(c_j\ne0\)</span>, the polynomial operator <span class="math" data-tex="\(T_j=D_j+c_j\)">\(T_j=D_j+c_j\)</span> is invertible, with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+T_j^{-1}f=c_j^{-1}\sum_{a\geq0}(-D_j/c_j)^a f.
+\]">\[
+T_j^{-1}f=c_j^{-1}\sum_{a\geq0}(-D_j/c_j)^a f.
+\]</span>
+<p>Each polynomial is killed by a sufficiently high power of <span class="math" data-tex="\(D_j\)">\(D_j\)</span>, so the sum is finite on each input. Multiplying the geometric sum in either order by <span class="math" data-tex="\(T_j\)">\(T_j\)</span> telescopes to the identity. It commutes with all <span class="math" data-tex="\(D_i+c_i\)">\(D_i+c_i\)</span>, by their commutation with <span class="math" data-tex="\(D_j\)">\(D_j\)</span> and the same finite sums. The degree-minus-one operator <span class="math" data-tex="\(h=T_j^{-1}\iota_j\)">\(h=T_j^{-1}\iota_j\)</span> consequently satisfies <span class="math" data-tex="\(\delta h+h\delta=1\)">\(\delta h+h\delta=1\)</span>, by (5.5). This contracts the entire Hom complex.</p>
+<p>For tensor use <span class="math" data-tex="\(U_j=-D_j+c_j\)">\(U_j=-D_j+c_j\)</span>, whose inverse is the same finite geometric formula with <span class="math" data-tex="\(D_j\)">\(D_j\)</span> replaced by <span class="math" data-tex="\(-D_j\)">\(-D_j\)</span>. It commutes with every <span class="math" data-tex="\(-D_i+c_i\)">\(-D_i+c_i\)</span>. The degree-one operator <span class="math" data-tex="\(s=U_j^{-1}w_j\)">\(s=U_j^{-1}w_j\)</span> has <span class="math" data-tex="\(Bs+sB=1\)">\(Bs+sB=1\)</span>. Thus every Tor group and every Ext group vanishes when <span class="math" data-tex="\(\lambda\ne\mu\)">\(\lambda\ne\mu\)</span>. No completed power series or infinite sum is required. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> there is only the empty parameter vector, the algebra and both modules are <span class="math" data-tex="\(k\)">\(k\)</span>, and both computations are <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero. This is the equal-parameter case, so the unequal case has no rank-zero instance.</p>
+<h2 id="freely-accessible-references">Freely accessible references</h2>
+<ul>
+<li>Claude Sabbah, <a href="https://perso.pages.math.cnrs.fr/users/claude.sabbah/livres/sabbah_cimpa90.pdf"><em>Introduction to algebraic theory of linear systems of differential equations</em></a>, Chapter I, Section 1.2, especially Proposition 1.2.3, for the one-variable Weyl algebra, its polynomial action and ordered operators. The independence proof in Section 1 above uses extra polynomial variables and covers every characteristic directly.</li>
+<li>Roman Bezrukavnikov, <a href="https://math.mit.edu/~bezrukav/old/2012_706_hw4.pdf">MIT 18.706, Homework 4, Spring 2012</a>, Problem 1(b), for the polynomial-module Ext calculation and its de Rham/Koszul interpretation. The full resolution, both module sides, both contractions and the exercise proofs here are supplied independently.</li>
+<li><a href="determinant-signs-and-subset-koszul-complexes.html">Determinant signs and subset Koszul complexes</a>, Sections 1–5; <a href="derived-hom-and-bounded-resolution-pairs.html">Derived Hom and bounded resolution pairs</a>, Sections 1–2 and 6–7; and <a href="signed-bifunctors-and-sum-product-total-complexes.html">Signed bifunctors and sum and product total complexes</a>, Sections 4 and 6–8, for the complete programme proofs of the regularity, differential, derived-value and module-side interfaces used above.</li>
+</ul>
+<p>These are known algebraic calculations. The exposition, proofs, organization, examples and graded exercises here are independently written; no claim of original research is made.</p>
+</main></body></html>

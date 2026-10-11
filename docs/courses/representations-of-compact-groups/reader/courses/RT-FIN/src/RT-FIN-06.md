@@ -459,7 +459,7 @@ For the stronger wording, take a nontrivial group and \(H=G\). Its Hecke algebra
 
 All induction constructions, the model isomorphism, both adjunctions, both forms of transitivity and the projection formula, orbit counting, the dihedral classification and the Hecke criterion were proved here. We use the earlier lessons' precise complete-reducibility, Schur and character results identified in the opening paragraph. Tensor-product traces, proved in Proposition 1.1 of Tensor products, duals and real representations, justify character twists. The class sizes and \(A_4\) linear characters used in the \(S_4\) example are constructed in the earlier character lessons.
 
-Elementary tensor products are understood through their linearity and balancing relations. Coset partition and counting are proved in the Fourier lesson, Lemma 6.1. No Mackey irreducibility or Clifford theorem was used to classify the dihedral representations; those more general results are the next topic.
+Elementary tensor products are understood through their linearity and balancing relations. Coset partition and counting are proved in [the Fourier lesson, Lemma 6.1](../../../../../RT-FIN/the-group-algebra-and-fourier-analysis-on-a-finite-group.html#lemma-6-1). No Mackey irreducibility or Clifford theorem was used to classify the dihedral representations; those more general results are the next topic.
 
 ## References
 

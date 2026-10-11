@@ -154,6 +154,104 @@ Uniqueness of valuations in Proposition 0E.1 makes every \(K\)-automorphism of t
 
 Finally let \(m\) be prime to the residue characteristic. The polynomial \(X^m-1\) has \(m\) distinct roots in the residue algebraic closure, all in some \(k_r\). Lemma 0D.1 lifts them uniquely inside \(K_r\). They give all \(m\) roots in the separable closure, so inertia fixes them. Frobenius sends a root to a root with residue equal to its \(q\)-th power; that power is itself a root with this residue, so uniqueness identifies them. \(\square\)
 
+## 0G. Integral generators for finite local extensions
+
+We now prove the integral-basis and monogenic assertions used in the discriminant proof. Its field scope is every finite separable extension of a complete discretely valued field with finite residue field, in particular every finite extension of a finite extension of \(\mathbf Q_p\). The only field foundations used are the earlier proofs above: Lemma 0B.1, Lemma 0D.1, Proposition 0E.1 and Proposition 0F.2. The present assertions use those written arguments.
+
+### 0G.1. Valuation and finite-lattice interfaces
+
+Let \(K\) be such a field, \(R\) its valuation ring and \(\pi\) a uniformizer. Proposition 0E.1 actually proves that the integer ring \(S\) of a finite separable \(F/K\) is a complete DVR, finite free over \(R\), and that
+\[
+ [F:K]=ef,
+\]
+where \(e\) is its ramification index and \(f\) its residue degree. Normalize the extended valuation by \(v(\pi)=1\), so its value group on \(F\) is \(e^{-1}\mathbf Z\). Uniqueness makes every embedding into a common finite normal closure an isometry. The same proof supplies separable embeddings and an integral trace lattice; none of these assertions is inferred only from its title.
+
+### 0G.2. Eisenstein roots and the full integral ring
+
+**Lemma 0G.2.** Assume the displayed polynomial is separable. If
+\[
+ P(T)=T^n+c_{n-1}T^{n-1}+\cdots+c_0,
+ \qquad v(c_j)\ge1\ (j<n),\quad v(c_0)=1,
+\]
+then a root \(t\) generates a totally ramified extension of degree \(n\), and
+\[
+ \mathcal O_{K(t)}=R[t].
+ \tag{IG1}
+\]
+
+*Proof.* A root is integral, hence has nonnegative valuation by Proposition 0E.1. Valuation zero would make its leading power the unique smallest term. Thus \(v(t)>0\). If \(v(t)<1/n\), the leading term is strictly smaller than the constant and every intermediate term: for \(0<j<n\),
+\(1+jv(t)-nv(t)=1-(n-j)v(t)>0\). If \(v(t)>1/n\), the constant is strictly smaller than every other term. Both contradict the ultrametric inequality for a sum zero. Hence \(v(t)=1/n\).
+
+Its value group forces the ramification index to be divisible by \(n\). The degree formula makes the field degree at least \(n\); the polynomial gives the opposite inequality. Thus the degree and ramification index are exactly \(n\), and its residue field is the base residue field. The polynomial is the minimal polynomial and is irreducible.
+
+Write a field element uniquely as \(x=\sum_{j=0}^{n-1}a_jt^j\), with \(a_j\in K\). The valuations of its nonzero terms are \(v(a_j)+j/n\); these are pairwise distinct modulo \(\mathbf Z\). Their minimum occurs once, so it is \(v(x)\). Indeed a term of uniquely least valuation cannot cancel a sum of strictly larger valuation. Consequently \(v(x)\ge0\) exactly when every \(v(a_j)+j/n\ge0\). Since \(v(a_j)\) is integral and \(0\le j/n<1\), this is equivalent to every \(a_j\in R\). This proves (IG1). ∎
+
+### 0G.3. The unramified field and a uniformizer basis
+
+Let the residue field of \(S\) be \(k_F\), of degree \(f\) over \(k\). Finite fields are separable and have a primitive element by Lemma 0F.1. Choose \(\bar\theta\) generating \(k_F/k\), and lift its monic irreducible polynomial to \(P_0\in R[T]\). The simple-root Hensel proof of Lemma 0D.1 gives a root \(\theta\in S\) with residue \(\bar\theta\).
+
+Proposition 0F.2 proves directly that
+\[
+ E=K(\theta),\qquad R_E=R[\theta]
+\]
+is unramified of degree \(f\). Its uniformizer is \(\pi\), and its residue field is already \(k_F\). The degree formula therefore gives \([F:E]=e\), with this extension totally ramified.
+
+Take any uniformizer \(t\) of \(S\). Its valuation is \(1/e\), so its first \(e\) powers are linearly independent over \(E\): the nonzero terms of any putative relation have distinct valuation classes modulo \(\mathbf Z\). Since \([F:E]=e\), these powers form a basis and \(F=E(t)\).
+
+Every conjugate of \(t\) over \(E\) has valuation \(1/e\), by uniqueness in a common finite normal closure. In its monic degree-\(e\) minimal polynomial, the coefficient which is an elementary symmetric product of \(j\) roots has valuation at least \(j/e\). It belongs to \(E\), whose value group is \(\mathbf Z\), so every nonleading coefficient is in \(\pi R_E\); the constant product has valuation exactly one. The polynomial is Eisenstein. Lemma 0G.2 now gives
+\[
+ S=R_E[t]=R[\theta,t].
+ \tag{IG2}
+\]
+This includes the unramified case \(e=1\).
+
+### 0G.4. A single integral generator over the original base
+
+**Theorem 0G.4.** There is \(\alpha\in S\) such that \(S=R[\alpha]\), and a power basis in \(\alpha\) is an integral basis over \(R\).
+
+*Proof.* The field is generated by \(\theta,t\). For each pair of distinct embeddings of \(F/K\), equality of their values on \(\theta+ct\) excludes at most one scalar \(c\in K\), unless their values on \(t\) coincide. In that exceptional situation their values on \(\theta\) differ, so equality excludes no scalar. The unit set \(R^\times\) is infinite: for example the elements \(1+\pi^j\), \(j\ge1\), are distinct. Choose a unit \(c\) avoiding the finitely many exclusions and set
+\[
+ \alpha=\theta+ct.
+\]
+Its distinct embedding images number \([F:K]\), so the actual separable embedding count in Lemma 0B.1 proves \(F=K(\alpha)\).
+
+Its monic minimal polynomial \(Q\) has coefficients in \(R\): its roots are integral, their elementary symmetric expressions lie in \(K\), and \(R\) is integrally closed. Put \(A=R[\alpha]\). This is free of rank \([F:K]=ef\) over \(R\), with its power basis, and complete in the \(\pi\)-adic topology.
+
+In a common finite normal closure, reduction of every conjugate of \(\alpha\) equals reduction of the corresponding conjugate of \(\theta\), since all conjugates of \(t\) have positive valuation. The \(f\) embeddings of \(E/K\) extend to exactly \(e\) embeddings of \(F/K\) each, by Lemma 0B.1. Thus the root-product calculation gives
+\[
+ \bar Q=\bar P_0^{\,e},\qquad
+ A/\pi A\simeq k[T]/(\bar P_0^{\,e}).
+ \tag{IG3}
+\]
+The equality can be checked after the injective extension into the common residue algebraic closure; its coefficients then give the same equality over \(k\).
+
+This quotient is local, with maximal ideal generated by \(\bar P_0\): Bezout makes a polynomial prime to \(\bar P_0\) a unit modulo its \(e\)-th power, whereas the ideal of \(\bar P_0\) is nilpotent and has field quotient. Units modulo \(\pi A\) lift to units in \(A\) by a convergent geometric series. Hence \(A\) is local, with maximal ideal
+\[
+ J=(\pi,P_0(\alpha)).
+\]
+By (IG3), \(P_0(\alpha)^e\in\pi A\). Expanding a product of \(e\) generators of \(J\) therefore gives
+\[
+ J^e\subset\pi A\subset J.
+ \tag{IG4}
+\]
+Their powers show that the two adic topologies are equivalent; in particular \(A\) is complete and separated for \(J\).
+
+The reduction of \(P_0'(\alpha)\) in \(A/J\simeq k_F\) is nonzero, since \(\bar P_0\) is separable. It is therefore a unit in \(A\). Apply the actual general complete-ring Hensel proof of Lemma 0D.1, with ideal \(J\), initial value \(\alpha\), and polynomial \(P_0\). This supplies \(\theta_A\in A\) with
+\[
+ P_0(\theta_A)=0,\qquad \theta_A-\alpha\in J.
+\]
+Inside \(S\), every element of \(J\) has positive valuation, and \(\alpha\) has residue \(\bar\theta\). Thus \(\theta_A\) and \(\theta\) are roots of \(P_0\) with that same simple residue root. Uniqueness in the Hensel proof on \(S\) gives \(\theta_A=\theta\). Since \(c\) is a unit of \(R\),
+\[
+ t=c^{-1}(\alpha-\theta)\in A.
+\]
+Equation (IG2) now gives \(S\subset A\), while \(A\subset S\) was its construction. Hence \(S=A\), proving the theorem. ∎
+
+### 0G.5. Exact proof use and human-source boundary
+
+The freely accessible [Milne, *Algebraic Number Theory*](https://www.jmilne.org/math/CourseNotes/ANT.pdf), Proposition 7.55 and Remark 7.56, printed pp.129–130, provides the uniformizer/valuation material for Sections 0G.2–3. The full power-basis integrality and single-generator argument are written above; the assertions in the notes are not being substituted for those proofs. The simple-root and field-degree inputs are the actual earlier Lesson01 proofs identified in Section 0G.1.
+
+These proofs supply the finite-separable, finite-residue-field Eisenstein and integral-monogenic interfaces used in later discriminant calculations. Trace duality, Hilbert's formula and the elliptic conductor equality still require their separate arguments.
+
 ## 1. What continuity remembers
 
 For a field \(K\) with a chosen separable closure, write \(G_K=\operatorname{Gal}(K^{\mathrm{sep}}/K)\). Proposition 0C.1 identifies it with the inverse limit of the finite groups \(\operatorname{Gal}(L/K)\), supplies the open normal identity-neighbourhood basis and proves compactness, Hausdorffness and the closed-subgroup correspondence. It also proves why an arbitrary subgroup has the same fixed field as its closure.
@@ -313,11 +411,11 @@ These twists have infinite image unless \(m=0\). Indeed Lemma 3.0 supplies eleme
 \]
 This is the Dirichlet character \(\chi_{-4}\): it is the multiplicative character of \((\mathbb Z/4\mathbb Z)^\times\) sending \(1\) to \(1\) and \(3\) to \(-1\), extended by zero on even integers. Multiplicativity follows by multiplying the two residue classes. Proposition 0F.2 with \(m=4\) proves that it is unramified at every odd prime. At \(2\), \(i\notin\mathbb Q_2\): an integral square is congruent to \(0\) or \(1\pmod4\), as follows by squaring its residue classes, whereas \(-1\equiv3\pmod4\). Thus \(\mathbb Q_2(i)/\mathbb Q_2\) has degree \(2\). The identity \((i-1)^2=-2i\), with \(i\) a unit, gives \(v_2(i-1)=1/2\) for the uniquely extended base-normalized valuation from Proposition 0E.1. Hence its ramification index is \(2\), its residue degree is \(1\), and its full nontrivial quadratic group is inertia by Proposition 0F.2 and the fixed-field correspondence. This proves ramification at \(2\).
 
-The more general assertion is Kronecker–Weber: finite-order continuous characters of \(G_{\mathbb Q}\) correspond to Dirichlet characters, with an unramified arithmetic Frobenius evaluated as \(\chi(p)\). An actual programme proof is *Kronecker–Weber and the maximal abelian extension of the rationals*, Theorem 20.2 and Proposition 20.5. These are written proofs, rather than future lesson titles: Theorem 20.2 uses Proposition 20.1 and the earlier ray-field theorem, and Proposition 20.5 passes to characters. That ray-field theorem and its prerequisites are not checked in this lesson; the dependency note at the end records this. The quadratic calculation above, the cyclotomic surjectivity proof and every representation theorem here use none of that classification.
+The more general assertion is Kronecker–Weber: finite-order continuous characters of \(G_{\mathbb Q}\) correspond to Dirichlet characters, with an unramified arithmetic Frobenius evaluated as \(\chi(p)\). An actual programme proof is *Kronecker–Weber and the maximal abelian extension of the rationals*, Theorem 20.2 and Proposition 20.5. These are written proofs, rather than future lesson titles: Theorem 20.2 uses Proposition 20.1 and the earlier ray-field theorem, and Proposition 20.5 passes to characters. The full ray-field prerequisite chain remains required. The quadratic calculation above, the cyclotomic surjectivity proof and every representation theorem here use none of that classification.
 
 ### 3A. An explicit arithmetic pair of lattices
 
-We now prove the elliptic example at this point. The geometric prerequisites are actual earlier programme proofs in *Abelian varieties*: Corollary 2.3 proves that a morphism taking identity to identity is a homomorphism; Theorems 6.1–6.2 prove that multiplication by an integer prime to the characteristic has degree its square on an elliptic curve and is finite étale; Proposition 6.3 and Theorem 6.8 construct the finite étale quotient by a finite translation subgroup; Theorems 6.7 and 7.1–7.2 prove reverse isogenies, finite torsion structure and torsion transition maps; Theorem 9.0 constructs the cubic group law; Lemma 9.11 proves curve Riemann–Roch and duality; Example 9.12 embeds a genus-one group curve as a pointed cubic. The precise written scopes were inspected. The following argument supplies the specific isogeny, pairing and inertia comparison, without importing them from a later LG-GAL lesson.
+We now prove the elliptic example at this point. The geometric prerequisites are actual earlier programme proofs in *Abelian varieties*: Corollary 2.3 proves that a morphism taking identity to identity is a homomorphism; Theorems 6.1–6.2 prove that multiplication by an integer prime to the characteristic has degree its square on an elliptic curve and is finite étale; Proposition 6.3 and Theorem 6.8 construct the finite étale quotient by a finite translation subgroup; Theorems 6.7 and 7.1–7.2 prove reverse isogenies, finite torsion structure and torsion transition maps; Theorem 9.0 constructs the cubic group law; Lemma 9.11 proves curve Riemann–Roch and duality; Example 9.12 embeds a genus-one group curve as a pointed cubic. The precise written scopes were inspected. This construction uses the stated earlier geometric proofs. The following argument supplies the specific isogeny, pairing and inertia comparison, without importing them from a later LG-GAL lesson.
 
 **Lemma 3.3 (the torsion pairing needed here).** For an elliptic curve \(A/\mathbb Q\), put
 \[
@@ -512,11 +610,236 @@ The distinctness hypothesis gives integral eigenspace projectors. It is precisel
 
 **Solution.** Use the two integral projectors of \(\rho(g_0)\), form the ideals of the two off-diagonal families, and scale the first eigenvector by the generator \(\pi^b\) of the upper-right ideal. The calculations in Theorem 4.1 make the upper-right ideal a unit ideal and the lower-left ideal a subset of \(\pi\mathcal O\). Hence the reduction is upper triangular with characters \(\chi_1,\chi_2\), and it does not split because its only possible \(g_0\)-stable complement is not \(G\)-stable. If all lower-left entries were zero before scaling, \(Ee_1\) would be an invariant line over \(E\). If all upper-right entries were zero, \(Ee_2\) would be one. Either contradicts irreducibility. These observations justify finiteness of both valuations used in the scaling.
 
+## 6. A higher-cohomological continuity foundation
+
+Later lessons use etale cohomology in the elliptic Euler-characteristic and curve trace calculations. For those uses, this section proves the higher-continuity comparison at its full coefficient scope, including its strict-local, filtered-coefficient and pro-etale applications. It uses the actual earlier programme sheaf and local-etale proof interfaces specified below. Thus the continuity theorem is available in this first lesson before any later course use.
+
+### 6.1. Scope and actual earlier interfaces
+
+Let \(I\) be a small filtered category. Our notation for an arrow \(a:i\to j\) includes the affine scheme map \(f_a:X_j\to X_i\). The \(X_i\) are quasi-compact and quasi-separated, and \(X=\varprojlim_i X_i\), with projection \(p_i:X\to X_i\). A coefficient system consists of abelian etale sheaves \(F_i\) and maps
+\[
+ \alpha_a:f_a^{-1}F_i\longrightarrow F_j
+ \tag{HC1}
+\]
+compatible with identities and composition. Set
+\[
+ L(F_i)=\varinjlim_i p_i^{-1}F_i.
+ \tag{HC2}
+\]
+Associativity of fibre products and inverse image is always interpreted through its canonical identifications. The compatibility in (HC1) includes those identifications; it does not assume that pullback functors are literally equal under composition.
+
+The actual inspected earlier proofs are these. *Topoi, morphisms and points*, Sections 2--3, constructs the inverse-image and slice adjunctions. *Cohomology on sites*, Proposition 1.1, proves exact sheafification, exact filtered sheaf colimits and enough injectives; Proposition 2.1 proves exact slice restriction and local vanishing of positive-degree classes; Lemma 3.1 and Theorem 3.2 prove the injective Cech contraction and the Cech-to-cohomology spectral sequence; Theorem 4.1 proves its simultaneous vanishing induction. 6.5 below supplies its own finite double-complex proof of the required vanishing, without invoking spectral-sequence convergence. *The etale site and its points*, Section 2, proves the pointed-neighbourhood, sheafification-stalk and geometric-stalk criteria. Its Theorem 4.1 proves the identification of the neighbourhood ring colimit with the earlier strict-henselization construction. *Pushforward, pullback and finite morphisms*, Section 1 and Lemma 2.1, proves exact inverse image, its direct-image adjoint and the direct-image cohomology presheaf formula before importing continuity.
+
+For geometry, *Formally smooth, unramified and etale ring maps*, Sections 4--5, proves stability and the finite square-Jacobian local presentations. *Etale morphisms and their local structure*, Theorem 3.1 and Corollary 3.2, actually writes the monic standard-etale local-form proof, including its algebraic Zariski input. We use that written local-form theorem, rather than treating the stated local form in *The etale site and its points* as a proof. Its algebraic-Zariski prerequisites remain required. All finite limit and covering arguments needed from that local form are written in 6.2.
+
+### 6.2. Finite etale data on an affine-transition limit
+
+Use the basis \(\mathcal B_T\) of etale morphisms of finite presentation \(V\to T\) for a qcqs scheme \(T\). Their sources are qcqs. The identity is in this basis; finite fibre products stay in it. Every etale object has a cover by members of this basis: take affine source charts over affine target charts and their finitely presented local etale equations. Covers of a basis object have a finite refinement by basis objects. Indeed etale maps have open images, as proved below, and the target is quasi-compact. Choosing finitely many small affine charts whose images cover produces the refinement. Thus sheaves on this basis, with these finite coverings, determine sheaves on the whole small etale site. Explicitly their sections on another object are matching families on a basis cover; refining two covers and using the sheaf equalizer identifies these families independently of the chosen cover.
+
+**Lemma 6.2.** Each \(V\in\mathcal B_X\) is the base change of some \(V_i\in\mathcal B_{X_i}\). Morphisms between such objects, equality of morphisms, and every finite covering descend to a sufficiently late stage. In particular every finite covering and its finite iterated fibre products can be used at one common stage.
+
+*Proof.* We spell out the finite-data assertions, including the covering assertion. Choose one index \(i_0\) and a finite affine open cover of \(X_{i_0}\). Pullbacks of these opens to every later stage and to the limit are affine, because all transition maps are affine. On such a chart their rings satisfy
+\[
+ A=\varinjlim_j A_j.
+ \tag{HC3}
+\]
+This constructs the limit scheme by gluing the affine limits. To check the gluing, cover each overlap of base charts by finitely many principal opens, using quasi-separatedness. Ring localization commutes with (HC3): a fraction has a stage numerator and denominator, and an equality of fractions is a finite ring equation at a later stage. Hence on these principal opens the affine limits have the identical restriction rings and canonical overlap identifications. Their cocycle identities are inherited from the stage identities; ordinary scheme gluing then constructs \(X\). A compatible family of maps into the \(X_j\) gives a map into each of these affine limits by the universal property of ring colimits, and these maps glue uniquely. This verifies the inverse-limit universal property. Its projection to \(X_{i_0}\) is affine. It is quasi-compact; its diagonal is quasi-compact because its relative diagonal over \(X_{i_0}\) is affine and the base diagonal is quasi-compact. Thus the limit is qcqs. For a general filtered category use its coslice \(i_0/I\); that category is filtered and its forgetful functor is cofinal. Indeed any other index has a common receiving index with \(i_0\), and any two such choices and their finitely many parallel composites can be equalized at a further receiving index. These same common-stage operations both prove cofinality and realize all finite equations used below.
+
+For affine algebras, a finite presentation \(A[Z_1,\ldots,Z_s]/(r_1,\ldots,r_t)\) descends by choosing representatives of its finitely many coefficients. A map between two finitely presented algebras descends by choosing the images of finitely many generators. Its finitely many defining relations hold at some common later stage. Equality of two such maps is likewise witnessed by finitely many equalities on generators. This proves the affine object, map and equality assertions.
+
+We will also need the same assertion for quasi-compact opens. In an affine scheme such an open is a finite union \(\bigcup D(g_b)\). Its defining elements descend. The inclusion
+\[
+ D(g)\subset\bigcup_bD(h_b)
+ \quad\Longleftrightarrow\quad
+ g^N=\sum_b c_bh_b\text{ for some }N,c_b
+ \tag{HC4}
+\]
+is a finite ring identity. To justify the equivalence, the inclusion says that every prime containing the \(h_b\) contains \(g\). If \(g\) were outside their radical, a maximal ideal disjoint from its powers in the quotient ring, obtained by Zorn, would give a contrary prime. Radical membership is exactly the power identity. Thus inclusions and equality of finite-union opens hold at some later stage whenever they hold on the limit. A finite affine cover gives the identical conclusion on any qcqs scheme already descended. Intersections of its affine opens are quasi-compact by quasi-separatedness, so only finitely many principal charts and identities are needed.
+
+An object \(V\to X\) of the stated basis has a finite affine cover whose members map into the pulled-back base charts. Each algebra is finitely presented. Refine further by finitely many principal standard-etale charts supplied by the inspected local-form proof. Their monic equations, their inverted elements and the equations witnessing invertibility of their derivatives are finite data. They descend to etale charts: the earlier square-zero root-lifting proof establishes that these same standard presentations are etale over each stage ring.
+
+For clarity, the gluing of these charts also descends. A pairwise overlap is a quasi-compact open in each source chart and hence a finite union of principal opens. Descend those principal elements first. On finitely many principal refinements, the overlap identifications are maps between finite-presentation algebras; descend their finitely many generator images and relations. Their inverse identities descend by the affine equality assertion. The equality of the domains on each triple overlap is an equality of quasi-compact opens, governed by (HC4), and the cocycle identities are finitely many equalities of maps on principal charts. Choose one later stage where all of these identities hold. Glue the affine charts there along these open isomorphisms. The quotient of their disjoint union by the open identifications has the stated chart topology, and the structure sheaves glue by the cocycle identity. This constructs a scheme and its map to \(X_i\); its base change is \(V\). The map is etale on the charts. It is quasi-compact and quasi-separated because the chart list and all overlaps are finite and quasi-compact, and consequently it is of finite presentation. This proves object descent.
+
+Maps between two descended objects have the same finite description. Preimages of a finite affine target cover are quasi-compact opens of the source. One useful verification of this claim is that any map from a quasi-compact scheme to a quasi-separated scheme is quasi-compact: its graph is a base change of the quasi-compact target diagonal, and projection from the product is quasi-compact. Descend these preimage opens by (HC4), choose finite principal source refinements mapping into the target charts, and descend the corresponding algebra maps. Their agreement on overlaps, and equality of two entire maps, are finite identities on these refinements. Thus map descent and eventual equality are proved without a separate scheme-limit theorem.
+
+Here is also an elementary open-image calculation. On a standard etale chart write \(B=(A[T]/(f))_g\), with \(f\) monic of degree \(d\), and absorb \(f'\) into the inverted element if necessary. Put \(B_0=A[T]/(f)\), a free \(A\)-module of rank \(d\). A prime \(\mathfrak p\) is in the image of \(\operatorname{Spec}(B_0)_g\) exactly when \(g\) is not nilpotent in \(B_0\otimes_A\kappa(\mathfrak p)\). Multiplication by \(g\) on this finite-dimensional algebra is nilpotent exactly when its characteristic polynomial is \(T^d\). For the forward implication, choose a basis adapted to the filtration by the kernels of its powers; the matrix is strictly triangular. For the reverse implication the adjugate polynomial identity \((TI-M)\operatorname{adj}(TI-M)=\det(TI-M)I\) gives the characteristic-polynomial identity at \(M\): expand in powers of \(T\), compare coefficients and multiply successively by powers of \(M\); the adjacent terms telescope. Thus \(M^d=0\). The image is consequently a finite union of principal opens given by the nonleading characteristic-polynomial coefficients. General etale images are unions of these opens; a quasi-compact source gives a quasi-compact image. Images of scheme morphisms commute setwise with field base change here: a nonempty fibre remains nonempty after extending its residue field, since a nonzero vector in its nonzero coordinate algebra stays nonzero under field scalar extension.
+
+Now descend a finite covering \(W_b\to V\) and its maps to one stage. The maps there are etale, since maps between etale objects are etale by the actual lifting proof of Proposition 7.4 of the ring-map lesson. Their images have union a quasi-compact open \(O_i\subset V_i\), and its inverse image on the limit is all of \(V\). On finitely many affine charts its closed complement is \(V(h_1,\ldots,h_m)\). Emptiness after (HC3) gives an identity \(1=\sum c_ah_a\) in the limit ring. That finite identity holds at a later stage. Taking a common stage for the finite chart list makes the complement empty, so the family is a covering there. Fibre products are formed by the same finite presentations and commute with base change. This proves every assertion. \(\square\)
+
+### 6.3. The degree-zero comparison for a general coefficient system
+
+**Lemma 6.3.** If \(V=V_i\times_{X_i}X\) is a basis object, then
+\[
+ \Gamma(V,L(F_i))
+ =\varinjlim_{(a:i\to j)}\Gamma(V_j,F_j),
+ \qquad V_j=V_i\times_{X_i}X_j.
+ \tag{HC5}
+\]
+In particular, filtered sheaf colimits on a fixed qcqs scheme commute with sections on every basis object. The assertion also holds for sheaves of sets.
+
+*Proof.* Define the right-hand side as a presheaf \(H\) on the limit basis. Lemma 6.2 makes it independent of a chosen descended presentation: any two presentations and their isomorphism agree at a common later stage. It also defines restriction maps, because the relevant morphisms descend and their equalities become equalities later.
+
+This presheaf is a sheaf. Descend a finite covering of \(V\) to a covering of \(V_j\). Every finite iterated intersection descends with it. The degree-zero sheaf equalizer at each stage is
+\[
+ F_j(V_j)\longrightarrow\prod_bF_j(W_{b,j})
+ \rightrightarrows\prod_{b,c}F_j(W_{b,j}\times_{V_j}W_{c,j}).
+ \tag{HC6}
+\]
+Filtered colimits commute with these finite products and equalizers: finitely many representatives have a common target, and finitely many equality relations hold together at a further target. Taking the colimit of (HC6) proves exactly the sheaf equalizer for \(H\). Finite coverings generate the basis topology by 6.2.
+
+Finally \(H=L(F_i)\), as an actual sheaf, by its universal property. For any sheaf \(G\) on \(X\), compatible maps \(p_i^{-1}F_i\to G\) are equivalently compatible maps \(F_i\to p_{i,*}G\). Their section maps on descended basis objects give a unique map from the right side of (HC5) to \(G(V)\). Conversely a map \(H\to G\) supplies those section maps by the stage-to-colimit arrows. Objects and arrows descend, so the two constructions are inverse. This identifies the universal sheaf colimit and proves (HC5). The same argument uses finite limits of sets without addition. \(\square\)
+
+### 6.4. Compatible resolutions with injective components
+
+Let \(\mathcal A\) be the category of systems (HC1). It is abelian with kernels and cokernels at each index: inverse image is exact, so the induced structure maps on those kernels and cokernels are compatible. Evaluation at an index is exact.
+
+**Lemma 6.4.** Every system embeds in an injective object of \(\mathcal A\) whose components are injective sheaves. It therefore has a resolution in \(\mathcal A\) with injective components at every degree.
+
+*Proof.* For an index \(i\), evaluation has a right adjoint \(R_i\). On a sheaf \(M\) at \(X_i\), its component at \(j\) is
+\[
+ (R_iM)_j=\prod_{a:j\to i}f_{a,*}M.
+ \tag{HC7}
+\]
+An empty product is the zero abelian sheaf. For \(b:j\to k\), the projection indexed by \(a\circ b:j\to i\), followed by the counit, gives the component of
+\(f_b^{-1}(R_iM)_j\to(R_iM)_k\) indexed by \(a:k\to i\). The counit identities give the composition law: both successive constructions are adjoint to projection onto the factor indexed by the same composite arrow. A map from a system \(F\) to (HC7) is uniquely determined by \(F_i\to M\); all other components are its composites with (HC1) and adjunction. This proves the asserted right adjunction, including for an index category with parallel arrows.
+
+Choose embeddings \(F_i\hookrightarrow J_i\) into injective sheaves, using the actual enough-injectives proof in the cohomology lesson. Their adjoints give
+\[
+ F\longrightarrow\prod_iR_iJ_i=:J.
+ \tag{HC8}
+\]
+At index \(i\), the identity-arrow factor of \(R_iJ_i\) is the chosen embedding, so (HC8) is componentwise injective. Since evaluation is exact, its right adjoint takes an injective to an injective object of \(\mathcal A\). Products of injectives are injective: extending a map across a monomorphism is done in each component, and the product universal property combines the extensions. Thus \(J\) is injective in \(\mathcal A\).
+
+Each component of \(J\) is also injective as a sheaf. Every factor in (HC7) is a direct image of an injective; its inverse-image left adjoint is exact, so the same extension argument proves injectivity of that factor. The product remains injective. Apply (HC8) successively to cokernels to construct the stated resolution.
+
+Here are the comparison and exact-sequence arguments in this category. A map of systems extends to a chain map between two such resolutions. In degree zero extend its composite into the target injective across the source augmentation. After degrees through \(a\) are constructed, the map \(d\phi^a\) kills the kernel of the source differential, by exactness and the preceding chain identity; it therefore defines a map on its image in degree \(a+1\). Extend that map to the whole next source term by target injectivity. Two extensions induce homotopic chain maps: their difference in degree zero kills the augmentation and factors through the image of the source differential; extend this factor to a map into the target degree-zero injective, and subtract its homotopy boundary. The new difference is zero in degree zero. Repeat in each degree. Every extension occurs in \(\mathcal A\), so the resulting maps and homotopies respect the coefficient structure.
+
+For a short exact sequence \(0\to A\to B\to C\to0\) of systems, choose embeddings \(A\to J_A\), \(C\to J_C\) of the kind just constructed. Extend \(A\to J_A\) across \(B\), and combine that extension with \(B\to C\to J_C\). This embeds \(B\) into \(J_A\oplus J_C\): an element of its kernel first maps to zero in \(C\), hence lies in \(A\), where the first component is injective. The resulting diagram has split exact injective middle row \(0\to J_A\to J_A\oplus J_C\to J_C\to0\). Its three cokernels form another short exact sequence, by the kernel/cokernel calculation in that diagram. Repeat on the cokernels. This gives degreewise split exact compatible injective resolutions and hence the connecting maps by lifted cocycle boundaries. \(\square\)
+
+### 6.5. Why these limit sheaves are acyclic
+
+**Lemma 6.5.** Suppose every component \(J_i\) of a coefficient system is injective. Then \(E=L(J_i)\) is acyclic for sections on every \(V\in\mathcal B_X\):
+\[
+ H^n(V,E)=0\qquad(n>0).
+ \tag{HC9}
+\]
+
+*Proof.* Let \(\mathcal U=\{W_b\to V\}\) be a finite basis covering. Descend the objects, arrows and covering to one stage by 6.2. Lemma 6.3 identifies its Cech complex with
+\[
+ \check C^\bullet(\mathcal U,E)
+ =\varinjlim_j\check C^\bullet(\mathcal U_j,J_j).
+ \tag{HC10}
+\]
+Each degree has finitely many tuples of indices, so its products commute with the filtered colimit. The complex at every stage has zero positive cohomology. This is the actual injective Cech proof: the augmented chain complex of free abelian sheaves on the covering nerve is locally contracted by inserting one chosen covering lift as its first entry; hence it is exact. Applying Hom into \(J_j\) gives the exact augmented Cech complex. Filtered colimits of abelian groups preserve exactness, so (HC10) has zero positive Cech cohomology.
+
+Here is the full step from Cech vanishing to derived vanishing. Induct simultaneously on \(n>0\) over all basis objects. Assume (HC9) in degrees strictly between zero and \(n\). A class \(\xi\in H^n(V,E)\) dies on a covering, by the local vanishing proof: represent it by a closed section in degree \(n\) of an injective resolution, and lift that section locally through the previous differential, using exactness as sheaves. Refine this covering by a finite basis covering.
+
+We give the finite double-complex argument explicitly, so this step requires no additional spectral-sequence convergence theorem. Let \(E\to K^\bullet\) be an injective resolution on \(X\), and put \(D^{a,b}=\check C^a(\mathcal U,K^b)\). The horizontal and vertical differentials commute, and on its first-quadrant total complex use
+\[
+ d=d_h+(-1)^a d_v\quad\hbox{on }D^{a,b}.
+ \tag{HC11}
+\]
+The augmented horizontal rows \(K^b(V)\to D^{0,b}\to D^{1,b}\to\cdots\) are exact by the injective covering contraction above. Their augmentation is injective on cohomology. Here is the needed verification: if an augmented degree-\(n\) cocycle is \(dB\), remove the largest positive Cech-degree component \(B^{a,b}\). Since \(dB\) has only Cech degree zero, \(d_hB^{a,b}=0\); horizontal exactness writes it as \(d_hC^{a-1,b}\). Subtract \(dC\) from \(B\), reducing that largest degree. There are finitely many components, so this ends with \(B^{0,n-1}\) horizontally closed. It is the augmentation of a section of \(K^{n-1}(V)\); hence the original class is already a boundary in \(K^\bullet(V)\).
+
+Represent \(\xi\) by a closed section \(z\in K^n(V)\). Its restrictions are boundaries, so its augmentation \(z_0\in D^{0,n}\) is \(d_vb_0\) for some \(b_0\in D^{0,n-1}\). Successively for \(1\leq a\leq n-1\), choose \(b_a\in D^{a,n-1-a}\) such that
+\(d_vb_a=(-1)^{a+1}d_hb_{a-1}\).
+The right-hand side is vertically closed: for \(a=1\) use \(d_hz_0=0\), and subsequently use \(d_h^2=0\). Its vertical degree is \(n-a\), strictly between zero and \(n\). The induction hypothesis on all iterated intersections makes it a vertical boundary, so the choices exist. Products here are finite, and slice restriction of \(K^\bullet\) is an injective resolution by the inspected slice proof.
+
+The only remaining component of \(d(\sum b_a)\) besides \(z_0\) is \(d_hb_{n-1}\in D^{n,0}\). It is vertically closed, hence is a Cech cochain of \(E\), and it is horizontally closed. Positive Cech vanishing in (HC10) writes it as \(d_hw\) for \(w\in\check C^{n-1}(\mathcal U,E)\). Replace \(b_{n-1}\) by \(b_{n-1}-w\); its vertical differential is unchanged, and now \(d(\sum b_a)=z_0\). The injectivity of the augmentation just proved gives \(\xi=0\). For \(n=1\) this argument uses only \(b_0\) and \(w\), with no intermediate choices. This proves the simultaneous induction in every degree. \(\square\)
+
+### 6.6. Higher continuity at its full coefficient scope
+
+**Theorem 6.6.** With the hypotheses of 6.1, the canonical map is an isomorphism for every \(n\geq0\):
+\[
+ \varinjlim_i H^n(X_i,F_i)
+ \xrightarrow{\sim} H^n(X,L(F_i)).
+ \tag{HC12}
+\]
+The comparison is natural in morphisms of systems, commutes with connecting homomorphisms and with restriction to any descended basis object. No torsion, finite generation, constructibility or cartesian-coefficient hypothesis is required.
+
+*Proof.* Resolve the system in \(\mathcal A\) as \(F\to J^\bullet\) by 6.4. At every index this is an injective resolution. The functor \(L\) is exact: all inverse images are exact and filtered colimits of abelian sheaves are exact by the inspected sheafification proof. Hence \(L(F)\to L(J^\bullet)\) is a resolution. Each term is sections-acyclic by 6.5, including on the final basis object \(X\).
+
+An acyclic resolution computes derived sections for the following explicit reason. If \(F\to E^\bullet\) is such a resolution, put \(Z^0=F\) and \(Z^{a+1}=\operatorname{coker}(Z^a\hookrightarrow E^a)\). In
+\(0\to Z^a\to E^a\to Z^{a+1}\to0\), acyclicity gives \(H^b(Z^{a+1})=H^{b+1}(Z^a)\) for \(b>0\). The group of degree-\(n\) cocycles in \(\Gamma(E^\bullet)\) is \(\Gamma(Z^n)\); its quotient by the previous boundaries is \(H^1(Z^{n-1})=H^n(F)\). Degree zero is \(\Gamma(F)\) by left exactness. Thus the resolution above really computes the target of (HC12).
+
+By 6.3 its section complex is
+\[
+ \Gamma(X,L(J^\bullet))
+ =\varinjlim_i\Gamma(X_i,J_i^\bullet).
+ \tag{HC13}
+\]
+Filtered colimits of abelian groups commute with cohomology of complexes. Elementwise, a representative whose differential becomes zero is a cycle at a later stage, and a cycle that becomes a boundary has a boundary witness at a later stage. These two finite-equation tests give respectively surjectivity and injectivity of that comparison. Taking degree-\(n\) cohomology in (HC13) proves (HC12).
+
+We check that this is the canonical higher comparison, not merely an abstract isomorphism. Choose an injective resolution \(L(F)\to K^\bullet\) on \(X\). The extension induction in 6.4 applies to any exact source resolution and injective target resolution; it constructs a chain map \(L(J^\bullet)\to K^\bullet\) extending the identity of \(L(F)\), uniquely up to homotopy. Its section map gives the acyclic-resolution identification above. Compose it with \(p_i^{-1}J_i^\bullet\to L(J^\bullet)\). This is a map from the exact pullback of the injective resolution of \(F_i\) into \(K^\bullet\), extending the canonical coefficient map \(p_i^{-1}F_i\to L(F)\). Such a map is exactly the injective-resolution construction of pullback on cohomology followed by the coefficient map; the same comparison induction proves its independence of choices. Thus taking its cohomology gives the stage-to-limit canonical map in (HC12).
+
+Comparison maps and homotopies in 6.4 prove naturality in coefficient-system morphisms. Its split exact resolutions prove compatibility with connecting homomorphisms: inverse image, \(L\), sections and the section-colimit comparison preserve the degreewise split rows, and their lifted cocycle boundaries agree. Replacing \(X_i\) by a descended \(V_i\) and all its base changes repeats the identical proof and gives restriction compatibility. The same canonical-map description proves functoriality under compatible maps of inverse systems of schemes and coefficients: composing pullbacks is represented by composing these chain maps, and any two extensions of the same coefficient map are homotopic. No uniform bound on cohomological degrees is used; in 6.5 each fixed total degree has finitely many components. \(\square\)
+
+The freely accessible primary targets are [Stacks, Theorem 59.51.3](https://stacks.math.columbia.edu/tag/09YQ), its [compatible-injective construction](https://stacks.math.columbia.edu/tag/0EXZ), and its [site-level continuity proof](https://stacks.math.columbia.edu/tag/09YP). They were read as materials. 6.2--6.6 supply the actual finite-data, resolution and acyclicity arguments rather than using these citations as proofs.
+
+### 6.7. Filtered sheaves and higher direct images
+
+**Corollary 6.7.** On every qcqs scheme \(T\), for every filtered system of abelian etale sheaves \(F_i\),
+\[
+ \varinjlim_iH^n(T,F_i)
+ =H^n(T,\varinjlim_iF_i)
+ \quad(n\geq0).
+ \tag{HC14}
+\]
+If \(f:S\to T\) is qcqs, with arbitrary target \(T\), then
+\[
+ \varinjlim_iR^nf_*F_i
+ =R^nf_*(\varinjlim_iF_i).
+ \tag{HC15}
+\]
+
+*Proof.* For (HC14), set every scheme in 6.6 equal to \(T\) and every transition map equal to its identity. This also proves the assertion for any qcqs etale object, so in particular it supplies filtered coefficient continuity on all the intersections used in the closed-support calculation.
+
+For (HC15), work on the affine etale basis of the target. Its inverse image under a qcqs \(f\) is a qcqs scheme. The direct-image presheaf proof in the earlier Lemma 2.1 computes the degree-\(n\) higher-image sheaf by sheafifying \(V\mapsto H^n(S\times_TV,F_i)\). Equation (HC14) compares the filtered colimit of these presheaves with the cohomology presheaf of the colimit sheaf. Sheafification is a left adjoint and commutes with colimits. Sheafifying that comparison proves (HC15). \(\square\)
+
+### 6.8. Strict localizations and pro-etale changes of base
+
+**Corollary 6.8.** Let \(f:S\to T\) be qcqs and let \(\bar t\) be a geometric point. Let \(R\) be the ring colimit of its affine pointed etale neighbourhoods over a fixed affine open of \(T\). Then, for every abelian sheaf \(F\) and every \(n\geq0\),
+\[
+ (R^nf_*F)_{\bar t}
+ =H^n(S\times_T\operatorname{Spec}R,F|_{S\times_T\operatorname{Spec}R}).
+ \tag{HC16}
+\]
+If \(T'=\varprojlim_\lambda T_\lambda\to T\) is a limit of qcqs etale \(T\)-schemes with affine transitions, the canonical comparison for its base-changed \(f'\) is an isomorphism:
+\[
+ p^{-1}R^nf_*F\xrightarrow{\sim}R^nf'_*p_S^{-1}F.
+ \tag{HC17}
+\]
+
+*Proof.* The neighbourhood category is cofiltered by the actual geometric-neighbourhood proof: fibre products give common refinements, and the open diagonal of an etale morphism equalizes arrows near the chosen lift. Its affine subcategory suffices. Maps between affine neighbourhoods are affine. Each \(S\times_TV\) is qcqs, and their inverse limit is the scheme in (HC16). The direct-image stalk formula (2.2) is proved from slice restriction and injective resolutions before continuity is used; its left side is the colimit of their cohomology groups. Apply 6.6 to that actual cofiltered system, with the pulled-back coefficients. This proves (HC16) without replacing a filtered category by a poset. Theorem 4.1 of *The etale site and its points*, with its specified separable residue-field closure, identifies \(R\) with the strict henselization of \(\mathcal O_{T,t}\).
+
+For (HC17), etale restriction at a finite stage is slice localization: the two direct-image presheaves are identical on the slice, and slice restriction is exact and preserves injectives. Hence its canonical comparison is an isomorphism at every etale stage.
+
+Here is the passage to the limit as an explicit stalk computation. A pointed finite-presentation etale neighbourhood \(V'\) of a geometric \(\bar t'\) on \(T'\) descends to some \(V_\lambda\to T_\lambda\), by 6.2. For its later base changes \(V_\mu\), 6.6 gives
+\[
+ H^n(S\times_TV',F|_{S\times_TV'})
+ =\varinjlim_{\mu\geq\lambda}
+ H^n(S\times_TV_\mu,F|_{S\times_TV_\mu}).
+ \tag{HC18}
+\]
+Here an inequality denotes the corresponding coslice if the index is a filtered category. To verify the neighbourhood colimit carefully, consider the category of pairs \((\lambda,V_\lambda)\), with \(V_\lambda\to T_\lambda\) a basis object and a lift of \(\bar t'\) to it. Refinements are maps from later-stage basis objects into the base changes of earlier ones, preserving the chosen lifts. This category is cofiltered: choose a common receiving stage, form fibre products for common refinements, and equalize parallel arrows by the open etale diagonal and an affine neighbourhood of the chosen point. Parallel stage arrows can first be equalized by filteredness.
+
+Base change of these pairs to \(T'\) supplies all pointed basis neighbourhoods there, by 6.2. Their arrows and equalities are supplied after refinement by the same descent lemma. Consequently their cohomology colimit is the right-side stalk in (HC17), by formula (2.2). Equation (HC18) says that each class on such a limit neighbourhood is represented at a later-stage pair, and each equality of two stage classes is realized after a later-stage refinement. Thus replacing these limit-neighbourhood groups by the finite-stage groups in (HC18) changes neither classes nor their equality relations in that stalk colimit.
+
+The same pairs suffice for the neighbourhood colimit at \(\bar t=p\bar t'\) on \(T\). Indeed any pointed neighbourhood \(W\to T\) is refined by an affine neighbourhood of the paired lift in \(W\times_TT_\lambda\); over qcqs \(T_\lambda\) that affine etale neighbourhood is a finite-presentation basis object. Two arrows from a pair to \(W\) are equalized near the lift by the open diagonal of \(W/T\); take an affine neighbourhood in that equalizer. Common refinements use fibre products at a common stage. These statements give the actual representatives and equality relations of the pointed-neighbourhood colimit; they do not assume a cofinal poset. Formula (2.2) therefore identifies the finite-stage colimit with \((R^nf_*F)_{\bar t}\). The inverse-image stalk formula identifies this with the stalk of the left side of (HC17). All the identifications use canonical restrictions and the finite-stage slice comparison, so their composite is the stalk of its canonical base-change map. Every stalk comparison is an isomorphism. Geometric stalks detect isomorphisms, proving (HC17). This includes the generic-point pro-etale restriction used in the surface coordinate argument. \(\square\)
+
+The base-ring version follows directly too: if \(B=\varinjlim B_i\), \(S\to\operatorname{Spec}A\) is qcqs and the coefficients are pulled from \(S\), apply 6.6 to \(S\times_A\operatorname{Spec}B_i\). These are qcqs with affine transitions, and their limit coefficients are the pullback sheaf by the inverse-image universal property. This is the full comparison formerly imported as (2.3), with its filtered-coefficient special case and the natural maps required in the curve argument.
+
+### 6.9. Proof and source boundary
+
+The former higher-continuity premise is now proved in 6.6, including arbitrary abelian and noncartesian coefficient systems; 6.7 and 6.8 derive its exact applications. The proof uses the actually written elementary sheaf/cohomology interfaces of 6.1 and the local-standard etale theorem inspected there. It does not infer higher cohomology from a degree-zero sections argument: 6.4--6.6 provide the compatible resolutions and the separate acyclicity argument that make that step valid.
+
+The proof of 6.5 is a finite double-complex calculation, and 6.4 and 6.6 write the required comparison, homotopy, exact-sequence and acyclic-resolution arguments. Ordinary scheme gluing and the finite-presentation local etale theorem remain the named earlier programme interfaces. In particular the inspected local-standard proof invokes its written algebraic Zariski theorem, flatness, finite-fibre algebra, the primitive-element theorem and Nakayama. These earlier results remain prerequisites. The earlier sheafification, enough-injectives, geometric-stalk and strict-henselization results remain hypotheses; (HC16) may instead be read with the neighbourhood ring colimit \(R\), without a strict-henselization identification. Those named foundation premises are distinct from the higher-cohomology comparison proved here.
+
 ## Proof register and unresolved arithmetic dependencies
 
-The representation core has proofs in this lesson. Lemmas 0A.1–0A.2 supply DVR freeness, commensurability, composition series and additivity. Lemmas 0B.1–0B.2 and Proposition 0C.1 supply the Galois facts actually used. Lemmas 0D.1–0D.2 and Proposition 0E.1 establish lifting, finite coefficient fields and unique complete valuations. Lemma 0F.1 and Proposition 0F.2 construct unramified fields and Frobenius. Lemma 3.0 proves cyclotomic surjectivity. Theorems 1.2, 2.1, 2.2, 2.4, Proposition 3.1 and Theorem 4.1 therefore have their dependencies available before use. All four exercise solutions use these proofs.
+The representation core has proofs in this lesson. Lemmas 0A.1–0A.2 supply DVR freeness, commensurability, composition series and additivity. Lemmas 0B.1–0B.2 and Proposition 0C.1 supply the Galois facts actually used. Lemmas 0D.1–0D.2 and Proposition 0E.1 establish lifting, finite coefficient fields and unique complete valuations. Lemma 0F.1 and Proposition 0F.2 construct unramified fields and Frobenius. Lemma 3.0 proves cyclotomic surjectivity. Theorems 1.2, 2.1, 2.2, 2.4, Proposition 3.1 and Theorem 4.1 therefore have their dependencies available before use. All four exercise solutions use these proofs. Section 6 supplies the full higher-cohomological continuity foundation for later lessons. Its stated earlier sheaf, local-etale and strict-henselization prerequisites remain required, as recorded in Section 6.9.
 
-Lemma 3.3 and Example 3.4 supply the torsion pairing, explicit degree-five isogeny, rational Tate-module identification and full residual inertia comparison before any use. The earlier geometric proofs used in that construction are identified at the start of §3A. The written Kronecker–Weber proof, Theorem 20.2 and Proposition 20.5 of the named class-field lesson, uses the earlier ray-field theorem; that theorem and its prerequisites are not checked in this lesson. Citations identify reading materials and actual providers; their presence alone does not close a proof obligation.
+Lemma 3.3 and Example 3.4 supply the torsion pairing, explicit degree-five isogeny, rational Tate-module identification and full residual inertia comparison before any use. The earlier geometric proofs used in that construction are identified at the start of §3A and were read in their current programme edition. The stated earlier geometric prerequisites remain required. The written Kronecker–Weber provider, Theorem 20.2 and Proposition 20.5 of the named class-field lesson, uses the earlier ray-field theorem and its prerequisites. The elliptic construction and class-field classification depend on those earlier results. Citations identify reading materials and actual providers; their presence alone does not close a proof obligation.
 
 ## References
 
@@ -532,4 +855,6 @@ Lemma 3.3 and Example 3.4 supply the torsion pairing, explicit degree-five isoge
 - [Milne, AV] J. S. Milne, [*Abelian varieties*, free author notes](https://www.jmilne.org/math/CourseNotes/AV.pdf), I §13, pp.57–58, for the divisor construction of the torsion pairing. Lemma 3.3 proves its required properties here.
 - [Sutherland, Lecture 5] Andrew V. Sutherland, [*Isogeny kernels and division polynomials*, freely available MIT lecture notes](https://math.mit.edu/classes/18.783/2023/LectureNotes5.pdf), 26 September 2023, §5.4, for elementary group-law computations. The specific map and fifth-torsion identities in Example 3.4 are computed directly.
 
-These materials were read directly in their free primary editions. No paid book is cited or used as a mathematical source in this lesson. The source-read record includes retrieval dates, exact locators, hashes and the unresolved programme dependencies.
+- [Stacks, continuity] *The Stacks project*, [Theorem 59.51.3](https://stacks.math.columbia.edu/tag/09YQ), [the compatible-injective construction](https://stacks.math.columbia.edu/tag/0EXZ), and [the site-level continuity proof](https://stacks.math.columbia.edu/tag/09YP). Sections 6.1–6.8 write the finite-data, resolution, acyclicity and canonical-comparison proofs; these free human materials identify the targets and do not replace those proofs.
+
+These materials were read directly in their free primary editions. The proof register above identifies the earlier programme dependencies whose verification remains required.

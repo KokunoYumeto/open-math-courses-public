@@ -1,6 +1,6 @@
 # Decomposing an action over its fixed centre
 
-*Self-checked by the writing AI. Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
+*Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
 
 A group can move the centre of a von Neumann algebra even when it leaves some central observables fixed. Those fixed observables provide a base over which the action can be separated into components. We will prove that each component has no further fixed central observable except scalars. The main difficulty is to obtain a genuine continuous action on each component: separate choices of an operator field for each group element do not supply that conclusion.
 

@@ -1,0 +1,409 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Relative replacements and finite resolution bounds</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="relative-replacements-and-finite-resolution-bounds">Relative replacements and finite resolution bounds</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>A useful resolution class need not consist of injective objects. We construct replacements in a full additive class, first for bounded-below complexes and then, under a uniform finite condition, for arbitrary complexes. Every infinite construction becomes constant in each degree. We also compare the derived category of a thick abelian subcategory with the complexes whose cohomology belongs to that subcategory.</p>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be an abelian category, and let <span class="math" data-tex="\(\mathcal J\subset\mathcal A\)">\(\mathcal J\subset\mathcal A\)</span> be a full additive subcategory. Finite biproducts in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> are taken with their ambient biproduct structure. When a chosen universal object is only isomorphic to an object of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, transport its maps through that isomorphism. Work in a fixed ambient universe containing the category and the choices used in each construction.</p>
+<p>We use cochain complexes. Put <span class="math" data-tex="\(Z^nX=\ker d_X^n\)">\(Z^nX=\ker d_X^n\)</span>, <span class="math" data-tex="\(B^nX=\operatorname{im}d_X^{n-1}\)">\(B^nX=\operatorname{im}d_X^{n-1}\)</span>, and <span class="math" data-tex="\(H^nX=Z^nX/B^nX\)">\(H^nX=Z^nX/B^nX\)</span>. For a chain map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, our cone is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+C(f)^n=Y^n\oplus X^{n+1},\qquad
+d_{C(f)}^n(y,x)=(d_Y^ny+f^{n+1}x,-d_X^{n+1}x).
+\tag{0.1}
+\]">\[
+C(f)^n=Y^n\oplus X^{n+1},\qquad
+d_{C(f)}^n(y,x)=(d_Y^ny+f^{n+1}x,-d_X^{n+1}x).
+\tag{0.1}
+\]</span>
+<p><a href="cohomological-bounds-denominators-and-truncation-adjunctions.html">Cohomological bounds, denominators and truncation adjunctions</a>, Sections 1–3, proves the derived localizations, their fraction equality tests, the full embeddings of all three bounded variants, and their representatives with prescribed cohomological bounds. <a href="derived-morphisms-through-quasi-isomorphism-roofs.html">Derived morphisms through quasi-isomorphism roofs</a>, Section 5, proves the K-injective Hom test. The kernel, cokernel and coimage calculations below use the abelian axiom proved in <a href="kernels-cokernels-and-the-abelian-comparison.html">Kernels, cokernels and the abelian comparison</a>, Sections 1–4. No enough-injectives assumption is imposed until Section 4.</p>
+<h2 id="1-one-pushout-stage-and-its-exact-cohomology-maps">1. One pushout stage and its exact cohomology maps</h2>
+<p>We will use two elementary pushout facts. A pushout of a monomorphism is monic, and a pushout identifies the cokernels of its parallel arrows. Here is a direct verification with the maps retained.</p>
+<p>For a monomorphism <span class="math" data-tex="\(i:D\hookrightarrow E\)">\(i:D\hookrightarrow E\)</span> and any <span class="math" data-tex="\(v:D\to Q\)">\(v:D\to Q\)</span>, form</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+P=\operatorname{coker}\bigl((v,-i):D\to Q\oplus E\bigr).
+\tag{1.1}
+\]">\[
+P=\operatorname{coker}\bigl((v,-i):D\to Q\oplus E\bigr).
+\tag{1.1}
+\]</span>
+<p>The arrow <span class="math" data-tex="\((v,-i)\)">\((v,-i)\)</span> is monic because its second component is monic. The cokernel map <span class="math" data-tex="\(Q\oplus E\to P\)">\(Q\oplus E\to P\)</span> therefore has kernel exactly this copy of <span class="math" data-tex="\(D\)">\(D\)</span>. If <span class="math" data-tex="\((t,0):T\to Q\oplus E\)">\((t,0):T\to Q\oplus E\)</span> maps to zero, it factors uniquely through <span class="math" data-tex="\((v,-i)\)">\((v,-i)\)</span>; the second component says <span class="math" data-tex="\(i\)">\(i\)</span> kills that factor, so the factor and then <span class="math" data-tex="\(t\)">\(t\)</span> are zero. Thus <span class="math" data-tex="\(Q\to P\)">\(Q\to P\)</span> is monic. A map from <span class="math" data-tex="\(P\)">\(P\)</span> killing <span class="math" data-tex="\(Q\)">\(Q\)</span> is precisely a map from <span class="math" data-tex="\(E\)">\(E\)</span> killing <span class="math" data-tex="\(i\)">\(i\)</span>, by the cokernel universal property. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow Q\longrightarrow P\longrightarrow E/i(D)\longrightarrow0
+\tag{1.2}
+\]">\[
+0\longrightarrow Q\longrightarrow P\longrightarrow E/i(D)\longrightarrow0
+\tag{1.2}
+\]</span>
+<p>is exact, with the indicated maps. This proves both facts in the case we need, without treating arbitrary abelian objects as sets of elements. They agree with the free references <a href="https://stacks.math.columbia.edu/tag/08N4">Stacks, Tag 08N4</a> and <a href="https://stacks.math.columbia.edu/tag/08N3">Tag 08N3</a>.</p>
+<p>Suppose <span class="math" data-tex="\(X^j=0\)">\(X^j=0\)</span> for <span class="math" data-tex="\(j&lt;m\)">\(j&lt;m\)</span>. At stage <span class="math" data-tex="\(p\geq m-1\)">\(p\geq m-1\)</span>, suppose a complex <span class="math" data-tex="\(Y\)">\(Y\)</span> is zero above <span class="math" data-tex="\(p\)">\(p\)</span>, has its nonzero terms in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, and a chain map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> induces isomorphisms in degrees below <span class="math" data-tex="\(p\)">\(p\)</span> and a monomorphism in degree <span class="math" data-tex="\(p\)">\(p\)</span>. Set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+D=\operatorname{coker}d_X^{p-1},\quad Q=\operatorname{coker}d_Y^{p-1},
+\quad E=X^{p+1},\quad Z=Z^{p+1}X,\\
+\bar f:D\longrightarrow Q,\qquad \bar d:D\longrightarrow Z,\\
+K=\ker\bar d=H^pX,\qquad C=\operatorname{coker}\bar d=H^{p+1}X.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+D=\operatorname{coker}d_X^{p-1},\quad Q=\operatorname{coker}d_Y^{p-1},
+\quad E=X^{p+1},\quad Z=Z^{p+1}X,\\
+\bar f:D\longrightarrow Q,\qquad \bar d:D\longrightarrow Z,\\
+K=\ker\bar d=H^pX,\qquad C=\operatorname{coker}\bar d=H^{p+1}X.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>The map <span class="math" data-tex="\(\bar f|_K:K\to Q=H^pY\)">\(\bar f|_K:K\to Q=H^pY\)</span> is monic. Define two pushouts</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+S=Q\amalg_D Z,\qquad W=Q\amalg_D E.
+\tag{1.4}
+\]">\[
+S=Q\amalg_D Z,\qquad W=Q\amalg_D E.
+\tag{1.4}
+\]</span>
+<p><strong>Lemma 1.1.</strong> There is an exact sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+0\longrightarrow K\xrightarrow{\bar f|_K}Q
+\longrightarrow S\longrightarrow C\longrightarrow0,
+\tag{1.5}
+\]">\[
+0\longrightarrow K\xrightarrow{\bar f|_K}Q
+\longrightarrow S\longrightarrow C\longrightarrow0,
+\tag{1.5}
+\]</span>
+<p>and the induced map <span class="math" data-tex="\(S\to W\)">\(S\to W\)</span> is monic.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(Q_0=Q/\bar f(K)\)">\(Q_0=Q/\bar f(K)\)</span> and <span class="math" data-tex="\(I=\operatorname{im}\bar d\)">\(I=\operatorname{im}\bar d\)</span>. The abelian comparison identifies <span class="math" data-tex="\(D/K\)">\(D/K\)</span> with <span class="math" data-tex="\(I\)">\(I\)</span>. Thus <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span>, after quotienting its target by <span class="math" data-tex="\(\bar f(K)\)">\(\bar f(K)\)</span>, gives a map <span class="math" data-tex="\(I\to Q_0\)">\(I\to Q_0\)</span>. The universal properties identify</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.6); horizontal scroll when needed" data-tex="\[
+S\simeq Q_0\amalg_I Z.
+\tag{1.6}
+\]">\[
+S\simeq Q_0\amalg_I Z.
+\tag{1.6}
+\]</span>
+<p>Indeed, compatible maps out of <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span> kill <span class="math" data-tex="\(\bar f(K)\)">\(\bar f(K)\)</span>, and their induced maps out of <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span> agree on <span class="math" data-tex="\(I\)">\(I\)</span>; the reverse construction gives the original compatible maps. Since <span class="math" data-tex="\(I\hookrightarrow Z\)">\(I\hookrightarrow Z\)</span> is monic, (1.2) gives <span class="math" data-tex="\(0\to Q_0\to S\to Z/I\to0\)">\(0\to Q_0\to S\to Z/I\to0\)</span>. Here <span class="math" data-tex="\(Z/I=C\)">\(Z/I=C\)</span>, and the kernel of <span class="math" data-tex="\(Q\to Q_0\)">\(Q\to Q_0\)</span> is the displayed copy of <span class="math" data-tex="\(K\)">\(K\)</span>. This proves (1.5). Finally, associativity of these pushouts identifies <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(S\amalg_Z E\)">\(S\amalg_Z E\)</span>. Its map from <span class="math" data-tex="\(S\)">\(S\)</span> is a pushout of the monomorphism <span class="math" data-tex="\(Z\hookrightarrow E\)">\(Z\hookrightarrow E\)</span>, so is monic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choose an object <span class="math" data-tex="\(J\in\mathcal J\)">\(J\in\mathcal J\)</span> and a map <span class="math" data-tex="\(g:W\to J\)">\(g:W\to J\)</span> whose restriction to <span class="math" data-tex="\(S\)">\(S\)</span> is monic. Append <span class="math" data-tex="\(Y^{p+1}=J\)">\(Y^{p+1}=J\)</span>, and define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.7); horizontal scroll when needed" data-tex="\[
+f^{p+1}:E\longrightarrow W\xrightarrow gJ,
+\qquad
+d_Y^p:Y^p\longrightarrow Q\longrightarrow W\xrightarrow gJ.
+\tag{1.7}
+\]">\[
+f^{p+1}:E\longrightarrow W\xrightarrow gJ,
+\qquad
+d_Y^p:Y^p\longrightarrow Q\longrightarrow W\xrightarrow gJ.
+\tag{1.7}
+\]</span>
+<p>The pushout equation makes these maps commute with <span class="math" data-tex="\(d_X^p\)">\(d_X^p\)</span> and <span class="math" data-tex="\(f^p\)">\(f^p\)</span>. The new differential kills <span class="math" data-tex="\(\operatorname{im}d_Y^{p-1}\)">\(\operatorname{im}d_Y^{p-1}\)</span>, so its composite with the preceding differential is zero. All other complex equations were unchanged, and the new last differential is zero.</p>
+<p>Since <span class="math" data-tex="\(S\to J\)">\(S\to J\)</span> is monic, the kernel of <span class="math" data-tex="\(Q\to J\)">\(Q\to J\)</span> is exactly <span class="math" data-tex="\(K\)">\(K\)</span>. Therefore <span class="math" data-tex="\(H^pf\)">\(H^pf\)</span> becomes an isomorphism. Moreover <span class="math" data-tex="\(\operatorname{im}d_Y^p\simeq Q_0\)">\(\operatorname{im}d_Y^p\simeq Q_0\)</span>, and (1.5) gives the monomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.8); horizontal scroll when needed" data-tex="\[
+H^{p+1}X=C=S/Q_0\hookrightarrow J/Q_0=H^{p+1}Y.
+\tag{1.8}
+\]">\[
+H^{p+1}X=C=S/Q_0\hookrightarrow J/Q_0=H^{p+1}Y.
+\tag{1.8}
+\]</span>
+<p>The map in (1.8) is the induced cohomology map: the map on cycles <span class="math" data-tex="\(Z\to J\)">\(Z\to J\)</span> is precisely the map used in (1.4)–(1.7). Thus both of the induction's cohomology assertions retain their specified maps.</p>
+<h2 id="2-two-bounded-below-replacement-criteria">2. Two bounded-below replacement criteria</h2>
+<p>Call <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> <em>cogenerating</em> if every object of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> admits a monomorphism into an object of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> If <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is cogenerating, every complex <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(X^j=0\)">\(X^j=0\)</span> for <span class="math" data-tex="\(j&lt;m\)">\(j&lt;m\)</span> admits a quasi-isomorphism <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span>, where <span class="math" data-tex="\(Y^j=0\)">\(Y^j=0\)</span> for <span class="math" data-tex="\(j&lt;m\)">\(j&lt;m\)</span> and <span class="math" data-tex="\(Y^j\in\mathcal J\)">\(Y^j\in\mathcal J\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>There is also an alternative sufficient criterion for this same conclusion for a given <span class="math" data-tex="\(X\)">\(X\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is closed under extensions and under cokernels of monomorphisms between its objects;</li>
+<li>for each monomorphism <span class="math" data-tex="\(S\hookrightarrow W\)">\(S\hookrightarrow W\)</span> with <span class="math" data-tex="\(S\in\mathcal J\)">\(S\in\mathcal J\)</span>, there is <span class="math" data-tex="\(W\to J\)">\(W\to J\)</span>, <span class="math" data-tex="\(J\in\mathcal J\)">\(J\in\mathcal J\)</span>, whose composite <span class="math" data-tex="\(S\to J\)">\(S\to J\)</span> is monic;</li>
+<li>every <span class="math" data-tex="\(H^jX\)">\(H^jX\)</span> belongs to <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Start with the zero target at <span class="math" data-tex="\(p=m-1\)">\(p=m-1\)</span>. Its cohomology in and below that degree is zero, as is the source's. Under cogeneration, embed each <span class="math" data-tex="\(W\)">\(W\)</span> of (1.4) into an object of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Its restriction to <span class="math" data-tex="\(S\)">\(S\)</span> is monic, so (1.7) supplies the next stage.</p>
+<p>Under the alternative criterion we maintain also <span class="math" data-tex="\(Q\in\mathcal J\)">\(Q\in\mathcal J\)</span>. It holds initially with <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>. At a stage, <span class="math" data-tex="\(K=H^pX\in\mathcal J\)">\(K=H^pX\in\mathcal J\)</span> and <span class="math" data-tex="\(K\to Q\)">\(K\to Q\)</span> is monic. Thus <span class="math" data-tex="\(Q_0\in\mathcal J\)">\(Q_0\in\mathcal J\)</span>. Since <span class="math" data-tex="\(C=H^{p+1}X\in\mathcal J\)">\(C=H^{p+1}X\in\mathcal J\)</span>, the short exact sequence <span class="math" data-tex="\(0\to Q_0\to S\to C\to0\)">\(0\to Q_0\to S\to C\to0\)</span> puts <span class="math" data-tex="\(S\)">\(S\)</span> in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Apply condition 2 to <span class="math" data-tex="\(S\hookrightarrow W\)">\(S\hookrightarrow W\)</span>. It gives exactly the map <span class="math" data-tex="\(g\)">\(g\)</span> needed for (1.7). The new image is <span class="math" data-tex="\(Q_0\in\mathcal J\)">\(Q_0\in\mathcal J\)</span>; its monomorphism into <span class="math" data-tex="\(J\)">\(J\)</span> has cokernel <span class="math" data-tex="\(J/Q_0\in\mathcal J\)">\(J/Q_0\in\mathcal J\)</span>. This is the new top <span class="math" data-tex="\(Q\)">\(Q\)</span>, so the extra invariant is preserved.</p>
+<p>Append one term at each successive stage. The old terms, maps and differentials are retained. Every fixed term and outgoing differential is final after finitely many stages, so these final values define a complex <span class="math" data-tex="\(Y\)">\(Y\)</span> and a chain map <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span>. Every complex or chain-map equation holds at a finite stage. For a fixed <span class="math" data-tex="\(k\)">\(k\)</span>, the cohomology map in degree <span class="math" data-tex="\(k\)">\(k\)</span> is final after the next term has been appended, and is then the isomorphism proved in Section 1. Hence the final map is a quasi-isomorphism. No exactness of an infinite colimit has been assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The alternative criterion does not imply that the replacement map is monic in every degree. Only the map from <span class="math" data-tex="\(S\)">\(S\)</span> in (1.4) is required to stay monic. The distinction matters in Exercise 1.</p>
+<p>Let <span class="math" data-tex="\(K^*(\mathcal J)\)">\(K^*(\mathcal J)\)</span> denote the full homotopy subcategory of complexes with terms in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, with <span class="math" data-tex="\(*=+,b\)">\(*=+,b\)</span>, or no bound. Fullness holds because chain maps and chain homotopies between such complexes have all their components in the full subcategory <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Cones and shifts stay there, since each cone term is a finite biproduct. The complexes acyclic in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> form a triangulated null system. Let <span class="math" data-tex="\(S_{\mathcal J}\)">\(S_{\mathcal J}\)</span> be the maps whose cones are acyclic.</p>
+<p><strong>Lemma 2.2 (replacement density).</strong> Suppose every object of an ambient bounded variant <span class="math" data-tex="\(K^*(\mathcal A)\)">\(K^*(\mathcal A)\)</span> admits an outgoing quasi-isomorphism into <span class="math" data-tex="\(K^*(\mathcal J)\)">\(K^*(\mathcal J)\)</span>. Then the natural exact functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+S_{\mathcal J}^{-1}K^*(\mathcal J)\longrightarrow D^*(\mathcal A)
+\tag{2.1}
+\]">\[
+S_{\mathcal J}^{-1}K^*(\mathcal J)\longrightarrow D^*(\mathcal A)
+\tag{2.1}
+\]</span>
+<p>is an equivalence. The same argument applies to a full triangulated subcategory of <span class="math" data-tex="\(D^*(\mathcal A)\)">\(D^*(\mathcal A)\)</span> if just its representatives and their quasi-isomorphic comparison objects admit these replacements.</p>
+<p><strong>Proof.</strong> Essential surjectivity follows by replacing a representative. An arrow between class complexes has an outgoing roof <span class="math" data-tex="\(I\xrightarrow aV\xleftarrow sJ\)">\(I\xrightarrow aV\xleftarrow sJ\)</span>, with <span class="math" data-tex="\(s\)">\(s\)</span> a quasi-isomorphism. The bounded denominator comparison gives a target in the relevant ambient bounded variant. Replace it by <span class="math" data-tex="\(t:V\to L\)">\(t:V\to L\)</span>, with <span class="math" data-tex="\(L\)">\(L\)</span> a class complex. The roof <span class="math" data-tex="\((ta,ts)\)">\((ta,ts)\)</span> lies inside the full homotopy subcategory and represents the same arrow. This proves fullness.</p>
+<p>For faithfulness, the ambient fraction equality test compares two roofs after maps to a common target <span class="math" data-tex="\(W\)">\(W\)</span>, with the compared denominators quasi-isomorphisms. Replace <span class="math" data-tex="\(W\)">\(W\)</span> by a class complex <span class="math" data-tex="\(L\)">\(L\)</span>. Postcomposition makes all target maps lie between class complexes; their equalities are equalities of homotopy classes there, by fullness of the homotopy inclusion. The same denominator and equality conditions therefore hold in the class localization. This proves faithfulness, including the equality to zero case. All quasi-isomorphism assertions use ambient cohomology, so the inverted class is exactly <span class="math" data-tex="\(S_{\mathcal J}\)">\(S_{\mathcal J}\)</span>.</p>
+<p>The functor sends the chosen cone triangles to their ambient distinguished triangles and commutes with shifts, hence is exact. Its fully faithful, essentially surjective inverse is exact: represent the first arrow of any distinguished triangle in the source localization, take its cone triangle, and compare its image with the given triangle. The isomorphisms on the first two vertices make the third comparison an isomorphism by the two-vertex criterion. Thus the given triangle is an image cone triangle up to isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Theorem 2.1 and this lemma give <span class="math" data-tex="\(S_{\mathcal J}^{-1}K^+(\mathcal J)\simeq D^+(\mathcal A)\)">\(S_{\mathcal J}^{-1}K^+(\mathcal J)\simeq D^+(\mathcal A)\)</span> under cogeneration. This conclusion is about a localization of class complexes; it does not assert that their acyclic complexes are contractible.</p>
+<h2 id="3-the-precise-uniform-finite-condition">3. The precise uniform finite condition</h2>
+<p>Fix an integer <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>. Consider the following condition:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\text{every exact sequence }J_d\longrightarrow\cdots
+\longrightarrow J_1\longrightarrow V\longrightarrow0,
+\quad J_i\in\mathcal J,
+\text{ has }V\in\mathcal J.
+\tag{3.1}
+\]">\[
+\text{every exact sequence }J_d\longrightarrow\cdots
+\longrightarrow J_1\longrightarrow V\longrightarrow0,
+\quad J_i\in\mathcal J,
+\text{ has }V\in\mathcal J.
+\tag{3.1}
+\]</span>
+<p>For <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, exactness is required at every term after the first displayed term; no initial zero is imposed. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, (3.1) means that every object of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> belongs to <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. This condition in particular makes <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> closed under isomorphism: for <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, place an isomorphism <span class="math" data-tex="\(J\to V\)">\(J\to V\)</span> after <span class="math" data-tex="\(d-1\)">\(d-1\)</span> zero objects; for <span class="math" data-tex="\(d=0\)">\(d=0\)</span> there is nothing to prove.</p>
+<p><strong>Proposition 3.1.</strong> Suppose <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is cogenerating and satisfies (3.1). If <span class="math" data-tex="\(X\)">\(X\)</span> is zero outside <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, there is a quasi-isomorphism <span class="math" data-tex="\(X\to T\)">\(X\to T\)</span> with terms in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, zero outside <span class="math" data-tex="\([a,b+d]\)">\([a,b+d]\)</span>. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+S_{\mathcal J}^{-1}K^b(\mathcal J)\simeq D^b(\mathcal A).
+\tag{3.2}
+\]">\[
+S_{\mathcal J}^{-1}K^b(\mathcal J)\simeq D^b(\mathcal A).
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> Take the bounded-below replacement <span class="math" data-tex="\(q:X\to Y\)">\(q:X\to Y\)</span> from Theorem 2.1. Then <span class="math" data-tex="\(H^jY=0\)">\(H^jY=0\)</span> for <span class="math" data-tex="\(j&gt;b\)">\(j&gt;b\)</span>. For <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span> and <span class="math" data-tex="\(r\geq b+d\)">\(r\geq b+d\)</span>, the sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+Y^{r-d}\longrightarrow\cdots\longrightarrow Y^{r-1}
+\longrightarrow Z^rY\longrightarrow0
+\tag{3.3}
+\]">\[
+Y^{r-d}\longrightarrow\cdots\longrightarrow Y^{r-1}
+\longrightarrow Z^rY\longrightarrow0
+\tag{3.3}
+\]</span>
+<p>is exact in the sense of (3.1). There are exactly <span class="math" data-tex="\(d\)">\(d\)</span> terms from <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. At its interior terms the cohomology degrees are at least <span class="math" data-tex="\(r-d+1\geq b+1\)">\(r-d+1\geq b+1\)</span>; the final surjectivity is <span class="math" data-tex="\(H^rY=0\)">\(H^rY=0\)</span>. Thus <span class="math" data-tex="\(Z^rY\in\mathcal J\)">\(Z^rY\in\mathcal J\)</span>.</p>
+<p>Put <span class="math" data-tex="\(r=b+d\)">\(r=b+d\)</span>, and truncate <span class="math" data-tex="\(Y\)">\(Y\)</span> above <span class="math" data-tex="\(r\)">\(r\)</span>, using <span class="math" data-tex="\(Z^rY\)">\(Z^rY\)</span> as its term in degree <span class="math" data-tex="\(r\)">\(r\)</span>. The resulting complex <span class="math" data-tex="\(T\)">\(T\)</span> has the claimed bounds and its inclusion into <span class="math" data-tex="\(Y\)">\(Y\)</span> is a quasi-isomorphism. The map <span class="math" data-tex="\(q\)">\(q\)</span> factors as a chain map <span class="math" data-tex="\(X\to T\)">\(X\to T\)</span>: the source is zero above <span class="math" data-tex="\(b\leq r\)">\(b\leq r\)</span>, and its degree-<span class="math" data-tex="\(r\)">\(r\)</span> image consists of cycles when that source term can be nonzero. Its composite with <span class="math" data-tex="\(T\to Y\)">\(T\to Y\)</span> is <span class="math" data-tex="\(q\)">\(q\)</span>, so it too is a quasi-isomorphism. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, every object lies in the class and one can simply take <span class="math" data-tex="\(T=X\)">\(T=X\)</span>. Applying Lemma 2.2 to bounded complexes proves (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The cutoff <span class="math" data-tex="\(b+d\)">\(b+d\)</span> is a proved sufficient bound. Cogeneration alone does not guarantee bounded class representatives; Exercise 2 gives an explicit obstruction.</p>
+<h2 id="4-injectives-actual-homotopies-and-small-hom-sets">4. Injectives, actual homotopies and small Hom sets</h2>
+<p>Let <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> be the full subcategory of injective objects. An object is injective if any map to it from a subobject extends to the containing object.</p>
+<p><strong>Lemma 4.1.</strong> Every map from an acyclic complex <span class="math" data-tex="\(N\)">\(N\)</span> to a bounded-below complex <span class="math" data-tex="\(I\)">\(I\)</span> of injective objects is null-homotopic. The rest of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> need not have enough injectives.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(I^n=0\)">\(I^n=0\)</span> for <span class="math" data-tex="\(n&lt;m\)">\(n&lt;m\)</span>, and set <span class="math" data-tex="\(h^n=0:N^n\to I^{n-1}\)">\(h^n=0:N^n\to I^{n-1}\)</span> for <span class="math" data-tex="\(n\leq m\)">\(n\leq m\)</span>. Suppose the homotopy equations are proved below <span class="math" data-tex="\(n\)">\(n\)</span>. The residual <span class="math" data-tex="\(r^n=f^n-d_I^{n-1}h^n\)">\(r^n=f^n-d_I^{n-1}h^n\)</span> kills <span class="math" data-tex="\(d_N^{n-1}\)">\(d_N^{n-1}\)</span>: the chain-map equation and the preceding homotopy equation give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+r^nd_N^{n-1}
+=d_I^{n-1}(f^{n-1}-h^nd_N^{n-1})
+=d_I^{n-1}d_I^{n-2}h^{n-1}=0.
+\tag{4.1}
+\]">\[
+r^nd_N^{n-1}
+=d_I^{n-1}(f^{n-1}-h^nd_N^{n-1})
+=d_I^{n-1}d_I^{n-2}h^{n-1}=0.
+\tag{4.1}
+\]</span>
+<p>At the starting degree the target's lower zero term gives the same equality. Since <span class="math" data-tex="\(N\)">\(N\)</span> is acyclic, <span class="math" data-tex="\(\operatorname{coker}d_N^{n-1}\)">\(\operatorname{coker}d_N^{n-1}\)</span> identifies with <span class="math" data-tex="\(\operatorname{im}d_N^n=Z^{n+1}N\)">\(\operatorname{im}d_N^n=Z^{n+1}N\)</span>. Thus <span class="math" data-tex="\(r^n\)">\(r^n\)</span> factors through this subobject of <span class="math" data-tex="\(N^{n+1}\)">\(N^{n+1}\)</span>. Extend its factor to <span class="math" data-tex="\(h^{n+1}:N^{n+1}\to I^n\)">\(h^{n+1}:N^{n+1}\to I^n\)</span> by injectivity. This gives <span class="math" data-tex="\(f^n=d_I^{n-1}h^n+h^{n+1}d_N^n\)">\(f^n=d_I^{n-1}h^n+h^{n+1}d_N^n\)</span>. Upward induction proves every equation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the bounded test of the earlier roof lesson, with its exact subobject and indices displayed. An acyclic bounded-below complex of injectives is therefore contractible, by applying the lemma to its identity map. In <span class="math" data-tex="\(K^+(\mathcal I)\)">\(K^+(\mathcal I)\)</span> each quasi-isomorphism has a zero cone, hence is already invertible. If <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has enough injectives, Theorem 2.1 and Lemma 2.2 give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+K^+(\mathcal I)\simeq D^+(\mathcal A).
+\tag{4.2}
+\]">\[
+K^+(\mathcal I)\simeq D^+(\mathcal A).
+\tag{4.2}
+\]</span>
+<p>If <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> also satisfies (3.1), Proposition 3.1 gives <span class="math" data-tex="\(K^b(\mathcal I)\simeq D^b(\mathcal A)\)">\(K^b(\mathcal I)\simeq D^b(\mathcal A)\)</span>: its bounded acyclic complexes are also contractible. Finite biproducts of injectives are injective by extending each component separately, so the asserted homotopy categories and their cone triangles are well defined.</p>
+<p><strong>Corollary 4.2.</strong> If <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small for a Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> containing <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and has enough injectives, all Hom sets of <span class="math" data-tex="\(D^+(\mathcal A)\)">\(D^+(\mathcal A)\)</span> are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small.</p>
+<p><strong>Proof.</strong> Choose a bounded-below representative <span class="math" data-tex="\(X\)">\(X\)</span> and a bounded-below injective replacement <span class="math" data-tex="\(Y\to I\)">\(Y\to I\)</span>. The K-injective Hom test gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{D^+(\mathcal A)}(X,Y)
+\simeq\operatorname{Hom}_{K(\mathcal A)}(X,I).
+\tag{4.3}
+\]">\[
+\operatorname{Hom}_{D^+(\mathcal A)}(X,Y)
+\simeq\operatorname{Hom}_{K(\mathcal A)}(X,I).
+\tag{4.3}
+\]</span>
+<p>Choose <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-set encodings of the sets <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal A}(X^n,I^n)\)">\(\operatorname{Hom}_{\mathcal A}(X^n,I^n)\)</span>. Their <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-indexed product is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Chain maps form a subset of that product, defined by the differential equations. Quotienting this set by chain homotopy remains <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. This proves the conclusion for every chosen pair. No smallness of the collection of all objects is asserted. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-arbitrary-complexes-under-the-finite-condition">5. Arbitrary complexes under the finite condition</h2>
+<p>Assume throughout this section that <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is cogenerating and satisfies (3.1).</p>
+<p><strong>Lemma 5.1 (initial tail).</strong> For any complex <span class="math" data-tex="\(X\)">\(X\)</span> and integer <span class="math" data-tex="\(n\)">\(n\)</span>, there is a quasi-isomorphism <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span> whose target terms lie in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> in degrees at least <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Proof.</strong> Replace the stupid upper tail <span class="math" data-tex="\(X_{\geq n}\)">\(X_{\geq n}\)</span>, which is <span class="math" data-tex="\(X\)">\(X\)</span> in degrees at least <span class="math" data-tex="\(n\)">\(n\)</span> and zero below, by a bounded-below class complex <span class="math" data-tex="\(I\)">\(I\)</span>. Form <span class="math" data-tex="\(Y\)">\(Y\)</span> by retaining <span class="math" data-tex="\(X^j\)">\(X^j\)</span> for <span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span> and using <span class="math" data-tex="\(I^j\)">\(I^j\)</span> for <span class="math" data-tex="\(j\geq n\)">\(j\geq n\)</span>. The boundary differential is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+X^{n-1}\xrightarrow{d_X^{n-1}}X^n\xrightarrow{f^n}I^n.
+\tag{5.1}
+\]">\[
+X^{n-1}\xrightarrow{d_X^{n-1}}X^n\xrightarrow{f^n}I^n.
+\tag{5.1}
+\]</span>
+<p>The two adjacent composites are zero by the chain-map equation and <span class="math" data-tex="\(d_X^2=0\)">\(d_X^2=0\)</span>. Identity below <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> above define a chain map. Compare the short exact sequences of complexes with upper tails as their subcomplexes. Their tail map is a quasi-isomorphism; the quotient complexes are the identical stupid lower tail, with identity comparison. The long exact cohomology sequences then give an isomorphism on the middle complex in every degree: in the five consecutive terms around that degree, the four tail/quotient maps are isomorphisms, and exactness gives injectivity and surjectivity of the middle map. Hence <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span> is a quasi-isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.2 (downward splice).</strong> Suppose <span class="math" data-tex="\(X^j\in\mathcal J\)">\(X^j\in\mathcal J\)</span> for <span class="math" data-tex="\(j\geq n\)">\(j\geq n\)</span>. For any <span class="math" data-tex="\(n&#x27;&lt;n\)">\(n&#x27;&lt;n\)</span>, there is a quasi-isomorphism <span class="math" data-tex="\(q:X\to Z\)">\(q:X\to Z\)</span> with <span class="math" data-tex="\(Z^j\in\mathcal J\)">\(Z^j\in\mathcal J\)</span> for <span class="math" data-tex="\(j\geq n&#x27;\)">\(j\geq n&#x27;\)</span>, and <span class="math" data-tex="\(q^j=1_{X^j}\)">\(q^j=1_{X^j}\)</span> for <span class="math" data-tex="\(j\geq n+d\)">\(j\geq n+d\)</span>.</p>
+<p><strong>Proof.</strong> By Lemma 5.1 choose a quasi-isomorphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> with <span class="math" data-tex="\(Y^j\in\mathcal J\)">\(Y^j\in\mathcal J\)</span> for <span class="math" data-tex="\(j\geq n&#x27;\)">\(j\geq n&#x27;\)</span>. Its cone <span class="math" data-tex="\(M=C(f)\)">\(M=C(f)\)</span> is acyclic, and <span class="math" data-tex="\(M^j\in\mathcal J\)">\(M^j\in\mathcal J\)</span> for <span class="math" data-tex="\(j\geq n-1\)">\(j\geq n-1\)</span>. Set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+a=n+d-1,\qquad L=\ker d_M^a.
+\tag{5.2}
+\]">\[
+a=n+d-1,\qquad L=\ker d_M^a.
+\tag{5.2}
+\]</span>
+<p>If <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, acyclicity gives an exact sequence of exactly <span class="math" data-tex="\(d\)">\(d\)</span> class terms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+M^{a-d}\longrightarrow\cdots\longrightarrow M^{a-1}
+\longrightarrow L\longrightarrow0.
+\tag{5.3}
+\]">\[
+M^{a-d}\longrightarrow\cdots\longrightarrow M^{a-1}
+\longrightarrow L\longrightarrow0.
+\tag{5.3}
+\]</span>
+<p>Its first degree is <span class="math" data-tex="\(a-d=n-1\)">\(a-d=n-1\)</span>, so (3.1) puts <span class="math" data-tex="\(L\)">\(L\)</span> in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, every object already belongs to the class. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+Z^j=\begin{cases}Y^j,&amp;j&lt;a,\\L,&amp;j=a,\\X^j,&amp;j&gt;a.\end{cases}
+\tag{5.4}
+\]">\[
+Z^j=\begin{cases}Y^j,&amp;j&lt;a,\\L,&amp;j=a,\\X^j,&amp;j&gt;a.\end{cases}
+\tag{5.4}
+\]</span>
+<p>Its lower differentials are those of <span class="math" data-tex="\(Y\)">\(Y\)</span>, its upper ones those of <span class="math" data-tex="\(X\)">\(X\)</span>, and the boundary maps are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+d_Z^{a-1}(y)=(d_Y^{a-1}y,0),\qquad
+d_Z^a(y,x)=-x,
+\tag{5.5}
+\]">\[
+d_Z^{a-1}(y)=(d_Y^{a-1}y,0),\qquad
+d_Z^a(y,x)=-x,
+\tag{5.5}
+\]</span>
+<p>where <span class="math" data-tex="\(L\hookrightarrow M^a=Y^a\oplus X^{a+1}\)">\(L\hookrightarrow M^a=Y^a\oplus X^{a+1}\)</span>. These pair formulas mean morphisms with the given projections, not an assumption that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a module category. A member of the kernel satisfies <span class="math" data-tex="\(d_Y^ay+f^{a+1}x=0\)">\(d_Y^ay+f^{a+1}x=0\)</span> and <span class="math" data-tex="\(d_X^{a+1}x=0\)">\(d_X^{a+1}x=0\)</span>. These equalities make (5.5) land in the stated kernel and make both adjacent composites zero.</p>
+<p>Define <span class="math" data-tex="\(q:X\to Z\)">\(q:X\to Z\)</span> and <span class="math" data-tex="\(p:Z\to Y\)">\(p:Z\to Y\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+\begin{array}{c|ccc}
+j&amp;j&lt;a&amp;j=a&amp;j&gt;a\\\hline
+q^j&amp;f^j&amp;x\mapsto(f^ax,-d_X^ax)&amp;1\\
+p^j&amp;1&amp;(y,x)\mapsto y&amp;f^j.
+\end{array}
+\tag{5.6}
+\]">\[
+\begin{array}{c|ccc}
+j&amp;j&lt;a&amp;j=a&amp;j&gt;a\\\hline
+q^j&amp;f^j&amp;x\mapsto(f^ax,-d_X^ax)&amp;1\\
+p^j&amp;1&amp;(y,x)\mapsto y&amp;f^j.
+\end{array}
+\tag{5.6}
+\]</span>
+<p>The degree-<span class="math" data-tex="\(a\)">\(a\)</span> value of <span class="math" data-tex="\(q\)">\(q\)</span> lies in <span class="math" data-tex="\(L\)">\(L\)</span>, since <span class="math" data-tex="\(f\)">\(f\)</span> is a chain map and <span class="math" data-tex="\(d_X^2=0\)">\(d_X^2=0\)</span>. At the lower boundary, <span class="math" data-tex="\(q^ad_X^{a-1}=(d_Y^{a-1}f^{a-1},0)=d_Z^{a-1}q^{a-1}\)">\(q^ad_X^{a-1}=(d_Y^{a-1}f^{a-1},0)=d_Z^{a-1}q^{a-1}\)</span>. At the upper boundary, <span class="math" data-tex="\(d_Z^aq^a=d_X^a=q^{a+1}d_X^a\)">\(d_Z^aq^a=d_X^a=q^{a+1}d_X^a\)</span>. For <span class="math" data-tex="\(p\)">\(p\)</span>, the lower equation is immediate, and the upper equation is <span class="math" data-tex="\(d_Y^ay=f^{a+1}(-x)\)">\(d_Y^ay=f^{a+1}(-x)\)</span>, precisely the kernel equation. All other equations are those of <span class="math" data-tex="\(f\)">\(f\)</span> or identity. Thus both maps are chain maps, and <span class="math" data-tex="\(pq=f\)">\(pq=f\)</span>.</p>
+<p>We check the three affected cohomology degrees. At <span class="math" data-tex="\(a-1\)">\(a-1\)</span>, the kernel of <span class="math" data-tex="\(y\mapsto(d_Yy,0)\)">\(y\mapsto(d_Yy,0)\)</span> is <span class="math" data-tex="\(Z^{a-1}Y\)">\(Z^{a-1}Y\)</span>; its boundaries are unchanged. Thus <span class="math" data-tex="\(H^{a-1}Z=H^{a-1}Y\)">\(H^{a-1}Z=H^{a-1}Y\)</span>, and <span class="math" data-tex="\(H^{a-1}q=H^{a-1}f\)">\(H^{a-1}q=H^{a-1}f\)</span>. At <span class="math" data-tex="\(a\)">\(a\)</span>, the cycles in <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(-x=0\)">\(-x=0\)</span> identify with <span class="math" data-tex="\(Z^aY\)">\(Z^aY\)</span> by <span class="math" data-tex="\(y\mapsto(y,0)\)">\(y\mapsto(y,0)\)</span>. Its boundaries identify with <span class="math" data-tex="\(B^aY\)">\(B^aY\)</span>, so again <span class="math" data-tex="\(H^aZ=H^aY\)">\(H^aZ=H^aY\)</span> and the induced map is <span class="math" data-tex="\(H^af\)">\(H^af\)</span>.</p>
+<p>At <span class="math" data-tex="\(a+1\)">\(a+1\)</span>, acyclicity identifies <span class="math" data-tex="\(L=\operatorname{im}d_M^{a-1}\)">\(L=\operatorname{im}d_M^{a-1}\)</span>. In particular the map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.7); horizontal scroll when needed" data-tex="\[
+Y^{a-1}\oplus X^a\longrightarrow L,
+\quad(y,x)\longmapsto(d_Y^{a-1}y+f^ax,-d_X^ax)
+\tag{5.7}
+\]">\[
+Y^{a-1}\oplus X^a\longrightarrow L,
+\quad(y,x)\longmapsto(d_Y^{a-1}y+f^ax,-d_X^ax)
+\tag{5.7}
+\]</span>
+<p>is epic. Its composite with <span class="math" data-tex="\(d_Z^a\)">\(d_Z^a\)</span> is <span class="math" data-tex="\((y,x)\mapsto d_X^ax\)">\((y,x)\mapsto d_X^ax\)</span>, which has image <span class="math" data-tex="\(B^{a+1}X\)">\(B^{a+1}X\)</span>. Epicity proves <span class="math" data-tex="\(\operatorname{im}d_Z^a=B^{a+1}X\)">\(\operatorname{im}d_Z^a=B^{a+1}X\)</span>. The next differential is <span class="math" data-tex="\(d_X^{a+1}\)">\(d_X^{a+1}\)</span>, so <span class="math" data-tex="\(H^{a+1}Z=H^{a+1}X\)">\(H^{a+1}Z=H^{a+1}X\)</span>, and <span class="math" data-tex="\(q\)">\(q\)</span> induces identity there. At every lower degree cohomology is that of <span class="math" data-tex="\(Y\)">\(Y\)</span> with map <span class="math" data-tex="\(Hf\)">\(Hf\)</span>; at every higher degree it is that of <span class="math" data-tex="\(X\)">\(X\)</span> with identity. Therefore <span class="math" data-tex="\(q\)">\(q\)</span> is a quasi-isomorphism.</p>
+<p>All the terms of (5.4) in degrees at least <span class="math" data-tex="\(n&#x27;\)">\(n&#x27;\)</span> lie in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>: lower ones by the choice of <span class="math" data-tex="\(Y\)">\(Y\)</span>, the cut term by (5.3), and upper ones by the hypothesis on <span class="math" data-tex="\(X\)">\(X\)</span>, since <span class="math" data-tex="\(a+1=n+d\geq n\)">\(a+1=n+d\geq n\)</span>. Formula (5.6) is identity in precisely that upper range. The cut must be one degree below the promised range; it is <span class="math" data-tex="\(n+d-1\)">\(n+d-1\)</span>, not <span class="math" data-tex="\(n+d\)">\(n+d\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.3.</strong> Every complex <span class="math" data-tex="\(X\)">\(X\)</span> admits a quasi-isomorphism into a complex of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.8); horizontal scroll when needed" data-tex="\[
+S_{\mathcal J}^{-1}K(\mathcal J)\simeq D(\mathcal A).
+\tag{5.8}
+\]">\[
+S_{\mathcal J}^{-1}K(\mathcal J)\simeq D(\mathcal A).
+\tag{5.8}
+\]</span>
+<p><strong>Proof.</strong> First choose <span class="math" data-tex="\(X\to Y_0\)">\(X\to Y_0\)</span> by Lemma 5.1, with class terms in degrees at least some integer <span class="math" data-tex="\(n_0\)">\(n_0\)</span>. Put <span class="math" data-tex="\(n_k=n_0-k\)">\(n_k=n_0-k\)</span>. Repeatedly apply Lemma 5.2 to obtain quasi-isomorphisms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.9); horizontal scroll when needed" data-tex="\[
+Y_0\longrightarrow Y_1\longrightarrow Y_2\longrightarrow\cdots,
+\tag{5.9}
+\]">\[
+Y_0\longrightarrow Y_1\longrightarrow Y_2\longrightarrow\cdots,
+\tag{5.9}
+\]</span>
+<p>where <span class="math" data-tex="\(Y_k\)">\(Y_k\)</span> has class terms in degrees at least <span class="math" data-tex="\(n_k\)">\(n_k\)</span>, and the transition from stage <span class="math" data-tex="\(k\)">\(k\)</span> is identity in degrees at least <span class="math" data-tex="\(n_k+d\)">\(n_k+d\)</span>.</p>
+<p>For a fixed degree <span class="math" data-tex="\(j\)">\(j\)</span>, all transitions are literal identities in that degree once <span class="math" data-tex="\(j\geq n_k+d\)">\(j\geq n_k+d\)</span>. Both this term and its outgoing differential are then constant, since degree <span class="math" data-tex="\(j+1\)">\(j+1\)</span> is also in the fixed range. Take those eventual values to define <span class="math" data-tex="\(Y^j\)">\(Y^j\)</span> and <span class="math" data-tex="\(d_Y^j\)">\(d_Y^j\)</span>. They belong to <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. A complex equation uses three adjacent terms and thus holds at a common finite stage. The finite composites from <span class="math" data-tex="\(X\)">\(X\)</span> give eventually constant components, hence a chain map <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span>. In degree <span class="math" data-tex="\(j\)">\(j\)</span>, choose a common stage at which the terms in degrees <span class="math" data-tex="\(j-1,j,j+1\)">\(j-1,j,j+1\)</span> and the corresponding components have stabilized. The induced cohomology map is then that of a finite composite of quasi-isomorphisms, so is invertible.</p>
+<p>This construction even gives the colimit of (5.9) in complexes, without assuming arbitrary colimits exist in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. The map from each stage to its stable value is the finite transition composite up to a stable stage in each degree. These components satisfy the chain equations at common stages and form a compatible cocone. Any other compatible cocone determines a unique map from each stable term to its target. Compatibility again proves the chain equations and uniqueness. This is the colimit universal property for this particular eventually constant diagram. It uses neither AB5 nor exactness of filtered colimits. Lemma 2.2 now proves (5.8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-thick-abelian-subcategories-and-their-derived-comparisons">6. Thick abelian subcategories and their derived comparisons</h2>
+<p>Let <span class="math" data-tex="\(\mathcal B\subset\mathcal A\)">\(\mathcal B\subset\mathcal A\)</span> be a strictly full additive subcategory closed under kernels and cokernels of maps between its objects, and under extensions. We call this a thick abelian subcategory. Its kernels and cokernels are the ambient ones, so it is abelian and its inclusion is exact. Closure under all ambient subobjects and quotients is the stronger Serre condition; it is not needed here. Write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+D^*_{\mathcal B}(\mathcal A)
+=\{X\in D^*(\mathcal A):H^nX\in\mathcal B\text{ for every }n\},
+\quad *=\varnothing,+,-,b,
+\tag{6.1}
+\]">\[
+D^*_{\mathcal B}(\mathcal A)
+=\{X\in D^*(\mathcal A):H^nX\in\mathcal B\text{ for every }n\},
+\quad *=\varnothing,+,-,b,
+\tag{6.1}
+\]</span>
+<p>as a full subcategory. If the original full additive class is not replete, use its isomorphism closure and interpret membership as being isomorphic to an object of the class. The inclusion into that closure is fully faithful and essentially surjective; an inverse chooses class representatives and conjugates every arrow by the chosen isomorphisms. Both functors are additive and exact because they transport the ambient kernel and cokernel maps. Applying them termwise gives inverse equivalences on complexes and homotopies, preserves cohomology and quasi-isomorphisms, and hence gives inverse equivalences on each derived localization. This transports the conclusions back to the original class with its chosen representatives.</p>
+<p><strong>Proposition 6.1.</strong> Each category (6.1) is triangulated. Exact inclusion induces a natural exact comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\delta^*:D^*(\mathcal B)\longrightarrow D^*_{\mathcal B}(\mathcal A).
+\tag{6.2}
+\]">\[
+\delta^*:D^*(\mathcal B)\longrightarrow D^*_{\mathcal B}(\mathcal A).
+\tag{6.2}
+\]</span>
+<p><strong>Proof.</strong> Cohomology of complexes from <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is computed by the same kernels, images and quotients in either category. Its finite biproducts and shifts therefore have cohomology in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. For a triangle <span class="math" data-tex="\(X\xrightarrow fY\to Z\to X[1]\)">\(X\xrightarrow fY\to Z\to X[1]\)</span>, its long exact cohomology sequence gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+0\longrightarrow\operatorname{coker}H^nf
+\longrightarrow H^nZ
+\longrightarrow\ker H^{n+1}f\longrightarrow0.
+\tag{6.3}
+\]">\[
+0\longrightarrow\operatorname{coker}H^nf
+\longrightarrow H^nZ
+\longrightarrow\ker H^{n+1}f\longrightarrow0.
+\tag{6.3}
+\]</span>
+<p>If <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> belong to (6.1), the first and last objects belong to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> by its cokernel and kernel closures for the indicated maps between its objects, and the middle one belongs by extension closure. Rotation and shifts give the other two-vertex cases. Cohomological lower or upper bounds remain bounded under the same exact sequence; the bounded case has both bounds. Repleteness follows from invariance of cohomology under isomorphism. This proves all the required inherited triangle operations. If a retract is present, its cohomology is the image of an idempotent endomorphism <span class="math" data-tex="\(e\)">\(e\)</span> of the original cohomology. This image is <span class="math" data-tex="\(\ker(1-e)\)">\(\ker(1-e)\)</span>, a kernel of a map between objects of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, and hence belongs to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. Thus the category is also closed under retracts.</p>
+<p>Termwise inclusion gives a functor on complexes and homotopies, retains shifts and cone matrices, and carries quasi-isomorphisms to quasi-isomorphisms. Its localization is therefore exact and lands in (6.1), proving (6.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2.</strong> Suppose that for every monomorphism <span class="math" data-tex="\(S\hookrightarrow W\)">\(S\hookrightarrow W\)</span>, with <span class="math" data-tex="\(S\in\mathcal B\)">\(S\in\mathcal B\)</span>, there is a map <span class="math" data-tex="\(W\to B\)">\(W\to B\)</span>, with <span class="math" data-tex="\(B\in\mathcal B\)">\(B\in\mathcal B\)</span>, whose composite with <span class="math" data-tex="\(S\)">\(S\)</span> is monic. Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+\delta^+:D^+(\mathcal B)\simeq D^+_{\mathcal B}(\mathcal A),
+\qquad
+\delta^b:D^b(\mathcal B)\simeq D^b_{\mathcal B}(\mathcal A).
+\tag{6.4}
+\]">\[
+\delta^+:D^+(\mathcal B)\simeq D^+_{\mathcal B}(\mathcal A),
+\qquad
+\delta^b:D^b(\mathcal B)\simeq D^b_{\mathcal B}(\mathcal A).
+\tag{6.4}
+\]</span>
+<p>Dually, if for every epimorphism <span class="math" data-tex="\(W\twoheadrightarrow S\)">\(W\twoheadrightarrow S\)</span>, with <span class="math" data-tex="\(S\in\mathcal B\)">\(S\in\mathcal B\)</span>, there is <span class="math" data-tex="\(B\to W\)">\(B\to W\)</span>, <span class="math" data-tex="\(B\in\mathcal B\)">\(B\in\mathcal B\)</span>, whose composite with <span class="math" data-tex="\(S\)">\(S\)</span> is epic, then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+\delta^-:D^-(\mathcal B)\simeq D^-_{\mathcal B}(\mathcal A),
+\qquad
+\delta^b:D^b(\mathcal B)\simeq D^b_{\mathcal B}(\mathcal A).
+\tag{6.5}
+\]">\[
+\delta^-:D^-(\mathcal B)\simeq D^-_{\mathcal B}(\mathcal A),
+\qquad
+\delta^b:D^b(\mathcal B)\simeq D^b_{\mathcal B}(\mathcal A).
+\tag{6.5}
+\]</span>
+<p><strong>Proof of (6.4).</strong> A bounded-below representative of an object of <span class="math" data-tex="\(D^+_{\mathcal B}(\mathcal A)\)">\(D^+_{\mathcal B}(\mathcal A)\)</span> has cohomology in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. The alternative criterion in Theorem 2.1 applies: thickness gives its extension and monic-cokernel closure, and the hypothesis gives its compatible enlargement. No subobject or quotient closure for arbitrary ambient arrows is used. Thus this representative has an outgoing quasi-isomorphism to a bounded-below <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>-complex.</p>
+<p>For any two such class complexes, the ambient denominator targets and equality witnesses have the same cohomology as a class complex whenever they occur with a quasi-isomorphic denominator. They too admit these replacements. The restricted density argument of Lemma 2.2 consequently proves full faithfulness as well as essential surjectivity of <span class="math" data-tex="\(\delta^+\)">\(\delta^+\)</span>. Its source localization is exactly <span class="math" data-tex="\(D^+(\mathcal B)\)">\(D^+(\mathcal B)\)</span>, because its cohomology and quasi-isomorphisms are computed intrinsically or ambiently with the same result.</p>
+<p>For the bounded case, the full embeddings <span class="math" data-tex="\(D^b\hookrightarrow D^+\)">\(D^b\hookrightarrow D^+\)</span> for both abelian categories imply full faithfulness of <span class="math" data-tex="\(\delta^b\)">\(\delta^b\)</span>. To prove essential surjectivity, replace a bounded ambient representative by a bounded-below <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>-complex <span class="math" data-tex="\(Y\)">\(Y\)</span>. Choose <span class="math" data-tex="\(b\)">\(b\)</span> above its nonzero cohomology. Its upper smart truncation has top term <span class="math" data-tex="\(Z^bY\)">\(Z^bY\)</span>, which belongs to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> as the kernel of <span class="math" data-tex="\(d_Y^b:Y^b\to Y^{b+1}\)">\(d_Y^b:Y^b\to Y^{b+1}\)</span>, a map between two objects of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>; all its other terms also belong. This is a bounded <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>-complex with a quasi-isomorphism to <span class="math" data-tex="\(Y\)">\(Y\)</span>. No uniform finite condition is needed here. Exactness was already proved in Proposition 6.1, so both are exact equivalences.</p>
+<p><strong>Proof of (6.5).</strong> Pass to the opposite abelian category. An epimorphism <span class="math" data-tex="\(W\to S\)">\(W\to S\)</span> becomes a monomorphism <span class="math" data-tex="\(S^{\mathrm{op}}\to W^{\mathrm{op}}\)">\(S^{\mathrm{op}}\to W^{\mathrm{op}}\)</span>, and the stipulated composite becomes the monic composite of (6.4). The thick subcategory is <span class="math" data-tex="\(\mathcal B^{\mathrm{op}}\)">\(\mathcal B^{\mathrm{op}}\)</span>. To retain the complex indices explicitly, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.6); horizontal scroll when needed" data-tex="\[
+(RX)^j=(X^{-j})^{\mathrm{op}},\qquad
+d_{RX}^j=(d_X^{-j-1})^{\mathrm{op}}.
+\tag{6.6}
+\]">\[
+(RX)^j=(X^{-j})^{\mathrm{op}},\qquad
+d_{RX}^j=(d_X^{-j-1})^{\mathrm{op}}.
+\tag{6.6}
+\]</span>
+<p>This reverses a chain map <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span> into <span class="math" data-tex="\(RY\to RX\)">\(RY\to RX\)</span>. If its homotopy has components <span class="math" data-tex="\(h^j:X^j\to Y^{j-1}\)">\(h^j:X^j\to Y^{j-1}\)</span>, the reversed homotopy has components <span class="math" data-tex="\((h^{-j+1})^{\mathrm{op}}\)">\((h^{-j+1})^{\mathrm{op}}\)</span>; reversing the homotopy equation gives exactly the homotopy equation for (6.6). Kernels and cokernels exchange, and the abelian image comparison gives <span class="math" data-tex="\(H^j(RX)=(H^{-j}X)^{\mathrm{op}}\)">\(H^j(RX)=(H^{-j}X)^{\mathrm{op}}\)</span>. Thus this construction preserves quasi-isomorphisms, exchanges bounded-above and bounded-below complexes, preserves bounded complexes, and is an involution on the localized categories up to their chosen opposite identifications. Apply (6.4) in <span class="math" data-tex="\(\mathcal A^{\mathrm{op}}\)">\(\mathcal A^{\mathrm{op}}\)</span> and reverse it to get full faithfulness and essential surjectivity in (6.5). Their exactness follows independently from Proposition 6.1, so no unverified assertion about opposite cone signs is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The general comparisons (6.2) exist without the enlargement hypotheses. Those hypotheses prove the bounded equivalences just stated; no equivalence for arbitrary unbounded complexes is inferred from them alone.</p>
+<h2 id="7-four-graded-exercises-with-complete-solutions">7. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-a-class-that-is-not-cogenerating-introductory">Exercise 1 — A class that is not cogenerating (introductory)</h3>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be all vector spaces over a field <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> its finite-dimensional subcategory. Verify the alternative criterion of Theorem 2.1. Explain what it says for a bounded-below complex with finite-dimensional cohomology, why <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is not cogenerating, and why its replacement maps cannot in general be termwise monic.</p>
+<p><strong>Solution.</strong> Kernels and quotients of finite-dimensional spaces are finite-dimensional. An extension of spaces of dimensions <span class="math" data-tex="\(r,s\)">\(r,s\)</span> has dimension <span class="math" data-tex="\(r+s\)">\(r+s\)</span>, by choosing a basis in the subspace and lifting a quotient basis. Thus extension and monic-cokernel closure hold. For finite-dimensional <span class="math" data-tex="\(S\hookrightarrow W\)">\(S\hookrightarrow W\)</span>, extend a basis of <span class="math" data-tex="\(S\)">\(S\)</span> to one of <span class="math" data-tex="\(W\)">\(W\)</span>, and project onto the span of the first basis. The resulting <span class="math" data-tex="\(W\to S\)">\(W\to S\)</span> restricts to identity on <span class="math" data-tex="\(S\)">\(S\)</span>; this proves compatible enlargement. Theorem 2.1 therefore replaces every bounded-below complex with finite-dimensional cohomology by one whose terms are finite-dimensional.</p>
+<p>An infinite-dimensional space cannot embed in a finite-dimensional one: the images of any finite independent family under an embedding remain independent, contradicting the target's finite dimension when the family is large enough. Hence the class is not cogenerating. For the bounded-below acyclic complex <span class="math" data-tex="\(W\xrightarrow1W\)">\(W\xrightarrow1W\)</span> in degrees 0 and 1, with <span class="math" data-tex="\(W\)">\(W\)</span> infinite-dimensional, all cohomology is zero. Its class replacement exists (the zero complex is one), but no termwise monomorphism from it into finite-dimensional terms can exist. Finally, if a complex of finite-dimensional terms is quasi-isomorphic to <span class="math" data-tex="\(X\)">\(X\)</span>, every <span class="math" data-tex="\(H^nX\)">\(H^nX\)</span> is finite-dimensional, since it is a subquotient of its degree-<span class="math" data-tex="\(n\)">\(n\)</span> term. The finite-cohomology hypothesis is therefore necessary in this example.</p>
+<h3 id="exercise-2-cogeneration-without-bounded-representatives-intermediate">Exercise 2 — Cogeneration without bounded representatives (intermediate)</h3>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces and <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> its full subcategory of even-dimensional spaces. Prove that it is additive and cogenerating but fails (3.1) for every <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>. Construct a bounded-below class replacement of <span class="math" data-tex="\(k[0]\)">\(k[0]\)</span>, and prove that no bounded class complex represents <span class="math" data-tex="\(k[0]\)">\(k[0]\)</span>.</p>
+<p><strong>Solution.</strong> Zero and finite sums of even-dimensional spaces have even dimension, and the full subcategory inherits addition of maps. Every <span class="math" data-tex="\(V\)">\(V\)</span> embeds in <span class="math" data-tex="\(V\oplus V\)">\(V\oplus V\)</span> by its first inclusion, so it is cogenerating.</p>
+<p>Put <span class="math" data-tex="\(N:k^2\to k^2\)">\(N:k^2\to k^2\)</span>, <span class="math" data-tex="\(N(u,v)=(0,u)\)">\(N(u,v)=(0,u)\)</span>, and <span class="math" data-tex="\(p:k^2\to k\)">\(p:k^2\to k\)</span>, <span class="math" data-tex="\(p(u,v)=u\)">\(p(u,v)=u\)</span>. Then <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span> and <span class="math" data-tex="\(\operatorname{im}N=\ker N=\ker p=k(0,1)\)">\(\operatorname{im}N=\ker N=\ker p=k(0,1)\)</span>. For any <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, the sequence of <span class="math" data-tex="\(d\)">\(d\)</span> copies of <span class="math" data-tex="\(k^2\)">\(k^2\)</span>, joined by <span class="math" data-tex="\(N\)">\(N\)</span>, and ending in <span class="math" data-tex="\(p:k^2\to k\to0\)">\(p:k^2\to k\to0\)</span>, is exact at every term after the first. Its final object <span class="math" data-tex="\(k\)">\(k\)</span> has odd dimension. This disproves (3.1) for that <span class="math" data-tex="\(d\)">\(d\)</span>, including <span class="math" data-tex="\(d=1\)">\(d=1\)</span> where only the epimorphism is required. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the claim that every space has even dimension is already false.</p>
+<p>Let <span class="math" data-tex="\(Y^j=k^2\)">\(Y^j=k^2\)</span> for <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, zero otherwise, and <span class="math" data-tex="\(d_Y^j=N\)">\(d_Y^j=N\)</span> for <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>. Its degree-zero cohomology is <span class="math" data-tex="\(\ker N=k(0,1)\)">\(\ker N=k(0,1)\)</span>, and its higher cohomology is <span class="math" data-tex="\(\ker N/\operatorname{im}N=0\)">\(\ker N/\operatorname{im}N=0\)</span>. The map <span class="math" data-tex="\(k[0]\to Y\)">\(k[0]\to Y\)</span> sending <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\((0,t)\)">\((0,t)\)</span> in degree zero is a chain map and an isomorphism on every cohomology. It is the required bounded-below replacement.</p>
+<p>For a finite complex <span class="math" data-tex="\(T\)">\(T\)</span>, write <span class="math" data-tex="\(z_j=\dim Z^jT\)">\(z_j=\dim Z^jT\)</span>, <span class="math" data-tex="\(b_j=\dim B^jT\)">\(b_j=\dim B^jT\)</span>. The exact sequences defining cycles and cohomology give <span class="math" data-tex="\(\dim T^j=z_j+b_{j+1}\)">\(\dim T^j=z_j+b_{j+1}\)</span> and <span class="math" data-tex="\(z_j=\dim H^jT+b_j\)">\(z_j=\dim H^jT+b_j\)</span>. Taking the finite alternating sum cancels the two boundary sums, so</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\sum_j(-1)^j\dim T^j=\sum_j(-1)^j\dim H^jT.
+\tag{7.1}
+\]">\[
+\sum_j(-1)^j\dim T^j=\sum_j(-1)^j\dim H^jT.
+\tag{7.1}
+\]</span>
+<p>If all the terms are even-dimensional, the left side is even. A representative of <span class="math" data-tex="\(k[0]\)">\(k[0]\)</span> would have right side 1. This contradiction proves that no bounded class representative exists.</p>
+<h3 id="exercise-3-the-splice-boundary-and-its-signs-advanced">Exercise 3 — The splice boundary and its signs (advanced)</h3>
+<p>Take <span class="math" data-tex="\(\mathcal J=\mathcal A\)">\(\mathcal J=\mathcal A\)</span>, all <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces, so <span class="math" data-tex="\(d=0\)">\(d=0\)</span>. Let <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, <span class="math" data-tex="\(n&#x27;=-1\)">\(n&#x27;=-1\)</span>, <span class="math" data-tex="\(X=k[0]\)">\(X=k[0]\)</span>, and let <span class="math" data-tex="\(Y\)">\(Y\)</span> have <span class="math" data-tex="\(Y^{-1}=k^2\)">\(Y^{-1}=k^2\)</span>, <span class="math" data-tex="\(Y^0=k^3\)">\(Y^0=k^3\)</span>, differential <span class="math" data-tex="\((u,v)\mapsto(u,v,0)\)">\((u,v)\mapsto(u,v,0)\)</span>, and zero other terms. Let <span class="math" data-tex="\(f^0(t)=(0,0,t)\)">\(f^0(t)=(0,0,t)\)</span>. Compute its cone and the splice of Lemma 5.2. Show why cutting at <span class="math" data-tex="\(n+d\)">\(n+d\)</span> would not make the map identity in degree <span class="math" data-tex="\(n+d\)">\(n+d\)</span>.</p>
+<p><strong>Solution.</strong> The map is a quasi-isomorphism: <span class="math" data-tex="\(H^{-1}Y=0\)">\(H^{-1}Y=0\)</span>, and <span class="math" data-tex="\(H^0Y=k^3/(k^2\oplus0)\)">\(H^0Y=k^3/(k^2\oplus0)\)</span> identifies with <span class="math" data-tex="\(k\)">\(k\)</span> by its last coordinate, under which <span class="math" data-tex="\(H^0f\)">\(H^0f\)</span> is identity. Formula (0.1) gives <span class="math" data-tex="\(M^{-1}=k^2\oplus k\)">\(M^{-1}=k^2\oplus k\)</span>, <span class="math" data-tex="\(M^0=k^3\)">\(M^0=k^3\)</span>, with differential <span class="math" data-tex="\((u,v,t)\mapsto(u,v,t)\)">\((u,v,t)\mapsto(u,v,t)\)</span>. The other terms vanish. Thus the cone is acyclic, <span class="math" data-tex="\(\ker d_M^{-1}=0\)">\(\ker d_M^{-1}=0\)</span>, and <span class="math" data-tex="\(\ker d_M^0=k^3\)">\(\ker d_M^0=k^3\)</span>.</p>
+<p>The correct cut is <span class="math" data-tex="\(a=n+d-1=-1\)">\(a=n+d-1=-1\)</span>. Formula (5.4) gives <span class="math" data-tex="\(Z^{-1}=0\)">\(Z^{-1}=0\)</span>, <span class="math" data-tex="\(Z^0=k\)">\(Z^0=k\)</span>, zero other terms, so <span class="math" data-tex="\(Z=X\)">\(Z=X\)</span>. At degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, the source of <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span> is zero; at degree 0, (5.6) gives <span class="math" data-tex="\(q^0=1_k\)">\(q^0=1_k\)</span>. The map <span class="math" data-tex="\(p^0\)">\(p^0\)</span> is the inclusion of the third coordinate, and <span class="math" data-tex="\(pq=f\)">\(pq=f\)</span>. All differentials of <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span> are zero, so the chain equations and cohomology maps are precisely these identities.</p>
+<p>If instead one cut at <span class="math" data-tex="\(a=0=n+d\)">\(a=0=n+d\)</span>, the cut term would be <span class="math" data-tex="\(\ker d_M^0=k^3\)">\(\ker d_M^0=k^3\)</span>. The prescribed cut component would be <span class="math" data-tex="\(q^0(t)=(0,0,t)\)">\(q^0(t)=(0,0,t)\)</span>, because <span class="math" data-tex="\(d_X^0=0\)">\(d_X^0=0\)</span>. It is not an isomorphism, much less an identity, even though it induces the right cohomology after the retained lower differential. Such a cut fixes only the strictly higher degrees. Moving the cut to <span class="math" data-tex="\(n+d-1\)">\(n+d-1\)</span> proves the stronger fixed-degree range in the lemma.</p>
+<h3 id="exercise-4-two-intrinsic-comparisons-advanced">Exercise 4 — Two intrinsic comparisons (advanced)</h3>
+<p>For all <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and finite-dimensional spaces <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, prove both enlargement hypotheses of Theorem 6.2 and all three bounded comparison equivalences. For a bounded complex <span class="math" data-tex="\(X\)">\(X\)</span> of arbitrary vector spaces with finite-dimensional cohomology, exhibit a bounded <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>-complex representing it. Explain why a claim about its terms' dimensions alone would not prove full faithfulness of the derived comparison.</p>
+<p><strong>Solution.</strong> Subobjects, quotients and extensions of finite-dimensional spaces are finite-dimensional by the basis argument of Exercise 1; the full subcategory is therefore thick. Its monomorphism enlargement is the basis projection constructed there. Given an epimorphism <span class="math" data-tex="\(W\to S\)">\(W\to S\)</span> with <span class="math" data-tex="\(S\)">\(S\)</span> finite-dimensional, lift a finite basis of <span class="math" data-tex="\(S\)">\(S\)</span> to <span class="math" data-tex="\(W\)">\(W\)</span>. Those lifts are independent, since applying the epimorphism to a linear relation gives a relation among the basis vectors. Their finite span <span class="math" data-tex="\(B\subset W\)">\(B\subset W\)</span> maps isomorphically onto <span class="math" data-tex="\(S\)">\(S\)</span>. Thus <span class="math" data-tex="\(B\hookrightarrow W\)">\(B\hookrightarrow W\)</span> is the required epimorphism enlargement.</p>
+<p>Theorem 6.2 gives <span class="math" data-tex="\(D^+(\mathcal B)\simeq D^+_{\mathcal B}(\mathcal A)\)">\(D^+(\mathcal B)\simeq D^+_{\mathcal B}(\mathcal A)\)</span>, <span class="math" data-tex="\(D^-(\mathcal B)\simeq D^-_{\mathcal B}(\mathcal A)\)">\(D^-(\mathcal B)\simeq D^-_{\mathcal B}(\mathcal A)\)</span>, and <span class="math" data-tex="\(D^b(\mathcal B)\simeq D^b_{\mathcal B}(\mathcal A)\)">\(D^b(\mathcal B)\simeq D^b_{\mathcal B}(\mathcal A)\)</span>. To exhibit a bounded representative, choose vector-space splittings <span class="math" data-tex="\(Z^jX=B^jX\oplus H_j\)">\(Z^jX=B^jX\oplus H_j\)</span> and <span class="math" data-tex="\(X^j=Z^jX\oplus L_j\)">\(X^j=Z^jX\oplus L_j\)</span>. The restriction <span class="math" data-tex="\(d_X^j:L_j\to B^{j+1}X\)">\(d_X^j:L_j\to B^{j+1}X\)</span> is an isomorphism: its kernel is <span class="math" data-tex="\(L_j\cap Z^jX=0\)">\(L_j\cap Z^jX=0\)</span>, and its image is all of <span class="math" data-tex="\(B^{j+1}X\)">\(B^{j+1}X\)</span>. Thus <span class="math" data-tex="\(X\)">\(X\)</span> is the direct sum, degreewise, of the zero-differential complex with terms <span class="math" data-tex="\(H_j\simeq H^jX\)">\(H_j\simeq H^jX\)</span> and the two-term identity complexes supplied by these isomorphisms. Explicitly, define <span class="math" data-tex="\(h^j:X^j\to X^{j-1}\)">\(h^j:X^j\to X^{j-1}\)</span> by projecting onto <span class="math" data-tex="\(B^jX\)">\(B^jX\)</span>, applying <span class="math" data-tex="\((d_X^{j-1}|_{L_{j-1}})^{-1}\)">\((d_X^{j-1}|_{L_{j-1}})^{-1}\)</span>, and including <span class="math" data-tex="\(L_{j-1}\)">\(L_{j-1}\)</span>. The composite <span class="math" data-tex="\(d_X^{j-1}h^j\)">\(d_X^{j-1}h^j\)</span> is identity on <span class="math" data-tex="\(B^jX\)">\(B^jX\)</span> and zero on the other summands; <span class="math" data-tex="\(h^{j+1}d_X^j\)">\(h^{j+1}d_X^j\)</span> is identity on <span class="math" data-tex="\(L_j\)">\(L_j\)</span> and zero on the other summands. If <span class="math" data-tex="\(i,p\)">\(i,p\)</span> are inclusion and projection of the <span class="math" data-tex="\(H_j\)">\(H_j\)</span>-complex, this proves <span class="math" data-tex="\(1_X-ip=d_Xh+hd_X\)">\(1_X-ip=d_Xh+hd_X\)</span>, while <span class="math" data-tex="\(pi=1\)">\(pi=1\)</span>. Both <span class="math" data-tex="\(i,p\)">\(i,p\)</span> are chain maps. Hence the finite complex <span class="math" data-tex="\(\bigoplus_jH^jX[-j]\)">\(\bigoplus_jH^jX[-j]\)</span>, with zero differential, is a bounded finite-dimensional representative.</p>
+<p>This construction gives essential surjectivity for the example. Full faithfulness additionally concerns every derived arrow and every equality between arrows. A mere count of term dimensions supplies neither. In the proof of Lemma 2.2 and Theorem 6.2, quasi-isomorphic denominator targets and common equality witnesses are replaced inside <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, preserving the actual homotopy classes. That argument proves surjectivity and injectivity of the Hom comparison, completing the equivalences.</p>
+<h2 id="freely-accessible-references">Freely accessible references</h2>
+<p><a href="https://stacks.math.columbia.edu/tag/013R">Stacks, Tag 013R</a> gives the bounded-below injective null-homotopy test. The complete component calculation is also in the earlier roof lesson and Section 4 here. <a href="https://stacks.math.columbia.edu/tag/06UP">Stacks, Section 13.17, Tag 06UP</a> treats cohomology-defined triangulated subcategories and gives a bounded-above comparison under a subobject epimorphism condition. Its condition implies the epimorphism enlargement of Theorem 6.2 by using the subobject inclusion. Our proof states both variances and the bounded restriction with their maps. The general additive-class replacements, finite cutoff and explicit unbounded splice are proved in Sections 1–5.</p>
+</main></body></html>

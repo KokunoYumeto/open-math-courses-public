@@ -1,6 +1,6 @@
 # Weak-star Arveson localization for real automorphism actions
 
-*Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\) be an arbitrary von Neumann algebra and \(\alpha:\mathbb R\to\operatorname{Aut}(M)\) a group of normal \(*\)-automorphisms such that \(t\mapsto\omega(\alpha_t(x))\) is continuous for every \(x\in M\), \(\omega\in M_*\). No norm continuity of \(\alpha\), separability of \(M_*\), faithful state, or countable Hilbert dimension is assumed unless stated in the separate GNS application.
 

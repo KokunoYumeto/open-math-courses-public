@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The original local cascade and its full viscous dynamics — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/the-original-local-cascade-and-its-full-viscous-dynamics.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-37.html">Previous lesson</a><a href="NS-FLUID-39.html">Next lesson</a></nav><article class="lesson"><h1 id="the-original-local-cascade-and-its-full-viscous-dynamics">The original local cascade and its full viscous dynamics</h1>
+<p>How can a precisely defined operator transfer energy between selected fluid
+fields? This lesson constructs the local-cascade operators introduced by
+Terence Tao in <a href="https://arxiv.org/abs/1402.0290v3">arXiv:1402.0290v3</a>,
+original navier-blowup.tex, lines 450–474. We keep every original scale,
+Fourier weight and field norm. The complete analysis and synthesis maps
+give a sharp Sobolev range and actual local trajectories.</p>
+<p>We then construct explicit real divergence-free fields and an exact pump
+that transfers energy between them. Its full pressure and force give an
+actual solution of the original positive-viscosity Navier–Stokes equation.
+The five solved exercises also prove the complex averaging operations
+from original source lines 502–564, solve all data on the pump plane,
+calculate the complete diffusion defect, and construct the larger space
+that supports the pump's own global viscous evolution.</p>
+<p>The full averaging, Fourier and original-pressure maps used here are in
+<a href="NS-FLUID-37.html">lesson 37</a>.
+Its MB labels refer to the precise formulas there. Product and Fourier
+estimates are supplied in
+<a href="NS-FLUID-35.html">lesson 35</a>.
+All CC and EX formulas below are proved in this lesson.</p>
+<p>These constructions supply prerequisites for the later cascade.
+The complete representation of every relevant local cascade as an
+averaged Euler operator and the finite-time blowup dynamics remain to
+be proved in the following lessons.</p>
+<h2 id="cc1-retain-every-scale-and-construct-both-coefficient-maps">CC1. Retain every scale and construct both coefficient maps</h2>
+<p>Fix <span class="math" data-tex="\(0&lt;\epsilon_0&lt;1/2\)">\(0&lt;\epsilon_0&lt;1/2\)</span>, and retain <span class="math" data-tex="\(q=1+\epsilon_0\)">\(q=1+\epsilon_0\)</span>, <span class="math" data-tex="\(L=1-2\epsilon_0&gt;0\)">\(L=1-2\epsilon_0&gt;0\)</span>, <span class="math" data-tex="\(U=1+2\epsilon_0\)">\(U=1+2\epsilon_0\)</span>. This includes the sufficiently small parameter used in the source averaging argument. The following annular proof concerns these actual parameters; it does not assert the same annular argument when <span class="math" data-tex="\(L\leq0\)">\(L\leq0\)</span>.</p>
+<p>Use the source Fourier transform with exponential <span class="math" data-tex="\(e^{-2\pi i x\cdot\xi}\)">\(e^{-2\pi i x\cdot\xi}\)</span>. The physical Sobolev norm remains</p>
+<span class="math math-display" data-tex="\[
+\|u\|_{H^s}^2=\int_{\mathbb R^3}(1+4\pi^2|\xi|^2)^s|\widehat u(\xi)|^2\,d\xi.
+\tag{CC1}
+\]">\[
+\|u\|_{H^s}^2=\int_{\mathbb R^3}(1+4\pi^2|\xi|^2)^s|\widehat u(\xi)|^2\,d\xi.
+\tag{CC1}
+\]</span>
+<p>Let the original real Schwartz functions <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> have the source support <span class="math" data-tex="\(L\leq|\xi|\leq U\)">\(L\leq|\xi|\leq U\)</span>. Define <span class="math" data-tex="\(\phi_i=P\psi_i\)">\(\phi_i=P\psi_i\)</span>, with <span class="math" data-tex="\(P(\xi)=I-\xi\otimes\xi/|\xi|^2\)">\(P(\xi)=I-\xi\otimes\xi/|\xi|^2\)</span>. On that annulus this multiplier is smooth. Thus <span class="math" data-tex="\(\phi_i\)">\(\phi_i\)</span> remains real Schwartz, with the same permitted Fourier support, and is solenoidal. For every solenoidal <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(\langle u,\psi_i\rangle=\langle u,\phi_i\rangle\)">\(\langle u,\psi_i\rangle=\langle u,\phi_i\rangle\)</span>, by self-adjointness of <span class="math" data-tex="\(P\)">\(P\)</span>. This identity also holds for distributional Sobolev pairings by density. Keep the original dilations</p>
+<span class="math math-display" data-tex="\[
+\phi_{i,n}(x)=q^{3n/2}\phi_i(q^n x),\quad
+\widehat{\phi_{i,n}}(\xi)=q^{-3n/2}\widehat\phi_i(q^{-n}\xi),\quad
+A_n=\{\xi:Lq^n\leq|\xi|\leq Uq^n\}.
+\tag{CC2}
+\]">\[
+\phi_{i,n}(x)=q^{3n/2}\phi_i(q^n x),\quad
+\widehat{\phi_{i,n}}(\xi)=q^{-3n/2}\widehat\phi_i(q^{-n}\xi),\quad
+A_n=\{\xi:Lq^n\leq|\xi|\leq Uq^n\}.
+\tag{CC2}
+\]</span>
+<p>Each <span class="math" data-tex="\(\phi_{i,n}\)">\(\phi_{i,n}\)</span> has the original norm <span class="math" data-tex="\(\|\phi_i\|_2\)">\(\|\phi_i\|_2\)</span>, without any unit-norm replacement. A nonzero frequency belongs to at most</p>
+<span class="math math-display" data-tex="\[
+J=\left\lfloor\frac{\log(U/L)}{\log q}\right\rfloor+1
+\tag{CC3}
+\]">\[
+J=\left\lfloor\frac{\log(U/L)}{\log q}\right\rfloor+1
+\tag{CC3}
+\]</span>
+<p>annuli. Indeed its possible integer indices lie in the closed interval
+<span class="math" data-tex="\([\log_q(|\xi|/U),\log_q(|\xi|/L)]\)">\([\log_q(|\xi|/U),\log_q(|\xi|/L)]\)</span>; an interval of length <span class="math" data-tex="\(\ell\)">\(\ell\)</span> contains at most <span class="math" data-tex="\(\lfloor\ell\rfloor+1\)">\(\lfloor\ell\rfloor+1\)</span> integers.</p>
+<p>For each real <span class="math" data-tex="\(s\)">\(s\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w_s(n)=(1+q^{2n})^{s/2},\quad
+a_s=\max\{1,(2\pi L)^{-s},(2\pi U)^{-s}\},\\
+b_s=\max\{1,(2\pi L)^s,(2\pi U)^s\},\quad
+\|c\|_{\ell^2_s}^2=\sum_{n\in\mathbb Z}w_s(n)^2|c_n|^2.
+\end{gathered}
+\tag{CC4}
+\]">\[
+\begin{gathered}
+w_s(n)=(1+q^{2n})^{s/2},\quad
+a_s=\max\{1,(2\pi L)^{-s},(2\pi U)^{-s}\},\\
+b_s=\max\{1,(2\pi L)^s,(2\pi U)^s\},\quad
+\|c\|_{\ell^2_s}^2=\sum_{n\in\mathbb Z}w_s(n)^2|c_n|^2.
+\end{gathered}
+\tag{CC4}
+\]</span>
+<p>The complete analysis and synthesis bounds are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|(\langle u,\phi_{i,n}\rangle)_n\|_{\ell^2_s}
+\leq\sqrt J\,a_s\|\phi_i\|_2\|u\|_{H^s},\\
+\left\|\sum_n c_n\phi_{i,n}\right\|_{H^s}
+\leq\sqrt J\,b_s\|\phi_i\|_2\|c\|_{\ell^2_s}.
+\end{gathered}
+\tag{CC5}
+\]">\[
+\begin{gathered}
+\|(\langle u,\phi_{i,n}\rangle)_n\|_{\ell^2_s}
+\leq\sqrt J\,a_s\|\phi_i\|_2\|u\|_{H^s},\\
+\left\|\sum_n c_n\phi_{i,n}\right\|_{H^s}
+\leq\sqrt J\,b_s\|\phi_i\|_2\|c\|_{\ell^2_s}.
+\end{gathered}
+\tag{CC5}
+\]</span>
+<p>Here is a proof retaining both full weights. On <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, write <span class="math" data-tex="\(|\xi|=r q^n\)">\(|\xi|=r q^n\)</span> with <span class="math" data-tex="\(L\leq r\leq U\)">\(L\leq r\leq U\)</span>. The ratio
+<span class="math" data-tex="\((1+4\pi^2r^2q^{2n})/(1+q^{2n})\)">\((1+4\pi^2r^2q^{2n})/(1+q^{2n})\)</span> lies between 1 and <span class="math" data-tex="\((2\pi r)^2\)">\((2\pi r)^2\)</span>. Raising it to any real power gives</p>
+<span class="math math-display" data-tex="\[
+w_s(n)(1+4\pi^2|\xi|^2)^{-s/2}\leq a_s,\qquad
+(1+4\pi^2|\xi|^2)^{s/2}w_s(n)^{-1}\leq b_s.
+\]">\[
+w_s(n)(1+4\pi^2|\xi|^2)^{-s/2}\leq a_s,\qquad
+(1+4\pi^2|\xi|^2)^{s/2}w_s(n)^{-1}\leq b_s.
+\]</span>
+<p>Weighted Cauchy–Schwarz on <span class="math" data-tex="\(A_n\)">\(A_n\)</span> therefore bounds
+<span class="math" data-tex="\(w_s(n)^2|\langle u,\phi_{i,n}\rangle|^2\)">\(w_s(n)^2|\langle u,\phi_{i,n}\rangle|^2\)</span> by
+<span class="math" data-tex="\(a_s^2\|\phi_i\|_2^2\int_{A_n}(1+4\pi^2|\xi|^2)^s|\widehat u|^2d\xi\)">\(a_s^2\|\phi_i\|_2^2\int_{A_n}(1+4\pi^2|\xi|^2)^s|\widehat u|^2d\xi\)</span>.
+Summation and CC3 prove analysis. For a finite synthesis sum, pointwise Cauchy–Schwarz among at most <span class="math" data-tex="\(J\)">\(J\)</span> nonzero Fourier terms gives</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_n c_n\widehat{\phi_{i,n}}(\xi)\right|^2
+\leq J\sum_n |c_n|^2|\widehat{\phi_{i,n}}(\xi)|^2.
+\]">\[
+\left|\sum_n c_n\widehat{\phi_{i,n}}(\xi)\right|^2
+\leq J\sum_n |c_n|^2|\widehat{\phi_{i,n}}(\xi)|^2.
+\]</span>
+<p>Multiply by the full CC1 weight, use its second comparison and integrate. This proves the finite bound. Applying it to every finite tail proves unconditional convergence in <span class="math" data-tex="\(H^s\)">\(H^s\)</span> for every <span class="math" data-tex="\(c\in\ell^2_s\)">\(c\in\ell^2_s\)</span> and proves the asserted synthesis map.</p>
+<h2 id="cc2-construct-the-entire-bilinear-map-and-identify-its-exact-threshold">CC2. Construct the entire bilinear map and identify its exact threshold</h2>
+<p>Write <span class="math" data-tex="\(p=5/2\)">\(p=5/2\)</span>. For real orders <span class="math" data-tex="\(s_1,s_2,s\)">\(s_1,s_2,s\)</span> with <span class="math" data-tex="\(d=s_1+s_2-s\geq p\)">\(d=s_1+s_2-s\geq p\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_d(q)=\sup_{n\in\mathbb Z}
+\frac{q^{pn}}{(1+q^{2n})^{d/2}},\\
+C(u,v)=\sum_{n\in\mathbb Z}q^{5n/2}
+\langle u,\phi_{1,n}\rangle\langle v,\phi_{2,n}\rangle\phi_{3,n}.
+\end{gathered}
+\tag{CC6}
+\]">\[
+\begin{gathered}
+K_d(q)=\sup_{n\in\mathbb Z}
+\frac{q^{pn}}{(1+q^{2n})^{d/2}},\\
+C(u,v)=\sum_{n\in\mathbb Z}q^{5n/2}
+\langle u,\phi_{1,n}\rangle\langle v,\phi_{2,n}\rangle\phi_{3,n}.
+\end{gathered}
+\tag{CC6}
+\]</span>
+<p>This is a genuine unconditionally convergent <span class="math" data-tex="\(H^s_\sigma\)">\(H^s_\sigma\)</span> series, with</p>
+<span class="math math-display" data-tex="\[
+\|C(u,v)\|_{H^s}\leq
+J^{3/2}a_{s_1}a_{s_2}b_s
+\|\phi_1\|_2\|\phi_2\|_2\|\phi_3\|_2
+K_d(q)\|u\|_{H^{s_1}}\|v\|_{H^{s_2}}.
+\tag{CC7}
+\]">\[
+\|C(u,v)\|_{H^s}\leq
+J^{3/2}a_{s_1}a_{s_2}b_s
+\|\phi_1\|_2\|\phi_2\|_2\|\phi_3\|_2
+K_d(q)\|u\|_{H^{s_1}}\|v\|_{H^{s_2}}.
+\tag{CC7}
+\]</span>
+<p>To prove it, write <span class="math" data-tex="\(a_n=\langle u,\phi_{1,n}\rangle\)">\(a_n=\langle u,\phi_{1,n}\rangle\)</span>, <span class="math" data-tex="\(b_n=\langle v,\phi_{2,n}\rangle\)">\(b_n=\langle v,\phi_{2,n}\rangle\)</span>. The weighted output coefficient equals</p>
+<span class="math math-display" data-tex="\[
+w_s(n)q^{pn}a_nb_n
+=\frac{q^{pn}}{(1+q^{2n})^{d/2}}
+\bigl(w_{s_1}(n)a_n\bigr)\bigl(w_{s_2}(n)b_n\bigr).
+\]">\[
+w_s(n)q^{pn}a_nb_n
+=\frac{q^{pn}}{(1+q^{2n})^{d/2}}
+\bigl(w_{s_1}(n)a_n\bigr)\bigl(w_{s_2}(n)b_n\bigr).
+\]</span>
+<p>The norm of a pointwise product in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> is bounded by the product of its two <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> norms: square and sum, then bound the supremum of one squared sequence by its sum. Apply both analysis bounds and the synthesis bound CC5. This proves CC7 and convergence. For the original <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> inputs, pairing with <span class="math" data-tex="\(w\in H^{10}_\sigma\)">\(w\in H^{10}_\sigma\)</span> gives precisely the source trilinear definition, because each projected pairing equals its original <span class="math" data-tex="\(\psi\)">\(\psi\)</span> pairing. Absolute convergence of this scalar series also follows by Cauchy–Schwarz between its weighted coefficient and the corresponding dual-weight analysis sequence.</p>
+<p>Every finite linear combination of source basic operators therefore has the same mapping range, with constant the sum of the absolute linear coefficients times their CC7 constants. The original source's <span class="math" data-tex="\(H^{10}\times H^{10}\to L^2\)">\(H^{10}\times H^{10}\to L^2\)</span> map in particular has the stronger target <span class="math" data-tex="\(H^{35/2}\)">\(H^{35/2}\)</span>. Also <span class="math" data-tex="\(H^{5/2}\times H^{5/2}\to H^{5/2}\)">\(H^{5/2}\times H^{5/2}\to H^{5/2}\)</span> is bounded. No factor or original operator has been replaced by these estimates.</p>
+<p>The full discrete constant can be evaluated exactly. If <span class="math" data-tex="\(d=p\)">\(d=p\)</span>, then <span class="math" data-tex="\(K_d(q)=1\)">\(K_d(q)=1\)</span>, approached as <span class="math" data-tex="\(n\to+\infty\)">\(n\to+\infty\)</span>. If <span class="math" data-tex="\(d&gt;p\)">\(d&gt;p\)</span>, retain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+y_*=\sqrt{\frac{p}{d-p}},\quad
+n_-=\lfloor\log_q y_*\rfloor,\quad n_+=\lceil\log_q y_*\rceil,\\
+K_d(q)=\max\left\{
+\frac{q^{pn_-}}{(1+q^{2n_-})^{d/2}},
+\frac{q^{pn_+}}{(1+q^{2n_+})^{d/2}}\right\}.
+\end{gathered}
+\tag{CC8}
+\]">\[
+\begin{gathered}
+y_*=\sqrt{\frac{p}{d-p}},\quad
+n_-=\lfloor\log_q y_*\rfloor,\quad n_+=\lceil\log_q y_*\rceil,\\
+K_d(q)=\max\left\{
+\frac{q^{pn_-}}{(1+q^{2n_-})^{d/2}},
+\frac{q^{pn_+}}{(1+q^{2n_+})^{d/2}}\right\}.
+\end{gathered}
+\tag{CC8}
+\]</span>
+<p>Indeed the logarithmic derivative of <span class="math" data-tex="\(h(y)=y^p(1+y^2)^{-d/2}\)">\(h(y)=y^p(1+y^2)^{-d/2}\)</span> is
+<span class="math" data-tex="\([p+(p-d)y^2]/[y(1+y^2)]\)">\([p+(p-d)y^2]/[y(1+y^2)]\)</span>. It is positive before <span class="math" data-tex="\(y_*\)">\(y_*\)</span> and negative after. Thus the discrete maximum is at one of the displayed original scales. The continuous maximum is not substituted for the exact discrete one.</p>
+<p>For <span class="math" data-tex="\(\lambda=q^k\)">\(\lambda=q^k\)</span>, <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>, the actual coefficient identity is
+<span class="math" data-tex="\(\langle\operatorname{Dil}_\lambda u,\phi_{i,n}\rangle
+=\langle u,\phi_{i,n-k}\rangle\)">\(\langle\operatorname{Dil}_\lambda u,\phi_{i,n}\rangle
+=\langle u,\phi_{i,n-k}\rangle\)</span>.
+Changing the index in the norm-convergent series gives</p>
+<span class="math math-display" data-tex="\[
+C(\operatorname{Dil}_\lambda u,\operatorname{Dil}_\lambda v)
+=\lambda^{5/2}\operatorname{Dil}_\lambda C(u,v).
+\tag{CC9}
+\]">\[
+C(\operatorname{Dil}_\lambda u,\operatorname{Dil}_\lambda v)
+=\lambda^{5/2}\operatorname{Dil}_\lambda C(u,v).
+\tag{CC9}
+\]</span>
+<p>Every finite linear combination retains CC9. This is a discrete covariance of the exact operator, without a change in coordinates or discarded amplitudes.</p>
+<p>For any nonzero such operator, <span class="math" data-tex="\(s_1+s_2-s\geq5/2\)">\(s_1+s_2-s\geq5/2\)</span> is also necessary for boundedness <span class="math" data-tex="\(H^{s_1}_\sigma\times H^{s_2}_\sigma\to H^s_\sigma\)">\(H^{s_1}_\sigma\times H^{s_2}_\sigma\to H^s_\sigma\)</span>. First choose solenoidal real Schwartz inputs with smooth compact Fourier support away from zero and <span class="math" data-tex="\(F=C(u,v)\ne0\)">\(F=C(u,v)\ne0\)</span>. Such inputs exist: they are dense in <span class="math" data-tex="\(H^{10}_\sigma\)">\(H^{10}_\sigma\)</span>, by Fourier truncation, smoothing, real symmetrization and the smooth Leray projection away from zero; CC7 with output <span class="math" data-tex="\(L^2\)">\(L^2\)</span> would otherwise force <span class="math" data-tex="\(C=0\)">\(C=0\)</span> on its original domain. Only finitely many indices meet the supports of these inputs. Thus <span class="math" data-tex="\(F\)">\(F\)</span> too is Schwartz with compact Fourier support away from zero.</p>
+<p>For each of these nonzero fields and any real <span class="math" data-tex="\(r\)">\(r\)</span>, the exact dilation formula gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda^{-2r}\|\operatorname{Dil}_\lambda f\|_{H^r}^2
+=\int_{\mathbb R^3}(\lambda^{-2}+4\pi^2|\xi|^2)^r|\widehat f(\xi)|^2d\xi\\
+\longrightarrow\int_{\mathbb R^3}(4\pi^2|\xi|^2)^r|\widehat f(\xi)|^2d\xi
+\quad(\lambda=q^k\to+\infty).
+\end{gathered}
+\tag{CC10}
+\]">\[
+\begin{gathered}
+\lambda^{-2r}\|\operatorname{Dil}_\lambda f\|_{H^r}^2
+=\int_{\mathbb R^3}(\lambda^{-2}+4\pi^2|\xi|^2)^r|\widehat f(\xi)|^2d\xi\\
+\longrightarrow\int_{\mathbb R^3}(4\pi^2|\xi|^2)^r|\widehat f(\xi)|^2d\xi
+\quad(\lambda=q^k\to+\infty).
+\end{gathered}
+\tag{CC10}
+\]</span>
+<p>Uniform boundedness on the fixed compact annulus proves this limit for positive and negative <span class="math" data-tex="\(r\)">\(r\)</span>. It is a limit of the original inhomogeneous norm, not a replacement of that norm in the operator. Apply the hypothetical boundedness estimate to the actual dilated inputs, use CC9, and divide by <span class="math" data-tex="\(\lambda^{s_1+s_2}\)">\(\lambda^{s_1+s_2}\)</span>. The left side is a positive limiting coefficient times <span class="math" data-tex="\(\lambda^{5/2+s-s_1-s_2}\)">\(\lambda^{5/2+s-s_1-s_2}\)</span>, whereas the right side has a finite limit. Its exponent cannot be positive. This proves necessity, hence the full sharp mapping range for every nonzero local cascade in this annular class. The zero operator is explicitly excluded from that necessity statement.</p>
+<h2 id="cc3-construct-its-local-evolution-without-assuming-later-cascade-dynamics">CC3. Construct its local evolution without assuming later cascade dynamics</h2>
+<p>Fix any actual finite local cascade <span class="math" data-tex="\(C\)">\(C\)</span>, original <span class="math" data-tex="\(\nu\geq0\)">\(\nu\geq0\)</span>, and <span class="math" data-tex="\(u_0\in H^{5/2}_\sigma\)">\(u_0\in H^{5/2}_\sigma\)</span>. Let <span class="math" data-tex="\(K_C\)">\(K_C\)</span> be the finite CC7 coefficient, summed over its basic terms, for all three orders <span class="math" data-tex="\(5/2\)">\(5/2\)</span>. If <span class="math" data-tex="\(M=\|u_0\|_{H^{5/2}}&gt;0\)">\(M=\|u_0\|_{H^{5/2}}&gt;0\)</span> and <span class="math" data-tex="\(K_C&gt;0\)">\(K_C&gt;0\)</span>, take <span class="math" data-tex="\(T=(8K_CM)^{-1}\)">\(T=(8K_CM)^{-1}\)</span>. The complete equation is</p>
+<span class="math math-display" data-tex="\[
+u(t)=e^{\nu t\Delta}u_0+
+\int_0^t e^{\nu(t-r)\Delta}C(u(r),u(r))\,dr.
+\tag{CC11}
+\]">\[
+u(t)=e^{\nu t\Delta}u_0+
+\int_0^t e^{\nu(t-r)\Delta}C(u(r),u(r))\,dr.
+\tag{CC11}
+\]</span>
+<p>The heat map is a strongly continuous contraction in the full CC1 norm; dominated convergence of its multiplier proves strong continuity, including <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>. On the closed radius-<span class="math" data-tex="\(2M\)">\(2M\)</span> ball in <span class="math" data-tex="\(C([0,T];H^{5/2}_\sigma)\)">\(C([0,T];H^{5/2}_\sigma)\)</span>, CC7 bounds the image by <span class="math" data-tex="\(M+4K_CM^2T=3M/2\)">\(M+4K_CM^2T=3M/2\)</span> and its Lipschitz constant by <span class="math" data-tex="\(4K_CMT=1/2\)">\(4K_CMT=1/2\)</span>. Consecutive Picard differences therefore form a uniformly convergent geometric series. Its limit solves CC11. Every iterate is real and solenoidal. The bilinear difference identity proves uniqueness first in this ball, then on the entire continuous class by successive short intervals where both trajectories are bounded. Restarting gives the maximal interval, and any bounded sequence of norms tending to a finite endpoint contradicts maximality by the common positive lifespan. Zero data give the unique zero solution; <span class="math" data-tex="\(K_C=0\)">\(K_C=0\)</span> gives the heat solution.</p>
+<p>This solution is <span class="math" data-tex="\(C^1H^{1/2}\)">\(C^1H^{1/2}\)</span>, including a one-sided initial derivative. In fact <span class="math" data-tex="\(\nu\Delta:H^{5/2}\to H^{1/2}\)">\(\nu\Delta:H^{5/2}\to H^{1/2}\)</span> is bounded by <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, since <span class="math" data-tex="\(4\pi^2|\xi|^2/(1+4\pi^2|\xi|^2)\leq1\)">\(4\pi^2|\xi|^2/(1+4\pi^2|\xi|^2)\leq1\)</span>. Differentiate the heat term and the convolution in this lower space by dominated convergence. The resulting equation is <span class="math" data-tex="\(u_t=\nu\Delta u+C(u,u)\)">\(u_t=\nu\Delta u+C(u,u)\)</span>.</p>
+<p>If the actual operator has the cancellation <span class="math" data-tex="\(\langle C(v,v),v\rangle=0\)">\(\langle C(v,v),v\rangle=0\)</span> on <span class="math" data-tex="\(H^{5/2}\)">\(H^{5/2}\)</span>, this proved regularity permits the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> pairing and gives</p>
+<span class="math math-display" data-tex="\[
+\frac12\|u(t)\|_2^2+\nu\int_0^t\|\nabla u(r)\|_2^2dr
+=\frac12\|u_0\|_2^2.
+\tag{CC12}
+\]">\[
+\frac12\|u(t)\|_2^2+\nu\int_0^t\|\nabla u(r)\|_2^2dr
+=\frac12\|u_0\|_2^2.
+\tag{CC12}
+\]</span>
+<p>Cancellation known on the dense original <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> subspace extends to <span class="math" data-tex="\(H^{5/2}\)">\(H^{5/2}\)</span> by CC7 and continuity of the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> pairing. This is a local construction and energy identity. The later infinite cascade and its finite-time endpoint still require their own complete proof.</p>
+<h2 id="cc4-construct-nonzero-fields-and-a-complete-energy-transfer-trajectory">CC4. Construct nonzero fields and a complete energy-transfer trajectory</h2>
+<p>The preceding statements have concrete nonzero examples. Retain
+<span class="math" data-tex="\(\delta=\epsilon_0/[8(1+\epsilon_0)]\)">\(\delta=\epsilon_0/[8(1+\epsilon_0)]\)</span>, and define the actual even real bump</p>
+<span class="math math-display" data-tex="\[
+\chi(\xi)=
+\begin{cases}
+\exp[-1/(\delta^2-|\xi|^2)],&amp;|\xi|&lt;\delta,\\
+0,&amp;|\xi|\geq\delta.
+\end{cases}
+\]">\[
+\chi(\xi)=
+\begin{cases}
+\exp[-1/(\delta^2-|\xi|^2)],&amp;|\xi|&lt;\delta,\\
+0,&amp;|\xi|\geq\delta.
+\end{cases}
+\]</span>
+<p>Every derivative inside the ball is a finite sum of polynomials in <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and powers of <span class="math" data-tex="\((\delta^2-|\xi|^2)^{-1}\)">\((\delta^2-|\xi|^2)^{-1}\)</span> times its exponential. The limit <span class="math" data-tex="\(t^{-m}e^{-1/t}\to0\)">\(t^{-m}e^{-1/t}\to0\)</span> as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>, for every integer <span class="math" data-tex="\(m\)">\(m\)</span>, follows by the exponential series lower bound <span class="math" data-tex="\(e^{1/t}\geq t^{-m-1}/(m+1)!\)">\(e^{1/t}\geq t^{-m-1}/(m+1)!\)</span>. Thus every derivative extends by zero smoothly across the sphere, proving <span class="math" data-tex="\(\chi\in C^\infty_c\)">\(\chi\in C^\infty_c\)</span>.</p>
+<p>For the actual coordinate vectors <span class="math" data-tex="\(e_1,e_2,e_3\)">\(e_1,e_2,e_3\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat{\phi_1}(\xi)=
+[\chi(\xi-e_1)+\chi(\xi+e_1)]P(\xi)e_2,\\
+\widehat{\phi_2}(\xi)=
+[\chi(\xi-e_2)+\chi(\xi+e_2)]P(\xi)e_3,\qquad
+\phi_{i,n}=\operatorname{Dil}_{q^n}\phi_i.
+\end{gathered}
+\tag{CC13}
+\]">\[
+\begin{gathered}
+\widehat{\phi_1}(\xi)=
+[\chi(\xi-e_1)+\chi(\xi+e_1)]P(\xi)e_2,\\
+\widehat{\phi_2}(\xi)=
+[\chi(\xi-e_2)+\chi(\xi+e_2)]P(\xi)e_3,\qquad
+\phi_{i,n}=\operatorname{Dil}_{q^n}\phi_i.
+\end{gathered}
+\tag{CC13}
+\]</span>
+<p>These define nonzero real solenoidal Schwartz fields: each Fourier function is real even, smooth, transverse and compactly supported away from zero; integration by parts in Fourier inversion gives every Schwartz seminorm. At the positive cap center the transverse projected vector is exactly the displayed coordinate vector and <span class="math" data-tex="\(\chi(0)&gt;0\)">\(\chi(0)&gt;0\)</span>, proving nonzero. Their support has <span class="math" data-tex="\(1-\delta\leq|\xi|\leq1+\delta\)">\(1-\delta\leq|\xi|\leq1+\delta\)</span>, contained in the original permitted annulus. All of their dilated families are mutually orthogonal, including across indices. Indeed</p>
+<span class="math math-display" data-tex="\[
+\frac{1+\delta}{1-\delta}&lt;q
+\quad\Longleftrightarrow\quad
+\delta&lt;\frac{\epsilon_0}{2+\epsilon_0},
+\]">\[
+\frac{1+\delta}{1-\delta}&lt;q
+\quad\Longleftrightarrow\quad
+\delta&lt;\frac{\epsilon_0}{2+\epsilon_0},
+\]</span>
+<p>which follows from the chosen <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Hence distinct scales have disjoint annuli. At one scale the caps centered at <span class="math" data-tex="\(\pm e_1\)">\(\pm e_1\)</span> and <span class="math" data-tex="\(\pm e_2\)">\(\pm e_2\)</span> are disjoint, since their center separation is <span class="math" data-tex="\(\sqrt2&gt;2\delta\)">\(\sqrt2&gt;2\delta\)</span>. Plancherel proves all asserted orthogonalities, including between the derivatives of these two families.</p>
+<p>For example, take all three source fields equal to <span class="math" data-tex="\(\phi_1\)">\(\phi_1\)</span>. The resulting basic cascade obeys</p>
+<span class="math math-display" data-tex="\[
+C(\phi_{1,k},\phi_{1,k})=q^{5k/2}\|\phi_1\|_2^4\phi_{1,k}\ne0.
+\tag{CC14}
+\]">\[
+C(\phi_{1,k},\phi_{1,k})=q^{5k/2}\|\phi_1\|_2^4\phi_{1,k}\ne0.
+\tag{CC14}
+\]</span>
+<p>Only index <span class="math" data-tex="\(k\)">\(k\)</span> remains in the original series. This gives an explicit nonzero family to which the sharp necessity calculation applies, while retaining its full original norm.</p>
+<p>Define the following different, symmetric local cascade:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_{\mathrm{pump}}(u,v)=\sum_{n\in\mathbb Z}q^{5n/2}\bigl[
+&amp;\langle u,\phi_{1,n}\rangle\langle v,\phi_{1,n}\rangle\phi_{2,n}\\
+-\tfrac12(&amp;\langle u,\phi_{1,n}\rangle\langle v,\phi_{2,n}\rangle
++\langle v,\phi_{1,n}\rangle\langle u,\phi_{2,n}\rangle)\phi_{1,n}\bigr].
+\end{aligned}
+\tag{CC15}
+\]">\[
+\begin{aligned}
+C_{\mathrm{pump}}(u,v)=\sum_{n\in\mathbb Z}q^{5n/2}\bigl[
+&amp;\langle u,\phi_{1,n}\rangle\langle v,\phi_{1,n}\rangle\phi_{2,n}\\
+-\tfrac12(&amp;\langle u,\phi_{1,n}\rangle\langle v,\phi_{2,n}\rangle
++\langle v,\phi_{1,n}\rangle\langle u,\phi_{2,n}\rangle)\phi_{1,n}\bigr].
+\end{aligned}
+\tag{CC15}
+\]</span>
+<p>It is a finite combination of three basic source operators, with coefficients <span class="math" data-tex="\(1,-1/2,-1/2\)">\(1,-1/2,-1/2\)</span>, so all previous convergence and mapping results apply. Pairing its finite partial sums with <span class="math" data-tex="\(u\)">\(u\)</span> gives at each index</p>
+<span class="math math-display" data-tex="\[
+q^{5n/2}
+\bigl(\langle u,\phi_{1,n}\rangle^2\langle u,\phi_{2,n}\rangle
+-\langle u,\phi_{1,n}\rangle\langle u,\phi_{2,n}\rangle
+\langle u,\phi_{1,n}\rangle\bigr)=0.
+\]">\[
+q^{5n/2}
+\bigl(\langle u,\phi_{1,n}\rangle^2\langle u,\phi_{2,n}\rangle
+-\langle u,\phi_{1,n}\rangle\langle u,\phi_{2,n}\rangle
+\langle u,\phi_{1,n}\rangle\bigr)=0.
+\]</span>
+<p>Norm convergence and continuity of the pairing prove full cancellation. It is nonzero by applying it to <span class="math" data-tex="\(u=v=\phi_{1,k}\)">\(u=v=\phi_{1,k}\)</span>. Thus the cancellation condition has produced an actual nonzero local-cascade object, not an assumed tensor.</p>
+<p>Fix any original index <span class="math" data-tex="\(n_*\in\mathbb Z\)">\(n_*\in\mathbb Z\)</span>, amplitude <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and retain</p>
+<span class="math math-display" data-tex="\[
+A=\|\phi_1\|_2^2&gt;0,\qquad B=\|\phi_2\|_2^2&gt;0,\qquad
+k=q^{5n_*/2},\qquad \kappa=kaA\sqrt{AB}.
+\tag{CC16}
+\]">\[
+A=\|\phi_1\|_2^2&gt;0,\qquad B=\|\phi_2\|_2^2&gt;0,\qquad
+k=q^{5n_*/2},\qquad \kappa=kaA\sqrt{AB}.
+\tag{CC16}
+\]</span>
+<p>For the inviscid equation <span class="math" data-tex="\(u_t=C_{\mathrm{pump}}(u,u)\)">\(u_t=C_{\mathrm{pump}}(u,u)\)</span> and datum <span class="math" data-tex="\(u(0)=a\phi_{1,n_*}\)">\(u(0)=a\phi_{1,n_*}\)</span>, the exact global trajectory is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_1(t)=aA\,\operatorname{sech}(\kappa t),\qquad
+c_2(t)=a\sqrt{AB}\,\tanh(\kappa t),\\
+u(t)=a\operatorname{sech}(\kappa t)\phi_{1,n_*}
++a\sqrt{A/B}\tanh(\kappa t)\phi_{2,n_*}.
+\end{gathered}
+\tag{CC17}
+\]">\[
+\begin{gathered}
+c_1(t)=aA\,\operatorname{sech}(\kappa t),\qquad
+c_2(t)=a\sqrt{AB}\,\tanh(\kappa t),\\
+u(t)=a\operatorname{sech}(\kappa t)\phi_{1,n_*}
++a\sqrt{A/B}\tanh(\kappa t)\phi_{2,n_*}.
+\end{gathered}
+\tag{CC17}
+\]</span>
+<p>Here <span class="math" data-tex="\(c_i=\langle u,\phi_{i,n_*}\rangle\)">\(c_i=\langle u,\phi_{i,n_*}\rangle\)</span>. Orthogonality makes every other original scale coefficient zero; the exact receiving equations on this subspace are</p>
+<span class="math math-display" data-tex="\[
+c_1&#x27;=-kA c_1c_2,\qquad c_2&#x27;=kB c_1^2,\qquad
+\frac{c_1^2}{A}+\frac{c_2^2}{B}=a^2A.
+\tag{CC18}
+\]">\[
+c_1&#x27;=-kA c_1c_2,\qquad c_2&#x27;=kB c_1^2,\qquad
+\frac{c_1^2}{A}+\frac{c_2^2}{B}=a^2A.
+\tag{CC18}
+\]</span>
+<p>Differentiate CC17 using <span class="math" data-tex="\((\operatorname{sech}z)&#x27;=-\operatorname{sech}z\tanh z\)">\((\operatorname{sech}z)&#x27;=-\operatorname{sech}z\tanh z\)</span> and <span class="math" data-tex="\((\tanh z)&#x27;=\operatorname{sech}^2z\)">\((\tanh z)&#x27;=\operatorname{sech}^2z\)</span>. The coefficient in each resulting derivative is exactly <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> from CC16, proving both equations and the initial data. The identity <span class="math" data-tex="\(\operatorname{sech}^2z+\tanh^2z=1\)">\(\operatorname{sech}^2z+\tanh^2z=1\)</span> proves the last equality. Substitution into CC15 proves the full function-space equation, rather than merely necessary coordinate equations. CC11 uniqueness identifies this explicit solution with the actual maximal local solution, which consequently extends for all finite positive times.</p>
+<p>The original total energy is constant:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|u(t)\|_2^2=a^2A,\qquad
+\frac12\frac{c_1(t)^2}{A}=\frac{a^2A}{2}\operatorname{sech}^2(\kappa t),\\
+\frac12\frac{c_2(t)^2}{B}=\frac{a^2A}{2}\tanh^2(\kappa t),\qquad
+\frac d{dt}\frac{c_2^2}{2B}=k c_1^2c_2
+=-\frac d{dt}\frac{c_1^2}{2A}.
+\end{gathered}
+\tag{CC19}
+\]">\[
+\begin{gathered}
+\|u(t)\|_2^2=a^2A,\qquad
+\frac12\frac{c_1(t)^2}{A}=\frac{a^2A}{2}\operatorname{sech}^2(\kappa t),\\
+\frac12\frac{c_2(t)^2}{B}=\frac{a^2A}{2}\tanh^2(\kappa t),\qquad
+\frac d{dt}\frac{c_2^2}{2B}=k c_1^2c_2
+=-\frac d{dt}\frac{c_1^2}{2A}.
+\end{gathered}
+\tag{CC19}
+\]</span>
+<p>For finite <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, <span class="math" data-tex="\(c_1(t)&gt;0\)">\(c_1(t)&gt;0\)</span>; complete transfer occurs only in the infinite-time limit. The original index stays fixed. These exact facts prohibit interpreting this single pump as a completed finite-time cascade.</p>
+<h2 id="cc5-give-the-pump-its-complete-original-physical-force">CC5. Give the pump its complete original physical force</h2>
+<p>Retain the original spatial coordinates and any actual <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, and use the same explicit <span class="math" data-tex="\(u\)">\(u\)</span> in CC17. In the physical Fourier convention of lesson 37, let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f=C_{\mathrm{pump}}(u,u)-B(u,u)-\nu\Delta u,\qquad
+\widehat p_0(\eta,t)=
+-\sum_{i,j=1}^3\frac{\eta_i\eta_j}{|\eta|^2}
+\widehat{u_i u_j}_{\mathrm{phys}}(\eta,t),\quad\eta\ne0,\\
+u_t-\nu\Delta u+(u\cdot\nabla)u+\nabla p_0=f,\qquad
+\operatorname{div}u=\operatorname{div}f=0.
+\end{gathered}
+\tag{CC20}
+\]">\[
+\begin{gathered}
+f=C_{\mathrm{pump}}(u,u)-B(u,u)-\nu\Delta u,\qquad
+\widehat p_0(\eta,t)=
+-\sum_{i,j=1}^3\frac{\eta_i\eta_j}{|\eta|^2}
+\widehat{u_i u_j}_{\mathrm{phys}}(\eta,t),\quad\eta\ne0,\\
+u_t-\nu\Delta u+(u\cdot\nabla)u+\nabla p_0=f,\qquad
+\operatorname{div}u=\operatorname{div}f=0.
+\end{gathered}
+\tag{CC20}
+\]</span>
+<p>The pressure has the canonical <span class="math" data-tex="\(L^2\)">\(L^2\)</span> representative; its value at the single Fourier point zero is immaterial. The full pressure calculation MB20 proves
+<span class="math" data-tex="\((u\cdot\nabla)u+\nabla p_0=-B(u,u)\)">\((u\cdot\nabla)u+\nabla p_0=-B(u,u)\)</span>. Inserting the actual inviscid pump equation proves CC20 term by term. In particular the viscosity is retained through the explicit <span class="math" data-tex="\(-\nu\Delta u\)">\(-\nu\Delta u\)</span> force contribution.</p>
+<p>This is a smooth force and pressure in every Sobolev order, uniformly over <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, with the same property for every fixed time-derivative order. To prove that statement, the two fixed Schwartz fields in CC17 have every Sobolev norm finite. Every time derivative of its coefficients is <span class="math" data-tex="\(\kappa^j\)">\(\kappa^j\)</span> times a polynomial in the bounded functions <span class="math" data-tex="\(\operatorname{sech}(\kappa t)\)">\(\operatorname{sech}(\kappa t)\)</span> and <span class="math" data-tex="\(\tanh(\kappa t)\)">\(\tanh(\kappa t)\)</span>; induction from their two derivative identities proves this assertion. Products of fixed Schwartz fields remain Schwartz. The Leray and pressure tensor multipliers are bounded in every <span class="math" data-tex="\(H^r\)">\(H^r\)</span>, and each spatial derivative consumes its displayed order. Apply these facts to each differentiated term of CC20. This proves every stated uniform bound, with constants depending on the retained original fields, <span class="math" data-tex="\(a,n_*,q,\nu\)">\(a,n_*,q,\nu\)</span> and derivative order. Sobolev embedding, itself supplied in the earlier course foundations, gives joint smoothness. No compact spatial support is asserted for the pressure or projected force.</p>
+<p>The complete work and gradient formulas are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle f,u\rangle=\nu\|\nabla u\|_2^2,\\
+\|\nabla u(t)\|_2^2
+=a^2q^{2n_*}\operatorname{sech}^2(\kappa t)\|\nabla\phi_1\|_2^2
++a^2(A/B)q^{2n_*}\tanh^2(\kappa t)\|\nabla\phi_2\|_2^2.
+\end{gathered}
+\tag{CC21}
+\]">\[
+\begin{gathered}
+\langle f,u\rangle=\nu\|\nabla u\|_2^2,\\
+\|\nabla u(t)\|_2^2
+=a^2q^{2n_*}\operatorname{sech}^2(\kappa t)\|\nabla\phi_1\|_2^2
++a^2(A/B)q^{2n_*}\tanh^2(\kappa t)\|\nabla\phi_2\|_2^2.
+\end{gathered}
+\tag{CC21}
+\]</span>
+<p>Both nonlinear pairings vanish: CC15 cancels, and the ordinary Euler pairing cancels by the proved cutoff argument MB13. Integration by parts in the full <span class="math" data-tex="\(-\nu\Delta u\)">\(-\nu\Delta u\)</span> term gives the first equality. Disjoint Fourier supports make the two gradient families orthogonal, while differentiating their actual dilation supplies <span class="math" data-tex="\(q^{2n_*}\)">\(q^{2n_*}\)</span>. These prove the second equality. Hence the full forced Navier–Stokes energy equation is satisfied with exactly constant kinetic energy and force work equal to the complete viscous loss.</p>
+<p>For these specifically constructed fields, the exact coordinate rotation</p>
+<span class="math math-display" data-tex="\[
+R=\begin{pmatrix}0&amp;0&amp;1\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}
+\quad\text{gives}\quad
+\phi_2=\operatorname{Rot}_R\phi_1,\quad
+B=A,\quad \|\nabla\phi_2\|_2^2=\|\nabla\phi_1\|_2^2.
+\tag{CC22}
+\]">\[
+R=\begin{pmatrix}0&amp;0&amp;1\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}
+\quad\text{gives}\quad
+\phi_2=\operatorname{Rot}_R\phi_1,\quad
+B=A,\quad \|\nabla\phi_2\|_2^2=\|\nabla\phi_1\|_2^2.
+\tag{CC22}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(R e_1=e_2\)">\(R e_1=e_2\)</span>, <span class="math" data-tex="\(R e_2=e_3\)">\(R e_2=e_3\)</span>, the bump is radial, and
+<span class="math" data-tex="\(R P(R^{-1}\xi)e_2=P(\xi)e_3\)">\(R P(R^{-1}\xi)e_2=P(\xi)e_3\)</span>. Apply the full rotation Fourier map to the first formula in CC13 to obtain the second, at every original frequency. Rotation is an isometry of both full norms. Thus the two separate contributions in CC21, together with <span class="math" data-tex="\(\operatorname{sech}^2+\tanh^2=1\)">\(\operatorname{sech}^2+\tanh^2=1\)</span>, prove
+<span class="math" data-tex="\(\|\nabla u(t)\|_2^2=a^2q^{2n_*}\|\nabla\phi_1\|_2^2\)">\(\|\nabla u(t)\|_2^2=a^2q^{2n_*}\|\nabla\phi_1\|_2^2\)</span> for these actual fields. The force work is the positive constant
+<span class="math" data-tex="\(\nu a^2q^{2n_*}\|\nabla\phi_1\|_2^2\)">\(\nu a^2q^{2n_*}\|\nabla\phi_1\|_2^2\)</span>. Positivity follows from nonzero Fourier support away from zero. CC16–CC21 retain both original norms and all their contributions; CC22 proves their precise relation rather than selecting unit-norm fields.</p>
+<p>The remaining calculation is to represent the full relevant local cascade as an actual averaged Euler operator and construct the successive transfers with their finite-time endpoint. The source theorem statements alone do not supply either proof. The explicit pump and physical force above give verified inputs for that continuation.</p>
+<h2 id="two-pictures-of-the-original-maps">Two pictures of the original maps</h2>
+<p><img src="assets/NS-FLUID-38/original-local-cascade-and-pump-1B192E1DD25A9C0C6785B3141BC4F9489C1A25937FF54655F218F28D7628E59E.png" alt="The original annular supports and exact energy-transfer map" class="course-figure" width="2400" height="1120" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-local-cascade-and-pump" data-asset-sha256="1B192E1DD25A9C0C6785B3141BC4F9489C1A25937FF54655F218F28D7628E59E"></p>
+<p>CC1–CC22 prove the original annular analysis and synthesis, the complete
+energy-transfer trajectory and its full physical force. The five displayed
+support intervals use their stated original parameter and indices.
+Every other integer scale remains in the definitions and proofs.
+The diagram states exact formulas; it does not plot a simulated flow.
+The <a href="assets/original-local-cascade-and-pump.py">reproducible source</a>,
+<a href="assets/original-local-cascade-and-pump.svg">vector rendering</a> and
+<a href="assets/original-local-cascade-and-pump-data.json">five support records</a>
+are included. Human comparison: Tao, original source lines 450–474.</p>
+<p><img src="assets/NS-FLUID-38/original-viscous-pump-space-4324713D2748FCD1358D99DF1A2CA978843A9ABEA09CFBABE207949508684EAC.png" alt="Diffusion defines the complete viscous-pump invariant space" class="course-figure" width="2240" height="1120" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-viscous-pump-space" data-asset-sha256="4324713D2748FCD1358D99DF1A2CA978843A9ABEA09CFBABE207949508684EAC"></p>
+<p>Exercise 5, EX20–EX29 constructs the full space generated by the original
+diffusion defect. The inner box is the two-field inviscid plane; the outer
+box denotes its exact infinite-dimensional enlargement. Every operator,
+norm and coordinate in the diagram is retained in the complete proof.
+The <a href="assets/original-viscous-pump-space.py">portable source</a> and
+<a href="assets/original-viscous-pump-space.svg">vector rendering</a> are included.
+This is an editorial calculation from the source's original local-cascade
+objects, not a numerical approximation of an infinite-dimensional flow.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<h3 id="exercise-1-recover-real-averaging-with-every-original-coefficient-retained">Exercise 1. Recover real averaging with every original coefficient retained</h3>
+<p>The source begins its averaging proof by allowing complex multipliers and a finite measure. Construct this operation in the strong target, identify its correct transpose, and recover the real operator with every sign and measure factor explicit.</p>
+<p><strong>Solution.</strong> Keep a finite positive measure space <span class="math" data-tex="\((\Omega,\mu)\)">\((\Omega,\mu)\)</span>, its total mass <span class="math" data-tex="\(M=\mu(\Omega)\)">\(M=\mu(\Omega)\)</span>, the original bounded dilation interval and all the source triple symbol moments. The pairing in this exercise is the algebraic complex bilinear pairing <span class="math" data-tex="\(\langle u,w\rangle=\int u\cdot w\)">\(\langle u,w\rangle=\int u\cdot w\)</span>, without conjugation. For <span class="math" data-tex="\(A=m(D)\operatorname{Rot}_R\operatorname{Dil}_\lambda\)">\(A=m(D)\operatorname{Rot}_R\operatorname{Dil}_\lambda\)</span>, its transpose for this pairing is</p>
+<span class="math math-display" data-tex="\[
+A^{\mathrm t}=\operatorname{Dil}_{\lambda^{-1}}
+\operatorname{Rot}_{R^{-1}}m^\vee(D),\qquad m^\vee(\xi)=m(-\xi).
+\tag{EX1}
+\]">\[
+A^{\mathrm t}=\operatorname{Dil}_{\lambda^{-1}}
+\operatorname{Rot}_{R^{-1}}m^\vee(D),\qquad m^\vee(\xi)=m(-\xi).
+\tag{EX1}
+\]</span>
+<p>Indeed Fourier inversion in the source convention gives
+<span class="math" data-tex="\(\int u\cdot w=\int\widehat u(\xi)\cdot\widehat w(-\xi)d\xi\)">\(\int u\cdot w=\int\widehat u(\xi)\cdot\widehat w(-\xi)d\xi\)</span>.
+Moving the scalar symbol across this integral replaces <span class="math" data-tex="\(\xi\)">\(\xi\)</span> by <span class="math" data-tex="\(-\xi\)">\(-\xi\)</span>. The rotation and dilation changes of variables are their exact inverses, in reversed order. Thus EX1 is a bilinear transpose. It agrees with the real-field adjoint in lesson 37 when <span class="math" data-tex="\(m(-\xi)=\overline{m(\xi)}\)">\(m(-\xi)=\overline{m(\xi)}\)</span>, but that equality is not imposed on the current complex symbols.</p>
+<p>The actual complex operator is</p>
+<span class="math math-display" data-tex="\[
+C_{\mathbb C}(u,v)=\int_\Omega
+A_{3,\omega}^{\mathrm t}B(A_{1,\omega}u,A_{2,\omega}v)\,d\mu.
+\tag{EX2}
+\]">\[
+C_{\mathbb C}(u,v)=\int_\Omega
+A_{3,\omega}^{\mathrm t}B(A_{1,\omega}u,A_{2,\omega}v)\,d\mu.
+\tag{EX2}
+\]</span>
+<p>The Fourier proof MB3 and strong measurability proof MB7 apply to complex fields and the reflected symbol in EX1. They give a genuine <span class="math" data-tex="\(H^9_\sigma\)">\(H^9_\sigma\)</span> integral and the complete bound</p>
+<span class="math math-display" data-tex="\[
+\|C_{\mathbb C}(u,v)\|_{H^9}\leq
+C_9\int_\Omega\prod_{j=1}^3\|m_{j,\omega}\|_0\,
+d_{10}(\lambda_{1,\omega})d_{10}(\lambda_{2,\omega})
+d_9(\lambda_{3,\omega}^{-1})\,d\mu\,
+\|u\|_{H^{10}}\|v\|_{H^{10}}.
+\tag{EX3}
+\]">\[
+\|C_{\mathbb C}(u,v)\|_{H^9}\leq
+C_9\int_\Omega\prod_{j=1}^3\|m_{j,\omega}\|_0\,
+d_{10}(\lambda_{1,\omega})d_{10}(\lambda_{2,\omega})
+d_9(\lambda_{3,\omega}^{-1})\,d\mu\,
+\|u\|_{H^{10}}\|v\|_{H^{10}}.
+\tag{EX3}
+\]</span>
+<p>The reflected symbol has exactly the original seminorm at every order. The complex Euclidean product estimate uses absolute values; its constant is unchanged.</p>
+<p>For any one original symbol, define the two actual real-field symbols</p>
+<span class="math math-display" data-tex="\[
+m_0(\xi)=\frac{m(\xi)+\overline{m(-\xi)}}2,\qquad
+m_1(\xi)=\frac{m(\xi)-\overline{m(-\xi)}}{2i},\qquad
+m=m_0+i m_1.
+\tag{EX4}
+\]">\[
+m_0(\xi)=\frac{m(\xi)+\overline{m(-\xi)}}2,\qquad
+m_1(\xi)=\frac{m(\xi)-\overline{m(-\xi)}}{2i},\qquad
+m=m_0+i m_1.
+\tag{EX4}
+\]</span>
+<p>Each satisfies <span class="math" data-tex="\(m_b(-\xi)=\overline{m_b(\xi)}\)">\(m_b(-\xi)=\overline{m_b(\xi)}\)</span>. Reflection and conjugation preserve the norm of the full derivative tensor, so the triangle inequality gives
+<span class="math" data-tex="\(\|m_b\|_k\leq\|m\|_k\)">\(\|m_b\|_k\leq\|m\|_k\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>. These symbols need not be the pointwise real and imaginary parts of <span class="math" data-tex="\(m(\xi)\)">\(m(\xi)\)</span>.</p>
+<p>For real inputs define <span class="math" data-tex="\(C_{\mathbb R}(u,v)=\operatorname{Re}C_{\mathbb C}(u,v)\)">\(C_{\mathbb R}(u,v)=\operatorname{Re}C_{\mathbb C}(u,v)\)</span>, with the real part taken in physical space. Set <span class="math" data-tex="\(A_{j,b}=m_{j,b}(D)\operatorname{Rot}_{R_j}\operatorname{Dil}_{\lambda_j}\)">\(A_{j,b}=m_{j,b}(D)\operatorname{Rot}_{R_j}\operatorname{Dil}_{\lambda_j}\)</span>. Expanding all eight terms in the trilinear pairing gives the exact strong operator identity</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_{\mathbb R}(u,v)=
+\sum_{\beta\in\{000,110,101,011\}}
+\sigma_\beta\int_\Omega A_{3,\beta_3}^*
+B(A_{1,\beta_1}u,A_{2,\beta_2}v)\,d\mu,
+\\
+(\sigma_{000},\sigma_{110},\sigma_{101},\sigma_{011})=(1,-1,-1,-1).
+\end{gathered}
+\tag{EX5}
+\]">\[
+\begin{gathered}
+C_{\mathbb R}(u,v)=
+\sum_{\beta\in\{000,110,101,011\}}
+\sigma_\beta\int_\Omega A_{3,\beta_3}^*
+B(A_{1,\beta_1}u,A_{2,\beta_2}v)\,d\mu,
+\\
+(\sigma_{000},\sigma_{110},\sigma_{101},\sigma_{011})=(1,-1,-1,-1).
+\end{gathered}
+\tag{EX5}
+\]</span>
+<p>The four odd powers of <span class="math" data-tex="\(i\)">\(i\)</span> have zero real part; each even term pairs real fields and has its displayed sign. All eight terms are integrable by EX3 and EX4, so taking real parts commutes with integration. Pairing with all real <span class="math" data-tex="\(H^{10}_\sigma\)">\(H^{10}_\sigma\)</span> tests identifies the <span class="math" data-tex="\(H^9_\sigma\)">\(H^9_\sigma\)</span> fields, proving EX5.</p>
+<p>To compare the original finite measure with the source probability-space definition, retain both measures explicitly. For <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>, use
+<span class="math" data-tex="\(\Omega&#x27;=\Omega\times\{000,110,101,011\}\)">\(\Omega&#x27;=\Omega\times\{000,110,101,011\}\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\mu&#x27;(E\times\{\beta\})=\frac{\mu(E)}{4M},\qquad
+m&#x27;_{1,(\omega,\beta)}=4M\,\sigma_\beta m_{1,\omega,\beta_1},
+\quad
+m&#x27;_{2,(\omega,\beta)}=m_{2,\omega,\beta_2},
+\quad
+m&#x27;_{3,(\omega,\beta)}=m_{3,\omega,\beta_3}.
+\tag{EX6}
+\]">\[
+\mu&#x27;(E\times\{\beta\})=\frac{\mu(E)}{4M},\qquad
+m&#x27;_{1,(\omega,\beta)}=4M\,\sigma_\beta m_{1,\omega,\beta_1},
+\quad
+m&#x27;_{2,(\omega,\beta)}=m_{2,\omega,\beta_2},
+\quad
+m&#x27;_{3,(\omega,\beta)}=m_{3,\omega,\beta_3}.
+\tag{EX6}
+\]</span>
+<p>Keep every original rotation and dilation on each copy. The total mass is one, and multiplying the integrand coefficient <span class="math" data-tex="\(4M\sigma_\beta\)">\(4M\sigma_\beta\)</span> by its measure factor <span class="math" data-tex="\(1/(4M)\)">\(1/(4M)\)</span> gives exactly the original signed integral. Every triple seminorm moment of this second representation is bounded by four times the corresponding original finite-measure moment. Thus the full source probability representation is proved without discarding the original finite measure or its mass. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, EX2 is zero; one atom with first symbol zero and the other symbols one represents it. Whenever EX2 is real on real inputs, EX5 gives that same original operator. Otherwise it gives precisely its stated real part.</p>
+<h3 id="exercise-2-compose-two-full-averaging-operations">Exercise 2. Compose two full averaging operations</h3>
+<p>Carry out the source transitivity step with every rotation, dilation and transformed symbol retained. Prove all required symbol moments and the actual equality of the operators.</p>
+<p><strong>Solution.</strong> Let one finite averaging family have
+<span class="math" data-tex="\(A_{j,\omega}=m_{j,\omega}(D)\operatorname{Rot}_{R_{j,\omega}}
+\operatorname{Dil}_{\lambda_{j,\omega}}\)">\(A_{j,\omega}=m_{j,\omega}(D)\operatorname{Rot}_{R_{j,\omega}}
+\operatorname{Dil}_{\lambda_{j,\omega}}\)</span>, and a second independent finite family have
+<span class="math" data-tex="\(D_{j,\theta}=n_{j,\theta}(D)\operatorname{Rot}_{S_{j,\theta}}
+\operatorname{Dil}_{\gamma_{j,\theta}}\)">\(D_{j,\theta}=n_{j,\theta}(D)\operatorname{Rot}_{S_{j,\theta}}
+\operatorname{Dil}_{\gamma_{j,\theta}}\)</span>.
+The letter <span class="math" data-tex="\(D_{j,\theta}\)">\(D_{j,\theta}\)</span> here denotes the entire displayed map; it is not a spatial derivative. Each family has its original finite positive measure, all triple symbol moments and its own compact positive dilation interval. Construct <span class="math" data-tex="\(C_2\)">\(C_2\)</span> by averaging the actual Euler operator with the second family as in EX2, and then construct <span class="math" data-tex="\(C_1\)">\(C_1\)</span> by averaging this actual <span class="math" data-tex="\(C_2\)">\(C_2\)</span> with the first family.</p>
+<p>The exact combined input map is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_{j,\theta}A_{j,\omega}
+=h_{j,\omega,\theta}(D)
+\operatorname{Rot}_{S_{j,\theta}R_{j,\omega}}
+\operatorname{Dil}_{\gamma_{j,\theta}\lambda_{j,\omega}},\\
+h_{j,\omega,\theta}(\xi)
+=n_{j,\theta}(\xi)\,
+m_{j,\omega}(\gamma_{j,\theta}^{-1}S_{j,\theta}^{-1}\xi).
+\end{gathered}
+\tag{EX7}
+\]">\[
+\begin{gathered}
+D_{j,\theta}A_{j,\omega}
+=h_{j,\omega,\theta}(D)
+\operatorname{Rot}_{S_{j,\theta}R_{j,\omega}}
+\operatorname{Dil}_{\gamma_{j,\theta}\lambda_{j,\omega}},\\
+h_{j,\omega,\theta}(\xi)
+=n_{j,\theta}(\xi)\,
+m_{j,\omega}(\gamma_{j,\theta}^{-1}S_{j,\theta}^{-1}\xi).
+\end{gathered}
+\tag{EX7}
+\]</span>
+<p>To verify the order, first move <span class="math" data-tex="\(m(D)\)">\(m(D)\)</span> past the dilation:
+<span class="math" data-tex="\(\operatorname{Dil}_{\gamma}m(D)=m(\gamma^{-1}D)\operatorname{Dil}_{\gamma}\)">\(\operatorname{Dil}_{\gamma}m(D)=m(\gamma^{-1}D)\operatorname{Dil}_{\gamma}\)</span>.
+Then move that transformed symbol past rotation:
+<span class="math" data-tex="\(\operatorname{Rot}_S m(\gamma^{-1}D)
+=m(\gamma^{-1}S^{-1}D)\operatorname{Rot}_S\)">\(\operatorname{Rot}_S m(\gamma^{-1}D)
+=m(\gamma^{-1}S^{-1}D)\operatorname{Rot}_S\)</span>.
+Rotations commute with these scalar dilations. The remaining rotations multiply in the order <span class="math" data-tex="\(SR\)">\(SR\)</span>, and the two positive scale factors multiply. These Fourier identities prove EX7 at every nonzero original frequency.</p>
+<p>In the Euclidean derivative-tensor seminorm convention, the complete Leibniz estimate is</p>
+<span class="math math-display" data-tex="\[
+\|h_{j,\omega,\theta}\|_k
+\leq\sum_{\ell=0}^k\binom{k}{\ell}
+\|n_{j,\theta}\|_\ell\|m_{j,\omega}\|_{k-\ell}.
+\tag{EX8}
+\]">\[
+\|h_{j,\omega,\theta}\|_k
+\leq\sum_{\ell=0}^k\binom{k}{\ell}
+\|n_{j,\theta}\|_\ell\|m_{j,\omega}\|_{k-\ell}.
+\tag{EX8}
+\]</span>
+<p>The transformed <span class="math" data-tex="\(k-\ell\)">\(k-\ell\)</span> derivative has factor <span class="math" data-tex="\(\gamma^{-(k-\ell)}\)">\(\gamma^{-(k-\ell)}\)</span>, and its argument has radius <span class="math" data-tex="\(\gamma^{-1}|\xi|\)">\(\gamma^{-1}|\xi|\)</span>. These cancel exactly in the weighted seminorm; the rotation has tensor norm one. The product derivative is a sum of <span class="math" data-tex="\(\binom{k}{\ell}\)">\(\binom{k}{\ell}\)</span> placements of the <span class="math" data-tex="\(\ell\)">\(\ell\)</span> derivatives, giving EX8 without an unspecified coefficient.</p>
+<p>Multiply the three estimates EX8 and integrate on the product measure. Each of the finitely many resulting terms is</p>
+<span class="math math-display" data-tex="\[
+\left(\prod_{j=1}^3\binom{k_j}{\ell_j}\right)
+\left(\int_\Theta\prod_{j=1}^3\|n_{j,\theta}\|_{\ell_j}\,d\vartheta(\theta)\right)
+\left(\int_\Omega\prod_{j=1}^3\|m_{j,\omega}\|_{k_j-\ell_j}\,d\mu(\omega)\right),
+\tag{EX9}
+\]">\[
+\left(\prod_{j=1}^3\binom{k_j}{\ell_j}\right)
+\left(\int_\Theta\prod_{j=1}^3\|n_{j,\theta}\|_{\ell_j}\,d\vartheta(\theta)\right)
+\left(\int_\Omega\prod_{j=1}^3\|m_{j,\omega}\|_{k_j-\ell_j}\,d\mu(\omega)\right),
+\tag{EX9}
+\]</span>
+<p>which is finite. Here <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> is the second averaging measure. The combined dilations lie in the product of the two original compact intervals. Formula EX7 preserves measurability, by the same strong continuity and symbol continuity used in MB7.</p>
+<p>The full operator equality is</p>
+<span class="math math-display" data-tex="\[
+C_1(u,v)=\int_{\Omega\times\Theta}
+(D_{3,\theta}A_{3,\omega})^{\mathrm t}
+B(D_{1,\theta}A_{1,\omega}u,
+D_{2,\theta}A_{2,\omega}v)\,d\mu(\omega)d\vartheta(\theta).
+\tag{EX10}
+\]">\[
+C_1(u,v)=\int_{\Omega\times\Theta}
+(D_{3,\theta}A_{3,\omega})^{\mathrm t}
+B(D_{1,\theta}A_{1,\omega}u,
+D_{2,\theta}A_{2,\omega}v)\,d\mu(\omega)d\vartheta(\theta).
+\tag{EX10}
+\]</span>
+<p>The zeroth case of EX9 and the full compact dilation bounds make the norm of the <span class="math" data-tex="\(H^9\)">\(H^9\)</span> integrand integrable, by EX3. Therefore Bochner Fubini is justified. The transpose identity
+<span class="math" data-tex="\(A_3^{\mathrm t}D_3^{\mathrm t}=(D_3A_3)^{\mathrm t}\)">\(A_3^{\mathrm t}D_3^{\mathrm t}=(D_3A_3)^{\mathrm t}\)</span>
+retains the output order exactly. Substitution of the actual definition of <span class="math" data-tex="\(C_2\)">\(C_2\)</span> proves EX10; pairing gives the same equality in the original source duality. Thus two actual averaging operations compose into the explicitly constructed third, with every required source moment proved. No representation of an as-yet unconstructed cascade is assumed in this calculation.</p>
+<h3 id="exercise-3-solve-every-real-initial-state-of-the-original-pump-plane">Exercise 3. Solve every real initial state of the original pump plane</h3>
+<p>Solve the inviscid pump on the exact span of <span class="math" data-tex="\(\phi_{1,n_*}\)">\(\phi_{1,n_*}\)</span> and <span class="math" data-tex="\(\phi_{2,n_*}\)">\(\phi_{2,n_*}\)</span>, retaining both original norms. Include all signs and equilibrium data, and determine the time required to reach any prescribed positive transfer fraction.</p>
+<p><strong>Solution.</strong> Keep <span class="math" data-tex="\(A,B,k\)">\(A,B,k\)</span> from CC16. For initial coefficients <span class="math" data-tex="\(c_{10}=\langle u_0,\phi_{1,n_*}\rangle\)">\(c_{10}=\langle u_0,\phi_{1,n_*}\rangle\)</span> and <span class="math" data-tex="\(c_{20}=\langle u_0,\phi_{2,n_*}\rangle\)">\(c_{20}=\langle u_0,\phi_{2,n_*}\rangle\)</span>, retain the actual datum</p>
+<span class="math math-display" data-tex="\[
+u_0=\frac{c_{10}}A\phi_{1,n_*}+\frac{c_{20}}B\phi_{2,n_*},
+\qquad E=\frac{c_{10}^2}A+\frac{c_{20}^2}B.
+\tag{EX11}
+\]">\[
+u_0=\frac{c_{10}}A\phi_{1,n_*}+\frac{c_{20}}B\phi_{2,n_*},
+\qquad E=\frac{c_{10}^2}A+\frac{c_{20}^2}B.
+\tag{EX11}
+\]</span>
+<p>This parametrizes every real datum in the stated plane. If <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, both coordinates and the trajectory are zero. If <span class="math" data-tex="\(c_{10}=0\)">\(c_{10}=0\)</span>, the full equation gives <span class="math" data-tex="\(u(t)=u_0\)">\(u(t)=u_0\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>; positive and negative <span class="math" data-tex="\(c_{20}\)">\(c_{20}\)</span> are both genuine equilibria.</p>
+<p>For <span class="math" data-tex="\(c_{10}\ne0\)">\(c_{10}\ne0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h=\operatorname{artanh}\!\left(\frac{c_{20}}{\sqrt{BE}}\right),\qquad
+\Omega=kA\sqrt{BE}&gt;0,\\
+c_1(t)=\operatorname{sgn}(c_{10})\sqrt{AE}\,
+\operatorname{sech}(\Omega t+h),\qquad
+c_2(t)=\sqrt{BE}\,\tanh(\Omega t+h),\\
+u(t)=\frac{c_1(t)}A\phi_{1,n_*}+\frac{c_2(t)}B\phi_{2,n_*}.
+\end{gathered}
+\tag{EX12}
+\]">\[
+\begin{gathered}
+h=\operatorname{artanh}\!\left(\frac{c_{20}}{\sqrt{BE}}\right),\qquad
+\Omega=kA\sqrt{BE}&gt;0,\\
+c_1(t)=\operatorname{sgn}(c_{10})\sqrt{AE}\,
+\operatorname{sech}(\Omega t+h),\qquad
+c_2(t)=\sqrt{BE}\,\tanh(\Omega t+h),\\
+u(t)=\frac{c_1(t)}A\phi_{1,n_*}+\frac{c_2(t)}B\phi_{2,n_*}.
+\end{gathered}
+\tag{EX12}
+\]</span>
+<p>The argument of <span class="math" data-tex="\(\operatorname{artanh}\)">\(\operatorname{artanh}\)</span> is strictly between <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, since <span class="math" data-tex="\(c_{10}^2/A&gt;0\)">\(c_{10}^2/A&gt;0\)</span>. Using <span class="math" data-tex="\(\operatorname{sech}(\operatorname{artanh}r)=\sqrt{1-r^2}\)">\(\operatorname{sech}(\operatorname{artanh}r)=\sqrt{1-r^2}\)</span> recovers both original coordinates at zero, including the sign of <span class="math" data-tex="\(c_{10}\)">\(c_{10}\)</span>. Differentiation gives</p>
+<span class="math math-display" data-tex="\[
+c_1&#x27;=-kA c_1c_2,\qquad c_2&#x27;=kB c_1^2,\qquad
+\frac{c_1(t)^2}A+\frac{c_2(t)^2}B=E.
+\tag{EX13}
+\]">\[
+c_1&#x27;=-kA c_1c_2,\qquad c_2&#x27;=kB c_1^2,\qquad
+\frac{c_1(t)^2}A+\frac{c_2(t)^2}B=E.
+\tag{EX13}
+\]</span>
+<p>The factor in the second derivative is <span class="math" data-tex="\(\sqrt{BE}\,\Omega=kAB E\)">\(\sqrt{BE}\,\Omega=kAB E\)</span>, exactly <span class="math" data-tex="\(kB\)">\(kB\)</span> times the coefficient <span class="math" data-tex="\(AE\)">\(AE\)</span> in <span class="math" data-tex="\(c_1^2\)">\(c_1^2\)</span>. The first derivative retains <span class="math" data-tex="\(\Omega=kA\sqrt{BE}\)">\(\Omega=kA\sqrt{BE}\)</span>. All other original scale coefficients are zero by support orthogonality. Substitution into CC15 therefore proves the entire function-space equation. Local uniqueness from CC11 identifies the explicit globally defined curve. Its sign of <span class="math" data-tex="\(c_1\)">\(c_1\)</span> never changes, and <span class="math" data-tex="\(c_2\)">\(c_2\)</span> is strictly increasing.</p>
+<p>For <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span>, ask when the second coordinate first satisfies <span class="math" data-tex="\(c_2(t)\geq\sqrt{BE}\sqrt\theta\)">\(c_2(t)\geq\sqrt{BE}\sqrt\theta\)</span>, so its energy is at least the fraction <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of the total and its transfer direction is positive. The exact first such <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span> is</p>
+<span class="math math-display" data-tex="\[
+t_\theta=\max\left\{0,
+\frac{\operatorname{artanh}\sqrt\theta-h}{kA\sqrt{BE}}\right\}.
+\tag{EX14}
+\]">\[
+t_\theta=\max\left\{0,
+\frac{\operatorname{artanh}\sqrt\theta-h}{kA\sqrt{BE}}\right\}.
+\tag{EX14}
+\]</span>
+<p>This follows from strict monotonicity of <span class="math" data-tex="\(\tanh\)">\(\tanh\)</span>. If <span class="math" data-tex="\(c_{20}&lt;0\)">\(c_{20}&lt;0\)</span>, the second energy initially decreases until <span class="math" data-tex="\(c_2=0\)">\(c_2=0\)</span>; retaining the sign condition avoids confusing that earlier negative-coordinate energy with positive transfer. For the original datum <span class="math" data-tex="\(a\phi_{1,n_*}\)">\(a\phi_{1,n_*}\)</span>, <span class="math" data-tex="\(E=a^2A\)">\(E=a^2A\)</span>, <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, and the denominator is precisely the original <span class="math" data-tex="\(\kappa=kaA\sqrt{AB}\)">\(\kappa=kaA\sqrt{AB}\)</span>. Every fraction strictly below one is reached in finite time, and complete transfer takes infinite time. These claims concern the exact fixed-scale pump, not an infinite sequence of pumps.</p>
+<h3 id="exercise-4-calculate-the-full-diffusion-defect-and-its-sharp-map">Exercise 4. Calculate the full diffusion defect and its sharp map</h3>
+<p>Compute the difference between diffusing the original local-cascade output and diffusing its two inputs. Retain all derivative contributions. Prove its exact Sobolev range when that difference is nonzero, and test it on the explicit pump.</p>
+<p><strong>Solution.</strong> For one basic cascade define on Schwartz inputs</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_C(u,v)=\Delta C(u,v)-C(\Delta u,v)-C(u,\Delta v).
+\tag{EX15}
+\]">\[
+\mathcal D_C(u,v)=\Delta C(u,v)-C(\Delta u,v)-C(u,\Delta v).
+\tag{EX15}
+\]</span>
+<p>Write <span class="math" data-tex="\(\chi_i=\Delta\phi_i\)">\(\chi_i=\Delta\phi_i\)</span> and <span class="math" data-tex="\(\chi_{i,n}=\operatorname{Dil}_{q^n}\chi_i\)">\(\chi_{i,n}=\operatorname{Dil}_{q^n}\chi_i\)</span>. The full dilation derivative is <span class="math" data-tex="\(\Delta\phi_{i,n}=q^{2n}\chi_{i,n}\)">\(\Delta\phi_{i,n}=q^{2n}\chi_{i,n}\)</span>. Integration by parts gives <span class="math" data-tex="\(\langle\Delta u,\phi_{i,n}\rangle=\langle u,\Delta\phi_{i,n}\rangle\)">\(\langle\Delta u,\phi_{i,n}\rangle=\langle u,\Delta\phi_{i,n}\rangle\)</span>. Consequently the complete identity is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal D_C(u,v)=\sum_n q^{9n/2}\bigl[
+&amp;\langle u,\phi_{1,n}\rangle\langle v,\phi_{2,n}\rangle\chi_{3,n}\\
+-&amp;\langle u,\chi_{1,n}\rangle\langle v,\phi_{2,n}\rangle\phi_{3,n}\\
+-&amp;\langle u,\phi_{1,n}\rangle\langle v,\chi_{2,n}\rangle\phi_{3,n}\bigr].
+\end{aligned}
+\tag{EX16}
+\]">\[
+\begin{aligned}
+\mathcal D_C(u,v)=\sum_n q^{9n/2}\bigl[
+&amp;\langle u,\phi_{1,n}\rangle\langle v,\phi_{2,n}\rangle\chi_{3,n}\\
+-&amp;\langle u,\chi_{1,n}\rangle\langle v,\phi_{2,n}\rangle\phi_{3,n}\\
+-&amp;\langle u,\phi_{1,n}\rangle\langle v,\chi_{2,n}\rangle\phi_{3,n}\bigr].
+\end{aligned}
+\tag{EX16}
+\]</span>
+<p>Each <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span> has its actual derivative norm, the same permitted annular Fourier support, and no change of scale. Every output and input derivative is present, with the two negative signs.</p>
+<p>For real <span class="math" data-tex="\(s_1,s_2,s\)">\(s_1,s_2,s\)</span> with <span class="math" data-tex="\(d=s_1+s_2-s\geq9/2\)">\(d=s_1+s_2-s\geq9/2\)</span>, the CC5 proof gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K^{(9/2)}_d(q)=\sup_{n\in\mathbb Z}
+\frac{q^{9n/2}}{(1+q^{2n})^{d/2}},\\
+\|\mathcal D_C(u,v)\|_{H^s}\leq
+J^{3/2}a_{s_1}a_{s_2}b_s K^{(9/2)}_d(q)\\
+\quad\cdot\bigl(\|\phi_1\|_2\|\phi_2\|_2\|\Delta\phi_3\|_2
++\|\Delta\phi_1\|_2\|\phi_2\|_2\|\phi_3\|_2
++\|\phi_1\|_2\|\Delta\phi_2\|_2\|\phi_3\|_2\bigr)
+\|u\|_{H^{s_1}}\|v\|_{H^{s_2}}.
+\end{gathered}
+\tag{EX17}
+\]">\[
+\begin{gathered}
+K^{(9/2)}_d(q)=\sup_{n\in\mathbb Z}
+\frac{q^{9n/2}}{(1+q^{2n})^{d/2}},\\
+\|\mathcal D_C(u,v)\|_{H^s}\leq
+J^{3/2}a_{s_1}a_{s_2}b_s K^{(9/2)}_d(q)\\
+\quad\cdot\bigl(\|\phi_1\|_2\|\phi_2\|_2\|\Delta\phi_3\|_2
++\|\Delta\phi_1\|_2\|\phi_2\|_2\|\phi_3\|_2
++\|\phi_1\|_2\|\Delta\phi_2\|_2\|\phi_3\|_2\bigr)
+\|u\|_{H^{s_1}}\|v\|_{H^{s_2}}.
+\end{gathered}
+\tag{EX17}
+\]</span>
+<p>To prove convergence and the identity, apply CC5 to each of the three displayed coefficient products, now with the retained exponent <span class="math" data-tex="\(9/2\)">\(9/2\)</span>. The product estimate is identical to CC7 after its explicit coefficient has changed. It proves unconditional <span class="math" data-tex="\(H^s\)">\(H^s\)</span> convergence. For Schwartz inputs CC6 also converges in enough Sobolev orders to differentiate it; pairing either differentiated input with the Schwartz source field gives EX16 term by term. The resulting continuous bilinear map extends the full identity to the stated spaces. Finite combinations retain the sum of absolute coefficients in their bound.</p>
+<p>At <span class="math" data-tex="\(d=9/2\)">\(d=9/2\)</span>, the discrete constant is one. For <span class="math" data-tex="\(d&gt;9/2\)">\(d&gt;9/2\)</span>, it is the maximum at the two integer scales nearest to <span class="math" data-tex="\(\log_q\sqrt{(9/2)/(d-9/2)}\)">\(\log_q\sqrt{(9/2)/(d-9/2)}\)</span>, with the exact two values <span class="math" data-tex="\(q^{9n/2}/(1+q^{2n})^{d/2}\)">\(q^{9n/2}/(1+q^{2n})^{d/2}\)</span> retained. This follows by differentiating the full function, as in CC8 with <span class="math" data-tex="\(p=9/2\)">\(p=9/2\)</span>. Reindexing EX16 proves</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_C(\operatorname{Dil}_\lambda u,\operatorname{Dil}_\lambda v)
+=\lambda^{9/2}\operatorname{Dil}_\lambda\mathcal D_C(u,v),
+\qquad \lambda=q^k.
+\tag{EX18}
+\]">\[
+\mathcal D_C(\operatorname{Dil}_\lambda u,\operatorname{Dil}_\lambda v)
+=\lambda^{9/2}\operatorname{Dil}_\lambda\mathcal D_C(u,v),
+\qquad \lambda=q^k.
+\tag{EX18}
+\]</span>
+<p>If this operator is nonzero, the dense compact-annular input argument CC10 applies to its new exponent and its actual original inhomogeneous norms. It forces <span class="math" data-tex="\(s_1+s_2-s\geq9/2\)">\(s_1+s_2-s\geq9/2\)</span>. Thus EX17 is the complete sharp range for every nonzero diffusion defect, including the full <span class="math" data-tex="\(H^{10}\times H^{10}\to H^{31/2}\)">\(H^{10}\times H^{10}\to H^{31/2}\)</span> target.</p>
+<p>For the actual pump at index <span class="math" data-tex="\(n_*\)">\(n_*\)</span>, abbreviate <span class="math" data-tex="\(\Phi_i=\phi_{i,n_*}\)">\(\Phi_i=\phi_{i,n_*}\)</span>, retain <span class="math" data-tex="\(G=\|\nabla\Phi_1\|_2^2\)">\(G=\|\nabla\Phi_1\|_2^2\)</span>, and keep <span class="math" data-tex="\(A=\|\Phi_1\|_2^2\)">\(A=\|\Phi_1\|_2^2\)</span>, <span class="math" data-tex="\(k=q^{5n_*/2}\)">\(k=q^{5n_*/2}\)</span>. Disjoint supports give</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_{C_{\mathrm{pump}}}(\Phi_1,\Phi_1)
+=k\bigl(A^2\Delta\Phi_2+2AG\Phi_2\bigr)\ne0.
+\tag{EX19}
+\]">\[
+\mathcal D_{C_{\mathrm{pump}}}(\Phi_1,\Phi_1)
+=k\bigl(A^2\Delta\Phi_2+2AG\Phi_2\bigr)\ne0.
+\tag{EX19}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(C_{\mathrm{pump}}(\Phi_1,\Phi_1)=kA^2\Phi_2\)">\(C_{\mathrm{pump}}(\Phi_1,\Phi_1)=kA^2\Phi_2\)</span>, <span class="math" data-tex="\(\langle\Delta\Phi_1,\Phi_1\rangle=-G\)">\(\langle\Delta\Phi_1,\Phi_1\rangle=-G\)</span>, and <span class="math" data-tex="\(\langle\Delta\Phi_1,\Phi_2\rangle=0\)">\(\langle\Delta\Phi_1,\Phi_2\rangle=0\)</span>, proving the coefficients and signs. If the final field were zero, <span class="math" data-tex="\(\Phi_2\)">\(\Phi_2\)</span> would be a nonzero <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Laplacian eigenfunction. Fourier transformation would put its support on a sphere of fixed radius (or an empty set), a set of Lebesgue measure zero. An <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Fourier function supported there is zero, contradicting CC13. This proves the displayed nonvanishing and makes the sharp threshold a statement about this actual object.</p>
+<h3 id="exercise-5-construct-the-space-created-by-diffusion-and-its-global-viscous-pump">Exercise 5. Construct the space created by diffusion and its global viscous pump</h3>
+<p>Show exactly why the two-field inviscid plane is not invariant under the positive-viscosity equation. Construct the space generated by that defect and prove the actual viscous dynamics there, retaining its full original physical force.</p>
+<p><strong>Solution.</strong> Continue with the actual <span class="math" data-tex="\(\Phi_i=\phi_{i,n_*}\)">\(\Phi_i=\phi_{i,n_*}\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S=\operatorname{span}_{\mathbb R}\{\Phi_1,\Phi_2\},\qquad
+P_Su=\frac{\langle u,\Phi_1\rangle}{A}\Phi_1+
+\frac{\langle u,\Phi_2\rangle}{B}\Phi_2,\\
+g_1=(I-P_S)\Delta\Phi_1
+=\Delta\Phi_1+\frac GA\Phi_1,\qquad
+\|g_1\|_2^2=\|\Delta\Phi_1\|_2^2-\frac{G^2}{A}&gt;0.
+\end{gathered}
+\tag{EX20}
+\]">\[
+\begin{gathered}
+S=\operatorname{span}_{\mathbb R}\{\Phi_1,\Phi_2\},\qquad
+P_Su=\frac{\langle u,\Phi_1\rangle}{A}\Phi_1+
+\frac{\langle u,\Phi_2\rangle}{B}\Phi_2,\\
+g_1=(I-P_S)\Delta\Phi_1
+=\Delta\Phi_1+\frac GA\Phi_1,\qquad
+\|g_1\|_2^2=\|\Delta\Phi_1\|_2^2-\frac{G^2}{A}&gt;0.
+\end{gathered}
+\tag{EX20}
+\]</span>
+<p>Orthogonality of the two Fourier supports removes the <span class="math" data-tex="\(\Phi_2\)">\(\Phi_2\)</span> coefficient. Expanding the remaining square and using <span class="math" data-tex="\(\langle\Delta\Phi_1,\Phi_1\rangle=-G\)">\(\langle\Delta\Phi_1,\Phi_1\rangle=-G\)</span> gives its full norm. If it vanished, <span class="math" data-tex="\(\Phi_1\)">\(\Phi_1\)</span> would be a nonzero <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Laplacian eigenfunction, which EX19 excludes. For the actual equation <span class="math" data-tex="\(u_t=\nu\Delta u+C_{\mathrm{pump}}(u,u)\)">\(u_t=\nu\Delta u+C_{\mathrm{pump}}(u,u)\)</span> with <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, the derivative at datum <span class="math" data-tex="\(\Phi_1\)">\(\Phi_1\)</span> has the nonzero outside component <span class="math" data-tex="\(\nu g_1\)">\(\nu g_1\)</span>. Thus the inviscid plane fails to be invariant for this exact initial datum, with its full defect identified.</p>
+<p>The space generated by repeated original diffusion is</p>
+<span class="math math-display" data-tex="\[
+\mathcal K=
+\overline{\operatorname{span}_{\mathbb R}
+\{\Delta^j\Phi_1,\Delta^j\Phi_2:j=0,1,2,\ldots\}}^{\,L^2}.
+\tag{EX21}
+\]">\[
+\mathcal K=
+\overline{\operatorname{span}_{\mathbb R}
+\{\Delta^j\Phi_1,\Delta^j\Phi_2:j=0,1,2,\ldots\}}^{\,L^2}.
+\tag{EX21}
+\]</span>
+<p>It is a closed real solenoidal subspace containing <span class="math" data-tex="\(S\)">\(S\)</span> and the exact defects. It is infinite-dimensional. Indeed if a finite linear combination of the powers of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> applied to <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span> were zero, its Fourier transform would be <span class="math" data-tex="\(P(-4\pi^2|\xi|^2)\widehat\Phi_i(\xi)=0\)">\(P(-4\pi^2|\xi|^2)\widehat\Phi_i(\xi)=0\)</span> for a polynomial <span class="math" data-tex="\(P\)">\(P\)</span>. On an open cap the original bump is positive and the projected polarization is nonzero. The radii of this open set contain an interval, so the polynomial vanishes on an interval and hence is identically zero. The two families have disjoint supports, so a dependence between both families reduces to these separate zero polynomials. This proves the asserted dimension without discarding the generated higher derivatives.</p>
+<p>Retain the full original frequency bounds</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r_0=q^{n_*}(1-\delta)&gt;0,\qquad r_1=q^{n_*}(1+\delta),\\
+\operatorname{supp}\widehat u\subset\{r_0\leq|\xi|\leq r_1\}
+\quad(u\in\mathcal K).
+\end{gathered}
+\tag{EX22}
+\]">\[
+\begin{gathered}
+r_0=q^{n_*}(1-\delta)&gt;0,\qquad r_1=q^{n_*}(1+\delta),\\
+\operatorname{supp}\widehat u\subset\{r_0\leq|\xi|\leq r_1\}
+\quad(u\in\mathcal K).
+\end{gathered}
+\tag{EX22}
+\]</span>
+<p>Support is preserved under <span class="math" data-tex="\(L^2\)">\(L^2\)</span> limits because multiplication by the indicator of its complement is continuous in Fourier <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Thus, for every real <span class="math" data-tex="\(s\)">\(s\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\min\{(1+4\pi^2r_0^2)^s,(1+4\pi^2r_1^2)^s\}\|u\|_2^2
+\leq\|u\|_{H^s}^2\\
+\leq\max\{(1+4\pi^2r_0^2)^s,(1+4\pi^2r_1^2)^s\}\|u\|_2^2.
+\end{gathered}
+\tag{EX23}
+\]">\[
+\begin{gathered}
+\min\{(1+4\pi^2r_0^2)^s,(1+4\pi^2r_1^2)^s\}\|u\|_2^2
+\leq\|u\|_{H^s}^2\\
+\leq\max\{(1+4\pi^2r_0^2)^s,(1+4\pi^2r_1^2)^s\}\|u\|_2^2.
+\end{gathered}
+\tag{EX23}
+\]</span>
+<p>These are estimates of the complete original norms. In particular <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is bounded on this <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space, with norm at most <span class="math" data-tex="\(4\pi^2r_1^2\)">\(4\pi^2r_1^2\)</span>, and maps the generating span into itself. Continuity therefore gives <span class="math" data-tex="\(\Delta\mathcal K\subset\mathcal K\)">\(\Delta\mathcal K\subset\mathcal K\)</span>. The operator-norm convergent series</p>
+<span class="math math-display" data-tex="\[
+e^{\nu t\Delta}|_{\mathcal K}
+=\sum_{j=0}^{\infty}\frac{(\nu t)^j}{j!}\Delta^j|_{\mathcal K}
+\tag{EX24}
+\]">\[
+e^{\nu t\Delta}|_{\mathcal K}
+=\sum_{j=0}^{\infty}\frac{(\nu t)^j}{j!}\Delta^j|_{\mathcal K}
+\tag{EX24}
+\]</span>
+<p>proves heat invariance and agrees with the original Fourier heat multiplier. Its full norm is at most one for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>.</p>
+<p>Every coefficient at another original scale is zero on <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, since its disjoint annulus is orthogonal to every generator and to the closure. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_{\mathrm{pump}}(\mathcal K,\mathcal K)\subset S\subset\mathcal K,\qquad
+\|C_{\mathrm{pump}}(u,v)\|_2\leq2kA\sqrt B\,\|u\|_2\|v\|_2.
+\end{gathered}
+\tag{EX25}
+\]">\[
+\begin{gathered}
+C_{\mathrm{pump}}(\mathcal K,\mathcal K)\subset S\subset\mathcal K,\qquad
+\|C_{\mathrm{pump}}(u,v)\|_2\leq2kA\sqrt B\,\|u\|_2\|v\|_2.
+\end{gathered}
+\tag{EX25}
+\]</span>
+<p>The incoming term has bound <span class="math" data-tex="\(k\|\Phi_1\|_2^2\|\Phi_2\|_2\|u\|_2\|v\|_2=kA\sqrt B\|u\|_2\|v\|_2\)">\(k\|\Phi_1\|_2^2\|\Phi_2\|_2\|u\|_2\|v\|_2=kA\sqrt B\|u\|_2\|v\|_2\)</span>. Each outgoing orientation has half that same bound. Their sum proves EX25 with all three original coefficients. Cubic cancellation remains exact.</p>
+<p>The CC11 Picard construction now works directly in <span class="math" data-tex="\(C([0,T];\mathcal K)\)">\(C([0,T];\mathcal K)\)</span> with its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm and coefficient <span class="math" data-tex="\(2kA\sqrt B\)">\(2kA\sqrt B\)</span>. Every iterate lies in <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, since both heat and the actual bilinear operator preserve it. For <span class="math" data-tex="\(M=\|u_0\|_2&gt;0\)">\(M=\|u_0\|_2&gt;0\)</span>, the definite time <span class="math" data-tex="\(T=(16kA\sqrt B M)^{-1}\)">\(T=(16kA\sqrt B M)^{-1}\)</span> gives the same radius-<span class="math" data-tex="\(2M\)">\(2M\)</span> contraction. Zero data give zero. Because <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is bounded here and the quadratic map is continuous, the actual trajectory is <span class="math" data-tex="\(C^1L^2\)">\(C^1L^2\)</span> and solves the full differential equation. It retains the exact original energy identity</p>
+<span class="math math-display" data-tex="\[
+\frac12\|u(t)\|_2^2+\nu\int_0^t\|\nabla u(r)\|_2^2dr
+=\frac12\|u_0\|_2^2.
+\tag{EX26}
+\]">\[
+\frac12\|u(t)\|_2^2+\nu\int_0^t\|\nabla u(r)\|_2^2dr
+=\frac12\|u_0\|_2^2.
+\tag{EX26}
+\]</span>
+<p>Pairing the bounded-generator equation proves this identity, and EX22–EX23 justify all its derivatives. The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm stays bounded by <span class="math" data-tex="\(M\)">\(M\)</span>. Therefore the definite restart time never shrinks to zero, and successive unique local solutions extend to every <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. This proves an actual global viscous pump in the constructed infinite-dimensional space.</p>
+<p>The original support lower bound proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|u(t)\|_2\leq e^{-4\pi^2\nu r_0^2t}\|u_0\|_2,\\
+\|u(t)\|_{H^s}\leq
+\max\{(1+4\pi^2r_0^2)^{s/2},(1+4\pi^2r_1^2)^{s/2}\}
+e^{-4\pi^2\nu r_0^2t}\|u_0\|_2.
+\end{gathered}
+\tag{EX27}
+\]">\[
+\begin{gathered}
+\|u(t)\|_2\leq e^{-4\pi^2\nu r_0^2t}\|u_0\|_2,\\
+\|u(t)\|_{H^s}\leq
+\max\{(1+4\pi^2r_0^2)^{s/2},(1+4\pi^2r_1^2)^{s/2}\}
+e^{-4\pi^2\nu r_0^2t}\|u_0\|_2.
+\end{gathered}
+\tag{EX27}
+\]</span>
+<p>Indeed the Fourier identity gives <span class="math" data-tex="\(\|\nabla u\|_2^2\geq4\pi^2r_0^2\|u\|_2^2\)">\(\|\nabla u\|_2^2\geq4\pi^2r_0^2\|u\|_2^2\)</span>. Multiply the differential energy inequality by <span class="math" data-tex="\(e^{8\pi^2\nu r_0^2t}\)">\(e^{8\pi^2\nu r_0^2t}\)</span> to obtain its nonpositive derivative and integrate; then use EX23. The exact solution and its full energy identity remain EX26, not the upper bound.</p>
+<p>For this viscous trajectory the physical equation has the different force</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_{\mathrm{vis}}=C_{\mathrm{pump}}(u,u)-B(u,u),\qquad
+\widehat p_{\mathrm{vis}}(\eta,t)=
+-\sum_{i,j=1}^3\frac{\eta_i\eta_j}{|\eta|^2}
+\widehat{u_i u_j}_{\mathrm{phys}}(\eta,t),\\
+u_t-\nu\Delta u+(u\cdot\nabla)u+\nabla p_{\mathrm{vis}}
+=f_{\mathrm{vis}},\qquad \langle f_{\mathrm{vis}},u\rangle=0.
+\end{gathered}
+\tag{EX28}
+\]">\[
+\begin{gathered}
+f_{\mathrm{vis}}=C_{\mathrm{pump}}(u,u)-B(u,u),\qquad
+\widehat p_{\mathrm{vis}}(\eta,t)=
+-\sum_{i,j=1}^3\frac{\eta_i\eta_j}{|\eta|^2}
+\widehat{u_i u_j}_{\mathrm{phys}}(\eta,t),\\
+u_t-\nu\Delta u+(u\cdot\nabla)u+\nabla p_{\mathrm{vis}}
+=f_{\mathrm{vis}},\qquad \langle f_{\mathrm{vis}},u\rangle=0.
+\end{gathered}
+\tag{EX28}
+\]</span>
+<p>The original differential equation and the full MB20 pressure calculation prove this correspondence. Both nonlinear energy pairings vanish. No <span class="math" data-tex="\(-\nu\Delta u\)">\(-\nu\Delta u\)</span> term is inserted here, because this actual trajectory already contains its own original viscous evolution, unlike CC17.</p>
+<p>For completeness, this force, pressure and velocity are smooth for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, with every Sobolev and fixed time-derivative norm uniformly bounded. The velocity's every spatial norm follows from EX23 and EX27. Its time derivatives follow inductively in <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> from</p>
+<span class="math math-display" data-tex="\[
+u^{(j+1)}=\nu\Delta u^{(j)}
++\sum_{\ell=0}^j\binom j\ell
+C_{\mathrm{pump}}(u^{(\ell)},u^{(j-\ell)}),
+\tag{EX29}
+\]">\[
+u^{(j+1)}=\nu\Delta u^{(j)}
++\sum_{\ell=0}^j\binom j\ell
+C_{\mathrm{pump}}(u^{(\ell)},u^{(j-\ell)}),
+\tag{EX29}
+\]</span>
+<p>using the bounded <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, EX25 and the previously proved uniform bounds. Differentiating the actual integral equation first proves the next derivative; the finite displayed recurrence then gives its bound. This induction starts with the already constructed <span class="math" data-tex="\(C^1\)">\(C^1\)</span> trajectory. The full product estimates and order-zero pressure and Leray multipliers prove every corresponding norm of EX28. Sobolev embedding gives joint smoothness. Products and projection need not preserve the original compact Fourier support of <span class="math" data-tex="\(u\)">\(u\)</span>; no such claim is made for the force or pressure.</p>
+<p>The failure of the two-field plane has thus produced its exact infinite-dimensional invariant space and an actual complete viscous evolution there. This globally regular fixed-band construction does not supply the later transfer to arbitrarily high original scales; that is the remaining cascade calculation.</p>
+<h2 id="continue-to-the-averaging-representation-and-successive-transfers">Continue to the averaging representation and successive transfers</h2>
+<p>The original local cascade now has exact strong maps, sharp Sobolev bounds,
+actual local trajectories and a complete energy-transfer example.
+The diffusion defect defines an infinite-dimensional invariant space
+with a global viscous solution and the full original force and pressure.
+The real and complex averaging operations have complete composition maps.</p>
+<p>The next step is the complete averaging representation, followed by the
+successive energy transfers and their finite-time limit. A fixed-band
+pump does not perform that transfer to arbitrarily high original scales.
+The series continues through the other assigned model and self-similar
+constructions toward the Alpöge–Buckmaster, OpenAI and workbench results.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-37.html">Previous lesson</a><a href="NS-FLUID-39.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

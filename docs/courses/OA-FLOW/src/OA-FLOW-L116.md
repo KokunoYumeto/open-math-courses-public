@@ -5,7 +5,7 @@
 
 The coefficient algebra can carry many central operators while its crossed product has only scalar center. The exact obstruction is the invariant center of the coefficient algebra, together with the action of the dual group on the crossed-product center. We identify the first obstruction directly from the regular generators, prove the factor criterion, and retain a complete bidual proof of the same identity. A two-component translation system then shows why central ergodicity is necessary.
 
-*Original restored programme proof, GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated to CC0-1.0 to the extent of rights held; genuine prerequisite and component terms remain separate. The complete L115 input is bound to its earlier accepted canonical proof. Spot-checked in a separate AI session.*
+*Original programme expression is dedicated to CC0-1.0 to the extent of rights held; genuine prerequisite and component terms remain separate. The complete L115 input is bound to its earlier canonical proof.*
 
 <a id="oa-flow.connes.centralergodic"></a>
 

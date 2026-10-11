@@ -6,7 +6,9 @@ A normed vector space remembers the size of a single vector. A subspace of bound
 
 We will prove the theorem by constructing enough completely contractive maps to detect every matrix norm. The construction uses ordinary Hahn–Banach and finite-dimensional states. It does not assume that the vector space is complete or separable.
 
-Prerequisites are elementary Hilbert-space operator theory, Hahn–Banach separation, and the definitions in [Completely bounded extension and factorization](completely-bounded-extension.md). The free norm-detecting method and the locally completed state-selection argument are identified below. Inner products are linear in the second variable.
+The retained scalar foundations prove scalar compactness, Hahn–Banach, Hilbert representation, operator adjoints, the C*-identity and Hilbert completion. [MG01](../scalar-gns-and-matrix-cstar-norms.html#mg01) proves scalar Cauchy–Schwarz and norming states, including for a positive scalar matrix. We use the exact retained scalar inputs for that proof. A linear map is completely contractive when its entrywise map on matrices is contractive at every size; a complete isometry preserves every such norm. No extension or factorization theorem for completely bounded maps is required here. Inner products are linear in the second variable.
+
+The construction has one concrete goal: given a matrix \(Y\), find a coefficient operator whose norm at that size detects \(\|Y\|\), while its norms at every other size stay below the prescribed norms. The finite-state lemma provides those simultaneous bounds. Rectangular coefficient operators then combine into one Hilbert-space direct sum.
 
 ## 1. The two axioms
 
@@ -41,14 +43,25 @@ Fix \(n\) and a linear functional \(f\) on \(M_n(V)\) with \(\|f\|\le1\). The fo
 \operatorname{Re} f(axb)
 \le\tfrac12\{p(aa^*)+q(b^*b)\}.                 \tag{1}
 \]
-The pairs of states form a compact convex set. Each requirement is a closed half-space in that set. We prove that every finite family of requirements has a common pair of states.
+The state set of \(M_n(\mathbb C)\) is nonempty: a unit vector gives the state \(c\mapsto\langle\xi,c\xi\rangle\). Identify a functional with its \(n^2\) values on the matrix units. Positivity and value one at the unit are closed conditions. Scalar Cauchy–Schwarz gives norm one for a positive functional of value one at the unit, hence bounds each of these coordinates by one. Conversely those closed conditions characterize the states. The state set is therefore closed in a finite product of compact discs, hence compact. Convexity follows by taking convex combinations of positive functionals. This proves that pairs of states form a compact convex set. Each requirement is a closed half-space in that set. We prove that every finite family of requirements has a common pair of states.
 
-Take triples \((a_i,x_i,b_i)\), \(1\le i\le r\), with possibly different middle sizes and \(\|x_i\|\le1\). If their requirements had no common solution, separate the compact convex set of vectors
+Take triples \((a_i,x_i,b_i)\), \(1\le i\le r\), with possibly different middle sizes and \(\|x_i\|\le1\). Their simultaneous requirements say that the compact convex set
 \[
+ C=\left\{
 \left(\tfrac12\{p(a_i a_i^*)+q(b_i^*b_i)\}
-      -\operatorname{Re}f(a_i x_i b_i)\right)_{i=1}^r
+      -\operatorname{Re}f(a_i x_i b_i)\right)_{i=1}^r:p,q\text{ states}
+ \right\}
 \]
-from the nonnegative orthant in \(\mathbb R^r\). A separating linear functional must have nonnegative coefficients \(\lambda_i\), since the orthant is unbounded in each positive coordinate. Its separation would give
+meets the nonnegative orthant \(Q=\mathbb R_+^r\). Suppose it does not. The squared distance to \(Q\) is the continuous function \(c\mapsto\sum_i\min(c_i,0)^2\), so it has a minimizer \(c\in C\), with strictly positive minimum. Put
+\[
+ u_i=\max(c_i,0),\qquad \lambda_i=u_i-c_i\ge0.
+\]
+Then \(\lambda\ne0\), \(\lambda\cdot u=0\), and \(\lambda\cdot c=-\|\lambda\|^2\). For any \(d\in C\), the segment \(c+t(d-c)\), \(0\le t\le1\), lies in \(C\). Its distance to the fixed \(u\in Q\) is at least the minimal distance from \(C\) to \(Q\). Expanding its squared distance and dividing by \(t>0\), then letting \(t\downarrow0\), gives
+\[
+ (c-u)\cdot(d-c)\ge0,
+ \qquad \lambda\cdot d\le\lambda\cdot c=-\|\lambda\|^2<0.
+\]
+This proves the needed strict separation and the nonnegative coefficients directly. It gives
 \[
 \sup_{p,q}\sum_i\lambda_i
 \left(\tfrac12\{p(a_i a_i^*)+q(b_i^*b_i)\}
@@ -83,6 +96,39 @@ Compactness now gives one pair \(p,q\) satisfying all requirements (1). Replacin
 \]
 The infimum over \(t\) is the geometric mean in the statement. If one of the two state values is zero, taking \(t\) to zero or infinity gives zero. Finally rescale a nonzero \(x\) by its norm. The zero case is immediate. \(\square\)
 
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="os-title os-desc" width="1050" height="400" viewBox="0 0 1050 400">
+<title id="os-title">Finite-state selection by the distance to the positive orthant</title>
+<desc id="os-desc">For a finite family of r matrix triples, pairs of states yield a compact convex set C of r real constraint values. If it missed the positive orthant, the closest point c would give u equal to its coordinatewise positive part and nonzero lambda equal to u minus c. Nonnegative lambda gives strict separation. The row and column matrix norm bound forces the supremum of these same lambda-weighted values to be nonnegative, a contradiction.</desc>
+<defs><marker id="os-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#285a77"/></marker></defs>
+<rect x="1" y="1" width="1048" height="398" rx="12" fill="#f7fafc" stroke="#9ab0bd"/>
+<text x="24" y="34" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#163d56">One pair of states must meet every finite list of constraints</text>
+<rect x="24" y="57" width="445" height="121" rx="9" fill="white" stroke="#608497"/>
+<text x="43" y="85" font-family="Arial,sans-serif" font-size="17" fill="#163d56">Compact convex C in R^r, from all pairs (p,q)</text>
+<text x="43" y="115" font-family="Arial,sans-serif" font-size="16" fill="#163d56">C_i(p,q) = (p(a_i a_i*) + q(b_i* b_i))/2</text>
+<text x="43" y="141" font-family="Arial,sans-serif" font-size="16" fill="#163d56">                 - Re f(a_i x_i b_i),  ||x_i|| &lt;= 1</text>
+<text x="43" y="165" font-family="Arial,sans-serif" font-size="15" fill="#163d56">A common pair means C meets Q = R_+^r.</text>
+<path d="M480 111H559" stroke="#285a77" stroke-width="2" marker-end="url(#os-arrow)"/>
+<text x="520" y="89" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#163d56">suppose not</text>
+<rect x="573" y="57" width="451" height="121" rx="9" fill="#fff7ec" stroke="#b79055"/>
+<text x="591" y="85" font-family="Arial,sans-serif" font-size="17" fill="#163d56">Choose c minimizing distance(C,Q).</text>
+<text x="591" y="115" font-family="Arial,sans-serif" font-size="17" fill="#163d56">u_i = max(c_i,0); lambda = u - c &gt;= 0</text>
+<text x="591" y="142" font-family="Arial,sans-serif" font-size="17" fill="#163d56">lambda is nonzero; lambda dot u = 0.</text>
+<text x="591" y="165" font-family="Arial,sans-serif" font-size="15" fill="#163d56">Expand along every segment c + t(d-c).</text>
+<path d="M799 188V217" stroke="#285a77" stroke-width="2" marker-end="url(#os-arrow)"/>
+<path d="M246 188V217" stroke="#285a77" stroke-width="2" marker-end="url(#os-arrow)"/>
+<rect x="24" y="228" width="445" height="85" rx="9" fill="#edf7ec" stroke="#6e9864"/>
+<text x="43" y="256" font-family="Arial,sans-serif" font-size="17" fill="#163d56">The block row/column norm estimate gives</text>
+<text x="43" y="284" font-family="Arial,sans-serif" font-size="18" fill="#163d56">sup_(p,q) sum_i lambda_i C_i(p,q) &gt;= 0.</text>
+<rect x="573" y="228" width="451" height="85" rx="9" fill="#fff7ec" stroke="#b79055"/>
+<text x="591" y="256" font-family="Arial,sans-serif" font-size="17" fill="#163d56">For every d in C, the distance proof gives</text>
+<text x="591" y="284" font-family="Arial,sans-serif" font-size="18" fill="#163d56">lambda dot d &lt;= -||lambda||^2 &lt; 0.</text>
+<text x="525" y="275" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#8c3e35">conflict</text>
+<text x="24" y="354" font-family="Arial,sans-serif" font-size="17" fill="#163d56">Therefore each finite family has a common pair. Compactness gives one pair for every triple.</text>
+<text x="24" y="380" font-family="Arial,sans-serif" font-size="15" fill="#163d56">Proof locator: Lemma 2.1. Objects are the actual finite constraint image and coordinatewise orthant projection.</text>
+</svg>
+
+*Figure.* For a fixed finite list of matrix triples, \(C\subset\mathbb R^r\) is their actual constraint-value image as the pair of states varies, and \(Q\) is the nonnegative orthant. The closest-point construction is used only under the contradictory assumption \(C\cap Q=\varnothing\). The block row and column estimate then contradicts its strictly negative weighted supremum. Compactness passes from all finite lists to the one pair required by Lemma 2.1.
+
 The same two states work at every middle matrix size. This uniformity is what will make the operator map completely contractive.
 
 ## 3. Turn the bound into a coefficient operator
@@ -96,7 +142,7 @@ and let \(H_q\) be the analogous quotient for
 The inner products are
 \(\langle a,c\rangle_p=p(ca^*)\) and
 \(\langle b,d\rangle_q=q(b^*d)\).
-They are positive semidefinite before quotienting and positive definite afterward. These spaces are finite-dimensional. Write \(\overline{H_p}\) for the conjugate Hilbert space; the correspondence \(a\mapsto\bar a\) is conjugate linear.
+Positivity of the states makes these forms positive semidefinite. Scalar Cauchy–Schwarz shows that a null vector pairs to zero with every vector, so the null sets are linear subspaces, and the forms descend to positive definite forms on the quotients. A finite-dimensional inner-product space is complete: choose an orthonormal basis by the finite Gram–Schmidt procedure and take the coordinate limits of any Cauchy sequence. These spaces are therefore finite-dimensional Hilbert spaces. Write \(\overline{H_p}\) for the conjugate Hilbert space; the correspondence \(a\mapsto\bar a\) is conjugate linear.
 
 For \(v\in V\), let \(D_n(v)\) be the diagonal matrix with \(v\) repeated \(n\) times. The direct-sum axiom gives \(\|D_n(v)\|_n=\|v\|_1\). Define an operator
 \[
@@ -148,11 +194,11 @@ Equation (3) shows that a coefficient of \(\theta_f^{(n)}(Y)\), between these un
 \(\|\theta_f^{(n)}(Y)\|=\|Y\|_n\).
 
 Embed the rectangular operator \(\theta_f(v):H_q\to\overline{H_p}\) as the upper-right corner in
-\(B(\overline{H_p}\oplus H_q)\), with all other corners zero. This preserves its norm at every size. For each nonzero matrix \(Y\) at each size, choose such a map that detects its norm. Form the Hilbert direct sum of their spaces and the block diagonal map
+\(B(\overline{H_p}\oplus H_q)\), with all other corners zero. For every size \(m\) and \(X\in M_m(V)\), this corner sends a tuple \(u\oplus w\) to \(\theta_f^{(m)}(X)w\oplus0\). The upper bound is its operator norm, and testing tuples \(0\oplus w\) gives the reverse bound. Thus corner insertion preserves the norm at every size. For each nonzero matrix \(Y\) at each size, choose such a map that detects its norm. Form the Hilbert direct sum of their spaces and the block diagonal map
 \[
 \Theta(v)=\bigoplus_Y\theta_Y(v).
 \]
-Each coordinate is a complete contraction, so this defines a bounded operator of norm at most \(\|v\|\); the same is true at every matrix size. For any \(Y\), its own coordinate gives the reverse inequality at that size. Thus \(\Theta\) is a complete isometry.
+The direct sum is the space of families \((\zeta_Y)\) for which the supremum of the finite sums \(\sum_{Y\in F}\|\zeta_Y\|^2\) is finite. Finite-support vectors are dense by that supremum; coordinatewise limits of a Cauchy sequence, and passage of its Cauchy bound to each finite sum, prove completeness. Each coordinate is a complete contraction. Summing the squared coordinate bounds first on finite-support vectors defines \(\Theta(v)\) with norm at most \(\|v\|\), and then extends it by continuity. At a fixed matrix size, interchanging the finite tuple with the Hilbert direct sum is an isometry, since its squared norm is the same sum in either order. The corresponding entrywise operator acts coordinatewise, so the identical bound proves contractivity at every matrix size. For any \(Y\), its own coordinate gives the reverse inequality at that size. Thus \(\Theta\) is a complete isometry.
 
 The zero vector space has the trivial realization. In the nonzero case the index family is a set: it is contained in the union of the sets \(M_n(V)\), \(n\ge1\). There is no separability assertion about the resulting Hilbert space. Finally an isometry from a complete normed space has closed image. \(\square\)
 
@@ -201,4 +247,4 @@ There is a direct operator realization here: map \(x\) to the bounded scalar fun
 
 Ved Prakash Gupta, Prabha Mandayam and V. S. Sunder, [*The Functional Analysis of Quantum Information Theory*, arXiv:1410.7188v3](https://arxiv.org/pdf/1410.7188v3), Section 1.3.1, Theorem 1.3.1, printed pp.23–25 (PDF pp.28–30), gives the norm-detecting coefficient and direct-sum route. Its two-state selection inequality (1.3) is left by reference. Section 2 here supplies the full compact separation argument for fixed states on finite matrices at every middle size. Section 3 specifies the conjugate Hilbert space needed for the stated inner-product convention.
 
-Edward G. Effros and Zhong-Jin Ruan, [*On matricially normed spaces*](https://msp.org/pjm/1988/132-2/pjm-v132-n2-p05-s.pdf), *Pacific Journal of Mathematics* 132(2) (1988), Theorem 2.2(1), printed p.248 (PDF p.7), states the representation theorem by reference; it is not its proof. Sections 1–4 here contain the complete realization argument, without completeness or separability assumptions. Section 5 proves the minimal matrix-norm example directly; the lecture notes' Section 1.3.3 states that realization without proving it. Exact transitive free Hahn–Banach and Hilbert-space foundations remain pending; no source expression was imported.
+Edward G. Effros and Zhong-Jin Ruan, [*On matricially normed spaces*](https://msp.org/pjm/1988/132-2/pjm-v132-n2-p05-s.pdf), *Pacific Journal of Mathematics* 132(2) (1988), Theorem 2.2(1), printed p.248 (PDF p.7), states the representation theorem by reference; it is not its proof. Sections 1–4 here contain the complete realization argument, without completeness or separability assumptions. Section 5 proves the minimal matrix-norm example directly; the lecture notes' Section 1.3.3 states that realization without proving it. The complete scalar compactness, Hahn–Banach and Hilbert-space proofs consumed here are the exact retained foundations linked above; MG01 supplies the scalar positive-functional norm and norming-state argument. The finite orthant distance proof replaces the separation implication rather than importing it from the referred-to thesis. The human notes and paper retain their own rights; their source text and PDFs are not reproduced or relicensed. These mathematical proof inputs do not certify the inherited wording, selection and organization of the whole course.

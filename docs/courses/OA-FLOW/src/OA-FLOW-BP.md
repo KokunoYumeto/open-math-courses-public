@@ -1,6 +1,6 @@
 # Bounded perturbations and differentiability domains of real actions
 
-*Self-checked by the writing AI. New exposition, retained illustrations, their data and reproduction code: CC0 1.0. Fonts retain their accompanying terms.*
+*New exposition, retained illustrations, their data and reproduction code: CC0 1.0. Fonts retain their accompanying terms.*
 
 A bounded change of velocity preserves exactly the first derivative domain of a real action. Higher derivatives need an additional hypothesis. We construct the evolution directly in the strong topology, prove the domain comparison, and identify the obstruction through an explicit rank-two perturbation.
 

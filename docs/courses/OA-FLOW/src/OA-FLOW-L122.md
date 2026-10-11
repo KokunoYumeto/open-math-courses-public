@@ -10,7 +10,7 @@ Throughout, \(M\ne0\) is a von Neumann algebra on an arbitrary complex Hilbert s
 
 The ordinary complex spectrum in the algebra \(M\), or in the Banach algebra of bounded operators on \(M\), will be denoted by \(\sigma\) or \(\operatorname{Sp}\) with the algebra shown. The action spectrum is a closed subset of \(H\). These are different objects. The positive frequency convention is the exact earlier [L115 convention](OA-FLOW-L115.md#oa-flow.l115.conventions): \(p(s)=(s,p)\). The earlier GCC negative-label spectrum reflects vector labels, but adjoint reflection makes each whole corner action spectrum symmetric. Its positive and negative versions, and their Connes intersections, consequently agree. No individual vector spectrum is assumed symmetric.
 
-*Self-checked by the writing AI. Original exposition and illustrations: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
+*Original exposition and illustrations: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
 
 <a id="oa-flow.l122.inputs"></a>
 

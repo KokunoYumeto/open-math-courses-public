@@ -1,0 +1,309 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Postnikov towers and Grothendieck spectral sequences</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="postnikov-towers-and-grothendieck-spectral-sequences">Postnikov towers and Grothendieck spectral sequences</h1>
+<p>A spectral sequence records successive obstructions and the associated pieces of a filtered answer. This lesson constructs those obstructions from canonical cohomological truncations. It proves the exact-couple construction and convergence, then obtains the Grothendieck spectral sequence from the derived-composition theorem. The two examples include both a collapsing sequence and a sequence with an explicitly nonzero higher differential.</p>
+<p>We use <a href="chain-homotopies-mapping-cones-and-triangles.html">Chain homotopies, mapping cones and triangles</a> for cochain and shift signs, and <a href="derived-morphisms-through-quasi-isomorphism-roofs.html">Derived morphisms through quasi-isomorphism roofs</a>, Section 5, for the K-injective and K-projective tests. <a href="triangles-after-quasi-isomorphism-localization.html">Triangles after quasi-isomorphism localization</a> proves the derived triangulation and natural exact-sequence triangles. <a href="injective-replacements-and-right-derived-functors.html">Injective replacements and right derived functors</a> constructs bounded-below replacements, exact derived functors and derived Hom. <a href="universal-cohomology-and-acyclic-resolutions.html">Universal cohomology and acyclic resolutions</a>, Section 5, proves the canonical composition comparison and its exact acyclicity criterion.</p>
+<p>Let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be an abelian category with enough injectives, and let <span class="math" data-tex="\(G:\mathcal B\to\mathcal C\)">\(G:\mathcal B\to\mathcal C\)</span> be additive and left exact, with <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> any abelian category. We work in fixed ambient universes. All complexes to which a total derived functor is applied represent objects of <span class="math" data-tex="\(D^+\)">\(D^+\)</span>, but no upper cohomological bound is imposed.</p>
+<h2 id="1-functorial-truncations-and-their-triangles">1. Functorial truncations and their triangles</h2>
+<p>For a cochain complex <span class="math" data-tex="\(X\)">\(X\)</span>, write <span class="math" data-tex="\(Z^qX=\ker d_X^q\)">\(Z^qX=\ker d_X^q\)</span> and <span class="math" data-tex="\(B^qX=\operatorname{im}d_X^{q-1}\)">\(B^qX=\operatorname{im}d_X^{q-1}\)</span>. Define the two smart truncations by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+(\tau_{\leq q}X)^n=
+\begin{cases}X^n&amp;n&lt;q,\\ Z^qX&amp;n=q,\\0&amp;n&gt;q,\end{cases}
+\qquad
+(\tau_{\geq q+1}X)^n=
+\begin{cases}0&amp;n&lt;q+1,\\X^{q+1}/B^{q+1}X&amp;n=q+1,\\X^n&amp;n&gt;q+1.\end{cases}
+\tag{1.1}
+\]">\[
+(\tau_{\leq q}X)^n=
+\begin{cases}X^n&amp;n&lt;q,\\ Z^qX&amp;n=q,\\0&amp;n&gt;q,\end{cases}
+\qquad
+(\tau_{\geq q+1}X)^n=
+\begin{cases}0&amp;n&lt;q+1,\\X^{q+1}/B^{q+1}X&amp;n=q+1,\\X^n&amp;n&gt;q+1.\end{cases}
+\tag{1.1}
+\]</span>
+<p>The incoming differential of the first complex factors through its cycle object; the outgoing differential of the second factors through its quotient. Their natural maps are <span class="math" data-tex="\(\tau_{\leq q}X\to X\to\tau_{\geq q+1}X\)">\(\tau_{\leq q}X\to X\to\tau_{\geq q+1}X\)</span>. Direct calculation identifies their cohomology with <span class="math" data-tex="\(H^nX\)">\(H^nX\)</span> in the retained ranges and with zero in the other ranges.</p>
+<p>A chain map preserves cycles and boundaries and thus induces maps on both truncations. Homotopies descend too. At the upper cutoff restrict the last source component to cycles: the discarded outgoing-homotopy term is then zero. At the lower cutoff pass the target component to its quotient: the discarded incoming-homotopy term is a boundary and becomes zero. In all other degrees the original homotopy equation remains unchanged. Hence these are functors on the homotopy category. Their cohomology calculation shows that they preserve quasi-isomorphisms, so the roof universal property descends them to functors on <span class="math" data-tex="\(D^+\)">\(D^+\)</span>, with the same natural maps for every derived arrow.</p>
+<p>There is a natural distinguished triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+\tau_{\leq q}X\longrightarrow X\longrightarrow\tau_{\geq q+1}X
+\longrightarrow(\tau_{\leq q}X)[1].
+\tag{1.2}
+\]">\[
+\tau_{\leq q}X\longrightarrow X\longrightarrow\tau_{\geq q+1}X
+\longrightarrow(\tau_{\leq q}X)[1].
+\tag{1.2}
+\]</span>
+<p>To construct it, take the kernel <span class="math" data-tex="\(K\)">\(K\)</span> of the termwise epimorphism <span class="math" data-tex="\(X\to\tau_{\geq q+1}X\)">\(X\to\tau_{\geq q+1}X\)</span>. It has terms <span class="math" data-tex="\(X^n\)">\(X^n\)</span> below and through degree <span class="math" data-tex="\(q\)">\(q\)</span>, term <span class="math" data-tex="\(B^{q+1}X\)">\(B^{q+1}X\)</span> in degree <span class="math" data-tex="\(q+1\)">\(q+1\)</span>, and zero higher terms. Its differential onto that last term is epic. The natural inclusion <span class="math" data-tex="\(\tau_{\leq q}X\to K\)">\(\tau_{\leq q}X\to K\)</span> is a quasi-isomorphism: it identifies all cohomology through <span class="math" data-tex="\(q\)">\(q\)</span>, and the cohomology in degree <span class="math" data-tex="\(q+1\)">\(q+1\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span> is zero. Transport the natural short-exact-sequence triangle for <span class="math" data-tex="\(0\to K\to X\to\tau_{\geq q+1}X\to0\)">\(0\to K\to X\to\tau_{\geq q+1}X\to0\)</span> along this isomorphism. This gives (1.2). Every construction is natural for chain maps, and its naturality extends to inverted quasi-isomorphisms and their composites, hence to all derived arrows.</p>
+<p>The consecutive truncations give another natural triangle:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\tau_{\leq q-1}X\longrightarrow\tau_{\leq q}X
+\longrightarrow H^qX[-q]\xrightarrow{\partial_q}(\tau_{\leq q-1}X)[1].
+\tag{1.3}
+\]">\[
+\tau_{\leq q-1}X\longrightarrow\tau_{\leq q}X
+\longrightarrow H^qX[-q]\xrightarrow{\partial_q}(\tau_{\leq q-1}X)[1].
+\tag{1.3}
+\]</span>
+<p>Indeed their termwise quotient has only two possibly nonzero terms, <span class="math" data-tex="\(X^{q-1}/Z^{q-1}X\simeq B^qX\)">\(X^{q-1}/Z^{q-1}X\simeq B^qX\)</span> in degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span> and <span class="math" data-tex="\(Z^qX\)">\(Z^qX\)</span> in degree <span class="math" data-tex="\(q\)">\(q\)</span>, with the inclusion differential. Its projection to <span class="math" data-tex="\(H^qX[-q]\)">\(H^qX[-q]\)</span> is a natural quasi-isomorphism. Transport the quotient short-exact-sequence triangle along that projection. This also proves the naturality of <span class="math" data-tex="\(\partial_q\)">\(\partial_q\)</span>, including its sign, with the fixed cone conventions.</p>
+<p>Two useful consequences specify these truncations intrinsically. If <span class="math" data-tex="\(H^nY=0\)">\(H^nY=0\)</span> for <span class="math" data-tex="\(n&gt;q\)">\(n&gt;q\)</span> and <span class="math" data-tex="\(H^nZ=0\)">\(H^nZ=0\)</span> for <span class="math" data-tex="\(n&lt;q+1\)">\(n&lt;q+1\)</span>, then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{D(\mathcal B)}(Y,Z)=0.
+\tag{1.4}
+\]">\[
+\operatorname{Hom}_{D(\mathcal B)}(Y,Z)=0.
+\tag{1.4}
+\]</span>
+<p>For the proof choose a bounded-below representative of <span class="math" data-tex="\(Y\)">\(Y\)</span>, then truncate it above at <span class="math" data-tex="\(q\)">\(q\)</span>; it has no terms above <span class="math" data-tex="\(q\)">\(q\)</span>. Replace a lower smart truncation of <span class="math" data-tex="\(Z\)">\(Z\)</span> by an injective complex with zero terms below <span class="math" data-tex="\(q+1\)">\(q+1\)</span>. Every chain map between those representatives is zero because their nonzero degree ranges do not overlap. The K-injective Hom test identifies its homotopy Hom with derived Hom, proving (1.4).</p>
+<p>Apply exact Hom sequences to (1.2). Both Hom terms involving the tail and its shift by <span class="math" data-tex="\(-1\)">\(-1\)</span> vanish for a source supported in cohomological degrees at most <span class="math" data-tex="\(q\)">\(q\)</span>, by (1.4). Thus <span class="math" data-tex="\(\tau_{\leq q}X\to X\)">\(\tau_{\leq q}X\to X\)</span> is universal for maps from such sources. Dually, <span class="math" data-tex="\(X\to\tau_{\geq q+1}X\)">\(X\to\tau_{\geq q+1}X\)</span> is universal for maps to targets supported in degrees at least <span class="math" data-tex="\(q+1\)">\(q+1\)</span>; the head and its shift by <span class="math" data-tex="\(1\)">\(1\)</span> give the two vanishing terms. These bijections include uniqueness and naturality. They will identify a specified two-stage extension with its canonical truncation tower in Example 6.2.</p>
+<p>Finally <span class="math" data-tex="\(RG\)">\(RG\)</span> preserves lower cohomological bounds. If <span class="math" data-tex="\(H^nX=0\)">\(H^nX=0\)</span> below <span class="math" data-tex="\(a\)">\(a\)</span>, first represent <span class="math" data-tex="\(X\)">\(X\)</span> by its lower smart truncation starting in degree <span class="math" data-tex="\(a\)">\(a\)</span>, then use the injective replacement starting in that same degree. Applying <span class="math" data-tex="\(G\)">\(G\)</span> term by term leaves the terms below <span class="math" data-tex="\(a\)">\(a\)</span> zero, so</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+H^n(RG(X))=0\quad(n&lt;a).
+\tag{1.5}
+\]">\[
+H^n(RG(X))=0\quad(n&lt;a).
+\tag{1.5}
+\]</span>
+<p>All comparisons to other representatives are the canonical derived-functor comparisons already proved.</p>
+<h2 id="2-derive-an-exact-couple-without-omitted-verifications">2. Derive an exact couple without omitted verifications</h2>
+<p>An exact couple has objects <span class="math" data-tex="\(D,E\)">\(D,E\)</span> and arrows <span class="math" data-tex="\(i:D\to D\)">\(i:D\to D\)</span>, <span class="math" data-tex="\(j:D\to E\)">\(j:D\to E\)</span>, <span class="math" data-tex="\(k:E\to D\)">\(k:E\to D\)</span>, with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\ker i=\operatorname{im}k,\qquad
+\ker j=\operatorname{im}i,\qquad
+\ker k=\operatorname{im}j.
+\tag{2.1}
+\]">\[
+\ker i=\operatorname{im}k,\qquad
+\ker j=\operatorname{im}i,\qquad
+\ker k=\operatorname{im}j.
+\tag{2.1}
+\]</span>
+<p>The objects can also be graded families, with the appropriate degree changes attached to these arrows. Each assertion below is then read componentwise at the indicated source and target. This formulation requires no coproduct of all graded components in the ambient category.</p>
+<p>Set <span class="math" data-tex="\(d=jk\)">\(d=jk\)</span>. Since <span class="math" data-tex="\(kj=0\)">\(kj=0\)</span>, we have <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>. Put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+D&#x27;=\operatorname{im}i,\qquad E&#x27;=\ker d/\operatorname{im}d,\qquad
+i&#x27;(ix)=i^2x,\quad j&#x27;(ix)=[jx],\quad k&#x27;([e])=ke.
+\tag{2.2}
+\]">\[
+D&#x27;=\operatorname{im}i,\qquad E&#x27;=\ker d/\operatorname{im}d,\qquad
+i&#x27;(ix)=i^2x,\quad j&#x27;(ix)=[jx],\quad k&#x27;([e])=ke.
+\tag{2.2}
+\]</span>
+<p>These expressions define morphisms in any abelian category, not merely for groups. To verify expressions using representatives, take a map from a test object into the object in question. A lift through an image or quotient is available after pulling back its defining epimorphism and precomposing the test object with that epimorphic projection. Finite successive lifts give an epimorphic composite. Equalities proved after those changes descend by cancellation of the epimorphism. Thus the following checks are categorical checks of the kernel, image and quotient assertions.</p>
+<p>The arrow <span class="math" data-tex="\(i&#x27;\)">\(i&#x27;\)</span> exists because <span class="math" data-tex="\(i\)">\(i\)</span> sends its image into its image. For <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span>, the arrow <span class="math" data-tex="\(jx\)">\(jx\)</span> is a cycle since <span class="math" data-tex="\(kj=0\)">\(kj=0\)</span>. If two lifts have the same <span class="math" data-tex="\(ix\)">\(ix\)</span>, their difference is in <span class="math" data-tex="\(\ker i=\operatorname{im}k\)">\(\ker i=\operatorname{im}k\)</span>; the difference of their images under <span class="math" data-tex="\(j\)">\(j\)</span> is therefore a boundary <span class="math" data-tex="\(jk(e)\)">\(jk(e)\)</span>. This proves the well-defined quotient arrow <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span>. For <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span>, a cycle satisfies <span class="math" data-tex="\(jke=0\)">\(jke=0\)</span>, so <span class="math" data-tex="\(ke\in\ker j=\operatorname{im}i=D&#x27;\)">\(ke\in\ker j=\operatorname{im}i=D&#x27;\)</span>. Boundaries are killed by <span class="math" data-tex="\(k\)">\(k\)</span>, since <span class="math" data-tex="\(kjk=0\)">\(kjk=0\)</span>. Thus <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> factors through <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span>.</p>
+<p>The three compositions <span class="math" data-tex="\(j&#x27;i&#x27;\)">\(j&#x27;i&#x27;\)</span>, <span class="math" data-tex="\(k&#x27;j&#x27;\)">\(k&#x27;j&#x27;\)</span> and <span class="math" data-tex="\(i&#x27;k&#x27;\)">\(i&#x27;k&#x27;\)</span> are zero: their representative expressions are respectively <span class="math" data-tex="\([jix]=0\)">\([jix]=0\)</span>, <span class="math" data-tex="\(kjx=0\)">\(kjx=0\)</span>, and <span class="math" data-tex="\(ike=0\)">\(ike=0\)</span>. Here the last vanishing uses <span class="math" data-tex="\(\operatorname{im}k=\ker i\)">\(\operatorname{im}k=\ker i\)</span>.</p>
+<p>We check exactness at each place. If <span class="math" data-tex="\(j&#x27;(ix)=0\)">\(j&#x27;(ix)=0\)</span>, then <span class="math" data-tex="\(jx\)">\(jx\)</span> is a boundary, so after a covering lift it equals <span class="math" data-tex="\(jke\)">\(jke\)</span>. Hence <span class="math" data-tex="\(x-ke\in\ker j=\operatorname{im}i\)">\(x-ke\in\ker j=\operatorname{im}i\)</span>, say <span class="math" data-tex="\(x-ke=iy\)">\(x-ke=iy\)</span>. Applying <span class="math" data-tex="\(i\)">\(i\)</span> gives <span class="math" data-tex="\(ix=i^2y\)">\(ix=i^2y\)</span>, proving <span class="math" data-tex="\(\ker j&#x27;=\operatorname{im}i&#x27;\)">\(\ker j&#x27;=\operatorname{im}i&#x27;\)</span>. If <span class="math" data-tex="\(k&#x27;([e])=0\)">\(k&#x27;([e])=0\)</span>, then <span class="math" data-tex="\(ke=0\)">\(ke=0\)</span>, so <span class="math" data-tex="\(e=jx\)">\(e=jx\)</span> after a covering lift. Therefore <span class="math" data-tex="\([e]=j&#x27;(ix)\)">\([e]=j&#x27;(ix)\)</span>, proving <span class="math" data-tex="\(\ker k&#x27;=\operatorname{im}j&#x27;\)">\(\ker k&#x27;=\operatorname{im}j&#x27;\)</span>. Finally suppose <span class="math" data-tex="\(i&#x27;(ix)=0\)">\(i&#x27;(ix)=0\)</span>. Then <span class="math" data-tex="\(ix\in\ker i=\operatorname{im}k\)">\(ix\in\ker i=\operatorname{im}k\)</span>, so choose <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(ke=ix\)">\(ke=ix\)</span>. It is a cycle because <span class="math" data-tex="\(de=jke=jix=0\)">\(de=jke=jix=0\)</span>, and <span class="math" data-tex="\(k&#x27;([e])=ix\)">\(k&#x27;([e])=ix\)</span>. This proves <span class="math" data-tex="\(\ker i&#x27;=\operatorname{im}k&#x27;\)">\(\ker i&#x27;=\operatorname{im}k&#x27;\)</span>. All reverse inclusions follow from the zero compositions. Thus (2.2) is again an exact couple.</p>
+<p>A commuting morphism of original couples induces maps on images, kernels and quotient cohomology. Substitution into the representative formulas proves that it commutes with <span class="math" data-tex="\(i&#x27;,j&#x27;,k&#x27;\)">\(i&#x27;,j&#x27;,k&#x27;\)</span>. The construction consequently preserves identities and composition and is functorial. Iterating it produces cohomology pages and all their induced differentials; exactness at every iteration has been proved.</p>
+<h2 id="3-the-pages-of-the-postnikov-tower">3. The pages of the Postnikov tower</h2>
+<p>Fix <span class="math" data-tex="\(X\in D^+(\mathcal B)\)">\(X\in D^+(\mathcal B)\)</span>, with <span class="math" data-tex="\(H^qX=0\)">\(H^qX=0\)</span> for <span class="math" data-tex="\(q&lt;m\)">\(q&lt;m\)</span>. Apply exact <span class="math" data-tex="\(RG\)">\(RG\)</span> to the tower (1.3). Write <span class="math" data-tex="\(K_q=RG(\tau_{\leq q}X)\)">\(K_q=RG(\tau_{\leq q}X)\)</span>. The cohomology sequences of its triangles form the graded exact couple</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+D_2^{p,q}=H^{p+q}(K_q),\qquad
+E_2^{p,q}=H^{p+q}\bigl(RG(H^qX[-q])\bigr)=R^pG(H^qX).
+\tag{3.1}
+\]">\[
+D_2^{p,q}=H^{p+q}(K_q),\qquad
+E_2^{p,q}=H^{p+q}\bigl(RG(H^qX[-q])\bigr)=R^pG(H^qX).
+\tag{3.1}
+\]</span>
+<p>Its arrows have degrees</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+i:D_2^{p,q}\to D_2^{p-1,q+1},\qquad
+j:D_2^{p,q}\to E_2^{p,q},\qquad
+k:E_2^{p,q}\to D_2^{p+2,q-1}.
+\tag{3.2}
+\]">\[
+i:D_2^{p,q}\to D_2^{p-1,q+1},\qquad
+j:D_2^{p,q}\to E_2^{p,q},\qquad
+k:E_2^{p,q}\to D_2^{p+2,q-1}.
+\tag{3.2}
+\]</span>
+<p>The first map comes from the tower inclusion, the second from its quotient in (1.3), and the third from the connecting arrow. The latter raises total cohomological degree by one. Reading the long cohomology sequence shows exactly the three kernel-image equalities (2.1), at every bidegree.</p>
+<p>Start this couple at page two. Its initial differential <span class="math" data-tex="\(d_2=jk\)">\(d_2=jk\)</span> has degree <span class="math" data-tex="\((2,-1)\)">\((2,-1)\)</span>. Apply Section 2 repeatedly, calling the resulting objects <span class="math" data-tex="\(D_r,E_r\)">\(D_r,E_r\)</span>. After each derivation the degree of <span class="math" data-tex="\(i\)">\(i\)</span> stays <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> and that of <span class="math" data-tex="\(k\)">\(k\)</span> stays <span class="math" data-tex="\((2,-1)\)">\((2,-1)\)</span>. The new <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span> sends <span class="math" data-tex="\(ix\)">\(ix\)</span> to <span class="math" data-tex="\([jx]\)">\([jx]\)</span>, so its degree increases by <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span>. Induction therefore gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+j_r:D_r^{p,q}\to E_r^{p+r-2,q-r+2},\qquad
+k_r:E_r^{p,q}\to D_r^{p+2,q-1},\\
+d_r=j_rk_r:E_r^{p,q}\to E_r^{p+r,q-r+1},\qquad
+E_{r+1}^{p,q}=\frac{\ker(d_r:E_r^{p,q}\to E_r^{p+r,q-r+1})}
+{\operatorname{im}(d_r:E_r^{p-r,q+r-1}\to E_r^{p,q})}.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+j_r:D_r^{p,q}\to E_r^{p+r-2,q-r+2},\qquad
+k_r:E_r^{p,q}\to D_r^{p+2,q-1},\\
+d_r=j_rk_r:E_r^{p,q}\to E_r^{p+r,q-r+1},\qquad
+E_{r+1}^{p,q}=\frac{\ker(d_r:E_r^{p,q}\to E_r^{p+r,q-r+1})}
+{\operatorname{im}(d_r:E_r^{p-r,q+r-1}\to E_r^{p,q})}.
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>Every differential squares to zero because it arises from an exact couple. The retained part of that couple is, with its displayed embedding,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+D_r^{p,q}=\operatorname{im}\bigl(H^{p+q}(K_{q-r+2})\longrightarrow
+H^{p+q}(K_q)\bigr).
+\tag{3.4}
+\]">\[
+D_r^{p,q}=\operatorname{im}\bigl(H^{p+q}(K_{q-r+2})\longrightarrow
+H^{p+q}(K_q)\bigr).
+\tag{3.4}
+\]</span>
+<p>At <span class="math" data-tex="\(r=2\)">\(r=2\)</span> this is the identity image. Taking one further image of the tower map proves the next case, so induction proves (3.4).</p>
+<p>Left exactness gives <span class="math" data-tex="\(R^pG=0\)">\(R^pG=0\)</span> for <span class="math" data-tex="\(p&lt;0\)">\(p&lt;0\)</span>; the cohomological lower bound on <span class="math" data-tex="\(X\)">\(X\)</span> gives vanishing for <span class="math" data-tex="\(q&lt;m\)">\(q&lt;m\)</span>. Thus every page is supported in <span class="math" data-tex="\(p\geq0,q\geq m\)">\(p\geq0,q\geq m\)</span>, since taking kernels and quotient images preserves those zero components. For fixed <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span>, the incoming arrow is zero once <span class="math" data-tex="\(r&gt;p\)">\(r&gt;p\)</span>, and the outgoing arrow is zero once <span class="math" data-tex="\(r&gt;q-m+1\)">\(r&gt;q-m+1\)</span>. The page consequently stabilizes for</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+r&gt;\max\{p,q-m+1\}.
+\tag{3.5}
+\]">\[
+r&gt;\max\{p,q-m+1\}.
+\tag{3.5}
+\]</span>
+<p>Denote that stable object by <span class="math" data-tex="\(E_\infty^{p,q}\)">\(E_\infty^{p,q}\)</span>. This is an eventual finite page at each bidegree; its definition does not require an infinite intersection or union in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p>All tower arrows are natural for every derived map of <span class="math" data-tex="\(X\)">\(X\)</span>, by Section 1. Section 2 then gives a morphism on every page that commutes with every differential, and these morphisms preserve identities and composition. This proves functoriality of the entire spectral sequence, not just its second page.</p>
+<h2 id="4-prove-convergence-to-a-finite-filtration">4. Prove convergence to a finite filtration</h2>
+<p>For <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, set <span class="math" data-tex="\(V^n=H^n(RG(X))\)">\(V^n=H^n(RG(X))\)</span> and define an increasing filtration by actual images:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+F_qV^n=\operatorname{im}\bigl(H^n(K_q)\to V^n\bigr).
+\tag{4.1}
+\]">\[
+F_qV^n=\operatorname{im}\bigl(H^n(K_q)\to V^n\bigr).
+\tag{4.1}
+\]</span>
+<p>It is increasing because the maps factor through the tower. If <span class="math" data-tex="\(q&lt;m\)">\(q&lt;m\)</span>, then <span class="math" data-tex="\(\tau_{\leq q}X\)">\(\tau_{\leq q}X\)</span> has zero cohomology, is a zero object of the derived category, and <span class="math" data-tex="\(F_qV^n=0\)">\(F_qV^n=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(q\geq n\)">\(q\geq n\)</span>, apply <span class="math" data-tex="\(RG\)">\(RG\)</span> to (1.2). The tail has cohomology only in degrees at least <span class="math" data-tex="\(q+1\)">\(q+1\)</span>, and (1.5) gives the same lower bound for its derived image. Its degree-<span class="math" data-tex="\(n-1\)">\(n-1\)</span> and degree-<span class="math" data-tex="\(n\)">\(n\)</span> cohomology vanish. The exact cohomology sequence therefore makes <span class="math" data-tex="\(H^n(K_q)\to V^n\)">\(H^n(K_q)\to V^n\)</span> invertible. Hence <span class="math" data-tex="\(F_qV^n=V^n\)">\(F_qV^n=V^n\)</span> for <span class="math" data-tex="\(q\geq n\)">\(q\geq n\)</span>. For <span class="math" data-tex="\(n&lt;m\)">\(n&lt;m\)</span> the whole object is zero by (1.5). In every other degree the filtration is finite, with stages from <span class="math" data-tex="\(m\)">\(m\)</span> through <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> The stable pages are naturally the associated pieces of this finite filtration:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+E_\infty^{p,q}\simeq
+F_qV^{p+q}/F_{q-1}V^{p+q}.
+\tag{4.2}
+\]">\[
+E_\infty^{p,q}\simeq
+F_qV^{p+q}/F_{q-1}V^{p+q}.
+\tag{4.2}
+\]</span>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(n=p+q\)">\(n=p+q\)</span> with <span class="math" data-tex="\(p\geq0,q\geq m\)">\(p\geq0,q\geq m\)</span>. Choose <span class="math" data-tex="\(r\)">\(r\)</span> large enough that <span class="math" data-tex="\(q-r+1&lt;m\)">\(q-r+1&lt;m\)</span> and <span class="math" data-tex="\(q+r-3\geq n\)">\(q+r-3\geq n\)</span>, and also large enough for (3.5). By (3.4), the source of <span class="math" data-tex="\(j_r\)">\(j_r\)</span> mapping into <span class="math" data-tex="\(E_r^{p,q}\)">\(E_r^{p,q}\)</span> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+D_r^{p-r+2,q+r-2}=
+\operatorname{im}\bigl(H^n(K_q)\to H^n(K_{q+r-2})\bigr)=F_qV^n.
+\tag{4.3}
+\]">\[
+D_r^{p-r+2,q+r-2}=
+\operatorname{im}\bigl(H^n(K_q)\to H^n(K_{q+r-2})\bigr)=F_qV^n.
+\tag{4.3}
+\]</span>
+<p>The last identification uses the already proved isomorphism from that high tower stage to <span class="math" data-tex="\(V^n\)">\(V^n\)</span>. The immediately preceding <span class="math" data-tex="\(i_r\)">\(i_r\)</span> has image <span class="math" data-tex="\(F_{q-1}V^n\)">\(F_{q-1}V^n\)</span>: its source is the image from <span class="math" data-tex="\(K_{q-1}\)">\(K_{q-1}\)</span> to <span class="math" data-tex="\(K_{q+r-3}\)">\(K_{q+r-3}\)</span>, and this latter stage also maps isomorphically to <span class="math" data-tex="\(V^n\)">\(V^n\)</span>.</p>
+<p>The target of <span class="math" data-tex="\(k_r\)">\(k_r\)</span> on <span class="math" data-tex="\(E_r^{p,q}\)">\(E_r^{p,q}\)</span> is <span class="math" data-tex="\(D_r^{p+2,q-1}\)">\(D_r^{p+2,q-1}\)</span>. Formula (3.4) describes it as an image from <span class="math" data-tex="\(H^{n+1}(K_{q-r+1})\)">\(H^{n+1}(K_{q-r+1})\)</span>. That source is zero because its tower index is below <span class="math" data-tex="\(m\)">\(m\)</span>. Thus <span class="math" data-tex="\(k_r=0\)">\(k_r=0\)</span>. Exactness of the derived couple makes <span class="math" data-tex="\(j_r\)">\(j_r\)</span> epic and its kernel the stated image of <span class="math" data-tex="\(i_r\)">\(i_r\)</span>. This identifies <span class="math" data-tex="\(E_r^{p,q}\)">\(E_r^{p,q}\)</span> with the quotient in (4.2). At our chosen stage <span class="math" data-tex="\(E_r\)">\(E_r\)</span> is already stable. The identifications come from the original tower maps and the quotient universal property, so commute with every morphism of towers. Choosing a later sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span> gives the same quotient identification, by the derived-couple formulas. This proves (4.2) and its naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently we have constructed, with all differential bidegrees and a finite filtration in each total degree,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+E_2^{p,q}=R^pG(H^qX)\quad\Longrightarrow\quad H^{p+q}(RG(X)).
+\tag{4.4}
+\]">\[
+E_2^{p,q}=R^pG(H^qX)\quad\Longrightarrow\quad H^{p+q}(RG(X)).
+\tag{4.4}
+\]</span>
+<p>The arrow means exactly the proved statement (4.2). It does not identify the abutment with a direct sum of its pieces. Additional extension information may be needed to recover that object.</p>
+<p>The upper edge map <span class="math" data-tex="\(V^n\to G(H^nX)\)">\(V^n\to G(H^nX)\)</span> is induced by the quotient of the stage <span class="math" data-tex="\(K_n\)">\(K_n\)</span>, after identifying <span class="math" data-tex="\(H^n(K_n)\)">\(H^n(K_n)\)</span> with <span class="math" data-tex="\(V^n\)">\(V^n\)</span>. Its image is the stable first-column object <span class="math" data-tex="\(E_\infty^{0,n}\)">\(E_\infty^{0,n}\)</span>, embedded into <span class="math" data-tex="\(E_2^{0,n}\)">\(E_2^{0,n}\)</span> through the successive kernels: there are no incoming differentials in that column. At the bottom row the map <span class="math" data-tex="\(R^pG(H^mX)\to V^{p+m}\)">\(R^pG(H^mX)\to V^{p+m}\)</span> is induced by <span class="math" data-tex="\(K_m\to RG(X)\)">\(K_m\to RG(X)\)</span>; its image is <span class="math" data-tex="\(F_mV^{p+m}\)">\(F_mV^{p+m}\)</span>. Its kernel is precisely the successive incoming boundaries, since there are no outgoing differentials from that row. These descriptions follow from the same couple and quotient maps and are natural.</p>
+<h2 id="5-derive-the-grothendieck-spectral-sequence">5. Derive the Grothendieck spectral sequence</h2>
+<p>Let <span class="math" data-tex="\(F:\mathcal A\to\mathcal B\)">\(F:\mathcal A\to\mathcal B\)</span> be additive and left exact, where <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> also has enough injectives. Suppose</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+R^pG(F(I))=0\quad(p&gt;0)\quad\text{for every injective }I\in\mathcal A.
+\tag{5.1}
+\]">\[
+R^pG(F(I))=0\quad(p&gt;0)\quad\text{for every injective }I\in\mathcal A.
+\tag{5.1}
+\]</span>
+<p>The composition theorem in the prerequisite identifies <span class="math" data-tex="\(R(GF)\)">\(R(GF)\)</span> with <span class="math" data-tex="\(RG\,RF\)">\(RG\,RF\)</span> by its canonical transformation, naturally and with its augmentation and choice comparisons. Apply (4.4) to <span class="math" data-tex="\(X=RF(Y)\)">\(X=RF(Y)\)</span>, for <span class="math" data-tex="\(Y\in D^+(\mathcal A)\)">\(Y\in D^+(\mathcal A)\)</span>. Its lower cohomological bound exists by the replacement construction. Transport the abutment along the canonical composition isomorphism. The result is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+E_2^{p,q}=R^pG\bigl(H^q(RF(Y))\bigr)
+\quad\Longrightarrow\quad H^{p+q}(R(GF)(Y)).
+\tag{5.2}
+\]">\[
+E_2^{p,q}=R^pG\bigl(H^q(RF(Y))\bigr)
+\quad\Longrightarrow\quad H^{p+q}(R(GF)(Y)).
+\tag{5.2}
+\]</span>
+<p>Every total degree has the finite filtration already constructed. Every derived arrow of <span class="math" data-tex="\(Y\)">\(Y\)</span> gives a map of the tower through <span class="math" data-tex="\(RF\)">\(RF\)</span>, and hence a map of every page and of that filtration. Different replacement choices give the canonical isomorphisms of derived functors; applying functorial truncation and the functorial exact-couple construction transports all pages compatibly with their cocycle comparisons. This proves choice coherence as well as existence.</p>
+<p>For an object <span class="math" data-tex="\(A\)">\(A\)</span> in degree zero, <span class="math" data-tex="\(H^qRF(A[0])=R^qF(A)\)">\(H^qRF(A[0])=R^qF(A)\)</span> and the lower bound is zero. Thus (5.2) becomes the first-quadrant Grothendieck spectral sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+E_2^{p,q}=R^pG(R^qF(A))
+\quad\Longrightarrow\quad R^{p+q}(GF)(A),\qquad p,q\geq0.
+\tag{5.3}
+\]">\[
+E_2^{p,q}=R^pG(R^qF(A))
+\quad\Longrightarrow\quad R^{p+q}(GF)(A),\qquad p,q\geq0.
+\tag{5.3}
+\]</span>
+<p>This proof constructs the sequence through truncation towers. Its exact-couple and convergence arguments were supplied in Sections 2–4, so neither a double resolution nor a separate convergence theorem is an unproved input here.</p>
+<h2 id="6-two-computed-examples">6. Two computed examples</h2>
+<p><strong>Example 6.1 (invariants in two stages).</strong> For a group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and normal subgroup <span class="math" data-tex="\(N\)">\(N\)</span>, take <span class="math" data-tex="\(\mathcal A=\mathbb Z[\Gamma]\text{-Mod}\)">\(\mathcal A=\mathbb Z[\Gamma]\text{-Mod}\)</span>, <span class="math" data-tex="\(\mathcal B=\mathbb Z[\Gamma/N]\text{-Mod}\)">\(\mathcal B=\mathbb Z[\Gamma/N]\text{-Mod}\)</span>, <span class="math" data-tex="\(F(M)=M^N\)">\(F(M)=M^N\)</span>, and <span class="math" data-tex="\(G(V)=V^{\Gamma/N}\)">\(G(V)=V^{\Gamma/N}\)</span>. Normality makes the quotient action on <span class="math" data-tex="\(M^N\)">\(M^N\)</span> well-defined: conjugating an element of <span class="math" data-tex="\(N\)">\(N\)</span> by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> stays in <span class="math" data-tex="\(N\)">\(N\)</span>. Both invariants functors are additive and left exact, because kernels and maps into a kernel can be tested on the fixed elements. Their composite is the <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariants functor.</p>
+<p>Here are all the required injective assertions. For any unital ring <span class="math" data-tex="\(R\)">\(R\)</span> and injective abelian group <span class="math" data-tex="\(D\)">\(D\)</span>, the left module <span class="math" data-tex="\(C_R(D)=\operatorname{Hom}_{\mathbb Z}(R,D)\)">\(C_R(D)=\operatorname{Hom}_{\mathbb Z}(R,D)\)</span>, with <span class="math" data-tex="\((a\phi)(r)=\phi(ra)\)">\((a\phi)(r)=\phi(ra)\)</span>, is injective. Evaluation at one gives the natural adjunction <span class="math" data-tex="\(\operatorname{Hom}_R(V,C_R(D))\simeq\operatorname{Hom}_{\mathbb Z}(V,D)\)">\(\operatorname{Hom}_R(V,C_R(D))\simeq\operatorname{Hom}_{\mathbb Z}(V,D)\)</span>, whose inverse takes <span class="math" data-tex="\(\ell\)">\(\ell\)</span> to <span class="math" data-tex="\(v\mapsto(r\mapsto\ell(rv))\)">\(v\mapsto(r\mapsto\ell(rv))\)</span>. Under this adjunction a map extends across a module monomorphism because its underlying group map extends into <span class="math" data-tex="\(D\)">\(D\)</span>. If <span class="math" data-tex="\(M\hookrightarrow D\)">\(M\hookrightarrow D\)</span> is an injective embedding of the underlying group, the map <span class="math" data-tex="\(m\mapsto(r\mapsto\iota(rm))\)">\(m\mapsto(r\mapsto\iota(rm))\)</span> embeds <span class="math" data-tex="\(M\)">\(M\)</span> into <span class="math" data-tex="\(C_R(D)\)">\(C_R(D)\)</span>, as evaluation at one recovers the given monomorphism. The prerequisite proves that abelian groups have enough injectives, so this proves enough injectives for every module category used here.</p>
+<p>Inflation of quotient-group modules is exact: it leaves underlying groups and maps unchanged. Maps from an inflated module to <span class="math" data-tex="\(M\)">\(M\)</span> have image in <span class="math" data-tex="\(M^N\)">\(M^N\)</span>, giving the adjunction with <span class="math" data-tex="\(F\)">\(F\)</span>. As the right adjoint of an exact functor, <span class="math" data-tex="\(F\)">\(F\)</span> preserves injectives by the extension proof in the prerequisite. Therefore (5.1) holds.</p>
+<p>Write <span class="math" data-tex="\(H^q(\Gamma,M)\)">\(H^q(\Gamma,M)\)</span> for the derived functors of invariants. The underlying groups of <span class="math" data-tex="\(R^qF(M)\)">\(R^qF(M)\)</span> are <span class="math" data-tex="\(H^q(N,M)\)">\(H^q(N,M)\)</span>. To verify this, restriction of injective <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-modules to <span class="math" data-tex="\(N\)">\(N\)</span> preserves injectives: its left adjoint is induction <span class="math" data-tex="\(\mathbb Z[\Gamma]\otimes_{\mathbb Z[N]}-\)">\(\mathbb Z[\Gamma]\otimes_{\mathbb Z[N]}-\)</span>, and the group ring is free as a right subgroup ring on coset representatives. Induction is consequently a direct sum of copies of the underlying module and is exact. Restricting an injective resolution therefore computes <span class="math" data-tex="\(N\)">\(N\)</span>-cohomology. Its <span class="math" data-tex="\(N\)">\(N\)</span>-invariant complex carries the quotient action, giving the asserted identification and that action. Formula (5.3) now reads</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+E_2^{p,q}=H^p(\Gamma/N,H^q(N,M))
+\quad\Longrightarrow\quad H^{p+q}(\Gamma,M).
+\tag{6.1}
+\]">\[
+E_2^{p,q}=H^p(\Gamma/N,H^q(N,M))
+\quad\Longrightarrow\quad H^{p+q}(\Gamma,M).
+\tag{6.1}
+\]</span>
+<p>For <span class="math" data-tex="\(\Gamma=\mathbb Z^2\)">\(\Gamma=\mathbb Z^2\)</span>, <span class="math" data-tex="\(N=\mathbb Z\)">\(N=\mathbb Z\)</span> the first factor and <span class="math" data-tex="\(M=\mathbb Z\)">\(M=\mathbb Z\)</span> trivial, the cyclic-group resolution is <span class="math" data-tex="\(0\to\mathbb Z[t,t^{-1}]\xrightarrow{t-1}\mathbb Z[t,t^{-1}]\to\mathbb Z\to0\)">\(0\to\mathbb Z[t,t^{-1}]\xrightarrow{t-1}\mathbb Z[t,t^{-1}]\to\mathbb Z\to0\)</span>. The augmentation kernel is generated by <span class="math" data-tex="\(t-1\)">\(t-1\)</span>, since every Laurent monomial minus its value at one is divisible by <span class="math" data-tex="\(t-1\)">\(t-1\)</span>. That multiplier is injective: the highest nonzero exponent of a finite Laurent polynomial prevents its product with <span class="math" data-tex="\(t-1\)">\(t-1\)</span> from vanishing. Thus this is a two-term free resolution. The K-projective Hom test, or comparison with an injective target resolution, makes its Hom complex a derived Hom model. With trivial coefficients its differential is zero. It computes cyclic cohomology <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in degrees zero and one and zero otherwise.</p>
+<p>The second central generator acts trivially on both resulting groups. Its action on a <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-injective resolution extends its identity action on <span class="math" data-tex="\(M\)">\(M\)</span>, so the homotopy comparison theorem gives identity on derived cohomology. Applying the same cyclic calculation in the second factor makes the second page a square of four copies of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, at <span class="math" data-tex="\(p,q\in\{0,1\}\)">\(p,q\in\{0,1\}\)</span>. Every higher differential has zero target or source by its bidegree. Hence <span class="math" data-tex="\(H^0(\mathbb Z^2,\mathbb Z)=\mathbb Z\)">\(H^0(\mathbb Z^2,\mathbb Z)=\mathbb Z\)</span>, <span class="math" data-tex="\(H^2(\mathbb Z^2,\mathbb Z)=\mathbb Z\)">\(H^2(\mathbb Z^2,\mathbb Z)=\mathbb Z\)</span>, and higher degrees are zero. Degree one has a short exact filtration with two pieces <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>; it splits because a lift of the generator of its quotient defines a section. Therefore <span class="math" data-tex="\(H^1(\mathbb Z^2,\mathbb Z)\simeq\mathbb Z^2\)">\(H^1(\mathbb Z^2,\mathbb Z)\simeq\mathbb Z^2\)</span>, with no canonical splitting asserted by the spectral sequence alone.</p>
+<p><strong>Example 6.2 (a nonzero differential removes infinitely many entries).</strong> Let <span class="math" data-tex="\(R=k[\varepsilon]/(\varepsilon^2)\)">\(R=k[\varepsilon]/(\varepsilon^2)\)</span>, and let <span class="math" data-tex="\(k=R/(\varepsilon)\)">\(k=R/(\varepsilon)\)</span>. Enough injectives for this module category was proved in the prerequisite; it also follows from the coinduction proof just given. Take <span class="math" data-tex="\(G=\operatorname{Hom}_R(k,-)\)">\(G=\operatorname{Hom}_R(k,-)\)</span>. A projective resolution <span class="math" data-tex="\(P\to k[0]\)">\(P\to k[0]\)</span> has <span class="math" data-tex="\(P^n=R\)">\(P^n=R\)</span> for <span class="math" data-tex="\(n\leq0\)">\(n\leq0\)</span>, zero above zero, differential multiplication by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> in every negative degree, and augmentation reduction. Its kernels and images in negative degrees are both <span class="math" data-tex="\(k\varepsilon\)">\(k\varepsilon\)</span>, and the degree-zero augmentation has that kernel. All terms are free, so the bounded-above K-projective test applies.</p>
+<p>The complex <span class="math" data-tex="\(\operatorname{Hom}(P,k[0])\)">\(\operatorname{Hom}(P,k[0])\)</span> has one copy of <span class="math" data-tex="\(k\)">\(k\)</span> in every nonnegative degree and zero differential. Thus <span class="math" data-tex="\(\operatorname{Ext}^p_R(k,k)=k\)">\(\operatorname{Ext}^p_R(k,k)=k\)</span> for <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span>. For a concrete generator <span class="math" data-tex="\(e_p\)">\(e_p\)</span>, use the chain map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+t_p:P\to P[p],\qquad
+t_p^n=\begin{cases}(-1)^{p(n+p)}1_R&amp;n\leq-p,\\0&amp;n&gt;-p,\end{cases}
+\qquad e_p=Q(q[p]t_p)(Qq)^{-1}.
+\tag{6.2}
+\]">\[
+t_p:P\to P[p],\qquad
+t_p^n=\begin{cases}(-1)^{p(n+p)}1_R&amp;n\leq-p,\\0&amp;n&gt;-p,\end{cases}
+\qquad e_p=Q(q[p]t_p)(Qq)^{-1}.
+\tag{6.2}
+\]</span>
+<p>The chain equation below the cutoff holds since the consecutive coefficients differ by <span class="math" data-tex="\((-1)^p\)">\((-1)^p\)</span>, precisely the shift differential sign. At the cutoff both relevant outgoing maps are zero. The component in degree <span class="math" data-tex="\(-p\)">\(-p\)</span> is identity, so composition with the shifted augmentation represents the nonzero Hom class and hence the generator.</p>
+<p>Let <span class="math" data-tex="\(\xi=e_2:k[0]\to k[2]\)">\(\xi=e_2:k[0]\to k[2]\)</span>. Complete <span class="math" data-tex="\(\xi[-1]:k[-1]\to k[1]\)">\(\xi[-1]:k[-1]\to k[1]\)</span> to a distinguished triangle and rotate twice backwards. This gives an object <span class="math" data-tex="\(X\)">\(X\)</span> and a triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+k[0]\longrightarrow X\longrightarrow k[-1]
+\xrightarrow{\xi[-1]}k[1].
+\tag{6.3}
+\]">\[
+k[0]\longrightarrow X\longrightarrow k[-1]
+\xrightarrow{\xi[-1]}k[1].
+\tag{6.3}
+\]</span>
+<p>Its cohomology sequence gives <span class="math" data-tex="\(H^0X=k\)">\(H^0X=k\)</span>, <span class="math" data-tex="\(H^1X=k\)">\(H^1X=k\)</span>, and zero in every other degree. By the truncation universal property, the first arrow factors through <span class="math" data-tex="\(\tau_{\leq0}X\)">\(\tau_{\leq0}X\)</span>; that factor is a cohomology isomorphism and hence invertible. The triangle comparison axiom then compares (6.3) to the canonical truncation triangle with isomorphisms on all vertices. Choose the identification of <span class="math" data-tex="\(H^1X\)">\(H^1X\)</span> with <span class="math" data-tex="\(k\)">\(k\)</span> from this comparison. Its tower connecting arrow is now exactly the displayed <span class="math" data-tex="\(\xi[-1]\)">\(\xi[-1]\)</span>, with its sign fixed by that triangle.</p>
+<p>The second page of (4.4) has <span class="math" data-tex="\(k\)">\(k\)</span> at every <span class="math" data-tex="\((p,0)\)">\((p,0)\)</span> and <span class="math" data-tex="\((p,1)\)">\((p,1)\)</span>, for <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span>, and zero elsewhere. Its <span class="math" data-tex="\(d_2\)">\(d_2\)</span> is induced by that connecting arrow. On the generators it is postcomposition with <span class="math" data-tex="\(\xi[p]\)">\(\xi[p]\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+d_2^{p,1}:\operatorname{Ext}^p_R(k,k)\longrightarrow
+\operatorname{Ext}^{p+2}_R(k,k),\qquad e_p\longmapsto e_{p+2}.
+\tag{6.4}
+\]">\[
+d_2^{p,1}:\operatorname{Ext}^p_R(k,k)\longrightarrow
+\operatorname{Ext}^{p+2}_R(k,k),\qquad e_p\longmapsto e_{p+2}.
+\tag{6.4}
+\]</span>
+<p>To check the product, represent it on <span class="math" data-tex="\(P\)">\(P\)</span> by <span class="math" data-tex="\(q[p+2]t_2[p]t_p\)">\(q[p+2]t_2[p]t_p\)</span>. In degree <span class="math" data-tex="\(-p-2\)">\(-p-2\)</span>, the coefficient of <span class="math" data-tex="\(t_p\)">\(t_p\)</span> is <span class="math" data-tex="\((-1)^{-2p}=1\)">\((-1)^{-2p}=1\)</span>, and that of <span class="math" data-tex="\(t_2[p]\)">\(t_2[p]\)</span> is identity. The composite therefore represents the nonzero normalized generator in degree <span class="math" data-tex="\(p+2\)">\(p+2\)</span>; the Hom differential there is zero. This proves (6.4) for every <span class="math" data-tex="\(p\)">\(p\)</span>, not just <span class="math" data-tex="\(p=0\)">\(p=0\)</span>.</p>
+<p>Every such differential is an isomorphism. Page three has only <span class="math" data-tex="\(E_3^{0,0}=k\)">\(E_3^{0,0}=k\)</span> and <span class="math" data-tex="\(E_3^{1,0}=k\)">\(E_3^{1,0}=k\)</span>. Thus the abutment is <span class="math" data-tex="\(H^0RG(X)=k\)">\(H^0RG(X)=k\)</span>, <span class="math" data-tex="\(H^1RG(X)=k\)">\(H^1RG(X)=k\)</span>, and zero in all other degrees. As an independent check, apply derived Hom to (6.3). In its long sequence the connecting maps are exactly multiplication by <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, just proved invertible in every nonnegative Ext degree. The same kernel-cokernel calculation gives those two surviving cohomology objects. The initial two infinite rows therefore do not by themselves determine the answer: their nonzero differential is essential.</p>
+<h2 id="7-four-graded-exercises-with-complete-solutions">7. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (foundation: keep the total degree).</strong> Derive the bidegree of <span class="math" data-tex="\(d_r\)">\(d_r\)</span> from the maps of the exact couple. Show that every differential raises total degree by one and that the stable-page bound (3.5) follows from the supported region.</p>
+<p><strong>Solution.</strong> The tower map raises <span class="math" data-tex="\(q\)">\(q\)</span> by one and keeps <span class="math" data-tex="\(p+q\)">\(p+q\)</span> fixed, so <span class="math" data-tex="\(i\)">\(i\)</span> has degree <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>. The quotient map initially keeps both indices. The connecting map lowers the tower index by one and raises cohomological degree by one, so <span class="math" data-tex="\(k\)">\(k\)</span> has degree <span class="math" data-tex="\((2,-1)\)">\((2,-1)\)</span>. Therefore <span class="math" data-tex="\(jk\)">\(jk\)</span> starts with degree <span class="math" data-tex="\((2,-1)\)">\((2,-1)\)</span>. In the derived couple, <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span> applies <span class="math" data-tex="\(j\)">\(j\)</span> to a preimage under <span class="math" data-tex="\(i\)">\(i\)</span>, so its degree changes by the negative of the degree of <span class="math" data-tex="\(i\)">\(i\)</span>, namely <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span>; the degree of <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> remains unchanged. After <span class="math" data-tex="\(r-2\)">\(r-2\)</span> derivations, <span class="math" data-tex="\(d_r\)">\(d_r\)</span> has degree <span class="math" data-tex="\((r,1-r)\)">\((r,1-r)\)</span>, whose coordinate sum is one. Its possible incoming source has first coordinate <span class="math" data-tex="\(p-r\)">\(p-r\)</span>, and its possible outgoing target has second coordinate <span class="math" data-tex="\(q-r+1\)">\(q-r+1\)</span>. Those components are zero respectively for <span class="math" data-tex="\(r&gt;p\)">\(r&gt;p\)</span> and <span class="math" data-tex="\(r&gt;q-m+1\)">\(r&gt;q-m+1\)</span>. When both inequalities hold, the cohomology quotient giving the next page changes nothing. This proves eventual stabilization with the exact bound in (3.5).</p>
+<p><strong>Exercise 2 (intermediate: derive the five-term sequence).</strong> In (5.3), prove the natural exact sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+0\to R^1G(F(A))\to R^1(GF)(A)\to G(R^1F(A))
+\xrightarrow{d_2}R^2G(F(A))\to R^2(GF)(A).
+\tag{7.1}
+\]">\[
+0\to R^1G(F(A))\to R^1(GF)(A)\to G(R^1F(A))
+\xrightarrow{d_2}R^2G(F(A))\to R^2(GF)(A).
+\tag{7.1}
+\]</span>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(V^n=R^n(GF)(A)\)">\(V^n=R^n(GF)(A)\)</span>. At <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> neither an incoming nor an outgoing differential can be nonzero, so <span class="math" data-tex="\(F_0V^1=E_\infty^{1,0}=E_2^{1,0}\)">\(F_0V^1=E_\infty^{1,0}=E_2^{1,0}\)</span>. At <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> there are no incoming differentials, and the only possible outgoing one is <span class="math" data-tex="\(d_2:E_2^{0,1}\to E_2^{2,0}\)">\(d_2:E_2^{0,1}\to E_2^{2,0}\)</span>. Thus <span class="math" data-tex="\(V^1/F_0V^1=E_\infty^{0,1}=\ker d_2\)">\(V^1/F_0V^1=E_\infty^{0,1}=\ker d_2\)</span>. Inclusion of that kernel into <span class="math" data-tex="\(E_2^{0,1}\)">\(E_2^{0,1}\)</span>, following the filtration quotient, gives the middle arrow of (7.1) and exactness through its first four positions. At <span class="math" data-tex="\((2,0)\)">\((2,0)\)</span> the only possible incoming arrow is this same <span class="math" data-tex="\(d_2\)">\(d_2\)</span>; no outgoing arrow exists. Hence <span class="math" data-tex="\(F_0V^2=E_\infty^{2,0}=\operatorname{coker}d_2\)">\(F_0V^2=E_\infty^{2,0}=\operatorname{coker}d_2\)</span>. Compose the cokernel projection from <span class="math" data-tex="\(E_2^{2,0}\)">\(E_2^{2,0}\)</span> with the inclusion of this lowest filtration piece into <span class="math" data-tex="\(V^2\)">\(V^2\)</span>. Its kernel is exactly <span class="math" data-tex="\(\operatorname{im}d_2\)">\(\operatorname{im}d_2\)</span>, which proves exactness at the fifth term. The identifications with the terms in (7.1) use its second-page formula. Every map was a filtration, kernel or quotient map from the natural couple, so the sequence is natural in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Exercise 3 (advanced: comparison on page two).</strong> Suppose a morphism between two sequences constructed in this lesson is invertible on every second-page component. Prove it is invertible on the abutment in every degree, assuming the indicated finite filtrations.</p>
+<p><strong>Solution.</strong> An isomorphism commuting with a differential identifies its kernel and image, so induces an isomorphism on its quotient cohomology. Induction makes the morphism invertible on every page. For each fixed bidegree choose a stage at which both sequences have stabilized; their stable components are therefore isomorphic. Use (4.2) to identify them with the associated pieces of the two filtrations. Choose a common lower bound for the filtrations. In a fixed total degree there are finitely many stages, both start with zero and both end with the respective abutments. Induct through those stages using the short exact sequences of a filtration stage, its preceding stage and its quotient. If the maps on the preceding stage and quotient are isomorphisms, the map on the middle stage is an isomorphism: injectivity follows by sending a kernel element into the quotient then into the preceding stage; surjectivity follows by lifting first its quotient image and then its residual in the preceding stage, using epimorphic covering lifts in an arbitrary abelian category. This proves the induction and the asserted isomorphism on the final objects. Finite-filtration convergence supplies the needed start and end; page isomorphisms alone would not supply those hypotheses for a different convergence problem.</p>
+<p><strong>Exercise 4 (synthesis: degeneration does not specify extensions).</strong> Explain why a stable page with two pieces <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> in one total degree cannot distinguish <span class="math" data-tex="\(\mathbb Z/4\)">\(\mathbb Z/4\)</span> from <span class="math" data-tex="\(\mathbb Z/2\oplus\mathbb Z/2\)">\(\mathbb Z/2\oplus\mathbb Z/2\)</span>. Contrast this with the splitting conclusion for the two free pieces in Example 6.1.</p>
+<p><strong>Solution.</strong> Filter <span class="math" data-tex="\(\mathbb Z/4\)">\(\mathbb Z/4\)</span> by <span class="math" data-tex="\(0\subset2\mathbb Z/4\subset\mathbb Z/4\)">\(0\subset2\mathbb Z/4\subset\mathbb Z/4\)</span>. Its subobject and quotient are both <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>. Filter <span class="math" data-tex="\(\mathbb Z/2\oplus\mathbb Z/2\)">\(\mathbb Z/2\oplus\mathbb Z/2\)</span> by its first summand. Again both pieces are <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>, but every element of this second group is killed by two, whereas the first group has an element of order four. They are not isomorphic despite their identical associated graded objects. The first extension does not split, since every homomorphism from <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> to <span class="math" data-tex="\(\mathbb Z/4\)">\(\mathbb Z/4\)</span> lands in the subgroup killed by two and consequently has zero composite to the quotient. The second splits by the second summand. In Example 6.1 the quotient is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>; choose a lift of its generator and extend by integer multiples to obtain a section. That separate projectivity argument supplies the splitting. The stable page by itself supplies only the short exact filtration and its two pieces.</p>
+<h2 id="references-and-further-reading">References and further reading</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/011P">spectral sequences from exact couples</a>, for the exact-couple terminology. Section 2 above verifies its representative, quotient, exactness and functoriality steps.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/015N">the Grothendieck spectral sequence</a>, for the derived-composition statement. Sections 1–5 above construct it by canonical truncation towers and prove its finite-filtration convergence.</li>
+</ul>
+</main></body></html>

@@ -2,7 +2,7 @@
 
 The action spectrum lives in the dual group, while the ordinary spectrum of one operator \(\alpha_s\) lives in the complex plane. Evaluating characters at \(s\) gives the connection, but its image may need closure. This lesson proves Takesaki II, Lemma XI.1.13 for the uniformly bounded dual Banach action of [AF0](OA-FLOW-AF.md#af-0). The proof keeps the finite-measure sign from [the four-tests proof](OA-FLOW-L88.md#oa-flow.frequency.tests) and uses local annihilation instead of assuming spectral synthesis for an arbitrary closed set.
 
-*Programme proof written in Codex (OpenAI), September 2026; restoration and proof expansion, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 <a id="oa-flow.frequency.operator"></a>
 

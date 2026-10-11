@@ -1,6 +1,6 @@
 # Fourier densities identify the whole dual-action average
 
-*Independent proof: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 This proof compares two already defined objects: the directed Schur-map weight of [GDA3–5](OA-FLOW-GDA.md#gda-3), and integration of an abelian dual action. It proves equality on the entire positive cone. It uses no inference from equality of modular automorphism groups and no arbitrary modular-cocycle realization theorem.
 

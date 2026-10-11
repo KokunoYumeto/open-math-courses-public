@@ -1,0 +1,282 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stabilizing an endofunctor through eventual maps</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="stabilizing-an-endofunctor-through-eventual-maps">Stabilizing an endofunctor through eventual maps</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>An endofunctor can forget maps, add copies of objects, or behave like a shift without having an inverse. Stabilization makes it invertible by comparing maps only after enough iterations. The resulting equality is eventual equality, so a faithful embedding of the original category is a conclusion to test, not a premise to assume.</p>
+<p>Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a locally small category and <span class="math" data-tex="\(T:\mathcal C\to\mathcal C\)">\(T:\mathcal C\to\mathcal C\)</span> any functor. Fix the universe and Choice conventions of <span class="unlinked">Universes and small categories</span>, Sections 1–2. In particular <span class="math" data-tex="\(\mathbb N,\mathbb Z\)">\(\mathbb N,\mathbb Z\)</span> and countable tagged unions and quotients of small sets are small. Object collections and categories of functors may belong to a larger ambient universe. For target translation equivalences, retain the chosen inverse, coherent powers <span class="math" data-tex="\(P_n\)">\(P_n\)</span> and comparisons <span class="math" data-tex="\(\mu_{r,s}\)">\(\mu_{r,s}\)</span> of <a href="translations-coherent-powers-and-universal-triangle-comparisons.html">Translations, coherent powers and universal triangle comparisons</a>, Sections 1–2. No faithfulness, additivity or essential surjectivity of <span class="math" data-tex="\(T\)">\(T\)</span> is assumed in Sections 1–4.</p>
+<h2 id="1-eventual-equality-supplies-the-morphisms">1. Eventual equality supplies the morphisms</h2>
+<p>For objects <span class="math" data-tex="\((X,n),(Y,m)\)">\((X,n),(Y,m)\)</span>, with <span class="math" data-tex="\(n,m\in\mathbb Z\)">\(n,m\in\mathbb Z\)</span>, let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+K_{n,m}=\max(0,-n,-m),\qquad
+H_k=\operatorname{Hom}_{\mathcal C}(T^{n+k}X,T^{m+k}Y)
+\quad(k\ge K_{n,m}).
+\tag{1.1}
+\]">\[
+K_{n,m}=\max(0,-n,-m),\qquad
+H_k=\operatorname{Hom}_{\mathcal C}(T^{n+k}X,T^{m+k}Y)
+\quad(k\ge K_{n,m}).
+\tag{1.1}
+\]</span>
+<p>The transition from stage <span class="math" data-tex="\(k\)">\(k\)</span> to stage <span class="math" data-tex="\(k+1\)">\(k+1\)</span> is <span class="math" data-tex="\(f\mapsto T(f)\)">\(f\mapsto T(f)\)</span>. Write <span class="math" data-tex="\([f,k]\)">\([f,k]\)</span> for the class of a stage map. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+[f,k]=[g,l]
+\quad\Longleftrightarrow\quad
+T^{r-k}(f)=T^{r-l}(g)
+\text{ for some }r\ge k,l.
+\tag{1.2}
+\]">\[
+[f,k]=[g,l]
+\quad\Longleftrightarrow\quad
+T^{r-k}(f)=T^{r-l}(g)
+\text{ for some }r\ge k,l.
+\tag{1.2}
+\]</span>
+<p>This is an equivalence relation: reflexivity and symmetry are immediate, and two equalities become one equality at the larger of their witnessing stages. No transition map need be injective. The maps from each stage to these classes form a cocone. Every other cocone of functions has the unique factor <span class="math" data-tex="\([f,k]\mapsto v_k(f)\)">\([f,k]\mapsto v_k(f)\)</span>, because (1.2) identifies precisely the eventual transition images. Thus the class set is the colimit of the stage sets. It is small by the tagged-union and quotient bounds in the universe prerequisite. Allowing negative stages at which both displayed exponents are nonnegative gives the same set: every such stage maps to a nonnegative one, and every equality can be witnessed in a nonnegative tail.</p>
+<p>Define <span class="math" data-tex="\(\operatorname{Stab}(\mathcal C,T)\)">\(\operatorname{Stab}(\mathcal C,T)\)</span> to have all pairs <span class="math" data-tex="\((X,n)\)">\((X,n)\)</span> as objects and these colimits as its Hom sets. For <span class="math" data-tex="\([f,k]:(X,n)\to(Y,m)\)">\([f,k]:(X,n)\to(Y,m)\)</span> and <span class="math" data-tex="\([g,l]:(Y,m)\to(Z,p)\)">\([g,l]:(Y,m)\to(Z,p)\)</span>, choose <span class="math" data-tex="\(r\ge k,l\)">\(r\ge k,l\)</span> and put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+[g,l]\,[f,k]
+=\bigl[T^{r-l}(g)\,T^{r-k}(f),r\bigr].
+\tag{1.3}
+\]">\[
+[g,l]\,[f,k]
+=\bigl[T^{r-l}(g)\,T^{r-k}(f),r\bigr].
+\tag{1.3}
+\]</span>
+<p>The source and target of the composite are <span class="math" data-tex="\(T^{n+r}X,T^{p+r}Z\)">\(T^{n+r}X,T^{p+r}Z\)</span>, with middle object <span class="math" data-tex="\(T^{m+r}Y\)">\(T^{m+r}Y\)</span>. Raising <span class="math" data-tex="\(r\)">\(r\)</span> applies the same further power of <span class="math" data-tex="\(T\)">\(T\)</span> to the whole composite. Changing either representative makes it equal to the old one at some common later stage, so gives the same composite there. This proves independence of every choice. Three maps can be represented at one stage, where associativity is that of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. The identity of <span class="math" data-tex="\((X,n)\)">\((X,n)\)</span> is <span class="math" data-tex="\([1_{T^{n+k}X},k]\)">\([1_{T^{n+k}X},k]\)</span> at any allowed stage <span class="math" data-tex="\(k\)">\(k\)</span>; its class is independent of <span class="math" data-tex="\(k\)">\(k\)</span>, and (1.3) proves the two identity laws. Consequently this construction is a locally small category.</p>
+<h2 id="2-an-actual-inverse-shift-and-the-original-category-map">2. An actual inverse shift and the original-category map</h2>
+<p>Define a shift and its inverse by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+S(X,n)&amp;=(X,n+1),&amp; S[f,k]&amp;=[T(f),k],\\
+R(X,n)&amp;=(X,n-1),&amp; R[f,k]&amp;=[f,k+1].
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+S(X,n)&amp;=(X,n+1),&amp; S[f,k]&amp;=[T(f),k],\\
+R(X,n)&amp;=(X,n-1),&amp; R[f,k]&amp;=[f,k+1].
+\end{aligned}
+\tag{2.1}
+\]</span>
+<p>All the indicated stages are allowed. The shifted exponents for <span class="math" data-tex="\(S[f,k]\)">\(S[f,k]\)</span> are <span class="math" data-tex="\(n+k+1,m+k+1\)">\(n+k+1,m+k+1\)</span>, while those for <span class="math" data-tex="\(R[f,k]\)">\(R[f,k]\)</span> at stage <span class="math" data-tex="\(k+1\)">\(k+1\)</span> are <span class="math" data-tex="\(n+k,m+k\)">\(n+k,m+k\)</span>. Eventual equality is preserved, so these formulas define maps on classes. Applying them to (1.3) proves functoriality. Both composites on morphisms are <span class="math" data-tex="\([f,k]\mapsto[T(f),k+1]=[f,k]\)">\([f,k]\mapsto[T(f),k+1]=[f,k]\)</span>, by (1.2). On objects both composites are the identity. Hence <span class="math" data-tex="\(R=S^{-1}\)">\(R=S^{-1}\)</span> strictly on this category.</p>
+<p>There is a functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\iota:\mathcal C\to\operatorname{Stab}(\mathcal C,T),
+\qquad \iota X=(X,0),\quad \iota f=[f,0].
+\tag{2.2}
+\]">\[
+\iota:\mathcal C\to\operatorname{Stab}(\mathcal C,T),
+\qquad \iota X=(X,0),\quad \iota f=[f,0].
+\tag{2.2}
+\]</span>
+<p>It preserves identities and composition at stage zero. A natural isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\gamma_X:S\iota X=(X,1)\longrightarrow\iota TX=(TX,0)
+\tag{2.3}
+\]">\[
+\gamma_X:S\iota X=(X,1)\longrightarrow\iota TX=(TX,0)
+\tag{2.3}
+\]</span>
+<p>is represented by <span class="math" data-tex="\(1_{TX}\)">\(1_{TX}\)</span> at stage zero; the inverse is represented by the same underlying identity in the reverse direction. The naturality square is represented by <span class="math" data-tex="\(T(f)\)">\(T(f)\)</span> on both paths.</p>
+<p>For every <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, the map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\beta_{a,X}:(X,a)\longrightarrow\iota(T^aX)
+\tag{2.4}
+\]">\[
+\beta_{a,X}:(X,a)\longrightarrow\iota(T^aX)
+\tag{2.4}
+\]</span>
+<p>is likewise represented by <span class="math" data-tex="\(1_{T^aX}\)">\(1_{T^aX}\)</span> at stage zero and has the corresponding identity inverse. These maps are the iterates of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>: <span class="math" data-tex="\(\beta_{a+1,X}=\gamma_{T^aX}S(\beta_{a,X})\)">\(\beta_{a+1,X}=\gamma_{T^aX}S(\beta_{a,X})\)</span>. The equality follows from the common underlying identity after increasing the stage if necessary.</p>
+<p>Every stabilized arrow has a useful exact factorization. For <span class="math" data-tex="\([f,k]:(X,n)\to(Y,m)\)">\([f,k]:(X,n)\to(Y,m)\)</span>, both <span class="math" data-tex="\(n+k,m+k\)">\(n+k,m+k\)</span> are nonnegative and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+S^k[f,k]
+=\beta_{m+k,Y}^{-1}\,\iota(f)\,\beta_{n+k,X}.
+\tag{2.5}
+\]">\[
+S^k[f,k]
+=\beta_{m+k,Y}^{-1}\,\iota(f)\,\beta_{n+k,X}.
+\tag{2.5}
+\]</span>
+<p>The right side is represented by <span class="math" data-tex="\(f\)">\(f\)</span> at stage zero between <span class="math" data-tex="\((X,n+k),(Y,m+k)\)">\((X,n+k),(Y,m+k)\)</span>. Its transition to stage <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\(T^k(f)\)">\(T^k(f)\)</span>, which is the representative obtained from the left side by (2.1). Thus (2.5) is an equality of arrows, not only an unspecified comparison. It will control the universal property and all natural transformations.</p>
+<h2 id="3-extending-into-a-translation-equivalence">3. Extending into a translation equivalence</h2>
+<p>Let <span class="math" data-tex="\(U:\mathcal A\to\mathcal A\)">\(U:\mathcal A\to\mathcal A\)</span> be an equivalence, let <span class="math" data-tex="\(F:\mathcal C\to\mathcal A\)">\(F:\mathcal C\to\mathcal A\)</span> be a functor, and choose a natural isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\theta:FT\longrightarrow UF.
+\tag{3.1}
+\]">\[
+\theta:FT\longrightarrow UF.
+\tag{3.1}
+\]</span>
+<p>Use coherent powers <span class="math" data-tex="\(P_n\)">\(P_n\)</span> of <span class="math" data-tex="\(U\)">\(U\)</span>, with <span class="math" data-tex="\(P_k=U^k\)">\(P_k=U^k\)</span> for <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>. Define natural isomorphisms <span class="math" data-tex="\(\rho_a:FT^a\to P_aF\)">\(\rho_a:FT^a\to P_aF\)</span>, for nonnegative <span class="math" data-tex="\(a\)">\(a\)</span>, by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\rho_{0,X}=1_{FX},\qquad
+\rho_{a+1,X}=U(\rho_{a,X})\theta_{T^aX}.
+\tag{3.2}
+\]">\[
+\rho_{0,X}=1_{FX},\qquad
+\rho_{a+1,X}=U(\rho_{a,X})\theta_{T^aX}.
+\tag{3.2}
+\]</span>
+<p>Each term has the stated type. Naturality follows inductively from naturality of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. For every <span class="math" data-tex="\(f:T^{n+k}X\to T^{m+k}Y\)">\(f:T^{n+k}X\to T^{m+k}Y\)</span>, that naturality also gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\rho_{m+k+1,Y}F(Tf)\rho_{n+k+1,X}^{-1}
+=U\bigl(\rho_{m+k,Y}F(f)\rho_{n+k,X}^{-1}\bigr).
+\tag{3.3}
+\]">\[
+\rho_{m+k+1,Y}F(Tf)\rho_{n+k+1,X}^{-1}
+=U\bigl(\rho_{m+k,Y}F(f)\rho_{n+k,X}^{-1}\bigr).
+\tag{3.3}
+\]</span>
+<p>Indeed substitute (3.2) and cancel the naturality square <span class="math" data-tex="\(\theta_{T^{m+k}Y}F(Tf)=UF(f)\theta_{T^{n+k}X}\)">\(\theta_{T^{m+k}Y}F(Tf)=UF(f)\theta_{T^{n+k}X}\)</span>.</p>
+<p>Set <span class="math" data-tex="\(\widehat F(X,n)=P_nFX\)">\(\widehat F(X,n)=P_nFX\)</span>. To define <span class="math" data-tex="\(\widehat F[f,k]\)">\(\widehat F[f,k]\)</span>, first form</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+q_k=\rho_{m+k,Y}F(f)\rho_{n+k,X}^{-1}
+:P_{n+k}FX\longrightarrow P_{m+k}FY.
+\tag{3.4}
+\]">\[
+q_k=\rho_{m+k,Y}F(f)\rho_{n+k,X}^{-1}
+:P_{n+k}FX\longrightarrow P_{m+k}FY.
+\tag{3.4}
+\]</span>
+<p>Use the coherent comparisons to regard it as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+\widetilde q_k=
+\mu_{k,m,FY}^{-1}\,q_k\,\mu_{k,n,FX}
+:U^kP_nFX\longrightarrow U^kP_mFY.
+\tag{3.5}
+\]">\[
+\widetilde q_k=
+\mu_{k,m,FY}^{-1}\,q_k\,\mu_{k,n,FX}
+:U^kP_nFX\longrightarrow U^kP_mFY.
+\tag{3.5}
+\]</span>
+<p>Full faithfulness of <span class="math" data-tex="\(U^k\)">\(U^k\)</span> gives a unique map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.6); horizontal scroll when needed" data-tex="\[
+\widehat F[f,k]:P_nFX\longrightarrow P_mFY,
+\qquad U^k(\widehat F[f,k])=\widetilde q_k.
+\tag{3.6}
+\]">\[
+\widehat F[f,k]:P_nFX\longrightarrow P_mFY,
+\qquad U^k(\widehat F[f,k])=\widetilde q_k.
+\tag{3.6}
+\]</span>
+<p>This uses the inverse of a Hom bijection, so it does not replace an equivalence by a literal inverse functor.</p>
+<p>For allowed <span class="math" data-tex="\(k\)">\(k\)</span>, coherence and <span class="math" data-tex="\(n+k\ge0\)">\(n+k\ge0\)</span> give <span class="math" data-tex="\(\mu_{k+1,n}=U\mu_{k,n}\)">\(\mu_{k+1,n}=U\mu_{k,n}\)</span>; the positive-power comparisons on the other side of that coherence square are identities. Equations (3.3)–(3.5) therefore give <span class="math" data-tex="\(\widetilde q_{k+1}=U\widetilde q_k\)">\(\widetilde q_{k+1}=U\widetilde q_k\)</span>. The unique lift in (3.6) is unchanged when the representative is advanced. Equality at a common later stage proves independence under (1.2). Identity representatives give identity maps. For composition, use one common stage in (1.3). The middle factors <span class="math" data-tex="\(\rho^{-1}\rho\)">\(\rho^{-1}\rho\)</span> and <span class="math" data-tex="\(\mu\mu^{-1}\)">\(\mu\mu^{-1}\)</span> cancel, so the lift of the composite is the composite of the lifts. Thus <span class="math" data-tex="\(\widehat F\)">\(\widehat F\)</span> is a functor, and <span class="math" data-tex="\(\widehat F\iota=F\)">\(\widehat F\iota=F\)</span> on objects and arrows.</p>
+<p>Its translation comparison is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.7); horizontal scroll when needed" data-tex="\[
+\chi_{(X,n)}:\widehat FS(X,n)\longrightarrow U\widehat F(X,n),
+\qquad \chi_{(X,n)}=\mu_{1,n,FX}^{-1}.
+\tag{3.7}
+\]">\[
+\chi_{(X,n)}:\widehat FS(X,n)\longrightarrow U\widehat F(X,n),
+\qquad \chi_{(X,n)}=\mu_{1,n,FX}^{-1}.
+\tag{3.7}
+\]</span>
+<p>To check naturality, compare (3.5) for <span class="math" data-tex="\([f,k]\)">\([f,k]\)</span> and for <span class="math" data-tex="\(S[f,k]=[Tf,k]\)">\(S[f,k]=[Tf,k]\)</span>. Equation (3.3) gives <span class="math" data-tex="\(q_{S,k}=Uq_k\)">\(q_{S,k}=Uq_k\)</span>. The two ways of aligning the powers agree because coherence gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.8); horizontal scroll when needed" data-tex="\[
+\mu_{k,n+1}(U^k\mu_{1,n})=\mu_{k+1,n}=U\mu_{k,n}.
+\tag{3.8}
+\]">\[
+\mu_{k,n+1}(U^k\mu_{1,n})=\mu_{k+1,n}=U\mu_{k,n}.
+\tag{3.8}
+\]</span>
+<p>After applying the faithful functor <span class="math" data-tex="\(U^k\)">\(U^k\)</span>, these are exactly the naturality equations for (3.7), so they also hold before applying it. At <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is the identity. Formula (3.6) at stage zero for <span class="math" data-tex="\(\gamma_X\)">\(\gamma_X\)</span> gives <span class="math" data-tex="\(\widehat F(\gamma_X)=\theta_X^{-1}\)">\(\widehat F(\gamma_X)=\theta_X^{-1}\)</span>. Consequently the comparison induced on its restriction is precisely the given one:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.9); horizontal scroll when needed" data-tex="\[
+\chi_{\iota X}\,\widehat F(\gamma_X^{-1})=\theta_X.
+\tag{3.9}
+\]">\[
+\chi_{\iota X}\,\widehat F(\gamma_X^{-1})=\theta_X.
+\tag{3.9}
+\]</span>
+<p>This proves existence of an extension with the specified translation data.</p>
+<h2 id="4-natural-transformations-give-the-full-universal-property">4. Natural transformations give the full universal property</h2>
+<p>Pairs <span class="math" data-tex="\((F,\theta)\)">\((F,\theta)\)</span> as in (3.1) form a category. Its maps <span class="math" data-tex="\(a:(F,\theta)\to(G,\vartheta)\)">\(a:(F,\theta)\to(G,\vartheta)\)</span> are natural transformations satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+U(a_X)\theta_X=\vartheta_Xa_{TX}.
+\tag{4.1}
+\]">\[
+U(a_X)\theta_X=\vartheta_Xa_{TX}.
+\tag{4.1}
+\]</span>
+<p>Identity transformations and composites satisfy this equation by substitution. The analogous category of translation-compatible functors from <span class="math" data-tex="\((\operatorname{Stab},S)\)">\((\operatorname{Stab},S)\)</span> has specified comparisons <span class="math" data-tex="\(HS\to UH\)">\(HS\to UH\)</span> and transformations commuting with them.</p>
+<p><strong>Theorem 4.1.</strong> Restriction along <span class="math" data-tex="\(\iota\)">\(\iota\)</span>, with comparison induced by <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span>, is an equivalence between these two categories of compatible functors.</p>
+<p><strong>Proof.</strong> Existence is Section 3. For a map satisfying (4.1), define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\widehat a_{(X,n)}=P_n(a_X).
+\tag{4.2}
+\]">\[
+\widehat a_{(X,n)}=P_n(a_X).
+\tag{4.2}
+\]</span>
+<p>Induction in (3.2) gives <span class="math" data-tex="\(P_p(a_X)\rho^F_{p,X}=\rho^G_{p,X}a_{T^pX}\)">\(P_p(a_X)\rho^F_{p,X}=\rho^G_{p,X}a_{T^pX}\)</span> for every nonnegative <span class="math" data-tex="\(p\)">\(p\)</span>. Combine these equations at <span class="math" data-tex="\(p=n+k,m+k\)">\(p=n+k,m+k\)</span> with naturality of <span class="math" data-tex="\(a\)">\(a\)</span> at the stage map <span class="math" data-tex="\(f\)">\(f\)</span>. Naturality of the power comparisons then gives the naturality equation for (4.2) after applying <span class="math" data-tex="\(U^k\)">\(U^k\)</span> to it. Faithfulness of <span class="math" data-tex="\(U^k\)">\(U^k\)</span> proves the equation itself. Coherence and naturality of <span class="math" data-tex="\(\mu_{1,n}\)">\(\mu_{1,n}\)</span> prove compatibility with (3.7). Thus restriction has the indicated lift of compatible transformations between the canonical extensions.</p>
+<p>We prove fullness and faithfulness for arbitrary compatible functors, rather than only the canonical ones. Let <span class="math" data-tex="\((H,\alpha:HS\to UH)\)">\((H,\alpha:HS\to UH)\)</span> be such a functor. Since <span class="math" data-tex="\((X,n)=S^n\iota X\)">\((X,n)=S^n\iota X\)</span>, iteration of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> gives coherent natural comparisons</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\kappa_{n,X}:H(X,n)\longrightarrow P_nH(X,0),\qquad \kappa_{0,X}=1.
+\tag{4.3}
+\]">\[
+\kappa_{n,X}:H(X,n)\longrightarrow P_nH(X,0),\qquad \kappa_{0,X}=1.
+\tag{4.3}
+\]</span>
+<p>Concretely, for every integer <span class="math" data-tex="\(n\)">\(n\)</span> they satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\kappa_{n+1,X}=\mu_{1,n}\,U(\kappa_{n,X})\,\alpha_{(X,n)}.
+\tag{4.4}
+\]">\[
+\kappa_{n+1,X}=\mu_{1,n}\,U(\kappa_{n,X})\,\alpha_{(X,n)}.
+\tag{4.4}
+\]</span>
+<p>For positive <span class="math" data-tex="\(n\)">\(n\)</span> this is recursion. To go downwards, (4.4) prescribes <span class="math" data-tex="\(U(\kappa_{n,X})\)">\(U(\kappa_{n,X})\)</span> as the composite <span class="math" data-tex="\(\mu_{1,n}^{-1}\kappa_{n+1,X}\alpha_{(X,n)}^{-1}\)">\(\mu_{1,n}^{-1}\kappa_{n+1,X}\alpha_{(X,n)}^{-1}\)</span>. Full faithfulness of <span class="math" data-tex="\(U\)">\(U\)</span> gives its unique preimage; the inverse is obtained in the same way, and faithfulness proves both inverse equations. Naturality follows by applying <span class="math" data-tex="\(U\)">\(U\)</span> to the required square and using the already established next square. The coherence for longer shift blocks follows by induction in (4.4), its downward inverse equations, and coherence of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. This gives (4.3) for all integers with the actual chosen comparison data.</p>
+<p>If <span class="math" data-tex="\((K,\delta)\)">\((K,\delta)\)</span> is another compatible functor and <span class="math" data-tex="\(a:H\iota\to K\iota\)">\(a:H\iota\to K\iota\)</span> satisfies the induced equation (4.1), a compatible transformation must have components</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+b_{(X,n)}=(\kappa^K_{n,X})^{-1}\,P_n(a_X)\,\kappa^H_{n,X}.
+\tag{4.5}
+\]">\[
+b_{(X,n)}=(\kappa^K_{n,X})^{-1}\,P_n(a_X)\,\kappa^H_{n,X}.
+\tag{4.5}
+\]</span>
+<p>This is forced upwards by compatibility and downwards by full faithfulness of <span class="math" data-tex="\(U\)">\(U\)</span>. These components do satisfy the compatibility equation, by (4.4). They are natural on <span class="math" data-tex="\(\iota(f)\)">\(\iota(f)\)</span> by naturality of <span class="math" data-tex="\(a\)">\(a\)</span>, and natural on <span class="math" data-tex="\(\gamma_X\)">\(\gamma_X\)</span> by (4.1) with the restricted comparisons. They are consequently natural on the iterates <span class="math" data-tex="\(\beta_{p,X}\)">\(\beta_{p,X}\)</span> and their inverses. Formula (2.5) proves naturality on <span class="math" data-tex="\(S^k[f,k]\)">\(S^k[f,k]\)</span>. Compatibility with the iterated shift comparisons then turns that equation into the image under <span class="math" data-tex="\(U^k\)">\(U^k\)</span> of the naturality square for <span class="math" data-tex="\([f,k]\)">\([f,k]\)</span>; its faithfulness proves that square. Thus (4.5) defines the required transformation on every arrow. It is unique because its components were forced. This proves fullness and faithfulness of restriction.</p>
+<p>The canonical extension of Section 3 gives every restricted pair. A fully faithful functor which is essentially surjective is an equivalence: choose a preimage with its isomorphism for each object, lift maps through the full-faithful Hom bijections, and use faithfulness for the identity and composition laws. This supplies the asserted equivalence here. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular an extension is unique up to a compatible isomorphism after one fixes the isomorphism of its restriction with <span class="math" data-tex="\((F,\theta)\)">\((F,\theta)\)</span>. That compatible isomorphism is unique when its restriction is prescribed. An unrestricted uniqueness assertion about unspecified natural isomorphisms is not needed and is not made.</p>
+<h2 id="5-additivity-and-two-concrete-outcomes">5. Additivity and two concrete outcomes</h2>
+<p>Suppose now that <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is additive and <span class="math" data-tex="\(T\)">\(T\)</span> is additive. Addition on stabilized maps is represented by adding two maps at a common stage. Passing to a later stage preserves addition; choosing another pair of representatives gives the same sum by (1.2). The zero and negative maps are constructed in the same way, so each Hom set is an abelian group. Equation (1.3) is bilinear at a common stage.</p>
+<p>The object <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> is zero: every <span class="math" data-tex="\(T^k0\)">\(T^k0\)</span> is zero because <span class="math" data-tex="\(T\)">\(T\)</span> is additive, and hence every sufficiently late Hom set to or from this object is a singleton. For <span class="math" data-tex="\((X,n),(Y,m)\)">\((X,n),(Y,m)\)</span>, choose <span class="math" data-tex="\(r\ge\max(0,-n,-m)\)">\(r\ge\max(0,-n,-m)\)</span> and put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+B=(T^{n+r}X\oplus T^{m+r}Y,-r).
+\tag{5.1}
+\]">\[
+B=(T^{n+r}X\oplus T^{m+r}Y,-r).
+\tag{5.1}
+\]</span>
+<p>The actual injections and projections in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, represented at stage <span class="math" data-tex="\(r\)">\(r\)</span>, satisfy <span class="math" data-tex="\(p_i i_j=\delta_{ij}\)">\(p_i i_j=\delta_{ij}\)</span> and <span class="math" data-tex="\(i_1p_1+i_2p_2=1_B\)">\(i_1p_1+i_2p_2=1_B\)</span> in stabilization. These equations give both biproduct universal properties: a map into <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(i_1a+i_2b\)">\(i_1a+i_2b\)</span> and a map out is <span class="math" data-tex="\(ap_1+bp_2\)">\(ap_1+bp_2\)</span>; composing with the legs proves the required uniqueness. Thus stabilization is additive. The shift, its inverse and <span class="math" data-tex="\(\iota\)">\(\iota\)</span> are additive by their formulas. If the target is additive and <span class="math" data-tex="\(U,F\)">\(U,F\)</span> are additive, (3.5) is a composite of Hom-group isomorphisms and the group map induced by <span class="math" data-tex="\(F\)">\(F\)</span>. The inverse Hom bijection in (3.6) is also a group isomorphism, so <span class="math" data-tex="\(\widehat F\)">\(\widehat F\)</span> is additive. Theorem 4.1 therefore restricts to the additive compatible-functor categories.</p>
+<p><strong>Example 5.1 (a complete loss of original maps).</strong> Let <span class="math" data-tex="\(\mathcal C=\mathsf{Set}\)">\(\mathcal C=\mathsf{Set}\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> be the constant singleton functor. After one further transition every stage map becomes the same singleton identity. Conversely every sufficiently late stage Hom set is a singleton, even when an earlier Hom set was empty. Hence every stabilized Hom set is a singleton, and all objects are isomorphic. The two different maps from a singleton to a two-element set have equal images under <span class="math" data-tex="\(\iota\)">\(\iota\)</span>. Stabilization exists here, but <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is not faithful.</p>
+<p><strong>Example 5.2 (new maps without loss).</strong> Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> have one object <span class="math" data-tex="\(*\)">\(*\)</span>, with endomorphism monoid <span class="math" data-tex="\((\mathbb N,+)\)">\((\mathbb N,+)\)</span>; composition is addition and its identity is zero. Let <span class="math" data-tex="\(T(a)=2a\)">\(T(a)=2a\)</span>. A class <span class="math" data-tex="\([a,k]\)">\([a,k]\)</span> between any two labels is identified with <span class="math" data-tex="\(a/2^k\)">\(a/2^k\)</span>. Equality of two such fractions is exactly eventual equality after multiplying at a common stage. Every nonnegative dyadic rational occurs at a sufficiently late allowed stage. Composition adds the fractions, and the identity is zero. The original embedding sends <span class="math" data-tex="\(a\)">\(a\)</span> to the integer <span class="math" data-tex="\(a\)">\(a\)</span>, so it is faithful but is not full. The shift doubles every fraction and its inverse halves it. Maps represented by zero between different labels are mutual isomorphisms, since their composites are the zero identity. This example is an ordinary category; its Hom monoid is not being called an abelian group.</p>
+<h2 id="6-four-graded-exercises-with-complete-solutions">6. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (foundation: discard an initial segment).</strong> For a sequence of sets <span class="math" data-tex="\(A_k\)">\(A_k\)</span> with arbitrary transition functions, prove directly that deleting any finite initial segment gives the same colimit. Do not assume the functions are injective.</p>
+<p><strong>Solution.</strong> Use the eventual-equality construction of Section 1. Every representative at a deleted stage maps to the first retained stage, so the tail map is surjective. If two retained representatives are equal in the full colimit, their equality has a common witnessing stage. Increase it to at least the first retained stage; that equality witnesses their equality in the tail. Thus the map is injective as well. The two procedures respect the class maps from every retained stage, so the bijection is the canonical colimit comparison. This applies to the nonnegative-stage restriction in (1.1).</p>
+<p><strong>Exercise 2 (intermediate: exactly when the original maps survive).</strong> Prove that <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is faithful exactly when <span class="math" data-tex="\(T\)">\(T\)</span> is faithful. Prove that <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is fully faithful exactly when <span class="math" data-tex="\(T\)">\(T\)</span> is fully faithful. If <span class="math" data-tex="\(T\)">\(T\)</span> is an equivalence, show that <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is an equivalence as well.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(T\)">\(T\)</span> is faithful, all powers on each Hom set are injective; equality of two stage-zero maps in (1.2) forces equality of the original maps. Conversely <span class="math" data-tex="\(Tf=Tg\)">\(Tf=Tg\)</span> gives <span class="math" data-tex="\(\iota f=\iota g\)">\(\iota f=\iota g\)</span>; faithfulness of <span class="math" data-tex="\(\iota\)">\(\iota\)</span> then forces <span class="math" data-tex="\(f=g\)">\(f=g\)</span>. If <span class="math" data-tex="\(T\)">\(T\)</span> is fully faithful, each transition from a stage-zero Hom set is a bijection, so every class has a unique stage-zero representative. Thus <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is fully faithful.</p>
+<p>For the other implication, assume <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is fully faithful. The natural comparison <span class="math" data-tex="\(S\iota\simeq\iota T\)">\(S\iota\simeq\iota T\)</span> and the invertibility of <span class="math" data-tex="\(S\)">\(S\)</span> identify the map on Hom sets induced by <span class="math" data-tex="\(T\)">\(T\)</span> with the composite of the bijections induced by <span class="math" data-tex="\(\iota,S\)">\(\iota,S\)</span> and the comparison. This composite is bijective, hence <span class="math" data-tex="\(T\)">\(T\)</span> is fully faithful. Finally, if <span class="math" data-tex="\(T\)">\(T\)</span> is an equivalence, choose <span class="math" data-tex="\(T^{-1}\)">\(T^{-1}\)</span>. For a label <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, (2.4) identifies <span class="math" data-tex="\((X,n)\)">\((X,n)\)</span> with <span class="math" data-tex="\(\iota(T^nX)\)">\(\iota(T^nX)\)</span>. For <span class="math" data-tex="\(n=-a&lt;0\)">\(n=-a&lt;0\)</span>, choose <span class="math" data-tex="\(Y\)">\(Y\)</span> with <span class="math" data-tex="\(T^aY\simeq X\)">\(T^aY\simeq X\)</span>; the isomorphism <span class="math" data-tex="\(S^a\iota Y\simeq\iota X\)">\(S^a\iota Y\simeq\iota X\)</span>, shifted back by <span class="math" data-tex="\(S^{-a}\)">\(S^{-a}\)</span>, identifies <span class="math" data-tex="\(\iota Y\)">\(\iota Y\)</span> with <span class="math" data-tex="\((X,-a)\)">\((X,-a)\)</span>. Thus every object is in the essential image, and the full-faithful result makes <span class="math" data-tex="\(\iota\)">\(\iota\)</span> an equivalence.</p>
+<p><strong>Exercise 3 (advanced: doubling creates matrix maps).</strong> On abelian groups let <span class="math" data-tex="\(T(X)=X\oplus X\)">\(T(X)=X\oplus X\)</span>, with <span class="math" data-tex="\(T(f)=\operatorname{diag}(f,f)\)">\(T(f)=\operatorname{diag}(f,f)\)</span>. Describe <span class="math" data-tex="\(\operatorname{End}_{\operatorname{Stab}}(\mathbb Z,0)\)">\(\operatorname{End}_{\operatorname{Stab}}(\mathbb Z,0)\)</span>. Exhibit a new non-scalar automorphism and a nontrivial idempotent, and split that idempotent through an object with a negative label.</p>
+<p><strong>Solution.</strong> At stage <span class="math" data-tex="\(k\)">\(k\)</span> the object is <span class="math" data-tex="\(\mathbb Z^{2^k}\)">\(\mathbb Z^{2^k}\)</span>, and its endomorphism ring is <span class="math" data-tex="\(M_{2^k}(\mathbb Z)\)">\(M_{2^k}(\mathbb Z)\)</span>. Transition sends <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\(\operatorname{diag}(A,A)\)">\(\operatorname{diag}(A,A)\)</span>, a unital ring embedding. Therefore the stabilized endomorphism ring is their directed colimit, with addition and composition computed at a common matrix stage. The matrix <span class="math" data-tex="\(P=\left(\begin{smallmatrix}0&amp;1\\1&amp;0\end{smallmatrix}\right)\)">\(P=\left(\begin{smallmatrix}0&amp;1\\1&amp;0\end{smallmatrix}\right)\)</span> at stage one has <span class="math" data-tex="\(P^2=1\)">\(P^2=1\)</span>. Its later block-diagonal images contain off-diagonal ones and cannot equal any scalar integer identity. Hence it is an automorphism outside the image of the stage-zero endomorphism ring.</p>
+<p>The matrix <span class="math" data-tex="\(e=\operatorname{diag}(1,0)\)">\(e=\operatorname{diag}(1,0)\)</span> at stage one satisfies <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>. It and <span class="math" data-tex="\(1-e\)">\(1-e\)</span> remain nonzero at every later stage because the transition is injective. At stage one the projection <span class="math" data-tex="\((1,0):\mathbb Z^2\to\mathbb Z\)">\((1,0):\mathbb Z^2\to\mathbb Z\)</span> represents a map <span class="math" data-tex="\(p:(\mathbb Z,0)\to(\mathbb Z,-1)\)">\(p:(\mathbb Z,0)\to(\mathbb Z,-1)\)</span>, and the column <span class="math" data-tex="\(\binom10\)">\(\binom10\)</span> represents <span class="math" data-tex="\(j\)">\(j\)</span> in the reverse direction. Both stages are allowed because <span class="math" data-tex="\(-1+1=0\)">\(-1+1=0\)</span>. Their composites are <span class="math" data-tex="\(jp=e\)">\(jp=e\)</span> and <span class="math" data-tex="\(pj=1_{(\mathbb Z,-1)}\)">\(pj=1_{(\mathbb Z,-1)}\)</span>. This is the requested actual splitting. The Hom maps introduced by stabilization need not originate as maps at stage zero.</p>
+<p><strong>Exercise 4 (synthesis: the chosen comparison affects an extension).</strong> In Example 5.2 take as target the one-object category with endomorphism group <span class="math" data-tex="\((\mathbb Q,+)\)">\((\mathbb Q,+)\)</span> and translation <span class="math" data-tex="\(U(q)=2q\)">\(U(q)=2q\)</span>. Let <span class="math" data-tex="\(F(a)=ra\)">\(F(a)=ra\)</span>, for <span class="math" data-tex="\(r\in\mathbb Q\)">\(r\in\mathbb Q\)</span>, and let the comparison <span class="math" data-tex="\(\theta\)">\(\theta\)</span> have component <span class="math" data-tex="\(c\in\mathbb Q\)">\(c\in\mathbb Q\)</span>. Compute <span class="math" data-tex="\(\widehat F\)">\(\widehat F\)</span> on a dyadic map <span class="math" data-tex="\(q:(*,n)\to(*,m)\)">\(q:(*,n)\to(*,m)\)</span>. For fixed <span class="math" data-tex="\(r\)">\(r\)</span>, find every compatible natural transformation between the extensions for comparisons <span class="math" data-tex="\(c,c&#x27;\)">\(c,c&#x27;\)</span>.</p>
+<p><strong>Solution.</strong> The two functors <span class="math" data-tex="\(FT\)">\(FT\)</span> and <span class="math" data-tex="\(UF\)">\(UF\)</span> agree on maps, and every <span class="math" data-tex="\(c\)">\(c\)</span> is an invertible natural comparison because the target composition is commutative addition. Formula (3.2) gives <span class="math" data-tex="\(\rho_a=(2^a-1)c\)">\(\rho_a=(2^a-1)c\)</span>. For a representative <span class="math" data-tex="\([b,k]\)">\([b,k]\)</span>, with <span class="math" data-tex="\(q=b/2^k\)">\(q=b/2^k\)</span>, (3.4) has value</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+rb+(2^{m+k}-2^{n+k})c.
+\]">\[
+rb+(2^{m+k}-2^{n+k})c.
+\]</span>
+<p>Applying the inverse of the Hom bijection for <span class="math" data-tex="\(U^k\)">\(U^k\)</span>, which divides by <span class="math" data-tex="\(2^k\)">\(2^k\)</span>, gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\widehat F(q)=rq+(2^m-2^n)c.
+\tag{6.1}
+\]">\[
+\widehat F(q)=rq+(2^m-2^n)c.
+\tag{6.1}
+\]</span>
+<p>This is defined for negative labels as well. For composable dyadic maps, the two middle terms <span class="math" data-tex="\(2^m c\)">\(2^m c\)</span> cancel, proving composition directly; the zero identity from a label to itself maps to zero. Shifting doubles (6.1), so the extended translation comparison is the identity morphism zero. The map <span class="math" data-tex="\(\gamma:(*,1)\to(T*,0)\)">\(\gamma:(*,1)\to(T*,0)\)</span> has fraction zero and image <span class="math" data-tex="\(-c\)">\(-c\)</span>; its inverse gives exactly the restricted comparison <span class="math" data-tex="\(c\)">\(c\)</span>, as required by (3.9).</p>
+<p>On restriction, a natural transformation has one component <span class="math" data-tex="\(t\in\mathbb Q\)">\(t\in\mathbb Q\)</span>. Equation (4.1) is <span class="math" data-tex="\(2t+c=c&#x27;+t\)">\(2t+c=c&#x27;+t\)</span>, so <span class="math" data-tex="\(t=c&#x27;-c\)">\(t=c&#x27;-c\)</span> is forced. Its extension has component <span class="math" data-tex="\(2^n(c&#x27;-c)\)">\(2^n(c&#x27;-c)\)</span> at label <span class="math" data-tex="\(n\)">\(n\)</span>. For a map from label <span class="math" data-tex="\(n\)">\(n\)</span> to label <span class="math" data-tex="\(m\)">\(m\)</span>, inserting these two components and (6.1) into the naturality equation gives the same value on both sides. Shift compatibility doubles the component, so it holds too. The components are invertible, and no other compatible transformation is possible by their forced restriction and Theorem 4.1. The formula exhibits both dependence on the chosen comparison and the precise uniqueness after that comparison is fixed.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project Authors, <a href="https://stacks.math.columbia.edu/tag/04AX"><em>Filtered colimits</em></a>, for the eventual-equality description of morphism-stage colimits. Section 1 proves the particular sequential construction used here.</li>
+<li>The chosen inverse and integer-power comparisons are proved in <a href="translations-coherent-powers-and-universal-triangle-comparisons.html#1-translation-data-and-its-actual-inverse">Translations, coherent powers and universal triangle comparisons, Sections 1–2</a>.</li>
+</ul>
+</main></body></html>

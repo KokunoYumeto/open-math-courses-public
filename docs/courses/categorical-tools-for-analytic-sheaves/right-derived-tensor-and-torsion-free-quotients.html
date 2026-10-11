@@ -1,0 +1,479 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Right derived tensor and torsion-free quotients</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="right-derived-tensor-and-torsion-free-quotients">Right derived tensor and torsion-free quotients</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original text: CC0.</em></p>
+<p>Tensor is usually left derived, because it preserves cokernels. Nevertheless an additive tensor functor can also have a universal right derived functor. Over a principal ideal domain that right derived functor has a particularly concrete description: remove torsion from the fixed module, then tensor by the resulting flat module. Its unit is a quotient map, which can fail to be an isomorphism even in degree zero.</p>
+<h2 id="conventions-and-prerequisites">Conventions and prerequisites</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a nonzero commutative principal ideal domain, and let <span class="math" data-tex="\(\mathcal A=\operatorname{Mod}(R)\)">\(\mathcal A=\operatorname{Mod}(R)\)</span>. All modules, character sets and bases lie in a fixed universe. We use choice, including Zorn's lemma and choices of injective embeddings indexed by the integers. Modules need not be finitely generated. A field is allowed as a PID. Put <span class="math" data-tex="\(S=R\setminus\{0\}\)">\(S=R\setminus\{0\}\)</span> and let <span class="math" data-tex="\(K\)">\(K\)</span> be the fraction field.</p>
+<p>Complexes are cochain complexes. Translation has <span class="math" data-tex="\(X[1]^n=X^{n+1}\)">\(X[1]^n=X^{n+1}\)</span> and differential <span class="math" data-tex="\(-d_X\)">\(-d_X\)</span>. For a chain map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, the target-first cone is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+C(f)^n=Y^n\oplus X^{n+1},\qquad
+d_{C(f)}(y,x)=(d_Yy+fx,-d_Xx).
+\tag{0.1}
+\]">\[
+C(f)^n=Y^n\oplus X^{n+1},\qquad
+d_{C(f)}(y,x)=(d_Yy+fx,-d_Xx).
+\tag{0.1}
+\]</span>
+<p>Write <span class="math" data-tex="\(*=\varnothing,+,-,b\)">\(*=\varnothing,+,-,b\)</span> for unbounded, bounded-below, bounded-above and bounded complexes, respectively. The localization <span class="math" data-tex="\(Q:K^*(\mathcal A)\to D^*(\mathcal A)\)">\(Q:K^*(\mathcal A)\to D^*(\mathcal A)\)</span> inverts quasi-isomorphisms. Every bounded assertion below uses the same construction within the indicated variant.</p>
+<p>We use the following complete proof interfaces:</p>
+<ul>
+<li><span class="unlinked">Hom, tensor and the exactness of module limits, Sections 1, 3 and 4</span>: balanced tensor, its right exactness, and the representative and equality tests for filtered colimits.</li>
+<li><a href="hereditary-categories-and-cohomology-splittings.html#2-a-submodule-of-an-arbitrary-rank-free-pid-module-is-free">Hereditary categories and cohomology splittings, Section 2</a>: the full submodule theorem for free modules over a PID.</li>
+<li><a href="countable-mittag-leffler-and-formal-pro-derived-limits.html#4-enough-injectives-with-all-size-and-action-conventions">Countable Mittag–Leffler systems, Section 4</a>: injective characters and the coinduced action, with all size conventions.</li>
+<li><a href="relative-replacements-and-finite-resolution-bounds.html#2-two-bounded-below-replacement-criteria">Relative replacements and finite resolution bounds, Lemma 2.2</a>: outgoing replacement density, including the full equality-of-roofs proof.</li>
+<li><a href="localizing-triangulated-functors-and-signed-bifunctors.html#3-full-triangulated-families-that-compute-the-value">Localizing triangulated functors and signed bifunctors, Sections 1–3</a>: absolute right localization and its exact adapted-family construction.</li>
+<li><a href="universal-derived-functors-and-compatible-composition.html">Universal derived functors and compatible composition, Sections 1–4 and 8</a>: the unit convention, the universal natural-transformation property, tensor rows with a flat quotient, and the left-derived flat-class computation.</li>
+<li><a href="cohomological-bounds-denominators-and-truncation-adjunctions.html#1-four-localizations-and-cohomology-detection">Cohomological bounds and truncation adjunctions, Sections 1–3</a>: the four homotopy localizations, their denominator calculus and the full bounded embeddings.</li>
+</ul>
+<p>The module arguments and the finite-width replacement are proved below. In particular, the unbounded assertion does not follow merely from the existence of bounded-below injective resolutions.</p>
+<h2 id="1-the-torsion-free-quotient-is-flat-for-all-modules">1. The torsion-free quotient is flat for all modules</h2>
+<p>For an <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+T_M=\{m\in M:\text{ some }r\in S\text{ satisfies }rm=0\},
+\qquad P_M=M/T_M,\qquad \pi_M:M\to P_M.
+\tag{1.1}
+\]">\[
+T_M=\{m\in M:\text{ some }r\in S\text{ satisfies }rm=0\},
+\qquad P_M=M/T_M,\qquad \pi_M:M\to P_M.
+\tag{1.1}
+\]</span>
+<p>If <span class="math" data-tex="\(rx=0\)">\(rx=0\)</span> and <span class="math" data-tex="\(sy=0\)">\(sy=0\)</span>, then <span class="math" data-tex="\(rs(x+y)=0\)">\(rs(x+y)=0\)</span>. A scalar multiple of a torsion element is torsion. Thus <span class="math" data-tex="\(T_M\)">\(T_M\)</span> is a submodule. If <span class="math" data-tex="\(r(m+T_M)=0\)">\(r(m+T_M)=0\)</span>, then <span class="math" data-tex="\(rm\in T_M\)">\(rm\in T_M\)</span>, so <span class="math" data-tex="\(srm=0\)">\(srm=0\)</span> for some <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>. The domain hypothesis makes <span class="math" data-tex="\(sr\ne0\)">\(sr\ne0\)</span>; hence <span class="math" data-tex="\(m\in T_M\)">\(m\in T_M\)</span>. Therefore <span class="math" data-tex="\(P_M\)">\(P_M\)</span> is torsion free.</p>
+<p>Every linear map <span class="math" data-tex="\(\alpha:M\to M&#x27;\)">\(\alpha:M\to M&#x27;\)</span> sends <span class="math" data-tex="\(T_M\)">\(T_M\)</span> into <span class="math" data-tex="\(T_{M&#x27;}\)">\(T_{M&#x27;}\)</span>. It induces the uniquely determined map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+\overline\alpha:P_M\to P_{M&#x27;},\qquad
+\overline\alpha\pi_M=\pi_{M&#x27;}\alpha.
+\tag{1.2}
+\]">\[
+\overline\alpha:P_M\to P_{M&#x27;},\qquad
+\overline\alpha\pi_M=\pi_{M&#x27;}\alpha.
+\tag{1.2}
+\]</span>
+<p>Uniqueness shows that these maps preserve identities, compositions and sums. No splitting of (1.1) is chosen.</p>
+<p>Recall that a module <span class="math" data-tex="\(P\)">\(P\)</span> is flat when <span class="math" data-tex="\(P\otimes_R-\)">\(P\otimes_R-\)</span> preserves monomorphisms. Together with the right exactness of tensor this means that it preserves every short exact sequence.</p>
+<p><strong>Lemma 1.1.</strong> A finitely generated torsion-free <span class="math" data-tex="\(R\)">\(R\)</span>-module is finite free.</p>
+<p><strong>Proof.</strong> For any module <span class="math" data-tex="\(N\)">\(N\)</span>, the localization <span class="math" data-tex="\(S^{-1}N\)">\(S^{-1}N\)</span> consists of fractions <span class="math" data-tex="\(n/s\)">\(n/s\)</span>, with <span class="math" data-tex="\(n/s=n&#x27;/s&#x27;\)">\(n/s=n&#x27;/s&#x27;\)</span> exactly when some <span class="math" data-tex="\(u\in S\)">\(u\in S\)</span> kills <span class="math" data-tex="\(s&#x27;n-sn&#x27;\)">\(s&#x27;n-sn&#x27;\)</span>. Its map from <span class="math" data-tex="\(N\)">\(N\)</span> has kernel <span class="math" data-tex="\(T_N\)">\(T_N\)</span>. Addition and scalar multiplication are the usual common-denominator operations, and they give a <span class="math" data-tex="\(K\)">\(K\)</span>-vector space when <span class="math" data-tex="\(N\)">\(N\)</span> is localized at all nonzero scalars. The map
+<span class="math" data-tex="\(N\otimes_R K\to S^{-1}N\)">\(N\otimes_R K\to S^{-1}N\)</span>, <span class="math" data-tex="\(n\otimes(a/s)\mapsto an/s\)">\(n\otimes(a/s)\mapsto an/s\)</span>, has inverse <span class="math" data-tex="\(n/s\mapsto n\otimes(1/s)\)">\(n/s\mapsto n\otimes(1/s)\)</span>. The fraction equality makes the latter well defined because <span class="math" data-tex="\(u\)">\(u\)</span> is invertible in the second tensor factor. The balanced equations and the two pure-tensor formulas prove both inverse identities.</p>
+<p>Now let <span class="math" data-tex="\(N\)">\(N\)</span> be torsion free with finitely many generators. It embeds into <span class="math" data-tex="\(S^{-1}N\)">\(S^{-1}N\)</span>, and those generators span a finite-dimensional <span class="math" data-tex="\(K\)">\(K\)</span>-vector space. Choose a basis of that vector space. In its finitely many coordinates, the given generators have finitely many denominators. Their product <span class="math" data-tex="\(c\in S\)">\(c\in S\)</span> clears every denominator. Multiplying coordinates by <span class="math" data-tex="\(c\)">\(c\)</span> embeds <span class="math" data-tex="\(N\)">\(N\)</span> into <span class="math" data-tex="\(R^r\)">\(R^r\)</span>, where <span class="math" data-tex="\(r\)">\(r\)</span> is the dimension.</p>
+<p>For completeness, every submodule <span class="math" data-tex="\(L\subset R^r\)">\(L\subset R^r\)</span> is finite free by induction on <span class="math" data-tex="\(r\)">\(r\)</span>. At <span class="math" data-tex="\(r=0\)">\(r=0\)</span> it is zero. Project onto the last coordinate. Its image is an ideal <span class="math" data-tex="\(aR\)">\(aR\)</span>. If that image is zero, apply induction inside <span class="math" data-tex="\(R^{r-1}\)">\(R^{r-1}\)</span>. Otherwise choose <span class="math" data-tex="\(v\in L\)">\(v\in L\)</span> whose last coordinate is the nonzero generator <span class="math" data-tex="\(a\)">\(a\)</span>. Subtracting an appropriate multiple of <span class="math" data-tex="\(v\)">\(v\)</span> from each element gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+L=(L\cap R^{r-1})\oplus Rv.
+\tag{1.3}
+\]">\[
+L=(L\cap R^{r-1})\oplus Rv.
+\tag{1.3}
+\]</span>
+<p>The sum is direct since <span class="math" data-tex="\(ta=0\)">\(ta=0\)</span> implies <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Induction proves the assertion. Applying it to the embedded <span class="math" data-tex="\(N\)">\(N\)</span> finishes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.2.</strong> Every torsion-free <span class="math" data-tex="\(R\)">\(R\)</span>-module is flat. Consequently <span class="math" data-tex="\(P_M\otimes_R-\)">\(P_M\otimes_R-\)</span> is exact for every <span class="math" data-tex="\(M\)">\(M\)</span>, without any finite-generation hypothesis.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be torsion free. Its finitely generated submodules form a nonempty directed set: zero belongs to it, and <span class="math" data-tex="\(P_1+P_2\)">\(P_1+P_2\)</span> contains any two stages. Their union is <span class="math" data-tex="\(P\)">\(P\)</span>, since each element generates a finitely generated submodule. Each stage is finite free by Lemma 1.1.</p>
+<p>For every module <span class="math" data-tex="\(N\)">\(N\)</span>, the natural map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{P_i\subset P}(P_i\otimes_R N)
+\longrightarrow P\otimes_R N
+\tag{1.4}
+\]">\[
+\operatorname{colim}_{P_i\subset P}(P_i\otimes_R N)
+\longrightarrow P\otimes_R N
+\tag{1.4}
+\]</span>
+<p>is an isomorphism. Indeed a compatible family of balanced maps <span class="math" data-tex="\(P_i\times N\to V\)">\(P_i\times N\to V\)</span> gives a balanced map on <span class="math" data-tex="\(P\times N\)">\(P\times N\)</span>: to add two elements of <span class="math" data-tex="\(P\)">\(P\)</span>, put them in a common stage. Conversely restriction gives the compatible family. These operations are inverse, so the tensor and colimit universal properties identify (1.4) with the displayed structural map.</p>
+<p>Let <span class="math" data-tex="\(N&#x27;\hookrightarrow N\)">\(N&#x27;\hookrightarrow N\)</span> be monic. Every stage map <span class="math" data-tex="\(P_i\otimes N&#x27;\to P_i\otimes N\)">\(P_i\otimes N&#x27;\to P_i\otimes N\)</span> is monic, because a finite free module tensors it to a finite direct sum of the given injection. The filtered colimit is still monic. More explicitly, represent an element of the first colimit at one stage. If its image in the second colimit is zero, the filtered equality test puts that zero equation at a later stage. At that stage the tensor map is injective, so the representative is zero there; its original colimit class is zero. Using (1.4) proves flatness of <span class="math" data-tex="\(P\)">\(P\)</span>. Right exactness supplies the other two positions of every tensor row. Apply this to <span class="math" data-tex="\(P_M\)">\(P_M\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Conversely a flat module over a domain is torsion free: for each <span class="math" data-tex="\(r\in S\)">\(r\in S\)</span>, tensor the monomorphism <span class="math" data-tex="\(R\xrightarrow{r}R\)">\(R\xrightarrow{r}R\)</span> to obtain injective multiplication by <span class="math" data-tex="\(r\)">\(r\)</span>. Thus flatness and torsion freeness coincide here. The theorem does not assert that every torsion-free module is free.</p>
+<h2 id="2-divisibility-injectivity-and-disappearance-of-torsion">2. Divisibility, injectivity and disappearance of torsion</h2>
+<p>A module <span class="math" data-tex="\(J\)">\(J\)</span> is divisible when multiplication <span class="math" data-tex="\(r:J\to J\)">\(r:J\to J\)</span> is surjective for every <span class="math" data-tex="\(r\in S\)">\(r\in S\)</span>.</p>
+<p><strong>Proposition 2.1.</strong> Over <span class="math" data-tex="\(R\)">\(R\)</span>, a module is injective if and only if it is divisible. Quotients and finite direct sums of injective modules are injective.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(J\)">\(J\)</span> is injective and <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>. For <span class="math" data-tex="\(r\in S\)">\(r\in S\)</span>, define a map <span class="math" data-tex="\(rR\to J\)">\(rR\to J\)</span> by <span class="math" data-tex="\(ra\mapsto aj\)">\(ra\mapsto aj\)</span>. The domain hypothesis makes this well defined. Extend it over <span class="math" data-tex="\(rR\subset R\)">\(rR\subset R\)</span>. The image <span class="math" data-tex="\(y\)">\(y\)</span> of one then satisfies <span class="math" data-tex="\(ry=j\)">\(ry=j\)</span>, proving divisibility.</p>
+<p>Conversely, suppose <span class="math" data-tex="\(J\)">\(J\)</span> is divisible. Given a submodule <span class="math" data-tex="\(A\subset B\)">\(A\subset B\)</span> and a map <span class="math" data-tex="\(g:A\to J\)">\(g:A\to J\)</span>, order all its partial extensions by inclusion of their domains and agreement of their maps. This is a set. A chain has an upper bound on its union, because the maps agree on intersections. Zorn's lemma gives a maximal extension, with domain <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>.</p>
+<p>If <span class="math" data-tex="\(x\in B\setminus A&#x27;\)">\(x\in B\setminus A&#x27;\)</span>, the set <span class="math" data-tex="\(L=\{a\in R:ax\in A&#x27;\}\)">\(L=\{a\in R:ax\in A&#x27;\}\)</span> is an ideal. Write <span class="math" data-tex="\(L=rR\)">\(L=rR\)</span>. If <span class="math" data-tex="\(L=0\)">\(L=0\)</span>, choose <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. Otherwise <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>, and divisibility supplies <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(ry=g(rx)\)">\(ry=g(rx)\)</span>. Define on <span class="math" data-tex="\(A&#x27;+Rx\)">\(A&#x27;+Rx\)</span></p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+g&#x27;(a+tx)=g(a)+ty.
+\tag{2.1}
+\]">\[
+g&#x27;(a+tx)=g(a)+ty.
+\tag{2.1}
+\]</span>
+<p>If <span class="math" data-tex="\(a+tx=a&#x27;+t&#x27;x\)">\(a+tx=a&#x27;+t&#x27;x\)</span>, then <span class="math" data-tex="\((t-t&#x27;)x\in A&#x27;\)">\((t-t&#x27;)x\in A&#x27;\)</span>. In the zero-ideal case <span class="math" data-tex="\(t=t&#x27;\)">\(t=t&#x27;\)</span>, and then <span class="math" data-tex="\(a=a&#x27;\)">\(a=a&#x27;\)</span>. In the other case write <span class="math" data-tex="\(t-t&#x27;=ur\)">\(t-t&#x27;=ur\)</span>. We have <span class="math" data-tex="\(a-a&#x27;=-urx\)">\(a-a&#x27;=-urx\)</span>, and
+<span class="math" data-tex="\(g(a)-g(a&#x27;)+(t-t&#x27;)y=-u\,g(rx)+ur y=0\)">\(g(a)-g(a&#x27;)+(t-t&#x27;)y=-u\,g(rx)+ur y=0\)</span>.
+Thus (2.1) is well defined. Its addition and scalar equations follow from the formula. It extends <span class="math" data-tex="\(g\)">\(g\)</span> to a strictly larger domain, a contradiction. Therefore <span class="math" data-tex="\(A&#x27;=B\)">\(A&#x27;=B\)</span>, proving injectivity.</p>
+<p>A quotient of a divisible module is divisible: choose an <span class="math" data-tex="\(r\)">\(r\)</span>-preimage in the original module and take its quotient class. Finite direct sums are divisible coordinatewise. The equivalence just proved gives the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> For every injective module <span class="math" data-tex="\(J\)">\(J\)</span>, the actual quotient map induces a natural isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\pi_M\otimes1_J:M\otimes_R J\xrightarrow{\ \sim\ }P_M\otimes_R J.
+\tag{2.2}
+\]">\[
+\pi_M\otimes1_J:M\otimes_R J\xrightarrow{\ \sim\ }P_M\otimes_R J.
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(t\in T_M\)">\(t\in T_M\)</span> and <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>. Choose <span class="math" data-tex="\(r\in S\)">\(r\in S\)</span> with <span class="math" data-tex="\(rt=0\)">\(rt=0\)</span>, and choose <span class="math" data-tex="\(j&#x27;\in J\)">\(j&#x27;\in J\)</span> with <span class="math" data-tex="\(rj&#x27;=j\)">\(rj&#x27;=j\)</span>, using Proposition 2.1. The balancing relation gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+t\otimes j=t\otimes rj&#x27;=rt\otimes j&#x27;=0.
+\tag{2.3}
+\]">\[
+t\otimes j=t\otimes rj&#x27;=rt\otimes j&#x27;=0.
+\tag{2.3}
+\]</span>
+<p>Pure tensors generate <span class="math" data-tex="\(T_M\otimes_R J\)">\(T_M\otimes_R J\)</span>, so that entire tensor is zero. Right exactness applied to <span class="math" data-tex="\(T_M\to M\to P_M\to0\)">\(T_M\to M\to P_M\to0\)</span> now proves (2.2). The isomorphism is the stated quotient map, rather than one constructed by selecting a section of <span class="math" data-tex="\(M\to P_M\)">\(M\to P_M\)</span>. Its naturality in both <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> follows from the commuting square (1.2) and the tensor functor's commuting squares. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We shall also use, for arbitrary <span class="math" data-tex="\(N\)">\(N\)</span>, the stronger exact row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+0\longrightarrow T_M\otimes_R N
+\longrightarrow M\otimes_R N
+\xrightarrow{\pi_M\otimes1_N}P_M\otimes_R N
+\longrightarrow0.
+\tag{2.4}
+\]">\[
+0\longrightarrow T_M\otimes_R N
+\longrightarrow M\otimes_R N
+\xrightarrow{\pi_M\otimes1_N}P_M\otimes_R N
+\longrightarrow0.
+\tag{2.4}
+\]</span>
+<p>Here injectivity of the first arrow uses flatness of the quotient <span class="math" data-tex="\(P_M\)">\(P_M\)</span>. It is the complete flat-quotient tensor-row argument of <em>Universal derived functors</em>, Lemma 8.1. To see its mechanism directly, take a free cover <span class="math" data-tex="\(U_0\to N\)">\(U_0\to N\)</span>, with kernel <span class="math" data-tex="\(U_1\)">\(U_1\)</span>. Lift a prospective kernel element from <span class="math" data-tex="\(T_M\otimes N\)">\(T_M\otimes N\)</span> to <span class="math" data-tex="\(T_M\otimes U_0\)">\(T_M\otimes U_0\)</span>. Its image in <span class="math" data-tex="\(M\otimes U_0\)">\(M\otimes U_0\)</span> comes from <span class="math" data-tex="\(M\otimes U_1\)">\(M\otimes U_1\)</span>. The image of that lift in <span class="math" data-tex="\(P_M\otimes U_1\)">\(P_M\otimes U_1\)</span> dies in <span class="math" data-tex="\(P_M\otimes U_0\)">\(P_M\otimes U_0\)</span>, so it is zero by flatness of <span class="math" data-tex="\(P_M\)">\(P_M\)</span>. Right exactness lifts it from <span class="math" data-tex="\(T_M\otimes U_1\)">\(T_M\otimes U_1\)</span>. Its image in <span class="math" data-tex="\(T_M\otimes U_0\)">\(T_M\otimes U_0\)</span> equals the original lift, because <span class="math" data-tex="\(U_0\)">\(U_0\)</span> is free and hence tensors <span class="math" data-tex="\(T_M\hookrightarrow M\)">\(T_M\hookrightarrow M\)</span> injectively. The original element therefore vanishes in <span class="math" data-tex="\(T_M\otimes N\)">\(T_M\otimes N\)</span>. This proves the first position; right exactness proves the remainder.</p>
+<h2 id="3-enough-injectives-with-the-specified-module-action">3. Enough injectives with the specified module action</h2>
+<p><strong>Proposition 3.1.</strong> Every <span class="math" data-tex="\(R\)">\(R\)</span>-module embeds into a small injective <span class="math" data-tex="\(R\)">\(R\)</span>-module.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(D=\mathbb Q/\mathbb Z\)">\(D=\mathbb Q/\mathbb Z\)</span>. It is divisible as an abelian group: divide a rational representative by any positive integer. Proposition 2.1 for the PID <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> makes it injective.</p>
+<p>Characters into <span class="math" data-tex="\(D\)">\(D\)</span> detect every nonzero element of an abelian group <span class="math" data-tex="\(V\)">\(V\)</span>. If <span class="math" data-tex="\(v\)">\(v\)</span> has finite order <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>, map its cyclic subgroup to <span class="math" data-tex="\(D\)">\(D\)</span> by <span class="math" data-tex="\(v\mapsto1/m+\mathbb Z\)">\(v\mapsto1/m+\mathbb Z\)</span>. If it has infinite order, use <span class="math" data-tex="\(v\mapsto1/2+\mathbb Z\)">\(v\mapsto1/2+\mathbb Z\)</span>. The injectivity of <span class="math" data-tex="\(D\)">\(D\)</span> extends this character over <span class="math" data-tex="\(V\)">\(V\)</span>; its value on <span class="math" data-tex="\(v\)">\(v\)</span> remains nonzero.</p>
+<p>Set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+E=\operatorname{Hom}_{\mathbb Z}(R,D),\qquad
+(r\varphi)(s)=\varphi(sr).
+\tag{3.1}
+\]">\[
+E=\operatorname{Hom}_{\mathbb Z}(R,D),\qquad
+(r\varphi)(s)=\varphi(sr).
+\tag{3.1}
+\]</span>
+<p>This is an <span class="math" data-tex="\(R\)">\(R\)</span>-module: successive actions evaluate at <span class="math" data-tex="\(sr_1r_2\)">\(sr_1r_2\)</span>, and the unit, addition and scalar distributivity hold pointwise. For every <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(N\)">\(N\)</span>, evaluation at one gives inverse natural bijections</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_R(N,E)\simeq\operatorname{Hom}_{\mathbb Z}(N,D),\\
+g\longmapsto(n\mapsto g(n)(1)),\qquad
+\chi\longmapsto\bigl(n\mapsto(s\mapsto\chi(sn))\bigr).
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_R(N,E)\simeq\operatorname{Hom}_{\mathbb Z}(N,D),\\
+g\longmapsto(n\mapsto g(n)(1)),\qquad
+\chi\longmapsto\bigl(n\mapsto(s\mapsto\chi(sn))\bigr).
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>The second map is <span class="math" data-tex="\(R\)">\(R\)</span>-linear by (3.1). For an <span class="math" data-tex="\(R\)">\(R\)</span>-linear <span class="math" data-tex="\(g\)">\(g\)</span>,
+<span class="math" data-tex="\(g(n)(s)=g(sn)(1)\)">\(g(n)(s)=g(sn)(1)\)</span>, which proves one inverse identity; evaluation at one proves the other. Extending an additive map into <span class="math" data-tex="\(D\)">\(D\)</span> across an underlying subgroup, then applying (3.2), extends each <span class="math" data-tex="\(R\)">\(R\)</span>-linear map from a submodule into <span class="math" data-tex="\(E\)">\(E\)</span>. Thus <span class="math" data-tex="\(E\)">\(E\)</span> is injective.</p>
+<p>For <span class="math" data-tex="\(M\)">\(M\)</span>, let <span class="math" data-tex="\(A_M=\operatorname{Hom}_{\mathbb Z}(M,D)\)">\(A_M=\operatorname{Hom}_{\mathbb Z}(M,D)\)</span>. The map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+M\longrightarrow E^{A_M},\qquad
+m\longmapsto\bigl(s\mapsto\chi(sm)\bigr)_{\chi\in A_M}
+\tag{3.3}
+\]">\[
+M\longrightarrow E^{A_M},\qquad
+m\longmapsto\bigl(s\mapsto\chi(sm)\bigr)_{\chi\in A_M}
+\tag{3.3}
+\]</span>
+<p>is <span class="math" data-tex="\(R\)">\(R\)</span>-linear by (3.1). If <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span>, choose a detecting character and evaluate that coordinate at one; hence the map is monic. A product of injectives is injective: extend each coordinate map from a submodule and assemble the resulting tuple. The set of characters, the Hom module and its indexed product are small in the fixed universe. This proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular every module has an exact row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+0\longrightarrow N\longrightarrow J^0\longrightarrow J^1\longrightarrow0
+\tag{3.4}
+\]">\[
+0\longrightarrow N\longrightarrow J^0\longrightarrow J^1\longrightarrow0
+\tag{3.4}
+\]</span>
+<p>with both <span class="math" data-tex="\(J^0,J^1\)">\(J^0,J^1\)</span> injective: choose the embedding, and use Proposition 2.1 on its cokernel. This is a finite injective coresolution. The next section turns that quotient property into a replacement for an arbitrary complex.</p>
+<h2 id="4-an-explicit-injective-replacement-for-every-complex">4. An explicit injective replacement for every complex</h2>
+<p><strong>Theorem 4.1.</strong> Every complex <span class="math" data-tex="\(X\)">\(X\)</span> admits a monic quasi-isomorphism <span class="math" data-tex="\(s:X\to I\)">\(s:X\to I\)</span> with all <span class="math" data-tex="\(I^n\)">\(I^n\)</span> injective. The construction works for all four bounded variants. If <span class="math" data-tex="\(X\)">\(X\)</span> is zero outside <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, it can be chosen with <span class="math" data-tex="\(I\)">\(I\)</span> zero outside <span class="math" data-tex="\([a-1,b+1]\)">\([a-1,b+1]\)</span>.</p>
+<p><strong>Proof.</strong> Choose embeddings <span class="math" data-tex="\(i_n:X^n\hookrightarrow J^n\)">\(i_n:X^n\hookrightarrow J^n\)</span> with <span class="math" data-tex="\(J^n\)">\(J^n\)</span> injective; choose <span class="math" data-tex="\(J^n=0\)">\(J^n=0\)</span> when <span class="math" data-tex="\(X^n=0\)">\(X^n=0\)</span>. These are embeddings of individual modules, with no differential prescribed on the family <span class="math" data-tex="\(J^n\)">\(J^n\)</span>. Form instead the complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+C^n=J^n\oplus J^{n+1},\qquad d_C(a,b)=(b,0),\\
+e_X^n:X^n\to C^n,\qquad e_X^n(x)=(i_nx,i_{n+1}d_Xx).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+C^n=J^n\oplus J^{n+1},\qquad d_C(a,b)=(b,0),\\
+e_X^n:X^n\to C^n,\qquad e_X^n(x)=(i_nx,i_{n+1}d_Xx).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>The displayed <span class="math" data-tex="\(d_C\)">\(d_C\)</span> squares to zero. We have
+<span class="math" data-tex="\(d_Ce_X(x)=(i_{n+1}d_Xx,0)=e_Xd_X(x)\)">\(d_Ce_X(x)=(i_{n+1}d_Xx,0)=e_Xd_X(x)\)</span>, so <span class="math" data-tex="\(e_X\)">\(e_X\)</span> is a chain map. Its first component makes it monic in each degree. Each <span class="math" data-tex="\(C^n\)">\(C^n\)</span> is injective by Proposition 2.1. The degree-minus-one map
+<span class="math" data-tex="\(h_C^n(a,b)=(0,a)\in J^{n-1}\oplus J^n\)">\(h_C^n(a,b)=(0,a)\in J^{n-1}\oplus J^n\)</span>
+satisfies <span class="math" data-tex="\(d_Ch_C+h_Cd_C=1_C\)">\(d_Ch_C+h_Cd_C=1_C\)</span>; thus <span class="math" data-tex="\(C\)">\(C\)</span> is contractible.</p>
+<p>Let <span class="math" data-tex="\(D=C/e_X(X)\)">\(D=C/e_X(X)\)</span>, with quotient chain map <span class="math" data-tex="\(q:C\to D\)">\(q:C\to D\)</span>. Every <span class="math" data-tex="\(D^n\)">\(D^n\)</span> is a quotient of an injective module and is injective by Proposition 2.1. Define, with exactly the cone convention (0.1),</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+I=C(q)[-1],\qquad I^n=D^{n-1}\oplus C^n,\\
+d_I(a,c)=(-d_Da-qc,\ d_Cc),\\
+s^n:X^n\to I^n,\qquad s^n(x)=(0,e_X^n(x)).
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+I=C(q)[-1],\qquad I^n=D^{n-1}\oplus C^n,\\
+d_I(a,c)=(-d_Da-qc,\ d_Cc),\\
+s^n:X^n\to I^n,\qquad s^n(x)=(0,e_X^n(x)).
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>The cone construction makes <span class="math" data-tex="\(I\)">\(I\)</span> a complex; one may also check that its first second-differential component is
+<span class="math" data-tex="\(d_D^2a+d_Dqc-qd_Cc=0\)">\(d_D^2a+d_Dqc-qd_Cc=0\)</span>. The equation <span class="math" data-tex="\(qe_X=0\)">\(qe_X=0\)</span>, together with the chain-map equation for <span class="math" data-tex="\(e_X\)">\(e_X\)</span>, proves that <span class="math" data-tex="\(s\)">\(s\)</span> is a monic chain map. All terms of <span class="math" data-tex="\(I\)">\(I\)</span> are injective finite direct sums.</p>
+<p>The actual quotient <span class="math" data-tex="\(I/s(X)\)">\(I/s(X)\)</span> identifies in degree <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(D^{n-1}\oplus D^n\)">\(D^{n-1}\oplus D^n\)</span>, by <span class="math" data-tex="\((a,c)\mapsto(a,qc)\)">\((a,c)\mapsto(a,qc)\)</span>. The quotient differential and a contraction are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+d(a,b)=(-d_Da-b,\ d_Db),\qquad
+h^n(a,b)=(0,-a).
+\tag{4.3}
+\]">\[
+d(a,b)=(-d_Da-b,\ d_Db),\qquad
+h^n(a,b)=(0,-a).
+\tag{4.3}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(dh(a,b)=(a,-d_Da)\)">\(dh(a,b)=(a,-d_Da)\)</span> and <span class="math" data-tex="\(hd(a,b)=(0,d_Da+b)\)">\(hd(a,b)=(0,d_Da+b)\)</span>; their sum is <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>. The quotient is therefore contractible. The short exact row of complexes makes <span class="math" data-tex="\(s\)">\(s\)</span> a quasi-isomorphism.</p>
+<p>Only two neighboring <span class="math" data-tex="\(J\)">\(J\)</span>-modules occur in (4.1), and only <span class="math" data-tex="\(D^{n-1}\)">\(D^{n-1}\)</span> and <span class="math" data-tex="\(C^n\)">\(C^n\)</span> occur in (4.2). For support <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, the support of <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> is contained in <span class="math" data-tex="\([a-1,b]\)">\([a-1,b]\)</span>; that of <span class="math" data-tex="\(I\)">\(I\)</span> is contained in <span class="math" data-tex="\([a-1,b+1]\)">\([a-1,b+1]\)</span>. The same term formulas retain a finite lower bound, a finite upper bound, or both when these are present. There is no infinite totalization or degreewise infinite sum, so the argument also applies to an unbounded <span class="math" data-tex="\(X\)">\(X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choices of embeddings were used only to establish existence of replacements. We do not assert that these choices define an additive or homotopy functor on all complexes. The eventual derived functor has an explicit choice-free formula.</p>
+<h2 id="5-the-absolute-universal-right-derived-tensor">5. The absolute universal right derived tensor</h2>
+<p>Fix an arbitrary module <span class="math" data-tex="\(M\)">\(M\)</span>. On modules and on homotopy categories set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+F_M=M\otimes_R-,\qquad G_M=P_M\otimes_R-.
+\tag{5.1}
+\]">\[
+F_M=M\otimes_R-,\qquad G_M=P_M\otimes_R-.
+\tag{5.1}
+\]</span>
+<p>The natural quotient transformation is <span class="math" data-tex="\(\theta_M=\pi_M\otimes1:F_M\to G_M\)">\(\theta_M=\pi_M\otimes1:F_M\to G_M\)</span>. Exactness of <span class="math" data-tex="\(G_M\)">\(G_M\)</span> from Theorem 1.2 implies that it preserves acyclic complexes and quasi-isomorphisms. It therefore descends to a functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\mathcal R_M:D^*(\mathcal A)\longrightarrow D^*(\mathcal A),
+\qquad \mathcal R_M(QX)=Q(P_M\otimes_R X).
+\tag{5.2}
+\]">\[
+\mathcal R_M:D^*(\mathcal A)\longrightarrow D^*(\mathcal A),
+\qquad \mathcal R_M(QX)=Q(P_M\otimes_R X).
+\tag{5.2}
+\]</span>
+<p>On roofs it tensors both arrows; the denominator remains a quasi-isomorphism. The quotient maps of complexes give a specified unit</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\eta_M:QF_M\longrightarrow\mathcal R_M Q,
+\qquad (\eta_M)_X=Q(\pi_M\otimes1_X).
+\tag{5.3}
+\]">\[
+\eta_M:QF_M\longrightarrow\mathcal R_M Q,
+\qquad (\eta_M)_X=Q(\pi_M\otimes1_X).
+\tag{5.3}
+\]</span>
+<p><strong>Theorem 5.1.</strong> The pair <span class="math" data-tex="\((\mathcal R_M,\eta_M)\)">\((\mathcal R_M,\eta_M)\)</span> is the absolute universal right derived functor of <span class="math" data-tex="\(F_M\)">\(F_M\)</span>, in every bounded variant.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> be the full subcategory of injective modules. Its homotopy category <span class="math" data-tex="\(K^*(\mathcal J)\)">\(K^*(\mathcal J)\)</span> is a full triangulated subcategory of <span class="math" data-tex="\(K^*(\mathcal A)\)">\(K^*(\mathcal A)\)</span>: shifts and cones have finite direct sums of injective terms, and all chain maps and homotopies between such complexes remain available. Theorem 4.1 supplies outgoing quasi-isomorphisms into it in the same bounded variant.</p>
+<p>On each complex <span class="math" data-tex="\(I\)">\(I\)</span> of injectives, Theorem 2.2 makes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\theta_{M,I}:M\otimes_R I\xrightarrow{\ \sim\ }P_M\otimes_R I
+\tag{5.4}
+\]">\[
+\theta_{M,I}:M\otimes_R I\xrightarrow{\ \sim\ }P_M\otimes_R I
+\tag{5.4}
+\]</span>
+<p>an actual chain isomorphism: every degree map is an isomorphism, and naturality makes it commute with every differential. If <span class="math" data-tex="\(I\)">\(I\)</span> is acyclic, exactness of <span class="math" data-tex="\(G_M\)">\(G_M\)</span> makes the right side acyclic; hence <span class="math" data-tex="\(F_M(I)\)">\(F_M(I)\)</span> is acyclic too. Thus the full triangulated injective family is <span class="math" data-tex="\(F_M\)">\(F_M\)</span>-injective in the relative sense, with precisely the two required properties: outgoing replacements and vanishing on its ambient acyclic objects.</p>
+<p>The full replacement lemma and adapted-family theorem cited above apply. For the bounded-above case the same replacement-density proof uses the bounded-above fraction calculus in the bounds prerequisite; its numerator-target replacement and common equality-witness replacement are exactly the proof of Lemma 2.2. It follows in every case that</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+S_{\mathcal J}^{-1}K^*(\mathcal J)\xrightarrow{\ \sim\ }D^*(\mathcal A),
+\tag{5.5}
+\]">\[
+S_{\mathcal J}^{-1}K^*(\mathcal J)\xrightarrow{\ \sim\ }D^*(\mathcal A),
+\tag{5.5}
+\]</span>
+<p>where <span class="math" data-tex="\(S_{\mathcal J}\)">\(S_{\mathcal J}\)</span> consists of the ambient quasi-isomorphisms between class complexes. Equation (5.4) identifies the restriction of (5.2) and (5.3) with the localized <span class="math" data-tex="\(F_M\)">\(F_M\)</span> and its computing isomorphism.</p>
+<p>Here is also the entire absolute natural-transformation test. Let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be any category in a sufficiently large universe and take arbitrary ordinary functors</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+L:D^*(\mathcal A)\to\mathcal B,\qquad
+H:D^*(\mathcal A)\to\mathcal B.
+\]">\[
+L:D^*(\mathcal A)\to\mathcal B,\qquad
+H:D^*(\mathcal A)\to\mathcal B.
+\]</span>
+<p>We must prove that composition with <span class="math" data-tex="\(L\eta_M\)">\(L\eta_M\)</span> is a bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+\operatorname{Nat}(L\mathcal R_M,H)
+\xrightarrow{\ \sim\ }
+\operatorname{Nat}(LQF_M,HQ).
+\tag{5.6}
+\]">\[
+\operatorname{Nat}(L\mathcal R_M,H)
+\xrightarrow{\ \sim\ }
+\operatorname{Nat}(LQF_M,HQ).
+\tag{5.6}
+\]</span>
+<p>Given <span class="math" data-tex="\(\zeta:LQF_M\to HQ\)">\(\zeta:LQF_M\to HQ\)</span>, define on each injective complex <span class="math" data-tex="\(I\)">\(I\)</span>
+<span class="math" data-tex="\(\mu_{QI}=\zeta_I(L(\eta_M)_I)^{-1}\)">\(\mu_{QI}=\zeta_I(L(\eta_M)_I)^{-1}\)</span>.
+These components are natural on <span class="math" data-tex="\(K^*(\mathcal J)\)">\(K^*(\mathcal J)\)</span>, by naturality of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> and <span class="math" data-tex="\(\eta_M\)">\(\eta_M\)</span>. Naturality extends to inverse denominators, since the two functors in question invert them. It consequently extends to every roof in the left side of (5.5). That equivalence extends this transformation uniquely to <span class="math" data-tex="\(D^*(\mathcal A)\)">\(D^*(\mathcal A)\)</span>.</p>
+<p>For any replacement <span class="math" data-tex="\(s:X\to I\)">\(s:X\to I\)</span>, naturality explicitly gives the extended component</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.7); horizontal scroll when needed" data-tex="\[
+\mu_{QX}
+=H(Qs)^{-1}\,\zeta_I\,\bigl(L(\eta_M)_I\bigr)^{-1}
+\,L\mathcal R_M(Qs).
+\tag{5.7}
+\]">\[
+\mu_{QX}
+=H(Qs)^{-1}\,\zeta_I\,\bigl(L(\eta_M)_I\bigr)^{-1}
+\,L\mathcal R_M(Qs).
+\tag{5.7}
+\]</span>
+<p>This is well typed: its successive objects are
+<span class="math" data-tex="\(L\mathcal R_M(QX)\)">\(L\mathcal R_M(QX)\)</span>, <span class="math" data-tex="\(L\mathcal R_M(QI)\)">\(L\mathcal R_M(QI)\)</span>, <span class="math" data-tex="\(LQF_M(I)\)">\(LQF_M(I)\)</span>, <span class="math" data-tex="\(H(QI)\)">\(H(QI)\)</span>, and <span class="math" data-tex="\(H(QX)\)">\(H(QX)\)</span>.
+The two inverses exist because <span class="math" data-tex="\(Qs\)">\(Qs\)</span> and <span class="math" data-tex="\((\eta_M)_I\)">\((\eta_M)_I\)</span> are invertible. Equation (5.5), including fullness and faithfulness, proves independence of the choice and naturality on all derived arrows; it is not an assumption of functorial embeddings.</p>
+<p>The unit's naturality states
+<span class="math" data-tex="\(\mathcal R_M(Qs)(\eta_M)_X=(\eta_M)_I QF_M(s)\)">\(\mathcal R_M(Qs)(\eta_M)_X=(\eta_M)_I QF_M(s)\)</span>.
+Substitute this in (5.7), then use
+<span class="math" data-tex="\(\zeta_I LQF_M(s)=H(Qs)\zeta_X\)">\(\zeta_I LQF_M(s)=H(Qs)\zeta_X\)</span>.
+The inverse factors cancel and give
+<span class="math" data-tex="\(\mu_{QX}L(\eta_M)_X=\zeta_X\)">\(\mu_{QX}L(\eta_M)_X=\zeta_X\)</span>.</p>
+<p>Conversely this last equation forces <span class="math" data-tex="\(\mu_{QI}=\zeta_I(L(\eta_M)_I)^{-1}\)">\(\mu_{QI}=\zeta_I(L(\eta_M)_I)^{-1}\)</span> on every injective complex. Naturality along <span class="math" data-tex="\(Qs\)">\(Qs\)</span> then forces (5.7) for every <span class="math" data-tex="\(X\)">\(X\)</span>. This proves uniqueness and both directions of (5.6). Neither <span class="math" data-tex="\(L\)">\(L\)</span> nor <span class="math" data-tex="\(H\)">\(H\)</span> was required to be additive, exact or colimit preserving. The assertion is therefore absolute. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For any chosen replacement <span class="math" data-tex="\(s:X\to I\)">\(s:X\to I\)</span>, the particular computing isomorphism is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.8); horizontal scroll when needed" data-tex="\[
+Q(M\otimes_R I)
+\xrightarrow{Q(\theta_{M,I})}Q(P_M\otimes_R I)
+\xrightarrow{\mathcal R_M(Qs)^{-1}}\mathcal R_M(QX).
+\tag{5.8}
+\]">\[
+Q(M\otimes_R I)
+\xrightarrow{Q(\theta_{M,I})}Q(P_M\otimes_R I)
+\xrightarrow{\mathcal R_M(Qs)^{-1}}\mathcal R_M(QX).
+\tag{5.8}
+\]</span>
+<p>This states which map computes the value, and retains the specified quotient unit. It is stronger than an equality of cohomology groups.</p>
+<h2 id="6-exact-structure-and-naturality-in-the-fixed-module">6. Exact structure and naturality in the fixed module</h2>
+<p><strong>Proposition 6.1.</strong> The functor <span class="math" data-tex="\(\mathcal R_M\)">\(\mathcal R_M\)</span> is additive and triangulated. Its translation comparison is the identity under the canonical term identifications, and its unit is translation compatible. All four versions agree under their natural inclusions.</p>
+<p><strong>Proof.</strong> Termwise tensor by <span class="math" data-tex="\(P_M\)">\(P_M\)</span> is additive. It carries <span class="math" data-tex="\(X[1]\)">\(X[1]\)</span> to <span class="math" data-tex="\((P_M\otimes X)[1]\)">\((P_M\otimes X)[1]\)</span> using the same terms and the same negative differentials. Its translation comparison is therefore identity. Distributivity over a finite direct sum gives the actual cone isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+P_M\otimes_R C(f)\xrightarrow{\ \sim\ }C(P_M\otimes_R f),
+\qquad p\otimes(y,x)\longmapsto(p\otimes y,p\otimes x).
+\tag{6.1}
+\]">\[
+P_M\otimes_R C(f)\xrightarrow{\ \sim\ }C(P_M\otimes_R f),
+\qquad p\otimes(y,x)\longmapsto(p\otimes y,p\otimes x).
+\tag{6.1}
+\]</span>
+<p>The differential equation follows from (0.1), including the negative source component. This map takes the tensor of the cone inclusion to the usual inclusion and takes the tensor of the positive final projection to the positive final projection. Thus it carries all three arrows of each cone triangle, with the identity translation comparison, to a distinguished cone triangle.</p>
+<p>Since <span class="math" data-tex="\(G_M\)">\(G_M\)</span> inverts quasi-isomorphisms, the exact functor descends to the derived localization and preserves every distinguished triangle, which is an image cone triangle up to isomorphism. The unit (5.3) commutes with shifts termwise: both sides use <span class="math" data-tex="\(\pi_M\otimes1\)">\(\pi_M\otimes1\)</span> and the same negative differential. On injective complexes its comparison is (5.4), so the compatible adapted-family theorem and uniqueness of the unit-preserving comparison identify this identity with the canonical derived comparison. Tensor, the unit and (6.1) preserve the four term bounds, and have the same formulas on their overlaps. The full bounded embeddings identify these restrictions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every map <span class="math" data-tex="\(\alpha:M\to M&#x27;\)">\(\alpha:M\to M&#x27;\)</span> induces the natural transformation</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\mathcal R(\alpha)_X=Q(\overline\alpha\otimes1_X):
+\mathcal R_M(QX)\to\mathcal R_{M&#x27;}(QX).
+\tag{6.2}
+\]">\[
+\mathcal R(\alpha)_X=Q(\overline\alpha\otimes1_X):
+\mathcal R_M(QX)\to\mathcal R_{M&#x27;}(QX).
+\tag{6.2}
+\]</span>
+<p>The ordinary tensor transformations and the units form a commuting square, because
+<span class="math" data-tex="\(\overline\alpha\pi_M=\pi_{M&#x27;}\alpha\)">\(\overline\alpha\pi_M=\pi_{M&#x27;}\alpha\)</span>.
+Thus (6.2) is the unit-preserving transformation dictated by universality. It commutes with the identity translations and the actual cone maps (6.1). Identity, composition and addition of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>'s are retained by (1.2). This is naturality for a fixed module varying through module maps; no assertion about simultaneously right deriving a complex in that variable is needed.</p>
+<h2 id="7-cohomology-computing-objects-and-the-boundary-of-the-pid-hypothesis">7. Cohomology, computing objects and the boundary of the PID hypothesis</h2>
+<p><strong>Proposition 7.1.</strong> For every complex <span class="math" data-tex="\(X\)">\(X\)</span>, the cycle and boundary maps give natural isomorphisms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+H^n\mathcal R_M(QX)\simeq P_M\otimes_R H^n(X).
+\tag{7.1}
+\]">\[
+H^n\mathcal R_M(QX)\simeq P_M\otimes_R H^n(X).
+\tag{7.1}
+\]</span>
+<p>In particular, for a module <span class="math" data-tex="\(N\)">\(N\)</span> in degree zero,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+R^0F_M(N)=P_M\otimes_R N,\qquad
+R^nF_M(N)=0\quad(n\ne0).
+\tag{7.2}
+\]">\[
+R^0F_M(N)=P_M\otimes_R N,\qquad
+R^nF_M(N)=0\quad(n\ne0).
+\tag{7.2}
+\]</span>
+<p>The degree-zero unit is precisely the quotient map in (2.4). An ordinary module <span class="math" data-tex="\(N\)">\(N\)</span> computes this right derived value if and only if <span class="math" data-tex="\(T_M\otimes_R N=0\)">\(T_M\otimes_R N=0\)</span>.</p>
+<p><strong>Proof.</strong> Apply the exact functor <span class="math" data-tex="\(G_M\)">\(G_M\)</span> to the short exact cycle and boundary rows of <span class="math" data-tex="\(X\)">\(X\)</span>. It takes the kernel of <span class="math" data-tex="\(d_X^n\)">\(d_X^n\)</span> to the kernel of <span class="math" data-tex="\(G_M(d_X^n)\)">\(G_M(d_X^n)\)</span>, and its image to the image. Applied to
+<span class="math" data-tex="\(0\to\operatorname{im}d_X^{n-1}\to\ker d_X^n\to H^nX\to0\)">\(0\to\operatorname{im}d_X^{n-1}\to\ker d_X^n\to H^nX\to0\)</span>,
+it identifies the quotient with <span class="math" data-tex="\(P_M\otimes H^nX\)">\(P_M\otimes H^nX\)</span>. This is the specified cycle-class map, so it commutes with chain maps. It remains natural after inverse quasi-isomorphisms and hence after roofs. No bound on <span class="math" data-tex="\(X\)">\(X\)</span> was used.</p>
+<p>For <span class="math" data-tex="\(N[0]\)">\(N[0]\)</span>, (5.2) is the stalk <span class="math" data-tex="\((P_M\otimes N)[0]\)">\((P_M\otimes N)[0]\)</span>, giving (7.2). Its unit is (5.3). By (2.4), that unit is an isomorphism exactly when its kernel <span class="math" data-tex="\(T_M\otimes N\)">\(T_M\otimes N\)</span> vanishes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(M\)">\(M\)</span> is torsion, the entire right derived functor is zero, including its degree-zero value. If <span class="math" data-tex="\(M\)">\(M\)</span> is torsion free, it is flat and the unit is identity, so ordinary tensor already computes the functor on every complex. If <span class="math" data-tex="\(M\)">\(M\)</span> has both parts, (7.2) keeps its flat quotient and discards its torsion. Although all positive groups in (7.2) vanish, this does not make every <span class="math" data-tex="\(N\)">\(N\)</span> a computing object: the degree-zero unit still matters. The equality <span class="math" data-tex="\(R^0F_M=F_M\)">\(R^0F_M=F_M\)</span> would require left exactness, which an arbitrary tensor functor does not have.</p>
+<p>The PID assumption on flatness cannot be replaced simply by the domain assumption. Here is an explicit test. Let <span class="math" data-tex="\(k\)">\(k\)</span> be a nonzero field, <span class="math" data-tex="\(A=k[x,y]\)">\(A=k[x,y]\)</span>, <span class="math" data-tex="\(\mathfrak m=(x,y)\)">\(\mathfrak m=(x,y)\)</span>, and <span class="math" data-tex="\(U=(x,y)\subset A\)">\(U=(x,y)\subset A\)</span>. This is a torsion-free module, since <span class="math" data-tex="\(A\)">\(A\)</span> is a domain. In <span class="math" data-tex="\(U\otimes_A U\)">\(U\otimes_A U\)</span>, the element</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+z=x\otimes y-y\otimes x
+\tag{7.3}
+\]">\[
+z=x\otimes y-y\otimes x
+\tag{7.3}
+\]</span>
+<p>is nonzero. To verify this, map the tensor to
+<span class="math" data-tex="\((U/\mathfrak mU)\otimes_k(U/\mathfrak mU)\)">\((U/\mathfrak mU)\otimes_k(U/\mathfrak mU)\)</span>.
+The classes of <span class="math" data-tex="\(x,y\)">\(x,y\)</span> form a basis of <span class="math" data-tex="\(U/\mathfrak mU\)">\(U/\mathfrak mU\)</span>: their linear terms are independent, and all other monomials of <span class="math" data-tex="\(U\)">\(U\)</span> have degree at least two and lie in <span class="math" data-tex="\(\mathfrak mU\)">\(\mathfrak mU\)</span>. The image of <span class="math" data-tex="\(z\)">\(z\)</span> has coefficients one and minus one on two different basis tensors, so it is nonzero in every characteristic.</p>
+<p>Tensor the monomorphism <span class="math" data-tex="\(U\hookrightarrow A\)">\(U\hookrightarrow A\)</span> with <span class="math" data-tex="\(U\)">\(U\)</span>. After the identification <span class="math" data-tex="\(A\otimes_A U\simeq U\)">\(A\otimes_A U\simeq U\)</span>, the image of (7.3) is <span class="math" data-tex="\(xy-yx=0\)">\(xy-yx=0\)</span>. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is not flat. The argument proving Theorem 1.2 used principality to make every finitely generated torsion-free submodule free; this example shows why that step is substantive.</p>
+<h2 id="8-four-graded-exercises-with-complete-solutions">8. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-a-mixed-module-and-its-degree-zero-unit-basic">Exercise 1 — A mixed module and its degree-zero unit (basic)</h3>
+<p>Work over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Let
+<span class="math" data-tex="\(M=\mathbb Z\oplus\mathbb Z/12\oplus\mathbb Q/\mathbb Z\)">\(M=\mathbb Z\oplus\mathbb Z/12\oplus\mathbb Q/\mathbb Z\)</span>.
+Determine <span class="math" data-tex="\(T_M,P_M\)">\(T_M,P_M\)</span>, the right derived functor in all four bounds and its unit. Compute the ordinary and right derived tensors at <span class="math" data-tex="\(N=\mathbb Z/6\)">\(N=\mathbb Z/6\)</span>. Then compute the ordinary tensor with an arbitrary injective abelian group <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p><strong>Solution.</strong> The first summand has no nonzero torsion, whereas every element of each of the last two summands has finite order. Hence
+<span class="math" data-tex="\(T_M=0\oplus\mathbb Z/12\oplus\mathbb Q/\mathbb Z\)">\(T_M=0\oplus\mathbb Z/12\oplus\mathbb Q/\mathbb Z\)</span> and <span class="math" data-tex="\(P_M\simeq\mathbb Z\)">\(P_M\simeq\mathbb Z\)</span>, with <span class="math" data-tex="\(\pi_M\)">\(\pi_M\)</span> the first projection. Theorems 5.1 and 6.1 give <span class="math" data-tex="\(\mathcal R_M\simeq1_{D^*(\mathbb Z)}\)">\(\mathcal R_M\simeq1_{D^*(\mathbb Z)}\)</span> in every bound. Its unit on any complex is the first projection of the termwise tensor decomposition.</p>
+<p>For any group <span class="math" data-tex="\(V\)">\(V\)</span>, the actual balanced maps give
+<span class="math" data-tex="\((\mathbb Z/a)\otimes V\simeq V/aV\)">\((\mathbb Z/a)\otimes V\simeq V/aV\)</span>:
+send <span class="math" data-tex="\(\overline r\otimes v\)">\(\overline r\otimes v\)</span> to <span class="math" data-tex="\(rv+aV\)">\(rv+aV\)</span>, and send <span class="math" data-tex="\(v+aV\)">\(v+aV\)</span> back to <span class="math" data-tex="\(\overline1\otimes v\)">\(\overline1\otimes v\)</span>. The tensor relation and <span class="math" data-tex="\(\overline a=0\)">\(\overline a=0\)</span> prove well-definedness and the two inverse equations. With <span class="math" data-tex="\(V=\mathbb Z/6\)">\(V=\mathbb Z/6\)</span>, this gives a second copy of <span class="math" data-tex="\(\mathbb Z/6\)">\(\mathbb Z/6\)</span> for the <span class="math" data-tex="\(\mathbb Z/12\)">\(\mathbb Z/12\)</span> summand. Symmetry of tensor and the same quotient formula give
+<span class="math" data-tex="\((\mathbb Q/\mathbb Z)\otimes(\mathbb Z/6)\simeq(\mathbb Q/\mathbb Z)/6(\mathbb Q/\mathbb Z)=0\)">\((\mathbb Q/\mathbb Z)\otimes(\mathbb Z/6)\simeq(\mathbb Q/\mathbb Z)/6(\mathbb Q/\mathbb Z)=0\)</span>, by divisibility. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+M\otimes\mathbb Z/6\simeq(\mathbb Z/6)\oplus(\mathbb Z/6),\qquad
+\mathcal R_M((\mathbb Z/6)[0])\simeq(\mathbb Z/6)[0].
+\tag{8.1}
+\]">\[
+M\otimes\mathbb Z/6\simeq(\mathbb Z/6)\oplus(\mathbb Z/6),\qquad
+\mathcal R_M((\mathbb Z/6)[0])\simeq(\mathbb Z/6)[0].
+\tag{8.1}
+\]</span>
+<p>The unit is <span class="math" data-tex="\((u,v)\mapsto u\)">\((u,v)\mapsto u\)</span>; its kernel is the second copy. Every nonzero-degree right derived group is zero. Thus <span class="math" data-tex="\(\mathbb Z/6\)">\(\mathbb Z/6\)</span> does not compute the value despite positive-degree vanishing.</p>
+<p>For injective <span class="math" data-tex="\(J\)">\(J\)</span>, Proposition 2.1 makes it divisible. The <span class="math" data-tex="\(\mathbb Z/12\)">\(\mathbb Z/12\)</span> tensor is <span class="math" data-tex="\(J/12J=0\)">\(J/12J=0\)</span>. Each pure tensor of <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span> with <span class="math" data-tex="\(J\)">\(J\)</span> vanishes by (2.3), because its first factor is torsion. Thus <span class="math" data-tex="\(M\otimes J\simeq J\)">\(M\otimes J\simeq J\)</span>, and this isomorphism is the first projection prescribed by (2.2). It is natural in <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<h3 id="exercise-2-infinite-generation-does-not-prevent-exactness-intermediate">Exercise 2 — Infinite generation does not prevent exactness (intermediate)</h3>
+<p>For a PID <span class="math" data-tex="\(R\)">\(R\)</span> that is not a field, show that its fraction field <span class="math" data-tex="\(K\)">\(K\)</span> is torsion free, flat and divisible, but is not a free <span class="math" data-tex="\(R\)">\(R\)</span>-module. Identify the right derived functors for the fixed modules <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(K/R\)">\(K/R\)</span>, including their units and their values on <span class="math" data-tex="\(R[0]\)">\(R[0]\)</span>.</p>
+<p><strong>Solution.</strong> Multiplication by each <span class="math" data-tex="\(r\in S\)">\(r\in S\)</span> is invertible in <span class="math" data-tex="\(K\)">\(K\)</span>. This proves both torsion freeness and divisibility. Theorem 1.2 makes <span class="math" data-tex="\(K\)">\(K\)</span> flat, and Proposition 2.1 makes it injective. It is not free: choose a nonzero nonunit <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span>, which exists because <span class="math" data-tex="\(R\)">\(R\)</span> is not a field. A nonzero free module is not <span class="math" data-tex="\(a\)">\(a\)</span>-divisible, since any basis vector would require its coefficient one to lie in <span class="math" data-tex="\(aR\)">\(aR\)</span>. A hypothetical empty basis would make <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, contrary to the nonzero field. Thus no free basis exists. This explains why finite freeness of the stages in Theorem 1.2 does not imply freeness of their union.</p>
+<p>For <span class="math" data-tex="\(M=K\)">\(M=K\)</span>, torsion is zero. Hence <span class="math" data-tex="\(\mathcal R_K(QX)=Q(K\otimes_R X)\)">\(\mathcal R_K(QX)=Q(K\otimes_R X)\)</span>, with identity unit. The fraction maps in Lemma 1.1 identify it termwise with <span class="math" data-tex="\(S^{-1}X\)">\(S^{-1}X\)</span>; this identification commutes with every differential and chain map, so it also identifies the localized derived functor. In particular <span class="math" data-tex="\(\mathcal R_K(R[0])=K[0]\)">\(\mathcal R_K(R[0])=K[0]\)</span>.</p>
+<p>For <span class="math" data-tex="\(M=K/R\)">\(M=K/R\)</span>, every class <span class="math" data-tex="\(a/b+R\)">\(a/b+R\)</span> is killed by the nonzero denominator <span class="math" data-tex="\(b\)">\(b\)</span>. Thus it is a torsion module and <span class="math" data-tex="\(P_M=0\)">\(P_M=0\)</span>. Its right derived functor is zero in all four bounds, with the zero unit. At <span class="math" data-tex="\(R[0]\)">\(R[0]\)</span>, the ordinary tensor is the nonzero module <span class="math" data-tex="\(K/R\)">\(K/R\)</span>: the class <span class="math" data-tex="\(1/a+R\)">\(1/a+R\)</span> is nonzero because <span class="math" data-tex="\(a\)">\(a\)</span> is a nonunit. The degree-zero unit <span class="math" data-tex="\((K/R)[0]\to0\)">\((K/R)[0]\to0\)</span> is therefore not an isomorphism. Each injective computing tensor is zero by Theorem 2.2.</p>
+<h3 id="exercise-3-the-unit-on-an-unbounded-complex-advanced">Exercise 3 — The unit on an unbounded complex (advanced)</h3>
+<p>Let <span class="math" data-tex="\(M=\mathbb Z\oplus\mathbb Z/3\)">\(M=\mathbb Z\oplus\mathbb Z/3\)</span>. Consider the doubly infinite complex <span class="math" data-tex="\(X^n=\mathbb Z\)">\(X^n=\mathbb Z\)</span> for all integers <span class="math" data-tex="\(n\)">\(n\)</span>, with <span class="math" data-tex="\(d_X^n=3\)">\(d_X^n=3\)</span> for even <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(d_X^n=0\)">\(d_X^n=0\)</span> for odd <span class="math" data-tex="\(n\)">\(n\)</span>. Compute <span class="math" data-tex="\(H^nX\)">\(H^nX\)</span>, the cohomology of the ordinary tensor complex <span class="math" data-tex="\(M\otimes X\)">\(M\otimes X\)</span>, and the map on cohomology induced by its right-derived unit. Explain why the unit is not a quasi-isomorphism, and why the unbounded replacement theorem still applies.</p>
+<p><strong>Solution.</strong> Each consecutive differential composite is zero. At an even degree the outgoing multiplication by three is injective, so the cycle group is zero and <span class="math" data-tex="\(H^{2r}X=0\)">\(H^{2r}X=0\)</span>. At an odd degree all integers are cycles, and the incoming image is <span class="math" data-tex="\(3\mathbb Z\)">\(3\mathbb Z\)</span>, so <span class="math" data-tex="\(H^{2r+1}X=\mathbb Z/3\)">\(H^{2r+1}X=\mathbb Z/3\)</span>, for every integer <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>Here <span class="math" data-tex="\(T_M=\mathbb Z/3\)">\(T_M=\mathbb Z/3\)</span> and <span class="math" data-tex="\(P_M=\mathbb Z\)">\(P_M=\mathbb Z\)</span>. Termwise distributivity gives
+<span class="math" data-tex="\(M\otimes X=X\oplus(X/3X)\)">\(M\otimes X=X\oplus(X/3X)\)</span>. The latter summand has <span class="math" data-tex="\(\mathbb Z/3\)">\(\mathbb Z/3\)</span> in every degree and zero differential: both three and zero become zero modulo three. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+H^{2r}(M\otimes X)=\mathbb Z/3,\\
+H^{2r+1}(M\otimes X)=(\mathbb Z/3)\oplus(\mathbb Z/3),\\
+\mathcal R_M(QX)=QX.
+\end{gathered}
+\tag{8.2}
+\]">\[
+\begin{gathered}
+H^{2r}(M\otimes X)=\mathbb Z/3,\\
+H^{2r+1}(M\otimes X)=(\mathbb Z/3)\oplus(\mathbb Z/3),\\
+\mathcal R_M(QX)=QX.
+\end{gathered}
+\tag{8.2}
+\]</span>
+<p>The unit is the projection <span class="math" data-tex="\(X\oplus(X/3X)\to X\)">\(X\oplus(X/3X)\to X\)</span>. In even degrees its cohomology map is <span class="math" data-tex="\(\mathbb Z/3\to0\)">\(\mathbb Z/3\to0\)</span>; in odd degrees it is the first projection onto <span class="math" data-tex="\(\mathbb Z/3\)">\(\mathbb Z/3\)</span>. It fails to be injective in every degree, so it is not a quasi-isomorphism. Theorem 7.1 agrees with the derived cohomology just computed.</p>
+<p>For this unbounded <span class="math" data-tex="\(X\)">\(X\)</span>, choose an injective embedding of every <span class="math" data-tex="\(\mathbb Z=X^n\)">\(\mathbb Z=X^n\)</span>, for instance into <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The maps in (4.1) form <span class="math" data-tex="\(C\)">\(C\)</span> without assuming that the chosen <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>'s were already a complex. The quotient <span class="math" data-tex="\(D\)">\(D\)</span> has injective terms; the signed two-column complex <span class="math" data-tex="\(I\)">\(I\)</span> of (4.2) is injective termwise; and its quotient by <span class="math" data-tex="\(X\)">\(X\)</span> has the explicit contraction (4.3). Thus <span class="math" data-tex="\(X\to I\)">\(X\to I\)</span> is a monic quasi-isomorphism even though the degrees run in both directions. The computing isomorphism is (5.8). No truncation or convergence of an infinite totalization is used.</p>
+<h3 id="exercise-4-left-and-right-derivations-of-cyclic-tensor-advanced">Exercise 4 — Left and right derivations of cyclic tensor (advanced)</h3>
+<p>Let <span class="math" data-tex="\(m,n\ge2\)">\(m,n\ge2\)</span> be integers and <span class="math" data-tex="\(d=\gcd(m,n)\)">\(d=\gcd(m,n)\)</span>. For the fixed module <span class="math" data-tex="\(M=\mathbb Z/m\)">\(M=\mathbb Z/m\)</span>, compare its universal right derived tensor at <span class="math" data-tex="\((\mathbb Z/n)[0]\)">\((\mathbb Z/n)[0]\)</span> with the usual left derived tensor there. Compute the two possible cohomology groups of the left derived object with explicit cyclic generators. Which of these objects computes the ordinary tensor at this stalk?</p>
+<p><strong>Solution.</strong> The fixed module <span class="math" data-tex="\(M\)">\(M\)</span> is torsion, so Theorem 5.1 gives the zero right derived object. Its unit has source
+<span class="math" data-tex="\((\mathbb Z/m)\otimes(\mathbb Z/n)\simeq\mathbb Z/d\)">\((\mathbb Z/m)\otimes(\mathbb Z/n)\simeq\mathbb Z/d\)</span>.
+Indeed the cyclic quotient formula gives
+<span class="math" data-tex="\((\mathbb Z/m)/n(\mathbb Z/m)=\mathbb Z/(m\mathbb Z+n\mathbb Z)\)">\((\mathbb Z/m)/n(\mathbb Z/m)=\mathbb Z/(m\mathbb Z+n\mathbb Z)\)</span>, and Bézout's identity identifies this ideal with <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span>. Bézout's identity follows from the Euclidean algorithm: each division leaves the same ideal generated by the two successive remainders, and the final nonzero remainder is their gcd. Since <span class="math" data-tex="\(d\)">\(d\)</span> can be greater than one, this ordinary tensor need not vanish.</p>
+<p>For left derivation, take the free resolution
+<span class="math" data-tex="\(P=(\mathbb Z\xrightarrow{n}\mathbb Z)\)">\(P=(\mathbb Z\xrightarrow{n}\mathbb Z)\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, augmented by reduction modulo <span class="math" data-tex="\(n\)">\(n\)</span>. Multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> is injective, and its cokernel is <span class="math" data-tex="\(\mathbb Z/n\)">\(\mathbb Z/n\)</span>, so this is a quasi-isomorphic projective replacement. The complete flat-class computation in <em>Universal derived functors</em>, Section 8, shows that its tensor computes the left derived functor, with the augmentation as its counit. The resulting complex is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+\mathbb Z/m\xrightarrow n\mathbb Z/m
+\quad\text{in degrees }-1,0.
+\tag{8.3}
+\]">\[
+\mathbb Z/m\xrightarrow n\mathbb Z/m
+\quad\text{in degrees }-1,0.
+\tag{8.3}
+\]</span>
+<p>Its <span class="math" data-tex="\(H^0\)">\(H^0\)</span> is the just computed <span class="math" data-tex="\(\mathbb Z/d\)">\(\mathbb Z/d\)</span>, with generator the class of one modulo the image of multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>. Its <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> is the kernel of multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>. Write <span class="math" data-tex="\(m=dm&#x27;\)">\(m=dm&#x27;\)</span> and <span class="math" data-tex="\(n=dn&#x27;\)">\(n=dn&#x27;\)</span>, with <span class="math" data-tex="\(\gcd(m&#x27;,n&#x27;)=1\)">\(\gcd(m&#x27;,n&#x27;)=1\)</span>. For an integer <span class="math" data-tex="\(a\)">\(a\)</span>, the condition <span class="math" data-tex="\(m\mid na\)">\(m\mid na\)</span> is equivalent to <span class="math" data-tex="\(m&#x27;\mid n&#x27;a\)">\(m&#x27;\mid n&#x27;a\)</span>, hence to <span class="math" data-tex="\(m&#x27;\mid a\)">\(m&#x27;\mid a\)</span>, by Bézout for <span class="math" data-tex="\(m&#x27;,n&#x27;\)">\(m&#x27;,n&#x27;\)</span>. The kernel consists of the classes of multiples of <span class="math" data-tex="\(m&#x27;\)">\(m&#x27;\)</span>; its generator is <span class="math" data-tex="\(\overline{m&#x27;}=\overline{m/d}\)">\(\overline{m&#x27;}=\overline{m/d}\)</span> in <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span>. The map
+<span class="math" data-tex="\(\mathbb Z/d\to H^{-1}\)">\(\mathbb Z/d\to H^{-1}\)</span>, <span class="math" data-tex="\(\overline t\mapsto\overline{m&#x27;t}\)">\(\overline t\mapsto\overline{m&#x27;t}\)</span>,
+is surjective and has zero kernel, since <span class="math" data-tex="\(m\mid m&#x27;t\)">\(m\mid m&#x27;t\)</span> is equivalent to <span class="math" data-tex="\(d\mid t\)">\(d\mid t\)</span>. Thus both <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> and <span class="math" data-tex="\(H^0\)">\(H^0\)</span> are <span class="math" data-tex="\(\mathbb Z/d\)">\(\mathbb Z/d\)</span>, and there are no other cohomology groups.</p>
+<p>If <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, the stalk does not compute either derivation: its right unit has nonzero source and zero target, and the left counit from (8.3) to the ordinary tensor stalk has a nonzero kernel cohomology in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. If <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, the ordinary tensor is zero and (8.3) is acyclic, because multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> is invertible modulo <span class="math" data-tex="\(m\)">\(m\)</span> by Bézout. Both the right unit and left counit are then isomorphisms in the derived category. In either case the left and right universal properties have different directions, and the two explicit computations preserve those directions.</p>
+<h2 id="9-freely-accessible-references">9. Freely accessible references</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/0549">Torsion free modules, tag 0549</a>, especially the PID flatness assertion in Lemma 15.22.11. Section 1 above gives a direct finite-stage proof for arbitrary modules.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/01D6">Injective abelian groups, tag 01D6</a>. Sections 2–3 give the ideal extension proof over a PID and specify the coinduced module action.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/05T3">Derived functors on derived categories, tag 05T3</a>. Sections 4–6 provide the explicit replacement, absolute natural-transformation proof, quotient unit and exact structural maps used here.</li>
+</ul>
+</main></body></html>

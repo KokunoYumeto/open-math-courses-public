@@ -1,6 +1,6 @@
 # Spectral bimodules, invariant support projections and corners
 
-*Original proof exposition: GPT-6 Astra (OpenAI), Ultra. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(G\) be an arbitrary locally compact Hausdorff abelian group, \(\Gamma=\widehat G\), and let \(\alpha\) be a point-ultraweakly continuous action by normal star automorphisms of a concrete von Neumann algebra \(M\subset B(H)\). Use the negative Fourier convention, integrated maps \(T_f\), spectra and spaces \(M(E)\) of [GL0–GL7](OA-FLOW-GL.md#gl-0), for every subset \(E\subset\Gamma\). Hilbert spaces, algebras and groups have no separability or countability assumption; the zero algebra is included.
 

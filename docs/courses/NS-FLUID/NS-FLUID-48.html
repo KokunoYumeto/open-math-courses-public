@@ -1,0 +1,2053 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Original Burgers profiles, characteristics and residual losses — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/original-burgers-profiles-characteristics-and-residual-losses.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-47.html">Previous lesson</a><a href="NS-FLUID-49.html">Next lesson</a></nav><article class="lesson"><h1 id="original-burgers-profiles-characteristics-and-residual-losses">Original Burgers profiles, characteristics and residual losses</h1>
+<p>The Burgers benchmark has an exact solution, an exact anchor and a
+precise loss of smoothness. This makes it possible to calculate what
+the residual tests measure, with every original coordinate and derivative
+still present. We first prove the complete real branch and its uniqueness
+and regularity, then construct smooth anchored approximations and bound
+all their equation errors.</p>
+<p>The third part supplies the actual parameter bounds for the source's
+finite network architecture. It connects sampled residual derivatives
+to continuous bounds and proves a quantitative limit on approximating
+the nonsmooth profile with bounded fourth derivative.</p>
+<p>Five solved exercises calculate the explicit cubic inverse, the full
+characteristic map, every third-derivative product contribution, exact
+residual-decay coefficients, and a completely specified network with
+its actual equation and smoothness losses. The last two exercises prove
+matching bounds for the constructed family and carry finite parameters
+through every required derivative order.</p>
+<p>The human source is Wang, Lai, Gómez-Serrano and Buckmaster; each part
+identifies its original author-source passages. The smooth-family
+limitation and finite-network estimates have their stated distinct
+hypotheses. No source-trained computation or main blowup theorem is
+certified or refuted by these benchmark calculations.</p>
+<h2 id="part-1-the-original-anchored-burgers-profile-and-its-exact-real-branch">Part 1. The original anchored Burgers profile and its exact real branch</h2>
+<p>This supplementary derivation reads the original author TeX of Yongji
+Wang, Ching-Yao Lai, Javier Gómez-Serrano and Tristan Buckmaster,
+<a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>,
+<code>BoussinesqSupp_v5.tex</code>291–315 and329–353. The source states the
+Burgers equation, its similarity ansatz, odd symmetry, the anchor at
+minus two, the implicit power and the discrete smooth exponents.
+Here the real branch and its complete local regularity are proved.
+The source's numerical accuracy and stability claims are not assumed.</p>
+<h2 id="bg1-keep-the-original-equation-time-anchor-and-power">BG1. Keep the original equation, time, anchor and power</h2>
+<p>The physical equation and the source's original similarity variables are</p>
+<span class="math math-display" data-tex="\[
+u_t+u u_x=0,\qquad \tau=1-t&gt;0,\qquad
+y=\frac{x}{\tau^{1+\lambda}},\qquad u(t,x)=\tau^\lambda U(y),
+\qquad\lambda&gt;0.
+\tag{BG1}
+\]">\[
+u_t+u u_x=0,\qquad \tau=1-t&gt;0,\qquad
+y=\frac{x}{\tau^{1+\lambda}},\qquad u(t,x)=\tau^\lambda U(y),
+\qquad\lambda&gt;0.
+\tag{BG1}
+\]</span>
+<p>The exact derivative calculation is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_t&amp;=\tau^{\lambda-1}[-\lambda U+(1+\lambda)yU&#x27;],\\
+u_x&amp;=\tau^{-1}U&#x27;,\qquad
+uu_x=\tau^{\lambda-1}UU&#x27;,\\
+u_t+uu_x&amp;=\tau^{\lambda-1}f_\lambda[U](y),\\
+f_\lambda[U]&amp;=-\lambda U+((1+\lambda)y+U)U&#x27;.
+\end{aligned}
+\tag{BG2}
+\]">\[
+\begin{aligned}
+u_t&amp;=\tau^{\lambda-1}[-\lambda U+(1+\lambda)yU&#x27;],\\
+u_x&amp;=\tau^{-1}U&#x27;,\qquad
+uu_x=\tau^{\lambda-1}UU&#x27;,\\
+u_t+uu_x&amp;=\tau^{\lambda-1}f_\lambda[U](y),\\
+f_\lambda[U]&amp;=-\lambda U+((1+\lambda)y+U)U&#x27;.
+\end{aligned}
+\tag{BG2}
+\]</span>
+<p>The profile is odd and satisfies <span class="math" data-tex="\(U(-2)=1\)">\(U(-2)=1\)</span>. Set
+<span class="math" data-tex="\(q=1/\lambda&gt;0\)">\(q=1/\lambda&gt;0\)</span>, retaining this relation whenever it is used.
+The globally real odd interpretation of the source's implicit power is</p>
+<span class="math math-display" data-tex="\[
+y=-U-CU|U|^q.
+\tag{BG3}
+\]">\[
+y=-U-CU|U|^q.
+\tag{BG3}
+\]</span>
+<p>For <span class="math" data-tex="\(U&gt;0\)">\(U&gt;0\)</span> this is precisely the displayed source power
+<span class="math" data-tex="\(-U-CU^{1+1/\lambda}\)">\(-U-CU^{1+1/\lambda}\)</span>. Oddness determines the negative branch
+in BG3. No complex branch of a negative noninteger power is used.
+At the source anchor, <span class="math" data-tex="\(-2=-1-C\)">\(-2=-1-C\)</span>, so <span class="math" data-tex="\(C=1\)">\(C=1\)</span> exactly.</p>
+<p>Define on the entire original real line</p>
+<span class="math math-display" data-tex="\[
+H(s)=s+s|s|^q,\qquad h(s)=H&#x27;(s)=1+(1+q)|s|^q.
+\tag{BG4}
+\]">\[
+H(s)=s+s|s|^q,\qquad h(s)=H&#x27;(s)=1+(1+q)|s|^q.
+\tag{BG4}
+\]</span>
+<p>The derivative at zero is one, as follows directly by a difference
+quotient. Away from zero differentiation gives the displayed expression,
+which tends to one at zero. Thus <span class="math" data-tex="\(H\)">\(H\)</span> is continuously differentiable,
+odd, strictly increasing, and its image is the entire real line. Also
+<span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>. Its inverse <span class="math" data-tex="\(s=H^{-1}(y)\)">\(s=H^{-1}(y)\)</span> is continuously
+differentiable: the mean value theorem applied between two inverse
+points gives <span class="math" data-tex="\(ds/dy=1/h(s)\)">\(ds/dy=1/h(s)\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+U(y)=-H^{-1}(y),\qquad U&#x27;(y)=-\frac1{h(H^{-1}(y))}.
+\tag{BG5}
+\]">\[
+U(y)=-H^{-1}(y),\qquad U&#x27;(y)=-\frac1{h(H^{-1}(y))}.
+\tag{BG5}
+\]</span>
+<p>This constructs an odd, strictly decreasing <span class="math" data-tex="\(C^1\)">\(C^1\)</span> profile.
+It has <span class="math" data-tex="\(H(1)=2\)">\(H(1)=2\)</span>, so <span class="math" data-tex="\(U(-2)=1\)">\(U(-2)=1\)</span>. The full drift becomes</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(1+\lambda)y+U
+&amp;=(1+\lambda)(s+s|s|^q)-s\\
+&amp;=\lambda s+(1+\lambda)s|s|^q
+=\lambda s[1+(1+q)|s|^q]=\lambda s h(s).
+\end{aligned}
+\tag{BG6}
+\]">\[
+\begin{aligned}
+(1+\lambda)y+U
+&amp;=(1+\lambda)(s+s|s|^q)-s\\
+&amp;=\lambda s+(1+\lambda)s|s|^q
+=\lambda s[1+(1+q)|s|^q]=\lambda s h(s).
+\end{aligned}
+\tag{BG6}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+-\lambda U+((1+\lambda)y+U)U&#x27;
+=\lambda s-\lambda s h/h=0
+\]">\[
+-\lambda U+((1+\lambda)y+U)U&#x27;
+=\lambda s-\lambda s h/h=0
+\]</span>
+<p>including at zero. This verifies
+the entire original equation, rather than just the implicit relation.</p>
+<h2 id="bg2-uniqueness-with-the-source-anchor-and-the-unanchored-branches">BG2. Uniqueness with the source anchor, and the unanchored branches</h2>
+<p>Let <span class="math" data-tex="\(V\)">\(V\)</span> be any odd <span class="math" data-tex="\(C^1\)">\(C^1\)</span> solution on the real line with
+<span class="math" data-tex="\(V(-2)=1\)">\(V(-2)=1\)</span>. On the connected component of <span class="math" data-tex="\(\{V&gt;0\}\)">\(\{V&gt;0\}\)</span>
+containing minus two, the equation gives</p>
+<span class="math math-display" data-tex="\[
+((1+\lambda)y+V)V&#x27;=\lambda V&gt;0.
+\]">\[
+((1+\lambda)y+V)V&#x27;=\lambda V&gt;0.
+\]</span>
+<p>Neither factor on the left vanishes. At minus two the first factor is
+<span class="math" data-tex="\(-1-2\lambda&lt;0\)">\(-1-2\lambda&lt;0\)</span>, so both this factor and <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> remain
+negative on that component. There is a differentiable inverse
+<span class="math" data-tex="\(y=y(v)\)">\(y=y(v)\)</span>, with <span class="math" data-tex="\(v=V(y)&gt;0\)">\(v=V(y)&gt;0\)</span>, satisfying</p>
+<span class="math math-display" data-tex="\[
+\lambda v\frac{dy}{dv}=(1+\lambda)y+v,\qquad
+\frac{d}{dv}\left[\frac{y(v)+v}{v^{1+q}}\right]=0.
+\tag{BG7}
+\]">\[
+\lambda v\frac{dy}{dv}=(1+\lambda)y+v,\qquad
+\frac{d}{dv}\left[\frac{y(v)+v}{v^{1+q}}\right]=0.
+\tag{BG7}
+\]</span>
+<p>The second identity follows by expanding the derivative and using
+<span class="math" data-tex="\(q=1/\lambda\)">\(q=1/\lambda\)</span>. The anchor makes its constant minus one.
+Thus <span class="math" data-tex="\(y=-v-v^{1+q}\)">\(y=-v-v^{1+q}\)</span> everywhere on the component, so
+<span class="math" data-tex="\(V\)">\(V\)</span> agrees there with BG5. The right endpoint of this component
+must be zero: a finite endpoint has <span class="math" data-tex="\(V=0\)">\(V=0\)</span> by continuity, and
+the implicit relation then gives <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. It cannot have right
+endpoint infinity because the relation has <span class="math" data-tex="\(y&lt;0\)">\(y&lt;0\)</span>. The left
+endpoint cannot be finite, because continuity would again give
+<span class="math" data-tex="\(V=0\)">\(V=0\)</span> and <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, contradicting its position to the left
+of minus two. Hence the component is <span class="math" data-tex="\(( -\infty,0)\)">\(( -\infty,0)\)</span>.
+Oddness proves equality on the positive half-line as well. This proves
+uniqueness in the full stated anchored class.</p>
+<p>Without the anchor, the same construction works for every <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>
+with <span class="math" data-tex="\(H_C(s)=s+Cs|s|^q\)">\(H_C(s)=s+Cs|s|^q\)</span>. Its derivative is
+<span class="math" data-tex="\(1+C(1+q)|s|^q&gt;0\)">\(1+C(1+q)|s|^q&gt;0\)</span>, and the same complete drift calculation
+verifies the equation. At <span class="math" data-tex="\(C=0\)">\(C=0\)</span>, the resulting profile is
+<span class="math" data-tex="\(U(y)=-y\)">\(U(y)=-y\)</span>, smooth for every <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, but its anchor
+value is <span class="math" data-tex="\(U(-2)=2\)">\(U(-2)=2\)</span>. The identically zero profile also solves
+the equation and fails the anchor. Therefore the discrete smoothness
+statement below must retain the source's nontrivial anchored branch.
+It is not a classification of all unanchored solutions.</p>
+<p>For <span class="math" data-tex="\(C&lt;0\)">\(C&lt;0\)</span>, the derivative of <span class="math" data-tex="\(H_C\)">\(H_C\)</span> first vanishes at</p>
+<span class="math math-display" data-tex="\[
+s_*=[-C(1+q)]^{-1/q}&gt;0.
+\tag{BG8}
+\]">\[
+s_*=[-C(1+q)]^{-1/q}&gt;0.
+\tag{BG8}
+\]</span>
+<p>At that point the inverse branch from zero has an unbounded derivative.
+Thus this inverse construction does not extend through that point as a
+global <span class="math" data-tex="\(C^1\)">\(C^1\)</span> profile. This fact is only about that specified branch;
+the anchored uniqueness argument did not rely on it.</p>
+<h2 id="bg3-exact-differentiability-and-hölder-regularity-at-zero">BG3. Exact differentiability and Hölder regularity at zero</h2>
+<p>Write <span class="math" data-tex="\(r=1+q&gt;1\)">\(r=1+q&gt;1\)</span>. The nonlinear term of <span class="math" data-tex="\(H\)">\(H\)</span> is
+<span class="math" data-tex="\(b(s)=s|s|^{r-1}\)">\(b(s)=s|s|^{r-1}\)</span>. For every integer <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span> and
+<span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>, its complete derivative is</p>
+<span class="math math-display" data-tex="\[
+b^{(k)}(s)=
+\begin{cases}
+r(r-1)\cdots(r-k+1)s^{r-k},&amp;s&gt;0,\\
+(-1)^{k+1}r(r-1)\cdots(r-k+1)|s|^{r-k},&amp;s&lt;0.
+\end{cases}
+\tag{BG9}
+\]">\[
+b^{(k)}(s)=
+\begin{cases}
+r(r-1)\cdots(r-k+1)s^{r-k},&amp;s&gt;0,\\
+(-1)^{k+1}r(r-1)\cdots(r-k+1)|s|^{r-k},&amp;s&lt;0.
+\end{cases}
+\tag{BG9}
+\]</span>
+<p>An empty product equals one. This follows by repeated differentiation
+on each open half-line; the sign in the second line comes from
+<span class="math" data-tex="\(b(s)=-(-s)^r\)">\(b(s)=-(-s)^r\)</span>. For <span class="math" data-tex="\(k&lt;r\)">\(k&lt;r\)</span>, the displayed functions tend
+to zero at the origin. Successive difference quotients show that they
+are the continuous derivatives there whenever the next required power
+has positive exponent.</p>
+<p>Suppose first that <span class="math" data-tex="\(r\)">\(r\)</span> is not an integer. Put
+<span class="math" data-tex="\(m=\lfloor r\rfloor\)">\(m=\lfloor r\rfloor\)</span> and <span class="math" data-tex="\(\alpha=r-m\in(0,1)\)">\(\alpha=r-m\in(0,1)\)</span>.
+Then <span class="math" data-tex="\(b\in C^{m,\alpha}_{\mathrm{loc}}\)">\(b\in C^{m,\alpha}_{\mathrm{loc}}\)</span>. Here this notation
+means that the first <span class="math" data-tex="\(m\)">\(m\)</span> derivatives are continuous and the last
+is locally Hölder continuous with exponent <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. To verify
+the endpoint exponent, on one half-line use</p>
+<span class="math math-display" data-tex="\[
+|a^\alpha-b^\alpha|\le |a-b|^\alpha\quad(a,b\ge0).
+\]">\[
+|a^\alpha-b^\alpha|\le |a-b|^\alpha\quad(a,b\ge0).
+\]</span>
+<p>For <span class="math" data-tex="\(a=b+d\)">\(a=b+d\)</span>, this follows because
+<span class="math" data-tex="\((b+d)^\alpha-b^\alpha\)">\((b+d)^\alpha-b^\alpha\)</span> is decreasing as a function of
+<span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> and has value <span class="math" data-tex="\(d^\alpha\)">\(d^\alpha\)</span> at zero. On opposite
+half-lines, bound the sum of the two powers by
+<span class="math" data-tex="\(2|s-t|^\alpha\)">\(2|s-t|^\alpha\)</span>. Multiplying by the full product in BG9
+proves the assertion. The same formula shows that the <span class="math" data-tex="\(m\)">\(m\)</span>-th
+derivative is not Hölder with any larger exponent at zero: its value
+divided by <span class="math" data-tex="\(|s|^\beta\)">\(|s|^\beta\)</span> has nonzero magnitude proportional to
+<span class="math" data-tex="\(|s|^{\alpha-\beta}\)">\(|s|^{\alpha-\beta}\)</span>, unbounded when <span class="math" data-tex="\(\beta&gt;\alpha\)">\(\beta&gt;\alpha\)</span>.
+In particular <span class="math" data-tex="\(b\notin C^{m+1}\)">\(b\notin C^{m+1}\)</span>.</p>
+<p>If <span class="math" data-tex="\(r\)">\(r\)</span> is an even integer, BG9 gives
+<span class="math" data-tex="\(b\in C^{r-1,1}_{\mathrm{loc}}\)">\(b\in C^{r-1,1}_{\mathrm{loc}}\)</span>. Its <span class="math" data-tex="\((r-1)\)">\((r-1)\)</span>-st
+derivative is a constant multiple of <span class="math" data-tex="\(|s|\)">\(|s|\)</span>, while its one-sided
+<span class="math" data-tex="\(r\)">\(r\)</span>-th derivatives are <span class="math" data-tex="\(r!\)">\(r!\)</span> and <span class="math" data-tex="\(-r!\)">\(-r!\)</span>; thus
+<span class="math" data-tex="\(b\notin C^r\)">\(b\notin C^r\)</span>. If <span class="math" data-tex="\(r\)">\(r\)</span> is an odd integer, the entire
+term is the polynomial <span class="math" data-tex="\(s^r\)">\(s^r\)</span>, so it is smooth.</p>
+<p>We now prove that the same precise regularity transfers to the original
+inverse profile, rather than asserting it from a change of notation.
+Let <span class="math" data-tex="\(w=H^{-1}\)">\(w=H^{-1}\)</span>. At every differentiability order already
+available, repeated differentiation of <span class="math" data-tex="\(H(w(y))=y\)">\(H(w(y))=y\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+H&#x27;(w)w^{(n)}
+=-\sum_{k=2}^{n}H^{(k)}(w)
+\sum_{\substack{a_1,\ldots,a_{n-1}\ge0\\
+\sum a_j=k,\ \sum j a_j=n}}
+\frac{n!}{\prod_{j=1}^{n-1}a_j!(j!)^{a_j}}
+\prod_{j=1}^{n-1}(w^{(j)})^{a_j},\qquad n\ge2.
+\tag{BG10}
+\]">\[
+H&#x27;(w)w^{(n)}
+=-\sum_{k=2}^{n}H^{(k)}(w)
+\sum_{\substack{a_1,\ldots,a_{n-1}\ge0\\
+\sum a_j=k,\ \sum j a_j=n}}
+\frac{n!}{\prod_{j=1}^{n-1}a_j!(j!)^{a_j}}
+\prod_{j=1}^{n-1}(w^{(j)})^{a_j},\qquad n\ge2.
+\tag{BG10}
+\]</span>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the separate equation is <span class="math" data-tex="\(w&#x27;=1/H&#x27;(w)\)">\(w&#x27;=1/H&#x27;(w)\)</span>.
+One obtains the full coefficients in BG10 by the product and chain
+rules: partition the <span class="math" data-tex="\(n\)">\(n\)</span> labelled derivative operations into
+<span class="math" data-tex="\(a_j\)">\(a_j\)</span> unordered groups of size <span class="math" data-tex="\(j\)">\(j\)</span>. Their number is
+<span class="math" data-tex="\(n!/\prod a_j!(j!)^{a_j}\)">\(n!/\prod a_j!(j!)^{a_j}\)</span>; each group differentiates one
+inverse factor and each group together raises the derivative of <span class="math" data-tex="\(H\)">\(H\)</span>
+once. The single group of size <span class="math" data-tex="\(n\)">\(n\)</span> is exactly the isolated term
+<span class="math" data-tex="\(H&#x27;(w)w^{(n)}\)">\(H&#x27;(w)w^{(n)}\)</span>. This proves the formula inductively and accounts
+for every term.</p>
+<p>Since <span class="math" data-tex="\(H&#x27;\ge1\)">\(H&#x27;\ge1\)</span>, this identity inductively proves that an
+inverse of a <span class="math" data-tex="\(C^n\)">\(C^n\)</span> function is <span class="math" data-tex="\(C^n\)">\(C^n\)</span> here. For the Hölder
+claim, <span class="math" data-tex="\(w\)">\(w\)</span> is Lipschitz because <span class="math" data-tex="\(|w&#x27;|\le1\)">\(|w&#x27;|\le1\)</span>. Composition
+of a Hölder function with a Lipschitz map preserves the exponent.
+Finite products preserve it on compact sets, by expanding the product
+difference one factor at a time and bounding the other factors. A
+reciprocal preserves it when the denominator is bounded away from
+zero, by its exact two-point difference. These observations applied to
+BG10 give the same local Hölder exponent for <span class="math" data-tex="\(w^{(n)}\)">\(w^{(n)}\)</span>.</p>
+<p>Conversely, if <span class="math" data-tex="\(w\)">\(w\)</span>, or <span class="math" data-tex="\(U=-w\)">\(U=-w\)</span>, had a larger stated
+regularity near zero, then <span class="math" data-tex="\(w&#x27;(0)=1\)">\(w&#x27;(0)=1\)</span> and the same inverse
+formula, now solving for <span class="math" data-tex="\(H\)">\(H\)</span>, would give that larger regularity
+to <span class="math" data-tex="\(H\)">\(H\)</span>. This contradicts BG9. We have therefore proved the
+complete classification for the anchored profile:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+r=1+1/\lambda&amp;\text{exact local regularity of }U\text{ at zero}\\\hline
+r\notin\mathbb Z&amp;C^{\lfloor r\rfloor,r-\lfloor r\rfloor},
+\text{ with no larger last Hölder exponent}\\
+r\text{ even integer}&amp;C^{r-1,1}\text{ but not }C^r\\
+r\text{ odd integer}&amp;C^\infty
+\end{array}
+\tag{BG11}
+\]">\[
+\begin{array}{c|c}
+r=1+1/\lambda&amp;\text{exact local regularity of }U\text{ at zero}\\\hline
+r\notin\mathbb Z&amp;C^{\lfloor r\rfloor,r-\lfloor r\rfloor},
+\text{ with no larger last Hölder exponent}\\
+r\text{ even integer}&amp;C^{r-1,1}\text{ but not }C^r\\
+r\text{ odd integer}&amp;C^\infty
+\end{array}
+\tag{BG11}
+\]</span>
+<p>In the last case repeated use of BG10 proves every order. In all cases
+the profile is smooth away from zero. Thus the original source's smooth
+sequence, with its anchor retained, is precisely</p>
+<span class="math math-display" data-tex="\[
+\lambda=\frac1{2i+2},\qquad i=0,1,2,\ldots.
+\tag{BG12}
+\]">\[
+\lambda=\frac1{2i+2},\qquad i=0,1,2,\ldots.
+\tag{BG12}
+\]</span>
+<h2 id="bg4-the-stated-cusp-and-the-actual-physical-derivative">BG4. The stated cusp and the actual physical derivative</h2>
+<p>For the source's <span class="math" data-tex="\(\lambda=2/5\)">\(\lambda=2/5\)</span>, <span class="math" data-tex="\(q=5/2\)">\(q=5/2\)</span>, set
+<span class="math" data-tex="\(s=H^{-1}(y)\)">\(s=H^{-1}(y)\)</span> and <span class="math" data-tex="\(h=1+(7/2)|s|^{5/2}\)">\(h=1+(7/2)|s|^{5/2}\)</span>. Differentiating
+the full inverse map gives, away from zero,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U&#x27;&amp;=-h^{-1},\qquad U&#x27;&#x27;=h&#x27;/h^3,\\
+U&#x27;&#x27;&#x27;&amp;=h&#x27;&#x27;/h^4-3(h&#x27;)^2/h^5,\\
+U&#x27;&#x27;&#x27;&#x27;&amp;=h&#x27;&#x27;&#x27;/h^5-10h&#x27;h&#x27;&#x27;/h^6+15(h&#x27;)^3/h^7.
+\end{aligned}
+\tag{BG13}
+\]">\[
+\begin{aligned}
+U&#x27;&amp;=-h^{-1},\qquad U&#x27;&#x27;=h&#x27;/h^3,\\
+U&#x27;&#x27;&#x27;&amp;=h&#x27;&#x27;/h^4-3(h&#x27;)^2/h^5,\\
+U&#x27;&#x27;&#x27;&#x27;&amp;=h&#x27;&#x27;&#x27;/h^5-10h&#x27;h&#x27;&#x27;/h^6+15(h&#x27;)^3/h^7.
+\end{aligned}
+\tag{BG13}
+\]</span>
+<p>Here the primes on <span class="math" data-tex="\(h\)">\(h\)</span> are derivatives in <span class="math" data-tex="\(s\)">\(s\)</span>, and
+<span class="math" data-tex="\(\partial_y=h^{-1}\partial_s\)">\(\partial_y=h^{-1}\partial_s\)</span>. On <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, the actual
+three derivatives are</p>
+<span class="math math-display" data-tex="\[
+h&#x27;=\frac{35}{4}s^{3/2},\qquad
+h&#x27;&#x27;=\frac{105}{8}s^{1/2},\qquad
+h&#x27;&#x27;&#x27;=\frac{105}{16}s^{-1/2}.
+\]">\[
+h&#x27;=\frac{35}{4}s^{3/2},\qquad
+h&#x27;&#x27;=\frac{105}{8}s^{1/2},\qquad
+h&#x27;&#x27;&#x27;=\frac{105}{16}s^{-1/2}.
+\]</span>
+<p>The first and third change sign on the negative side, and the second
+does not. Since <span class="math" data-tex="\(y/s=1+|s|^{5/2}\to1\)">\(y/s=1+|s|^{5/2}\to1\)</span>, all terms of BG13
+give the exact limits</p>
+<span class="math math-display" data-tex="\[
+\lim_{y\to0}\frac{U&#x27;&#x27;&#x27;(y)}{|y|^{1/2}}=\frac{105}{8},\qquad
+\lim_{y\to0}\operatorname{sgn}(y)|y|^{1/2}U&#x27;&#x27;&#x27;&#x27;(y)
+=\frac{105}{16}.
+\tag{BG14}
+\]">\[
+\lim_{y\to0}\frac{U&#x27;&#x27;&#x27;(y)}{|y|^{1/2}}=\frac{105}{8},\qquad
+\lim_{y\to0}\operatorname{sgn}(y)|y|^{1/2}U&#x27;&#x27;&#x27;&#x27;(y)
+=\frac{105}{16}.
+\tag{BG14}
+\]</span>
+<p>Indeed the squared term in <span class="math" data-tex="\(U&#x27;&#x27;&#x27;\)">\(U&#x27;&#x27;&#x27;\)</span>, divided by <span class="math" data-tex="\(|s|^{1/2}\)">\(|s|^{1/2}\)</span>,
+has order <span class="math" data-tex="\(|s|^{5/2}\)">\(|s|^{5/2}\)</span>; the last two terms in <span class="math" data-tex="\(U&#x27;&#x27;&#x27;&#x27;\)">\(U&#x27;&#x27;&#x27;&#x27;\)</span>,
+multiplied by <span class="math" data-tex="\(|s|^{1/2}\)">\(|s|^{1/2}\)</span>, have orders <span class="math" data-tex="\(|s|^{5/2}\)">\(|s|^{5/2}\)</span> and
+<span class="math" data-tex="\(|s|^5\)">\(|s|^5\)</span>, respectively. Their full coefficients and denominators
+remain in BG13. This proves the source's third-derivative cusp in its
+precise <span class="math" data-tex="\(C^{3,1/2}\)">\(C^{3,1/2}\)</span> class and the failure of fourth differentiability.</p>
+<p>Finally <span class="math" data-tex="\(U&#x27;(0)=-1\)">\(U&#x27;(0)=-1\)</span> for every <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, hence the
+original physical solution has</p>
+<span class="math math-display" data-tex="\[
+\partial_xu(t,0)=-\frac1{1-t},\qquad
+\partial_x^ku(t,x)=\tau^{\lambda-k(1+\lambda)}U^{(k)}(y)
+\tag{BG15}
+\]">\[
+\partial_xu(t,0)=-\frac1{1-t},\qquad
+\partial_x^ku(t,x)=\tau^{\lambda-k(1+\lambda)}U^{(k)}(y)
+\tag{BG15}
+\]</span>
+<p>at each available derivative order. At a discrete smooth exponent the
+solution is smooth for every <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, and the first expression
+exhibits loss of bounded gradient at the terminal time. At a
+nondiscrete exponent it already has the spatial regularity limitation
+of BG11 for every such time. These statements concern the original
+one-dimensional inviscid Burgers equation, with the full time factors
+shown; they are not a Navier–Stokes conclusion.</p>
+<p><img src="assets/NS-FLUID-48/burgers-real-branch-1CE93884A7BB379B497206E673C4D8CF1E18C6194AC792F5C83914EBCB56552C.png" alt="Original anchored Burgers profiles and the exact third-derivative cusp" class="course-figure" width="2093" height="784" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="burgers-real-branch" data-asset-sha256="1CE93884A7BB379B497206E673C4D8CF1E18C6194AC792F5C83914EBCB56552C"></p>
+<p>The left panel evaluates BG3–BG5 at the original exponents
+<span class="math" data-tex="\(1/2,2/5,1/4\)">\(1/2,2/5,1/4\)</span>; the original anchor is visible at <span class="math" data-tex="\((-2,1)\)">\((-2,1)\)</span>.
+The right panel evaluates the complete derivative BG13 at
+<span class="math" data-tex="\(\lambda=2/5\)">\(\lambda=2/5\)</span>. Its cusp coefficient is proved in BG14, rather
+than inferred from the plotted samples. The human comparison is the
+source's implicit branch and nonsmooth benchmark at lines305–315 and336.
+<a href="assets/burgers-profile-comparisons.py">Reproducible figure source</a>
+and <a href="assets/burgers-real-branch.svg">vector rendering</a>.</p>
+<h2 id="part-2-anchored-smooth-burgers-approximants-and-complete-residual-derivative-bounds">Part 2. Anchored smooth Burgers approximants and complete residual-derivative bounds</h2>
+<p>This note continues the full real-branch calculation
+<span class="unlinked">BG1–BG15</span>. Its human
+comparison is Wang, Lai, Gómez-Serrano and Buckmaster,
+<a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>, original
+<code>BoussinesqSupp_v5.tex</code>291–350. Lines343–350 use third and fifth
+derivatives of the Burgers equation error to help select smooth profiles.
+We calculate exactly what those errors can do on the class of smooth
+odd functions with the source anchor. No source-trained network is assumed,
+and no novelty or stability claim is made.</p>
+<h2 id="ba1-construct-the-actual-anchored-family-and-its-original-residual">BA1. Construct the actual anchored family and its original residual</h2>
+<p>Retain <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, <span class="math" data-tex="\(q=1/\lambda\)">\(q=1/\lambda\)</span>, <span class="math" data-tex="\(0&lt;\delta\le1\)">\(0&lt;\delta\le1\)</span>
+and the original coordinate <span class="math" data-tex="\(y\in\mathbb R\)">\(y\in\mathbb R\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_\delta&amp;=(1+\delta^2)^{-q/2},\\
+H_\delta(s)&amp;=s+C_\delta s(s^2+\delta^2)^{q/2},\\
+h_\delta(s)=H_\delta&#x27;(s)
+&amp;=1+C_\delta(s^2+\delta^2)^{q/2}
++C_\delta q s^2(s^2+\delta^2)^{q/2-1},\\
+s_\delta(y)&amp;=H_\delta^{-1}(y),\qquad U_\delta(y)=-s_\delta(y).
+\end{aligned}
+\tag{BA1}
+\]">\[
+\begin{aligned}
+C_\delta&amp;=(1+\delta^2)^{-q/2},\\
+H_\delta(s)&amp;=s+C_\delta s(s^2+\delta^2)^{q/2},\\
+h_\delta(s)=H_\delta&#x27;(s)
+&amp;=1+C_\delta(s^2+\delta^2)^{q/2}
++C_\delta q s^2(s^2+\delta^2)^{q/2-1},\\
+s_\delta(y)&amp;=H_\delta^{-1}(y),\qquad U_\delta(y)=-s_\delta(y).
+\end{aligned}
+\tag{BA1}
+\]</span>
+<p>The strictly positive radicand makes every power smooth. All three terms
+of <span class="math" data-tex="\(h_\delta\)">\(h_\delta\)</span> are nonnegative and the first is one. Thus
+<span class="math" data-tex="\(H_\delta\)">\(H_\delta\)</span> is an odd strictly increasing bijection of the real
+line with derivative at least one. The mean value theorem gives the
+derivative of its inverse; the complete recurrence BG10 then proves
+that <span class="math" data-tex="\(U_\delta\)">\(U_\delta\)</span> is smooth. We have the exact identities</p>
+<span class="math math-display" data-tex="\[
+H_\delta(1)=2,\quad U_\delta(-2)=1,\quad
+|s_\delta(y)|\le|y|,\quad U_\delta&#x27;(y)=-1/h_\delta(s_\delta(y)).
+\tag{BA2}
+\]">\[
+H_\delta(1)=2,\quad U_\delta(-2)=1,\quad
+|s_\delta(y)|\le|y|,\quad U_\delta&#x27;(y)=-1/h_\delta(s_\delta(y)).
+\tag{BA2}
+\]</span>
+<p>The absolute-value bound follows from
+<span class="math" data-tex="\(|H_\delta(s)|=|s|+C_\delta|s|(s^2+\delta^2)^{q/2}\)">\(|H_\delta(s)|=|s|+C_\delta|s|(s^2+\delta^2)^{q/2}\)</span>.
+The profile is odd, so the source's anchor and symmetry are both exact.</p>
+<p>Write <span class="math" data-tex="\(s=s_\delta(y)\)">\(s=s_\delta(y)\)</span> and keep the original equation error
+<span class="math" data-tex="\(f_\delta=f_\lambda[U_\delta]\)">\(f_\delta=f_\lambda[U_\delta]\)</span>. Direct substitution, before
+combining any terms, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_\delta(y)
+&amp;=\lambda s-\frac{(1+\lambda)H_\delta(s)-s}{h_\delta(s)}\\
+&amp;=\frac{\lambda s h_\delta(s)-(1+\lambda)H_\delta(s)+s}
+{h_\delta(s)}\\
+&amp;=\frac{C_\delta s[-(s^2+\delta^2)^{q/2}
++\lambda q s^2(s^2+\delta^2)^{q/2-1}]}
+{h_\delta(s)}\\
+&amp;=-\frac{C_\delta\delta^2s(s^2+\delta^2)^{q/2-1}}
+{h_\delta(s)}.
+\end{aligned}
+\tag{BA3}
+\]">\[
+\begin{aligned}
+f_\delta(y)
+&amp;=\lambda s-\frac{(1+\lambda)H_\delta(s)-s}{h_\delta(s)}\\
+&amp;=\frac{\lambda s h_\delta(s)-(1+\lambda)H_\delta(s)+s}
+{h_\delta(s)}\\
+&amp;=\frac{C_\delta s[-(s^2+\delta^2)^{q/2}
++\lambda q s^2(s^2+\delta^2)^{q/2-1}]}
+{h_\delta(s)}\\
+&amp;=-\frac{C_\delta\delta^2s(s^2+\delta^2)^{q/2-1}}
+{h_\delta(s)}.
+\end{aligned}
+\tag{BA3}
+\]</span>
+<p>The last equality uses <span class="math" data-tex="\(\lambda q=1\)">\(\lambda q=1\)</span> and the entire difference
+<span class="math" data-tex="\(-(s^2+\delta^2)+s^2=-\delta^2\)">\(-(s^2+\delta^2)+s^2=-\delta^2\)</span>. For every positive
+<span class="math" data-tex="\(\delta\)">\(\delta\)</span>, the residual is nonzero away from zero. Its value at
+zero is exactly zero. Its physical receiving residual remains
+<span class="math" data-tex="\(\tau^{\lambda-1}f_\delta(x/\tau^{1+\lambda})\)">\(\tau^{\lambda-1}f_\delta(x/\tau^{1+\lambda})\)</span>, by BG2.</p>
+<h2 id="ba2-every-original-coordinate-derivative-including-all-denominators">BA2. Every original-coordinate derivative, including all denominators</h2>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+g(s)=-C_\delta\delta^2s(s^2+\delta^2)^{q/2-1},\qquad
+h(s)=h_\delta(s),\qquad F(s)=g(s)/h(s).
+\]">\[
+g(s)=-C_\delta\delta^2s(s^2+\delta^2)^{q/2-1},\qquad
+h(s)=h_\delta(s),\qquad F(s)=g(s)/h(s).
+\]</span>
+<p>The original derivative is <span class="math" data-tex="\(\partial_y=h^{-1}\partial_s\)">\(\partial_y=h^{-1}\partial_s\)</span>,
+so repeated differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_\delta&amp;=F,\\
+\partial_y f_\delta&amp;=F&#x27;/h,\\
+\partial_y^2 f_\delta&amp;=F&#x27;&#x27;/h^2-F&#x27;h&#x27;/h^3,\\
+\partial_y^3 f_\delta&amp;=F&#x27;&#x27;&#x27;/h^3-3F&#x27;&#x27;h&#x27;/h^4
+-F&#x27;h&#x27;&#x27;/h^4+3F&#x27;(h&#x27;)^2/h^5.
+\end{aligned}
+\tag{BA4}
+\]">\[
+\begin{aligned}
+f_\delta&amp;=F,\\
+\partial_y f_\delta&amp;=F&#x27;/h,\\
+\partial_y^2 f_\delta&amp;=F&#x27;&#x27;/h^2-F&#x27;h&#x27;/h^3,\\
+\partial_y^3 f_\delta&amp;=F&#x27;&#x27;&#x27;/h^3-3F&#x27;&#x27;h&#x27;/h^4
+-F&#x27;h&#x27;&#x27;/h^4+3F&#x27;(h&#x27;)^2/h^5.
+\end{aligned}
+\tag{BA4}
+\]</span>
+<p>Primes on <span class="math" data-tex="\(F,g,h\)">\(F,g,h\)</span> mean <span class="math" data-tex="\(s\)">\(s\)</span>-derivatives, and the right sides
+are evaluated at <span class="math" data-tex="\(s_\delta(y)\)">\(s_\delta(y)\)</span>. Each line follows by applying
+<span class="math" data-tex="\(h^{-1}\partial_s\)">\(h^{-1}\partial_s\)</span> to every term of the preceding line.</p>
+<p>For all higher orders we give a finite exact recurrence that retains
+every summand. A record <span class="math" data-tex="\((c,j,a,b)\)">\((c,j,a,b)\)</span>, with a finitely supported
+array <span class="math" data-tex="\(a=(a_1,a_2,\ldots)\)">\(a=(a_1,a_2,\ldots)\)</span> of nonnegative integers, denotes
+the full term</p>
+<span class="math math-display" data-tex="\[
+c\,g^{(j)}\frac{\prod_{k\ge1}(h^{(k)})^{a_k}}{h^b}.
+\tag{BA5}
+\]">\[
+c\,g^{(j)}\frac{\prod_{k\ge1}(h^{(k)})^{a_k}}{h^b}.
+\tag{BA5}
+\]</span>
+<p>Start at derivative order zero with the single record <span class="math" data-tex="\((1,0,0,1)\)">\((1,0,0,1)\)</span>.
+To pass to the next order, replace each record by all of the following:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(c,j+1,a,b+1),\\
+&amp;(c a_k,j,a-e_k+e_{k+1},b+1)
+&amp;&amp;\text{for each }k\text{ with }a_k&gt;0,\\
+&amp;(-bc,j,a+e_1,b+2).
+\end{aligned}
+\tag{BA6}
+\]">\[
+\begin{aligned}
+&amp;(c,j+1,a,b+1),\\
+&amp;(c a_k,j,a-e_k+e_{k+1},b+1)
+&amp;&amp;\text{for each }k\text{ with }a_k&gt;0,\\
+&amp;(-bc,j,a+e_1,b+2).
+\end{aligned}
+\tag{BA6}
+\]</span>
+<p>Here <span class="math" data-tex="\(e_k\)">\(e_k\)</span> has one in place <span class="math" data-tex="\(k\)">\(k\)</span> and zero elsewhere.
+The first line differentiates <span class="math" data-tex="\(g^{(j)}\)">\(g^{(j)}\)</span>, the second every
+numerator factor, and the third the denominator. Each also includes
+the outer factor <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span>. Thus the sum of all records at step
+<span class="math" data-tex="\(m\)">\(m\)</span>, denoted <span class="math" data-tex="\(\mathcal T_m\)">\(\mathcal T_m\)</span>, is exactly
+<span class="math" data-tex="\(\partial_y^m f_\delta\)">\(\partial_y^m f_\delta\)</span>. Duplicate records may remain in
+the list: they are separate product-rule contributions. The list is
+finite at every fixed order. Induction in BA6 proves for each record</p>
+<span class="math math-display" data-tex="\[
+j+\sum_{k\ge1}k a_k=m,\qquad
+b=m+1+\sum_{k\ge1}a_k.
+\tag{BA7}
+\]">\[
+j+\sum_{k\ge1}k a_k=m,\qquad
+b=m+1+\sum_{k\ge1}a_k.
+\tag{BA7}
+\]</span>
+<p>This identifies every derivative order and denominator in the original
+coordinate, including the source's fifth derivative.</p>
+<p>At zero, <span class="math" data-tex="\(h&#x27;(0)=g(0)=0\)">\(h&#x27;(0)=g(0)=0\)</span>. Direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h(0)&amp;=1+C_\delta\delta^q,&amp;
+h&#x27;&#x27;(0)&amp;=3C_\delta q\delta^{q-2},\\
+g&#x27;(0)&amp;=-C_\delta\delta^q,&amp;
+g&#x27;&#x27;&#x27;(0)&amp;=-3C_\delta(q-2)\delta^{q-2},\\
+\partial_y^3 f_\delta(0)
+&amp;=-\frac{3C_\delta(q-2)\delta^{q-2}}
+{(1+C_\delta\delta^q)^4}
++\frac{12C_\delta^2q\delta^{2q-2}}
+{(1+C_\delta\delta^q)^5}.
+\end{aligned}
+\tag{BA8}
+\]">\[
+\begin{aligned}
+h(0)&amp;=1+C_\delta\delta^q,&amp;
+h&#x27;&#x27;(0)&amp;=3C_\delta q\delta^{q-2},\\
+g&#x27;(0)&amp;=-C_\delta\delta^q,&amp;
+g&#x27;&#x27;&#x27;(0)&amp;=-3C_\delta(q-2)\delta^{q-2},\\
+\partial_y^3 f_\delta(0)
+&amp;=-\frac{3C_\delta(q-2)\delta^{q-2}}
+{(1+C_\delta\delta^q)^4}
++\frac{12C_\delta^2q\delta^{2q-2}}
+{(1+C_\delta\delta^q)^5}.
+\end{aligned}
+\tag{BA8}
+\]</span>
+<p>For the last identity use
+<span class="math" data-tex="\(F&#x27;(0)=g&#x27;(0)/h(0)\)">\(F&#x27;(0)=g&#x27;(0)/h(0)\)</span> and</p>
+<span class="math math-display" data-tex="\[
+F&#x27;&#x27;&#x27;(0)=g&#x27;&#x27;&#x27;(0)/h(0)-3g&#x27;(0)h&#x27;&#x27;(0)/h(0)^2
+\]">\[
+F&#x27;&#x27;&#x27;(0)=g&#x27;&#x27;&#x27;(0)/h(0)-3g&#x27;(0)h&#x27;&#x27;(0)/h(0)^2
+\]</span>
+<p>in BA4. The additional term <span class="math" data-tex="\(-F&#x27;h&#x27;&#x27;/h^4\)">\(-F&#x27;h&#x27;&#x27;/h^4\)</span> accounts for the
+fourth copy of <span class="math" data-tex="\(-g&#x27;h&#x27;&#x27;/h^5\)">\(-g&#x27;h&#x27;&#x27;/h^5\)</span>. Dropping it would give an
+incorrect coefficient even at the origin.</p>
+<h2 id="ba3-explicit-finite-constants-for-every-derivative-bound">BA3. Explicit finite constants for every derivative bound</h2>
+<p>Fix an actual original interval <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span>, <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+\rho=(s^2+\delta^2)^{1/2},\qquad T_A=(A^2+1)^{1/2}.
+\]">\[
+\rho=(s^2+\delta^2)^{1/2},\qquad T_A=(A^2+1)^{1/2}.
+\]</span>
+<p>By BA2, for <span class="math" data-tex="\(|y|\le A\)">\(|y|\le A\)</span> we have <span class="math" data-tex="\(|s|\le A\)">\(|s|\le A\)</span>, and hence
+<span class="math" data-tex="\(\delta\le\rho\le T_A\)">\(\delta\le\rho\le T_A\)</span>. No coordinate interval is being
+substituted for a different original interval.</p>
+<p>For real <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and every integer <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, the full
+derivative of the power is</p>
+<span class="math math-display" data-tex="\[
+\partial_s^n\rho^\beta
+=\sum_{j=0}^{\lfloor n/2\rfloor}
+\frac{n!2^{n-2j}}{(n-2j)!j!}
+\left(\frac\beta2\right)_{\!\underline{n-j}}
+s^{n-2j}(s^2+\delta^2)^{\beta/2-n+j}.
+\tag{BA9}
+\]">\[
+\partial_s^n\rho^\beta
+=\sum_{j=0}^{\lfloor n/2\rfloor}
+\frac{n!2^{n-2j}}{(n-2j)!j!}
+\left(\frac\beta2\right)_{\!\underline{n-j}}
+s^{n-2j}(s^2+\delta^2)^{\beta/2-n+j}.
+\tag{BA9}
+\]</span>
+<p>The falling product <span class="math" data-tex="\((v)_{\underline\ell}=v(v-1)\cdots
+(v-\ell+1)\)">\((v)_{\underline\ell}=v(v-1)\cdots
+(v-\ell+1)\)</span> is one when <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>. To prove BA9, distribute
+the <span class="math" data-tex="\(n\)">\(n\)</span> derivatives among the first and second derivatives of
+<span class="math" data-tex="\(s^2+\delta^2\)">\(s^2+\delta^2\)</span>. If <span class="math" data-tex="\(j\)">\(j\)</span> groups have size two, the other
+<span class="math" data-tex="\(n-2j\)">\(n-2j\)</span> groups have size one. The partition coefficient is
+<span class="math" data-tex="\(n!/((n-2j)!j!(2!)^j)\)">\(n!/((n-2j)!j!(2!)^j)\)</span>. The inner derivatives contribute
+<span class="math" data-tex="\((2s)^{n-2j}2^j\)">\((2s)^{n-2j}2^j\)</span>, and the outer derivative of order <span class="math" data-tex="\(n-j\)">\(n-j\)</span>
+gives the displayed falling product and power. There are no higher
+nonzero inner derivatives. This proves the formula and all its factors.</p>
+<p>Define explicit nonnegative finite constants</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_n(\beta)&amp;=\sum_{j=0}^{\lfloor n/2\rfloor}
+\frac{n!2^{n-2j}}{(n-2j)!j!}
+\left|\left(\frac\beta2\right)_{\!\underline{n-j}}\right|,\\
+B_0(\beta)&amp;=1,\qquad
+B_n(\beta)=P_n(\beta)+nP_{n-1}(\beta)\quad(n\ge1).
+\end{aligned}
+\tag{BA10}
+\]">\[
+\begin{aligned}
+P_n(\beta)&amp;=\sum_{j=0}^{\lfloor n/2\rfloor}
+\frac{n!2^{n-2j}}{(n-2j)!j!}
+\left|\left(\frac\beta2\right)_{\!\underline{n-j}}\right|,\\
+B_0(\beta)&amp;=1,\qquad
+B_n(\beta)=P_n(\beta)+nP_{n-1}(\beta)\quad(n\ge1).
+\end{aligned}
+\tag{BA10}
+\]</span>
+<p>Every term of BA9 is bounded using <span class="math" data-tex="\(|s|\le\rho\)">\(|s|\le\rho\)</span>; all have
+the same resulting power <span class="math" data-tex="\(\rho^{\beta-n}\)">\(\rho^{\beta-n}\)</span>. The product rule
+for <span class="math" data-tex="\(s\rho^\beta\)">\(s\rho^\beta\)</span> has exactly the two terms
+<span class="math" data-tex="\(s\partial_s^n\rho^\beta+n\partial_s^{n-1}\rho^\beta\)">\(s\partial_s^n\rho^\beta+n\partial_s^{n-1}\rho^\beta\)</span>.
+It follows that</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\partial_s^n\rho^\beta|&amp;\le P_n(\beta)\rho^{\beta-n},\\
+|\partial_s^n(s\rho^\beta)|&amp;\le B_n(\beta)\rho^{\beta+1-n},\\
+|g^{(j)}|&amp;\le C_\delta\delta^2 B_j(q-2)\rho^{q-1-j},\\
+|h^{(k)}|&amp;\le C_\delta B_{k+1}(q)\rho^{q-k}\quad(k\ge1).
+\end{aligned}
+\tag{BA11}
+\]">\[
+\begin{aligned}
+|\partial_s^n\rho^\beta|&amp;\le P_n(\beta)\rho^{\beta-n},\\
+|\partial_s^n(s\rho^\beta)|&amp;\le B_n(\beta)\rho^{\beta+1-n},\\
+|g^{(j)}|&amp;\le C_\delta\delta^2 B_j(q-2)\rho^{q-1-j},\\
+|h^{(k)}|&amp;\le C_\delta B_{k+1}(q)\rho^{q-k}\quad(k\ge1).
+\end{aligned}
+\tag{BA11}
+\]</span>
+<p>The linear term of <span class="math" data-tex="\(H_\delta\)">\(H_\delta\)</span> contributes the constant one
+to <span class="math" data-tex="\(h\)">\(h\)</span>, which remains in every denominator. It vanishes only
+after at least one further <span class="math" data-tex="\(s\)">\(s\)</span>-derivative, as required in the
+last line. We retain <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span> separately.</p>
+<p>Let <span class="math" data-tex="\((c,j,a,b)\in\mathcal T_m\)">\((c,j,a,b)\in\mathcal T_m\)</span>, put <span class="math" data-tex="\(N=\sum a_k\)">\(N=\sum a_k\)</span>
+and keep its exact exponent</p>
+<span class="math math-display" data-tex="\[
+E=q-1-m+qN.
+\tag{BA12}
+\]">\[
+E=q-1-m+qN.
+\tag{BA12}
+\]</span>
+<p>Using BA7 and BA11 in the original term BA5 bounds it by</p>
+<span class="math math-display" data-tex="\[
+|c|\,C_\delta^{1+N}\delta^2
+B_j(q-2)\prod_{k\ge1}B_{k+1}(q)^{a_k}
+\frac{\rho^{E}}{h^{m+1+N}}.
+\tag{BA13}
+\]">\[
+|c|\,C_\delta^{1+N}\delta^2
+B_j(q-2)\prod_{k\ge1}B_{k+1}(q)^{a_k}
+\frac{\rho^{E}}{h^{m+1+N}}.
+\tag{BA13}
+\]</span>
+<p>Thus the coefficient, the complete residual factor, all numerator
+derivatives and the entire denominator are identifiable before any
+upper bound is taken. Now use <span class="math" data-tex="\(0&lt;C_\delta\le1\)">\(0&lt;C_\delta\le1\)</span>, <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>.
+For any real <span class="math" data-tex="\(E\)">\(E\)</span>, the interval bounds on <span class="math" data-tex="\(\rho\)">\(\rho\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\delta^2\rho^E\le
+T_A^{\max(E,0)}\delta^{\min(2,E+2)}.
+\tag{BA14}
+\]">\[
+\delta^2\rho^E\le
+T_A^{\max(E,0)}\delta^{\min(2,E+2)}.
+\tag{BA14}
+\]</span>
+<p>For <span class="math" data-tex="\(E\ge0\)">\(E\ge0\)</span> this follows from <span class="math" data-tex="\(\rho\le T_A\)">\(\rho\le T_A\)</span>; for
+<span class="math" data-tex="\(E&lt;0\)">\(E&lt;0\)</span> it follows from <span class="math" data-tex="\(\rho\ge\delta\)">\(\rho\ge\delta\)</span>. These are the
+two cases of the displayed inequality.</p>
+<p>Define the full finite constant below for every <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>. When
+<span class="math" data-tex="\(q&gt;m-1\)">\(q&gt;m-1\)</span>, the accompanying exponent is positive:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\eta_m&amp;=\min(2,q+1-m)&gt;0,\\
+D_m(q,A)&amp;=\sum_{(c,j,a,b)\in\mathcal T_m}
+|c|B_j(q-2)\prod_{k\ge1}B_{k+1}(q)^{a_k}
+T_A^{\max(q-1-m+q\sum a_k,0)}.
+\end{aligned}
+\tag{BA15}
+\]">\[
+\begin{aligned}
+\eta_m&amp;=\min(2,q+1-m)&gt;0,\\
+D_m(q,A)&amp;=\sum_{(c,j,a,b)\in\mathcal T_m}
+|c|B_j(q-2)\prod_{k\ge1}B_{k+1}(q)^{a_k}
+T_A^{\max(q-1-m+q\sum a_k,0)}.
+\end{aligned}
+\tag{BA15}
+\]</span>
+<p>Since <span class="math" data-tex="\(E\ge q-1-m\)">\(E\ge q-1-m\)</span>, the exponent of <span class="math" data-tex="\(\delta\)">\(\delta\)</span> in
+BA14 is at least <span class="math" data-tex="\(\eta_m\)">\(\eta_m\)</span>. As <span class="math" data-tex="\(\delta\le1\)">\(\delta\le1\)</span>, summing
+BA13 therefore proves the complete quantitative estimate</p>
+<span class="math math-display" data-tex="\[
+\sup_{|y|\le A}|\partial_y^m f_\delta(y)|
+\le D_m(q,A)\delta^{\eta_m}.
+\tag{BA16}
+\]">\[
+\sup_{|y|\le A}|\partial_y^m f_\delta(y)|
+\le D_m(q,A)\delta^{\eta_m}.
+\tag{BA16}
+\]</span>
+<p>All the terms in <span class="math" data-tex="\(D_m\)">\(D_m\)</span> are specified finite products and sums;
+none is an assumed bound. For every <span class="math" data-tex="\(0\le k\le m\)">\(0\le k\le m\)</span>, the
+same proof gives its own <span class="math" data-tex="\(D_k\)">\(D_k\)</span> and exponent <span class="math" data-tex="\(\eta_k\ge\eta_m\)">\(\eta_k\ge\eta_m\)</span>.
+In particular the maximum of all those derivative suprema is at most
+<span class="math" data-tex="\(\max_{0\le k\le m}D_k(q,A)\delta^{\eta_m}\)">\(\max_{0\le k\le m}D_k(q,A)\delta^{\eta_m}\)</span>.</p>
+<p>At a source smooth exponent, <span class="math" data-tex="\(q\)">\(q\)</span> is a positive even integer.
+In that case BA16 improves to an exponent two for every derivative
+order, even when <span class="math" data-tex="\(m\ge q+1\)">\(m\ge q+1\)</span>. Indeed
+<span class="math" data-tex="\(s(s^2+\delta^2)^{(q-2)/2}\)">\(s(s^2+\delta^2)^{(q-2)/2}\)</span> is a polynomial of degree
+<span class="math" data-tex="\(q-1\)">\(q-1\)</span>, and <span class="math" data-tex="\(h\)">\(h\)</span> is a polynomial of degree <span class="math" data-tex="\(q\)">\(q\)</span>.
+Thus a nonzero BA13 term must have <span class="math" data-tex="\(j\le q-1\)">\(j\le q-1\)</span> and every
+used <span class="math" data-tex="\(k\le q\)">\(k\le q\)</span>. Its exponent can also be written
+<span class="math" data-tex="\(E=q-1-j+\sum(q-k)a_k\ge0\)">\(E=q-1-j+\sum(q-k)a_k\ge0\)</span>. Terms outside these ranges
+have exactly zero coefficients in BA10. Applying the nonnegative case
+of BA14 to all remaining terms proves the exponent-two estimate with
+the same full finite sum <span class="math" data-tex="\(D_m\)">\(D_m\)</span>.</p>
+<h2 id="ba4-prove-the-exact-limit-and-its-derivative-regularity">BA4. Prove the exact limit and its derivative regularity</h2>
+<p>Let <span class="math" data-tex="\(H_0(s)=s+s|s|^q\)">\(H_0(s)=s+s|s|^q\)</span> and let <span class="math" data-tex="\(U_0=-H_0^{-1}\)">\(U_0=-H_0^{-1}\)</span> be
+the original anchored profile of BG4–BG5. We now prove, for every
+integer <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> with <span class="math" data-tex="\(q&gt;m-1\)">\(q&gt;m-1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+U_\delta\longrightarrow U_0\quad\text{in }C^m([-A,A])
+\quad\text{as }\delta\downarrow0.
+\tag{BA17}
+\]">\[
+U_\delta\longrightarrow U_0\quad\text{in }C^m([-A,A])
+\quad\text{as }\delta\downarrow0.
+\tag{BA17}
+\]</span>
+<p>First, <span class="math" data-tex="\(H_\delta\to H_0\)">\(H_\delta\to H_0\)</span> in <span class="math" data-tex="\(C^m\)">\(C^m\)</span> on every compact
+<span class="math" data-tex="\(s\)">\(s\)</span>-interval. Here is the full argument at the exceptional point.
+For <span class="math" data-tex="\(k\le m\)">\(k\le m\)</span>, the nonlinear term's <span class="math" data-tex="\(k\)">\(k\)</span>-th derivative in
+BA11 is bounded by
+<span class="math" data-tex="\(B_k(q)(s^2+\delta^2)^{(q+1-k)/2}\)">\(B_k(q)(s^2+\delta^2)^{(q+1-k)/2}\)</span>, with positive exponent
+<span class="math" data-tex="\(q+1-k\)">\(q+1-k\)</span>. The same derivative of <span class="math" data-tex="\(s|s|^q\)">\(s|s|^q\)</span> is given by
+BG9 and bounded by its full falling-product constant times
+<span class="math" data-tex="\(|s|^{q+1-k}\)">\(|s|^{q+1-k}\)</span>. On <span class="math" data-tex="\(|s|\le\epsilon\)">\(|s|\le\epsilon\)</span> and
+<span class="math" data-tex="\(\delta\le\epsilon\)">\(\delta\le\epsilon\)</span>, both therefore tend uniformly to
+zero as <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>. The linear term <span class="math" data-tex="\(s\)">\(s\)</span>
+and each of its derivatives agree exactly in the two functions and
+are not part of that estimate. On a compact set with
+<span class="math" data-tex="\(|s|\ge\epsilon&gt;0\)">\(|s|\ge\epsilon&gt;0\)</span>, formula BA9 and
+<span class="math" data-tex="\(C_\delta\to1\)">\(C_\delta\to1\)</span> give uniform convergence of every derivative
+through order <span class="math" data-tex="\(m\)">\(m\)</span>, since all powers have positive radicand
+bounded away from zero. Combining the two regions proves the claim.</p>
+<p>Let <span class="math" data-tex="\(w_\delta=H_\delta^{-1}\)">\(w_\delta=H_\delta^{-1}\)</span> and <span class="math" data-tex="\(w_0=H_0^{-1}\)">\(w_0=H_0^{-1}\)</span>.
+The derivative lower bound one and the mean value theorem imply</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|w_\delta(y)-w_0(y)|
+&amp;\le |H_\delta(w_0(y))-H_0(w_0(y))|\\
+&amp;\le \sup_{|s|\le A}|H_\delta(s)-H_0(s)|
+\qquad(|y|\le A).
+\end{aligned}
+\tag{BA18}
+\]">\[
+\begin{aligned}
+|w_\delta(y)-w_0(y)|
+&amp;\le |H_\delta(w_0(y))-H_0(w_0(y))|\\
+&amp;\le \sup_{|s|\le A}|H_\delta(s)-H_0(s)|
+\qquad(|y|\le A).
+\end{aligned}
+\tag{BA18}
+\]</span>
+<p>Both inverse points belong to <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span>, by BA2 and its
+<span class="math" data-tex="\(\delta=0\)">\(\delta=0\)</span> counterpart. This proves uniform convergence.
+For first derivatives, use <span class="math" data-tex="\(w_\delta&#x27;=1/(H_\delta&#x27;\circ
+w_\delta)\)">\(w_\delta&#x27;=1/(H_\delta&#x27;\circ
+w_\delta)\)</span>: the denominators converge uniformly and stay at least
+one. For each successive derivative up to <span class="math" data-tex="\(m\)">\(m\)</span>, use every term
+of BG10. The derivatives of <span class="math" data-tex="\(H_\delta\)">\(H_\delta\)</span> converge uniformly,
+their limiting derivatives are uniformly continuous on the compact
+interval, and lower inverse derivatives have already converged.
+Products and the reciprocal denominator therefore converge uniformly.
+This induction proves BA17 for <span class="math" data-tex="\(U_\delta=-w_\delta\)">\(U_\delta=-w_\delta\)</span>.</p>
+<h2 id="ba5-the-source-loss-can-tend-to-zero-at-a-nonsmooth-exponent">BA5. The source loss can tend to zero at a nonsmooth exponent</h2>
+<p>Take an integer <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(0&lt;\alpha&lt;1\)">\(0&lt;\alpha&lt;1\)</span>, and retain</p>
+<span class="math math-display" data-tex="\[
+m=2n+1,\qquad q=2n+\alpha,\qquad
+\lambda=\frac1{2n+\alpha}.
+\tag{BA19}
+\]">\[
+m=2n+1,\qquad q=2n+\alpha,\qquad
+\lambda=\frac1{2n+\alpha}.
+\tag{BA19}
+\]</span>
+<p>This exponent belongs to the source's window
+<span class="math" data-tex="\([1/(2n+1),1/(2n-1)]\)">\([1/(2n+1),1/(2n-1)]\)</span>. It is not the smooth exponent
+<span class="math" data-tex="\(1/(2n)\)">\(1/(2n)\)</span>. BG11 proves that its unique odd anchored exact
+profile is <span class="math" data-tex="\(C^{m,\alpha}\)">\(C^{m,\alpha}\)</span>, with no better last Hölder
+exponent, and is not <span class="math" data-tex="\(C^{m+1}\)">\(C^{m+1}\)</span>. Yet every <span class="math" data-tex="\(U_\delta\)">\(U_\delta\)</span>
+is smooth, odd and satisfies the anchor exactly, and BA16–BA17 give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U_\delta&amp;\longrightarrow U_0\quad\text{in }C^m([-A,A]),\\
+\max_{0\le k\le m}\sup_{|y|\le A}
+|\partial_y^k f_\delta(y)|
+&amp;\le\left(\max_{0\le k\le m}D_k(q,A)\right)\delta^\alpha.
+\end{aligned}
+\tag{BA20}
+\]">\[
+\begin{aligned}
+U_\delta&amp;\longrightarrow U_0\quad\text{in }C^m([-A,A]),\\
+\max_{0\le k\le m}\sup_{|y|\le A}
+|\partial_y^k f_\delta(y)|
+&amp;\le\left(\max_{0\le k\le m}D_k(q,A)\right)\delta^\alpha.
+\end{aligned}
+\tag{BA20}
+\]</span>
+<p>This proves a precise failure of the inference from small residual
+derivatives alone to a smooth exact limiting profile in this function
+class. It also supplies the actual family and the exact limiting map.</p>
+<p>For the source's finite value samples <span class="math" data-tex="\(y_i\)">\(y_i\)</span> and smoothness samples
+<span class="math" data-tex="\(\widetilde y_i\)">\(\widetilde y_i\)</span>, all in a fixed <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span>, use their
+actual positive counts <span class="math" data-tex="\(N_f,N_s\)">\(N_f,N_s\)</span>. They may depend on <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.
+The original averages obey</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|U_\delta(-2)-1|^2&amp;=0,\\
+\frac1{N_f}\sum_{i=1}^{N_f}|f_\delta(y_i)|^2
+&amp;\le D_0(q,A)^2\delta^4,\\
+\frac1{N_s}\sum_{i=1}^{N_s}
+|\partial_y^{2n+1}f_\delta(\widetilde y_i)|^2
+&amp;\le D_{2n+1}(q,A)^2\delta^{2\alpha}.
+\end{aligned}
+\tag{BA21}
+\]">\[
+\begin{aligned}
+|U_\delta(-2)-1|^2&amp;=0,\\
+\frac1{N_f}\sum_{i=1}^{N_f}|f_\delta(y_i)|^2
+&amp;\le D_0(q,A)^2\delta^4,\\
+\frac1{N_s}\sum_{i=1}^{N_s}
+|\partial_y^{2n+1}f_\delta(\widetilde y_i)|^2
+&amp;\le D_{2n+1}(q,A)^2\delta^{2\alpha}.
+\end{aligned}
+\tag{BA21}
+\]</span>
+<p>The value exponent is four because <span class="math" data-tex="\(q&gt;2\)">\(q&gt;2\)</span>, so <span class="math" data-tex="\(\eta_0=2\)">\(\eta_0=2\)</span>.
+Every summand is bounded by its continuous supremum, and the division
+by the same sample count then gives the displayed estimates. No
+assumption on how the points are distributed is needed for this direction.
+Any fixed nonnegative weighted sum of these losses tends to zero.</p>
+<p>The source's third-derivative test is the case <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Its own
+nonsmooth example <span class="math" data-tex="\(\lambda=2/5\)">\(\lambda=2/5\)</span> has <span class="math" data-tex="\(q=5/2\)">\(q=5/2\)</span>,
+<span class="math" data-tex="\(\alpha=1/2\)">\(\alpha=1/2\)</span>; the third-derivative loss in BA21 is at most
+<span class="math" data-tex="\(D_3(5/2,A)^2\delta\)">\(D_3(5/2,A)^2\delta\)</span>. For the fifth-derivative test take
+<span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(\lambda=2/9\)">\(\lambda=2/9\)</span>, <span class="math" data-tex="\(q=9/2\)">\(q=9/2\)</span>: the fifth-derivative
+loss is at most <span class="math" data-tex="\(D_5(9/2,A)^2\delta\)">\(D_5(9/2,A)^2\delta\)</span>. These are actual
+nondiscrete exponents in the respective stated windows.</p>
+<p>For the exact nonsmooth profile, <span class="math" data-tex="\(f_\lambda[U_0]\)">\(f_\lambda[U_0]\)</span> is the
+identically zero function by BG6. Consequently all derivatives of that
+residual as a function are zero. This fact does not permit invalid
+term-by-term differentiation through unavailable derivatives of
+<span class="math" data-tex="\(U_0\)">\(U_0\)</span> at zero. BA1–BA21 avoid that issue entirely by using
+smooth approximants and computing every term before taking a limit.</p>
+<p>The source's actual architecture for this example has three hidden
+layers of twenty tanh units, with odd projection. The family BA1 is
+not asserted to belong to that fixed architecture. Indeed every finite
+affine-output tanh network with fixed finite parameters is globally
+bounded by its output bias plus the sum of absolute output weights;
+odd projection preserves a finite global bound. Each <span class="math" data-tex="\(U_\delta\)">\(U_\delta\)</span>
+is unbounded on the real line because <span class="math" data-tex="\(H_\delta\)">\(H_\delta\)</span> is a bijection.
+Thus there is no exact global identification with such a network.
+BA21 is a theorem about the stated smooth anchored function class,
+not a failed numerical training run or a contradiction of the source's
+reported finite-network results. A fixed-architecture selection theorem
+would require additional parameter and approximation analysis.</p>
+<h2 id="ba6-locate-the-escaping-derivative-with-its-complete-coefficient">BA6. Locate the escaping derivative, with its complete coefficient</h2>
+<p>At <span class="math" data-tex="\(q=5/2\)">\(q=5/2\)</span>, take the actual point</p>
+<span class="math math-display" data-tex="\[
+y_\delta=H_\delta(\delta)
+=\delta+C_\delta 2^{5/4}\delta^{7/2}.
+\tag{BA22}
+\]">\[
+y_\delta=H_\delta(\delta)
+=\delta+C_\delta 2^{5/4}\delta^{7/2}.
+\tag{BA22}
+\]</span>
+<p>It tends to zero and lies in any fixed <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span> for sufficiently
+small <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. For the smooth family, the exact inverse
+derivative formula is</p>
+<span class="math math-display" data-tex="\[
+U_\delta&#x27;&#x27;&#x27;&#x27;(y)=h&#x27;&#x27;&#x27;/h^5-10h&#x27;h&#x27;&#x27;/h^6+15(h&#x27;)^3/h^7,
+\qquad s=s_\delta(y).
+\tag{BA23}
+\]">\[
+U_\delta&#x27;&#x27;&#x27;&#x27;(y)=h&#x27;&#x27;&#x27;/h^5-10h&#x27;h&#x27;&#x27;/h^6+15(h&#x27;)^3/h^7,
+\qquad s=s_\delta(y).
+\tag{BA23}
+\]</span>
+<p>Let <span class="math" data-tex="\(T(\xi)=\xi(1+\xi^2)^{5/4}\)">\(T(\xi)=\xi(1+\xi^2)^{5/4}\)</span>. The original nonlinear
+term of <span class="math" data-tex="\(H_\delta(\delta\xi)\)">\(H_\delta(\delta\xi)\)</span> is
+<span class="math" data-tex="\(C_\delta\delta^{7/2}T(\xi)\)">\(C_\delta\delta^{7/2}T(\xi)\)</span>, so the complete derivatives
+at <span class="math" data-tex="\(s=\delta\)">\(s=\delta\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h(\delta)&amp;=1+C_\delta\delta^{5/2}T&#x27;(1),\\
+h&#x27;(\delta)&amp;=C_\delta\delta^{3/2}T&#x27;&#x27;(1),\\
+h&#x27;&#x27;(\delta)&amp;=C_\delta\delta^{1/2}T&#x27;&#x27;&#x27;(1),\\
+h&#x27;&#x27;&#x27;(\delta)&amp;=C_\delta\delta^{-1/2}T&#x27;&#x27;&#x27;&#x27;(1),\\
+T&#x27;(1)&amp;=2^{5/4}+\frac52 2^{1/4},\\
+T&#x27;&#x27;(1)&amp;=\frac{15}{2}2^{1/4}+\frac54 2^{-3/4},\\
+T&#x27;&#x27;&#x27;(1)&amp;=\frac{15}{8}
+[-2^{-7/4}+4\,2^{-3/4}+4\,2^{1/4}],\\
+T&#x27;&#x27;&#x27;&#x27;(1)&amp;=\frac{15}{16\,2^{3/4}}
+\left[\frac74-10+20\right]
+=\frac{705}{64\,2^{3/4}}&gt;0.
+\end{aligned}
+\tag{BA24}
+\]">\[
+\begin{aligned}
+h(\delta)&amp;=1+C_\delta\delta^{5/2}T&#x27;(1),\\
+h&#x27;(\delta)&amp;=C_\delta\delta^{3/2}T&#x27;&#x27;(1),\\
+h&#x27;&#x27;(\delta)&amp;=C_\delta\delta^{1/2}T&#x27;&#x27;&#x27;(1),\\
+h&#x27;&#x27;&#x27;(\delta)&amp;=C_\delta\delta^{-1/2}T&#x27;&#x27;&#x27;&#x27;(1),\\
+T&#x27;(1)&amp;=2^{5/4}+\frac52 2^{1/4},\\
+T&#x27;&#x27;(1)&amp;=\frac{15}{2}2^{1/4}+\frac54 2^{-3/4},\\
+T&#x27;&#x27;&#x27;(1)&amp;=\frac{15}{8}
+[-2^{-7/4}+4\,2^{-3/4}+4\,2^{1/4}],\\
+T&#x27;&#x27;&#x27;&#x27;(1)&amp;=\frac{15}{16\,2^{3/4}}
+\left[\frac74-10+20\right]
+=\frac{705}{64\,2^{3/4}}&gt;0.
+\end{aligned}
+\tag{BA24}
+\]</span>
+<p>These follow by direct differentiation of the displayed <span class="math" data-tex="\(T\)">\(T\)</span>,
+with all product contributions retained. Substitute them into BA23 and
+multiply by <span class="math" data-tex="\(\delta^{1/2}\)">\(\delta^{1/2}\)</span>. The first term tends to
+<span class="math" data-tex="\(T&#x27;&#x27;&#x27;&#x27;(1)\)">\(T&#x27;&#x27;&#x27;&#x27;(1)\)</span>, since <span class="math" data-tex="\(C_\delta\to1\)">\(C_\delta\to1\)</span> and
+<span class="math" data-tex="\(h(\delta)\to1\)">\(h(\delta)\to1\)</span>; the second retains a factor
+<span class="math" data-tex="\(\delta^{5/2}\)">\(\delta^{5/2}\)</span>, and the third a factor <span class="math" data-tex="\(\delta^5\)">\(\delta^5\)</span>,
+with bounded remaining coefficients. Therefore</p>
+<span class="math math-display" data-tex="\[
+\lim_{\delta\downarrow0}\delta^{1/2}
+U_\delta&#x27;&#x27;&#x27;&#x27;(y_\delta)=\frac{705}{64\,2^{3/4}}.
+\tag{BA25}
+\]">\[
+\lim_{\delta\downarrow0}\delta^{1/2}
+U_\delta&#x27;&#x27;&#x27;&#x27;(y_\delta)=\frac{705}{64\,2^{3/4}}.
+\tag{BA25}
+\]</span>
+<p>This proves an unbounded fourth derivative while the original residual
+and all its first three derivatives tend uniformly to zero on compact
+intervals. It identifies the exact point and coefficient where regularity
+is lost, rather than replacing the missing control by an assumption.</p>
+<p><img src="assets/NS-FLUID-48/burgers-anchored-residuals-D1461AA3AD29C118F03D5A442C37F4112195D676DB634C9A874C5093609D2C44.png" alt="Exact anchored approximants, their tested residual derivative and their escaping fourth derivative" class="course-figure" width="2637" height="801" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="burgers-anchored-residuals" data-asset-sha256="D1461AA3AD29C118F03D5A442C37F4112195D676DB634C9A874C5093609D2C44"></p>
+<p>All panels use the original <span class="math" data-tex="\(\lambda=2/5\)">\(\lambda=2/5\)</span> and exact anchor in
+BA1–BA2. The left evaluates the full third derivative of the constructed
+profiles in the original <span class="math" data-tex="\(y\)">\(y\)</span>-coordinate. The middle evaluates
+BA8 at the origin, while the right evaluates BA23 at the actual point
+BA22. Dashed curves are the proved leading terms; solid curves are
+numerical evaluations of the full exact formulas. The uniform bounds
+on the entire interval are proved separately in BA9–BA21. These are
+constructed smooth profiles, not source-trained network outputs.
+The human loss comparison is the source's lines343–350.
+<a href="assets/burgers-profile-comparisons.py">Reproducible figure source</a>
+and <a href="assets/burgers-anchored-residuals.svg">vector rendering</a>.</p>
+<h2 id="part-3-actual-finite-network-bounds-for-the-burgers-losses">Part 3. Actual finite-network bounds for the Burgers losses</h2>
+<p>This calculation supplies the parameter-dependent control that can be used
+alongside the smooth-family result
+<span class="unlinked">BA1–BA25</span>.
+It retains the original anchored profile
+<span class="unlinked">BG1–BG15</span>.
+The human architecture and loss source is Wang, Lai, Gómez-Serrano and
+Buckmaster, <a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>,
+original <code>BoussinesqSupp_v5.tex</code>329–350: three hidden layers, twenty
+tanh units per layer, odd projection, and the original Burgers residual.
+All parameters below must be supplied; no trained values are inferred.</p>
+<h2 id="bn1-every-layer-bias-and-derivative-order">BN1. Every layer, bias and derivative order</h2>
+<p>For a scalar input <span class="math" data-tex="\(y\)">\(y\)</span>, retain the complete network</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a^{(0)}_1(y)&amp;=y,\qquad d_0=1,\quad d_1=d_2=d_3=20,\\
+b_i^{(\ell)}(y)&amp;=\sum_{j=1}^{d_{\ell-1}}
+W_{ij}^{(\ell)}a_j^{(\ell-1)}(y)+\beta_i^{(\ell)},\\
+a_i^{(\ell)}(y)&amp;=\tanh b_i^{(\ell)}(y),\qquad 1\le\ell\le3,\\
+N(y)&amp;=\sum_{j=1}^{20}w_j a_j^{(3)}(y)+\beta_{\rm out},\\
+U_N(y)&amp;=\frac{N(y)-N(-y)}2.
+\end{aligned}
+\tag{BN1}
+\]">\[
+\begin{aligned}
+a^{(0)}_1(y)&amp;=y,\qquad d_0=1,\quad d_1=d_2=d_3=20,\\
+b_i^{(\ell)}(y)&amp;=\sum_{j=1}^{d_{\ell-1}}
+W_{ij}^{(\ell)}a_j^{(\ell-1)}(y)+\beta_i^{(\ell)},\\
+a_i^{(\ell)}(y)&amp;=\tanh b_i^{(\ell)}(y),\qquad 1\le\ell\le3,\\
+N(y)&amp;=\sum_{j=1}^{20}w_j a_j^{(3)}(y)+\beta_{\rm out},\\
+U_N(y)&amp;=\frac{N(y)-N(-y)}2.
+\end{aligned}
+\tag{BN1}
+\]</span>
+<p>This specifies an affine output. If an implementation applies a final
+tanh as well, that operation is one additional layer of the same
+recurrence below. The input here is the original <span class="math" data-tex="\(y\)">\(y\)</span>, as printed
+in the source's Burgers architecture, not a different coordinate.</p>
+<p>For all orders define exact derivative polynomials and explicit bounds</p>
+<span class="math math-display" data-tex="\[
+P_0(t)=t,\qquad P_{n+1}(t)=(1-t^2)P_n&#x27;(t),\qquad
+C_n=\sum_{j\ge0}|[t^j]P_n(t)|\quad(n\ge1).
+\tag{BN2}
+\]">\[
+P_0(t)=t,\qquad P_{n+1}(t)=(1-t^2)P_n&#x27;(t),\qquad
+C_n=\sum_{j\ge0}|[t^j]P_n(t)|\quad(n\ge1).
+\tag{BN2}
+\]</span>
+<p>The notation <span class="math" data-tex="\([t^j]P\)">\([t^j]P\)</span> means the coefficient of <span class="math" data-tex="\(t^j\)">\(t^j\)</span> in
+the finite polynomial. Induction and <span class="math" data-tex="\((\tanh y)&#x27;=1-\tanh^2y\)">\((\tanh y)&#x27;=1-\tanh^2y\)</span>
+prove <span class="math" data-tex="\(\partial_y^n\tanh y=P_n(\tanh y)\)">\(\partial_y^n\tanh y=P_n(\tanh y)\)</span>. Since
+<span class="math" data-tex="\(|\tanh y|\le1\)">\(|\tanh y|\le1\)</span>, the triangle inequality proves its absolute
+bound <span class="math" data-tex="\(C_n\)">\(C_n\)</span>. These coefficient sums need not be optimal; they
+are finite computable numbers and every derivative contribution is
+retained. The value bound remains exactly one.
+For the seven orders used by the source's two tests and their grid
+control, the coefficient-sum bounds are explicitly</p>
+<span class="math math-display" data-tex="\[
+(C_1,C_2,C_3,C_4,C_5,C_6,C_7)
+=(2,4,16,80,512,3904,34816).
+\]">\[
+(C_1,C_2,C_3,C_4,C_5,C_6,C_7)
+=(2,4,16,80,512,3904,34816).
+\]</span>
+<p>These follow by seven applications of the polynomial recurrence BN2;
+smaller proved constants can improve the numerical bounds, but are not
+needed for their validity.</p>
+<p>Let <span class="math" data-tex="\(A_{i,n}^{(\ell)}\)">\(A_{i,n}^{(\ell)}\)</span> bound the absolute <span class="math" data-tex="\(n\)">\(n\)</span>-th
+derivative of <span class="math" data-tex="\(a_i^{(\ell)}\)">\(a_i^{(\ell)}\)</span> on the whole real line. At the
+input set <span class="math" data-tex="\(A_{1,1}^{(0)}=1\)">\(A_{1,1}^{(0)}=1\)</span> and <span class="math" data-tex="\(A_{1,n}^{(0)}=0\)">\(A_{1,n}^{(0)}=0\)</span>
+for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. For each successive layer, compute</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_{i,n}^{(\ell)}&amp;=\sum_{j=1}^{d_{\ell-1}}
+|W_{ij}^{(\ell)}|A_{j,n}^{(\ell-1)},\\
+A_{i,n}^{(\ell)}
+&amp;=\sum_{\substack{a_1,\ldots,a_n\ge0\\\sum j a_j=n}}
+\frac{n!C_{\sum a_j}}{\prod_{j=1}^n a_j!(j!)^{a_j}}
+\prod_{j=1}^n(B_{i,j}^{(\ell)})^{a_j}.
+\end{aligned}
+\tag{BN3}
+\]">\[
+\begin{aligned}
+B_{i,n}^{(\ell)}&amp;=\sum_{j=1}^{d_{\ell-1}}
+|W_{ij}^{(\ell)}|A_{j,n}^{(\ell-1)},\\
+A_{i,n}^{(\ell)}
+&amp;=\sum_{\substack{a_1,\ldots,a_n\ge0\\\sum j a_j=n}}
+\frac{n!C_{\sum a_j}}{\prod_{j=1}^n a_j!(j!)^{a_j}}
+\prod_{j=1}^n(B_{i,j}^{(\ell)})^{a_j}.
+\end{aligned}
+\tag{BN3}
+\]</span>
+<p>For each <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, the sum has finitely many entries and
+<span class="math" data-tex="\(\sum a_j\ge1\)">\(\sum a_j\ge1\)</span>. A factor with exponent zero is one, including
+when its base is zero. To prove this bound, the affine preactivation
+has <span class="math" data-tex="\(n\)">\(n\)</span>-th derivative equal to the full weighted sum of the
+previous layer derivatives; its bias derivative is zero. The partition
+formula proved in BG10, now applied to <span class="math" data-tex="\(\tanh\circ b_i^{(\ell)}\)">\(\tanh\circ b_i^{(\ell)}\)</span>,
+has exactly the coefficients in BN3. Bound its outer derivative by
+BN2 and each inner derivative by the first line of BN3. This proves
+the second line by induction on the layer. All hidden biases remain
+in the actual arguments of tanh. Their absence from these global
+derivative upper bounds follows from the uniform bound in BN2, not
+from removing them from the network.</p>
+<p>The output and odd projection satisfy the exact identities and bounds</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U_N(y)&amp;=\frac12\left[
+\sum_jw_j a_j^{(3)}(y)+\beta_{\rm out}
+-\sum_jw_j a_j^{(3)}(-y)-\beta_{\rm out}\right],\\
+U_N^{(n)}(y)&amp;=\frac{N^{(n)}(y)-(-1)^nN^{(n)}(-y)}2,\\
+|U_N|&amp;\le Q_0:=\sum_j|w_j|,\\
+|U_N^{(n)}|&amp;\le Q_n:=\sum_j|w_j|A_{j,n}^{(3)}\quad(n\ge1).
+\end{aligned}
+\tag{BN4}
+\]">\[
+\begin{aligned}
+U_N(y)&amp;=\frac12\left[
+\sum_jw_j a_j^{(3)}(y)+\beta_{\rm out}
+-\sum_jw_j a_j^{(3)}(-y)-\beta_{\rm out}\right],\\
+U_N^{(n)}(y)&amp;=\frac{N^{(n)}(y)-(-1)^nN^{(n)}(-y)}2,\\
+|U_N|&amp;\le Q_0:=\sum_j|w_j|,\\
+|U_N^{(n)}|&amp;\le Q_n:=\sum_j|w_j|A_{j,n}^{(3)}\quad(n\ge1).
+\end{aligned}
+\tag{BN4}
+\]</span>
+<p>Both output bias contributions are displayed and cancel exactly.
+The two projected derivative terms have the same bound, so their
+factor one-half is retained in deriving <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span>.</p>
+<h2 id="bn2-full-residual-derivatives-and-the-actual-grid">BN2. Full residual derivatives and the actual grid</h2>
+<p>For any smooth original profile <span class="math" data-tex="\(U\)">\(U\)</span>, put <span class="math" data-tex="\(p=1+\lambda\)">\(p=1+\lambda\)</span>.
+For every integer <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, repeated product differentiation of
+the original residual gives</p>
+<span class="math math-display" data-tex="\[
+\partial_y^j f_\lambda[U]
+=-\lambda U^{(j)}
++p[yU^{(j+1)}+jU^{(j)}]
++\sum_{\ell=0}^j\binom j\ell
+U^{(\ell)}U^{(j-\ell+1)}.
+\tag{BN5}
+\]">\[
+\partial_y^j f_\lambda[U]
+=-\lambda U^{(j)}
++p[yU^{(j+1)}+jU^{(j)}]
++\sum_{\ell=0}^j\binom j\ell
+U^{(\ell)}U^{(j-\ell+1)}.
+\tag{BN5}
+\]</span>
+<p>Here <span class="math" data-tex="\(U^{(0)}=U\)">\(U^{(0)}=U\)</span>; when <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, the term with factor
+<span class="math" data-tex="\(j\)">\(j\)</span> is exactly zero. In the product <span class="math" data-tex="\(yU&#x27;\)">\(yU&#x27;\)</span>, only zero
+or one derivative can fall on <span class="math" data-tex="\(y\)">\(y\)</span>, which proves its two terms.
+The last sum is the full Leibniz rule for <span class="math" data-tex="\(UU&#x27;\)">\(UU&#x27;\)</span>. In particular
+the third tested derivative uses <span class="math" data-tex="\(U&#x27;&#x27;&#x27;&#x27;\)">\(U&#x27;&#x27;&#x27;&#x27;\)</span> multiplied by the
+original drift, and the fifth uses <span class="math" data-tex="\(U^{(6)}\)">\(U^{(6)}\)</span>. Neither highest
+derivative can be estimated by dropping that coefficient near its zero.</p>
+<p>Apply BN4 on the actual interval <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span>. Every term of BN5
+has the explicit bound</p>
+<span class="math math-display" data-tex="\[
+R_j(\lambda,A,Q)=|\lambda|Q_j
++|1+\lambda|[A Q_{j+1}+jQ_j]
++\sum_{\ell=0}^j\binom j\ell Q_\ell Q_{j-\ell+1},
+\qquad |\partial_y^jf_\lambda[U_N]|\le R_j.
+\tag{BN6}
+\]">\[
+R_j(\lambda,A,Q)=|\lambda|Q_j
++|1+\lambda|[A Q_{j+1}+jQ_j]
++\sum_{\ell=0}^j\binom j\ell Q_\ell Q_{j-\ell+1},
+\qquad |\partial_y^jf_\lambda[U_N]|\le R_j.
+\tag{BN6}
+\]</span>
+<p>The two linear contributions have been bounded separately; no sign or
+constant in BN5 has been replaced in the original equation.</p>
+<p>Let an actual ordered grid contain both endpoints of <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span>,
+with maximum gap <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. Every point of the interval has a
+grid point within <span class="math" data-tex="\(\Delta/2\)">\(\Delta/2\)</span>. Applying the fundamental theorem
+of calculus to <span class="math" data-tex="\(\partial_y^jf\)">\(\partial_y^jf\)</span> between those two points gives</p>
+<span class="math math-display" data-tex="\[
+\sup_{|y|\le A}|\partial_y^jf_\lambda[U_N](y)|
+\le\max_{\rm nodes}|\partial_y^jf_\lambda[U_N]|
++\frac{\Delta}{2}R_{j+1}(\lambda,A,Q).
+\tag{BN7}
+\]">\[
+\sup_{|y|\le A}|\partial_y^jf_\lambda[U_N](y)|
+\le\max_{\rm nodes}|\partial_y^jf_\lambda[U_N]|
++\frac{\Delta}{2}R_{j+1}(\lambda,A,Q).
+\tag{BN7}
+\]</span>
+<p>Thus continuous control of the third-derivative loss from its grid
+values uses network derivatives through order five, and control of
+the fifth-derivative loss uses orders through seven. BN2–BN4 provide
+those exact finite sums from the supplied parameters. Arbitrary random
+samples do not automatically have this half-gap property; one must
+compute their actual covering radius, including the endpoints.</p>
+<p>If the only supplied quantity is the exact average
+<span class="math" data-tex="\(\ell_j=N_j^{-1}\sum_{i=1}^{N_j}|\partial_y^jf(y_i)|^2\)">\(\ell_j=N_j^{-1}\sum_{i=1}^{N_j}|\partial_y^jf(y_i)|^2\)</span>
+over the nodes in question, retain the full estimate</p>
+<span class="math math-display" data-tex="\[
+\max_i|\partial_y^jf(y_i)|\le\sqrt{N_j\ell_j}.
+\tag{BN8}
+\]">\[
+\max_i|\partial_y^jf(y_i)|\le\sqrt{N_j\ell_j}.
+\tag{BN8}
+\]</span>
+<p>It follows from nonnegativity of each summand. The factor
+<span class="math" data-tex="\(\sqrt{N_j}\)">\(\sqrt{N_j}\)</span> cannot be removed. The anchor error is evaluated
+at the actual point minus two using BN1; odd projection alone does
+not impose that value. These formulas yield finite-domain error bounds,
+not an exact nearby solution or a stability theorem.</p>
+<h2 id="bn3-an-explicit-fourth-derivative-barrier-for-the-nonsmooth-benchmark">BN3. An explicit fourth-derivative barrier for the nonsmooth benchmark</h2>
+<p>Return to the original exact anchored profile <span class="math" data-tex="\(U_0\)">\(U_0\)</span> at
+<span class="math" data-tex="\(\lambda=2/5\)">\(\lambda=2/5\)</span>. Retain <span class="math" data-tex="\(s=H_0^{-1}(y)&gt;0\)">\(s=H_0^{-1}(y)&gt;0\)</span> and
+<span class="math" data-tex="\(h=1+(7/2)s^{5/2}\)">\(h=1+(7/2)s^{5/2}\)</span>. From the full inverse formula BG13,</p>
+<span class="math math-display" data-tex="\[
+U_0&#x27;&#x27;&#x27;(y)=\frac{(105/8)s^{1/2}}{h^4}
+-\frac{3(35/4)^2s^3}{h^5}
+=\frac{(105/8)s^{1/2}(1-14s^{5/2})}{h^5}.
+\tag{BN9}
+\]">\[
+U_0&#x27;&#x27;&#x27;(y)=\frac{(105/8)s^{1/2}}{h^4}
+-\frac{3(35/4)^2s^3}{h^5}
+=\frac{(105/8)s^{1/2}(1-14s^{5/2})}{h^5}.
+\tag{BN9}
+\]</span>
+<p>The second expression is the exact combination of the two displayed
+original terms, used only to estimate this same derivative. Define</p>
+<span class="math math-display" data-tex="\[
+s_0=28^{-2/5},\qquad
+Y_0=H_0(s_0)=\frac{29}{28}\,28^{-2/5},\qquad
+c_0=\frac{105}{16}\left(\frac89\right)^5
+\sqrt{\frac{28}{29}}.
+\tag{BN10}
+\]">\[
+s_0=28^{-2/5},\qquad
+Y_0=H_0(s_0)=\frac{29}{28}\,28^{-2/5},\qquad
+c_0=\frac{105}{16}\left(\frac89\right)^5
+\sqrt{\frac{28}{29}}.
+\tag{BN10}
+\]</span>
+<p>For <span class="math" data-tex="\(0&lt;s\le s_0\)">\(0&lt;s\le s_0\)</span>, the full factors obey
+<span class="math" data-tex="\(1-14s^{5/2}\ge1/2\)">\(1-14s^{5/2}\ge1/2\)</span>, <span class="math" data-tex="\(h\le9/8\)">\(h\le9/8\)</span>, and
+<span class="math" data-tex="\(y=s(1+s^{5/2})\le(29/28)s\)">\(y=s(1+s^{5/2})\le(29/28)s\)</span>. Therefore BN9 proves</p>
+<span class="math math-display" data-tex="\[
+U_0&#x27;&#x27;&#x27;(y)\ge c_0\sqrt y\quad(0&lt;y\le Y_0),\qquad
+U_0&#x27;&#x27;&#x27;(0)=0.
+\tag{BN11}
+\]">\[
+U_0&#x27;&#x27;&#x27;(y)\ge c_0\sqrt y\quad(0&lt;y\le Y_0),\qquad
+U_0&#x27;&#x27;&#x27;(0)=0.
+\tag{BN11}
+\]</span>
+<p>Let <span class="math" data-tex="\(V\in C^4([0,Y_0])\)">\(V\in C^4([0,Y_0])\)</span>, with
+<span class="math" data-tex="\(\|V&#x27;&#x27;&#x27;&#x27;\|_\infty\le M\)">\(\|V&#x27;&#x27;&#x27;&#x27;\|_\infty\le M\)</span>, <span class="math" data-tex="\(M\ge0\)">\(M\ge0\)</span>, and put
+<span class="math" data-tex="\(\epsilon=\|V&#x27;&#x27;&#x27;-U_0&#x27;&#x27;&#x27;\|_\infty\)">\(\epsilon=\|V&#x27;&#x27;&#x27;-U_0&#x27;&#x27;&#x27;\|_\infty\)</span> on this same original
+interval. For each <span class="math" data-tex="\(0&lt;y\le Y_0\)">\(0&lt;y\le Y_0\)</span>, the exact two-point
+decomposition and the fundamental theorem of calculus give</p>
+<span class="math math-display" data-tex="\[
+c_0\sqrt y
+\le|U_0&#x27;&#x27;&#x27;(y)-V&#x27;&#x27;&#x27;(y)|+|V&#x27;&#x27;&#x27;(y)-V&#x27;&#x27;&#x27;(0)|
++|V&#x27;&#x27;&#x27;(0)-U_0&#x27;&#x27;&#x27;(0)|
+\le2\epsilon+My.
+\tag{BN12}
+\]">\[
+c_0\sqrt y
+\le|U_0&#x27;&#x27;&#x27;(y)-V&#x27;&#x27;&#x27;(y)|+|V&#x27;&#x27;&#x27;(y)-V&#x27;&#x27;&#x27;(0)|
++|V&#x27;&#x27;&#x27;(0)-U_0&#x27;&#x27;&#x27;(0)|
+\le2\epsilon+My.
+\tag{BN12}
+\]</span>
+<p>For <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span> set <span class="math" data-tex="\(y_M=\min\{Y_0,c_0^2/(4M^2)\}\)">\(y_M=\min\{Y_0,c_0^2/(4M^2)\}\)</span>.
+For <span class="math" data-tex="\(M=0\)">\(M=0\)</span> set <span class="math" data-tex="\(y_M=Y_0\)">\(y_M=Y_0\)</span>. It follows that</p>
+<span class="math math-display" data-tex="\[
+\epsilon\ge\frac{c_0\sqrt{y_M}-My_M}{2}&gt;0.
+\tag{BN13}
+\]">\[
+\epsilon\ge\frac{c_0\sqrt{y_M}-My_M}{2}&gt;0.
+\tag{BN13}
+\]</span>
+<p>The right side is positive because, when <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>,
+<span class="math" data-tex="\(M\sqrt{y_M}\le c_0/2\)">\(M\sqrt{y_M}\le c_0/2\)</span>. When
+<span class="math" data-tex="\(c_0^2/(4M^2)\le Y_0\)">\(c_0^2/(4M^2)\le Y_0\)</span>, it equals <span class="math" data-tex="\(c_0^2/(8M)\)">\(c_0^2/(8M)\)</span>;
+when <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, it equals <span class="math" data-tex="\(c_0\sqrt{Y_0}/2\)">\(c_0\sqrt{Y_0}/2\)</span>.
+No fitting error or limiting derivative has been assumed here.</p>
+<p>Taking <span class="math" data-tex="\(V=U_N\)">\(V=U_N\)</span> and <span class="math" data-tex="\(M=Q_4\)">\(M=Q_4\)</span> gives a quantitative barrier
+for any specified network to approximate the original third derivative
+with a bounded fourth derivative. Taking <span class="math" data-tex="\(V=U_\delta\)">\(V=U_\delta\)</span> explains
+why the approximation BA17 must let that fourth derivative escape;
+BA25 locates it and supplies its exact coefficient. Thus the residual
+loss, the original-coordinate grid estimate and the profile-regularity
+bound have explicit proved relations. A small scalar loss by itself
+does not replace these separate calculations.</p>
+<p><img src="assets/NS-FLUID-48/burgers-network-regularity-0BF1306D45D2035B07099EADC4FFDE3427EB7CF63ECF0BBD4C2A12FA8174A18C.png" alt="The original Burgers network architecture and the exact derivative-approximation barrier" class="course-figure" width="2229" height="835" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="burgers-network-regularity" data-asset-sha256="0BF1306D45D2035B07099EADC4FFDE3427EB7CF63ECF0BBD4C2A12FA8174A18C"></p>
+<p>The left is a schematic of the actual layer sizes and odd projection
+in BN1, with all parameters still to be supplied. It identifies the
+proved path from those parameters to the derivative and grid bounds.
+The right evaluates the exact lower bound BN13 on the original
+<span class="math" data-tex="\([0,Y_0]\)">\([0,Y_0]\)</span>, with <span class="math" data-tex="\(Y_0,c_0\)">\(Y_0,c_0\)</span> from BN10. The dotted line is
+<span class="math" data-tex="\(M=c_0/(2\sqrt{Y_0})\)">\(M=c_0/(2\sqrt{Y_0})\)</span>, where the two cases in <span class="math" data-tex="\(y_M\)">\(y_M\)</span>
+meet; the curve is a proved bound, not a fitted network error.
+The human architecture source is the original line330.
+<a href="assets/burgers-profile-comparisons.py">Reproducible figure source</a>
+and <a href="assets/burgers-network-regularity.svg">vector rendering</a>.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<p>These exercises use the complete supporting proofs
+<span class="unlinked">BG1–BG15</span>,
+<span class="unlinked">BA1–BA25</span> and
+<span class="unlinked">BN1–BN13</span>.
+The human comparison is Wang, Lai, Gómez-Serrano and Buckmaster,
+<a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>, original
+<code>BoussinesqSupp_v5.tex</code>291–353. The equation, anchor, exponent windows,
+network architecture and residual losses remain those of that source.
+The constructions below are specified examples, not recovered trained
+parameters. No novelty or full fluid-theorem claim is made.</p>
+<h3 id="exercise-1-invert-the-original-cubic-and-keep-every-physical-time-factor">Exercise 1. Invert the original cubic and keep every physical time factor</h3>
+<p>At the first smooth exponent <span class="math" data-tex="\(\lambda=1/2\)">\(\lambda=1/2\)</span>, find the exact real
+anchored profile. Calculate its original physical solution and the first
+three spatial derivatives.</p>
+<p><strong>Solution.</strong></p>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\theta(y)=\frac13\operatorname{arsinh}\left(\frac{3\sqrt3}{2}y\right),
+\qquad s(y)=\frac2{\sqrt3}\sinh\theta(y),\qquad U(y)=-s(y).
+\tag{EX1}
+\]">\[
+\theta(y)=\frac13\operatorname{arsinh}\left(\frac{3\sqrt3}{2}y\right),
+\qquad s(y)=\frac2{\sqrt3}\sinh\theta(y),\qquad U(y)=-s(y).
+\tag{EX1}
+\]</span>
+<p>Using <span class="math" data-tex="\(\sinh(3\theta)=3\sinh\theta+4\sinh^3\theta\)">\(\sinh(3\theta)=3\sinh\theta+4\sinh^3\theta\)</span>,
+with all constants present, gives</p>
+<span class="math math-display" data-tex="\[
+s+s^3=\frac2{3\sqrt3}
+[3\sinh\theta+4\sinh^3\theta]
+=\frac2{3\sqrt3}\sinh(3\theta)=y.
+\tag{EX2}
+\]">\[
+s+s^3=\frac2{3\sqrt3}
+[3\sinh\theta+4\sinh^3\theta]
+=\frac2{3\sqrt3}\sinh(3\theta)=y.
+\tag{EX2}
+\]</span>
+<p>The triple-angle identity follows by multiplying the exponential
+definitions of hyperbolic sine, or by expanding
+<span class="math" data-tex="\((e^\theta-e^{-\theta})^3\)">\((e^\theta-e^{-\theta})^3\)</span>. The map <span class="math" data-tex="\(s\mapsto s+s^3\)">\(s\mapsto s+s^3\)</span>
+has derivative <span class="math" data-tex="\(1+3s^2&gt;0\)">\(1+3s^2&gt;0\)</span>, is odd and has image the real line.
+Consequently EX1 is its unique real inverse, with no choice of branch.
+Since <span class="math" data-tex="\(1+1^3=2\)">\(1+1^3=2\)</span>, it gives exactly <span class="math" data-tex="\(U(-2)=1\)">\(U(-2)=1\)</span>.
+BG6 at <span class="math" data-tex="\(q=2\)">\(q=2\)</span> verifies the entire original profile equation.</p>
+<p>Write <span class="math" data-tex="\(h=1+3s^2\)">\(h=1+3s^2\)</span>. Direct inverse differentiation gives</p>
+<span class="math math-display" data-tex="\[
+U&#x27;=-\frac1h,\qquad U&#x27;&#x27;=\frac{6s}{h^3},\qquad
+U&#x27;&#x27;&#x27;=\frac6{h^4}-\frac{108s^2}{h^5}.
+\tag{EX3}
+\]">\[
+U&#x27;=-\frac1h,\qquad U&#x27;&#x27;=\frac{6s}{h^3},\qquad
+U&#x27;&#x27;&#x27;=\frac6{h^4}-\frac{108s^2}{h^5}.
+\tag{EX3}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(s&#x27;=h^{-1}\)">\(s&#x27;=h^{-1}\)</span> and <span class="math" data-tex="\(\partial_s h=6s\)">\(\partial_s h=6s\)</span>; applying
+<span class="math" data-tex="\(h^{-1}\partial_s\)">\(h^{-1}\partial_s\)</span> to each preceding expression proves all
+three identities, including both terms in the last one.</p>
+<p>For <span class="math" data-tex="\(\tau=1-t&gt;0\)">\(\tau=1-t&gt;0\)</span> and <span class="math" data-tex="\(y=x/\tau^{3/2}\)">\(y=x/\tau^{3/2}\)</span>, the original
+physical solution is</p>
+<span class="math math-display" data-tex="\[
+u(t,x)=-\frac{2\tau^{1/2}}{\sqrt3}
+\sinh\left[\frac13\operatorname{arsinh}
+\left(\frac{3\sqrt3 x}{2\tau^{3/2}}\right)\right].
+\tag{EX4}
+\]">\[
+u(t,x)=-\frac{2\tau^{1/2}}{\sqrt3}
+\sinh\left[\frac13\operatorname{arsinh}
+\left(\frac{3\sqrt3 x}{2\tau^{3/2}}\right)\right].
+\tag{EX4}
+\]</span>
+<p>All derivatives below use <span class="math" data-tex="\(s=s(x/\tau^{3/2})\)">\(s=s(x/\tau^{3/2})\)</span> and the same
+<span class="math" data-tex="\(h=1+3s^2\)">\(h=1+3s^2\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_x&amp;=-\frac1{\tau h},\\
+u_{xx}&amp;=\frac{6s}{\tau^{5/2}h^3},\\
+u_{xxx}&amp;=\tau^{-4}\left[\frac6{h^4}
+-\frac{108s^2}{h^5}\right],\\
+u_t+uu_x&amp;=\tau^{-1/2}
+\left[-\frac12U+\left(\frac32y+U\right)U&#x27;\right]=0.
+\end{aligned}
+\tag{EX5}
+\]">\[
+\begin{aligned}
+u_x&amp;=-\frac1{\tau h},\\
+u_{xx}&amp;=\frac{6s}{\tau^{5/2}h^3},\\
+u_{xxx}&amp;=\tau^{-4}\left[\frac6{h^4}
+-\frac{108s^2}{h^5}\right],\\
+u_t+uu_x&amp;=\tau^{-1/2}
+\left[-\frac12U+\left(\frac32y+U\right)U&#x27;\right]=0.
+\end{aligned}
+\tag{EX5}
+\]</span>
+<p>The first three time exponents are exactly
+<span class="math" data-tex="\(\lambda-k(1+\lambda)\)">\(\lambda-k(1+\lambda)\)</span> for <span class="math" data-tex="\(k=1,2,3\)">\(k=1,2,3\)</span>; the last
+line retains the complete physical residual factor. At the original
+moving anchor, <span class="math" data-tex="\(u(t,-2\tau^{3/2})=\tau^{1/2}\)">\(u(t,-2\tau^{3/2})=\tau^{1/2}\)</span>.
+Also <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>, with equality at the origin, so</p>
+<span class="math math-display" data-tex="\[
+\|u_x(t,\cdot)\|_{L^\infty(\mathbb R)}=\frac1{1-t}.
+\tag{EX6}
+\]">\[
+\|u_x(t,\cdot)\|_{L^\infty(\mathbb R)}=\frac1{1-t}.
+\tag{EX6}
+\]</span>
+<p>Every displayed formula is smooth for <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>. The gradient
+becomes unbounded as <span class="math" data-tex="\(t\uparrow1\)">\(t\uparrow1\)</span>.</p>
+<h3 id="exercise-2-recover-the-same-solution-from-its-original-characteristics">Exercise 2. Recover the same solution from its original characteristics</h3>
+<p>For every <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, retain <span class="math" data-tex="\(q=1/\lambda\)">\(q=1/\lambda\)</span>. Starting
+from the actual initial profile <span class="math" data-tex="\(u(0,a)=-H^{-1}(a)\)">\(u(0,a)=-H^{-1}(a)\)</span>, construct
+the full characteristic map, compare it with the similarity solution,
+and determine its terminal continuous profile.</p>
+<p><strong>Solution.</strong></p>
+<p>Write the original initial coordinate as</p>
+<span class="math math-display" data-tex="\[
+a=H(s)=s+s|s|^q,\qquad u(0,a)=-s.
+\]">\[
+a=H(s)=s+s|s|^q,\qquad u(0,a)=-s.
+\]</span>
+<p>The characteristic carrying that value has constant speed minus <span class="math" data-tex="\(s\)">\(s\)</span>:</p>
+<span class="math math-display" data-tex="\[
+X(t,a)=a+t u(0,a)=(1-t)s+s|s|^q
+=\tau s+s|s|^q.
+\tag{EX7}
+\]">\[
+X(t,a)=a+t u(0,a)=(1-t)s+s|s|^q
+=\tau s+s|s|^q.
+\tag{EX7}
+\]</span>
+<p>For <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, differentiation in the original label gives</p>
+<span class="math math-display" data-tex="\[
+\frac{\partial X}{\partial a}
+=\frac{\tau+(1+q)|s|^q}{1+(1+q)|s|^q}&gt;0.
+\tag{EX8}
+\]">\[
+\frac{\partial X}{\partial a}
+=\frac{\tau+(1+q)|s|^q}{1+(1+q)|s|^q}&gt;0.
+\tag{EX8}
+\]</span>
+<p>This includes the origin: both derivatives of the signed power exist
+there, and its derivative is zero. The map in <span class="math" data-tex="\(s\)">\(s\)</span> in EX7 is
+strictly increasing and tends to the two infinite endpoints. It is
+therefore a global <span class="math" data-tex="\(C^1\)">\(C^1\)</span> bijection with <span class="math" data-tex="\(C^1\)">\(C^1\)</span> inverse
+at every fixed <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>. Defining <span class="math" data-tex="\(u(t,X(t,a))=-s\)">\(u(t,X(t,a))=-s\)</span>
+gives <span class="math" data-tex="\(u_t+u u_x=0\)">\(u_t+u u_x=0\)</span> by differentiation along EX7, because
+<span class="math" data-tex="\(\partial_t X=-s=u\)">\(\partial_t X=-s=u\)</span> and the transported value is constant.</p>
+<p>To prove equality with the original similarity construction, set
+<span class="math" data-tex="\(z=s/\tau^\lambda\)">\(z=s/\tau^\lambda\)</span>, keeping <span class="math" data-tex="\(s\)">\(s\)</span> as the initial label
+parameter. Since <span class="math" data-tex="\(\lambda q=1\)">\(\lambda q=1\)</span>, the complete map satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau^{1+\lambda}H(z)
+&amp;=\tau^{1+\lambda}\left[
+\frac{s}{\tau^\lambda}
++\frac{s|s|^q}{\tau^{\lambda(1+q)}}\right]\\
+&amp;=\tau s+s|s|^q=X(t,a),\\
+\tau^\lambda[-H^{-1}(X/\tau^{1+\lambda})]&amp;=-s.
+\end{aligned}
+\tag{EX9}
+\]">\[
+\begin{aligned}
+\tau^{1+\lambda}H(z)
+&amp;=\tau^{1+\lambda}\left[
+\frac{s}{\tau^\lambda}
++\frac{s|s|^q}{\tau^{\lambda(1+q)}}\right]\\
+&amp;=\tau s+s|s|^q=X(t,a),\\
+\tau^\lambda[-H^{-1}(X/\tau^{1+\lambda})]&amp;=-s.
+\end{aligned}
+\tag{EX9}
+\]</span>
+<p>Both summands and both powers have been tracked, so EX9 proves equality
+of the physical functions at every original point. Dividing the
+initial derivative by EX8 gives</p>
+<span class="math math-display" data-tex="\[
+u_x(t,X(t,a))
+=\frac{-1/[1+(1+q)|s|^q]}
+{[\tau+(1+q)|s|^q]/[1+(1+q)|s|^q]}
+=-\frac1{\tau+(1+q)|s|^q}.
+\tag{EX10}
+\]">\[
+u_x(t,X(t,a))
+=\frac{-1/[1+(1+q)|s|^q]}
+{[\tau+(1+q)|s|^q]/[1+(1+q)|s|^q]}
+=-\frac1{\tau+(1+q)|s|^q}.
+\tag{EX10}
+\]</span>
+<p>Thus the global gradient norm equals <span class="math" data-tex="\(1/\tau\)">\(1/\tau\)</span>, attained at
+<span class="math" data-tex="\(s=a=X=0\)">\(s=a=X=0\)</span>, for every positive <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p>At <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, the map becomes <span class="math" data-tex="\(x=s|s|^q\)">\(x=s|s|^q\)</span>, still strictly
+increasing and onto, with continuous inverse. Its velocity is</p>
+<span class="math math-display" data-tex="\[
+u(1,x)=-\operatorname{sgn}(x)|x|^{1/(1+q)}
+=-\operatorname{sgn}(x)|x|^{\lambda/(1+\lambda)},
+\qquad u(1,0)=0.
+\tag{EX11}
+\]">\[
+u(1,x)=-\operatorname{sgn}(x)|x|^{1/(1+q)}
+=-\operatorname{sgn}(x)|x|^{\lambda/(1+\lambda)},
+\qquad u(1,0)=0.
+\tag{EX11}
+\]</span>
+<p>This is the pointwise limit of the original solution. For fixed
+<span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, EX7 gives <span class="math" data-tex="\(s\)">\(s\)</span> the same sign as <span class="math" data-tex="\(x\)">\(x\)</span> and
+<span class="math" data-tex="\(|s|\le |x|^{1/(1+q)}\)">\(|s|\le |x|^{1/(1+q)}\)</span>. Every convergent subsequence as
+<span class="math" data-tex="\(\tau\downarrow0\)">\(\tau\downarrow0\)</span> therefore solves
+<span class="math" data-tex="\(x=s|s|^q\)">\(x=s|s|^q\)</span>, whose solution is unique. Boundedness and this
+uniqueness prove convergence of the whole family. At <span class="math" data-tex="\(x=0\)">\(x=0\)</span>,
+<span class="math" data-tex="\(s=0\)">\(s=0\)</span> at every time, which proves the remaining case.</p>
+<p>Put <span class="math" data-tex="\(\gamma=1/(1+q)\in(0,1)\)">\(\gamma=1/(1+q)\in(0,1)\)</span>. On each half-line the
+inequality <span class="math" data-tex="\(|b^\gamma-c^\gamma|\le|b-c|^\gamma\)">\(|b^\gamma-c^\gamma|\le|b-c|^\gamma\)</span>
+proved in BG3 applies; across zero the sum of the two powers is at
+most <span class="math" data-tex="\(2|b-c|^\gamma\)">\(2|b-c|^\gamma\)</span>. Hence EX11 is locally Hölder of
+exponent <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. At zero its absolute difference quotient
+against any exponent <span class="math" data-tex="\(\beta&gt;\gamma\)">\(\beta&gt;\gamma\)</span> is
+<span class="math" data-tex="\(|x|^{\gamma-\beta}\)">\(|x|^{\gamma-\beta}\)</span>, unbounded. This proves the exact
+terminal exponent and failure of a finite derivative at zero.</p>
+<p>The preterminal spatial regularity remains exactly BG11. Smooth initial
+profiles occur at the discrete exponents of BG12. The other exponents
+already have the stated finite regularity at time zero. These global
+profiles are unbounded in value; the calculation asserts their original
+classical Burgers evolution and gradient behavior, not finite energy
+or a Navier–Stokes singularity.</p>
+<h3 id="exercise-3-keep-all-fourteen-third-derivative-contributions">Exercise 3. Keep all fourteen third-derivative contributions</h3>
+<p>Use the original smooth family of BA1. Expand its third residual
+derivative directly in <span class="math" data-tex="\(g,h\)">\(g,h\)</span>, retaining all product-rule
+contributions before combining equal terms.</p>
+<p><strong>Solution.</strong></p>
+<p>The definitions and original derivative operator are</p>
+<span class="math math-display" data-tex="\[
+f=g/h,\qquad
+g=-C_\delta\delta^2s(s^2+\delta^2)^{q/2-1},\qquad
+h=H_\delta&#x27;,\qquad \partial_y=h^{-1}\partial_s.
+\tag{EX12}
+\]">\[
+f=g/h,\qquad
+g=-C_\delta\delta^2s(s^2+\delta^2)^{q/2-1},\qquad
+h=H_\delta&#x27;,\qquad \partial_y=h^{-1}\partial_s.
+\tag{EX12}
+\]</span>
+<p>First and second differentiation yield</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_y&amp;=g&#x27;/h^2-gh&#x27;/h^3,\\
+f_{yy}&amp;=g&#x27;&#x27;/h^3-2g&#x27;h&#x27;/h^4-g&#x27;h&#x27;/h^4
+-gh&#x27;&#x27;/h^4+3g(h&#x27;)^2/h^5.
+\end{aligned}
+\tag{EX13}
+\]">\[
+\begin{aligned}
+f_y&amp;=g&#x27;/h^2-gh&#x27;/h^3,\\
+f_{yy}&amp;=g&#x27;&#x27;/h^3-2g&#x27;h&#x27;/h^4-g&#x27;h&#x27;/h^4
+-gh&#x27;&#x27;/h^4+3g(h&#x27;)^2/h^5.
+\end{aligned}
+\tag{EX13}
+\]</span>
+<p>The two <span class="math" data-tex="\(g&#x27;h&#x27;\)">\(g&#x27;h&#x27;\)</span> terms are separate: the first comes from
+the denominator of <span class="math" data-tex="\(g&#x27;/h^2\)">\(g&#x27;/h^2\)</span>, and the second from
+differentiating <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(-gh&#x27;/h^3\)">\(-gh&#x27;/h^3\)</span>. Apply
+<span class="math" data-tex="\(h^{-1}\partial_s\)">\(h^{-1}\partial_s\)</span> to each of the five terms in their
+displayed order. Their complete contributions are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_1&amp;=g&#x27;&#x27;&#x27;/h^4-3g&#x27;&#x27;h&#x27;/h^5,\\
+A_2&amp;=-2g&#x27;&#x27;h&#x27;/h^5-2g&#x27;h&#x27;&#x27;/h^5+8g&#x27;(h&#x27;)^2/h^6,\\
+A_3&amp;=-g&#x27;&#x27;h&#x27;/h^5-g&#x27;h&#x27;&#x27;/h^5+4g&#x27;(h&#x27;)^2/h^6,\\
+A_4&amp;=-g&#x27;h&#x27;&#x27;/h^5-gh&#x27;&#x27;&#x27;/h^5+4gh&#x27;h&#x27;&#x27;/h^6,\\
+A_5&amp;=3g&#x27;(h&#x27;)^2/h^6+6gh&#x27;h&#x27;&#x27;/h^6-15g(h&#x27;)^3/h^7,\\
+f_{yyy}&amp;=A_1+A_2+A_3+A_4+A_5.
+\end{aligned}
+\tag{EX14}
+\]">\[
+\begin{aligned}
+A_1&amp;=g&#x27;&#x27;&#x27;/h^4-3g&#x27;&#x27;h&#x27;/h^5,\\
+A_2&amp;=-2g&#x27;&#x27;h&#x27;/h^5-2g&#x27;h&#x27;&#x27;/h^5+8g&#x27;(h&#x27;)^2/h^6,\\
+A_3&amp;=-g&#x27;&#x27;h&#x27;/h^5-g&#x27;h&#x27;&#x27;/h^5+4g&#x27;(h&#x27;)^2/h^6,\\
+A_4&amp;=-g&#x27;h&#x27;&#x27;/h^5-gh&#x27;&#x27;&#x27;/h^5+4gh&#x27;h&#x27;&#x27;/h^6,\\
+A_5&amp;=3g&#x27;(h&#x27;)^2/h^6+6gh&#x27;h&#x27;&#x27;/h^6-15g(h&#x27;)^3/h^7,\\
+f_{yyy}&amp;=A_1+A_2+A_3+A_4+A_5.
+\end{aligned}
+\tag{EX14}
+\]</span>
+<p>There are <span class="math" data-tex="\(2+3+3+3+3=14\)">\(2+3+3+3+3=14\)</span> contributions. Combining only
+identical full products proves the equivalent complete expression</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_{yyy}={}&amp;g&#x27;&#x27;&#x27;/h^4-6g&#x27;&#x27;h&#x27;/h^5-4g&#x27;h&#x27;&#x27;/h^5
++15g&#x27;(h&#x27;)^2/h^6\\
+&amp;-gh&#x27;&#x27;&#x27;/h^5+10gh&#x27;h&#x27;&#x27;/h^6-15g(h&#x27;)^3/h^7.
+\end{aligned}
+\tag{EX15}
+\]">\[
+\begin{aligned}
+f_{yyy}={}&amp;g&#x27;&#x27;&#x27;/h^4-6g&#x27;&#x27;h&#x27;/h^5-4g&#x27;h&#x27;&#x27;/h^5
++15g&#x27;(h&#x27;)^2/h^6\\
+&amp;-gh&#x27;&#x27;&#x27;/h^5+10gh&#x27;h&#x27;&#x27;/h^6-15g(h&#x27;)^3/h^7.
+\end{aligned}
+\tag{EX15}
+\]</span>
+<p>At <span class="math" data-tex="\(s=y=0\)">\(s=y=0\)</span>, oddness of <span class="math" data-tex="\(g\)">\(g\)</span> and evenness of <span class="math" data-tex="\(h\)">\(h\)</span>
+give <span class="math" data-tex="\(g(0)=g&#x27;&#x27;(0)=h&#x27;(0)=h&#x27;&#x27;&#x27;(0)=0\)">\(g(0)=g&#x27;&#x27;(0)=h&#x27;(0)=h&#x27;&#x27;&#x27;(0)=0\)</span>. The two surviving
+terms are</p>
+<span class="math math-display" data-tex="\[
+f_{yyy}(0)=\frac{g&#x27;&#x27;&#x27;(0)}{h(0)^4}
+-\frac{4g&#x27;(0)h&#x27;&#x27;(0)}{h(0)^5}.
+\tag{EX16}
+\]">\[
+f_{yyy}(0)=\frac{g&#x27;&#x27;&#x27;(0)}{h(0)^4}
+-\frac{4g&#x27;(0)h&#x27;&#x27;(0)}{h(0)^5}.
+\tag{EX16}
+\]</span>
+<p>Using the explicitly differentiated values from BA8 gives</p>
+<span class="math math-display" data-tex="\[
+f_{yyy}(0)=-\frac{3C_\delta(q-2)\delta^{q-2}}
+{(1+C_\delta\delta^q)^4}
++\frac{12C_\delta^2q\delta^{2q-2}}
+{(1+C_\delta\delta^q)^5}.
+\tag{EX17}
+\]">\[
+f_{yyy}(0)=-\frac{3C_\delta(q-2)\delta^{q-2}}
+{(1+C_\delta\delta^q)^4}
++\frac{12C_\delta^2q\delta^{2q-2}}
+{(1+C_\delta\delta^q)^5}.
+\tag{EX17}
+\]</span>
+<p>At <span class="math" data-tex="\(q=5/2\)">\(q=5/2\)</span>, both coefficients and powers specialize to</p>
+<span class="math math-display" data-tex="\[
+f_{yyy}(0)=-\frac{(3/2)C_\delta\delta^{1/2}}
+{(1+C_\delta\delta^{5/2})^4}
++\frac{30C_\delta^2\delta^3}
+{(1+C_\delta\delta^{5/2})^5}.
+\tag{EX18}
+\]">\[
+f_{yyy}(0)=-\frac{(3/2)C_\delta\delta^{1/2}}
+{(1+C_\delta\delta^{5/2})^4}
++\frac{30C_\delta^2\delta^3}
+{(1+C_\delta\delta^{5/2})^5}.
+\tag{EX18}
+\]</span>
+<p>Consequently its quotient by <span class="math" data-tex="\(\delta^{1/2}\)">\(\delta^{1/2}\)</span> tends to
+<span class="math" data-tex="\(-3/2\)">\(-3/2\)</span>. The next exercise proves the complete analogue for
+every odd derivative order in the source's selection windows.</p>
+<h3 id="exercise-4-prove-the-exact-decay-rate-for-this-constructed-family">Exercise 4. Prove the exact decay rate for this constructed family</h3>
+<p>Fix <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(0&lt;\alpha&lt;1\)">\(0&lt;\alpha&lt;1\)</span>,
+<span class="math" data-tex="\(m=2n+1\)">\(m=2n+1\)</span>, <span class="math" data-tex="\(q=2n+\alpha\)">\(q=2n+\alpha\)</span>, and <span class="math" data-tex="\(\lambda=1/q\)">\(\lambda=1/q\)</span>.
+Prove a nonzero leading coefficient for the original residual's
+<span class="math" data-tex="\(m\)">\(m\)</span>-th derivative at zero, and deduce matching upper and lower
+bounds on every fixed interval <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span>, <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>.</p>
+<p><strong>Solution.</strong></p>
+<p>For this calculation retain the exact functions</p>
+<span class="math math-display" data-tex="\[
+G(\xi)=\xi(1+\xi^2)^{q/2-1},\qquad
+T(\xi)=\xi(1+\xi^2)^{q/2}.
+\]">\[
+G(\xi)=\xi(1+\xi^2)^{q/2-1},\qquad
+T(\xi)=\xi(1+\xi^2)^{q/2}.
+\]</span>
+<p>They parameterize the original functions without replacing their
+coordinates or denominators:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g(s)&amp;=-C_\delta\delta^{q+1}G(s/\delta),\\
+h(s)&amp;=1+C_\delta\delta^q T&#x27;(s/\delta),\\
+g^{(j)}(0)&amp;=-C_\delta\delta^{q+1-j}G^{(j)}(0),\\
+h^{(k)}(0)&amp;=C_\delta\delta^{q-k}T^{(k+1)}(0)\quad(k\ge1),\\
+h(0)&amp;=1+C_\delta\delta^q.
+\end{aligned}
+\tag{EX19}
+\]">\[
+\begin{aligned}
+g(s)&amp;=-C_\delta\delta^{q+1}G(s/\delta),\\
+h(s)&amp;=1+C_\delta\delta^q T&#x27;(s/\delta),\\
+g^{(j)}(0)&amp;=-C_\delta\delta^{q+1-j}G^{(j)}(0),\\
+h^{(k)}(0)&amp;=C_\delta\delta^{q-k}T^{(k+1)}(0)\quad(k\ge1),\\
+h(0)&amp;=1+C_\delta\delta^q.
+\end{aligned}
+\tag{EX19}
+\]</span>
+<p>Here <span class="math" data-tex="\(T&#x27;(0)=1\)">\(T&#x27;(0)=1\)</span>. Each derivative in the third and fourth
+lines is an original <span class="math" data-tex="\(s\)">\(s\)</span>-derivative, so every factor
+<span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span> from differentiation is present.</p>
+<p>For a record <span class="math" data-tex="\((c,j,a,b)\in\mathcal T_m\)">\((c,j,a,b)\in\mathcal T_m\)</span> of BA5–BA7 put
+<span class="math" data-tex="\(N=\sum_k a_k\)">\(N=\sum_k a_k\)</span>. Its exact contribution at the original
+point <span class="math" data-tex="\(y=0\)">\(y=0\)</span> is</p>
+<span class="math math-display" data-tex="\[
+-\frac{c C_\delta^{1+N}\delta^{\alpha+qN}
+G^{(j)}(0)\prod_{k\ge1}(T^{(k+1)}(0))^{a_k}}
+{(1+C_\delta\delta^q)^{m+1+N}}.
+\tag{EX20}
+\]">\[
+-\frac{c C_\delta^{1+N}\delta^{\alpha+qN}
+G^{(j)}(0)\prod_{k\ge1}(T^{(k+1)}(0))^{a_k}}
+{(1+C_\delta\delta^q)^{m+1+N}}.
+\tag{EX20}
+\]</span>
+<p>Indeed its exponent before substitution is
+<span class="math" data-tex="\(q+1-j+\sum_k(q-k)a_k\)">\(q+1-j+\sum_k(q-k)a_k\)</span>; the identity
+<span class="math" data-tex="\(j+\sum_k k a_k=m\)">\(j+\sum_k k a_k=m\)</span> makes it
+<span class="math" data-tex="\(q+1-m+qN=\alpha+qN\)">\(q+1-m+qN=\alpha+qN\)</span>. BA7 gives the full denominator
+power in EX20. The minus sign comes from the single <span class="math" data-tex="\(g\)">\(g\)</span>
+factor, including when some of the evaluated derivatives are zero.</p>
+<p>The only record with <span class="math" data-tex="\(N=0\)">\(N=0\)</span> is
+<span class="math" data-tex="\((1,m,0,m+1)\)">\((1,m,0,m+1)\)</span>. To prove this, the first transition in BA6
+preserves <span class="math" data-tex="\(N\)">\(N\)</span>, the second is available only after a numerator
+<span class="math" data-tex="\(h\)">\(h\)</span>-derivative exists and preserves <span class="math" data-tex="\(N\)">\(N\)</span>, and the third
+increases <span class="math" data-tex="\(N\)">\(N\)</span> by one. Starting from <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, only the
+first transition can lead to a final record with <span class="math" data-tex="\(N=0\)">\(N=0\)</span>.
+It differentiates <span class="math" data-tex="\(g\)">\(g\)</span> at every step and gives the stated
+record. Every other retained contribution in EX20, after division
+by <span class="math" data-tex="\(\delta^\alpha\)">\(\delta^\alpha\)</span>, has at least the factor
+<span class="math" data-tex="\(\delta^q\)">\(\delta^q\)</span> and a denominator at least one.</p>
+<p>The finite Taylor formula for <span class="math" data-tex="\((1+v)^{q/2-1}\)">\((1+v)^{q/2-1}\)</span> at <span class="math" data-tex="\(v=0\)">\(v=0\)</span>
+has coefficient
+<span class="math" data-tex="\(\binom{q/2-1}{n}\)">\(\binom{q/2-1}{n}\)</span> at <span class="math" data-tex="\(v^n\)">\(v^n\)</span>: repeated differentiation
+gives the falling product divided by <span class="math" data-tex="\(n!\)">\(n!\)</span>. Substituting
+<span class="math" data-tex="\(v=\xi^2\)">\(v=\xi^2\)</span> and multiplying by <span class="math" data-tex="\(\xi\)">\(\xi\)</span> shows that</p>
+<span class="math math-display" data-tex="\[
+A_m:=G^{(m)}(0)
+=m!\binom{n-1+\alpha/2}{n}&gt;0.
+\tag{EX21}
+\]">\[
+A_m:=G^{(m)}(0)
+=m!\binom{n-1+\alpha/2}{n}&gt;0.
+\tag{EX21}
+\]</span>
+<p>All <span class="math" data-tex="\(n\)">\(n\)</span> factors in this binomial numerator are positive;
+the last one is <span class="math" data-tex="\(\alpha/2\)">\(\alpha/2\)</span>. The Taylor remainder has higher
+order because the function is smooth in a neighborhood of zero.
+Thus EX20, with its finite number of terms, proves the exact limit</p>
+<span class="math math-display" data-tex="\[
+\lim_{\delta\downarrow0}\delta^{-\alpha}
+f_\delta^{(m)}(0)=-A_m.
+\tag{EX22}
+\]">\[
+\lim_{\delta\downarrow0}\delta^{-\alpha}
+f_\delta^{(m)}(0)=-A_m.
+\tag{EX22}
+\]</span>
+<p>This argument keeps every inverse-coordinate contribution; it does
+not differentiate a nonsmooth limiting profile beyond its regularity.</p>
+<p>We can also give an explicit range for a lower bound. Define the finite
+nonnegative constant</p>
+<span class="math math-display" data-tex="\[
+B_m^*=\sum_{\substack{(c,j,a,b)\in\mathcal T_m\\\sum a_k\ge1}}
+|c|\,|G^{(j)}(0)|
+\prod_{k\ge1}|T^{(k+1)}(0)|^{a_k}.
+\tag{EX23}
+\]">\[
+B_m^*=\sum_{\substack{(c,j,a,b)\in\mathcal T_m\\\sum a_k\ge1}}
+|c|\,|G^{(j)}(0)|
+\prod_{k\ge1}|T^{(k+1)}(0)|^{a_k}.
+\tag{EX23}
+\]</span>
+<p>Every derivative here is specified by the full finite formula BA9 and
+the product rule. No unknown bound enters this sum. From EX20 and
+<span class="math" data-tex="\(0&lt;C_\delta\le1\)">\(0&lt;C_\delta\le1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|\delta^{-\alpha}f_\delta^{(m)}(0)
++\frac{C_\delta A_m}{(1+C_\delta\delta^q)^{m+1}}\right|
+\le B_m^*\delta^q\qquad(0&lt;\delta\le1).
+\tag{EX24}
+\]">\[
+\left|\delta^{-\alpha}f_\delta^{(m)}(0)
++\frac{C_\delta A_m}{(1+C_\delta\delta^q)^{m+1}}\right|
+\le B_m^*\delta^q\qquad(0&lt;\delta\le1).
+\tag{EX24}
+\]</span>
+<p>Set <span class="math" data-tex="\(d_B=1\)">\(d_B=1\)</span> if <span class="math" data-tex="\(B_m^*=0\)">\(B_m^*=0\)</span>, and otherwise
+<span class="math" data-tex="\(d_B=(A_m/(4B_m^*))^{1/q}\)">\(d_B=(A_m/(4B_m^*))^{1/q}\)</span>. Retain the explicit threshold</p>
+<span class="math math-display" data-tex="\[
+\delta_*=
+\min\left\{1,\frac1{\sqrt{4q}},
+[8(m+1)]^{-1/q},d_B\right\}&gt;0.
+\tag{EX25}
+\]">\[
+\delta_*=
+\min\left\{1,\frac1{\sqrt{4q}},
+[8(m+1)]^{-1/q},d_B\right\}&gt;0.
+\tag{EX25}
+\]</span>
+<p>For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>,
+<span class="math" data-tex="\((1+x)^{-a}\ge1-ax\)">\((1+x)^{-a}\ge1-ax\)</span>. One proof is that the difference
+of these expressions is zero at zero and has derivative
+<span class="math" data-tex="\(a[1-(1+x)^{-a-1}]\ge0\)">\(a[1-(1+x)^{-a-1}]\ge0\)</span>. When <span class="math" data-tex="\(\delta\le\delta_*\)">\(\delta\le\delta_*\)</span>,
+this inequality gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_\delta&amp;\ge1-\tfrac q2\delta^2\ge\tfrac78,\\
+(1+C_\delta\delta^q)^{-(m+1)}
+&amp;\ge1-(m+1)C_\delta\delta^q\ge\tfrac78,\\
+\frac{C_\delta}{(1+C_\delta\delta^q)^{m+1}}&amp;\ge\tfrac34,
+\qquad B_m^*\delta^q\le\tfrac14A_m.
+\end{aligned}
+\tag{EX26}
+\]">\[
+\begin{aligned}
+C_\delta&amp;\ge1-\tfrac q2\delta^2\ge\tfrac78,\\
+(1+C_\delta\delta^q)^{-(m+1)}
+&amp;\ge1-(m+1)C_\delta\delta^q\ge\tfrac78,\\
+\frac{C_\delta}{(1+C_\delta\delta^q)^{m+1}}&amp;\ge\tfrac34,
+\qquad B_m^*\delta^q\le\tfrac14A_m.
+\end{aligned}
+\tag{EX26}
+\]</span>
+<p>The product of the first two lower bounds is <span class="math" data-tex="\(49/64\)">\(49/64\)</span>, which
+is at least <span class="math" data-tex="\(3/4\)">\(3/4\)</span>. EX24–EX26 therefore give</p>
+<span class="math math-display" data-tex="\[
+\frac{A_m}{2}\delta^\alpha
+\le |f_\delta^{(m)}(0)|
+\le\sup_{|y|\le A}|f_\delta^{(m)}(y)|
+\le D_m(q,A)\delta^\alpha
+\qquad(0&lt;\delta\le\delta_*).
+\tag{EX27}
+\]">\[
+\frac{A_m}{2}\delta^\alpha
+\le |f_\delta^{(m)}(0)|
+\le\sup_{|y|\le A}|f_\delta^{(m)}(y)|
+\le D_m(q,A)\delta^\alpha
+\qquad(0&lt;\delta\le\delta_*).
+\tag{EX27}
+\]</span>
+<p>The last bound is the full explicit BA15–BA16 estimate. Hence this
+family has exactly that power of decay. Squaring EX22 gives, for
+the actual single smoothness sample at zero,</p>
+<span class="math math-display" data-tex="\[
+\lim_{\delta\downarrow0}\delta^{-2\alpha}
+|f_\delta^{(m)}(0)|^2=A_m^2.
+\tag{EX28}
+\]">\[
+\lim_{\delta\downarrow0}\delta^{-2\alpha}
+|f_\delta^{(m)}(0)|^2=A_m^2.
+\tag{EX28}
+\]</span>
+<p>At the source's nonsmooth benchmark <span class="math" data-tex="\(n=1,\alpha=1/2\)">\(n=1,\alpha=1/2\)</span>,
+<span class="math" data-tex="\(A_3=6(1/4)=3/2\)">\(A_3=6(1/4)=3/2\)</span>. At <span class="math" data-tex="\(n=2,\alpha=1/2\)">\(n=2,\alpha=1/2\)</span>,
+<span class="math" data-tex="\(A_5=120(5/4)(1/4)/2=75/4\)">\(A_5=120(5/4)(1/4)/2=75/4\)</span>. The corresponding squared
+coefficients are <span class="math" data-tex="\(9/4\)">\(9/4\)</span> and <span class="math" data-tex="\(5625/16\)">\(5625/16\)</span>. These are exact
+rates for the constructed anchored family. They do not assert the
+best rate over every smooth family or over the fixed network class.</p>
+<h3 id="exercise-5-specify-every-network-parameter-and-calculate-its-losses">Exercise 5. Specify every network parameter and calculate its losses</h3>
+<p>Construct a network with exactly the source's three hidden layers of
+twenty tanh units and its odd projection. Impose its anchor exactly,
+then calculate the residual and tested derivative values. Determine
+explicit parameter bounds for continuous residual control.</p>
+<p><strong>Solution.</strong></p>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+a_1(y)=\tanh y,\qquad a_2(y)=\tanh(a_1(y)),\qquad
+a_3(y)=\tanh(a_2(y)),\qquad c=a_3(2).
+\tag{EX29}
+\]">\[
+a_1(y)=\tanh y,\qquad a_2(y)=\tanh(a_1(y)),\qquad
+a_3(y)=\tanh(a_2(y)),\qquad c=a_3(2).
+\tag{EX29}
+\]</span>
+<p>The number <span class="math" data-tex="\(c\)">\(c\)</span> is specified exactly and obeys <span class="math" data-tex="\(0&lt;c&lt;1\)">\(0&lt;c&lt;1\)</span>,
+since each tanh is strictly increasing, positive on positive arguments
+and strictly less than one there. In each layer set <span class="math" data-tex="\(W_{11}=1\)">\(W_{11}=1\)</span>
+and every other weight to zero; set all hidden biases to zero. At
+the output set <span class="math" data-tex="\(w_1=-1/c\)">\(w_1=-1/c\)</span>, all other weights to zero and
+the output bias to zero. All nineteen unused units in each layer are
+exactly zero. The full affine output and odd projection are</p>
+<span class="math math-display" data-tex="\[
+N(y)=-a_3(y)/c,\qquad
+U_N(y)=\frac{N(y)-N(-y)}2=-a_3(y)/c.
+\tag{EX30}
+\]">\[
+N(y)=-a_3(y)/c,\qquad
+U_N(y)=\frac{N(y)-N(-y)}2=-a_3(y)/c.
+\tag{EX30}
+\]</span>
+<p>Each <span class="math" data-tex="\(a_j\)">\(a_j\)</span> is odd. Thus <span class="math" data-tex="\(U_N(-2)=1\)">\(U_N(-2)=1\)</span>, and the symmetry
+and original condition loss are exact for every <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>.</p>
+<p>The Taylor formula for tanh through fifth order is
+<span class="math" data-tex="\(\tanh y=y-y^3/3+2y^5/15+O(y^7)\)">\(\tanh y=y-y^3/3+2y^5/15+O(y^7)\)</span>, obtained by its
+derivative recurrence BN2 at zero. To account for every composition
+term, a function <span class="math" data-tex="\(b(y)=y+A y^3+B y^5+O(y^7)\)">\(b(y)=y+A y^3+B y^5+O(y^7)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\tanh b(y)=y+(A-1/3)y^3+(B-A+2/15)y^5+O(y^7).
+\tag{EX31}
+\]">\[
+\tanh b(y)=y+(A-1/3)y^3+(B-A+2/15)y^5+O(y^7).
+\tag{EX31}
+\]</span>
+<p>This follows by retaining <span class="math" data-tex="\(b^3=y^3+3A y^5+O(y^7)\)">\(b^3=y^3+3A y^5+O(y^7)\)</span> and
+<span class="math" data-tex="\(b^5=y^5+O(y^7)\)">\(b^5=y^5+O(y^7)\)</span> in that Taylor formula. Three iterations,
+starting with <span class="math" data-tex="\(A=B=0\)">\(A=B=0\)</span>, give respectively</p>
+<span class="math math-display" data-tex="\[
+(A,B)=(-1/3,2/15),\quad(-2/3,3/5),\quad(-1,7/5).
+\]">\[
+(A,B)=(-1/3,2/15),\quad(-2/3,3/5),\quad(-1,7/5).
+\]</span>
+<p>In particular</p>
+<span class="math math-display" data-tex="\[
+a:=U_N&#x27;(0)=-1/c,\qquad
+b:=U_N&#x27;&#x27;&#x27;(0)=6/c,\qquad d:=U_N^{(5)}(0)=-168/c.
+\tag{EX32}
+\]">\[
+a:=U_N&#x27;(0)=-1/c,\qquad
+b:=U_N&#x27;&#x27;&#x27;(0)=6/c,\qquad d:=U_N^{(5)}(0)=-168/c.
+\tag{EX32}
+\]</span>
+<p>All even derivatives and <span class="math" data-tex="\(U_N(0)\)">\(U_N(0)\)</span> vanish by oddness.</p>
+<p>Apply the complete Leibniz formula BN5 before evaluating at zero.
+The original linear terms give
+<span class="math" data-tex="\(-\lambda U_N^{(j)}+(1+\lambda)jU_N^{(j)}\)">\(-\lambda U_N^{(j)}+(1+\lambda)jU_N^{(j)}\)</span> there.
+For <span class="math" data-tex="\(j=1\)">\(j=1\)</span>, the nonlinear term leaves <span class="math" data-tex="\(a^2\)">\(a^2\)</span>; for
+<span class="math" data-tex="\(j=3\)">\(j=3\)</span>, it leaves <span class="math" data-tex="\(3ab+ba=4ab\)">\(3ab+ba=4ab\)</span>; for <span class="math" data-tex="\(j=5\)">\(j=5\)</span>,
+it leaves <span class="math" data-tex="\(5ad+10b^2+da=6ad+10b^2\)">\(5ad+10b^2+da=6ad+10b^2\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_\lambda[U_N](0)&amp;=0,\\
+f_\lambda[U_N]&#x27;(0)&amp;=a+a^2=\frac{1-c}{c^2}&gt;0,\\
+f_\lambda[U_N]&#x27;&#x27;&#x27;(0)&amp;=(3+2\lambda+4a)b
+=\frac6c\left(3+2\lambda-\frac4c\right),\\
+f_\lambda[U_N]^{(5)}(0)&amp;=(5+4\lambda+6a)d+10b^2\\
+&amp;=-\frac{168}{c}\left(5+4\lambda-\frac6c\right)
++\frac{360}{c^2}.
+\end{aligned}
+\tag{EX33}
+\]">\[
+\begin{aligned}
+f_\lambda[U_N](0)&amp;=0,\\
+f_\lambda[U_N]&#x27;(0)&amp;=a+a^2=\frac{1-c}{c^2}&gt;0,\\
+f_\lambda[U_N]&#x27;&#x27;&#x27;(0)&amp;=(3+2\lambda+4a)b
+=\frac6c\left(3+2\lambda-\frac4c\right),\\
+f_\lambda[U_N]^{(5)}(0)&amp;=(5+4\lambda+6a)d+10b^2\\
+&amp;=-\frac{168}{c}\left(5+4\lambda-\frac6c\right)
++\frac{360}{c^2}.
+\end{aligned}
+\tag{EX33}
+\]</span>
+<p>The strictly positive first derivative proves that the actual residual
+is not identically zero for any <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, despite the
+exact anchor and oddness.</p>
+<p>At the two source smooth exponents the tested derivatives are</p>
+<span class="math math-display" data-tex="\[
+f_{1/2}[U_N]&#x27;&#x27;&#x27;(0)=\frac{24(c-1)}{c^2}&lt;0,\qquad
+f_{1/4}[U_N]^{(5)}(0)=\frac{1368-1008c}{c^2}&gt;0.
+\tag{EX34}
+\]">\[
+f_{1/2}[U_N]&#x27;&#x27;&#x27;(0)=\frac{24(c-1)}{c^2}&lt;0,\qquad
+f_{1/4}[U_N]^{(5)}(0)=\frac{1368-1008c}{c^2}&gt;0.
+\tag{EX34}
+\]</span>
+<p>For an actual single smoothness sample at zero, their squared losses
+are respectively <span class="math" data-tex="\(576(1-c)^2/c^4\)">\(576(1-c)^2/c^4\)</span> and
+<span class="math" data-tex="\((1368-1008c)^2/c^4\)">\((1368-1008c)^2/c^4\)</span>, both positive. Thus the example has
+fully specified, computable failures of the equation and smoothness
+tests; it makes no claim about a trained source network.</p>
+<p>Finally, BN2–BN3 give the following whole-line derivative bounds for
+the one active unit in each layer. Entries are ordered by derivative
+orders one through seven:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A^{(1)}={}&amp;(2,4,16,80,512,3904,34816),\\
+A^{(2)}={}&amp;(4,24,256,3680,66688,1453440,36993536),\\
+A^{(3)}={}&amp;(8,112,2688,88000,3634944,180840192,10513386496).
+\end{aligned}
+\tag{EX35}
+\]">\[
+\begin{aligned}
+A^{(1)}={}&amp;(2,4,16,80,512,3904,34816),\\
+A^{(2)}={}&amp;(4,24,256,3680,66688,1453440,36993536),\\
+A^{(3)}={}&amp;(8,112,2688,88000,3634944,180840192,10513386496).
+\end{aligned}
+\tag{EX35}
+\]</span>
+<p>These numbers are complete finite sums, not observed maxima. For
+example, the second derivative in layer three is</p>
+<span class="math math-display" data-tex="\[
+C_1 A_2^{(2)}+C_2(A_1^{(2)})^2=2\cdot24+4\cdot4^2=112.
+\]">\[
+C_1 A_2^{(2)}+C_2(A_1^{(2)})^2=2\cdot24+4\cdot4^2=112.
+\]</span>
+<p>All seven entries are obtained by the same explicitly proved partition
+formula BN3, with the exact coefficients BN2, the single weight one
+and all other weights zero. Thus <span class="math" data-tex="\(Q_0=1/c\)">\(Q_0=1/c\)</span> and
+<span class="math" data-tex="\(Q_j=A_j^{(3)}/c\)">\(Q_j=A_j^{(3)}/c\)</span> for <span class="math" data-tex="\(1\le j\le7\)">\(1\le j\le7\)</span>.</p>
+<p>For instance, on the actual interval <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span>, the full second
+residual-derivative bound is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_2&amp;=\lambda Q_2+(1+\lambda)[A Q_3+2Q_2]
++Q_0Q_3+2Q_1Q_2+Q_2Q_1\\
+&amp;=\frac{112\lambda+(1+\lambda)(2688A+224)}c
++\frac{2688+1792+896}{c^2}&gt;0.
+\end{aligned}
+\tag{EX36}
+\]">\[
+\begin{aligned}
+R_2&amp;=\lambda Q_2+(1+\lambda)[A Q_3+2Q_2]
++Q_0Q_3+2Q_1Q_2+Q_2Q_1\\
+&amp;=\frac{112\lambda+(1+\lambda)(2688A+224)}c
++\frac{2688+1792+896}{c^2}&gt;0.
+\end{aligned}
+\tag{EX36}
+\]</span>
+<p>This keeps every original linear and product contribution. Put
+<span class="math" data-tex="\(d_1=(1-c)/c^2\)">\(d_1=(1-c)/c^2\)</span> and
+<span class="math" data-tex="\(\varepsilon=\min\{A,d_1/R_2\}&gt;0\)">\(\varepsilon=\min\{A,d_1/R_2\}&gt;0\)</span>. Twice applying the
+fundamental theorem of calculus gives</p>
+<span class="math math-display" data-tex="\[
+f_\lambda[U_N](y)
+=d_1 y+\int_0^y(y-r)f_\lambda[U_N]&#x27;&#x27;(r)\,dr
+\ge d_1y-\tfrac12R_2y^2
+\ge\tfrac12d_1y\quad(0\le y\le\varepsilon).
+\tag{EX37}
+\]">\[
+f_\lambda[U_N](y)
+=d_1 y+\int_0^y(y-r)f_\lambda[U_N]&#x27;&#x27;(r)\,dr
+\ge d_1y-\tfrac12R_2y^2
+\ge\tfrac12d_1y\quad(0\le y\le\varepsilon).
+\tag{EX37}
+\]</span>
+<p>For the explicitly chosen equation sample <span class="math" data-tex="\(y=\varepsilon/2\)">\(y=\varepsilon/2\)</span>,
+the squared equation loss is at least
+<span class="math" data-tex="\(d_1^2\varepsilon^2/16&gt;0\)">\(d_1^2\varepsilon^2/16&gt;0\)</span>. For an endpoint grid, BN7
+with the same specified <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> gives continuous control of
+the original third and fifth residual derivatives using respectively
+orders through five and seven. This completes the map from the full
+network parameters to its actual residual jets, finite samples and
+continuous bounds.</p>
+<p><img src="assets/NS-FLUID-48/burgers-characteristics-and-loss-rates-D0B7A3CDA4510D641CB0196B735B734124A162CD8F390C729FAD6A6867B2EAF4.png" alt="Original characteristic map and exact residual-decay coefficients" class="course-figure" width="1920" height="736" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="burgers-characteristics-and-loss-rates" data-asset-sha256="D0B7A3CDA4510D641CB0196B735B734124A162CD8F390C729FAD6A6867B2EAF4"></p>
+<p>The left panel evaluates EX7 in the original initial coordinate
+<span class="math" data-tex="\(a=s+s^3\)">\(a=s+s^3\)</span> at <span class="math" data-tex="\(\lambda=1/2\)">\(\lambda=1/2\)</span>, with the four stated
+physical times. The vanishing terminal derivative is proved by EX8,
+and EX11 gives the actual limiting velocity. The right panel evaluates
+the entire finite sum EX20 at the original point <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, for
+<span class="math" data-tex="\(m=3,q=5/2\)">\(m=3,q=5/2\)</span> and <span class="math" data-tex="\(m=5,q=9/2\)">\(m=5,q=9/2\)</span>. Dashed curves are the
+proved leading magnitudes <span class="math" data-tex="\((3/2)\delta^{1/2}\)">\((3/2)\delta^{1/2}\)</span> and
+<span class="math" data-tex="\((75/4)\delta^{1/2}\)">\((75/4)\delta^{1/2}\)</span>; solid curves keep every residual
+contribution and denominator. The graphs are numerical evaluations of
+these explicit formulas. EX21–EX28 prove their coefficients and bounds.
+The human equation and loss comparison is the original author TeX
+at lines291–315 and343–350.
+<a href="assets/burgers-characteristics-and-loss-rates.py">Reproducible figure source</a>
+and <a href="assets/burgers-characteristics-and-loss-rates.svg">vector rendering</a>.</p>
+<h2 id="continue-with-the-profile-and-stability-arguments">Continue with the profile and stability arguments</h2>
+<p>The original Burgers branch, its physical evolution and the complete
+residual comparisons are now explicit. The next source comparison
+retains the CCF point anchor and the entire approximate-profile defect
+in its scaling-mode identities, with the actual Hilbert-transform maps.
+The series then continues through the original analytic and computational
+stability arguments, Alpöge–Buckmaster, OpenAI and the retained workbench
+constructions.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-47.html">Previous lesson</a><a href="NS-FLUID-49.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

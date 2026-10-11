@@ -2,6 +2,8 @@
 
 *Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. No separate AI review of this revision is recorded. Public domain (CC0). Revised and self-checked on 3 October 2026 by GPT-6.1 Sol (OpenAI), Ultra effort.*
 
+*The operator-domain, Haar-flow and resolvent details were added and self-checked by GPT-6 Astra (OpenAI), Ultra effort, on 11 October 2026. No independent review of these additions is recorded. CC0.*
+
 A character records weights, a Casimir records an energy, and a tensor product combines characters. The Weyl formula makes all three computations explicit. The metric and exponential convention must stay visible: changing either can multiply every eigenvalue by the same constant.
 
 Throughout, \(G\) is a compact connected Lie group with an \(\operatorname{Ad}(G)\)-invariant positive inner product \(B\) on its real Lie algebra \(\mathfrak g\). We use the [highest-weight classification and Weyl formulas](RT-CPT-11.md), [Peter–Weyl decomposition](RT-CPT-02.md), and smooth differentiation from lesson five. Analytic weights retain the convention
@@ -85,6 +87,20 @@ Let \(X_j^L f(g)=\left.\frac{d}{dt}\right|_0 f(g\exp(tX_j))\). These are a globa
 \]
 This proves the Casimir–Laplacian identification with the stated sign.
 
+Here is the integration-by-parts identity needed below, directly from Haar invariance. Write \(R_t f(g)=f(g\exp(tX))\) for a real Lie algebra element \(X\), and use the first-variable-linear inner product \(\langle f,h\rangle=\int_G f\overline h\,dg\). Right invariance gives
+\[
+\langle R_t f,h\rangle=\langle f,R_{-t}h\rangle.
+\]
+For smooth \(f,h\), their derivatives along these flows are continuous on a compact product \(G\times[-\varepsilon,\varepsilon]\). The fundamental theorem of calculus therefore makes the difference quotients converge uniformly as \(t\to0\), which permits differentiation of these finite-measure integrals. Hence
+\[
+\langle X^L f,h\rangle=-\langle f,X^L h\rangle,
+\qquad
+\langle\Delta f,h\rangle
+=-\sum_j\langle X_j^L f,X_j^L h\rangle
+=\langle f,\Delta h\rangle.
+\]
+The same calculation supplies the group integration by parts in Proposition 2.4; no separate use of a general Stokes theorem is needed.
+
 For a matrix coefficient \(f(g)=\phi(\pi_\lambda(g)v)\), differentiation in the right variable gives
 \[
 \Delta f(g)=\phi\left(\pi_\lambda(g)
@@ -112,9 +128,24 @@ Each individual coefficient block has dimension \((\dim\pi_\lambda)^2\); distinc
 \qquad
 \Delta f=-\sum_\lambda c_B(\lambda)f_\lambda. \tag{2.5}
 \]
+To verify self-adjointness rather than infer it from the diagonal notation, call the operator in (2.5) \(D\), and put \(c_\lambda=c_B(\lambda)\). Its domain is dense because it contains every finite coefficient sum. If \(h\in\mathcal D(D^*)\), there is \(k\in L^2(G)\) such that \(\langle Df,h\rangle=\langle f,k\rangle\) for all \(f\in\mathcal D(D)\). Testing every vector in the finite-dimensional block \(E_{\pi_\lambda}\) forces \(k_\lambda=-c_\lambda h_\lambda\). Parseval then gives
+\[
+\sum_\lambda c_\lambda^2\|h_\lambda\|_2^2
+=\|k\|_2^2<\infty.
+\]
+Conversely, for \(h\) satisfying this condition, the vector \(k=-\sum_\lambda c_\lambda h_\lambda\) exists in \(L^2(G)\), and Cauchy–Schwarz applied to the orthogonal sums proves the required pairing identity for every \(f\in\mathcal D(D)\). Thus \(\mathcal D(D^*)=\mathcal D(D)\) and \(D^*=D\), including equality of domains. Closedness can also be checked directly: if \(f_n\to f\) and \(Df_n\to h\) in \(L^2\), projection onto each block gives \(h_\lambda=-c_\lambda f_\lambda\), and Parseval puts \(f\) in the displayed domain. This is the maximal-domain argument in [Compact positive inverses and diagonal domains, “Positive compact inverse” and “All diagonal multipliers and ordered domains”](../../../../AN-06/providers/analysis/compact-spectrum-domains.md#compact-inverse-domains), applied to the already constructed Peter–Weyl basis. It uses neither a previously self-adjoint Laplacian nor a continuous spectral theorem.
+
 Finite coefficient sums are a core: truncation converges in both the \(L^2\) norm and the norm of the image. For a smooth \(f\), integration by parts against each coefficient gives the Fourier coefficient of \(\Delta f\) as \(-c_B(\lambda)f_\lambda\). Parseval therefore puts \(f\) in (2.5). Consequently the differential operator on all smooth functions lies between the finite-sum operator and its self-adjoint closure; its closure is that same diagonal operator. This also proves essential self-adjointness without importing a spectral theorem for elliptic operators.
 
-For dominant \(\lambda\), \((\lambda,\rho)\geq0\), because \(\rho\) is a positive-root sum and all its pairings with \(\lambda\) are nonnegative. Hence \(c_B(\lambda)\geq4\pi^2\|\lambda\|^2\). Bounded \(c_B\) permits only finitely many lattice weights. Thus eigenspaces are finite-dimensional and the only possible spectral accumulation is toward \(-\infty\). The diagonal decomposition now gives (2.4), including all coincident values. In particular the zero eigenspace consists of the constants. \(\square\)
+For dominant \(\lambda\), \((\lambda,\rho)\geq0\), because \(\rho\) is a positive-root sum and all its pairings with \(\lambda\) are nonnegative. Hence \(c_B(\lambda)\geq4\pi^2\|\lambda\|^2\). Bounded \(c_B\) permits only finitely many lattice weights. Thus eigenspaces are finite-dimensional and the only possible spectral accumulation is toward \(-\infty\). The absence of finite accumulation also excludes any extra spectrum. If \(z\in\mathbb C\) is not one of the displayed eigenvalues, then \(d=\inf_\lambda|-c_\lambda-z|>0\). Define
+\[
+R_z f=\sum_\lambda(-c_\lambda-z)^{-1}f_\lambda.
+\]
+Parseval gives \(\|R_z\|\le d^{-1}\), and
+\[
+\frac{c_\lambda}{|-c_\lambda-z|}\le1+\frac{|z|}{d}
+\]
+shows that \(R_z\) maps all of \(L^2(G)\) into \(\mathcal D(D)\). Blockwise multiplication proves \((D-zI)R_z=I\) on \(L^2(G)\) and \(R_z(D-zI)=I\) on \(\mathcal D(D)\). Therefore it is the bounded resolvent. The diagonal decomposition now gives (2.4), including all coincident values. In particular the zero eigenspace consists of the constants. \(\square\)
 
 For \(SU(2)\), take
 \[

@@ -57,7 +57,7 @@ Stalks and filtered colimits of $A$-modules are
    then $H^q(T;K)\to H^q(T_n;K)$ is an isomorphism. The same assertion is
    available after restriction to an open subset of a parameter space.
    The geometric derived-limit comparison and its degree-specific Milnor
-   obstruction are proved in the closed-exhaustion comparison and its tower, Milnor and Mittag–Leffler proofs,
+   obstruction are proved in [the closed-exhaustion comparison](../../SH02-closed-exhaustion.html#SH02-EXH-COMPARISON) and [its tower, Milnor and Mittag–Leffler proofs](../../SH02-closed-exhaustion.html#SH02-EXH-TOWER-PROOFS),
    specifically SH02-EXH-COMPARISON, SH02-EXH-MILNOR and SH02-EXH-STRIPS.
    That proof includes the noncompact strips used below.
 
@@ -93,7 +93,7 @@ If $f_!$ has finite cohomological dimension,
 
 The submersion comparison, SH02-MD-SUBMERSION, proves the oriented-submersion assertion for every bounded-below input on locally compact Hausdorff bases. Its product-chart argument checks the actual tensor comparison, not only the underlying objects. The compact-support generator, SH02-MD-EUCLIDEAN, and normalized trace and submersion base change, SH02-MD-TRACE, prove the interval calculation and its sign. They use the cylinder theorem above only at SH02-CON-CYLINDER, whose proof uses neither orientation nor exceptional inverse image.
 
-For internal duality with a bounded first input and a bounded-below second input, SH02-EX-INTERNAL supplies the proof; that scope suffices for SH02-CON-INTERVAL-FIBRES. The opposite-bounded-range proof, (EXA.1)–(EXA.9), supplies the full bounded-above first-input contract displayed above under the same uniform proper-support dimension hypothesis. It uses the finite relative-soft model, the exact unbounded acyclic-model theorem and an explicit coefficient exchange, rather than assuming that a bounded-above/bounded-below tensor is bounded below.
+For internal duality with a bounded first input and a bounded-below second input, [SH02-EX-INTERNAL](../../SH02-exceptional-operations.html#SH02-EX-INTERNAL) supplies the proof; that scope suffices for SH02-CON-INTERVAL-FIBRES. The [opposite-bounded-range proof, (EXA.1)–(EXA.9)](../../SH02-exceptional-operations.html#SH02-EX-BOUNDED-ABOVE), supplies the full bounded-above first-input contract displayed above under the same uniform proper-support dimension hypothesis. It uses the finite relative-soft model, the exact unbounded acyclic-model theorem and an explicit coefficient exchange, rather than assuming that a bounded-above/bounded-below tensor is bounded below.
 
 ### SH02-IMPORT-PROPER-SUPPORTS — Proper-support sections contract
 
@@ -347,7 +347,7 @@ torus; the second separates long parameter travel from small return
 distance and shows why proper supports obstruct an induced-orbit
 trivialization.
 
-![A finite irrational orbit segment on a torus, with its initial point and a later return marked](../assets/conic-orbit-torus.png)
+![A finite irrational orbit segment on a torus, with its initial point and a later return marked](../../assets/aad0c2bd76d2-conic-orbit-torus.png)
 
 The blue curve samples $j(u)$ for $0\le u\le20\pi$ at 6,001 parameter
 values. It is shown through the embedding
@@ -358,7 +358,7 @@ is $j(10\pi)$; the latter has second-circle angle
 $2\pi/(5\sqrt2+7)$ modulo $2\pi$. The gray grid describes the ambient
 torus and is not sheaf support. Curve thickness is only a drawing aid.
 
-![Exact return samples and the proper-support mechanism in the dense-orbit counterexample](../assets/conic-orbit-topology.png)
+![Exact return samples and the proper-support mechanism in the dense-orbit counterexample](../../assets/2c6ee98615be-conic-orbit-topology.png)
 
 For the displayed pairs $(m,n)=(5,7),(12,17),(29,41),(70,99),(169,239)$,
 put $u=2\pi m$ and
@@ -379,7 +379,7 @@ and Remark 4.2.5, pp. 85–86: compactness over each compact subset of the
 target bounds the returning parameters of any one section's support.
 The dense-orbit example and its drawings are independently authored course
 material illustrating the mathematical distinction proved here. A
-vector copy of the return and support panels
+[vector copy of the return and support panels](../../assets/c1b8a56e15c9-conic-orbit-topology.svg)
 preserves the exact labels.
 
 ## SH02-CON-COMPARISON — Canonical transport and its normalization
@@ -541,7 +541,7 @@ is orientation-preservingly homeomorphic to $\mathbb R$, so this is an
 isomorphism by the positive-interval trace normalization and submersion base-change identity. Stalk detection proves that the
 trace is an isomorphism.
 
-The submersion formula and the bounded-first-input internal duality proof identify
+The submersion formula and the [bounded-first-input internal duality proof](../../SH02-exceptional-operations.html#SH02-EX-INTERNAL) identify
 
 $$
 \begin{aligned}
@@ -559,7 +559,7 @@ unit $L\to Rr_*r^{-1}L$: this is the tensor-Hom adjunction identity for
 the counit $Rr_!r^!A_B\to A_B$. Thus the displayed isomorphism proves the
 assertion for the specified unit.
 
-Here is the map check with its tensor order explicit. Write $\epsilon_r(L):Rr_!r^!L\to L$ for the counit, and let $\theta:\omega_r\otimes r^{-1}L\to r^!L$ be the submersion tensor isomorphism, with the relative dualizing factor first. Its defining trace identity, (EX.24), identifies the composite
+Here is the map check with its tensor order explicit. Write $\epsilon_r(L):Rr_!r^!L\to L$ for the counit, and let $\theta:\omega_r\otimes r^{-1}L\to r^!L$ be the submersion tensor isomorphism, with the relative dualizing factor first. Its [defining trace identity, (EX.24)](../../SH02-exceptional-operations.html#SH02-EX-TENSOR), identifies the composite
 
 $$
 Rr_!\omega_r\otimes L
@@ -586,7 +586,7 @@ $$
 =\lambda.
 $$
 
-Evaluation of $\omega_r\otimes\lambda$ is $\theta$, so this uncurry is precisely the displayed projection–tensor–trace composite. Currying the equal composite $\epsilon_r(A_B)\otimes1_L$ is exactly precomposition with the trace. Thus the identity concerns the original unit, with the signs fixed by the same tensor order. Here $\omega_r\simeq A_W[1]$ is bounded, so the bounded-first-input internal-Hom proof, (EX.20)–(EX.22), applies with the arbitrary bounded-below second input $L$; no unbounded internal-Hom extension is used.
+Evaluation of $\omega_r\otimes\lambda$ is $\theta$, so this uncurry is precisely the displayed projection–tensor–trace composite. Currying the equal composite $\epsilon_r(A_B)\otimes1_L$ is exactly precomposition with the trace. Thus the identity concerns the original unit, with the signs fixed by the same tensor order. Here $\omega_r\simeq A_W[1]$ is bounded, so [the bounded-first-input internal-Hom proof, (EX.20)–(EX.22)](../../SH02-exceptional-operations.html#SH02-EX-INTERNAL), applies with the arbitrary bounded-below second input $L$; no unbounded internal-Hom extension is used.
 
 This proof uses proper base change for
 $Rr_!$; it never invokes unrestricted nonproper base change for $Rr_*$.
@@ -926,7 +926,7 @@ really is an object of $D^+$, as required by the conicity criterion.
 
 For internal Hom, put $H=R\mathcal Hom(F_1,F_2)$. If $F_1$ has upper
 bound $c$ and $F_2$ lower bound $b$, derived Hom has lower bound $b-c$.
-The extraordinary inverse-image/internal-Hom comparison, (EXA.2), gives
+The [extraordinary inverse-image/internal-Hom comparison, (EXA.2)](../../SH02-exceptional-operations.html#SH02-EX-BOUNDED-ABOVE), gives
 
 $$
 \begin{aligned}
@@ -1143,7 +1143,7 @@ derived proper-support stalk formula retain their explicitly stated contracts.
 The exceptional internal-Hom contract with bounded-above first input and
 bounded-below second input is supplied by SH02-EX-BOUNDED-ABOVE at exactly
 that scope. Its finite resolution proof does not impose an upper bound on
-the second input. The separate unbounded supported-evaluation proof
+the second input. The separate [unbounded supported-evaluation proof](../../SH02-exceptional-operations.html#SH02-EX-UNBOUNDED-SUPPORT)
 supplies the support-forgetting comparison without narrowing its first input;
 it is not needed to replace the interval argument above. Other declared
 prerequisites retain their own proof obligations.

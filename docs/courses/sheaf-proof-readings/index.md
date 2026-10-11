@@ -26,7 +26,7 @@ Constructibility, sheaf operations and microlocal geometry. Each reading include
 - [Weak constructibility under sheaf operations](SH03-weak-constructibility-under-sheaf-operations.html) · [source](src/SH03/weak-constructibility-under-sheaf-operations.md)
 - [Constructible gluing on an interval](SH03-constructible-gluing-on-an-interval.html) · [source](src/SH03/constructible-gluing-on-an-interval.md)
 - Derived constructibility through common triangulations · source
-- Subanalytic sets and limiting tangent directions · source
+- [Subanalytic sets and limiting tangent directions](SH03-subanalytic-sets-and-limiting-tangent-directions.html) · [source](src/SH03/subanalytic-sets-and-limiting-tangent-directions.md)
 - [Boundary forms and Lagrangian normal cones](SH03-boundary-forms-and-lagrangian-normal-cones.html) · [source](src/SH03/boundary-forms-and-lagrangian-normal-cones.md)
 - [Dual kernels and an unchanged parameter](SH03-dual-kernels-and-an-unchanged-parameter.html) · [source](src/SH03/dual-kernels-and-an-unchanged-parameter.md)
 - [Directional morphisms through a sheaf kernel](SH03-directional-morphisms-through-a-sheaf-kernel.html) · [source](src/SH03/directional-morphisms-through-a-sheaf-kernel.md)

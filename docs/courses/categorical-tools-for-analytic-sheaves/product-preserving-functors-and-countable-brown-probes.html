@@ -1,0 +1,576 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Product-preserving functors and countable Brown probes</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><p>Use the universe and choice convention of <span class="unlinked">Universes and small categories</span>. All indexing sets and Hom groups of the given source categories are small in that universe. The full additive-functor category can initially be formed in a larger ambient universe; Section 3 proves smallness of the Hom groups used in the Brown construction. An arbitrary coproduct means a coproduct indexed by a small set. Write <span class="math" data-tex="\(X[n]\)">\(X[n]\)</span> for the specified integer powers of translation in a triangulated category.</p>
+<p>The purpose of this lesson is to construct the abelian category in which a countable Brown approximation can be compared with its telescope. Its coproducts have a universal characterization inside that category. They need not agree with coproducts of the values of its functors.</p>
+<h2 id="1-a-small-family-and-a-countable-condition">1. A small family and a countable condition</h2>
+<p>Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> be a locally small triangulated category with arbitrary coproducts. Let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be a small family of objects. Consider these conditions:</p>
+<ol>
+<li>If <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal D}(C,X)=0\)">\(\operatorname{Hom}_{\mathcal D}(C,X)=0\)</span> for every <span class="math" data-tex="\(C\in\mathcal F\)">\(C\in\mathcal F\)</span>, then <span class="math" data-tex="\(X\simeq0\)">\(X\simeq0\)</span>.</li>
+<li>For a countable family <span class="math" data-tex="\(u_i:X_i\to Y_i\)">\(u_i:X_i\to Y_i\)</span>, if every <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal D}(C,u_i)\)">\(\operatorname{Hom}_{\mathcal D}(C,u_i)\)</span> is zero, then every <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal D}(C,\bigoplus_i u_i)\)">\(\operatorname{Hom}_{\mathcal D}(C,\bigoplus_i u_i)\)</span> is zero, for <span class="math" data-tex="\(C\in\mathcal F\)">\(C\in\mathcal F\)</span>.</li>
+</ol>
+<p>Call these the <strong>zero-detection condition</strong> and the <strong>countable zero-map condition</strong>, respectively. The second condition concerns arbitrary arrows, rather than only a particular sequence of objects.</p>
+<p>For comparison, a family detects isomorphisms if a map <span class="math" data-tex="\(f\)">\(f\)</span> is invertible whenever all <span class="math" data-tex="\(\operatorname{Hom}(C,f)\)">\(\operatorname{Hom}(C,f)\)</span> are bijective. This is the componentwise conservative convention in <a href="generators-and-small-quotient-families.html#1-keep-the-family-of-probes">Generators and small quotient families, Section 1</a>. It is distinct from requiring the family to distinguish every pair of parallel arrows.</p>
+<p><strong>Lemma 1.1.</strong> Replace <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> by the small family</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\mathcal F^{\mathrm{sh}}=\{C[n]:C\in\mathcal F,\ n\in\mathbb Z\}.
+\tag{1.1}
+\]">\[
+\mathcal F^{\mathrm{sh}}=\{C[n]:C\in\mathcal F,\ n\in\mathbb Z\}.
+\tag{1.1}
+\]</span>
+<p>Both stated conditions are preserved. For a family stable under shifts up to isomorphism, zero detection is equivalent to detection of isomorphisms.</p>
+<p><strong>Proof.</strong> The new family remains small. It includes the old family, so zero detection is preserved. Suppose <span class="math" data-tex="\(u_i\)">\(u_i\)</span> is zero on Hom from every shifted member. For fixed <span class="math" data-tex="\(n\)">\(n\)</span>, the maps <span class="math" data-tex="\(u_i[-n]\)">\(u_i[-n]\)</span> are zero on Hom from every original member, by the translation equivalence. Apply condition 2 to this family. An equivalence preserves coproducts: transporting their legs gives the same Hom universal bijections, with the inverse equivalence giving the inverse comparison. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(C[n],\bigoplus_i u_i)
+\simeq\operatorname{Hom}(C,\bigoplus_i u_i[-n])=0.
+\]">\[
+\operatorname{Hom}(C[n],\bigoplus_i u_i)
+\simeq\operatorname{Hom}(C,\bigoplus_i u_i[-n])=0.
+\]</span>
+<p>This proves the new condition 2.</p>
+<p>An isomorphism-detecting family detects zero objects by applying its test to <span class="math" data-tex="\(0\to X\)">\(0\to X\)</span>. Conversely suppose the family is shift-stable, detects zero objects, and <span class="math" data-tex="\(\operatorname{Hom}(C,f)\)">\(\operatorname{Hom}(C,f)\)</span> is bijective for every member. Complete <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> to a triangle with third object <span class="math" data-tex="\(Z\)">\(Z\)</span>. The Hom exact sequence contains</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(C,X)\longrightarrow\operatorname{Hom}(C,Y)
+\longrightarrow\operatorname{Hom}(C,Z)
+\longrightarrow\operatorname{Hom}(C,X[1])
+\longrightarrow\operatorname{Hom}(C,Y[1]).
+\]">\[
+\operatorname{Hom}(C,X)\longrightarrow\operatorname{Hom}(C,Y)
+\longrightarrow\operatorname{Hom}(C,Z)
+\longrightarrow\operatorname{Hom}(C,X[1])
+\longrightarrow\operatorname{Hom}(C,Y[1]).
+\]</span>
+<p>Its first and last displayed arrows are isomorphisms: the last one is tested by <span class="math" data-tex="\(C[-1]\)">\(C[-1]\)</span>. Exactness gives <span class="math" data-tex="\(\operatorname{Hom}(C,Z)=0\)">\(\operatorname{Hom}(C,Z)=0\)</span>. Zero detection gives <span class="math" data-tex="\(Z\simeq0\)">\(Z\simeq0\)</span>. Applying Hom from every object to a triangle with zero third object shows that <span class="math" data-tex="\(\operatorname{Hom}(W,f)\)">\(\operatorname{Hom}(W,f)\)</span> is bijective for all <span class="math" data-tex="\(W\)">\(W\)</span>. In particular there is <span class="math" data-tex="\(g:Y\to X\)">\(g:Y\to X\)</span> with <span class="math" data-tex="\(fg=1_Y\)">\(fg=1_Y\)</span>, and injectivity at <span class="math" data-tex="\(W=X\)">\(W=X\)</span> gives <span class="math" data-tex="\(gf=1_X\)">\(gf=1_X\)</span>. Thus <span class="math" data-tex="\(f\)">\(f\)</span> is invertible. This equivalence uses shift stability. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Hom exactness just used, for both variances and all rotations, is proved in <a href="triangles-finite-universal-maps-and-cohomology-boundaries.html#1-two-precise-exactness-conditions">Triangles, finite universal maps and the limits of cohomology, Lemma 1.1</a>. We shall henceforth use the shifted family. Zero detection will be needed for Brown generation; the constructions in Sections 2–6 use only condition 2.</p>
+<h2 id="2-equivalent-propagation-and-factorization-conditions">2. Equivalent propagation and factorization conditions</h2>
+<p><strong>Theorem 2.1.</strong> For a small family <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, the following four conditions are equivalent:</p>
+<ul>
+<li>countable zero-map propagation;</li>
+<li>if every <span class="math" data-tex="\(\operatorname{Hom}(C,u_i)\)">\(\operatorname{Hom}(C,u_i)\)</span> is surjective, then every <span class="math" data-tex="\(\operatorname{Hom}(C,\bigoplus_i u_i)\)">\(\operatorname{Hom}(C,\bigoplus_i u_i)\)</span> is surjective;</li>
+<li>the analogous implication for injectivity;</li>
+<li>for countable <span class="math" data-tex="\((X_i)\)">\((X_i)\)</span>, every map <span class="math" data-tex="\(f:C\to\bigoplus_i X_i\)">\(f:C\to\bigoplus_i X_i\)</span>, with <span class="math" data-tex="\(C\in\mathcal F\)">\(C\in\mathcal F\)</span>, factors as</li>
+</ul>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+C\longrightarrow\bigoplus_i S_i
+\xrightarrow{\bigoplus_i v_i}\bigoplus_i X_i,
+\qquad v_i:S_i\longrightarrow X_i,
+\tag{2.1}
+\]">\[
+C\longrightarrow\bigoplus_i S_i
+\xrightarrow{\bigoplus_i v_i}\bigoplus_i X_i,
+\qquad v_i:S_i\longrightarrow X_i,
+\tag{2.1}
+\]</span>
+<p>where each <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is a small coproduct of objects of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>.</p>
+<p><strong>Proof of the first three equivalences.</strong> For each <span class="math" data-tex="\(u_i\)">\(u_i\)</span>, choose a triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+X_i\xrightarrow{u_i}Y_i\xrightarrow{v_i}Z_i\longrightarrow X_i[1].
+\tag{2.2}
+\]">\[
+X_i\xrightarrow{u_i}Y_i\xrightarrow{v_i}Z_i\longrightarrow X_i[1].
+\tag{2.2}
+\]</span>
+<p>Let <span class="math" data-tex="\(p_i:Z_i[-1]\to X_i\)">\(p_i:Z_i[-1]\to X_i\)</span> be its actual preceding arrow obtained by inverse rotation. Consecutive maps compose to zero. Hom exactness says that <span class="math" data-tex="\(\operatorname{Hom}(C,u_i)\)">\(\operatorname{Hom}(C,u_i)\)</span> is surjective exactly when <span class="math" data-tex="\(\operatorname{Hom}(C,v_i)=0\)">\(\operatorname{Hom}(C,v_i)=0\)</span>, and is injective exactly when <span class="math" data-tex="\(\operatorname{Hom}(C,p_i)=0\)">\(\operatorname{Hom}(C,p_i)=0\)</span>.</p>
+<p>The coproduct of the chosen triangles is distinguished, with its actual coproduct arrows and the canonical translation comparison. This universal-map theorem is proved in <a href="translations-coherent-powers-and-universal-triangle-comparisons.html#7-every-existing-set-indexed-triangle-sum">Translations, coherent powers and universal triangle comparisons, Section 7</a>. Hence zero-map propagation applied to the <span class="math" data-tex="\(v_i\)">\(v_i\)</span> gives surjective propagation for the <span class="math" data-tex="\(u_i\)">\(u_i\)</span>. Applied to the <span class="math" data-tex="\(p_i\)">\(p_i\)</span>, it gives injective propagation.</p>
+<p>Conversely suppose all <span class="math" data-tex="\(\operatorname{Hom}(C,u_i)\)">\(\operatorname{Hom}(C,u_i)\)</span> vanish. Exactness makes <span class="math" data-tex="\(\operatorname{Hom}(C,p_i)\)">\(\operatorname{Hom}(C,p_i)\)</span> surjective. Surjective propagation makes its coproduct map surjective. Since <span class="math" data-tex="\((\bigoplus_i u_i)(\bigoplus_i p_i)=0\)">\((\bigoplus_i u_i)(\bigoplus_i p_i)=0\)</span>, every Hom map into <span class="math" data-tex="\(\bigoplus_i X_i\)">\(\bigoplus_i X_i\)</span> is killed by <span class="math" data-tex="\(\bigoplus_i u_i\)">\(\bigoplus_i u_i\)</span>. This proves zero-map propagation from surjective propagation.</p>
+<p>Alternatively <span class="math" data-tex="\(\operatorname{Hom}(C,v_i)\)">\(\operatorname{Hom}(C,v_i)\)</span> is injective when <span class="math" data-tex="\(\operatorname{Hom}(C,u_i)=0\)">\(\operatorname{Hom}(C,u_i)=0\)</span>. Injective propagation makes <span class="math" data-tex="\(\operatorname{Hom}(C,\bigoplus_i v_i)\)">\(\operatorname{Hom}(C,\bigoplus_i v_i)\)</span> injective. Its composite with <span class="math" data-tex="\(\operatorname{Hom}(C,\bigoplus_i u_i)\)">\(\operatorname{Hom}(C,\bigoplus_i u_i)\)</span> is zero, so the latter is zero. This proves the implication from injective propagation. The signs in inverse rotation do not affect zero, injectivity or surjectivity; the maps used are the specified triangle maps.</p>
+<p><strong>Proof of the factorization equivalence.</strong> For any <span class="math" data-tex="\(X\)">\(X\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+E_X=\bigoplus_{(C,a),\ C\in\mathcal F,\ a:C\to X} C,
+\qquad e_X:E_X\longrightarrow X,
+\tag{2.3}
+\]">\[
+E_X=\bigoplus_{(C,a),\ C\in\mathcal F,\ a:C\to X} C,
+\qquad e_X:E_X\longrightarrow X,
+\tag{2.3}
+\]</span>
+<p>with <span class="math" data-tex="\(e_X\)">\(e_X\)</span> equal to <span class="math" data-tex="\(a\)">\(a\)</span> on the copy labelled <span class="math" data-tex="\((C,a)\)">\((C,a)\)</span>. The index is small by local smallness and the universe convention. Every arrow from <span class="math" data-tex="\(C\in\mathcal F\)">\(C\in\mathcal F\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span> lifts through its own labelled coprojection, so <span class="math" data-tex="\(\operatorname{Hom}(C,e_X)\)">\(\operatorname{Hom}(C,e_X)\)</span> is surjective. Surjective propagation gives the same assertion for <span class="math" data-tex="\(\bigoplus_i e_{X_i}\)">\(\bigoplus_i e_{X_i}\)</span>. Lifting <span class="math" data-tex="\(f\)">\(f\)</span> through this map proves (2.1).</p>
+<p>For the converse, assume (2.1) and that every <span class="math" data-tex="\(\operatorname{Hom}(C,u_i)\)">\(\operatorname{Hom}(C,u_i)\)</span> is zero. For each factor <span class="math" data-tex="\(v_i:S_i\to X_i\)">\(v_i:S_i\to X_i\)</span>, the map <span class="math" data-tex="\(u_iv_i\)">\(u_iv_i\)</span> is zero on every generator coprojection of <span class="math" data-tex="\(S_i\)">\(S_i\)</span>, hence zero. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(\bigoplus_i u_i)f
+=(\bigoplus_i u_iv_i)\,\bigl(C\to\bigoplus_i S_i\bigr)=0.
+\]">\[
+(\bigoplus_i u_i)f
+=(\bigoplus_i u_iv_i)\,\bigl(C\to\bigoplus_i S_i\bigr)=0.
+\]</span>
+<p>This holds for every <span class="math" data-tex="\(f\)">\(f\)</span>, proving zero-map propagation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The stronger requirement that each donor <span class="math" data-tex="\(S_i\)">\(S_i\)</span> in (2.1) be one member of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> implies the fourth condition. It is not required here. Similarly compact objects satisfy zero-map propagation because maps from them into a coproduct are finite-support families of maps. The theorem does not assume compactness.</p>
+<h2 id="3-the-abelian-category-of-product-preserving-functors">3. The abelian category of product-preserving functors</h2>
+<p>For this section let <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> be any locally small additive category with arbitrary coproducts. Define <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span> to consist of additive functors <span class="math" data-tex="\(P:\mathcal S^{op}\to\mathsf{Ab}\)">\(P:\mathcal S^{op}\to\mathsf{Ab}\)</span> such that the map given by the source coprojections is an isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+P(\bigoplus_i S_i)\xrightarrow{\sim}\prod_i P(S_i).
+\tag{3.1}
+\]">\[
+P(\bigoplus_i S_i)\xrightarrow{\sim}\prod_i P(S_i).
+\tag{3.1}
+\]</span>
+<p>Its arrows are natural transformations. The product in (3.1) is a product of abelian groups. The coproduct is in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> Kernels, cokernels, images and exactness in <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span> are computed pointwise. This is a full abelian subcategory of the additive-functor category, and it is closed under extensions.</p>
+<p><strong>Proof.</strong> Products of abelian-group exact sequences are exact. Kernels are coordinatewise; a tuple in the product of images lifts coordinatewise by choice. In particular a product of surjections is surjective. These facts identify both the kernel and cokernel of a product map with the product of its kernels and cokernels.</p>
+<p>Let <span class="math" data-tex="\(a:P\to Q\)">\(a:P\to Q\)</span> be a natural transformation of the stated functors. Its pointwise kernel <span class="math" data-tex="\(K(S)=\ker a_S\)">\(K(S)=\ker a_S\)</span> is an additive functor: maps of kernels are the unique restrictions of the maps of <span class="math" data-tex="\(P\)">\(P\)</span>, and the uniqueness proves composition and additivity. For a coproduct, (3.1) identifies its comparison with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\ker(\prod_i a_{S_i})\simeq\prod_i\ker a_{S_i}.
+\]">\[
+\ker(\prod_i a_{S_i})\simeq\prod_i\ker a_{S_i}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(K\in\Pi(\mathcal S)\)">\(K\in\Pi(\mathcal S)\)</span>. The pointwise cokernel <span class="math" data-tex="\(Q(S)/a_S(P(S))\)">\(Q(S)/a_S(P(S))\)</span>, with its induced additive maps, also satisfies (3.1), by the corresponding product-cokernel comparison. Pointwise kernels and cokernels have the natural universal properties: component factors are natural by uniqueness. The abelian-group coimage-to-image isomorphisms are natural and pointwise invertible, so they give an isomorphism of these functors. Zero objects and finite biproducts satisfy (3.1). This proves the abelian assertions, including agreement of exactness with pointwise exactness. It also establishes the exact full embedding into the additive-functor category; see <a href="pointwise-abelian-structure-and-natural-splittings.html">Pointwise abelian structure and natural splittings</a> for the ambient construction.</p>
+<p>To prove extension closure, take a pointwise short exact sequence <span class="math" data-tex="\(0\to P\to R\to Q\to0\)">\(0\to P\to R\to Q\to0\)</span> of additive functors, where <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> satisfy (3.1). Evaluation at <span class="math" data-tex="\(\bigoplus_i S_i\)">\(\bigoplus_i S_i\)</span> and the product of evaluations at <span class="math" data-tex="\(S_i\)">\(S_i\)</span> give two short exact rows and a natural comparison between them. Its outer maps are isomorphisms. Its middle map is injective: an element in its kernel maps to zero in <span class="math" data-tex="\(Q\)">\(Q\)</span>; it therefore comes from <span class="math" data-tex="\(P\)">\(P\)</span>, where injectivity and the lower inclusion make it zero. It is surjective: map a desired lower middle element into the lower <span class="math" data-tex="\(Q\)">\(Q\)</span>, lift its inverse image through the upper surjection onto <span class="math" data-tex="\(Q\)">\(Q\)</span>, and correct the remaining difference using the isomorphism on <span class="math" data-tex="\(P\)">\(P\)</span>. Thus <span class="math" data-tex="\(R\)">\(R\)</span> also satisfies (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, in a pointwise exact five-term sequence <span class="math" data-tex="\(P_1\to P_2\to P_3\to P_4\to P_5\)">\(P_1\to P_2\to P_3\to P_4\to P_5\)</span>, if all terms except <span class="math" data-tex="\(P_3\)">\(P_3\)</span> belong to <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>, then so does <span class="math" data-tex="\(P_3\)">\(P_3\)</span>. Its short exact sequence has left term <span class="math" data-tex="\(\operatorname{coker}(P_1\to P_2)\)">\(\operatorname{coker}(P_1\to P_2)\)</span> and right term <span class="math" data-tex="\(\ker(P_4\to P_5)\)">\(\ker(P_4\to P_5)\)</span>. These terms belong to the category by the kernel and cokernel assertions, and the extension argument applies.</p>
+<p>Now assume there is a small full subcategory <span class="math" data-tex="\(\mathcal S_0\)">\(\mathcal S_0\)</span> such that every object of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> is isomorphic to a small coproduct of its objects. Restriction to <span class="math" data-tex="\(\mathcal S_0\)">\(\mathcal S_0\)</span> is exact, faithful and conservative on <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>. Indeed a natural transformation at any chosen coproduct is the product of its components on the summands, by naturality at the coprojections and (3.1). This determines that component, and isomorphisms transport the assertion to every object. Products of abelian-group sequences are exact, so exactness can likewise be tested on <span class="math" data-tex="\(\mathcal S_0\)">\(\mathcal S_0\)</span>. These are assertions about transformations of these functors, not about faithfulness of the later restricted Yoneda functor on all of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>.</p>
+<p>This also proves that each natural-transformation group is small. Restriction injects it into the small set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\prod_{C\in\mathcal S_0}\operatorname{Hom}_{\mathsf{Ab}}(P(C),Q(C)).
+\tag{3.2}
+\]">\[
+\prod_{C\in\mathcal S_0}\operatorname{Hom}_{\mathsf{Ab}}(P(C),Q(C)).
+\tag{3.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span> is locally small even when the objects of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> do not form a small set.</p>
+<h2 id="4-evaluation-epimorphisms-and-representable-presentations">4. Evaluation epimorphisms and representable presentations</h2>
+<p>Retain the small full <span class="math" data-tex="\(\mathcal S_0\)">\(\mathcal S_0\)</span>. For <span class="math" data-tex="\(S\in\mathcal S\)">\(S\in\mathcal S\)</span>, write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+h_S(C)=\operatorname{Hom}_{\mathcal S}(C,S).
+\tag{4.1}
+\]">\[
+h_S(C)=\operatorname{Hom}_{\mathcal S}(C,S).
+\tag{4.1}
+\]</span>
+<p>The coproduct universal property in the first variable puts <span class="math" data-tex="\(h_S\)">\(h_S\)</span> in <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>. The additive Yoneda bijection is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Nat}(h_S,P)\xrightarrow{\sim}P(S),
+\qquad \theta\longmapsto\theta_S(1_S).
+\tag{4.2}
+\]">\[
+\operatorname{Nat}(h_S,P)\xrightarrow{\sim}P(S),
+\qquad \theta\longmapsto\theta_S(1_S).
+\tag{4.2}
+\]</span>
+<p>Its inverse sends <span class="math" data-tex="\(x\in P(S)\)">\(x\in P(S)\)</span> to <span class="math" data-tex="\(a:C\to S\longmapsto P(a)x\)">\(a:C\to S\longmapsto P(a)x\)</span>. This formula is additive in <span class="math" data-tex="\(a\)">\(a\)</span> and natural in <span class="math" data-tex="\(C\)">\(C\)</span>; naturality at <span class="math" data-tex="\(a\)">\(a\)</span> proves that the two formulas are inverse. For <span class="math" data-tex="\(P=h_T\)">\(P=h_T\)</span>, it says that <span class="math" data-tex="\(h:\mathcal S\to\Pi(\mathcal S)\)">\(h:\mathcal S\to\Pi(\mathcal S)\)</span> is fully faithful and additive.</p>
+<p><strong>Theorem 4.1.</strong> Every <span class="math" data-tex="\(P\in\Pi(\mathcal S)\)">\(P\in\Pi(\mathcal S)\)</span> has a representable epimorphism <span class="math" data-tex="\(h_Y\twoheadrightarrow P\)">\(h_Y\twoheadrightarrow P\)</span>, and an exact presentation</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+h_X\xrightarrow{h_u}h_Y\longrightarrow P\longrightarrow0
+\quad (u:X\to Y\text{ in }\mathcal S).
+\tag{4.3}
+\]">\[
+h_X\xrightarrow{h_u}h_Y\longrightarrow P\longrightarrow0
+\quad (u:X\to Y\text{ in }\mathcal S).
+\tag{4.3}
+\]</span>
+<p><strong>Proof.</strong> Form the small coproduct</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+Y=\bigoplus_{(C,x),\ C\in\mathcal S_0,\ x\in P(C)}C.
+\tag{4.4}
+\]">\[
+Y=\bigoplus_{(C,x),\ C\in\mathcal S_0,\ x\in P(C)}C.
+\tag{4.4}
+\]</span>
+<p>Product preservation gives an element <span class="math" data-tex="\(\xi\in P(Y)\)">\(\xi\in P(Y)\)</span> whose coordinate on the copy labelled <span class="math" data-tex="\((C,x)\)">\((C,x)\)</span> is <span class="math" data-tex="\(x\)">\(x\)</span>. Let <span class="math" data-tex="\(\theta:h_Y\to P\)">\(\theta:h_Y\to P\)</span> be its transformation (4.2). For the labelled injection <span class="math" data-tex="\(j_{C,x}:C\to Y\)">\(j_{C,x}:C\to Y\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+\theta_C(j_{C,x})=P(j_{C,x})\xi=x.
+\tag{4.5}
+\]">\[
+\theta_C(j_{C,x})=P(j_{C,x})\xi=x.
+\tag{4.5}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\theta_C\)">\(\theta_C\)</span> is surjective for every <span class="math" data-tex="\(C\in\mathcal S_0\)">\(C\in\mathcal S_0\)</span>. For a coproduct of these objects the component is a product of these surjections, hence surjective. Transporting across an isomorphism gives the same assertion at every object of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Theorem 3.1 makes <span class="math" data-tex="\(\theta\)">\(\theta\)</span> an epimorphism in <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>.</p>
+<p>Its kernel belongs to that category. Apply the same construction to the kernel to obtain <span class="math" data-tex="\(h_X\twoheadrightarrow\ker\theta\)">\(h_X\twoheadrightarrow\ker\theta\)</span>. Composing with the kernel inclusion gives a transformation <span class="math" data-tex="\(h_X\to h_Y\)">\(h_X\to h_Y\)</span>. Full faithfulness in (4.2) identifies it with one actual arrow <span class="math" data-tex="\(u:X\to Y\)">\(u:X\to Y\)</span>. Its image is exactly <span class="math" data-tex="\(\ker\theta\)">\(\ker\theta\)</span>, proving (4.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Epimorphism here refers to the abelian functor category. It does not assert that <span class="math" data-tex="\(u\)">\(u\)</span>, or any later arrow between objects of a triangulated category, is an epimorphism in that triangulated category.</p>
+<h2 id="5-internal-coproducts-and-all-small-colimits">5. Internal coproducts and all small colimits</h2>
+<p><strong>Theorem 5.1.</strong> The functor <span class="math" data-tex="\(h\)">\(h\)</span> preserves arbitrary coproducts as coproducts in <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>. That abelian category has arbitrary coproducts and all small colimits.</p>
+<p><strong>Proof for representables.</strong> For a family <span class="math" data-tex="\((S_i)\)">\((S_i)\)</span> and any target <span class="math" data-tex="\(P\)">\(P\)</span>, the natural bijections</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Nat}(h_{\bigoplus_i S_i},P)
+\simeq P(\bigoplus_i S_i)
+\simeq\prod_iP(S_i)
+\simeq\prod_i\operatorname{Nat}(h_{S_i},P)
+\tag{5.1}
+\]">\[
+\operatorname{Nat}(h_{\bigoplus_i S_i},P)
+\simeq P(\bigoplus_i S_i)
+\simeq\prod_iP(S_i)
+\simeq\prod_i\operatorname{Nat}(h_{S_i},P)
+\tag{5.1}
+\]</span>
+<p>are restriction along the actual arrows <span class="math" data-tex="\(h_{j_i}\)">\(h_{j_i}\)</span>, where <span class="math" data-tex="\(j_i:S_i\to\bigoplus_i S_i\)">\(j_i:S_i\to\bigoplus_i S_i\)</span>. Thus they prove the coproduct universal property with the specified legs. They do not assert a pointwise-sum formula.</p>
+<p><strong>Proof for arbitrary functors.</strong> Choose presentations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+h_{X_i}\xrightarrow{h_{u_i}}h_{Y_i}\xrightarrow{p_i}P_i\longrightarrow0.
+\tag{5.2}
+\]">\[
+h_{X_i}\xrightarrow{h_{u_i}}h_{Y_i}\xrightarrow{p_i}P_i\longrightarrow0.
+\tag{5.2}
+\]</span>
+<p>Take the pointwise cokernel in <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span></p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+Q=\operatorname{coker}\bigl(h_{\bigoplus_i X_i}
+\xrightarrow{h_{\bigoplus_i u_i}}h_{\bigoplus_i Y_i}\bigr).
+\tag{5.3}
+\]">\[
+Q=\operatorname{coker}\bigl(h_{\bigoplus_i X_i}
+\xrightarrow{h_{\bigoplus_i u_i}}h_{\bigoplus_i Y_i}\bigr).
+\tag{5.3}
+\]</span>
+<p>The composite <span class="math" data-tex="\(h_{Y_i}\to h_{\bigoplus_i Y_i}\to Q\)">\(h_{Y_i}\to h_{\bigoplus_i Y_i}\to Q\)</span> annihilates <span class="math" data-tex="\(h_{u_i}\)">\(h_{u_i}\)</span>, so it gives a unique leg <span class="math" data-tex="\(\ell_i:P_i\to Q\)">\(\ell_i:P_i\to Q\)</span>. A map <span class="math" data-tex="\(Q\to P\)">\(Q\to P\)</span> is a map <span class="math" data-tex="\(h_{\bigoplus_i Y_i}\to P\)">\(h_{\bigoplus_i Y_i}\to P\)</span> annihilating the displayed map from <span class="math" data-tex="\(h_{\bigoplus_i X_i}\)">\(h_{\bigoplus_i X_i}\)</span>. By (5.1), this is precisely a family of maps <span class="math" data-tex="\(h_{Y_i}\to P\)">\(h_{Y_i}\to P\)</span>, each annihilating <span class="math" data-tex="\(h_{u_i}\)">\(h_{u_i}\)</span>. By the cokernel property in (5.2), this is precisely a family of maps <span class="math" data-tex="\(P_i\to P\)">\(P_i\to P\)</span>. All these identifications use the legs <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span>. Therefore <span class="math" data-tex="\(Q\)">\(Q\)</span>, with those legs, is <span class="math" data-tex="\(\bigoplus_i^{\Pi}P_i\)">\(\bigoplus_i^{\Pi}P_i\)</span>. The universal property also gives the canonical isomorphism between constructions using different presentations. No exactness of a pointwise direct-sum operation is used.</p>
+<p>For a small diagram <span class="math" data-tex="\(D:I\to\Pi(\mathcal S)\)">\(D:I\to\Pi(\mathcal S)\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+A=\bigoplus_{a:i\to j\text{ in }I}^{\Pi}D(i),
+\qquad B=\bigoplus_{i\in I}^{\Pi}D(i).
+\]">\[
+A=\bigoplus_{a:i\to j\text{ in }I}^{\Pi}D(i),
+\qquad B=\bigoplus_{i\in I}^{\Pi}D(i).
+\]</span>
+<p>Let <span class="math" data-tex="\(d:A\to B\)">\(d:A\to B\)</span> have column <span class="math" data-tex="\(\iota_jD(a)-\iota_i\)">\(\iota_jD(a)-\iota_i\)</span> on the summand labelled <span class="math" data-tex="\(a:i\to j\)">\(a:i\to j\)</span>. A map <span class="math" data-tex="\(B\to P\)">\(B\to P\)</span> annihilates <span class="math" data-tex="\(d\)">\(d\)</span> exactly when its family of components satisfies <span class="math" data-tex="\(t_jD(a)=t_i\)">\(t_jD(a)=t_i\)</span> for every arrow. Thus <span class="math" data-tex="\(\operatorname{coker}d\)">\(\operatorname{coker}d\)</span>, with the induced object legs, has the cocone universal property of <span class="math" data-tex="\(\operatorname{colim}_I D\)">\(\operatorname{colim}_I D\)</span>. This includes the empty diagram. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 5.2 (a nonpointwise coproduct).</strong> Let <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> be the full category of free abelian groups, of arbitrary small rank, and take <span class="math" data-tex="\(\mathcal S_0=\{\mathbb Z\}\)">\(\mathcal S_0=\{\mathbb Z\}\)</span>. Write <span class="math" data-tex="\(L=\mathbb Z^{(\mathbb N)}\)">\(L=\mathbb Z^{(\mathbb N)}\)</span>. Theorem 5.1 gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\bigoplus_{n\in\mathbb N}^{\Pi}h_{\mathbb Z}=h_L.
+\tag{5.4}
+\]">\[
+\bigoplus_{n\in\mathbb N}^{\Pi}h_{\mathbb Z}=h_L.
+\tag{5.4}
+\]</span>
+<p>At <span class="math" data-tex="\(L\)">\(L\)</span>, the comparison from the pointwise sum is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+\bigoplus_n\operatorname{Hom}_{\mathbb Z}(L,\mathbb Z)
+\longrightarrow\operatorname{Hom}_{\mathbb Z}(L,L).
+\tag{5.5}
+\]">\[
+\bigoplus_n\operatorname{Hom}_{\mathbb Z}(L,\mathbb Z)
+\longrightarrow\operatorname{Hom}_{\mathbb Z}(L,L).
+\tag{5.5}
+\]</span>
+<p>A member on the left uses only finitely many target-coordinate injections, so its image is contained in the subgroup spanned by finitely many target basis vectors. The identity of <span class="math" data-tex="\(L\)">\(L\)</span> on the right has no such property. Hence (5.5) is not surjective. In matrix language the identity has one nonzero entry in each column, but infinitely many nonzero rows. A finite sum of the left-hand coordinate maps uses finitely many rows. This exhibits the failure without exchanging a product with a direct sum.</p>
+<h2 id="6-restricted-yoneda-and-its-countable-comparison">6. Restricted Yoneda and its countable comparison</h2>
+<p>Return to <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> and the shifted family <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, with the countable condition of Section 1. Let <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> be its full subcategory of objects isomorphic to arbitrary coproducts of members of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. Coproduct reindexing follows from the universal property, so <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> is additive and has arbitrary coproducts. The full subcategory on the members of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> is small and can serve as <span class="math" data-tex="\(\mathcal S_0\)">\(\mathcal S_0\)</span>.</p>
+<p>Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+y:\mathcal D\longrightarrow\Pi(\mathcal S),
+\qquad yX(C)=\operatorname{Hom}_{\mathcal D}(C,X).
+\tag{6.1}
+\]">\[
+y:\mathcal D\longrightarrow\Pi(\mathcal S),
+\qquad yX(C)=\operatorname{Hom}_{\mathcal D}(C,X).
+\tag{6.1}
+\]</span>
+<p>The Hom universal property in its source proves product preservation, regardless of whether <span class="math" data-tex="\(C\)">\(C\)</span> is compact. On <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, this functor is <span class="math" data-tex="\(h\)">\(h\)</span>; that restriction is fully faithful. Full faithfulness on all of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is not assumed.</p>
+<p><strong>Theorem 6.1.</strong> The functor <span class="math" data-tex="\(y\)">\(y\)</span> is covariantly cohomological, preserves countable coproducts, and has the following propagation property: for countably many maps <span class="math" data-tex="\(u_i:X_i\to X_i&#x27;\)">\(u_i:X_i\to X_i&#x27;\)</span>, if every <span class="math" data-tex="\(y(u_i)\)">\(y(u_i)\)</span> is epic, then <span class="math" data-tex="\(y(\bigoplus_i u_i)\)">\(y(\bigoplus_i u_i)\)</span> is epic.</p>
+<p><strong>Proof of cohomology and epimorphism propagation.</strong> Evaluating a triangle at each <span class="math" data-tex="\(C\in\mathcal S\)">\(C\in\mathcal S\)</span> gives its exact covariant Hom sequence. Pointwise exactness in Theorem 3.1 proves cohomology. Epicity of <span class="math" data-tex="\(y(u_i)\)">\(y(u_i)\)</span> is equivalent to surjectivity of <span class="math" data-tex="\(\operatorname{Hom}(C,u_i)\)">\(\operatorname{Hom}(C,u_i)\)</span> for every <span class="math" data-tex="\(C\in\mathcal F\)">\(C\in\mathcal F\)</span>, by the restriction test of Section 3. Theorem 2.1 gives the same surjectivity for the coproduct map, proving the epicity assertion.</p>
+<p><strong>Proof of the canonical coproduct comparison.</strong> Let <span class="math" data-tex="\((X_i)\)">\((X_i)\)</span> be countable. Choose by Theorem 4.1 an epimorphism <span class="math" data-tex="\(h_{Y_i}\twoheadrightarrow yX_i\)">\(h_{Y_i}\twoheadrightarrow yX_i\)</span>, with <span class="math" data-tex="\(Y_i\in\mathcal S\)">\(Y_i\in\mathcal S\)</span>. Yoneda (4.2), now with target <span class="math" data-tex="\(yX_i\)">\(yX_i\)</span>, identifies this with an actual arrow <span class="math" data-tex="\(b_i:Y_i\to X_i\)">\(b_i:Y_i\to X_i\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Complete it to a triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+W_i\xrightarrow{a_i}Y_i\xrightarrow{b_i}X_i\longrightarrow W_i[1].
+\tag{6.2}
+\]">\[
+W_i\xrightarrow{a_i}Y_i\xrightarrow{b_i}X_i\longrightarrow W_i[1].
+\tag{6.2}
+\]</span>
+<p>Choose another epimorphism <span class="math" data-tex="\(h_{Z_i}\twoheadrightarrow yW_i\)">\(h_{Z_i}\twoheadrightarrow yW_i\)</span>, again corresponding to an actual arrow <span class="math" data-tex="\(c_i:Z_i\to W_i\)">\(c_i:Z_i\to W_i\)</span>, with <span class="math" data-tex="\(Z_i\in\mathcal S\)">\(Z_i\in\mathcal S\)</span>. Exactness of <span class="math" data-tex="\(y\)">\(y\)</span> and epicity give presentations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+h_{Z_i}\xrightarrow{h_{a_ic_i}}h_{Y_i}
+\xrightarrow{y(b_i)}yX_i\longrightarrow0.
+\tag{6.3}
+\]">\[
+h_{Z_i}\xrightarrow{h_{a_ic_i}}h_{Y_i}
+\xrightarrow{y(b_i)}yX_i\longrightarrow0.
+\tag{6.3}
+\]</span>
+<p>Applying the construction of Theorem 5.1, their internal coproduct is the cokernel of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+h_{\bigoplus_i Z_i}\xrightarrow{h_{\bigoplus_i(a_ic_i)}}
+h_{\bigoplus_i Y_i}.
+\tag{6.4}
+\]">\[
+h_{\bigoplus_i Z_i}\xrightarrow{h_{\bigoplus_i(a_ic_i)}}
+h_{\bigoplus_i Y_i}.
+\tag{6.4}
+\]</span>
+<p>The two epicity assertions <span class="math" data-tex="\(y(c_i)\)">\(y(c_i)\)</span> and <span class="math" data-tex="\(y(b_i)\)">\(y(b_i)\)</span> propagate to their countable coproducts. Moreover the actual coproduct of (6.2) is a triangle. Its Hom exactness gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+y(\bigoplus_i W_i)\longrightarrow h_{\bigoplus_i Y_i}
+\xrightarrow{y(\bigoplus_i b_i)}y(\bigoplus_i X_i)\longrightarrow0.
+\tag{6.5}
+\]">\[
+y(\bigoplus_i W_i)\longrightarrow h_{\bigoplus_i Y_i}
+\xrightarrow{y(\bigoplus_i b_i)}y(\bigoplus_i X_i)\longrightarrow0.
+\tag{6.5}
+\]</span>
+<p>The epic map <span class="math" data-tex="\(h_{\bigoplus_i Z_i}\twoheadrightarrow y(\bigoplus_i W_i)\)">\(h_{\bigoplus_i Z_i}\twoheadrightarrow y(\bigoplus_i W_i)\)</span> shows that the image of its composite in (6.4) is the kernel of the second map in (6.5). Thus (6.4) has cokernel <span class="math" data-tex="\(y(\bigoplus_i X_i)\)">\(y(\bigoplus_i X_i)\)</span>. This identifies it with <span class="math" data-tex="\(\bigoplus_i^{\Pi}yX_i\)">\(\bigoplus_i^{\Pi}yX_i\)</span>.</p>
+<p>It remains to check which isomorphism was obtained. On the presentation summand <span class="math" data-tex="\(h_{Y_i}\)">\(h_{Y_i}\)</span>, the arrow in (6.5) is <span class="math" data-tex="\(y(j_i)y(b_i)\)">\(y(j_i)y(b_i)\)</span>, where <span class="math" data-tex="\(j_i:X_i\to\bigoplus_i X_i\)">\(j_i:X_i\to\bigoplus_i X_i\)</span> is the actual coprojection. The map from the cokernel of (6.4) therefore has <span class="math" data-tex="\(i\)">\(i\)</span>-th leg exactly <span class="math" data-tex="\(y(j_i)\)">\(y(j_i)\)</span>, by epic cancellation against (6.3). Consequently it is the canonical comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.6); horizontal scroll when needed" data-tex="\[
+\bigoplus_i^{\Pi}yX_i\xrightarrow{\sim}y(\bigoplus_i X_i).
+\tag{6.6}
+\]">\[
+\bigoplus_i^{\Pi}yX_i\xrightarrow{\sim}y(\bigoplus_i X_i).
+\tag{6.6}
+\]</span>
+<p>This proves both existence of an isomorphism and its compatibility with every original coprojection. The empty countable family gives the zero-object comparison. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also the specified translation on <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.7); horizontal scroll when needed" data-tex="\[
+(\mathsf TP)(C)=P(C[-1]).
+\tag{6.7}
+\]">\[
+(\mathsf TP)(C)=P(C[-1]).
+\tag{6.7}
+\]</span>
+<p>The shift closure of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> and its canonical coproduct comparisons put this functor in <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>. Precomposition with the opposite shift gives its inverse, using the specified unit and counit of translation. It is exact by pointwise exactness and preserves arbitrary internal coproducts because it is an equivalence. The Hom bijection gives a natural comparison <span class="math" data-tex="\(y(X[1])\simeq\mathsf T(yX)\)">\(y(X[1])\simeq\mathsf T(yX)\)</span>. Thus the entire shifted sequence in (6.5) is the actual Hom sequence transported by this comparison, rather than a separately chosen sequence of groups.</p>
+<h2 id="7-a-noncompact-family-that-satisfies-the-hypotheses">7. A noncompact family that satisfies the hypotheses</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a small field and let <span class="math" data-tex="\(\mathcal D=K(\mathsf{Vect}_k)\)">\(\mathcal D=K(\mathsf{Vect}_k)\)</span> be the homotopy category of arbitrary cochain complexes of small vector spaces. Its translation, cone triangles and full triangulated structure are constructed in <a href="chain-homotopies-mapping-cones-and-triangles.html">Chain homotopies, mapping cones and triangles</a>.</p>
+<p>Termwise sums are actual coproducts in this homotopy category. A family of morphism classes has a family of chain-map representatives, and their maps assemble on the termwise injections. If a chain map on the sum is null-homotopic on each summand, choose the corresponding homotopies and assemble them degree by degree. The homotopy equation holds on every injection, so holds on the sum. This proves both existence and uniqueness for the coproduct of morphism classes.</p>
+<p>Put <span class="math" data-tex="\(C=k^{(\mathbb N)}[0]\)">\(C=k^{(\mathbb N)}[0]\)</span> and <span class="math" data-tex="\(\mathcal F=\{C[n]:n\in\mathbb Z\}\)">\(\mathcal F=\{C[n]:n\in\mathbb Z\}\)</span>. A chain map <span class="math" data-tex="\(k[n]\to X\)">\(k[n]\to X\)</span> is a cycle in degree <span class="math" data-tex="\(-n\)">\(-n\)</span>; two such maps are homotopic exactly when their cycles differ by a boundary. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{K}(k[n],X)=H^{-n}(X),
+\qquad
+\operatorname{Hom}_{K}(C[n],X)=\prod_{m\in\mathbb N}H^{-n}(X).
+\tag{7.1}
+\]">\[
+\operatorname{Hom}_{K}(k[n],X)=H^{-n}(X),
+\qquad
+\operatorname{Hom}_{K}(C[n],X)=\prod_{m\in\mathbb N}H^{-n}(X).
+\tag{7.1}
+\]</span>
+<p>The second equality is the actual coproduct universal property in the source, not a commutation assertion in the target.</p>
+<p>If all groups (7.1) vanish, every <span class="math" data-tex="\(H^r(X)\)">\(H^r(X)\)</span> vanishes. Such a vector-space complex is contractible, including when it is unbounded. To see this explicitly, write <span class="math" data-tex="\(B^r=\operatorname{im}d^{r-1}\)">\(B^r=\operatorname{im}d^{r-1}\)</span> and choose a complement <span class="math" data-tex="\(L^r\)">\(L^r\)</span> to <span class="math" data-tex="\(B^r=\ker d^r\)">\(B^r=\ker d^r\)</span> in <span class="math" data-tex="\(X^r\)">\(X^r\)</span>. The restriction <span class="math" data-tex="\(d^r:L^r\to B^{r+1}\)">\(d^r:L^r\to B^{r+1}\)</span> is an isomorphism. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+s^r(b+\ell)=(d^{r-1}|_{L^{r-1}})^{-1}(b)
+\quad\text{in }L^{r-1}\subset X^{r-1}.
+\tag{7.2}
+\]">\[
+s^r(b+\ell)=(d^{r-1}|_{L^{r-1}})^{-1}(b)
+\quad\text{in }L^{r-1}\subset X^{r-1}.
+\tag{7.2}
+\]</span>
+<p>Then <span class="math" data-tex="\(d^{r-1}s^r(b+\ell)=b\)">\(d^{r-1}s^r(b+\ell)=b\)</span> and <span class="math" data-tex="\(s^{r+1}d^r(b+\ell)=\ell\)">\(s^{r+1}d^r(b+\ell)=\ell\)</span>. Thus <span class="math" data-tex="\(ds+sd=1_X\)">\(ds+sd=1_X\)</span>, proving that <span class="math" data-tex="\(X\)">\(X\)</span> is zero in <span class="math" data-tex="\(K\)">\(K\)</span>. The choices are made for all degrees; no induction from a first or last degree is required. This proves zero detection, and Lemma 1.1 gives isomorphism detection for this shifted family.</p>
+<p>Cohomology commutes with arbitrary termwise direct sums of vector-space complexes. A finite-support tuple is a cycle exactly when each coordinate is a cycle. A finite-support tuple of boundaries has a finite-support family of preimages. Consequently both cycles and boundaries are the respective direct sums, and their quotient is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+H^r(\bigoplus_iX_i)=\bigoplus_iH^r(X_i)
+\tag{7.3}
+\]">\[
+H^r(\bigoplus_iX_i)=\bigoplus_iH^r(X_i)
+\tag{7.3}
+\]</span>
+<p>with the actual coprojection maps. If every <span class="math" data-tex="\(\operatorname{Hom}_{K}(C[n],u_i)\)">\(\operatorname{Hom}_{K}(C[n],u_i)\)</span> is zero, (7.1) shows that every <span class="math" data-tex="\(H^{-n}(u_i)\)">\(H^{-n}(u_i)\)</span> is zero: put any desired element in one coordinate and zero in the others. Formula (7.3) makes <span class="math" data-tex="\(H^{-n}(\bigoplus_i u_i)\)">\(H^{-n}(\bigoplus_i u_i)\)</span> zero. Applying (7.1) again proves zero-map propagation, even for arbitrary small families. In particular the countable condition holds.</p>
+<p>Nevertheless <span class="math" data-tex="\(C\)">\(C\)</span> is not compact. In</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.4); horizontal scroll when needed" data-tex="\[
+\bigoplus_i\operatorname{Hom}_{K}(C,k[0])
+\longrightarrow\operatorname{Hom}_{K}(C,k^{(\mathbb N)}[0]),
+\tag{7.4}
+\]">\[
+\bigoplus_i\operatorname{Hom}_{K}(C,k[0])
+\longrightarrow\operatorname{Hom}_{K}(C,k^{(\mathbb N)}[0]),
+\tag{7.4}
+\]</span>
+<p>every left-hand element has image in finitely many target coordinates. The identity of <span class="math" data-tex="\(C\)">\(C\)</span> is not of this form. All these complexes are concentrated in degree zero, so no nonzero homotopy can change their maps. This gives a concrete noncompact family satisfying both hypotheses, without passing to a derived localization or identifying an acyclic complex with zero by declaration.</p>
+<p><strong>Example 7.2 (restricted Yoneda need not be faithful).</strong> Take <span class="math" data-tex="\(\mathcal D=D(\mathsf{Ab})\)">\(\mathcal D=D(\mathsf{Ab})\)</span>, with the shift and full triangle structure in <a href="triangles-after-quasi-isomorphism-localization.html">Triangles after quasi-isomorphism localization</a>. Use <span class="math" data-tex="\(\mathcal F=\{\mathbb Z[n]:n\in\mathbb Z\}\)">\(\mathcal F=\{\mathbb Z[n]:n\in\mathbb Z\}\)</span>. The bounded-projective test in <a href="derived-morphisms-through-quasi-isomorphism-roofs.html#5-complexes-that-absorb-denominator-changes">Derived morphisms through quasi-isomorphism roofs, Theorems 5.1–5.2</a> gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.5); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{D}(\mathbb Z[n],X)=H^{-n}(X).
+\tag{7.5}
+\]">\[
+\operatorname{Hom}_{D}(\mathbb Z[n],X)=H^{-n}(X).
+\tag{7.5}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is projective because lifting the image of 1 through a surjection lifts the entire homomorphism. Thus the stated test applies to its degree-zero complex and every shift.</p>
+<p>We verify the arbitrary coproducts used by this example. Termwise sums are actual coproducts in <span class="math" data-tex="\(K(\mathsf{Ab})\)">\(K(\mathsf{Ab})\)</span>, by the representative and homotopy assembly already given. They preserve quasi-isomorphisms because the finite-support cycle and boundary argument of (7.3) also works for abelian groups. In the derived localization these sums still have the universal property. For existence, choose an incoming roof for each prescribed map <span class="math" data-tex="\(QX_i\to QY\)">\(QX_i\to QY\)</span>, where <span class="math" data-tex="\(Q:K\to D\)">\(Q:K\to D\)</span> is localization. Sum their denominators and assemble their numerators by the coproduct property in <span class="math" data-tex="\(K\)">\(K\)</span>. The sum denominator is a quasi-isomorphism, so the resulting roof defines a map from <span class="math" data-tex="\(Q(\bigoplus_iX_i)\)">\(Q(\bigoplus_iX_i)\)</span> with the prescribed restrictions.</p>
+<p>For uniqueness, suppose a derived map from this sum restricts to zero on every <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. Represent it by <span class="math" data-tex="\(\bigoplus_iX_i\xleftarrow{s}V\xrightarrow{f}Y\)">\(\bigoplus_iX_i\xleftarrow{s}V\xrightarrow{f}Y\)</span>. For each injection <span class="math" data-tex="\(j_i\)">\(j_i\)</span>, the incoming square lemma for roofs gives a denominator <span class="math" data-tex="\(a_i:U_i\to X_i\)">\(a_i:U_i\to X_i\)</span> and a map <span class="math" data-tex="\(b_i:U_i\to V\)">\(b_i:U_i\to V\)</span> with <span class="math" data-tex="\(sb_i=j_ia_i\)">\(sb_i=j_ia_i\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>. The zero restriction and the incoming equality test give a further denominator <span class="math" data-tex="\(c_i:U_i&#x27;\to U_i\)">\(c_i:U_i&#x27;\to U_i\)</span> with <span class="math" data-tex="\(fb_ic_i=0\)">\(fb_ic_i=0\)</span>. Assemble <span class="math" data-tex="\(b_ic_i\)">\(b_ic_i\)</span> to <span class="math" data-tex="\(b:\bigoplus_iU_i&#x27;\to V\)">\(b:\bigoplus_iU_i&#x27;\to V\)</span>. Then <span class="math" data-tex="\(sb\)">\(sb\)</span> is the sum of the denominators <span class="math" data-tex="\(a_ic_i\)">\(a_ic_i\)</span>, under the actual injections, hence a quasi-isomorphism. Since <span class="math" data-tex="\(s\)">\(s\)</span> is one too, its cohomology equations imply that <span class="math" data-tex="\(b\)">\(b\)</span> is a quasi-isomorphism. Also <span class="math" data-tex="\(fb=0\)">\(fb=0\)</span> by the injections. Refining the original roof by <span class="math" data-tex="\(b\)">\(b\)</span> proves that it is zero. Applied to a difference of two maps, this proves uniqueness. Both square and equality tests are proved in <a href="derived-morphisms-through-quasi-isomorphism-roofs.html#1-both-square-and-cancellation-axioms">Derived morphisms through quasi-isomorphism roofs, Sections 1–2</a>.</p>
+<p>Consequently these are actual arbitrary coproducts in <span class="math" data-tex="\(D\)">\(D\)</span>, with cohomology (7.3). Formula (7.5) detects zero objects: if all cohomology groups vanish, the arrow <span class="math" data-tex="\(X\to0\)">\(X\to0\)</span> is a quasi-isomorphism, hence invertible in <span class="math" data-tex="\(D\)">\(D\)</span>. The same formula and the sum cohomology calculation give zero-map propagation. Thus this family satisfies both hypotheses of Section 1.</p>
+<p>Now let <span class="math" data-tex="\(M=(\mathbb Z/2)[0]\)">\(M=(\mathbb Z/2)[0]\)</span>, and put <span class="math" data-tex="\(P=(\mathbb Z\xrightarrow{2}\mathbb Z)\)">\(P=(\mathbb Z\xrightarrow{2}\mathbb Z)\)</span> in degrees minus one and zero. Reduction gives a quasi-isomorphism <span class="math" data-tex="\(p:P\to M\)">\(p:P\to M\)</span>. The chain map <span class="math" data-tex="\(a:P\to\mathbb Z[1]\)">\(a:P\to\mathbb Z[1]\)</span> with identity component in degree minus one represents</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.6); horizontal scroll when needed" data-tex="\[
+\delta=Qa\,(Qp)^{-1}:M\longrightarrow\mathbb Z[1].
+\tag{7.6}
+\]">\[
+\delta=Qa\,(Qp)^{-1}:M\longrightarrow\mathbb Z[1].
+\tag{7.6}
+\]</span>
+<p>It is nonzero. Indeed the bounded-projective test identifies <span class="math" data-tex="\(\operatorname{Hom}_D(P,\mathbb Z[1])\)">\(\operatorname{Hom}_D(P,\mathbb Z[1])\)</span> with its homotopy group. Chain maps are integers in degree minus one, and homotopies change that integer by an even integer. Thus this group is <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>, and <span class="math" data-tex="\(a\)">\(a\)</span> has class 1. Inverting <span class="math" data-tex="\(Qp\)">\(Qp\)</span> cannot turn that class into zero.</p>
+<p>Every cohomology map of <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is zero, because its source and target cohomology occur in distinct degrees. Hence <span class="math" data-tex="\(\operatorname{Hom}_D(C,\delta)=0\)">\(\operatorname{Hom}_D(C,\delta)=0\)</span> for every <span class="math" data-tex="\(C\in\mathcal F\)">\(C\in\mathcal F\)</span>, by (7.5). It is also zero for every <span class="math" data-tex="\(S\in\mathcal S\)">\(S\in\mathcal S\)</span>: Hom out of a coproduct is the product of the Hom groups from its summands, and isomorphisms transport this statement. Therefore <span class="math" data-tex="\(y(\delta)=0\)">\(y(\delta)=0\)</span> although <span class="math" data-tex="\(\delta\ne0\)">\(\delta\ne0\)</span>. The restricted functor <span class="math" data-tex="\(y\)">\(y\)</span> is not faithful in this example. This proves the distinction while retaining zero detection and the countable condition.</p>
+<h2 id="8-a-stabilized-image-telescope-in-an-abelian-category">8. A stabilized-image telescope in an abelian category</h2>
+<p>Here is the abelian calculation that will apply to a Brown tower. It is valid even when coproducts in the abelian category are not pointwise.</p>
+<p><strong>Theorem 8.1.</strong> Let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be an abelian category with countable coproducts. Suppose there are arrows <span class="math" data-tex="\(u_n:M_n\to M_{n+1}\)">\(u_n:M_n\to M_{n+1}\)</span> and epimorphisms <span class="math" data-tex="\(e_n:M_n\twoheadrightarrow H\)">\(e_n:M_n\twoheadrightarrow H\)</span>, for <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, such that</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+e_{n+1}u_n=e_n,
+\qquad u_n(\ker e_n)=0.
+\tag{8.1}
+\]">\[
+e_{n+1}u_n=e_n,
+\qquad u_n(\ker e_n)=0.
+\tag{8.1}
+\]</span>
+<p>For the actual coprojections <span class="math" data-tex="\(a_n:M_n\to P=\bigoplus_{n\ge0}M_n\)">\(a_n:M_n\to P=\bigoplus_{n\ge0}M_n\)</span>, define <span class="math" data-tex="\(s:P\to P\)">\(s:P\to P\)</span> and <span class="math" data-tex="\(q:P\to H\)">\(q:P\to H\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+sa_n=a_{n+1}u_n,\qquad qa_n=e_n.
+\tag{8.2}
+\]">\[
+sa_n=a_{n+1}u_n,\qquad qa_n=e_n.
+\tag{8.2}
+\]</span>
+<p>Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+0\longrightarrow P\xrightarrow{1-s}P\xrightarrow{q}H\longrightarrow0
+\tag{8.3}
+\]">\[
+0\longrightarrow P\xrightarrow{1-s}P\xrightarrow{q}H\longrightarrow0
+\tag{8.3}
+\]</span>
+<p>is split exact. The compatible legs <span class="math" data-tex="\(e_n\)">\(e_n\)</span> also exhibit <span class="math" data-tex="\(H\)">\(H\)</span> as the colimit of this sequence of <span class="math" data-tex="\(M_n\)">\(M_n\)</span>.</p>
+<p><strong>Proof: the forced sections.</strong> Because <span class="math" data-tex="\(e_n\)">\(e_n\)</span> is the cokernel of its kernel, the second equation of (8.1) gives a unique <span class="math" data-tex="\(i_n:H\to M_{n+1}\)">\(i_n:H\to M_{n+1}\)</span> with <span class="math" data-tex="\(u_n=i_ne_n\)">\(u_n=i_ne_n\)</span>. The first equation and epic cancellation give <span class="math" data-tex="\(e_{n+1}i_n=1_H\)">\(e_{n+1}i_n=1_H\)</span>. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, put <span class="math" data-tex="\(K_n=\ker e_n\)">\(K_n=\ker e_n\)</span>, with inclusion <span class="math" data-tex="\(k_n\)">\(k_n\)</span>. The map <span class="math" data-tex="\(1-i_{n-1}e_n\)">\(1-i_{n-1}e_n\)</span> factors uniquely as <span class="math" data-tex="\(k_nr_n\)">\(k_nr_n\)</span>. Monic cancellation gives <span class="math" data-tex="\(r_nk_n=1\)">\(r_nk_n=1\)</span> and <span class="math" data-tex="\(r_ni_{n-1}=0\)">\(r_ni_{n-1}=0\)</span>. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.4); horizontal scroll when needed" data-tex="\[
+(i_{n-1},k_n):H\oplus K_n\xrightarrow{\sim}M_n,
+\qquad (e_n,r_n)\text{ is its inverse}.
+\tag{8.4}
+\]">\[
+(i_{n-1},k_n):H\oplus K_n\xrightarrow{\sim}M_n,
+\qquad (e_n,r_n)\text{ is its inverse}.
+\tag{8.4}
+\]</span>
+<p>In these coordinates <span class="math" data-tex="\(u_n(h,k)=(h,0)\)">\(u_n(h,k)=(h,0)\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, whereas <span class="math" data-tex="\(u_0\)">\(u_0\)</span> is the column <span class="math" data-tex="\((e_0,0)\)">\((e_0,0)\)</span>. A splitting of <span class="math" data-tex="\(e_0\)">\(e_0\)</span> has not been assumed.</p>
+<p><strong>Proof: the constant identity telescope.</strong> Put <span class="math" data-tex="\(U=\bigoplus_{n\ge1}H\)">\(U=\bigoplus_{n\ge1}H\)</span>, with legs <span class="math" data-tex="\(j_n\)">\(j_n\)</span>. Let <span class="math" data-tex="\(s_Hj_n=j_{n+1}\)">\(s_Hj_n=j_{n+1}\)</span>, <span class="math" data-tex="\(d_H=1-s_H\)">\(d_H=1-s_H\)</span>, and <span class="math" data-tex="\(cj_n=1_H\)">\(cj_n=1_H\)</span>. Define <span class="math" data-tex="\(r:U\to U\)">\(r:U\to U\)</span> by its finite columns</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.5); horizontal scroll when needed" data-tex="\[
+rj_1=0,\qquad rj_n=-\sum_{t=1}^{n-1}j_t\quad(n\ge2).
+\tag{8.5}
+\]">\[
+rj_1=0,\qquad rj_n=-\sum_{t=1}^{n-1}j_t\quad(n\ge2).
+\tag{8.5}
+\]</span>
+<p>The coproduct universal property gives this map. No infinite sum in a Hom group is proposed. On each <span class="math" data-tex="\(j_n\)">\(j_n\)</span>, subtracting consecutive finite sums proves</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.6); horizontal scroll when needed" data-tex="\[
+rd_H=1_U,\quad d_Hr+j_1c=1_U,
+\quad cd_H=0,\quad cj_1=1_H.
+\tag{8.6}
+\]">\[
+rd_H=1_U,\quad d_Hr+j_1c=1_U,
+\quad cd_H=0,\quad cj_1=1_H.
+\tag{8.6}
+\]</span>
+<p>For example, <span class="math" data-tex="\(d_Hrj_n=-\sum_{t&lt;n}(j_t-j_{t+1})=j_n-j_1\)">\(d_Hrj_n=-\sum_{t&lt;n}(j_t-j_{t+1})=j_n-j_1\)</span>; this also holds for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+<p><strong>Proof: one shear for the initial epimorphism.</strong> Reindexing the coproduct using (8.4) identifies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.7); horizontal scroll when needed" data-tex="\[
+P=M_0\oplus U\oplus V,
+\qquad V=\bigoplus_{n\ge1}K_n.
+\tag{8.7}
+\]">\[
+P=M_0\oplus U\oplus V,
+\qquad V=\bigoplus_{n\ge1}K_n.
+\tag{8.7}
+\]</span>
+<p>This reindexing is justified by the Hom-out universal properties: on either side a map specifies one map from <span class="math" data-tex="\(M_0\)">\(M_0\)</span>, one from each copy of <span class="math" data-tex="\(H\)">\(H\)</span>, and one from each <span class="math" data-tex="\(K_n\)">\(K_n\)</span>. Put <span class="math" data-tex="\(d=1-s\)">\(d=1-s\)</span>. Its columns under (8.7) are <span class="math" data-tex="\((1,-j_1e_0,0)\)">\((1,-j_1e_0,0)\)</span> on <span class="math" data-tex="\(M_0\)">\(M_0\)</span>, <span class="math" data-tex="\((0,j_n-j_{n+1},0)\)">\((0,j_n-j_{n+1},0)\)</span> on the <span class="math" data-tex="\(n\)">\(n\)</span>-th copy of <span class="math" data-tex="\(H\)">\(H\)</span>, and the identity injection into <span class="math" data-tex="\(V\)">\(V\)</span> on <span class="math" data-tex="\(K_n\)">\(K_n\)</span>.</p>
+<p>The biproduct-matrix automorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.8); horizontal scroll when needed" data-tex="\[
+b(m,u,v)=(m,u+j_1e_0m,v)
+\tag{8.8}
+\]">\[
+b(m,u,v)=(m,u+j_1e_0m,v)
+\tag{8.8}
+\]</span>
+<p>has inverse with a minus sign. Testing its columns gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.9); horizontal scroll when needed" data-tex="\[
+bd=D=\operatorname{diag}(1_{M_0},d_H,1_V).
+\tag{8.9}
+\]">\[
+bd=D=\operatorname{diag}(1_{M_0},d_H,1_V).
+\tag{8.9}
+\]</span>
+<p>Set <span class="math" data-tex="\(R=\operatorname{diag}(1_{M_0},r,1_V)\)">\(R=\operatorname{diag}(1_{M_0},r,1_V)\)</span>, <span class="math" data-tex="\(Q=(0,c,0)\)">\(Q=(0,c,0)\)</span>, and <span class="math" data-tex="\(J=(0,j_1,0)\)">\(J=(0,j_1,0)\)</span>. Equations (8.6) give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+RD=1_P,\quad DR+JQ=1_P,\quad QD=0,\quad QJ=1_H.
+\]">\[
+RD=1_P,\quad DR+JQ=1_P,\quad QD=0,\quad QJ=1_H.
+\]</span>
+<p>Moreover <span class="math" data-tex="\(q=Qb\)">\(q=Qb\)</span>: on <span class="math" data-tex="\(M_0\)">\(M_0\)</span> this is <span class="math" data-tex="\(e_0\)">\(e_0\)</span>, on each <span class="math" data-tex="\(H\)">\(H\)</span>-copy it is the identity, and on every <span class="math" data-tex="\(K_n\)">\(K_n\)</span> it is zero. These are precisely the original <span class="math" data-tex="\(e_n\)">\(e_n\)</span> in (8.4). Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+t=Rb,\qquad z=b^{-1}J.
+\]">\[
+t=Rb,\qquad z=b^{-1}J.
+\]</span>
+<p>Conjugating the preceding identities gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.10); horizontal scroll when needed" data-tex="\[
+td=1_P,\quad dt+zq=1_P,\quad qd=0,\quad qz=1_H.
+\tag{8.10}
+\]">\[
+td=1_P,\quad dt+zq=1_P,\quad qd=0,\quad qz=1_H.
+\tag{8.10}
+\]</span>
+<p>In particular <span class="math" data-tex="\(d\)">\(d\)</span> is monic and <span class="math" data-tex="\(q\)">\(q\)</span> is split epic. If <span class="math" data-tex="\(qv=0\)">\(qv=0\)</span>, then <span class="math" data-tex="\(v=dtv\)">\(v=dtv\)</span>, and its factor through <span class="math" data-tex="\(d\)">\(d\)</span> is unique because <span class="math" data-tex="\(d\)">\(d\)</span> is monic. If <span class="math" data-tex="\(wd=0\)">\(wd=0\)</span>, then <span class="math" data-tex="\(w=wzq\)">\(w=wzq\)</span>, again with unique factor because <span class="math" data-tex="\(q\)">\(q\)</span> is epic. This proves (8.3), including its actual kernel and cokernel maps. The section <span class="math" data-tex="\(z\)">\(z\)</span> uses the forced <span class="math" data-tex="\(H\)">\(H\)</span>-summand of <span class="math" data-tex="\(M_1\)">\(M_1\)</span>; the initial <span class="math" data-tex="\(e_0\)">\(e_0\)</span> can be nonsplit.</p>
+<p>A map <span class="math" data-tex="\(v:P\to A\)">\(v:P\to A\)</span> gives a cocone on the <span class="math" data-tex="\(M_n\)">\(M_n\)</span> exactly when <span class="math" data-tex="\(va_{n+1}u_n=va_n\)">\(va_{n+1}u_n=va_n\)</span> for all <span class="math" data-tex="\(n\)">\(n\)</span>. This is equivalent to <span class="math" data-tex="\(vd=0\)">\(vd=0\)</span>. The cokernel property just proved gives its unique factor through <span class="math" data-tex="\(q\)">\(q\)</span>, with the prescribed components through <span class="math" data-tex="\(e_n\)">\(e_n\)</span>. Thus <span class="math" data-tex="\(H\)">\(H\)</span>, with those legs, is their sequential colimit. If <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, (8.1) forces <span class="math" data-tex="\(u_n=0\)">\(u_n=0\)</span>, and the proof gives <span class="math" data-tex="\(d=1_P\)">\(d=1_P\)</span>, as required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every additive functor preserves the four equations (8.10), hence this split exact sequence. This observation does not assert that the functor preserves arbitrary nonsplit exact sequences or arbitrary filtered colimits. In <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>, (6.6) supplies the countable coproduct interface, and (6.7) supplies its exact shifted interface. Those are the specific comparisons needed when applying (8.3) to a triangulated telescope.</p>
+<h2 id="9-four-graded-exercises-with-complete-solutions">9. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic: one representable presentation).</strong> Let <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> be the category of free abelian groups and let <span class="math" data-tex="\(A=\mathbb Z/2\)">\(A=\mathbb Z/2\)</span>. For <span class="math" data-tex="\(P_A(S)=\operatorname{Hom}_{\mathbb Z}(S,A)\)">\(P_A(S)=\operatorname{Hom}_{\mathbb Z}(S,A)\)</span>, prove that <span class="math" data-tex="\(P_A\in\Pi(\mathcal S)\)">\(P_A\in\Pi(\mathcal S)\)</span> and compute a presentation by two copies of <span class="math" data-tex="\(h_{\mathbb Z}\)">\(h_{\mathbb Z}\)</span>. Verify its exactness also at a free group of infinite rank.</p>
+<p><strong>Solution.</strong> The Hom-out coproduct property gives <span class="math" data-tex="\(P_A(\bigoplus_iS_i)=\prod_iP_A(S_i)\)">\(P_A(\bigoplus_iS_i)=\prod_iP_A(S_i)\)</span>; additivity follows from bilinear composition. Reduction <span class="math" data-tex="\(\rho:\mathbb Z\to A\)">\(\rho:\mathbb Z\to A\)</span> gives the natural transformation <span class="math" data-tex="\(h_{\mathbb Z}\to P_A\)">\(h_{\mathbb Z}\to P_A\)</span>. At <span class="math" data-tex="\(S=\mathbb Z^{(J)}\)">\(S=\mathbb Z^{(J)}\)</span>, its component is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\prod_{j\in J}\mathbb Z\longrightarrow\prod_{j\in J}\mathbb Z/2,
+\qquad (b_j)\longmapsto(\overline{b_j}).
+\]">\[
+\prod_{j\in J}\mathbb Z\longrightarrow\prod_{j\in J}\mathbb Z/2,
+\qquad (b_j)\longmapsto(\overline{b_j}).
+\]</span>
+<p>It is surjective: choose for each coordinate the representative 0 or 1. Its kernel is <span class="math" data-tex="\(\prod_j2\mathbb Z\)">\(\prod_j2\mathbb Z\)</span>, the image of coordinatewise multiplication by two. That multiplication is injective. Thus the following sequence is exact at every free group, including infinite rank:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9.1); horizontal scroll when needed" data-tex="\[
+0\longrightarrow h_{\mathbb Z}\xrightarrow{h_2}h_{\mathbb Z}
+\xrightarrow{P_\rho}P_A\longrightarrow0.
+\tag{9.1}
+\]">\[
+0\longrightarrow h_{\mathbb Z}\xrightarrow{h_2}h_{\mathbb Z}
+\xrightarrow{P_\rho}P_A\longrightarrow0.
+\tag{9.1}
+\]</span>
+<p>Theorem 3.1 therefore makes it an exact sequence in <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>. The arrow <span class="math" data-tex="\(h_2\)">\(h_2\)</span> is induced by the actual multiplication-by-two map <span class="math" data-tex="\(\mathbb Z\to\mathbb Z\)">\(\mathbb Z\to\mathbb Z\)</span>, and the quotient leg is induced by actual reduction. Evaluation at <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> already tests exactness because it is the chosen <span class="math" data-tex="\(\mathcal S_0\)">\(\mathcal S_0\)</span>; the explicit infinite-rank calculation checks the product comparison that permits this test.</p>
+<p><strong>Exercise 2 (intermediate: quotient coproducts).</strong> In the setting of Exercise 1, compute <span class="math" data-tex="\(Q=\bigoplus_{n\in\mathbb N}^{\Pi}P_A\)">\(Q=\bigoplus_{n\in\mathbb N}^{\Pi}P_A\)</span>. At <span class="math" data-tex="\(L=\mathbb Z^{(\mathbb N)}\)">\(L=\mathbb Z^{(\mathbb N)}\)</span>, show that the map from the pointwise direct sum into <span class="math" data-tex="\(Q(L)\)">\(Q(L)\)</span> is not surjective. Does this contradict pointwise computation of cokernels in Theorem 3.1?</p>
+<p><strong>Solution.</strong> Taking the internal coproduct of the presentations in (9.1), Theorem 5.1 gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9.2); horizontal scroll when needed" data-tex="\[
+Q=\operatorname{coker}(h_L\xrightarrow{h_{2_L}}h_L).
+\tag{9.2}
+\]">\[
+Q=\operatorname{coker}(h_L\xrightarrow{h_{2_L}}h_L).
+\tag{9.2}
+\]</span>
+<p>Let <span class="math" data-tex="\(B=(\mathbb Z/2)^{(\mathbb N)}\)">\(B=(\mathbb Z/2)^{(\mathbb N)}\)</span>, and let <span class="math" data-tex="\(\rho_L:L\to B\)">\(\rho_L:L\to B\)</span> reduce every coordinate. For any free <span class="math" data-tex="\(S\)">\(S\)</span>, a homomorphism <span class="math" data-tex="\(S\to B\)">\(S\to B\)</span> lifts to <span class="math" data-tex="\(L\)">\(L\)</span>: choose a finite-support integral lift for the image of each basis vector of <span class="math" data-tex="\(S\)">\(S\)</span>, then extend linearly. If <span class="math" data-tex="\(S\to L\)">\(S\to L\)</span> is killed by <span class="math" data-tex="\(\rho_L\)">\(\rho_L\)</span>, every basis image belongs to <span class="math" data-tex="\(2L\)">\(2L\)</span>, so division by two gives a unique homomorphism <span class="math" data-tex="\(S\to L\)">\(S\to L\)</span>. Hence reduction induces a natural isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9.3); horizontal scroll when needed" data-tex="\[
+Q(S)=\operatorname{Hom}(S,L)/2\operatorname{Hom}(S,L)
+\xrightarrow{\sim}\operatorname{Hom}(S,B).
+\tag{9.3}
+\]">\[
+Q(S)=\operatorname{Hom}(S,L)/2\operatorname{Hom}(S,L)
+\xrightarrow{\sim}\operatorname{Hom}(S,B).
+\tag{9.3}
+\]</span>
+<p>Under (9.3), the internal legs <span class="math" data-tex="\(P_A\to Q\)">\(P_A\to Q\)</span> are the maps induced by the coordinate injections <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>. A member of <span class="math" data-tex="\(\bigoplus_nP_A(L)\)">\(\bigoplus_nP_A(L)\)</span> has only finitely many of these coordinates, so its image in <span class="math" data-tex="\(\operatorname{Hom}(L,B)\)">\(\operatorname{Hom}(L,B)\)</span> is contained in finitely many target-coordinate summands. The map sending the <span class="math" data-tex="\(n\)">\(n\)</span>-th basis vector of <span class="math" data-tex="\(L\)">\(L\)</span> to the <span class="math" data-tex="\(n\)">\(n\)</span>-th basis vector modulo two has infinitely many target coordinates. It is in <span class="math" data-tex="\(Q(L)\)">\(Q(L)\)</span> and is not in the pointwise comparison image.</p>
+<p>There is no contradiction. The cokernel of the specific transformation between the two objects <span class="math" data-tex="\(h_L\)">\(h_L\)</span> in (9.2) is pointwise. The earlier formation of these representable coproducts was internal, as proved in (5.1). A pointwise direct sum of the <span class="math" data-tex="\(P_A\)">\(P_A\)</span> need not belong to <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>, so it cannot be substituted for this construction. Even evaluation at the generating object <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, where the pointwise comparison is an isomorphism, would not make that substitution legitimate: the restriction test of Section 3 concerns arrows between objects already in <span class="math" data-tex="\(\Pi(\mathcal S)\)">\(\Pi(\mathcal S)\)</span>.</p>
+<p><strong>Exercise 3 (advanced: arbitrarily large noncompact probes).</strong> Let <span class="math" data-tex="\(J\)">\(J\)</span> be any small infinite set, put <span class="math" data-tex="\(C_J=k^{(J)}[0]\)">\(C_J=k^{(J)}[0]\)</span>, and let <span class="math" data-tex="\(\mathcal F_J=\{C_J[n]:n\in\mathbb Z\}\)">\(\mathcal F_J=\{C_J[n]:n\in\mathbb Z\}\)</span> in <span class="math" data-tex="\(K(\mathsf{Vect}_k)\)">\(K(\mathsf{Vect}_k)\)</span>. Prove zero detection and zero-map propagation for arbitrary small families. Prove that <span class="math" data-tex="\(C_J\)">\(C_J\)</span> is not compact. Explain why zero-map propagation does not assert that Hom from <span class="math" data-tex="\(C_J\)">\(C_J\)</span> preserves coproducts.</p>
+<p><strong>Solution.</strong> The actual source-coproduct calculation gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{K}(C_J[n],X)=\prod_{j\in J}H^{-n}(X).
+\tag{9.4}
+\]">\[
+\operatorname{Hom}_{K}(C_J[n],X)=\prod_{j\in J}H^{-n}(X).
+\tag{9.4}
+\]</span>
+<p>As <span class="math" data-tex="\(J\)">\(J\)</span> is nonempty, this product is zero exactly when its factor is zero: insert a factor element in any fixed coordinate and zero in all others. Vanishing for every <span class="math" data-tex="\(n\)">\(n\)</span> thus means that <span class="math" data-tex="\(X\)">\(X\)</span> is acyclic. Formula (7.2) contracts it, so it is zero in <span class="math" data-tex="\(K\)">\(K\)</span>. This proves zero detection, and the shift-stable test in Lemma 1.1 gives isomorphism detection.</p>
+<p>If <span class="math" data-tex="\(\operatorname{Hom}(C_J[n],u_i)=0\)">\(\operatorname{Hom}(C_J[n],u_i)=0\)</span>, (9.4) implies <span class="math" data-tex="\(H^{-n}(u_i)=0\)">\(H^{-n}(u_i)=0\)</span>. The finite-support proof of (7.3) is valid for any small index set. It follows that <span class="math" data-tex="\(H^{-n}(\bigoplus_i u_i)=0\)">\(H^{-n}(\bigoplus_i u_i)=0\)</span>, and then (9.4) gives <span class="math" data-tex="\(\operatorname{Hom}(C_J[n],\bigoplus_i u_i)=0\)">\(\operatorname{Hom}(C_J[n],\bigoplus_i u_i)=0\)</span>. This proves the stronger arbitrary-family zero-map implication without exchanging a product with a direct sum.</p>
+<p>Finally consider the family <span class="math" data-tex="\((k[0])_{j\in J}\)">\((k[0])_{j\in J}\)</span>. A member of <span class="math" data-tex="\(\bigoplus_j\operatorname{Hom}_{K}(C_J,k[0])\)">\(\bigoplus_j\operatorname{Hom}_{K}(C_J,k[0])\)</span> uses finitely many target summands. The identity <span class="math" data-tex="\(C_J\to k^{(J)}[0]\)">\(C_J\to k^{(J)}[0]\)</span> has image in all target basis directions, so it is outside that comparison image. There are no degree-minus-one homotopies for these degree-zero complexes. Thus <span class="math" data-tex="\(C_J\)">\(C_J\)</span> is not compact. Zero-map propagation tests families of zero-induced arrows. It asserts neither surjectivity of this Hom-coproduct comparison nor an exchange between the product in (9.4) and the sum in (7.3).</p>
+<p><strong>Exercise 4 (advanced: a nonsplit first leg).</strong> In <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span>, take <span class="math" data-tex="\(M_0=\mathbb Z\)">\(M_0=\mathbb Z\)</span>, <span class="math" data-tex="\(M_n=\mathbb Z/2\)">\(M_n=\mathbb Z/2\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and <span class="math" data-tex="\(H=\mathbb Z/2\)">\(H=\mathbb Z/2\)</span>. Let <span class="math" data-tex="\(e_0\)">\(e_0\)</span> be reduction, <span class="math" data-tex="\(e_n=1\)">\(e_n=1\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(u_0=e_0\)">\(u_0=e_0\)</span>, and <span class="math" data-tex="\(u_n=1\)">\(u_n=1\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Compute the maps in (8.3), a left inverse of <span class="math" data-tex="\(1-s\)">\(1-s\)</span>, and a section of <span class="math" data-tex="\(q\)">\(q\)</span>. Prove the colimit property with the original legs although <span class="math" data-tex="\(e_0\)">\(e_0\)</span> has no section.</p>
+<p><strong>Solution.</strong> Compatibility <span class="math" data-tex="\(e_{n+1}u_n=e_n\)">\(e_{n+1}u_n=e_n\)</span> holds. The kernel of <span class="math" data-tex="\(e_0\)">\(e_0\)</span> is <span class="math" data-tex="\(2\mathbb Z\)">\(2\mathbb Z\)</span>, which <span class="math" data-tex="\(u_0\)">\(u_0\)</span> kills; the other kernels are zero. Thus (8.1) holds. Put <span class="math" data-tex="\(U=(\mathbb Z/2)^{(\{1,2,\ldots\})}\)">\(U=(\mathbb Z/2)^{(\{1,2,\ldots\})}\)</span> with coprojections <span class="math" data-tex="\(j_n\)">\(j_n\)</span>, and use <span class="math" data-tex="\(d_H,c,r\)">\(d_H,c,r\)</span> from (8.5)–(8.6). Then <span class="math" data-tex="\(P=\mathbb Z\oplus U\)">\(P=\mathbb Z\oplus U\)</span>, and the actual maps are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9.5); horizontal scroll when needed" data-tex="\[
+d(m,u)=(m,d_Hu-j_1\overline m),
+\qquad q(m,u)=\overline m+cu.
+\tag{9.5}
+\]">\[
+d(m,u)=(m,d_Hu-j_1\overline m),
+\qquad q(m,u)=\overline m+cu.
+\tag{9.5}
+\]</span>
+<p>In particular <span class="math" data-tex="\(qa_0=e_0\)">\(qa_0=e_0\)</span> and <span class="math" data-tex="\(qa_n=e_n\)">\(qa_n=e_n\)</span> for all <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9.6); horizontal scroll when needed" data-tex="\[
+t(m,u)=(m,ru),\qquad z(h)=(0,j_1h).
+\tag{9.6}
+\]">\[
+t(m,u)=(m,ru),\qquad z(h)=(0,j_1h).
+\tag{9.6}
+\]</span>
+<p>Because <span class="math" data-tex="\(rj_1=0\)">\(rj_1=0\)</span> and <span class="math" data-tex="\(rd_H=1_U\)">\(rd_H=1_U\)</span>, (9.5) gives <span class="math" data-tex="\(td(m,u)=(m,u)\)">\(td(m,u)=(m,u)\)</span>. Also</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+dt(m,u)=(m,u-j_1cu-j_1\overline m),
+\qquad zq(m,u)=(0,j_1cu+j_1\overline m).
+\]">\[
+dt(m,u)=(m,u-j_1cu-j_1\overline m),
+\qquad zq(m,u)=(0,j_1cu+j_1\overline m).
+\]</span>
+<p>Their sum is <span class="math" data-tex="\((m,u)\)">\((m,u)\)</span>. The equations <span class="math" data-tex="\(qz=1_H\)">\(qz=1_H\)</span> and <span class="math" data-tex="\(qd=0\)">\(qd=0\)</span> follow respectively from <span class="math" data-tex="\(cj_1=1\)">\(cj_1=1\)</span>, and from <span class="math" data-tex="\(cd_H=0\)">\(cd_H=0\)</span> with cancellation of <span class="math" data-tex="\(\overline m\)">\(\overline m\)</span>. These are all four split identities, proving the sequence with its actual maps.</p>
+<p>If a family <span class="math" data-tex="\(v_n:M_n\to A\)">\(v_n:M_n\to A\)</span> is compatible, its coproduct map <span class="math" data-tex="\(v:P\to A\)">\(v:P\to A\)</span> has <span class="math" data-tex="\(vd=0\)">\(vd=0\)</span>. The equation <span class="math" data-tex="\(dt+zq=1\)">\(dt+zq=1\)</span> gives <span class="math" data-tex="\(v=vzq\)">\(v=vzq\)</span>. Thus <span class="math" data-tex="\(vz:H\to A\)">\(vz:H\to A\)</span> is its factor with all original legs. The factor is unique since <span class="math" data-tex="\(qz=1\)">\(qz=1\)</span>. This proves the colimit property. A homomorphism <span class="math" data-tex="\(\mathbb Z/2\to\mathbb Z\)">\(\mathbb Z/2\to\mathbb Z\)</span> is zero because its image is killed by two, so <span class="math" data-tex="\(e_0\)">\(e_0\)</span> has no section. The section <span class="math" data-tex="\(z\)">\(z\)</span> instead uses <span class="math" data-tex="\(M_1\)">\(M_1\)</span>, exactly as in the general proof.</p>
+<h2 id="10-freely-accessible-references">10. Freely accessible references</h2>
+<p>Henning Krause, <a href="https://arxiv.org/abs/math/0511047v3">Derived categories, resolutions, and Brown representability, Section 4</a>, discusses the general perfect-generator condition and the functor-category approach to Brown representability. The constructions and universal-map verifications needed here are supplied in Sections 1–8.</p>
+<p>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/0A8F">Lemma 13.38.1</a>, gives Brown representability for compactly generated triangulated categories. That compact hypothesis is sufficient for the countable condition of Section 2; the examples in Sections 7 and 9 show why the present condition also covers noncompact probes.</p>
+</main></body></html>

@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Positive viscous memory and the complete receiver bounds — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/positive-viscous-memory-and-the-complete-receiver-bounds.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-42.html">Previous lesson</a><a href="NS-FLUID-44.html">Next lesson</a></nav><article class="lesson"><h1 id="positive-viscous-memory-and-the-complete-receiver-bounds">Positive viscous memory and the complete receiver bounds</h1>
+<p>A viscous band keeps more information than its projection onto one wave
+packet. Its orthogonal field feeds back through a positive memory kernel.
+This lesson proves that the actual weak drive is positive at every upper
+scale and every positive time, computes its first nonzero coefficients,
+and carries the entire history through each physical checkpoint.</p>
+<p>The second part controls the complete receiving fields. Cancellation of
+the full amplifier in their pair energy gives input-history bounds
+without replacing viscosity by an arbitrary error. The heat response
+then bounds the weak drive, while the signed outgoing pump controls the
+rotor. An actual first receiver interval is constructed before any
+future transfer is assumed.</p>
+<p>The human source is Terence Tao,
+<a href="https://arxiv.org/abs/1402.0290v3">arXiv:1402.0290v3</a>, original author file
+navier-blowup.tex, especially the band equations at827–1008 and receiver
+argument at2039–2106. This is an independent editorial derivation from
+the original equations, with no novelty claim.
+<a href="NS-FLUID-40.html">Lesson40</a>,
+VD1–VD35, supplies the actual maximal flow, full band spaces and exact
+memory operators.
+<a href="NS-FLUID-42.html">Lesson42</a>,
+CR16–CR20, supplies the corrected coefficient table and four original
+equations. Both complete proofs are retained in this course.</p>
+<p>Five solved exercises evaluate the complete activation coefficient,
+bound a positive-memory truncation, prove the exact checkpoint maps for
+all four moments, identify the positive heat contribution discarded by
+a scalar restart, and strengthen the receiver bounds by retaining
+viscous decay. The formulas below retain the original physical fields,
+time origin, packet norms, scale coefficients and viscosity.</p>
+<h2 id="va1-retain-the-actual-fields-viscosity-and-full-memory">VA1. Retain the actual fields, viscosity and full memory</h2>
+<p>Keep the original nonzero real solenoidal fields <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span>, with their source squared norms <span class="math" data-tex="\(A_i=\|\psi_i\|_2^2=1\)">\(A_i=\|\psi_i\|_2^2=1\)</span>. This is a stated property of the source fields, not a change of their amplitudes. Put <span class="math" data-tex="\(q=1+\epsilon_0\)">\(q=1+\epsilon_0\)</span>, <span class="math" data-tex="\(1&lt;q&lt;2\)">\(1&lt;q&lt;2\)</span>, retain <span class="math" data-tex="\(\epsilon,K&gt;0\)">\(\epsilon,K&gt;0\)</span>, and let <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> be the original viscosity. Let <span class="math" data-tex="\(u\)">\(u\)</span> be the constructed maximal <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> solution with <span class="math" data-tex="\(u(0)=\psi_{1,n_0}\)">\(u(0)=\psi_{1,n_0}\)</span>, on <span class="math" data-tex="\([0,T_*)\)">\([0,T_*)\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+a_n=X_{1,n},\quad b_n=X_{2,n},\quad
+c_n=X_{3,n},\quad d_n=X_{4,n},\qquad
+\kappa_n=q^{5n/2}.
+\tag{VA1}
+\]">\[
+a_n=X_{1,n},\quad b_n=X_{2,n},\quad
+c_n=X_{3,n},\quad d_n=X_{4,n},\qquad
+\kappa_n=q^{5n/2}.
+\tag{VA1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(a_{n_0}(0)=1\)">\(a_{n_0}(0)=1\)</span>, and every other coordinate initially vanishes. All bands with <span class="math" data-tex="\(n&lt;n_0\)">\(n&lt;n_0\)</span> remain zero by VD12 and VD20. On every compact interval inside <span class="math" data-tex="\([0,T_*)\)">\([0,T_*)\)</span>, each fixed band coordinate is continuously differentiable and bounded. These properties come from the already constructed flow; no arbitrary scalar sequence is postulated.</p>
+<p>Retain the full wave-packet quantities</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_i=\|\nabla\psi_i\|_2^2,\quad
+J_i=\|\Delta\psi_i\|_2^2,\quad
+g_i=\Delta\psi_i+G_i\psi_i,\quad
+\sigma_i^2=J_i-G_i^2&gt;0,\\
+g_{i,n}=q^{2n}D_{q^n}g_i,\quad
+L_{i,n}=Q_{i,n}\Delta\big|_{\ker\Pi_{i,n}},\quad
+\mathscr K_{i,n}(r)=\langle e^{\nu rL_{i,n}}g_{i,n},g_{i,n}\rangle,\\
+q^{4n}\sigma_i^2e^{-4\pi^2\nu(1+\epsilon_0/2)^2q^{2n}r}
+\leq\mathscr K_{i,n}(r)
+\leq q^{4n}\sigma_i^2e^{-4\pi^2\nu q^{2n}r}
+\quad(r\geq0).
+\end{gathered}
+\tag{VA2}
+\]">\[
+\begin{gathered}
+G_i=\|\nabla\psi_i\|_2^2,\quad
+J_i=\|\Delta\psi_i\|_2^2,\quad
+g_i=\Delta\psi_i+G_i\psi_i,\quad
+\sigma_i^2=J_i-G_i^2&gt;0,\\
+g_{i,n}=q^{2n}D_{q^n}g_i,\quad
+L_{i,n}=Q_{i,n}\Delta\big|_{\ker\Pi_{i,n}},\quad
+\mathscr K_{i,n}(r)=\langle e^{\nu rL_{i,n}}g_{i,n},g_{i,n}\rangle,\\
+q^{4n}\sigma_i^2e^{-4\pi^2\nu(1+\epsilon_0/2)^2q^{2n}r}
+\leq\mathscr K_{i,n}(r)
+\leq q^{4n}\sigma_i^2e^{-4\pi^2\nu q^{2n}r}
+\quad(r\geq0).
+\end{gathered}
+\tag{VA2}
+\]</span>
+<p>Here <span class="math" data-tex="\(D_{q^n}\)">\(D_{q^n}\)</span>, <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> are exactly the dilation and orthogonal maps of VD21–VD31. Their complete definitions, domains and positivity proof are retained there. In particular each kernel is continuous, strictly positive, and bounded by <span class="math" data-tex="\(q^{4n}\sigma_i^2\)">\(q^{4n}\sigma_i^2\)</span>. Define only an abbreviation for the full viscous contribution:</p>
+<span class="math math-display" data-tex="\[
+\mathcal V_{i,n}[x](t)
+=-\nu q^{2n}G_i x(t)
++\nu^2\int_0^t\mathscr K_{i,n}(t-s)x(s)\,ds.
+\tag{VA3}
+\]">\[
+\mathcal V_{i,n}[x](t)
+=-\nu q^{2n}G_i x(t)
++\nu^2\int_0^t\mathscr K_{i,n}(t-s)x(s)\,ds.
+\tag{VA3}
+\]</span>
+<p>The four actual equations, with both adjacent scales present, are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a_n&#x27;={}&amp;\kappa_n[-\epsilon^{-2}c_nd_n-\epsilon a_nb_n
+-\epsilon^2e^{-K^{10}}a_nc_n+Kd_{n-1}^2]
++\mathcal V_{1,n}[a_n],\\
+b_n&#x27;={}&amp;\kappa_n[\epsilon a_n^2-\epsilon^{-1}K^{10}c_n^2]
++\mathcal V_{2,n}[b_n],\\
+c_n&#x27;={}&amp;\kappa_n[\epsilon^2e^{-K^{10}}a_n^2
++\epsilon^{-1}K^{10}b_nc_n]
++\mathcal V_{3,n}[c_n],\\
+d_n&#x27;={}&amp;\kappa_n[\epsilon^{-2}a_nc_n-q^{5/2}Kd_na_{n+1}]
++\mathcal V_{4,n}[d_n].
+\end{aligned}
+\tag{VA4}
+\]">\[
+\begin{aligned}
+a_n&#x27;={}&amp;\kappa_n[-\epsilon^{-2}c_nd_n-\epsilon a_nb_n
+-\epsilon^2e^{-K^{10}}a_nc_n+Kd_{n-1}^2]
++\mathcal V_{1,n}[a_n],\\
+b_n&#x27;={}&amp;\kappa_n[\epsilon a_n^2-\epsilon^{-1}K^{10}c_n^2]
++\mathcal V_{2,n}[b_n],\\
+c_n&#x27;={}&amp;\kappa_n[\epsilon^2e^{-K^{10}}a_n^2
++\epsilon^{-1}K^{10}b_nc_n]
++\mathcal V_{3,n}[c_n],\\
+d_n&#x27;={}&amp;\kappa_n[\epsilon^{-2}a_nc_n-q^{5/2}Kd_na_{n+1}]
++\mathcal V_{4,n}[d_n].
+\end{aligned}
+\tag{VA4}
+\]</span>
+<p>These are CR19 and VD29, with the actual source field norms inserted. In particular the memory integrals are part of the equation and keep the original initial time zero.</p>
+<h2 id="va2-prove-nonnegativity-without-a-sign-assumption-on-the-other-coordinates">VA2. Prove nonnegativity without a sign assumption on the other coordinates</h2>
+<p>Fix any integer <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(0&lt;T&lt;T_*\)">\(0&lt;T&lt;T_*\)</span>. In the actual third equation set</p>
+<span class="math math-display" data-tex="\[
+\lambda_n(t)=\kappa_n\epsilon^{-1}K^{10}b_n(t)-\nu q^{2n}G_3,
+\qquad f_n(t)=\kappa_n\epsilon^2e^{-K^{10}}a_n(t)^2\geq0.
+\tag{VA5}
+\]">\[
+\lambda_n(t)=\kappa_n\epsilon^{-1}K^{10}b_n(t)-\nu q^{2n}G_3,
+\qquad f_n(t)=\kappa_n\epsilon^2e^{-K^{10}}a_n(t)^2\geq0.
+\tag{VA5}
+\]</span>
+<p>Multiplication by the positive integrating factor gives the exact Volterra equation</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_n(t)&amp;=g_n(t)+(\mathcal T_n c_n)(t),\\
+g_n(t)&amp;=\int_0^t e^{\int_s^t\lambda_n(v)dv}f_n(s)\,ds,\\
+(\mathcal T_n z)(t)&amp;=\nu^2\int_0^t
+\int_r^t e^{\int_s^t\lambda_n(v)dv}
+\mathscr K_{3,n}(s-r)\,ds\ z(r)\,dr.
+\end{aligned}
+\tag{VA6}
+\]">\[
+\begin{aligned}
+c_n(t)&amp;=g_n(t)+(\mathcal T_n c_n)(t),\\
+g_n(t)&amp;=\int_0^t e^{\int_s^t\lambda_n(v)dv}f_n(s)\,ds,\\
+(\mathcal T_n z)(t)&amp;=\nu^2\int_0^t
+\int_r^t e^{\int_s^t\lambda_n(v)dv}
+\mathscr K_{3,n}(s-r)\,ds\ z(r)\,dr.
+\end{aligned}
+\tag{VA6}
+\]</span>
+<p>The double integral follows by exchanging the triangular region <span class="math" data-tex="\(0\leq r\leq s\leq t\)">\(0\leq r\leq s\leq t\)</span>. The integrand is continuous on that compact region, so the exchange is justified for every continuous signed <span class="math" data-tex="\(z\)">\(z\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+M=\sup_{[0,T]}|\lambda_n|,\qquad
+H=\nu^2T e^{MT}q^{4n}\sigma_3^2.
+\tag{VA7}
+\]">\[
+M=\sup_{[0,T]}|\lambda_n|,\qquad
+H=\nu^2T e^{MT}q^{4n}\sigma_3^2.
+\tag{VA7}
+\]</span>
+<p>The integral kernel of <span class="math" data-tex="\(\mathcal T_n\)">\(\mathcal T_n\)</span> lies between zero and <span class="math" data-tex="\(H\)">\(H\)</span>. Iterating over the ordered simplex gives, for every integer <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|(\mathcal T_n^j z)(t)|
+\leq\|z\|_{C[0,T]}\frac{H^jt^j}{j!}.
+\tag{VA8}
+\]">\[
+|(\mathcal T_n^j z)(t)|
+\leq\|z\|_{C[0,T]}\frac{H^jt^j}{j!}.
+\tag{VA8}
+\]</span>
+<p>For <span class="math" data-tex="\(j=0\)">\(j=0\)</span> this is the supremum bound; integration of the inductive bound against <span class="math" data-tex="\(H\)">\(H\)</span> proves the next value. Therefore the series <span class="math" data-tex="\(\sum_{j=0}^{\infty}\mathcal T_n^jg_n\)">\(\sum_{j=0}^{\infty}\mathcal T_n^jg_n\)</span> converges uniformly and solves VA6 by boundedness of the integral operator. If two continuous solutions differed by <span class="math" data-tex="\(w\)">\(w\)</span>, then <span class="math" data-tex="\(w=\mathcal T_n^jw\)">\(w=\mathcal T_n^jw\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>; VA8 and <span class="math" data-tex="\(H^jT^j/j!\to0\)">\(H^jT^j/j!\to0\)</span> force <span class="math" data-tex="\(w=0\)">\(w=0\)</span>. The actual coordinate is consequently this series. Every summand is nonnegative, proving</p>
+<span class="math math-display" data-tex="\[
+c_n(t)\geq g_n(t)\geq0\qquad(0\leq t&lt;T_*).
+\tag{VA9}
+\]">\[
+c_n(t)\geq g_n(t)\geq0\qquad(0\leq t&lt;T_*).
+\tag{VA9}
+\]</span>
+<p>No sign restriction on <span class="math" data-tex="\(a_n,b_n,d_n\)">\(a_n,b_n,d_n\)</span> or neighboring coordinates was used. If <span class="math" data-tex="\(a_n\)">\(a_n\)</span> is nonzero on any open subinterval of <span class="math" data-tex="\((0,t)\)">\((0,t)\)</span>, its squared forcing and the strictly positive exponential make <span class="math" data-tex="\(g_n(t)&gt;0\)">\(g_n(t)&gt;0\)</span>. We next establish this prerequisite at every upper scale from the actual original initial datum.</p>
+<h2 id="va3-a-finite-band-integral-estimate-with-the-memory-retained">VA3. A finite-band integral estimate with the memory retained</h2>
+<p>Here is the estimate needed for the actual coordinate induction. Suppose a continuous finite-dimensional vector <span class="math" data-tex="\(z\)">\(z\)</span>, with <span class="math" data-tex="\(z(0)=0\)">\(z(0)=0\)</span>, satisfies a linear differential equation on <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> whose matrix coefficient has norm at most <span class="math" data-tex="\(M_0\)">\(M_0\)</span>, whose memory kernel has norm at most <span class="math" data-tex="\(H_0\)">\(H_0\)</span>, and whose forcing has norm at most <span class="math" data-tex="\(F_0t^{m-1}\)">\(F_0t^{m-1}\)</span>, where <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span> is an integer. Integration of the full equation gives</p>
+<span class="math math-display" data-tex="\[
+|z(t)|\leq\frac{F_0}{m}t^m+(M_0+H_0T)\int_0^t|z(s)|\,ds.
+\tag{VA10}
+\]">\[
+|z(t)|\leq\frac{F_0}{m}t^m+(M_0+H_0T)\int_0^t|z(s)|\,ds.
+\tag{VA10}
+\]</span>
+<p>Indeed the double memory integral is bounded by <span class="math" data-tex="\(H_0T\int_0^t|z(s)|ds\)">\(H_0T\int_0^t|z(s)|ds\)</span>. To prove the resulting estimate directly, write <span class="math" data-tex="\(L=M_0+H_0T\)">\(L=M_0+H_0T\)</span> and <span class="math" data-tex="\(w(t)=\int_0^t|z(s)|ds\)">\(w(t)=\int_0^t|z(s)|ds\)</span>. Then <span class="math" data-tex="\(w&#x27;\leq(F_0/m)t^m+Lw\)">\(w&#x27;\leq(F_0/m)t^m+Lw\)</span>, and integration of <span class="math" data-tex="\((e^{-Lt}w)&#x27;\)">\((e^{-Lt}w)&#x27;\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+|z(t)|\leq\frac{F_0}{m}\left[t^m+
+L\int_0^t e^{L(t-s)}s^m ds\right]
+\leq\frac{F_0}{m}t^m e^{Lt}.
+\tag{VA11}
+\]">\[
+|z(t)|\leq\frac{F_0}{m}\left[t^m+
+L\int_0^t e^{L(t-s)}s^m ds\right]
+\leq\frac{F_0}{m}t^m e^{Lt}.
+\tag{VA11}
+\]</span>
+<p>The last inequality uses <span class="math" data-tex="\(s^m\leq t^m\)">\(s^m\leq t^m\)</span> only within the proved integral estimate, not in the original equation. Thus a bounded matrix coefficient and bounded memory preserve the actual forcing's order of vanishing after one integration. The estimate also applies to a scalar equation. All its uses below have finite coefficients at a fixed original scale; no uniform bound over infinitely many scales is assumed.</p>
+<h2 id="va4-compute-every-first-nonzero-coefficient-at-every-scale">VA4. Compute every first nonzero coefficient at every scale</h2>
+<p>For <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, put <span class="math" data-tex="\(n=n_0+j\)">\(n=n_0+j\)</span> and define positive coefficients recursively by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m_0=0,\qquad m_{j+1}=6m_j+5,\qquad m_j=6^j-1,\qquad A_0=1,\\
+B_j=\frac{q^{5(n_0+j)/2}\epsilon A_j^2}{2m_j+1},\qquad
+C_j=\frac{q^{5(n_0+j)/2}\epsilon^2e^{-K^{10}}A_j^2}{2m_j+1},\\
+D_j=\frac{q^{5(n_0+j)/2}\epsilon^{-2}C_jA_j}{3m_j+2},\qquad
+A_{j+1}=\frac{q^{5(n_0+j+1)/2}K D_j^2}{6m_j+5}.
+\end{gathered}
+\tag{VA12}
+\]">\[
+\begin{gathered}
+m_0=0,\qquad m_{j+1}=6m_j+5,\qquad m_j=6^j-1,\qquad A_0=1,\\
+B_j=\frac{q^{5(n_0+j)/2}\epsilon A_j^2}{2m_j+1},\qquad
+C_j=\frac{q^{5(n_0+j)/2}\epsilon^2e^{-K^{10}}A_j^2}{2m_j+1},\\
+D_j=\frac{q^{5(n_0+j)/2}\epsilon^{-2}C_jA_j}{3m_j+2},\qquad
+A_{j+1}=\frac{q^{5(n_0+j+1)/2}K D_j^2}{6m_j+5}.
+\end{gathered}
+\tag{VA12}
+\]</span>
+<p>The symbols <span class="math" data-tex="\(A_j,B_j,C_j,D_j\)">\(A_j,B_j,C_j,D_j\)</span> in this display are expansion coefficients, not field norms. Each denominator is a positive integer, and each numerator retains its original positive factors. In particular no weak-pump exponential or inverse power of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> has been dropped.</p>
+<p>We prove the actual expansions, for each fixed <span class="math" data-tex="\(j\)">\(j\)</span> as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a_{n_0+j}(t)&amp;=A_jt^{m_j}+O(t^{m_j+1}),\\
+b_{n_0+j}(t)&amp;=B_jt^{2m_j+1}+O(t^{2m_j+2}),\\
+c_{n_0+j}(t)&amp;=C_jt^{2m_j+1}+O(t^{2m_j+2}),\\
+d_{n_0+j}(t)&amp;=D_jt^{3m_j+2}+O(t^{3m_j+3}).
+\end{aligned}
+\tag{VA13}
+\]">\[
+\begin{aligned}
+a_{n_0+j}(t)&amp;=A_jt^{m_j}+O(t^{m_j+1}),\\
+b_{n_0+j}(t)&amp;=B_jt^{2m_j+1}+O(t^{2m_j+2}),\\
+c_{n_0+j}(t)&amp;=C_jt^{2m_j+1}+O(t^{2m_j+2}),\\
+d_{n_0+j}(t)&amp;=D_jt^{3m_j+2}+O(t^{3m_j+3}).
+\end{aligned}
+\tag{VA13}
+\]</span>
+<p>Every error means an actual bound <span class="math" data-tex="\(|R(t)|\leq C t^r\)">\(|R(t)|\leq C t^r\)</span> on some fixed positive interval; its constant may depend on the full parameters and the particular scale. There is no infinite-series or analyticity assumption.</p>
+<p>For the base scale, continuous differentiability gives <span class="math" data-tex="\(a_{n_0}=1+O(t)\)">\(a_{n_0}=1+O(t)\)</span>. The third equation is a scalar linear equation with bounded actual coefficient <span class="math" data-tex="\(\lambda_{n_0}\)">\(\lambda_{n_0}\)</span>, bounded memory, zero initial value and bounded forcing. VA10–VA11 with <span class="math" data-tex="\(m=1\)">\(m=1\)</span> give <span class="math" data-tex="\(c_{n_0}=O(t)\)">\(c_{n_0}=O(t)\)</span>. The second equation now has bounded forcing <span class="math" data-tex="\(\kappa_{n_0}(\epsilon a_{n_0}^2-\epsilon^{-1}K^{10}c_{n_0}^2)\)">\(\kappa_{n_0}(\epsilon a_{n_0}^2-\epsilon^{-1}K^{10}c_{n_0}^2)\)</span>, so <span class="math" data-tex="\(b_{n_0}=O(t)\)">\(b_{n_0}=O(t)\)</span> by the same estimate. The fourth is linear in <span class="math" data-tex="\(d_{n_0}\)">\(d_{n_0}\)</span>, with actual bounded coefficient <span class="math" data-tex="\(-\kappa_{n_0}q^{5/2}K a_{n_0+1}-\nu q^{2n_0}G_4\)">\(-\kappa_{n_0}q^{5/2}K a_{n_0+1}-\nu q^{2n_0}G_4\)</span>, bounded memory and forcing <span class="math" data-tex="\(\kappa_{n_0}\epsilon^{-2}a_{n_0}c_{n_0}=O(t)\)">\(\kappa_{n_0}\epsilon^{-2}a_{n_0}c_{n_0}=O(t)\)</span>. Thus <span class="math" data-tex="\(d_{n_0}=O(t^2)\)">\(d_{n_0}=O(t^2)\)</span>.</p>
+<p>Return these estimates to the complete equations. The third forcing is <span class="math" data-tex="\(\kappa_{n_0}\epsilon^2e^{-K^{10}}+O(t)\)">\(\kappa_{n_0}\epsilon^2e^{-K^{10}}+O(t)\)</span>; its coefficient times <span class="math" data-tex="\(c_{n_0}\)">\(c_{n_0}\)</span> is <span class="math" data-tex="\(O(t)\)">\(O(t)\)</span>, and its memory is <span class="math" data-tex="\(O(t^2)\)">\(O(t^2)\)</span>. Integration proves the asserted <span class="math" data-tex="\(C_0t+O(t^2)\)">\(C_0t+O(t^2)\)</span>. The second equation gives <span class="math" data-tex="\(B_0t+O(t^2)\)">\(B_0t+O(t^2)\)</span>, retaining the negative <span class="math" data-tex="\(c^2\)">\(c^2\)</span> term as <span class="math" data-tex="\(O(t^2)\)">\(O(t^2)\)</span>. The fourth forcing is then <span class="math" data-tex="\(\kappa_{n_0}\epsilon^{-2}C_0t+O(t^2)\)">\(\kappa_{n_0}\epsilon^{-2}C_0t+O(t^2)\)</span>, its bounded coefficient times <span class="math" data-tex="\(d\)">\(d\)</span> is <span class="math" data-tex="\(O(t^2)\)">\(O(t^2)\)</span>, and its memory is <span class="math" data-tex="\(O(t^3)\)">\(O(t^3)\)</span>. Integration gives <span class="math" data-tex="\(D_0t^2+O(t^3)\)">\(D_0t^2+O(t^3)\)</span>, exactly as VA12.</p>
+<p>Now suppose VA13 holds at scale <span class="math" data-tex="\(n-1=n_0+j\)">\(n-1=n_0+j\)</span>, and put <span class="math" data-tex="\(m=6m_j+5\)">\(m=6m_j+5\)</span>. The exact incoming source at scale <span class="math" data-tex="\(n\)">\(n\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\kappa_nK d_{n-1}(t)^2
+=\kappa_nK D_j^2 t^{m-1}+O(t^m).
+\tag{VA14}
+\]">\[
+\kappa_nK d_{n-1}(t)^2
+=\kappa_nK D_j^2 t^{m-1}+O(t^m).
+\tag{VA14}
+\]</span>
+<p>First consider the pair <span class="math" data-tex="\((a_n,d_n)\)">\((a_n,d_n)\)</span>. Its initial value is zero. The first and fourth equations of VA4 form a linear equation for this pair with the following actual matrix and diagonal memory:</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+-\kappa_n(\epsilon b_n+\epsilon^2e^{-K^{10}}c_n)-\nu q^{2n}G_1
+&amp;-\kappa_n\epsilon^{-2}c_n\\
+\kappa_n\epsilon^{-2}c_n
+&amp;-\kappa_n q^{5/2}K a_{n+1}-\nu q^{2n}G_4
+\end{pmatrix},\qquad
+\nu^2\begin{pmatrix}\mathscr K_{1,n}&amp;0\\0&amp;\mathscr K_{4,n}\end{pmatrix}.
+\tag{VA15}
+\]">\[
+\begin{pmatrix}
+-\kappa_n(\epsilon b_n+\epsilon^2e^{-K^{10}}c_n)-\nu q^{2n}G_1
+&amp;-\kappa_n\epsilon^{-2}c_n\\
+\kappa_n\epsilon^{-2}c_n
+&amp;-\kappa_n q^{5/2}K a_{n+1}-\nu q^{2n}G_4
+\end{pmatrix},\qquad
+\nu^2\begin{pmatrix}\mathscr K_{1,n}&amp;0\\0&amp;\mathscr K_{4,n}\end{pmatrix}.
+\tag{VA15}
+\]</span>
+<p>All entries are already continuous and bounded for the actual solution on a fixed compact interval, regardless of the signs or vanishing orders of the other coordinates. The only inhomogeneous vector is <span class="math" data-tex="\((\kappa_nK d_{n-1}^2,0)\)">\((\kappa_nK d_{n-1}^2,0)\)</span>. VA11 proves <span class="math" data-tex="\(|a_n|+|d_n|=O(t^m)\)">\(|a_n|+|d_n|=O(t^m)\)</span>. The third equation then gives <span class="math" data-tex="\(c_n=O(t^{2m+1})\)">\(c_n=O(t^{2m+1})\)</span>. The second gives <span class="math" data-tex="\(b_n=O(t^{2m+1})\)">\(b_n=O(t^{2m+1})\)</span>, since its two source terms have orders <span class="math" data-tex="\(2m\)">\(2m\)</span> and <span class="math" data-tex="\(4m+2\)">\(4m+2\)</span>. Finally the fourth gives the improved <span class="math" data-tex="\(d_n=O(t^{3m+2})\)">\(d_n=O(t^{3m+2})\)</span>. Each application retains its full bounded diagonal damping and memory.</p>
+<p>In the first equation the rotor term has order <span class="math" data-tex="\(5m+3\)">\(5m+3\)</span>, the two remaining quadratic drain terms have order <span class="math" data-tex="\(3m+1\)">\(3m+1\)</span>, the diagonal viscous term has order <span class="math" data-tex="\(m\)">\(m\)</span>, and the memory has order <span class="math" data-tex="\(m+1\)">\(m+1\)</span>. Combining these with VA14 and integrating gives</p>
+<span class="math math-display" data-tex="\[
+a_n(t)=\frac{\kappa_nK D_j^2}{m}t^m+O(t^{m+1}).
+\tag{VA16}
+\]">\[
+a_n(t)=\frac{\kappa_nK D_j^2}{m}t^m+O(t^{m+1}).
+\tag{VA16}
+\]</span>
+<p>Inserting this expansion into the third equation gives the leading forcing <span class="math" data-tex="\(\kappa_n\epsilon^2e^{-K^{10}}A_{j+1}^2t^{2m}\)">\(\kappa_n\epsilon^2e^{-K^{10}}A_{j+1}^2t^{2m}\)</span>. All its other terms have order at least <span class="math" data-tex="\(2m+1\)">\(2m+1\)</span>; hence integration gives precisely <span class="math" data-tex="\(C_{j+1}\)">\(C_{j+1}\)</span> and its stated error. In the second equation the negative amplifier term has order <span class="math" data-tex="\(4m+2\)">\(4m+2\)</span>; damping and memory have orders at least <span class="math" data-tex="\(2m+1\)">\(2m+1\)</span> and <span class="math" data-tex="\(2m+2\)">\(2m+2\)</span>. This gives <span class="math" data-tex="\(B_{j+1}\)">\(B_{j+1}\)</span>. In the fourth equation the source is <span class="math" data-tex="\(\kappa_n\epsilon^{-2}A_{j+1}C_{j+1}t^{3m+1}+O(t^{3m+2})\)">\(\kappa_n\epsilon^{-2}A_{j+1}C_{j+1}t^{3m+1}+O(t^{3m+2})\)</span>; the bounded outgoing and damping coefficient times <span class="math" data-tex="\(d_n\)">\(d_n\)</span> has order at least <span class="math" data-tex="\(3m+2\)">\(3m+2\)</span>, and memory has order <span class="math" data-tex="\(3m+3\)">\(3m+3\)</span>. This gives <span class="math" data-tex="\(D_{j+1}\)">\(D_{j+1}\)</span>. The induction proves every line of VA12–VA13, with every original term accounted for.</p>
+<h2 id="va5-strict-activation-original-orthogonal-defects-and-the-exact-scope">VA5. Strict activation, original orthogonal defects and the exact scope</h2>
+<p>All four leading coefficients in VA12 are strictly positive. Therefore, for each fixed <span class="math" data-tex="\(n\geq n_0\)">\(n\geq n_0\)</span>, all four coordinates are strictly positive for sufficiently small positive time. The size of this interval may depend on <span class="math" data-tex="\(n\)">\(n\)</span>; no common interval for the signs of <span class="math" data-tex="\(a_n,b_n,d_n\)">\(a_n,b_n,d_n\)</span> is asserted. VA9 and its positive forcing integral now give the stronger all-time conclusion</p>
+<span class="math math-display" data-tex="\[
+c_n(t)&gt;0\quad\text{for every }n\geq n_0\text{ and every }0&lt;t&lt;T_*.
+\tag{VA17}
+\]">\[
+c_n(t)&gt;0\quad\text{for every }n\geq n_0\text{ and every }0&lt;t&lt;T_*.
+\tag{VA17}
+\]</span>
+<p>For a quantitative version at one fixed scale and compact time interval, choose <span class="math" data-tex="\(0&lt;\eta\leq T\)">\(0&lt;\eta\leq T\)</span> so that <span class="math" data-tex="\(a_n(s)\geq A_js^{m_j}/2\)">\(a_n(s)\geq A_js^{m_j}/2\)</span> on <span class="math" data-tex="\((0,\eta]\)">\((0,\eta]\)</span>, as guaranteed by VA13. Put</p>
+<span class="math math-display" data-tex="\[
+M_n=\kappa_n\epsilon^{-1}K^{10}\sup_{[0,T]}|b_n|
++\nu q^{2n}G_3.
+\]">\[
+M_n=\kappa_n\epsilon^{-1}K^{10}\sup_{[0,T]}|b_n|
++\nu q^{2n}G_3.
+\]</span>
+<p>The third equation's integrating factor is at least <span class="math" data-tex="\(e^{-M_nt}\)">\(e^{-M_nt}\)</span>. Its nonnegative memory resolvent and original forcing give</p>
+<span class="math math-display" data-tex="\[
+c_n(t)\geq
+\frac{\kappa_n\epsilon^2e^{-K^{10}}A_j^2}{4(2m_j+1)}
+e^{-M_nt}\min\{t,\eta\}^{2m_j+1}&gt;0
+\qquad(0&lt;t\leq T).
+\tag{VA18}
+\]">\[
+c_n(t)\geq
+\frac{\kappa_n\epsilon^2e^{-K^{10}}A_j^2}{4(2m_j+1)}
+e^{-M_nt}\min\{t,\eta\}^{2m_j+1}&gt;0
+\qquad(0&lt;t\leq T).
+\tag{VA18}
+\]</span>
+<p>This proves the bound using the entire original forcing coefficient. In particular every positive-time solution has a nonzero coordinate in each upper band. It need not have finite support in scale. This statement is compatible with the constructed <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> solution: VA13 supplies no uniform lower bound as the scale tends to infinity, and makes no assertion of divergent Sobolev norm at such a time.</p>
+<p>There is an exact leading term for the orthogonal components as well. For any one of the four coordinates in VA13, denote its proved exponent by <span class="math" data-tex="\(p\)">\(p\)</span> and its positive leading coefficient by <span class="math" data-tex="\(L\)">\(L\)</span>. VD24 gives, in its actual band <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h_{i,n}(t)&amp;=\frac{\nu L}{p+1}g_{i,n}t^{p+1}
++O_{L^2}(t^{p+2}),\\
+D_{i,n}(t)&amp;=\frac{\nu^2L^2q^{4n}\sigma_i^2}{2(p+1)^2}
+t^{2p+2}+O(t^{2p+3}).
+\end{aligned}
+\tag{VA19}
+\]">\[
+\begin{aligned}
+h_{i,n}(t)&amp;=\frac{\nu L}{p+1}g_{i,n}t^{p+1}
++O_{L^2}(t^{p+2}),\\
+D_{i,n}(t)&amp;=\frac{\nu^2L^2q^{4n}\sigma_i^2}{2(p+1)^2}
+t^{2p+2}+O(t^{2p+3}).
+\end{aligned}
+\tag{VA19}
+\]</span>
+<p>To justify the first error, <span class="math" data-tex="\(L_{i,n}\)">\(L_{i,n}\)</span> is bounded at the fixed scale, and its exponential satisfies <span class="math" data-tex="\(\|e^{\nu rL_{i,n}}-I\|\leq\nu r\|L_{i,n}\|e^{\nu r\|L_{i,n}\|}\)">\(\|e^{\nu rL_{i,n}}-I\|\leq\nu r\|L_{i,n}\|e^{\nu r\|L_{i,n}\|}\)</span>. Insert VA13 in the full VD24 integral: the coordinate error integrates to <span class="math" data-tex="\(O(t^{p+2})\)">\(O(t^{p+2})\)</span>, and the exponential error is bounded by a constant times <span class="math" data-tex="\(\int_0^t(t-s)s^p ds= t^{p+2}/[(p+1)(p+2)]\)">\(\int_0^t(t-s)s^p ds= t^{p+2}/[(p+1)(p+2)]\)</span>. Squaring its norm and using <span class="math" data-tex="\(D=\|h\|_2^2/2\)">\(D=\|h\|_2^2/2\)</span> proves the second line, including the cross term in the error. Thus the leading scalar coefficients are independent of viscosity, while the full actual viscous defect is explicitly nonzero for small time at every upper band.</p>
+<h2 id="va6-carry-positivity-through-the-actual-checkpoint-map-without-erasing-its-history">VA6. Carry positivity through the actual checkpoint map without erasing its history</h2>
+<p>Fix any integer <span class="math" data-tex="\(N\)">\(N\)</span>, any amplitude <span class="math" data-tex="\(e&gt;0\)">\(e&gt;0\)</span>, and any actual checkpoint time <span class="math" data-tex="\(0&lt;t_N&lt;T_*\)">\(0&lt;t_N&lt;T_*\)</span>. Keep the entire physical clock and its inverse:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\beta=e q^{5N/2},\qquad
+\tau=\beta(t-t_N),\qquad
+t=t_N+\tau/\beta,\\
+Y_{i,k}(\tau)=e^{-1}X_{i,N+k}(t),\qquad
+\tau_{\rm start}=-\beta t_N.
+\end{gathered}
+\tag{VA20}
+\]">\[
+\begin{gathered}
+\beta=e q^{5N/2},\qquad
+\tau=\beta(t-t_N),\qquad
+t=t_N+\tau/\beta,\\
+Y_{i,k}(\tau)=e^{-1}X_{i,N+k}(t),\qquad
+\tau_{\rm start}=-\beta t_N.
+\end{gathered}
+\tag{VA20}
+\]</span>
+<p>This is a bijection between the original time interval and <span class="math" data-tex="\([\tau_{\rm start},\beta(T_*-t_N))\)">\([\tau_{\rm start},\beta(T_*-t_N))\)</span>; division by the positive amplitude preserves each coordinate's sign. Direct differentiation retains the full transformed equation:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_\tau Y_{i,k}
+={}&amp;\widehat F_{i,k}(Y)
+-\frac{\nu q^{2(N+k)}G_i}{\beta}Y_{i,k}(\tau)\\
+&amp;+\frac{\nu^2}{\beta^2}
+\int_{\tau_{\rm start}}^\tau
+\mathscr K_{i,N+k}\bigl((\tau-s)/\beta\bigr)Y_{i,k}(s)\,ds.
+\end{aligned}
+\tag{VA21}
+\]">\[
+\begin{aligned}
+\partial_\tau Y_{i,k}
+={}&amp;\widehat F_{i,k}(Y)
+-\frac{\nu q^{2(N+k)}G_i}{\beta}Y_{i,k}(\tau)\\
+&amp;+\frac{\nu^2}{\beta^2}
+\int_{\tau_{\rm start}}^\tau
+\mathscr K_{i,N+k}\bigl((\tau-s)/\beta\bigr)Y_{i,k}(s)\,ds.
+\end{aligned}
+\tag{VA21}
+\]</span>
+<p>Here <span class="math" data-tex="\(\widehat F_{i,k}\)">\(\widehat F_{i,k}\)</span> is exactly the four quadratic bracket expressions in VA4 with indices <span class="math" data-tex="\(n,n\pm1\)">\(n,n\pm1\)</span> replaced by <span class="math" data-tex="\(k,k\pm1\)">\(k,k\pm1\)</span>, and with the original common factor <span class="math" data-tex="\(q^{5k/2}\)">\(q^{5k/2}\)</span>. To check that factor, every quadratic term contributes <span class="math" data-tex="\(e^2q^{5(N+k)/2}/(e\beta)=q^{5k/2}\)">\(e^2q^{5(N+k)/2}/(e\beta)=q^{5k/2}\)</span>; the outgoing term still contains its additional <span class="math" data-tex="\(q^{5/2}K\)">\(q^{5/2}K\)</span>, and the incoming term still contains <span class="math" data-tex="\(K\)">\(K\)</span>. In the memory integral the substitution <span class="math" data-tex="\(s=\beta(r-t_N)\)">\(s=\beta(r-t_N)\)</span> contributes the additional <span class="math" data-tex="\(\beta^{-1}\)">\(\beta^{-1}\)</span> displayed in VA21. The damping factor is equivalently <span class="math" data-tex="\(\nu q^{-N/2}e^{-1}q^{2k}G_i\)">\(\nu q^{-N/2}e^{-1}q^{2k}G_i\)</span>, with all its factors retained. The inverse substitution recovers VA4 term by term.</p>
+<p>For <span class="math" data-tex="\(\tau\geq0\)">\(\tau\geq0\)</span>, split the last integral exactly into its intervals <span class="math" data-tex="\([\tau_{\rm start},0]\)">\([\tau_{\rm start},0]\)</span> and <span class="math" data-tex="\([0,\tau]\)">\([0,\tau]\)</span>. In the third coordinate both integrals are nonnegative whenever <span class="math" data-tex="\(N+k\geq n_0\)">\(N+k\geq n_0\)</span>, by VA2 and VA17. The first is the nonzero history contribution of the original physical solution; resetting it to zero would change the equation. Consequently</p>
+<span class="math math-display" data-tex="\[
+Y_{3,k}(\tau)&gt;0\quad
+\bigl(N+k\geq n_0,\quad
+\tau_{\rm start}&lt;\tau&lt;\beta(T_*-t_N)\bigr).
+\tag{VA22}
+\]">\[
+Y_{3,k}(\tau)&gt;0\quad
+\bigl(N+k\geq n_0,\quad
+\tau_{\rm start}&lt;\tau&lt;\beta(T_*-t_N)\bigr).
+\tag{VA22}
+\]</span>
+<p>This is the exact map receiving VA17 at every actual checkpoint, with the past history included. It strengthens the source's small negative lower allowance for this actual viscous solution. It does not automatically prove an assertion for arbitrary scalar systems whose viscosity was replaced by a signed error bound. The receiver bounds below use this full history. The later transfer proof must also retain it, together with both neighboring scales and every viscous contribution.</p>
+<p><img src="assets/NS-FLUID-43/original-viscous-activation-2CC7E0A6C2466C50C3209F2E1A5CA5BA4E6F217CFCEC61964EEB599F4CD453C8.png" alt="Exact physical activation powers, full original coefficients and positive viscous memory" class="course-figure" width="2100" height="1425" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-viscous-activation" data-asset-sha256="2CC7E0A6C2466C50C3209F2E1A5CA5BA4E6F217CFCEC61964EEB599F4CD453C8"></p>
+<p>VA12–VA13 prove each exponent and coefficient in the upper panels, with a remainder at every fixed original scale. VA2–VA9 and VA17 prove the full lower-panel memory equation and its strict positivity conclusion. The table records powers of physical time, not amplitudes or numerical samples. It gives no scale-uniform lower bound. <a href="assets/original-viscous-activation.py">Reproducible figure source</a> and <a href="assets/original-viscous-activation.svg">vector rendering</a> retain the exact formulas. Human comparison: Tao, original author TeX, band equations and lines 2039–2106.</p>
+<h2 id="vr1-full-physical-coordinates-and-heat-response">VR1. Full physical coordinates and heat response</h2>
+<p>Retain <span class="math" data-tex="\(q=1+\epsilon_0\in(1,2)\)">\(q=1+\epsilon_0\in(1,2)\)</span>, <span class="math" data-tex="\(K,\epsilon,\nu&gt;0\)">\(K,\epsilon,\nu&gt;0\)</span>, the original integer <span class="math" data-tex="\(n_0\)">\(n_0\)</span>, and the actual maximal solution <span class="math" data-tex="\(u\)">\(u\)</span> on <span class="math" data-tex="\([0,T_*)\)">\([0,T_*)\)</span>, with <span class="math" data-tex="\(u(0)=\psi_{1,n_0}\)">\(u(0)=\psi_{1,n_0}\)</span>. The source fields have their original squared norms <span class="math" data-tex="\(\|\psi_i\|_2^2=1\)">\(\|\psi_i\|_2^2=1\)</span>. For each original band let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_n=\langle u_{1,n},\psi_{1,n}\rangle,\quad
+b_n=\langle u_{2,n},\psi_{2,n}\rangle,\quad
+c_n=\langle u_{3,n},\psi_{3,n}\rangle,\quad
+d_n=\langle u_{4,n},\psi_{4,n}\rangle,\\
+E_{i,n}=\tfrac12\|u_{i,n}\|_2^2,\qquad
+\kappa_n=q^{5n/2},\qquad
+S=\sqrt{1+\epsilon^2e^{-2K^{10}}}.
+\end{gathered}
+\tag{VR1}
+\]">\[
+\begin{gathered}
+a_n=\langle u_{1,n},\psi_{1,n}\rangle,\quad
+b_n=\langle u_{2,n},\psi_{2,n}\rangle,\quad
+c_n=\langle u_{3,n},\psi_{3,n}\rangle,\quad
+d_n=\langle u_{4,n},\psi_{4,n}\rangle,\\
+E_{i,n}=\tfrac12\|u_{i,n}\|_2^2,\qquad
+\kappa_n=q^{5n/2},\qquad
+S=\sqrt{1+\epsilon^2e^{-2K^{10}}}.
+\end{gathered}
+\tag{VR1}
+\]</span>
+<p>The band fields, not just their four scalar projections, satisfy</p>
+<span class="math math-display" data-tex="\[
+\partial_tu_{i,n}=\nu\Delta u_{i,n}+F_{i,n}\psi_{i,n},\qquad
+E_{i,n}&#x27;=F_{i,n}X_{i,n}-\nu\|\nabla u_{i,n}\|_2^2.
+\tag{VR2}
+\]">\[
+\partial_tu_{i,n}=\nu\Delta u_{i,n}+F_{i,n}\psi_{i,n},\qquad
+E_{i,n}&#x27;=F_{i,n}X_{i,n}-\nu\|\nabla u_{i,n}\|_2^2.
+\tag{VR2}
+\]</span>
+<p>Here <span class="math" data-tex="\(F_{i,n}\)">\(F_{i,n}\)</span> are the full four expressions CR19, including both adjacent scales. The complete heat response for a fixed band is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_{i,n}(r)&amp;=\langle e^{\nu r\Delta}\psi_{i,n},\psi_{i,n}\rangle\\
+&amp;=\int_{\mathbb R^3}e^{-4\pi^2\nu r|\xi|^2}
+|\widehat\psi_{i,n}(\xi)|^2\,d\xi,\\
+e^{-4\pi^2\nu(1+\epsilon_0/2)^2q^{2n}r}
+&amp;\leq R_{i,n}(r)\leq e^{-4\pi^2\nu q^{2n}r}\leq1
+\quad(r\geq0).
+\end{aligned}
+\tag{VR3}
+\]">\[
+\begin{aligned}
+R_{i,n}(r)&amp;=\langle e^{\nu r\Delta}\psi_{i,n},\psi_{i,n}\rangle\\
+&amp;=\int_{\mathbb R^3}e^{-4\pi^2\nu r|\xi|^2}
+|\widehat\psi_{i,n}(\xi)|^2\,d\xi,\\
+e^{-4\pi^2\nu(1+\epsilon_0/2)^2q^{2n}r}
+&amp;\leq R_{i,n}(r)\leq e^{-4\pi^2\nu q^{2n}r}\leq1
+\quad(r\geq0).
+\end{aligned}
+\tag{VR3}
+\]</span>
+<p>Plancherel with the original Fourier convention proves the integral. The original support lies between the two stated radii, and its total Fourier mass is one; bounding the exponential on that support proves both inequalities. In particular <span class="math" data-tex="\(R_{i,n}\)">\(R_{i,n}\)</span> is positive and continuous, with <span class="math" data-tex="\(R_{i,n}(0)=1\)">\(R_{i,n}(0)=1\)</span>.</p>
+<p>Every initially unoccupied band obeys the exact physical response</p>
+<span class="math math-display" data-tex="\[
+X_{i,n}(t)=\int_0^t R_{i,n}(t-s)F_{i,n}(s)\,ds.
+\tag{VR4}
+\]">\[
+X_{i,n}(t)=\int_0^t R_{i,n}(t-s)F_{i,n}(s)\,ds.
+\tag{VR4}
+\]</span>
+<p>This follows by solving the bounded-band heat equation VR2 and pairing with the original wave packet. It is equivalent to the full viscous memory equation, with its original lower endpoint zero; it does not replace that equation by scalar damping. All the <span class="math" data-tex="\(i=2,3,4\)">\(i=2,3,4\)</span> bands are initially unoccupied, including at <span class="math" data-tex="\(n=n_0\)">\(n=n_0\)</span>.</p>
+<h2 id="vr2-cancel-the-amplifier-in-the-full-pair-energy">VR2. Cancel the amplifier in the full pair energy</h2>
+<p>For each fixed <span class="math" data-tex="\(n\)">\(n\)</span>, add the exact <span class="math" data-tex="\(i=2,3\)">\(i=2,3\)</span> energy equations, without changing either field. The entire cancellation is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(E_{2,n}+E_{3,n})&#x27;
+={}&amp;\kappa_n\epsilon a_n^2b_n
+-\kappa_n\epsilon^{-1}K^{10}c_n^2b_n\\
+&amp;+\kappa_n\epsilon^2e^{-K^{10}}a_n^2c_n
++\kappa_n\epsilon^{-1}K^{10}b_nc_n^2\\
+&amp;-\nu\bigl(\|\nabla u_{2,n}\|_2^2+\|\nabla u_{3,n}\|_2^2\bigr)\\
+={}&amp;\kappa_na_n^2(\epsilon b_n+\epsilon^2e^{-K^{10}}c_n)
+-\nu\bigl(\|\nabla u_{2,n}\|_2^2+\|\nabla u_{3,n}\|_2^2\bigr).
+\end{aligned}
+\tag{VR5}
+\]">\[
+\begin{aligned}
+(E_{2,n}+E_{3,n})&#x27;
+={}&amp;\kappa_n\epsilon a_n^2b_n
+-\kappa_n\epsilon^{-1}K^{10}c_n^2b_n\\
+&amp;+\kappa_n\epsilon^2e^{-K^{10}}a_n^2c_n
++\kappa_n\epsilon^{-1}K^{10}b_nc_n^2\\
+&amp;-\nu\bigl(\|\nabla u_{2,n}\|_2^2+\|\nabla u_{3,n}\|_2^2\bigr)\\
+={}&amp;\kappa_na_n^2(\epsilon b_n+\epsilon^2e^{-K^{10}}c_n)
+-\nu\bigl(\|\nabla u_{2,n}\|_2^2+\|\nabla u_{3,n}\|_2^2\bigr).
+\end{aligned}
+\tag{VR5}
+\]</span>
+<p>Put <span class="math" data-tex="\(P_n=\sqrt{2(E_{2,n}+E_{3,n})}\)">\(P_n=\sqrt{2(E_{2,n}+E_{3,n})}\)</span>. The original packet norms give <span class="math" data-tex="\(b_n^2+c_n^2\leq P_n^2\)">\(b_n^2+c_n^2\leq P_n^2\)</span>. Differentiate <span class="math" data-tex="\(\sqrt{P_n^2+\eta}\)">\(\sqrt{P_n^2+\eta}\)</span> for <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, use VR5 and Cauchy–Schwarz on the complete two-component forcing vector, and retain the nonpositive viscous term before taking an upper bound. The result is</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\sqrt{P_n^2+\eta}
+\leq\kappa_n a_n^2
+\sqrt{\epsilon^2+\epsilon^4e^{-2K^{10}}}
+\frac{P_n}{\sqrt{P_n^2+\eta}}
+\leq\kappa_n\epsilon S a_n^2.
+\tag{VR6}
+\]">\[
+\frac{d}{dt}\sqrt{P_n^2+\eta}
+\leq\kappa_n a_n^2
+\sqrt{\epsilon^2+\epsilon^4e^{-2K^{10}}}
+\frac{P_n}{\sqrt{P_n^2+\eta}}
+\leq\kappa_n\epsilon S a_n^2.
+\tag{VR6}
+\]</span>
+<p>Since <span class="math" data-tex="\(P_n(0)=0\)">\(P_n(0)=0\)</span>, integration and <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span> prove, with the actual input integral,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J_n(t)=\int_0^t a_n(s)^2\,ds,\\
+|b_n(t)|,|c_n(t)|\leq P_n(t)
+\leq\kappa_n\epsilon S J_n(t),\\
+E_{2,n}(t)+E_{3,n}(t)
+\leq\tfrac12\kappa_n^2
+(\epsilon^2+\epsilon^4e^{-2K^{10}})J_n(t)^2.
+\end{gathered}
+\tag{VR7}
+\]">\[
+\begin{gathered}
+J_n(t)=\int_0^t a_n(s)^2\,ds,\\
+|b_n(t)|,|c_n(t)|\leq P_n(t)
+\leq\kappa_n\epsilon S J_n(t),\\
+E_{2,n}(t)+E_{3,n}(t)
+\leq\tfrac12\kappa_n^2
+(\epsilon^2+\epsilon^4e^{-2K^{10}})J_n(t)^2.
+\end{gathered}
+\tag{VR7}
+\]</span>
+<p>This bounds the complete pair energy, including both orthogonal components. No artificial viscous forcing is introduced. In particular the pair estimate needs no bootstrap assumption about the time integral of <span class="math" data-tex="\(|b_n|\)">\(|b_n|\)</span>.</p>
+<h2 id="vr3-bound-the-actual-weak-drive-with-its-whole-past">VR3. Bound the actual weak drive with its whole past</h2>
+<p>The third coordinate is nonnegative on its entire actual interval by VA9, and is strictly positive for <span class="math" data-tex="\(n\geq n_0\)">\(n\geq n_0\)</span> at positive times by VA17. The full third response VR4 is</p>
+<span class="math math-display" data-tex="\[
+c_n(t)=\kappa_n\int_0^t R_{3,n}(t-s)
+\bigl[\epsilon^2e^{-K^{10}}a_n(s)^2
++\epsilon^{-1}K^{10}b_n(s)c_n(s)\bigr]ds.
+\tag{VR8}
+\]">\[
+c_n(t)=\kappa_n\int_0^t R_{3,n}(t-s)
+\bigl[\epsilon^2e^{-K^{10}}a_n(s)^2
++\epsilon^{-1}K^{10}b_n(s)c_n(s)\bigr]ds.
+\tag{VR8}
+\]</span>
+<p>Bound <span class="math" data-tex="\(R\leq1\)">\(R\leq1\)</span> only after retaining this exact expression, replace a negative amplifier contribution by an upper bound using <span class="math" data-tex="\(|b_n|c_n\)">\(|b_n|c_n\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+H_n(t)=\int_0^t(t-s)a_n(s)^2ds
+=\int_0^t J_n(s)ds.
+\tag{VR9}
+\]">\[
+H_n(t)=\int_0^t(t-s)a_n(s)^2ds
+=\int_0^t J_n(s)ds.
+\tag{VR9}
+\]</span>
+<p>The second identity is integration over the triangle <span class="math" data-tex="\(0\leq r\leq s\leq t\)">\(0\leq r\leq s\leq t\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+c_n(t)\leq\kappa_n\epsilon^2e^{-K^{10}}J_n(t)
++\kappa_n\epsilon^{-1}K^{10}\int_0^t|b_n(s)|c_n(s)ds.
+\tag{VR10}
+\]">\[
+c_n(t)\leq\kappa_n\epsilon^2e^{-K^{10}}J_n(t)
++\kappa_n\epsilon^{-1}K^{10}\int_0^t|b_n(s)|c_n(s)ds.
+\tag{VR10}
+\]</span>
+<p>For completeness, fix a terminal time <span class="math" data-tex="\(t\)">\(t\)</span>. On <span class="math" data-tex="\([0,t]\)">\([0,t]\)</span>, replace only the nondecreasing <span class="math" data-tex="\(J_n(s)\)">\(J_n(s)\)</span> in the first upper-bound term by <span class="math" data-tex="\(J_n(t)\)">\(J_n(t)\)</span>. If <span class="math" data-tex="\(w(s)\)">\(w(s)\)</span> is that constant plus the integral term up to <span class="math" data-tex="\(s\)">\(s\)</span>, then <span class="math" data-tex="\(c_n(s)\leq w(s)\)">\(c_n(s)\leq w(s)\)</span> and <span class="math" data-tex="\(w&#x27;\leq\kappa_n\epsilon^{-1}K^{10}|b_n|w\)">\(w&#x27;\leq\kappa_n\epsilon^{-1}K^{10}|b_n|w\)</span>. Its integrating factor gives the first inequality below, also when <span class="math" data-tex="\(J_n(t)=0\)">\(J_n(t)=0\)</span>. VR7 and VR9 give the second:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\leq c_n(t)
+&amp;\leq\kappa_n\epsilon^2e^{-K^{10}}J_n(t)
+\exp\left(\kappa_n\epsilon^{-1}K^{10}\int_0^t|b_n(s)|ds\right)\\
+&amp;\leq\kappa_n\epsilon^2e^{-K^{10}}J_n(t)
+\exp\left(\kappa_n^2K^{10}S H_n(t)\right).
+\end{aligned}
+\tag{VR11}
+\]">\[
+\begin{aligned}
+0\leq c_n(t)
+&amp;\leq\kappa_n\epsilon^2e^{-K^{10}}J_n(t)
+\exp\left(\kappa_n\epsilon^{-1}K^{10}\int_0^t|b_n(s)|ds\right)\\
+&amp;\leq\kappa_n\epsilon^2e^{-K^{10}}J_n(t)
+\exp\left(\kappa_n^2K^{10}S H_n(t)\right).
+\end{aligned}
+\tag{VR11}
+\]</span>
+<p>All quantities in this estimate are defined from the actual flow. It holds for every <span class="math" data-tex="\(0\leq t&lt;T_*\)">\(0\leq t&lt;T_*\)</span>, at every original scale. It has no additive error from viscosity and retains the entire original weak-pump exponential. The viscosity remains in the exact heat response and in the full energy calculation producing the estimate.</p>
+<p>The second response also retains the two signed inputs individually:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+-\kappa_n\epsilon^{-1}K^{10}
+\int_0^t R_{2,n}(t-s)c_n(s)^2ds
+\leq b_n(t)
+\leq\kappa_n\epsilon\int_0^t R_{2,n}(t-s)a_n(s)^2ds.
+\end{aligned}
+\tag{VR12}
+\]">\[
+\begin{aligned}
+-\kappa_n\epsilon^{-1}K^{10}
+\int_0^t R_{2,n}(t-s)c_n(s)^2ds
+\leq b_n(t)
+\leq\kappa_n\epsilon\int_0^t R_{2,n}(t-s)a_n(s)^2ds.
+\end{aligned}
+\tag{VR12}
+\]</span>
+<p>These follow directly by dropping the nonnegative or nonpositive integral from the exact original second response. They make no assertion that <span class="math" data-tex="\(b_n\)">\(b_n\)</span> has a fixed sign.</p>
+<h2 id="vr4-bound-the-full-rotor-band-energy-retaining-the-outgoing-sign">VR4. Bound the full rotor-band energy, retaining the outgoing sign</h2>
+<p>Let <span class="math" data-tex="\(Q_n=\sqrt{2E_{4,n}}\)">\(Q_n=\sqrt{2E_{4,n}}\)</span>, so <span class="math" data-tex="\(|d_n|\leq Q_n\)">\(|d_n|\leq Q_n\)</span>, and write <span class="math" data-tex="\(x_-=\max\{-x,0\}\)">\(x_-=\max\{-x,0\}\)</span>. The exact fourth energy equation is</p>
+<span class="math math-display" data-tex="\[
+E_{4,n}&#x27;=\kappa_n\epsilon^{-2}a_nc_nd_n
+-\kappa_n q^{5/2}K a_{n+1}d_n^2
+-\nu\|\nabla u_{4,n}\|_2^2.
+\tag{VR13}
+\]">\[
+E_{4,n}&#x27;=\kappa_n\epsilon^{-2}a_nc_nd_n
+-\kappa_n q^{5/2}K a_{n+1}d_n^2
+-\nu\|\nabla u_{4,n}\|_2^2.
+\tag{VR13}
+\]</span>
+<p>The positive part of <span class="math" data-tex="\(a_{n+1}\)">\(a_{n+1}\)</span> contributes a nonpositive drain. With the complete signed term retained before estimation, regularization by <span class="math" data-tex="\(\sqrt{Q_n^2+\eta}\)">\(\sqrt{Q_n^2+\eta}\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\sqrt{Q_n^2+\eta}
+\leq\kappa_n\epsilon^{-2}|a_n|c_n
++\kappa_nq^{5/2}K(a_{n+1})_-
+\sqrt{Q_n^2+\eta}.
+\tag{VR14}
+\]">\[
+\frac{d}{dt}\sqrt{Q_n^2+\eta}
+\leq\kappa_n\epsilon^{-2}|a_n|c_n
++\kappa_nq^{5/2}K(a_{n+1})_-
+\sqrt{Q_n^2+\eta}.
+\tag{VR14}
+\]</span>
+<p>The first term uses <span class="math" data-tex="\(|d_n|\leq Q_n\)">\(|d_n|\leq Q_n\)</span> and <span class="math" data-tex="\(c_n\geq0\)">\(c_n\geq0\)</span>; the second uses <span class="math" data-tex="\(d_n^2\leq Q_n^2\)">\(d_n^2\leq Q_n^2\)</span>. The dissipation is nonpositive. Integrate with the full coefficient and let <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>, using the exact initial value <span class="math" data-tex="\(Q_n(0)=0\)">\(Q_n(0)=0\)</span>:</p>
+<span class="math math-display" data-tex="\[
+Q_n(t)\leq\kappa_n\epsilon^{-2}\int_0^t
+|a_n(s)|c_n(s)
+\exp\left(\kappa_nq^{5/2}K\int_s^t(a_{n+1}(r))_-dr\right)ds.
+\tag{VR15}
+\]">\[
+Q_n(t)\leq\kappa_n\epsilon^{-2}\int_0^t
+|a_n(s)|c_n(s)
+\exp\left(\kappa_nq^{5/2}K\int_s^t(a_{n+1}(r))_-dr\right)ds.
+\tag{VR15}
+\]</span>
+<p>Define two further actual physical integrals</p>
+<span class="math math-display" data-tex="\[
+L_n(t)=\int_0^t|a_n(s)|ds,\qquad
+N_n(t)=\int_0^t(a_{n+1}(s))_-ds.
+\tag{VR16}
+\]">\[
+L_n(t)=\int_0^t|a_n(s)|ds,\qquad
+N_n(t)=\int_0^t(a_{n+1}(s))_-ds.
+\tag{VR16}
+\]</span>
+<p>All four functions <span class="math" data-tex="\(J_n,H_n,L_n,N_n\)">\(J_n,H_n,L_n,N_n\)</span> are nondecreasing. Inserting VR11 in VR15, then bounding their values at earlier times by their terminal values, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|d_n(t)|\leq Q_n(t)
+\leq{}&amp;\kappa_n^2\epsilon^{-2}\epsilon^2e^{-K^{10}}
+J_n(t)L_n(t)\\
+&amp;\times\exp\left(\kappa_n^2K^{10}S H_n(t)
++\kappa_nq^{5/2}K N_n(t)\right).
+\end{aligned}
+\tag{VR17}
+\]">\[
+\begin{aligned}
+|d_n(t)|\leq Q_n(t)
+\leq{}&amp;\kappa_n^2\epsilon^{-2}\epsilon^2e^{-K^{10}}
+J_n(t)L_n(t)\\
+&amp;\times\exp\left(\kappa_n^2K^{10}S H_n(t)
++\kappa_nq^{5/2}K N_n(t)\right).
+\end{aligned}
+\tag{VR17}
+\]</span>
+<p>The inverse and direct powers of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> are both displayed so their origins remain visible. This is a bound on the entire fourth-band radius, not solely its projection. The negative part of the actual next-scale input, rather than an assigned sign or a surrogate trajectory, controls the possible outgoing growth.</p>
+<h2 id="vr5-construct-and-control-the-first-receiver-interval-in-original-physical-time">VR5. Construct and control the first receiver interval in original physical time</h2>
+<p>We now give an actual interval on which these estimates have small numerical upper bounds. Take</p>
+<span class="math math-display" data-tex="\[
+K\geq\max\{10^{10},(400q^5\sqrt2)^4\},\qquad
+0&lt;\epsilon\leq1,
+\qquad \kappa_0:=q^{5n_0/2},\quad n=n_0+1.
+\tag{VR18}
+\]">\[
+K\geq\max\{10^{10},(400q^5\sqrt2)^4\},\qquad
+0&lt;\epsilon\leq1,
+\qquad \kappa_0:=q^{5n_0/2},\quad n=n_0+1.
+\tag{VR18}
+\]</span>
+<p>The symbol <span class="math" data-tex="\(\kappa_0\)">\(\kappa_0\)</span> here names the actual initial-scale factor, not the factor of spatial scale zero. No coordinate, initial amplitude, time or viscosity is changed. The total energy identity from the constructed solution is</p>
+<span class="math math-display" data-tex="\[
+\tfrac12\|u(t)\|_2^2+
+\nu\int_0^t\|\nabla u(s)\|_2^2ds=\tfrac12.
+\tag{VR19}
+\]">\[
+\tfrac12\|u(t)\|_2^2+
+\nu\int_0^t\|\nabla u(s)\|_2^2ds=\tfrac12.
+\tag{VR19}
+\]</span>
+<p>Hence every original coordinate has absolute value at most one, because its packet norm is one and its band is an orthogonal part of <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>Let <span class="math" data-tex="\(t_J\)">\(t_J\)</span> be the first time in <span class="math" data-tex="\((0,T_*)\)">\((0,T_*)\)</span> at which
+<span class="math" data-tex="\(J_{n_0+1}(t)=\kappa_0^{-1}K^{-1/4}\)">\(J_{n_0+1}(t)=\kappa_0^{-1}K^{-1/4}\)</span>, with value <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> if no such time exists. Define the actual upper endpoint</p>
+<span class="math math-display" data-tex="\[
+T_{\rm rec}=\min\{T_*,\ 100\kappa_0^{-1},\ t_J\}.
+\tag{VR20}
+\]">\[
+T_{\rm rec}=\min\{T_*,\ 100\kappa_0^{-1},\ t_J\}.
+\tag{VR20}
+\]</span>
+<p>It is positive: local existence gives <span class="math" data-tex="\(T_*&gt;0\)">\(T_*&gt;0\)</span>, and continuity of the actual integral, initially zero, keeps it below its positive threshold on some positive interval. The definition uses the already constructed flow and specifies a genuine interval, without assuming a future transfer. All following assertions hold for <span class="math" data-tex="\(0\leq t&lt;T_{\rm rec}\)">\(0\leq t&lt;T_{\rm rec}\)</span>, and also at <span class="math" data-tex="\(T_{\rm rec}\)">\(T_{\rm rec}\)</span> whenever it is below <span class="math" data-tex="\(T_*\)">\(T_*\)</span>, by continuity.</p>
+<p>The definitions, nonnegative integrands, Cauchy–Schwarz and VR19 give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J_n(t)\leq\kappa_0^{-1}K^{-1/4},\qquad
+H_n(t)\leq tJ_n(t)\leq100\kappa_0^{-2}K^{-1/4},\\
+L_n(t)\leq\sqrt{tJ_n(t)}\leq10\kappa_0^{-1}K^{-1/8},\qquad
+N_n(t)\leq t\leq100\kappa_0^{-1},\\
+\kappa_n=q^{5/2}\kappa_0,\qquad S\leq\sqrt2.
+\end{gathered}
+\tag{VR21}
+\]">\[
+\begin{gathered}
+J_n(t)\leq\kappa_0^{-1}K^{-1/4},\qquad
+H_n(t)\leq tJ_n(t)\leq100\kappa_0^{-2}K^{-1/4},\\
+L_n(t)\leq\sqrt{tJ_n(t)}\leq10\kappa_0^{-1}K^{-1/8},\qquad
+N_n(t)\leq t\leq100\kappa_0^{-1},\\
+\kappa_n=q^{5/2}\kappa_0,\qquad S\leq\sqrt2.
+\end{gathered}
+\tag{VR21}
+\]</span>
+<p>In particular the two full exponents in VR17 satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\kappa_n^2K^{10}S H_n(t)
+&amp;\leq100q^5\sqrt2 K^{10-1/4}\leq K^{10}/4,\\
+\kappa_nq^{5/2}KN_n(t)
+&amp;\leq100q^5K\leq K^{10}/4.
+\end{aligned}
+\tag{VR22}
+\]">\[
+\begin{aligned}
+\kappa_n^2K^{10}S H_n(t)
+&amp;\leq100q^5\sqrt2 K^{10-1/4}\leq K^{10}/4,\\
+\kappa_nq^{5/2}KN_n(t)
+&amp;\leq100q^5K\leq K^{10}/4.
+\end{aligned}
+\tag{VR22}
+\]</span>
+<p>The first final inequality is exactly the fourth-power restriction in VR18. For the second, <span class="math" data-tex="\(q^5&lt;32\)">\(q^5&lt;32\)</span>, so it suffices that <span class="math" data-tex="\(K^9\geq12800\)">\(K^9\geq12800\)</span>, which follows from <span class="math" data-tex="\(K\geq10^{10}\)">\(K\geq10^{10}\)</span>.</p>
+<p>Equations VR7 and VR11 now yield</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|b_n(t)|,|c_n(t)|\leq P_n(t)
+\leq q^{5/2}\epsilon S K^{-1/4},\\
+0&lt;c_n(t)\leq q^{5/2}\epsilon^2 K^{-1/4}e^{-3K^{10}/4}
+\quad(0&lt;t&lt;T_{\rm rec}).
+\end{gathered}
+\tag{VR23}
+\]">\[
+\begin{gathered}
+|b_n(t)|,|c_n(t)|\leq P_n(t)
+\leq q^{5/2}\epsilon S K^{-1/4},\\
+0&lt;c_n(t)\leq q^{5/2}\epsilon^2 K^{-1/4}e^{-3K^{10}/4}
+\quad(0&lt;t&lt;T_{\rm rec}).
+\end{gathered}
+\tag{VR23}
+\]</span>
+<p>Strict positivity is the actual-flow result VA17. The stronger exponential in the second line follows from the original factor <span class="math" data-tex="\(e^{-K^{10}}\)">\(e^{-K^{10}}\)</span> and the first exact exponent bound VR22.</p>
+<p>Keeping all physical factors in VR17 before their exact multiplication gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q_n(t)
+&amp;\leq(q^{5/2}\kappa_0)^2\epsilon^{-2}\epsilon^2
+(\kappa_0^{-1}K^{-1/4})
+(10\kappa_0^{-1}K^{-1/8})e^{-K^{10}/2}\\
+&amp;=10q^5\epsilon^{-2}\epsilon^2 K^{-3/8}e^{-K^{10}/2}
+\leq K^{-20}.
+\end{aligned}
+\tag{VR24}
+\]">\[
+\begin{aligned}
+Q_n(t)
+&amp;\leq(q^{5/2}\kappa_0)^2\epsilon^{-2}\epsilon^2
+(\kappa_0^{-1}K^{-1/4})
+(10\kappa_0^{-1}K^{-1/8})e^{-K^{10}/2}\\
+&amp;=10q^5\epsilon^{-2}\epsilon^2 K^{-3/8}e^{-K^{10}/2}
+\leq K^{-20}.
+\end{aligned}
+\tag{VR24}
+\]</span>
+<p>Here is a proof of the last bound over the entire parameter range. The positive exponential series gives <span class="math" data-tex="\(e^{K^{10}/2}\geq(K^{10}/2)^3/6\)">\(e^{K^{10}/2}\geq(K^{10}/2)^3/6\)</span>, hence <span class="math" data-tex="\(e^{-K^{10}/2}\leq48K^{-30}\)">\(e^{-K^{10}/2}\leq48K^{-30}\)</span>. The preceding expression is therefore at most <span class="math" data-tex="\(480q^5K^{-243/8}\)">\(480q^5K^{-243/8}\)</span>; the exact factors <span class="math" data-tex="\(\epsilon^{-2}\epsilon^2=1\)">\(\epsilon^{-2}\epsilon^2=1\)</span> have been accounted for. Since <span class="math" data-tex="\(480q^5&lt;15360&lt;K\leq K^{83/8}\)">\(480q^5&lt;15360&lt;K\leq K^{83/8}\)</span>, the claimed upper bound follows. This proves both <span class="math" data-tex="\(|d_n|\leq K^{-20}\)">\(|d_n|\leq K^{-20}\)</span> and the stronger full energy estimate <span class="math" data-tex="\(E_{4,n}\leq K^{-40}/2\)">\(E_{4,n}\leq K^{-40}/2\)</span>.</p>
+<p>No assumption about small next-scale energy was needed here: the complete total energy VR19 controlled its possible negative input. No lower bound on <span class="math" data-tex="\(n_0\)">\(n_0\)</span> or upper bound on the positive viscosity was needed for these receiver conclusions. Large initial scale remains relevant to the distinct problem of proving that the incoming transfer actually occurs before viscous loss prevents it.</p>
+<h2 id="vr6-exact-scope-and-continuation">VR6. Exact scope and continuation</h2>
+<p>VR7, VR11, VR12 and VR15–VR17 are unconditional estimates for the full actual cascade, valid at every scale and every time of its maximal solution. VR18–VR24 construct and control a genuine first-receiver interval in the original physical clock. These calculations avoid the source's additive viscous error in its small-mode estimates and avoid its integral bootstrap for the small amplifier input. They supply a proved small rotor bound for the actual first receiver rather than trying to improve a weaker initial scalar bound by Gronwall alone.</p>
+<p>For later checkpoints, the lower endpoint of every physical integral remains the original zero time. VA20–VA22 give the exact transformed history; nothing in this note resets it at a checkpoint. The <span class="unlinked">complete original-viscosity induction</span>, UI1–UI59, now bounds those finite histories and constructs all successive intervals. This lesson supplies its positive-memory and receiver arguments; the later teaching sequence develops the actual transfers and uniform induction in full.</p>
+<p><img src="assets/NS-FLUID-43/original-viscous-receiver-A536811F61E9870BCAC140ABBF671B023BC4FD0D1452306F5809C074C9E53CDB.png" alt="Original input moments, complete pair-energy cancellation and the first physical receiver interval" class="course-figure" width="2100" height="1425" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-viscous-receiver" data-asset-sha256="A536811F61E9870BCAC140ABBF671B023BC4FD0D1452306F5809C074C9E53CDB"></p>
+<p>VR5–VR7 prove the full pair-energy bound; VR8–VR11 prove the upper drive estimate from the actual original heat response. VR18–VR24 construct the first physical receiver interval and its complete rotor-band energy bound. The diagram keeps every displayed coefficient and the original time origin. It records exact inequalities, not numerical trajectories. <a href="assets/original-viscous-receiver.py">Reproducible figure source</a> and <a href="assets/original-viscous-receiver.svg">vector rendering</a> accompany the argument. Human comparison: Tao, original author file navier-blowup.tex, lines 2039–2106.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<h3 id="exercise-1-compute-the-complete-leading-coefficient-at-every-scale">Exercise 1. Compute the complete leading coefficient at every scale</h3>
+<p>Keep the original coefficients and all physical parameters in VA12. Give a finite product for <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, evaluate the total power of <span class="math" data-tex="\(q\)">\(q\)</span>, and compute the first receiving coefficient <span class="math" data-tex="\(A_1\)">\(A_1\)</span>. The calculation must retain the weak-pump exponential and both powers of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> that enter the rotor.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(\kappa_j^\circ=q^{5(n_0+j)/2}\)">\(\kappa_j^\circ=q^{5(n_0+j)/2}\)</span> only in this exercise. The original recursion gives</p>
+<span class="math math-display" data-tex="\[
+D_j=\frac{(\kappa_j^\circ)^2\epsilon^{-2}\epsilon^2
+\exp(-K^{10})A_j^3}
+{(2m_j+1)(3m_j+2)} .
+\tag{EX1}
+\]">\[
+D_j=\frac{(\kappa_j^\circ)^2\epsilon^{-2}\epsilon^2
+\exp(-K^{10})A_j^3}
+{(2m_j+1)(3m_j+2)} .
+\tag{EX1}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{j+1}=F_jA_j^6,\\
+F_j=\frac{\kappa_{j+1}^\circ K(\kappa_j^\circ)^4
+\epsilon^{-4}\epsilon^4\exp(-2K^{10})}
+{(6m_j+5)(2m_j+1)^2(3m_j+2)^2},\\
+A_j=\prod_{\ell=0}^{j-1}F_\ell^{\,6^{j-1-\ell}}
+\quad(j\geq1),\qquad A_0=1 .
+\end{gathered}
+\tag{EX2}
+\]">\[
+\begin{gathered}
+A_{j+1}=F_jA_j^6,\\
+F_j=\frac{\kappa_{j+1}^\circ K(\kappa_j^\circ)^4
+\epsilon^{-4}\epsilon^4\exp(-2K^{10})}
+{(6m_j+5)(2m_j+1)^2(3m_j+2)^2},\\
+A_j=\prod_{\ell=0}^{j-1}F_\ell^{\,6^{j-1-\ell}}
+\quad(j\geq1),\qquad A_0=1 .
+\end{gathered}
+\tag{EX2}
+\]</span>
+<p>The last formula follows by induction: raising the product for <span class="math" data-tex="\(A_j\)">\(A_j\)</span> to the sixth power multiplies all its exponents by six, and multiplication by <span class="math" data-tex="\(F_j\)">\(F_j\)</span> supplies its last factor with exponent one. All factors are positive.</p>
+<p>For the exact powers let</p>
+<span class="math math-display" data-tex="\[
+S_0(j)=\sum_{\ell=0}^{j-1}6^{j-1-\ell}
+=\frac{6^j-1}{5},\qquad
+S_1(j)=\sum_{\ell=0}^{j-1}\ell6^{j-1-\ell}
+=\frac{6^j-5j-1}{25}.
+\tag{EX3}
+\]">\[
+S_0(j)=\sum_{\ell=0}^{j-1}6^{j-1-\ell}
+=\frac{6^j-1}{5},\qquad
+S_1(j)=\sum_{\ell=0}^{j-1}\ell6^{j-1-\ell}
+=\frac{6^j-5j-1}{25}.
+\tag{EX3}
+\]</span>
+<p>At <span class="math" data-tex="\(j=0\)">\(j=0\)</span> both sums are zero. The first formula follows by multiplying the finite geometric sum by <span class="math" data-tex="\(6-1\)">\(6-1\)</span>. For the second, its defining sum satisfies <span class="math" data-tex="\(S_1(j+1)=6S_1(j)+j\)">\(S_1(j+1)=6S_1(j)+j\)</span>. Substituting the stated expression verifies this recurrence and its zero initial value, proving it for every <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>Substitute <span class="math" data-tex="\(m_\ell=6^\ell-1\)">\(m_\ell=6^\ell-1\)</span> in EX2. The complete evaluated product is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_j={}&amp;
+q^{((25n_0+5)/2)S_0(j)+(25/2)S_1(j)}
+K^{S_0(j)}\epsilon^{-4S_0(j)}\epsilon^{4S_0(j)}
+\exp[-2K^{10}S_0(j)]\\
+&amp;\times\prod_{\ell=0}^{j-1}
+\left[(6^{\ell+1}-1)(2\cdot6^\ell-1)^2
+(3\cdot6^\ell-1)^2\right]^{-6^{j-1-\ell}} .
+\end{aligned}
+\tag{EX4}
+\]">\[
+\begin{aligned}
+A_j={}&amp;
+q^{((25n_0+5)/2)S_0(j)+(25/2)S_1(j)}
+K^{S_0(j)}\epsilon^{-4S_0(j)}\epsilon^{4S_0(j)}
+\exp[-2K^{10}S_0(j)]\\
+&amp;\times\prod_{\ell=0}^{j-1}
+\left[(6^{\ell+1}-1)(2\cdot6^\ell-1)^2
+(3\cdot6^\ell-1)^2\right]^{-6^{j-1-\ell}} .
+\end{aligned}
+\tag{EX4}
+\]</span>
+<p>The two terms in the <span class="math" data-tex="\(q\)">\(q\)</span> exponent arise from
+<span class="math" data-tex="\(\kappa_{\ell+1}^\circ(\kappa_\ell^\circ)^4\)">\(\kappa_{\ell+1}^\circ(\kappa_\ell^\circ)^4\)</span>; their sum is</p>
+<span class="math math-display" data-tex="\[
+\frac{(5n_0+2)(6^j-1)-5j}{2}.
+\]">\[
+\frac{(5n_0+2)(6^j-1)-5j}{2}.
+\]</span>
+<p>The inverse and direct powers of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> multiply to one, with both origins displayed in EX4. This exact comparison does not change any original coefficient or replace the original flow.</p>
+<p>In particular</p>
+<span class="math math-display" data-tex="\[
+A_1=\frac{\kappa_1^\circ K(\kappa_0^\circ)^4
+\epsilon^{-4}\epsilon^4\exp(-2K^{10})}{20}.
+\tag{EX5}
+\]">\[
+A_1=\frac{\kappa_1^\circ K(\kappa_0^\circ)^4
+\epsilon^{-4}\epsilon^4\exp(-2K^{10})}{20}.
+\tag{EX5}
+\]</span>
+<p>At that scale the input, second coordinate, third coordinate and rotor have respective first powers <span class="math" data-tex="\(5,11,11,17\)">\(5,11,11,17\)</span>. At the next scale they are <span class="math" data-tex="\(35,71,71,107\)">\(35,71,71,107\)</span>. These are fixed-scale small-time expansions with their proved remainders. They supply no common positive lower bound over all scales.</p>
+<h3 id="exercise-2-bound-a-finite-positive-memory-expansion-and-its-omitted-tail">Exercise 2. Bound a finite positive-memory expansion and its omitted tail</h3>
+<p>For the actual third-coordinate operator <span class="math" data-tex="\(\mathcal T_n\)">\(\mathcal T_n\)</span> in VA6, prove that truncating its positive series after <span class="math" data-tex="\(M\)">\(M\)</span> terms gives a lower bound with an explicit uniform error. Then prove monotone dependence on a nonnegative added history source while the actual coefficient <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> and memory kernel are held fixed.</p>
+<p><strong>Solution.</strong> Fix <span class="math" data-tex="\(0&lt;T&lt;T_*\)">\(0&lt;T&lt;T_*\)</span> and retain <span class="math" data-tex="\(H\)">\(H\)</span> from VA7. For an integer <span class="math" data-tex="\(M\geq0\)">\(M\geq0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+c_n^{[M]}=\sum_{j=0}^{M}\mathcal T_n^jg_n .
+\]">\[
+c_n^{[M]}=\sum_{j=0}^{M}\mathcal T_n^jg_n .
+\]</span>
+<p>VA8 and the positivity of the operator give the exact identity and inequalities</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_n-c_n^{[M]}=\mathcal T_n^{M+1}c_n\geq0,\\
+\|c_n-c_n^{[M]}\|_{C[0,T]}
+\leq\|c_n\|_{C[0,T]}\frac{(HT)^{M+1}}{(M+1)!}
+\leq\|g_n\|_{C[0,T]}\exp(HT)
+\frac{(HT)^{M+1}}{(M+1)!}.
+\end{gathered}
+\tag{EX6}
+\]">\[
+\begin{gathered}
+c_n-c_n^{[M]}=\mathcal T_n^{M+1}c_n\geq0,\\
+\|c_n-c_n^{[M]}\|_{C[0,T]}
+\leq\|c_n\|_{C[0,T]}\frac{(HT)^{M+1}}{(M+1)!}
+\leq\|g_n\|_{C[0,T]}\exp(HT)
+\frac{(HT)^{M+1}}{(M+1)!}.
+\end{gathered}
+\tag{EX6}
+\]</span>
+<p>To prove the identity, substitute <span class="math" data-tex="\(c_n=g_n+\mathcal T_nc_n\)">\(c_n=g_n+\mathcal T_nc_n\)</span> exactly <span class="math" data-tex="\(M+1\)">\(M+1\)</span> times. The first bound is VA8 with <span class="math" data-tex="\(z=c_n\)">\(z=c_n\)</span>. For the last use the uniformly convergent series and sum
+<span class="math" data-tex="\(\sum_{j\geq0}(HT)^j/j!=\exp(HT)\)">\(\sum_{j\geq0}(HT)^j/j!=\exp(HT)\)</span>. This proves the error bound even when <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, with the usual value of the zero power in the series.</p>
+<p>More generally take continuous <span class="math" data-tex="\(g,\widetilde g\)">\(g,\widetilde g\)</span> with <span class="math" data-tex="\(0\leq g\leq\widetilde g\)">\(0\leq g\leq\widetilde g\)</span>. The same operator has unique continuous solutions</p>
+<span class="math math-display" data-tex="\[
+c=(I-\mathcal T_n)^{-1}g,\qquad
+\widetilde c=(I-\mathcal T_n)^{-1}\widetilde g,
+\]">\[
+c=(I-\mathcal T_n)^{-1}g,\qquad
+\widetilde c=(I-\mathcal T_n)^{-1}\widetilde g,
+\]</span>
+<p>where the inverse means the convergent Volterra series, not an assumption of a small operator norm. Subtracting the series proves</p>
+<span class="math math-display" data-tex="\[
+0\leq\widetilde c-c
+=\sum_{j=0}^{\infty}\mathcal T_n^j(\widetilde g-g),\qquad
+\|\widetilde c-c\|_{C[0,T]}
+\leq\exp(HT)\|\widetilde g-g\|_{C[0,T]} .
+\tag{EX7}
+\]">\[
+0\leq\widetilde c-c
+=\sum_{j=0}^{\infty}\mathcal T_n^j(\widetilde g-g),\qquad
+\|\widetilde c-c\|_{C[0,T]}
+\leq\exp(HT)\|\widetilde g-g\|_{C[0,T]} .
+\tag{EX7}
+\]</span>
+<p>In particular the past-history contribution at a checkpoint can be retained as a positive source and compared by this formula. This is a comparison for the stated linear response with its coefficient and kernel fixed. It does not assert that changing one coordinate of the coupled cascade leaves its other coordinates unchanged.</p>
+<h3 id="exercise-3-transport-all-four-physical-history-integrals-through-an-actual-checkpoint">Exercise 3. Transport all four physical history integrals through an actual checkpoint</h3>
+<p>Use the exact checkpoint map VA20. Prove the receiving maps for <span class="math" data-tex="\(J,H,L,N\)">\(J,H,L,N\)</span>, including the original negative lower endpoint in the checkpoint clock. Then express the receiver inequalities in that clock while retaining their exact correspondence with the original physical equations.</p>
+<p><strong>Solution.</strong> Fix the actual checkpoint <span class="math" data-tex="\(t_N\)">\(t_N\)</span>, amplitude <span class="math" data-tex="\(e&gt;0\)">\(e&gt;0\)</span>, and
+<span class="math" data-tex="\(\beta=e q^{5N/2}\)">\(\beta=e q^{5N/2}\)</span>. For <span class="math" data-tex="\(n=N+k\)">\(n=N+k\)</span> and
+<span class="math" data-tex="\(t=t_N+\tau/\beta\)">\(t=t_N+\tau/\beta\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widetilde J_k(\tau)=\int_{\tau_{\rm start}}^\tau Y_{1,k}(s)^2\,ds,
+\qquad
+\widetilde H_k(\tau)=\int_{\tau_{\rm start}}^\tau
+(\tau-s)Y_{1,k}(s)^2\,ds,\\
+\widetilde L_k(\tau)=\int_{\tau_{\rm start}}^\tau|Y_{1,k}(s)|\,ds,
+\qquad
+\widetilde N_k(\tau)=\int_{\tau_{\rm start}}^\tau
+(Y_{1,k+1}(s))_-\,ds .
+\end{gathered}
+\tag{EX8}
+\]">\[
+\begin{gathered}
+\widetilde J_k(\tau)=\int_{\tau_{\rm start}}^\tau Y_{1,k}(s)^2\,ds,
+\qquad
+\widetilde H_k(\tau)=\int_{\tau_{\rm start}}^\tau
+(\tau-s)Y_{1,k}(s)^2\,ds,\\
+\widetilde L_k(\tau)=\int_{\tau_{\rm start}}^\tau|Y_{1,k}(s)|\,ds,
+\qquad
+\widetilde N_k(\tau)=\int_{\tau_{\rm start}}^\tau
+(Y_{1,k+1}(s))_-\,ds .
+\end{gathered}
+\tag{EX8}
+\]</span>
+<p>The substitution <span class="math" data-tex="\(s=\beta(r-t_N)\)">\(s=\beta(r-t_N)\)</span>, with
+<span class="math" data-tex="\(Y_{1,k}(s)=e^{-1}a_n(r)\)">\(Y_{1,k}(s)=e^{-1}a_n(r)\)</span>, gives the four exact maps</p>
+<span class="math math-display" data-tex="\[
+\widetilde J_k=\frac{\beta}{e^2}J_n(t),\qquad
+\widetilde H_k=\frac{\beta^2}{e^2}H_n(t),\qquad
+\widetilde L_k=\frac{\beta}{e}L_n(t),\qquad
+\widetilde N_k=\frac{\beta}{e}N_n(t).
+\tag{EX9}
+\]">\[
+\widetilde J_k=\frac{\beta}{e^2}J_n(t),\qquad
+\widetilde H_k=\frac{\beta^2}{e^2}H_n(t),\qquad
+\widetilde L_k=\frac{\beta}{e}L_n(t),\qquad
+\widetilde N_k=\frac{\beta}{e}N_n(t).
+\tag{EX9}
+\]</span>
+<p>The last map uses <span class="math" data-tex="\((e^{-1}x)_-=e^{-1}x_-\)">\((e^{-1}x)_-=e^{-1}x_-\)</span>, which holds because <span class="math" data-tex="\(e&gt;0\)">\(e&gt;0\)</span>. The inverse factors recover every physical integral. The additional factor of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> in the weighted moment comes from the time difference, not from the coordinate.</p>
+<p>For <span class="math" data-tex="\(h\geq0\)">\(h\geq0\)</span> with <span class="math" data-tex="\(t_N+h&lt;T_*\)">\(t_N+h&lt;T_*\)</span>, direct splitting at the physical checkpoint also gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_n(t_N+h)&amp;=J_n(t_N)+\int_0^h a_n(t_N+r)^2\,dr,\\
+H_n(t_N+h)&amp;=H_n(t_N)+hJ_n(t_N)
++\int_0^h(h-r)a_n(t_N+r)^2\,dr,\\
+L_n(t_N+h)&amp;=L_n(t_N)+\int_0^h|a_n(t_N+r)|\,dr,\\
+N_n(t_N+h)&amp;=N_n(t_N)+\int_0^h(a_{n+1}(t_N+r))_-\,dr .
+\end{aligned}
+\tag{EX10}
+\]">\[
+\begin{aligned}
+J_n(t_N+h)&amp;=J_n(t_N)+\int_0^h a_n(t_N+r)^2\,dr,\\
+H_n(t_N+h)&amp;=H_n(t_N)+hJ_n(t_N)
++\int_0^h(h-r)a_n(t_N+r)^2\,dr,\\
+L_n(t_N+h)&amp;=L_n(t_N)+\int_0^h|a_n(t_N+r)|\,dr,\\
+N_n(t_N+h)&amp;=N_n(t_N)+\int_0^h(a_{n+1}(t_N+r))_-\,dr .
+\end{aligned}
+\tag{EX10}
+\]</span>
+<p>All retained past terms are nonnegative. Resetting them would generally change the upper bounds and the memory equation itself.</p>
+<p>Define only the corresponding full-field radii
+<span class="math" data-tex="\(\widetilde P_k=e^{-1}P_n(t)\)">\(\widetilde P_k=e^{-1}P_n(t)\)</span> and
+<span class="math" data-tex="\(\widetilde Q_k=e^{-1}Q_n(t)\)">\(\widetilde Q_k=e^{-1}Q_n(t)\)</span>. Since
+<span class="math" data-tex="\(\kappa_n e/\beta=q^{5k/2}\)">\(\kappa_n e/\beta=q^{5k/2}\)</span>, VR7, VR11 and VR17 become</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widetilde P_k&amp;\leq q^{5k/2}\epsilon S\widetilde J_k,\\
+0\leq Y_{3,k}&amp;\leq q^{5k/2}\epsilon^2\exp(-K^{10})
+\widetilde J_k\exp(q^{5k}K^{10}S\widetilde H_k),\\
+\widetilde Q_k&amp;\leq
+q^{5k}\epsilon^{-2}\epsilon^2\exp(-K^{10})
+\widetilde J_k\widetilde L_k
+\exp\!\left(q^{5k}K^{10}S\widetilde H_k
++q^{5(k+1)/2}K\widetilde N_k\right).
+\end{aligned}
+\tag{EX11}
+\]">\[
+\begin{aligned}
+\widetilde P_k&amp;\leq q^{5k/2}\epsilon S\widetilde J_k,\\
+0\leq Y_{3,k}&amp;\leq q^{5k/2}\epsilon^2\exp(-K^{10})
+\widetilde J_k\exp(q^{5k}K^{10}S\widetilde H_k),\\
+\widetilde Q_k&amp;\leq
+q^{5k}\epsilon^{-2}\epsilon^2\exp(-K^{10})
+\widetilde J_k\widetilde L_k
+\exp\!\left(q^{5k}K^{10}S\widetilde H_k
++q^{5(k+1)/2}K\widetilde N_k\right).
+\end{aligned}
+\tag{EX11}
+\]</span>
+<p>These inequalities hold on the exact mapped maximal interval, with
+<span class="math" data-tex="\(\tau_{\rm start}=-\beta t_N\)">\(\tau_{\rm start}=-\beta t_N\)</span>. They are images of the physical bounds, not equations for a newly initialized trajectory. Inverting EX9 and multiplying the radii by <span class="math" data-tex="\(e\)">\(e\)</span> recovers the original statements, including all powers of <span class="math" data-tex="\(q\)">\(q\)</span>, the outgoing coefficient, and both powers of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>.</p>
+<h3 id="exercise-4-prove-the-positive-heat-remainder-omitted-by-a-scalar-restart">Exercise 4. Prove the positive heat remainder omitted by a scalar restart</h3>
+<p>For one original wave packet prove that its heat response is strictly logarithmically convex. Prove that
+<span class="math" data-tex="\(R_{i,n}(r+s)&gt;R_{i,n}(r)R_{i,n}(s)\)">\(R_{i,n}(r+s)&gt;R_{i,n}(r)R_{i,n}(s)\)</span> for <span class="math" data-tex="\(r,s&gt;0\)">\(r,s&gt;0\)</span>, and identify the exact orthogonal field whose subsequent evolution supplies that difference.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(\mu_{i,n}\)">\(\mu_{i,n}\)</span> be the probability measure on
+<span class="math" data-tex="\([4\pi^2q^{2n},4\pi^2(1+\epsilon_0/2)^2q^{2n}]\)">\([4\pi^2q^{2n},4\pi^2(1+\epsilon_0/2)^2q^{2n}]\)</span>
+obtained by sending the measure
+<span class="math" data-tex="\(|\widehat\psi_{i,n}(\xi)|^2\,d\xi\)">\(|\widehat\psi_{i,n}(\xi)|^2\,d\xi\)</span> under
+<span class="math" data-tex="\(\xi\mapsto4\pi^2|\xi|^2\)">\(\xi\mapsto4\pi^2|\xi|^2\)</span>. Its total mass is the original packet's squared norm, one. It is not a point mass: a sphere in <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> has Lebesgue measure zero, so a nonzero <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Fourier density cannot be supported at one radius. Write <span class="math" data-tex="\(R=R_{i,n}\)">\(R=R_{i,n}\)</span>. The exact representation and first moments are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R(t)=\int\exp(-\nu t\lambda)\,d\mu_{i,n}(\lambda),\\
+\int\lambda\,d\mu_{i,n}=q^{2n}G_i,\qquad
+\int\lambda^2\,d\mu_{i,n}=q^{4n}J_i .
+\end{gathered}
+\tag{EX12}
+\]">\[
+\begin{gathered}
+R(t)=\int\exp(-\nu t\lambda)\,d\mu_{i,n}(\lambda),\\
+\int\lambda\,d\mu_{i,n}=q^{2n}G_i,\qquad
+\int\lambda^2\,d\mu_{i,n}=q^{4n}J_i .
+\end{gathered}
+\tag{EX12}
+\]</span>
+<p>The bounded support permits differentiating every order under the integral. Multiplying the derivative formulas and symmetrizing yields</p>
+<span class="math math-display" data-tex="\[
+R&#x27;&#x27;(t)R(t)-R&#x27;(t)^2
+=\frac{\nu^2}{2}\iint(\lambda-\eta)^2
+\exp[-\nu t(\lambda+\eta)]
+\,d\mu_{i,n}(\lambda)d\mu_{i,n}(\eta)&gt;0 .
+\tag{EX13}
+\]">\[
+R&#x27;&#x27;(t)R(t)-R&#x27;(t)^2
+=\frac{\nu^2}{2}\iint(\lambda-\eta)^2
+\exp[-\nu t(\lambda+\eta)]
+\,d\mu_{i,n}(\lambda)d\mu_{i,n}(\eta)&gt;0 .
+\tag{EX13}
+\]</span>
+<p>The integrand is nonnegative, the exponential is strictly positive, and the non-point-mass property gives positive product-measure mass off the diagonal. Since <span class="math" data-tex="\(R(t)&gt;0\)">\(R(t)&gt;0\)</span>, division by <span class="math" data-tex="\(R(t)^2\)">\(R(t)^2\)</span> proves
+<span class="math" data-tex="\((\log R)&#x27;&#x27;&gt;0\)">\((\log R)&#x27;&#x27;&gt;0\)</span>.</p>
+<p>For the lower bound one may prove the needed convexity inequality directly:
+<span class="math" data-tex="\(\exp(x)\geq1+x\)">\(\exp(x)\geq1+x\)</span>, with strict inequality for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>.
+Apply it to <span class="math" data-tex="\(x=-\nu t(\lambda-q^{2n}G_i)\)">\(x=-\nu t(\lambda-q^{2n}G_i)\)</span>, integrate, and retain its mean-zero linear term. Thus</p>
+<span class="math math-display" data-tex="\[
+R(t)\geq\exp(-\nu q^{2n}G_i t),
+\qquad R(t)&gt;\exp(-\nu q^{2n}G_i t)\quad(t&gt;0).
+\tag{EX14}
+\]">\[
+R(t)\geq\exp(-\nu q^{2n}G_i t),
+\qquad R(t)&gt;\exp(-\nu q^{2n}G_i t)\quad(t&gt;0).
+\tag{EX14}
+\]</span>
+<p>This strengthens the lower support bound in VR3 while retaining the original full response and its exact spectral measure.</p>
+<p>Similarly the exact covariance identity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(r+s)-R(r)R(s)
+=\frac12\iint&amp;
+[\exp(-\nu r\lambda)-\exp(-\nu r\eta)]\\
+&amp;\times[\exp(-\nu s\lambda)-\exp(-\nu s\eta)]
+\,d\mu_{i,n}(\lambda)d\mu_{i,n}(\eta)&gt;0
+\quad(r,s&gt;0).
+\end{aligned}
+\tag{EX15}
+\]">\[
+\begin{aligned}
+R(r+s)-R(r)R(s)
+=\frac12\iint&amp;
+[\exp(-\nu r\lambda)-\exp(-\nu r\eta)]\\
+&amp;\times[\exp(-\nu s\lambda)-\exp(-\nu s\eta)]
+\,d\mu_{i,n}(\lambda)d\mu_{i,n}(\eta)&gt;0
+\quad(r,s&gt;0).
+\end{aligned}
+\tag{EX15}
+\]</span>
+<p>To verify the identity expand the four terms: the two diagonal products integrate to <span class="math" data-tex="\(2R(r+s)\)">\(2R(r+s)\)</span>, and the other two to <span class="math" data-tex="\(2R(r)R(s)\)">\(2R(r)R(s)\)</span>. Both bracketed functions are strictly decreasing in their spectral argument, so their product is positive whenever <span class="math" data-tex="\(\lambda\ne\eta\)">\(\lambda\ne\eta\)</span>. This proves strictness using the same non-point-mass property.</p>
+<p>The original full heat evolution at time <span class="math" data-tex="\(s\)">\(s\)</span> has the exact orthogonal decomposition</p>
+<span class="math math-display" data-tex="\[
+e^{\nu s\Delta}\psi_{i,n}
+=R(s)\psi_{i,n}+h_s,\qquad
+h_s=Q_{i,n}e^{\nu s\Delta}\psi_{i,n}.
+\]">\[
+e^{\nu s\Delta}\psi_{i,n}
+=R(s)\psi_{i,n}+h_s,\qquad
+h_s=Q_{i,n}e^{\nu s\Delta}\psi_{i,n}.
+\]</span>
+<p>Pairing its further heat evolution with the same packet gives</p>
+<span class="math math-display" data-tex="\[
+\langle e^{\nu r\Delta}h_s,\psi_{i,n}\rangle
+=R(r+s)-R(r)R(s)&gt;0 .
+\tag{EX16}
+\]">\[
+\langle e^{\nu r\Delta}h_s,\psi_{i,n}\rangle
+=R(r+s)-R(r)R(s)&gt;0 .
+\tag{EX16}
+\]</span>
+<p>Indeed the heat semigroup property supplies the first response and linearity supplies the second. The vector <span class="math" data-tex="\(h_s\)">\(h_s\)</span> lies in the original orthogonal band and is not an invented forcing. Formula EX16 is the exact receiving map for the part discarded by retaining only the scalar projection at time <span class="math" data-tex="\(s\)">\(s\)</span>. It supplies a concrete reason to keep the full field or its exact memory.</p>
+<h3 id="exercise-5-retain-viscous-decay-in-every-receiver-bound">Exercise 5. Retain viscous decay in every receiver bound</h3>
+<p>Strengthen VR7, VR11 and VR15 by retaining the original lower annular dissipation rate. Prove the resulting inequalities for the actual flow at every scale and time, and compare them with the earlier undamped moment bounds.</p>
+<p><strong>Solution.</strong> For one fixed scale retain</p>
+<span class="math math-display" data-tex="\[
+\gamma_n=4\pi^2\nu q^{2n}&gt;0,\qquad
+J_n^\nu(t)=\int_0^t\exp[-\gamma_n(t-s)]a_n(s)^2\,ds,
+\]">\[
+\gamma_n=4\pi^2\nu q^{2n}&gt;0,\qquad
+J_n^\nu(t)=\int_0^t\exp[-\gamma_n(t-s)]a_n(s)^2\,ds,
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+H_n^\nu(t)=\int_0^t
+\frac{1-\exp[-\gamma_n(t-s)]}{\gamma_n}a_n(s)^2\,ds
+=\int_0^t J_n^\nu(s)\,ds .
+\tag{EX17}
+\]">\[
+H_n^\nu(t)=\int_0^t
+\frac{1-\exp[-\gamma_n(t-s)]}{\gamma_n}a_n(s)^2\,ds
+=\int_0^t J_n^\nu(s)\,ds .
+\tag{EX17}
+\]</span>
+<p>The equality follows by integrating the exponential over the same triangular time region. These are additional quantities attached to the original input; <span class="math" data-tex="\(J_n,H_n\)">\(J_n,H_n\)</span> keep their earlier definitions.</p>
+<p>The Fourier support gives</p>
+<span class="math math-display" data-tex="\[
+\nu\bigl(\|\nabla u_{2,n}\|_2^2+\|\nabla u_{3,n}\|_2^2\bigr)
+\geq\gamma_n P_n^2.
+\]">\[
+\nu\bigl(\|\nabla u_{2,n}\|_2^2+\|\nabla u_{3,n}\|_2^2\bigr)
+\geq\gamma_n P_n^2.
+\]</span>
+<p>Put <span class="math" data-tex="\(P_\eta=(P_n^2+\eta)^{1/2}\)">\(P_\eta=(P_n^2+\eta)^{1/2}\)</span>. The exact energy identity VR5 implies</p>
+<span class="math math-display" data-tex="\[
+P_\eta&#x27;\leq\kappa_n\epsilon S a_n^2
+-\gamma_nP_\eta+\gamma_n\sqrt\eta .
+\]">\[
+P_\eta&#x27;\leq\kappa_n\epsilon S a_n^2
+-\gamma_nP_\eta+\gamma_n\sqrt\eta .
+\]</span>
+<p>For the last term use
+<span class="math" data-tex="\(P_n^2/P_\eta=P_\eta-\eta/P_\eta\)">\(P_n^2/P_\eta=P_\eta-\eta/P_\eta\)</span> and
+<span class="math" data-tex="\(\eta/P_\eta\leq\sqrt\eta\)">\(\eta/P_\eta\leq\sqrt\eta\)</span>. The initial radius is
+<span class="math" data-tex="\(P_\eta(0)=\sqrt\eta\)">\(P_\eta(0)=\sqrt\eta\)</span>. Integrating with the coefficient
+<span class="math" data-tex="\(\gamma_n\)">\(\gamma_n\)</span> and letting <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+|b_n(t)|,|c_n(t)|\leq P_n(t)
+\leq\kappa_n\epsilon S J_n^\nu(t).
+\tag{EX18}
+\]">\[
+|b_n(t)|,|c_n(t)|\leq P_n(t)
+\leq\kappa_n\epsilon S J_n^\nu(t).
+\tag{EX18}
+\]</span>
+<p>This bounds both original fields, including their orthogonal components.</p>
+<p>Use <span class="math" data-tex="\(R_{3,n}(t-s)\leq\exp[-\gamma_n(t-s)]\)">\(R_{3,n}(t-s)\leq\exp[-\gamma_n(t-s)]\)</span> in the exact third response, after first taking absolute values of its possibly signed amplifier term. Multiply the upper bound by <span class="math" data-tex="\(\exp(\gamma_n t)\)">\(\exp(\gamma_n t)\)</span>. Its first term is the nondecreasing function</p>
+<span class="math math-display" data-tex="\[
+\kappa_n\epsilon^2\exp(-K^{10})
+\int_0^t\exp(\gamma_n s)a_n(s)^2\,ds .
+\]">\[
+\kappa_n\epsilon^2\exp(-K^{10})
+\int_0^t\exp(\gamma_n s)a_n(s)^2\,ds .
+\]</span>
+<p>The same terminal-time integrating-factor argument used for VR11 applies to this function. EX18 and EX17 then give</p>
+<span class="math math-display" data-tex="\[
+0\leq c_n(t)\leq\kappa_n\epsilon^2\exp(-K^{10})
+J_n^\nu(t)
+\exp\!\left(\kappa_n^2K^{10}S H_n^\nu(t)\right).
+\tag{EX19}
+\]">\[
+0\leq c_n(t)\leq\kappa_n\epsilon^2\exp(-K^{10})
+J_n^\nu(t)
+\exp\!\left(\kappa_n^2K^{10}S H_n^\nu(t)\right).
+\tag{EX19}
+\]</span>
+<p>No monotonicity of <span class="math" data-tex="\(J_n^\nu\)">\(J_n^\nu\)</span> was assumed: it can decrease. The monotone object in that argument is
+<span class="math" data-tex="\(\exp(\gamma_n t)J_n^\nu(t)\)">\(\exp(\gamma_n t)J_n^\nu(t)\)</span>.</p>
+<p>For the fourth band, its original annular support similarly gives
+<span class="math" data-tex="\(\nu\|\nabla u_{4,n}\|_2^2\geq\gamma_n Q_n^2\)">\(\nu\|\nabla u_{4,n}\|_2^2\geq\gamma_n Q_n^2\)</span>.
+Let <span class="math" data-tex="\(\zeta_n(t)=\kappa_nq^{5/2}K(a_{n+1}(t))_-\)">\(\zeta_n(t)=\kappa_nq^{5/2}K(a_{n+1}(t))_-\)</span>.
+Square-root regularization of VR13 gives</p>
+<span class="math math-display" data-tex="\[
+Q_\eta&#x27;\leq\kappa_n\epsilon^{-2}|a_n|c_n
++(\zeta_n-\gamma_n)Q_\eta+\gamma_n\sqrt\eta .
+\]">\[
+Q_\eta&#x27;\leq\kappa_n\epsilon^{-2}|a_n|c_n
++(\zeta_n-\gamma_n)Q_\eta+\gamma_n\sqrt\eta .
+\]</span>
+<p>The coefficient is bounded on every fixed compact actual time interval. Its integrating factor therefore bounds the terms proportional to <span class="math" data-tex="\(\sqrt\eta\)">\(\sqrt\eta\)</span> by a constant times <span class="math" data-tex="\(\sqrt\eta\)">\(\sqrt\eta\)</span>; they vanish as <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>. Hence the full radius satisfies</p>
+<span class="math math-display" data-tex="\[
+Q_n(t)\leq\kappa_n\epsilon^{-2}\int_0^t |a_n(s)|c_n(s)
+\exp\!\left[-\gamma_n(t-s)
++\kappa_nq^{5/2}K\int_s^t(a_{n+1}(r))_-\,dr\right]ds .
+\tag{EX20}
+\]">\[
+Q_n(t)\leq\kappa_n\epsilon^{-2}\int_0^t |a_n(s)|c_n(s)
+\exp\!\left[-\gamma_n(t-s)
++\kappa_nq^{5/2}K\int_s^t(a_{n+1}(r))_-\,dr\right]ds .
+\tag{EX20}
+\]</span>
+<p>Define the additional physical input integral</p>
+<span class="math math-display" data-tex="\[
+W_n^\nu(t)=\int_0^t\exp[-\gamma_n(t-s)]
+|a_n(s)|J_n^\nu(s)\,ds .
+\]">\[
+W_n^\nu(t)=\int_0^t\exp[-\gamma_n(t-s)]
+|a_n(s)|J_n^\nu(s)\,ds .
+\]</span>
+<p>Since <span class="math" data-tex="\(H_n^\nu\)">\(H_n^\nu\)</span> and <span class="math" data-tex="\(N_n\)">\(N_n\)</span> are nondecreasing, inserting EX19 in EX20 yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|d_n(t)|\leq Q_n(t)\leq{}&amp;
+\kappa_n^2\epsilon^{-2}\epsilon^2\exp(-K^{10})
+W_n^\nu(t)\\
+&amp;\times\exp\!\left(\kappa_n^2K^{10}S H_n^\nu(t)
++\kappa_nq^{5/2}K N_n(t)\right).
+\end{aligned}
+\tag{EX21}
+\]">\[
+\begin{aligned}
+|d_n(t)|\leq Q_n(t)\leq{}&amp;
+\kappa_n^2\epsilon^{-2}\epsilon^2\exp(-K^{10})
+W_n^\nu(t)\\
+&amp;\times\exp\!\left(\kappa_n^2K^{10}S H_n^\nu(t)
++\kappa_nq^{5/2}K N_n(t)\right).
+\end{aligned}
+\tag{EX21}
+\]</span>
+<p>Both powers of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, the full outgoing coefficient and the original viscosity remain visible.</p>
+<p>Finally <span class="math" data-tex="\(0&lt;\exp(-\gamma_n r)\leq1\)">\(0&lt;\exp(-\gamma_n r)\leq1\)</span> and
+<span class="math" data-tex="\(0\leq(1-\exp(-\gamma_n r))/\gamma_n\leq r\)">\(0\leq(1-\exp(-\gamma_n r))/\gamma_n\leq r\)</span> for <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>.
+They prove</p>
+<span class="math math-display" data-tex="\[
+J_n^\nu(t)\leq J_n(t),\qquad H_n^\nu(t)\leq H_n(t),\qquad
+W_n^\nu(t)\leq J_n(t)L_n(t).
+\tag{EX22}
+\]">\[
+J_n^\nu(t)\leq J_n(t),\qquad H_n^\nu(t)\leq H_n(t),\qquad
+W_n^\nu(t)\leq J_n(t)L_n(t).
+\tag{EX22}
+\]</span>
+<p>For the last inequality first use <span class="math" data-tex="\(J_n^\nu(s)\leq J_n(s)\leq J_n(t)\)">\(J_n^\nu(s)\leq J_n(s)\leq J_n(t)\)</span> inside its full defining integral. Thus the new bounds imply the earlier ones by a proved comparison, without changing their original objects. They apply at every fixed original scale and every <span class="math" data-tex="\(t&lt;T_*\)">\(t&lt;T_*\)</span>; all comparison integrals retain physical time zero. As <span class="math" data-tex="\(\nu\downarrow0\)">\(\nu\downarrow0\)</span>, dominated convergence on a compact time interval gives <span class="math" data-tex="\(J_n^\nu\to J_n\)">\(J_n^\nu\to J_n\)</span>, <span class="math" data-tex="\(H_n^\nu\to H_n\)">\(H_n^\nu\to H_n\)</span> and</p>
+<span class="math math-display" data-tex="\[
+W_n^\nu(t)\longrightarrow\int_0^t|a_n(s)|J_n(s)\,ds
+\]">\[
+W_n^\nu(t)\longrightarrow\int_0^t|a_n(s)|J_n(s)\,ds
+\]</span>
+<p>when the input is held fixed. This last statement is about the displayed integral operators on that fixed input, not an unproved viscosity limit of the coupled nonlinear solutions.</p>
+<p><img src="assets/NS-FLUID-43/positive-heat-remainder-and-viscous-receiver-8C6484A7B9E16D3870E5B2C0159C264DBDFADA4FE029C419F853164A4F6904F3.png" alt="The exact positive orthogonal heat remainder and full viscously damped receiver bounds" class="course-figure" width="2250" height="1500" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="positive-heat-remainder-and-viscous-receiver" data-asset-sha256="8C6484A7B9E16D3870E5B2C0159C264DBDFADA4FE029C419F853164A4F6904F3"></p>
+<p>Exercise4, EX12–EX16, proves the strict spectral covariance and its exact orthogonal-field receiving map. Exercise5, EX17–EX22, retains the original annular viscosity in the full pair, drive and rotor bounds. Here S is the complete two-source factor in VR1, and the spectral variable is the original Fourier multiplier. The diagram gives identities and proved bounds, not numerical trajectories. <a href="assets/positive-heat-remainder-and-viscous-receiver.py">Reproducible figure source</a> and <a href="assets/positive-heat-remainder-and-viscous-receiver.svg">vector rendering</a> retain all displayed coefficients. These are editorial consequences of the original band equations and heat response; human comparison: Terence Tao, arXiv:1402.0290v3, original navier-blowup.tex827–1008 and2039–2106. No novelty claim is made.</p>
+<h2 id="continue-with-actual-transfers-and-the-uniform-cascade">Continue with actual transfers and the uniform cascade</h2>
+<p>The positive drive, full-field receiver estimates and exact history maps
+are now available for every actual scale. The next lessons use the
+rotation corrector to control each forcing interval, construct the
+actual transfers, and teach the completed uniform induction.
+The <span class="unlinked">complete supporting proof</span>
+already establishes the finite maximal endpoint for this original
+averaged equation, with the receiving-drive correction visible.</p>
+<p>That operator is the averaged local cascade defined in the preceding
+lessons. This conclusion does not prove singularity for the unmodified
+Navier–Stokes equation or validate the separate OpenAI construction.
+The wider series continues through the assigned human, Alpöge–Buckmaster,
+OpenAI and workbench mathematics.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-42.html">Previous lesson</a><a href="NS-FLUID-44.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

@@ -1,6 +1,6 @@
 # Projection corners and canonical positive-functional vectors
 
-*Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \((M,H,J,P)\) be any standard form: \(JMJ=M'\), \(JzJ=z^*\) on the center, \(J\) fixes the self-dual closed cone \(P\), and \(xJxJ\) preserves \(P\). The preceding [NC-1–5](OA-FLOW-NC.md) constructs it from an arbitrary faithful n.s.f. weight. We use no faithful-state hypothesis on \(M\). Write \(j(x)=JxJ\) and \(\omega_\xi(a)=\langle a\xi,\xi\rangle\), with the linear-first convention.
 

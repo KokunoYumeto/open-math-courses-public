@@ -1,6 +1,6 @@
 # A faithful vector-series state has an ultraweak GNS representation
 
-Original reviewed ST-3 coefficient argument, placed before the order-normal functional proof. The premise is a state already belonging to the concrete vector-series predual. Neither an order-normality equivalence nor a modular theorem is an input. Original CC0 component expression and GPT-6 Astra (OpenAI), Ultra credit retained.
+ST-3's coefficient argument precedes the order-normal functional proof. The premise is a state already belonging to the concrete vector-series predual. Neither an order-normality equivalence nor a modular theorem is an input. Original component expression: CC0.
 
 The actual earlier proofs are [GNS Sections 2–5](OA-FLOW-GNS.md#gns-positive-form), [CP01–06](OA-FLOW-CP.md#oa-flow.cp.1), [ST-2](OA-FLOW-ST12.md#oa-flow.st.2), [CF Sections 6–7](OA-FLOW-CF.md#OA-FLOW.CF.6) and [SF-0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0)/[SB-0](OA-FLOW-SF.md#OA-FLOW.SF.SB0). The complete later ST-3 modular application remains in its original reader.
 

@@ -1,6 +1,6 @@
 # A commutant weight without faithfulness or semifiniteness of the input
 
-*Fresh local reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(\varphi\) be any normal weight on \(M\subseteq B(K)\). Normality means preservation of bounded increasing positive suprema. Faithfulness and semifiniteness are not assumed; zero GNS spaces are allowed. We construct a faithful normal semifinite weight on the commutant of its GNS representation, and identify its full finite positive cone with the normal positive functionals supported on the finite-domain projection and dominated by a finite multiple of \(\varphi\). This is a separate construction from the faithful Hilbert-algebra theorem.
 

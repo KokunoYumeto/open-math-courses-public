@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Joint distributions and mixing under conditioning</title><link rel="stylesheet" href="reader.css"></head><body><a class="skip" href="#main">Skip to the lesson</a><header><a href="index.html">Discrete dynamics, coding and probability</a> · <a href="src/NT-COLLATZ-16.md">Lesson source</a></header><main id="main"><h1 id="joint-distributions-and-mixing-under-conditioning">Joint
+distributions and mixing under conditioning</h1>
+<p><em>Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026.
+Self-checked by the writing AI. Original exposition, proofs and
+exercises: CC0 1.0.</em></p>
+<p>A probability distribution can become nearly uniform inside each
+residue class while still depending strongly on a second observation. If
+that observation is subsequently fixed, an estimate which averaged it
+away need not survive. The appropriate object is then the joint
+distribution: keep the observation as a coordinate, and average only the
+information the argument is entitled to discard.</p>
+<p>We apply this principle to a random affine offset and its total
+valuation. The result controls the average, with its actual probability
+weights, of all the fixed-total mixing errors. It also gives a
+quantitative bound for any specified total. In the usual moderate
+window, it yields arbitrary-power mixing at every residue scale whose
+exponent is at least a fixed positive power of the word length. Keeping
+the joint law makes comparisons between scales exact: the added
+variables contribute a convolution in the total coordinate.</p>
+<p>The general subjects are probability on product spaces, quotient
+maps, Fourier analysis and summable comparisons across scales. Basic
+references are Tao’s <em>Almost all orbits of the Collatz map attain
+almost bounded values</em>, Section 6, and Allikvere’s <em>Almost all
+Collatz orbits attain almost bounded values in natural density</em>,
+Theorem 4.1 and Proposition 4.2. Tao supplies the arithmetic separation
+and independent-tail mechanism. Allikvere establishes the fixed-total
+mixing application. The joint formulation below proves the weighted
+estimate and extends the fixed-total scale range to every fixed positive
+power.</p>
+<p>The prerequisites are <a
+href="NT-COLLATZ-05.html#frequencies-that-distinguish-the-missing-information">quotient
+Fourier analysis</a>, <a
+href="NT-COLLATZ-12.html#stopping-on-events-that-depend-only-on-the-prefix">the
+arithmetic separation and stopped-prefix construction</a>, and <a
+href="NT-COLLATZ-15.html#a-retained-total-in-the-affine-offset-model">Fourier
+cancellation with the total retained</a>. We recall the precise
+previously proved estimates at their point of use. This lesson proves
+the joint-distribution steps and their consequences; it does not assume
+a first-passage or natural-density conclusion.</p>
+<h2 id="retaining-a-second-coordinate">Retaining a second
+coordinate</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><msub><mi>A</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">A_1,A_2,\ldots</annotation></semantics></math>
+be independent positive integers with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo>=</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\mathbb P(A_i=a)=2^{-a}</annotation></semantics></math>.
+Define
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>j</mi></msub><mo>=</mo><msub><mi>A</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>A</mi><mi>j</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>S</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>X</mi><mi>n</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mn>3</mn><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>S</mi><mi>j</mi></msub></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+S_j=A_1+\cdots+A_j,\qquad S_0=0,
+\qquad X_n=\sum_{j=1}^n3^{j-1}2^{-S_j}.
+\tag{1}
+</annotation></semantics></math><span class="equation-number">(1)</span></span></span> The offset is a dyadic rational. Its
+image in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>n</mi></msub><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><msup><mn>3</mn><mi>n</mi></msup><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">G_n=\mathbb Z/3^n\mathbb Z</annotation></semantics></math>
+uses the inverse of two modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>n</mi></msup><annotation encoding="application/x-tex">3^n</annotation></semantics></math>.
+Write
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>n</mi></msub><mo>=</mo><mi>y</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> in </mtext><mspace width="0.333em"></mspace></mrow><msub><mi>G</mi><mi>n</mi></msub><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>p</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mu_n(y,s)=\mathbb P(X_n=y\text{ in }G_n,\ S_n=s),
+\qquad p_n(s)=\mathbb P(S_n=s).
+\tag{2}
+</annotation></semantics></math><span class="equation-number">(2)</span></span></span> All masses are extended by zero to
+every integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>.
+Also set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow></msub></mrow><annotation encoding="application/x-tex">p_0(s)=\mathbf1_{s=0}</annotation></semantics></math>.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1\leq m\leq n</annotation></semantics></math>,
+define maps on absolutely summable complex masses by
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>R</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo>:</mo><msup><mi>ℓ</mi><mn>1</mn></msup><mo stretchy="false" form="prefix">(</mo><msub><mi>G</mi><mi>n</mi></msub><mo>×</mo><mi mathvariant="double-struck">ℤ</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><msup><mi>ℓ</mi><mn>1</mn></msup><mo stretchy="false" form="prefix">(</mo><msub><mi>G</mi><mi>m</mi></msub><mo>×</mo><mi mathvariant="double-struck">ℤ</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">(</mo><msub><mi>R</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mi>h</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mo>∑</mo><mrow><mi>y</mi><mo>≡</mo><mi>z</mi><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><msup><mn>3</mn><mi>m</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow></munder><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>U</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo>:</mo><msup><mi>ℓ</mi><mn>1</mn></msup><mo stretchy="false" form="prefix">(</mo><msub><mi>G</mi><mi>m</mi></msub><mo>×</mo><mi mathvariant="double-struck">ℤ</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><msup><mi>ℓ</mi><mn>1</mn></msup><mo stretchy="false" form="prefix">(</mo><msub><mi>G</mi><mi>n</mi></msub><mo>×</mo><mi mathvariant="double-struck">ℤ</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">(</mo><msub><mi>U</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mi>f</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mn>3</mn><mrow><mi>m</mi><mo>−</mo><mi>n</mi></mrow></msup><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>3</mn><mi>m</mi></msup></mrow><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>P</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>U</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>R</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+R_{m,n}:\ell^1(G_n\times\mathbb Z)&amp;\longrightarrow\ell^1(G_m\times\mathbb Z),\\
+(R_{m,n}h)(z,s)&amp;=\sum_{y\equiv z\ (3^m)}h(y,s),\\
+U_{m,n}:\ell^1(G_m\times\mathbb Z)&amp;\longrightarrow\ell^1(G_n\times\mathbb Z),\\
+(U_{m,n}f)(y,s)&amp;=3^{m-n}f(y\bmod3^m,s),\\
+P_{m,n}&amp;=U_{m,n}R_{m,n}.
+\end{aligned}
+\tag{3}
+</annotation></semantics></math><span class="equation-number">(3)</span></span></span> The index order agrees with the
+preceding mixing lesson: the lower residue exponent comes first. None of
+these maps changes the total coordinate.</p>
+<p><strong>Proposition 1.</strong> Reduction is an
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\ell^1</annotation></semantics></math>
+contraction, uniform lifting is an isometry, and
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>U</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo>=</mo><mi>I</mi><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>P</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mn>2</mn></msubsup><mo>=</mo><msub><mi>P</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R_{m,n}U_{m,n}=I,\qquad P_{m,n}^2=P_{m,n}.
+\tag{4}
+</annotation></semantics></math><span class="equation-number">(4)</span></span></span> The kernel of reduction consists
+exactly of the masses whose sum on every fibre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>:</mo><mi>y</mi><mo>≡</mo><mi>z</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>3</mn><mi>m</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{(y,s):y\equiv z\pmod{3^m}\}</annotation></semantics></math>
+is zero. The range of the lift consists exactly of the masses constant
+on each such fibre.</p>
+<p><strong>Proof.</strong> The triangle inequality inside each fibre
+gives contraction after summing over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(z,s)</annotation></semantics></math>.
+Each value of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(z,s)</annotation></semantics></math>
+appears in exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow></msup><annotation encoding="application/x-tex">3^{n-m}</annotation></semantics></math>
+lifted positions, multiplied by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mrow><mi>m</mi><mo>−</mo><mi>n</mi></mrow></msup><annotation encoding="application/x-tex">3^{m-n}</annotation></semantics></math>,
+so the sum of absolute masses is unchanged. Summing the lifted values on
+one fibre gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(z,s)</annotation></semantics></math>,
+proving the first identity in (4), and composition gives the second. The
+descriptions of kernel and range follow directly from (3). In particular
+the lift is injective, with inverse reduction on its range. All
+rearrangements involve absolutely convergent sums. ∎</p>
+<p>This operation replaces fine residue information by uniformity within
+the observed class. It preserves both the total’s probability and its
+joint distribution with the coarse residue. It is not a claim that the
+total and the residue are independent.</p>
+<div class="figure-scroll"><p><img src="figures/joint-total-mixing.svg"
+alt="Joint masses at a fixed total before and after uniform lifting" /></p></div>
+<p><em>An exact finite example with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn><mo>,</mo><mi>m</mi><mo>=</mo><mn>1</mn><mo>,</mo><msub><mi>S</mi><mn>2</mn></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n=2,m=1,S_2=3</annotation></semantics></math>.
+The words
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,2)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,1)</annotation></semantics></math>
+each have unconditioned mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">1/8</annotation></semantics></math>,
+and offset residues two and four modulo nine. Uniform lifting spreads
+each mass over its three refinements modulo three. Both panels retain
+total mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">p_2(3)=1/4</annotation></semantics></math>;
+neither has been divided by that probability. The difference of the two
+columns has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\ell^1</annotation></semantics></math>
+norm
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">1/3</annotation></semantics></math>.</em></p>
+<h2 id="a-joint-mixing-theorem">A joint mixing theorem</h2>
+<p>Put
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><msub><mi>μ</mi><mi>n</mi></msub><mo>−</mo><msub><mi>P</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>μ</mi><mi>n</mi></msub><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="postfix">∥</mo><mi>h</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>=</mo><munder><mo>∑</mo><mrow><mi>s</mi><mo>∈</mo><mi mathvariant="double-struck">ℤ</mi></mrow></munder><munder><mo>∑</mo><mrow><mi>y</mi><mo>∈</mo><msub><mi>G</mi><mi>n</mi></msub></mrow></munder><mo stretchy="false" form="prefix">|</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+J_{m,n}=\|\mu_n-P_{m,n}\mu_n\|_1,
+\qquad \|h\|_1=\sum_{s\in\mathbb Z}\sum_{y\in G_n}|h(y,s)|.
+\tag{5}
+</annotation></semantics></math><span class="equation-number">(5)</span></span></span> For probabilities, the supremum of
+discrepancies on events is half this norm.</p>
+<p><strong>Theorem 2 (Joint offset and total).</strong> For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a&gt;0</annotation></semantics></math>,
+there is a finite constant
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>a</mi></msub><annotation encoding="application/x-tex">K_a</annotation></semantics></math>
+such that
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo>≤</mo><msub><mi>K</mi><mi>a</mi></msub><msup><mi>m</mi><mrow><mi>−</mi><mi>a</mi></mrow></msup><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+J_{m,n}\leq K_a m^{-a}\qquad(1\leq m\leq n).
+\tag{6}
+</annotation></semantics></math><span class="equation-number">(6)</span></span></span></p>
+<p>The proof combines Tao’s stopping split with the retained-total
+Fourier majorant proved in the preceding lesson. Allikvere’s Theorem 4.1
+and Proposition 4.2 treat the fixed-total comparison recovered
+below.</p>
+<p>The precise conditional meaning is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>J</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo>=</mo><munder><mo>∑</mo><mrow><mi>s</mi><mo>≥</mo><mi>n</mi></mrow></munder><msub><mi>p</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">∥</mo><mi mathvariant="script">ℒ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>n</mi></msub><mo>∣</mo><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msub><mi>U</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mi mathvariant="script">ℒ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>n</mi></msub><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>3</mn><mi>m</mi></msup></mrow><mo>∣</mo><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><msub><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">∥</mo><mn>1</mn></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+J_{m,n}
+=\sum_{s\geq n}p_n(s)
+\big\|\mathcal L(X_n\mid S_n=s)
+-U_{m,n}\mathcal L(X_n\bmod3^m\mid S_n=s)\big\|_1.
+\end{aligned}
+\tag{7}
+</annotation></semantics></math><span class="equation-number">(7)</span></span></span> On the right, the lift acts only on the
+residue variable. To verify (7), factor the positive number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p_n(s)</annotation></semantics></math>
+out of all masses at the total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+apply (3), and sum absolute values. Thus (6) controls an average of
+conditional discrepancies, not just a discrepancy after the totals have
+been combined.</p>
+<p>It also controls arbitrary bounded observations of the pair: for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|H(y,s)|\leq1</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><munder><mo>∑</mo><mrow><mi>y</mi><mo>,</mo><mi>s</mi></mrow></munder><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>μ</mi><mi>n</mi></msub><mo>−</mo><msub><mi>P</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>μ</mi><mi>n</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><msub><mi>K</mi><mi>a</mi></msub><msup><mi>m</mi><mrow><mi>−</mi><mi>a</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left|\sum_{y,s}H(y,s)(\mu_n-P_{m,n}\mu_n)(y,s)\right|
+\leq K_a m^{-a}.
+\tag{8}
+</annotation></semantics></math><span class="equation-number">(8)</span></span></span> This follows by the triangle
+inequality. Conditioning on an event still requires division by its
+probability; (8) does not remove that cost.</p>
+<p>We first prove (6) when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi>n</mi><mi>/</mi><mn>10</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">9n/10\leq m\leq n</annotation></semantics></math>.
+The key is to retain the exact total through the same prefix–tail split
+that proved unconditional mixing.</p>
+<h2 id="the-arithmetic-input-with-its-event-masses">The arithmetic input
+with its event masses</h2>
+<p>Fix the target power
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a&gt;0</annotation></semantics></math>
+and set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mi>a</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">B=a+2</annotation></semantics></math>.
+Use the constants of <a
+href="NT-COLLATZ-12.html#stopping-on-events-that-depend-only-on-the-prefix">the
+stopped-prefix lemma</a>: with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>/</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">d=\log(4/3)</annotation></semantics></math>,
+choose
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>≥</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><mn>2</mn><mo>,</mo><msqrt><mrow><mn>12</mn><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo>+</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow></msqrt><mo>,</mo><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo>+</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>d</mi><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>D</mi><mo>=</mo><mn>10</mn><msup><mi>C</mi><mn>2</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><mi>t</mi><mo>=</mo><mi>n</mi><msub><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></msub><mn>3</mn><mo>−</mo><mi>D</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C\geq\max\{2,\sqrt{12(B+3)},2(B+3)/d\},
+\quad D=10C^2,
+\quad t=n\log_2 3-D\log n.
+\tag{9}
+</annotation></semantics></math><span class="equation-number">(9)</span></span></span> All lower thresholds for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+in this argument may depend on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">r\leq n</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>r</mi></msub><annotation encoding="application/x-tex">E_r</annotation></semantics></math>
+assert, for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>i</mi><mo>&lt;</mo><mi>j</mi><mo>≤</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">0\leq i&lt;j\leq r</annotation></semantics></math>,
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>S</mi><mi>j</mi></msub><mo>−</mo><msub><mi>S</mi><mi>i</mi></msub><mo>−</mo><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>−</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>C</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><msqrt><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>−</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi></mrow></msqrt><mo>+</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|S_j-S_i-2(j-i)|
+\leq C\big(\sqrt{(j-i)\log n}+\log n\big).
+</annotation></semantics></math></span> The logarithm remains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">\log n</annotation></semantics></math>,
+not
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">\log r</annotation></semantics></math>.
+Define
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><msub><mi>S</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>≤</mo><mi>t</mi><mo>&lt;</mo><msub><mi>S</mi><mi>r</mi></msub><mo>,</mo><msub><mi>S</mi><mi>r</mi></msub><mo>=</mo><mi>L</mi><mo stretchy="false" form="postfix">}</mo><mo>∩</mo><msub><mi>E</mi><mi>r</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>r</mi><mo>≤</mo><mo stretchy="false" form="prefix">⌊</mo><mn>17</mn><mi>n</mi><mi>/</mi><mn>20</mn><mo stretchy="false" form="postfix">⌋</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H_{r,L}=\{S_{r-1}\leq t&lt;S_r, S_r=L\}\cap E_r,
+\qquad r\leq\lfloor17n/20\rfloor.
+\tag{10}
+</annotation></semantics></math><span class="equation-number">(10)</span></span></span> The cited lemma proves that these
+prefix-measurable events are disjoint and, for all sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+satisfy
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi mathvariant="double-struck">ℙ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mo minsize="180%" maxsize="180%" stretchy="true" form="prefix">(</mo><munder><mo>⋃</mo><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></munder><msub><mi>H</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><msup><mo minsize="180%" maxsize="180%" stretchy="true" form="postfix">)</mo><mi>c</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mn>2</mn><msup><mi>n</mi><mrow><mi>−</mi><mi>B</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>t</mi><mo>&lt;</mo><mi>L</mi><mo>≤</mo><mi>t</mi><mo>+</mo><mn>3</mn><mi>C</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>#</mi><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo>,</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">}</mo><mo>≤</mo><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>C</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><msup><mi>n</mi><mn>2</mn></msup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{gathered}
+\mathbb P\left(\Big(\bigcup_{r,L}H_{r,L}\Big)^c\right)
+\leq2n^{-B-1},\\
+t&lt;L\leq t+3C\log n,
+\qquad \#\{(r,L)\}\leq(3C+2)n^2.
+\end{gathered}
+\tag{11}
+</annotation></semantics></math><span class="equation-number">(11)</span></span></span> These are exactly the events of that
+lemma, not a further conditioning on future variables.</p>
+<p>Let
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>r</mi></msub><mo>=</mo><mi>y</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> in </mtext><mspace width="0.333em"></mspace></mrow><msub><mi>G</mi><mi>n</mi></msub><mo>,</mo><msub><mi>H</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>q</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo>=</mo><munder><mo>∑</mo><mi>y</mi></munder><msub><mi>f</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f_{r,L}(y)=\mathbb P(X_r=y\text{ in }G_n,H_{r,L}),
+\qquad q_{r,L}=\sum_y f_{r,L}(y).
+\tag{12}
+</annotation></semantics></math><span class="equation-number">(12)</span></span></span> The <a
+href="NT-COLLATZ-12.html#a-quantitative-bound-for-the-cleared-numerator">integer-height
+and word-recovery proofs</a> show that on each of these fixed-total
+events the offset residues are distinct. Indeed the positive integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>L</mi></msup><msub><mi>X</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">2^L X_r</annotation></semantics></math>
+is less than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>n</mi></msup><annotation encoding="application/x-tex">3^n</annotation></semantics></math>,
+so a common residue would give equal integers, equal rational offsets,
+and then equal words by the <a
+href="NT-COLLATZ-12.html#recovering-a-word-from-its-rational-offset">explicit
+dyadic inverse</a>. Each
+length-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+word of total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+has mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><mi>L</mi></mrow></msup><annotation encoding="application/x-tex">2^{-L}</annotation></semantics></math>.
+Hence
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mi>y</mi></munder><msub><mi>f</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>y</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>L</mi></mrow></msup><msub><mi>q</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><munder><mo>∑</mo><mrow><mi>ξ</mi><mo>∈</mo><msub><mi>G</mi><mi>n</mi></msub></mrow></munder><mo stretchy="false" form="prefix">|</mo><msub><mover><mi>f</mi><mo accent="true">̂</mo></mover><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>=</mo><msup><mn>3</mn><mi>n</mi></msup><msup><mn>2</mn><mrow><mi>−</mi><mi>L</mi></mrow></msup><msub><mi>q</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo>≤</mo><msup><mi>n</mi><mrow><mi>D</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow></msup><msub><mi>q</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_y f_{r,L}(y)^2=2^{-L}q_{r,L},
+\qquad
+\sum_{\xi\in G_n}|\widehat f_{r,L}(\xi)|^2
+=3^n2^{-L}q_{r,L}\leq n^{D\log2}q_{r,L}.
+\tag{13}
+</annotation></semantics></math><span class="equation-number">(13)</span></span></span> The middle equality is unnormalized
+Plancherel, proved in <a
+href="NT-COLLATZ-05.html#frequencies-that-distinguish-the-missing-information">the
+finite Fourier lesson</a>. The last inequality uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>&gt;</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">L&gt;t</annotation></semantics></math>.
+We have not divided by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><annotation encoding="application/x-tex">q_{r,L}</annotation></semantics></math>;
+(13) remains valid even if the prefix event is empty.</p>
+<p>The disjointness in (11) also implies
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></munder><msqrt><msub><mi>q</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub></msqrt><mo>≤</mo><msqrt><mrow><mi>#</mi><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo>,</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">}</mo></mrow></msqrt><msqrt><mrow><munder><mo>∑</mo><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></munder><msub><mi>q</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub></mrow></msqrt><mo>≤</mo><msqrt><mrow><mn>3</mn><mi>C</mi><mo>+</mo><mn>2</mn></mrow></msqrt><mspace width="0.167em"></mspace><mi>n</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{r,L}\sqrt{q_{r,L}}
+\leq\sqrt{\#\{(r,L)\}}\sqrt{\sum_{r,L}q_{r,L}}
+\leq\sqrt{3C+2}\,n.
+\tag{14}
+</annotation></semantics></math><span class="equation-number">(14)</span></span></span> This retains the probability weights
+when the contributions of all prefixes are combined.</p>
+<h2 id="fourier-cancellation-without-discarding-the-tail-total">Fourier
+cancellation without discarding the tail total</h2>
+<p>Fix one pair
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo>,</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(r,L)</annotation></semantics></math>
+in (10), and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mi>n</mi><mo>−</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">N=n-r</annotation></semantics></math>.
+Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msubsup><mi>X</mi><mi>N</mi><mo>′</mo></msubsup><mo>,</mo><msubsup><mi>S</mi><mi>N</mi><mo>′</mo></msubsup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(X&#39;_N,S&#39;_N)</annotation></semantics></math>
+for the offset and sum formed from the unused variables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">A_{r+1},\ldots,A_n</annotation></semantics></math>.
+On the prefix event,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>=</mo><msub><mi>X</mi><mi>r</mi></msub><mo>+</mo><msup><mn>3</mn><mi>r</mi></msup><msup><mn>2</mn><mrow><mi>−</mi><mi>L</mi></mrow></msup><msubsup><mi>X</mi><mi>N</mi><mo>′</mo></msubsup><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>3</mn><mi>n</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>L</mi><mo>+</mo><msubsup><mi>S</mi><mi>N</mi><mo>′</mo></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+X_n=X_r+3^r2^{-L}X&#39;_N\pmod{3^n},
+\qquad S_n=L+S&#39;_N.
+\tag{15}
+</annotation></semantics></math><span class="equation-number">(15)</span></span></span> The tail is independent of the prefix
+because the event only restricts its first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+coordinates. The affine residue map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>↦</mo><msup><mn>3</mn><mi>r</mi></msup><msup><mn>2</mn><mrow><mi>−</mi><mi>L</mi></mrow></msup><mi>z</mi></mrow><annotation encoding="application/x-tex">z\mapsto3^r2^{-L}z</annotation></semantics></math>
+embeds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>N</mi></msub><annotation encoding="application/x-tex">G_N</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>n</mi></msub><annotation encoding="application/x-tex">G_n</annotation></semantics></math>;
+its kernel is zero, its image is the multiples of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>r</mi></msup><annotation encoding="application/x-tex">3^r</annotation></semantics></math>,
+and its inverse on that image divides by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>r</mi></msup><annotation encoding="application/x-tex">3^r</annotation></semantics></math>
+and multiplies by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mi>L</mi></msup><annotation encoding="application/x-tex">2^L</annotation></semantics></math>,
+modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>N</mi></msup><annotation encoding="application/x-tex">3^N</annotation></semantics></math>.
+These assertions follow by checking integer representatives, as in <a
+href="NT-COLLATZ-12.html#exact-prefix-mass-and-the-independent-tail">the
+subgroup construction</a>.</p>
+<p>For a total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+define the spatial submeasure
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>n</mi></msub><mo>=</mo><mi>y</mi><mo>,</mo><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>s</mi><mo>,</mo><msub><mi>H</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g_s(y)=\mathbb P(X_n=y,S_n=s,H_{r,L})</annotation></semantics></math>.
+Characters are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>χ</mi><mrow><mi>n</mi><mo>,</mo><mi>ξ</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mi>ξ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>3</mn><mi>n</mi></msup></mrow><mo stretchy="false" form="postfix">)</mo><mi>/</mi><msup><mn>3</mn><mi>n</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\chi_{n,\xi}(x)=\exp(-2\pi i\xi(x\bmod3^n)/3^n)</annotation></semantics></math>,
+and hats denote their sums against masses. Averaging in the residue
+fibres removes exactly the frequencies with
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>≠</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>v</mi><mo>=</mo><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>n</mi><mo>−</mo><mi>m</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\xi\ne0,\qquad v=v_3(\xi)&lt;n-m.
+\tag{16}
+</annotation></semantics></math><span class="equation-number">(16)</span></span></span> This is the quotient-frequency
+calculation from the preceding Fourier lessons. For such a frequency,
+put
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>N</mi><mo>−</mo><mi>v</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>η</mi><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>L</mi></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mi>/</mi><msup><mn>3</mn><mi>v</mi></msup><mo stretchy="false" form="postfix">)</mo><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>3</mn><mi>k</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+k=N-v,\qquad \eta=2^{-L}(\xi/3^v)\pmod{3^k}.
+\tag{17}
+</annotation></semantics></math><span class="equation-number">(17)</span></span></span> The integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mi>/</mi><msup><mn>3</mn><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">\xi/3^v</annotation></semantics></math>
+is a unit modulo three. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><mn>9</mn><mi>n</mi><mi>/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">m\geq9n/10</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mi>m</mi><mo>−</mo><mi>r</mi><mo>≥</mo><mi>n</mi><mi>/</mi><mn>20</mn></mrow><annotation encoding="application/x-tex">k&gt;m-r\geq n/20</annotation></semantics></math>.
+In particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k\geq1</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+specifies a full-order character on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>k</mi></msub><annotation encoding="application/x-tex">G_k</annotation></semantics></math>.</p>
+<p>The tail’s character is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>χ</mi><mrow><mi>k</mi><mo>,</mo><mi>η</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><msubsup><mi>X</mi><mi>k</mi><mo>′</mo></msubsup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\chi_{k,\eta}(X&#39;_k)</annotation></semantics></math>:
+its terms after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+vanish modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>k</mi></msup><annotation encoding="application/x-tex">3^k</annotation></semantics></math>.
+Its total, however, still contains the remaining
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mi>N</mi><mo>−</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">v=N-k</annotation></semantics></math>
+variables. Define
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mrow><mi>k</mi><mo>,</mo><mi>η</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi mathvariant="double-struck">𝔼</mi><mo stretchy="false" form="prefix">[</mo><msub><mi>χ</mi><mrow><mi>k</mi><mo>,</mo><mi>η</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">)</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><msub><mi>S</mi><mi>k</mi></msub><mo>=</mo><mi>u</mi></mrow></msub><mo stretchy="false" form="postfix">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+h_{k,\eta}(u)=\mathbb E[\chi_{k,\eta}(X_k)\mathbf1_{S_k=u}].
+</annotation></semantics></math></span> Independence of those remaining
+variables and then independence of the full tail from the prefix give
+the exact identity
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mover><mi>g</mi><mo accent="true">̂</mo></mover><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mover><mi>f</mi><mo accent="true">̂</mo></mover><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><msub><mi mathvariant="normal">Γ</mi><mi>ξ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo>−</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="normal">Γ</mi><mi>ξ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mo>∑</mo><mrow><mi>u</mi><mo>∈</mo><mi mathvariant="double-struck">ℤ</mi></mrow></munder><msub><mi>h</mi><mrow><mi>k</mi><mo>,</mo><mi>η</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>p</mi><mi>v</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo>−</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\widehat g_s(\xi)&amp;=\widehat f_{r,L}(\xi)\,\Gamma_\xi(s-L),\\
+\Gamma_\xi(w)&amp;=\sum_{u\in\mathbb Z}h_{k,\eta}(u)p_v(w-u).
+\end{aligned}
+\tag{18}
+</annotation></semantics></math><span class="equation-number">(18)</span></span></span> To check every weight in (18), sum
+first over prefix words in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><annotation encoding="application/x-tex">H_{r,L}</annotation></semantics></math>,
+each with its original mass. Their total is already
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>.
+For each such word, the event
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">S_n=s</annotation></semantics></math>
+requires a tail total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>−</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">s-L</annotation></semantics></math>.
+Split that total between the first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+tail variables and the final
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>.
+The first part contributes the complex mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mrow><mi>k</mi><mo>,</mo><mi>η</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">h_{k,\eta}(u)</annotation></semantics></math>,
+and the independent second part contributes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>v</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo>−</mo><mi>L</mi><mo>−</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p_v(s-L-u)</annotation></semantics></math>.
+The prefix character factors out. No conditional tail probability occurs
+in this calculation.</p>
+<p>Theorem 2 of <a
+href="NT-COLLATZ-15.html#a-retained-total-in-the-affine-offset-model">the
+retained-total lesson</a> proves, for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\beta&gt;0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>u</mi></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>h</mi><mrow><mi>k</mi><mo>,</mo><mi>η</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><msub><mi>C</mi><mi>β</mi></msub><msup><mi>k</mi><mrow><mi>−</mi><mi>β</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\sum_u|h_{k,\eta}(u)|\leq C_\beta k^{-\beta}</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>v</mi></msub><annotation encoding="application/x-tex">p_v</annotation></semantics></math>
+is a probability mass function, the triangle inequality and nonnegative
+regrouping imply
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mi>w</mi></munder><mo stretchy="false" form="prefix">|</mo><msub><mi mathvariant="normal">Γ</mi><mi>ξ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><munder><mo>∑</mo><mi>u</mi></munder><mo stretchy="false" form="prefix">|</mo><msub><mi>h</mi><mrow><mi>k</mi><mo>,</mo><mi>η</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><munder><mo>∑</mo><mi>w</mi></munder><msub><mi>p</mi><mi>v</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo>−</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msub><mi>C</mi><mi>β</mi></msub><msup><mn>20</mn><mi>β</mi></msup><msup><mi>n</mi><mrow><mi>−</mi><mi>β</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_w|\Gamma_\xi(w)|
+\leq\sum_u|h_{k,\eta}(u)|\sum_w p_v(w-u)
+\leq C_\beta20^\beta n^{-\beta}.
+\tag{19}
+</annotation></semantics></math><span class="equation-number">(19)</span></span></span> The same bound holds for each
+individual
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi mathvariant="normal">Γ</mi><mi>ξ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|\Gamma_\xi(w)|</annotation></semantics></math>.
+This includes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v=0</annotation></semantics></math>,
+for which
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mn>0</mn></msub><annotation encoding="application/x-tex">p_0</annotation></semantics></math>
+leaves the first factor unchanged. It applies to every total, with no
+moderate-window requirement for the tail.</p>
+<h2 id="from-individual-characters-to-the-joint-norm">From individual
+characters to the joint norm</h2>
+<p>For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+the quotient Fourier inequality gives
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="postfix">∥</mo><msub><mi>g</mi><mi>s</mi></msub><mo>−</mo><msub><mi>P</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>g</mi><mi>s</mi></msub><msubsup><mo stretchy="false" form="postfix">∥</mo><mn>1</mn><mn>2</mn></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><munder><mo>∑</mo><mrow><msub><mi>v</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>n</mi><mo>−</mo><mi>m</mi></mrow></munder><mo stretchy="false" form="prefix">|</mo><msub><mover><mi>g</mi><mo accent="true">̂</mo></mover><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>ξ</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><msubsup><mi>C</mi><mi>β</mi><mn>2</mn></msubsup><msup><mn>20</mn><mrow><mn>2</mn><mi>β</mi></mrow></msup><msup><mi>n</mi><mrow><mi>−</mi><mn>2</mn><mi>β</mi><mo>+</mo><mi>D</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow></msup><msub><mi>q</mi><mrow><mi>r</mi><mo>,</mo><mi>L</mi></mrow></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\|g_s-P_{m,n}g_s\|_1^2
+&amp;\leq\sum_{v_3(\xi)&lt;n-m}|\widehat g_s(\xi)|^2\\
+&amp;\leq C_\beta^2 20^{2\beta}
+n^{-2\beta+D\log2}q_{r,L}.
+\end{aligned}
+\tag{20}
+</annotation></semantics></math><span class="equation-number">(20)</span></span></span> Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">P_{m,n}</annotation></semantics></math>
+acts only on the displayed spatial mass. The first line is
+Cauchy–Schwarz in the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>n</mi></msup><annotation encoding="application/x-tex">3^n</annotation></semantics></math>
+spatial entries followed by Plancherel on the surviving frequencies. For
+the second, insert (18), use the pointwise bound (19), and then use
+(13). The number of characters has been absorbed into the prefix
+collision identity; it has not been multiplied into a
+coefficient-by-coefficient error estimate.</p>
+<p>It remains to sum over totals. There are at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">4n</annotation></semantics></math>
+integers between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">4n</annotation></semantics></math>.
+The rest have exponentially small combined mass: summing the geometric
+series gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝔼</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>/</mi><mn>3</mn><msup><mo stretchy="false" form="postfix">)</mo><msub><mi>A</mi><mi>i</mi></msub></msup><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\mathbb E(4/3)^{A_i}=2</annotation></semantics></math>,
+and independence with Markov’s inequality yields
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℙ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>S</mi><mi>n</mi></msub><mo>&gt;</mo><mn>4</mn><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msup><mn>2</mn><mi>n</mi></msup><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>4</mn><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>4</mn><mi>n</mi></mrow></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>81</mn><mi>/</mi><mn>128</mn><msup><mo stretchy="false" form="postfix">)</mo><mi>n</mi></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathbb P(S_n&gt;4n)
+\leq2^n(3/4)^{4n}=(81/128)^n.
+\tag{21}
+</annotation></semantics></math><span class="equation-number">(21)</span></span></span> For any nonnegative submeasure
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>,
+Proposition 1 gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mi>h</mi><mo>−</mo><msub><mi>P</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mi>h</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>≤</mo><mn>2</mn><mo stretchy="false" form="postfix">∥</mo><mi>h</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\|h-P_{m,n}h\|_1\leq2\|h\|_1</annotation></semantics></math>.
+Therefore all the retained pieces with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&gt;</mo><mn>4</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">s&gt;4n</annotation></semantics></math>
+together contribute at most twice (21), since the prefix events are
+disjoint. The omitted prefix event contributes at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><msup><mi>n</mi><mrow><mi>−</mi><mi>B</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">4n^{-B-1}</annotation></semantics></math>,
+by (11).</p>
+<p>Taking square roots in (20), summing over the remaining totals, and
+applying (14) now gives
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>J</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo>≤</mo><mrow></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mn>4</mn><msup><mi>n</mi><mrow><mi>−</mi><mi>B</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mn>81</mn><mi>/</mi><mn>128</mn><msup><mo stretchy="false" form="postfix">)</mo><mi>n</mi></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>+</mi><mn>4</mn><msub><mi>C</mi><mi>β</mi></msub><msup><mn>20</mn><mi>β</mi></msup><msqrt><mrow><mn>3</mn><mi>C</mi><mo>+</mo><mn>2</mn></mrow></msqrt><mspace width="0.167em"></mspace><msup><mi>n</mi><mrow><mn>2</mn><mo>−</mo><mi>β</mi><mo>+</mo><mi>D</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>/</mi><mn>2</mn></mrow></msup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+J_{m,n}\leq{}&amp;4n^{-B-1}+2(81/128)^n\\
+&amp;+4C_\beta20^\beta\sqrt{3C+2}\,
+n^{2-\beta+D\log2/2}.
+\end{aligned}
+\tag{22}
+</annotation></semantics></math><span class="equation-number">(22)</span></span></span> Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>D</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mi>/</mi><mn>2</mn><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\beta=a+D\log2/2+3</annotation></semantics></math>,
+after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>,</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">C,D</annotation></semantics></math>
+have been fixed. Then the last power is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>a</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-a-1</annotation></semantics></math>,
+and the first is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>a</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">-a-3</annotation></semantics></math>.
+Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>81</mn><mi>/</mi><mn>128</mn><msup><mo stretchy="false" form="postfix">)</mo><mi>n</mi></msup><mo>=</mo><msub><mi>O</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mrow><mi>−</mi><mi>a</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(81/128)^n=O_a(n^{-a})</annotation></semantics></math>:
+the logarithm of their ratio is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo>−</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>128</mn><mi>/</mi><mn>81</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a\log n-n\log(128/81)</annotation></semantics></math>,
+which tends to minus infinity. This proves
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo>≤</mo><msubsup><mi>K</mi><mi>a</mi><mo>′</mo></msubsup><msup><mi>n</mi><mrow><mi>−</mi><mi>a</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mn>9</mn><mi>n</mi><mi>/</mi><mn>10</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mi>n</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+J_{m,n}\leq K&#39;_a n^{-a},\qquad 9n/10\leq m\leq n,
+\tag{23}
+</annotation></semantics></math><span class="equation-number">(23)</span></span></span> for large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
+The case
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m=n</annotation></semantics></math>
+is identically zero. Any finitely many remaining
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+are included by enlarging
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>K</mi><mi>a</mi><mo>′</mo></msubsup><annotation encoding="application/x-tex">K&#39;_a</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo>≤</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">J_{m,n}\leq2</annotation></semantics></math>.
+The order of choices is the target power, the concentration and height
+constants, the Fourier-decay power, and finally the threshold in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.</p>
+<h2 id="projection-adds-a-convolution-in-the-total">Projection adds a
+convolution in the total</h2>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j\geq0</annotation></semantics></math>,
+define
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">𝒞</mi><mi>j</mi></msub><mi>h</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mi>u</mi></munder><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>p</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo>−</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(\mathcal C_j h)(y,s)=\sum_u h(y,u)p_j(s-u).
+\tag{24}
+</annotation></semantics></math><span class="equation-number">(24)</span></span></span> This is an
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\ell^1</annotation></semantics></math>
+contraction: sum the absolute values, use the triangle inequality, and
+then use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>s</mi></msub><msub><mi>p</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo>−</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\sum_s p_j(s-u)=1</annotation></semantics></math>.
+It commutes with every residue reduction and lift, since the operations
+act on different coordinates and their sums converge absolutely.</p>
+<p><strong>Proposition 3 (Exact projected law).</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>ν</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1\leq\nu\leq n</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>ν</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>μ</mi><mi>n</mi></msub><mo>=</mo><msub><mi mathvariant="script">𝒞</mi><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msub><msub><mi>μ</mi><mi>ν</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R_{\nu,n}\mu_n=\mathcal C_{n-\nu}\mu_\nu.
+\tag{25}
+</annotation></semantics></math><span class="equation-number">(25)</span></span></span></p>
+<p><strong>Proof.</strong> Terms of (1) after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>
+vanish modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>ν</mi></msup><annotation encoding="application/x-tex">3^\nu</annotation></semantics></math>,
+so the spatial coordinate reduces exactly to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">X_\nu</annotation></semantics></math>.
+The sum is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>ν</mi></msub><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>A</mi><mrow><mi>ν</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">S_\nu+(A_{\nu+1}+\cdots+A_n)</annotation></semantics></math>.
+The last parenthesis is independent of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>ν</mi></msub><mo>,</mo><msub><mi>S</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(X_\nu,S_\nu)</annotation></semantics></math>
+and has law
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msub><annotation encoding="application/x-tex">p_{n-\nu}</annotation></semantics></math>.
+The map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo><mo>↦</mo><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>u</mi><mo>+</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(y,u,w)\mapsto(y,u+w)</annotation></semantics></math>
+consequently sends the product law
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>ν</mi></msub><mo>⊗</mo><msub><mi>p</mi><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mu_\nu\otimes p_{n-\nu}</annotation></semantics></math>
+to the left side of (25); summing on its fibres gives (24). At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\nu=n</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mn>0</mn></msub><annotation encoding="application/x-tex">p_0</annotation></semantics></math>
+gives the identity. ∎</p>
+<p>This identity explains why ordinary projective compatibility changes
+when a total is retained. The projected joint law still has the full
+total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>n</mi></msub><annotation encoding="application/x-tex">S_n</annotation></semantics></math>,
+not the shorter total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">S_\nu</annotation></semantics></math>.
+The missing coordinates must be added back by convolution.</p>
+<p>For comparison, fixing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">S_n=s</annotation></semantics></math>
+first gives the mixture
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi mathvariant="script">ℒ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>n</mi></msub><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>3</mn><mi>ν</mi></msup></mrow><mo>∣</mo><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><munder><mo>∑</mo><mi>u</mi></munder><mfrac><mrow><msub><mi>p</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>p</mi><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo>−</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msub><mi>p</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mi mathvariant="script">ℒ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>ν</mi></msub><mo>∣</mo><msub><mi>S</mi><mi>ν</mi></msub><mo>=</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\mathcal L(X_n\bmod3^\nu\mid S_n=s)
+={}&amp;\sum_u \frac{p_\nu(u)p_{n-\nu}(s-u)}{p_n(s)}
+\mathcal L(X_\nu\mid S_\nu=u).
+\end{aligned}
+\tag{26}
+</annotation></semantics></math><span class="equation-number">(26)</span></span></span> Indeed, divide (25) by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p_n(s)</annotation></semantics></math>,
+and factor each joint mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mu_\nu(y,u)</annotation></semantics></math>
+into its total mass and conditional spatial law. Terms with zero weight
+are omitted. Allikvere’s scale comparison uses this mixture. Keeping
+(25) until the end lets the contraction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒞</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\mathcal C_j</annotation></semantics></math>
+handle all its totals at once.</p>
+<h2 id="summing-the-comparisons-across-all-scales">Summing the
+comparisons across all scales</h2>
+<p><strong>Completion of the proof of Theorem 2.</strong> Uniform lifts
+compose:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mrow><mi>b</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>U</mi><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow></msub><mo>=</mo><msub><mi>U</mi><mrow><mi>a</mi><mo>,</mo><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">U_{b,n}U_{a,b}=U_{a,n}</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≤</mo><mi>b</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">a\leq b\leq n</annotation></semantics></math>;
+their factors multiply to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mrow><mi>a</mi><mo>−</mo><mi>n</mi></mrow></msup><annotation encoding="application/x-tex">3^{a-n}</annotation></semantics></math>,
+and their reductions compose. Assume first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>18</mn><mo>≤</mo><mi>m</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">18\leq m&lt;n</annotation></semantics></math>.
+Choose the same increasing scale chain as in the <a
+href="NT-COLLATZ-12.html#passing-from-nearby-scales-to-arbitrary-scales">unconditional
+telescoping proof</a>:
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>0</mn></msub><mo>=</mo><mi>m</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>n</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><mi>n</mi><mo>,</mo><mo stretchy="false" form="prefix">⌊</mo><mn>10</mn><msub><mi>n</mi><mi>i</mi></msub><mi>/</mi><mn>9</mn><mo stretchy="false" form="postfix">⌋</mo><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>n</mi><mi>J</mi></msub><mo>=</mo><mi>n</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+n_0=m,\qquad n_{i+1}=\min\{n,\lfloor10n_i/9\rfloor\},
+\qquad n_J=n.
+\tag{27}
+</annotation></semantics></math><span class="equation-number">(27)</span></span></span> It terminates, each lower exponent is
+at least nine tenths of the next one, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mi>i</mi></msub><mo>≥</mo><mo stretchy="false" form="prefix">(</mo><mn>19</mn><mi>/</mi><mn>18</mn><msup><mo stretchy="false" form="postfix">)</mo><mi>i</mi></msup><mi>m</mi></mrow><annotation encoding="application/x-tex">n_i\geq(19/18)^i m</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>&lt;</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">i&lt;J</annotation></semantics></math>.
+The last inequality follows before the final truncated step from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⌊</mo><mn>10</mn><mi>h</mi><mi>/</mi><mn>9</mn><mo stretchy="false" form="postfix">⌋</mo><mo>≥</mo><mn>10</mn><mi>h</mi><mi>/</mi><mn>9</mn><mo>−</mo><mn>1</mn><mo>≥</mo><mn>19</mn><mi>h</mi><mi>/</mi><mn>18</mn></mrow><annotation encoding="application/x-tex">\lfloor10h/9\rfloor\geq10h/9-1\geq19h/18</annotation></semantics></math>,
+valid for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>≥</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">h\geq18</annotation></semantics></math>.</p>
+<p>Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>b</mi></msub><mo>=</mo><msub><mi>R</mi><mrow><mi>b</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>μ</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\lambda_b=R_{b,n}\mu_n</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow></msub><msub><mi>λ</mi><mi>b</mi></msub><mo>=</mo><msub><mi>λ</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">R_{a,b}\lambda_b=\lambda_a</annotation></semantics></math>,
+lift composition gives the exact telescoping identity
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>n</mi></msub><mo>−</mo><msub><mi>P</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>μ</mi><mi>n</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>J</mi><mo>−</mo><mn>1</mn></mrow></munderover><msub><mi>U</mi><mrow><msub><mi>n</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>n</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>λ</mi><msub><mi>n</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></msub><mo>−</mo><msub><mi>U</mi><mrow><msub><mi>n</mi><mi>i</mi></msub><mo>,</mo><msub><mi>n</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></msub><msub><mi>λ</mi><msub><mi>n</mi><mi>i</mi></msub></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mu_n-P_{m,n}\mu_n
+=\sum_{i=0}^{J-1}U_{n_{i+1},n}
+\left(\lambda_{n_{i+1}}-U_{n_i,n_{i+1}}\lambda_{n_i}\right).
+\tag{28}
+</annotation></semantics></math><span class="equation-number">(28)</span></span></span> Expand the sum: its successive lifted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+terms cancel, leaving
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>n</mi></msub><mo>−</mo><msub><mi>U</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>λ</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">\lambda_n-U_{m,n}\lambda_m</annotation></semantics></math>.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><msub><mi>n</mi><mi>i</mi></msub><mo>,</mo><mi>b</mi><mo>=</mo><msub><mi>n</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a=n_i,b=n_{i+1}</annotation></semantics></math>,
+the parenthesized difference is
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>I</mi><mo>−</mo><msub><mi>P</mi><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><msub><mi>R</mi><mrow><mi>b</mi><mo>,</mo><mi>n</mi></mrow></msub><msub><mi>μ</mi><mi>n</mi></msub><mo>=</mo><msub><mi mathvariant="script">𝒞</mi><mrow><mi>n</mi><mo>−</mo><mi>b</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>I</mi><mo>−</mo><msub><mi>P</mi><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><msub><mi>μ</mi><mi>b</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
+(I-P_{a,b})R_{b,n}\mu_n
+=\mathcal C_{n-b}(I-P_{a,b})\mu_b,
+</annotation></semantics></math></span> by (25) and commutation with (24). Its
+norm is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow></msub><annotation encoding="application/x-tex">J_{a,b}</annotation></semantics></math>.
+Apply the lift isometry, (23), and the growth of (27). For the target
+power
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_0&gt;0</annotation></semantics></math>,
+this gives
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>J</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><msubsup><mi>K</mi><msub><mi>a</mi><mn>0</mn></msub><mo>′</mo></msubsup><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>J</mi><mo>−</mo><mn>1</mn></mrow></munderover><msubsup><mi>n</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>−</mi><msub><mi>a</mi><mn>0</mn></msub></mrow></msubsup><mo>≤</mo><msubsup><mi>K</mi><msub><mi>a</mi><mn>0</mn></msub><mo>′</mo></msubsup><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>J</mi><mo>−</mo><mn>1</mn></mrow></munderover><msubsup><mi>n</mi><mi>i</mi><mrow><mi>−</mi><msub><mi>a</mi><mn>0</mn></msub></mrow></msubsup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mfrac><msubsup><mi>K</mi><msub><mi>a</mi><mn>0</mn></msub><mo>′</mo></msubsup><mrow><mn>1</mn><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>18</mn><mi>/</mi><mn>19</mn><msup><mo stretchy="false" form="postfix">)</mo><msub><mi>a</mi><mn>0</mn></msub></msup></mrow></mfrac><msup><mi>m</mi><mrow><mi>−</mi><msub><mi>a</mi><mn>0</mn></msub></mrow></msup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+J_{m,n}
+&amp;\leq K&#39;_{a_0}\sum_{i=0}^{J-1} n_{i+1}^{-a_0}
+\leq K&#39;_{a_0}\sum_{i=0}^{J-1} n_i^{-a_0}\\
+&amp;\leq\frac{K&#39;_{a_0}}{1-(18/19)^{a_0}}m^{-a_0}.
+\end{aligned}
+\tag{29}
+</annotation></semantics></math><span class="equation-number">(29)</span></span></span> Renaming
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>0</mn></msub><annotation encoding="application/x-tex">a_0</annotation></semantics></math>
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+proves (6) for these scales. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m=n</annotation></semantics></math>,
+the discrepancy is zero. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>&lt;</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">1\leq m&lt;18</annotation></semantics></math>,
+the bound two suffices after taking
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>a</mi></msub><mo>≥</mo><mn>2</mn><mo>⋅</mo><msup><mn>18</mn><mi>a</mi></msup></mrow><annotation encoding="application/x-tex">K_a\geq2\cdot18^a</annotation></semantics></math>.
+This completes all cases. ∎</p>
+<p>The error is independent of the number of intermediate scales. Their
+geometrically growing sizes make their errors summable. Convolution
+carries the total through each comparison without another division by a
+small event probability.</p>
+<h2 id="what-follows-for-a-specified-total">What follows for a specified
+total</h2>
+<p><strong>Corollary 4.</strong> For every possible total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">s\geq n</annotation></semantics></math>
+and every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b&gt;0</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">∥</mo><mi mathvariant="script">ℒ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>n</mi></msub><mo>∣</mo><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msub><mi>U</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mi mathvariant="script">ℒ</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>n</mi></msub><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>3</mn><mi>m</mi></msup></mrow><mo>∣</mo><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><msub><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">∥</mo><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mspace width="2.0em"></mspace><mo>≤</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><mn>2</mn><mo>,</mo><msub><mi>K</mi><mi>b</mi></msub><msup><mi>m</mi><mrow><mi>−</mi><mi>b</mi></mrow></msup><mi>/</mi><msub><mi>p</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+&amp;\big\|\mathcal L(X_n\mid S_n=s)
+-U_{m,n}\mathcal L(X_n\bmod3^m\mid S_n=s)\big\|_1\\
+&amp;\hspace{2em}\leq\min\{2,K_bm^{-b}/p_n(s)\}.
+\end{aligned}
+\tag{30}
+</annotation></semantics></math><span class="equation-number">(30)</span></span></span> Fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>C</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a,C&gt;0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>ε</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;\varepsilon\leq1</annotation></semantics></math>.
+Uniformly for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mi>ε</mi></msup><mo>≤</mo><mi>m</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n^\varepsilon\leq m\leq n</annotation></semantics></math>
+and integers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>s</mi><mo>−</mo><mn>2</mn><mi>n</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>C</mi><msqrt><mrow><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">|s-2n|\leq C\sqrt{n\log n}</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">s\geq n</annotation></semantics></math>,
+the left side of (30) is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mrow><mi>a</mi><mo>,</mo><mi>C</mi><mo>,</mo><mi>ε</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><msup><mi>m</mi><mrow><mi>−</mi><mi>a</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+O_{a,C,\varepsilon}(m^{-a}).
+\tag{31}
+</annotation></semantics></math><span class="equation-number">(31)</span></span></span></p>
+<p><strong>Proof.</strong> Every summand in (7) is nonnegative; bound
+the chosen one by (6) and divide by its positive probability to obtain
+(30). Lemma 3 in <a
+href="NT-COLLATZ-15.html#the-probability-cost-of-fixing-the-total">the
+retained-total lesson</a> gives, for all sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+in this window,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mo stretchy="false" form="prefix">(</mo><mn>6</mn><mi>e</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>n</mi><mrow><mi>−</mi><mn>1</mn><mo>−</mo><msup><mi>C</mi><mn>2</mn></msup></mrow></msup></mrow><annotation encoding="application/x-tex">p_n(s)\geq(6e)^{-1}n^{-1-C^2}</annotation></semantics></math>.
+Thus
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msub><mi>K</mi><mi>b</mi></msub><msup><mi>m</mi><mrow><mi>−</mi><mi>b</mi></mrow></msup></mrow><mrow><msub><mi>p</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>≤</mo><mn>6</mn><mi>e</mi><msub><mi>K</mi><mi>b</mi></msub><msup><mi>m</mi><mrow><mi>−</mi><mi>b</mi></mrow></msup><msup><mi>n</mi><mrow><mn>1</mn><mo>+</mo><msup><mi>C</mi><mn>2</mn></msup></mrow></msup><mo>≤</mo><mn>6</mn><mi>e</mi><msub><mi>K</mi><mi>b</mi></msub><msup><mi>m</mi><mrow><mi>−</mi><mi>b</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><msup><mi>C</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>ε</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{K_bm^{-b}}{p_n(s)}
+\leq6eK_bm^{-b}n^{1+C^2}
+\leq6eK_bm^{-b+(1+C^2)/\varepsilon}.
+</annotation></semantics></math></span> Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mi>a</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><msup><mi>C</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>ε</mi></mrow><annotation encoding="application/x-tex">b=a+(1+C^2)/\varepsilon</annotation></semantics></math>.
+Finitely many smaller
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+are absorbed in the constant using the bound two. ∎</p>
+<p>The scale
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><msup><mi>n</mi><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow></msup></mrow><annotation encoding="application/x-tex">m\geq n^{1/4}</annotation></semantics></math>
+in Allikvere’s Theorem 4.1 and Proposition 4.2 is included by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">\varepsilon=1/4</annotation></semantics></math>.
+Equation (31) supplies the full range of fixed positive powers. The
+joint theorem (6) holds even when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+is smaller, but division by the total’s probability then gives (30), not
+an automatically useful arbitrary-power conditional estimate.</p>
+<p>The exceptional total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">s=n</annotation></semantics></math>
+illustrates the distinction. Its only word is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,\ldots,1)</annotation></semantics></math>,
+so its conditional offset law is a point mass. Its lift is uniform over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow></msup><annotation encoding="application/x-tex">3^{n-m}</annotation></semantics></math>
+refinements, and their distance is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mn>3</mn><mrow><mi>m</mi><mo>−</mo><mi>n</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+2(1-3^{m-n}).
+\tag{32}
+</annotation></semantics></math><span class="equation-number">(32)</span></span></span> Indeed the difference at the occupied
+point is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><msup><mn>3</mn><mrow><mi>m</mi><mo>−</mo><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">1-3^{m-n}</annotation></semantics></math>,
+and the remaining refinements carry the same total absolute difference.
+This large conditional error has joint weight
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>n</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">p_n(n)=2^{-n}</annotation></semantics></math>.
+It is entirely consistent with (6).</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<h3 id="a-quotient-map-on-a-joint-submeasure">1 A quotient map on a
+joint submeasure</h3>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math>,
+retain only the event
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>2</mn></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">S_2=3</annotation></semantics></math>.
+Compute its joint spatial masses, their uniform lift from modulo three,
+the joint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\ell^1</annotation></semantics></math>
+discrepancy, and the discrepancy after conditioning. Explain why the
+answers differ.</p>
+<p><strong>Solution.</strong> The words are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,2)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,1)</annotation></semantics></math>,
+each of mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">1/8</annotation></semantics></math>.
+Equation (1) gives offsets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">7/8</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">5/8</annotation></semantics></math>,
+hence residues two and four modulo nine. Each has a different residue
+modulo three, so its mass is spread equally over three points. The
+lifted mass is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>24</mn></mrow><annotation encoding="application/x-tex">1/24</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>7</mn><mo>,</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">1,2,4,5,7,8</annotation></semantics></math>,
+and zero at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">0,3,6</annotation></semantics></math>.
+At two and four the absolute differences are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>12</mn></mrow><annotation encoding="application/x-tex">1/12</annotation></semantics></math>;
+the other four nonzero lifted entries each contribute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>24</mn></mrow><annotation encoding="application/x-tex">1/24</annotation></semantics></math>.
+Their sum is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">1/3</annotation></semantics></math>.
+The total event probability is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math>,
+so conditioning multiplies every mass by four and gives discrepancy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math>.
+Equation (7) multiplies that conditional error back by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math>.</p>
+<h3 id="recovering-the-correct-projected-total">2 Recovering the correct
+projected total</h3>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn><mo>,</mo><mi>ν</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>s</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n=2,\nu=1,s=3</annotation></semantics></math>.
+Calculate the law of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>2</mn></msub><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>3</mn></mrow></mrow><annotation encoding="application/x-tex">X_2\bmod3</annotation></semantics></math>
+given
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>2</mn></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">S_2=3</annotation></semantics></math>,
+and compare it with the unconditioned law of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>1</mn></msub><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>3</mn></mrow></mrow><annotation encoding="application/x-tex">X_1\bmod3</annotation></semantics></math>.
+Derive the weights in (26) directly.</p>
+<p><strong>Solution.</strong> In the two words from Exercise 1,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>1</mn></msub><annotation encoding="application/x-tex">A_1</annotation></semantics></math>
+is one or two with probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>2</mn></msub><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>3</mn></mrow><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>A</mi><mn>1</mn></msub></mrow></msup></mrow><annotation encoding="application/x-tex">X_2\bmod3=2^{-A_1}</annotation></semantics></math>
+is two or one with probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>.
+Unconditionally, the odd values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>1</mn></msub><annotation encoding="application/x-tex">A_1</annotation></semantics></math>
+have total mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mrow><mi>j</mi><mo>≥</mo><mn>0</mn></mrow></msub><msup><mn>2</mn><mrow><mi>−</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>j</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mn>2</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\sum_{j\geq0}2^{-(2j+1)}=2/3</annotation></semantics></math>,
+while its even values have mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">1/3</annotation></semantics></math>.
+The law is therefore
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>/</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo><msub><mi>δ</mi><mn>2</mn></msub><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo><msub><mi>δ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">(2/3)\delta_2+(1/3)\delta_1</annotation></semantics></math>,
+not the conditional law. In (26), the possible prefix totals are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">u=1,2</annotation></semantics></math>.
+Each has weight
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>p</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo>−</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mn>8</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mn>4</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">p_1(u)p_1(3-u)/p_2(3)=(1/8)/(1/4)=1/2</annotation></semantics></math>.
+Convolution in the total gives the correct law before this division.</p>
+<h3 id="the-character-sees-fewer-variables-than-the-total">3 The
+character sees fewer variables than the total</h3>
+<p>Suppose a prefix has length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">r=2</annotation></semantics></math>
+and total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>,
+the entire word has length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">n=5</annotation></semantics></math>,
+and the Fourier index is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mn>3</mn><msub><mi>η</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\xi=3\eta_0</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>∤</mo><msub><mi>η</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">3\nmid\eta_0</annotation></semantics></math>.
+Identify the number of tail variables seen by its character and write
+its exact total-indexed Fourier factor. What would be lost by dropping
+the unused variable from the total?</p>
+<p><strong>Solution.</strong> The tail has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">N=3</annotation></semantics></math>
+variables. Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">v=1</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k=2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>L</mi></mrow></msup><msub><mi>η</mi><mn>0</mn></msub><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>9</mn></mrow></mrow><annotation encoding="application/x-tex">\eta=2^{-L}\eta_0\bmod9</annotation></semantics></math>.
+The character is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>χ</mi><mrow><mn>2</mn><mo>,</mo><mi>η</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><msubsup><mi>X</mi><mn>2</mn><mo>′</mo></msubsup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\chi_{2,\eta}(X&#39;_2)</annotation></semantics></math>.
+The total still contains all three tail variables, so its factor at
+total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+is
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Γ</mi><mi>ξ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mi>u</mi></munder><msub><mi>h</mi><mrow><mn>2</mn><mo>,</mo><mi>η</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>p</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>w</mi><mo>−</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Gamma_\xi(w)=\sum_u h_{2,\eta}(u)p_1(w-u).
+</annotation></semantics></math></span> Multiplying by the original prefix
+Fourier mass and taking
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mi>s</mi><mo>−</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">w=s-L</annotation></semantics></math>
+gives (18). Dropping the last variable would replace
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>S</mi><mn>3</mn><mo>′</mo></msubsup><annotation encoding="application/x-tex">S&#39;_3</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>S</mi><mn>2</mn><mo>′</mo></msubsup><annotation encoding="application/x-tex">S&#39;_2</annotation></semantics></math>,
+changing the joint law even though the spatial character is unchanged.
+The sum of absolute values of the convolution is at most that of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mrow><mn>2</mn><mo>,</mo><mi>η</mi></mrow></msub><annotation encoding="application/x-tex">h_{2,\eta}</annotation></semantics></math>,
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mn>1</mn></msub><annotation encoding="application/x-tex">p_1</annotation></semantics></math>
+has mass one.</p>
+<h3 id="paying-for-a-rare-observation-only-once">4 Paying for a rare
+observation only once</h3>
+<p>Suppose a joint discrepancy satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo>≤</mo><msub><mi>K</mi><mi>b</mi></msub><msup><mi>m</mi><mrow><mi>−</mi><mi>b</mi></mrow></msup></mrow><annotation encoding="application/x-tex">J_{m,n}\leq K_bm^{-b}</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b&gt;0</annotation></semantics></math>,
+while the chosen observation has probability at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><msup><mi>n</mi><mrow><mi>−</mi><mi>d</mi></mrow></msup></mrow><annotation encoding="application/x-tex">c n^{-d}</annotation></semantics></math>.
+Show that scales
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><msup><mi>n</mi><mi>ε</mi></msup></mrow><annotation encoding="application/x-tex">m\geq n^\varepsilon</annotation></semantics></math>
+give every prescribed bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>m</mi><mrow><mi>−</mi><mi>a</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(m^{-a})</annotation></semantics></math>,
+and determine a sufficient
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+Then verify (32) for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>3</mn><mo>,</mo><mi>m</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>s</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n=3,m=1,s=3</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> Divide the single observation’s
+contribution by its probability. Its conditional error is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>K</mi><mi>b</mi></msub><msup><mi>m</mi><mrow><mi>−</mi><mi>b</mi></mrow></msup><msup><mi>n</mi><mi>d</mi></msup><mo>≤</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>K</mi><mi>b</mi></msub><msup><mi>m</mi><mrow><mi>−</mi><mi>b</mi><mo>+</mo><mi>d</mi><mi>/</mi><mi>ε</mi></mrow></msup></mrow><annotation encoding="application/x-tex">c^{-1}K_bm^{-b}n^d\leq c^{-1}K_bm^{-b+d/\varepsilon}</annotation></semantics></math>.
+The choice
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>d</mi><mi>/</mi><mi>ε</mi></mrow><annotation encoding="application/x-tex">b=a+d/\varepsilon</annotation></semantics></math>
+suffices. For the finite example, the sole word is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1,1)</annotation></semantics></math>,
+with probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">1/8</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>3</mn></msub><mo>=</mo><mn>19</mn><mi>/</mi><mn>8</mn><mo>≡</mo><mn>26</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>27</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">X_3=19/8\equiv26\pmod{27}</annotation></semantics></math>.
+Its class modulo three has nine refinements. The conditional discrepancy
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mn>1</mn><mi>/</mi><mn>9</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>16</mn><mi>/</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">2(1-1/9)=16/9</annotation></semantics></math>,
+and its contribution to the joint discrepancy is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mn>8</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mn>16</mn><mi>/</mi><mn>9</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>2</mn><mi>/</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">(1/8)(16/9)=2/9</annotation></semantics></math>.
+An exceptional conditional law can therefore coexist with a small
+weighted joint error.</p>
+<h2 id="why-the-next-comparison-is-different">Why the next comparison is
+different</h2>
+<p>The joint theorem retains the exact dependence between the coarse
+residue and the total. Its proof combines three mechanisms: a prefix
+whose collision mass is small for arithmetic reasons, an independent
+tail with a retained-total Fourier bound, and convolution maps which
+preserve the information needed during scale comparisons. The
+specified-total estimate then follows by a single probability
+division.</p>
+<p>Uniform lifting has not yet replaced the conditioned coarse law by an
+unconditioned one. That requires a separate comparison of the first few
+geometric variables with their law after fixing the whole sum. The exact
+packet calculations describe that finite probability space and its clock
+covariances; a local probability-ratio estimate controls the change of
+law. Once that comparison is proved, the offset distribution can be
+inserted into exact integer-fibre counts. These are distinct
+mathematical steps, and each preserves information needed by the
+next.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <em>Almost all orbits of the Collatz map attain almost
+bounded values</em>, Forum of Mathematics, Pi 10 (2022), e12; <a
+href="https://arxiv.org/abs/1909.03562v7">arXiv:1909.03562v7</a>,
+Sections 6 and 7. Arithmetic separation, prefix–tail mixing and the
+positive Fourier majorant. The full required proofs are provided in the
+preceding lessons.</li>
+<li>Jaan Allikvere, <em>Almost all Collatz orbits attain almost bounded
+values in natural density</em>, version 2, <a
+href="https://doi.org/10.5281/zenodo.21499244">Zenodo 21499244</a>,
+Theorem 4.1 and Proposition 4.2. Fine-scale mixing after fixing the
+total, and its comparison across scales.</li>
+<li><a href="NT-COLLATZ-12.html">Arithmetic separation and fine-scale
+mixing</a>, Lemmas 2–5 and the subgroup construction; <a
+href="NT-COLLATZ-15.html">Retaining information through Fourier
+cancellation</a>, Theorem 2, Lemma 3 and Proposition 5. Exact internal
+proofs of the arithmetic and retained-coordinate inputs used here.</li>
+</ul>
+<nav aria-label="Lesson sequence"><p><a href="NT-COLLATZ-15.html">Previous: Retaining information through Fourier cancellation</a><br><a href="NT-COLLATZ-17.html">Next: Fixed totals and the law of a short prefix</a></p></nav></main><footer>Original mathematical exposition and illustrations: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. References retain their own authorship and terms.</footer></body></html>

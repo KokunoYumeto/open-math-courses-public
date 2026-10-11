@@ -1,6 +1,6 @@
 # Bounded strip comparison from scalar proofs
 
-*Fresh local reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 This proof supplies only the analytic comparison needed for operator-valued weight transport. All dual spaces below have a specified predual. A group of isometries means a group of complex-linear surjective isometries whose individual maps are weak-star continuous and whose real orbits are weak-star continuous. No algebra or positivity property of that group is assumed.
 

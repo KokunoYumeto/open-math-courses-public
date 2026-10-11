@@ -1,6 +1,6 @@
 # A normal regular construction on arbitrary Hilbert spaces
 
-*Original proof exposition: GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 This chapter proves the normal regular construction, its faithful-representation independence and cocycle transport for every locally compact Hausdorff group. It does not prove the crossed-product commutant theorem, closed-subgroup imprimitivity, disintegration, or the induced-system converse.
 
@@ -243,3 +243,114 @@ of complex dimension two. The coset algebra acts by every diagonal matrix. In pa
 This calculation does not refute imprimitivity. It shows why its morphisms must preserve the coset multiplication action as well as the group action. Rieffel, [*Induced representations of C\*-algebras*](https://math.berkeley.edu/~rieffel/papers/rieffel-C-induced.pdf) (1974), Theorem 7.18, and Green, [*The local structure of twisted covariance algebras*](https://projecteuclid.org/euclid.acta/1485889984), Acta Math. 140 (1978), Theorem 6, provide context; neither is being substituted for the missing local inverse-module proof.
 
 The new diagram and this explanation are CC0-1.0 to the extent of rights held. Run render_c2_foundation.py with Python and matplotlib. It writes PNG, deterministic SVG and the exact diagram data beside this caption. The renderer uses fixed coordinates, a stable SVG hash salt, no SVG Date metadata, UTF-8 and LF newlines.
+
+<a id="oa-flow.nr.6"></a>
+
+## NR6. Successive perturbations give successive regular maps
+
+Let \(G\) be a locally compact Hausdorff group, let \(M\ne0\) be a von Neumann algebra, and let \(\alpha\) be a point-ultraweak continuous action by normal automorphisms. Fix one faithful normal unital representation \(\rho:M\to B(K)\), with arbitrary \(K\). Use this same representation for all the regular algebras in this subsection. There is no separability, countability, sigma-finiteness or unimodularity assumption.
+
+Suppose \(u:G\to\mathcal U(M)\) is an \(\alpha\)-cocycle and \(v:G\to\mathcal U(M)\) is a cocycle for \(\beta_s=\operatorname{Ad}(u_s)\alpha_s\). Both maps are continuous in the intrinsic \(\sigma\)-strong-star topology. By [UC2](OA-FLOW-UC.md#oa-flow.uc.2),
+\[
+ w_s=v_su_s,\qquad
+ w_{st}=w_s\alpha_s(w_t),\qquad
+ \gamma_s=\operatorname{Ad}(v_s)\beta_s
+          =\operatorname{Ad}(w_s)\alpha_s.
+ \tag{NR17}
+\]
+Indeed, in the indicated order,
+\[
+ v_{st}u_{st}
+ =v_s\beta_s(v_t)u_s\alpha_s(u_t)
+ =v_su_s\alpha_s(v_t)u_s^*u_s\alpha_s(u_t)
+ =w_s\alpha_s(w_t).
+\]
+[UC0](OA-FLOW-UC.md#oa-flow.uc.0) proves continuity of the bounded products. The hypothesis on the action of the second cocycle is essential; two cocycles for \(\alpha\) need not have an \(\alpha\)-cocycle as their pointwise product.
+
+Write \(R_\alpha\), \(R_\beta\) and \(R_\gamma\) for the regular crossed products on the same Hilbert space \(L^2(G,K)\). [NR5](#oa-flow.nr.5) constructs the full multiplication unitaries
+\[
+ [W_{u,\alpha}\xi](t)=\rho(u_{t^{-1}})\xi(t),\qquad
+ [W_{v,\beta}\xi](t)=\rho(v_{t^{-1}})\xi(t).
+ \tag{NR18}
+\]
+For clarity, their construction covers the whole Hilbert space. On a compact elementary section, continuity of each fixed-vector orbit gives a compact metric image and hence a separable range. The unitary norm bound extends multiplication by density; multiplication by the pointwise adjoint is its inverse. Thus it does not require a countable-dimensional coefficient space or a common exceptional set for all vectors.
+
+Multiplication on compact elementary sections gives
+\[
+ W_{v,\beta}W_{u,\alpha}\xi(t)
+ =\rho(v_{t^{-1}}u_{t^{-1}})\xi(t)
+ =W_{w,\alpha}\xi(t).
+ \tag{NR19}
+\]
+All three operators are bounded, so this equality holds on every vector in \(L^2(G,K)\). Their spatial normal isomorphisms therefore compose in the same order:
+\[
+ \operatorname{Ad}(W_{v,\beta})\circ
+ \operatorname{Ad}(W_{u,\alpha})|_{R_\alpha}
+ =\operatorname{Ad}(W_{w,\alpha})|_{R_\alpha}.
+ \tag{NR20}
+\]
+The generator identities are those of NR5:
+\[
+ W_{u,\alpha}\pi_\alpha(a)W_{u,\alpha}^*=\pi_\beta(a),\qquad
+ W_{u,\alpha}\lambda_sW_{u,\alpha}^*
+       =\pi_\beta(u_s^*)\lambda_s.
+ \tag{NR21}
+\]
+In particular, transporting \(\pi_\alpha(u_s)\lambda_s\) cancels the adjacent coefficient factors and gives \(\lambda_s\). These identities concern the whole normal crossed products and specify the adjoint without changing the order of the noncommuting cocycle factors.
+
+<a id="oa-flow.nr.7"></a>
+
+## NR7. Central multipliers and inner automorphisms
+
+Retain the arbitrary locally compact group and normal continuous action above. Let \(Z^1(G,\mathcal U(Z(M)))\) denote the continuous \(\alpha\)-cocycles whose values lie in the center. This is an abelian group under pointwise multiplication. To check the cocycle law for \(uv\), reorder only central factors in
+\(u_s\alpha_s(u_t)v_s\alpha_s(v_t)\); the result is
+\((u_sv_s)\alpha_s(u_tv_t)\). The identity cocycle is constant one, and pointwise adjoints give inverses. [UC0](OA-FLOW-UC.md#oa-flow.uc.0) supplies continuity of these operations.
+
+For a central cocycle, \(\operatorname{Ad}(u_s)\alpha_s=\alpha_s\). Thus NR5 restricts conjugation by \(W_{u,\alpha}\) to a normal automorphism \(A_u\) of the same algebra \(R_\alpha\), with
+\[
+ A_u(\pi_\alpha(a))=\pi_\alpha(a),\qquad
+ A_u(\lambda_s)=\pi_\alpha(u_s^*)\lambda_s.
+ \tag{NR22}
+\]
+The image contains all coefficients and translations, so it is the entire algebra. Since central multiplication unitaries commute and satisfy
+\(W_{u,\alpha}W_{v,\alpha}=W_{uv,\alpha}\),
+\[
+ A_uA_v=A_{uv}.
+ \tag{NR23}
+\]
+This proves the homomorphism on the full crossed product, not only on its polynomial generators.
+
+For \(z\in\mathcal U(Z(M))\), define
+\[
+ (\partial z)_s=z^*\alpha_s(z).
+ \tag{NR24}
+\]
+Direct multiplication gives its cocycle law, and continuity follows from the action topology proved in [AT1–4](OA-FLOW-AT.md#oa-flow.at.1). The products of two such coboundaries are the coboundary of the product of the central unitaries; their adjoints are again coboundaries. Hence these form a subgroup of the central cocycle group.
+
+Centrality is also what gives the correct implementer:
+\[
+ (\partial z)_s^*=z\alpha_s(z^*),\qquad
+ \pi_\alpha((\partial z)_s^*)\lambda_s
+ =\pi_\alpha(z)\lambda_s\pi_\alpha(z)^*.
+ \tag{NR25}
+\]
+Both automorphisms fix coefficients and are normal. Equality on the generating coefficients and translations therefore gives
+\(A_{\partial z}=\operatorname{Ad}\pi_\alpha(z)\) on all of \(R_\alpha\).
+
+For the converse, assume exactly
+\[
+ \pi_\alpha(M)'\cap R_\alpha=\pi_\alpha(Z(M)).
+ \tag{NR26}
+\]
+If \(A_u=\operatorname{Ad}(w)\) for a unitary \(w\in R_\alpha\), its fixation of the coefficients puts \(w\) in this relative commutant. Write \(w=\pi_\alpha(z)\), where faithfulness makes \(z\) a central unitary. Comparing the translation generators and cancelling \(\lambda_s\) yields
+\[
+ u_s^*=z\alpha_s(z^*),\qquad
+ u_s=z^*\alpha_s(z).
+ \tag{NR27}
+\]
+Thus precisely the central coboundaries give inner automorphisms under (NR26). The converse assumes the displayed relative-commutant equality; no factor condition, freeness theorem, countability assumption or commutativity of \(G\) is being substituted for it.
+
+For comparison, [the central cocycles of a trace-scaling real action](OA-FLOW-RCC.md#rcc-6) use multiplication by \(c(-t)^*\) and the coboundary \(z\theta_s(z^*)\). Their generator coefficient is unstarred. Here multiplication by \(u_{t^{-1}}\) and the coboundary (NR24) give the starred coefficient in (NR22). These conventions describe the same inner-implementer mechanism with opposite adjoints; the specialized trace-scaling theorem is not a premise of the arbitrary-group statements above.
+
+Classical context for these ordered multiplier and central-cocycle identities is Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Chapter X.1, Exercises5–6.
+

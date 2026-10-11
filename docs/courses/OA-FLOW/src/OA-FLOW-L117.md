@@ -5,7 +5,7 @@
 
 The corner value carries more information than an implementing automorphism: it also fixes the central phase. We begin with a concrete map on finite sums and prove that its inner-product preservation produces a unique whole-space commutant unitary. Its continuity then supplies the topological input for lifting an entire family. Only after these constructions do we use prescribed-corner uniqueness to obtain the cocycle law.
 
-*Restored historical programme proof with independently written completion and exact model, GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. Original added expression is CC0-1.0 to the extent of rights held; prior terms remain intact. Spot-checked in a separate AI session.*
+*Original added expression is CC0-1.0 to the extent of rights held; prior terms remain intact.*
 
 <a id="oa-flow.l117.inputs"></a>
 

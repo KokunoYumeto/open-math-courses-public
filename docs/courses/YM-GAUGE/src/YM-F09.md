@@ -1,11 +1,12 @@
 # Local and global classical evolution
 
-*Partial authoring edition. Sections 1–11 supply the local construction,
-constraint-preserving approximation, gauge estimates and a complete
-commuting global example. The linked heat-analysis companion supplies
-complete curvature-smoothing proofs and nine solved exercises.
-The general finite-energy global argument and the main exercise set
-are still being written. This unit is not complete.*
+Lesson YM-F09 · Geometry and states in Yang–Mills theory
+
+This lesson proves local and global classical evolution in its stated
+function spaces. Sections 1–11 introduce the equations and local
+construction. The linked analysis chapters supply the complete
+energy-level global proof. Sections 47–49 state that theorem, give
+the main exercises with full solutions, and describe the reading route.
 
 [Lesson 8](../constraints-initial-data-energy.html) identified the data
 that obey Gauss law and proved the energy balance of an existing smooth
@@ -35,6 +36,7 @@ In temporal gauge \(\Gamma_t=0\), put
  \tag{F9.1}
 \]
 
+
 The first-order evolution system is
 
 \[
@@ -43,6 +45,7 @@ The first-order evolution system is
  \partial_t B=\operatorname{curl}_A E.
  \tag{F9.2}
 \]
+
 
 For example, the \(i\)-th spatial equation of Lesson 8 contains
 \(c^2\sum_j\mathcal D_jF_{ji}
@@ -61,6 +64,7 @@ the pure gauge theory satisfy
  \end{aligned}
  \tag{F9.3}
 \]
+
 
 After constructing the independent system we will prove that these
 relations persist. They will then identify the constructed variables
@@ -117,6 +121,7 @@ pointwise outside a null set to a finite function \(f\), and
  \tag{F9.4}
 \]
 
+
 The original Cauchy property now implies convergence of the whole
 sequence. This proves \(L^2\) completeness; applying the same argument
 to finitely many entries proves completeness for the matrix and tuple
@@ -145,6 +150,7 @@ Use the original forward transform and its full inverse factor:
                                   e^{ix\cdot\xi}\widehat f(\xi)\,d^3\xi.
  \tag{F9.5}
 \]
+
 
 Here \(\xi\) is spatial frequency. If \(x\) has length units,
 \(\xi\) has reciprocal-length units. The transform has the units
@@ -194,6 +200,7 @@ Taking three coordinate products proves
  \tag{F9.6}
 \]
 
+
 The absolute product-integral theorem now gives
 
 \[
@@ -201,6 +208,7 @@ The absolute product-integral theorem now gives
                  e^{-\varepsilon|\xi|^2}\widehat f(\xi)\,d^3\xi
        =\int k_\varepsilon(y)f(x-y)\,d^3y.
 \]
+
 
 The right side tends to \(f(x)\): on \(|y|<\delta\) its difference
 from \(f(x)\) is bounded by the modulus of continuity of \(f\);
@@ -226,6 +234,7 @@ Substitute the inverse transform of a Schwartz function \(g\) into
  \|\widehat f\|_2=(2\pi)^{3/2}\|f\|_2.
  \tag{F9.7}
 \]
+
 
 To extend the transform to all \(L^2\), approximate by Schwartz
 functions. Here is why that class is dense. Truncation of magnitude
@@ -260,6 +269,7 @@ For real \(q\ge0\) define
  \tag{F9.8}
 \]
 
+
 The space \(H^q_\ell\) consists of the \(L^2\) functions with finite
 displayed quantity. It is complete: a Cauchy sequence of
 \(w_{q,\ell}\widehat f\) converges in \(L^2\); multiplication by
@@ -281,6 +291,7 @@ For integer \(q\ge0\), retain the entire multinomial expansion:
                        \ell^{2|\alpha|}\|\partial^\alpha f\|_2^2.
  \tag{F9.9}
 \]
+
 
 For Schwartz \(f\), expand
 \((1+\ell^2\xi_1^2+\ell^2\xi_2^2+\ell^2\xi_3^2)^q\)
@@ -326,6 +337,7 @@ Weak differentiation gives
  =(i\xi_j\widehat u)(\psi).
 \]
 
+
 Here \(\partial_j\widehat\psi=-i\widehat{\xi_j\psi}\)
 is differentiation of the original forward kernel.
 Schwartz cutoffs tend to the uncut test in every seminorm,
@@ -358,6 +370,7 @@ Thus the weight integral at \(q=2\) is
  \tag{F9.10}
 \]
 
+
 For the last equality put \(r=\tan\theta\); the remaining integral
 is \(\int_0^{\pi/2}\sin^2\theta\,d\theta=\pi/4\).
 Cauchy–Schwarz and the inverse formula therefore give, for \(q\ge2\),
@@ -369,6 +382,7 @@ Cauchy–Schwarz and the inverse formula therefore give, for \(q\ge2\),
  b_\ell=\frac{\pi}{(2\pi)^{3/2}\ell^{3/2}}.
  \tag{F9.11}
 \]
+
 
 The pointwise representative is continuous: in the inverse integral,
 the difference of two phases tends to zero and is bounded by 2,
@@ -384,6 +398,7 @@ For higher derivatives the same argument works whenever
                                  \|f\|_{H^q_\ell}.
  \tag{F9.12}
 \]
+
 
 The integral is finite at zero and at infinity under the stated
 strict inequality; the annulus estimate proves the latter.
@@ -401,6 +416,7 @@ For integer \(q\ge2\), the product estimate needed below is
  \tag{F9.13}
 \]
 
+
 First prove the convolution inequality
 \(\|a*b\|_2\le\|a\|_1\|b\|_2\).
 For each \(x\), Cauchy–Schwarz with measure \(|a(y)|dy\) gives
@@ -409,6 +425,7 @@ For each \(x\), Cauchy–Schwarz with measure \(|a(y)|dy\) gives
  \left|\int a(y)b(x-y)\,dy\right|^2
        \le\|a\|_1\int|a(y)|\,|b(x-y)|^2\,dy.
 \]
+
 
 Integrate and use the nonnegative product theorem and translation
 invariance of Lebesgue measure. Taking a square root proves the
@@ -422,6 +439,7 @@ and the scalar convexity inequality give
  w_{q,\ell}(\eta+\zeta)
        \le2^{q-1}\bigl(w_{q,\ell}(\eta)+w_{q,\ell}(\zeta)\bigr).
 \]
+
 
 For the first step use
 \((1,\ell(\eta+\zeta))=(1,\ell\eta)+(0,\ell\zeta)\),
@@ -451,6 +469,7 @@ Applying the convolution proof with Frobenius moduli therefore gives
  \tag{F9.14}
 \]
 
+
 Both ordered products \(XY\) and \(YX\) are retained in this estimate.
 The inequality bounds their difference; it does not replace the
 Lie bracket by scalar multiplication.
@@ -469,6 +488,7 @@ We therefore give \(U=(A,E,B)\) the auxiliary norm
           +\|B\|_{H^q_\ell}^{\,2},\qquad q\ge0.
  \tag{F9.15}
 \]
+
 
 Each summand in its pointwise squared integrand has units of
 reciprocal length to the fourth power. After spatial integration,
@@ -491,6 +511,7 @@ Separate the differential, linear algebraic, and quadratic terms:
  \tag{F9.16}
 \]
 
+
 Thus (F9.2) is \(\partial_tU=LU+N(U)\). The map \(Q\)
 is bilinear and need not be symmetric. Its two arguments have
 the distinct roles displayed in (F9.16).
@@ -510,6 +531,7 @@ the matrix of the weighted inner product are
  \qquad M(\xi)^\dagger W+WM(\xi)=0.
  \tag{F9.17}
 \]
+
 
 For matrix-valued fields these matrices act on spatial indices
 and leave matrix entries alone. Multiplying the three block
@@ -533,6 +555,7 @@ the identity \(W\) for every real \(t\). Define
  \tag{F9.18}
 \]
 
+
 These are exact isometries in the weighted norm. The conjugation
 identity \(M(-\xi)=\overline{M(\xi)}\) shows that real
 \(\mathfrak g\)-coordinates remain real under inverse Fourier
@@ -554,6 +577,7 @@ annihilates the component parallel to \(\xi\) and has length
  \qquad q\ge1.
  \tag{F9.19}
 \]
+
 
 Indeed, the two nonzero blocks of \(LU\) have squared weighted
 sum at most
@@ -580,6 +604,7 @@ followed by (F9.14), gives
  \tag{F9.20}
 \]
 
+
 Here each individual component norm is bounded by its full
 tuple norm; the factor 12 is the six ordered spatial terms
 times the two ordered matrix products. It is an upper bound,
@@ -601,6 +626,7 @@ nonzero blocks of \(Q\) yields
  \tag{F9.21}
 \]
 
+
 In particular
 
 \[
@@ -612,6 +638,7 @@ In particular
  \end{aligned}
  \tag{F9.22}
 \]
+
 
 For the second identity before estimating, use
 \(Q(U,U)-Q(V,V)=Q(U-V,U)+Q(V,U-V)\).
@@ -628,6 +655,7 @@ independent system (F9.2) has a unique solution
  U\in C([-\tau,\tau];X_2)\cap C^1([-\tau,\tau];X_1),
  \qquad U(0)=U_0 ,
 \]
+
 
 with a positive \(\tau\) given below. The equation holds in
 \(X_1\). The solution depends continuously on \(U_0\) in
@@ -660,6 +688,7 @@ it is an auxiliary radius and does not alter the data. Put
  \tag{F9.23}
 \]
 
+
 The path space \(C([-\tau,\tau];X_2)\), with its supremum
 norm, is complete. Indeed a uniformly Cauchy sequence has
 a pointwise limit by completeness of \(X_2\), converges
@@ -672,6 +701,7 @@ On this ball define
              \int_0^t T(t-s)N(U(s))\,ds.
  \tag{F9.24}
 \]
+
 
 The integrand is continuous. One way to see continuity of
 the resulting path is to write it as
@@ -690,6 +720,7 @@ Equations (F9.18) and (F9.22) imply
  \end{aligned}
  \tag{F9.25}
 \]
+
 
 Start with \(U^{(0)}(t)=T(t)U_0\) and iterate
 \(U^{(n+1)}=\Phi U^{(n)}\).
@@ -727,6 +758,7 @@ for \(t\ge0\),
        \bigl(a+C_2(\|U(s)\|_{X_2}+\|V(s)\|_{X_2})\bigr)\,ds\right).
  \tag{F9.26}
 \]
+
 
 Here is the scalar integral argument used in this estimate.
 If \(y(t)\le d+\int_0^t b(s)y(s)\,ds\), with \(b,y\)
@@ -771,6 +803,7 @@ estimate in (F9.21) gives, while it exists and \(t\ge0\),
        \exp\!\left(a t+2L_q\int_0^t\|U(s)\|_{X_2}\,ds\right).
  \tag{F9.27}
 \]
+
 
 This follows from (F9.24) and the scalar integral argument
 just proved, because
@@ -825,6 +858,7 @@ the following alternative:
  \tag{F9.28}
 \]
 
+
 There is a slightly stronger integral statement.
 The \(q=2\) bound can be written with coefficient
 \(a+C_2\|U\|_{X_2}\), since \(2L_2=C_2\).
@@ -846,6 +880,7 @@ For a spatial connection \(A\) define its actual magnetic curvature
  \tag{F9.29}
 \]
 
+
 For a smooth independent solution of (F9.2), differentiate
 this formula and use \(A_t=E\).
 The derivative of the commutator term is
@@ -855,6 +890,7 @@ The derivative of the commutator term is
        \bigl([E_j,A_k]+[A_j,E_k]\bigr)
        =\sum_{j,k}\epsilon_{ijk}[A_j,E_k].
 \]
+
 
 To verify the equality, interchange \(j,k\) in the first
 sum, use \(\epsilon_{ikj}=-\epsilon_{ijk}\), and then
@@ -866,6 +902,7 @@ The third equation of (F9.2) therefore proves the exact defect identity
  B(t)-\mathscr B(A(t))=B(0)-\mathscr B(A(0)).
  \tag{F9.30}
 \]
+
 
 The defect is a fixed spatial field. In particular zero defect
 remains zero. This is the map from the independent system
@@ -883,6 +920,7 @@ For smooth fields,
  \end{aligned}
 \]
 
+
 The first commutator sum vanishes term by term.
 Antisymmetry in \(i,j\) gives the factor \(1/2\);
 the identity \([D_i,D_j]X=[F_{ij}(A),X]\)
@@ -897,6 +935,7 @@ we obtain, including a possible curvature defect \(K=B-\mathscr B(A)\),
     =c^2\sum_k[K_k,B_k].
  \tag{F9.31}
 \]
+
 
 Thus zero curvature defect implies \(\partial_tG=0\).
 If the initial Gauss constraint also vanishes, it vanishes
@@ -955,6 +994,7 @@ gauge, and write \(\delta A=A_U-A_V\), and likewise for
  \tag{F9.32}
 \]
 
+
 For the differential terms of the equation,
 the product rule gives
 
@@ -963,6 +1003,7 @@ the product rule gives
  +\sum_i\kappa(\delta B_i,(\operatorname{curl}\delta E)_i)
        =-\sum_i\partial_i(\mathcal J_\delta)_i .
 \]
+
 
 This follows by expanding both curls, then interchanging
 the two outer indices in the second derivative term.
@@ -974,6 +1015,7 @@ For a unit vector \(n\),
  \le\frac c2(c^{-2}|\delta E|^2+|\delta B|^2)
  \le c\varepsilon_\delta .
 \]
+
 
 The first inequality is Cauchy–Schwarz for the matrix entries
 and the spatial cross product; the second is
@@ -988,6 +1030,7 @@ Thus
  |SU|_W\le a|U|_W.
 \]
 
+
 Using the same bilinear difference identity as in (F9.22)
 in the remaining terms of the energy derivative gives
 
@@ -997,6 +1040,7 @@ in the remaining terms of the energy derivative gives
  \le2\left(a+24c\ell(|U|_W+|V|_W)\right)\varepsilon_\delta .
  \tag{F9.33}
 \]
+
 
 On a compact time interval the coefficient has a finite
 uniform bound \(2K\), because (F9.11) bounds each field's
@@ -1010,6 +1054,7 @@ The moving-boundary integration formula of Lesson 8 yields
        -\int_{\partial B}
                (\mathcal J_\delta\cdot n+c\varepsilon_\delta)\,dS .
 \]
+
 
 The last integrand is nonnegative by (F9.32).
 If the two data agree on the initial ball, its energy
@@ -1050,6 +1095,7 @@ It follows that
  \tag{F9.34}
 \]
 
+
 This assertion includes the potential \(A\) in the chosen
 temporal gauge and is stronger than a statement about
 curvature support alone. A spatial gauge change can add
@@ -1075,6 +1121,7 @@ from Lesson 8 is
  \tag{F9.35}
 \]
 
+
 These formulas retain the coupling, the trace pairing,
 the time metric, and the factor \(\hbar\) in the original
 action convention. Their proof in Lesson 8 applies to
@@ -1091,6 +1138,7 @@ Explicitly the commutator contribution is
 -\sum_{i,j,k}\epsilon_{ijk}\kappa(E_i,[A_j,B_k])
 +\sum_{i,j,k}\epsilon_{ijk}\kappa(B_i,[A_j,E_k])=0.
 \]
+
 
 Interchange \(i,k\) in the second sum and use
 \(\kappa(B_k,[A_j,E_i])=-\kappa(E_i,[A_j,B_k])\).
@@ -1117,6 +1165,7 @@ and a dimensionless number \(n>0\). Set
  A_i^{(n)}=-n(\partial_i f)T,\qquad E^{(n)}=B^{(n)}=0.
  \tag{F9.36}
 \]
+
 
 All brackets between these \(A_i^{(n)}\) vanish; equality
 of mixed derivatives gives \(F_{ij}(A^{(n)})=0\).
@@ -1165,6 +1214,7 @@ each coordinate line gives
  f_1(x_2,x_3):=\int_{\mathbb R}|\partial_1v(s,x_2,x_3)|\,ds,
 \]
 
+
 and the two corresponding bounds by \(f_2(x_1,x_3)\)
 and \(f_3(x_1,x_2)\). Consequently
 \(|v|^{3/2}\le(f_1f_2f_3)^{1/2}\).
@@ -1174,6 +1224,7 @@ Integrate first in \(x_1\) and use Cauchy–Schwarz:
  \int_{\mathbb R}(f_2(x_1,x_3)f_3(x_1,x_2))^{1/2}\,dx_1
  \le g_2(x_3)^{1/2}g_3(x_2)^{1/2},
 \]
+
 
 where \(g_2(x_3)=\int f_2(x_1,x_3)\,dx_1\) and
 \(g_3(x_2)=\int f_3(x_1,x_2)\,dx_1\).
@@ -1186,6 +1237,7 @@ A second Cauchy–Schwarz inequality on \((x_2,x_3)\) gives
  =\prod_{i=1}^3\|\partial_i v\|_1^{1/2}.
 \]
 
+
 All integrals here are nonnegative, so the product theorem
 applies even before their finiteness is established.
 Taking the power \(2/3\), using the arithmetic-geometric
@@ -1197,6 +1249,7 @@ mean inequality, and then pointwise Cauchy–Schwarz proves
  \le\frac13\sum_i\|\partial_i v\|_1
  \le\frac1{\sqrt3}\int|\nabla v|.
 \]
+
 
 Apply this to \(v=|f|^4\), where \(f\) is any smooth
 compactly supported real vector, including the real
@@ -1212,6 +1265,7 @@ The zero case is immediate; otherwise division proves
  C_{\mathrm S}=\frac4{\sqrt3}.
  \tag{F9.37}
 \]
+
 
 We use this explicit constant, without claiming that it
 is the smallest possible one.
@@ -1245,6 +1299,7 @@ Hölder and the enclosing ball give the explicit bound
                     \|f\|_{L^6(\{R\le|x|\le2R\})}\longrightarrow0 .
 \]
 
+
 The factor \(R^{-1}\) from the derivative cancels the
 factor \(R\) from the volume to the power \(1/3\);
 neither factor was absent.
@@ -1260,6 +1315,7 @@ For fixed \(R\), convolve \(\chi_R f\) with
  \qquad
  Z=\int_{|x|<1}e^{-1/(1-|x|^2)}\,d^3x .
 \]
+
 
 The cutoff construction proves smoothness at the boundary.
 Here \(0<Z<\infty\) and \(\int\rho_\varepsilon=1\).
@@ -1293,6 +1349,7 @@ For \(\delta>0\), the smooth compactly supported scalar
  \qquad |\nabla r_\delta|\le|D^a\phi|.
 \]
 
+
 Apply (F9.37) to \(r_\delta\), then let \(\delta\downarrow0\).
 Monotone convergence of its sixth power proves
 \(\|\phi\|_6\le C_{\mathrm S}\|D^a\phi\|_2\).
@@ -1308,6 +1365,7 @@ Using also the pointwise bound
  \end{aligned}
  \tag{F9.38}
 \]
+
 
 For the upper bound first use (F9.37).
 For the lower bound write
@@ -1336,6 +1394,7 @@ For each \(r\) in this dual there is a unique
  \tag{F9.39}
 \]
 
+
 Here is a proof of existence rather than an assumption
 that the covariant Laplacian is invertible.
 Give \(\dot H^1\) the inner product
@@ -1353,6 +1412,7 @@ Since \((\psi_n+\psi_m)/2\in L\), the parallelogram identity gives
  \|\psi_n-\psi_m\|_{b_a}^2
  \le2\|\psi_n\|_{b_a}^2+2\|\psi_m\|_{b_a}^2-4d^2\longrightarrow0 .
 \]
+
 
 The limit \(\psi_*\in L\) has norm \(d\).
 For \(h\in\ker r\), minimality of \(\psi_*\) applied
@@ -1376,6 +1436,7 @@ covariant divergence by
        =-\int\sum_i\kappa(f_i,D_i^a\psi).
 \]
 
+
 It belongs to \(\dot H^{-1}\) by (F9.38).
 Use (F9.39) with \(r=\operatorname{div}_a f\) and set
 
@@ -1385,6 +1446,7 @@ Use (F9.39) with \(r=\operatorname{div}_a f\) and set
  \operatorname{div}_a(P_a f)=0 .
  \tag{F9.40}
 \]
+
 
 The equation has the stated minus sign: weakly the
 left side of its middle identity pairs with \(\psi\)
@@ -1405,6 +1467,7 @@ that field; the orthogonal decomposition gives
  \tag{F9.41}
 \]
 
+
 This projection is the mechanism that repairs an
 approximate Gauss constraint.
 
@@ -1423,6 +1486,7 @@ Expanding every covariant derivative in (F9.40) gives
  =:h.
  \tag{F9.42}
 \]
+
 
 Initially \(h\in L^2\) and has compact support:
 \(\nabla\phi\in L^2\), \(\phi\in L^6\) belongs to
@@ -1447,6 +1511,7 @@ Fourier transformation gives, away from \(\xi=0\),
  \sum_{j,k}\|\partial_k\partial_j\phi\|_2^2=\|h\|_2^2.
  \tag{F9.43}
 \]
+
 
 The multiplier at \(\xi=0\) may be assigned the value
 zero, since that single point has measure zero.
@@ -1499,6 +1564,7 @@ Let
  \operatorname{div}_a e=0
 \]
 
+
 in the distributional sense just defined.
 Choose smooth compactly supported \(a_n,f_n\) with
 \(a_n\to a\) in \(\dot H^1\cap L^3\) and
@@ -1518,6 +1584,7 @@ satisfies
  \end{aligned}
  \tag{F9.44}
 \]
+
 
 Indeed subtract \(\operatorname{div}_a e=0\).
 The derivative term pairs with a test as
@@ -1541,6 +1608,7 @@ the exact constraint and smoothness. Since
  \tag{F9.45}
 \]
 
+
 The curvature also converges in \(L^2\).
 Interpolation by Hölder gives
 \(\|a\|_4\le\|a\|_3^{1/2}\|a\|_6^{1/2}\);
@@ -1554,6 +1622,7 @@ The full curvature formula (F9.29) then gives
  \le\sqrt2\,\|\nabla(a_n-a)\|_2
        +6\|a_n-a\|_4(\|a_n\|_4+\|a\|_4)\longrightarrow0 .
 \]
+
 
 The first constant follows by expanding each of the
 three curl differences and using
@@ -1594,6 +1663,7 @@ Let \(V_0:\mathbb R^3\to G\) be smooth and consider
  \tag{F9.46}
 \]
 
+
 First take regular coefficients on a compact time interval:
 each time derivative of \(a_t\) is continuous in every
 \(H^q_\ell\), and \(V_0-I\) belongs to every \(H^q_\ell\).
@@ -1633,6 +1703,7 @@ put
  \end{aligned}
 \]
 
+
 Then
 
 \[
@@ -1648,6 +1719,7 @@ Then
  \tag{F9.47}
 \]
 
+
 The first line is unitarity, including both distinct
 matrix-norm conventions. Differentiating (F9.46) gives
 
@@ -1662,6 +1734,7 @@ matrix-norm conventions. Differentiating (F9.46) gives
        +V\partial_j\partial_i a_t .
  \end{aligned}
 \]
+
 
 The homogeneous equation \(Y_t=Y a_t\) preserves
 Frobenius length: differentiating
@@ -1681,6 +1754,7 @@ Hölder and (F9.37), applied to \(\nabla V\), give
        +2C_{\mathrm S}\int_0^t
           \|\nabla a_t(s)\|_3\|\nabla^2V(s)\|_2\,ds .
 \]
+
 
 The scalar integral proof after (F9.26), on each
 interval \([0,t]\) with constant inhomogeneous bound
@@ -1706,6 +1780,7 @@ then its cutoff gradient error obeys
  \le M_\chi\left(\frac{32\pi}{3}\right)^{1/6}
                R^{-1/2}\|z\|_{L^3(\{R\le|x|\le2R\})}\longrightarrow0 .
 \]
+
 
 The other gradient error tends to zero by the \(L^2\)
 tail. Thus the cutoffs are Cauchy in \(\dot H^1\);
@@ -1742,6 +1817,7 @@ denote its image. The source's complete quantity is
  \tag{F9.48}
 \]
 
+
 For this equality use the source's component convention
 on both sides: each derivative norm is the maximum
 of the norms of its ordered spatial derivative components.
@@ -1765,6 +1841,7 @@ Here is the precise comparison to the tuple norms in
  \le\sqrt r\,\max_\alpha\|f_\alpha\|_{L^p_x}.
 \]
 
+
 The middle inequality is the triangle inequality in
 \(L^{p/2}\), followed by a square root; the \(p=\infty\)
 case follows pointwise. Taking \(L^\infty\) in time
@@ -1778,6 +1855,7 @@ mixed norm as in the source, the valid bound is
  \le\sum_\alpha\|f_\alpha\|_{L^1_tL^p_x}
  \le r\max_\alpha\|f_\alpha\|_{L^1_tL^p_x}.
 \]
+
 
 The middle step uses the pointwise sum bound and the
 integral triangle inequality. Thus the five source
@@ -1814,6 +1892,7 @@ commuting matrix products, gives
  \tag{F9.49}
 \]
 
+
 The tildes in these forcing terms matter.
 For example expanding the first right side cancels
 \(-\widetilde V a_t+\widetilde V a_t\) and leaves
@@ -1834,6 +1913,7 @@ regular pairs. Write
                     \int_0^t\|\delta a_t(s)\|_\infty\,ds
 \]
 
+
 with the Frobenius \(L^\infty\) norm, and let
 \(H_{\widetilde V}\) be (F9.47) for the second solution.
 Unitary variation of constants in (F9.49) gives
@@ -1852,6 +1932,7 @@ Differentiating once gives the bound
  \tag{F9.50}
 \]
 
+
 For the Hessian define
 
 \[
@@ -1866,6 +1947,7 @@ For the Hessian define
  \end{aligned}
 \]
 
+
 Then
 
 \[
@@ -1873,6 +1955,7 @@ Then
        \le R(t)e^{2C_{\mathrm S}J_1(t)} .
  \tag{F9.51}
 \]
+
 
 To verify this last estimate, differentiate (F9.49)
 twice. In addition to the homogeneous term
@@ -1902,6 +1985,7 @@ The time derivatives also retain all their terms:
  \end{aligned}
 \]
 
+
 Taking adjoints gives every inverse difference bound
 with the same constants. In particular convergence
 of the five coefficient norms in (F9.48), with bounded
@@ -1929,6 +2013,7 @@ define \(Y_i=(\partial_iV)V^{-1}\). The full formulas are
  \tag{F9.52}
 \]
 
+
 To derive the second line, use
 \(\partial_jV^{-1}=-V^{-1}(\partial_jV)V^{-1}\)
 in both differentiated terms of the first.
@@ -1947,6 +2032,7 @@ bracket estimate, and (F9.37) then give
  \end{aligned}
  \tag{F9.53}
 \]
+
 
 For the last product in (F9.52), retain its order
 \(Y_iY_j\) and bound its tuple \(L^2\) norm by
@@ -2000,6 +2086,7 @@ the spatial projections
  P_\perp z=z-P_\parallel z.
 \]
 
+
 The complex bilinear dot with the real vector \(\xi\)
 is the Fourier divergence operation. These are
 orthogonal projections also for the Hermitian spatial
@@ -2025,6 +2112,7 @@ For independent abelian data the exact solution is
  \end{aligned}
  \tag{F9.54}
 \]
+
 
 Differentiate each line. The identity \(C^2=r^2P_\perp\)
 makes the first two derivatives exactly \(-c^2C\widehat B\)
@@ -2068,6 +2156,7 @@ for every finite \(t\) and every integer \(q\ge2\),
  \tag{F9.55}
 \]
 
+
 The inverse transform retains the factor \((2\pi)^{-3}\)
 from (F9.5). These bounds, and dominated convergence
 in the weighted Fourier integrals, prove a global
@@ -2090,6 +2179,7 @@ reciprocal length and a dimensionless matrix \(T\), and
  \tag{F9.56}
 \]
 
+
 The third field is the full curl of the first,
 and Gauss law holds. Its energy is
 
@@ -2100,6 +2190,7 @@ and Gauss law holds. Its energy is
                  \left((\partial_3f)^2+(\partial_1f)^2\right)\,d^3x .
 \]
 
+
 There is no omitted \(\partial_2f\) contribution to
 this curvature: that derivative is along the same
 potential component and cancels in the antisymmetric
@@ -2107,9 +2198,9 @@ curvature. The complete solution is (F9.54) with
 the displayed data, and (F9.34) proves its finite
 propagation from their compact support.
 This gives a global finite-energy example for arbitrary
-amplitude in a commuting direction. The general
-noncommuting finite-energy global theorem requires
-the further analysis still being written for this unit.
+amplitude in a commuting direction. The noncommuting theory uses the heat, wave and gauge estimates
+in the following chapters. Sections 45–46 give the local energy-data
+limit and the global regular continuation theorem.
 
 
 ## 12. Heat analysis for the global construction
@@ -2134,8 +2225,8 @@ than an assumption that the physical global solution exists.
 
 The heat-flow constructions are now supplied by the next companion.
 The weighted gauge construction is supplied by the following companion.
-Low-regularity physical evolution and the general global continuation
-argument are still being written.
+The resulting local energy-data and global regular theorems are
+proved in Sections 45–46.
 
 
 ## 13. Constructing the auxiliary heat flow
@@ -2152,7 +2243,7 @@ The companion includes eight fully solved exercises and the exact
 commuting gauge map (HC.35)–(HC.36). Equations (HC.32)–(HC.34)
 identify an extra-derivative error in two source displays through
 regular stationary solutions. The low-regularity caloric-gauge construction is now supplied below.
-The general physical-time global argument remains in progress.
+The general global regular argument is proved in Section 46.
 
 
 ## 14. Passing to the caloric gauge with one derivative
@@ -2166,9 +2257,9 @@ regular caloric uniqueness by the curvature energy identity.
 
 The companion includes eight solved exercises and the exact anchor
 comparison and finite-endpoint Gaussian calculation (HG.41)–(HG.44).
-These auxiliary spatial heat constructions now supply the next
-physical-time and global-evolution calculations. Lesson 9 remains
-incomplete until those arguments and its main exercise set are supplied.
+These auxiliary spatial heat constructions supply the physical-time
+estimates in the following chapters and the global theorems in
+Sections 46–47.
 
 
 ## 15. Global auxiliary heat flow and the original time component
@@ -2183,8 +2274,7 @@ caloric-temporal gauge and identify its endpoint representative.
 The companion includes eight solved exercises and the exact
 dynamic Gaussian calculation (HD.31)–(HD.35), retaining its
 curvature, Gauss expression and physical energy factors.
-The estimates for physical-time evolution and the general
-physical global argument remain in progress.
+The following chapters use these estimates in the physical evolution.
 
 
 ## 16. Ordinary smoothing and endpoint bounds in physical time
@@ -2201,8 +2291,7 @@ The complete Gaussian calculation (HP.29)–(HP.34), its figure,
 and eight fully solved exercises display the norms and their
 finite weighted energy identities. The fixed-time heat-curvature
 and linear wave estimates are supplied in the next two components.
-The nonlinear wave and physical global continuation argument
-remain in progress.
+They feed the nonlinear wave and continuation proofs below.
 
 
 ## 17. Gauss law and the complete fixed-time heat estimates
@@ -2218,9 +2307,7 @@ Equations (HT.1)–(HT.53) supply the fixed-time bounds used
 by the physical evolution argument. The exact Gaussian
 comparison and the extension retaining a nonzero initial
 Gauss datum are (HT.54)–(HT.59); eight solved exercises
-follow. The linear wave estimates are proved in the next component;
-the nonlinear wave estimates, physical continuation and main
-exercise set are still in progress.
+follow. The linear wave estimates are proved in the next component. The nonlinear wave and continuation proofs then use these inputs.
 
 
 ## 18. Wave energy, dispersion and the complete null-form estimate
@@ -2239,11 +2326,10 @@ forcing derivative in the source. The smooth half-wave
 profiles and Fourier support are illustrated. Eight exercises
 have complete solutions.
 
-The remaining physical argument inserts the actual nonlinear
+The following physical argument inserts the actual nonlinear
 Yang–Mills wave equations and estimates their forcing and
-boundary gauge terms before proving global continuation.
-Those estimates and the main lesson's exercise set remain
-required for this unit to be complete.
+boundary gauge terms. These estimates lead to the global
+continuation and energy-data theorems in Sections 46–47.
 
 
 ## 19. Tension, exact spatial decomposition and temporal connection
@@ -2261,9 +2347,8 @@ A source sign correction is identified beside the proved identity.
 Eight exercises have complete solutions, and the exact projection
 and scalar heat maximum are illustrated.
 
-The remaining nonlinear interactions, boundary gauge estimates,
-closed global continuation and main lesson exercises remain
-required before this unit is complete.
+The following chapters prove the nonlinear interactions and boundary
+gauge estimates used in the complete continuation argument.
 
 
 ## 20. Curl-free interaction and complete backward heat inputs
@@ -2280,9 +2365,8 @@ ball-average proof of the needed Morrey inequality, an actual Gaussian
 projection example, eight fully solved exercises and an inspected
 figure of the finite kernels.
 
-The remaining nonlinear interactions, boundary gauge estimates and
-closed physical-time continuation argument are still required, along
-with the main lesson exercises, before this unit is complete.
+The following chapters prove the nonlinear interactions and boundary
+gauge estimates, then assemble the physical-time continuation argument.
 
 
 ## 21. The uniform potential wave coefficient
@@ -2396,9 +2480,8 @@ spatial-gradient and electric bounds. A scalar example and eight solved
 exercises show each step of the argument.
 
 These are a priori estimates on the existing regular solution. The
-remaining main argument must prove nonlinear solution differences,
-regular continuation and the energy-data limit. The main unit exercise
-set also remains to be written. Unit 9 is still in progress.
+following comparison and continuation chapters turn them into
+initial-data stability, regular continuation and an energy-data limit.
 
 
 ## 31. Electric differences and the original datum
@@ -2439,9 +2522,9 @@ diagram and eight full exercise solutions accompany the proof.
 
 These four chapters compare actual fields and their heat and gauge
 evolutions. Their inputs are stated norms on the physical interval.
-The remaining argument must bound those norms by data at one physical
-time, prove regular continuation and construct the energy-data limit.
-The main unit exercises also remain to be written. Unit 9 is in progress.
+The initial-data stability chapter bounds the required differences
+from data at one physical time, before Sections 45–46 construct
+the energy-data limit and global regular continuation.
 
 
 ## 35. The potential and its complete wave difference
@@ -2465,9 +2548,9 @@ integral reaches this restart. The exact translation map identifies
 the nonlinear difference estimate needed next. Eight solved exercises
 explain the spaces, constants and endpoint argument.
 
-The complete initial-data estimate, its uniform translation consequence,
-the energy-data limit and the main unit exercises remain in progress.
-These analytic components do not yet complete Unit 9.
+The complete initial-data estimate and its translation consequence are
+proved in the initial-data stability chapter. Sections 45–46 then give
+the energy-data limit and global regular continuation.
 
 
 ## 37. Stability for a regular physical pair
@@ -2490,8 +2573,8 @@ and transition gauge preserve the full interval and its generally
 nonidentity anchor. Eight full exercise solutions retain the affine
 derivative terms, original Sobolev weights and complete curvature tuple.
 
-The two chapters supply exact inputs for the remaining uniform
-physical-time difference calculation. Unit 9 remains in progress.
+The two chapters supply the exact inputs for the uniform physical-time
+difference calculation and the initial-data stability theorem below.
 
 
 ## 39. Temporal differences and the electric field
@@ -2515,6 +2598,367 @@ is retained. Eight full exercise solutions derive the Bianchi difference,
 covariant flux, exact tensor constants and weighted energy identity.
 
 Together these two chapters provide the complete temporal and spatial
-tension comparison operations. The full initial-data estimate must also
-control the remaining paired wave terms and reconstruct the original
-physical gauge. Unit 9 remains in progress.
+tension comparison operations. The following chapters control the remaining paired wave terms and
+reconstruct the original physical gauge.
+
+
+## 41. Returning to the original physical gauge
+
+[Reconstructing the original gauge and its initial anchors](../classical-original-gauge-reconstruction.html)
+proves the complete maps from the caloric-temporal connection to the
+original temporal-gauge potential and electric field. The static affine
+term cancels from a physical-time increment; its spatial derivative
+still enters the conjugation estimate. The chapter supplies the full
+backward heat argument, exact original anchors, signed boundary operation,
+and a quantified bound on the remaining curve coefficient. A worked
+matrix-gauge example and eight fully solved exercises develop these maps.
+
+## 42. Stability in the original initial-data topology
+
+[Stability with respect to the original initial data](../classical-initial-data-stability.html)
+derives the initial data for every required heat and endpoint wave norm,
+bounds all eight groups in the paired wave equation, and combines the
+result with the physical reconstruction. The exact two-by-two determinant
+is positive on a calculated interval. This proves quantitative initial-data
+stability and uniqueness for the existing regular temporal-gauge pair,
+uniform translation continuity, and persistence of one extra derivative.
+A commuting electric-data example and eight fully solved exercises cover
+the coefficient evaluation, inverse inequalities and actual representatives.
+
+The next two chapters construct the constrained approximations and
+complete the common regular existence interval. Sections 45–46 use
+them to construct energy-data solutions and prove global regular continuation.
+
+
+## 43. Smooth data satisfying the exact constraint
+
+[Smooth approximation with the exact Gauss constraint](../classical-constrained-approximation.html)
+constructs the covariant elliptic correction on a domain allowing local
+\(L^3\) connection coefficients. Its cutoff and mollifier choices give
+regular data with the exact original Gauss equation, a quantified error
+in the original connection/electric metric, and convergence of the full
+curvature and physical energy when that energy is finite. The chapter
+also proves continuity of the projection, residual gauge covariance and
+completeness of the actual data spaces. Its worked commuting example
+lies outside global \(L^3\); eight full solutions develop the maps and
+show why finite curvature is an additional hypothesis.
+
+## 44. Completing the common regular interval
+
+[A common existence interval for regular initial data](../classical-common-regular-interval.html)
+constructs the auxiliary heat flow on the original affine \(L^6\)
+potential domain. Translation stability then bounds the physical Hessian,
+which bounds the actual multiplier in the local evolution. The proof
+obtains strong endpoints in every required derivative norm and restarts
+the original iteration in the same affine chart, keeping the heat
+endpoint and both gauge anchors. A stationary non-square-integrable
+potential and eight full exercise solutions show how the domain,
+endpoint and gauge maps work.
+
+These two operations supply regular constrained approximants on a common
+physical interval. The next chapter passes the original nonlinear equations
+to the energy-data limit; the following one proves global classical continuation.
+
+## 45. Constructing a solution from energy data
+
+[Constructing solutions from finite-energy data](../classical-energy-data-limit.html)
+uses the regular family on its common interval and proves strong convergence
+of the actual potential, electric field and full curvature. The temporal
+increment is an \(L^2\) integral of the electric field. Together with its
+\(L^6\) control, this supplies the \(L^3\) factor needed for every nonlinear
+curvature product. The proof keeps the separate initial full-curvature
+hypothesis, passes all field equations and Gauss law, and proves energy
+equality with the original constants and boundary flux.
+
+The chapter defines its exact regular-approximation solution class and
+proves independence of the approximation, uniqueness and continuous
+dependence there. Both original gauges survive the limit. An exact
+commuting wave and eight full exercise solutions develop the convergence
+mechanism and its domain.
+
+## 46. Why a regular solution cannot stop at a finite time
+
+[Global classical continuation in the original temporal gauge](../classical-global-continuation.html)
+proves a bound for the original potential gradient on every finite physical
+horizon. Fixed-time heat estimates give wave data at every covering anchor.
+The wave proof supplies one common covering length, the temporal boundary
+estimates control the original gauge, and its complete affine action gives
+the required gradient bound. Only then does the local construction supply
+a uniform regular restart interval. This rules out both finite endpoints.
+
+The exact zero-energy Gaussian gauge family shows why the conserved
+curvature energy alone cannot replace the potential estimate. The chapter
+also proves the source-coordinate and \(L^3\)-domain maps and identifies
+the inverse-gauge correction in the original author source. Eight full
+exercise solutions retain all original constants, chart transitions and
+gauge anchors.
+
+The next chapter passes one constrained family to a compatible
+energy-data solution on every finite horizon, completing the general
+global theorem in the stated regular-approximation class.
+
+
+## 47. The complete global energy-data theorem
+
+[Global solutions from finite-energy data](../classical-global-energy-data.html)
+now joins the local energy-data limit to the global regular construction.
+For the original coordinates and constants, its data are exactly
+
+\[
+A_*\in L^6,\quad \partial A_*\in L^2,\quad E_*\in L^2,\quad
+F(A_*)\in L^2,\quad D_{A_*}^iE_{*,i}=0 .
+\]
+
+
+The potential is its actual \(L^6\) representative, the curvature is
+its full original formula, and Gauss law is distributional. For these
+data there is one global temporal-gauge solution in the regular-approximation
+class defined by GE.4. On every compact time interval, the potential,
+its gradient, the electric field and full curvature are strongly continuous
+in \(L^6,L^2,L^2,L^2\), respectively. The field equations hold
+distributionally, the physical energy is conserved exactly, and the
+solution depends locally Lipschitz continuously on the data in the
+full-curvature graph metric.
+
+The proof first constructs one regular approximation family. On each
+finite horizon the regular global theorem gives a common potential bound.
+A finite chain of paired estimates then proves that this family is Cauchy
+on the entire horizon. Its temporal increments supply all nonlinear
+curvature products. The same sequence on nested horizons gives agreeing
+limits. Cross-family estimates prove approximation independence.
+Only after this construction does the time-composition identity follow.
+The chapter proves every overlap and gauge transition, retains both
+heat endpoints and the original static gauge, and includes a worked
+example and eight complete solutions.
+
+This gives a precise classical existence theorem. Its solution space
+consists of fields on physical spacetime. A quantum state, its Hamiltonian
+spectrum and a mass gap require the additional quantum structures taught
+in the later units; they are not conclusions of this classical theorem.
+
+## 48. Exercises with full solutions
+
+These exercises connect the main construction to its analysis chapters.
+The longer chapters contain the detailed additional exercises for their
+individual estimates.
+
+### Exercise 1. Units in the evolution norm
+
+Verify every physical unit in F9.15 and show why the linear coupling
+\(A_t=E\) has the coefficient \(c/\ell\) in the norm estimate.
+
+**Solution.** The units of \(A,E,B\) are
+\(L^{-1},L^{-1}T^{-1},L^{-2}\), while \(c\) has unit \(LT^{-1}\).
+Thus each of \(\ell^{-2}|A|^2,c^{-2}|E|^2,|B|^2\) has unit
+\(L^{-4}\). Integration over \(d^3x\) gives \(L^{-1}\);
+the norm has unit \(L^{-1/2}\).
+Every factor \(\ell^{2j}\|\partial^{(j)}f\|_2^2\) in
+\(H_\ell^q\) has the same units as \(\|f\|_2^2\).
+For \(SU=(E,0,0)\),
+
+\[
+\|SU\|_{X_q}=\ell^{-1}\|E\|_{H_\ell^q}
+\le(c/\ell)\|U\|_{X_q}.
+\]
+
+The multiplier \(c/\ell\) has unit \(T^{-1}\), as a time derivative
+requires. The fields themselves have not been rescaled.
+
+### Exercise 2. Weighted linear energy at each frequency
+
+For the original \(M(\xi),W\) in F9.17, prove the exact conservation
+of the weighted electric-magnetic norm, including frequency zero.
+
+**Solution.** Let \(C=i\xi\times\). The real cross-product matrix
+is skew-symmetric, so \(C^\dagger=C\).
+For \(E_t=-c^2CB\), \(B_t=CE\),
+
+\[
+\frac{d}{dt}\{c^{-2}|E|^2+|B|^2\}
+=-2\operatorname{Re}\langle E,CB\rangle
+ +2\operatorname{Re}\langle B,CE\rangle=0.
+\]
+
+Self-adjointness of \(C\) makes the two real parts equal.
+The \(A\) block of this linear operator has derivative zero, so its
+\(\ell^{-2}\) term is conserved too. At \(\xi=0\), \(C=0\)
+and the exponential is exactly the identity.
+Multiplication by \((1+\ell^2|\xi|^2)^q\) and integration with the
+unchanged Parseval measure \((2\pi)^{-3}d^3\xi\) gives F9.18.
+
+### Exercise 3. A quantitative local iteration error
+
+Use the actual time F9.23 to bound the difference between the
+\(n\)-th Picard iterate and its limit. Keep the first-iterate error explicit.
+
+**Solution.** Put \(d_0=\|U^{(1)}-U^{(0)}\|_{CX_2}\).
+F9.25 gives
+\(\|U^{(k+1)}-U^{(k)}\|_{CX_2}\le4^{-k}d_0\).
+For \(m>n\), summing the telescoping differences gives
+
+\[
+\|U^{(m)}-U^{(n)}\|_{CX_2}
+\le d_0\sum_{k=n}^{m-1}4^{-k}
+\le\frac43\,4^{-n}d_0 .
+\]
+
+Completeness supplies \(U\), and sending \(m\) to infinity preserves
+this bound. Every iterate remains in the radius-\(R\) ball because
+\(M_0=R/2\) and
+\(\tau(aR+C_2R^2)\le R/4\).
+The contraction coefficient is exactly
+\(\tau(a+2C_2R)=1/4\); all coefficients are the original F9.21–F9.23
+values and the time is positive even for zero initial data.
+
+### Exercise 4. Recover the constrained curvature
+
+Let a smooth independent solution satisfy the curvature constraint at
+one time. Prove that its magnetic variable remains the actual curvature
+and that an initially vanishing Gauss constraint stays zero.
+
+**Solution.** Define
+\(C_i(A)=\epsilon_{ijk}(\partial_jA_k+[A_j,A_k]/2)\).
+Since \(A_t=E\), differentiation and interchanging \(j,k\) in the
+second bracket term give
+
+\[
+\partial_t C_i(A)
+=\epsilon_{ijk}\{\partial_jE_k+[A_j,E_k]\}
+=(\operatorname{curl}_A E)_i=\partial_tB_i.
+\]
+
+Thus \(B-C(A)\) is constant in time and its zero initial value persists.
+Now \(G=D_iE_i\) obeys
+\(\partial_tG=D_i\partial_tE_i+[E_i,E_i]=c^2D_iD_jF_{ji}\).
+Antisymmetry changes the latter sum to
+\(\frac{c^2}{2}[D_i,D_j]F_{ji}
+=\frac{c^2}{2}[F_{ij},F_{ji}]=0\),
+because \(F_{ji}=-F_{ij}\) for each ordered pair.
+Hence \(G\) is also constant and remains zero.
+For the constructed finite-regularity solution the same identities
+hold by the strong smooth approximation and product estimates proved
+in Section 7.
+
+### Exercise 5. Energy inside a shrinking ball
+
+Use the actual density \(e\) and flux \(\mathcal S\) of Section 8
+to prove that zero initial energy in a ball remains zero in its
+forward shrinking cone.
+
+**Solution.** For \(0\le t<R/c\), put
+\(B_t=\{x:|x-x_0|<R-ct\}\). Differentiation of the moving boundary
+and the divergence theorem give
+
+\[
+\frac{d}{dt}\int_{B_t}e(t,x)\,d^3x
+=-\int_{\partial B_t}\{\mathcal S\cdot n+ce\}\,dS\le0,
+\]
+
+since \(|\mathcal S\cdot n|\le ce\).
+The integral is nonnegative. If it starts at zero, it is zero for
+every allowed time. Positivity of the trace pairing gives \(E=B=0\)
+there; for smooth fields continuity changes almost-everywhere
+vanishing to pointwise vanishing. This conclusion concerns the
+curvature fields. The potential can be a nonzero flat representative,
+and \(A_t=E=0\) retains that initial representative inside the cone.
+Section 8's comparison argument applies the corresponding difference
+energy to two solutions with the same local initial data.
+
+### Exercise 6. Why a full-curvature datum is retained
+
+Explain precisely how the temporal increment proves strong full-curvature
+convergence, without inserting an \(L^2\) assumption on the potential.
+
+**Solution.** For two regular approximants write
+\(A=A_*+h\), \(A'=A_*'+h'\), where
+\(h(t)=\int_{t_*}^tE(u)\,du\).
+The finite-horizon electric comparison gives convergence of \(h\)
+in \(CL^2\); the potential-gradient comparison and Sobolev give
+convergence in \(CL^6\). Interpolation gives convergence in \(CL^3\).
+Set \(u=A_*-A_*'\), \(v=h-h'\). Expanding the original curvature
+leaves the initial term \(F(A_*)-F(A_*')\), the two derivative terms
+\(\partial_iv_j-\partial_jv_i\), and exactly
+
+\[
+[u_i,h_j]+[A_{*,i}',v_j]+[v_i,A_{*,j}]
+ +[h_i',u_j]+[v_i,h_j]+[h_i',v_j].
+\]
+
+For each product use one \(L^6\) factor and one \(L^3\) factor,
+retaining the displayed matrix order. The full tensor bound is
+\(\|[X_i,Y_j]_{ij}\|_2\le2\|X\|_6\|Y\|_3\).
+The initial full curvatures converge by their separate graph
+hypothesis. All terms therefore converge in \(CL^2\), with the
+explicit sum GE.25. The only \(L^2\) potentials used were the
+actual increments.
+
+### Exercise 7. The complete theorem and its uniqueness class
+
+State exactly what the global theorem guarantees, and derive its
+time-composition identity from the common approximation family.
+
+**Solution.** For \(A_*\in L^6\), \(\partial A_*,E_*,F(A_*)\in L^2\)
+with distributional Gauss constraint, GE.1–GE.47 constructs a unique
+global temporal solution in the GE.4 regular-approximation class.
+It has strong continuous \(L^6\) potential and \(L^2\) gradient,
+electric field and full curvature on every compact time interval,
+the distributional equations, exact energy equality and finite-horizon
+Lipschitz dependence in the graph metric.
+At any time \(s\), the same regular approximants converge in that
+metric to the actual evolved datum. Shifting those approximants gives
+a witnessing family from the evolved datum. Independence of all such
+families makes further evolution by \(r\) equal to evolution by
+\(s+r\) from the original datum. Thus
+\(\Phi_r\Phi_s=\Phi_{r+s}\), \(\Phi_0=\mathrm{id}\), and
+\(\Phi_{-r}=\Phi_r^{-1}\).
+The proof supplies uniqueness in the stated approximation class;
+it does not identify every distributional solution with that class.
+
+### Exercise 8. A flat potential and a spectral question
+
+For \(Q(x)=\exp(-\alpha e^{-|x|^2/(2\ell^2)}T)\) with
+\(T=\operatorname{diag}(i,-i)\), calculate the curvature and time
+evolution of \(A_*=-(dQ)Q^{-1}\), \(E_*=0\). Identify the
+additional structures needed to turn this example into a question
+about a quantum energy spectrum.
+
+**Solution.** With \(f=e^{-|x|^2/(2\ell^2)}\), commutation of the
+single generator with its exponential gives \(A_*=\alpha T\,df\).
+Then \(dA_*=\alpha T\,d^2f=0\) and \(A_*\wedge A_*=0\);
+equivalently every original curvature component is zero.
+The exact evolution is the stationary \(A(t)=A_*\), \(E=B=0\),
+which solves all three equations and has zero physical curvature energy.
+The potential gradient may be nonzero when \(\alpha\ne0\).
+This construction specifies a classical connection and its evolution.
+A quantum spectral question additionally specifies a Hilbert space,
+the physical state space after the gauge constraint, a self-adjoint
+Hamiltonian with its domain, its vacuum, and the spectral measure
+on the orthogonal complement of the vacuum.
+None of those is supplied by the classical connection alone.
+The classical calculation is complete; the later quantum lessons
+construct and compare those additional objects in their stated models.
+
+## 49. Reading route and sources
+
+For a first pass, work through Sections 1–11, then read the statements
+and mechanisms in Sections 43–47 and solve the main exercises.
+For the complete energy-level proof, follow the linked chapters in
+Sections 12–46 in order. They supply the heat construction, wave
+estimates, gauge maps, comparisons and approximation limits used by
+the final theorem. Every one of their exercise sets includes solutions.
+
+The main human comparison is Sung-Jin Oh,
+[*Gauge choice for the Yang–Mills equations using the Yang–Mills heat flow
+and local well-posedness in H1*](https://arxiv.org/abs/1210.1558v2)
+and [*Finite energy global well-posedness of the Yang–Mills equations
+on R^(1+3): An approach using the Yang–Mills heat flow*](https://arxiv.org/abs/1210.1557v2).
+The exact author-source versions, bounded reading coverage, matching
+proof locations, and complete physical-coordinate comparisons are
+recorded in the relevant chapters and the lesson's provenance file.
+The course's larger full-curvature graph domain is stated and proved
+explicitly; it is not attributed to a source with a different domain.
+
+Unit 10 turns to Euclidean Yang–Mills geometry, self-duality and instantons.
+The starting change is the metric signature and the corresponding
+variational problem. The physical-time Cauchy construction remains
+the classical result proved here.

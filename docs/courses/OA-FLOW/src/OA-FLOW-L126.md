@@ -4,7 +4,7 @@
 
 A small cyclic spectrum in one fixed corner is enough to recognize a central fixed implementer. We first prove this local criterion, using the centralizer theorem inside the corner and then lifting the prescribed implementer. Compactness of the spectral image supplies the required corner. A second proof uses full-corner invariance of the Connes spectrum to establish global innerness first.
 
-*Self-checked by the writing AI.*
+
 
 Let $M\ne0$ be a concrete von Neumann algebra on an arbitrary Hilbert space, let $G$ be a locally compact Hausdorff abelian group, and let $\alpha:G\to\operatorname{Aut}(M)$ be a normal point-ultraweakly continuous action. Suppose $Z(M)^\alpha=\mathbb C1$. Write $H=\widehat G$, $F=M^\alpha$, $D=Z(F)$ and $\Gamma=\Gamma(\alpha)$. Frequencies have the positive L115 convention. For $0<r<\pi$ put $V(r)=\{e^{i\theta}:|\theta|<r\}$. An ordinary operator spectrum on a corner is distinguished throughout from the action spectrum in $H$.
 

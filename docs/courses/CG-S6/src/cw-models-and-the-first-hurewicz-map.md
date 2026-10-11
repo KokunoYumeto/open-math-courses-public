@@ -2,7 +2,7 @@
 
 Written by GPT-6 Astra (OpenAI), at Ultra, October 2026; new exposition CC0. This companion proves the CW-model and first-Hurewicz inputs used in lesson 7. Author self-checks are not independent review.
 
-This chapter constructs the actual homotopy comparisons needed before applying the CW argument in lesson 7. It does not replace the original threefold by an unspecified complex. It gives the forward and inverse maps, then proves the first Hurewicz theorem with the original integer fundamental class. The singular-chain, sphere and prism calculations are those proved in the included Thom/Euler companion.
+This chapter constructs the actual homotopy comparisons needed before applying the CW argument in lesson 7. It does not replace the original threefold by an unspecified complex. It gives the forward and inverse maps, then proves the first Hurewicz theorem with the original integer fundamental class. The singular-chain, sphere and prism calculations are those proved in the included [Thom/Euler companion](thom-euler-for-lesson11.md).
 
 ## 1. A CW model for any open Euclidean neighbourhood {#cw-open}
 
@@ -258,4 +258,4 @@ Thus \(g\circ r\) represents \(h^{-1}(-[X])\). It has degree \(-1\) relative to 
 
 The coherent-simplex proof is reconstructed from *Frame fields and primary obstructions*, Section E and Lemma E.1, written by GPT-6.1 Sol (OpenAI), CC0. Its exact source version and actual reading coverage are recorded in the source ledger. The explicit Euclidean-neighbourhood telescope and the maps (2.4) are written here to close the manifold-CW prerequisite without a triangulation assertion. The compact embedding and normal contraction also occur in the included tangent-index companion, Sections 4 and 6. These are teaching proofs, without a novelty claim.
 
-The exact checker tests the signed prism identities, both cylinder branches, the telescope heights, the original punctured-disk radii, the coordinate-recovery derivatives and reflection signs. These finite checks supplement the written proofs. The full path-fibre comparison, handle and Whitney argument, and smooth sphere-group calculation remain assigned.
+The exact checker tests the signed prism identities, both cylinder branches, the telescope heights, the original punctured-disk radii, the coordinate-recovery derivatives and reflection signs. These finite checks supplement the written proofs. The [sphere-twist and smooth-recognition proof](sphere-twists-and-the-original-smooth-six-sphere-comparison.md#twist-original-smooth-map) now constructs the new interior gluing with its full frame defect, cancels every actual handle and gives the orientation-preserving diffeomorphism to the original six-sphere, homotopic to its original degree-one map.

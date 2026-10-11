@@ -2,7 +2,7 @@
 
 A norm-continuous one-parameter group in a unital Banach algebra has a bounded generator and is an exponential. The existence of that generator can be seen directly by averaging the group near zero. A local logarithm gives a second route and explains the construction used in Takesaki II, Lemma XI.1.17. The same lemma places the generator's spectrum on the imaginary axis when every group element has norm one.
 
-*Programme proof written in Codex (OpenAI), September 2026; restoration and proof expansion, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 The norm integrals, fundamental theorem and absolutely convergent products are proved in [CF1](OA-FLOW-CF.md#oa-flow.cf.1); the Neumann inverse and spectral bounds are in [CF2](OA-FLOW-CF.md#oa-flow.cf.2). [AF4](OA-FLOW-AF.md#af-4) proves the precise logarithm identities and full exponential spectral mapping, including an arbitrary identity norm. Here \(\operatorname{GL}(A)\) denotes the multiplicative group of invertible elements of \(A\).
 

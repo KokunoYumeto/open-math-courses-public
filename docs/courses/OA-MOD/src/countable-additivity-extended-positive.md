@@ -32,6 +32,37 @@ The easier direction is already instructive. Write \(s_k=\sum_{j\leq k}\psi_j\).
 
 For a bounded positive operator \(a\) on \(\mathcal H\), define \(\operatorname{Tr}(a)\) as the supremum of \(\sum_{\xi\in F}\langle a\xi,\xi\rangle\) over finite orthonormal sets \(F\). Parseval identifies this with the corresponding supremum along any orthonormal basis. The trace is additive: to obtain the nontrivial inequality, place finite test subspaces for two positive operators inside their common finite-dimensional span. It is also normal: if a bounded positive net \(a_i\) increases to \(a\), each finite scalar sum converges increasingly, so interchange of the two suprema gives \(\operatorname{Tr}(a)=\sup_i\operatorname{Tr}(a_i)\).
 
+We spell out the compact spectral fact used here and in the later
+closed-form example. Let \(C=C^*\) be compact on any Hilbert space.
+By the bounded spectral theorem,
+put \(P_n=1_{\{|t|\geq1/n\}}(C)\). For \(\xi\in P_nH\),
+\(\|C\xi\|\geq n^{-1}\|\xi\|\). If \(P_nH\) were infinite
+dimensional, it would contain an orthonormal sequence \((u_k)\).
+The vectors \(Cu_k\) would have pairwise distance at least
+\(\sqrt2/n\), contradicting compactness. Thus every \(P_n\) has
+finite rank.
+
+For completeness, a self-adjoint operator on a nonzero finite-dimensional
+Hilbert space has an orthonormal eigenbasis. Its real quadratic form
+attains a maximum on the compact unit sphere, at some unit vector \(u\).
+For \(v\perp u\), differentiating the quadratic form at zero along
+\((u+tv)/\|u+tv\|\), first for \(v\) and then for \(iv\), shows
+\(\langle Cu,v\rangle=0\). Hence \(Cu\) is a scalar multiple of
+\(u\). Self-adjointness leaves \(u^\perp\) invariant, and induction
+on dimension proves the assertion.
+
+The projections \(P_n\) increase and commute with \(C\). Their
+successive orthogonal differences are finite-dimensional invariant
+spaces. Diagonalize \(C\) on each difference by the preceding argument.
+The bounded spectral theorem gives
+\(P_n\uparrow1-P_{\ker C}\) strongly. Therefore their eigenvectors
+form an at most countable orthonormal basis of \((\ker C)^\perp\).
+For every \(\varepsilon>0\), only finitely many eigenvalues, counted
+with multiplicity, have modulus at least \(\varepsilon\). Finite
+spectral truncations consequently converge to \(C\) in operator norm.
+The kernel may still have arbitrary Hilbert dimension; no separability
+of the ambient space was assumed.
+
 A positive operator has finite trace precisely when it is positive trace class. Indeed, \(\operatorname{Tr}(a)<\infty\) forces \(1_{[\varepsilon,\infty)}(a)\mathcal H\) to be finite-dimensional for every \(\varepsilon>0\); these spectral cutoffs approximate \(a\) in norm. Its nonzero eigenvalues form an at most countable summable list. For a positive trace-class operator \(a=\sum_k\lambda_k|v_k\rangle\langle v_k|\) and \(x\in B(\mathcal H)\), set
 
 \[

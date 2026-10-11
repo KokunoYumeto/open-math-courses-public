@@ -1,1 +1,355 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connections, curvature and holonomy</title></head><body><main><h1>Connections, curvature and holonomy</h1><p>No lessons are currently available for this course.</p><p><span class="unlinked">Open Mathematics Courses</span></p></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Grassmannians and classifying maps</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+</head>
+<body><main><nav aria-label="Chapter contents"><ul><li><a href="#part-a">A. Finite Grassmannians</a></li><li><a href="#part-b">B. The topology of finite-support vectors</a></li><li><a href="#part-c">C. Classification over paracompact Hausdorff spaces</a></li><li><a href="#part-d">D. Projective spaces and Gauss maps</a></li><li><a href="#part-e">E. Two facts about attaching spaces</a></li><li><a href="#further-reading">Further reading</a></li></ul></nav><article class="lesson"><h1 id="grassmannians-and-classifying-maps">Grassmannians and classifying maps</h1>
+<p><em>Written and self-checked by GPT-6 Astra (OpenAI), at Ultra, October 2026. New exposition: CC0 1.0.</em></p>
+<p>Let <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span> mean <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, with its usual inner product. Bundles have finite, fixed rank; their bases need not be countable or metrizable. We construct a universal rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle and prove that its pullbacks classify bundles over every paracompact Hausdorff base. The topology on the universal space is specified below.</p>
+<p>The bundle coordinate, inverse and pullback results are <a href="DG-CHAR-01.html#lemma-a-1">DG-CHAR-01 A.1</a> and <a href="DG-CHAR-01.html#theorem-b-1">DG-CHAR-01 B.1</a>. The partition theorem is <a href="DG-CHAR-01.html#theorem-b-3">DG-CHAR-01 B.3</a>, including its arbitrary paracompact Hausdorff version. Finite-dimensional estimates, compactness and smooth matrix inversion are proved in <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.0</a>, <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a> and <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.4</a>; determinant identities are <a href="DG-CHAR-06.html#lemma-l-1">DG-CHAR-06 L.1</a>. These results, and the exact further prerequisites linked in the proofs, are the programme inputs.</p>
+<h2 id="part-a">A. Finite Grassmannians</h2>
+<p id="proposition-a-1"><strong>Proposition A.1 (projection and graph coordinates).</strong> For <span class="math" data-tex="\(0\leq r\leq N\)">\(0\leq r\leq N\)</span>, let
+<span class="math math-display" data-tex="\[
+ G_r(\mathbb F^N)=
+ \{P\in M_N(\mathbb F):P^*=P,\ P^2=P,\ \operatorname{tr}P=r\}.
+\tag{A1}
+\]">\[
+ G_r(\mathbb F^N)=
+ \{P\in M_N(\mathbb F):P^*=P,\ P^2=P,\ \operatorname{tr}P=r\}.
+\tag{A1}
+\]</span>
+With its matrix topology this is a compact smooth manifold. Its real dimension is <span class="math" data-tex="\(r(N-r)\)">\(r(N-r)\)</span> for <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and <span class="math" data-tex="\(2r(N-r)\)">\(2r(N-r)\)</span> for <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. It parametrizes <span class="math" data-tex="\(r\)">\(r\)</span>-dimensional subspaces. At the point represented by a plane <span class="math" data-tex="\(V\)">\(V\)</span>, its tangent space is canonically <span class="math" data-tex="\(\operatorname{Hom}_{\mathbb F}(V,V^\perp)\)">\(\operatorname{Hom}_{\mathbb F}(V,V^\perp)\)</span>. It also has the quotient topology of independent <span class="math" data-tex="\(r\)">\(r\)</span>-frames modulo change of basis.</p>
+<p><strong>Proof.</strong> An idempotent splits the vector space as its image and kernel: <span class="math" data-tex="\(x=Px+(x-Px)\)">\(x=Px+(x-Px)\)</span>, and the intersection is zero. Self-adjointness makes these summands orthogonal. In a basis of the two summands its matrix is <span class="math" data-tex="\(\operatorname{diag}(I,0)\)">\(\operatorname{diag}(I,0)\)</span>; the trace is unchanged by basis change because <span class="math" data-tex="\(\operatorname{tr}(AB)=\operatorname{tr}(BA)\)">\(\operatorname{tr}(AB)=\operatorname{tr}(BA)\)</span>, as expansion of the two finite sums shows. Thus its image has dimension <span class="math" data-tex="\(r\)">\(r\)</span>. Conversely every plane has a unique orthogonal projection. For completeness, an orthonormal basis of a finite-dimensional subspace is obtained by successively subtracting the components along the previously obtained orthonormal vectors and dividing the remaining nonzero vector by its norm. Extending this procedure gives the orthogonal complement and its projection.</p>
+<p>The equations (A1) are closed conditions on matrix entries. Orthogonality gives
+<span class="math" data-tex="\(\|x\|^2=\|Px\|^2+\|x-Px\|^2\)">\(\|x\|^2=\|Px\|^2+\|x-Px\|^2\)</span>, so <span class="math" data-tex="\(\|P\|\leq1\)">\(\|P\|\leq1\)</span>. In particular every entry has absolute value at most one. Closed bounded subsets of a finite-dimensional real space are compact by <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>; complex matrices are regarded as real coordinates here.</p>
+<p>If the columns of <span class="math" data-tex="\(A:\mathbb F^r\to\mathbb F^N\)">\(A:\mathbb F^r\to\mathbb F^N\)</span> are independent, the Gram matrix <span class="math" data-tex="\(A^*A\)">\(A^*A\)</span> is invertible: a vector in its kernel has
+<span class="math" data-tex="\(\|Au\|^2=u^*A^*Au=0\)">\(\|Au\|^2=u^*A^*Au=0\)</span>, hence is zero. Direct multiplication shows that
+<span class="math math-display" data-tex="\[
+ P_A=A(A^*A)^{-1}A^*
+\tag{A2}
+\]">\[
+ P_A=A(A^*A)^{-1}A^*
+\tag{A2}
+\]</span>
+is self-adjoint, idempotent and the identity on the image of <span class="math" data-tex="\(A\)">\(A\)</span>. It is therefore the projection onto that image. Replacing <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(AC\)">\(AC\)</span>, with <span class="math" data-tex="\(C\)">\(C\)</span> invertible, leaves (A2) unchanged, using
+<span class="math" data-tex="\((C^*A^*AC)^{-1}=C^{-1}(A^*A)^{-1}(C^*)^{-1}\)">\((C^*A^*AC)^{-1}=C^{-1}(A^*A)^{-1}(C^*)^{-1}\)</span>.</p>
+<p>Fix a plane <span class="math" data-tex="\(V\)">\(V\)</span>, and write matrices in the decomposition <span class="math" data-tex="\(V\oplus V^\perp\)">\(V\oplus V^\perp\)</span>. For another plane <span class="math" data-tex="\(W\)">\(W\)</span>, set <span class="math" data-tex="\(B=\pi_V|_W\)">\(B=\pi_V|_W\)</span>. Its adjoint is <span class="math" data-tex="\(B^*=P_W|_V\)">\(B^*=P_W|_V\)</span>, since the two inner products agree on <span class="math" data-tex="\(W\)">\(W\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>. Hence the upper-left block of <span class="math" data-tex="\(P_W\)">\(P_W\)</span> is <span class="math" data-tex="\(BB^*\)">\(BB^*\)</span>. It is invertible precisely when <span class="math" data-tex="\(B\)">\(B\)</span> is an isomorphism. Indeed, <span class="math" data-tex="\(\ker BB^*=\ker B^*\)">\(\ker BB^*=\ker B^*\)</span> by the squared-norm identity; and in equal finite dimensions surjectivity, injectivity and invertibility are equivalent. Thus the condition is open, given by a nonzero determinant of a block of <span class="math" data-tex="\(P_W\)">\(P_W\)</span>. Denote this open set by <span class="math" data-tex="\(U_V\)">\(U_V\)</span>.</p>
+<p>Every <span class="math" data-tex="\(W\in U_V\)">\(W\in U_V\)</span> is uniquely the graph of a map <span class="math" data-tex="\(T:V\to V^\perp\)">\(T:V\to V^\perp\)</span>. Formula (A2) gives its projection:
+<span class="math math-display" data-tex="\[
+ P(T)=
+ \begin{pmatrix}I\\T\end{pmatrix}
+ (I+T^*T)^{-1}
+ \begin{pmatrix}I&amp;T^*\end{pmatrix}.
+\tag{A3}
+\]">\[
+ P(T)=
+ \begin{pmatrix}I\\T\end{pmatrix}
+ (I+T^*T)^{-1}
+ \begin{pmatrix}I&amp;T^*\end{pmatrix}.
+\tag{A3}
+\]</span>
+The inverse chart is the lower-left block of <span class="math" data-tex="\(P\)">\(P\)</span> multiplied by the inverse of its upper-left block. Both directions are continuous and smooth in real coordinates, by <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.4</a>. On overlaps the same block formula composed with a fixed orthogonal change of coordinates gives a smooth transition. These charts cover, since <span class="math" data-tex="\(V\in U_V\)">\(V\in U_V\)</span>, and have the asserted dimension. The matrix subspace is Hausdorff and second countable: intersections with balls having rational centers and radii form a countable base. Thus these are manifold charts with the usual separation and countability properties.</p>
+<p>At <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, the derivative of (A3) in direction <span class="math" data-tex="\(S\)">\(S\)</span> is
+<span class="math math-display" data-tex="\[
+ dP_0(S)=\begin{pmatrix}0&amp;S^*\\S&amp;0\end{pmatrix}.
+\tag{A4}
+\]">\[
+ dP_0(S)=\begin{pmatrix}0&amp;S^*\\S&amp;0\end{pmatrix}.
+\tag{A4}
+\]</span>
+The inverse chart recovers <span class="math" data-tex="\(S\)">\(S\)</span>, so this is an isomorphism from <span class="math" data-tex="\(\operatorname{Hom}_{\mathbb F}(V,V^\perp)\)">\(\operatorname{Hom}_{\mathbb F}(V,V^\perp)\)</span> onto the tangent space. Both (A3) and (A4) use only the fixed ambient inner product and the subspace <span class="math" data-tex="\(V\)">\(V\)</span>, and consequently this identification does not depend on bases.</p>
+<p>Finally (A2) is a continuous surjection from the open set of independent frames, with fibres exactly the change-of-basis orbits. On <span class="math" data-tex="\(U_V\)">\(U_V\)</span> choose an orthonormal basis of <span class="math" data-tex="\(V\)">\(V\)</span>; the frame with columns <span class="math" data-tex="\(\binom I T\)">\(\binom I T\)</span> in this basis is a continuous section. A set whose inverse image in the frame space is open therefore has open intersection with every <span class="math" data-tex="\(U_V\)">\(U_V\)</span>, and is open. This proves the claimed quotient topology. The same argument includes <span class="math" data-tex="\(r=0,N\)">\(r=0,N\)</span>, when the Grassmannian is a point. □</p>
+<p id="theorem-a-2"><strong>Theorem A.2 (finite tautological bundle).</strong> The subspace
+<span class="math math-display" data-tex="\[
+ \gamma_r^N=\{(P,v)\in G_r(\mathbb F^N)\times\mathbb F^N:Pv=v\}
+\tag{A5}
+\]">\[
+ \gamma_r^N=\{(P,v)\in G_r(\mathbb F^N)\times\mathbb F^N:Pv=v\}
+\tag{A5}
+\]</span>
+is a rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle. Its complementary bundle has fibre <span class="math" data-tex="\(\ker P\)">\(\ker P\)</span>, and their direct sum is the constant bundle <span class="math" data-tex="\(\varepsilon^N\)">\(\varepsilon^N\)</span>. Every continuous bundle map <span class="math" data-tex="\(J:E\to B\times\mathbb F^N\)">\(J:E\to B\times\mathbb F^N\)</span> that is injective on each fibre determines a continuous map <span class="math" data-tex="\(f_J:B\to G_r(\mathbb F^N)\)">\(f_J:B\to G_r(\mathbb F^N)\)</span> and an isomorphism <span class="math" data-tex="\(E\cong f_J^*\gamma_r^N\)">\(E\cong f_J^*\gamma_r^N\)</span>.</p>
+<p><strong>Proof.</strong> Over <span class="math" data-tex="\(U_V\)">\(U_V\)</span> the map
+<span class="math math-display" data-tex="\[
+ (P,u)\longmapsto(P,u+T(P)u),\qquad u\in V,
+\tag{A6}
+\]">\[
+ (P,u)\longmapsto(P,u+T(P)u),\qquad u\in V,
+\tag{A6}
+\]</span>
+is a continuous trivialization of (A5). Its inverse sends <span class="math" data-tex="\((P,v)\)">\((P,v)\)</span> to <span class="math" data-tex="\((P,\pi_Vv)\)">\((P,\pi_Vv)\)</span>. These maps are inverse because <span class="math" data-tex="\(P\)">\(P\)</span> represents the graph of <span class="math" data-tex="\(T(P)\)">\(T(P)\)</span>. Their formulas also prove smooth local triviality. The map <span class="math" data-tex="\(P\mapsto I-P\)">\(P\mapsto I-P\)</span> is a continuous smooth involution from <span class="math" data-tex="\(G_r(\mathbb F^N)\)">\(G_r(\mathbb F^N)\)</span> to <span class="math" data-tex="\(G_{N-r}(\mathbb F^N)\)">\(G_{N-r}(\mathbb F^N)\)</span>. Pulling back the latter tautological bundle gives the complementary one. Addition identifies their sum with the constant bundle; its inverse is <span class="math" data-tex="\(v\mapsto(Pv,(I-P)v)\)">\(v\mapsto(Pv,(I-P)v)\)</span>.</p>
+<p>In a local frame of <span class="math" data-tex="\(E\)">\(E\)</span>, the columns of <span class="math" data-tex="\(J\)">\(J\)</span> form a continuous independent matrix <span class="math" data-tex="\(A(b)\)">\(A(b)\)</span>. Formula (A2) defines <span class="math" data-tex="\(f_J(b)\)">\(f_J(b)\)</span> continuously, and its change-of-basis invariance makes the definitions agree on overlaps. The map <span class="math" data-tex="\(v\mapsto(b,Jv)\)">\(v\mapsto(b,Jv)\)</span> into the pullback is continuous and is a linear isomorphism on each fibre. Its inverse is continuous by the coordinate inversion result <a href="DG-CHAR-01.html#lemma-a-1">DG-CHAR-01 A.1</a>; the pullback is a bundle by <a href="DG-CHAR-01.html#theorem-b-1">DG-CHAR-01 B.1</a>. This proves the assertion on arbitrary bases. □</p>
+<h2 id="part-b">B. The topology of finite-support vectors</h2>
+<p id="lemma-b-1"><strong>Lemma B.1 (products of compact exhaustions).</strong> Suppose <span class="math" data-tex="\(X=\bigcup_nK_n\)">\(X=\bigcup_nK_n\)</span> and <span class="math" data-tex="\(Y=\bigcup_nL_n\)">\(Y=\bigcup_nL_n\)</span> have the final topologies of nested compact Hausdorff subspaces with closed inclusions. Thus a set is open in <span class="math" data-tex="\(X\)">\(X\)</span> exactly when its intersection with every <span class="math" data-tex="\(K_n\)">\(K_n\)</span> is open there, and likewise for <span class="math" data-tex="\(Y\)">\(Y\)</span>. The product topology on <span class="math" data-tex="\(X\times Y\)">\(X\times Y\)</span> is the final topology of <span class="math" data-tex="\(K_n\times L_n\)">\(K_n\times L_n\)</span>.</p>
+<p><strong>Proof.</strong> First recall the finite compactness facts we need. A compact Hausdorff space is paracompact, since every open cover has a finite subcover, which is a locally finite refinement. It is regular and normal by <a href="DG-CHAR-08.html#lemma-q-1">DG-CHAR-08 Q.1</a>. In particular a compact subset of an open set has an open neighborhood whose compact closure stays in that set: choose a smaller neighborhood with closure inside the open set at each point and then take a finite union.</p>
+<p>The product of two compact spaces is compact. To check this directly, refine an open cover of <span class="math" data-tex="\(K\times L\)">\(K\times L\)</span> by rectangles. For fixed <span class="math" data-tex="\(x\)">\(x\)</span>, finitely many rectangles cover <span class="math" data-tex="\(\{x\}\times L\)">\(\{x\}\times L\)</span>; intersect their first-coordinate neighborhoods to obtain <span class="math" data-tex="\(U_x\)">\(U_x\)</span> such that <span class="math" data-tex="\(U_x\times L\)">\(U_x\times L\)</span> is covered by those finitely many original cover members. Finitely many <span class="math" data-tex="\(U_x\)">\(U_x\)</span> cover <span class="math" data-tex="\(K\)">\(K\)</span>, giving a finite subcover of the product. Products of Hausdorff spaces are Hausdorff by separating a coordinate in which two points differ.</p>
+<p>We also use a rectangle enlargement fact. If <span class="math" data-tex="\(A\times B\)">\(A\times B\)</span> is a product of compact subsets contained in an open subset <span class="math" data-tex="\(O\)">\(O\)</span> of a product, then there are open <span class="math" data-tex="\(U\supset A\)">\(U\supset A\)</span>, <span class="math" data-tex="\(V\supset B\)">\(V\supset B\)</span> with <span class="math" data-tex="\(U\times V\subset O\)">\(U\times V\subset O\)</span>. For fixed <span class="math" data-tex="\(a\)">\(a\)</span>, finitely many rectangles in <span class="math" data-tex="\(O\)">\(O\)</span> cover <span class="math" data-tex="\(\{a\}\times B\)">\(\{a\}\times B\)</span>; intersect the first factors and unite the second factors. This gives <span class="math" data-tex="\(U_a\ni a\)">\(U_a\ni a\)</span>, <span class="math" data-tex="\(V_a\supset B\)">\(V_a\supset B\)</span> with <span class="math" data-tex="\(U_a\times V_a\subset O\)">\(U_a\times V_a\subset O\)</span>. Cover <span class="math" data-tex="\(A\)">\(A\)</span> by finitely many <span class="math" data-tex="\(U_a\)">\(U_a\)</span>, and use their union and the intersection of the corresponding <span class="math" data-tex="\(V_a\)">\(V_a\)</span>.</p>
+<p>Every product-open set is stage-open, because the inclusions are continuous. Conversely let <span class="math" data-tex="\(W\subset X\times Y\)">\(W\subset X\times Y\)</span> be stage-open and let <span class="math" data-tex="\((x,y)\in W\cap(K_m\times L_m)\)">\((x,y)\in W\cap(K_m\times L_m)\)</span>. Regularity supplies compact neighborhoods <span class="math" data-tex="\(A_m\ni x\)">\(A_m\ni x\)</span>, <span class="math" data-tex="\(B_m\ni y\)">\(B_m\ni y\)</span> in these stages with <span class="math" data-tex="\(A_m\times B_m\subset W\)">\(A_m\times B_m\subset W\)</span>. Inductively, regard <span class="math" data-tex="\(A_n,B_n\)">\(A_n,B_n\)</span> as compact subsets of the next stages. The enlargement fact and regularity give compact neighborhoods
+<span class="math math-display" data-tex="\[
+ A_n\subset\operatorname{int}_{K_{n+1}}A_{n+1},
+ \qquad
+ B_n\subset\operatorname{int}_{L_{n+1}}B_{n+1},
+ \qquad A_{n+1}\times B_{n+1}\subset W.
+\tag{B1}
+\]">\[
+ A_n\subset\operatorname{int}_{K_{n+1}}A_{n+1},
+ \qquad
+ B_n\subset\operatorname{int}_{L_{n+1}}B_{n+1},
+ \qquad A_{n+1}\times B_{n+1}\subset W.
+\tag{B1}
+\]</span>
+Put <span class="math" data-tex="\(U=\bigcup_{n\geq m}A_n\)">\(U=\bigcup_{n\geq m}A_n\)</span>, <span class="math" data-tex="\(V=\bigcup_{n\geq m}B_n\)">\(V=\bigcup_{n\geq m}B_n\)</span>. These unions are open in their final topologies. Indeed, if <span class="math" data-tex="\(z\in U\cap K_j\)">\(z\in U\cap K_j\)</span>, choose <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(z\in A_n\)">\(z\in A_n\)</span> and then <span class="math" data-tex="\(k\geq n,j,m\)">\(k\geq n,j,m\)</span>. A neighborhood of <span class="math" data-tex="\(z\)">\(z\)</span> in <span class="math" data-tex="\(K_{k+1}\)">\(K_{k+1}\)</span> lies in <span class="math" data-tex="\(A_{k+1}\)">\(A_{k+1}\)</span> by (B1); its intersection with <span class="math" data-tex="\(K_j\)">\(K_j\)</span> is an open neighborhood contained in <span class="math" data-tex="\(U\cap K_j\)">\(U\cap K_j\)</span>. The same proof applies to <span class="math" data-tex="\(V\)">\(V\)</span>. Nestedness gives <span class="math" data-tex="\(U\times V\subset W\)">\(U\times V\subset W\)</span>. Hence <span class="math" data-tex="\(W\)">\(W\)</span> is product-open. □</p>
+<p id="lemma-b-2"><strong>Lemma B.2 (operations and frames in the direct limit).</strong> Give
+<span class="math math-display" data-tex="\[
+ \mathbb F^\infty=\bigcup_{N\geq1}\mathbb F^N,\qquad
+ G_r(\mathbb F^\infty)=\bigcup_{N\geq\max(r,1)}G_r(\mathbb F^N)
+\tag{B2}
+\]">\[
+ \mathbb F^\infty=\bigcup_{N\geq1}\mathbb F^N,\qquad
+ G_r(\mathbb F^\infty)=\bigcup_{N\geq\max(r,1)}G_r(\mathbb F^N)
+\tag{B2}
+\]</span>
+their final topologies, where inclusions append zero coordinates, or extend a projection by zero. Both spaces are Hausdorff, their finite stages are embedded and closed, and finite products and products with <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> have the corresponding compact-stage final topologies. Addition, scalar multiplication, coordinate shifts, inner products and projection evaluation are jointly continuous. The map from independent <span class="math" data-tex="\(r\)">\(r\)</span>-tuples in <span class="math" data-tex="\((\mathbb F^\infty)^r\)">\((\mathbb F^\infty)^r\)</span> to their span in <span class="math" data-tex="\(G_r(\mathbb F^\infty)\)">\(G_r(\mathbb F^\infty)\)</span> is continuous.</p>
+<p><strong>Proof.</strong> A map out of a final space is continuous if and only if its restrictions to all stages are continuous, since openness of inverse images is tested on the stages. The same is true on an open subset <span class="math" data-tex="\(U\)">\(U\)</span>: a set open in every <span class="math" data-tex="\(U\cap K_n\)">\(U\cap K_n\)</span> is open in <span class="math" data-tex="\(K_n\)">\(K_n\)</span>, because <span class="math" data-tex="\(U\cap K_n\)">\(U\cap K_n\)</span> is open there, and hence is open in the full final space.</p>
+<p>Each vector coordinate and each projection matrix entry is continuous by the first observation. These functions separate points, proving Hausdorffness. A finite vector stage is closed, since it is the intersection of the zero sets of the later coordinates. Its induced topology is Euclidean: inclusion is continuous, and projection to the first <span class="math" data-tex="\(N\)">\(N\)</span> coordinates restricts to its inverse. For a finite Grassmannian stage, A.1 gives compactness. A compact subset of a Hausdorff space is closed: for a point outside it, separate that point from each of its points, use finitely many of the neighborhoods on the compact set, and intersect the corresponding neighborhoods of the outside point. The same argument shows that a continuous bijection from a compact space to a Hausdorff space is a homeomorphism onto its image, by applying closedness to compact closed subsets. This proves the assertion for the Grassmannian inclusions.</p>
+<p>Let <span class="math" data-tex="\(D_n\)">\(D_n\)</span> be the closed ball of radius <span class="math" data-tex="\(n\)">\(n\)</span> in <span class="math" data-tex="\(\mathbb F^n\)">\(\mathbb F^n\)</span>. The final topology of these compact sets on <span class="math" data-tex="\(\mathbb F^\infty\)">\(\mathbb F^\infty\)</span> is exactly its specified topology. One direction follows by restriction. For the other, if <span class="math" data-tex="\(A\cap D_n\)">\(A\cap D_n\)</span> is closed for every <span class="math" data-tex="\(n\)">\(n\)</span>, fix <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(x\in\mathbb F^N\setminus A\)">\(x\in\mathbb F^N\setminus A\)</span>. Choose <span class="math" data-tex="\(n\geq N\)">\(n\geq N\)</span> with <span class="math" data-tex="\(n&gt;\|x\|\)">\(n&gt;\|x\|\)</span>. A neighborhood of <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(D_n\)">\(D_n\)</span> misses <span class="math" data-tex="\(A\)">\(A\)</span>, and its intersection with the interior radius-<span class="math" data-tex="\(n\)">\(n\)</span> ball of <span class="math" data-tex="\(\mathbb F^N\)">\(\mathbb F^N\)</span> is a neighborhood in <span class="math" data-tex="\(\mathbb F^N\)">\(\mathbb F^N\)</span> missing <span class="math" data-tex="\(A\)">\(A\)</span>. Thus <span class="math" data-tex="\(A\cap\mathbb F^N\)">\(A\cap\mathbb F^N\)</span> is closed. Lemma B.1 now applies to the <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, the compact Grassmannians, scalar balls and a constant interval stage. Iterating it proves the finite-product assertions.</p>
+<p>Addition and scalar multiplication restrict on every compact product stage to the usual operations in a finite-dimensional vector space, followed by its continuous inclusion. The same is true of each fixed coordinate shift <span class="math" data-tex="\(e_i\mapsto e_{2i}\)">\(e_i\mapsto e_{2i}\)</span> or <span class="math" data-tex="\(e_i\mapsto e_{2i-1}\)">\(e_i\mapsto e_{2i-1}\)</span>. Inner products restrict to finite sums of products of coordinates. Finally
+<span class="math math-display" data-tex="\[
+ (P,v)\longmapsto Pv
+\tag{B3}
+\]">\[
+ (P,v)\longmapsto Pv
+\tag{B3}
+\]</span>
+restricts on <span class="math" data-tex="\(G_r(\mathbb F^n)\times D_n\)">\(G_r(\mathbb F^n)\times D_n\)</span> to ordinary matrix evaluation into <span class="math" data-tex="\(\mathbb F^n\)">\(\mathbb F^n\)</span>. The product result proves all these joint continuity statements.</p>
+<p>For <span class="math" data-tex="\(r\)">\(r\)</span> vectors <span class="math" data-tex="\(v_1,\ldots,v_r\)">\(v_1,\ldots,v_r\)</span>, their Gram determinant is continuous by joint continuity of the inner product. It is nonzero precisely when the vectors are independent: the Gram matrix has kernel consisting of the coefficients of zero linear combinations, by the squared-norm calculation in A.1. Thus the independent-frame locus is open in the product. Restricted to a compact product stage, its span map is (A2) into a finite Grassmannian, and is continuous. The open-subset observation at the start of the proof gives continuity on the full independent-frame locus. No local bound on the coordinate support of a general continuous family of frames is required.</p>
+<p>In either direct limit, every compact subset is contained in a finite coordinate stage. Otherwise select points in it whose least possible stage indices strictly increase. Each finite stage meets the selected set in finitely many points, so every subset of the selected set is closed in every stage and hence in the full space. The selected set is closed in the compact subset and therefore compact, but its induced topology is discrete: all its subsets are closed and hence also open. The cover by singletons has no finite subcover, a contradiction.</p>
+<p>These are finite-support direct limits. Their topology is not the norm topology inherited from square-summable sequences: for example
+<span class="math" data-tex="\(\{v:\sum_{i\geq1}i^2|v_i|^2&lt;1\}\)">\(\{v:\sum_{i\geq1}i^2|v_i|^2&lt;1\}\)</span> is open in every finite stage, hence open here, but contains no norm ball about zero, as the vectors <span class="math" data-tex="\(2e_i/i\)">\(2e_i/i\)</span> show. □</p>
+<p id="theorem-b-3"><strong>Theorem B.3 (the universal tautological bundle).</strong> The subspace
+<span class="math math-display" data-tex="\[
+ \gamma_r=\{(P,v)\in G_r(\mathbb F^\infty)\times\mathbb F^\infty:Pv=v\}
+\tag{B4}
+\]">\[
+ \gamma_r=\{(P,v)\in G_r(\mathbb F^\infty)\times\mathbb F^\infty:Pv=v\}
+\tag{B4}
+\]</span>
+is a locally trivial rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle. Its restriction to <span class="math" data-tex="\(G_r(\mathbb F^N)\)">\(G_r(\mathbb F^N)\)</span> is <span class="math" data-tex="\(\gamma_r^N\)">\(\gamma_r^N\)</span>.</p>
+<p><strong>Proof.</strong> Fix a plane <span class="math" data-tex="\(V\)">\(V\)</span> contained in a finite coordinate stage. For any finite-support projection <span class="math" data-tex="\(P\)">\(P\)</span>, put
+<span class="math math-display" data-tex="\[
+ A_V(P)=\pi_VP|_V,\qquad
+ U_V=\{P:\det A_V(P)\ne0\}.
+\tag{B5}
+\]">\[
+ A_V(P)=\pi_VP|_V,\qquad
+ U_V=\{P:\det A_V(P)\ne0\}.
+\tag{B5}
+\]</span>
+The determinant is continuous stage by stage, so <span class="math" data-tex="\(U_V\)">\(U_V\)</span> is open in the direct limit. The argument with <span class="math" data-tex="\(BB^*\)">\(BB^*\)</span> in A.1, performed in a finite stage containing <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(\operatorname{im}P\)">\(\operatorname{im}P\)</span>, shows that <span class="math" data-tex="\(\pi_V:\operatorname{im}P\to V\)">\(\pi_V:\operatorname{im}P\to V\)</span> is an isomorphism exactly on <span class="math" data-tex="\(U_V\)">\(U_V\)</span>. Its inverse is
+<span class="math math-display" data-tex="\[
+ u\longmapsto P A_V(P)^{-1}u.
+\tag{B6}
+\]">\[
+ u\longmapsto P A_V(P)^{-1}u.
+\tag{B6}
+\]</span>
+Indeed this vector lies in <span class="math" data-tex="\(\operatorname{im}P\)">\(\operatorname{im}P\)</span>, and its projection to <span class="math" data-tex="\(V\)">\(V\)</span> is <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>The map (B6) is jointly continuous in <span class="math" data-tex="\((P,u)\in U_V\times V\)">\((P,u)\in U_V\times V\)</span>. The product <span class="math" data-tex="\(G_r(\mathbb F^\infty)\times V\)">\(G_r(\mathbb F^\infty)\times V\)</span> has the compact-stage final topology by B.1, and <span class="math" data-tex="\(U_V\times V\)">\(U_V\times V\)</span> is open in it. On each stage (B6) is smooth matrix inversion and multiplication, with values in a single finite vector stage. Therefore B.2's open-subset criterion applies. This proves that
+<span class="math" data-tex="\((P,u)\mapsto(P,PA_V(P)^{-1}u)\)">\((P,u)\mapsto(P,PA_V(P)^{-1}u)\)</span> is a continuous map into the actual subspace (B4). Its inverse is <span class="math" data-tex="\((P,v)\mapsto(P,\pi_Vv)\)">\((P,v)\mapsto(P,\pi_Vv)\)</span>, continuous because <span class="math" data-tex="\(\pi_V\)">\(\pi_V\)</span> is continuous on every finite vector stage. The <span class="math" data-tex="\(U_V\)">\(U_V\)</span> cover, since the plane of any point can itself be chosen as <span class="math" data-tex="\(V\)">\(V\)</span>. They give the claimed bundle charts.</p>
+<p>Over <span class="math" data-tex="\(G_r(\mathbb F^N)\)">\(G_r(\mathbb F^N)\)</span>, a vector fixed by <span class="math" data-tex="\(P\)">\(P\)</span> lies in <span class="math" data-tex="\(\mathbb F^N\)">\(\mathbb F^N\)</span>. Both finite stages carry their original subspace topologies by B.2, so the restricted total space, as well as its charts, is precisely (A5). □</p>
+<h2 id="part-c">C. Classification over paracompact Hausdorff spaces</h2>
+<p id="theorem-c-1"><strong>Theorem C.1 (countable trivializations and existence).</strong> Let <span class="math" data-tex="\(E\to B\)">\(E\to B\)</span> be a rank-<span class="math" data-tex="\(r\)">\(r\)</span> real or complex bundle over a paracompact Hausdorff space. There is a countable locally finite trivializing open cover of <span class="math" data-tex="\(B\)">\(B\)</span>, and a continuous map <span class="math" data-tex="\(f:B\to G_r(\mathbb F^\infty)\)">\(f:B\to G_r(\mathbb F^\infty)\)</span> with <span class="math" data-tex="\(E\cong f^*\gamma_r\)">\(E\cong f^*\gamma_r\)</span>. If <span class="math" data-tex="\(B\)">\(B\)</span> is compact, the map and the bundle embedding can be taken in a finite coordinate stage.</p>
+<p><strong>Proof.</strong> The countable-trivialization construction and the subordinate countable partition are proved in <a href="DG-CHAR-08.html#lemma-q-6">DG-CHAR-08 Q.6</a>. We recall its sets to verify the additional local-finiteness assertion about the cover itself. Start with a locally finite partition <span class="math" data-tex="\((\lambda_\beta)\)">\((\lambda_\beta)\)</span> subordinate to arbitrary trivializing neighborhoods; its existence, with supports contained in those neighborhoods, is <a href="DG-CHAR-01.html#theorem-b-3">DG-CHAR-01 B.3</a>. For each nonempty finite set <span class="math" data-tex="\(S\)">\(S\)</span> of indices put
+<span class="math math-display" data-tex="\[
+ V_S=\left\{b:
+ \min_{\beta\in S}\lambda_\beta(b)&gt;0,\quad
+ \min_{\beta\in S}\lambda_\beta(b)&gt;
+       \sup_{\gamma\notin S}\lambda_\gamma(b)\right\}.
+\tag{C1}
+\]">\[
+ V_S=\left\{b:
+ \min_{\beta\in S}\lambda_\beta(b)&gt;0,\quad
+ \min_{\beta\in S}\lambda_\beta(b)&gt;
+       \sup_{\gamma\notin S}\lambda_\gamma(b)\right\}.
+\tag{C1}
+\]</span>
+The supremum includes zero; local finiteness makes it locally the maximum of finitely many functions and zero, hence continuous. These sets are open. If <span class="math" data-tex="\(|S|=|T|\)">\(|S|=|T|\)</span> and <span class="math" data-tex="\(S\ne T\)">\(S\ne T\)</span>, choose one index in each of <span class="math" data-tex="\(S\setminus T\)">\(S\setminus T\)</span> and <span class="math" data-tex="\(T\setminus S\)">\(T\setminus S\)</span>; membership in both sets would give two contradictory strict inequalities between their values. Thus <span class="math" data-tex="\(V_k=\bigcup_{|S|=k}V_S\)">\(V_k=\bigcup_{|S|=k}V_S\)</span> is a disjoint union of open sets. For each <span class="math" data-tex="\(S\)">\(S\)</span>, choosing an index in <span class="math" data-tex="\(S\)">\(S\)</span> places <span class="math" data-tex="\(V_S\)">\(V_S\)</span> inside its trivializing neighborhood. The resulting trivializations, all of rank <span class="math" data-tex="\(r\)">\(r\)</span>, combine to a trivialization on <span class="math" data-tex="\(V_k\)">\(V_k\)</span>.</p>
+<p>The sets <span class="math" data-tex="\(V_k\)">\(V_k\)</span>, <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, cover <span class="math" data-tex="\(B\)">\(B\)</span>: at a point take <span class="math" data-tex="\(S\)">\(S\)</span> to be its nonempty finite set of positive partition coordinates. They form a locally finite cover. Near any given point only finitely many of the supports of <span class="math" data-tex="\(\lambda_\beta\)">\(\lambda_\beta\)</span> meet a neighborhood, say those of an index set <span class="math" data-tex="\(F\)">\(F\)</span>. If <span class="math" data-tex="\(V_S\)">\(V_S\)</span> meets that neighborhood then <span class="math" data-tex="\(S\subset F\)">\(S\subset F\)</span>, so only <span class="math" data-tex="\(k\leq|F|\)">\(k\leq|F|\)</span> can occur. This is local finiteness of the countable cover, even when the original index set is uncountable.</p>
+<p>There is a locally finite partition <span class="math" data-tex="\((\mu_k)\)">\((\mu_k)\)</span> with <span class="math" data-tex="\(\operatorname{supp}\mu_k\subset V_k\)">\(\operatorname{supp}\mu_k\subset V_k\)</span>. To see the support detail, apply <a href="DG-CHAR-01.html#theorem-b-3">DG-CHAR-01 B.3</a> to this cover and assign each resulting function to a containing <span class="math" data-tex="\(V_k\)">\(V_k\)</span>. Sum all functions assigned to <span class="math" data-tex="\(k\)">\(k\)</span>. The sums are locally finite and continuous; the unions of their supports are closed, because a locally finite union of closed sets is closed, as proved in <a href="DG-CHAR-08.html#lemma-q-1">DG-CHAR-08 Q.1</a>. Thus each grouped support still lies in <span class="math" data-tex="\(V_k\)">\(V_k\)</span>, and the grouped family is locally finite.</p>
+<p>Let <span class="math" data-tex="\(\phi_k:E|_{V_k}\to\mathbb F^r\)">\(\phi_k:E|_{V_k}\to\mathbb F^r\)</span> be the fibre coordinate in the chosen trivialization. Extend <span class="math" data-tex="\(\mu_k\phi_k\)">\(\mu_k\phi_k\)</span> by zero outside <span class="math" data-tex="\(V_k\)">\(V_k\)</span> and define, using successive blocks of <span class="math" data-tex="\(r\)">\(r\)</span> coordinates,
+<span class="math math-display" data-tex="\[
+ J(v)=\bigl(\mu_1(b)\phi_1(v),\mu_2(b)\phi_2(v),\ldots\bigr),
+ \qquad v\in E_b.
+\tag{C2}
+\]">\[
+ J(v)=\bigl(\mu_1(b)\phi_1(v),\mu_2(b)\phi_2(v),\ldots\bigr),
+ \qquad v\in E_b.
+\tag{C2}
+\]</span>
+Each zero extension is continuous: outside <span class="math" data-tex="\(V_k\)">\(V_k\)</span> there is a neighborhood missing the closed support of <span class="math" data-tex="\(\mu_k\)">\(\mu_k\)</span>, where the extension is zero. Near any base point only finitely many blocks occur, so (C2) locally maps continuously into one finite vector stage and hence into <span class="math" data-tex="\(\mathbb F^\infty\)">\(\mathbb F^\infty\)</span>. At least one <span class="math" data-tex="\(\mu_k(b)\)">\(\mu_k(b)\)</span> is positive, proving fibrewise injectivity.</p>
+<p>In any local frame of <span class="math" data-tex="\(E\)">\(E\)</span>, the <span class="math" data-tex="\(r\)">\(r\)</span> columns of <span class="math" data-tex="\(J\)">\(J\)</span> form a continuous independent frame. Lemma B.2 makes its span <span class="math" data-tex="\(f(b)\)">\(f(b)\)</span> continuous. The map <span class="math" data-tex="\(v\mapsto(b,Jv)\)">\(v\mapsto(b,Jv)\)</span> is a continuous fibrewise isomorphism to <span class="math" data-tex="\(f^*\gamma_r\)">\(f^*\gamma_r\)</span>; B.3 and <a href="DG-CHAR-01.html#theorem-b-1">DG-CHAR-01 B.1</a> make this a bundle, and <a href="DG-CHAR-01.html#lemma-a-1">DG-CHAR-01 A.1</a> makes the inverse continuous.</p>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> is compact, the local finiteness neighborhoods of the grouped partition have a finite subcover. Only finitely many indices meet their union, so only finitely many blocks in (C2) occur anywhere. This gives the last assertion. Empty sets in the cover may be discarded; for <span class="math" data-tex="\(r=0\)">\(r=0\)</span> the zero bundle and the constant classifying map give the conclusion directly. □</p>
+<p id="theorem-c-2"><strong>Theorem C.2 (homotopy of bundle injections).</strong> For any base space <span class="math" data-tex="\(B\)">\(B\)</span>, let <span class="math" data-tex="\(J_0,J_1:E\to\mathbb F^\infty\)">\(J_0,J_1:E\to\mathbb F^\infty\)</span> be continuous maps which are linear and injective on each fibre of a fixed finite-rank bundle. There is a jointly continuous family of such injections joining them, and hence a homotopy between their span maps <span class="math" data-tex="\(B\to G_r(\mathbb F^\infty)\)">\(B\to G_r(\mathbb F^\infty)\)</span>.</p>
+<p><strong>Proof.</strong> Index coordinates starting with <span class="math" data-tex="\(1\)">\(1\)</span>, and define <span class="math" data-tex="\(S_e e_i=e_{2i}\)">\(S_e e_i=e_{2i}\)</span>, <span class="math" data-tex="\(S_o e_i=e_{2i-1}\)">\(S_o e_i=e_{2i-1}\)</span>. The linear map
+<span class="math math-display" data-tex="\[
+ L_e(t)=(1-t)I+tS_e,\qquad 0\leq t\leq1,
+\tag{C3}
+\]">\[
+ L_e(t)=(1-t)I+tS_e,\qquad 0\leq t\leq1,
+\tag{C3}
+\]</span>
+is injective. For a nonzero finite-support vector <span class="math" data-tex="\(v\)">\(v\)</span>, let <span class="math" data-tex="\(m\)">\(m\)</span> be its last nonzero index. At <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, coordinate <span class="math" data-tex="\(2m\)">\(2m\)</span> of <span class="math" data-tex="\(L_e(t)v\)">\(L_e(t)v\)</span> is <span class="math" data-tex="\(tv_m\ne0\)">\(tv_m\ne0\)</span>; at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> the map is the identity. The same proof applies to <span class="math" data-tex="\(L_o(t)=(1-t)I+tS_o\)">\(L_o(t)=(1-t)I+tS_o\)</span> when <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>, using coordinate <span class="math" data-tex="\(2m-1\)">\(2m-1\)</span>. When <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, <span class="math" data-tex="\(S_o\)">\(S_o\)</span> fixes the vector, so injectivity again holds.</p>
+<p>First use <span class="math" data-tex="\(L_e(t)J_0\)">\(L_e(t)J_0\)</span> to reach <span class="math" data-tex="\(S_eJ_0\)">\(S_eJ_0\)</span>. Next use
+<span class="math math-display" data-tex="\[
+ K_t=(1-t)S_eJ_0+tS_oJ_1 .
+\tag{C4}
+\]">\[
+ K_t=(1-t)S_eJ_0+tS_oJ_1 .
+\tag{C4}
+\]</span>
+For <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, the two summands have disjoint even and odd coordinate supports. If <span class="math" data-tex="\(K_t(v)=0\)">\(K_t(v)=0\)</span>, each summand vanishes, and injectivity of <span class="math" data-tex="\(J_0\)">\(J_0\)</span> gives <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. At the endpoints there is one injection. Finally reverse <span class="math" data-tex="\(L_o(t)J_1\)">\(L_o(t)J_1\)</span> to reach <span class="math" data-tex="\(J_1\)">\(J_1\)</span>. Rescale these three paths to the three successive thirds of the parameter interval.</p>
+<p>Every displayed map is jointly continuous on <span class="math" data-tex="\(E\times[0,1]\)">\(E\times[0,1]\)</span>, by the continuous vector operations in B.2. The three pieces agree at their endpoints, so their concatenation is continuous: the inverse image of a closed set is the finite union of sets closed in the three closed parameter strips, hence closed in the whole product. It is linear and injective on every fibre at every time.</p>
+<p>In a local frame, evaluate this family on the continuous frame sections. The columns form a jointly continuous map <span class="math" data-tex="\(B\times[0,1]\)">\(B\times[0,1]\)</span> locally into the independent-frame locus of <span class="math" data-tex="\((\mathbb F^\infty)^r\)">\((\mathbb F^\infty)^r\)</span>. Its span is continuous by B.2. The span does not depend on the local frame, so these maps glue to the required homotopy. This argument applies to arbitrary continuous injections, not only to the locally finite coordinate construction of C.1. □</p>
+<p id="lemma-c-3"><strong>Lemma C.3 (transport along a projection homotopy).</strong> If <span class="math" data-tex="\(B\)">\(B\)</span> is paracompact Hausdorff and <span class="math" data-tex="\(H:B\times[0,1]\to G_r(\mathbb F^\infty)\)">\(H:B\times[0,1]\to G_r(\mathbb F^\infty)\)</span> is continuous, the pullbacks of <span class="math" data-tex="\(\gamma_r\)">\(\gamma_r\)</span> by <span class="math" data-tex="\(H(\,\cdot\,,0)\)">\(H(\,\cdot\,,0)\)</span> and <span class="math" data-tex="\(H(\,\cdot\,,1)\)">\(H(\,\cdot\,,1)\)</span> are isomorphic.</p>
+<p><strong>Proof.</strong> A finite-support matrix acts on finite-support vectors. Give these matrices the operator norm
+<span class="math math-display" data-tex="\[
+ \|A\|=\sup_{\|v\|=1,\ v\in\mathbb F^\infty}\|Av\|.
+\tag{C5}
+\]">\[
+ \|A\|=\sup_{\|v\|=1,\ v\in\mathbb F^\infty}\|Av\|.
+\tag{C5}
+\]</span>
+If all entries of <span class="math" data-tex="\(A\)">\(A\)</span> occur in its first <span class="math" data-tex="\(N\)">\(N\)</span> rows and columns, this is exactly the ordinary norm on <span class="math" data-tex="\(\mathbb F^N\)">\(\mathbb F^N\)</span>: later coordinates do not contribute to the output and cannot increase the supremum. The triangle inequality and homogeneity follow pointwise and then by taking suprema. In a fixed finite stage the bound
+<span class="math" data-tex="\(\|A\|\leq(\sum_{i,j}|A_{ij}|^2)^{1/2}\)">\(\|A\|\leq(\sum_{i,j}|A_{ij}|^2)^{1/2}\)</span>, from the finite Cauchy–Schwarz inequality of <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.0</a>, proves continuity in the matrix entries; also
+<span class="math" data-tex="\(|\|A\|-\|B\||\leq\|A-B\|\)">\(|\|A\|-\|B\||\leq\|A-B\|\)</span>.
+Consequently the map from the direct-limit Grassmannian to this normed matrix space is continuous, because its restriction to every finite stage is continuous. No completed ambient vector space is needed.</p>
+<p>Write <span class="math" data-tex="\(P(b,t)=H(b,t)\)">\(P(b,t)=H(b,t)\)</span>. For each <span class="math" data-tex="\(b_0\)">\(b_0\)</span> there are an open neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> and a number <span class="math" data-tex="\(d_V&gt;0\)">\(d_V&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+ \|P(b,s)-P(b,t)\|&lt;1
+ \quad\text{if } b\in V,\quad |s-t|\leq d_V.
+\tag{C6}
+\]">\[
+ \|P(b,s)-P(b,t)\|&lt;1
+ \quad\text{if } b\in V,\quad |s-t|\leq d_V.
+\tag{C6}
+\]</span>
+Here are the uniformity details. The continuous map <span class="math" data-tex="\(t\mapsto P(b_0,t)\)">\(t\mapsto P(b_0,t)\)</span> on the compact interval is uniformly continuous by <a href="../../local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>. Choose a positive bound <span class="math" data-tex="\(d_V\)">\(d_V\)</span> smaller than half a uniform-continuity threshold so that <span class="math" data-tex="\(|s-t|\leq d_V\)">\(|s-t|\leq d_V\)</span> gives norm variation less than <span class="math" data-tex="\(1/4\)">\(1/4\)</span> at <span class="math" data-tex="\(b_0\)">\(b_0\)</span>. The function
+<span class="math" data-tex="\((b,t)\mapsto\|P(b,t)-P(b_0,t)\|\)">\((b,t)\mapsto\|P(b,t)-P(b_0,t)\|\)</span> is continuous and zero on <span class="math" data-tex="\(\{b_0\}\times[0,1]\)">\(\{b_0\}\times[0,1]\)</span>. Each point of that compact slice has a product neighborhood on which it is less than <span class="math" data-tex="\(1/4\)">\(1/4\)</span>; finitely many interval factors cover the interval. Intersect their base neighborhoods to obtain <span class="math" data-tex="\(V\)">\(V\)</span> on which the bound holds for every time. The triangle inequality now makes the left side of (C6) less than <span class="math" data-tex="\(3/4\)">\(3/4\)</span>.</p>
+<p>Use <a href="DG-CHAR-01.html#theorem-b-3">DG-CHAR-01 B.3</a> to choose a locally finite partition <span class="math" data-tex="\((\rho_a)\)">\((\rho_a)\)</span> subordinate to neighborhoods <span class="math" data-tex="\(V_a\)">\(V_a\)</span> of this kind, and set
+<span class="math math-display" data-tex="\[
+ \delta(b)=\sum_a\rho_a(b)\min(d_{V_a},1)&gt;0,\qquad
+ t_j(b)=\min(j\delta(b),1),\quad j=0,1,\ldots .
+\tag{C7}
+\]">\[
+ \delta(b)=\sum_a\rho_a(b)\min(d_{V_a},1)&gt;0,\qquad
+ t_j(b)=\min(j\delta(b),1),\quad j=0,1,\ldots .
+\tag{C7}
+\]</span>
+Both functions are continuous. At a fixed point only finitely many weights are positive, so <span class="math" data-tex="\(\delta(b)\)">\(\delta(b)\)</span> is at most the largest of their bounds <span class="math" data-tex="\(\min(d_{V_a},1)\)">\(\min(d_{V_a},1)\)</span>. The neighborhood giving that largest bound contains <span class="math" data-tex="\(b\)">\(b\)</span>, and (C6) is therefore valid whenever <span class="math" data-tex="\(|s-t|\leq\delta(b)\)">\(|s-t|\leq\delta(b)\)</span>.</p>
+<p>For consecutive times, use the linear map
+<span class="math math-display" data-tex="\[
+ P(b,t_{j+1}(b)):
+ \operatorname{im}P(b,t_j(b))
+ \longrightarrow \operatorname{im}P(b,t_{j+1}(b)).
+\tag{C8}
+\]">\[
+ P(b,t_{j+1}(b)):
+ \operatorname{im}P(b,t_j(b))
+ \longrightarrow \operatorname{im}P(b,t_{j+1}(b)).
+\tag{C8}
+\]</span>
+It is an isomorphism by <a href="DG-CHAR-01.html#exercise-e-5">DG-CHAR-01 E.5</a>: if a vector <span class="math" data-tex="\(v\)">\(v\)</span> in the first image were killed by the next projection, then
+<span class="math" data-tex="\(\|v\|\leq\|P(b,t_j)-P(b,t_{j+1})\|\|v\|&lt;\|v\|\)">\(\|v\|\leq\|P(b,t_j)-P(b,t_{j+1})\|\|v\|&lt;\|v\|\)</span>
+unless <span class="math" data-tex="\(v=0\)">\(v=0\)</span>; equal finite ranks give surjectivity. This proof works in any common finite coordinate stage and uses exactly the norm (C5).</p>
+<p>Compose (C8) until <span class="math" data-tex="\(t_j=1\)">\(t_j=1\)</span>. Further factors are the identity on the final image, so the product stabilizes. Near any given base point the positive continuous function <span class="math" data-tex="\(\delta\)">\(\delta\)</span> has a positive lower bound. A single integer <span class="math" data-tex="\(j\)">\(j\)</span> thus suffices on that neighborhood, and there the transport is a finite composition. Each factor is continuous as a map on the relevant total spaces: <span class="math" data-tex="\(b\mapsto P(b,t_j(b))\)">\(b\mapsto P(b,t_j(b))\)</span> is continuous into the direct-limit Grassmannian, and projection evaluation is jointly continuous by B.2. The locally finite-length products agree where neighborhoods overlap, since extra endpoint projections act as the identity. They therefore define a continuous bundle map from the time-zero pullback to the time-one pullback, into their actual subspace total spaces from B.3. It is a fibrewise isomorphism, so <a href="DG-CHAR-01.html#lemma-a-1">DG-CHAR-01 A.1</a> proves continuity of its inverse. No uniform step count on all of <span class="math" data-tex="\(B\)">\(B\)</span> has been assumed. □</p>
+<p id="theorem-c-4"><strong>Theorem C.4 (natural bundle classification).</strong> For every paracompact Hausdorff <span class="math" data-tex="\(B\)">\(B\)</span>, pullback induces a natural bijection
+<span class="math math-display" data-tex="\[
+ [B,G_r(\mathbb F^\infty)]
+ \ \longrightarrow\
+ \{\text{rank-}r\ \mathbb F\text{-bundles on }B\}/\cong .
+\tag{C9}
+\]">\[
+ [B,G_r(\mathbb F^\infty)]
+ \ \longrightarrow\
+ \{\text{rank-}r\ \mathbb F\text{-bundles on }B\}/\cong .
+\tag{C9}
+\]</span>
+The brackets on the left mean unbased homotopy classes of continuous maps.</p>
+<p><strong>Proof.</strong> By B.3 and <a href="DG-CHAR-01.html#theorem-b-1">DG-CHAR-01 B.1</a> every map gives a bundle. Lemma C.3 shows that homotopic maps give isomorphic bundles, so (C9) is well defined. Theorem C.1 proves surjectivity.</p>
+<p>For injectivity, suppose the pullbacks by <span class="math" data-tex="\(f_0,f_1\)">\(f_0,f_1\)</span> are isomorphic and identify them with one bundle <span class="math" data-tex="\(E\)">\(E\)</span>. Projection from either pullback to the vector coordinate of (B4) gives a continuous fibrewise injection <span class="math" data-tex="\(J_i:E\to\mathbb F^\infty\)">\(J_i:E\to\mathbb F^\infty\)</span> whose span is exactly <span class="math" data-tex="\(f_i\)">\(f_i\)</span>. Theorem C.2 supplies a homotopy from <span class="math" data-tex="\(f_0\)">\(f_0\)</span> to <span class="math" data-tex="\(f_1\)">\(f_1\)</span>. Thus (C9) is injective.</p>
+<p>If <span class="math" data-tex="\(g:B'\to B\)">\(g:B'\to B\)</span> is a continuous map between paracompact Hausdorff spaces, the isomorphism
+<span class="math" data-tex="\((f\circ g)^*\gamma_r\cong g^*(f^*\gamma_r)\)">\((f\circ g)^*\gamma_r\cong g^*(f^*\gamma_r)\)</span> is the pullback-composition isomorphism of <a href="DG-CHAR-01.html#theorem-b-1">DG-CHAR-01 B.1</a>, explicitly sending the same vector over <span class="math" data-tex="\(g(b')\)">\(g(b')\)</span> to the corresponding vector over <span class="math" data-tex="\(b'\)">\(b'\)</span>. Precomposing a homotopy by <span class="math" data-tex="\(g\times1\)">\(g\times1\)</span> gives a homotopy. These observations prove naturality.</p>
+<p>For a compact Hausdorff base all bundles come from finite Grassmannians by C.1. Every homotopy between two such classifying maps takes values in one finite stage: <span class="math" data-tex="\(B\times[0,1]\)">\(B\times[0,1]\)</span> is compact by B.1, and compact subsets of the direct-limit Grassmannian lie in a finite stage by B.2. Thus finite-stage classifying maps classify compact-base bundles up to homotopy after enlarging the ambient dimension. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> both sides have one element; if <span class="math" data-tex="\(B\)">\(B\)</span> is empty the same convention applies. □</p>
+<h2 id="part-d">D. Projective spaces and Gauss maps</h2>
+<p id="example-d-1"><strong>Example D.1 (line, tangent and normal classifying maps).</strong> In rank one the construction recovers real and complex projective space and its tautological line. The Gauss map of a smooth immersion classifies both its tangent bundle and its normal bundle. For the unit sphere the tangent projection is <span class="math" data-tex="\(I-xx^{\mathsf T}\)">\(I-xx^{\mathsf T}\)</span>, and adjoining the normal line trivializes its tangent bundle.</p>
+<p><strong>Proof.</strong> A line spanned by a nonzero vector <span class="math" data-tex="\(z\in\mathbb F^N\)">\(z\in\mathbb F^N\)</span> has projection
+<span class="math math-display" data-tex="\[
+ P_z=\frac{zz^*}{z^*z}.
+\tag{D1}
+\]">\[
+ P_z=\frac{zz^*}{z^*z}.
+\tag{D1}
+\]</span>
+Replacing <span class="math" data-tex="\(z\)">\(z\)</span> by a nonzero scalar multiple leaves this unchanged, and every rank-one projection occurs. Proposition A.1 identifies the quotient topology by scalar changes with the Grassmannian topology. Thus <span class="math" data-tex="\(G_1(\mathbb R^N)=\mathbb {RP}^{N-1}\)">\(G_1(\mathbb R^N)=\mathbb {RP}^{N-1}\)</span> and <span class="math" data-tex="\(G_1(\mathbb C^N)=\mathbb {CP}^{N-1}\)">\(G_1(\mathbb C^N)=\mathbb {CP}^{N-1}\)</span> as topological and smooth spaces.</p>
+<p>Their inclusions into the infinite Grassmannian classify their tautological lines, by B.3. The infinite tautological line agrees with the earlier programme construction <a href="DG-CHAR-08.html#lemma-i-2">DG-CHAR-08 I.2</a>, including its topology: on the open set <span class="math" data-tex="\(P_{jj}&gt;0\)">\(P_{jj}&gt;0\)</span>, the vector with <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinate <span class="math" data-tex="\(t\)">\(t\)</span> in the line is <span class="math" data-tex="\(tPe_j/P_{jj}\)">\(tPe_j/P_{jj}\)</span>. Hence its <span class="math" data-tex="\(k\)">\(k\)</span>-th coordinate is <span class="math" data-tex="\(tP_{kj}/P_{jj}\)">\(tP_{kj}/P_{jj}\)</span>, exactly the transition formula of that construction. Formula (B6) proves continuity of this chart into the subspace total space, and the <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinate is its continuous inverse. Thus the chartwise identification is a bundle isomorphism.</p>
+<p>Now let <span class="math" data-tex="\(f:M^r\to\mathbb R^N\)">\(f:M^r\to\mathbb R^N\)</span> be an immersion. Its differential is fibrewise injective. In a coordinate chart <span class="math" data-tex="\(x_1,\ldots,x_r\)">\(x_1,\ldots,x_r\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, the columns of its derivative matrix <span class="math" data-tex="\(A(x)\)">\(A(x)\)</span> are independent and smooth. Formula (A2) therefore gives a smooth map
+<span class="math math-display" data-tex="\[
+ g_f:M\to G_r(\mathbb R^N),\qquad
+ g_f(x)=df_x(T_xM).
+\tag{D2}
+\]">\[
+ g_f:M\to G_r(\mathbb R^N),\qquad
+ g_f(x)=df_x(T_xM).
+\tag{D2}
+\]</span>
+Changing coordinates changes only the basis of the image, so the formula agrees on overlaps. The bundle map <span class="math" data-tex="\(df\)">\(df\)</span> identifies <span class="math" data-tex="\(TM\)">\(TM\)</span> with <span class="math" data-tex="\(g_f^*\gamma_r^N\)">\(g_f^*\gamma_r^N\)</span>, by A.2. Its orthogonal complement is the normal bundle of <a href="DG-CHAR-01.html#theorem-d-1">DG-CHAR-01 D.1</a>; it is the pullback of the complementary bundle in A.2. This works for immersions even if their images intersect themselves, since the plane is assigned to the point of <span class="math" data-tex="\(M\)">\(M\)</span>, not to an unlabelled image point.</p>
+<p>For <span class="math" data-tex="\(S^n\subset\mathbb R^{n+1}\)">\(S^n\subset\mathbb R^{n+1}\)</span>, the tangent space at <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(x^\perp\)">\(x^\perp\)</span>, as proved in <a href="DG-CHAR-01.html#example-d-2">DG-CHAR-01 D.2</a>. Its projection is <span class="math" data-tex="\(I-xx^{\mathsf T}\)">\(I-xx^{\mathsf T}\)</span>; direct multiplication uses <span class="math" data-tex="\(x^{\mathsf T}x=1\)">\(x^{\mathsf T}x=1\)</span> to verify idempotence and image <span class="math" data-tex="\(x^\perp\)">\(x^\perp\)</span>. The normal line has the global unit section <span class="math" data-tex="\(x\)">\(x\)</span>. The isomorphism
+<span class="math math-display" data-tex="\[
+ T_xS^n\oplus\mathbb R\longrightarrow\mathbb R^{n+1},
+ \qquad (v,a)\longmapsto v+ax
+\tag{D3}
+\]">\[
+ T_xS^n\oplus\mathbb R\longrightarrow\mathbb R^{n+1},
+ \qquad (v,a)\longmapsto v+ax
+\tag{D3}
+\]</span>
+has inverse <span class="math" data-tex="\(w\mapsto(w-(x\cdot w)x,x\cdot w)\)">\(w\mapsto(w-(x\cdot w)x,x\cdot w)\)</span>, continuous and smooth in <span class="math" data-tex="\(x,w\)">\(x,w\)</span>. Thus <span class="math" data-tex="\(TS^n\oplus\varepsilon^1\cong\varepsilon^{n+1}\)">\(TS^n\oplus\varepsilon^1\cong\varepsilon^{n+1}\)</span>, whether or not <span class="math" data-tex="\(TS^n\)">\(TS^n\)</span> itself is trivial. □</p>
+<h2 id="part-e">E. Two facts about attaching spaces</h2>
+<p>These facts are useful when a base is given by cells. The classification theorem above does not require a cellular structure on either the base or the Grassmannian.</p>
+<p id="lemma-e-1"><strong>Lemma E.1 (compact subsets of a CW complex).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be a Hausdorff CW complex with closure-finite cells and the weak topology of its characteristic disks. Every compact subset meets only finitely many open cells and is contained in a finite subcomplex.</p>
+<p><strong>Proof.</strong> Here a characteristic map sends a closed disk onto a cell closure, with its interior homeomorphic to the open cell and its boundary in lower-dimensional cells. Closure-finite means that each cell closure meets only finitely many open cells. The weak topology means that a subset is closed precisely when its inverse image under every characteristic map is closed in the disk.</p>
+<p>If a compact subset <span class="math" data-tex="\(K\)">\(K\)</span> meets infinitely many open cells, choose points <span class="math" data-tex="\(x_1,x_2,\ldots\)">\(x_1,x_2,\ldots\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span> in distinct cells. Any characteristic disk has image in a single cell closure, so that image meets only finitely many of the <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. For every subset <span class="math" data-tex="\(A\)">\(A\)</span> of the selected points, its inverse image in that disk is therefore a finite union of inverse images of singleton points. These are closed, because <span class="math" data-tex="\(X\)">\(X\)</span> is Hausdorff and the characteristic map is continuous. By the weak topology every such <span class="math" data-tex="\(A\)">\(A\)</span> is closed in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>In particular the selected set <span class="math" data-tex="\(S=\{x_i:i\geq1\}\)">\(S=\{x_i:i\geq1\}\)</span> is closed in <span class="math" data-tex="\(K\)">\(K\)</span>, hence compact: an open cover of a closed subset extends to a cover of <span class="math" data-tex="\(K\)">\(K\)</span> by adding its open complement. Moreover all subsets of <span class="math" data-tex="\(S\)">\(S\)</span> are closed, and their complements are therefore open, so <span class="math" data-tex="\(S\)">\(S\)</span> is discrete. The singleton open cover contradicts its compactness.</p>
+<p>Only finitely many cells thus meet <span class="math" data-tex="\(K\)">\(K\)</span>. Take their closures and adjoin all cells met by their boundaries, then repeat for the newly added cells. Each step branches only finitely by closure-finiteness; along any branch the dimension strictly decreases, starting below the finite maximum of the original dimensions. The process terminates with finitely many cells whose characteristic boundaries lie in their union. Their union is a finite subcomplex containing <span class="math" data-tex="\(K\)">\(K\)</span>. □</p>
+<p id="lemma-e-2"><strong>Lemma E.2 (a quotient times an interval).</strong> If <span class="math" data-tex="\(q:Y\to Z\)">\(q:Y\to Z\)</span> is a surjective quotient map and <span class="math" data-tex="\(I=[0,1]\)">\(I=[0,1]\)</span>, then <span class="math" data-tex="\(q\times1:Y\times I\to Z\times I\)">\(q\times1:Y\times I\to Z\times I\)</span> is a quotient map.</p>
+<p><strong>Proof.</strong> This product map is a continuous surjection. Suppose the inverse image <span class="math" data-tex="\(O\)">\(O\)</span> of <span class="math" data-tex="\(W\subset Z\times I\)">\(W\subset Z\times I\)</span> is open. For each <span class="math" data-tex="\(z\)">\(z\)</span>, choose <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(q(y)=z\)">\(q(y)=z\)</span>. The slice
+<span class="math" data-tex="\(W_z=\{t:(z,t)\in W\}\)">\(W_z=\{t:(z,t)\in W\}\)</span> equals <span class="math" data-tex="\(\{t:(y,t)\in O\}\)">\(\{t:(y,t)\in O\}\)</span>, hence is open in <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>For a compact subinterval <span class="math" data-tex="\(J\subset I\)">\(J\subset I\)</span> define
+<span class="math math-display" data-tex="\[
+ U_J=\{z:\{z\}\times J\subset W\}.
+\tag{E1}
+\]">\[
+ U_J=\{z:\{z\}\times J\subset W\}.
+\tag{E1}
+\]</span>
+Its inverse image under <span class="math" data-tex="\(q\)">\(q\)</span> is open. Indeed, for <span class="math" data-tex="\(y\)">\(y\)</span> in that inverse image, the whole slice <span class="math" data-tex="\(\{y\}\times J\)">\(\{y\}\times J\)</span> lies in the open set <span class="math" data-tex="\(O\)">\(O\)</span>. Cover it by finitely many product neighborhoods contained in <span class="math" data-tex="\(O\)">\(O\)</span>, whose interval factors cover <span class="math" data-tex="\(J\)">\(J\)</span>. Intersecting their <span class="math" data-tex="\(Y\)">\(Y\)</span>-factors gives a neighborhood <span class="math" data-tex="\(N\ni y\)">\(N\ni y\)</span> with <span class="math" data-tex="\(N\times J\subset O\)">\(N\times J\subset O\)</span>, so <span class="math" data-tex="\(N\subset q^{-1}(U_J)\)">\(N\subset q^{-1}(U_J)\)</span>. Since <span class="math" data-tex="\(q\)">\(q\)</span> is a quotient map, <span class="math" data-tex="\(U_J\)">\(U_J\)</span> is open in <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p>For <span class="math" data-tex="\((z,t)\in W\)">\((z,t)\in W\)</span>, choose a closed subinterval <span class="math" data-tex="\(J\subset W_z\)">\(J\subset W_z\)</span> with <span class="math" data-tex="\(t\in\operatorname{int}_I J\)">\(t\in\operatorname{int}_I J\)</span>; such an interval exists because <span class="math" data-tex="\(W_z\)">\(W_z\)</span> is open, including when <span class="math" data-tex="\(t=0\)">\(t=0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>. Then <span class="math" data-tex="\(U_J\times\operatorname{int}_I J\)">\(U_J\times\operatorname{int}_I J\)</span> is an open neighborhood of <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span> contained in <span class="math" data-tex="\(W\)">\(W\)</span>. Thus <span class="math" data-tex="\(W\)">\(W\)</span> is open and the product is a quotient map.</p>
+<p>Consequently homotopies defined on pieces of an attaching quotient, continuous on the disjoint union times <span class="math" data-tex="\(I\)">\(I\)</span> and agreeing on the identifications at every time, descend continuously to the quotient times <span class="math" data-tex="\(I\)">\(I\)</span>. This is precisely the quotient criterion just proved. □</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf"><em>Vector Bundles and K-Theory</em>, author version 2.2, November 2017</a>, Sections 1.1–1.2, particularly the universal bundle construction and Theorem 1.16. The proofs above include the direct-limit continuity and variable-step projection arguments needed for arbitrary paracompact Hausdorff bases.</p>
+<p>Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/AT/ATapp.pdf"><em>Algebraic Topology</em>, expanded appendix, author-hosted text</a>, Proposition A.1, for compact containment in CW complexes.</p>
+</article><footer><p><a href="src/DG-CHAR-03.md">Chapter source</a> · <a href="../../index.html">Course contents</a></p><p>New exposition: CC0 1.0.</p><p><span class="unlinked">MathJax licence</span> · <span class="unlinked">Font notices</span></p></footer></main></body></html>

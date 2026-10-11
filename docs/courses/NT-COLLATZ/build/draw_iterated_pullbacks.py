@@ -1,0 +1,25 @@
+"""Reproducible exact upper-bound diagram for Proposition 1, not fibre data."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+values=[1+(h-1)*127//52 for h in range(1,7)]
+assert values==[1,3,5,8,10,13] and sum(values)==40
+parts=['<svg xmlns="http://www.w3.org/2000/svg" width="440" height="445" viewBox="0 0 440 445" role="img" aria-labelledby="title desc">',
+'<title id="title">Keep the separate time bounds</title>',
+'<desc id="desc">For M=6 and Y=16 the fibre upper bounds are 1,3,5,8,10,13. Sum40, longest bound repeated78, uniform coefficient60. Bounds only, not measured fibres.</desc>',
+'<rect width="440" height="445" rx="10" fill="#f4f7fa"/>',
+'<g font-family="Arial,sans-serif" fill="#172b3a">',
+'<text x="20" y="30" font-size="19" font-weight="bold">Keep the separate time bounds</text>',
+'<text x="20" y="55" font-size="15">M = 6, Y = 16; one prescribed landing</text>',
+'<text x="20" y="80" font-size="14">Upper bound: 1 + floor((h − 1) × 127/52)</text>']
+for j,v in enumerate(values):
+    y=103+31*j
+    parts.extend([f'<text x="23" y="{y+17}" font-size="15">h = {j+1}</text>',
+                  f'<rect x="82" y="{y}" width="{20*v}" height="23" fill="#246a88" rx="3"/>',
+                  f'<text x="{90+20*v}" y="{y+17}" font-size="15">{v}</text>'])
+parts.extend(['<path d="M20 304H420" stroke="#adc0ce"/>',
+'<text x="22" y="331" font-size="16">Sum of individual bounds</text><text x="386" y="331" font-size="17" font-weight="bold">40</text>',
+'<text x="22" y="360" font-size="16">Longest bound used six times</text><text x="386" y="360" font-size="17">78</text>',
+'<text x="22" y="389" font-size="16">Uniform coefficient (5/12)M²2ᴹ/Y</text><text x="386" y="389" font-size="17">60</text>',
+'<text x="22" y="425" font-size="14">These are bounds, not actual fibre sizes.</text></g></svg>'])
+(ROOT/'figures/time-fibres.svg').write_text('\n'.join(parts)+'\n',encoding='utf-8')
+print('time-fibres.svg: exact values40,78,60')

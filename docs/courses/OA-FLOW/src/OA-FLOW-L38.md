@@ -1,6 +1,6 @@
 # A suspension from separated crossings
 
-Self-checked by the writing AI.
+
 
 A return section turns a real flow into upward motion between successive visits. There are three separate tasks: find visits separated by a fixed positive time, retain visits in both time directions, and identify the measure class in the resulting coordinates. We first prove the measure-class mechanism, then construct the section directly from coded orbit paths.
 

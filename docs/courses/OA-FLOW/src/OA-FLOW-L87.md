@@ -2,7 +2,7 @@
 
 A vector whose frequencies lie in a sufficiently narrow band around \(p\) behaves, for a fixed compact set of group elements, almost like a \(p\)-eigenvector in norm. The width can be chosen uniformly for every vector in that spectral band. A norm-controlled Fourier cutoff and singleton synthesis make this precise even when individual orbits are only weak-star continuous. This is Takesaki II, Lemma XI.1.11 at arbitrary LCA and specified dual-Banach generality.
 
-*Programme proof written in Codex (OpenAI), September 2026; restoration and proof expansion, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 The positive Fourier convention and both eligible Banach settings are [AF0](OA-FLOW-AF.md#af-0). The exact earlier scalar inputs are [LF0–1](OA-FLOW-LF.md#lf-0) for the complete dual-Haar correlation identity and norm-controlled local plateaus, [LF4](OA-FLOW-LF.md#lf-4) for plateaus around compact sets, and [SS1](OA-FLOW-SS.md#ss-1) for singleton synthesis. [BS1–3](OA-FLOW-BS.md#bs-1) supply the full integrated action, filter bounds and cutoff laws in both Banach settings.
 

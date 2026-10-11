@@ -1,6 +1,6 @@
 # Cohomology reduction for measurable flows
 
-*Self-checked by the writing AI. New original prose and proof expression are dedicated under CC0.*
+*New original prose and proof expression are dedicated under CC0.*
 
 A return section converts a real flow into a countable relation. Cocycles require one preliminary step: identities that hold almost everywhere for each fixed time cannot simply be evaluated on that section. We first obtain strict representatives, reduce their return cocycles, and reconstruct the continuous motion. A second proof retains the original path-selector construction and makes the cohomological changes of coordinates explicit.
 

@@ -1,0 +1,267 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Small predecessors and maps into filtered colimits</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="small-predecessors-and-maps-into-filtered-colimits">Small predecessors and maps into filtered colimits</h1>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition: CC0. Linked proof interfaces retain their terms.</em></p>
+<p>A well-order can have a long upper tail even when its small initial segments form a useful indexing category. A different indexing category consists of small subsets of a set. Regularity supplies the bounds for the two filteredness proofs. The preservation property studied afterward is defined for every infinite cardinal: it asks whether a map into a filtered colimit already comes from one stage, with equality detected at a common later stage.</p>
+<h2 id="1-the-size-conventions-and-retained-constructions">1. The size conventions and retained constructions</h2>
+<p>We work in ZF with set-indexed Choice, the universe-enlargement axiom stated in the cardinal companion, and an explicitly chosen Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. The complete <span class="unlinked">universe operations</span> and <span class="unlinked">transport maps</span> supply subsets, products, tagged unions, quotients and encodings. A set is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small if it is bijective to a member of <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>; this does not assert that its original labels belong there. A small category has a small total arrow set, including identities and composites. Its object set is small because <span class="math" data-tex="\(i\mapsto1_i\)">\(i\mapsto1_i\)</span> is injective. A locally small category need only have small Hom sets.</p>
+<p>Let <span class="math" data-tex="\(\pi\in\mathcal U\)">\(\pi\in\mathcal U\)</span> be an infinite cardinal represented by its initial ordinal. We retain the complete <a href="well-orders-cardinal-bounds-and-regular-successors.html#4-cardinal-representatives-and-comparison-by-injections">well-order and cardinal comparison arguments</a>, the <a href="well-orders-cardinal-bounds-and-regular-successors.html#5-cardinal-operations-and-the-infinite-square">infinite square and union bounds</a>, and the <a href="well-orders-cardinal-bounds-and-regular-successors.html#6-regular-cardinals-and-successors">definition of regularity</a> from the cardinal companion. In particular, finite unions of sets of cardinal below <span class="math" data-tex="\(\pi\)">\(\pi\)</span> still have cardinal below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, for every infinite <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Regularity is the stronger assertion</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+|S|&lt;\pi,\quad |B_s|&lt;\pi\ (s\in S)
+\quad\Longrightarrow\quad
+\left|\coprod_{s\in S}B_s\right|&lt;\pi.
+\tag{1.1}
+\]">\[
+|S|&lt;\pi,\quad |B_s|&lt;\pi\ (s\in S)
+\quad\Longrightarrow\quad
+\left|\coprod_{s\in S}B_s\right|&lt;\pi.
+\tag{1.1}
+\]</span>
+<p>The ordinary union has the same bound: well-order <span class="math" data-tex="\(S\)">\(S\)</span>, and send each point of the union to its copy at the least index containing it. This is the explicit ordinary-union injection retained in the cardinal companion. An empty family gives an empty union. We use regularity only where it is stated below.</p>
+<p>We also retain the complete <a href="common-arrows-and-bounded-set-comparisons.html#3-receive-every-arrow-of-a-bounded-diagram">bounded filteredness criterion</a>. A category is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered precisely when every set of fewer than <span class="math" data-tex="\(\pi\)">\(\pi\)</span> objects has a receiver and every set of fewer than <span class="math" data-tex="\(\pi\)">\(\pi\)</span> parallel arrows is equalized by one arrow from their common target. The empty object family forces nonemptiness; an empty parallel family can use the target identity. The criterion is equivalent to receiving every diagram whose <strong>total</strong> arrow set has cardinal below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. It holds for arbitrary infinite <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. At <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span> it is ordinary filteredness, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filteredness implies <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span>-filteredness when <span class="math" data-tex="\(\pi&#x27;\leq\pi\)">\(\pi&#x27;\leq\pi\)</span>.</p>
+<p>The size of a <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered category itself need not be below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The cardinal bound concerns the test diagrams it must receive. Whenever we use a small index, its entire arrow set is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. For set-valued calculations, values and structural functions are encoded in the same universe. If an enlargement is required, choose it explicitly to contain the whole index, value and map data. The original category and its arrows stay fixed.</p>
+<h2 id="2-small-predecessors-in-an-arbitrary-well-order">2. Small predecessors in an arbitrary well-order</h2>
+<p>Assume in this section that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is regular. Let <span class="math" data-tex="\(J\)">\(J\)</span> be any well-ordered <strong>set</strong> with <span class="math" data-tex="\(|J|\geq\pi\)">\(|J|\geq\pi\)</span>. We do not require <span class="math" data-tex="\(J\)">\(J\)</span> to be an initial ordinal or to be <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+P_x=\{y\in J:y&lt;x\},
+\qquad I=\{x\in J:|P_x|&lt;\pi\}.
+\tag{2.1}
+\]">\[
+P_x=\{y\in J:y&lt;x\},
+\qquad I=\{x\in J:|P_x|&lt;\pi\}.
+\tag{2.1}
+\]</span>
+<p>Give <span class="math" data-tex="\(I\)">\(I\)</span> its inherited order. As a category its arrows are exactly the pairs <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> with <span class="math" data-tex="\(x\leq y\)">\(x\leq y\)</span>; identity is <span class="math" data-tex="\((x,x)\)">\((x,x)\)</span>, and composition sends <span class="math" data-tex="\((x,y),(y,z)\)">\((x,y),(y,z)\)</span> to <span class="math" data-tex="\((x,z)\)">\((x,z)\)</span>. Thus every pair of objects has at most one arrow, and the category laws follow from the order laws.</p>
+<p><strong>Proposition 2.1.</strong> The subset <span class="math" data-tex="\(I\)">\(I\)</span> is downward closed, is well-ordered by its inherited order, is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered, and has no supremum in itself.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(x\leq y\)">\(x\leq y\)</span> and <span class="math" data-tex="\(y\in I\)">\(y\in I\)</span>, then <span class="math" data-tex="\(P_x\subseteq P_y\)">\(P_x\subseteq P_y\)</span>, so <span class="math" data-tex="\(|P_x|&lt;\pi\)">\(|P_x|&lt;\pi\)</span>. This proves downward closure. Every nonempty subset of <span class="math" data-tex="\(I\)">\(I\)</span> is also a nonempty subset of <span class="math" data-tex="\(J\)">\(J\)</span>, whose least point lies in that subset; hence the inherited order is a well-order.</p>
+<p>For a family <span class="math" data-tex="\(S\subseteq I\)">\(S\subseteq I\)</span> with <span class="math" data-tex="\(|S|&lt;\pi\)">\(|S|&lt;\pi\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+T=\bigcup_{s\in S}P_s,
+\qquad b=\min(J\setminus T).
+\tag{2.2}
+\]">\[
+T=\bigcup_{s\in S}P_s,
+\qquad b=\min(J\setminus T).
+\tag{2.2}
+\]</span>
+<p>Regularity and the retained tagged-union injection give <span class="math" data-tex="\(|T|&lt;\pi\)">\(|T|&lt;\pi\)</span>. Since <span class="math" data-tex="\(|J|\geq\pi\)">\(|J|\geq\pi\)</span>, the complement is nonempty, so its least point <span class="math" data-tex="\(b\)">\(b\)</span> exists. If <span class="math" data-tex="\(b&lt;s\)">\(b&lt;s\)</span> for some <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>, then <span class="math" data-tex="\(b\in P_s\subseteq T\)">\(b\in P_s\subseteq T\)</span>, a contradiction. Therefore every <span class="math" data-tex="\(s\leq b\)">\(s\leq b\)</span>. Moreover any <span class="math" data-tex="\(y&lt;b\)">\(y&lt;b\)</span> must belong to <span class="math" data-tex="\(T\)">\(T\)</span>, by minimality of <span class="math" data-tex="\(b\)">\(b\)</span> in its complement. Thus <span class="math" data-tex="\(P_b\subseteq T\)">\(P_b\subseteq T\)</span>, which proves <span class="math" data-tex="\(b\in I\)">\(b\in I\)</span>. The actual cocone legs are the order arrows <span class="math" data-tex="\((s,b)\)">\((s,b)\)</span>. For <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>, <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> is the first point of <span class="math" data-tex="\(J\)">\(J\)</span>, with empty predecessor set. This supplies the required empty-family witness.</p>
+<p>Every parallel family consists of equal arrows whenever it is nonempty, because the category is thin. Postcomposition by the target identity equalizes it, and also equalizes the empty family. The retained two-axiom criterion proves <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filteredness.</p>
+<p>Suppose <span class="math" data-tex="\(I\)">\(I\)</span> had a greatest point <span class="math" data-tex="\(m\)">\(m\)</span>. If <span class="math" data-tex="\(m\)">\(m\)</span> were also greatest in <span class="math" data-tex="\(J\)">\(J\)</span>, then <span class="math" data-tex="\(J=P_m\cup\{m\}\)">\(J=P_m\cup\{m\}\)</span> would have cardinal below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, by the finite-union bound, contradicting <span class="math" data-tex="\(|J|\geq\pi\)">\(|J|\geq\pi\)</span>. Otherwise the nonempty upper tail has a least point <span class="math" data-tex="\(n&gt;m\)">\(n&gt;m\)</span>. There is no point strictly between them, so <span class="math" data-tex="\(P_n=P_m\cup\{m\}\)">\(P_n=P_m\cup\{m\}\)</span>. The same bound gives <span class="math" data-tex="\(n\in I\)">\(n\in I\)</span>, contradicting maximality of <span class="math" data-tex="\(m\)">\(m\)</span>. Thus <span class="math" data-tex="\(I\)">\(I\)</span> has no greatest point. A supremum of the whole set <span class="math" data-tex="\(I\)">\(I\)</span> lying in <span class="math" data-tex="\(I\)">\(I\)</span> would be a greatest point, so no such supremum exists. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also an exact size description without restricting <span class="math" data-tex="\(J\)">\(J\)</span>. The complete <a href="well-orders-cardinal-bounds-and-regular-successors.html#2-set-recursion-and-a-bound-on-possible-order-types">ordinal collapse of a well-order</a> gives an order-isomorphism <span class="math" data-tex="\(r:J\to\beta\)">\(r:J\to\beta\)</span>. Since <span class="math" data-tex="\(|J|\geq\pi\)">\(|J|\geq\pi\)</span>, the ordinal <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is at least <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The map <span class="math" data-tex="\(r\)">\(r\)</span> sends <span class="math" data-tex="\(P_x\)">\(P_x\)</span> bijectively to the ordinal <span class="math" data-tex="\(r(x)\)">\(r(x)\)</span>. By initiality of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+|P_x|&lt;\pi\quad\Longleftrightarrow\quad r(x)&lt;\pi.
+\tag{2.3}
+\]">\[
+|P_x|&lt;\pi\quad\Longleftrightarrow\quad r(x)&lt;\pi.
+\tag{2.3}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(r|_I:I\to\pi\)">\(r|_I:I\to\pi\)</span> is an order-isomorphism, with inverse the restriction of <span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span>. Encode an arrow <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> as <span class="math" data-tex="\((r(x),r(y))\)">\((r(x),r(y))\)</span>. All arrows then form a subset of <span class="math" data-tex="\(\pi\times\pi\)">\(\pi\times\pi\)</span> belonging to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>; source, target, identity and composition transport through these bijections. Identities inject <span class="math" data-tex="\(\pi\)">\(\pi\)</span> into that arrow set, and the retained square theorem bounds it above by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Thus <span class="math" data-tex="\(I\)">\(I\)</span> is small and its total arrow cardinal is exactly <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, not below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. This size calculation uses the square theorem, not regularity.</p>
+<p>For example, let <span class="math" data-tex="\(J\)">\(J\)</span> be a copy of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> followed by one new point. With <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>, <span class="math" data-tex="\(I\)">\(I\)</span> is the copy of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Its supremum exists in <span class="math" data-tex="\(J\)">\(J\)</span>, at the new point, but does not belong to <span class="math" data-tex="\(I\)">\(I\)</span>. This is compatible with Proposition 2.1. The construction does not assert that <span class="math" data-tex="\(I\to J\)">\(I\to J\)</span> is cofinal.</p>
+<h2 id="3-small-subsets-with-every-inclusion-arrow">3. Small subsets with every inclusion arrow</h2>
+<p>Again assume <span class="math" data-tex="\(\pi\)">\(\pi\)</span> regular. For a <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small set <span class="math" data-tex="\(A\)">\(A\)</span>, let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\mathcal P_{&lt;\pi}(A)=\{B\subseteq A:|B|&lt;\pi\}.
+\tag{3.1}
+\]">\[
+\mathcal P_{&lt;\pi}(A)=\{B\subseteq A:|B|&lt;\pi\}.
+\tag{3.1}
+\]</span>
+<p>Its order is inclusion, and its category includes <strong>every</strong> inclusion arrow, not only a selected generating family. Its identities and compositions have the pair formulas of Section 2.</p>
+<p><strong>Proposition 3.1.</strong> This is a small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered category. The empty subset is its least object.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(A\in\mathcal U\)">\(A\in\mathcal U\)</span>. Objects form a subset of <span class="math" data-tex="\(\mathcal P(A)\)">\(\mathcal P(A)\)</span>, and total arrows form the subset</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\{(B,C)\in\mathcal P_{&lt;\pi}(A)^2:B\subseteq C\}.
+\tag{3.2}
+\]">\[
+\{(B,C)\in\mathcal P_{&lt;\pi}(A)^2:B\subseteq C\}.
+\tag{3.2}
+\]</span>
+<p>The complete universe closure results put both sets in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. The source, target, identity and composition graphs are subsets of products of these member sets, so the whole category data have universe-member encodings.</p>
+<p>If only a bijection <span class="math" data-tex="\(a:A\to A_0\in\mathcal U\)">\(a:A\to A_0\in\mathcal U\)</span> is given, send <span class="math" data-tex="\(B\)">\(B\)</span> to <span class="math" data-tex="\(a(B)\)">\(a(B)\)</span>, and <span class="math" data-tex="\((B,C)\)">\((B,C)\)</span> to <span class="math" data-tex="\((a(B),a(C))\)">\((a(B),a(C))\)</span>. Their inverses use <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>. Cardinalities and inclusions are preserved; identities and composition commute with these formulas. This is an isomorphism of the whole categories, giving the claimed smallness even for external labels.</p>
+<p>For <span class="math" data-tex="\(S\subseteq\mathcal P_{&lt;\pi}(A)\)">\(S\subseteq\mathcal P_{&lt;\pi}(A)\)</span> of cardinal below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the union</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+W=\bigcup_{B\in S}B
+\tag{3.3}
+\]">\[
+W=\bigcup_{B\in S}B
+\tag{3.3}
+\]</span>
+<p>has cardinal below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, by regularity and the ordinary-union bound. It is an object and receives every <span class="math" data-tex="\(B\)">\(B\)</span> by the actual inclusion <span class="math" data-tex="\(B\subseteq W\)">\(B\subseteq W\)</span>. If <span class="math" data-tex="\(S\)">\(S\)</span> is empty, <span class="math" data-tex="\(W=\varnothing\)">\(W=\varnothing\)</span> still is an object. Thinness makes the target identity a common equalizer for any parallel family, including the empty one. Apply the retained filteredness criterion. The inclusions from <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> show that it is least. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Smallness here does not imply a cardinal bound below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. If <span class="math" data-tex="\(|A|\geq\pi\)">\(|A|\geq\pi\)</span>, the singleton assignment <span class="math" data-tex="\(a\mapsto\{a\}\)">\(a\mapsto\{a\}\)</span>, followed by the identity assignment, injects <span class="math" data-tex="\(A\)">\(A\)</span> into the total arrow set. For <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>, this category is the finite-subset category of <span class="math" data-tex="\(A\)">\(A\)</span>; it is filtered regardless of how large the small set <span class="math" data-tex="\(A\)">\(A\)</span> is.</p>
+<h2 id="4-the-canonical-comparison-for-maps-into-a-colimit">4. The canonical comparison for maps into a colimit</h2>
+<p>Return to an arbitrary infinite <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Let <span class="math" data-tex="\(C\)">\(C\)</span> be locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small and admit colimits of all small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered diagrams. This existence condition does not ask for any other colimits or finite operations in <span class="math" data-tex="\(C\)">\(C\)</span>. Let <span class="math" data-tex="\(I\)">\(I\)</span> be a small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered category and <span class="math" data-tex="\(\alpha:I\to C\)">\(\alpha:I\to C\)</span>. Choose a colimit <span class="math" data-tex="\(L\)">\(L\)</span> with its coprojections <span class="math" data-tex="\(c_i:\alpha(i)\to L\)">\(c_i:\alpha(i)\to L\)</span>. The complete <span class="unlinked">cocone universal property and structural maps</span> supply this convention and the maps induced by natural transformations.</p>
+<p>For <span class="math" data-tex="\(X\in C\)">\(X\in C\)</span>, the covariant set diagram is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+H_{X,\alpha}(i)=\operatorname{Hom}_C(X,\alpha(i)),
+\qquad H_{X,\alpha}(s)(f)=\alpha(s)f.
+\tag{4.1}
+\]">\[
+H_{X,\alpha}(i)=\operatorname{Hom}_C(X,\alpha(i)),
+\qquad H_{X,\alpha}(s)(f)=\alpha(s)f.
+\tag{4.1}
+\]</span>
+<p>We retain the complete <span class="unlinked">Hom functor and encoding proof</span>. In particular its identity and composite laws, and its natural bijections to universe-member Hom values, apply to (4.1). Thus the Set colimit below exists in the same universe. The complete <a href="filtered-stages-and-finite-limits.html#2-equality-of-elements-has-a-common-witness">filtered quotient construction</a> supplies its classes and actual transition relations.</p>
+<p>The cocone equations <span class="math" data-tex="\(c_j\alpha(s)=c_i\)">\(c_j\alpha(s)=c_i\)</span> define the canonical function</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\chi_{X,\alpha}:\operatorname{colim}_{i\in I}
+       \operatorname{Hom}_C(X,\alpha(i))
+       \longrightarrow\operatorname{Hom}_C(X,L),\\
+[i,f]\longmapsto c_i f.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\chi_{X,\alpha}:\operatorname{colim}_{i\in I}
+\operatorname{Hom}_C(X,\alpha(i))
+\longrightarrow\operatorname{Hom}_C(X,L),\\
+[i,f]\longmapsto c_i f.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>Indeed a transition sends <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(\alpha(s)f\)">\(\alpha(s)f\)</span>, and <span class="math" data-tex="\(c_j\alpha(s)f=c_i f\)">\(c_j\alpha(s)f=c_i f\)</span>. The retained quotient factor property therefore gives one well-defined function on classes. The symbols <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(c_i\)">\(c_i\)</span> are arrows of <span class="math" data-tex="\(C\)">\(C\)</span>; no underlying elements of its objects are assumed. In an encoded Hom set, decode <span class="math" data-tex="\(f\)">\(f\)</span>, form <span class="math" data-tex="\(c_i f\)">\(c_i f\)</span>, then encode the result. Cancellation of the retained bijections verifies precisely the same formula and equations.</p>
+<p>For a natural transformation <span class="math" data-tex="\(\eta:\alpha\to\beta\)">\(\eta:\alpha\to\beta\)</span>, write <span class="math" data-tex="\(c_i&#x27;\)">\(c_i&#x27;\)</span> for the latter colimit cocone and <span class="math" data-tex="\(\ell:L\to L&#x27;\)">\(\ell:L\to L&#x27;\)</span> for its induced map, so <span class="math" data-tex="\(\ell c_i=c_i&#x27;\eta_i\)">\(\ell c_i=c_i&#x27;\eta_i\)</span>. Naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives the induced Set-colimit map <span class="math" data-tex="\([i,f]\mapsto[i,\eta_i f]\)">\([i,f]\mapsto[i,\eta_i f]\)</span>. The comparison commutes with these maps because</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\chi_{X,\beta}[i,\eta_i f]
+=c_i&#x27;\eta_i f=\ell c_i f
+=\operatorname{Hom}_C(X,\ell)\chi_{X,\alpha}[i,f].
+\tag{4.3}
+\]">\[
+\chi_{X,\beta}[i,\eta_i f]
+=c_i&#x27;\eta_i f=\ell c_i f
+=\operatorname{Hom}_C(X,\ell)\chi_{X,\alpha}[i,f].
+\tag{4.3}
+\]</span>
+<p>For an arrow <span class="math" data-tex="\(u:X&#x27;\to X\)">\(u:X&#x27;\to X\)</span>, precomposition gives <span class="math" data-tex="\([i,f]\mapsto[i,fu]\)">\([i,f]\mapsto[i,fu]\)</span> on the source and <span class="math" data-tex="\(g\mapsto gu\)">\(g\mapsto gu\)</span> on the target. These maps commute with (4.2), since <span class="math" data-tex="\(c_i(fu)=(c_i f)u\)">\(c_i(fu)=(c_i f)u\)</span>. Identities and composites act as identities and composites by the retained Hom laws and quotient formulas. Thus the comparison is natural in <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and contravariant in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Choosing a different colimit cocone changes (4.2) by the unique isomorphism <span class="math" data-tex="\(v:L\to L&#x27;\)">\(v:L\to L&#x27;\)</span> with <span class="math" data-tex="\(vc_i=c_i&#x27;\)">\(vc_i=c_i&#x27;\)</span>, provided by that same universal-property interface. Explicitly <span class="math" data-tex="\(\chi&#x27;_{X,\alpha}=\operatorname{Hom}_C(X,v)\chi_{X,\alpha}\)">\(\chi&#x27;_{X,\alpha}=\operatorname{Hom}_C(X,v)\chi_{X,\alpha}\)</span>. Its bijectivity is therefore independent of the choice.</p>
+<p><strong>Definition 4.1.</strong> An object <span class="math" data-tex="\(X\)">\(X\)</span> is <strong><span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible</strong> if (4.2) is bijective for every small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered <span class="math" data-tex="\(I\)">\(I\)</span> and every <span class="math" data-tex="\(\alpha:I\to C\)">\(\alpha:I\to C\)</span>. Write <span class="math" data-tex="\(C_\pi\)">\(C_\pi\)</span> for the <strong>full</strong> subcategory on these objects: for any such <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, its Hom set is exactly <span class="math" data-tex="\(\operatorname{Hom}_C(X,Y)\)">\(\operatorname{Hom}_C(X,Y)\)</span>, with the original identities and composition. No skeleton or smallness of its entire object set is part of this definition.</p>
+<p>The two parts of bijectivity have concrete meanings. Surjectivity says every <span class="math" data-tex="\(g:X\to L\)">\(g:X\to L\)</span> can be written <span class="math" data-tex="\(c_i f\)">\(c_i f\)</span> for a stage map <span class="math" data-tex="\(f:X\to\alpha(i)\)">\(f:X\to\alpha(i)\)</span>. Injectivity says that if <span class="math" data-tex="\(c_i f=c_j g\)">\(c_i f=c_j g\)</span>, then there are actual arrows <span class="math" data-tex="\(p:i\to k\)">\(p:i\to k\)</span>, <span class="math" data-tex="\(q:j\to k\)">\(q:j\to k\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\alpha(p)f=\alpha(q)g.
+\tag{4.4}
+\]">\[
+\alpha(p)f=\alpha(q)g.
+\tag{4.4}
+\]</span>
+<p>The equivalence of equality of quotient classes and this common-stage witness is the complete retained filtered equality theorem. Empty Hom values do not introduce any choice: a representative is selected only for an existing class or an existing target map.</p>
+<h2 id="5-discrete-categories-and-changing-the-cardinal">5. Discrete categories and changing the cardinal</h2>
+<p><strong>Proposition 5.1.</strong> Every object of a discrete category is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible for every infinite <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p><strong>Proof.</strong> A <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered index is nonempty and ordinarily filtered. If <span class="math" data-tex="\(\alpha:I\to C\)">\(\alpha:I\to C\)</span> has discrete target, every arrow <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span> is sent to an identity, so <span class="math" data-tex="\(\alpha(i)=\alpha(j)\)">\(\alpha(i)=\alpha(j)\)</span> literally. Given any two objects of <span class="math" data-tex="\(I\)">\(I\)</span>, arrows from them to a common receiver make their values equal. Hence <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is literally constant at one object <span class="math" data-tex="\(Y\)">\(Y\)</span>, and every arrow is <span class="math" data-tex="\(1_Y\)">\(1_Y\)</span>.</p>
+<p>A filtered category is connected: each pair has a two-leg zigzag through a receiver. The complete <span class="unlinked">connected constant-diagram argument</span> gives its colimit as <span class="math" data-tex="\(Y\)">\(Y\)</span>, with all coprojections <span class="math" data-tex="\(1_Y\)">\(1_Y\)</span>, in any ambient category. Thus a discrete <span class="math" data-tex="\(C\)">\(C\)</span> has all the colimits required here, without needing other colimits.</p>
+<p>For fixed <span class="math" data-tex="\(X\)">\(X\)</span>, the Hom diagram is constant at <span class="math" data-tex="\(\operatorname{Hom}_C(X,Y)\)">\(\operatorname{Hom}_C(X,Y)\)</span>, a singleton when <span class="math" data-tex="\(X=Y\)">\(X=Y\)</span> and empty otherwise. The same connected constant-diagram proof in sets gives its colimit as that set. Formula (4.2) is the identity under this identification, since every <span class="math" data-tex="\(c_i=1_Y\)">\(c_i=1_Y\)</span>. It is bijective in both cases. If <span class="math" data-tex="\(C\)">\(C\)</span> is empty, there are no objects <span class="math" data-tex="\(X\)">\(X\)</span> and no functors from nonempty filtered indices to <span class="math" data-tex="\(C\)">\(C\)</span>; the statement and the required existence condition are vacuous. In all cases <span class="math" data-tex="\(C_\pi=C\)">\(C_\pi=C\)</span> as full categories. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.2.</strong> Let <span class="math" data-tex="\(\pi&#x27;\leq\pi\)">\(\pi&#x27;\leq\pi\)</span> be infinite cardinals. If <span class="math" data-tex="\(C\)">\(C\)</span> admits all small <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span>-filtered colimits, then it admits all small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered colimits and <span class="math" data-tex="\(C_{\pi&#x27;}\)">\(C_{\pi&#x27;}\)</span> is a full subcategory of <span class="math" data-tex="\(C_\pi\)">\(C_\pi\)</span>.</p>
+<p><strong>Proof.</strong> A <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered index is <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span>-filtered by the retained monotonicity criterion. Its colimit therefore exists by the stated hypothesis. For a <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span>-accessible <span class="math" data-tex="\(X\)">\(X\)</span>, the canonical comparison for any such index is already bijective. It is the very same function (4.2), not a replacement comparison. This proves <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessibility. Fullness of both subcategories retains all ambient arrows between the selected objects, yielding the full inclusion. No regularity is used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>More generally the implication applies whenever the two definitions and their requisite comparisons are defined; it does not manufacture missing colimits from the object property alone.</p>
+<p>At <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>, the retained criterion identifies the indices with ordinary filtered categories. Formula (4.2) is exactly the <a href="formal-colimits-and-compact-presentations.html#2-small-pieces-that-detect-maps-into-a-colimit">definition of finite presentation</a>. Hence <span class="math" data-tex="\(C_{\aleph_0}\)">\(C_{\aleph_0}\)</span> is the full category of objects of finite presentation, under the stated filtered-colimit existence hypothesis. No finite limits in <span class="math" data-tex="\(C\)">\(C\)</span> have been inserted.</p>
+<p>One may ask for an additional condition ensuring that every object belongs to some <span class="math" data-tex="\(C_\pi\)">\(C_\pi\)</span>. That is a further property of <span class="math" data-tex="\(C\)">\(C\)</span>, to be established under further hypotheses. The definition and propositions here do not assert an unconditional union theorem or assign an accessibility cardinal to every object.</p>
+<h2 id="6-four-exercises-with-complete-solutions">6. Four exercises with complete solutions</h2>
+<h3 id="1-a-well-order-with-a-visible-upper-tail">1. A well-order with a visible upper tail</h3>
+<p>Let <span class="math" data-tex="\(J\)">\(J\)</span> consist of symbols <span class="math" data-tex="\(a_n\)">\(a_n\)</span>, for <span class="math" data-tex="\(n\in\omega\)">\(n\in\omega\)</span>, followed by three symbols <span class="math" data-tex="\(t_0&lt;t_1&lt;t_2\)">\(t_0&lt;t_1&lt;t_2\)</span>. Order the <span class="math" data-tex="\(a_n\)">\(a_n\)</span> by their indices and put each below every <span class="math" data-tex="\(t_j\)">\(t_j\)</span>. Take <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>. Compute <span class="math" data-tex="\(I\)">\(I\)</span> from (2.1), its receivers for finite families, and its supremum in <span class="math" data-tex="\(J\)">\(J\)</span>. Is <span class="math" data-tex="\(I\to J\)">\(I\to J\)</span> cofinal in the incoming-comma convention?</p>
+<p><strong>Solution.</strong> The predecessors of <span class="math" data-tex="\(a_n\)">\(a_n\)</span> are exactly <span class="math" data-tex="\(\{a_0,\ldots,a_{n-1}\}\)">\(\{a_0,\ldots,a_{n-1}\}\)</span>, of cardinal <span class="math" data-tex="\(n\)">\(n\)</span>. The predecessors of each <span class="math" data-tex="\(t_j\)">\(t_j\)</span> contain every <span class="math" data-tex="\(a_n\)">\(a_n\)</span>, so have infinite cardinal. Therefore <span class="math" data-tex="\(I=\{a_n:n\in\omega\}\)">\(I=\{a_n:n\in\omega\}\)</span>.</p>
+<p>A nonempty finite family of these objects has the receiver <span class="math" data-tex="\(a_m\)">\(a_m\)</span>, where <span class="math" data-tex="\(m\)">\(m\)</span> is the largest occurring index; its legs are the unique order arrows. For the empty family take <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. All parallel arrows agree, so their target identity supplies every required equalizer. No <span class="math" data-tex="\(a_n\)">\(a_n\)</span> is greatest, since <span class="math" data-tex="\(a_{n+1}\)">\(a_{n+1}\)</span> is larger. In <span class="math" data-tex="\(J\)">\(J\)</span>, every upper bound of <span class="math" data-tex="\(I\)">\(I\)</span> is one of <span class="math" data-tex="\(t_0,t_1,t_2\)">\(t_0,t_1,t_2\)</span>; their least is <span class="math" data-tex="\(t_0\)">\(t_0\)</span>. Thus <span class="math" data-tex="\(\sup_J I=t_0\notin I\)">\(\sup_J I=t_0\notin I\)</span>.</p>
+<p>In the <a href="change-an-index-without-changing-universal-maps.html#1-connected-comma-categories">incoming-comma convention</a>, cofinality requires every incoming comma to be nonempty and connected. An object of the incoming comma <span class="math" data-tex="\((t_0\downarrow I)\)">\((t_0\downarrow I)\)</span> would be an arrow <span class="math" data-tex="\(t_0\to a_n\)">\(t_0\to a_n\)</span> in <span class="math" data-tex="\(J\)">\(J\)</span>. None exists, so that comma category is empty and the inclusion fails the incoming-comma nonemptiness test. This conclusion needs no unproved cofinality theorem. The tagged set <span class="math" data-tex="\((\omega\times\{0\})\sqcup(3\times\{1\})\)">\((\omega\times\{0\})\sqcup(3\times\{1\})\)</span> encodes <span class="math" data-tex="\(J\)">\(J\)</span> in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, and all order arrows are a subset of its square.</p>
+<h3 id="2-prescribing-elements-of-every-small-subset">2. Prescribing elements of every small subset</h3>
+<p>Let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be regular, let <span class="math" data-tex="\(A\)">\(A\)</span> be small and let <span class="math" data-tex="\(T\subseteq A\)">\(T\subseteq A\)</span> be arbitrary. Consider the full inclusion category</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+P_T=\{B\subseteq A:T\subseteq B,\ |B|&lt;\pi\}.
+\tag{6.1}
+\]">\[
+P_T=\{B\subseteq A:T\subseteq B,\ |B|&lt;\pi\}.
+\tag{6.1}
+\]</span>
+<p>Determine when it is empty. When nonempty, prove it is small and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered, give a least receiver for a below-<span class="math" data-tex="\(\pi\)">\(\pi\)</span> family, and determine when it has a terminal object. Include all empty-set cases.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(|T|\geq\pi\)">\(|T|\geq\pi\)</span>, every superset has cardinal at least <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, so <span class="math" data-tex="\(P_T\)">\(P_T\)</span> is empty and is not <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered. If <span class="math" data-tex="\(|T|&lt;\pi\)">\(|T|&lt;\pi\)</span>, <span class="math" data-tex="\(T\)">\(T\)</span> itself is an object, so the category is nonempty. Its objects are a subset of those in Section 3; all arrows are the corresponding inclusion pairs. The same subset and product bounds, transported by a bijection of <span class="math" data-tex="\(A\)">\(A\)</span> to a universe member if necessary, prove smallness of the whole category.</p>
+<p>Assume <span class="math" data-tex="\(|T|&lt;\pi\)">\(|T|&lt;\pi\)</span>. For <span class="math" data-tex="\(S\subseteq P_T\)">\(S\subseteq P_T\)</span> with <span class="math" data-tex="\(|S|&lt;\pi\)">\(|S|&lt;\pi\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+W=T\cup\bigcup_{B\in S}B.
+\tag{6.2}
+\]">\[
+W=T\cup\bigcup_{B\in S}B.
+\tag{6.2}
+\]</span>
+<p>Regularity bounds the union of the <span class="math" data-tex="\(B\)">\(B\)</span>'s below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and the finite-union bound includes <span class="math" data-tex="\(T\)">\(T\)</span>. Thus <span class="math" data-tex="\(W\in P_T\)">\(W\in P_T\)</span>. Every member includes into <span class="math" data-tex="\(W\)">\(W\)</span>. Any receiver must contain <span class="math" data-tex="\(T\)">\(T\)</span> and all these members, hence must contain <span class="math" data-tex="\(W\)">\(W\)</span>; it is the least receiver. For <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>, it is <span class="math" data-tex="\(T\)">\(T\)</span>. The identity of the common target equalizes any parallel family by thinness. This proves <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filteredness.</p>
+<p>If <span class="math" data-tex="\(|A|&lt;\pi\)">\(|A|&lt;\pi\)</span>, then <span class="math" data-tex="\(A\)">\(A\)</span> is an object and is terminal, since every object includes into it. Conversely suppose <span class="math" data-tex="\(B_*\)">\(B_*\)</span> terminal. For every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, the set <span class="math" data-tex="\(T\cup\{a\}\)">\(T\cup\{a\}\)</span> has cardinal below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, by the finite-union bound, so it is an object. Its inclusion into <span class="math" data-tex="\(B_*\)">\(B_*\)</span> shows <span class="math" data-tex="\(a\in B_*\)">\(a\in B_*\)</span>. Hence <span class="math" data-tex="\(B_*=A\)">\(B_*=A\)</span>, forcing <span class="math" data-tex="\(|A|&lt;\pi\)">\(|A|&lt;\pi\)</span>. When <span class="math" data-tex="\(A=\varnothing\)">\(A=\varnothing\)</span>, necessarily <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span>, and the sole object is both least and terminal. When <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> is arbitrary, the empty family is received by <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>; the same terminal classification still applies.</p>
+<h3 id="3-a-retract-retains-the-preservation-property">3. A retract retains the preservation property</h3>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> admit small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered colimits, with arbitrary infinite <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Suppose there are arrows <span class="math" data-tex="\(e:X\to Y\)">\(e:X\to Y\)</span>, <span class="math" data-tex="\(r:Y\to X\)">\(r:Y\to X\)</span> with <span class="math" data-tex="\(re=1_X\)">\(re=1_X\)</span>. If <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible, prove that <span class="math" data-tex="\(X\)">\(X\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible by giving an actual inverse to its comparison. Do not assume any finite operations in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><strong>Solution.</strong> Fix any small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered <span class="math" data-tex="\(I\)">\(I\)</span>, any <span class="math" data-tex="\(\alpha:I\to C\)">\(\alpha:I\to C\)</span> and its colimit <span class="math" data-tex="\(L\)">\(L\)</span>. Write <span class="math" data-tex="\(Q_X=\operatorname{colim}_I\operatorname{Hom}(X,\alpha(-))\)">\(Q_X=\operatorname{colim}_I\operatorname{Hom}(X,\alpha(-))\)</span>, and define <span class="math" data-tex="\(Q_Y\)">\(Q_Y\)</span> likewise. Precomposition and its naturality from Section 4 give functions</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+R:Q_X&amp;\longrightarrow Q_Y,&amp; [i,f]&amp;\longmapsto[i,fr],\\
+E:Q_Y&amp;\longrightarrow Q_X,&amp; [i,g]&amp;\longmapsto[i,ge].
+\end{aligned}
+\tag{6.3}
+\]">\[
+\begin{aligned}
+R:Q_X&amp;\longrightarrow Q_Y,&amp; [i,f]&amp;\longmapsto[i,fr],\\
+E:Q_Y&amp;\longrightarrow Q_X,&amp; [i,g]&amp;\longmapsto[i,ge].
+\end{aligned}
+\tag{6.3}
+\]</span>
+<p>They are well-defined because precomposition commutes with every stage transition. Their composite satisfies <span class="math" data-tex="\(ER[i,f]=[i,fre]=[i,f]\)">\(ER[i,f]=[i,fre]=[i,f]\)</span>, so <span class="math" data-tex="\(ER=1_{Q_X}\)">\(ER=1_{Q_X}\)</span>. On the target Hom sets define <span class="math" data-tex="\(R_L(f)=fr\)">\(R_L(f)=fr\)</span> and <span class="math" data-tex="\(E_L(g)=ge\)">\(E_L(g)=ge\)</span>; then <span class="math" data-tex="\(E_LR_L=1_{\operatorname{Hom}(X,L)}\)">\(E_LR_L=1_{\operatorname{Hom}(X,L)}\)</span>. Naturality of (4.2) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+\chi_YR=R_L\chi_X,
+\qquad \chi_XE=E_L\chi_Y.
+\tag{6.4}
+\]">\[
+\chi_YR=R_L\chi_X,
+\qquad \chi_XE=E_L\chi_Y.
+\tag{6.4}
+\]</span>
+<p>Since <span class="math" data-tex="\(\chi_Y\)">\(\chi_Y\)</span> is bijective, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+\psi_X=E\chi_Y^{-1}R_L:
+\operatorname{Hom}(X,L)\longrightarrow Q_X.
+\tag{6.5}
+\]">\[
+\psi_X=E\chi_Y^{-1}R_L:
+\operatorname{Hom}(X,L)\longrightarrow Q_X.
+\tag{6.5}
+\]</span>
+<p>The two composites are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.6); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\chi_X\psi_X
+ &amp;=E_L\chi_Y\chi_Y^{-1}R_L=E_LR_L=1,\\
+\psi_X\chi_X
+ &amp;=E\chi_Y^{-1}\chi_YR=ER=1.
+\end{aligned}
+\tag{6.6}
+\]">\[
+\begin{aligned}
+\chi_X\psi_X
+&amp;=E_L\chi_Y\chi_Y^{-1}R_L=E_LR_L=1,\\
+\psi_X\chi_X
+&amp;=E\chi_Y^{-1}\chi_YR=ER=1.
+\end{aligned}
+\tag{6.6}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\psi_X\)">\(\psi_X\)</span> is the required inverse for this arbitrary diagram. The quantified definition proves <span class="math" data-tex="\(X\)">\(X\)</span> accessible. Empty Hom sets cause no exception: all maps and inverse equations are functions between the stated sets. Regularity and finite categorical operations were never used.</p>
+<h3 id="4-exactly-which-sets-are-accessible-at-a-regular-cardinal">4. Exactly which sets are accessible at a regular cardinal</h3>
+<p>Let <span class="math" data-tex="\(\pi\in\mathcal U\)">\(\pi\in\mathcal U\)</span> be regular and infinite. Prove that an object <span class="math" data-tex="\(X\in\mathsf{Set}_{\mathcal U}\)">\(X\in\mathsf{Set}_{\mathcal U}\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible precisely when <span class="math" data-tex="\(|X|&lt;\pi\)">\(|X|&lt;\pi\)</span>. Identify its comparison explicitly. Indicate which direction continues to hold without regularity.</p>
+<p><strong>Solution.</strong> Suppose first <span class="math" data-tex="\(|X|&lt;\pi\)">\(|X|&lt;\pi\)</span>, and take an arbitrary small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered set diagram <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. In the complete <a href="common-arrows-and-bounded-set-comparisons.html#6-exchange-bounded-limits-with-filtered-colimits">bounded Set comparison</a>, take <span class="math" data-tex="\(K\)">\(K\)</span> to be the discrete category on <span class="math" data-tex="\(X\)">\(X\)</span>. Its total arrows are its identities, so their cardinal is <span class="math" data-tex="\(|X|&lt;\pi\)">\(|X|&lt;\pi\)</span>. Take <span class="math" data-tex="\(D(x,i)=\alpha(i)\)">\(D(x,i)=\alpha(i)\)</span>; arrows in the <span class="math" data-tex="\(I\)">\(I\)</span> direction act by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and the only <span class="math" data-tex="\(K\)">\(K\)</span> arrows act identically. Universe closure puts the complete index, value and map data in the stated encoding.</p>
+<p>The retained <span class="unlinked">compatible-tuple proof</span> identifies the discrete limit at stage <span class="math" data-tex="\(i\)">\(i\)</span> with functions <span class="math" data-tex="\(X\to\alpha(i)\)">\(X\to\alpha(i)\)</span>: a tuple <span class="math" data-tex="\((z_x)_{x\in X}\)">\((z_x)_{x\in X}\)</span> is the function <span class="math" data-tex="\(x\mapsto z_x\)">\(x\mapsto z_x\)</span>, with inverse evaluation at each <span class="math" data-tex="\(x\)">\(x\)</span>. The bounded comparison therefore gives a bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.7); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_i\operatorname{Map}(X,\alpha(i))
+\longrightarrow\operatorname{Map}(X,\operatorname{colim}_i\alpha(i)),
+\qquad [i,f]\longmapsto\bigl(x\longmapsto[i,f(x)]\bigr).
+\tag{6.7}
+\]">\[
+\operatorname{colim}_i\operatorname{Map}(X,\alpha(i))
+\longrightarrow\operatorname{Map}(X,\operatorname{colim}_i\alpha(i)),
+\qquad [i,f]\longmapsto\bigl(x\longmapsto[i,f(x)]\bigr).
+\tag{6.7}
+\]</span>
+<p>In the owned quotient model the colimit coprojection is <span class="math" data-tex="\(c_i(z)=[i,z]\)">\(c_i(z)=[i,z]\)</span>. Hence (6.7) is exactly <span class="math" data-tex="\(\chi_{X,\alpha}\)">\(\chi_{X,\alpha}\)</span>. Other colimit choices give the same result by the compatible isomorphism from Section 4. The complete bounded comparison includes empty <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(X=\varnothing\)">\(X=\varnothing\)</span> is included. This direction uses no regularity of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>For the converse use the small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered category <span class="math" data-tex="\(P=\mathcal P_{&lt;\pi}(X)\)">\(P=\mathcal P_{&lt;\pi}(X)\)</span> of Section 3 and the diagram taking <span class="math" data-tex="\(B\)">\(B\)</span> to the actual set <span class="math" data-tex="\(B\)">\(B\)</span>, with every inclusion map. We identify its Set colimit with <span class="math" data-tex="\(X\)">\(X\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.8); horizontal scroll when needed" data-tex="\[
+\theta:\operatorname{colim}_{B\in P}B\longrightarrow X,
+\qquad [B,x]\longmapsto x.
+\tag{6.8}
+\]">\[
+\theta:\operatorname{colim}_{B\in P}B\longrightarrow X,
+\qquad [B,x]\longmapsto x.
+\tag{6.8}
+\]</span>
+<p>This function is well-defined because every transition is inclusion. It is onto: each <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> lies in the stage <span class="math" data-tex="\(\{x\}\)">\(\{x\}\)</span>. It is injective: representatives <span class="math" data-tex="\((B,x),(C,x)\)">\((B,x),(C,x)\)</span> map to the same point in the common stage <span class="math" data-tex="\(B\cup C\)">\(B\cup C\)</span>, which has cardinal below <span class="math" data-tex="\(\pi\)">\(\pi\)</span> by the finite-union bound. Different points cannot be identified, since <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is well-defined and keeps their values. Thus it is a bijection. It intertwines every coprojection with the actual inclusion <span class="math" data-tex="\(B\hookrightarrow X\)">\(B\hookrightarrow X\)</span>, so it identifies their colimit cocones. For <span class="math" data-tex="\(X=\varnothing\)">\(X=\varnothing\)</span>, the sole stage is the empty set and the same map is the unique empty bijection.</p>
+<p>Under this identification, the comparison takes a function <span class="math" data-tex="\(f:X\to B\)">\(f:X\to B\)</span> at a stage <span class="math" data-tex="\(B\)">\(B\)</span> to its composite <span class="math" data-tex="\(X\to B\hookrightarrow X\)">\(X\to B\hookrightarrow X\)</span>. If <span class="math" data-tex="\(X\)">\(X\)</span> were accessible, its identity would be such a composite for some <span class="math" data-tex="\(B\in P\)">\(B\in P\)</span>. The equation forces every <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> to belong to <span class="math" data-tex="\(B\)">\(B\)</span>, hence <span class="math" data-tex="\(B=X\)">\(B=X\)</span>, so <span class="math" data-tex="\(|X|&lt;\pi\)">\(|X|&lt;\pi\)</span>. If <span class="math" data-tex="\(|X|\geq\pi\)">\(|X|\geq\pi\)</span>, the identity is an explicit target map outside the image and the comparison is not surjective. The use of Section 3 to make <span class="math" data-tex="\(P\)">\(P\)</span> <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered is where this converse uses regularity; we make no converse assertion for singular cardinals.</p>
+<h2 id="7-retained-proof-interfaces">7. Retained proof interfaces</h2>
+<p>The cardinal companion supplies well-orders, initial cardinal representatives, the square bijection, finite-union bounds and regularity. The bounded-comparison companion supplies the complete arbitrary-cardinal filteredness criterion and the bounded Set interchange. The owned universe, Hom, cocone, constant-diagram, tuple-limit and filtered-quotient proofs supply their actual maps and size bounds. The residual arguments above keep those constructions and add only the two poset verifications, the precise preservation comparison and its elementary consequences.</p>
+</main></body></html>

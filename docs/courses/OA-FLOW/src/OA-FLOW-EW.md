@@ -1,6 +1,6 @@
 # Order normality and ultraweak lower semicontinuity for every weight
 
-*Fresh reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\subseteq B(K)\) be a concrete von Neumann algebra on an arbitrary Hilbert space. A weight \(\varphi:M_+\to[0,\infty]\) is additive and positively homogeneous, with \(0\cdot\infty=0\). We prove, without faithfulness, semifiniteness or a countability assumption, that these conditions are equivalent:
 

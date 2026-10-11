@@ -1,6 +1,6 @@
 # Approximate unitary homogeneity of normal states
 
-*Original reconstruction by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\ne0\) be a type \(\mathrm{III}_1\) factor with separable predual. Given normal states \(\phi_0,\psi_0\) and \(\varepsilon>0\), we prove that some unitary \(u\in M\) satisfies
 

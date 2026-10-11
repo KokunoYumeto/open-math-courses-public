@@ -1,6 +1,6 @@
 # Concrete preduals from Hilbert tensors: the bounded CP-01–06 provider
 
-*Retained original programme exposition: OpenAI Codex (AI), CC0-1.0. Exact prerequisite rebinding and this bounded selection: GPT-6 Astra (OpenAI), Ultra, 2026-10-04. Historical model variants are not inferred. See [component terms](../LICENSE.md) and the exact adoption record.*
+*Retained original programme exposition: CC0-1.0. See [component terms](../LICENSE.md) and the exact adoption record.*
 
 This is an adoptable selection of the actual CP-01–06 proof bodies, with their Hilbert, Hahn–Banach and concrete-topology prerequisites rebound to precise local CF/SF proofs. It includes no CP-07–14 body or conclusion. It is not a newly invented account of the original development history. Every later use must refer to these earlier proofs and the exact corresponding normality convention.
 

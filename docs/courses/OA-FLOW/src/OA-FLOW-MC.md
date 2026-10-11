@@ -1,6 +1,6 @@
 # Canonical standard-form transport and finite balanced matrices
 
-*Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 The inputs are the complete [natural-cone construction NC-1–5](OA-FLOW-NC.md), [corner and representative proofs CR-1–9](OA-FLOW-CR.md), and the actual full finite balanced GNS/graph construction [BC-1–3](OA-FLOW-BC.md#oa-flow.bc.1). In particular arbitrary weights in BC remain faithful n.s.f.; nonfaithful positive functionals enter as cone vectors and support corners, not by silently strengthening BC's hypotheses.
 

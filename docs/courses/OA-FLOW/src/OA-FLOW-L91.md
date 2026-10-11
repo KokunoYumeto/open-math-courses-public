@@ -2,7 +2,7 @@
 
 Fourier filters act on the Banach space through operators \(\alpha_f\). Their operator-norm closure is a commutative Banach algebra whose characters record exactly the action frequencies. This lesson proves Takesaki II, Corollary XI.1.15, including the topology of that character space and the possibly nonunital case. Its harmonic character input is the complete convolution-algebra classification in [AF2](OA-FLOW-AF.md#af-2), with actual current Haar and norm-integral proofs.
 
-*Programme proof written in Codex (OpenAI), September 2026; restoration and proof expansion, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 <a id="oa-flow.frequency.filtercharacters"></a>
 

@@ -1,6 +1,6 @@
 # A spectral coordinate from a trace-scaling action
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 An action that rescales a trace exponentially has a continuous spectral coordinate. We construct it by integrating the action on bounded corners. A partition by discrete translates gives an explicit bound for that integral, and trace scaling produces the partition. The resulting invariant weight has a density whose imaginary powers give the coordinate at every real time.
 

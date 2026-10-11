@@ -2,7 +2,7 @@
 
 *Original exposition, arguments, solved diagnostics and reproducible figures: CC0-1.0 to the extent of rights held. Existing mathematical sources, software and fonts retain their own terms.*
 
-**Self-checked by the writing AI.**
+
 
 An infinite supply of identical sites does two different jobs. A diagonal observable can escape every fixed finite set of sites while a nonidentity translation still moves it a definite distance. Off-diagonal observables supply every integral modular frequency. We prove that these frequencies survive every nonzero fixed corner, so the crossed product has the asserted subtype even for a nonamenable group.
 

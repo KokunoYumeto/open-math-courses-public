@@ -1,0 +1,2557 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Original CCF modes, Hilbert errors and sharp velocity bounds — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/original-ccf-modes-hilbert-errors-and-sharp-velocity-bounds.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-48.html">Previous lesson</a><span class="unlinked">Next lesson</span></nav><article class="lesson"><h1 id="original-ccf-modes-hilbert-errors-and-sharp-velocity-bounds">Original CCF modes, Hilbert errors and sharp velocity bounds</h1>
+<p>The CCF benchmark predicts vorticity and velocity separately. Comparing
+its approximate profiles with the original equation therefore requires
+both the equation residual and the error in the Hilbert-transform
+velocity relation. This lesson proves their complete effect on the two
+symmetry directions, keeping every original coordinate, sign, anchor
+and physical-time factor.</p>
+<p>The first part derives the actual principal-value and primitive maps,
+including the signed spatial correspondence. The second gives the full
+velocity repair, mode-defect bounds and derivative-anchor projection.
+The third supplies every sinh-coordinate derivative, finite endpoint,
+whole-line tail and cubic-quadrature error term, together with an exact
+rational benchmark.</p>
+<p>Five solved exercises compute the signed group and anchor maps, both
+mode defects for a specified velocity, the sharp joint velocity-error
+coefficient, every weight on an original nonuniform grid and an explicit
+whole-line transform budget. The final construction keeps the complete
+global velocity and cutoff transition. Its nonzero equation residual
+shows exactly what remains after the transform error is controlled.</p>
+<p>The human comparison is Wang, Lai, Gómez-Serrano and Buckmaster; each
+part identifies the original author-source passages. The calculations
+below prove their stated field maps and bounds. They do not certify an
+unavailable trained profile, a full stability spectrum or a failure of
+the main blowup theorem.</p>
+<h2 id="part-1-original-ccf-residuals-hilbert-primitives-and-signed-spatial-maps">Part 1. Original CCF residuals, Hilbert primitives and signed spatial maps</h2>
+<p>This complete derivation retains both independent profile errors and the
+full spatial-scale correspondence. The human source is
+Wang, Lai, Gómez-Serrano and Buckmaster,
+<a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>, original
+<code>BoussinesqSupp_v5.tex</code>359–406 and412–486 and
+<code>BoussinesqPRL_v5.tex</code>232–252, reread on 2026-10-11. The original equation, anchors, approximate-profile operator and numerical
+claims remain identifiable. No trained parameters or numerical quadrature
+are inferred, and no novelty or main-theorem failure is asserted.</p>
+<h2 id="cf1-a-function-class-and-the-actual-hilbert-primitive">CF1. A function class and the actual Hilbert primitive</h2>
+<p>Fix the Hilbert orientation <span class="math" data-tex="\(\sigma\in\{-1,1\}\)">\(\sigma\in\{-1,1\}\)</span> once and
+retain it in the definition</p>
+<span class="math math-display" data-tex="\[
+H_\sigma f(y)=\frac\sigma\pi\operatorname{PV}
+\int_{\mathbb R}\frac{f(x)}{y-x}\,dx.
+\tag{CF1}
+\]">\[
+H_\sigma f(y)=\frac\sigma\pi\operatorname{PV}
+\int_{\mathbb R}\frac{f(x)}{y-x}\,dx.
+\tag{CF1}
+\]</span>
+<p>All identities below hold for either convention, used consistently.
+For a real <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span>, take <span class="math" data-tex="\(f\in C^3(\mathbb R)\)">\(f\in C^3(\mathbb R)\)</span>
+with specified finite constants <span class="math" data-tex="\(C_j\)">\(C_j\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+|f^{(j)}(x)|\le C_j(1+|x|)^{-\beta-j},
+\qquad 0\le j\le3.
+\tag{CF2}
+\]">\[
+|f^{(j)}(x)|\le C_j(1+|x|)^{-\beta-j},
+\qquad 0\le j\le3.
+\tag{CF2}
+\]</span>
+<p>This permits every positive power of decay, including the positive
+exponents stated in the source; it does not assert that an unavailable
+trained profile satisfies these bounds.</p>
+<p>The integral exists. On a fixed compact set of <span class="math" data-tex="\(y\)">\(y\)</span>, the tail
+integrand is bounded by a constant times <span class="math" data-tex="\(|x|^{-1-\beta}\)">\(|x|^{-1-\beta}\)</span>.
+For the local singularity, set <span class="math" data-tex="\(r=y-x\)">\(r=y-x\)</span>, subtract <span class="math" data-tex="\(f(y)\)">\(f(y)\)</span>
+on the symmetric interval <span class="math" data-tex="\(|r|&lt;1\)">\(|r|&lt;1\)</span>, and use the mean value theorem.
+Precisely,</p>
+<span class="math math-display" data-tex="\[
+H_\sigma f(y)=\frac\sigma\pi\left[
+\int_{|r|&lt;1}\frac{f(y-r)-f(y)}r\,dr
++\int_{|r|\ge1}\frac{f(y-r)}r\,dr\right].
+\tag{CF3}
+\]">\[
+H_\sigma f(y)=\frac\sigma\pi\left[
+\int_{|r|&lt;1}\frac{f(y-r)-f(y)}r\,dr
++\int_{|r|\ge1}\frac{f(y-r)}r\,dr\right].
+\tag{CF3}
+\]</span>
+<p>The removed constant has zero symmetric principal value. The first
+integrand is bounded by the supremum of <span class="math" data-tex="\(|f&#x27;|\)">\(|f&#x27;|\)</span> on the actual
+unit neighborhood of the compact set. The same argument applies after
+one or two <span class="math" data-tex="\(y\)">\(y\)</span>-derivatives, using respectively <span class="math" data-tex="\(f&#x27;&#x27;\)">\(f&#x27;&#x27;\)</span>
+and <span class="math" data-tex="\(f&#x27;&#x27;&#x27;\)">\(f&#x27;&#x27;&#x27;\)</span>. The tails after each derivative have an integrable
+majorant from CF2. Dominated differentiation therefore proves</p>
+<span class="math math-display" data-tex="\[
+H_\sigma f\in C^2(\mathbb R),\qquad
+(H_\sigma f)&#x27;=H_\sigma f&#x27;,\qquad
+(H_\sigma f)&#x27;&#x27;=H_\sigma f&#x27;&#x27;.
+\tag{CF4}
+\]">\[
+H_\sigma f\in C^2(\mathbb R),\qquad
+(H_\sigma f)&#x27;=H_\sigma f&#x27;,\qquad
+(H_\sigma f)&#x27;&#x27;=H_\sigma f&#x27;&#x27;.
+\tag{CF4}
+\]</span>
+<p>The function <span class="math" data-tex="\(x f&#x27;(x)\)">\(x f&#x27;(x)\)</span> is locally continuously differentiable
+and has the same positive tail decay required by CF1. Subtracting <span class="math" data-tex="\(y H_\sigma f&#x27;(y)\)">\(y H_\sigma f&#x27;(y)\)</span>
+from its principal-value formula cancels
+the kernel exactly, giving</p>
+<span class="math math-display" data-tex="\[
+H_\sigma[xf&#x27;](y)-yH_\sigma f&#x27;(y)
+=-\frac\sigma\pi\int_{\mathbb R}f&#x27;(x)\,dx=0.
+\tag{CF5}
+\]">\[
+H_\sigma[xf&#x27;](y)-yH_\sigma f&#x27;(y)
+=-\frac\sigma\pi\int_{\mathbb R}f&#x27;(x)\,dx=0.
+\tag{CF5}
+\]</span>
+<p>Here <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> is absolutely integrable by CF2, and
+<span class="math" data-tex="\(f(+\infty)=f(-\infty)=0\)">\(f(+\infty)=f(-\infty)=0\)</span>; thus the last integral is
+zero by the fundamental theorem of calculus. The omitted interval
+around <span class="math" data-tex="\(x=y\)">\(x=y\)</span> tends to zero in this absolutely convergent
+integral. This justifies the subtraction with the original principal
+value, not a formal commutator.</p>
+<p>Define the exact linear velocity map</p>
+<span class="math math-display" data-tex="\[
+V[f](y)=\int_0^y H_\sigma f(r)\,dr.
+\tag{CF6}
+\]">\[
+V[f](y)=\int_0^y H_\sigma f(r)\,dr.
+\tag{CF6}
+\]</span>
+<p>Integration of CF5 and CF4 gives the full mode map</p>
+<span class="math math-display" data-tex="\[
+V[yf&#x27;](y)=yH_\sigma f(y)-V[f](y).
+\tag{CF7}
+\]">\[
+V[yf&#x27;](y)=yH_\sigma f(y)-V[f](y).
+\tag{CF7}
+\]</span>
+<p>The endpoint contribution at zero is <span class="math" data-tex="\(0\cdot H_\sigma f(0)=0\)">\(0\cdot H_\sigma f(0)=0\)</span>,
+since CF3 gives a finite value there. Both integrals in CF6–CF7
+are over their actual oriented intervals, also when <span class="math" data-tex="\(y&lt;0\)">\(y&lt;0\)</span>.</p>
+<h2 id="cf2-retain-the-independently-predicted-velocity-and-its-error">CF2. Retain the independently predicted velocity and its error</h2>
+<p>Take <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> in CF2, <span class="math" data-tex="\(U\in C^2(\mathbb R)\)">\(U\in C^2(\mathbb R)\)</span>,
+<span class="math" data-tex="\(\lambda\in\mathbb R\)">\(\lambda\in\mathbb R\)</span>, and <span class="math" data-tex="\(p=1+\lambda\)">\(p=1+\lambda\)</span>.
+Do not set the predicted <span class="math" data-tex="\(U\)">\(U\)</span> equal to <span class="math" data-tex="\(V[\Omega]\)">\(V[\Omega]\)</span>.
+The complete errors and original evolution residual are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta&amp;=U&#x27;-H_\sigma\Omega,\\
+E&amp;=U-V[\Omega]=U(0)+\int_0^y\Delta(r)\,dr,\\
+R&amp;=-\Omega-py\Omega&#x27;+U\Omega&#x27;+\Omega U&#x27;.
+\end{aligned}
+\tag{CF8}
+\]">\[
+\begin{aligned}
+\Delta&amp;=U&#x27;-H_\sigma\Omega,\\
+E&amp;=U-V[\Omega]=U(0)+\int_0^y\Delta(r)\,dr,\\
+R&amp;=-\Omega-py\Omega&#x27;+U\Omega&#x27;+\Omega U&#x27;.
+\end{aligned}
+\tag{CF8}
+\]</span>
+<p>CF4 shows that <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is continuously differentiable.
+The equality for <span class="math" data-tex="\(E\)">\(E\)</span> follows by subtracting the two primitives,
+retaining the original constant <span class="math" data-tex="\(U(0)\)">\(U(0)\)</span>.</p>
+<p>The source's displayed linear operator, with its predicted base fields,
+is</p>
+<span class="math math-display" data-tex="\[
+Lh=-h-pyh&#x27;+Uh&#x27;+V[h]\Omega&#x27;+\Omega H_\sigma h+hU&#x27;.
+\tag{CF9}
+\]">\[
+Lh=-h-pyh&#x27;+Uh&#x27;+V[h]\Omega&#x27;+\Omega H_\sigma h+hU&#x27;.
+\tag{CF9}
+\]</span>
+<p>For the two specified directions
+<span class="math" data-tex="\(h_0=y\Omega&#x27;\)">\(h_0=y\Omega&#x27;\)</span> and <span class="math" data-tex="\(h_1=\Omega+py\Omega&#x27;\)">\(h_1=\Omega+py\Omega&#x27;\)</span>,
+CF4–CF7 prove</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_\sigma h_0&amp;=y(U&#x27;&#x27;-\Delta&#x27;),\\
+V[h_0]&amp;=yU&#x27;-U+E-y\Delta,\\
+H_\sigma h_1&amp;=(U&#x27;-\Delta)+py(U&#x27;&#x27;-\Delta&#x27;),\\
+V[h_1]&amp;=pyU&#x27;-\lambda U+\lambda E-py\Delta.
+\end{aligned}
+\tag{CF10}
+\]">\[
+\begin{aligned}
+H_\sigma h_0&amp;=y(U&#x27;&#x27;-\Delta&#x27;),\\
+V[h_0]&amp;=yU&#x27;-U+E-y\Delta,\\
+H_\sigma h_1&amp;=(U&#x27;-\Delta)+py(U&#x27;&#x27;-\Delta&#x27;),\\
+V[h_1]&amp;=pyU&#x27;-\lambda U+\lambda E-py\Delta.
+\end{aligned}
+\tag{CF10}
+\]</span>
+<p>These formulas keep the entire discrepancy of the independently
+predicted velocity. The source oddness forces <span class="math" data-tex="\(U(0)=0\)">\(U(0)=0\)</span>
+when imposed exactly, but does not force <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span>.</p>
+<p>Differentiate the full CF8 expression:</p>
+<span class="math math-display" data-tex="\[
+R&#x27;=-(1+p)\Omega&#x27;-py\Omega&#x27;&#x27;
++U\Omega&#x27;&#x27;+2U&#x27;\Omega&#x27;+\Omega U&#x27;&#x27;.
+\tag{CF11}
+\]">\[
+R&#x27;=-(1+p)\Omega&#x27;-py\Omega&#x27;&#x27;
++U\Omega&#x27;&#x27;+2U&#x27;\Omega&#x27;+\Omega U&#x27;&#x27;.
+\tag{CF11}
+\]</span>
+<p>Substituting CF10 in CF9, without deleting the error terms, gives</p>
+<span class="math math-display" data-tex="\[
+Lh_0=yR&#x27;+(E-y\Delta)\Omega&#x27;-y\Omega\Delta&#x27;.
+\tag{CF12}
+\]">\[
+Lh_0=yR&#x27;+(E-y\Delta)\Omega&#x27;-y\Omega\Delta&#x27;.
+\tag{CF12}
+\]</span>
+<p>For completeness, the terms in CF9 are</p>
+<span class="math math-display" data-tex="\[
+-y\Omega&#x27;-py(\Omega&#x27;+y\Omega&#x27;&#x27;)
++U(\Omega&#x27;+y\Omega&#x27;&#x27;)
++(yU&#x27;-U+E-y\Delta)\Omega&#x27;
++y\Omega(U&#x27;&#x27;-\Delta&#x27;)+y\Omega&#x27;U&#x27;.
+\]">\[
+-y\Omega&#x27;-py(\Omega&#x27;+y\Omega&#x27;&#x27;)
++U(\Omega&#x27;+y\Omega&#x27;&#x27;)
++(yU&#x27;-U+E-y\Delta)\Omega&#x27;
++y\Omega(U&#x27;&#x27;-\Delta&#x27;)+y\Omega&#x27;U&#x27;.
+\]</span>
+<p>The two <span class="math" data-tex="\(U\Omega&#x27;\)">\(U\Omega&#x27;\)</span> contributions cancel. The remaining
+terms are exactly CF11 times <span class="math" data-tex="\(y\)">\(y\)</span>, plus the three displayed
+error contributions in CF12.</p>
+<p>Also</p>
+<span class="math math-display" data-tex="\[
+L\Omega=R+(U-E)\Omega&#x27;+\Omega(U&#x27;-\Delta)
+=2R+h_1-E\Omega&#x27;-\Omega\Delta.
+\tag{CF13}
+\]">\[
+L\Omega=R+(U-E)\Omega&#x27;+\Omega(U&#x27;-\Delta)
+=2R+h_1-E\Omega&#x27;-\Omega\Delta.
+\tag{CF13}
+\]</span>
+<p>The second equality uses only
+<span class="math" data-tex="\(U\Omega&#x27;+\Omega U&#x27;=R+\Omega+py\Omega&#x27;=R+h_1\)">\(U\Omega&#x27;+\Omega U&#x27;=R+\Omega+py\Omega&#x27;=R+h_1\)</span>.
+Linearity and CF12 now give the exact second mode identity</p>
+<span class="math math-display" data-tex="\[
+Lh_1-h_1=2R+pyR&#x27;
++(\lambda E-py\Delta)\Omega&#x27;
+-\Omega(\Delta+py\Delta&#x27;).
+\tag{CF14}
+\]">\[
+Lh_1-h_1=2R+pyR&#x27;
++(\lambda E-py\Delta)\Omega&#x27;
+-\Omega(\Delta+py\Delta&#x27;).
+\tag{CF14}
+\]</span>
+<p>Thus exact compatible profiles recover the source's zero and one mode
+identities. For a general prediction, CF12 and CF14 give their entire
+defects. They do not certify the numerical values or spectrum of an
+unavailable profile.</p>
+<h2 id="cf3-the-full-signed-spatial-correspondence">CF3. The full signed spatial correspondence</h2>
+<p>For every actual <span class="math" data-tex="\(\kappa\ne0\)">\(\kappa\ne0\)</span>, change variables in CF1.
+The absolute Jacobian and signed denominator give</p>
+<span class="math math-display" data-tex="\[
+H_\sigma[f(\cdot/\kappa)](y)
+=\operatorname{sgn}(\kappa)
+(H_\sigma f)(y/\kappa).
+\tag{CF15}
+\]">\[
+H_\sigma[f(\cdot/\kappa)](y)
+=\operatorname{sgn}(\kappa)
+(H_\sigma f)(y/\kappa).
+\tag{CF15}
+\]</span>
+<p>For <span class="math" data-tex="\(\kappa&lt;0\)">\(\kappa&lt;0\)</span>, reversing the integration endpoints contributes
+the absolute Jacobian <span class="math" data-tex="\(|\kappa|\)">\(|\kappa|\)</span>, while the denominator
+contributes <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. The deleted symmetric interval of radius
+<span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> in the original variable becomes one of radius
+<span class="math" data-tex="\(\epsilon/|\kappa|\)">\(\epsilon/|\kappa|\)</span>; the absolutely convergent tails permit
+the same change there. This proves CF15 for the original principal
+value including reflection. CF2 is preserved under every fixed nonzero
+scale, with finite constants changed by that actual scale. More
+precisely, for <span class="math" data-tex="\(0\le j\le3\)">\(0\le j\le3\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|\partial_y^j f(y/\kappa)\right|
+\le |\kappa|^{-j}C_j
+\min\{1,|\kappa|^{-1}\}^{-\beta-j}
+(1+|y|)^{-\beta-j}.
+\]">\[
+\left|\partial_y^j f(y/\kappa)\right|
+\le |\kappa|^{-j}C_j
+\min\{1,|\kappa|^{-1}\}^{-\beta-j}
+(1+|y|)^{-\beta-j}.
+\]</span>
+<p>This follows from the exact derivative factor <span class="math" data-tex="\(\kappa^{-j}\)">\(\kappa^{-j}\)</span>
+and <span class="math" data-tex="\(1+|y|/|\kappa|\ge
+\min\{1,|\kappa|^{-1}\}(1+|y|)\)">\(1+|y|/|\kappa|\ge
+\min\{1,|\kappa|^{-1}\}(1+|y|)\)</span>. All scale factors are retained.</p>
+<p>The exact signed field map is</p>
+<span class="math math-display" data-tex="\[
+\Omega_\kappa(y)=\operatorname{sgn}(\kappa)\Omega(y/\kappa),
+\qquad U_\kappa(y)=\kappa U(y/\kappa).
+\tag{CF16}
+\]">\[
+\Omega_\kappa(y)=\operatorname{sgn}(\kappa)\Omega(y/\kappa),
+\qquad U_\kappa(y)=\kappa U(y/\kappa).
+\tag{CF16}
+\]</span>
+<p>It satisfies the complete error correspondence</p>
+<span class="math math-display" data-tex="\[
+\Delta_\kappa(y)=\Delta(y/\kappa),\qquad
+E_\kappa(y)=\kappa E(y/\kappa),\qquad
+R_\kappa(y)=\operatorname{sgn}(\kappa)R(y/\kappa).
+\tag{CF17}
+\]">\[
+\Delta_\kappa(y)=\Delta(y/\kappa),\qquad
+E_\kappa(y)=\kappa E(y/\kappa),\qquad
+R_\kappa(y)=\operatorname{sgn}(\kappa)R(y/\kappa).
+\tag{CF17}
+\]</span>
+<p>To verify these formulas, CF15 gives
+<span class="math" data-tex="\(H_\sigma\Omega_\kappa=(H_\sigma\Omega)(y/\kappa)\)">\(H_\sigma\Omega_\kappa=(H_\sigma\Omega)(y/\kappa)\)</span>
+and <span class="math" data-tex="\(U_\kappa&#x27;=U&#x27;(y/\kappa)\)">\(U_\kappa&#x27;=U&#x27;(y/\kappa)\)</span>. Their difference proves
+the first identity. Changing variables in the primitive gives
+<span class="math" data-tex="\(V[\Omega_\kappa](y)=\kappa V[\Omega](y/\kappa)\)">\(V[\Omega_\kappa](y)=\kappa V[\Omega](y/\kappa)\)</span>,
+which proves the second, including its constant at zero. In every term
+of <span class="math" data-tex="\(R_\kappa\)">\(R_\kappa\)</span>, the derivative of <span class="math" data-tex="\(\Omega_\kappa\)">\(\Omega_\kappa\)</span>
+is <span class="math" data-tex="\(\operatorname{sgn}(\kappa)\Omega&#x27;(y/\kappa)/\kappa\)">\(\operatorname{sgn}(\kappa)\Omega&#x27;(y/\kappa)/\kappa\)</span>.
+The original coordinate <span class="math" data-tex="\(y\)">\(y\)</span> becomes <span class="math" data-tex="\(\kappa(y/\kappa)\)">\(\kappa(y/\kappa)\)</span>,
+and <span class="math" data-tex="\(U_\kappa\)">\(U_\kappa\)</span> retains its factor <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.
+All four terms then carry the same sign factor, proving the last
+identity without changing <span class="math" data-tex="\(p\)">\(p\)</span> or <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p>For comparison, the unsigned vorticity scale printed at supplemental
+line436 has the Hilbert-compatible velocity factor <span class="math" data-tex="\(|\kappa|\)">\(|\kappa|\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\widetilde\Omega(y)=\Omega(y/\kappa),\qquad
+\widetilde U(y)=|\kappa|U(y/\kappa),\qquad
+Q=U\Omega&#x27;+\Omega U&#x27;.
+\]">\[
+\widetilde\Omega(y)=\Omega(y/\kappa),\qquad
+\widetilde U(y)=|\kappa|U(y/\kappa),\qquad
+Q=U\Omega&#x27;+\Omega U&#x27;.
+\]</span>
+<p>Direct substitution keeps the full mismatch</p>
+<span class="math math-display" data-tex="\[
+\widetilde R(y)=R(y/\kappa)
++(\operatorname{sgn}(\kappa)-1)Q(y/\kappa).
+\tag{CF18}
+\]">\[
+\widetilde R(y)=R(y/\kappa)
++(\operatorname{sgn}(\kappa)-1)Q(y/\kappa).
+\tag{CF18}
+\]</span>
+<p>Positive scale has no such term. Negative scale retains <span class="math" data-tex="\(-2Q\)">\(-2Q\)</span>.
+For <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, the only continuously differentiable profile for which
+both <span class="math" data-tex="\(R=0\)">\(R=0\)</span> and the unsigned negative-scale residual is zero is
+<span class="math" data-tex="\(\Omega=0\)">\(\Omega=0\)</span>. Indeed CF18 forces <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>, and CF8 then gives
+<span class="math" data-tex="\(\Omega+py\Omega&#x27;=0\)">\(\Omega+py\Omega&#x27;=0\)</span>. On <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, differentiating
+<span class="math" data-tex="\(y^{1/p}\Omega(y)\)">\(y^{1/p}\Omega(y)\)</span> gives zero. Its constant must be zero
+because <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is bounded near zero and <span class="math" data-tex="\(1/p&gt;0\)">\(1/p&gt;0\)</span>.
+On <span class="math" data-tex="\(y&lt;0\)">\(y&lt;0\)</span>, the same argument applies to
+<span class="math" data-tex="\(|y|^{1/p}\Omega(y)\)">\(|y|^{1/p}\Omega(y)\)</span>. Continuity gives zero at the origin.
+Thus this joint zero-residual class contains no profile satisfying either
+nonzero printed point anchor. The signed map CF16 supplies the exact
+correspondence for all nonzero scales.
+This is the precise comparison for the printed unrestricted scale,
+not an inference about which scales were used in the reported tests.
+For odd <span class="math" data-tex="\(\Omega,U\)">\(\Omega,U\)</span>, the signed negative-scale pair CF16
+equals the pair for <span class="math" data-tex="\(|\kappa|\)">\(|\kappa|\)</span> pointwise. In particular a
+sign flip of the vorticity alone is not that signed symmetry. The two
+printed values at the point one-half must remain separately recorded;
+their equality cannot be inferred from the scale claim.</p>
+<h2 id="cf4-receive-the-two-source-residuals-without-deleting-quadrature-error">CF4. Receive the two source residuals without deleting quadrature error</h2>
+<p>At <span class="math" data-tex="\(y=\sinh z\)">\(y=\sinh z\)</span>, write the source's predicted fields as
+<span class="math" data-tex="\(\widehat\Omega(z)=\Omega(\sinh z)\)">\(\widehat\Omega(z)=\Omega(\sinh z)\)</span> and
+<span class="math" data-tex="\(\widehat U(z)=U(\sinh z)\)">\(\widehat U(z)=U(\sinh z)\)</span>. The exact derivative is
+<span class="math" data-tex="\(\partial_y=\operatorname{sech}z\,\partial_z\)">\(\partial_y=\operatorname{sech}z\,\partial_z\)</span>.
+Let <span class="math" data-tex="\(\widetilde H\widehat\Omega(z)\)">\(\widetilde H\widehat\Omega(z)\)</span> denote the actual
+numerical transform used in a supplied calculation, and define its
+complete error against the pulled-back exact transform by</p>
+<span class="math math-display" data-tex="\[
+e_H(z)=\widetilde H\widehat\Omega(z)
+-(H_\sigma\Omega)(\sinh z).
+\tag{CF19}
+\]">\[
+e_H(z)=\widetilde H\widehat\Omega(z)
+-(H_\sigma\Omega)(\sinh z).
+\tag{CF19}
+\]</span>
+<p>The source's two residuals at <span class="math" data-tex="\(a=-1\)">\(a=-1\)</span> then give exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(\sinh z)&amp;=-f_1(z),\\
+\Delta(\sinh z)&amp;=f_2(z)+e_H(z),\\
+E(\sinh z)&amp;=U(0)+\int_0^z
+\cosh\zeta\,[f_2(\zeta)+e_H(\zeta)]\,d\zeta.
+\end{aligned}
+\tag{CF20}
+\]">\[
+\begin{aligned}
+R(\sinh z)&amp;=-f_1(z),\\
+\Delta(\sinh z)&amp;=f_2(z)+e_H(z),\\
+E(\sinh z)&amp;=U(0)+\int_0^z
+\cosh\zeta\,[f_2(\zeta)+e_H(\zeta)]\,d\zeta.
+\end{aligned}
+\tag{CF20}
+\]</span>
+<p>The first identity follows by keeping all four original equation
+terms. The second is addition and subtraction of the same numerical
+transform. The last is CF8 with its exact coordinate Jacobian.
+No value of <span class="math" data-tex="\(e_H\)">\(e_H\)</span>, its derivatives or its tail contribution
+is supplied by these identities. Estimating it for actual data requires
+the quadrature and tail calculation. The accompanying coordinate and physical-map derivations retain these
+errors in their quantitative bounds.</p>
+<p><img src="assets/NS-FLUID-49/ccf-signed-spatial-map-72C1E216DAABDD9FD3B755843195C7BE93EF35BCBFF31CB23E03239A88341DD0.png" alt="The original odd rational profile, its signed spatial maps, and the complete unsigned-reflection residual difference" class="course-figure" width="2318" height="909" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="ccf-signed-spatial-map" data-asset-sha256="72C1E216DAABDD9FD3B755843195C7BE93EF35BCBFF31CB23E03239A88341DD0"></p>
+<p>The figure evaluates CF15–CF18 for the explicit benchmark
+<span class="math" data-tex="\(\Omega(y)=-2y/(1+y^2)\)">\(\Omega(y)=-2y/(1+y^2)\)</span>, <span class="math" data-tex="\(U(y)=-2\arctan y\)">\(U(y)=-2\arctan y\)</span>,
+<span class="math" data-tex="\(\sigma=-1\)">\(\sigma=-1\)</span> and <span class="math" data-tex="\(\lambda=3/5\)">\(\lambda=3/5\)</span>, on the original
+interval <span class="math" data-tex="\([-3,3]\)">\([-3,3]\)</span>. HQ35 proves its Hilbert compatibility.
+Both signed scales <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(-2\)">\(-2\)</span> give the same odd pair;
+the unsigned negative scale retains exactly the plotted
+<span class="math" data-tex="\(-2Q(-y/2)\)">\(-2Q(-y/2)\)</span>. These curves evaluate the proved field map on
+a specified benchmark, not the trained profile reported by Wang,
+Lai, Gómez-Serrano and Buckmaster at supplemental436–480.
+The reproducible source is
+<a href="assets/ccf-hilbert-comparisons.py">ccf-hilbert-comparisons.py</a>.</p>
+<h2 id="part-2-original-ccf-velocity-repair-physical-time-and-complete-mode-error-bounds">Part 2. Original CCF velocity repair, physical time and complete mode-error bounds</h2>
+<p>This calculation receives the exact objects and function class in
+<span class="unlinked">CF1–CF20</span>.
+The human comparison is Wang, Lai, Gómez-Serrano and Buckmaster,
+<a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>, original
+<code>BoussinesqSupp_v5.tex</code>359–389 and454–480. The source predicts velocity
+and vorticity independently and states two symmetry directions for the
+linearized equation. Both residuals are retained below.</p>
+<h2 id="cm1-the-exact-repair-of-the-predicted-velocity-and-its-linear-operator">CM1. The exact repair of the predicted velocity and its linear operator</h2>
+<p>Retain <span class="math" data-tex="\(p=1+\lambda\)">\(p=1+\lambda\)</span>, <span class="math" data-tex="\(V[\Omega]=\int_0^yH_\sigma\Omega\)">\(V[\Omega]=\int_0^yH_\sigma\Omega\)</span>,
+<span class="math" data-tex="\(\Delta=U&#x27;-H_\sigma\Omega\)">\(\Delta=U&#x27;-H_\sigma\Omega\)</span> and
+<span class="math" data-tex="\(E=U-V[\Omega]\)">\(E=U-V[\Omega]\)</span>, with the function class of CF1–CF9.
+The map on the actual pair of fields is</p>
+<span class="math math-display" data-tex="\[
+\mathcal P:(\Omega,U)\longmapsto(\Omega,U_*),\qquad
+U_*=V[\Omega]=U-E.
+\tag{CM1}
+\]">\[
+\mathcal P:(\Omega,U)\longmapsto(\Omega,U_*),\qquad
+U_*=V[\Omega]=U-E.
+\tag{CM1}
+\]</span>
+<p>It is a linear retraction onto the pairs satisfying
+<span class="math" data-tex="\(U(0)=0\)">\(U(0)=0\)</span> and <span class="math" data-tex="\(U&#x27;=H_\sigma\Omega\)">\(U&#x27;=H_\sigma\Omega\)</span>: its image has both
+properties by the fundamental theorem of calculus, and those properties
+give <span class="math" data-tex="\(U=V[\Omega]\)">\(U=V[\Omega]\)</span> by integration, so it fixes every such pair.
+Consequently <span class="math" data-tex="\(\mathcal P^2=\mathcal P\)">\(\mathcal P^2=\mathcal P\)</span>. Its kernel consists
+exactly of the pairs <span class="math" data-tex="\((0,U)\)">\((0,U)\)</span>. This describes the complete change
+of object, including the removed velocity constant.</p>
+<p>Let <span class="math" data-tex="\(R_*\)">\(R_*\)</span> be the full original CCF residual computed with
+<span class="math" data-tex="\(U_*\)">\(U_*\)</span>, and let <span class="math" data-tex="\(L_*\)">\(L_*\)</span> be the source operator CF9 computed
+with the same repaired base. Direct subtraction gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_*&amp;=R-E\Omega&#x27;-\Omega\Delta
+=R-(E\Omega)&#x27;,\\
+(L-L_*)h&amp;=Eh&#x27;+\Delta h=(Eh)&#x27;.
+\end{aligned}
+\tag{CM2}
+\]">\[
+\begin{aligned}
+R_*&amp;=R-E\Omega&#x27;-\Omega\Delta
+=R-(E\Omega)&#x27;,\\
+(L-L_*)h&amp;=Eh&#x27;+\Delta h=(Eh)&#x27;.
+\end{aligned}
+\tag{CM2}
+\]</span>
+<p>The identities use <span class="math" data-tex="\(E&#x27;=\Delta\)">\(E&#x27;=\Delta\)</span>, proved in CF8. The perturbation
+velocity <span class="math" data-tex="\(V[h]\)">\(V[h]\)</span> is the same in both operators; it is not dropped.
+Thus a velocity repair changes the residual and the linearized operator
+by the precise displayed derivatives. These are equalities of actual
+functions on their original domains, not an identification of two
+different predictions.</p>
+<p>For <span class="math" data-tex="\(h_0=y\Omega&#x27;\)">\(h_0=y\Omega&#x27;\)</span>, CF12 and CM2 give</p>
+<span class="math math-display" data-tex="\[
+Lh_0=yR_*&#x27;+(Eh_0)&#x27;
+=yR&#x27;+(E-y\Delta)\Omega&#x27;-y\Omega\Delta&#x27;.
+\tag{CM3}
+\]">\[
+Lh_0=yR_*&#x27;+(Eh_0)&#x27;
+=yR&#x27;+(E-y\Delta)\Omega&#x27;-y\Omega\Delta&#x27;.
+\tag{CM3}
+\]</span>
+<p>Expanding <span class="math" data-tex="\((E\Omega)&#x27;&#x27;=E\Omega&#x27;&#x27;+2\Delta\Omega&#x27;
++\Omega\Delta&#x27;\)">\((E\Omega)&#x27;&#x27;=E\Omega&#x27;&#x27;+2\Delta\Omega&#x27;
++\Omega\Delta&#x27;\)</span> verifies all terms. Solving the repaired profile
+equation means proving <span class="math" data-tex="\(R_*=0\)">\(R_*=0\)</span>. The velocity retraction itself
+gives the exact value <span class="math" data-tex="\(R_*=R-(E\Omega)&#x27;\)">\(R_*=R-(E\Omega)&#x27;\)</span>, which can be nonzero.
+CM2 supplies the full comparison.</p>
+<h2 id="cm2-stronger-finite-interval-bounds-with-the-exact-integral-cancellation">CM2. Stronger finite-interval bounds with the exact integral cancellation</h2>
+<p>On an actual <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span>, <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r_0&amp;=\|R\|_\infty,&amp;r_1&amp;=\|R&#x27;\|_\infty,\\
+d_0&amp;=\|\Delta\|_\infty,&amp;d_1&amp;=\|\Delta&#x27;\|_\infty,\\
+M_0&amp;=\|\Omega\|_\infty,&amp;M_1&amp;=\|\Omega&#x27;\|_\infty,
+&amp;\gamma_0&amp;=U(0).
+\end{aligned}
+\tag{CM4}
+\]">\[
+\begin{aligned}
+r_0&amp;=\|R\|_\infty,&amp;r_1&amp;=\|R&#x27;\|_\infty,\\
+d_0&amp;=\|\Delta\|_\infty,&amp;d_1&amp;=\|\Delta&#x27;\|_\infty,\\
+M_0&amp;=\|\Omega\|_\infty,&amp;M_1&amp;=\|\Omega&#x27;\|_\infty,
+&amp;\gamma_0&amp;=U(0).
+\end{aligned}
+\tag{CM4}
+\]</span>
+<p>All these numbers are finite by the stated local regularity. They may
+also be replaced by independently proved upper bounds for the same
+functions. Integration by parts, keeping both endpoints, gives</p>
+<span class="math math-display" data-tex="\[
+E(y)-y\Delta(y)
+=\gamma_0+\int_0^y\Delta(r)\,dr-y\Delta(y)
+=\gamma_0-\int_0^y r\Delta&#x27;(r)\,dr.
+\tag{CM5}
+\]">\[
+E(y)-y\Delta(y)
+=\gamma_0+\int_0^y\Delta(r)\,dr-y\Delta(y)
+=\gamma_0-\int_0^y r\Delta&#x27;(r)\,dr.
+\tag{CM5}
+\]</span>
+<p>For negative <span class="math" data-tex="\(y\)">\(y\)</span>, the integral is oriented from zero to <span class="math" data-tex="\(y\)">\(y\)</span>;
+its absolute bound is still <span class="math" data-tex="\(|y|^2d_1/2\)">\(|y|^2d_1/2\)</span>. A second bound follows
+by estimating the two original <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> terms separately.
+Thus, with every contribution retained,</p>
+<span class="math math-display" data-tex="\[
+|E(y)-y\Delta(y)|
+\le |\gamma_0|+\min\{2|y|d_0,\tfrac12|y|^2d_1\},\qquad
+K_A=|\gamma_0|+\min\{2A d_0,\tfrac12 A^2d_1\}.
+\tag{CM6}
+\]">\[
+|E(y)-y\Delta(y)|
+\le |\gamma_0|+\min\{2|y|d_0,\tfrac12|y|^2d_1\},\qquad
+K_A=|\gamma_0|+\min\{2A d_0,\tfrac12 A^2d_1\}.
+\tag{CM6}
+\]</span>
+<p>The coefficient one-half is the exact integral
+<span class="math" data-tex="\(\int_0^{|y|}r\,dr\)">\(\int_0^{|y|}r\,dr\)</span>. No smallness of <span class="math" data-tex="\(d_0\)">\(d_0\)</span> or
+<span class="math" data-tex="\(d_1\)">\(d_1\)</span> was assumed to obtain it.</p>
+<p>Write the original mode defects as
+<span class="math" data-tex="\(D_0=Lh_0\)">\(D_0=Lh_0\)</span> and <span class="math" data-tex="\(D_1=Lh_1-h_1\)">\(D_1=Lh_1-h_1\)</span>, where
+<span class="math" data-tex="\(h_1=\Omega+py\Omega&#x27;\)">\(h_1=\Omega+py\Omega&#x27;\)</span>. CF12 immediately gives</p>
+<span class="math math-display" data-tex="\[
+\|D_0\|_\infty\le A r_1+K_A M_1+A M_0d_1.
+\tag{CM7}
+\]">\[
+\|D_0\|_\infty\le A r_1+K_A M_1+A M_0d_1.
+\tag{CM7}
+\]</span>
+<p>For the second defect retain the exact identity</p>
+<span class="math math-display" data-tex="\[
+\lambda E-py\Delta
+=\lambda(E-y\Delta)-y\Delta,
+\tag{CM8}
+\]">\[
+\lambda E-py\Delta
+=\lambda(E-y\Delta)-y\Delta,
+\tag{CM8}
+\]</span>
+<p>because <span class="math" data-tex="\(p=1+\lambda\)">\(p=1+\lambda\)</span>. Substitution in CF14 proves</p>
+<span class="math math-display" data-tex="\[
+\|D_1\|_\infty
+\le2r_0+|p|A r_1+(|\lambda|K_A+A d_0)M_1
++M_0(d_0+|p|A d_1).
+\tag{CM9}
+\]">\[
+\|D_1\|_\infty
+\le2r_0+|p|A r_1+(|\lambda|K_A+A d_0)M_1
++M_0(d_0+|p|A d_1).
+\tag{CM9}
+\]</span>
+<p>These bounds apply to the exact source operator with independently
+predicted velocity. In the compatible class, <span class="math" data-tex="\(\gamma_0=0\)">\(\gamma_0=0\)</span>
+and <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span>, so they reduce exactly to
+<span class="math" data-tex="\(A r_1\)">\(A r_1\)</span> and <span class="math" data-tex="\(2r_0+|p|A r_1\)">\(2r_0+|p|A r_1\)</span>. A small residual value
+alone does not supply the missing derivative or compatibility bounds.</p>
+<p>To receive the actual numerical residuals at <span class="math" data-tex="\(y=\sinh z\)">\(y=\sinh z\)</span>,
+use CF19–CF20. If their suprema and original-coordinate derivative
+suprema on <span class="math" data-tex="\(|z|\le\operatorname{arsinh}A\)">\(|z|\le\operatorname{arsinh}A\)</span> are bounded by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|f_1|&amp;\le a_0,&amp;|\operatorname{sech}z\,\partial_zf_1|&amp;\le a_1,\\
+|f_2|&amp;\le b_0,&amp;|\operatorname{sech}z\,\partial_zf_2|&amp;\le b_1,\\
+|e_H|&amp;\le e_0,&amp;|\operatorname{sech}z\,\partial_ze_H|&amp;\le e_1,
+\end{aligned}
+\tag{CM10}
+\]">\[
+\begin{aligned}
+|f_1|&amp;\le a_0,&amp;|\operatorname{sech}z\,\partial_zf_1|&amp;\le a_1,\\
+|f_2|&amp;\le b_0,&amp;|\operatorname{sech}z\,\partial_zf_2|&amp;\le b_1,\\
+|e_H|&amp;\le e_0,&amp;|\operatorname{sech}z\,\partial_ze_H|&amp;\le e_1,
+\end{aligned}
+\tag{CM10}
+\]</span>
+<p>then exactly <span class="math" data-tex="\(r_j\le a_j\)">\(r_j\le a_j\)</span> and <span class="math" data-tex="\(d_j\le b_j+e_j\)">\(d_j\le b_j+e_j\)</span>
+for <span class="math" data-tex="\(j=0,1\)">\(j=0,1\)</span>. These follow by the triangle inequality from
+CF20 and its derivative. The quadrature and tail derivation supplies
+explicit ways to bound <span class="math" data-tex="\(e_0,e_1\)">\(e_0,e_1\)</span>; their values are not inferred
+from a source figure. Applying CM6–CM9 to these six actual bounds
+completes their receiving map.</p>
+<h2 id="cm3-full-physical-time-velocity-compatibility-and-evolution-residual">CM3. Full physical time, velocity compatibility and evolution residual</h2>
+<p>Retain the source's original physical variables</p>
+<span class="math math-display" data-tex="\[
+\tau=1-t&gt;0,\qquad y=x/\tau^p,\qquad
+\omega(t,x)=\tau^{-1}\Omega(y),\qquad
+u(t,x)=\tau^\lambda U(y).
+\tag{CM11}
+\]">\[
+\tau=1-t&gt;0,\qquad y=x/\tau^p,\qquad
+\omega(t,x)=\tau^{-1}\Omega(y),\qquad
+u(t,x)=\tau^\lambda U(y).
+\tag{CM11}
+\]</span>
+<p>The spatial dilation <span class="math" data-tex="\(\tau^p\)">\(\tau^p\)</span> is positive for every real <span class="math" data-tex="\(p\)">\(p\)</span>.
+CF15 therefore gives the entire physical Hilbert map. Differentiation
+and change of variables in the primitive yield</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_\sigma\omega(t,x)&amp;=\tau^{-1}(H_\sigma\Omega)(y),\\
+u_x-H_\sigma\omega&amp;=\tau^{-1}\Delta(y),\\
+u(t,x)-\int_0^xH_\sigma\omega(t,r)\,dr&amp;=\tau^\lambda E(y),\\
+u(t,0)&amp;=\tau^\lambda\gamma_0.
+\end{aligned}
+\tag{CM12}
+\]">\[
+\begin{aligned}
+H_\sigma\omega(t,x)&amp;=\tau^{-1}(H_\sigma\Omega)(y),\\
+u_x-H_\sigma\omega&amp;=\tau^{-1}\Delta(y),\\
+u(t,x)-\int_0^xH_\sigma\omega(t,r)\,dr&amp;=\tau^\lambda E(y),\\
+u(t,0)&amp;=\tau^\lambda\gamma_0.
+\end{aligned}
+\tag{CM12}
+\]</span>
+<p>For example, the primitive factor is
+<span class="math" data-tex="\(\tau^{-1}\tau^p=\tau^\lambda\)">\(\tau^{-1}\tau^p=\tau^\lambda\)</span>, with its original
+lower endpoint unchanged.</p>
+<p>The complete physical CCF equation has <span class="math" data-tex="\(a=-1\)">\(a=-1\)</span>. Its error is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\omega_t&amp;=\tau^{-2}[\Omega+py\Omega&#x27;],\\
+u\omega_x&amp;=\tau^{\lambda-1-p}U\Omega&#x27;
+=\tau^{-2}U\Omega&#x27;,\\
+\omega u_x&amp;=\tau^{-2}\Omega U&#x27;,\\
+\omega_t-u\omega_x-\omega u_x&amp;=-\tau^{-2}R(y).
+\end{aligned}
+\tag{CM13}
+\]">\[
+\begin{aligned}
+\omega_t&amp;=\tau^{-2}[\Omega+py\Omega&#x27;],\\
+u\omega_x&amp;=\tau^{\lambda-1-p}U\Omega&#x27;
+=\tau^{-2}U\Omega&#x27;,\\
+\omega u_x&amp;=\tau^{-2}\Omega U&#x27;,\\
+\omega_t-u\omega_x-\omega u_x&amp;=-\tau^{-2}R(y).
+\end{aligned}
+\tag{CM13}
+\]</span>
+<p>At every available spatial derivative order <span class="math" data-tex="\(j\)">\(j\)</span>, the complete
+derivative factors are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_x^j\omega&amp;=\tau^{-1-jp}\Omega^{(j)}(y),\\
+\partial_x^ju&amp;=\tau^{\lambda-jp}U^{(j)}(y),\\
+\partial_x^j[\omega_t-u\omega_x-\omega u_x]
+&amp;=-\tau^{-2-jp}R^{(j)}(y),\\
+\partial_x^j[u_x-H_\sigma\omega]
+&amp;=\tau^{-1-jp}\Delta^{(j)}(y).
+\end{aligned}
+\tag{CM14}
+\]">\[
+\begin{aligned}
+\partial_x^j\omega&amp;=\tau^{-1-jp}\Omega^{(j)}(y),\\
+\partial_x^ju&amp;=\tau^{\lambda-jp}U^{(j)}(y),\\
+\partial_x^j[\omega_t-u\omega_x-\omega u_x]
+&amp;=-\tau^{-2-jp}R^{(j)}(y),\\
+\partial_x^j[u_x-H_\sigma\omega]
+&amp;=\tau^{-1-jp}\Delta^{(j)}(y).
+\end{aligned}
+\tag{CM14}
+\]</span>
+<p>The interval <span class="math" data-tex="\(|y|\le A\)">\(|y|\le A\)</span> is the actual moving physical interval
+<span class="math" data-tex="\(|x|\le\tau^p A\)">\(|x|\le\tau^p A\)</span>. Its error bounds keep the factors in
+CM12–CM14, even when they grow as <span class="math" data-tex="\(t\uparrow1\)">\(t\uparrow1\)</span>.</p>
+<p>For a time-dependent profile <span class="math" data-tex="\(\Omega(s,y)\)">\(\Omega(s,y)\)</span>, with
+<span class="math" data-tex="\(s=-\log\tau\)">\(s=-\log\tau\)</span>, the same calculation instead gives</p>
+<span class="math math-display" data-tex="\[
+\omega_t-u\omega_x-\omega u_x
+=\tau^{-2}(\partial_s\Omega-R[\Omega,U]).
+\tag{CM15}
+\]">\[
+\omega_t-u\omega_x-\omega u_x
+=\tau^{-2}(\partial_s\Omega-R[\Omega,U]).
+\tag{CM15}
+\]</span>
+<p>The additional term is from <span class="math" data-tex="\(\partial_ts=\tau^{-1}\)">\(\partial_ts=\tau^{-1}\)</span>.
+Consequently the exact compatible rescaled evolution is
+<span class="math" data-tex="\(\partial_s\Omega=R[\Omega,V[\Omega]]\)">\(\partial_s\Omega=R[\Omega,V[\Omega]]\)</span>. Its derivative
+in a direction <span class="math" data-tex="\(h\)">\(h\)</span> is <span class="math" data-tex="\(L_*h\)">\(L_*h\)</span>, since expansion of both
+quadratic terms gives all six terms of CF9 with the repaired base.</p>
+<h2 id="cm4-the-actual-symmetry-directions-and-the-source-anchors">CM4. The actual symmetry directions and the source anchors</h2>
+<p>For positive spatial scale <span class="math" data-tex="\(\kappa=e^\epsilon\)">\(\kappa=e^\epsilon\)</span>, CF16 gives</p>
+<span class="math math-display" data-tex="\[
+\left.\partial_\epsilon\Omega(y/e^\epsilon)\right|_0=-h_0,
+\qquad
+\left.\partial_\epsilon[e^\epsilon U(y/e^\epsilon)]\right|_0
+=U-yU&#x27;.
+\tag{CM16}
+\]">\[
+\left.\partial_\epsilon\Omega(y/e^\epsilon)\right|_0=-h_0,
+\qquad
+\left.\partial_\epsilon[e^\epsilon U(y/e^\epsilon)]\right|_0
+=U-yU&#x27;.
+\tag{CM16}
+\]</span>
+<p>For an exact compatible base, the second expression equals
+<span class="math" data-tex="\(-V[h_0]\)">\(-V[h_0]\)</span> by CF10. The direction is constant in the
+rescaled time, which yields the source's zero mode when the full
+equation residual is zero.</p>
+<p>Changing the original terminal time from one to <span class="math" data-tex="\(1+\epsilon\)">\(1+\epsilon\)</span>
+gives the physical family</p>
+<span class="math math-display" data-tex="\[
+\omega_\epsilon(t,x)=\frac1{\tau+\epsilon}
+\Omega\left(\frac{x}{(\tau+\epsilon)^p}\right),
+\quad
+u_\epsilon(t,x)=(\tau+\epsilon)^\lambda
+U\left(\frac{x}{(\tau+\epsilon)^p}\right).
+\tag{CM17}
+\]">\[
+\omega_\epsilon(t,x)=\frac1{\tau+\epsilon}
+\Omega\left(\frac{x}{(\tau+\epsilon)^p}\right),
+\quad
+u_\epsilon(t,x)=(\tau+\epsilon)^\lambda
+U\left(\frac{x}{(\tau+\epsilon)^p}\right).
+\tag{CM17}
+\]</span>
+<p>For <span class="math" data-tex="\(|\epsilon|&lt;\tau\)">\(|\epsilon|&lt;\tau\)</span>, differentiating the full factors at
+zero gives</p>
+<span class="math math-display" data-tex="\[
+\left.\partial_\epsilon\omega_\epsilon\right|_0
+=-\tau^{-2}(\Omega+py\Omega&#x27;)=-\tau^{-2}h_1,
+\qquad
+\left.\partial_\epsilon u_\epsilon\right|_0
+=\tau^{\lambda-1}(\lambda U-pyU&#x27;).
+\tag{CM18}
+\]">\[
+\left.\partial_\epsilon\omega_\epsilon\right|_0
+=-\tau^{-2}(\Omega+py\Omega&#x27;)=-\tau^{-2}h_1,
+\qquad
+\left.\partial_\epsilon u_\epsilon\right|_0
+=\tau^{\lambda-1}(\lambda U-pyU&#x27;).
+\tag{CM18}
+\]</span>
+<p>In the original rescaled variables, the profile direction is
+<span class="math" data-tex="\(-\tau^{-1}h_1=-e^s h_1\)">\(-\tau^{-1}h_1=-e^s h_1\)</span>. The compatible velocity direction
+is <span class="math" data-tex="\(-e^s V[h_1]\)">\(-e^s V[h_1]\)</span>, by CF10 with <span class="math" data-tex="\(E=\Delta=0\)">\(E=\Delta=0\)</span>.
+This supplies the source's eigenvalue one with its full physical
+time factor. For arbitrary predicted fields, CF12 and CF14 give the
+exact departures from those identities.</p>
+<p>The equation symmetries also act on the source conditions. For the
+original derivative anchor <span class="math" data-tex="\(b=\Omega&#x27;(0)=-2\)">\(b=\Omega&#x27;(0)=-2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+h_0&#x27;(0)=b,\qquad h_1&#x27;(0)=(1+p)b=(2+\lambda)b.
+\tag{CM19}
+\]">\[
+h_0&#x27;(0)=b,\qquad h_1&#x27;(0)=(1+p)b=(2+\lambda)b.
+\tag{CM19}
+\]</span>
+<p>Neither direction is tangent to that fixed derivative condition at the
+source's positive exponents. This does not erase the equation symmetry;
+it identifies the different tangent space selected by the condition.
+For the printed point anchor at <span class="math" data-tex="\(a=1/2\)">\(a=1/2\)</span>, the two variations are</p>
+<span class="math math-display" data-tex="\[
+h_0(a)=a\Omega&#x27;(a),\qquad h_1(a)=\Omega(a)+pa\Omega&#x27;(a).
+\tag{CM20}
+\]">\[
+h_0(a)=a\Omega&#x27;(a),\qquad h_1(a)=\Omega(a)+pa\Omega&#x27;(a).
+\tag{CM20}
+\]</span>
+<p>The two printed base values <span class="math" data-tex="\(+0.05\)">\(+0.05\)</span> and <span class="math" data-tex="\(-0.05\)">\(-0.05\)</span> remain
+different source conditions. These variations determine how each one
+changes under the actual field maps, without choosing which value was
+used in an unavailable computation.</p>
+<p>There is an exact linear map to the derivative-anchor tangent space.
+On the vector space <span class="math" data-tex="\(C^1(\mathbb R)\)">\(C^1(\mathbb R)\)</span> of real perturbations
+define <span class="math" data-tex="\(\ell(h)=h&#x27;(0)\)">\(\ell(h)=h&#x27;(0)\)</span>.
+Because <span class="math" data-tex="\(\ell(h_0)=b\ne0\)">\(\ell(h_0)=b\ne0\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+P_bh=h-\frac{\ell(h)}b h_0.
+\tag{CM21}
+\]">\[
+P_bh=h-\frac{\ell(h)}b h_0.
+\tag{CM21}
+\]</span>
+<p>Then <span class="math" data-tex="\(\ell(P_bh)=0\)">\(\ell(P_bh)=0\)</span>, <span class="math" data-tex="\(P_b^2=P_b\)">\(P_b^2=P_b\)</span>, its image is
+<span class="math" data-tex="\(\ker\ell\)">\(\ker\ell\)</span>, and its kernel is <span class="math" data-tex="\(\operatorname{span}\{h_0\}\)">\(\operatorname{span}\{h_0\}\)</span>.
+Each assertion follows by applying <span class="math" data-tex="\(\ell\)">\(\ell\)</span> to the two terms
+and using <span class="math" data-tex="\(\ell(h_0)=b\)">\(\ell(h_0)=b\)</span>. This explicitly relates the original
+equation directions to the constrained tangent space.</p>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+h_*=P_bh_1=h_1-(1+p)h_0=\Omega-y\Omega&#x27;,\qquad
+P_bLh_*-h_*=P_b[D_1-(1+p)D_0].
+\tag{CM22}
+\]">\[
+h_*=P_bh_1=h_1-(1+p)h_0=\Omega-y\Omega&#x27;,\qquad
+P_bLh_*-h_*=P_b[D_1-(1+p)D_0].
+\tag{CM22}
+\]</span>
+<p>For the second equality use <span class="math" data-tex="\(Lh_1=h_1+D_1\)">\(Lh_1=h_1+D_1\)</span>,
+<span class="math" data-tex="\(Lh_0=D_0\)">\(Lh_0=D_0\)</span>, and <span class="math" data-tex="\(P_bh_1=h_*\)">\(P_bh_1=h_*\)</span>. Thus the same exact
+defects propagate into the projected linear map. For a compatible
+zero-residual base the right side vanishes, so the time-translation
+direction has eigenvalue one in this projected map. No nonlinear
+constrained flow or complete spectral domain is asserted by this
+linear correspondence alone.</p>
+<p>Every application of <span class="math" data-tex="\(P_b\)">\(P_b\)</span> in CM22 is defined under the stated
+regularity. Indeed <span class="math" data-tex="\(h_0,h_1\in C^2\)">\(h_0,h_1\in C^2\)</span>, and CF4–CF5 show
+<span class="math" data-tex="\(H_\sigma h_0,H_\sigma h_1\in C^1\)">\(H_\sigma h_0,H_\sigma h_1\in C^1\)</span>. Formula CF9 then gives
+<span class="math" data-tex="\(Lh_0,Lh_1\in C^1\)">\(Lh_0,Lh_1\in C^1\)</span>, because <span class="math" data-tex="\(U\in C^2\)">\(U\in C^2\)</span> and
+<span class="math" data-tex="\(\Omega\in C^3\)">\(\Omega\in C^3\)</span>. This also proves that the full defects
+<span class="math" data-tex="\(D_0,D_1\)">\(D_0,D_1\)</span> are <span class="math" data-tex="\(C^1\)">\(C^1\)</span>, even though individual terms in
+their expanded expressions need not have separately available
+derivatives of the next order. The projection is applied to the
+complete functions.</p>
+<p>Finally <span class="math" data-tex="\(h_*\ne0\)">\(h_*\ne0\)</span> in this anchored decay class. If
+<span class="math" data-tex="\(\Omega-y\Omega&#x27;=0\)">\(\Omega-y\Omega&#x27;=0\)</span>, differentiation gives
+<span class="math" data-tex="\((\Omega/y)&#x27;=0\)">\((\Omega/y)&#x27;=0\)</span> on each open half-line. Thus
+<span class="math" data-tex="\(\Omega=c_+y\)">\(\Omega=c_+y\)</span> for positive <span class="math" data-tex="\(y\)">\(y\)</span> and
+<span class="math" data-tex="\(\Omega=c_-y\)">\(\Omega=c_-y\)</span> for negative <span class="math" data-tex="\(y\)">\(y\)</span>. The decay in CF2
+forces both constants to be zero, contradicting <span class="math" data-tex="\(\Omega&#x27;(0)=-2\)">\(\Omega&#x27;(0)=-2\)</span>.
+This proves that the projected exact direction is nonzero while
+leaving the original function class and anchor intact.</p>
+<p><img src="assets/NS-FLUID-49/ccf-velocity-repair-BA821A32AECD6149BD2A760F649CE0E39083AF612A3DD46DECD7174C666F8FBD.png" alt="Both original velocity fields, both full equation residuals, and the two exact operator changes" class="course-figure" width="2713" height="955" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="ccf-velocity-repair" data-asset-sha256="BA821A32AECD6149BD2A760F649CE0E39083AF612A3DD46DECD7174C666F8FBD"></p>
+<p>The figure evaluates CM1–CM3 on the original interval <span class="math" data-tex="\([-3,3]\)">\([-3,3]\)</span>,
+using <span class="math" data-tex="\(\Omega=-2y/(1+y^2)\)">\(\Omega=-2y/(1+y^2)\)</span>, <span class="math" data-tex="\(\sigma=-1\)">\(\sigma=-1\)</span>,
+<span class="math" data-tex="\(\lambda=3/5\)">\(\lambda=3/5\)</span>, <span class="math" data-tex="\(U_*=-2\arctan y\)">\(U_*=-2\arctan y\)</span>, and
+<span class="math" data-tex="\(U=U_*+3y/20\)">\(U=U_*+3y/20\)</span>. Hence <span class="math" data-tex="\(E=3y/20\)">\(E=3y/20\)</span> and
+<span class="math" data-tex="\(\Delta=3/20\)">\(\Delta=3/20\)</span> exactly. All four terms of each residual
+and the complete derivatives <span class="math" data-tex="\((Eh_0)&#x27;\)">\((Eh_0)&#x27;\)</span>, <span class="math" data-tex="\((Eh_1)&#x27;\)">\((Eh_1)&#x27;\)</span>
+are evaluated. The repaired residual is generally nonzero.
+This specified benchmark illustrates the precise comparison with
+the independently predicted fields in Wang, Lai, Gómez-Serrano and
+Buckmaster, supplemental377–389 and454–480; it is not their trained
+profile. The reproducible source is
+<a href="assets/ccf-hilbert-comparisons.py">ccf-hilbert-comparisons.py</a>.</p>
+<h2 id="part-3-original-hilbert-coordinates-endpoint-terms-tails-and-cubic-quadrature">Part 3. Original Hilbert coordinates, endpoint terms, tails and cubic quadrature</h2>
+<p>This derivation supplies explicit transform-error bounds for
+<span class="unlinked">CF19–CF20</span> and
+<span class="unlinked">CM6–CM10</span>.
+The human comparison is Wang, Lai, Gómez-Serrano and Buckmaster,
+<a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>, original
+<code>BoussinesqSupp_v5.tex</code>381–400 and436–444. The source describes cubic
+interpolation in a numerical Hilbert transform on a large sinh-coordinate
+domain, but does not supply its stencils or trained evaluation data in
+these passages. The finite quadrature below specifies every stencil,
+weight, error term and original coordinate. No numerical source result
+is certified by it.</p>
+<h2 id="hq1-the-complete-pulled-back-kernel-and-every-original-derivative">HQ1. The complete pulled-back kernel and every original derivative</h2>
+<p>Use <span class="math" data-tex="\(H_\sigma\)">\(H_\sigma\)</span> from CF1, with one fixed
+<span class="math" data-tex="\(\sigma\in\{-1,1\}\)">\(\sigma\in\{-1,1\}\)</span>. Let <span class="math" data-tex="\(f\)">\(f\)</span> satisfy CF2, and write
+<span class="math" data-tex="\(\widehat f(z)=f(\sinh z)\)">\(\widehat f(z)=f(\sinh z)\)</span>. For an actual truncation radius
+<span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>, put <span class="math" data-tex="\(Z_D=\operatorname{arsinh}D\)">\(Z_D=\operatorname{arsinh}D\)</span>. At
+<span class="math" data-tex="\(y=\sinh z\)">\(y=\sinh z\)</span> with <span class="math" data-tex="\(|y|&lt;D\)">\(|y|&lt;D\)</span>, the truncated operator is</p>
+<span class="math math-display" data-tex="\[
+H_{\sigma,D}f(y)=\frac\sigma\pi\operatorname{PV}
+\int_{-D}^{D}\frac{f(x)}{y-x}\,dx.
+\tag{HQ1}
+\]">\[
+H_{\sigma,D}f(y)=\frac\sigma\pi\operatorname{PV}
+\int_{-D}^{D}\frac{f(x)}{y-x}\,dx.
+\tag{HQ1}
+\]</span>
+<p>Changing the integration variable by <span class="math" data-tex="\(x=\sinh\zeta\)">\(x=\sinh\zeta\)</span> gives
+the exact coordinate expression</p>
+<span class="math math-display" data-tex="\[
+H_{\sigma,D}f(\sinh z)=\frac\sigma\pi\lim_{\epsilon\downarrow0}
+\left(\int_{-Z_D}^{\operatorname{arsinh}(\sinh z-\epsilon)}
++\int_{\operatorname{arsinh}(\sinh z+\epsilon)}^{Z_D}\right)
+\frac{\widehat f(\zeta)\cosh\zeta}{\sinh z-\sinh\zeta}\,d\zeta.
+\tag{HQ2}
+\]">\[
+H_{\sigma,D}f(\sinh z)=\frac\sigma\pi\lim_{\epsilon\downarrow0}
+\left(\int_{-Z_D}^{\operatorname{arsinh}(\sinh z-\epsilon)}
++\int_{\operatorname{arsinh}(\sinh z+\epsilon)}^{Z_D}\right)
+\frac{\widehat f(\zeta)\cosh\zeta}{\sinh z-\sinh\zeta}\,d\zeta.
+\tag{HQ2}
+\]</span>
+<p>The numerator Jacobian, denominator, both finite endpoints and both
+excluded endpoints remain explicit. The same formula with infinite
+endpoints gives the full operator, because CF2 makes its original
+tails absolutely convergent.</p>
+<p>For completeness, a symmetric principal value in <span class="math" data-tex="\(\zeta-z\)">\(\zeta-z\)</span>
+has the same limit. Taylor expansion at <span class="math" data-tex="\(\zeta=z\)">\(\zeta=z\)</span> shows that
+the integrand in HQ2 equals
+<span class="math" data-tex="\(-\widehat f(z)/(\zeta-z)\)">\(-\widehat f(z)/(\zeta-z)\)</span> plus a locally bounded function.
+The two excluded lengths in HQ2, divided by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>,
+both tend to <span class="math" data-tex="\(1/\cosh z\)">\(1/\cosh z\)</span>, by the derivative of arcsinh.
+The unmatched singular integrals therefore differ by a constant times
+the logarithm of a ratio tending to one; the bounded remainder over
+those intervals tends to zero. This proves the equality of the two
+limits while retaining the exact cutoffs in HQ2.</p>
+<p>Set <span class="math" data-tex="\(a(z)=\operatorname{sech}z\)">\(a(z)=\operatorname{sech}z\)</span> and
+<span class="math" data-tex="\(t(z)=\tanh z\)">\(t(z)=\tanh z\)</span>. The original derivative is
+<span class="math" data-tex="\(\partial_y=a\partial_z\)">\(\partial_y=a\partial_z\)</span>, and its first three powers are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_y f&amp;=a\widehat f&#x27;,\\
+\partial_y^2 f&amp;=a^2(\widehat f&#x27;&#x27;-t\widehat f&#x27;),\\
+\partial_y^3 f&amp;=a^3[\widehat f&#x27;&#x27;&#x27;-3t\widehat f&#x27;&#x27;
++(3t^2-1)\widehat f&#x27;].
+\end{aligned}
+\tag{HQ3}
+\]">\[
+\begin{aligned}
+\partial_y f&amp;=a\widehat f&#x27;,\\
+\partial_y^2 f&amp;=a^2(\widehat f&#x27;&#x27;-t\widehat f&#x27;),\\
+\partial_y^3 f&amp;=a^3[\widehat f&#x27;&#x27;&#x27;-3t\widehat f&#x27;&#x27;
++(3t^2-1)\widehat f&#x27;].
+\end{aligned}
+\tag{HQ3}
+\]</span>
+<p>The primes on the right are <span class="math" data-tex="\(z\)">\(z\)</span>-derivatives. All orders have
+a complete finite recurrence:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_y^j f(\sinh z)&amp;=a(z)^j
+\sum_{k=0}^jP_{j,k}(t(z))\widehat f^{(k)}(z),\\
+P_{0,0}&amp;=1,\\
+P_{j+1,k}(t)&amp;=(1-t^2)P_{j,k}&#x27;(t)-jtP_{j,k}(t)+P_{j,k-1}(t).
+\end{aligned}
+\tag{HQ4}
+\]">\[
+\begin{aligned}
+\partial_y^j f(\sinh z)&amp;=a(z)^j
+\sum_{k=0}^jP_{j,k}(t(z))\widehat f^{(k)}(z),\\
+P_{0,0}&amp;=1,\\
+P_{j+1,k}(t)&amp;=(1-t^2)P_{j,k}&#x27;(t)-jtP_{j,k}(t)+P_{j,k-1}(t).
+\end{aligned}
+\tag{HQ4}
+\]</span>
+<p>An index outside <span class="math" data-tex="\(0\le k\le j\)">\(0\le k\le j\)</span> denotes zero. To prove
+the recurrence, use <span class="math" data-tex="\(a&#x27;=-at\)">\(a&#x27;=-at\)</span>, <span class="math" data-tex="\(t&#x27;=1-t^2\)">\(t&#x27;=1-t^2\)</span>, and apply
+the product rule to the entire first line. The last term differentiates
+the original <span class="math" data-tex="\(\widehat f^{(k-1)}\)">\(\widehat f^{(k-1)}\)</span>; the other two retain
+the derivative of the coefficient and of <span class="math" data-tex="\(a^j\)">\(a^j\)</span>. This induction
+proves every order with every multiplier present.</p>
+<p>For supplied bounds <span class="math" data-tex="\(|\widehat f^{(k)}|\le Q_k\)">\(|\widehat f^{(k)}|\le Q_k\)</span> on
+<span class="math" data-tex="\([-Z_D,Z_D]\)">\([-Z_D,Z_D]\)</span>, put <span class="math" data-tex="\(T_D=D/\sqrt{1+D^2}\)">\(T_D=D/\sqrt{1+D^2}\)</span>.
+Writing <span class="math" data-tex="\(P_{j,k}(t)=\sum_r p_{j,k,r}t^r\)">\(P_{j,k}(t)=\sum_r p_{j,k,r}t^r\)</span> gives the explicit
+original-coordinate upper bound</p>
+<span class="math math-display" data-tex="\[
+\sup_{|y|\le D}|f^{(j)}(y)|
+\le\sum_{k=0}^j\sum_{r\ge0}|p_{j,k,r}|T_D^rQ_k.
+\tag{HQ5}
+\]">\[
+\sup_{|y|\le D}|f^{(j)}(y)|
+\le\sum_{k=0}^j\sum_{r\ge0}|p_{j,k,r}|T_D^rQ_k.
+\tag{HQ5}
+\]</span>
+<p>This follows from HQ4, <span class="math" data-tex="\(|t|\le T_D\)">\(|t|\le T_D\)</span> and <span class="math" data-tex="\(0&lt;a\le1\)">\(0&lt;a\le1\)</span>.
+For the source's finite tanh networks, all <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span> can be
+calculated from their actual parameters by
+<span class="unlinked">BN2–BN4</span>, applied to their
+actual input <span class="math" data-tex="\(z\)">\(z\)</span>. HQ4 supplies the additional original-coordinate
+factors. Such local parameter bounds do not supply a global tail bound.</p>
+<h2 id="hq2-the-finite-boundary-contribution-survives-differentiation">HQ2. The finite boundary contribution survives differentiation</h2>
+<p>Define the full omitted tail at <span class="math" data-tex="\(|y|&lt;D\)">\(|y|&lt;D\)</span>:</p>
+<span class="math math-display" data-tex="\[
+T_{\sigma,D}f(y)=\frac\sigma\pi\int_{|x|&gt;D}
+\frac{f(x)}{y-x}\,dx,
+\qquad H_\sigma f=H_{\sigma,D}f+T_{\sigma,D}f.
+\tag{HQ6}
+\]">\[
+T_{\sigma,D}f(y)=\frac\sigma\pi\int_{|x|&gt;D}
+\frac{f(x)}{y-x}\,dx,
+\qquad H_\sigma f=H_{\sigma,D}f+T_{\sigma,D}f.
+\tag{HQ6}
+\]</span>
+<p>The tail and all its <span class="math" data-tex="\(y\)">\(y\)</span>-derivatives exist on compact subsets
+of this open interval, since the denominator is bounded away from zero
+and the original tail is integrable. In particular</p>
+<span class="math math-display" data-tex="\[
+(T_{\sigma,D}f)&#x27;(y)
+=-\frac\sigma\pi\int_{|x|&gt;D}\frac{f(x)}{(y-x)^2}\,dx.
+\tag{HQ7}
+\]">\[
+(T_{\sigma,D}f)&#x27;(y)
+=-\frac\sigma\pi\int_{|x|&gt;D}\frac{f(x)}{(y-x)^2}\,dx.
+\tag{HQ7}
+\]</span>
+<p>Integrating the two tails of <span class="math" data-tex="\(H_\sigma f&#x27;\)">\(H_\sigma f&#x27;\)</span> by parts separately
+retains the endpoints at <span class="math" data-tex="\(-D,D\)">\(-D,D\)</span>. The infinite endpoints vanish
+by CF2. This gives</p>
+<span class="math math-display" data-tex="\[
+T_{\sigma,D}f&#x27;
+=(T_{\sigma,D}f)&#x27;
++\frac\sigma\pi\left[\frac{f(D)}{D-y}
++\frac{f(-D)}{D+y}\right].
+\tag{HQ8}
+\]">\[
+T_{\sigma,D}f&#x27;
+=(T_{\sigma,D}f)&#x27;
++\frac\sigma\pi\left[\frac{f(D)}{D-y}
++\frac{f(-D)}{D+y}\right].
+\tag{HQ8}
+\]</span>
+<p>Using <span class="math" data-tex="\((H_\sigma f)&#x27;=H_\sigma f&#x27;\)">\((H_\sigma f)&#x27;=H_\sigma f&#x27;\)</span>, proved in CF4,
+and subtracting HQ8 from the whole-line identity proves</p>
+<span class="math math-display" data-tex="\[
+(H_{\sigma,D}f)&#x27;=H_{\sigma,D}f&#x27;
++\frac\sigma\pi\left[\frac{f(D)}{D-y}
++\frac{f(-D)}{D+y}\right].
+\tag{HQ9}
+\]">\[
+(H_{\sigma,D}f)&#x27;=H_{\sigma,D}f&#x27;
++\frac\sigma\pi\left[\frac{f(D)}{D-y}
++\frac{f(-D)}{D+y}\right].
+\tag{HQ9}
+\]</span>
+<p>Thus the truncated operator does not commute with differentiation
+without these two endpoint terms.</p>
+<p>At every higher order <span class="math" data-tex="\(j\)">\(j\)</span> for which the corresponding smooth
+decay hypotheses hold, induction in HQ9 gives the complete formula</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_y^jH_{\sigma,D}f
+={}&amp;H_{\sigma,D}f^{(j)}\\
+&amp;+\frac\sigma\pi\sum_{\ell=0}^{j-1}(j-1-\ell)!
+\left[\frac{f^{(\ell)}(D)}{(D-y)^{j-\ell}}
++\frac{(-1)^{j-1-\ell}f^{(\ell)}(-D)}{(D+y)^{j-\ell}}
+\right].
+\end{aligned}
+\tag{HQ10}
+\]">\[
+\begin{aligned}
+\partial_y^jH_{\sigma,D}f
+={}&amp;H_{\sigma,D}f^{(j)}\\
+&amp;+\frac\sigma\pi\sum_{\ell=0}^{j-1}(j-1-\ell)!
+\left[\frac{f^{(\ell)}(D)}{(D-y)^{j-\ell}}
++\frac{(-1)^{j-1-\ell}f^{(\ell)}(-D)}{(D+y)^{j-\ell}}
+\right].
+\end{aligned}
+\tag{HQ10}
+\]</span>
+<p>Differentiating an existing endpoint term raises its denominator power
+with its exact factorial and sign. Differentiating the first term
+adds the new pair with <span class="math" data-tex="\(\ell=j\)">\(\ell=j\)</span>. This proves the recurrence
+and every boundary contribution in HQ10.</p>
+<h2 id="hq3-full-tail-bounds-and-the-improvement-supplied-by-oddness">HQ3. Full tail bounds and the improvement supplied by oddness</h2>
+<p>Fix an actual receiving interval <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span>, with <span class="math" data-tex="\(0&lt;A&lt;D\)">\(0&lt;A&lt;D\)</span>,
+and a verified tail bound
+<span class="math" data-tex="\(|f(x)|\le C_0(1+|x|)^{-\beta}\)">\(|f(x)|\le C_0(1+|x|)^{-\beta}\)</span>, <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span>.
+For every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, direct differentiation of HQ6 gives</p>
+<span class="math math-display" data-tex="\[
+\partial_y^jT_{\sigma,D}f(y)
+=\frac{\sigma(-1)^jj!}{\pi}
+\int_{|x|&gt;D}\frac{f(x)}{(y-x)^{j+1}}\,dx.
+\tag{HQ11}
+\]">\[
+\partial_y^jT_{\sigma,D}f(y)
+=\frac{\sigma(-1)^jj!}{\pi}
+\int_{|x|&gt;D}\frac{f(x)}{(y-x)^{j+1}}\,dx.
+\tag{HQ11}
+\]</span>
+<p>For <span class="math" data-tex="\(|x|\ge D\)">\(|x|\ge D\)</span> and <span class="math" data-tex="\(|y|\le A\)">\(|y|\le A\)</span>,
+<span class="math" data-tex="\(|y-x|\ge(1-A/D)|x|\)">\(|y-x|\ge(1-A/D)|x|\)</span>. The complete bound, before and
+after evaluating an elementary upper integral, is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\partial_y^jT_{\sigma,D}f\|_{L^\infty([-A,A])}
+&amp;\le\frac{2C_0j!}{\pi(1-A/D)^{j+1}}
+\int_D^\infty(1+x)^{-\beta}x^{-j-1}\,dx\\
+&amp;\le\frac{2C_0j!}{\pi(1-A/D)^{j+1}(\beta+j)}D^{-\beta-j}.
+\end{aligned}
+\tag{HQ12}
+\]">\[
+\begin{aligned}
+\|\partial_y^jT_{\sigma,D}f\|_{L^\infty([-A,A])}
+&amp;\le\frac{2C_0j!}{\pi(1-A/D)^{j+1}}
+\int_D^\infty(1+x)^{-\beta}x^{-j-1}\,dx\\
+&amp;\le\frac{2C_0j!}{\pi(1-A/D)^{j+1}(\beta+j)}D^{-\beta-j}.
+\end{aligned}
+\tag{HQ12}
+\]</span>
+<p>The second inequality uses <span class="math" data-tex="\((1+x)^{-\beta}\le x^{-\beta}\)">\((1+x)^{-\beta}\le x^{-\beta}\)</span>
+only after retaining the actual tail integral in the first line.</p>
+<p>For odd <span class="math" data-tex="\(f\)">\(f\)</span>, pair the two original tails exactly:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_{\sigma,D}f(y)
+&amp;=\frac\sigma\pi\int_D^\infty f(x)
+\left[\frac1{y-x}-\frac1{y+x}\right]dx\\
+&amp;=-\frac{2\sigma}{\pi}\int_D^\infty
+\frac{x f(x)}{x^2-y^2}\,dx,\\
+(T_{\sigma,D}f)&#x27;(y)
+&amp;=-\frac{4\sigma y}{\pi}\int_D^\infty
+\frac{x f(x)}{(x^2-y^2)^2}\,dx.
+\end{aligned}
+\tag{HQ13}
+\]">\[
+\begin{aligned}
+T_{\sigma,D}f(y)
+&amp;=\frac\sigma\pi\int_D^\infty f(x)
+\left[\frac1{y-x}-\frac1{y+x}\right]dx\\
+&amp;=-\frac{2\sigma}{\pi}\int_D^\infty
+\frac{x f(x)}{x^2-y^2}\,dx,\\
+(T_{\sigma,D}f)&#x27;(y)
+&amp;=-\frac{4\sigma y}{\pi}\int_D^\infty
+\frac{x f(x)}{(x^2-y^2)^2}\,dx.
+\end{aligned}
+\tag{HQ13}
+\]</span>
+<p>In particular the first derivative of the tail is exactly zero at zero.
+The full finite-interval bounds improve to</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|T_{\sigma,D}f\|_\infty
+&amp;\le\frac{2C_0}{\pi[1-(A/D)^2]\beta}D^{-\beta},\\
+\|(T_{\sigma,D}f)&#x27;\|_\infty
+&amp;\le\frac{4A C_0}{\pi[1-(A/D)^2]^2(\beta+2)}D^{-\beta-2}.
+\end{aligned}
+\tag{HQ14}
+\]">\[
+\begin{aligned}
+\|T_{\sigma,D}f\|_\infty
+&amp;\le\frac{2C_0}{\pi[1-(A/D)^2]\beta}D^{-\beta},\\
+\|(T_{\sigma,D}f)&#x27;\|_\infty
+&amp;\le\frac{4A C_0}{\pi[1-(A/D)^2]^2(\beta+2)}D^{-\beta-2}.
+\end{aligned}
+\tag{HQ14}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(x^2-y^2\ge[1-(A/D)^2]x^2\)">\(x^2-y^2\ge[1-(A/D)^2]x^2\)</span>, and the two
+remaining integrals are bounded by those of
+<span class="math" data-tex="\(x^{-\beta-1}\)">\(x^{-\beta-1}\)</span> and <span class="math" data-tex="\(x^{-\beta-3}\)">\(x^{-\beta-3}\)</span>. The second
+bound gains one full inverse power of the actual truncation radius
+over the general first-derivative bound HQ12. It follows from the
+two tails and oddness, not from discarding a boundary term.</p>
+<p>More generally, for odd <span class="math" data-tex="\(j\)">\(j\)</span>, the paired kernel in HQ11 is zero
+at <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. The fundamental theorem of calculus in <span class="math" data-tex="\(y\)">\(y\)</span>
+and the next derivative of that kernel give</p>
+<span class="math math-display" data-tex="\[
+\|\partial_y^jT_{\sigma,D}f\|_\infty
+\le\frac{2A C_0(j+1)!}
+{\pi(1-A/D)^{j+2}(\beta+j+1)}D^{-\beta-j-1}
+\qquad(j\text{ odd}).
+\tag{HQ15}
+\]">\[
+\|\partial_y^jT_{\sigma,D}f\|_\infty
+\le\frac{2A C_0(j+1)!}
+{\pi(1-A/D)^{j+2}(\beta+j+1)}D^{-\beta-j-1}
+\qquad(j\text{ odd}).
+\tag{HQ15}
+\]</span>
+<p>To see every coefficient, the paired kernel is
+<span class="math" data-tex="\((-1)^jj![(y-x)^{-j-1}-(y+x)^{-j-1}]\)">\((-1)^jj![(y-x)^{-j-1}-(y+x)^{-j-1}]\)</span>.
+Its next derivative has absolute value at most
+<span class="math" data-tex="\(2(j+1)!/(x-A)^{j+2}\)">\(2(j+1)!/(x-A)^{j+2}\)</span>; integration from zero to <span class="math" data-tex="\(y\)">\(y\)</span>
+contributes <span class="math" data-tex="\(|y|\le A\)">\(|y|\le A\)</span>, and the remaining tail integral
+contributes <span class="math" data-tex="\(D^{-\beta-j-1}/(\beta+j+1)\)">\(D^{-\beta-j-1}/(\beta+j+1)\)</span>.</p>
+<h2 id="hq4-remove-the-singularity-exactly-while-retaining-the-endpoint-logarithm">HQ4. Remove the singularity exactly while retaining the endpoint logarithm</h2>
+<p>For <span class="math" data-tex="\(|y|&lt;D\)">\(|y|&lt;D\)</span> define, including its diagonal value,</p>
+<span class="math math-display" data-tex="\[
+G_y(x)=\frac{f(x)-f(y)}{y-x}
+=-\int_0^1f&#x27;(y+t(x-y))\,dt,\qquad G_y(y)=-f&#x27;(y).
+\tag{HQ16}
+\]">\[
+G_y(x)=\frac{f(x)-f(y)}{y-x}
+=-\int_0^1f&#x27;(y+t(x-y))\,dt,\qquad G_y(y)=-f&#x27;(y).
+\tag{HQ16}
+\]</span>
+<p>The integral expression is the fundamental theorem of calculus along
+the actual segment joining <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>. It proves the
+removable extension without evaluating a zero divided by zero.
+Integrating the subtracted constant in the original principal value
+gives exactly</p>
+<span class="math math-display" data-tex="\[
+H_{\sigma,D}f(y)=\frac\sigma\pi
+\left[\int_{-D}^{D}G_y(x)\,dx+f(y)L_D(y)\right],
+\quad L_D(y)=\log\frac{D+y}{D-y}.
+\tag{HQ17}
+\]">\[
+H_{\sigma,D}f(y)=\frac\sigma\pi
+\left[\int_{-D}^{D}G_y(x)\,dx+f(y)L_D(y)\right],
+\quad L_D(y)=\log\frac{D+y}{D-y}.
+\tag{HQ17}
+\]</span>
+<p>The logarithm is real because <span class="math" data-tex="\(|y|&lt;D\)">\(|y|&lt;D\)</span>. Its sign and both
+finite endpoints follow from
+<span class="math" data-tex="\(\int (y-x)^{-1}\,dx=-\log|y-x|\)">\(\int (y-x)^{-1}\,dx=-\log|y-x|\)</span>.</p>
+<p>Suppose now that <span class="math" data-tex="\(f\in C^{J+5}([-D,D])\)">\(f\in C^{J+5}([-D,D])\)</span>, for an integer
+<span class="math" data-tex="\(J\ge0\)">\(J\ge0\)</span>. Differentiating the nonsingular integral in HQ16
+gives, for every <span class="math" data-tex="\(0\le j\le J\)">\(0\le j\le J\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_y^jG_y(x)
+&amp;=-\int_0^1(1-t)^j f^{(j+1)}(y+t(x-y))\,dt,\\
+\partial_x^4\partial_y^jG_y(x)
+&amp;=-\int_0^1t^4(1-t)^j f^{(j+5)}(y+t(x-y))\,dt,\\
+|\partial_x^4\partial_y^jG_y(x)|
+&amp;\le\frac{4!j!}{(j+5)!}M_{j+5},\qquad
+M_{j+5}=\sup_{|r|\le D}|f^{(j+5)}(r)|.
+\end{aligned}
+\tag{HQ18}
+\]">\[
+\begin{aligned}
+\partial_y^jG_y(x)
+&amp;=-\int_0^1(1-t)^j f^{(j+1)}(y+t(x-y))\,dt,\\
+\partial_x^4\partial_y^jG_y(x)
+&amp;=-\int_0^1t^4(1-t)^j f^{(j+5)}(y+t(x-y))\,dt,\\
+|\partial_x^4\partial_y^jG_y(x)|
+&amp;\le\frac{4!j!}{(j+5)!}M_{j+5},\qquad
+M_{j+5}=\sup_{|r|\le D}|f^{(j+5)}(r)|.
+\end{aligned}
+\tag{HQ18}
+\]</span>
+<p>Every segment lies in <span class="math" data-tex="\([-D,D]\)">\([-D,D]\)</span>. The integral coefficient is
+<span class="math" data-tex="\(\int_0^1t^4(1-t)^jdt=4!j!/(j+5)!\)">\(\int_0^1t^4(1-t)^jdt=4!j!/(j+5)!\)</span>. Repeated
+integration by parts proves it, starting from
+<span class="math" data-tex="\(\int_0^1t^m dt=1/(m+1)\)">\(\int_0^1t^m dt=1/(m+1)\)</span>; the boundary terms vanish
+until the final monomial integral. In particular, the factors are
+<span class="math" data-tex="\(1/5\)">\(1/5\)</span> for <span class="math" data-tex="\(j=0\)">\(j=0\)</span> and <span class="math" data-tex="\(1/30\)">\(1/30\)</span> for <span class="math" data-tex="\(j=1\)">\(j=1\)</span>.
+At a fixed stencil node <span class="math" data-tex="\(x_k\)">\(x_k\)</span>, its derivative evaluated at
+<span class="math" data-tex="\(y=x_k\)">\(y=x_k\)</span> is exactly</p>
+<span class="math math-display" data-tex="\[
+\left.\partial_y^jG_y(x_k)\right|_{y=x_k}
+=-\frac{f^{(j+1)}(x_k)}{j+1}.
+\tag{HQ19}
+\]">\[
+\left.\partial_y^jG_y(x_k)\right|_{y=x_k}
+=-\frac{f^{(j+1)}(x_k)}{j+1}.
+\tag{HQ19}
+\]</span>
+<p>This is a partial derivative with the node held fixed; moving both
+arguments along the diagonal would be a different derivative.</p>
+<p>The endpoint term is also completely differentiable. For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L_D^{(k)}(y)=(k-1)!
+\left[\frac{(-1)^{k-1}}{(D+y)^k}+\frac1{(D-y)^k}\right].
+\tag{HQ20}
+\]">\[
+L_D^{(k)}(y)=(k-1)!
+\left[\frac{(-1)^{k-1}}{(D+y)^k}+\frac1{(D-y)^k}\right].
+\tag{HQ20}
+\]</span>
+<p>The full <span class="math" data-tex="\(j\)">\(j\)</span>-th derivative of the second term in HQ17 is
+<span class="math" data-tex="\(\sum_{r=0}^j\binom jr f^{(r)}(y)L_D^{(j-r)}(y)\)">\(\sum_{r=0}^j\binom jr f^{(r)}(y)L_D^{(j-r)}(y)\)</span>,
+where <span class="math" data-tex="\(L_D^{(0)}=L_D\)">\(L_D^{(0)}=L_D\)</span>. Thus neither differentiation nor
+singularity removal loses an endpoint contribution.</p>
+<h2 id="hq5-every-cubic-stencil-weight-and-interpolation-error-integral">HQ5. Every cubic stencil, weight and interpolation-error integral</h2>
+<p>Partition the actual interval <span class="math" data-tex="\([-D,D]\)">\([-D,D]\)</span> into cells
+<span class="math" data-tex="\([b_i,b_{i+1}]\)">\([b_i,b_{i+1}]\)</span>. For each cell select four distinct original
+nodes <span class="math" data-tex="\(x_{i,0},\ldots,x_{i,3}\)">\(x_{i,0},\ldots,x_{i,3}\)</span> in <span class="math" data-tex="\([-D,D]\)">\([-D,D]\)</span>. They
+can be generated by specified sinh-coordinate nodes
+<span class="math" data-tex="\(x_{i,k}=\sinh z_{i,k}\)">\(x_{i,k}=\sinh z_{i,k}\)</span>; no assumption of equal original
+spacing is made. Define the full cubic basis and weights</p>
+<span class="math math-display" data-tex="\[
+\ell_{i,k}(x)=\prod_{\substack{0\le r\le3\\r\ne k}}
+\frac{x-x_{i,r}}{x_{i,k}-x_{i,r}},\qquad
+w_{i,k}=\int_{b_i}^{b_{i+1}}\ell_{i,k}(x)\,dx.
+\tag{HQ21}
+\]">\[
+\ell_{i,k}(x)=\prod_{\substack{0\le r\le3\\r\ne k}}
+\frac{x-x_{i,r}}{x_{i,k}-x_{i,r}},\qquad
+w_{i,k}=\int_{b_i}^{b_{i+1}}\ell_{i,k}(x)\,dx.
+\tag{HQ21}
+\]</span>
+<p>For the three nodes other than <span class="math" data-tex="\(k\)">\(k\)</span>, let <span class="math" data-tex="\(s_1,s_2,s_3\)">\(s_1,s_2,s_3\)</span>
+be respectively their sum, sum of pairwise products and product, and
+let <span class="math" data-tex="\(d_k=\prod_{r\ne k}(x_{i,k}-x_{i,r})\ne0\)">\(d_k=\prod_{r\ne k}(x_{i,k}-x_{i,r})\ne0\)</span>.
+Then the exact, fully specified weight is</p>
+<span class="math math-display" data-tex="\[
+w_{i,k}=\frac1{d_k}
+\left[\frac{x^4}4-\frac{s_1x^3}3+\frac{s_2x^2}2-s_3x
+\right]_{b_i}^{b_{i+1}}.
+\tag{HQ22}
+\]">\[
+w_{i,k}=\frac1{d_k}
+\left[\frac{x^4}4-\frac{s_1x^3}3+\frac{s_2x^2}2-s_3x
+\right]_{b_i}^{b_{i+1}}.
+\tag{HQ22}
+\]</span>
+<p>All weights, including any negative weights, remain in the quadrature.</p>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+W_i(x)=\prod_{k=0}^3(x-x_{i,k}),\qquad
+J_i=\int_{b_i}^{b_{i+1}}|W_i(x)|\,dx.
+\tag{HQ23}
+\]">\[
+W_i(x)=\prod_{k=0}^3(x-x_{i,k}),\qquad
+J_i=\int_{b_i}^{b_{i+1}}|W_i(x)|\,dx.
+\tag{HQ23}
+\]</span>
+<p>This error coefficient is also an exact finite calculation. Write
+<span class="math" data-tex="\(e_r\)">\(e_r\)</span> for the elementary symmetric products of all four nodes,
+so that <span class="math" data-tex="\(W_i=x^4-e_1x^3+e_2x^2-e_3x+e_4\)">\(W_i=x^4-e_1x^3+e_2x^2-e_3x+e_4\)</span>. An antiderivative
+is</p>
+<span class="math math-display" data-tex="\[
+A_i(x)=\frac{x^5}5-\frac{e_1x^4}4+\frac{e_2x^3}3
+-\frac{e_3x^2}2+e_4x.
+\tag{HQ24}
+\]">\[
+A_i(x)=\frac{x^5}5-\frac{e_1x^4}4+\frac{e_2x^3}3
+-\frac{e_3x^2}2+e_4x.
+\tag{HQ24}
+\]</span>
+<p>Split the cell at each selected node strictly inside it. Between
+successive split points <span class="math" data-tex="\(c_r,c_{r+1}\)">\(c_r,c_{r+1}\)</span>, the polynomial has
+constant sign <span class="math" data-tex="\(s_r\)">\(s_r\)</span>, obtained by evaluating it at their midpoint.
+Hence <span class="math" data-tex="\(J_i=\sum_r s_r[A_i(c_{r+1})-A_i(c_r)]\)">\(J_i=\sum_r s_r[A_i(c_{r+1})-A_i(c_r)]\)</span>.
+There are finitely many split points, and none of the midpoints is a
+root. This computes the absolute integral without replacing it by a
+signed cancellation.</p>
+<p>For any <span class="math" data-tex="\(C^4\)">\(C^4\)</span> function <span class="math" data-tex="\(g\)">\(g\)</span> on the convex hull of the
+cell and its nodes, its cubic interpolation remainder obeys</p>
+<span class="math math-display" data-tex="\[
+\left|g(x)-\sum_{k=0}^3\ell_{i,k}(x)g(x_{i,k})\right|
+\le\frac{\sup|g^{(4)}|}{4!}|W_i(x)|.
+\tag{HQ25}
+\]">\[
+\left|g(x)-\sum_{k=0}^3\ell_{i,k}(x)g(x_{i,k})\right|
+\le\frac{\sup|g^{(4)}|}{4!}|W_i(x)|.
+\tag{HQ25}
+\]</span>
+<p>Here is the complete proof. The inequality is an equality with zero
+error at a node. Otherwise subtract from <span class="math" data-tex="\(g\)">\(g\)</span> its cubic
+interpolant and the multiple of <span class="math" data-tex="\(W_i\)">\(W_i\)</span> that also makes the
+difference vanish at the chosen <span class="math" data-tex="\(x\)">\(x\)</span>. This function has five
+distinct zeros. Four applications of Rolle's theorem give a point
+where its fourth derivative is zero. The cubic contributes zero and
+<span class="math" data-tex="\(W_i^{(4)}=4!\)">\(W_i^{(4)}=4!\)</span>; solving for its multiple gives the displayed
+bound. All points used lie in the stated convex hull, a subset of
+<span class="math" data-tex="\([-D,D]\)">\([-D,D]\)</span>.</p>
+<p>The complete exact-data quadrature is</p>
+<span class="math math-display" data-tex="\[
+Q_{\sigma,D}f(y)=\frac\sigma\pi
+\left[\sum_i\sum_{k=0}^3w_{i,k}G_y(x_{i,k})
++f(y)L_D(y)\right].
+\tag{HQ26}
+\]">\[
+Q_{\sigma,D}f(y)=\frac\sigma\pi
+\left[\sum_i\sum_{k=0}^3w_{i,k}G_y(x_{i,k})
++f(y)L_D(y)\right].
+\tag{HQ26}
+\]</span>
+<p>The weights do not depend on <span class="math" data-tex="\(y\)">\(y\)</span>, so HQ18 and HQ25 apply
+to every <span class="math" data-tex="\(\partial_y^jG_y\)">\(\partial_y^jG_y\)</span> before integration over the
+same cells. Therefore the full interpolation error is</p>
+<span class="math math-display" data-tex="\[
+\|\partial_y^j(Q_{\sigma,D}f-H_{\sigma,D}f)\|_{L^\infty([-A,A])}
+\le\frac{j!M_{j+5}}{\pi(j+5)!}\sum_iJ_i,
+\qquad 0\le j\le J.
+\tag{HQ27}
+\]">\[
+\|\partial_y^j(Q_{\sigma,D}f-H_{\sigma,D}f)\|_{L^\infty([-A,A])}
+\le\frac{j!M_{j+5}}{\pi(j+5)!}\sum_iJ_i,
+\qquad 0\le j\le J.
+\tag{HQ27}
+\]</span>
+<p>The factor <span class="math" data-tex="\(4!\)">\(4!\)</span> from HQ18 cancels only against the displayed
+<span class="math" data-tex="\(4!\)">\(4!\)</span> in HQ25. At orders zero and one the resulting factors
+are exactly <span class="math" data-tex="\(M_5/(120\pi)\)">\(M_5/(120\pi)\)</span> and <span class="math" data-tex="\(M_6/(720\pi)\)">\(M_6/(720\pi)\)</span>.
+The endpoint logarithm is included exactly in both expressions and
+therefore contributes no interpolation error.</p>
+<p>Combining HQ6 and HQ27, every full-line derivative error obeys</p>
+<span class="math math-display" data-tex="\[
+\|\partial_y^j(Q_{\sigma,D}f-H_\sigma f)\|_\infty
+\le\frac{j!M_{j+5}}{\pi(j+5)!}\sum_iJ_i
++\|\partial_y^jT_{\sigma,D}f\|_\infty.
+\tag{HQ28}
+\]">\[
+\|\partial_y^j(Q_{\sigma,D}f-H_\sigma f)\|_\infty
+\le\frac{j!M_{j+5}}{\pi(j+5)!}\sum_iJ_i
++\|\partial_y^jT_{\sigma,D}f\|_\infty.
+\tag{HQ28}
+\]</span>
+<p>The last term has the complete explicit bounds HQ12, HQ14 and HQ15,
+with oddness used only when it is actually present. Thus HQ28 supplies
+<span class="math" data-tex="\(e_0,e_1\)">\(e_0,e_1\)</span> in CM10 for this specified exact-data quadrature.</p>
+<h2 id="hq6-preserve-every-evaluation-error-as-well">HQ6. Preserve every evaluation error as well</h2>
+<p>For a fixed derivative order <span class="math" data-tex="\(j\)">\(j\)</span>, the exact quantity in HQ26 is</p>
+<span class="math math-display" data-tex="\[
+\partial_y^jQ_{\sigma,D}f(y)=\frac\sigma\pi
+\left[\sum_{i,k}w_{i,k}\partial_y^jG_y(x_{i,k})
++\sum_{r=0}^j\binom jr f^{(r)}(y)L_D^{(j-r)}(y)\right].
+\tag{HQ29}
+\]">\[
+\partial_y^jQ_{\sigma,D}f(y)=\frac\sigma\pi
+\left[\sum_{i,k}w_{i,k}\partial_y^jG_y(x_{i,k})
++\sum_{r=0}^j\binom jr f^{(r)}(y)L_D^{(j-r)}(y)\right].
+\tag{HQ29}
+\]</span>
+<p>To account for computed values, denote their individual enclosures by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\widetilde w_{i,k}-w_{i,k}|&amp;\le\eta^w_{i,k},&amp;
+|\widetilde g_{j,i,k}-\partial_y^jG_y(x_{i,k})|&amp;\le\eta^g_{j,i,k},\\
+|\widetilde f_r-f^{(r)}(y)|&amp;\le\eta^f_r,&amp;
+|\widetilde L_k-L_D^{(k)}(y)|&amp;\le\eta^L_k.
+\end{aligned}
+\tag{HQ30}
+\]">\[
+\begin{aligned}
+|\widetilde w_{i,k}-w_{i,k}|&amp;\le\eta^w_{i,k},&amp;
+|\widetilde g_{j,i,k}-\partial_y^jG_y(x_{i,k})|&amp;\le\eta^g_{j,i,k},\\
+|\widetilde f_r-f^{(r)}(y)|&amp;\le\eta^f_r,&amp;
+|\widetilde L_k-L_D^{(k)}(y)|&amp;\le\eta^L_k.
+\end{aligned}
+\tag{HQ30}
+\]</span>
+<p>These are explicit places for actual validated input or arithmetic
+enclosures; none is a claim about missing source data. The error in
+the finite bracket in HQ29 is bounded by the complete expression</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E_j={}&amp;\sum_{i,k}
+[\eta^w_{i,k}|\widetilde g_{j,i,k}|+|w_{i,k}|\eta^g_{j,i,k}]\\
+&amp;+\sum_{r=0}^j\binom jr
+[\eta^f_r|\widetilde L_{j-r}|
++|f^{(r)}(y)|\eta^L_{j-r}].
+\end{aligned}
+\tag{HQ31}
+\]">\[
+\begin{aligned}
+\mathcal E_j={}&amp;\sum_{i,k}
+[\eta^w_{i,k}|\widetilde g_{j,i,k}|+|w_{i,k}|\eta^g_{j,i,k}]\\
+&amp;+\sum_{r=0}^j\binom jr
+[\eta^f_r|\widetilde L_{j-r}|
++|f^{(r)}(y)|\eta^L_{j-r}].
+\end{aligned}
+\tag{HQ31}
+\]</span>
+<p>For each product this is the exact decomposition
+<span class="math" data-tex="\(\widetilde a\widetilde b-ab
+=(\widetilde a-a)\widetilde b+a(\widetilde b-b)\)">\(\widetilde a\widetilde b-ab
+=(\widetilde a-a)\widetilde b+a(\widetilde b-b)\)</span>, followed
+by the triangle inequality. It retains all cross effects through the
+computed factor <span class="math" data-tex="\(\widetilde b\)">\(\widetilde b\)</span>. Bounds
+<span class="math" data-tex="\(|w|\le|\widetilde w|+\eta^w\)">\(|w|\le|\widetilde w|+\eta^w\)</span> and
+<span class="math" data-tex="\(|f^{(r)}|\le|\widetilde f_r|+\eta^f_r\)">\(|f^{(r)}|\le|\widetilde f_r|+\eta^f_r\)</span> make it depend
+only on those actual enclosures when needed.</p>
+<p>If the final summation and multiplication have a proved absolute
+roundoff enclosure <span class="math" data-tex="\(\eta^{\rm sum}_j\)">\(\eta^{\rm sum}_j\)</span>, add
+<span class="math" data-tex="\(\mathcal E_j/\pi+\eta^{\rm sum}_j\)">\(\mathcal E_j/\pi+\eta^{\rm sum}_j\)</span> to HQ28. This
+accounts for the entire numerical result rather than treating
+double-precision arithmetic as exact. The exact-data construction
+HQ21–HQ28 itself requires no floating-point premise. No value is
+assigned to an unavailable computation's enclosure.</p>
+<h2 id="hq7-an-exact-original-rational-benchmark">HQ7. An exact original rational benchmark</h2>
+<p>Consider the fully specified odd real function</p>
+<span class="math math-display" data-tex="\[
+f(x)=-\frac{2x}{1+x^2}.
+\tag{HQ32}
+\]">\[
+f(x)=-\frac{2x}{1+x^2}.
+\tag{HQ32}
+\]</span>
+<p>Its full partial-fraction identity, at a fixed real <span class="math" data-tex="\(y\)">\(y\)</span>, is</p>
+<span class="math math-display" data-tex="\[
+\frac{-2x}{(1+x^2)(y-x)}
+=\frac{-2y/(1+y^2)}{y-x}
++\frac{[-2y/(1+y^2)]x+2/(1+y^2)}{1+x^2}.
+\tag{HQ33}
+\]">\[
+\frac{-2x}{(1+x^2)(y-x)}
+=\frac{-2y/(1+y^2)}{y-x}
++\frac{[-2y/(1+y^2)]x+2/(1+y^2)}{1+x^2}.
+\tag{HQ33}
+\]</span>
+<p>Multiplying by <span class="math" data-tex="\((1+x^2)(y-x)\)">\((1+x^2)(y-x)\)</span> verifies every coefficient.
+On <span class="math" data-tex="\([-D,D]\)">\([-D,D]\)</span>, the odd term <span class="math" data-tex="\(x/(1+x^2)\)">\(x/(1+x^2)\)</span> integrates to
+zero, the constant-over-kernel term contributes its full logarithm,
+and <span class="math" data-tex="\(\int_{-D}^{D}(1+x^2)^{-1}dx=2\arctan D\)">\(\int_{-D}^{D}(1+x^2)^{-1}dx=2\arctan D\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+H_{\sigma,D}f(y)=\frac\sigma{\pi(1+y^2)}
+[4\arctan D-2yL_D(y)].
+\tag{HQ34}
+\]">\[
+H_{\sigma,D}f(y)=\frac\sigma{\pi(1+y^2)}
+[4\arctan D-2yL_D(y)].
+\tag{HQ34}
+\]</span>
+<p>Letting <span class="math" data-tex="\(D\to\infty\)">\(D\to\infty\)</span>, its logarithm tends to zero and
+<span class="math" data-tex="\(\arctan D\to\pi/2\)">\(\arctan D\to\pi/2\)</span>. The original integral converges
+absolutely at infinity, so this proves</p>
+<span class="math math-display" data-tex="\[
+H_\sigma f(y)=\frac{2\sigma}{1+y^2},\qquad
+V[f](y)=2\sigma\arctan y.
+\tag{HQ35}
+\]">\[
+H_\sigma f(y)=\frac{2\sigma}{1+y^2},\qquad
+V[f](y)=2\sigma\arctan y.
+\tag{HQ35}
+\]</span>
+<p>For every <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span> with <span class="math" data-tex="\(|y|&lt;D\)">\(|y|&lt;D\)</span>, subtraction gives the
+exact tail, including both terms:</p>
+<span class="math math-display" data-tex="\[
+T_{\sigma,D}f(y)=\frac\sigma{\pi(1+y^2)}
+[4\arctan(1/D)+2yL_D(y)].
+\tag{HQ36}
+\]">\[
+T_{\sigma,D}f(y)=\frac\sigma{\pi(1+y^2)}
+[4\arctan(1/D)+2yL_D(y)].
+\tag{HQ36}
+\]</span>
+<p>The identity <span class="math" data-tex="\(\arctan D+\arctan(1/D)=\pi/2\)">\(\arctan D+\arctan(1/D)=\pi/2\)</span>
+follows from their tangent addition and their ranges for <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>.</p>
+<p>The exact best coefficient in the zeroth-order CF2 bound with
+<span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span> is <span class="math" data-tex="\(C_0=1+\sqrt2\)">\(C_0=1+\sqrt2\)</span>. For <span class="math" data-tex="\(r=|x|\)">\(r=|x|\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(1+\sqrt2)(1+r^2)-2r(1+r)
+=(\sqrt2-1)(r-1-\sqrt2)^2\ge0.
+\tag{HQ37}
+\]">\[
+(1+\sqrt2)(1+r^2)-2r(1+r)
+=(\sqrt2-1)(r-1-\sqrt2)^2\ge0.
+\tag{HQ37}
+\]</span>
+<p>Equality occurs at <span class="math" data-tex="\(r=1+\sqrt2\)">\(r=1+\sqrt2\)</span>, proving the assertion.
+All higher original derivatives also have complete explicit bounds.
+The complex identity
+<span class="math" data-tex="\(f(x)=-(x-i)^{-1}-(x+i)^{-1}\)">\(f(x)=-(x-i)^{-1}-(x+i)^{-1}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+f^{(n)}(x)=(-1)^{n+1}n!
+[(x-i)^{-n-1}+(x+i)^{-n-1}],\qquad
+|f^{(n)}(x)|\le2n!(1+x^2)^{-(n+1)/2}.
+\tag{HQ38}
+\]">\[
+f^{(n)}(x)=(-1)^{n+1}n!
+[(x-i)^{-n-1}+(x+i)^{-n-1}],\qquad
+|f^{(n)}(x)|\le2n!(1+x^2)^{-(n+1)/2}.
+\tag{HQ38}
+\]</span>
+<p>Conjugacy makes the sum real. Since
+<span class="math" data-tex="\((1+|x|)^2\le2(1+x^2)\)">\((1+|x|)^2\le2(1+x^2)\)</span>, these bounds supply CF2 at
+every order with the full coefficient <span class="math" data-tex="\(2n!2^{(n+1)/2}\)">\(2n!2^{(n+1)/2}\)</span>.
+For the local interpolation bound they give <span class="math" data-tex="\(M_5\le240\)">\(M_5\le240\)</span>
+and <span class="math" data-tex="\(M_6\le1440\)">\(M_6\le1440\)</span>, so the corresponding coefficients in
+HQ27 are each at most <span class="math" data-tex="\(2/\pi\)">\(2/\pi\)</span>.</p>
+<p>This benchmark has a fully known transform, every derivative, actual
+tail and finite-node quadrature. It tests the derived operator and
+error bounds without substituting any source-trained profile.</p>
+<p><img src="assets/NS-FLUID-49/hilbert-tails-and-cubic-quadrature-F654B8A281E598D116C9BE18CD7486486D58851A76A994C7D088A667474175C3.png" alt="Specified cubic quadrature errors and exact rational Hilbert tails compared with the complete proved bounds" class="course-figure" width="2712" height="974" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="hilbert-tails-and-cubic-quadrature" data-asset-sha256="F654B8A281E598D116C9BE18CD7486486D58851A76A994C7D088A667474175C3"></p>
+<p>The left panel uses the full HQ26 quadrature at <span class="math" data-tex="\(D=4\)">\(D=4\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+z_k=-\operatorname{arsinh}4+
+\frac{2k\operatorname{arsinh}4}{N},\qquad
+x_k=\sinh z_k,\qquad 0\le k\le N.
+\]">\[
+z_k=-\operatorname{arsinh}4+
+\frac{2k\operatorname{arsinh}4}{N},\qquad
+x_k=\sinh z_k,\qquad 0\le k\le N.
+\]</span>
+<p>Cell <span class="math" data-tex="\([x_i,x_{i+1}]\)">\([x_i,x_{i+1}]\)</span> uses the four nodes with indices
+<span class="math" data-tex="\(m,m+1,m+2,m+3\)">\(m,m+1,m+2,m+3\)</span>, where <span class="math" data-tex="\(m=\min\{\max\{i-1,0\},N-3\}\)">\(m=\min\{\max\{i-1,0\},N-3\}\)</span>.
+All weights use HQ22, and every <span class="math" data-tex="\(J_i\)">\(J_i\)</span> uses the absolute
+quartic integral HQ24. The actual errors are evaluated at
+<span class="math" data-tex="\(y=1/2\)">\(y=1/2\)</span>. The dashed curve is the proved common bound
+<span class="math" data-tex="\((2/\pi)\sum_iJ_i\)">\((2/\pi)\sum_iJ_i\)</span> from HQ27 and HQ38, on <span class="math" data-tex="\([-2,2]\)">\([-2,2]\)</span>.
+The right panels evaluate the exact HQ36 tails and the proved HQ14
+bounds for <span class="math" data-tex="\(A=2\)">\(A=2\)</span>, <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span>, <span class="math" data-tex="\(C_0=1+\sqrt2\)">\(C_0=1+\sqrt2\)</span>.
+The first-derivative tail is evaluated at the original point <span class="math" data-tex="\(y=2\)">\(y=2\)</span>;
+it is exactly zero at <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. Numerical values use 80-digit
+arithmetic for illustration and are not interval-certified evaluations.
+All error bounds have the complete analytic proofs above.</p>
+<p>The figure compares the types of transform error arising in Wang,
+Lai, Gómez-Serrano and Buckmaster, supplemental381–400 and436–444.
+Its fully specified quadrature and benchmark do not reconstruct the
+unavailable trained computation. The reproducible source is
+<a href="assets/ccf-hilbert-comparisons.py">ccf-hilbert-comparisons.py</a>.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<p>These exercises use CF1–CF20, CM1–CM22 and HQ1–HQ38 with their full
+original domains, signs and constants. The human comparison remains
+Wang, Lai, Gómez-Serrano and Buckmaster,
+<a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>, original
+supplemental TeX359–507. Every benchmark field below is specified
+explicitly; none is an unavailable source-trained profile.</p>
+<h3 id="exercise-1-compose-the-signed-scales-and-preserve-the-actual-anchors">Exercise 1. Compose the signed scales and preserve the actual anchors</h3>
+<p>Prove the group law for CF16. Calculate its action on the original
+derivative anchor and both printed point anchors. Determine exactly
+which scales preserve the derivative anchor of an odd pair.</p>
+<p><strong>Solution.</strong> For a nonzero real <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, keep the full map</p>
+<span class="math math-display" data-tex="\[
+T_\kappa(\Omega,U)(y)=
+\big(\operatorname{sgn}(\kappa)\Omega(y/\kappa),
+\kappa U(y/\kappa)\big).
+\tag{EX1}
+\]">\[
+T_\kappa(\Omega,U)(y)=
+\big(\operatorname{sgn}(\kappa)\Omega(y/\kappa),
+\kappa U(y/\kappa)\big).
+\tag{EX1}
+\]</span>
+<p>For a second nonzero real <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, substitution into both components
+gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(T_\kappa T_\eta\Omega)(y)
+&amp;=\operatorname{sgn}(\kappa)\operatorname{sgn}(\eta)
+\Omega(y/(\kappa\eta)),\\
+(T_\kappa T_\eta U)(y)&amp;=\kappa\eta U(y/(\kappa\eta)).
+\end{aligned}
+\tag{EX2}
+\]">\[
+\begin{aligned}
+(T_\kappa T_\eta\Omega)(y)
+&amp;=\operatorname{sgn}(\kappa)\operatorname{sgn}(\eta)
+\Omega(y/(\kappa\eta)),\\
+(T_\kappa T_\eta U)(y)&amp;=\kappa\eta U(y/(\kappa\eta)).
+\end{aligned}
+\tag{EX2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(T_\kappa T_\eta=T_{\kappa\eta}\)">\(T_\kappa T_\eta=T_{\kappa\eta}\)</span>, <span class="math" data-tex="\(T_1\)">\(T_1\)</span> is the
+identity, and <span class="math" data-tex="\(T_{1/\kappa}\)">\(T_{1/\kappa}\)</span> is the inverse. CF15–CF17 prove that
+these maps have the stated function class as domain and codomain, with
+the exact changed weighted constants and residuals. The constants
+<span class="math" data-tex="\(p=1+\lambda\)">\(p=1+\lambda\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> are not changed by this action.</p>
+<p>For the actual derivative value <span class="math" data-tex="\(b=\Omega&#x27;(0)\)">\(b=\Omega&#x27;(0)\)</span>, differentiation
+of the original scaled field gives</p>
+<span class="math math-display" data-tex="\[
+(T_\kappa\Omega)&#x27;(0)
+=\frac{\operatorname{sgn}(\kappa)}{\kappa}b
+=\frac{b}{|\kappa|}.
+\tag{EX3}
+\]">\[
+(T_\kappa\Omega)&#x27;(0)
+=\frac{\operatorname{sgn}(\kappa)}{\kappa}b
+=\frac{b}{|\kappa|}.
+\tag{EX3}
+\]</span>
+<p>With <span class="math" data-tex="\(b=-2\)">\(b=-2\)</span>, preservation holds exactly when <span class="math" data-tex="\(|\kappa|=1\)">\(|\kappa|=1\)</span>.
+For an odd pair, <span class="math" data-tex="\(T_{-1}\)">\(T_{-1}\)</span> fixes both fields, because its two minus
+signs cancel their oddness separately. More generally,
+<span class="math" data-tex="\(T_{-a}(\Omega,U)=T_a(\Omega,U)\)">\(T_{-a}(\Omega,U)=T_a(\Omega,U)\)</span> for every <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>.
+On the family of odd anchored pairs, the elements fixing any such pair
+are therefore exactly <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>: EX3 excludes every other scale.</p>
+<p>At the original point <span class="math" data-tex="\(a=1/2\)">\(a=1/2\)</span>, the full value map is</p>
+<span class="math math-display" data-tex="\[
+(T_\kappa\Omega)(1/2)
+=\operatorname{sgn}(\kappa)\Omega(1/(2\kappa))
+=\Omega(1/(2|\kappa|))\quad\text{for odd }\Omega.
+\tag{EX4}
+\]">\[
+(T_\kappa\Omega)(1/2)
+=\operatorname{sgn}(\kappa)\Omega(1/(2\kappa))
+=\Omega(1/(2|\kappa|))\quad\text{for odd }\Omega.
+\tag{EX4}
+\]</span>
+<p>After imposing the original derivative anchor, this is exactly
+<span class="math" data-tex="\(\Omega(1/2)\)">\(\Omega(1/2)\)</span>. Consequently the two printed values
+<span class="math" data-tex="\(+0.05\)">\(+0.05\)</span> and <span class="math" data-tex="\(-0.05\)">\(-0.05\)</span> cannot be identified by an anchor-preserving
+signed scale. This conclusion uses the actual field map and its
+derivative constraint, rather than treating a sign change as a symmetry
+without its Hilbert-transform factor.</p>
+<p>Finally the original velocity constant changes by</p>
+<span class="math math-display" data-tex="\[
+(T_\kappa U)(0)=\kappa U(0),\qquad
+E_\kappa(0)=\kappa E(0).
+\tag{EX5}
+\]">\[
+(T_\kappa U)(0)=\kappa U(0),\qquad
+E_\kappa(0)=\kappa E(0).
+\tag{EX5}
+\]</span>
+<p>This follows either from EX1 or from the full primitive map CF17. It
+retains the constant even before oddness sets it to zero.</p>
+<h3 id="exercise-2-calculate-both-full-mode-defects-for-a-specified-velocity">Exercise 2. Calculate both full mode defects for a specified velocity</h3>
+<p>Take the exact rational vorticity, Hilbert orientation and independently
+predicted velocity</p>
+<span class="math math-display" data-tex="\[
+\Omega(y)=-\frac{2y}{1+y^2},\qquad \sigma=-1,\qquad
+\lambda=\frac35,\quad p=\frac85,\qquad
+U(y)=-2\arctan y+\frac3{20}y.
+\tag{EX6}
+\]">\[
+\Omega(y)=-\frac{2y}{1+y^2},\qquad \sigma=-1,\qquad
+\lambda=\frac35,\quad p=\frac85,\qquad
+U(y)=-2\arctan y+\frac3{20}y.
+\tag{EX6}
+\]</span>
+<p>Calculate the original profile residual, both symmetry-mode defects and
+their first derivatives at zero. Keep the repaired velocity identifiable.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(d=1+y^2\)">\(d=1+y^2\)</span> and <span class="math" data-tex="\(\epsilon=3/20\)">\(\epsilon=3/20\)</span> only to
+display the original factors without dropping them. HQ35 gives</p>
+<span class="math math-display" data-tex="\[
+U_*=-2\arctan y,\qquad H_{-}\Omega=-\frac2d,\qquad
+E=\epsilon y,\quad\Delta=\epsilon,\quad\Delta&#x27;=0,
+\qquad E-y\Delta=0.
+\tag{EX7}
+\]">\[
+U_*=-2\arctan y,\qquad H_{-}\Omega=-\frac2d,\qquad
+E=\epsilon y,\quad\Delta=\epsilon,\quad\Delta&#x27;=0,
+\qquad E-y\Delta=0.
+\tag{EX7}
+\]</span>
+<p>The full four-term original residual is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R={}&amp;\frac{2y}{d}
+-\frac85 y\frac{2(y^2-1)}{d^2}
++\left(-2\arctan y+\frac3{20}y\right)
+\frac{2(y^2-1)}{d^2}
+-\frac{2y}{d}\left(-\frac2d+\frac3{20}\right)\\
+={}&amp;\frac{-6y^3+43y-(20y^2-20)\arctan y}{5d^2}.
+\end{aligned}
+\tag{EX8}
+\]">\[
+\begin{aligned}
+R={}&amp;\frac{2y}{d}
+-\frac85 y\frac{2(y^2-1)}{d^2}
++\left(-2\arctan y+\frac3{20}y\right)
+\frac{2(y^2-1)}{d^2}
+-\frac{2y}{d}\left(-\frac2d+\frac3{20}\right)\\
+={}&amp;\frac{-6y^3+43y-(20y^2-20)\arctan y}{5d^2}.
+\end{aligned}
+\tag{EX8}
+\]</span>
+<p>The second line is an identity obtained from all terms in the first;
+it does not replace the definition of the original residual. Differentiating
+the complete expression gives</p>
+<span class="math math-display" data-tex="\[
+R&#x27;(y)=\frac{6y^4-167y^2+63+(40y^3-120y)\arctan y}{5d^3}.
+\tag{EX9}
+\]">\[
+R&#x27;(y)=\frac{6y^4-167y^2+63+(40y^3-120y)\arctan y}{5d^3}.
+\tag{EX9}
+\]</span>
+<p>For direct verification of the operator, the two original modes and their
+actual Hilbert and primitive images are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h_0&amp;=\frac{2y(y^2-1)}{d^2},&amp;
+h_1&amp;=-\frac{2y}d+\frac85\frac{2y(y^2-1)}{d^2},\\
+H_-h_0&amp;=\frac{4y^2}{d^2},&amp;
+H_-h_1&amp;=-\frac2d+\frac85\frac{4y^2}{d^2},\\
+V[h_0]&amp;=-\frac{2y}d+2\arctan y,&amp;
+V[h_1]&amp;=-\frac85\frac{2y}d+\frac65\arctan y.
+\end{aligned}
+\tag{EX10}
+\]">\[
+\begin{aligned}
+h_0&amp;=\frac{2y(y^2-1)}{d^2},&amp;
+h_1&amp;=-\frac{2y}d+\frac85\frac{2y(y^2-1)}{d^2},\\
+H_-h_0&amp;=\frac{4y^2}{d^2},&amp;
+H_-h_1&amp;=-\frac2d+\frac85\frac{4y^2}{d^2},\\
+V[h_0]&amp;=-\frac{2y}d+2\arctan y,&amp;
+V[h_1]&amp;=-\frac85\frac{2y}d+\frac65\arctan y.
+\end{aligned}
+\tag{EX10}
+\]</span>
+<p>They follow from CF5–CF7 and HQ35; in particular, their velocities are
+the exact Hilbert primitives, not scaled copies of the independently
+predicted velocity without its error terms.</p>
+<p>Substitute EX7 into the complete CF12 and CF14 identities. Since
+<span class="math" data-tex="\(y\Omega&#x27;+\Omega=-4y/d^2\)">\(y\Omega&#x27;+\Omega=-4y/d^2\)</span>, both resulting defects are exactly</p>
+<span class="math math-display" data-tex="\[
+D_0=Lh_0=yR&#x27;,\qquad
+D_1=Lh_1-h_1=2R+\frac85yR&#x27;+\frac35\frac{y}{d^2}.
+\tag{EX11}
+\]">\[
+D_0=Lh_0=yR&#x27;,\qquad
+D_1=Lh_1-h_1=2R+\frac85yR&#x27;+\frac35\frac{y}{d^2}.
+\tag{EX11}
+\]</span>
+<p>Every function in this formula is supplied explicitly in EX8–EX9.
+Their first original-coordinate derivatives at zero are</p>
+<span class="math math-display" data-tex="\[
+R&#x27;(0)=\frac{63}5,\qquad
+D_0&#x27;(0)=\frac{63}5,\qquad
+D_1&#x27;(0)=\left(2+\frac85\right)\frac{63}5+\frac35
+=\frac{1149}{25}.
+\tag{EX12}
+\]">\[
+R&#x27;(0)=\frac{63}5,\qquad
+D_0&#x27;(0)=\frac{63}5,\qquad
+D_1&#x27;(0)=\left(2+\frac85\right)\frac{63}5+\frac35
+=\frac{1149}{25}.
+\tag{EX12}
+\]</span>
+<p>These nonzero values prove that this benchmark is not an exact profile
+or an exact zero/one-mode pair. Repairing its velocity gives the full
+residual difference <span class="math" data-tex="\(R-R_*=(E\Omega)&#x27;=-3y/(5d^2)\)">\(R-R_*=(E\Omega)&#x27;=-3y/(5d^2)\)</span>, by CM2.
+It preserves <span class="math" data-tex="\(\Omega&#x27;(0)=-2\)">\(\Omega&#x27;(0)=-2\)</span>, but its point value is
+<span class="math" data-tex="\(\Omega(1/2)=-4/5\)">\(\Omega(1/2)=-4/5\)</span>, distinct from both printed source anchors.</p>
+<h3 id="exercise-3-find-the-sharp-joint-velocity-error-bound-and-its-exact-scope">Exercise 3. Find the sharp joint velocity-error bound and its exact scope</h3>
+<p>Use both original bounds <span class="math" data-tex="\(|\Delta|\le d_0\)">\(|\Delta|\le d_0\)</span> and
+<span class="math" data-tex="\(|\Delta&#x27;|\le d_1\)">\(|\Delta&#x27;|\le d_1\)</span> to improve CM6. Prove the best possible
+coefficient in the stated original velocity class, including the odd
+class, and propagate it into both full mode-defect bounds.</p>
+<p><strong>Solution.</strong></p>
+<h4 id="sc1-keep-the-actual-pair-and-both-error-constraints">SC1. Keep the actual pair and both error constraints</h4>
+<p>Fix the original real field <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> in CF2 and the same
+Hilbert orientation <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Retain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V[\Omega](y)=\int_0^yH_\sigma\Omega(r)\,dr,\qquad
+\Delta=U&#x27;-H_\sigma\Omega,\qquad\\
+
+E=U-V[\Omega]=\gamma_0+\int_0^y\Delta(r)\,dr,
+\qquad \gamma_0=U(0).
+\end{gathered}
+\tag{SC1}
+\]">\[
+\begin{gathered}
+V[\Omega](y)=\int_0^yH_\sigma\Omega(r)\,dr,\qquad
+\Delta=U&#x27;-H_\sigma\Omega,\qquad\\
+
+E=U-V[\Omega]=\gamma_0+\int_0^y\Delta(r)\,dr,
+\qquad \gamma_0=U(0).
+\end{gathered}
+\tag{SC1}
+\]</span>
+<p>Here <span class="math" data-tex="\(U\in C^2(\mathbb R)\)">\(U\in C^2(\mathbb R)\)</span>, as in CM1–CM6. On the actual
+interval <span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span>, suppose <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> and use actual upper bounds</p>
+<span class="math math-display" data-tex="\[
+|\Delta(r)|\le d_0,\qquad |\Delta&#x27;(r)|\le d_1,
+\qquad d_0,d_1\ge0.
+\tag{SC2}
+\]">\[
+|\Delta(r)|\le d_0,\qquad |\Delta&#x27;(r)|\le d_1,
+\qquad d_0,d_1\ge0.
+\tag{SC2}
+\]</span>
+<p>Subtraction retains every term:</p>
+<span class="math math-display" data-tex="\[
+E(y)-y\Delta(y)
+=\gamma_0+\int_0^y[\Delta(r)-\Delta(y)]\,dr.
+\tag{SC3}
+\]">\[
+E(y)-y\Delta(y)
+=\gamma_0+\int_0^y[\Delta(r)-\Delta(y)]\,dr.
+\tag{SC3}
+\]</span>
+<p>The fundamental theorem of calculus and both value bounds give</p>
+<span class="math math-display" data-tex="\[
+|\Delta(r)-\Delta(y)|
+\le\min\{d_1|r-y|,2d_0\}.
+\tag{SC4}
+\]">\[
+|\Delta(r)-\Delta(y)|
+\le\min\{d_1|r-y|,2d_0\}.
+\tag{SC4}
+\]</span>
+<p>Both points lie in the original interval. For positive <span class="math" data-tex="\(y\)">\(y\)</span>, integrate
+this bound on <span class="math" data-tex="\([0,y]\)">\([0,y]\)</span>. For negative <span class="math" data-tex="\(y=-a\)">\(y=-a\)</span>, reverse the actual
+oriented integral and put <span class="math" data-tex="\(r=-s\)">\(r=-s\)</span>; the distance becomes <span class="math" data-tex="\(a-s\)">\(a-s\)</span>
+on <span class="math" data-tex="\(0\le s\le a\)">\(0\le s\le a\)</span>. Thus for either sign, with <span class="math" data-tex="\(a=|y|\)">\(a=|y|\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|E(y)-y\Delta(y)|\le|\gamma_0|+\Phi(a;d_0,d_1),\qquad
+\Phi(a;d_0,d_1)=\int_0^a\min\{d_1u,2d_0\}\,du.
+\tag{SC5}
+\]">\[
+|E(y)-y\Delta(y)|\le|\gamma_0|+\Phi(a;d_0,d_1),\qquad
+\Phi(a;d_0,d_1)=\int_0^a\min\{d_1u,2d_0\}\,du.
+\tag{SC5}
+\]</span>
+<p>Evaluating this complete integral gives</p>
+<span class="math math-display" data-tex="\[
+\Phi(a;d_0,d_1)=
+\begin{cases}
+0,&amp;d_1=0,\\
+\dfrac{a^2d_1}{2},&amp;d_1&gt;0\ \text{and }ad_1\le2d_0,\\
+2ad_0-\dfrac{2d_0^2}{d_1},&amp;d_1&gt;0\ \text{and }ad_1&gt;2d_0.
+\end{cases}
+\tag{SC6}
+\]">\[
+\Phi(a;d_0,d_1)=
+\begin{cases}
+0,&amp;d_1=0,\\
+\dfrac{a^2d_1}{2},&amp;d_1&gt;0\ \text{and }ad_1\le2d_0,\\
+2ad_0-\dfrac{2d_0^2}{d_1},&amp;d_1&gt;0\ \text{and }ad_1&gt;2d_0.
+\end{cases}
+\tag{SC6}
+\]</span>
+<p>In the last case split at <span class="math" data-tex="\(u=2d_0/d_1\)">\(u=2d_0/d_1\)</span>: the first integral is
+<span class="math" data-tex="\(2d_0^2/d_1\)">\(2d_0^2/d_1\)</span>, and the second is
+<span class="math" data-tex="\(2d_0(a-2d_0/d_1)\)">\(2d_0(a-2d_0/d_1)\)</span>. Their sum is the displayed expression.
+The two positive-<span class="math" data-tex="\(d_1\)">\(d_1\)</span> branches agree when <span class="math" data-tex="\(ad_1=2d_0\)">\(ad_1=2d_0\)</span>.
+If <span class="math" data-tex="\(d_0=0\)">\(d_0=0\)</span>, SC6 is zero in every applicable case, as required
+by <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span>. If <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, SC3 is exactly <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>.</p>
+<p>Since the nonnegative integrand in SC5 is bounded both by <span class="math" data-tex="\(d_1u\)">\(d_1u\)</span>
+and by <span class="math" data-tex="\(2d_0\)">\(2d_0\)</span>, this proves the full strengthening</p>
+<span class="math math-display" data-tex="\[
+K_A^{\rm sharp}=|\gamma_0|+\Phi(A;d_0,d_1)
+\le|\gamma_0|+\min\{A^2d_1/2,2Ad_0\}=K_A.
+\tag{SC7}
+\]">\[
+K_A^{\rm sharp}=|\gamma_0|+\Phi(A;d_0,d_1)
+\le|\gamma_0|+\min\{A^2d_1/2,2Ad_0\}=K_A.
+\tag{SC7}
+\]</span>
+<p>The earlier CM6 bound remains valid. SC7 preserves its two inputs and
+uses their joint constraint inside the integral before integration.</p>
+<h4 id="sc2-prove-sharpness-within-smooth-original-velocity-fields">SC2. Prove sharpness within smooth original velocity fields</h4>
+<p>First let <span class="math" data-tex="\(d_0,d_1&gt;0\)">\(d_0,d_1&gt;0\)</span>. Define the globally bounded Lipschitz function</p>
+<span class="math math-display" data-tex="\[
+q(r)=\max\{-d_0,\min\{d_0,d_0-d_1(A-r)\}\},
+\qquad r\in\mathbb R.
+\tag{SC8}
+\]">\[
+q(r)=\max\{-d_0,\min\{d_0,d_0-d_1(A-r)\}\},
+\qquad r\in\mathbb R.
+\tag{SC8}
+\]</span>
+<p>It is constant <span class="math" data-tex="\(-d_0\)">\(-d_0\)</span> up to <span class="math" data-tex="\(A-2d_0/d_1\)">\(A-2d_0/d_1\)</span>, linear with slope
+<span class="math" data-tex="\(d_1\)">\(d_1\)</span> from there to <span class="math" data-tex="\(A\)">\(A\)</span>, and constant <span class="math" data-tex="\(d_0\)">\(d_0\)</span> thereafter.
+In particular <span class="math" data-tex="\(|q|\le d_0\)">\(|q|\le d_0\)</span>, its Lipschitz constant is <span class="math" data-tex="\(d_1\)">\(d_1\)</span>,
+<span class="math" data-tex="\(q(A)=d_0\)">\(q(A)=d_0\)</span>, and on the full original interval <span class="math" data-tex="\([0,A]\)">\([0,A]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+q(r)-q(A)=-\min\{2d_0,d_1(A-r)\},\qquad
+\int_0^A[q(r)-q(A)]\,dr=-\Phi(A;d_0,d_1).
+\tag{SC9}
+\]">\[
+q(r)-q(A)=-\min\{2d_0,d_1(A-r)\},\qquad
+\int_0^A[q(r)-q(A)]\,dr=-\Phi(A;d_0,d_1).
+\tag{SC9}
+\]</span>
+<p>The piecewise linear function is a limiting construction; the actual
+velocity fields below are <span class="math" data-tex="\(C^3\)">\(C^3\)</span>, with a smooth added correction.</p>
+<p>Define the nonnegative even smooth function with its complete coefficient</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho(t)=c\begin{cases}
+\exp[-1/(1-t^2)],&amp;|t|&lt;1,\\
+0,&amp;|t|\ge1,
+\end{cases}\\
+
+\qquad
+c=\left(\int_{-1}^1\exp[-1/(1-t^2)]\,dt\right)^{-1},
+\qquad \rho_\eta(t)=\eta^{-1}\rho(t/\eta),\quad\eta&gt;0.
+\end{gathered}
+\tag{SC10}
+\]">\[
+\begin{gathered}
+\rho(t)=c\begin{cases}
+\exp[-1/(1-t^2)],&amp;|t|&lt;1,\\
+0,&amp;|t|\ge1,
+\end{cases}\\
+
+\qquad
+c=\left(\int_{-1}^1\exp[-1/(1-t^2)]\,dt\right)^{-1},
+\qquad \rho_\eta(t)=\eta^{-1}\rho(t/\eta),\quad\eta&gt;0.
+\end{gathered}
+\tag{SC10}
+\]</span>
+<p>The denominator is finite and strictly positive. All derivatives at the
+two support endpoints vanish: each derivative inside is the same
+exponential times a finite rational expression with powers of
+<span class="math" data-tex="\(1-t^2\)">\(1-t^2\)</span> in the denominator, and the exponential dominates every such
+power as <span class="math" data-tex="\(t\to\pm1\)">\(t\to\pm1\)</span>. This verifies the smooth zero extension.
+The kernel has integral one and support <span class="math" data-tex="\([-\eta,\eta]\)">\([-\eta,\eta]\)</span>.
+Set</p>
+<span class="math math-display" data-tex="\[
+q_\eta(r)=\int_{\mathbb R}\rho_\eta(t)q(r-t)\,dt.
+\tag{SC11}
+\]">\[
+q_\eta(r)=\int_{\mathbb R}\rho_\eta(t)q(r-t)\,dt.
+\tag{SC11}
+\]</span>
+<p>Differentiating the smooth compact kernel proves <span class="math" data-tex="\(q_\eta\in C^\infty\)">\(q_\eta\in C^\infty\)</span>.
+Averaging gives <span class="math" data-tex="\(|q_\eta|\le d_0\)">\(|q_\eta|\le d_0\)</span>. The difference-quotient
+inequality</p>
+<span class="math math-display" data-tex="\[
+|q_\eta(r+h)-q_\eta(r)|
+\le\int\rho_\eta(t)d_1|h|\,dt=d_1|h|
+\]">\[
+|q_\eta(r+h)-q_\eta(r)|
+\le\int\rho_\eta(t)d_1|h|\,dt=d_1|h|
+\]</span>
+<p>and differentiability give <span class="math" data-tex="\(|q_\eta&#x27;|\le d_1\)">\(|q_\eta&#x27;|\le d_1\)</span>. Also, directly
+from the original Lipschitz bound and the support,</p>
+<span class="math math-display" data-tex="\[
+\sup_{r\in\mathbb R}|q_\eta(r)-q(r)|\le d_1\eta.
+\tag{SC12}
+\]">\[
+\sup_{r\in\mathbb R}|q_\eta(r)-q(r)|\le d_1\eta.
+\tag{SC12}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+\left|\int_0^A[q_\eta(r)-q_\eta(A)]\,dr
++\Phi(A;d_0,d_1)\right|
+\le2A d_1\eta.
+\tag{SC13}
+\]">\[
+\left|\int_0^A[q_\eta(r)-q_\eta(A)]\,dr
++\Phi(A;d_0,d_1)\right|
+\le2A d_1\eta.
+\tag{SC13}
+\]</span>
+<p>If <span class="math" data-tex="\(\gamma_0\ge0\)">\(\gamma_0\ge0\)</span>, choose <span class="math" data-tex="\(s=-1\)">\(s=-1\)</span>; if <span class="math" data-tex="\(\gamma_0&lt;0\)">\(\gamma_0&lt;0\)</span>,
+choose <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. Use the actual, fixed original vorticity and define</p>
+<span class="math math-display" data-tex="\[
+U_\eta(y)=V[\Omega](y)+\gamma_0+
+s\int_0^yq_\eta(r)\,dr.
+\tag{SC14}
+\]">\[
+U_\eta(y)=V[\Omega](y)+\gamma_0+
+s\int_0^yq_\eta(r)\,dr.
+\tag{SC14}
+\]</span>
+<p>CF4 gives <span class="math" data-tex="\(V[\Omega]\in C^3\)">\(V[\Omega]\in C^3\)</span>; hence these fields are at least
+<span class="math" data-tex="\(C^3\)">\(C^3\)</span> and satisfy the required <span class="math" data-tex="\(C^2\)">\(C^2\)</span> class. The added correction
+is smooth. Their actual compatibility error is <span class="math" data-tex="\(\Delta_\eta=sq_\eta\)">\(\Delta_\eta=sq_\eta\)</span>,
+their original velocity constant is <span class="math" data-tex="\(U_\eta(0)=\gamma_0\)">\(U_\eta(0)=\gamma_0\)</span>, and
+both SC2 bounds hold on the entire line. Equations SC9 and SC13 give</p>
+<span class="math math-display" data-tex="\[
+\lim_{\eta\downarrow0}
+|E_\eta(A)-A\Delta_\eta(A)|
+=|\gamma_0|+\Phi(A;d_0,d_1).
+\tag{SC15}
+\]">\[
+\lim_{\eta\downarrow0}
+|E_\eta(A)-A\Delta_\eta(A)|
+=|\gamma_0|+\Phi(A;d_0,d_1).
+\tag{SC15}
+\]</span>
+<p>Together with SC5 this proves that <span class="math" data-tex="\(K_A^{\rm sharp}\)">\(K_A^{\rm sharp}\)</span> is the
+supremum of the primitive-error norm over the stated class with these
+upper bounds, fixed <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> and fixed <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>.
+If <span class="math" data-tex="\(d_1=0\)">\(d_1=0\)</span>, every admissible <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is constant on the
+interval and SC3 is exactly <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>. If <span class="math" data-tex="\(d_0=0\)">\(d_0=0\)</span>,
+<span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span> there and the same conclusion holds. These cover the
+degenerate cases without dividing by zero.</p>
+<h4 id="sc3-the-original-odd-class-has-the-same-sharp-coefficient">SC3. The original odd class has the same sharp coefficient</h4>
+<p>For an odd original <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, CF15 at scale <span class="math" data-tex="\(-1\)">\(-1\)</span> and
+linearity give <span class="math" data-tex="\((H_\sigma\Omega)(-y)=(H_\sigma\Omega)(y)\)">\((H_\sigma\Omega)(-y)=(H_\sigma\Omega)(y)\)</span>.
+Thus <span class="math" data-tex="\(V[\Omega]\)">\(V[\Omega]\)</span> is odd. The source's odd velocity forces
+<span class="math" data-tex="\(\gamma_0=0\)">\(\gamma_0=0\)</span> and an even compatibility error.</p>
+<p>To obtain sharpness while preserving this parity, replace SC8 by the
+even function</p>
+<span class="math math-display" data-tex="\[
+q^{\rm even}(r)=
+\max\{-d_0,\min\{d_0,d_0-d_1(A-|r|)\}\}.
+\tag{SC16}
+\]">\[
+q^{\rm even}(r)=
+\max\{-d_0,\min\{d_0,d_0-d_1(A-|r|)\}\}.
+\tag{SC16}
+\]</span>
+<p>It still has Lipschitz constant at most <span class="math" data-tex="\(d_1\)">\(d_1\)</span>, by
+<span class="math" data-tex="\(\big||r|-|v|\big|\le|r-v|\)">\(\big||r|-|v|\big|\le|r-v|\)</span>, and agrees with SC8 on <span class="math" data-tex="\([0,A]\)">\([0,A]\)</span>.
+Convolution with the even kernel in SC10 preserves evenness: change
+<span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(-t\)">\(-t\)</span> in SC11 at <span class="math" data-tex="\(-r\)">\(-r\)</span>. All bounds SC12–SC13
+remain, so its oriented primitive from zero is smooth and odd.
+With <span class="math" data-tex="\(\gamma_0=0\)">\(\gamma_0=0\)</span>, SC14 therefore gives actual odd velocity fields
+with the original fixed odd vorticity and both full error bounds.
+Equation SC15 still approaches <span class="math" data-tex="\(\Phi(A;d_0,d_1)\)">\(\Phi(A;d_0,d_1)\)</span>.
+This proves sharpness in the source's odd function class too, while
+retaining any fixed derivative anchor of the original <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<h4 id="sc4-propagate-the-improved-coefficient-into-both-original-mode-bounds">SC4. Propagate the improved coefficient into both original mode bounds</h4>
+<p>Retain every symbol in CM4 and the full source mode defects
+<span class="math" data-tex="\(D_0=Lh_0\)">\(D_0=Lh_0\)</span>, <span class="math" data-tex="\(D_1=Lh_1-h_1\)">\(D_1=Lh_1-h_1\)</span>. Substituting the stronger
+SC5 estimate into the exact CF12 and CF14 identities gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|D_0\|_\infty
+&amp;\le A r_1+K_A^{\rm sharp}M_1+A M_0d_1,\\
+\|D_1\|_\infty
+&amp;\le2r_0+|p|A r_1+
+(|\lambda|K_A^{\rm sharp}+A d_0)M_1
++M_0(d_0+|p|A d_1).
+\end{aligned}
+\tag{SC17}
+\]">\[
+\begin{aligned}
+\|D_0\|_\infty
+&amp;\le A r_1+K_A^{\rm sharp}M_1+A M_0d_1,\\
+\|D_1\|_\infty
+&amp;\le2r_0+|p|A r_1+
+(|\lambda|K_A^{\rm sharp}+A d_0)M_1
++M_0(d_0+|p|A d_1).
+\end{aligned}
+\tag{SC17}
+\]</span>
+<p>Every other summand is unchanged from the exact expansion. The proof of
+sharpness above concerns the coefficient <span class="math" data-tex="\(K_A^{\rm sharp}\)">\(K_A^{\rm sharp}\)</span>;
+it does not claim simultaneous equality in the remaining triangle
+inequalities. The original-coordinate and numerical-transform inputs
+are still exactly those in CM10 and HQ28–HQ31.</p>
+<h3 id="exercise-4-compute-every-weight-on-an-actual-nonuniform-sinh-grid">Exercise 4. Compute every weight on an actual nonuniform sinh grid</h3>
+<p>Use <span class="math" data-tex="\(z_j=(j-3)\log2\)">\(z_j=(j-3)\log2\)</span>, <span class="math" data-tex="\(x_j=\sinh z_j\)">\(x_j=\sinh z_j\)</span>, for
+<span class="math" data-tex="\(0\le j\le6\)">\(0\le j\le6\)</span>, with actual cutoff <span class="math" data-tex="\(D=63/16\)">\(D=63/16\)</span>. On cell
+<span class="math" data-tex="\([x_i,x_{i+1}]\)">\([x_i,x_{i+1}]\)</span>, use the four nodes starting at
+<span class="math" data-tex="\(m_i=\min\{\max\{i-1,0\},3\}\)">\(m_i=\min\{\max\{i-1,0\},3\}\)</span>. Calculate every cubic
+weight, every absolute quartic integral, and the exact-data quadrature
+for the original rational benchmark.</p>
+<p><strong>Solution.</strong> The original nodes, retaining their coordinate map, are</p>
+<span class="math math-display" data-tex="\[
+(x_0,x_1,x_2,x_3,x_4,x_5,x_6)
+=\left(-\frac{63}{16},-\frac{15}8,-\frac34,0,
+\frac34,\frac{15}8,\frac{63}{16}\right).
+\tag{EX13}
+\]">\[
+(x_0,x_1,x_2,x_3,x_4,x_5,x_6)
+=\left(-\frac{63}{16},-\frac{15}8,-\frac34,0,
+\frac34,\frac{15}8,\frac{63}{16}\right).
+\tag{EX13}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\sinh(k\log2)=(2^k-2^{-k})/2\)">\(\sinh(k\log2)=(2^k-2^{-k})/2\)</span> at each integer
+<span class="math" data-tex="\(-3\le k\le3\)">\(-3\le k\le3\)</span>. These are not equally spaced original nodes.
+For each cell retain the exact HQ21 weight</p>
+<span class="math math-display" data-tex="\[
+w_{i,k}=\int_{x_i}^{x_{i+1}}
+\prod_{\substack{0\le r\le3\\r\ne k}}
+\frac{x-x_{m_i+r}}{x_{m_i+k}-x_{m_i+r}}\,dx,
+\qquad 0\le k\le3.
+\tag{EX14}
+\]">\[
+w_{i,k}=\int_{x_i}^{x_{i+1}}
+\prod_{\substack{0\le r\le3\\r\ne k}}
+\frac{x-x_{m_i+r}}{x_{m_i+k}-x_{m_i+r}}\,dx,
+\qquad 0\le k\le3.
+\tag{EX14}
+\]</span>
+<p>Expanding each cubic and using the full antiderivative HQ22 gives,
+in the original increasing-node order,</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|rrrr}
+i&amp;m_i&amp;w_{i,0}&amp;w_{i,1}&amp;w_{i,2}&amp;w_{i,3}\\\hline
+0&amp;0&amp;15697/22848&amp;9163/3840&amp;-41261/26112&amp;30613/53760\\
+1&amp;0&amp;-9/748&amp;459/880&amp;99/136&amp;-9/80\\
+2&amp;1&amp;-1/70&amp;3/8&amp;17/40&amp;-1/28
+\end{array}
+\tag{EX15}
+\]">\[
+\begin{array}{c|c|rrrr}
+i&amp;m_i&amp;w_{i,0}&amp;w_{i,1}&amp;w_{i,2}&amp;w_{i,3}\\\hline
+0&amp;0&amp;15697/22848&amp;9163/3840&amp;-41261/26112&amp;30613/53760\\
+1&amp;0&amp;-9/748&amp;459/880&amp;99/136&amp;-9/80\\
+2&amp;1&amp;-1/70&amp;3/8&amp;17/40&amp;-1/28
+\end{array}
+\tag{EX15}
+\]</span>
+<p>This table and the exact reflection rule</p>
+<span class="math math-display" data-tex="\[
+w_{5-i,3-k}=w_{i,k},\qquad 0\le i\le2,\quad0\le k\le3,
+\tag{EX16}
+\]">\[
+w_{5-i,3-k}=w_{i,k},\qquad 0\le i\le2,\quad0\le k\le3,
+\tag{EX16}
+\]</span>
+<p>specify all 24 weights. To prove the rule, substitute <span class="math" data-tex="\(x=-r\)">\(x=-r\)</span>
+in EX14. The reflected cell has endpoints
+<span class="math" data-tex="\(-x_{i+1},-x_i\)">\(-x_{i+1},-x_i\)</span>; each reflected numerator and denominator
+has one minus sign, which cancel in each of the three factors. Reversing
+the integration endpoints leaves the same weight with reversed node
+order. All negative weights in EX15–EX16 are retained.</p>
+<p>For example the first basis polynomial is exactly</p>
+<span class="math math-display" data-tex="\[
+\ell_{0,0}(x)=
+\frac{(x+15/8)(x+3/4)x}
+{(-63/16+15/8)(-63/16+3/4)(-63/16)}.
+\tag{EX17}
+\]">\[
+\ell_{0,0}(x)=
+\frac{(x+15/8)(x+3/4)x}
+{(-63/16+15/8)(-63/16+3/4)(-63/16)}.
+\tag{EX17}
+\]</span>
+<p>Integration from <span class="math" data-tex="\(-63/16\)">\(-63/16\)</span> to <span class="math" data-tex="\(-15/8\)">\(-15/8\)</span> gives the first
+entry <span class="math" data-tex="\(15697/22848\)">\(15697/22848\)</span>. The same polynomial integration gives
+the remaining entries. Polynomial interpolation proves, for every cell
+and <span class="math" data-tex="\(0\le n\le3\)">\(0\le n\le3\)</span>, the exact original moments</p>
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^3w_{i,k}x_{m_i+k}^{,n}
+=\frac{x_{i+1}^{n+1}-x_i^{n+1}}{n+1}.
+\tag{EX18}
+\]">\[
+\sum_{k=0}^3w_{i,k}x_{m_i+k}^{,n}
+=\frac{x_{i+1}^{n+1}-x_i^{n+1}}{n+1}.
+\tag{EX18}
+\]</span>
+<p>The Lagrange interpolant equals <span class="math" data-tex="\(x^n\)">\(x^n\)</span> because their difference is
+a polynomial of degree at most three with four distinct roots. This
+also supplies a direct check on every table row, without assuming
+equally spaced nodes or discarding a negative contribution.</p>
+<p>The full quartic is <span class="math" data-tex="\(W_i(x)=\prod_{k=0}^3(x-x_{m_i+k})\)">\(W_i(x)=\prod_{k=0}^3(x-x_{m_i+k})\)</span>.
+It has negative sign inside cell zero and positive sign inside cells
+one and two. Integrating the full quartics with those signs gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J_0=\frac{198695673}{20971520},\qquad
+J_1=\frac{1051947}{1310720},\qquad
+J_2=\frac{4779}{40960},\qquad J_{5-i}=J_i,\\
+
+\qquad \sum_{i=0}^5J_i=\frac{217973673}{10485760}.
+\end{gathered}
+\tag{EX19}
+\]">\[
+\begin{gathered}
+J_0=\frac{198695673}{20971520},\qquad
+J_1=\frac{1051947}{1310720},\qquad
+J_2=\frac{4779}{40960},\qquad J_{5-i}=J_i,\\
+
+\qquad \sum_{i=0}^5J_i=\frac{217973673}{10485760}.
+\end{gathered}
+\tag{EX19}
+\]</span>
+<p>No additional root lies strictly inside these cells. Reflection gives
+the other signs and absolute integrals. Equations EX14 and HQ24
+therefore specify the complete polynomial arithmetic behind EX19.</p>
+<p>Combining contributions at each original node gives the full effective
+weights</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(v_0,\ldots,v_6)=
+\left(\frac{9979}{14784},\frac{855551}{295680},
+-\frac{5515}{10752},\frac{47413}{26880},
+-\frac{5515}{10752},\frac{855551}{295680},\frac{9979}{14784}\right),\\
+
+\quad v_j=\sum_{i,k:m_i+k=j}w_{i,k}.
+\end{gathered}
+\tag{EX20}
+\]">\[
+\begin{gathered}
+(v_0,\ldots,v_6)=
+\left(\frac{9979}{14784},\frac{855551}{295680},
+-\frac{5515}{10752},\frac{47413}{26880},
+-\frac{5515}{10752},\frac{855551}{295680},\frac{9979}{14784}\right),\\
+
+\quad v_j=\sum_{i,k:m_i+k=j}w_{i,k}.
+\end{gathered}
+\tag{EX20}
+\]</span>
+<p>For <span class="math" data-tex="\(f(x)=-2x/(1+x^2)\)">\(f(x)=-2x/(1+x^2)\)</span>, the complete removable kernel is</p>
+<span class="math math-display" data-tex="\[
+G_y(x)=\frac{2(1-xy)}{(1+x^2)(1+y^2)}.
+\]">\[
+G_y(x)=\frac{2(1-xy)}{(1+x^2)(1+y^2)}.
+\]</span>
+<p>This follows by multiplying the original divided difference HQ16 by
+both denominators; it also supplies its actual diagonal value at every
+grid node. Symmetry of EX20 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda&amp;=\sum_{j=0}^6\frac{v_j}{1+x_j^2}
+=\frac{772290333}{312582400},\\
+\sum_{j=0}^6\frac{v_jx_j}{1+x_j^2}&amp;=0,\\
+Q_{\sigma,D}f(y)
+&amp;=\frac\sigma\pi\left[\sum_{j=0}^6v_jG_y(x_j)
++f(y)L_D(y)\right]\\
+&amp;=\frac{\sigma[2\Lambda-2yL_D(y)]}{\pi(1+y^2)}.
+\end{aligned}
+\tag{EX21}
+\]">\[
+\begin{aligned}
+\Lambda&amp;=\sum_{j=0}^6\frac{v_j}{1+x_j^2}
+=\frac{772290333}{312582400},\\
+\sum_{j=0}^6\frac{v_jx_j}{1+x_j^2}&amp;=0,\\
+Q_{\sigma,D}f(y)
+&amp;=\frac\sigma\pi\left[\sum_{j=0}^6v_jG_y(x_j)
++f(y)L_D(y)\right]\\
+&amp;=\frac{\sigma[2\Lambda-2yL_D(y)]}{\pi(1+y^2)}.
+\end{aligned}
+\tag{EX21}
+\]</span>
+<p>The full weighted sum remains displayed before the resulting identity.
+Subtracting HQ34 and differentiating the actual target coordinate give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q_{\sigma,D}f-H_{\sigma,D}f
+&amp;=\frac{\sigma[2\Lambda-4\arctan D]}{\pi(1+y^2)},\\
+\partial_y(Q_{\sigma,D}f-H_{\sigma,D}f)
+&amp;=-\frac{2\sigma y[2\Lambda-4\arctan D]}{\pi(1+y^2)^2}.
+\end{aligned}
+\tag{EX22}
+\]">\[
+\begin{aligned}
+Q_{\sigma,D}f-H_{\sigma,D}f
+&amp;=\frac{\sigma[2\Lambda-4\arctan D]}{\pi(1+y^2)},\\
+\partial_y(Q_{\sigma,D}f-H_{\sigma,D}f)
+&amp;=-\frac{2\sigma y[2\Lambda-4\arctan D]}{\pi(1+y^2)^2}.
+\end{aligned}
+\tag{EX22}
+\]</span>
+<p>These include evaluation at <span class="math" data-tex="\(y=x_3=0\)">\(y=x_3=0\)</span>, where the derivative is
+zero and the value error is the displayed constant divided by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.
+Each error has the proved HQ27 bound
+<span class="math" data-tex="\((2/\pi)(217973673/10485760)\)">\((2/\pi)(217973673/10485760)\)</span> on any receiving interval
+<span class="math" data-tex="\([-A,A]\)">\([-A,A]\)</span> with <span class="math" data-tex="\(A&lt;D\)">\(A&lt;D\)</span>. This coarse grid has a large bound;
+the calculation proves its actual value rather than calling it small.
+The whole-line comparison additionally retains the full tail HQ36.</p>
+<h3 id="exercise-5-carry-an-explicit-transform-budget-into-the-original-modes">Exercise 5. Carry an explicit transform budget into the original modes</h3>
+<p>For the same rational vorticity, construct an actual global odd velocity
+from a finite quadrature with a proved transform error below <span class="math" data-tex="\(1/200\)">\(1/200\)</span>
+in value and first derivative on <span class="math" data-tex="\([-2,2]\)">\([-2,2]\)</span>. Give fully specified
+nodes, preserve the global field and calculate numerical upper bounds
+for both complete mode defects at <span class="math" data-tex="\(\lambda=3/5\)">\(\lambda=3/5\)</span>, <span class="math" data-tex="\(\sigma=-1\)">\(\sigma=-1\)</span>.</p>
+<p><strong>Solution.</strong> Use the original cutoff and finite grid</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D=1024,\quad A=2,\quad Z=\operatorname{arsinh}1024,
+\quad N=2^{21}=2097152,\quad\\
+
+z_k=-Z+2Zk/N,\quad x_k=\sinh z_k\quad(0\le k\le N).
+\end{gathered}
+\tag{EX23}
+\]">\[
+\begin{gathered}
+D=1024,\quad A=2,\quad Z=\operatorname{arsinh}1024,
+\quad N=2^{21}=2097152,\quad\\
+
+z_k=-Z+2Zk/N,\quad x_k=\sinh z_k\quad(0\le k\le N).
+\end{gathered}
+\tag{EX23}
+\]</span>
+<p>Each cell uses the four consecutive indices starting at
+<span class="math" data-tex="\(m_i=\min\{\max\{i-1,0\},N-3\}\)">\(m_i=\min\{\max\{i-1,0\},N-3\}\)</span>, with the exact weights
+HQ22. This is a fully defined finite exact-data quadrature. Its proof
+below does not require a numerical run over those nodes.</p>
+<p>Let <span class="math" data-tex="\(h=\max_k(x_{k+1}-x_k)\)">\(h=\max_k(x_{k+1}-x_k)\)</span>. The mean value theorem in the
+original sinh map gives</p>
+<span class="math math-display" data-tex="\[
+h\le\frac{2Z\cosh Z}{N}
+&lt;\frac{16\cdot1025}{2097152}&lt;\frac1{100}.
+\tag{EX24}
+\]">\[
+h\le\frac{2Z\cosh Z}{N}
+&lt;\frac{16\cdot1025}{2097152}&lt;\frac1{100}.
+\tag{EX24}
+\]</span>
+<p>Here <span class="math" data-tex="\(\cosh Z=\sqrt{1024^2+1}&lt;1025\)">\(\cosh Z=\sqrt{1024^2+1}&lt;1025\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+Z=\log(1024+\sqrt{1024^2+1})&lt;\log2049&lt;8
+\]">\[
+Z=\log(1024+\sqrt{1024^2+1})&lt;\log2049&lt;8
+\]</span>
+<p>For the last inequality, the positive exponential series gives</p>
+<span class="math math-display" data-tex="\[
+e^8&gt;\sum_{k=0}^{10}8^k/k!=3830591/1575&gt;2049
+\]">\[
+e^8&gt;\sum_{k=0}^{10}8^k/k!=3830591/1575&gt;2049
+\]</span>
+<p>Thus every inequality in EX24 has explicit constants.</p>
+<p>The cell and its four nodes lie within three consecutive cell lengths.
+Hence every original factor <span class="math" data-tex="\(|x-x_{m_i+k}|\)">\(|x-x_{m_i+k}|\)</span> on that cell is at
+most <span class="math" data-tex="\(3h\)">\(3h\)</span>. Retaining all four factors and all cells yields</p>
+<span class="math math-display" data-tex="\[
+\sum_iJ_i\le\sum_i(x_{i+1}-x_i)(3h)^4=2D\cdot81h^4.
+\tag{EX25}
+\]">\[
+\sum_iJ_i\le\sum_i(x_{i+1}-x_i)(3h)^4=2D\cdot81h^4.
+\tag{EX25}
+\]</span>
+<p>HQ38 gives <span class="math" data-tex="\(M_5\le240\)">\(M_5\le240\)</span>, <span class="math" data-tex="\(M_6\le1440\)">\(M_6\le1440\)</span>. Therefore HQ27
+and <span class="math" data-tex="\(\pi&gt;3\)">\(\pi&gt;3\)</span> give, separately for <span class="math" data-tex="\(j=0,1\)">\(j=0,1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\partial_y^j(Q_{-,D}f-H_{-,D}f)\|_\infty
+\le\frac2\pi\sum_iJ_i
+\le\frac{324D}{\pi}h^4
+&lt;\frac{108\cdot1024}{100^4}&lt;\frac1{400}.
+\tag{EX26}
+\]">\[
+\|\partial_y^j(Q_{-,D}f-H_{-,D}f)\|_\infty
+\le\frac2\pi\sum_iJ_i
+\le\frac{324D}{\pi}h^4
+&lt;\frac{108\cdot1024}{100^4}&lt;\frac1{400}.
+\tag{EX26}
+\]</span>
+<p>For the two omitted original tails use <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span>,
+<span class="math" data-tex="\(C_0=1+\sqrt2&lt;5/2\)">\(C_0=1+\sqrt2&lt;5/2\)</span> and
+<span class="math" data-tex="\(1-(A/D)^2&gt;3/4\)">\(1-(A/D)^2&gt;3/4\)</span>. The full odd bounds HQ14 give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|T_{-,D}f\|_\infty
+&amp;\le\frac{2C_0D^{-1}}{\pi[1-(A/D)^2]}
+&lt;\frac5{2304}&lt;\frac1{400},\\
+\|(T_{-,D}f)&#x27;\|_\infty
+&amp;\le\frac{4A C_0D^{-3}}{3\pi[1-(A/D)^2]^2}
+&lt;\frac{320}{81\cdot1024^3}&lt;\frac1{400}.
+\end{aligned}
+\tag{EX27}
+\]">\[
+\begin{aligned}
+\|T_{-,D}f\|_\infty
+&amp;\le\frac{2C_0D^{-1}}{\pi[1-(A/D)^2]}
+&lt;\frac5{2304}&lt;\frac1{400},\\
+\|(T_{-,D}f)&#x27;\|_\infty
+&amp;\le\frac{4A C_0D^{-3}}{3\pi[1-(A/D)^2]^2}
+&lt;\frac{320}{81\cdot1024^3}&lt;\frac1{400}.
+\end{aligned}
+\tag{EX27}
+\]</span>
+<p>Consequently, on the actual interval <span class="math" data-tex="\([-2,2]\)">\([-2,2]\)</span>, the complete error</p>
+<span class="math math-display" data-tex="\[
+e(y)=Q_{-,D}f(y)-H_-f(y)
+\quad\text{satisfies}\quad |e|&lt;\frac1{200},\quad|e&#x27;|&lt;\frac1{200}.
+\tag{EX28}
+\]">\[
+e(y)=Q_{-,D}f(y)-H_-f(y)
+\quad\text{satisfies}\quad |e|&lt;\frac1{200},\quad|e&#x27;|&lt;\frac1{200}.
+\tag{EX28}
+\]</span>
+<p>These are exact-data bounds. A floating-point implementation would
+add the complete HQ30–HQ31 evaluation and summation terms.</p>
+<p>We next construct the full global velocity, preserving the cutoff
+transition rather than defining it only on the receiving interval.
+Set</p>
+<span class="math math-display" data-tex="\[
+w(s)=\begin{cases}e^{-1/s},&amp;s&gt;0,\\0,&amp;s\le0,\end{cases}
+\quad \theta(s)=\frac{w(s)}{w(s)+w(1-s)},\qquad
+\chi(y)=\theta\left(\frac{9-y^2}{5}\right).
+\tag{EX29}
+\]">\[
+w(s)=\begin{cases}e^{-1/s},&amp;s&gt;0,\\0,&amp;s\le0,\end{cases}
+\quad \theta(s)=\frac{w(s)}{w(s)+w(1-s)},\qquad
+\chi(y)=\theta\left(\frac{9-y^2}{5}\right).
+\tag{EX29}
+\]</span>
+<p>The denominator is strictly positive for every real <span class="math" data-tex="\(s\)">\(s\)</span>. Each
+derivative of <span class="math" data-tex="\(w\)">\(w\)</span> at zero vanishes by exponential decay against
+any power, so <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(\chi\)">\(\chi\)</span> are smooth. The function
+<span class="math" data-tex="\(\chi\)">\(\chi\)</span> is even, equals one on <span class="math" data-tex="\([-2,2]\)">\([-2,2]\)</span>, and equals zero
+for <span class="math" data-tex="\(|y|\ge3\)">\(|y|\ge3\)</span>, with all derivatives matching at the transition
+endpoints. Since <span class="math" data-tex="\(3&lt;D\)">\(3&lt;D\)</span>, the following definitions give genuine
+global fields:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J(y)&amp;=\int_0^y e(r)\,dr\qquad(|y|&lt;D),\\
+E(y)&amp;=\begin{cases}\chi(y)J(y),&amp;|y|&lt;3,\\0,&amp;|y|\ge3,\end{cases}\\
+U(y)&amp;=-2\arctan y+E(y).
+\end{aligned}
+\tag{EX30}
+\]">\[
+\begin{aligned}
+J(y)&amp;=\int_0^y e(r)\,dr\qquad(|y|&lt;D),\\
+E(y)&amp;=\begin{cases}\chi(y)J(y),&amp;|y|&lt;3,\\0,&amp;|y|\ge3,\end{cases}\\
+U(y)&amp;=-2\arctan y+E(y).
+\end{aligned}
+\tag{EX30}
+\]</span>
+<p>The rational removable kernel and the finite logarithm are smooth for
+<span class="math" data-tex="\(|y|&lt;D\)">\(|y|&lt;D\)</span>, so <span class="math" data-tex="\(J\)">\(J\)</span> is smooth near <span class="math" data-tex="\([-3,3]\)">\([-3,3]\)</span>. The flat
+cutoff makes the displayed zero extension smooth. The full compatibility
+errors in the transition region retain every derivative:</p>
+<span class="math math-display" data-tex="\[
+\Delta=\chi&#x27;J+\chi e,\qquad
+\Delta&#x27;=\chi&#x27;&#x27;J+2\chi&#x27;e+\chi e&#x27;
+\qquad(|y|&lt;3).
+\tag{EX31}
+\]">\[
+\Delta=\chi&#x27;J+\chi e,\qquad
+\Delta&#x27;=\chi&#x27;&#x27;J+2\chi&#x27;e+\chi e&#x27;
+\qquad(|y|&lt;3).
+\tag{EX31}
+\]</span>
+<p>Outside <span class="math" data-tex="\([-3,3]\)">\([-3,3]\)</span> they are zero. On <span class="math" data-tex="\([-2,2]\)">\([-2,2]\)</span>, they are
+exactly <span class="math" data-tex="\(\Delta=e\)">\(\Delta=e\)</span>, <span class="math" data-tex="\(\Delta&#x27;=e&#x27;\)">\(\Delta&#x27;=e&#x27;\)</span>, and <span class="math" data-tex="\(U&#x27;=Q_{-,D}f\)">\(U&#x27;=Q_{-,D}f\)</span>.
+Reflection of the node and weight scheme, as in EX16, makes
+<span class="math" data-tex="\(Q_{-,D}f\)">\(Q_{-,D}f\)</span> even. Both <span class="math" data-tex="\(H_-f\)">\(H_-f\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> are even;
+thus <span class="math" data-tex="\(J\)">\(J\)</span> and the global <span class="math" data-tex="\(E,U\)">\(E,U\)</span> are odd. In particular the
+actual velocity constant is <span class="math" data-tex="\(\gamma_0=0\)">\(\gamma_0=0\)</span>.</p>
+<p>For the original rational field, HQ38 gives
+<span class="math" data-tex="\(M_0\le1\)">\(M_0\le1\)</span>, <span class="math" data-tex="\(M_1\le2\)">\(M_1\le2\)</span>, <span class="math" data-tex="\(M_2\le4\)">\(M_2\le4\)</span>; the first bound
+also follows from <span class="math" data-tex="\(2|y|\le1+y^2\)">\(2|y|\le1+y^2\)</span>. Since <span class="math" data-tex="\(\pi&lt;4\)">\(\pi&lt;4\)</span>,
+<span class="math" data-tex="\(|-2\arctan y|&lt;4\)">\(|-2\arctan y|&lt;4\)</span>. The full primitive estimate and EX28 give</p>
+<span class="math math-display" data-tex="\[
+\|U\|_\infty\le\frac{401}{100},\qquad
+\|U&#x27;\|_\infty\le\frac{401}{200},\qquad
+\|U&#x27;&#x27;\|_\infty\le\frac{401}{200}
+\quad\text{on }[-2,2].
+\tag{EX32}
+\]">\[
+\|U\|_\infty\le\frac{401}{100},\qquad
+\|U&#x27;\|_\infty\le\frac{401}{200},\qquad
+\|U&#x27;&#x27;\|_\infty\le\frac{401}{200}
+\quad\text{on }[-2,2].
+\tag{EX32}
+\]</span>
+<p>For the last bound use
+<span class="math" data-tex="\(|(H_-f)&#x27;|=4|y|/(1+y^2)^2\le2\)">\(|(H_-f)&#x27;|=4|y|/(1+y^2)^2\le2\)</span>, together with EX28.
+Every term of CF8 and CF11 now has an explicit original-coordinate
+bound. Their full sums, before evaluation, are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r_0&amp;\le1+\frac85\cdot2\cdot2
++\frac{401}{100}\cdot2+\frac{401}{200}
+=\frac{697}{40},\\
+r_1&amp;\le\frac{13}5\cdot2+\frac85\cdot2\cdot4
++\frac{401}{100}\cdot4
++2\frac{401}{200}\cdot2+\frac{401}{200}
+=\frac{8813}{200}.
+\end{aligned}
+\tag{EX33}
+\]">\[
+\begin{aligned}
+r_0&amp;\le1+\frac85\cdot2\cdot2
++\frac{401}{100}\cdot2+\frac{401}{200}
+=\frac{697}{40},\\
+r_1&amp;\le\frac{13}5\cdot2+\frac85\cdot2\cdot4
++\frac{401}{100}\cdot4
++2\frac{401}{200}\cdot2+\frac{401}{200}
+=\frac{8813}{200}.
+\end{aligned}
+\tag{EX33}
+\]</span>
+<p>Take <span class="math" data-tex="\(d_0=d_1=1/200\)">\(d_0=d_1=1/200\)</span>. Here <span class="math" data-tex="\(Ad_1=2d_0\)">\(Ad_1=2d_0\)</span>, so SC6 gives
+<span class="math" data-tex="\(K_A^{\rm sharp}=A^2d_1/2=1/100\)">\(K_A^{\rm sharp}=A^2d_1/2=1/100\)</span>, exactly at the meeting
+point of its two branches. Substituting every term into SC17 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|D_0\|_\infty
+&amp;\le2\frac{8813}{200}+\frac1{100}\cdot2
++2\frac1{200}=\frac{2204}{25},\\
+\|D_1\|_\infty
+&amp;\le2\frac{697}{40}+\frac85\cdot2\frac{8813}{200}
++\left(\frac35\frac1{100}+2\frac1{200}\right)2
++\left(\frac1{200}+\frac85\cdot2\frac1{200}\right)
+=\frac{175911}{1000}.
+\end{aligned}
+\tag{EX34}
+\]">\[
+\begin{aligned}
+\|D_0\|_\infty
+&amp;\le2\frac{8813}{200}+\frac1{100}\cdot2
++2\frac1{200}=\frac{2204}{25},\\
+\|D_1\|_\infty
+&amp;\le2\frac{697}{40}+\frac85\cdot2\frac{8813}{200}
++\left(\frac35\frac1{100}+2\frac1{200}\right)2
++\left(\frac1{200}+\frac85\cdot2\frac1{200}\right)
+=\frac{175911}{1000}.
+\end{aligned}
+\tag{EX34}
+\]</span>
+<p>The transform errors are small, while these full mode bounds are not.
+There is an exact reason the original equation is still unsolved here:
+oddness and <span class="math" data-tex="\(\Omega&#x27;(0)=-2\)">\(\Omega&#x27;(0)=-2\)</span> give from CF11</p>
+<span class="math math-display" data-tex="\[
+R&#x27;(0)=2+2p-4U&#x27;(0)=\frac{66}5-4e(0)
+&gt;\frac{659}{50}&gt;0.
+\tag{EX35}
+\]">\[
+R&#x27;(0)=2+2p-4U&#x27;(0)=\frac{66}5-4e(0)
+&gt;\frac{659}{50}&gt;0.
+\tag{EX35}
+\]</span>
+<p>Thus the exact vanishing of the numerical compatibility residual
+<span class="math" data-tex="\(U&#x27;-Q_{-,D}f\)">\(U&#x27;-Q_{-,D}f\)</span> on the receiving interval, even with proved small
+whole-line transform error, does not erase the actual profile residual.
+This is a complete calculation for the specified benchmark and global
+velocity, with its original cutoff transition retained.</p>
+<p><img src="assets/NS-FLUID-49/ccf-sharp-bound-and-original-grid-8E801C97DBD3B7403C3DC9EEB12D48A3AC72EB20179E3A5D0DFA127F32794F59.png" alt="The sharp joint velocity-error coefficient, an even smooth approximating family, and every original nonuniform-grid weight" class="course-figure" width="2703" height="980" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="ccf-sharp-bound-and-original-grid" data-asset-sha256="8E801C97DBD3B7403C3DC9EEB12D48A3AC72EB20179E3A5D0DFA127F32794F59"></p>
+<p>The left panel evaluates the exact SC6 coefficient with
+<span class="math" data-tex="\(d_0=d_1=1\)">\(d_0=d_1=1\)</span>, <span class="math" data-tex="\(\gamma_0=0\)">\(\gamma_0=0\)</span>, alongside the earlier CM6
+bound. The middle panel shows SC16 at <span class="math" data-tex="\(A=3\)">\(A=3\)</span> and a numerical
+evaluation of its convolution SC11 with <span class="math" data-tex="\(\eta=0.12\)">\(\eta=0.12\)</span>; the complete
+sharpness argument is SC8–SC16. The right panel uses the exact original
+nodes EX13 and all effective weights EX20, including the two negative
+ones. Their decimal labels are for display; the full rational values
+remain in EX15–EX20. Human comparison: Wang, Lai, Gómez-Serrano and
+Buckmaster, original supplemental TeX381–400 and454–480; these are
+independently specified examples and complete editorial calculations.
+The reproducible source is
+<a href="assets/ccf-sharp-bound-and-original-grid.py">ccf-sharp-bound-and-original-grid.py</a>.</p>
+<h2 id="continue-with-the-profile-and-stability-arguments">Continue with the profile and stability arguments</h2>
+<p>The original CCF fields, both residuals, signed symmetries, physical
+time maps and complete transform bounds are now explicit. These give
+the actual inputs that a numerical profile comparison must establish.
+The next lessons continue through the source's complete analytic and
+computational stability dependencies, then the remaining human
+constructions, Alpöge–Buckmaster, OpenAI and retained workbench results.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-48.html">Previous lesson</a><span class="unlinked">Next lesson</span></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

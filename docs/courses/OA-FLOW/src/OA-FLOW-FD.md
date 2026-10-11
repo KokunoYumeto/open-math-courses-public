@@ -1,6 +1,6 @@
 # Faithful descent through the complete counting operator-valued weight
 
-*Original proof development, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(B\) and \(F=B^\beta\) be the actual compact crossed product and fixed algebra in [CC-3](OA-FLOW-CC.md#oa-flow.cc.3). Its faithful normal semifinite counting operator-valued weight is
 

@@ -1,6 +1,6 @@
 # Supported weights and their coordinates in the continuous core
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 A weight can vanish on a nonzero corner. Its imaginary powers then form a unitary group only on its support, and their value at time zero is that support projection. We construct these powers by a faithful completion, prove that the completion disappears from the answer, and recover both the weight and the core of its support from them. This also determines exactly which commutant belongs to the support corner and which extra block appears in the whole algebra.
 

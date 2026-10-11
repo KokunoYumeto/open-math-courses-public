@@ -1,6 +1,6 @@
 # A proper topology for an integrable orbit model
 
-*Self-checked by the writing AI. Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
+*Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
 
 An orbit decomposition records which points belong together and which measure class each orbit carries. We now give a locally compact topology to that measured model. Compact pieces of the orbit space make the stabilizers vary continuously and keep them inside one compact part of the group. Those two properties produce a proper action.
 

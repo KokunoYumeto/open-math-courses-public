@@ -4,7 +4,7 @@
 
 A finite-dimensional algebra that approximates a few operators need not contain a previously chosen algebra. The main construction below repairs that defect. A small change of one projection aligns the first matrix corner, and matrix units then align the whole old algebra exactly. Repeating this construction identifies every separable AFD factor of type \(\mathrm{II}_1\) with the tracial infinite product of \(M_2\).
 
-We use the infinite product construction and its CAR realization. Foundational inputs are center-valued trace comparison, halving in an algebra without a type I part, finite projection joins and normal representation amplification. Trace densities identify the predual with \(L^1\). The trace-preserving expectation used here is the finite-trace case of the OA-MOD modular expectation theorem: the trace has trivial modular action, so every unital von Neumann subalgebra is invariant. Its expectation is normal, ucp, bimodular and the orthogonal projection in \(L^2\). General weight and expectation theory remains a prerequisite.
+We use the infinite product construction and its CAR realization. The full [center-valued trace construction FCT0–8](../../OA-FLOW/OA-FLOW-FCT.html#oa-flow.fct.0) supplies existence, all-net normality, faithfulness, uniqueness and projection comparison for every finite algebra. Its [PC1–7](../../OA-FLOW/OA-FLOW-PC.html#oa-flow.projection.pc1) input proves arbitrary orthogonal sums, central comparison, finite cancellation, properly infinite halving and finite joins. The construction uses normal central maps and central tiles rather than a prior scalar trace or a countability reduction. The full [normal representation and finite matrix-corner construction NA0–6](../normal-representations-and-finite-trace-corners.html#na0) supplies the later commutant argument on arbitrary Hilbert spaces. The trace expectation is constructed by [SE1–SE5](../state-expectations-from-bounded-graphs.html#se1): the trace has trivial modular action, so every unital subalgebra is invariant. The construction gives normality, complete positivity, bimodularity and the exact trace-GNS projection. The direct predual argument below supplies the bounded trace topology and point-predual norm estimates.
 
 Unless stated otherwise, \(M\) is a factor of type \(\mathrm{II}_1\), with normalized faithful normal trace \(\tau\), and
 \[
@@ -12,111 +12,40 @@ Unless stated otherwise, \(M\) is a factor of type \(\mathrm{II}_1\), with norma
 \]
 The inequalities \(\|axb\|_2\le\|a\|\|x\|_2\|b\|\), \(\|x^*\|_2=\|x\|_2\), and \(|\tau(x)|\le\|x\|_2\) follow from the trace and Cauchy–Schwarz. We write \(E_N\) for the trace-preserving expectation onto a unital subalgebra \(N\).
 
-On norm-bounded sets, the \(2\)-norm gives the intrinsic sigma-strong* topology. To check this, write a normal positive functional as \(\tau(h\,\cdot)\), with \(h\in L^1_+\), and approximate \(h\) in \(L^1\) by a bounded positive \(b\). If \(\|x\|\le C\), then
+<a id="bounded-trace-topology"></a>
+
+**Bounded trace topology (PB1–PB2).** The normal functionals
+\[
+\psi_b(x)=\tau(bx),\qquad b\in M,
+\tag{PB1}
+\]
+are norm dense in \(M_*\). Indeed their span is a linear subspace of the concrete predual. If its norm closure were proper, Hahn–Banach would give a nonzero element of \((M_*)^*=M\) annihilating it, by [CP6](../../OA-FLOW/OA-FLOW-CP.html#oa-flow.cp.6). Calling that element \(x\), we would have \(\tau(bx)=0\) for every \(b\); choosing \(b=x^*\) and using faithfulness gives \(x=0\), a contradiction.
+
+Let \(\psi\) be a normal positive functional and \(\|x\|\le C\). Choose \(b\in M\) with \(\|\psi-\psi_b\|<\eta\), by (PB1). Trace Cauchy–Schwarz, applied to \(x^*x\) through its square root, gives \(|\tau(bx^*x)|\le\|b\|\tau(x^*x)\). Thus
+\[
+\psi(x^*x)\le\|b\|\|x\|_2^2+\eta C^2,\qquad
+\psi(xx^*)\le\|b\|\|x\|_2^2+\eta C^2.
+\tag{PB2}
+\]
+This proves that, on every norm-bounded set, the \(2\)-norm gives the intrinsic sigma-strong* topology. The converse uses the trace itself as one of the tests. There is no cardinality restriction on the convergent net.
+
+If a normal positive functional has already been represented as \(\tau(h\,\cdot)\), the same estimate can also be written using a bounded positive approximation \(b\) to \(h\):
+
 \[
 \tau(hx^*x)\le\|b\|\|x\|_2^2+C^2\|h-b\|_1.
 \tag{1}
 \]
-The same estimate applies to \(xx^*\). Conversely the trace itself is one of the topology's tests. Norm-bounded \(2\)-norm Cauchy sequences have their limit in \(M\): an ultraweak cluster point of the bounded ball has the same pairings \(\tau(y^*x)\), \(y\in M\), as the Hilbert-space limit, and those pairings determine that limit.
+This density notation is optional for the topology proof: (PB1)–(PB2) prove the required estimates directly in the concrete predual.
 
-## 1. Rotating equivalent projections
+Norm-bounded \(2\)-norm Cauchy sequences have their limit in \(M\): an ultraweak cluster point of the bounded ball has the same pairings \(\tau(y^*x)\), \(y\in M\), as the Hilbert-space limit, and those pairings determine that limit.
 
-**Lemma 1.1.** If \(e,f\) are equivalent projections in a finite von Neumann algebra, there is a unitary \(u\) such that
-\[
-ueu^*=f,\qquad (u-1)^*(u-1)\le2(e-f)^2.
-\tag{2}
-\]
-In particular \(\|u-1\|_2\le\sqrt2\|e-f\|_2\) whenever a finite trace is specified.
+<a id="3-replacing-an-approximant-by-a-dyadic-factor"></a>
 
-**Proof.** Set \(D=e-f\) and
-\[
-r=fe+(1-f)(1-e).
-\]
-Multiplication gives \(re=fr\),
-\[
-r^*r=rr^*=1-D^2,\qquad r+r^*=2(1-D^2).
-\tag{3}
-\]
-The operator \(D^2\) commutes with \(e,f,r\). Let \(k=1_{\{1\}}(D^2)\). On \(1-k\), the polar part \(u_0\) of \(r\) is unitary, carries \(e(1-k)\) to \(f(1-k)\), and has real part \((1-D^2)^{1/2}\). Hence on that support
-\[
-(u_0-(1-k))^*(u_0-(1-k))
-=2\bigl((1-k)-(1-D^2)^{1/2}\bigr)\le2D^2(1-k).
-\tag{4}
-\]
-The last inequality is the scalar inequality \(1-\sqrt{1-s}\le s\), \(0\le s\le1\).
-
-The exceptional projection \(k\) splits as \(p+q\), where \(p=e\wedge(1-f)\) and \(q=(1-e)\wedge f\). Indeed \(D^2=1\) implies \(r=0\); on \(eH\) its first term forces \(fe=0\), and on \((1-e)H\) its second term forces \(f=1\). Equivalence of \(e,f\) gives equal center-valued traces. The equivalence already established on \(1-k\) then gives equal center-valued traces for \(p,q\). Finite trace comparison gives a partial isometry \(v\) with \(v^*v=p,vv^*=q\). The skewadjoint unitary \(w=v-v^*\) on \(k\) carries \(p\) to \(q\), and \((w-k)^*(w-k)=2k\). Thus \(u=u_0+w\) is the required unitary; (4) and \(D^2k=k\) give (2). \(\square\)
-
-There is also a useful spectral rounding estimate. If \(0\le h\le1\), \(\varphi\) is any normal state, and \(\|h-h^2\|_\varphi\le\delta\), then
-\[
-q=1_{[1/2,1]}(h)
-\quad\Longrightarrow\quad
-\|h-q\|_\varphi\le2\delta,\qquad
-\|h^{1/2}-q\|_\varphi\le\sqrt{2\delta}.
-\tag{5}
-\]
-Pointwise, \(|s-1_{[1/2,1]}(s)|\le2s(1-s)\), and
-\((\sqrt s-1_{[1/2,1]}(s))^2\le2s(1-s)\). Integration against the state's spectral probability measure and Cauchy–Schwarz prove (5).
-
-A higher cutoff is useful too: for \(0<\delta<1/4\), put \(\epsilon=\sqrt\delta\) and \(q'=1_{[1-\epsilon,1]}(h)\). The middle interval \([\epsilon,1-\epsilon)\) has spectral measure at most \(\delta/(1-\epsilon)^2\), because \(s(1-s)\ge\epsilon(1-\epsilon)\) there. On the lower and upper intervals the squared error for \(h-q'\) is at most \(\delta\); their combined contribution is at most \(\delta\). The middle contribution is at most \(\delta\). For \(h^{1/2}-q'\), the outside contribution is at most \(\epsilon\), and the middle contribution at most \(\delta/(1-\epsilon)\). Consequently
-\[
-\|h-q'\|_\varphi\le2\sqrt\delta,\qquad
-\|h^{1/2}-q'\|_\varphi\le\sqrt3\,\delta^{1/4}.
-\tag{6}
-\]
-The same higher cutoff actually gives the sharper estimate
-\[
-\|h-q'\|_\varphi\le\sqrt{2\delta},\qquad
-\|h^{1/2}-q'\|_\varphi\le\sqrt{3\delta}.
-\tag{6a}
-\]
-Indeed \((1-h)^2(1-q')\ge\delta(1-q')\), so
-\[
-\varphi(h^2(1-q'))
-\le\delta^{-1}\varphi(h^2(1-h)^2)\le\delta.
-\]
-Also \(\varphi(h(1-h))\le\|h-h^2\|_\varphi\le\delta\). Adding these positive spectral integrals gives \(\varphi(h(1-q'))\le2\delta\). On \(q'\), both \((1-h)^2\) and \((1-h^{1/2})^2\) are at most \(\delta q'\). Split the two squared errors over \(q'\) and \(1-q'\) to obtain (6a). This is the higher-cutoff mechanism of Connes’s Lemma 1.1.5; the lower bound for \((1-h)^2\) supplies the spectral inequality needed in its proof. The preceding bounds (6) follow as well, since \(0<\delta<1\).
-
-Only the simpler cutoff (5) will be needed below.
-
-## 2. Trace cuts, tensor coordinates and averaging
-
-Halving means that every projection in a type II algebra is the sum of two equivalent orthogonal projections. In a \(\mathrm{II}_1\) factor this gives every scalar trace cut: for \(0\le s\le\tau(e)\), expand \(s/\tau(e)\) in binary, repeatedly halve the current remainder of \(e\), and retain the half prescribed by each digit. The selected orthogonal pieces have traces \(\tau(e)2^{-j}\). Their strong sum has trace \(s\), by normality. Equal-trace projections are equivalent by finite trace comparison.
-
-If \((e_{ij})_{i,j=1}^d\) are unital matrix units in an arbitrary von Neumann algebra \(P\), then
-\[
-P\cong M_d\bar\otimes e_{11}Pe_{11},\qquad
-x\longmapsto[e_{1i}xe_{j1}]_{i,j}.
-\tag{7}
-\]
-The inverse is \([x_{ij}]\mapsto\sum_{i,j}e_{i1}x_{ij}e_{1j}\). The matrix-unit rules check the products, adjoints and inverses; finite sums and normal corners show normality. The relative commutant of the matrix algebra is the diagonal copy \(x\mapsto\sum_i e_{i1}xe_{1i}\) of the corner. Thus the matrix algebra and its relative commutant generate \(P\). Type II is preserved in this corner: an abelian projection there would be abelian in \(P\).
-
-More generally, if \(N\subset M\) is a subfactor and \(M=N\vee(N'\cap M)\), multiplication identifies
-\[
-M\cong N\bar\otimes(N'\cap M).
-\tag{8}
-\]
-For \(y\in N'\cap M\), bimodularity gives \(E_N(y)\in Z(N)=\mathbb C1\); trace preservation makes it \(\tau(y)1\). Hence \(\tau(xy)=\tau(x)\tau(y)\). On algebraic tensors, multiplication is therefore an isometry of the two trace Hilbert spaces, by expanding inner products. Its range is dense by the generation hypothesis and Kaplansky density. The resulting unitary intertwines left multiplication by each tensor leg with multiplication by its image. It implements the asserted normal spatial isomorphism.
-
-**Lemma 2.1.** If \(G\) is any subgroup of \(\mathcal U(M)\) and \(B=G'\cap M\), then \(E_B(x)\) is the unique element of \(B\) in the ultraweakly closed convex hull of \(\{uxu^*:u\in G\}\).
-
-**Proof.** That hull \(K\) is contained in a norm-bounded ball and is ultraweakly compact. Its map into \(L^2(M)\) is weakly continuous: this is immediate on pairings with bounded \(y\in M\), and follows on general \(L^2\) vectors by approximation and the uniform norm bound. Thus \(K\) is weakly compact and convex in \(L^2\), hence norm closed. It has a unique element of least Hilbert norm. Conjugation by \(G\) preserves both the hull and this norm, so that element is in \(B\).
-
-For \(b\in B\), traciality gives \(\tau(b^*uxu^*)=\tau(b^*x)\). The \(L^2\)-projection formula therefore makes \(E_B\) constant on the orbit, and normality makes it constant on the hull. The least-norm element is consequently \(E_B(x)\). Any other element of \(K\cap B\) would equal its own expectation and hence equal \(E_B(x)\). \(\square\)
-
-Applying the lemma to \(G=\mathcal U(N)\) proves the quantitative commutant estimate
-\[
-\|x-E_{N'\cap M}(x)\|_2
-\le\sup_{\substack{y\in N\\\|y\|\le1}}\|[x,y]\|_2.
-\tag{9}
-\]
-Every orbit point lies in the indicated \(2\)-norm ball around \(x\); that ball is weakly closed and convex, so it contains the hull. None of these statements requires separability.
-
-## 3. Replacing an approximant by a dyadic factor
+## Replacing finite approximants by dyadic matrix factors
 
 For any von Neumann algebra \(P\), **AFD** means that for every finite set \(x_1,\ldots,x_m\in P\) and every sigma-strong* neighborhood \(U\) of zero there is a finite-dimensional *-subalgebra \(D\subset P\) with \(x_j\in D+U\) for every \(j\). This local definition does not require a sequence or separability. A possibly nonunital \(D\) can be replaced by \(D+\mathbb C1\).
 
-In a finite factor call this property **locally AFD** when expressed using finite-set \(2\)-norm approximation. The two formulations agree: the intrinsic topology includes the trace seminorm, while applying \(E_D\) to any \(2\)-norm approximants supplies errors no larger and bounds the approximants by the original operator norms. Equation (1) then gives approximation for every specified sigma-strong* neighborhood.
+In a finite factor call this property **locally AFD** when expressed using finite-set \(2\)-norm approximation. The two formulations agree: the intrinsic topology includes the trace seminorm, while applying \(E_D\) to any \(2\)-norm approximants supplies errors no larger and bounds the approximants by the original operator norms. Equation (PB2) then gives approximation for every specified sigma-strong* neighborhood.
 
 **Lemma 3.1.** For every finite-dimensional unital subalgebra \(D\subset M\) and \(\eta>0\), there is a unital matrix subfactor \(Q\cong M_{2^p}\) such that
 \[
@@ -151,7 +80,9 @@ C_V=\sup\left\{\sum_j|\lambda_j|:
 \]
 is finite, by equivalence of norms on \(V\). First approximate its basis by a finite-dimensional algebra, using its expectation, then apply Lemma 3.1. The sum of the basis errors times \(C_V\) controls the whole unit ball. This is the finite-dimensional uniformity needed in the next step.
 
-## 4. Making containment exact
+<a id="4-making-containment-exact"></a>
+
+## Making the next matrix algebra contain the old one
 
 **Lemma 4.1.** Suppose \(M\) is locally AFD, \(N\subset M\) is a unital copy of \(M_d\) with \(d=2^n\), \(V\subset M\) is finite dimensional, and \(\varepsilon>0\). There is a unital dyadic matrix subfactor \(Q\supset N\) satisfying
 \[
@@ -204,13 +135,91 @@ This tends to zero with \(\delta\); choose it below \(\varepsilon\). The nearest
 
 There is no assertion that the whole aligning unitary \(v\) is close to one. Its first-corner action is the controlled unitary \(u\); reconstruction by the old matrix units supplies the required bound.
 
-## 5. Uniqueness and all finite corners
+<a id="1-rotating-equivalent-projections"></a>
+
+## The projection repair used in exact containment
+
+**Lemma 1.1.** If \(e,f\) are equivalent projections in a finite von Neumann algebra, there is a unitary \(u\) such that
+\[
+ueu^*=f,\qquad (u-1)^*(u-1)\le2(e-f)^2.
+\tag{2}
+\]
+In particular \(\|u-1\|_2\le\sqrt2\|e-f\|_2\) whenever a finite trace is specified.
+
+**Proof.** Set \(D=e-f\) and
+\[
+r=fe+(1-f)(1-e).
+\]
+Multiplication gives \(re=fr\),
+\[
+r^*r=rr^*=1-D^2,\qquad r+r^*=2(1-D^2).
+\tag{3}
+\]
+The operator \(D^2\) commutes with \(e,f,r\). Let \(k=1_{\{1\}}(D^2)\). On \(1-k\), the polar part \(u_0\) of \(r\) is unitary, carries \(e(1-k)\) to \(f(1-k)\), and has real part \((1-D^2)^{1/2}\). Hence on that support
+\[
+(u_0-(1-k))^*(u_0-(1-k))
+=2\bigl((1-k)-(1-D^2)^{1/2}\bigr)\le2D^2(1-k).
+\tag{4}
+\]
+The last inequality is the scalar inequality \(1-\sqrt{1-s}\le s\), \(0\le s\le1\).
+
+The exceptional projection \(k\) splits as \(p+q\), where \(p=e\wedge(1-f)\) and \(q=(1-e)\wedge f\). Indeed \(D^2=1\) implies \(r=0\); on \(eH\) its first term forces \(fe=0\), and on \((1-e)H\) its second term forces \(f=1\). Equivalence of \(e,f\) gives equal center-valued traces. The equivalence already established on \(1-k\) then gives equal center-valued traces for \(p,q\). [FCT7](../../OA-FLOW/OA-FLOW-FCT.html#oa-flow.fct.7), equation (FCT32), gives a partial isometry \(v\) with \(v^*v=p,vv^*=q\) from that equality of center-valued traces. The skewadjoint unitary \(w=v-v^*\) on \(k\) carries \(p\) to \(q\), and \((w-k)^*(w-k)=2k\). Thus \(u=u_0+w\) is the required unitary; (4) and \(D^2k=k\) give (2). \(\square\)
+
+There is also a useful spectral rounding estimate. If \(0\le h\le1\), \(\varphi\) is any normal state, and \(\|h-h^2\|_\varphi\le\delta\), then
+\[
+q=1_{[1/2,1]}(h)
+\quad\Longrightarrow\quad
+\|h-q\|_\varphi\le2\delta,\qquad
+\|h^{1/2}-q\|_\varphi\le\sqrt{2\delta}.
+\tag{5}
+\]
+Pointwise, \(|s-1_{[1/2,1]}(s)|\le2s(1-s)\), and
+\((\sqrt s-1_{[1/2,1]}(s))^2\le2s(1-s)\). Integration against the state's spectral probability measure and Cauchy–Schwarz prove (5).
+
+A higher cutoff is useful too: for \(0<\delta<1/4\), put \(\epsilon=\sqrt\delta\) and \(q'=1_{[1-\epsilon,1]}(h)\). The middle interval \([\epsilon,1-\epsilon)\) has spectral measure at most \(\delta/(1-\epsilon)^2\), because \(s(1-s)\ge\epsilon(1-\epsilon)\) there. On the lower and upper intervals the squared error for \(h-q'\) is at most \(\delta\); their combined contribution is at most \(\delta\). The middle contribution is at most \(\delta\). For \(h^{1/2}-q'\), the outside contribution is at most \(\epsilon\), and the middle contribution at most \(\delta/(1-\epsilon)\). Consequently
+\[
+\|h-q'\|_\varphi\le2\sqrt\delta,\qquad
+\|h^{1/2}-q'\|_\varphi\le\sqrt3\,\delta^{1/4}.
+\tag{6}
+\]
+The same higher cutoff actually gives the sharper estimate
+\[
+\|h-q'\|_\varphi\le\sqrt{2\delta},\qquad
+\|h^{1/2}-q'\|_\varphi\le\sqrt{3\delta}.
+\tag{6a}
+\]
+Indeed \((1-h)^2(1-q')\ge\delta(1-q')\), so
+\[
+\varphi(h^2(1-q'))
+\le\delta^{-1}\varphi(h^2(1-h)^2)\le\delta.
+\]
+Also \(\varphi(h(1-h))\le\|h-h^2\|_\varphi\le\delta\). Adding these positive spectral integrals gives \(\varphi(h(1-q'))\le2\delta\). On \(q'\), both \((1-h)^2\) and \((1-h^{1/2})^2\) are at most \(\delta q'\). Split the two squared errors over \(q'\) and \(1-q'\) to obtain (6a). This is the higher-cutoff mechanism of Connes’s Lemma 1.1.5; the lower bound for \((1-h)^2\) supplies the spectral inequality needed in its proof. The preceding bounds (6) follow as well, since \(0<\delta<1\).
+
+Only the simpler cutoff (5) will be needed below.
+
+<a id="2-trace-cuts-tensor-coordinates-and-averaging"></a>
+
+## Trace cuts and first-corner coordinates
+
+Halving means that every projection in a type II algebra is the sum of two equivalent orthogonal projections. In a \(\mathrm{II}_1\) factor this gives every scalar trace cut: for \(0\le s\le\tau(e)\), expand \(s/\tau(e)\) in binary, repeatedly halve the current remainder of \(e\), and retain the half prescribed by each digit. The selected orthogonal pieces have traces \(\tau(e)2^{-j}\). Their strong sum has trace \(s\), by normality. Equal-trace projections are equivalent by finite trace comparison.
+
+If \((e_{ij})_{i,j=1}^d\) are unital matrix units in an arbitrary von Neumann algebra \(P\), then
+\[
+P\cong M_d\bar\otimes e_{11}Pe_{11},\qquad
+x\longmapsto[e_{1i}xe_{j1}]_{i,j}.
+\tag{7}
+\]
+The inverse is \([x_{ij}]\mapsto\sum_{i,j}e_{i1}x_{ij}e_{1j}\). The matrix-unit rules check the products, adjoints and inverses; finite sums and normal corners show normality. The relative commutant of the matrix algebra is the diagonal copy \(x\mapsto\sum_i e_{i1}xe_{1i}\) of the corner. Thus the matrix algebra and its relative commutant generate \(P\). Type II is preserved in this corner: an abelian projection there would be abelian in \(P\).
+
+<a id="5-uniqueness-and-all-finite-corners"></a>
+
+## Identifying the dyadic limit and all finite corners
 
 Let
 \[
 R=\bar\bigotimes_{j\ge1}(M_2,\operatorname{tr}_2).
 \]
-The preceding product lesson proves that this is a separable factor of type \(\mathrm{II}_1\).
+The tracial product construction gives its faithful normal product trace and separable trace GNS space. The explicit finite-stage projections in [MC1](masas-in-expected-semifinite-subfactors.md#theorem-2-1) applied to its local matrix factors give scalar center: a central element has scalar projection at every stage and is their GNS limit. Their matrix sizes are unbounded, so \(R\) is of type \(\mathrm{II}_1\).
 
 **Theorem 5.1.** For a \(\mathrm{II}_1\) factor \(M\) with separable predual, the following are equivalent:
 
@@ -221,7 +230,7 @@ The preceding product lesson proves that this is a separable factor of type \(\m
 
 **Proof.** The first implication gives the initial tensor factors. For the second, Kaplansky density in the increasing union supplies bounded strong* approximants, hence the third condition.
 
-For \(3\Rightarrow1\), choose a \(2\)-norm dense sequence \((x_j)\) in the unit ball. Such a sequence exists: the ball is compact metrizable in the weak* topology; a countable weak* dense subset is weakly dense in \(L^2\), and its rational convex combinations are norm dense by convex separation. Apply Lemma 4.1 successively to \(V_k=\operatorname{span}\{x_1,\ldots,x_k\}\), keeping the previous dyadic matrix algebra exactly and making the error tend to zero. This gives increasing \(N_k\cong M_{2^{n_k}}\), with strictly increasing \(n_k\), whose union generates \(M\). Indeed \(E_{N_k}(x_j)\to x_j\) in \(2\)-norm with bounds one; the bounded-ball completeness and (1) put every \(x_j\), hence the entire ball, in the generated algebra.
+For \(3\Rightarrow1\), choose a \(2\)-norm dense sequence \((x_j)\) in the unit ball. Such a sequence exists: the ball is compact metrizable in the weak* topology; a countable weak* dense subset is weakly dense in \(L^2\), and its rational convex combinations are norm dense by convex separation. Apply Lemma 4.1 successively to \(V_k=\operatorname{span}\{x_1,\ldots,x_k\}\), keeping the previous dyadic matrix algebra exactly and making the error tend to zero. This gives increasing \(N_k\cong M_{2^{n_k}}\), with strictly increasing \(n_k\), whose union generates \(M\). Indeed \(E_{N_k}(x_j)\to x_j\) in \(2\)-norm with bounds one; the bounded-ball completeness and (PB2) put every \(x_j\), hence the entire ball, in the generated algebra.
 
 A unital inclusion \(M_a\subset M_b\) has \(b=ar\) and relative commutant \(M_r\): its action on \(\mathbb C^b\) is a sum of \(r\) copies of the defining \(a\)-dimensional module, or equivalently use (7). Between \(N_k\) and \(N_{k+1}\) insert the successive \(M_2\) factors of this relative commutant. Insert the earlier tensor levels inside \(N_1\) too. We obtain \(A_m\cong M_{2^m}\), \(A_m\subset A_{m+1}\), with the same generated algebra. Their relative commutants \(A_m'\cap A_{m+1}\cong M_2\) commute, and their finite products equal \(A_{m+1}\), by (7). The trace on each finite product is its unique normalized trace. The trace-preserving isomorphism of the algebraic unions therefore extends to a unitary of trace GNS spaces and, by intertwining left multiplication, to a normal isomorphism \(M\cong R\).
 
@@ -249,22 +258,66 @@ is finite dimensional and has identity \(p\). Equation (18), with \(p,p_1\) in p
 
 Now write \(P=M\bar\otimes M_n\), \(Q=ePe\), and \(t=\tau_P(e)>0\). In \(P\bar\otimes M_r\), the projection \(e\otimes1\) has normalized trace \(t\), whereas \(1_M\otimes e_{11}\otimes e_{11}\) has trace \(1/(nr)\). Choose \(r\) so that \(1/(nr)\le t\). Comparison gives a subprojection of \(e\otimes1\) equivalent to the latter projection. Its corner, inside \(Q\bar\otimes M_r\), is isomorphic to \(M\). The local permanence just proved makes this corner locally AFD, proving the first assertion at its full stated generality. When the original factor has separable predual, so do its finite amplifications and corners. Theorem 5.1 then identifies each locally AFD corner with \(R\). \(\square\)
 
-For completeness, a faithful normal representation of \(R\) with finite commutant has a commutant isomorphic to \(R\). Normal representation amplification realizes it as
-\(p(R^{\mathrm{op}}\bar\otimes B(K))p\). Finiteness of this corner means \(p\) is a finite projection. The semifinite factor finite-projection trace criterion gives finite \((\tau\otimes\operatorname{Tr})(p)\). In a sufficiently large finite matrix corner there is a projection of the same trace, and finite projection comparison makes it equivalent to \(p\). Thus the commutant is a nonzero corner of \(R^{\mathrm{op}}\bar\otimes M_n\). Transposition on every local matrix factor gives a compatible trace-preserving anti-isomorphism of the dyadic unions and extends in their trace GNS spaces; hence \(R^{\mathrm{op}}\cong R\). Corollary 5.2 finishes the argument. The normal representation and semifinite trace criterion are the explicit foundational inputs in this paragraph.
+<a id="normal-finite-commutant"></a>
+
+**Finite commutants of normal representations.** A faithful normal representation of \(R\), with the usual unital representation convention, has commutant isomorphic to \(R\) whenever that commutant is finite. Here is the full construction. [NA3–4](../normal-representations-and-finite-trace-corners.html#na3) realizes every normal positive coefficient by a bounded dominated form and embeds every cyclic summand into an amplification of the trace GNS space. Taking the whole orthogonal family gives an isometry \(V:L\to L^2(R)\otimes K\), with arbitrary \(K\), intertwining the representation and the left action. Its reducing range projection \(p=VV^*\) is nonzero. The full tracial conjugation and matrix-entry argument [NA0, NA5](../normal-representations-and-finite-trace-corners.html#na5) gives
+\[
+\rho(R)'\cong p(R^{\mathrm{op}}\bar\otimes B(K))p.
+\]
+Finiteness of this algebra means that \(p\) is finite in the containing matrix algebra. The diagonal trace \(\mathcal T(X)=\sum_i\tau(X_{ii})\) is faithful, normal and semifinite by the full [NA1](../normal-representations-and-finite-trace-corners.html#na1) proof. The countable-shift argument [NA2](../normal-representations-and-finite-trace-corners.html#na2) gives \(\mathcal T(p)<\infty\). If \(K\) is infinite dimensional, choose an integer \(n>\mathcal T(p)\). Factor comparison puts a projection equivalent to \(p\) under a rank-\(n\) matrix projection. If \(K\) is finite dimensional, the matrix corner is already finite. Thus \(\rho(R)'\) is a nonzero corner of \(R^{\mathrm{op}}\bar\otimes M_n\).
+
+Compatible transposition on every local dyadic matrix level extends to a unitary of the full trace GNS space. Its conjugation carries the left algebra onto the right algebra, proving \(R^{\mathrm{op}}\cong R\) by [NA6](../normal-representations-and-finite-trace-corners.html#na6). Corollary 5.2 identifies the nonzero finite amplified corner with \(R\). That corollary's full AFD proof precedes this commutant application; the construction introduces no proof cycle.
+
+If a representation is instead allowed a proper identity projection \(e=\rho(1)\), apply this statement on \(eL\). The full commutant on \(L\) splits as \(B((1-e)L)\oplus(\rho(R)|_{eL})'\), since commutation with \(e\) kills the two off-diagonal blocks. Finiteness forces \((1-e)L\) finite dimensional, and the active corner has commutant \(R\). A nonzero zero-action summand therefore gives \(M_d\oplus R\), rather than \(R\). This states the identity convention and its exact degenerate variant explicitly.
+
+## Averaging over any subgroup
+
+More generally, if \(N\subset M\) is a subfactor and \(M=N\vee(N'\cap M)\), multiplication identifies
+\[
+M\cong N\bar\otimes(N'\cap M).
+\tag{8}
+\]
+For \(y\in N'\cap M\), bimodularity gives \(E_N(y)\in Z(N)=\mathbb C1\); trace preservation makes it \(\tau(y)1\). Hence \(\tau(xy)=\tau(x)\tau(y)\). On algebraic tensors, multiplication is therefore an isometry of the two trace Hilbert spaces, by expanding inner products. Its range is dense by the generation hypothesis and Kaplansky density. The resulting unitary intertwines left multiplication by each tensor leg with multiplication by its image. It implements the asserted normal spatial isomorphism.
+
+**Lemma 2.1.** If \(G\) is any subgroup of \(\mathcal U(M)\) and \(B=G'\cap M\), then \(E_B(x)\) is the unique element of \(B\) in the ultraweakly closed convex hull of \(\{uxu^*:u\in G\}\).
+
+**Proof.** That hull \(K\) is contained in a norm-bounded ball and is ultraweakly compact. Its map into \(L^2(M)\) is weakly continuous: this is immediate on pairings with bounded \(y\in M\), and follows on general \(L^2\) vectors by approximation and the uniform norm bound. Thus \(K\) is weakly compact and convex in \(L^2\), hence norm closed. It has a unique element of least Hilbert norm. Conjugation by \(G\) preserves both the hull and this norm, so that element is in \(B\).
+
+For \(b\in B\), traciality gives \(\tau(b^*uxu^*)=\tau(b^*x)\). The \(L^2\)-projection formula therefore makes \(E_B\) constant on the orbit, and normality makes it constant on the hull. The least-norm element is consequently \(E_B(x)\). Any other element of \(K\cap B\) would equal its own expectation and hence equal \(E_B(x)\). \(\square\)
+
+Applying the lemma to \(G=\mathcal U(N)\) proves the quantitative commutant estimate
+\[
+\|x-E_{N'\cap M}(x)\|_2
+\le\sup_{\substack{y\in N\\\|y\|\le1}}\|[x,y]\|_2.
+\tag{9}
+\]
+Every orbit point lies in the indicated \(2\)-norm ball around \(x\); that ball is weakly closed and convex, so it contains the hull. None of these statements requires separability.
 
 ## 6. Subfactors and automorphisms
 
 **Lemma 6.1.** A finite von Neumann algebra generated by an increasing directed family of unital subfactors is a factor.
 
-**Proof.** Every normalized normal trace restricts to the unique normalized trace on each subfactor. Two such traces therefore agree on the increasing union and, by normality and density, everywhere. A finite algebra has a separating family of normal finite traces; composing its center-valued trace with normal center states shows that uniqueness of the normalized trace forces its center to be scalar. \(\square\)
+**Proof.** Let \(T:M\to Z(M)\) be the normal faithful center-valued trace constructed in [FCT0–8](../../OA-FLOW/OA-FLOW-FCT.html#oa-flow.fct.0), with the full arbitrary-center proof. Every normal state \(\omega\) of \(Z(M)\) gives a normalized normal scalar trace \(\omega T\). Such center states exist and separate the center: vector functionals of any faithful concrete representation give positive normal tests, and a nonzero one is normalized by its value at the identity. No faithful scalar state on all of \(M\) is presumed.
+
+Every normalized normal trace on \(M\) restricts to the unique normalized normal trace on each generating subfactor, by FCT7 in that finite factor. Thus any two agree on the directed union. This union is a unital star algebra; bounded strong density from Kaplansky and the vector-series tail estimate make it ultraweakly dense. Normality therefore makes the two traces agree everywhere.
+
+In particular all the \(\omega T\)'s agree. Restriction back to \(Z(M)\), where \(T(z)=z\), makes all normal center states agree. A nonscalar center would have a nontrivial central projection \(z\); vector states supported on \(z\) and \(1-z\) give two normal states taking respectively values one and zero on \(z\). This is a contradiction. Hence \(Z(M)=\mathbb C1\), as required. \(\square\)
 
 Every type \(\mathrm{II}_1\) von Neumann algebra, including a nonfactor or a nonseparable one, contains a unital copy of \(R\). Halve its identity to embed \(M_2\). Formula (7) identifies the relative commutant with a type \(\mathrm{II}_1\) corner. Halve there and repeat, obtaining commuting \(M_2\)'s. Their generated algebra is finite and is a factor by Lemma 6.1. It contains matrices of unbounded size, hence is type \(\mathrm{II}_1\). Its normal trace restricts to the product trace on the finite tensor levels; the trace GNS identification makes this algebra \(R\).
 
 If the ambient algebra has separable predual, every such copy lies in a maximal AFD \(\mathrm{II}_1\) subfactor. For a chain of AFD subfactors, its generated algebra is a finite factor by Lemma 6.1. It is locally AFD: approximate a finite set by bounded elements of the chain union, choose one chain member containing those finitely many approximants, and approximate them by a finite-dimensional algebra in that member. The two errors add. Separability of the ambient predual passes to the subalgebra, so Theorem 5.1 identifies this upper bound with \(R\). Zorn's lemma now supplies a maximal member. No maximality assertion here identifies the ambient algebra with that member.
 
+### Automorphisms on finite levels and a distant tensor leg
+
 **Lemma 6.2.** If \(A\cong M_d\) is a unital subfactor of any von Neumann algebra \(P\), then for every automorphism \(\alpha\) of \(P\) there is a unitary \(u\in P\) satisfying \(\alpha|_A=\operatorname{Ad}(u)|_A\).
 
-**Proof.** Let \(e_{ij}\) be its matrix units. The projections \(e_{ii}\) are \(d\) equivalent pieces of one, and so are \(\alpha(e_{ii})\). On the finite central part of \(P\), their center-valued traces are all \(1/d\), giving \(e_{11}\sim\alpha(e_{11})\). On the properly infinite central part, \(e_{11}\) is properly infinite: a nonzero finite central cut of it would make the sum of its \(d\) equivalent cuts finite, contrary to proper infiniteness of that central summand. A properly infinite projection absorbs finitely many copies of itself, by halving and projection Schröder–Bernstein. Its \(d\) equivalent pieces sum to one, so \(e_{11}\sim1\) on this part, and the same holds for \(\alpha(e_{11})\). Adding the central parts gives a partial isometry \(w\) with \(w^*w=e_{11}\), \(ww^*=\alpha(e_{11})\). Then
+**Proof.** Let \(e_{ij}\) be its matrix units. The projections \(e_{ii}\) are \(d\) equivalent pieces of one, and so are \(\alpha(e_{ii})\). [PC5](../../OA-FLOW/OA-FLOW-PC.html#oa-flow.projection.pc5) gives the unique finite/properly infinite central split. An automorphism preserves it, since it preserves projection equivalence, finiteness, centrality and their suprema.
+
+On the finite central part, [FCT7–8](../../OA-FLOW/OA-FLOW-FCT.html#oa-flow.fct.7) gives the normal center-valued trace, its automorphism naturality and equivalence criterion. The \(d\) equivalent diagonals sum to the central identity, so all their trace values are that identity divided by \(d\). The images have the same values. Thus \(e_{11}\sim\alpha(e_{11})\) there.
+
+On the properly infinite central part, \(e_{11}\) is properly infinite. Indeed its central support is the whole part, since its \(d\) equivalent diagonals sum to that identity. By [PC4](../../OA-FLOW/OA-FLOW-PC.html#oa-flow.projection.pc4), every central projection in its corner is the compression of an ambient central projection. A nonzero finite such cut would make the sum of its \(d\) equivalent diagonal cuts finite by [PC6](../../OA-FLOW/OA-FLOW-PC.html#oa-flow.projection.pc6), contrary to proper infiniteness of the central summand.
+
+The full halving proof in PC5 permits finitely many orthogonal copies of \(e_{11}\) inside \(e_{11}\): iterate to \(2^k\ge d\) equivalent copies and retain \(d\). Match the \(d\) old diagonals to those copies and add the implementations. This gives the central identity subequivalent to \(e_{11}\). The reverse subequivalence is inclusion, so [PC3](../../OA-FLOW/OA-FLOW-PC.html#oa-flow.projection.pc3) gives \(e_{11}\sim1\) on that part. Apply the same argument to \(\alpha(e_{11})\). Adding the central implementations gives a partial isometry \(w\) with \(w^*w=e_{11}\), \(ww^*=\alpha(e_{11})\). Then
 \[
 u=\sum_{i=1}^d\alpha(e_{i1})w e_{1i}
 \tag{19}
@@ -284,11 +337,19 @@ The expectations converge in \(L^2\) because the finite tensor vectors are dense
 \|\alpha_n^{-1}(b)-\alpha^{-1}(b)\|_2
 =\|b-\alpha_n(\alpha^{-1}(b))\|_2\to0.
 \]
-For the normal functional \(\tau(b\,\cdot)\) its predual error is the \(L^1\)-norm of this difference, at most its \(2\)-norm. Such functionals with bounded \(b\) are dense in the predual; the automorphisms' uniform isometry bounds give convergence for every normal functional. This is the stated topology.
+For \(\psi_b=\tau(b\,\cdot)\), trace preservation gives \(\psi_b\circ\alpha_n-\psi_b\circ\alpha=\tau((\alpha_n^{-1}(b)-\alpha^{-1}(b))\,\cdot)\). On the operator unit ball, Cauchy–Schwarz bounds its norm by \(\|\alpha_n^{-1}(b)-\alpha^{-1}(b)\|_2\), tending to zero. The norm density (PB1) and the automorphisms' uniform predual isometry bounds give convergence for every normal functional. This is the stated topology.
 
-For an outer example, take \(Z=\operatorname{diag}(1,-1)\) and the product automorphism \(\bigotimes_j\operatorname{Ad}(Z)\). It preserves the product trace. Every implementing overlap \(|\operatorname{tr}_2(Z)|\) is zero, so the preceding lesson's infinite innerness criterion excludes innerness. Its finite prefix implementations nevertheless converge as in (20). \(\square\)
+For an outer example, take \(Z=\operatorname{diag}(1,-1)\) and the product automorphism \(\bigotimes_j\operatorname{Ad}(Z)\). It preserves the product trace. Here is a direct proof of outerness. Write \(X=\begin{pmatrix}0&1\\1&0\end{pmatrix}\), and let \(X_k\) be this unitary in tensor leg \(k\). The product automorphism sends \(X_k\) to \(-X_k\), since \(ZXZ=-X\). If it were \(\operatorname{Ad}(u)\), then \(uX_k=-X_ku\) and \(\|[u,X_k]\|_2=2\). On the other hand \(b_n=E_{A_n}(u)\) converges to \(u\) in \(2\)-norm, and for \(k>n\) it commutes with \(X_k\). Therefore
+\[
+2=\|[u,X_k]\|_2
+ =\|[u-b_n,X_k]\|_2\le2\|u-b_n\|_2\longrightarrow0,
+\tag{OA1}
+\]
+a contradiction. The zero overlaps \(|\operatorname{tr}_2(Z)|\) also agree with the preceding lesson's product criterion. The finite prefix implementations converge as in (20). \(\square\)
 
-## 7. Problems with complete solutions
+<a id="7-problems-with-complete-solutions"></a>
+
+## Problems with complete solutions
 
 **Exercise 1.** For two rank-one projections in \(M_2\) whose ranges make angle \(\theta\in[0,\pi/2]\), compare the \(2\)-norms of their difference and of the planar rotation minus one, using normalized trace.
 
@@ -338,4 +399,6 @@ Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https:/
 
 Alain Connes, [*Outer conjugacy classes of automorphisms of factors*](https://numdam.org/item/ASENS_1975_4_8_3_383_0.pdf), *Annales scientifiques de l’École Normale Supérieure*, series 4, 8 (1975), 383–419, DOI [10.24033/asens.1295](https://doi.org/10.24033/asens.1295). Lemmas 1.1.4–1.1.5, printed pp.388–389, develop projection repair and spectral rounding. The finite direct rotation above supplies a unitary and the stronger operator bound (2), including its exceptional orthogonal supports, for an arbitrary finite algebra. Equations (5), (6) and (6a) give the complete state spectral estimates.
 
-The exact foundational inputs remain center-valued trace comparison, type II halving, projection support, normal representation amplification and trace densities. Finite trace expectations are the declared modular-course specialization. Their transitive accessible-source verification remains separate from the complete containment and uniqueness proofs given here. The later finite outer-action and central-sequence arguments have their own prerequisites.
+The exact foundational inputs remain center-valued trace comparison, type II halving, projection support, normal representation amplification and trace densities. The finite trace expectations are given by [SE1–SE5](../state-expectations-from-bounded-graphs.html#se1), and (PB1)–(PB2) prove the bounded trace topology and predual density used here. The general center-trace and arbitrary properly infinite projection arguments use the full FCT0–8 and PC1–7 proofs linked above, including their exact scalar/spectral/predual inputs. The whole normal representation amplification and canonical semifinite finite-projection criterion are proved in [NA0–6](../normal-representations-and-finite-trace-corners.html#na0), including arbitrary multiplicity, all-net trace normality and the full finite matrix-corner reduction. The later finite outer-action and central-sequence arguments have their own prerequisites.
+
+Jesse Peterson, [*Notes on operator algebras*, April 27, 2020](https://math.vanderbilt.edu/peters10/teaching/spring2020/OperatorAlgebras.pdf), printed/PDF pp.83–90 and102–107. The general projection and approximate-center-trace methods are written there. PC1–7 and FCT0–8 supply full arbitrary sums, central supports, finite cancellation, central tilings and normal assemblies. FCT0 also corrects the complex norm estimate in the source’s Lemma6.4.5; FCT5 retains both factors of its distortion parameter, and FCT6 uses the intended \(xx^*/x^*x\) inequality throughout. These are full general finite proofs, beyond the tracial comparison in the Anantharaman–Popa draft.

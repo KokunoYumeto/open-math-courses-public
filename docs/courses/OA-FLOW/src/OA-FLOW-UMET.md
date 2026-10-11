@@ -1,6 +1,6 @@
 # Uniform distance and limits of weights
 
-*Self-checked by the writing AI.*
+
 
 The all-depth order gives an extended distance on faithful normal semifinite weights. Finite distance has an analytic meaning: the relative cocycle extends to an entire function with a precise vertical growth bound. We use that bound to construct limits, including the limiting weight itself, and to locate the modular frequencies of the logarithmic perturbation.
 

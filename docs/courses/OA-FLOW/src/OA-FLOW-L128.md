@@ -1,6 +1,6 @@
 # Discrete Fourier columns, finite corners and orbit MASAs
 
-*Self-checked by the writing AI.*
+
 
 <a id="l128-setting"></a>
 
@@ -1427,3 +1427,127 @@ The [reproduction source](../assets/discrete-free-actions/render_l128.py) and [e
 ## Further reading
 
 Masamichi Takesaki, [*Theory of Operator Algebras I*](https://doi.org/10.1007/978-1-4612-6188-9), V.7 treats free actions, conditional expectations, factor types and the normalizer and orbit-state constructions. [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), XI.2.24–2.25 gives the unrestricted freeness and relative-commutant criterion. The proofs above use the earlier lessons linked at the start and the local constructions supplied here.
+
+<a id="l128-fc7"></a>
+
+## FC7. Every finite translation algebra is a matrix algebra
+
+Let \(G\) be any finite group and let \(M=\ell^\infty(G)\) carry left translation. Set \(n=|G|\), and let \(p_r\) be the indicator of \(r\in G\). Work in the actual regular crossed product \(N=M\rtimes G\) of [FC0](#l128-fc0), rather than identifying two different representing Hilbert spaces. Define
+\[
+ e_{r,s}=\pi(p_r)u_{rs^{-1}}\pi(p_s).
+ \tag{FC7.a}
+\]
+Covariance gives \(\alpha_g(p_s)=p_{gs}\) and
+\(\pi(p_r)u_g=u_g\pi(p_{g^{-1}r})\). Thus the rightmost projection in (FC7.a) can also be removed. Orthogonality of the middle coordinate projections and the ordered group product give
+\[
+ e_{r,s}e_{t,v}=1_{\{s=t\}}e_{r,v},\qquad
+ e_{r,s}^*=e_{s,r},\qquad
+ e_{r,r}=\pi(p_r),\qquad
+ \sum_r e_{r,r}=1.
+ \tag{FC7.b}
+\]
+For example, when \(s=t\), the group product is
+\((rs^{-1})(sv^{-1})=rv^{-1}\); this computation uses no commutativity of \(G\).
+
+The faithful coefficient embedding makes every diagonal projection nonzero. Since \(G\) is finite, FC0's coefficient uniqueness gives the exact finite Fourier decomposition of every element of \(N\). Each term decomposes into scalar multiples of
+\[
+ \pi(p_r)u_g=e_{r,g^{-1}r}.
+ \tag{FC7.c}
+\]
+Hence the matrix units span the entire algebra. If their linear combination vanishes, left compression by \(e_{r,r}\) and right compression by \(e_{s,s}\) isolate its \((r,s)\)-coefficient. This coefficient must vanish, because
+\(e_{r,s}^*e_{r,s}=e_{s,s}\ne0\). The map from the standard matrix units is therefore a bijective star homomorphism
+\(M_n(\mathbb C)\to N\). To see normality directly, choose a unit vector \(\zeta\) in the range of \(e_{e,e}\), and put \(\xi_r=e_{r,e}\zeta\). The matrix-unit equations make these vectors orthonormal. For \(X=\sum c_{r,s}e_{r,s}\),
+\[
+ c_{r,s}=\langle X\xi_s,\xi_r\rangle.
+ \tag{FC7.d}
+\]
+Thus each inverse matrix-coordinate functional is a normal vector functional on the regular algebra. In the forward direction, each vector-series functional composed with the finite matrix-unit sum is a finite linear combination of the normal matrix-entry functionals. The [CP vector-series topology](OA-FLOW-CP.md#oa-flow.cp.4) therefore proves normality in both directions on their entire domains. This identifies the algebra, retaining the regular representation's multiplicity; the trivial one-element group gives \(M_1(\mathbb C)\) as well. [FC6](#l128-fc6) is the two-point instance.
+
+<a id="l128-fc8"></a>
+
+## FC8. When a finite covariant pair recovers the regular algebra
+
+Let a finite group \(G\) act normally on a nonzero von Neumann algebra \(M\). Assume that each \(\alpha_s\), \(s\ne e\), is free in the precise sense of [FC3](#l128-fc3):
+\[
+ ca=\alpha_s(a)c\quad\text{for all }a\in M
+ \quad\Longrightarrow\quad c=0.
+ \tag{FC8.a}
+\]
+Let \(\rho:M\to B(K)\) be faithful, normal and unital, and let \(V\) be a unitary representation of \(G\) satisfying
+\(V_s\rho(a)V_s^*=\rho(\alpha_s(a))\). The Hilbert space \(K\) may be arbitrary. Then the natural generator correspondence is a normal star isomorphism from \(N=M\rtimes_\alpha G\) onto \(\{\rho(M),V(G)\}''\).
+
+To prove this, use the expectation of [FC1](#l128-fc1) and put \(x_s=E(xu_s^*)\). FC0's coefficient uniqueness proves, because the sum is finite,
+\[
+ x=\sum_{s\in G}\pi(x_s)u_s,
+ \qquad F(x)=\sum_{s\in G}\rho(x_s)V_s
+ \quad(x\in N).
+ \tag{FC8.b}
+\]
+The arithmetic of [FC2A](#l128-fc2a) specializes to
+\[
+ (xy)_r=\sum_{s\in G}x_s\alpha_s(y_{s^{-1}r}),\qquad
+ (x^*)_r=\alpha_r(x_{r^{-1}}^*).
+ \tag{FC8.c}
+\]
+Covariance makes the two finite formulas for \(F(x)F(y)\) and \(F(xy)\) identical, and likewise for adjoints; \(F(1)=1\). Every coefficient compression, multiplication by a fixed unitary and \(\rho\) is normal, so \(F\) is a normal star homomorphism on all of \(N\).
+
+The ultraweakly closed kernel is a two-sided star ideal. The support-projection argument of [NCF5](OA-FLOW-NCF.md#ncf-5), applied to this representation of \(N\), gives \(\ker F=Nz\) for a central projection \(z\in N\). In particular \(z\) commutes with \(\pi(M)\). [FC4](#l128-fc4) and (FC8.a) imply \(z=\pi(c)\) for a central projection \(c\in M\). But
+\(0=F(z)=\rho(c)\), so coefficient faithfulness makes \(z=0\). Thus \(F\) is injective.
+
+The faithful C*-norm argument in [ST2](OA-FLOW-ST12.md#oa-flow.st.2) makes \(F\) isometric. Its range \(B=F(N)\) is consequently a norm-closed unital C*-algebra. By [ST1](OA-FLOW-ST12.md#oa-flow.st.1), the unit ball of \(N\) is ultraweakly compact; normality makes its image the compact, hence closed, unit ball of \(B\). For a contraction in \(B''\), [BD4](OA-FLOW-BD.md#oa-flow.bd.4) supplies contractions in \(B\) converging strongly-star. The uniform vector-series tail estimate of [BD5](OA-FLOW-BD.md#oa-flow.bd.5) makes this convergence ultraweak. The compact image ball therefore contains the contraction, proving \(B=B''\). This uses a deliberately bounded approximating net; it makes no boundedness claim about an arbitrary convergent net.
+
+The finite formula puts \(B\) inside \(\{\rho(M),V(G)\}''\), while the generator values and the just-proved von Neumann closedness give the reverse inclusion. For the inverse's normality on the whole algebra, first note that \(F\) is a homeomorphism of the ultraweak unit balls, by compactness and the Hausdorff topology. If \(\omega\in N_*\), the bounded linear functional \(\omega\circ F^{-1}\) is continuous on the unit ball of \(B\). ST1's linear criterion puts it in the actual concrete predual \(B_*\). Doing this for every \(\omega\) proves ultraweak continuity of \(F^{-1}\) on all of \(B\), exactly as in ST2. The theorem therefore includes the complete normal inverse, not just continuity on one ball.
+
+Both hypotheses distinguishing this statement from a mere covariance assertion matter. For the outerness condition, let \(G=\{e,s\}\) have order two, take \(M=\mathbb C^3\), and let \(\alpha_s\) fix the first coordinate and exchange the other two. It is non-inner, since all inner automorphisms of an abelian algebra are the identity, but it is inner on the invariant first central summand. On \(K=\mathbb C^3\), take the faithful diagonal representation and
+\[
+ V_s=\begin{pmatrix}1&0&0\\0&0&1\\0&1&0\end{pmatrix},
+ \qquad p=(1,0,0).
+ \tag{FC8.d}
+\]
+This is a covariant unitary representation. Since \(\rho(p)V_s=\rho(p)\), the natural finite homomorphism kills \(\pi(p)(1-u_s)\). That element is nonzero: its identity and \(s\)-coefficients are \(p\) and \(-p\), by FC0. Plain non-innerness therefore does not suffice on a nonfactor.
+
+Faithfulness of \(\rho\) is independent of that obstruction. Already for the trivial group, the normal unital coordinate quotient \(\mathbb C^2\to\mathbb C\) cannot give an isomorphism with the original coefficient algebra. A nonfaithful covariant coefficient representation instead has an invariant central kernel, and NCF5 identifies the faithful supported quotient algebra. The discarded central summand is not recovered. The zero algebra has its separate unique zero-map interpretation.
+
+<a id="l128-fc9"></a>
+
+## FC9. Infinite rational rotations produce a different covariant algebra
+
+The finite theorem cannot be extended to arbitrary infinite groups, even with its exact freeness and coefficient-faithfulness assumptions. A useful example here is the discrete torsion group
+\(G=\mathbb Q/\mathbb Z\), acting on \(\mathbb T=\mathbb R/\mathbb Z\) with completed Haar probability measure \(m\). Put
+\[
+ M=L^\infty(\mathbb T,m),\qquad K=L^2(\mathbb T,m),\qquad
+ [\rho(f)\xi](t)=f(t)\xi(t),\qquad
+ [V_q\xi](t)=\xi(t-q).
+ \tag{FC9.a}
+\]
+Multiplication is faithful and normal. Translation invariance makes each \(V_q\) unitary, the translation law gives the representation law, and direct evaluation gives covariance for \(\alpha_q(f)(t)=f(t-q)\). Discreteness supplies group continuity automatically. [TY1](#l128-ty1) proves freeness and ergodicity of this exact completed-measure action: rational arcs give the countable point-separation test for freeness, and convolution with small arc averages followed by their \(L^1\) approximation proves ergodicity. Its qualified Fubini calculation uses the actual finite-measure circle product, so no exceptional-set union over uncountably many tests is needed.
+
+Let \(Q=\{\rho(M),V(G)\}''\). By [OR0](#l128-or0), an operator commuting with all multiplication coefficients is multiplication by some \(b\in L^\infty(\mathbb T)\). Commutation with the translations makes \(b\) invariant under every rational rotation. Ergodicity gives a constant, so \(Q'=\mathbb C1\) and
+\[
+ Q=B(K).
+ \tag{FC9.b}
+\]
+
+The regular crossed product \(N=M\rtimes_\alpha G\), however, has a faithful finite normal trace. Define on every positive \(X\in N\)
+\[
+ \tau(X)=\int_{\mathbb T}E(X)\,dm.
+ \tag{FC9.c}
+\]
+Normality and faithfulness follow from FC1 and Haar integration, and \(\tau(1)=1\). For an arbitrary bounded \(x\in N\), put \(a_q=E(xu_q^*)\). The two increasing positive sums in FC1 and invariance of \(m\) give
+\[
+ \begin{aligned}
+ \tau(x^*x)
+ &=\sum_{q\in G}\int\alpha_{q^{-1}}(a_q^*a_q)\,dm\\
+ &=\sum_{q\in G}\int a_qa_q^*\,dm
+ =\tau(xx^*).
+ \end{aligned}
+ \tag{FC9.d}
+\]
+Every sum is the supremum over finite subsets of nonnegative terms. Normality justifies that passage for all bounded operators, exactly as in the invariant-trace extension of [TY0](#l128-ty0). It is not a trace formula confined to finite Fourier polynomials.
+
+A faithful finite trace excludes a proper isometry: if \(v^*v=1\), (FC9.d) gives \(\tau(1-vv^*)=0\), hence \(vv^*=1\). In contrast, \(K\) is infinite dimensional, as indicators of infinitely many disjoint positive-measure arcs give orthogonal nonzero vectors. The rational arc step functions with rational complex coefficients give a countable dense set, as in TY1, so the earlier Hilbert construction supplies a countable orthonormal basis. Its unilateral shift is a proper isometry in \(B(K)\). Thus \(N\) and \(Q\) cannot be isomorphic. This obstruction is algebraic and does not depend on assuming a hypothetical isomorphism normal.
+
+Every element of \(\mathbb Q/\mathbb Z\) has finite order; nevertheless the group is infinite. The example separates the finite-group conclusion from finite order of individual elements. It uses the multiplication-commutant and whole-cone trace arguments already present in this lesson, rather than the spectral-eigenprojection argument for an irrational cyclic rotation.
+
+The finite covariance qualification, finite translation matrices and infinite counterexample provide context for Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Chapter X.1, Exercises1–2 and4. The finite theorem uses proper outerness in (FC8.a) and faithful normal coefficients; merely requiring a non-inner automorphism on a nonfactor would give the false assertion illustrated above.
+

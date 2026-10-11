@@ -1,0 +1,664 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Functorial cones and derived connecting maps</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="functorial-cones-and-derived-connecting-maps">Functorial cones and derived connecting maps</h1>
+<p>A cone of a morphism in a derived category usually cannot be chosen functorially from that morphism alone. A natural transformation of additive functors contains more information: its components are actual chain maps after applying the functors to a complex. This additional structure gives a cone functor, including its maps on morphisms, its homotopies and its signed comparison with translation. Computing on injective complexes then produces a natural cone construction on a bounded-below derived category.</p>
+<p>The same construction explains a useful phenomenon. A sequence of functors can be exact on injectives even when its value on an arbitrary object is not a short exact sequence. Its derived values nevertheless form a natural distinguished triangle. We will construct every arrow of that triangle, including the connecting map, and compute its sign in two examples.</p>
+<h2 id="prerequisites-and-conventions">Prerequisites and conventions</h2>
+<p>Work in fixed nested universes large enough for the categories and the resolution choices under discussion. Either choose a quasi-inverse on a set of representatives in the larger universe, or use individual injective replacements and the unique comparison maps proved below. No functorial choice of resolutions in the original category is an assumption.</p>
+<p>We use the following previously proved interfaces:</p>
+<ul>
+<li><a href="relative-replacements-and-finite-resolution-bounds.html">Injective replacements and the bounded-below null-homotopy theorem</a>, Sections 2 and 4: an abelian category with enough injectives has bounded-below injective replacements, and every map from an acyclic complex to a bounded-below complex of injectives is null-homotopic.</li>
+<li><a href="universal-derived-functors-and-compatible-composition.html">Universal derived functors</a>, Sections 1, 4 and 5: any additive functor is exact on homotopy categories, and its bounded-below right derived functor is computed on injective complexes. Left exactness of the original functor is unnecessary for this statement.</li>
+<li><a href="triangles-after-quasi-isomorphism-localization.html">Triangles after localization</a>, Sections 2 and 6: the positive-projection cone convention gives distinguished triangles after localization at quasi-isomorphisms.</li>
+<li><a href="cohomological-bounds-denominators-and-truncation-adjunctions.html">Cohomological bounds and truncations</a>, Sections 3–5: bounded-below complexes and their shifts form the corresponding derived subcategory.</li>
+<li><a href="countable-mittag-leffler-and-formal-pro-derived-limits.html">Divisible groups and injective embeddings</a>, Section 4: divisible abelian groups are injective, and abelian groups have enough injectives.</li>
+<li><a href="thick-abelian-subcategories-and-derived-comparison.html">Finite dual-number modules</a>, Exercise 2 and its solution: finite-dimensional modules over the dual numbers have enough injectives, and the regular module is injective.</li>
+</ul>
+<p>The free reference <a href="https://stacks.math.columbia.edu/tag/013U">Stacks, injective resolution functors</a> treats the equivalence used here. <a href="https://stacks.math.columbia.edu/tag/05T3">Stacks, derived functors on derived categories</a> gives the general derived-functor setting, and <a href="https://stacks.math.columbia.edu/tag/014Z">Stacks, the canonical delta-functor</a> discusses the cone-to-quotient comparison. Our proofs below spell out the cone and connecting-map conventions rather than importing a sign from a different convention.</p>
+<p>Complexes are cohomological. For a complex <span class="math" data-tex="\(X\)">\(X\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+X[1]^n=X^{n+1},\qquad d_{X[1]}^n=-d_X^{n+1}.
+\]">\[
+X[1]^n=X^{n+1},\qquad d_{X[1]}^n=-d_X^{n+1}.
+\]</span>
+<p>For a chain map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1); horizontal scroll when needed" data-tex="\[
+C(f)^n=Y^n\oplus X^{n+1},\qquad
+d_{C(f)}^n(y,x)=(d_Y^ny+f^{n+1}x,-d_X^{n+1}x).
+\tag{1}
+\]">\[
+C(f)^n=Y^n\oplus X^{n+1},\qquad
+d_{C(f)}^n(y,x)=(d_Y^ny+f^{n+1}x,-d_X^{n+1}x).
+\tag{1}
+\]</span>
+<p>Its structural maps are <span class="math" data-tex="\(j_f(y)=(y,0)\)">\(j_f(y)=(y,0)\)</span> and <span class="math" data-tex="\(p_f(y,x)=x\)">\(p_f(y,x)=x\)</span>. Our distinguished cone triangle is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2); horizontal scroll when needed" data-tex="\[
+X\xrightarrow{f}Y\xrightarrow{j_f}C(f)
+\xrightarrow{p_f}X[1].
+\tag{2}
+\]">\[
+X\xrightarrow{f}Y\xrightarrow{j_f}C(f)
+\xrightarrow{p_f}X[1].
+\tag{2}
+\]</span>
+<p>In an arbitrary additive category, coordinate expressions such as (1) denote biproduct matrices. They do not assume that the objects have elements. A homotopy from <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(u\)">\(u\)</span> is a family <span class="math" data-tex="\(h^n:X^n\to Y^{n-1}\)">\(h^n:X^n\to Y^{n-1}\)</span> satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3); horizontal scroll when needed" data-tex="\[
+u^n-v^n=d_Y^{n-1}h^n+h^{n+1}d_X^n.
+\tag{3}
+\]">\[
+u^n-v^n=d_Y^{n-1}h^n+h^{n+1}d_X^n.
+\tag{3}
+\]</span>
+<h2 id="1-an-actual-cone-functor-and-its-homotopies">1. An actual cone functor and its homotopies</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A,\mathcal B\)">\(\mathcal A,\mathcal B\)</span> be abelian categories, let <span class="math" data-tex="\(F,G:\mathcal A\to\mathcal B\)">\(F,G:\mathcal A\to\mathcal B\)</span> be additive functors, and let <span class="math" data-tex="\(\alpha:F\Rightarrow G\)">\(\alpha:F\Rightarrow G\)</span> be a natural transformation. For a complex <span class="math" data-tex="\(I\)">\(I\)</span>, applying either functor termwise gives a complex, since an additive functor preserves zero morphisms and compositions. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+H_\alpha(I)=C(\alpha_I),\qquad
+H_\alpha(I)^n=G(I^n)\oplus F(I^{n+1}),
+\]">\[
+H_\alpha(I)=C(\alpha_I),\qquad
+H_\alpha(I)^n=G(I^n)\oplus F(I^{n+1}),
+\]</span>
+<p>with differential</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4); horizontal scroll when needed" data-tex="\[
+D_I^n=
+\begin{pmatrix}
+Gd_I^n&amp;\alpha_{I^{n+1}}\\
+0&amp;-Fd_I^{n+1}
+\end{pmatrix}.
+\tag{4}
+\]">\[
+D_I^n=
+\begin{pmatrix}
+Gd_I^n&amp;\alpha_{I^{n+1}}\\
+0&amp;-Fd_I^{n+1}
+\end{pmatrix}.
+\tag{4}
+\]</span>
+<p>The upper-right entry of <span class="math" data-tex="\(D_I^{n+1}D_I^n\)">\(D_I^{n+1}D_I^n\)</span> is
+<span class="math" data-tex="\(Gd_I^{n+1}\alpha_{I^{n+1}}-\alpha_{I^{n+2}}Fd_I^{n+1}=0\)">\(Gd_I^{n+1}\alpha_{I^{n+1}}-\alpha_{I^{n+2}}Fd_I^{n+1}=0\)</span> by naturality; all other entries vanish because <span class="math" data-tex="\(d_I^2=0\)">\(d_I^2=0\)</span>. Thus (4) is a differential.</p>
+<p>For a chain map <span class="math" data-tex="\(u:I\to J\)">\(u:I\to J\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5); horizontal scroll when needed" data-tex="\[
+H_\alpha(u)^n=
+\begin{pmatrix}Gu^n&amp;0\\0&amp;Fu^{n+1}\end{pmatrix}.
+\tag{5}
+\]">\[
+H_\alpha(u)^n=
+\begin{pmatrix}Gu^n&amp;0\\0&amp;Fu^{n+1}\end{pmatrix}.
+\tag{5}
+\]</span>
+<p>The chain-map equation for (5) follows from the chain-map equations for <span class="math" data-tex="\(u\)">\(u\)</span> on the diagonal, and from
+<span class="math" data-tex="\(Gu^{n+1}\alpha_{I^{n+1}}=\alpha_{J^{n+1}}Fu^{n+1}\)">\(Gu^{n+1}\alpha_{I^{n+1}}=\alpha_{J^{n+1}}Fu^{n+1}\)</span> off the diagonal. Identity maps and compositions are respected entry by entry. Addition of chain maps is also respected. Consequently <span class="math" data-tex="\(H_\alpha\)">\(H_\alpha\)</span> is an additive functor on complexes. It sends a bounded-below complex to a bounded-below complex; its lowest possible nonzero degree is at most one earlier.</p>
+<p><strong>Proposition 1.1.</strong> Homotopic chain maps induce homotopic maps under <span class="math" data-tex="\(H_\alpha\)">\(H_\alpha\)</span>. More precisely, if (3) holds for <span class="math" data-tex="\(u,v:I\to J\)">\(u,v:I\to J\)</span>, the induced homotopy is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6); horizontal scroll when needed" data-tex="\[
+S^n=
+\begin{pmatrix}Gh^n&amp;0\\0&amp;-Fh^{n+1}\end{pmatrix}:
+H_\alpha(I)^n\longrightarrow H_\alpha(J)^{n-1}.
+\tag{6}
+\]">\[
+S^n=
+\begin{pmatrix}Gh^n&amp;0\\0&amp;-Fh^{n+1}\end{pmatrix}:
+H_\alpha(I)^n\longrightarrow H_\alpha(J)^{n-1}.
+\tag{6}
+\]</span>
+<p><strong>Proof.</strong> Multiply the biproduct matrices. The diagonal entries of <span class="math" data-tex="\(D_JS+SD_I\)">\(D_JS+SD_I\)</span>, in degree <span class="math" data-tex="\(n\)">\(n\)</span>, are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+G(d_J^{n-1}h^n+h^{n+1}d_I^n),\qquad
+F(d_J^nh^{n+1}+h^{n+2}d_I^{n+1}).
+\]">\[
+G(d_J^{n-1}h^n+h^{n+1}d_I^n),\qquad
+F(d_J^nh^{n+1}+h^{n+2}d_I^{n+1}).
+\]</span>
+<p>These are <span class="math" data-tex="\(G(u^n-v^n)\)">\(G(u^n-v^n)\)</span> and <span class="math" data-tex="\(F(u^{n+1}-v^{n+1})\)">\(F(u^{n+1}-v^{n+1})\)</span>. The upper-right entry is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+-\alpha_{J^n}Fh^{n+1}+Gh^{n+1}\alpha_{I^{n+1}}=0,
+\]">\[
+-\alpha_{J^n}Fh^{n+1}+Gh^{n+1}\alpha_{I^{n+1}}=0,
+\]</span>
+<p>again by naturality, now for the degree-lowering map <span class="math" data-tex="\(h^{n+1}:I^{n+1}\to J^n\)">\(h^{n+1}:I^{n+1}\to J^n\)</span>. The lower-left entry is zero. Therefore
+<span class="math" data-tex="\(H_\alpha(u)-H_\alpha(v)=D_JS+SD_I\)">\(H_\alpha(u)-H_\alpha(v)=D_JS+SD_I\)</span>, which is the required homotopy equation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> denote the full additive subcategory of injectives in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Finite biproducts of injectives are injective: each component of a map into the biproduct extends along a monomorphism, and the extended components combine. In particular, shifts and cones of maps between complexes in <span class="math" data-tex="\(C^+(\mathcal I)\)">\(C^+(\mathcal I)\)</span> remain in <span class="math" data-tex="\(C^+(\mathcal I)\)">\(C^+(\mathcal I)\)</span>. Equations (4)–(6) give an actual functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7); horizontal scroll when needed" data-tex="\[
+H_\alpha:K^+(\mathcal I)\longrightarrow K^+(\mathcal B).
+\tag{7}
+\]">\[
+H_\alpha:K^+(\mathcal I)\longrightarrow K^+(\mathcal B).
+\tag{7}
+\]</span>
+<p>There are natural chain maps</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8); horizontal scroll when needed" data-tex="\[
+j_I:GI\longrightarrow H_\alpha(I),\quad b\longmapsto(b,0),
+\qquad
+p_I:H_\alpha(I)\longrightarrow FI[1],\quad(b,a)\longmapsto a.
+\tag{8}
+\]">\[
+j_I:GI\longrightarrow H_\alpha(I),\quad b\longmapsto(b,0),
+\qquad
+p_I:H_\alpha(I)\longrightarrow FI[1],\quad(b,a)\longmapsto a.
+\tag{8}
+\]</span>
+<p>Both commute with (5), so they descend along with the functor. Naturality here includes the actual structural arrows, not merely the isomorphism class of a cone object.</p>
+<h2 id="2-translation-and-the-double-cone-comparison">2. Translation and the double-cone comparison</h2>
+<p>The functor (7) has a signed translation comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9); horizontal scroll when needed" data-tex="\[
+\sigma_I:H_\alpha(I[1])\longrightarrow H_\alpha(I)[1],
+\qquad \sigma_I(b,a)=(b,-a).
+\tag{9}
+\]">\[
+\sigma_I:H_\alpha(I[1])\longrightarrow H_\alpha(I)[1],
+\qquad \sigma_I(b,a)=(b,-a).
+\tag{9}
+\]</span>
+<p>Indeed, the source and target differentials, in degree <span class="math" data-tex="\(n\)">\(n\)</span>, are respectively</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{pmatrix}-Gd_I^{n+1}&amp;\alpha_{I^{n+2}}\\0&amp;Fd_I^{n+2}\end{pmatrix},
+\qquad
+\begin{pmatrix}-Gd_I^{n+1}&amp;-\alpha_{I^{n+2}}\\0&amp;Fd_I^{n+2}\end{pmatrix}.
+\]">\[
+\begin{pmatrix}-Gd_I^{n+1}&amp;\alpha_{I^{n+2}}\\0&amp;Fd_I^{n+2}\end{pmatrix},
+\qquad
+\begin{pmatrix}-Gd_I^{n+1}&amp;-\alpha_{I^{n+2}}\\0&amp;Fd_I^{n+2}\end{pmatrix}.
+\]</span>
+<p>Conjugating by <span class="math" data-tex="\(\operatorname{diag}(1,-1)\)">\(\operatorname{diag}(1,-1)\)</span> transforms the first into the second. The same diagonal matrix is its inverse, and it commutes with (5), proving naturality. Iteration yields the comparison for an integral shift <span class="math" data-tex="\(r\)">\(r\)</span>, with diagonal entries <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span>.</p>
+<p>The structural maps satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (10); horizontal scroll when needed" data-tex="\[
+\sigma_Ij_{I[1]}=j_I[1],\qquad
+p_I[1]\sigma_I=-p_{I[1]}.
+\tag{10}
+\]">\[
+\sigma_Ij_{I[1]}=j_I[1],\qquad
+p_I[1]\sigma_I=-p_{I[1]}.
+\tag{10}
+\]</span>
+<p>Thus the translated cone triangle has the expected negative last arrow. The minus sign in (10) is part of the construction. When the target functor <span class="math" data-tex="\(F[1]\)">\(F[1]\)</span> is viewed as an exact functor, its standard translation comparison is negative the termwise identification; with that comparison, <span class="math" data-tex="\(p:H_\alpha\Rightarrow F[1]\)">\(p:H_\alpha\Rightarrow F[1]\)</span> is compatible with translation.</p>
+<p><strong>Proposition 2.1.</strong> The functor <span class="math" data-tex="\(H_\alpha\)">\(H_\alpha\)</span>, with comparison (9), is exact on the homotopy categories in (7).</p>
+<p><strong>Proof.</strong> It suffices to compare its value on a standard cone triangle with the cone triangle of its value on the first map. Let <span class="math" data-tex="\(u:I\to J\)">\(u:I\to J\)</span>. Use the order</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+H_\alpha(C(u))^n=
+GJ^n\oplus GI^{n+1}\oplus FJ^{n+1}\oplus FI^{n+2}.
+\]">\[
+H_\alpha(C(u))^n=
+GJ^n\oplus GI^{n+1}\oplus FJ^{n+1}\oplus FI^{n+2}.
+\]</span>
+<p>Its differential sends the tuple <span class="math" data-tex="\((b,c,a,e)\)">\((b,c,a,e)\)</span> to</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (11); horizontal scroll when needed" data-tex="\[
+\bigl(Gd_Jb+Gu\,c+\alpha_Ja,
+      -Gd_Ic+\alpha_Ie,
+      -Fd_Ja-Fu\,e,
+      Fd_Ie\bigr).
+\tag{11}
+\]">\[
+\bigl(Gd_Jb+Gu\,c+\alpha_Ja,
+-Gd_Ic+\alpha_Ie,
+-Fd_Ja-Fu\,e,
+Fd_Ie\bigr).
+\tag{11}
+\]</span>
+<p>The omitted superscripts are determined by these summands; <span class="math" data-tex="\(\alpha_J\)">\(\alpha_J\)</span> acts on <span class="math" data-tex="\(FJ^{n+1}\)">\(FJ^{n+1}\)</span>, and <span class="math" data-tex="\(\alpha_I\)">\(\alpha_I\)</span> on <span class="math" data-tex="\(FI^{n+2}\)">\(FI^{n+2}\)</span>. Formula (11) uses the canonical biproduct identifications of additive functors.</p>
+<p>On the other hand,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+C(H_\alpha(u))^n=
+GJ^n\oplus FJ^{n+1}\oplus GI^{n+1}\oplus FI^{n+2}.
+\]">\[
+C(H_\alpha(u))^n=
+GJ^n\oplus FJ^{n+1}\oplus GI^{n+1}\oplus FI^{n+2}.
+\]</span>
+<p>Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (12); horizontal scroll when needed" data-tex="\[
+\Theta_u:H_\alpha(C(u))\longrightarrow C(H_\alpha(u)),
+\qquad \Theta_u(b,c,a,e)=(b,a,c,-e).
+\tag{12}
+\]">\[
+\Theta_u:H_\alpha(C(u))\longrightarrow C(H_\alpha(u)),
+\qquad \Theta_u(b,c,a,e)=(b,a,c,-e).
+\tag{12}
+\]</span>
+<p>This is an invertible signed permutation. The target differential applied to its value is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\bigl(Gd_Jb+\alpha_Ja+Gu\,c,
+      -Fd_Ja-Fu\,e,
+      -Gd_Ic+\alpha_Ie,
+      -Fd_Ie\bigr),
+\]">\[
+\bigl(Gd_Jb+\alpha_Ja+Gu\,c,
+-Fd_Ja-Fu\,e,
+-Gd_Ic+\alpha_Ie,
+-Fd_Ie\bigr),
+\]</span>
+<p>which is exactly <span class="math" data-tex="\(\Theta_u\)">\(\Theta_u\)</span> applied to (11). Hence (12) is a chain isomorphism. It is natural in strict commutative squares of chain maps because the permutation and sign commute with all diagonal maps.</p>
+<p>We also check the arrows of the triangle. Its middle inclusion becomes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+H_\alpha(j_u)(b,a)=(b,0,a,0),\qquad
+\Theta_uH_\alpha(j_u)(b,a)=(b,a,0,0)
+=j_{H_\alpha(u)}(b,a).
+\]">\[
+H_\alpha(j_u)(b,a)=(b,0,a,0),\qquad
+\Theta_uH_\alpha(j_u)(b,a)=(b,a,0,0)
+=j_{H_\alpha(u)}(b,a).
+\]</span>
+<p>Its last arrow becomes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+H_\alpha(p_u)(b,c,a,e)=(c,e),\qquad
+\sigma_IH_\alpha(p_u)(b,c,a,e)=(c,-e)
+=p_{H_\alpha(u)}\Theta_u(b,c,a,e).
+\]">\[
+H_\alpha(p_u)(b,c,a,e)=(c,e),\qquad
+\sigma_IH_\alpha(p_u)(b,c,a,e)=(c,-e)
+=p_{H_\alpha(u)}\Theta_u(b,c,a,e).
+\]</span>
+<p>The first arrow is already <span class="math" data-tex="\(H_\alpha(u)\)">\(H_\alpha(u)\)</span>. Thus (12) identifies the entire image triangle, with its translation comparison, with the standard cone triangle of <span class="math" data-tex="\(H_\alpha(u)\)">\(H_\alpha(u)\)</span>. Every distinguished triangle in a homotopy category is isomorphic to a standard cone triangle, so the functor is exact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The calculation is useful beyond this proof: omitting the sign on the last coordinate of (12) would preserve neither the differential nor the last structural arrow.</p>
+<h2 id="3-descent-to-derived-objects-and-all-comparison-maps">3. Descent to derived objects and all comparison maps</h2>
+<p>Assume from now on that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has enough injectives. There is no enough-injectives assumption on <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> The localization functor restricts to an exact equivalence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (13); horizontal scroll when needed" data-tex="\[
+E:K^+(\mathcal I)\xrightarrow{\sim}D^+(\mathcal A).
+\tag{13}
+\]">\[
+E:K^+(\mathcal I)\xrightarrow{\sim}D^+(\mathcal A).
+\tag{13}
+\]</span>
+<p><strong>Proof.</strong> The injective replacement theorem supplies, for every bounded-below complex <span class="math" data-tex="\(X\)">\(X\)</span>, a quasi-isomorphism <span class="math" data-tex="\(\rho_X:X\to I_X\)">\(\rho_X:X\to I_X\)</span> with <span class="math" data-tex="\(I_X\)">\(I_X\)</span> bounded below and termwise injective. The replacement-density theorem identifies the derived category with the localization of <span class="math" data-tex="\(K^+(\mathcal I)\)">\(K^+(\mathcal I)\)</span> at its quasi-isomorphisms. These are the full conclusions of Sections 2 and 4 of the first prerequisite, including their maps-on-morphisms statements.</p>
+<p>In this subcategory a quasi-isomorphism <span class="math" data-tex="\(u:I\to J\)">\(u:I\to J\)</span> has an acyclic cone, still termwise injective and bounded below. Apply the bounded-below null-homotopy theorem to the identity map of that cone. The cone is contractible. In the homotopy category its cone triangle then shows that <span class="math" data-tex="\(u\)">\(u\)</span> is invertible: the exact Hom sequences give an inverse, or equivalently the zero cone criterion in a triangulated category does so. Thus every morphism inverted by the indicated localization was already invertible. The localization is <span class="math" data-tex="\(K^+(\mathcal I)\)">\(K^+(\mathcal I)\)</span> itself, proving (13), including full faithfulness. Exactness follows because the inclusion and localization preserve standard cone triangles. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choose an exact quasi-inverse <span class="math" data-tex="\(S\)">\(S\)</span> to (13), with its comparison to <span class="math" data-tex="\(E\)">\(E\)</span>. Let <span class="math" data-tex="\(Q_{\mathcal B}:K^+(\mathcal B)\to D^+(\mathcal B)\)">\(Q_{\mathcal B}:K^+(\mathcal B)\to D^+(\mathcal B)\)</span> be localization. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (14); horizontal scroll when needed" data-tex="\[
+\mathbf RF=Q_{\mathcal B}K(F)S,\qquad
+\mathbf RG=Q_{\mathcal B}K(G)S,\qquad
+\mathbf RH_\alpha=Q_{\mathcal B}H_\alpha S.
+\tag{14}
+\]">\[
+\mathbf RF=Q_{\mathcal B}K(F)S,\qquad
+\mathbf RG=Q_{\mathcal B}K(G)S,\qquad
+\mathbf RH_\alpha=Q_{\mathcal B}H_\alpha S.
+\tag{14}
+\]</span>
+<p>The first two are the universal bounded-below right derived functors proved in the second prerequisite. This remains true for additive functors which are not left exact. The functor <span class="math" data-tex="\(\mathbf RH_\alpha\)">\(\mathbf RH_\alpha\)</span> is exact by Proposition 2.1. For each <span class="math" data-tex="\(X\)">\(X\)</span>, (14) can be computed by any injective replacement <span class="math" data-tex="\(\rho:X\to I\)">\(\rho:X\to I\)</span>.</p>
+<p><strong>Theorem 3.2.</strong> The natural transformation <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has a derived transformation <span class="math" data-tex="\(\mathbf R\alpha:\mathbf RF\Rightarrow\mathbf RG\)">\(\mathbf R\alpha:\mathbf RF\Rightarrow\mathbf RG\)</span>. There are natural transformations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\mathbf RG\xrightarrow{j}\mathbf RH_\alpha
+\xrightarrow{p}\mathbf RF[1]
+\]">\[
+\mathbf RG\xrightarrow{j}\mathbf RH_\alpha
+\xrightarrow{p}\mathbf RF[1]
+\]</span>
+<p>such that for every <span class="math" data-tex="\(X\in D^+(\mathcal A)\)">\(X\in D^+(\mathcal A)\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (15); horizontal scroll when needed" data-tex="\[
+\mathbf RF(X)\xrightarrow{\mathbf R\alpha_X}\mathbf RG(X)
+\xrightarrow{j_X}\mathbf RH_\alpha(X)
+\xrightarrow{p_X}\mathbf RF(X)[1]
+\tag{15}
+\]">\[
+\mathbf RF(X)\xrightarrow{\mathbf R\alpha_X}\mathbf RG(X)
+\xrightarrow{j_X}\mathbf RH_\alpha(X)
+\xrightarrow{p_X}\mathbf RF(X)[1]
+\tag{15}
+\]</span>
+<p>is distinguished. All arrows in (15) are natural in every derived morphism. Different injective replacements give canonically isomorphic whole triangles; these comparison isomorphisms obey the identity, composition and cocycle laws.</p>
+<p><strong>Proof.</strong> On the model <span class="math" data-tex="\(I\)">\(I\)</span>, the first arrow is <span class="math" data-tex="\(Q_{\mathcal B}(\alpha_I)\)">\(Q_{\mathcal B}(\alpha_I)\)</span>, and the other arrows are (8). Applying localization to the actual cone triangle of <span class="math" data-tex="\(\alpha_I\)">\(\alpha_I\)</span> proves distinguishedness. The comparison (9) supplies the translation identification used in its last arrow.</p>
+<p>Here is the full maps-on-morphisms argument, independently of a particular choice of <span class="math" data-tex="\(S\)">\(S\)</span>. Let <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> be any derived arrow, and choose replacements <span class="math" data-tex="\(\rho_X:X\to I\)">\(\rho_X:X\to I\)</span> and <span class="math" data-tex="\(\rho_Y:Y\to J\)">\(\rho_Y:Y\to J\)</span>. Full faithfulness in (13) gives exactly one homotopy class of chain maps <span class="math" data-tex="\(u:I\to J\)">\(u:I\to J\)</span> satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (16); horizontal scroll when needed" data-tex="\[
+E(u)\,Q_{\mathcal A}(\rho_X)
+=Q_{\mathcal A}(\rho_Y)f.
+\tag{16}
+\]">\[
+E(u)\,Q_{\mathcal A}(\rho_X)
+=Q_{\mathcal A}(\rho_Y)f.
+\tag{16}
+\]</span>
+<p>Choose any chain-map representative of this class. Naturality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and (5), (8) gives the three strict identities</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (17); horizontal scroll when needed" data-tex="\[
+Gu\,\alpha_I=\alpha_JFu,\qquad
+H_\alpha(u)j_I=j_JGu,\qquad
+p_JH_\alpha(u)=Fu[1]p_I.
+\tag{17}
+\]">\[
+Gu\,\alpha_I=\alpha_JFu,\qquad
+H_\alpha(u)j_I=j_JGu,\qquad
+p_JH_\alpha(u)=Fu[1]p_I.
+\tag{17}
+\]</span>
+<p>They yield a morphism of the complete triangles. A different representative of the class in (16) has the same image under <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span>, since additive functors carry the homotopy equation to a homotopy equation. It has the same image under <span class="math" data-tex="\(H_\alpha\)">\(H_\alpha\)</span> by Proposition 1.1. Thus (17) is independent of the representative. Uniqueness in (16) gives identity and composition laws. This includes arrows originally described by roofs or inverses of quasi-isomorphisms, because (16) starts with an arbitrary arrow in the localized category.</p>
+<p>If <span class="math" data-tex="\(\rho:X\to I\)">\(\rho:X\to I\)</span> and <span class="math" data-tex="\(\rho&#x27;:X\to J\)">\(\rho&#x27;:X\to J\)</span> are two replacements, the same argument gives a unique homotopy class <span class="math" data-tex="\(c:I\to J\)">\(c:I\to J\)</span> with <span class="math" data-tex="\(E(c)Q(\rho)=Q(\rho&#x27;)\)">\(E(c)Q(\rho)=Q(\rho&#x27;)\)</span>. The class in the opposite direction is its inverse by uniqueness. Applying <span class="math" data-tex="\(F,G,H_\alpha\)">\(F,G,H_\alpha\)</span> gives isomorphisms of all three objects commuting with all arrows in (15). For three replacements the composite of the first two comparisons and the direct comparison satisfy the same defining equation, so they are equal. The comparison for identical replacements is the identity. This proves the promised canonical comparison and cocycle laws.</p>
+<p>Finally, the derived transformation agrees with the universal derived-functor units. For a bounded-below complex <span class="math" data-tex="\(X\)">\(X\)</span>, those units are represented by <span class="math" data-tex="\(F\rho_X\)">\(F\rho_X\)</span> and <span class="math" data-tex="\(G\rho_X\)">\(G\rho_X\)</span>. The equality</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\alpha_{I_X}F\rho_X=G\rho_X\alpha_X
+\]">\[
+\alpha_{I_X}F\rho_X=G\rho_X\alpha_X
+\]</span>
+<p>is ordinary naturality before localization. Hence <span class="math" data-tex="\(\mathbf R\alpha\,\eta_F=\eta_G\,Q_{\mathcal B}K(\alpha)\)">\(\mathbf R\alpha\,\eta_F=\eta_G\,Q_{\mathcal B}K(\alpha)\)</span>. The universal characterization identifies this transformation with the usual derived transformation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction proves a specific functorial cone statement. It does not assert that the category of arbitrary functors into a triangulated category is itself triangulated, or that a cone of an arbitrary derived arrow is determined functorially without the chain-level information in <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<h2 id="4-a-row-exact-on-injectives-and-its-connecting-map">4. A row exact on injectives and its connecting map</h2>
+<p>Let <span class="math" data-tex="\(F&#x27;,F,F&#x27;&#x27;:\mathcal A\to\mathcal B\)">\(F&#x27;,F,F&#x27;&#x27;:\mathcal A\to\mathcal B\)</span> be additive functors with natural maps</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (18); horizontal scroll when needed" data-tex="\[
+F&#x27;\xrightarrow{\alpha}F\xrightarrow{\beta}F&#x27;&#x27;,\qquad
+\beta\alpha=0.
+\tag{18}
+\]">\[
+F&#x27;\xrightarrow{\alpha}F\xrightarrow{\beta}F&#x27;&#x27;,\qquad
+\beta\alpha=0.
+\tag{18}
+\]</span>
+<p>Assume that for every injective <span class="math" data-tex="\(J\in\mathcal A\)">\(J\in\mathcal A\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (19); horizontal scroll when needed" data-tex="\[
+0\longrightarrow F&#x27;J\xrightarrow{\alpha_J}FJ
+\xrightarrow{\beta_J}F&#x27;&#x27;J\longrightarrow0
+\tag{19}
+\]">\[
+0\longrightarrow F&#x27;J\xrightarrow{\alpha_J}FJ
+\xrightarrow{\beta_J}F&#x27;&#x27;J\longrightarrow0
+\tag{19}
+\]</span>
+<p>is exact in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. We do not assume exactness of (19) on arbitrary objects, or that the functors are left exact.</p>
+<p>For an injective complex <span class="math" data-tex="\(I\)">\(I\)</span>, abbreviate <span class="math" data-tex="\(A=F&#x27;I\)">\(A=F&#x27;I\)</span>, <span class="math" data-tex="\(B=FI\)">\(B=FI\)</span>, <span class="math" data-tex="\(C=F&#x27;&#x27;I\)">\(C=F&#x27;&#x27;I\)</span>. The termwise sequence <span class="math" data-tex="\(0\to A\to B\to C\to0\)">\(0\to A\to B\to C\to0\)</span> is a short exact sequence of complexes. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (20); horizontal scroll when needed" data-tex="\[
+q_I:C(\alpha_I)\longrightarrow F&#x27;&#x27;I,\qquad
+q_I^n(b,a)=\beta_{I^n}b.
+\tag{20}
+\]">\[
+q_I:C(\alpha_I)\longrightarrow F&#x27;&#x27;I,\qquad
+q_I^n(b,a)=\beta_{I^n}b.
+\tag{20}
+\]</span>
+<p>This is a chain map: applying <span class="math" data-tex="\(q_I\)">\(q_I\)</span> to the cone differential gives
+<span class="math" data-tex="\(\beta(db+\alpha a)=d\beta b\)">\(\beta(db+\alpha a)=d\beta b\)</span>. It is epic in every degree by (19).</p>
+<p><strong>Lemma 4.1.</strong> The map (20) is a quasi-isomorphism. Its kernel is canonically the contractible complex <span class="math" data-tex="\(C(1_A)\)">\(C(1_A)\)</span>.</p>
+<p><strong>Proof.</strong> In degree <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(\alpha^n\)">\(\alpha^n\)</span> identifies <span class="math" data-tex="\(A^n\)">\(A^n\)</span> with <span class="math" data-tex="\(\ker\beta^n\)">\(\ker\beta^n\)</span>. Thus the kernel of (20) is identified with <span class="math" data-tex="\(A^n\oplus A^{n+1}\)">\(A^n\oplus A^{n+1}\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\kappa^n(x,a)=(\alpha^nx,a).
+\]">\[
+\kappa^n(x,a)=(\alpha^nx,a).
+\]</span>
+<p>Its differential is <span class="math" data-tex="\((x,a)\mapsto(dx+a,-da)\)">\((x,a)\mapsto(dx+a,-da)\)</span>, because
+<span class="math" data-tex="\(d\alpha x+\alpha a=\alpha(dx+a)\)">\(d\alpha x+\alpha a=\alpha(dx+a)\)</span>. This is exactly <span class="math" data-tex="\(C(1_A)\)">\(C(1_A)\)</span>, including its differential. The maps</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (21); horizontal scroll when needed" data-tex="\[
+h^n:C(1_A)^n\longrightarrow C(1_A)^{n-1},\qquad
+h^n(x,a)=(0,x)
+\tag{21}
+\]">\[
+h^n:C(1_A)^n\longrightarrow C(1_A)^{n-1},\qquad
+h^n(x,a)=(0,x)
+\tag{21}
+\]</span>
+<p>satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+dh(x,a)=(x,-dx),\qquad hd(x,a)=(0,dx+a),
+\qquad dh+hd=1.
+\]">\[
+dh(x,a)=(x,-dx),\qquad hd(x,a)=(0,dx+a),
+\qquad dh+hd=1.
+\]</span>
+<p>Here is a categorical verification that a degreewise epic chain map with this contractible kernel is a quasi-isomorphism; it avoids assuming global element lifts in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. For any cycle test map <span class="math" data-tex="\(z:T\to Z^nC\)">\(z:T\to Z^nC\)</span>, pull back the epimorphism <span class="math" data-tex="\(q_I^n\)">\(q_I^n\)</span>. Over the resulting epimorphic cover <span class="math" data-tex="\(T&#x27;\to T\)">\(T&#x27;\to T\)</span>, there is a lift <span class="math" data-tex="\(b:T&#x27;\to C(\alpha_I)^n\)">\(b:T&#x27;\to C(\alpha_I)^n\)</span>. Its differential factors uniquely through the kernel as <span class="math" data-tex="\(db=\kappa k\)">\(db=\kappa k\)</span>, with <span class="math" data-tex="\(k:T&#x27;\to C(1_A)^{n+1}\)">\(k:T&#x27;\to C(1_A)^{n+1}\)</span>. The equation <span class="math" data-tex="\(d^2b=0\)">\(d^2b=0\)</span> and monicity of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> show <span class="math" data-tex="\(dk=0\)">\(dk=0\)</span>. From (21), <span class="math" data-tex="\(dhk=k\)">\(dhk=k\)</span>. Therefore <span class="math" data-tex="\(b-\kappa hk\)">\(b-\kappa hk\)</span> is a cycle mapping to <span class="math" data-tex="\(z\)">\(z\)</span> over this cover. This proves epimorphy on cycles locally along epimorphisms, and hence epimorphy on cohomology. Formally, the cokernel of the induced cohomology map vanishes because every test map into it becomes zero after an epimorphic cover.</p>
+<p>For injectivity on cohomology, start with a test map into its kernel. Lift it through the epimorphism from cycles to cohomology after an epimorphic pullback cover. It is then represented by a cycle <span class="math" data-tex="\(e\)">\(e\)</span> in <span class="math" data-tex="\(C(\alpha_I)^n\)">\(C(\alpha_I)^n\)</span>, and <span class="math" data-tex="\(q_Ie\)">\(q_Ie\)</span> is a boundary. Lift a primitive of this boundary after a second epimorphic cover, and lift that primitive through <span class="math" data-tex="\(q_I^{n-1}\)">\(q_I^{n-1}\)</span> after a third. Write the final lift as <span class="math" data-tex="\(b\)">\(b\)</span>. Then <span class="math" data-tex="\(e-db=\kappa k\)">\(e-db=\kappa k\)</span> for a cycle <span class="math" data-tex="\(k\)">\(k\)</span> in <span class="math" data-tex="\(C(1_A)^n\)">\(C(1_A)^n\)</span>. Equation (21) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+e=d(b+\kappa hk).
+\]">\[
+e=d(b+\kappa hk).
+\]</span>
+<p>The original cohomology test map therefore vanishes after an epimorphic cover, so it vanishes before the cover as well. This proves monomorphy on cohomology. Both arguments use only epimorphic pullbacks, kernels, images and the displayed contraction, all available in an abelian category. Hence (20) is a quasi-isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2.</strong> Under (19), there is a natural transformation</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (22); horizontal scroll when needed" data-tex="\[
+\delta:\mathbf RF&#x27;&#x27;\longrightarrow\mathbf RF&#x27;[1]
+\tag{22}
+\]">\[
+\delta:\mathbf RF&#x27;&#x27;\longrightarrow\mathbf RF&#x27;[1]
+\tag{22}
+\]</span>
+<p>and a pointwise distinguished natural triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (23); horizontal scroll when needed" data-tex="\[
+\mathbf RF&#x27;\xrightarrow{\mathbf R\alpha}\mathbf RF
+\xrightarrow{\mathbf R\beta}\mathbf RF&#x27;&#x27;
+\xrightarrow{\delta}\mathbf RF&#x27;[1].
+\tag{23}
+\]">\[
+\mathbf RF&#x27;\xrightarrow{\mathbf R\alpha}\mathbf RF
+\xrightarrow{\mathbf R\beta}\mathbf RF&#x27;&#x27;
+\xrightarrow{\delta}\mathbf RF&#x27;[1].
+\tag{23}
+\]</span>
+<p>It is natural on every arrow of <span class="math" data-tex="\(D^+(\mathcal A)\)">\(D^+(\mathcal A)\)</span>, canonically independent of all injective replacements, and natural under commuting morphisms of rows (18) satisfying (19).</p>
+<p><strong>Proof.</strong> Apply Theorem 3.2 to <span class="math" data-tex="\(\alpha:F&#x27;\Rightarrow F\)">\(\alpha:F&#x27;\Rightarrow F\)</span>. In the model <span class="math" data-tex="\(I\)">\(I\)</span>, Lemma 4.1 makes <span class="math" data-tex="\(Q_{\mathcal B}q_I\)">\(Q_{\mathcal B}q_I\)</span> invertible. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (24); horizontal scroll when needed" data-tex="\[
+\delta_I=Q_{\mathcal B}p_I\,(Q_{\mathcal B}q_I)^{-1}.
+\tag{24}
+\]">\[
+\delta_I=Q_{\mathcal B}p_I\,(Q_{\mathcal B}q_I)^{-1}.
+\tag{24}
+\]</span>
+<p>Since <span class="math" data-tex="\(q_Ij_I=\beta_I\)">\(q_Ij_I=\beta_I\)</span> and <span class="math" data-tex="\(\delta_Iq_I=p_I\)">\(\delta_Iq_I=p_I\)</span> after localization, transporting the entire cone triangle along <span class="math" data-tex="\(q_I\)">\(q_I\)</span> gives (23). This proves distinguishedness with exactly the arrows in its statement.</p>
+<p>For a chain map <span class="math" data-tex="\(u:I\to J\)">\(u:I\to J\)</span>, naturality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (25); horizontal scroll when needed" data-tex="\[
+q_JH_\alpha(u)=F&#x27;&#x27;u\,q_I,\qquad
+p_JH_\alpha(u)=F&#x27;u[1]p_I.
+\tag{25}
+\]">\[
+q_JH_\alpha(u)=F&#x27;&#x27;u\,q_I,\qquad
+p_JH_\alpha(u)=F&#x27;u[1]p_I.
+\tag{25}
+\]</span>
+<p>Inverting <span class="math" data-tex="\(q_I,q_J\)">\(q_I,q_J\)</span> in the first equality and using the second yields</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (26); horizontal scroll when needed" data-tex="\[
+\delta_J\,Q(F&#x27;&#x27;u)=Q(F&#x27;u)[1]\delta_I.
+\tag{26}
+\]">\[
+\delta_J\,Q(F&#x27;&#x27;u)=Q(F&#x27;u)[1]\delta_I.
+\tag{26}
+\]</span>
+<p>Homotopic representatives give identical maps by Proposition 1.1 and by the additive homotopy equations for the three functors. Equation (16) then proves (26) on all derived arrows. The unique comparison classes between any two replacements commute with <span class="math" data-tex="\(\alpha,\beta,q,p\)">\(\alpha,\beta,q,p\)</span> by the same strict identities. Thus they identify the whole triangles (23), with the identity and cocycle laws already proved.</p>
+<p>For the last assertion, consider another row <span class="math" data-tex="\(\widetilde F&#x27;\to\widetilde F\to\widetilde F&#x27;&#x27;\)">\(\widetilde F&#x27;\to\widetilde F\to\widetilde F&#x27;&#x27;\)</span> and natural transformations <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span> from the first row to the second satisfying
+<span class="math" data-tex="\(b\alpha=\widetilde\alpha a\)">\(b\alpha=\widetilde\alpha a\)</span> and <span class="math" data-tex="\(c\beta=\widetilde\beta b\)">\(c\beta=\widetilde\beta b\)</span>. On <span class="math" data-tex="\(I\)">\(I\)</span>, the matrix <span class="math" data-tex="\(\operatorname{diag}(b_I,a_I[1])\)">\(\operatorname{diag}(b_I,a_I[1])\)</span> is a chain map between the cones. Its composites with the two quotient maps agree with <span class="math" data-tex="\(c_Iq_I\)">\(c_Iq_I\)</span>, and its composites with the two projections agree with <span class="math" data-tex="\(a_I[1]p_I\)">\(a_I[1]p_I\)</span>. Inverting the quotient maps gives
+<span class="math" data-tex="\(\widetilde\delta\,\mathbf Rc=\mathbf Ra[1]\delta\)">\(\widetilde\delta\,\mathbf Rc=\mathbf Ra[1]\delta\)</span>. The other two squares are the original commuting squares after derivation. Hence the complete natural triangle is natural under morphisms of rows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Under the canonical termwise shift identifications, (9), (20) satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+q_I[1]\sigma_I=q_{I[1]},\qquad
+p_I[1]\sigma_I=-p_{I[1]}.
+\]">\[
+q_I[1]\sigma_I=q_{I[1]},\qquad
+p_I[1]\sigma_I=-p_{I[1]}.
+\]</span>
+<p>Consequently the connecting map obeys</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (27); horizontal scroll when needed" data-tex="\[
+\delta_{I[1]}=-\delta_I[1].
+\tag{27}
+\]">\[
+\delta_{I[1]}=-\delta_I[1].
+\tag{27}
+\]</span>
+<p>This is the translation sign required by the last arrow in a distinguished triangle.</p>
+<p>One can also read the sign directly on cohomology. In a module category, lift a cycle <span class="math" data-tex="\(z\in C^n\)">\(z\in C^n\)</span> to <span class="math" data-tex="\(b\in B^n\)">\(b\in B^n\)</span> and write <span class="math" data-tex="\(db=\alpha a\)">\(db=\alpha a\)</span>. Then <span class="math" data-tex="\(a\in A^{n+1}\)">\(a\in A^{n+1}\)</span> is a cycle, since <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is monic and <span class="math" data-tex="\(\alpha da=d^2b=0\)">\(\alpha da=d^2b=0\)</span>. The cone cycle over <span class="math" data-tex="\(z\)">\(z\)</span> is <span class="math" data-tex="\((b,-a)\)">\((b,-a)\)</span>, so (24) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (28); horizontal scroll when needed" data-tex="\[
+H^n(\delta)[z]=[-a].
+\tag{28}
+\]">\[
+H^n(\delta)[z]=[-a].
+\tag{28}
+\]</span>
+<p>A second lift <span class="math" data-tex="\(b+\alpha x\)">\(b+\alpha x\)</span> changes <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(a+dx\)">\(a+dx\)</span>, so this cohomology class is independent of the lift. If <span class="math" data-tex="\(z\)">\(z\)</span> is a boundary, lift its primitive to <span class="math" data-tex="\(B^{n-1}\)">\(B^{n-1}\)</span>; the resulting lift of <span class="math" data-tex="\(z\)">\(z\)</span> has zero differential, showing that (28) vanishes on boundaries. In an arbitrary abelian category these statements apply to test maps after the epimorphic pullbacks in Lemma 4.1; the identities descend because the covers are epic. Thus (28) specifies the same morphism without assuming a concrete element description.</p>
+<p>With our positive last projection in (2), this is the negative of the lift-and-differentiate boundary <span class="math" data-tex="\([z]\mapsto[a]\)">\([z]\mapsto[a]\)</span>. Either convention yields the same kernels and images in the long exact cohomology sequence, but their actual arrows have opposite signs. Formula (24) fixes the convention unambiguously.</p>
+<h2 id="5-four-graded-exercises-with-complete-solutions">5. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-foundation-detect-the-homotopy-sign">Exercise 1 — Foundation: detect the homotopy sign</h3>
+<p>In rational vector spaces, let <span class="math" data-tex="\(I\)">\(I\)</span> be <span class="math" data-tex="\(\mathbb Q\xrightarrow{1}\mathbb Q\)">\(\mathbb Q\xrightarrow{1}\mathbb Q\)</span> in degrees 0 and 1. Take <span class="math" data-tex="\(F=G=\mathrm{Id}\)">\(F=G=\mathrm{Id}\)</span>, <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span>, <span class="math" data-tex="\(u=1_I\)">\(u=1_I\)</span> and <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Use the homotopy <span class="math" data-tex="\(h^1=1\)">\(h^1=1\)</span>, with all other components zero. Compute <span class="math" data-tex="\(H_\alpha(I)\)">\(H_\alpha(I)\)</span> and the induced contraction. Show explicitly that using a positive second block in (6) fails.</p>
+<p><strong>Solution.</strong> Every rational vector space is injective: choose a basis of a subspace, extend it to a basis of the ambient space, and extend a linear map by assigning zero on the new basis vectors. Thus this example also lies in the injective-complex setting.</p>
+<p>The cone has terms <span class="math" data-tex="\(\mathbb Q,\mathbb Q^2,\mathbb Q\)">\(\mathbb Q,\mathbb Q^2,\mathbb Q\)</span> in degrees <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span>, with differentials</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+d^{-1}(a)=(a,-a),\qquad d^0(b,a)=b+a.
+\]">\[
+d^{-1}(a)=(a,-a),\qquad d^0(b,a)=b+a.
+\]</span>
+<p>The original equation <span class="math" data-tex="\(1_I=dh+hd\)">\(1_I=dh+hd\)</span> holds in each of degrees 0 and 1. Formula (6) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+s^0(b,a)=-a,\qquad s^1(b)=(b,0),
+\]">\[
+s^0(b,a)=-a,\qquad s^1(b)=(b,0),
+\]</span>
+<p>and all other components zero. In degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, <span class="math" data-tex="\(s^0d^{-1}(a)=a\)">\(s^0d^{-1}(a)=a\)</span>. In degree 0,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+d^{-1}s^0(b,a)=(-a,a),\qquad
+s^1d^0(b,a)=(b+a,0),
+\]">\[
+d^{-1}s^0(b,a)=(-a,a),\qquad
+s^1d^0(b,a)=(b+a,0),
+\]</span>
+<p>whose sum is <span class="math" data-tex="\((b,a)\)">\((b,a)\)</span>. In degree 1, <span class="math" data-tex="\(d^0s^1(b)=b\)">\(d^0s^1(b)=b\)</span>. Therefore <span class="math" data-tex="\(ds+sd=1\)">\(ds+sd=1\)</span>.</p>
+<p>The incorrect choice <span class="math" data-tex="\(s^0(b,a)=a\)">\(s^0(b,a)=a\)</span> instead gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+d^{-1}s^0(b,a)+s^1d^0(b,a)
+=(a,-a)+(b+a,0)=(b+2a,-a),
+\]">\[
+d^{-1}s^0(b,a)+s^1d^0(b,a)
+=(a,-a)+(b+a,0)=(b+2a,-a),
+\]</span>
+<p>which is not <span class="math" data-tex="\((b,a)\)">\((b,a)\)</span>, for example when <span class="math" data-tex="\((b,a)=(0,1)\)">\((b,a)=(0,1)\)</span>. Over a field of characteristic two this test would not detect the mistake; the rational example does.</p>
+<h3 id="exercise-2-intermediate-zero-and-identity-transformations">Exercise 2 — Intermediate: zero and identity transformations</h3>
+<p>For arbitrary additive functors <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, identify <span class="math" data-tex="\(\mathbf RH_0\)">\(\mathbf RH_0\)</span> and all arrows of (15) when <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. When <span class="math" data-tex="\(F=G\)">\(F=G\)</span> and <span class="math" data-tex="\(\alpha=1_F\)">\(\alpha=1_F\)</span>, give a natural contraction and identify (15). Explain why the translation comparison still carries a sign in the zero case.</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, (4) is block diagonal, so there is a strict natural isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+H_0(I)=GI\oplus FI[1].
+\]">\[
+H_0(I)=GI\oplus FI[1].
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\mathbf RH_0=\mathbf RG\oplus\mathbf RF[1]\)">\(\mathbf RH_0=\mathbf RG\oplus\mathbf RF[1]\)</span>. The triangle is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\mathbf RF\xrightarrow{0}\mathbf RG
+\xrightarrow{b\mapsto(b,0)}\mathbf RG\oplus\mathbf RF[1]
+\xrightarrow{(b,a)\mapsto a}\mathbf RF[1].
+\]">\[
+\mathbf RF\xrightarrow{0}\mathbf RG
+\xrightarrow{b\mapsto(b,0)}\mathbf RG\oplus\mathbf RF[1]
+\xrightarrow{(b,a)\mapsto a}\mathbf RF[1].
+\]</span>
+<p>It is the cone triangle of zero, pointwise. The map on an arrow is the direct sum of the two derived maps. Despite the zero off-diagonal differential, (9) is still <span class="math" data-tex="\((b,a)\mapsto(b,-a)\)">\((b,a)\mapsto(b,-a)\)</span>; this is the comparison for this exact cone functor. It makes its last projection transform with the minus sign (10), as required for translated triangles. The direct sum decomposition alone does not prescribe that translation comparison.</p>
+<p>For <span class="math" data-tex="\(\alpha=1_F\)">\(\alpha=1_F\)</span>, the cone differential is <span class="math" data-tex="\((b,a)\mapsto(db+a,-da)\)">\((b,a)\mapsto(db+a,-da)\)</span>. Define <span class="math" data-tex="\(s^n(b,a)=(0,b)\)">\(s^n(b,a)=(0,b)\)</span>. Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ds(b,a)=(b,-db),\qquad sd(b,a)=(0,db+a),
+\]">\[
+ds(b,a)=(b,-db),\qquad sd(b,a)=(0,db+a),
+\]</span>
+<p>so <span class="math" data-tex="\(ds+sd=1\)">\(ds+sd=1\)</span>. This contraction is natural in <span class="math" data-tex="\(I\)">\(I\)</span>, because it is built from biproduct identities. The cone is zero in the homotopy category, and hence <span class="math" data-tex="\(\mathbf RH_{1_F}=0\)">\(\mathbf RH_{1_F}=0\)</span>. Triangle (15) is naturally isomorphic to</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\mathbf RF\xrightarrow{1}\mathbf RF\longrightarrow0
+\longrightarrow\mathbf RF[1].
+\]">\[
+\mathbf RF\xrightarrow{1}\mathbf RF\longrightarrow0
+\longrightarrow\mathbf RF[1].
+\]</span>
+<p>The first arrow is the identity before localization, so its identification does not require a separate choice of cone isomorphism.</p>
+<h3 id="exercise-3-advanced-a-row-exact-only-on-injectives">Exercise 3 — Advanced: a row exact only on injectives</h3>
+<p>Fix an integer <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, and put <span class="math" data-tex="\(T_m(M)=M[m]=\operatorname{Hom}(\mathbb Z/m,M)\)">\(T_m(M)=M[m]=\operatorname{Hom}(\mathbb Z/m,M)\)</span> on abelian groups. Use the natural inclusion <span class="math" data-tex="\(T_m\to\mathrm{Id}\)">\(T_m\to\mathrm{Id}\)</span> and multiplication by <span class="math" data-tex="\(m\)">\(m\)</span> on <span class="math" data-tex="\(\mathrm{Id}\)">\(\mathrm{Id}\)</span>. Prove exactness on injectives, compute <span class="math" data-tex="\(\mathbf RT_m(\mathbb Z)\)">\(\mathbf RT_m(\mathbb Z)\)</span>, and compute the actual connecting arrow
+<span class="math" data-tex="\(\delta_{\mathbb Z}:\mathbb Z\to\mathbf RT_m(\mathbb Z)[1]\)">\(\delta_{\mathbb Z}:\mathbb Z\to\mathbf RT_m(\mathbb Z)[1]\)</span> in convention (2).</p>
+<p><strong>Solution.</strong> An injective abelian group <span class="math" data-tex="\(J\)">\(J\)</span> is divisible. Indeed, for <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span>, send <span class="math" data-tex="\(m\in m\mathbb Z\)">\(m\in m\mathbb Z\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>, and extend this map to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> by injectivity. The image of 1 is an <span class="math" data-tex="\(m\)">\(m\)</span>-th part of <span class="math" data-tex="\(x\)">\(x\)</span>. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+0\longrightarrow J[m]\longrightarrow J\xrightarrow{m}J
+\longrightarrow0
+\]">\[
+0\longrightarrow J[m]\longrightarrow J\xrightarrow{m}J
+\longrightarrow0
+\]</span>
+<p>is exact. At <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, however, the multiplication map is not epic. This example therefore needs precisely the injective hypothesis of Theorem 4.2, rather than exactness of the underived row everywhere.</p>
+<p>Use the resolution</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\mathbb Z\longrightarrow I^0=\mathbb Q
+\xrightarrow{d^0}\ I^1=\mathbb Q/\mathbb Z,
+\qquad d^0(q)=q+\mathbb Z,
+\]">\[
+\mathbb Z\longrightarrow I^0=\mathbb Q
+\xrightarrow{d^0}\ I^1=\mathbb Q/\mathbb Z,
+\qquad d^0(q)=q+\mathbb Z,
+\]</span>
+<p>with zero terms elsewhere. Both terms are divisible and hence injective by the fifth prerequisite. Its cohomology is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in degree 0 and zero in degree 1. Applying <span class="math" data-tex="\(T_m\)">\(T_m\)</span> gives zero in degree 0 and <span class="math" data-tex="\((\mathbb Q/\mathbb Z)[m]\)">\((\mathbb Q/\mathbb Z)[m]\)</span> in degree 1. Identify this last group with <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\bar a\longmapsto a/m+\mathbb Z.
+\]">\[
+\bar a\longmapsto a/m+\mathbb Z.
+\]</span>
+<p>This is injective because <span class="math" data-tex="\(a/m\in\mathbb Z\)">\(a/m\in\mathbb Z\)</span> exactly when <span class="math" data-tex="\(m\mid a\)">\(m\mid a\)</span>, and surjective because any <span class="math" data-tex="\(m\)">\(m\)</span>-torsion class has a rational representative whose product with <span class="math" data-tex="\(m\)">\(m\)</span> is an integer. Therefore
+<span class="math" data-tex="\(\mathbf RT_m(\mathbb Z)\simeq(\mathbb Z/m)[-1]\)">\(\mathbf RT_m(\mathbb Z)\simeq(\mathbb Z/m)[-1]\)</span>.</p>
+<p>For this model the cone in (20) has <span class="math" data-tex="\(\mathbb Q\oplus\mathbb Z/m\)">\(\mathbb Q\oplus\mathbb Z/m\)</span> in degree 0 and <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span> in degree 1, with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+D^0(q,\bar a)=q+a/m+\mathbb Z.
+\]">\[
+D^0(q,\bar a)=q+a/m+\mathbb Z.
+\]</span>
+<p>Its quotient map to <span class="math" data-tex="\(I\)">\(I\)</span> is <span class="math" data-tex="\((q,\bar a)\mapsto mq\)">\((q,\bar a)\mapsto mq\)</span> in degree 0 and <span class="math" data-tex="\(r+\mathbb Z\mapsto mr+\mathbb Z\)">\(r+\mathbb Z\mapsto mr+\mathbb Z\)</span> in degree 1. Its positive last projection is <span class="math" data-tex="\((q,\bar a)\mapsto\bar a\)">\((q,\bar a)\mapsto\bar a\)</span> in degree 0. For <span class="math" data-tex="\(z\in\mathbb Z\)">\(z\in\mathbb Z\)</span>, the tuple</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(z/m,-\bar z)
+\]">\[
+(z/m,-\bar z)
+\]</span>
+<p>is a cone cycle, its image under the quotient map is <span class="math" data-tex="\(z\)">\(z\)</span>, and its last projection is <span class="math" data-tex="\(-\bar z\)">\(-\bar z\)</span>. These tuples give an actual homomorphism <span class="math" data-tex="\(\mathbb Z[0]\to C(\alpha_I)\)">\(\mathbb Z[0]\to C(\alpha_I)\)</span>. Its composite with the quotient map is the augmentation <span class="math" data-tex="\(\mathbb Z[0]\to I\)">\(\mathbb Z[0]\to I\)</span>, so it is a quasi-isomorphism by Lemma 4.1 and the two-out-of-three property. It therefore represents the inverse quotient arrow on this source in the derived category. Formula (24) now gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\delta_{\mathbb Z}(z)=-\bar z\in\mathbb Z/m.
+\]">\[
+\delta_{\mathbb Z}(z)=-\bar z\in\mathbb Z/m.
+\]</span>
+<p>The identity functor derives to itself, because it already preserves quasi-isomorphisms and its unit is the resolution quasi-isomorphism. Thus the resulting triangle is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\mathbf RT_m\longrightarrow\mathrm{Id}\xrightarrow{m}\mathrm{Id}
+\xrightarrow{\delta}\mathbf RT_m[1].
+\]">\[
+\mathbf RT_m\longrightarrow\mathrm{Id}\xrightarrow{m}\mathrm{Id}
+\xrightarrow{\delta}\mathbf RT_m[1].
+\]</span>
+<p>At <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, its cohomology sequence contains
+<span class="math" data-tex="\(\mathbb Z\xrightarrow{m}\mathbb Z\xrightarrow{-\mathrm{red}}\mathbb Z/m\to0\)">\(\mathbb Z\xrightarrow{m}\mathbb Z\xrightarrow{-\mathrm{red}}\mathbb Z/m\to0\)</span>, which is exact. The connecting map is nonzero; for <span class="math" data-tex="\(m=3\)">\(m=3\)</span> its value at 1 is 2, so its sign can be observed.</p>
+<h3 id="exercise-4-synthesis-nonzero-connecting-maps-in-every-nonnegative-degree">Exercise 4 — Synthesis: nonzero connecting maps in every nonnegative degree</h3>
+<p>Let <span class="math" data-tex="\(R=k[t]/(t^2)\)">\(R=k[t]/(t^2)\)</span>, <span class="math" data-tex="\(S=R/(t)\)">\(S=R/(t)\)</span>, and let <span class="math" data-tex="\(\mathcal A=\mathcal B\)">\(\mathcal A=\mathcal B\)</span> be the category of finite-dimensional <span class="math" data-tex="\(R\)">\(R\)</span>-modules. Put <span class="math" data-tex="\(T(M)=M[t]=\operatorname{Hom}_R(S,M)\)">\(T(M)=M[t]=\operatorname{Hom}_R(S,M)\)</span>. Show that the natural row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+0\longrightarrow T(M)\xrightarrow{\text{inclusion}}M
+\xrightarrow{x\mapsto tx}T(M)\longrightarrow0
+\]">\[
+0\longrightarrow T(M)\xrightarrow{\text{inclusion}}M
+\xrightarrow{x\mapsto tx}T(M)\longrightarrow0
+\]</span>
+<p>is exact on injectives. Compute <span class="math" data-tex="\(\mathbf RT(S)\)">\(\mathbf RT(S)\)</span> and every cohomology component of its connecting map
+<span class="math" data-tex="\(\delta_S:\mathbf RT(S)\to\mathbf RT(S)[1]\)">\(\delta_S:\mathbf RT(S)\to\mathbf RT(S)[1]\)</span>.</p>
+<p><strong>Solution.</strong> The sixth prerequisite proves that <span class="math" data-tex="\(R\)">\(R\)</span> is injective and that every finite module embeds in a finite direct sum of copies of <span class="math" data-tex="\(R\)">\(R\)</span>, so this abelian category has enough injectives. Apply <span class="math" data-tex="\(\operatorname{Hom}_R(-,J)\)">\(\operatorname{Hom}_R(-,J)\)</span>, for an injective finite module <span class="math" data-tex="\(J\)">\(J\)</span>, to</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+0\longrightarrow S\xrightarrow{\bar a\mapsto at}R
+\longrightarrow S\longrightarrow0.
+\]">\[
+0\longrightarrow S\xrightarrow{\bar a\mapsto at}R
+\longrightarrow S\longrightarrow0.
+\]</span>
+<p>Injectivity makes restriction onto <span class="math" data-tex="\(\operatorname{Hom}_R(S,J)\)">\(\operatorname{Hom}_R(S,J)\)</span> surjective: any map from the submodule <span class="math" data-tex="\((t)\)">\((t)\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span> extends across <span class="math" data-tex="\(R\)">\(R\)</span>. Under the identifications <span class="math" data-tex="\(\operatorname{Hom}_R(R,J)=J\)">\(\operatorname{Hom}_R(R,J)=J\)</span> and <span class="math" data-tex="\(\operatorname{Hom}_R(S,J)=J[t]\)">\(\operatorname{Hom}_R(S,J)=J[t]\)</span>, restriction sends <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(tx\)">\(tx\)</span>. Its kernel is <span class="math" data-tex="\(J[t]\)">\(J[t]\)</span>, and the first arrow is its inclusion. This proves exactness on injectives.</p>
+<p>An injective resolution of <span class="math" data-tex="\(S\)">\(S\)</span> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+S\xrightarrow{\bar a\mapsto at}R
+\xrightarrow{t}R\xrightarrow{t}R\xrightarrow{t}\cdots
+\]">\[
+S\xrightarrow{\bar a\mapsto at}R
+\xrightarrow{t}R\xrightarrow{t}R\xrightarrow{t}\cdots
+\]</span>
+<p>with the first <span class="math" data-tex="\(R\)">\(R\)</span> in degree 0. In each copy of <span class="math" data-tex="\(R\)">\(R\)</span>, both the image and the kernel of multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> are <span class="math" data-tex="\((t)\)">\((t)\)</span>. The augmentation identifies <span class="math" data-tex="\(S\)">\(S\)</span> with that kernel in degree 0. Thus this is a quasi-isomorphic injective replacement. Applying <span class="math" data-tex="\(T\)">\(T\)</span> gives <span class="math" data-tex="\((t)\simeq S\)">\((t)\simeq S\)</span> in every degree <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, with zero differentials. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+H^n(\mathbf RT(S))=S\quad(n\ge0),\qquad
+H^n(\mathbf RT(S))=0\quad(n&lt;0).
+\]">\[
+H^n(\mathbf RT(S))=S\quad(n\ge0),\qquad
+H^n(\mathbf RT(S))=0\quad(n&lt;0).
+\]</span>
+<p>Write <span class="math" data-tex="\(A=TI\)">\(A=TI\)</span> using the identification <span class="math" data-tex="\(\bar a\leftrightarrow at\)">\(\bar a\leftrightarrow at\)</span>. The cone of <span class="math" data-tex="\(A\to I\)">\(A\to I\)</span> has <span class="math" data-tex="\(S\)">\(S\)</span> in degree <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(R\oplus S\)">\(R\oplus S\)</span> in every degree <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>. Its differentials are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+D^{-1}(\bar a)=(at,0),\qquad
+D^n(r,\bar a)=(tr+at,0)\quad(n\ge0).
+\]">\[
+D^{-1}(\bar a)=(at,0),\qquad
+D^n(r,\bar a)=(tr+at,0)\quad(n\ge0).
+\]</span>
+<p>The quotient map (20) in a nonnegative degree is
+<span class="math" data-tex="\(q^n(r,\bar a)=\bar r\in S\)">\(q^n(r,\bar a)=\bar r\in S\)</span>, because the map <span class="math" data-tex="\(I\to TI\)">\(I\to TI\)</span> is multiplication by <span class="math" data-tex="\(t\)">\(t\)</span>. The positive last projection is <span class="math" data-tex="\(p^n(r,\bar a)=\bar a\in A^{n+1}\)">\(p^n(r,\bar a)=\bar a\in A^{n+1}\)</span>.</p>
+<p>For any class <span class="math" data-tex="\(\bar x\in S\)">\(\bar x\in S\)</span>, use its scalar representative <span class="math" data-tex="\(x\in k\)">\(x\in k\)</span>. The tuple <span class="math" data-tex="\((x,-\bar x)\)">\((x,-\bar x)\)</span> is a cone cycle, since <span class="math" data-tex="\(t(x-x)=0\)">\(t(x-x)=0\)</span>. It maps under <span class="math" data-tex="\(q^n\)">\(q^n\)</span> to <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span>, and under <span class="math" data-tex="\(p^n\)">\(p^n\)</span> to <span class="math" data-tex="\(-\bar x\)">\(-\bar x\)</span>. Since <span class="math" data-tex="\(q\)">\(q\)</span> is a quasi-isomorphism by Lemma 4.1, this proves</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+H^n(\delta_S)=-1_S:S\longrightarrow S
+\qquad\text{for every }n\ge0.
+\]">\[
+H^n(\delta_S)=-1_S:S\longrightarrow S
+\qquad\text{for every }n\ge0.
+\]</span>
+<p>These are computations with cycle representatives. The assignment <span class="math" data-tex="\(\bar x\mapsto x\in R\)">\(\bar x\mapsto x\in R\)</span> is not an <span class="math" data-tex="\(R\)">\(R\)</span>-linear splitting of <span class="math" data-tex="\(R\to S\)">\(R\to S\)</span>: multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> acts trivially on <span class="math" data-tex="\(S\)">\(S\)</span> but not on its scalar lift in <span class="math" data-tex="\(R\)">\(R\)</span>. No chain-level section of <span class="math" data-tex="\(q\)">\(q\)</span> is claimed or needed.</p>
+<p>The underlying distinguished triangle is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\mathbf RT(S)\longrightarrow S\longrightarrow\mathbf RT(S)
+\xrightarrow{\delta_S}\mathbf RT(S)[1],
+\]">\[
+\mathbf RT(S)\longrightarrow S\longrightarrow\mathbf RT(S)
+\xrightarrow{\delta_S}\mathbf RT(S)[1],
+\]</span>
+<p>since the identity functor derives to itself. In positive degrees its exact cohomology sequence forces the displayed connecting maps to be isomorphisms; the cone calculation determines their precise sign. In degree 0 the inclusion <span class="math" data-tex="\(T(S)=S\to S\)">\(T(S)=S\to S\)</span> is an isomorphism and multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> is zero, so the same exact sequence also permits and forces the connecting isomorphism. In characteristic two <span class="math" data-tex="\(-1_S=1_S\)">\(-1_S=1_S\)</span>, and it remains nonzero.</p>
+</main></body></html>

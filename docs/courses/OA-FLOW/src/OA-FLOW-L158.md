@@ -1,6 +1,6 @@
 # Power forms and contractive strips
 
-*Original exposition and illustration sources are dedicated under CC0-1.0 to the extent of any rights held. Independently reviewed at the stated earlier inputs.*
+*Original exposition and illustration sources are dedicated under CC0-1.0 to the extent of any rights held.*
 
 The lower strip of depth \(a\) detects the closed form of the power \(2a\). The product order in this lesson is \(h^{it}k^{-it}\). The result holds on arbitrary Hilbert spaces, even when both positive operators and their inverses are unbounded. Its extension has genuine joint continuity at both edges for all normal positive functional seminorms, including adjoints.
 

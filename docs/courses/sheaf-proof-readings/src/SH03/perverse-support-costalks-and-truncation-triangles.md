@@ -369,7 +369,28 @@ Here \((q+c)(r)=p(r+c)+c=(p^*[c])^*(r)\); it is a perversity. Transversality mak
 
 This is the bounded noncharacteristic comparison, with its specified evaluation/trace map, from the existing sheaf-operation programme. A transverse intersection \(T=S\cap Y\) has dimension \(r=s-c\), and the pullback conormal estimate makes the restrictions adapted to the induced strata.
 
-For the lower implication compose exceptional inclusions:
+Here is why the hypotheses of [the precise comparison CHE23 and CHE25](../SH02/characteristic-estimates.md#sh02-che-005--ordinary-and-exceptional-inverse-image) hold on all of \(T^*Y\). Put \(A=\operatorname{SS}(F)\). An escape sequence in CHE3 would have base points tending to \(h(y)\), covectors in \(A\) whose norms tend to infinity, and bounded images under the transpose differential of \(h\). Normalize those covectors to unit length and pass to a convergent subsequence in a local cotangent chart. Closedness and conicity of \(A\) put the nonzero limit in its fibre over \(h(y)\). Dividing the bounded transpose images by the diverging norms shows that this limit annihilates \(T_yY\). Adaptation puts it in the conormal to the stratum through \(h(y)\), so it also annihilates that stratum's tangent space. Transversality says those two tangent spaces span the ambient tangent space. Their common annihilator is zero, a contradiction. Thus there are no escape directions, including over the zero section of \(T^*Y\). CHE23 makes the comparison cone have empty microsupport, hence vanish.
+
+The comparison with that zero cone is the actual morphism
+\[
+ \vartheta_h:
+ h^{-1}F\otimes N[-c]\longrightarrow h^!F.
+ \tag{20a}
+\]
+Its exceptional adjunct is the projection-formula identification followed by the relative trace: tensor \(F\) with the map from the proper-support image of \(N[-c]\) to the constant sheaf on \(X\). Formula (20) uses the inverse of (20a). It is not an unspecified choice of an isomorphism between two objects with matching cohomology degrees.
+
+For the lower implication the four inclusions have types
+\[
+\begin{aligned}
+i_{T,Y}&:T\longrightarrow Y,\\
+i_{T,S}&:T\longrightarrow S,\\
+i_{S,X}&:S\longrightarrow X,\\
+h&:Y\longrightarrow X,\\
+h\circ i_{T,Y}&=i_{S,X}\circ i_{T,S}.
+\end{aligned}
+\tag{20b}
+\]
+The exceptional composition comparison EX.13 applies to the common composite in (20b). Tensoring through exceptional restriction with the locally constant invertible line \(N\) is the local coefficient comparison, checked on an open cover where that line is free of rank one and glued by its transition maps. For the lower implication compose exceptional inclusions:
 \(i_{T,Y}^!h^!F=i_{T,S}^!i_{S,X}^!F\).
 The right side is \(i_{S,X}^!F|_T\otimes\mathrm{or}_{T/S}[-c]\), by the smooth-subset case of (7). Apply (20) to the left side. The two shifts \([-c]\) cancel, giving
 \[

@@ -1,6 +1,6 @@
 # Internal Hilbert spaces in a von Neumann algebra
 
-*Self-checked by the writing AI.*
+
 
 A scalar inner product can be encoded by multiplication inside an operator
 algebra. Its orthonormal vectors then become isometries, and their ranges

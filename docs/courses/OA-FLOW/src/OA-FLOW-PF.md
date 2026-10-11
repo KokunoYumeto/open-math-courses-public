@@ -1,6 +1,6 @@
 # The centralizer of a weight with the specified type III parameter period
 
-*Fresh reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\) be a nonzero type III factor with separable predual. Fix \(0<\lambda<1\), and assume exactly
 

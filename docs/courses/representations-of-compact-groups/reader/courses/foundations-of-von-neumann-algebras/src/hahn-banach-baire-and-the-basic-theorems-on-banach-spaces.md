@@ -1,6 +1,6 @@
 # Hahn–Banach, Baire and the basic theorems on Banach spaces
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Originally written and self-checked by Claude Opus 5.5 (Anthropic), October 2026. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all six solutions, supplied the well-ordering and infinite-product proof and corrected the non-Hausdorff example, October 2026. GPT-6 Astra (OpenAI), at the Ultra setting, supplied and self-checked Theorem 3.2 and Corollary 3.3, October 2026. Public domain (CC0).*
 
 The lessons of this course use a small number of theorems about normed spaces again and again. This lesson proves them.
 
@@ -12,16 +12,16 @@ The lessons of this course use a small number of theorems about normed spaces ag
   - the closed graph theorem.
 - **Separation of convex sets** in topological vector spaces and in locally convex spaces, and continuity of functionals with closed kernel.
 - **Finite-dimensional spaces**: a finite-dimensional Hausdorff topological vector space carries only one vector topology.
-- **Cardinal arithmetic**: the Cantor–Schröder–Bernstein theorem, Cantor's theorem, and \(|X\times\mathbb N|=|X|\) for infinite \(X\).
+- **Cardinal arithmetic**: the Cantor–Schröder–Bernstein theorem, Cantor's theorem, well-ordering, and \(|X\times\mathbb N|=|X\times X|=|X|\) for infinite \(X\).
 
-The next lesson, Weak topologies: Tychonoff, Banach–Alaoglu, Mazur, bipolars, Krein–Milman and Eberlein–Šmulian, builds the weak topologies on these results.
+The next lesson, [Weak topologies: Tychonoff, Banach–Alaoglu, Mazur, bipolars, Krein–Milman and Eberlein–Šmulian](../../../../../foundations-of-von-neumann-algebras/src/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.md), builds the weak topologies on these results.
 
-We assume metric spaces and completeness (core courses C10 and C20), and normed spaces, bounded linear maps and their norms (core course D20). We also assume the axiom of choice: core course C80 (Open Logic, chapter *Choice*) proves it equivalent to the well-ordering principle. The core course D20 states several of the theorems below and gives hints for their proofs. Here every proof is complete.
+We assume metric spaces and completeness (core courses Real Analysis I and II), and normed spaces, bounded linear maps and their norms (core course Functional Analysis). We assume the axiom of choice. Theorem 1.1 proves Zorn’s lemma from it, and Theorem 8.5 derives the well-ordering principle without a further set-theory import. The core course Functional Analysis states several of the theorems below and gives hints for their proofs. Here every proof is complete.
 
 ## Conventions
 
 \(\mathbb K\) is \(\mathbb R\) or \(\mathbb C\). Vector spaces are over \(\mathbb K\) unless a statement says otherwise. For a normed space \(E\):
-- \(B_E(x,r)\) is the open ball of radius \(r\) about \(x\), and \(\overline B_E(x,r)\) is the closed ball;
+- \(B_E(x,r)\) and \(\overline B_E(x,r)\) denote the open and closed balls with centre \(x\) and radius \(r\);
 - \(E^*\) is the space of bounded linear functionals with the norm \(\|\varphi\|=\sup_{\|x\|\le1}|\varphi(x)|\);
 - \(B(E,F)\) is the space of bounded linear maps \(E\to F\) with the operator norm.
 
@@ -52,11 +52,22 @@ A map \(p:V\to\mathbb R\) on a real vector space is *sublinear* if \(p(x+y)\le p
 
 **Proof.** *One step.* Let \(x_0\notin M\) and \(M_1=M+\mathbb Rx_0\). A linear extension \(f_1\) to \(M_1\) is determined by \(c=f_1(x_0)\). The condition \(f_1\le p\) on \(M_1\) says \(f(m)+tc\le p(m+tx_0)\) for all \(m\in M\) and \(t\in\mathbb R\). Dividing by \(|t|\) and using positive homogeneity, this is equivalent to
 \[
-f(m')-p(m'-x_0)\ \le\ c\ \le\ p(m+x_0)-f(m)\qquad\text{for all }m,m'\in M. \tag{2.1}
+\begin{gathered}
+f(m')-p(m'-x_0)\ \\
+\le\ c\ \\
+\le\ p(m+x_0)-f(m)\\
+\text{for all }m,m'\in M.
+\end{gathered}
+\tag{2.1}
 \]
 Such a \(c\) exists because, for all \(m,m'\in M\),
 \[
-f(m')+f(m)=f(m'+m)\le p(m'+m)\le p(m'-x_0)+p(m+x_0).
+\begin{gathered}
+f(m')+f(m)\\
+=f(m'+m)\\
+\le p(m'+m)\\
+\le p(m'-x_0)+p(m+x_0).
+\end{gathered}
 \]
 *Zorn.* Order the pairs \((D,g)\), with \(M\subseteq D\) a subspace and \(g\) a linear extension of \(f\) to \(D\) with \(g\le p\), by extension. A chain has an upper bound: the union of the domains, with the common extension. By Zorn's lemma (Theorem 1.1) there is a maximal pair \((D,g)\). If \(D\neq V\), the one-step extension contradicts maximality. So \(D=V\). \(\square\)
 
@@ -65,9 +76,24 @@ f(m')+f(m)=f(m'+m)\le p(m'+m)\le p(m'-x_0)+p(m+x_0).
 **Proof.** *Real scalars.* Theorem 2.1 gives \(F\le p\). Then \(-F(x)=F(-x)\le p(-x)=p(x)\), so \(|F|\le p\).
 
 *Complex scalars.* Let \(u=\operatorname{Re}f\), a real-linear functional on \(M\) with \(u\le|f|\le p\). By Theorem 2.1, applied to \(V\) as a real space, \(u\) extends to a real-linear \(U\le p\). Put \(F(x)=U(x)-iU(ix)\).
-- \(F\) is real-linear and \(F(ix)=U(ix)-iU(-x)=U(ix)+iU(x)=iF(x)\), so \(F\) is complex-linear.
+- \(F\) is real-linear and \[
+\begin{gathered}
+F(ix)\\
+=U(ix)-iU(-x)\\
+=U(ix)+iU(x)\\
+=iF(x),
+\end{gathered}
+\] so \(F\) is complex-linear.
 - \(\operatorname{Re}F=U\). On \(M\), \(f\) and \(F\) have the same real part, hence are equal, since a complex-linear functional is determined by its real part: \(f(x)=\operatorname{Re}f(x)-i\operatorname{Re}f(ix)\).
-- Given \(x\), choose \(\theta\) with \(e^{-i\theta}F(x)=|F(x)|\). Then \(|F(x)|=F(e^{-i\theta}x)=U(e^{-i\theta}x)\le p(e^{-i\theta}x)=p(x)\). \(\square\)
+- Given \(x\), choose \(\theta\) with \(e^{-i\theta}F(x)=|F(x)|\). Then \[
+\begin{gathered}
+|F(x)|\\
+=F(e^{-i\theta}x)\\
+=U(e^{-i\theta}x)\\
+\le p(e^{-i\theta}x)\\
+=p(x).
+\end{gathered}
+\] \(\square\)
 
 **Corollary 2.3** (normed spaces). Let \(E\) be a normed space.
 1. Every \(\varphi\in M^*\), for a subspace \(M\subseteq E\), extends to some \(\Phi\in E^*\) with \(\|\Phi\|=\|\varphi\|\).
@@ -79,7 +105,14 @@ f(m')+f(m)=f(m'+m)\le p(m'+m)\le p(m'-x_0)+p(m+x_0).
 
 2. For \(x=0\) take \(\varphi=0\). Otherwise apply 1 to \(t x\mapsto t\|x\|\) on \(\mathbb Kx\), a functional of norm \(1\). The maximum in the norm formula is attained at this \(\varphi\), and \(|\varphi(x)|\le\|\varphi\|\|x\|\) gives the other inequality.
 
-3. On \(M+\mathbb Kx\) put \(\psi(m+tx)=td\). This is well defined because \(x\notin M\). It satisfies \(|\psi(m+tx)|=|t|d\le|t|\,\|x+m/t\|=\|m+tx\|\) for \(t\ne0\), so \(\|\psi\|\le1\). Choosing \(m_k\in M\) with \(\|x-m_k\|\to d\) gives \(\psi(x-m_k)=d\), so \(\|\psi\|=1\). Extend by 1. For the consequence: if \(M\) is a subspace that is not dense, apply this to its closure \(\overline M\) and some \(x\notin\overline M\).
+3. On \(M+\mathbb Kx\) put \(\psi(m+tx)=td\). This is well defined because \(x\notin M\). It satisfies \[
+\begin{gathered}
+|\psi(m+tx)|\\
+=|t|d\\
+\le|t|\,\|x+m/t\|\\
+=\|m+tx\|
+\end{gathered}
+\] for \(t\ne0\), so \(\|\psi\|\le1\). Choosing \(m_k\in M\) with \(\|x-m_k\|\to d\) gives \(\psi(x-m_k)=d\), so \(\|\psi\|=1\). Extend by 1. For the consequence: if \(M\) is a subspace that is not dense, apply this to its closure \(\overline M\) and some \(x\notin\overline M\).
 
 4. \(j\) is linear, and \(\|j(x)\|=\sup_{\|\varphi\|\le1}|\varphi(x)|=\|x\|\) by 2. \(\square\)
 
@@ -94,6 +127,66 @@ Inductively, \(B(x_n,r_n)\cap U_{n+1}\) is nonempty and open. Choose \(x_{n+1}\)
 For \(m>n\), \(x_m\in B(x_n,r_n)\) and \(r_n<2^{1-n}\), so \((x_n)\) is Cauchy. Let \(x\) be its limit. For each \(n\), the closed ball \(\overline B(x_n,r_n)\) contains \(x_m\) for all \(m\ge n\), hence contains \(x\). So \(x\in W\cap\bigcap_nU_n\).
 
 For the second form: the complement of a closed set with empty interior is a dense open set. If \(X=\bigcup_nF_n\) with each \(F_n\) closed with empty interior, then the dense open sets \(X\setminus F_n\) have empty intersection. This contradicts the first form, since \(X\ne\varnothing\). \(\square\)
+
+### Locally compact Hausdorff spaces and weak compactness
+
+A space is *Hausdorff* if distinct points have disjoint open neighbourhoods. It is *compact* if every open cover has a finite subcover, and *locally compact* here means that every point has a compact neighbourhood: a compact set containing an open set about that point. These definitions do not require a metric. A set is *nowhere dense* if its closure has empty interior. A *Baire space* is one in which every countable intersection of dense open sets is dense.
+
+**Theorem 3.2** (locally compact Hausdorff Baire theorem). Every locally compact Hausdorff space is a Baire space. In particular, every compact Hausdorff space is a Baire space, without any metrizability, separability or countable-base assumption. No nonempty open subset can be contained in a countable union of nowhere dense subsets. Consequently, in any countable closed cover of a nonempty such space, at least one member has nonempty interior.
+
+**Proof.** We first prove the compact-neighbourhood shrinking fact needed in place of shrinking metric balls.
+
+*Compact sets are closed in a Hausdorff space.* Let \(C\subseteq X\) be compact and \(y\notin C\). For each \(c\in C\), choose disjoint open sets \(A_c\ni c\) and \(B_c\ni y\). Finitely many \(A_c\) cover \(C\). The intersection of the corresponding \(B_c\) is an open neighbourhood of \(y\) disjoint from \(C\). Thus \(X\setminus C\) is open. A closed subset of a compact space is compact: adjoin its open complement to any open cover and take a finite subcover.
+
+*Shrinking inside an arbitrary open neighbourhood.* Suppose \(x\in O\subseteq X\), with \(O\) open. Choose a compact neighbourhood \(K\) of \(x\), so \(x\in\operatorname{int}_X K\). The set \(K\setminus O\) is closed in \(K\), hence compact. For every \(y\in K\setminus O\), choose disjoint open sets \(A_y\ni x\) and \(B_y\ni y\). Choose \(y_1,\ldots,y_m\) whose \(B_{y_i}\) cover \(K\setminus O\), and put
+\[
+V=\operatorname{int}_X K\cap O\cap\bigcap_{i=1}^m A_{y_i}.
+\]
+An empty intersection is \(X\). Thus \(V\) is open and contains \(x\). Since \(K\) is closed and \(V\) is disjoint from every open \(B_{y_i}\),
+\[
+\overline V^{\,X}
+\subseteq K\setminus\bigcup_{i=1}^m B_{y_i}
+\subseteq O.
+\]
+Moreover \(\overline V^{\,X}\) is a closed subset of \(K\), hence compact. This proves the shrinking fact, including the case \(K\setminus O=\varnothing\).
+
+Now let \((U_n)_{n\geq1}\) be dense open subsets of \(X\), and let \(W\) be any nonempty open subset. Choose a point in \(W\cap U_1\) and apply the shrinking fact to obtain a nonempty open \(V_1\) with compact closure \(C_1\subseteq W\cap U_1\). Having chosen \(V_n\), density and openness make \(V_n\cap U_{n+1}\) nonempty and open. Apply the same fact there to obtain nonempty open \(V_{n+1}\) with compact closure \(C_{n+1}\) and
+\[
+\varnothing\ne C_{n+1}\subseteq V_n\cap U_{n+1}
+\subseteq C_n.
+\]
+All \(C_n\) are closed subsets of the compact set \(C_1\). Their intersection is nonempty: otherwise their complements relative to \(C_1\) would give an open cover with a finite subcover, making a finite intersection of the \(C_n\) empty. Nestedness makes each such finite intersection one of the nonempty \(C_n\), a contradiction. Every point of \(\bigcap_n C_n\) belongs to \(W\cap\bigcap_n U_n\). Since \(W\) was arbitrary, \(\bigcap_n U_n\) is dense. For empty \(X\), density is vacuous.
+
+If \(N_n\) are nowhere dense, the sets \(X\setminus\overline{N_n}\) are dense and open. Their intersection meets every nonempty open \(W\), so \(W\) cannot be contained in \(\bigcup_n N_n\). In a countable closed cover, if all members had empty interior, they would all be nowhere dense, contradicting this assertion with \(W=X\ne\varnothing\). Finally a compact Hausdorff space is locally compact by taking \(K=X\) at each point. \(\square\)
+
+**Corollary 3.3** (small norm diameter in a weakly compact set). Let \(E\) be a separable real or complex normed space, let \(L\subseteq E\) be nonempty and compact for the weak topology \(\sigma(E,E^*)\), and let \(\varepsilon>0\). Then \(L\) has a nonempty relatively weakly open subset \(G\) of norm diameter less than \(\varepsilon\). Neither completeness of \(E\) nor convexity of \(L\) is assumed.
+
+**Proof.** The weak topology is the least topology making every bounded linear functional \(\varphi:E\to\mathbb K\) continuous. By [Corollary 2.3(2)](../hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-02), these functionals separate points: for \(x\ne y\), choose \(\varphi\) with \(\varphi(x)\ne\varphi(y)\). Inverse images of disjoint scalar neighbourhoods separate \(x\) and \(y\) in the weak topology. Thus \(L\) is compact Hausdorff and Theorem 3.2 applies to it.
+
+Choose a countable norm-dense set \(\{z_1,z_2,\ldots\}\subseteq E\), repeating points if necessary. Put \(r=\varepsilon/3\) and
+\[
+F_n=L\cap\{x\in E:\|x-z_n\|\leq r\}.
+\]
+The norm formula of Corollary 2.3(2) gives the exact equality
+\[
+\begin{gathered}
+\{x:\|x-z_n\|\leq r\}
+\\
+=\bigcap_{\substack{\varphi\in E^*\\\|\varphi\|\leq1}}
+\{x:|\varphi(x)-\varphi(z_n)|\leq r\}.
+\end{gathered}
+\]
+Each set on the right is weakly closed by continuity of \(\varphi\), so \(F_n\) is closed in \(L\). Norm density gives \(L=\bigcup_n F_n\). The closed-cover conclusion of Theorem 3.2 supplies \(N\) with nonempty relative interior \(G=\operatorname{int}_L F_N\). For \(x,y\in G\),
+\[
+\begin{gathered}
+\|x-y\|\leq\|x-z_N\|+\|y-z_N\|
+\\
+\leq2r=2\varepsilon/3<\varepsilon.
+\end{gathered}
+\]
+The same uniform bound gives \(\operatorname{diam}_{\|\cdot\|}G\leq2\varepsilon/3\). The topology used for the interior is the relative weak topology throughout; a norm-open ball was not treated as weakly open. \(\square\)
+
+The separability assumption in Corollary 3.3 supplies the countable closed cover. It is not an assumption in Theorem 3.2. This distinction matters when Baire's theorem is applied to a weakly compact closure of extreme points: the compact topology and the metric used to measure diameter need not be the same.
 
 ## 4. Uniform boundedness
 
@@ -124,7 +217,12 @@ For the second form: the complement of a closed set with empty interior is a den
 
 If \(a,b\in\overline{T(B_E(0,n))}\), then \(a-b\in\overline{T(B_E(0,2n))}\): write \(a=\lim Tx_k\) and \(b=\lim Tz_k\) with \(\|x_k\|,\|z_k\|<n\), and note \(\|x_k-z_k\|<2n\). For \(\|y\|<\varepsilon\), write \(y=(y_0+y)-y_0\) with both terms in \(\overline{T(B_E(0,n))}\). So \(B_F(0,\varepsilon)\subseteq\overline{T(B_E(0,2n))}\). By scaling, with \(\eta=\varepsilon/2n\),
 \[
-B_F(0,\eta r)\subseteq\overline{T(B_E(0,r))}\qquad\text{for every }r>0. \tag{5.1}
+\begin{gathered}
+B_F(0,\eta r)\\
+\subseteq\overline{T(B_E(0,r))}\\
+\text{for every }r>0.
+\end{gathered}
+\tag{5.1}
 \]
 
 *Step 2: removing the closure.* Let \(\|y\|<\eta/2\). By (5.1) with \(r=1/2\), choose \(x_1\) with \(\|x_1\|<1/2\) and \(\|y-Tx_1\|<\eta/4\). Inductively, given \(x_1,\dots,x_n\) with \(\|y-T(x_1+\dots+x_n)\|<\eta2^{-n-1}\), apply (5.1) with \(r=2^{-n-1}\). This gives \(x_{n+1}\) with \(\|x_{n+1}\|<2^{-n-1}\) and \(\|y-T(x_1+\dots+x_{n+1})\|<\eta2^{-n-2}\).
@@ -150,11 +248,19 @@ A *topological vector space* is a vector space with a topology for which additio
 **Lemma 6.1** (Minkowski functionals). Let \(U\) be a convex open neighbourhood of \(0\) in a topological vector space \(X\), and \(p_U(x)=\inf\{t>0:x\in tU\}\).
 1. \(p_U\) is finite and sublinear.
 2. \(U=\{x:p_U(x)<1\}\).
-3. \(|p_U(x)-p_U(y)|\le\max(p_U(x-y),p_U(y-x))\), and \(p_U<\varepsilon\) on \(\varepsilon U\). So \(p_U\) is continuous.
+3. \[
+\begin{gathered}
+|p_U(x)-p_U(y)|\\
+\le\max(p_U(x-y),p_U(y-x)),
+\end{gathered}
+\] and \(p_U<\varepsilon\) on \(\varepsilon U\). So \(p_U\) is continuous.
 
 **Proof.** 1. \(U\) is *absorbing*: for each \(x\), the map \(t\mapsto tx\) is continuous with value \(0\) at \(t=0\), so \(tx\in U\) for small \(t>0\). Hence \(p_U(x)<\infty\). Homogeneity, \(p_U(sx)=sp_U(x)\) for \(s\ge0\), is immediate. Subadditivity follows from convexity: if \(x\in aU\) and \(y\in bU\) with \(a,b>0\), then
 \[
-x+y=(a+b)\Big(\frac a{a+b}\frac xa+\frac b{a+b}\frac yb\Big)\in(a+b)U.
+\begin{gathered}
+x+y\\
+=(a+b)\Big(\frac a{a+b}\frac xa+\frac b{a+b}\frac yb\Big)\in(a+b)U.
+\end{gathered}
 \]
 
 2. If \(x\in U\), then \((1+\varepsilon)x\in U\) for small \(\varepsilon>0\), because \(U\) is open and \(s\mapsto sx\) is continuous. Then \(p_U(x)\le(1+\varepsilon)^{-1}<1\). Conversely, \(p_U(x)<1\) gives \(x\in tU\) for some \(t<1\), and \(tU\subseteq U\) because \(U\) is convex and contains \(0\).
@@ -174,7 +280,13 @@ Define \(f(sx_0)=s\) on \(\mathbb Rx_0\). Then \(f\le p_U\) there: for \(s\ge0\)
 
 \(F\) is continuous: on the neighbourhood \(U\cap(-U)\) of \(0\) we have \(F<1\) and \(-F(x)=F(-x)<1\), so \(|F|<1\) there, and a linear functional bounded on a neighbourhood of \(0\) is continuous.
 
-For \(a\in A\) and \(b\in B\), \(a-b+x_0\in U\), so \(F(a)-F(b)+1=F(a-b+x_0)\le p_U(a-b+x_0)<1\). Hence \(F(a)<F(b)\).
+For \(a\in A\) and \(b\in B\), \(a-b+x_0\in U\), so \[
+\begin{gathered}
+F(a)-F(b)+1\\
+=F(a-b+x_0)\\
+\le p_U(a-b+x_0)<1.
+\end{gathered}
+\] Hence \(F(a)<F(b)\).
 
 \(F\) is not zero, so it is an open map \(X\to\mathbb R\): \(F(x_1)=1\) for some \(x_1\), and \(F(x+sx_1)=F(x)+s\). So \(F(A)\) is an open interval. Let \(t=\sup F(A)\). Then \(t\le\inf F(B)\), and \(F(a)<t\) for every \(a\in A\), since \(F(A)\) is open.
 
@@ -258,13 +370,38 @@ Several lessons count orthonormal bases or projections. They use the following f
 
 (3) By the axiom of choice, choose for each \(i\) a surjection \(s_i:\mathbb N\to A_i\) (for \(A_i=\varnothing\), skip \(i\)). The map \((i,n)\mapsto s_i(n)\) is a surjection from a subset of \(I\times\mathbb N\) onto \(\bigcup_iA_i\). Choosing one preimage for each point gives an injection of \(\bigcup_iA_i\) into \(I\times\mathbb N\), and \(|I\times\mathbb N|=|I|\) by (1). \(\square\)
 
+### Well-ordering and infinite products
+
+**Theorem 8.5.** Every set can be well-ordered. If \(X\) is infinite, then \(|X\times X|=|X|\). Consequently, if \(0<|Y|\leq|X|\), then \(|X\times Y|=|X|\). In particular an uncountable set can be partitioned into uncountably many subsets, each in bijection with the whole set.
+
+*Proof.* A *well-order* is a linear order in which every nonempty subset has a least member. Order the well-orders on subsets of \(X\) by extension as an initial segment: an extension may append elements, but may not insert elements before an old element. The union of a chain is again a well-order. To see this, take a member \(a\) of a nonempty subset \(S\) of the union and a chain member containing \(a\). All predecessors of \(a\) in the union already lie in that member. The nonempty set of elements of \(S\) at or before \(a\) therefore has a least member there, which is least in all of \(S\). Zorn's lemma gives a maximal such well-order. If its domain omitted a point of \(X\), appending that point would extend it. Its domain is therefore \(X\).
+
+Here are the order-type facts needed to count the square. Two well-orders have at most one order isomorphism between initial segments: if two such maps first differ at \(a\), their common image of the predecessors of \(a\) determines the least unused image of \(a\), a contradiction. Take the union of all these initial-segment isomorphisms for two well-orders. They are compatible by uniqueness, and their union has initial-segment domains and ranges. If neither order were exhausted, mapping the least remaining point of one to the least remaining point of the other would extend the union. Thus one order is isomorphic to an initial segment of the other.
+
+A well-order cannot be isomorphic to a proper initial segment of itself. Indeed, suppose \(f\) is such an isomorphism and \(a\) is the first point with \(f(a)\ne a\). The predecessors of \(a\) are fixed, so order preservation forces \(f(a)\geq a\). Equality is excluded, and \(f(a)>a\) would omit \(a\) from the initial-segment range. If there is no such \(a\), the range is the whole order. These contradictions prove the assertion. Hence order types are linearly ordered by proper initial-segment inclusion.
+
+Every nonempty set of order types has a least one. Pick a type \(\tau\) in it. If there are types below \(\tau\), identify them with proper initial segments of a representative of \(\tau\). Their endpoint set has a least member, giving the least type below \(\tau\). If there are none, \(\tau\) itself is least. An *initial order type*, or cardinal, is the least type of a well-order on a set of its given cardinality. Such a least type exists, since the orders on that set form a set. Injections respect cardinal types: if \(A\) injects into \(B\) but its cardinal type were larger, the type of \(B\) would be an initial segment of that of \(A\), giving an injection in the other direction. Cantor–Schröder–Bernstein would make their cardinalities, and hence their least types, equal. Every proper initial segment of an initial type \(\kappa\) therefore has cardinality less than \(\kappa\): equality would give a smaller well-order of the same set. No infinite initial type has a last point, because an infinite set absorbs one extra point by the explicit shifting bijection in the proof of Theorem 8.4.
+
+Suppose now that an infinite cardinal fails the square identity, and take the least such \(\kappa\). This choice is legitimate within a set: below any proposed counterexample, all smaller cardinal types are represented by well-orders on subsets of that counterexample. Represent \(\kappa\) by its initial well-order. Order pairs \((\alpha,\beta)\) first by \(\max(\alpha,\beta)\), then by \(\alpha\), then by \(\beta\). This is a well-order: a nonempty collection of pairs has a least maximum, a least first coordinate among pairs with that maximum, and then a least second coordinate.
+
+The predecessors of a pair with maximum \(\gamma\) are contained in the square of the initial segment through \(\gamma\). That segment is proper, since \(\kappa\) has no last point. Its cardinal \(\mu\) is less than \(\kappa\). If \(\mu\) is finite, its square is finite; if \(\mu\) is infinite, minimality of \(\kappa\) gives \(\mu^2=\mu\). Thus every predecessor set in the pair order has cardinality less than \(\kappa\).
+
+Let \(\tau\) be the type of this pair order. If \(\tau>\kappa\), comparison of well-orders embeds \(\kappa\) as a proper initial segment of it. The least point outside that segment then has \(\kappa\) predecessors, a contradiction. Thus \(\tau\leq\kappa\), giving \(|\kappa\times\kappa|\leq\kappa\). The map \(\alpha\mapsto(\alpha,\alpha)\) gives the reverse inequality, so Cantor–Schröder–Bernstein proves the square identity. This contradicts the choice of \(\kappa\), and proves the identity for every infinite set.
+
+For nonempty \(Y\) with an injection into \(X\), choose \(y_0\in Y\). The maps \(x\mapsto(x,y_0)\) and the coordinate injection into \(X\times X\) give
+\[
+|X|\leq|X\times Y|\leq|X\times X|=|X|.
+\]
+Apply Cantor–Schröder–Bernstein again. Finally, choose a bijection \(b:X\times X\to X\). The sets \(b(X\times\{y\})\), \(y\in X\), partition \(X\) and each is in bijection with \(X\). If \(X\) is uncountable, their index set is uncountable. \(\square\)
+
+
 ## Exercises
 
-**Exercise 1** (two complete norms). Let \(\|\cdot\|_1\) and \(\|\cdot\|_2\) be complete norms on a vector space \(V\) with \(\|v\|_1\le C\|v\|_2\) for all \(v\). Show that the norms are equivalent. Show by example that completeness of both norms is needed.
+**Exercise 1** (medium; two complete norms). Let \(\|\cdot\|_1\) and \(\|\cdot\|_2\) be complete norms on a vector space \(V\) with \(\|v\|_1\le C\|v\|_2\) for all \(v\). Show that the norms are equivalent. Show by example that completeness of both norms is needed.
 
-*Solution.* Equivalence is Corollary 5.2. For the example, take \(V=C[0,1]\) with \(\|\cdot\|_1\) the \(L^1\) norm and \(\|\cdot\|_2\) the supremum norm. Then \(\|f\|_1\le\|f\|_2\), and \(\|\cdot\|_2\) is complete. The functions \(f_n(t)=\max(0,1-nt)\) have \(\|f_n\|_2=1\) and \(\|f_n\|_1=1/(2n)\), so the norms are not equivalent. Corollary 5.2 does not apply because \(\|\cdot\|_1\) is not complete on \(C[0,1]\). \(\square\)
+*Solution.* Equivalence is Corollary 5.2. For an example in which the weaker norm is incomplete, take \(V=C[0,1]\) with \(\|\cdot\|_1\) the \(L^1\) norm and \(\|\cdot\|_2\) the supremum norm. Then \(\|f\|_1\le\|f\|_2\), and \(\|\cdot\|_2\) is complete. The functions \(f_n(t)=\max(0,1-nt)\) have \(\|f_n\|_2=1\) and \(\|f_n\|_1=1/(2n)\), so the norms are not equivalent. If \(\|\cdot\|_1\) were complete on \(C[0,1]\), Corollary 5.2 would contradict these norm ratios, so it is incomplete. For the other completeness assumption, retain \(V=C[0,1]\) with complete norm \(\|f\|_1=\|f\|_\infty\). The completeness follows because a uniformly Cauchy sequence has a uniform limit, and uniform limits of continuous functions are continuous. On the polynomial subspace define \(u_0(p)=p'(1)\). It has a linear extension \(u\) to all of \(V\): order algebraic extensions by inclusion, take unions along chains, and use Zorn; if a maximal domain omitted \(f\), extend by \(u(d+\lambda f)=u(d)\), a contradiction. Define \(\|f\|_2=\|f\|_\infty+|u(f)|\), a norm dominating \(\|f\|_1\). For \(f_n(t)=t^n\), \(\|f_n\|_1=1\) and \(\|f_n\|_2=1+n\), so the norms are not equivalent. If \(\|\cdot\|_2\) were complete, Corollary 5.2 would again give equivalence. Thus this stronger norm is incomplete while the weaker one is complete. \(\square\)
 
-**Exercise 2** (Banach limits). Let \(\ell^\infty_{\mathbb R}\) be the real space of bounded real sequences and \(S\) the shift, \((Sx)_n=x_{n+1}\). Show that there is a linear \(L:\ell^\infty_{\mathbb R}\to\mathbb R\) with \(\liminf_nx_n\le L(x)\le\limsup_nx_n\) and \(L(Sx)=L(x)\) for all \(x\).
+**Exercise 2** (medium; Banach limits). Let \(\ell^\infty_{\mathbb R}\) be the real space of bounded real sequences and \(S\) the shift, \((Sx)_n=x_{n+1}\). Show that there is a linear \(L:\ell^\infty_{\mathbb R}\to\mathbb R\) with \(\liminf_nx_n\le L(x)\le\limsup_nx_n\) and \(L(Sx)=L(x)\) for all \(x\).
 
 *Solution.* Put \(p(x)=\limsup_n\frac1n\sum_{k=1}^nx_k\).
 - *\(p\) is sublinear:* the averages are linear in \(x\), and \(\limsup\) is subadditive and positively homogeneous.
@@ -272,31 +409,43 @@ Several lessons count orthonormal bases or projections. They use the following f
 - *Bounds:* \(p(x)\le\limsup_nx_n\), because averages of a sequence eventually below \(c+\varepsilon\) are eventually below \(c+2\varepsilon\). Applying this to \(-x\) gives \(L(x)=-L(-x)\ge-p(-x)\ge\liminf_nx_n\).
 - *Shift invariance:* \(\frac1n\sum_{k\le n}(Sx-x)_k=\frac{x_{n+1}-x_1}n\to0\). So \(p(Sx-x)=0\) and \(p(x-Sx)=0\). Hence \(L(Sx-x)\le0\) and \(L(x-Sx)\le0\), that is, \(L(Sx)=L(x)\). \(\square\)
 
-**Exercise 3** (closed convex sets are intersections of half-spaces). Let \(E\) be a normed space and \(C\subseteq E\) closed and convex. Show that \(C\) is the intersection of the sets \(\{x:\operatorname{Re}\varphi(x)\le t\}\), over all \(\varphi\in E^*\) and \(t\in\mathbb R\) with \(C\subseteq\{\operatorname{Re}\varphi\le t\}\).
+**Exercise 3** (easy; closed convex sets are intersections of half-spaces). Let \(E\) be a normed space and \(C\subseteq E\) closed and convex. Show that \(C\) is the intersection of the sets \(\{x:\operatorname{Re}\varphi(x)\le t\}\), over all \(\varphi\in E^*\) and \(t\in\mathbb R\) with \(C\subseteq\{\operatorname{Re}\varphi\le t\}\).
 
 *Solution.* The intersection contains \(C\). If \(x\notin C\) and \(C\) is nonempty, Corollary 6.4(2) gives \(\varphi\) and \(t\) with \(\operatorname{Re}\varphi\le t\) on \(C\) and \(\operatorname{Re}\varphi(x)>t\). So \(x\) is not in the intersection. If \(C=\varnothing\), use \(\varphi=0\) and \(t=-1\). \(\square\)
 
-**Exercise 4** (weakly continuous implies bounded). Let \(T:E\to F\) be linear between Banach spaces, with \(\psi\circ T\in E^*\) for every \(\psi\in F^*\). Show that \(T\) is bounded.
+**Exercise 4** (medium; weakly continuous implies bounded). Let \(T:E\to F\) be linear between Banach spaces, with \(\psi\circ T\in E^*\) for every \(\psi\in F^*\). Show that \(T\) is bounded.
 
 *Solution.* By Theorem 5.3 it suffices to show that the graph is closed. Let \(x_n\to x\) and \(Tx_n\to y\). For \(\psi\in F^*\), \(\psi(Tx_n)\to\psi(Tx)\) because \(\psi\circ T\) is continuous, and \(\psi(Tx_n)\to\psi(y)\). So \(\psi(Tx)=\psi(y)\) for all \(\psi\), and \(Tx=y\) by Corollary 2.3(2). \(\square\)
 
-**Exercise 5** (quotients). Let \(E\) be a Banach space and \(M\) a closed subspace. Show that \(\|x+M\|=\operatorname{dist}(x,M)\) is a complete norm on \(E/M\). Deduce that a bounded linear surjection \(T:E\to F\) onto a normed space \(F\) that is open forces \(F\) to be complete.
+**Exercise 5** (medium; quotients). Let \(E\) be a Banach space and \(M\) a closed subspace. Show that \(\|x+M\|=\operatorname{dist}(x,M)\) is a complete norm on \(E/M\). Deduce that a bounded linear surjection \(T:E\to F\) onto a normed space \(F\) that is open forces \(F\) to be complete.
 
 *Solution.*
-- *A norm:* the quantity is a seminorm, and \(\|x+M\|=0\) means \(x\in\overline M=M\).
-- *Completeness:* it suffices to show that absolutely convergent series converge. Let \(\sum\|x_n+M\|<\infty\). Choose representatives with \(\|x_n\|\le\|x_n+M\|+2^{-n}\). Then \(\sum x_n\) converges in \(E\) to some \(x\), and \(\|\sum_{n\le N}x_n+M-(x+M)\|\le\|\sum_{n>N}x_n\|\to0\).
+- *A norm:* translating a representative by a member of \(M\) does not change the infimum. Nonzero-scalar representatives are scalar multiples of the old representatives, giving homogeneity. Taking the two independent infima in \[
+\begin{gathered}
+\|(x+m)+(y+n)\|\\
+\leq\|x+m\|+\|y+n\|
+\end{gathered}
+\] gives the triangle inequality. Finally, \(\|x+M\|=0\) means \(x\in\overline M=M\).
+- *Completeness:* a normed space in which every absolutely convergent series converges is complete. From a Cauchy sequence choose a subsequence with successive distances at most \(2^{-k}\); the series of its differences converges, hence the subsequence converges by telescoping and the original Cauchy sequence has the same limit. Let \(\sum\|x_n+M\|<\infty\). Choose representatives with \(\|x_n\|\le\|x_n+M\|+2^{-n}\). Then \(\sum x_n\) converges in \(E\) to some \(x\), and \[
+\begin{gathered}
+\|\sum_{n\le N}x_n+M-(x+M)\|\\
+\le\|\sum_{n>N}x_n\|\to0.
+\end{gathered}
+\]
 - *The deduction:* if \(T\) is open, then \(T(B_E(0,1))\supseteq B_F(0,\delta)\), so the induced bijection \(\tilde T:E/\ker T\to F\) has \(\|\tilde T^{-1}y\|\le\delta^{-1}\|y\|\). Hence \(\tilde T\) is an isomorphism of normed spaces, and \(F\) is complete because \(E/\ker T\) is. \(\square\)
 
-**Exercise 6** (an indiscrete example). Give a vector space with a vector topology in which a one-dimensional subspace is not closed, and explain which step of Theorem 7.1 fails.
+**Exercise 6** (easy; an indiscrete example). Give a vector space with a vector topology in which a one-dimensional subspace is not closed, and explain which step of Theorem 7.1 fails.
 
-*Solution.* Take \(\mathbb K^2\) with the topology whose open sets are \(\varnothing\), \(\mathbb K^2\) and the sets \(U\times\mathbb K\) for \(U\) open in \(\mathbb K\). Addition and scalar multiplication are continuous because they act coordinatewise and the second coordinate carries the indiscrete topology. The subspace \(\{0\}\times\mathbb K\) is dense, since every nonempty open set \(U\times\mathbb K\) meets it, but it is not the whole space, so it is not closed. The space is not Hausdorff: \((0,0)\) and \((0,1)\) have the same neighbourhoods. In the proof of Theorem 7.1, \(f(S)\) is then not closed, and no balanced neighbourhood of \(0\) avoids it. \(\square\)
+*Solution.* Give \(\mathbb K^2\) the indiscrete topology, whose only open sets are the empty set and the whole space. Addition and scalar multiplication into this space are continuous because every map into an indiscrete space is continuous. Every proper nonzero one-dimensional subspace is dense and is not closed: the only closed sets are the empty set and the whole space. For a linear bijection \(f:\mathbb K^2\to X\), the image \(f(S)\) of the Euclidean unit sphere is compact, but it is a nonempty proper subset and hence is not closed. The only neighbourhood of zero is \(X\), so none can avoid \(f(S)\). This is exactly the compact-implies-closed and avoiding-neighbourhood step of Theorem 7.1 that needs Hausdorffness. \(\square\)
 
 ## Where this leads
 
-- Weak and weak\* topologies, Banach–Alaoglu, Krein–Milman and Eberlein–Šmulian: Weak topologies: Tychonoff, Banach–Alaoglu, Mazur, bipolars, Krein–Milman and Eberlein–Šmulian.
+- Weak and weak\* topologies, Banach–Alaoglu, Krein–Milman and Eberlein–Šmulian: [Weak topologies: Tychonoff, Banach–Alaoglu, Mazur, bipolars, Krein–Milman and Eberlein–Šmulian](../../../../../foundations-of-von-neumann-algebras/src/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.md).
 - Hilbert spaces and compact operators: [Hilbert spaces and compact operators](hilbert-spaces-and-compact-operators.md).
-- Banach algebras: Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory.
+- Banach algebras: [Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory](../../../../../foundations-of-von-neumann-algebras/src/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.md).
 
 ## References
 
-The results are classical: Hahn (1927) and Banach (1929) for the extension theorem, Baire (1899), Banach and Steinhaus (1927), Banach and Schauder for the open mapping theorem, and Zorn (1935) for the maximality principle. Readers who want a single textbook account can use the core course D20 (J. M. Erdman, *Functional Analysis and Operator Algebras: An Introduction*), which states these theorems with hints for their proofs.
+The results are classical: Hahn (1927) and Banach (1929) for the extension theorem, Baire (1899), Banach and Steinhaus (1927), Banach and Schauder for the open mapping theorem, and Zorn (1935) for the maximality principle. Readers who want a single textbook account can use the core course Functional Analysis (J. M. Erdman, *Functional Analysis and Operator Algebras: An Introduction*), which states these theorems with hints for their proofs.
+
+*Freely accessible reading:* [J. van Neerven, *Functional Analysis*, §§4.2 and 5.1–5.3](https://arxiv.org/pdf/2112.11166v7) gives a route through Hahn–Banach, separation, Baire and the basic Banach-space theorems. The lesson includes its own complete proofs at the stated hypotheses; references to human sources do not imply permission to adapt their expression.

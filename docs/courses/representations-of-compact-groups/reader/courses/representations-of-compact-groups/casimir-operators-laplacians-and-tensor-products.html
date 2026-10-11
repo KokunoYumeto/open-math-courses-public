@@ -1,5 +1,8 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Casimir operators, Laplacians and tensor products</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Representations of compact groups</a><a href="the-weyl-character-formula-for-compact-connected-lie-groups.html">Previous lesson</a><a href="homogeneous-spaces-induced-representations-and-gelfand-pairs.html">Next lesson</a></nav></header><main id="main"><article class="math"><h1 id="casimir-operators-laplacians-and-tensor-products">Casimir operators, Laplacians and tensor products</h1>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Casimir operators, Laplacians and tensor products</title><link href="../../assets/course.css" rel="stylesheet"/><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Representations of compact groups</a><a href="the-weyl-character-formula-for-compact-connected-lie-groups.html">Previous lesson</a><a href="homogeneous-spaces-induced-representations-and-gelfand-pairs.html">Next lesson</a></nav></header><main id="main"><article class="math"><h1 id="casimir-operators-laplacians-and-tensor-products">Casimir operators, Laplacians and tensor products</h1>
 <p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. No separate AI review of this revision is recorded. Public domain (CC0). Revised and self-checked on 3 October 2026 by GPT-6.1 Sol (OpenAI), Ultra effort.</em></p>
+<p><em>The operator-domain, Haar-flow and resolvent details were added and self-checked by GPT-6 Astra (OpenAI), Ultra effort, on 11 October 2026. No independent review of these additions is recorded. CC0.</em></p>
+
 <p>A character records weights, a Casimir records an energy, and a tensor product combines characters. The Weyl formula makes all three computations explicit. The metric and exponential convention must stay visible: changing either can multiply every eigenvalue by the same constant.</p>
 <p>Throughout, <span class="math" data-tex="\(G\)">\(G\)</span> is a compact connected Lie group with an <span class="math" data-tex="\(\operatorname{Ad}(G)\)">\(\operatorname{Ad}(G)\)</span>-invariant positive inner product <span class="math" data-tex="\(B\)">\(B\)</span> on its real Lie algebra <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. We use the <a href="the-weyl-character-formula-for-compact-connected-lie-groups.html">highest-weight classification and Weyl formulas</a>, <a href="matrix-coefficients-and-the-peter-weyl-theorem.html">Peter–Weyl decomposition</a>, and smooth differentiation from lesson five. Analytic weights retain the convention
 <span class="math math-display" data-tex="\[
@@ -98,12 +101,34 @@ The adjoint is irreducible for a simple algebra, so its scalar is one. The metri
 <p>Use the nonpositive sign convention <span class="math" data-tex="\(\Delta=\operatorname{div}\operatorname{grad}\)">\(\Delta=\operatorname{div}\operatorname{grad}\)</span>. The metric obtained by left translation of <span class="math" data-tex="\(B\)">\(B\)</span> is also right invariant. Its Riemannian volume is proportional to Haar measure.</p>
 <p>Let <span class="math" data-tex="\(X_j^L f(g)=\left.\frac{d}{dt}\right|_0 f(g\exp(tX_j))\)">\(X_j^L f(g)=\left.\frac{d}{dt}\right|_0 f(g\exp(tX_j))\)</span>. These are a global orthonormal frame. Their flows are right translations and preserve volume, hence their divergences vanish. Since
 <span class="math" data-tex="\(\operatorname{grad}f=\sum_j(X_j^Lf)X_j^L\)">\(\operatorname{grad}f=\sum_j(X_j^Lf)X_j^L\)</span>, the product rule for divergence gives directly
-<span class="math math-display" data-tex="\[
+<span class="math" data-tex="\[
 \Delta f=\sum_j(X_j^L)^2f. \tag{2.1}
-\]">\[
+\]" style="display:block;max-width:100%;overflow-x:auto">\[
 \Delta f=\sum_j(X_j^L)^2f. \tag{2.1}
 \]</span>
 This proves the Casimir–Laplacian identification with the stated sign.</p>
+<p id="haar-flow-integration-by-parts">Here is the integration-by-parts identity needed below, directly from Haar invariance. Write <span class="math" data-tex="\(R_t f(g)=f(g\exp(tX))\)">\(R_t f(g)=f(g\exp(tX))\)</span> for a real Lie algebra element <span class="math" data-tex="\(X\)">\(X\)</span>, and use the first-variable-linear inner product <span class="math" data-tex="\(\langle f,h\rangle=\int_G f\overline h\,dg\)">\(\langle f,h\rangle=\int_G f\overline h\,dg\)</span>. Right invariance gives
+<span class="math" data-tex="\[
+\langle R_t f,h\rangle=\langle f,R_{-t}h\rangle.
+\]" style="display:block;max-width:100%;overflow-x:auto">\[
+\langle R_t f,h\rangle=\langle f,R_{-t}h\rangle.
+\]</span>
+For smooth <span class="math" data-tex="\(f,h\)">\(f,h\)</span>, their derivatives along these flows are continuous on a compact product <span class="math" data-tex="\(G\times[-\varepsilon,\varepsilon]\)">\(G\times[-\varepsilon,\varepsilon]\)</span>. The fundamental theorem of calculus therefore makes the difference quotients converge uniformly as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>, which permits differentiation of these finite-measure integrals. Hence
+<span class="math" data-tex="\[
+\langle X^L f,h\rangle=-\langle f,X^L h\rangle,
+\qquad
+\langle\Delta f,h\rangle
+=-\sum_j\langle X_j^L f,X_j^L h\rangle
+=\langle f,\Delta h\rangle.
+\]" style="display:block;max-width:100%;overflow-x:auto">\[
+\langle X^L f,h\rangle=-\langle f,X^L h\rangle,
+\qquad
+\langle\Delta f,h\rangle
+=-\sum_j\langle X_j^L f,X_j^L h\rangle
+=\langle f,\Delta h\rangle.
+\]</span>
+The same calculation supplies the group integration by parts in Proposition 2.4; no separate use of a general Stokes theorem is needed.</p>
+
 <p>For a matrix coefficient <span class="math" data-tex="\(f(g)=\phi(\pi_\lambda(g)v)\)">\(f(g)=\phi(\pi_\lambda(g)v)\)</span>, differentiation in the right variable gives
 <span class="math math-display" data-tex="\[
 \Delta f(g)=\phi\left(\pi_\lambda(g)
@@ -133,20 +158,43 @@ Its eigenspace for an eigenvalue <span class="math" data-tex="\(-c\)">\(-c\)</sp
 \sum_{\lambda:\ c_B(\lambda)=c}(\dim\pi_\lambda)^2. \tag{2.4}
 \]</span>
 Each individual coefficient block has dimension <span class="math" data-tex="\((\dim\pi_\lambda)^2\)">\((\dim\pi_\lambda)^2\)</span>; distinct highest weights can give the same eigenvalue.</p>
-<p><em>Proof.</em> Schur orthogonality supplies an orthonormal basis of suitably normalized smooth coefficients, and Peter–Weyl makes it complete. In this basis (2.2) is a real diagonal operator. Its self-adjoint realization has domain
-<span class="math math-display" data-tex="\[
+<p id="diagonal-adjoint-domain"><em>Proof.</em> Schur orthogonality supplies an orthonormal basis of suitably normalized smooth coefficients, and Peter–Weyl makes it complete. In this basis (2.2) is a real diagonal operator. Its self-adjoint realization has domain
+<span class="math" data-tex="\[
 \left\{f=\sum_\lambda f_\lambda:
 \sum_\lambda c_B(\lambda)^2\|f_\lambda\|_2^2&lt;\infty\right\},
 \qquad
 \Delta f=-\sum_\lambda c_B(\lambda)f_\lambda. \tag{2.5}
-\]">\[
+\]" style="display:block;max-width:100%;overflow-x:auto">\[
 \left\{f=\sum_\lambda f_\lambda:
 \sum_\lambda c_B(\lambda)^2\|f_\lambda\|_2^2&lt;\infty\right\},
 \qquad
 \Delta f=-\sum_\lambda c_B(\lambda)f_\lambda. \tag{2.5}
 \]</span>
-Finite coefficient sums are a core: truncation converges in both the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm and the norm of the image. For a smooth <span class="math" data-tex="\(f\)">\(f\)</span>, integration by parts against each coefficient gives the Fourier coefficient of <span class="math" data-tex="\(\Delta f\)">\(\Delta f\)</span> as <span class="math" data-tex="\(-c_B(\lambda)f_\lambda\)">\(-c_B(\lambda)f_\lambda\)</span>. Parseval therefore puts <span class="math" data-tex="\(f\)">\(f\)</span> in (2.5). Consequently the differential operator on all smooth functions lies between the finite-sum operator and its self-adjoint closure; its closure is that same diagonal operator. This also proves essential self-adjointness without importing a spectral theorem for elliptic operators.</p>
-<p>For dominant <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, <span class="math" data-tex="\((\lambda,\rho)\geq0\)">\((\lambda,\rho)\geq0\)</span>, because <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a positive-root sum and all its pairings with <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> are nonnegative. Hence <span class="math" data-tex="\(c_B(\lambda)\geq4\pi^2\|\lambda\|^2\)">\(c_B(\lambda)\geq4\pi^2\|\lambda\|^2\)</span>. Bounded <span class="math" data-tex="\(c_B\)">\(c_B\)</span> permits only finitely many lattice weights. Thus eigenspaces are finite-dimensional and the only possible spectral accumulation is toward <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>. The diagonal decomposition now gives (2.4), including all coincident values. In particular the zero eigenspace consists of the constants. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+To verify self-adjointness rather than infer it from the diagonal notation, call the operator in (2.5) <span class="math" data-tex="\(D\)">\(D\)</span>, and put <span class="math" data-tex="\(c_\lambda=c_B(\lambda)\)">\(c_\lambda=c_B(\lambda)\)</span>. Its domain is dense because it contains every finite coefficient sum. If <span class="math" data-tex="\(h\in\mathcal D(D^*)\)">\(h\in\mathcal D(D^*)\)</span>, there is <span class="math" data-tex="\(k\in L^2(G)\)">\(k\in L^2(G)\)</span> such that <span class="math" data-tex="\(\langle Df,h\rangle=\langle f,k\rangle\)">\(\langle Df,h\rangle=\langle f,k\rangle\)</span> for all <span class="math" data-tex="\(f\in\mathcal D(D)\)">\(f\in\mathcal D(D)\)</span>. Testing every vector in the finite-dimensional block <span class="math" data-tex="\(E_{\pi_\lambda}\)">\(E_{\pi_\lambda}\)</span> forces <span class="math" data-tex="\(k_\lambda=-c_\lambda h_\lambda\)">\(k_\lambda=-c_\lambda h_\lambda\)</span>. Parseval then gives
+<span class="math" data-tex="\[
+\sum_\lambda c_\lambda^2\|h_\lambda\|_2^2
+=\|k\|_2^2&lt;\infty.
+\]" style="display:block;max-width:100%;overflow-x:auto">\[
+\sum_\lambda c_\lambda^2\|h_\lambda\|_2^2
+=\|k\|_2^2&lt;\infty.
+\]</span>
+Conversely, for <span class="math" data-tex="\(h\)">\(h\)</span> satisfying this condition, the vector <span class="math" data-tex="\(k=-\sum_\lambda c_\lambda h_\lambda\)">\(k=-\sum_\lambda c_\lambda h_\lambda\)</span> exists in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>, and Cauchy–Schwarz applied to the orthogonal sums proves the required pairing identity for every <span class="math" data-tex="\(f\in\mathcal D(D)\)">\(f\in\mathcal D(D)\)</span>. Thus <span class="math" data-tex="\(\mathcal D(D^*)=\mathcal D(D)\)">\(\mathcal D(D^*)=\mathcal D(D)\)</span> and <span class="math" data-tex="\(D^*=D\)">\(D^*=D\)</span>, including equality of domains. Closedness can also be checked directly: if <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span> and <span class="math" data-tex="\(Df_n\to h\)">\(Df_n\to h\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, projection onto each block gives <span class="math" data-tex="\(h_\lambda=-c_\lambda f_\lambda\)">\(h_\lambda=-c_\lambda f_\lambda\)</span>, and Parseval puts <span class="math" data-tex="\(f\)">\(f\)</span> in the displayed domain. This is the maximal-domain argument in <a href="../../../../AN-06/providers/analysis/compact-spectrum-domains.md#compact-inverse-domains">Compact positive inverses and diagonal domains, “Positive compact inverse” and “All diagonal multipliers and ordered domains”</a>, applied to the already constructed Peter–Weyl basis. It uses neither a previously self-adjoint Laplacian nor a continuous spectral theorem.</p>
+<p>Finite coefficient sums are a core: truncation converges in both the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm and the norm of the image. For a smooth <span class="math" data-tex="\(f\)">\(f\)</span>, integration by parts against each coefficient gives the Fourier coefficient of <span class="math" data-tex="\(\Delta f\)">\(\Delta f\)</span> as <span class="math" data-tex="\(-c_B(\lambda)f_\lambda\)">\(-c_B(\lambda)f_\lambda\)</span>. Parseval therefore puts <span class="math" data-tex="\(f\)">\(f\)</span> in (2.5). Consequently the differential operator on all smooth functions lies between the finite-sum operator and its self-adjoint closure; its closure is that same diagonal operator. This also proves essential self-adjointness without importing a spectral theorem for elliptic operators.</p>
+
+<p id="diagonal-resolvent">For dominant <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, <span class="math" data-tex="\((\lambda,\rho)\geq0\)">\((\lambda,\rho)\geq0\)</span>, because <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a positive-root sum and all its pairings with <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> are nonnegative. Hence <span class="math" data-tex="\(c_B(\lambda)\geq4\pi^2\|\lambda\|^2\)">\(c_B(\lambda)\geq4\pi^2\|\lambda\|^2\)</span>. Bounded <span class="math" data-tex="\(c_B\)">\(c_B\)</span> permits only finitely many lattice weights. Thus eigenspaces are finite-dimensional and the only possible spectral accumulation is toward <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>. The absence of finite accumulation also excludes any extra spectrum. If <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span> is not one of the displayed eigenvalues, then <span class="math" data-tex="\(d=\inf_\lambda|-c_\lambda-z|&gt;0\)">\(d=\inf_\lambda|-c_\lambda-z|&gt;0\)</span>. Define
+<span class="math" data-tex="\[
+R_z f=\sum_\lambda(-c_\lambda-z)^{-1}f_\lambda.
+\]" style="display:block;max-width:100%;overflow-x:auto">\[
+R_z f=\sum_\lambda(-c_\lambda-z)^{-1}f_\lambda.
+\]</span>
+Parseval gives <span class="math" data-tex="\(\|R_z\|\le d^{-1}\)">\(\|R_z\|\le d^{-1}\)</span>, and
+<span class="math" data-tex="\[
+\frac{c_\lambda}{|-c_\lambda-z|}\le1+\frac{|z|}{d}
+\]" style="display:block;max-width:100%;overflow-x:auto">\[
+\frac{c_\lambda}{|-c_\lambda-z|}\le1+\frac{|z|}{d}
+\]</span>
+shows that <span class="math" data-tex="\(R_z\)">\(R_z\)</span> maps all of <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span> into <span class="math" data-tex="\(\mathcal D(D)\)">\(\mathcal D(D)\)</span>. Blockwise multiplication proves <span class="math" data-tex="\((D-zI)R_z=I\)">\((D-zI)R_z=I\)</span> on <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span> and <span class="math" data-tex="\(R_z(D-zI)=I\)">\(R_z(D-zI)=I\)</span> on <span class="math" data-tex="\(\mathcal D(D)\)">\(\mathcal D(D)\)</span>. Therefore it is the bounded resolvent. The diagonal decomposition now gives (2.4), including all coincident values. In particular the zero eigenspace consists of the constants. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+
 <p>For <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span>, take
 <span class="math math-display" data-tex="\[
 B(X,Y)=-\tfrac12\operatorname{tr}(XY).
@@ -538,7 +586,6 @@ For <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>, the six coordinate
 <p><em>Solution.</em> Decompose the finite tensor representation into actual irreducibles and multiply its character identity by the formal <span class="math" data-tex="\(A_\rho\)">\(A_\rho\)</span>. The Weyl formula converts every summand to <span class="math" data-tex="\(A_{\tau+\rho}\)">\(A_{\tau+\rho}\)</span>, and strict dominance makes the coefficient of <span class="math" data-tex="\(e^{\nu+\rho}\)">\(e^{\nu+\rho}\)</span> isolate precisely the multiplicity of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. On the other side, expand <span class="math" data-tex="\(\chi_\mu A_{\lambda+\rho}\)">\(\chi_\mu A_{\lambda+\rho}\)</span>; the coefficient is the sum of the Weyl determinant signs times <span class="math" data-tex="\(m_\mu(\nu+\rho-w(\lambda+\rho))\)">\(m_\mu(\nu+\rho-w(\lambda+\rho))\)</span>. Weyl invariance of the weight multiplicities and inversion in the finite group convert it into (3.2).</p>
 <p>The weights inserted into <span class="math" data-tex="\(m_\mu\)">\(m_\mu\)</span> are actual characters: <span class="math" data-tex="\(w\rho-\rho\in Q\subset X^*(T)\)">\(w\rho-\rho\in Q\subset X^*(T)\)</span>. The formal coefficient extraction is valid even if <span class="math" data-tex="\(\rho\)">\(\rho\)</span> itself is not analytic. Thus the argument proves the formula for the actual group without inadvertently adding representations of a cover. A term reflected across an odd number of root walls has sign minus; the example <span class="math" data-tex="\(N_{0,2}^{0}=1-1=0\)">\(N_{0,2}^{0}=1-1=0\)</span> proves that these signs cannot be replaced by positive counts.</p>
 <h2 id="source-comparisons-and-limits">Source comparisons and limits</h2>
-
 <p>The claim following (3.4.62) about a full independent family from adjoint traces also needs qualification. On <span class="math" data-tex="\(\mathfrak{sl}_3\)">\(\mathfrak{sl}_3\)</span>, <span class="math" data-tex="\(\operatorname{tr}(\operatorname{ad}H)^3=0\)">\(\operatorname{tr}(\operatorname{ad}H)^3=0\)</span> for every diagonal <span class="math" data-tex="\(H\)">\(H\)</span>, since its nonzero eigenvalues occur in opposite root pairs. This construction has zero cubic leading symbol, whereas the independent cubic invariant <span class="math" data-tex="\(\operatorname{tr}(H^3)\)">\(\operatorname{tr}(H^3)\)</span> need not vanish. General higher Casimirs require suitable invariant tensors; no classification of the enveloping-algebra center is used here.</p>
 <p>Komori–Matsumoto–Tsumura Sections 1.5–1.6 and Proposition 3.5 organize these dimension sums into root-system zeta functions. Their Lie-algebra sum corresponds to all dominant integral weights; the compact quotient's analytic lattice can select fewer. Lachaud Sections 1–3 discuss real trace laws, with <span class="math" data-tex="\(USp(2g)\)">\(USp(2g)\)</span> as the principal example. The real-valued hypothesis must be retained: the defining character of <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span> takes the value <span class="math" data-tex="\(i\)">\(i\)</span>. The symplectic representation has complex dimension <span class="math" data-tex="\(2g\)">\(2g\)</span>, with dimension four only when <span class="math" data-tex="\(g=2\)">\(g=2\)</span>.</p>
 <h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>

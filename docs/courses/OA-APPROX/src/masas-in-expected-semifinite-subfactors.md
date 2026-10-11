@@ -12,7 +12,7 @@ For a unital abelian von Neumann algebra \(A\subset P\), write
 \]
 A **MASA** means \(A'\cap P=A\). In a factor \(P\), it is **regular** if \(\mathcal P_P(A)=P\), and **semiregular** if \(\mathcal P_P(A)\) is a factor. Semiregularity does not require that this factor equal the ambient one.
 
-We prove the semifinite expected-subfactor construction. A conditional expectation in this theorem is normal. Its faithfulness will follow, rather than be assumed. Separability means separable predual. The finite construction and the semifinite matrix reduction are given in full. For the AFD \(\mathrm{II}_\infty\) regularity clause we also use finite-corner permanence, supplied by the later [finite injective-factor proof](unitary-couplings-and-finite-injective-factors.md#theorem-5-1).
+We prove the semifinite expected-subfactor construction. A conditional expectation in this theorem is normal. Its faithfulness will follow, rather than be assumed. Separability means separable predual. A normal expectation transfers it to the range: \(\psi\mapsto\psi E\) maps \(N_*\) isometrically into \(M_*\), since contractivity gives the upper norm bound and restriction to \(N\) gives the lower bound. Thus \(N_*\) is separable whenever \(M_*\) is; this justifies the countable matrix reduction as well as the dense trace sequence below. The finite construction and the semifinite matrix reduction are given in full. For the AFD \(\mathrm{II}_\infty\) regularity clause we also use finite-corner permanence, supplied by the later [finite injective-factor proof](unitary-couplings-and-finite-injective-factors.md#theorem-5-1).
 
 ## 1. Faithfulness from irreducibility
 
@@ -95,7 +95,24 @@ The matrix embeddings in (8) identify \(F_{n+1}\) with \(F_n\otimes G_n\), where
 R\subset\mathcal P_N(A).
 \tag{10}
 \]
-The finite-factor increasing-matrix theorem makes \(R\) a factor; its unbounded dyadic sizes and trace-GNS tensor identification give the stated copy of \(R\) in (3). Because \(A\subset R\), any element of \(R'\cap N\) belongs to \(A'\cap N=A\), and then to \(R\cap R'=Z(R)=\mathbb C\). Hence \(Z(\mathcal P_N(A))\subset R'\cap N=\mathbb C\), proving semiregularity. The same normalizers generate \(R\) itself, proving regularity there.
+We verify the factor and the tensor identification directly. Put \(d_n=\dim(F_n)^{1/2}\), and, with its matrix units \(e_{ij}^{(n)}\), define on \(R\)
+\[
+Q_n(x)=d_n\sum_{i,j=1}^{d_n}\tau(e_{ji}^{(n)}x)e_{ij}^{(n)}.
+\tag{MC1}
+\]
+This is the trace-preserving expectation onto the actual stage \(F_n\). Here are its full finite checks. The matrix-unit identities show \(Q_n|_{F_n}=\operatorname{id}_{F_n}\), bimodularity, and
+\(\tau(y^*Q_n(x))=\tau(y^*x)\) for every \(y\in F_n\).
+For \(x\ge0\), its scalar coefficient matrix is positive: for any scalar column \((c_i)\), its quadratic form is
+\(d_n\tau(xvv^*)\ge0\), where \(v=\sum_i c_i e_{i1}^{(n)}\). If \(x\le\|x\|1\), the same calculation gives \(0\le Q_n(x)\le\|x\|1\), using \(\tau(vv^*)=\sum_i|c_i|^2/d_n\). Positivity and bimodularity then give
+\[
+0\le Q_n((x-Q_n(x))^*(x-Q_n(x)))
+  =Q_n(x^*x)-Q_n(x)^*Q_n(x).
+\]
+Thus \(Q_n\) is contractive. Its finitely many normal trace pairings give normality. The pairing identity makes it the orthogonal projection onto \(F_n\Omega_\tau\) in trace GNS space.
+
+These finite-dimensional subspaces increase to \(\overline{R\Omega_\tau}\), by bounded strong density of \(\bigcup_n F_n\) and normality of the trace. Hence \(Q_n(x)\Omega_\tau\to x\Omega_\tau\) for every \(x\in R\). For \(x\in Z(R)\), bimodularity puts \(Q_n(x)\) in \(Z(F_n)=\mathbb C1\); trace preservation gives \(Q_n(x)=\tau(x)1\). The limit and faithfulness therefore give \(x=\tau(x)1\), proving that \(R\) is a factor.
+
+Write \(d_n=2^{K_n}\). The strictly growing stages have \(K_n\uparrow\infty\). Split each commuting increment \(G_n\cong M_{2^{K_{n+1}-K_n}}\) into exactly \(K_{n+1}-K_n\) tensor legs \(M_2\), using its chosen matrix units and their binary indices. Equation (8) makes these identifications compatible with the preceding stages and diagonals. The normalized trace on every stage is the product trace. The resulting isomorphism of the algebraic unions is trace preserving, hence an isometry for their trace-GNS inner products. Both unions are dense in their GNS completions, so the isometry extends to a unitary; it intertwines every finite-stage left multiplier. Taking their von Neumann closures in the faithful normal trace-GNS representations gives exactly (3), without an external uniqueness theorem for factors. Because \(A\subset R\), any element of \(R'\cap N\) belongs to \(A'\cap N=A\), and then to \(R\cap R'=Z(R)=\mathbb C\). Hence \(Z(\mathcal P_N(A))\subset R'\cap N=\mathbb C\), proving semiregularity. The same normalizers generate \(R\) itself, proving regularity there.
 
 For the AFD clause, take also a \(\tau\)-norm dense sequence \((y_j)\) in the unit ball of \(N\). The finite corner \(eNe\) is AFD by the [finite AFD corner theorem](hyperfinite-finite-factors.md#theorem-5-1). Having chosen the first-corner dyadic matrix algebra with diagonal \(B\), apply the [exact containment lemma](hyperfinite-finite-factors.md#lemma-4-1) inside \(eNe\). Enlarge it to a dyadic matrix algebra \(G\) approximating every entry
 \[
@@ -113,6 +130,11 @@ Use \(G\) instead of the original corner algebra in (8). The resulting \(F_{n+1}
 \tag{12}
 \]
 The expectations here are trace preserving. Thus \(R\) contains the entire dense sequence and equals \(N\). Its matrix normalizers make \(A\) regular in \(N\). \(\square\)
+
+
+![The same first-corner matrix algebra is propagated into every old row; diagonal gaps and all-entry trace errors have different sums.](../assets/compatible-matrix-corner-refinement.svg)
+
+*Figure 1.* Equation (8) propagates the entire \(eMe\) corner, with identity \(e=e_{11}\), through the old matrix units. The \(d\) diagonal terms in (9) determine the ambient GNS gap; the \(d^2\) entries in (12) determine the trace approximation. Their factors are both \(1/d\), so the all-entry error budget is divided by \(\sqrt d\). Formula (MC1) gives finite-stage expectations for the factor and trace-GNS argument. These are full operator corners, not scalar pixels.
 
 ## 3. Splitting the semifinite case
 
@@ -170,7 +192,7 @@ The finite-corner permanence input for an AFD \(\mathrm{II}_\infty\) factor foll
 \]
 Then \(M_\varphi\) contains a MASA which is maximal abelian in \(M\) and semiregular in \(M_\varphi\).
 
-**Proof.** The centralizer has a faithful normal tracial state \(\varphi|_{M_\varphi}\), hence is finite. Its center lies in the relative commutant in (18), so it is a factor. It is fixed by the modular group, so the modular expectation theorem gives a normal \(\varphi\)-preserving expectation onto it. Apply Theorem 3.1, or directly Theorem 2.1 in its type II case. \(\square\)
+**Proof.** The centralizer has a faithful normal tracial state \(\varphi|_{M_\varphi}\), hence is finite. Its center lies in the relative commutant in (18), so it is a factor. [SE1](../components/state-expectations-from-bounded-graphs.md#se1) identifies it exactly as the fixed algebra of the state modular group, and [SE4–SE5](../components/state-expectations-from-bounded-graphs.md#se4) constructs a normal \(\varphi\)-preserving expectation onto it. Apply Theorem 3.1, or directly Theorem 2.1 in its type II case. \(\square\)
 
 This corollary keeps the irreducible-centralizer hypothesis. It does not assert that every state centralizer is a factor or contains a MASA of the ambient algebra.
 
@@ -228,4 +250,4 @@ This corollary keeps the irreducible-centralizer hypothesis. It does not assert 
 
 Sorin Popa, [On a problem of R. V. Kadison on maximal abelian \*-subalgebras in factors](https://imar.ro/~increst/1981/41_1981.pdf), INCREST preprint 41/1981, May 1981, second version; the journal article appeared in *Inventiones Mathematicae* 65 (1981), 269–281, DOI [10.1007/BF01389015](https://doi.org/10.1007/BF01389015). Theorem 1 and its construction in Section 2, printed pp.10–13, produce compatible matrix factors and a diagonal MASA for a separable finite tracial ambient algebra. Corollary 3.1, printed p.14, passes from the finite case to a semifinite ambient factor by common matrix coordinates. Here the finite construction instead uses the state \(\tau E\), so the ambient algebra can be nontracial, and the semifinite reduction is performed on the expected subfactor itself. The faithfulness argument, its normal-state support calculation, both type I cases and every matrix transport are supplied explicitly.
 
-Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft. Section 11.2, printed pp.185–188, provides the dyadic approximation and trace-GNS uniqueness method. The AFD clause here uses the earlier independently proved finite corner and exact containment lemmas. The final AFD \(\mathrm{II}_\infty\) clause also uses AFD-to-injectivity, permanence of injectivity under corners and the later finite injective-factor theorem, as detailed above. General modular expectations, state centralizers, projection comparison and spatial tensor commutation remain declared foundations whose exact accessible transitive verification is pending.
+Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft. Section 11.2, printed pp.185–188, provides the dyadic approximation and trace-GNS uniqueness method. The AFD clause here uses the earlier independently proved finite corner and exact containment lemmas. The final AFD \(\mathrm{II}_\infty\) clause also uses AFD-to-injectivity, permanence of injectivity under corners and the later finite injective-factor theorem, as detailed above. The faithful-state expectation and the exact fixed-algebra/centralizer identity are proved in [SE1–SE5](../components/state-expectations-from-bounded-graphs.md#se1), using the bounded-graph modular route. Projection comparison, finite AFD corner/containment, spatial tensor commutation and the later finite injective-factor input retain their separately stated scopes and source records.

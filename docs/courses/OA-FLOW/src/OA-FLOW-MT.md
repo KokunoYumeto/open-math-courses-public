@@ -1,6 +1,6 @@
 # Zero in every modular spectrum and the type III spectral trichotomy
 
-*Fresh consequence proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. Original exposition and reproducible illustration: CC0-1.0 to the extent of rights held.*
+*Original exposition and reproducible illustration: CC0-1.0 to the extent of rights held.*
 
 Let \(M\ne0\) be a von Neumann algebra. Type III means that \(M\) has no nonzero finite projection. A projection \(p\) is finite if \(q\le p,\ q\sim p\) implies \(q=p\), where equivalence is implemented by a partial isometry in \(M\). All Hilbert spaces below are arbitrary.
 

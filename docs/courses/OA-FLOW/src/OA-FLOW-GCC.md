@@ -7,7 +7,7 @@ The ordinary spectrum of an action sees every frequency occurring anywhere in th
 
 The proof is organized around spectral subspaces rather than an unproved corner slogan. Its key construction localizes a partial isometry in frequency, takes the join of the right supports of its orbit, and sandwiches a spectral element between two orbit translates.
 
-*Restored local proof, 5 October 2026. Original historical arguments and alternatives are retained. Spot-checked in a separate AI session. Original expression and new illustration are CC0-1.0 to the extent of rights held; prerequisite component terms remain their own.*
+*Original expression and new illustration are CC0-1.0 to the extent of rights held; prerequisite component terms remain their own.*
 
 <a id="oa-flow.gcc.inputs"></a>
 

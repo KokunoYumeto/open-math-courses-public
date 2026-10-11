@@ -1,6 +1,6 @@
 # Inner derivations in an arbitrary von Neumann algebra
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0 1.0.*
+*Original exposition and illustration sources: CC0 1.0.*
 
 Spectral subspaces of the derivation determine projection tails, and those tails reconstruct an implementer inside the von Neumann algebra. After the construction and its norm estimates, we extend derivations to represented algebras, prove invariance of closed dual bimodules, and give a separate normality proof through automorphisms.
 
@@ -29,7 +29,7 @@ $$d(x)=[k,x],\qquad \|k\|\leq\|d\|. \tag{3}$$
 
 The zero algebra and zero derivation have the stated conclusions with zero implementer. Below we may therefore assume $M\ne0$; in constructions divided by a generator norm we separately handle norm zero.
 
-**Earlier programme proof.** Automatic boundedness is proved in [L34, Section 4, Norming states and the compression proof](OA-FLOW-L34.md#oa-flow.dfd.algebra), Lemmas 4.1–4.2 and Theorem 4.3. It covers every everywhere-defined complex derivation on an arbitrary, possibly nonunital C*-algebra. The nonunital extension and decomposition are proved in Section 2; norm-preserving complex extension and the real closed-graph theorem are proved in Section 3. The compression argument requires no compactness of the state space and uses neither innerness nor any result of this lesson. L34 precedes L35 in the reader.
+**Earlier programme proof.** Automatic boundedness is proved in [L34, Section 4, Norming states and the graph estimate](OA-FLOW-L34.md#oa-flow.dfd.algebra), Lemmas 4.1–4.2 and Theorem 4.3. It covers every everywhere-defined complex derivation on an arbitrary, possibly nonunital C*-algebra. The nonunital extension and decomposition are proved in Section 2; norm-preserving complex extension and the real closed-graph theorem are proved in Section 3. The norming-state estimate and cancellation argument require no compactness of the state space and use neither innerness nor any result of this lesson. L34 precedes L35 in the reader.
 
 For clarity, the algebraic decomposition used again here is
 
@@ -40,7 +40,7 @@ Reversing a product twice proves $d^\dagger(xy)=xd^\dagger(y)+d^\dagger(x)y$, an
 
 $$\|d_j\|\leq\|d\|\quad(j=1,2). \tag{5}$$
 
-The only C*- and Hilbert-space foundations used without reproving them here are the earlier programme proofs of continuous functional calculus for a bounded selfadjoint element, the C*-identity, completeness of a C*-algebra and of its bounded-operator space, and orthogonal projection onto a closed Hilbert subspace. We prove the arbitrary projection joins needed below directly from these foundations and strong closedness of $M$.
+For the spectral proof in Sections 2–10, the C*- and Hilbert-space foundations used without reproving them here are the earlier programme proofs of continuous functional calculus for a bounded selfadjoint element, the C*-identity, completeness of a C*-algebra and of its bounded-operator space, and orthogonal projection onto a closed Hilbert subspace. We prove the arbitrary projection joins needed below directly from these foundations and strong closedness of $M$. The additional bidual, representation, predual, normality and Hahn–Banach inputs for Sections 11–15 are linked at their points of use.
 
 ## 2. The elementary integration and Fourier tools
 
@@ -1013,6 +1013,6 @@ Thus \(V_0^\perp\) inside \(A^{**}\) is nonzero, while the annihilator inside \(
 
 ## 16. Further reading
 
-Dorte Olesen, [*Derivations of AW\*-algebras are inner*](https://msp.org/pjm/1974/53-2/pjm-v53-n2-p23-s.pdf), Theorem 2 and Proposition 3, printed pages 560–561, gives the spectral innerness argument and the positive normalization. The present von Neumann algebra proof develops the smooth-filter localization and comparison in Sections 3–4, the derivative/Plancherel estimate for the frequency bound in Sections 2–3, and the finite projection-block transfer in Section 6. Section 7 proves the calibration on every central corner and the least-positive property.
+Dorte Olesen, [*Derivations of AW\*-algebras are inner*](https://msp.org/pjm/1974/53-2/pjm-v53-n2-p23-s.pdf), Theorem 2, printed pages 558–560, and Proposition 3, printed pages 560–561, gives the spectral innerness argument and the positive normalization. The present von Neumann algebra proof develops the smooth-filter localization and comparison in Sections 3–4, the derivative/Plancherel estimate for the frequency bound in Sections 2–3, and the finite projection-block transfer in Section 6. Section 7 proves the calibration on every central corner and the least-positive property.
 
 Masamichi Takesaki, *Theory of Operator Algebras II*, Lemma XI.3.4, printed page 354, gives the represented-derivation and invariant-dual-subspace conclusions developed in Sections 11–13. Propositions XI.3.2–3.3, printed pages 352–353, concern automatic boundedness and exponentiation; Theorem XI.3.5, printed page 354, states innerness. The representation argument here includes the essential space, the complementary scalar summand, uniqueness and norm estimates, with the bidual and annihilator proofs linked at their points of use. Section 14 gives the separate normality argument through automorphisms and their difference quotients.

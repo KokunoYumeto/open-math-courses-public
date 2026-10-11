@@ -1,6 +1,6 @@
 # Recovering a crossed product from its eigenunitaries
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0 1.0; font components retain their accompanying terms.*
+*Original exposition and illustration sources: CC0 1.0; font components retain their accompanying terms.*
 
 A family of eigenunitaries can determine the entire algebra around it. The fixed elements supply the coefficients, conjugation by the unitaries supplies the action, and Fourier analysis recovers every element of the original algebra. We first prove this generation statement, then identify the resulting crossed product by an explicit unitary between faithful normal models.
 
@@ -721,3 +721,96 @@ Both assignments follow by applying the maps to their defining generators. They 
 ## Further reading
 
 The dual-system characterization is Proposition X.2.6 in Masamichi Takesaki, *Theory of Operator Algebras II*, printed pp. 263–265. The companion cocycle-conjugacy statement is Proposition X.2.5, printed p. 263. The proofs above include the generation argument, the normal model comparison and the cocycle formulas.
+
+<a id="l29-cocycle-conjugacy"></a>
+
+## 9. Normal coefficient conjugacy transports the whole dual system
+
+Section [6](OA-FLOW-L29.md#l29-6) compares two eigenunitary choices in the same coefficient algebra. A normal isomorphism between coefficient algebras can be included in that comparison. The result below applies to an arbitrary locally compact Hausdorff group; the assertion about character dual actions additionally requires the group to be abelian.
+
+**Theorem.** Let \(G\) be a locally compact Hausdorff group, let \(\alpha\) be a point-ultraweakly continuous action on a von Neumann algebra \(M\), and let \(\phi:M\to B\) be a unital normal \*-isomorphism with normal inverse. Put
+\[
+ A_s=\phi\alpha_s\phi^{-1},\qquad
+ w_{st}=w_sA_s(w_t),\qquad
+ \beta_s=\operatorname{Ad}w_s\circ A_s,
+ \tag{L29C1}
+\]
+where \(w:G\to\mathcal U(B)\) is continuous in the intrinsic \(\sigma\)-strong-star topology. On the unitary group this is equivalent to strong continuity in every faithful normal representation, by [UC-0](OA-FLOW-UC.md#oa-flow.uc.0) and [ST-2](OA-FLOW-ST12.md#oa-flow.st.2). There is a unique normal \*-isomorphism, with normal inverse,
+\[
+ \Theta_{\phi,w}:M\rtimes_\alpha G\longrightarrow B\rtimes_\beta G,
+ \qquad
+ \begin{cases}
+ \Theta_{\phi,w}(\pi_\alpha(x))=\pi_\beta(\phi(x)),\\
+ \Theta_{\phi,w}(\lambda_\alpha(s))
+   =\pi_\beta(w_s^*)\lambda_\beta(s).
+ \end{cases}
+ \tag{L29C2}
+\]
+Its inverse on generators is
+\[
+ \Theta_{\phi,w}^{-1}(\pi_\beta(b))=\pi_\alpha(\phi^{-1}(b)),\qquad
+ \Theta_{\phi,w}^{-1}(\lambda_\beta(s))
+ =\pi_\alpha(\phi^{-1}(w_s))\lambda_\alpha(s).
+ \tag{L29C3}
+\]
+These formulas determine maps on the entire von Neumann crossed products. They impose no countability condition on \(G\), the algebras or the representing Hilbert spaces.
+
+**Proof.** The action \(A\) is point ultraweakly continuous because \(\phi\) and its inverse are normal. [AT-4](OA-FLOW-AT.md#oa-flow.at.4) supplies the intrinsic strong-star continuity of the action from its point-ultraweak continuity; [UC-0](OA-FLOW-UC.md#oa-flow.uc.0) identifies the strong and strong-star topologies on unitaries. The cocycle and perturbed-action proof [UC-1](OA-FLOW-UC.md#oa-flow.uc.1) makes \(\beta\) an action with the required continuity. Choose a faithful normal nondegenerate representation \(q:B\to B(K)\), and represent \(M\) by \(q\phi\). In the corresponding regular models on \(L^2(G,K)\), the coefficient operators agree exactly:
+\[
+ (\pi_\alpha(x)\xi)(t)
+  =q(\phi(\alpha_{t^{-1}}(x)))\xi(t)
+  =q(A_{t^{-1}}(\phi(x)))\xi(t).
+ \tag{L29C4}
+\]
+The left translations also agree. Thus the two generated von Neumann algebras for \(\alpha\) and \(A\) are identical in this model. Their identification is a whole normal isomorphism \(J_\phi\), not merely a rule on a dense algebra. The complete regular-model comparison [NR-4](OA-FLOW-NR.md#oa-flow.nr.4) transports it to any faithful normal regular models, preserving the coefficient and group generators.
+
+The unitary field
+\[
+ (V_w\xi)(t)=q(w_{t^{-1}})\xi(t)
+ \tag{L29C5}
+\]
+is the bounded multiplication unitary of [NR-5](OA-FLOW-NR.md#oa-flow.nr.5). That proof constructs it on all of \(L^2(G,K)\), including nonseparable \(K\), and proves strong measurability on the scalar carriers needed for each vector. Both \(V_w\) and its pointwise adjoint have norm one. No measurable-field or separability premise is added here.
+
+The cocycle identity gives, in the indicated order,
+\[
+ w_{t^{-1}s}=w_{t^{-1}}A_{t^{-1}}(w_s),\qquad
+ w_{t^{-1}}w_{t^{-1}s}^*
+ =w_{t^{-1}}A_{t^{-1}}(w_s^*)w_{t^{-1}}^*.
+\]
+Consequently
+\[
+ V_w\pi_A(b)V_w^*=\pi_\beta(b),\qquad
+ V_w\lambda_A(s)V_w^*
+   =\pi_\beta(w_s^*)\lambda_\beta(s).
+ \tag{L29C6}
+\]
+This is a whole unitary conjugation. Its image contains all coefficients and also every \(\lambda_\beta(s)\), since
+\(\lambda_\beta(s)=\pi_\beta(w_s)V_w\lambda_A(s)V_w^*\).
+It is therefore onto the whole target algebra. The inverse is conjugation by \(V_w^*\); [NR-4](OA-FLOW-NR.md#oa-flow.nr.4) and [ST-2](OA-FLOW-ST12.md#oa-flow.st.2) retain normality under the model transports. Composing this conjugation with \(J_\phi\) proves (L29C2) and (L29C3). Normal maps agreeing on the generators agree on their algebraic \*-algebra and then on its ultraweak closure, by [NR-3](OA-FLOW-NR.md#oa-flow.nr.3). This proves uniqueness. If either algebra is zero, the coefficient isomorphism makes both zero, and all assertions hold for the unique map of zero algebras. \(\square\)
+
+For composable coefficient cocycle conjugacies \((\phi,w)\) and \((\psi,v)\), [UC-4](OA-FLOW-UC.md#oa-flow.uc.4) gives the cocycle \(c_s=v_s\psi(w_s)\) for the composite coefficient map \(\psi\phi\). The whole crossed-product maps satisfy
+\[
+ \Theta_{\psi,v}\Theta_{\phi,w}=\Theta_{\psi\phi,c}.
+ \tag{L29C7}
+\]
+Indeed their coefficient values coincide, and their group values have coefficient
+\(\psi(w_s^*)v_s^*=(v_s\psi(w_s))^*=c_s^*\).
+Whole normal uniqueness proves the identity; multiplying two cocycles for the same original action would give a different, generally invalid assertion. The identity and inverse data from UC-4 give identity and inverse maps in the same way.
+
+**Corollary (character dual systems).** If \(G\) is LCA, use the negative character convention of [DA.ACTION](OA-FLOW-DA.md#da-action):
+\[
+ Q_\chi\xi(t)=\overline{\chi(t)}\xi(t),\qquad
+ \widehat\alpha_\chi(\lambda_\alpha(s))
+   =\overline{\chi(s)}\lambda_\alpha(s).
+\]
+The regular coefficient relabeling has the same \(Q_\chi\) on both sides, and \(Q_\chi V_w=V_wQ_\chi\). Thus
+\[
+ \Theta_{\phi,w}\widehat\alpha_\chi
+   =\widehat\beta_\chi\Theta_{\phi,w}
+ \qquad(\chi\in\widehat G)
+ \tag{L29C8}
+\]
+on the whole crossed product; the same conclusion follows from (L29C2) on generators and normality. Restriction gives a normal equivariant isomorphism of their centers. There is no character-dual assertion here for a general nonabelian group.
+
+The dual-system conjugacy is the classical assertion in Takesaki, *Theory of Operator Algebras II*, Chapter X, Proposition 2.5. The whole normal maps above use the completed programme regular-model and cocycle proofs.
+

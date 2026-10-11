@@ -1,0 +1,480 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Split triangles, idempotent telescopes and semisimple structures</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="split-triangles-idempotent-telescopes-and-semisimple-structures">Split triangles, idempotent telescopes and semisimple structures</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>A distinguished triangle need not be a short exact sequence in its underlying category. Nevertheless, a categorical monomorphism in a triangulated category always splits. This makes an abelian triangulated category semisimple. We prove these assertions with the actual maps, construct the ordinary colimit of an idempotent tower from its telescope, and verify every triangulated axiom for a semisimple abelian category equipped with a translation equivalence.</p>
+<p>Use the universe and Choice convention of <span class="unlinked">Universes and small categories</span>. A translation <span class="math" data-tex="\(T\)">\(T\)</span> is an additive equivalence with chosen coherent inverse <span class="math" data-tex="\(S\)">\(S\)</span>, unit <span class="math" data-tex="\(\eta:1\to ST\)">\(\eta:1\to ST\)</span>, and counit <span class="math" data-tex="\(\epsilon:TS\to1\)">\(\epsilon:TS\to1\)</span>. Integer powers and the comparison maps in <a href="translations-coherent-powers-and-universal-triangle-comparisons.html#1-translation-data-and-its-actual-inverse">Translations, coherent powers and universal triangle comparisons, Sections 1–3</a> identify inverse translates explicitly. Our rotation convention is <span class="math" data-tex="\((f,g,h)\mapsto(g,h,-Tf)\)">\((f,g,h)\mapsto(g,h,-Tf)\)</span>. We use the complete exact Hom proofs in <a href="triangles-finite-universal-maps-and-cohomology-boundaries.html#1-two-precise-exactness-conditions">Triangles, finite universal maps and the limits of cohomology, Lemma 1.1</a>, and the finite sum and comparison proofs in <a href="translations-coherent-powers-and-universal-triangle-comparisons.html#6-comparison-and-reflection-with-all-hypotheses">Translations, Sections 6–7</a>.</p>
+<h2 id="1-four-term-recognition-with-the-missing-composite-supplied">1. Four-term recognition with the missing composite supplied</h2>
+<p><strong>Theorem 1.1.</strong> Suppose we have a commuting comparison of entire triangles</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\begin{array}{ccccccc}
+X&amp;\xrightarrow f&amp;Y&amp;\xrightarrow g&amp;Z&amp;\xrightarrow h&amp;TX\\
+\alpha\downarrow&amp;&amp;\beta\downarrow&amp;&amp;\gamma\downarrow&amp;&amp;T\alpha\downarrow\\
+X&#x27;&amp;\xrightarrow{f&#x27;}&amp;Y&#x27;&amp;\xrightarrow{g&#x27;}&amp;Z&#x27;&amp;\xrightarrow{h&#x27;}&amp;TX&#x27;.
+\end{array}
+\tag{1.1}
+\]">\[
+\begin{array}{ccccccc}
+X&amp;\xrightarrow f&amp;Y&amp;\xrightarrow g&amp;Z&amp;\xrightarrow h&amp;TX\\
+\alpha\downarrow&amp;&amp;\beta\downarrow&amp;&amp;\gamma\downarrow&amp;&amp;T\alpha\downarrow\\
+X&#x27;&amp;\xrightarrow{f&#x27;}&amp;Y&#x27;&amp;\xrightarrow{g&#x27;}&amp;Z&#x27;&amp;\xrightarrow{h&#x27;}&amp;TX&#x27;.
+\end{array}
+\tag{1.1}
+\]</span>
+<p>The upper triangle is distinguished, <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> are isomorphisms, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+(Tf&#x27;)h&#x27;=0.
+\tag{1.2}
+\]">\[
+(Tf&#x27;)h&#x27;=0.
+\tag{1.2}
+\]</span>
+<p>If either of the following sequences is exact at its two interior terms for every object <span class="math" data-tex="\(P\)">\(P\)</span>, the lower triangle is distinguished:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+&amp;\operatorname{Hom}(P,X&#x27;)\longrightarrow\operatorname{Hom}(P,Y&#x27;)
+ \longrightarrow\operatorname{Hom}(P,Z&#x27;)\longrightarrow\operatorname{Hom}(P,TX&#x27;),\\
+&amp;\operatorname{Hom}(TX&#x27;,P)\longrightarrow\operatorname{Hom}(Z&#x27;,P)
+ \longrightarrow\operatorname{Hom}(Y&#x27;,P)\longrightarrow\operatorname{Hom}(X&#x27;,P).
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+&amp;\operatorname{Hom}(P,X&#x27;)\longrightarrow\operatorname{Hom}(P,Y&#x27;)
+\longrightarrow\operatorname{Hom}(P,Z&#x27;)\longrightarrow\operatorname{Hom}(P,TX&#x27;),\\
+&amp;\operatorname{Hom}(TX&#x27;,P)\longrightarrow\operatorname{Hom}(Z&#x27;,P)
+\longrightarrow\operatorname{Hom}(Y&#x27;,P)\longrightarrow\operatorname{Hom}(X&#x27;,P).
+\end{aligned}
+\tag{1.3}
+\]</span>
+<p>Exactness of the second row alone suffices; exactness of both rows is unnecessary.</p>
+<p><strong>Proof for the first row.</strong> Fix <span class="math" data-tex="\(P\)">\(P\)</span>. If <span class="math" data-tex="\(z:P\to Z\)">\(z:P\to Z\)</span> satisfies <span class="math" data-tex="\(\gamma z=0\)">\(\gamma z=0\)</span>, the last square and invertibility of <span class="math" data-tex="\(T\alpha\)">\(T\alpha\)</span> give <span class="math" data-tex="\(hz=0\)">\(hz=0\)</span>. Upper Hom exactness gives <span class="math" data-tex="\(z=gy\)">\(z=gy\)</span>. Now <span class="math" data-tex="\(g&#x27;\beta y=0\)">\(g&#x27;\beta y=0\)</span>, so lower exactness at <span class="math" data-tex="\(\operatorname{Hom}(P,Y&#x27;)\)">\(\operatorname{Hom}(P,Y&#x27;)\)</span> gives <span class="math" data-tex="\(\beta y=f&#x27;x&#x27;\)">\(\beta y=f&#x27;x&#x27;\)</span>. Set <span class="math" data-tex="\(x=\alpha^{-1}x&#x27;\)">\(x=\alpha^{-1}x&#x27;\)</span>. The first square gives <span class="math" data-tex="\(\beta fx=f&#x27;x&#x27;=\beta y\)">\(\beta fx=f&#x27;x&#x27;=\beta y\)</span>, hence <span class="math" data-tex="\(y=fx\)">\(y=fx\)</span> and <span class="math" data-tex="\(z=0\)">\(z=0\)</span>.</p>
+<p>For surjectivity, take <span class="math" data-tex="\(z&#x27;:P\to Z&#x27;\)">\(z&#x27;:P\to Z&#x27;\)</span>. The map <span class="math" data-tex="\(t=(T\alpha)^{-1}h&#x27;z&#x27;\)">\(t=(T\alpha)^{-1}h&#x27;z&#x27;\)</span> is killed by <span class="math" data-tex="\(Tf\)">\(Tf\)</span>: the translated first square and (1.2) give this actual zero composite. Upper exactness at <span class="math" data-tex="\(\operatorname{Hom}(P,TX)\)">\(\operatorname{Hom}(P,TX)\)</span> supplies <span class="math" data-tex="\(z:P\to Z\)">\(z:P\to Z\)</span> with <span class="math" data-tex="\(hz=t\)">\(hz=t\)</span>. The last square then gives <span class="math" data-tex="\(h&#x27;(z&#x27;-\gamma z)=0\)">\(h&#x27;(z&#x27;-\gamma z)=0\)</span>. Lower exactness at <span class="math" data-tex="\(\operatorname{Hom}(P,Z&#x27;)\)">\(\operatorname{Hom}(P,Z&#x27;)\)</span> gives <span class="math" data-tex="\(z&#x27;-\gamma z=g&#x27;y&#x27;\)">\(z&#x27;-\gamma z=g&#x27;y&#x27;\)</span>. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+z&#x27;=\gamma\bigl(z+g\beta^{-1}y&#x27;\bigr).
+\tag{1.4}
+\]">\[
+z&#x27;=\gamma\bigl(z+g\beta^{-1}y&#x27;\bigr).
+\tag{1.4}
+\]</span>
+<p>Every <span class="math" data-tex="\(\operatorname{Hom}(P,\gamma)\)">\(\operatorname{Hom}(P,\gamma)\)</span> is bijective. Surjectivity at <span class="math" data-tex="\(P=Z&#x27;\)">\(P=Z&#x27;\)</span> supplies <span class="math" data-tex="\(r:Z&#x27;\to Z\)">\(r:Z&#x27;\to Z\)</span> with <span class="math" data-tex="\(\gamma r=1\)">\(\gamma r=1\)</span>. Injectivity at <span class="math" data-tex="\(P=Z\)">\(P=Z\)</span>, applied to <span class="math" data-tex="\(r\gamma\)">\(r\gamma\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, gives <span class="math" data-tex="\(r\gamma=1\)">\(r\gamma=1\)</span>.</p>
+<p><strong>Proof for the second row.</strong> We prove bijectivity of precomposition</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+\gamma^*:\operatorname{Hom}(Z&#x27;,P)\longrightarrow\operatorname{Hom}(Z,P).
+\tag{1.5}
+\]">\[
+\gamma^*:\operatorname{Hom}(Z&#x27;,P)\longrightarrow\operatorname{Hom}(Z,P).
+\tag{1.5}
+\]</span>
+<p>If <span class="math" data-tex="\(a&#x27;\gamma=0\)">\(a&#x27;\gamma=0\)</span>, then <span class="math" data-tex="\(a&#x27;g&#x27;\beta=0\)">\(a&#x27;g&#x27;\beta=0\)</span>, so <span class="math" data-tex="\(a&#x27;g&#x27;=0\)">\(a&#x27;g&#x27;=0\)</span>. Lower exactness supplies <span class="math" data-tex="\(b&#x27;:TX&#x27;\to P\)">\(b&#x27;:TX&#x27;\to P\)</span> with <span class="math" data-tex="\(a&#x27;=b&#x27;h&#x27;\)">\(a&#x27;=b&#x27;h&#x27;\)</span>. Then <span class="math" data-tex="\(b&#x27;(T\alpha)h=0\)">\(b&#x27;(T\alpha)h=0\)</span>. Upper exactness supplies <span class="math" data-tex="\(c:TY\to P\)">\(c:TY\to P\)</span> with <span class="math" data-tex="\(b&#x27;(T\alpha)=c(Tf)\)">\(b&#x27;(T\alpha)=c(Tf)\)</span>, absorbing the rotation sign into <span class="math" data-tex="\(c\)">\(c\)</span>. The translated first square implies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.6); horizontal scroll when needed" data-tex="\[
+b&#x27;=c(T\beta)^{-1}(Tf&#x27;),\qquad a&#x27;=c(T\beta)^{-1}(Tf&#x27;)h&#x27;=0.
+\tag{1.6}
+\]">\[
+b&#x27;=c(T\beta)^{-1}(Tf&#x27;),\qquad a&#x27;=c(T\beta)^{-1}(Tf&#x27;)h&#x27;=0.
+\tag{1.6}
+\]</span>
+<p>For a map <span class="math" data-tex="\(a:Z\to P\)">\(a:Z\to P\)</span>, the map <span class="math" data-tex="\(ag\beta^{-1}:Y&#x27;\to P\)">\(ag\beta^{-1}:Y&#x27;\to P\)</span> kills <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span>. Lower exactness gives <span class="math" data-tex="\(a&#x27;_0:Z&#x27;\to P\)">\(a&#x27;_0:Z&#x27;\to P\)</span> with <span class="math" data-tex="\(a&#x27;_0g&#x27;=ag\beta^{-1}\)">\(a&#x27;_0g&#x27;=ag\beta^{-1}\)</span>. Hence <span class="math" data-tex="\((a-a&#x27;_0\gamma)g=0\)">\((a-a&#x27;_0\gamma)g=0\)</span>; upper exactness gives <span class="math" data-tex="\(b:TX\to P\)">\(b:TX\to P\)</span> with <span class="math" data-tex="\(a-a&#x27;_0\gamma=bh\)">\(a-a&#x27;_0\gamma=bh\)</span>. The required preimage is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.7); horizontal scroll when needed" data-tex="\[
+a&#x27;=a&#x27;_0+b(T\alpha)^{-1}h&#x27;.
+\tag{1.7}
+\]">\[
+a&#x27;=a&#x27;_0+b(T\alpha)^{-1}h&#x27;.
+\tag{1.7}
+\]</span>
+<p>Surjectivity in (1.5) at <span class="math" data-tex="\(P=Z\)">\(P=Z\)</span> gives <span class="math" data-tex="\(r\gamma=1\)">\(r\gamma=1\)</span>. Injectivity at <span class="math" data-tex="\(P=Z&#x27;\)">\(P=Z&#x27;\)</span> gives <span class="math" data-tex="\(\gamma r=1\)">\(\gamma r=1\)</span>. Thus <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is an isomorphism in either case. All three vertex maps in (1.1) are isomorphisms and preserve the three arrows. Isomorphism closure of distinguished triangles proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The extra condition (1.2) has a precise role: it supplies the zero composite needed at the fifth Hom position. Merely calling a four-term comparison a five-term comparison would omit that step.</p>
+<h2 id="2-zero-cones-and-actual-split-triangles">2. Zero cones and actual split triangles</h2>
+<p><strong>Proposition 2.1.</strong> In a distinguished triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+X\xrightarrow fY\xrightarrow gZ\xrightarrow hTX,
+\tag{2.1}
+\]">\[
+X\xrightarrow fY\xrightarrow gZ\xrightarrow hTX,
+\tag{2.1}
+\]</span>
+<p>the map <span class="math" data-tex="\(f\)">\(f\)</span> is invertible if and only if <span class="math" data-tex="\(Z\)">\(Z\)</span> is a zero object.</p>
+<p><strong>Proof.</strong> Compare the identity triangle <span class="math" data-tex="\(X\xrightarrow1X\to0\to TX\)">\(X\xrightarrow1X\to0\to TX\)</span> with (2.1), using <span class="math" data-tex="\(1_X,f\)">\(1_X,f\)</span> on its first two vertices. Square completion supplies the third map. If <span class="math" data-tex="\(f\)">\(f\)</span> is invertible, the two-isomorphism comparison theorem makes <span class="math" data-tex="\(0\to Z\)">\(0\to Z\)</span> invertible. Conversely, if <span class="math" data-tex="\(Z\)">\(Z\)</span> is zero, that theorem applied to the first and third vertices makes <span class="math" data-tex="\(f\)">\(f\)</span> invertible. The theorem's complete proof uses exact five-term Hom rows and constructs the Yoneda inverse, so neither direction assumes a categorical cone functor. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> For (2.1), the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(h=0\)">\(h=0\)</span>.</li>
+<li>There is <span class="math" data-tex="\(s:Z\to Y\)">\(s:Z\to Y\)</span> with <span class="math" data-tex="\(gs=1_Z\)">\(gs=1_Z\)</span>.</li>
+<li>There is <span class="math" data-tex="\(k:Y\to X\)">\(k:Y\to X\)</span> with <span class="math" data-tex="\(kf=1_X\)">\(kf=1_X\)</span>.</li>
+<li>The entire triangle is isomorphic, fixing its endpoints, to</li>
+</ol>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+X\xrightarrow{\iota_X}X\oplus Z\xrightarrow{\pi_Z}Z\xrightarrow0TX.
+\tag{2.2}
+\]">\[
+X\xrightarrow{\iota_X}X\oplus Z\xrightarrow{\pi_Z}Z\xrightarrow0TX.
+\tag{2.2}
+\]</span>
+<p>For every section <span class="math" data-tex="\(s\)">\(s\)</span> in assertion 2, the specified middle isomorphism is <span class="math" data-tex="\([f,s]:X\oplus Z\to Y\)">\([f,s]:X\oplus Z\to Y\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, exactness of <span class="math" data-tex="\(\operatorname{Hom}(Z,-)\)">\(\operatorname{Hom}(Z,-)\)</span> lifts <span class="math" data-tex="\(1_Z\)">\(1_Z\)</span> through <span class="math" data-tex="\(g\)">\(g\)</span>, producing <span class="math" data-tex="\(s\)">\(s\)</span>. Conversely <span class="math" data-tex="\(gs=1\)">\(gs=1\)</span> implies <span class="math" data-tex="\(h=hgs=0\)">\(h=hgs=0\)</span>. If <span class="math" data-tex="\(kf=1\)">\(kf=1\)</span>, the zero composite <span class="math" data-tex="\((Tf)h=0\)">\((Tf)h=0\)</span> gives <span class="math" data-tex="\(h=(Tk)(Tf)h=0\)">\(h=(Tk)(Tf)h=0\)</span>.</p>
+<p>When <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, its inverse translate is also zero. For every <span class="math" data-tex="\(P\)">\(P\)</span>, exact Hom therefore gives the split short exact sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+0\longrightarrow\operatorname{Hom}(P,X)\xrightarrow{f_*}
+\operatorname{Hom}(P,Y)\xrightarrow{g_*}
+\operatorname{Hom}(P,Z)\longrightarrow0.
+\tag{2.3}
+\]">\[
+0\longrightarrow\operatorname{Hom}(P,X)\xrightarrow{f_*}
+\operatorname{Hom}(P,Y)\xrightarrow{g_*}
+\operatorname{Hom}(P,Z)\longrightarrow0.
+\tag{2.3}
+\]</span>
+<p>The splitting is <span class="math" data-tex="\(s_*\)">\(s_*\)</span>. Consequently <span class="math" data-tex="\(\operatorname{Hom}(P,[f,s])\)">\(\operatorname{Hom}(P,[f,s])\)</span> is bijective: for <span class="math" data-tex="\(y:P\to Y\)">\(y:P\to Y\)</span>, subtract <span class="math" data-tex="\(sgy\)">\(sgy\)</span>, lift the remainder uniquely through <span class="math" data-tex="\(f\)">\(f\)</span>, and use <span class="math" data-tex="\(g\)">\(g\)</span> to recover the second component. The Yoneda inverse construction in Theorem 1.1 makes <span class="math" data-tex="\([f,s]\)">\([f,s]\)</span> invertible. Its first square is the definition, its second is <span class="math" data-tex="\(gf=0,gs=1\)">\(gf=0,gs=1\)</span>, and the last arrows are zero. This proves assertion 4. Put <span class="math" data-tex="\(k=\pi_X[f,s]^{-1}\)">\(k=\pi_X[f,s]^{-1}\)</span> to obtain assertion 3. Finally (2.2) is distinguished: it is the finite direct sum of the identity triangle of <span class="math" data-tex="\(X\)">\(X\)</span> and the rotated identity triangle <span class="math" data-tex="\(0\to Z\xrightarrow1Z\to0\)">\(0\to Z\xrightarrow1Z\to0\)</span>. The finite-sum theorem includes the actual translation comparison on the last map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.3.</strong> Every categorical monomorphism in a triangulated category is a split injection into a biproduct. Every categorical epimorphism is a split projection.</p>
+<p><strong>Proof.</strong> Complete a monomorphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> to (2.1). In the inverse rotation, the preceding map <span class="math" data-tex="\(a:SZ\to X\)">\(a:SZ\to X\)</span> satisfies <span class="math" data-tex="\(fa=0\)">\(fa=0\)</span>. Left cancellation gives <span class="math" data-tex="\(a=0\)">\(a=0\)</span>; the inverse-translation comparison identifies its translate, up to sign and invertible comparison, with <span class="math" data-tex="\(h\)">\(h\)</span>, so <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. Theorem 2.2 gives <span class="math" data-tex="\(Y\cong X\oplus Z\)">\(Y\cong X\oplus Z\)</span> and identifies <span class="math" data-tex="\(f\)">\(f\)</span> with the canonical injection.</p>
+<p>For an epimorphism <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span> in (2.1), <span class="math" data-tex="\(hg=0\)">\(hg=0\)</span> and right cancellation give <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, so <span class="math" data-tex="\(g\)">\(g\)</span> is the canonical projection in the same decomposition. Any specified epimorphism can be made the second arrow by completing it and inversely rotating. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are categorical cancellation statements. A map that is injective only after applying one cohomology functor need not split in the original category.</p>
+<h2 id="3-the-signed-triangulated-translation">3. The signed triangulated translation</h2>
+<p><strong>Proposition 3.1.</strong> Translation is a triangulated equivalence with natural comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\xi_X=-1_{T^2X}:T(TX)\longrightarrow T(TX).
+\tag{3.1}
+\]">\[
+\xi_X=-1_{T^2X}:T(TX)\longrightarrow T(TX).
+\tag{3.1}
+\]</span>
+<p>Thus its image of (2.1) has actual last arrow <span class="math" data-tex="\(-Th\)">\(-Th\)</span>.</p>
+<p><strong>Proof.</strong> Three rotations of (2.1) give the distinguished triangle with arrows <span class="math" data-tex="\((-Tf,-Tg,-Th)\)">\((-Tf,-Tg,-Th)\)</span>. Vertex maps <span class="math" data-tex="\((1_{TX},-1_{TY},1_{TZ})\)">\((1_{TX},-1_{TY},1_{TZ})\)</span> identify it with <span class="math" data-tex="\((Tf,Tg,-Th)\)">\((Tf,Tg,-Th)\)</span>: the first two squares each change two signs, and the last square changes none. This is exactly the functorial image using (3.1). Naturality of minus the identity follows from additivity. The underlying functor <span class="math" data-tex="\(T\)">\(T\)</span> is an equivalence by hypothesis.</p>
+<p>For completeness this structure reflects distinguished triangles as well. If <span class="math" data-tex="\((Tf,Tg,-Th)\)">\((Tf,Tg,-Th)\)</span> is distinguished, take three inverse rotations and cancel the coherent <span class="math" data-tex="\(ST\)">\(ST\)</span> comparisons. The result is <span class="math" data-tex="\((-f,-g,h)\)">\((-f,-g,h)\)</span>, isomorphic to (2.1) by <span class="math" data-tex="\((1_X,-1_Y,1_Z)\)">\((1_X,-1_Y,1_Z)\)</span>.</p>
+<p>An explicit inverse structure on <span class="math" data-tex="\(S\)">\(S\)</span> has comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\zeta_X=-\epsilon_X^{-1}\eta_X^{-1}:STX\longrightarrow TSX.
+\tag{3.2}
+\]">\[
+\zeta_X=-\epsilon_X^{-1}\eta_X^{-1}:STX\longrightarrow TSX.
+\tag{3.2}
+\]</span>
+<p>For the composite <span class="math" data-tex="\(TS\)">\(TS\)</span>, its comparison is <span class="math" data-tex="\((T\epsilon_X)^{-1}(T\eta_X)^{-1}\)">\((T\epsilon_X)^{-1}(T\eta_X)^{-1}\)</span>. The counit is a translation-compatible natural isomorphism from this composite to the identity, because</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+(T\epsilon_X)(T\epsilon_X)^{-1}(T\eta_X)^{-1}
+=(T\eta_X)^{-1}=\epsilon_{TX}.
+\tag{3.3}
+\]">\[
+(T\epsilon_X)(T\epsilon_X)^{-1}(T\eta_X)^{-1}
+=(T\eta_X)^{-1}=\epsilon_{TX}.
+\tag{3.3}
+\]</span>
+<p>The last equality is the triangular identity <span class="math" data-tex="\(\epsilon_{TX}T\eta_X=1\)">\(\epsilon_{TX}T\eta_X=1\)</span>. Consequently applying <span class="math" data-tex="\(T\)">\(T\)</span> to the <span class="math" data-tex="\(S\)">\(S\)</span>-image of a distinguished triangle produces a triangle isomorphic through <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> to the original one. Reflection just proved shows that this <span class="math" data-tex="\(S\)">\(S\)</span>-image is distinguished. The unit supplies the other inverse comparison by the other triangular identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-an-idempotent-tower-has-an-ordinary-colimit">4. An idempotent tower has an ordinary colimit</h2>
+<p>Suppose countable coproducts exist and <span class="math" data-tex="\(p:X\to X\)">\(p:X\to X\)</span> satisfies <span class="math" data-tex="\(p^2=p\)">\(p^2=p\)</span>. Put <span class="math" data-tex="\(P=\bigoplus_{n\ge0}X\)">\(P=\bigoplus_{n\ge0}X\)</span>, with injections <span class="math" data-tex="\(a_n\)">\(a_n\)</span>, and specify</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+d a_n=a_n-a_{n+1}p.
+\tag{4.1}
+\]">\[
+d a_n=a_n-a_{n+1}p.
+\tag{4.1}
+\]</span>
+<p>Choose a distinguished triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+P\xrightarrow dP\xrightarrow vY\xrightarrow hTP.
+\tag{4.2}
+\]">\[
+P\xrightarrow dP\xrightarrow vY\xrightarrow hTP.
+\tag{4.2}
+\]</span>
+<p>This chosen <span class="math" data-tex="\(Y\)">\(Y\)</span> is the homotopy colimit of the constant-object tower with transition <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> The maps in (4.2) determine <span class="math" data-tex="\(q:X\to Y\)">\(q:X\to Y\)</span> and <span class="math" data-tex="\(r:Y\to X\)">\(r:Y\to X\)</span> satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+q=qp,\qquad rq=p,\qquad qr=1_Y.
+\tag{4.3}
+\]">\[
+q=qp,\qquad rq=p,\qquad qr=1_Y.
+\tag{4.3}
+\]</span>
+<p>The object <span class="math" data-tex="\(Y\)">\(Y\)</span>, with every structure map equal to <span class="math" data-tex="\(q\)">\(q\)</span>, is the ordinary categorical colimit of that tower. In particular every idempotent in a triangulated category with countable coproducts splits.</p>
+<p><strong>Proof.</strong> Define a map <span class="math" data-tex="\(t:P\to P\)">\(t:P\to P\)</span> by its finite columns</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+t a_n=a_n(1-p)-\sum_{0\le k&lt;n}a_kp.
+\tag{4.4}
+\]">\[
+t a_n=a_n(1-p)-\sum_{0\le k&lt;n}a_kp.
+\tag{4.4}
+\]</span>
+<p>This is a legal coproduct map: each column is a finite sum, and the coproduct universal property assembles the columns. Idempotence gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+t d a_n=t a_n-t a_{n+1}p
+=a_n(1-p)-\sum_{k&lt;n}a_kp+\sum_{k&lt;n+1}a_kp=a_n.
+\tag{4.5}
+\]">\[
+t d a_n=t a_n-t a_{n+1}p
+=a_n(1-p)-\sum_{k&lt;n}a_kp+\sum_{k&lt;n+1}a_kp=a_n.
+\tag{4.5}
+\]</span>
+<p>Thus <span class="math" data-tex="\(td=1_P\)">\(td=1_P\)</span>. Theorem 2.2 applied to (4.2) gives <span class="math" data-tex="\(h=0\)">\(h=0\)</span> and makes <span class="math" data-tex="\(v\)">\(v\)</span> a split epimorphism.</p>
+<p>Since <span class="math" data-tex="\(d a_n(1-p)=a_n(1-p)\)">\(d a_n(1-p)=a_n(1-p)\)</span> and <span class="math" data-tex="\(vd=0\)">\(vd=0\)</span>, we have <span class="math" data-tex="\(va_n=va_np\)">\(va_n=va_np\)</span>. Equation (4.1) now gives <span class="math" data-tex="\(va_n=va_{n+1}\)">\(va_n=va_{n+1}\)</span>. Write their common value as <span class="math" data-tex="\(q\)">\(q\)</span>; then <span class="math" data-tex="\(q=qp\)">\(q=qp\)</span>.</p>
+<p>Define <span class="math" data-tex="\(b:P\to X\)">\(b:P\to X\)</span> by <span class="math" data-tex="\(ba_n=p\)">\(ba_n=p\)</span>. Its columns show <span class="math" data-tex="\(bd=0\)">\(bd=0\)</span>, so exact <span class="math" data-tex="\(\operatorname{Hom}(-,X)\)">\(\operatorname{Hom}(-,X)\)</span> in (4.2) gives <span class="math" data-tex="\(r:Y\to X\)">\(r:Y\to X\)</span> with <span class="math" data-tex="\(rv=b\)">\(rv=b\)</span>. Hence <span class="math" data-tex="\(rq=p\)">\(rq=p\)</span>. The maps <span class="math" data-tex="\(qrv\)">\(qrv\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> agree on every <span class="math" data-tex="\(a_n\)">\(a_n\)</span>, since <span class="math" data-tex="\(qba_n=qp=q=va_n\)">\(qba_n=qp=q=va_n\)</span>. The epimorphism <span class="math" data-tex="\(v\)">\(v\)</span> cancels to give <span class="math" data-tex="\(qr=1_Y\)">\(qr=1_Y\)</span>. This proves the splitting with its specified maps.</p>
+<p>A cocone into <span class="math" data-tex="\(W\)">\(W\)</span> is a sequence <span class="math" data-tex="\(u_n:X\to W\)">\(u_n:X\to W\)</span> with <span class="math" data-tex="\(u_n=u_{n+1}p\)">\(u_n=u_{n+1}p\)</span>. This relation implies <span class="math" data-tex="\(u_n p=u_n\)">\(u_n p=u_n\)</span>, and then <span class="math" data-tex="\(u_n=u_{n+1}\)">\(u_n=u_{n+1}\)</span>. Thus it is one map <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(up=u\)">\(up=u\)</span>. The map <span class="math" data-tex="\(ur:Y\to W\)">\(ur:Y\to W\)</span> satisfies <span class="math" data-tex="\((ur)q=up=u\)">\((ur)q=up=u\)</span>. It is unique: if <span class="math" data-tex="\(\phi q=u\)">\(\phi q=u\)</span>, then <span class="math" data-tex="\(\phi=\phi qr=ur\)">\(\phi=\phi qr=ur\)</span>. These are exactly the ordinary colimit universal property and all its structure-map equations. No interchange of Hom with countable coproducts, compactness assumption, or general exactness of filtered colimits has been used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 4.2.</strong> In vector spaces let <span class="math" data-tex="\(X=U\oplus V\)">\(X=U\oplus V\)</span> and <span class="math" data-tex="\(p(u,v)=(u,0)\)">\(p(u,v)=(u,0)\)</span>. The colimit is <span class="math" data-tex="\(U\)">\(U\)</span>, with <span class="math" data-tex="\(q(u,v)=u\)">\(q(u,v)=u\)</span> and <span class="math" data-tex="\(r(u)=(u,0)\)">\(r(u)=(u,0)\)</span>. Formula (4.4) keeps the <span class="math" data-tex="\(V\)">\(V\)</span>-component in column <span class="math" data-tex="\(n\)">\(n\)</span> and subtracts the <span class="math" data-tex="\(U\)">\(U\)</span>-component in columns <span class="math" data-tex="\(0,\ldots,n-1\)">\(0,\ldots,n-1\)</span>. These finite columns verify (4.5) even when <span class="math" data-tex="\(U,V\)">\(U,V\)</span> have arbitrary dimension.</p>
+<h2 id="5-abelian-triangulated-categories-are-semisimple">5. Abelian triangulated categories are semisimple</h2>
+<p>An abelian category is <em>semisimple</em> here if every short exact sequence splits. This definition does not impose finite length, finite dimension, or a specified set of simple objects. Use the actual kernel, image, quotient and biproduct constructions of <span class="unlinked">Exact complexes, signs and lifting covers, Sections 1–2</span>.</p>
+<p><strong>Theorem 5.1.</strong> If the underlying category of a triangulated category is abelian, it is semisimple. Every distinguished triangle is isomorphic to a finite direct sum of the three elementary types</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+U\xrightarrow1U\longrightarrow0\longrightarrow TU,
+\qquad
+0\longrightarrow V\xrightarrow1V\longrightarrow0,
+\qquad
+W\longrightarrow0\longrightarrow TW\xrightarrow1TW.
+\tag{5.1}
+\]">\[
+U\xrightarrow1U\longrightarrow0\longrightarrow TU,
+\qquad
+0\longrightarrow V\xrightarrow1V\longrightarrow0,
+\qquad
+W\longrightarrow0\longrightarrow TW\xrightarrow1TW.
+\tag{5.1}
+\]</span>
+<p>The last type can equivalently be written <span class="math" data-tex="\(SZ\to0\to Z\to TSZ\)">\(SZ\to0\to Z\to TSZ\)</span>, with last arrow <span class="math" data-tex="\(\epsilon_Z^{-1}\)">\(\epsilon_Z^{-1}\)</span>.</p>
+<p><strong>Proof.</strong> In every short exact sequence, its first map is a categorical monomorphism. Corollary 2.3 supplies a retraction, and abelian exactness identifies the complement with the stated cokernel. Explicitly, if <span class="math" data-tex="\(i:A\to B\)">\(i:A\to B\)</span> has retraction <span class="math" data-tex="\(k\)">\(k\)</span>, its cokernel <span class="math" data-tex="\(c:B\to C\)">\(c:B\to C\)</span> restricts to an isomorphism from <span class="math" data-tex="\(\ker k\)">\(\ker k\)</span> to <span class="math" data-tex="\(C\)">\(C\)</span>: write <span class="math" data-tex="\(b=ikb+(b-ikb)\)">\(b=ikb+(b-ikb)\)</span>, or use the corresponding biproduct identity; injectivity and surjectivity of that restriction follow from <span class="math" data-tex="\(\ker c=\operatorname{im}i\)">\(\ker c=\operatorname{im}i\)</span>. This proves semisimplicity.</p>
+<p>Factor an arbitrary <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> through its image <span class="math" data-tex="\(I\)">\(I\)</span>. The exact sequences with kernel <span class="math" data-tex="\(K\)">\(K\)</span> and cokernel <span class="math" data-tex="\(Q\)">\(Q\)</span> split, giving identifications</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+X=K\oplus I,\qquad Y=I\oplus Q,
+\qquad f(k,i)=(i,0).
+\tag{5.2}
+\]">\[
+X=K\oplus I,\qquad Y=I\oplus Q,
+\qquad f(k,i)=(i,0).
+\tag{5.2}
+\]</span>
+<p>The notation denotes biproduct component maps, so this formula is meaningful without underlying elements. The finite sum of the three triangles (5.1), for <span class="math" data-tex="\(I,Q,K\)">\(I,Q,K\)</span> respectively, is the distinguished completion</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+K\oplus I\xrightarrow f I\oplus Q
+\xrightarrow j Q\oplus TK\xrightarrow e T(K\oplus I),
+\quad j(i,q)=(q,0),\quad e(q,Tk)=(Tk,0).
+\tag{5.3}
+\]">\[
+K\oplus I\xrightarrow f I\oplus Q
+\xrightarrow j Q\oplus TK\xrightarrow e T(K\oplus I),
+\quad j(i,q)=(q,0),\quad e(q,Tk)=(Tk,0).
+\tag{5.3}
+\]</span>
+<p>The third elementary type is distinguished: rotating the identity triangle of <span class="math" data-tex="\(K\)">\(K\)</span> gives <span class="math" data-tex="\(K\to0\to TK\xrightarrow{-1}TK\)">\(K\to0\to TK\xrightarrow{-1}TK\)</span>, and minus the identity on its third vertex changes that last map to <span class="math" data-tex="\(1\)">\(1\)</span>. Compare (5.3) with the given distinguished completion of <span class="math" data-tex="\(f\)">\(f\)</span>, fixing <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>. The two-isomorphism comparison theorem gives an invertible third map preserving both remaining arrows. This gives the entire stated decomposition, including its last arrow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only distinguished triangles have this assertion. An arbitrary sequence of three arrows can fail the zero-composite or exactness conditions; calling every such sequence a sum of (5.1) would be false.</p>
+<h2 id="6-constructing-all-axioms-from-semisimplicity">6. Constructing all axioms from semisimplicity</h2>
+<p>Conversely let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a semisimple abelian category and let <span class="math" data-tex="\(T\)">\(T\)</span> be an additive equivalence. Declare a triangle distinguished if it is isomorphic to a finite sum of (5.1). We prove all four axioms, including the axiom for three prescribed completions of a composable pair.</p>
+<p><strong>Lemma 6.1 (an exactness characterization).</strong> A triangle <span class="math" data-tex="\(A\xrightarrow fB\xrightarrow gC\xrightarrow hTA\)">\(A\xrightarrow fB\xrightarrow gC\xrightarrow hTA\)</span> is distinguished under this declaration if and only if</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\operatorname{im}f=\ker g,\qquad
+\operatorname{im}g=\ker h,\qquad
+\operatorname{im}h=\ker(Tf),
+\tag{6.1}
+\]">\[
+\operatorname{im}f=\ker g,\qquad
+\operatorname{im}g=\ker h,\qquad
+\operatorname{im}h=\ker(Tf),
+\tag{6.1}
+\]</span>
+<p>as subobjects, and its consecutive composites, including <span class="math" data-tex="\((Tf)h\)">\((Tf)h\)</span>, are zero.</p>
+<p><strong>Proof.</strong> The normal triangle (5.3) has these properties by its component maps. They are invariant under triangle isomorphisms. For the converse choose (5.2) for <span class="math" data-tex="\(f\)">\(f\)</span>. The first equality makes <span class="math" data-tex="\(g\)">\(g\)</span> vanish on <span class="math" data-tex="\(I\)">\(I\)</span> and induce a monomorphism <span class="math" data-tex="\(\bar g:Q\to C\)">\(\bar g:Q\to C\)</span>. Equivalences preserve kernels: applying an inverse equivalence to a proposed kernel factorization proves its universal property, and hence <span class="math" data-tex="\(\ker(Tf)=TK\)">\(\ker(Tf)=TK\)</span>. The other two equalities make <span class="math" data-tex="\(h\)">\(h\)</span> factor through <span class="math" data-tex="\(TK\)">\(TK\)</span> and give a short exact sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow Q\xrightarrow{\bar g}C
+\xrightarrow{\bar h}TK\longrightarrow0.
+\tag{6.2}
+\]">\[
+0\longrightarrow Q\xrightarrow{\bar g}C
+\xrightarrow{\bar h}TK\longrightarrow0.
+\tag{6.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(\bar h\)">\(\bar h\)</span> is epic because its image is the whole <span class="math" data-tex="\(TK\)">\(TK\)</span>; its kernel is <span class="math" data-tex="\(\bar g(Q)\)">\(\bar g(Q)\)</span> by the middle equality. Semisimplicity supplies <span class="math" data-tex="\(s:TK\to C\)">\(s:TK\to C\)</span> with <span class="math" data-tex="\(\bar h s=1\)">\(\bar h s=1\)</span>. The map <span class="math" data-tex="\([\bar g,s]:Q\oplus TK\to C\)">\([\bar g,s]:Q\oplus TK\to C\)</span> is invertible: subtracting <span class="math" data-tex="\(s\bar h\)">\(s\bar h\)</span> factors uniquely through <span class="math" data-tex="\(\bar g\)">\(\bar g\)</span>, giving its inverse components. This identifies the triangle with (5.3), preserving <span class="math" data-tex="\(g,h\)">\(g,h\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>TR1 and TR2.</strong> The declaration is closed under triangle isomorphism, contains each identity triangle, and completes every <span class="math" data-tex="\(f\)">\(f\)</span> through (5.2)–(5.3). This is TR1. An equivalence preserves the actual image and kernel comparisons and finite biproducts by their universal properties. Consequently applying <span class="math" data-tex="\(T\)">\(T\)</span> to (6.1) gives its translated exact positions. The rotated arrows <span class="math" data-tex="\((g,h,-Tf)\)">\((g,h,-Tf)\)</span> satisfy the three required equalities at <span class="math" data-tex="\(C,TA,TB\)">\(C,TA,TB\)</span>; a minus sign has the same kernel and image as the original map. Lemma 6.1 makes the rotation distinguished. Applying the inverse equivalence gives the converse, with its inverse-rotation sign. This proves both directions of TR2.</p>
+<p><strong>TR3.</strong> Choose normal forms (5.3) for the source and target triangles. Write <span class="math" data-tex="\(\alpha:K\oplus I\to K&#x27;\oplus I&#x27;\)">\(\alpha:K\oplus I\to K&#x27;\oplus I&#x27;\)</span> and <span class="math" data-tex="\(\beta:I\oplus Q\to I&#x27;\oplus Q&#x27;\)">\(\beta:I\oplus Q\to I&#x27;\oplus Q&#x27;\)</span> for the first two vertex maps. The square <span class="math" data-tex="\(\beta f=f&#x27;\alpha\)">\(\beta f=f&#x27;\alpha\)</span> forces exactly</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\alpha_{I&#x27;K}=0,\qquad\beta_{Q&#x27;I}=0,
+\qquad\beta_{I&#x27;I}=\alpha_{I&#x27;I}.
+\tag{6.3}
+\]">\[
+\alpha_{I&#x27;K}=0,\qquad\beta_{Q&#x27;I}=0,
+\qquad\beta_{I&#x27;I}=\alpha_{I&#x27;I}.
+\tag{6.3}
+\]</span>
+<p>Define the third map from <span class="math" data-tex="\(Q\oplus TK\)">\(Q\oplus TK\)</span> to <span class="math" data-tex="\(Q&#x27;\oplus TK&#x27;\)">\(Q&#x27;\oplus TK&#x27;\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+\gamma=
+\begin{pmatrix}
+\beta_{Q&#x27;Q}&amp;0\\0&amp;T\alpha_{K&#x27;K}
+\end{pmatrix}.
+\tag{6.4}
+\]">\[
+\gamma=
+\begin{pmatrix}
+\beta_{Q&#x27;Q}&amp;0\\0&amp;T\alpha_{K&#x27;K}
+\end{pmatrix}.
+\tag{6.4}
+\]</span>
+<p>The equality <span class="math" data-tex="\(\gamma j=j&#x27;\beta\)">\(\gamma j=j&#x27;\beta\)</span> is the first diagonal component and <span class="math" data-tex="\(\beta_{Q&#x27;I}=0\)">\(\beta_{Q&#x27;I}=0\)</span>. The equality <span class="math" data-tex="\(e&#x27;\gamma=(T\alpha)e\)">\(e&#x27;\gamma=(T\alpha)e\)</span> is the second diagonal component and <span class="math" data-tex="\(\alpha_{I&#x27;K}=0\)">\(\alpha_{I&#x27;K}=0\)</span>. Thus all three squares commute. Conjugate through the chosen normal-form isomorphisms to complete any original square. No claim of uniqueness is needed.</p>
+<p><strong>A six-piece decomposition for TR4.</strong> For <span class="math" data-tex="\(A\xrightarrow fB\xrightarrow gC\)">\(A\xrightarrow fB\xrightarrow gC\)</span>, let <span class="math" data-tex="\(I=\operatorname{im}f\)">\(I=\operatorname{im}f\)</span>, <span class="math" data-tex="\(J=\ker g\)">\(J=\ker g\)</span>, and let <span class="math" data-tex="\(L=I\cap J\)">\(L=I\cap J\)</span>, defined by the pullback of their inclusions in <span class="math" data-tex="\(B\)">\(B\)</span>. Split <span class="math" data-tex="\(I=L\oplus M\)">\(I=L\oplus M\)</span> and <span class="math" data-tex="\(J=L\oplus N\)">\(J=L\oplus N\)</span>. Their union inside <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(L\oplus M\oplus N\)">\(L\oplus M\oplus N\)</span>: the only intersection of <span class="math" data-tex="\(I,J\)">\(I,J\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>, so the sum map is monic after these complements. Split that inclusion and write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+B=L\oplus M\oplus N\oplus R.
+\tag{6.5}
+\]">\[
+B=L\oplus M\oplus N\oplus R.
+\tag{6.5}
+\]</span>
+<p>The restriction of <span class="math" data-tex="\(g\)">\(g\)</span> to <span class="math" data-tex="\(M\oplus R\)">\(M\oplus R\)</span> is monic, since its kernel lies in <span class="math" data-tex="\(J=L\oplus N\)">\(J=L\oplus N\)</span>. Its image splits in <span class="math" data-tex="\(C\)">\(C\)</span>, giving <span class="math" data-tex="\(C\cong M\oplus R\oplus V\)">\(C\cong M\oplus R\oplus V\)</span> with <span class="math" data-tex="\(g\)">\(g\)</span> the identity on these two image summands and zero on <span class="math" data-tex="\(L,N\)">\(L,N\)</span>. Split the epimorphism <span class="math" data-tex="\(A\to I\)">\(A\to I\)</span> and obtain <span class="math" data-tex="\(A\cong K\oplus L\oplus M\)">\(A\cong K\oplus L\oplus M\)</span>, with <span class="math" data-tex="\(f\)">\(f\)</span> the identity on <span class="math" data-tex="\(L,M\)">\(L,M\)</span> and zero on <span class="math" data-tex="\(K\)">\(K\)</span>. The pair is therefore a finite direct sum of the six pairs</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.6); horizontal scroll when needed" data-tex="\[
+(U,0,0),\quad(0,U,0),\quad(0,0,U),\quad
+(U\xrightarrow1U\to0),\quad
+(0\to U\xrightarrow1U),\quad
+(U\xrightarrow1U\xrightarrow1U).
+\tag{6.6}
+\]">\[
+(U,0,0),\quad(0,U,0),\quad(0,0,U),\quad
+(U\xrightarrow1U\to0),\quad
+(0\to U\xrightarrow1U),\quad
+(U\xrightarrow1U\xrightarrow1U).
+\tag{6.6}
+\]</span>
+<p>The summands correspond respectively to <span class="math" data-tex="\(K,N,V,L,R,M\)">\(K,N,V,L,R,M\)</span>. This construction uses only kernels, pullbacks, images, and the given splitting of short exact sequences; it does not assume that objects have finite length.</p>
+<p><strong>TR4 for the normal completions.</strong> Choose the normal cone objects <span class="math" data-tex="\(Q_f,Q_{gf},Q_g\)">\(Q_f,Q_{gf},Q_g\)</span>, inclusions <span class="math" data-tex="\(j_f,j_{gf},j_g\)">\(j_f,j_{gf},j_g\)</span>, and connecting maps <span class="math" data-tex="\(e_f,e_{gf},e_g\)">\(e_f,e_{gf},e_g\)</span> from (5.3). The required octahedral triangle is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.7); horizontal scroll when needed" data-tex="\[
+Q_f\xrightarrow uQ_{gf}\xrightarrow vQ_g
+\xrightarrow wTQ_f,\qquad w=(Tj_f)e_g,
+\tag{6.7}
+\]">\[
+Q_f\xrightarrow uQ_{gf}\xrightarrow vQ_g
+\xrightarrow wTQ_f,\qquad w=(Tj_f)e_g,
+\tag{6.7}
+\]</span>
+<p>and its four squares are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.8); horizontal scroll when needed" data-tex="\[
+u j_f=j_{gf}g,\qquad e_{gf}u=e_f,
+\qquad vj_{gf}=j_g,\qquad e_gv=(Tf)e_{gf}.
+\tag{6.8}
+\]">\[
+u j_f=j_{gf}g,\qquad e_{gf}u=e_f,
+\qquad vj_{gf}=j_g,\qquad e_gv=(Tf)e_{gf}.
+\tag{6.8}
+\]</span>
+<p>For the six summands (6.6), specify these data by the following table. A displayed <span class="math" data-tex="\(1\)">\(1\)</span> is the identity of the indicated nonzero object, and every other indicated map is zero.</p>
+<table tabindex="0" role="region" aria-label="Six octahedral cases; horizontal scroll when needed">
+<thead>
+<tr>
+<th>Pair on <span class="math" data-tex="\((A,B,C)\)">\((A,B,C)\)</span></th>
+<th><span class="math" data-tex="\(Q_f\)">\(Q_f\)</span></th>
+<th><span class="math" data-tex="\(Q_{gf}\)">\(Q_{gf}\)</span></th>
+<th><span class="math" data-tex="\(Q_g\)">\(Q_g\)</span></th>
+<th><span class="math" data-tex="\(u\)">\(u\)</span></th>
+<th><span class="math" data-tex="\(v\)">\(v\)</span></th>
+<th><span class="math" data-tex="\(w\)">\(w\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\((U,0,0)\)">\((U,0,0)\)</span></td>
+<td><span class="math" data-tex="\(TU\)">\(TU\)</span></td>
+<td><span class="math" data-tex="\(TU\)">\(TU\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((0,U,0)\)">\((0,U,0)\)</span></td>
+<td><span class="math" data-tex="\(U\)">\(U\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(TU\)">\(TU\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((0,0,U)\)">\((0,0,U)\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(U\)">\(U\)</span></td>
+<td><span class="math" data-tex="\(U\)">\(U\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((U,U,0), f=1\)">\((U,U,0), f=1\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(TU\)">\(TU\)</span></td>
+<td><span class="math" data-tex="\(TU\)">\(TU\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((0,U,U), g=1\)">\((0,U,U), g=1\)</span></td>
+<td><span class="math" data-tex="\(U\)">\(U\)</span></td>
+<td><span class="math" data-tex="\(U\)">\(U\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((U,U,U), f=g=1\)">\((U,U,U), f=g=1\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We check all four equations and the prescribed last arrow. In the first row, <span class="math" data-tex="\(e_f=e_{gf}=1_{TU}\)">\(e_f=e_{gf}=1_{TU}\)</span>, and all <span class="math" data-tex="\(j\)">\(j\)</span>'s and <span class="math" data-tex="\(e_g\)">\(e_g\)</span> are zero; only the second equation is nonzero and it reads <span class="math" data-tex="\(1=1\)">\(1=1\)</span>. In the second row, <span class="math" data-tex="\(j_f=1_U,e_g=1_{TU}\)">\(j_f=1_U,e_g=1_{TU}\)</span>, with all other <span class="math" data-tex="\(j\)">\(j\)</span>'s and <span class="math" data-tex="\(e\)">\(e\)</span>'s zero. All four squares are zero and <span class="math" data-tex="\(w=(Tj_f)e_g=1_{TU}\)">\(w=(Tj_f)e_g=1_{TU}\)</span>. In the third row, <span class="math" data-tex="\(j_{gf}=j_g=1_U\)">\(j_{gf}=j_g=1_U\)</span>, all connecting maps vanish, and only the third equation is nonzero: <span class="math" data-tex="\(1=1\)">\(1=1\)</span>.</p>
+<p>In the fourth row, <span class="math" data-tex="\(e_{gf}=e_g=1_{TU}\)">\(e_{gf}=e_g=1_{TU}\)</span>, <span class="math" data-tex="\(Tf=1_{TU}\)">\(Tf=1_{TU}\)</span>, and every <span class="math" data-tex="\(j\)">\(j\)</span> is zero. Only the fourth equation is nonzero and says <span class="math" data-tex="\(1=1\)">\(1=1\)</span>. In the fifth row, <span class="math" data-tex="\(j_f=j_{gf}=1_U,g=1_U\)">\(j_f=j_{gf}=1_U,g=1_U\)</span>, all connecting maps and <span class="math" data-tex="\(j_g\)">\(j_g\)</span> vanish, and only the first equation is nonzero and says <span class="math" data-tex="\(1=1\)">\(1=1\)</span>. In the sixth row all cone maps and all equations are zero. In every row (6.7) is one of the elementary types (5.1), or the zero triangle. In particular the second row retains the positive identity connecting arrow of the third elementary type. Taking the finite sum proves (6.7)–(6.8) for the pair before normal-form conjugation; conjugation through the decomposition gives them for the original <span class="math" data-tex="\(A,B,C,f,g\)">\(A,B,C,f,g\)</span>.</p>
+<p><strong>TR4 for prescribed completions.</strong> This last step is needed when the three input triangles are already given. TR3 and the exact Hom comparison theorem, which uses only TR1–TR3, give isomorphisms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.9); horizontal scroll when needed" data-tex="\[
+c_f:Q_f\longrightarrow\widetilde Q_f,
+\quad c_{gf}:Q_{gf}\longrightarrow\widetilde Q_{gf},
+\quad c_g:Q_g\longrightarrow\widetilde Q_g
+\tag{6.9}
+\]">\[
+c_f:Q_f\longrightarrow\widetilde Q_f,
+\quad c_{gf}:Q_{gf}\longrightarrow\widetilde Q_{gf},
+\quad c_g:Q_g\longrightarrow\widetilde Q_g
+\tag{6.9}
+\]</span>
+<p>fixing the first two vertices of each completion. Transport <span class="math" data-tex="\(u,v\)">\(u,v\)</span> to <span class="math" data-tex="\(c_{gf}u c_f^{-1},c_gv c_{gf}^{-1}\)">\(c_{gf}u c_f^{-1},c_gv c_{gf}^{-1}\)</span>. Transport <span class="math" data-tex="\(w\)">\(w\)</span> to <span class="math" data-tex="\((Tc_f)w c_g^{-1}\)">\((Tc_f)w c_g^{-1}\)</span>. Since <span class="math" data-tex="\(c_f j_f=\widetilde j_f\)">\(c_f j_f=\widetilde j_f\)</span> and <span class="math" data-tex="\(\widetilde e_g c_g=e_g\)">\(\widetilde e_g c_g=e_g\)</span>, this last map is exactly <span class="math" data-tex="\((T\widetilde j_f)\widetilde e_g\)">\((T\widetilde j_f)\widetilde e_g\)</span>. The remaining square identities follow by substituting the same two comparison equations for each of the three cones. Isomorphism closure makes the transported triangle distinguished. This verifies the full prescribed-completion form of TR4 and finishes the construction of a triangulated category. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 6.2.</strong> Vector spaces with <span class="math" data-tex="\(T=1\)">\(T=1\)</span> carry this structure. A normal triangle for a linear map <span class="math" data-tex="\(f\)">\(f\)</span> has third vertex <span class="math" data-tex="\(\operatorname{coker}f\oplus\ker f\)">\(\operatorname{coker}f\oplus\ker f\)</span>, with its inclusion and projection as in (5.3). A short exact sequence of vector spaces becomes a distinguished triangle with zero connecting map after choosing a splitting. The structure accommodates nonzero connecting maps as well: <span class="math" data-tex="\(U\to0\to U\xrightarrow1U\)">\(U\to0\to U\xrightarrow1U\)</span> is distinguished. Semisimplicity therefore does not say that every last arrow vanishes.</p>
+<h2 id="7-four-graded-exercises-with-complete-solutions">7. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic).</strong> In vector spaces with <span class="math" data-tex="\(T=1\)">\(T=1\)</span>, take <span class="math" data-tex="\(f:k^3\to k^2\)">\(f:k^3\to k^2\)</span>, <span class="math" data-tex="\(f(a,b,c)=(a,b)\)">\(f(a,b,c)=(a,b)\)</span>. Give the normal triangle, with every arrow, and decide whether <span class="math" data-tex="\(f\)">\(f\)</span> is a categorical monomorphism.</p>
+<p><strong>Solution.</strong> The kernel is the third-coordinate copy <span class="math" data-tex="\(K=k\)">\(K=k\)</span>, the image is <span class="math" data-tex="\(I=k^2\)">\(I=k^2\)</span>, and the cokernel is zero. The triangle is <span class="math" data-tex="\(k^3\xrightarrow f k^2\xrightarrow0 k\xrightarrow h k^3\)">\(k^3\xrightarrow f k^2\xrightarrow0 k\xrightarrow h k^3\)</span>, with <span class="math" data-tex="\(h(c)=(0,0,c)\)">\(h(c)=(0,0,c)\)</span>. At <span class="math" data-tex="\(k^2\)">\(k^2\)</span>, the image of <span class="math" data-tex="\(f\)">\(f\)</span> is the whole kernel of zero. At <span class="math" data-tex="\(k\)">\(k\)</span>, the image of zero and the kernel of <span class="math" data-tex="\(h\)">\(h\)</span> are both zero. At <span class="math" data-tex="\(k^3\)">\(k^3\)</span>, the image of <span class="math" data-tex="\(h\)">\(h\)</span> equals the kernel of <span class="math" data-tex="\(f\)">\(f\)</span>. Thus Lemma 6.1 verifies that it is distinguished. The two maps <span class="math" data-tex="\(k\to k^3\)">\(k\to k^3\)</span> given by zero and by <span class="math" data-tex="\(c\mapsto(0,0,c)\)">\(c\mapsto(0,0,c)\)</span> are distinct and have equal composites with <span class="math" data-tex="\(f\)">\(f\)</span>. Therefore <span class="math" data-tex="\(f\)">\(f\)</span> is not monic. It is epic and has section <span class="math" data-tex="\((a,b)\mapsto(a,b,0)\)">\((a,b)\mapsto(a,b,0)\)</span>, in agreement with Corollary 2.3.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Let <span class="math" data-tex="\(p:k^2\to k^2\)">\(p:k^2\to k^2\)</span> be <span class="math" data-tex="\(p(a,b)=(a,0)\)">\(p(a,b)=(a,0)\)</span>. Compute <span class="math" data-tex="\(td a_2\)">\(td a_2\)</span> by (4.4), and prove directly that the ordinary colimit of its tower is <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Solution.</strong> The second and third finite columns are <span class="math" data-tex="\(t a_2=a_2(1-p)-a_0p-a_1p\)">\(t a_2=a_2(1-p)-a_0p-a_1p\)</span> and <span class="math" data-tex="\(t a_3=a_3(1-p)-a_0p-a_1p-a_2p\)">\(t a_3=a_3(1-p)-a_0p-a_1p-a_2p\)</span>. Their difference after multiplying the latter by <span class="math" data-tex="\(p\)">\(p\)</span> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+t d a_2=a_2(1-p)-a_0p-a_1p+a_0p+a_1p+a_2p=a_2.
+\]">\[
+t d a_2=a_2(1-p)-a_0p-a_1p+a_0p+a_1p+a_2p=a_2.
+\]</span>
+<p>For any target vector space <span class="math" data-tex="\(W\)">\(W\)</span>, a compatible family <span class="math" data-tex="\(u_n:k^2\to W\)">\(u_n:k^2\to W\)</span> satisfies <span class="math" data-tex="\(u_n=u_{n+1}p\)">\(u_n=u_{n+1}p\)</span>. Hence all <span class="math" data-tex="\(u_n\)">\(u_n\)</span> coincide and kill the second coordinate. There is a unique map <span class="math" data-tex="\(\phi:k\to W\)">\(\phi:k\to W\)</span> with <span class="math" data-tex="\(\phi(a)=u_n(a,0)\)">\(\phi(a)=u_n(a,0)\)</span>; its composite with <span class="math" data-tex="\(q(a,b)=a\)">\(q(a,b)=a\)</span> equals each <span class="math" data-tex="\(u_n\)">\(u_n\)</span>. Uniqueness follows by evaluating at <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span>. This is the colimit property, including all its maps. The section <span class="math" data-tex="\(r(a)=(a,0)\)">\(r(a)=(a,0)\)</span> gives <span class="math" data-tex="\(rq=p,qr=1\)">\(rq=p,qr=1\)</span>, so it is the idempotent splitting and agrees with the chosen telescope through the unique colimit isomorphism.</p>
+<p><strong>Exercise 3 (advanced).</strong> For <span class="math" data-tex="\(f(a,b)=(a,0)\)">\(f(a,b)=(a,0)\)</span> on <span class="math" data-tex="\(k^2\)">\(k^2\)</span>, use the source and target normal triangle of this same map. Let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\alpha(a,b)=(a,3a+4b),\qquad
+\beta(a,b)=(a+2b,5b).
+\]">\[
+\alpha(a,b)=(a,3a+4b),\qquad
+\beta(a,b)=(a+2b,5b).
+\]</span>
+<p>Verify the first square and give a third comparison. Then determine all possible third comparisons in these coordinates, with <span class="math" data-tex="\(T=1\)">\(T=1\)</span>.</p>
+<p><strong>Solution.</strong> Both <span class="math" data-tex="\(\beta f\)">\(\beta f\)</span> and <span class="math" data-tex="\(f\alpha\)">\(f\alpha\)</span> send <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> to <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span>. The kernel coordinate is the second coordinate of the source, the image coordinate is the first, and the cokernel coordinate is the second coordinate of the target. Thus <span class="math" data-tex="\(Q_f=k\oplus k\)">\(Q_f=k\oplus k\)</span>, <span class="math" data-tex="\(j(a,b)=(b,0)\)">\(j(a,b)=(b,0)\)</span>, and <span class="math" data-tex="\(e(q,z)=(0,z)\)">\(e(q,z)=(0,z)\)</span>. Formula (6.4) gives <span class="math" data-tex="\(\gamma(q,z)=(5q,4z)\)">\(\gamma(q,z)=(5q,4z)\)</span>. Then <span class="math" data-tex="\(\gamma j(a,b)=(5b,0)=j\beta(a,b)\)">\(\gamma j(a,b)=(5b,0)=j\beta(a,b)\)</span> and <span class="math" data-tex="\(e\gamma(q,z)=(0,4z)=\alpha e(q,z)\)">\(e\gamma(q,z)=(0,4z)=\alpha e(q,z)\)</span>. For a general matrix <span class="math" data-tex="\(\begin{psmallmatrix}x&amp;y\\z&amp;t\end{psmallmatrix}\)">\(\begin{psmallmatrix}x&amp;y\\z&amp;t\end{psmallmatrix}\)</span>, the first equality forces <span class="math" data-tex="\(x=5,z=0\)">\(x=5,z=0\)</span>, and the second forces <span class="math" data-tex="\(t=4\)">\(t=4\)</span>. It imposes no condition on <span class="math" data-tex="\(y\)">\(y\)</span>. Hence all comparisons are <span class="math" data-tex="\(\gamma_y(q,z)=(5q+yz,4z)\)">\(\gamma_y(q,z)=(5q+yz,4z)\)</span>, for <span class="math" data-tex="\(y\in k\)">\(y\in k\)</span>, interpreting the indicated integers in <span class="math" data-tex="\(k\)">\(k\)</span>. This verifies actual existence and shows the remaining nonuniqueness. No invertibility was required of <span class="math" data-tex="\(\alpha,\beta,\gamma\)">\(\alpha,\beta,\gamma\)</span>.</p>
+<p><strong>Exercise 4 (advanced).</strong> In vector spaces with <span class="math" data-tex="\(T=1\)">\(T=1\)</span>, set <span class="math" data-tex="\(A=k^2,B=k^3,C=k^2\)">\(A=k^2,B=k^3,C=k^2\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+f(a,b)=(a,b,0),\qquad g(x,y,z)=(y,z).
+\]">\[
+f(a,b)=(a,b,0),\qquad g(x,y,z)=(y,z).
+\]</span>
+<p>Find the six interval summands and all three normal cones. Compute <span class="math" data-tex="\(u,v,w\)">\(u,v,w\)</span> and verify the octahedron with these original coordinates.</p>
+<p><strong>Solution.</strong> The <span class="math" data-tex="\(a\)">\(a\)</span>-coordinate is the interval <span class="math" data-tex="\([1,2]\)">\([1,2]\)</span>: it maps identically to the <span class="math" data-tex="\(x\)">\(x\)</span>-coordinate and then to zero. The <span class="math" data-tex="\(b\)">\(b\)</span>-coordinate is <span class="math" data-tex="\([1,2,3]\)">\([1,2,3]\)</span>, passing identically through <span class="math" data-tex="\(y\)">\(y\)</span> to the first coordinate of <span class="math" data-tex="\(C\)">\(C\)</span>. The <span class="math" data-tex="\(z\)">\(z\)</span>-coordinate is <span class="math" data-tex="\([2,3]\)">\([2,3]\)</span>, passing identically to the second coordinate of <span class="math" data-tex="\(C\)">\(C\)</span>. The other three interval objects are zero. Thus <span class="math" data-tex="\(Q_f=k\)">\(Q_f=k\)</span>, with <span class="math" data-tex="\(j_f(x,y,z)=z\)">\(j_f(x,y,z)=z\)</span> and <span class="math" data-tex="\(e_f=0\)">\(e_f=0\)</span>; <span class="math" data-tex="\(Q_{gf}=k\oplus k\)">\(Q_{gf}=k\oplus k\)</span>, with first coordinate the second-coordinate cokernel in <span class="math" data-tex="\(C\)">\(C\)</span>, second coordinate the <span class="math" data-tex="\(a\)">\(a\)</span>-kernel in <span class="math" data-tex="\(A\)">\(A\)</span>; and <span class="math" data-tex="\(Q_g=k\)">\(Q_g=k\)</span>, the <span class="math" data-tex="\(x\)">\(x\)</span>-kernel in <span class="math" data-tex="\(B\)">\(B\)</span>. Their maps are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+j_{gf}(r,s)&amp;=(s,0),&amp;e_{gf}(s,a)&amp;=(a,0),\\
+j_g&amp;=0,&amp;e_g(x)&amp;=(x,0,0),\\
+u(z)&amp;=(z,0),&amp;v(s,a)&amp;=a,&amp;w&amp;=0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+j_{gf}(r,s)&amp;=(s,0),&amp;e_{gf}(s,a)&amp;=(a,0),\\
+j_g&amp;=0,&amp;e_g(x)&amp;=(x,0,0),\\
+u(z)&amp;=(z,0),&amp;v(s,a)&amp;=a,&amp;w&amp;=0.
+\end{aligned}
+\]</span>
+<p>The first equation of (6.8) is <span class="math" data-tex="\(u j_f(x,y,z)=(z,0)=j_{gf}g(x,y,z)\)">\(u j_f(x,y,z)=(z,0)=j_{gf}g(x,y,z)\)</span>. The second is <span class="math" data-tex="\(e_{gf}u=0=e_f\)">\(e_{gf}u=0=e_f\)</span>. The third is <span class="math" data-tex="\(v j_{gf}=0=j_g\)">\(v j_{gf}=0=j_g\)</span>. The fourth is <span class="math" data-tex="\(e_gv(s,a)=(a,0,0)=f e_{gf}(s,a)\)">\(e_gv(s,a)=(a,0,0)=f e_{gf}(s,a)\)</span>. Finally <span class="math" data-tex="\(j_f e_g=0\)">\(j_f e_g=0\)</span>, so the prescribed last arrow is indeed <span class="math" data-tex="\(w=0\)">\(w=0\)</span>. The octahedral triangle is <span class="math" data-tex="\(k\to k\oplus k\to k\to0\)">\(k\to k\oplus k\to k\to0\)</span>, with its canonical first injection and second projection. Theorem 2.2, or the defining sum of elementary triangles, proves it distinguished. These calculations check every arrow on the original coordinates, rather than just recording the isomorphism classes of its cones.</p>
+<h2 id="8-freely-accessible-references">8. Freely accessible references</h2>
+<p>The proofs above are complete within the linked course prerequisites. For a freely accessible parallel treatment of the zero-cone criterion, split triangles, categorical kernels and the transport of octahedra, see the <a href="https://stacks.math.columbia.edu/tag/05QN">Stacks Project, Derived Categories, Section 13.4</a>, especially Lemmas 13.4.9, 13.4.11, 13.4.12 and 13.4.15. The countable idempotent argument above also proves the actual ordinary colimit identification; the mere statement that a category is idempotent complete would not supply that identification.</p>
+</main></body></html>

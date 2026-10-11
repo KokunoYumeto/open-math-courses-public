@@ -1,6 +1,6 @@
 # Regular values and degree modulo two
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic), October 2026. The closed-fibre criterion and Example 3.3 were added by GPT-6 Astra (OpenAI), October 2026. Self-checked by the respective writing AIs. Public domain (CC0).*
 
 The proof of Borsuk's counterexample counts preimages of well-chosen points modulo two. This lesson provides the three tools: Sard's theorem, which supplies points whose preimages are not degenerate (Section 2); the fact that preimages of such points are smooth manifolds (Section 3); and the degree modulo two of a map between closed manifolds, which can be read off from any such preimage, even when the map is smooth only near that preimage (Section 4).
 
@@ -36,13 +36,43 @@ and we show that each of these pieces has null image. Open and closed subsets of
 
 ## 3. Regular level sets
 
-**Proposition 3.1** (Regular level sets). Let \(g:M\to N\) be smooth near every point of an open set \(O\subseteq M\), with \(\dim M=n\ge p=\dim N\), and let \(y\) be a regular value of \(g|_O\). Then \(L=g^{-1}(y)\cap O\) is a smooth manifold of dimension \(n-p\), and its topology is the subspace topology. Near each \(x\in L\) there are coordinates \((u,z)\in\mathbb R^p\times\mathbb R^{n-p}\) on \(M\) and coordinates on \(N\) around \(y\) in which \(g(u,z)=u\), \(y=0\), and \(L=\{u=0\}\); then \(z\) is a chart of \(L\). If a map \(G\) is smooth near \(x\) on \(M\), its restriction \(z\mapsto G(0,z)\) is smooth on \(L\), and its derivative is the derivative of \(G\) restricted to the \(z\)-directions, that is, to the kernel of the derivative of \(g\). If \(g^{-1}(y)\subseteq O\) and \(M\) is compact, then \(L\) is compact.
+**Proposition 3.1** (Regular level sets). Let \(g:M\to N\) be smooth near every point of an open set \(O\subseteq M\), with \(\dim M=n\ge p=\dim N\), and let \(y\) be a regular value of \(g|_O\). Then \(L=g^{-1}(y)\cap O\) is a smooth manifold of dimension \(n-p\), and its topology is the subspace topology. Near each \(x\in L\) there are coordinates \((u,z)\in\mathbb R^p\times\mathbb R^{n-p}\) on \(M\) and coordinates on \(N\) around \(y\) in which \(g(u,z)=u\), \(y=0\), and \(L=\{u=0\}\); then \(z\) is a chart of \(L\). If a map \(G\) is smooth near \(x\) on \(M\), its restriction \(z\mapsto G(0,z)\) is smooth on \(L\), and its derivative is the derivative of \(G\) restricted to the \(z\)-directions, that is, to the kernel of the derivative of \(g\). If \(M\) is compact, then \(L\) is compact if and only if \(L\) is closed in \(M\). In particular, when \(g^{-1}(y)\subseteq O\), compactness follows if the fibre \(g^{-1}(y)\) is closed in \(M\); global continuity of \(g:M\to N\) is sufficient for this closedness.
 
-*Proof.* The coordinates are those of Corollary 1.3 of [Local tools for bundles and transport](course:DG-FND/local-tools-for-bundles-and-transport) (submersion coordinates). Two such charts of \(L\) differ by the restriction of a smooth change of coordinates of \(M\) to \(\{u=0\}\), which is smooth. \(L\) is Hausdorff with a countable basis as a subspace of \(M\). If \(g^{-1}(y)\subseteq O\), then \(L=g^{-1}(y)\) is closed in \(M\) because \(g\) is continuous on \(M\); a closed subset of a compact space is compact. \(\square\)
+*Proof.* The coordinates are those of Corollary 1.3 of [Local tools for bundles and transport](course:DG-FND/local-tools-for-bundles-and-transport) (submersion coordinates). Two such charts of \(L\) differ by the restriction of a smooth change of coordinates of \(M\) to \(\{u=0\}\), which is smooth. \(L\) is Hausdorff with a countable basis as a subspace of \(M\). For compact \(M\), a closed \(L\subseteq M\) is compact: append \(M\setminus L\) to any cover of \(L\) by sets open in \(M\), take a finite subcover of \(M\), and discard the appended set. Conversely, if \(L\) is compact and \(z\in M\setminus L\), Hausdorffness supplies disjoint open neighbourhoods \(U_x\ni x\) and \(V_x\ni z\) for every \(x\in L\). Finitely many \(U_x\) cover \(L\); the intersection of the corresponding \(V_x\) is an open neighbourhood of \(z\) disjoint from \(L\). Thus \(L\) is closed in \(M\). If the whole fibre lies in \(O\), then \(L=g^{-1}(y)\). If in addition \(g\) is globally continuous, this fibre is closed because \(N\) is Hausdorff and \(\{y\}\) is closed. Smoothness on \(O\) alone does not give that global continuity. \(\square\)
 
 **Corollary 3.2.** If in Proposition 3.1 \(n=p\), then \(L\) is discrete; if moreover \(L\) is compact, it is finite.
 
 *Proof.* A zero-dimensional manifold is discrete, and a compact discrete space is finite. \(\square\)
+
+**Example 3.3** (Local smoothness does not make the fibre compact). Let
+\[
+\begin{aligned}
+M&=S^1\subset\mathbb R^2,\qquad p=(1,0),\\
+O&=S^1\setminus\{p\}.
+\end{aligned}
+\]
+The map \(\gamma:(0,2\pi)\to O\), \(\gamma(t)=(\cos t,\sin t)\), is a smooth coordinate parametrization. Define \(g:S^1\to\mathbb R\) by
+\[
+\begin{aligned}
+g(\gamma(t))&=\sin(1/t)\quad(0<t<2\pi),\\
+g(p)&=2.
+\end{aligned}
+\]
+Then \(g|_O\) is smooth. Its zero fibre is exactly
+\[
+\begin{aligned}
+L=g^{-1}(0)&=\{\gamma(t_k): k=1,2,\ldots\},\\
+t_k&=\frac{1}{k\pi}.
+\end{aligned}
+\]
+Indeed, \(\sin(1/t)=0\) means \(1/t\) is a positive integral multiple of \(\pi\), and every displayed \(t_k\) lies in \((0,2\pi)\). In the coordinate \(t\),
+\[
+\begin{aligned}
+\frac{d}{dt}(g\circ\gamma)(t_k)&=-\frac{\cos(1/t_k)}{t_k^2}\\
+&=-(-1)^k(k\pi)^2\ne0.
+\end{aligned}
+\]
+Thus \(0\) is a regular value of \(g|_O\), and its entire fibre lies in \(O\). Proposition 3.1 correctly makes \(L\) a zero-dimensional smooth submanifold. Nevertheless \(\gamma(t_k)\to p\), while \(p\notin L\), so \(L\) is not closed in \(S^1\). It is not compact, since compact subsets of the Hausdorff circle are closed. This is also an infinite discrete regular fibre, consistent with Corollary 3.2: that corollary requires compactness before concluding finiteness. Here \(g\) is not continuous at \(p\), because \(g(\gamma(t_k))=0\) does not converge to \(g(p)=2\).
 
 ## 4. Degree modulo two
 

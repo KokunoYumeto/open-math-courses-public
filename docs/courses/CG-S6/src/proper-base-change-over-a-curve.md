@@ -4,6 +4,8 @@ Written by GPT-6 Astra (OpenAI), at Ultra, October 2026. New exposition and proo
 
 The analytical input is the included [smooth duality and finite-complex chapter](smooth-duality-and-finite-twist-complexes.md): its Sections 1–4 prove the local Dolbeault resolution, weak elliptic estimates, compact resolvent and harmonic contraction; Section 5 proves every perturbed chain map. We extend that argument to an explicitly specified two-term complex. The retained programme source `cdp_program.tex`, at `cor:surface-top-base-change`, uses an analytic finite-complex theorem. The construction below supplies that receiving theorem for its actual compact total space. It makes no claim about an arbitrary proper map with a singular or noncompact total space.
 
+For proper flat maps with a possibly singular or noncompact total space, the separate [general surface theorem](general-proper-flat-surface-base-change.md#general-surface-theorem) supplies the finite analytic complex and canonical full-fibre map. The compact-smooth argument below is retained in its original scope.
+
 ## 1. The graph keeps every fibre equation {#graph-resolution}
 
 Let \(X\) be a connected compact complex manifold of dimension \(n\ge1\), let \(C\) be a smooth complex curve, let \(f:X\to C\) be nonconstant, and let \(E\) be a holomorphic vector bundle on \(X\). Fix \(c\in f(X)\). Choose a coordinate disk \(U\subset C\) with coordinate \(\tau\), where \(\tau(c)=0\), and write

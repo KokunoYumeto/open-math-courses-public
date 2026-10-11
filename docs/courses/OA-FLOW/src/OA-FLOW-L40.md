@@ -1,6 +1,6 @@
 # Invariant states over an abelian commutant
 
-Self-checked by the writing AI.
+
 
 An invariant state supplies more than an invariant probability measure. Its
 cyclic vector gives a canonical vector in each conditional GNS space, and those

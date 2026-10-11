@@ -1,6 +1,6 @@
 # Tracial densities on the complete extended positive cone
 
-*Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\) be a von Neumann algebra on an arbitrary Hilbert space and let \(\tau\) be a **given faithful normal semifinite trace**, with \(\tau(x^*x)=\tau(xx^*)\) for every bounded \(x\), including infinite values. There is no countability hypothesis. We prove an order isomorphism between the complete extended cone \(\widehat M_+\) and **all normal weights** on \(M\). Its restriction to positive self-adjoint affiliated operators is exactly the class of normal semifinite weights, without a faithfulness assumption on the numerator.
 

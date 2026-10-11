@@ -1,6 +1,6 @@
 # Continuous decompositions of arbitrary type III algebras
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 Double crossing recovers an algebra with an extra operator tensor factor. To obtain a continuous decomposition of the original algebra, we first construct an isomorphism that absorbs this factor, including its full normal inverse. A rank-one corner then lets us recognize type III before making the same construction in the converse direction. These two steps yield existence and uniqueness of the trace-scaling system, with its specified trace, for arbitrary centers and arbitrary Hilbert-space dimension.
 

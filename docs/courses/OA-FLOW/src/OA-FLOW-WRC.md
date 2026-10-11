@@ -4,7 +4,7 @@ A Weyl relation controls how translations move frequency measurements. We first 
 
 The result applies to strongly continuous Weyl pairs over arbitrary locally compact abelian groups, under the explicit Fourier, C\* algebra and Hilbert-space prerequisites stated below. It does not by itself provide equivariant disintegration, induction from a closed subgroup, or crossed-product fixed-point recognition.
 
-*Restored in Codex (OpenAI), 5 October 2026. Newly written original expression is dedicated under CC0 to the extent of rights held; earlier components retain their recorded terms. Human review is not asserted.*
+*Newly written original expression is dedicated under CC0 to the extent of rights held; earlier components retain their recorded terms.*
 
 <a id="wr-statement"></a>
 

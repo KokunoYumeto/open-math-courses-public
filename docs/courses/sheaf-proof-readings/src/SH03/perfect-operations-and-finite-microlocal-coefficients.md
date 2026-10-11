@@ -83,7 +83,7 @@ R\Gamma(X;H_!)\simeq R\Gamma_c(\Omega;F|_\Omega)
 \tag{5}
 \]
 
-are perfect. In the second equality ordinary ambient sections equal compact ambient sections because the coefficient support is compact; open-extension composition then gives compact sections on \(\Omega\). The open set itself need not be compact, and its inclusion need not be proper. \(\square\)
+are perfect. In the second equality ordinary ambient sections equal compact ambient sections because the coefficient support is compact; open-extension composition then gives compact sections on \(\Omega\). The open set itself need not be compact, and its inclusion need not be proper. The [closed-support comparison (1a)](perfect-coefficients-on-compact-fibres.md#proper-support-and-the-comparison-of-the-two-images) identifies the support-forgetting map used here: apply it to each of the two cutoff objects, whose cohomology is supported on the compact closure. This is a comparison of the actual section functors, not only an isomorphism between their resulting complexes. \(\square\)
 
 ## Fourier perfection by the zero section
 

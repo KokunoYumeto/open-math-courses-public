@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compatible entrance laws and weighted orbit minima</title><link rel="stylesheet" href="reader.css"></head><body><a class="skip" href="#main">Skip to the lesson</a><header><a href="index.html">Discrete dynamics, coding and probability</a> · <a href="src/NT-COLLATZ-14.md">Lesson source</a></header><main id="main"><h1 id="compatible-entrance-laws-and-weighted-orbit-minima">Compatible
+entrance laws and weighted orbit minima</h1>
+<p><em>Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026.
+Self-checked by the writing AI. Original exposition, proofs and
+exercises: CC0 1.0.</em></p>
+<p>A small error at one scale does not automatically remain small
+through arbitrarily many scales. The useful distinction is between an
+error that is merely small and a family of errors whose sum is finite.
+When the errors are summable, approximate agreement can produce an
+exactly compatible limiting family of probability laws.</p>
+<p>We develop that principle for first entrance into nested targets. The
+same sequence of starting distributions will supply a limit at every
+threshold. Observing several thresholds together costs no more than
+observing the largest one, because the smaller entrance locations are
+determined by the largest. A second application controls orbit minima
+under logarithmic sampling. It yields Tao’s fixed-threshold estimate and
+his theorem for every prescribed bound tending to infinity, including
+bounds that increase arbitrarily slowly or are not monotone.</p>
+<p>The general mathematical subjects are probability transport,
+compatible distributions, tightness, and weighted counting. Collatz
+supplies the concrete system for which the preceding lessons have proved
+the analytic estimates. The prerequisites are <a
+href="NT-COLLATZ-03.html">pushforward contraction and harmonic
+weights</a>, <a href="NT-COLLATZ-04.html">nested first passage and
+summable transport</a>, and <a
+href="NT-COLLATZ-13.html#the-entrance-law-and-the-sampling-experiment">logarithmic
+first-passage stabilization</a>. We also use <a
+href="NT-COLLATZ-01.html#the-least-value-attained-does-not-depend-on-the-clock">the
+exact equality of orbit minima under changes of clock</a>. The main
+research reference is Tao’s <em>Almost all orbits of the Collatz map
+attain almost bounded values</em>, Remark 1.4 and Section 3. The
+compatible-family and joint-entrance statements are derived below from
+the first-passage estimate. All further proofs are supplied here.</p>
+<h2 id="tightness-under-weighted-counting">Tightness under weighted
+counting</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>⊆</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">D\subseteq\mathbb N_+</annotation></semantics></math>
+be infinite. Assign each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∈</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">n\in D</annotation></semantics></math>
+a positive real weight
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">w(n)</annotation></semantics></math>,
+and suppose</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>n</mi><mo>∈</mo><mi>D</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>n</mi><mo>≤</mo><mi>X</mi></mrow></mtd></mtr></mtable></munder><mi>w</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+W(X)=\sum_{\substack{n\in D\\n\leq X}}w(n)\longrightarrow\infty.
+</annotation></semantics></math></span></p>
+<p>For a nonempty prefix, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>w</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>W</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\rho_X(n)=w(n)/W(X)</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mi>X</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">D\cap[1,X]</annotation></semantics></math>,
+and zero elsewhere. Take a finite-valued function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mi>D</mi><mo>→</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g:D\to[0,\infty)</annotation></semantics></math>.
+It need not be bounded as a function of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
+Its distributions under the different
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>X</mi></msub><annotation encoding="application/x-tex">\rho_X</annotation></semantics></math>
+are <strong>uniformly tight</strong> if</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">lim</mi><mrow><mi>K</mi><mo>→</mo><mi>∞</mi></mrow></munder><munder><mi mathvariant="normal">sup</mi><mi>X</mi></munder><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>g</mi><mo>&gt;</mo><mi>K</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\lim_{K\to\infty}\sup_X\rho_X(g&gt;K)=0.
+\tag{1}
+</annotation></semantics></math><span class="equation-number">(1)</span></span></span></p>
+<p>Thus one finite interval contains almost all the probability,
+uniformly over all the input cutoffs. The supremum is over nonempty
+prefixes.</p>
+<p><strong>Theorem 1 (A weighted tightness criterion).</strong> The
+following three statements are equivalent:</p>
+<ol type="1">
+<li>For every real-valued function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>D</mi><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">f:D\to\mathbb R</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">f(n)\to\infty</annotation></semantics></math>,
+one has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>g</mi><mo>≥</mo><mi>f</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\rho_X(g\geq f)\to0</annotation></semantics></math>
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">X\to\infty</annotation></semantics></math>.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">lim</mi><mo>&#8289;</mo></mrow><mrow><mi>K</mi><mo>→</mo><mi>∞</mi></mrow></msub><msub><mrow><mi mathvariant="normal">limsup</mi><mo>&#8289;</mo></mrow><mrow><mi>X</mi><mo>→</mo><mi>∞</mi></mrow></msub><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>g</mi><mo>&gt;</mo><mi>K</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lim_{K\to\infty}\limsup_{X\to\infty}\rho_X(g&gt;K)=0</annotation></semantics></math>.</li>
+<li>The family is uniformly tight, as in (1).</li>
+</ol>
+<p>The limit of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+is taken along
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>.
+Its speed of growth and its monotonicity play no role.</p>
+<p><strong>Proof.</strong> First assume statement 2. Fix a finite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">f(n)\to\infty</annotation></semantics></math>,
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Y</mi><mi>K</mi></msub><annotation encoding="application/x-tex">Y_K</annotation></semantics></math>
+such that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">f(n)&gt;K</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&gt;</mo><msub><mi>Y</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">n&gt;Y_K</annotation></semantics></math>.
+Then</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>g</mi><mo>≥</mo><mi>f</mi><mo stretchy="false" form="postfix">}</mo><mo>⊆</mo><mo stretchy="false" form="prefix">(</mo><mi>D</mi><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><msub><mi>Y</mi><mi>K</mi></msub><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo><mo>∪</mo><mo stretchy="false" form="prefix">{</mo><mi>g</mi><mo>&gt;</mo><mi>K</mi><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\{g\geq f\}\subseteq(D\cap[1,Y_K])\cup\{g&gt;K\}.
+</annotation></semantics></math></span></p>
+<p>The first set has probability at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>Y</mi><mi>K</mi></msub><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>W</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">W(Y_K)/W(X)</annotation></semantics></math>,
+tending to zero. Taking the limsup as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">X\to\infty</annotation></semantics></math>
+at this fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>,
+and then letting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">K\to\infty</annotation></semantics></math>,
+proves statement 1.</p>
+<p>For the converse, suppose statement 2 fails. Because its inner limsup
+decreases as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+increases, there is an
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon&gt;0</annotation></semantics></math>
+such that, for every integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j\geq1</annotation></semantics></math>,
+arbitrarily large integer cutoffs satisfy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>g</mi><mo>&gt;</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">\rho_X(g&gt;j)\geq\varepsilon</annotation></semantics></math>.
+Start with an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>≥</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">X_0\geq\min D</annotation></semantics></math>.
+Choose recursively
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>j</mi></msub><mo>&gt;</mo><msub><mi>X</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">X_j&gt;X_{j-1}</annotation></semantics></math>
+with that property and with</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>W</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mi>W</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>≤</mo><mfrac><mi>ε</mi><mn>2</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{W(X_{j-1})}{W(X_j)}\leq\frac\varepsilon2.
+\tag{2}
+</annotation></semantics></math><span class="equation-number">(2)</span></span></span></p>
+<p>Such a choice is possible because the suitable cutoffs are unbounded
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">W(X)\to\infty</annotation></semantics></math>.
+Define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">f(n)=j</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>&lt;</mo><mi>n</mi><mo>≤</mo><msub><mi>X</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">X_{j-1}&lt;n\leq X_j</annotation></semantics></math>,
+and choose any finite value on the initial prefix. The strictly
+increasing integer sequence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mi>j</mi></msub><annotation encoding="application/x-tex">X_j</annotation></semantics></math>
+tends to infinity, so this defines
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+on all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+and gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">f(n)\to\infty</annotation></semantics></math>.
+At cutoff
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mi>j</mi></msub><annotation encoding="application/x-tex">X_j</annotation></semantics></math>,
+remove the earlier prefix from the event
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>g</mi><mo>&gt;</mo><mi>j</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{g&gt;j\}</annotation></semantics></math>.
+By (2), probability at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\varepsilon/2</annotation></semantics></math>
+remains. On it,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>&gt;</mo><mi>j</mi><mo>=</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">g&gt;j=f</annotation></semantics></math>,
+contradicting statement 1.</p>
+<p>Next assume statement 2 and fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon&gt;0</annotation></semantics></math>.
+Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mn>0</mn></msub><annotation encoding="application/x-tex">K_0</annotation></semantics></math>
+such that the limsup in that statement is less than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\varepsilon/2</annotation></semantics></math>.
+There is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mn>0</mn></msub><annotation encoding="application/x-tex">X_0</annotation></semantics></math>
+after which all the probabilities
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>X</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>g</mi><mo>&gt;</mo><msub><mi>K</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\rho_X(g&gt;K_0)</annotation></semantics></math>
+are at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>.
+Increase
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mn>0</mn></msub><annotation encoding="application/x-tex">K_0</annotation></semantics></math>
+to exceed the finitely many values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><msub><mi>X</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">D\cap[1,X_0]</annotation></semantics></math>.
+Every earlier tail is now empty, and increasing the threshold cannot
+enlarge a later tail. This proves statement 3. Finally, statement 3
+implies statement 2 because a limsup is bounded by the corresponding
+supremum. ∎</p>
+<p>The finite-valued hypothesis is used when the initial prefix is
+removed. The divergence of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>
+ensures that a fixed prefix becomes negligible. The theorem is
+independent of any dynamical interpretation of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.</p>
+<h2 id="first-passage-operators-at-nested-thresholds">First-passage
+operators at nested thresholds</h2>
+<p>Return to the odd-return map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝕆</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mi>…</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathbb O=\{1,3,5,\ldots\}</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>x</mi></msub><annotation encoding="application/x-tex">p_x</annotation></semantics></math>
+record its first entrance at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+with failure recorded by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>†</mi><annotation encoding="application/x-tex">\dagger</annotation></semantics></math>,
+as in the preceding lesson. Extend
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>x</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>†</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>†</mi></mrow><annotation encoding="application/x-tex">p_x(\dagger)=\dagger</annotation></semantics></math>,
+and write</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>x</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">𝕆</mi><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mi>x</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo><mo>∪</mo><mo stretchy="false" form="prefix">{</mo><mi>†</mi><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>K</mi><mi>x</mi></msub><mi>λ</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>p</mi><mi>x</mi></msub><msub><mo stretchy="false" form="postfix">)</mo><mo>*</mo></msub><mi>λ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+E_x=(\mathbb O\cap[1,x])\cup\{\dagger\},
+\qquad K_x\lambda=(p_x)_*\lambda.
+\tag{3}
+</annotation></semantics></math><span class="equation-number">(3)</span></span></span></p>
+<p>The operator acts on summable signed mass functions on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝕆</mi><mo>∪</mo><mo stretchy="false" form="prefix">{</mo><mi>†</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathbb O\cup\{\dagger\}</annotation></semantics></math>.
+The <a
+href="NT-COLLATZ-04.html#nested-targets-compose-exactly">nested-passage
+theorem and operator description</a> prove</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>p</mi><mi>x</mi></msub><msub><mi>p</mi><mi>y</mi></msub><mo>=</mo><msub><mi>p</mi><mi>x</mi></msub><mo>=</mo><msub><mi>p</mi><mi>y</mi></msub><msub><mi>p</mi><mi>x</mi></msub><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>≤</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>K</mi><mi>x</mi></msub><msub><mi>K</mi><mi>y</mi></msub><mo>=</mo><msub><mi>K</mi><mi>x</mi></msub><mo>=</mo><msub><mi>K</mi><mi>y</mi></msub><msub><mi>K</mi><mi>x</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="postfix">∥</mo><msub><mi>K</mi><mi>x</mi></msub><mi>λ</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>≤</mo><mo stretchy="false" form="postfix">∥</mo><mi>λ</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{gathered}
+p_xp_y=p_x=p_yp_x\quad(x\leq y),\\
+K_xK_y=K_x=K_yK_x,\qquad
+\|K_x\lambda\|_1\leq\|\lambda\|_1.
+\end{gathered}
+\tag{4}
+</annotation></semantics></math><span class="equation-number">(4)</span></span></span></p>
+<p>The norm is the unhalved sum of absolute masses. The image of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>x</mi></msub><annotation encoding="application/x-tex">K_x</annotation></semantics></math>
+consists exactly of the signed laws supported on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>x</mi></msub><annotation encoding="application/x-tex">E_x</annotation></semantics></math>;
+these laws are fixed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>x</mi></msub><annotation encoding="application/x-tex">K_x</annotation></semantics></math>.
+Its kernel consists of masses whose sum on every fibre of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>x</mi></msub><annotation encoding="application/x-tex">p_x</annotation></semantics></math>
+is zero. These facts identify what is forgotten and what is retained
+when a distribution is transported to a smaller target.</p>
+<p>Fix the same
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>1001</mn><mi>/</mi><mn>1000</mn></mrow><annotation encoding="application/x-tex">\alpha=1001/1000</annotation></semantics></math>
+as before. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>μ</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\mu_s</annotation></semantics></math>
+be the logarithmic law on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">𝕆</mi><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mi>s</mi><mo>,</mo><msup><mi>s</mi><mi>α</mi></msup><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">\mathbb O\cap[s,s^\alpha]</annotation></semantics></math>.
+For all sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+these sets are nonempty. Define</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>ν</mi><mi>s</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>K</mi><mi>s</mi></msub><msub><mi>μ</mi><msup><mi>s</mi><mi>α</mi></msup></msub><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>d</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>ν</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>†</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>e</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><msub><mi>ν</mi><mi>s</mi></msub><mo>−</mo><msub><mi>K</mi><mi>s</mi></msub><msub><mi>ν</mi><msup><mi>s</mi><mi>α</mi></msup></msub><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\nu_s&amp;=K_s\mu_{s^\alpha},\\
+d(s)&amp;=\nu_s(\dagger),\\
+e(s)&amp;=\|\nu_s-K_s\nu_{s^\alpha}\|_1.
+\end{aligned}
+\tag{5}
+</annotation></semantics></math><span class="equation-number">(5)</span></span></span></p>
+<p>The two laws in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">e(s)</annotation></semantics></math>
+land at the same threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>.
+By (4), its second law is also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>s</mi></msub><msub><mi>μ</mi><msup><mi>s</mi><msup><mi>α</mi><mn>2</mn></msup></msup></msub></mrow><annotation encoding="application/x-tex">K_s\mu_{s^{\alpha^2}}</annotation></semantics></math>.
+Therefore <a
+href="NT-COLLATZ-13.html#the-entrance-law-and-the-sampling-experiment">Theorem
+1 of Logarithmic sampling and first-passage distributions</a> supplies
+constants
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>,</mo><msub><mi>s</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">C,s_*</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mo>*</mo></msub><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">s_*\geq2</annotation></semantics></math>,
+for which</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>d</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mi>C</mi><msup><mi>s</mi><mrow><mi>−</mi><mi>β</mi></mrow></msup><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>β</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>1</mn><mi>/</mi><mn>20000</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>e</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>s</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>γ</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>1</mn><mi>/</mi><mn>5</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+d(s)&amp;\leq Cs^{-\beta},&amp; \beta&amp;=1/20000,\\
+e(s)&amp;\leq C(\log s)^{-\gamma},&amp; \gamma&amp;=1/5.
+\end{aligned}
+\tag{6}
+</annotation></semantics></math><span class="equation-number">(6)</span></span></span></p>
+<p>Both bounds hold for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><msub><mi>s</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">s\geq s_*</annotation></semantics></math>.
+These are proved estimates for the specified integer sampling laws. In
+particular, (6) is not an assumption that the landing distribution
+becomes uniform.</p>
+<h2 id="one-input-sequence-for-all-thresholds">One input sequence for
+all thresholds</h2>
+<p>Choose a base
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>≥</mo><msub><mi>s</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">b\geq s_*</annotation></semantics></math>
+once, and put</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>t</mi><mi>j</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>b</mi><msup><mi>α</mi><mi>j</mi></msup></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>λ</mi><mrow><mi>x</mi><mo>,</mo><mi>j</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>K</mi><mi>x</mi></msub><msub><mi>μ</mi><msub><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+t_j&amp;=b^{\alpha^j},\\
+\lambda_{x,j}^{(b)}&amp;=K_x\mu_{t_{j+1}}.
+\end{aligned}
+\tag{7}
+</annotation></semantics></math><span class="equation-number">(7)</span></span></span></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j\geq0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x\geq1</annotation></semantics></math>.
+The same input
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>μ</mi><msub><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub></msub><annotation encoding="application/x-tex">\mu_{t_{j+1}}</annotation></semantics></math>
+is used at every threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+This common choice is essential for comparing the resulting limits.
+Set</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>γ</mi></msub><mo>=</mo><mfrac><mi>C</mi><mrow><mn>1</mn><mo>−</mo><msup><mi>α</mi><mrow><mi>−</mi><mi>γ</mi></mrow></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D_\gamma=\frac{C}{1-\alpha^{-\gamma}}.
+</annotation></semantics></math></span></p>
+<p><strong>Theorem 2 (Compatible limiting entrance laws).</strong> For
+every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x\geq1</annotation></semantics></math>,
+the laws in (7) converge in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ℓ</mi><mn>1</mn></msup><mo stretchy="false" form="prefix">(</mo><msub><mi>E</mi><mi>x</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\ell^1(E_x)</annotation></semantics></math>
+to a probability law
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>λ</mi><mi>x</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><annotation encoding="application/x-tex">\lambda_x^{\infty,(b)}</annotation></semantics></math>.
+Whenever
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><msub><mi>t</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x\leq t_j</annotation></semantics></math>,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msubsup><mi>λ</mi><mrow><mi>x</mi><mo>,</mo><mi>j</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>−</mo><msubsup><mi>λ</mi><mi>x</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>≤</mo><msub><mi>D</mi><mi>γ</mi></msub><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msub><mi>t</mi><mi>j</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|\lambda_{x,j}^{(b)}-\lambda_x^{\infty,(b)}\|_1
+\leq D_\gamma(\log t_j)^{-\gamma}.
+\tag{8}
+</annotation></semantics></math><span class="equation-number">(8)</span></span></span></p>
+<p>For every pair of real thresholds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">1\leq x\leq y</annotation></semantics></math>,
+the limits satisfy the exact identity</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>x</mi></msub><msubsup><mi>λ</mi><mi>y</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><msubsup><mi>λ</mi><mi>x</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+K_x\lambda_y^{\infty,(b)}=\lambda_x^{\infty,(b)}.
+\tag{9}
+</annotation></semantics></math><span class="equation-number">(9)</span></span></span></p>
+<p>Their failure mass, for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≥</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">x\geq b</annotation></semantics></math>,
+satisfies</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>λ</mi><mi>x</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo stretchy="false" form="prefix">(</mo><mi>†</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>C</mi><msup><mi>x</mi><mrow><mi>−</mi><mi>β</mi><mi>/</mi><mi>α</mi></mrow></msup><mo>+</mo><msub><mi>D</mi><mi>γ</mi></msub><msup><mi>α</mi><mi>γ</mi></msup><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>x</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\lambda_x^{\infty,(b)}(\dagger)
+\leq Cx^{-\beta/\alpha}
+     +D_\gamma\alpha^\gamma(\log x)^{-\gamma}.
+\tag{10}
+</annotation></semantics></math><span class="equation-number">(10)</span></span></span></p>
+<p><strong>Proof.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><msub><mi>t</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x\leq t_j</annotation></semantics></math>,
+use (4) to write</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>λ</mi><mrow><mi>x</mi><mo>,</mo><mi>j</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>K</mi><mi>x</mi></msub><msub><mi>ν</mi><msub><mi>t</mi><mi>j</mi></msub></msub><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>λ</mi><mrow><mi>x</mi><mo>,</mo><mi>j</mi><mo>+</mo><mn>1</mn></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>K</mi><mi>x</mi></msub><msub><mi>K</mi><msub><mi>t</mi><mi>j</mi></msub></msub><msub><mi>ν</mi><msub><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\lambda_{x,j}^{(b)}&amp;=K_x\nu_{t_j},\\
+\lambda_{x,j+1}^{(b)}&amp;=K_xK_{t_j}\nu_{t_{j+1}}.
+\end{aligned}
+</annotation></semantics></math></span></p>
+<p>Contraction and (6) give</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msubsup><mi>λ</mi><mrow><mi>x</mi><mo>,</mo><mi>j</mi><mo>+</mo><mn>1</mn></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>−</mo><msubsup><mi>λ</mi><mrow><mi>x</mi><mo>,</mo><mi>j</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>≤</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>α</mi><mi>j</mi></msup><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>b</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\|\lambda_{x,j+1}^{(b)}-\lambda_{x,j}^{(b)}\|_1
+\leq C(\alpha^j\log b)^{-\gamma}.
+\tag{11}
+</annotation></semantics></math><span class="equation-number">(11)</span></span></span></p>
+<p>For any fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+the condition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><msub><mi>t</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x\leq t_j</annotation></semantics></math>
+holds eventually. The sum of the bounds in (11) is a geometric series.
+Each coordinate is therefore a real Cauchy sequence, with a limit by
+completeness of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>.
+There are only finitely many coordinates in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>x</mi></msub><annotation encoding="application/x-tex">E_x</annotation></semantics></math>;
+their limits are nonnegative and their sum remains one. Summing the tail
+from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+proves (8), since</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>h</mi><mo>=</mo><mi>j</mi></mrow><mo accent="false">∞</mo></munderover><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msub><mi>t</mi><mi>h</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup><mo>=</mo><msub><mi>D</mi><mi>γ</mi></msub><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msub><mi>t</mi><mi>j</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{h=j}^\infty C(\log t_h)^{-\gamma}
+=D_\gamma(\log t_j)^{-\gamma}.
+</annotation></semantics></math></span></p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x\leq y</annotation></semantics></math>,
+nested passage gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>x</mi></msub><msubsup><mi>λ</mi><mrow><mi>y</mi><mo>,</mo><mi>j</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><msubsup><mi>λ</mi><mrow><mi>x</mi><mo>,</mo><mi>j</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">K_x\lambda_{y,j}^{(b)}=\lambda_{x,j}^{(b)}</annotation></semantics></math>
+at every finite index. Contraction allows passage to the limits: the
+distance between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>x</mi></msub><msubsup><mi>λ</mi><mi>y</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">K_x\lambda_y^{\infty,(b)}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>λ</mi><mi>x</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><annotation encoding="application/x-tex">\lambda_x^{\infty,(b)}</annotation></semantics></math>
+is at most the sum of the two finite-index convergence errors, which
+tends to zero. This proves (9). The thresholds need not be members of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(t_j)</annotation></semantics></math>.</p>
+<p>To prove (10), choose the unique
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\geq0</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><msub><mi>t</mi><mi>k</mi></msub><mo>≤</mo><mi>x</mi><mo>&lt;</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msup><mi>r</mi><mi>α</mi></msup></mrow><annotation encoding="application/x-tex">r=t_k\leq x&lt;t_{k+1}=r^\alpha</annotation></semantics></math>.
+At threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+and index
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+(7) is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ν</mi><mi>r</mi></msub><annotation encoding="application/x-tex">\nu_r</annotation></semantics></math>.
+Equations (6) and (8) imply</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>λ</mi><mi>r</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo stretchy="false" form="prefix">(</mo><mi>†</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>C</mi><msup><mi>r</mi><mrow><mi>−</mi><mi>β</mi></mrow></msup><mo>+</mo><msub><mi>D</mi><mi>γ</mi></msub><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>r</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\lambda_r^{\infty,(b)}(\dagger)
+\leq Cr^{-\beta}+D_\gamma(\log r)^{-\gamma}.
+</annotation></semantics></math></span></p>
+<p>By (9),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>λ</mi><mi>r</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><msub><mi>K</mi><mi>r</mi></msub><msubsup><mi>λ</mi><mi>x</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">\lambda_r^{\infty,(b)}=K_r\lambda_x^{\infty,(b)}</annotation></semantics></math>.
+The symbol
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>†</mi><annotation encoding="application/x-tex">\dagger</annotation></semantics></math>
+is fixed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>r</mi></msub><annotation encoding="application/x-tex">p_r</annotation></semantics></math>;
+other states may also be sent to it. Nonnegativity gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>λ</mi><mi>x</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo stretchy="false" form="prefix">(</mo><mi>†</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msubsup><mi>λ</mi><mi>r</mi><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo stretchy="false" form="prefix">(</mo><mi>†</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\lambda_x^{\infty,(b)}(\dagger)\leq\lambda_r^{\infty,(b)}(\dagger)</annotation></semantics></math>.
+Finally,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><msup><mi>x</mi><mrow><mn>1</mn><mi>/</mi><mi>α</mi></mrow></msup></mrow><annotation encoding="application/x-tex">r&gt;x^{1/\alpha}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>r</mi><mo>&gt;</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">\log r&gt;(\log x)/\alpha</annotation></semantics></math>.
+Substitution proves (10). ∎</p>
+<p>The finite comparisons were approximate; the compatibility of the
+limiting laws is exact. This does not make them invariant under one
+application of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>:
+the maps in (9) are first-passage maps, not a single fixed-time
+iterate.</p>
+<p>The base remains part of the notation for a reason. Replacing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>b</mi><msup><mi>α</mi><mi>k</mi></msup></msup><annotation encoding="application/x-tex">b^{\alpha^k}</annotation></semantics></math>,
+for a nonnegative integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+removes the first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+inputs from the same sequence and gives the same limiting family. The
+estimates above do not compare two arbitrarily chosen bases. Equality
+between their limits would require a comparison between their input
+sequences, not just the adjacent-scale estimate already used.</p>
+<h2 id="observing-several-entrance-levels-together">Observing several
+entrance levels together</h2>
+<p>Fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><msub><mi>x</mi><mn>1</mn></msub><mo>≤</mo><mi>⋯</mi><mo>≤</mo><msub><mi>x</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">1\leq x_1\leq\cdots\leq x_r</annotation></semantics></math>.
+A tuple of possible entrance values is compatible when</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="center" style="text-align: center"><mo stretchy="false" form="prefix">(</mo><msub><mi>z</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>z</mi><mi>r</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi mathvariant="script">𝒞</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi mathvariant="script">𝒞</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>z</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><munder><mo>∏</mo><mi>i</mi></munder><msub><mi>E</mi><msub><mi>x</mi><mi>i</mi></msub></msub><mo>:</mo><msub><mi>p</mi><msub><mi>x</mi><mi>i</mi></msub></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>z</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>z</mi><mi>i</mi></msub><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>&lt;</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">}</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{gathered}
+(z_1,\ldots,z_r)\in\mathcal C,\\
+\mathcal C=\left\{(z_i)\in\prod_iE_{x_i}:
+p_{x_i}(z_{i+1})=z_i\ (i&lt;r)\right\}.
+\end{gathered}
+\tag{12}
+</annotation></semantics></math><span class="equation-number">(12)</span></span></span></p>
+<p><strong>Proposition 3 (Joint laws without an error for each
+coordinate).</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>j</mi></msub><annotation encoding="application/x-tex">N_j</annotation></semantics></math>
+has law
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>μ</mi><msub><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub></msub><annotation encoding="application/x-tex">\mu_{t_{j+1}}</annotation></semantics></math>,
+then the joint law of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>p</mi><msub><mi>x</mi><mn>1</mn></msub></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>N</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>p</mi><msub><mi>x</mi><mi>r</mi></msub></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>N</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(p_{x_1}(N_j),\ldots,p_{x_r}(N_j))</annotation></semantics></math>
+converges to a probability law
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi mathvariant="normal">Λ</mi><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>r</mi></msub></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><annotation encoding="application/x-tex">\Lambda_{x_1,\ldots,x_r}^{(b)}</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒞</mi><annotation encoding="application/x-tex">\mathcal C</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>r</mi></msub><mo>≤</mo><msub><mi>t</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x_r\leq t_j</annotation></semantics></math>,
+its
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\ell^1</annotation></semantics></math>
+convergence error is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>γ</mi></msub><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msub><mi>t</mi><mi>j</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">D_\gamma(\log t_j)^{-\gamma}</annotation></semantics></math>,
+with no factor depending on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>.
+Its marginal at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>λ</mi><msub><mi>x</mi><mi>i</mi></msub><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><annotation encoding="application/x-tex">\lambda_{x_i}^{\infty,(b)}</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Define</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>J</mi><mo>:</mo><msub><mi>E</mi><msub><mi>x</mi><mi>r</mi></msub></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><mi mathvariant="script">𝒞</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>z</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>↦</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>p</mi><msub><mi>x</mi><mn>1</mn></msub></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>p</mi><msub><mi>x</mi><mi>r</mi></msub></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+J:E_{x_r}&amp;\longrightarrow\mathcal C,\\
+z&amp;\longmapsto(p_{x_1}(z),\ldots,p_{x_r}(z)).
+\end{aligned}
+\tag{13}
+</annotation></semantics></math><span class="equation-number">(13)</span></span></span></p>
+<p>Equation (4) proves that the image lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒞</mi><annotation encoding="application/x-tex">\mathcal C</annotation></semantics></math>.
+Its last coordinate is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+is injective. Conversely, repeated use of (12) and nested passage gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>i</mi></msub><mo>=</mo><msub><mi>p</mi><msub><mi>x</mi><mi>i</mi></msub></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>z</mi><mi>r</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">z_i=p_{x_i}(z_r)</annotation></semantics></math>.
+Thus projection to the last coordinate is its inverse. Every fibre is a
+singleton, and the tuple retains exactly the information in its last
+coordinate.</p>
+<p>For a signed mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><msub><mi>x</mi><mi>r</mi></msub></msub><annotation encoding="application/x-tex">E_{x_r}</annotation></semantics></math>,
+injectivity gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msub><mi>J</mi><mo>*</mo></msub><mi>η</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><mi>η</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\|J_*\eta\|_1=\|\eta\|_1</annotation></semantics></math>:
+no two atoms are combined. The finite joint law is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mo>*</mo></msub><msubsup><mi>λ</mi><mrow><msub><mi>x</mi><mi>r</mi></msub><mo>,</mo><mi>j</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">J_*\lambda_{x_r,j}^{(b)}</annotation></semantics></math>.
+Define its limit as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mo>*</mo></msub><msubsup><mi>λ</mi><msub><mi>x</mi><mi>r</mi></msub><mrow><mi>∞</mi><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">J_*\lambda_{x_r}^{\infty,(b)}</annotation></semantics></math>,
+and apply this isometry to (8). The marginal identity follows by
+projecting the tuple and applying (9). ∎</p>
+<p>For example, the largest entrance value can contain information not
+recoverable from a smaller one, because several values may have the same
+subsequent entrance. Recording the entire compatible tuple adds no
+information beyond the largest value. This is why summing a separate
+error for every coordinate would be unnecessary.</p>
+<h2 id="a-uniform-estimate-for-a-fixed-orbit-bound">A uniform estimate
+for a fixed orbit bound</h2>
+<p>For an odd start, write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mrow><mi>j</mi><mo>≥</mo><mn>0</mn></mrow></msub><msup><mi>S</mi><mi>j</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">S_{\min}(m)=\min_{j\geq0}S^j(m)</annotation></semantics></math>.
+This minimum exists by well-ordering, even if the orbit is unbounded.
+For the ordinary Collatz map</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>n</mi><mi>/</mi><mn>2</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> even</mtext></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>3</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> odd</mtext></mrow><mo>,</mo></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+C(n)=\begin{cases}n/2,&amp;n\text{ even},\\3n+1,&amp;n\text{ odd},\end{cases}
+</annotation></semantics></math></span></p>
+<p>write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mrow><mi>j</mi><mo>≥</mo><mn>0</mn></mrow></msub><msup><mi>C</mi><mi>j</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C_{\min}(n)=\min_{j\geq0}C^j(n)</annotation></semantics></math>.</p>
+<p><strong>Theorem 4 (Tao’s fixed-threshold estimate).</strong> There is
+an absolute constant
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+such that, for all real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>,</mo><mi>X</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">K,X\geq2</annotation></semantics></math>,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>m</mi><mo>≤</mo><mi>X</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>m</mi><mo>∈</mo><mi mathvariant="double-struck">𝕆</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>K</mi></mrow></mtd></mtr></mtable></munder><mfrac><mn>1</mn><mi>m</mi></mfrac></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mfrac><mrow><mi>A</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>K</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>1</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow></mfrac><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>n</mi><mo>≤</mo><mi>X</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>K</mi></mrow></mtd></mtr></mtable></munder><mfrac><mn>1</mn><mi>n</mi></mfrac></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mfrac><mrow><mi>A</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>K</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>1</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow></mfrac><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\sum_{\substack{m\leq X,\ m\in\mathbb O\\S_{\min}(m)&gt;K}}\frac1m
+&amp;\leq\frac{A\log X}{(\log K)^{1/5}},\\
+\sum_{\substack{n\leq X\\C_{\min}(n)&gt;K}}\frac1n
+&amp;\leq\frac{A\log X}{(\log K)^{1/5}}.
+\end{aligned}
+\tag{14}
+</annotation></semantics></math><span class="equation-number">(14)</span></span></span></p>
+<p><em>Reference:</em> Tao, Theorem 3.1 and Section 3. The argument
+below uses the first-passage estimate now proved in the preceding
+lesson.</p>
+<p><strong>Proof.</strong> First take sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+The <a
+href="NT-COLLATZ-04.html#two-explicit-summable-error-estimates">summable-transport
+theorem and its explicit power-error estimate</a>, applied to (6), give
+for every defined block law</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>μ</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><mo>&gt;</mo><mi>K</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mi>C</mi><msup><mi>K</mi><mrow><mi>−</mi><mi>β</mi><mi>/</mi><msup><mi>α</mi><mn>3</mn></msup></mrow></msup><mo>+</mo><mfrac><mrow><mi>C</mi><msup><mi>α</mi><mrow><mn>3</mn><mi>γ</mi></mrow></msup></mrow><mrow><mn>1</mn><mo>−</mo><msup><mi>α</mi><mrow><mi>−</mi><mi>γ</mi></mrow></msup></mrow></mfrac><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>K</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><msub><mi>A</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>K</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>γ</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>5</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\mu_s(S_{\min}&gt;K)
+&amp;\leq CK^{-\beta/\alpha^3}
+ +\frac{C\alpha^{3\gamma}}{1-\alpha^{-\gamma}}(\log K)^{-\gamma}\\
+&amp;\leq A_0(\log K)^{-\gamma},\qquad \gamma=1/5.
+\end{aligned}
+\tag{15}
+</annotation></semantics></math><span class="equation-number">(15)</span></span></span></p>
+<p>Its range is initially
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>≥</mo><msubsup><mi>s</mi><mo>*</mo><msup><mi>α</mi><mn>3</mn></msup></msubsup></mrow><annotation encoding="application/x-tex">K\geq s_*^{\alpha^3}</annotation></semantics></math>.
+The power term is absorbed because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>t</mi><mi>γ</mi></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>β</mi><mi>t</mi><mi>/</mi><msup><mi>α</mi><mn>3</mn></msup></mrow></msup></mrow><annotation encoding="application/x-tex">t^\gamma e^{-\beta t/\alpha^3}</annotation></semantics></math>
+is bounded for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>K</mi><mo>≥</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">t=\log K\geq\log2</annotation></semantics></math>;
+differentiating it shows its maximum is finite. Increasing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>0</mn></msub><annotation encoding="application/x-tex">A_0</annotation></semantics></math>
+includes the bounded range
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>≤</mo><mi>K</mi><mo>&lt;</mo><msubsup><mi>s</mi><mo>*</mo><msup><mi>α</mi><mn>3</mn></msup></msubsup></mrow><annotation encoding="application/x-tex">2\leq K&lt;s_*^{\alpha^3}</annotation></semantics></math>,
+since probabilities are at most one.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>s</mi></msub><mo>=</mo><msub><mo>∑</mo><mrow><mi>m</mi><mo>∈</mo><mi mathvariant="double-struck">𝕆</mi><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mi>s</mi><mo>,</mo><msup><mi>s</mi><mi>α</mi></msup><mo stretchy="false" form="postfix">]</mo></mrow></msub><mn>1</mn><mi>/</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">h_s=\sum_{m\in\mathbb O\cap[s,s^\alpha]}1/m</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">s\geq2</annotation></semantics></math>,
+the reciprocal progression estimate of the preceding lesson gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>s</mi></msub><mo>≤</mo><mo stretchy="false" form="prefix">(</mo><mo stretchy="false" form="prefix">(</mo><mi>α</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>s</mi><mo>+</mo><mn>1</mn><mi>/</mi><mi>s</mi><mo>≤</mo><msub><mi>A</mi><mn>1</mn></msub><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">h_s\leq((\alpha-1)/2)\log s+1/s\leq A_1\log s</annotation></semantics></math>.
+When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>s</mi><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1&lt;s&lt;2</annotation></semantics></math>,
+this interval contains no odd integer:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mi>α</mi></msup><mo>&lt;</mo><msup><mn>2</mn><mi>α</mi></msup><mo>&lt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">s^\alpha&lt;2^\alpha&lt;3</annotation></semantics></math>.
+The block at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s=1</annotation></semantics></math>
+contains only one, whose minimum is one. Thus for all blocks relevant to
+a bad event at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">K\geq2</annotation></semantics></math>,
+(15) gives</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>m</mi><mo>∈</mo><mi mathvariant="double-struck">𝕆</mi><mo>∩</mo><mo stretchy="false" form="prefix">[</mo><mi>s</mi><mo>,</mo><msup><mi>s</mi><mi>α</mi></msup><mo stretchy="false" form="postfix">]</mo></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>K</mi></mrow></mtd></mtr></mtable></munder><mfrac><mn>1</mn><mi>m</mi></mfrac><mo>≤</mo><msub><mi>A</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>K</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mi>γ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{\substack{m\in\mathbb O\cap[s,s^\alpha]\\S_{\min}(m)&gt;K}}\frac1m
+\leq A_2(\log s)(\log K)^{-\gamma}.
+\tag{16}
+</annotation></semantics></math><span class="equation-number">(16)</span></span></span></p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>≤</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">X\leq K</annotation></semantics></math>,
+the bad sum is zero because the starting value is part of the orbit.
+Otherwise put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>i</mi></msub><mo>=</mo><msup><mi>X</mi><msup><mi>α</mi><mrow><mi>−</mi><mi>i</mi></mrow></msup></msup></mrow><annotation encoding="application/x-tex">z_i=X^{\alpha^{-i}}</annotation></semantics></math>,
+and choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">J\geq1</annotation></semantics></math>
+least such that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>J</mi></msub><mo>≤</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">z_J\leq K</annotation></semantics></math>.
+The blocks
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><msub><mi>z</mi><mi>i</mi></msub><mo>,</mo><msubsup><mi>z</mi><mi>i</mi><mi>α</mi></msubsup><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[z_i,z_i^\alpha]</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">1\leq i\leq J</annotation></semantics></math>,
+cover
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><msub><mi>z</mi><mi>J</mi></msub><mo>,</mo><mi>X</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[z_J,X]</annotation></semantics></math>.
+Every bad start exceeds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>;
+no bad start is lost below this union. A duplicated endpoint can only
+increase the upper bound. Furthermore,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>J</mi></munderover><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msub><mi>z</mi><mi>i</mi></msub><mo>≤</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mo accent="false">∞</mo></munderover><msup><mi>α</mi><mrow><mi>−</mi><mi>i</mi></mrow></msup><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi></mrow><mrow><mi>α</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{i=1}^J\log z_i
+\leq\log X\sum_{i=1}^\infty\alpha^{-i}
+=\frac{\log X}{\alpha-1}.
+\tag{17}
+</annotation></semantics></math><span class="equation-number">(17)</span></span></span></p>
+<p>Summing (16) proves the odd estimate in (14).</p>
+<p>Every positive integer has a unique expression
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi></mrow><annotation encoding="application/x-tex">n=2^am</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+odd. The <a
+href="NT-COLLATZ-01.html#the-least-value-attained-does-not-depend-on-the-clock">orbit-minimum
+theorem</a> proves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mi>a</mi></msup><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C_{\min}(2^am)=S_{\min}(m)</annotation></semantics></math>:
+all the intervening even states are at least the following odd state.
+Therefore there is an exact finite weighted identity</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>n</mi><mo>≤</mo><mi>X</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>K</mi></mrow></mtd></mtr></mtable></munder><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>=</mo><munder><mo>∑</mo><mrow><mi>a</mi><mo>≥</mo><mn>0</mn></mrow></munder><msup><mn>2</mn><mrow><mi>−</mi><mi>a</mi></mrow></msup><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>m</mi><mo>≤</mo><mi>X</mi><mi>/</mi><msup><mn>2</mn><mi>a</mi></msup><mo>,</mo><mspace width="0.222em"></mspace><mi>m</mi><mo>∈</mo><mi mathvariant="double-struck">𝕆</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>K</mi></mrow></mtd></mtr></mtable></munder><mfrac><mn>1</mn><mi>m</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{\substack{n\leq X\\C_{\min}(n)&gt;K}}\frac1n
+=\sum_{a\geq0}2^{-a}
+ \sum_{\substack{m\leq X/2^a,\ m\in\mathbb O\\S_{\min}(m)&gt;K}}\frac1m.
+\tag{18}
+</annotation></semantics></math><span class="equation-number">(18)</span></span></span></p>
+<p>The inner bad sum is zero when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mi>/</mi><msup><mn>2</mn><mi>a</mi></msup><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">X/2^a&lt;2</annotation></semantics></math>.
+For every other term use the odd bound, and then</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mi>a</mi><mo>:</mo><mi>X</mi><mi>/</mi><msup><mn>2</mn><mi>a</mi></msup><mo>≥</mo><mn>2</mn></mrow></munder><msup><mn>2</mn><mrow><mi>−</mi><mi>a</mi></mrow></msup><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mi>/</mi><msup><mn>2</mn><mi>a</mi></msup><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mn>2</mn><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{a:X/2^a\geq2}2^{-a}\log(X/2^a)
+\leq2\log X.
+</annotation></semantics></math></span></p>
+<p>This proves the ordinary-map bound after enlarging
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+∎</p>
+<p>No approximate uniformity of odd parts was used in this transfer.
+Equation (18) retains each finite-cutoff fibre and its exact weight.</p>
+<h2 id="every-prescribed-diverging-bound">Every prescribed diverging
+bound</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mo>∑</mo><mrow><mi>n</mi><mo>≤</mo><mi>X</mi></mrow></msub><mn>1</mn><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">H(X)=\sum_{n\leq X}1/n</annotation></semantics></math>.
+The <a href="NT-COLLATZ-03.html#logarithmic-weights">harmonic-sum
+estimates</a> prove
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi><mo>+</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H(X)=\log X+O(1)</annotation></semantics></math>.
+A set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>⊆</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">B\subseteq\mathbb N_+</annotation></semantics></math>
+has logarithmic density zero when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mo>∑</mo><mrow><mi>n</mi><mo>≤</mo><mi>X</mi><mo>,</mo><mspace width="0.167em"></mspace><mi>n</mi><mo>∈</mo><mi>B</mi></mrow></msub><mn>1</mn><mi>/</mi><mi>n</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H(X)^{-1}\sum_{n\leq X,\,n\in B}1/n\to0</annotation></semantics></math>.</p>
+<p><strong>Corollary 5 (Tao’s almost-bounded theorem).</strong> For
+every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><msub><mi mathvariant="double-struck">ℕ</mi><mo>+</mo></msub><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">f:\mathbb N_+\to\mathbb R</annotation></semantics></math>
+tending to infinity,</p>
+<p><span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">lim</mi><mrow><mi>X</mi><mo>→</mo><mi>∞</mi></mrow></munder><mfrac><mn>1</mn><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>n</mi><mo>≤</mo><mi>X</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mtd></mtr></mtable></munder><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\lim_{X\to\infty}\frac1{H(X)}
+ \sum_{\substack{n\leq X\\C_{\min}(n)\geq f(n)}}\frac1n=0.
+\tag{19}
+</annotation></semantics></math><span class="equation-number">(19)</span></span></span></p>
+<p>Equivalently,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C_{\min}(n)&lt;f(n)</annotation></semantics></math>
+on a set of logarithmic density one. The odd version holds with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">S_{\min}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mo>∑</mo><mrow><mi>m</mi><mo>≤</mo><mi>X</mi><mo>,</mo><mspace width="0.167em"></mspace><mi>m</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> odd</mtext></mrow></mrow></msub><mn>1</mn><mi>/</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">H_o(X)=\sum_{m\leq X,\,m\text{ odd}}1/m</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Fix an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">K\geq2</annotation></semantics></math>.
+Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Y</mi><mi>K</mi></msub><annotation encoding="application/x-tex">Y_K</annotation></semantics></math>
+such that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">f(n)&gt;K</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&gt;</mo><msub><mi>Y</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">n&gt;Y_K</annotation></semantics></math>.
+Then the bad event in (19) is contained in the union of the finite
+prefix and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub><mo>&gt;</mo><mi>K</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{C_{\min}&gt;K\}</annotation></semantics></math>.
+By (14), its normalized weight has limsup at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>K</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">A(\log K)^{-1/5}</annotation></semantics></math>
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">X\to\infty</annotation></semantics></math>.
+The finite prefix has vanished because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">H(X)\to\infty</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">K\to\infty</annotation></semantics></math>.
+This proves (19), including equality in its bad event. For the odd case,
+use the first estimate in (14) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>o</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi><mo>+</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H_o(X)=\tfrac12\log X+O(1)</annotation></semantics></math>.
+∎</p>
+<p>The order of limits is important. A bound for a tail of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+cannot be substituted as a lower bound for all its earlier values.
+Fixing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+first and removing the finite prefix avoids that problem. It also shows
+that the qualitative conclusion is exactly the weighted tightness
+property of Theorem 1, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">w(n)=1/n</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>=</mo><msub><mi>C</mi><mi mathvariant="normal">min</mi></msub></mrow><annotation encoding="application/x-tex">g=C_{\min}</annotation></semantics></math>.</p>
+<p>The theorem allows a different exceptional set for each prescribed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>.
+It does not supply a single finite bound reached by every orbit, and it
+is not a bound on the number of ordinary iterations. The clock
+identities explain why an orbit minimum and an elapsed-time estimate
+require different information.</p>
+<h2 id="the-mathematical-route-through-the-case-study">The mathematical
+route through the case study</h2>
+<p>The endpoint is an arithmetic density theorem, but the proof brings
+together several subjects. Return maps identify the same minimum in
+different orbit records. Symbolic coding gives exact arithmetic domains
+for affine branches. Geometric concentration controls sampled finite
+words. Finite Fourier analysis and renewal estimates give mixing of
+affine offsets. Exact inverse branches and harmonic weights turn this
+into a comparison of entrance laws. Summable transport then yields
+compatible limits and tight orbit minima.</p>
+<p>These ingredients have different roles. The maps between clocks
+preserve individual orbit information. Pushforwards can discard
+information within their fibres. Fourier estimates control
+distributions, not each orbit separately. The compatible joint
+observation in Proposition 3, by contrast, is an exact bijection and
+loses no information. Keeping those distinctions visible makes the
+methods reusable in other discrete systems, where the maps and the
+analytic hypotheses can be checked on their own terms.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<h3 id="changing-the-base-along-the-same-sequence">1 Changing the base
+along the same sequence</h3>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>b</mi><mo>′</mo></msup><mo>=</mo><msup><mi>b</mi><msup><mi>α</mi><mi>k</mi></msup></msup></mrow><annotation encoding="application/x-tex">b&#39;=b^{\alpha^k}</annotation></semantics></math>
+for an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\geq0</annotation></semantics></math>.
+Prove directly, at finite indices, the identity between the entrance
+laws for bases
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>,</mo><msup><mi>b</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">b,b&#39;</annotation></semantics></math>,
+and deduce equality of their limiting families. Does this prove equality
+for every pair of bases?</p>
+<p><strong>Solution.</strong> The new sequence is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>t</mi><mi>j</mi><mo>′</mo></msubsup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msup><mi>b</mi><mo>′</mo></msup><msup><mo stretchy="false" form="postfix">)</mo><msup><mi>α</mi><mi>j</mi></msup></msup><mo>=</mo><msub><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t&#39;_j=(b&#39;)^{\alpha^j}=t_{j+k}</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>λ</mi><mrow><mi>x</mi><mo>,</mo><mi>j</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>b</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><msub><mi>K</mi><mi>x</mi></msub><msub><mi>μ</mi><msub><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub></msub><mo>=</mo><msubsup><mi>λ</mi><mrow><mi>x</mi><mo>,</mo><mi>j</mi><mo>+</mo><mi>k</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">\lambda_{x,j}^{(b&#39;)}=K_x\mu_{t_{j+k+1}}=\lambda_{x,j+k}^{(b)}</annotation></semantics></math>.
+A sequence and any of its tails have the same limit, proving equality.
+Arbitrary bases need not be related by an integer shift of this form;
+the displayed identity then gives no comparison. This is a statement
+about what the proof establishes, not a proof that other bases yield
+different limits.</p>
+<h3 id="joint-observations-in-a-finite-system">2 Joint observations in a
+finite system</h3>
+<p>On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>6</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">D=\{1,2,3,4,5,6\}</annotation></semantics></math>,
+define</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>1</mn><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>1</mn><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>2</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>3</mn><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>6</mn><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>F</mi><mo stretchy="false" form="prefix">(</mo><mn>6</mn><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>5</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+F(1)&amp;=1,&amp;F(2)&amp;=1,&amp;F(3)&amp;=2,\\
+F(4)&amp;=3,&amp;F(5)&amp;=6,&amp;F(6)&amp;=5.
+\end{aligned}
+</annotation></semantics></math></span></p>
+<p>Use thresholds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">2,4,6</annotation></semantics></math>
+and input laws
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>η</mi><mi>j</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>j</mi></mrow></msup><mo stretchy="false" form="postfix">)</mo><msub><mi>δ</mi><mn>6</mn></msub><mo>+</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>j</mi></mrow></msup><msub><mi>δ</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">\eta_j=(1-2^{-j})\delta_6+2^{-j}\delta_4</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j\geq0</annotation></semantics></math>.
+Compute the limiting joint law and its exact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℓ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\ell^1</annotation></semantics></math>
+error. Verify that the sum of adjacent-law errors equals that error.</p>
+<p><strong>Solution.</strong> The compatible tuples for the two possible
+starts are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>†</mi><mo>,</mo><mi>†</mi><mo>,</mo><mn>6</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\dagger,\dagger,6)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,4,4)</annotation></semantics></math>,
+respectively. The joint law has the same two weights as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>η</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\eta_j</annotation></semantics></math>.
+Its limit is unit mass at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>†</mi><mo>,</mo><mi>†</mi><mo>,</mo><mn>6</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\dagger,\dagger,6)</annotation></semantics></math>,
+and the error is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>⋅</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>j</mi></mrow></msup><mo>=</mo><msup><mn>2</mn><mrow><mn>1</mn><mo>−</mo><mi>j</mi></mrow></msup></mrow><annotation encoding="application/x-tex">2\cdot2^{-j}=2^{1-j}</annotation></semantics></math>.
+Adjacent laws have distance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>j</mi></mrow></msup><mo>−</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>j</mi></mrow></msup></mrow><annotation encoding="application/x-tex">2(2^{-j}-2^{-j-1})=2^{-j}</annotation></semantics></math>.
+Their tail sum from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>h</mi><mo>=</mo><mi>j</mi></mrow><mi>∞</mi></msubsup><msup><mn>2</mn><mrow><mi>−</mi><mi>h</mi></mrow></msup><mo>=</mo><msup><mn>2</mn><mrow><mn>1</mn><mo>−</mo><mi>j</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\sum_{h=j}^\infty2^{-h}=2^{1-j}</annotation></semantics></math>,
+exactly the same quantity. Three coordinates have introduced no factor
+of three.</p>
+<h3 id="an-unbounded-function-with-tight-weighted-distributions">3 An
+unbounded function with tight weighted distributions</h3>
+<p>Under weights
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">w(n)=1/n</annotation></semantics></math>,
+define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mi>k</mi></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">g(2^k)=k</annotation></semantics></math>
+for integers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\geq0</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g(n)=0</annotation></semantics></math>
+for other positive integers. Prove that its distributions over all
+nonempty prefixes are uniformly tight, although
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+is unbounded.</p>
+<p><strong>Solution.</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">K\geq0</annotation></semantics></math>,
+the unnormalized weight of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>g</mi><mo>&gt;</mo><mi>K</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{g&gt;K\}</annotation></semantics></math>
+is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mrow><mi>k</mi><mo>&gt;</mo><mi>K</mi></mrow></msub><msup><mn>2</mn><mrow><mi>−</mi><mi>k</mi></mrow></msup><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mo stretchy="false" form="prefix">⌊</mo><mi>K</mi><mo stretchy="false" form="postfix">⌋</mo></mrow></msup></mrow><annotation encoding="application/x-tex">\sum_{k&gt; K}2^{-k}=2^{-\lfloor K\rfloor}</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">H(X)\geq1</annotation></semantics></math>,
+the same upper bound holds for every normalized prefix. It tends to
+zero. The values
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><mi>k</mi></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">g(2^k)=k</annotation></semantics></math>
+show unboundedness. Theorem 1 therefore applies to every diverging
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>,
+despite the infinitely many large values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.</p>
+<h3 id="why-the-finite-prefix-cannot-be-ignored-at-the-start">4 Why the
+finite prefix cannot be ignored at the start</h3>
+<p>Suppose a nonnegative finite-valued
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mrow><mi>n</mi><mo>≤</mo><mi>X</mi><mo>,</mo><mspace width="0.167em"></mspace><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>K</mi></mrow></msub><mn>1</mn><mi>/</mi><mi>n</mi><mo>≤</mo><mi>A</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>K</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">\sum_{n\leq X,\,g(n)&gt;K}1/n\leq A\log X/(\log K)^c</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>,</mo><mi>X</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">K,X\geq2</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">f(n)\to\infty</annotation></semantics></math>,
+without assuming monotonicity. Give a bound for the harmonic mass of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>g</mi><mo>≥</mo><mi>f</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{g\geq f\}</annotation></semantics></math>
+that keeps the finite prefix, and specify the order of limits proving
+density zero.</p>
+<p><strong>Solution.</strong> For each fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">K\geq2</annotation></semantics></math>,
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Y</mi><mi>K</mi></msub><annotation encoding="application/x-tex">Y_K</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">f(n)&gt;K</annotation></semantics></math>
+beyond it. The mass up to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>Y</mi><mi>K</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>A</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>X</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>K</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">H(Y_K)+A\log X/(\log K)^c</annotation></semantics></math>.
+Divide by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H(X)</annotation></semantics></math>,
+and first let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">X\to\infty</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+fixed. The prefix term vanishes and the limsup is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>K</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">A/(\log K)^c</annotation></semantics></math>.
+Only then let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">K\to\infty</annotation></semantics></math>.
+A threshold defined using only values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+would not control the values being summed before
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <em>Almost all orbits of the Collatz map attain almost
+bounded values</em>, Forum of Mathematics, Pi 10 (2022), e12; <a
+href="https://arxiv.org/abs/1909.03562v7">arXiv:1909.03562, version
+7</a>. Remark 1.4 discusses tightness; Proposition 1.11 supplies the
+entrance estimate; Section 3 derives the orbit-minimum conclusions. The
+complete analytic input is proved in the preceding lessons.</li>
+<li><a href="NT-COLLATZ-04.html">First passage and transport across
+scales</a>, for nested passage, finite-chain contraction and the
+complete summable-scale proof used in (15).</li>
+<li><a href="NT-COLLATZ-13.html">Logarithmic sampling and first-passage
+distributions</a>, for the proved bounds in (6).</li>
+</ul>
+<nav aria-label="Lesson sequence"><p><a href="NT-COLLATZ-13.html">Previous: Logarithmic sampling and first-passage distributions</a><br><a href="NT-COLLATZ-15.html">Next: Retaining information through Fourier cancellation</a></p></nav></main><footer>Original mathematical exposition and illustrations: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. References retain their own authorship and terms.</footer></body></html>

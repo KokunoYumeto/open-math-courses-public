@@ -1,12 +1,12 @@
 # Separable GNS spaces and disintegration of C*-weights
 
-**Self-checked by the writing AI.**
+**Reading goal.** Derive separability from a closed GNS graph, identify an unbounded modular weight from a common core, and separate the two density arguments needed for disintegration.
 
 A separable C*-algebra can carry an unbounded weight whose finite domain is not norm dense. Its finite-weight GNS space is nevertheless separable when the weight is lower semicontinuous. We first prove this directly from a closed graph. We then prove uniqueness of modular weights from a common invariant finite algebra, and disintegrate a modular weight on the original C*-algebra. The last argument verifies both fibre semifiniteness and the onto property of the fibre GNS map.
 
-The source antecedents are M. Takesaki, *Theory of Operator Algebras II*, VIII.4, Lemmas 4.9–4.10, Theorem 4.11 and Lemmas 4.12–4.13, printed 137–140/PDF 157–160. The complete governing page images were inspected. The statements and proofs below are independently written. Inner products are linear in the first variable. C*-semifiniteness means norm density of the finite domain, as in CS-01 and LW-08; it must not be replaced by von Neumann sigma-weak density.
+The source antecedents are M. Takesaki, *Theory of Operator Algebras II*, VIII.4, Lemmas 4.9–4.10, Theorem 4.11 and Lemmas 4.12–4.13, printed 137–140/PDF 157–160. Inner products are linear in the first variable. C*-semifiniteness means norm density of the finite domain, as in CS-01 and LW-08; it must not be replaced by von Neumann sigma-weak density.
 
-WD-01–03 use CS's finite-domain construction, lower semicontinuity, Hahn–Banach separation of closed linear subspaces, and weak compactness of a Hilbert ball. WD-04–05 also use the positive approximate identity An approximate identity indexed by finite sets, Nondegeneracy on the finite-weight GNS space's nondegeneracy, The modular condition builds continuous GNS unitaries and The normal weight recovered from this algebra/05/07's modular normal extension and GNS identification, and Two identities on the full finite left ideal's full entire right multiplier formula. WD-06–09 use A countable contractive family detects every positive value and Recovering measurable GNS vectors by an injective equation/05/07 and the existing DI FIELD, CENTRAL and SELECTION contracts, including the still-open compatible GNS-field comparison MW-DEP-GNS-FIELD. These are the course's named inputs with their current statuses; no general measurable-field comparison is proved here.
+The finite-domain arguments use the C*-GNS construction, lower semicontinuity, Hahn–Banach separation and weak compactness of a Hilbert ball. The common-core proof uses a positive approximate identity, nondegeneracy, the continuous GNS group, the exact normal extension and entire right multiplication. Disintegration uses the all-positive integral formula and central weight decomposition, with the compatible GNS realization and same-diagonal uniqueness. The measurable span projection and uniqueness of decomposable fields provide the fibre-totality step.
 
 ## A lower-semicontinuous C*-weight has a closed GNS graph
 
@@ -104,6 +104,8 @@ For \(x_n=n^{-1}e_n\),
 \]
 
 The last vectors converge weakly to zero because every \(\ell^2\) coordinate sequence tends to zero, but they do not converge to zero in norm. This is why WD-02 uses weak compactness and the weakly closed span. A claim that the chosen norm-dense \(D_m\) is already a graph core would not follow from that proof.
+
+![Closed GNS graphs give separability; the exact c0 sequence has algebra norms tending to zero and GNS norms equal to one.](assets/gns-closed-graphs.png)
 
 ## An invariant finite algebra is a GNS graph core
 
@@ -220,7 +222,7 @@ Use the existing central decomposition and MW-07 over a standard sigma-finite di
  \tag{WD.20}
 \]
 
-Here each \(\Phi_y\) is faithful normal semifinite, \(H_y\) is identified with its GNS space, and \(\pi_y(A)''=M_y\) outside a common null set. The identifications are those supplied by the compatible associated GNS realization and diagonal uniqueness; an arbitrary unrelated abstract realization would not suffice. The named open field and central providers are in force.
+Here each \(\Phi_y\) is faithful normal semifinite, \(H_y\) is identified with its GNS space, and \(\pi_y(A)''=M_y\) outside a common null set. The identifications are those supplied by the compatible associated GNS realization and diagonal uniqueness; an arbitrary unrelated abstract realization would not suffice. The associated realization is constructed in GFR, and same-diagonal uniqueness transports it to the specified representation. These identifications preserve the actual GNS vectors in MW-05.
 
 Define on the original C*-algebra
 
@@ -294,7 +296,7 @@ Second, WD-02 and the defining GNS density let us choose \(a_j\in\mathfrak n_\va
 
 Here KL's GNS identification identifies \(\Lambda(a_j)\) with \(\Lambda_\Phi(\pi(a_j))\). Choose the representatives and remove the union of the countably many null sets for (WD.27).
 
-The fields in (WD.27) are fibrewise Hilbert total almost everywhere. To justify this, let \(P_y\) be the orthogonal projection onto the closed span of their values. Countable measurable Gram–Schmidt in DI FIELD makes \(P_y\) a measurable, norm-at-most-one field. Its integral \(P\) fixes every global \(\Lambda(a_j)\); global density gives \(P=I_H\). Uniqueness of bounded decomposable operator fields gives \(P_y=I_{H_y}\) almost everywhere. This argument proves pointwise totality; it does not infer it merely by selecting representatives of a globally dense sequence.
+The fields in (WD.27) are fibrewise Hilbert total almost everywhere. To justify this, let \(P_y\) be the orthogonal projection onto the closed span of their values. The measurable-span construction in DF makes \(P_y\) a measurable, norm-at-most-one field. Its integral \(P\) fixes every global \(\Lambda(a_j)\); global density gives \(P=I_H\). Uniqueness of bounded decomposable operator fields gives \(P_y=I_{H_y}\) almost everywhere. This argument proves pointwise totality; it does not infer it merely by selecting representatives of a globally dense sequence.
 
 Let \((K_y,\pi_{\psi_y},\Lambda_{\psi_y})\) be the C*-GNS triple of \(\psi_y\). On its actual finite domain define
 
@@ -316,6 +318,8 @@ The equality of squared norms is (WD.21) applied to \(a^*a\). It proves represen
 
 Boundedness extends this equality to every vector. Thus \(\pi_{\psi_y}\) is unitarily equivalent to \(\pi_y\), proving clause (iii) of Theorem 4.11. A norm-dense finite ideal and a Hilbert-total GNS range are different requirements; both have now been established.
 
+![The two distinct density arguments: norm-dense finite algebra elements give fibre semifiniteness, and measurable span projections prove the GNS isometry is onto.](assets/cstar-disintegration-fibres.png)
+
 ## The full C*-disintegration theorem and its kernels
 
 **Theorem.** Let \(A\) be separable, \(\alpha\) a pointwise norm-continuous one-parameter automorphism group, and \(\varphi\) a faithful, norm-lower-semicontinuous C*-semifinite weight satisfying its modular condition. Let \(D\) be any specified von Neumann subalgebra of the center of \(\pi_\varphi(A)''\). Relative to the representation's central disintegration over \(D\), there exist weights \(\psi_y\) on \(A\) with the following properties:
@@ -324,7 +328,7 @@ Boundedness extends this equality to every vector. Thus \(\pi_{\psi_y}\) is unit
 2. Off one null set, \(\psi_y\) is norm lower semicontinuous, C*-semifinite, and satisfies the modular condition for \(\alpha\).
 3. Off one null set, its C*-GNS representation is unitarily equivalent to the specified fibre representation \(\pi_y\).
 
-**Proof at the named field/central inputs.** WD-06 proves clause 1 and lower semicontinuity. WD-07 proves modularity on one common conull set. WD-08 proves norm-semifiniteness and the explicit onto intertwining isometry there. Intersect the finitely many conull sets constructed in these arguments. This is the whole source Theorem 4.11; the countability uses are displayed rather than suppressed. Zero fibres and the zero algebra have their usual zero-space interpretations. \(\square\)
+**Proof.** WD-06 proves clause 1 and lower semicontinuity. WD-07 proves modularity on one common conull set. WD-08 proves norm-semifiniteness and the explicit onto intertwining isometry there. Intersect the finitely many conull sets constructed in these arguments. This is the whole source Theorem 4.11; the countability uses are displayed rather than suppressed. Zero fibres and the zero algebra have their usual zero-space interpretations. \(\square\)
 
 Although \(\varphi\) is faithful on \(A\), the fibre \(\psi_y\) need not be. Faithfulness of \(\Phi_y\) gives the precise kernel:
 
@@ -337,7 +341,7 @@ Although \(\varphi\) is faithful on \(A\), the fibre \(\psi_y\) need not be. Fai
 
 This is a norm-closed two-sided ideal, invariant under \(\alpha\) by (WD.24). The fibre weight factors through \(A/\ker\pi_y\) as a faithful weight. Its descended homomorphism into \(M_y\) is injective and therefore isometric, so the descended weight is norm lower semicontinuous. Images of the norm-dense finite domain show its semifiniteness, and modular covariance descends as well. These statements clarify the quotient, rather than adding fibre faithfulness on the original algebra to the source theorem.
 
-The general compatible associated measurable realization and the FIELD, CENTRAL and SELECTION contracts are not proved in this lesson. It supplies all five source-item arguments at those specified inputs.
+The conclusion is relative to the specified central diagonal and its measure. Changing that measure requires the corresponding fibre-weight rescaling proved in MW. Faithfulness is asserted after the displayed fibre quotient; it is not asserted for every fibre weight on the original algebra.
 
 ## A faithful global weight with nonfaithful fibres
 
@@ -352,6 +356,7 @@ This weight is faithful because a nonzero continuous positive function is positi
 
 Its GNS space is \(L^2((0,1],y^{-2}dy)\). Multiplication represents \(A\), whose bicommutant is the multiplication algebra \(L^\infty\); compactly supported continuous functions are dense in the indicated \(L^2\) space, and their bounded multiplication approximations generate the measurable multiplication projections. In the Lebesgue-base realization the unitary is
 
+To justify the multiplication-algebra assertion, first use the unitary (W) below to work on Lebesgue (L^2). Continuous piecewise-linear contractions approximate the characteristic function of any interval whose closure avoids zero, pointwise except at endpoints. Dominated convergence against the squared modulus of each (L^2) vector gives strong convergence of their multiplication operators. Continuous cutoffs increasing to one give the identity operator. The measurable sets whose multiplication projections belong to the generated von Neumann algebra form a sigma-algebra: complements use the identity, finite intersections use products, and disjoint countable unions use strong convergence of bounded partial sums. These interval projections therefore give every Borel projection. Null-set changes give the same operator. Bounded simple-function approximation then gives every (L^infty) multiplier. Conversely, on the field of one-dimensional Hilbert spaces, DF's diagonal-commutant theorem says that the decomposable algebra consists exactly of those multipliers; in particular it is strongly closed. This proves the bicommutant assertion. The same interval approximations, first restricted away from zero and then exhausted toward zero, prove the stated density of compactly supported continuous functions in the weighted (L^2) space.
 \[
  W:L^2((0,1],y^{-2}dy)\longrightarrow L^2((0,1],dy),
  \qquad (Wg)(y)=g(y)/y.
@@ -387,3 +392,5 @@ For \(f_\beta(y)=y^\beta\), \(\beta>0\), the two different finite-domain thresho
 \]
 
 The second expression denotes the extended energy; an actual GNS vector exists only in its finite case. Integrating \(y^{\gamma-2}\) from \(\varepsilon\) to one and taking \(\varepsilon\downarrow0\) proves each branch, including logarithmic divergence at its boundary. For example, \(f_{3/4}\) has a GNS vector of squared norm two while its positive weight is infinite. All fibre evaluations remain finite.
+
+![For the weight with density y to the minus two, finite positive values require beta greater than one, while finite GNS energy requires beta greater than one half.](assets/cstar-weight-finite-domains.png)

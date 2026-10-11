@@ -167,6 +167,8 @@ On even dimensions these are constant perversity changes \(+d,-d\). The real inv
 
 The holomorphic operation theorem supplies complex membership for the inverse operations. Direct membership in (10) remains a separate hypothesis; properness on the actual closed support supplies it. A zero-dimensional analytic map with accumulating images still disproves automatic nonproper constructibility, as in the preceding lesson.
 
+For that proper-on-support case, the [exact complex image theorem and its support comparison](holomorphic-operations-and-complex-fourier-symmetries.md#proper-direct-image-uses-the-actual-support) identify the canonical map \(Rf_!G\longrightarrow Rf_*G\) as an isomorphism. Thus the two bounds in (10) concern the same output object, with their respective input-cut hypotheses. The comparison restricts to the closed coefficient support; it does not require \(f\) to be proper away from that support. Without such properness, each output-membership clause in (10) must instead be established independently.
+
 ## Field duality exchanges the middle cuts
 
 On even dimensions \(p^*(2a)=-p(2a)-2a=-a\). Strong field duality therefore gives
@@ -245,7 +247,19 @@ For weak complex constructible inputs,
 
 Use the bounded-first-argument exceptional Hom isomorphism in the [exceptional-Hom proof in *Exceptional operations*, SH02-EX-HOM](../SH02/exceptional-operations.md#sh02-ex-hom--exceptional-inverse-image-of-internal-hom), and the actual submersion comparison in *Manifold duality*, SH02-MD-SUBMERSION. Their exact coefficient, amplitude and evaluation contracts remain prerequisites.
 
-On \(i:S_\alpha\times T_\beta\hookrightarrow X\times Y\), write \(r_1,r_2\) for its projections, with complex dimensions \(a,b\). Exceptional Hom and exceptional composition give
+On \(i:S_\alpha\times T_\beta\hookrightarrow X\times Y\), write \(r_1,r_2\) for its projections, with complex dimensions \(a,b\). The maps are typed by
+
+\[
+\begin{aligned}
+r_1 &: S_\alpha\times T_\beta\longrightarrow S_\alpha,\\
+r_2 &: S_\alpha\times T_\beta\longrightarrow T_\beta,\\
+q_1\circ i&=i_\alpha\circ r_1,\\
+q_2\circ i&=i_\beta\circ r_2.
+\end{aligned}
+\tag{15a}
+\]
+
+Apply EX.26 to \(i\) with bounded first input \(q_1^{-1}F\) and bounded-below second input \(q_2^!G\). Ordinary inverse composition identifies its first argument along the first equality in (15a); the trace-compatible exceptional composition EX.13 identifies its second argument along the second equality. For the resulting projection \(r_2\), M11 supplies the actual tensor comparison with real fibre dimension \(2a\). These are composed adjunction and evaluation maps, not an unasserted base-change isomorphism. Exceptional Hom and exceptional composition give
 
 \[
 \begin{aligned}

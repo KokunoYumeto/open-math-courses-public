@@ -1,6 +1,6 @@
 # Standard forms over a moving central base
 
-*Self-checked by the writing AI. Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
+*Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
 
 The central observables of a von Neumann algebra can move under an action. Decomposing over an invariant part of the centre therefore produces arrows between Hilbert spaces at different base points. Each arrow is unitary, but integrating the arrows requires a square root of a measure density. The same density explains why a global representing vector need not be a unit vector in each fibre.
 

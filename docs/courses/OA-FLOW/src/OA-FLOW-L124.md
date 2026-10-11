@@ -2,7 +2,7 @@
 
 Trivial Connes spectrum acquires force when the commuting automorphisms are ergodic on the center. The mechanism has two parts: a faithful circle action on an abelian algebra admits a unitary of degree one, and a central degree-one unitary in the cyclic stabilization has a matrix coefficient that implements the original automorphism. We prove the circle statement first and construct the matrix descent before applying the Connes-spectrum hypothesis.
 
-*Self-checked by the writing AI. Original exposition and illustrations: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
+*Original exposition and illustrations: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
 
 <a id="oa-flow.l124.setting"></a>
 <a id="l124-inputs"></a>

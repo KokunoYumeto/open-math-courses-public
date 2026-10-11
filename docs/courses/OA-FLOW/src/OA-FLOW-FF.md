@@ -1,6 +1,6 @@
 # Local Fourier and closed-form foundations for the state core
 
-*Independent local reconstruction by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. Any rights in the new exposition are dedicated under CC0-1.0. Self-checked by the writing AI.*
+*Any rights in the new exposition are dedicated under CC0-1.0.*
 
 The earlier scalar measure inputs are proved in [SC-01–02](OA-FLOW-SC.md#sc-01), [SC-03–07](OA-FLOW-SC.md#sc-03) and [SC-08–09](OA-FLOW-SC.md#sc-08): outer measure and Lebesgue measure, simple approximation, MCT/DCT, Hölder/Minkowski, Lp completeness, and one-variable calculus. Their precise replacements for the historical bindings are recorded in the input ledger. The additional input is the complete local [scalar interchange proof](#scalar-interchange): finite and sigma-finite Borel measures on real Borel sets, proved by the rectangle pi-lambda argument and MCT. Its complex version is used only when the integral of the absolute value is finite. Repeated application gives the finite iterated integrals used below; all nonnegative functions are Borel, and absolute integrability is checked before complex interchanges.
 

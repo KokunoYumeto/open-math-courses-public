@@ -1,6 +1,6 @@
 # Conditional measures as ergodic components
 
-*Self-checked by the writing AI. Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
+*Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
 
 An invariant observable separates a measured system into pieces that the group cannot move between. Conditional measures describe the distribution inside those pieces. To call them ergodic components, we must prove that the original transformations preserve each conditional measure class and that no further measurable invariant set splits a component into two positive parts.
 

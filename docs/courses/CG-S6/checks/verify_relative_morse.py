@@ -119,6 +119,26 @@ ch=S.exp(-1/z)/(S.exp(-1/z)+S.exp(-1/(1-z)))
 check('Symmetric smooth step exact central value and derivative',eq(ch.subs(z,S.Rational(1,2)),S.Rational(1,2)) and eq(S.diff(ch,z).subs(z,S.Rational(1,2)),2))
 
 source=W/'src/relative-morse-functions-and-original-handles.md'
-result=dict(source=source.name,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),passed=len(checks),checks=checks,independent_review=False,publication=False,scope='Relative first-jet parameter map, full symmetric congruence without a commutativity assumption, all original Hessian eigenvalues, exact lower/upper hit times including exceptional-domain limits, complete tangent-map contributions and all six-dimensional index determinants. Exact handle embedding, thick-tube differential, both extreme indices, corner orientation and outward conormal, collar absorption with every travel-time derivative, original transverse seam and both complete worked exercises. The original handle decomposition and its index arrangement are proved in their included chapters; low-index removal and full reduction remain.')
+# Bind domain checks to the exercise's actual constants, not an isolated matrix.
+import re
+source_text=source.read_text(encoding='utf-8')
+exercise=source_text.split('### Exercise 5.2.',1)[1].split('**Solution.**',1)[0]
+domain_match=re.search(r'z\\in\((-?\d+),(-?\d+)\)',exercise)
+values=re.search(r'a=(-?\d+),\\qquad b=(-?\d+),\\qquad f\(q\(z\)\)=(-?\d+)\+z/(\d+),\\qquad\s*T\(z\)=(\d+)-z/(\d+)',exercise)
+check('Exercise 5.2 actual interval and equation (5.7) are parsed',domain_match is not None and values is not None and r'\tag{5.7}' in exercise)
+zlo,zhi=map(S.Integer,domain_match.groups())
+lower,upper,offset,denominator,time_offset,time_denominator=map(S.Integer,values.groups())
+fv=offset+z/denominator;travel=time_offset-z/time_denominator
+check('Exercise 5.2 affine range uses a nonempty interval and positive slope',zlo<zhi and denominator>0)
+flo,fhi=fv.subs(z,zlo),fv.subs(z,zhi)
+# Since the domain is open and the slope positive, flo < f < fhi everywhere.
+check('Exercise 5.2 full interval lies above the original lower boundary',lower<=flo)
+check('Exercise 5.2 full interval lies below the upper boundary',fhi<upper)
+check('Exercise 5.2 actual travel time equals b minus f',eq(travel,upper-fv))
+check('Exercise 5.2 actual travel time has a positive full-interval lower bound',time_denominator>0 and travel.subs(z,zhi)>0)
+check('Exercise 5.2 actual tangential travel-time derivative is retained',eq(S.diff(travel,z),-S.Rational(1,4)))
+check('Exercise 5.2 negative-half witness belongs to the stated geometric range',zlo<-S.Rational(1,2)<zhi and lower<=fv.subs(z,-S.Rational(1,2))<upper)
+
+result=dict(geometric_domain_checks=8,geometric_domain_scope='Exercise 5.2 exact affine range, lower and upper boundary, travel time and tangential derivative; not a global Morse-theory proof certificate.',source=source.name,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),passed=len(checks),checks=checks,independent_review=False,publication=False,scope='Relative first-jet parameter map, full symmetric congruence without a commutativity assumption, all original Hessian eigenvalues, exact lower/upper hit times including exceptional-domain limits, complete tangent-map contributions and all six-dimensional index determinants. Exact handle embedding, thick-tube differential, both extreme indices, corner orientation and outward conormal, collar absorption with every travel-time derivative, original transverse seam and both complete worked exercises. The original handle decomposition and its index arrangement are proved in their included chapters; low-index removal and full reduction remain.')
 (W/'checks/RELATIVE_MORSE_CHECKS.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(dict(passed=len(checks),source_sha256=result['source_sha256'])))

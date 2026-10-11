@@ -1,6 +1,6 @@
 # Supported dual weights: normalization and models
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; font components retain their accompanying terms.*
+*Original exposition and illustration sources: CC0-1.0; font components retain their accompanying terms.*
 
 A weight can ignore a nonzero corner of its algebra. Crossing with a group preserves that information, although the original action may move the corner. We first give a second uniqueness proof using a common faithful completion, then compute how the Haar scale and the support affect the dual weight. Three models distinguish moving supports, invisible coefficients, and uncountably many finite corners.
 

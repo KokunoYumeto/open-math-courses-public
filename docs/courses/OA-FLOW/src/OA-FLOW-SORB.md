@@ -1,6 +1,6 @@
 # Spectral distributions and closed unitary orbits in semifinite factors
 
-*Self-checked by the writing AI.*
+
 
 The decreasing trace tail of a positive normal functional is a complete invariant of its norm-closed unitary orbit in a semifinite factor. We prove the distance formula by matching finite spectral bands, with an explicit error for the discarded mass. We then realize every admissible tail by an affiliated operator with a specified self-adjoint domain. The state-orbit diameters follow as concrete consequences.
 

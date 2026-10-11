@@ -1,6 +1,6 @@
 # The real Connes spectrum: orbit supports, corners and cocycles
 
-*Independent proof development, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\ne0\) be a von Neumann factor and let \(\alpha:\mathbb R\to\operatorname{Aut}(M)\) be a group of normal \(*\)-automorphisms, continuous on every normal scalar coefficient. No separability, finite state, modular realization, norm continuity of the action or countable-decomposability is assumed in this chapter. Write \(M^\alpha\) for its fixed algebra. A fixed projection is a projection \(p\in M^\alpha\). Its nonzero corner has the restricted action \(\alpha^p\).
 

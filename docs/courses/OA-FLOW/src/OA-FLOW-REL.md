@@ -1,6 +1,6 @@
 # Countable orbit algebras and their modular weight
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 An orbit may have fewer points than the group elements that reach it. Counting those points gives an operator algebra with a faithful diagonal expectation, even when stabilizers are present. We construct the counting measures first, identify every operator in the algebra by its orbit matrices, and recover the modular operator from the cost of reversing a matrix entry. A three-point example will make the counting and the modular signs visible.
 

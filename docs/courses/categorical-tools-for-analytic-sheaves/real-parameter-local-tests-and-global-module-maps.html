@@ -1,0 +1,214 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local tests and global maps in real-parameter module diagrams</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="local-tests-and-global-maps-in-real-parameter-module-diagrams">Local tests and global maps in real-parameter module diagrams</h1>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original text: CC0. No independent review.</em></p>
+<p>A module diagram on the real line has two canonical comparisons at every point: from everything strictly to its left, and to everything strictly to its right. If both comparisons are injective, every transition is injective. If both are surjective, every transition is surjective. The second implication requires compatible lifts at a cut, and we construct those lifts explicitly.</p>
+<p>Fix a unital ring <span class="math" data-tex="\(A\)">\(A\)</span>, a Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> containing <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and the ambient axiom of choice. All modules and index sets below are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. <span class="unlinked">Universes and small categories</span>, Sections 1–2, supplies the size and choice conventions. The complete module limit and filtered representative/zero tests used here are <span class="unlinked">Hom, tensor and the exactness of module limits</span>, Sections 2–3. No topological structure on the modules is assumed.</p>
+<h2 id="1-the-two-comparisons-with-their-actual-maps">1. The two comparisons, with their actual maps</h2>
+<p>View <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> as a category with a single arrow <span class="math" data-tex="\(r\to s\)">\(r\to s\)</span> when <span class="math" data-tex="\(r\leq s\)">\(r\leq s\)</span>. A covariant diagram <span class="math" data-tex="\(X\)">\(X\)</span> consists of modules <span class="math" data-tex="\(X_s\)">\(X_s\)</span> and linear maps <span class="math" data-tex="\(v_{r,s}:X_r\to X_s\)">\(v_{r,s}:X_r\to X_s\)</span>, with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+v_{s,s}=1,\qquad v_{s,t}v_{r,s}=v_{r,t}\quad(r\leq s\leq t).
+\tag{1.1}
+\]">\[
+v_{s,s}=1,\qquad v_{s,t}v_{r,s}=v_{r,t}\quad(r\leq s\leq t).
+\tag{1.1}
+\]</span>
+<p>For each <span class="math" data-tex="\(s\)">\(s\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+L_sX=\operatorname{colim}_{t&lt;s}X_t,
+\qquad
+R_sX=\lim_{t&gt;s}X_t.
+\tag{1.2}
+\]">\[
+L_sX=\operatorname{colim}_{t&lt;s}X_t,
+\qquad
+R_sX=\lim_{t&gt;s}X_t.
+\tag{1.2}
+\]</span>
+<p>The left interval is a nonempty directed set. Each colimit element has a representative <span class="math" data-tex="\([t,x]\)">\([t,x]\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+[t,x]=0\quad\Longleftrightarrow\quad
+v_{t,u}x=0\text{ for some }t\leq u&lt;s.
+\tag{1.3}
+\]">\[
+[t,x]=0\quad\Longleftrightarrow\quad
+v_{t,u}x=0\text{ for some }t\leq u&lt;s.
+\tag{1.3}
+\]</span>
+<p>This is the exact zero test proved in the prerequisite. The right limit is the submodule of the product consisting of tuples <span class="math" data-tex="\((x_t)_{t&gt;s}\)">\((x_t)_{t&gt;s}\)</span> satisfying <span class="math" data-tex="\(v_{t,u}x_t=x_u\)">\(v_{t,u}x_t=x_u\)</span> whenever <span class="math" data-tex="\(s&lt;t\leq u\)">\(s&lt;t\leq u\)</span>. Its projections have the ordinary limit universal property.</p>
+<p>The cocone <span class="math" data-tex="\((v_{t,s})_{t&lt;s}\)">\((v_{t,s})_{t&lt;s}\)</span> and cone <span class="math" data-tex="\((v_{s,t})_{t&gt;s}\)">\((v_{s,t})_{t&gt;s}\)</span> define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+\lambda_s:L_sX\longrightarrow X_s,
+\quad\lambda_s[t,x]=v_{t,s}x,
+\qquad
+\mu_s:X_s\longrightarrow R_sX,
+\quad\mu_s(x)=(v_{s,t}x)_{t&gt;s}.
+\tag{1.4}
+\]">\[
+\lambda_s:L_sX\longrightarrow X_s,
+\quad\lambda_s[t,x]=v_{t,s}x,
+\qquad
+\mu_s:X_s\longrightarrow R_sX,
+\quad\mu_s(x)=(v_{s,t}x)_{t&gt;s}.
+\tag{1.4}
+\]</span>
+<p>The first formula respects the colimit relations by (1.1); the second is compatible by the same equation. The universal properties prove linearity and uniqueness. In particular, surjectivity of <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> means that every element of <span class="math" data-tex="\(X_s\)">\(X_s\)</span> comes from one stage <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span>. Surjectivity of <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span> means that every whole compatible future tuple is the image of one element of <span class="math" data-tex="\(X_s\)">\(X_s\)</span>.</p>
+<p>For <span class="math" data-tex="\(r\leq s\)">\(r\leq s\)</span>, inclusion of left intervals induces <span class="math" data-tex="\(L_rX\to L_sX\)">\(L_rX\to L_sX\)</span>, taking <span class="math" data-tex="\([t,x]\)">\([t,x]\)</span> to the same representative. Restriction of tuples induces <span class="math" data-tex="\(R_rX\to R_sX\)">\(R_rX\to R_sX\)</span>. The equations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+\lambda_sL_{r,s}=v_{r,s}\lambda_r,
+\qquad
+R_{r,s}\mu_r=\mu_sv_{r,s}
+\tag{1.5}
+\]">\[
+\lambda_sL_{r,s}=v_{r,s}\lambda_r,
+\qquad
+R_{r,s}\mu_r=\mu_sv_{r,s}
+\tag{1.5}
+\]</span>
+<p>hold on representatives and on coordinates respectively. Thus <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> are real-parameter diagrams and <span class="math" data-tex="\(\lambda:LX\to X\)">\(\lambda:LX\to X\)</span>, <span class="math" data-tex="\(\mu:X\to RX\)">\(\mu:X\to RX\)</span> are natural transformations. A morphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> sends <span class="math" data-tex="\([t,x]\)">\([t,x]\)</span> to <span class="math" data-tex="\([t,f_tx]\)">\([t,f_tx]\)</span> and <span class="math" data-tex="\((x_t)\)">\((x_t)\)</span> to <span class="math" data-tex="\((f_tx_t)\)">\((f_tx_t)\)</span>. Its commuting transition squares prove that these operations are well defined and intertwine both maps in (1.4). This includes naturality in the diagram itself.</p>
+<h2 id="2-injectivity-at-a-finite-death-cut">2. Injectivity at a finite death cut</h2>
+<p><strong>Theorem 2.1.</strong> If every <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> and every <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span> is injective, then every <span class="math" data-tex="\(v_{r,s}\)">\(v_{r,s}\)</span> is injective.</p>
+<p><strong>Proof.</strong> Identity transitions are injective. Fix <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span>, and suppose a nonzero <span class="math" data-tex="\(x\in X_r\)">\(x\in X_r\)</span> has <span class="math" data-tex="\(v_{r,s}x=0\)">\(v_{r,s}x=0\)</span>. For <span class="math" data-tex="\(t\geq r\)">\(t\geq r\)</span> write <span class="math" data-tex="\(x_t=v_{r,t}x\)">\(x_t=v_{r,t}x\)</span>. The set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+D=\{t\in[r,s]:x_t=0\}
+\tag{2.1}
+\]">\[
+D=\{t\in[r,s]:x_t=0\}
+\tag{2.1}
+\]</span>
+<p>is nonempty because it contains <span class="math" data-tex="\(s\)">\(s\)</span>. It is upward closed inside <span class="math" data-tex="\([r,s]\)">\([r,s]\)</span>, by (1.1). Its infimum <span class="math" data-tex="\(c\)">\(c\)</span> exists in <span class="math" data-tex="\([r,s]\)">\([r,s]\)</span>. There is no death time below <span class="math" data-tex="\(c\)">\(c\)</span>. Every <span class="math" data-tex="\(t&gt;c\)">\(t&gt;c\)</span> is a death time, allowing <span class="math" data-tex="\(t\)">\(t\)</span> beyond <span class="math" data-tex="\(s\)">\(s\)</span> as well: for <span class="math" data-tex="\(c&lt;t\leq s\)">\(c&lt;t\leq s\)</span>, the infimum property gives a <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span> with <span class="math" data-tex="\(d&lt;t\)">\(d&lt;t\)</span>, and then <span class="math" data-tex="\(x_t=v_{d,t}x_d=0\)">\(x_t=v_{d,t}x_d=0\)</span>; for <span class="math" data-tex="\(t&gt;s\)">\(t&gt;s\)</span>, use <span class="math" data-tex="\(x_s=0\)">\(x_s=0\)</span>.</p>
+<p>If <span class="math" data-tex="\(x_c\ne0\)">\(x_c\ne0\)</span>, all its future images are zero, so <span class="math" data-tex="\(\mu_c(x_c)=0\)">\(\mu_c(x_c)=0\)</span>. This contradicts injectivity of <span class="math" data-tex="\(\mu_c\)">\(\mu_c\)</span>. This case includes <span class="math" data-tex="\(c=r\)">\(c=r\)</span>, since <span class="math" data-tex="\(x_r=x\ne0\)">\(x_r=x\ne0\)</span>.</p>
+<p>Otherwise <span class="math" data-tex="\(x_c=0\)">\(x_c=0\)</span>, and consequently <span class="math" data-tex="\(c&gt;r\)">\(c&gt;r\)</span>. The class <span class="math" data-tex="\([r,x]\in L_cX\)">\([r,x]\in L_cX\)</span> is nonzero: by (1.3), its vanishing would give a <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(r\leq u&lt;c\)">\(r\leq u&lt;c\)</span> and <span class="math" data-tex="\(x_u=0\)">\(x_u=0\)</span>, contradicting the definition of <span class="math" data-tex="\(c\)">\(c\)</span>. But <span class="math" data-tex="\(\lambda_c[r,x]=x_c=0\)">\(\lambda_c[r,x]=x_c=0\)</span>, contradicting injectivity of <span class="math" data-tex="\(\lambda_c\)">\(\lambda_c\)</span>.</p>
+<p>The contradiction covers a cut where the element dies at the endpoint and a cut where it survives there but dies at every later point. Thus the kernel of <span class="math" data-tex="\(v_{r,s}\)">\(v_{r,s}\)</span> is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-surjectivity-through-a-coherent-family">3. Surjectivity through a coherent family</h2>
+<p><strong>Theorem 3.1.</strong> If every <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> and every <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span> is surjective, then every <span class="math" data-tex="\(v_{r,s}\)">\(v_{r,s}\)</span> is surjective.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span> and <span class="math" data-tex="\(y\in X_s\)">\(y\in X_s\)</span>. A partial lift family consists of a nonempty terminal interval <span class="math" data-tex="\(J\subseteq[r,s]\)">\(J\subseteq[r,s]\)</span> containing <span class="math" data-tex="\(s\)">\(s\)</span>, together with elements <span class="math" data-tex="\(x_t\in X_t\)">\(x_t\in X_t\)</span> for <span class="math" data-tex="\(t\in J\)">\(t\in J\)</span>, such that</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+x_s=y,\qquad v_{p,q}x_p=x_q\quad(p\leq q,\ p,q\in J).
+\tag{3.1}
+\]">\[
+x_s=y,\qquad v_{p,q}x_p=x_q\quad(p\leq q,\ p,q\in J).
+\tag{3.1}
+\]</span>
+<p>Here terminal means that <span class="math" data-tex="\(p\in J\)">\(p\in J\)</span> and <span class="math" data-tex="\(p\leq q\leq s\)">\(p\leq q\leq s\)</span> imply <span class="math" data-tex="\(q\in J\)">\(q\in J\)</span>. Order these families by extension of their domains and values. They form a set: each is encoded by a subset of the small tagged union <span class="math" data-tex="\(\coprod_{t\in[r,s]}X_t\)">\(\coprod_{t\in[r,s]}X_t\)</span>; the domain and values can be recovered from that subset. The initial family on <span class="math" data-tex="\(\{s\}\)">\(\{s\}\)</span> exists.</p>
+<p>A chain has an upper bound given by the union of its families. Values agree wherever domains overlap. Any two of its domain points and their assigned values occur together in one family, since the chain is totally ordered by extension; hence (3.1) holds for the union. The union is a terminal interval and contains <span class="math" data-tex="\(s\)">\(s\)</span>. The empty chain also has an upper bound, namely the initial family. Zorn's lemma therefore gives a maximal coherent family.</p>
+<p>Let <span class="math" data-tex="\(c=\inf J\in[r,s]\)">\(c=\inf J\in[r,s]\)</span>. Every <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(c&lt;t\leq s\)">\(c&lt;t\leq s\)</span> belongs to <span class="math" data-tex="\(J\)">\(J\)</span>: choose a domain point below <span class="math" data-tex="\(t\)">\(t\)</span>, using the infimum property, and then use terminality. Consequently <span class="math" data-tex="\(J\)">\(J\)</span> is either <span class="math" data-tex="\([c,s]\)">\([c,s]\)</span> or <span class="math" data-tex="\((c,s]\)">\((c,s]\)</span>, with the latter case requiring <span class="math" data-tex="\(c&lt;s\)">\(c&lt;s\)</span>.</p>
+<p>First suppose <span class="math" data-tex="\(c\notin J\)">\(c\notin J\)</span>. Extend the already chosen future values beyond <span class="math" data-tex="\(s\)">\(s\)</span> by setting</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\widetilde x_t=\begin{cases}
+x_t,&amp;c&lt;t\leq s,\\
+v_{s,t}y,&amp;t&gt;s.
+\end{cases}
+\tag{3.2}
+\]">\[
+\widetilde x_t=\begin{cases}
+x_t,&amp;c&lt;t\leq s,\\
+v_{s,t}y,&amp;t&gt;s.
+\end{cases}
+\tag{3.2}
+\]</span>
+<p>This is a compatible family at every <span class="math" data-tex="\(t&gt;c\)">\(t&gt;c\)</span>. The only new compatibility case crosses <span class="math" data-tex="\(s\)">\(s\)</span>: for <span class="math" data-tex="\(c&lt;p\leq s&lt;q\)">\(c&lt;p\leq s&lt;q\)</span>, equation (3.1) gives <span class="math" data-tex="\(v_{p,s}x_p=y\)">\(v_{p,s}x_p=y\)</span>, so <span class="math" data-tex="\(v_{p,q}x_p=v_{s,q}y\)">\(v_{p,q}x_p=v_{s,q}y\)</span>. The cases on either side follow from (3.1) and (1.1). Surjectivity of <span class="math" data-tex="\(\mu_c\)">\(\mu_c\)</span> supplies an <span class="math" data-tex="\(x_c\in X_c\)">\(x_c\in X_c\)</span> whose future images are this entire tuple. Adjoining this value gives a strictly larger coherent family on <span class="math" data-tex="\([c,s]\)">\([c,s]\)</span>, contrary to maximality. Thus <span class="math" data-tex="\(c\in J\)">\(c\in J\)</span>.</p>
+<p>If <span class="math" data-tex="\(c&gt;r\)">\(c&gt;r\)</span>, surjectivity of <span class="math" data-tex="\(\lambda_c\)">\(\lambda_c\)</span> and the one-stage representative property give <span class="math" data-tex="\(u&lt;c\)">\(u&lt;c\)</span> and <span class="math" data-tex="\(z\in X_u\)">\(z\in X_u\)</span> with <span class="math" data-tex="\(v_{u,c}z=x_c\)">\(v_{u,c}z=x_c\)</span>. Set <span class="math" data-tex="\(u_0=\max(r,u)&lt;c\)">\(u_0=\max(r,u)&lt;c\)</span>, and replace <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(z_0=v_{u,u_0}z\)">\(z_0=v_{u,u_0}z\)</span> if needed. Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+v_{u_0,c}z_0=x_c.
+\tag{3.3}
+\]">\[
+v_{u_0,c}z_0=x_c.
+\tag{3.3}
+\]</span>
+<p>For <span class="math" data-tex="\(u_0\leq t&lt;c\)">\(u_0\leq t&lt;c\)</span>, set <span class="math" data-tex="\(x&#x27;_t=v_{u_0,t}z_0\)">\(x&#x27;_t=v_{u_0,t}z_0\)</span>, retaining the existing values for <span class="math" data-tex="\(t\geq c\)">\(t\geq c\)</span>. The new values commute among themselves by (1.1). Across the old boundary, for <span class="math" data-tex="\(u_0\leq p&lt;c\leq q\)">\(u_0\leq p&lt;c\leq q\)</span>, their image is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+v_{p,q}x&#x27;_p=v_{u_0,q}z_0
+=v_{c,q}x_c=x_q.
+\tag{3.4}
+\]">\[
+v_{p,q}x&#x27;_p=v_{u_0,q}z_0
+=v_{c,q}x_c=x_q.
+\tag{3.4}
+\]</span>
+<p>Thus they form a strictly larger coherent family on <span class="math" data-tex="\([u_0,s]\)">\([u_0,s]\)</span>, again contradicting maximality. We conclude <span class="math" data-tex="\(c=r\)">\(c=r\)</span>. Since its boundary is included, <span class="math" data-tex="\(J=[r,s]\)">\(J=[r,s]\)</span>, and (3.1) gives <span class="math" data-tex="\(v_{r,s}x_r=y\)">\(v_{r,s}x_r=y\)</span>.</p>
+<p>This constructs a preimage of the prescribed element. It does not require a linear choice of preimages. Surjectivity follows for every <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span>; the identity case is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The use of <span class="math" data-tex="\(\mu_c\)">\(\mu_c\)</span> fills a missing endpoint using a single coherent tuple. Choosing separate preimages for its coordinates would not establish (3.1). The use of <span class="math" data-tex="\(\lambda_c\)">\(\lambda_c\)</span> then moves a closed endpoint strictly left. Both steps are needed to rule out a maximal family stopping before <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><strong>Corollary 3.2.</strong> If all the comparisons <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> and <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span> are isomorphisms, all transitions are isomorphisms.</p>
+<p><strong>Proof.</strong> Theorems 2.1 and 3.1 make every transition injective and surjective. Its inverse as a function is linear: applying the transition to the sums and scalar multiples of the two proposed inverse values verifies the linearity equations by injectivity. Thus it is an isomorphism of modules. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-examples-and-the-scope-of-the-tests">4. Examples and the scope of the tests</h2>
+<p><strong>Example 4.1 (constant diagrams).</strong> If <span class="math" data-tex="\(X_s=M\)">\(X_s=M\)</span> and every transition is identity, the left colimit is <span class="math" data-tex="\(M\)">\(M\)</span>, with <span class="math" data-tex="\([t,x]\mapsto x\)">\([t,x]\mapsto x\)</span>. Equality of any two representatives can be checked at one later point still below <span class="math" data-tex="\(s\)">\(s\)</span>. The right limit is <span class="math" data-tex="\(M\)">\(M\)</span>, identified with its constant tuples. The maps <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> and <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span> are identity under these identifications. These identifications also give their actual universal maps, not only the dimensions of the objects.</p>
+<p><strong>Example 4.2 (a cut with one failed injectivity test).</strong> Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span>, fix <span class="math" data-tex="\(c\)">\(c\)</span>, and take <span class="math" data-tex="\(X_t=M\)">\(X_t=M\)</span> for <span class="math" data-tex="\(t\leq c\)">\(t\leq c\)</span>, <span class="math" data-tex="\(X_t=0\)">\(X_t=0\)</span> for <span class="math" data-tex="\(t&gt;c\)">\(t&gt;c\)</span>. Transitions inside the nonzero region are identity and transitions into the zero region are zero. Every <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> is an isomorphism. At <span class="math" data-tex="\(c\)">\(c\)</span>, however, <span class="math" data-tex="\(\mu_c:M\to0\)">\(\mu_c:M\to0\)</span> kills all of <span class="math" data-tex="\(M\)">\(M\)</span>. Its noninjectivity detects precisely the transitions from the closed surviving region into the zero region. The two possible endpoint behaviors are computed in Exercise 2.</p>
+<h2 id="5-four-graded-exercises-with-complete-solutions">5. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic: changing coordinates at every real point).</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a module and choose an automorphism <span class="math" data-tex="\(g_s\)">\(g_s\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> for every <span class="math" data-tex="\(s\in\mathbb R\)">\(s\in\mathbb R\)</span>. Put <span class="math" data-tex="\(X_s=M\)">\(X_s=M\)</span>, <span class="math" data-tex="\(v_{r,s}=g_sg_r^{-1}\)">\(v_{r,s}=g_sg_r^{-1}\)</span>. Verify that this is a diagram, compute both local comparisons, and identify the actual inverse of each transition.</p>
+<p><strong>Solution.</strong> We have <span class="math" data-tex="\(v_{s,s}=1\)">\(v_{s,s}=1\)</span> and <span class="math" data-tex="\(v_{s,t}v_{r,s}=g_tg_s^{-1}g_sg_r^{-1}=g_tg_r^{-1}\)">\(v_{s,t}v_{r,s}=g_tg_s^{-1}g_sg_r^{-1}=g_tg_r^{-1}\)</span>, so (1.1) holds. The maps <span class="math" data-tex="\(g_s^{-1}:X_s\to M\)">\(g_s^{-1}:X_s\to M\)</span> identify this diagram with the constant one. Concretely, its left colimit identification is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+[t,x]\longmapsto g_t^{-1}x.
+\tag{5.1}
+\]">\[
+[t,x]\longmapsto g_t^{-1}x.
+\tag{5.1}
+\]</span>
+<p>This respects the transitions because <span class="math" data-tex="\(g_u^{-1}v_{t,u}=g_t^{-1}\)">\(g_u^{-1}v_{t,u}=g_t^{-1}\)</span>. It is onto by representing <span class="math" data-tex="\(m\)">\(m\)</span> by <span class="math" data-tex="\(g_tm\)">\(g_tm\)</span> at any <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span>. If two representatives give the same <span class="math" data-tex="\(m\)">\(m\)</span>, their images at a common later <span class="math" data-tex="\(u&lt;s\)">\(u&lt;s\)</span> both equal <span class="math" data-tex="\(g_um\)">\(g_um\)</span>, proving injectivity. Under (5.1), <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> is <span class="math" data-tex="\(m\mapsto g_sm\)">\(m\mapsto g_sm\)</span>.</p>
+<p>A compatible right tuple has <span class="math" data-tex="\(g_t^{-1}x_t\)">\(g_t^{-1}x_t\)</span> independent of <span class="math" data-tex="\(t&gt;s\)">\(t&gt;s\)</span>, by the transition equation; conversely any <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span> gives the tuple <span class="math" data-tex="\((g_tm)_{t&gt;s}\)">\((g_tm)_{t&gt;s}\)</span>. Thus the right limit is <span class="math" data-tex="\(M\)">\(M\)</span>, and under this identification <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span> is <span class="math" data-tex="\(x\mapsto g_s^{-1}x\)">\(x\mapsto g_s^{-1}x\)</span>. Both comparisons are isomorphisms. The actual inverse of <span class="math" data-tex="\(v_{r,s}\)">\(v_{r,s}\)</span> is <span class="math" data-tex="\(g_rg_s^{-1}\)">\(g_rg_s^{-1}\)</span>, as verified by the two composite identities. No continuity of <span class="math" data-tex="\(s\mapsto g_s\)">\(s\mapsto g_s\)</span> was needed.</p>
+<p><strong>Exercise 2 (intermediate: four endpoint conventions).</strong> For a nonzero module <span class="math" data-tex="\(M\)">\(M\)</span> and a real cut <span class="math" data-tex="\(c\)">\(c\)</span>, consider the following diagrams, with identity maps inside each nonzero region and zero maps when a transition touches a zero module:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\begin{array}{c|c}
+\text{diagram}&amp;\text{times at which its value is }M\\\hline
+\text{open death}&amp;t&lt;c\\
+\text{closed death}&amp;t\leq c\\
+\text{open birth}&amp;t&gt;c\\
+\text{closed birth}&amp;t\geq c.
+\end{array}
+\tag{5.2}
+\]">\[
+\begin{array}{c|c}
+\text{diagram}&amp;\text{times at which its value is }M\\\hline
+\text{open death}&amp;t&lt;c\\
+\text{closed death}&amp;t\leq c\\
+\text{open birth}&amp;t&gt;c\\
+\text{closed birth}&amp;t\geq c.
+\end{array}
+\tag{5.2}
+\]</span>
+<p>Compute <span class="math" data-tex="\(\lambda_c\)">\(\lambda_c\)</span> and <span class="math" data-tex="\(\mu_c\)">\(\mu_c\)</span>, prove that all other local comparisons are isomorphisms, and explain which single missing local hypothesis prevents an injectivity or surjectivity conclusion.</p>
+<p><strong>Solution.</strong> At the cut the comparisons are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\begin{array}{c|c|c}
+&amp;\lambda_c&amp;\mu_c\\\hline
+\text{open death}&amp;M\to0&amp;0\to0\\
+\text{closed death}&amp;M\xrightarrow1 M&amp;M\to0\\
+\text{open birth}&amp;0\to0&amp;0\to M\\
+\text{closed birth}&amp;0\to M&amp;M\xrightarrow1 M.
+\end{array}
+\tag{5.3}
+\]">\[
+\begin{array}{c|c|c}
+&amp;\lambda_c&amp;\mu_c\\\hline
+\text{open death}&amp;M\to0&amp;0\to0\\
+\text{closed death}&amp;M\xrightarrow1 M&amp;M\to0\\
+\text{open birth}&amp;0\to0&amp;0\to M\\
+\text{closed birth}&amp;0\to M&amp;M\xrightarrow1 M.
+\end{array}
+\tag{5.3}
+\]</span>
+<p>For a left interval, any terminal stretch wholly in one region is cofinal: every earlier index has an arrow into that stretch. Its colimit is therefore the constant value on that stretch. This can also be checked from representatives, moving each one into the stretch and using its identity or zero transitions. For a right interval, any initial stretch wholly in one region determines the whole compatible family. A tuple's values on the stretch are constant, and all subsequent coordinates are their transition images. Conversely that constant value uniquely supplies the whole tuple. This proves the asserted right-limit identification. When <span class="math" data-tex="\(s\ne c\)">\(s\ne c\)</span>, such stretches exist next to <span class="math" data-tex="\(s\)">\(s\)</span>, proving that the two comparisons are the identity of <span class="math" data-tex="\(X_s\)">\(X_s\)</span>.</p>
+<p>The open-death failure is noninjectivity of <span class="math" data-tex="\(\lambda_c\)">\(\lambda_c\)</span>; every <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span> is an isomorphism, but transitions <span class="math" data-tex="\(M\to0\)">\(M\to0\)</span> have nonzero kernel. The closed-death failure is noninjectivity of <span class="math" data-tex="\(\mu_c\)">\(\mu_c\)</span>; every <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> is an isomorphism, and again <span class="math" data-tex="\(M\to0\)">\(M\to0\)</span> is not injective. The open-birth failure is nonsurjectivity of <span class="math" data-tex="\(\mu_c\)">\(\mu_c\)</span>; every <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> is an isomorphism, but transitions <span class="math" data-tex="\(0\to M\)">\(0\to M\)</span> are not onto. The closed-birth failure is nonsurjectivity of <span class="math" data-tex="\(\lambda_c\)">\(\lambda_c\)</span>; every <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span> is an isomorphism, and the same global surjectivity failure occurs. Thus neither one-sided family alone yields the corresponding theorem.</p>
+<p><strong>Exercise 3 (advanced: a projection at every strict transition).</strong> Let <span class="math" data-tex="\(P:M\to M\)">\(P:M\to M\)</span> satisfy <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>. Put <span class="math" data-tex="\(X_s=M\)">\(X_s=M\)</span>, take identity at <span class="math" data-tex="\(r=s\)">\(r=s\)</span>, and take <span class="math" data-tex="\(v_{r,s}=P\)">\(v_{r,s}=P\)</span> for <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span>. Show that <span class="math" data-tex="\(L_sX\)">\(L_sX\)</span> and <span class="math" data-tex="\(R_sX\)">\(R_sX\)</span> both identify with <span class="math" data-tex="\(\operatorname{im}P\)">\(\operatorname{im}P\)</span>, compute <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> and <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span>, and specialize to <span class="math" data-tex="\(P(x,y)=(x,0)\)">\(P(x,y)=(x,0)\)</span> on <span class="math" data-tex="\(k^2\)">\(k^2\)</span>.</p>
+<p><strong>Solution.</strong> Composites of two strict transitions are <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>; identities cause no problem. The diagram laws hold. The maps <span class="math" data-tex="\(X_t\to\operatorname{im}P\)">\(X_t\to\operatorname{im}P\)</span>, <span class="math" data-tex="\(x\mapsto Px\)">\(x\mapsto Px\)</span>, form a left cocone, hence give a map from the colimit. An inverse sends <span class="math" data-tex="\(z\in\operatorname{im}P\)">\(z\in\operatorname{im}P\)</span> to <span class="math" data-tex="\([t,z]\)">\([t,z]\)</span> at any <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span>. These classes are independent of <span class="math" data-tex="\(t\)">\(t\)</span>: at a common later index, both images are <span class="math" data-tex="\(Pz=z\)">\(Pz=z\)</span>. The other composite is identity as well, since for any <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span> there is a <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(t&lt;u&lt;s\)">\(t&lt;u&lt;s\)</span>, and <span class="math" data-tex="\([t,x]=[u,Px]\)">\([t,x]=[u,Px]\)</span>. Under this colimit identification, <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> is the inclusion <span class="math" data-tex="\(\operatorname{im}P\hookrightarrow M\)">\(\operatorname{im}P\hookrightarrow M\)</span>.</p>
+<p>For a right-limit tuple and any <span class="math" data-tex="\(t&gt;s\)">\(t&gt;s\)</span>, choose <span class="math" data-tex="\(u\in(s,t)\)">\(u\in(s,t)\)</span>. Its coordinate <span class="math" data-tex="\(x_t=Px_u\)">\(x_t=Px_u\)</span> lies in <span class="math" data-tex="\(\operatorname{im}P\)">\(\operatorname{im}P\)</span>. Therefore all coordinates lie there; the transition equation makes any two equal, because <span class="math" data-tex="\(P\)">\(P\)</span> acts as identity on its image. Conversely a constant tuple with value in <span class="math" data-tex="\(\operatorname{im}P\)">\(\operatorname{im}P\)</span> is compatible. This identifies the limit with that image, and <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span> becomes the surjection <span class="math" data-tex="\(P:M\to\operatorname{im}P\)">\(P:M\to\operatorname{im}P\)</span>.</p>
+<p>For <span class="math" data-tex="\(M=k^2\)">\(M=k^2\)</span> with the displayed projection, the left map is injective but not surjective, and the right map is surjective but not injective. Every strict transition has kernel <span class="math" data-tex="\(0\oplus k\)">\(0\oplus k\)</span> and image <span class="math" data-tex="\(k\oplus0\)">\(k\oplus0\)</span>. Thus the combination of only left injectivity and right surjectivity does not force either global property. The complete hypotheses in Theorems 2.1 and 3.1 detect these two different defects.</p>
+<p><strong>Exercise 4 (advanced: global surjectivity without right surjectivity).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field and <span class="math" data-tex="\(D=\bigoplus_{j\geq1}k\)">\(D=\bigoplus_{j\geq1}k\)</span>. Define <span class="math" data-tex="\(X_t=D\)">\(X_t=D\)</span> for <span class="math" data-tex="\(t\leq0\)">\(t\leq0\)</span>, and <span class="math" data-tex="\(X_t=k^{n(t)}\)">\(X_t=k^{n(t)}\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, where <span class="math" data-tex="\(n(t)=\lfloor1/t\rfloor\)">\(n(t)=\lfloor1/t\rfloor\)</span>. Take identity transitions in the nonpositive region, truncations from <span class="math" data-tex="\(D\)">\(D\)</span> into finite prefixes, and prefix restrictions between positive times. Prove that this is a diagram with every transition surjective. Compute <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span> and <span class="math" data-tex="\(\mu_0\)">\(\mu_0\)</span>, and show that the local surjectivity hypotheses are sufficient but not necessary for global surjectivity.</p>
+<p><strong>Solution.</strong> The function <span class="math" data-tex="\(n(t)\)">\(n(t)\)</span> is nonincreasing for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, with values in <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, including zero for <span class="math" data-tex="\(t&gt;1\)">\(t&gt;1\)</span>. Thus every specified positive transition is a well-defined prefix projection. Prefix projections compose to the corresponding shorter projection, and truncations from <span class="math" data-tex="\(D\)">\(D\)</span> compose in the same way. The other composites involve an identity in the nonpositive region. This verifies all diagram equations. Every prefix projection is onto, including a projection onto the zero module; every truncation from <span class="math" data-tex="\(D\)">\(D\)</span> is onto by inserting a finite tuple with all remaining coordinates zero. Thus all transitions are onto.</p>
+<p>The negative-time diagram is constant <span class="math" data-tex="\(D\)">\(D\)</span>, so <span class="math" data-tex="\(L_0X=D\)">\(L_0X=D\)</span> and <span class="math" data-tex="\(\lambda_0=1_D\)">\(\lambda_0=1_D\)</span>. A compatible positive-time tuple is determined by a sequence of scalars <span class="math" data-tex="\((a_j)_{j\geq1}\)">\((a_j)_{j\geq1}\)</span>: its value at <span class="math" data-tex="\(t\)">\(t\)</span> is the first <span class="math" data-tex="\(n(t)\)">\(n(t)\)</span> scalars. Conversely, from any such tuple recover scalar <span class="math" data-tex="\(a_j\)">\(a_j\)</span> at a time with <span class="math" data-tex="\(n(t)\geq j\)">\(n(t)\geq j\)</span>, for example <span class="math" data-tex="\(t=1/j\)">\(t=1/j\)</span>. Two such times give the same scalar by comparing the shorter prefix. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+R_0X\simeq\prod_{j\geq1}k,
+\qquad
+\mu_0:\bigoplus_{j\geq1}k\longrightarrow\prod_{j\geq1}k
+\tag{5.4}
+\]">\[
+R_0X\simeq\prod_{j\geq1}k,
+\qquad
+\mu_0:\bigoplus_{j\geq1}k\longrightarrow\prod_{j\geq1}k
+\tag{5.4}
+\]</span>
+<p>is the usual finite-support inclusion, with these actual coordinate maps. It is not onto: the sequence with every coordinate equal to <span class="math" data-tex="\(1\)">\(1\)</span> has infinite support. Thus all global transitions can be surjective even though one <span class="math" data-tex="\(\mu_s\)">\(\mu_s\)</span> is not. Theorem 3.1 asserted sufficiency of the two local hypotheses, and this example proves that their necessity would be false.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/04AX">Filtered colimits, Section 4.19</a>, for the filtered representative convention. The full module representative and zero proofs used here are in the linked prerequisite, Sections 2–3.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/00DB">Lemma 10.8.8</a>, for comparison with filtered module homology. The real-cut and coherent-lift arguments used for the two local-to-global theorems are given in Sections 2–3 above.</li>
+</ul>
+</main></body></html>

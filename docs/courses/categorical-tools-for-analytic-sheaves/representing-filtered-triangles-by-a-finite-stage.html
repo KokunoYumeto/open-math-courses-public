@@ -1,0 +1,214 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Representing filtered triangles by a finite stage</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="representing-filtered-triangles-by-a-finite-stage">Representing filtered triangles by a finite stage</h1>
+<p>Representability of a formal colimit says how every object tests it. For a filtered diagram of distinguished triangles, representability of the first two formal colimits forces representability of the third. The proof brings two identity maps and one equation to a single stage, completes an actual triangle comparison there, and tests that comparison on every object.</p>
+<p>Use the universe and choice convention of <span class="unlinked">Universes and small categories</span>. Work in an ambient universe containing the index and the Hom sets used below; all pointwise colimits mentioned are small there. Filteredness itself is a condition on finite diagrams and does not assert smallness in a smaller universe. Let <span class="math" data-tex="\(D\)">\(D\)</span> be a triangulated category with specified translation equivalence <span class="math" data-tex="\(T\)">\(T\)</span>, a chosen inverse <span class="math" data-tex="\(S\)">\(S\)</span>, and its unit and counit. The translation comparisons are those of <a href="translations-coherent-powers-and-universal-triangle-comparisons.html#1-translation-data-and-its-actual-inverse">Translations, coherent powers and universal triangle comparisons, Section 1</a>. We use the rotation convention <span class="math" data-tex="\((g,h,-Tf)\)">\((g,h,-Tf)\)</span>.</p>
+<h2 id="1-formal-objects-elements-and-exactness">1. Formal objects, elements and exactness</h2>
+<p>Write <span class="math" data-tex="\(yX(P)=\operatorname{Hom}_D(P,X)\)">\(yX(P)=\operatorname{Hom}_D(P,X)\)</span>. For a diagram <span class="math" data-tex="\(a:I\to D\)">\(a:I\to D\)</span>, its formal colimit is the Set-valued presheaf</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+ F_a(P)=\mathop{\mathrm{colim}}_{i\in I}\operatorname{Hom}_D(P,a_i).
+ \tag{1.1}
+\]">\[
+F_a(P)=\mathop{\mathrm{colim}}_{i\in I}\operatorname{Hom}_D(P,a_i).
+\tag{1.1}
+\]</span>
+<p>Its structural transformation <span class="math" data-tex="\(y(a_i)\to F_a\)">\(y(a_i)\to F_a\)</span> will be denoted <span class="math" data-tex="\(q_i^a\)">\(q_i^a\)</span>. A representation is a specified presheaf isomorphism <span class="math" data-tex="\(F_a\simeq yA\)">\(F_a\simeq yA\)</span>. Full faithfulness of Yoneda converts each structural transformation into an actual map <span class="math" data-tex="\(a_i\to A\)">\(a_i\to A\)</span>, and converts transformations between represented formal objects into actual maps. <span class="unlinked">Formal colimits and test objects, Sections 1 and 5</span> proves these facts and the stronger absolute-colimit property of such representations.</p>
+<p>The Yoneda correspondence here is explicit: a transformation <span class="math" data-tex="\(\eta:yX\to F\)">\(\eta:yX\to F\)</span> is determined by <span class="math" data-tex="\(e=\eta_X(1_X)\)">\(e=\eta_X(1_X)\)</span>, because naturality gives <span class="math" data-tex="\(\eta_P(v)=F(v)(e)\)">\(\eta_P(v)=F(v)(e)\)</span>. Conversely this formula defines a natural transformation for every <span class="math" data-tex="\(e\in F(X)\)">\(e\in F(X)\)</span>. For <span class="math" data-tex="\(F=yY\)">\(F=yY\)</span>, it is postcomposition with the corresponding map <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span>, so it is additive on every Hom group. Composites with the structural maps therefore turn any representation in (1.1) into a group isomorphism at every test object, using the common-stage addition from Lemma 1.1.</p>
+<p>A filtered category is nonempty, has a common receiving object for two objects, and permits equalization of parallel arrows by postcomposition. We need the following precise element rule, proved in <a href="filtered-stages-and-finite-limits.html#2-equality-of-elements-has-a-common-witness">Filtered stages and finite limits, Sections 1–3</a>. Every element of (1.1) has a representative at one stage. If two elements at the same stage have equal colimit classes, some arrow out of that stage makes them equal. For the latter formulation, a common-target witness may initially use different arrows <span class="math" data-tex="\(u,v:i\to j\)">\(u,v:i\to j\)</span>; postcompose an arrow equalizing <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. The resulting single arrow witnesses the equality. A finite list of elements and equalities can consequently be brought together and repaired by finitely many such operations.</p>
+<p><strong>Lemma 1.1.</strong> When <span class="math" data-tex="\(I\)">\(I\)</span> is filtered, the presheaf <span class="math" data-tex="\(F_a\)">\(F_a\)</span> is canonically additive, and its values are also the colimits of the Hom groups in <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span>. Filtered colimits of exact sequences of abelian groups remain exact.</p>
+<p><strong>Proof.</strong> Two representatives can be transported to a common stage and added there; the equality rule makes this independent of the receiving object and of the representatives. Negatives and zero are taken at a stage. A finite list can be transported together, so the group identities follow from the stage group identities. Maps out of this group are precisely compatible families of group homomorphisms out of the stage groups. This gives the group colimit and its underlying Set colimit simultaneously. Precomposition in <span class="math" data-tex="\(D\)">\(D\)</span> is additive at every stage, so the construction is natural in <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>For exactness, let <span class="math" data-tex="\(U_i\xrightarrow{d_i}V_i\xrightarrow{e_i}W_i\)">\(U_i\xrightarrow{d_i}V_i\xrightarrow{e_i}W_i\)</span> be a diagram of sequences exact at <span class="math" data-tex="\(V_i\)">\(V_i\)</span>. Consecutive maps in the colimit compose to zero. Suppose <span class="math" data-tex="\([i,v]\)">\([i,v]\)</span> maps to zero in the colimit of <span class="math" data-tex="\(W\)">\(W\)</span>. By the equality rule there is <span class="math" data-tex="\(u:i\to j\)">\(u:i\to j\)</span> with <span class="math" data-tex="\(W(u)e_i(v)=0\)">\(W(u)e_i(v)=0\)</span>. Naturality gives <span class="math" data-tex="\(e_j(V(u)v)=0\)">\(e_j(V(u)v)=0\)</span>, so stage exactness supplies <span class="math" data-tex="\(z\in U_j\)">\(z\in U_j\)</span> with <span class="math" data-tex="\(d_j(z)=V(u)v\)">\(d_j(z)=V(u)v\)</span>. Then <span class="math" data-tex="\([j,z]\)">\([j,z]\)</span> maps to <span class="math" data-tex="\([i,v]\)">\([i,v]\)</span>. This proves the reverse containment at the middle term. The same argument applies to every position of any finite or long exact sequence, including a position next to zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For translation, the adjoint-equivalence Hom correspondence supplies a natural bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+ \operatorname{Hom}_D(P,TX)\simeq\operatorname{Hom}_D(SP,X).
+ \tag{1.2}
+\]">\[
+\operatorname{Hom}_D(P,TX)\simeq\operatorname{Hom}_D(SP,X).
+\tag{1.2}
+\]</span>
+<p>Explicitly, write the inverse data as <span class="math" data-tex="\(\eta:1\to ST\)">\(\eta:1\to ST\)</span>, <span class="math" data-tex="\(\epsilon:TS\to1\)">\(\epsilon:TS\to1\)</span>, with their two triangle identities. The bijection sends <span class="math" data-tex="\(v:P\to TX\)">\(v:P\to TX\)</span> to <span class="math" data-tex="\(\eta_X^{-1}S(v)\)">\(\eta_X^{-1}S(v)\)</span>; its inverse sends <span class="math" data-tex="\(a:SP\to X\)">\(a:SP\to X\)</span> to <span class="math" data-tex="\(T(a)\epsilon_P^{-1}\)">\(T(a)\epsilon_P^{-1}\)</span>. Naturality of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> and <span class="math" data-tex="\(T\eta_X=\epsilon_{TX}^{-1}\)">\(T\eta_X=\epsilon_{TX}^{-1}\)</span> make the first composite <span class="math" data-tex="\(v\)">\(v\)</span>. Naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and <span class="math" data-tex="\(S\epsilon_P\,\eta_{SP}=1\)">\(S\epsilon_P\,\eta_{SP}=1\)</span> make the other composite <span class="math" data-tex="\(a\)">\(a\)</span>. These formulas are additive and natural in both arguments.</p>
+<p>Apply the bijection at each index and then take the pointwise colimit. Thus a representation <span class="math" data-tex="\(F_a\simeq yA\)">\(F_a\simeq yA\)</span> gives a representation <span class="math" data-tex="\(F_{Ta}\simeq y(TA)\)">\(F_{Ta}\simeq y(TA)\)</span>. This correspondence uses the chosen inverse comparisons; it does not require literal equality <span class="math" data-tex="\(ST=1\)">\(ST=1\)</span>. Naturality in <span class="math" data-tex="\(X\)">\(X\)</span> intertwines every translated structural map. Iterate these comparisons, and use the inverse equivalence for negative translates, to obtain the same assertion for all positive and negative translates.</p>
+<h2 id="2-lift-the-identity-maps-into-one-actual-triangle">2. Lift the identity maps into one actual triangle</h2>
+<p>Suppose <span class="math" data-tex="\(I\)">\(I\)</span> is filtered and there are natural transformations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+ a\xrightarrow{f}b\xrightarrow{g}c\xrightarrow{h}Ta
+ \tag{2.1}
+\]">\[
+a\xrightarrow{f}b\xrightarrow{g}c\xrightarrow{h}Ta
+\tag{2.1}
+\]</span>
+<p>whose value at every index is a distinguished triangle. Assume specified representations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+ F_a\simeq yA,\qquad F_b\simeq yB.
+ \tag{2.2}
+\]">\[
+F_a\simeq yA,\qquad F_b\simeq yB.
+\tag{2.2}
+\]</span>
+<p>Denote the actual structural maps by <span class="math" data-tex="\(r_i:a_i\to A\)">\(r_i:a_i\to A\)</span> and <span class="math" data-tex="\(s_i:b_i\to B\)">\(s_i:b_i\to B\)</span>. The induced formal transformation <span class="math" data-tex="\(F_f\)">\(F_f\)</span> is represented by an actual map <span class="math" data-tex="\(u:A\to B\)">\(u:A\to B\)</span>. Naturality says</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+ s_i f_i=u r_i.
+ \tag{2.3}
+\]">\[
+s_i f_i=u r_i.
+\tag{2.3}
+\]</span>
+<p>Choose a distinguished completion</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+ A\xrightarrow{u}B\xrightarrow{v}C\xrightarrow{w}TA.
+ \tag{2.4}
+\]">\[
+A\xrightarrow{u}B\xrightarrow{v}C\xrightarrow{w}TA.
+\tag{2.4}
+\]</span>
+<p><strong>Lemma 2.1.</strong> At some index <span class="math" data-tex="\(j\)">\(j\)</span> there are actual maps <span class="math" data-tex="\(x:A\to a_j\)">\(x:A\to a_j\)</span>, <span class="math" data-tex="\(z:B\to b_j\)">\(z:B\to b_j\)</span>, and <span class="math" data-tex="\(t:C\to c_j\)">\(t:C\to c_j\)</span> making (2.4) map to the stage triangle. They satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+ r_jx=1_A,\qquad s_jz=1_B,\qquad
+ f_jx=zu,\qquad g_jz=tv,\qquad h_jt=T(x)w.
+ \tag{2.5}
+\]">\[
+r_jx=1_A,\qquad s_jz=1_B,\qquad
+f_jx=zu,\qquad g_jz=tv,\qquad h_jt=T(x)w.
+\tag{2.5}
+\]</span>
+<p><strong>Proof.</strong> The identity <span class="math" data-tex="\(1_A\)">\(1_A\)</span>, under (2.2) evaluated at <span class="math" data-tex="\(A\)">\(A\)</span>, is represented by a map <span class="math" data-tex="\(x_0:A\to a_i\)">\(x_0:A\to a_i\)</span>. The representation converts its colimit class into <span class="math" data-tex="\(r_ix_0\)">\(r_ix_0\)</span>, so <span class="math" data-tex="\(r_ix_0=1_A\)">\(r_ix_0=1_A\)</span>. Likewise <span class="math" data-tex="\(1_B\)">\(1_B\)</span> is represented by <span class="math" data-tex="\(z_0:B\to b_k\)">\(z_0:B\to b_k\)</span> with <span class="math" data-tex="\(s_kz_0=1_B\)">\(s_kz_0=1_B\)</span>. Choose a common receiving index and transport both maps there, calling them <span class="math" data-tex="\(x,z\)">\(x,z\)</span> for now. Their retraction identities persist because the <span class="math" data-tex="\(r_i,s_i\)">\(r_i,s_i\)</span> are cocones.</p>
+<p>The two maps <span class="math" data-tex="\(f_i x\)">\(f_i x\)</span> and <span class="math" data-tex="\(zu\)">\(zu\)</span>, now with the same target <span class="math" data-tex="\(b_i\)">\(b_i\)</span>, have equal classes in <span class="math" data-tex="\(F_b(A)\)">\(F_b(A)\)</span>: their images under its specified representation are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.6); horizontal scroll when needed" data-tex="\[
+ s_i f_i x=u r_i x=u=s_i zu.
+ \tag{2.6}
+\]">\[
+s_i f_i x=u r_i x=u=s_i zu.
+\tag{2.6}
+\]</span>
+<p>The equality rule provides one further arrow to a stage <span class="math" data-tex="\(j\)">\(j\)</span> where their transported maps agree. Naturality of <span class="math" data-tex="\(f\)">\(f\)</span> identifies the transported first map with <span class="math" data-tex="\(f_jx\)">\(f_jx\)</span>; hence the first square commutes literally in <span class="math" data-tex="\(D\)">\(D\)</span>. The two retraction identities remain true. Axiom TR3, applied to (2.4) and the stage triangle, gives <span class="math" data-tex="\(t\)">\(t\)</span> satisfying the other two squares in (2.5). No choices of cones or comparison maps at other indices are required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The map <span class="math" data-tex="\(t\)">\(t\)</span>, followed by the structural transformation, defines</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.7); horizontal scroll when needed" data-tex="\[
+ \Phi:yC\xrightarrow{y(t)}y(c_j)\xrightarrow{q_j^c}F_c.
+ \tag{2.7}
+\]">\[
+\Phi:yC\xrightarrow{y(t)}y(c_j)\xrightarrow{q_j^c}F_c.
+\tag{2.7}
+\]</span>
+<p>The three squares (2.5), after passage to formal colimits, compare the actual triangle (2.4) with the entire formal triangle (2.1). The first two comparison transformations are exactly the isomorphisms inverse to the specified representations (2.2), because <span class="math" data-tex="\(r_jx=1_A\)">\(r_jx=1_A\)</span> and <span class="math" data-tex="\(s_jz=1_B\)">\(s_jz=1_B\)</span>.</p>
+<h2 id="3-the-third-comparison-is-a-representation">3. The third comparison is a representation</h2>
+<p><strong>Theorem 3.1.</strong> The transformation <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> in (2.7) is an isomorphism of presheaves. Under this representation of <span class="math" data-tex="\(F_c\)">\(F_c\)</span>, the induced formal maps give exactly the distinguished triangle (2.4).</p>
+<p><strong>Proof.</strong> Fix any test object <span class="math" data-tex="\(P\)">\(P\)</span>. Applying <span class="math" data-tex="\(\operatorname{Hom}_D(P,-)\)">\(\operatorname{Hom}_D(P,-)\)</span> to (2.4) gives an exact five-term segment</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+ \operatorname{Hom}(P,A)\longrightarrow\operatorname{Hom}(P,B)
+ \longrightarrow\operatorname{Hom}(P,C)
+ \longrightarrow\operatorname{Hom}(P,TA)
+ \longrightarrow\operatorname{Hom}(P,TB).
+ \tag{3.1}
+\]">\[
+\operatorname{Hom}(P,A)\longrightarrow\operatorname{Hom}(P,B)
+\longrightarrow\operatorname{Hom}(P,C)
+\longrightarrow\operatorname{Hom}(P,TA)
+\longrightarrow\operatorname{Hom}(P,TB).
+\tag{3.1}
+\]</span>
+<p>The full Hom exactness follows from TR3 and rotations, with the actual signs, as proved in <a href="triangles-finite-universal-maps-and-cohomology-boundaries.html#1-two-precise-exactness-conditions">Triangles, finite universal maps and the limits of cohomology, Lemma 1.1</a>. At every stage (2.1) gives the corresponding exact segment. Lemma 1.1 therefore gives an exact lower row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+ F_a(P)\longrightarrow F_b(P)\longrightarrow F_c(P)
+ \longrightarrow F_{Ta}(P)\longrightarrow F_{Tb}(P).
+ \tag{3.2}
+\]">\[
+F_a(P)\longrightarrow F_b(P)\longrightarrow F_c(P)
+\longrightarrow F_{Ta}(P)\longrightarrow F_{Tb}(P).
+\tag{3.2}
+\]</span>
+<p>The map of triangles from Lemma 2.1 gives a commuting comparison from (3.1) to (3.2). Its middle map is <span class="math" data-tex="\(\Phi_P\)">\(\Phi_P\)</span>. The first, second, fourth and fifth vertical maps are bijective: for the last two use (1.2) and the translated versions of the actual retraction identities. We give the needed group argument explicitly.</p>
+<p>Write a commuting comparison of exact rows as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+ U_1\xrightarrow{d_1}U_2\xrightarrow{d_2}U_3
+ \xrightarrow{d_3}U_4\xrightarrow{d_4}U_5,
+ \qquad
+ V_1\xrightarrow{e_1}V_2\xrightarrow{e_2}V_3
+ \xrightarrow{e_3}V_4\xrightarrow{e_4}V_5,
+ \tag{3.3}
+\]">\[
+U_1\xrightarrow{d_1}U_2\xrightarrow{d_2}U_3
+\xrightarrow{d_3}U_4\xrightarrow{d_4}U_5,
+\qquad
+V_1\xrightarrow{e_1}V_2\xrightarrow{e_2}V_3
+\xrightarrow{e_3}V_4\xrightarrow{e_4}V_5,
+\tag{3.3}
+\]</span>
+<p>with comparison maps <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span>, and assume <span class="math" data-tex="\(\ell_1,\ell_2,\ell_4,\ell_5\)">\(\ell_1,\ell_2,\ell_4,\ell_5\)</span> are bijective. If <span class="math" data-tex="\(\ell_3x=0\)">\(\ell_3x=0\)</span>, commutativity and injectivity of <span class="math" data-tex="\(\ell_4\)">\(\ell_4\)</span> give <span class="math" data-tex="\(d_3x=0\)">\(d_3x=0\)</span>, so <span class="math" data-tex="\(x=d_2y\)">\(x=d_2y\)</span>. Since <span class="math" data-tex="\(e_2\ell_2y=0\)">\(e_2\ell_2y=0\)</span>, there is <span class="math" data-tex="\(z\in V_1\)">\(z\in V_1\)</span> with <span class="math" data-tex="\(e_1z=\ell_2y\)">\(e_1z=\ell_2y\)</span>. Lift <span class="math" data-tex="\(z=\ell_1a\)">\(z=\ell_1a\)</span>. Commutativity and injectivity of <span class="math" data-tex="\(\ell_2\)">\(\ell_2\)</span> give <span class="math" data-tex="\(y=d_1a\)">\(y=d_1a\)</span>, whence <span class="math" data-tex="\(x=0\)">\(x=0\)</span>.</p>
+<p>For surjectivity, take <span class="math" data-tex="\(b\in V_3\)">\(b\in V_3\)</span>. Lift <span class="math" data-tex="\(e_3b\)">\(e_3b\)</span> through <span class="math" data-tex="\(\ell_4\)">\(\ell_4\)</span>, obtaining <span class="math" data-tex="\(q\in U_4\)">\(q\in U_4\)</span>. Then <span class="math" data-tex="\(\ell_5d_4q=e_4e_3b=0\)">\(\ell_5d_4q=e_4e_3b=0\)</span>; injectivity of <span class="math" data-tex="\(\ell_5\)">\(\ell_5\)</span> gives <span class="math" data-tex="\(d_4q=0\)">\(d_4q=0\)</span>. Choose <span class="math" data-tex="\(x\in U_3\)">\(x\in U_3\)</span> with <span class="math" data-tex="\(d_3x=q\)">\(d_3x=q\)</span>. Now <span class="math" data-tex="\(e_3(b-\ell_3x)=0\)">\(e_3(b-\ell_3x)=0\)</span>, so <span class="math" data-tex="\(b-\ell_3x=e_2y\)">\(b-\ell_3x=e_2y\)</span> for some <span class="math" data-tex="\(y\in V_2\)">\(y\in V_2\)</span>. Lift <span class="math" data-tex="\(y=\ell_2z\)">\(y=\ell_2z\)</span>. Then <span class="math" data-tex="\(b=\ell_3(x+d_2z)\)">\(b=\ell_3(x+d_2z)\)</span>. This proves bijectivity of the middle map.</p>
+<p>Consequently <span class="math" data-tex="\(\Phi_P\)">\(\Phi_P\)</span> is bijective for every <span class="math" data-tex="\(P\)">\(P\)</span>. The transformation <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is already natural by construction, and pointwise inverse maps form its natural inverse: the naturality square for <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, multiplied by the two pointwise inverses, is the required square. Thus <span class="math" data-tex="\(F_c\)">\(F_c\)</span> is represented by <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>The comparison squares say <span class="math" data-tex="\(\Phi\,y(v)=F_g\)">\(\Phi\,y(v)=F_g\)</span> after the specified identification of <span class="math" data-tex="\(F_b\)">\(F_b\)</span> with <span class="math" data-tex="\(yB\)">\(yB\)</span>, and <span class="math" data-tex="\(F_h\Phi=y(w)\)">\(F_h\Phi=y(w)\)</span> after the specified identification of <span class="math" data-tex="\(F_{Ta}\)">\(F_{Ta}\)</span> with <span class="math" data-tex="\(y(TA)\)">\(y(TA)\)</span>. The first arrow is <span class="math" data-tex="\(y(u)\)">\(y(u)\)</span> by its definition. Full faithfulness of Yoneda therefore identifies all three induced arrows with <span class="math" data-tex="\(u,v,w\)">\(u,v,w\)</span>. Their triangle is distinguished because it is the chosen completion (2.4). We have used a morphism from a known distinguished triangle; exactness of the lower row alone was never asserted to characterize distinguished triangles. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There are also actual canonical cocone maps <span class="math" data-tex="\(c_i\to C\)">\(c_i\to C\)</span>: apply <span class="math" data-tex="\(\Phi^{-1}\)">\(\Phi^{-1}\)</span> to each <span class="math" data-tex="\(q_i^c\)">\(q_i^c\)</span> and use Yoneda. Their naturality and all three triangle squares with <span class="math" data-tex="\(r_i,s_i\)">\(r_i,s_i\)</span> follow from the same commuting formal squares. Different stage witnesses, TR3 fillers, or completions give representing objects equipped with a unique isomorphism that preserves these cocones. Indeed an isomorphism is forced to be the composite of their specified isomorphisms with <span class="math" data-tex="\(F_c\)">\(F_c\)</span>; Yoneda supplies the actual map and its inverse. The same squares show that it preserves <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span>. This uniqueness concerns the formal representation with its structural maps; it does not assert uniqueness of every TR3 filler.</p>
+<h2 id="4-two-examples-show-what-the-hypotheses-do">4. Two examples show what the hypotheses do</h2>
+<p><strong>A nonzero stage map that disappears formally.</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field, let <span class="math" data-tex="\(D=K^b(\mathsf{Vect}^{\mathrm{fd}}_k)\)">\(D=K^b(\mathsf{Vect}^{\mathrm{fd}}_k)\)</span>, and take <span class="math" data-tex="\(A=k\)">\(A=k\)</span> in degree <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(B=k\)">\(B=k\)</span> in degree <span class="math" data-tex="\(0\)">\(0\)</span>. <a href="chain-homotopies-mapping-cones-and-triangles.html#2-a-cone-with-all-structural-maps">Chain homotopies, mapping cones and triangles, Sections 1–5</a> proves the homotopy/cone triangulation. It restricts to these bounded finite-dimensional complexes because shifts, finite sums and cones preserve boundedness and finite-dimensional terms. The zero map has distinguished cone triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+ A\xrightarrow0B\xrightarrow{\iota}C=B\oplus TA
+ \xrightarrow{\pi}TA.
+ \tag{4.1}
+\]">\[
+A\xrightarrow0B\xrightarrow{\iota}C=B\oplus TA
+\xrightarrow{\pi}TA.
+\tag{4.1}
+\]</span>
+<p>Let every transition on <span class="math" data-tex="\(A,B\)">\(A,B\)</span> be zero and every transition on <span class="math" data-tex="\(C\)">\(C\)</span> be</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+ n=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}.
+ \tag{4.2}
+\]">\[
+n=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}.
+\tag{4.2}
+\]</span>
+<p>These three transitions form a morphism of (4.1) to itself: <span class="math" data-tex="\(n\iota=0\)">\(n\iota=0\)</span>, <span class="math" data-tex="\(\pi n=0\)">\(\pi n=0\)</span>, and the first square is zero. Their powers define a diagram on <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. Every Hom element in the first two diagrams dies after one transition; every Hom element in the third dies after two, since <span class="math" data-tex="\(n^2=0\)">\(n^2=0\)</span>. All three formal colimits are the zero presheaf, represented by the zero object. Thus the represented triangle is <span class="math" data-tex="\(0\to0\to0\to0\)">\(0\to0\to0\to0\)</span>, although <span class="math" data-tex="\(C\)">\(C\)</span> and its transition <span class="math" data-tex="\(n\)">\(n\)</span> are nonzero. No stage transition was required to be invertible or eventually the identity.</p>
+<p><strong>Failure without filteredness.</strong> Now take <span class="math" data-tex="\(k=\mathbb F_2\)">\(k=\mathbb F_2\)</span> and the same triangle (4.1). Let the index have one object and automorphism group <span class="math" data-tex="\(G=\{1,\sigma\}\)">\(G=\{1,\sigma\}\)</span> with <span class="math" data-tex="\(\sigma^2=1\)">\(\sigma^2=1\)</span>. This category is not filtered: distinct parallel arrows <span class="math" data-tex="\(1,\sigma\)">\(1,\sigma\)</span> cannot be equalized by postcomposition with an invertible arrow. Let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> act as the identity on <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, and on <span class="math" data-tex="\(C\)">\(C\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+ r=1+n=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}.
+ \tag{4.3}
+\]">\[
+r=1+n=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}.
+\tag{4.3}
+\]</span>
+<p>In characteristic two, <span class="math" data-tex="\(r^2=1\)">\(r^2=1\)</span>. Also <span class="math" data-tex="\(r\iota=\iota\)">\(r\iota=\iota\)</span> and <span class="math" data-tex="\(\pi r=\pi\)">\(\pi r=\pi\)</span>, so this is a genuine diagram of distinguished triangles, including its last square. The first two formal Set colimits are <span class="math" data-tex="\(yA,yB\)">\(yA,yB\)</span>, because their actions are trivial. Evaluate the third on <span class="math" data-tex="\(P=B\)">\(P=B\)</span>. Its value is the orbit set of <span class="math" data-tex="\(\operatorname{Hom}(B,C)=k^2\)">\(\operatorname{Hom}(B,C)=k^2\)</span> under</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+ (x,y)\longmapsto(x+y,y).
+ \tag{4.4}
+\]">\[
+(x,y)\longmapsto(x+y,y).
+\tag{4.4}
+\]</span>
+<p>The orbits are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+ \{(0,0)\},\qquad \{(1,0)\},\qquad \{(0,1),(1,1)\}.
+ \tag{4.5}
+\]">\[
+\{(0,0)\},\qquad \{(1,0)\},\qquad \{(0,1),(1,1)\}.
+\tag{4.5}
+\]</span>
+<p>There are three elements. For any object <span class="math" data-tex="\(Z\)">\(Z\)</span> of <span class="math" data-tex="\(K^b(\mathsf{Vect}^{\mathrm{fd}}_k)\)">\(K^b(\mathsf{Vect}^{\mathrm{fd}}_k)\)</span>, the Hom group <span class="math" data-tex="\(\operatorname{Hom}(B,Z)\)">\(\operatorname{Hom}(B,Z)\)</span> is a finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-vector space, hence has <span class="math" data-tex="\(2^d\)">\(2^d\)</span> elements for some <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>. This follows directly from the finite-dimensional chain-map space and its homotopy subspace. Three is not such a power. Therefore the third formal Set colimit is not representable. Taking coinvariants of the vector space instead would give two elements; the identification between Set and group colimits in Lemma 1.1 requires filteredness.</p>
+<p><img src="assets/representing-filtered-triangles-by-a-finite-stage/represented-filtered-triangles-orbits-ED8F762C2C2F664A7EC86C70F561ACC22C4D41721BAA57C8A7ECEEC48BB63931.png" alt="The actual triangle and its group action give three orbits on the third Hom set, despite representable first and second formal colimits." class="course-figure" width="1200" height="620" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="represented-filtered-triangles-orbits" data-asset-sha256="ED8F762C2C2F664A7EC86C70F561ACC22C4D41721BAA57C8A7ECEEC48BB63931"></p>
+<p><em>Figure 1. Over the two-element field, the action on the first, second and translated first objects is the identity. Its action on the third object is the matrix (4.3), fixing the inclusion and projection in (4.1). The four points of the tested Hom set have exactly the three orbits (4.5); the upper pair is exchanged and the lower two points are fixed. Section 4 proves the stage triangle, its naturality, the exact orbit calculation and the obstruction to representation. The index is the one-object group category, which fails the parallel-arrow equalization condition.</em></p>
+<h2 id="5-four-graded-exercises-with-complete-solutions">5. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 — basic: a terminal stage.</strong> Let a category <span class="math" data-tex="\(I\)">\(I\)</span> have terminal object <span class="math" data-tex="\(j\)">\(j\)</span>, and let (2.1) be a diagram of distinguished triangles. Find the three formal colimits, their actual arrows and the represented triangle.</p>
+<p><strong>Solution.</strong> Every representative <span class="math" data-tex="\(P\to a_i\)">\(P\to a_i\)</span> is transported by the unique arrow <span class="math" data-tex="\(i\to j\)">\(i\to j\)</span> to a map <span class="math" data-tex="\(P\to a_j\)">\(P\to a_j\)</span>. This defines a map <span class="math" data-tex="\(F_a(P)\to\operatorname{Hom}(P,a_j)\)">\(F_a(P)\to\operatorname{Hom}(P,a_j)\)</span>. Inclusion of the terminal-stage representatives is its inverse: transport identifies every representative with that terminal representative, and the composite on a terminal representative is the identity. This is natural in <span class="math" data-tex="\(P\)">\(P\)</span>. Apply the same construction to <span class="math" data-tex="\(b,c\)">\(b,c\)</span>. Naturality of <span class="math" data-tex="\(f,g,h\)">\(f,g,h\)</span> shows that the induced maps are exactly <span class="math" data-tex="\(f_j,g_j,h_j\)">\(f_j,g_j,h_j\)</span>. The represented triangle is the prescribed distinguished triangle at <span class="math" data-tex="\(j\)">\(j\)</span>. A category with a terminal object is filtered, since its unique terminal arrows give common targets and equalize every parallel pair. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 2 — intermediate: change the representing objects.</strong> Suppose the representations in (2.2) are replaced by representations <span class="math" data-tex="\(yA&#x27;\)">\(yA&#x27;\)</span>, <span class="math" data-tex="\(yB&#x27;\)">\(yB&#x27;\)</span> with the induced isomorphisms <span class="math" data-tex="\(a:A\to A&#x27;\)">\(a:A\to A&#x27;\)</span>, <span class="math" data-tex="\(b:B\to B&#x27;\)">\(b:B\to B&#x27;\)</span>. Starting from (2.4), give a completion for the new induced first arrow, a representation of <span class="math" data-tex="\(F_c\)">\(F_c\)</span>, and its exact last arrow.</p>
+<p><strong>Solution.</strong> The new first arrow is <span class="math" data-tex="\(u&#x27;=bua^{-1}\)">\(u&#x27;=bua^{-1}\)</span>. Keep the object <span class="math" data-tex="\(C\)">\(C\)</span>, set <span class="math" data-tex="\(v&#x27;=vb^{-1}\)">\(v&#x27;=vb^{-1}\)</span>, and set <span class="math" data-tex="\(w&#x27;=T(a)w\)">\(w&#x27;=T(a)w\)</span>. Then <span class="math" data-tex="\((a,b,1_C)\)">\((a,b,1_C)\)</span> is an isomorphism from (2.4) to
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ A&#x27;\xrightarrow{u&#x27;}B&#x27;\xrightarrow{v&#x27;}C\xrightarrow{w&#x27;}TA&#x27;.
+\]">\[
+ A&#x27;\xrightarrow{u&#x27;}B&#x27;\xrightarrow{v&#x27;}C\xrightarrow{w&#x27;}TA&#x27;.
+\]</span>
+All three squares follow from the displayed definitions, so this triangle is distinguished. Keep the representation <span class="math" data-tex="\(\Phi:yC\to F_c\)">\(\Phi:yC\to F_c\)</span>. The new identification of <span class="math" data-tex="\(F_b\)">\(F_b\)</span> changes its induced second arrow by <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span>, giving <span class="math" data-tex="\(v&#x27;\)">\(v&#x27;\)</span>; the new identification of its translated first endpoint changes the last arrow by <span class="math" data-tex="\(T(a)\)">\(T(a)\)</span>, giving <span class="math" data-tex="\(w&#x27;\)">\(w&#x27;\)</span>. Thus every induced arrow is specified, and the last arrow is preserved with the required translation comparison. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 3 — advanced: an arbitrary invisible third transition.</strong> For a distinguished triangle <span class="math" data-tex="\(X\xrightarrow fY\xrightarrow gZ\xrightarrow hTX\)">\(X\xrightarrow fY\xrightarrow gZ\xrightarrow hTX\)</span>, suppose <span class="math" data-tex="\((0,0,e)\)">\((0,0,e)\)</span> is a morphism from this triangle to itself. Prove <span class="math" data-tex="\(e^2=0\)">\(e^2=0\)</span>, then determine the formal colimits of the sequential diagram using transitions <span class="math" data-tex="\(0,0,e\)">\(0,0,e\)</span>.</p>
+<p><strong>Solution.</strong> The triangle squares give <span class="math" data-tex="\(eg=0\)">\(eg=0\)</span> and <span class="math" data-tex="\(he=0\)">\(he=0\)</span>. Apply <span class="math" data-tex="\(\operatorname{Hom}(-,Z)\)">\(\operatorname{Hom}(-,Z)\)</span> to the triangle. Exactness of
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ \operatorname{Hom}(TX,Z)\xrightarrow{\,t\mapsto th\,}
+ \operatorname{Hom}(Z,Z)\xrightarrow{\,u\mapsto ug\,}
+ \operatorname{Hom}(Y,Z)
+\]">\[
+ \operatorname{Hom}(TX,Z)\xrightarrow{\,t\mapsto th\,}
+ \operatorname{Hom}(Z,Z)\xrightarrow{\,u\mapsto ug\,}
+ \operatorname{Hom}(Y,Z)
+\]</span>
+gives <span class="math" data-tex="\(e=th\)">\(e=th\)</span> for some <span class="math" data-tex="\(t:TX\to Z\)">\(t:TX\to Z\)</span>. Therefore <span class="math" data-tex="\(e^2=t(he)=0\)">\(e^2=t(he)=0\)</span>. These transitions and their composites are morphisms of the same triangle, so they define a sequential diagram. Every test map to <span class="math" data-tex="\(X\)">\(X\)</span> or <span class="math" data-tex="\(Y\)">\(Y\)</span> becomes zero after one step, and every test map to <span class="math" data-tex="\(Z\)">\(Z\)</span> becomes zero after two. The three formal colimits are represented by zero, and all induced maps are zero. This also proves Example (4.2) without computing its entries. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 4 — challenge: distinguish the two colimits of the action.</strong> In (4.3), compute the Set colimit and the group colimit of the diagram <span class="math" data-tex="\(\operatorname{Hom}(B,C)\)">\(\operatorname{Hom}(B,C)\)</span>. Prove that the first two formal objects are represented but the third is not, and identify the equality rule that fails.</p>
+<p><strong>Solution.</strong> The Set colimit of a group action is its orbit set: compatible maps out of the acted-on set are precisely maps constant on each orbit. The four vectors yield the three orbits (4.5). The group colimit is instead the quotient of <span class="math" data-tex="\(k^2\)">\(k^2\)</span> by the span of all <span class="math" data-tex="\(r(v)-v\)">\(r(v)-v\)</span>. These differences are <span class="math" data-tex="\((y,0)\)">\((y,0)\)</span>, so the quotient is <span class="math" data-tex="\(k^2/k(1,0)\simeq k\)">\(k^2/k(1,0)\simeq k\)</span>, with two elements.</p>
+<p>The actions on every <span class="math" data-tex="\(\operatorname{Hom}(P,A)\)">\(\operatorname{Hom}(P,A)\)</span> and <span class="math" data-tex="\(\operatorname{Hom}(P,B)\)">\(\operatorname{Hom}(P,B)\)</span> are trivial, so their orbit sets are the original Hom sets, naturally in <span class="math" data-tex="\(P\)">\(P\)</span>. Hence the first two formal objects are <span class="math" data-tex="\(yA,yB\)">\(yA,yB\)</span>. The three-element value of the third at <span class="math" data-tex="\(B\)">\(B\)</span> cannot be any <span class="math" data-tex="\(\operatorname{Hom}(B,Z)\)">\(\operatorname{Hom}(B,Z)\)</span>, whose cardinality is a power of two. Finally <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> and <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> have equal orbit classes, but no single group element sends them to equal vectors: every group action map is bijective. Their equality has witnesses using different parallel arrows, and those arrows admit no equalizing postcomposition. This is exactly the filtered refinement used before Lemma 2.1 that is unavailable here. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-freely-accessible-proof-references">6. Freely accessible proof references</h2>
+<p>The complete finite-stage representation argument and all solutions are above. The filtered element and additive-colimit interfaces are proved in the linked course lessons. <a href="https://stacks.math.columbia.edu/tag/04B0">The Stacks Project, Lemma 10.8.10</a> gives the general exactness result for index categories whose components are filtered; its directed-set exactness input is <a href="https://stacks.math.columbia.edu/tag/00DB">Lemma 10.8.8</a>. <a href="https://stacks.math.columbia.edu/tag/05QN">The Stacks Project, Section 13.4</a>, Lemmas 13.4.2–13.4.3, gives Hom exactness and the standard triangle-comparison context. The proof here supplies the common-stage comparison and the complete five-term element argument needed for the represented formal colimit.</p>
+</main></body></html>

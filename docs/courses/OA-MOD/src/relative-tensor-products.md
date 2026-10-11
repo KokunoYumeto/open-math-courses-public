@@ -1978,11 +1978,11 @@ All finite ideals and analytic domains are the entire finite-dimensional algebra
 The defining fusion form directly makes
 \(V(\Lambda_\psi(a)\otimes_\psi\eta)=a\eta\) a unitary onto \(\mathbb C^2\): its finite-sum pairing is the ordinary pairing of the corresponding sums \(a\eta\), and \(a=1\) gives onto. Thus the left side of (BD.6) maps to \(\frac12e_1\), its negative-half right side also maps to \(\frac12e_1\), and the positive-half replacement maps to \(2e_1\). This checks the general proof's sign independently of any infinite-domain limit.
 
-Takesaki II, printed p. 187 / PDF p. 207, gives the standard GNS right action with the negative-half parameter; its IX.3, Corollary 3.18(iii), printed p. 203 / PDF p. 223, prints a positive-half vector-balancing parameter. Under the right action (BD.1), the latter fails by this finite calculation. The proof above establishes the corrected relation on its full stated
-endpoint domain \(D(\sigma^\psi_{-i/2})\). The printed clause instead assumes
-\(b\in D(\sigma^\psi_{+i/2})\). These are different analytic endpoint domains
-in general; the correction changes both the multiplier and its domain, and
-makes no assertion that either domain contains the other.
+Takesaki II, printed p. 187 / PDF p. 207, gives the standard GNS right action with the negative-half parameter; its IX.3, Corollary 3.18(iii), printed p. 203 / PDF p. 223, prints a positive-half vector-balancing parameter. Under the right action (BD.1), the latter fails by this finite calculation.
+
+The proof above establishes the corrected relation on its full endpoint domain \(D(\sigma^\psi_{-i/2})\). The printed clause assumes \(b\in D(\sigma^\psi_{+i/2})\); correcting the formula therefore changes both its multiplier and its domain.
+
+**The two endpoint domains need not contain one another.** Use the n.s.f. block weight and modular group proved in the matrix-product example: \(N=\prod_{n\ge1}M_2(\mathbb C)\), with densities \(d_n=\operatorname{diag}(1,e^n)\). For \(a_n=E_{21}\), the orbit is \(\sigma_t(a)_n=e^{int}E_{21}\). The extension \(F(z)_n=e^{inz}E_{21}\) has norm at most one on \(0\le\operatorname{Im}z\le1/2\). It is sigma-weakly continuous there and scalar-holomorphic inside: each normal test is a summable family of matrix functionals, whose tail is uniformly small under this norm bound; finite coordinate sums have both properties. Thus \(a\in D(\sigma_{+i/2})\). A lower-strip extension would have these same exponential coordinates by scalar boundary uniqueness, so its value at \(-i/2\) would have coordinate norms \(e^{n/2}\), contradicting membership in the bounded product algebra. Hence \(a\notin D(\sigma_{-i/2})\). For \(a^*_n=E_{12}\), the continuation is \(e^{-inz}E_{12}\): it is bounded by one on the lower half-strip, while its forced upper endpoint again has norms \(e^{n/2}\). Therefore \(a^*\in D(\sigma_{-i/2})\setminus D(\sigma_{+i/2})\). This proves both failures of inclusion for algebra-valued endpoint domains.
 
 ### 8. Prerequisites and scope
 
@@ -3137,8 +3137,7 @@ Keep \(N,\psi,L,H\) as above, and set
 \tag{LW.1}
 \]
 
-The off-diagonal corner \(fRe\) consists of the bounded maps \(L\to H\); \(eRf\) consists of the bounded maps \(H\to L\). Let \(\varphi\) be a normal semifinite weight on \(M\), with no faithfulness assumption, and let \(q=s(\varphi)\le f\). For positive \(X\in R\) define
-
+The off-diagonal corner \(fRe\) consists of the bounded right-\(N\)-module intertwiners \(L\to H\); \(eRf\) consists of the bounded right-\(N\)-module intertwiners \(H\to L\). Let \(\varphi\) be a normal semifinite weight on \(M\), with no faithfulness assumption, and let \(q=s(\varphi)\le f\). For positive \(X\in R\) define
 \[
 \begin{gathered}
  \rho(X)=\psi(eXe)+\varphi(fXf),\\

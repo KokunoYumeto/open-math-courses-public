@@ -102,122 +102,165 @@ faithful.
 
 We next record the three type consequences.
 
-**Semifiniteness.**  It is enough to work with the faithful corner (X4.6),
-because corners of semifinite algebras are semifinite and \(N\cong Ne\).
-Suppose that a nonzero central summand \(qN\) were of type III.  The restriction
-of \(E\) to \(qMq\) is faithful.  Let \(\tau\) be a faithful normal semifinite
-trace on \(qMq\), choose \(0\ne b\in(qMq)_+\) with \(\tau(b)<\infty\), and
-put \(a=b^{1/2}\).  Faithfulness makes \(E(b)\ne0\), so for some
-\(\delta>0\) the spectral projection
+**Semifiniteness.** Suppose that \(M\) is semifinite. Every corner remains
+semifinite. Indeed, for a faithful normal semifinite trace \(\tau\),
+TI01 supplies finite-trace projections
+\(p_i\uparrow1\). For \(x\ge0\) in any corner, the elements
+\(x^{1/2}p_i x^{1/2}\) belong to that corner, increase to \(x\), and have
+trace at most \(\|x\|\tau(p_i)<\infty\). Normality and faithfulness of the
+restricted trace are inherited. We may therefore replace the inclusion and
+expectation by (X4.6), identify \(N\) with \(Ne\), and assume from now on
+that \(E\) is faithful.
+
+Fix any nonzero projection \(q\in N\). On \(qMq\), the restricted trace is
+faithful, normal and semifinite, and the restricted expectation maps onto
+\(qNq\) faithfully. Choose \(0\ne b\in(qMq)_+\) of finite trace, and put
+\(a=b^{1/2}\). Faithfulness gives \(c=E(b)\ne0\). For a suitable
+\(\delta>0\), bounded spectral calculus gives
 
 \[
-\begin{aligned}
- f&=1_{[\delta,\infty)}(E(b))\in qN,\\
- f&\ne0,\qquad f\leq\delta^{-1}E(b).
-\end{aligned}
+\begin{gathered}
+ f=1_{[\delta,\infty)}(c),\\
+ f\in qNq,\quad f\ne0,\\
+ f\leq\delta^{-1}c.
+\end{gathered}
 \tag{X4.7}
 \]
 
-For \(x\in fNf\), bimodularity gives
-\(xE(b)x^*=E(xbx^*)\), and (X4.7) yields
+For \(x\in fNf\), bimodularity yields
 
 \[
  xx^*\leq\delta^{-1}E(xbx^*).
 \tag{X4.8}
 \]
 
-If a bounded net \(x_i\in fNf\) tends sigma-strongly to zero, the finite-trace
-estimate for \(a\in\mathfrak n_\tau\) makes \(a x_i^*\to0\) sigma-strongly.
-Normal complete positivity of \(E\), followed by (X4.8), gives
-\(x_i x_i^*\to0\) sigma-strongly.  Hence involution is sigma-strongly
-continuous on the unit ball of \(fNf\).  An infinite projection cannot have
-this property: an infinite matrix-unit row supplies a bounded net converging
-sigma-strongly to zero whose adjoints do not.  Therefore \(f\) is finite,
-contradicting that the nonzero corner \(fNf\) lies in a type III algebra.
-There is no type III central summand, so \(N\) is semifinite.
+Let \((x_i)\) be any net in the unit ball of \(fNf\) tending sigma-strongly
+to zero. The bounded-topology identification
+CP08 gives the same convergence in
+\(qMq\). Since \(a\) is square integrable, the full
+square-integrable factor theorem LQ03
+gives \(ax_i^*\to0\) sigma-strongly. For each positive normal functional
+\(\omega\) on \(fNf\), extend it to \(qNq\) by compression. Normality and
+positivity of \(E\) make \(\widetilde\omega\circ E\) a positive normal
+functional on \(qMq\), exactly as proved in
+XT01. Thus (X4.8) implies
+\[
+\begin{gathered}
+ 0\le\omega(x_i x_i^*)\\
+ \le\delta^{-1}(\widetilde\omega\circ E)
+          ((ax_i^*)^*(ax_i^*))\\
+ \longrightarrow0.
+\end{gathered}
+\]
+These are the sigma-strong seminorms of \(x_i^*\). If \(f\) were infinite,
+LQ04 would give
+a sequence in this same unit ball whose adjoints violate that convergence.
+Hence \(f\) is finite. Every nonzero projection \(q\in N\) therefore
+contains a nonzero finite projection, so \(N\) is semifinite. The
+trace-existence theorem TE11
+then supplies a faithful normal semifinite trace on \(N\).
 
-**Type I.**  Suppose now that \(M\) is type I.  The preceding paragraph makes
-\(N\) semifinite.  If \(N\) had a nonzero type II summand, a further nonzero
-sigma-finite finite corner would give a faithful normal tracial state
-\(\tau_N\) on a finite type II algebra \(N_0\).  Restricting the faithful
-expectation gives
+**Type I.** Suppose now that \(M\) is type I. Corners are type I by
+FTI01, and
+abelian projections are finite because adjoint products agree in a
+commutative corner. Thus type I algebras are semifinite, and we may again
+use the faithful corner and the preceding result. Let \(\nu\) be a
+faithful normal semifinite trace on \(N\).
+
+If \(N\) were not type I, some nonzero projection \(q\in N\) would contain
+no nonzero abelian projection. Semifiniteness of the trace on \(qNq\)
+and TI01 supply a nonzero \(p\le q\) with \(\nu(p)<\infty\). Set
+\(N_0=pNp\), \(M_0=pMp\), and
+\(\tau_N=\nu(p)^{-1}\nu|_{N_0}\). Restriction gives
 
 \[
 \begin{aligned}
  E_0&:M_0\longrightarrow N_0,\\
- \varphi&=\tau_N\circ E_0,
+ \varphi&=\tau_N\circ E_0.
 \end{aligned}
 \tag{X4.9}
 \]
 
-where \(M_0\) is still type I and \(\varphi\) is a faithful normal state.
-Choose a faithful normal semifinite trace \(\operatorname{Tr}_0\) on \(M_0\).
-There is an injective positive
-\(h\in L^1(M_0,\operatorname{Tr}_0)\) with
-\(\varphi(x)=\operatorname{Tr}_0(hx)\). For \(n\in N_0\), \(x\in M_0\),
-and \(y=E_0(x)\), bimodularity and traciality give
+Here \(E_0\) is faithful and normal, \(\tau_N\) is a faithful normal
+tracial state, and \(\varphi\) is a faithful normal state on the type I
+algebra \(M_0\). Choose a faithful normal semifinite trace
+\(\operatorname{Tr}_0\) on \(M_0\), using TE11. The full
+trace-density theorem TI06 gives a
+unique positive \(h\in L^1(M_0,\operatorname{Tr}_0)\) representing
+\(\varphi\); faithfulness makes its kernel projection zero. For
+\(n\in N_0\), \(x\in M_0\), and \(y=E_0(x)\),
 
 \[
-\begin{aligned}
- \varphi(nx)&=\tau_N(ny),\\
-             &=\tau_N(yn)=\varphi(xn).
-\end{aligned}
+\begin{gathered}
+ \varphi(nx)=\tau_N(ny)\\
+ =\tau_N(yn)\\
+ =\varphi(xn).
+\end{gathered}
 \tag{X4.10}
 \]
 
-so \(N_0\subseteq\{h\}'\cap M_0\).
+The integrable-density centralizer theorem FTI04
+now puts \(N_0\) inside the finite type I algebra
+\(C=\{h\}'\cap M_0\). Its proof uses the central spectral cutoffs
+\(1_{[1/k,k]}(h)\) in \(C\), finite-trace corners of \(M_0\), and the
+normal-kernel argument of
+FTI03.
+That same subalgebra theorem makes \(N_0\) type I. Since \(p\ne0\), it
+contains a nonzero abelian projection below \(p\le q\), a contradiction:
+its corner in \(N_0\) is exactly its corner in \(N\). Hence \(N\) is
+type I. This argument requires neither a factor hypothesis nor a
+sigma-finiteness assumption on the original inclusion.
 
-We use the elementary type-I density lemma: if \(A\) is type I and an
-injective positive \(h\) is integrable for a faithful semifinite trace, then
-\(\{h\}'\cap A\) is finite type I and every von Neumann subalgebra of it is
-type I.  Here is the cutoff mechanism.  In
-\(C=\{h\}'\cap A\), the projections
+**Atomicity.** Suppose that \(M\) is atomic, meaning that every nonzero
+projection contains a minimal nonzero projection. Work in any faithful normal
+concrete representation \(N\subseteq M\subseteq B(H)\). The
+atomic matrix-block construction
+supplies a normal unital positive \(M\)-bimodule projection
+\(Q:B(H)\to M\). Explicitly, that proof decomposes
+\(H=\bigoplus_i(K_i\otimes L_i)\) and
+\(M=\prod_i(B(K_i)\otimes1_{L_i})\); compression against one unit vector
+in each \(L_i\) defines \(Q\). Finite-rank projection nets, rather than
+sequences, cover arbitrary Hilbert-space dimensions.
+
+Compose this map with the given expectation:
 
 \[
- c_k=1_{[1/k,k]}(h)
-\]
-
-are central, increase strongly to \(1\), and satisfy
-\(\operatorname{Tr}_0(c_k)\leq k\operatorname{Tr}_0(h)<\infty\).
-Thus \(c_kAc_k\) is finite type I.  Its homogeneous decomposition is a
-central sum of algebras \(L^\infty(X)\,\overline\otimes\,M_n\); the standard
-polynomial identity on each \(M_n\) shows that every von Neumann subalgebra
-of a homogeneous summand is type I.  The central sum over \(n\), followed
-by \(c_k\uparrow1\), proves the lemma.  Finiteness of \(C\) also follows
-directly because \(x\mapsto\operatorname{Tr}_0(hx)\) is a faithful finite
-trace on \(C\).  Applied to (X4.10), the lemma contradicts the choice of
-\(N_0\).  Hence \(N\) is type I.
-
-**Atomicity.**  Write RNP for the Radon--Nikodym property. Use the
-Banach-space characterization
-
-\[
-\begin{aligned}
- &A\text{ is atomic}\\
- &\Longleftrightarrow A_*\text{ has RNP}.
-\end{aligned}
+\begin{gathered}
+ F=E\circ Q,\\
+ F:B(H)\longrightarrow N,\\
+ F(n)=n\\
+ (n\in N).
+\end{gathered}
 \tag{X4.11}
 \]
 
-Indeed, the predual of
-\(\bigoplus_i B(H_i)\) is the \(\ell^1\)-sum of the trace classes
-\(\mathcal S_1(H_i)\), which has the Radon--Nikodym property; conversely a
-diffuse summand gives the standard nonatomic \(L^1\) obstruction.  The
-Radon--Nikodym property passes to closed subspaces.  For a normal
-expectation \(F:A\to B\), the preadjoint embedding
+Both maps are normal and positive, so their composition is normal and
+positive. It is unital and onto because both maps fix \(N\). For
+\(a,b\in N\) and \(x\in B(H)\), their bimodule identities give
 
 \[
-\begin{aligned}
- F_*&:B_*\longrightarrow A_*,\\
- \omega&\longmapsto\omega\circ F .
-\end{aligned}
+\begin{gathered}
+ F(axb)\\
+ =E\bigl(aQ(x)b\bigr)\\
+ =aF(x)b.
+\end{gathered}
 \tag{X4.12}
 \]
 
-is isometric, since restriction back to \(B\) recovers \(\omega\).  If \(M\)
-is atomic, then so is the corner \(eMe\); (X4.12) makes \((Ne)_*\) a closed
-subspace of \((eMe)_*\).  Equation (X4.11) makes \(Ne\), and therefore
-\(N\), atomic.
+The rank-one criterion
+now makes \(N\) atomic. To recall its mechanism, for a rank-one positive
+operator \(r_\xi\), every nonzero projection \(q\) under
+\(1_{[\varepsilon,\infty)}(F(r_\xi))\) satisfies
+\(\varepsilon\leq\|q\xi\|^2\). An orthogonal family of such projections
+therefore has at most \(\|\xi\|^2/\varepsilon\) members. Successively
+splitting nonminimal projections must terminate, so this spectral cut is a
+finite sum of minimal projections of \(N\). All rank-one images are thus
+supported on the central join of the minimal projections of \(N\).
+Normality applied to the finite-rank projection net, together with
+\(F(1)=1\), makes that join equal to \(1\). The polar-decomposition argument
+in the criterion then puts a minimal projection under every nonzero
+projection of \(N\). No faithfulness of \(E\) or \(Q\), countability of the
+blocks, or faithful normal state is needed.
 
 The formula sometimes printed as \((1-e)M\) cannot be correct.  For the
 vector-state expectation from \(M_2(\mathbb C)\) to the scalars and the
@@ -235,6 +278,11 @@ states detect every nonzero square: for \(x\ne0\) there is a normal state
  \omega(x^*x)>0.
 \tag{X4.13}
 \]
+
+If \(M=\{0\}\), its fixed algebra is also zero. The unique map between
+these zero algebras is a faithful normal conditional expectation of norm
+zero. This is the zero-algebra case of the result. For the rest of this
+laboratory assume \(M\ne\{0\}\); a unital expectation then has norm one.
 
 Write \(N=M^G\).  If \(\omega\) is invariant, naturality of supports gives
 \(\alpha(s(\omega))=s(\omega)\), so \(s(\omega)\in N\).
@@ -274,7 +322,7 @@ to \(N\), the same argument proves that
 \(\nu=\Psi|_{N_+}\) is semifinite.
 
 The weight \(\Psi\) is \(G\)-invariant.  For \(\alpha\in G\) and
-\(t\in\mathbb R\), functoriality of modular automorphisms yields
+\(t\in\mathbb R\), the GNS transport proof in SI14 yields
 
 \[
 \begin{aligned}
@@ -308,7 +356,8 @@ leave \(N\) invariant and restrict there to \(\sigma^\nu\).  For
 \tag{X4.18}
 \]
 
-naturality under \(G\) gives \(\alpha(u_t)=u_t\), hence \(u_t\in N\).
+the balanced-matrix naturality in SI14
+gives \(\alpha(u_t)=u_t\), hence \(u_t\in N\).
 For every \(n\in N\), equality of the restricted modular groups gives
 
 \[
@@ -349,9 +398,18 @@ seminorm \(\lVert y\rVert_\omega=\lVert\Lambda_\omega(y)\rVert\), so that
 \tag{X4.21}
 \]
 
-This seminorm is sigma-weakly lower semicontinuous: its closed balls are intersections
-of inequalities against the normal coefficient functionals
-\(y\mapsto\langle\Lambda_\omega(y),\eta\rangle\).
+The coefficient maps used here are normal. For a vector of the form
+\(\Lambda_\omega(a)\), the coefficient is
+\(y\mapsto\omega(a^*y)\), which is normal by
+CP06. For a general \(\eta\in H_\omega\),
+approximate it by such vectors. Cauchy--Schwarz gives
+\(\|\Lambda_\omega(y)\|\leq\|y\|\), so the corresponding functionals converge
+in norm. The predual is norm closed, again by CP06. Thus
+\(y\mapsto\langle\Lambda_\omega(y),\eta\rangle\) is normal for every \(\eta\).
+In particular, \(\Lambda_\omega\) carries sigma-weak convergence to weak
+Hilbert-space convergence. The seminorm \(\|y\|_\omega\) is sigma-weakly
+lower semicontinuous, since its closed balls are intersections of the
+closed inequalities against these coefficient functionals.
 Invariance gives a unitary representation
 
 \[
@@ -360,13 +418,49 @@ Invariance gives a unitary representation
 \tag{X4.22}
 \]
 
-Let \(P_\omega\) be the projection onto its fixed-vector space.  For a
-finite set \(F\) of invariant states, use the direct sum of the
-representations (X4.22).  The closed convex hull of a unitary orbit has a
-unique least-norm vector, and that vector is the projection onto the
-fixed-vector space.  Hence one net of finite convex combinations of
-\(\alpha(x)\) converges in every \(H_\omega\), \(\omega\in F\), to
-\(P_\omega\Lambda_\omega(x)\).  Put
+We first prove the Hilbert-space fact needed for simultaneous minimization.
+Let \(U\) be any unitary representation on a Hilbert space \(H\), and let
+\(L=\{v:U_\alpha v=v\text{ for every }\alpha\}\). This is a closed complex
+subspace. Its orthogonal projection \(P\) exists by
+LH01.
+For \(\xi\in H\), put \(C=\overline{\operatorname{co}}^{\|\cdot\|}
+\{U_\alpha\xi\}\) and \(d=\inf_{v\in C}\|v\|\). A minimizing sequence
+\((v_n)\) is Cauchy. Indeed, its midpoints lie in \(C\), and the
+parallelogram identity gives
+\[
+\begin{gathered}
+ \|v_n-v_m\|^2\\
+ \leq2\|v_n\|^2+2\|v_m\|^2-4d^2\\
+ \longrightarrow0.
+\end{gathered}
+\]
+Completeness and closedness give a point \(v\in C\) of norm \(d\). The
+same inequality makes it unique. Every \(U_\alpha\) maps \(C\) onto itself
+and preserves norm, so \(v\in L\). Also \(PU_\alpha=P\): pairing with any
+vector in \(L\) proves the identity. Consequently \(Pw=P\xi\) for every
+\(w\in C\). Applying this to \(v\in L\) gives \(v=P\xi\). Thus the closed
+convex hull contains \(P\xi\), and that is its unique least-norm vector.
+
+Apply this result to the representations (X4.22), writing \(P_\omega\) for
+the projection onto their fixed vectors. If \(y\in K(x)\), normality of
+the coefficient maps and \(P_\omega U^\omega_\alpha=P_\omega\) give
+\(P_\omega\Lambda_\omega(y)=P_\omega\Lambda_\omega(x)\). Hence
+\(\|y\|_\omega\geq\|P_\omega\Lambda_\omega(x)\|\).
+
+For a finite set \(F\) of invariant states, form the finite direct sum
+of the representations (X4.22), starting at
+\((\Lambda_\omega(x))_{\omega\in F}\). Its fixed space is the direct sum
+of their fixed spaces. The proved Hilbert result supplies finite convex
+combinations \(y_j\) of the orbit \(Gx\) for which, simultaneously for
+every \(\omega\in F\),
+\(\Lambda_\omega(y_j)\to P_\omega\Lambda_\omega(x)\) in norm. The points
+\(y_j\) stay in the sigma-weakly compact set \(K(x)\), so a subnet has a
+sigma-weak limit \(y_F\in K(x)\). Each GNS coefficient is normal, so its
+value on that subnet converges to its value on \(y_F\). The Hilbert norm
+limit therefore implies
+\(\Lambda_\omega(y_F)=P_\omega\Lambda_\omega(x)\) for all \(\omega\in F\).
+Together with the preceding lower bound, this proves attainment of all
+the individual minimum values by one point. Put
 \(m_\omega(x)=\min_{z\in K(x)}\lVert z\rVert_\omega\).  Let \(K_F(x)\) be
 the set of \(y\in K(x)\) satisfying, for every \(\omega\in F\),
 
@@ -375,8 +469,9 @@ the set of \(y\in K(x)\) satisfying, for every \(\omega\in F\),
 \tag{X4.23}
 \]
 
-Thus \(K_F(x)\) is nonempty, compact and \(G\)-invariant.  Lower
-semicontinuity makes it closed.
+The point \(y_F\) belongs to \(K_F(x)\), so this set is nonempty. It is
+closed by lower semicontinuity and compact as a closed subset of \(K(x)\).
+Invariance of each seminorm and of \(K(x)\) makes it \(G\)-invariant.
 
 The assertion that \(K_F(x)\) must be a face is false.  Take
 \(M=\mathbb C^2\), let \(G\) interchange the two coordinates, use the
@@ -408,8 +503,9 @@ Compactness gives a point in
 \]
 
 For every \(y\in K_\infty(x)\) and every invariant normal state
-\(\omega\), uniqueness of the Hilbert-space least-norm vector gives
-
+\(\omega\), the fixed component of \(\Lambda_\omega(y)\) is
+\(P_\omega\Lambda_\omega(x)\), and their norms agree by the minimum
+calculation. Orthogonality forces the remaining component to vanish, so
 \[
  \Lambda_\omega(y)=P_\omega\Lambda_\omega(x).
 \tag{X4.27}
@@ -418,12 +514,11 @@ For every \(y\in K_\infty(x)\) and every invariant normal state
 The same is true of \(\alpha(y)\).  Therefore
 \(\omega((\alpha(y)-y)^*(\alpha(y)-y))=0\) for all invariant \(\omega\);
 (X4.13) gives \(\alpha(y)=y\).  Thus \(y\in N\).  If \(y,z\) both lie in
-\(K_\infty(x)\), (X4.27) applied to \(y-z\) and (X4.13) give \(y=z\).
+\(K_\infty(x)\), subtracting their identities (X4.27), then using (X4.13), gives \(y=z\).
 Conversely, if \(y\in K(x)\cap N\), then
-\(\Lambda_\omega(y)\) is a fixed vector in the closed convex hull of the
-orbit of \(\Lambda_\omega(x)\).  Every vector in that hull has fixed
-component \(P_\omega\Lambda_\omega(x)\), so a fixed one must equal that
-component.  Hence \(y\in K_\infty(x)\).  Write the unique point as \(E(x)\).
+\(\Lambda_\omega(y)\) is fixed. Its fixed component is
+\(P_\omega\Lambda_\omega(x)\), by the normal-coefficient argument above,
+so it equals that vector. Hence \(y\in K_\infty(x)\).  Write the unique point as \(E(x)\).
 We have proved \(K(x)\cap N=K_\infty(x)\), and this set is the singleton
 
 \[
@@ -475,6 +570,56 @@ theory was not used.
 
 ## The Euclidean modulation average
 
+**The character commutant.** We first justify the multiplication algebra
+used in this laboratory and the next. Let \(G\) be any locally compact
+abelian group, let \(H_G=L^2(G)\), and let \(A_G=L^\infty(G)\) act by
+multiplication. We use the local Haar completion of
+PF21: finite-\(p\) functions
+have countably many nonzero components in the open sigma-compact coset
+decomposition, while bounded component families define \(L^\infty\).
+The multiplication proof in PF21 applies to \(G\) itself and gives
+\(A_G'=A_G\). For each continuous unitary character \(\chi\), write
+\(u_\chi=M_\chi\).
+
+Every normal functional \(\omega\) on \(A_G\) has the vector-series form
+of CP06. Thus there are square-summable
+families \((\xi_n),(\eta_n)\) in \(H_G\) with
+\(\omega(M_f)=\sum_n\langle M_f\xi_n,\eta_n\rangle\). Cauchy--Schwarz gives
+\[
+\begin{gathered}
+ \sum_n\|\xi_n\overline{\eta_n}\|_1\\
+ \leq
+ \Bigl(\sum_n\|\xi_n\|_2^2\Bigr)^{1/2}
+ \Bigl(\sum_n\|\eta_n\|_2^2\Bigr)^{1/2}
+ <\infty.
+\end{gathered}
+\]
+Consequently \(h=\sum_n\xi_n\overline{\eta_n}\) converges in \(L^1(G)\),
+and \(\omega(M_f)=\int_G fh\) for every bounded locally measurable \(f\).
+All these products are supported on a countable union of sigma-finite
+cosets, so no non-sigma-finite product integral is being used.
+
+If \(\omega(u_\chi)=0\) for every \(\chi\), the Fourier transform of
+\(h\) vanishes. Characters and their conjugates form the same family,
+so this statement agrees with either Fourier sign convention.
+PF17 proves injectivity on
+\(L^1(G)\): its norm identity makes \(\lambda(h)=0\) when all character
+integrals vanish; applying \(\lambda(h)\) to a compact approximate identity
+then gives \(h=0\). Hence \(\omega=0\).
+
+The weak-star annihilator identity of
+CP05 now makes the linear span of the
+\(u_\chi\) sigma-weakly dense in \(A_G\). Explicitly, a proper closed
+linear span would be annihilated by a nonzero element of its predual,
+which we have just excluded. Since the character multipliers belong to
+\(A_G\), their generated von Neumann algebra is \(A_G\), and taking
+commutants gives
+\[
+ \{u_\chi:\chi\in\widehat G\}'=A_G.
+\]
+This proof uses neither a countability hypothesis nor the biduality
+theorem. We now specialize to the real line.
+
 Let \(H=L^2(\mathbb R,ds)\), let
 \(A=L^\infty(\mathbb R)\) act by multiplication, and put
 
@@ -488,29 +633,36 @@ Use the Fourier transform
 Haar measure is \(d\widehat t=dt/(2\pi)\).  Plancherel then reads
 
 \[
- \lVert\widehat f\rVert_{L^2(d\widehat t)}
+\begin{gathered}
+ \lVert\widehat f\rVert_{L^2(d\widehat t)}\\
  =\lVert f\rVert_{L^2(ds)}.
+\end{gathered}
 \tag{X4.33}
 \]
 
-For \(x\in B(H)_+\), define a closed extended positive form by
-
+For \(x\in B(H)_+\) and \(\eta\in H\), put
+\(b_{x,\eta}(t)=\langle u_t x u_t^*\eta,\eta\rangle\). Define the
+closed extended positive form by
 \[
- q_x(\eta)
- =\int_{\mathbb R}
-   \left\langle u_t x u_t^*\eta,\eta\right\rangle
-   \frac{dt}{2\pi}.
+\begin{gathered}
+ q_x(\eta)\\
+ =\int_{\mathbb R} b_{x,\eta}(t)\,d\widehat t.
+\end{gathered}
 \tag{X4.34}
 \]
 
 It may take the value \(+\infty\).  Translation of \(t\) leaves the form
 invariant under every \(u_r\), so its representing extended positive is
 affiliated with
-\(\{u_r:r\in\mathbb R\}'=A\).  Denote it by
-
+\(\{u_r:r\in\mathbb R\}'=A\). Here PF25 identifies all real-line
+characters with the displayed exponentials, and the preceding character
+commutant proof applies. Denote it by
 \[
- T(x)=\int_{\mathbb R}^{\widehat{\ }}
-      u_t x u_t^*\,\frac{dt}{2\pi}\in\widehat A_+.
+\begin{gathered}
+ T(x)\\
+ =\int_{\mathbb R}^{\widehat{\ }}u_t x u_t^*\,d\widehat t\\
+ \in\widehat A_+.
+\end{gathered}
 \tag{X4.35}
 \]
 
@@ -575,7 +727,10 @@ If \(x\geq0\) and \((e_j)\) is an orthonormal basis, put
 \(P_F=\sum_{j\in F}\theta_{e_j,e_j}\).  The finite partial sums
 
 \[
- x_F=x^{1/2}P_Fx^{1/2}\uparrow x
+\begin{gathered}
+ x_F=x^{1/2}P_Fx^{1/2}\\
+ \uparrow x.
+\end{gathered}
 \tag{X4.38}
 \]
 
@@ -610,8 +765,10 @@ For \(\mathcal Ff(\chi)=\int_G\overline{\chi(s)}f(s)\,dg(s)\), choose the
 dual Haar measure \(d\chi\) on \(\widehat G\) so that
 
 \[
- \lVert\mathcal Ff\rVert_{L^2(d\chi)}
+\begin{gathered}
+ \lVert\mathcal Ff\rVert_{L^2(d\chi)}\\
  =\lVert f\rVert_{L^2(dg)}.
+\end{gathered}
 \tag{X4.40}
 \]
 
@@ -620,24 +777,30 @@ An onto Plancherel transform through Haar normalization and a finite example.
 On \(H=L^2(G,dg)\), let \(A=L^\infty(G)\) and
 
 \[
- (u_\chi\xi)(s)=\chi(s)\xi(s).
+\begin{gathered}
+ (u_\chi\xi)(s)\\
+ =\chi(s)\xi(s).
+\end{gathered}
 \tag{X4.41}
 \]
 
 For \(x\in B(H)_+\), set
 
 \[
- T_G(x)
- =\int_{\widehat G}^{\widehat{\ }}
-   u_\chi x u_\chi^*\,d\chi.
+\begin{gathered}
+ T_G(x)\\
+ =\int_{\widehat G}^{\widehat{\ }}u_\chi x u_\chi^*\,d\chi.
+\end{gathered}
 \tag{X4.42}
 \]
 
 As in (X4.34), this means the extended closed form obtained by integrating
 the positive matrix coefficients.  Fatou's lemma again proves lower
 semicontinuity and hence closedness.  It is invariant under every
-\(u_\gamma\).  Characters generate the full multiplication algebra, so
-\(\{u_\gamma:\gamma\in\widehat G\}'=A\); hence (X4.42) belongs to
+\(u_\gamma\). The character commutant proof in X4-04
+uses Fourier injectivity and normal vector-series densities on the local
+Haar completion, and gives
+\(\{u_\gamma:\gamma\in\widehat G\}'=A\). Hence (X4.42) belongs to
 \(\widehat A_+\).
 
 For arbitrary \(\xi,\eta\in H\), put
@@ -666,7 +829,10 @@ For \(\varphi(M_f)=\int_G f\,dg\), finite-rank approximation as in
 (X4.38) now proves
 
 \[
- \widehat\varphi(T_G(x))=\operatorname{Tr}(x).
+\begin{gathered}
+ \widehat\varphi(T_G(x))\\
+ =\operatorname{Tr}(x).
+\end{gathered}
 \tag{X4.45}
 \]
 
@@ -692,22 +858,36 @@ Let \(G\) be a countable discrete group, let \(H=\ell^2(G)\), and write
 \tag{X4.46}
 \]
 
-The two representations commute, and
-
+The two representations commute. The regular commutant theorem
+PF01, specialized to counting
+measure, proves the reverse inclusion needed for
 \[
- M=\lambda(G)''=\rho(G)'.
+\begin{gathered}
+ M=\lambda(G)''\\
+ =\rho(G)'.
+\end{gathered}
 \tag{X4.47}
 \]
 
 Let \(\tau(y)=\langle y\delta_e,\delta_e\rangle\) be the canonical finite
-trace on \(M\).
+trace on \(M\). Here are the finite-trace checks. This vector functional is
+normal and positive, and \(\tau(1)=1\). If \(x\in M\) and
+\(\tau(x^*x)=0\), then \(x\delta_e=0\). Commutation with \(\rho\) makes
+\(x\delta_s=0\) for every \(s\), hence \(x=0\). For traciality put
+\(a=x\delta_e\). The same commutation gives
+\((x\delta_s)(t)=a(ts^{-1})\), and thus
+\((x^*\delta_e)(s)=\overline{a(s^{-1})}\). Inversion permutes the counting
+basis, so \(\|x^*\delta_e\|=\|x\delta_e\|\), or
+\(\tau(xx^*)=\tau(x^*x)\). Polarizing this identity gives
+\(\tau(y^*x)=\tau(xy^*)\) for all \(x,y\in M\), which is traciality.
 
 For \(x\in B(H)_+\), define
 
 \[
- T(x)
- =\sum_{r\in G}^{\widehat{\ }}
-   \rho(r)x\rho(r)^*,
+\begin{gathered}
+ T(x)\\
+ =\sum_{r\in G}^{\widehat{\ }}\rho(r)x\rho(r)^*.
+\end{gathered}
 \tag{X4.48}
 \]
 
@@ -717,12 +897,12 @@ cone.  Reindexing makes this extended positive invariant under
 Put \(v_r=\rho(r)^*\delta_e\).  Then
 
 \[
-\begin{aligned}
-\widehat\tau(T(x))
- &=\sum_{r\in G}\langle xv_r,v_r\rangle\\
- &=\sum_{s\in G}\langle x\delta_s,\delta_s\rangle\\
- &=\operatorname{Tr}(x).
-\end{aligned}
+\begin{gathered}
+ \widehat\tau(T(x))\\
+ =\sum_{r\in G}\langle xv_r,v_r\rangle\\
+ =\sum_{s\in G}\langle x\delta_s,\delta_s\rangle\\
+ =\operatorname{Tr}(x).
+\end{gathered}
 \tag{X4.49}
 \]
 
@@ -731,11 +911,11 @@ The sum is normal, \(M\)-bimodular and faithful.  For the matrix units
 extension gives
 
 \[
-\begin{aligned}
-T(e_{a,b})
- &=\sum_{r\in G}e_{ar^{-1},\,br^{-1}}\\
- &=\lambda(ab^{-1}).
-\end{aligned}
+\begin{gathered}
+ T(e_{a,b})\\
+ =\sum_{r\in G}e_{ar^{-1},\,br^{-1}}\\
+ =\lambda(ab^{-1}).
+\end{gathered}
 \tag{X4.50}
 \]
 
@@ -747,31 +927,69 @@ faithful normal semifinite operator-valued weight satisfying
 There is a precise Fourier form, but it is not an unrestricted operator
 series for every positive \(x\in B(H)\).  If
 \(x\in\mathcal S_1(H)_+\), then \(T(x)\) is a positive element of
-\(L^1(M,\tau)\).  Extend linearly to \(\mathcal S_1(H)\), and define
+\(L^1(M,\tau)\).  Additivity gives a well-defined linear extension to \(\mathcal S_1(H)\):
+if a self-adjoint operator is written as a difference of positives in two
+ways, equality of the corresponding positive sums makes their images
+agree. For self-adjoint \(a=a_+-a_-\), (X4.49) gives
+\(\|T(a)\|_1\leq\operatorname{Tr}(a_+)+\operatorname{Tr}(a_-)=\|a\|_1\).
+For arbitrary \(x\), use its real and imaginary parts and the adjoint
+isometry in TI06 to obtain
+\(\|T(x)\|_1\leq2\|x\|_1\). This bound supplies the trace-norm continuity
+needed below; no convergence of a formal Fourier series is involved.
+Define
 \(\widehat x(s)=\operatorname{Tr}(\lambda(s)^*x)\).  For every \(s\in G\),
 
 \[
- \tau\!\left(\lambda(s)^*T(x)\right)=\widehat x(s).
+\begin{gathered}
+ \tau\!\left(\lambda(s)^*T(x)\right)\\
+ =\widehat x(s).
+\end{gathered}
 \tag{X4.51}
 \]
 
 It suffices to check (X4.51) on \(e_{a,b}\), where both sides are
-\(\mathbf1_{\{s=ab^{-1}\}}\), and then use trace-norm continuity.
-Consequently the notation
+\(\mathbf1_{\{s=ab^{-1}\}}\). Finite sums of these matrix units are dense
+in trace norm: approximate a trace-class operator by finite-rank ones,
+then approximate their finitely many vectors by finitely supported
+vectors. The rank-one bound
+\(\|\theta_{\xi,\eta}\|_1=\|\xi\|\|\eta\|\) makes the latter approximation
+a trace-norm approximation. The bound for \(T\) just proved, and
+\(|\tau(bz)|\leq\|b\|\|z\|_1\) from TI06, extend the identity to all of
+\(\mathcal S_1(H)\).
 
+These Fourier coefficients determine an \(L^1(M,\tau)\) element uniquely.
+Indeed, a density whose coefficients vanish defines by TI06 a normal
+functional vanishing on the linear span of the \(\lambda(s)\). This is a
+unital star algebra whose sigma-weak closure is \(M\), by the
+bicommutant theorem BK03.
+The functional is therefore zero, and injectivity of the TI06 density
+map makes its density zero. Consequently the notation
 \[
- T(x)\sim\sum_{s\in G}\widehat x(s)\lambda(s)
+\begin{gathered}
+ T(x)\\
+ \sim\sum_{s\in G}\widehat x(s)\lambda(s).
+\end{gathered}
 \tag{X4.52}
 \]
 
 means equality of all Fourier coefficients in \(L^1(M,\tau)\).
 
-If in addition \(T(x)\in L^2(M,\tau)\), the unitaries
-\((\lambda(s))_{s\in G}\) form an orthonormal basis of that Hilbert space,
-and (X4.52) converges in \(L^2\):
-
+For completeness, the unitaries \((\lambda(s))_{s\in G}\) form an
+orthonormal basis of \(L^2(M,\tau)\). Since \(\tau(1)=1\), every \(a\in M\)
+is square integrable. The map \(a\mapsto a\delta_e\) is isometric for the
+\(L^2\) norm, because \(\|a\delta_e\|^2=\tau(a^*a)\). The trace Hilbert-space
+identification TI15 makes \(M\) dense
+in \(L^2(M,\tau)\), so this map extends to an isometry onto a closed
+subspace of \(\ell^2(G)\). Its image contains
+\(\lambda(s)\delta_e=\delta_s\) for every \(s\); hence it is onto and sends
+the stated family to the standard orthonormal basis.
+If in addition \(T(x)\in L^2(M,\tau)\), its Hilbert coefficient at
+\(\lambda(s)\) is exactly (X4.51), and (X4.52) converges in \(L^2\):
 \[
- T(x)=\sum_{s\in G}^{L^2}\widehat x(s)\lambda(s).
+\begin{gathered}
+ T(x)\\
+ =\sum_{s\in G}^{L^2}\widehat x(s)\lambda(s).
+\end{gathered}
 \tag{X4.53}
 \]
 

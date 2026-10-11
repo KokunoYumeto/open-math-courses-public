@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exact preimages and mass-weighted error bounds</title><link rel="stylesheet" href="reader.css"></head><body><a class="skip" href="#main">Skip to the lesson</a><header><a href="index.html">Discrete dynamics, coding and probability</a> · <a href="src/NT-COLLATZ-26.md">Lesson source</a></header><main id="main"><h1 id="exact-preimages-and-mass-weighted-error-bounds">Exact preimages
+and mass-weighted error bounds</h1>
+<p><em>Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026.
+Self-checked by the writing AI. Original exposition, proofs and
+exercises: CC0 1.0.</em></p>
+<p>Many probability estimates are obtained by describing a trajectory
+backwards. A branch word and an endpoint determine a possible starting
+point; summing over these descriptions should then recover the
+probability of an event. Two issues must be settled first. The proposed
+starting point must actually follow the prescribed branches, and
+different descriptions must not count that same point repeatedly.</p>
+<p>Once these facts are proved, a small relative error in each weight
+costs a small fraction of the total probability mass. It does not cost
+that error multiplied by the number of descriptions. Changing the set of
+included points is a separate operation: its error is controlled by the
+mass near the sampling boundaries. We will prove both statements,
+retaining the original finite sampling laws throughout.</p>
+<p>The main application is the finite terminal construction in Lech
+Mazur’s <em>Natural-Density Almost-Bounded Collatz Orbits in Logarithmic
+Time</em>, Appendix C. The other basic reference is Tao’s <em>Almost all
+orbits of the Collatz map attain almost bounded values</em>, Sections 4
+and 5, for valuation words and harmonic first-passage weights. Our
+prerequisites are <a
+href="NT-COLLATZ-18.html#a-word-and-its-endpoint-determine-the-starting-integer">the
+exact affine coordinates</a> and <a
+href="NT-COLLATZ-25.html#a-first-entrance-cannot-revisit-a-state">first
+entrance and its time coordinates</a>. All additional finite arguments
+are proved here. The resulting comparison is a component of a
+passage-law proof, not by itself a natural-density theorem.</p>
+<h2 id="two-laws-on-the-same-finite-set">Two laws on the same finite
+set</h2>
+<p>Fix real numbers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>z</mi><mo>&lt;</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">0&lt;z&lt;U</annotation></semantics></math>,
+and suppose
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">ℬ</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>N</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℤ</mi><mrow><mo>&gt;</mo><mn>0</mn></mrow></msub><mo>:</mo><mi>N</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> odd</mtext></mrow><mo>,</mo><mspace width="0.222em"></mspace><mi>z</mi><mo>≤</mo><mi>N</mi><mo>&lt;</mo><mi>U</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">
+\mathcal B=\{N\in\mathbb Z_{&gt;0}:N\text{ odd},\ z\leq N&lt;U\}
+</annotation></semantics></math></span> is nonempty. Define the exact positive
+sums
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mi>#</mi><mi mathvariant="script">ℬ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>H</mi><mo>=</mo><munder><mo>∑</mo><mrow><mi>N</mi><mo>∈</mo><mi mathvariant="script">ℬ</mi></mrow></munder><mfrac><mn>1</mn><mi>N</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D=\#\mathcal B,\qquad H=\sum_{N\in\mathcal B}\frac1N.
+\tag{1}
+</annotation></semantics></math><span class="equation-number">(1)</span></span></span> The uniform and harmonic laws on this
+same set assign the weights
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>F</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mi>D</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>p</mi><mi>H</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>H</mi><mi>N</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+p_F(N)=\frac1D,\qquad p_H(N)=\frac1{HN}.
+\tag{2}
+</annotation></semantics></math><span class="equation-number">(2)</span></span></span> Each sums to one. For an event
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+in the positive odd integers, its mass is the sum over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∩</mo><mi mathvariant="script">ℬ</mi></mrow><annotation encoding="application/x-tex">A\cap\mathcal B</annotation></semantics></math>;
+values outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math>
+have zero mass.</p>
+<p>Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>U</mi><mi>/</mi><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\beta=\log(U/z)</annotation></semantics></math>.
+For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>∈</mo><mi mathvariant="script">ℬ</mi></mrow><annotation encoding="application/x-tex">N\in\mathcal B</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>β</mi></mrow></msup><mo>≤</mo><mfrac><mrow><msub><mi>p</mi><mi>F</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msub><mi>p</mi><mi>H</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>H</mi><mi>N</mi></mrow><mi>D</mi></mfrac><mo>≤</mo><msup><mi>e</mi><mi>β</mi></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+e^{-\beta}\leq\frac{p_F(N)}{p_H(N)}=\frac{HN}{D}\leq e^\beta.
+\tag{3}
+</annotation></semantics></math><span class="equation-number">(3)</span></span></span> Indeed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>/</mi><mi>U</mi><mo>≤</mo><mi>H</mi><mo>≤</mo><mi>D</mi><mi>/</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">D/U\leq H\leq D/z</annotation></semantics></math>,
+while
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≤</mo><mi>N</mi><mo>&lt;</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">z\leq N&lt;U</annotation></semantics></math>.
+Multiplying these inequalities proves (3). Summation over any event
+gives the same two-sided comparison of its masses. Summing over the
+preimage of a set also proves that the comparison survives any map out
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math>,
+whether or not that map is injective.</p>
+<p>This is a finite comparison on one specified interval. Its usefulness
+comes from the common carrier and the explicit factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>/</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">U/z</annotation></semantics></math>,
+not from treating uniform and harmonic sampling as interchangeable on
+all positive integers.</p>
+<h2
+id="backwards-decoding-proves-positivity-as-well-as-integrality">Backwards
+decoding proves positivity as well as integrality</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">𝕆</mi><annotation encoding="application/x-tex">\mathbb O</annotation></semantics></math>
+be the positive odd integers, with
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mn>3</mn><mi>N</mi><mo>+</mo><mn>1</mn></mrow><msup><mn>2</mn><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>N</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+S(N)=\frac{3N+1}{2^{\nu_2(3N+1)}}.
+</annotation></semantics></math></span> For a word
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>a</mi><mi>r</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a=(a_1,\ldots,a_r)</annotation></semantics></math>
+of positive integers, retain the affine coordinates
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>j</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>j</mi></munderover><msub><mi>a</mi><mi>i</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mn>0</mn></msub><mo>=</mo><msub><mi>A</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mi>j</mi></msub><mo>=</mo><mn>3</mn><msub><mi>C</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msup><mn>2</mn><msub><mi>A</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A_j=\sum_{i=1}^j a_i,\qquad
+C_0=A_0=0,\qquad C_j=3C_{j-1}+2^{A_{j-1}}.
+\tag{4}
+</annotation></semantics></math><span class="equation-number">(4)</span></span></span> The composition with these prescribed
+branches is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Aff</mi><mo>&#8289;</mo></mrow><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><msup><mn>3</mn><mi>r</mi></msup><mi>N</mi><mo>+</mo><msub><mi>C</mi><mi>r</mi></msub></mrow><msup><mn>2</mn><msub><mi>A</mi><mi>r</mi></msub></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>F</mi><mi>a</mi></msub><mo>=</mo><mfrac><msub><mi>C</mi><mi>r</mi></msub><msup><mn>2</mn><msub><mi>A</mi><mi>r</mi></msub></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Aff}_a(N)=\frac{3^rN+C_r}{2^{A_r}},\qquad F_a=\frac{C_r}{2^{A_r}}.
+\tag{5}
+</annotation></semantics></math><span class="equation-number">(5)</span></span></span> These are exact coordinates, including
+the affine offset.</p>
+<p><strong>Theorem 1 (Constructive inverse from a positive odd
+endpoint).</strong> Fix a positive odd
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+There is a positive odd starting integer with valuation word exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+and endpoint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mi>r</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">S^r(N)=M</annotation></semantics></math>
+if and only if
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><msub><mi>A</mi><mi>r</mi></msub></msup><mi>M</mi><mo>≡</mo><msub><mi>C</mi><mi>r</mi></msub><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>3</mn><mi>r</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+2^{A_r}M\equiv C_r\pmod{3^r}.
+\tag{6}
+</annotation></semantics></math><span class="equation-number">(6)</span></span></span> It is unique and equals
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><msup><mn>2</mn><msub><mi>A</mi><mi>r</mi></msub></msup><mi>M</mi><mo>−</mo><msub><mi>C</mi><mi>r</mi></msub></mrow><msup><mn>3</mn><mi>r</mi></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+N_a(M)=\frac{2^{A_r}M-C_r}{3^r}.
+\tag{7}
+</annotation></semantics></math><span class="equation-number">(7)</span></span></span> In particular (6) already implies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>&gt;</mo><msub><mi>F</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">M&gt;F_a</annotation></semantics></math>;
+a separate lower bound for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is unnecessary. The empty word gives the identity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">N=M</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Actual iteration proves (5), hence necessity
+and uniqueness. For sufficiency, induct backwards on the word length.
+The empty case is immediate. Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r\geq1</annotation></semantics></math>
+and (6) holds. By (4), its cleared difference is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><msub><mi>A</mi><mi>r</mi></msub></msup><mi>M</mi><mo>−</mo><msub><mi>C</mi><mi>r</mi></msub><mo>=</mo><msup><mn>2</mn><msub><mi>A</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msub></msup><mo stretchy="false" form="prefix">(</mo><msup><mn>2</mn><msub><mi>a</mi><mi>r</mi></msub></msup><mi>M</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mn>3</mn><msub><mi>C</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+2^{A_r}M-C_r
+=2^{A_{r-1}}(2^{a_r}M-1)-3C_{r-1}.
+\tag{8}
+</annotation></semantics></math><span class="equation-number">(8)</span></span></span> Reduction modulo three and coprimality
+of two and three show that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><msub><mi>a</mi><mi>r</mi></msub></msup><mi>M</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{a_r}M-1</annotation></semantics></math>
+is divisible by three. Put
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mfrac><mrow><msup><mn>2</mn><msub><mi>a</mi><mi>r</mi></msub></msup><mi>M</mi><mo>−</mo><mn>1</mn></mrow><mn>3</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+Y=\frac{2^{a_r}M-1}{3}.
+</annotation></semantics></math></span> Its numerator is a positive odd
+integer. Being divisible by three, it is at least three, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>
+is positive and odd. Equation (8), divided by three, now gives
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><msub><mi>A</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msub></msup><mi>Y</mi><mo>≡</mo><msub><mi>C</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msub><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><msup><mn>3</mn><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+2^{A_{r-1}}Y\equiv C_{r-1}\pmod{3^{r-1}}.
+</annotation></semantics></math></span> Induction constructs the entire
+positive odd prefix ending at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>,
+with exactly its prescribed valuations. Finally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>Y</mi><mo>+</mo><mn>1</mn><mo>=</mo><msup><mn>2</mn><msub><mi>a</mi><mi>r</mi></msub></msup><mi>M</mi></mrow><annotation encoding="application/x-tex">3Y+1=2^{a_r}M</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is odd, so the last valuation is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>r</mi></msub><annotation encoding="application/x-tex">a_r</annotation></semantics></math>,
+not merely at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>r</mi></msub><annotation encoding="application/x-tex">a_r</annotation></semantics></math>.
+This constructs the full trajectory. Solving its affine equation gives
+(7); its positivity proves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>&gt;</mo><msub><mi>F</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">M&gt;F_a</annotation></semantics></math>.
+∎</p>
+<p>Thus the map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>↦</mo><msub><mi>N</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">M\mapsto N_a(M)</annotation></semantics></math>
+is a bijection from the positive odd solutions of (6) to the positive
+starts having word
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Its inverse is (5). The endpoint set is one residue class modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>⋅</mo><msup><mn>3</mn><mi>r</mi></msup></mrow><annotation encoding="application/x-tex">2\cdot3^r</annotation></semantics></math>:
+multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><msub><mi>A</mi><mi>r</mi></msub></msup><annotation encoding="application/x-tex">2^{A_r}</annotation></semantics></math>
+is invertible modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>r</mi></msup><annotation encoding="application/x-tex">3^r</annotation></semantics></math>,
+and oddness chooses one of the two lifts modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>⋅</mo><msup><mn>3</mn><mi>r</mi></msup></mrow><annotation encoding="application/x-tex">2\cdot3^r</annotation></semantics></math>.
+The starting set is the dyadic cylinder proved in the earlier
+affine-coordinate lesson.</p>
+<p>For example,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a=(2)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">M=7</annotation></semantics></math>
+give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">N=9</annotation></semantics></math>.
+Although seven is a small endpoint, the backwards equation gives the
+actual return
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>↦</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">9\mapsto7</annotation></semantics></math>
+with valuation two. The proof does not first impose a scale-dependent
+lower bound and then infer positivity from it.</p>
+<h2 id="when-terminal-descriptions-cannot-overlap">When terminal
+descriptions cannot overlap</h2>
+<p>Fix an integer threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">B\geq1</annotation></semantics></math>.
+Write
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>B</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><mi>j</mi><mo>≥</mo><mn>0</mn><mo>:</mo><msup><mi>S</mi><mi>j</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>B</mi><mo stretchy="false" form="postfix">}</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\tau_B(M)=\min\{j\geq0:S^j(M)\leq B\},
+</annotation></semantics></math></span> with value infinity if there is no such
+time. Choose an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h\geq1</annotation></semantics></math>,
+a finite set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">ℰ</mi><mo>⊂</mo><mi mathvariant="double-struck">𝕆</mi></mrow><annotation encoding="application/x-tex">\mathcal E\subset\mathbb O</annotation></semantics></math>
+whose members all satisfy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>B</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\tau_B(M)=h</annotation></semantics></math>,
+and a finite set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+of integer times greater than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>.
+Assume
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mi>J</mi><mo>−</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mi>J</mi><mo>≤</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">
+\tag{9}
+\max J-\min J\leq h
+</annotation></semantics></math><span class="equation-number">(9)</span></span></span> when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+is nonempty.</p>
+<p>A terminal record is a triple
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>,</mo><mi>a</mi><mo>,</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">i=(t,a,M)</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>∈</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">t\in J</annotation></semantics></math>,
+the positive word
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+has length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>t</mi><mo>−</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">r=t-h</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>∈</mo><mi mathvariant="script">ℰ</mi></mrow><annotation encoding="application/x-tex">M\in\mathcal E</annotation></semantics></math>,
+and (6) holds. Take any finite set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℐ</mi><annotation encoding="application/x-tex">\mathcal I</annotation></semantics></math>
+of such records, without repeated triples. Theorem 1 assigns an actual
+positive odd source
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>=</mo><msub><mi>N</mi><mi>a</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">N_i=N_a(M)</annotation></semantics></math>
+to every record. This definition permits any further selection of words
+or totals; disjointness will not depend on how that selection was
+made.</p>
+<p><strong>Theorem 2 (Injectivity across a short time window).</strong>
+The map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>↦</mo><msub><mi>N</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">i\mapsto N_i</annotation></semantics></math>
+is injective on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℐ</mi><annotation encoding="application/x-tex">\mathcal I</annotation></semantics></math>.
+It is therefore a bijection onto its image, before any sampling-band
+restriction is imposed.</p>
+<p><strong>Proof.</strong> Suppose two records
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>,</mo><mi>a</mi><mo>,</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(t,a,M)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>t</mi><mo>′</mo></msup><mo>,</mo><msup><mi>a</mi><mo>′</mo></msup><mo>,</mo><msup><mi>M</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(t&#39;,a&#39;,M&#39;)</annotation></semantics></math>
+give the same
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>,
+and arrange
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≤</mo><msup><mi>t</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">t\leq t&#39;</annotation></semantics></math>.
+Exact decoding gives
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><msup><mi>S</mi><mrow><mi>t</mi><mo>−</mo><mi>h</mi></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>M</mi><mo>′</mo></msup><mo>=</mo><msup><mi>S</mi><mrow><msup><mi>t</mi><mo>′</mo></msup><mo>−</mo><mi>h</mi></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>S</mi><mrow><msup><mi>t</mi><mo>′</mo></msup><mo>−</mo><mi>t</mi></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+M=S^{t-h}(N),\qquad M&#39;=S^{t&#39;-h}(N)=S^{t&#39;-t}(M).
+</annotation></semantics></math></span> Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><msup><mi>t</mi><mo>′</mo></msup><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">d=t&#39;-t</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>d</mi><mo>≤</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">0\leq d\leq h</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>B</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\tau_B(M)=h</annotation></semantics></math>,
+the first entrance from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mi>d</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">S^d(M)</annotation></semantics></math>
+is at time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>−</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">h-d</annotation></semantics></math>:
+all its earlier iterates are still above
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>,
+and its iterate at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>−</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">h-d</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mi>h</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">S^h(M)\leq B</annotation></semantics></math>.
+But
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>B</mi></msub><mo stretchy="false" form="prefix">(</mo><msup><mi>M</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\tau_B(M&#39;)=h</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>−</mo><mi>d</mi><mo>=</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">h-d=h</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d=0</annotation></semantics></math>.
+The two word lengths agree. Deterministic iteration from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+then gives the same valuation word and endpoint. The records coincide.
+∎</p>
+<p>The inverse on the image is explicit. Test the finitely many times
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>∈</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">t\in J</annotation></semantics></math>;
+find the unique one whose endpoint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mrow><mi>t</mi><mo>−</mo><mi>h</mi></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">S^{t-h}(N)</annotation></semantics></math>,
+its actual valuation word, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+give a record in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℐ</mi><annotation encoding="application/x-tex">\mathcal I</annotation></semantics></math>.
+Theorem 2 guarantees uniqueness, and membership in the image guarantees
+existence. No information is discarded by this indexing.</p>
+<p>For a record
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>,
+its event in the sampling space is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">𝒜</mi><mi>i</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>N</mi><mo>∈</mo><mi mathvariant="script">ℬ</mi><mo>:</mo><msub><mrow><mi mathvariant="normal">Aff</mi><mo>&#8289;</mo></mrow><msub><mi>a</mi><mi>i</mi></msub></msub><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>M</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathcal A_i=\{N\in\mathcal B:\operatorname{Aff}_{a_i}(N)=M_i\}.
+\tag{10}
+</annotation></semantics></math><span class="equation-number">(10)</span></span></span> It is the singleton
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>N</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{N_i\}</annotation></semantics></math>
+if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>∈</mo><mi mathvariant="script">ℬ</mi></mrow><annotation encoding="application/x-tex">N_i\in\mathcal B</annotation></semantics></math>,
+and empty otherwise. The events are pairwise disjoint. In particular,
+sums of their actual masses are at most one. Crucially, injectivity also
+applies to sources <em>outside</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math>;
+this will let us count boundary errors without introducing
+multiplicities.</p>
+<p>These records do not yet say that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+is the first entrance time from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>.
+The orbit may have entered
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mi>B</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[1,B]</annotation></semantics></math>,
+left it, and later reached
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+Exercise 3 gives an exact example and shows why the width condition (9)
+matters. This is the reason that identifying the union with a genuine
+first-passage event requires a separate trajectory argument.</p>
+<h2 id="relative-errors-are-charged-to-probability-mass">Relative errors
+are charged to probability mass</h2>
+<p>For a record of word length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+and total
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>r</mi></msub><annotation encoding="application/x-tex">A_r</annotation></semantics></math>,
+define
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup><mo>=</mo><mfrac><mrow><msup><mn>2</mn><msub><mi>A</mi><mi>r</mi></msub></msup><msub><mi>M</mi><mi>i</mi></msub></mrow><msup><mn>3</mn><mi>r</mi></msup></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>α</mi><mi>i</mi></msub><mo>=</mo><mfrac><msub><mi>F</mi><msub><mi>a</mi><mi>i</mi></msub></msub><msub><mi>M</mi><mi>i</mi></msub></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+N_i^0=\frac{2^{A_r}M_i}{3^r},\qquad
+\alpha_i=\frac{F_{a_i}}{M_i}.
+\tag{11}
+</annotation></semantics></math><span class="equation-number">(11)</span></span></span> The positive word has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><msub><mi>F</mi><msub><mi>a</mi><mi>i</mi></msub></msub><mo>&lt;</mo><msub><mi>M</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">0&lt;F_{a_i}&lt;M_i</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><msub><mi>α</mi><mi>i</mi></msub><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;\alpha_i&lt;1</annotation></semantics></math>.
+The exact source and this offset-free comparison point satisfy
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>α</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mn>1</mn><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup></mfrac><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><msub><mi>α</mi><mi>i</mi></msub></mrow><msub><mi>N</mi><mi>i</mi></msub></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+N_i=(1-\alpha_i)N_i^0,\qquad
+\frac1{N_i^0}=\frac{1-\alpha_i}{N_i}.
+\tag{12}
+</annotation></semantics></math><span class="equation-number">(12)</span></span></span> The comparison point need not be an
+integer and is not substituted for the actual trajectory.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo>=</mo><msub><mn>1</mn><mrow><mo stretchy="false" form="prefix">{</mo><mi>z</mi><mo>≤</mo><msub><mi>N</mi><mi>i</mi></msub><mo>&lt;</mo><mi>U</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub></mrow><annotation encoding="application/x-tex">P_i=1_{\{z\leq N_i&lt;U\}}</annotation></semantics></math>.
+The actual harmonic atom mass and the comparison weight on this <em>same
+support</em> are
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>i</mi></msub><mo>=</mo><mfrac><msub><mi>P</mi><mi>i</mi></msub><mrow><mi>H</mi><msub><mi>N</mi><mi>i</mi></msub></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>ν</mi><mi>i</mi></msub><mo>=</mo><mfrac><msub><mi>P</mi><mi>i</mi></msub><mrow><mi>H</mi><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mu_i=\frac{P_i}{HN_i},\qquad
+\nu_i=\frac{P_i}{HN_i^0}.
+\tag{13}
+</annotation></semantics></math><span class="equation-number">(13)</span></span></span> They obey the exact identity
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>i</mi></msub><mo>−</mo><msub><mi>ν</mi><mi>i</mi></msub><mo>=</mo><msub><mi>α</mi><mi>i</mi></msub><msub><mi>μ</mi><mi>i</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mu_i-\nu_i=\alpha_i\mu_i.
+\tag{14}
+</annotation></semantics></math><span class="equation-number">(14)</span></span></span> Both sides vanish outside the physical
+band. In affine coordinates the first weight is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><msup><mn>3</mn><mi>r</mi></msup><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>A</mi><mi>r</mi></msub></mrow></msup><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mo stretchy="false" form="prefix">[</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>M</mi><mi>i</mi></msub><mo>−</mo><msub><mi>F</mi><msub><mi>a</mi><mi>i</mi></msub></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">P_i(3^r2^{-A_r})/[H(M_i-F_{a_i})]</annotation></semantics></math>;
+the second replaces only that denominator by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>i</mi></msub><annotation encoding="application/x-tex">M_i</annotation></semantics></math>.
+The factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>A</mi><mi>r</mi></msub></mrow></msup><annotation encoding="application/x-tex">2^{-A_r}</annotation></semantics></math>
+is also the exact probability of the word under independent positive
+geometric letters, but no stochastic model of the actual orbit is used
+in (14).</p>
+<p><strong>Proposition 3 (No loss from the number of records).</strong>
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\rho\geq0</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>i</mi></msub><mo>≤</mo><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\alpha_i\leq\rho</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℐ</mi><annotation encoding="application/x-tex">\mathcal I</annotation></semantics></math>,
+then
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><munder><mo>∑</mo><mi>i</mi></munder><mo stretchy="false" form="prefix">(</mo><msub><mi>μ</mi><mi>i</mi></msub><mo>−</mo><msub><mi>ν</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>ρ</mi><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>μ</mi><mi>i</mi></msub><mo>≤</mo><mi>ρ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+0\leq\sum_i(\mu_i-\nu_i)
+\leq\rho\sum_i\mu_i\leq\rho.
+\tag{15}
+</annotation></semantics></math><span class="equation-number">(15)</span></span></span> For any real or complex numbers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mi>i</mi></msub><annotation encoding="application/x-tex">g_i</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>g</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|g_i|\leq1</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>g</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>μ</mi><mi>i</mi></msub><mo>−</mo><msub><mi>ν</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>α</mi><mi>i</mi></msub><msub><mi>μ</mi><mi>i</mi></msub><mo>≤</mo><mi>ρ</mi><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>μ</mi><mi>i</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left|\sum_i g_i(\mu_i-\nu_i)\right|
+\leq\sum_i\alpha_i\mu_i\leq\rho\sum_i\mu_i.
+\tag{16}
+</annotation></semantics></math><span class="equation-number">(16)</span></span></span></p>
+<p><strong>Proof.</strong> Sum (14). Nonnegativity proves the first
+inequality. The upper bounds follow from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>i</mi></msub><mo>≤</mo><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\alpha_i\leq\rho</annotation></semantics></math>,
+and disjointness in Theorem 2 gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>i</mi></msub><msub><mi>μ</mi><mi>i</mi></msub><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\sum_i\mu_i\leq1</annotation></semantics></math>.
+For (16), apply the triangle inequality before the same sum. ∎</p>
+<p>The weighted form retains more information than its uniform bound: a
+large ratio on an atom of very small mass may be harmless. It also
+controls every subset of records and every bounded observable of their
+endpoints. For example, take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>i</mi></msub><mo>=</mo><msub><mn>1</mn><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>M</mi><mi>i</mi></msub><mo>∈</mo><mi>E</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub></mrow><annotation encoding="application/x-tex">g_i=1_{\{M_i\in E\}}</annotation></semantics></math>.
+If several records have the same endpoint, summing them at that endpoint
+still cannot increase this error; the triangle inequality groups the
+terms. Injectivity is needed for the <em>sources</em>, not for the
+endpoint projection.</p>
+<h2 id="moving-the-support-costs-boundary-mass">Moving the support costs
+boundary mass</h2>
+<p>Replacing the source by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup><annotation encoding="application/x-tex">N_i^0</annotation></semantics></math>
+in the band selector is a different operation. To make all endpoints
+explicit, put
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>i</mi></msub><mo>=</mo><msub><mn>1</mn><mrow><mo stretchy="false" form="prefix">{</mo><mi>z</mi><mo>&lt;</mo><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup><mo>&lt;</mo><mi>U</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>δ</mi><mi>i</mi></msub><mo>=</mo><mi>−</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>α</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+Q_i=1_{\{z&lt;N_i^0&lt;U\}},\qquad
+\delta_i=-\log(1-\alpha_i)&gt;0.
+\tag{17}
+</annotation></semantics></math><span class="equation-number">(17)</span></span></span> The lower endpoint in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>i</mi></msub><annotation encoding="application/x-tex">Q_i</annotation></semantics></math>
+is open, whereas the lower endpoint in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mi>i</mi></msub><annotation encoding="application/x-tex">P_i</annotation></semantics></math>
+is closed. The upper endpoint is open in both. Equation (12) says
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>δ</mi><mi>i</mi></msub></mrow></msup><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup></mrow><annotation encoding="application/x-tex">N_i=e^{-\delta_i}N_i^0</annotation></semantics></math>.</p>
+<p>Write the actual and comparison sums as
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>U</mi><mi>F</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>P</mi><mi>i</mi></msub><mi>/</mi><mi>D</mi><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>I</mi><mi>F</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>Q</mi><mi>i</mi></msub><mi>/</mi><mi>D</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>U</mi><mi>H</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>P</mi><mi>i</mi></msub><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>H</mi><msub><mi>N</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>I</mi><mi>H</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>Q</mi><mi>i</mi></msub><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>H</mi><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+U_F&amp;=\sum_i P_i/D,&amp; I_F&amp;=\sum_i Q_i/D,\\
+U_H&amp;=\sum_i P_i/(HN_i),&amp; I_H&amp;=\sum_i Q_i/(HN_i^0).
+\end{aligned}
+\tag{18}
+</annotation></semantics></math><span class="equation-number">(18)</span></span></span> The sums
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>F</mi></msub><mo>,</mo><msub><mi>U</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">U_F,U_H</annotation></semantics></math>
+are probabilities of the union of the actual atoms. The comparison sums
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>F</mi></msub><mo>,</mo><msub><mi>I</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">I_F,I_H</annotation></semantics></math>
+need not themselves be probabilities.</p>
+<p><strong>Theorem 4 (Support and weight comparison).</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>,</mo><mi>ε</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\rho,\varepsilon\geq0</annotation></semantics></math>,
+and suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>i</mi></msub><mo>≤</mo><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\alpha_i\leq\rho</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>δ</mi><mi>i</mi></msub><mo>≤</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">\delta_i\leq\varepsilon</annotation></semantics></math>.
+Define the two sets of positive odd integers
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mo>−</mo></msub><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mi>z</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>ε</mi></mrow></msup><mo>,</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>∩</mo><mi mathvariant="double-struck">𝕆</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>S</mi><mo>+</mo></msub><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mi>U</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>ε</mi></mrow></msup><mo>,</mo><mi>U</mi><mo stretchy="false" form="postfix">)</mo><mo>∩</mo><mi mathvariant="double-struck">𝕆</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+S_-=[ze^{-\varepsilon},z)\cap\mathbb O,
+\qquad S_+=[Ue^{-\varepsilon},U)\cap\mathbb O.
+\tag{19}
+</annotation></semantics></math><span class="equation-number">(19)</span></span></span> Then
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">|</mo><msub><mi>U</mi><mi>F</mi></msub><mo>−</mo><msub><mi>I</mi><mi>F</mi></msub><mo stretchy="false" form="prefix">|</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mfrac><mrow><mi>#</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>S</mi><mo>−</mo></msub><mo>∪</mo><msub><mi>S</mi><mo>+</mo></msub><mo stretchy="false" form="postfix">)</mo></mrow><mi>D</mi></mfrac><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">|</mo><msub><mi>U</mi><mi>H</mi></msub><mo>−</mo><msub><mi>I</mi><mi>H</mi></msub><mo stretchy="false" form="prefix">|</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mi>ρ</mi><msub><mi>U</mi><mi>H</mi></msub><mo>+</mo><mfrac><mn>1</mn><mi>H</mi></mfrac><munder><mo>∑</mo><mrow><mi>N</mi><mo>∈</mo><msub><mi>S</mi><mo>−</mo></msub><mo>∪</mo><msub><mi>S</mi><mo>+</mo></msub></mrow></munder><mfrac><mn>1</mn><mi>N</mi></mfrac><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+|U_F-I_F|&amp;\leq\frac{\#(S_-\cup S_+)}D,\\
+|U_H-I_H|&amp;\leq\rho U_H+
+ \frac1H\sum_{N\in S_-\cup S_+}\frac1N.
+\end{aligned}
+\tag{20}
+</annotation></semantics></math><span class="equation-number">(20)</span></span></span> There are also the one-sided bounds
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>F</mi></msub><mo>≤</mo><msub><mi>U</mi><mi>F</mi></msub><mo>+</mo><mfrac><mrow><mi>#</mi><msub><mi>S</mi><mo>−</mo></msub></mrow><mi>D</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>I</mi><mi>H</mi></msub><mo>≤</mo><msub><mi>U</mi><mi>H</mi></msub><mo>+</mo><mfrac><mn>1</mn><mi>H</mi></mfrac><munder><mo>∑</mo><mrow><mi>N</mi><mo>∈</mo><msub><mi>S</mi><mo>−</mo></msub></mrow></munder><mfrac><mn>1</mn><mi>N</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+I_F\leq U_F+\frac{\#S_-}{D},\qquad
+I_H\leq U_H+\frac1H\sum_{N\in S_-}\frac1N.
+\tag{21}
+</annotation></semantics></math><span class="equation-number">(21)</span></span></span></p>
+<p><strong>Proof.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">Q_i=1</annotation></semantics></math>
+but
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">P_i=0</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>&lt;</mo><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup><mo>&lt;</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">N_i&lt;N_i^0&lt;U</annotation></semantics></math>,
+so the failed physical condition is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>&lt;</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">N_i&lt;z</annotation></semantics></math>.
+Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>δ</mi><mi>i</mi></msub></mrow></msup><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup><mo>&gt;</mo><mi>z</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>ε</mi></mrow></msup></mrow><annotation encoding="application/x-tex">N_i=e^{-\delta_i}N_i^0&gt;ze^{-\varepsilon}</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>∈</mo><msub><mi>S</mi><mo>−</mo></msub></mrow><annotation encoding="application/x-tex">N_i\in S_-</annotation></semantics></math>.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">P_i=1</annotation></semantics></math>
+but
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Q_i=0</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup><mo>&gt;</mo><msub><mi>N</mi><mi>i</mi></msub><mo>≥</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">N_i^0&gt;N_i\geq z</annotation></semantics></math>,
+so the failed comparison condition must be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup><mo>≥</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">N_i^0\geq U</annotation></semantics></math>.
+It follows that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>ε</mi></mrow></msup><mo>≤</mo><msub><mi>N</mi><mi>i</mi></msub><mo>&lt;</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">Ue^{-\varepsilon}\leq N_i&lt;U</annotation></semantics></math>,
+hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>∈</mo><msub><mi>S</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">N_i\in S_+</annotation></semantics></math>.
+These implications include equality at the upper comparison endpoint.
+Strict positivity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>δ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\delta_i</annotation></semantics></math>
+handles equality at the lower physical endpoint.</p>
+<p>Different mismatching records have different
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>i</mi></msub><annotation encoding="application/x-tex">N_i</annotation></semantics></math>,
+by Theorem 2, even when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>i</mi></msub><annotation encoding="application/x-tex">N_i</annotation></semantics></math>
+is outside the physical band. This proves the flat bound. For the
+harmonic bound, insert
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>I</mi><mi>H</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">s</mi></mrow></msubsup><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><mfrac><msub><mi>P</mi><mi>i</mi></msub><mrow><mi>H</mi><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+I_H^{\mathrm{phys}}=\sum_i\frac{P_i}{HN_i^0}.
+</annotation></semantics></math></span> Proposition 3 gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>U</mi><mi>H</mi></msub><mo>−</mo><msubsup><mi>I</mi><mi>H</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">s</mi></mrow></msubsup><mo>≤</mo><mi>ρ</mi><msub><mi>U</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">0\leq U_H-I_H^{\mathrm{phys}}\leq\rho U_H</annotation></semantics></math>.
+The remaining support difference is at most the shell sum in (20), since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><msubsup><mi>N</mi><mi>i</mi><mn>0</mn></msubsup><mo>≤</mo><mn>1</mn><mi>/</mi><msub><mi>N</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">1/N_i^0\leq1/N_i</annotation></semantics></math>.
+Add the two estimates.</p>
+<p>For (21), only a comparison-only record can increase the comparison
+sum over the actual sum. It lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mo>−</mo></msub><annotation encoding="application/x-tex">S_-</annotation></semantics></math>.
+On common support the comparison harmonic weight is no greater than the
+actual weight; actual-only records can only decrease the difference.
+This proves both one-sided assertions. ∎</p>
+<div class="figure-scroll"><p><img src="figures/affine-support.svg"
+alt="An exact source and its offset-free comparison point under three interval choices. For the word two and endpoint seven the true source is nine, while the comparison point is twenty-eight thirds. In the band from nine to ten both are included and only the reciprocal weight changes. In the band from thirty-seven quarters to twelve only the comparison point is included. In the band from nine to twenty-eight thirds only the actual source is included because the upper endpoint is excluded. Each sampling band contains an odd integer." /></p></div>
+<p><em>The two operations in Theorem 4, on the exact return
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>↦</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">9\mapsto7</annotation></semantics></math>.
+In the first band the relative weight defect is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>28</mn></mrow><annotation encoding="application/x-tex">1/28</annotation></semantics></math>.
+In the other two, the membership indicator changes; the error must be
+charged to the appropriate boundary, not to a weight estimate alone. The
+middle sampling band contains eleven, although this record’s actual
+source nine lies outside it.</em></p>
+<p>The theorem has a completely explicit finite consequence. Positive
+odd integers in an interval
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo>,</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[l,u)</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">l&gt;0</annotation></semantics></math>,
+have count at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo>−</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">(u-l)/2+1</annotation></semantics></math>.
+Their reciprocal sum is at most
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>l</mi></mfrac><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mi>/</mi><mi>l</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac1l+\frac12\log(u/l).
+\tag{22}
+</annotation></semantics></math><span class="equation-number">(22)</span></span></span> For a nonempty interval, list its
+points as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>,</mo><mi>m</mi><mo>+</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>m</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">m,m+2,\ldots,m+2(k-1)</annotation></semantics></math>.
+The count follows by comparing the first and last points. For the
+reciprocal bound, separate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">1/m</annotation></semantics></math>,
+and integrate the decreasing function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo>+</mo><mn>2</mn><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">1/(m+2t)</annotation></semantics></math>
+over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0,k-1]</annotation></semantics></math>
+to bound the remaining terms. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>≥</mo><mi>l</mi></mrow><annotation encoding="application/x-tex">m\geq l</annotation></semantics></math>
+and the last point is below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>,
+(22) follows. The empty interval also satisfies both bounds.</p>
+<p>Applying them to (19) gives
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">|</mo><msub><mi>U</mi><mi>F</mi></msub><mo>−</mo><msub><mi>I</mi><mi>F</mi></msub><mo stretchy="false" form="prefix">|</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mfrac><mrow><mi>ε</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>+</mo><mi>U</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn><mo>+</mo><mn>2</mn></mrow><mi>D</mi></mfrac><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo stretchy="false" form="prefix">|</mo><msub><mi>U</mi><mi>H</mi></msub><mo>−</mo><msub><mi>I</mi><mi>H</mi></msub><mo stretchy="false" form="prefix">|</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><mi>ρ</mi><msub><mi>U</mi><mi>H</mi></msub><mo>+</mo><mfrac><mrow><mi>ε</mi><mo>+</mo><msup><mi>e</mi><mi>ε</mi></msup><mo stretchy="false" form="prefix">(</mo><msup><mi>z</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>+</mo><msup><mi>U</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><mi>H</mi></mfrac><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+|U_F-I_F|&amp;\leq\frac{\varepsilon(z+U)/2+2}{D},\\
+|U_H-I_H|&amp;\leq\rho U_H+
+ \frac{\varepsilon+e^\varepsilon(z^{-1}+U^{-1})}{H}.
+\end{aligned}
+\tag{23}
+</annotation></semantics></math><span class="equation-number">(23)</span></span></span> Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>ε</mi></mrow></msup><mo>≤</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">1-e^{-\varepsilon}\leq\varepsilon</annotation></semantics></math>,
+by integration of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi></mrow></msup><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">e^{-t}\leq1</annotation></semantics></math>.
+The denominators remain the actual sums (1); no asymptotic replacement
+of either sampling law has occurred.</p>
+<h2 id="how-the-word-length-controls-the-correction">How the word length
+controls the correction</h2>
+<p>There is a sharper elementary offset bound than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>a</mi></msub><mo>&lt;</mo><msup><mn>3</mn><mi>r</mi></msup></mrow><annotation encoding="application/x-tex">F_a&lt;3^r</annotation></semantics></math>.
+Formula (5) gives
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>a</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>r</mi></munderover><msup><mn>3</mn><mrow><mi>r</mi><mo>−</mo><mi>j</mi></mrow></msup><msup><mn>2</mn><mrow><mi>−</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>a</mi><mi>j</mi></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>a</mi><mi>r</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>≤</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>r</mi></msup><mo>−</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+F_a=\sum_{j=1}^r3^{r-j}2^{-(a_j+\cdots+a_r)}
+\leq\left(\frac32\right)^r-1.
+\tag{24}
+</annotation></semantics></math><span class="equation-number">(24)</span></span></span> Every suffix contains at least its
+number of letters, so its exponent is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>−</mo><mi>j</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r-j+1</annotation></semantics></math>.
+Summing the resulting geometric series proves (24). Equality holds for
+the all-ones word. Thus this is the exact largest offset among all
+positive words of length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
+though further restrictions on their total can exclude that maximizing
+word.</p>
+<p><strong>Proposition 5 (A local correction bound).</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">B&gt;1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>,</mo><mi>σ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\kappa,\sigma&gt;0</annotation></semantics></math>,
+and
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mi>σ</mi><mo>−</mo><mi>κ</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\lambda=\sigma-\kappa\log(3/2)&gt;0.
+</annotation></semantics></math></span> If a record has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≤</mo><mi>κ</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">r\leq\kappa\log B</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>≥</mo><msup><mi>B</mi><mi>σ</mi></msup></mrow><annotation encoding="application/x-tex">M_i\geq B^\sigma</annotation></semantics></math>,
+then
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><msub><mi>α</mi><mi>i</mi></msub><mo>≤</mo><msup><mi>B</mi><mrow><mi>−</mi><mi>λ</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>δ</mi><mi>i</mi></msub><mo>≤</mo><mfrac><msup><mi>B</mi><mrow><mi>−</mi><mi>λ</mi></mrow></msup><mrow><mn>1</mn><mo>−</mo><msup><mi>B</mi><mrow><mi>−</mi><mi>λ</mi></mrow></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+0&lt;\alpha_i\leq B^{-\lambda},\qquad
+\delta_i\leq\frac{B^{-\lambda}}{1-B^{-\lambda}}.
+\tag{25}
+</annotation></semantics></math><span class="equation-number">(25)</span></span></span> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>B</mi><mi>λ</mi></msup><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">B^\lambda\geq2</annotation></semantics></math>,
+the second bound is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msup><mi>B</mi><mrow><mi>−</mi><mi>λ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">2B^{-\lambda}</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Divide (24) by the endpoint lower bound, and
+use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><msup><mo stretchy="false" form="postfix">)</mo><mi>r</mi></msup><mo>≤</mo><msup><mi>B</mi><mrow><mi>κ</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">(3/2)^r\leq B^{\kappa\log(3/2)}</annotation></semantics></math>.
+The source is positive, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>i</mi></msub><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha_i&lt;1</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>v</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0\leq v&lt;1</annotation></semantics></math>,
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>v</mi></msubsup><mfrac><mrow><mi>d</mi><mi>t</mi></mrow><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfrac><mo>≤</mo><mfrac><mi>v</mi><mrow><mn>1</mn><mo>−</mo><mi>v</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+-\log(1-v)=\int_0^v\frac{dt}{1-t}\leq\frac{v}{1-v}.
+</annotation></semantics></math></span> The right side increases with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
+proving (25). When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>B</mi><mrow><mi>−</mi><mi>λ</mi></mrow></msup><mo>≤</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">B^{-\lambda}\leq1/2</annotation></semantics></math>,
+its denominator is at least one half. ∎</p>
+<p>For the explicit local conditions
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≤</mo><mfrac><mn>21</mn><mn>2000</mn></mfrac><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>B</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>M</mi><mi>i</mi></msub><mo>≥</mo><msup><mi>B</mi><mrow><mn>999</mn><mi>/</mi><mn>1000</mn></mrow></msup><mo>,</mo></mrow><annotation encoding="application/x-tex">
+r\leq\frac{21}{2000}\log B,\qquad M_i\geq B^{999/1000},
+\tag{26}
+</annotation></semantics></math><span class="equation-number">(26)</span></span></span> used in Mazur’s affine-correction
+estimate, one may take the rational bounds
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>i</mi></msub><mo>≤</mo><msup><mi>B</mi><mrow><mi>−</mi><mn>198939</mn><mi>/</mi><mn>200000</mn></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>δ</mi><mi>i</mi></msub><mo>≤</mo><msup><mi>B</mi><mrow><mi>−</mi><mn>9</mn><mi>/</mi><mn>10</mn></mrow></msup><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>B</mi><mo>≥</mo><mn>300000</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\alpha_i\leq B^{-198939/200000},\qquad
+\delta_i\leq B^{-9/10}\quad\text{if }\log B\geq300000.
+\tag{27}
+</annotation></semantics></math><span class="equation-number">(27)</span></span></span> Here is the constant calculation. The
+positive exponential series gives
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mn>41</mn><mi>/</mi><mn>100</mn></mrow></msup><mo>≥</mo><mn>1</mn><mo>+</mo><mfrac><mn>41</mn><mn>100</mn></mfrac><mo>+</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mn>41</mn><mi>/</mi><mn>100</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mo>+</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mn>41</mn><mi>/</mi><mn>100</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>3</mn></msup></mrow><mn>6</mn></mfrac><mo>&gt;</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+e^{41/100}\geq1+\frac{41}{100}
++\frac{(41/100)^2}{2}+\frac{(41/100)^3}{6}&gt;\frac32.
+</annotation></semantics></math></span> Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mn>41</mn><mi>/</mi><mn>100</mn></mrow><annotation encoding="application/x-tex">\log(3/2)&lt;41/100</annotation></semantics></math>,
+and
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>999</mn><mn>1000</mn></mfrac><mo>−</mo><mfrac><mn>21</mn><mn>2000</mn></mfrac><mfrac><mn>41</mn><mn>100</mn></mfrac><mo>=</mo><mfrac><mn>198939</mn><mn>200000</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{999}{1000}-\frac{21}{2000}\frac{41}{100}
+=\frac{198939}{200000}.
+</annotation></semantics></math></span> This proves the first bound. The
+assumed lower bound on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">\log B</annotation></semantics></math>
+implies both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>B</mi><mrow><mn>198939</mn><mi>/</mi><mn>200000</mn></mrow></msup><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">B^{198939/200000}\geq2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>B</mi><mrow><mn>18939</mn><mi>/</mi><mn>200000</mn></mrow></msup><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">B^{18939/200000}\geq2</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\log2&lt;1</annotation></semantics></math>.
+Applying Proposition 5 gives the second bound. The inequality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\log2&lt;1</annotation></semantics></math>
+itself follows from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>≥</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">e\geq1+1+1/2&gt;2</annotation></semantics></math>.</p>
+<p>The source’s coarser estimate uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>3</mn><mi>r</mi></msup><annotation encoding="application/x-tex">3^r</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>3</mn><mo>&lt;</mo><mn>11</mn><mi>/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">\log3&lt;11/10</annotation></semantics></math>,
+giving the exponent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>19749</mn><mi>/</mi><mn>20000</mn></mrow><annotation encoding="application/x-tex">19749/20000</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\alpha_i</annotation></semantics></math>.
+Retaining the geometric sum (24) improves that local denominator
+estimate. It does not by itself change the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>B</mi><mrow><mi>−</mi><mn>9</mn><mi>/</mi><mn>10</mn></mrow></msup><annotation encoding="application/x-tex">B^{-9/10}</annotation></semantics></math>
+boundary allowance or the final logarithmic density exponent, which also
+depend on other estimates. Conditions (26) remain explicit mathematical
+conditions; checking them on a particular family is separate from this
+calculation.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<h3 id="compute-both-arithmetic-cylinders">1 Compute both arithmetic
+cylinders</h3>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">a=(2,1,1)</annotation></semantics></math>,
+find all positive odd endpoints satisfying (6), their sources, and the
+exact intermediate states. Exhibit a valid endpoint smaller than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>⋅</mo><msup><mn>3</mn><mi>r</mi></msup></mrow><annotation encoding="application/x-tex">2\cdot3^r</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> We have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">r=3</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>r</mi></msub><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">A_r=4</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>r</mi></msub><mo>=</mo><mn>29</mn></mrow><annotation encoding="application/x-tex">C_r=29</annotation></semantics></math>.
+Since the inverse of sixteen modulo twenty-seven is twenty-two,
+compatibility is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≡</mo><mn>17</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>27</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">M\equiv17\pmod{27}</annotation></semantics></math>.
+Oddness gives exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mn>17</mn><mo>+</mo><mn>54</mn><mi>j</mi></mrow><annotation encoding="application/x-tex">M=17+54j</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j\geq0</annotation></semantics></math>.
+Equation (7) gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>9</mn><mo>+</mo><mn>32</mn><mi>j</mi></mrow><annotation encoding="application/x-tex">N=9+32j</annotation></semantics></math>,
+and the actual trajectory is
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>+</mo><mn>32</mn><mi>j</mi><mspace width="0.222em"></mspace><mo>↦</mo><mspace width="0.222em"></mspace><mn>7</mn><mo>+</mo><mn>24</mn><mi>j</mi><mspace width="0.222em"></mspace><mo>↦</mo><mspace width="0.222em"></mspace><mn>11</mn><mo>+</mo><mn>36</mn><mi>j</mi><mspace width="0.222em"></mspace><mo>↦</mo><mspace width="0.222em"></mspace><mn>17</mn><mo>+</mo><mn>54</mn><mi>j</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+9+32j\ \longmapsto\ 7+24j\ \longmapsto\ 11+36j\ \longmapsto\ 17+54j.
+</annotation></semantics></math></span> The numerators at these three returns
+are respectively four, two, and two times the displayed positive odd
+next states, so the valuations are exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,1,1)</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j=0</annotation></semantics></math>,
+the endpoint seventeen is smaller than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>⋅</mo><msup><mn>3</mn><mn>3</mn></msup><mo>=</mo><mn>54</mn></mrow><annotation encoding="application/x-tex">2\cdot3^3=54</annotation></semantics></math>.
+Backwards decoding proves positivity without that sufficient but
+unnecessary size condition.</p>
+<h3 id="separate-a-weight-error-from-a-support-error">2 Separate a
+weight error from a support error</h3>
+<p>For the word
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2)</annotation></semantics></math>
+and endpoint seven, compute the actual and comparison harmonic masses in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>9</mn><mo>,</mo><mn>10</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[9,10)</annotation></semantics></math>.
+Then compute them in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>9</mn><mo>,</mo><mn>28</mn><mi>/</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[9,28/3)</annotation></semantics></math>,
+using the selectors (17).</p>
+<p><strong>Solution.</strong> The actual source is nine, the comparison
+point is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>28</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">28/3</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>28</mn></mrow><annotation encoding="application/x-tex">\alpha=1/28</annotation></semantics></math>.
+In either physical band, the only positive odd integer is nine, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">H=1/9</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>9</mn><mo>,</mo><mn>10</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[9,10)</annotation></semantics></math>,
+both selectors equal one. Therefore
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>H</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">U_H=1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>H</mi></msub><mo>=</mo><mn>27</mn><mi>/</mi><mn>28</mn></mrow><annotation encoding="application/x-tex">I_H=27/28</annotation></semantics></math>,
+and the difference is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><msub><mi>U</mi><mi>H</mi></msub><mo>=</mo><mn>1</mn><mi>/</mi><mn>28</mn></mrow><annotation encoding="application/x-tex">\alpha U_H=1/28</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>9</mn><mo>,</mo><mn>28</mn><mi>/</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[9,28/3)</annotation></semantics></math>,
+the actual selector is one but the comparison point lies on the excluded
+upper endpoint, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>H</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">I_H=0</annotation></semantics></math>
+and the difference is one. The latter is a support error. A bound of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>28</mn></mrow><annotation encoding="application/x-tex">1/28</annotation></semantics></math>
+alone would be false. A singleton family is injective; if desired it is
+a terminal family with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mn>6</mn><mo>,</mo><mi>h</mi><mo>=</mo><mn>4</mn><mo>,</mo><mi>J</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mn>5</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">B=6,h=4,J=\{5\}</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>,</mo><mn>11</mn><mo>,</mo><mn>17</mn><mo>,</mo><mn>13</mn><mo>,</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">7,11,17,13,5</annotation></semantics></math>
+has first entrance to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mn>6</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[1,6]</annotation></semantics></math>
+at time four.</p>
+<h3 id="why-a-remaining-time-is-not-a-first-time-from-the-source">3 Why
+a remaining time is not a first time from the source</h3>
+<p>Consider
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">B=50</annotation></semantics></math>
+and the odd orbit
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>81</mn><mo>,</mo><mn>61</mn><mo>,</mo><mn>23</mn><mo>,</mo><mn>35</mn><mo>,</mo><mn>53</mn><mo>,</mo><mn>5</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+81,61,23,35,53,5.
+</annotation></semantics></math></span> Verify the transitions. Construct two
+terminal records with remaining first-entrance time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h=1</annotation></semantics></math>
+and the same source. Explain precisely which hypothesis of Theorem 2
+fails and why the later record does not give the source’s first
+entrance.</p>
+<p><strong>Solution.</strong> The five valuations are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">2,3,1,1,5</annotation></semantics></math>:
+the numerators are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>244</mn><mo>,</mo><mn>184</mn><mo>,</mo><mn>70</mn><mo>,</mo><mn>106</mn><mo>,</mo><mn>160</mn></mrow><annotation encoding="application/x-tex">244,184,70,106,160</annotation></semantics></math>.
+The endpoints sixty-one and fifty-three both first enter
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mn>50</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[1,50]</annotation></semantics></math>
+after one return. They give records
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mn>61</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,(2),61)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mn>53</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(5,(2,3,1,1),53)</annotation></semantics></math>
+with source eighty-one. The terminal-time set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">J=\{2,5\}</annotation></semantics></math>
+has diameter three, greater than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h=1</annotation></semantics></math>,
+so Theorem 2 does not apply. The source first enters at time two, at
+twenty-three, then passes through thirty-five and leaves the interval at
+fifty-three. Its later record leads to an entrance at time five, not its
+first entrance. Thus both the window condition and the distinction
+between terminal records and genuine first passage have concrete
+content.</p>
+<h3 id="retain-nonuniform-errors-under-a-projection">4 Retain nonuniform
+errors under a projection</h3>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\mathcal A_i</annotation></semantics></math>
+be disjoint events in a finite probability space, with masses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>μ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\mu_i</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>η</mi><mi>i</mi></msub><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0\leq\eta_i\leq1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ν</mi><mi>i</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>η</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><msub><mi>μ</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\nu_i=(1-\eta_i)\mu_i</annotation></semantics></math>.
+For any map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>
+from the index set to a finite set, define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mo>∑</mo><mrow><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>y</mi></mrow></msub><msub><mi>μ</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p(y)=\sum_{\pi(i)=y}\mu_i</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mo>∑</mo><mrow><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>y</mi></mrow></msub><msub><mi>ν</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">q(y)=\sum_{\pi(i)=y}\nu_i</annotation></semantics></math>.
+Prove a sharp formula for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>y</mi></msub><mo stretchy="false" form="prefix">|</mo><mi>p</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>q</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">\sum_y|p(y)-q(y)|</annotation></semantics></math>.
+Explain what fails if a source event is listed repeatedly.</p>
+<p><strong>Solution.</strong> Every difference
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>i</mi></msub><mo>−</mo><msub><mi>ν</mi><mi>i</mi></msub><mo>=</mo><msub><mi>η</mi><mi>i</mi></msub><msub><mi>μ</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mu_i-\nu_i=\eta_i\mu_i</annotation></semantics></math>
+is nonnegative, so each grouped difference is also nonnegative.
+Consequently
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mi>y</mi></munder><mo stretchy="false" form="prefix">|</mo><mi>p</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>q</mi><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>=</mo><munder><mo>∑</mo><mi>y</mi></munder><munder><mo>∑</mo><mrow><mi>π</mi><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>y</mi></mrow></munder><msub><mi>η</mi><mi>i</mi></msub><msub><mi>μ</mi><mi>i</mi></msub><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>η</mi><mi>i</mi></msub><msub><mi>μ</mi><mi>i</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_y|p(y)-q(y)|
+=\sum_y\sum_{\pi(i)=y}\eta_i\mu_i
+=\sum_i\eta_i\mu_i.
+</annotation></semantics></math></span> This is an equality, not a cardinality
+bound. It is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mi>i</mi></msub><msub><mi>η</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><msub><mo>∑</mo><mi>i</mi></msub><msub><mi>μ</mi><mi>i</mi></msub><mo>≤</mo><msub><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mi>i</mi></msub><msub><mi>η</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">(\max_i\eta_i)\sum_i\mu_i\leq\max_i\eta_i</annotation></semantics></math>;
+for an empty index set both sums are zero. If the whole sample space is
+listed as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+different events, each has mass one and the sum of its repeated masses
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+not at most one. With a common defect
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\eta&gt;0</annotation></semantics></math>,
+the error is then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>η</mi></mrow><annotation encoding="application/x-tex">m\eta</annotation></semantics></math>.
+Proving the source descriptions disjoint is exactly what removes this
+multiplicity.</p>
+<h2 id="what-the-comparison-achieves">What the comparison achieves</h2>
+<p>The affine congruence determines a genuine trajectory by an explicit
+inverse. A short time window and a common remaining first-entrance time
+make its terminal descriptions injective. These facts turn the sum of
+local relative errors into a bound by actual probability mass. Moving a
+support boundary contributes a second, geometrically localized error,
+with the original finite denominators intact.</p>
+<p>This is useful well beyond this particular orbit problem: inverse
+descriptions, disjoint event decompositions, relative weight errors and
+boundary mass are compatible tools for comparing discrete measures. In
+the present application, they supply the exact finite foundation on
+which local probability estimates and phase averages can act.
+Identifying those measures with a genuine first-passage law is further
+mathematics, not a consequence of an affine endpoint formula alone.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Lech Mazur, <em>Natural-Density Almost-Bounded Collatz Orbits in
+Logarithmic Time</em>, version 2, 21 July 2026, Appendix C.2–C.3 and its
+accompanying formal source, <a
+href="https://www.proofatlas.ai/formalizations/natural-density-log-time-collatz/">ProofAtlas</a>.
+The terminal-record injectivity, common finite sampling laws, exact
+reciprocal denominator and mass-weighted comparison follow this
+construction. The backwards positivity proof, explicit general shell
+bounds and sharper local offset calculation are supplied here; no
+literature-wide priority claim is made.</li>
+<li>Terence Tao, <em>Almost all orbits of the Collatz map attain almost
+bounded values</em>, Forum of Mathematics, Pi 10 (2022), e12; <a
+href="https://arxiv.org/abs/1909.03562v7">arXiv:1909.03562v7</a>,
+Sections 4 and 5. Valuation-word coordinates, affine offsets and
+harmonic first-passage weights underlie the construction. Their required
+finite identities and the new comparisons are proved internally.</li>
+</ul>
+<nav aria-label="Lesson sequence"><p><a href="NT-COLLATZ-25.html">Previous: First entrances and quantitative changes of clock</a><br><a href="NT-COLLATZ-27.html">Next: Integer thresholds and weighted phase averages</a></p></nav></main><footer>Original mathematical exposition and illustrations: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. References retain their own authorship and terms.</footer></body></html>

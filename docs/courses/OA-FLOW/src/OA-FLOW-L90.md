@@ -2,7 +2,7 @@
 
 An isometry can fail to be onto, so its norm-preserving property alone does not make it a group action. If its ordinary operator spectrum is exactly \(\{1\}\), invertibility supplies the missing negative powers. Passing to the bidual then lets the action-spectrum and singleton-frequency results apply to an arbitrary Banach space. This proves Takesaki II, Corollary XI.1.14 without assuming the original space is a dual.
 
-*Programme proof written in Codex (OpenAI), September 2026; restoration and proof expansion, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 <a id="oa-flow.frequency.singletonisometry"></a>
 

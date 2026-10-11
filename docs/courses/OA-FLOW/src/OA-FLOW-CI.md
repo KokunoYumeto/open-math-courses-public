@@ -1,6 +1,6 @@
 # Closed conjugate-linear involutions from their graph Hilbert space
 
-*Fresh local proof by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights in this new exposition.*
+*CC0-1.0 to the extent of rights in this new exposition.*
 
 All Hilbert spaces are arbitrary, and inner products are linear in the first variable. We use completeness and the locally proved projection, Hilbert representation and bounded adjoint facts in [SF-0/SB-0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0), and the bounded and unbounded spectral calculus, with its exact domains, proved in SB-1–SB-6 there. No closed-form representation theorem, unbounded polar-decomposition theorem, normal-weight characterization or modular theorem is an input. The earlier Hilbert facts are [SF-0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0) and [SB-0](OA-FLOW-SF.md#OA-FLOW.SF.SB0); the full spectral-domain proof is [SB-1–SB-6](OA-FLOW-SF.md#OA-FLOW.SF.SB1). Scalar spectral convergence uses [SC-04–05](OA-FLOW-SC.md#sc-04).
 

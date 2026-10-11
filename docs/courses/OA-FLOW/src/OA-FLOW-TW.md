@@ -1,6 +1,6 @@
 # Tensoring a weight with the usual trace
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0 1.0; font components retain their accompanying terms.*
+*Original exposition and illustration sources: CC0 1.0; font components retain their accompanying terms.*
 
 The usual trace assigns value one to a rank-one projection. We retain this normalization when adjoining a Hilbert-space factor to a von Neumann algebra with a weight. Finite matrix corners construct the weight on every positive operator, and its GNS coordinates determine the complete modular and relative domains. The Hilbert-space factor may have an uncountable orthonormal basis.
 

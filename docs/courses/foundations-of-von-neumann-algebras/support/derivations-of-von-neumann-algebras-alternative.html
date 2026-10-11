@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Derivations of von Neumann algebras: an alternative proof</title>
+<meta content="A lesson of the course Foundations of von Neumann algebras. Draft, written by AI; English only for now." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<link href="../../../assets/site.css" rel="stylesheet"/>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script defer="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+</head><body><main id="main"><p><a href="../index.html">Foundations of von Neumann algebras</a> · <a href="src/derivations-of-von-neumann-algebras-alternative.md">Editable source</a> · <a href="derivations-of-von-neumann-algebras-alternative.json">Proof and source records</a></p><article class="lesson"><h1 id="derivations-of-von-neumann-algebras-an-alternative-proof">Derivations of von Neumann algebras: an alternative proof</h1>
+<p><em>Original proof received through ChatGPT Pro; the exact generating model and reasoning effort are unknown. GPT-6 Astra (OpenAI), Ultra, checked the retained argument and supplied the elementary closedness and compactness bridges and dependency integration. Original mathematical exposition: CC0 1.0.</em></p>
+<p>This proof treats arbitrary von Neumann algebras, with no countability or factor assumption. It proceeds through finite traces, affine fixed points and central reductions. It is retained as a distinct route, alongside the spectral reconstruction in the operator-algebra programme.</p>
+<h2 id="OA-FND-INNER-THEOREM"><span id="oa-fnd-inner-theorem"></span>Statement</h2>
+<p><strong>Theorem (automatic continuity and Kadison–Sakai innerness).</strong> A derivation of a <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span> is a complex-linear map <span class="math" data-tex="\(\delta:A\to A\)">\(\delta:A\to A\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\delta(xy)=\delta(x)y+x\delta(y)\qquad(x,y\in A).
+\]">\[
+\delta(xy)=\delta(x)y+x\delta(y)\qquad(x,y\in A).
+\]</span>
+No continuity is included in this definition.</p>
+<p>Every derivation of every <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra is bounded. If <span class="math" data-tex="\(M\)">\(M\)</span> is a von Neumann algebra and <span class="math" data-tex="\(\delta:M\to M\)">\(\delta:M\to M\)</span> is a derivation, then there exists <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> such that
+<span class="math math-display" data-tex="\[
+\delta(x)=ax-xa\qquad(x\in M),
+\qquad \|a\|\le 2\|\delta\|.
+\]">\[
+\delta(x)=ax-xa\qquad(x\in M),
+\qquad \|a\|\le 2\|\delta\|.
+\]</span>
+Two implementers in <span class="math" data-tex="\(M\)">\(M\)</span> differ by an element of <span class="math" data-tex="\(Z(M)\)">\(Z(M)\)</span>, and adding an element of <span class="math" data-tex="\(Z(M)\)">\(Z(M)\)</span> to an implementer does not change the derivation. Consequently every implementer <span class="math" data-tex="\(b\in M\)">\(b\in M\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\operatorname{dist}(b,Z(M))\le 2\|\delta\|.
+\]">\[
+\operatorname{dist}(b,Z(M))\le 2\|\delta\|.
+\]</span>
+If, in addition,
+<span class="math math-display" data-tex="\[
+\delta(x^*)=\delta(x)^*\qquad(x\in M),
+\]">\[
+\delta(x^*)=\delta(x)^*\qquad(x\in M),
+\]</span>
+then one can choose
+<span class="math math-display" data-tex="\[
+a=ih,\qquad h=h^*\in M,\qquad \|h\|\le\|\delta\|.
+\]">\[
+a=ih,\qquad h=h^*\in M,\qquad \|h\|\le\|\delta\|.
+\]</span>
+In this case every implementer in <span class="math" data-tex="\(M\)">\(M\)</span> has distance at most <span class="math" data-tex="\(\|\delta\|\)">\(\|\delta\|\)</span> from <span class="math" data-tex="\(Z(M)\)">\(Z(M)\)</span>.</p>
+<p>There is no separability, countable decomposability, factor, type, or trace hypothesis. These are bounds furnished by the proof; no optimality assertion is made.</p>
+<h2 id="proof">Proof</h2>
+<p>Write <span class="math" data-tex="\(A_h=\{x\in A:x=x^*\}\)">\(A_h=\{x\in A:x=x^*\}\)</span>, <span class="math" data-tex="\(\mathcal U(A)\)">\(\mathcal U(A)\)</span> for the unitary group of a unital algebra, and <span class="math" data-tex="\([a,x]=ax-xa\)">\([a,x]=ax-xa\)</span>. A derivation preserving the involution is called a *-derivation. For a concrete von Neumann algebra, weak-* means its <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak topology. Central sums are indexed by arbitrary sets and are limits of finite partial sums. The lesson abbreviations used in citations are expanded, with result numbers, under <strong>Results used</strong>.</p>
+<p>The zero algebra is immediate, with implementer zero. All algebras represented on Hilbert spaces below act nondegenerately.</p>
+<h3 id="OA-FND-INNER-STEP-01"><span id="oa-fnd-inner-step-01"></span>1. Automatic continuity</h3>
+<p><strong>1.1. Algebraic reduction to *-derivations.</strong> For an arbitrary derivation define
+<span class="math math-display" data-tex="\[
+\delta^\#(x)=\delta(x^*)^*,\qquad
+\delta_1=\frac{\delta+\delta^\#}{2},\qquad
+\delta_2=\frac{\delta-\delta^\#}{2i}.
+\]">\[
+\delta^\#(x)=\delta(x^*)^*,\qquad
+\delta_1=\frac{\delta+\delta^\#}{2},\qquad
+\delta_2=\frac{\delta-\delta^\#}{2i}.
+\]</span>
+The map <span class="math" data-tex="\(\delta^\#\)">\(\delta^\#\)</span> is complex-linear. Moreover,
+<span class="math math-display" data-tex="\[
+\delta^\#(xy)
+=\bigl(\delta(y^*)x^*+y^*\delta(x^*)\bigr)^*
+=x\delta^\#(y)+\delta^\#(x)y.
+\]">\[
+\delta^\#(xy)
+=\bigl(\delta(y^*)x^*+y^*\delta(x^*)\bigr)^*
+=x\delta^\#(y)+\delta^\#(x)y.
+\]</span>
+Thus <span class="math" data-tex="\(\delta_1,\delta_2\)">\(\delta_1,\delta_2\)</span> are derivations, and
+<span class="math math-display" data-tex="\[
+\delta_1(x^*)=\frac{\delta(x^*)+\delta(x)^*}{2}=\delta_1(x)^*,
+\qquad
+\delta_2(x^*)=\frac{\delta(x^*)-\delta(x)^*}{2i}=\delta_2(x)^*.
+\]">\[
+\delta_1(x^*)=\frac{\delta(x^*)+\delta(x)^*}{2}=\delta_1(x)^*,
+\qquad
+\delta_2(x^*)=\frac{\delta(x^*)-\delta(x)^*}{2i}=\delta_2(x)^*.
+\]</span>
+Moreover,
+<span class="math math-display" data-tex="\[
+\delta=\delta_1+i\delta_2.
+\]">\[
+\delta=\delta_1+i\delta_2.
+\]</span>
+These assertions are algebraic and do not assume continuity. Once boundedness is established, they also give
+<span class="math math-display" data-tex="\[
+\|\delta^\#\|=\|\delta\|,
+\qquad \|\delta_j\|\le\|\delta\|\quad(j=1,2).
+\tag{1.1}
+\]">\[
+\|\delta^\#\|=\|\delta\|,
+\qquad \|\delta_j\|\le\|\delta\|\quad(j=1,2).
+\tag{1.1}
+\]</span></p>
+<p>It suffices to treat a unital algebra. Indeed, represent a nonunital <span class="math" data-tex="\(A\)">\(A\)</span> faithfully, using <a href="../representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#faithful-representations-of-c--algebras">GNS, Theorem 7.2</a>. The algebra <span class="math" data-tex="\(A+\mathbb C1\subseteq B(H)\)">\(A+\mathbb C1\subseteq B(H)\)</span> is closed: a finite-dimensional extension of a closed subspace of a Banach space is closed. The <a href="#OA-FND-INNER-CLOSEDNESS">closedness bridge below</a> proves this implication explicitly. Since <span class="math" data-tex="\(1\notin A\)">\(1\notin A\)</span>, the expression <span class="math" data-tex="\(x+\lambda1\)">\(x+\lambda1\)</span> is unique, and
+<span class="math math-display" data-tex="\[
+\widetilde\delta(x+\lambda1)=\delta(x)
+\]">\[
+\widetilde\delta(x+\lambda1)=\delta(x)
+\]</span>
+defines a derivation: both sides of its product rule at <span class="math" data-tex="\(x+\lambda1,y+\mu1\)">\(x+\lambda1,y+\mu1\)</span> equal
+<span class="math math-display" data-tex="\[
+\delta(x)y+x\delta(y)+\lambda\delta(y)+\mu\delta(x).
+\]">\[
+\delta(x)y+x\delta(y)+\lambda\delta(y)+\mu\delta(x).
+\]</span>
+It preserves the involution when <span class="math" data-tex="\(\delta\)">\(\delta\)</span> does, since
+<span class="math" data-tex="\(\widetilde\delta((x+\lambda1)^*)=\delta(x^*)=\delta(x)^*\)">\(\widetilde\delta((x+\lambda1)^*)=\delta(x^*)=\delta(x)^*\)</span>.
+Boundedness of this extension implies boundedness on <span class="math" data-tex="\(A\)">\(A\)</span>. In a unital algebra every derivation satisfies <span class="math" data-tex="\(\delta(1)=0\)">\(\delta(1)=0\)</span>, by applying the product rule to <span class="math" data-tex="\(1\cdot1\)">\(1\cdot1\)</span>.</p>
+<p><strong>1.2. A state calculation.</strong> Let <span class="math" data-tex="\(D\)">\(D\)</span> be any derivation of a unital <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra, let <span class="math" data-tex="\(b=b^*\)">\(b=b^*\)</span>, and let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a state whose restriction to <span class="math" data-tex="\(C^*(1,b)\)">\(C^*(1,b)\)</span> is a character. Then
+<span class="math math-display" data-tex="\[
+\varphi(D(b))=0.
+\tag{1.2}
+\]">\[
+\varphi(D(b))=0.
+\tag{1.2}
+\]</span>
+To prove this, put <span class="math" data-tex="\(c=b-\varphi(b)1\)">\(c=b-\varphi(b)1\)</span>. Continuous functional calculus <a href="../c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07">CF, Theorem 5.1</a> gives positive elements
+<span class="math math-display" data-tex="\[
+s_+=(c_+)^{1/2},\qquad s_-=(c_-)^{1/2},
+\qquad c=s_+^2-s_-^2
+\]">\[
+s_+=(c_+)^{1/2},\qquad s_-=(c_-)^{1/2},
+\qquad c=s_+^2-s_-^2
+\]</span>
+in <span class="math" data-tex="\(C^*(1,b)\)">\(C^*(1,b)\)</span>. The character takes <span class="math" data-tex="\(c\)">\(c\)</span> to zero and therefore takes <span class="math" data-tex="\(s_+^2,s_-^2\)">\(s_+^2,s_-^2\)</span> to zero. Hence <span class="math" data-tex="\(\varphi(s_\pm^2)=0\)">\(\varphi(s_\pm^2)=0\)</span>. The Cauchy–Schwarz inequality for a positive functional <a href="../representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#OA-FND-GN-03">GNS, Proposition 3.2</a>, in the form
+<span class="math math-display" data-tex="\[
+|\varphi(rs)|^2\le\varphi(rr^*)\varphi(s^*s),
+\]">\[
+|\varphi(rs)|^2\le\varphi(rr^*)\varphi(s^*s),
+\]</span>
+shows that
+<span class="math math-display" data-tex="\[
+\varphi(D(s_\pm)s_\pm)=\varphi(s_\pm D(s_\pm))=0.
+\]">\[
+\varphi(D(s_\pm)s_\pm)=\varphi(s_\pm D(s_\pm))=0.
+\]</span>
+Applying <span class="math" data-tex="\(D\)">\(D\)</span> to <span class="math" data-tex="\(c=s_+^2-s_-^2\)">\(c=s_+^2-s_-^2\)</span>, and using <span class="math" data-tex="\(D(1)=0\)">\(D(1)=0\)</span>, proves (1.2).</p>
+<p><strong>1.3. Closed graph.</strong> Let <span class="math" data-tex="\(D\)">\(D\)</span> be a *-derivation. Suppose that
+<span class="math math-display" data-tex="\[
+x_n\in A_h,\qquad x_n\longrightarrow0,\qquad D(x_n)\longrightarrow b\in A_h
+\]">\[
+x_n\in A_h,\qquad x_n\longrightarrow0,\qquad D(x_n)\longrightarrow b\in A_h
+\]</span>
+in norm. We prove <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. If <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, its spectrum contains a nonzero real number <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Replacing <span class="math" data-tex="\(x_n,b\)">\(x_n,b\)</span> by <span class="math" data-tex="\(x_n/\lambda,b/\lambda\)">\(x_n/\lambda,b/\lambda\)</span>, we can assume <span class="math" data-tex="\(1\in\sigma(b)\)">\(1\in\sigma(b)\)</span>.</p>
+<p>Choose a continuous real function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\sigma(b)\)">\(\sigma(b)\)</span> such that
+<span class="math math-display" data-tex="\[
+0\le f\le1,\qquad f(1)=1,\qquad f(t)=0\text{ for }t\le\tfrac12.
+\]">\[
+0\le f\le1,\qquad f(1)=1,\qquad f(t)=0\text{ for }t\le\tfrac12.
+\]</span>
+For <span class="math" data-tex="\(v=f(b)\)">\(v=f(b)\)</span>, functional calculus gives
+<span class="math math-display" data-tex="\[
+0\le v\le1,\qquad \|v\|=1,\qquad vbv\ge\tfrac12v^2.
+\]">\[
+0\le v\le1,\qquad \|v\|=1,\qquad vbv\ge\tfrac12v^2.
+\]</span>
+After discarding finitely many terms, <span class="math" data-tex="\(r_n=\|x_n\|&gt;0\)">\(r_n=\|x_n\|&gt;0\)</span>. Set
+<span class="math math-display" data-tex="\[
+y_n=x_n+3r_n1,\qquad b_n=vy_nv,\qquad t_n=\frac{b_n}{4r_n}.
+\]">\[
+y_n=x_n+3r_n1,\qquad b_n=vy_nv,\qquad t_n=\frac{b_n}{4r_n}.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+2r_n1\le y_n\le4r_n1,
+\qquad \tfrac12v^2\le t_n\le v^2,
+\qquad \|t_n\|\ge\tfrac12.
+\tag{1.3}
+\]">\[
+2r_n1\le y_n\le4r_n1,
+\qquad \tfrac12v^2\le t_n\le v^2,
+\qquad \|t_n\|\ge\tfrac12.
+\tag{1.3}
+\]</span>
+The product rule, without any continuity assumption on <span class="math" data-tex="\(D\)">\(D\)</span>, gives
+<span class="math math-display" data-tex="\[
+D(b_n)=D(v)y_nv+vD(x_n)v+vy_nD(v)\longrightarrow vbv.
+\tag{1.4}
+\]">\[
+D(b_n)=D(v)y_nv+vD(x_n)v+vy_nD(v)\longrightarrow vbv.
+\tag{1.4}
+\]</span>
+Here <span class="math" data-tex="\(D(v)\)">\(D(v)\)</span> is one fixed element, and <span class="math" data-tex="\(\|y_n\|\to0\)">\(\|y_n\|\to0\)</span>.</p>
+<p>Evaluation at the spectral point <span class="math" data-tex="\(\|b_n\|\)">\(\|b_n\|\)</span> is a character of <span class="math" data-tex="\(C^*(1,b_n)\)">\(C^*(1,b_n)\)</span>. Extend it to a state <span class="math" data-tex="\(\varphi_n\)">\(\varphi_n\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>, using <a href="../representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#faithful-representations-of-c--algebras">GNS, Proposition 7.1a</a>. Equation (1.2) gives <span class="math" data-tex="\(\varphi_n(D(b_n))=0\)">\(\varphi_n(D(b_n))=0\)</span>, while
+<span class="math math-display" data-tex="\[
+\varphi_n(t_n)=\|t_n\|\ge\tfrac12.
+\]">\[
+\varphi_n(t_n)=\|t_n\|\ge\tfrac12.
+\]</span>
+Consequently, for every sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+\frac14
+\le\frac12\varphi_n(t_n)
+\le\varphi_n(vbv)
+=\varphi_n(vbv-D(b_n))
+\le\|vbv-D(b_n)\|
+&lt;\frac18,
+\]">\[
+\frac14
+\le\frac12\varphi_n(t_n)
+\le\varphi_n(vbv)
+=\varphi_n(vbv-D(b_n))
+\le\|vbv-D(b_n)\|
+&lt;\frac18,
+\]</span>
+a contradiction.</p>
+<p>The graph of the real-linear map <span class="math" data-tex="\(D:A_h\to A_h\)">\(D:A_h\to A_h\)</span> is therefore closed: a convergent graph sequence is reduced to the preceding case by subtracting its limiting first coordinate. The real Closed Graph Theorem makes this restriction bounded. Every <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span> is <span class="math" data-tex="\(x=h+ik\)">\(x=h+ik\)</span>, where <span class="math" data-tex="\(h,k\in A_h\)">\(h,k\in A_h\)</span> and <span class="math" data-tex="\(\|h\|,\|k\|\le\|x\|\)">\(\|h\|,\|k\|\le\|x\|\)</span>; hence <span class="math" data-tex="\(D\)">\(D\)</span> is bounded on <span class="math" data-tex="\(A\)">\(A\)</span>. Applying this to <span class="math" data-tex="\(\delta_1,\delta_2\)">\(\delta_1,\delta_2\)</span> proves automatic continuity for <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<p>The spectral-cut argument above is the automatic-continuity argument of [S60, unnumbered theorem, pp. 31–32], with the algebraic *-splitting and the nonunital reduction included explicitly.</p>
+<h3 id="OA-FND-INNER-STEP-02"><span id="oa-fnd-inner-step-02"></span>2. The centre and uniformly bounded central sums</h3>
+<p>For a central projection <span class="math" data-tex="\(z\)">\(z\)</span> and any derivation <span class="math" data-tex="\(D\)">\(D\)</span>,
+<span class="math math-display" data-tex="\[
+D(z)=D(z)z+zD(z)=2zD(z).
+\]">\[
+D(z)=D(z)z+zD(z)=2zD(z).
+\]</span>
+Multiplication by <span class="math" data-tex="\(z\)">\(z\)</span> first gives <span class="math" data-tex="\(zD(z)=0\)">\(zD(z)=0\)</span>, and then <span class="math" data-tex="\(D(z)=0\)">\(D(z)=0\)</span>. For a bounded derivation on a von Neumann algebra, spectral approximation of central self-adjoint elements by finite linear combinations of central projections gives
+<span class="math math-display" data-tex="\[
+D(c)=0\quad(c\in Z(M)),\qquad D(zx)=zD(x).
+\tag{2.1}
+\]">\[
+D(c)=0\quad(c\in Z(M)),\qquad D(zx)=zD(x).
+\tag{2.1}
+\]</span>
+The approximation follows from <a href="../the-spectral-theorem-for-bounded-self-adjoint-operators.html#OA-FND-ST-03">ST, Theorem 3.1 and Proposition 5.1</a>. In particular, <span class="math" data-tex="\(D\)">\(D\)</span> restricts to each central summand <span class="math" data-tex="\(Mz\)">\(Mz\)</span>, with norm at most <span class="math" data-tex="\(\|D\|\)">\(\|D\|\)</span>.</p>
+<p>We record the precise summation statement. Suppose that <span class="math" data-tex="\((z_i)_{i\in I}\)">\((z_i)_{i\in I}\)</span> are pairwise orthogonal central projections with strong sum <span class="math" data-tex="\(1\)">\(1\)</span>, and that
+<span class="math math-display" data-tex="\[
+a_i\in Mz_i,\qquad \|a_i\|\le C,\qquad
+D(x)=[a_i,x]\quad(x\in Mz_i).
+\]">\[
+a_i\in Mz_i,\qquad \|a_i\|\le C,\qquad
+D(x)=[a_i,x]\quad(x\in Mz_i).
+\]</span>
+For finite <span class="math" data-tex="\(F\subset I\)">\(F\subset I\)</span>, put <span class="math" data-tex="\(a_F=\sum_{i\in F}a_i\)">\(a_F=\sum_{i\in F}a_i\)</span>. Since the ranges of the summands are in orthogonal subspaces,
+<span class="math math-display" data-tex="\[
+\|a_F\xi\|^2
+=\sum_{i\in F}\|a_i z_i\xi\|^2
+\le C^2\sum_{i\in F}\|z_i\xi\|^2
+\le C^2\|\xi\|^2.
+\]">\[
+\|a_F\xi\|^2
+=\sum_{i\in F}\|a_i z_i\xi\|^2
+\le C^2\sum_{i\in F}\|z_i\xi\|^2
+\le C^2\|\xi\|^2.
+\]</span>
+The same estimate for differences of partial sums proves strong convergence to an operator <span class="math" data-tex="\(a\)">\(a\)</span>. Strong closedness gives <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, and <span class="math" data-tex="\(\|a\|\le C\)">\(\|a\|\le C\)</span>, <span class="math" data-tex="\(az_i=a_i\)">\(az_i=a_i\)</span>. If all <span class="math" data-tex="\(a_i\)">\(a_i\)</span> are self-adjoint, or all are skew-adjoint, the same property holds for <span class="math" data-tex="\(a\)">\(a\)</span>, since the adjoint relation passes to matrix coefficients.</p>
+<p>For every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, (2.1) gives
+<span class="math math-display" data-tex="\[
+\bigl(D(x)-[a,x]\bigr)z_i
+=D(xz_i)-[a_i,xz_i]=0.
+\]">\[
+\bigl(D(x)-[a,x]\bigr)z_i
+=D(xz_i)-[a_i,xz_i]=0.
+\]</span>
+Taking the strong sum of the <span class="math" data-tex="\(z_i\)">\(z_i\)</span> yields <span class="math" data-tex="\(D(x)=[a,x]\)">\(D(x)=[a,x]\)</span>. This argument never applies <span class="math" data-tex="\(D\)">\(D\)</span> to a strong limit.</p>
+<p>A *-isomorphism transports derivations and their implementers, preserves their norms, and preserves self-adjointness. Isometry of *-isomorphisms is <a href="../c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-12">CF, Corollary 4.6</a>. Between von Neumann algebras such an isomorphism is also normal, by <a href="../the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-18">UE, Corollary 11.4</a>.</p>
+<h3 id="OA-FND-INNER-STEP-03"><span id="oa-fnd-inner-step-03"></span>3. Normal extension without a continuity assumption on the representation</h3>
+<p>Let <span class="math" data-tex="\(A\subseteq B(H)\)">\(A\subseteq B(H)\)</span> be a nondegenerate <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra and <span class="math" data-tex="\(D:A\to A\)">\(D:A\to A\)</span> a bounded derivation. We show that it has a unique normal extension
+<span class="math math-display" data-tex="\[
+\overline D:A&#x27;&#x27;\longrightarrow A&#x27;&#x27;,\qquad
+\|\overline D\|=\|D\|.
+\tag{3.1}
+\]">\[
+\overline D:A&#x27;&#x27;\longrightarrow A&#x27;&#x27;,\qquad
+\|\overline D\|=\|D\|.
+\tag{3.1}
+\]</span>
+If <span class="math" data-tex="\(D\)">\(D\)</span> is a *-derivation, so is <span class="math" data-tex="\(\overline D\)">\(\overline D\)</span>.</p>
+<p>Identify <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span> with its enveloping von Neumann algebra by <a href="../the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-03">UE, Theorem 3.3</a>, and write <span class="math" data-tex="\(j:A\to A^{**}\)">\(j:A\to A^{**}\)</span> for the canonical embedding. The second adjoint <span class="math" data-tex="\(D^{**}\)">\(D^{**}\)</span> is weak-* continuous and has norm <span class="math" data-tex="\(\|D\|\)">\(\|D\|\)</span> <a href="../weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-05">WT, Proposition 5.3</a>. It is a derivation. Here is the required verification of the product rule.</p>
+<p>For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and <span class="math" data-tex="\(Y\in A^{**}\)">\(Y\in A^{**}\)</span>, choose a net <span class="math" data-tex="\(b_\beta\in A\)">\(b_\beta\in A\)</span> with <span class="math" data-tex="\(j(b_\beta)\to Y\)">\(j(b_\beta)\to Y\)</span> weak-<em>, using <a href="../weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-05">WT, Theorem 5.2</a>. Passing to the limit in the product rule for <span class="math" data-tex="\(ab_\beta\)">\(ab_\beta\)</span>, by separate weak-</em> continuity of multiplication, gives
+<span class="math math-display" data-tex="\[
+D^{**}(j(a)Y)=j(D(a))Y+j(a)D^{**}(Y).
+\]">\[
+D^{**}(j(a)Y)=j(D(a))Y+j(a)D^{**}(Y).
+\]</span>
+Now choose <span class="math" data-tex="\(j(a_\alpha)\to X\)">\(j(a_\alpha)\to X\)</span> weak-* and pass to the limit in this identity, keeping <span class="math" data-tex="\(Y\)">\(Y\)</span> fixed. It follows that
+<span class="math math-display" data-tex="\[
+D^{**}(XY)=D^{**}(X)Y+XD^{**}(Y).
+\]">\[
+D^{**}(XY)=D^{**}(X)Y+XD^{**}(Y).
+\]</span>
+Only one variable is allowed to tend to its limit at each passage. The involution is weak-* continuous, so the same density argument preserves the *-condition.</p>
+<p>By <a href="../the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-02">UE, Lemma 2.1(2)–(4)</a>, the given representation extends to a normal surjection
+<span class="math math-display" data-tex="\[
+q:A^{**}\longrightarrow A&#x27;&#x27;
+\]">\[
+q:A^{**}\longrightarrow A&#x27;&#x27;
+\]</span>
+whose kernel is <span class="math" data-tex="\(A^{**}(1-z)\)">\(A^{**}(1-z)\)</span> for a central projection <span class="math" data-tex="\(z\)">\(z\)</span>. Its restriction
+<span class="math math-display" data-tex="\[
+\theta:A^{**}z\longrightarrow A&#x27;&#x27;
+\]">\[
+\theta:A^{**}z\longrightarrow A&#x27;&#x27;
+\]</span>
+is an isometric *-isomorphism, normal in both directions. Step 2's algebraic calculation gives <span class="math" data-tex="\(D^{**}(z)=0\)">\(D^{**}(z)=0\)</span>. Thus <span class="math" data-tex="\(D^{**}\)">\(D^{**}\)</span> preserves <span class="math" data-tex="\(A^{**}z\)">\(A^{**}z\)</span>, and
+<span class="math math-display" data-tex="\[
+\overline D=\theta\circ\bigl(D^{**}|_{A^{**}z}\bigr)\circ\theta^{-1}
+\]">\[
+\overline D=\theta\circ\bigl(D^{**}|_{A^{**}z}\bigr)\circ\theta^{-1}
+\]</span>
+is a normal derivation of norm at most <span class="math" data-tex="\(\|D\|\)">\(\|D\|\)</span>. For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>,
+<span class="math math-display" data-tex="\[
+\theta^{-1}(a)=j(a)z,
+\qquad D^{**}(j(a)z)=j(D(a))z,
+\]">\[
+\theta^{-1}(a)=j(a)z,
+\qquad D^{**}(j(a)z)=j(D(a))z,
+\]</span>
+so <span class="math" data-tex="\(\overline D(a)=D(a)\)">\(\overline D(a)=D(a)\)</span>. This also proves the reverse norm inequality. Uniqueness follows from weak-* density of <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(A&#x27;&#x27;\)">\(A&#x27;&#x27;\)</span>, <a href="../the-double-commutant-theorem.html#OA-FND-BI-06">DC, Theorem 4.4</a>.</p>
+<p>In particular, on taking <span class="math" data-tex="\(A=M=M&#x27;&#x27;\)">\(A=M=M&#x27;&#x27;\)</span>, every bounded derivation of a von Neumann algebra is normal. The topology facts used here are <a href="../compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-09">OT, Proposition 8.6 and Theorem 9.4</a>.</p>
+<h3 id="OA-FND-INNER-STEP-04"><span id="oa-fnd-inner-step-04"></span>4. Type I algebras: finite averaging with a uniform bound</h3>
+<p><strong>4.1. Finite-dimensional averaging.</strong> Every finite-dimensional unital <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra <span class="math" data-tex="\(F\)">\(F\)</span> has a finite subgroup of its unitary group whose complex linear span is <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>After a faithful unital representation, <span class="math" data-tex="\(F\)">\(F\)</span> is a von Neumann algebra: a finite-dimensional subspace is closed for the Hausdorff <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak topology. By <a href="../the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-13">UE, Lemma 6.3</a>, <span class="math" data-tex="\(F\)">\(F\)</span> is therefore a finite direct sum of full matrix algebras. On <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, with indices modulo <span class="math" data-tex="\(n\)">\(n\)</span>, let
+<span class="math math-display" data-tex="\[
+S e_j=e_{j+1},\qquad T e_j=\zeta^j e_j,
+\qquad \zeta=e^{2\pi i/n}.
+\]">\[
+S e_j=e_{j+1},\qquad T e_j=\zeta^j e_j,
+\qquad \zeta=e^{2\pi i/n}.
+\]</span>
+The group generated by <span class="math" data-tex="\(S,T,-1\)">\(S,T,-1\)</span> is finite, because every word has the form <span class="math" data-tex="\(\pm\zeta^kS^rT^s\)">\(\pm\zeta^kS^rT^s\)</span>, with exponents taken modulo <span class="math" data-tex="\(n\)">\(n\)</span>. Its span contains
+<span class="math math-display" data-tex="\[
+E_{jj}=\frac1n\sum_{s=0}^{n-1}\zeta^{-js}T^s,
+\qquad E_{ij}=S^{i-j}E_{jj},
+\]">\[
+E_{jj}=\frac1n\sum_{s=0}^{n-1}\zeta^{-js}T^s,
+\qquad E_{ij}=S^{i-j}E_{jj},
+\]</span>
+and thus all matrices. For a direct sum, take the product of these groups. Its span is an algebra and contains the central projection of each block: this projection is <span class="math" data-tex="\((1-g)/2\)">\((1-g)/2\)</span>, where <span class="math" data-tex="\(g\)">\(g\)</span> is <span class="math" data-tex="\(-1\)">\(-1\)</span> on that block and <span class="math" data-tex="\(1\)">\(1\)</span> elsewhere. Multiplying by these projections isolates the matrix spans of all blocks.</p>
+<p>Let <span class="math" data-tex="\(F\subseteq P\)">\(F\subseteq P\)</span> be a finite-dimensional unital subalgebra of a von Neumann algebra, and let <span class="math" data-tex="\(D\)">\(D\)</span> be a bounded derivation of <span class="math" data-tex="\(P\)">\(P\)</span>. Choose such a finite group <span class="math" data-tex="\(G\subseteq\mathcal U(F)\)">\(G\subseteq\mathcal U(F)\)</span>, and set
+<span class="math math-display" data-tex="\[
+b(u)=D(u)u^*,\qquad a_G=\frac1{|G|}\sum_{u\in G}b(u).
+\]">\[
+b(u)=D(u)u^*,\qquad a_G=\frac1{|G|}\sum_{u\in G}b(u).
+\]</span>
+The product rule gives the cocycle identity
+<span class="math math-display" data-tex="\[
+b(vu)=b(v)+vb(u)v^*.
+\]">\[
+b(vu)=b(v)+vb(u)v^*.
+\]</span>
+Averaging over <span class="math" data-tex="\(u\in G\)">\(u\in G\)</span> yields
+<span class="math math-display" data-tex="\[
+a_G=b(v)+va_Gv^*,\qquad D(v)=a_Gv-va_G\quad(v\in G).
+\]">\[
+a_G=b(v)+va_Gv^*,\qquad D(v)=a_Gv-va_G\quad(v\in G).
+\]</span>
+Since <span class="math" data-tex="\(G\)">\(G\)</span> spans <span class="math" data-tex="\(F\)">\(F\)</span>,
+<span class="math math-display" data-tex="\[
+D|_F=[a_G,\cdot]|_F,
+\qquad \|a_G\|\le\|D\|.
+\tag{4.1}
+\]">\[
+D|_F=[a_G,\cdot]|_F,
+\qquad \|a_G\|\le\|D\|.
+\tag{4.1}
+\]</span>
+For a *-derivation,
+<span class="math math-display" data-tex="\[
+b(u)^*=uD(u^*)=-D(u)u^*=-b(u),
+\]">\[
+b(u)^*=uD(u^*)=-D(u)u^*=-b(u),
+\]</span>
+so <span class="math" data-tex="\(a_G\)">\(a_G\)</span> is skew-adjoint.</p>
+<p><strong>4.2. Homogeneous type I algebras.</strong> Suppose first that <span class="math" data-tex="\(P\)">\(P\)</span> is homogeneous of type I. By <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-14">PT, Theorem 10.3, Proposition 8.4 and Proposition 9.1</a>, it has the form
+<span class="math math-display" data-tex="\[
+P\cong B\,\bar\otimes\,B(\ell^2(I)),\qquad B\text{ abelian},
+\]">\[
+P\cong B\,\bar\otimes\,B(\ell^2(I)),\qquad B\text{ abelian},
+\]</span>
+with matrix units <span class="math" data-tex="\(w_{ij}\)">\(w_{ij}\)</span>. Every finite matrix compression has an expression
+<span class="math math-display" data-tex="\[
+e_Jxe_J=\sum_{i,j\in J}c_{ij}w_{ij},
+\qquad e_J=\sum_{i\in J}w_{ii},\qquad c_{ij}\in Z(P),
+\tag{4.2}
+\]">\[
+e_Jxe_J=\sum_{i,j\in J}c_{ij}w_{ij},
+\qquad e_J=\sum_{i\in J}w_{ii},\qquad c_{ij}\in Z(P),
+\tag{4.2}
+\]</span>
+where <span class="math" data-tex="\(J\subset I\)">\(J\subset I\)</span> is finite and nonempty.</p>
+<p>The finite-dimensional unital algebras
+<span class="math math-display" data-tex="\[
+F_J=\operatorname{span}\{w_{ij}:i,j\in J\}+\mathbb C(1-e_J)
+\]">\[
+F_J=\operatorname{span}\{w_{ij}:i,j\in J\}+\mathbb C(1-e_J)
+\]</span>
+form an increasing net; the zero last summand is omitted when <span class="math" data-tex="\(e_J=1\)">\(e_J=1\)</span>. By (4.1), for a *-derivation <span class="math" data-tex="\(D\)">\(D\)</span> there is a skew-adjoint <span class="math" data-tex="\(a_J\in P\)">\(a_J\in P\)</span> with
+<span class="math math-display" data-tex="\[
+\|a_J\|\le\|D\|,\qquad D|_{F_J}=[a_J,\cdot]|_{F_J}.
+\]">\[
+\|a_J\|\le\|D\|,\qquad D|_{F_J}=[a_J,\cdot]|_{F_J}.
+\]</span>
+The weak-* compact ball has a cluster point <span class="math" data-tex="\(a\)">\(a\)</span>, still skew-adjoint and of norm at most <span class="math" data-tex="\(\|D\|\)">\(\|D\|\)</span>. For fixed <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, the identity for <span class="math" data-tex="\(w_{ij}\)">\(w_{ij}\)</span> holds eventually along the net, and separate weak-* continuity of multiplication gives
+<span class="math math-display" data-tex="\[
+D(w_{ij})=[a,w_{ij}].
+\]">\[
+D(w_{ij})=[a,w_{ij}].
+\]</span>
+Step 2 gives <span class="math" data-tex="\(D(c)=0\)">\(D(c)=0\)</span> for <span class="math" data-tex="\(c\in Z(P)\)">\(c\in Z(P)\)</span>. Hence (4.2) implies
+<span class="math math-display" data-tex="\[
+D(e_Jxe_J)=[a,e_Jxe_J].
+\]">\[
+D(e_Jxe_J)=[a,e_Jxe_J].
+\]</span>
+The projections <span class="math" data-tex="\(e_J\)">\(e_J\)</span> increase strongly to <span class="math" data-tex="\(1\)">\(1\)</span>; consequently <span class="math" data-tex="\(e_Jxe_J\to x\)">\(e_Jxe_J\to x\)</span> strongly, with norms bounded by <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span>. Bounded strong convergence implies weak-* convergence <a href="../compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-09">OT, Lemma 8.5</a>. By Step 3 and separate normality of multiplication, <span class="math" data-tex="\(D(x)=[a,x]\)">\(D(x)=[a,x]\)</span>.</p>
+<p><strong>4.3. Arbitrary type I algebras.</strong> Decompose a type I algebra into its homogeneous central summands by <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-14">PT, Theorem 10.3</a>. Apply 4.2 on each summand and combine the implementers by Step 2. Setting <span class="math" data-tex="\(h=-ia\)">\(h=-ia\)</span> for the combined skew-adjoint implementer gives
+<span class="math math-display" data-tex="\[
+D(x)=i[h,x],\qquad h=h^*\in P,\qquad \|h\|\le\|D\|
+\tag{4.3}
+\]">\[
+D(x)=i[h,x],\qquad h=h^*\in P,\qquad \|h\|\le\|D\|
+\tag{4.3}
+\]</span>
+for every *-derivation of every type I von Neumann algebra. There is no restriction on the cardinalities of the homogeneous summands.</p>
+<h3 id="OA-FND-INNER-STEP-05"><span id="oa-fnd-inner-step-05"></span>5. Spatiality with the same norm bound</h3>
+<p>Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span>, and let <span class="math" data-tex="\(D:M\to M\)">\(D:M\to M\)</span> be a *-derivation with <span class="math" data-tex="\(\|D\|\le C\)">\(\|D\|\le C\)</span>. We prove that
+<span class="math math-display" data-tex="\[
+D(x)=i[h,x]\quad(x\in M)
+\]">\[
+D(x)=i[h,x]\quad(x\in M)
+\]</span>
+for some <span class="math" data-tex="\(h=h^*\in B(H)\)">\(h=h^*\in B(H)\)</span> with <span class="math" data-tex="\(\|h\|\le C\)">\(\|h\|\le C\)</span>.</p>
+<p>Choose a maximal abelian von Neumann subalgebra <span class="math" data-tex="\(B\subseteq M&#x27;\)">\(B\subseteq M&#x27;\)</span>. Existence follows from Zorn's lemma: the von Neumann algebra generated by the union of a chain of abelian unital algebras is abelian. Maximality gives
+<span class="math math-display" data-tex="\[
+M&#x27;\cap B&#x27;=B.
+\tag{5.1}
+\]">\[
+M&#x27;\cap B&#x27;=B.
+\tag{5.1}
+\]</span>
+Indeed, a self-adjoint element of the left side can be adjoined to <span class="math" data-tex="\(B\)">\(B\)</span> while preserving commutativity; applying this to the real and imaginary parts proves (5.1).</p>
+<p>Let <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> be the linear span of products <span class="math" data-tex="\(xe\)">\(xe\)</span>, with <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> a projection of <span class="math" data-tex="\(B\)">\(B\)</span>. Any finite family of projections in <span class="math" data-tex="\(B\)">\(B\)</span> can be refined into pairwise orthogonal Boolean atoms whose sum is <span class="math" data-tex="\(1\)">\(1\)</span>. Thus every element of <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> can be written
+<span class="math math-display" data-tex="\[
+T=\sum_{j=1}^n x_je_j,
+\qquad e_je_k=0\ (j\ne k),\qquad\sum_j e_j=1.
+\]">\[
+T=\sum_{j=1}^n x_je_j,
+\qquad e_je_k=0\ (j\ne k),\qquad\sum_j e_j=1.
+\]</span>
+For <span class="math" data-tex="\(e\in\mathcal P(B)\)">\(e\in\mathcal P(B)\)</span>, put <span class="math" data-tex="\(z=c_{M&#x27;}(e)\)">\(z=c_{M&#x27;}(e)\)</span>. Then <span class="math" data-tex="\(z\in Z(M)\)">\(z\in Z(M)\)</span>, and the induction map
+<span class="math math-display" data-tex="\[
+Mz\longrightarrow Me\subseteq B(eH),\qquad xz\longmapsto xe,
+\]">\[
+Mz\longrightarrow Me\subseteq B(eH),\qquad xz\longmapsto xe,
+\]</span>
+is an isometric *-isomorphism <a href="../the-double-commutant-theorem.html#OA-FND-BI-04">DC, Theorem 5.8; PT, Proposition 3.5(3)</a>. By (2.1),
+<span class="math math-display" data-tex="\[
+\|D(x)e\|=\|D(x)z\|=\|D(xz)\|
+\le C\|xz\|=C\|xe\|.
+\tag{5.2}
+\]">\[
+\|D(x)e\|=\|D(x)z\|=\|D(xz)\|
+\le C\|xz\|=C\|xe\|.
+\tag{5.2}
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+E(T)=\sum_{j=1}^nD(x_j)e_j.
+\]">\[
+E(T)=\sum_{j=1}^nD(x_j)e_j.
+\]</span>
+If <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, multiplying by <span class="math" data-tex="\(e_j\)">\(e_j\)</span> gives <span class="math" data-tex="\(x_je_j=0\)">\(x_je_j=0\)</span>, and (5.2) gives <span class="math" data-tex="\(D(x_j)e_j=0\)">\(D(x_j)e_j=0\)</span>. Refining two expressions to common Boolean atoms therefore proves that <span class="math" data-tex="\(E\)">\(E\)</span> is well-defined. The orthogonal block decomposition gives
+<span class="math math-display" data-tex="\[
+\|E(T)\|=\max_j\|D(x_j)e_j\|
+\le C\max_j\|x_je_j\|=C\|T\|.
+\]">\[
+\|E(T)\|=\max_j\|D(x_j)e_j\|
+\le C\max_j\|x_je_j\|=C\|T\|.
+\]</span>
+Products of generators satisfy <span class="math" data-tex="\((xe)(yf)=xyef\)">\((xe)(yf)=xyef\)</span>, and <span class="math" data-tex="\(e,f\)">\(e,f\)</span> commute with all elements of <span class="math" data-tex="\(M\)">\(M\)</span>, including their derivatives. The product rule for <span class="math" data-tex="\(D\)">\(D\)</span> therefore proves the product rule for <span class="math" data-tex="\(E\)">\(E\)</span>. The same calculation with adjoints proves that <span class="math" data-tex="\(E\)">\(E\)</span> is a *-derivation.</p>
+<p>Extend <span class="math" data-tex="\(E\)">\(E\)</span> by norm continuity to <span class="math" data-tex="\(\mathcal A=\overline{\mathcal A_0}^{\|\cdot\|}\)">\(\mathcal A=\overline{\mathcal A_0}^{\|\cdot\|}\)</span>, then normally to <span class="math" data-tex="\(\mathcal A&#x27;&#x27;\)">\(\mathcal A&#x27;&#x27;\)</span> by Step 3. Its norm remains at most <span class="math" data-tex="\(C\)">\(C\)</span>. Spectral approximation shows that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> contains <span class="math" data-tex="\(B\)">\(B\)</span>; hence
+<span class="math math-display" data-tex="\[
+\mathcal A&#x27;&#x27;=(M\cup B)&#x27;&#x27;,\qquad (\mathcal A&#x27;&#x27;)&#x27;=M&#x27;\cap B&#x27;=B.
+\]">\[
+\mathcal A&#x27;&#x27;=(M\cup B)&#x27;&#x27;,\qquad (\mathcal A&#x27;&#x27;)&#x27;=M&#x27;\cap B&#x27;=B.
+\]</span>
+An algebra with abelian commutant is type I <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-15">PT, Proposition 11.2</a>. Step 4 supplies <span class="math" data-tex="\(h=h^*\in\mathcal A&#x27;&#x27;\)">\(h=h^*\in\mathcal A&#x27;&#x27;\)</span>, <span class="math" data-tex="\(\|h\|\le C\)">\(\|h\|\le C\)</span>, implementing <span class="math" data-tex="\(E\)">\(E\)</span>, and therefore implementing <span class="math" data-tex="\(D\)">\(D\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>. This is the spatial construction underlying [K66, Theorem 4], with its well-definedness and norm estimate supplied by (5.2).</p>
+<p>Two consequences will be used repeatedly. First, (2.1) gives
+<span class="math math-display" data-tex="\[
+[h,z]=0\qquad(z\in Z(M)).
+\tag{5.3}
+\]">\[
+[h,z]=0\qquad(z\in Z(M)).
+\tag{5.3}
+\]</span>
+Second, if <span class="math" data-tex="\(N=M&#x27;\)">\(N=M&#x27;\)</span>, then <span class="math" data-tex="\([h,N]\subseteq N\)">\([h,N]\subseteq N\)</span>. For <span class="math" data-tex="\(y\in N,x\in M\)">\(y\in N,x\in M\)</span>, direct expansion gives
+<span class="math math-display" data-tex="\[
+[[h,y],x]=[[h,x],y]=0,
+\]">\[
+[[h,y],x]=[[h,x],y]=0,
+\]</span>
+since <span class="math" data-tex="\([h,x]\in M\)">\([h,x]\in M\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+uhu^*-h\in N\qquad(u\in\mathcal U(N)).
+\tag{5.4}
+\]">\[
+uhu^*-h\in N\qquad(u\in\mathcal U(N)).
+\tag{5.4}
+\]</span>
+Replacing <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(h+t\)">\(h+t\)</span> with <span class="math" data-tex="\(t\in N_h\)">\(t\in N_h\)</span> does not change its commutator with <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h3 id="OA-FND-INNER-STEP-06"><span id="oa-fnd-inner-step-06"></span>6. A fixed-point theorem for linear isometries</h3>
+<p>We need the following result, including its proof.</p>
+<p><strong>Lemma.</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a real Banach space, <span class="math" data-tex="\(K\subseteq E\)">\(K\subseteq E\)</span> a nonempty weakly compact convex set, and <span class="math" data-tex="\(G\)">\(G\)</span> a group of surjective linear isometries of <span class="math" data-tex="\(E\)">\(E\)</span> with <span class="math" data-tex="\(gK=K\)">\(gK=K\)</span>. Then some point of <span class="math" data-tex="\(K\)">\(K\)</span> is fixed by every <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>.</p>
+<p><strong>6.1. One bounded linear map.</strong> If a bounded linear map <span class="math" data-tex="\(F:E\to E\)">\(F:E\to E\)</span> satisfies <span class="math" data-tex="\(F(K)\subseteq K\)">\(F(K)\subseteq K\)</span>, fix <span class="math" data-tex="\(x_0\in K\)">\(x_0\in K\)</span> and put
+<span class="math math-display" data-tex="\[
+x_n=\frac1n\sum_{j=0}^{n-1}F^jx_0.
+\]">\[
+x_n=\frac1n\sum_{j=0}^{n-1}F^jx_0.
+\]</span>
+The set <span class="math" data-tex="\(K\)">\(K\)</span> is norm bounded: weak compactness gives pointwise boundedness on <span class="math" data-tex="\(E^*\)">\(E^*\)</span>, and the Uniform Boundedness Theorem applies to the canonical images in <span class="math" data-tex="\(E^{**}\)">\(E^{**}\)</span>. Write <span class="math" data-tex="\(R=\sup_{x\in K}\|x\|\)">\(R=\sup_{x\in K}\|x\|\)</span>. Then
+<span class="math math-display" data-tex="\[
+x_n\in K,\qquad
+\|Fx_n-x_n\|=\frac1n\|F^nx_0-x_0\|\le\frac{2R}{n}.
+\]">\[
+x_n\in K,\qquad
+\|Fx_n-x_n\|=\frac1n\|F^nx_0-x_0\|\le\frac{2R}{n}.
+\]</span>
+A weakly convergent subnet has limit <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>. Bounded linear maps are weakly continuous, so <span class="math" data-tex="\(Fx=x\)">\(Fx=x\)</span>.</p>
+<p><strong>6.2. Small caps in a separable space.</strong> Suppose that <span class="math" data-tex="\(E\)">\(E\)</span> is separable and <span class="math" data-tex="\(K\)">\(K\)</span> has more than one point. For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is a proper weakly compact convex subset <span class="math" data-tex="\(K_0\subsetneq K\)">\(K_0\subsetneq K\)</span> such that
+<span class="math math-display" data-tex="\[
+\operatorname{diam}(K\setminus K_0)\le\varepsilon.
+\tag{6.1}
+\]">\[
+\operatorname{diam}(K\setminus K_0)\le\varepsilon.
+\tag{6.1}
+\]</span>
+Here and below closures in this substep are weak closures.</p>
+<p>Let <span class="math" data-tex="\(L=\overline{\operatorname{Ext}K}\)">\(L=\overline{\operatorname{Ext}K}\)</span>. By <a href="../weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-06">WT, Theorem 6.1</a>, <span class="math" data-tex="\(L\)">\(L\)</span> is nonempty and compact and <span class="math" data-tex="\(K=\overline{\operatorname{co}}L\)">\(K=\overline{\operatorname{co}}L\)</span>. Separability provides a countable cover of <span class="math" data-tex="\(E\)">\(E\)</span> by closed norm balls of radius <span class="math" data-tex="\(\varepsilon/3\)">\(\varepsilon/3\)</span>. Such balls are weakly closed, by Hahn–Banach separation. The Baire theorem for compact Hausdorff spaces, applied to <span class="math" data-tex="\(L\)">\(L\)</span>, gives a ball <span class="math" data-tex="\(B_0\)">\(B_0\)</span> for which <span class="math" data-tex="\(L\cap B_0\)">\(L\cap B_0\)</span> contains a nonempty relatively weakly open subset <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>If <span class="math" data-tex="\(L\setminus U\)">\(L\setminus U\)</span> is empty, then <span class="math" data-tex="\(K\subseteq B_0\)">\(K\subseteq B_0\)</span>, so <span class="math" data-tex="\(\operatorname{diam}K\le2\varepsilon/3\)">\(\operatorname{diam}K\le2\varepsilon/3\)</span>. Any singleton in <span class="math" data-tex="\(K\)">\(K\)</span> is a proper subset satisfying (6.1).</p>
+<p>Otherwise put
+<span class="math math-display" data-tex="\[
+K_1=\overline{\operatorname{co}}(L\setminus U),\qquad
+K_2=\overline{\operatorname{co}}(L\cap B_0).
+\]">\[
+K_1=\overline{\operatorname{co}}(L\setminus U),\qquad
+K_2=\overline{\operatorname{co}}(L\cap B_0).
+\]</span>
+Both are nonempty compact convex subsets of <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(K_2\subseteq B_0\)">\(K_2\subseteq B_0\)</span>. The convex join
+<span class="math math-display" data-tex="\[
+\{tv+(1-t)w:v\in K_1,\ w\in K_2,\ 0\le t\le1\}
+\]">\[
+\{tv+(1-t)w:v\in K_1,\ w\in K_2,\ 0\le t\le1\}
+\]</span>
+is compact, convex, and contains <span class="math" data-tex="\(L\)">\(L\)</span>; it is therefore <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(y\in\operatorname{Ext}K\cap U\)">\(y\in\operatorname{Ext}K\cap U\)</span>, which exists because <span class="math" data-tex="\(\operatorname{Ext}K\)">\(\operatorname{Ext}K\)</span> is dense in <span class="math" data-tex="\(L\)">\(L\)</span>. We have <span class="math" data-tex="\(y\notin K_1\)">\(y\notin K_1\)</span>. Indeed, otherwise <span class="math" data-tex="\(y\)">\(y\)</span> would be extreme in <span class="math" data-tex="\(K_1\)">\(K_1\)</span>, and the converse to Krein–Milman <a href="../weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-06">WT, Theorem 6.2</a>, applied to the compact set <span class="math" data-tex="\(L\setminus U\)">\(L\setminus U\)</span>, would give <span class="math" data-tex="\(y\in L\setminus U\)">\(y\in L\setminus U\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;\eta&lt;1\)">\(0&lt;\eta&lt;1\)</span>, define
+<span class="math math-display" data-tex="\[
+K_\eta=\eta K_1+(1-\eta)K
+=\{tv+(1-t)w:v\in K_1,\ w\in K_2,\ \eta\le t\le1\}.
+\]">\[
+K_\eta=\eta K_1+(1-\eta)K
+=\{tv+(1-t)w:v\in K_1,\ w\in K_2,\ \eta\le t\le1\}.
+\]</span>
+The equality follows by substituting the preceding description of <span class="math" data-tex="\(K\)">\(K\)</span> into the first expression. This set is compact and convex. It does not contain <span class="math" data-tex="\(y\)">\(y\)</span>: an expression <span class="math" data-tex="\(y=\eta v+(1-\eta)k\)">\(y=\eta v+(1-\eta)k\)</span>, with <span class="math" data-tex="\(v\in K_1,k\in K\)">\(v\in K_1,k\in K\)</span>, would force <span class="math" data-tex="\(v=y\)">\(v=y\)</span> by extremality.</p>
+<p>If <span class="math" data-tex="\(x,x&#x27;\notin K_\eta\)">\(x,x&#x27;\notin K_\eta\)</span>, write
+<span class="math math-display" data-tex="\[
+x=tv+(1-t)w,\qquad x&#x27;=t&#x27;v&#x27;+(1-t&#x27;)w&#x27;
+\]">\[
+x=tv+(1-t)w,\qquad x&#x27;=t&#x27;v&#x27;+(1-t&#x27;)w&#x27;
+\]</span>
+with <span class="math" data-tex="\(v,v&#x27;\in K_1\)">\(v,v&#x27;\in K_1\)</span>, <span class="math" data-tex="\(w,w&#x27;\in K_2\)">\(w,w&#x27;\in K_2\)</span>. Necessarily <span class="math" data-tex="\(t,t&#x27;&lt;\eta\)">\(t,t&#x27;&lt;\eta\)</span>. Since <span class="math" data-tex="\(R=\sup_K\|x\|&gt;0\)">\(R=\sup_K\|x\|&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|x-x&#x27;\|
+&amp;\le t\|v-w\|+\|w-w&#x27;\|+t&#x27;\|v&#x27;-w&#x27;\|\\
+&amp;\le2R(t+t&#x27;)+\frac{2\varepsilon}{3}
+\le4R\eta+\frac{2\varepsilon}{3}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|x-x&#x27;\|
+&amp;\le t\|v-w\|+\|w-w&#x27;\|+t&#x27;\|v&#x27;-w&#x27;\|\\
+&amp;\le2R(t+t&#x27;)+\frac{2\varepsilon}{3}
+\le4R\eta+\frac{2\varepsilon}{3}.
+\end{aligned}
+\]</span>
+Choose <span class="math" data-tex="\(\eta&lt;\min\{1,\varepsilon/(12R)\}\)">\(\eta&lt;\min\{1,\varepsilon/(12R)\}\)</span>. Then <span class="math" data-tex="\(K_0=K_\eta\)">\(K_0=K_\eta\)</span> proves (6.1).</p>
+<p><strong>6.3. Finitely many isometries.</strong> Given <span class="math" data-tex="\(g_1,\dots,g_n\in G\)">\(g_1,\dots,g_n\in G\)</span>, apply 6.1 to <span class="math" data-tex="\(F=n^{-1}\sum_jg_j\)">\(F=n^{-1}\sum_jg_j\)</span>, obtaining <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span> with
+<span class="math math-display" data-tex="\[
+x=\frac1n\sum_{j=1}^ng_jx.
+\]">\[
+x=\frac1n\sum_{j=1}^ng_jx.
+\]</span>
+If some, but not all, of the <span class="math" data-tex="\(g_j\)">\(g_j\)</span> fix <span class="math" data-tex="\(x\)">\(x\)</span>, cancel their contributions and renumber. To obtain a contradiction, we may thus assume
+<span class="math math-display" data-tex="\[
+x=\frac1m\sum_{j=1}^mg_jx,
+\qquad g_jx\ne x\quad(1\le j\le m).
+\tag{6.2}
+\]">\[
+x=\frac1m\sum_{j=1}^mg_jx,
+\qquad g_jx\ne x\quad(1\le j\le m).
+\tag{6.2}
+\]</span>
+The subgroup <span class="math" data-tex="\(G_0\)">\(G_0\)</span> generated by these finitely many isometries is countable. Replace <span class="math" data-tex="\(K\)">\(K\)</span> by the weakly closed convex hull of <span class="math" data-tex="\(G_0x\)">\(G_0x\)</span>. This hull is a weakly compact subset of the original <span class="math" data-tex="\(K\)">\(K\)</span>. It lies in the norm-closed linear span <span class="math" data-tex="\(E_0\)">\(E_0\)</span> of the countable orbit: a norm-closed linear subspace is weakly closed by Hahn–Banach. The space <span class="math" data-tex="\(E_0\)">\(E_0\)</span> is separable, and its weak topology is the subspace weak topology, again by Hahn–Banach extension. Thus 6.2 applies.</p>
+<p>Choose
+<span class="math math-display" data-tex="\[
+0&lt;\varepsilon&lt;\min_{1\le j\le m}\|g_jx-x\|
+\]">\[
+0&lt;\varepsilon&lt;\min_{1\le j\le m}\|g_jx-x\|
+\]</span>
+and a set <span class="math" data-tex="\(K_0\subsetneq K\)">\(K_0\subsetneq K\)</span> satisfying (6.1). Some <span class="math" data-tex="\(hx\)">\(hx\)</span>, <span class="math" data-tex="\(h\in G_0\)">\(h\in G_0\)</span>, lies outside <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, since otherwise the closed convex hull of the orbit would be contained in <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. Equation (6.2) gives
+<span class="math math-display" data-tex="\[
+hx=\frac1m\sum_{j=1}^m hg_jx.
+\]">\[
+hx=\frac1m\sum_{j=1}^m hg_jx.
+\]</span>
+Convexity of <span class="math" data-tex="\(K_0\)">\(K_0\)</span> implies that <span class="math" data-tex="\(hg_jx\notin K_0\)">\(hg_jx\notin K_0\)</span> for some <span class="math" data-tex="\(j\)">\(j\)</span>. But then
+<span class="math math-display" data-tex="\[
+\|g_jx-x\|=\|hg_jx-hx\|\le\varepsilon,
+\]">\[
+\|g_jx-x\|=\|hg_jx-hx\|\le\varepsilon,
+\]</span>
+contrary to the choice of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Therefore the original <span class="math" data-tex="\(x\)">\(x\)</span> is fixed by all <span class="math" data-tex="\(g_1,\dots,g_n\)">\(g_1,\dots,g_n\)</span>.</p>
+<p><strong>6.4. An arbitrary group.</strong> For each <span class="math" data-tex="\(g\)">\(g\)</span>, its fixed-point set in <span class="math" data-tex="\(K\)">\(K\)</span> is weakly closed. Substep 6.3 proves the finite intersection property for these sets. Compactness gives a point in their intersection. This proves the lemma.</p>
+<p>The fixed-point argument follows [L26, Theorem 1, Proposition 2 and Lemma 3].</p>
+<h3 id="OA-FND-INNER-STEP-07"><span id="oa-fnd-inner-step-07"></span>7. Finite algebras have nonzero normal finite traces</h3>
+<p>We first prove the projection estimates needed to construct a trace.</p>
+<p><strong>7.1. Increasing comparison in a finite algebra.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be a finite von Neumann algebra. If
+<span class="math math-display" data-tex="\[
+e_n\uparrow e,\qquad e_n\precsim f\quad(n\ge1),
+\]">\[
+e_n\uparrow e,\qquad e_n\precsim f\quad(n\ge1),
+\]</span>
+then <span class="math" data-tex="\(e\precsim f\)">\(e\precsim f\)</span>.</p>
+<p>Construct partial isometries <span class="math" data-tex="\(v_n\)">\(v_n\)</span> with
+<span class="math math-display" data-tex="\[
+v_n^*v_n=e_n,\qquad v_nv_n^*\le f,\qquad v_{n+1}e_n=v_n.
+\tag{7.1}
+\]">\[
+v_n^*v_n=e_n,\qquad v_nv_n^*\le f,\qquad v_{n+1}e_n=v_n.
+\tag{7.1}
+\]</span>
+Choose <span class="math" data-tex="\(v_1\)">\(v_1\)</span> using <span class="math" data-tex="\(e_1\precsim f\)">\(e_1\precsim f\)</span>. If <span class="math" data-tex="\(v_n\)">\(v_n\)</span> is chosen, choose <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(w^*w=e_{n+1}\)">\(w^*w=e_{n+1}\)</span>, <span class="math" data-tex="\(ww^*\le f\)">\(ww^*\le f\)</span>. Put
+<span class="math math-display" data-tex="\[
+p=we_nw^*,\qquad r=v_nv_n^*,\qquad t=v_nw^*.
+\]">\[
+p=we_nw^*,\qquad r=v_nv_n^*,\qquad t=v_nw^*.
+\]</span>
+Then <span class="math" data-tex="\(t^*t=p\)">\(t^*t=p\)</span>, <span class="math" data-tex="\(tt^*=r\)">\(tt^*=r\)</span>. The algebra <span class="math" data-tex="\(fPf\)">\(fPf\)</span> is finite <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-09">PT, Lemma 6.2</a>. Complement equivalence in this finite algebra <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-18">PT, Proposition 14.2</a> gives a partial isometry <span class="math" data-tex="\(t_0\)">\(t_0\)</span> from <span class="math" data-tex="\(f-p\)">\(f-p\)</span> to <span class="math" data-tex="\(f-r\)">\(f-r\)</span>. Hence <span class="math" data-tex="\(u=t+t_0\)">\(u=t+t_0\)</span> is a unitary of <span class="math" data-tex="\(fPf\)">\(fPf\)</span>. Define <span class="math" data-tex="\(v_{n+1}=uw\)">\(v_{n+1}=uw\)</span>. It has the required initial and final projections, and
+<span class="math math-display" data-tex="\[
+v_{n+1}e_n=tw e_n=v_nw^*we_n=v_n.
+\]">\[
+v_{n+1}e_n=tw e_n=v_nw^*we_n=v_n.
+\]</span>
+This proves (7.1).</p>
+<p>For <span class="math" data-tex="\(m\ge n\)">\(m\ge n\)</span>,
+<span class="math math-display" data-tex="\[
+v_m-v_n=v_m(e_m-e_n),\qquad
+\|(v_m-v_n)\xi\|=\|(e_m-e_n)\xi\|.
+\]">\[
+v_m-v_n=v_m(e_m-e_n),\qquad
+\|(v_m-v_n)\xi\|=\|(e_m-e_n)\xi\|.
+\]</span>
+Thus <span class="math" data-tex="\(v_n\)">\(v_n\)</span> converges strongly to <span class="math" data-tex="\(v\in P\)">\(v\in P\)</span>. Moreover, <span class="math" data-tex="\(\|v\xi\|=\|e\xi\|\)">\(\|v\xi\|=\|e\xi\|\)</span> for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, so <span class="math" data-tex="\(v^*v=e\)">\(v^*v=e\)</span>, while <span class="math" data-tex="\(fv=v\)">\(fv=v\)</span>. Consequently <span class="math" data-tex="\(vv^*\le f\)">\(vv^*\le f\)</span>, proving <span class="math" data-tex="\(e\precsim f\)">\(e\precsim f\)</span>.</p>
+<p>We will also use reversal of comparison on complements in <span class="math" data-tex="\(P\)">\(P\)</span>. If <span class="math" data-tex="\(e\precsim f\)">\(e\precsim f\)</span>, choose <span class="math" data-tex="\(e_1\le f\)">\(e_1\le f\)</span> with <span class="math" data-tex="\(e_1\sim e\)">\(e_1\sim e\)</span>. Proposition 14.2 gives <span class="math" data-tex="\(1-e_1\sim1-e\)">\(1-e_1\sim1-e\)</span>. Since <span class="math" data-tex="\(1-f\le1-e_1\)">\(1-f\le1-e_1\)</span>,
+<span class="math math-display" data-tex="\[
+1-f\precsim1-e.
+\tag{7.2}
+\]">\[
+1-f\precsim1-e.
+\tag{7.2}
+\]</span></p>
+<p><strong>7.2. Equivalent copies of orthogonal projections tend strongly to zero.</strong> Suppose that <span class="math" data-tex="\(f_n\in\mathcal P(P)\)">\(f_n\in\mathcal P(P)\)</span> are pairwise orthogonal and <span class="math" data-tex="\(g_n\sim f_n\)">\(g_n\sim f_n\)</span>. We claim that <span class="math" data-tex="\(g_n\to0\)">\(g_n\to0\)</span> strongly.</p>
+<p>For <span class="math" data-tex="\(n\ge m\)">\(n\ge m\)</span>, let
+<span class="math math-display" data-tex="\[
+r_{m,n}=\bigvee_{j=m}^n g_j,\qquad r_{m,m-1}=0,
+\qquad d_{m,n}=r_{m,n}-r_{m,n-1}.
+\]">\[
+r_{m,n}=\bigvee_{j=m}^n g_j,\qquad r_{m,m-1}=0,
+\qquad d_{m,n}=r_{m,n}-r_{m,n-1}.
+\]</span>
+The parallelogram law <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-04">PT, Proposition 4.4</a> gives
+<span class="math math-display" data-tex="\[
+d_{m,n}\sim g_n-(g_n\wedge r_{m,n-1})\precsim g_n\sim f_n.
+\]">\[
+d_{m,n}\sim g_n-(g_n\wedge r_{m,n-1})\precsim g_n\sim f_n.
+\]</span>
+For fixed <span class="math" data-tex="\(m\)">\(m\)</span>, the <span class="math" data-tex="\(d_{m,n}\)">\(d_{m,n}\)</span> are orthogonal. Additivity of subequivalence <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-01">PT, Lemma 3.3</a> yields
+<span class="math math-display" data-tex="\[
+r_{m,n}\precsim\sum_{j=m}^n f_j\le F_m,
+\qquad F_m=\sum_{j\ge m}f_j.
+\]">\[
+r_{m,n}\precsim\sum_{j=m}^n f_j\le F_m,
+\qquad F_m=\sum_{j\ge m}f_j.
+\]</span>
+By 7.1,
+<span class="math math-display" data-tex="\[
+p_m:=\bigvee_{j\ge m}g_j\precsim F_m.
+\]">\[
+p_m:=\bigvee_{j\ge m}g_j\precsim F_m.
+\]</span>
+Let <span class="math" data-tex="\(p=\bigwedge_m p_m\)">\(p=\bigwedge_m p_m\)</span>. By (7.2),
+<span class="math math-display" data-tex="\[
+1-F_m\precsim1-p_m\le1-p.
+\]">\[
+1-F_m\precsim1-p_m\le1-p.
+\]</span>
+Orthogonality of the <span class="math" data-tex="\(f_n\)">\(f_n\)</span> gives <span class="math" data-tex="\(F_m\downarrow0\)">\(F_m\downarrow0\)</span> strongly, hence <span class="math" data-tex="\(1-F_m\uparrow1\)">\(1-F_m\uparrow1\)</span>. Applying 7.1 again gives <span class="math" data-tex="\(1\precsim1-p\)">\(1\precsim1-p\)</span>. Finiteness of <span class="math" data-tex="\(1\)">\(1\)</span> forces <span class="math" data-tex="\(p=0\)">\(p=0\)</span>: a subprojection of <span class="math" data-tex="\(1-p\)">\(1-p\)</span> equivalent to <span class="math" data-tex="\(1\)">\(1\)</span> must equal <span class="math" data-tex="\(1\)">\(1\)</span>. Therefore <span class="math" data-tex="\(p_m\downarrow0\)">\(p_m\downarrow0\)</span> strongly. Since <span class="math" data-tex="\(g_m\le p_m\)">\(g_m\le p_m\)</span>,
+<span class="math math-display" data-tex="\[
+\|g_m\xi\|\le\|p_m\xi\|\longrightarrow0.
+\tag{7.3}
+\]">\[
+\|g_m\xi\|\le\|p_m\xi\|\longrightarrow0.
+\tag{7.3}
+\]</span></p>
+<p><strong>7.3. Weak compactness of a normal state's conjugates.</strong> Choose a normal state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on a nonzero finite algebra <span class="math" data-tex="\(P\)">\(P\)</span>, for example a unit-vector state in a faithful concrete representation. For every orthogonal sequence <span class="math" data-tex="\((f_n)\subseteq\mathcal P(P)\)">\((f_n)\subseteq\mathcal P(P)\)</span>,
+<span class="math math-display" data-tex="\[
+\sup_{u\in\mathcal U(P)}\varphi(u^*f_nu)\longrightarrow0.
+\tag{7.4}
+\]">\[
+\sup_{u\in\mathcal U(P)}\varphi(u^*f_nu)\longrightarrow0.
+\tag{7.4}
+\]</span>
+Otherwise there are a subsequence <span class="math" data-tex="\(f_{n_k}\)">\(f_{n_k}\)</span>, unitaries <span class="math" data-tex="\(u_k\)">\(u_k\)</span>, and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> for which <span class="math" data-tex="\(\varphi(u_k^*f_{n_k}u_k)\ge\varepsilon\)">\(\varphi(u_k^*f_{n_k}u_k)\ge\varepsilon\)</span>. The projections <span class="math" data-tex="\(g_k=u_k^*f_{n_k}u_k\)">\(g_k=u_k^*f_{n_k}u_k\)</span> are equivalent to the orthogonal projections <span class="math" data-tex="\(f_{n_k}\)">\(f_{n_k}\)</span>; (7.3) makes them converge strongly to zero. Their norms are bounded, so <a href="../compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-09">OT, Lemma 8.5</a> gives weak-* convergence to zero, contradicting normality of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.</p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be the weak closure in <span class="math" data-tex="\(P_*\)">\(P_*\)</span> of the convex hull of
+<span class="math math-display" data-tex="\[
+\{\varphi\circ\operatorname{Ad}u:u\in\mathcal U(P)\}.
+\]">\[
+\{\varphi\circ\operatorname{Ad}u:u\in\mathcal U(P)\}.
+\]</span>
+The convex hull is norm bounded and satisfies (7.4) uniformly. Therefore <a href="../polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#OA-FND-PD-16">PW, Theorem 10.2, implication (7)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(1)</a> makes <span class="math" data-tex="\(K\)">\(K\)</span> weakly compact. Positivity and value <span class="math" data-tex="\(1\)">\(1\)</span> at the identity are weakly closed conditions, so every element of <span class="math" data-tex="\(K\)">\(K\)</span> is a normal state.</p>
+<p>The weak topology on the real self-adjoint part <span class="math" data-tex="\((P_*)_h\)">\((P_*)_h\)</span> is its real Banach-space weak topology, by Hahn–Banach extension and complexification of real functionals. Conjugation acts on this real Banach space by surjective linear isometries preserving <span class="math" data-tex="\(K\)">\(K\)</span>. The lemma in Step 6 gives a normal state <span class="math" data-tex="\(\tau\in K\)">\(\tau\in K\)</span> invariant under all conjugations. For <span class="math" data-tex="\(u\)">\(u\)</span> unitary and <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span>, invariance applied to <span class="math" data-tex="\(xu\)">\(xu\)</span> gives
+<span class="math math-display" data-tex="\[
+\tau(ux)=\tau\bigl(u(xu)u^*\bigr)=\tau(xu).
+\]">\[
+\tau(ux)=\tau\bigl(u(xu)u^*\bigr)=\tau(xu).
+\]</span>
+The unitaries linearly span <span class="math" data-tex="\(P\)">\(P\)</span> <a href="../c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-09">CF, Proposition 7.3</a>, so
+<span class="math math-display" data-tex="\[
+\tau(yx)=\tau(xy)\qquad(x,y\in P).
+\tag{7.5}
+\]">\[
+\tau(yx)=\tau(xy)\qquad(x,y\in P).
+\tag{7.5}
+\]</span>
+Thus every nonzero finite von Neumann algebra has a nonzero normal finite trace, normalized here to be a state. The trace construction uses the orbit idea of [L25, Propositions 3 and 6]; 7.1–7.2 give all comparison and limiting details needed for its Proposition 7.</p>
+<p><strong>7.4. Central supports and faithfulness.</strong> The support <span class="math" data-tex="\(s(\tau)\)">\(s(\tau)\)</span> exists and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful on <span class="math" data-tex="\(s(\tau)Ps(\tau)\)">\(s(\tau)Ps(\tau)\)</span> <a href="../the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-18">UE, Lemma 11.1</a>. Unitary invariance and uniqueness of the support give
+<span class="math math-display" data-tex="\[
+us(\tau)u^*=s(\tau)\qquad(u\in\mathcal U(P)).
+\]">\[
+us(\tau)u^*=s(\tau)\qquad(u\in\mathcal U(P)).
+\]</span>
+Since unitaries span <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(s(\tau)\)">\(s(\tau)\)</span> is central.</p>
+<p>Choose a maximal family of normal tracial states whose nonzero central supports <span class="math" data-tex="\(z_i\)">\(z_i\)</span> are pairwise orthogonal. If <span class="math" data-tex="\(1-\sum_i z_i\ne0\)">\(1-\sum_i z_i\ne0\)</span>, apply 7.3 to that finite central summand and extend its trace by zero to <span class="math" data-tex="\(P\)">\(P\)</span>. Its nonzero support is orthogonal to every <span class="math" data-tex="\(z_i\)">\(z_i\)</span>, contradicting maximality. Thus
+<span class="math math-display" data-tex="\[
+\sum_i z_i=1,
+\]">\[
+\sum_i z_i=1,
+\]</span>
+and each <span class="math" data-tex="\(Pz_i\)">\(Pz_i\)</span> has a faithful normal tracial state.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> is countably decomposable, this family is countable. Choose strictly positive scalar weights <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> with <span class="math" data-tex="\(\sum_i\lambda_i=1\)">\(\sum_i\lambda_i=1\)</span>. The norm-convergent sum
+<span class="math math-display" data-tex="\[
+\tau_0=\sum_i\lambda_i\tau_i\in P_*
+\]">\[
+\tau_0=\sum_i\lambda_i\tau_i\in P_*
+\]</span>
+is a normal tracial state. It is faithful: for <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>, <span class="math" data-tex="\(\tau_0(x)=0\)">\(\tau_0(x)=0\)</span> forces <span class="math" data-tex="\(\tau_i(x)=0\)">\(\tau_i(x)=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, hence <span class="math" data-tex="\(xz_i=0\)">\(xz_i=0\)</span> by faithfulness on <span class="math" data-tex="\(Pz_i\)">\(Pz_i\)</span>, and then <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Consequently every countably decomposable finite von Neumann algebra has a faithful normal tracial state.</p>
+<h3 id="OA-FND-INNER-STEP-08"><span id="oa-fnd-inner-step-08"></span>8. Replacing a spatial implementer when the commutant is finite</h3>
+<p>We prove a statement about normalizing operators. Let <span class="math" data-tex="\(P\subseteq B(H)\)">\(P\subseteq B(H)\)</span> be finite and countably decomposable, and let <span class="math" data-tex="\(h=h^*\in B(H)\)">\(h=h^*\in B(H)\)</span> satisfy
+<span class="math math-display" data-tex="\[
+\|h\|\le C,\qquad uhu^*-h\in P\quad(u\in\mathcal U(P)).
+\tag{8.1}
+\]">\[
+\|h\|\le C,\qquad uhu^*-h\in P\quad(u\in\mathcal U(P)).
+\tag{8.1}
+\]</span>
+Then there exists <span class="math" data-tex="\(k=k^*\in P&#x27;\)">\(k=k^*\in P&#x27;\)</span> such that
+<span class="math math-display" data-tex="\[
+k-h\in P,\qquad \|k\|\le C.
+\tag{8.2}
+\]">\[
+k-h\in P,\qquad \|k\|\le C.
+\tag{8.2}
+\]</span></p>
+<p>Take a faithful normal tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span> from Step 7. On the real vector space <span class="math" data-tex="\(P_h\)">\(P_h\)</span>, set
+<span class="math math-display" data-tex="\[
+\langle x,y\rangle_2=\tau(xy),\qquad \|x\|_2=\tau(x^2)^{1/2}.
+\]">\[
+\langle x,y\rangle_2=\tau(xy),\qquad \|x\|_2=\tau(x^2)^{1/2}.
+\]</span>
+The trace identity makes this a real symmetric bilinear form: <span class="math" data-tex="\(\overline{\tau(xy)}=\tau(yx)=\tau(xy)\)">\(\overline{\tau(xy)}=\tau(yx)=\tau(xy)\)</span>. Faithfulness makes it positive definite. Let <span class="math" data-tex="\(L^2(P,\tau)_h\)">\(L^2(P,\tau)_h\)</span> denote its real Hilbert completion, and <span class="math" data-tex="\(j:P_h\to L^2(P,\tau)_h\)">\(j:P_h\to L^2(P,\tau)_h\)</span> the injective inclusion.</p>
+<p>Put
+<span class="math math-display" data-tex="\[
+c(u)=uhu^*-h\in P_h,
+\qquad T_u(y)=c(u)+uyu^*.
+\]">\[
+c(u)=uhu^*-h\in P_h,
+\qquad T_u(y)=c(u)+uyu^*.
+\]</span>
+Conjugation preserves <span class="math" data-tex="\(\|\cdot\|_2\)">\(\|\cdot\|_2\)</span>, by the trace property. Also
+<span class="math math-display" data-tex="\[
+c(uv)=c(u)+uc(v)u^*.
+\]">\[
+c(uv)=c(u)+uc(v)u^*.
+\]</span>
+Thus the <span class="math" data-tex="\(T_u\)">\(T_u\)</span> extend to an action by affine isometries of the real Hilbert space. The orbit of zero is <span class="math" data-tex="\(\{j(c(u))\}\)">\(\{j(c(u))\}\)</span>, and it is bounded, since <span class="math" data-tex="\(\|c(u)\|_2\le\|c(u)\|\le2C\)">\(\|c(u)\|_2\le\|c(u)\|\le2C\)</span>. Its Hilbert-norm closed convex hull <span class="math" data-tex="\(S\)">\(S\)</span> is nonempty, bounded, and invariant under every <span class="math" data-tex="\(T_u\)">\(T_u\)</span>.</p>
+<p><strong>8.1. A Hilbert-space circumcentre.</strong> For <span class="math" data-tex="\(y\in S\)">\(y\in S\)</span>, define
+<span class="math math-display" data-tex="\[
+R(y)=\sup_{s\in S}\|y-s\|_2,\qquad r=\inf_{y\in S}R(y).
+\]">\[
+R(y)=\sup_{s\in S}\|y-s\|_2,\qquad r=\inf_{y\in S}R(y).
+\]</span>
+For <span class="math" data-tex="\(y,z\in S\)">\(y,z\in S\)</span>, the parallelogram identity gives
+<span class="math math-display" data-tex="\[
+R\!\left(\frac{y+z}{2}\right)^2
+\le\frac{R(y)^2+R(z)^2}{2}-\frac{\|y-z\|_2^2}{4}.
+\]">\[
+R\!\left(\frac{y+z}{2}\right)^2
+\le\frac{R(y)^2+R(z)^2}{2}-\frac{\|y-z\|_2^2}{4}.
+\]</span>
+Since the midpoint belongs to <span class="math" data-tex="\(S\)">\(S\)</span>,
+<span class="math math-display" data-tex="\[
+\|y-z\|_2^2\le2R(y)^2+2R(z)^2-4r^2.
+\tag{8.3}
+\]">\[
+\|y-z\|_2^2\le2R(y)^2+2R(z)^2-4r^2.
+\tag{8.3}
+\]</span>
+A sequence with <span class="math" data-tex="\(R(y_n)\to r\)">\(R(y_n)\to r\)</span> is therefore Cauchy. Its limit lies in <span class="math" data-tex="\(S\)">\(S\)</span>, and the inequality <span class="math" data-tex="\(|R(y)-R(z)|\le\|y-z\|_2\)">\(|R(y)-R(z)|\le\|y-z\|_2\)</span> shows that it attains <span class="math" data-tex="\(r\)">\(r\)</span>. Equation (8.3) proves uniqueness. As each <span class="math" data-tex="\(T_u\)">\(T_u\)</span> is an isometry carrying <span class="math" data-tex="\(S\)">\(S\)</span> onto itself, it preserves <span class="math" data-tex="\(R\)">\(R\)</span> and hence fixes this unique point, say <span class="math" data-tex="\(y_0\)">\(y_0\)</span>.</p>
+<p><strong>8.2. Recovering the operator norm bound.</strong> Let
+<span class="math math-display" data-tex="\[
+K=\overline{\operatorname{co}}^{\,w^*}
+\{uhu^*:u\in\mathcal U(P)\}\subseteq B(H)_h.
+\]">\[
+K=\overline{\operatorname{co}}^{\,w^*}
+\{uhu^*:u\in\mathcal U(P)\}\subseteq B(H)_h.
+\]</span>
+It is weak-* compact and contained in the operator-norm ball of radius <span class="math" data-tex="\(C\)">\(C\)</span>. From (8.1),
+<span class="math math-display" data-tex="\[
+K-h\subseteq P_h,\qquad \|t\|\le2C\quad(t\in K-h).
+\tag{8.4}
+\]">\[
+K-h\subseteq P_h,\qquad \|t\|\le2C\quad(t\in K-h).
+\tag{8.4}
+\]</span>
+The weak-* topology of <span class="math" data-tex="\(P\)">\(P\)</span> is the subspace <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak topology from <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>, by <a href="../compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-10">OT, Theorem 9.4</a>. On a norm-bounded subset of <span class="math" data-tex="\(P_h\)">\(P_h\)</span>, the map <span class="math" data-tex="\(j\)">\(j\)</span> is continuous from weak-* to Hilbert-space weak topology. For a test vector <span class="math" data-tex="\(j(z)\)">\(j(z)\)</span>, <span class="math" data-tex="\(z\in P_h\)">\(z\in P_h\)</span>, this follows because
+<span class="math math-display" data-tex="\[
+\langle j(t),j(z)\rangle_2=\tau(tz)
+\]">\[
+\langle j(t),j(z)\rangle_2=\tau(tz)
+\]</span>
+is a normal functional of <span class="math" data-tex="\(t\)">\(t\)</span>. For an arbitrary Hilbert-space test vector, approximate it in <span class="math" data-tex="\(\|\cdot\|_2\)">\(\|\cdot\|_2\)</span> by such <span class="math" data-tex="\(j(z)\)">\(j(z)\)</span>; the approximation is uniform over (8.4), since <span class="math" data-tex="\(\|j(t)\|_2\le2C\)">\(\|j(t)\|_2\le2C\)</span>.</p>
+<p>It follows that <span class="math" data-tex="\(j(K-h)\)">\(j(K-h)\)</span> is weakly compact and convex in the Hilbert space, and hence norm closed. It contains the orbit of zero, so it contains <span class="math" data-tex="\(S\)">\(S\)</span>. In particular <span class="math" data-tex="\(y_0=j(t)\)">\(y_0=j(t)\)</span> for some <span class="math" data-tex="\(t\in K-h\)">\(t\in K-h\)</span>. Since <span class="math" data-tex="\(j\)">\(j\)</span> is injective, the fixed-point equations for <span class="math" data-tex="\(y_0\)">\(y_0\)</span> give
+<span class="math math-display" data-tex="\[
+c(u)+utu^*=t\qquad(u\in\mathcal U(P)).
+\]">\[
+c(u)+utu^*=t\qquad(u\in\mathcal U(P)).
+\]</span>
+Thus <span class="math" data-tex="\(k=h+t\in K\)">\(k=h+t\in K\)</span> satisfies <span class="math" data-tex="\(uku^*=k\)">\(uku^*=k\)</span> for all unitaries of <span class="math" data-tex="\(P\)">\(P\)</span>. Their linear span is <span class="math" data-tex="\(P\)">\(P\)</span>, so <span class="math" data-tex="\(k\in P&#x27;\)">\(k\in P&#x27;\)</span>, and <span class="math" data-tex="\(\|k\|\le C\)">\(\|k\|\le C\)</span>. This proves (8.2).</p>
+<p>Applied to <span class="math" data-tex="\(P=M&#x27;\)">\(P=M&#x27;\)</span>, using (5.4), this replaces the spatial implementer by a self-adjoint element of <span class="math" data-tex="\(M\)">\(M\)</span>, without increasing its norm, whenever <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> is finite and countably decomposable.</p>
+<h3 id="OA-FND-INNER-STEP-09"><span id="oa-fnd-inner-step-09"></span>9. Averaging in a countably decomposable type III algebra</h3>
+<p>We prove the exact averaging assertion needed for the type III case.</p>
+<p><strong>Lemma.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be a countably decomposable type III von Neumann algebra, and let <span class="math" data-tex="\(x=x^*\in P\)">\(x=x^*\in P\)</span>. There is a least self-adjoint central majorant <span class="math" data-tex="\(b=b(x)\)">\(b=b(x)\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, and
+<span class="math math-display" data-tex="\[
+\|b\|\le\|x\|,\qquad
+b\in\overline{\operatorname{co}}^{\|\cdot\|}
+\{uxu^*:u\in\mathcal U(P)\}.
+\tag{9.1}
+\]">\[
+\|b\|\le\|x\|,\qquad
+b\in\overline{\operatorname{co}}^{\|\cdot\|}
+\{uxu^*:u\in\mathcal U(P)\}.
+\tag{9.1}
+\]</span></p>
+<p>If <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, take <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Otherwise let <span class="math" data-tex="\(R=\|x\|\)">\(R=\|x\|\)</span> and consider
+<span class="math math-display" data-tex="\[
+\mathcal C_x=\{c\in Z(P)_h:x\le c\le R1\}.
+\]">\[
+\mathcal C_x=\{c\in Z(P)_h:x\le c\le R1\}.
+\]</span>
+It is nonempty. If <span class="math" data-tex="\(c,d\in\mathcal C_x\)">\(c,d\in\mathcal C_x\)</span>, the central projection
+<span class="math math-display" data-tex="\[
+e=1_{(-\infty,0]}(c-d)
+\]">\[
+e=1_{(-\infty,0]}(c-d)
+\]</span>
+satisfies
+<span class="math math-display" data-tex="\[
+\min(c,d)=ec+(1-e)d\ge x.
+\]">\[
+\min(c,d)=ec+(1-e)d\ge x.
+\]</span>
+Thus <span class="math" data-tex="\(\mathcal C_x\)">\(\mathcal C_x\)</span> is downward directed, and its elements lie between <span class="math" data-tex="\(-R1\)">\(-R1\)</span> and <span class="math" data-tex="\(R1\)">\(R1\)</span>. The bounded decreasing net of these elements has a strong limit <span class="math" data-tex="\(b\)">\(b\)</span>, by <a href="../the-spectral-theorem-for-bounded-self-adjoint-operators.html#OA-FND-ST-06">ST, Theorem 6.1</a>. The centre is strongly closed, so <span class="math" data-tex="\(b\in Z(P)_h\)">\(b\in Z(P)_h\)</span>. Passing to the strong limit in the inequalities gives <span class="math" data-tex="\(x\le b\le R1\)">\(x\le b\le R1\)</span>, and <span class="math" data-tex="\(b\le c\)">\(b\le c\)</span> for every <span class="math" data-tex="\(c\in\mathcal C_x\)">\(c\in\mathcal C_x\)</span>. If <span class="math" data-tex="\(c\)">\(c\)</span> is any other central self-adjoint majorant of <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(\min(c,R1)\in\mathcal C_x\)">\(\min(c,R1)\in\mathcal C_x\)</span>, so <span class="math" data-tex="\(b\le c\)">\(b\le c\)</span>. This proves leastness and <span class="math" data-tex="\(\|b\|\le R\)">\(\|b\|\le R\)</span>.</p>
+<p>For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, set
+<span class="math math-display" data-tex="\[
+p=1_{[0,\varepsilon)}(b-x),\qquad q=1-p.
+\]">\[
+p=1_{[0,\varepsilon)}(b-x),\qquad q=1-p.
+\]</span>
+The central support of <span class="math" data-tex="\(p\)">\(p\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. Otherwise <span class="math" data-tex="\(z=1-c(p)\ne0\)">\(z=1-c(p)\ne0\)</span> is central and annihilates <span class="math" data-tex="\(p\)">\(p\)</span>. Spectral calculus then gives
+<span class="math math-display" data-tex="\[
+z(b-x)\ge\varepsilon z.
+\]">\[
+z(b-x)\ge\varepsilon z.
+\]</span>
+Consequently <span class="math" data-tex="\(b-\varepsilon z\)">\(b-\varepsilon z\)</span> is a central majorant of <span class="math" data-tex="\(x\)">\(x\)</span> strictly smaller than <span class="math" data-tex="\(b\)">\(b\)</span>, a contradiction.</p>
+<p>Put <span class="math" data-tex="\(w=c(q)\)">\(w=c(q)\)</span>. If <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span>, both <span class="math" data-tex="\(wp\)">\(wp\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> have central support <span class="math" data-tex="\(w\)">\(w\)</span> in <span class="math" data-tex="\(Pw\)">\(Pw\)</span>. Every nonzero projection of a type III algebra is properly infinite <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-09">PT, Lemma 6.2(3) and Definition 7.1</a>. The algebra <span class="math" data-tex="\(Pw\)">\(Pw\)</span> is countably decomposable. Therefore <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-19">PT, Proposition 15.2(4)</a> gives
+<span class="math math-display" data-tex="\[
+wp\sim w\sim q.
+\tag{9.2}
+\]">\[
+wp\sim w\sim q.
+\tag{9.2}
+\]</span>
+For any integer <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, repeated halving <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-17">PT, Proposition 13.4</a> partitions <span class="math" data-tex="\(w\)">\(w\)</span> into orthogonal projections
+<span class="math math-display" data-tex="\[
+w=q_1+\cdots+q_n,\qquad q_j\sim w.
+\]">\[
+w=q_1+\cdots+q_n,\qquad q_j\sim w.
+\]</span>
+For every <span class="math" data-tex="\(j\)">\(j\)</span>, <span class="math" data-tex="\(w-q_j\sim w\)">\(w-q_j\sim w\)</span>, since it contains one of the other <span class="math" data-tex="\(q_k\sim w\)">\(q_k\sim w\)</span> and is at most <span class="math" data-tex="\(w\)">\(w\)</span>; use projection Schröder–Bernstein <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-03">PT, Proposition 5.1</a>. By (9.2),
+<span class="math math-display" data-tex="\[
+q\sim q_j,\qquad wp=w-q\sim w-q_j.
+\]">\[
+q\sim q_j,\qquad wp=w-q\sim w-q_j.
+\]</span>
+Add partial isometries implementing these two equivalences. Their orthogonal initial and final projections make their sum a unitary of <span class="math" data-tex="\(Pw\)">\(Pw\)</span> sending <span class="math" data-tex="\(q\)">\(q\)</span> to <span class="math" data-tex="\(q_j\)">\(q_j\)</span>. Extend it by <span class="math" data-tex="\(1-w\)">\(1-w\)</span> to a unitary <span class="math" data-tex="\(u_j\in P\)">\(u_j\in P\)</span>.</p>
+<p>Functional calculus gives
+<span class="math math-display" data-tex="\[
+0\le b-x\le\varepsilon1+2R q.
+\]">\[
+0\le b-x\le\varepsilon1+2R q.
+\]</span>
+Each <span class="math" data-tex="\(u_j\)">\(u_j\)</span> commutes with the central element <span class="math" data-tex="\(b\)">\(b\)</span>, so
+<span class="math math-display" data-tex="\[
+0\le b-\frac1n\sum_{j=1}^nu_jxu_j^*
+\le\varepsilon1+\frac{2R}{n}\sum_{j=1}^nq_j
+=\varepsilon1+\frac{2R}{n}w.
+\tag{9.3}
+\]">\[
+0\le b-\frac1n\sum_{j=1}^nu_jxu_j^*
+\le\varepsilon1+\frac{2R}{n}\sum_{j=1}^nq_j
+=\varepsilon1+\frac{2R}{n}w.
+\tag{9.3}
+\]</span>
+If <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, then <span class="math" data-tex="\(q=0\)">\(q=0\)</span> and <span class="math" data-tex="\(0\le b-x\le\varepsilon1\)">\(0\le b-x\le\varepsilon1\)</span>, which gives the needed approximation with the identity unitary. For any prescribed error, choose <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> small and then <span class="math" data-tex="\(n\)">\(n\)</span> large in (9.3). This proves (9.1).</p>
+<h3 id="OA-FND-INNER-STEP-10"><span id="oa-fnd-inner-step-10"></span>10. Replacing a spatial implementer when the commutant is type III</h3>
+<p>Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span>, let <span class="math" data-tex="\(N=M&#x27;\)">\(N=M&#x27;\)</span> be countably decomposable and type III, and let <span class="math" data-tex="\(h=h^*\)">\(h=h^*\)</span>, <span class="math" data-tex="\(\|h\|\le C\)">\(\|h\|\le C\)</span>, be the spatial implementer from Step 5. We construct
+<span class="math math-display" data-tex="\[
+h_0=h_0^*\in M,\qquad \|h_0\|\le C,
+\qquad h_0-h\in N.
+\tag{10.1}
+\]">\[
+h_0=h_0^*\in M,\qquad \|h_0\|\le C,
+\qquad h_0-h\in N.
+\tag{10.1}
+\]</span>
+For <span class="math" data-tex="\(C=0\)">\(C=0\)</span>, take <span class="math" data-tex="\(h_0=0\)">\(h_0=0\)</span>. Suppose <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>, put <span class="math" data-tex="\(b=h+C1\)">\(b=h+C1\)</span>, and define
+<span class="math math-display" data-tex="\[
+K=\overline{\operatorname{co}}^{\,w^*}
+\{ubu^*:u\in\mathcal U(N)\}.
+\]">\[
+K=\overline{\operatorname{co}}^{\,w^*}
+\{ubu^*:u\in\mathcal U(N)\}.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+K\subseteq[0,2C1]\cap(b+N)_h.
+\tag{10.2}
+\]">\[
+K\subseteq[0,2C1]\cap(b+N)_h.
+\tag{10.2}
+\]</span>
+Also every element of <span class="math" data-tex="\(K\)">\(K\)</span> commutes with <span class="math" data-tex="\(Z(N)=Z(M)\)">\(Z(N)=Z(M)\)</span>, by (5.3). The set <span class="math" data-tex="\(K\)">\(K\)</span> is nonempty, weak-* compact, convex, and invariant under conjugation by <span class="math" data-tex="\(\mathcal U(N)\)">\(\mathcal U(N)\)</span>.</p>
+<p>Choose an inclusion-minimal nonempty weak-* compact convex invariant subset <span class="math" data-tex="\(L\subseteq K\)">\(L\subseteq K\)</span>. Zorn's lemma applies because an inclusion-decreasing chain has nonempty intersection by compactness of <span class="math" data-tex="\(K\)">\(K\)</span>, and that intersection remains compact, convex, and invariant.</p>
+<p>For a central projection <span class="math" data-tex="\(z\in N\)">\(z\in N\)</span> and <span class="math" data-tex="\(k\in L\)">\(k\in L\)</span>, the set
+<span class="math math-display" data-tex="\[
+\{l\in L:\|lz\|\le\|kz\|\}
+\]">\[
+\{l\in L:\|lz\|\le\|kz\|\}
+\]</span>
+is nonempty, weak-* compact, convex, and invariant. Weak-* closedness follows from lower semicontinuity of the norm and normality of multiplication by <span class="math" data-tex="\(z\)">\(z\)</span>; invariance follows because the conjugating unitaries commute with <span class="math" data-tex="\(z\)">\(z\)</span>. Minimality forces this set to be all of <span class="math" data-tex="\(L\)">\(L\)</span>. Interchanging <span class="math" data-tex="\(k,l\)">\(k,l\)</span>, we obtain
+<span class="math math-display" data-tex="\[
+\|kz\|=\|lz\|\qquad(k,l\in L,\ z\in\mathcal P(Z(N))).
+\tag{10.3}
+\]">\[
+\|kz\|=\|lz\|\qquad(k,l\in L,\ z\in\mathcal P(Z(N))).
+\tag{10.3}
+\]</span></p>
+<p>The difference set
+<span class="math math-display" data-tex="\[
+V=L-L
+\]">\[
+V=L-L
+\]</span>
+is a weak-* compact convex symmetric invariant subset of <span class="math" data-tex="\(N_h\)">\(N_h\)</span>, by (10.2). Suppose <span class="math" data-tex="\(d\in V\)">\(d\in V\)</span> is nonzero. Replacing <span class="math" data-tex="\(d\)">\(d\)</span> by <span class="math" data-tex="\(-d\)">\(-d\)</span> if necessary, arrange that its positive part is nonzero. Apply Step 9 inside <span class="math" data-tex="\(N\)">\(N\)</span>. The central majorant <span class="math" data-tex="\(b_N(d)\)">\(b_N(d)\)</span> belongs to the norm-closed convex hull of the unitary orbit of <span class="math" data-tex="\(d\)">\(d\)</span>, and hence to <span class="math" data-tex="\(V\)">\(V\)</span>. Since <span class="math" data-tex="\(b_N(d)\ge d\)">\(b_N(d)\ge d\)</span>, it cannot be nonpositive. There are therefore <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and a nonzero central spectral projection <span class="math" data-tex="\(z\)">\(z\)</span> with
+<span class="math math-display" data-tex="\[
+b_N(d)z\ge\varepsilon z.
+\]">\[
+b_N(d)z\ge\varepsilon z.
+\]</span>
+Write <span class="math" data-tex="\(b_N(d)=k-l\)">\(b_N(d)=k-l\)</span> with <span class="math" data-tex="\(k,l\in L\)">\(k,l\in L\)</span>. The operators <span class="math" data-tex="\(k,l\)">\(k,l\)</span> are positive and commute with <span class="math" data-tex="\(z\)">\(z\)</span>, so
+<span class="math math-display" data-tex="\[
+kz\ge lz+\varepsilon z.
+\]">\[
+kz\ge lz+\varepsilon z.
+\]</span>
+On the nonzero Hilbert space <span class="math" data-tex="\(zH\)">\(zH\)</span>, positivity implies
+<span class="math math-display" data-tex="\[
+\|kz\|\ge\|lz+\varepsilon z\|=\|lz\|+\varepsilon,
+\]">\[
+\|kz\|\ge\|lz+\varepsilon z\|=\|lz\|+\varepsilon,
+\]</span>
+contradicting (10.3). Thus <span class="math" data-tex="\(V=\{0\}\)">\(V=\{0\}\)</span>, and <span class="math" data-tex="\(L\)">\(L\)</span> is a singleton, say <span class="math" data-tex="\(\{k\}\)">\(\{k\}\)</span>.</p>
+<p>Its invariance makes <span class="math" data-tex="\(k\)">\(k\)</span> commute with every unitary of <span class="math" data-tex="\(N\)">\(N\)</span>, hence with <span class="math" data-tex="\(N\)">\(N\)</span>, so <span class="math" data-tex="\(k\in N&#x27;=M\)">\(k\in N&#x27;=M\)</span>. By (10.2), <span class="math" data-tex="\(0\le k\le2C1\)">\(0\le k\le2C1\)</span> and <span class="math" data-tex="\(k-b\in N\)">\(k-b\in N\)</span>. Set <span class="math" data-tex="\(h_0=k-C1\)">\(h_0=k-C1\)</span>. Then <span class="math" data-tex="\(-C1\le h_0\le C1\)">\(-C1\le h_0\le C1\)</span>, and (10.1) follows.</p>
+<p>The minimal-invariant-set argument is the part of [K66, Addendum, Theorem 15, p. 292] needed here. Its averaging input has been proved explicitly in Step 9.</p>
+<h3 id="OA-FND-INNER-STEP-11"><span id="oa-fnd-inner-step-11"></span>11. Finite, properly infinite, and semifinite commutants</h3>
+<p>We now prove innerness, with the same bound <span class="math" data-tex="\(C\)">\(C\)</span>, for every concrete algebra whose commutant is countably decomposable.</p>
+<p><strong>11.1. A full finite corner in a semifinite algebra.</strong> Let <span class="math" data-tex="\(N\)">\(N\)</span> be semifinite. Every nonzero central summand of <span class="math" data-tex="\(N\)">\(N\)</span> contains a nonzero finite projection. Indeed, by <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-10">PT, Definition 7.1 and Theorem 7.2</a>, a nonzero type I part contains an abelian projection, which is finite by Lemma 6.2; a nonzero type II part contains a nonzero finite projection by the definition of type II. There is no type III central part in a semifinite algebra.</p>
+<p>Choose a maximal family of nonzero finite projections <span class="math" data-tex="\(q_j\in N\)">\(q_j\in N\)</span> whose central supports <span class="math" data-tex="\(z_j=c_N(q_j)\)">\(z_j=c_N(q_j)\)</span> are pairwise orthogonal. If <span class="math" data-tex="\(z=1-\sum_jz_j\ne0\)">\(z=1-\sum_jz_j\ne0\)</span>, a nonzero finite projection in <span class="math" data-tex="\(Nz\)">\(Nz\)</span> would enlarge the family. Hence <span class="math" data-tex="\(\sum_jz_j=1\)">\(\sum_jz_j=1\)</span>. The strong sum
+<span class="math math-display" data-tex="\[
+q=\sum_jq_j
+\]">\[
+q=\sum_jq_j
+\]</span>
+is finite by <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-09">PT, Lemma 6.3</a>, which proves finiteness of centrally orthogonal sums of finite projections. Moreover,
+<span class="math math-display" data-tex="\[
+c_N(q)=1.
+\tag{11.1}
+\]">\[
+c_N(q)=1.
+\tag{11.1}
+\]</span>
+For if a central projection majorizes <span class="math" data-tex="\(q\)">\(q\)</span>, it majorizes every <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, and therefore every <span class="math" data-tex="\(z_j\)">\(z_j\)</span>.</p>
+<p><strong>11.2. Compression of a spatial implementer.</strong> Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span>, <span class="math" data-tex="\(N=M&#x27;\)">\(N=M&#x27;\)</span>, and suppose now that <span class="math" data-tex="\(N\)">\(N\)</span> is countably decomposable and semifinite. Let <span class="math" data-tex="\(D\)">\(D\)</span> be a *-derivation of <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(\|D\|\le C\)">\(\|D\|\le C\)</span>, and take a spatial implementer <span class="math" data-tex="\(h=h^*\)">\(h=h^*\)</span>, <span class="math" data-tex="\(\|h\|\le C\)">\(\|h\|\le C\)</span>, from Step 5. Choose <span class="math" data-tex="\(q\in N\)">\(q\in N\)</span> as in 11.1.</p>
+<p>By <a href="../the-double-commutant-theorem.html#OA-FND-BI-04">DC, Theorem 5.8; PT, Proposition 3.5(3)</a>, the map
+<span class="math math-display" data-tex="\[
+\sigma:M\longrightarrow B(qH),\qquad \sigma(x)=xq|_{qH},
+\]">\[
+\sigma:M\longrightarrow B(qH),\qquad \sigma(x)=xq|_{qH},
+\]</span>
+has a von Neumann algebra as its image, with commutant <span class="math" data-tex="\(qNq\)">\(qNq\)</span>, and its kernel is <span class="math" data-tex="\(M(1-c_N(q))=0\)">\(M(1-c_N(q))=0\)</span>. It is therefore an isometric *-isomorphism onto its image, and is normal in both directions by <a href="../the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-18">UE, Corollary 11.4</a>. Transport <span class="math" data-tex="\(D\)">\(D\)</span> to <span class="math" data-tex="\(\sigma(M)\)">\(\sigma(M)\)</span>, writing
+<span class="math math-display" data-tex="\[
+D_q(\sigma(x))=\sigma(D(x)).
+\]">\[
+D_q(\sigma(x))=\sigma(D(x)).
+\]</span>
+For <span class="math" data-tex="\(h_q=qhq|_{qH}\)">\(h_q=qhq|_{qH}\)</span>, direct multiplication, using <span class="math" data-tex="\(xq=qx\)">\(xq=qx\)</span>, gives
+<span class="math math-display" data-tex="\[
+i[h_q,\sigma(x)]=iq[h,x]q|_{qH}
+=\sigma(D(x)).
+\tag{11.2}
+\]">\[
+i[h_q,\sigma(x)]=iq[h,x]q|_{qH}
+=\sigma(D(x)).
+\tag{11.2}
+\]</span>
+Also <span class="math" data-tex="\(\|h_q\|\le C\)">\(\|h_q\|\le C\)</span>.</p>
+<p>The algebra <span class="math" data-tex="\(qNq\)">\(qNq\)</span> is finite, because <span class="math" data-tex="\(q\)">\(q\)</span> is a finite projection, and is countably decomposable, because any orthogonal family in it is an orthogonal family in <span class="math" data-tex="\(N\)">\(N\)</span>. From (11.2), the commutator calculation following (5.3), now in <span class="math" data-tex="\(B(qH)\)">\(B(qH)\)</span>, gives
+<span class="math math-display" data-tex="\[
+vh_qv^*-h_q\in qNq\qquad(v\in\mathcal U(qNq)).
+\]">\[
+vh_qv^*-h_q\in qNq\qquad(v\in\mathcal U(qNq)).
+\]</span>
+Step 8 therefore provides a self-adjoint
+<span class="math math-display" data-tex="\[
+k_q\in(qNq)&#x27;=\sigma(M),\qquad \|k_q\|\le C,
+\]">\[
+k_q\in(qNq)&#x27;=\sigma(M),\qquad \|k_q\|\le C,
+\]</span>
+with <span class="math" data-tex="\(k_q-h_q\in qNq\)">\(k_q-h_q\in qNq\)</span>. It implements <span class="math" data-tex="\(D_q\)">\(D_q\)</span>. Its inverse image <span class="math" data-tex="\(k=\sigma^{-1}(k_q)\)">\(k=\sigma^{-1}(k_q)\)</span> is self-adjoint, has norm at most <span class="math" data-tex="\(C\)">\(C\)</span>, and satisfies
+<span class="math math-display" data-tex="\[
+D(x)=i[k,x]\qquad(x\in M),
+\]">\[
+D(x)=i[k,x]\qquad(x\in M),
+\]</span>
+by injectivity of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>.</p>
+<p>This argument includes properly infinite semifinite algebras, of types I and II. In the finite case one may take <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, reducing directly to Step 8. No trace on the original semifinite algebra is assumed or used; the finite trace is constructed on the finite corner.</p>
+<p><strong>11.3. The complete countably decomposable-commutant case.</strong> For an arbitrary countably decomposable <span class="math" data-tex="\(N=M&#x27;\)">\(N=M&#x27;\)</span>, <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-10">PT, Theorem 7.2</a> first splits its identity by central projections into a finite part and a properly infinite part. For completeness, if <span class="math" data-tex="\(1=e_f+e_p\)">\(1=e_f+e_p\)</span> with orthogonal central supports, then <span class="math" data-tex="\(c(e_f)=c(e_f)(e_f+e_p)=e_f\)">\(c(e_f)=c(e_f)(e_f+e_p)=e_f\)</span>, and similarly <span class="math" data-tex="\(e_p\)">\(e_p\)</span> is central. The type decomposition then splits the properly infinite part into its semifinite and type III parts. Thus there are pairwise orthogonal central projections
+<span class="math math-display" data-tex="\[
+z_f+z_s+z_3=1
+\]">\[
+z_f+z_s+z_3=1
+\]</span>
+with <span class="math" data-tex="\(Nz_f\)">\(Nz_f\)</span> finite, <span class="math" data-tex="\(Nz_s\)">\(Nz_s\)</span> properly infinite and semifinite, and <span class="math" data-tex="\(Nz_3\)">\(Nz_3\)</span> type III; zero parts are omitted.</p>
+<p>These projections belong to <span class="math" data-tex="\(Z(M)\)">\(Z(M)\)</span>. On each <span class="math" data-tex="\(z_jH\)">\(z_jH\)</span>, the algebras <span class="math" data-tex="\(Mz_j\)">\(Mz_j\)</span> and <span class="math" data-tex="\(Nz_j\)">\(Nz_j\)</span> are mutual commutants <a href="../the-double-commutant-theorem.html#OA-FND-BI-04">DC, Theorem 5.8</a>. Each commutant remains countably decomposable. Equation (5.3) makes <span class="math" data-tex="\(hz_j\)">\(hz_j\)</span> a self-adjoint spatial implementer on that subspace, of norm at most <span class="math" data-tex="\(C\)">\(C\)</span>. Apply Step 8 on <span class="math" data-tex="\(z_f\)">\(z_f\)</span>, 11.2 on <span class="math" data-tex="\(z_s\)">\(z_s\)</span>, and Step 10 on <span class="math" data-tex="\(z_3\)">\(z_3\)</span>. The resulting self-adjoint implementers in <span class="math" data-tex="\(Mz_j\)">\(Mz_j\)</span> all have norm at most <span class="math" data-tex="\(C\)">\(C\)</span>. Step 2 combines them into one self-adjoint <span class="math" data-tex="\(k\in M\)">\(k\in M\)</span> with <span class="math" data-tex="\(\|k\|\le C\)">\(\|k\|\le C\)</span>.</p>
+<p>We have proved:
+<span class="math math-display" data-tex="\[
+\boxed{\ M&#x27;\text{ countably decomposable},\ D\text{ a *-derivation}
+\ \Longrightarrow\ D=i[k,\cdot],\quad k=k^*\in M,
+\quad\|k\|\le\|D\|.\ }
+\tag{11.3}
+\]">\[
+\boxed{\ M&#x27;\text{ countably decomposable},\ D\text{ a *-derivation}
+\ \Longrightarrow\ D=i[k,\cdot],\quad k=k^*\in M,
+\quad\|k\|\le\|D\|.\ }
+\tag{11.3}
+\]</span></p>
+<h3 id="OA-FND-INNER-STEP-12"><span id="oa-fnd-inner-step-12"></span>12. Arbitrary central sums through faithful cyclic representations</h3>
+<p>An arbitrary von Neumann algebra need not be a central sum of countably decomposable algebras. The reduction needed here is instead to faithful cyclic representations of central summands; their <strong>commutants</strong> are countably decomposable. We prove that reduction.</p>
+<p>Fix a concrete <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span>, and put <span class="math" data-tex="\(N=M&#x27;\)">\(N=M&#x27;\)</span>. For a nonzero vector <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>, let <span class="math" data-tex="\(p_\xi\)">\(p_\xi\)</span> be the projection onto <span class="math" data-tex="\([M\xi]\)">\([M\xi]\)</span>. This subspace reduces <span class="math" data-tex="\(M\)">\(M\)</span>, so <span class="math" data-tex="\(p_\xi\in N\)">\(p_\xi\in N\)</span>. Put
+<span class="math math-display" data-tex="\[
+z_\xi=c_N(p_\xi)\in Z(N)=Z(M).
+\]">\[
+z_\xi=c_N(p_\xi)\in Z(N)=Z(M).
+\]</span>
+The induction results <a href="../the-double-commutant-theorem.html#OA-FND-BI-04">DC, Theorem 5.8; PT, Proposition 3.5(3)</a>, together with normality of *-isomorphisms <a href="../the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-18">UE, Corollary 11.4</a>, give a faithful normal isometric representation
+<span class="math math-display" data-tex="\[
+\rho_\xi:Mz_\xi\longrightarrow B(p_\xi H),
+\qquad \rho_\xi(x)=xp_\xi|_{p_\xi H},
+\tag{12.1}
+\]">\[
+\rho_\xi:Mz_\xi\longrightarrow B(p_\xi H),
+\qquad \rho_\xi(x)=xp_\xi|_{p_\xi H},
+\tag{12.1}
+\]</span>
+whose image is a von Neumann algebra with commutant
+<span class="math math-display" data-tex="\[
+\rho_\xi(Mz_\xi)&#x27;=p_\xi Np_\xi.
+\tag{12.2}
+\]">\[
+\rho_\xi(Mz_\xi)&#x27;=p_\xi Np_\xi.
+\tag{12.2}
+\]</span>
+The vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is cyclic for the image in (12.1). It is separating for the algebra in (12.2): if <span class="math" data-tex="\(t\xi=0\)">\(t\xi=0\)</span> and <span class="math" data-tex="\(t\in p_\xi Np_\xi\)">\(t\in p_\xi Np_\xi\)</span>, then
+<span class="math math-display" data-tex="\[
+t(x\xi)=x(t\xi)=0\qquad(x\in M),
+\]">\[
+t(x\xi)=x(t\xi)=0\qquad(x\in M),
+\]</span>
+and these vectors have dense span in <span class="math" data-tex="\(p_\xi H\)">\(p_\xi H\)</span>, so <span class="math" data-tex="\(t=0\)">\(t=0\)</span>.</p>
+<p>It follows directly that <span class="math" data-tex="\(p_\xi Np_\xi\)">\(p_\xi Np_\xi\)</span> is countably decomposable. Indeed, if <span class="math" data-tex="\((e_j)\)">\((e_j)\)</span> is an orthogonal family of nonzero projections in it, each <span class="math" data-tex="\(e_j\xi\ne0\)">\(e_j\xi\ne0\)</span>, while
+<span class="math math-display" data-tex="\[
+\sum_{j\in F}\|e_j\xi\|^2\le\|\xi\|^2
+\]">\[
+\sum_{j\in F}\|e_j\xi\|^2\le\|\xi\|^2
+\]</span>
+for every finite subfamily <span class="math" data-tex="\(F\)">\(F\)</span>. A family of strictly positive real numbers with bounded finite subsums is countable: for each positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, only finitely many terms can exceed <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, and every positive term exceeds <span class="math" data-tex="\(1/n\)">\(1/n\)</span> for some <span class="math" data-tex="\(n\)">\(n\)</span>. Thus the family of projections is countable.</p>
+<p>Choose, by Zorn's lemma, a maximal family <span class="math" data-tex="\((\xi_i)_{i\in I}\)">\((\xi_i)_{i\in I}\)</span> for which the nonzero central projections <span class="math" data-tex="\(z_i=z_{\xi_i}\)">\(z_i=z_{\xi_i}\)</span> are pairwise orthogonal. Their strong sum is <span class="math" data-tex="\(1\)">\(1\)</span>. To see this, if
+<span class="math math-display" data-tex="\[
+z=1-\sum_i z_i\ne0,
+\]">\[
+z=1-\sum_i z_i\ne0,
+\]</span>
+choose a nonzero <span class="math" data-tex="\(\xi\in zH\)">\(\xi\in zH\)</span>. Since <span class="math" data-tex="\(z\)">\(z\)</span> is central, <span class="math" data-tex="\(M\xi\subseteq zH\)">\(M\xi\subseteq zH\)</span>; thus <span class="math" data-tex="\(p_\xi\le z\)">\(p_\xi\le z\)</span> and <span class="math" data-tex="\(0\ne z_\xi\le z\)">\(0\ne z_\xi\le z\)</span>. This contradicts maximality.</p>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> be a *-derivation of <span class="math" data-tex="\(M\)">\(M\)</span>, and set <span class="math" data-tex="\(C=\|D\|\)">\(C=\|D\|\)</span>. Step 2 restricts it to each <span class="math" data-tex="\(Mz_i\)">\(Mz_i\)</span>, with norm at most <span class="math" data-tex="\(C\)">\(C\)</span>. Transport that restriction through the isomorphism <span class="math" data-tex="\(\rho_{\xi_i}\)">\(\rho_{\xi_i}\)</span>. Its image algebra has countably decomposable commutant by (12.2), so (11.3) gives a self-adjoint implementer of norm at most <span class="math" data-tex="\(C\)">\(C\)</span> there. Pull it back through <span class="math" data-tex="\(\rho_{\xi_i}\)">\(\rho_{\xi_i}\)</span>, obtaining
+<span class="math math-display" data-tex="\[
+h_i=h_i^*\in Mz_i,\qquad \|h_i\|\le C,
+\qquad D|_{Mz_i}=i[h_i,\cdot].
+\]">\[
+h_i=h_i^*\in Mz_i,\qquad \|h_i\|\le C,
+\qquad D|_{Mz_i}=i[h_i,\cdot].
+\]</span>
+The uniform central-sum construction of Step 2 applies to the arbitrary index set <span class="math" data-tex="\(I\)">\(I\)</span>. It gives
+<span class="math math-display" data-tex="\[
+h=\sum_i h_i\in M_h,\qquad \|h\|\le C,
+\qquad D(x)=i[h,x]\quad(x\in M).
+\tag{12.3}
+\]">\[
+h=\sum_i h_i\in M_h,\qquad \|h\|\le C,
+\qquad D(x)=i[h,x]\quad(x\in M).
+\tag{12.3}
+\]</span>
+This is the central-cyclic reduction in [K66, Addendum, Theorem 15, pp. 291–292], with the countability assertion made on the commutants and the uniform summation estimate given explicitly.</p>
+<h3 id="OA-FND-INNER-STEP-13"><span id="oa-fnd-inner-step-13"></span>13. General derivations, the bound, and uniqueness</h3>
+<p>Let <span class="math" data-tex="\(\delta\)">\(\delta\)</span> now be an arbitrary complex-linear derivation of <span class="math" data-tex="\(M\)">\(M\)</span>. It is bounded by Step 1. The *-derivations <span class="math" data-tex="\(\delta_1,\delta_2\)">\(\delta_1,\delta_2\)</span> in 1.1 satisfy (1.1). By (12.3), choose
+<span class="math math-display" data-tex="\[
+h_j=h_j^*\in M,\qquad
+\delta_j=i[h_j,\cdot],\qquad
+\|h_j\|\le\|\delta_j\|\le\|\delta\|
+\quad(j=1,2).
+\]">\[
+h_j=h_j^*\in M,\qquad
+\delta_j=i[h_j,\cdot],\qquad
+\|h_j\|\le\|\delta_j\|\le\|\delta\|
+\quad(j=1,2).
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\delta=\delta_1+i\delta_2=[ih_1-h_2,\cdot].
+\]">\[
+\delta=\delta_1+i\delta_2=[ih_1-h_2,\cdot].
+\]</span>
+Thus
+<span class="math math-display" data-tex="\[
+a=ih_1-h_2\in M,\qquad
+\|a\|\le\|h_1\|+\|h_2\|\le2\|\delta\|.
+\]">\[
+a=ih_1-h_2\in M,\qquad
+\|a\|\le\|h_1\|+\|h_2\|\le2\|\delta\|.
+\]</span>
+If <span class="math" data-tex="\(\delta\)">\(\delta\)</span> itself preserves the involution, (12.3) directly gives <span class="math" data-tex="\(a=ih\)">\(a=ih\)</span>, <span class="math" data-tex="\(h=h^*\)">\(h=h^*\)</span>, <span class="math" data-tex="\(\|h\|\le\|\delta\|\)">\(\|h\|\le\|\delta\|\)</span>.</p>
+<p>Finally,
+<span class="math math-display" data-tex="\[
+[a,x]=[b,x]\text{ for every }x\in M
+\quad\Longleftrightarrow\quad
+[a-b,x]=0\text{ for every }x\in M
+\quad\Longleftrightarrow\quad a-b\in Z(M).
+\]">\[
+[a,x]=[b,x]\text{ for every }x\in M
+\quad\Longleftrightarrow\quad
+[a-b,x]=0\text{ for every }x\in M
+\quad\Longleftrightarrow\quad a-b\in Z(M).
+\]</span>
+This proves uniqueness modulo the centre and its converse. If <span class="math" data-tex="\(b\)">\(b\)</span> is any implementer and <span class="math" data-tex="\(a\)">\(a\)</span> is one of the bounded implementers just constructed, then <span class="math" data-tex="\(b-a\in Z(M)\)">\(b-a\in Z(M)\)</span>, so
+<span class="math math-display" data-tex="\[
+\operatorname{dist}(b,Z(M))\le\|a\|.
+\]">\[
+\operatorname{dist}(b,Z(M))\le\|a\|.
+\]</span>
+All the stated conclusions follow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FND-INNER-CLOSEDNESS"><span id="oa-fnd-inner-closedness"></span>Closedness under a finite-dimensional extension</h2>
+<p><strong>Lemma.</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a normed space, <span class="math" data-tex="\(F\subseteq E\)">\(F\subseteq E\)</span> a closed linear subspace and <span class="math" data-tex="\(V\subseteq E\)">\(V\subseteq E\)</span> a finite-dimensional subspace. Then <span class="math" data-tex="\(F+V\)">\(F+V\)</span> is closed in <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(q:E\to E/F\)">\(q:E\to E/F\)</span> for the quotient map. The formula
+<span class="math math-display" data-tex="\[
+\|q(x)\|=\inf_{f\in F}\|x-f\|
+\]">\[
+\|q(x)\|=\inf_{f\in F}\|x-f\|
+\]</span>
+is independent of the representative, since translating <span class="math" data-tex="\(x\)">\(x\)</span> by an element of <span class="math" data-tex="\(F\)">\(F\)</span> merely permutes the elements over which the infimum is taken. It defines a norm: the triangle inequality follows by adding approximants in <span class="math" data-tex="\(F\)">\(F\)</span>, and homogeneity follows by rescaling them; zero norm implies <span class="math" data-tex="\(x\in\overline F=F\)">\(x\in\overline F=F\)</span>. Also <span class="math" data-tex="\(\|q(x)\|\le\|x\|\)">\(\|q(x)\|\le\|x\|\)</span>, so <span class="math" data-tex="\(q\)">\(q\)</span> is continuous. The image <span class="math" data-tex="\(q(V)\)">\(q(V)\)</span> is finite-dimensional and is therefore closed in the normed, hence Hausdorff, space <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, by <a href="../hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-07">HB, Theorem 7.1</a>(2). Since <span class="math" data-tex="\(F+V=q^{-1}(q(V))\)">\(F+V=q^{-1}(q(V))\)</span>, the desired sum is closed. No completeness assumption on the quotient is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In Step 1, faithful representation is isometric by <a href="../c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-12">CF, Corollary 4.6</a>, so the represented C*-algebra is closed in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>. Apply the lemma with <span class="math" data-tex="\(E=B(H)\)">\(E=B(H)\)</span>, <span class="math" data-tex="\(F=A\)">\(F=A\)</span> and <span class="math" data-tex="\(V=\mathbb C1\)">\(V=\mathbb C1\)</span>.</p>
+<h2 id="OA-FND-INNER-COMPACTNESS"><span id="oa-fnd-inner-compactness"></span>Compactness, intersections and convergent subnets</h2>
+<p><strong>Lemma.</strong> A family of closed subsets of a compact space has nonempty intersection if every finite subfamily has nonempty intersection. Every net in a compact space has a convergent subnet. Neither assertion requires metrizability or a countable index set.</p>
+<p><strong>Proof.</strong> If the closed sets had empty intersection, their open complements would cover the space. A finite subcover would contradict the finite intersection assumption.</p>
+<p>For a net <span class="math" data-tex="\((x_i)_{i\in I}\)">\((x_i)_{i\in I}\)</span> in a compact space <span class="math" data-tex="\(K\)">\(K\)</span>, let <span class="math" data-tex="\(F_i\)">\(F_i\)</span> be the closure of its tail <span class="math" data-tex="\(\{x_j:j\ge i\}\)">\(\{x_j:j\ge i\}\)</span>. These nonempty closed sets have the finite intersection property, because any finite set of indices has a common upper bound. Choose <span class="math" data-tex="\(x\in\bigcap_iF_i\)">\(x\in\bigcap_iF_i\)</span>. Every open neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span> meets every tail.</p>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> consist of pairs <span class="math" data-tex="\((i,U)\)">\((i,U)\)</span>, where <span class="math" data-tex="\(U\)">\(U\)</span> is an open neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(x_i\in U\)">\(x_i\in U\)</span>. Order it by <span class="math" data-tex="\((i,U)\preceq(j,V)\)">\((i,U)\preceq(j,V)\)</span> when <span class="math" data-tex="\(i\le j\)">\(i\le j\)</span> and <span class="math" data-tex="\(V\subseteq U\)">\(V\subseteq U\)</span>. It is directed: given two pairs, choose an upper bound of their indices and then a later term lying in the intersection of their neighbourhoods. The projection <span class="math" data-tex="\(D\to I\)">\(D\to I\)</span>, <span class="math" data-tex="\((i,U)\mapsto i\)">\((i,U)\mapsto i\)</span>, is order-preserving and cofinal, since <span class="math" data-tex="\((i,K)\in D\)">\((i,K)\in D\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. The resulting subnet converges to <span class="math" data-tex="\(x\)">\(x\)</span>: after any pair whose neighbourhood is contained in a prescribed neighbourhood <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, all subsequent terms lie in <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. Such a pair exists because every neighbourhood meets every tail. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FND-INNER-DEPENDENCIES"><span id="oa-fnd-inner-dependencies"></span>Results used</h2>
+<h3 id="results-proved-in-the-attached-lessons">Results proved in the attached lessons</h3>
+<p>The following results are used from the indicated attached lessons, with their existing proofs.</p>
+<p><strong><a href="../c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07">CF</a> Order, local units and quotients of C*-algebras.</strong> Theorem 5.1, continuous functional calculus; Corollary 4.6, isometry of injective *-homomorphisms; Proposition 7.3, linear spanning by unitaries; Theorem 8.2 and Proposition 8.5, the positive cone and its order properties. These supply spectral cuts, square roots, order estimates, and isometric transport. <strong>Proof status:</strong> proved in the attached lesson.</p>
+<p><strong><a href="../representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#OA-FND-GN-03">GNS</a> Building representations from positive functionals.</strong> Proposition 3.2, Cauchy–Schwarz for positive functionals; Theorem 4.7, boundedness and the norm of positive functionals; Proposition 7.1a, extension of states from a unital subalgebra and norm-attaining states on positive elements; Theorem 7.2, faithful Gelfand–Naimark representation. <strong>Proof status:</strong> proved in the attached lesson.</p>
+<p><strong><a href="../the-spectral-theorem-for-bounded-self-adjoint-operators.html#OA-FND-ST-03">ST</a> The spectral theorem for bounded self-adjoint operators.</strong> Theorem 3.1, bounded Borel functional calculus; Proposition 5.1, spectral projections in a von Neumann algebra; Theorem 6.1, strong convergence of bounded monotone nets of self-adjoint operators. <strong>Proof status:</strong> proved in the attached lesson.</p>
+<p><strong><a href="../the-double-commutant-theorem.html#OA-FND-BI-06">DC</a> The double commutant theorem.</strong> Theorem 4.4, strong and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak density; Theorem 5.8, reduced and induced algebras, their mutual commutants, and their central-support kernels. <strong>Proof status:</strong> proved in the attached lesson.</p>
+<p><strong><a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-01">PT</a> Projections and types of von Neumann algebras.</strong> Proposition 3.1, the projection lattice; Lemma 3.3, additivity of equivalence and subequivalence; Proposition 3.5, central supports and induction kernels; Proposition 4.4, the parallelogram law; Proposition 5.1, projection Schröder–Bernstein; Lemmas 6.2–6.3, finiteness properties and centrally orthogonal sums; Definition 7.1 and Theorem 7.2, types and the central type/finite–properly-infinite decompositions; Proposition 8.4, matrix units; Proposition 9.1 and Theorem 10.3, homogeneous type I structure and its central decomposition; Proposition 11.2, an abelian commutant implies type I; Proposition 13.4, halving of properly infinite projections; Proposition 14.2, unitary equivalence of equivalent finite projections and equivalence of their complements; Proposition 15.2(4), equivalence of a full properly infinite projection with the identity in a locally countably decomposable algebra. <strong>Proof status:</strong> proved in the attached lesson. Increasing continuity of comparison, which is additional to this list, is proved in 7.1 above.</p>
+<p><strong><a href="../polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#OA-FND-PD-16">PW</a> Polar decomposition of functionals and weak compactness in preduals.</strong> Theorem 10.2, specifically implication (7)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(1): bounded families of normal functionals uniformly tending to zero on every orthogonal projection sequence are relatively weakly compact. <strong>Proof status:</strong> proved in the attached lesson. The uniform hypothesis for the family used here is proved in 7.1–7.3 above.</p>
+<p><strong><a href="../the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-02">UE</a> The universal enveloping von Neumann algebra of a <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra, and <span class="math" data-tex="\(W^*\)">\(W^*\)</span>-algebras.</strong> Lemma 2.1(2)–(4), normal extension of representations, central kernels, and normal inverses on central corners; Theorem 3.3, identification of <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span> with the enveloping von Neumann algebra; Lemma 6.3, finite-dimensional algebras as finite sums of matrix algebras; Lemma 11.1, supports and faithfulness of normal positive functionals on their supports; Corollary 11.4, normality of *-isomorphisms of von Neumann algebras. <strong>Proof status:</strong> proved in the attached lesson. The extension of a derivation, as opposed to a representation, is proved in Step 3 above.</p>
+<p><strong><a href="../weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-02">WT</a> Weak topologies: Tychonoff, Banach–Alaoglu, Mazur, bipolars, Krein–Milman and Eberlein–Šmulian.</strong> Theorem 3.1, Banach–Alaoglu; Theorem 5.2, Goldstine density; Proposition 5.3, second adjoints and their norms; Theorem 6.1, Krein–Milman; Theorem 6.2, its converse due to Milman. <strong>Proof status:</strong> proved in the attached lesson.</p>
+<p><strong><a href="../compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-07">OT</a> Compact and trace-class operators, the predual of B(H), and the operator topologies.</strong> Theorem 6.2, the trace-class predual of <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>; Lemma 8.5, agreement of weak and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak topologies, and of strong and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-strong topologies, on bounded sets; Proposition 8.6, continuity of involution and separate continuity of multiplication; Theorem 9.4, the predual of a concrete von Neumann algebra and its induced <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak topology. <strong>Proof status:</strong> proved in the attached lesson.</p>
+<h3 id="foundational-results-and-their-providers">Foundational results and their providers</h3>
+<p>The real and complex Hahn–Banach theorems are <a href="../hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-02">HB, Theorem 2.1</a> and <a href="../hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-02">HB, Theorem 2.2</a>. The Closed Graph Theorem is <a href="../hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-05">HB, Theorem 5.3</a>; uniform boundedness is <a href="../hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-04">HB, Theorem 4.2</a>. Compact Hausdorff Baire and the small-diameter consequence are <a href="../hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-03-LCH">HB, Theorem 3.2</a> and <a href="../hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-03-LCH">HB, Corollary 3.3</a>. The compactness criterion and Tychonoff theorem are <a href="../weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-02">WT, Lemma 2.2</a> and <a href="../weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-02">WT, Theorem 2.3</a>. The <a href="#OA-FND-INNER-COMPACTNESS">compactness bridge above</a> supplies the finite intersection and convergent-subnet arguments. Normed-space and Hilbert completions, including extension of bounded maps, are proved in <a href="../hilbert-spaces-and-compact-operators.html#completing-normed-and-inner-product-spaces">HS, Lemma (Completion)</a>. The closedness bridge above supplies the finite-dimensional-extension argument. <a href="../hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-01">HB, Theorem 1.1</a> proves Zorn’s lemma from the explicitly assumed axiom of choice. The Hilbert-space circumcentre argument is proved in Step 8.1, not left as an additional theorem.</p>
+<h3 id="free-source-arguments-whose-needed-conclusions-are-proved-above">Free-source arguments whose needed conclusions are proved above</h3>
+<p><strong>[S60], unnumbered theorem, pp. 31–32:</strong> the positive spectral cut and state argument for automatic continuity. <strong>Proof status:</strong> complete in Step 1, including nonunital algebras and algebraic *-splitting.</p>
+<p><strong>[K66], Lemma 3, Theorem 4, and Addendum, Theorem 15:</strong> normal extension, spatiality, the central-cyclic reduction, and the minimal-invariant-set argument. <strong>Proof status:</strong> complete in Steps 3–5 and 9–12; Step 3 uses the bidual construction rather than requiring any unproved continuity assertion from the paper. Finite-dimensional averaging, the finite-commutant argument, and the type III averaging input are proved in Steps 4, 8, and 9. The collected-works copy specified under <strong>Source references</strong> is the copy used.</p>
+<p><strong>[L25], Lemma 2, Propositions 3, 6 and 7; [L26], Theorem 1, Proposition 2 and Lemma 3:</strong> finite normal traces through a weakly compact predual orbit, and the isometric fixed-point argument. <strong>Proof status:</strong> complete in Steps 6–7, with the corrections stated below. Full bibliographic details and URLs for all these free sources are in the following source list.</p>
+<h2 id="scope-cautions-and-corrections-to-source-arguments">Scope cautions and corrections to source arguments</h2>
+<h3 id="countable-decomposability-in-the-reduction">Countable decomposability in the reduction</h3>
+<p>The assertion that every von Neumann algebra is a central sum of countably decomposable algebras is false. For example, if <span class="math" data-tex="\(I\)">\(I\)</span> is uncountable, then <span class="math" data-tex="\(B(\ell^2(I))\)">\(B(\ell^2(I))\)</span> has uncountably many orthogonal rank-one projections and is not countably decomposable. Its centre is <span class="math" data-tex="\(\mathbb C1\)">\(\mathbb C1\)</span>: an operator commuting with all rank-one projections is diagonal in an orthonormal basis, and commuting with the rank-one matrix units makes all diagonal entries equal. Thus it has no nontrivial central decomposition at all.</p>
+<p>The correct reduction is (12.1)–(12.2): central summands admit faithful normal cyclic representations whose <strong>commutants</strong> are countably decomposable. Step 12 proves this reduction, and Step 2 supplies the uniform norm estimate for reassembly. This does not change the definition of “locally <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-finite” in <a href="../projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-19">PT, Definition 15.1</a>, which is a genuine additional property and is not asserted there for every algebra.</p>
+<h3 id="corrections-and-completed-steps-in-the-free-source-arguments">Corrections and completed steps in the free-source arguments</h3>
+<p><strong>Finite traces: [L25, Proposition 3, p. 1].</strong> Delete “faithful” from the assertion for an arbitrary nonzero finite von Neumann algebra. The universally valid conclusion is a nonzero normal finite trace, faithful on its central support. A faithful normal tracial state on the entire algebra is obtained here under countable decomposability, in 7.4.</p>
+<p>For a counterexample to the uncorrected assertion, take <span class="math" data-tex="\(P=\ell^\infty(I)\)">\(P=\ell^\infty(I)\)</span> with <span class="math" data-tex="\(I\)">\(I\)</span> uncountable. It is finite because equivalence of projections in an abelian algebra implies equality. Let <span class="math" data-tex="\(e_i\)">\(e_i\)</span> denote its coordinate projections. For any bounded positive functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{i\in F}\omega(e_i)\le\omega(1)
+\]">\[
+\sum_{i\in F}\omega(e_i)\le\omega(1)
+\]</span>
+for every finite <span class="math" data-tex="\(F\)">\(F\)</span>. Hence at most countably many of the numbers <span class="math" data-tex="\(\omega(e_i)\)">\(\omega(e_i)\)</span> can be positive. A faithful functional would make every one of them positive, a contradiction. In [L25, Lemma 2], “faithful” should likewise be removed from the hypothesis when that lemma is used to extract the central support; with that word retained the stated splitting is only the trivial splitting.</p>
+<p><strong>Fixed points: [L25, Theorem 5, p. 2; L26, Theorem 1, p. 1].</strong> The fixed-point argument requires a group of linear isometries, not merely a group each of whose operators is bounded. The needed formulation is proved in Step 6. The isometry hypothesis is missing from Lecture 25's statement, but is already present in Lecture 26's Theorem 1. Conjugation on the predual is a surjective linear isometry, so the corrected theorem applies.</p>
+<p><strong>Projection ranges and comparison limits: [L25, Proposition 7, p. 3].</strong> The displayed orthogonal-projection map from <span class="math" data-tex="\(g_nV\)">\(g_nV\)</span> to the incremental closed subspace is not necessarily surjective; it has dense range, which suffices after polar decomposition. Concretely, in <span class="math" data-tex="\(M_2(L^\infty(0,1))\)">\(M_2(L^\infty(0,1))\)</span> on <span class="math" data-tex="\(L^2((0,1);\mathbb C^2)\)">\(L^2((0,1);\mathbb C^2)\)</span>, let <span class="math" data-tex="\(e\)">\(e\)</span> project onto the first coordinate and let <span class="math" data-tex="\(f(t)\)">\(f(t)\)</span> project onto the unit vector
+<span class="math math-display" data-tex="\[
+(\sqrt{1-t^2},t),\qquad 0&lt;t&lt;1.
+\]">\[
+(\sqrt{1-t^2},t),\qquad 0&lt;t&lt;1.
+\]</span>
+Then <span class="math" data-tex="\(e\vee f=1\)">\(e\vee f=1\)</span>, but <span class="math" data-tex="\((1-e)|_{fH}\)">\((1-e)|_{fH}\)</span>, after identifying <span class="math" data-tex="\(fH\)">\(fH\)</span> with <span class="math" data-tex="\(L^2(0,1)\)">\(L^2(0,1)\)</span>, is multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> onto the second coordinate. Its range is dense and is not all of <span class="math" data-tex="\(L^2(0,1)\)">\(L^2(0,1)\)</span>: the constant function <span class="math" data-tex="\(1\)">\(1\)</span> would require the non-square-integrable preimage <span class="math" data-tex="\(1/t\)">\(1/t\)</span>. The projection inequality actually needed is the parallelogram inequality used in 7.2. The subsequent passage from comparison of all finite initial pieces to comparison of their supremum is proved by the coherent partial isometries in 7.1, rather than left implicit.</p>
+<p><strong>The small-cap argument: [L26, Lemma 3, proof on pp. 2–3].</strong> For the set defined by coefficients in <span class="math" data-tex="\([\eta,1]\)">\([\eta,1]\)</span>, the coefficient condition in the extremal-point argument is <span class="math" data-tex="\(t\ge\eta\)">\(t\ge\eta\)</span>, not <span class="math" data-tex="\(t\le1-\eta\)">\(t\le1-\eta\)</span>. For two points outside that set, the applicable diameter estimate is
+<span class="math math-display" data-tex="\[
+2R(t+t&#x27;)+2\varepsilon/3\le4R\eta+2\varepsilon/3,
+\]">\[
+2R(t+t&#x27;)+2\varepsilon/3\le4R\eta+2\varepsilon/3,
+\]</span>
+not an intermediate bound using <span class="math" data-tex="\(4Rt\)">\(4Rt\)</span> alone. Substep 6.2 gives these bounds, proves convexity of the truncated join through <span class="math" data-tex="\(K_\eta=\eta K_1+(1-\eta)K\)">\(K_\eta=\eta K_1+(1-\eta)K\)</span>, and handles the case <span class="math" data-tex="\(L\setminus U=\varnothing\)">\(L\setminus U=\varnothing\)</span>.</p>
+<p>The affine action in Step 8 uses a circumcentre, not a minimum-distance-to-zero point: an affine isometry need not preserve distance to zero. Existence, uniqueness and invariance of the circumcentre, as well as the return to the original operator-norm ball, are proved in 8.1–8.2.</p>
+<h2 id="OA-FND-INNER-SOURCES"><span id="oa-fnd-inner-sources"></span>Source references</h2>
+<p><strong>[S60] Shôichirô Sakai.</strong> <em>On a conjecture of Kaplansky</em>. Tôhoku Mathematical Journal, Second Series <strong>12</strong> (1960), 31–33. Original journal version, received 14 August 1959. Source loci: the unnumbered theorem and its full proof, pp. 31–32; reference page 33.</p>
+<p><a href="https://www.jstage.jst.go.jp/article/tmj1949/12/1/12_1_31/_pdf/-char/en">https://www.jstage.jst.go.jp/article/tmj1949/12/1/12_1_31/_pdf/-char/en</a></p>
+<p><strong>[K66] Richard V. Kadison.</strong> <em>Derivations of operator algebras</em>. Annals of Mathematics, Second Series <strong>83</strong> (1966), 280–293. Original journal version, including the Addendum. Source loci: Lemma 1, p. 281; Lemma 3, pp. 282–283; Theorem 4, pp. 283–284; Lemma 5, pp. 284–285; Addendum, Theorem 15, pp. 291–293. The free collected-works copy hosted by the Indian Statistical Institute Bangalore is used here.</p>
+<p><a href="https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-kadison/1960s/1966_Derivations%20of%20Operator%20Algebras.pdf">https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-kadison/1960s/1966_Derivations of Operator Algebras.pdf</a></p>
+<p><strong>[L25] Jacob Lurie.</strong> <em>Math 261y: von Neumann Algebras (Lecture 25)</em>. Harvard course notes dated 30 October 2011, three-page version hosted by the Institute for Advanced Study. Source loci: Theorem 1, Lemma 2, Proposition 3, Lemma 4, Theorem 5, and Propositions 6–7, pp. 1–3. The corrections needed for the trace and fixed-point arguments are specified above.</p>
+<p><a href="https://www.math.ias.edu/~lurie/261ynotes/lecture25.pdf">https://www.math.ias.edu/~lurie/261ynotes/lecture25.pdf</a></p>
+<p><strong>[L26] Jacob Lurie.</strong> <em>Math 261y: von Neumann Algebras (Lecture 26)</em>. Harvard course notes dated 1 November 2011, three-page version hosted by the Institute for Advanced Study. Source loci: Theorem 1, Proposition 2 and Lemma 3, including their proofs, pp. 1–3.</p>
+<p><a href="https://www.math.ias.edu/~lurie/261ynotes/lecture26.pdf">https://www.math.ias.edu/~lurie/261ynotes/lecture26.pdf</a></p>
+<p><strong>[ZM67] Georges Zeller-Meier.</strong> <em>Dérivations et automorphismes des algèbres d’opérateurs</em>. Séminaire Bourbaki, exposé 324, February 1967; collected publication 1968, pp. 179–188. Original version digitized by Numdam. Source loci: Sections 1–3, in particular Theorem 1 and the opening proof outline in Section 3. No theorem from this survey is used as an unproved input.</p>
+<p><a href="https://www.numdam.org/article/SB_1966-1968__10__179_0.pdf">https://www.numdam.org/article/SB_1966-1968__10__179_0.pdf</a></p>
+<p><strong>Kadison–Ringrose: bibliographical reference, not a proof input.</strong> Richard V. Kadison and John R. Ringrose, <em>Derivations and automorphisms of operator algebras</em>, Communications in Mathematical Physics <strong>4</strong> (1967), 32–63, original journal version, Lemma 1. No result from this paper is invoked without proof here. The required type III averaging assertion is proved in Step 9 above.</p>
+<p><a href="https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-4/issue-1/Derivations-and-automorphisms-of-operator-algebras/cmp/1103839770.pdf">https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-4/issue-1/Derivations-and-automorphisms-of-operator-algebras/cmp/1103839770.pdf</a></p>
+<p><a href="https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-kadison/1960s/1967_DerivationsAndAutomorphismsOfOperatorAlgebras.pdf">https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-kadison/1960s/1967_DerivationsAndAutomorphismsOfOperatorAlgebras.pdf</a></p>
+<p><strong>Attached lesson sources.</strong> The nine lesson titles and exact result numbers used directly are listed under <strong>Results used</strong>. The accompanying lesson <em>Kaplansky's density theorem and its consequences</em> supplies background to the enveloping-algebra and topology lessons; no additional result from it is invoked directly in this proof.</p>
+<h2 id="proof-and-checking-scope">Proof and checking scope</h2>
+<p>The thirteen-step argument and its declared immediate programme inputs have been checked at the scopes recorded with this edition. This is a coordinator self-check, not independent review, human review or formal verification. The original received proof is preserved separately; the elementary closedness and compactness arguments and navigable dependency bindings are additions to this edition.</p>
+</article></main></body></html>

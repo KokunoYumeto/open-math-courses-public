@@ -2,7 +2,7 @@
 
 The generator of a uniformly bounded real-parameter action can be unbounded and only weak-star closed. Its resolvents still exist throughout both open half-planes, given by forward and backward Laplace integrals. This lesson proves Takesaki II, Lemma XI.1.19 with both inverse identities on the correct domains. The backward formula needs a minus sign under the convention of [the earlier generator proof](OA-FLOW-L94.md#oa-flow.gen.domain).
 
-*Programme proof written in Codex (OpenAI), September 2026; restoration and proof expansion, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 The earlier proofs are [BS0–1](OA-FLOW-BS.md#bs-0) for specified preadjoints and complete integrated maps, [L24 Proposition4.1](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) for Banach-valued integration, [CF1](OA-FLOW-CF.md#oa-flow.cf.1) for oriented fundamental calculus, and the earlier generator's [full domain](OA-FLOW-L94.md#oa-flow.gen.domain), [closed graph](OA-FLOW-L94.md#oa-flow.gen.closed) and [invariance](OA-FLOW-L94.md#oa-flow.gen.invariant). Here \(dt\) is Lebesgue measure with \(\int_0^s1\,dt=s\) as an oriented integral.
 

@@ -6,7 +6,7 @@ Complete positivity requires a map to preserve every matrix positive cone. Compl
 
 The connection between the two notions comes from a two-by-two block. We place the map in an off-diagonal corner and use scalar diagonal corners to turn a norm estimate into positivity. Arveson's theorem extends the resulting positive map, and Stinespring's theorem recovers the original map as a coefficient of a representation.
 
-Prerequisites are [Completely positive finite models](completely-positive-finite-models.md), including Arveson's extension theorem, and [Completely positive maps](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html), including Stinespring dilation and the multiplicative domain. We also use the elementary decomposition of a representation of a matrix algebra. The free extension and block-method sources are identified in the references below. No separability hypothesis occurs in this lesson.
+The scalar, Hilbert and Hahn–Banach arguments used below are in the retained scalar foundations. The [matrix C*-norm construction](../scalar-gns-and-matrix-cstar-norms.html#mg04) proves the entry and amplification estimates, including preservation of a nonunital algebra's matrix norms in its unitization. The [finite-target scalar extension and arbitrary-Hilbert-space limit](completely-positive-finite-models.md#theorem-2-3) prove Arveson extension for systems that need not be closed. The [unital dilation construction](completely-positive-lifting.md#unital-dilation) proves precisely the Stinespring theorem needed here. Its Gram forms use the same scalar and Hilbert inputs. The bidual step in Section 5 uses the [universal state-coefficient construction](../abstract-tensor-and-universal-bidual-foundations.html#abf-four-positive-parts), the retained concrete preduals, and the [complete matrix contraction-ball density argument](../operator-density-foundations.html#odf06). These particular prerequisite proofs require neither the lifting theorem nor a factorization theorem for completely bounded maps.
 
 ## 1. Matrix norms on a subspace
 
@@ -95,11 +95,21 @@ There are a unital representation \(\pi:A\to B(K)\) and isometries \(V_1,V_2:H\t
 \]
 follows by expanding the square and using \(W^*\Pi(p_i)W=P_i\). Therefore \(\Pi(p_i)W=WP_i\).
 
-The matrix units of \(\Pi(M_2\otimes1_A)\) identify \(L\) with \(K\oplus K\), so that
+Here is the full matrix-unit identification. Put \(e_{ij}=\Pi(E_{ij}\otimes1_A)\). They satisfy \(e_{ij}e_{kl}=\delta_{jk}e_{il}\), \(e_{ij}^*=e_{ji}\) and \(e_{11}+e_{22}=1_L\). Set \(K=e_{11}L\). The map
 \[
-\Pi([a_{ij}])=[\pi(a_{ij})]
+ J:K\oplus K\longrightarrow L,\qquad
+ J(\xi,\eta)=\xi+e_{21}\eta
 \]
-for a unital representation \(\pi\) of \(A\). The intertwining identities make \(W\) diagonal in this decomposition, with diagonal entries \(V_1,V_2\). Because \(W\) is an isometry, both entries are isometries. Compressing \(\Pi(E_{12}\otimes a)\) by \(W\) now gives the asserted formula. \(\square\)
+is unitary. The two summands lie in the orthogonal ranges of \(e_{11}\) and \(e_{22}\); also \(\|e_{21}\eta\|^2=\langle\eta,e_{12}e_{21}\eta\rangle=\|\eta\|^2\). Every \(\zeta\in L\) equals \(e_{11}\zeta+e_{21}e_{12}\zeta\), so \(J^{-1}\zeta=(e_{11}\zeta,e_{12}\zeta)\). Define
+\[
+ \pi(a)=\Pi(E_{11}\otimes a)|_K.
+\]
+This is a unital \*-representation: its product, adjoint and unit equations are the corresponding corner equations of \(\Pi\). For every entry, matrix-unit multiplication gives
+\[
+ e_{1i}\Pi(E_{ij}\otimes a)e_{j1}
+ =\Pi(E_{11}\otimes a).
+\]
+Consequently \(J^*\Pi([a_{ij}])J=[\pi(a_{ij})]\), with the same \(\pi\) in every entry. The intertwining identities make \(J^*W\) diagonal, say \(J^*W(\xi,\eta)=(V_1\xi,V_2\eta)\). Isometry of \(W\) makes both \(V_i\) isometries. Compression of the \((1,2)\)-entry now gives the asserted formula. This construction also applies to zero Hilbert spaces. \(\square\)
 
 ## 4. Extension with the same completely bounded norm
 
@@ -167,6 +177,59 @@ The second term is \(\theta(a^*)^*\), so self-adjointness makes the difference \
 
 A linear isometry of C*-algebras can preserve the scalar norm while reversing multiplication. Preserving the norm at matrix size two rules out that possibility when the map is surjective.
 
+
+<a id="finite-matrix-bidual"></a>
+### Why finite matrices commute with the bidual
+
+We need the normed, entrywise identification
+\[
+ M_n(A)^{**}\cong M_n(A^{**})\qquad(n\ge1),
+\tag{MB}
+\]
+including for nonunital \(A\). We prove it before using it. For \(A=0\) all spaces are zero. Otherwise let \(j_A:A\to M_U\subset B(H_U)\) be the nondegenerate universal state representation. The [four-positive-parts argument](../abstract-tensor-and-universal-bidual-foundations.html#abf-four-positive-parts) realizes every \(f\in A^*\) as a finite sum of state coefficients. The [predual restriction proof](../abstract-tensor-and-universal-bidual-foundations.html#abf-universal-predual) therefore gives an onto isometry
+\[
+ R:(M_U)_*\to A^*,\qquad R(g)=g\circ j_A.
+\]
+Its adjoint \(U=R^*:A^{**}\to M_U\) is an onto isometric \*-isomorphism extending \(j_A\); the [product transport proof](../abstract-tensor-and-universal-bidual-foundations.html#abf-bidual-product) establishes the product and involution. This is the scalar bidual construction, not an assumed matrix identification.
+
+Put \(N_n=M_n(M_U)\subset B(H_U^n)\). Extracting an entry with the coordinate inclusion and projection is ultraweakly continuous. Indeed, a square-summable vector series for that entry becomes a square-summable series on \(H_U^n\) by putting the vectors in the selected coordinates. Since \(M_U\) is ultraweakly closed, these tests show \(N_n\) is ultraweakly closed. It is a unital \*-algebra, so the concrete predual construction applies to it. Its normal functionals separate its points. For a square-summable coefficient series on \(H_U^n\), expand each coefficient into the finite sum over its row and column components. For each fixed pair \((i,j)\), the component vectors are square-summable because their squared norms are bounded by those of the original vectors. Thus the full functional is a finite sum of normal entry functionals. This proves that entrywise ultraweak convergence is ultraweak convergence in \(N_n\), including for nets without a common norm bound.
+
+The map \(j_A^{(n)}:M_n(A)\to N_n\) is isometric by [MG04](../scalar-gns-and-matrix-cstar-norms.html#mg04). Its entire contraction ball is ultraweakly dense in that of \(N_n\). To see the exact bound, [ODF06](../operator-density-foundations.html#odf06) identifies the generated matrix algebra with \(N_n\) using finite entry approximations and diagonal approximate units. Apply the [off-diagonal contraction-ball argument](../operator-density-foundations.html#odf07) to this representation of \(M_n(A)\): the self-adjoint matrix \(\begin{pmatrix}0&Y\\Y^*&0\end{pmatrix}\) is approximated by self-adjoint contractions at size \(2n\), and their upper-right corners approximate \(Y\) with norm at most one. The coefficient-series tail estimate converts that bounded strong\* convergence into ultraweak convergence. Thus the density assertion includes all contractions, not only positive ones.
+
+Consider restriction
+\[
+ R_n:(N_n)_*\longrightarrow M_n(A)^*,\qquad
+ R_n(g)=g\circ j_A^{(n)}.
+\]
+Contractivity is immediate. Conversely, contraction-ball density and ultraweak continuity give
+\(\|g\|=\sup_{\|X\|\le1}|g(j_A^{(n)}X)|=\|R_n(g)\|\), so restriction is an isometry and is injective.
+
+It is onto as well. For \(f\in M_n(A)^*\), let
+\(f_{ij}(a)=f(E_{ij}\otimes a)\). A single-entry matrix has norm \(\|a\|\), hence \(f_{ij}\in A^*\), and linearity gives
+\[
+ f([a_{ij}])=\sum_{i,j}f_{ij}(a_{ij}).
+\]
+Choose the unique \(g_{ij}=R^{-1}(f_{ij})\in(M_U)_*\), and put \(g([y_{ij}])=\sum_{i,j}g_{ij}(y_{ij})\). Coordinate norm bounds make this functional bounded. Each summand is a normal coefficient series, as above; the finite sum is therefore in \((N_n)_*\). Its restriction is \(f\). This proves surjectivity without a dimension or separability condition on \(A\) or \(H_U\).
+
+Now \(U_n=R_n^*:M_n(A)^{**}\to N_n\) is an onto isometry, with weak\* continuity and a weak\* continuous inverse. Both follow directly from the onto isometry \(R_n\) and its inverse. To identify entries, extend the entry maps of \(M_n(A)\) to their bidual maps. Because there are finitely many entries and the entry insertion and extraction maps are bounded, these maps give a vector-space identification with \(M_n(A^{**})\): the finite sum of entry insertion followed by extraction is the identity on \(M_n(A)\), hence also on its bidual. Conversely, inserting any prescribed family of \(n^2\) bidual entries and extracting them recovers that family. If \(F\in M_n(A)^{**}\) has entries \(F_{ij}\), then testing against the normal functional \([y_{kl}]\mapsto g_0(y_{ij})\), for arbitrary \(g_0\in(M_U)_*\), gives
+\[
+ (U_nF)_{ij}=U(F_{ij}).
+\]
+These tests separate points. Thus \(U_n\) is exactly the entrywise map \(U^{(n)}\) after the vector-space identification. MG04 makes \(U^{(n)}\) an isometric \*-isomorphism, proving (MB) with its asserted matrix norm. The product is the usual matrix product: its entries are finite sums of products in \(M_U\), which are separately ultraweakly continuous by the coefficient-series calculation. They extend the original matrix product. The scalar universal-bidual product construction applied to \(M_n(A)\) has the same separately weak\* continuous extension, hence the same product by weak\* density, first in one variable and then the other. Involution is likewise the entrywise transposed adjoint.
+
+Finally, for any bounded linear \(\theta:A\to B\), its finite entrywise map is bounded (entry extraction and insertion give a bound \(n^2\|\theta\|\)). Its bidual map satisfies
+\[
+ (\theta^{(n)})^{**}=(\theta^{**})^{(n)}
+\tag{MB-map}
+\]
+under (MB): compose with each bounded entry extraction map and evaluate on each \(f\in B^*\). The adjoint equations give precisely \(\theta^{**}\) on that entry. If \(\theta^{(n)}\) is a surjective isometry, its inverse and both second adjoints are contractions and mutual inverses, so the map in (MB-map) is also a surjective isometry.
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 252" role="img" aria-label="Restriction of the full matrix predual and its isometric adjoint" style="width:100%;min-width:650px;display:block;background:#f5f8fc;color:#18304c"><defs><marker id="mb-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#294b75"/></marker></defs>
+<g font-family="sans-serif" fill="#18304c" text-anchor="middle"><text x="380" y="26" font-size="18">All matrix entries; the entire contraction ball</text><rect x="28" y="52" width="218" height="56" rx="10" fill="#e3ecf8"/><text x="137" y="86" font-size="20">(Mₙ(Mᵤ))_*</text><rect x="515" y="52" width="218" height="56" rx="10" fill="#e3ecf8"/><text x="624" y="86" font-size="20">Mₙ(A)*</text><path d="M257,80 H504" stroke="#294b75" stroke-width="2" marker-end="url(#mb-arrow)"/><text x="380" y="64" font-size="15">Rₙ: onto isometric restriction</text><rect x="28" y="156" width="218" height="56" rx="10" fill="#e3ecf8"/><text x="137" y="189" font-size="20">Mₙ(Mᵤ)</text><rect x="515" y="156" width="218" height="56" rx="10" fill="#e3ecf8"/><text x="624" y="189" font-size="20">Mₙ(A)**</text><path d="M504,184 H257" stroke="#294b75" stroke-width="2" marker-end="url(#mb-arrow)"/><text x="380" y="168" font-size="15">Uₙ = Rₙ*: onto isometry</text><text x="380" y="235" font-size="16">Uₙ([Fᵢⱼ]) = [U(Fᵢⱼ)] — finite-entry tests identify every entry</text></g>
+</svg>
+
+*Figure.* Here the top-left space is the entire concrete predual \((M_n(M_U))_*\). Restriction is onto because each of the finitely many entry functionals has a unique scalar normal extension; contraction-ball density proves the norm equality. Its adjoint is exactly the entrywise scalar bidual identification. The same argument proves (MB-map), the amplification identity used in Theorem 5.2.
+
 **Lemma 5.1.** A linear functional \(f\) on a unital C*-algebra with \(\|f\|=f(1)=1\) is positive. Consequently a unital contractive map between unital C*-algebras is positive.
 
 **Proof.** For self-adjoint \(h\) and real \(t\),
@@ -176,7 +239,7 @@ A linear isometry of C*-algebras can preserve the scalar norm while reversing mu
 The linear term in \(t\) forces \(\operatorname{Im}f(h)=0\). For \(0\le h\le1\), we then have
 \(|1-f(h)|=|f(1-h)|\le1\), so \(f(h)\ge0\). Rescaling proves positivity on every positive element.
 
-For a unital contraction \(\rho\), compose with any state of the target. The resulting functional has norm at most one and value one at the unit, so is a state by the first assertion. States detect positivity in a C*-algebra, hence \(\rho\) is positive. \(\square\)
+For a unital contraction \(\rho\), compose with any state of the target. The resulting functional has norm at most one and value one at the unit, so is a state by the first assertion. The scalar GNS and order-detection proof in [MG03](../scalar-gns-and-matrix-cstar-norms.html#mg03) shows that states detect positivity in a C*-algebra, hence \(\rho\) is positive. \(\square\)
 
 **Theorem 5.2.** Let \(\theta:A\to B\) be a surjective linear isometry of C*-algebras, and suppose \(\theta^{(2)}\) is also an isometry. There are a unitary \(u\in M(B)\) and a surjective *-isomorphism \(\pi:A\to B\) such that
 \[
@@ -184,7 +247,7 @@ For a unital contraction \(\rho\), compose with any state of the target. The res
 \]
 In particular \(\theta\) is a complete isometry.
 
-**Proof.** Pass to the bidual map \(T=\theta^{**}:A^{**}\to B^{**}\). A surjective linear isometry has a surjective isometric bidual map. We use the canonical identifications \(M_2(A)^{**}=M_2(A^{**})\) and \(M_2(B)^{**}=M_2(B^{**})\), from the enveloping von Neumann algebra construction. They show that \(T^{(2)}\) is an isometry as well. Both bidual algebras are unital.
+**Proof.** Pass to the bidual map \(T=\theta^{**}:A^{**}\to B^{**}\). A surjective linear isometry has a surjective isometric bidual map. The complete entrywise identification (MB), including its norm and the amplification identity (MB-map), shows that \(T^{(2)}\) is a surjective isometry as well. These identities were proved above for arbitrary nonunital algebras. Both bidual algebras are unital.
 
 Put \(u=T(1)\), so \(\|u\|=1\). For every \(x\in A^{**}\), the squared norm of the row \((1\ x)\), placed in a two-by-two matrix with second row zero, is \(1+\|x\|^2\). Its image has squared norm \(\|uu^*+T(x)T(x)^*\|\). Surjectivity therefore gives
 \[
@@ -212,7 +275,7 @@ It remains to locate the original algebras and the multiplier. Let \(C=P(A)\subs
 \overline{\operatorname{span}}(B^*B)
 =\overline{\operatorname{span}}(C^*C)=C.
 \]
-The left side is \(B\), because a C*-algebra is the closed linear span of its products. Thus \(C=B\). In particular \(uB=B\), and multiplying this equality by \(u^*\) gives \(u^*B=B\). Taking adjoints gives \(Bu=B\) and \(Bu^*=B\). These two-sided multiplier conditions place \(u\) and \(u^*\) in \(M(B)\); they remain mutual inverses there. Restricting \(P\) gives the claimed \(\pi:A\to B\).
+The left side is \(B\): the positive contractive approximate identity gives \(be_\lambda\to b\), so a C*-algebra is the closed linear span of its products. Thus \(C=B\). In particular \(uB=B\), and multiplying this equality by \(u^*\) gives \(u^*B=B\). Taking adjoints gives \(Bu=B\) and \(Bu^*=B\). In the bidual idealizer model \(M(B)=\{x\in B^{**}:xB\subset B,\ Bx\subset B\}\), these two-sided conditions place \(u\) and \(u^*\) in \(M(B)\); they remain mutual inverses there. Restricting \(P\) gives the claimed \(\pi:A\to B\).
 
 A *-isomorphism is isometric at every matrix size, as is multiplication by the diagonal unitary with entries \(u\). Hence \(\theta\) is a complete isometry. \(\square\)
 

@@ -1,6 +1,6 @@
 # Bounded additive cocycles and the small unitary branches
 
-*Original proof exposition: GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 We use the concrete predual [CP1–6](OA-FLOW-CP.md#oa-flow.cp.1), the compact-ball proof [ST1, its first paragraph](OA-FLOW-ST12.md#oa-flow.st.1), and [CF1](OA-FLOW-CF.md#oa-flow.cf.1), [CF3](OA-FLOW-CF.md#oa-flow.cf.3), [CF6–8](OA-FLOW-CF.md#oa-flow.cf.6). The bounded multiplication and cocycle conventions are proved in the earlier [UC0–1](OA-FLOW-UC.md#oa-flow.uc.0). No modular weight, faithful state, countability or invariant mean is assumed.
 

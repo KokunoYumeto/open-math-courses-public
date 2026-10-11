@@ -1,6 +1,6 @@
 # Positive coefficients, the dual measure and scalar Plancherel
 
-*New exposition by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held. Spot-checked in a separate AI session. All analytic inputs below link to their actual earlier programme proofs.*
+*CC0-1.0 to the extent of rights held. All analytic inputs below link to their actual earlier programme proofs.*
 
 Let $G$ be an arbitrary locally compact Hausdorff abelian group, with Haar measure $m$, and let $\Gamma$ be its continuous character group. We use
 $$

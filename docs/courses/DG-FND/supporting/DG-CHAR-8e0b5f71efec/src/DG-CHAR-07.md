@@ -286,8 +286,7 @@ L=\left\{\sum_{i=1}^s t_i x_i:
  t_i\geq0,\ \sum_i t_i=1,\ x_i\in C_i\right\}.
 \tag{B.27}
 \]
-This is a continuous image of the compact product
-\(\Delta^{s-1}\times C_1\times\cdots\times C_s\), so it is compact by the elementary finite-product compactness in the opening lesson 0.1. It contains every \(C_i\), by choosing \(t_i=1\). It is contained in \(V\), by convexity of \(V\). It is convex: for two displayed sums and a number \(t\in[0,1]\), their convex combination has weights \(t t_i+(1-t)t_i'\). For a positive such weight, combine \(x_i,x_i'\) with their normalized nonnegative weights inside the convex set \(C_i\); for zero weight, choose any point of \(C_i\). This gives another expression of the form (B.27). For \(K=\varnothing\), choose any point of \(V\) as \(L\). This proof also works for \(n=0\), when \(V\) is a point.
+Each factor of \(\Delta^{s-1}\times C_1\times\cdots\times C_s\) is closed and bounded in a finite-dimensional Euclidean space. Their finite product is bounded by combining the coordinate bounds. It is closed: a point outside it has a coordinate outside one closed factor, and the inverse image of that factor's open complement is an open neighbourhood missing the product. Thus opening lesson 0.1 makes the product compact. The displayed sum is a continuous map from this product onto \(L\), so the continuous-image assertion of the same lemma makes \(L\) compact. It contains every \(C_i\), by choosing \(t_i=1\). It is contained in \(V\), by convexity of \(V\). It is convex: for two displayed sums and a number \(t\in[0,1]\), their convex combination has weights \(t t_i+(1-t)t_i'\). For a positive such weight, combine \(x_i,x_i'\) with their normalized nonnegative weights inside the convex set \(C_i\); for zero weight, choose any point of \(C_i\). This gives another expression of the form (B.27). For \(K=\varnothing\), choose any point of \(V\) as \(L\). This proof also works for \(n=0\), when \(V\) is a point.
 
 Consequently nonempty compact convex supports in \(V\) are cofinal among all compact supports. They form a directed family: apply the same construction to the union of any two of them. If \(L\) is in that family and \(x\in L\), excision E.2 and E.6 give
 \[
@@ -426,8 +425,7 @@ There is also a diffeomorphism from the whole bundle \(\nu Y\) onto \(U\) fixing
 \[
 a^{\mathsf T}T^{\mathsf T}Ta=\|Ta\|^2
 \]
-is positive for \(a\ne0\). Injectivity and invertibility for a square matrix follow from the finite basis argument in opening lesson 0.2 or the determinant lemma DG-CHAR-06 L.1. The inverse depends smoothly on \(y\): apply the parameter implicit theorem, opening lesson 1.3, to each system
-\((T^{\mathsf T}T)a=e_j\); its derivative in \(a\) is the invertible Gram matrix, and the locally supplied solution is the unique inverse column. The local smooth inverses therefore agree on overlaps.
+is positive for \(a\ne0\). Injectivity and invertibility for a square matrix follow from the finite basis argument in opening lesson 0.2 or the determinant lemma DG-CHAR-06 L.1. The inverse depends smoothly on \(y\) by the smooth matrix-inversion proof in opening-lesson Lemma 0.4, composed with the smooth Gram matrix. Uniqueness of an inverse makes these expressions agree wherever the same matrix is represented.
 
 The matrix
 \[
@@ -440,7 +438,7 @@ Choose a basis \(w_1,\ldots,w_c\) of this kernel at a fixed point \(y_0\), and s
 \[
 (B(y)^{\mathsf T}B(y))^{-1}B(y)^{\mathsf T}v,
 \]
-which are smooth by the same implicit argument.
+which are smooth by the same matrix-inversion lemma.
 
 Consequently \((u,t)\mapsto(f(u),\sum_jt_jb_j(f(u)))\) and this coefficient formula give mutually inverse local trivializations of (G.3). Their transition functions are smooth and linear in \(t\). These charts agree with the subspace topology in \(Y\times\mathbb R^N\); the displayed inverse is continuous in that topology. Their derivatives are injective: the base component first detects the \(u\)-direction, and the independent \(b_j\)'s then detect the fibre direction. The constant-rank theorem as in G.1 gives the corresponding embedded smooth structure. This proves the bundle assertion. For \(c=0\), use the empty frame; the assertions reduce to the zero bundle.
 
@@ -636,7 +634,7 @@ d\operatorname{Exp}_{(x,0)}(u,v)=u+v
 \]
 under the canonical zero-section and vertical decomposition \(T_{(x,0)}TN\cong T_xN\oplus T_xN\).
 
-**Proof.** In local coordinates, write \(g=(g_{ij}(x))\) and its inverse as \((g^{ij}(x))\). The inverse is smooth by the Gram-inverse implicit-function argument of G.2; the same proof applies to any smooth positive definite matrix. Define the scalar function
+**Proof.** In local coordinates, write \(g=(g_{ij}(x))\) and its inverse as \((g^{ij}(x))\). The inverse is smooth by opening-lesson Lemma 0.4, as used for the Gram matrix in G.2; it applies to every invertible smooth matrix. Define the scalar function
 \[
 L(x,v)=\tfrac12\sum_{i,j}g_{ij}(x)v^iv^j.
 \]
@@ -743,7 +741,7 @@ If \(Y\) is closed in \(N\), the chosen tube also gives relative (co)homology is
 P_z=T(z)(T(z)^{\mathsf T}G(z)T(z))^{-1}T(z)^{\mathsf T}G(z)
 \tag{J.18}
 \]
-is a smooth projection onto \(T_zY\). The Gram matrix is positive definite, and its inverse is smooth by the earlier implicit-function proof. The kernel is the \(g_z\)-orthogonal complement. Projecting a fixed basis of that kernel at a chosen point by \(I-P_z\) gives a normal frame nearby: its metric Gram determinant remains nonzero by continuity. If \(B(z)\) is this frame, its coordinate inverse on normal vectors is
+is a smooth projection onto \(T_zY\). The Gram matrix is positive definite, and its inverse is smooth by opening-lesson Lemma 0.4, exactly as in G.2. The kernel is the \(g_z\)-orthogonal complement. Projecting a fixed basis of that kernel at a chosen point by \(I-P_z\) gives a normal frame nearby: its metric Gram determinant remains nonzero by continuity. If \(B(z)\) is this frame, its coordinate inverse on normal vectors is
 \[
 (B(z)^{\mathsf T}G(z)B(z))^{-1}B(z)^{\mathsf T}G(z).
 \]
@@ -1234,9 +1232,17 @@ using cycle and cocycle representatives on the right. This is well defined on cl
 \end{cases}
 \tag{D.11}
 \]
-whenever the slant degree is nonnegative.
+whenever the slant degree is nonnegative. If both factors have finite-dimensional homology in each degree, slant is left linear over first-factor cohomology:
+\[
+\begin{aligned}
+&((\operatorname{pr}_X^*a)\smile\beta)/z\\
+  &=a\smile(\beta/z).
+\end{aligned}
+\tag{D.11a}
+\]
+Here \(\beta\) has nonnegative slant degree and \(a\) is homogeneous.
 
-**Proof.** A finite product of compact spaces is compact by opening lesson 0.1; product charts and product countable bases make \(M\times N\) a manifold with the stated dimension. Restrict the class \([M]\times[N]\) to any point \((x,y)\). Naturality of the relative shuffle in X.4 identifies it with the product of the two local point generators. The relative denominator is the union
+**Proof.** Here is the compactness argument for the product. Given an open cover of \(M\times N\), choose for each \((x,y)\) an open rectangle \(A_{x,y}\times B_{x,y}\) lying in a member of the cover. For fixed \(x\), compactness of \(N\) selects finitely many of the sets \(B_{x,y}\) covering \(N\). Intersect their corresponding \(A_{x,y}\)'s to obtain an open neighbourhood \(A_x\) such that \(A_x\times N\) is covered by those finitely many original members. Compactness of \(M\) now selects finitely many \(A_x\)'s. The combined finite collection covers the product. Empty factors are immediate. Product charts and product countable bases make \(M\times N\) a manifold with the stated dimension; disjoint neighbourhoods in a differing coordinate prove Hausdorffness. Restrict the class \([M]\times[N]\) to any point \((x,y)\). Naturality of the relative shuffle in X.4 identifies it with the product of the two local point generators. The relative denominator is the union
 \[
 (M\setminus\{x\})\times N\ \cup\ M\times(N\setminus\{y\}),
 \]
@@ -1259,7 +1265,8 @@ For \(q\geq1\) this is the coboundary of the degree-\((q-1)\) cochain
 \((-1)^{q+1}\beta/w\). For \(q=0\) the right side is zero, since \(\partial c=0\). This proves representative independence. Formula (D.10) is linear and is compatible with maps of the two spaces by naturality of the shuffle.
 
 For a cycle \(c\) in the slant degree, (D.3) evaluates (D.10) as
-\(\langle a,c\rangle\langle b,z\rangle\) in the matching bidegree and as zero otherwise. Injectivity of field cohomology evaluation after U.3 identifies its class with the right side of (D.11), even when the factor homologies are not finite dimensional. This proves the claimed slant normalization. □
+\(\langle a,c\rangle\langle b,z\rangle\) in the matching bidegree and as zero otherwise. Injectivity of field cohomology evaluation after U.3 identifies its class with the right side of (D.11), even when the factor homologies are not finite dimensional. This proves the claimed slant normalization. For (D.11a), D.1 writes \(\beta\) as a finite sum of homogeneous products \(x_i\times y_i\). Formula (D.4) gives
+\((a\times1)\smile(x_i\times y_i)=(a\smile x_i)\times y_i\), with no interchange sign because the second factor of \(a\times1\) has degree zero. Applying (D.11) to each summand gives zero on both sides unless \(|y_i|=r\); in that degree both sides are \(\langle y_i,z\rangle a\smile x_i\). Add the equalities. This proves left linearity, including the closed-manifold case used below. □
 
 ### The diagonal with every sign specified
 
@@ -1285,6 +1292,16 @@ U=\sum_{p=0}^n\sum_{i=1}^{b_p}(-1)^p\,a_{p,i}\times b_{p,i},
 \]
 The formulas hold over \(\mathbb F_2\) without orientations, with every sign interpreted in that field. Under the slant convention D.2, \(U/[M]=1\in H^0(M;k)\).
 
+Two further properties hold over any commutative coefficient ring \(R\) with the given orientation, or over \(\mathbb F_2\) without it. Write \(u_R\) for the relative diagonal Thom class and \(U_R\) for its absolute image. For every \(a\in H^*(M;R)\),
+\[
+\begin{aligned}
+&(a\times1)\smile U_R\\
+&\qquad=(1\times a)\smile U_R.
+\end{aligned}
+\tag{D.15a}
+\]
+For fixed \(x\in M\), the slice \(j_x(y)=(x,y)\) pulls \(u_R\) back to the positive local cohomology generator in \(H^n(M,M\setminus\{x\};R)\), using the unsigned generator modulo two.
+
 **Proof.** The diagonal map is an injective immersion: its derivative sends \(v\) to \((v,v)\), and projection onto the first factor is an inverse on its image. It is a homeomorphism onto that image, since that projection is continuous. The local constant-rank theorem in the opening lesson then makes it an embedded submanifold. Its image is closed: if \(x\ne y\), disjoint neighbourhoods of \(x,y\) give a product neighbourhood of \((x,y)\) that misses the diagonal.
 
 The linear map \((v,w)\mapsto w-v\) has the diagonal tangent space as its kernel and is onto. Thus it induces the isomorphism and explicit inverse in (D.13). These maps commute with changes of tangent coordinates, so they define a smooth bundle isomorphism. At each diagonal point, the ordered diagonal tangent vectors and the chosen normal lifts give the block matrix
@@ -1300,7 +1317,11 @@ relative to the product tangent coordinates. Its determinant is \(1\), by the bl
 \Delta^*U=e(TM)_k.
 \tag{D.17}
 \]
-The second equality uses Euler naturality T.4 under the bundle isomorphism (D.13).
+The second equality uses Euler naturality T.4 under the bundle isomorphism (D.13). The alternative orthogonal normal vector \((-t,t)\) maps to \(2t\) under (D.13). Multiplication by \(2\) in each tangent coordinate has determinant \(2^n>0\), so this alternative identifies the same normal orientation.
+
+We prove the two assertions over \(R\) before specializing to a field. Let \(T\) be the open diagonal tube supplied by J.3, with its fibre-contraction homotopy \(H_s\) from the retraction onto the diagonal to the identity of \(T\). Composing with the two projections gives homotopies from \(\operatorname{pr}_1|_T\) and \(\operatorname{pr}_2|_T\) to the same map. The prism proof K.1 therefore gives equal pullbacks of \(a\) in \(H^*(T;R)\). Relative multiplication by the restriction of \(u_R\) preserves that equality: the cup differential K.5 shows that changing an absolute cocycle by a coboundary changes its product with a relative cocycle by a relative coboundary. Excision E.2 identifies the relative cohomology of the whole ambient pair with that of \((T,T\setminus\Delta M)\). Its injectivity thus gives equality of the two relative products before restriction. Forgetting the relative condition proves (D.15a).
+
+For the slice assertion, \(j_x\) is a map of the indicated pairs because \((x,y)\) lies on the diagonal exactly when \(y=x\). In an oriented local trivialization of the normal bundle, write the tube inverse of \((x,y)\), for \(y\) close to \(x\), as \((b(y),h(y))\). The tube induces the identity on the normal quotient along its zero section by J.3. The derivative of the slice, followed by (D.13), sends \(v\) to \(v\); hence \(h(x)=0\) and \(Dh_x=I\) in these local coordinates. The local inverse theorem makes \(h\) nonzero away from \(x\) after shrinking. On the bundle chart the relative Thom class is the pullback of the normal-fibre generator: this class has the required value on every fibre and so is the Thom class by T.3 uniqueness (equivalently the local construction T.1). The slice pullback is consequently the pullback of that generator by \(h\). The smooth local-degree proof O.3 gives sign \(\det Dh_x=+1\). Excision identifies this with the asserted generator on \(M\). Coefficient change preserves its value; modulo two the same argument uses the unique nonzero local generator. In dimension zero the slice meets exactly the point \((x,x)\), and the rank-zero Thom unit restricts to its unit, giving the same assertion.
 
 B.6 supplies the finite perfect cup pairing on \(M\); the field evaluation theorem identifies the cohomology and homology dimensions. Also B.5 implies \(H^p(M;k)=0\) for \(p>n\), since its dual homology degree \(n-p\) is negative. Thus the bases and dual bases in (D.14) exist and only finitely many terms occur. The same assertions apply to \(M\times M\).
 

@@ -1,6 +1,6 @@
 # Converting a given inner modular period into a periodic weight
 
-*Original local reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\subseteq B(K)\) be an arbitrary von Neumann algebra, \(\psi\) a faithful normal semifinite weight, \(P>0\), and \(b\in M\) a specified unitary satisfying
 

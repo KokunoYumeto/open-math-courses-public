@@ -1,0 +1,61 @@
+"""Reproduce the original linking-corner diagram. Standard library only, CC0-1.0."""
+from pathlib import Path
+import sys
+
+SVG = '''<svg xmlns="http://www.w3.org/2000/svg" width="960" height="880" viewBox="0 0 960 880" role="img" aria-labelledby="title desc">
+<title id="title">Intertwiners, supports, and projection comparison</title>
+<desc id="desc">The fixed two by two algebra has corners pAp=M^a and qAq=M^b, with qAp=I(b,a). The join of all initial intertwiner supports equals p exactly when the central support of p is below that of q. Countable decomposability of p and proper infiniteness of q then give a partial isometry w with w*w=p and ww* at most q. This schematic is the mechanism in Theorems 5 through 8.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#245e69"/></marker></defs>
+<rect width="960" height="880" fill="#faf9f5"/>
+<g font-family="Arial, sans-serif" fill="#172d38">
+<text x="40" y="46" font-size="27" font-weight="bold">From intertwiners to cocycle comparison</text>
+<text x="40" y="77" font-size="18">Theorems 5–8 · algebraic schematic, not a dimension diagram</text>
+<rect x="40" y="101" width="880" height="250" rx="14" fill="#eef4f4" stroke="#a7bbbe"/>
+<text x="64" y="135" font-size="22" font-weight="bold">1  One fixed algebra A</text>
+<rect x="80" y="160" width="385" height="74" rx="7" fill="#dcebec"/>
+<rect x="495" y="160" width="385" height="74" rx="7" fill="#fff"/>
+<rect x="80" y="249" width="385" height="74" rx="7" fill="#fff"/>
+<rect x="495" y="249" width="385" height="74" rx="7" fill="#dcebec"/>
+<g font-size="23" text-anchor="middle">
+<text x="272" y="190">pAp = Mᵃ</text><text x="272" y="218" font-size="17">source fixed corner</text>
+<text x="688" y="205">pAq = I(a,b)</text>
+<text x="272" y="294">qAp = I(b,a)</text>
+<text x="688" y="279">qAq = Mᵇ</text><text x="688" y="307" font-size="17">target fixed corner</text>
+</g>
+<rect x="40" y="376" width="880" height="174" rx="14" fill="#fff" stroke="#a7bbbe"/>
+<text x="64" y="412" font-size="22" font-weight="bold">2  Fill the initial support</text>
+<text x="64" y="451" font-size="22">∨ { supp(x*x) : x ∈ qAp } = p</text>
+<path d="M493 443H551" stroke="#245e69" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="582" y="451" font-size="22">c_A(p) ≤ c_A(q)</text>
+<text x="64" y="491" font-size="18">For a = c⊗1 and b = c⊗ρ, integrability of αᶜ supplies Y.</text>
+<text x="64" y="519" font-size="18">Theorem 7 fills the initial supports in this regular-amplification pair.</text>
+<rect x="40" y="575" width="880" height="261" rx="14" fill="#eef4f4" stroke="#a7bbbe"/>
+<text x="64" y="612" font-size="22" font-weight="bold">3  Turn central support into an implementing map</text>
+<text x="64" y="651" font-size="19">Assume p is countably decomposable and q is properly infinite.</text>
+<text x="64" y="683" font-size="19">PC7 then supplies w ∈ qAp with w*w = p and ww* ≤ q.</text>
+<circle cx="212" cy="751" r="31" fill="#d0e3e5" stroke="#245e69"/>
+<circle cx="746" cy="751" r="31" fill="#d0e3e5" stroke="#245e69"/>
+<text x="212" y="759" text-anchor="middle" font-size="25">p</text>
+<text x="746" y="759" text-anchor="middle" font-size="25">q</text>
+<path d="M255 751H698" stroke="#245e69" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="480" y="735" text-anchor="middle" font-size="21">w a_s = b_s α_s(w)</text>
+<text x="480" y="791" text-anchor="middle" font-size="21">a is equivalent to the fixed reduction of b at ww*</text>
+<text x="40" y="861" font-size="15">Classical comparison: M. Takesaki, Theory of Operator Algebras II, X.2.8–2.18.</text>
+</g></svg>
+'''
+
+
+def main():
+    path = Path(__file__).with_name('linking-corners.svg')
+    expected = SVG.encode('utf-8')
+    if '--check' in sys.argv:
+        if path.read_bytes() != expected:
+            raise SystemExit('Diagram differs from its reproducible source.')
+        print('Exact SVG reproduction verified.')
+    else:
+        path.write_bytes(expected)
+        print(path.name)
+
+
+if __name__ == '__main__':
+    main()

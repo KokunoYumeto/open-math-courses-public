@@ -2,6 +2,8 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).*
 
+*The inverse-limit and prime-power-coordinate details and source comparison were added and self-checked by GPT-6 Astra (OpenAI), Ultra effort, on 11 October 2026. No independent review of these additions is recorded. CC0.*
+
 Prime-to-residue-characteristic ramification is controlled by roots of uniformizers. Over the maximal unramified field, unit factors acquire all the needed roots, leaving a single tower of uniformizer radicals. Its Galois group has a canonical description in roots of unity; an arithmetic Frobenius acts on that group by the residue cardinality.
 
 Throughout, \(K\) is a nonarchimedean local field, with residue field \(\mathbf F_q\) of characteristic \(p\), uniformizer \(\pi\), and a fixed separable closure \(K^{\mathrm{sep}}\). A finite separable extension \(L/K\) is **tame** if \(p\nmid e(L/K)\). Its residue extension is automatically separable because finite fields are perfect. In a general DVR setting, residue separability must also be required; see [Stacks, Tag 09E9](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-definition-types-of-extensions).
@@ -115,13 +117,49 @@ The polynomial is separable because \(p\nmid m\), and all its roots \(\zeta\pi_m
 \xrightarrow{\ \sim\ }\mu_m,\qquad
 \sigma\longmapsto\sigma(\pi_m)/\pi_m.
 \]
-This is a group homomorphism because the base contains \(\mu_m\), which every such automorphism fixes. The compatible choice (3.1) makes restriction correspond exactly to the power transition. Taking inverse limits over the union (2.1) proves the topological isomorphism (3.2).
+This is a group homomorphism because the base contains \(\mu_m\), which every such automorphism fixes. The compatible choice (3.1) makes restriction correspond exactly to the power transition. The inverse-limit argument is the one proved in [**Unramified and totally ramified extensions**, Section 2.3](NT-LOC-07.md#23-the-inverse-limit-comparison-maps), with base field \(K^{\mathrm{ur}}\) and finite Galois levels \(E_m\). Its hypotheses are now verified: the levels are directed by divisibility, each is normal over the base, and their union is \(K^t\). Explicitly, a compatible family \((\zeta_m)_m\) defines on each level the automorphism fixing \(K^{\mathrm{ur}}\) and sending \(\pi_m\) to \(\zeta_m\pi_m\). If \(m\mid n\), then
+\[
+(\zeta_n\pi_n)^{n/m}=\zeta_m\pi_m,
+\]
+so the maps agree on \(E_m\). They therefore define one field map on the union: put any finite collection of elements in one level to check addition and multiplication. The compatible family \((\zeta_m^{-1})_m\) defines its inverse. This proves surjectivity in (3.2); injectivity follows because the levels cover \(K^t\).
+
+For the topologies, every finite collection of elements of \(K^t\) lies in some \(E_m\), even though the base \(K^{\mathrm{ur}}\) is infinite. The subgroups fixing \(E_m\) are consequently a neighborhood basis for the Krull topology on \(I_t\). Under (3.2) they are exactly the kernels of the finite-coordinate projections to the discrete groups \(\mu_m\). Finite intersections correspond to a common multiple of the indices. Thus the map and its inverse are continuous; the passage to the limit proves the asserted topological, not merely abstract, isomorphism.
 
 If \(\pi_m\) is replaced by another \(m\)-th root of \(\pi\), its ratio to the old root lies in \(\mu_m\), fixed by \(I_t\). The coordinate in (3.2) therefore does not change.
 
 Now replace the base uniformizer by \(\pi'=u\pi\), with \(u\in\mathcal O_K^\times\). For any choices of the two \(m\)-th roots, their ratio is an \(m\)-th root of \(u\). Lemma 2.1 puts all such roots in \(K^{\mathrm{ur}}\): one root is there, and every other differs by an element of \(\mu_m\). That ratio is again fixed by \(I_t\), so the coordinate is unchanged. The same observation shows that (2.1) defines the same field for the two uniformizers.
 
-Finally, the primary decomposition of cyclic root-of-unity groups, together with their power transitions, identifies the inverse limit over all prime-to-\(p\) indices with the product of the limits over each \(\ell^r\). This gives (3.3). A compatible primitive root in each coordinate chooses a basis for each \(\mathbf Z_\ell(1)\); there is no basis in the canonical construction itself. \(\square\)
+Finally, the primary decomposition of cyclic root-of-unity groups, together with their power transitions, identifies the inverse limit over all prime-to-\(p\) indices with the product of the limits over each \(\ell^r\). This gives (3.3).
+
+Here are the actual maps in the primary decomposition. Let
+\[
+P=\varprojlim_{p\nmid m}\mu_m,
+\qquad Q=\prod_{\ell\ne p}\varprojlim_r\mu_{\ell^r}.
+\]
+Restriction to the prime-power coordinates defines \(A:P\to Q\),
+\[
+A((\zeta_m)_m)=((\zeta_{\ell^r})_{r\ge1})_{\ell\ne p}.
+\]
+To construct its inverse, let \(\eta=((\eta_{\ell,r})_r)_\ell\in Q\). For \(m>1\), write \(m=\prod_{\ell\mid m}\ell^{a_\ell}\), put \(b_\ell=m/\ell^{a_\ell}\), and choose an integer \(d_\ell\) with
+\[
+d_\ell b_\ell\equiv1\pmod{\ell^{a_\ell}}.
+\]
+Such an integer exists by the Euclidean algorithm, since the two factors are coprime. Set
+\[
+B(\eta)_m=\prod_{\ell\mid m}\eta_{\ell,a_\ell}^{\,d_\ell},
+\qquad B(\eta)_1=1.
+\]
+This lies in \(\mu_m\). Changing \(d_\ell\) by a multiple of \(\ell^{a_\ell}\) leaves it unchanged. For a fixed prime \(j\mid m\), raising this product to \(b_j\) kills every factor except the \(j\)-factor and gives
+\[
+B(\eta)_m^{,m/j^{a_j}}=\eta_{j,a_j}.
+\]
+These prime-power projections determine an element of \(\mu_m\) uniquely. Indeed, the ratio of two elements with the same projections has every \(b_\ell\)-th power equal to one; since \(\gcd_{\ell\mid m} b_\ell=1\), an integer linear combination of these exponents is one, so the ratio itself is one.
+
+If \(m\mid n\), take any prime power \(\ell^a\) dividing \(m\). Raising \(B(\eta)_n^{n/m}\) to \(m/\ell^a\) gives \(\eta_{\ell,a}\), by the preceding formula at level \(n\) and compatibility in the \(\ell\)-power tower. Uniqueness of the projections therefore gives
+\[
+B(\eta)_n^{n/m}=B(\eta)_m.
+\]
+Thus \(B\) maps into \(P\). Its construction is multiplicative. At a prime-power index it returns the supplied coordinate, so \(AB=1_Q\); the same uniqueness argument gives \(BA=1_P\). Each coordinate of \(A\) is a projection, and each coordinate of \(B\) depends continuously on only finitely many finite root-of-unity coordinates. Both maps are continuous for the inverse-limit and product topologies. This proves (3.3) with its specified power transitions, not an unspecified abstract product decomposition. A compatible primitive root in each coordinate chooses a basis for each \(\mathbf Z_\ell(1)\); there is no basis in the canonical construction itself. \(\square\)
 
 ## 4. Frobenius on the radical tower
 
@@ -234,9 +272,13 @@ Extend arithmetic Frobenius on the unramified union by fixing the compatible rad
 
 - The maximal unramified subfield, the classification of unramified extensions, their finite-field Frobenius, and total ramification by Eisenstein are Theorem 2.1, Corollary 3.1, Theorem 5.1 and Proposition 6.1 of **Unramified and totally ramified extensions**. Tower multiplication of the indices is recalled in its Section 1.
 - Simple-root Hensel lifting is Corollary 1.2 of **Hensel's lemma, squares and roots of unity in p-adic fields**. Finite extensions are complete by Proposition 2.1 of **Extensions of complete valued fields**, whose Theorem 1.2 supplies the unique valuation on algebraic extensions.
-- Cyclicity of finite residue multiplicative groups is the finite-subgroup fact used in Milne's *Fields and Galois Theory*, Proposition 4.19, with Exercise 1-3. The primary decomposition of finite cyclic groups and inverse limits of finite Galois groups are algebra and profinite-topology background. Section 3 specifies all the transition maps used here.
+- Cyclicity of finite residue multiplicative groups is the finite-subgroup fact used in Milne's *Fields and Galois Theory*, Proposition 4.19, with Exercise 1-3. Section 3 proves the needed prime-power decomposition with explicit inverse maps, and applies the complete [Krull comparison proof of **Unramified and totally ramified extensions**, Section 2.3](NT-LOC-07.md#23-the-inverse-limit-comparison-maps) to the radical tower.
 
 For finite residue multiplicative-group cyclicity the exact internal proof is [**Hensel's lemma, squares and roots of unity in p-adic fields**, Lemma 4.0](NT-LOC-03.md). Stacks, Tag 09HX remains a comparison source. The residue-extension and Frobenius facts are the proof of Corollary 3.1 of **Unramified and totally ramified extensions**. The remaining elementary finite-Galois background is part of **Graduate Algebra**.
+
+## Source comparison
+
+Ivan B. Fesenko and Sergei V. Vostokov, [*Local Fields and Their Extensions*, second edition (2002)](https://ivanfesenko.org/wp-content/uploads/2021/10/vol.pdf#page=178), Chapter IV, Section (8.2), printed pages 168–169, records the unramified and tame radical unions and the arithmetic-Frobenius relation. It attributes the resulting topological presentation to Hasse and Iwasawa. The present lesson supplies its own finite-level construction, the inverse maps and topologies in Section 3, and the continuous splitting in Section 4. Both treatments here assume a local field with finite residue field. Section (8.3)'s additional wild absolute-Galois-group structure is not an input to this lesson.
 
 ## References
 J. S. Milne, [*Algebraic Number Theory*](https://www.jmilne.org/math/CourseNotes/ANT.pdf), Chapter 7, “Totally ramified extensions of \(K\).”

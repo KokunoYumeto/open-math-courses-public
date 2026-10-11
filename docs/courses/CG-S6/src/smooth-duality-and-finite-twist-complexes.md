@@ -89,7 +89,7 @@ This also applies to weak solutions, as follows. Suppose \(u\in L^2\) and \(D_Eu
 
 \[
 \begin{aligned}
-[D_E,\rho_\epsilon*]u(x)
+\bigl[D_E,\rho_\epsilon*\bigr]u(x)
 ={}&\sum_j\int(A_j(x)-A_j(y))\partial_j\rho_\epsilon(x-y)u(y)\,dy\\
 &+\sum_j\int\rho_\epsilon(x-y)(\partial_jA_j)(y)u(y)\,dy\\
 &+\int\rho_\epsilon(x-y)(B(x)-B(y))u(y)\,dy.
@@ -203,7 +203,7 @@ S_q:A_E^q\longrightarrow A_F^{n-q}
 \tag{4.3}
 \]
 
-Here is its complete local formula, including the volume phase. Choose a positively oriented real orthonormal coframe \(dx_j,dy_j\) at the point with \(J\partial_{x_j}=\partial_{y_j}\), and put \(\theta^j=(dx_j+i,dy_j)/\sqrt2\), a unitary \((1,0)\)-coframe. Put \(\kappa=\theta^1\wedge\cdots\wedge\theta^n\), and choose a unitary frame \(e_a\) of \(E\). If \(I\) is increasing of size \(q\), let \(\epsilon(I,I^c)\) be the sign of the concatenation \((I,I^c)\). Then
+Here is its complete local formula, including the volume phase. Choose a positively oriented real orthonormal coframe \(dx_j,dy_j\) at the point with \(J\partial_{x_j}=\partial_{y_j}\), and put \(\theta^j=(dx_j+i\,dy_j)/\sqrt2\), a unitary \((1,0)\)-coframe. Put \(\kappa=\theta^1\wedge\cdots\wedge\theta^n\), and choose a unitary frame \(e_a\) of \(E\). If \(I\) is increasing of size \(q\), let \(\epsilon(I,I^c)\) be the sign of the concatenation \((I,I^c)\). Then
 
 \[
 S_q(\bar\theta^I\otimes e_a)=c_n\epsilon(I,I^c)\,
@@ -220,7 +220,7 @@ Extend this formula conjugate-linearly to the coefficients. In fact
 \tag{4.5}
 \]
 
-Pairing each \(\bar\theta^j\) with \(\theta^j\) costs \(n(n-1)/2\) transpositions, and \(\bar\theta^j\wedge\theta^j=i,dx_j\wedge dy_j\), which proves (4.5). Equations (4.4)–(4.5) prove (4.3), since the two copies of \(\epsilon(I,I^c)\) multiply to one. The frames are orthonormal and \(|c_n|=1\), so this is an isometry. Uniqueness in (4.3) makes it independent of the local coframe and hence a global smooth bundle map.
+Pairing each \(\bar\theta^j\) with \(\theta^j\) costs \(n(n-1)/2\) transpositions, and \(\bar\theta^j\wedge\theta^j=i\,dx_j\wedge dy_j\), which proves (4.5). Equations (4.4)–(4.5) prove (4.3), since the two copies of \(\epsilon(I,I^c)\) multiply to one. The frames are orthonormal and \(|c_n|=1\), so this is an isometry. Uniqueness in (4.3) makes it independent of the local coframe and hence a global smooth bundle map.
 
 Applying (4.2) and (4.3) to a test form and using the definition of the formal adjoint gives the exact operator identities
 

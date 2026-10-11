@@ -1,6 +1,6 @@
 # Hilbert spaces and compact operators
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Originally written by Claude Opus 5.5 (Anthropic), October 2026, and self-checked by that writing AI. GPT-6.1 Sol (OpenAI), at the Ultra setting, checked the full lesson and its solutions, supplied the metric compactness tools and supplied the measure prerequisites, October 2026. Public domain (CC0). GPT-6.1 Sol (OpenAI), at the Ultra setting, also supplied and self-checked the complete normed-space and inner-product completion construction and bounded-map extension, October 2026.*
 
 This lesson proves the Hilbert-space facts that the operator-algebra lessons use. It covers:
 - the Cauchy–Schwarz inequality for positive semidefinite forms;
@@ -33,7 +33,11 @@ A *sesquilinear form* on a complex vector space \(V\) is a map \(B:V\times V\to\
 2. Apply 1 to \(B(\eta,\xi)\) and to \(\overline{B(\xi,\eta)}\), and compare the expressions term by term, using that the diagonal values are real.
 3. By 2, \(B\) is Hermitian. For \(t\in\mathbb R\) and \(\theta\) with \(e^{-i\theta}B(\xi,\eta)=|B(\xi,\eta)|\), the quantity
 \[
-0\le B(\xi+te^{i\theta}\eta,\ \xi+te^{i\theta}\eta)=B(\xi,\xi)+2t|B(\xi,\eta)|+t^2B(\eta,\eta)
+\begin{gathered}
+0\\
+\le B(\xi+te^{i\theta}\eta,\ \xi+te^{i\theta}\eta)\\
+=B(\xi,\xi)+2t|B(\xi,\eta)|+t^2B(\eta,\eta)
+\end{gathered}
 \]
 is a nonnegative quadratic polynomial in \(t\). If \(B(\eta,\eta)>0\), its discriminant is \(\le0\). If \(B(\eta,\eta)=0\), the linear polynomial \(B(\xi,\xi)+2t|B(\xi,\eta)|\) is nonnegative for all \(t\), so \(|B(\xi,\eta)|=0\).
 
@@ -41,13 +45,54 @@ For the consequence, Cauchy–Schwarz gives \(B(\xi+\eta,\xi+\eta)\le(B(\xi,\xi)
 
 An inner product is a positive definite Hermitian form. A *Hilbert space* is an inner product space that is complete for \(\|\xi\|=\langle\xi,\xi\rangle^{1/2}\). The *parallelogram law* \(\|\xi+\eta\|^2+\|\xi-\eta\|^2=2\|\xi\|^2+2\|\eta\|^2\) follows by expanding.
 
+### Completing normed and inner product spaces
+
+**Lemma (Completion).** A normed space \(E\) embeds linearly and isometrically as a dense subspace of a Banach space \(\widehat E\). If its norm comes from an inner product, that product extends to \(\widehat E\), which is then a Hilbert space. Every bounded linear map \(T:E\to F\), with \(F\) a Banach space, has a unique bounded linear extension to \(\widehat E\), of the same norm. In particular the Hilbert construction applies to a positive semidefinite form after taking its quotient by the null subspace.
+
+*Proof.* Let \(\mathscr S\) be the vector space of Cauchy sequences in \(E\), with termwise operations. Identify \(a=(a_n)\) and \(b=(b_n)\) when \(\|a_n-b_n\|\to0\). The triangle inequality shows that this is an equivalence relation compatible with the vector operations. The reverse triangle inequality gives
+
+\[
+\begin{gathered}
+|\|a_n\|-\|a_m\||\leq\|a_n-a_m\|.
+\end{gathered}
+\]
+
+So these norms have a limit, unchanged on replacing \(a\) by an equivalent sequence. Set \(\widehat E=\mathscr S/\mathord\sim\) and \(\|[a]\|=\lim_n\|a_n\|\). Homogeneity and the triangle inequality pass to this limit. Its value is zero exactly when \(a\) is equivalent to the zero sequence, so this is a norm. Constant sequences give the asserted linear isometry \(E\to\widehat E\).
+
+The constants \(a_n\) converge to \([a]\): if \(\|a_n-a_m\|<\varepsilon\) for all sufficiently large \(n,m\), taking the limit in \(m\) gives \(\|a_n-[a]\|\leq\varepsilon\). This proves density. If \((z_k)\) is Cauchy in \(\widehat E\), choose \(y_k\in E\) with \(\|y_k-z_k\|<1/k\). Then
+
+\[
+\|y_k-y_l\|\leq1/k+\|z_k-z_l\|+1/l.
+\]
+
+So \((y_k)\) is Cauchy in \(E\), and represents \(z=[(y_k)]\). The density argument gives \(y_k\to z\); therefore \(\|z_k-z\|\leq1/k+\|y_k-z\|\to0\). This proves completeness.
+
+If \(E\) has an inner product, its Cauchy sequences are bounded: a sufficiently late tail lies within distance \(1\) of one term, and the remaining initial block is finite. Cauchy–Schwarz therefore shows that the inner products have limits, using
+
+\[
+\begin{gathered}
+|\langle a_n,b_n\rangle-\langle a_m,b_m\rangle|\\
+\leq\|a_n-a_m\|\,\|b_n\|\\
++\|a_m\|\,\|b_n-b_m\|.
+\end{gathered}
+\]
+
+The same estimate makes the limit independent of the representatives. Sesquilinearity and symmetry pass to the limit; its diagonal value is \(\lim_n\|a_n\|^2=\|[a]\|^2\), so it is a positive definite inner product inducing the complete norm.
+
+For the extension put \(\widehat T[a]=\lim_nTa_n\). The limit exists in \(F\) because \(\|Ta_n-Ta_m\|\leq\|T\|\|a_n-a_m\|\). Equivalent sequences give the same limit by that bound. Linearity passes to limits, and \(\|\widehat T[a]\|\leq\|T\|\|[a]\|\). Restriction to the constant sequences gives the reverse norm inequality. Density gives uniqueness. Finally Proposition 1.1 shows that a null vector for a positive semidefinite form is orthogonal to every vector, so the form descends to a positive definite inner product on its quotient. The construction just proved then applies. \(\square\)
+
 ## 2. The projection theorem and the Riesz–Fréchet theorem
 
 **Theorem 2.1.** Let \(C\) be a nonempty closed convex subset of a real or complex Hilbert space \(H\), and \(\xi\in H\). There is exactly one \(c_0\in C\) with \(\|\xi-c_0\|=\operatorname{dist}(\xi,C)\).
 
 **Proof.** Let \(d=\operatorname{dist}(\xi,C)\) and \(c_n\in C\) with \(\|\xi-c_n\|\to d\). The parallelogram law applied to \(\xi-c_n\) and \(\xi-c_m\), together with \(\frac{c_n+c_m}2\in C\), gives
 \[
-\|c_n-c_m\|^2=2\|\xi-c_n\|^2+2\|\xi-c_m\|^2-4\Big\|\xi-\frac{c_n+c_m}2\Big\|^2\le2\|\xi-c_n\|^2+2\|\xi-c_m\|^2-4d^2\to0.
+\begin{gathered}
+\|c_n-c_m\|^2\\
+=2\|\xi-c_n\|^2+2\|\xi-c_m\|^2\\
+-4\Big\|\xi-\frac{c_n+c_m}2\Big\|^2\\
+\le2\|\xi-c_n\|^2+2\|\xi-c_m\|^2-4d^2\to0.
+\end{gathered}
 \]
 So \((c_n)\) is Cauchy. Its limit \(c_0\in C\) attains the distance. Two minimizers form a minimizing sequence when alternated, so they are equal. \(\square\)
 
@@ -85,7 +130,13 @@ Uniqueness: \(\langle\xi,\eta-\eta'\rangle=0\) for all \(\xi\) forces \(\eta=\et
 
 *The last statement.* Let \(m=\sup_{\|\xi\|=1}|\langle T\xi,\xi\rangle|\), so \(|\langle T\xi,\xi\rangle|\le m\|\xi\|^2\). For unit \(\xi,\eta\), expanding and using self-adjointness gives
 \[
-4\operatorname{Re}\langle T\xi,\eta\rangle=\langle T(\xi+\eta),\xi+\eta\rangle-\langle T(\xi-\eta),\xi-\eta\rangle\le m(\|\xi+\eta\|^2+\|\xi-\eta\|^2)=4m.
+\begin{gathered}
+4\operatorname{Re}\langle T\xi,\eta\rangle\\
+=\langle T(\xi+\eta),\xi+\eta\rangle\\
+-\langle T(\xi-\eta),\xi-\eta\rangle\\
+\le m(\|\xi+\eta\|^2+\|\xi-\eta\|^2)\\
+=4m.
+\end{gathered}
 \]
 Replacing \(\eta\) by \(e^{i\theta}\eta\) gives \(|\langle T\xi,\eta\rangle|\le m\), so \(\|T\|\le m\). The reverse inequality is Cauchy–Schwarz. \(\square\)
 
@@ -122,6 +173,22 @@ An *orthonormal family* \((e_i)_{i\in I}\) satisfies \(\langle e_i,e_j\rangle=\d
 
 \(T\in B(H)\) is *compact* if the image of the unit ball is relatively compact. \(K(H)\) is the set of compact operators and \(F(H)\) the set of finite-rank operators.
 
+### Metric compactness tools
+
+A metric space is *totally bounded* if, for every \(\varepsilon>0\), finitely many balls of radius \(\varepsilon\) cover it.
+
+**Lemma 5.0.** A metric space is compact if and only if it is complete and totally bounded. A compact metric space is sequentially compact and separable.
+
+*Proof.* In a compact space, every sequence has a point whose every neighbourhood contains infinitely many sequence terms, counted with their indices: otherwise a finite subcover of neighbourhoods containing only finitely many terms gives a contradiction. Choosing increasing indices in the balls of radius \(1/k\) at that point gives a convergent subsequence. A Cauchy sequence with a convergent subsequence converges to the same limit, so the space is complete. Compactness also gives finite covers by balls of any prescribed radius.
+
+Conversely, in a totally bounded space, repeatedly choose an infinite set of remaining sequence indices lying in one ball of radius \(2^{-k}\). Take these sets nested and choose increasing indices from them. The resulting subsequence is Cauchy, since its terms from stage \(k\) onward are at mutual distance at most \(2^{1-k}\). Completeness gives its limit.
+
+To obtain compactness, consider an open cover. There is a number \(\delta>0\) such that every ball of radius \(\delta\) is contained in a member of the cover. If there were no such number, choose \(x_n\) whose ball of radius \(1/n\) is contained in no member. A convergent subsequence tends to some \(x\) in a member \(U\). Choose \(r>0\) with \(B(x,2r)\subseteq U\). For large subsequence indices, \(d(x_n,x)<r\) and \(1/n<r\), so \(B(x_n,1/n)\subseteq U\), a contradiction. A finite cover by \(\delta\)-balls now gives a finite subcover of the original cover. Finally choose finite \(1/n\)-nets for all \(n\); their union is countable and dense. \(\square\)
+
+In a finite-dimensional Hilbert space, bounded sets are totally bounded: express them in an orthonormal basis, bound each coordinate by Cauchy–Schwarz, and use a finite grid in the resulting bounded coordinate box. A finite-dimensional subspace is closed, because the coordinates of a convergent sequence converge and its limit is their finite basis expansion. Its bounded closed subsets are therefore complete and compact by the lemma.
+
+### Compactness and finite-rank approximation
+
 **Theorem 5.1.**
 1. \(K(H)\) is a norm-closed two-sided ideal of \(B(H)\) that contains \(F(H)\).
 2. \(T\) is compact iff \(T^*\) is compact.
@@ -131,7 +198,10 @@ An *orthonormal family* \((e_i)_{i\in I}\) satisfies \(\langle e_i,e_j\rangle=\d
 
 **Proof.** 5. The closure \(K\) of \(T(\text{ball})\) is compact. Given \(\varepsilon>0\), cover \(K\) by finitely many balls \(B(y_k,\varepsilon)\), and choose \(i_0\) with \(\|(1-P_i)y_k\|<\varepsilon\) for every \(k\) and every \(i\ge i_0\). For \(y\in K\) with \(\|y-y_k\|<\varepsilon\),
 \[
-\|(1-P_i)y\|\le\|(1-P_i)y_k\|+\|1-P_i\|\,\|y-y_k\|<3\varepsilon .
+\begin{gathered}
+\|(1-P_i)y\|\\
+\le\|(1-P_i)y_k\|+\|1-P_i\|\,\|y-y_k\|<3\varepsilon .
+\end{gathered}
 \]
 So \(\|T-P_iT\|=\sup_{y\in K}\|(1-P_i)y\|\le3\varepsilon\) for \(i\ge i_0\).
 
@@ -141,7 +211,11 @@ So \(\|T-P_iT\|=\sup_{y\in K}\|(1-P_i)y\|\le3\varepsilon\) for \(i\ge i_0\).
 
 2. If \(T\) is compact, so is \(TT^*\). For \(\|\xi_n\|\le1\), choose a subsequence along which \(TT^*\xi_n\) converges. Then
 \[
-\|T^*(\xi_n-\xi_m)\|^2=\langle TT^*(\xi_n-\xi_m),\xi_n-\xi_m\rangle\le2\|TT^*(\xi_n-\xi_m)\|\to0,
+\begin{gathered}
+\|T^*(\xi_n-\xi_m)\|^2\\
+=\langle TT^*(\xi_n-\xi_m),\xi_n-\xi_m\rangle\\
+\le2\|TT^*(\xi_n-\xi_m)\|\to0,
+\end{gathered}
 \]
 so \(T^*\xi_n\) converges along the subsequence. Apply this to \(T^*\) for the converse.
 
@@ -155,7 +229,11 @@ so \(T^*\xi_n\) converges along the subsequence. Apply this to \(T^*\) for the c
 
 **Proof.** By Corollary 3.2, there are unit vectors \(\xi_n\) with \(\langle T\xi_n,\xi_n\rangle\to\lambda\), where \(|\lambda|=\|T\|\). Then
 \[
-\|T\xi_n-\lambda\xi_n\|^2=\|T\xi_n\|^2-2\lambda\langle T\xi_n,\xi_n\rangle+\lambda^2\le2\lambda^2-2\lambda\langle T\xi_n,\xi_n\rangle\to0.
+\begin{gathered}
+\|T\xi_n-\lambda\xi_n\|^2\\
+=\|T\xi_n\|^2-2\lambda\langle T\xi_n,\xi_n\rangle+\lambda^2\\
+\le2\lambda^2-2\lambda\langle T\xi_n,\xi_n\rangle\to0.
+\end{gathered}
 \]
 A subsequence has \(T\xi_n\to\eta\), by compactness. Then \(\lambda\xi_n\to\eta\), so \(\|\eta\|=|\lambda|\ne0\), and \(T\eta=\lim\lambda T\xi_n=\lambda\eta\). \(\square\)
 
@@ -204,13 +282,22 @@ and the bracket lies in \(S^{k+1}(H)\), which is orthogonal to \(x_k\). So \(\|T
 
 5. Suppose \(\lambda_n\to\lambda\ne0\) are distinct eigenvalues with eigenvectors \(e_n\). Eigenvectors for distinct eigenvalues are linearly independent. Let \(M_n=\operatorname{span}\{e_1,\dots,e_n\}\) and choose unit vectors \(y_n\in M_n\ominus M_{n-1}\). Then \((T-\lambda_n)M_n\subseteq M_{n-1}\). For \(m<n\),
 \[
-\frac{Ty_n}{\lambda_n}-\frac{Ty_m}{\lambda_m}=y_n-\Big(\frac{(\lambda_n-T)y_n}{\lambda_n}+\frac{Ty_m}{\lambda_m}\Big),
+\begin{gathered}
+\frac{Ty_n}{\lambda_n}-\frac{Ty_m}{\lambda_m}\\
+=y_n-\Big(\frac{(\lambda_n-T)y_n}{\lambda_n}+\frac{Ty_m}{\lambda_m}\Big),
+\end{gathered}
 \]
 and the bracket lies in \(M_{n-1}\perp y_n\). So the left side has norm \(\ge1\). Since \(\|y_n/\lambda_n\|\) is bounded, this contradicts compactness. Hence the nonzero eigenvalues accumulate only at \(0\), and by 4 every nonzero point of \(\sigma(T)\) is isolated. \(\square\)
 
 ## 8. Hilbert tensor products
 
-For a set \(S\), \(\ell^2(S)\) is the space of functions \(c:S\to\mathbb C\) with \(\sum_s|c_s|^2<\infty\), with \(\langle c,d\rangle=\sum_sc_s\bar d_s\). It is a Hilbert space. Completeness: a Cauchy sequence \((c^{(n)})\) converges at each \(s\) to some \(c_s\). For every finite \(F\subseteq S\), \(\sum_{s\in F}|c_s-c^{(n)}_s|^2=\lim_m\sum_{s\in F}|c^{(m)}_s-c^{(n)}_s|^2\le\sup_{m\ge n}\|c^{(m)}-c^{(n)}\|^2\). So \(c-c^{(n)}\in\ell^2(S)\) and \(\|c-c^{(n)}\|\to0\). The functions \(\delta_s\) form an orthonormal basis.
+For a set \(S\), \(\ell^2(S)\) is the space of functions \(c:S\to\mathbb C\) with \(\sum_s|c_s|^2<\infty\), with \(\langle c,d\rangle=\sum_sc_s\bar d_s\). It is a Hilbert space. Completeness: a Cauchy sequence \((c^{(n)})\) converges at each \(s\) to some \(c_s\). For every finite \(F\subseteq S\), \[
+\begin{gathered}
+\sum_{s\in F}|c_s-c^{(n)}_s|^2\\
+=\lim_m\sum_{s\in F}|c^{(m)}_s-c^{(n)}_s|^2\\
+\le\sup_{m\ge n}\|c^{(m)}-c^{(n)}\|^2
+\end{gathered}
+\]. So \(c-c^{(n)}\in\ell^2(S)\) and \(\|c-c^{(n)}\|\to0\). The functions \(\delta_s\) form an orthonormal basis.
 
 **Theorem 8.1** (Hilbert tensor products). Let \(H\) and \(K\) be Hilbert spaces.
 1. There are a Hilbert space \(H\otimes K\) and a bilinear map \((\xi,\eta)\mapsto\xi\otimes\eta\) from \(H\times K\) to \(H\otimes K\) with
@@ -225,19 +312,27 @@ such that the elementary tensors \(\xi\otimes\eta\) span a dense subspace.
 - By Parseval's identity (Theorem 4.1(3)), \(\sum_{i,j}|\langle\xi,e_i\rangle|^2|\langle\eta,f_j\rangle|^2=\|\xi\|^2\|\eta\|^2\), so \(\xi\otimes\eta\in\ell^2(I\times J)\).
 - The map is bilinear, and by Parseval's identity
 \[
-\langle\xi\otimes\eta,\xi'\otimes\eta'\rangle=\sum_i\langle\xi,e_i\rangle\langle e_i,\xi'\rangle\sum_j\langle\eta,f_j\rangle\langle f_j,\eta'\rangle=\langle\xi,\xi'\rangle\langle\eta,\eta'\rangle .
+\begin{gathered}
+\langle\xi\otimes\eta,\xi'\otimes\eta'\rangle\\
+=\sum_i\langle\xi,e_i\rangle\langle e_i,\xi'\rangle\sum_j\langle\eta,f_j\rangle\langle f_j,\eta'\rangle\\
+=\langle\xi,\xi'\rangle\langle\eta,\eta'\rangle .
+\end{gathered}
 \]
 - \(e_i\otimes f_j=\delta_{(i,j)}\). These form an orthonormal basis, so the elementary tensors span a dense subspace.
 
 (3) For finite sums,
 \[
-\Big\|\sum_kc_kB(\xi_k,\eta_k)\Big\|^2=\sum_{k,l}c_k\bar c_l\langle\xi_k,\xi_l\rangle\langle\eta_k,\eta_l\rangle=\Big\|\sum_kc_k\,\xi_k\otimes\eta_k\Big\|^2 .
+\begin{gathered}
+\Big\|\sum_kc_kB(\xi_k,\eta_k)\Big\|^2\\
+=\sum_{k,l}c_k\bar c_l\langle\xi_k,\xi_l\rangle\langle\eta_k,\eta_l\rangle\\
+=\Big\|\sum_kc_k\,\xi_k\otimes\eta_k\Big\|^2 .
+\end{gathered}
 \]
 So \(\sum_kc_k\,\xi_k\otimes\eta_k\mapsto\sum_kc_kB(\xi_k,\eta_k)\) is well defined, since a combination equal to \(0\) goes to a vector of norm \(0\), and it is isometric. It extends by continuity to \(H\otimes K\). Uniqueness holds because the elementary tensors are total. An isometry has closed range, so if its range is dense, it is onto. \(\square\)
 
 ## 9. Multiplication operators
 
-Let \((Z,\Sigma,\nu)\) be a \(\sigma\)-finite measure space. \(L^\infty(\nu)\) is the space of essentially bounded measurable functions modulo null functions, with the essential supremum norm \(\|f\|_\infty\). For \(f\in L^\infty(\nu)\), \(m_f\) is the operator \(\xi\mapsto f\xi\) on \(L^2(\nu)\). Measure theory is cited from the course *Measure theory*, which gives D. H. Fremlin's *Measure Theory* with Fremlin's paragraph numbers, as [MT 244H], for example.
+Let \((Z,\Sigma,\nu)\) be a \(\sigma\)-finite measure space. \(L^\infty(\nu)\) is the space of essentially bounded measurable functions modulo null functions, with the essential supremum norm \(\|f\|_\infty\). For \(f\in L^\infty(\nu)\), \(m_f\) is the operator \(\xi\mapsto f\xi\) on \(L^2(\nu)\). The [measure-tools lesson](../../harmonic-analysis-on-locally-compact-groups/src/measure-and-hilbert-space-tools.md#3-the-complete-spaces-of-integrable-functions), Theorems 3.1–3.2, proves Hölder, completeness of \(L^2\), and density of simple functions on arbitrary measure spaces. Its proof uses elementary integration and convergence, not the operator theorem here. Thus the use of Hilbert representation in the later Radon–Nikodym theorem creates no circular dependence.
 
 **Theorem 9.1.**
 1. \(f\mapsto m_f\) is an isometric unital \(*\)-homomorphism from \(L^\infty(\nu)\) into \(B(L^2(\nu))\).
@@ -257,27 +352,40 @@ So we may assume \(\nu(Z)<\infty\). Then \(1\in L^2(\nu)\), and \(L^\infty(\nu)\
 Tf=Tm_f1=m_fT1=fg .
 \]
 - *\(g\) is essentially bounded.* For \(c>\|T\|\) let \(E=\{|g|>c\}\). Then \(c^2\nu(E)\le\|1_Eg\|_2^2=\|T1_E\|_2^2\le\|T\|^2\nu(E)\), so \(\nu(E)=0\). Hence \(\|g\|_\infty\le\|T\|\).
-- *\(T=m_g\).* The two operators agree on \(L^\infty(\nu)\), which contains the simple functions. These are dense in \(L^2(\nu)\) [MT 244H(a)].
+- *\(T=m_g\).* The two operators agree on \(L^\infty(\nu)\), which contains the simple functions. These are dense in \(L^2(\nu)\) [Theorem 3.2 of the measure-tools lesson](../../harmonic-analysis-on-locally-compact-groups/src/measure-and-hilbert-space-tools.md#3-the-complete-spaces-of-integrable-functions).
 
 The converse holds because the algebra is commutative. \(\square\)
 
 ## Exercises
 
-**Exercise 1** (diagonal operators). Let \((e_n)\) be an orthonormal basis of \(H\) and \(T=\sum_n\mu_n\theta_{e_n,e_n}\) for a bounded sequence \((\mu_n)\). Show that \(T\) is compact iff \(\mu_n\to0\).
+**Exercise 1** (easy; diagonal operators). Let \((e_n)\) be an orthonormal basis of \(H\) and \(T=\sum_n\mu_n\theta_{e_n,e_n}\) for a bounded sequence \((\mu_n)\). Show that \(T\) is compact iff \(\mu_n\to0\).
 
 *Solution.* If \(\mu_n\to0\), the finite-rank truncations converge to \(T\) in norm, so \(T\) is compact by Theorem 5.1(1). If \(|\mu_{n_k}|\ge\delta>0\) along a subsequence, then \(\|Te_{n_k}-Te_{n_l}\|^2\ge2\delta^2\), so \(T\) is not compact. \(\square\)
 
-**Exercise 2** (Hilbert–Schmidt operators). Show that an operator \(T\) with \(\sum_n\|Te_n\|^2<\infty\) for some orthonormal basis \((e_n)\) is compact.
+**Exercise 2** (medium; Hilbert–Schmidt operators). Show that an operator \(T\) with \(\sum_n\|Te_n\|^2<\infty\) for some orthonormal basis \((e_n)\) is compact.
 
-*Solution.* Let \(P_k\) be the projection onto \(\operatorname{span}\{e_1,\dots,e_k\}\). Then \(\|T(1-P_k)\xi\|\le\sum_{n>k}|\langle\xi,e_n\rangle|\|Te_n\|\le\|\xi\|(\sum_{n>k}\|Te_n\|^2)^{1/2}\) by Cauchy–Schwarz. So \(TP_k\to T\) in norm, and each \(TP_k\) has finite rank. \(\square\)
+*Solution.* Let \(P_k\) be the projection onto \(\operatorname{span}\{e_1,\dots,e_k\}\). Then \[
+\begin{gathered}
+\|T(1-P_k)\xi\|\\
+\le\sum_{n>k}|\langle\xi,e_n\rangle|\|Te_n\|\\
+\le\|\xi\|(\sum_{n>k}\|Te_n\|^2)^{1/2}
+\end{gathered}
+\] by Cauchy–Schwarz. So \(TP_k\to T\) in norm, and each \(TP_k\) has finite rank. \(\square\)
 
-**Exercise 3** (the Volterra operator). On \(L^2[0,1]\), let \((V\xi)(s)=\int_0^s\xi(t)\,dt\). Show that \(V\) is compact and that \(\sigma(V)=\{0\}\).
+**Exercise 3** (hard; the Volterra operator). On \(L^2[0,1]\), let \((V\xi)(s)=\int_0^s\xi(t)\,dt\). Show that \(V\) is compact and that \(\sigma(V)=\{0\}\).
 
-*Solution.*
-- *Compactness:* with an orthonormal basis \((e_n)\), \(\sum_n\|Ve_n\|^2=\int_0^1\sum_n|\langle 1_{[0,s]},\overline{e_n}\rangle|^2ds=\int_0^1\|1_{[0,s]}\|^2ds=\frac12\), by Parseval applied to the basis \((\overline{e_n})\). By Exercise 2, \(V\) is compact.
-- *Spectrum:* by Theorem 7.1(4), a nonzero point of \(\sigma(V)\) would be an eigenvalue. If \(V\xi=\lambda\xi\), then \(\xi=\lambda^{-1}V\xi\) is continuous, then \(C^1\), with \(\xi=\lambda\xi'\) and \(\xi(0)=0\). So \(\xi=0\). Finally \(0\in\sigma(V)\), because \(V\) is not invertible in infinite dimensions: a compact invertible operator would make the identity compact. \(\square\)
+*Solution.* First \(V\) is bounded: Cauchy–Schwarz gives \(|V\xi(s)|^2\leq s\|\xi\|_2^2\), hence \(\|V\xi\|_2^2\leq\frac12\|\xi\|_2^2\). Also \(|V\xi(s)-V\xi(t)|\leq |s-t|^{1/2}\|\xi\|_2\), so \(V\xi\) is continuous.
+- *Compactness:* with an orthonormal basis \((e_n)\), \[
+\begin{gathered}
+\sum_n\|Ve_n\|^2\\
+=\int_0^1\sum_n|\langle 1_{[0,s]},\overline{e_n}\rangle|^2ds\\
+=\int_0^1\|1_{[0,s]}\|^2ds\\
+=\frac12
+\end{gathered}
+\], by Parseval applied to the basis \((\overline{e_n})\) and [monotone convergence](../../harmonic-analysis-on-locally-compact-groups/src/measure-and-hilbert-space-tools.md#2-integration-and-convergence-without-countability-assumptions). By Exercise 2, \(V\) is compact.
+- *Spectrum:* by Theorem 7.1(4), a nonzero point of \(\sigma(V)\) would be an eigenvalue. If \(V\xi=\lambda\xi\), then \(\xi=\lambda^{-1}V\xi\) is continuous, then \(C^1\) by the fundamental theorem of calculus proved in [Lemma 6.1 of the measure-tools lesson](../../harmonic-analysis-on-locally-compact-groups/src/measure-and-hilbert-space-tools.md#6-one-variable-integral-identities), with \(\xi=\lambda\xi'\) and \(\xi(0)=0\). The function \(e^{-s/\lambda}\xi(s)\) has zero derivative and is zero at \(s=0\), so \(\xi=0\). Finally \(0\in\sigma(V)\), because \(V\) is not invertible in infinite dimensions: a compact invertible operator would make the identity compact. \(\square\)
 
-**Exercise 4** (closed range of \(1-T\)). Let \(T\) be compact. Show that \(\dim\ker(1-T)=\dim\ker(1-T^*)\).
+**Exercise 4** (medium; closed range of \(1-T\)). Let \(T\) be compact. Show that \(\dim\ker(1-T)=\dim\ker(1-T^*)\).
 
 *Solution.*
 - Both kernels are finite-dimensional (Theorem 7.1(1), applied to \(T\) and to \(T^*\), which is compact by Theorem 5.1(2)).
@@ -287,8 +395,10 @@ The converse holds because the algebra is commutative. \(\square\)
 
 ## Where this leads
 
-The continuous functional calculus and the operator algebra \(B(H)\) are developed in C\*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients. The spectral theorem for bounded self-adjoint operators with projection-valued measures, and Calkin's theorem on the ideals of \(B(H)\), are proved in [The spectral theorem for bounded self-adjoint operators](the-spectral-theorem-for-bounded-self-adjoint-operators.md). The trace class and the operator topologies are in Compact and trace-class operators, the predual of B(H), and the operator topologies. Hilbert tensor products are used for \(L^2\) of a product of Radon measures in Haar measure on locally compact groups, and multiplication operators are the starting point of Abelian operator algebras.
+The continuous functional calculus and the operator algebra \(B(H)\) are developed in [C\*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients](../../../../../foundations-of-von-neumann-algebras/src/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.md). The spectral theorem for bounded self-adjoint operators with projection-valued measures, and Calkin's theorem on the ideals of \(B(H)\), are proved in [The spectral theorem for bounded self-adjoint operators](the-spectral-theorem-for-bounded-self-adjoint-operators.md). The trace class and the operator topologies are in [Compact and trace-class operators, the predual of B(H), and the operator topologies](../../../../../foundations-of-von-neumann-algebras/src/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.md). Hilbert tensor products are used for \(L^2\) of a product of Radon measures in [Haar measure on locally compact groups](../../harmonic-analysis-on-locally-compact-groups/src/haar-measure-on-locally-compact-groups.md), and multiplication operators are the starting point of [Abelian operator algebras](../../../../../foundations-of-von-neumann-algebras/src/abelian-operator-algebras.md).
 
 ## References
 
 Hilbert (1904–1910), Riesz (1907, 1918) and Fréchet (1907). The Riesz theory of compact operators is from F. Riesz, "Über lineare Funktionalgleichungen", *Acta Mathematica* 41 (1918) 71–98. The proofs are written here in our own words.
+
+*Freely accessible reading:* [Jesse Peterson, *Notes on operator algebras*, §3.3](https://math.vanderbilt.edu/peters10/teaching/spring2015/OperatorAlgebras.pdf) gives a route through compact-operator spectral arguments. The lesson includes its own complete proofs at the stated hypotheses; references to human sources do not imply permission to adapt their expression.

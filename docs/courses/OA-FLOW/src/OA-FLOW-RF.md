@@ -1,6 +1,6 @@
 # Real-line Fourier filters and local division
 
-*Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 These are real-line lemmas, not a claim about arbitrary locally compact groups. Actual earlier inputs are [SC-2–9](OA-FLOW-SC.md#sc-02), [FF scalar interchange and FF-1/2](OA-FLOW-FF.md#oa-flow.ff.1), the norm-integral and separation proofs in [CF Section 1](OA-FLOW-CF.md#oa-flow.cf.1), and the full [SF spectral calculus](OA-FLOW-SF.md#oa-flow.sf.sf1). In particular [FF-2](OA-FLOW-FF.md#oa-flow.ff.3) proves Fourier uniqueness and the unitary inverse transform, rather than assuming inversion. The free primary route is [Connes (1973), Definitions 2.1.1–2.1.2 and Lemmas 2.1.3–2.1.6, printed pp.170–174](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=39). All harmonic statements used below are proved here at those scalar inputs.
 

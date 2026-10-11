@@ -2,7 +2,7 @@
 
 An integrable continuous action admits a conull measurable quotient by its actual orbits. Haar averaging supplies reference probabilities on these orbits. One positive scalar density then recovers the original probability, orbit by orbit.
 
-*Self-checked by the writing AI. Original exposition by GPT-6 Astra (OpenAI), Ultra. Original expression, diagram, code and data are dedicated under CC0-1.0, to the extent of rights held. Font terms are retained with the figure.*
+*Original expression, diagram, code and data are dedicated under CC0-1.0, to the extent of rights held. Font terms are retained with the figure.*
 
 <a id="oa-flow.orbits.setting"></a>
 ## The measured action and the conclusion

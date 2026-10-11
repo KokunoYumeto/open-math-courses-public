@@ -1,0 +1,50 @@
+"""Reproduce the exact finite-orthant separation instance in Lemma 5.1.
+
+Original exposition and diagram: GPT-6.1 Sol (OpenAI), Ultra, CC0-1.0.
+No source image or human expression is imported. Coordinates are rational:
+K(t)=(-2+t,1-2t), 0<=t<=1; t0=4/5; y0=(-6/5,-3/5).
+The plot uses X=270+70*x, Y=250-70*y.
+"""
+from pathlib import Path
+from fractions import Fraction as F
+
+t=F(4,5)
+y0=(-2+t,1-2*t)
+w=tuple(-a for a in y0)
+assert y0==(F(-6,5),F(-3,5))
+assert w[0]-2*w[1]==0
+assert sum(a*b for a,b in zip(w,y0))==F(-9,5)
+svg='''<svg xmlns="http://www.w3.org/2000/svg" width="420" height="670" viewBox="0 0 420 670" role="img" aria-labelledby="title desc">
+<title id="title">Finite affine tests and the positive orthant</title>
+<desc id="desc">The segment K from minus two comma one to minus one comma minus one misses the positive orthant. Its closest point is y zero equals minus six fifths comma minus three fifths. The normal w equals six fifths comma three fifths separates K with dot product minus nine fifths from the orthant with nonnegative dot product.</desc>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7" fill="#263d59"/></marker></defs>
+<rect width="420" height="670" rx="12" fill="#f8fafc"/>
+<g font-family="Arial,sans-serif" fill="#17283e">
+<text x="24" y="34" font-size="22" font-weight="bold">One finite family of affine tests</text>
+<text x="24" y="61" font-size="17">The nearest orthant point gives the weights.</text>
+<rect x="270" y="82" width="125" height="168" fill="#d8efe0"/>
+<path d="M35 250 H395 M270 405 V82" fill="none" stroke="#7b8899" stroke-width="1.5"/>
+<text x="373" y="272" font-size="17">y₁</text><text x="279" y="99" font-size="17">y₂</text>
+<text x="280" y="130" font-size="17">positive</text><text x="280" y="152" font-size="17">orthant</text>
+<path d="M88 96 L235 390" fill="none" stroke="#8775b1" stroke-width="1.5" stroke-dasharray="5 5"/>
+<path d="M130 180 L200 320" fill="none" stroke="#7650a0" stroke-width="6"/>
+<circle cx="130" cy="180" r="4" fill="#7650a0"/><circle cx="200" cy="320" r="4" fill="#7650a0"/>
+<text x="31" y="177" font-size="17">(−2, 1)</text><text x="189" y="345" font-size="17">(−1, −1)</text>
+<text x="112" y="251" font-size="22" font-weight="bold">K</text>
+<path d="M186 292 L270 250" fill="none" stroke="#263d59" stroke-width="2" stroke-dasharray="4 4"/>
+<path d="M270 250 L354 208" fill="none" stroke="#263d59" stroke-width="2.5" marker-end="url(#arrow)"/>
+<circle cx="186" cy="292" r="5" fill="#d26329"/><circle cx="270" cy="250" r="4" fill="#263d59"/>
+<text x="340" y="192" font-size="20" font-weight="bold">w</text>
+<text x="277" y="291" font-size="17">z₀ = (0, 0)</text>
+<path d="M186 297 L158 369 L55 369" fill="none" stroke="#d26329" stroke-width="1.5"/>
+<text x="24" y="395" font-size="18" fill="#8f431e">y₀ = (−6/5, −3/5),   t₀ = 4/5</text>
+<path d="M24 425 H396" stroke="#ccd5e1"/>
+<text x="24" y="461" font-size="20" font-weight="bold">Nonnegative separating weights</text>
+<text x="24" y="496" font-size="20">w = (6/5, 3/5) ≥ 0</text>
+<text x="24" y="535" font-size="20">w · y = −9/5 = −‖w‖²  for y ∈ K</text>
+<text x="24" y="574" font-size="20">w · z ≥ 0  for z in the orthant</text>
+<text x="24" y="621" font-size="17">Exact finite example of (S1), Lemma 5.1.</text>
+<text x="24" y="646" font-size="15">Positive orthant: all coordinates nonnegative.</text>
+</g></svg>
+'''
+Path(__file__).with_name('grothendieck-random-lift-and-sharp-constant.svg').write_text(svg,encoding='utf-8',newline='\n')

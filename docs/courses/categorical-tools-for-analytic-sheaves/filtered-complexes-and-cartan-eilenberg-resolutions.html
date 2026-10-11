@@ -1,0 +1,387 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Filtered complexes and Cartan–Eilenberg resolutions</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="filtered-complexes-and-cartan-eilenberg-resolutions">Filtered complexes and Cartan–Eilenberg resolutions</h1>
+<p>A filtered complex turns successive lifting problems into a spectral sequence. A double complex supplies two such filtrations. We construct every page directly, prove convergence under a finite condition in each degree, and build Cartan–Eilenberg resolutions with their comparison maps. The resulting two spectral sequences compute a bounded-below derived functor. One example has a nonzero second differential; another computes the derived Hom of a two-term complex.</p>
+<p>We use <a href="kernels-cokernels-and-the-abelian-comparison.html">Kernels, cokernels and the abelian comparison</a> for the abelian image calculus. <a href="chain-homotopies-mapping-cones-and-triangles.html">Chain homotopies, mapping cones and triangles</a> fixes cochain, Hom and shift signs. <a href="derived-morphisms-through-quasi-isomorphism-roofs.html">Derived morphisms through quasi-isomorphism roofs</a>, Section 5, proves the K-injective and K-projective tests. <a href="injective-replacements-and-right-derived-functors.html">Injective replacements and right derived functors</a> constructs bounded-below replacements, their comparisons, right derived functors and enough injectives in abelian groups. All categories and indexing sets are taken in fixed ambient universes.</p>
+<h2 id="1-quotients-that-give-all-spectral-pages">1. Quotients that give all spectral pages</h2>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be a cochain complex in an abelian category <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. A decreasing filtration consists of subcomplexes <span class="math" data-tex="\(F^pC\)">\(F^pC\)</span>, for all integers <span class="math" data-tex="\(p\)">\(p\)</span>, with <span class="math" data-tex="\(F^{p+1}C\subset F^pC\)">\(F^{p+1}C\subset F^pC\)</span>. No infinite sum or limit is used in constructing the pages. Put <span class="math" data-tex="\(n=p+q\)">\(n=p+q\)</span>, and define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+Z_r^{p,n}=F^pC^n\cap d^{-1}(F^{p+r}C^{n+1}),\qquad r\geq0,\\
+E_0^{p,q}=F^pC^{p+q}/F^{p+1}C^{p+q}.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+Z_r^{p,n}=F^pC^n\cap d^{-1}(F^{p+r}C^{n+1}),\qquad r\geq0,\\
+E_0^{p,q}=F^pC^{p+q}/F^{p+1}C^{p+q}.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>Here the inverse image and intersection are pullbacks of subobjects. Since the differential preserves the filtration, <span class="math" data-tex="\(Z_0^{p,n}=F^pC^n\)">\(Z_0^{p,n}=F^pC^n\)</span>. The induced differential on the quotient <span class="math" data-tex="\(E_0\)">\(E_0\)</span> has bidegree <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>.</p>
+<p>We will use a precise convention for computations with subobjects. If an arrow factors through the sum <span class="math" data-tex="\(U+V\)">\(U+V\)</span>, pull back the epimorphism <span class="math" data-tex="\(U\oplus V\to U+V\)">\(U\oplus V\to U+V\)</span>; after that epimorphic change of source it has a decomposition into a part in each subobject. An arrow into a quotient can likewise be lifted after pulling back its quotient epimorphism. A finite number of these changes can be made on one common epimorphic cover. Equations and vanishing of arrows can be checked after such a cover because epimorphisms cancel on the right. Thus the representative calculations below are valid in any abelian category. They do not assume that objects have ordinary elements.</p>
+<p>For <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+E_r^{p,q}=
+\frac{Z_r^{p,p+q}}
+{Z_{r-1}^{p+1,p+q}+dZ_{r-1}^{p-r+1,p+q-1}}.
+\tag{1.2}
+\]">\[
+E_r^{p,q}=
+\frac{Z_r^{p,p+q}}
+{Z_{r-1}^{p+1,p+q}+dZ_{r-1}^{p-r+1,p+q-1}}.
+\tag{1.2}
+\]</span>
+<p>Both denominator terms are subobjects of the numerator. For the first, its differential lies in <span class="math" data-tex="\(F^{p+r}\)">\(F^{p+r}\)</span>; for the second, its image lies in <span class="math" data-tex="\(F^p\)">\(F^p\)</span> and its next differential is zero. When <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, the formula gives exactly the kernel of the quotient differential on <span class="math" data-tex="\(E_0\)">\(E_0\)</span>, divided by its image. Indeed a class in <span class="math" data-tex="\(F^p/F^{p+1}\)">\(F^p/F^{p+1}\)</span> is a cycle precisely when its differential lies in <span class="math" data-tex="\(F^{p+1}\)">\(F^{p+1}\)</span>; its boundaries are images of <span class="math" data-tex="\(dF^p\)">\(dF^p\)</span>. Hence <span class="math" data-tex="\(E_1=H(E_0,d_0)\)">\(E_1=H(E_0,d_0)\)</span>.</p>
+<p>The differential of <span class="math" data-tex="\(C\)">\(C\)</span> defines</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+d_r: E_r^{p,q}\longrightarrow E_r^{p+r,q-r+1},
+\qquad [x]\longmapsto[dx].
+\tag{1.3}
+\]">\[
+d_r: E_r^{p,q}\longrightarrow E_r^{p+r,q-r+1},
+\qquad [x]\longmapsto[dx].
+\tag{1.3}
+\]</span>
+<p>The image belongs to the target numerator since <span class="math" data-tex="\(dx\in F^{p+r}\)">\(dx\in F^{p+r}\)</span> and <span class="math" data-tex="\(d^2x=0\)">\(d^2x=0\)</span>. Changing <span class="math" data-tex="\(x\)">\(x\)</span> by a term in <span class="math" data-tex="\(Z_{r-1}^{p+1,n}\)">\(Z_{r-1}^{p+1,n}\)</span> changes its image by a term in the target's boundary denominator; changing it by a boundary has no effect. This proves well-definedness. The equality <span class="math" data-tex="\(d_r^2=0\)">\(d_r^2=0\)</span> follows from <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> The formulas give canonical, natural identifications <span class="math" data-tex="\(E_{r+1}=H(E_r,d_r)\)">\(E_{r+1}=H(E_r,d_r)\)</span> for every <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>.</p>
+<p><strong>Proof.</strong> A representative <span class="math" data-tex="\(x\in Z_r^{p,n}\)">\(x\in Z_r^{p,n}\)</span> is in the kernel of <span class="math" data-tex="\(d_r\)">\(d_r\)</span> exactly when, after an epimorphic cover,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+dx=u+dv,\qquad
+u\in Z_{r-1}^{p+r+1,n+1},\quad
+v\in Z_{r-1}^{p+1,n}.
+\tag{1.4}
+\]">\[
+dx=u+dv,\qquad
+u\in Z_{r-1}^{p+r+1,n+1},\quad
+v\in Z_{r-1}^{p+1,n}.
+\tag{1.4}
+\]</span>
+<p>Then <span class="math" data-tex="\(x-v\in Z_{r+1}^{p,n}\)">\(x-v\in Z_{r+1}^{p,n}\)</span>, and it represents the same class in <span class="math" data-tex="\(E_r\)">\(E_r\)</span>. Conversely every member of <span class="math" data-tex="\(Z_{r+1}^{p,n}\)">\(Z_{r+1}^{p,n}\)</span> maps to the kernel. Thus this subobject surjects onto that kernel.</p>
+<p>To identify its quotient by incoming images, suppose <span class="math" data-tex="\(x\in Z_{r+1}^{p,n}\)">\(x\in Z_{r+1}^{p,n}\)</span> is zero in <span class="math" data-tex="\(E_r\)">\(E_r\)</span>. Write <span class="math" data-tex="\(x=a+db\)">\(x=a+db\)</span>, with <span class="math" data-tex="\(a\in Z_{r-1}^{p+1,n}\)">\(a\in Z_{r-1}^{p+1,n}\)</span> and <span class="math" data-tex="\(b\in Z_{r-1}^{p-r+1,n-1}\)">\(b\in Z_{r-1}^{p-r+1,n-1}\)</span>. Since <span class="math" data-tex="\(dx=da\in F^{p+r+1}\)">\(dx=da\in F^{p+r+1}\)</span>, we have <span class="math" data-tex="\(a\in Z_r^{p+1,n}\)">\(a\in Z_r^{p+1,n}\)</span>. Also <span class="math" data-tex="\(b\in F^{p-r}\)">\(b\in F^{p-r}\)</span> and <span class="math" data-tex="\(db=x-a\in F^p\)">\(db=x-a\in F^p\)</span>, so <span class="math" data-tex="\(b\in Z_r^{p-r,n-1}\)">\(b\in Z_r^{p-r,n-1}\)</span>. Its boundary is therefore an incoming <span class="math" data-tex="\(d_r\)">\(d_r\)</span>-image. More generally, any incoming image has a representative <span class="math" data-tex="\(dy\)">\(dy\)</span> with <span class="math" data-tex="\(y\in Z_r^{p-r,n-1}\)">\(y\in Z_r^{p-r,n-1}\)</span>. Subtracting it reduces to the preceding zero-class calculation. Consequently the quotient of the kernel by those images is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+\frac{Z_{r+1}^{p,n}}
+{Z_r^{p+1,n}+dZ_r^{p-r,n-1}},
+\tag{1.5}
+\]">\[
+\frac{Z_{r+1}^{p,n}}
+{Z_r^{p+1,n}+dZ_r^{p-r,n-1}},
+\tag{1.5}
+\]</span>
+<p>which is (1.2) on page <span class="math" data-tex="\(r+1\)">\(r+1\)</span>. The reverse inclusions hold too: the first term is a zero class on page <span class="math" data-tex="\(r\)">\(r\)</span>, and the second is an incoming image. All maps used are restrictions, images or quotient maps of the original differential, so the identifications are independent of the covering lifts and natural. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A chain map preserving each filtration induces maps on all these subobjects and quotients, and commutes with every differential and page identification. Identities and compositions are inherited from the underlying chain maps. If two such maps have a filtration-preserving chain homotopy, their maps on <span class="math" data-tex="\(E_0\)">\(E_0\)</span> are chain homotopic and therefore agree on <span class="math" data-tex="\(E_1\)">\(E_1\)</span>. They then agree on every later page by Theorem 1.1.</p>
+<h2 id="2-finite-convergence-and-comparison">2. Finite convergence and comparison</h2>
+<p>Assume now that for each degree <span class="math" data-tex="\(n\)">\(n\)</span> there are integers <span class="math" data-tex="\(a_n&lt;b_n\)">\(a_n&lt;b_n\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+F^pC^n=C^n\quad(p\leq a_n),\qquad
+F^pC^n=0\quad(p\geq b_n).
+\tag{2.1}
+\]">\[
+F^pC^n=C^n\quad(p\leq a_n),\qquad
+F^pC^n=0\quad(p\geq b_n).
+\tag{2.1}
+\]</span>
+<p>The bounds may depend on the degree. In particular, the filtration need not have a single finite length for the entire complex. Define the induced cohomology filtration by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+F^pH^n(C)=\operatorname{im}
+\bigl(H^n(F^pC)\longrightarrow H^n(C)\bigr).
+\tag{2.2}
+\]">\[
+F^pH^n(C)=\operatorname{im}
+\bigl(H^n(F^pC)\longrightarrow H^n(C)\bigr).
+\tag{2.2}
+\]</span>
+<p>Writing <span class="math" data-tex="\(Z^n=\ker d^n\)">\(Z^n=\ker d^n\)</span> and <span class="math" data-tex="\(B^n=\operatorname{im}d^{n-1}\)">\(B^n=\operatorname{im}d^{n-1}\)</span>, this image is the image of <span class="math" data-tex="\(F^pC^n\cap Z^n\)">\(F^pC^n\cap Z^n\)</span> in <span class="math" data-tex="\(Z^n/B^n\)">\(Z^n/B^n\)</span>. It is all of <span class="math" data-tex="\(H^n(C)\)">\(H^n(C)\)</span> for <span class="math" data-tex="\(p\leq a_n\)">\(p\leq a_n\)</span>, and zero for <span class="math" data-tex="\(p\geq b_n\)">\(p\geq b_n\)</span>, so it is finite.</p>
+<p><strong>Theorem 2.1.</strong> Under (2.1), every position stabilizes after finitely many pages, and its stable value is naturally</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+E_\infty^{p,n-p}\simeq
+F^pH^n(C)/F^{p+1}H^n(C).
+\tag{2.3}
+\]">\[
+E_\infty^{p,n-p}\simeq
+F^pH^n(C)/F^{p+1}H^n(C).
+\tag{2.3}
+\]</span>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(p,n\)">\(p,n\)</span>. Choose <span class="math" data-tex="\(r\)">\(r\)</span> so large that <span class="math" data-tex="\(F^{p+r}C^{n+1}=0\)">\(F^{p+r}C^{n+1}=0\)</span> and <span class="math" data-tex="\(F^{p-r+1}C^{n-1}=C^{n-1}\)">\(F^{p-r+1}C^{n-1}=C^{n-1}\)</span>; these conditions hold for every larger <span class="math" data-tex="\(r\)">\(r\)</span> too. Then the numerator in (1.2) is <span class="math" data-tex="\(F^pC^n\cap Z^n\)">\(F^pC^n\cap Z^n\)</span>, its first denominator term is <span class="math" data-tex="\(F^{p+1}C^n\cap Z^n\)">\(F^{p+1}C^n\cap Z^n\)</span>, and the second is <span class="math" data-tex="\(F^pC^n\cap B^n\)">\(F^pC^n\cap B^n\)</span>. For the last equality, a boundary in <span class="math" data-tex="\(F^p\)">\(F^p\)</span> can be lifted through <span class="math" data-tex="\(C^{n-1}\to B^n\)">\(C^{n-1}\to B^n\)</span>; its lift has differential in <span class="math" data-tex="\(F^p\)">\(F^p\)</span>, which is exactly the defining condition on the indicated <span class="math" data-tex="\(Z_{r-1}\)">\(Z_{r-1}\)</span>. Thus the page is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\frac{F^pC^n\cap Z^n}
+{(F^{p+1}C^n\cap Z^n)+(F^pC^n\cap B^n)}.
+\tag{2.4}
+\]">\[
+\frac{F^pC^n\cap Z^n}
+{(F^{p+1}C^n\cap Z^n)+(F^pC^n\cap B^n)}.
+\tag{2.4}
+\]</span>
+<p>This is the quotient in (2.3). To see the kernel explicitly, the inverse image of <span class="math" data-tex="\(F^{p+1}H^n\)">\(F^{p+1}H^n\)</span> in <span class="math" data-tex="\(F^pC^n\cap Z^n\)">\(F^pC^n\cap Z^n\)</span> consists of a cycle in <span class="math" data-tex="\(F^{p+1}\)">\(F^{p+1}\)</span> plus a boundary that lies in <span class="math" data-tex="\(F^p\)">\(F^p\)</span>. Such decompositions are justified by the epimorphic-cover convention. The formula remains identical on subsequent pages, and all identifications commute with filtered chain maps. No interchange of infinite limits, images or intersections occurs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.2.</strong> If a filtered chain map between two complexes satisfying (2.1) is an isomorphism on some whole page, it is a quasi-isomorphism. Its cohomology maps are isomorphisms of filtered objects, including the inverse maps.</p>
+<p><strong>Proof.</strong> The page identifications propagate the isomorphism to every later page, and then to the stable pieces. In each total degree only finitely many pieces are nonzero. For the two finite filtrations, choose a common range by extending with zero and the whole object. Induct through
+<span class="math" data-tex="\(0\to F^{p+1}H\to F^pH\to\operatorname{gr}^pH\to0\)">\(0\to F^{p+1}H\to F^pH\to\operatorname{gr}^pH\to0\)</span>, starting at the zero end. A map of short exact sequences that is an isomorphism on the subobject and quotient is an isomorphism in the middle: its kernel is zero by projecting first to the quotient and then to the subobject; to lift a target arrow, lift its quotient after an epimorphic cover and correct the remaining subobject error. This also proves surjectivity. The induction gives isomorphisms on every filtration step and on the whole cohomology. Their inverses preserve each step. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-two-filtrations-of-a-double-complex">3. The two filtrations of a double complex</h2>
+<p>A double complex <span class="math" data-tex="\(L^{a,b}\)">\(L^{a,b}\)</span> has commuting differentials <span class="math" data-tex="\(d_h\)">\(d_h\)</span> and <span class="math" data-tex="\(d_v\)">\(d_v\)</span> of bidegrees <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Suppose <span class="math" data-tex="\(L^{a,b}=0\)">\(L^{a,b}=0\)</span> unless <span class="math" data-tex="\(a\geq m\)">\(a\geq m\)</span> and <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span>. Its total complex uses finite sums:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+T^n=\bigoplus_{a+b=n}L^{a,b},\\
+D|_{L^{a,b}}=d_h+(-1)^a d_v.
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+T^n=\bigoplus_{a+b=n}L^{a,b},\\
+D|_{L^{a,b}}=d_h+(-1)^a d_v.
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>The two mixed terms in <span class="math" data-tex="\(D^2\)">\(D^2\)</span> cancel because the horizontal differential changes <span class="math" data-tex="\(a\)">\(a\)</span> by one; the two pure terms are zero. Each total degree has only finitely many summands, even if the complex has no upper bound.</p>
+<p>The column filtration and row filtration are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+P^pT^n=\bigoplus_{a\geq p, a+b=n}L^{a,b},\\
+Q^pT^n=\bigoplus_{b\geq p, a+b=n}L^{a,b}.
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+P^pT^n=\bigoplus_{a\geq p, a+b=n}L^{a,b},\\
+Q^pT^n=\bigoplus_{b\geq p, a+b=n}L^{a,b}.
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>Both satisfy (2.1): <span class="math" data-tex="\(P^pT^n=T^n\)">\(P^pT^n=T^n\)</span> for <span class="math" data-tex="\(p\leq m\)">\(p\leq m\)</span> and is zero for <span class="math" data-tex="\(p&gt;n\)">\(p&gt;n\)</span>; <span class="math" data-tex="\(Q^pT^n=T^n\)">\(Q^pT^n=T^n\)</span> for <span class="math" data-tex="\(p\leq0\)">\(p\leq0\)</span> and is zero for <span class="math" data-tex="\(p&gt;n-m\)">\(p&gt;n-m\)</span>. Theorems 1.1 and 2.1 therefore give two convergent spectral sequences with finite filtrations on <span class="math" data-tex="\(H^nT\)">\(H^nT\)</span>.</p>
+<p>For the column filtration, the quotient differential is <span class="math" data-tex="\((-1)^p d_v\)">\((-1)^p d_v\)</span>. Multiplication in degree <span class="math" data-tex="\(q\)">\(q\)</span> by <span class="math" data-tex="\((-1)^{pq}\)">\((-1)^{pq}\)</span> identifies that column complex with its ordinary vertical complex. Alternatively, cycles and boundaries are identical, so their quotient cohomology has its direct identity identification. Using this latter identification, the next differential is the map induced by <span class="math" data-tex="\(d_h\)">\(d_h\)</span>. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+{}&#x27;E_1^{p,q}=H_v^q(L^{p,\bullet}),\qquad
+{}&#x27;E_2^{p,q}=H_h^p\bigl(H_v^q(L)\bigr).
+\tag{3.3}
+\]">\[
+{}&#x27;E_1^{p,q}=H_v^q(L^{p,\bullet}),\qquad
+{}&#x27;E_2^{p,q}=H_h^p\bigl(H_v^q(L)\bigr).
+\tag{3.3}
+\]</span>
+<p>These conventions specify the signs of higher maps through (1.3), rather than by an unspecified choice of page isomorphisms. A representative of a page-<span class="math" data-tex="\(r\)">\(r\)</span> class can be assembled from terms <span class="math" data-tex="\(x_i\in L^{p+i,q-i}\)">\(x_i\in L^{p+i,q-i}\)</span>, for <span class="math" data-tex="\(0\leq i&lt;r\)">\(0\leq i&lt;r\)</span>. Its successive equations are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+d_vx_0=0,\\
+d_hx_{i-1}+(-1)^{p+i}d_vx_i=0
+\quad(1\leq i&lt;r),\\
+d_r[x_0+\cdots+x_{r-1}]=[d_hx_{r-1}].
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+d_vx_0=0,\\
+d_hx_{i-1}+(-1)^{p+i}d_vx_i=0
+\quad(1\leq i&lt;r),\\
+d_r[x_0+\cdots+x_{r-1}]=[d_hx_{r-1}].
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>To justify this description, reduce a representative in <span class="math" data-tex="\(P^pT^{p+q}\)">\(P^pT^{p+q}\)</span> modulo <span class="math" data-tex="\(P^{p+r}\)">\(P^{p+r}\)</span>. Its only surviving components are the displayed <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, and the condition that its differential lie in <span class="math" data-tex="\(P^{p+r}\)">\(P^{p+r}\)</span> is exactly these equations. Components farther to the right belong to the denominator <span class="math" data-tex="\(Z_{r-1}^{p+1}\)">\(Z_{r-1}^{p+1}\)</span> and change the final obstruction only by a target denominator. When the objects are not modules, all choices of representatives and decompositions are made after epimorphic covers as in Section 1.</p>
+<p>For the row filtration the complementary degree is the horizontal degree. Its quotient differential is <span class="math" data-tex="\(d_h\)">\(d_h\)</span>; on the first cohomology page the differential is <span class="math" data-tex="\((-1)^q d_v\)">\((-1)^q d_v\)</span>. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+{}&#x27;&#x27;E_1^{p,q}=H_h^q(L^{\bullet,p}),\\
+{}&#x27;&#x27;E_2^{p,q}=H_v^p\bigl(H_h^q(L)\bigr).
+\end{gathered}
+\tag{3.5}
+\]">\[
+\begin{gathered}
+{}&#x27;&#x27;E_1^{p,q}=H_h^q(L^{\bullet,p}),\\
+{}&#x27;&#x27;E_2^{p,q}=H_v^p\bigl(H_h^q(L)\bigr).
+\end{gathered}
+\tag{3.5}
+\]</span>
+<p>For the second line, identify the signed vertical complex with the ordinary one by multiplication in degree <span class="math" data-tex="\(p\)">\(p\)</span> by <span class="math" data-tex="\((-1)^{pq}\)">\((-1)^{pq}\)</span>. Both spectral sequences have <span class="math" data-tex="\(d_r\)">\(d_r\)</span> of bidegree <span class="math" data-tex="\((r,1-r)\)">\((r,1-r)\)</span>, using their own displayed indexing. Their abutment is the same total cohomology; their induced filtrations need not agree.</p>
+<p><strong>Proposition 3.1.</strong> A morphism of such double complexes that is a quasi-isomorphism in every column is a quasi-isomorphism on total complexes. The same is true with rows in place of columns.</p>
+<p><strong>Proof.</strong> A common lower bound works for source and target. For columns the map is an isomorphism on (3.3)'s first page. For rows it is an isomorphism on (3.5)'s first page. Apply Corollary 2.2 to the corresponding degree-wise finite filtration. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-constructing-cartan-eilenberg-resolutions-and-their-comparisons">4. Constructing Cartan–Eilenberg resolutions and their comparisons</h2>
+<p>Assume <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has enough injectives. For a complex <span class="math" data-tex="\(X\)">\(X\)</span>, retain the notation <span class="math" data-tex="\(B^aX\)">\(B^aX\)</span>, <span class="math" data-tex="\(Z^aX\)">\(Z^aX\)</span>, <span class="math" data-tex="\(H^aX\)">\(H^aX\)</span>. Call a short exact sequence of complexes <em>cyclewise exact</em> when the induced sequences on all boundary, cycle and cohomology objects are short exact too. Call a monomorphism cyclewise exact when it belongs to such a sequence with its quotient complex.</p>
+<p>Choose monomorphisms <span class="math" data-tex="\(B^aX\to J_B^a\)">\(B^aX\to J_B^a\)</span> and <span class="math" data-tex="\(H^aX\to J_H^a\)">\(H^aX\to J_H^a\)</span> into injectives. Extend the first to a map <span class="math" data-tex="\(\alpha^a: X^a\to J_B^a\)">\(\alpha^a: X^a\to J_B^a\)</span>. Since <span class="math" data-tex="\(H^aX=Z^aX/B^aX\)">\(H^aX=Z^aX/B^aX\)</span> is a subobject of <span class="math" data-tex="\(X^a/B^aX\)">\(X^a/B^aX\)</span>, extend the second to a map <span class="math" data-tex="\(\beta^a: X^a/B^aX\to J_H^a\)">\(\beta^a: X^a/B^aX\to J_H^a\)</span>. Define the complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+J(X)^a=J_B^a\oplus J_H^a\oplus J_B^{a+1},\\
+d_{J(X)}^a(u,v,w)=(w,0,0),\\
+e^a(x)=\bigl(\alpha^a x,\ \beta^a\bar x,\ \iota_B^{a+1}d_X^a x\bigr).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+J(X)^a=J_B^a\oplus J_H^a\oplus J_B^{a+1},\\
+d_{J(X)}^a(u,v,w)=(w,0,0),\\
+e^a(x)=\bigl(\alpha^a x,\ \beta^a\bar x,\ \iota_B^{a+1}d_X^a x\bigr).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>The tuple notation describes morphisms into finite biproducts; <span class="math" data-tex="\(\iota_B^{a+1}\)">\(\iota_B^{a+1}\)</span> denotes the chosen embedding of the boundary object. Since <span class="math" data-tex="\(\alpha^{a+1}\)">\(\alpha^{a+1}\)</span> extends that embedding, <span class="math" data-tex="\(e\)">\(e\)</span> is a chain map. Its last coordinate kills a kernel arrow only when that arrow factors through <span class="math" data-tex="\(Z^aX\)">\(Z^aX\)</span>; then its middle coordinate forces it into <span class="math" data-tex="\(B^aX\)">\(B^aX\)</span>, and its first coordinate kills it only when it is zero. Thus every <span class="math" data-tex="\(e^a\)">\(e^a\)</span> is monic. Moreover</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+B^aJ(X)=J_B^a,\qquad
+Z^aJ(X)=J_B^a\oplus J_H^a,\\
+H^aJ(X)=J_H^a.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+B^aJ(X)=J_B^a,\qquad
+Z^aJ(X)=J_B^a\oplus J_H^a,\\
+H^aJ(X)=J_H^a.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>The maps induced by <span class="math" data-tex="\(e\)">\(e\)</span> on boundaries and cohomology are the chosen embeddings, and its map on cycles is monic.</p>
+<p><strong>Lemma 4.1.</strong> The sequence <span class="math" data-tex="\(0\to X\to J(X)\to X_1\to0\)">\(0\to X\to J(X)\to X_1\to0\)</span>, where <span class="math" data-tex="\(X_1\)">\(X_1\)</span> is the quotient complex, is cyclewise exact.</p>
+<p><strong>Proof.</strong> Its ordinary cohomology long exact sequence has zero connecting maps because <span class="math" data-tex="\(H^aX\to H^aJ(X)\)">\(H^aX\to H^aJ(X)\)</span> is monic in every degree. It gives short exact cohomology sequences. Boundaries of the quotient lift from boundaries of <span class="math" data-tex="\(J(X)\)">\(J(X)\)</span>: lift a source of their differential through the degree-wise quotient epimorphism and then take its differential. The kernel of <span class="math" data-tex="\(B^aJ(X)\to B^aX_1\)">\(B^aJ(X)\to B^aX_1\)</span> is the intersection of <span class="math" data-tex="\(B^aJ(X)\)">\(B^aJ(X)\)</span> with <span class="math" data-tex="\(X^a\)">\(X^a\)</span>. An arrow in this intersection is a cycle of <span class="math" data-tex="\(X\)">\(X\)</span>, and its class is killed in <span class="math" data-tex="\(H^aJ(X)\)">\(H^aJ(X)\)</span>. Cohomology injectivity makes it a boundary of <span class="math" data-tex="\(X\)">\(X\)</span>. This proves the short exact boundary sequences. Cycles of the quotient lift to cycles of <span class="math" data-tex="\(J(X)\)">\(J(X)\)</span> because their cohomology connecting map is zero: explicitly, the differential of a degree-wise lift lies in <span class="math" data-tex="\(X^{a+1}\)">\(X^{a+1}\)</span>; it is a boundary there, so subtract a lift from <span class="math" data-tex="\(X^a\)">\(X^a\)</span>. The kernel is <span class="math" data-tex="\(Z^aX\)">\(Z^aX\)</span>. This proves the cycle sequences. All lifts are along epimorphisms, so the argument applies in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2.</strong> If <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> is a cyclewise exact monomorphism, every chain map <span class="math" data-tex="\(A\to J(X)\)">\(A\to J(X)\)</span> extends to <span class="math" data-tex="\(B\to J(X)\)">\(B\to J(X)\)</span>.</p>
+<p><strong>Proof.</strong> A chain map <span class="math" data-tex="\(f\)">\(f\)</span> into (4.1)'s split complex is specified by two families: maps <span class="math" data-tex="\(f_B^a: A^a\to J_B^a\)">\(f_B^a: A^a\to J_B^a\)</span>, and maps <span class="math" data-tex="\(f_H^a: A^a/B^aA\to J_H^a\)">\(f_H^a: A^a/B^aA\to J_H^a\)</span>. The third coordinate in degree <span class="math" data-tex="\(a\)">\(a\)</span> is necessarily <span class="math" data-tex="\(f_B^{a+1}d_A^a\)">\(f_B^{a+1}d_A^a\)</span>. The middle coordinate kills boundaries by the chain-map equation. Conversely these families give a chain map, since <span class="math" data-tex="\(d_A^2=0\)">\(d_A^2=0\)</span>.</p>
+<p>The arrows <span class="math" data-tex="\(A^a\to B^a\)">\(A^a\to B^a\)</span> are monic. So are <span class="math" data-tex="\(A^a/B^aA\to B^a/B^aB\)">\(A^a/B^aA\to B^a/B^aB\)</span>: the intersection of <span class="math" data-tex="\(A^a\)">\(A^a\)</span> with the boundary object of <span class="math" data-tex="\(B\)">\(B\)</span> is the boundary object of <span class="math" data-tex="\(A\)">\(A\)</span>, by injectivity of <span class="math" data-tex="\(H^aA\to H^aB\)">\(H^aA\to H^aB\)</span>. Extend each family through these monomorphisms using the corresponding injective object. The resulting maps have the same third-coordinate relation and therefore form the required extension. Each degree involves only three coordinates; no infinite biproduct is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.3.</strong> Every bounded-below complex <span class="math" data-tex="\(K\)">\(K\)</span> has a Cartan–Eilenberg injective resolution, with comparisons of complex maps unique up to a vertical homotopy consisting of horizontal chain maps.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(K^a=0\)">\(K^a=0\)</span> for <span class="math" data-tex="\(a&lt;m\)">\(a&lt;m\)</span>. In (4.1) choose the zero injective for every zero boundary or cohomology object below the bound, including <span class="math" data-tex="\(B^mK=0\)">\(B^mK=0\)</span>. Then <span class="math" data-tex="\(J(K)^a=0\)">\(J(K)^a=0\)</span> for <span class="math" data-tex="\(a&lt;m\)">\(a&lt;m\)</span>. Lemma 4.1 makes its quotient <span class="math" data-tex="\(K_1\)">\(K_1\)</span> bounded below by the same <span class="math" data-tex="\(m\)">\(m\)</span>. Repeat the construction on that quotient and on all subsequent quotients. Put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+I^{\bullet,j}=J(K_j),\qquad K_0=K,\qquad j\geq0,\\
+d_v^j: I^{\bullet,j}\twoheadrightarrow K_{j+1}
+\lhook\joinrel\longrightarrow I^{\bullet,j+1}.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+I^{\bullet,j}=J(K_j),\qquad K_0=K,\qquad j\geq0,\\
+d_v^j: I^{\bullet,j}\twoheadrightarrow K_{j+1}
+\lhook\joinrel\longrightarrow I^{\bullet,j+1}.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>Each arrow is a horizontal chain map, so the horizontal and vertical differentials commute; consecutive vertical maps compose to zero. The augmented vertical sequences on each of <span class="math" data-tex="\(K^a\)">\(K^a\)</span>, <span class="math" data-tex="\(B^aK\)">\(B^aK\)</span>, <span class="math" data-tex="\(Z^aK\)">\(Z^aK\)</span> and <span class="math" data-tex="\(H^aK\)">\(H^aK\)</span> are exact because every successive short exact sequence is cyclewise exact. Their terms are injective by (4.2) and finite biproduct closure of injectives. Thus they are injective resolutions of those four objects. There are no terms with <span class="math" data-tex="\(a&lt;m\)">\(a&lt;m\)</span> or <span class="math" data-tex="\(j&lt;0\)">\(j&lt;0\)</span>. These are all the required Cartan–Eilenberg properties.</p>
+<p>For a chain map <span class="math" data-tex="\(f: K\to L\)">\(f: K\to L\)</span>, let <span class="math" data-tex="\(I,J\)">\(I,J\)</span> be two resolutions constructed in this way. Extend <span class="math" data-tex="\(K\to L\to J^{\bullet,0}\)">\(K\to L\to J^{\bullet,0}\)</span> across <span class="math" data-tex="\(K\to I^{\bullet,0}\)">\(K\to I^{\bullet,0}\)</span> using Lemma 4.2. The resulting horizontal chain map induces a quotient map <span class="math" data-tex="\(K_1\to L_1\)">\(K_1\to L_1\)</span>. Extend it across <span class="math" data-tex="\(K_1\to I^{\bullet,1}\)">\(K_1\to I^{\bullet,1}\)</span>, and continue. This gives a double-complex morphism extending <span class="math" data-tex="\(f\)">\(f\)</span>; the quotient construction makes every vertical square commute.</p>
+<p>For two such comparisons <span class="math" data-tex="\(u,v\)">\(u,v\)</span> extending the same <span class="math" data-tex="\(f\)">\(f\)</span>, their difference in degree zero vanishes on <span class="math" data-tex="\(K\)">\(K\)</span> and therefore factors through <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. Extend that factor to a horizontal chain map <span class="math" data-tex="\(h^1: I^{\bullet,1}\to J^{\bullet,0}\)">\(h^1: I^{\bullet,1}\to J^{\bullet,0}\)</span>. It gives <span class="math" data-tex="\((u-v)^0=h^1d_I^0\)">\((u-v)^0=h^1d_I^0\)</span>. Inductively, if <span class="math" data-tex="\(h^1,\ldots,h^j\)">\(h^1,\ldots,h^j\)</span> have been chosen, the map <span class="math" data-tex="\((u-v)^j-d_J^{j-1}h^j\)">\((u-v)^j-d_J^{j-1}h^j\)</span> kills the image of <span class="math" data-tex="\(d_I^{j-1}\)">\(d_I^{j-1}\)</span>: substitute the preceding homotopy equation and use <span class="math" data-tex="\(d_J^2=0\)">\(d_J^2=0\)</span>. It factors through <span class="math" data-tex="\(K_{j+1}\)">\(K_{j+1}\)</span>, and Lemma 4.2 extends the factor to <span class="math" data-tex="\(h^{j+1}\)">\(h^{j+1}\)</span>. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+(u-v)^j=d_J^{j-1}h^j+h^{j+1}d_I^j,
+\qquad h^0=0.
+\tag{4.4}
+\]">\[
+(u-v)^j=d_J^{j-1}h^j+h^{j+1}d_I^j,
+\qquad h^0=0.
+\tag{4.4}
+\]</span>
+<p>Every <span class="math" data-tex="\(h^j\)">\(h^j\)</span> is a horizontal chain map. The same extension argument also works when the target is any Cartan–Eilenberg resolution whose horizontal rows split as (4.1): its injective boundary and cohomology objects supply the same extension property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The total homotopy is <span class="math" data-tex="\(H|_{I^{a,j}}=(-1)^a h^j\)">\(H|_{I^{a,j}}=(-1)^a h^j\)</span>. The two vertical terms in <span class="math" data-tex="\(DH+HD\)">\(DH+HD\)</span> give (4.4), and the horizontal terms cancel because <span class="math" data-tex="\(h^j\)">\(h^j\)</span> commutes with <span class="math" data-tex="\(d_h\)">\(d_h\)</span> while <span class="math" data-tex="\((-1)^a\)">\((-1)^a\)</span> changes sign in the next horizontal degree. Thus comparison maps are also unique up to ordinary total-complex homotopy. Comparisons lifting identities in both directions compose to maps homotopic to identities. Comparisons of compositions are homotopic to composites by the same uniqueness proof.</p>
+<h2 id="5-both-derived-spectral-sequences-and-their-naturality">5. Both derived spectral sequences and their naturality</h2>
+<p>Let <span class="math" data-tex="\(F: \mathcal A\to\mathcal B\)">\(F: \mathcal A\to\mathcal B\)</span> be additive and left exact, with <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> abelian and <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> having enough injectives. Let <span class="math" data-tex="\(K\to I\)">\(K\to I\)</span> be a Cartan–Eilenberg resolution as in Theorem 4.3.</p>
+<p>View <span class="math" data-tex="\(K\)">\(K\)</span> as a double complex concentrated in vertical degree zero. Its map to <span class="math" data-tex="\(I\)">\(I\)</span> is a quasi-isomorphism in every column, so Proposition 3.1 proves</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+K\longrightarrow\operatorname{Tot}(I)
+\quad\text{is a quasi-isomorphism.}
+\tag{5.1}
+\]">\[
+K\longrightarrow\operatorname{Tot}(I)
+\quad\text{is a quasi-isomorphism.}
+\tag{5.1}
+\]</span>
+<p>The total complex is bounded below and every term is a finite sum of injectives. The earlier K-injective test therefore makes it a K-injective replacement. Applying <span class="math" data-tex="\(F\)">\(F\)</span> to it computes <span class="math" data-tex="\(RF(K)\)">\(RF(K)\)</span>. Finite sums commute with an additive functor, including all inclusions, projections and signs, so <span class="math" data-tex="\(F\operatorname{Tot}(I)=\operatorname{Tot}(FI)\)">\(F\operatorname{Tot}(I)=\operatorname{Tot}(FI)\)</span>.</p>
+<p>In the column spectral sequence of <span class="math" data-tex="\(FI\)">\(FI\)</span>, each column is <span class="math" data-tex="\(F\)">\(F\)</span> of an injective resolution of <span class="math" data-tex="\(K^p\)">\(K^p\)</span>. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+{}&#x27;E_1^{p,q}=R^qF(K^p),\\
+{}&#x27;E_2^{p,q}=H^p\bigl(R^qF(K^\bullet)\bigr),\\
+{}&#x27;E_r\ \Longrightarrow\ H^{p+q}(RF(K)).
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+{}&#x27;E_1^{p,q}=R^qF(K^p),\\
+{}&#x27;E_2^{p,q}=H^p\bigl(R^qF(K^\bullet)\bigr),\\
+{}&#x27;E_r\ \Longrightarrow\ H^{p+q}(RF(K)).
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>Its first differential is <span class="math" data-tex="\(R^qF(d_K^p)\)">\(R^qF(d_K^p)\)</span>: the horizontal map of columns extends <span class="math" data-tex="\(d_K^p\)">\(d_K^p\)</span>, and injective-resolution comparison identifies its induced vertical cohomology map with that derived map. This also shows that the middle expression is a complex.</p>
+<p>For the row spectral sequence, each row of <span class="math" data-tex="\(I\)">\(I\)</span> has split boundary and cycle sequences. Any additive functor preserves those split sequences, so horizontal cohomology after <span class="math" data-tex="\(F\)">\(F\)</span> is exactly <span class="math" data-tex="\(F\)">\(F\)</span> of the horizontal cohomology object. Those cohomology objects, as a vertical complex, resolve <span class="math" data-tex="\(H^qK\)">\(H^qK\)</span>. The signed vertical differential on the first page is <span class="math" data-tex="\((-1)^q\)">\((-1)^q\)</span> times its resolution differential; the degree-<span class="math" data-tex="\(p\)">\(p\)</span> scaling <span class="math" data-tex="\((-1)^{pq}\)">\((-1)^{pq}\)</span> identifies it with the ordinary resolution. We obtain</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+{}&#x27;&#x27;E_2^{p,q}=R^pF(H^qK),\\
+{}&#x27;&#x27;d_r: {}&#x27;&#x27;E_r^{p,q}\longrightarrow
+{}&#x27;&#x27;E_r^{p+r,q-r+1},\\
+{}&#x27;&#x27;E_r\ \Longrightarrow\ H^{p+q}(RF(K)).
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+{}&#x27;&#x27;E_2^{p,q}=R^pF(H^qK),\\
+{}&#x27;&#x27;d_r: {}&#x27;&#x27;E_r^{p,q}\longrightarrow
+{}&#x27;&#x27;E_r^{p+r,q-r+1},\\
+{}&#x27;&#x27;E_r\ \Longrightarrow\ H^{p+q}(RF(K)).
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>Both abutments have finite filtrations, proved by Theorem 2.1. No exactness of arbitrary products or sums in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> or <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is required.</p>
+<p>Here is the complete choice and map comparison. A comparison of Cartan–Eilenberg resolutions is a filtered total map for both filtrations. Two comparisons of the same chain map are related by (4.4). For the column filtration their signed total homotopy preserves the horizontal degree, so they give identical maps from page one. For the row filtration, take horizontal cohomology first. Since each <span class="math" data-tex="\(h^j\)">\(h^j\)</span> is a horizontal chain map, it induces a homotopy on the first-page vertical complexes: the signed total homotopy is <span class="math" data-tex="\((-1)^q h\)">\((-1)^q h\)</span> on horizontal degree <span class="math" data-tex="\(q\)">\(q\)</span>, and (4.4) remains precisely its homotopy equation for the signed vertical differential. Thus the comparisons agree from page two. All later maps then agree by Theorem 1.1. Identity comparisons and composition comparisons have the same property. Together with their total homotopies this proves coherent choice-independence of the spectral sequences and abutments, from the specified pages.</p>
+<p>The second sequence, from page two together with its filtered abutment, is a functor of the derived object <span class="math" data-tex="\(K\in D^+(\mathcal A)\)">\(K\in D^+(\mathcal A)\)</span>. Indeed a quasi-isomorphism induces isomorphisms on every <span class="math" data-tex="\(H^qK\)">\(H^qK\)</span>, hence on (5.3)'s entire second page and every later page. Its abutment is the isomorphism <span class="math" data-tex="\(RF(K)\to RF(L)\)">\(RF(K)\to RF(L)\)</span>; Corollary 2.2 makes the cohomology map an isomorphism on each filtration step. Chain-homotopic maps give the same second-page map because they give the same <span class="math" data-tex="\(H^q\)">\(H^q\)</span>-map, and the same derived abutment map; they therefore give the same later-page maps too. The roof universal property now inverts quasi-isomorphisms and extends the construction to <span class="math" data-tex="\(D^+\)">\(D^+\)</span>. This argument also proves that the resulting maps have the displayed <span class="math" data-tex="\(R^pF(H^q-)\)">\(R^pF(H^q-)\)</span> second-page description for every derived arrow.</p>
+<p>The first sequence is natural in the complex <span class="math" data-tex="\(K\)">\(K\)</span>, and its abutment is its derived value. It need not depend only on the derived isomorphism class on its first or second page: those pages use the individual terms <span class="math" data-tex="\(K^p\)">\(K^p\)</span>. No such stronger independence is asserted.</p>
+<h2 id="6-two-computations">6. Two computations</h2>
+<p><strong>Example 6.1: a genuine second differential.</strong> Over a field <span class="math" data-tex="\(k\)">\(k\)</span>, let the only nonzero objects of a double complex be</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+L^{0,1}=ka,\quad L^{1,0}=kb,\quad
+L^{1,1}=kc,\quad L^{2,0}=ke.
+\tag{6.1}
+\]">\[
+L^{0,1}=ka,\quad L^{1,0}=kb,\quad
+L^{1,1}=kc,\quad L^{2,0}=ke.
+\tag{6.1}
+\]</span>
+<p>Set <span class="math" data-tex="\(d_h(a)=c\)">\(d_h(a)=c\)</span>, <span class="math" data-tex="\(d_h(b)=e\)">\(d_h(b)=e\)</span>, <span class="math" data-tex="\(d_v(b)=c\)">\(d_v(b)=c\)</span>, and all other differentials zero. The commuting-square condition holds: each possibly nonzero mixed composite ends at a zero differential. The vertical complex of column one is <span class="math" data-tex="\(kb\to kc\)">\(kb\to kc\)</span>, an isomorphism. Thus the column first page has only <span class="math" data-tex="\(k[a]\)">\(k[a]\)</span> in position <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> and <span class="math" data-tex="\(k[e]\)">\(k[e]\)</span> in position <span class="math" data-tex="\((2,0)\)">\((2,0)\)</span>. Its first differential is zero.</p>
+<p>To represent the former class on page two, use <span class="math" data-tex="\(a+b\)">\(a+b\)</span>. With (3.1)'s sign, <span class="math" data-tex="\(D(a)=c\)">\(D(a)=c\)</span> and <span class="math" data-tex="\(D(b)=e-c\)">\(D(b)=e-c\)</span>, so <span class="math" data-tex="\(D(a+b)=e\)">\(D(a+b)=e\)</span>. Formula (3.4) gives <span class="math" data-tex="\(d_2[a]=[e]\)">\(d_2[a]=[e]\)</span>, with coefficient <span class="math" data-tex="\(+1\)">\(+1\)</span>. The second differential is an isomorphism, and every third-page term is zero. Direct totalization confirms this: the map from degree one, with basis <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, to degree two, with basis <span class="math" data-tex="\((c,e)\)">\((c,e)\)</span>, is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\begin{pmatrix}1&amp;-1\\0&amp;1\end{pmatrix}.
+\tag{6.2}
+\]">\[
+\begin{pmatrix}1&amp;-1\\0&amp;1\end{pmatrix}.
+\tag{6.2}
+\]</span>
+<p>It is invertible over every field, so the total complex is acyclic. For the row filtration, both nonzero rows are already exact: <span class="math" data-tex="\(kb\to ke\)">\(kb\to ke\)</span> and <span class="math" data-tex="\(ka\to kc\)">\(ka\to kc\)</span>. Its first page is zero. The different collapsing pages are compatible with the common zero abutment.</p>
+<p><strong>Example 6.2: a two-term derived Hom.</strong> Work in abelian groups, fix <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, and put <span class="math" data-tex="\(F(A)=\operatorname{Hom}(\mathbf Z/m,A)\)">\(F(A)=\operatorname{Hom}(\mathbf Z/m,A)\)</span>. Let <span class="math" data-tex="\(K\)">\(K\)</span> be <span class="math" data-tex="\(\mathbf Z\xrightarrow{m}\mathbf Z\)">\(\mathbf Z\xrightarrow{m}\mathbf Z\)</span> in degrees zero and one. Its cohomology is <span class="math" data-tex="\(H^0K=0\)">\(H^0K=0\)</span>, <span class="math" data-tex="\(H^1K=\mathbf Z/m\)">\(H^1K=\mathbf Z/m\)</span>.</p>
+<p>The free resolution <span class="math" data-tex="\(P^{-1}=\mathbf Z\xrightarrow{-m}P^0=\mathbf Z\to\mathbf Z/m\)">\(P^{-1}=\mathbf Z\xrightarrow{-m}P^0=\mathbf Z\to\mathbf Z/m\)</span> and the Hom differential compute <span class="math" data-tex="\(R^0F(A)=A[m]\)">\(R^0F(A)=A[m]\)</span>, <span class="math" data-tex="\(R^1F(A)=A/mA\)">\(R^1F(A)=A/mA\)</span>, and zero above degree one. To apply it to <span class="math" data-tex="\(K\)">\(K\)</span>, the same bounded-projective test shows that <span class="math" data-tex="\(\operatorname{Hom}^\bullet(P,K)\)">\(\operatorname{Hom}^\bullet(P,K)\)</span> computes <span class="math" data-tex="\(RF(K)\)">\(RF(K)\)</span>: compare with a bounded-below injective replacement of <span class="math" data-tex="\(K\)">\(K\)</span>. Hom out of <span class="math" data-tex="\(P\)">\(P\)</span> preserves that quasi-isomorphism, and Hom into the K-injective replacement inverts the quasi-isomorphism <span class="math" data-tex="\(P\to(\mathbf Z/m)[0]\)">\(P\to(\mathbf Z/m)[0]\)</span>. These two comparisons identify its cohomology with the required derived Hom.</p>
+<p>Ordering the degree-one terms as <span class="math" data-tex="\((\operatorname{Hom}(P^0,K^1),\operatorname{Hom}(P^{-1},K^0))\)">\((\operatorname{Hom}(P^0,K^1),\operatorname{Hom}(P^{-1},K^0))\)</span>, the resulting total Hom complex is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\mathbf Z\xrightarrow{z\mapsto(mz,mz)}
+\mathbf Z^2\xrightarrow{(u,v)\mapsto m(v-u)}
+\mathbf Z.
+\tag{6.3}
+\]">\[
+\mathbf Z\xrightarrow{z\mapsto(mz,mz)}
+\mathbf Z^2\xrightarrow{(u,v)\mapsto m(v-u)}
+\mathbf Z.
+\tag{6.3}
+\]</span>
+<p>Its cohomology is zero in degree zero, <span class="math" data-tex="\(\mathbf Z/m\)">\(\mathbf Z/m\)</span> in degree one, and <span class="math" data-tex="\(\mathbf Z/m\)">\(\mathbf Z/m\)</span> in degree two, with no other degrees. The first sequence (5.2) has only row <span class="math" data-tex="\(q=1\)">\(q=1\)</span>: its entries in horizontal degrees zero and one are <span class="math" data-tex="\(\mathbf Z/m\)">\(\mathbf Z/m\)</span>, and its differential is multiplication by <span class="math" data-tex="\(m\)">\(m\)</span>, hence zero. No higher differential can remain in that row. The second sequence (5.3) has only <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, with <span class="math" data-tex="\(R^0F(\mathbf Z/m)=\mathbf Z/m\)">\(R^0F(\mathbf Z/m)=\mathbf Z/m\)</span> at <span class="math" data-tex="\(p=0\)">\(p=0\)</span> and <span class="math" data-tex="\(R^1F(\mathbf Z/m)=\mathbf Z/m\)">\(R^1F(\mathbf Z/m)=\mathbf Z/m\)</span> at <span class="math" data-tex="\(p=1\)">\(p=1\)</span>. It likewise has no higher differential. Both sequences give exactly the directly computed groups in total degrees one and two. Enough injectives in this example was proved in the linked injective-replacement lesson; no existence theorem is being assumed just from a citation.</p>
+<h2 id="7-graded-exercises-with-solutions">7. Graded exercises with solutions</h2>
+<p><strong>Exercise 1 (routine).</strong> Let a double complex be supported in horizontal degrees <span class="math" data-tex="\(0,1\)">\(0,1\)</span> and vertical degrees <span class="math" data-tex="\(0,1\)">\(0,1\)</span>. Show that its column spectral sequence stabilizes on page two, and identify the filtration of each total cohomology group. Explain why the stable terms do not always determine that group up to isomorphism.</p>
+<p><strong>Solution.</strong> The first page is supported in those four positions, and every later page is a subquotient there. For <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>, a differential raises horizontal degree by <span class="math" data-tex="\(r\)">\(r\)</span>; its source or target is outside the two allowed columns. All those differentials are zero, so <span class="math" data-tex="\(E_2=E_\infty\)">\(E_2=E_\infty\)</span>. The column filtration is <span class="math" data-tex="\(P^0T=T\)">\(P^0T=T\)</span>, <span class="math" data-tex="\(P^1T\)">\(P^1T\)</span> the column-one subcomplex, and <span class="math" data-tex="\(P^2T=0\)">\(P^2T=0\)</span>. Consequently, for each <span class="math" data-tex="\(n\)">\(n\)</span>, it gives a short exact sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+0\longrightarrow E_2^{1,n-1}
+\longrightarrow H^n(T)
+\longrightarrow E_2^{0,n}\longrightarrow0.
+\tag{7.1}
+\]">\[
+0\longrightarrow E_2^{1,n-1}
+\longrightarrow H^n(T)
+\longrightarrow E_2^{0,n}\longrightarrow0.
+\tag{7.1}
+\]</span>
+<p>Terms outside the stated support are zero; in particular only total degrees zero, one and two can occur. The stable page specifies the subobject and quotient but does not specify the extension class. Already in abelian groups, <span class="math" data-tex="\(\mathbf Z/4\)">\(\mathbf Z/4\)</span> and <span class="math" data-tex="\((\mathbf Z/2)^2\)">\((\mathbf Z/2)^2\)</span> both have a subobject <span class="math" data-tex="\(\mathbf Z/2\)">\(\mathbf Z/2\)</span> and quotient <span class="math" data-tex="\(\mathbf Z/2\)">\(\mathbf Z/2\)</span>. They are not isomorphic: the first has an element of order four and the second does not.</p>
+<p>Both possibilities occur in double complexes with exactly the requested support. Given <span class="math" data-tex="\(0\to A\to M\xrightarrow{\pi}B\to0\)">\(0\to A\to M\xrightarrow{\pi}B\to0\)</span>, embed <span class="math" data-tex="\(B\)">\(B\)</span> into an injective abelian group <span class="math" data-tex="\(J\)">\(J\)</span>, with embedding <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Put <span class="math" data-tex="\(L^{0,0}=0\)">\(L^{0,0}=0\)</span>, <span class="math" data-tex="\(L^{0,1}=J\)">\(L^{0,1}=J\)</span>, <span class="math" data-tex="\(L^{1,0}=M\)">\(L^{1,0}=M\)</span>, <span class="math" data-tex="\(L^{1,1}=J\)">\(L^{1,1}=J\)</span>. Take <span class="math" data-tex="\(d_h: L^{0,1}\to L^{1,1}\)">\(d_h: L^{0,1}\to L^{1,1}\)</span> to be the identity and <span class="math" data-tex="\(d_v: L^{1,0}\to L^{1,1}\)">\(d_v: L^{1,0}\to L^{1,1}\)</span> to be <span class="math" data-tex="\(\eta\pi\)">\(\eta\pi\)</span>. The mixed square has zero source and thus commutes. Its sole total differential is <span class="math" data-tex="\(J\oplus M\to J\)">\(J\oplus M\to J\)</span>, <span class="math" data-tex="\((x,y)\mapsto x-\eta\pi y\)">\((x,y)\mapsto x-\eta\pi y\)</span>. It is epic and its kernel is the graph of <span class="math" data-tex="\(\eta\pi\)">\(\eta\pi\)</span>, isomorphic to <span class="math" data-tex="\(M\)">\(M\)</span>, so <span class="math" data-tex="\(H^1T=M\)">\(H^1T=M\)</span>. The column-one subcomplex <span class="math" data-tex="\(M\to J\)">\(M\to J\)</span> has <span class="math" data-tex="\(H^1=A\)">\(H^1=A\)</span>, whose inclusion into that graph is the original <span class="math" data-tex="\(A\to M\)">\(A\to M\)</span>. On the first page the remaining <span class="math" data-tex="\(J\to J/\eta B\)">\(J\to J/\eta B\)</span> differential is the quotient map, leaving <span class="math" data-tex="\(E_2^{0,1}=B\)">\(E_2^{0,1}=B\)</span> and <span class="math" data-tex="\(E_2^{1,0}=A\)">\(E_2^{1,0}=A\)</span>, and all other terms zero. Take <span class="math" data-tex="\(A=B=\mathbf Z/2\)">\(A=B=\mathbf Z/2\)</span>, <span class="math" data-tex="\(J=\mathbf Q/\mathbf Z\)">\(J=\mathbf Q/\mathbf Z\)</span>, and either of the two middle groups above. Their stable pages are identical while their total cohomology groups differ.</p>
+<p><strong>Exercise 2 (intermediate).</strong> In complexes of <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces, filter <span class="math" data-tex="\(C=(k[t]\hookrightarrow k[[t]])\)">\(C=(k[t]\hookrightarrow k[[t]])\)</span>, in degrees zero and one, by powers of <span class="math" data-tex="\(t\)">\(t\)</span>. For <span class="math" data-tex="\(p\leq0\)">\(p\leq0\)</span> take the whole complex. Show that both term filtrations are exhaustive and separated, that every page from page one is zero, and that total cohomology is not zero. Identify exactly how finite convergence fails.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span>, take <span class="math" data-tex="\(F^pC^0=t^pk[t]\)">\(F^pC^0=t^pk[t]\)</span> and <span class="math" data-tex="\(F^pC^1=t^pk[[t]]\)">\(F^pC^1=t^pk[[t]]\)</span>. A polynomial or power series lying in every <span class="math" data-tex="\(t^p\)">\(t^p\)</span>-subspace has every coefficient zero, so both filtrations are separated. Taking <span class="math" data-tex="\(p=0\)">\(p=0\)</span> shows exhaustiveness. For every <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span>, the associated graded complex is <span class="math" data-tex="\(k\xrightarrow{1}k\)">\(k\xrightarrow{1}k\)</span>, because the inclusion preserves the coefficient of <span class="math" data-tex="\(t^p\)">\(t^p\)</span>. For negative <span class="math" data-tex="\(p\)">\(p\)</span> its graded complex is zero. Thus <span class="math" data-tex="\(E_1=0\)">\(E_1=0\)</span>, and Theorem 1.1 makes every later page zero.</p>
+<p>The inclusion of polynomials in power series is monic, so <span class="math" data-tex="\(H^0C=0\)">\(H^0C=0\)</span>, while <span class="math" data-tex="\(H^1C=k[[t]]/k[t]\)">\(H^1C=k[[t]]/k[t]\)</span>. This quotient is nonzero; for example <span class="math" data-tex="\(\sum_{i\geq0}t^i\)">\(\sum_{i\geq0}t^i\)</span> is not a polynomial. Any power series has a polynomial truncation through degree <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. Subtracting it does not change its class in the quotient and leaves a series in <span class="math" data-tex="\(t^pk[[t]]\)">\(t^pk[[t]]\)</span>. Hence <span class="math" data-tex="\(F^pH^1C=H^1C\)">\(F^pH^1C=H^1C\)</span> for every <span class="math" data-tex="\(p\)">\(p\)</span>. The stable page is the zero associated graded of this constant nonzero filtration. The induced cohomology filtration is not separated, and condition (2.1) fails for both nonzero terms. Thus the finite-filtration convergence theorem does not apply. Separation on the terms alone did not imply separation on their cohomology.</p>
+<p><strong>Exercise 3 (advanced).</strong> Show why termwise injectivity does not replace the Cartan–Eilenberg row conditions. Use <span class="math" data-tex="\(J=(\mathbf Q\to\mathbf Q/\mathbf Z)\)">\(J=(\mathbf Q\to\mathbf Q/\mathbf Z)\)</span>, in degrees zero and one, with the quotient differential, and <span class="math" data-tex="\(F=\operatorname{Hom}(\mathbf Z/2,-)\)">\(F=\operatorname{Hom}(\mathbf Z/2,-)\)</span>.</p>
+<p><strong>Solution.</strong> Both terms are divisible abelian groups and therefore injective by the proof in the injective-replacement lesson. Its boundary in degree one is <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span>, its cycle in degree zero is <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, and its only nonzero cohomology is <span class="math" data-tex="\(H^0J=\mathbf Z\)">\(H^0J=\mathbf Z\)</span>. The group <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> is not injective: the identity on <span class="math" data-tex="\(\mathbf Z\subset\mathbf Q\)">\(\mathbf Z\subset\mathbf Q\)</span> cannot extend to a map <span class="math" data-tex="\(\mathbf Q\to\mathbf Z\)">\(\mathbf Q\to\mathbf Z\)</span>, since twice the image of <span class="math" data-tex="\(1/2\)">\(1/2\)</span> would have to be one. Thus this row has noninjective cycles and cohomology and cannot be a split row of the kind (4.1).</p>
+<p>After applying <span class="math" data-tex="\(F\)">\(F\)</span>, its two terms are zero and <span class="math" data-tex="\(\mathbf Z/2\)">\(\mathbf Z/2\)</span>: there is no nonzero two-torsion in <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, and the two-torsion subgroup of <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span> has exactly the classes of zero and <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Consequently <span class="math" data-tex="\(H^1(FJ)=\mathbf Z/2\)">\(H^1(FJ)=\mathbf Z/2\)</span>, whereas <span class="math" data-tex="\(F(H^1J)=0\)">\(F(H^1J)=0\)</span>. This is the precise failure of commuting horizontal cohomology with <span class="math" data-tex="\(F\)">\(F\)</span>. The complex <span class="math" data-tex="\(J\)">\(J\)</span> still is a valid bounded-below K-injective replacement of <span class="math" data-tex="\(\mathbf Z[0]\)">\(\mathbf Z[0]\)</span>; indeed its sole cohomology is <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. Accordingly that nonzero group is <span class="math" data-tex="\(R^1F(\mathbf Z)\)">\(R^1F(\mathbf Z)\)</span>. Termwise injectivity is enough for that derived computation, but not for the split-row identification used to obtain (5.3).</p>
+<p><strong>Exercise 4 (challenging).</strong> For two independently chosen Cartan–Eilenberg resolutions of each complex, construct coherent identifications of the row spectral sequences from page two. Prove that they commute with derived arrows and preserve the finite filtrations on the abutment. Explain the different claim that is available for the column sequence.</p>
+<p><strong>Solution.</strong> For a fixed complex <span class="math" data-tex="\(K\)">\(K\)</span>, use Theorem 4.3 to choose a comparison lifting <span class="math" data-tex="\(1_K\)">\(1_K\)</span> in each direction. Their composites lift <span class="math" data-tex="\(1_K\)">\(1_K\)</span> as well, so (4.4) gives vertical homotopies, consisting of horizontal chain maps, to the identities. Taking horizontal cohomology turns those into homotopies of the first-page signed vertical complexes. Therefore they are inverse on page two and on every subsequent page. Any two identity comparisons give the same page-two map by the same argument. For three resolutions the direct comparison and composite comparison also lift the same identity, so their maps agree; this proves the cocycle and all composition compatibilities.</p>
+<p>For a chain map <span class="math" data-tex="\(f: K\to L\)">\(f: K\to L\)</span>, compare the two possible composite maps between the chosen resolutions. Both lift <span class="math" data-tex="\(f\)">\(f\)</span>, so their page-two maps agree. These comparisons are consequently natural. Their page-two descriptions are <span class="math" data-tex="\(R^pF(H^qf)\)">\(R^pF(H^qf)\)</span>, as follows from the induced comparison on the vertical resolution of <span class="math" data-tex="\(H^qK\)">\(H^qK\)</span>. A quasi-isomorphism gives an isomorphism in every second-page position. The comparisons propagate this to all later pages. The total maps represent <span class="math" data-tex="\(RF(f)\)">\(RF(f)\)</span>, and their homotopies make this representation independent of choices. For a quasi-isomorphism <span class="math" data-tex="\(f\)">\(f\)</span>, Corollary 2.2 makes the cohomology map an isomorphism on every finite filtration step, and its inverse preserves those steps. For a general chain map the induced map preserves the steps. Chain-homotopic maps have the same cohomology maps on <span class="math" data-tex="\(K\)">\(K\)</span>, hence the same second-page maps, and the same derived abutment map. Finally invert a quasi-isomorphism in a roof; the construction inverts its compatible page and filtered-abutment maps, proving naturality for every derived arrow and independence of the roof representation.</p>
+<p>For the column sequence, the total comparison homotopies preserve column filtration already before taking a page. They give canonical choice-independent identifications from page one, natural in chain maps. However a quasi-isomorphism of complexes need not give an isomorphism of the term-derived first page. For example <span class="math" data-tex="\(0\to(\mathbf Z\xrightarrow{1}\mathbf Z)\)">\(0\to(\mathbf Z\xrightarrow{1}\mathbf Z)\)</span> is a quasi-isomorphism of total complexes, but for <span class="math" data-tex="\(F\)">\(F\)</span> the identity functor its target column first page has nonzero entries <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> in positions <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> and <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, while its source page is zero. The next differential cancels these entries. The earlier page is thus not a functor of the derived isomorphism class, in agreement with Section 5.</p>
+<p>Even its second page can fail to be derived-invariant. Take the exact complex <span class="math" data-tex="\(K=(\mathbf Z\hookrightarrow\mathbf Q\twoheadrightarrow\mathbf Q/\mathbf Z)\)">\(K=(\mathbf Z\hookrightarrow\mathbf Q\twoheadrightarrow\mathbf Q/\mathbf Z)\)</span> in degrees zero, one and two, and <span class="math" data-tex="\(F=\operatorname{Hom}(\mathbf Z/2,-)\)">\(F=\operatorname{Hom}(\mathbf Z/2,-)\)</span>. The last two terms are injective. Their positive derived groups vanish, while their degree-zero images are zero and <span class="math" data-tex="\(\mathbf Z/2\)">\(\mathbf Z/2\)</span>, respectively. For the first term, <span class="math" data-tex="\(R^0F(\mathbf Z)=0\)">\(R^0F(\mathbf Z)=0\)</span> and <span class="math" data-tex="\(R^1F(\mathbf Z)=\mathbf Z/2\)">\(R^1F(\mathbf Z)=\mathbf Z/2\)</span>, with zero higher groups, by Example 6.2's resolution calculation. Thus the column second page has exactly <span class="math" data-tex="\(\mathbf Z/2\)">\(\mathbf Z/2\)</span> in positions <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> and <span class="math" data-tex="\((2,0)\)">\((2,0)\)</span>. The first differential has no possible nonzero target, so these entries have survived from page one. Finite convergence to <span class="math" data-tex="\(RF(K)=0\)">\(RF(K)=0\)</span> forces the only possible second differential between them to be an isomorphism. The same zero derived object has the zero-complex representative, with zero second page. This proves the second-page failure asserted in Section 5.</p>
+<h2 id="8-further-reading">8. Further reading</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/012K">spectral sequences of filtered complexes</a>, including the distinction between stabilization and convergence.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/012X">spectral sequences of double complexes</a>, for the two filtrations and totalization.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/015G">Cartan–Eilenberg resolutions</a> and <a href="https://stacks.math.columbia.edu/tag/015J">the two derived spectral sequences</a>.</li>
+</ul>
+<p>The finite condition in each degree and the common lower bound are hypotheses of the proved convergence and totalization results. Arbitrary unbounded replacements or convergence require additional arguments.</p>
+</main></body></html>

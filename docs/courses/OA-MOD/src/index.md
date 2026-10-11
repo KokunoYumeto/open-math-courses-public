@@ -1,108 +1,172 @@
-# Modular theory and weights — foundational readings
+# Modular theory and weights
 
-Five reading lessons develop bounded operators, spectral calculus, concrete preduals, closed positive forms, and the graph and polar data of a closed involution. A supporting proof treats a real coercive equation used in the bounded modular construction.
+These draft lessons develop weights, modular time, standard forms, spatial derivatives, traces, expectations and correspondences. The course remains in progress.
 
-The parent course remains in progress. The prerequisite guide links the earlier programme proofs used by these readings. The KMS-state, nontracial integration and module readings are being revised to supply their missing prerequisite proofs.
+Sources and terms
 
-Download readers, editable sources and complete selected programme proofs · Sources and terms
-
-## Bounded operators needed for comparing weights
-
-Full proofs of the bicommutant theorem, bounded monotone nets, resolvent support cutoffs, inverse order, polar decomposition and unitary commutation tests on arbitrary Hilbert spaces. Three solved problems distinguish nets, strong convergence and noncommuting supports. The two earlier bounded foundations are linked to their complete public proofs.
-
-[Read the full lesson](bounded-operator-kernel.md) · Editable Markdown
-
-- The bounded prerequisite boundary
-- Finite-vector approximation and the bicommutant
-- The ultraweak convergence needed by finite cutoffs
-- Bounded increasing positive nets have strong suprema
-- Inversion reverses order
-- Supports from bounded resolvent cutoffs
-- Polar decomposition and its regularized limit
-- Testing commutation on unitaries
-- Problems and worked solutions
-- Exact uses and the remaining boundary
-
-## Spectral calculus with its domains retained
-
-A complete bounded Borel and unbounded spectral construction on arbitrary Hilbert spaces. The proofs retain square-integral domains, closures of products, Cayley transforms, antiunitary transport and core-to-resolvent convergence for arbitrary nets. Four fully solved problems test inverse products, spectral endpoints, strong convergence and conjugation.
-
-[Read the full lesson](spectral-calculus-kernel.md) · [Scalar inputs and full specialization proofs](spectral-scalar-foundations.md) · Editable Markdown
-
-- Inputs and conventions
-- A continuous cyclic representation becomes multiplication
-- An arbitrary representation is a sum of cyclic ones
-- Bounded Borel functions and the spectral measure
-- Unbounded measurable functions
-- Recovering a self-adjoint operator from a unitary
-- Changes of variable, powers, and actual ranges
-- Transport, reduction, and membership in an algebra
-- Convergence and cutoffs
-- A domain test on an arbitrary index set
-- Problems with full solutions
-- What this kernel supplies
-
-## Concrete preduals from Hilbert tensors
-
-The projective Hilbert tensor completion gives the concrete predual of an arbitrary von Neumann algebra. Full proofs identify vector-series functionals, positive order-normal functionals, sigma-strong continuous duals, convex closures, corners and least supports. Four solved models retain arbitrary Hilbert dimension and directed nets. The scalar order-normal converse remains conditional on its separate NW theorem.
-
-[Read the full lesson](concrete-preduals.md) · Editable Markdown · Exact free proof inputs
-
-- Conventions and the precise foundations
-- The projective norm is a genuine norm
-- [Its dual is exactly \(B(H)\)](concrete-preduals.html#OA-MOD-CP-03)
-- Every tensor vector is a summable vector series
-- Quotients and annihilators, with the norm checks
-- The concrete predual and its intrinsic norm
-- Positive functionals, closed cones and norm closure
-- The sigma-strong seminorms are vector seminorms
-- The two continuous complex duals
-- Real duals and the convex-closure consequence
-- Corners have exactly their inherited predual
-- Supports and the direction toward normal weights
-- Examples and exercises with solutions
-- Exact exports and remaining boundaries
-
-## Recovering operators from energy forms
-
-A closed nonnegative form determines its self-adjoint operator with the exact square-root and operator domains. Full proofs cover nondense forms, finite-energy increasing limits, directed strong-resolvent convergence, logarithms and locally uniform imaginary powers. Three worked models and five solved problems test density, zero spaces, kernels and finite-energy hypotheses on arbitrary Hilbert spaces.
-
-[Read the full lesson](closed-positive-forms.md) · Editable Markdown · Exact free proof inputs · Source history and terms
-
-- Prerequisite contracts and conventions
-- A form includes its domain
-- Representation with the exact square-root domain
-- Nondense forms, lower semicontinuity, and symmetry
-- Resolvents as energy minimizers
-- The domain of an increasing limit
-- Strong convergence of resolvents, including nets
-- Logarithms and imaginary powers
-- Worked models
-- Problems with solutions
-- What this unit exports
-
-## Closing an involution and recovering its modular data
-
-Complete proofs develop conjugate-linear adjoints, graph closure, cyclic and separating vectors, the closed involution and its positive modulus, polar symmetry, and the domains and signs of spectral powers. Two matrix models and five solved problems make the domain distinctions explicit. The vector construction assumes a cyclic separating vector; the closed-involution results hold on arbitrary Hilbert spaces.
-
-[Read the full lesson](tomita-closability.md) · Editable Markdown · Exact proof inputs · Sources and terms
-
-- Conventions and dependency contracts
-- Cyclicity and separation exchange through the commutant
-- The adjoint of a conjugate-linear operator
-- The commutant supplies a dense adjoint test domain
-- Closing a graph preserves the involution
-- The vector algebra has the left Hilbert algebra properties
-- A closed involution determines a positive operator
-- Polar decomposition from the form, with inverse domains
-- The adjoint involution and all product domains
-- Spectral powers and the conjugation sign
-- Matrix models that display the domains
-- Problems with worked solutions
-- Exact exports and the remaining modular theorem
-
-## A real coercive equation in the bounded modular construction
-
-A complete real Hilbert-space proof of the equation used at the start of Rieffel–Van Daele Lemma 5.6, with its sharp norm bound. A weighted matrix example and an exact diagram show why positivity on the diagonal does not imply symmetry.
-
-Read the supporting proof · Editable Markdown
+- Modular theory through weights, time and reconstruction
+- Finite domains and representations of general weights
+- Weights and semicyclic representations: the exact opening package
+- Comparing weights through finite-energy vectors
+- Scalar integrals and Hilbert representation
+- A bounded-operator kernel for weight arguments
+- Finite domains, null directions, and support corners
+- Concrete preduals from Hilbert tensors
+- Detecting normal weights by finite observations
+- Hereditary closure and positive duality
+- The predual-valued map of a normal weight
+- Countable amplification and ultraweak bicommutant closure
+- Normal positive maps and their preadjoints
+- The vector retained by a comparison map
+- A faithful weight on the GNS commutant
+- Spectral calculus with its domains retained
+- Banach holomorphy, generators, and resolvent limits
+- Recovering operators from energy forms
+- Closing energy domains and comparing resolvents
+- Compatible pairs and complex interpolation
+- Closing an involution and recovering its modular data
+- Building the two multiplication actions of a Hilbert algebra
+- Haar convolution as left and right Hilbert algebras
+- Polynomial cutoffs recover an operator's range
+- Right Hilbert algebra density and commutants
+- The full left Hilbert algebra obtained by dualizing twice
+- Weights and the Hilbert spaces of multiplication
+- Changing algebra coordinates and scaling a weight
+- Analytic kernels for unbounded modular operators
+- Approximating multiplication without losing its bound
+- The modular group and its analytic algebra
+- The positive cone of a standard representation
+- Recovering a representation from its positive cone
+- Order and concavity of positive implementing vectors
+- The modulus and phase of a vector
+- Positive vectors at half and quarter modular time
+- A bounded algebra inside its positive cone
+- Recovering Jordan multiplication from the positive cone
+- Implementing Jordan symmetries on standard forms
+- Positive changes of scale on a standard cone
+- Inner implementers from spectral tails
+- When pointwise norm continuity becomes uniform
+- Bounded generators of cone symmetries
+- Why an everywhere-defined derivation is bounded
+- Recovering an algebra from an oriented cone
+- Cone symmetries without a global faithful state
+- Positivity seen through two components
+- Unbounded products in the standard positive cone
+- Canonical L2 and standard implementations
+- Completeness of the automorphism group
+- Inner and outer automorphisms
+- Adding square roots of normal functionals
+- Supported GNS representations and the balanced cocycle
+- Contractive retractions and conditional expectations
+- Spatial comparison on an arbitrary representation
+- Constructing spatial energy from finite observations
+- Adding spatial energies and changing the reference weight
+- Spatial energy and modular time
+- Balanced weights and relative Tomita blocks
+- The KMS boundary condition determines the modular group
+- From a C*-modular condition to the GNS von Neumann algebra
+- The Hilbert–Schmidt standard form and its modular domains
+- Closed graphs and bounded operator cutoffs
+- Operators recovered from small trace defects
+- When a small trace defect must vanish
+- What a functional can detect in measure
+- Functions, cutoffs and actual domains
+- Convergence on large domains
+- Spectral tails, singular values and trace order
+- Measurable operators between representations
+- Cyclic families and countable detection
+- Closed operators through their graph projections
+- Finite trace domains, central parts and amplification
+- Trace defects and graph cores
+- Averaging, central traces and normality
+- Relative tensor products and fusion
+- Fusion over a common spectral point
+- Reconstructing a weight from a modular cocycle
+- Recovering a weight from spatial energy
+- Fixed observations, density weights and modular time
+- Tracial multiplication actions and the preserving expectation
+- Averaging and limits of normal expectations
+- Conditional expectations from modular invariance
+- Corner weights tested on all positive energies
+- Trace densities and noncommutative integration
+- The trace norm and bounded densities
+- Square-integrable pairings and strong involution
+- Conditional expectations and type III
+- Spectral layers in a semifinite trace algebra
+- Recognizing invariant weights by their densities
+- Comparing semifinite traces
+- Inner modular flow and rigidity of finite weight data
+- Weight domination and exact half-strip endpoints
+- Partial cocycles and their exact mixed KMS domains
+- Weak compactness and second adjoints
+- Forced C*-unitization
+- Finite weight domains and GNS
+- Bounded functionals and cyclic vectors
+- States and the positive spanning family
+- The universal C*-bidual
+- Surjective isometries and normality
+- Analytic generators and exact finite weight domains
+- Cocycle matrices and entire strip domains
+- Upper imaginary time and finite weight multipliers
+- Commuting modular flows and relative half-strip multipliers
+- Central cocycles and common finite domains
+- Normal-functional polar decomposition and invariant pairs
+- Finite corners, faithful traces, and affine group fixed points
+- Extended center-valued traces
+- Positive equivalence and atomic expectations
+- Semifinite conjugations and vector supports
+- Amplified traces and concrete representations
+- Vector implementation and spatiality
+- Ergodic factors and trace normalization
+- Semifinite corners and bounded modular operators
+- Modular partitions and the full finite domain
+- Tensor operators and tensor weights
+- Compatible measurable GNS fields and both representation transports
+- Measurable weight fields and their integrals
+- The realization boundary in measurable weight fields
+- Separable GNS spaces and disintegration of C*-weights
+- Changing the reference of a weight cocycle
+- Relative modular flows and corner composition
+- Compact-time continuity along automorphism orbits
+- Norm continuity of relative modular time
+- Detecting a von Neumann algebra through a separable subalgebra
+- Lower semicontinuous C*-weights
+- Null ideals and faithful quotients of modular weights
+- A supported inverse weight cocycle
+- Spectral localization and products for real flows
+- GNS filters, modular spectra, and cocycle invariance
+- Ambient maximal abelian algebras from modular spectral gaps
+- Comparing supported weights and transporting their cuts
+- Uniform geometry of faithful weights
+- Entire orbits and compact Fourier support
+- Homogeneous operators in the continuous core
+- When countable sums detect extended positive energy
+- Finite calculus and composition of operator-valued weights
+- Detecting and determining operator-valued weights
+- Modular invariants of operator-valued weights
+- Commutant duality for operator-valued weights
+- Expectation index and the basic construction
+- Compatible modular weights and operator-valued reconstruction
+- Countable modular sums and infinite-weight boundaries
+- Joint spectral measures and commutator estimates in standard form
+- Right action and the centralizer of a positive functional
+- Measurable Hilbert fields and their diagonal commutant
+- Central decomposition from countable operator equations
+- Abelian densities and the relative KMS strip
+- Countable cores, multiplier domains and measurable choices
+- Recovering algebras from measurable fibres
+- Regular representations, Fourier algebras, and Borel group measures
+- Finite type I algebras and expected subalgebras
+- Six laboratories on expectations and operator-valued averages
+- Compatible traces and the coupling operator
+- A module, its standard corner and its double
+- Traces on modules and full correspondences
+- Nontracial Lp spaces for arbitrary von Neumann algebras
+- Full Hilbert-algebra norms and weighted rank-one models
+- Closed GNS graphs, cyclic vectors and bounded modular time
+- The geometry of KMS states and their central densities
+- Measures on a compact convex space
+- Central decompositions and disjoint equilibrium representations
+- Finite pieces and invariant observations for modular flows
+- Modular time from a faithful normal state
+- Positive vectors from a faithful state

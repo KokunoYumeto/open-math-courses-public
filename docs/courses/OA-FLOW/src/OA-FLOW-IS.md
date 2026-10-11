@@ -1,6 +1,6 @@
 # Stabilization of a normal induced crossed product
 
-*Self-checked by the writing AI. Original exposition and illustration: CC0-1.0; accompanying font terms retained.*
+*Original exposition and illustration: CC0-1.0; accompanying font terms retained.*
 
 The quotient contributes a full operator factor. The subgroup contributes its own crossed product. The proof keeps the exact measures and the right action while these two factors are separated.
 

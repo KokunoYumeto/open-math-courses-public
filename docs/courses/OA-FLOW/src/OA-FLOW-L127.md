@@ -2,7 +2,7 @@
 
 A unitary can implement the right automorphism while carrying an arbitrary scalar phase. A character of the commutative fixed center reads that phase consistently. Dividing by its value produces an exact representation, with a unique normalized implementer for that character. We construct this operation first, then verify the discrete topology that makes its arbitrary initial choices continuous, and finally extend and cancel the representation. The abstract circle-extension construction and a second reverse-kernel argument remain complete alternatives.
 
-*Self-checked by the writing AI.*
+
 
 <a id="l127-inputs"></a>
 <a id="oa-flow.l127.setting"></a>

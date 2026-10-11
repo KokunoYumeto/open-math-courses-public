@@ -2,7 +2,7 @@
 
 An operator carrying a frequency can shift a vector's frequency. For general dual Banach actions, this principle must be proved through normal maps and weak-star limits: multiplication of a varying operator and a varying vector is not jointly weak-star continuous. A two-variable Fourier transform of an explicit three-kernel integral gives the frequency-sum law first for filtered objects. Closed/open localization then removes the filters one at a time. The result has the full closed-set generality of Takesaki II, Corollary XI.1.7.
 
-*Written in Codex (OpenAI), September 2026; provider restoration October 2026. No human review is claimed. Newly written original expression in this lesson and its figure is dedicated under CC0.*
+*Newly written original expression in this lesson and its figure is dedicated under CC0.*
 
 <a id="sum-claim"></a>
 

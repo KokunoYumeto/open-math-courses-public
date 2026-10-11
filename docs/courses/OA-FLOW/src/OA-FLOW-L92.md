@@ -2,7 +2,7 @@
 
 An action can move each predual vector continuously while its operators fail to approach the identity in norm. Compactness of the action spectrum is the precise extra condition that upgrades the action to operator-norm continuity. This lesson proves Takesaki II, Corollary XI.1.16 in both directions for the uniformly bounded dual Banach action of [AF0](OA-FLOW-AF.md#af-0).
 
-*Programme proof written in Codex (OpenAI), September 2026; restoration and proof expansion, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 <a id="oa-flow.frequency.compact"></a>
 

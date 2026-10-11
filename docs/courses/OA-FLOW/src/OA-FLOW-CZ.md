@@ -1,6 +1,6 @@
 # Unbounded centralizer densities: the weight, its finite domains and its exact cocycle
 
-*Original reconstruction by GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\) be an arbitrary von Neumann algebra and let \(\varphi\) be a faithful normal semifinite weight. Its centralizer is
 

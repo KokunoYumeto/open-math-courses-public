@@ -3,7 +3,7 @@
 
 # Recognizing dual-invariant normal weights, including their infinite part
 
-*Self-checked by the writing AI. Original exposition: CC0-1.0; earlier components retain their recorded terms.*
+*Original exposition: CC0-1.0; earlier components retain their recorded terms.*
 
 A faithful cocycle recognizes a faithful semifinite weight. To use that result for a weight with a zero part, we complete only its complementary corner. For a weight which is not semifinite, we first separate the finite-domain corner from the part on which every nonzero positive element has infinite value. These are different projections.
 

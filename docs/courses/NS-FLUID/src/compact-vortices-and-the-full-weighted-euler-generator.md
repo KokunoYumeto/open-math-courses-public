@@ -761,7 +761,7 @@ and WG13 justify convergence in the full norm.
 For every \(\operatorname{Re}\lambda\ne0\), the exact resolvent is
 \[
  \begin{aligned}
- [(\lambda-\mathcal B)^{-1}f]_n(r)
+ {}[(\lambda-\mathcal B)^{-1}f]_n(r)
        &=\frac{f_n(r)}{\lambda+in\zeta_R(r)},\\
  \|(\lambda-\mathcal B)^{-1}\|
        &\leq|\operatorname{Re}\lambda|^{-1}.

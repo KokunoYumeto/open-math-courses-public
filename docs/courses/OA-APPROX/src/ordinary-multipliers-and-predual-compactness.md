@@ -17,7 +17,7 @@ The latter gives strong* convergence on bounded sets. We use the predual weak co
 \sup_{\psi\in K}|\psi(x)|<\varepsilon.
 \tag{2}
 \]
-This is the selected weak compactness result from the foundations course, with its full proof compared. It is also a form of Akemann's predual compactness theorem. Normality, functional polar decomposition, Banach weak compactness and the faithful-state bounded topology are its declared prerequisites.
+The complete criterion is proved in [PC00–PC08](../components/predual-compactness-from-uniform-control.md#pc00). Positive envelopes are constructed from normal vector coefficients; Baire and projection cuts give one controller, and a Hahn–Banach graph extension proves normality of the weak* closure. PC08 supplies the exact faithful-state bounded strong* test. The classical compactness method is credited to Akemann below.
 
 ## 1. The ordinary ideal and its multiplier test
 
@@ -160,6 +160,8 @@ Take the Bernoulli probability space
 M=L^\infty(\Omega,\mu),\quad \varphi(f)=\int f\,d\mu.
 \tag{16}
 \]
+The probability measure, coordinate independence, concrete multiplication algebra and exact L1 predual are constructed in [PC09](../components/predual-compactness-from-uniform-control.md#pc09).
+
 Let \(r_n\) be its \(n\)-th coordinate function, \(a_n=(1+r_n)/2\), and
 \(\psi_n(f)=\int r_nf\,d\mu\). The \(r_n\) are orthonormal in \(L^2\). Since every \(f\in L^\infty\) lies in \(L^2\), Bessel's inequality gives \(\psi_n(f)\to0\); thus \(\psi_n\to0\) weakly in \(M_*=L^1\).
 
@@ -231,7 +233,7 @@ It omits its weak limit zero, so is not weakly compact. Its closure is compact. 
 
 ## References
 
-C. A. Akemann, [*The dual space of an operator algebra*](https://www.ams.org/journals/tran/1967-126-02/S0002-9947-1967-0206732-8/S0002-9947-1967-0206732-8.pdf), *Transactions of the American Mathematical Society* 126 (1967), 286–302, Theorem II.3 and Lemmas II.3a–II.3c, supplies the controlling-functional compactness proof. That proof relies on the normal/singular decomposition, commutative compactness and the Eberlein–Šmulian theorem.
+C. A. Akemann, [*The dual space of an operator algebra*](https://www.ams.org/journals/tran/1967-126-02/S0002-9947-1967-0206732-8/S0002-9947-1967-0206732-8.pdf), *Transactions of the American Mathematical Society* 126 (1967), 286–302, Theorem II.3 and Lemmas II.3a–II.3c. The Baire and projection-cutting method is classical. [PC00–PC09](../components/predual-compactness-from-uniform-control.md) give the complete positive-vector-control criterion and Bernoulli construction used here, including the required sequential extraction and the direct graph-extension converse.
 
 Adrian Ocneanu, [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), Section 5.1, printed p.47 (PDF p.61), states its ultrafilter multiplier criterion for separable preduals. Section 1 here proves the full ordinary-convergence criterion and the all-free-ultrafilters equivalence directly. The rank-one, Bernoulli and one-dimensional examples fully establish why both adjoints, relative compactness and the absence of a prescribed weak limit matter. No factor or separable-predual assumption is added.
 

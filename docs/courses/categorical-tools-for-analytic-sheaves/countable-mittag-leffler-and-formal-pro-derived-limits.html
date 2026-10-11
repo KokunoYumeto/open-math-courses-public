@@ -1,0 +1,383 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Countable Mittag-Leffler towers and formal Pro derived limits</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="countable-mittag-leffler-towers-and-formal-pro-derived-limits">Countable Mittag-Leffler towers and formal Pro derived limits</h1>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original text: CC0. No independent review.</em></p>
+<p>A sequence of surjections can be lifted successively. More generally, stabilization of the images at each fixed level supplies exactly the corrections needed to lift a compatible family. We prove this directly for modules, then compute the right derived functors of the actual right adjoint on the formal Pro category.</p>
+<p>Fix a unital ring <span class="math" data-tex="\(A\)">\(A\)</span> and a Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> containing <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. Modules are left <span class="math" data-tex="\(A\)">\(A\)</span>-modules with <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small underlying sets. All index categories and products below are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small; a larger universe accommodates the categories themselves. Choice is used for coordinate lifts and injective resolutions.</p>
+<p>The stage formulas and exact constant embedding are proved in <a href="ind-abelian-categories-and-controlled-exact-sequences.html">Two cokernels, controlled rows and abelian completion</a>, Sections 2–3. The complete common-arrow presentation, including arbitrary index arrows, is <a href="finite-diagrams-and-comma-objects.html">Finite diagrams and comma objects</a>, Sections 2.1–2.8. <span class="unlinked">Hom, tensor and the exactness of module limits</span>, Sections 3–5, proves the filtered representative test, exact filtered colimits and exact products of modules. <a href="injective-replacements-and-right-derived-functors.html">Injective replacements and right derived functors</a>, Sections 1–3, and <a href="triangles-after-quasi-isomorphism-localization.html">Triangles after quasi-isomorphism localization</a>, Section 6, supply derived-functor existence, exactness and the natural cohomology sequence. The uses of these interfaces are specified below.</p>
+<h2 id="1-stabilization-quotients-and-extensions">1. Stabilization, quotients and extensions</h2>
+<p>A tower is a family <span class="math" data-tex="\((M_n,v_n)_{n\geq0}\)">\((M_n,v_n)_{n\geq0}\)</span>, where <span class="math" data-tex="\(v_n:M_{n+1}\to M_n\)">\(v_n:M_{n+1}\to M_n\)</span>. Put <span class="math" data-tex="\(v_{n,n}=1\)">\(v_{n,n}=1\)</span> and <span class="math" data-tex="\(v_{n,p}=v_n\cdots v_{p-1}\)">\(v_{n,p}=v_n\cdots v_{p-1}\)</span> for <span class="math" data-tex="\(p&gt;n\)">\(p&gt;n\)</span>. A tower is <strong>Mittag-Leffler</strong>, abbreviated ML, if for every <span class="math" data-tex="\(n\)">\(n\)</span> there is <span class="math" data-tex="\(N\geq n\)">\(N\geq n\)</span> such that</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\operatorname{im}v_{n,p}=\operatorname{im}v_{n,N}\qquad(p\geq N).
+\tag{1.1}
+\]">\[
+\operatorname{im}v_{n,p}=\operatorname{im}v_{n,N}\qquad(p\geq N).
+\tag{1.1}
+\]</span>
+<p>The threshold can depend on <span class="math" data-tex="\(n\)">\(n\)</span>. Every tower with surjective transitions is ML. A finite-dimensional vector-space tower is ML: at each fixed level its descending sequence of image subspaces has a nonincreasing sequence of finite dimensions, and equal dimensions force equal nested subspaces.</p>
+<p><strong>Lemma 1.1.</strong> For an ML tower let <span class="math" data-tex="\(I_n\subseteq M_n\)">\(I_n\subseteq M_n\)</span> be its eventual image. The transitions restrict to surjections <span class="math" data-tex="\(I_{n+1}\to I_n\)">\(I_{n+1}\to I_n\)</span>. On <span class="math" data-tex="\(Q_n=M_n/I_n\)">\(Q_n=M_n/I_n\)</span>, the map <span class="math" data-tex="\(Q_p\to Q_n\)">\(Q_p\to Q_n\)</span> is zero for all sufficiently large <span class="math" data-tex="\(p\)">\(p\)</span>, for each fixed <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(p\)">\(p\)</span> past the stabilization thresholds for both <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. Then <span class="math" data-tex="\(v_n(I_{n+1})=v_n(\operatorname{im}v_{n+1,p})=\operatorname{im}v_{n,p}=I_n\)">\(v_n(I_{n+1})=v_n(\operatorname{im}v_{n+1,p})=\operatorname{im}v_{n,p}=I_n\)</span>. This also verifies that the restrictions are well defined. For large <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(v_{n,p}(M_p)=I_n\)">\(v_{n,p}(M_p)=I_n\)</span>, so its induced map to <span class="math" data-tex="\(M_n/I_n\)">\(M_n/I_n\)</span> is zero. The inclusions and quotients form compatible towers. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A short exact sequence of towers means a commuting family of short exact module sequences</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow K_n\xrightarrow{\iota_n}M_n\xrightarrow{q_n}Q_n\longrightarrow0.
+\tag{1.2}
+\]">\[
+0\longrightarrow K_n\xrightarrow{\iota_n}M_n\xrightarrow{q_n}Q_n\longrightarrow0.
+\tag{1.2}
+\]</span>
+<p>We identify <span class="math" data-tex="\(K_n\)">\(K_n\)</span> with its image when doing calculations.</p>
+<p><strong>Proposition 1.2.</strong> In (1.2), an ML middle tower has an ML quotient tower. If the left and right towers are ML, the middle tower is ML.</p>
+<p><strong>Proof.</strong> Surjectivity of <span class="math" data-tex="\(q_p\)">\(q_p\)</span> and the transition square give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\operatorname{im}(Q_p\to Q_n)=q_n\bigl(\operatorname{im}(M_p\to M_n)\bigr).
+\tag{1.3}
+\]">\[
+\operatorname{im}(Q_p\to Q_n)=q_n\bigl(\operatorname{im}(M_p\to M_n)\bigr).
+\tag{1.3}
+\]</span>
+<p>Thus stabilization of the middle images implies stabilization of the quotient images.</p>
+<p>For the extension assertion, fix <span class="math" data-tex="\(n\)">\(n\)</span>. Choose <span class="math" data-tex="\(k\geq n\)">\(k\geq n\)</span> so that <span class="math" data-tex="\(\operatorname{im}(K_p\to K_n)\)">\(\operatorname{im}(K_p\to K_n)\)</span> is constant for <span class="math" data-tex="\(p\geq k\)">\(p\geq k\)</span>. Choose <span class="math" data-tex="\(j\geq k\)">\(j\geq k\)</span> so that <span class="math" data-tex="\(\operatorname{im}(Q_p\to Q_k)\)">\(\operatorname{im}(Q_p\to Q_k)\)</span> is constant for <span class="math" data-tex="\(p\geq j\)">\(p\geq j\)</span>. We prove that the images of <span class="math" data-tex="\(M_j\)">\(M_j\)</span> and <span class="math" data-tex="\(M_p\)">\(M_p\)</span> in <span class="math" data-tex="\(M_n\)">\(M_n\)</span> agree for every <span class="math" data-tex="\(p\geq j\)">\(p\geq j\)</span>.</p>
+<p>Take <span class="math" data-tex="\(m_j\in M_j\)">\(m_j\in M_j\)</span>. Its image in <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span> is the image of some <span class="math" data-tex="\(q_p\in Q_p\)">\(q_p\in Q_p\)</span>, by the second choice. Lift <span class="math" data-tex="\(q_p\)">\(q_p\)</span> to <span class="math" data-tex="\(m_p\in M_p\)">\(m_p\in M_p\)</span>. The difference of the two images in <span class="math" data-tex="\(M_k\)">\(M_k\)</span> lies in <span class="math" data-tex="\(K_k\)">\(K_k\)</span>; call it <span class="math" data-tex="\(d_k\)">\(d_k\)</span>. Its image in <span class="math" data-tex="\(K_n\)">\(K_n\)</span> lies in the stabilized image <span class="math" data-tex="\(\operatorname{im}(K_k\to K_n)=\operatorname{im}(K_p\to K_n)\)">\(\operatorname{im}(K_k\to K_n)=\operatorname{im}(K_p\to K_n)\)</span>. Choose <span class="math" data-tex="\(d_p\in K_p\)">\(d_p\in K_p\)</span> with that image. The image of <span class="math" data-tex="\(m_p+d_p\)">\(m_p+d_p\)</span> in <span class="math" data-tex="\(M_n\)">\(M_n\)</span> is the image of <span class="math" data-tex="\(m_j\)">\(m_j\)</span>. Hence the image from <span class="math" data-tex="\(M_j\)">\(M_j\)</span> is contained in the image from <span class="math" data-tex="\(M_p\)">\(M_p\)</span>. The opposite inclusion follows from <span class="math" data-tex="\(v_{n,p}=v_{n,j}v_{j,p}\)">\(v_{n,p}=v_{n,j}v_{j,p}\)</span>. This proves stabilization at <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(n\)">\(n\)</span> was arbitrary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-difference-operator-and-actual-compatible-lifts">2. The difference operator and actual compatible lifts</h2>
+<p>The ordinary inverse limit is the module of compatible tuples. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\Delta_M:\prod_{n\geq0}M_n\longrightarrow\prod_{n\geq0}M_n,
+\qquad (\Delta_Ma)_n=a_n-v_na_{n+1}.
+\tag{2.1}
+\]">\[
+\Delta_M:\prod_{n\geq0}M_n\longrightarrow\prod_{n\geq0}M_n,
+\qquad (\Delta_Ma)_n=a_n-v_na_{n+1}.
+\tag{2.1}
+\]</span>
+<p>Then <span class="math" data-tex="\(\ker\Delta_M=\lim_n M_n\)">\(\ker\Delta_M=\lim_n M_n\)</span>, with its specified coordinate projections.</p>
+<p><strong>Lemma 2.1.</strong> If each map <span class="math" data-tex="\(Q_p\to Q_n\)">\(Q_p\to Q_n\)</span> is eventually zero at every fixed <span class="math" data-tex="\(n\)">\(n\)</span>, then <span class="math" data-tex="\(\Delta_Q\)">\(\Delta_Q\)</span> is an isomorphism.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(b\in\prod Q_n\)">\(b\in\prod Q_n\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+(Tb)_n=\sum_{p\geq n}v_{n,p}b_p.
+\tag{2.2}
+\]">\[
+(Tb)_n=\sum_{p\geq n}v_{n,p}b_p.
+\tag{2.2}
+\]</span>
+<p>This is a finite sum in each coordinate: all its maps are zero past a threshold depending on <span class="math" data-tex="\(n\)">\(n\)</span>. It defines a linear map on the product. In <span class="math" data-tex="\((\Delta_QTb)_n\)">\((\Delta_QTb)_n\)</span>, subtracting <span class="math" data-tex="\(v_n(Tb)_{n+1}\)">\(v_n(Tb)_{n+1}\)</span> cancels every summand except <span class="math" data-tex="\(b_n\)">\(b_n\)</span>. In <span class="math" data-tex="\((T\Delta_Qa)_n\)">\((T\Delta_Qa)_n\)</span>, choose a finite cutoff <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(v_{n,p}=0\)">\(v_{n,p}=0\)</span> for <span class="math" data-tex="\(p&gt;L\)">\(p&gt;L\)</span>. The sum telescopes to <span class="math" data-tex="\(a_n-v_{n,L+1}a_{L+1}=a_n\)">\(a_n-v_{n,L+1}a_{L+1}=a_n\)</span>. Thus <span class="math" data-tex="\(\Delta_QT=T\Delta_Q=1\)">\(\Delta_QT=T\Delta_Q=1\)</span>. No convergence or infinite addition is involved. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> For every countable ML module tower, <span class="math" data-tex="\(\Delta_M\)">\(\Delta_M\)</span> is surjective.</p>
+<p><strong>Proof.</strong> Use the stable-image sequence <span class="math" data-tex="\(0\to I_n\to M_n\to Q_n\to0\)">\(0\to I_n\to M_n\to Q_n\to0\)</span> of Lemma 1.1. Given <span class="math" data-tex="\(b\in\prod M_n\)">\(b\in\prod M_n\)</span>, let <span class="math" data-tex="\(\bar b\)">\(\bar b\)</span> be its quotient tuple. Lemma 2.1 gives <span class="math" data-tex="\(\bar a=T\bar b\)">\(\bar a=T\bar b\)</span> with <span class="math" data-tex="\(\Delta_Q\bar a=\bar b\)">\(\Delta_Q\bar a=\bar b\)</span>. Lift its coordinates to <span class="math" data-tex="\(a\in\prod M_n\)">\(a\in\prod M_n\)</span>. The residual <span class="math" data-tex="\(r=b-\Delta_Ma\)">\(r=b-\Delta_Ma\)</span> lies in <span class="math" data-tex="\(\prod I_n\)">\(\prod I_n\)</span>.</p>
+<p>Solve <span class="math" data-tex="\(\Delta_Ix=r\)">\(\Delta_Ix=r\)</span> recursively. Set <span class="math" data-tex="\(x_0=0\)">\(x_0=0\)</span>. Once <span class="math" data-tex="\(x_n\)">\(x_n\)</span> is chosen, surjectivity of <span class="math" data-tex="\(I_{n+1}\to I_n\)">\(I_{n+1}\to I_n\)</span> allows a choice of <span class="math" data-tex="\(x_{n+1}\)">\(x_{n+1}\)</span> satisfying <span class="math" data-tex="\(v_nx_{n+1}=x_n-r_n\)">\(v_nx_{n+1}=x_n-r_n\)</span>. This specifies a tuple with <span class="math" data-tex="\(x_n-v_nx_{n+1}=r_n\)">\(x_n-v_nx_{n+1}=r_n\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. Therefore <span class="math" data-tex="\(\Delta_M(a+x)=b\)">\(\Delta_M(a+x)=b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.3.</strong> In (1.2), the sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+0\longrightarrow\lim K_n\longrightarrow\lim M_n\longrightarrow\lim Q_n
+\tag{2.3}
+\]">\[
+0\longrightarrow\lim K_n\longrightarrow\lim M_n\longrightarrow\lim Q_n
+\tag{2.3}
+\]</span>
+<p>is always exact. If <span class="math" data-tex="\(K\)">\(K\)</span> is ML, its last map is surjective as well.</p>
+<p><strong>Proof.</strong> The first map is injective componentwise. A compatible middle tuple killed in every <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> has unique coordinate preimages in <span class="math" data-tex="\(K_n\)">\(K_n\)</span>. The transition squares and injectivity of <span class="math" data-tex="\(\iota_n\)">\(\iota_n\)</span> make those preimages compatible. This proves middle exactness.</p>
+<p>Now take a compatible tuple <span class="math" data-tex="\(q\in\lim Q_n\)">\(q\in\lim Q_n\)</span>, and choose lifts <span class="math" data-tex="\(b_n\in M_n\)">\(b_n\in M_n\)</span>. Compatibility of <span class="math" data-tex="\(q\)">\(q\)</span> says <span class="math" data-tex="\(\Delta_Mb=\iota r\)">\(\Delta_Mb=\iota r\)</span> for some <span class="math" data-tex="\(r\in\prod K_n\)">\(r\in\prod K_n\)</span>. If <span class="math" data-tex="\(K\)">\(K\)</span> is ML, choose <span class="math" data-tex="\(a\in\prod K_n\)">\(a\in\prod K_n\)</span> with <span class="math" data-tex="\(\Delta_Ka=r\)">\(\Delta_Ka=r\)</span> by Theorem 2.2. Then <span class="math" data-tex="\(b-\iota a\)">\(b-\iota a\)</span> is compatible and maps to <span class="math" data-tex="\(q\)">\(q\)</span>. These are lifts of the prescribed tuple, not merely an identification of abstract limits. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-formal-pro-category-and-its-right-adjoint">3. The formal Pro category and its right adjoint</h2>
+<p>Put <span class="math" data-tex="\(\mathcal C=\operatorname{Mod}_{\mathcal U}(A)\)">\(\mathcal C=\operatorname{Mod}_{\mathcal U}(A)\)</span> and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Pro}(\mathcal C)=\operatorname{Ind}(\mathcal C^{\mathrm{op}})^{\mathrm{op}}.
+\tag{3.1}
+\]">\[
+\operatorname{Pro}(\mathcal C)=\operatorname{Ind}(\mathcal C^{\mathrm{op}})^{\mathrm{op}}.
+\tag{3.1}
+\]</span>
+<p>Write <span class="math" data-tex="\(cN\)">\(cN\)</span> for a constant object and <span class="math" data-tex="\(\mathbf X=\lim_i^{\rm form}cX_i\)">\(\mathbf X=\lim_i^{\rm form}cX_i\)</span> for a small cofiltered presentation. The word formal distinguishes this object from the ordinary module limit. The dual Hom formula is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\rm Pro}(\mathbf X,\mathbf Y)
+=\lim_j\operatorname{colim}_{i\in I^{\rm op}}\operatorname{Hom}_A(X_i,Y_j).
+\tag{3.2}
+\]">\[
+\operatorname{Hom}_{\rm Pro}(\mathbf X,\mathbf Y)
+=\lim_j\operatorname{colim}_{i\in I^{\rm op}}\operatorname{Hom}_A(X_i,Y_j).
+\tag{3.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathbf Y=\lim_j^{\rm form}cY_j\)">\(\mathbf Y=\lim_j^{\rm form}cY_j\)</span>. In the colimit, a transition <span class="math" data-tex="\(X_{i&#x27;}\to X_i\)">\(X_{i&#x27;}\to X_i\)</span> acts by precomposition. In particular,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\rm Pro}(\mathbf X,cN)=\operatorname{colim}_i\operatorname{Hom}_A(X_i,N),
+\qquad
+\operatorname{Hom}_{\rm Pro}(cN,\mathbf X)=\lim_i\operatorname{Hom}_A(N,X_i).
+\tag{3.3}
+\]">\[
+\operatorname{Hom}_{\rm Pro}(\mathbf X,cN)=\operatorname{colim}_i\operatorname{Hom}_A(X_i,N),
+\qquad
+\operatorname{Hom}_{\rm Pro}(cN,\mathbf X)=\lim_i\operatorname{Hom}_A(N,X_i).
+\tag{3.3}
+\]</span>
+<p>Apply the abelian stage theorem from the first prerequisite to <span class="math" data-tex="\(\mathcal C^{\rm op}\)">\(\mathcal C^{\rm op}\)</span> and then take opposites. This proves that Pro is abelian and locally small and that <span class="math" data-tex="\(c\)">\(c\)</span> is exact and fully faithful. The opposite category is abelian and locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small; essential smallness was not a hypothesis of that theorem. Common-arrow strictification in the second prerequisite gives, for any Pro arrow, one small cofiltered level presentation <span class="math" data-tex="\(f_i:X_i\to Y_i\)">\(f_i:X_i\to Y_i\)</span>. Dualizing the kernel and cokernel formulas gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+\ker f=\lim_i^{\rm form}c(\ker f_i),\qquad
+\operatorname{coker}f=\lim_i^{\rm form}c(\operatorname{coker}f_i).
+\tag{3.4}
+\]">\[
+\ker f=\lim_i^{\rm form}c(\ker f_i),\qquad
+\operatorname{coker}f=\lim_i^{\rm form}c(\operatorname{coker}f_i).
+\tag{3.4}
+\]</span>
+<p>These are the kernels and cokernels in Pro. They follow by reversing the universal properties; taking opposites exchanges kernel and cokernel twice. Image formulas consequently hold at these same stages.</p>
+<p><strong>Lemma 3.1.</strong> Every short exact Pro sequence has an isomorphic presentation by a common cofiltered family of short exact module sequences.</p>
+<p><strong>Proof.</strong> For a sequence <span class="math" data-tex="\(0\to\mathbf K\to\mathbf M\xrightarrow f\mathbf Q\to0\)">\(0\to\mathbf K\to\mathbf M\xrightarrow f\mathbf Q\to0\)</span>, present only <span class="math" data-tex="\(f\)">\(f\)</span> by a common family <span class="math" data-tex="\(f_i:M_i\to Q_i\)">\(f_i:M_i\to Q_i\)</span>. By (3.4), <span class="math" data-tex="\(\lim^{\rm form}c\ker f_i\)">\(\lim^{\rm form}c\ker f_i\)</span> is its kernel and <span class="math" data-tex="\(\lim^{\rm form}c\operatorname{im}f_i\)">\(\lim^{\rm form}c\operatorname{im}f_i\)</span> is its image. Since <span class="math" data-tex="\(f\)">\(f\)</span> is epic, this latter image identifies with <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Replace the level targets by <span class="math" data-tex="\(\operatorname{im}f_i\)">\(\operatorname{im}f_i\)</span>. The rows</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+0\to\ker f_i\to M_i\to\operatorname{im}f_i\to0
+\tag{3.5}
+\]">\[
+0\to\ker f_i\to M_i\to\operatorname{im}f_i\to0
+\tag{3.5}
+\]</span>
+<p>are short exact and have natural transitions. Their formal row identifies with the given row, including its kernel inclusion and quotient projection, by the universal properties. This does not assert that the original chosen <span class="math" data-tex="\(f_i\)">\(f_i\)</span> were all surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2.</strong> The constant embedding has an additive right adjoint</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.6); horizontal scroll when needed" data-tex="\[
+\pi:\operatorname{Pro}(\mathcal C)\longrightarrow\mathcal C,
+\qquad \pi\mathbf X=\lim_i X_i.
+\tag{3.6}
+\]">\[
+\pi:\operatorname{Pro}(\mathcal C)\longrightarrow\mathcal C,
+\qquad \pi\mathbf X=\lim_i X_i.
+\tag{3.6}
+\]</span>
+<p>It is left exact and <span class="math" data-tex="\(\pi c=1\)">\(\pi c=1\)</span>.</p>
+<p><strong>Proof.</strong> The second formula in (3.3), followed by the ordinary limit universal property, gives natural bijections</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.7); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\rm Pro}(cN,\mathbf X)
+\simeq\lim_i\operatorname{Hom}_A(N,X_i)
+\simeq\operatorname{Hom}_A(N,\lim_iX_i).
+\tag{3.7}
+\]">\[
+\operatorname{Hom}_{\rm Pro}(cN,\mathbf X)
+\simeq\lim_i\operatorname{Hom}_A(N,X_i)
+\simeq\operatorname{Hom}_A(N,\lim_iX_i).
+\tag{3.7}
+\]</span>
+<p>The module limit exists as the submodule of a small product satisfying all transition equations. For an arbitrary Pro morphism <span class="math" data-tex="\(\mathbf X\to\mathbf Y\)">\(\mathbf X\to\mathbf Y\)</span>, postcomposition on the left of (3.7) gives a natural transformation of represented Hom functors. It determines a unique module map <span class="math" data-tex="\(\pi\mathbf X\to\pi\mathbf Y\)">\(\pi\mathbf X\to\pi\mathbf Y\)</span>. Uniqueness proves identity and composition and independence of presentations. The Hom identifications preserve sums, hence <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is additive. They prove the adjunction <span class="math" data-tex="\(c\dashv\pi\)">\(c\dashv\pi\)</span>. A right adjoint preserves limits: a cone into the image of a limiting object corresponds under (3.7) to the unique cone factorization before applying <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Thus <span class="math" data-tex="\(\pi\)">\(\pi\)</span> preserves finite limits and is left exact. For a constant presentation its limit is the original module, naturally. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-enough-injectives-with-all-size-and-action-conventions">4. Enough injectives, with all size and action conventions</h2>
+<p>We first give an explicit module construction. A divisible abelian group <span class="math" data-tex="\(D\)">\(D\)</span> is injective. Indeed, take a maximal extension of a map from a subgroup <span class="math" data-tex="\(H\subseteq G\)">\(H\subseteq G\)</span> to <span class="math" data-tex="\(D\)">\(D\)</span>, using Zorn's lemma; unions of chains give upper bounds. If <span class="math" data-tex="\(x\notin H\)">\(x\notin H\)</span>, the set <span class="math" data-tex="\(\{a\in\mathbb Z:ax\in H\}\)">\(\{a\in\mathbb Z:ax\in H\}\)</span> is <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span> for some <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, assign <span class="math" data-tex="\(x\)">\(x\)</span> any value. If <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, choose <span class="math" data-tex="\(y\in D\)">\(y\in D\)</span> with <span class="math" data-tex="\(dy=f(dx)\)">\(dy=f(dx)\)</span>. In either case the formula <span class="math" data-tex="\(f(h+ax)=f(h)+ay\)">\(f(h+ax)=f(h)+ay\)</span> defines an extension to <span class="math" data-tex="\(H+\mathbb Zx\)">\(H+\mathbb Zx\)</span>: for <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, the difference of two such representations has <span class="math" data-tex="\(a-a&#x27;=kd\)">\(a-a&#x27;=kd\)</span> and <span class="math" data-tex="\(h-h&#x27;=-kdx\)">\(h-h&#x27;=-kdx\)</span>, so the proposed values agree. This contradicts maximality unless <span class="math" data-tex="\(H=G\)">\(H=G\)</span>. Thus every subgroup map extends.</p>
+<p>The group <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span> is divisible and detects nonzero elements: on a cyclic subgroup generated by <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span>, send <span class="math" data-tex="\(m\)">\(m\)</span> to <span class="math" data-tex="\(1/d+\mathbb Z\)">\(1/d+\mathbb Z\)</span> if its finite order is <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, and to <span class="math" data-tex="\(1/2+\mathbb Z\)">\(1/2+\mathbb Z\)</span> if its order is infinite. Extend this map to the whole group by injectivity. Consequently evaluation gives a monomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+M\longrightarrow J=(\mathbb Q/\mathbb Z)^{\operatorname{Hom}_{\mathbb Z}(M,\mathbb Q/\mathbb Z)}
+\tag{4.1}
+\]">\[
+M\longrightarrow J=(\mathbb Q/\mathbb Z)^{\operatorname{Hom}_{\mathbb Z}(M,\mathbb Q/\mathbb Z)}
+\tag{4.1}
+\]</span>
+<p>of underlying groups. A product of injective groups is injective: extend a map coordinate by coordinate and assemble its extensions. Both the index and <span class="math" data-tex="\(J\)">\(J\)</span> are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small.</p>
+<p>For a left <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, let <span class="math" data-tex="\(j:M\hookrightarrow J\)">\(j:M\hookrightarrow J\)</span> be (4.1) on its underlying group. Give <span class="math" data-tex="\(I=\operatorname{Hom}_{\mathbb Z}(A,J)\)">\(I=\operatorname{Hom}_{\mathbb Z}(A,J)\)</span> the left action</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+(a\varphi)(b)=\varphi(ba).
+\tag{4.2}
+\]">\[
+(a\varphi)(b)=\varphi(ba).
+\tag{4.2}
+\]</span>
+<p>It is a left action even when <span class="math" data-tex="\(A\)">\(A\)</span> is noncommutative: <span class="math" data-tex="\((a_1(a_2\varphi))(b)=\varphi((ba_1)a_2)=((a_1a_2)\varphi)(b)\)">\((a_1(a_2\varphi))(b)=\varphi((ba_1)a_2)=((a_1a_2)\varphi)(b)\)</span>; the unit and distributive laws follow in the same way. Evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> is the natural bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_A(N,I)\simeq\operatorname{Hom}_{\mathbb Z}(N,J),
+\qquad g\longmapsto (n\mapsto g(n)(1)).
+\tag{4.3}
+\]">\[
+\operatorname{Hom}_A(N,I)\simeq\operatorname{Hom}_{\mathbb Z}(N,J),
+\qquad g\longmapsto (n\mapsto g(n)(1)).
+\tag{4.3}
+\]</span>
+<p>Its inverse sends <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\(g_h(n)(b)=h(bn)\)">\(g_h(n)(b)=h(bn)\)</span>. Formula (4.2) proves <span class="math" data-tex="\(A\)">\(A\)</span>-linearity, and for an <span class="math" data-tex="\(A\)">\(A\)</span>-linear <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(g(n)(b)=g(bn)(1)\)">\(g(n)(b)=g(bn)(1)\)</span>, proving both inverse equations. A map into <span class="math" data-tex="\(I\)">\(I\)</span> from a submodule therefore extends by extending its corresponding group map into <span class="math" data-tex="\(J\)">\(J\)</span>. Thus <span class="math" data-tex="\(I\)">\(I\)</span> is injective. The map <span class="math" data-tex="\(m\mapsto(b\mapsto j(bm))\)">\(m\mapsto(b\mapsto j(bm))\)</span> is <span class="math" data-tex="\(A\)">\(A\)</span>-linear and injective, by evaluation at <span class="math" data-tex="\(1\)">\(1\)</span>. This proves enough injectives in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, with small injective targets. Iterating on successive cokernels constructs an injective resolution in degrees <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span> of every module.</p>
+<p>For a small family <span class="math" data-tex="\((N_s)\)">\((N_s)\)</span>, its <strong>formal product of constants</strong> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+P(N_s)=\lim_{F\subseteq S,\ F\ {\rm finite}}^{\rm form}c\left(\prod_{s\in F}N_s\right),
+\tag{4.4}
+\]">\[
+P(N_s)=\lim_{F\subseteq S,\ F\ {\rm finite}}^{\rm form}c\left(\prod_{s\in F}N_s\right),
+\tag{4.4}
+\]</span>
+<p>with restriction projections; the empty finite product is the zero module. To verify its product property, insert its presentation into (3.2). A finite product of Hom groups commutes with a filtered colimit, by the filtered representative and equality tests. Compatible choices over finite subsets are exactly arbitrary families of elements. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\rm Pro}(\mathbf T,P(N_s))
+\simeq\prod_s\operatorname{Hom}_{\rm Pro}(\mathbf T,cN_s),
+\tag{4.5}
+\]">\[
+\operatorname{Hom}_{\rm Pro}(\mathbf T,P(N_s))
+\simeq\prod_s\operatorname{Hom}_{\rm Pro}(\mathbf T,cN_s),
+\tag{4.5}
+\]</span>
+<p>with the specified coordinate maps. This proves the full product universal property for every test Pro object. Proposition 3.2 then gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.6); horizontal scroll when needed" data-tex="\[
+\pi P(N_s)\simeq\prod_s N_s.
+\tag{4.6}
+\]">\[
+\pi P(N_s)\simeq\prod_s N_s.
+\tag{4.6}
+\]</span>
+<p><strong>Theorem 4.1.</strong> A constant injective module <span class="math" data-tex="\(cJ\)">\(cJ\)</span> is injective in Pro. Formal products of these objects are injective, and Pro has enough injectives.</p>
+<p><strong>Proof.</strong> Present any short exact Pro row by (3.5). Applying <span class="math" data-tex="\(\operatorname{Hom}_A(-,J)\)">\(\operatorname{Hom}_A(-,J)\)</span> gives a short exact row of groups at every level, because <span class="math" data-tex="\(J\)">\(J\)</span> is injective. Taking the filtered colimit over the opposite index is exact, by the module-colimit theorem with coefficient ring <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Formula (3.3) therefore proves that <span class="math" data-tex="\(\operatorname{Hom}_{\rm Pro}(-,cJ)\)">\(\operatorname{Hom}_{\rm Pro}(-,cJ)\)</span> is exact. This is precisely the extension property for <span class="math" data-tex="\(cJ\)">\(cJ\)</span>.</p>
+<p>For a family of injective <span class="math" data-tex="\(J_s\)">\(J_s\)</span>, extend each component of a map into <span class="math" data-tex="\(cJ_s\)">\(cJ_s\)</span> along a Pro monomorphism. Formula (4.5) assembles the extensions into a map to their product, proving its injectivity.</p>
+<p>Finally, present <span class="math" data-tex="\(\mathbf X\)">\(\mathbf X\)</span> by <span class="math" data-tex="\((X_i)\)">\((X_i)\)</span>, embed each <span class="math" data-tex="\(X_i\)">\(X_i\)</span> in an injective module <span class="math" data-tex="\(J_i\)">\(J_i\)</span>, and combine the projections into</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.7); horizontal scroll when needed" data-tex="\[
+\mathbf X\longrightarrow P(J_i),\qquad
+\mathbf X\longrightarrow cX_i\longrightarrow cJ_i.
+\tag{4.7}
+\]">\[
+\mathbf X\longrightarrow P(J_i),\qquad
+\mathbf X\longrightarrow cX_i\longrightarrow cJ_i.
+\tag{4.7}
+\]</span>
+<p>The index here is the small set of objects of the presenting category; its arrows need not be preserved by the chosen embeddings. If a map <span class="math" data-tex="\(t:\mathbf T\to\mathbf X\)">\(t:\mathbf T\to\mathbf X\)</span> is killed by (4.7), each composite <span class="math" data-tex="\(\mathbf T\to cX_i\)">\(\mathbf T\to cX_i\)</span> is zero, since <span class="math" data-tex="\(cX_i\to cJ_i\)">\(cX_i\to cJ_i\)</span> is monic by exactness of <span class="math" data-tex="\(c\)">\(c\)</span>. Formula (3.2) says that maps into <span class="math" data-tex="\(\mathbf X\)">\(\mathbf X\)</span> are determined by all these coordinates, so <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Applying this to a difference of two maps proves that (4.7) is monic. Its target is injective by the preceding paragraph. Thus every Pro object embeds into an injective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-derived-pi-and-acyclic-formal-products">5. Derived pi and acyclic formal products</h2>
+<p>The derived-functor prerequisite applies to the abelian category Pro because Theorem 4.1 supplies enough injectives. It constructs the exact functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+R\pi:D^+(\operatorname{Pro}(\mathcal C))\longrightarrow D^+(\mathcal C),
+\qquad R^q\pi(\mathbf X)=H^q\bigl(\pi J^\bullet\bigr),
+\tag{5.1}
+\]">\[
+R\pi:D^+(\operatorname{Pro}(\mathcal C))\longrightarrow D^+(\mathcal C),
+\qquad R^q\pi(\mathbf X)=H^q\bigl(\pi J^\bullet\bigr),
+\tag{5.1}
+\]</span>
+<p>where <span class="math" data-tex="\(\mathbf X\to J^\bullet\)">\(\mathbf X\to J^\bullet\)</span> is an injective resolution in nonnegative degrees. The replacement comparison makes this independent of choices, naturally for every Pro morphism. The terms in negative degrees are zero, so <span class="math" data-tex="\(R^q\pi=0\)">\(R^q\pi=0\)</span> for <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>; left exactness gives <span class="math" data-tex="\(R^0\pi=\pi\)">\(R^0\pi=\pi\)</span>. More explicitly, the kernel of <span class="math" data-tex="\(\pi J^0\to\pi J^1\)">\(\pi J^0\to\pi J^1\)</span> is <span class="math" data-tex="\(\pi\mathbf X\)">\(\pi\mathbf X\)</span>.</p>
+<p>The exact-sequence triangle theorem applies to any short exact Pro row concentrated in degree zero. Apply the exact functor <span class="math" data-tex="\(R\pi\)">\(R\pi\)</span> to its triangle, then the target cohomology sequence. This gives the natural long exact sequence of <span class="math" data-tex="\(R^q\pi\)">\(R^q\pi\)</span>. This use needs no injectivity assumption on the three original objects and no exactness of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p><strong>Lemma 5.1.</strong> Every formal product <span class="math" data-tex="\(P(N_s)\)">\(P(N_s)\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-acyclic: <span class="math" data-tex="\(R^q\pi P(N_s)=0\)">\(R^q\pi P(N_s)=0\)</span> for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> The operation <span class="math" data-tex="\((N_s)\mapsto P(N_s)\)">\((N_s)\mapsto P(N_s)\)</span> carries any family of short exact module rows to a short exact Pro row. Indeed, its common levels are the finite-subset products, which are short exact; formula (3.4) computes the formal row's kernel and cokernel from those levels. This proves exactness of this particular formal-product operation, without an assertion about products of arbitrary Pro objects.</p>
+<p>Choose injective resolutions <span class="math" data-tex="\(N_s\to I_s^\bullet\)">\(N_s\to I_s^\bullet\)</span>. In each degree form <span class="math" data-tex="\(P(I_s^q)\)">\(P(I_s^q)\)</span> and use the formal products of the differentials. Exactness just proved implies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+0\to P(N_s)\to P(I_s^0)\to P(I_s^1)\to\cdots
+\tag{5.2}
+\]">\[
+0\to P(N_s)\to P(I_s^0)\to P(I_s^1)\to\cdots
+\tag{5.2}
+\]</span>
+<p>is exact. For completeness, factor each module differential through its image; the short exact rows defining its kernel and image stay exact under <span class="math" data-tex="\(P\)">\(P\)</span>. Thus the kernel and image in (5.2) are the formal products of the individual kernels and images, which agree at every positive position. Each term is injective in Pro by Theorem 4.1. Hence (5.2) is an injective resolution.</p>
+<p>Applying <span class="math" data-tex="\(\pi\)">\(\pi\)</span> gives the ordinary product complex <span class="math" data-tex="\(\prod_s I_s^\bullet\)">\(\prod_s I_s^\bullet\)</span> by (4.6), with coordinate differentials. Products of short exact module rows are exact by the actual coordinate-lifting proof in the module prerequisite. Factoring the differentials as above shows that this complex has <span class="math" data-tex="\(H^0=\prod_sN_s\)">\(H^0=\prod_sN_s\)</span> and zero cohomology in positive degrees. Formula (5.1) proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-a-finite-prefix-exact-sequence-for-every-tower">6. A finite-prefix exact sequence for every tower</h2>
+<p>Let <span class="math" data-tex="\(\mathbf M=\lim_n^{\rm form}cM_n\)">\(\mathbf M=\lim_n^{\rm form}cM_n\)</span> and <span class="math" data-tex="\(P=P(M_n)\)">\(P=P(M_n)\)</span>. Cofinal prefixes <span class="math" data-tex="\(\{0,\ldots,N\}\)">\(\{0,\ldots,N\}\)</span> present (4.4), so write <span class="math" data-tex="\(P_N=\prod_{r=0}^NM_r\)">\(P_N=\prod_{r=0}^NM_r\)</span>, with prefix restrictions. Present a Pro map <span class="math" data-tex="\(\boldsymbol\Delta:P\to P\)">\(\boldsymbol\Delta:P\to P\)</span> at level <span class="math" data-tex="\(N\)">\(N\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\delta_N:P_{N+1}\longrightarrow P_N,
+\qquad (a_0,\ldots,a_{N+1})\longmapsto
+(a_r-v_ra_{r+1})_{0\leq r\leq N}.
+\tag{6.1}
+\]">\[
+\delta_N:P_{N+1}\longrightarrow P_N,
+\qquad (a_0,\ldots,a_{N+1})\longmapsto
+(a_r-v_ra_{r+1})_{0\leq r\leq N}.
+\tag{6.1}
+\]</span>
+<p>The source presentation is shifted by one. Restricting the source and target prefixes makes the squares commute. The shifted source still presents <span class="math" data-tex="\(P\)">\(P\)</span>: forgetting a finite initial segment of this prefix system is coinitial, and all specified coordinate projections are unchanged under that comparison.</p>
+<p><strong>Lemma 6.1.</strong> There is a short exact sequence in Pro</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow\mathbf M\xrightarrow eP\xrightarrow{\boldsymbol\Delta}P\longrightarrow0.
+\tag{6.2}
+\]">\[
+0\longrightarrow\mathbf M\xrightarrow eP\xrightarrow{\boldsymbol\Delta}P\longrightarrow0.
+\tag{6.2}
+\]</span>
+<p>Its image under <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has difference map (2.1).</p>
+<p><strong>Proof.</strong> Each <span class="math" data-tex="\(\delta_N\)">\(\delta_N\)</span> is split surjective as a module map. Given <span class="math" data-tex="\((b_0,\ldots,b_N)\)">\((b_0,\ldots,b_N)\)</span>, put <span class="math" data-tex="\(a_{N+1}=0\)">\(a_{N+1}=0\)</span>, then recursively put <span class="math" data-tex="\(a_r=b_r+v_ra_{r+1}\)">\(a_r=b_r+v_ra_{r+1}\)</span> for <span class="math" data-tex="\(r=N,N-1,\ldots,0\)">\(r=N,N-1,\ldots,0\)</span>. This is a linear right inverse. It is not required to commute with prefix transitions.</p>
+<p>The kernel is identified with <span class="math" data-tex="\(M_{N+1}\)">\(M_{N+1}\)</span> by its last coordinate, with inverse</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+t\longmapsto (v_{0,N+1}t,\ldots,v_{N,N+1}t,t).
+\tag{6.3}
+\]">\[
+t\longmapsto (v_{0,N+1}t,\ldots,v_{N,N+1}t,t).
+\tag{6.3}
+\]</span>
+<p>Restricting the kernel at level <span class="math" data-tex="\(N+1\)">\(N+1\)</span> to the source prefix at level <span class="math" data-tex="\(N\)">\(N\)</span> sends its last coordinate <span class="math" data-tex="\(t\in M_{N+2}\)">\(t\in M_{N+2}\)</span> to <span class="math" data-tex="\(v_{N+1}t\in M_{N+1}\)">\(v_{N+1}t\in M_{N+1}\)</span>. Thus the kernel system is exactly the shifted tower <span class="math" data-tex="\((M_{N+1},v_{N+1})\)">\((M_{N+1},v_{N+1})\)</span>. This shift represents <span class="math" data-tex="\(\mathbf M\)">\(\mathbf M\)</span> by the same coinitial-tail comparison. The resulting kernel inclusion has coordinates <span class="math" data-tex="\(\mathbf M\to cM_r\)">\(\mathbf M\to cM_r\)</span>, so it is the specified map <span class="math" data-tex="\(e\)">\(e\)</span> into the formal product. Formula (3.4) and the level surjectivity prove (6.2).</p>
+<p>Under (4.6), the <span class="math" data-tex="\(r\)">\(r\)</span>-th coordinate of <span class="math" data-tex="\(\pi\boldsymbol\Delta\)">\(\pi\boldsymbol\Delta\)</span> is <span class="math" data-tex="\(a_r-v_ra_{r+1}\)">\(a_r-v_ra_{r+1}\)</span>, because it is that coordinate in every target prefix containing <span class="math" data-tex="\(r\)">\(r\)</span>. Hence the induced map is the actual ordinary <span class="math" data-tex="\(\Delta_M\)">\(\Delta_M\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2.</strong> Every countable module tower satisfies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+0\to\lim M_n\to\prod M_n\xrightarrow{\Delta_M}\prod M_n
+\to R^1\pi(\mathbf M)\to0,\\
+R^q\pi(\mathbf M)=0\qquad(q\geq2).
+\end{gathered}
+\tag{6.4}
+\]">\[
+\begin{gathered}
+0\to\lim M_n\to\prod M_n\xrightarrow{\Delta_M}\prod M_n
+\to R^1\pi(\mathbf M)\to0,\\
+R^q\pi(\mathbf M)=0\qquad(q\geq2).
+\end{gathered}
+\tag{6.4}
+\]</span>
+<p>If the tower is ML, <span class="math" data-tex="\(R^q\pi(\mathbf M)=0\)">\(R^q\pi(\mathbf M)=0\)</span> for every <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> Apply the long exact sequence from Section 5 to (6.2). Both copies of <span class="math" data-tex="\(P\)">\(P\)</span> have vanishing positive derived functors by Lemma 5.1. Its first part is (6.4), using <span class="math" data-tex="\(R^0\pi=\pi\)">\(R^0\pi=\pi\)</span>, <span class="math" data-tex="\(\pi\mathbf M=\lim M_n\)">\(\pi\mathbf M=\lim M_n\)</span> and Lemma 6.1's identification of the difference map. Later positions give <span class="math" data-tex="\(R^q\pi\mathbf M=0\)">\(R^q\pi\mathbf M=0\)</span> for <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>. For an ML tower Theorem 2.2 makes the difference map surjective, so its cokernel, <span class="math" data-tex="\(R^1\pi\mathbf M\)">\(R^1\pi\mathbf M\)</span>, is zero as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For componentwise maps of towers, the products and (6.1) commute with those maps, so (6.4) is natural with its displayed kernel and cokernel identifications. The functors in (5.1) are already defined naturally for arbitrary Pro morphisms. The proof therefore computes the derived functors of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> on formal Pro objects, with their exact abelian structure.</p>
+<h2 id="7-examples-of-stabilization-and-obstruction">7. Examples of stabilization and obstruction</h2>
+<p><strong>Example 7.1 (a non-surjective ML tower).</strong> Take <span class="math" data-tex="\(M_n=\mathbb Z^2\)">\(M_n=\mathbb Z^2\)</span> and <span class="math" data-tex="\(v_n(x,y)=(x,0)\)">\(v_n(x,y)=(x,0)\)</span>. Then <span class="math" data-tex="\(I_n=\mathbb Z\oplus0\)">\(I_n=\mathbb Z\oplus0\)</span>, all induced stable-image maps are identity, and the quotient maps are zero. Compatibility forces a constant first coordinate and a zero second coordinate, so <span class="math" data-tex="\(\lim M_n=\mathbb Z\)">\(\lim M_n=\mathbb Z\)</span>. For an arbitrary right-hand side <span class="math" data-tex="\(b_n=(u_n,w_n)\)">\(b_n=(u_n,w_n)\)</span>, an actual solution of <span class="math" data-tex="\(\Delta_Ma=b\)">\(\Delta_Ma=b\)</span> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+a_n=\left(-\sum_{r&lt;n}u_r,w_n\right).
+\tag{7.1}
+\]">\[
+a_n=\left(-\sum_{r&lt;n}u_r,w_n\right).
+\tag{7.1}
+\]</span>
+<p>Subtracting the first coordinates at <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(n+1\)">\(n+1\)</span> gives <span class="math" data-tex="\(u_n\)">\(u_n\)</span>, and the projected second coordinate at <span class="math" data-tex="\(n+1\)">\(n+1\)</span> is zero. Theorem 6.2 gives all positive derived functors zero.</p>
+<p><strong>Example 7.2 (a nonzero first derived obstruction).</strong> Let <span class="math" data-tex="\(M_n=\mathbb Z\)">\(M_n=\mathbb Z\)</span> and <span class="math" data-tex="\(v_n=2\)">\(v_n=2\)</span>. Its images at level <span class="math" data-tex="\(n\)">\(n\)</span> are <span class="math" data-tex="\(2^{p-n}\mathbb Z\)">\(2^{p-n}\mathbb Z\)</span>, which never stabilize. Its limit is zero, since a compatible integer <span class="math" data-tex="\(a_n\)">\(a_n\)</span> is divisible by every power of two. Take <span class="math" data-tex="\(b_{2r}=0\)">\(b_{2r}=0\)</span>, <span class="math" data-tex="\(b_{2r+1}=1\)">\(b_{2r+1}=1\)</span>. If <span class="math" data-tex="\(\Delta_Ma=b\)">\(\Delta_Ma=b\)</span>, repeated substitution through coordinate <span class="math" data-tex="\(2k+1\)">\(2k+1\)</span> gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+a_0=\frac{2(4^{k+1}-1)}3+4^{k+1}a_{2k+2},
+\quad
+3a_0+2=4^{k+1}(2+3a_{2k+2}).
+\tag{7.2}
+\]">\[
+a_0=\frac{2(4^{k+1}-1)}3+4^{k+1}a_{2k+2},
+\quad
+3a_0+2=4^{k+1}(2+3a_{2k+2}).
+\tag{7.2}
+\]</span>
+<p>The fixed integer <span class="math" data-tex="\(3a_0+2\)">\(3a_0+2\)</span> would be divisible by arbitrarily large powers of four, hence zero. No integer satisfies <span class="math" data-tex="\(3a_0+2=0\)">\(3a_0+2=0\)</span>. Thus <span class="math" data-tex="\(b\)">\(b\)</span> represents a nonzero element of <span class="math" data-tex="\(R^1\pi\mathbf M=\operatorname{coker}\Delta_M\)">\(R^1\pi\mathbf M=\operatorname{coker}\Delta_M\)</span>. This argument uses finite integer equations for every <span class="math" data-tex="\(k\)">\(k\)</span>, rather than a convergent sum in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<h2 id="8-four-graded-exercises-with-complete-solutions">8. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic: surjective finite quotients).</strong> For a unital ring <span class="math" data-tex="\(A\)">\(A\)</span>, take the left-module tower <span class="math" data-tex="\(M_n=A/2^{n+1}A\)">\(M_n=A/2^{n+1}A\)</span> with reduction maps. Show that it is ML, describe its ordinary limit, and determine every <span class="math" data-tex="\(R^q\pi\mathbf M\)">\(R^q\pi\mathbf M\)</span>.</p>
+<p><strong>Solution.</strong> Since the integer scalar two is central, <span class="math" data-tex="\(2^{n+1}A\)">\(2^{n+1}A\)</span> is a left submodule, and its inclusion in <span class="math" data-tex="\(2^nA\)">\(2^nA\)</span> makes reduction a well-defined surjection. The images at every fixed level are therefore the whole module, so <span class="math" data-tex="\(I_n=M_n\)">\(I_n=M_n\)</span> and the tower is ML. Its ordinary limit is precisely</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+\{(\bar a_n)\in\prod_{n\geq0}A/2^{n+1}A:
+\bar a_{n+1}\bmod 2^{n+1}A=\bar a_n\}.
+\tag{8.1}
+\]">\[
+\{(\bar a_n)\in\prod_{n\geq0}A/2^{n+1}A:
+\bar a_{n+1}\bmod 2^{n+1}A=\bar a_n\}.
+\tag{8.1}
+\]</span>
+<p>The module operations are coordinatewise and its projections have the limit universal property. It is called the two-adic completion of this module; no injectivity or surjectivity of the map from <span class="math" data-tex="\(A\)">\(A\)</span> is asserted. Theorem 6.2 gives <span class="math" data-tex="\(R^0\pi\mathbf M\)">\(R^0\pi\mathbf M\)</span> equal to (8.1), every positive <span class="math" data-tex="\(R^q\pi\mathbf M\)">\(R^q\pi\mathbf M\)</span> zero, and the resolution convention gives every negative one zero. For <span class="math" data-tex="\(A=\mathbb Z/3\)">\(A=\mathbb Z/3\)</span>, multiplication by two is invertible, so every quotient is zero and (8.1) is zero as well.</p>
+<p><strong>Exercise 2 (intermediate: delayed disappearance).</strong> Set <span class="math" data-tex="\(M_n=\mathbb Z^{n+1}\)">\(M_n=\mathbb Z^{n+1}\)</span>. For <span class="math" data-tex="\(v_n:M_{n+1}\to M_n\)">\(v_n:M_{n+1}\to M_n\)</span>, let its coordinate <span class="math" data-tex="\(r\)">\(r\)</span>, for <span class="math" data-tex="\(0\leq r\leq n\)">\(0\leq r\leq n\)</span>, be <span class="math" data-tex="\(x_r\)">\(x_r\)</span> if <span class="math" data-tex="\(n&lt;2r\)">\(n&lt;2r\)</span>, and zero otherwise. Find the stable images and the inverse of <span class="math" data-tex="\(\Delta_M\)">\(\Delta_M\)</span>, and compute its ordinary and derived limits.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(p&gt;n\)">\(p&gt;n\)</span>, coordinate <span class="math" data-tex="\(r\)">\(r\)</span> survives the composite <span class="math" data-tex="\(v_{n,p}\)">\(v_{n,p}\)</span> exactly when every target index <span class="math" data-tex="\(t=n,\ldots,p-1\)">\(t=n,\ldots,p-1\)</span> satisfies <span class="math" data-tex="\(t&lt;2r\)">\(t&lt;2r\)</span>, equivalently <span class="math" data-tex="\(p\leq2r\)">\(p\leq2r\)</span>. Since <span class="math" data-tex="\(r\leq n\)">\(r\leq n\)</span>, the composite is zero for <span class="math" data-tex="\(p\geq2n+1\)">\(p\geq2n+1\)</span>. Hence <span class="math" data-tex="\(I_n=0\)">\(I_n=0\)</span>, with this threshold, and the tower is ML. Lemma 2.1 gives the actual inverse</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+(Tb)_n=\sum_{p=n}^{2n}v_{n,p}b_p.
+\tag{8.2}
+\]">\[
+(Tb)_n=\sum_{p=n}^{2n}v_{n,p}b_p.
+\tag{8.2}
+\]</span>
+<p>Terms beyond this range vanish. Its two inverse equations follow by the telescoping calculation in that lemma. Thus <span class="math" data-tex="\(\ker\Delta_M=0\)">\(\ker\Delta_M=0\)</span> and <span class="math" data-tex="\(\operatorname{coker}\Delta_M=0\)">\(\operatorname{coker}\Delta_M=0\)</span>. Formula (6.4) gives <span class="math" data-tex="\(\pi\mathbf M=0\)">\(\pi\mathbf M=0\)</span> and all positive derived functors zero. In fact <span class="math" data-tex="\(\mathbf M=0\)">\(\mathbf M=0\)</span> in Pro: the identity at each target level is represented by a sufficiently late zero transition, so every coordinate of its identity map in (3.2) is zero. Notice that every <span class="math" data-tex="\(M_n\)">\(M_n\)</span> is nonzero; the vanishing concerns the formal object and the compatible limit.</p>
+<p><strong>Exercise 3 (advanced: failure of exact compatible lifting).</strong> Consider the short exact towers</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+0\to\mathbb Z\xrightarrow{2^{n+1}}\mathbb Z
+\to\mathbb Z/2^{n+1}\to0,
+\tag{8.3}
+\]">\[
+0\to\mathbb Z\xrightarrow{2^{n+1}}\mathbb Z
+\to\mathbb Z/2^{n+1}\to0,
+\tag{8.3}
+\]</span>
+<p>with transitions respectively multiplication by two, identity, and reduction. Show that the middle and right towers are ML but the map between their ordinary limits is not surjective. Exhibit a nonzero connecting class in the formal Pro derived sequence.</p>
+<p><strong>Solution.</strong> Each row is short exact. Compatibility of the left square is the equation <span class="math" data-tex="\(2^{n+1}2=2^{n+2}\)">\(2^{n+1}2=2^{n+2}\)</span>; the other square is reduction compatibility. The middle tower has identity transitions and limit <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>; the right tower has surjective transitions and limit the compatible residues in (8.1) for <span class="math" data-tex="\(A=\mathbb Z\)">\(A=\mathbb Z\)</span>. Both are ML. The left tower is Example 7.2 and has limit zero.</p>
+<p>Put <span class="math" data-tex="\(s_n=\sum_{r=0}^n2^rb_r\)">\(s_n=\sum_{r=0}^n2^rb_r\)</span>, where <span class="math" data-tex="\(b_{2r}=0,b_{2r+1}=1\)">\(b_{2r}=0,b_{2r+1}=1\)</span>, and let <span class="math" data-tex="\(q_n=s_n\bmod2^{n+1}\)">\(q_n=s_n\bmod2^{n+1}\)</span>. These form a compatible quotient tuple, since <span class="math" data-tex="\(s_{n+1}-s_n\)">\(s_{n+1}-s_n\)</span> is divisible by <span class="math" data-tex="\(2^{n+1}\)">\(2^{n+1}\)</span>. If it came from an integer <span class="math" data-tex="\(z\)">\(z\)</span>, its odd-index coordinates would give <span class="math" data-tex="\(3z+2\)">\(3z+2\)</span> divisible by <span class="math" data-tex="\(4^{k+1}\)">\(4^{k+1}\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>, by (7.2). This is impossible. Thus the limit map is not onto.</p>
+<p>The formal row is short exact by (3.4). Its long exact sequence has a connecting map from the compatible residues to <span class="math" data-tex="\(R^1\pi\)">\(R^1\pi\)</span> of the left tower. The kernel of that connecting map is exactly the image of the middle limit. Consequently the tuple just constructed has a nonzero connecting class. The middle and right first derived functors vanish by Theorem 6.2; hence the connecting map also identifies <span class="math" data-tex="\(R^1\pi\)">\(R^1\pi\)</span> of the left tower with the quotient of the compatible-residue module by the image of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. This proves why Theorem 2.3 requires ML of the left tower.</p>
+<p><strong>Exercise 4 (advanced: the shifted prefix and noncommutative action).</strong> For transitions <span class="math" data-tex="\(v_0=2,v_1=3,v_2=4\)">\(v_0=2,v_1=3,v_2=4\)</span> between copies of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, write the level-two map (6.1), its kernel parametrization and a right inverse. Explain why levelwise sections do not by themselves split (6.2). Separately, for <span class="math" data-tex="\(A=M_2(\mathbb Q)\)">\(A=M_2(\mathbb Q)\)</span>, verify the order of multiplication in (4.2), and show that replacing <span class="math" data-tex="\(\varphi(ba)\)">\(\varphi(ba)\)</span> by <span class="math" data-tex="\(\varphi(ab)\)">\(\varphi(ab)\)</span> fails to define a left action.</p>
+<p><strong>Solution.</strong> The source is the four-coordinate prefix and the target has three coordinates:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.4); horizontal scroll when needed" data-tex="\[
+\delta_2(a,b,c,d)=(a-2b,b-3c,c-4d).
+\tag{8.4}
+\]">\[
+\delta_2(a,b,c,d)=(a-2b,b-3c,c-4d).
+\tag{8.4}
+\]</span>
+<p>Its kernel is <span class="math" data-tex="\(d\mapsto(24d,12d,4d,d)\)">\(d\mapsto(24d,12d,4d,d)\)</span>; substitution proves containment, and successive equations from the last coordinate prove that every kernel element has this form. A right inverse is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.5); horizontal scroll when needed" data-tex="\[
+(u,v,w)\longmapsto(u+2v+6w,v+3w,w,0).
+\tag{8.5}
+\]">\[
+(u,v,w)\longmapsto(u+2v+6w,v+3w,w,0).
+\tag{8.5}
+\]</span>
+<p>Each difference in (8.4) is respectively <span class="math" data-tex="\(u,v,w\)">\(u,v,w\)</span>. The right inverses are linear at their individual levels but generally do not commute with prefix restrictions. For example, in a tower with all transitions two, the right inverse at level one takes <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> to <span class="math" data-tex="\((u+2v,v,0)\)">\((u+2v,v,0)\)</span>, whereas the level-zero right inverse of the restricted tuple is <span class="math" data-tex="\((u,0)\)">\((u,0)\)</span>. Restricting the former source to two coordinates disagrees whenever <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. Thus these sections prove an epimorphism in Pro through (3.4), without giving a Pro section. Example 7.2 additionally precludes a section of (6.2) for that tower, since applying any functor to a split epimorphism preserves a section, whereas its ordinary difference map is not onto.</p>
+<p>For the action, <span class="math" data-tex="\(a_1(a_2\varphi)(b)=\varphi(ba_1a_2)\)">\(a_1(a_2\varphi)(b)=\varphi(ba_1a_2)\)</span>, exactly the action of <span class="math" data-tex="\(a_1a_2\)">\(a_1a_2\)</span> in (4.2). For the proposed reversed formula, successive actions instead evaluate <span class="math" data-tex="\(\varphi(a_2a_1b)\)">\(\varphi(a_2a_1b)\)</span>. Take <span class="math" data-tex="\(a_1=E_{12},a_2=E_{21},b=1\)">\(a_1=E_{12},a_2=E_{21},b=1\)</span>, and the additive map <span class="math" data-tex="\(\varphi:M_2(\mathbb Q)\to\mathbb Q\)">\(\varphi:M_2(\mathbb Q)\to\mathbb Q\)</span> extracting the upper-left entry. Then successive proposed actions give <span class="math" data-tex="\(\varphi(E_{22})=0\)">\(\varphi(E_{22})=0\)</span>, while the proposed action of <span class="math" data-tex="\(a_1a_2\)">\(a_1a_2\)</span> gives <span class="math" data-tex="\(\varphi(E_{11})=1\)">\(\varphi(E_{11})=1\)</span>. Associativity fails. This verifies why the coinduced left-module convention uses right multiplication in the argument of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/02MY">Inverse systems, Section 12.31</a>, for the ML definition and comparison with exactness of compatible module families. Sections 1–2 above supply the full stabilization and lifting proofs used here.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/07KV">Rlim of abelian groups, Section 15.88</a>, Lemma 15.88.1, computes the derived inverse limit on the category of countable inverse systems. Sections 3–6 above establish the category, injectives and finite-prefix sequence needed to compute <span class="math" data-tex="\(R^q\pi\)">\(R^q\pi\)</span> on formal Pro modules.</li>
+</ul>
+</main></body></html>

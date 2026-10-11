@@ -4,7 +4,7 @@
 
 For an arbitrary von Neumann algebra \(N\), including one with no faithful normal state, we construct two-sided Banach \(N\)-modules \(L^p(N)\), \(1\leq p\leq\infty\). Their positive \(L^1\) elements are precisely normal positive functionals. A change of the auxiliary faithful semifinite weight gives a coherent isometry. This supplies the general-algebra construction left outside the factor and separable-predual scope of homogeneous core operators.
 
-The proof uses the general regular-core construction in OE02–03, the traced density theorem PT08, cocycle reconstruction CX10, and lifting through an already existing operator-valued weight OM01. The last input remains conditional on the three explicitly stated contracts in OR03–04: the scalar mixed-graph criterion, finite mixed-ideal transfer, and analytic-generator comparison. OE02–03 also retain their stated harmonic-analysis and positive-integration inputs. The arguments below prove the construction from these named inputs. They do not prove those inputs or their prerequisites.
+The proof uses the general regular-core construction in OE02–03, the traced density theorem PT08, cocycle reconstruction CX10, and lifting through an already existing operator-valued weight OM01. The mixed-graph transfer and inclusion-generator comparison are proved in OR03–04. OE02–03 give their local Weyl, vector Plancherel and positive-orbit arguments at the exact scalar Fourier inputs. The construction below uses those written proofs.
 
 For comparison, Fumio Hiai's freely available *Concise lectures on selected topics of von Neumann algebras*, section 11.1, Lemmas 11.1–11.4 and Theorem 11.5, give the core-density approach. Complete PDF pages 101–106 were actually inspected. The missing theorem locator printed in the converse argument on page 104 is replaced here by the precise course provider CX10. This is independently written exposition; no human source text or source file is redistributed.
 
@@ -38,7 +38,14 @@ Here is why the generality of this input matters. In the regular representation 
 There is no restriction on the Hilbert cardinality. The multiplication-field gauge \(V\xi(r)=\Delta_{\varphi_0}^{ir}\xi(r)\) turns the represented \(N\) into constant operators. An operator fixed by conjugation with every \(D_s\) is a multiplication field; commutation with the gauged translation action makes this field constant. Commutation with the conjugated constant commutant operators then puts that constant in \(N\). The equality at \(r=0\) uses continuity of each fixed conjugated commutant operator, not evaluation of a general measurable field. This is the fixed-algebra proof in OE02, and gives \(P^\theta=N\).
 
 OE03 proves that \(E\) is normal, faithful and semifinite, using positive Tonelli, vector Plancherel and
-\(E(\lambda(f)^*\lambda(f))=2\pi\|f\|_2^2\,1\), with finite-weight cutdowns. Put \(\Phi_0=\varphi_0\circ E\). The forward theorem for the already existing \(E\) gives \(\sigma_t^{\Phi_0}|_N=\sigma_t^{\varphi_0}\). Covariance of \(E\) and invariance of \(\varphi_0\) make \(\Phi_0\) invariant under \(\operatorname{Ad}\lambda_t\). Thus \(\lambda_t\) lies in its centralizer. Since \(N\) and these unitaries generate \(P\),
+\(E(\lambda(f)^*\lambda(f))=2\pi\|f\|_2^2\,1\), with finite-weight cutdowns. Put \(\Phi_0=\varphi_0\circ E\). The forward theorem for the already existing \(E\) gives \(\sigma_t^{\Phi_0}|_N=\sigma_t^{\varphi_0}\). Covariance of \(E\) and invariance of \(\varphi_0\) make \(\Phi_0\) invariant under \(\operatorname{Ad}\lambda_u\). The normalized inner-cocycle identity in OE03 gives
+
+\[
+1=[D(\Phi_0\circ\operatorname{Ad}\lambda_u):D\Phi_0]_t
+=\lambda_u^*\sigma_t^{\Phi_0}(\lambda_u).
+\]
+
+Thus every \(\lambda_u\) lies in the centralizer. Since \(N\) and these unitaries generate \(P\),
 
 \[
  \sigma_t^{\Phi_0}=\operatorname{Ad}\lambda_t.
@@ -352,7 +359,7 @@ The faithful semifinite reference density \(d=h_{\varphi_0}\) has full support. 
 
 Inner trace invariance preserves every spectral-tail trace. Right multiplication by \(d^{ib}\) is the inverse, so this is an isometry for the gauge LP15. In particular imaginary grade has the operator-norm space \(N\) as its coordinate; positive real grades \(0<a\leq1\) have the Banach spaces just constructed.
 
-Neither this coordinate map nor LP20 needs a faithful normal state. A state-dependent compatible interpolation couple is an additional construction with different hypotheses; the open identification recorded in HL-DEP-GRADED-STRIP is not used here. The Banach range of the grade parameter is \(0<a\leq1\). For \(a>1\), two orthogonal grade-one densities of integral one give \(g_a(h_1^a+h_2^a)=2^a>2\), so this formula is generally only a quasi-norm. This does not contradict LP20, which uses \(a=1/p\) for \(p\geq1\).
+Neither this coordinate map nor LP20 needs a faithful normal state. A state-dependent compatible interpolation couple is an additional construction with different hypotheses; the identification proved in HL12 is not used here. The Banach range of the grade parameter is \(0<a\leq1\). For \(a>1\), two orthogonal grade-one densities of integral one give \(g_a(h_1^a+h_2^a)=2^a>2\), so this formula is generally only a quasi-norm. This does not contradict LP20, which uses \(a=1/p\) for \(p\geq1\).
 
 ## Two solved models that test the generality
 

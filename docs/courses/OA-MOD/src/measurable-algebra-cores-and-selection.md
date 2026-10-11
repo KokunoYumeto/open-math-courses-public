@@ -4,7 +4,7 @@ A countable algebra core can recover products, closed multiplier graphs and the 
 
 Read the rational star-core and dense-product proofs first. Localize products before using them in the integral. Read the multiplier-core proof with the construction of the opposite field. The completed-measure selector, full-completion code and qualified fullness argument follow. The constant-graph example is a diagnostic at that boundary. The CH construction is a separate conditional investigation.
 
-Use inner products linear in the first variable, separable fibres and a standard sigma-finite base with measure completion. The Hilbert-field coordinates, measurable graph and polar operators, single-fibre right algebra, full completion, bounded strong-star approximation, and compact weak operator balls are the inputs. Approximation is applied to a new rational core only after it is proved to be a left Hilbert algebra. The selection proof uses finite-Borel-measure tightness on Polish spaces; it proves analytic measurability and selection after completion.
+Use inner products linear in the first variable, separable fibres and a standard sigma-finite base with measure completion. The Hilbert-field coordinates, measurable graph and polar operators, single-fibre right algebra, full completion, bounded strong-star approximation, and compact weak operator balls are the inputs. Approximation is applied to a new rational core only after it is proved to be a left Hilbert algebra. The selection proof first proves finite-Borel-measure tightness on Polish spaces, then analytic measurability and selection after completion.
 
 ## Generate a measurable rational star core
 
@@ -166,7 +166,33 @@ On the core the first line is \(\langle Br_n,c\rangle\), which tends to \(\langl
 
 The explicit core constructions above required no abstract choice. To select an isomorphism or a proper defect we must first code a relation, then select in the completed measure. Projection of a Borel relation need not be Borel.
 
-We give the measure-theoretic selection argument explicitly. A standard Borel base may be realized as a Borel subset of a Polish space; extend its measure by zero outside that subset. Replace the sigma-finite measure by an equivalent finite one: on a disjoint Borel finite-measure exhaustion use positive densities \(2^{-m}/(1+\mu(E_m))\). The resulting measure has the same null sets and the same completed Borel sigma-field. Finite Borel measure tightness is the named scalar input.
+We give the measure-theoretic selection argument explicitly. A standard Borel base may be realized as a Borel subset of a Polish space; extend its measure by zero outside that subset. Replace the sigma-finite measure by an equivalent finite one: on a disjoint Borel finite-measure exhaustion use positive densities \(2^{-m}/(1+\mu(E_m))\). The resulting measure has the same null sets and the same completed Borel sigma-field. We first prove the finite Borel measure tightness used in the compact reduction.
+
+Here is the required tightness argument. Let \(X\) be a Polish space with a complete separable metric \(d\), and let \(\mu\) be a finite Borel measure on \(X\). The empty space is immediate. Otherwise choose a countable dense sequence \((q_j)\). For each \(n\geq1\), the closed balls of radius \(2^{-n}\) about these points cover \(X\). Given \(\varepsilon>0\), continuity from below for measurable sets gives an integer \(N_n\) such that
+\[
+ F_n=\bigcup_{j=1}^{N_n}\overline B(q_j,2^{-n}),
+ \qquad \mu(X\setminus F_n)<\varepsilon 2^{-n}.
+ \tag{SCF.T1}
+\]
+Set
+\[
+ K=\bigcap_{n\geq1}F_n,\qquad
+ \mu(X\setminus K)
+ \leq\sum_{n\geq1}\mu(X\setminus F_n)<\varepsilon.
+ \tag{SCF.T2}
+\]
+The set \(K\) is closed in a complete space and is totally bounded: for every radius, a sufficiently fine finite ball family from (SCF.T1) covers it. If centres in \(K\) are desired, choose a point in each nonempty intersection with a covering ball and double the radius. No individual closed ball is assumed compact.
+
+For completeness, these two properties give compactness as follows. Repeatedly pass to a subsequence lying in one member of a finite cover of successively smaller diameter. The diagonal subsequence is Cauchy and converges in the closed complete set \(K\). Every sequence in \(K\) therefore has a convergent subsequence. Any open cover has a positive Lebesgue radius: otherwise, for each \(j\), choose \(z_j\in K\) whose relative ball of radius \(1/j\) lies in no one cover member. A subsequence converging to \(z\in K\), and an open member containing \(z\), contradict that choice. A finite cover by balls smaller than the Lebesgue radius now yields a finite subcover. Thus \(K\) is compact, including when it is empty.
+
+Apply this construction with \(\varepsilon=2^{-m}\) to obtain compact \(L_m\), and put
+\[
+ X_m=\bigcup_{k=1}^{m}L_k,\qquad
+ X_m\subseteq X_{m+1},\qquad
+ \mu(X\setminus X_m)<2^{-m}.
+ \tag{SCF.T3}
+\]
+These are the increasing compact sets needed below. Their union is conull; it need not be the entire space. This proves finite-Borel-measure tightness directly from completeness, separability and the elementary measure axioms.
 
 First, every Borel subset \(B\) of a Polish space \(Z\) is the projection of a closed subset of \(Z\times\mathbb N^{\mathbb N}\). Here are the coding steps. A closed set has a constant witness. An open set is a countable union of closed distance level sets. Closed-projection codes are closed under countable union by using the first witness coordinate as the chosen index; a convergent sequence of witnesses eventually has the same first coordinate. They are closed under countable intersection by interleaving countably many witnesses and imposing all their closed conditions. The class of sets whose set and complement both have such codes is a sigma-field containing all open sets. It therefore contains every Borel set.
 
@@ -449,4 +475,3 @@ Under this explicit hypothesis the literal unqualified converse in printed Corol
 ### Mathematical sources
 
 Masamichi Takesaki, *Theory of Operator Algebras II*, VI.1 and VI.3, gives the Hilbert-algebra approximation and direct-integral antecedents; Volume I, Appendix A, gives measurable-selection antecedents. The present arguments give explicit product families, multiplier graph cores, sufficient unitary tests and the qualified defect-selection theorem. They retain the distinction between full completion and the original algebra. The new explanatory connections, weak-pairing bridge and synthesis solutions are CC0-1.0 contributions by OpenAI Codex, Ultra, October 2026. Existing proof and component licences remain.
-

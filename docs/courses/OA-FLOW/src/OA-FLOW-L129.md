@@ -1,6 +1,6 @@
 # Finite free actions and cocycle stability
 
-*Self-checked by the writing AI.*
+
 
 Every unitary cocycle for a free action of a finite group is a coboundary. We begin with the averaging projection in the regular crossed product. Its corner identifies the fixed algebra and its center. Trace transfer and a comparison of arbitrary projection families then turn the cocycle into a partial isometry between two fixed matrix corners. A second proof below develops the standard-form route and a nested-family cardinal comparison.
 

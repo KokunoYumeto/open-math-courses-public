@@ -12363,7 +12363,7 @@ Plotting source, exact data, full PNG, and editable SVG.
 | IK.M: canonical full holomorphic relative-cone cup/excision/normalized-trace comparison with IK.10 | Complete bounded-normalization, full cup/excision/trace and final-support primitive proof: [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) **Status:** Proved in §5.45 |
 | Whole-ring degree-one/all-degree action, support preservation and finite full-infinite-order derived diagrams | Complete actual finite-diagram realization and module-derived action: [§5.46, ID.1–ID.6](#5-46-finite-infinite-order-diagrams-on-actual-derived-support-modules); exact final-cone, cone-open, round-domain, restricted action-source and common-collar hypotheses retained **Status:** Proved under ID.1–ID.4 hypotheses |
 | All finite matrix relations, right flatness, proper-ideal detection and unit injectivity | Matrix proof: [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). Ideal/unit/faithful-extension proof: [Section 5.48](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring). Other scalar changes remain open. **Status:** Matrix and ideal/unit/faithful extension proved; other scalar changes open |
-| Ordinary/mixed scalar changes, infinite Späth division and balanced reconstruction | The genuine microlocal/ordinary extension is proved in §§5.47–5.48. Other ordinary/mixed scalar changes, infinite Späth division and balanced reconstruction require separate analytic proofs. **Status:** Other scalar changes and reconstruction open |
+| Ordinary/mixed scalar changes, infinite Späth division and balanced reconstruction | The genuine microlocal/ordinary extension is proved in §§5.47–5.48. Full infinite Späth sum division: [Section 5.49](#5-49-full-infinite-spath-division-and-balanced-reconstruction), ISD.1–ISD.5 and ISB.1–ISB.5. Actual special fibration class: ISF.1–ISF.5. Both algebraic balanced reconstruction maps, whole singular germ, off-ray vanishing and full contact transport: ISR.1–ISR.7. **Status:** Division, special class and reconstruction proved; other ordinary/mixed scalar changes open |
 | Propagation, purity, arbitrary-section separation, monodromy stability/full infinite-order D-type linearity | Separate actual module/solution proofs required **Status:** Open |
 | Faithful finite D-type embedding, finite poles, intrinsic order/half order, full C1, initial generators, arbitrary proper analytic regularity | Separate complete proofs required **Status:** Open |
 | Every remaining BB/KL, GL14/GL16, affine/critical/factorization assertion | Preserved governing full programme scope **Status:** Unfinished |
@@ -12379,11 +12379,11 @@ Plotting source, exact data, full PNG, and editable SVG.
 | Full IK.M product of arbitrary mixed pole/log thick-cone kernels | Complete bounded-normalization, full cup/excision/trace and final-support primitive proof: [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) **Status:** Proved in §5.45 |
 | Whole infinite-order support-preserving degree-one/all-degree action and module-derived finite diagrams | Complete actual finite-diagram realization and module-derived action: [§5.46, ID.1–ID.6](#5-46-finite-infinite-order-diagrams-on-actual-derived-support-modules); exact final-cone, cone-open, round-domain, restricted action-source and common-collar hypotheses retained **Status:** Proved under ID.1–ID.4 hypotheses |
 | Finite matrix relations, right flatness, proper-ideal detection/unit injectivity, ordinary and mixed scalar changes | Full geometric and genuine ordinary matrix/right-flatness proof: [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). Proper-ideal/unit/faithful-extension proof: [Section 5.48](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring). Other ordinary/mixed scalar changes remain open. **Status:** Full geometric/ordinary extension proved; other scalar changes open |
-| Infinite Späth division and balanced reconstruction | Separate complete division and reconstruction for every actual singular-support section **Status:** Open |
+| Infinite Späth division and balanced reconstruction | [Section 5.49](#5-49-full-infinite-spath-division-and-balanced-reconstruction), ISD.1–ISD.5, ISF.1–ISF.5, ISR.1–ISR.7 and complete ISB.1–ISB.5: actual x-dependent spatial relations, both growth regimes, all spatial/derivative/common-domain controls, both balanced inverses, singular-inclusive whole germ, off-ray vanishing and full contact transport. **Status:** Proved in the exact stated fibration and full coefficient class |
 | Moving-sector propagation, singular-support purity, arbitrary-section separation, special-action/monodromy stability, infinite-order D-type linearity | Separate actual module/solution proofs **Status:** Open |
 | Faithful finite D-type embedding, finite poles/intrinsic order/half-order/full C1/initial generators, arbitrary analytic proper regularity, every retained BB/KL/GL14/GL16/affine/critical/factorization assertion | The full original programme dependency chain **Status:** Unfinished |
 
-The full infinite-order geometric ring theorem is proved in [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). Supplied strict angular data and the ordinary diagonal subring retain their explicit scope. Section 5.47 proves the arbitrary finite-matrix relation criterion and right flatness of the full infinite-order microlocal ring over the finite-order ring for all algebraic left modules, including the genuine ordinary zero-section version. Section 5.48 proves proper-ideal detection and arbitrary-module unit injectivity and faithful exact extension for the full geometric and genuine ordinary zero-section rings. Other scalar changes, reconstruction, propagation, analytic proper regularity and every other unresolved original mathematical programme assertion remain open.
+The full infinite-order geometric ring theorem is proved in [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). Supplied strict angular data and the ordinary diagonal subring retain their explicit scope. Section 5.47 proves the arbitrary finite-matrix relation criterion and right flatness of the full infinite-order microlocal ring over the finite-order ring for all algebraic left modules, including the genuine ordinary zero-section version. Section 5.48 proves proper-ideal detection and arbitrary-module unit injectivity and faithful exact extension for the full geometric and genuine ordinary zero-section rings. Section 5.49 proves full infinite Späth sum division and both algebraic balanced reconstruction maps, the distinct special fibration class, whole-germ singular scope, off-ray vanishing and full contact transport. Other scalar changes, propagation, analytic proper regularity and every other unresolved original mathematical programme assertion remain open.
 
 
 ### 5.45. The full geometric infinite-order kernel ring and its canonical product
@@ -12630,7 +12630,7 @@ Editable SVG · Exact data · Figure source
 | Ordinary zero-section and actual off-zero restriction compatibility | IG.16, the complete ordinary Laurent calculation, and [§5.44, OC.1–OC.4 and TC.1–TC.4](#oc-1-explicit-exhaustions-on-every-ordinary-puncture-intersection) |
 | Full canonical mixed pole/log proper cup/excision/trace and ring compatibility | IM.1–IM.6 below |
 | Full infinite-order support-preserving degree-one/all-degree and derived diagrams | Actual finite full-infinite diagrams and all-degree strict module-derived action are proved in [§5.46, ID.1–ID.6](#5-46-finite-infinite-order-diagrams-on-actual-derived-support-modules), with every geometric and common-domain premise checked |
-| Every matrix relation/flatness/faithfulness, ordinary/mixed scalar change, Späth/reconstruction, propagation/purity/separation, special/monodromy/D-type, finite poles/order/half-order/C1/initial generator/arbitrary analytic proper, BB/KL/GL14/GL16/affine/critical/factorization and sourcing/proof obligation | Matrix relations/right flatness are proved in §5.47 and proper-ideal detection/unit injectivity/faithful exact extension in §5.48; the other listed obligations retain their separate scope after IM.6 |
+| Every matrix relation/flatness/faithfulness, ordinary/mixed scalar change, Späth/reconstruction, propagation/purity/separation, special/monodromy/D-type, finite poles/order/half-order/C1/initial generator/arbitrary analytic proper, BB/KL/GL14/GL16/affine/critical/factorization and sourcing/proof obligation | Matrix relations/right flatness are proved in §5.47; proper-ideal detection/unit injectivity/faithful exact extension in §5.48; full infinite Späth sum division, actual special fibration class and balanced reconstruction in [Section 5.49](#5-49-full-infinite-spath-division-and-balanced-reconstruction), ISD/ISF/ISR with the complete ISB appendix. Other ordinary/mixed scalar changes and every other listed obligation retain their separate scope after IM.6 |
 
 The geometric identification is multiplicative by IM.1–IM.6 below. A particular module-derived application still requires the exact cone-open, round-domain, support-to-output and common-collar hypotheses of §5.43; no such application is inferred here.
 
@@ -13025,7 +13025,7 @@ The right panel displays IM.16 on the standard support \(T'_i\), with the actual
 Editable SVG · Exact data · Figure source
 
 
-This proves the full coefficient/geometric-kernel ring, its canonical mixed product, unit, associativity, nonlinear coordinate compatibility and ordinary zero-section restriction. A particular all-degree module-derived application still requires the exact cone-open, round-domain, common-collar and output-support hypotheses of §5.43. Section 5.47 proves the full arbitrary finite-matrix relation theorem and right flatness for all algebraic left modules, including the genuine ordinary zero-section restriction. Section 5.48 proves extension faithfulness and unit injectivity for every algebraic left module and sheaf in the full geometric and genuine ordinary zero-section rings. Other ordinary and mixed scalar changes, infinite Späth division and whole-germ reconstruction remain to be proved. Moving-sector propagation, purity, arbitrary-section separation, special action and monodromy stability, full infinite-order D-type linearity and faithful D-type embedding remain separate. Finite poles, intrinsic and half order, full C1 and characteristic cutoff, initial generators and arbitrary analytic proper regularity also remain required. Generalized and nonactual central characters, other regular complex characters, singular and parabolic blocks, full IC/Hecke/KL, GL14/GL16, stack/ind/restricted local systems, affine/critical/factorization and every other unresolved mathematical assertion retain their full scope.
+This proves the full coefficient/geometric-kernel ring, its canonical mixed product, unit, associativity, nonlinear coordinate compatibility and ordinary zero-section restriction. A particular all-degree module-derived application still requires the exact cone-open, round-domain, common-collar and output-support hypotheses of §5.43. Section 5.47 proves the full arbitrary finite-matrix relation theorem and right flatness for all algebraic left modules, including the genuine ordinary zero-section restriction. Section 5.48 proves extension faithfulness and unit injectivity for every algebraic left module and sheaf in the full geometric and genuine ordinary zero-section rings. Section 5.49, ISD.1–ISD.5, ISF.1–ISF.5 and ISR.1–ISR.7 proves full infinite Späth sum division, the distinct special fibration class and both balanced reconstruction maps for the whole singular-inclusive germ, including off-ray vanishing and the explicit full contact shear. Other ordinary and mixed scalar changes remain open. Moving-sector propagation, purity, arbitrary-section separation, special action and monodromy stability, full infinite-order D-type linearity and faithful D-type embedding remain separate. Finite poles, intrinsic and half order, full C1 and characteristic cutoff, initial generators and arbitrary analytic proper regularity also remain required. Generalized and nonactual central characters, other regular complex characters, singular and parabolic blocks, full IC/Hecke/KL, GL14/GL16, stack/ind/restricted local systems, affine/critical/factorization and every other unresolved mathematical assertion retain their full scope.
 
 
 ### 5.46. Finite infinite-order diagrams on actual derived support modules
@@ -13206,7 +13206,7 @@ H\phi=(-1)^k\phi h,\\ dH+Hd=1.
 
 Expanding gives cancellation of \(d_Q\phi h\) with signs \((-1)^k+(-1)^{k+1}\), leaving \(\phi(hd_P+d_Ph)=\phi\). Restrict these formulas through the split idempotents. All sums in the projective direction are finite even if the support resolution is unbounded above. The exact finite-column filtration of DL.8 proves that these projective tensor/Hom complexes compute the corresponding derived models. The contraction therefore transfers in the actual module-derived category with all degree, idempotent and map identities intact.
 
-This proves finite full-infinite-order instantiation under the checked geometric hypotheses. [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring) proves the full finite-matrix relation criterion and genuine microlocal/ordinary all-module right flatness; [Section 5.48](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring) proves proper-ideal detection, arbitrary-module unit injectivity and faithful exact extension. Other ordinary/mixed scalar changes, infinite Späth division/reconstruction, propagation/purity/separation, D-type/C1/half-order/initial generators, analytic proper regularity and every other unresolved programme obligation require their own complete proofs.
+This proves finite full-infinite-order instantiation under the checked geometric hypotheses. [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring) proves the full finite-matrix relation criterion and genuine microlocal/ordinary all-module right flatness; [Section 5.48](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring) proves proper-ideal detection, arbitrary-module unit injectivity and faithful exact extension. Section 5.49 supplies complete full infinite Späth sum division and balanced reconstruction, the actual special fibration source class and the explicit full contact transport. Other ordinary/mixed scalar changes, propagation/purity/separation, D-type/C1/half-order/initial generators, analytic proper regularity and every other unresolved programme obligation require their own complete proofs.
 
 ![One actual round-domain margin and the strict module-derived mechanism](assets/full-infinite-derived-instantiation.png)
 
@@ -13217,7 +13217,7 @@ Editable SVG, exact data, and reproducible plotting source.
 
 ### 5.47. Arbitrary finite matrices and right flatness of the full infinite-order ring
 
-We prove the finite-matrix relation criterion for the full geometric infinite-order ring and right flatness for all algebraic left modules. The ordinary zero-section version retains the original polynomial basis and relation shifts. Every relation coefficient has one actual domain, every positive-epsilon bound, one factorial negative bound and every spatial index. Faithfulness, other scalar changes, reconstruction and the broader programme require separate proofs.
+We prove the finite-matrix relation criterion for the full geometric infinite-order ring and right flatness for all algebraic left modules. The ordinary zero-section version retains the original polynomial basis and relation shifts. Every relation coefficient has one actual domain, every positive-epsilon bound, one factorial negative bound and every spatial index. Section 5.48 proves proper-ideal detection, arbitrary-module unit injectivity and faithful exact extension. Section 5.49 proves the distinct special fibration class and full infinite Späth sum division and balanced reconstruction. Other scalar changes and the broader programme require separate proofs.
 
 The earlier actual finite-order input is [§5.19, complete homogeneous products and ordered jets](#5-19-actual-factorial-growth-symbols-and-ordered-jets), [§5.20, the one-norm product estimates](#5-20-one-norm-multiplication-units-and-dummy-division), [§5.21, actual simultaneous division and finite stalk relations](#5-21-actual-simultaneous-division-and-finite-stalk-relations), [§5.22.1, the actual normal element](#5-22-1-the-actual-normal-element), and [§5.24.1, chart normalization](#5-24-1-the-filtration-used-here) and [§5.24.2, strict image generation](#5-24-2-an-additional-consequence-of-the-actual-division). The full coefficient class and contractions are [§5.44, IK.1–IK.5](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels); the actual geometric ring, zero detection, nonlinear coordinates, canonical mixed product and final-support witnesses are [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The coefficient division and all-index convergence arguments used below are proved in MFA.1–MFA.4 and MFB.1–MFB.5 before the matrix proof MF.1–MF.9.
 
@@ -13615,7 +13615,7 @@ Editable SVG, exact data, and reproducible plotting source.
 
 We prove that every proper finite-order left ideal remains proper in the full geometric infinite-order ring, including the genuine ordinary zero section. Combined with the right-flatness theorem of [§5.47, proof sections MF.1–MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring), this gives unit injectivity and faithful exact, conservative scalar extension for every algebraic left module and every sheaf of left modules. The precise tensor-cohomology and support consequences are included below.
 
-The complete analytic coefficient and convergence arguments are given here as proof sections FEA.1–FEA.4 and FEB.1–FEB.5 before FEP.1–FEP.10. Earlier actual finite division and strictness are [§5.21](#5-21-actual-simultaneous-division-and-finite-stalk-relations) and [§5.24.2](#5-24-2-an-additional-consequence-of-the-actual-division). The full coefficient and kernel bounds are [§5.44, proof sections IK.1–IK.5](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels), and the source-defined ring, mixed product, coordinate maps and final-support witnesses are [§5.45, proof sections IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). Other scalar changes, reconstruction, propagation and the broader programme require separate proofs.
+The complete analytic coefficient and convergence arguments are given here as proof sections FEA.1–FEA.4 and FEB.1–FEB.5 before FEP.1–FEP.10. Earlier actual finite division and strictness are [§5.21](#5-21-actual-simultaneous-division-and-finite-stalk-relations) and [§5.24.2](#5-24-2-an-additional-consequence-of-the-actual-division). The full coefficient and kernel bounds are [§5.44, proof sections IK.1–IK.5](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels), and the source-defined ring, mixed product, coordinate maps and final-support witnesses are [§5.45, proof sections IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). Section 5.49 proves full infinite Späth sum division and balanced reconstruction with the distinct special fibration source class. Other scalar changes, propagation and the broader programme require separate proofs.
 
 The complete coefficient argument below is used for proper-ideal detection without invoking right flatness. Every coefficient operator is bounded complex linear on the stated common domain. The later unit-injectivity consequences use the right-flatness theorem of [§5.47, proof section MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring).
 
@@ -14076,7 +14076,7 @@ Choose phase-cone spatial slopes \(B_i>A_i\). Use the proved finite phase grid \
 
 The auxiliary coefficient quotient \(\mathcal P\) depends on coordinates and standard heads. Its existence proves an intrinsic nonvanishing statement: proved nonlinear coordinate ring maps transport the finite ideal identity and unit to every overlap. No canonical coordinate-independent module projection is needed. Ordinary compatibility is supplied directly in FEP.6.
 
-The precise proved scope is proper-left-ideal detection in the full geometric \(E^\infty/E\) and ordinary \(D^\infty/D\) stalks, with all-domain/growth/support controls. Unit injectivity and faithful exact extension for arbitrary algebraic modules and sheaves follow using the complete earlier right-flatness theorem identified in FEP.7. The other scalar changes, \(E^R\), the special fibration class, coordinate-commuting \(A^\infty\), mixed \(E^\infty/D^\infty\) flatness, infinite Späth division/balanced reconstruction, propagation, purity, singular-inclusive separation, D-type/C1, half-order/contact transport, initial analytic generator, arbitrary analytic proper regularity and the original GL/BB/KL scope require separate proofs. No such theorem is implied by this coefficient quotient.
+The precise proved scope is proper-left-ideal detection in the full geometric \(E^\infty/E\) and ordinary \(D^\infty/D\) stalks, with all-domain/growth/support controls. Unit injectivity and faithful exact extension for arbitrary algebraic modules and sheaves follow using the complete earlier right-flatness theorem identified in FEP.7. The other scalar changes, \(E^R\), the special fibration class, coordinate-commuting \(A^\infty\), mixed \(E^\infty/D^\infty\) flatness, infinite Späth division/balanced reconstruction, propagation, purity, singular-inclusive separation, D-type/C1, half-order/contact transport, initial analytic generator, arbitrary analytic proper regularity and the original GL/BB/KL scope require separate proofs. No such theorem is implied by this coefficient quotient. Section 5.49 separately proves the special fibration class, full infinite Späth sum division and algebraic balanced reconstruction, with the explicit full contact shear; the other listed obligations remain open.
 
 #### FEP.10. A decisive joint-domain calibration
 
@@ -14150,6 +14150,889 @@ Although the original two principal symbols generate the proper commutative idea
 
 Editable SVG, exact data, and reproducible source.
 
+
+
+### 5.49. Full infinite Spath division and balanced reconstruction
+
+We prove the full infinite Späth sum decomposition and both algebraic balanced reconstruction maps for the entire generic holonomic germ. The proof includes singular branches, nonreduced fibres, every spatial Taylor index, both homogeneous growth regimes, fixed derivative and iteration tails, off-ray vanishing and the actual generic-position contact shear. The coordinate-commuting ring, uniform finite spatial-polynomial ring, decorated special fibration sheaf and full spatial-convergent ring remain distinct.
+
+The division is proved in ISD.1–ISD.5, the source realization and full product of the decorated special sheaf in ISF.1–ISF.5, and reconstruction and contact transport in ISR.1–ISR.7. The complete convergence argument ISB.1–ISB.5 is included after them; its earlier coefficient-norm premise is the complete MFA.1–MFA.4 proof in [§5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). The arbitrary-module faithful and support theorem used for whole-support detection is [§5.48, FEP.8–FEP.9](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring).
+
+The complete actual finite product, norm, units, Nakayama and division arguments are [§5.19–§5.21](#5-19-actual-factorial-growth-symbols-and-ordered-jets), the actual normal shift is [§5.22.1](#5-22-1-the-actual-normal-element), and chart normalization and strictness are [§5.24.1–§5.24.2](#5-24-1-the-filtration-used-here).
+
+The complete whole-germ finite input is [§5.28, Q.1–Q.7](#5-28-convergent-contact-quantization-and-whole-germ-generic-position), [§5.29, G.1–G.5](#5-29-actual-finite-generation-over-the-coordinate-commuting-ring), [§5.30, F.1–F.7](#5-30-actual-polynomial-flatness-and-reconstruction-after-finite-realization), [§5.31, L.1–L.8](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices), and [§5.32, J.1–J.3](#5-32-coherent-actual-lattices-and-principal-support-for-the-whole-germ). The full coefficient/kernel arguments are [§5.44, IK.1–IK.5, AN.1–AN.4 and TC.1–TC.4](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels) and [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The strong spatial-coefficient source construction uses the complete [§5.43, DLH.1–DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure) existence argument and the finite comparisons in [§5.34, R.5–R.6](#5-34-full-current-resolutions-and-controlled-proper-image-comparison) and [§5.35, V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace).
+
+Free human context: Kashiwara and Kawai, [On the holonomic systems of microdifferential equations III, author-hosted full PDF](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.3–III.5, printed pp.887–905. The complete III.5 continuation includes Corollary 3.5.7 and Theorem 3.5.8 through printed p.905. The printed commutator inconsistency on p.902 is discussed in ISD.1, where the correct coordinate commutator is derived directly. The source specifies targets and conventions; every mathematical premise is proved here or at the exact complete earlier locators above.
+
+**Actual full infinite Späth division.**
+
+The full source-defined coefficient/ring premise is [§5.45, IG.1–IG.5 and IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The complete lowering proof ISB.1–ISB.5 is included below. The complete actual finite input is [§5.28](#5-28-convergent-contact-quantization-and-whole-germ-generic-position)–[§5.32](#5-32-coherent-actual-lattices-and-principal-support-for-the-whole-germ). The faithful-extension theorem [§5.48, FEP.8–FEP.9](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring) is used for proof section ISR.5 support detection, not for division.
+
+#### ISD.1. Exact rings, sides and the finite whole-germ input
+
+Use \(u=(t,x_1,\ldots,x_d)\), \(\rho=(\tau,\xi)\), \(z=\xi/\tau\), \(h=\tau^{-1}\), and \(p_0=(0;1,0)\). Write \(E\) for the actual finite-order ring and \(B=E^\infty_{p_0}\) for the proved source-defined full geometric stalk. Its normal symbols are
+
+\[
+\begin{gathered}
+P=\sum_{j\in\mathbf Z}\tau^jp_j(u,z),\\
+|p_{-n}|_K\le M_K C_K^n n!,\\
+|p_j|_K\le M_{K,\epsilon}\epsilon^j/j!\\(j\ge0)
+\end{gathered}
+\tag{ISD.1}
+\]
+
+for every \(\epsilon>0\), with every coefficient holomorphic on one product independent of \(j,\epsilon\). All spatial Taylor indices are retained. All modules are left modules, free-module maps use row vectors and multiplication on the right, and every tensor below is algebraic.
+
+Define \(A^\infty\subset B\) by \([P,x_i]=0\) for all \(i\), and \(R^\infty\subset B\) by one uniform finite bound on the spatial polynomial degree. Precisely,
+
+\[
+\begin{gathered}
+A^\infty=\left\{\begin{gathered}p_j(u,z)\\\text{ independent }\\\text{of }z,\\\ \text{all }j\end{gathered}\right\},\\
+R^\infty=\bigoplus_{\beta\in\mathbf N^d}A^\infty\partial_x^\beta .
+\end{gathered}
+\tag{ISD.2}
+\]
+
+The direct sum means finite support in \(\beta\) for an entire operator, not a bound varying with \(j\). To verify it, the actual Leibniz formula gives \([P,x_i]=\partial_{\xi_i}P\). A common power of each \(\operatorname{ad}x_i\) vanishes exactly when each normalized coefficient is polynomial with a common coordinatewise degree bound; finitely many such bounds give a uniform total degree. Taylor extraction on a smaller fixed \(z\)-polydisc and the fixed shift \(j=m+|\beta|\) put each coefficient of \(\partial_x^\beta\) in \(A^\infty\). Conversely each finite displayed sum has a uniform polynomial bound. The product of two such sums remains finite in \(\beta\): the Leibniz rule in \(x\) is finite for their spatial powers, while all \(\tau,t\) contractions are the actual proved product in \(A^\infty\). Thus both are genuine subrings, with the original unit. They are not the decorated special sheaf of proof section ISF.1 below.
+
+Let \(M\) be any whole coherent actual holonomic \(E\)-germ in generic position, without a regularity or smooth-branch restriction. [§5.32, J.1–J.3](#5-32-coherent-actual-lattices-and-principal-support-for-the-whole-germ) constructs an actual coherent lattice \(M_0\subset M\), with \(EM_0=M\), injective \(h\), and finite nilpotent principal fibre. [§5.28, Q.1–Q.7](#5-28-convergent-contact-quantization-and-whole-germ-generic-position) puts every whole reduced Lagrangian germ in that position and transports its actual lattice. [§5.29, G.1–G.5](#5-29-actual-finite-generation-over-the-coordinate-commuting-ring) makes \(M_0\) finite over the coordinate-commuting \(A_0\); these are the complete earlier proofs of this finite input.
+
+The map \(A_0\to\mathbf C\) sending an operator to its index-zero coefficient at \(u=0\) is a ring map. Its kernel \(\mathfrak m\) is two-sided. Every element outside \(\mathfrak m\) is an actual unit by the proved elliptic inverse in [§5.20.3](#5-20-3-actual-elliptic-inverses-and-the-stalk-radical), which preserves the \(z\)-independent subring. Thus \(\mathfrak m=\operatorname{Jac}(A_0)\): a proper left ideal contains no element outside it, and \(A_0/\mathfrak m=\mathbf C\). The finite-generator Nakayama proof applies. Choose generators \(U=(u_1,\ldots,u_r)^{\mathsf T}\) of \(M_0\) whose residues form a basis of \(M_0/\mathfrak mM_0\). The case \(M=0\) has \(r=0\) and every assertion is immediate.
+
+Since \(z_\nu M_0\subset M_0\), there are actual matrices \(C_\nu\in M_r(A_0)\) such that
+
+\[
+\begin{gathered}
+z_\nu U=C_\nu U,\\
+B_\nu=\tau\circ C_\nu\in M_r(A(1)),\\
+(D_\nu I-B_\nu)U=0,\\
+L_\nu=h\circ(D_\nu I-B_\nu)\\
+=z_\nu I-C_\nu .
+\end{gathered}
+\tag{ISD.3}
+\]
+
+Here \(D_\nu=\partial_{x_\nu}\), \(h\tau=1\), and \(hz_\nu=z_\nu h\); hence the last equality is an exact actual product identity. Each \(B_\nu\) commutes with every \(x_i\), retains arbitrary holomorphic \(x\)-dependence, and has order at most one. Put \(A_\nu(u)=\sigma_0(C_\nu)\). The matrices \(A_\nu(0)\) represent the commuting nilpotent \(z_\nu\)-actions on the finite principal fibre. In particular they commute with each other at \(u=0\). No commutation of the lifts \(C_\nu\), or of the matrices \(A_\nu(u)\) on the whole free frame, is assumed.
+
+The inspected free source HolIII printed p.902 / PDF90 prints “free from \(D_1,\ldots,D_d\), i.e. \([D_\mu,B_\nu]=0\)” in (3.5.11). Its earlier definition of \(A\), and its principal \(A_\nu(t,x)\tau\), require the spatial-derivative-free condition \([x_\mu,B_\nu]=0\). The displayed \(D_\mu\) commutator is an internal printed inconsistency: \([D_\mu,B_\nu]\) would differentiate the allowed \(x\)-dependent coefficients. Equation ISD.3 proves the precise condition used here directly, so no unproved interpretation of that printed commutator is a premise. The actual source page is in the linked free PDF.
+
+#### ISD.2. One fixed family of principal division operators
+
+Commuting nilpotent matrices admit a common strict triangular basis. Here is the elementary argument. The kernel of the first nilpotent is nonzero and invariant under all the others. Successively intersect with the next kernel; its restriction is nilpotent, so a nonzero invariant space has nonzero kernel. This yields a common vector killed by all matrices. Apply the same argument to their induced commuting nilpotent matrices on the quotient by that vector and induct on dimension. The resulting invariant flag has zero diagonal actions. A constant change of the generators \(U\) puts all \(A_\nu(0)\) in this strict triangular form.
+
+For any finite input family, choose its common coefficient product and positive outer spatial radii \(R_\nu^*\). A weighted component norm makes all these fixed strict triangular matrices as small as desired: for an upper triangular matrix, take component weights \(c_j=\delta^j\), so right row multiplication has factors \(c_j/c_i=\delta^{j-i}\) for \(j>i\); use the reversed exponents for the lower triangular convention. Decrease \(\delta>0\), then shrink the base radii while holding the spatial radii fixed. The absolute Taylor norm of every nonconstant base term tends to zero by domination by its convergent Taylor series. Therefore one weighted row/matrix norm satisfies
+
+\[
+\begin{gathered}
+\|A_\nu(u)\|_r\le a_\nu<R_\nu^*/8
+\\\text{for every }1/2\le r\le1,\\
+R_\nu(r)=rR_\nu^* .
+\end{gathered}
+\tag{ISD.4}
+\]
+
+The base polyradii also scale over this fixed interval. The finite matrices remain fixed; the component weights and base radius may depend on the common input family, as an actual stalk argument permits. This does not choose a radius for each coefficient or each epsilon.
+
+For a holomorphic row \(f=\sum_{k\ge0}f_k(u,z_{\ne\nu})z_\nu^k\), define coefficientwise, using ordinary matrix multiplication,
+
+\[
+\begin{gathered}
+p_\nu f=\sum_{k\ge0} f_k A_\nu^k,\\
+d_\nu f=\sum_{k\ge1}\sum_{v=0}^{k-1}\\
+f_k z_\nu^{k-1-v} A_\nu^v,\\
+T_{\nu,0}q=q(z_\nu I-A_\nu).
+\end{gathered}
+\tag{ISD.5}
+\]
+
+These series are holomorphic on the fixed products of equation ISD.4. In the absolute Taylor norm, summing the geometric factors gives
+
+\[
+\begin{gathered}
+\|p_\nu\|_r\le(1-a_\nu/R_\nu(r))^{-1}\\
+\le4/3,\\
+\|d_\nu\|_r\le(R_\nu(r)-a_\nu)^{-1}\\
+\le 8/(3R_\nu^*) .
+\end{gathered}
+\tag{ISD.6}
+\]
+
+Indeed a \(z_\nu^k\)-term of norm \(\|f_k\|R_\nu^k\) contributes at most \(\|f_k\|a_\nu^k\) to \(p_\nu\), and at most \(\|f_k\|R_\nu^{k-1}\sum_{v<k}(a_\nu/R_\nu)^v\) to \(d_\nu\). Absolute convergence proves the same estimates with all other spatial and base Taylor indices intact. The scalar telescoping identity for \(z^kI-A^k\), with coefficient order unchanged, yields
+
+\[
+\begin{gathered}
+T_{\nu,0}d_\nu=1-p_\nu,\\
+d_\nu T_{\nu,0}=1,\\
+d_\nu p_\nu=0,\\ p_\nu^2=p_\nu .
+\end{gathered}
+\tag{ISD.7}
+\]
+
+For \(d_\nu T_{\nu,0}=1\), truncate a holomorphic quotient at spatial degree \(K\); the terminal matrix power is bounded by \((a_\nu/R_\nu)^K\), hence tends to zero. This also proves the identity for every holomorphic germ on that product. The image of \(p_\nu\) and the kernel of \(d_\nu\) consist exactly of rows independent of \(z_\nu\). The maps are bounded complex linear coefficient maps, not \(E\)-linear or \(A^\infty\)-linear projections.
+
+These constructions commute with restriction and preserve independence of any other spatial variable already eliminated, since \(A_\nu(u)\) has no spatial covariable. Their formulas on different allowable radii give the same germs by equation ISD.7 and the uniqueness of the displayed principal division.
+
+#### ISD.3. Actual infinite correction, all tails and common domains
+
+Let \(T_\nu q=q\circ L_\nu\) and \(E_\nu=T_\nu-T_{\nu,0}\). Every term of \(E_\nu\) loses at least one homogeneous degree. The right tail \(C_\nu-A_\nu\) has order at most minus one and factorial bounds. All contractions with the principal \(A_\nu(u)\), including its \(t\) and every \(x\) derivative, have positive contraction order. The right term \(z_\nu I\) is base independent, so its product is ordinary multiplication and has no derivative correction.
+
+Choose a finite radius ladder from the outer product to a fixed final product, reserving a further intermediate product for each finite composition below and for their verification. Since there are only \(d\) divisions and finitely many matrices, this requires finitely many shrinkings. No shrinking is indexed by a homogeneous degree, a word length or epsilon. On that ladder equation ISD.6 gives one uniform bound \(H\) for every \(d_\nu,p_\nu\).
+
+The complete local lowering proof ISB.1–ISB.5 now applies to \(d_\nu E_\nu\). Its hypotheses are exactly equations ISD.4–ISD.6 and the finite actual right order-zero matrix \(L_\nu\). For total loss \(K\), input homogeneous degree \(m\), and one fixed coefficient compact, its complete word majorant is
+
+\[
+\begin{gathered}
+C_1^K\frac{(|m|+K)!}{|m|!}\,\|f_m\|_{\rm outer}.
+\end{gathered}
+\tag{ISD.8}
+\]
+
+The complete proof in ISB.1–ISB.5 retains every right-tail index, every spatial/base contraction, all \(\tau\)-Euler derivatives and every inserted bounded coefficient map. It allocates the entire fixed Cauchy margin over a word before estimating it. In particular it does not assume that \(d_\nu\) commutes with base differentiation or with actual operator multiplication.
+
+Thus the actual inverse and quotient are
+
+\[
+\begin{gathered}
+q_\nu=(1+d_\nu E_\nu)^{-1}d_\nu F\\
+=\sum_{\ell\ge0}(-d_\nu E_\nu)^\ell d_\nu F,\\
+s_\nu=F-T_\nu q_\nu .
+\end{gathered}
+\tag{ISD.9}
+\]
+
+These are actual \(B\)-rows, not formal completions. For clarity the complete two-sided summation from equation ISD.8 gives the following bounds. For positive output degree \(j\), input \(m=j+K\) has
+\[
+\begin{gathered}
+\frac{(j+2K)!j!}{(j+K)!^2}\le4^K,\\
+\|(q_\nu)_j\|\le H M_\epsilon\frac{\epsilon^j}{j!}\\
+\sum_{K\ge0}(4C_1\epsilon)^K .
+\end{gathered}
+\tag{ISD.10}
+\]
+
+Given any desired output epsilon, choose an input epsilon no larger than it and with \(4C_1\epsilon<1/2\); the coefficient product does not change with that choice. For negative output \(-n\), losses \(K<n\) give at most \(HM n!(C+C_1)^n\), while \(K\ge n\), with input \(m=K-n\ge0\), give
+\[
+\begin{gathered}
+\|(q_\nu)_{-n}\|\\\le HM n!(C+C_1)^n\\
++HM_\epsilon n!(3C_1)^n\\
+\sum_{m\ge0}(9C_1\epsilon)^m .
+\end{gathered}
+\tag{ISD.11}
+\]
+
+Here \((n+2m)!/(n!m!^2)\le3^{n+2m}\). One fixed small epsilon gives a genuine factorial negative bound. Tails in \(K\), or in inverse word length \(\ell\) since \(K\ge\ell\), have the corresponding geometric tails in equations ISD.10–ISD.11. In equation ISD.11 a tail beginning beyond \(K=n\) is bounded by the tail beginning at \(m=K-n\). Every fixed base or spatial derivative has the same tails on the reserved smaller product by Cauchy. This proves joint normal convergence, the every-epsilon positive class and the negative factorial class for all spatial indices on the same domain.
+
+The actual product theorem places \(s_\nu\) in \(B\) as well. The convergent inverse identity, justified on the intermediate product before passing to the final one, gives \(d_\nu s_\nu=0\). Therefore \(s_\nu=p_\nu s_\nu\) is independent of \(z_\nu\). Conversely if \(T_\nu q+s=0\), with \(s\) independent of \(z_\nu\), applying \(d_\nu\) and its actual inverse gives \(q=0\), then \(s=0\). This is uniqueness for one normalized one-variable division; it is not a directness assertion for the simultaneous sum.
+
+#### ISD.4. All spatial relations and the printed sum
+
+Apply equation ISD.9 successively to \(F\), then its first remainder, and so on in the fixed order \(\nu=1,\ldots,d\). At stage \(\nu\) work in the coefficient subspace independent of \(z_1,\ldots,z_{\nu-1}\). It is preserved by \(d_\nu,p_\nu,E_\nu\): the right coefficients are independent of all \(z\), spatial derivatives in already eliminated variables vanish, and the normal Euler derivative preserves that independence. The final remainder is independent of every \(z_\nu\). Setting \(a_\nu=q_\nu\circ h\) gives the literal actual decomposition
+
+\[
+\begin{gathered}
+F=\sum_{\nu=1}^d a_\nu\circ(D_\nu I-B_\nu)\\
++s,\\
+a_\nu\in B^r,\quad s\in(A^\infty)^r .
+\end{gathered}
+\tag{ISD.12}
+\]
+
+Indeed \(L_\nu=h\circ(D_\nu I-B_\nu)\), so the normalization is on the left; using \((D_\nu-B_\nu)h\) here would require an additional conjugation and would not give equation ISD.12 with the stated matrices. Right multiplication by \(h\) in \(a_\nu=q_\nu h\) is the fixed homogeneous shift \(j\mapsto j-1\), preserving both full bounds on the same product. The finite spatial list and all inverse series have a common final domain and the derivative/tail controls of equations ISD.10–ISD.11. Thus
+\[
+\begin{gathered}
+B^r=\sum_{\nu=1}^d B^r(D_\nu I-B_\nu)\\
++(A^\infty)^r .
+\end{gathered}
+\tag{ISD.13}
+\]
+
+This proves the full spatial sum decomposition for the actual matrices supplied by the whole-germ lattice. No uniform finite spatial degree is imposed on \(F\) or \(a_\nu\). The remainder belongs to the coordinate-commuting ring only after every spatial variable has been eliminated.
+
+The printed decomposition is a sum. For \(d=2,r=1,B_1=B_2=0\), the coefficient rows \(a_1=D_2,a_2=-D_1\) give \(a_1D_1+a_2D_2=0\) although neither is zero. Thus arbitrary coefficient tuples are not unique, even in the finite subring. The ordered division above selects one tuple; no uniqueness of all simultaneous representations, no directness, and no identification of the entire module quotient with a free \(A^\infty\)-module is claimed. Other actual \(A^\infty\)-relations of \(M\), including torsion and nilpotents, remain.
+
+For \(d=0\), equation ISD.13 reads \(B^r=(A^\infty)^r\) and requires no division. For a finite family of inputs, maps or relations, all data can be represented first on one common product and the finite construction above then supplies one common final product and all the stated bounds. It does not assert one universal representative neighbourhood for every element of an unrestricted stalk.
+
+#### ISD.5. Exact calibrations and retained limits
+
+For one spatial variable and the constant nilpotent matrix \(J=\left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right)\), the normalized divisor \(L=zI-J\) has no correction \(E_\nu\). The exact principal and full division is
+\[
+\begin{gathered}
+z^k v=\left(\sum_{a=0}^{k-1}z^{k-1-a}vJ^a\right)\\
+(zI-J)+vJ^k .
+\end{gathered}
+\tag{ISD.14}
+\]
+
+It retains the nilpotent remainder \(vJ\) for \(k=1\); replacing \(J\) by its eigenvalue zero would change the actual module. For \(F_j=\tau^j/(1-z/r)\), \(|z|<r\), the quotient and remainder are
+\[
+\begin{gathered}
+s_j=\tau^jv(I-J/r)^{-1},\\
+q_j=\tau^jv\,r^{-1}(1-z/r)^{-1}\\
+(I-J/r)^{-1}.
+\end{gathered}
+\tag{ISD.15}
+\]
+
+The finite inverse \(I+J/r\) verifies the formulas exactly, while the input has infinitely many spatial Taylor indices. Multiply each already degree-\(j\) equation ISD.15 by \(1/(j!)^2\), then sum over \(j\ge0\). Its single normal prefactor is therefore \(\tau^j/(j!)^2\), with no repeated \(\tau^j\). This gives the actual full positive-head calibration and every epsilon bound, since \(1/(j!)^2\le e^{1/\epsilon}\epsilon^j/j!\). All of its spatial Taylor indices remain.
+
+The nonreduced complete earlier example [§5.31, L.8](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices) also retains the independent \(A\)-relation \(T_*=tI-h\operatorname{diag}(0,1)\), with the exact second differential \(T_*-hI\). Equation ISD.13 eliminates spatial derivatives without removing that relation. Its nilpotent \(zI-J\) remainder is therefore not a claim that \(M^\infty\) is free over \(A^\infty\).
+
+The construction uses holomorphic complement kernels through the proved geometric identification, never an ordinary supported-distribution limit of the positive head. Its full finite-family support, overlap and trace bridge is stated in proof section ISR.6 below. The faithful-extension theorem [§5.48, FEP.8–FEP.9](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring) detects the nonzero finite module inside its extension in proof section ISR.5; it is not needed for equation ISD.13 itself. All propagation, purity, separation, \(E^R\)-module injection, D-type, C1, half-order and analytic-proper obligations remain separate.
+
+**The distinct decorated special fibration sheaf.**
+
+This local proof retains precisely the special fibration \(F(t,x)=x\) and the decorated sheaf \(\widetilde E^\infty\) of the freely author-hosted HolIII III.3, printed pp.888–889. It is distinct from full \(E^\infty\), \(A^\infty\) and \(R^\infty\). The complete coefficient/kernel and angular proofs are at [§5.44, IK/AN/TC](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels) and [§5.45, IG/IM](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The complete free source context is III.3–III.5, printed pp.887–905.
+
+#### ISF.1. Joint coefficient specification and signs
+
+Put \(\omega=s-t\). A special germ has a pair \((P_0,K)\), with
+\[
+\begin{gathered}
+P_0=\sum_{m\ge0,\beta\ge0}p_{m,\beta}(t,x)\\
+D_t^mD_x^\beta\in D^\infty,\\
+K(t,s,x,D_x)\\
+=\sum_{\beta\ge0}k_\beta(t,s,x)D_x^\beta .
+\end{gathered}
+\tag{ISF.1}
+\]
+Every coefficient of \(P_0\) is holomorphic on one \(U\); on each compact and for every epsilon,
+\[
+\begin{gathered}
+|p_{m,\beta}|\le M_\epsilon
+\frac{\epsilon^{m+|\beta|}}{m!\beta!}.
+\end{gathered}
+\tag{ISF.2}
+\]
+Every coefficient of \(K\) is holomorphic on one joint product in \((t,s,x)\), including \(t=s\), and on each compact
+\[
+\begin{gathered}
+\text{for every }\delta>0,\\
+|k_\beta(t,s,x)|\le M_\delta\,\delta^{|\beta|}/\beta! .
+\end{gathered}
+\tag{ISF.3}
+\]
+The product is independent of indices and epsilon. Separate normal and spatial epsilons are equivalent to equation ISF.2 by using their minimum; this reserves normal margins independently of a desired spatial output bound.
+
+Write \(J=-K\), and expand on a fixed smaller joint product as
+\[
+\begin{gathered}
+J(t,s,x,D_x)=\sum_{q\ge1,\beta\ge0}\\
+a_{-q,\beta}(t,x)\frac{(t-s)^{q-1}}{(q-1)!}D_x^\beta .
+\end{gathered}
+\tag{ISF.4}
+\]
+The associated full symbol is \(P_0+\sum_{q,\beta}a_{-q,\beta}\tau^{-q}\xi^\beta\). Its normal relative-kernel expression is
+\[
+\begin{gathered}
+\frac1{2\pi i}\\\left\{\begin{gathered}
+P_0(t,x,D_t,D_x)\frac1{\omega}\\
+-J(t,s,x,D_x)\log\omega
+\end{gathered}\right\}.
+\end{gathered}
+\tag{ISF.5}
+\]
+Thus equation ISF.5 has the source's \(+K\log(s-t)\) sign. Full spatial Cauchy factors and the input top form are included on embedding in the diagonal cube. The positive residue scalar and all-dimensional top-cube sign are the proved TC/IG/IM signs of [§5.44, TC.1–TC.4](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels) and [§5.45, IG/IM](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product).
+
+For a fixed coefficient compact choose an outer \(s-t\) circle of radius \(\eta>0\) in the joint product. Cauchy and equation ISF.3 give
+\[
+\begin{gathered}
+|a_{-q,\beta}|\le M_\delta C^q(q-1)!
+\frac{\delta^{|\beta|}}{\beta!},\\ q\ge1,
+\end{gathered}
+\tag{ISF.6}
+\]
+where one \(C\ge1\) is independent of \(\delta\). Conversely equation ISF.6 with that independence makes equation ISF.4 normally convergent for \(|t-s|<1/C\), with equation ISF.3 on every smaller compact, for every delta. Allowing a new \(C\) for every spatial epsilon without a common normal radius would not prove the special class.
+
+#### ISF.2. Actual geometric map on every normal fibre
+
+On a compact normalized covariable set put \(Z=\sum_i\sup|z_i|\), \(y=C\delta Z<1\). In positive homogeneous degree \(j\), the negative-normal part has \(q=|\beta|-j\ge1\). The multinomial identity and \(j!(b-j-1)!\le b!\) give
+\[
+\begin{gathered}
+|p_j^{\rm neg}|
+\le\frac{M_\delta C^{-j}}{j!}\sum_{b\ge j+1}y^b\\
+=M_\delta\frac{(\delta Z)^j}{j!}\frac{y}{1-y}.
+\end{gathered}
+\tag{ISF.7}
+\]
+In degree \(-n\), \(q=b+n\), and
+\[
+\begin{gathered}
+|p_{-n}^{\rm neg}|\\
+\le M_\delta C^n n!\sum_{b\ge0}\binom{n+b}{b}y^b\\
+=M_\delta C^n n!(1-y)^{-n-1}.
+\end{gathered}
+\tag{ISF.8}
+\]
+The scalar sum identity follows by differentiating the absolutely convergent geometric series \(n\) times. For positive output choose delta arbitrarily small relative to the desired epsilon and \(Z\); for the negative bound choose one delta with \(y<1/2\). No domain changes. The differential part has normalized homogeneous polynomials of degree at most \(j\), bounded by \(M_\epsilon(\epsilon(1+Z))^j/j!\). These are the full factorial/every-epsilon bounds. At \(Z=0\) the estimates have their literal constant-coefficient interpretation (the positive negative-normal part is zero).
+
+All sums converge normally on one product, with geometric tails in spatial degree from equations ISF.7–ISF.8 and every derivative tail on a reserved smaller product. The proved geometric identification therefore gives maps \(j_p:\widetilde E^\infty_{q_0}\to E^\infty_p\) for all \(p\) above \(q_0\) with \(\tau\ne0\). Multiplicativity is proved in proof section ISF.4. Bounds may depend on the covariable compact; the base domain is fixed.
+
+At \(p_0\) the map is injective. Proof section IG.4's geometric zero test makes every homogeneous coefficient zero. Taylor extraction in \(z\), with \(j=m+|\beta|\), makes all \(p_{m,\beta}\) and \(a_{-q,\beta}\) zero. All Taylor coefficients of joint holomorphic \(J\) vanish at \(s=t\), so \(J=0\) on a smaller connected product.
+
+This is the coordinate realization of the source-defined decorated sheaf. The following uniform-coefficient resolution argument ensures that arbitrary source sections, and zero witnesses, really supply the strict angular input; applying the supplied-data AN proof alone would not establish that fact.
+
+For a finite family of relative cocycles with spatial coefficients indexed by beta, use a countable compact exhaustion of its finitely many whole/sector domains. Partition-of-unity and Dolbeault graph representatives have all their fixed smooth derivative bounds in the same every-spatial-epsilon class: multiplication by each of the finitely many smooth cutoff functions changes only its compact constants. There are weights \(c_\beta>0\) such that
+\[
+\begin{gathered}
+\frac{c_\beta}{\beta!\,a^{|\beta|}}\longrightarrow\infty\\
+\quad\text{as }|\beta|\longrightarrow\infty\\
+\quad\text{for every }a>0,\\
+\sum_\beta c_\beta^2\|g_\beta\|_{L^2(K)}^2<\infty
+\end{gathered}
+\tag{ISF.18}
+\]
+on every compact \(K\), for every entry of this finite family and its finitely needed graph derivatives. Here is the full choice. For each integer \(k\), the input bounds at spatial epsilon \(1/(4k)\) control all first \(k\) compact sets, all finite entries and derivatives of order at most \(k\). Choose increasing thresholds \(n_k\) so that for total degree \(b\ge n_k\) all their constants times \(4^{-b}\) are at most \(2^{-b}\). Put \(k(b)=\max\{k:n_k\le b,\ k\le b\}\), with \(k(b)=1\) for an initial finite range, and \(c_\beta=\beta!k(|\beta|)^{|\beta|}\). Then \(k(b)\to\infty\), giving the first property. On each fixed compact, for sufficiently large \(b\), every weighted coefficient is at most \(2^{-b}\) by the choice at \(k(b)\); the number of degree-\(b\) multiindices is at most \((b+1)^d\), so its square sum converges. The finite remaining coefficients are harmless. Thus the weights are chosen once for the full family and all spatial epsilons, not separately for each beta.
+
+The complete weighted existence proof [§5.43, DLH.1–DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure) extends to the Hilbert sum of these weighted coefficients with the same scalar normal/base weight. This extension follows directly from that proof: the integration-by-parts/Levi inequality is first summed over finitely many beta and then passed to the increasing sums of squares. A Cauchy sequence in the coefficient Hilbert sum converges coordinatewise, and its squared norm is bounded by the limit inferior of the finite sums, proving completeness. Finite component vectors are dense. The scalar graph core approximation applies to each of a finite number of components and then to their dense union, so all adjoint/graph identities persist. The proof's bounded functional and representing Hilbert vector therefore solve the joint closed equation with the same estimate. Choose the scalar convex exhaustion weight to dominate the locally finite total norms in equation ISF.18, exactly by [§5.43, DLH.4](#5-43-the-canonical-all-degree-action-and-its-derived-module-structure)'s explicit exhaustion construction; the sector exhaustions in equations (IG.7)–(IG.8) of [§5.45, IG.2](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) with no spatial normal faces are strictly plurisubharmonic and proper on the actual normal-sector/product domains. This choice depends on the whole finite cocycle family, not on beta, and no coefficient domain is changed.
+
+Consequently the Dolbeault graph resolution is locally exact and fine in this strong coefficient family. The complete finite-resolution comparisons [§5.34, R.5–R.6](#5-34-full-current-resolutions-and-controlled-proper-image-comparison) and [§5.35, V.6](#5-35-relative-cones-unshifted-cup-and-the-normalized-trace) eliminate its finitely many positive Dolbeault columns on the whole and sector domains. The actual primitives stay locally in the same weighted Hilbert family: smooth compact multipliers and finite restrictions preserve its local square sums, so each next finite equation has the same weights from equation ISF.18. A holomorphic output coefficient on a compact polydisc satisfies the ordinary mean-value bound
+\(\sup_{K'}|f_\beta|\le C_{K',K}\|f_\beta\|_{L^2(K)}\);
+this follows by the Cauchy/mean-value formula in each coordinate and Cauchy–Schwarz. The Hilbert bound is \(C/c_\beta\), which by equation ISF.18 implies every bound in equation ISF.3 on that compact; the finite low degrees are bounded individually. A further fixed Cauchy margin controls each derivative. Thus the resulting holomorphic relative-cube representatives and every holomorphic zero primitive are actual ordinary infinite-order spatial operator sections on the same product. Solving each beta with an unrelated weight or shrinking would not prove this conclusion, and is not used.
+
+Now unfold the source comonoidal-support stalk in its single normal coordinate as in the complete [§5.45, IG.1](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) proof. The compact unit-direction argument gives cofinal closed normal sectors with a strict polar margin; there is no spatial normal displacement in \(X\times_Y X\). A section over the compact normal phase circle has a finite angular cover, and each representative, transition equality and primitive occurs on a common later restriction/support index because each relative cube has finitely many entries. Use the preceding strong-coefficient elimination on the union of two neighbouring sectors as well. It gives literal holomorphic angular representatives whose discrepancies are whole-normal-face primitives on one smaller joint product, with equation ISF.3. Subtract their cumulative whole-face corrections around the finite ordered cover. After one circuit the remaining defect is one joint holomorphic spatial operator \(H\). This is exactly the strict angular datum of proof sections AN.1–AN.3, now derived from arbitrary decorated source sections with its all-index domain and zero-witness properties. No support-forgetting injection is assumed.
+
+Apply the complete proof sections AN.2–AN.3 Cauchy/Laurent normalization on fixed normal contours. Its scalar contour bounds are independent of beta and preserve equation ISF.3. The normal polar terms give \(P_0\); for each normal epsilon choose a sufficiently small positive Laurent contour before extraction. Its bound is \(M_{r,\delta}r^m/m!\), simultaneously with \(\delta^{|\beta|}/\beta!\). Choosing \(r,\delta\) below a desired epsilon proves equation ISF.2. The angular mismatch gives the joint holomorphic \(K\), with equation ISF.3. The remaining whole-normal-domain entries are the explicit proof section AN.3 coboundaries. Conversely equations ISF.1–ISF.5 produce those angular entries and mismatches by normally convergent series. The AN zero test and the just-proved actual holomorphic zero witnesses establish both directions and zero detection. This is the source-defined decorated class, with neither coefficient-dependent domains nor a supported-distribution limit.
+
+#### ISF.3. Distinct rings and a decisive spatial example
+
+For \(R^\infty\), fixed shifts of proof section ISD.1 put its positive-normal part in equation ISF.2. Its finite spatial set and factorial negative bound give equation ISF.6 with one \(C\): for fixed beta and large \(q\), \((q-|\beta|)!\le q!\), and the extra factor \(q\) relative to \((q-1)!\) is absorbed by \(2^q\). Bound the finitely many other terms separately. On that finite spatial set delta changes only a finite constant. Consequently
+\[
+\begin{gathered}
+A^\infty\subset R^\infty\subset\widetilde E^\infty_{q_0}
+\xrightarrow{j_p}E^\infty_p .
+\end{gathered}
+\tag{ISF.9}
+\]
+The ordinary operator \(\sum_{b\ge0}D_{x_1}^b/(b!)^2\) is special by equation ISF.2 and has no uniform finite spatial degree, so is outside \(R^\infty\). On \(|z_1|<1\),
+\[
+\begin{gathered}
+P=\tau^{-1}(1-z_1)^{-1}\\
+=\sum_{b\ge0}\tau^{-b-1}\xi_1^b
+\end{gathered}
+\tag{ISF.10}
+\]
+is an actual finite-order \(E\)-operator, hence full \(E^\infty\). Its \(J\) coefficient at \(D_{x_1}^b\) is \((t-s)^b/b!\). For fixed nonzero \(t-s\), equation ISF.3 fails at \(\delta<|t-s|\). Its differential part is zero, and pair uniqueness excludes another special representation. This spatial translation kernel cannot be called local in \(x\) as an ordinary infinite-order germ operator.
+
+The rings remain distinct before tensoring. Proof sections ISR.2–ISR.4 prove the particular module comparisons without identifying rings or exchanging algebraic balancing relations.
+
+#### ISF.4. Full product and the retained endpoint cochains
+
+Here is a direct spatial product bound, uniform in all additional holomorphic parameters. On nested base polydiscs with coordinate margin \(\rho>0\), let \(A=\sum a_\beta D_x^\beta\), \(H=\sum b_\gamma D_x^\gamma\) satisfy equation ISF.3. The full coefficient sum is
+\[
+\begin{gathered}
+c_\delta=\sum_{\gamma\le\delta,\alpha\ge0}\\
+\binom{\delta-\gamma+\alpha}{\alpha}\\
+a_{\delta-\gamma+\alpha}\partial_x^\alpha b_\gamma .
+\end{gathered}
+\tag{ISF.11}
+\]
+Cauchy gives the absolute bound
+\[
+\begin{gathered}
+|c_\delta|\le M_A M_H\,\frac{(2\epsilon)^{|\delta|}}{\delta!}\\
+(1-\epsilon/\rho)^{-d},\\ \epsilon<\rho .
+\end{gathered}
+\tag{ISF.12}
+\]
+Indeed each term is bounded by
+\(\epsilon^{|\delta|}(\epsilon/\rho)^{|\alpha|}/((\delta-\gamma)!\gamma!)\)
+times \(M_AM_H\). Summing \(\gamma\le\delta\) gives \(2^{|\delta|}/\delta!\), and summing alpha is geometric. For any output epsilon choose an input epsilon at most half of it and below \(\rho/2\). The tail \(|\alpha|\ge L\) has an additional factor
+\((\epsilon/\rho)^{L/2}(1-\sqrt{\epsilon/\rho})^{-d}\).
+For fixed delta, truncating either input spatial degree gives the same tail with \(L\) reduced by \(|\delta|\). One extra fixed Cauchy margin controls every fixed derivative. The same proof in \(d+1\) variables gives the ordinary \(D^\infty\) product, including all normal indices. Thus no spatial cutoff is imposed.
+
+For joint holomorphic \(J\), temporarily use its ordinary Volterra expression
+\[
+\begin{gathered}
+V_Jf(t,x)=\\\int_a^t J(t,s,x,D_x)\\
+f(s,x)\,ds
+\end{gathered}
+\tag{ISF.13}
+\]
+on a larger convex normal disc. The anchor \(a\) is fixed independently of \(x\), outside the smaller endpoint discs. Equation ISF.3 and Cauchy for \(f\) justify the full spatial sum. This computes a local kernel; it does not make \(D_t^{-1}\) a two-sided inverse on holomorphic functions. There are four product cases.
+
+For \(P_0Q_0\), the full ordinary product was just proved. For a positive normal derivative times a negative kernel, repeated differentiation gives the exact identity
+\[
+\begin{gathered}
+D_t^m V_J=V_{\partial_t^mJ}\\
++\sum_{k=0}^{m-1}D_t^{m-1-k}\\
+\bigl((\partial_t^kJ)(t,t)\,\cdot\,\bigr).
+\end{gathered}
+\tag{ISF.14}
+\]
+Every spatial derivative is spread by equation ISF.11, with its actual coefficient order. In the full \(P_0\) sum, the normal bound \(\epsilon^m/m!\) cancels the integral derivative factor \(m!\eta^{-m}\), where \(\eta>0\) is a fixed joint normal Cauchy margin. The sum is bounded by \(\sum_m(\epsilon/\eta)^m\).
+
+For its ordinary boundary coefficient at \(D_t^l\), \(m\ge l+1\), a valid bound is
+\(4^m m!\eta^{-(m-l)}/l!\) times a joint kernel norm, enlarged by \(\max(1,\eta)\).
+To verify it, expand \(D_t^{m-1-k}\) in equation ISF.14. The \(l\)-coefficient has binomial factor \(\binom{m-1-k}{l}\). Its remaining diagonal derivative is a sum of at most \(2^{m-1-k-l}\) mixed \(t,s\) derivatives of total order \(m-1-l\), bounded by \((m-1-l)!\eta^{-(m-1-l)}\). The binomial factor is at most \(m!/(l!(m-l)!)\), and the number of summands is at most \(m\le2^m\). The claimed bound follows. After multiplication by \(\epsilon^m/m!\), the output is bounded by
+\((4\epsilon)^l/l!\) times the geometric sum
+\(\sum_{m-l\ge1}(4\epsilon/\eta)^{m-l}\).
+Combining equation ISF.12, with independent spatial epsilons chosen first, proves equation ISF.2 and equation ISF.3 for both resulting parts on one product.
+
+For a negative kernel times \(P_0\), integrate by parts after spreading all spatial derivatives:
+\[
+\begin{gathered}
+\int_a^t H(t,s)D_s^m f(s)\,ds\\
+=\sum_{k=0}^{m-1}(-1)^k\\
+\bigl[\begin{gathered}
+(\partial_s^kH)(t,s)\\D_s^{m-1-k}f(s)
+\end{gathered}\bigr]_{s=a}^{s=t}\\
++(-1)^m\int_a^t(\partial_s^mH)(t,s)\\
+f(s)\,ds .
+\end{gathered}
+\tag{ISF.15}
+\]
+Here \(H\) includes the actual ordered spatial product of \(J(t,s)\) and the coefficient of the \(m\)-th source normal derivative. The upper endpoint gives the ordinary \(D^\infty\)-part; the integral gives the joint holomorphic \(J\)-part. On an intermediate product, the \(s\)-Cauchy estimate for \(H\) and the preceding diagonal/Leibniz bound give the same geometric normal tails and every-epsilon positive bounds. All spatial sums are controlled by equation ISF.12.
+
+The lower endpoint is retained. Represent evaluation at the separated anchor by the positive Cauchy kernel \((s'-a)^{-1}/(2\pi i)\). The exact kernel contributed by the lower endpoints in equation ISF.15, with the source normal top-form \(ds'\), is
+\[
+\begin{gathered}
+H_a(t,s')=
+-\sum_{m\ge1}\sum_{k=0}^{m-1}\\
+(-1)^k(\partial_s^kH_m)(t,a)\,\\
+\frac{(m-1-k)!}{2\pi i\,(s'-a)^{m-k}} .
+\end{gathered}
+\tag{ISF.17}
+\]
+Here \(H_m\) is the actual ordered spatial kernel product for the \(m\)-th positive source derivative. The minus sign is the lower end of \([\,\cdot\,]_a^t\), and the derivative factorial is the Cauchy formula for \(f^{(m-1-k)}(a)\). On the endpoint product \(|a-s'|\) has one positive lower margin. The input \(\epsilon^m/m!\) cancels the mixed \(k!\,(m-1-k)!\) derivative/evaluation bound, and \(m\le2^m\) absorbs its finite boundary sum. Choose epsilon below both fixed margins. This makes equation ISF.17 normally holomorphic in \((t,s')\), including \(t=s'\); equation ISF.12 supplies the spatial operator bounds for every epsilon. It is a literal whole-normal-face cochain and its relative-cube coboundary. The complete [§5.44, AN.3](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels) and [§5.45, IG.4](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) give that normal-face formula; equation (IM.15) in [§5.45, IM.5](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product)'s \(N=1\) whole-domain exception retains precisely such an entry with the calibrated trace sign. This is not a discarded distribution or a zero inferred after evaluating a solution.
+
+For two negative kernels the output Volterra kernel is
+\[
+\begin{gathered}
+L(t,s,D_x)=\\\int_s^t J(t,v,D_x)\\
+H(v,s,D_x)\,dv .
+\end{gathered}
+\tag{ISF.16}
+\]
+Parametrize \(v=s+\theta(t-s)\), \(0\le\theta\le1\). One small convex normal disc puts the entire compact segment family in the larger joint product. Equation ISF.12 gives every spatial epsilon bound uniformly there, and integration multiplies it by a bounded length. Thus \(L\) is jointly holomorphic with equation ISF.3. Normal Taylor expansion gives the exact beta integral and
+\(\binom{-q}{k}=(-1)^k\binom{q+k-1}{k}\)
+of the complete earlier [§5.33, K.3](#5-33-a-convergent-negative-order-polynomial-kernel-complex). Equation ISF.12 now justifies all its spatial infinite sums; the joint normal Taylor radius gives all normal tails. Therefore it is the actual full negative-normal symbol product.
+
+All outer, intermediate, endpoint and anchor margins are fixed before any index or epsilon. The estimates prove absolute normal convergence of every normal/spatial contraction, every fixed derivative tail and all joint domains. Finite normal/spatial truncations have the proved canonical mixed pole/log trace with literal complement terms. The estimates pass their actual holomorphic formulas and face primitives to normally convergent limits on the same domains. The bounded AN/IG/IM normalization and zero detector identify this product with the canonical full geometric product by the full argument in [§5.45, IM.4–IM.5](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product), with no closed-image or cohomology-limit assumption. One may equivalently compare the actual coefficient products above and apply injective proof section IG.4; every whole-normal-face endpoint and log/harmonic correction has been represented by its explicit face coboundary.
+
+In equation ISF.16, \(J_{\rm out}=L\), so the special log coefficient is \(K_{\rm out}=-L\), consistent with equation ISF.5. The same \(J=-K\) convention applies to equations ISF.14–ISF.15. The unit is \((1,0)\). Actual associativity follows from the full proved ring product and the injective pair map; finite triple families have common products/collars by proof section ISR.6. This proves the decorated special sheaf of rings and all \(j_p\) homomorphisms. Spatial locality follows from equation ISF.3's holomorphic-germ estimate; it is not transferred to all full \(E^\infty\)-operators.
+
+#### ISF.5. Retained boundaries
+
+This proves the chosen-fibration special sheaf, exact joint bounds, full product and maps to the full ring. Moving-sector propagation, finite-determination monodromy, III.4.9 for arbitrary monodromy ideals, section separation and D-type realization remain separate. Complete free III.4 pages are retained as context; none is imported as a theorem premise.
+
+**Full infinite balanced reconstruction for the entire generic holonomic germ.**
+
+The full division is proved in ISD.1–ISD.5, the distinct decorated special source sheaf in ISF.1–ISF.5, and the complete tail estimates in ISB.1–ISB.5. The complete earlier right-flatness theorem is [§5.47, MF.1–MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). Faithful extension is [§5.48, FEP.1–FEP.9](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring); it is used for proof section ISR.5, not for division or the balanced inverse maps.
+
+#### ISR.1. Definitions and full finite input
+
+Let \(q_0=0\), \(p_0=(0;1,0)\), \(E_p\) the finite-order stalk, \(B_p=E^\infty_p\), and
+\[
+\begin{gathered}
+N=M^\infty_{p_0}=B_{p_0}\otimes_{E_{p_0}}M_{p_0}.
+\end{gathered}
+\tag{ISR.1}
+\]
+This is an ordinary algebraic tensor of a right finite-ring module with a left module. The whole finite holonomic germ, including singular branches and nonreduced principal fibres, has the lattice, actual generic-position reduction and full-chart finite polynomial complex of complete earlier [§5.28, Q.1–Q.7](#5-28-convergent-contact-quantization-and-whole-germ-generic-position), [§5.29, G.1–G.5](#5-29-actual-finite-generation-over-the-coordinate-commuting-ring), [§5.30, F.1–F.7](#5-30-actual-polynomial-flatness-and-reconstruction-after-finite-realization), [§5.31, L.1–L.6](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices) and [§5.32, J.1–J.3](#5-32-coherent-actual-lattices-and-principal-support-for-the-whole-germ). No generic smooth stratum or quotient of supported sections replaces it. Keep the actual generators \(U\) and \(B_\nu\) of equation ISD.3.
+
+The finite module \(M\) is generated by \(U\) over \(E\); hence \(N\) is generated by their images over \(B_{p_0}\). Equation ISD.12 applies to every finite row of coefficients and kills the spatial relations in \(N\). Therefore
+\[
+\begin{gathered}
+N=\sum_{i=1}^r A^\infty u_i .
+\end{gathered}
+\tag{ISR.2}
+\]
+This is generation, not a free-module identification or a finite presentation over \(A^\infty\). All other actual relations of \(M\) remain after tensoring. In particular its normal torsion, nilpotent spatial actions and singular supported sections have not been removed. This conclusion does not require extension-faithfulness.
+
+\(R^\infty\) is a single base-germ ring: finite spatial polynomials with coefficients in \(A^\infty\) extend to every finite normalized covariable product above \(q_0\), with their original base coefficient domain. Proof section ISF.2 gives the maps \(j_p:\widetilde E^\infty_{q_0}\to B_p\), with \(R^\infty\subset\widetilde E^\infty_{q_0}\). Thus both tensors
+\[
+\begin{gathered}
+T_R(p)=B_p\otimes_{R^\infty}N,\\
+T_S(p)=B_p\otimes_{\widetilde E^\infty_{q_0}}N
+\end{gathered}
+\tag{ISR.3}
+\]
+have literal right actions on their first factor and left actions on \(N\) from the indicated maps. The middle tensor of the fibre reconstruction formula is \(T_S\), not a tensor over \(A^\infty\). No tensor is completed.
+
+#### ISR.2. The first balanced isomorphism along the ray
+
+On the complex ray \(p\in\mathbf C^\times p_0\), the proved projectivized coefficient/geometric construction canonically identifies the stalks \(B_p\) and \(B_{p_0}\): the homogeneous coefficient sequence is the same, with the ambient nonzero \(\tau\)-coordinate and its actual angular branch transitions. Proof sections IG.2–IG.5 supply their intrinsic class overlap, including log-face corrections; it is not an identification of real-conic rings. The finite module and its presentation have the same conic identification.
+
+Define
+\[
+\begin{gathered}
+\mu_R:T_R(p)\longrightarrow N,\\
+b\otimes n\longmapsto bn,\\
+\iota_R:N\longrightarrow T_R(p),\\
+n\longmapsto1\otimes n .
+\end{gathered}
+\tag{ISR.4}
+\]
+The multiplication is balanced over \(R^\infty\): \((ba)n=b(an)\) is the actual ring/module associativity. Its unit gives \(\mu_R\iota_R=1\). To prove the other identity, let a tensor element involve finitely many \(b\otimes n\). By equation ISR.2 write \(n=\sum_i c_i u_i\) with actual \(c_i\in A^\infty\), on a common product for that finite family. Balancing reduces it to a finite coefficient row \(F_i=b\circ c_i\) tensored with \(U\). Apply the full equation ISD.12 decomposition to \(F\). For each spatial relation, algebraic balancing gives
+\[
+\begin{gathered}
+\sum_i(a_\nu(D_\nu I-B_\nu))_i\\
+\otimes u_i\\
+=\sum_j(a_\nu)_j\otimes\\
+((D_\nu I-B_\nu)U)_j=0 .
+\end{gathered}
+\tag{ISR.5}
+\]
+Every entry of \(D_\nu I-B_\nu\) is in \(R\subset R^\infty\). For the actual remainder \(s\in(A^\infty)^r\),
+\[
+\begin{gathered}
+\sum_i s_i\otimes u_i
+=1\otimes\sum_i s_i u_i .
+\end{gathered}
+\tag{ISR.6}
+\]
+Thus every tensor equals \(1\otimes\mu_R\) of itself. This proves \(\iota_R\mu_R=1\), with finite algebraic identities and actual full coefficients. It does not choose a unique simultaneous quotient.
+
+The maps are \(B_p\)-linear. Multiplication already is; the inverse's linearity follows either from its two inverse identities or directly from
+\(\iota_R(bn)=b\iota_R(n)\), proved by the same equation ISD.12 balancing for that finite row. Consequently
+\[
+\begin{gathered}
+B_p\otimes_{R^\infty}N\xrightarrow[\;\iota_R\;]{\;\mu_R\;}N\\
+\quad\text{is an actual }B_p\\
+\text{-module }\text{isomorphism}.
+\end{gathered}
+\tag{ISR.7}
+\]
+The displayed arrows denote mutually inverse maps with the formulas in equation ISR.4.
+
+These maps are natural for every actual \(B_{p_0}\)-linear morphism of such extensions: multiplication commutes with that morphism and the unit formula does too. Their finite diagrams commute because both composites are their literal formulas, not because a particular chosen division is natural. All entries and finite balancing witnesses have a common representative product by proof sections ISD.3–ISD.4. No unrestricted infinite family of germs is assigned one universal representative neighbourhood.
+
+#### ISR.3. The distinct special balancing, with both inverse maps
+
+For \(p\in\mathbf C^\times p_0\), define
+\[
+\begin{gathered}
+\mu_S:T_S(p)\longrightarrow N,\\
+b\otimes n\longmapsto bn,\\
+\iota_S:N\longrightarrow T_S(p),\\
+n\longmapsto1\otimes n .
+\end{gathered}
+\tag{ISR.8}
+\]
+They are balanced by the genuine special ring map in proof section ISF.4 and its restriction action on \(N\). Let \(q:T_R(p)\to T_S(p)\) be the quotient adding the special balancing relations; its elementary tensors have the same formula. It is surjective because algebraic tensor generators are still the same \(b\otimes n\). Clearly \(\mu_Sq=\mu_R\), \(q\iota_R=\iota_S\), and \(\mu_S\iota_S=1\). For every element of \(T_S\), choose a finite tensor lift \(v\in T_R\). Then
+\[
+\begin{gathered}
+\iota_S\mu_S(qv)
+=q\iota_R\mu_R(v)=qv .
+\end{gathered}
+\tag{ISR.9}
+\]
+This proves both inverse identities and \(B_p\)-linearity. It also proves \(q\) is an isomorphism: its inverse is \(\iota_R\mu_S\). Each additional special balancing relation was already zero under the inverse multiplication in \(T_R\); no identification of the two coefficient rings is inferred.
+
+Thus the first and middle reconstruction tensors agree through actual balanced maps:
+\[
+\begin{gathered}
+B_p\otimes_{R^\infty}N\\
+\xrightarrow{\ q\ }B_p\otimes_{\widetilde E^\infty_{q_0}}N\\
+\xrightarrow{\ \mu_S\ }N ,
+\end{gathered}
+\tag{ISR.10}
+\]
+with inverses \(\iota_R\mu_S\) and \(\iota_S\), respectively. This is not an isomorphism involving \(B_p\otimes_{A^\infty}N\); no such tensor is substituted.
+
+#### ISR.4. Exact off-ray vanishing
+
+Let \(p=(q_0;\tau,\xi)\), \(\tau\ne0\), with \(z=\xi/\tau\ne0\). Choose \(\nu\) with \(z_\nu(p)\ne0\). Since \(A_\nu(0)\) is nilpotent, of index at most \(r\),
+\[
+\begin{gathered}
+(z_\nu(p)I-A_\nu(0))^{-1}\\
+=\sum_{k=0}^{r-1}z_\nu(p)^{-k-1}A_\nu(0)^k .
+\end{gathered}
+\tag{ISR.11}
+\]
+On one small product about \(p\), its holomorphic principal matrix inverse is therefore defined with a positive nonvanishing determinant margin. The actual normalized \(L_\nu=z_\nu I-C_\nu\) has a finite-order inverse there. For completeness, let \(H\) be its principal holomorphic inverse, as an actual order-zero matrix. Both \(H\circ L_\nu-I\) and \(L_\nu\circ H-I\) have order at most minus one with factorial bounds on the product. The complete lowering argument in proof sections ISB.1–ISB.4 gives the normally controlled actual negative-order inverses of \(I+(H L_\nu-I)\) and \(I+(L_\nu H-I)\), with finite upper order and one smaller product. They produce a left and a right inverse of \(L_\nu\); associativity makes them equal. This is an actual finite \(E_p\) inverse. Because \(D_\nu I-B_\nu=\tau\circ L_\nu\), its inverse is \(L_\nu^{-1}\circ h\).
+
+In \(T_R(p)\), the images \(1\otimes u_i\) obey the matrix relation \(D_\nu I-B_\nu\) by its literal entries in \(R^\infty\). Multiplication by the displayed actual inverse makes every image zero. By equation ISR.2 the images of \(U\) generate the tensor, so \(T_R(p)=0\). The quotient \(T_R(p)\to T_S(p)\) gives \(T_S(p)=0\). The balanced inverse comparison between the two zero modules is their unique zero map; the target of the fibre reconstruction formula is zero there, not \(N\).
+
+We have proved the full source fibre formula
+\[
+\begin{gathered}
+B_p\otimes_{R^\infty}N\\
+\simeq B_p\otimes_{\widetilde E^\infty_{q_0}}N\\
+\simeq\begin{cases}
+N,&p\in\mathbf C^\times p_0,\\
+0,&\begin{gathered}p\in\{\tau\ne0\}\\\cap\pi^{-1}(q_0),\\p\notin\mathbf C^\times p_0 .\end{gathered}
+\end{cases}
+\end{gathered}
+\tag{ISR.12}
+\]
+Each off-ray inverse has its own open nonvanishing principal margin; it is not extended across the excluded ray. A finite off-ray diagram uses a finite common neighbourhood at its points and a finite compact covering if necessary. This is compatible with the fixed base-germ special/polynomial coefficients; it does not assert a holomorphic inverse on a product containing its zero determinant.
+
+#### ISR.5. Whole support, singular branches and actual contact transport
+
+The complete faithful-extension theorem [§5.48, FEP.1–FEP.9](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring) gives unit injectivity and exact faithful extension for every algebraic left module and every sheaf. Thus the full extension of the whole finite actual sheaf has
+\[
+\begin{gathered}
+M\hookrightarrow E^\infty\otimes_E M,\\
+\operatorname{Supp}(E^\infty\otimes_E M)\\
+=\operatorname{Supp}M .
+\end{gathered}
+\tag{ISR.13}
+\]
+The complete [§5.32, J.2](#5-32-coherent-actual-lattices-and-principal-support-for-the-whole-germ) proves that the right side is the reduced principal support of the actual lattice, including every branch. Thus the convention defining support by this full \(E^\infty\)-extension now agrees with that finite support. This does not assert purity of individual infinite-order sections or any equality involving \(E^R\).
+
+The finite bounded polynomial complex of earlier [§5.31, L.1–L.6](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices) remains an exact complex resolving the extension by the complete right-flatness theorem [§5.47, MF.1–MF.7](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring). Every differential and its finite maps use one full base neighbourhood and length at most \(2d+1\). The terminal exactness is the proved scalar extension of that actual finite complex; no exactness over \(R^\infty\) or Noetherianity of \(A^\infty,E^\infty\) is inferred.
+
+For clarity the particular generic-position contact shear also extends to the full class, so it transports the original full extension rather than only its finite module. Keep the exact earlier \(a_C(\rho)=\frac12\xi^{\mathsf T}C\xi/\tau\), \(b_C=\partial_\rho a_C\), \(R_a\) and coefficient formula in equations (Q.9)–(Q.10) of [§5.28, Q.4](#5-28-convergent-contact-quantization-and-whole-germ-generic-position). For an arbitrary input degree \(m\in\mathbf Z\), a resummation word of total loss \(K\) has total base derivative order \(K+\ell\le2K\). The complete [§5.28, Q.5](#5-28-convergent-contact-quantization-and-whole-germ-generic-position) counting and \( (K+\ell)!/\ell!\le4^K K!\) give
+\[
+\begin{gathered}
+\|\begin{gathered}
+\text{all transform terms }\\
+\text{of loss }K
+\end{gathered}\|\\
+\le L^K K!\,\|p_m\|_{\rm outer}.
+\end{gathered}
+\tag{ISR.14}
+\]
+The constants and shifted base/covariable products are fixed before all \(m,K\); the estimate has no finite-upper-order assumption because \(\tau^m\) is an ordinary normal prefactor and \(R_a\) differentiates only the base coefficient.
+
+For positive output \(j\), input \(m=j+K\) gives
+\[
+\begin{gathered}
+\|q_j\|\le M_\epsilon\frac{\epsilon^j}{j!}
+\sum_{K\ge0}(L\epsilon)^K ,
+\end{gathered}
+\tag{ISR.15}
+\]
+using \(K!j!\le(j+K)!\). Given an output epsilon use a smaller input epsilon with \(L\epsilon<1/2\). For negative output \(-n\), the negative inputs \(K<n\) give \(M n!(C+L)^n\); positive inputs \(m=K-n\ge0\) give
+\[
+\begin{gathered}
+\|q_{-n}\|\le M n!(C+L)^n\\
++M_\epsilon n!L^n(1-L\epsilon)^{-n-1}.
+\end{gathered}
+\tag{ISR.16}
+\]
+The last identity is the convergent binomial sum
+\(\sum_{m\ge0}\binom{n+m}{n}(L\epsilon)^m\).
+Every spatial index is in the holomorphic coefficient norm. Positive loss tails are geometric; the positive-input tail in equation ISR.16 starting at \(m>J\) is bounded by
+\[
+\begin{gathered}
+M_\epsilon n!(2L)^n
+\frac{(2L\epsilon)^{J+1}}{1-2L\epsilon}
+\\(2L\epsilon<1).
+\end{gathered}
+\tag{ISR.17}
+\]
+Fixed derivatives use one further common Cauchy margin. These estimates give actual full-class continuity of the transformation and of its compositions.
+
+Truncate only the positive homogeneous head at \(J\); the negative actual tail stays intact, so these are finite-order inputs. The complete earlier [§5.28, Q.6](#5-28-convergent-contact-quantization-and-whole-germ-generic-position) proves product preservation and \(T_{-C}T_C=T_CT_{-C}=1\) on each such input. Equations ISR.15–ISR.17 and the proved full product bounds pass their coefficients and every derivative tail to normally convergent limits on common intermediate products. They prove the same identities for every full input. Therefore \(T_C\) is an actual full sheaf ring isomorphism extending the finite contact quantization, with inverse \(T_{-C}\). Its coordinate values and contact signs are exactly equation (Q.18) of [§5.28, Q.6](#5-28-convergent-contact-quantization-and-whole-germ-generic-position); no new formal exponential operator is admitted.
+
+Restrict the module action along this actual isomorphism: \(a\cdot_{\rm new}m=T_C(a)\cdot_{\rm old}m\), with \(T_C:B_{\rm new}\to B_{\rm old}\) extending the corresponding finite-ring isomorphism. Its tensor-extension comparison is the explicit balanced map
+\[
+\begin{gathered}
+B_{\rm new}\otimes_{E_{\rm new}}M_{\rm new}\\
+\longrightarrow B_{\rm old}\otimes_{E_{\rm old}}M_{\rm old},\\
+b\otimes m\longmapsto T_C(b)\otimes m
+\end{gathered}
+\tag{ISR.18}
+\]
+with the finite action transported by the same restriction; the inverse uses \(T_{-C}\). Balancing follows from multiplicativity on the finite subring, and both compositions are identities. Thus every original whole holonomic germ and its full extension can be made generic by the proved shear, including its singular points, and the conclusions of equations ISR.2–ISR.13 apply to that transported whole germ. The decorated special sheaf belongs to the resulting chosen fibration; it is not asserted independent of that choice.
+
+#### ISR.6. Common products, support enlargement, overlaps and trace signs
+
+All finite inputs, divisors, coefficient operations, identities and inverses are first represented on one common actual product. Equation ISD.4 then fixes weighted base/covariable radius profiles; proof section ISD.3 fixes its finite outer/intermediate/final ladder. Every homogeneous index, spatial Taylor index and every output epsilon uses that same final product. The special normal kernel equation ISF.4 has a joint normal product with one radius independent of spatial epsilon. Its product proof fixes a single convex normal disc and a separated anchor before summation.
+
+To pass these actual operators and identities to the proved geometric kernels, choose common final Taylor radii \(R_i>0\) and a common negative factorial constant \(C_-\ge1\) for the finite list. The complete proved IG/IM/IK estimates in [§5.44](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels) and [§5.45](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) give thick complement margins
+\[
+\begin{gathered}
+A_i>2/R_i,\\
+|\omega|<1/(4C_-),\\
+|\zeta_i|>A_i|\omega|,\\\zeta_i=y_i-x_i .
+\end{gathered}
+\tag{ISR.19}
+\]
+On each compact choose \(Y>\max_i(R_i|\zeta_i|)^{-1}\) with
+\(|\omega|Y<3/4\), and a positive epsilon with \(\epsilon Y<1/8\). The mixed Taylor majorant has \(r<1/4\), \(q<3/4\), \(x+q<7/8\), including positive-homogeneous/negative-normal terms. This is the exact proved bound; choosing epsilon does not shrink the product. The removable \(\omega=0\) extension and a finite compact cover provide the same bounds on the actual complement.
+
+Choose the finite phase grid \(h_{\rm grid}<2\lambda\), \(2\lambda+h_{\rm grid}<\pi\), and spatial cone constants \(B_i>A_i\). Use a pointed full-dimensional convex cone at each phase for its finite operator/product list and a separate pointed midpoint cone on each neighbouring overlap. Only the compact proper intermediate collar and endpoint/source margins are uniform over the finite phase family. No pointed cone contains the full phase circle.
+
+The output on a convex cone \(G_\phi\) is literally mapped by support forgetting to one larger standard
+\(T_{\lambda',B',\phi}\), with
+\[
+\begin{gathered}
+\lambda<\lambda'<(\pi-h_{\rm grid})/2,\\
+B'_i>\\B_i/\cos(\lambda+h_{\rm grid}/2).
+\end{gathered}
+\tag{ISR.20}
+\]
+This includes the required \(B'_i>B_i/\cos\lambda\). Choose the smaller admissible covariable product and the finite polar margins before any coefficient/tail normalization. On this standard cone use the full cube and exhaustions in equations (IG.7)–(IG.8) of [§5.45, IG.2](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). The resulting boundary is on \(T'\); map it forward to a further convex \(G'\) containing \(T'\), or keep that exact common final support. Support-forgetting injectivity is never inferred.
+
+The literal cups, full two-support cubes, excision maps and traces use the proper common collar of proved TC/IM arguments in [§5.44, TC.1–TC.4](#5-44-full-homogeneous-coefficients-and-ordinary-infinite-order-kernels) and [§5.45, IM.1–IM.6](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product). Their base-antiholomorphic components are retained before trace. The full-cone Čech top coordinate is \(-r_N f\); its conversion in degree \(N-1\) gives the ordinary top cube coordinate
+\[
+\begin{gathered}
+r_N(-1)^N f,\\ r_N=(-1)^{N(N-1)/2}.
+\end{gathered}
+\tag{ISR.21}
+\]
+The omitted-coordinate complement faces in degree \(N-2\) acquire \((-1)^{N-2}\). At \(N=1\) there is a whole-domain normal-face primitive and the exact trace \((0,-\oint f\,da)\), with positive residue scalar; equation ISF.15 retains the lower endpoint, whose explicit cochain is equation ISF.17. These conventions are unchanged by the division or balanced tensors.
+
+Actual nonlinear base overlaps use the proved [§5.45, IG.5](#5-45-the-full-geometric-infinite-order-kernel-ring-and-its-canonical-product) pair pullback, Jacobian/top-form conversion and coordinate zero test. The chosen division coefficients need not be coordinate invariant: its sum identity is an actual ring/module identity and pulls back as such. Multiplication and unit maps in equations ISR.4 and ISR.8 are intrinsic and hence agree on all overlaps; their inverse identities show that no choice of coefficient normal form changes them. Equations ISR.14–ISR.18 separately handle the generic-position contact shear, beyond nonlinear base-coordinate overlaps.
+
+#### ISR.7. Calibrations, illustration locators and retained obligations
+
+Equations ISD.14–ISD.15 give exact full-spatial and full-positive-head division with the nonzero nilpotent \(J\) retained. The scalar two-variable tuple \((D_2,-D_1)\) proves nonuniqueness of arbitrary simultaneous coefficient tuples. Equation ISF.10 exhibits an actual finite-order full operator excluded from the decorated special class. Equation ISR.11 is the exact finite nilpotent off-ray inverse, while equations ISR.5–ISR.9 give both balanced inverse maps. The complete earlier [§5.31, L.8](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices) example retains its normal relation \(tI-h\operatorname{diag}(0,1)\) and the essential differential correction \(T_*-hI\).
+
+The figures below show exact stated real slices and algebraic diagrams of these formulas. Their editable SVGs, exact rational data and reproducible Python source accompany their captions. Every coordinate, parameter and proof locator is specified; they illustrate the complete arguments.
+
+The proof establishes full infinite sum division and both algebraic balanced reconstruction maps, the distinct special fibration class used by the middle tensor, every growth/domain/spatial/tail estimate, whole-germ singular and branch scope, off-ray vanishing and full contact transport. The full infinite coefficient class is used throughout.
+
+The following remain separate: other scalar changes (including mixed \(E^\infty/D^\infty\), real-conic \(E^R\) and their module injections), moving-sector propagation and continuation, infinite section purity/separation, finite-dimensional solution families and monodromy enlargement, D-type/finite-pole reconstruction, intrinsic order comparison, C1, half-order/contact conventions beyond the explicit shear, initial analytic generators, arbitrary analytic proper/support-proper regularity, and all remaining original GL/BB/KL scope.
+
+The complete lowering argument is included here. It controls the actual Spath quotient inverses; its coefficient maps are bounded complex linear and every shrinking is fixed before all homogeneous indices. The exact earlier coefficient-norm premise is [§5.47, MFA.1–MFA.4](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring).
+
+**Full infinite-order order-lowering estimate.**
+
+This appendix proves convergence of the series used for arbitrary matrix relations. It includes every normalized spatial derivative, arbitrary many correction steps, the unbounded positive head, the factorial negative tail, and a single domain chosen before the summation indices.
+
+#### ISB.1. Operators and one domain
+
+In a cotangent chart \(\tau\ne0\), write \(F_j=\tau^jp_j(u,z)\), \(z=\xi/\tau\). The actual class has one holomorphic coefficient product, with, on each compact,
+\[
+\begin{gathered}
+|p_j|\le M_\varepsilon\varepsilon^j/j!\\
+(j\ge0, \varepsilon>0),\\
+|p_{-n}|\le MD^nn! (n\ge1).
+\end{gathered}
+\tag{ISB.1}
+\]
+We use the absolute Taylor norms \(MFA.1\) on one family \(R(r)\), \(r\in[r_0/2,r_0]\). A Cauchy estimate on a fixed enlargement converts the input compact bounds to these norms with constants independent of \(j\). Coefficient operators \(h,p,k\), or a finite composition of these, have uniform norm \(H\) on that interval by proof sections MFA.2–MFA.3. Every right-hand actual matrix is order zero, with coefficients \(Q_{-q}\) satisfying \( |Q_{-q}|\le AC^q q!\) on a fixed enlargement, including \(q=0\). The finite list has one such bound and domain.
+
+The right Leibniz term acting on a left coefficient has indices
+\[
+\begin{gathered}
+\alpha\in\mathbf N^N,\quad q\ge0,\\
+K=q+|\alpha|,\\
+\frac1{\alpha!}(\partial_\rho^\alpha F_j)(\partial_u^\alpha Q_{-q}).
+\end{gathered}
+\tag{ISB.2}
+\]
+It lowers homogeneous degree by \(K\). Subtracting its principal ordinary multiplication removes precisely \(q=0,\alpha=0\); every remaining term lowers degree by at least one. The coefficient operators constructed in [§5.47, MFA.1–MFA.4](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring) preserve degree. A word of correction terms interspersed with such coefficient operators therefore has total loss \(K\ge\) its number of correction terms. All matrix and component sums are finite.
+
+Choose the same fixed outer margin for the right factors throughout. Its Cauchy estimate costs \(\alpha!\delta^{-|\alpha|}\); the factorial in \(ISB.2\) cancels it. If a total-order version is used, \(|\alpha|!/\alpha!\le N^{|\alpha|}\), so the difference is absorbed in an exponential constant. Across a word with tail indices \(q_i\), let \(Q=\sum_iq_i\) and \(L=\sum_i|\alpha_i|\), thus \(K=Q+L\). Their tail factorial product is at most \(Q!\).
+
+#### ISB.2. Derivatives interspersed with coefficient divisions
+
+At normalized \(\tau=1\), one covariable differentiation is exactly
+\[
+\begin{gathered}
+\partial_{\xi_a}F_j=\tau^{j-1}\partial_{z_a}p_j,\\
+\partial_\tau F_j=\tau^{j-1}(j-E_z)p_j,\\
+E_z=\sum_a z_a\partial_{z_a}.
+\end{gathered}
+\tag{ISB.3}
+\]
+These equations retain every spatial index. They also specify all signs. At an intermediate step starting from input degree \(m\), the current degree has absolute value at most \(|m|+K\). A coefficient operator preserves that degree, although it need not commute with \(E_z\) or differentiation.
+
+To bound a word, insert intermediate radii decreasing from \(r_0\) to \(r_0/2\), allocating equal scalar radius loss \(r_0/(2L)\) to each of its \(L\) derivatives; when \(L=0\) no derivative margin is consumed. All \(R_a(r)=r^{v_a}\) have a fixed positive lower derivative on this compact interval, so each coordinate margin is at least \(c/L\), with fixed \(c>0\). Cauchy's formula, the bounded normalized \(z_a\), and \(ISB.3\) bound each one-derivative step by
+\[
+\begin{gathered}
+C_0(|m|+K+L)\\
+\le 2C_0(|m|+K)\quad\\
+(K>0).
+\end{gathered}
+\tag{ISB.4}
+\]
+The \(H\) bound for every inserted coefficient operator holds at its own intermediate radius. Thus no commutation of a division operator with a derivative has been used, and no new radius is lost for a division operator. The count of those operators is bounded by a fixed multiple of the number of correction factors, hence by a fixed multiple of \(K\).
+
+For \(M=|m|\ge0\), \(K=Q+L>0\),
+\[
+\begin{gathered}
+(M+K)^LQ!\\
+\le e^K\frac{(M+K)!}{M!}.
+\end{gathered}
+\tag{ISB.5}
+\]
+To prove it, \(Q!\le(M+K)^Q\). Also
+\(\prod_{a=1}^K(M+a)/(M+K)\ge K!/K^K\ge e^{-K}\): each factor increases with \(M\), and the last inequality follows from
+\(\sum_{a=1}^K\log a\ge\int_1^K\log t\,dt=K\log K-K+1\).
+Equations \(ISB.4\)–\(ISB.5\), submultiplicativity and the right-factor Cauchy estimates bound each word, before coefficient summation, by an exponential constant times that one factorial ratio.
+
+There are at most exponentially many words of total loss \(K\). Ordered compositions of a positive integer \(K\) number \(2^{K-1}\); their subdivisions into \(q_i\) and the \(N\) derivative components number at most \((N+2)^{2K}\), a deliberately loose bound obtained by placing separators among \(K\) units and coloring the units. Finite matrix entries and coefficient-operator choices cost another exponential factor. Absorb all these constants, all fixed input bounds, and \(H\) into \(C_1\ge1\). The sum of the absolute norms of **all** terms of loss \(K\), for any one of the Neumann or iterated correction expressions below, is bounded by
+\[
+\begin{gathered}
+C_1^K\frac{(|m|+K)!}{|m|!}|p_m|_{R(r_0)}.
+\end{gathered}
+\tag{ISB.6}
+\]
+The case \(K=0\) is the single bounded coefficient operation and is covered by a fixed prefactor. This argument also applies to truncated words uniformly in the truncation; the bound includes each contraction and every tail coefficient rather than replacing them by a formal product.
+
+#### ISB.3. Positive output, negative output and explicit tails
+
+For positive output \(j\ge0\), input degree is \(m=j+K\ge0\). The integer inequality
+\[
+\begin{gathered}
+\frac{(j+2K)!j!}{(j+K)!^2}\le\binom{2K}{K}\\
+\le4^K
+\end{gathered}
+\tag{ISB.7}
+\]
+follows by writing the first ratio as \(\prod_{a=1}^K(j+K+a)/(j+a)\), whose factors decrease with \(j\), and then using the binomial expansion. From \(ISB.1\), \(ISB.6\),
+\[
+\begin{gathered}
+|\text{output}_j|\le\\
+C_2M_\varepsilon\frac{\varepsilon^j}{j!}\\
+\sum_{K\ge0}(4C_1\varepsilon)^K.
+\end{gathered}
+\tag{ISB.8}
+\]
+Given any desired \(\eta>0\), choose \(0<\varepsilon\le\eta\) with \(9C_1\varepsilon<1/2\). The coefficient domain and \(C_1\) do not depend on this choice. This proves the positive estimate for **every** \(\eta\). Terms with \(K\ge R\) are bounded by the right side of \(ISB.8\) times \((4C_1\varepsilon)^R\), with the geometric denominator retained.
+
+For negative output \(-n\), the input is \(m=K-n\). When \(K<n\), \(ISB.6\) gives
+\[
+\begin{gathered}
+C_1^K\frac{n!}{(n-K)!}\\
+M D^{n-K}(n-K)!\\
+=M n!C_1^KD^{n-K}.
+\end{gathered}
+\tag{ISB.9}
+\]
+This part is finite; its sum is at most \(Mn!(D+C_1)^n\), since the binomial coefficients dominate the corresponding \(n\) summands. For \(K\ge n\), write \(m=K-n\ge0\). The multinomial expansion proves
+\((n+2m)!/(n!m!m!)\le3^{n+2m}\). Consequently the full positive-input part is bounded by
+\[
+\begin{gathered}
+C_2M_\varepsilon n!(3C_1)^n\\
+\sum_{m\ge0}(9C_1\varepsilon)^m.
+\end{gathered}
+\tag{ISB.10}
+\]
+Choose one fixed \(\varepsilon<1/(18C_1)\). Equations \(ISB.9\)–\(ISB.10\) prove one factorial negative constant for every \(n\), on the same domain. The tail \(K\ge R>n\) in \(ISB.10\) is bounded by the displayed prefactor times
+\((9C_1\varepsilon)^{R-n}/(1-9C_1\varepsilon)\).
+
+These bounds prove absolute normal convergence of the whole expressions, including infinitely many terms at a fixed output degree. They justify rearrangement, finite matrix sums and multiplication identities by the triangle inequality and absolute scalar convergence. On a fixed further inner product, the Cauchy formula applies to each chosen finite output derivative. Its constant is independent of all cutoffs and degrees. Applying it to the displayed tails proves normal convergence of every fixed base and normalized-spatial derivative. All spatial Taylor exponents remain in the norm; none is truncated or bounded in advance.
+
+#### ISB.4. Actual inverses and vanishing iteration
+
+Let \(L\) be one of the above order-lowering correction operators. Define
+\[
+\begin{gathered}
+(1+L)^{-1}f=\\
+\sum_{a\ge0}(-L)^a f.
+\end{gathered}
+\tag{ISB.11}
+\]
+Equations \(ISB.6\)–\(ISB.10\) prove that this expression is an actual coefficient sequence in the complete class, on one domain. Reserve an intermediate radius, for example \(3r_0/4\): the same proof first gives normal convergence there. Apply one further correction on the inner radius \(r_0/2\). The Cauchy formula permits differentiation of the convergent series, and the direct word bound in equation ISB.6, with the additional correction included, permits its reordering there. The finite geometric identity gives left and right inverses, because its remainder \(L^{a+1}f\) has total loss at least \(a+1\) and tends to zero coefficientwise with the explicit tails above. This is a limit of normally convergent holomorphic coefficient functions. It is not an ordinary supported-distribution limit, a formal completion, or a limit in a cohomology quotient.
+
+In particular, if an actual sequence satisfies \(s=-Ls\), then \(s=(-L)^a s\) for every finite \(a\). If \(s\) is the output of a previous division, select one new, fixed smaller outer radius inside its holomorphic domain and the same coefficient-divisor domain. Proof section MFA.2 makes the identical coefficient operators bounded on its radius interval; the support-normalized analytic operator is unchanged. This is a single additional shrinking made before any iteration index, not shrinking at each iteration. For positive output use \(ISB.8\) with \(K\ge a\). For fixed negative output \(-n\), take \(a>n\) and use \(ISB.10\) with \(m\ge a-n\). Both tend to zero, so every actual coefficient of \(s\) vanishes on the same inner product. Hence \(s=0\). This is the zero-remainder detection needed for full matrix relations with no highest positive homogeneous coefficient.
+
+#### ISB.5. Ordinary zero-section version
+
+In the ordinary polynomial coefficient spaces of proof section MFA.4, the covariable derivative in \(ISB.2\) is an ordinary derivative of a homogeneous polynomial. Its Cauchy bound on the same radius interval is at most \(C_0L\) per derivative; including it in \(ISB.4\) gives the same bound. Every finite-order right matrix has only finitely many tail offsets \(q\) relative to its principal shifted degree. A homogeneous space of negative polynomial degree is zero. All intermediate coefficient operations preserve the prescribed shifted polynomial degrees by proof section MFA.4, and the finite ordinary Leibniz product preserves the corresponding graded spaces.
+
+Thus \(ISB.6\)–\(ISB.8\) apply with finite free-basis shifts. A fixed shift changes the positive factorial bound by a fixed polynomial in the degree; this is absorbed by choosing the input \(\varepsilon\) smaller than the requested output value, since \(j^a\theta^j\) is bounded for every fixed \(a\) and \(0<\theta<1\). The finitely many degrees below the shifts satisfy the same convergent tail bounds individually. Every output component remains a homogeneous polynomial of its actual nonnegative degree. This proves \(ISB.11\) and zero detection in the genuine ordinary \(D^\infty\) class at the zero section; it does not substitute an ordinary ring for the microlocal argument in proof sections ISB.1–ISB.4.
+
+#### Reproducible figures for full division and reconstruction
+
+![Full spatial division, nilpotent remainder and special-class distinction](assets/infinite-spath-division-and-special-class.png)
+
+**Figure ISD.1.** Left: the exact real slice of equation ISD.15 retains its nilpotent matrix and row, radius one and real spatial coordinate from minus three-fifths to three-fifths. Both quotient coordinates are the reciprocal of one minus that coordinate; both remainder coordinates equal one. The nilpotent second coordinate survives. Center: equation ISF.10 uses normal difference one-quarter and spatial epsilon one-eighth; its coefficient-bound ratio is exactly two to the spatial degree, illustrating the proved failure of equation ISF.3. Right: proof sections ISD.2–ISD.4 and ISB.1–ISB.4 keep all spatial indices and both growth regimes on one common final domain. The first two panels are exact stated real/rational samples; the third is an algebraic and estimate diagram with no geometric scale. Free human context: [Kashiwara–Kawai, HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.3/III.5, printed pp.888–889/900–903.
+
+Editable SVG, exact data, and reproducible source.
+
+![Both balanced inverses and the nilpotent off-ray inverse](assets/infinite-balanced-reconstruction-and-off-ray.png)
+
+**Figure ISR.1.** Left: the exact diagram of proof sections ISR.2–ISR.3 uses two distinct coefficient rings, ordinary algebraic tensors, multiplication maps and unit inverses. The sum decomposition removes relation tensors and balances the coordinate-commuting remainder without a free-module identification. Right: the exact real samples of equation ISR.11 use reciprocal integer spatial coordinate, unit normal covariable and zero base coordinates; the inverse's row-sum norm is the integer plus its square. Proof section ISR.4 proves off-ray vanishing, and the inverse has no extension through the excluded ray. The diagram has no geometric scale. The whole-support conclusion uses the complete [§5.48, FEP.8–FEP.9](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring) theorem. Free human context: [Kashiwara–Kawai, HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.5, equations (3.5.8)/(3.5.16), printed pp.901/903.
+
+Editable SVG, exact data, and reproducible source.
 
 
 ## 6. What monodromy misses in the irregular world

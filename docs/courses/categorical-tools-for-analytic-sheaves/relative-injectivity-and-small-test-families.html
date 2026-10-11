@@ -1,0 +1,278 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Relative injectivity and small test families</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="relative-injectivity-and-small-test-families">Relative injectivity and small test families</h1>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0.</em></p>
+<p>An extension problem asks whether a map defined on one object continues across a specified arrow. Ordinary injectivity uses every monomorphism as a test. Other problems use a chosen family of arrows, and their solutions need not live in an abelian category. We prove existence from small tests and a factorization bound, then give a criterion under which those tests control a larger class. The criterion uses objects whose outgoing arrows all split. We prove that categorical maximality statement without an order or a monomorphism assumption.</p>
+<p>The cardinal and ordinal facts used below are proved in <span class="unlinked">Testing injectivity on generators and constructing enough injectives, Lemma 7.1</span>. For accessibility and its canonical Hom comparison, see <a href="accessible-objects-from-a-single-generator.html">Accessible objects from a single generator</a>. We use the universe conventions in <span class="unlinked">Universes and small categories</span>. Basic references for universal constructions and the ordinary injective application are Emily Riehl's <em>Category Theory in Context</em> and the Stacks Project's <em>Injectives in Grothendieck categories</em>, listed below. Every argument needed here is supplied in this lesson or these linked prerequisites.</p>
+<p>All categories are locally small in a fixed universe, and all indexing sets and diagrams are small in that universe. We use Choice. A subcategory need not be full: it may specify which arrows are allowed while keeping the same objects as its ambient category. A filtered category is nonempty; every two objects have a common receiving object, and every pair of parallel arrows becomes equal after composition with some arrow. For an infinite cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, a category is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered when every diagram with fewer than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> arrows admits a cocone.</p>
+<h2 id="1-extension-tests-and-their-variance">1. Extension tests and their variance</h2>
+<p>Fix a family <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> of arrows in a category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. An object <span class="math" data-tex="\(E\)">\(E\)</span> is <strong><span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-injective</strong> if, for every <span class="math" data-tex="\(s: A\to B\)">\(s: A\to B\)</span> in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, restriction is surjective:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathcal C}(B,E)
+\longrightarrow\operatorname{Hom}_{\mathcal C}(A,E),
+\qquad v\longmapsto vs.
+\tag{1.1}
+\]">\[
+\operatorname{Hom}_{\mathcal C}(B,E)
+\longrightarrow\operatorname{Hom}_{\mathcal C}(A,E),
+\qquad v\longmapsto vs.
+\tag{1.1}
+\]</span>
+<p>Thus every map <span class="math" data-tex="\(a: A\to E\)">\(a: A\to E\)</span> has an extension <span class="math" data-tex="\(b: B\to E\)">\(b: B\to E\)</span> satisfying <span class="math" data-tex="\(bs=a\)">\(bs=a\)</span>. The extension need not be unique, and the testing arrow need not be monic. We allow a family that is larger than a set, provided the individual Hom sets are small.</p>
+<p>The dual definition is <strong><span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-projectivity</strong>: the object is injective for the opposite arrows in <span class="math" data-tex="\(\mathcal C^{\mathrm{op}}\)">\(\mathcal C^{\mathrm{op}}\)</span>. Concretely, for <span class="math" data-tex="\(s: A\to B\)">\(s: A\to B\)</span>, every arrow <span class="math" data-tex="\(E\to B\)">\(E\to B\)</span> must lift to <span class="math" data-tex="\(E\to A\)">\(E\to A\)</span>. Reversing arrows therefore exchanges extension and lifting, and exchanges filtered colimits with cofiltered limits. When <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is abelian and <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is the family of all monomorphisms, (1.1) is exactly the ordinary injectivity condition. No additional exactness assertion is hidden in that identification.</p>
+<p>Let <span class="math" data-tex="\(\mathcal D\subset\mathcal C\)">\(\mathcal D\subset\mathcal C\)</span> be a subcategory. We will use two assumptions about its allowed changes:</p>
+<ul>
+<li>Every small filtered diagram in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> has a colimit there, and its image in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is also a colimit of the same diagram.</li>
+<li>For <span class="math" data-tex="\(u: A\to B\)">\(u: A\to B\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, <span class="math" data-tex="\(X\in\mathcal D\)">\(X\in\mathcal D\)</span>, and any ambient arrow <span class="math" data-tex="\(a: A\to X\)">\(a: A\to X\)</span>, there are <span class="math" data-tex="\(j: X\to X&#x27;\)">\(j: X\to X&#x27;\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> and <span class="math" data-tex="\(b: B\to X&#x27;\)">\(b: B\to X&#x27;\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> with <span class="math" data-tex="\(ja=bu\)">\(ja=bu\)</span>.</li>
+</ul>
+<p>The second condition says that one extension problem can be solved after an allowed change of target. It does not require a pushout to exist. If the appropriate pushout does exist and its target change belongs to <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, it supplies such a completion.</p>
+<h2 id="2-completing-a-whole-small-family">2. Completing a whole small family</h2>
+<p><strong>Lemma 2.1.</strong> Under the two assumptions above, a small family of problems</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+u_i: A_i\longrightarrow B_i\quad\text{in }\mathcal D,
+\qquad a_i: A_i\longrightarrow X\quad\text{in }\mathcal C
+\tag{2.1}
+\]">\[
+u_i: A_i\longrightarrow B_i\quad\text{in }\mathcal D,
+\qquad a_i: A_i\longrightarrow X\quad\text{in }\mathcal C
+\tag{2.1}
+\]</span>
+<p>with <span class="math" data-tex="\(X\in\mathcal D\)">\(X\in\mathcal D\)</span> can be solved after one allowed change <span class="math" data-tex="\(j: X\to X&#x27;\)">\(j: X\to X&#x27;\)</span>: there are ambient maps <span class="math" data-tex="\(b_i: B_i\to X&#x27;\)">\(b_i: B_i\to X&#x27;\)</span> with <span class="math" data-tex="\(b_i u_i=ja_i\)">\(b_i u_i=ja_i\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><strong>Proof.</strong> For the empty family take <span class="math" data-tex="\(j=1_X\)">\(j=1_X\)</span>. Otherwise well-order its index set, with ordinal length <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Construct <span class="math" data-tex="\(X_\alpha\)">\(X_\alpha\)</span> and maps <span class="math" data-tex="\(X_\alpha\to X_\beta\)">\(X_\alpha\to X_\beta\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, for <span class="math" data-tex="\(\alpha\leq\beta\leq\mu\)">\(\alpha\leq\beta\leq\mu\)</span>. Start with <span class="math" data-tex="\(X_0=X\)">\(X_0=X\)</span>. At stage <span class="math" data-tex="\(\alpha+1\)">\(\alpha+1\)</span>, apply the second assumption to <span class="math" data-tex="\(u_\alpha\)">\(u_\alpha\)</span> and the composite <span class="math" data-tex="\(A_\alpha\to X\to X_\alpha\)">\(A_\alpha\to X\to X_\alpha\)</span>. This gives <span class="math" data-tex="\(X_\alpha\to X_{\alpha+1}\)">\(X_\alpha\to X_{\alpha+1}\)</span> and an extension from <span class="math" data-tex="\(B_\alpha\)">\(B_\alpha\)</span>. Compose every earlier extension with that target change.</p>
+<p>At a nonzero limit stage <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, take the colimit of the earlier ordinal diagram in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. The index is filtered, so the first assumption applies. Its cocone maps belong to <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>; all earlier extensions continue to this colimit as ambient maps. Define all other transition maps by composition with these cocone maps. Their identities and composition equations follow from the colimit property.</p>
+<p>The map <span class="math" data-tex="\(X\to X_\mu\)">\(X\to X_\mu\)</span> is an allowed arrow, and each extension made at stage <span class="math" data-tex="\(i+1\)">\(i+1\)</span> composes to the required <span class="math" data-tex="\(b_i: B_i\to X_\mu\)">\(b_i: B_i\to X_\mu\)</span>. Every square remains commutative under these compositions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The assertion is simultaneous existence. Arbitrary choices of completions do not make this construction a functor. Functoriality requires further structure, such as chosen universal pushouts whose induced maps can be checked.</p>
+<h2 id="3-saturation-through-a-long-ordinal">3. Saturation through a long ordinal</h2>
+<p>For this section, <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is a <strong>small set</strong> of arrows of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Assume there is one small infinite cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> such that, for every domain <span class="math" data-tex="\(A\)">\(A\)</span> of these arrows and every small <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered diagram <span class="math" data-tex="\((X_i)\)">\((X_i)\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, the canonical comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_i\operatorname{Hom}_{\mathcal C}(A,X_i)
+\longrightarrow
+\operatorname{Hom}_{\mathcal C}\!\left(A,\operatorname{colim}_iX_i\right)
+\tag{3.1}
+\]">\[
+\operatorname{colim}_i\operatorname{Hom}_{\mathcal C}(A,X_i)
+\longrightarrow
+\operatorname{Hom}_{\mathcal C}\!\left(A,\operatorname{colim}_iX_i\right)
+\tag{3.1}
+\]</span>
+<p>is surjective. Ordinary <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-accessibility of each domain is a sufficient stronger assumption: it makes this comparison bijective for every such existing colimit in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Only factorization, hence surjectivity, is used here. If necessary enlarge <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> to an infinite regular cardinal; a diagram filtered for the larger cardinal is filtered for the original one.</p>
+<p><strong>Theorem 3.1.</strong> Every <span class="math" data-tex="\(X\in\mathcal D\)">\(X\in\mathcal D\)</span> has an arrow <span class="math" data-tex="\(X\to E\)">\(X\to E\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> with <span class="math" data-tex="\(E\)">\(E\)</span> <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-injective in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p><strong>Proof.</strong> Choose a small limit ordinal <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of cofinality greater than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, using the linked cardinal lemma. We construct <span class="math" data-tex="\(X_\alpha\)">\(X_\alpha\)</span> for <span class="math" data-tex="\(\alpha\leq\theta\)">\(\alpha\leq\theta\)</span>, with coherent transition maps in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Start at <span class="math" data-tex="\(X_0=X\)">\(X_0=X\)</span>. At each successor stage, form the set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\Gamma_\alpha=
+\{(s,a): s: A_s\to B_s\text{ belongs to }\mathcal T,
+\ a: A_s\to X_\alpha\}.
+\tag{3.2}
+\]">\[
+\Gamma_\alpha=
+\{(s,a): s: A_s\to B_s\text{ belongs to }\mathcal T,
+\ a: A_s\to X_\alpha\}.
+\tag{3.2}
+\]</span>
+<p>It is small: the testing arrows form a set and every Hom set is small. Lemma 2.1 completes all these problems after one arrow <span class="math" data-tex="\(X_\alpha\to X_{\alpha+1}\)">\(X_\alpha\to X_{\alpha+1}\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. At every nonzero limit stage use the colimit, with all its cocone and transition maps, exactly as in that lemma. Set <span class="math" data-tex="\(E=X_\theta\)">\(E=X_\theta\)</span>.</p>
+<p>The ordinal category of indices <span class="math" data-tex="\(\alpha&lt;\theta\)">\(\alpha&lt;\theta\)</span> is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered. The indices appearing in a diagram with fewer than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> arrows are bounded below <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, by the cofinality condition, and an upper bound supplies a cocone. The empty diagram has a cocone because <span class="math" data-tex="\(0&lt;\theta\)">\(0&lt;\theta\)</span>. Therefore (3.1) applies to its colimit <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>For a test <span class="math" data-tex="\(s: A_s\to B_s\)">\(s: A_s\to B_s\)</span> and any <span class="math" data-tex="\(a: A_s\to E\)">\(a: A_s\to E\)</span>, surjectivity in (3.1) supplies a stage <span class="math" data-tex="\(\alpha&lt;\theta\)">\(\alpha&lt;\theta\)</span> and <span class="math" data-tex="\(a_\alpha: A_s\to X_\alpha\)">\(a_\alpha: A_s\to X_\alpha\)</span> whose composite is <span class="math" data-tex="\(a\)">\(a\)</span>. The labelled problem <span class="math" data-tex="\((s,a_\alpha)\)">\((s,a_\alpha)\)</span> was completed at the next stage. Since <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is a limit, <span class="math" data-tex="\(\alpha+1&lt;\theta\)">\(\alpha+1&lt;\theta\)</span>. The resulting map <span class="math" data-tex="\(B_s\to X_{\alpha+1}\to E\)">\(B_s\to X_{\alpha+1}\to E\)</span> extends <span class="math" data-tex="\(a\)">\(a\)</span>. Hence <span class="math" data-tex="\(E\)">\(E\)</span> is <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-injective. The initial cocone map <span class="math" data-tex="\(X\to E\)">\(X\to E\)</span> belongs to <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, as required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The hypotheses allow the chosen class of target changes to consist of monomorphisms, epimorphisms or other arrows. They do not assert that all arrows of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> lie in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, or that the result is a universal arrow to the injective objects. Exercise 4 distinguishes an embedding from a reflection.</p>
+<h2 id="4-objects-whose-outgoing-arrows-split">4. Objects whose outgoing arrows split</h2>
+<p>Call <span class="math" data-tex="\(M\)">\(M\)</span> <strong>split maximal</strong> when every arrow <span class="math" data-tex="\(u: M\to N\)">\(u: M\to N\)</span> has a left inverse <span class="math" data-tex="\(r: N\to M\)">\(r: N\to M\)</span>. This condition is also called quasi-terminality. An endomorphism of <span class="math" data-tex="\(M\)">\(M\)</span> is then an automorphism. Indeed, if <span class="math" data-tex="\(vu=1_M\)">\(vu=1_M\)</span>, choose <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(wv=1_M\)">\(wv=1_M\)</span>. Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+w=w(vu)=(wv)u=u,
+\qquad uv=wv=1_M.
+\tag{4.1}
+\]">\[
+w=w(vu)=(wv)u=u,
+\qquad uv=wv=1_M.
+\tag{4.1}
+\]</span>
+<p>It need not be a terminal object: neither existence of arrows from other objects nor uniqueness of those arrows is part of the definition.</p>
+<p><strong>Lemma 4.1 (returning after an outgoing arrow).</strong> A nonempty essentially small category with all small filtered colimits has an object <span class="math" data-tex="\(L\)">\(L\)</span> such that an arrow <span class="math" data-tex="\(L\to N\)">\(L\to N\)</span> always implies the existence of an arrow <span class="math" data-tex="\(N\to L\)">\(N\to L\)</span>.</p>
+<p><strong>Proof.</strong> We may work in an equivalent small category. Equivalences preserve and reflect colimit universal properties: applying their full and faithful Hom bijections transports the cocone factorization and its uniqueness. Existence of the stated return arrows is also invariant under these equivalences.</p>
+<p>Consider the set of filtered subcategories of this small category, ordered by inclusion; they need not be full. It is nonempty because the subcategory consisting of one object and its identity is filtered. The union of an inclusion chain is a subcategory: any finite collection of identities or compositions belongs to one member of the chain. It is filtered for the same reason. Any two of its objects and any pair of its parallel arrows occur together in one filtered member, which supplies the needed receiving object or equalization. Thus every nonempty chain has an upper bound, and a chosen one-object subcategory bounds the empty chain. Zorn's lemma supplies a maximal filtered subcategory <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>.</p>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be the colimit of its inclusion diagram, with cocone maps <span class="math" data-tex="\(a_H: H\to L\)">\(a_H: H\to L\)</span>. If <span class="math" data-tex="\(u: L\to N\)">\(u: L\to N\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> were outside <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, adjoin that object, its identity and, for each old object <span class="math" data-tex="\(H\)">\(H\)</span>, the one arrow <span class="math" data-tex="\(ua_H: H\to N\)">\(ua_H: H\to N\)</span>. These arrows are closed under precomposition with the old arrows, by the cocone equations. There are no new arrows from <span class="math" data-tex="\(N\)">\(N\)</span> to an old object. The enlarged subcategory therefore has terminal object <span class="math" data-tex="\(N\)">\(N\)</span>, is filtered, and strictly contains <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, a contradiction. Hence <span class="math" data-tex="\(N\)">\(N\)</span> already belongs to <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, and its cocone map <span class="math" data-tex="\(a_N: N\to L\)">\(a_N: N\to L\)</span> is the required return. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply this lemma to the category of arrows out of a fixed object <span class="math" data-tex="\(A\)">\(A\)</span>. It is essentially small when the original category is: choose object representatives, then use their small Hom sets to choose representatives of the arrows out of <span class="math" data-tex="\(A\)">\(A\)</span>. It has all small filtered colimits. Such a diagram consists of a filtered diagram of targets and compatible arrows from <span class="math" data-tex="\(A\)">\(A\)</span>; the nonempty filtered index makes these a map from <span class="math" data-tex="\(A\)">\(A\)</span> to the target colimit. Factorization of a cocone in the arrow category is exactly its underlying colimit factorization together with that one compatibility equation.</p>
+<p>Consequently, for every <span class="math" data-tex="\(A\)">\(A\)</span> there is <span class="math" data-tex="\(f: A\to B\)">\(f: A\to B\)</span> such that</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\text{for every }u: B\to N\text{ there is }v: N\to B
+\text{ with }vuf=f.
+\tag{4.2}
+\]">\[
+\text{for every }u: B\to N\text{ there is }v: N\to B
+\text{ with }vuf=f.
+\tag{4.2}
+\]</span>
+<p><strong>Lemma 4.2 (one cocone map is epic).</strong> Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be small, let <span class="math" data-tex="\(\rho&gt;|\operatorname{Mor}(\mathcal E)|\)">\(\rho&gt;|\operatorname{Mor}(\mathcal E)|\)</span> be a small infinite cardinal, and let <span class="math" data-tex="\((Y_i)\)">\((Y_i)\)</span> be a small <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-filtered diagram with colimit <span class="math" data-tex="\(Y\)">\(Y\)</span> in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. One of its cocone maps <span class="math" data-tex="\(q_i: Y_i\to Y\)">\(q_i: Y_i\to Y\)</span> is an epimorphism.</p>
+<p><strong>Proof.</strong> Among the actual cocone arrows <span class="math" data-tex="\(q_i\)">\(q_i\)</span>, choose one index for each distinct arrow of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. There are fewer than <span class="math" data-tex="\(\rho\)">\(\rho\)</span> choices. A cocone over their discrete index diagram gives one receiving index <span class="math" data-tex="\(i_0\)">\(i_0\)</span> and arrows from all the chosen indices to <span class="math" data-tex="\(i_0\)">\(i_0\)</span>. Every original <span class="math" data-tex="\(q_i\)">\(q_i\)</span> equals one chosen arrow, with the same domain object, and hence factors through <span class="math" data-tex="\(q_{i_0}\)">\(q_{i_0}\)</span>. If two maps out of <span class="math" data-tex="\(Y\)">\(Y\)</span> agree after <span class="math" data-tex="\(q_{i_0}\)">\(q_{i_0}\)</span>, they agree after every <span class="math" data-tex="\(q_i\)">\(q_i\)</span>. The colimit property says they are equal. Thus <span class="math" data-tex="\(q_{i_0}\)">\(q_{i_0}\)</span> is epic. This uses only the total number of arrows and the joint epimorphic property of a colimit cocone. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.3 (categorical maximality).</strong> A nonempty essentially small category admitting all small filtered colimits has a split maximal object.</p>
+<p><strong>Proof.</strong> Again replace the category by an equivalent small one, and choose <span class="math" data-tex="\(\rho\)">\(\rho\)</span> greater than its arrow cardinal. Choose a small limit ordinal <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with cofinality greater than <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Beginning at any <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>, construct a coherent ordinal diagram. At every successor choose <span class="math" data-tex="\(f_\alpha: Y_\alpha\to Y_{\alpha+1}\)">\(f_\alpha: Y_\alpha\to Y_{\alpha+1}\)</span> with property (4.2); at every nonzero limit take the colimit of all earlier stages. Let <span class="math" data-tex="\(M\)">\(M\)</span> be the colimit over <span class="math" data-tex="\(\alpha&lt;\theta\)">\(\alpha&lt;\theta\)</span>, with maps <span class="math" data-tex="\(q_\alpha: Y_\alpha\to M\)">\(q_\alpha: Y_\alpha\to M\)</span>.</p>
+<p>This ordinal index is <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-filtered, so Lemma 4.2 gives an epic <span class="math" data-tex="\(q_\alpha\)">\(q_\alpha\)</span>. For any <span class="math" data-tex="\(u: M\to N\)">\(u: M\to N\)</span>, property (4.2) applied to <span class="math" data-tex="\(u q_{\alpha+1}\)">\(u q_{\alpha+1}\)</span> gives <span class="math" data-tex="\(v: N\to Y_{\alpha+1}\)">\(v: N\to Y_{\alpha+1}\)</span> satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+v u q_{\alpha+1} f_\alpha=f_\alpha.
+\tag{4.3}
+\]">\[
+v u q_{\alpha+1} f_\alpha=f_\alpha.
+\tag{4.3}
+\]</span>
+<p>Put <span class="math" data-tex="\(r=q_{\alpha+1}v\)">\(r=q_{\alpha+1}v\)</span>. The transition equation <span class="math" data-tex="\(q_{\alpha+1}f_\alpha=q_\alpha\)">\(q_{\alpha+1}f_\alpha=q_\alpha\)</span> gives <span class="math" data-tex="\(ruq_\alpha=q_\alpha\)">\(ruq_\alpha=q_\alpha\)</span>. Since <span class="math" data-tex="\(q_\alpha\)">\(q_\alpha\)</span> is epic, <span class="math" data-tex="\(ru=1_M\)">\(ru=1_M\)</span>. This supplies a left inverse for every outgoing <span class="math" data-tex="\(u\)">\(u\)</span>, which proves split maximality. Equivalence transports these left inverses back to the original category. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The epimorphism in the proof is categorical right cancellation. The category need not be abelian, its arrows need not be monomorphisms, and no Hom functor is assumed to preserve its filtered colimits.</p>
+<h2 id="5-recognizing-the-larger-extension-class">5. Recognizing the larger extension class</h2>
+<p>We return to <span class="math" data-tex="\(\mathcal D\subset\mathcal C\)">\(\mathcal D\subset\mathcal C\)</span> and the two assumptions in Section 1. Now <span class="math" data-tex="\(\mathcal T\subset\operatorname{Mor}(\mathcal D)\)">\(\mathcal T\subset\operatorname{Mor}(\mathcal D)\)</span> can be an arbitrary family. For an arrow <span class="math" data-tex="\(f: X\to Z\)">\(f: X\to Z\)</span> of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, consider the following test property: every pullback square with top arrow in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> admits a diagonal <span class="math" data-tex="\(\ell\)">\(\ell\)</span> making both triangles commute.</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\begin{array}{ccc}
+A&amp;\xrightarrow{s}&amp;B\\
+{a}\downarrow&amp;&amp;\downarrow{b}\\
+X&amp;\xrightarrow{f}&amp;Z
+\end{array}
+\qquad
+\ell: B\longrightarrow X,
+\quad \ell s=a,\quad f\ell=b.
+\tag{5.1}
+\]">\[
+\begin{array}{ccc}
+A&amp;\xrightarrow{s}&amp;B\\
+{a}\downarrow&amp;&amp;\downarrow{b}\\
+X&amp;\xrightarrow{f}&amp;Z
+\end{array}
+\qquad
+\ell: B\longrightarrow X,
+\quad \ell s=a,\quad f\ell=b.
+\tag{5.1}
+\]</span>
+<p>We impose three additional assumptions, stating the ambient categories explicitly:</p>
+<ul>
+<li>For every <span class="math" data-tex="\(X\in\mathcal D\)">\(X\in\mathcal D\)</span>, the category of allowed arrows out of <span class="math" data-tex="\(X\)">\(X\)</span>, with allowed commutative triangles, is essentially small.</li>
+<li>Whenever a pullback square in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has horizontal arrows <span class="math" data-tex="\(s: A\to B\)">\(s: A\to B\)</span> and <span class="math" data-tex="\(f: X\to Z\)">\(f: X\to Z\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, it factors through an ambient pushout</li>
+</ul>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\begin{array}{ccc}
+A&amp;\xrightarrow{s}&amp;B\\
+{a}\downarrow&amp;&amp;\downarrow{j}\\
+X&amp;\xrightarrow{g}&amp;P
+\end{array}
+\qquad h: P\longrightarrow Z,
+\quad hg=f,\quad hj=b,
+\quad g,h\in\operatorname{Mor}(\mathcal D).
+\tag{5.2}
+\]">\[
+\begin{array}{ccc}
+A&amp;\xrightarrow{s}&amp;B\\
+{a}\downarrow&amp;&amp;\downarrow{j}\\
+X&amp;\xrightarrow{g}&amp;P
+\end{array}
+\qquad h: P\longrightarrow Z,
+\quad hg=f,\quad hj=b,
+\quad g,h\in\operatorname{Mor}(\mathcal D).
+\tag{5.2}
+\]</span>
+<ul>
+<li>An arrow <span class="math" data-tex="\(f\)">\(f\)</span> of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> satisfying all tests (5.1) is an isomorphism in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</li>
+</ul>
+<p>The factorization assumption concerns pullback squares. It does not claim that every square is a pullback, or that an arbitrary ambient pushout has its structure maps in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. The last assumption is a genuine isomorphism-detection hypothesis, not a consequence of injectivity.</p>
+<p><strong>Theorem 5.1.</strong> Under these five assumptions, every <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-injective object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is injective for the entire family <span class="math" data-tex="\(\operatorname{Mor}(\mathcal D)\)">\(\operatorname{Mor}(\mathcal D)\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-injective, and fix <span class="math" data-tex="\(f: X\to Z\)">\(f: X\to Z\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> and <span class="math" data-tex="\(a: X\to E\)">\(a: X\to E\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Form a category <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> of partial extensions. Its objects are diagrams</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+X\xrightarrow{u}P\xrightarrow{v}Z,
+\qquad vu=f,
+\qquad w: P\longrightarrow E,
+\quad wu=a,
+\quad u,v\in\operatorname{Mor}(\mathcal D).
+\tag{5.3}
+\]">\[
+X\xrightarrow{u}P\xrightarrow{v}Z,
+\qquad vu=f,
+\qquad w: P\longrightarrow E,
+\quad wu=a,
+\quad u,v\in\operatorname{Mor}(\mathcal D).
+\tag{5.3}
+\]</span>
+<p>An arrow to a second such object is <span class="math" data-tex="\(t: P\to P&#x27;\)">\(t: P\to P&#x27;\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> with <span class="math" data-tex="\(tu=u&#x27;\)">\(tu=u&#x27;\)</span>, <span class="math" data-tex="\(v&#x27;t=v\)">\(v&#x27;t=v\)</span> and <span class="math" data-tex="\(w&#x27;t=w\)">\(w&#x27;t=w\)</span>. The object <span class="math" data-tex="\((1_X,f,a)\)">\((1_X,f,a)\)</span> makes <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> nonempty.</p>
+<p>This category is essentially small. Choose a small representative family of arrows <span class="math" data-tex="\(u: X\to P\)">\(u: X\to P\)</span> using the first additional assumption. For each representative target, the possible <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> lie in small Hom sets. Keep just the pairs satisfying (5.3). Isomorphisms in the allowed arrow category transport these pairs and give representatives of every partial extension. The resulting representative category has small Hom sets, hence a small set of arrows.</p>
+<p>It also has all small filtered colimits. For a filtered diagram of partial extensions, take the target colimit <span class="math" data-tex="\(P\)">\(P\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Its cocone maps yield <span class="math" data-tex="\(u: X\to P\)">\(u: X\to P\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, because the maps from the fixed <span class="math" data-tex="\(X\)">\(X\)</span> agree after transitions and the index is nonempty and filtered. The compatible <span class="math" data-tex="\(v_i\)">\(v_i\)</span> give <span class="math" data-tex="\(v: P\to Z\)">\(v: P\to Z\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> by the colimit property there. Preservation of this colimit in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> gives <span class="math" data-tex="\(w: P\to E\)">\(w: P\to E\)</span>. Their required equations follow after every target cocone map; the equation <span class="math" data-tex="\(wu=a\)">\(wu=a\)</span> follows using any index. The same universal properties give the colimit factorization in <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> and its uniqueness.</p>
+<p>Theorem 4.3 now supplies a split maximal partial extension <span class="math" data-tex="\((u_0,v_0,w_0)\)">\((u_0,v_0,w_0)\)</span> with intermediate object <span class="math" data-tex="\(P_0\)">\(P_0\)</span>. We prove that <span class="math" data-tex="\(v_0\)">\(v_0\)</span> has property (5.1). Take any such pullback square for <span class="math" data-tex="\(v_0\)">\(v_0\)</span> and <span class="math" data-tex="\(s: A\to B\)">\(s: A\to B\)</span> in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Assumption (5.2) supplies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+P_0\xrightarrow{g}Q\xrightarrow{h}Z,
+\qquad hg=v_0,
+\qquad Q=P_0\amalg_A B,
+\tag{5.4}
+\]">\[
+P_0\xrightarrow{g}Q\xrightarrow{h}Z,
+\qquad hg=v_0,
+\qquad Q=P_0\amalg_A B,
+\tag{5.4}
+\]</span>
+<p>with <span class="math" data-tex="\(g,h\)">\(g,h\)</span> allowed and with the specified pushout map <span class="math" data-tex="\(j: B\to Q\)">\(j: B\to Q\)</span>. Injectivity of <span class="math" data-tex="\(E\)">\(E\)</span> for <span class="math" data-tex="\(s\)">\(s\)</span> extends <span class="math" data-tex="\(w_0 a: A\to E\)">\(w_0 a: A\to E\)</span> to <span class="math" data-tex="\(b_E: B\to E\)">\(b_E: B\to E\)</span>. The pushout property glues <span class="math" data-tex="\(w_0\)">\(w_0\)</span> and <span class="math" data-tex="\(b_E\)">\(b_E\)</span> into <span class="math" data-tex="\(w_1: Q\to E\)">\(w_1: Q\to E\)</span>. Therefore <span class="math" data-tex="\((g u_0,h,w_1)\)">\((g u_0,h,w_1)\)</span> is another partial extension, and <span class="math" data-tex="\(g\)">\(g\)</span> gives an arrow to it from the split maximal one.</p>
+<p>Its left inverse in <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> is an allowed map <span class="math" data-tex="\(r: Q\to P_0\)">\(r: Q\to P_0\)</span> satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+rg=1_{P_0},\qquad v_0r=h,\qquad w_0r=w_1.
+\tag{5.5}
+\]">\[
+rg=1_{P_0},\qquad v_0r=h,\qquad w_0r=w_1.
+\tag{5.5}
+\]</span>
+<p>The diagonal <span class="math" data-tex="\(\ell=rj: B\to P_0\)">\(\ell=rj: B\to P_0\)</span> then satisfies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+\ell s=rga=a,
+\qquad v_0\ell=hj=b.
+\tag{5.6}
+\]">\[
+\ell s=rga=a,
+\qquad v_0\ell=hj=b.
+\tag{5.6}
+\]</span>
+<p>Thus every pullback test for <span class="math" data-tex="\(v_0\)">\(v_0\)</span> has a diagonal. The isomorphism-detection assumption makes <span class="math" data-tex="\(v_0\)">\(v_0\)</span> invertible in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Finally <span class="math" data-tex="\(w_0v_0^{-1}: Z\to E\)">\(w_0v_0^{-1}: Z\to E\)</span> extends the original <span class="math" data-tex="\(a\)">\(a\)</span>, since <span class="math" data-tex="\(v_0u_0=f\)">\(v_0u_0=f\)</span> and <span class="math" data-tex="\(w_0u_0=a\)">\(w_0u_0=a\)</span>. Both the extension and the testing arrow were arbitrary, proving the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This theorem has no smallness or accessibility assumption on the testing family. Its size control comes from the allowed partial-extension categories. The existence theorem in Section 3 instead uses a small testing set and factorization bounds, without the isomorphism-detection assumptions. These are different uses of smallness.</p>
+<h2 id="6-two-concrete-computations">6. Two concrete computations</h2>
+<p><strong>Example 6.1: successive tests on an ordinal chain.</strong> Let <span class="math" data-tex="\(\mathcal C=\mathcal D\)">\(\mathcal C=\mathcal D\)</span> be the poset category</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+0&lt;1&lt;2&lt;\cdots&lt;\omega,
+\qquad \mathcal T=\{n\longrightarrow n+1: n&lt;\omega\}.
+\tag{6.1}
+\]">\[
+0&lt;1&lt;2&lt;\cdots&lt;\omega,
+\qquad \mathcal T=\{n\longrightarrow n+1: n&lt;\omega\}.
+\tag{6.1}
+\]</span>
+<p>Every nonempty filtered diagram has its supremum as colimit. A one-problem completion is the maximum of its target and the current object. A finite <span class="math" data-tex="\(n\)">\(n\)</span> is accessible for ordinary filtered colimits: if <span class="math" data-tex="\(n\leq\sup_i x_i\)">\(n\leq\sup_i x_i\)</span>, some <span class="math" data-tex="\(x_i\)">\(x_i\)</span> is at least <span class="math" data-tex="\(n\)">\(n\)</span>. For otherwise all values are bounded by <span class="math" data-tex="\(n-1\)">\(n-1\)</span>; the case <span class="math" data-tex="\(n=0\)">\(n=0\)</span> follows from nonemptiness. The Hom sets have at most one element, so the induced comparison is also injective.</p>
+<p>Starting at <span class="math" data-tex="\(0\)">\(0\)</span>, the simultaneous completion of all problems at stage <span class="math" data-tex="\(k\)">\(k\)</span> can be chosen as <span class="math" data-tex="\(k\to k+1\)">\(k\to k+1\)</span>. Precisely the tests with <span class="math" data-tex="\(n\leq k\)">\(n\leq k\)</span> have maps into that stage, and each <span class="math" data-tex="\(n+1\)">\(n+1\)</span> lies below <span class="math" data-tex="\(k+1\)">\(k+1\)</span>. At the countable limit the target is <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, and all tests extend. Any later target can remain <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. No finite object is <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-injective, because its own successor test fails. Thus the only injective target is <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, and the limit stage is essential in this computation.</p>
+<p><strong>Example 6.2: splitting does not give uniqueness.</strong> Take the one-object category of a nontrivial small group <span class="math" data-tex="\(H\)">\(H\)</span>. Every arrow is invertible, so its object is split maximal; it is not terminal because its endomorphism set has more than one member.</p>
+<p>This category does admit every small filtered colimit. To verify that assertion rather than assume it, let <span class="math" data-tex="\(F: I\to H\)">\(F: I\to H\)</span> be a filtered diagram and fix <span class="math" data-tex="\(i_0\)">\(i_0\)</span>. For any <span class="math" data-tex="\(i\)">\(i\)</span>, choose a span <span class="math" data-tex="\(i\xrightarrow{a}k\xleftarrow{b}i_0\)">\(i\xrightarrow{a}k\xleftarrow{b}i_0\)</span>, and define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+t_i=F(b)^{-1}F(a).
+\tag{6.2}
+\]">\[
+t_i=F(b)^{-1}F(a).
+\tag{6.2}
+\]</span>
+<p>This is independent of the span: place two spans over a common receiving object, then equalize the two resulting paths from <span class="math" data-tex="\(i\)">\(i\)</span> and the two from <span class="math" data-tex="\(i_0\)">\(i_0\)</span>. Their images under <span class="math" data-tex="\(F\)">\(F\)</span> are equal; cancellation in the group gives equality of the two ratios. Applying the same argument to a span and to a given arrow <span class="math" data-tex="\(c: i\to j\)">\(c: i\to j\)</span> proves <span class="math" data-tex="\(t_jF(c)=t_i\)">\(t_jF(c)=t_i\)</span>. We may take <span class="math" data-tex="\(t_{i_0}=1\)">\(t_{i_0}=1\)</span>, so these maps form a cocone to the one object.</p>
+<p>For any other cocone <span class="math" data-tex="\((z_i)\)">\((z_i)\)</span>, its equations on the chosen span give <span class="math" data-tex="\(z_i=z_{i_0}t_i\)">\(z_i=z_{i_0}t_i\)</span>. Thus its unique factorization through this cocone is the arrow <span class="math" data-tex="\(z_{i_0}\)">\(z_{i_0}\)</span>. This is the colimit universal property. The calculation explains how a category can have all filtered colimits and a split maximal object while failing terminal uniqueness.</p>
+<h2 id="7-graded-exercises-with-solutions">7. Graded exercises with solutions</h2>
+<p><strong>Exercise 1 (routine).</strong> Show that both nonemptiness and essential smallness are necessary in Theorem 4.3.</p>
+<p><strong>Solution.</strong> The empty category admits colimits of every filtered diagram into it vacuously, because a filtered index is nonempty and there is no such functor. It has no object, hence no split maximal one.</p>
+<p>For size, take the category of all ordinals small in the fixed universe, with one arrow <span class="math" data-tex="\(\alpha\to\beta\)">\(\alpha\to\beta\)</span> exactly when <span class="math" data-tex="\(\alpha\leq\beta\)">\(\alpha\leq\beta\)</span>. A small nonempty filtered diagram has the supremum of its values as colimit. That supremum is still small: the union of a small family of small ordinal sets belongs to the universe. This category is locally small, but not essentially small in that universe, since distinct ordinals are nonisomorphic and their entire collection is not a small set. If that collection were small, its union would be a small ordinal; the successor of that union would be another member larger than the union, a contradiction. For each <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the arrow <span class="math" data-tex="\(\alpha\to\alpha+1\)">\(\alpha\to\alpha+1\)</span> has no left inverse in the poset. There is no split maximal object. The category itself can be organized in an enlarged ambient universe; that does not make it essentially small in the original one.</p>
+<p><strong>Exercise 2 (standard).</strong> Prove that <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-injective objects are closed under retracts and existing small products. State and prove the dual assertion for projective objects.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(E\xrightarrow{i}J\xrightarrow{p}E\)">\(E\xrightarrow{i}J\xrightarrow{p}E\)</span> has <span class="math" data-tex="\(pi=1_E\)">\(pi=1_E\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> is injective for a test <span class="math" data-tex="\(s: A\to B\)">\(s: A\to B\)</span>, compose <span class="math" data-tex="\(a: A\to E\)">\(a: A\to E\)</span> with <span class="math" data-tex="\(i\)">\(i\)</span>, extend to <span class="math" data-tex="\(b: B\to J\)">\(b: B\to J\)</span>, and use <span class="math" data-tex="\(pb\)">\(pb\)</span>. Then <span class="math" data-tex="\(pbs=pia=a\)">\(pbs=pia=a\)</span>.</p>
+<p>For a product <span class="math" data-tex="\(E=\prod_jE_j\)">\(E=\prod_jE_j\)</span>, take the components of <span class="math" data-tex="\(a: A\to E\)">\(a: A\to E\)</span>. Each extends to <span class="math" data-tex="\(b_j: B\to E_j\)">\(b_j: B\to E_j\)</span>; small-indexed Choice selects these extensions together. The product universal property gives <span class="math" data-tex="\(b: B\to E\)">\(b: B\to E\)</span>, and equality after every projection proves <span class="math" data-tex="\(bs=a\)">\(bs=a\)</span>. For the empty product, the terminal object's unique map from <span class="math" data-tex="\(B\)">\(B\)</span> restricts to its unique map from <span class="math" data-tex="\(A\)">\(A\)</span>, so the statement includes that case.</p>
+<p>In the opposite category these are precisely retracts and coproducts of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-projective objects. Concretely, a map <span class="math" data-tex="\(\coprod_jP_j\to B\)">\(\coprod_jP_j\to B\)</span> is a family of maps from the <span class="math" data-tex="\(P_j\)">\(P_j\)</span>, lift each across a test <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>, and assemble the lifts by the coproduct property. The empty coproduct is initial and lifts by its unique arrow. For a retract, lift after its retraction from the larger projective object and precompose with its section. The equation for that section and retraction verifies the desired lift.</p>
+<p><strong>Exercise 3 (challenging).</strong> In abelian groups, take the single test <span class="math" data-tex="\(0\to\mathbf Z\)">\(0\to\mathbf Z\)</span>. Show that every group passes its extension test, but the inclusion <span class="math" data-tex="\(2\mathbf Z\hookrightarrow\mathbf Z\)">\(2\mathbf Z\hookrightarrow\mathbf Z\)</span> satisfies the pullback property (5.1) without being invertible. Explain which extra assumption of Theorem 5.1 this disproves as an automatic assertion.</p>
+<p><strong>Solution.</strong> There is one map from <span class="math" data-tex="\(0\)">\(0\)</span> to any group, and it extends to <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> by the zero homomorphism. Thus every group is injective for this testing family. Nevertheless <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> is not ordinarily injective: the homomorphism <span class="math" data-tex="\(2n\mapsto n\)">\(2n\mapsto n\)</span> on <span class="math" data-tex="\(2\mathbf Z\)">\(2\mathbf Z\)</span> cannot extend to <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, since an extension would have <span class="math" data-tex="\(2f(1)=1\)">\(2f(1)=1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(f: 2\mathbf Z\hookrightarrow\mathbf Z\)">\(f: 2\mathbf Z\hookrightarrow\mathbf Z\)</span>. A square (5.1) with top arrow <span class="math" data-tex="\(0\to\mathbf Z\)">\(0\to\mathbf Z\)</span> would have bottom-right vertical map <span class="math" data-tex="\(b: \mathbf Z\to\mathbf Z\)">\(b: \mathbf Z\to\mathbf Z\)</span>, say multiplication by <span class="math" data-tex="\(m\)">\(m\)</span>. Its pullback along <span class="math" data-tex="\(f\)">\(f\)</span> identifies with <span class="math" data-tex="\(b^{-1}(2\mathbf Z)\)">\(b^{-1}(2\mathbf Z)\)</span>, which contains the nonzero subgroup <span class="math" data-tex="\(2\mathbf Z\)">\(2\mathbf Z\)</span>, since <span class="math" data-tex="\(b(2n)=2mn\)">\(b(2n)=2mn\)</span>. Therefore this pullback cannot be <span class="math" data-tex="\(0\)">\(0\)</span>. There is no pullback square of the required shape, and the condition that every such square admits a diagonal holds vacuously. The inclusion <span class="math" data-tex="\(f\)">\(f\)</span> is not an isomorphism. Thus the final isomorphism-detection assumption in Section 5 is a substantive restriction on the testing family; it cannot be inferred from the words 'extension test' or 'pullback'.</p>
+<p><strong>Exercise 4 (advanced).</strong> For sets and the test <span class="math" data-tex="\(\varnothing\to\{*\}\)">\(\varnothing\to\{*\}\)</span>, give a functorial embedding into test-injective objects. Prove that the full subcategory of those objects is nevertheless not reflective in sets.</p>
+<p><strong>Solution.</strong> A set <span class="math" data-tex="\(Y\)">\(Y\)</span> is test-injective exactly when it is nonempty: the restriction <span class="math" data-tex="\(\operatorname{Hom}(\{*\},Y)\to\operatorname{Hom}(\varnothing,Y)\)">\(\operatorname{Hom}(\{*\},Y)\to\operatorname{Hom}(\varnothing,Y)\)</span> is the map <span class="math" data-tex="\(Y\to\{*\}\)">\(Y\to\{*\}\)</span>, which is surjective precisely in that case.</p>
+<p>Put <span class="math" data-tex="\(I(X)=X\amalg\{*\}\)">\(I(X)=X\amalg\{*\}\)</span>, send a function <span class="math" data-tex="\(u: X\to X&#x27;\)">\(u: X\to X&#x27;\)</span> to <span class="math" data-tex="\(u\amalg1\)">\(u\amalg1\)</span>, and use the first summand inclusion <span class="math" data-tex="\(q_X: X\hookrightarrow I(X)\)">\(q_X: X\hookrightarrow I(X)\)</span>. These assignments preserve identities and composition on both summands, so define a functor. The equation <span class="math" data-tex="\(I(u)q_X=q_{X&#x27;}u\)">\(I(u)q_X=q_{X&#x27;}u\)</span> proves naturality, and each <span class="math" data-tex="\(q_X\)">\(q_X\)</span> is monic. Every target is nonempty and therefore test-injective.</p>
+<p>If nonempty sets formed a reflective subcategory, its left adjoint would send <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> to a nonempty set <span class="math" data-tex="\(L\)">\(L\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(L,Y)
+\simeq\operatorname{Hom}(\varnothing,Y)=\{*\}
+\quad\text{for every nonempty }Y.
+\tag{7.1}
+\]">\[
+\operatorname{Hom}(L,Y)
+\simeq\operatorname{Hom}(\varnothing,Y)=\{*\}
+\quad\text{for every nonempty }Y.
+\tag{7.1}
+\]</span>
+<p>For the two-element set <span class="math" data-tex="\(Y\)">\(Y\)</span>, the two constant functions from nonempty <span class="math" data-tex="\(L\)">\(L\)</span> are distinct, contradicting (7.1). No reflection exists. The functorial embedding solves extension existence; it does not give the uniqueness needed for an adjunction. Already <span class="math" data-tex="\(I(\varnothing)\)">\(I(\varnothing)\)</span> has one element and <span class="math" data-tex="\(I^2(\varnothing)\)">\(I^2(\varnothing)\)</span> has two, so the natural second embedding is not an isomorphism.</p>
+<h2 id="8-references">8. References</h2>
+<ul>
+<li>Emily Riehl, <a href="https://emilyriehl.github.io/files/context.pdf"><em>Category Theory in Context</em>, author-hosted second edition</a>, Chapters 2–4, for limits, colimits and representability. These provide further categorical context; the categorical maximality and relative extension arguments above are complete.</li>
+<li>The Stacks Project Authors, <a href="https://stacks.math.columbia.edu/tag/05AB"><em>Injectives in Grothendieck categories</em>, Section 19.11</a>, for the ordinary generator test and functorial injective construction. The linked testing-injectivity lesson proves the generator-family criterion and the full functorial construction.</li>
+</ul>
+<p>Relative injectivity changes the family of extension problems, while the choice of allowed target changes governs the construction. Passing all the small tests, recognizing every allowed arrow and obtaining a universal adjunction are separate assertions; their proofs above state the hypotheses each requires.</p>
+</main></body></html>

@@ -1,6 +1,6 @@
 # Wide modular gaps and normal states in a type III₀ factor
 
-*Independent proof development, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. Original exposition and reproduction sources: CC0-1.0 to the extent of rights held.*
+*Original exposition and reproduction sources: CC0-1.0 to the extent of rights held.*
 
 Let \(M\ne0\) be a type III factor with separable predual. The type III₀ assumption in this chapter is exactly
 

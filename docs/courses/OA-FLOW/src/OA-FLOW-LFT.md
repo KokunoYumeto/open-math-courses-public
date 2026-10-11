@@ -1,6 +1,6 @@
 # Lifted orbit relations and the normalized core
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 A nonsingular action changes the mass of a set. An extra positive coordinate can compensate for that change, producing a measure-preserving action. The operator algebra of the lifted action is the core of the original orbit algebra. We prove the identification by an onto Fourier transform, determine its trace with the exact constant, and distinguish the countable lifted orbits from a separate continuous orbit representation.
 
@@ -474,7 +474,7 @@ Here \(z\in\mathbb C\), and the operator value is multiplication by \(\lambda_y^
 
 Let \(\Phi\) be the full dual weight of \(\varphi\) on \(C_\varphi\), and let \(\tau_{\rm core}\) denote the canonical trace transported to \(N\) by \(\Gamma\). We use Lebesgue measure \(dt\) for the original real group and \(ds/(2\pi)\) for its dual characters \(t\mapsto e^{-ist}\), as in the [core normalization](OA-FLOW-CORE.md#core-setting). This convention is essential to the constant below.
 
-The whole dual weight is the composition of \(\varphi\) with the extended-positive dual-action average: this is [GDA8](OA-FLOW-GDA.md#gda-8), with the [entire positive average](OA-FLOW-DA.md#da-positive). Under \(\Gamma\) its value algebra is \(j(M)\), and we apply \(\varphi\circ j^{-1}\) to that average. Take \(f\in L^1(X,\mu)_+\cap L^\infty(X,\mu)\) and \(g\in C_c(L)_+\), and write
+The whole dual weight is the composition of \(\varphi\) with the extended-positive dual-action average: this is [GDA8](OA-FLOW-GDA.md#gda-8), with the [entire positive average](OA-FLOW-DA.md#da-positive). The [equality with the canonical operator-valued weight](OA-FLOW-DA.md#da-equality) identifies this entire average with the weight composed in GDA8, on every positive element. Under \(\Gamma\) its value algebra is \(j(M)\), and we apply \(\varphi\circ j^{-1}\) to that average. Take \(f\in L^1(X,\mu)_+\cap L^\infty(X,\mu)\) and \(g\in C_c(L)_+\), and write
 \[
  A_{f,g}=\widetilde\pi\bigl((y,a)\mapsto f(y)g(a)\bigr).
 \tag{LFT5.a}

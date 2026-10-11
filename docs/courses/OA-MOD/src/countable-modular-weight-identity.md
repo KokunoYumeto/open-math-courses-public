@@ -28,8 +28,9 @@ The sum is the supremum of its finite partial sums; normality follows
 from normality of each summand and interchange of two directed
 positive suprema.
 
-We name the precise analytic input rather than hiding it. The
-fixed-operator theorem of Takesaki II, VIII.3.18(i)–(ii), says that
+The fixed-operator theorem proved in
+HS02–03,
+corresponding to Takesaki II, VIII.3.18(i)–(ii), says that
 the global inequality
 \(\varphi(aXa^*)\leq\varphi(X)\) for every
 \(X\in M_+\) is equivalent to a bounded negative-half-strip modular
@@ -47,10 +48,10 @@ x\in\mathfrak n_\varphi
 \tag{ACI.2}
 \]
 
-The full proof of this analytic theorem is an explicit open course
-prerequisite, `OA-MOD-ACI-DEP-RIGHT-ACTION`. The source's proof of
-IX.4.20 cites VIII.3.17 at this step; VIII.3.18 is the direct
-fixed-operator statement.
+HS02 constructs the bounded commutant operator from the global inequality;
+HS03 proves the converse and this identity on the whole finite left ideal.
+The source's proof of IX.4.20 cites VIII.3.17 at this step;
+VIII.3.18 is the direct fixed-operator statement.
 
 Suppose first that \(\Psi_A=\varphi\) on all of \(M_+\). Each
 summand in (ACI.1) is then at most \(\varphi\), so (ACI.2) gives
@@ -93,13 +94,163 @@ for \(x=X^{1/2}\in\mathfrak n_\varphi\). Hence the strong sum
 proves equality on the **finite \(\varphi\)-cone**. It gives no
 value at a positive \(X\) of infinite \(\varphi\)-weight.
 
-The printed IX.4.20 permits a nonfaithful semifinite normal weight
-and formulates its analytic test in the support corner. The faithful
-argument above applies there once the exact support-reduction
-contract is supplied. That reduction and the complete proof of
-VIII.3.18 remain open course dependencies; the counterexample below
-already has support \(1\), so neither issue can repair the printed
-all-positive reverse implication.
+**Nonfaithful weights and the support corner.** Let now \(\varphi\)
+be normal and semifinite, with support \(e\). The support theorem
+WS04–06 gives a faithful
+normal semifinite restriction \(\varphi_e\) to \(eMe\) and
+\(\varphi(X)=\varphi_e(eXe)\) for every \(X\in M_+\).
+The zero weight has \(e=0\) and all the conclusions below are immediate.
+
+For one multiplier \(a\), suppose first that
+\(\varphi(aXa^*)\leq\varphi(X)\) on the entire positive cone.
+Apply this to \(X=1-e\). Faithfulness on the corner gives
+\[
+ \begin{gathered}
+ ea(1-e)a^*e=0,\\
+ ea(1-e)=0.
+ \end{gathered}
+\]
+Thus \(ea=eae\). Put \(c=eae\). For every positive \(X\),
+\[
+ \begin{aligned}
+ \varphi(aXa^*)
+ &=\varphi_e(eaXa^*e)\\
+ &=\varphi_e(c(eXe)c^*).
+ \end{aligned}
+\]
+The global domination is therefore equivalent to the two conditions
+\(ea(1-e)=0\) and
+\(\varphi_e(cYc^*)\leq\varphi_e(Y)\) for every \(Y\in(eMe)_+\).
+Sufficiency follows from the displayed identity and the support formula.
+HS02–03 applied to \(\varphi_e\) identify the latter condition with
+the bounded corner orbit of \(c\), with endpoint \(b\in eMe\)
+of norm at most one. Their right-action formula is on the GNS space
+of this faithful corner:
+\[
+ \begin{gathered}
+ x\in\mathfrak n_{\varphi_e}
+ \Longrightarrow xc^*\in\mathfrak n_{\varphi_e},\\
+ \Lambda_{\varphi_e}(xc^*)\\
+ =J_{\varphi_e}bJ_{\varphi_e}\Lambda_{\varphi_e}(x).
+ \end{gathered}
+\]
+No modular conjugation for a nonfaithful weight on all of \(M\)
+has been presumed.
+
+If \(\Psi_A=\varphi\) on all positive elements, apply the preceding
+argument to every summand. It yields \(ea_j(1-e)=0\), the corner
+multipliers \(c_j=ea_je\), and their endpoints \(b_j\).
+The faithful argument in \(eMe\) proves
+\(\sum_j b_j^*b_j=e\) strongly. Conversely, if these support and
+corner strip conditions hold and the endpoint squares sum strongly
+to \(e\), then for \(\varphi(X)<\infty\) the element \(eXe\)
+has finite \(\varphi_e\)-weight. The faithful finite-cone calculation gives
+\[
+ \begin{aligned}
+ \Psi_A(X)
+ &=\sum_j\varphi_e(c_j(eXe)c_j^*)\\
+ &=\varphi_e(eXe)=\varphi(X).
+ \end{aligned}
+\]
+The support condition is essential: compressing \(a_j\) alone does
+not discard its off-corner action on \(X\). This proves the full
+support reduction for the forward and finite-cone statements.
+The counterexample below already has support \(1\), so it still
+refutes the all-positive reverse implication.
+
+**The finite-domain boundary for arbitrary normal weights.** The
+standing scalar-weight convention in Takesaki II, printed p. 57,
+includes semifiniteness. The preceding statements display that
+hypothesis explicitly. Here is the separate conclusion when it is
+removed; it must not be obtained merely by renaming the support.
+
+Let now \(\varphi\) be any normal weight. Use the projections of
+WS02–06: \(e\) is the
+finite-domain projection, \(f\leq e\) is the largest null projection,
+and \(p=e-f\). The restriction \(\varphi_p\) to \(pMp\) is faithful,
+normal and semifinite, including the zero corner. Its reconstruction
+formula is
+
+\[
+\varphi(X)=
+\begin{cases}
+\varphi_p(pXp),&X=eXe,\\
+\infty,&X\ne eXe.
+\end{cases}
+\tag{ACI.4a}
+\]
+
+Suppose \(a_j\in pMp\), as for the support-corner multipliers in
+the printed lemma. Put
+
+\[
+\begin{aligned}
+\Psi_p(Y)&=\sum_j\varphi_p(a_jYa_j^*),\\
+&\hspace{2em}Y\in(pMp)_+.
+\end{aligned}
+\tag{ACI.4b}
+\]
+
+Since \(a_jXa_j^*=a_j(pXp)a_j^*\in(pMp)_+\), restriction gives
+\(\Psi_A(X)=\Psi_p(pXp)\) for every positive \(X\).
+
+Assume the corner orbits have bounded negative-half-strip
+continuations and their endpoints satisfy
+\(\sum_j b_j^*b_j=p\) strongly. Each endpoint is contractive in
+\(pMp\). The faithful calculation (ACI.4) applied there yields
+\(\Psi_p(Y)=\varphi_p(Y)\) whenever \(\varphi_p(Y)<\infty\).
+If \(\varphi(X)<\infty\), (ACI.4a) gives \(X=eXe\) and
+\(\varphi_p(pXp)<\infty\). Therefore
+
+\[
+\begin{gathered}
+\Psi_A(X)=\varphi(X)\\
+\text{whenever }\varphi(X)<\infty.
+\end{gathered}
+\tag{ACI.4c}
+\]
+
+Global equality has a further necessary condition. If \(e\ne1\),
+take \(X=1-e\). Then \(\varphi(X)=\infty\) by (ACI.4a), but
+every \(a_jXa_j^*\) is zero because \(a_j\in pMp\) and \(p\leq e\).
+Thus \(\Psi_A(X)=0\). In particular, global equality forces
+\(e=1\), hence semifiniteness. More precisely,
+
+\[
+\begin{gathered}
+\Psi_A=\varphi\text{ on }M_+\\
+\Longleftrightarrow\\
+e=1\text{ and }\\
+\Psi_p=\varphi_p\text{ on }(pMp)_+.
+\end{gathered}
+\tag{ACI.4d}
+\]
+
+Necessity of the corner identity follows by restricting to \(pMp\).
+For sufficiency, \(e=1\) makes (ACI.4a) equal to
+\(\varphi(X)=\varphi_p(pXp)\) for every \(X\geq0\); combine this
+with the formula for \(\Psi_A\). Global equality also gives the
+corner analytic endpoint condition by the faithful forward proof.
+Neither (ACI.4c) nor that endpoint condition replaces the all-positive
+corner equality in (ACI.4d).
+
+For a concrete nonsemifinite example, take \(M=\mathbb C^2\) and
+\(\varphi(s,t)=s+\infty\,t\) for \(s,t\geq0\), using
+\(0\cdot\infty=0\). This weight is additive and homogeneous. It is
+normal: if an increasing net has limit with positive second coordinate,
+some member already has positive second coordinate; otherwise all
+second coordinates vanish and normality is the scalar limit in the
+first coordinate. Its finite-domain projection is \(e=(1,0)\), its
+largest null projection is zero, and \(p=e\). Choose \(a_1=p\) and
+\(a_j=0\) for \(j>1\). The corner modular flow is trivial, so the
+endpoints are these same elements and their squares sum to \(p\).
+Nevertheless \(\Psi_A(s,t)=s\), whereas
+\(\varphi(0,1)=\infty\). The obstruction at \(1-e\) is distinct
+from the infinite-value counterexample below, where \(e=p=1\).
+
+The compact spectral argument in
+Trace-class coordinates without separability
+supplies the orthonormal eigenbasis used in the next construction.
 
 ## A one-dimensional extension of a closed form
 
@@ -321,8 +472,9 @@ VIII.3 Lemma 3.18(i)–(ii), printed pp. 125–126/PDF pp. 145–146,
 as its direct analytic input. The source's forward implication
 and finite-cone reverse calculation survive; its reverse claim on
 all positive elements does not. This counterexample does **not**
-refute the separate existence theorem IX.4.18. That theorem needs
-an independent all-positive construction, which is not given in
-these lessons. The analytic right-action theorem behind (ACI.2) and
-the modular theorem used for the type I model are not proved in
-this lesson.
+refute the separate existence theorem IX.4.18. A written all-positive
+construction is supplied in Reconstruction from compatible modular
+flows.
+It does not use the false reverse implication. The analytic right action
+is proved in HS02–03, and the support and finite-domain reductions are
+proved above. The diagonal modular model is computed in ACI03.

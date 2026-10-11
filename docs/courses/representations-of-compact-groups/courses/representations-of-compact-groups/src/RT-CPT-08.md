@@ -4,7 +4,7 @@
 
 Integrating over a compact group can be reduced to integrating over its maximal torus. The correction factor measures how rapidly conjugacy classes change: it vanishes when a torus element acquires extra infinitesimal symmetries. For unitary matrices this factor becomes the squared Vandermonde determinant, expressing repulsion between coincident eigenvalues.
 
-Throughout, \(G\) is a compact connected Lie group, \(T\) a maximal torus, and \(W=N_G(T)/T\). Haar measures \(dg,dt\) have mass one. We import the roots, multiplicity-one theorem, normalizer action and torus conjugacy from [Roots and the Weyl group](RT-CPT-07.md). Smooth homogeneous spaces and their local sections are [*Invariant connections on homogeneous bundles*, Theorem 1.1](course:DG-FND/invariant-connections-on-homogeneous-bundles#section-1); the inverse function theorem is [*Local tools for bundles and transport*, Theorem 1.1](course:DG-FND/local-tools-for-bundles-and-transport#section-1). We use the ordinary multivariable change-of-variables theorem for a smooth diffeomorphism, including nonnegative measurable functions, as a core calculus prerequisite. Covering and measure-zero assertions will be proved here.
+Throughout, \(G\) is a compact connected Lie group, \(T\) a maximal torus, and \(W=N_G(T)/T\). Haar measures \(dg,dt\) have mass one. We import the roots, multiplicity-one theorem, normalizer action and torus conjugacy from [Roots and the Weyl group](RT-CPT-07.md). Smooth homogeneous spaces and their local sections are [*Invariant connections on homogeneous bundles*, Theorem A.1](course:DG-FND/invariant-connections-on-homogeneous-bundles#theorem-a-1); the inverse function theorem is [*Local tools for bundles and transport*, Theorem 1.2](course:DG-FND/local-tools-for-bundles-and-transport#1-contraction-and-local-inversion). The included [measurable change-of-variables proof, Theorem CV.5 and Corollaries CV.6–CV.7](../../../reader/change-of-variables-proof.html#cv-5) supplies substitution for nonnegative measurable functions, manifold densities and finite-sheeted coverings from the preceding one-variable and measure-theory proofs. Covering and measure-zero assertions will be proved here.
 
 Choose positive roots \(\Phi^+\) and define the honest function on \(T\)
 \[
@@ -124,7 +124,7 @@ For a class function this reduces to
 =\frac1{|W|}\int_T f(t)|\Delta(t)|^2\,dt. \tag{3.3}
 \]
 
-*Proof.* On an evenly covered open subset of \(G_{\mathrm{reg}}\), apply ordinary change of variables on each inverse sheet. The absolute Jacobian is \(j(t)\), and there are \(|W|\) sheets. A countable subordinate partition of unity, followed by integration, gives
+*Proof.* On an evenly covered open subset of \(G_{\mathrm{reg}}\), apply [Corollary CV.6 of the measurable change-of-variables proof](../../../reader/change-of-variables-proof.html#cv-6) on each inverse sheet. The absolute Jacobian is \(j(t)\), and there are \(|W|\) sheets. A countable subordinate partition of unity, followed by integration, gives
 \[
 \int_{G/T\times T_{\mathrm{reg}}}
 f(\psi(gT,t))j(t)\,d(gT)\,dt

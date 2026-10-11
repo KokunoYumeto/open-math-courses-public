@@ -2,11 +2,11 @@
 
 Proper pushforward of a constructible complex preserves its geometric constructibility. To prove that it also preserves perfect stalks, we must calculate cohomology on compact fibres. Finitely many stalk values are not enough by themselves: the maps between them contribute degrees, kernels and cokernels. We will assemble those values through finite localization and descent, preserving the whole complexes and their gluing.
 
-Use the [weak inverse-image theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/weak-constructibility-under-sheaf-operations.md#characteristic-inverse-images-stay-weakly-constructible) and [proper-on-support weak direct image](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/weak-constructibility-under-sheaf-operations.md#properness-on-support-supplies-the-cotangent-compactness) for geometric constructibility. [Constructible gluing on an interval](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/constructible-gluing-on-an-interval.md#stalks-and-costalks) gives the local support fibres, while [the open-star cohomology theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/constructible-sheaves-on-a-triangulation.md#an-acyclic-resolution-built-from-closed-simplices) gives the section calculation used in finite descent. Compatible subanalytic triangulation is the geometric input in the common triangulation lemma.
+Use the weak inverse-image theorem and proper-on-support weak direct image for geometric constructibility. Constructible gluing on an interval gives the local support fibres, while the open-star cohomology theorem gives the section calculation used in finite descent. Compatible subanalytic triangulation is the geometric input in the common triangulation lemma.
 
-The sheaf-operation inputs are the actual [derived proper-support fibre comparison](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-derived-fibre-formula-and-c-soft-acyclicity-derived-proper-image-fibre), [proper-support base change](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#pulling-back-a-proper-support-proper-support-base-change) and [derived composition maps](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#composing-proper-images-and-preserving-c-softness-proper-image-composition). Their section and c-soft-resolution proofs precede the constructible applications. The oriented interval calculation fixes the compact-support shift in (4).
+The sheaf-operation inputs are the actual derived proper-support fibre comparison, proper-support base change and derived composition maps. Their section and c-soft-resolution proofs precede the constructible applications. The oriented interval calculation fixes the compact-support shift in (4).
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0). Source and dependency reconciliation by GPT-6 Astra (OpenAI), Ultra, October 2026; coordinator checked, not independently reviewed.*
 
 ## Perfection and ordinary inverse image
 
@@ -22,6 +22,21 @@ If \(f:Y\to X\) is analytic and \(F\) is \(\mathbb R\)-constructible, the weak i
 \]
 
 Every stalk on the right is perfect. Thus ordinary inverse image preserves \(\mathbb R\)-constructibility. The same stalk identity applies to restriction to any topological subset; when we use a subanalytic subset below, compatible triangulation supplies its local constancy statements. No exceptional-inverse-image identification is used in (1).
+
+### Proper support and the comparison of the two images
+
+Let \(f:Y\to X\) be a continuous map of locally compact Hausdorff spaces, let \(S\subset Y\) be closed, and let \(G\in D^+(k_Y)\) have all its cohomology supported on \(S\). Write \(i:S\hookrightarrow Y\) and \(h=f\circ i:S\to X\), and assume that \(h\) is proper. The adjunction map \(G\to Ri_*i^{-1}G\) is an isomorphism: closed direct image and inverse image are exact, its stalks on \(S\) are the identity, and its stalks off \(S\) are zero on both sides. Moreover, \(i_*\) preserves injectives because it is right adjoint to exact inverse image. These facts give the ordinary derived composition comparison, while proper-image composition (D3) gives the proper-support one:
+
+\[
+\begin{aligned}
+Rf_!G&\simeq Rh_!i^{-1}G\\
+&\longrightarrow Rh_*i^{-1}G\\
+&\simeq Rf_*G.
+\end{aligned}
+\tag{1a}
+\]
+
+For the proper map \(h\), every section has support proper over its target open set, so the inclusion \(h_!Q\to h_*Q\) is the identity on the same sections for every sheaf \(Q\) on \(S\). Thus the middle arrow in (1a) is an isomorphism after taking an injective resolution on \(S\). The composition maps in (D3) retain those sections, so (1a) is the canonical comparison \(Rf_!G\to Rf_*G\), not an unrelated isomorphism between the two objects. This argument needs neither smooth fibres nor a finite-generation condition on their coefficients. Together with the fibre map (F6) and its base-change comparison (D4), it justifies every passage between the two images below, including the map to a point for compactly supported coefficients.
 
 ## Compact support on the line
 
@@ -112,9 +127,11 @@ Here is a second compact-cohomology proof which also treats compact singular sub
 **Proof.** Refine a common locally finite subanalytic cover for the finitely many cohomology sheaves, with membership in \(K\) and its complement. Choose a compatible locally finite triangulation
 \(i:|S|\simeq X\). The set \(K\) is a union of open simplex images. It is closed, so it contains the faces of every simplex it contains; its inverse image is the realization of a subcomplex \(S_K\).
 
+The exact input here is the common triangulation lemma, (3). Use its partition-refinement proof with the finitely many cohomology sheaves and the two additional membership conditions for the compact set and its complement. That proof accepts a locally finite subanalytic partition and arbitrary stalk modules. It therefore supplies the simultaneous triangulation used here without a Noetherian coefficient assumption. This step uses neither the finite-stalk abelian-category equivalence nor the toric-orbit theorem.
+
 This subcomplex is finite. The open simplices form a locally finite family: near a point in a simplex, only its finitely many cofaces can occur. A finite neighborhood cover of the compact inverse image of \(K\) then meets only finitely many simplices. The restricted complex \(F|_K\) has simplex-constructible cohomology and perfect stalks on this finite complex.
 
-Cover \(|S_K|\) by the finitely many open vertex stars \(U_v\). An intersection of stars for distinct vertices is empty or is the open star of their face. By [star acyclicity](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/constructible-sheaves-on-a-triangulation.md#an-acyclic-resolution-built-from-closed-simplices) and its [bounded hypercohomology comparison with the actual stalk map](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/sheaf-proof-readings/src/SH03/constructible-sheaves-on-a-triangulation.md#approximating-an-arbitrary-sheaf-by-face-data),
+Cover \(|S_K|\) by the finitely many open vertex stars \(U_v\). An intersection of stars for distinct vertices is empty or is the open star of their face. By star acyclicity and its bounded hypercohomology comparison with the actual stalk map,
 
 \[
 R\Gamma(U_{v_0}\cap\cdots\cap U_{v_p};F|_K)
@@ -188,6 +205,8 @@ Y\xrightarrow{\gamma_f}X\times Y\xrightarrow{p}X,
 The graph is closed analytic. Its direct image is exact, is weakly constructible by the closed-embedding operation, and has stalks either \(G_y\) on the graph or zero off it. Thus \(\gamma_{f*}G\) is \(\mathbb R\)-constructible. The projection is proper on that object's support precisely by the original support properness. Its fibre over \(x\) is the smooth manifold \(\{x\}\times Y\), and ordinary restriction to that fibre preserves constructibility and perfection by (1). Its coefficient support is compact.
 
 To finish this coordinate route, use the additional geometric prerequisite that a finite-dimensional countable-at-infinity real analytic manifold has a closed analytic embedding into some \(\mathbb R^N\). Closed direct image again preserves weak constructibility and perfect stalks by its exact stalk description, and carries this compact support to a compact support. Equation (7) then proves perfect fibre cohomology. Proper base change and composition in (16) give the stalk in (13). This supplies the full graph, manifold-fibre, Euclidean-coordinate and compact-line chain. The separate proof (14)–(15) uses compatible triangulation to calculate a compact singular fibre directly. The deep triangulation and embedding statements remain geometric prerequisites in their respective routes.
+
+The two geometric inputs have different roles. The supplied common-triangulation proof supplies the triangulation in the finite-descent route. Its homeomorphism is analytic on open simplex images, not asserted analytic on the entire simplicial space; it does not supply the closed analytic embedding required by this alternative graph route. The graph argument is retained with that separate dependency explicit.
 
 ## Examples and exercises with solutions
 

@@ -6,7 +6,7 @@ A finite-dimensional model of an algebra need not preserve products. It can stil
 
 We will construct such models, explain precisely what convergence means, and prove that sufficiently good models force uniqueness of the C*-tensor norm. The arguments work for nonunital and nonseparable algebras. Finite sets, rather than countable lists, organize the approximation.
 
-Prerequisites are the lessons [Completely positive maps](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html) and [AF-algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html), together with the construction of the minimal and maximal C*-tensor products. We use Stinespring's theorem in its following form: a completely positive map \(\phi:A\to B(H)\) is \(V^*\pi(\,\cdot\,)V\), where \(\pi\) is a representation and \(\|V\|^2=\|\phi\|\). No faithfulness of an additional commutant representation is assumed. We also use Hahn–Banach, continuous functional calculus, and positive contractive approximate identities. The extension, dilation and commutant methods are developed in [Arveson 1969]; Section 4 below supplies the nonunital dilation step explicitly.
+Prerequisites are the lessons [Completely positive maps](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html) and [AF-algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html), together with the construction of the minimal and maximal C*-tensor products. We use Stinespring's theorem in its following form: a completely positive map \(\phi:A\to B(H)\) is \(V^*\pi(\,\cdot\,)V\), where \(\pi\) is a representation and \(\|V\|^2=\|\phi\|\). No faithfulness of an additional commutant representation is assumed. We also use Hahn–Banach, continuous functional calculus, and positive contractive approximate identities. The extension, dilation and commutant methods are developed in [Arveson 1969]. The exact [unital dilation](completely-positive-lifting.md#unital-dilation) and [faithful scalar representation](completely-positive-lifting.md#faithful-scalar-gns) are written out locally; Section 4 below supplies the nonunital dilation step explicitly. These particular spans do not consume the lifting or extension theorem.
 
 Unital algebras in the unital assertions are nonzero. The zero algebra has the approximation property by the zero maps.
 
@@ -50,7 +50,28 @@ The inclusion and \(P\) are cpc, and \(P\) fixes \(F\). They turn a factorizatio
 
 An **operator system** \(S\subset C\) is a self-adjoint linear subspace of a unital C*-algebra containing \(1_C\). Its matrix positive cones are inherited from \(C\). We now prove the extension theorem needed to put finite-dimensional models on a larger algebra.
 
-We first translate a matrix-valued map into a scalar functional. We use column vectors and write quadratic forms as \(\xi^*T\xi\).
+We first record the norm estimate used in the extension. If a positive operator block has diagonal entries bounded by \(c1\), positivity of its quadratic form on vectors \((\xi,z\eta)\), minimized over \(z\in\mathbb C\), gives
+\[
+|\langle\xi,Y\eta\rangle|^2
+\le\langle\xi,T_1\xi\rangle\langle\eta,T_2\eta\rangle
+\le c^2\|\xi\|^2\|\eta\|^2.
+\]
+Thus its off-diagonal entry \(Y\) has norm at most \(c\), including the zero diagonal cases. For \(x\) in an operator system with \(\|x\|\le1\), the matrix
+\(\begin{pmatrix}1&x\\x^*&1\end{pmatrix}\) is positive in the ambient algebra: it factors as \(R^*R\), where
+\[
+R=\begin{pmatrix}1&x\\0&(1-x^*x)^{1/2}\end{pmatrix}.
+\]
+If \(\phi\) is completely positive, applying it at size two and using the preceding block estimate proves \(\|\phi(x)\|\le\|\phi(1)\|\). Consequently \(\|\phi\|=\|\phi(1)\|\), whether or not the operator system is norm closed. A faithful representation of the target lets the same calculation treat any C*-algebra target.
+
+<a id="dual-ball-compactness"></a>
+
+We also make the compactness input explicit. For a normed space \(E\), put its dual unit ball in
+\[
+\prod_{x\in E}\{z\in\mathbb C:|z|\le\|x\|\}
+\]
+by recording all values of a functional. Each disc is compact, and the product is compact by the complete ultrafilter argument in [CF, Section 4](../../OA-FLOW/OA-FLOW-CF.html). The linearity equations are closed coordinate conditions, so this subset is compact. Its coordinate topology is exactly weak* convergence. Scaling proves the assertion for every bounded dual ball, including radius zero. For real normed spaces, use closed real intervals instead of discs; the same equations and proof apply. The same finite-coordinate argument proves compactness for products of these balls. In particular the actual onto concrete duality for \(B(H)\) in [CP1–CP6](../../OA-FLOW/OA-FLOW-CP.html#oa-flow.cp.1) makes its bounded balls ultraweakly compact, for arbitrary \(H\).
+
+We now translate a matrix-valued map into a scalar functional. We use column vectors and write quadratic forms as \(\xi^*T\xi\).
 
 **Lemma 2.1.** For a linear map \(\phi:S\to M_n\), define
 \[
@@ -83,7 +104,7 @@ If \(x\ge0\), then \(p(-x)\le f(0)=0\), so \(g_0(x)\ge0\). Also \(g_0(1)=f(1)\).
 
 **Theorem 2.3 (Arveson extension).** If \(S\subset C\) is an operator system and \(\phi:S\to B(H)\) is completely positive, there is a completely positive extension \(\Phi:C\to B(H)\). If \(\phi\) is unital, \(\Phi\) is unital.
 
-**Proof.** Suppose first that \(H=\mathbb C^n\). Extend \(f_\phi\) from \(M_n(S)\) to a positive functional \(g\) on \(M_n(C)\), using Lemma 2.2. Define
+**Proof.** If \(H=0\), the zero map is the required extension. Otherwise suppose first that \(H=\mathbb C^n\), with \(n\ge1\). Extend \(f_\phi\) from \(M_n(S)\) to a positive functional \(g\) on \(M_n(C)\), using Lemma 2.2. Define
 \[
 \Phi(c)_{ij}=g(E_{ij}\otimes c).
 \]
@@ -94,9 +115,9 @@ For arbitrary \(H\), direct its finite-dimensional subspaces \(K\) by inclusion.
 \|\Phi_K\|=\|\Phi_K(1)\|
 =\|P_K\phi(1)P_K\|\le\|\phi(1)\|.
 \]
-For every \(c\in C\), the values lie in the ultraweakly compact ball of radius \(\|\phi(1)\|\|c\|\). Compactness of the product of these balls supplies a subnet converging ultraweakly at every \(c\). Its limit \(\Phi\) is linear. Matrix positive cones in \(B(H)\) are ultraweakly closed, so \(\Phi\) is completely positive.
+For every \(c\in C\), the values lie in the ultraweakly compact ball of radius \(\|\phi(1)\|\|c\|\). Compactness of the product of these balls supplies a subnet converging ultraweakly at every \(c\). Its limit \(\Phi\) is linear. Matrix positivity is preserved by this limit: for every positive matrix over \(C\) and every finite tuple of Hilbert vectors, its image quadratic form is a finite sum of vector functionals, and hence is the limit of nonnegative numbers. Thus \(\Phi\) is completely positive at every size.
 
-For \(s\in S\), we have \(\Phi_K(s)=P_K\phi(s)P_K\), which converges strongly, and hence ultraweakly on this bounded net, to \(\phi(s)\). Thus \(\Phi\) extends \(\phi\). Its value at \(1\) is \(\phi(1)\), proving the unital assertion. \(\square\)
+For \(s\in S\), we have \(\Phi_K(s)=P_K\phi(s)P_K\), which converges strongly to \(\phi(s)\). Its common norm bound makes this convergence ultraweak: each vector coefficient converges, and the square-summable vector series of CP1–CP6 has uniformly small tails by Cauchy–Schwarz. Split such a series into a finite part and its uniformly bounded tail, then let the finite part converge. Thus \(\Phi\) extends \(\phi\). Its value at \(1\) is \(\phi(1)\), proving the unital assertion. \(\square\)
 
 No separability of \(H\) was used. The extension need not be normal even if part of the original setting involves von Neumann algebras.
 
@@ -109,11 +130,23 @@ No separability of \(H\) was used. The extension need not be normal even if part
 \phi(x)=b^{1/2}\phi_0(x)b^{1/2}\quad(x\in S).
 \]
 
-**Proof.** Let \(e\) be the support projection of \(b\). For \(\delta>0\), set
+**Proof.** Represent \(M\) on its given Hilbert space. Put \(e=P_{\overline{bH}}\), whose complementary space is \(\ker b\) by the bounded adjoint identity. The contractions \(r_\delta=b(b+\delta1)^{-1}\) vanish on \(\ker b\), and
+\[
+\|(1-r_\delta)b\|=\|\delta b(b+\delta1)^{-1}\|\le\delta.
+\]
+They tend strongly to the identity on \(bH\), and their common bound one extends the convergence to \(\overline{bH}\). Thus \(r_\delta\to e\) strongly. All \(r_\delta\) belong to \(M\), so its weak operator closedness puts \(e\) in \(M\). This constructs the support projection without a spectral-measure theorem.
+
+The other contractions \(k_\delta=b^{1/2}(b+\delta1)^{-1/2}\) have the same strong limit. They also vanish on \(\ker b\), and the scalar identity
+\[
+t\left(1-\sqrt{\frac{t}{t+\delta}}\right)
+=\frac{\delta t}{\sqrt{t+\delta}(\sqrt{t+\delta}+\sqrt t)}
+\le\delta/2\quad(t\ge0)
+\]
+gives \(\|(1-k_\delta)b\|\le\delta/2\). Density in \(\overline{bH}\) and the common contraction bound again prove \(k_\delta\to e\) strongly. For \(\delta>0\), set
 \(\psi_\delta(x)=(b+\delta1)^{-1/2}\phi(x)(b+\delta1)^{-1/2}\).
 These maps are completely positive and have norm at most one, since their values at \(1\) are \(b(b+\delta1)^{-1}\le1\). Compactness of the product of ultraweakly compact balls in \(M\) gives a pointwise ultraweak cluster map \(\psi_0\), which is completely positive and satisfies \(\psi_0(1)=e\).
 
-For a positive \(x\in S\), \(0\le\phi(x)\le\|x\|b\), so \(\phi(x)\) is supported on \(e\). The positive elements span \(S\), so this holds for every \(x\). As \(\delta\downarrow0\), the contractions \(b^{1/2}(b+\delta1)^{-1/2}\) converge strongly to \(e\). Therefore
+For a positive \(x\in S\), \(0\le\phi(x)\le\|x\|b\). Its quadratic form vanishes on \(\ker b\); positive-form Cauchy–Schwarz then makes every mixed coefficient there zero. Thus \(\phi(x)\) annihilates \(\ker b\), and self-adjointness gives \(\phi(x)=e\phi(x)e\). The positive elements span \(S\), so this holds for every \(x\). For the contractions \(k_\delta\) whose strong limit was proved above, bounded multiplication with the fixed \(\phi(x)\) gives \(k_\delta\phi(x)k_\delta\to e\phi(x)e=\phi(x)\) strongly. Therefore
 \[
 b^{1/2}\psi_\delta(x)b^{1/2}
 \longrightarrow\phi(x)
@@ -145,26 +178,37 @@ In particular every AF-algebra has this property. The directed version also trea
 
 **Theorem 3.3 (Functions vanishing at infinity).** For every locally compact Hausdorff space \(X\), \(C_0(X)\) has the completely positive approximation property.
 
-**Proof.** Fix finitely many functions \(f\) and a positive \(\varepsilon\). Choose a compact \(K\subset X\) such that \(|f(x)|<\varepsilon/2\) outside \(K\), simultaneously for all of them. Cover \(K\) by finitely many relatively compact open sets \(U_j\) and choose \(x_j\in U_j\) so that
+**Proof.** If the finite test list is empty or every selected function is zero, use the zero maps through \(M_1\). Otherwise write the list as \(f_1,\ldots,f_m\), choose \(0<\delta<\varepsilon\), and put
 \[
-|f(x)-f(x_j)|<\varepsilon/2\quad(x\in U_j)
+z(x)=(f_1(x),\ldots,f_m(x)),\qquad
+K=\{x:\|z(x)\|_\infty\ge\delta/2\}.
 \]
-for every chosen \(f\). A partition of unity on a neighborhood of \(K\), followed by a compactly supported cutoff, gives \(g_j\in C_c(X)_+\), supported in \(U_j\), with
-\(\sum_jg_j=1\) on \(K\) and \(\sum_jg_j\le1\) everywhere.
+Each nonzero level set of a \(C_0(X)\) function is compact, so \(K\), a finite union of such level sets, is compact. If \(K\) is empty, every selected function has norm at most \(\delta/2\), and the zero maps already work. Otherwise its image under \(z\) is compact. Choose finitely many \(x_j\in K\) so that, for every \(x\in K\), some \(j\) has \(\|z(x)-z(x_j)\|_\infty<\delta/8\). Define
+\[
+\begin{aligned}
+w_0(x)&=\max\{0,\delta-\|z(x)\|_\infty\},\\
+w_j(x)&=\max\{0,\delta/4-\|z(x)-z(x_j)\|_\infty\},\\
+W(x)&=w_0(x)+\sum_jw_j(x),\qquad g_j(x)=w_j(x)/W(x),
+\end{aligned}
+\]
+and also set \(g_0=w_0/W\). On \(K\), at least one \(w_j\) is greater than \(\delta/8\); off \(K\), \(w_0>\delta/2\). Thus \(W>0\) everywhere. All the weights are continuous, nonnegative, and satisfy \(g_0+\sum_jg_j=1\).
 
-Define
+For \(j\ge1\), positivity of \(w_j(x)\) implies
+\(\|z(x)\|_\infty>\|z(x_j)\|_\infty-\delta/4\ge\delta/4\).
+Therefore the support of \(g_j\) is contained in the compact level set \(\{x:\|z(x)\|_\infty\ge\delta/4\}\); hence \(g_j\in C_c(X)_+\). The weight \(g_0\) represents the omitted zero sample and need not have compact support. Define
 \[
-\alpha(f)=(f(x_j))_j,\qquad
-\beta((z_j)_j)=\sum_jz_jg_j.
+\alpha(f)=(f(x_j))_{j=1}^r,\qquad
+\beta((a_j)_{j=1}^r)=\sum_{j=1}^ra_jg_j.
 \]
-Evaluation is a *-homomorphism. The map \(\beta:\mathbb C^r\to C_0(X)\) is completely positive: a positive matrix over \(\mathbb C^r\) becomes, at each point of \(X\), a nonnegative linear combination of positive scalar matrices. Its norm is \(\|\sum_jg_j\|\le1\). Thus both maps are cpc.
+Evaluation \(\alpha:C_0(X)\to\mathbb C^r\) is a contractive *-homomorphism. At every matrix size and every point of \(X\), \(\beta\) sends a positive matrix to a nonnegative sum of positive scalar matrices. Thus \(\beta\) is completely positive, and \(\|\beta\|=\|\sum_jg_j\|\le1\).
 
-At \(x\in X\), write \(s(x)=\sum_jg_j(x)\). Then
+If \(g_j(x)>0\) for \(j\ge1\), then \(|f_i(x_j)-f_i(x)|<\delta/4\). If \(g_0(x)>0\), then \(|f_i(x)|<\delta\). Consequently
 \[
-|\beta\alpha(f)(x)-f(x)|
-\le\sum_jg_j(x)|f(x_j)-f(x)|+(1-s(x))|f(x)|.
+|\beta\alpha(f_i)(x)-f_i(x)|
+\le\sum_{j=1}^rg_j(x)|f_i(x_j)-f_i(x)|+g_0(x)|f_i(x)|
+\le\delta<\varepsilon.
 \]
-The first term is at most \(\varepsilon/2\). The second vanishes on \(K\), and is less than \(\varepsilon/2\) off \(K\). This proves the required uniform approximation. \(\square\)
+This is uniform on all of \(X\). Include \(\mathbb C^r\) diagonally in \(M_r\) and use the diagonal compression from Section 1 to obtain the required matrix factorization. All compact sets and samples came from the given finite list; no countability assumption or partition-of-unity theorem is used. \(\square\)
 
 For \(X=[0,1]\), one may take equally spaced sample points and the piecewise linear tent functions. If every \(f\) in the finite set has Lipschitz constant at most \(L\), a mesh of width \(h\) gives error at most \(Lh\). This finite model consists of samples and interpolation weights; it is not a finite-dimensional subalgebra of \(C([0,1])\).
 
@@ -187,7 +231,8 @@ For the maximal norm, fix commuting representations \(\rho:D\to B(H)\) and \(\si
 \left\|\sum_i a_i\otimes\xi_i\right\|_\psi^2
 =\sum_{i,j}\xi_i^*\psi(a_i^*a_j)\xi_j.
 \]
-Left multiplication defines the Stinespring representation \(\pi\). Since \(\sigma(b)\) commutes with every \(\psi(a)\), the operation
+Positive-form Cauchy–Schwarz makes the zero vectors an orthogonal subspace; quotienting and completing gives a Hilbert space. Left multiplication by \(c\in A\) is bounded by \(\|c\|\). Indeed its squared norm defect is the positive form of
+\([a_i^*(\|c\|^2 1-c^*c)a_j]\); this is a Gram matrix after multiplying every \(a_j\) by the positive square root of \(\|c\|^2 1-c^*c\) in the unitization, and all Gram entries lie in \(A\). Thus left multiplication preserves the nullspace, extends boundedly, and gives the representation \(\pi\); its product and adjoint identities follow on algebraic vectors and then by continuity. Since \(\sigma(b)\) commutes with every \(\psi(a)\), the operation
 \[
 \widehat\sigma(b)(a\otimes\xi)=a\otimes\sigma(b)\xi
 \]
@@ -212,7 +257,30 @@ Its norm is at most \(\|\sum_i a_i\otimes b_i\|_{\max}\). Take the supremum over
 
 **Lemma 4.2.** For every \(B\), the minimal and maximal norms on \(M_n\odot B\) agree. The same holds for a finite direct sum of matrix algebras.
 
-**Proof.** A nondegenerate representation of \(M_n\) is unitarily equivalent to \(x\mapsto x\otimes1_L\) on \(\mathbb C^n\otimes L\), as follows by decomposing with its matrix units. Any commuting representation of \(B\) has the form \(b\mapsto1_n\otimes\sigma(b)\). Their product representation is therefore bounded by the minimal norm. Degenerate representations can be restricted to their support. This proves the result for \(M_n\). Central projections split a representation of a finite direct sum into the corresponding summands, and the norm is the largest summand norm. \(\square\)
+**Proof.** Let \(\pi:M_n\to B(K)\) be any representation and put \(e=\pi(1_n)\). Its action is zero on \((1-e)K\), so the product with a commuting representation contributes zero there. On \(eK\), put \(L=\pi(E_{11})K\) and define
+\[
+U:\mathbb C^n\otimes L\longrightarrow eK,
+\qquad U(e_i\otimes\xi)=\pi(E_{i1})\xi.
+\]
+The matrix-unit identities give
+\[
+\langle\pi(E_{i1})\xi,\pi(E_{j1})\eta\rangle
+=\delta_{ij}\langle\xi,\eta\rangle.
+\]
+Thus \(U\) is an isometry. For every \(\zeta\in eK\),
+\(\xi_i=\pi(E_{1i})\zeta\) belongs to \(L\), and
+\[
+\sum_iU(e_i\otimes\xi_i)=\sum_i\pi(E_{ii})\zeta=\zeta.
+\]
+Hence \(U\) is onto, and \(U^*\pi(x)U=x\otimes1_L\).
+
+An operator commuting with every \(E_{ii}\otimes1\) has zero off-diagonal blocks. Commuting also with every \(E_{ij}\otimes1\) forces all diagonal blocks to be the same operator. Consequently any representation \(\sigma:B\to B(K)\) commuting with \(\pi(M_n)\) reduces \(eK\), and on that subspace
+\[
+U^*\sigma(b)U=1_n\otimes\sigma_0(b),
+\]
+where \(\sigma_0:B\to B(L)\) is a representation: linearity, products and adjoints follow from the diagonal blocks. No faithfulness or nondegeneracy of \(\sigma_0\) is needed. Every product representation defining the maximal tensor norm is therefore a spatial representation, and its norm on an algebraic tensor is bounded by the minimal tensor norm. The always valid reverse inequality gives equality.
+
+For \(F=\bigoplus_{j=1}^rM_{n_j}\), the images of its central summand units are mutually orthogonal projections. They split the active representation space into reducing summands for both commuting actions; on each, the preceding matrix-unit proof applies. The product norm is the largest of these finitely many summand norms, as is the spatial direct-sum norm. The complementary zero-action space again contributes zero. Thus the minimal and maximal norms on \(F\odot B\) agree. \(\square\)
 
 A C*-algebra \(A\) is **nuclear** if these two norms agree on \(A\odot B\) for every C*-algebra \(B\).
 

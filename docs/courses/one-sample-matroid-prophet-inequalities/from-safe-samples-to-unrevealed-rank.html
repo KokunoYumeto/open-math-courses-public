@@ -1,0 +1,174 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>From safe samples to unrevealed rank</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="marked-pivots-and-sign-patterns.html">Previous lesson</a><a href="the-final-count-and-a-secretary-rule.html">Next lesson</a><a href="src/from-safe-samples-to-unrevealed-rank.md">Editable source</a></nav><main><article><h1 id="from-safe-samples-to-unrevealed-rank">From safe samples to unrevealed rank</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><a href="reverse-exposure-and-safe-samples.html">Reverse exposure and safe samples</a> showed that many revealed labels of a group are safe. But revealed labels are sacrificed and can never be accepted. This lesson transfers the safe count to rank among <em>unrevealed</em> labels: the statistic <span class="math" data-tex="\(z_h\)">\(z_h\)</span> of <a href="layers-and-a-rank-bound-for-every-order.html">Layers and a rank bound for every order</a>. A safe label is either spanned by a few unrevealed witnesses, and then the density inequality charges it to their rank, or it belongs to a residual set lying entirely in the revealed masks. Such a residual is chosen with knowledge of the masks, so a bound for one fixed set does not suffice. The marked-pivot count of <a href="marked-pivots-and-sign-patterns.html">Marked pivots and sign patterns</a> provides a small family containing every possible residual, fixed before the masks of the group are drawn, and a union bound finishes the argument.</p>
+<p>Throughout <span class="math" data-tex="\(H\)">\(H\)</span> is fixed, so the candidates and the true groups <span class="math" data-tex="\(U_i\)">\(U_i\)</span> with sizes <span class="math" data-tex="\(n_i\)">\(n_i\)</span> and <span class="math" data-tex="\(Y_i=Y\cap U_i\)">\(Y_i=Y\cap U_i\)</span> are fixed; <span class="math" data-tex="\(O=D\cup C\)">\(O=D\cup C\)</span>.</p>
+<h2 id="1-witnesses-and-residuals">1. Witnesses and residuals</h2>
+<p>Fix a listed group <span class="math" data-tex="\(h\)">\(h\)</span>. For each valid endpoint <span class="math" data-tex="\(b\in\mathfrak B_h\)">\(b\in\mathfrak B_h\)</span> choose a <em>witness set</em> <span class="math" data-tex="\(Z_b\subseteq S_{h,b}=P_{h,b}\setminus O\)">\(Z_b\subseteq S_{h,b}=P_{h,b}\setminus O\)</span> by the greedy scan of Lemma 1.4 of the first lesson in label order, over the nominal base <span class="math" data-tex="\(\Omega_b=X_h(b-2)\cup K_{h,b}\)">\(\Omega_b=X_h(b-2)\cup K_{h,b}\)</span> of the fourth lesson. Then <span class="math" data-tex="\(Z_b\)">\(Z_b\)</span> is independent over <span class="math" data-tex="\(\Omega_b\)">\(\Omega_b\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|Z_b|=\operatorname{rk}\bigl(S_{h,b}\bigm|\Omega_b\bigr),\\
+S_{h,b}\subseteq\operatorname{cl}\bigl(\Omega_b\cup Z_b\bigr).
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+|Z_b|=\operatorname{rk}\bigl(S_{h,b}\bigm|\Omega_b\bigr),\\
+S_{h,b}\subseteq\operatorname{cl}\bigl(\Omega_b\cup Z_b\bigr).
+\end{gathered}\tag{1.1}
+\]</span>
+The sets <span class="math" data-tex="\(Z_b\)">\(Z_b\)</span> are disjoint, since the birth sets <span class="math" data-tex="\(P_{h,b}\)">\(P_{h,b}\)</span> are, and <span class="math" data-tex="\(\sum_b|Z_b|=z_h\)">\(\sum_b|Z_b|=z_h\)</span>. The <em>residual</em> of group <span class="math" data-tex="\(h\)">\(h\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal R_h&amp;=\bigcup_{b\in\mathfrak B_h}\Bigl(P_{h,b}\\
+&amp;\qquad\setminus\operatorname{cl}\bigl(\Omega_b\cup Z_b\bigr)\Bigr).
+\end{aligned}\tag{1.2}
+\]">\[
+\begin{aligned}
+\mathcal R_h&amp;=\bigcup_{b\in\mathfrak B_h}\Bigl(P_{h,b}\\
+&amp;\qquad\setminus\operatorname{cl}\bigl(\Omega_b\cup Z_b\bigr)\Bigr).
+\end{aligned}\tag{1.2}
+\]</span>
+By (1.1) no label of <span class="math" data-tex="\(S_{h,b}\)">\(S_{h,b}\)</span> lies in it, so <span class="math" data-tex="\(\mathcal R_h\subseteq O\)">\(\mathcal R_h\subseteq O\)</span>: the residual consists of revealed labels.</p>
+<p><strong>Lemma 1.1.</strong> <span class="math" data-tex="\(\sigma_h\leq\kappa z_h+|\mathcal R_h|\)">\(\sigma_h\leq\kappa z_h+|\mathcal R_h|\)</span>.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(b\in\mathfrak B_h\)">\(b\in\mathfrak B_h\)</span> and put <span class="math" data-tex="\(Q&#x27;_b=Q_h(F_{h-1}(b-2)\cup K_{h,b})\)">\(Q&#x27;_b=Q_h(F_{h-1}(b-2)\cup K_{h,b})\)</span>. Since <span class="math" data-tex="\(b-2\geq a_h\)">\(b-2\geq a_h\)</span>, the expansion is enabled at <span class="math" data-tex="\(b-2\)">\(b-2\)</span>, and monotonicity gives <span class="math" data-tex="\(X_h(b-2)=Q_h(F_{h-1}(b-2))\subseteq Q&#x27;_b\)">\(X_h(b-2)=Q_h(F_{h-1}(b-2))\subseteq Q&#x27;_b\)</span>; also <span class="math" data-tex="\(K_{h,b}\subseteq Q&#x27;_b\)">\(K_{h,b}\subseteq Q&#x27;_b\)</span>. A safe label <span class="math" data-tex="\(d\)">\(d\)</span> born at <span class="math" data-tex="\(b\)">\(b\)</span> lies in <span class="math" data-tex="\(D_h\cap P_{h,b}\)">\(D_h\cap P_{h,b}\)</span> and outside <span class="math" data-tex="\(Q&#x27;_b\)">\(Q&#x27;_b\)</span>. If it is not in <span class="math" data-tex="\(\mathcal R_h\)">\(\mathcal R_h\)</span>, then <span class="math" data-tex="\(d\in\operatorname{cl}(\Omega_b\cup Z_b)\subseteq\operatorname{cl}(Q&#x27;_b\cup Z_b)\)">\(d\in\operatorname{cl}(\Omega_b\cup Z_b)\subseteq\operatorname{cl}(Q&#x27;_b\cup Z_b)\)</span>. By the residual bound (1.1) of the third lesson, the number of such labels is at most <span class="math" data-tex="\(\kappa\operatorname{rk}(Z_b\mid Q&#x27;_b)\leq\kappa|Z_b|\)">\(\kappa\operatorname{rk}(Z_b\mid Q&#x27;_b)\leq\kappa|Z_b|\)</span>. Summing over <span class="math" data-tex="\(b\)">\(b\)</span> and adding the safe labels inside <span class="math" data-tex="\(\mathcal R_h\)">\(\mathcal R_h\)</span> proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-uniform-family-of-residuals">2. A uniform family of residuals</h2>
+<p>For integers <span class="math" data-tex="\(0\leq q\leq n\)">\(0\leq q\leq n\)</span> let <span class="math" data-tex="\(S_q(n)=\sum_{\ell=0}^q\binom n\ell\)">\(S_q(n)=\sum_{\ell=0}^q\binom n\ell\)</span>, the number of subsets of an <span class="math" data-tex="\(n\)">\(n\)</span>-set with at most <span class="math" data-tex="\(q\)">\(q\)</span> elements.</p>
+<p><strong>Lemma 2.1 (residual family).</strong> Fix <span class="math" data-tex="\(H\)">\(H\)</span> and a true group <span class="math" data-tex="\(U_i\)">\(U_i\)</span> of size <span class="math" data-tex="\(n=n_i\geq\kappa\)">\(n=n_i\geq\kappa\)</span>. Condition on the parity and on all bits of <span class="math" data-tex="\(D,C,T\)">\(D,C,T\)</span> outside <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, but not on the bits inside <span class="math" data-tex="\(U_i\)">\(U_i\)</span> and not on whether <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is listed. There is a family <span class="math" data-tex="\(\mathfrak R_i\)">\(\mathfrak R_i\)</span> of subsets of <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, determined by the conditioning, with
+<span class="math math-display" data-tex="\[
+|\mathfrak R_i|\leq\exp\Bigl(\tfrac{1000\log\kappa}\kappa\,n\Bigr),\tag{2.1}
+\]">\[
+|\mathfrak R_i|\leq\exp\Bigl(\tfrac{1000\log\kappa}\kappa\,n\Bigr),\tag{2.1}
+\]</span>
+such that whenever <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is listed, say as <span class="math" data-tex="\(G_h\)">\(G_h\)</span>, and <span class="math" data-tex="\(z_h\leq n/\kappa\)">\(z_h\leq n/\kappa\)</span>, the residual <span class="math" data-tex="\(\mathcal R_h\)">\(\mathcal R_h\)</span> belongs to <span class="math" data-tex="\(\mathfrak R_i\)">\(\mathfrak R_i\)</span>.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is listed, its index is one more than the number of listed lighter groups, which the conditioning fixes; call this number <span class="math" data-tex="\(h\)">\(h\)</span> and put <span class="math" data-tex="\(a=a_h\)">\(a=a_h\)</span>, <span class="math" data-tex="\(q=\lfloor n/\kappa\rfloor\)">\(q=\lfloor n/\kappa\rfloor\)</span>. The lighter paths, in particular <span class="math" data-tex="\(F=F_{h-1}\)">\(F=F_{h-1}\)</span>, the competition sets <span class="math" data-tex="\(K_{h,b}\)">\(K_{h,b}\)</span>, and the valid endpoints <span class="math" data-tex="\(\mathfrak B_h\)">\(\mathfrak B_h\)</span> are fixed by the conditioning: none of them involves a bit inside <span class="math" data-tex="\(U_i\)">\(U_i\)</span>.</p>
+<p>On a listed outcome, Lemma 3.1 of the third lesson provides at most <span class="math" data-tex="\(q\)">\(q\)</span> generators <span class="math" data-tex="\(J_h\subseteq U_i\)">\(J_h\subseteq U_i\)</span> with insertion times <span class="math" data-tex="\(\tau(g)\in[a,0]\)">\(\tau(g)\in[a,0]\)</span> such that, for all <span class="math" data-tex="\(k\)">\(k\)</span>,
+<span class="math math-display" data-tex="\[
+X_h(k)=\operatorname{cl}\bigl(F(k)\cup J_h(k)\bigr),\tag{2.2}
+\]">\[
+X_h(k)=\operatorname{cl}\bigl(F(k)\cup J_h(k)\bigr),\tag{2.2}
+\]</span>
+where <span class="math" data-tex="\(J_h(k)=\{g\in J_h:\tau(g)\leq k\}\)">\(J_h(k)=\{g\in J_h:\tau(g)\leq k\}\)</span>.
+If moreover <span class="math" data-tex="\(z_h\leq n/\kappa\)">\(z_h\leq n/\kappa\)</span>, the witnesses <span class="math" data-tex="\(Z=\bigcup_bZ_b\subseteq U_i\)">\(Z=\bigcup_bZ_b\subseteq U_i\)</span> number at most <span class="math" data-tex="\(q\)">\(q\)</span>. We now describe <span class="math" data-tex="\(\mathcal R_h\)">\(\mathcal R_h\)</span> through two marked sequences whose <em>old</em> occurrences are fixed by the conditioning and whose <em>movable</em> occurrences are the labels of <span class="math" data-tex="\(J_h\)">\(J_h\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span>. A label in both <span class="math" data-tex="\(J_h\)">\(J_h\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span> contributes two occurrences.</p>
+<p><em>First sequence: valid births.</em> For <span class="math" data-tex="\(k=a-2,a-1,\ldots,1\)">\(k=a-2,a-1,\ldots,1\)</span> in turn, list the labels of <span class="math" data-tex="\(F(k)\)">\(F(k)\)</span> in label order, all with mark <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(k\in\mathfrak B_h\)">\(k\in\mathfrak B_h\)</span> and mark <span class="math" data-tex="\(0\)">\(0\)</span> otherwise; then insert the generators with <span class="math" data-tex="\(\tau(g)=k\)">\(\tau(g)=k\)</span>, with the same mark. By (2.2), after the block of time <span class="math" data-tex="\(k\)">\(k\)</span> the labels so far span exactly <span class="math" data-tex="\(X_h(k)\)">\(X_h(k)\)</span>. A label <span class="math" data-tex="\(f\in U_i\)">\(f\in U_i\)</span> is therefore first spanned within the block of its birth <span class="math" data-tex="\(b_h(f)\)">\(b_h(f)\)</span>, and its pivot mark is <span class="math" data-tex="\(1\)">\(1\)</span> exactly when <span class="math" data-tex="\(b_h(f)\in\mathfrak B_h\)">\(b_h(f)\in\mathfrak B_h\)</span>. The set of labels of <span class="math" data-tex="\(U_i\)">\(U_i\)</span> with mark <span class="math" data-tex="\(1\)">\(1\)</span> is <span class="math" data-tex="\(\bigcup_{b\in\mathfrak B_h}P_{h,b}\)">\(\bigcup_{b\in\mathfrak B_h}P_{h,b}\)</span>.</p>
+<p><em>Second sequence: layers.</em> Let <span class="math" data-tex="\(b_0\in\{a-2,a-1\}\)">\(b_0\in\{a-2,a-1\}\)</span> and <span class="math" data-tex="\(b_1\in\{0,1\}\)">\(b_1\in\{0,1\}\)</span> have the chosen parity. For the endpoints <span class="math" data-tex="\(b=b_0+2,b_0+4,\ldots,b_1\)">\(b=b_0+2,b_0+4,\ldots,b_1\)</span> in turn, write:</p>
+<ol>
+<li>the labels of <span class="math" data-tex="\(K_{h,b}\)">\(K_{h,b}\)</span> in label order, then the witnesses <span class="math" data-tex="\(Z_b\)">\(Z_b\)</span> (empty if <span class="math" data-tex="\(b\notin\mathfrak B_h\)">\(b\notin\mathfrak B_h\)</span>), all with mark <span class="math" data-tex="\(0\)">\(0\)</span>;</li>
+<li>the labels of <span class="math" data-tex="\(F(b)\)">\(F(b)\)</span> in label order, then the generators with <span class="math" data-tex="\(b-2&lt;\tau(g)\leq b\)">\(b-2&lt;\tau(g)\leq b\)</span>, all with mark <span class="math" data-tex="\(1\)">\(1\)</span>.</li>
+</ol>
+<p>We claim that the labels written up to the end of layer <span class="math" data-tex="\(b\)">\(b\)</span> span <span class="math" data-tex="\(X_h(b)\)">\(X_h(b)\)</span>, and up to the end of part 1 of layer <span class="math" data-tex="\(b\)">\(b\)</span> they span <span class="math" data-tex="\(\operatorname{cl}(X_h(b-2)\cup K_{h,b}\cup Z_b)\)">\(\operatorname{cl}(X_h(b-2)\cup K_{h,b}\cup Z_b)\)</span>. Initially nothing is written, and <span class="math" data-tex="\(X_h(b_0)=L=\operatorname{cl}(\varnothing)\)">\(X_h(b_0)=L=\operatorname{cl}(\varnothing)\)</span>. If the claim holds at <span class="math" data-tex="\(b-2\)">\(b-2\)</span>, part 1 gives the second span. Part 2 then adds <span class="math" data-tex="\(F(b)\)">\(F(b)\)</span> and the generators inserted in <span class="math" data-tex="\((b-2,b]\)">\((b-2,b]\)</span>; since <span class="math" data-tex="\(K_{h,b}\subseteq F(b)\)">\(K_{h,b}\subseteq F(b)\)</span> and <span class="math" data-tex="\(Z_b\subseteq X_h(b)\)">\(Z_b\subseteq X_h(b)\)</span>, (2.2) shows that the span becomes <span class="math" data-tex="\(X_h(b)\)">\(X_h(b)\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(f\in P_{h,b}\)">\(f\in P_{h,b}\)</span> with <span class="math" data-tex="\(b\in\mathfrak B_h\)">\(b\in\mathfrak B_h\)</span>. It lies outside <span class="math" data-tex="\(X_h(b-1)\supseteq X_h(b-2)\)">\(X_h(b-1)\supseteq X_h(b-2)\)</span> and inside <span class="math" data-tex="\(X_h(b)\)">\(X_h(b)\)</span>, so its pivot in the second sequence lies in layer <span class="math" data-tex="\(b\)">\(b\)</span>, and its mark is <span class="math" data-tex="\(1\)">\(1\)</span> exactly when <span class="math" data-tex="\(f\)">\(f\)</span> is not spanned at the end of part 1, that is, when <span class="math" data-tex="\(f\in\mathcal R_h\)">\(f\in\mathcal R_h\)</span>. Let <span class="math" data-tex="\(M_1\)">\(M_1\)</span> and <span class="math" data-tex="\(M_2\)">\(M_2\)</span> be the sets of labels of <span class="math" data-tex="\(U_i\)">\(U_i\)</span> with mark <span class="math" data-tex="\(1\)">\(1\)</span> in the first and in the second sequence. Hence
+<span class="math math-display" data-tex="\[
+\mathcal R_h=M_1\cap M_2.
+\]">\[
+\mathcal R_h=M_1\cap M_2.
+\]</span>
+The first condition is needed: part 2 of a layer also spans labels born at <span class="math" data-tex="\(b-1\)">\(b-1\)</span>, whose births are not valid.</p>
+<p><em>The family.</em> Let <span class="math" data-tex="\(\mathfrak R_i\)">\(\mathfrak R_i\)</span> consist of all intersections <span class="math" data-tex="\(M_1\cap M_2\)">\(M_1\cap M_2\)</span>, where <span class="math" data-tex="\(J,Z\subseteq U_i\)">\(J,Z\subseteq U_i\)</span> are sets of at most <span class="math" data-tex="\(q\)">\(q\)</span> labels, <span class="math" data-tex="\(M_1\)">\(M_1\)</span> is the set of labels of <span class="math" data-tex="\(U_i\)">\(U_i\)</span> with mark <span class="math" data-tex="\(1\)">\(1\)</span> after some insertion of the occurrences of <span class="math" data-tex="\(J\)">\(J\)</span> into the first old sequence, and <span class="math" data-tex="\(M_2\)">\(M_2\)</span> the same for some insertion of the occurrences of <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span> into the second old sequence. Positions, orders and marks of the inserted occurrences are arbitrary. The old sequences are fixed by the conditioning, and their labels span <span class="math" data-tex="\(E\)">\(E\)</span> because <span class="math" data-tex="\(F(0)=E\)">\(F(0)=E\)</span>. The family contains every actual residual, and possibly sets that arise from no actual outcome.</p>
+<p><em>Counting.</em> There are at most <span class="math" data-tex="\(S_q(n)^2\)">\(S_q(n)^2\)</span> choices of <span class="math" data-tex="\(J,Z\)">\(J,Z\)</span>. Each sequence receives at most <span class="math" data-tex="\(2q\)">\(2q\)</span> movable occurrences, so by Lemma 2.1 of the seventh lesson
+<span class="math math-display" data-tex="\[
+|\mathfrak R_i|\leq S_q(n)^2\bigl(4^{2q}S_{2q}(n)\bigr)^2.
+\]">\[
+|\mathfrak R_i|\leq S_q(n)^2\bigl(4^{2q}S_{2q}(n)\bigr)^2.
+\]</span>
+For <span class="math" data-tex="\(0&lt;\alpha\leq1\)">\(0&lt;\alpha\leq1\)</span>, using <span class="math" data-tex="\(\alpha^\ell\geq\alpha^{\alpha n}\)">\(\alpha^\ell\geq\alpha^{\alpha n}\)</span> for <span class="math" data-tex="\(\ell\leq\alpha n\)">\(\ell\leq\alpha n\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha^{\alpha n}S_{\lfloor\alpha n\rfloor}(n)&amp;\leq\sum_{\ell\leq\alpha n}\binom n\ell\alpha^\ell\\
+&amp;\leq(1+\alpha)^n\leq e^{\alpha n},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha^{\alpha n}S_{\lfloor\alpha n\rfloor}(n)&amp;\leq\sum_{\ell\leq\alpha n}\binom n\ell\alpha^\ell\\
+&amp;\leq(1+\alpha)^n\leq e^{\alpha n},
+\end{aligned}
+\]</span>
+so that <span class="math" data-tex="\(S_{\lfloor\alpha n\rfloor}(n)\leq(e/\alpha)^{\alpha n}\)">\(S_{\lfloor\alpha n\rfloor}(n)\leq(e/\alpha)^{\alpha n}\)</span>.
+Apply this with <span class="math" data-tex="\(\alpha=1/\kappa\)">\(\alpha=1/\kappa\)</span> to <span class="math" data-tex="\(S_q(n)\)">\(S_q(n)\)</span>, and with <span class="math" data-tex="\(\alpha=2/\kappa\)">\(\alpha=2/\kappa\)</span> to <span class="math" data-tex="\(S_{2q}(n)\leq S_{\lfloor2n/\kappa\rfloor}(n)\)">\(S_{2q}(n)\leq S_{\lfloor2n/\kappa\rfloor}(n)\)</span>. Together with <span class="math" data-tex="\(q\leq n/\kappa\)">\(q\leq n/\kappa\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log|\mathfrak R_i|&amp;\leq\frac n\kappa\Bigl(2(1+\log\kappa)\\
+&amp;\qquad+8\log2+4\bigl(1+\log\tfrac\kappa2\bigr)\Bigr)\\
+&amp;=\frac n\kappa\bigl(6\log\kappa+6+4\log2\bigr)\\
+&amp;\leq\frac{1000\log\kappa}\kappa\,n.\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+\log|\mathfrak R_i|&amp;\leq\frac n\kappa\Bigl(2(1+\log\kappa)\\
+&amp;\qquad+8\log2+4\bigl(1+\log\tfrac\kappa2\bigr)\Bigr)\\
+&amp;=\frac n\kappa\bigl(6\log\kappa+6+4\log2\bigr)\\
+&amp;\leq\frac{1000\log\kappa}\kappa\,n.\qquad\square
+\end{aligned}
+\]</span></p>
+<p>The bound does not depend on how many auxiliary times the path passes through: the marked-pivot count already includes every placement of generators and witnesses.</p>
+<h2 id="3-the-sample-to-rank-transfer">3. The sample-to-rank transfer</h2>
+<p>For a true group <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, put <span class="math" data-tex="\(z_i=z_h\)">\(z_i=z_h\)</span> and <span class="math" data-tex="\(\sigma_i=\sigma_h\)">\(\sigma_i=\sigma_h\)</span> if it is listed as <span class="math" data-tex="\(G_h\)">\(G_h\)</span>, and <span class="math" data-tex="\(z_i=\sigma_i=0\)">\(z_i=\sigma_i=0\)</span> otherwise.</p>
+<p><strong>Lemma 3.1 (sample-to-rank transfer).</strong> If <span class="math" data-tex="\(n_i\geq\kappa\)">\(n_i\geq\kappa\)</span>, then, with <span class="math" data-tex="\(\gamma=\eta/16=2^{-16}\)">\(\gamma=\eta/16=2^{-16}\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E[z_i\mid H]\geq\frac{\gamma|Y_i|-2^{-23}n_i}\kappa.
+\]">\[
+\mathbb E[z_i\mid H]\geq\frac{\gamma|Y_i|-2^{-23}n_i}\kappa.
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(n=n_i\)">\(n=n_i\)</span>. <em>The safe count.</em> On outcomes where <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is listed as <span class="math" data-tex="\(G_h\)">\(G_h\)</span>, <span class="math" data-tex="\(D_h\cap Y=D\cap Y_i\)">\(D_h\cap Y=D\cap Y_i\)</span> and <span class="math" data-tex="\(D_h=D\cap U_i\)">\(D_h=D\cap U_i\)</span>. On the other outcomes <span class="math" data-tex="\(D\cap U_i=\varnothing\)">\(D\cap U_i=\varnothing\)</span> and <span class="math" data-tex="\(\sigma_i=0\)">\(\sigma_i=0\)</span>. So Lemma 1.1 of the sixth lesson gives, for every <span class="math" data-tex="\(D\)">\(D\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E[\sigma_i\mid H,D]\geq\frac\eta4|D\cap Y_i|-\frac{|D\cap U_i|}\kappa.
+\]">\[
+\mathbb E[\sigma_i\mid H,D]\geq\frac\eta4|D\cap Y_i|-\frac{|D\cap U_i|}\kappa.
+\]</span>
+The mask <span class="math" data-tex="\(D\)">\(D\)</span> is independent of <span class="math" data-tex="\(H\)">\(H\)</span> with rate <span class="math" data-tex="\(\frac14\)">\(\frac14\)</span>, so averaging over <span class="math" data-tex="\(D\)">\(D\)</span> gives, as <span class="math" data-tex="\(\eta/16=\gamma\)">\(\eta/16=\gamma\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E[\sigma_i\mid H]\geq\gamma|Y_i|-\frac n{4\kappa}.\tag{3.1}
+\]">\[
+\mathbb E[\sigma_i\mid H]\geq\gamma|Y_i|-\frac n{4\kappa}.\tag{3.1}
+\]</span></p>
+<p><em>Large residuals are unlikely.</em> Use the conditioning of Lemma 2.1. Within <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, whose labels lie outside <span class="math" data-tex="\(H\)">\(H\)</span>, the events <span class="math" data-tex="\(\{e\in O\}\)">\(\{e\in O\}\)</span> are independent, each of probability <span class="math" data-tex="\(1-\frac34(1-t)=\frac14+\frac34t\leq\frac12\)">\(1-\frac34(1-t)=\frac14+\frac34t\leq\frac12\)</span>. So every fixed <span class="math" data-tex="\(R_0\in\mathfrak R_i\)">\(R_0\in\mathfrak R_i\)</span> satisfies <span class="math" data-tex="\(\Pr(R_0\subseteq O)\leq2^{-|R_0|}\)">\(\Pr(R_0\subseteq O)\leq2^{-|R_0|}\)</span>. Let <span class="math" data-tex="\(\delta=2^{-26}\)">\(\delta=2^{-26}\)</span> and let <span class="math" data-tex="\(\mathcal E_i\)">\(\mathcal E_i\)</span> be the event that some <span class="math" data-tex="\(R_0\in\mathfrak R_i\)">\(R_0\in\mathfrak R_i\)</span> with <span class="math" data-tex="\(|R_0|&gt;\delta n\)">\(|R_0|&gt;\delta n\)</span> lies in <span class="math" data-tex="\(O\)">\(O\)</span>. By (2.1) and the union bound, with <span class="math" data-tex="\(\log\kappa=100\log2\)">\(\log\kappa=100\log2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Pr(\mathcal E_i\mid\cdot)\\
+&amp;\quad\leq\exp\Bigl(\frac{1000\log\kappa}\kappa\,n-\delta n\log2\Bigr)\\
+&amp;\quad=2^{-(2^{-26}-10^5\cdot2^{-100})\,n}\\
+&amp;\quad\leq2^{-2^{-27}n}\leq2^{-2^{73}}&lt;2^{-26},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Pr(\mathcal E_i\mid\cdot)\\
+&amp;\quad\leq\exp\Bigl(\frac{1000\log\kappa}\kappa\,n-\delta n\log2\Bigr)\\
+&amp;\quad=2^{-(2^{-26}-10^5\cdot2^{-100})\,n}\\
+&amp;\quad\leq2^{-2^{-27}n}\leq2^{-2^{73}}&lt;2^{-26},
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(10^5\cdot2^{-100}&lt;2^{-27}\)">\(10^5\cdot2^{-100}&lt;2^{-27}\)</span> and <span class="math" data-tex="\(n\geq\kappa=2^{100}\)">\(n\geq\kappa=2^{100}\)</span>. The bound does not depend on the conditioning, so it also holds given <span class="math" data-tex="\(H\)">\(H\)</span> alone.</p>
+<p><em>The error term.</em> Let <span class="math" data-tex="\(e_i=|\mathcal R_h|\)">\(e_i=|\mathcal R_h|\)</span> on outcomes where <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is listed as <span class="math" data-tex="\(G_h\)">\(G_h\)</span> and <span class="math" data-tex="\(z_h\leq n/\kappa\)">\(z_h\leq n/\kappa\)</span>, and <span class="math" data-tex="\(e_i=0\)">\(e_i=0\)</span> otherwise. On the first kind of outcome <span class="math" data-tex="\(\mathcal R_h\in\mathfrak R_i\)">\(\mathcal R_h\in\mathfrak R_i\)</span> and <span class="math" data-tex="\(\mathcal R_h\subseteq O\)">\(\mathcal R_h\subseteq O\)</span>, so <span class="math" data-tex="\(|\mathcal R_h|&gt;\delta n\)">\(|\mathcal R_h|&gt;\delta n\)</span> forces <span class="math" data-tex="\(\mathcal E_i\)">\(\mathcal E_i\)</span>. Hence <span class="math" data-tex="\(e_i\leq\delta n+n\mathbf 1_{\mathcal E_i}\)">\(e_i\leq\delta n+n\mathbf 1_{\mathcal E_i}\)</span> and
+<span class="math math-display" data-tex="\[
+\mathbb E[e_i\mid H]\leq\delta n+2^{-26}n=2^{-25}n.
+\]">\[
+\mathbb E[e_i\mid H]\leq\delta n+2^{-26}n=2^{-25}n.
+\]</span>
+No independence of the selected residual itself is used: the union bound runs over the fixed family.</p>
+<p><em>Conclusion.</em> In every outcome <span class="math" data-tex="\(\sigma_i\leq\kappa z_i+e_i\)">\(\sigma_i\leq\kappa z_i+e_i\)</span>. When <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is listed and <span class="math" data-tex="\(z_i\leq n/\kappa\)">\(z_i\leq n/\kappa\)</span>, this is Lemma 1.1. When it is listed and <span class="math" data-tex="\(z_i&gt;n/\kappa\)">\(z_i&gt;n/\kappa\)</span>, then <span class="math" data-tex="\(\sigma_i\leq|U_i|=n&lt;\kappa z_i\)">\(\sigma_i\leq|U_i|=n&lt;\kappa z_i\)</span>. When it is unlisted, both sides vanish. Taking expectations and using (3.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\kappa\,\mathbb E[z_i\mid H]&amp;\geq\gamma|Y_i|-\Bigl(\frac1{4\kappa}+2^{-25}\Bigr)n\\
+&amp;\geq\gamma|Y_i|-2^{-23}n.\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+\kappa\,\mathbb E[z_i\mid H]&amp;\geq\gamma|Y_i|-\Bigl(\frac1{4\kappa}+2^{-25}\Bigr)n\\
+&amp;\geq\gamma|Y_i|-2^{-23}n.\qquad\square
+\end{aligned}
+\]</span></p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Show that <span class="math" data-tex="\(\sum_b|Z_b|=z_h\)">\(\sum_b|Z_b|=z_h\)</span> and that the witness sets of different endpoints are disjoint.</p>
+<p><strong>4.2.</strong> Show that <span class="math" data-tex="\(S_{\lfloor\alpha n\rfloor}(n)\leq(e/\alpha)^{\alpha n}\)">\(S_{\lfloor\alpha n\rfloor}(n)\leq(e/\alpha)^{\alpha n}\)</span> is weaker than the trivial <span class="math" data-tex="\(S_q(n)\leq2^n\)">\(S_q(n)\leq2^n\)</span> when <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is close to one, and compute both for <span class="math" data-tex="\(n=100\)">\(n=100\)</span>, <span class="math" data-tex="\(\alpha=0.01\)">\(\alpha=0.01\)</span>.</p>
+<p><strong>4.3.</strong> Verify that <span class="math" data-tex="\(6\log\kappa+6+4\log2\leq1000\log\kappa\)">\(6\log\kappa+6+4\log2\leq1000\log\kappa\)</span> for <span class="math" data-tex="\(\kappa=2^{100}\)">\(\kappa=2^{100}\)</span>, and that <span class="math" data-tex="\(10^5\cdot2^{-100}&lt;2^{-27}\)">\(10^5\cdot2^{-100}&lt;2^{-27}\)</span>.</p>
+<p><strong>4.4.</strong> Why would it be wrong to argue that <span class="math" data-tex="\(\mathcal R_h\subseteq O\)">\(\mathcal R_h\subseteq O\)</span> has probability at most <span class="math" data-tex="\(2^{-|\mathcal R_h|}\)">\(2^{-|\mathcal R_h|}\)</span>?</p>
+<p><strong>4.5.</strong> Where is <span class="math" data-tex="\(n_i\geq\kappa\)">\(n_i\geq\kappa\)</span> used, and how are the smaller groups handled?</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> By (1.1), <span class="math" data-tex="\(|Z_b|\)">\(|Z_b|\)</span> is the <span class="math" data-tex="\(b\)">\(b\)</span>-th summand of <span class="math" data-tex="\(z_h\)">\(z_h\)</span> in (2.1) of the fourth lesson. A label of <span class="math" data-tex="\(Z_b\)">\(Z_b\)</span> lies in <span class="math" data-tex="\(P_{h,b}\)">\(P_{h,b}\)</span>, the labels of <span class="math" data-tex="\(G_h\)">\(G_h\)</span> born at <span class="math" data-tex="\(b\)">\(b\)</span>; a label has one birth.</p>
+<p><strong>4.2.</strong> For <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span> the bound is <span class="math" data-tex="\(e^n&gt;2^n\)">\(e^n&gt;2^n\)</span>. For <span class="math" data-tex="\(n=100\)">\(n=100\)</span> and <span class="math" data-tex="\(\alpha=0.01\)">\(\alpha=0.01\)</span>: <span class="math" data-tex="\(S_1(100)=101\)">\(S_1(100)=101\)</span> and <span class="math" data-tex="\((100e)^1\approx271.8\)">\((100e)^1\approx271.8\)</span>; both are far below <span class="math" data-tex="\(2^{100}\)">\(2^{100}\)</span>.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(\log\kappa=100\log2\approx69.3\)">\(\log\kappa=100\log2\approx69.3\)</span>, so the left side is about <span class="math" data-tex="\(424.7\)">\(424.7\)</span>, while the right side is about <span class="math" data-tex="\(69{,}300\)">\(69{,}300\)</span>. And <span class="math" data-tex="\(10^5&lt;2^{17}\)">\(10^5&lt;2^{17}\)</span>, so <span class="math" data-tex="\(10^5\cdot2^{-100}&lt;2^{-83}&lt;2^{-27}\)">\(10^5\cdot2^{-100}&lt;2^{-83}&lt;2^{-27}\)</span>.</p>
+<p><strong>4.4.</strong> The residual is selected after the masks are drawn; for instance <span class="math" data-tex="\(O\cap U_i\)">\(O\cap U_i\)</span> itself always lies in <span class="math" data-tex="\(O\)">\(O\)</span>. The bound <span class="math" data-tex="\(2^{-|R_0|}\)">\(2^{-|R_0|}\)</span> is valid for a set <span class="math" data-tex="\(R_0\)">\(R_0\)</span> fixed in advance. The family <span class="math" data-tex="\(\mathfrak R_i\)">\(\mathfrak R_i\)</span> is fixed before the bits inside <span class="math" data-tex="\(U_i\)">\(U_i\)</span> are drawn, and it contains every residual that can occur, so the union bound over it is legitimate.</p>
+<p><strong>4.5.</strong> It is used to make <span class="math" data-tex="\(2^{-2^{-27}n}\)">\(2^{-2^{-27}n}\)</span> smaller than <span class="math" data-tex="\(2^{-26}\)">\(2^{-26}\)</span>. Groups with <span class="math" data-tex="\(n_i&lt;\kappa\)">\(n_i&lt;\kappa\)</span> are discarded in the ninth lesson: each has <span class="math" data-tex="\(|Y_i|&lt;\kappa\)">\(|Y_i|&lt;\kappa\)</span>, and their total weight is less than <span class="math" data-tex="\(2\kappa m_*\)">\(2\kappa m_*\)</span>, which is covered by the maximum rule when <span class="math" data-tex="\(m_*\)">\(m_*\)</span> is large.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-P] OpenAI, <em>One Sample Suffices for Matroid Prophet Inequalities against an Almighty Adversary</em>, OpenAI Math Release preprint, 23 September 2026, Section 5. https://github.com/openai/math/tree/main/preprints/One-Sample-Suffices-for-Matroid-Prophet-Inequalities-against-an-Almighty-Adversary-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

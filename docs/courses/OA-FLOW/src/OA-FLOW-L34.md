@@ -1,6 +1,6 @@
 # Derivations and uniformly continuous automorphism groups
 
-*Original exposition and illustration sources: CC0-1.0. Spot-checked by GPT-6 Astra in a separate session.*
+*Original exposition and illustration sources: CC0-1.0.*
 
 An algebraic derivation on a C\*-algebra is a complex-linear map defined on every element and satisfying the product rule. Its definition does not include continuity. Nevertheless it is bounded. We prove this first, including for a nonunital algebra. We then identify the derivations which generate automorphism groups continuous in operator norm. Two implementation arguments complete the lesson: a one-vector construction on $B(H)$, and a construction from an arbitrary full fixed corner of a von Neumann algebra.
 
@@ -89,7 +89,7 @@ The bounded operators on a Banach space form a Banach algebra: an operator-norm 
 <a id="OA-FLOW.DFD.ALGEBRA"></a>
 <a id="oa-flow.dfd.algebra"></a>
 
-## 4. Norming states and the compression proof
+## 4. Norming states and the graph estimate
 
 A **state** on a unital C\*-algebra is a positive complex-linear functional with value one at the identity. We require no faithful state.
 
@@ -114,39 +114,45 @@ $|\varphi(x)|^2\le\varphi(x^*x)\le\|x\|^2$, since $x^*x\le\|x\|^2 1$ by F1 and F
 
 **Theorem 4.3 (automatic boundedness).** Every everywhere-defined complex derivation on an arbitrary C\*-algebra is bounded.
 
-**Proof.** The zero algebra is immediate. Begin with a nonzero unital algebra and a \*-derivation $d$. On the real Banach space $A_{\rm sa}$, it suffices by Lemma 3.2 to prove that if $x_n\to0$ and $d x_n\to a$ in norm, then $a=0$: subtracting $(x,dx)$ reduces any graph limit at $x$ to this case. The elements here are self-adjoint. If $a\ne0$, rescale and, if necessary, replace the sequence by its negative, so that $\|a\|=1$ and $1\in\sigma(a)$. Define
+**Proof.** The zero algebra is immediate. Begin with a nonzero unital algebra and a \*-derivation $d$. We first prove a norm estimate on the real Banach space $A_{\rm sa}$.
 
-$$h=f(a),\qquad f(t)=\max(0,2t-1)\quad(-1\le t\le1).$$
+Let $x=x^*\ne0$ and put $r=\|x\|$. By F1, the self-adjoint spectrum contains a point of absolute value $r$. Choose $\sigma\in\{1,-1\}$ so that $\sigma r\in\operatorname{spec}(x)$, and set
 
-F1 gives $0\le h\le1$, $\|h\|=1$, and $hah\ge\tfrac12h^2$. For sufficiently large $n$, $\varepsilon_n=\|x_n\|$ is positive: otherwise a subsequence with $x_n=0$ contradicts $d x_n\to a\ne0$. Put
+$$p=r1+\sigma x.$$
 
-$$y_n=x_n+3\varepsilon_n1,\quad
-p_n=h y_n h,\quad z_n=\frac{p_n}{4\varepsilon_n}.$$
+Its spectrum is contained in $[0,2r]$ and contains $2r$. Thus F1 and F2 give $p\ge0$ and $\|p\|=2r$. Choose a state $\varphi$ norming $p$ by Lemma 4.1. Since $\varphi(1)=1$,
 
-Since $-\varepsilon_n1\le x_n\le\varepsilon_n1$,
+$$2r=\varphi(p)=r+\sigma\varphi(x),
+\qquad\varphi(x)=\sigma r.$$
 
-$$2\varepsilon_n1\le y_n\le4\varepsilon_n1,
-\qquad\tfrac12h^2\le z_n\le h^2,
-\qquad \|z_n\|\ge\tfrac12.$$
+The derivation identity at $1$ gives $d1=0$, so $dp=\sigma dx$. Lemma 4.2 yields $\varphi(dx)=0$. The state has norm one, and consequently
 
-Choose separately for each $n$ a state $\varphi_n$ norming $z_n$. It also norms $p_n$, so Lemma 4.2 gives $\varphi_n(d p_n)=0$. On the other hand the product rule gives
+$$\|x+t\,dx\|\ge|\varphi(x+t\,dx)|=r=\|x\|
+\qquad(t\in\mathbb R). \tag{4.3a}$$
 
-$$d p_n=(dh)y_nh+h(d x_n)h+h y_n(dh)\longrightarrow hah.$$
+For $x=0$ the same inequality follows from $d0=0$. Thus (4.3a) holds for every self-adjoint $x$, without a continuity assumption on $d$.
 
-Only the fixed element $dh$ occurs in the first and last terms; their convergence does not assume boundedness of $d$. For large $n$ the norm error is less than $1/8$, and hence $|\varphi_n(hah)|<1/8$. But the order inequalities give
+We now close the graph. Suppose $x_n=x_n^*\to0$ and $dx_n\to a$ in norm. Since $d$ preserves adjoints and the involution is norm continuous, $a=a^*$. The domain is the entire algebra, so $da$ is a fixed element of $A$. For each fixed real $t\ne0$, apply (4.3a) to the self-adjoint element $a-x_n/t$. Linearity gives the exact cancellation
 
-$$\varphi_n(hah)\ge\tfrac12\varphi_n(h^2)
-\ge\tfrac12\varphi_n(z_n)=\tfrac12\|z_n\|\ge\tfrac14,$$
+$$\left\|a-\frac{x_n}{t}\right\|
+\le\left\|a-\frac{x_n}{t}
+       +t\,d\left(a-\frac{x_n}{t}\right)\right\|
+=\left\|a-\frac{x_n}{t}+t\,da-dx_n\right\|.$$
 
-a contradiction. Thus $d|_{A_{\rm sa}}$ has a closed graph and is bounded as a real-linear map. Writing $x=u+iv$, with self-adjoint $u=(x+x^*)/2$ and $v=(x-x^*)/(2i)$, gives $\|u\|,\|v\|\le\|x\|$, so $d$ is bounded on $A$.
+Hold $t$ fixed while $n\to\infty$. The left-hand argument tends to $a$ and the right-hand argument tends to $t\,da$, so norm continuity gives
+
+$$\|a\|\le |t|\,\|da\|
+\qquad(t\in\mathbb R\setminus\{0\}). \tag{4.3b}$$
+
+Only after taking this sequence limit do we let $t\to0$. Because $da$ is fixed and has finite norm, (4.3b) forces $a=0$. Subtracting $(x,dx)$ from any graph-convergent sequence at $x$ reduces it to this null-sequence case. Hence $d|_{A_{\rm sa}}$ has a closed graph. Lemma 3.2 bounds this real-linear map. Writing $x=u+iv$, with self-adjoint $u=(x+x^*)/2$ and $v=(x-x^*)/(2i)$, gives $\|u\|,\|v\|\le\|x\|$, so $d$ is bounded on $A$.
 
 For a general complex derivation, apply this result to the two star parts in Lemma 2.1. For a nonunital algebra, extend each star part by Lemma 2.2 and restrict the resulting bounded map back to $A$. $\square$
 
-![Compression makes every norming state give incompatible bounds on the same fixed positive element.](../assets/l34-reconstruction/figures/compression-contradiction.svg)
+![A state norming r1 plus sigma x gives a norm estimate; cancellation at a fixed nonzero t makes every null-sequence graph limit vanish.](../assets/l34-reconstruction/figures/compression-contradiction.svg)
 
-The diagram records the exact constants in Theorem 4.3: the positive normalized compressions satisfy $h^2/2\le z_n\le h^2$, while $d p_n\to hah$ forces the displayed state's value below $1/8$. It requires a sequence of separate states, rather than any compactness theorem for the state space.
+The schematic shows the exact mechanism of Theorem 4.3: a state norming $p=\|x\|1+\sigma x$ gives (4.3a); applying it to $a-x_n/t$ cancels $dx_n$ against its limit. Taking $n\to\infty$ with $t\ne0$ fixed gives (4.3b), and then $t\to0$ proves $a=0$. The use of the fixed element $da$ requires the full domain. The final real closed-graph, star-part and nonunital reductions are proved here and in Sections 2–3.
 
-The free source ancestry of the compression construction is Sakai's [*On a conjecture of Kaplansky*, pp. 31–32](https://www.jstage.jst.go.jp/article/tmj1949/12/1/12_1_31/_pdf). The proof above includes its own norming-state lemma, star-part reduction and nonunital bridge; the citation is not a substitute for them.
+Sakai's freely readable [*On a conjecture of Kaplansky*, pp. 31–32](https://www.jstage.jst.go.jp/article/tmj1949/12/1/12_1_31/_pdf) is the classical source for automatic continuity of C\*-algebra derivations. The proof here uses the norming-state estimate and fixed-element cancellation just proved, together with the local star-part, nonunital and closed-graph arguments. No dissipativity theorem is an additional premise.
 
 <a id="OA-FLOW.DFD.IMPLEMENTATION"></a>
 <a id="oa-flow.dfd.implementation"></a>

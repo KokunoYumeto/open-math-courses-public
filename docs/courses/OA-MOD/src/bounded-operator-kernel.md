@@ -84,7 +84,9 @@ The identity \(\langle a\xi,\xi\rangle=\|a^{1/2}\xi\|^2\) gives
 \(\overline{\operatorname{ran}T}=(\ker T^*)^\perp\):
 orthogonality to every \(T\xi\) is equivalent to \(T^*\eta=0\). This is the range-kernel identity used above and below.
 
-![A function away from the spectrum vanishes in the calculus; the geometric curve is its proved upper bound.](../../audit/real-coercivity/figures/bounded-spectrum-restriction.svg)
+![A function away from the spectrum vanishes in the calculus; the geometric curve is its proved upper bound.](../assets/bounded-spectrum-restriction.svg)
+
+[Open the full-size diagram](../assets/bounded-spectrum-restriction.svg).
 
 **Figure.** In the displayed matrix example, \(\lambda=-1/2\), \(\delta=1/5\), and \(\|(T-\lambda I)^{-1}\|=2\). The function vanishes on \(\sigma(T)=\{0,1\}\), so its actual operator norm is zero. The right-hand curve shows the upper bounds \((2/5)^n\) from the arbitrary-dimensional argument above. The proof uses their decay to establish that vanishing result before passing to the norm on the spectrum. Reproducible figure source.
 

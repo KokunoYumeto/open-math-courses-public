@@ -529,6 +529,82 @@ Apply this also to \(x^*\). Thus the compressions converge strongly* to \(x\), a
 
 **Proof.** By SF every nonzero projection contains a nonzero finite projection. A maximal orthogonal family \((p_\alpha)\) of nonzero finite projections must therefore have supremum one: a nonzero complement would provide a further such projection. For finite \(G\), its sum \(e_G=\sum_{\alpha\in G}p_\alpha\) is finite by SF. Thus \(e_GMe_G\) is a finite algebra, injective by Lemma 6.1, and semidiscrete by Theorem 5.3. The finite-partial-sum net increases strongly to one; apply Lemma 6.2. The zero algebra is covered directly by zero matrix maps. No projection is assumed to have finite Hilbert-space rank, and no maximal family is assumed countable. \(\square\)
 
+## Finite-trace corners for the continuous core
+
+<a id="semifinite-trace-corner-bootstrap"></a>
+**Finite-trace corner construction.** Let \(N\) be an injective von Neumann algebra carrying a faithful normal semifinite trace \(\tau:N_+\to[0,\infty]\). Then \(N\) is semidiscrete. The construction uses the prescribed scalar trace, Theorem 5.1 and Lemmas 6.1–6.2, and works without a countability assumption on \(N\) or its representation.
+
+**Proof.** Write \(\mathcal N_\tau=\{x:\tau(x^*x)<\infty\}\). We first show directly that every nonzero projection \(p\in N\) contains a nonzero projection of finite \(\tau\)-value. Under the order definition of semifiniteness, choose a nonzero \(0\le a\le p\) with finite trace. If semifiniteness has instead been established by ultraweak density of \(\mathcal N_\tau\), as in the continuous-core construction, obtain such a finite-trace positive element of \(pNp\) as follows. If \(px=0\) for every \(x\in\mathcal N_\tau\), ultraweak continuity of multiplication by \(p\) would give \(pN=0\), contrary to \(p\ne0\). Choose \(x\) with \(px\ne0\), and set
+\[
+a=(px)(px)^*\in(pNp)_+.
+\]
+Traciality and positivity give
+\[
+0<\tau(a)=\tau(x^*px)
+\le\tau(x^*x)<\infty.
+\tag{TC1}
+\]
+In either construction, for a sufficiently small \(\delta>0\), the spectral projection \(q=1_{[\delta,\infty)}(a)\) is nonzero. It belongs to \(pNp\), so \(q\le p\). The threshold construction [S01–S06](projection-comparison-and-finite-traces.md#s01) gives \(\delta q\le a\), whence
+\[
+0<\tau(q)\le\delta^{-1}\tau(a)<\infty.
+\tag{TC2}
+\]
+Thus both the order and finite-ideal criteria supply the needed finite-trace cut directly; no projection classification is used.
+
+Use Zorn's lemma to choose a maximal orthogonal family \((p_\alpha)_{\alpha\in I}\) of nonzero projections of finite trace. Unions of chains of such families are orthogonal families, so the maximal family exists. The sum \(e=\sum_\alpha p_\alpha\) is the strong limit of the finite partial sums: for each vector, the squared norms of its orthogonal components have bounded finite subsums, and their tails tend to zero. The limit is the projection onto their closed span and belongs to the strongly closed algebra \(N\). If \(1-e\ne0\), (TC2) supplies another nonzero finite-trace projection orthogonal to every \(p_\alpha\), contradicting maximality. Therefore \(e=1\).
+
+For each nonempty finite \(F\subset I\), put
+\[
+\begin{aligned}
+e_F&=\sum_{\alpha\in F}p_\alpha,\\
+0&<\tau(e_F)<\infty.
+\end{aligned}
+\tag{TC3}
+\]
+These projections form an increasing net with strong limit one. On \((e_FNe_F)_+\), the inequality \(0\le y\le\|y\|e_F\) makes \(\tau(y)\) finite and bounded by \(\|y\|\tau(e_F)\). Its additive homogeneous restriction extends uniquely to a positive linear functional: for differences of positive elements use additivity to see that the value is independent of the chosen difference, and then complexify. Consequently
+\[
+\tau_F(y)=\frac{\tau(y)}{\tau(e_F)}
+\quad (y\in(e_FNe_F)_+)
+\tag{TC4}
+\]
+extends to a faithful normal tracial state on the whole corner. Normality is inherited on increasing positive nets, and traciality follows from \(\tau(z^*z)=\tau(zz^*)\) and polarization in this finite domain. The corner is finite in the Murray–von Neumann sense: if \(v^*v=e_F\), traciality gives \(\tau(e_F-vv^*)=0\), and faithfulness gives \(vv^*=e_F\). No finite Hilbert-space rank is asserted.
+
+Lemma 6.1 makes this corner injective. Theorem 5.1, with its chosen state \(\tau_F\), supplies a normal cpc map \(S:e_FNe_F\to M_n(\mathbb C)\) and a cpc map \(R:M_n(\mathbb C)\to e_FNe_F\) on any finite collection of corner tests. Thus the maps on \(N\) are exactly
+\[
+\begin{aligned}
+\widehat S(x)&=S(e_Fxe_F),\\
+\widehat R(X)&=\iota_F(R(X)),
+\end{aligned}
+\tag{TC5}
+\]
+where \(\iota_F:e_FNe_F\hookrightarrow N\) is inclusion. Compression is normal cpc, and inclusion is cpc, so \(\widehat S\) has the required normality and both maps are completely positive contractions.
+
+For completeness, the approximation is on all normal functionals, rather than only trace tests. Fix finite \(A\subset N\), finite \(B\subset N_*\), and \(\varepsilon>0\). For each \(x\in A\),
+\[
+\begin{aligned}
+e_Fxe_F-x&=e_Fx(e_F-1)\\
+&\quad+(e_F-1)x.
+\end{aligned}
+\tag{TC6}
+\]
+Both terms tend strongly to zero, and the same identity applied to \(x^*\) gives strong* convergence. The differences have norm at most \(2\|x\|\). In the complete [H03 series-vector predual](regular-group-operator-foundations.md#h03), first discard a uniformly small summable coefficient tail and then use strong convergence on its finitely many vector coefficients. Hence \(e_Fxe_F\to x\) ultraweakly. Choose a single \(F\) for which the compression error is below \(\varepsilon/2\) on all tests. Put \(y_x=e_Fxe_F\) and \(f_F=f\circ\iota_F\). Apply Theorem 5.1 to the \(y_x\) and \(f_F\), \(x\in A\), \(f\in B\), with error below \(\varepsilon/2\). The triangle inequality yields
+\[
+\begin{aligned}
+|f(\widehat R\widehat S(x)-x)|
+&\le |f_F(RS(y_x)-y_x)|\\
+&\quad+|f(y_x-x)|\\
+&<\varepsilon/2+\varepsilon/2=\varepsilon.
+\end{aligned}
+\tag{TC7}
+\]
+Direct the triples \((A,B,\varepsilon)\) by enlarging the finite sets and decreasing \(\varepsilon\). Choosing one such factorization for each triple gives a net converging pointwise ultraweakly to the identity of \(N\), which proves semidiscreteness. If \(N=0\), the zero maps through \(M_1\) already give its identity. Empty test sets impose no conditions. \(\square\)
+
+![The finite-trace corner construction and its two approximation errors](../assets/semifinite-trace-corner-bootstrap.svg)
+
+The diagram shows (TC3)–(TC7): the corners increase strongly to the whole algebra, and each tested error is the sum of a compression error and a finite-model error. The faithful-trace matrix maps are those of Theorem 5.1. Their product-vector coefficient method is explained in Anantharaman–Popa, Theorem 13.4.2, and their marginal cutoff in Lemma 13.1.11; the semifinite trace convention is Definition 8.3.1. The proof above supplies the complete arbitrary-family corner passage.
+
+The continuous-core trace construction gives precisely such a \(\tau\) on \(C_\varphi(M)\). Thus this construction is enough for the core step of Theorem 4.1 there. Corollary 6.3 retains its wider projection-semifinite statement and its center-valued-trace and comparison proof.
+
 ## 7. Extracting normalized finite-rank projections
 
 For \(h\geq0\) finite rank and \(t>0\), let \(P_t(h)=1_{(\sqrt t,\infty)}(h)\). The square-root threshold integrates rank to squared Hilbert–Schmidt mass.

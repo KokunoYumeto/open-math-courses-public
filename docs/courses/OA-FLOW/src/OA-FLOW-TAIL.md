@@ -1,6 +1,6 @@
 # Trace tails and the smallest common majorant
 
-*Self-checked by the writing AI.*
+
 
 The trace of a spectral projection can be ordered even when the projections themselves cannot. We prove that distinction directly on complete quadratic-form domains, then use a positive common majorant to compare two spectral distributions. The argument works in every semifinite von Neumann algebra, with no countability assumption.
 

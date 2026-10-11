@@ -1,6 +1,6 @@
 # Graded fibers and changing weight coordinates
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 The continuous core already contains the degree spaces we need: an operator has degree \(t\) when the dual flow multiplies it by \(e^{-irt}\). We first identify these entire spectral subspaces. Weight-labelled symbols then give coordinates on them, and the ordinary core product determines the order of every cocycle and modular factor. Finally we ask which topologies allow the degree to vary continuously. Bounded operator topologies and the full Mackey topology work; the norm topology has an explicit obstruction.
 

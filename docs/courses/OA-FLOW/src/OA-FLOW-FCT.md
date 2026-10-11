@@ -20,7 +20,7 @@ The construction is quantitative: maps with trace distortion tending to one conv
 
 The earlier complete proofs used are [CF1/3–8](OA-FLOW-CF.md#oa-flow.cf.1), [SF0 and SB1–6](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0), [CP1–6](OA-FLOW-CP.md#oa-flow.cp.1), [ST1–2](OA-FLOW-ST12.md#oa-flow.st.1), and [PC1–7](OA-FLOW-PC.md#oa-flow.projection.pc1). Only the last automorphism corollary additionally uses the order-normal positive-map criterion [NF6](OA-FLOW-NF.md#oa-flow.nf.6). Each use is located below. Scalar trace existence, type-I classification, direct integrals and a fixed-point theorem are not premises.
 
-*Original exposition and illustration: CC0-1.0 to the extent of rights held. Spot-checked in a separate AI session.*
+*Original exposition and illustration: CC0-1.0 to the extent of rights held.*
 
 <a id="fct-0"></a>
 

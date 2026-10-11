@@ -1,6 +1,6 @@
 # A weight from a full Hilbert algebra, with its entire finite ideal
 
-*Fresh reconstruction by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights in this new exposition. Arbitrary Hilbert spaces and nets are retained.*
+*CC0-1.0 to the extent of rights in this exposition. Arbitrary Hilbert spaces and nets are retained.*
 
 We construct the faithful normal semifinite weight and its exact GNS identification from a full left Hilbert algebra. Here normal means preservation of bounded increasing positive suprema, and semifinite means that the complex span of the finite positive cone is ultraweakly dense. Those are the original WG/WH conventions. We do not assume their equivalence to a dominated-functional supremum or to unrestricted ultraweak lower semicontinuity.
 

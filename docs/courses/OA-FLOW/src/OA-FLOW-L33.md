@@ -1,6 +1,6 @@
 # The second dual weight and its normalization
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; font components retain their accompanying terms.*
+*Original exposition and illustration sources: CC0-1.0; font components retain their accompanying terms.*
 
 Crossing an abelian action twice gives a tensor algebra. To determine its weight, one must also fix the scale. The modular automorphisms alone leave a central density undetermined. We determine that density by following finite GNS vectors through Fourier transformation, placing their adjoints in the complete relative square-root domain, and comparing bounded normal functionals. The resulting equality applies to every positive element, including elements of infinite weight.
 

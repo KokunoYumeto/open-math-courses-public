@@ -2,7 +2,7 @@
 
 Inducing a representation from a closed subgroup requires a measure on the coset space. That measure is rarely invariant. The correction is governed by the ratio of the modular functions of the large group and the subgroup. We construct a quotient measure, prove its measure class is unique, and keep the two possible translation conventions separate.
 
-*Programme exposition written in Codex (OpenAI), September 2026; foundation integration and proof restoration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held.*
+*Original programme expression is dedicated under CC0 to the extent of rights held.*
 
 <a id="oa-flow.qm.setting"></a>
 
@@ -347,3 +347,79 @@ first for compact continuous $f$, proving the quotient normalization without a m
 **Solution.** A compact set meets only finitely many discrete components, and both measures there are the finite sum of ordinary Lebesgue measures. The vertical preimage $\mathbb R_{\mathrm{discrete}}\times\{0\}$ has inner measure zero. Every open neighborhood contains an interval of positive length in each component. An uncountable family of positive lengths has infinite sum: for some integer $n$, infinitely many lengths exceed $1/n$, unless the family of positive lengths were countable. Thus every such neighborhood has infinite outer measure. For a countable discrete factor the group is sigma-compact; the bridge and [HR3](OA-FLOW-HR.md#hr-03) show that the representatives agree on every Borel set. In particular the vertical preimage is then null for both. Compact agreement alone did not justify the uncountable conclusion.
 
 The classical source is M. Takesaki, *Theory of Operator Algebras II*, Theorem X.4.1, printed pages290–291 ([edition record](https://doi.org/10.1007/978-3-662-10451-4)). That source states the group-theoretic result by reference. The complete quotient calculation, measure-class argument, density-representative qualification and inner-regular bridge are written here. QF1–3 and the exact H0, HR and L24 proofs cited above provide the earlier foundations. The discrete, affine and non-sigma-compact examples test the normalization and the two different translation conventions.
+
+<a id="oa-flow.qm.measurable"></a>
+
+## Arbitrary positive quotient densities
+
+The positive density in the translation formula need not be continuous. We now prove the full locally integrable version, including measurability on the quotient. Keep the continuous reference density $\rho$ from (Q6), and write $\mu_0=\mu_\rho$.
+
+**Theorem.** Let $\varphi:G\to(0,\infty)$ be finite-valued and locally integrable for completed inner-regular Haar measure. Suppose its chosen representative satisfies
+
+$$ \varphi(sh)=\chi_H(h)^{-1}\varphi(s)\qquad(s\in G,\ h\in H). \tag{QM1} $$
+
+There is a well-defined function $b:Y\to(0,\infty)$ with $\varphi(s)=\rho(s)b(q(s))$. It has a Borel representative $b_0$ outside a Borel $\mu_0$-null set, and
+
+$$ \mu_\varphi=b_0\mu_0\sim\mu_0. \tag{QM2} $$
+
+For each fixed $a\in G$, the pointwise coset function
+
+$$ c_\varphi(a,sH)=\frac{\varphi(as)}{\varphi(s)}
+       =c(a,sH)\frac{b(asH)}{b(sH)} \tag{QM3} $$
+
+is measurable for the completed quotient measure and satisfies
+
+$$ \frac{d(\mu_\varphi\circ T_a)}{d\mu_\varphi}(y)=c_\varphi(a,y),
+\qquad
+\frac{d(T_a)_*\mu_\varphi}{d\mu_\varphi}(y)=c_\varphi(a^{-1},y). \tag{QM4} $$
+
+These are identities of densities almost everywhere for each fixed $a$. The pointwise function in (QM3) also obeys the cocycle identity $c_\varphi(ad,y)=c_\varphi(a,dy)c_\varphi(d,y)$. We do not assert a common exceptional set for all translations of an arbitrary Borel representative.
+
+**Proof: descent of the scalar function.** The ratio $g=\varphi/\rho$ is locally measurable and constant on every coset by (QM1) and (Q7); this defines $b$ pointwise. Its quotient measurability needs a proof: openness of $q$ alone would not justify descending an arbitrary Borel function.
+
+Use the cutoff $k$ and the inner-regular measure
+
+$$ d\lambda(s)=k(s)\rho(s)\,ds. \tag{QM5} $$
+
+This measure is locally finite and inner regular. On every compact neighborhood its continuous density is bounded, and [QF7](OA-FLOW-QF.md#qf-7) proves finite-density regularity there; countable compact covers on the clopen sigma-compact pieces, followed by (Q1a), give inner regularity on all Borel sets. For compact $K\subset Y$, all its mass over $K$ is carried by the compact set $C_K=\operatorname{supp}k\cap q^{-1}(K)$. Thus the pushforward $q_*\lambda$ is locally finite. It is inner regular as well: compact subsets $C$ of $q^{-1}(E)$ have compact images in $E$, and $\lambda(C)\le\lambda(q^{-1}(q(C)))$. Taking compact suprema proves inner regularity of the pushforward. Equation (Q8) and uniqueness of the inner-regular representative now give
+
+$$ \mu_0(E)=\lambda(q^{-1}(E))\qquad(E\subset Y\text{ Borel}). \tag{QM6} $$
+
+On $C_K$, the finite completed measure $\lambda$ is absolutely continuous with respect to completed Haar measure. Apply the compact continuity assertion of [QF6](OA-FLOW-QF.md#qf-6) to $g$. For each $\epsilon>0$ there is compact $F\subset C_K$ on which the original $g$ is continuous and $\lambda(C_K\setminus F)<\epsilon$. The function $b$ is continuous on $q(F)$: the continuous surjection $q|_F:F\to q(F)$ is a closed quotient map, because compact sets have closed images in the Hausdorff target; a continuous function constant on its fibers therefore factors continuously. More explicitly, the inverse image under $b|_{q(F)}$ of any closed scalar set is the compact image of the corresponding closed subset of $F$, hence is closed. Also (QM6) gives
+
+$$ \mu_0(K\setminus q(F))
+ =\lambda(q^{-1}(K\setminus q(F)))
+ \le\lambda(C_K\setminus F)<\epsilon. \tag{QM7} $$
+
+So $b$ is continuous on compact subsets omitting arbitrarily small measure from every compact $K$. The global representative construction of QF6 applies on the clopen sigma-compact pieces of $Y$: the unions of the equally indexed compact continuity sets across those pieces are closed, and their countable union has Borel null complement. It provides a Borel $b_0$ equal to $b$ off that complement. Assign value one on the complement, so $0<b_0<\infty$ everywhere. This argument does not require a Borel section of $q$ or a globally countable compact exhaustion.
+
+**Proof: the measure and its translations.** By (Q15), the inverse image of the Borel $\mu_0$-null exceptional set is inner-Haar-null. Consequently $b_0(q(s))=\varphi(s)/\rho(s)$ for almost every $s$. For $F\in C_c(Y)_+$, the definition of $\mu_\varphi$, followed by (QM6), gives
+
+$$ \int F\,d\mu_\varphi
+ =\int_G F(q(s))k(s)\varphi(s)\,ds
+ =\int_G (Fb_0)(q(s))\,d\lambda(s)
+ =\int_Y F b_0\,d\mu_0. \tag{QM8} $$
+
+The pushforward identity extends from indicators to nonnegative Borel functions by simple functions and sequential monotone convergence. The first integral is finite by local integrability and the proper support of $k$. Taking a compact cutoff $F\ge1_K$ proves local integrability of $b_0$ on $Y$. QF7 on compact portions, and then the same clopen-piece argument, make $b_0\mu_0$ inner regular on all Borel sets. Equality of continuous tests and the uniqueness proved in the setting section give (QM2). Strict positivity proves equality of null ideals.
+
+For a nonnegative completed measurable $F$, (Q16), extended to measurable tests using its measure identity, gives
+
+$$ \int F(y)\,d(\mu_\varphi\circ T_a)(y)
+ =\int F(a^{-1}y)b(y)\,d\mu_0(y)
+ =\int F(y)b(ay)c(a,y)\,d\mu_0(y). \tag{QM9} $$
+
+Here $b=b_0$ almost everywhere. Quasi-invariance of $\mu_0$ also makes their compositions with $T_a$ equal almost everywhere, so all displayed functions are measurable for the completion. Divide by the strictly positive $b(y)$ and use (QM2) to get the first formula in (QM4). Replacing $a$ by $a^{-1}$ gives the second. Finally, cancellation of the three values of $\varphi$ gives the pointwise cocycle identity. This proves the theorem with the original arbitrary locally compact $G$ and closed $H$. $\square$
+
+**A discontinuous affine density.** In the affine example above, use coordinates $(a,t)$ and set $\beta(t)=1$ for $t<0$, $\beta(t)=2$ for $t\ge0$. Then $\varphi(a,t)=a\beta(t)$ is everywhere positive, locally integrable, discontinuous, and satisfies (QM1) pointwise. Its quotient measure is $\beta(t)\,dt$. For $(a_0,t_0)$ acting by $t\mapsto t_0+a_0t$, the pullback-on-sets derivative is
+
+$$ a_0\frac{\beta(t_0+a_0t)}{\beta(t)}, \tag{QM10} $$
+
+whereas the usual pushforward derivative is $a_0^{-1}\beta((t-t_0)/a_0)/\beta(t)$. For the translation $t\mapsto t+1$, these are respectively $2$ on $[-1,0)$ and $1/2$ on $[0,1)$, with value $1$ elsewhere. These endpoint conventions follow from the chosen value $\beta(0)=2$; changing endpoint values leaves the measure identities unchanged.
+
+![A discontinuous quotient density and the two inverse translation derivatives](../assets/quotient-measurable-density/quotient-measurable-density.svg)
+
+*The top graph is the exact density $\beta$. The two lower graphs are the derivatives in (QM4) for $t\mapsto t+1$, with filled and open endpoints as specified above. The diagrams show $-2\le t\le2$; the horizontal pieces continue outside that window. Equations (QM5)–(QM9) prove the general measurable descent and derivative statements behind this example.*
+
+**Problem.** Does changing an arbitrary locally integrable representative on a null set guarantee that the pointwise formula (QM3) remains meaningful on cosets?
+
+**Solution.** No. A change at one point may break (QM1) and make the quotient depend on the chosen representative of a coset. The general descent criterion remains (Q10), with almost-everywhere covariance for each subgroup element. The theorem in this section uses the pointwise-covariant representative expressly assumed in (QM1), and then treats Radon–Nikodym identities as almost-everywhere assertions. These are distinct hypotheses, not an automatic simultaneous choice of representatives.

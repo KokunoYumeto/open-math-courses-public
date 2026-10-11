@@ -4,7 +4,7 @@
 
 A finite matrix measurement should reproduce the state in which the experiment is performed. Exact state preservation, however, need not recover every observable. We will first build a two-level measurement that preserves all state averages and loses part of an off-diagonal entry. Its failure of recovery will tell us what the general estimate must measure.
 
-The complete-positivity calculations are proved below in [P04](#p04), and the trace Hilbert completion is built in [P05](#p05). [Finite matrix state foundations](../components/finite-matrix-state-foundations.md) recovers a density from its functional and distinguishes that density from the lists of pure states used to prepare it.
+The complete-positivity calculations are proved below in [P04](#p04), and the trace Hilbert completion is built in [P05](#p05). The full finite diagonalization and matrix trace-duality proof in [P03](#p03) recovers a density from its functional and distinguishes that unique density from the different lists of vector states that can prepare it.
 
 For the general recording theorem, \((M,\tau)\) is any von Neumann algebra with a faithful normal tracial state. No factor or separability hypothesis is imposed on \(M\). Write \(\tau_m=\operatorname{Tr}/m\); inner products are linear in the second variable. For a state \(\varphi\), the error norm is
 \[
@@ -14,25 +14,25 @@ For the general recording theorem, \((M,\tau)\) is any von Neumann algebra with 
 
 ## Order and Hilbert-space tools
 
-The constructions below use the concrete Hilbert-space and ultraweak-topology proofs in [Regular-group operator foundations, H00–H03](regular-group-operator-foundations.md#h00), and the Banach-algebra and continuous-calculus proofs in Infinite tensor products and their reference states, F01–F08. The following arguments give the particular matrix, positivity and Hilbert-completion consequences needed here. The faithful normal tracial state is a hypothesis throughout.
+The retained scalar foundations, Sections 1–10 prove choice and Hahn–Banach, Banach-algebra spectrum, the C\*-identity and continuous calculus, scalar compactness, order, Hilbert projection and representation, bounded adjoints and inner-product completion. The retained concrete predual construction, CP01–06 proves the square-summable coefficient description of the concrete ultraweak topology for arbitrary Hilbert spaces. Its Hilbert and Hahn–Banach inputs are the same scalar proofs; changing its first-variable inner-product convention to the second-variable convention here replaces \(\langle x\eta,\xi\rangle\) by \(\langle\xi,x\eta\rangle\), with the same linear functional of \(x\). These are the precise inputs for P00–P06 below. The faithful normal tracial state is a hypothesis throughout. No injectivity, semidiscreteness, general Radon–Nikodym theorem or general trace-adjoint theorem is used by the three results in this lesson.
 
 <a id="p00"></a>
 
 ### P00. Hilbert coordinates and finite matrix order
 
-Every Hilbert space, with no separability assumption, admits the coordinate form used in H00 and H03. Choose a maximal orthonormal family by Zorn. Its closed span is the whole space: H01 projects onto that span, and a nonzero orthogonal-complement vector could otherwise be normalized and added. The map from finite coordinate vectors to their finite orthonormal sums is isometric, extends by H00 completeness to the coordinate Hilbert space, and has closed dense image. This identifies the given Hilbert space unitarily with an arbitrary-coordinate \(\ell^2(I)\). The zero space is included. Thus H03's arbitrary-coordinate series-vector topology applies to every concrete representation used below.
+Every Hilbert space, with no separability assumption, admits the coordinate form of scalar Section 8 and CP01–06. Choose a maximal orthonormal family by Zorn. Its closed span is the whole space: the Hilbert projection proof in scalar Section 8 projects onto that span, and a nonzero orthogonal-complement vector could otherwise be normalized and added. The map from finite coordinate vectors to their finite orthonormal sums is isometric, extends by scalar Section 10 completeness to the coordinate Hilbert space, and has closed dense image. This identifies the given Hilbert space unitarily with an arbitrary-coordinate \(\ell^2(I)\). The zero space is included. Thus the arbitrary-coordinate coefficient-series topology of CP01–06 applies to every concrete representation used below.
 
-On \(H^r\), the operators with entries in a unital norm-closed *-algebra \(A\subset B(H)\) form a norm-closed unital *-algebra \(M_r(A)\). Indeed a norm limit has entries obtained by the bounded coordinate inclusions and projections, and every limiting entry remains in \(A\). H00 gives its C*-identity; F03–F08 therefore apply to its positive elements, square roots and order. This does not invoke a tensor-product norm theorem. A positive block operator is positive exactly when its quadratic form on \(H^r\) is nonnegative, by H02. In particular a column sandwich of a positive block is positive, including rectangular columns: its quadratic form is the original one evaluated on that column.
+On \(H^r\), the operators with entries in a unital norm-closed \*-algebra \(A\subset B(H)\) form a norm-closed unital \*-algebra \(M_r(A)\). Indeed a norm limit has entries obtained by the bounded coordinate inclusions and projections, and every limiting entry remains in \(A\). scalar Section 8 gives its C\*-identity; scalar Sections 3, 6 and 7 therefore apply to its positive elements, square roots and order. This does not invoke a tensor-product norm theorem. A positive block operator is positive exactly when its quadratic form on \(H^r\) is nonnegative, by the complete concrete quadratic-form criterion in scalar Section 8. In particular a column sandwich of a positive block is positive, including rectangular columns: its quadratic form is the original one evaluated on that column.
 
 <a id="p01"></a>
 
 ### P01. Positive functionals and tracial products
 
-Let \(\omega\) be a positive linear functional on a unital concrete C*-algebra. Its value on every selfadjoint element is real, since F08 writes that element as a difference of positive elements. Real and imaginary selfadjoint parts consequently give \(\omega(x^*)=\overline{\omega(x)}\). Expanding \(\omega((x+zy)^*(x+zy))\ge0\) proves
+Let \(\omega\) be a positive linear functional on a unital concrete C\*-algebra. Its value on every selfadjoint element is real, since scalar Section 7 writes that element as a difference of positive elements. Real and imaginary selfadjoint parts consequently give \(\omega(x^*)=\overline{\omega(x)}\). Expanding \(\omega((x+zy)^*(x+zy))\ge0\) proves
 \[
 |\omega(x^*y)|^2\le\omega(x^*x)\omega(y^*y).
 \]
-If the second diagonal value is positive, minimize the resulting scalar quadratic in \(z\). If it is zero, an arbitrarily large scalar with the opposite phase to a nonzero mixed term would make the quadratic negative; the mixed term must therefore vanish. F08 gives \(x^*x\le\|x\|^2 1\), whence
+If the second diagonal value is positive, minimize the resulting scalar quadratic in \(z\). If it is zero, an arbitrarily large scalar with the opposite phase to a nonzero mixed term would make the quadratic negative; the mixed term must therefore vanish. scalar Section 7 gives \(x^*x\le\|x\|^2 1\), whence
 \[
 |\omega(x)|^2\le\omega(1)\omega(x^*x)
 \le\omega(1)^2\|x\|^2.
@@ -43,7 +43,7 @@ If \(\tau\) is tracial and \(a,b\ge0\), its trace pairing is nonnegative:
 \[
 \tau(ab)=\tau(a^{1/2}ba^{1/2})\ge0.
 \]
-The square root is supplied by F06–F08. For block matrices, \(t=\operatorname{Tr}_r\otimes\tau\) is positive, because every diagonal compression of a positive block is positive, and tracial, because
+The square root is supplied by scalar Sections 6–7. For block matrices, \(t=\operatorname{Tr}_r\otimes\tau\) is positive, because every diagonal compression of a positive block is positive, and tracial, because
 \[
 t(XY)=\sum_{a,b}\tau(x_{ab}y_{ba})
 =\sum_{a,b}\tau(y_{ba}x_{ab})=t(YX).
@@ -54,9 +54,9 @@ Consequently \(t(XZ)\ge0\) for positive blocks \(X,Z\), by the same square-root 
 
 ### P02. Normal multiplication and matrix-valued maps
 
-Normality here is continuity for the concrete ultraweak topology of H03. Every continuous linear functional in that topology is a series-vector functional: continuity bounds its value near zero by finitely many such tests; it vanishes on their common kernel by scalar multiplication, hence factors through their finite-dimensional joint image. Extend that linear functional to the finite coordinate space to express it as a finite linear combination of the tests. Concatenating their absolutely summable series gives one series of the same form. Thus this assertion imports no general normal-functional decomposition or trace-class theorem.
+Normality here is continuity for the concrete ultraweak topology of CP01–06. Every continuous linear functional in that topology is a series-vector functional: continuity bounds its value near zero by finitely many such tests; it vanishes on their common kernel by scalar multiplication, hence factors through their finite-dimensional joint image. Extend that linear functional to the finite coordinate space to express it as a finite linear combination of the tests. Concatenating their absolutely summable series gives one series of the same form. Thus this assertion imports no general normal-functional decomposition or trace-class theorem.
 
-Write a normal functional on a concrete algebra as the H03 series
+Write a normal functional on a concrete algebra as a CP01–06 coefficient series, in the second-variable convention
 \[
 \eta(x)=\sum_j\langle\xi_j,x\eta_j\rangle,
 \qquad \sum_j\|\xi_j\|\|\eta_j\|<\infty.
@@ -73,9 +73,15 @@ A map into \(M_m\) whose finitely many coordinates are bounded normal functional
 
 ### P03. Matrix densities, diagonalization and the positive dual cone
 
-For a matrix \(A\), if \(\operatorname{Tr}(AY)\) is a real nonnegative number for every positive \(Y\), test \(Y=vv^*\). The quadratic form \(v^*Av\) is then real and nonnegative for every \(v\). It follows that \(A=A^*\): write \(A=B+iC\), with \(B,C\) selfadjoint; \(v^*Cv=0\) for all \(v\), and the tests \(e_i\), \(e_i+e_j\), \(e_i+ie_j\) make every entry of \(C\) zero. The quadratic form criterion in H02 now gives \(A\ge0\). Conversely, P01 proves nonnegativity of the trace pairing of two positive matrices. Thus the matrix positive cone is exactly its positive trace dual cone. Dividing trace by any positive integer does not change this statement.
+For a matrix \(A\), if \(\operatorname{Tr}(AY)\) is a real nonnegative number for every positive \(Y\), test \(Y=vv^*\). The quadratic form \(v^*Av\) is then real and nonnegative for every \(v\). It follows that \(A=A^*\): write \(A=B+iC\), with \(B,C\) selfadjoint; \(v^*Cv=0\) for all \(v\), and the tests \(e_i\), \(e_i+e_j\), \(e_i+ie_j\) make every entry of \(C\) zero. The quadratic form criterion in scalar Section 8 now gives \(A\ge0\). Conversely, P01 proves nonnegativity of the trace pairing of two positive matrices. Thus the matrix positive cone is exactly its positive trace dual cone. Dividing trace by any positive integer does not change this statement.
 
-For completeness, finite selfadjoint matrices diagonalize using the already supplied spectral graph. In positive dimension F03 makes the spectrum nonempty and F04 makes it real. For a spectral value \(\lambda\), the finite matrix \(A-\lambda1\) is not invertible and so has a nonzero kernel, by finite linear algebra. Normalize a kernel vector. Its orthogonal complement is invariant under \(A\), by selfadjointness; induction on dimension gives an orthonormal eigenbasis and a unitary diagonalization. The zero-dimensional induction endpoint is empty. Positivity is equivalent to nonnegative eigenvalues by the quadratic form criterion, and F06's continuous functions act on this diagonalization by their scalar values. In particular a positive matrix with zero kernel has a strictly positive smallest eigenvalue and bounded inverse, inverse square root and fourth roots.
+Here is a finite diagonalization proof that requires no general spectral existence theorem. For a self-adjoint matrix \(A\) in positive dimension, the real quadratic form \(q(v)=\langle v,Av\rangle\) attains a maximum \(\lambda\) on the unit sphere. That sphere is closed in a finite product of compact scalar discs, hence compact by scalar Section 4. Choose a unit maximizer \(v\). If \(w\perp v\), comparison with \((v+tw)/\|v+tw\|\), for every real \(t\), gives
+\[
+ 2t\operatorname{Re}\langle w,Av\rangle
+ \le t^2\bigl(\lambda\|w\|^2-\langle w,Aw\rangle\bigr).
+\tag{P03-max}
+\]
+Divide first for \(t>0\) and then for \(t<0\) and let \(t\to0\). The real part vanishes. Replacing \(w\) by \(iw\) makes the imaginary part vanish too. Since \(\langle v,Av\rangle=\lambda\), the vector \(Av-\lambda v\) is perpendicular to \(v\); testing it as \(w\) proves it has zero squared norm. Thus \(Av=\lambda v\). Self-adjointness makes \(v^\perp\) invariant: \(\langle v,Aw\rangle=\langle Av,w\rangle=0\). Induct on its smaller dimension, starting with the empty zero-dimensional space. This gives an orthonormal eigenbasis, a unitary diagonalization and real eigenvalues. The quadratic-form criterion makes positivity equivalent to nonnegative eigenvalues. Scalar continuous functions act by their values on the diagonal; this agrees with scalar Section 6's calculus, since polynomials agree there and uniformly approximate the continuous functions. In particular a positive matrix with zero kernel has a strictly positive minimum eigenvalue and bounded inverse, inverse square root and fourth roots.
 
 For any linear functional \(\varphi\) on \(M_m\), the unique matrix representing it is
 \[
@@ -94,7 +100,7 @@ The last quantity vanishes only for \(y=0\). A density's diagonalization also gi
 
 ### P04. The needed complete-positivity rules and Schwarz
 
-A linear map is completely positive when each of its entrywise matrix amplifications preserves positive block operators. Positive linear maps preserve adjoints: a selfadjoint input is a difference of positive inputs by F08, and real and imaginary parts give the general assertion.
+A linear map is completely positive when each of its entrywise matrix amplifications preserves positive block operators. Positive linear maps preserve adjoints: a selfadjoint input is a difference of positive inputs by scalar Section 7, and real and imaginary parts give the general assertion.
 
 For a fixed rectangular bounded operator \(V\), the map \(x\mapsto V^*xV\) is completely positive. At size \(r\) its image of a positive block \(X\) is the sandwich by the block-diagonal operator with \(r\) copies of \(V\), positive by P00. Finite sums of such sandwiches are therefore completely positive, and are unital exactly when \(\sum V_i^*V_i\) is the identity on their common domain, the unit of the target algebra. Compositions of completely positive maps are completely positive, since their amplifications compose. Unitary conjugations and compressions to finite-dimensional corners are particular sandwiches. The map \(x\mapsto x\otimes1_p\) is completely positive as well: after reordering the finite coordinate factors, every amplification is a direct sum of \(p\) copies of the original positive block. Compression to a corner takes the corner projection, rather than the full ambient identity, as its unit.
 
@@ -108,7 +114,7 @@ Its image is \(\left[\begin{smallmatrix}\Phi(x^*x)&\Phi(x)^*\\\Phi(x)&1\end{smal
 \Phi(x)^*\Phi(x)\le\Phi(x^*x).
 \tag{P04-Schwarz}
 \]
-The block positivity and sandwich are P00; no dilation theorem is used. Positivity also preserves \(x^*x\le\|x\|^2 1\). Thus F08 and the C*-identity give \(\|\Phi(x)\|\le\|x\|\). Evaluating at the unit gives its norm one for a nonzero target algebra, as in every application here. A zero target gives the zero map with norm zero. This proves every CP, Schwarz and unit-norm fact needed by the lesson.
+The block positivity and sandwich are P00; no dilation theorem is used. Positivity also preserves \(x^*x\le\|x\|^2 1\). Thus scalar Section 7 and the C\*-identity give \(\|\Phi(x)\|\le\|x\|\). Evaluating at the unit gives its norm one for a nonzero target algebra, as in every application here. A zero target gives the zero map with norm zero. This proves every CP, Schwarz and unit-norm fact needed by the lesson.
 
 For the Gram coefficients in Exercise 7, write \(\eta_i(r)\) for the coordinates of its finite vectors and put \(D_r=\operatorname{diag}(\eta_i(r))\). Then
 \[
@@ -124,9 +130,9 @@ If every \(\eta_i\) is a unit vector, \(\sum_rD_r^*D_r=1\). This directly proves
 
 For the hypothesized faithful tracial state \(\tau\), put \(\langle x,y\rangle_\tau=\tau(x^*y)\). P01 makes this a sesquilinear positive form and supplies Cauchy–Schwarz. Faithfulness makes it positive definite. Its associated norm satisfies the triangle inequality by Cauchy–Schwarz.
 
-Complete this normed space by the F01 Cauchy-sequence construction: identify two norm-Cauchy sequences when their difference tends to zero, and define their inner product by \(\lim_n\tau(x_n^*y_n)\). That limit exists by Cauchy–Schwarz and boundedness of the two sequences. The definition is independent of representatives, extends the original inner product and is positive definite on the quotient. Completeness can be seen directly: from a Cauchy sequence of quotient vectors choose a subsequence with successive distances below \(2^{-j}\), approximate its \(j\)-th term by an original algebra element within \(2^{-j}\), and use the resulting Cauchy sequence of algebra elements as the limit. The Cauchy property gives the same limit for the entire original sequence. This is \(L^2(M,\tau)\), and the image of \(M\), the bounded elements, is dense by construction.
+Complete this normed space by the scalar Section 10 Cauchy-sequence construction: identify two norm-Cauchy sequences when their difference tends to zero, and define their inner product by \(\lim_n\tau(x_n^*y_n)\). That limit exists by Cauchy–Schwarz and boundedness of the two sequences. The definition is independent of representatives, extends the original inner product and is positive definite on the quotient. Completeness can be seen directly: from a Cauchy sequence of quotient vectors choose a subsequence with successive distances below \(2^{-j}\), approximate its \(j\)-th term by an original algebra element within \(2^{-j}\), and use the resulting Cauchy sequence of algebra elements as the limit. The Cauchy property gives the same limit for the entire original sequence. This is \(L^2(M,\tau)\), and the image of \(M\), the bounded elements, is dense by construction.
 
-Left multiplication by \(a\in M\) is bounded on this completion, since F08 gives
+Left multiplication by \(a\in M\) is bounded on this completion, since scalar Section 7 gives
 \[
 \|ax\|_2^2=\tau(x^*a^*ax)\le\|a\|^2\tau(x^*x).
 \]
@@ -156,7 +162,7 @@ The finite expansion proves \(\langle Au,v\rangle=\langle u,A^*v\rangle\), uniqu
 \qquad
 \|A^*v\|^2=\langle v,AA^*v\rangle\le\|AA^*\|\|v\|^2
 \]
-therefore give \(\|AA^*\|=\|A\|^2\). The argument also covers the zero operator and the zero-dimensional source. It does not require a spectral theorem for operators on \(K\). H00 gives the same identity for arbitrary bounded Hilbert operators, after P00 identifies their spaces with coordinate spaces, but the finite-source proof alone suffices here.
+therefore give \(\|AA^*\|=\|A\|^2\). The argument also covers the zero operator and the zero-dimensional source. It does not require a spectral theorem for operators on \(K\). scalar Section 8 gives the same identity for arbitrary bounded Hilbert operators, after P00 identifies their spaces with coordinate spaces, but the finite-source proof alone suffices here.
 
 If a bounded operator on \(K\) satisfies a contraction estimate on a dense subspace, norm continuity gives the estimate on all of \(K\). Equivalently, a linear contraction defined on that dense subspace has a unique contraction extension: images of Cauchy approximants are Cauchy, and their limits are independent of the approximants.
 
@@ -193,6 +199,29 @@ LR\begin{pmatrix}a&b\\c&d\end{pmatrix}
 =\begin{pmatrix}a&b/\sqrt2\\c/\sqrt2&d\end{pmatrix}.
 \]
 Diagonal observations are recovered exactly. An off-diagonal observation is reduced by \(1/\sqrt2\). State preservation sees the diagonal probabilities but does not force recovery of the other entries. The next two diagnostics quantify this loss.
+
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="350" viewBox="0 0 900 350" role="img" aria-label="The rational three-slot channel preserves states and dampens the off-diagonal entry">
+<title>One slot and two slots: exact state preservation and partial recovery</title>
+<desc>The displayed R and L of Section 0 send the state with weights one-third and two-thirds to the ordinary trace on three slots and back. Their composite preserves diagonal entries and multiplies each off-diagonal entry by one over the square root of two.</desc>
+<rect width="900" height="350" fill="#f5f8fc"/>
+<defs><marker id="record-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#294b75"/></marker></defs>
+<g font-family="Arial,sans-serif" fill="#18304c" text-anchor="middle">
+<text x="450" y="28" font-size="21">State preservation does not force recovery</text>
+<rect x="20" y="60" width="240" height="135" rx="10" fill="#e3ecf8"/>
+<text x="140" y="86" font-size="21">Input: M₂</text><text x="140" y="116" font-size="17">φ(x) = x₁₁/3 + 2x₂₂/3</text><text x="140" y="146" font-size="17">h = diag(2/3, 4/3)</text><text x="140" y="176" font-size="17">one slot; two slots</text>
+<rect x="330" y="60" width="240" height="135" rx="10" fill="#edf5ee"/>
+<text x="450" y="86" font-size="21">Record: M₃, τ₃</text><text x="450" y="116" font-size="17">basis: ξ₁₁, ξ₂₁, ξ₂₂</text><text x="450" y="146" font-size="17">R(x) = [[a,b,0],</text><text x="450" y="176" font-size="17">[c,d,0], [0,0,d]]</text>
+<rect x="640" y="60" width="240" height="135" rx="10" fill="#e3ecf8"/>
+<text x="760" y="86" font-size="21">Return: M₂, φ</text><text x="760" y="126" font-size="17">LR(x) = [[a,b/√2],</text><text x="760" y="156" font-size="17">[c/√2,d]]</text><text x="760" y="181" font-size="15">diagonal entries unchanged</text>
+<path d="M270 125H320" stroke="#294b75" stroke-width="2" marker-end="url(#record-arrow)"/><text x="295" y="108" font-size="20">R</text>
+<path d="M580 125H630" stroke="#294b75" stroke-width="2" marker-end="url(#record-arrow)"/><text x="605" y="108" font-size="20">L</text>
+<text x="450" y="237" font-size="19">R and L are ucp; τ₃R = φ and φL = τ₃</text>
+<text x="450" y="276" font-size="19">LR(e₁₂) = e₁₂/√2; exact recovery holds on the diagonal algebra</text>
+<text x="450" y="319" font-size="16">Proof locators: Section 0 Kraus matrices; Theorem 3.1; Exercises 5–6</text>
+</g>
+</svg>
+
+*Figure.* For \(x=\begin{pmatrix}a&b\\c&d\end{pmatrix}\), the maps are exactly the two Kraus sums displayed above. The input density is relative to \(\tau_2\), while the record has the ordinary normalized trace \(\tau_3\). The third slot repeats \(d\), and the return map averages its two copies. The shown attenuation \(1/\sqrt2\) concerns the actual off-diagonal entries; it is not an assertion that all state-preserving channels have this coefficient. Theorem 3.1 proves the general overlap coefficient and full commutator bound.
 
 **Exercise 5.** Take \(m=2\), \(h=\operatorname{diag}(2/3,4/3)\). Find \(p_1,p_2,q\) and the coefficient on \(e_{12}\).
 

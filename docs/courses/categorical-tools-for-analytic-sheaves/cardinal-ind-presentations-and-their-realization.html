@@ -1,0 +1,510 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cardinal Ind presentations and their realization</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="cardinal-ind-presentations-and-their-realization">Cardinal Ind presentations and their realization</h1>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition: CC0. Linked complete proof interfaces retain their terms.</em></p>
+<p>A formal colimit is a presheaf, even when its diagram has no colimit in the original category. Its elements remember enough arrows to recognize a cardinal-filtered presentation. We use that recognition to assemble an outer diagram of formal objects, construct realization using only the colimits actually available in the target, and test the resulting comparison with a detecting family.</p>
+<h2 id="1-conventions-and-complete-prerequisites">1. Conventions and complete prerequisites</h2>
+<p>Fix ZF, set-indexed Choice, the explicit universe-enlargement axiom, and a Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Let <span class="math" data-tex="\(\pi\in\mathcal U\)">\(\pi\in\mathcal U\)</span> be an arbitrary infinite cardinal. No regularity assumption is made on this parameter. Categories are locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small and have ambient sets of object and arrow data. A larger universe contains the functor categories when needed; small indices continue to mean <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small indices. The <span class="unlinked">universe transport proofs</span> and <a href="well-orders-cardinal-bounds-and-regular-successors.html#5-cardinal-operations-and-the-infinite-square">cardinal companion</a> supply all set encodings, finite-union bounds, square bijections and set-indexed choices used below. Exercises 3–4 specialize to <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>; its regularity is the finite-union calculation in the cardinal companion.</p>
+<p>We retain the complete <a href="common-arrows-and-bounded-set-comparisons.html#3-receive-every-arrow-of-a-bounded-diagram">whole-arrow filteredness criterion and cofinal transfer</a>, its <a href="common-arrows-and-bounded-set-comparisons.html#5-keep-a-small-full-receiving-subcategory">small full receiving-witness construction</a>, and its <a href="common-arrows-and-bounded-set-comparisons.html#6-exchange-bounded-limits-with-filtered-colimits">bounded Set comparison</a>. The tests involve fewer than <span class="math" data-tex="\(\pi\)">\(\pi\)</span> <strong>total arrows</strong>, including identities and composites. The index of a small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered colimit may itself have at least <span class="math" data-tex="\(\pi\)">\(\pi\)</span> arrows. The complete criterion implies ordinary filteredness and includes the empty diagram.</p>
+<p>We use the cardinal-foundation, bounded-exchange, accessibility and bounded-colimit results in the companion lessons linked below.</p>
+<p>Write <span class="math" data-tex="\(h_X(T)=\operatorname{Hom}_C(T,X)\)">\(h_X(T)=\operatorname{Hom}_C(T,X)\)</span>, with the complete <span class="unlinked">Hom encodings and Yoneda maps</span> understood. For a presheaf <span class="math" data-tex="\(B\)">\(B\)</span>, its element category <span class="math" data-tex="\(E_B\)">\(E_B\)</span> has objects <span class="math" data-tex="\((X,b)\)">\((X,b)\)</span>, with <span class="math" data-tex="\(b\in B(X)\)">\(b\in B(X)\)</span>, and arrows</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+u:(X,b)\longrightarrow(Y,c),
+\qquad u:X\to Y,\quad B(u)c=b.
+\tag{1.1}
+\]">\[
+u:(X,b)\longrightarrow(Y,c),
+\qquad u:X\to Y,\quad B(u)c=b.
+\tag{1.1}
+\]</span>
+<p>Its full identity, composition and size proofs are retained from <span class="unlinked">the element-category construction</span>. Its Homs are subsets of those in <span class="math" data-tex="\(C\)">\(C\)</span>. We retain the complete <a href="ind-objects-through-their-elements.html#1-an-element-carries-its-test-object">ordinary Ind recognition and presentation-to-elements cofinality</a>, together with the <span class="unlinked">full density cocone and universe bridge</span>. These constructions include every element arrow and every original density leg.</p>
+<p>An ordinary ind-object is a small filtered presheaf colimit of representables. We use the full subcategory</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Ind}^{\pi}(C)
+=\{B\in\operatorname{Ind}(C):E_B\text{ is }\pi\text{-filtered}\}.
+\tag{1.2}
+\]">\[
+\operatorname{Ind}^{\pi}(C)
+=\{B\in\operatorname{Ind}(C):E_B\text{ is }\pi\text{-filtered}\}.
+\tag{1.2}
+\]</span>
+<p>Morphisms are all presheaf natural transformations between the selected objects. The complete <a href="colimits-as-connected-components.html#4-compute-presheaf-limits-and-colimits-pointwise">pointwise colimit factors</a> and <span class="unlinked">formal Hom formula</span> supply the actual class maps, both variances and both naturalities. No colimits in <span class="math" data-tex="\(C\)">\(C\)</span> are presumed by (1.2).</p>
+<h2 id="2-a-represented-object-and-a-broader-recognition-theorem">2. A represented object and a broader recognition theorem</h2>
+<p><strong>Represented-object statement.</strong> Let <span class="math" data-tex="\(A\in C\)">\(A\in C\)</span>, regarded as its represented presheaf <span class="math" data-tex="\(h_A\)">\(h_A\)</span>. Then <span class="math" data-tex="\(h_A\)">\(h_A\)</span> belongs to <span class="math" data-tex="\(\operatorname{Ind}^{\pi}(C)\)">\(\operatorname{Ind}^{\pi}(C)\)</span> and has a small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered presentation by objects of <span class="math" data-tex="\(C\)">\(C\)</span>. In particular these two assertions are equivalent in this represented-object scope.</p>
+<p><strong>Proof.</strong> The element category of <span class="math" data-tex="\(h_A\)">\(h_A\)</span> is the slice <span class="math" data-tex="\(C/A\)">\(C/A\)</span>. Its terminal object is <span class="math" data-tex="\((A,1_A)\)">\((A,1_A)\)</span>: from <span class="math" data-tex="\((X,f:X\to A)\)">\((X,f:X\to A)\)</span> the unique element arrow to it is <span class="math" data-tex="\(f\)">\(f\)</span>. The retained universal-element proof identifies this terminal object with the represented presheaf. A terminal object receives every diagram by its unique structural arrows, whose composites agree by uniqueness. Thus this element category is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered for every infinite <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, including the empty test. The one-object identity category is small and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered by the same argument. The constant diagram at <span class="math" data-tex="\(A\)">\(A\)</span> on it has formal colimit <span class="math" data-tex="\(h_A\)">\(h_A\)</span>, with its identity coprojection. This supplies the presentation and ordinary Ind membership, proving both assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We now prove a genuinely broader statement, with a presheaf as input.</p>
+<p><strong>Theorem 2.1 (broader recognition).</strong> For <span class="math" data-tex="\(B\in\operatorname{Ind}(C)\)">\(B\in\operatorname{Ind}(C)\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(B\in\operatorname{Ind}^{\pi}(C)\)">\(B\in\operatorname{Ind}^{\pi}(C)\)</span>.</li>
+<li>There is a small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered <span class="math" data-tex="\(I\)">\(I\)</span>, a functor <span class="math" data-tex="\(\alpha:I\to C\)">\(\alpha:I\to C\)</span>, and a specified isomorphism <span class="math" data-tex="\(B\simeq\operatorname{colim}_{i\in I}h_{\alpha(i)}\)">\(B\simeq\operatorname{colim}_{i\in I}h_{\alpha(i)}\)</span> in presheaves.</li>
+</ol>
+<p><strong>Proof.</strong> For the first implication, the complete ordinary recognition theorem gives cofinal smallness of <span class="math" data-tex="\(E_B\)">\(E_B\)</span>. Apply the retained general-cardinal full receiving-witness construction to its local smallness and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filteredness. It gives a small full <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered <span class="math" data-tex="\(W\subseteq E_B\)">\(W\subseteq E_B\)</span>. Its entire arrow set is the tagged union of the small element Homs over <span class="math" data-tex="\(\operatorname{Ob}(W)^2\)">\(\operatorname{Ob}(W)^2\)</span>. Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> forget each label and send every arrow to its actual <span class="math" data-tex="\(C\)">\(C\)</span>-arrow. The retained density theorem, followed by its complete cofinal cocone factor, gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{(X,b)\in W}h_X\xrightarrow{\ \sim\ }B,
+\qquad [(X,b),f:T\to X]\longmapsto B(f)b.
+\tag{2.1}
+\]">\[
+\operatorname{colim}_{(X,b)\in W}h_X\xrightarrow{\ \sim\ }B,
+\qquad [(X,b),f:T\to X]\longmapsto B(f)b.
+\tag{2.1}
+\]</span>
+<p>This is the specified natural density comparison, with all coprojections, rather than an abstract bijection of values.</p>
+<p>For the converse, <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filteredness implies ordinary filteredness, so the given presentation is an ordinary Ind presentation. Under its isomorphism, let <span class="math" data-tex="\(d_i\in B(\alpha(i))\)">\(d_i\in B(\alpha(i))\)</span> be the structural class of <span class="math" data-tex="\(1_{\alpha(i)}\)">\(1_{\alpha(i)}\)</span>. The complete presentation-to-elements proof gives the functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\widetilde\alpha:I\longrightarrow E_B,
+\qquad i\longmapsto(\alpha(i),d_i),
+\quad s\longmapsto\alpha(s).
+\tag{2.2}
+\]">\[
+\widetilde\alpha:I\longrightarrow E_B,
+\qquad i\longmapsto(\alpha(i),d_i),
+\quad s\longmapsto\alpha(s).
+\tag{2.2}
+\]</span>
+<p>The quotient equation <span class="math" data-tex="\(B(\alpha(s))d_{i&#x27;}=d_i\)">\(B(\alpha(s))d_{i&#x27;}=d_i\)</span> makes every image an element arrow. Identity and composition are those of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Its incoming comma at <span class="math" data-tex="\((T,t)\)">\((T,t)\)</span> is the category of representatives <span class="math" data-tex="\(T\to\alpha(i)\)">\(T\to\alpha(i)\)</span> of <span class="math" data-tex="\(t\)">\(t\)</span>; the retained proof establishes nonemptiness and connectedness by all generating zigzags. Hence the functor is cofinal. General-cardinal cofinal transfer makes <span class="math" data-tex="\(E_B\)">\(E_B\)</span> <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered, including every below-<span class="math" data-tex="\(\pi\)">\(\pi\)</span> parallel family with one common target leg. This proves (1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Neither theorem turns a quoted colimit into an actual <span class="math" data-tex="\(C\)">\(C\)</span>-colimit. The represented-object statement has an object <span class="math" data-tex="\(A\in C\)">\(A\in C\)</span> as its input; Theorem 2.1 explicitly has the broader input <span class="math" data-tex="\(B\in\operatorname{Ind}(C)\)">\(B\in\operatorname{Ind}(C)\)</span>.</p>
+<h2 id="3-an-outer-colimit-with-a-controlled-inner-witness">3. An outer colimit with a controlled inner witness</h2>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be small and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered and let <span class="math" data-tex="\(i\mapsto B_i\)">\(i\mapsto B_i\)</span> be a functor into <span class="math" data-tex="\(\operatorname{Ind}^{\pi}(C)\)">\(\operatorname{Ind}^{\pi}(C)\)</span>. Its pointwise presheaf colimit <span class="math" data-tex="\(B\)">\(B\)</span> belongs to <span class="math" data-tex="\(\operatorname{Ind}^{\pi}(C)\)">\(\operatorname{Ind}^{\pi}(C)\)</span>. Its original presheaf coprojections are a colimit cocone in that full subcategory.</p>
+<p><strong>Proof.</strong> Use the retained pointwise theorem to construct</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+B(X)=\operatorname{colim}_{i\in I}B_i(X),
+\qquad B(u)[i,b]=[i,B_i(u)b].
+\tag{3.1}
+\]">\[
+B(X)=\operatorname{colim}_{i\in I}B_i(X),
+\qquad B(u)[i,b]=[i,B_i(u)b].
+\tag{3.1}
+\]</span>
+<p>The complete theorem supplies all class relations, contravariant arrow laws and the unique natural factor. We prove the general-cardinal membership.</p>
+<p>Let <span class="math" data-tex="\(K\to E_B\)">\(K\to E_B\)</span> be any diagram with <span class="math" data-tex="\(|\operatorname{Mor}(K)|&lt;\pi\)">\(|\operatorname{Mor}(K)|&lt;\pi\)</span>. Write its objects <span class="math" data-tex="\((X_k,\xi_k)\)">\((X_k,\xi_k)\)</span> and its arrows <span class="math" data-tex="\(x_f:X_k\to X_{k&#x27;}\)">\(x_f:X_k\to X_{k&#x27;}\)</span>, so</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+B(x_f)\xi_{k&#x27;}=\xi_k
+\qquad(f:k\to k&#x27;).
+\tag{3.2}
+\]">\[
+B(x_f)\xi_{k&#x27;}=\xi_k
+\qquad(f:k\to k&#x27;).
+\tag{3.2}
+\]</span>
+<p>The underlying objects and arrows form a functor <span class="math" data-tex="\(X:K\to C\)">\(X:K\to C\)</span>. Define the whole two-variable Set diagram</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+D:K^{\mathrm{op}}\times I\longrightarrow\mathsf{Set}_{\mathcal U},
+\qquad D(k,i)=B_i(X_k).
+\tag{3.3}
+\]">\[
+D:K^{\mathrm{op}}\times I\longrightarrow\mathsf{Set}_{\mathcal U},
+\qquad D(k,i)=B_i(X_k).
+\tag{3.3}
+\]</span>
+<p>Its <span class="math" data-tex="\(K^{\mathrm{op}}\)">\(K^{\mathrm{op}}\)</span>-maps are <span class="math" data-tex="\(B_i(x_f)\)">\(B_i(x_f)\)</span>; its <span class="math" data-tex="\(I\)">\(I\)</span>-maps are the components of the outer transformations. Their commutation is precisely the naturality of those transformations. Thus all product arrows and functor laws are supplied by the retained diagram conventions. Since identities bound the object count of <span class="math" data-tex="\(K\)">\(K\)</span>, the whole index is small after the retained transport. All values and map graphs have the same universe-member encodings.</p>
+<p>The tuple <span class="math" data-tex="\((\xi_k)_k\)">\((\xi_k)_k\)</span> lies in <span class="math" data-tex="\(\lim_{K^{\mathrm{op}}}\operatorname{colim}_I D\)">\(\lim_{K^{\mathrm{op}}}\operatorname{colim}_I D\)</span> by (3.2). The complete bounded Set comparison is surjective. Its explicit class formula therefore gives a single <span class="math" data-tex="\(i\)">\(i\)</span> and elements <span class="math" data-tex="\(b_k\in B_i(X_k)\)">\(b_k\in B_i(X_k)\)</span> representing every <span class="math" data-tex="\(\xi_k\)">\(\xi_k\)</span>, with <strong>all</strong> equations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+B_i(x_f)b_{k&#x27;}=b_k
+\qquad(f\in\operatorname{Mor}(K))
+\tag{3.4}
+\]">\[
+B_i(x_f)b_{k&#x27;}=b_k
+\qquad(f\in\operatorname{Mor}(K))
+\tag{3.4}
+\]</span>
+<p>already true at that stage. This is a lift of the entire functor to <span class="math" data-tex="\(E_{B_i}\)">\(E_{B_i}\)</span>, not a collection of unrelated stage representatives. The comparison's construction synchronizes the actual total arrow family and uses no regularity.</p>
+<p>Because <span class="math" data-tex="\(E_{B_i}\)">\(E_{B_i}\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered, that lifted diagram has a cocone to some <span class="math" data-tex="\((Y,b)\)">\((Y,b)\)</span>, with actual arrows <span class="math" data-tex="\(t_k:X_k\to Y\)">\(t_k:X_k\to Y\)</span> satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+B_i(t_k)b=b_k,
+\qquad t_{k&#x27;}x_f=t_k.
+\tag{3.5}
+\]">\[
+B_i(t_k)b=b_k,
+\qquad t_{k&#x27;}x_f=t_k.
+\tag{3.5}
+\]</span>
+<p>The same arrows give a cocone to <span class="math" data-tex="\((Y,[i,b])\)">\((Y,[i,b])\)</span> in <span class="math" data-tex="\(E_B\)">\(E_B\)</span>, since (3.1) preserves the equations. If <span class="math" data-tex="\(K\)">\(K\)</span> is empty, choose an outer stage using nonemptiness of <span class="math" data-tex="\(I\)">\(I\)</span>, and then an object of its nonempty <span class="math" data-tex="\(E_{B_i}\)">\(E_{B_i}\)</span>; this gives the empty cocone directly. We have received every whole-arrow bounded diagram. The retained criterion proves <span class="math" data-tex="\(E_B\)">\(E_B\)</span> <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered.</p>
+<p>Here is a small witness, with its full arrow bound. For each outer <span class="math" data-tex="\(i\)">\(i\)</span>, choose the small full receiving category <span class="math" data-tex="\(W_i\subseteq E_{B_i}\)">\(W_i\subseteq E_{B_i}\)</span> from Theorem 2.1. Set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.6); horizontal scroll when needed" data-tex="\[
+S=\coprod_{i\in\operatorname{Ob}I}\operatorname{Ob}W_i,
+\qquad (i,(Y,b))\longmapsto (Y,[i,b])\in E_B.
+\tag{3.6}
+\]">\[
+S=\coprod_{i\in\operatorname{Ob}I}\operatorname{Ob}W_i,
+\qquad (i,(Y,b))\longmapsto (Y,[i,b])\in E_B.
+\tag{3.6}
+\]</span>
+<p>The tagged set <span class="math" data-tex="\(S\)">\(S\)</span> is small by the complete small-family union and transport proof. This uses smallness of <span class="math" data-tex="\(I\)">\(I\)</span> and of each <span class="math" data-tex="\(W_i\)">\(W_i\)</span>, without requiring either cardinal to be below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Let <span class="math" data-tex="\(R\)">\(R\)</span> be its object image, a small quotient of <span class="math" data-tex="\(S\)">\(S\)</span>, and let <span class="math" data-tex="\(W\subseteq E_B\)">\(W\subseteq E_B\)</span> be full on <span class="math" data-tex="\(R\)">\(R\)</span>. Choose one preimage in <span class="math" data-tex="\(S\)">\(S\)</span> for each image object. Then its actual total arrows inject into</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.7); horizontal scroll when needed" data-tex="\[
+\coprod_{(s,t)\in S^2}
+\operatorname{Hom}_C(Y_s,Y_t).
+\tag{3.7}
+\]">\[
+\coprod_{(s,t)\in S^2}
+\operatorname{Hom}_C(Y_s,Y_t).
+\tag{3.7}
+\]</span>
+<p>Indeed tag an element arrow by the chosen source and target preimages and retain its underlying <span class="math" data-tex="\(C\)">\(C\)</span>-arrow. This is injective, since the tags recover its endpoints and element Homs are subsets of the indicated Homs. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.8); horizontal scroll when needed" data-tex="\[
+|\operatorname{Ob}W|\leq|S|,
+\qquad |\operatorname{Mor}W|
+\leq\sum_{(s,t)\in S^2}|\operatorname{Hom}_C(Y_s,Y_t)|.
+\tag{3.8}
+\]">\[
+|\operatorname{Ob}W|\leq|S|,
+\qquad |\operatorname{Mor}W|
+\leq\sum_{(s,t)\in S^2}|\operatorname{Hom}_C(Y_s,Y_t)|.
+\tag{3.8}
+\]</span>
+<p>The right side is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small by local smallness and the retained tagged-union proof. This is a bound on all arrows, including identities and composites; it is not a claim that their cardinal is below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>For any <span class="math" data-tex="\((X,\xi)\in E_B\)">\((X,\xi)\in E_B\)</span>, choose a representative <span class="math" data-tex="\(\xi=[i,b]\)">\(\xi=[i,b]\)</span>. The object <span class="math" data-tex="\((X,b)\)">\((X,b)\)</span> in <span class="math" data-tex="\(E_{B_i}\)">\(E_{B_i}\)</span> has a receiving arrow to a member of <span class="math" data-tex="\(W_i\)">\(W_i\)</span>. Its underlying arrow becomes an element arrow from <span class="math" data-tex="\((X,\xi)\)">\((X,\xi)\)</span> to the corresponding member of <span class="math" data-tex="\(R\)">\(R\)</span>. Thus <span class="math" data-tex="\(W\)">\(W\)</span> receives every object of <span class="math" data-tex="\(E_B\)">\(E_B\)</span>. The complete general-cardinal receiving construction makes it <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered and cofinal. Density on this small witness gives a small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered presentation of <span class="math" data-tex="\(B\)">\(B\)</span>. In particular <span class="math" data-tex="\(B\)">\(B\)</span> is an ordinary ind-object and belongs to (1.2).</p>
+<p>Finally the pointwise presheaf universal factor remains a unique factor among <span class="math" data-tex="\(\operatorname{Ind}^{\pi}(C)\)">\(\operatorname{Ind}^{\pi}(C)\)</span> objects, because that subcategory is full. This proves the colimit assertion, retaining every coprojection and its induced-map identity and composition laws. Empty values are allowed throughout: a tuple or class is lifted only after it exists. If <span class="math" data-tex="\(C\)">\(C\)</span> is empty, its Ind category is empty, so there is no diagram from a nonempty <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered <span class="math" data-tex="\(I\)">\(I\)</span> into it; the theorem is then vacuous. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-labels-over-a-bounded-colimit">4. Labels over a bounded colimit</h2>
+<p>Assume in this section that <span class="math" data-tex="\(C\)">\(C\)</span> admits colimits of every diagram whose total arrow cardinal is below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Fix <span class="math" data-tex="\(B\in\operatorname{Ind}(C)\)">\(B\in\operatorname{Ind}(C)\)</span>. For <span class="math" data-tex="\(\phi:J\to C\)">\(\phi:J\to C\)</span> of that size, write <span class="math" data-tex="\(L_\phi\)">\(L_\phi\)</span> for its colimit and <span class="math" data-tex="\(c_j:\phi(j)\to L_\phi\)">\(c_j:\phi(j)\to L_\phi\)</span> for its coprojections. The compatible-tuple and cocone proofs define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\rho_{B,\phi}:B(L_\phi)\longrightarrow
+           \lim_{j\in J^{\mathrm{op}}}B(\phi(j)),
+\qquad b\longmapsto(B(c_j)b)_j.
+\tag{4.1}
+\]">\[
+\rho_{B,\phi}:B(L_\phi)\longrightarrow
+\lim_{j\in J^{\mathrm{op}}}B(\phi(j)),
+\qquad b\longmapsto(B(c_j)b)_j.
+\tag{4.1}
+\]</span>
+<p>For <span class="math" data-tex="\(f:j\to j&#x27;\)">\(f:j\to j&#x27;\)</span>, its compatibility is
+<span class="math" data-tex="\(B(\phi(f))B(c_{j&#x27;})b=B(c_{j&#x27;}\phi(f))b=B(c_j)b\)">\(B(\phi(f))B(c_{j&#x27;})b=B(c_{j&#x27;}\phi(f))b=B(c_j)b\)</span>.
+For <span class="math" data-tex="\(\theta:B\to B&#x27;\)">\(\theta:B\to B&#x27;\)</span>, naturality at every <span class="math" data-tex="\(c_j\)">\(c_j\)</span> makes (4.1) commute with its components. For a transformation <span class="math" data-tex="\(v:\phi\to\psi\)">\(v:\phi\to\psi\)</span>, the induced colimit arrow <span class="math" data-tex="\(\ell:L_\phi\to L_\psi\)">\(\ell:L_\phi\to L_\psi\)</span> satisfies <span class="math" data-tex="\(\ell c_j=c&#x27;_jv_j\)">\(\ell c_j=c&#x27;_jv_j\)</span>. Contravariance gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+B(c_j)B(\ell)=B(v_j)B(c&#x27;_j).
+\tag{4.2}
+\]">\[
+B(c_j)B(\ell)=B(v_j)B(c&#x27;_j).
+\tag{4.2}
+\]</span>
+<p>This is naturality in the diagram, with its precise reversed direction. Colimit choices are related by the retained unique compatible isomorphism.</p>
+<p><strong>Theorem 4.1.</strong> The following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(B\in\operatorname{Ind}^{\pi}(C)\)">\(B\in\operatorname{Ind}^{\pi}(C)\)</span>.</li>
+<li>Every comparison (4.1) is surjective.</li>
+<li>Every comparison (4.1) is bijective.</li>
+</ol>
+<p><strong>Proof that (2) implies (1).</strong> Take a whole-arrow bounded diagram <span class="math" data-tex="\(J\to E_B\)">\(J\to E_B\)</span>. Forget its labels to obtain <span class="math" data-tex="\(\phi:J\to C\)">\(\phi:J\to C\)</span>. Its labels <span class="math" data-tex="\(b_j\in B(\phi(j))\)">\(b_j\in B(\phi(j))\)</span> are a compatible tuple, because each actual element arrow satisfies (1.1). Surjectivity supplies <span class="math" data-tex="\(b\in B(L_\phi)\)">\(b\in B(L_\phi)\)</span> with <span class="math" data-tex="\(B(c_j)b=b_j\)">\(B(c_j)b=b_j\)</span>. Therefore every coprojection is an element arrow</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+c_j:(\phi(j),b_j)\longrightarrow(L_\phi,b).
+\tag{4.3}
+\]">\[
+c_j:(\phi(j),b_j)\longrightarrow(L_\phi,b).
+\tag{4.3}
+\]</span>
+<p>Their whole cocone equations are the original <span class="math" data-tex="\(C\)">\(C\)</span>-colimit equations. This proves the bounded cocone criterion in <span class="math" data-tex="\(E_B\)">\(E_B\)</span>. For empty <span class="math" data-tex="\(J\)">\(J\)</span>, the colimit is the initial object <span class="math" data-tex="\(0\)">\(0\)</span>, and the target tuple set is the singleton of empty tuples. Surjectivity forces <span class="math" data-tex="\(B(0)\ne\varnothing\)">\(B(0)\ne\varnothing\)</span> and supplies a receiving object for this empty test. Thus <span class="math" data-tex="\(E_B\)">\(E_B\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered and (1) follows. The lifted element <span class="math" data-tex="\(b\)">\(b\)</span> is a label; no coprojection is asserted invertible.</p>
+<p><strong>Proof that (1) implies (3).</strong> Take a small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered presentation <span class="math" data-tex="\(B\simeq\operatorname{colim}_{i\in I}h_{\alpha(i)}\)">\(B\simeq\operatorname{colim}_{i\in I}h_{\alpha(i)}\)</span> from Theorem 2.1. The retained Hom-out-of-a-colimit factor and the complete bounded Set comparison give the following chain, in the direction of the canonical map:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+B(L_\phi)
+&amp;\simeq\operatorname{colim}_{i\in I}
+           \operatorname{Hom}_C(L_\phi,\alpha(i))\\
+&amp;\simeq\operatorname{colim}_{i\in I}
+       \lim_{j\in J^{\mathrm{op}}}
+           \operatorname{Hom}_C(\phi(j),\alpha(i))\\
+&amp;\xrightarrow{\ \Lambda\ }
+       \lim_{j\in J^{\mathrm{op}}}
+       \operatorname{colim}_{i\in I}
+           \operatorname{Hom}_C(\phi(j),\alpha(i))\\
+&amp;\simeq\lim_{j\in J^{\mathrm{op}}}B(\phi(j)).
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+B(L_\phi)
+&amp;\simeq\operatorname{colim}_{i\in I}
+\operatorname{Hom}_C(L_\phi,\alpha(i))\\
+&amp;\simeq\operatorname{colim}_{i\in I}
+\lim_{j\in J^{\mathrm{op}}}
+\operatorname{Hom}_C(\phi(j),\alpha(i))\\
+&amp;\xrightarrow{\ \Lambda\ }
+\lim_{j\in J^{\mathrm{op}}}
+\operatorname{colim}_{i\in I}
+\operatorname{Hom}_C(\phi(j),\alpha(i))\\
+&amp;\simeq\lim_{j\in J^{\mathrm{op}}}B(\phi(j)).
+\end{aligned}
+\tag{4.4}
+\]</span>
+<p>The middle Set diagram is <span class="math" data-tex="\((j,i)\mapsto\operatorname{Hom}_C(\phi(j),\alpha(i))\)">\((j,i)\mapsto\operatorname{Hom}_C(\phi(j),\alpha(i))\)</span>; its first variable is contravariant and its second covariant, with the retained commuting Hom actions. Its whole <span class="math" data-tex="\(J\)">\(J\)</span>-arrow count is below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, so the companion theorem applies to arbitrary infinite <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. On a representative <span class="math" data-tex="\([i,f:L_\phi\to\alpha(i)]\)">\([i,f:L_\phi\to\alpha(i)]\)</span>, the chain sends</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+[i,f]\longmapsto([i,fc_j])_j
+             =(B(c_j)[i,f])_j.
+\tag{4.5}
+\]">\[
+[i,f]\longmapsto([i,fc_j])_j
+=(B(c_j)[i,f])_j.
+\tag{4.5}
+\]</span>
+<p>Thus the chain is precisely <span class="math" data-tex="\(\rho_{B,\phi}\)">\(\rho_{B,\phi}\)</span>, and its inverse is the inverse of that canonical map. The original comparison's naturality just proved makes this inverse natural too, by composing its squares with the two inverse functions. The empty <span class="math" data-tex="\(J\)">\(J\)</span> case is included in the bounded comparison. Statement (3) implies (2) for the same map simply because a bijection is surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a concrete distinction, let <span class="math" data-tex="\(C=\mathsf{Set}_{\mathcal U}\)">\(C=\mathsf{Set}_{\mathcal U}\)</span>, let <span class="math" data-tex="\(J\)">\(J\)</span> be discrete on two objects, and let both values of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> be singletons. Take <span class="math" data-tex="\(B=h_{\{0,1\}}\)">\(B=h_{\{0,1\}}\)</span>. The colimit is a two-element set, and (4.1) takes a function from it to <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span> to its two chosen values. This is a bijection. Each coprojection from a singleton into the two-element colimit nevertheless fails to be an isomorphism. Surjectivity of the label map is about extending compatible functions, not inverting these arrows.</p>
+<h2 id="5-realization-when-only-the-required-colimits-exist">5. Realization when only the required colimits exist</h2>
+<p>Return to the hypothesis that <span class="math" data-tex="\(C\)">\(C\)</span> admits all small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered colimits. Let <span class="math" data-tex="\(D=C_\pi\)">\(D=C_\pi\)</span> be the full subcategory of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible objects, using the complete <a href="small-predecessors-and-maps-into-filtered-colimits.html#4-the-canonical-comparison-for-maps-into-a-colimit">accessibility comparison and its naturalities</a>. Thus <span class="math" data-tex="\(D\)">\(D\)</span> keeps every ambient <span class="math" data-tex="\(C\)">\(C\)</span>-arrow between its objects.</p>
+<p>We first construct realization on <span class="math" data-tex="\(\operatorname{Ind}^{\pi}(D)\)">\(\operatorname{Ind}^{\pi}(D)\)</span>. For each <span class="math" data-tex="\(A\)">\(A\)</span> choose an admissible small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered presentation <span class="math" data-tex="\(A\simeq\operatorname{colim}_{i\in I}h_{\alpha(i)}\)">\(A\simeq\operatorname{colim}_{i\in I}h_{\alpha(i)}\)</span>, with <span class="math" data-tex="\(\alpha:I\to D\)">\(\alpha:I\to D\)</span>, and put <span class="math" data-tex="\(L_A=\operatorname{colim}_I\alpha\)">\(L_A=\operatorname{colim}_I\alpha\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>. Theorem 2.1 supplies such presentations. All choices are indexed by ambient sets, not by a global choice principle: small category encodings range over a set in a larger universe containing <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, and their functors, presentation isomorphisms and colimit cocones also range over ambient sets. No arbitrary ordinary-filtered presentation is realized unless it meets this <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered requirement.</p>
+<p>The complete intrinsic representation construction in <a href="ind-objects-through-their-elements.html#3-extend-a-functor-by-its-values-on-pieces">Ind-objects, Section 3</a> supplies its Hom-factor mechanism. We apply that mechanism only to these admissible presentations. For <span class="math" data-tex="\(Y\in C\)">\(Y\in C\)</span>, write <span class="math" data-tex="\(h_Y|_D\)">\(h_Y|_D\)</span> for the restricted Hom presheaf. The formal factor property, Yoneda and the actual <span class="math" data-tex="\(C\)">\(C\)</span>-colimit property give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_C(L_A,Y)
+&amp;\simeq\lim_{i\in I^{\mathrm{op}}}
+              \operatorname{Hom}_C(\alpha(i),Y)\\
+&amp;\simeq\operatorname{Nat}(A,h_Y|_D).
+\end{aligned}
+\tag{5.1}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_C(L_A,Y)
+&amp;\simeq\lim_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_C(\alpha(i),Y)\\
+&amp;\simeq\operatorname{Nat}(A,h_Y|_D).
+\end{aligned}
+\tag{5.1}
+\]</span>
+<p>Every arrow <span class="math" data-tex="\(g:L_A\to Y\)">\(g:L_A\to Y\)</span> corresponds to the transformation whose restriction to the <span class="math" data-tex="\(i\)">\(i\)</span>-th representable is postcomposition by <span class="math" data-tex="\(gc_i^A\)">\(gc_i^A\)</span>. This is natural in <span class="math" data-tex="\(Y\)">\(Y\)</span>. The right side is intrinsic to <span class="math" data-tex="\(A\)">\(A\)</span>; its bijection to a small compatible-family limit also supplies its <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-smallness, even when the full object set of <span class="math" data-tex="\(D\)">\(D\)</span> is larger.</p>
+<p>Let <span class="math" data-tex="\(j_A:A\to h_{L_A}|_D\)">\(j_A:A\to h_{L_A}|_D\)</span> be the transformation corresponding to <span class="math" data-tex="\(1_{L_A}\)">\(1_{L_A}\)</span> in (5.1). Its actual value is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+(j_A)_X[i,f:X\to\alpha(i)]=c_i^A f
+\qquad(X\in D).
+\tag{5.2}
+\]">\[
+(j_A)_X[i,f:X\to\alpha(i)]=c_i^A f
+\qquad(X\in D).
+\tag{5.2}
+\]</span>
+<p>A natural transformation <span class="math" data-tex="\(\theta:A\to B\)">\(\theta:A\to B\)</span> defines a unique arrow</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\sigma_\pi(\theta):L_A\longrightarrow L_B,
+\qquad h_{\sigma_\pi(\theta)}|_D\,j_A=j_B\theta,
+\tag{5.3}
+\]">\[
+\sigma_\pi(\theta):L_A\longrightarrow L_B,
+\qquad h_{\sigma_\pi(\theta)}|_D\,j_A=j_B\theta,
+\tag{5.3}
+\]</span>
+<p>by the bijection (5.1) at <span class="math" data-tex="\(Y=L_B\)">\(Y=L_B\)</span>. The identity arrow satisfies this equation for <span class="math" data-tex="\(\theta=1_A\)">\(\theta=1_A\)</span>. For <span class="math" data-tex="\(\theta:A\to B\)">\(\theta:A\to B\)</span> and <span class="math" data-tex="\(\zeta:B\to F\)">\(\zeta:B\to F\)</span>, the composite of their arrows satisfies it because</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+h_{\sigma_\pi(\zeta)\sigma_\pi(\theta)}j_A
+=h_{\sigma_\pi(\zeta)}j_B\theta
+=j_F\zeta\theta.
+\tag{5.4}
+\]">\[
+h_{\sigma_\pi(\zeta)\sigma_\pi(\theta)}j_A
+=h_{\sigma_\pi(\zeta)}j_B\theta
+=j_F\zeta\theta.
+\tag{5.4}
+\]</span>
+<p>Uniqueness gives the identity and composition laws. Thus <span class="math" data-tex="\(A\mapsto L_A\)">\(A\mapsto L_A\)</span> is an actual functor <span class="math" data-tex="\(\sigma_\pi:\operatorname{Ind}^{\pi}(D)\to C\)">\(\sigma_\pi:\operatorname{Ind}^{\pi}(D)\to C\)</span>.</p>
+<p>A different admissible presentation gives <span class="math" data-tex="\(L_A&#x27;\)">\(L_A&#x27;\)</span> and <span class="math" data-tex="\(j_A&#x27;\)">\(j_A&#x27;\)</span>, representing the same intrinsic right side of (5.1). The complete compatible representation-uniqueness theorem gives a unique isomorphism <span class="math" data-tex="\(v_A:L_A\to L_A&#x27;\)">\(v_A:L_A\to L_A&#x27;\)</span> with <span class="math" data-tex="\(h_{v_A}j_A=j_A&#x27;\)">\(h_{v_A}j_A=j_A&#x27;\)</span>. For <span class="math" data-tex="\(\theta:A\to B\)">\(\theta:A\to B\)</span>, both <span class="math" data-tex="\(v_B\sigma_\pi(\theta)\)">\(v_B\sigma_\pi(\theta)\)</span> and <span class="math" data-tex="\(\sigma_\pi&#x27;(\theta)v_A\)">\(\sigma_\pi&#x27;(\theta)v_A\)</span> have transformation <span class="math" data-tex="\(j_B&#x27;\theta\)">\(j_B&#x27;\theta\)</span> after <span class="math" data-tex="\(j_A\)">\(j_A\)</span>; (5.1) makes them equal. Hence these comparisons are natural on every arrow. This constructs presentation-independent realization with only the target colimits in the hypothesis.</p>
+<p><strong>Theorem 5.1.</strong> This realization functor is fully faithful.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(A\simeq\operatorname{colim}_Ih_{\alpha(i)}\)">\(A\simeq\operatorname{colim}_Ih_{\alpha(i)}\)</span> and <span class="math" data-tex="\(B\simeq\operatorname{colim}_Jh_{\beta(j)}\)">\(B\simeq\operatorname{colim}_Jh_{\beta(j)}\)</span> be admissible presentations. The exact Hom chain is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Ind}^{\pi}(D)}(A,B)
+&amp;=\operatorname{Nat}(A,B)\\
+&amp;\simeq\lim_{i\in I^{\mathrm{op}}}
+        \operatorname{colim}_{j\in J}
+        \operatorname{Hom}_D(\alpha(i),\beta(j))\\
+&amp;=\lim_{i\in I^{\mathrm{op}}}
+        \operatorname{colim}_{j\in J}
+        \operatorname{Hom}_C(\alpha(i),\beta(j))\\
+&amp;\xrightarrow{\ \sim\ }
+        \lim_{i\in I^{\mathrm{op}}}
+        \operatorname{Hom}_C(\alpha(i),L_B)\\
+&amp;\simeq\operatorname{Hom}_C(L_A,L_B).
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Ind}^{\pi}(D)}(A,B)
+&amp;=\operatorname{Nat}(A,B)\\
+&amp;\simeq\lim_{i\in I^{\mathrm{op}}}
+\operatorname{colim}_{j\in J}
+\operatorname{Hom}_D(\alpha(i),\beta(j))\\
+&amp;=\lim_{i\in I^{\mathrm{op}}}
+\operatorname{colim}_{j\in J}
+\operatorname{Hom}_C(\alpha(i),\beta(j))\\
+&amp;\xrightarrow{\ \sim\ }
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_C(\alpha(i),L_B)\\
+&amp;\simeq\operatorname{Hom}_C(L_A,L_B).
+\end{aligned}
+\tag{5.5}
+\]</span>
+<p>The first bijection is the complete owned formal Hom formula. The equality uses fullness of <span class="math" data-tex="\(D\)">\(D\)</span>. For each <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(\alpha(i)\)">\(\alpha(i)\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible and <span class="math" data-tex="\(J\)">\(J\)</span> is small and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered, so its canonical comparison sends <span class="math" data-tex="\([j,f]\)">\([j,f]\)</span> to <span class="math" data-tex="\(c_j^Bf\)">\(c_j^Bf\)</span> bijectively. Its contravariant naturality in <span class="math" data-tex="\(\alpha(i)\)">\(\alpha(i)\)</span> makes these bijections an isomorphism of the entire <span class="math" data-tex="\(I^{\mathrm{op}}\)">\(I^{\mathrm{op}}\)</span>-diagram. Their componentwise inverse is natural by the retained natural-inverse theorem, so they induce the stated compatible-family bijection. The last bijection is Hom out of the actual colimit <span class="math" data-tex="\(L_A\)">\(L_A\)</span>.</p>
+<p>To identify the actual map, restrict <span class="math" data-tex="\(\theta\)">\(\theta\)</span> to its <span class="math" data-tex="\(i\)">\(i\)</span>-th stage. Yoneda gives an element <span class="math" data-tex="\(b_i\in B(\alpha(i))\)">\(b_i\in B(\alpha(i))\)</span>. If it is represented by <span class="math" data-tex="\([j,f:\alpha(i)\to\beta(j)]\)">\([j,f:\alpha(i)\to\beta(j)]\)</span>, the chain prescribes the leg <span class="math" data-tex="\(c_j^Bf\)">\(c_j^Bf\)</span> on <span class="math" data-tex="\(\alpha(i)\)">\(\alpha(i)\)</span>. Equations (5.2)–(5.3) prescribe exactly the same leg for <span class="math" data-tex="\(\sigma_\pi(\theta)c_i^A\)">\(\sigma_\pi(\theta)c_i^A\)</span>. The unique actual colimit factor therefore is <span class="math" data-tex="\(\sigma_\pi(\theta)\)">\(\sigma_\pi(\theta)\)</span>. This is a bijection on every Hom set, natural in both whole formal arguments through their actual composition laws. It proves full faithfulness.</p>
+<p>No limit and colimit have been exchanged in (5.5): each inner comparison was replaced by a bijection before taking the limit. In particular the bounded interchange theorem is not a premise of this Hom chain. If <span class="math" data-tex="\(C\)">\(C\)</span> is empty, <span class="math" data-tex="\(D\)">\(D\)</span> and its Ind category are empty and the same fully faithful assertion is vacuous. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-detecting-families-and-small-costructured-presentations">6. Detecting families and small costructured presentations</h2>
+<p>Now assume that <span class="math" data-tex="\(C\)">\(C\)</span> admits all small colimits. Let <span class="math" data-tex="\((G_\nu)_{\nu\in N}\)">\((G_\nu)_{\nu\in N}\)</span> be a small <strong>detecting</strong> family, each <span class="math" data-tex="\(G_\nu\)">\(G_\nu\)</span> <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible. Detection means that a <span class="math" data-tex="\(C\)">\(C\)</span>-arrow is invertible whenever each separate function <span class="math" data-tex="\(\operatorname{Hom}_C(G_\nu,-)\)">\(\operatorname{Hom}_C(G_\nu,-)\)</span> sends it to a bijection. We use exactly the complete <a href="generators-and-small-quotient-families.html#1-keep-the-family-of-probes">separate-probe convention</a>. We do not replace the outputs by their product.</p>
+<p>For every <span class="math" data-tex="\(X\in C\)">\(X\in C\)</span>, assume additionally that the costructured category</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+D_X=(D\downarrow X),\qquad D=C_\pi,
+\tag{6.1}
+\]">\[
+D_X=(D\downarrow X),\qquad D=C_\pi,
+\tag{6.1}
+\]</span>
+<p>is cofinally small. Its objects are labels <span class="math" data-tex="\(u:Y\to X\)">\(u:Y\to X\)</span>, with <span class="math" data-tex="\(Y\in D\)">\(Y\in D\)</span>; an arrow <span class="math" data-tex="\((Y,u)\to(Z,v)\)">\((Y,u)\to(Z,v)\)</span> is a <span class="math" data-tex="\(D\)">\(D\)</span>-arrow <span class="math" data-tex="\(r:Y\to Z\)">\(r:Y\to Z\)</span> with <span class="math" data-tex="\(vr=u\)">\(vr=u\)</span>. The complete slice construction retains identities, composites, its forgetful functor and its locally small Hom subsets.</p>
+<p>We retain the complete <a href="bounded-colimits-accessible-sets-and-cardinal-ind-objects.html#2-an-existing-bounded-colimit-is-accessible">bounded accessible-colimit proof</a> and <a href="bounded-colimits-accessible-sets-and-cardinal-ind-objects.html#3-receive-maps-into-a-fixed-target">costructured-filtering proof</a> in the bounded-accessibility lesson. Colimits with fewer than <span class="math" data-tex="\(\pi\)">\(\pi\)</span> total diagram arrows of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible objects remain <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible, and these colimits make <span class="math" data-tex="\(D_X\)">\(D_X\)</span> <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered. Both retained bodies include every arrow and the empty diagram. These are the two results used here. Cofinal smallness of <span class="math" data-tex="\(D_X\)">\(D_X\)</span> is the separate hypothesis above, not a consequence of detection or local smallness.</p>
+<p><strong>Theorem 6.1.</strong> Under these assumptions, <span class="math" data-tex="\(\sigma_\pi:\operatorname{Ind}^{\pi}(C_\pi)\to C\)">\(\sigma_\pi:\operatorname{Ind}^{\pi}(C_\pi)\to C\)</span> is an equivalence.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(X\)">\(X\)</span>, apply the complete general-cardinal receiving construction to <span class="math" data-tex="\(D_X\)">\(D_X\)</span>. It gives a small full <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered <span class="math" data-tex="\(W_X\subseteq D_X\)">\(W_X\subseteq D_X\)</span>. Write its objects as <span class="math" data-tex="\((Y_w,u_w:Y_w\to X)\)">\((Y_w,u_w:Y_w\to X)\)</span> and its arrows as their actual slice arrows. Its total arrow set is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\coprod_{w,v\in\operatorname{Ob}W_X}
+\{r:Y_w\to Y_v\text{ in }C:u_vr=u_w\}.
+\tag{6.2}
+\]">\[
+\coprod_{w,v\in\operatorname{Ob}W_X}
+\{r:Y_w\to Y_v\text{ in }C:u_vr=u_w\}.
+\tag{6.2}
+\]</span>
+<p>Every summand is a subset of a small <span class="math" data-tex="\(C\)">\(C\)</span>-Hom, and the pair index is small. Hence all arrows are small, with the explicit bound by the corresponding tagged union of ambient Homs. Identities and composites are included. The underlying functor <span class="math" data-tex="\(W_X\to D\)">\(W_X\to D\)</span> has a formal colimit <span class="math" data-tex="\(A_X\)">\(A_X\)</span> in <span class="math" data-tex="\(\operatorname{Ind}^{\pi}(D)\)">\(\operatorname{Ind}^{\pi}(D)\)</span>, by Theorem 2.1. Realizing this particular presentation gives <span class="math" data-tex="\(L_X^W=\operatorname{colim}_{w\in W_X}Y_w\)">\(L_X^W=\operatorname{colim}_{w\in W_X}Y_w\)</span>. The slice equations make the <span class="math" data-tex="\(u_w\)">\(u_w\)</span> a cocone and give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\lambda_X^W:L_X^W\longrightarrow X,
+\qquad \lambda_X^Wc_w=u_w.
+\tag{6.3}
+\]">\[
+\lambda_X^W:L_X^W\longrightarrow X,
+\qquad \lambda_X^Wc_w=u_w.
+\tag{6.3}
+\]</span>
+<p>The complete cofinal cocone theorem extends every original structural leg to the full <span class="math" data-tex="\(D_X\)">\(D_X\)</span>; it supplies the same full-index universal property without demanding arbitrary large colimits in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>The functor <span class="math" data-tex="\(\sigma_\pi\)">\(\sigma_\pi\)</span> may have chosen another admissible presentation of <span class="math" data-tex="\(A_X\)">\(A_X\)</span>. Section 5 gives its unique presentation comparison <span class="math" data-tex="\(v_X:\sigma_\pi(A_X)\xrightarrow{\sim}L_X^W\)">\(v_X:\sigma_\pi(A_X)\xrightarrow{\sim}L_X^W\)</span>, with the corresponding formal legs preserved. Define <span class="math" data-tex="\(\lambda_X=\lambda_X^Wv_X:\sigma_\pi(A_X)\to X\)">\(\lambda_X=\lambda_X^Wv_X:\sigma_\pi(A_X)\to X\)</span>. We first prove that <span class="math" data-tex="\(\lambda_X^W\)">\(\lambda_X^W\)</span> is invertible, and then use this transported comparison for the chosen functor.</p>
+<p>Fix a generator <span class="math" data-tex="\(G_\nu\)">\(G_\nu\)</span>. Its accessibility identifies the actual probe of <span class="math" data-tex="\(\lambda_X^W\)">\(\lambda_X^W\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{w\in W_X}\operatorname{Hom}_C(G_\nu,Y_w)
+\longrightarrow\operatorname{Hom}_C(G_\nu,X),
+\qquad [w,f]\longmapsto u_wf.
+\tag{6.4}
+\]">\[
+\operatorname{colim}_{w\in W_X}\operatorname{Hom}_C(G_\nu,Y_w)
+\longrightarrow\operatorname{Hom}_C(G_\nu,X),
+\qquad [w,f]\longmapsto u_wf.
+\tag{6.4}
+\]</span>
+<p>For surjectivity, a given <span class="math" data-tex="\(t:G_\nu\to X\)">\(t:G_\nu\to X\)</span> is an object <span class="math" data-tex="\((G_\nu,t)\)">\((G_\nu,t)\)</span> of <span class="math" data-tex="\(D_X\)">\(D_X\)</span>. The receiving property supplies an actual slice arrow <span class="math" data-tex="\(a:(G_\nu,t)\to(Y_w,u_w)\)">\(a:(G_\nu,t)\to(Y_w,u_w)\)</span>, so <span class="math" data-tex="\(u_wa=t\)">\(u_wa=t\)</span>. Thus <span class="math" data-tex="\([w,a]\)">\([w,a]\)</span> maps to <span class="math" data-tex="\(t\)">\(t\)</span>. It is unnecessary for the original labelled generator object itself to belong to <span class="math" data-tex="\(W_X\)">\(W_X\)</span>.</p>
+<p>For injectivity, take representatives <span class="math" data-tex="\([w,f]\)">\([w,f]\)</span>, <span class="math" data-tex="\([v,g]\)">\([v,g]\)</span> with equal images in (6.4). First receive their stages at one <span class="math" data-tex="\(z\in W_X\)">\(z\in W_X\)</span>, with slice arrows <span class="math" data-tex="\(a:w\to z\)">\(a:w\to z\)</span>, <span class="math" data-tex="\(b:v\to z\)">\(b:v\to z\)</span>. Put <span class="math" data-tex="\(f&#x27;=af\)">\(f&#x27;=af\)</span>, <span class="math" data-tex="\(g&#x27;=bg\)">\(g&#x27;=bg\)</span>. Their composites with <span class="math" data-tex="\(u_z\)">\(u_z\)</span> agree. Form the <strong>categorical coequalizer of the pair</strong></p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+f&#x27;,g&#x27;:G_\nu\to Y_z,\qquad q:Y_z\to Q,\\
+qf&#x27;=qg&#x27;.
+\end{gathered}
+\tag{6.5}
+\]">\[
+\begin{gathered}
+f&#x27;,g&#x27;:G_\nu\to Y_z,\qquad q:Y_z\to Q,\\
+qf&#x27;=qg&#x27;.
+\end{gathered}
+\tag{6.5}
+\]</span>
+<p>The walking parallel-pair category has exactly four total arrows: its two identities and its two parallel arrows. Thus its cardinal is below every infinite <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The retained accessibility-closure theorem puts <span class="math" data-tex="\(Q\)">\(Q\)</span> in <span class="math" data-tex="\(D\)">\(D\)</span>, since both input objects are in <span class="math" data-tex="\(D\)">\(D\)</span>. The full coequalizer factor gives <span class="math" data-tex="\(\bar u:Q\to X\)">\(\bar u:Q\to X\)</span> with <span class="math" data-tex="\(\bar u q=u_z\)">\(\bar u q=u_z\)</span>, so <span class="math" data-tex="\(q\)">\(q\)</span> is an arrow in <span class="math" data-tex="\(D_X\)">\(D_X\)</span>. This uses no subtraction or additive structure.</p>
+<p>Move <span class="math" data-tex="\((Q,\bar u)\)">\((Q,\bar u)\)</span> to a member <span class="math" data-tex="\((Y_t,u_t)\)">\((Y_t,u_t)\)</span> of <span class="math" data-tex="\(W_X\)">\(W_X\)</span> by a receiving slice arrow <span class="math" data-tex="\(r:Q\to Y_t\)">\(r:Q\to Y_t\)</span>. The composite <span class="math" data-tex="\(rq:Y_z\to Y_t\)">\(rq:Y_z\to Y_t\)</span> satisfies <span class="math" data-tex="\(u_t rq=u_z\)">\(u_t rq=u_z\)</span>. <strong>Fullness</strong> makes it an actual arrow of <span class="math" data-tex="\(W_X\)">\(W_X\)</span> from the old stage <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(t\)">\(t\)</span>, even when <span class="math" data-tex="\(Q\)">\(Q\)</span> is not an object of <span class="math" data-tex="\(W_X\)">\(W_X\)</span>. Since <span class="math" data-tex="\(rqf&#x27;=rqg&#x27;\)">\(rqf&#x27;=rqg&#x27;\)</span>, the two representatives agree after this transition and hence have the same class. This proves injectivity of (6.4).</p>
+<p>Every separate probe of <span class="math" data-tex="\(\lambda_X^W\)">\(\lambda_X^W\)</span> is therefore bijective. Detection makes it an isomorphism, so <span class="math" data-tex="\(\lambda_X=\lambda_X^Wv_X\)">\(\lambda_X=\lambda_X^Wv_X\)</span> is also an isomorphism. No inference from being monic and epic, no finite limits and no regularity were used. Full faithfulness is Theorem 5.1, and these isomorphisms for the chosen functor establish essential surjectivity.</p>
+<p>For the actual equivalence, retain the complete <span class="unlinked">chosen quasi-inverse construction and all functor checks</span>. Here its chosen objects are <span class="math" data-tex="\(A_X\)">\(A_X\)</span> and its comparison is <span class="math" data-tex="\(\lambda_X\)">\(\lambda_X\)</span>. It defines the unique <span class="math" data-tex="\(\tau(f):A_X\to A_Y\)">\(\tau(f):A_X\to A_Y\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.6); horizontal scroll when needed" data-tex="\[
+\sigma_\pi(\tau(f))=\lambda_Y^{-1}f\lambda_X.
+\tag{6.6}
+\]">\[
+\sigma_\pi(\tau(f))=\lambda_Y^{-1}f\lambda_X.
+\tag{6.6}
+\]</span>
+<p>The retained construction checks identities, composition, naturality of <span class="math" data-tex="\(\lambda:\sigma_\pi\tau\to1_C\)">\(\lambda:\sigma_\pi\tau\to1_C\)</span>, and the lifted second natural isomorphism <span class="math" data-tex="\(\tau\sigma_\pi\to1\)">\(\tau\sigma_\pi\to1\)</span>. All choices are indexed by ambient sets as above. If the detecting family is empty, detection already says every <span class="math" data-tex="\(C\)">\(C\)</span>-arrow is invertible, so the conclusions about <span class="math" data-tex="\(\lambda_X^W\)">\(\lambda_X^W\)</span> and <span class="math" data-tex="\(\lambda_X\)">\(\lambda_X\)</span> hold vacuously; the nonempty witness still comes from <span class="math" data-tex="\(D_X\)">\(D_X\)</span>'s filteredness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a useful concrete presentation attached to this proof. Apply the complete <a href="universal-forks-and-diagram-constructions.html#8-one-product-and-one-equalizer">small-diagram coproduct/coequalizer construction</a> to <span class="math" data-tex="\(W_X\to C\)">\(W_X\to C\)</span>. Its two maps are specified on <strong>every</strong> arrow summand:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.7); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+P_1=\coprod_{s:w\to v\ \text{in }W_X}Y_w,
+\qquad P_0=\coprod_{w\in W_X}Y_w,\\
+a\kappa_s=\iota_w,
+\qquad b\kappa_s=\iota_v s.
+\end{gathered}
+\tag{6.7}
+\]">\[
+\begin{gathered}
+P_1=\coprod_{s:w\to v\ \text{in }W_X}Y_w,
+\qquad P_0=\coprod_{w\in W_X}Y_w,\\
+a\kappa_s=\iota_w,
+\qquad b\kappa_s=\iota_v s.
+\end{gathered}
+\tag{6.7}
+\]</span>
+<p>The map <span class="math" data-tex="\(P_0\to X\)">\(P_0\to X\)</span> with components <span class="math" data-tex="\(u_w\)">\(u_w\)</span> is their coequalizer, because the construction gives the colimit <span class="math" data-tex="\(L_X^W\)">\(L_X^W\)</span> and (6.3) identifies it with <span class="math" data-tex="\(X\)">\(X\)</span>. Its factor property and naturality are exactly the retained construction's complete ones. Both indexing sets are small in total arrows. They need not have cardinal below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, so this presentation makes no extra claim that the two large coproducts are <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible.</p>
+<h2 id="7-four-original-exercises-with-complete-solutions">7. Four original exercises with complete solutions</h2>
+<h3 id="exercise-1-two-isolated-objects">Exercise 1. Two isolated objects</h3>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> have exactly two objects <span class="math" data-tex="\(c_0,c_1\)">\(c_0,c_1\)</span> and only their identities. For an arbitrary infinite <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, classify <span class="math" data-tex="\(\operatorname{Ind}^{\pi}(C)\)">\(\operatorname{Ind}^{\pi}(C)\)</span>. Explain why the presheaf coproduct <span class="math" data-tex="\(h_{c_0}\coprod h_{c_1}\)">\(h_{c_0}\coprod h_{c_1}\)</span> is excluded, and describe a <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered outer diagram in the resulting category.</p>
+<p><strong>Solution.</strong> A presheaf on <span class="math" data-tex="\(C\)">\(C\)</span> is a pair of small sets <span class="math" data-tex="\((S_0,S_1)\)">\((S_0,S_1)\)</span>. Its element category is discrete on the tagged set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+(\{0\}\times S_0)\coprod(\{1\}\times S_1).
+\tag{7.1}
+\]">\[
+(\{0\}\times S_0)\coprod(\{1\}\times S_1).
+\tag{7.1}
+\]</span>
+<p>An empty discrete category fails the empty test for filteredness. A discrete category with two distinct objects fails the test consisting of their two identities: there is no common receiver. This test has two total arrows, fewer than every infinite <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. A discrete category with one object is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered, because that object receives every diagram. Thus <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filteredness of the element category is equivalent to having exactly one element in (7.1). Such a presheaf is isomorphic to exactly one of <span class="math" data-tex="\(h_{c_0}=(1,\varnothing)\)">\(h_{c_0}=(1,\varnothing)\)</span> and <span class="math" data-tex="\(h_{c_1}=(\varnothing,1)\)">\(h_{c_1}=(\varnothing,1)\)</span>, and its singleton presentation proves ordinary Ind membership. These are precisely the objects of <span class="math" data-tex="\(\operatorname{Ind}^{\pi}(C)\)">\(\operatorname{Ind}^{\pi}(C)\)</span>, up to isomorphism.</p>
+<p>There is no natural transformation from <span class="math" data-tex="\(h_{c_0}\)">\(h_{c_0}\)</span> to <span class="math" data-tex="\(h_{c_1}\)">\(h_{c_1}\)</span>, since its <span class="math" data-tex="\(c_0\)">\(c_0\)</span>-component would be a map <span class="math" data-tex="\(1\to\varnothing\)">\(1\to\varnothing\)</span>. The reverse direction fails at <span class="math" data-tex="\(c_1\)">\(c_1\)</span>. Each representable has only its identity endomorphism. More generally the full subcategory on all isomorphic copies has one arrow between any two copies of the same representable and no arrows across the two classes; the unique arrows within a class are invertible. This records the entire category, not merely its list of isomorphism classes.</p>
+<p>The coproduct has values <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, so its two element objects have no receiver. It is excluded. The presheaf with both values empty is excluded by the empty test.</p>
+<p>If <span class="math" data-tex="\(I\)">\(I\)</span> is small and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered, every two <span class="math" data-tex="\(I\)">\(I\)</span>-objects have a receiver. A functor from <span class="math" data-tex="\(I\)">\(I\)</span> to our full Ind subcategory must therefore take every object into the same one of the two classes. After the unique identifications with the corresponding <span class="math" data-tex="\(h_{c_r}\)">\(h_{c_r}\)</span>, it is a constant diagram whose transition maps are identities. The retained quotient construction gives its pointwise colimit <span class="math" data-tex="\(h_{c_r}\)">\(h_{c_r}\)</span>: nonempty connected <span class="math" data-tex="\(I\)">\(I\)</span> has a singleton colimit of singleton sets, and the other value remains empty. This explicitly illustrates Theorem 3.1. All element arrows in the classification are the identities of (7.1); the tag encoding bounds the total arrow set as well as the objects.</p>
+<h3 id="exercise-2-one-generator-can-conceal-infinitely-many-arrows">Exercise 2. One generator can conceal infinitely many arrows</h3>
+<p>Let <span class="math" data-tex="\(J\)">\(J\)</span> have one object and endomorphism monoid <span class="math" data-tex="\((\mathbb N,+)\)">\((\mathbb N,+)\)</span>, and take <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>. Define <span class="math" data-tex="\(\phi:J\to\mathsf{Set}_{\mathcal U}\)">\(\phi:J\to\mathsf{Set}_{\mathcal U}\)</span> by <span class="math" data-tex="\(\phi(*)=\mathbb N\)">\(\phi(*)=\mathbb N\)</span>, with <span class="math" data-tex="\(m\)">\(m\)</span> acting by <span class="math" data-tex="\(n\mapsto n+m\)">\(n\mapsto n+m\)</span>. Compute its colimit and the comparison
+<span class="math" data-tex="\(h_{\{0,1\}}(\operatorname{colim}\phi)\to\lim_{J^{\mathrm{op}}}h_{\{0,1\}}(\phi(*))\)">\(h_{\{0,1\}}(\operatorname{colim}\phi)\to\lim_{J^{\mathrm{op}}}h_{\{0,1\}}(\phi(*))\)</span>.
+Explain both why its coprojection need not be invertible and why this is not a finite-total-arrow instance of Theorem 4.1.</p>
+<p><strong>Solution.</strong> Identity <span class="math" data-tex="\(0\)">\(0\)</span> acts as the identity, and shift by <span class="math" data-tex="\(m+m&#x27;\)">\(m+m&#x27;\)</span> is the composite of the shifts by <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(m&#x27;\)">\(m&#x27;\)</span>. Thus <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is an actual functor. For a cocone <span class="math" data-tex="\(t:\mathbb N\to T\)">\(t:\mathbb N\to T\)</span>, its equation at shift <span class="math" data-tex="\(1\)">\(1\)</span> is <span class="math" data-tex="\(t(n+1)=t(n)\)">\(t(n+1)=t(n)\)</span>. Induction makes <span class="math" data-tex="\(t\)">\(t\)</span> constant, and every constant map satisfies all shift equations. The one-point set <span class="math" data-tex="\(1\)">\(1\)</span>, with its constant coprojection <span class="math" data-tex="\(c:\mathbb N\to1\)">\(c:\mathbb N\to1\)</span>, therefore has the unique factor property: a compatible <span class="math" data-tex="\(t\)">\(t\)</span> factors through the value <span class="math" data-tex="\(t(0)\)">\(t(0)\)</span>. This also computes the tagged quotient; any <span class="math" data-tex="\(n,n&#x27;\)">\(n,n&#x27;\)</span> map to their common larger value through shifts, so they have one class.</p>
+<p>The target limit is the set of functions <span class="math" data-tex="\(f:\mathbb N\to\{0,1\}\)">\(f:\mathbb N\to\{0,1\}\)</span> satisfying <span class="math" data-tex="\(f(n+m)=f(n)\)">\(f(n+m)=f(n)\)</span> for every <span class="math" data-tex="\(m,n\)">\(m,n\)</span>. Each is constant, by <span class="math" data-tex="\(m=1\)">\(m=1\)</span>; conversely the two constant functions satisfy all equations. The comparison sends <span class="math" data-tex="\(a:1\to\{0,1\}\)">\(a:1\to\{0,1\}\)</span> to <span class="math" data-tex="\(a c\)">\(a c\)</span>. Its inverse sends an invariant <span class="math" data-tex="\(f\)">\(f\)</span> to the function on <span class="math" data-tex="\(1\)">\(1\)</span> with value <span class="math" data-tex="\(f(0)\)">\(f(0)\)</span>. These are inverse functions by the equations just proved. Postcomposition with any <span class="math" data-tex="\(\{0,1\}\to T\)">\(\{0,1\}\to T\)</span> commutes with the formulas.</p>
+<p>The coprojection <span class="math" data-tex="\(c\)">\(c\)</span> is not injective, since <span class="math" data-tex="\(c(0)=c(1)\)">\(c(0)=c(1)\)</span>, and hence is not an isomorphism of sets. Bijection of the two <strong>label sets</strong> supplies no inverse to <span class="math" data-tex="\(c\)">\(c\)</span>. Moreover <span class="math" data-tex="\(\operatorname{Mor}(J)=\mathbb N\)">\(\operatorname{Mor}(J)=\mathbb N\)</span> has cardinal <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span>, including all powers of the one generator and its identity. Its cardinal is not below <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>. This particular Hom comparison is bijective by the actual colimit property of a representable; it is not an application of the bounded-shape hypothesis. Counting one generator would give the wrong bound.</p>
+<h3 id="exercise-3-realize-shift-and-parity-including-their-composite">Exercise 3. Realize shift and parity, including their composite</h3>
+<p>Take <span class="math" data-tex="\(C=\mathsf{Set}_{\mathcal U}\)">\(C=\mathsf{Set}_{\mathcal U}\)</span>, <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>, and <span class="math" data-tex="\(D=C_\pi\)">\(D=C_\pi\)</span>. Use the complete <a href="small-predecessors-and-maps-into-filtered-colimits.html#4-exactly-which-sets-are-accessible-at-a-regular-cardinal">finite-set accessibility calculation</a>, which places all finite sets in <span class="math" data-tex="\(D\)">\(D\)</span>. Let <span class="math" data-tex="\(I\)">\(I\)</span> be the poset of finite subsets of <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, with inclusion arrows, and put <span class="math" data-tex="\(A=\operatorname{colim}_{F\in I}h_F\)">\(A=\operatorname{colim}_{F\in I}h_F\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span>. Construct the formal transformations given by shift <span class="math" data-tex="\(s(n)=n+1\)">\(s(n)=n+1\)</span> and parity <span class="math" data-tex="\(p(n)=n\bmod2\)">\(p(n)=n\bmod2\)</span>, and compute their realizations and their composite.</p>
+<p><strong>Solution.</strong> The complete <a href="small-predecessors-and-maps-into-filtered-colimits.html#3-small-subsets-with-every-inclusion-arrow">finite-subset receiving construction</a> makes <span class="math" data-tex="\(I\)">\(I\)</span> filtered: <span class="math" data-tex="\(F\cup G\)">\(F\cup G\)</span> receives <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, parallel arrows are equal, and <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> receives the empty test. Its objects form a subset of <span class="math" data-tex="\(\mathcal P(\mathbb N)\)">\(\mathcal P(\mathbb N)\)</span>; its total arrows are a subset of <span class="math" data-tex="\(\mathcal P(\mathbb N)^2\)">\(\mathcal P(\mathbb N)^2\)</span>. They are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. The identities on <span class="math" data-tex="\(\{n\}\)">\(\{n\}\)</span> give infinitely many distinct arrows, so this small filtered presentation does not have fewer than <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span> total arrows.</p>
+<p>For every finite <span class="math" data-tex="\(T\)">\(T\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+A(T)\longrightarrow\operatorname{Map}(T,\mathbb N),
+\qquad [F,f:T\to F]\longmapsto \iota_F f,
+\tag{7.2}
+\]">\[
+A(T)\longrightarrow\operatorname{Map}(T,\mathbb N),
+\qquad [F,f:T\to F]\longmapsto \iota_F f,
+\tag{7.2}
+\]</span>
+<p>where <span class="math" data-tex="\(\iota_F:F\hookrightarrow\mathbb N\)">\(\iota_F:F\hookrightarrow\mathbb N\)</span>. Inclusion transition maps respect the formula. Given <span class="math" data-tex="\(g:T\to\mathbb N\)">\(g:T\to\mathbb N\)</span>, its finite image gives a representing stage <span class="math" data-tex="\(F=g(T)\)">\(F=g(T)\)</span>, proving surjectivity. If two representatives induce the same <span class="math" data-tex="\(g\)">\(g\)</span>, move both to <span class="math" data-tex="\(F\cup G\)">\(F\cup G\)</span>; their functions into that set are equal pointwise, proving injectivity by the same-stage quotient test. Precomposition by <span class="math" data-tex="\(v:T&#x27;\to T\)">\(v:T&#x27;\to T\)</span> sends either route to <span class="math" data-tex="\(g v\)">\(g v\)</span>, so this is a natural isomorphism on <span class="math" data-tex="\(D\)">\(D\)</span>. For <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span> every stage Hom is a singleton and its filtered colimit is a singleton; the same construction works with <span class="math" data-tex="\(F=\varnothing\)">\(F=\varnothing\)</span>.</p>
+<p>The inclusion cocone <span class="math" data-tex="\(F\to\mathbb N\)">\(F\to\mathbb N\)</span> is an actual Set colimit. Given compatible maps <span class="math" data-tex="\(t_F:F\to Z\)">\(t_F:F\to Z\)</span>, put <span class="math" data-tex="\(t(n)=t_{\{n\}}(n)\)">\(t(n)=t_{\{n\}}(n)\)</span>. Compatibility through <span class="math" data-tex="\(F\cup\{n\}\)">\(F\cup\{n\}\)</span> gives <span class="math" data-tex="\(t|_F=t_F\)">\(t|_F=t_F\)</span>, and these singleton values force uniqueness. Thus <span class="math" data-tex="\(L_A=\mathbb N\)">\(L_A=\mathbb N\)</span> can be chosen, and <span class="math" data-tex="\(j_A\)">\(j_A\)</span> of (5.2) is exactly (7.2).</p>
+<p>Write <span class="math" data-tex="\(sF=\{n+1:n\in F\}\)">\(sF=\{n+1:n\in F\}\)</span>. The shift transformation is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+\theta_T([F,f])=[sF,s|_F\,f].
+\tag{7.3}
+\]">\[
+\theta_T([F,f])=[sF,s|_F\,f].
+\tag{7.3}
+\]</span>
+<p>For an inclusion <span class="math" data-tex="\(F\subseteq G\)">\(F\subseteq G\)</span>, its image is the inclusion <span class="math" data-tex="\(sF\subseteq sG\)">\(sF\subseteq sG\)</span>, and their composites with the two shift functions agree on every <span class="math" data-tex="\(n\in F\)">\(n\in F\)</span>. Hence (7.3) respects all relations. Precomposition with <span class="math" data-tex="\(v\)">\(v\)</span> gives the same representative <span class="math" data-tex="\([sF,s|_F f v]\)">\([sF,s|_F f v]\)</span>, proving naturality. Under (7.2), its value is <span class="math" data-tex="\(s g\)">\(s g\)</span>.</p>
+<p>The parity transformation <span class="math" data-tex="\(\zeta:A\to h_2\)">\(\zeta:A\to h_2\)</span>, with <span class="math" data-tex="\(2=\{0,1\}\in D\)">\(2=\{0,1\}\in D\)</span>, has components
+<span class="math" data-tex="\(\zeta_T([F,f])=p|_F f:T\to2\)">\(\zeta_T([F,f])=p|_F f:T\to2\)</span>. The inclusion relations and precomposition equations prove that it is well-defined and natural. It becomes <span class="math" data-tex="\(g\mapsto p g\)">\(g\mapsto p g\)</span> under (7.2). Give <span class="math" data-tex="\(h_2\)">\(h_2\)</span> its singleton presentation, realized by <span class="math" data-tex="\(2\)">\(2\)</span>. Then the defining equation (5.3), evaluated on every stage leg, says</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.4); horizontal scroll when needed" data-tex="\[
+\sigma_\pi(\theta)\,\iota_F=s\,\iota_F,
+\qquad
+\sigma_\pi(\zeta)\,\iota_F=p\,\iota_F.
+\tag{7.4}
+\]">\[
+\sigma_\pi(\theta)\,\iota_F=s\,\iota_F,
+\qquad
+\sigma_\pi(\zeta)\,\iota_F=p\,\iota_F.
+\tag{7.4}
+\]</span>
+<p>Uniqueness of the just-proved colimit factor gives <span class="math" data-tex="\(\sigma_\pi(\theta)=s\)">\(\sigma_\pi(\theta)=s\)</span> and <span class="math" data-tex="\(\sigma_\pi(\zeta)=p\)">\(\sigma_\pi(\zeta)=p\)</span>. The composite has stage maps <span class="math" data-tex="\(p s\,\iota_F\)">\(p s\,\iota_F\)</span>, so its realization is <span class="math" data-tex="\(p s\)">\(p s\)</span>, in agreement with the whole-arrow composition law. Its value is <span class="math" data-tex="\(1\)">\(1\)</span> on even <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> on odd <span class="math" data-tex="\(n\)">\(n\)</span>. All these functions are maps of the specified small sets. Shift is injective but not surjective; the formal construction and the functor law never required it to be invertible.</p>
+<h3 id="exercise-4-a-coequalizer-object-outside-the-chosen-witness">Exercise 4. A coequalizer object outside the chosen witness</h3>
+<p>Continue with sets and <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>, and fix <span class="math" data-tex="\(X=\mathbb N\)">\(X=\mathbb N\)</span>. Let <span class="math" data-tex="\(V_n=\{0,\ldots,n-1\}\times\{0,1\}\)">\(V_n=\{0,\ldots,n-1\}\times\{0,1\}\)</span>, labelled by <span class="math" data-tex="\(u_n(k,\varepsilon)=k\)">\(u_n(k,\varepsilon)=k\)</span>. Let <span class="math" data-tex="\(W\)">\(W\)</span> be the <strong>full</strong> subcategory of <span class="math" data-tex="\((D\downarrow\mathbb N)\)">\((D\downarrow\mathbb N)\)</span> on these labelled objects. Prove that it is a small filtered receiving witness. Exhibit a categorical coequalizer object absent from <span class="math" data-tex="\(W\)">\(W\)</span>, and the actual <span class="math" data-tex="\(W\)">\(W\)</span>-arrow that replaces it in the probe-colimit equality test. Compute the colimit of <span class="math" data-tex="\(W\to\mathsf{Set}_{\mathcal U}\)">\(W\to\mathsf{Set}_{\mathcal U}\)</span>.</p>
+<p><strong>Solution.</strong> By the finite-set accessibility proof cited above, the <span class="math" data-tex="\(V_n\)">\(V_n\)</span> are in <span class="math" data-tex="\(D\)">\(D\)</span>. That proof also identifies every <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span>-accessible set as finite. For any object <span class="math" data-tex="\((Y,u)\)">\((Y,u)\)</span> of the slice, the image of <span class="math" data-tex="\(u\)">\(u\)</span> is therefore finite. Choose <span class="math" data-tex="\(n\)">\(n\)</span> larger than its elements, or <span class="math" data-tex="\(n=0\)">\(n=0\)</span> if <span class="math" data-tex="\(Y=\varnothing\)">\(Y=\varnothing\)</span>. The function <span class="math" data-tex="\(a(y)=(u(y),0)\)">\(a(y)=(u(y),0)\)</span> then has <span class="math" data-tex="\(u_n a=u\)">\(u_n a=u\)</span>, giving a receiving arrow into <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>An arrow <span class="math" data-tex="\(V_n\to V_m\)">\(V_n\to V_m\)</span> in <span class="math" data-tex="\(W\)">\(W\)</span> must preserve <span class="math" data-tex="\(k\)">\(k\)</span>. For <span class="math" data-tex="\(n\leq m\)">\(n\leq m\)</span> it can independently choose the second coordinate of the image of each of the <span class="math" data-tex="\(2n\)">\(2n\)</span> elements, so this Hom has <span class="math" data-tex="\(2^{2n}\)">\(2^{2n}\)</span> elements, including one element when <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. For <span class="math" data-tex="\(n&gt;m\)">\(n&gt;m\)</span>, the element <span class="math" data-tex="\((m,0)\in V_n\)">\((m,0)\in V_n\)</span> has no permitted image, so the Hom is empty. Identities preserve both coordinates; compositions preserve <span class="math" data-tex="\(k\)">\(k\)</span>, and fullness includes every such function. The object index is <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, and the total arrow set is its tagged union of these finite Homs over <span class="math" data-tex="\(\mathbb N^2\)">\(\mathbb N^2\)</span>. The cardinal foundation's infinite square and countable-family bound give cardinal at most <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span>; the identities at every <span class="math" data-tex="\(n\)">\(n\)</span> give the reverse inequality. Hence <strong>all</strong> arrows form a small set of cardinal <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span>, not a set of cardinal below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>The object <span class="math" data-tex="\(V_0\)">\(V_0\)</span> receives the empty test. A pair <span class="math" data-tex="\(V_n,V_m\)">\(V_n,V_m\)</span> has receiving arrows to <span class="math" data-tex="\(V_{\max(n,m)}\)">\(V_{\max(n,m)}\)</span>, using the same <span class="math" data-tex="\(k\)">\(k\)</span> and second coordinate <span class="math" data-tex="\(0\)">\(0\)</span>. For any parallel <span class="math" data-tex="\(a,b:V_n\to V_m\)">\(a,b:V_n\to V_m\)</span>, postcompose with <span class="math" data-tex="\(r_m:V_m\to V_{m+1}\)">\(r_m:V_m\to V_{m+1}\)</span>, <span class="math" data-tex="\(r_m(k,\varepsilon)=(k,0)\)">\(r_m(k,\varepsilon)=(k,0)\)</span>. The maps <span class="math" data-tex="\(a,b\)">\(a,b\)</span> preserve <span class="math" data-tex="\(k\)">\(k\)</span>, so <span class="math" data-tex="\(r_m a=r_m b\)">\(r_m a=r_m b\)</span> on every element. The retained ordinary filteredness criterion therefore proves that <span class="math" data-tex="\(W\)">\(W\)</span> is filtered. It is full and receives every slice object, so its inclusion is cofinal by the retained receiving-witness theorem.</p>
+<p>Now take <span class="math" data-tex="\(f,g:1\to V_1\)">\(f,g:1\to V_1\)</span> selecting <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> and <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Let <span class="math" data-tex="\(Q=1\)">\(Q=1\)</span>, let <span class="math" data-tex="\(q:V_1\to Q\)">\(q:V_1\to Q\)</span> be constant, and label <span class="math" data-tex="\(Q\to\mathbb N\)">\(Q\to\mathbb N\)</span> by <span class="math" data-tex="\(0\)">\(0\)</span>. A function out of <span class="math" data-tex="\(V_1\)">\(V_1\)</span> equalizes <span class="math" data-tex="\(f,g\)">\(f,g\)</span> precisely when its two values agree; it then factors uniquely through <span class="math" data-tex="\(q\)">\(q\)</span>. Thus <span class="math" data-tex="\(q\)">\(q\)</span> is the categorical coequalizer. The singleton <span class="math" data-tex="\(Q\)">\(Q\)</span> is not any <span class="math" data-tex="\(V_n\)">\(V_n\)</span>, whose cardinal is <span class="math" data-tex="\(2n\)">\(2n\)</span>. Nevertheless the receiving slice arrow <span class="math" data-tex="\(r:Q\to V_1\)">\(r:Q\to V_1\)</span> selecting <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> satisfies <span class="math" data-tex="\(u_1r=0\)">\(u_1r=0\)</span>. Fullness makes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.5); horizontal scroll when needed" data-tex="\[
+r q:V_1\longrightarrow V_1
+\tag{7.5}
+\]">\[
+r q:V_1\longrightarrow V_1
+\tag{7.5}
+\]</span>
+<p>an actual arrow of <span class="math" data-tex="\(W\)">\(W\)</span>. It satisfies <span class="math" data-tex="\(r q f=r q g\)">\(r q f=r q g\)</span>. Consequently <span class="math" data-tex="\([V_1,f]\)">\([V_1,f]\)</span> and <span class="math" data-tex="\([V_1,g]\)">\([V_1,g]\)</span> are equal in <span class="math" data-tex="\(\operatorname{colim}_W\operatorname{Hom}(1,V_n)\)">\(\operatorname{colim}_W\operatorname{Hom}(1,V_n)\)</span>, although the coequalizer object itself is absent from <span class="math" data-tex="\(W\)">\(W\)</span>. This is the precise missing-stage mechanism used in Section 6.</p>
+<p>Finally define the Set comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.6); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{n\in W}V_n\longrightarrow\mathbb N,
+\qquad [n,(k,\varepsilon)]\longmapsto k.
+\tag{7.6}
+\]">\[
+\operatorname{colim}_{n\in W}V_n\longrightarrow\mathbb N,
+\qquad [n,(k,\varepsilon)]\longmapsto k.
+\tag{7.6}
+\]</span>
+<p>All <span class="math" data-tex="\(W\)">\(W\)</span>-arrows preserve <span class="math" data-tex="\(k\)">\(k\)</span>, so the map descends through every relation. It is surjective: represent <span class="math" data-tex="\(k\)">\(k\)</span> by <span class="math" data-tex="\((k,0)\in V_{k+1}\)">\((k,0)\in V_{k+1}\)</span>. If two representatives have the same <span class="math" data-tex="\(k\)">\(k\)</span>, move both to <span class="math" data-tex="\(V_{\max(n,m)}\)">\(V_{\max(n,m)}\)</span> with second coordinate <span class="math" data-tex="\(0\)">\(0\)</span>; their images agree there, proving equality of classes. Distinct <span class="math" data-tex="\(k\)">\(k\)</span>'s cannot have equal classes, since the descended function would then give distinct values to one class. The map is therefore bijective, with inverse <span class="math" data-tex="\(k\mapsto[k+1,(k,0)]\)">\(k\mapsto[k+1,(k,0)]\)</span>. The quotient factor property makes this bijection the actual colimit comparison <span class="math" data-tex="\(\lambda_X^W\)">\(\lambda_X^W\)</span>, retaining every original leg <span class="math" data-tex="\(u_n\)">\(u_n\)</span>; another chosen realization uses the compatible isomorphism described in Section 6. Detection here uses the singleton probe: <span class="math" data-tex="\(\operatorname{Hom}(1,t)\)">\(\operatorname{Hom}(1,t)\)</span> is bijective exactly when the Set map <span class="math" data-tex="\(t\)">\(t\)</span> is bijective. The proof used a categorical coequalizer and full labelled maps, without an additive or balanced-category hypothesis.</p>
+</main></body></html>

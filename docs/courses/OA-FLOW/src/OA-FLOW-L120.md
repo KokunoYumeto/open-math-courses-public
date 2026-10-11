@@ -2,7 +2,7 @@
 
 The spectrum intersection is governed by one construction: amplify a fixed corner, identify the amplification with the ambient algebra while fixing its first corner exactly, and lift the two agreeing corner actions to a continuous cocycle. We prove the spectral and topological transport before constructing the matrix families. A normal-state covering bound supplies the cardinal comparison when the algebra is too large to have a faithful normal state.
 
-*Independent L120 restoration, GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. Earlier programme arguments and four proof developments by a separate AI session are included. Added original exposition, illustration and code are CC0-1.0 to the extent of rights held; existing components retain their recorded terms. Spot-checked in a separate AI session.*
+*Added original exposition, illustration and code are CC0-1.0 to the extent of rights held; existing components retain their recorded terms.*
 
 <a id="oa-flow.l120.setting"></a>
 

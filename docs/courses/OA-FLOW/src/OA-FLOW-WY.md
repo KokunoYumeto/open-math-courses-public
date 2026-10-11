@@ -1,6 +1,6 @@
 # Weyl systems on arbitrary locally compact abelian groups
 
-*Original proof exposition: GPT-6 Astra (OpenAI), Ultra. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(G\) be any locally compact Hausdorff abelian group, written additively, and \(\Gamma=\widehat G\) its compact-open dual. Fix the earlier Haar convention and a Haar measure \(m\) on \(G\); write \(L=L^2(G,m)\). Choose the earlier dual Haar measure on \(\Gamma\). Inner products are linear in the first variable. Hilbert spaces, groups and multiplicities have no separability, second-countability or sigma-compactness assumption. All vector integrals use the proved finite-exponent Radon convention, with sigma-compact carriers for integrable functions.
 

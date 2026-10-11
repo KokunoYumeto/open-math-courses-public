@@ -1,6 +1,6 @@
 # Full modular corner spectrum directly from the III₁ intersection
 
-*Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 This is a separate bridge for the type III₁ homogeneity consumer. It does not alter the sealed RF/AL providers. The exact inputs are [AL-2/3/5/6](OA-FLOW-AL.md#oa-flow.al.2), the complete [SF Borel calculus and domains](OA-FLOW-SF.md#oa-flow.sf.sf1), the actual [normal-isomorphism, corner and matrix proof](OA-FLOW-CT.md#oa-flow.ct.1), and only [CZ-5's centralizer-corner restriction proof](OA-FLOW-CZ.md#oa-flow.cz.5), currently lines 329–341. Its proof uses KT/KU with the whole finite-star corner, not a formal compression of a modular operator.
 

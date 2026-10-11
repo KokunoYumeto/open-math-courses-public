@@ -1,6 +1,6 @@
 # Polar cutoffs from finite spectral partitions
 
-*Original local proof by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 This proof uses the single-operator spectral calculus in [SF, SB4–SB6 and SF1](OA-FLOW-SF.md#oa-flow.sf.sb4), scalar dominated convergence in [SC5](OA-FLOW-SC.md#sc-05), and the scalar interchange proof at the start of [FF](OA-FLOW-FF.md#oa-flow.ff.1). The standard form, its cone representatives and the finite matrix standard form are the actual constructions [NC4](OA-FLOW-NC.md#oa-flow.nc.4), [CR6–CR8](OA-FLOW-CR.md#oa-flow.cr.6), and [MC2–MC4](OA-FLOW-MC.md#oa-flow.mc.2). A joint spectral theorem for two operators is not an input.
 

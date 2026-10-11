@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inner and outer automorphisms · Modular theory and weights</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/inner-and-outer-automorphisms.md">Editable Markdown</a></nav><article class="lesson"><h1 id="inner-and-outer-automorphisms">Inner and outer automorphisms</h1>
+<p>An automorphism changes the algebra's coordinates. Conjugation by a unitary already inside the algebra is an inner automorphism. We prove that such changes form a normal subgroup, so that automorphisms can be compared modulo inner changes. We then check the group operations in the u-topology, using the written <a href="OA-MOD-CL.html#oa-mod-cl-01">standard-implementation theorem</a> and <a href="OA-MOD-CP.html#oa-mod-cp-07">positive decomposition of normal functionals</a>.</p>
+<h2 id="the-inner-subgroup-and-the-outer-quotient"><span id="OA-MOD-AQ-01"></span><span id="oa-mod-aq-01"></span>The inner subgroup and the outer quotient</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a von Neumann algebra. Write <span class="math" data-tex="\(\operatorname{Aut}(M)\)">\(\operatorname{Aut}(M)\)</span> for its normal unital star-automorphisms, with composition as multiplication, and <span class="math" data-tex="\(\mathcal U(M)\)">\(\mathcal U(M)\)</span> for its unitaries. For <span class="math" data-tex="\(v\in\mathcal U(M)\)">\(v\in\mathcal U(M)\)</span>, define
+<span class="math math-display" data-tex="\[
+ \operatorname{Ad}_v(a)=vav^*,\qquad a\in M.
+ \tag{AQ.1}
+\]">\[
+ \operatorname{Ad}_v(a)=vav^*,\qquad a\in M.
+ \tag{AQ.1}
+\]</span>
+This is a unital multiplicative star map with inverse <span class="math" data-tex="\(\operatorname{Ad}_{v^*}\)">\(\operatorname{Ad}_{v^*}\)</span>. It is normal: conjugation and its inverse preserve order, so they take any least upper bound of a bounded increasing positive net to the least upper bound of the conjugate net. The same order argument proves that the inverse of a normal star-automorphism is normal, and composition preserves normality. Thus the stated automorphisms form a group.</p>
+<p>Direct multiplication gives
+<span class="math math-display" data-tex="\[
+ \operatorname{Ad}_u\operatorname{Ad}_v
+       =\operatorname{Ad}_{uv},\qquad
+ (\operatorname{Ad}_v)^{-1}=\operatorname{Ad}_{v^*}.
+ \tag{AQ.2}
+\]">\[
+ \operatorname{Ad}_u\operatorname{Ad}_v
+       =\operatorname{Ad}_{uv},\qquad
+ (\operatorname{Ad}_v)^{-1}=\operatorname{Ad}_{v^*}.
+ \tag{AQ.2}
+\]</span>
+Consequently their image <span class="math" data-tex="\(\operatorname{Int}(M)\)">\(\operatorname{Int}(M)\)</span> is a subgroup. The kernel of this unitary-to-automorphism map is exactly <span class="math" data-tex="\(\mathcal U(Z(M))\)">\(\mathcal U(Z(M))\)</span>: the identity <span class="math" data-tex="\(vav^*=a\)">\(vav^*=a\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span> is equivalent, after multiplication on the right by <span class="math" data-tex="\(v\)">\(v\)</span>, to <span class="math" data-tex="\(va=av\)">\(va=av\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>. Its kernel is therefore precisely the central unitaries. In particular two unitaries give the same inner automorphism exactly when their quotient is central.</p>
+<p>For <span class="math" data-tex="\(\alpha\in\operatorname{Aut}(M)\)">\(\alpha\in\operatorname{Aut}(M)\)</span>, the element <span class="math" data-tex="\(\alpha(v)\)">\(\alpha(v)\)</span> is unitary, since applying <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to the two unitary identities preserves them. For every <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, multiplicativity and preservation of adjoints give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (\alpha\operatorname{Ad}_v\alpha^{-1})(a)
+   &amp;=\alpha(v)a\alpha(v)^*.
+ \end{aligned}
+ \tag{AQ.3}
+\]">\[
+ \begin{aligned}
+ (\alpha\operatorname{Ad}_v\alpha^{-1})(a)
+   &amp;=\alpha(v)a\alpha(v)^*.
+ \end{aligned}
+ \tag{AQ.3}
+\]</span>
+Hence conjugation by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> maps the inner subgroup into itself. Applying the same argument to <span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span> proves equality, so this subgroup is normal.</p>
+<p>We can now form the outer automorphism group. Declare <span class="math" data-tex="\(\alpha\sim\beta\)">\(\alpha\sim\beta\)</span> when <span class="math" data-tex="\(\alpha=\operatorname{Ad}_u\beta\)">\(\alpha=\operatorname{Ad}_u\beta\)</span> for some unitary <span class="math" data-tex="\(u\)">\(u\)</span>. The identity, inverse and product formulas (AQ.2) prove reflexivity, symmetry and transitivity. Define
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \operatorname{Out}(M)=\operatorname{Aut}(M)/\operatorname{Int}(M),\\
+ [\alpha][\beta]=[\alpha\beta],\qquad
+ [\alpha]^{-1}=[\alpha^{-1}].
+ \end{gathered}
+ \tag{AQ.4}
+\]">\[
+ \begin{gathered}
+ \operatorname{Out}(M)=\operatorname{Aut}(M)/\operatorname{Int}(M),\\
+ [\alpha][\beta]=[\alpha\beta],\qquad
+ [\alpha]^{-1}=[\alpha^{-1}].
+ \end{gathered}
+ \tag{AQ.4}
+\]</span>
+These operations are independent of representatives. Indeed, if the representatives are changed to <span class="math" data-tex="\(\operatorname{Ad}_u\alpha\)">\(\operatorname{Ad}_u\alpha\)</span> and <span class="math" data-tex="\(\operatorname{Ad}_v\beta\)">\(\operatorname{Ad}_v\beta\)</span>, then (AQ.3) gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (\operatorname{Ad}_u\alpha)(\operatorname{Ad}_v\beta)
+    &amp;=\operatorname{Ad}_{u\alpha(v)}\alpha\beta,\\
+ (\operatorname{Ad}_u\alpha)^{-1}
+    &amp;=\operatorname{Ad}_{\alpha^{-1}(u^*)}\alpha^{-1}.
+ \end{aligned}
+ \tag{AQ.5}
+\]">\[
+ \begin{aligned}
+ (\operatorname{Ad}_u\alpha)(\operatorname{Ad}_v\beta)
+    &amp;=\operatorname{Ad}_{u\alpha(v)}\alpha\beta,\\
+ (\operatorname{Ad}_u\alpha)^{-1}
+    &amp;=\operatorname{Ad}_{\alpha^{-1}(u^*)}\alpha^{-1}.
+ \end{aligned}
+ \tag{AQ.5}
+\]</span>
+The changed products and inverses therefore have the same classes. Associativity, the identity class and the inverse identities pass directly from composition in <span class="math" data-tex="\(\operatorname{Aut}(M)\)">\(\operatorname{Aut}(M)\)</span>. This constructs the quotient group without a closure assumption on the inner subgroup. The zero algebra has a singleton automorphism group and gives the same conclusion.</p>
+<h2 id="group-operations-and-positive-tests-in-the-u-topology"><span id="OA-MOD-AQ-02"></span><span id="oa-mod-aq-02"></span>Group operations and positive tests in the u-topology</h2>
+<p>For an arbitrary directed net, the u-topology is specified by norm convergence of <span class="math" data-tex="\(f\circ\alpha_i\)">\(f\circ\alpha_i\)</span> to <span class="math" data-tex="\(f\circ\alpha\)">\(f\circ\alpha\)</span> for every <span class="math" data-tex="\(f\in M_*\)">\(f\in M_*\)</span>. CL01 proves that this is equivalent to strong convergence of the standard implementers <span class="math" data-tex="\(U(\alpha_i)\)">\(U(\alpha_i)\)</span> to <span class="math" data-tex="\(U(\alpha)\)">\(U(\alpha)\)</span>, and that <span class="math" data-tex="\(U\)">\(U\)</span> preserves products and inverses.</p>
+<p>Here are the continuity estimates for the group operations. Suppose <span class="math" data-tex="\(V_i\to V\)">\(V_i\to V\)</span> and <span class="math" data-tex="\(W_i\to W\)">\(W_i\to W\)</span> strongly, with all operators unitary and both limits unitary. For every Hilbert vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \|(V_iW_i-VW)\xi\|
+ &amp;\le\|(W_i-W)\xi\|+\|(V_i-V)W\xi\|,\\
+ \|(V_i^*-V^*)\xi\|
+ &amp;=\|\xi-V_iV^*\xi\|.
+ \end{aligned}
+ \tag{AQ.6}
+\]">\[
+ \begin{aligned}
+ \|(V_iW_i-VW)\xi\|
+ &amp;\le\|(W_i-W)\xi\|+\|(V_i-V)W\xi\|,\\
+ \|(V_i^*-V^*)\xi\|
+ &amp;=\|\xi-V_iV^*\xi\|.
+ \end{aligned}
+ \tag{AQ.6}
+\]</span>
+Both right-hand sides tend to zero. The first estimate proves joint multiplication continuity, and the second proves inverse continuity at every unitary. CL01 transports these conclusions to <span class="math" data-tex="\(\operatorname{Aut}(M)\)">\(\operatorname{Aut}(M)\)</span>, including arbitrary nets. Thus it is a topological group. The unitary limit hypothesis in the second estimate is supplied here by the known limiting automorphism; existence of such a limit for a Cauchy net is the separate <a href="OA-MOD-UC.html#oa-mod-uc-01">completeness theorem</a>.</p>
+<p>We also verify the finite positive-functional neighborhood convention. For <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span>, let
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ d_\omega(\alpha,\beta)=\max\{&amp;\|\omega\circ\alpha-\omega\circ\beta\|,\\
+                            &amp;\|\omega\circ\alpha^{-1}-\omega\circ\beta^{-1}\|\}.
+ \end{aligned}
+ \tag{AQ.7}
+\]">\[
+ \begin{aligned}
+ d_\omega(\alpha,\beta)=\max\{&amp;\|\omega\circ\alpha-\omega\circ\beta\|,\\
+                            &amp;\|\omega\circ\alpha^{-1}-\omega\circ\beta^{-1}\|\}.
+ \end{aligned}
+ \tag{AQ.7}
+\]</span>
+Finite intersections of conditions <span class="math" data-tex="\(d_\omega(\alpha,\beta)&lt;1\)">\(d_\omega(\alpha,\beta)&lt;1\)</span> give the same topology, and the same two-sided uniformity as UC01. First, replacing <span class="math" data-tex="\(\omega\)">\(\omega\)</span> by <span class="math" data-tex="\(\omega/\varepsilon\)">\(\omega/\varepsilon\)</span> changes this condition to <span class="math" data-tex="\(d_\omega&lt;\varepsilon\)">\(d_\omega&lt;\varepsilon\)</span>, for any <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Next CP07 writes any <span class="math" data-tex="\(f\in M_*\)">\(f\in M_*\)</span> as a finite sum <span class="math" data-tex="\(f=\sum_{j=1}^m c_j\omega_j\)">\(f=\sum_{j=1}^m c_j\omega_j\)</span>, with each <span class="math" data-tex="\(\omega_j\)">\(\omega_j\)</span> positive. The triangle inequality in both directions gives
+<span class="math math-display" data-tex="\[
+ d_f(\alpha,\beta)
+       \le \sum_{j=1}^m |c_j|\,d_{\omega_j}(\alpha,\beta).
+ \tag{AQ.8}
+\]">\[
+ d_f(\alpha,\beta)
+       \le \sum_{j=1}^m |c_j|\,d_{\omega_j}(\alpha,\beta).
+ \tag{AQ.8}
+\]</span>
+Ignore zero coefficients. Testing the positive functional <span class="math" data-tex="\(m|c_j|\omega_j/\varepsilon\)">\(m|c_j|\omega_j/\varepsilon\)</span> at tolerance one for every remaining index makes the last sum less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. If the sum is empty, the test is vacuous. Each finite collection of general tests is therefore refined by finitely many positive tests. Conversely positive tests are already general tests. This proves equality of the uniformities. Its topology is the u-topology because CL01 proves that convergence to a fixed automorphism in the forward tests also gives convergence in the inverse tests.</p>
+<h2 id="a-matrix-check-of-normality"><span id="OA-MOD-AQ-03"></span><span id="oa-mod-aq-03"></span>A matrix check of normality</h2>
+<p>In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, take
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ v=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+ w=\frac1{\sqrt2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix},\\
+ \alpha=\operatorname{Ad}_w,\qquad x=E_{12}.
+ \end{gathered}
+ \tag{AQ.9}
+\]">\[
+ \begin{gathered}
+ v=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+ w=\frac1{\sqrt2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix},\\
+ \alpha=\operatorname{Ad}_w,\qquad x=E_{12}.
+ \end{gathered}
+ \tag{AQ.9}
+\]</span>
+Multiplying each matrix by its adjoint gives the identity, so the two matrices are unitary. Multiplication also gives
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \operatorname{Ad}_v(x)=-x,\qquad
+ \alpha(v)=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\\
+ y:=\alpha(x)=\frac12\begin{pmatrix}1&amp;-1\\1&amp;-1\end{pmatrix},\\
+ \operatorname{Ad}_{\alpha(v)}(y)
+       =\frac12\begin{pmatrix}-1&amp;1\\-1&amp;1\end{pmatrix}=-y.
+ \end{gathered}
+ \tag{AQ.10}
+\]">\[
+ \begin{gathered}
+ \operatorname{Ad}_v(x)=-x,\qquad
+ \alpha(v)=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\\
+ y:=\alpha(x)=\frac12\begin{pmatrix}1&amp;-1\\1&amp;-1\end{pmatrix},\\
+ \operatorname{Ad}_{\alpha(v)}(y)
+       =\frac12\begin{pmatrix}-1&amp;1\\-1&amp;1\end{pmatrix}=-y.
+ \end{gathered}
+ \tag{AQ.10}
+\]</span>
+Thus both routes in (AQ.3) send the displayed input to <span class="math" data-tex="\(-y\)">\(-y\)</span>. The conjugating unitary changes from <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(\alpha(v)\)">\(\alpha(v)\)</span>; the resulting automorphism is still inner. This verifies the mechanism of the normal-subgroup proof on exact matrix entries.</p>
+<p><img src="assets/inner-automorphism-conjugation.png" alt="A commuting square: conjugation by v sends E12 to minus E12; applying alpha on both sides gives y and minus y, with the lower arrow conjugation by alpha(v)." /></p>
+<p><em>Figure AQ.1.</em> All four matrices and all four arrows are exact. The square expresses <span class="math" data-tex="\(\alpha\operatorname{Ad}_v=\operatorname{Ad}_{\alpha(v)}\alpha\)">\(\alpha\operatorname{Ad}_v=\operatorname{Ad}_{\alpha(v)}\alpha\)</span>, the identity proved for every von Neumann algebra in AQ01, (AQ.3). The entries use precisely the unitaries and vector-space element of AQ03, (AQ.9–10); the factor one half on the lower matrices is part of each matrix. Reproducible source: <code>assets/render-inner-automorphism-conjugation.py</code>. The prerequisites for the associated topology are the programme proofs CL01 and CP07 linked above.</p>
+</article><footer>Draft. Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

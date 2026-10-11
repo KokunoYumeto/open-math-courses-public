@@ -66,7 +66,14 @@ Conversely, suppose \(U(\alpha_i)\to U(\alpha)\) strongly. The limit is a unitar
 \]
 
 Use (CL.4) and the second estimate in (CL.5), first for positive normal functionals, with the inverse implementers to obtain (CL.1). The decomposition of an arbitrary normal functional into a linear combination of positive normal functionals completes the argument. Products and inverses of unitaries are continuous in this topology: for products use
-\(\|(u_i v_i-uv)\eta\|\le\|(v_i-v)\eta\|+\|(u_i-u)v\eta\|\), and for inverses use (CL.6). This proves the asserted topological group isomorphism.
+\[
+ \begin{aligned}
+ \|(u_i v_i-uv)\eta\|
+ &\le\|(v_i-v)\eta\|\\
+ &\quad+\|(u_i-u)v\eta\|.
+ \end{aligned}
+\]
+For inverses use (CL.6). This proves the asserted topological group isomorphism.
 
 These conclusions include infinite algebras, nonseparable Hilbert spaces and arbitrary nets. They use finite normal functionals as tests and do not represent an infinite weight by a single Hilbert-space vector.
 
@@ -216,9 +223,27 @@ The density follows from the dense range of \(\eta_\varphi\) and boundedness of 
 The faithful corner restriction has a different space. Restricting the domain to \(eMe\) gives vectors \(\eta_\varphi(exe)\); their closure is
 \(eJeJ\,L^2(M)\). To see density, apply the bounded projection \(eR_e\) to the dense set \(\eta_\varphi(\mathfrak n_\varphi)\), and use
 \(eR_e\eta_\varphi(x)=\eta_\varphi(exe)\).
-The standard-form corner theorem supplies its conjugation and positive cone. These are the GNS coordinates for the faithful weight on \(eMe\). The whole-algebra GNS space in (CL.16) may be strictly larger.
+The standard-form corner theorem gives the inherited standard form on this smaller space. We must also identify it with the GNS standard form of the faithful corner weight; the commutant identity alone does not identify the closed Tomita operator or its cone. The whole-algebra GNS space in (CL.16) may be strictly larger.
 
-The map in (CL.15) is independent of the completion. To prove this, let \(\varphi_1,\varphi_2\) be two completions. On the corner \(eMe\) they have the same faithful weight \(\psi|_{eMe}\). The GNS isometry sending \(\eta_{\varphi_1}(z)\) to \(\eta_{\varphi_2}(z)\) for \(z\) in that corner's finite left ideal extends to a unitary on \(eR_eL^2(M)\). It intertwines left multiplication and the closed finite-star involutions, so polar uniqueness and the natural-cone construction make it preserve the corner conjugation and cone. The standard-form and modular-corner results SE-02 and CZ-09 identify these with the inherited corner data. Uniqueness in SE-10 therefore makes this unitary the identity. The two GNS maps agree on the full corner finite left ideal.
+**The closed operator on the corner.** Write \(H=L^2(M)\), \(Q=eR_e\), and \(\theta=\psi|_{eMe}=\varphi|_{eMe}\). For \(a\in\mathfrak n_\varphi\cap\mathfrak n_\varphi^*\), (CL.14) and the left-ideal property, applied also to \(a^*\), show that \(eae\) lies in the same finite-star algebra. Hence
+\[
+ \begin{aligned}
+ Q\eta_\varphi(a)&=\eta_\varphi(eae),\\
+ S_\varphi Q\eta_\varphi(a)&=Q S_\varphi\eta_\varphi(a).
+ \end{aligned}
+\]
+The full finite-star graph core, with both weights equal to \(\varphi\), now gives the domain assertion. For \(v\in D(S_\varphi)\), approximate \((v,S_\varphi v)\) by core graph pairs and apply the bounded projection \(Q\) in both coordinates. Closedness gives \(Qv\in D(S_\varphi)\) and \(S_\varphi Qv=Q S_\varphi v\). If \(v\in QH\), these projected pairs approximate its graph pair inside \(QH\). Their first coordinates are exactly the GNS vectors of the corner finite-star algebra: every corner element already satisfies \(z=eze\), and its two finite norms agree for \(\theta\) and \(\varphi\). Thus the closed corner involution is precisely \(S_\varphi|_{D(S_\varphi)\cap QH}\), including its full domain.
+
+Since \(JQJ=Q\), the positive operator \(J S_\varphi=\Delta_\varphi^{1/2}\) also commutes with \(Q\) on its full domain. This gives a reducing orthogonal decomposition; spectral restriction restricts all its powers to \(QH\). The corner polar factors are therefore \(J|_{QH}\) and \(\Delta_\varphi^{1/2}|_{QH}\), by uniqueness of the positive polar factorization. In particular its modular quarter power is the restriction of \(\Delta_\varphi^{1/4}\) with the restricted spectral domain.
+
+The cone identification also follows on the full weight domain. Let \(C_l^\theta\) be the closure of the corner left squares \(\eta_\varphi(aa^*)\), with \(a\) in the corner finite-star algebra. These are global left squares and lie in \(QH\), so \(C_l^\theta\subset C_l^\varphi\cap QH\). The quarter-power cone formula and the restricted calculus give
+\[
+ P_\theta=\overline{\Delta_\varphi^{1/4}C_l^\theta}
+          \ \subseteq\ P\cap QH.
+\]
+Both sides are self-dual cones in \(QH\), the first by SF-04 and the second by SE-03. Taking duals reverses the inclusion, so they are equal. This proves that the corner GNS conjugation and cone are exactly the inherited ones, without assuming that \(\theta(e)\) is finite.
+
+**Independence of the completion.** Let \(\varphi_1,\varphi_2\) be two completions. Their restrictions to \(eMe\) are the same weight \(\theta\). The GNS isometry sending \(\eta_{\varphi_1}(z)\) to \(\eta_{\varphi_2}(z)\) for every \(z\in\mathfrak n_\theta\) extends to a unitary of \(QH\). It intertwines left multiplication and the finite-star involutions; taking graph closures, positive polar factors and the quarter-power cones shows that it preserves the same inherited conjugation and cone just identified. The uniqueness of standard-form comparison makes this unitary the identity. The two GNS maps therefore agree on the full corner finite left ideal.
 
 We also need density after allowing left multiplication by the whole algebra. Put
 

@@ -64,61 +64,288 @@ We must use both families: equality on a merely dense set of test vectors need n
 
 ## The forward modular graph transfer
 
-Now let \(T\in\mathcal W_0(M,N)\) and \(\varphi,\psi\in\mathcal W_0(N)\). Set \(\Phi=\widehat\varphi\circ T\) and \(\Psi=\widehat\psi\circ T\), both faithful normal semifinite by composition. With the course's balanced-matrix cocycle convention, form the mixed actions
+Let \(T\in\mathcal W_0(M,N)\) and \(\varphi,\psi\in\mathcal W_0(N)\).
+Put \(\Phi=\widehat\varphi\circ T\) and
+\(\Psi=\widehat\psi\circ T\). Both are faithful normal semifinite
+by OVW04.
+The mixed actions are
 
 \[
 \begin{aligned}
-u_t^N&=[D\psi:D\varphi]_t\,\sigma_t^\varphi,\\
-u_t^M&=[D\Psi:D\Phi]_t\,\sigma_t^\Phi.
+u_t^N(n)&=[D\psi:D\varphi]_t\,\sigma_t^\varphi(n),\\
+u_t^M(x)&=[D\Psi:D\Phi]_t\,\sigma_t^\Phi(x).
 \end{aligned}
 \tag{OR.5}
 \]
 
-The needed scalar mixed-graph contract says that if \((a,b)\) belongs to the closed analytic graph \(G(u_{-i}^N)\), then there are finite constants \(K,L\) such that, for every \(Q\in\widehat N_+\),
+These are groups of normal complex-linear isometries, with pointwise
+sigma-weakly continuous real orbits, by the cocycle law and the
+balanced-weight construction.
+They need not preserve products. We prove that their real actions agree
+on \(N\), without first assuming that \(u^M\) preserves \(N\).
+
+**The scalar graph and its two bounds.** Take
+\((a,b)\in\mathcal G(u_{-i}^N)\). The exact criterion
+AG07 gives
+\(a\mathfrak N_\varphi^*\subseteq\mathfrak N_\psi^*\),
+\(\mathfrak N_\psi b\subseteq\mathfrak N_\varphi\), and
+\(\psi(av)=\varphi(vb)\) for
+\(v\in\operatorname{span}\mathfrak N_\varphi^*\mathfrak N_\psi\).
+The last equality uses finite complex-linear weight values.
+
+Here is also the full positive domination needed below. On \(M_2(N)\)
+use \(\Omega(X)=\psi(X_{11})+\varphi(X_{22})\). The matrices
+\(A=aE_{12}\), \(B=bE_{12}\) are the endpoints of a bounded modular
+strip \(F\) of height one, by AG07. Put \(C=F(-i/2)=cE_{12}\).
+HS03, applied
+first to \(F\) on its upper half and then to
+\(z\mapsto F(\bar z-i)^*\) on its upper half, gives
+\(\Omega(AXA^*)\leq\|c\|^2\Omega(X)\) and
+\(\Omega(B^*XB)\leq\|c\|^2\Omega(X)\) for every positive matrix \(X\).
+Testing respectively \(X=QE_{22}\) and \(X=QE_{11}\) proves
 
 \[
 \begin{aligned}
-\widehat\psi(aQa^*)&\le K^2\widehat\varphi(Q),\\
-\widehat\varphi(b^*Qb)&\le L^2\widehat\psi(Q),
+\widehat\psi(aQa^*)&\leq K^2\widehat\varphi(Q),\\
+\widehat\varphi(b^*Qb)&\leq L^2\widehat\psi(Q)
+\qquad(Q\in\widehat N_+),
 \end{aligned}
 \tag{OR.6}
 \]
 
-and on its oriented finite mixed ideal \(\mathfrak N_\varphi^*\mathfrak N_\psi\) one has \(\psi(az)=\varphi(zb)\). Normal evaluation of bounded spectral truncations extends the domination to the entire extended cone. Bimodularity then transfers (OR.6) to \(T(q)\) for every \(q\in M_+\), giving
+with \(K=L=\|c\|\). For extended \(Q\), take its increasing bounded
+spectral truncations. Conjugation preserves their extended-positive
+supremum, and normal scalar evaluation preserves it by
+CW03. This includes infinite
+values and an infinite spectral part; the convention is \(0\cdot\infty=0\).
+Applying (OR.6) to \(T(q)\) and using bimodularity gives
 
 \[
 \begin{aligned}
-\Psi(aqa^*)&\le K^2\Phi(q),\\
-\Phi(b^*qb)&\le L^2\Psi(q).
+\Psi(aqa^*)&\leq K^2\Phi(q),\\
+\Phi(b^*qb)&\leq L^2\Psi(q)
+\qquad(q\in M_+).
 \end{aligned}
 \tag{OR.7}
 \]
 
-Thus the two GNS ideal inclusions and norm estimates required by the mixed graph on \(M\) hold. The separate finite-matrix contract is needed for its finite mixed identity: when \(y\in\mathfrak N_\Phi\cap\mathfrak N_T\) and \(z\in\mathfrak N_\Psi\cap\mathfrak N_T\), the bounded extension \(\dot T(y^*z)\) lies in \(\mathfrak N_\varphi^*\mathfrak N_\psi\), with the displayed orientation. Applying the scalar identity there yields
+In particular right multiplication by \(a^*\) sends
+\(\mathfrak N_\Phi\) into \(\mathfrak N_\Psi\), with GNS norm bound
+\(K\); right multiplication by \(b\) sends \(\mathfrak N_\Psi\)
+into \(\mathfrak N_\Phi\), with bound \(L\).
+
+**The finite matrix and its oriented mixed ideal.** Write
+\(\dot T:\mathfrak M_T\to N\) for the finite linear extension in
+OVW01.
+For \(y,z\in\mathfrak N_T\), the bounded matrix
 
 \[
-\Psi(ay^*z)=\Phi(y^*zb).
+R=\begin{pmatrix}
+T(y^*y)&\dot T(y^*z)\\
+\dot T(z^*y)&T(z^*z)
+\end{pmatrix}
+\]
+
+is positive. Indeed, its quadratic form on a column \((d_1,d_2)\)
+over \(N\) is \(T((yd_1+zd_2)^*(yd_1+zd_2))\geq0\), using the
+right \(N\)-module and bimodule laws. To recall why these columns
+detect positivity, a negative spectral projection
+\(p=1_{(-\infty,-\varepsilon)}(R)\ne0\) would satisfy
+\(pRp\leq-\varepsilon p\). Some \(p_{jj}\) is nonzero; its column
+\(d_i=p_{ij}\) would give
+\(\sum_{i,k}d_i^*R_{ik}d_k=(pRp)_{jj}\leq-\varepsilon p_{jj}\),
+contradicting positivity. Thus no amplified unbounded OVW is needed.
+
+Now assume also \(y\in\mathfrak N_\Phi\) and
+\(z\in\mathfrak N_\Psi\). For the balanced weight
+\(\theta(H)=\varphi(H_{11})+\psi(H_{22})\) on \(M_2(N)_+\),
+
+\[
+\theta(R)=\Phi(y^*y)+\Psi(z^*z)<\infty.
+\]
+
+Let \(W=R^{1/2}\in M_2(N)\). Since
+\(\theta(W^*W)<\infty\), its first-column entries \(w_{j1}\) are
+in \(\mathfrak N_\varphi\), and its second-column entries
+\(w_{j2}\) are in \(\mathfrak N_\psi\). Therefore
+
+\[
+\dot T(y^*z)=R_{12}
+=\sum_{j=1}^2w_{j1}^*w_{j2}
+\in\operatorname{span}\mathfrak N_\varphi^*\mathfrak N_\psi.
+\]
+
+The order of the two scalar ideals has been obtained from the columns,
+not inferred from an unordered intersection of domains.
+
+**The finite scalar overlap.** If \(\omega\) is a normal weight on
+\(N\), the equality
+\((\widehat\omega\circ T)(h)=\omega(\dot T(h))\) is finite on
+every positive \(h\in\mathfrak M_T\cap\mathfrak M_{\widehat\omega\circ T}\).
+By linear extension it holds on the span of these positive elements.
+For \(v,w\in\mathfrak N_T\cap\mathfrak N_{\widehat\omega\circ T}\),
+polarization of the four squares \((v+i^kw)^*(v+i^kw)\) puts
+\(v^*w\) in this span. Thus the equality applies to this product,
+and \(\dot T(v^*w)\) is in \(\mathfrak M_\omega\).
+It has not been asserted on arbitrary elements of \(\mathfrak M_T\).
+
+For the finite-output \(y,z\) just considered, (OR.7) and the right
+module law put \(ya^*\) in \(\mathfrak N_T\cap\mathfrak N_\Psi\)
+and \(zb\) in \(\mathfrak N_T\cap\mathfrak N_\Phi\).
+Consequently the overlap applies to
+\(ay^*z=(ya^*)^*z\) for \(\omega=\psi\), and to
+\(y^*zb=y^*(zb)\) for \(\omega=\varphi\).
+The scalar graph identity, applied to the verified mixed element
+\(\dot T(y^*z)\), gives
+
+\[
+\begin{aligned}
+\Psi(ay^*z)
+&=\psi\bigl(a\dot T(y^*z)\bigr)\\
+&=\varphi\bigl(\dot T(y^*z)b\bigr)
+=\Phi(y^*zb).
+\end{aligned}
 \tag{OR.8}
 \]
 
-For general scalar-domain \(y,z\), cut \(T(y^*y)\) and \(T(z^*z)\) separately on the **right** by bounded spectral projections in \(N\). Their finite faithful scalar evaluations exclude infinite projections; the cuts put both vectors in \(\mathfrak N_T\) and converge in their scalar GNS norms. The two estimates (OR.7) transport this convergence through multiplication by \(a^*\) and \(b\), so (OR.8) passes to all \(y\in\mathfrak N_\Phi\), \(z\in\mathfrak N_\Psi\). The scalar mixed-graph criterion now gives
+**Right spectral cuts and the full graph.** For arbitrary
+\(y\in\mathfrak N_\Phi\), put \(H=T(y^*y)\).
+Its scalar value \(\widehat\varphi(H)\) is finite. Faithfulness of
+\(\varphi\) excludes a nonzero infinite spectral projection of \(H\),
+as in OVW05.
+Hence \(e_r=1_{[0,r]}(H)\) increases strongly to \(1\). For
+\(y_r=ye_r\), covariance gives
+\(T(y_r^*y_r)=e_rHe_r\leq r1\), and
 
 \[
-G(u_{-i}^N)\subseteq G(u_{-i}^M).
+\begin{aligned}
+\|\Lambda_\Phi(y-y_r)\|^2
+&=\widehat\varphi\bigl((1-e_r)H(1-e_r)\bigr)\\
+&\longrightarrow0.
+\end{aligned}
+\]
+
+For this convergence, the two spectral pieces add to \(H\), whose
+scalar value is finite, and normality gives
+\(\widehat\varphi(e_rHe_r)\uparrow\widehat\varphi(H)\).
+There is no subtraction of infinite values. Thus
+\(y_r\in\mathfrak N_T\cap\mathfrak N_\Phi\).
+Independently cut \(T(z^*z)\) for \(z\in\mathfrak N_\Psi\), obtaining
+\(z_s=zf_s\in\mathfrak N_T\cap\mathfrak N_\Psi\) and convergence
+in its \(\Psi\)-GNS norm. These are right cuts; the operators
+\(y_r,z_s\) are not claimed to increase.
+
+The bounds (OR.7) give convergence also of
+\(\Lambda_\Psi(y_ra^*)\) to \(\Lambda_\Psi(ya^*)\) and
+\(\Lambda_\Phi(z_sb)\) to \(\Lambda_\Phi(zb)\).
+Apply (OR.8) to \(y_r,z_s\) and pass to the two Hilbert-space pairings
+
+\[
+\begin{aligned}
+\Psi(ay_r^*z_s)
+&=\langle\Lambda_\Psi(z_s),\Lambda_\Psi(y_ra^*)\rangle,\\
+\Phi(y_r^*z_sb)
+&=\langle\Lambda_\Phi(z_sb),\Lambda_\Phi(y_r)\rangle.
+\end{aligned}
+\]
+
+Their limits prove (OR.8) for every
+\(y\in\mathfrak N_\Phi\), \(z\in\mathfrak N_\Psi\), and linearity
+covers their mixed product span. Together with the two ideal inclusions
+from (OR.7), AG07 now gives
+
+\[
+\mathcal G(u_{-i}^N)\subseteq\mathcal G(u_{-i}^M).
 \tag{OR.9}
 \]
 
-The inclusion is inside \(M\oplus M\). Finally the analytic-generator comparison contract turns it into \(u_t^M(n)=u_t^N(n)\) for every \(n\in N\) and real \(t\), without assuming beforehand that \(N\) is globally invariant under \(u^M\). Put \(\psi=\varphi\) to obtain
+The comparison theorem proved in OR04 applies to these explicitly
+normal isometric groups and yields \(u_t^M(n)=u_t^N(n)\) for every
+\(n\in N\). Setting \(\psi=\varphi\) proves the modular restriction
 
 \[
-\sigma_t^{\widehat\varphi\circ T}(n)=\sigma_t^\varphi(n).
+\sigma_t^{\widehat\varphi\circ T}(n)=\sigma_t^\varphi(n)
+\qquad(n\in N,\ t\in\mathbb R).
 \tag{OR.10}
 \]
 
-For general \(\psi\), evaluating the same mixed equality at \(n=1\) also gives \([D\Psi:D\Phi]_t=[D\psi:D\varphi]_t\in N\). This strengthening has the cocycle order specified in (OR.5). The proof assembly is valid relative to the three exact contracts named in OR-04; it does not use modular compatibility to construct \(T\).
+For general \(\psi\), evaluating at \(n=1\) also proves
+\([D\Psi:D\Phi]_t=[D\psi:D\varphi]_t\in N\).
+The operator-valued weight was given throughout; no compatibility-to-existence
+theorem or countable-sum converse has entered the proof. \(\square\)
 
-## What remains to close the modular assertion
+## Comparing generators across an inclusion
 
-The source of OR-01–03 is Takesaki II IX.4 Lemma 4.21, printed pp. 227–230 / PDF pp. 247–250. Clauses (i) and (ii) have original arguments above relative to the course's extended-positive spectral and scalar-composition foundations. OR-03 is a **conditional** assembly, not a complete proof of clause (iii). Its three remaining component contracts are: the scalar mixed analytic graph with its half-strip domination and oriented finite identity (Takesaki II VIII.3.18/3.25; Haagerup I Theorem 3.2/Lemma 3.3); positivity and mixed-ideal placement for the finite matrix transfer, including the right spectral-cut passage (Haagerup I Lemmas 4.5–4.6); and analytic-generator comparison from graph inclusion to real actions (Takesaki II VIII.3.24; Haagerup I Lemmas 4.2–4.4). Their scalar strip/Fourier and finite-ideal foundations are also not proved here.
+**Theorem.** Let \(N\subseteq M\) be a unital inclusion of von Neumann
+algebras. Let \(v_t^N\) and \(v_t^M\) be groups of normal
+complex-linear isometries on their respective algebras, with pointwise
+sigma-weakly continuous real orbits. If their closed-strip generators satisfy
+\(\mathcal G(v_{-i}^N)\subseteq\mathcal G(v_{-i}^M)\) in
+\(M\oplus M\), then \(v_t^M(n)=v_t^N(n)\) for every \(n\in N\)
+and real \(t\). Invariance of \(N\) under \(v^M\) is a conclusion.
 
-A proof of Haagerup I Theorem 4.7(1) under these contracts is not given in this course. The compatible-pair lesson may use the forward theorem only after this dependency is closed; neither IX.4.18 nor the false reverse of IX.4.20 proves it.
+**Proof.** We use the explicit kernel construction of
+AG02, the
+scalar uniqueness lemma AG03,
+and the strip translation and gluing arguments in
+AG01.
+Those arguments require normality of the real maps, which is a hypothesis
+here. The classification of general surjective isometries is not needed.
+
+In particular AG02 supplies, for every \(n\in N\), a bounded net
+\(n_r\to n\) sigma-weakly in \(N\), each having an entire orbit
+\(F^N\) with
+
+\[
+\|F^N(t+iy)\|\leq C e^{c|y|}
+\qquad(t,y\in\mathbb R)
+\]
+
+for suitable \(C>0,c\geq0\) depending on the approximant. The construction
+integrates \((\sin rz/(rz))^2\) against the real orbit and divides by
+its positive real integral; its horizontal bound and approximate-identity
+property are proved in AG02, without a Fourier-distribution theorem.
+
+Fix one such approximant \(x\), and put \(x_k=F^N(-ik)\) for
+\(k\in\mathbb Z\). Translation preserves this entire core. Therefore
+\((x_k,x_{k+1})\) belongs to both negative-imaginary graphs.
+Reversing each pair supplies the positive-imaginary graph as well:
+translation of a strip with endpoints \((a,b)\) gives the inverse strip
+with endpoints \((b,a)\), as proved in AG01. The strips for \(v^M\)
+can thus be glued upward and downward through every integer height.
+Their common edges agree by real translation. Testing with a normal
+functional and subdividing triangles along the finitely many common edges
+gives Morera's criterion on each larger strip. Local boundedness and the
+predual Cauchy argument of AG01 give an entire \(M\)-valued orbit
+\(F^M\) for \(x\), with \(F^M(-ik)=x_k\).
+
+On the strip between integer heights \(j,j+1\), its two edge norms
+are bounded by \(Ce^{c|j|}\) and \(Ce^{c|j+1|}\), since the real maps
+of \(v^M\) are isometries. Each glued strip is bounded before applying
+the scalar maximum principle. Consequently
+
+\[
+\|F^M(t+iy)\|\leq Ce^c e^{c|y|}
+\qquad(t,y\in\mathbb R).
+\]
+
+For \(\rho\in M_*\), the entire scalar function
+\(f(z)=\rho(F^M(z)-F^N(z))\) has this horizontal exponential bound
+and vanishes at every imaginary integer, in particular at all positive
+ones. AG03 proves \(f=0\) by its finite Blaschke-product argument.
+The predual separates \(M\), so the two real orbits of \(x\) agree.
+
+Finally \(n_r\to n\) also sigma-weakly in \(M\), because the
+inclusion of a von Neumann subalgebra is normal and every normal
+functional on \(M\) restricts normally to \(N\). Normality of the
+fixed maps \(v_t^M,v_t^N\) lets the equality pass to \(n\).
+This proves the theorem for arbitrary cardinality, without assuming that
+the ambient real action already preserves the smaller algebra. \(\square\)
+
+The human antecedent for the three assertions of this lesson is
+M. Takesaki, *Theory of Operator Algebras II*, IX.4 Lemma 4.21,
+printed pages 227–230. Its scalar analytic inputs are VIII.3 Lemma 3.18,
+Proposition 3.24 and Theorem 3.25, proved here through HS03, AG01–03
+and AG07, with the inclusion comparison and finite-output transfer
+spelled out above. The mixed ideals and all positive inequalities retain
+their full semifinite scope, including infinite positive values.

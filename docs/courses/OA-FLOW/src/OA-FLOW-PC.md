@@ -1,6 +1,6 @@
 # Projection comparison and the countably decomposable type III case
 
-*Independent exposition and original figure/source: CC0-1.0 to the extent of rights held. Self-checked by the writing AI.*
+*Independent exposition and original figure/source: CC0-1.0 to the extent of rights held.*
 
 Let \(M=M''\subseteq B(H)\), where \(H\) is any complex Hilbert space and the identity is \(1_H\). Zero spaces are permitted. A projection is an element \(p=p^*=p^2\). Write \(p\sim q\) if some \(v\in M\) has \(v^*v=p,\ vv^*=q\), and \(p\precsim q\) if the final projection may instead be any subprojection of \(q\). A projection \(p\) is finite if \(p\sim q\leq p\) forces \(q=p\). Proper infiniteness means that \(p\neq0\) and every nonzero central compression of the unit of \(pMp\) is infinite. Type III means absence of nonzero finite projections. A projection is countably decomposable if every orthogonal family of its nonzero subprojections is countable.
 

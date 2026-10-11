@@ -1,0 +1,45 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "one-sample-matroid-prophet-inequalities",
+  "title": "One sample suffices for matroid prophet inequalities",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-10",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's theorem (2026) that one independent sample per element suffices for a constant-competitive prophet inequality on every finite matroid: a fixed online rule earns at least 2^(-293) times the expected optimum, even when the arrival order is chosen by an adversary who sees all samples, all values and the rule's random seed. The first lesson proves the matroid facts used, the optimality of greedy, states the theorem and reduces it to a hidden fixed weight vector with sacrificed revealed labels. The second rounds weights to powers of 2^32, gives a maximum rule, and defines four random masks and the candidate labels. The third builds density expansions, nominal and guarded paths of flats, and a generator budget for a whole path. The fourth gives the layered online decisions, their feasibility, a rank bound valid for every order, and a telescoping cost of later path enlargements. The fifth proves a bound on disjoint certificates of an increasing event under adaptive reads. The sixth exposes guard bits backwards in auxiliary time and shows that many revealed labels are safe from lighter competitors. The seventh counts pivot-mark vectors after insertions into a marked sequence via sign patterns of affine functions. The eighth turns safe samples into rank among unrevealed labels by a union bound over a small family of residuals. The ninth thins by the test mask, sums over weight levels, proves the constant, and derives a secretary rule with an adversarial suffix.",
+  "prerequisites": [
+    "finite sets, independence of finitely many random variables and conditional expectation over finite probability spaces; random values with arbitrary laws on [0, infinity) enter only through expectations of nonnegative measurable functions",
+    "the course proves all matroid facts it uses"
+  ],
+  "lessons": [
+    "prophets-matroids-and-an-almighty-adversary",
+    "rounding-a-maximum-rule-and-candidates",
+    "density-expansions-and-paths-of-flats",
+    "layers-and-a-rank-bound-for-every-order",
+    "disjoint-certificates",
+    "reverse-exposure-and-safe-samples",
+    "marked-pivots-and-sign-patterns",
+    "from-safe-samples-to-unrevealed-rank",
+    "the-final-count-and-a-secretary-rule"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "exact_checks": "Python (scratch pp_checks.py, output pp_checks.out, 10 Oct 2026, 70,514 checks of 53 kinds, 0 problems) on random linear matroids over GF(2) with 4 to 10 labels, loops included. The deterministic lemmas hold for all values of the constants and were tested with kappa in {1/2, 1, 2} and mask rates 0.3 to 0.4 on 193 random instances: submodularity and closure; greedy over a base and greedy optimality (against brute force); largest maximizers, monotonicity, idempotence and the residual bound of density expansions; all path properties and nominal births; the generator budget with insertion times; feasibility of the online rule for every prefix of 25 random orders per instance; the order-uniform rank bound in every tested order; the telescoping rank cost; K inside the lighter guarded path; witness counts, residual inside the revealed masks, and sigma <= kappa z + |R|; the two marked sequences of the eighth lesson (first marks = valid births, spans after each part of each layer, residual = intersection of mark-1 sets); the reverse map reproducing the paths, outputs inside the later state, and the hybrid containment. Exact enumeration: candidate mass E u(Y) = W/2 and E u(U) = E u(greedy on H) <= W over all masks H, and the maximum-rule bound (60 matroids); monotone exit probabilities and the double-exit identity Pr = p^2 at 62 reverse steps (equal guard and test rates; with unequal rates the identity fails, as the proof requires equal rates); the certificate bound for 400 random increasing events and adaptive procedures; pivot-mark vectors over all insertions (80 cases) against 4^s sum C(n,l). Constants: 2^(-11)(14 log 2 + 1) < 1/2 and the band-sum identity, the family-size constant, the error constant below 2^(-21), gamma/4 - 2^(-21) >= gamma/8, the transfer constant, and the subset-count bound.",
+    "lint": "pp_lint.py, pp_bs_scan.py, im_linecheck.py and find_private_math.py (scratch): headings, provenance line, balanced TeX delimiters, every sibling link and anchor resolved, no backslash artefacts, control characters or path-like TeX; one remaining lint note is a cross-lesson reference ('Proposition 4.1 and Theorem 3.1 of [the first lesson]').",
+    "source_reading": "OpenAI preprint 'One Sample Suffices for Matroid Prophet Inequalities against an Almighty Adversary' (23 Sep 2026), TeX read in full (introduction, setup, algorithm, safety, transfer, accounting, secretary; library copy openai-math-20261006); every step rederived. Lean scope document lean/docs/111.md read (one-sample statement with 2^(-310), hidden-vector statement with 2^(-293)). Differences: the course proves the matroid basics and the optimality of greedy, states Proposition 4.1 for rules with finitely many seed values so that the one-sample simulation needs only linearity of expectation, splits the argument into nine lessons, makes explicit that the guard and test masks must have the same rate in the hybrid transition, and adds exercises with full solutions. arXiv records of Kleinberg-Weinberg, Azar-Kleinberg-Weinberg, Rubinstein-Wang-Weinberg, Feldman-Svensson-Zenklusen (2015), Singla, Huang and Abdi-Banihashem-Hajiaghayi-Mittal checked against the preprint's bibliography. Context checks (10 Oct 2026, 05:10-05:30 UTC): Section 3 of Feldman-Svensson-Zenklusen arXiv:1404.4473v2 read for the fourth lesson's remark (restrictions of contractions by nested spans of the sample, greedy in the odd- or even-indexed buckets); the arXiv abstracts of 2609.14555, 2609.30421 and 2609.19118 read for the ninth lesson (random-order ratios 1/4, 1/e and 1/64; 1/e for linear matroids) and for the first lesson's comparison with the fixed-order one-sample 1/2 guarantee of Abdi-Banihashem-Hajiaghayi-Mittal (minimum of expectations versus expectation of the minimum, Exercise 6.5).",
+    "layout": "Formula widths measured in the rendered pages at 1100, 768, 543 and 375 px (overflow of the math span or of MathJax's container): 0 overflowing formulas in all nine lessons; unreferenced equation tags removed and the remaining tags renumbered without gaps."
+  },
+  "open_obligations": [
+    "None in the proof of Theorem 3.1, Proposition 4.1 or Corollary 4.1: every step is proved in the nine lessons.",
+    "Context only, not used in any proof: Krengel-Sucheston and Garling, Kleinberg-Weinberg, Azar-Kleinberg-Weinberg, Rubinstein-Wang-Weinberg, Feldman-Svensson-Zenklusen, Fu-Lu-Tang-Wu-Wu-Zhang, Edmonds's matroid partition theorem, Santiago-Sergeev-Zenklusen and Soto, Schlafli's region count (proved in the seventh lesson), Singla, Huang, Abdi-Banihashem-Hajiaghayi-Mittal."
+  ],
+  "free_sources": [
+    "OpenAI, One Sample Suffices for Matroid Prophet Inequalities against an Almighty Adversary (OpenAI Math Release preprint, 23 Sep 2026), with its Lean formalization (scope document lean/docs/111.md)",
+    "R. Kleinberg and S. M. Weinberg, Matroid prophet inequalities, arXiv:1201.4764",
+    "P. D. Azar, R. Kleinberg and S. M. Weinberg, Prophet inequalities with limited information, arXiv:1307.3736",
+    "A. Rubinstein, J. Z. Wang and S. M. Weinberg, Optimal single-choice prophet inequalities from samples, arXiv:1911.07945",
+    "M. Feldman, O. Svensson and R. Zenklusen, A simple O(log log(rank))-competitive algorithm for the matroid secretary problem, arXiv:1404.4473",
+    "J. Edmonds, Minimum partition of a matroid into independent subsets, J. Res. NBS 69B (1965), published by NIST",
+    "S. Singla, arXiv:2609.14555; Z. Huang, arXiv:2609.30421; H. Abdi, K. Banihashem, M. Hajiaghayi and D. Mittal, arXiv:2609.19118"
+  ]
+}

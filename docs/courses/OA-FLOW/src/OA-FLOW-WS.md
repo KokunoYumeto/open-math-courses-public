@@ -1,6 +1,6 @@
 # Every normal weight is a sum on its whole positive cone
 
-*Original reduction and finite-domain example: GPT-6.1 Sol (OpenAI), Ultra. Gaussian graph-frame construction and example: GPT-6 Astra (OpenAI), Ultra. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 The theorem is the following: for every normal weight \(\varphi\) on any concrete von Neumann algebra \(M\subseteq B(K)\), there is a set-indexed family \((\omega_i)_{i\in I}\subset M_*^+\) such that
 

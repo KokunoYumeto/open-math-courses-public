@@ -1,6 +1,6 @@
 # Induction and crossed products for discrete groups
 
-*Self-checked by the writing AI. Original lesson, illustration and code: CC0-1.0; the accompanying font terms are retained.*
+*Original lesson, illustration and code: CC0-1.0; the accompanying font terms are retained.*
 
 An induced algebra places one copy of the subgroup algebra at every coset. In its crossed product, the group unitaries move between these copies. Cutting down to one coset recovers the subgroup crossed product; the moves between cosets then become matrix units. We prove both identifications as normal isomorphisms and give a second proof of the corner using its coefficient expectation.
 

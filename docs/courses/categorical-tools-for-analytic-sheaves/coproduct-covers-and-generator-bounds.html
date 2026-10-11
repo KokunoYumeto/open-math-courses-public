@@ -1,0 +1,656 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coproduct covers and generator bounds</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="coproduct-covers-and-generator-bounds">Coproduct covers and generator bounds</h1>
+<p>A map into a filtered colimit need not lift directly to one stage. Instead, pull it back to every stage, find an epimorphic pullback leg, and lift only the generator maps that actually occur there. A second cardinal bound controls the relations of this cover. Those relations become equal at a later stage, where the cover descends to the required map. A different argument assembles a quotient from all its small subcovers and bounds its generator maps by a regular tagged union.</p>
+<h2 id="1-the-hypotheses-and-the-actual-comparison">1. The hypotheses and the actual comparison</h2>
+<p>Work in ZF with set-indexed Choice, a fixed Grothendieck universe and the explicitly stated enlargement convention of <span class="unlinked">Universes and small categories</span>. A small set is bijective to a universe member; its original labels need not belong to that universe. Categories have ambient set data, and a small indexing category includes its entire arrow set, with identities and composites. All Hom values below are small, with the <span class="unlinked">actual Hom encoding</span> when universe-member values are required.</p>
+<p>Keep the following assumptions on a locally small category <span class="math" data-tex="\(C\)">\(C\)</span>, jointly denoted <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<ul>
+<li>Every small colimit exists.</li>
+<li>Every finite limit exists.</li>
+<li>For every small ordinary filtered category <span class="math" data-tex="\(I\)">\(I\)</span>, the functor <span class="math" data-tex="\(\operatorname{colim}_I:C^I\to C\)">\(\operatorname{colim}_I:C^I\to C\)</span> preserves finite limits.</li>
+<li>There is one object <span class="math" data-tex="\(G\)">\(G\)</span> such that a bijective function <span class="math" data-tex="\(\operatorname{Hom}_C(G,v)\)">\(\operatorname{Hom}_C(G,v)\)</span> implies that <span class="math" data-tex="\(v\)">\(v\)</span> is an isomorphism.</li>
+<li>Every epimorphism is strict.</li>
+</ul>
+<p>Thus <span class="math" data-tex="\(G\)">\(G\)</span> is an <strong>isomorphism-detecting generator</strong>, in the precise convention of <a href="generators-and-small-quotient-families.html#1-keep-the-family-of-probes">Generators, Section 1</a>. It is not merely a separating object. The finite-limit preservation assumption is about <span class="math" data-tex="\(C\)">\(C\)</span>-valued diagrams; no preservation by <span class="math" data-tex="\(\operatorname{Hom}(G,-)\)">\(\operatorname{Hom}(G,-)\)</span> follows from these words.</p>
+<p>For an arrow <span class="math" data-tex="\(u:B\to A\)">\(u:B\to A\)</span>, its coimage is the coequalizer of its kernel pair and its image is the equalizer of the two self-pushout legs. Strictness means that the specified comparison from coimage to image is invertible. The complete <a href="coimages-images-and-composition-of-quotients.html#3-strict-epimorphisms-and-descent">strict epimorphism and coimage proofs</a> give the following equivalent form for a strict epimorphism:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+B\times_A B\ \rightrightarrows\ B
+\xrightarrow{u}A
+\quad\text{is a coequalizer fork}.
+\tag{1.1}
+\]">\[
+B\times_A B\ \rightrightarrows\ B
+\xrightarrow{u}A
+\quad\text{is a coequalizer fork}.
+\tag{1.1}
+\]</span>
+<p>Here is why the precise comparison matters. If <span class="math" data-tex="\(u\)">\(u\)</span> is epic, its self-pushout legs agree by cancellation; its image inclusion is therefore the identity of <span class="math" data-tex="\(A\)">\(A\)</span>, up to the unique compatible isomorphism. Strictness says that its coimage factor to <span class="math" data-tex="\(A\)">\(A\)</span> is invertible, which is exactly (1.1). A coequalizer is epic by factor uniqueness. Moreover, a monic strict epimorphism is invertible: its kernel-pair projections agree, so <span class="math" data-tex="\(1_B\)">\(1_B\)</span> equalizes them and descends to <span class="math" data-tex="\(s:A\to B\)">\(s:A\to B\)</span> with <span class="math" data-tex="\(su=1_B\)">\(su=1_B\)</span>; cancellation of <span class="math" data-tex="\(u\)">\(u\)</span> in <span class="math" data-tex="\(usu=u\)">\(usu=u\)</span> gives <span class="math" data-tex="\(us=1_A\)">\(us=1_A\)</span>. These consequences require the stated strictness, rather than a general assertion about monic epimorphisms.</p>
+<p>Let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be infinite regular. We use the complete <a href="common-arrows-and-bounded-set-comparisons.html#3-receive-every-arrow-of-a-bounded-diagram">cardinal-filtered convention and whole-arrow criterion</a>: fewer than <span class="math" data-tex="\(\pi\)">\(\pi\)</span> objects have a receiver, and fewer than <span class="math" data-tex="\(\pi\)">\(\pi\)</span> parallel arrows have one common equalizing postarrow. The empty object family forces nonemptiness. These conditions imply ordinary filteredness. A diagram <span class="math" data-tex="\(X:I\to C\)">\(X:I\to C\)</span> on a small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered category has a chosen colimit <span class="math" data-tex="\(L\)">\(L\)</span> with actual legs <span class="math" data-tex="\(c_i:X_i\to L\)">\(c_i:X_i\to L\)</span>. Write <span class="math" data-tex="\(X(s):X_i\to X_j\)">\(X(s):X_i\to X_j\)</span> for a transition.</p>
+<p>The canonical function is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\chi_{A,X}:\operatorname{colim}_{i\in I}
+       \operatorname{Hom}_C(A,X_i)
+       \longrightarrow\operatorname{Hom}_C(A,L),\\
+\chi_{A,X}[i,f]=c_i f.
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\chi_{A,X}:\operatorname{colim}_{i\in I}
+\operatorname{Hom}_C(A,X_i)
+\longrightarrow\operatorname{Hom}_C(A,L),\\
+\chi_{A,X}[i,f]=c_i f.
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>The <a href="filtered-stages-and-finite-limits.html#2-equality-of-elements-has-a-common-witness">complete filtered Set quotient</a> defines the classes. The cocone equation <span class="math" data-tex="\(c_jX(s)=c_i\)">\(c_jX(s)=c_i\)</span> makes (1.2) well-defined. In particular, equality of two classes is an equality after two actual arrows to one common stage. For two representatives already at <span class="math" data-tex="\(i\)">\(i\)</span>, equality is witnessed by <strong>one</strong> arrow <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>: equalize the possibly distinct same-source witness arrows before transporting the maps.</p>
+<p>For <span class="math" data-tex="\(a:A&#x27;\to A\)">\(a:A&#x27;\to A\)</span>, precomposition sends <span class="math" data-tex="\([i,f]\)">\([i,f]\)</span> to <span class="math" data-tex="\([i,fa]\)">\([i,fa]\)</span>, and <span class="math" data-tex="\(c_i(fa)=(c_i f)a\)">\(c_i(fa)=(c_i f)a\)</span>. For a transformation <span class="math" data-tex="\(\eta:X\to X&#x27;\)">\(\eta:X\to X&#x27;\)</span>, let <span class="math" data-tex="\(\ell:L\to L&#x27;\)">\(\ell:L\to L&#x27;\)</span> be the colimit map, so <span class="math" data-tex="\(\ell c_i=c&#x27;_i\eta_i\)">\(\ell c_i=c&#x27;_i\eta_i\)</span>. Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\chi_{A,X&#x27;}[i,\eta_i f]
+=c&#x27;_i\eta_i f
+=\ell c_i f.
+\tag{1.3}
+\]">\[
+\chi_{A,X&#x27;}[i,\eta_i f]
+=c&#x27;_i\eta_i f
+=\ell c_i f.
+\tag{1.3}
+\]</span>
+<p>These are both naturality squares, including their identity and composite laws. Changing the colimit replaces (1.2) by postcomposition with the unique isomorphism preserving every <span class="math" data-tex="\(c_i\)">\(c_i\)</span>. An object is <strong><span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible</strong> precisely when (1.2) is bijective for every such <span class="math" data-tex="\(I,X\)">\(I,X\)</span>, as in the complete <a href="small-predecessors-and-maps-into-filtered-colimits.html#4-the-canonical-comparison-for-maps-into-a-colimit">accessibility comparison and definition</a>.</p>
+<h2 id="2-coproducts-on-functions-and-their-empty-subfamilies">2. Coproducts on functions and their empty subfamilies</h2>
+<p>Put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+P_E=\coprod_{e\in E}G,
+\qquad j_e^E:G\to P_E.
+\tag{2.1}
+\]">\[
+P_E=\coprod_{e\in E}G,
+\qquad j_e^E:G\to P_E.
+\tag{2.1}
+\]</span>
+<p>Choose these coproducts for the actual set-indexed collections used in the proof. For universe-member indexing sets, their collection is an ambient set in an enlargement, so set-indexed Choice licenses these choices. Relabeling other small sets transports the specified coproduct maps along bijections. There is no choice over a proper class of all relabelings.</p>
+<p>For a function <span class="math" data-tex="\(b:E\to F\)">\(b:E\to F\)</span>, the <a href="universal-forks-and-diagram-constructions.html#1-families-and-their-universal-maps">coproduct universal property</a> gives the unique arrow</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+P(b):P_E\to P_F,
+\qquad P(b)j_e^E=j_{b(e)}^F.
+\tag{2.2}
+\]">\[
+P(b):P_E\to P_F,
+\qquad P(b)j_e^E=j_{b(e)}^F.
+\tag{2.2}
+\]</span>
+<p>The component equations show <span class="math" data-tex="\(P(1_E)=1_{P_E}\)">\(P(1_E)=1_{P_E}\)</span> and <span class="math" data-tex="\(P(db)=P(d)P(b)\)">\(P(db)=P(d)P(b)\)</span>. They also show that a bijection induces the compatible coproduct isomorphism, with inverse induced by its inverse function. For <span class="math" data-tex="\(E=\varnothing\)">\(E=\varnothing\)</span>, <span class="math" data-tex="\(P_E=0\)">\(P_E=0\)</span> is initial; the empty component equations specify its unique map out. Thus (2.2) supplies the whole coproduct-on-functions construction, not just its object assignment.</p>
+<p><strong>Subfamily Hom bound.</strong> If <span class="math" data-tex="\(S\subseteq T\)">\(S\subseteq T\)</span>, then the specified inclusion map <span class="math" data-tex="\(P(S\hookrightarrow T)\)">\(P(S\hookrightarrow T)\)</span> induces an injection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(G,P_S)
+\longrightarrow\operatorname{Hom}(G,P_T).
+\tag{2.3}
+\]">\[
+\operatorname{Hom}(G,P_S)
+\longrightarrow\operatorname{Hom}(G,P_T).
+\tag{2.3}
+\]</span>
+<p>For nonempty <span class="math" data-tex="\(S\)">\(S\)</span>, choose <span class="math" data-tex="\(s_0\in S\)">\(s_0\in S\)</span>, and define <span class="math" data-tex="\(r:T\to S\)">\(r:T\to S\)</span> to fix <span class="math" data-tex="\(S\)">\(S\)</span> and send its complement to <span class="math" data-tex="\(s_0\)">\(s_0\)</span>. The composite <span class="math" data-tex="\(P(r)P(S\hookrightarrow T)\)">\(P(r)P(S\hookrightarrow T)\)</span> is <span class="math" data-tex="\(1_{P_S}\)">\(1_{P_S}\)</span> on every component, hence is the identity. Postcomposition by <span class="math" data-tex="\(P(r)\)">\(P(r)\)</span> is a left inverse of (2.3).</p>
+<p>For empty <span class="math" data-tex="\(S\)">\(S\)</span>, if <span class="math" data-tex="\(\operatorname{Hom}(G,0)\)">\(\operatorname{Hom}(G,0)\)</span> is empty, (2.3) has empty domain and is injective. Otherwise choose an actual <span class="math" data-tex="\(a:G\to0\)">\(a:G\to0\)</span>. The constant component family <span class="math" data-tex="\(a\)">\(a\)</span> defines <span class="math" data-tex="\(v:P_T\to0\)">\(v:P_T\to0\)</span>. If <span class="math" data-tex="\(u:0\to P_T\)">\(u:0\to P_T\)</span> is the initial map, <span class="math" data-tex="\(vu=1_0\)">\(vu=1_0\)</span>, because <span class="math" data-tex="\(0\)">\(0\)</span> has one endomorphism. Postcomposition by <span class="math" data-tex="\(v\)">\(v\)</span> is the required left inverse. This also covers empty <span class="math" data-tex="\(T\)">\(T\)</span>. It never asserts that a nonempty set retracts onto the empty set. This complete repair proves a Hom injection; an arbitrary coproduct inclusion is not presumed monic. No regularity is used in (2.3).</p>
+<p>There is also a canonical evaluation arrow</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\varepsilon_Y:P_{\operatorname{Hom}(G,Y)}\to Y,
+\qquad\varepsilon_Yj_h=h.
+\tag{2.4}
+\]">\[
+\varepsilon_Y:P_{\operatorname{Hom}(G,Y)}\to Y,
+\qquad\varepsilon_Yj_h=h.
+\tag{2.4}
+\]</span>
+<p>It is epic under <span class="math" data-tex="\(H\)">\(H\)</span>. Indeed, if two maps <span class="math" data-tex="\(a,b:Y\to Z\)">\(a,b:Y\to Z\)</span> agree on every <span class="math" data-tex="\(h:G\to Y\)">\(h:G\to Y\)</span>, their equalizer <span class="math" data-tex="\(e:E\to Y\)">\(e:E\to Y\)</span> induces a bijection on <span class="math" data-tex="\(G\)">\(G\)</span>-Hom sets: each <span class="math" data-tex="\(h\)">\(h\)</span> factors uniquely through <span class="math" data-tex="\(e\)">\(e\)</span>. Detection makes <span class="math" data-tex="\(e\)">\(e\)</span> invertible, so <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. If <span class="math" data-tex="\(a\varepsilon_Y=b\varepsilon_Y\)">\(a\varepsilon_Y=b\varepsilon_Y\)</span>, the component equations give exactly that situation. This is the complete <a href="generators-and-small-quotient-families.html#3-canonical-coproduct-presentations">evaluation-epimorphism argument</a>, including an empty indexing set. For <span class="math" data-tex="\(v:Y\to Y&#x27;\)">\(v:Y\to Y&#x27;\)</span>, the component equation gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+v\varepsilon_Y
+=\varepsilon_{Y&#x27;}P(\operatorname{Hom}(G,v)).
+\tag{2.5}
+\]">\[
+v\varepsilon_Y
+=\varepsilon_{Y&#x27;}P(\operatorname{Hom}(G,v)).
+\tag{2.5}
+\]</span>
+<h2 id="3-a-whole-coslice-and-a-small-target-stage-lemma">3. A whole coslice and a small-target stage lemma</h2>
+<p>Fix <span class="math" data-tex="\(i_0\in I\)">\(i_0\in I\)</span>. The category <span class="math" data-tex="\(J=(i_0\downarrow I)\)">\(J=(i_0\downarrow I)\)</span> has all objects <span class="math" data-tex="\(s:i_0\to i\)">\(s:i_0\to i\)</span>, and all arrows <span class="math" data-tex="\(t:s\to s&#x27;\)">\(t:s\to s&#x27;\)</span> satisfying <span class="math" data-tex="\(ts=s&#x27;\)">\(ts=s&#x27;\)</span>. Identity and composition satisfy that equation. It is small: its objects are a subset of the whole arrow set of <span class="math" data-tex="\(I\)">\(I\)</span>, and its arrows are a subset of products of that set. Its projection is <span class="math" data-tex="\(p(s)=i\)">\(p(s)=i\)</span>, <span class="math" data-tex="\(p(t)=t\)">\(p(t)=t\)</span>.</p>
+<p>Here are the complete bounded filtering checks. Receive fewer than <span class="math" data-tex="\(\pi\)">\(\pi\)</span> objects <span class="math" data-tex="\(s_a:i_0\to i_a\)">\(s_a:i_0\to i_a\)</span> at <span class="math" data-tex="\(z\)">\(z\)</span> using <span class="math" data-tex="\(r_a:i_a\to z\)">\(r_a:i_a\to z\)</span>. For a nonempty family, equalize the entire bounded parallel family <span class="math" data-tex="\(r_as_a:i_0\to z\)">\(r_as_a:i_0\to z\)</span> by one <span class="math" data-tex="\(q:z\to w\)">\(q:z\to w\)</span>. Its common composite is a coslice object, and the <span class="math" data-tex="\(qr_a\)">\(qr_a\)</span> are its receiving arrows. For an empty family use <span class="math" data-tex="\(1_{i_0}\)">\(1_{i_0}\)</span>. A bounded family of parallel coslice arrows <span class="math" data-tex="\(t_b:(i,s)\to(i&#x27;,s&#x27;)\)">\(t_b:(i,s)\to(i&#x27;,s&#x27;)\)</span> has one ambient equalizing arrow <span class="math" data-tex="\(h:i&#x27;\to k\)">\(h:i&#x27;\to k\)</span>; this is the coslice arrow from <span class="math" data-tex="\(s&#x27;\)">\(s&#x27;\)</span> to <span class="math" data-tex="\(hs&#x27;\)">\(hs&#x27;\)</span>. Empty parallel families use the target identity. Thus <span class="math" data-tex="\(J\)">\(J\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered.</p>
+<p>The projection is cofinal. For an object <span class="math" data-tex="\(i\)">\(i\)</span>, an object of <span class="math" data-tex="\((i\downarrow p)\)">\((i\downarrow p)\)</span> is the complete pair of legs <span class="math" data-tex="\(i_0\xrightarrow{s}k\xleftarrow{r}i\)">\(i_0\xrightarrow{s}k\xleftarrow{r}i\)</span>. Such an object exists by ordinary filteredness. For two such objects, receive their targets at one target and then equalize the two resulting legs from <span class="math" data-tex="\(i_0\)">\(i_0\)</span> and the two from <span class="math" data-tex="\(i\)">\(i\)</span>, using two successive postcompositions. The resulting pair of legs is a common receiver in this comma category. Therefore it is nonempty and connected. The complete <a href="change-an-index-without-changing-universal-maps.html#2-extend-every-cocone">cofinal cocone extension and its inverse</a> shows that restricting to <span class="math" data-tex="\(J\)">\(J\)</span> preserves the colimit with all its specified legs. In particular,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{s\in J}X_{p(s)}
+\xrightarrow{\sim}L,
+\qquad\text{leg at }s\text{ is }c_{p(s)}.
+\tag{3.1}
+\]">\[
+\operatorname{colim}_{s\in J}X_{p(s)}
+\xrightarrow{\sim}L,
+\qquad\text{leg at }s\text{ is }c_{p(s)}.
+\tag{3.1}
+\]</span>
+<p>This uses the whole coslice, rather than a selected list of objects or only a generating graph. The same complete coslice mechanism appears in <a href="common-arrows-and-bounded-set-comparisons.html#exercise-1-retain-the-starting-leg">Common arrows, Exercise 1</a>.</p>
+<p><strong>Stage epimorphism lemma.</strong> Under <span class="math" data-tex="\(H\)">\(H\)</span>, let <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span> be small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered and let <span class="math" data-tex="\(u:\operatorname{colim}_I D\to Y\)">\(u:\operatorname{colim}_I D\to Y\)</span> be epic. Assume either <span class="math" data-tex="\(|\operatorname{Hom}(G,Y)|&lt;\pi\)">\(|\operatorname{Hom}(G,Y)|&lt;\pi\)</span> or that <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible. Here accessibility means that <a href="bounded-colimits-accessible-sets-and-cardinal-ind-objects.html#1-size-conventions-and-the-actual-preservation-map">the canonical Hom comparison</a> is bijective for every small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered diagram. Then one original leg <span class="math" data-tex="\(u_i:D_i\to Y\)">\(u_i:D_i\to Y\)</span> is epic.</p>
+<p>The two alternatives share the following image construction. For each <span class="math" data-tex="\(i\)">\(i\)</span>, form</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+Q_i=Y\amalg_{D_i}Y,
+\qquad Z_i=\operatorname{eq}(q_i^0,q_i^1),
+\qquad m_i:Z_i\to Y.
+\tag{3.2}
+\]">\[
+Q_i=Y\amalg_{D_i}Y,
+\qquad Z_i=\operatorname{eq}(q_i^0,q_i^1),
+\qquad m_i:Z_i\to Y.
+\tag{3.2}
+\]</span>
+<p>The notation in (3.2) means that <span class="math" data-tex="\(m_i\)">\(m_i\)</span> is the equalizer inclusion of the two maps <span class="math" data-tex="\(q_i^0,q_i^1:Y\to Q_i\)">\(q_i^0,q_i^1:Y\to Q_i\)</span>. A transition <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span> induces the unique <span class="math" data-tex="\(Q(s):Q_i\to Q_j\)">\(Q(s):Q_i\to Q_j\)</span> preserving both <span class="math" data-tex="\(Y\)">\(Y\)</span>-legs, because <span class="math" data-tex="\(u_jD(s)=u_i\)">\(u_jD(s)=u_i\)</span>. Pushout uniqueness gives both functor laws. Equalizer uniqueness then gives <span class="math" data-tex="\(Z(s):Z_i\to Z_j\)">\(Z(s):Z_i\to Z_j\)</span> with <span class="math" data-tex="\(m_jZ(s)=m_i\)">\(m_jZ(s)=m_i\)</span>. Cancellation of the monic <span class="math" data-tex="\(m_j\)">\(m_j\)</span> gives its functor laws and shows each <span class="math" data-tex="\(Z(s)\)">\(Z(s)\)</span> monic.</p>
+<p>A cocone <span class="math" data-tex="\(Q_i\to T\)">\(Q_i\to T\)</span> gives two compatible families of maps from <span class="math" data-tex="\(Y\)">\(Y\)</span>. Nonempty filteredness makes each family constant: arrows identify its entries, and a common receiver compares any two entries. The resulting pair <span class="math" data-tex="\(a,b:Y\to T\)">\(a,b:Y\to T\)</span> satisfies <span class="math" data-tex="\(au_i=bu_i\)">\(au_i=bu_i\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, which is equivalent to <span class="math" data-tex="\(au=bu\)">\(au=bu\)</span> by the original colimit property. Conversely that pair uniquely defines every compatible pushout factor. These are inverse factor constructions, preserving both <span class="math" data-tex="\(Y\)">\(Y\)</span>-legs and postcomposition in <span class="math" data-tex="\(T\)">\(T\)</span>. Consequently <span class="math" data-tex="\(\operatorname{colim}Q_i=Y\amalg_{\operatorname{colim}D_i}Y\)">\(\operatorname{colim}Q_i=Y\amalg_{\operatorname{colim}D_i}Y\)</span> compatibly.</p>
+<p>For any nonempty filtered category, the constant identity diagram at an object has that object as its colimit: a cocone has one common leg by the same receiver argument. Apply the finite-limit preservation in <span class="math" data-tex="\(H\)">\(H\)</span> to the entire equalizer diagram (3.2). Since <span class="math" data-tex="\(u\)">\(u\)</span> is epic, the two legs of its self-pushout agree. Their equalizer is <span class="math" data-tex="\(Y\)">\(Y\)</span>. We obtain the specified isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_I Z_i\xrightarrow{\sim}Y,
+\qquad\text{its leg at }i\text{ is }m_i.
+\tag{3.3}
+\]">\[
+\operatorname{colim}_I Z_i\xrightarrow{\sim}Y,
+\qquad\text{its leg at }i\text{ is }m_i.
+\tag{3.3}
+\]</span>
+<p><strong>Small-probe alternative.</strong> Assume <span class="math" data-tex="\(|\operatorname{Hom}(G,Y)|&lt;\pi\)">\(|\operatorname{Hom}(G,Y)|&lt;\pi\)</span>. Put <span class="math" data-tex="\(S=\operatorname{colim}_I\operatorname{Hom}(G,Z_i)\)">\(S=\operatorname{colim}_I\operatorname{Hom}(G,Z_i)\)</span> in sets, with class maps <span class="math" data-tex="\(e_i\)">\(e_i\)</span>. The function <span class="math" data-tex="\([i,h]\mapsto m_i h\)">\([i,h]\mapsto m_i h\)</span> injects <span class="math" data-tex="\(S\)">\(S\)</span> into <span class="math" data-tex="\(\operatorname{Hom}(G,Y)\)">\(\operatorname{Hom}(G,Y)\)</span>: receive two representatives at a common stage <span class="math" data-tex="\(k\)">\(k\)</span>, cancel the monic <span class="math" data-tex="\(m_k\)">\(m_k\)</span>, and use the resulting actual quotient witness. Each <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is also injective, since its composite with this function is postcomposition by <span class="math" data-tex="\(m_i\)">\(m_i\)</span>. Hence <span class="math" data-tex="\(|S|&lt;\pi\)">\(|S|&lt;\pi\)</span>. We do not identify <span class="math" data-tex="\(S\)">\(S\)</span> with the entire probe of <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>The complete <a href="bounded-colimits-accessible-sets-and-cardinal-ind-objects.html#4-the-exact-accessible-sets-at-a-regular-cardinal">small-set accessibility proof</a> represents <span class="math" data-tex="\(1_S\)">\(1_S\)</span> at one stage: there are <span class="math" data-tex="\(i_1\)">\(i_1\)</span> and <span class="math" data-tex="\(a:S\to\operatorname{Hom}(G,Z_{i_1})\)">\(a:S\to\operatorname{Hom}(G,Z_{i_1})\)</span> with <span class="math" data-tex="\(e_{i_1}a=1_S\)">\(e_{i_1}a=1_S\)</span>. This includes empty <span class="math" data-tex="\(S\)">\(S\)</span>, because the indexing category is nonempty. Since <span class="math" data-tex="\(e_{i_1}\)">\(e_{i_1}\)</span> is injective, it is bijective. For every actual <span class="math" data-tex="\(s:i_1\to i\)">\(s:i_1\to i\)</span>, the equation</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+e_i\operatorname{Hom}(G,Z(s))=e_{i_1}
+\tag{3.4}
+\]">\[
+e_i\operatorname{Hom}(G,Z(s))=e_{i_1}
+\tag{3.4}
+\]</span>
+<p>makes <span class="math" data-tex="\(\operatorname{Hom}(G,Z(s))\)">\(\operatorname{Hom}(G,Z(s))\)</span> bijective: injectivity follows after <span class="math" data-tex="\(e_i\)">\(e_i\)</span>; for a target element choose its <span class="math" data-tex="\(e_i\)">\(e_i\)</span>-image's inverse under <span class="math" data-tex="\(e_{i_1}\)">\(e_{i_1}\)</span>, then cancel <span class="math" data-tex="\(e_i\)">\(e_i\)</span>. Detection makes every <span class="math" data-tex="\(Z(s)\)">\(Z(s)\)</span> invertible.</p>
+<p>On the whole cofinal coslice <span class="math" data-tex="\((i_1\downarrow I)\)">\((i_1\downarrow I)\)</span>, these maps <span class="math" data-tex="\(Z(s)\)">\(Z(s)\)</span> form a natural isomorphism from the constant identity diagram at <span class="math" data-tex="\(Z_{i_1}\)">\(Z_{i_1}\)</span> to the restricted <span class="math" data-tex="\(Z\)">\(Z\)</span>-diagram; naturality is <span class="math" data-tex="\(Z(t)Z(s)=Z(ts)\)">\(Z(t)Z(s)=Z(ts)\)</span>. Its colimit is <span class="math" data-tex="\(Z_{i_1}\)">\(Z_{i_1}\)</span>. Cofinality and (3.3) therefore make the original inclusion <span class="math" data-tex="\(m_{i_1}:Z_{i_1}\to Y\)">\(m_{i_1}:Z_{i_1}\to Y\)</span> invertible, with that precise map, because the identity coslice object gives its original leg.</p>
+<p><strong>Accessible-target alternative.</strong> Assume instead that <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible. Write <span class="math" data-tex="\(d_i:Z_i\to Z\)">\(d_i:Z_i\to Z\)</span> for the colimit legs and <span class="math" data-tex="\(m:Z\xrightarrow{\sim}Y\)">\(m:Z\xrightarrow{\sim}Y\)</span> for the specific isomorphism (3.3), so <span class="math" data-tex="\(m d_i=m_i\)">\(m d_i=m_i\)</span>. The canonical accessibility bijection followed by postcomposition with <span class="math" data-tex="\(m\)">\(m\)</span> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_{i\in I}\operatorname{Hom}_C(Y,Z_i)
+\xrightarrow{\ \sim\ }\operatorname{Hom}_C(Y,Y),\\
+[i,a]\longmapsto m_i a.
+\end{gathered}
+\tag{3.5}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_{i\in I}\operatorname{Hom}_C(Y,Z_i)
+\xrightarrow{\ \sim\ }\operatorname{Hom}_C(Y,Y),\\
+[i,a]\longmapsto m_i a.
+\end{gathered}
+\tag{3.5}
+\]</span>
+<p>Represent <span class="math" data-tex="\(1_Y\)">\(1_Y\)</span> by one actual pair <span class="math" data-tex="\([i_1,a:Y\to Z_{i_1}]\)">\([i_1,a:Y\to Z_{i_1}]\)</span>. Thus <span class="math" data-tex="\(m_{i_1}a=1_Y\)">\(m_{i_1}a=1_Y\)</span>. Since <span class="math" data-tex="\(m_{i_1}\)">\(m_{i_1}\)</span> is monic, cancel it in <span class="math" data-tex="\(m_{i_1}a m_{i_1}=m_{i_1}\)">\(m_{i_1}a m_{i_1}=m_{i_1}\)</span> to obtain</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.6); horizontal scroll when needed" data-tex="\[
+a m_{i_1}=1_{Z_{i_1}},
+\qquad m_{i_1}a=1_Y.
+\tag{3.6}
+\]">\[
+a m_{i_1}=1_{Z_{i_1}},
+\qquad m_{i_1}a=1_Y.
+\tag{3.6}
+\]</span>
+<p>Therefore this original image inclusion is invertible. Accessibility is applied to <span class="math" data-tex="\(Y\)">\(Y\)</span>, not to <span class="math" data-tex="\(G\)">\(G\)</span>, and does not assert that the probe preserves this colimit. The index remains nonempty even if a Hom value is empty; the identity <span class="math" data-tex="\(1_Y\)">\(1_Y\)</span> itself has a representative by the assumed comparison.</p>
+<p>In either alternative, we have an index <span class="math" data-tex="\(i_1\)">\(i_1\)</span> for which <span class="math" data-tex="\(m_{i_1}\)">\(m_{i_1}\)</span> is invertible. Thus <span class="math" data-tex="\(q_{i_1}^0=q_{i_1}^1\)">\(q_{i_1}^0=q_{i_1}^1\)</span>. If <span class="math" data-tex="\(v,w:Y\to T\)">\(v,w:Y\to T\)</span> agree after <span class="math" data-tex="\(u_{i_1}\)">\(u_{i_1}\)</span>, their self-pushout factor <span class="math" data-tex="\(h:Q_{i_1}\to T\)">\(h:Q_{i_1}\to T\)</span> satisfies <span class="math" data-tex="\(v=hq_{i_1}^0=hq_{i_1}^1=w\)">\(v=hq_{i_1}^0=hq_{i_1}^1=w\)</span>. This proves that the original <span class="math" data-tex="\(u_{i_1}\)">\(u_{i_1}\)</span> is epic. No colimit preservation by the probe, epimorphic lift of every probe map, or epimorphism from <span class="math" data-tex="\(D_i\)">\(D_i\)</span> to its image has been assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-first-bound-proves-injectivity">4. The first bound proves injectivity</h2>
+<p><strong>Injectivity lemma.</strong> Suppose only <span class="math" data-tex="\(|\operatorname{Hom}(G,A)|&lt;\pi\)">\(|\operatorname{Hom}(G,A)|&lt;\pi\)</span>, in addition to <span class="math" data-tex="\(H\)">\(H\)</span> and infinite regular <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Then <span class="math" data-tex="\(\chi_{A,X}\)">\(\chi_{A,X}\)</span> is injective for every small <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered <span class="math" data-tex="\(X\)">\(X\)</span>. The second bound in the next section is not needed here.</p>
+<p>Take two representatives with equal target maps. Receive their indices at <span class="math" data-tex="\(i_0\)">\(i_0\)</span>, transporting them to <span class="math" data-tex="\(f,g:A\rightrightarrows X_{i_0}\)">\(f,g:A\rightrightarrows X_{i_0}\)</span> with <span class="math" data-tex="\(c_{i_0}f=c_{i_0}g\)">\(c_{i_0}f=c_{i_0}g\)</span>. For each actual <span class="math" data-tex="\(s:i_0\to i\)">\(s:i_0\to i\)</span>, let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+N_s=\operatorname{eq}(X(s)f,X(s)g),
+\qquad n_s:N_s\longrightarrow A.
+\tag{4.1}
+\]">\[
+N_s=\operatorname{eq}(X(s)f,X(s)g),
+\qquad n_s:N_s\longrightarrow A.
+\tag{4.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(n_s\)">\(n_s\)</span> is the specified equalizer inclusion into <span class="math" data-tex="\(A\)">\(A\)</span>. For a coslice arrow <span class="math" data-tex="\(t:s\to s&#x27;\)">\(t:s\to s&#x27;\)</span>, postcomposition transports the equalizer equation. There is a unique <span class="math" data-tex="\(N(t):N_s\to N_{s&#x27;}\)">\(N(t):N_s\to N_{s&#x27;}\)</span> with <span class="math" data-tex="\(n_{s&#x27;}N(t)=n_s\)">\(n_{s&#x27;}N(t)=n_s\)</span>. Its identity and composition equations follow by canceling <span class="math" data-tex="\(n_{s&#x27;}\)">\(n_{s&#x27;}\)</span>. These are the entire diagram and its inclusion cocone.</p>
+<p>The colimit of the constant <span class="math" data-tex="\(A\)">\(A\)</span>-diagram is <span class="math" data-tex="\(A\)">\(A\)</span>, and the colimit of the restricted <span class="math" data-tex="\(X\)">\(X\)</span>-diagram is (3.1). The two resulting maps are both <span class="math" data-tex="\(c_{i_0}f=c_{i_0}g\)">\(c_{i_0}f=c_{i_0}g\)</span>, because <span class="math" data-tex="\(c_iX(s)=c_{i_0}\)">\(c_iX(s)=c_{i_0}\)</span>. Filtered finite-limit exactness therefore identifies the specified comparison with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{s\in(i_0\downarrow I)}N_s
+\xrightarrow{\sim}A,
+\qquad\text{leg at }s\text{ is }n_s.
+\tag{4.2}
+\]">\[
+\operatorname{colim}_{s\in(i_0\downarrow I)}N_s
+\xrightarrow{\sim}A,
+\qquad\text{leg at }s\text{ is }n_s.
+\tag{4.2}
+\]</span>
+<p>Apply the stage epimorphism lemma in its small-probe alternative to this epic comparison and the target <span class="math" data-tex="\(A\)">\(A\)</span>. One <span class="math" data-tex="\(n_s\)">\(n_s\)</span> is epic. Its equalizer equation is <span class="math" data-tex="\(X(s)f n_s=X(s)g n_s\)">\(X(s)f n_s=X(s)g n_s\)</span>, so epic cancellation gives <span class="math" data-tex="\(X(s)f=X(s)g\)">\(X(s)f=X(s)g\)</span>. This one actual arrow <span class="math" data-tex="\(s:i_0\to i\)">\(s:i_0\to i\)</span> is the equality witness for the original colimit classes. The comparison is injective. Empty Hom values add no representative choices, and the coslice always contains <span class="math" data-tex="\(1_{i_0}\)">\(1_{i_0}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-both-bounds-lift-a-map-by-descending-its-cover">5. Both bounds lift a map by descending its cover</h2>
+<p><strong>Theorem 5.1 (two Hom bounds).</strong> Under <span class="math" data-tex="\(H\)">\(H\)</span>, let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be infinite regular and assume</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+T=\operatorname{Hom}(G,A),
+\qquad |T|&lt;\pi,
+\qquad |\operatorname{Hom}(G,P_T)|&lt;\pi.
+\tag{5.1}
+\]">\[
+T=\operatorname{Hom}(G,A),
+\qquad |T|&lt;\pi,
+\qquad |\operatorname{Hom}(G,P_T)|&lt;\pi.
+\tag{5.1}
+\]</span>
+<p>Then <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-accessible.</p>
+<p>The preceding lemma supplies injectivity. To prove surjectivity, take an actual <span class="math" data-tex="\(f:A\to L\)">\(f:A\to L\)</span>. For every <span class="math" data-tex="\(i\)">\(i\)</span>, form the pullback</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+Y_i=X_i\times_L A,
+\qquad t_i:Y_i\to X_i,
+\qquad p_i:Y_i\to A,
+\qquad c_it_i=fp_i.
+\tag{5.2}
+\]">\[
+Y_i=X_i\times_L A,
+\qquad t_i:Y_i\to X_i,
+\qquad p_i:Y_i\to A,
+\qquad c_it_i=fp_i.
+\tag{5.2}
+\]</span>
+<p>For <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>, the pair <span class="math" data-tex="\(X(s)t_i,p_i\)">\(X(s)t_i,p_i\)</span> defines the unique transition <span class="math" data-tex="\(Y(s):Y_i\to Y_j\)">\(Y(s):Y_i\to Y_j\)</span>. Its equations are <span class="math" data-tex="\(t_jY(s)=X(s)t_i\)">\(t_jY(s)=X(s)t_i\)</span> and <span class="math" data-tex="\(p_jY(s)=p_i\)">\(p_jY(s)=p_i\)</span>; pullback uniqueness gives both functor laws. The colimits of the constant <span class="math" data-tex="\(L,A\)">\(L,A\)</span>-diagrams are <span class="math" data-tex="\(L,A\)">\(L,A\)</span>. Exactness applied to this entire pullback diagram gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_IY_i\xrightarrow{\sim}A,
+\qquad\text{leg at }i\text{ is }p_i.
+\tag{5.3}
+\]">\[
+\operatorname{colim}_IY_i\xrightarrow{\sim}A,
+\qquad\text{leg at }i\text{ is }p_i.
+\tag{5.3}
+\]</span>
+<p>Indeed the final pullback is <span class="math" data-tex="\(L\times_L A\)">\(L\times_L A\)</span>, whose specified projection to <span class="math" data-tex="\(A\)">\(A\)</span> is invertible. The first bound and the stage lemma give <span class="math" data-tex="\(i_0\)">\(i_0\)</span> such that <span class="math" data-tex="\(p=p_{i_0}:Y_{i_0}\to A\)">\(p=p_{i_0}:Y_{i_0}\to A\)</span> is epic.</p>
+<p>Now retain exactly the generator maps that lift. Set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+E=\operatorname{Hom}(G,Y_{i_0}),\\
+r:E\to T,\qquad r(h)=ph,\\
+K=r(E)\subseteq T,\qquad \bar r:E\twoheadrightarrow K.
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+E=\operatorname{Hom}(G,Y_{i_0}),\\
+r:E\to T,\qquad r(h)=ph,\\
+K=r(E)\subseteq T,\qquad \bar r:E\twoheadrightarrow K.
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>The notation <span class="math" data-tex="\(\bar r\)">\(\bar r\)</span> is the actual function onto its image. It is not an assertion that <span class="math" data-tex="\(r\)">\(r\)</span> is onto <span class="math" data-tex="\(T\)">\(T\)</span>. Define <span class="math" data-tex="\(\varepsilon_K:P_K\to A\)">\(\varepsilon_K:P_K\to A\)</span> by <span class="math" data-tex="\(\varepsilon_Kj_k=k\)">\(\varepsilon_Kj_k=k\)</span>. The component equations give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+\varepsilon_KP(\bar r)=p\varepsilon_{Y_{i_0}}.
+\tag{5.5}
+\]">\[
+\varepsilon_KP(\bar r)=p\varepsilon_{Y_{i_0}}.
+\tag{5.5}
+\]</span>
+<p>The right side is a composite of epimorphisms, by (2.4) and the choice of <span class="math" data-tex="\(i_0\)">\(i_0\)</span>. Therefore <span class="math" data-tex="\(\varepsilon_K\)">\(\varepsilon_K\)</span> is epic: maps equal after it are equal after that composite. Choice selects a section <span class="math" data-tex="\(\sigma:K\to E\)">\(\sigma:K\to E\)</span> of the actual surjection <span class="math" data-tex="\(\bar r\)">\(\bar r\)</span>; for empty <span class="math" data-tex="\(K\)">\(K\)</span> this is the unique empty function. Equation (2.2) gives <span class="math" data-tex="\(P(\bar r)P(\sigma)=1_{P_K}\)">\(P(\bar r)P(\sigma)=1_{P_K}\)</span>.</p>
+<p>Write <span class="math" data-tex="\(B=P_K\)">\(B=P_K\)</span>, and put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+\ell=\varepsilon_{Y_{i_0}}P(\sigma):B\to Y_{i_0},
+\qquad b=t_{i_0}\ell:B\to X_{i_0}.
+\tag{5.6}
+\]">\[
+\ell=\varepsilon_{Y_{i_0}}P(\sigma):B\to Y_{i_0},
+\qquad b=t_{i_0}\ell:B\to X_{i_0}.
+\tag{5.6}
+\]</span>
+<p>Equations (5.2), (5.5) and the section identity show</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.7); horizontal scroll when needed" data-tex="\[
+p\ell=\varepsilon_K,
+\qquad c_{i_0}b=f\varepsilon_K.
+\tag{5.7}
+\]">\[
+p\ell=\varepsilon_K,
+\qquad c_{i_0}b=f\varepsilon_K.
+\tag{5.7}
+\]</span>
+<p>Thus we have lifted an epimorphic <strong>cover of <span class="math" data-tex="\(A\)">\(A\)</span></strong>, rather than every map from <span class="math" data-tex="\(G\)">\(G\)</span> to <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Let <span class="math" data-tex="\(R=B\times_A B\)">\(R=B\times_A B\)</span> for this cover, with projections <span class="math" data-tex="\(r_0,r_1:R\to B\)">\(r_0,r_1:R\to B\)</span>. The second bound in (5.1) and (2.3), applied to <span class="math" data-tex="\(K\subseteq T\)">\(K\subseteq T\)</span>, give <span class="math" data-tex="\(|\operatorname{Hom}(G,B)|&lt;\pi\)">\(|\operatorname{Hom}(G,B)|&lt;\pi\)</span>. The pullback property gives an actual bijection between maps <span class="math" data-tex="\(G\to R\)">\(G\to R\)</span> and pairs of maps <span class="math" data-tex="\(G\to B\)">\(G\to B\)</span> with the same composite to <span class="math" data-tex="\(A\)">\(A\)</span>. In particular,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.8); horizontal scroll when needed" data-tex="\[
+|\operatorname{Hom}(G,R)|
+\leq|\operatorname{Hom}(G,B)|^2&lt;\pi.
+\tag{5.8}
+\]">\[
+|\operatorname{Hom}(G,R)|
+\leq|\operatorname{Hom}(G,B)|^2&lt;\pi.
+\tag{5.8}
+\]</span>
+<p>For finite Hom sets the square is finite, including cardinal zero. For infinite ones the complete <a href="well-orders-cardinal-bounds-and-regular-successors.html#5-cardinal-operations-and-the-infinite-square">infinite-square proof</a> makes the square equal to the original cardinal. This particular inequality needs no regularity beyond <span class="math" data-tex="\(\pi\)">\(\pi\)</span> being infinite; regularity is retained for the theorem's full hypotheses.</p>
+<p>Since <span class="math" data-tex="\(\varepsilon_K\)">\(\varepsilon_K\)</span> is strict and epic, (1.1) is the actual coequalizer fork <span class="math" data-tex="\(R\rightrightarrows B\xrightarrow{\varepsilon_K}A\)">\(R\rightrightarrows B\xrightarrow{\varepsilon_K}A\)</span>. Equation (5.7) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.9); horizontal scroll when needed" data-tex="\[
+c_{i_0}br_0=f\varepsilon_Kr_0
+=f\varepsilon_Kr_1=c_{i_0}br_1.
+\tag{5.9}
+\]">\[
+c_{i_0}br_0=f\varepsilon_Kr_0
+=f\varepsilon_Kr_1=c_{i_0}br_1.
+\tag{5.9}
+\]</span>
+<p>Apply <strong>only the injectivity lemma</strong> of Section 4 to the object <span class="math" data-tex="\(R\)">\(R\)</span>, using (5.8). It says that the classes of <span class="math" data-tex="\(br_0,br_1:R\to X_{i_0}\)">\(br_0,br_1:R\to X_{i_0}\)</span> are equal. The one-arrow same-stage criterion supplies an actual <span class="math" data-tex="\(s:i_0\to i\)">\(s:i_0\to i\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.10); horizontal scroll when needed" data-tex="\[
+X(s)br_0=X(s)br_1.
+\tag{5.10}
+\]">\[
+X(s)br_0=X(s)br_1.
+\tag{5.10}
+\]</span>
+<p>The coequalizer property now defines a unique <span class="math" data-tex="\(a:A\to X_i\)">\(a:A\to X_i\)</span> with <span class="math" data-tex="\(a\varepsilon_K=X(s)b\)">\(a\varepsilon_K=X(s)b\)</span>. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.11); horizontal scroll when needed" data-tex="\[
+c_i a\varepsilon_K
+=c_iX(s)b
+=c_{i_0}b
+=f\varepsilon_K.
+\tag{5.11}
+\]">\[
+c_i a\varepsilon_K
+=c_iX(s)b
+=c_{i_0}b
+=f\varepsilon_K.
+\tag{5.11}
+\]</span>
+<p>Cancel the epic <span class="math" data-tex="\(\varepsilon_K\)">\(\varepsilon_K\)</span> to get <span class="math" data-tex="\(c_i a=f\)">\(c_i a=f\)</span>. This is surjectivity of the precise function (1.2), and hence the claimed accessibility. Its inverse is independent of the sections, representatives, coproduct choices and stages because injectivity has already been proved. The naturality equations (1.3) and the precomposition equation therefore apply also to these inverse bijections.</p>
+<p>Every empty case is retained: empty <span class="math" data-tex="\(T\)">\(T\)</span> and empty <span class="math" data-tex="\(K\)">\(K\)</span>, the initial coproduct, a possibly empty <span class="math" data-tex="\(\operatorname{Hom}(G,0)\)">\(\operatorname{Hom}(G,0)\)</span>, and empty values in the filtered Set quotients. A <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-filtered index is always nonempty. Neither <span class="math" data-tex="\(B\)">\(B\)</span> nor <span class="math" data-tex="\(R\)">\(R\)</span> is assumed accessible before its needed property is proved; only the first bound is applied to <span class="math" data-tex="\(R\)">\(R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Worked example: three points in a growing set.</strong> In sets take <span class="math" data-tex="\(G=\{*\}\)">\(G=\{*\}\)</span>, <span class="math" data-tex="\(A=\{a,b,c\}\)">\(A=\{a,b,c\}\)</span>, <span class="math" data-tex="\(X_n=\{0,\ldots,n\}\)">\(X_n=\{0,\ldots,n\}\)</span> and the inclusion transitions. The colimit is <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. Here <span class="math" data-tex="\(T=A\)">\(T=A\)</span> by evaluation at <span class="math" data-tex="\(*\)">\(*\)</span>, and <span class="math" data-tex="\(P_T\)">\(P_T\)</span> is a three-element set, so both bounds hold at <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>. For <span class="math" data-tex="\(f(a)=2,f(b)=5,f(c)=2\)">\(f(a)=2,f(b)=5,f(c)=2\)</span>, stage <span class="math" data-tex="\(5\)">\(5\)</span> already contains every value. Its pullback over <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(K=T\)">\(K=T\)</span>, and the descended stage map has exactly those three values. Equality of two functions in the colimit is coordinatewise eventual equality; the finite witness family is synchronized by one later arrow. In a category with nontrivial parallel arrows, that synchronization is part of the proof, not an assumption.</p>
+<p>Sets satisfy <span class="math" data-tex="\(H\)">\(H\)</span>: small tagged-union quotients construct all colimits, compatible tuples construct finite limits, and the complete <a href="filtered-stages-and-finite-limits.html#4-finite-limits-detect-filteredness">filtered finite-limit comparison</a> proves exactness. A singleton detects bijections. Set epimorphisms are surjections: if a point is missed, its indicator and the constant-zero function disagree but agree after the map. A surjection is the coequalizer of its fibre pair, by the unique class factor, so is strict.</p>
+<h2 id="6-two-cardinal-parameters-with-four-distinct-conditions">6. Two cardinal parameters with four distinct conditions</h2>
+<p>For the next theorem keep <span class="math" data-tex="\(H\)">\(H\)</span> and cardinals <span class="math" data-tex="\(\pi_0,\pi\)">\(\pi_0,\pi\)</span> satisfying all four conditions:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\begin{array}{ll}
+\text{(a)}&amp;\pi_0,\pi\text{ are infinite regular};\\
+\text{(b)}&amp;G\text{ is }\pi_0\text{-accessible};\\
+\text{(c)}&amp;\rho^{\pi_0}&lt;\pi\text{ for every cardinal }\rho&lt;\pi;\\
+\text{(d)}&amp;P_E\twoheadrightarrow Q,\ |E|&lt;\pi_0\\
+&amp;\hspace{1em}\Longrightarrow\ |\operatorname{Hom}(G,Q)|&lt;\pi.
+\end{array}
+\tag{6.1}
+\]">\[
+\begin{array}{ll}
+\text{(a)}&amp;\pi_0,\pi\text{ are infinite regular};\\
+\text{(b)}&amp;G\text{ is }\pi_0\text{-accessible};\\
+\text{(c)}&amp;\rho^{\pi_0}&lt;\pi\text{ for every cardinal }\rho&lt;\pi;\\
+\text{(d)}&amp;P_E\twoheadrightarrow Q,\ |E|&lt;\pi_0\\
+&amp;\hspace{1em}\Longrightarrow\ |\operatorname{Hom}(G,Q)|&lt;\pi.
+\end{array}
+\tag{6.1}
+\]</span>
+<p>The fourth condition includes <span class="math" data-tex="\(E=\varnothing\)">\(E=\varnothing\)</span>. The second is an actual accessibility statement, not merely detection by <span class="math" data-tex="\(G\)">\(G\)</span>. The exponent in (c) is <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span>, not <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Applying (c) to <span class="math" data-tex="\(\rho=2\)">\(\rho=2\)</span> implies <span class="math" data-tex="\(\pi_0&lt;\pi\)">\(\pi_0&lt;\pi\)</span>, by Cantor's theorem; this relation is a consequence, rather than an additional unmentioned hypothesis.</p>
+<p>Here is a complete way to obtain these parameters under <span class="math" data-tex="\(H\)">\(H\)</span>. Both <span class="math" data-tex="\(\operatorname{Hom}(G,G)\)">\(\operatorname{Hom}(G,G)\)</span> and <span class="math" data-tex="\(\operatorname{Hom}(G,P_{\operatorname{Hom}(G,G)})\)">\(\operatorname{Hom}(G,P_{\operatorname{Hom}(G,G)})\)</span> are small sets. Choose an infinite cardinal bounding their cardinalities, then its cardinal successor <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span>. The complete <a href="well-orders-cardinal-bounds-and-regular-successors.html#6-regular-cardinals-and-successors">regular-successor proof</a> makes <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> regular, and Theorem 5.1, applied to <span class="math" data-tex="\(A=G\)">\(A=G\)</span> with <strong>both</strong> bounds, gives (b).</p>
+<p>For each initial cardinal <span class="math" data-tex="\(\alpha&lt;\pi_0\)">\(\alpha&lt;\pi_0\)</span>, choose a small set of representative strict quotients of <span class="math" data-tex="\(P_\alpha\)">\(P_\alpha\)</span>, with their quotient arrows. This is licensed by the entire <a href="generators-and-small-quotient-families.html#4-small-subobjects-and-strict-quotients">strict-quotient encoding proof</a>: the kernel pair is a subobject of <span class="math" data-tex="\(P_\alpha\times P_\alpha\)">\(P_\alpha\times P_\alpha\)</span>, possible subobjects are encoded by subsets of small probe sets, and two quotients with the same kernel pair are uniquely isomorphic over <span class="math" data-tex="\(P_\alpha\)">\(P_\alpha\)</span>. Because every epimorphism is strict, these representatives cover every epimorphic quotient here.</p>
+<p>The initial cardinals below <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> form a small subset of <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span>. Collect the whole tagged family of representatives over this subset, and then the whole tagged union of their small <span class="math" data-tex="\(G\)">\(G\)</span>-Hom sets. Universe closure makes this one small family and one small union. Choose a cardinal <span class="math" data-tex="\(\pi_1\geq\pi_0\)">\(\pi_1\geq\pi_0\)</span> strictly larger than that union's cardinal. For any small <span class="math" data-tex="\(E\)">\(E\)</span> of size below <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span>, a bijection <span class="math" data-tex="\(E\to\alpha\)">\(E\to\alpha\)</span> induces the compatible coproduct isomorphism by (2.2). Transport an arbitrary quotient of <span class="math" data-tex="\(P_E\)">\(P_E\)</span> across it, and then across its representative target isomorphism. Postcomposition by that target isomorphism is a Hom bijection. Thus the one bound <span class="math" data-tex="\(|\operatorname{Hom}(G,Q)|&lt;\pi_1\)">\(|\operatorname{Hom}(G,Q)|&lt;\pi_1\)</span> covers <strong>all</strong> such quotients, including the initial coproduct. Per-index smallness alone would not supply this uniform bound.</p>
+<p>Set <span class="math" data-tex="\(\pi=(2^{\pi_1})^+\)">\(\pi=(2^{\pi_1})^+\)</span>, the cardinal successor of the power-set cardinal. Both <span class="math" data-tex="\(\pi,\pi_0\)">\(\pi,\pi_0\)</span> are regular; no regularity of the intermediate <span class="math" data-tex="\(\pi_1\)">\(\pi_1\)</span> is required. If <span class="math" data-tex="\(\rho&lt;\pi\)">\(\rho&lt;\pi\)</span>, then <span class="math" data-tex="\(\rho\leq2^{\pi_1}\)">\(\rho\leq2^{\pi_1}\)</span>. Postcomposition with an injection of the bases and the complete <a href="well-orders-cardinal-bounds-and-regular-successors.html#7-a-larger-cardinal-unchanged-by-a-prescribed-exponent">function-set currying and cardinal product proofs</a> give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\rho^{\pi_0}
+\leq(2^{\pi_1})^{\pi_0}
+=2^{\pi_1\cdot\pi_0}
+=2^{\pi_1}&lt;\pi.
+\tag{6.2}
+\]">\[
+\rho^{\pi_0}
+\leq(2^{\pi_1})^{\pi_0}
+=2^{\pi_1\cdot\pi_0}
+=2^{\pi_1}&lt;\pi.
+\tag{6.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(\pi_1\cdot\pi_0=\pi_1\)">\(\pi_1\cdot\pi_0=\pi_1\)</span> because both are infinite and <span class="math" data-tex="\(\pi_1\geq\pi_0\)">\(\pi_1\geq\pi_0\)</span>. The currying map sends a function <span class="math" data-tex="\(\pi_0\to\{0,1\}^{\pi_1}\)">\(\pi_0\to\{0,1\}^{\pi_1}\)</span> to <span class="math" data-tex="\((a,b)\mapsto F(b)(a)\)">\((a,b)\mapsto F(b)(a)\)</span>, with inverse <span class="math" data-tex="\(b\mapsto(a\mapsto f(a,b))\)">\(b\mapsto(a\mapsto f(a,b))\)</span>. The base-injection step includes <span class="math" data-tex="\(\rho=0,1\)">\(\rho=0,1\)</span>. The uniform <span class="math" data-tex="\(\pi_1\)">\(\pi_1\)</span>-bound gives (d), since <span class="math" data-tex="\(\pi_1&lt;\pi\)">\(\pi_1&lt;\pi\)</span>. All cardinals and representative collections stay in the working universe by the retained closure and successor proofs. This construction derives (6.1) without using the quotient theorem proved next.</p>
+<h2 id="7-count-every-small-subset-including-zero-and-one-point">7. Count every small subset, including zero and one point</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a small set with <span class="math" data-tex="\(|A|&lt;\pi\)">\(|A|&lt;\pi\)</span>, and put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+I=\{B\subseteq A:|B|&lt;\pi_0\},
+\qquad\beta=\max(2,|A|).
+\tag{7.1}
+\]">\[
+I=\{B\subseteq A:|B|&lt;\pi_0\},
+\qquad\beta=\max(2,|A|).
+\tag{7.1}
+\]</span>
+<p>Regard <span class="math" data-tex="\(I\)">\(I\)</span> as the full inclusion category, with arrows all <span class="math" data-tex="\((B,D)\)">\((B,D)\)</span> such that <span class="math" data-tex="\(B\subseteq D\)">\(B\subseteq D\)</span>, identity <span class="math" data-tex="\((B,B)\)">\((B,B)\)</span>, and composition <span class="math" data-tex="\((D,E)(B,D)=(B,E)\)">\((D,E)(B,D)=(B,E)\)</span>. Object and arrow sets are subsets of <span class="math" data-tex="\(\mathcal P(A)\)">\(\mathcal P(A)\)</span> and its square, with the appropriate universe encodings. Regularity of <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> says that the union of fewer than <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> subsets of cardinal below <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> still has that bound. The union receives the whole bounded family by inclusion; the empty family is received by <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>. Thinness makes the target identity equalize every parallel family. Thus <span class="math" data-tex="\(I\)">\(I\)</span> is small and <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span>-filtered, as in the complete <a href="small-predecessors-and-maps-into-filtered-colimits.html#3-small-subsets-with-every-inclusion-arrow">small-subset proof</a>. We do not assert <span class="math" data-tex="\(|I|&lt;\pi_0\)">\(|I|&lt;\pi_0\)</span>.</p>
+<p>The needed different bound is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+|I|\leq\max(2,|A|)^{\pi_0}&lt;\pi.
+\tag{7.2}
+\]">\[
+|I|\leq\max(2,|A|)^{\pi_0}&lt;\pi.
+\tag{7.2}
+\]</span>
+<p>Here is the complete coding proof of the first inequality. If <span class="math" data-tex="\(A\)">\(A\)</span> is empty, its one subset is coded by the constant-zero function <span class="math" data-tex="\(\pi_0\to2\)">\(\pi_0\to2\)</span>. For a singleton <span class="math" data-tex="\(A\)">\(A\)</span>, its two subsets are coded by the distinct constant-zero and constant-one functions; they differ at <span class="math" data-tex="\(0\in\pi_0\)">\(0\in\pi_0\)</span>. These cases have <span class="math" data-tex="\(\beta=2\)">\(\beta=2\)</span>.</p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> has distinct <span class="math" data-tex="\(a_0,a_1\)">\(a_0,a_1\)</span>, then <span class="math" data-tex="\(\beta=|A|\)">\(\beta=|A|\)</span>. For every nonempty <span class="math" data-tex="\(B\in I\)">\(B\in I\)</span>, choose <span class="math" data-tex="\(b_B\in B\)">\(b_B\in B\)</span> and an injection <span class="math" data-tex="\(e_B:B\to\pi_0\)">\(e_B:B\to\pi_0\)</span>. This is Choice over the set of nonempty members of <span class="math" data-tex="\(I\)">\(I\)</span>. Define <span class="math" data-tex="\(s_B:\pi_0\to B\)">\(s_B:\pi_0\to B\)</span> to take value <span class="math" data-tex="\(b\)">\(b\)</span> at <span class="math" data-tex="\(e_B(b)\)">\(e_B(b)\)</span>, and value <span class="math" data-tex="\(b_B\)">\(b_B\)</span> at the remaining arguments. Its image is exactly <span class="math" data-tex="\(B\)">\(B\)</span>. There is an explicit bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+d:\pi_0\xrightarrow{\sim}\pi_0\setminus\{0\},
+\qquad d(n)=n+1\ (n&lt;\omega),
+\qquad d(\xi)=\xi\ (\xi\geq\omega).
+\tag{7.3}
+\]">\[
+d:\pi_0\xrightarrow{\sim}\pi_0\setminus\{0\},
+\qquad d(n)=n+1\ (n&lt;\omega),
+\qquad d(\xi)=\xi\ (\xi\geq\omega).
+\tag{7.3}
+\]</span>
+<p>Its inverse takes positive finite ordinals to their predecessors and fixes infinite ordinals; when <span class="math" data-tex="\(\pi_0=\omega\)">\(\pi_0=\omega\)</span>, the infinite part is empty. Code the empty subset by the constant function with value <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. For nonempty <span class="math" data-tex="\(B\)">\(B\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.4); horizontal scroll when needed" data-tex="\[
+f_B(0)=a_1,
+\qquad f_B(d(\xi))=s_B(\xi).
+\tag{7.4}
+\]">\[
+f_B(0)=a_1,
+\qquad f_B(d(\xi))=s_B(\xi).
+\tag{7.4}
+\]</span>
+<p>The flag at <span class="math" data-tex="\(0\)">\(0\)</span> distinguishes emptiness, and the image on <span class="math" data-tex="\(\pi_0\setminus\{0\}\)">\(\pi_0\setminus\{0\}\)</span> recovers every nonempty <span class="math" data-tex="\(B\)">\(B\)</span>. These are therefore distinct functions for distinct subsets, giving an injection <span class="math" data-tex="\(I\to A^{\pi_0}\)">\(I\to A^{\pi_0}\)</span> in this case. The code graphs and their set-indexed choices have the retained universe bounds. This coding uses only infinitude of the exponent; regularity is used separately for filteredness of <span class="math" data-tex="\(I\)">\(I\)</span>. Since <span class="math" data-tex="\(\beta&lt;\pi\)">\(\beta&lt;\pi\)</span>, condition (c) gives the strict inequality in (7.2). The unpadded bound with base <span class="math" data-tex="\(|A|\)">\(|A|\)</span> would be false for empty and singleton <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="8-coimages-form-the-entire-subcover-diagram">8. Coimages form the entire subcover diagram</h2>
+<p><strong>Theorem 8.1 (quotient probe bound).</strong> Under <span class="math" data-tex="\(H\)">\(H\)</span> and all four conditions (6.1), an epimorphism <span class="math" data-tex="\(u:P_A\to X\)">\(u:P_A\to X\)</span> with <span class="math" data-tex="\(|A|&lt;\pi\)">\(|A|&lt;\pi\)</span> satisfies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+|\operatorname{Hom}(G,X)|&lt;\pi.
+\tag{8.1}
+\]">\[
+|\operatorname{Hom}(G,X)|&lt;\pi.
+\tag{8.1}
+\]</span>
+<p>For every <span class="math" data-tex="\(B\in I\)">\(B\in I\)</span> from (7.1), let <span class="math" data-tex="\(\iota_B:B\hookrightarrow A\)">\(\iota_B:B\hookrightarrow A\)</span>, <span class="math" data-tex="\(f_B=uP(\iota_B)\)">\(f_B=uP(\iota_B)\)</span>, and form its coimage factorization</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+P_B\xrightarrow{q_B}X_B
+\xrightarrow{m_B}X,
+\qquad m_Bq_B=f_B.
+\tag{8.2}
+\]">\[
+P_B\xrightarrow{q_B}X_B
+\xrightarrow{m_B}X,
+\qquad m_Bq_B=f_B.
+\tag{8.2}
+\]</span>
+<p>The quotient <span class="math" data-tex="\(q_B\)">\(q_B\)</span> is strict epic. Under the assumption that <strong>all</strong> epimorphisms are strict, <span class="math" data-tex="\(m_B\)">\(m_B\)</span> is monic, by the full <a href="coimages-images-and-composition-of-quotients.html#4-when-quotients-compose">coimage composition proof</a>. To keep its logical use explicit, that proof works as follows. For a general <span class="math" data-tex="\(f=mq\)">\(f=mq\)</span> with <span class="math" data-tex="\(q=\operatorname{coim}(f)\)">\(q=\operatorname{coim}(f)\)</span>, form <span class="math" data-tex="\(t=\operatorname{coim}(m)\)">\(t=\operatorname{coim}(m)\)</span>. The maps <span class="math" data-tex="\(q,t,tq\)">\(q,t,tq\)</span> are strict epic, the last by the hypothesis on all epimorphisms. For maps <span class="math" data-tex="\(a,b\)">\(a,b\)</span> into the original source, <span class="math" data-tex="\(fa=fb\)">\(fa=fb\)</span> is equivalent to <span class="math" data-tex="\(qa=qb\)">\(qa=qb\)</span>, by the original kernel pair and the factorization. Also <span class="math" data-tex="\(tqa=tqb\)">\(tqa=tqb\)</span> implies <span class="math" data-tex="\(fa=fb\)">\(fa=fb\)</span>, since <span class="math" data-tex="\(m\)">\(m\)</span> factors through <span class="math" data-tex="\(t\)">\(t\)</span>; the reverse implication follows from <span class="math" data-tex="\(qa=qb\)">\(qa=qb\)</span>. Thus <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(tq\)">\(tq\)</span> have the same kernel pair. They are its two coequalizers, so their comparison <span class="math" data-tex="\(t\)">\(t\)</span> is invertible. The coimage of <span class="math" data-tex="\(m\)">\(m\)</span> being invertible forces its kernel-pair projections to agree, and the universal pullback test then makes <span class="math" data-tex="\(m\)">\(m\)</span> monic. This does not identify coimage with image for an arbitrary arrow.</p>
+<p>For every inclusion <span class="math" data-tex="\(v:B\hookrightarrow D\)">\(v:B\hookrightarrow D\)</span>, the map <span class="math" data-tex="\(q_D P(v):P_B\to X_D\)">\(q_D P(v):P_B\to X_D\)</span> descends across <span class="math" data-tex="\(q_B\)">\(q_B\)</span>. Indeed, if <span class="math" data-tex="\(r_0,r_1\)">\(r_0,r_1\)</span> are the kernel-pair projections of <span class="math" data-tex="\(q_B\)">\(q_B\)</span>, their composites under this map agree after the monic <span class="math" data-tex="\(m_D\)">\(m_D\)</span>, because</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+m_Dq_DP(v)r_a
+=m_Bq_Br_a\qquad(a=0,1).
+\tag{8.3}
+\]">\[
+m_Dq_DP(v)r_a
+=m_Bq_Br_a\qquad(a=0,1).
+\tag{8.3}
+\]</span>
+<p>Cancel <span class="math" data-tex="\(m_D\)">\(m_D\)</span>, and use the coequalizer property of <span class="math" data-tex="\(q_B\)">\(q_B\)</span> to define the unique <span class="math" data-tex="\(x_{BD}:X_B\to X_D\)">\(x_{BD}:X_B\to X_D\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.4); horizontal scroll when needed" data-tex="\[
+x_{BD}q_B=q_DP(v),
+\qquad m_Dx_{BD}=m_B.
+\tag{8.4}
+\]">\[
+x_{BD}q_B=q_DP(v),
+\qquad m_Dx_{BD}=m_B.
+\tag{8.4}
+\]</span>
+<p>The second equation follows by canceling <span class="math" data-tex="\(q_B\)">\(q_B\)</span>. Identity and composition follow by the same epic cancellation and the coproduct functor laws. Also <span class="math" data-tex="\(x_{BD}\)">\(x_{BD}\)</span> is monic: its composite with <span class="math" data-tex="\(m_D\)">\(m_D\)</span> is the monic <span class="math" data-tex="\(m_B\)">\(m_B\)</span>. We have the whole <span class="math" data-tex="\(I\)">\(I\)</span>-diagram of compatible subobjects and natural quotients, including <span class="math" data-tex="\(B=\varnothing\)">\(B=\varnothing\)</span>.</p>
+<p>Let <span class="math" data-tex="\(Z=\operatorname{colim}_{B\in I}X_B\)">\(Z=\operatorname{colim}_{B\in I}X_B\)</span>, with legs <span class="math" data-tex="\(d_B\)">\(d_B\)</span>, and let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.5); horizontal scroll when needed" data-tex="\[
+m:Z\to X,
+\qquad md_B=m_B.
+\tag{8.5}
+\]">\[
+m:Z\to X,
+\qquad md_B=m_B.
+\tag{8.5}
+\]</span>
+<p>This actual comparison is monic. Every diagonal <span class="math" data-tex="\(X_B\to X_B\times_X X_B\)">\(X_B\to X_B\times_X X_B\)</span> is an isomorphism because <span class="math" data-tex="\(m_B\)">\(m_B\)</span> is monic. The transitions in (8.4) make these diagonals natural. Filtered finite-limit exactness, applied to the pullback diagram <span class="math" data-tex="\(X_B\to X\leftarrow X_B\)">\(X_B\to X\leftarrow X_B\)</span>, identifies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.6); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{B\in I}(X_B\times_X X_B)
+\xrightarrow{\sim} Z\times_X Z.
+\tag{8.6}
+\]">\[
+\operatorname{colim}_{B\in I}(X_B\times_X X_B)
+\xrightarrow{\sim} Z\times_X Z.
+\tag{8.6}
+\]</span>
+<p>The constant identity <span class="math" data-tex="\(X\)">\(X\)</span>-diagram has colimit <span class="math" data-tex="\(X\)">\(X\)</span>. The colimit of the diagonal isomorphisms is an isomorphism, since their natural inverses induce its inverse. On every <span class="math" data-tex="\(d_B\)">\(d_B\)</span>, the transported map has both projections equal to <span class="math" data-tex="\(d_B\)">\(d_B\)</span>; hence it is exactly the diagonal <span class="math" data-tex="\(\delta_m:Z\to Z\times_X Z\)">\(\delta_m:Z\to Z\times_X Z\)</span>. Its invertibility makes <span class="math" data-tex="\(m\)">\(m\)</span> monic by the complete <span class="unlinked">diagonal cancellation test</span>: if <span class="math" data-tex="\(ma=mb\)">\(ma=mb\)</span>, the pullback factor with projections <span class="math" data-tex="\(a,b\)">\(a,b\)</span> has equal projections because the diagonal is invertible, so <span class="math" data-tex="\(a=b\)">\(a=b\)</span>.</p>
+<p>There is also the compatible coproduct colimit</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.7); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{B\in I}P_B
+\xrightarrow{\sim}P_A,
+\qquad\text{leg at }B\text{ is }P(\iota_B).
+\tag{8.7}
+\]">\[
+\operatorname{colim}_{B\in I}P_B
+\xrightarrow{\sim}P_A,
+\qquad\text{leg at }B\text{ is }P(\iota_B).
+\tag{8.7}
+\]</span>
+<p>For completeness, a cocone <span class="math" data-tex="\(h_B:P_B\to T\)">\(h_B:P_B\to T\)</span> gives, for every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, the map <span class="math" data-tex="\(h_{\{a\}}j_a:G\to T\)">\(h_{\{a\}}j_a:G\to T\)</span>. These component maps define one <span class="math" data-tex="\(h:P_A\to T\)">\(h:P_A\to T\)</span>. For <span class="math" data-tex="\(a\in B\)">\(a\in B\)</span>, the actual inclusion <span class="math" data-tex="\(\{a\}\subseteq B\)">\(\{a\}\subseteq B\)</span> gives <span class="math" data-tex="\(hP(\iota_B)j_a=h_Bj_a\)">\(hP(\iota_B)j_a=h_Bj_a\)</span>; coproduct uniqueness gives <span class="math" data-tex="\(hP(\iota_B)=h_B\)">\(hP(\iota_B)=h_B\)</span>. For empty <span class="math" data-tex="\(B\)">\(B\)</span>, both maps have initial source. Conversely, restrictions of any <span class="math" data-tex="\(h\)">\(h\)</span> give the cocone, and the two constructions recover every component and every <span class="math" data-tex="\(h_B\)">\(h_B\)</span>. They commute with postcomposition in <span class="math" data-tex="\(T\)">\(T\)</span>. For empty <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(I\)">\(I\)</span> has the sole object <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, and this is the identity colimit at <span class="math" data-tex="\(P_\varnothing\)">\(P_\varnothing\)</span>.</p>
+<p>The compatible maps <span class="math" data-tex="\(d_Bq_B\)">\(d_Bq_B\)</span> and (8.7) define <span class="math" data-tex="\(v:P_A\to Z\)">\(v:P_A\to Z\)</span>. They satisfy <span class="math" data-tex="\(vP(\iota_B)=d_Bq_B\)">\(vP(\iota_B)=d_Bq_B\)</span>. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.8); horizontal scroll when needed" data-tex="\[
+mvP(\iota_B)=m_Bq_B=uP(\iota_B)
+\quad\text{for every }B,
+\qquad mv=u.
+\tag{8.8}
+\]">\[
+mvP(\iota_B)=m_Bq_B=uP(\iota_B)
+\quad\text{for every }B,
+\qquad mv=u.
+\tag{8.8}
+\]</span>
+<p>The last equality follows from the colimit factor uniqueness in (8.7), or on every singleton component. Since <span class="math" data-tex="\(u\)">\(u\)</span> is epic, <span class="math" data-tex="\(m\)">\(m\)</span> is epic. By <span class="math" data-tex="\(H\)">\(H\)</span> it is strict, and we already proved it monic; Section 1 gives its inverse. Thus (8.5) is the specified isomorphism from the whole subcover colimit to <span class="math" data-tex="\(X\)">\(X\)</span>. No blanket preservation of epimorphisms by a colimit functor has been invoked.</p>
+<p>Only now use condition (b). It applies to the actual small <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span>-filtered <span class="math" data-tex="\(X_B\)">\(X_B\)</span>-diagram. Its canonical comparison followed by <span class="math" data-tex="\(\operatorname{Hom}(G,m)\)">\(\operatorname{Hom}(G,m)\)</span> is a bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.9); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_{B\in I}\operatorname{Hom}(G,X_B)
+\xrightarrow{\sim}\operatorname{Hom}(G,X),\\
+[B,h]\longmapsto m_Bh.
+\end{gathered}
+\tag{8.9}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_{B\in I}\operatorname{Hom}(G,X_B)
+\xrightarrow{\sim}\operatorname{Hom}(G,X),\\
+[B,h]\longmapsto m_Bh.
+\end{gathered}
+\tag{8.9}
+\]</span>
+<p>Each <span class="math" data-tex="\(q_B\)">\(q_B\)</span> is a quotient of fewer than <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> copies of <span class="math" data-tex="\(G\)">\(G\)</span>, so condition (d) gives <span class="math" data-tex="\(|\operatorname{Hom}(G,X_B)|&lt;\pi\)">\(|\operatorname{Hom}(G,X_B)|&lt;\pi\)</span>. Formula (7.2) gives <span class="math" data-tex="\(|I|&lt;\pi\)">\(|I|&lt;\pi\)</span>. Regularity of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, used on this entire tagged family, gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.10); horizontal scroll when needed" data-tex="\[
+\left|\coprod_{B\in I}\operatorname{Hom}(G,X_B)\right|&lt;\pi.
+\tag{8.10}
+\]">\[
+\left|\coprod_{B\in I}\operatorname{Hom}(G,X_B)\right|&lt;\pi.
+\tag{8.10}
+\]</span>
+<p>Its Set-colimit is a quotient of that tagged union. Well-order the tagged union and choose the least representative of each equivalence class; this injects the quotient into it. The empty union has empty quotient and its unique empty injection. Combining (8.9) and (8.10) proves (8.1).</p>
+<p>The two regularities have distinct jobs: <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> bounds the unions making <span class="math" data-tex="\(I\)">\(I\)</span> filtered; <span class="math" data-tex="\(\pi\)">\(\pi\)</span> bounds the final tagged union of Hom sets. Condition (c) bounds the number of stages, and (d) bounds every stage's probe. Accessibility of <span class="math" data-tex="\(G\)">\(G\)</span> is used precisely at (8.9), not inferred from detection. For empty <span class="math" data-tex="\(A\)">\(A\)</span>, condition (d) itself includes the original quotient of the initial coproduct; there is no assumption that its probe is empty or that this quotient is initial. All empty and singleton stages remain in the diagram. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Worked example: a four-label quotient.</strong> In sets let <span class="math" data-tex="\(G=1\)">\(G=1\)</span>, <span class="math" data-tex="\(A=\{0,1,2,3\}\)">\(A=\{0,1,2,3\}\)</span>, and let <span class="math" data-tex="\(u:A\twoheadrightarrow\{p,q\}\)">\(u:A\twoheadrightarrow\{p,q\}\)</span> send <span class="math" data-tex="\(0,1,3\)">\(0,1,3\)</span> to <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span>. With <span class="math" data-tex="\(\pi_0=\aleph_0\)">\(\pi_0=\aleph_0\)</span>, the index <span class="math" data-tex="\(I\)">\(I\)</span> contains all sixteen subsets. The coimage <span class="math" data-tex="\(X_B\)">\(X_B\)</span> is the set of fibres of <span class="math" data-tex="\(u|_B\)">\(u|_B\)</span>, compatibly identified with <span class="math" data-tex="\(u(B)\)">\(u(B)\)</span>, by its explicit class map. Its values are <span class="math" data-tex="\(\varnothing,\{p\},\{q\},\{p,q\}\)">\(\varnothing,\{p\},\{q\},\{p,q\}\)</span>; its transitions are the actual inclusions of these images. Stage <span class="math" data-tex="\(\{0,2\}\)">\(\{0,2\}\)</span> already has image <span class="math" data-tex="\(\{p,q\}\)">\(\{p,q\}\)</span>, but the proof retains every inclusion and every subset. For <span class="math" data-tex="\(A=\varnothing\)">\(A=\varnothing\)</span>, the sole stage is empty and an epic Set map out of it has empty target.</p>
+<p>Here conditions (6.1) hold with <span class="math" data-tex="\(\pi_0=\aleph_0\)">\(\pi_0=\aleph_0\)</span> and <span class="math" data-tex="\(\pi=(2^{\aleph_0})^+\)">\(\pi=(2^{\aleph_0})^+\)</span>. The singleton is <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span>-accessible by the complete small-set comparison. For <span class="math" data-tex="\(\rho&lt;\pi\)">\(\rho&lt;\pi\)</span>, <span class="math" data-tex="\(\rho^{\aleph_0}\leq(2^{\aleph_0})^{\aleph_0}=2^{\aleph_0}&lt;\pi\)">\(\rho^{\aleph_0}\leq(2^{\aleph_0})^{\aleph_0}=2^{\aleph_0}&lt;\pi\)</span>. Quotients of finite sets are finite, including an empty source, which proves (d). This example uses an explicit parameter pair, not an assumption that every regular <span class="math" data-tex="\(\pi\)">\(\pi\)</span> automatically satisfies (c).</p>
+<h2 id="9-naturality-of-the-quotient-comparison">9. Naturality of the quotient comparison</h2>
+<p>The constructions retain their specified arrows under a morphism of covers. Suppose <span class="math" data-tex="\(a:A\to A&#x27;\)">\(a:A\to A&#x27;\)</span>, <span class="math" data-tex="\(t:X\to X&#x27;\)">\(t:X\to X&#x27;\)</span>, and <span class="math" data-tex="\(t u=u&#x27;P(a)\)">\(t u=u&#x27;P(a)\)</span>. Use the same <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span>, and define the inclusion functor <span class="math" data-tex="\(F_a:I_A\to I_{A&#x27;}\)">\(F_a:I_A\to I_{A&#x27;}\)</span> by <span class="math" data-tex="\(B\mapsto a(B)\)">\(B\mapsto a(B)\)</span>. Its image cardinal is at most <span class="math" data-tex="\(|B|\)">\(|B|\)</span>; every inclusion gives the actual inclusion between the images. Identity and composition hold for these set images.</p>
+<p>For each <span class="math" data-tex="\(B\)">\(B\)</span>, strict descent defines a unique arrow</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9.1); horizontal scroll when needed" data-tex="\[
+s_B:X_B\to X&#x27;_{a(B)},
+\qquad s_Bq_B=q&#x27;_{a(B)}P(a|_B).
+\tag{9.1}
+\]">\[
+s_B:X_B\to X&#x27;_{a(B)},
+\qquad s_Bq_B=q&#x27;_{a(B)}P(a|_B).
+\tag{9.1}
+\]</span>
+<p>To check descent, the right side's two kernel-pair composites agree after the monic <span class="math" data-tex="\(m&#x27;_{a(B)}\)">\(m&#x27;_{a(B)}\)</span>, since their composites there are <span class="math" data-tex="\(t m_Bq_B\)">\(t m_Bq_B\)</span>. Cancel that monomorphism. The quotient <span class="math" data-tex="\(q_B\)">\(q_B\)</span> then supplies (9.1), and its epiness gives <span class="math" data-tex="\(m&#x27;_{a(B)}s_B=t m_B\)">\(m&#x27;_{a(B)}s_B=t m_B\)</span>. For an inclusion <span class="math" data-tex="\(B\subseteq D\)">\(B\subseteq D\)</span>, the two naturality composites agree after <span class="math" data-tex="\(q_B\)">\(q_B\)</span> by the coproduct component equations, so agree. The same cancellation verifies identity and composite cover morphisms.</p>
+<p>These stage maps induce a map <span class="math" data-tex="\(z:Z\to Z&#x27;\)">\(z:Z\to Z&#x27;\)</span> with <span class="math" data-tex="\(z d_B=d&#x27;_{a(B)}s_B\)">\(z d_B=d&#x27;_{a(B)}s_B\)</span>. Checking those equations in (8.5) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9.2); horizontal scroll when needed" data-tex="\[
+m&#x27; z d_B=t m d_B,
+\qquad m&#x27;z=tm.
+\tag{9.2}
+\]">\[
+m&#x27; z d_B=t m d_B,
+\qquad m&#x27;z=tm.
+\tag{9.2}
+\]</span>
+<p>Thus the compatible colimit isomorphism is natural in the cover. On a Hom representative, the two routes of (8.9) both give <span class="math" data-tex="\(t m_Bh=m&#x27;_{a(B)}s_Bh\)">\(t m_Bh=m&#x27;_{a(B)}s_Bh\)</span>. Changing the chosen coimages instead gives their unique isomorphisms commuting with the quotient legs; (8.4) then makes them a natural isomorphism of the whole diagrams. Their colimit comparisons and inverses preserve (8.5) by uniqueness. This proves choice independence and naturality of the actual comparisons, rather than only an abstract isomorphism of the resulting objects.</p>
+<h2 id="10-four-graded-exercises-with-full-solutions">10. Four graded exercises with full solutions</h2>
+<h3 id="exercise-1-beginner-the-empty-subfamily">Exercise 1. Beginner: the empty subfamily</h3>
+<p>Let <span class="math" data-tex="\(S\subseteq T\)">\(S\subseteq T\)</span>, and let <span class="math" data-tex="\(P_E\)">\(P_E\)</span> be the coproducts of copies of an arbitrary <span class="math" data-tex="\(G\)">\(G\)</span>. Prove the required Hom injection for <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>, distinguishing an empty and a nonempty <span class="math" data-tex="\(\operatorname{Hom}(G,0)\)">\(\operatorname{Hom}(G,0)\)</span>. Give its values for sets with <span class="math" data-tex="\(G=1\)">\(G=1\)</span>, and for abelian groups with <span class="math" data-tex="\(G=\mathbb Z\)">\(G=\mathbb Z\)</span>. Explain why a retraction of the indexing sets is not the argument.</p>
+<p><strong>Solution.</strong> The unique <span class="math" data-tex="\(u:0\to P_T\)">\(u:0\to P_T\)</span> defines <span class="math" data-tex="\(h\mapsto uh\)">\(h\mapsto uh\)</span>. If <span class="math" data-tex="\(\operatorname{Hom}(G,0)=\varnothing\)">\(\operatorname{Hom}(G,0)=\varnothing\)</span>, it has empty domain, hence is injective. Otherwise take an existing <span class="math" data-tex="\(a:G\to0\)">\(a:G\to0\)</span>. The family with component <span class="math" data-tex="\(a\)">\(a\)</span> at every <span class="math" data-tex="\(t\in T\)">\(t\in T\)</span> gives <span class="math" data-tex="\(v:P_T\to0\)">\(v:P_T\to0\)</span>. Initiality gives <span class="math" data-tex="\(vu=1_0\)">\(vu=1_0\)</span>. Therefore <span class="math" data-tex="\(h\mapsto vh\)">\(h\mapsto vh\)</span> is a left inverse on the Hom sets, so <span class="math" data-tex="\(uh=uh&#x27;\)">\(uh=uh&#x27;\)</span> implies <span class="math" data-tex="\(h=h&#x27;\)">\(h=h&#x27;\)</span>. For empty <span class="math" data-tex="\(T\)">\(T\)</span>, the same component family is empty, <span class="math" data-tex="\(P_T=0\)">\(P_T=0\)</span>, and both arrows are <span class="math" data-tex="\(1_0\)">\(1_0\)</span>.</p>
+<p>For sets with <span class="math" data-tex="\(G=1\)">\(G=1\)</span>, the initial object is empty and there is no function <span class="math" data-tex="\(1\to\varnothing\)">\(1\to\varnothing\)</span>. Thus the Hom injection is <span class="math" data-tex="\(\varnothing\to\operatorname{Hom}(1,T)\)">\(\varnothing\to\operatorname{Hom}(1,T)\)</span>, including empty <span class="math" data-tex="\(T\)">\(T\)</span>. For abelian groups, <span class="math" data-tex="\(0\)">\(0\)</span> is the zero group and <span class="math" data-tex="\(\operatorname{Hom}(\mathbb Z,0)\)">\(\operatorname{Hom}(\mathbb Z,0)\)</span> is the singleton consisting of the zero map. The coproduct <span class="math" data-tex="\(P_T\)">\(P_T\)</span> is the direct sum of copies of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>; <span class="math" data-tex="\(u\)">\(u\)</span> sends zero to zero and <span class="math" data-tex="\(v\)">\(v\)</span> is the zero homomorphism. The singleton Hom domain is sent to its zero map and the left inverse returns it. When <span class="math" data-tex="\(T\ne\varnothing\)">\(T\ne\varnothing\)</span>, no set function <span class="math" data-tex="\(T\to\varnothing\)">\(T\to\varnothing\)</span> exists; these valid categorical/Hom arguments do not use one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-2-intermediate-retain-both-parallel-witnesses">Exercise 2. Intermediate: retain both parallel witnesses</h3>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> have objects <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>, arrows <span class="math" data-tex="\(r,s:0\rightrightarrows1\)">\(r,s:0\rightrightarrows1\)</span>, <span class="math" data-tex="\(t:1\to2\)">\(t:1\to2\)</span>, <span class="math" data-tex="\(u:0\to2\)">\(u:0\to2\)</span>, and the relation <span class="math" data-tex="\(tr=ts=u\)">\(tr=ts=u\)</span>, together with identities. In sets put <span class="math" data-tex="\(X_0=\{a,b\}\)">\(X_0=\{a,b\}\)</span>, <span class="math" data-tex="\(X_1=\{c,d\}\)">\(X_1=\{c,d\}\)</span>, <span class="math" data-tex="\(X_2=\{z\}\)">\(X_2=\{z\}\)</span>. Let <span class="math" data-tex="\(X(r)\)">\(X(r)\)</span> preserve the displayed order, <span class="math" data-tex="\(X(s)\)">\(X(s)\)</span> reverse it, and <span class="math" data-tex="\(X(t)\)">\(X(t)\)</span> be constant. Determine the colimit, the one-arrow witness for the two maps <span class="math" data-tex="\(1\rightrightarrows X_0\)">\(1\rightrightarrows X_0\)</span> with values <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, and every equalizer stage in <span class="math" data-tex="\((0\downarrow I)\)">\((0\downarrow I)\)</span>. Explain why a two-arrow equality witness need not already be a one-arrow witness.</p>
+<p><strong>Solution.</strong> The functor laws hold because both composites to <span class="math" data-tex="\(X_2\)">\(X_2\)</span> take every point to <span class="math" data-tex="\(z\)">\(z\)</span>, which defines <span class="math" data-tex="\(X(u)\)">\(X(u)\)</span>. Object <span class="math" data-tex="\(2\)">\(2\)</span> is terminal: its unique incoming nonidentity arrows are <span class="math" data-tex="\(t,u\)">\(t,u\)</span>. Thus a cocone is determined by its component out of <span class="math" data-tex="\(X_2\)">\(X_2\)</span>, and <span class="math" data-tex="\(X_2\)">\(X_2\)</span> is the specified colimit. Both original maps have the same colimit image.</p>
+<p>At stage <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(X(r)(a)=c=X(s)(b)\)">\(X(r)(a)=c=X(s)(b)\)</span>, so the distinct arrows <span class="math" data-tex="\(r,s\)">\(r,s\)</span> witness equality of classes. But <span class="math" data-tex="\(X(r)(a)=c\ne d=X(r)(b)\)">\(X(r)(a)=c\ne d=X(r)(b)\)</span>, and <span class="math" data-tex="\(X(s)(a)=d\ne c=X(s)(b)\)">\(X(s)(a)=d\ne c=X(s)(b)\)</span>. Neither one alone witnesses the same-stage equality. Postcomposition with <span class="math" data-tex="\(t\)">\(t\)</span> equalizes <span class="math" data-tex="\(r,s\)">\(r,s\)</span>, yielding the single actual arrow <span class="math" data-tex="\(u=tr=ts\)">\(u=tr=ts\)</span>, and <span class="math" data-tex="\(X(u)(a)=z=X(u)(b)\)">\(X(u)(a)=z=X(u)(b)\)</span>.</p>
+<p>The coslice has objects <span class="math" data-tex="\(1_0,r,s,u\)">\(1_0,r,s,u\)</span>. Its nonidentity arrows are the underlying <span class="math" data-tex="\(r:1_0\to r\)">\(r:1_0\to r\)</span>, <span class="math" data-tex="\(s:1_0\to s\)">\(s:1_0\to s\)</span>, <span class="math" data-tex="\(u:1_0\to u\)">\(u:1_0\to u\)</span>, and <span class="math" data-tex="\(t:r\to u\)">\(t:r\to u\)</span>, <span class="math" data-tex="\(t:s\to u\)">\(t:s\to u\)</span>, with the two composite equations. The equalizers of the transported maps from <span class="math" data-tex="\(1\)">\(1\)</span> are empty at <span class="math" data-tex="\(1_0,r,s\)">\(1_0,r,s\)</span>, and are all of <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(u\)">\(u\)</span>. Their transitions are the unique maps forced by inclusion into <span class="math" data-tex="\(1\)">\(1\)</span>. The inclusion at <span class="math" data-tex="\(u\)">\(u\)</span> is the stage epimorphism; the others are not surjective and hence not epic in sets. Keeping both parallel witnesses and their common postarrow is exactly what turns equal colimit images into one genuine later-stage equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-3-advanced-an-epimorphism-misses-generator-maps">Exercise 3. Advanced: an epimorphism misses generator maps</h3>
+<p>In abelian groups take <span class="math" data-tex="\(G=\mathbb Z\oplus\mathbb Z/2\)">\(G=\mathbb Z\oplus\mathbb Z/2\)</span> and <span class="math" data-tex="\(p:Y=\mathbb Z\twoheadrightarrow A=\mathbb Z/2\)">\(p:Y=\mathbb Z\twoheadrightarrow A=\mathbb Z/2\)</span>. Prove that <span class="math" data-tex="\(G\)">\(G\)</span> detects isomorphisms, compute <span class="math" data-tex="\(E=\operatorname{Hom}(G,Y)\)">\(E=\operatorname{Hom}(G,Y)\)</span>, <span class="math" data-tex="\(T=\operatorname{Hom}(G,A)\)">\(T=\operatorname{Hom}(G,A)\)</span> and their image <span class="math" data-tex="\(K\)">\(K\)</span>, and construct the lifted epic cover <span class="math" data-tex="\(P_K\to Y\to A\)">\(P_K\to Y\to A\)</span>. Check both bounds of (5.1) at <span class="math" data-tex="\(\pi=\aleph_1\)">\(\pi=\aleph_1\)</span>. Does the first bound alone meet the two-bound statement at <span class="math" data-tex="\(\pi=\aleph_0\)">\(\pi=\aleph_0\)</span>?</p>
+<p><strong>Solution.</strong> A map from <span class="math" data-tex="\(G\)">\(G\)</span> is a pair of maps from its two summands. These Hom sets contain zero maps. If the product of their two induced functions is bijective, each factor function is bijective: fix zero maps in the other coordinate for injectivity and place a desired element with zero in the other target coordinate for surjectivity. In particular <span class="math" data-tex="\(\operatorname{Hom}(\mathbb Z,v)\)">\(\operatorname{Hom}(\mathbb Z,v)\)</span> is bijective. Evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> identifies it with the underlying function of the group homomorphism <span class="math" data-tex="\(v\)">\(v\)</span>; a bijective homomorphism has an additive inverse by applying <span class="math" data-tex="\(v\)">\(v\)</span> to each addition equation and canceling it. Hence <span class="math" data-tex="\(G\)">\(G\)</span> detects isomorphisms.</p>
+<p>Every homomorphism <span class="math" data-tex="\(\mathbb Z/2\to\mathbb Z\)">\(\mathbb Z/2\to\mathbb Z\)</span> is zero, since twice its value must be zero in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Thus <span class="math" data-tex="\(E\cong\mathbb Z\)">\(E\cong\mathbb Z\)</span>: integer <span class="math" data-tex="\(n\)">\(n\)</span> specifies the image of the free summand's generator. A map <span class="math" data-tex="\(G\to A\)">\(G\to A\)</span> is a pair <span class="math" data-tex="\((a,b)\in(\mathbb Z/2)^2\)">\((a,b)\in(\mathbb Z/2)^2\)</span>, the images of those two generators, so <span class="math" data-tex="\(T\)">\(T\)</span> has four elements. The probe of <span class="math" data-tex="\(p\)">\(p\)</span> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (10.1); horizontal scroll when needed" data-tex="\[
+n\longmapsto(n\bmod2,0),
+\qquad K=\{(0,0),(1,0)\}\subsetneq T.
+\tag{10.1}
+\]">\[
+n\longmapsto(n\bmod2,0),
+\qquad K=\{(0,0),(1,0)\}\subsetneq T.
+\tag{10.1}
+\]</span>
+<p>In particular the map with <span class="math" data-tex="\((a,b)=(0,1)\)">\((a,b)=(0,1)\)</span> does not lift. Choose section values <span class="math" data-tex="\(0,1\)">\(0,1\)</span> for the two elements of <span class="math" data-tex="\(K\)">\(K\)</span>. Then <span class="math" data-tex="\(P_K=G\oplus G\)">\(P_K=G\oplus G\)</span>. Its lift is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (10.2); horizontal scroll when needed" data-tex="\[
+\ell(n_0,\epsilon_0,n_1,\epsilon_1)=n_1,
+\qquad p\ell=n_1\bmod2=\varepsilon_K.
+\tag{10.2}
+\]">\[
+\ell(n_0,\epsilon_0,n_1,\epsilon_1)=n_1,
+\qquad p\ell=n_1\bmod2=\varepsilon_K.
+\tag{10.2}
+\]</span>
+<p>This cover is surjective, hence epic: its second free summand already maps onto <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>. Its component maps are exactly the two elements of <span class="math" data-tex="\(K\)">\(K\)</span>, and its selected lifts are those in (10.2). No map corresponding to <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> was required.</p>
+<p>The first Hom set has size four. The object <span class="math" data-tex="\(P_T=G^4\)">\(P_T=G^4\)</span> has countably many elements, and its elements killed by two form the finite set <span class="math" data-tex="\((\mathbb Z/2)^4\)">\((\mathbb Z/2)^4\)</span>. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (10.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(G,P_T)
+\cong P_T\times(P_T[2])
+\tag{10.3}
+\]">\[
+\operatorname{Hom}(G,P_T)
+\cong P_T\times(P_T[2])
+\tag{10.3}
+\]</span>
+<p>is countably infinite: a homomorphism is exactly an arbitrary free-generator value and a value killed by two, with their independent inverses by defining on the summands. Finite powers of the countable integers are countable by the proved infinite square. Thus both bounds hold below <span class="math" data-tex="\(\aleph_1\)">\(\aleph_1\)</span>. At <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span>, the first bound holds but the second does not. The two-bound proposition therefore cannot be applied at <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span> from these data; this is not a claim that <span class="math" data-tex="\(A\)">\(A\)</span> itself fails ordinary accessibility. The example demonstrates why epiness of <span class="math" data-tex="\(p\)">\(p\)</span> is not surjectivity of its probe and why the second bound cannot be silently discarded from this proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-4-expert-transport-every-subcover-and-its-comparison">Exercise 4. Expert: transport every subcover and its comparison</h3>
+<p>Under <span class="math" data-tex="\(H\)">\(H\)</span> and (6.1), take two covers <span class="math" data-tex="\(u:P_A\twoheadrightarrow X\)">\(u:P_A\twoheadrightarrow X\)</span>, <span class="math" data-tex="\(u&#x27;:P_{A&#x27;}\twoheadrightarrow X&#x27;\)">\(u&#x27;:P_{A&#x27;}\twoheadrightarrow X&#x27;\)</span>, with both index sizes below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and a morphism of covers <span class="math" data-tex="\((a,t)\)">\((a,t)\)</span> as in Section 9. Construct every stage map between their coimage diagrams, prove identity and composite laws, and prove the resulting colimit and Hom comparisons natural, including empty source subsets. Identify separately the assumptions used to establish the isomorphisms and to establish the cardinal bound.</p>
+<p><strong>Solution.</strong> A subset <span class="math" data-tex="\(B\)">\(B\)</span> of size below <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> has image <span class="math" data-tex="\(a(B)\)">\(a(B)\)</span> of size at most <span class="math" data-tex="\(|B|\)">\(|B|\)</span>; an inclusion maps to an inclusion. Thus <span class="math" data-tex="\(B\mapsto a(B)\)">\(B\mapsto a(B)\)</span> is a functor on the entire inclusion category. With <span class="math" data-tex="\(a_B:B\to a(B)\)">\(a_B:B\to a(B)\)</span> its actual restricted function, define <span class="math" data-tex="\(h_B=q&#x27;_{a(B)}P(a_B):P_B\to X&#x27;_{a(B)}\)">\(h_B=q&#x27;_{a(B)}P(a_B):P_B\to X&#x27;_{a(B)}\)</span>. If <span class="math" data-tex="\(r_0,r_1\)">\(r_0,r_1\)</span> are the kernel-pair projections of <span class="math" data-tex="\(q_B\)">\(q_B\)</span>, then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (10.4); horizontal scroll when needed" data-tex="\[
+m&#x27;_{a(B)}h_Br_0
+=t m_Bq_Br_0
+=t m_Bq_Br_1
+=m&#x27;_{a(B)}h_Br_1.
+\tag{10.4}
+\]">\[
+m&#x27;_{a(B)}h_Br_0
+=t m_Bq_Br_0
+=t m_Bq_Br_1
+=m&#x27;_{a(B)}h_Br_1.
+\tag{10.4}
+\]</span>
+<p>The coimage factor <span class="math" data-tex="\(m&#x27;_{a(B)}\)">\(m&#x27;_{a(B)}\)</span> is monic under <span class="math" data-tex="\(H\)">\(H\)</span>, so cancel it. Strictness of the epic <span class="math" data-tex="\(q_B\)">\(q_B\)</span> descends <span class="math" data-tex="\(h_B\)">\(h_B\)</span> uniquely to <span class="math" data-tex="\(s_B:X_B\to X&#x27;_{a(B)}\)">\(s_B:X_B\to X&#x27;_{a(B)}\)</span>. Canceling <span class="math" data-tex="\(q_B\)">\(q_B\)</span> gives <span class="math" data-tex="\(m&#x27;_{a(B)}s_B=t m_B\)">\(m&#x27;_{a(B)}s_B=t m_B\)</span>.</p>
+<p>For <span class="math" data-tex="\(B\subseteq D\)">\(B\subseteq D\)</span>, both <span class="math" data-tex="\(x&#x27;_{a(B),a(D)}s_B\)">\(x&#x27;_{a(B),a(D)}s_B\)</span> and <span class="math" data-tex="\(s_Dx_{BD}\)">\(s_Dx_{BD}\)</span> become <span class="math" data-tex="\(q&#x27;_{a(D)}P(B\to a(D))\)">\(q&#x27;_{a(D)}P(B\to a(D))\)</span> after <span class="math" data-tex="\(q_B\)">\(q_B\)</span>, by their defining equations. They are equal. For the identity cover morphism, <span class="math" data-tex="\(1_{X_B}\)">\(1_{X_B}\)</span> satisfies the same descent equation and is its unique factor. For successive cover morphisms <span class="math" data-tex="\((a,t)\)">\((a,t)\)</span>, <span class="math" data-tex="\((a&#x27;,t&#x27;)\)">\((a&#x27;,t&#x27;)\)</span>, their two successive stage maps compose, after <span class="math" data-tex="\(q_B\)">\(q_B\)</span>, to the map induced by <span class="math" data-tex="\(a&#x27;a|_B\)">\(a&#x27;a|_B\)</span>. Epic cancellation proves that this composite is the stage map for <span class="math" data-tex="\((a&#x27;a,t&#x27;t)\)">\((a&#x27;a,t&#x27;t)\)</span>. All laws involve the original arrows.</p>
+<p>The maps <span class="math" data-tex="\(d&#x27;_{a(B)}s_B\)">\(d&#x27;_{a(B)}s_B\)</span> are a cocone, so give a unique <span class="math" data-tex="\(z:Z\to Z&#x27;\)">\(z:Z\to Z&#x27;\)</span>. On every <span class="math" data-tex="\(d_B\)">\(d_B\)</span>, the equations yield <span class="math" data-tex="\(m&#x27;z d_B=t m_B=tm d_B\)">\(m&#x27;z d_B=t m_B=tm d_B\)</span>. Colimit uniqueness gives <span class="math" data-tex="\(m&#x27;z=tm\)">\(m&#x27;z=tm\)</span>; it also gives identity and composite laws for <span class="math" data-tex="\(z\)">\(z\)</span>. Since the main proof made <span class="math" data-tex="\(m,m&#x27;\)">\(m,m&#x27;\)</span> invertible, their inverses satisfy the same naturality after cancellation. On each probe representative <span class="math" data-tex="\([B,h]\)">\([B,h]\)</span>, both Hom routes have value <span class="math" data-tex="\(t m_Bh=m&#x27;_{a(B)}s_Bh\)">\(t m_Bh=m&#x27;_{a(B)}s_Bh\)</span>. Every quotient class has a representative, so that equation proves naturality of the whole Hom comparison, and hence of its inverse.</p>
+<p>For <span class="math" data-tex="\(B=\varnothing\)">\(B=\varnothing\)</span>, <span class="math" data-tex="\(a(B)=\varnothing\)">\(a(B)=\varnothing\)</span>, and <span class="math" data-tex="\(P(a_B)\)">\(P(a_B)\)</span> is the specified identity of the initial coproduct. The same kernel-pair, monic cancellation and strict descent argument applies. An empty entire index set <span class="math" data-tex="\(A\)">\(A\)</span> still gives the nonempty subset category with its one empty object, so none of the colimit arguments is over an empty filtered category.</p>
+<p>The isomorphism <span class="math" data-tex="\(m\)">\(m\)</span> uses regular <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> to make the subset diagram filtered, finite-limit exactness to prove monicity, the singleton-component coproduct colimit to prove epiness, and all epimorphisms strict to turn both into invertibility. To bound its probe, (b) supplies the exact Hom comparison, (c) and the padded coding bound the number of stages below <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, (d) bounds every stage probe, and regular <span class="math" data-tex="\(\pi\)">\(\pi\)</span> bounds their entire tagged union. The Set quotient then cannot increase that cardinal. None of these roles can be replaced by assuming that the probe preserves epimorphisms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references-and-proof-interfaces">References and proof interfaces</h2>
+<ul>
+<li>For the accessibility and quotient-probe results proved here, retain all hypotheses stated in Section 1, both Hom bounds in Section 5, and all four cardinal conditions (6.1) for the quotient-probe bound. Sections 2–5 establish the accessibility comparison on its specified colimit legs. Sections 6–9 establish the subcover comparison, its cardinal estimate and its naturality. The prerequisite proofs are identified below.</li>
+<li><em>Universes and small categories</em>, Sections 1–4, for the stated foundational assumptions and all subset, tagged-union, function-set and quotient encodings.</li>
+<li><em>Well-orders, cardinal bounds and regular successors</em>, Sections 3–7, for well-ordering, initial-cardinal comparison, the infinite square, regularity and explicit currying maps.</li>
+<li><em>Common arrows and bounded Set comparisons</em>, Sections 1–3 and 6, and Exercise 1, for exact cardinal-filtered tests, synchronized witnesses, the complete small-set comparison and the whole coslice.</li>
+<li><em>Small predecessors and maps into filtered colimits</em>, Sections 3–4 and the complete solution of Exercise 4, for all small subsets and the actual accessibility comparison with both naturalities.</li>
+<li><em>Generators and small quotient families</em>, Sections 2–4, and <em>Coimages, images and composition of quotients</em>, Sections 1–4, for full evaluation, strict quotient encoding, kernel-pair descent and monic coimage factors.</li>
+<li><em>Change an index without changing its universal maps</em>, Section 2, for the complete cofinal cocone bijection preserving every leg; <em>Compatible families and universal cones</em>, Sections 1–2 and the pointwise construction in Section 4, for compatible tuples, specified universal factors and induced map equations.</li>
+<li>The eventual-epimorphism, empty-subfamily and padded small-subset arguments are proved in Sections 3, 2 and 7, respectively. Their constructions keep the specified maps, the empty cases and the stated cardinal hypotheses.</li>
+</ul>
+</main></body></html>

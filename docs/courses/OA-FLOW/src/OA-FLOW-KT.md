@@ -1,6 +1,6 @@
 # The KMS strip and a complete analytic finite-star core
 
-*Fresh local reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(\varphi\) be a faithful normal semifinite weight on an arbitrary von Neumann algebra \(M\). There is no separability hypothesis. Use the linear-first GNS inner product, \(N=\mathfrak n_\varphi\), \(A=N\cap N^*\), the finite linear extension \(\varphi_0\), and the recovered closed operator \(S=J\Delta^{1/2}\), with \(S\Lambda(x)=\Lambda(x^*)\) on \(A\). Write \(U_t=\Delta^{it}\) and \(\sigma_t=\sigma_t^\varphi\).
 

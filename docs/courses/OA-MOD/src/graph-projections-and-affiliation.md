@@ -203,7 +203,7 @@ The inclusion \(W=\operatorname{diag}(v,I_H):K\oplus H\to H\oplus H\) is an isom
  \tag{GP.13}
 \]
 
-Each entry is an everywhere defined bounded map \(H\to H\). Moreover \(S_0^*=T_0^*R_1\), with the domains justified in GP03. The first coordinate vanishes on \(K^\perp\), as a graph with first coordinate in \(K\) requires. We have not extended \(T\) by zero to a larger domain; such an extension would change its graph and its graph projection.
+Each entry is an everywhere defined bounded map \(H\to H\). Moreover \(S_0^*=T_0^*R_1\), with the domains justified in GP03. The first column annihilates \(K^\perp\), while both entries of the first row have their ranges in \(K\). These assertions follow from the factors \(v^*\) and \(v\), respectively. We have not extended \(T\) by zero to a larger domain; such an extension would change its graph and its graph projection.
 
 The theorem of GP01 applies to (GP.13) unchanged. Affiliation also forces the domain-closure projection \(vv^*\) to belong to \(M\): every unitary of \(M'\) preserves \(D(T)\), hence its closure \(K\), so its orthogonal projection commutes with all those unitaries. BK08 and BK02 again put it in \(M\). This does not assert that the domain itself is closed or all of \(K\).
 

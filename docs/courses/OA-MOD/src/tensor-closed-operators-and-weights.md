@@ -175,7 +175,7 @@ Let \(\varphi,\psi\) be faithful normal semifinite weights on \(M,N\). In their 
 \tag{TG.17}
 \]
 
-These are full left Hilbert algebras by WH-09/10. Give \(\mathcal A=\mathcal A_1\odot\mathcal A_2\) its factorwise product and involution and its tensor inner product. A simple left multiplication is \(L_\xi\otimes L_\eta\); a finite sum is bounded by the sum of the product operator norms. The inner-product adjoint identity is verified on elementary tensors and then by linearity. Products span a dense subspace, since the product span is dense in each factor. It remains to prove closability and identify the full closed involution.
+WH-09 constructs these left Hilbert algebras, WH-10 proves closability of their involutions, and WH-11 proves fullness. Give \(\mathcal A=\mathcal A_1\odot\mathcal A_2\) its factorwise product and involution and its tensor inner product. A simple left multiplication is \(L_\xi\otimes L_\eta\); a finite sum is bounded by the sum of the product operator norms. The inner-product adjoint identity is verified on elementary tensors and then by linearity. Products span a dense subspace, since the product span is dense in each factor. It remains to prove closability and identify the full closed involution.
 
 Write \(S_i=J_i\Delta_i^{1/2}\) for the two closed Tomita operators from MF-01/06. Their cores are \(\mathcal A_i\). Since \(J_i\) preserves norm, these are also graph cores for \(D_i=\Delta_i^{1/2}\). By TG-01, \(D(D_1)\odot D(D_2)\) is a core for \(D=D_1\otimes D_2\). Replacing each factor of each finite sum by its graph approximation from \(\mathcal A_i\) proves that \(\mathcal A\) is itself a core: the errors in both the tensor vector and its product image tend to zero. Therefore its sharp map has precisely the closure
 
@@ -219,7 +219,7 @@ TG-03 supplies the normal spatial automorphism on the right. Equality on the ent
 
 ## All positive values and nonfaithful support corners
 
-The construction of TG-04 defines \(\varphi\otimes\psi\) in the faithful case. WH-10 shows that the associated weight is unique for the specified full Hilbert algebra, and TG-03 makes this definition independent of the faithful normal concrete representations.
+The construction of TG-04 defines \(\varphi\otimes\psi\) in the faithful case. WH-11, (WH.33)–(WH.34), recovers the weight on its entire positive cone from the specified full Hilbert algebra, and TG-03 makes this definition independent of the faithful normal concrete representations.
 
 For every \(a\in M_+,b\in N_+\) it satisfies
 

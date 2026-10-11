@@ -15,7 +15,7 @@ Let \(\mathcal A_w\) be the abelian category of weakly complex-constructible she
 
 They send the same complex to the ambient sheaf derived category and preserve its cohomology sheaves. We will exhibit a complex surface where neither is full nor essentially surjective. Weak coefficients are allowed to be infinite-dimensional throughout the heart argument.
 
-*Original programme exposition by GPT-6.1 Sol (OpenAI), Ultra, October 2026; source comparison and editorial revision by GPT-6 Astra (OpenAI), Ultra, October 2026. Independently expressed programme text is dedicated under CC0. Human sources retain their own terms.*
+*Original programme exposition by GPT-6.1 Sol (OpenAI), Ultra, October 2026; source comparison and editorial revision by GPT-6 Astra (OpenAI), Ultra, October 2026. Independently expressed programme text is dedicated under CC0. Human sources retain their own terms. Dependency reconciliation by GPT-6 Astra (OpenAI), Ultra, October 2026; coordinator checked, not independently reviewed.*
 
 ## The geometric input
 
@@ -266,7 +266,9 @@ If \(E\simeq\mathcal R_w(L)\), cohomology preservation gives only these same two
 
 ## Why the real equivalence remains compatible with this example
 
-The complex surface is also a real analytic four-manifold. The two constant cohomology sheaves make \(E\) perfect real constructible. Derived constructibility through common triangulations supplies a real-constructible-term representative and real-constructible Yoneda representatives for (9). These can use real simplex and face strata. On this \(X\), complex analytic refinements only add finitely many points, and (8) shows that such additions cannot supply the missing two-stage class. The example compares the full categories in both cases, rather than declaring a fixed stratification immutable.
+The complex surface is also a real analytic four-manifold. The two constant cohomology sheaves make \(E\) perfect real constructible. Theorem 1 and its extension comparison (17) and Theorem 2 for finite stalks supply a real-constructible-term representative and real-constructible Yoneda representatives for (9). These can use real simplex and face strata. On this \(X\), complex analytic refinements only add finitely many points, and (8) shows that such additions cannot supply the missing two-stage class. The example compares the full categories in both cases, rather than declaring a fixed stratification immutable.
+
+The coefficient in this example is a field: it is commutative, Noetherian and of global dimension zero, so both realization theorems apply with their full ring hypotheses. The compact real four-manifold also satisfies their dimension and manifold conventions. The Yoneda-to-derived comparison is the general abelian-category proof in this lesson, independent of the surface example; the provider uses that comparison only after establishing realization. There is consequently no inference from the counterexample to the theorem being used here.
 
 ## Exercises
 
@@ -400,7 +402,7 @@ If it were realized by a bounded complex from either heart, its cohomology there
 
 ### The link explains why contractible strata do not suffice
 
-The fixed-stratification criterion tests not only the strata but the comparison between direct images derived internally and in all sheaves. The constant local system \(k_{\mathbb C}\) is injective in \(\operatorname{Loc}_k(\mathbb C)\), because that category is vector spaces. Internally its derived direct image is therefore \(j_*k_{\mathbb C}=k_X\) in degree zero. Ambient direct image has the boundary stalk
+The fixed-stratification criterion, (27)–(30) tests not only the strata but the comparison between direct images derived internally and in all sheaves. The constant local system \(k_{\mathbb C}\) is injective in \(\operatorname{Loc}_k(\mathbb C)\), because that category is vector spaces. Internally its derived direct image is therefore \(j_*k_{\mathbb C}=k_X\) in degree zero. Ambient direct image has the boundary stalk
 
 \[
 (R^qj_*k_{\mathbb C})_\infty
@@ -422,7 +424,7 @@ A punctured disk retracts to the circle, and arbitrarily small punctured disks g
 
 It is not injective. Universal-cover acyclicity holds for both strata, yet the independent boundary condition fails.
 
-Removing also zero from the open stratum changes the answer. For the three torus-orbit strata \(\mathbb C^*,0,\infty\), each link circle maps isomorphically onto \(\pi_1(\mathbb C^*)=\mathbb Z\), after choosing a generator. The full comparison proof in the linked lesson establishes bounded and bounded-below realization for the unrestricted three-stratum heart, for every unital coefficient ring. Thus this fixed projective-line example does not assert failure after every complex refinement. The K3 argument above supplies precisely that stronger phenomenon.
+Removing also zero from the open stratum changes the answer. For the three torus-orbit strata \(\mathbb C^*,0,\infty\), choose the positive boundary loop at zero in the coordinate \(z\), the positive boundary loop at infinity in the coordinate \(w=1/z\), and the positive \(z\)-loop as generator of \(\pi_1(\mathbb C^*)=\mathbb Z\). The actual boundary homomorphisms are respectively \(n\mapsto n\) and \(n\mapsto -n\): along the second loop, \(w=\epsilon e^{i\theta}\) gives \(z=\epsilon^{-1}e^{-i\theta}\). Both are injective. The explicit torus example, (35) therefore gives bounded and bounded-below realization for the unrestricted three-stratum heart, for every associative unital coefficient ring. Its universal-cover and link-cohomology inputs are made explicit in (72a) and the actual link map (73). Over the field used in this example, the finite-heart theorem (48) and its projective-line case (49) also give bounded realization from the finite-stalk heart; this is the additional finite-term argument, not a consequence of (35) alone. Thus this fixed projective-line example does not assert failure after every complex refinement. The K3 argument above supplies precisely that stronger phenomenon.
 
 Lunts and Schnürer's [*Categories of constructible sheaves*, arXiv:2601.05477v1](https://arxiv.org/abs/2601.05477v1), Theorem 5.25, Corollary 6.8 and Remark 6.12, pp. 25–31, supply the fixed-stratification criterion and the projective-line example. Their criterion compares realization on the strata and the actual internal-to-ambient derived direct-image map. Thus the projective-line calculation tests boundary acyclicity on internally injective coefficients, not the cohomology of every local system. The one-arrow projective resolution and shifted cone here explicitly show failure of fullness and essential surjectivity. The earlier K3 argument is a separate course construction: it reduces all complex refinements to finite-point quivers and then uses the proved quartic topology and its transport in the explicitly constructed analytic family.
 

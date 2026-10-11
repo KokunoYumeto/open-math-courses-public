@@ -4,7 +4,7 @@ There are three different questions: which operators are fixed, what the positiv
 
 The compact-square and paired formulas, arbitrary-group models, signs and solved exercises below preserve the sound mathematics of the earlier course lesson. A new Fourier-density comparison identifies the entire extended-positive map before modular comparison is discussed.
 
-*Programme exposition originally written in Codex (OpenAI), September 2026; additive restoration and new bridge by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held; inherited terms remain. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held; inherited terms remain.*
 
 <a id="da-setting"></a>
 

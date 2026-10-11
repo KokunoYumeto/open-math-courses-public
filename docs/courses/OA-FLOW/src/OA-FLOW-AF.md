@@ -1,6 +1,6 @@
 # Inputs for action frequencies and norm continuity
 
-*Proof restoration and local completion, Codex (OpenAI), 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 The earlier inputs are [BS0–5](OA-FLOW-BS.md#bs-0), [LF0–7](OA-FLOW-LF.md#lf-0), [scalar singleton synthesis](OA-FLOW-SS.md#ss-1), [CF1/2/4](OA-FLOW-CF.md#oa-flow.cf.1), [SC0–8](OA-FLOW-SC.md#sc-00), [HR3 finite densities](OA-FLOW-HR.md#hr-03), [L24 translations and vector integration](OA-FLOW-L24.md#oa-flow.grp.vectorintegration), [CC0 circle Fourier completeness](OA-FLOW-CC.md#cc-0), and [RF1 smooth bumps](OA-FLOW-RF.md#oa-flow.rf.1). The individual passages actually used are bound separately. None of the arguments below uses a general spectral-transfer theorem.
 

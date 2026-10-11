@@ -1,0 +1,494 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cosyzygies and the bounded injective quotient</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="cosyzygies-and-the-bounded-injective-quotient">Cosyzygies and the bounded injective quotient</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>Removing maps through injectives does not make cosyzygy invertible. Stabilization does: it identifies maps after sufficiently many cosyzygies. We prove that the resulting category is precisely the bounded derived category with bounded injective complexes made zero. The proof computes all morphisms and their equality witnesses, and identifies the complete signed triangles arising from short exact rows.</p>
+<h2 id="conventions-and-prerequisites">Conventions and prerequisites</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be an abelian category with enough injectives, and let <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> be its full subcategory of injective objects. Use an ambient universe containing the objects, arrows, integer sequences and choices below. No finite global dimension, projectives or infinite sums in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> are assumed. An injective object is one into which a map extends along every monomorphism.</p>
+<p>Complexes are cohomological. We use <span class="math" data-tex="\(X[r]^j=X^{j+r}\)">\(X[r]^j=X^{j+r}\)</span>, <span class="math" data-tex="\(d_{X[r]}=(-1)^r d_X\)">\(d_{X[r]}=(-1)^r d_X\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+C(f)^j=Y^j\oplus X^{j+1},\qquad
+d_{C(f)}(y,x)=(d_Yy+fx,-d_Xx).
+\tag{0.1}
+\]">\[
+C(f)^j=Y^j\oplus X^{j+1},\qquad
+d_{C(f)}(y,x)=(d_Yy+fx,-d_Xx).
+\tag{0.1}
+\]</span>
+<p>The last arrow of the cone triangle is the positive projection <span class="math" data-tex="\(C(f)\to X[1]\)">\(C(f)\to X[1]\)</span>. Thus the connecting map of a short exact row is the cone projection composed with the inverse of its quotient quasi-isomorphism. On a shifted triangle, keeping its first two arrows positively shifted requires the factor <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span> on its last arrow.</p>
+<p>We use these complete earlier arguments:</p>
+<ul>
+<li><a href="stabilizing-an-endofunctor-through-eventual-maps.html#1-eventual-equality-supplies-the-morphisms">Stabilizing an endofunctor through eventual maps, Sections 1–5</a>: the actual category, inverse shift, additive structure and compatible functor extension.</li>
+<li><a href="derived-morphisms-through-quasi-isomorphism-roofs.html#5-complexes-that-absorb-denominator-changes">Derived morphisms through quasi-isomorphism roofs, Section 5</a>: the complete bounded-injective homotopy induction and the Hom bijection into such a complex.</li>
+<li><a href="injective-replacements-and-right-derived-functors.html#1-replace-one-term-without-changing-cohomology">Injective replacements and right derived functors, Sections 1–2</a>: construction of bounded-below replacements and their comparison equivalence.</li>
+<li><a href="null-systems-roofs-and-the-retract-kernel.html#1-null-systems-and-the-inherited-triangle-structure">Null systems, roofs and the retract kernel, Sections 1–8</a>: both fraction calculi, zero-map factorization, every quotient triangle axiom and the exact comparison of replacements.</li>
+<li><a href="triangles-after-quasi-isomorphism-localization.html#6-exact-sequences-and-objects-in-degree-zero">Triangles after quasi-isomorphism localization, Section 6</a>: natural short-exact-row triangles and full faithfulness of objects in degree zero.</li>
+<li><a href="cohomological-bounds-denominators-and-truncation-adjunctions.html#1-four-localizations-and-cohomology-detection">Cohomological bounds, denominators and truncation adjunctions, Sections 1–3</a>: bounded derived full embeddings, including roof equality tests and bounded representatives.</li>
+<li><a href="right-derived-tensor-and-torsion-free-quotients.html#2-divisibility-injectivity-and-disappearance-of-torsion">Right derived tensor and torsion-free quotients, Sections 2–3</a>: the divisible-injective equivalence and enough injectives for the abelian-group example.</li>
+</ul>
+<h2 id="1-the-additive-quotient-and-actual-cosyzygy-maps">1. The additive quotient and actual cosyzygy maps</h2>
+<p>Let <span class="math" data-tex="\(\mathcal J(A,B)\)">\(\mathcal J(A,B)\)</span> be the maps <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> factoring through an injective object. A sum of two such maps factors through the direct sum of their two injectives. This sum is injective: extend its two components separately. Negatives and zero also factor through injectives, and precomposition or postcomposition preserves a factorization. Hence <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is an additive two-sided ideal. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\underline{\mathcal A}(A,B)=
+\operatorname{Hom}_{\mathcal A}(A,B)/\mathcal J(A,B).
+\tag{1.1}
+\]">\[
+\underline{\mathcal A}(A,B)=
+\operatorname{Hom}_{\mathcal A}(A,B)/\mathcal J(A,B).
+\tag{1.1}
+\]</span>
+<p>Objects are unchanged, composition is induced by composition in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and the biproduct equations descend. This is an additive category. An object <span class="math" data-tex="\(A\)">\(A\)</span> is zero in it exactly when <span class="math" data-tex="\(1_A\)">\(1_A\)</span> factors through an injective. Such a factorization exhibits <span class="math" data-tex="\(A\)">\(A\)</span> as a retract of an injective, so <span class="math" data-tex="\(A\)">\(A\)</span> is itself injective: extend a map into the larger object and then apply the retraction. Conversely an injective's identity factors through itself.</p>
+<p>Choose, for every <span class="math" data-tex="\(A\)">\(A\)</span>, a short exact row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow A\xrightarrow{i_A}I_A
+\xrightarrow{p_A}\Sigma A\longrightarrow0,
+\qquad I_A\in\mathcal I,
+\tag{1.2}
+\]">\[
+0\longrightarrow A\xrightarrow{i_A}I_A
+\xrightarrow{p_A}\Sigma A\longrightarrow0,
+\qquad I_A\in\mathcal I,
+\tag{1.2}
+\]</span>
+<p>taking <span class="math" data-tex="\(I_0=0\)">\(I_0=0\)</span>. Given <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span>, injectivity of <span class="math" data-tex="\(I_B\)">\(I_B\)</span> extends <span class="math" data-tex="\(i_Bf\)">\(i_Bf\)</span> across <span class="math" data-tex="\(i_A\)">\(i_A\)</span> to a map <span class="math" data-tex="\(a:I_A\to I_B\)">\(a:I_A\to I_B\)</span>. There is a unique <span class="math" data-tex="\(\widetilde f:\Sigma A\to\Sigma B\)">\(\widetilde f:\Sigma A\to\Sigma B\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+ai_A=i_Bf,\qquad \widetilde f p_A=p_Ba.
+\tag{1.3}
+\]">\[
+ai_A=i_Bf,\qquad \widetilde f p_A=p_Ba.
+\tag{1.3}
+\]</span>
+<p>Two choices <span class="math" data-tex="\(a,a&#x27;\)">\(a,a&#x27;\)</span> have difference <span class="math" data-tex="\(c p_A\)">\(c p_A\)</span>, for a map <span class="math" data-tex="\(c: \Sigma A\to I_B\)">\(c: \Sigma A\to I_B\)</span>. Their induced maps have difference <span class="math" data-tex="\(p_Bc\)">\(p_Bc\)</span>, which factors through the injective <span class="math" data-tex="\(I_B\)">\(I_B\)</span>. Thus <span class="math" data-tex="\(\underline{\widetilde f}\)">\(\underline{\widetilde f}\)</span> is independent of the extension.</p>
+<p>If <span class="math" data-tex="\(f=vu\)">\(f=vu\)</span> with <span class="math" data-tex="\(u:A\to J\)">\(u:A\to J\)</span>, <span class="math" data-tex="\(v:J\to B\)">\(v:J\to B\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> injective, extend <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(\widehat u:I_A\to J\)">\(\widehat u:I_A\to J\)</span>. The allowed choice <span class="math" data-tex="\(a=i_Bv\widehat u\)">\(a=i_Bv\widehat u\)</span> induces the zero map because <span class="math" data-tex="\(p_Bi_B=0\)">\(p_Bi_B=0\)</span>. Consequently (1.3) descends to an endofunctor <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> on <span class="math" data-tex="\(\underline{\mathcal A}\)">\(\underline{\mathcal A}\)</span>. Identity extensions, composites of extensions and sums of extensions prove, respectively,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+\Sigma(1)=1,\qquad \Sigma(gf)=\Sigma(g)\Sigma(f),\qquad
+\Sigma(f+g)=\Sigma(f)+\Sigma(g).
+\tag{1.4}
+\]">\[
+\Sigma(1)=1,\qquad \Sigma(gf)=\Sigma(g)\Sigma(f),\qquad
+\Sigma(f+g)=\Sigma(f)+\Sigma(g).
+\tag{1.4}
+\]</span>
+<p>These equalities are in the quotient; arbitrary chosen extensions are not required to be strictly composable in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>.</p>
+<p>Changing all embeddings gives a naturally isomorphic endofunctor. Indeed extend <span class="math" data-tex="\(i&#x27;_A\)">\(i&#x27;_A\)</span> across <span class="math" data-tex="\(i_A\)">\(i_A\)</span> and conversely, giving <span class="math" data-tex="\(a_A:I_A\to I&#x27;_A\)">\(a_A:I_A\to I&#x27;_A\)</span> and <span class="math" data-tex="\(b_A:I&#x27;_A\to I_A\)">\(b_A:I&#x27;_A\to I_A\)</span>. Their induced cokernel maps <span class="math" data-tex="\(\theta_A:\Sigma A\to\Sigma&#x27; A\)">\(\theta_A:\Sigma A\to\Sigma&#x27; A\)</span> and <span class="math" data-tex="\(\psi_A\)">\(\psi_A\)</span> satisfy <span class="math" data-tex="\(\psi_A\theta_A=1\)">\(\psi_A\theta_A=1\)</span>, <span class="math" data-tex="\(\theta_A\psi_A=1\)">\(\theta_A\psi_A=1\)</span> in the quotient, since <span class="math" data-tex="\(b_Aa_A-1\)">\(b_Aa_A-1\)</span> and <span class="math" data-tex="\(a_Ab_A-1\)">\(a_Ab_A-1\)</span> kill the respective embeddings. For a map <span class="math" data-tex="\(f\)">\(f\)</span>, the difference of the two composites of comparison extensions kills <span class="math" data-tex="\(i_A\)">\(i_A\)</span>; its induced cokernel difference therefore factors through <span class="math" data-tex="\(I&#x27;_B\)">\(I&#x27;_B\)</span>. This proves naturality. The same argument with three choices shows that comparison through the intermediate choice equals direct comparison. In particular the comparison is independent of the extensions and obeys its cocycle law.</p>
+<h2 id="2-eventual-maps-and-an-invertible-suspension">2. Eventual maps and an invertible suspension</h2>
+<p>Write <span class="math" data-tex="\(\mathcal S=\operatorname{Stab}(\underline{\mathcal A},\Sigma)\)">\(\mathcal S=\operatorname{Stab}(\underline{\mathcal A},\Sigma)\)</span>. Its objects are <span class="math" data-tex="\((A,n)\)">\((A,n)\)</span> for integers <span class="math" data-tex="\(n\)">\(n\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\mathcal S((A,n),(B,m))=
+\operatorname*{colim}_{k\ge\max(0,-n,-m)}
+\underline{\mathcal A}(\Sigma^{n+k}A,\Sigma^{m+k}B),
+\tag{2.1}
+\]">\[
+\mathcal S((A,n),(B,m))=
+\operatorname*{colim}_{k\ge\max(0,-n,-m)}
+\underline{\mathcal A}(\Sigma^{n+k}A,\Sigma^{m+k}B),
+\tag{2.1}
+\]</span>
+<p>with transition <span class="math" data-tex="\(f\mapsto\Sigma f\)">\(f\mapsto\Sigma f\)</span>. Equality means equality at some common later stage, not equality before any transition. Represent a map by <span class="math" data-tex="\([\underline f,k]\)">\([\underline f,k]\)</span>. Composition and addition are performed at one common stage, and then passed to its class. Independence, associativity, bilinearity and all biproduct equations are proved in the stabilization prerequisite; they apply because of (1.4).</p>
+<p>The suspension and its strict inverse are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+S(A,n)=(A,n+1),\quad S[\underline f,k]=[\Sigma\underline f,k],
+\qquad S^{-1}[\underline f,k]=[\underline f,k+1].
+\tag{2.2}
+\]">\[
+S(A,n)=(A,n+1),\quad S[\underline f,k]=[\Sigma\underline f,k],
+\qquad S^{-1}[\underline f,k]=[\underline f,k+1].
+\tag{2.2}
+\]</span>
+<p>On objects the inverse lowers the integer by one. Both composites send a morphism to its own next-stage representative and hence are identity. Let <span class="math" data-tex="\(\iota A=(A,0)\)">\(\iota A=(A,0)\)</span>. There are actual isomorphisms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\gamma_A:S\iota A\longrightarrow\iota\Sigma A,\qquad
+\beta_{r,A}:S^r\iota A\longrightarrow\iota\Sigma^rA\quad(r\ge0),
+\tag{2.3}
+\]">\[
+\gamma_A:S\iota A\longrightarrow\iota\Sigma A,\qquad
+\beta_{r,A}:S^r\iota A\longrightarrow\iota\Sigma^rA\quad(r\ge0),
+\tag{2.3}
+\]</span>
+<p>represented by identity maps. They and their inverses have the precise composition relations in the prerequisite. Every arrow <span class="math" data-tex="\(u=[\underline f,k]:(A,n)\to(B,m)\)">\(u=[\underline f,k]:(A,n)\to(B,m)\)</span> satisfies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+S^ku=\beta_{m+k,B}^{-1}\,\iota(\underline f)\,\beta_{n+k,A}.
+\tag{2.4}
+\]">\[
+S^ku=\beta_{m+k,B}^{-1}\,\iota(\underline f)\,\beta_{n+k,A}.
+\tag{2.4}
+\]</span>
+<p>This factorization will reduce arbitrary arrows to maps between objects of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>.</p>
+<h2 id="3-bounded-injective-complexes-and-their-derived-quotient">3. Bounded injective complexes and their derived quotient</h2>
+<p>There is a fully faithful exact functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+K^b(\mathcal I)\longrightarrow D^b(\mathcal A).
+\tag{3.1}
+\]">\[
+K^b(\mathcal I)\longrightarrow D^b(\mathcal A).
+\tag{3.1}
+\]</span>
+<p>For completeness the Hom assertion is not an inference from injectivity of individual source terms. A bounded injective target <span class="math" data-tex="\(J\)">\(J\)</span> is bounded below. For a map from an acyclic complex <span class="math" data-tex="\(N\)">\(N\)</span> into <span class="math" data-tex="\(J\)">\(J\)</span>, start a homotopy below its lower bound. If its equations hold up to degree <span class="math" data-tex="\(r-1\)">\(r-1\)</span>, the residual in degree <span class="math" data-tex="\(r\)">\(r\)</span> kills <span class="math" data-tex="\(\operatorname{im}d_N^{r-1}=\ker d_N^r\)">\(\operatorname{im}d_N^{r-1}=\ker d_N^r\)</span>. It therefore factors through <span class="math" data-tex="\(\operatorname{im}d_N^r\hookrightarrow N^{r+1}\)">\(\operatorname{im}d_N^r\hookrightarrow N^{r+1}\)</span>, and injectivity of <span class="math" data-tex="\(J^r\)">\(J^r\)</span> extends it to the next homotopy component. Induction makes the whole map null-homotopic. The cone Hom sequence then makes precomposition by every quasi-isomorphism a Hom bijection into <span class="math" data-tex="\(J\)">\(J\)</span>. Roofs and their equality test give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{K(\mathcal A)}(X,J)
+\simeq\operatorname{Hom}_{D(\mathcal A)}(X,J).
+\tag{3.2}
+\]">\[
+\operatorname{Hom}_{K(\mathcal A)}(X,J)
+\simeq\operatorname{Hom}_{D(\mathcal A)}(X,J).
+\tag{3.2}
+\]</span>
+<p>The bounded derived full embedding prerequisite identifies the right side with bounded derived Hom whenever <span class="math" data-tex="\(X\)">\(X\)</span> is bounded. Thus (3.1) is fully faithful. Finite sums, shifts and cones of bounded injective complexes stay bounded injective, so it preserves the full cone triangles and is exact.</p>
+<p>Let <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> be the replete essential image of (3.1), and put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\mathcal Q=D^b(\mathcal A)/\mathcal N,\qquad
+q:D^b(\mathcal A)\longrightarrow\mathcal Q.
+\tag{3.3}
+\]">\[
+\mathcal Q=D^b(\mathcal A)/\mathcal N,\qquad
+q:D^b(\mathcal A)\longrightarrow\mathcal Q.
+\tag{3.3}
+\]</span>
+<p>Full faithfulness and cones make <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> a full triangulated subcategory. The null-system prerequisite constructs (3.3), both roof calculi, and every triangulated axiom. Its incoming denominators are maps whose cones belong to <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. It also proves the useful exact criterion: a derived map becomes zero under <span class="math" data-tex="\(q\)">\(q\)</span> if and only if it factors through an actual object of <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. We do not replace this statement by an unproved assumption that a null system is already closed under retracts.</p>
+<p>Let <span class="math" data-tex="\(\delta_A:\Sigma A\to A[1]\)">\(\delta_A:\Sigma A\to A[1]\)</span> be the connecting map of (1.2), with convention (0.1). Naturality of short exact row triangles says</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+\delta_B\widetilde f=f[1]\delta_A
+\quad\text{in }D^b(\mathcal A)
+\tag{3.4}
+\]">\[
+\delta_B\widetilde f=f[1]\delta_A
+\quad\text{in }D^b(\mathcal A)
+\tag{3.4}
+\]</span>
+<p>for every extension (1.3). Its image <span class="math" data-tex="\(q\delta_A\)">\(q\delta_A\)</span> is invertible, since the middle vertex <span class="math" data-tex="\(I_A\)">\(I_A\)</span> becomes zero. Maps through injectives become zero in <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>, so the stalk functor descends to an additive functor <span class="math" data-tex="\(F:\underline{\mathcal A}\to\mathcal Q\)">\(F:\underline{\mathcal A}\to\mathcal Q\)</span>. Equation (3.4) makes <span class="math" data-tex="\(q\delta:F\Sigma\to[1]F\)">\(q\delta:F\Sigma\to[1]F\)</span> a natural isomorphism.</p>
+<p>Define <span class="math" data-tex="\(\rho_{0,A}=1\)">\(\rho_{0,A}=1\)</span>, and, before applying <span class="math" data-tex="\(q\)">\(q\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+\rho_{r+1,A}=\rho_{r,A}[1]\delta_{\Sigma^rA}:
+\Sigma^{r+1}A\longrightarrow A[r+1].
+\tag{3.5}
+\]">\[
+\rho_{r+1,A}=\rho_{r,A}[1]\delta_{\Sigma^rA}:
+\Sigma^{r+1}A\longrightarrow A[r+1].
+\tag{3.5}
+\]</span>
+<p>The stabilization construction extends <span class="math" data-tex="\(F\)">\(F\)</span> to an additive functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.6); horizontal scroll when needed" data-tex="\[
+\Phi:\mathcal S\longrightarrow\mathcal Q,\qquad
+\Phi(A,n)=qA[n].
+\tag{3.6}
+\]">\[
+\Phi:\mathcal S\longrightarrow\mathcal Q,\qquad
+\Phi(A,n)=qA[n].
+\tag{3.6}
+\]</span>
+<p>Explicitly its value on a stage map is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.7); horizontal scroll when needed" data-tex="\[
+\Phi[\underline f,k]=
+\bigl(q\rho_{m+k,B}\,qf\,(q\rho_{n+k,A})^{-1}\bigr)[-k].
+\tag{3.7}
+\]">\[
+\Phi[\underline f,k]=
+\bigl(q\rho_{m+k,B}\,qf\,(q\rho_{n+k,A})^{-1}\bigr)[-k].
+\tag{3.7}
+\]</span>
+<p>All three maps inside the parentheses are between the shifts with indices <span class="math" data-tex="\(n+k,m+k\)">\(n+k,m+k\)</span>. The displayed final shift gives the claimed domain and codomain. Equation (3.4) proves invariance under the next transition; quotienting through injectives and equality at a later stage prove all remaining independence. At a common stage the middle <span class="math" data-tex="\(\rho\)">\(\rho\)</span> factors cancel, proving composition and addition. Integer shifts of complexes give the chosen coherent powers, and the translation comparison <span class="math" data-tex="\(\Phi S\to[1]\Phi\)">\(\Phi S\to[1]\Phi\)</span> is identity. In particular</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.8); horizontal scroll when needed" data-tex="\[
+\Phi(\gamma_A)=(q\delta_A)^{-1}.
+\tag{3.8}
+\]">\[
+\Phi(\gamma_A)=(q\delta_A)^{-1}.
+\tag{3.8}
+\]</span>
+<h2 id="4-cosyzygy-denominators-compute-all-morphisms">4. Cosyzygy denominators compute all morphisms</h2>
+<p>Put <span class="math" data-tex="\(A_r=\Sigma^rA[-r]\)">\(A_r=\Sigma^rA[-r]\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+d_{r,A}=\rho_{r,A}[-r]:A_r\longrightarrow A,
+\qquad
+e_{r,A}=\delta_{\Sigma^rA}[-r-1]:A_{r+1}\longrightarrow A_r.
+\tag{4.1}
+\]">\[
+d_{r,A}=\rho_{r,A}[-r]:A_r\longrightarrow A,
+\qquad
+e_{r,A}=\delta_{\Sigma^rA}[-r-1]:A_{r+1}\longrightarrow A_r.
+\tag{4.1}
+\]</span>
+<p>Then <span class="math" data-tex="\(d_{0,A}=1\)">\(d_{0,A}=1\)</span> and <span class="math" data-tex="\(d_{r+1,A}=d_{r,A}e_{r,A}\)">\(d_{r+1,A}=d_{r,A}e_{r,A}\)</span>. For <span class="math" data-tex="\(t\ge r\)">\(t\ge r\)</span>, write <span class="math" data-tex="\(e_{r,t,A}\)">\(e_{r,t,A}\)</span> for the composite from <span class="math" data-tex="\(A_t\)">\(A_t\)</span> to <span class="math" data-tex="\(A_r\)">\(A_r\)</span>, including identity when <span class="math" data-tex="\(t=r\)">\(t=r\)</span>.</p>
+<p><strong>Lemma 4.1 (finite cones with their bounds).</strong> Each <span class="math" data-tex="\(d_{r,A}\)">\(d_{r,A}\)</span> has a cone represented by injective terms only in degrees <span class="math" data-tex="\(0,\ldots,r-1\)">\(0,\ldots,r-1\)</span>. Each <span class="math" data-tex="\(e_{r,A}\)">\(e_{r,A}\)</span> has a cone isomorphic to <span class="math" data-tex="\(I_{\Sigma^rA}[-r]\)">\(I_{\Sigma^rA}[-r]\)</span>. In particular all these maps are denominators for (3.3).</p>
+<p><strong>Proof.</strong> Inverse rotation of the triangle of (1.2) gives a triangle starting with <span class="math" data-tex="\(-\delta_A[-1]\)">\(-\delta_A[-1]\)</span> and third vertex <span class="math" data-tex="\(I_A\)">\(I_A\)</span>. Replacing the sign on its first vertex gives a completion of <span class="math" data-tex="\(+\delta_A[-1]\)">\(+\delta_A[-1]\)</span> with the same third object. Shifting this argument gives the assertion for <span class="math" data-tex="\(e_r\)">\(e_r\)</span>. The identity has zero cone. Suppose a cone <span class="math" data-tex="\(C_r\)">\(C_r\)</span> of <span class="math" data-tex="\(d_r\)">\(d_r\)</span> has the stated injective representative. The octahedron for <span class="math" data-tex="\(e_r,d_r\)">\(e_r,d_r\)</span> gives a triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+I_{\Sigma^rA}[-r]\longrightarrow C_{r+1}
+\longrightarrow C_r\longrightarrow I_{\Sigma^rA}[-r+1].
+\tag{4.2}
+\]">\[
+I_{\Sigma^rA}[-r]\longrightarrow C_{r+1}
+\longrightarrow C_r\longrightarrow I_{\Sigma^rA}[-r+1].
+\tag{4.2}
+\]</span>
+<p>Both endpoints are bounded injective complexes, so the last map is represented by a chain map by (3.1). A shifted cone of that map, with the vertex sign appropriate to inverse rotation, represents the middle object. Its terms are the direct sums of the terms of <span class="math" data-tex="\(I_{\Sigma^rA}[-r]\)">\(I_{\Sigma^rA}[-r]\)</span> and <span class="math" data-tex="\(C_r\)">\(C_r\)</span>. They lie in degrees <span class="math" data-tex="\(0,\ldots,r\)">\(0,\ldots,r\)</span> and are injective. Triangle comparison identifies this middle object with the prescribed <span class="math" data-tex="\(C_{r+1}\)">\(C_{r+1}\)</span>. Induction proves the first assertion with its exact degree bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2 (the last-degree kernel).</strong> For objects <span class="math" data-tex="\(U,B\)">\(U,B\)</span>, the map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathcal A}(U,\Sigma^rB)
+\longrightarrow\operatorname{Hom}_{D^b}(U[-r],B),
+\qquad f\longmapsto d_{r,B}f[-r]
+\tag{4.3}
+\]">\[
+\operatorname{Hom}_{\mathcal A}(U,\Sigma^rB)
+\longrightarrow\operatorname{Hom}_{D^b}(U[-r],B),
+\qquad f\longmapsto d_{r,B}f[-r]
+\tag{4.3}
+\]</span>
+<p>is surjective. When <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, its kernel consists of maps that, in particular, factor through an injective object. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> it is the degree-zero Hom identification and has zero kernel.</p>
+<p><strong>Proof.</strong> Complete <span class="math" data-tex="\(d_{r,B}\)">\(d_{r,B}\)</span> with cone <span class="math" data-tex="\(C_r\)">\(C_r\)</span> as in Lemma 4.1. By (3.2), <span class="math" data-tex="\(\operatorname{Hom}_{D^b}(U[-r],C_r)=0\)">\(\operatorname{Hom}_{D^b}(U[-r],C_r)=0\)</span>: its source is a stalk in degree <span class="math" data-tex="\(r\)">\(r\)</span>, and every term of the injective target in degree <span class="math" data-tex="\(r\)">\(r\)</span> and above is zero. The triangle Hom sequence therefore makes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{D^b}(U[-r],\Sigma^rB[-r])
+\longrightarrow\operatorname{Hom}_{D^b}(U[-r],B)
+\]">\[
+\operatorname{Hom}_{D^b}(U[-r],\Sigma^rB[-r])
+\longrightarrow\operatorname{Hom}_{D^b}(U[-r],B)
+\]</span>
+<p>surjective. The source is ordinary Hom by the degree-zero full embedding and shifting, proving surjectivity in (4.3).</p>
+<p>If <span class="math" data-tex="\(d_{r,B}f[-r]=0\)">\(d_{r,B}f[-r]=0\)</span>, exactness writes <span class="math" data-tex="\(f[-r]\)">\(f[-r]\)</span> as a composite through <span class="math" data-tex="\(C_r[-1]\)">\(C_r[-1]\)</span>. The map into this bounded injective complex has an actual chain representative by (3.2). Its only possible component is <span class="math" data-tex="\(U\to C_r[-1]^r\)">\(U\to C_r[-1]^r\)</span>, an injective object. The outgoing derived map need not have a chain representative. Apply <span class="math" data-tex="\(H^r\)">\(H^r\)</span> instead: since <span class="math" data-tex="\(r\)">\(r\)</span> is the highest term degree of <span class="math" data-tex="\(C_r[-1]\)">\(C_r[-1]\)</span>, its cohomology is the quotient of <span class="math" data-tex="\(C_r[-1]^r\)">\(C_r[-1]^r\)</span> by its incoming image. The induced composite <span class="math" data-tex="\(f\)">\(f\)</span> is consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+U\longrightarrow C_r[-1]^r\longrightarrow H^r(C_r[-1])
+\longrightarrow\Sigma^rB.
+\]">\[
+U\longrightarrow C_r[-1]^r\longrightarrow H^r(C_r[-1])
+\longrightarrow\Sigma^rB.
+\]</span>
+<p>It factors through the indicated injective term. This proves the needed kernel assertion without treating an injective complex as projective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.3 (all stabilized Hom groups).</strong> The functor <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is fully faithful. In particular there is a natural group isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\operatorname*{colim}_{r\ge0}
+\underline{\mathcal A}(\Sigma^rA,\Sigma^rB)
+\simeq\operatorname{Hom}_{\mathcal Q}(qA,qB).
+\tag{4.4}
+\]">\[
+\operatorname*{colim}_{r\ge0}
+\underline{\mathcal A}(\Sigma^rA,\Sigma^rB)
+\simeq\operatorname{Hom}_{\mathcal Q}(qA,qB).
+\tag{4.4}
+\]</span>
+<p><strong>Proof of surjectivity.</strong> Represent a quotient arrow by <span class="math" data-tex="\(qg(qs)^{-1}\)">\(qg(qs)^{-1}\)</span>, where <span class="math" data-tex="\(s:V\to A\)">\(s:V\to A\)</span> has bounded injective cone <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(g:V\to B\)">\(g:V\to B\)</span>. Choose <span class="math" data-tex="\(r\)">\(r\)</span> larger than the upper term degree of one bounded injective representative of <span class="math" data-tex="\(J\)">\(J\)</span>. Equation (3.2) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{D^b}(A_r,J)=0.
+\]">\[
+\operatorname{Hom}_{D^b}(A_r,J)=0.
+\]</span>
+<p>The triangle Hom sequence lifts <span class="math" data-tex="\(d_{r,A}\)">\(d_{r,A}\)</span> to <span class="math" data-tex="\(a:A_r\to V\)">\(a:A_r\to V\)</span> with <span class="math" data-tex="\(sa=d_{r,A}\)">\(sa=d_{r,A}\)</span>. This is a refinement of the incoming denominator; <span class="math" data-tex="\(a\)">\(a\)</span> is itself a denominator by triangle two-out-of-three. Lemma 4.2 applied to <span class="math" data-tex="\(U=\Sigma^rA\)">\(U=\Sigma^rA\)</span> writes <span class="math" data-tex="\(ga=d_{r,B}f[-r]\)">\(ga=d_{r,B}f[-r]\)</span> for an actual map <span class="math" data-tex="\(f:\Sigma^rA\to\Sigma^rB\)">\(f:\Sigma^rA\to\Sigma^rB\)</span>. Thus the given arrow is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+q d_{r,B}\,q(f[-r])\,(q d_{r,A})^{-1},
+\tag{4.5}
+\]">\[
+q d_{r,B}\,q(f[-r])\,(q d_{r,A})^{-1},
+\tag{4.5}
+\]</span>
+<p>which is exactly (3.7) at stage <span class="math" data-tex="\(r\)">\(r\)</span>. Every quotient map has the required stabilized representative.</p>
+<p><strong>Proof of injectivity and equality.</strong> Suppose a stage map <span class="math" data-tex="\(f\)">\(f\)</span> has image zero in (4.5). Set <span class="math" data-tex="\(b=d_{r,B}f[-r]:A_r\to B\)">\(b=d_{r,B}f[-r]:A_r\to B\)</span>. Then <span class="math" data-tex="\(qb=0\)">\(qb=0\)</span>, so the exact zero-factorization criterion in Section 3 writes <span class="math" data-tex="\(b\)">\(b\)</span> through a bounded injective complex <span class="math" data-tex="\(J\)">\(J\)</span>. Choose <span class="math" data-tex="\(t\ge r,1\)">\(t\ge r,1\)</span> larger than its upper term bound. Since <span class="math" data-tex="\(A_t\)">\(A_t\)</span> is concentrated in degree <span class="math" data-tex="\(t\)">\(t\)</span>, (3.2) makes <span class="math" data-tex="\(\operatorname{Hom}_{D^b}(A_t,J)=0\)">\(\operatorname{Hom}_{D^b}(A_t,J)=0\)</span>. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.6); horizontal scroll when needed" data-tex="\[
+b e_{r,t,A}=0.
+\tag{4.6}
+\]">\[
+b e_{r,t,A}=0.
+\tag{4.6}
+\]</span>
+<p>Iterate actual extensions (1.3) for <span class="math" data-tex="\(f\)">\(f\)</span>, and call the resulting representative <span class="math" data-tex="\(f_t:\Sigma^tA\to\Sigma^tB\)">\(f_t:\Sigma^tA\to\Sigma^tB\)</span>. Equation (3.4) at each step gives the exact derived equality</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.7); horizontal scroll when needed" data-tex="\[
+d_{t,B}f_t[-t]=d_{r,B}f[-r]e_{r,t,A}=0.
+\tag{4.7}
+\]">\[
+d_{t,B}f_t[-t]=d_{r,B}f[-r]e_{r,t,A}=0.
+\tag{4.7}
+\]</span>
+<p>Lemma 4.2 now says <span class="math" data-tex="\(f_t\)">\(f_t\)</span> factors through an injective. Thus <span class="math" data-tex="\(\Sigma^{t-r}\underline f=0\)">\(\Sigma^{t-r}\underline f=0\)</span> in the stable category: the class was eventually zero. If two stage maps have equal images, first advance them to a common stage and apply this argument to their difference. This gives an actual later stable equality witness and proves injectivity of (4.4). It proves all equality tests, not only a supply of convenient roofs.</p>
+<p>Finally, for arbitrary pairs <span class="math" data-tex="\((A,n),(B,m)\)">\((A,n),(B,m)\)</span>, choose <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(n+k,m+k\ge0\)">\(n+k,m+k\ge0\)</span>. The invertible suspension and (2.3) identify their Hom group with that between <span class="math" data-tex="\(\iota\Sigma^{n+k}A\)">\(\iota\Sigma^{n+k}A\)</span> and <span class="math" data-tex="\(\iota\Sigma^{m+k}B\)">\(\iota\Sigma^{m+k}B\)</span>, after applying <span class="math" data-tex="\(S^k\)">\(S^k\)</span>. The corresponding identifications under <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> are shifts and the <span class="math" data-tex="\(q\rho\)">\(q\rho\)</span> isomorphisms. The already proved stalk-pair bijection therefore gives the Hom bijection for these pairs too. Formula (3.7) shows that these bijections are those of the single functor <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, hence preserve composition, sums and both-variable naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-every-bounded-object-is-a-shifted-stalk-in-the-quotient">5. Every bounded object is a shifted stalk in the quotient</h2>
+<p><strong>Theorem 5.1.</strong> The additive functor <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is an equivalence.</p>
+<p><strong>Proof.</strong> It remains to prove essential surjectivity. Given <span class="math" data-tex="\(X\in D^b(\mathcal A)\)">\(X\in D^b(\mathcal A)\)</span>, the bounded representative and replacement prerequisites give a quasi-isomorphism to a bounded-below injective complex <span class="math" data-tex="\(I\)">\(I\)</span>. Its cohomology is bounded. Choose an integer <span class="math" data-tex="\(r\)">\(r\)</span> above its highest nonzero cohomology degree and at least its lower term bound. The smart truncation <span class="math" data-tex="\(E=\tau_{\le r}I\)">\(E=\tau_{\le r}I\)</span> is bounded and quasi-isomorphic to <span class="math" data-tex="\(I\)">\(I\)</span>. It has injective terms below <span class="math" data-tex="\(r\)">\(r\)</span>, term <span class="math" data-tex="\(Z^rI=\ker d_I^r\)">\(Z^rI=\ker d_I^r\)</span> in degree <span class="math" data-tex="\(r\)">\(r\)</span>, and no higher terms. There is a short exact sequence of complexes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+0\longrightarrow Z^rI[-r]\longrightarrow E
+\longrightarrow (\cdots\to I^{r-2}\to I^{r-1}\to0)
+\longrightarrow0.
+\tag{5.1}
+\]">\[
+0\longrightarrow Z^rI[-r]\longrightarrow E
+\longrightarrow (\cdots\to I^{r-2}\to I^{r-1}\to0)
+\longrightarrow0.
+\tag{5.1}
+\]</span>
+<p>The last complex, with its original degrees and differential truncated to zero after <span class="math" data-tex="\(r-1\)">\(r-1\)</span>, is bounded injective. Its image under <span class="math" data-tex="\(q\)">\(q\)</span> is zero. The short-row triangle therefore makes <span class="math" data-tex="\(q(Z^rI[-r])\to qE\)">\(q(Z^rI[-r])\to qE\)</span> invertible. Since <span class="math" data-tex="\(E\simeq X\)">\(E\simeq X\)</span>, this exhibits <span class="math" data-tex="\(qX\)">\(qX\)</span> as the image of <span class="math" data-tex="\((Z^rI,-r)\)">\((Z^rI,-r)\)</span>. This proves density. Together with Theorem 4.3 it proves equivalence: choose the just exhibited preimages and isomorphisms, and lift maps by the full-faithful Hom bijections; those bijections give the identity, composition, unit and counit equations. No assertion that a bounded object has a bounded injective resolution was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-signed-short-row-triangles-and-all-four-axioms">6. Signed short-row triangles and all four axioms</h2>
+<p>For a short exact row <span class="math" data-tex="\(0\to A\xrightarrow{i}B\xrightarrow{p}C\to0\)">\(0\to A\xrightarrow{i}B\xrightarrow{p}C\to0\)</span>, extend <span class="math" data-tex="\(i_A:A\to I_A\)">\(i_A:A\to I_A\)</span> across <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(b:B\to I_A\)">\(b:B\to I_A\)</span>. There is a unique map <span class="math" data-tex="\(h:C\to\Sigma A\)">\(h:C\to\Sigma A\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+hp=p_Ab.
+\tag{6.1}
+\]">\[
+hp=p_Ab.
+\tag{6.1}
+\]</span>
+<p>Changing <span class="math" data-tex="\(b\)">\(b\)</span> changes it by a map <span class="math" data-tex="\(c p\)">\(c p\)</span> into <span class="math" data-tex="\(I_A\)">\(I_A\)</span>, and changes <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(p_Ac\)">\(p_Ac\)</span>. Thus <span class="math" data-tex="\(\underline h\)">\(\underline h\)</span> is independent of the extension. Naturality of short-row triangles, applied to the row map <span class="math" data-tex="\((1_A,b,h)\)">\((1_A,b,h)\)</span> into (1.2), gives its connecting map exactly as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\delta_{(i,p)}=\delta_A h:C\longrightarrow A[1].
+\tag{6.2}
+\]">\[
+\delta_{(i,p)}=\delta_A h:C\longrightarrow A[1].
+\tag{6.2}
+\]</span>
+<p>Define its stable connecting arrow to be</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\partial_{(i,p)}=\gamma_A^{-1}\iota(\underline h):
+\iota C\longrightarrow S\iota A.
+\tag{6.3}
+\]">\[
+\partial_{(i,p)}=\gamma_A^{-1}\iota(\underline h):
+\iota C\longrightarrow S\iota A.
+\tag{6.3}
+\]</span>
+<p>By (3.8), <span class="math" data-tex="\(\Phi\partial=q\delta_{(i,p)}\)">\(\Phi\partial=q\delta_{(i,p)}\)</span>, with a positive sign relative to our specified cone convention. A commuting row map <span class="math" data-tex="\((a,b&#x27;,c)\)">\((a,b&#x27;,c)\)</span> gives <span class="math" data-tex="\(\delta&#x27;c=a[1]\delta\)">\(\delta&#x27;c=a[1]\delta\)</span>; full faithfulness of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> gives the full stable triangle morphism, including its last square. Changing choices of embeddings gives the corresponding same statement through the canonical comparisons of Section 1.</p>
+<p>Declare a triangle <strong>row distinguished</strong> if it is isomorphic as a complete triangle to one of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+S^j\iota A\xrightarrow{S^j\iota\underline i}S^j\iota B
+\xrightarrow{S^j\iota\underline p}S^j\iota C
+\xrightarrow{(-1)^j S^j\partial_{(i,p)}}S^{j+1}\iota A,
+\qquad j\in\mathbb Z.
+\tag{6.4}
+\]">\[
+S^j\iota A\xrightarrow{S^j\iota\underline i}S^j\iota B
+\xrightarrow{S^j\iota\underline p}S^j\iota C
+\xrightarrow{(-1)^j S^j\partial_{(i,p)}}S^{j+1}\iota A,
+\qquad j\in\mathbb Z.
+\tag{6.4}
+\]</span>
+<p>The sign is necessary for positively shifted first and second arrows. For one shift the cone comparison <span class="math" data-tex="\(C(f[1])\to C(f)[1]\)">\(C(f[1])\to C(f)[1]\)</span> is <span class="math" data-tex="\((y,x)\mapsto(y,-x)\)">\((y,x)\mapsto(y,-x)\)</span>. Its last projection square introduces minus sign. Iterating in both directions gives exactly <span class="math" data-tex="\((-1)^j\)">\((-1)^j\)</span>, including negative <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>Theorem 6.1.</strong> The triangles (6.4) and their complete isomorphs are precisely the triangles whose <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> images are distinguished in <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>. They make <span class="math" data-tex="\((\mathcal S,S)\)">\((\mathcal S,S)\)</span> triangulated, and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is an exact equivalence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+\operatorname{Stab}(\underline{\mathcal A},\Sigma)
+\simeq D^b(\mathcal A)/K^b(\mathcal I).
+\tag{6.5}
+\]">\[
+\operatorname{Stab}(\underline{\mathcal A},\Sigma)
+\simeq D^b(\mathcal A)/K^b(\mathcal I).
+\tag{6.5}
+\]</span>
+<p><strong>Proof of the asserted class of triangles.</strong> Equations (6.2)–(6.4) show that every row distinguished triangle has distinguished image. Conversely first construct a row completion of every stable arrow. For an actual representative <span class="math" data-tex="\(f:U\to V\)">\(f:U\to V\)</span>, the map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.6); horizontal scroll when needed" data-tex="\[
+j_f=(f,i_U):U\longrightarrow V\oplus I_U
+\tag{6.6}
+\]">\[
+j_f=(f,i_U):U\longrightarrow V\oplus I_U
+\tag{6.6}
+\]</span>
+<p>is monic, since its second component is monic. Take its cokernel <span class="math" data-tex="\(C_f\)">\(C_f\)</span> and the corresponding short exact row. In the stable category projection <span class="math" data-tex="\(V\oplus I_U\to V\)">\(V\oplus I_U\to V\)</span> is an isomorphism with inverse its inclusion: the other composite differs from identity by the projection onto an injective summand. Transport the row triangle along this isomorphism; its first arrow is <span class="math" data-tex="\(\iota\underline f\)">\(\iota\underline f\)</span>. For an arbitrary arrow (2.4), use this completion at its common stage, transport by the two <span class="math" data-tex="\(\beta\)">\(\beta\)</span>'s, and shift back by <span class="math" data-tex="\(-k\)">\(-k\)</span> with the sign in (6.4). It is still a row distinguished triangle and has the original first arrow.</p>
+<p>Now take any complete triangle with distinguished <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> image. Complete its first arrow by the preceding row construction. In <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>, the triangle morphism axiom compares the two distinguished completions with identities on their first two vertices. Exact Hom sequences make the third comparison invertible. Full faithfulness of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> lifts this comparison and its inverse, including the last square. Thus the proposed triangle is a complete isomorph of the row completion. This proves equality of the two classes before assigning any axioms to the source.</p>
+<p><strong>Proof of all axioms.</strong> Identity and zero triangles, closure under complete isomorphism, and completion of every arrow follow either from the class identification or from (6.6). Rotation of the image triangle has last arrow <span class="math" data-tex="\(-[1]\Phi f\)">\(-[1]\Phi f\)</span>. The identity translation comparison and faithfulness make its lift exactly <span class="math" data-tex="\(-Sf\)">\(-Sf\)</span>; inverse rotation is obtained in the same way. For a square between distinguished source triangles, apply <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, complete the square in <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>, and lift the third map by fullness. Faithfulness proves every square, including the connecting square. This proves the full morphism axiom.</p>
+<p>For clarity the octahedral assertion includes prescribed completions. Given <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span>, and chosen triangles for <span class="math" data-tex="\(f,g,gf\)">\(f,g,gf\)</span>, take the prescribed octahedron of their images in <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>. Lift its arrows <span class="math" data-tex="\(u:C_f\to C_{gf}\)">\(u:C_f\to C_{gf}\)</span>, <span class="math" data-tex="\(v:C_{gf}\to C_g\)">\(v:C_{gf}\to C_g\)</span> by fullness, and put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.7); horizontal scroll when needed" data-tex="\[
+w=S(i_f)p_g:C_g\longrightarrow S C_f,
+\tag{6.7}
+\]">\[
+w=S(i_f)p_g:C_g\longrightarrow S C_f,
+\tag{6.7}
+\]</span>
+<p>where <span class="math" data-tex="\(i_f:Y\to C_f\)">\(i_f:Y\to C_f\)</span> is the second arrow and <span class="math" data-tex="\(p_g:C_g\to SY\)">\(p_g:C_g\to SY\)</span> the last arrow of the triangle for <span class="math" data-tex="\(g\)">\(g\)</span>. Faithfulness lifts the four required face equations exactly:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.8); horizontal scroll when needed" data-tex="\[
+u i_f=i_{gf}g,\qquad p_{gf}u=p_f,
+\qquad v i_{gf}=i_g,\qquad p_gv=(Sf)p_{gf}.
+\tag{6.8}
+\]">\[
+u i_f=i_{gf}g,\qquad p_{gf}u=p_f,
+\qquad v i_{gf}=i_g,\qquad p_gv=(Sf)p_{gf}.
+\tag{6.8}
+\]</span>
+<p>The image of the fourth row <span class="math" data-tex="\(C_f\xrightarrow u C_{gf}\xrightarrow v C_g\xrightarrow w S C_f\)">\(C_f\xrightarrow u C_{gf}\xrightarrow v C_g\xrightarrow w S C_f\)</span> is the distinguished fourth row of that octahedron. The class identification makes the lifted row row distinguished. This proves the full octahedral axiom with the given three completions and exact last map (6.7). Thus all four axioms hold. Preservation of complete triangles and the identity translation comparison make <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> exact; its quasi-inverse is exact by lifting triangles and the translation comparison along its Hom bijections. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-exactly-which-stalks-disappear">7. Exactly which stalks disappear</h2>
+<p><strong>Corollary 7.1.</strong> For an object <span class="math" data-tex="\(A\)">\(A\)</span>, the following are equivalent: <span class="math" data-tex="\(qA=0\)">\(qA=0\)</span>; <span class="math" data-tex="\(\iota A=0\)">\(\iota A=0\)</span> in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>; some <span class="math" data-tex="\(\Sigma^r A\)">\(\Sigma^r A\)</span> is injective; and <span class="math" data-tex="\(A\)">\(A\)</span> has finite injective dimension. There need not be one common bound for every object.</p>
+<p><strong>Proof.</strong> The equivalence identifies the first two conditions. The identity of <span class="math" data-tex="\(\iota A\)">\(\iota A\)</span> is zero exactly when some transition sends <span class="math" data-tex="\(1_A\)">\(1_A\)</span> to zero in <span class="math" data-tex="\(\underline{\mathcal A}\)">\(\underline{\mathcal A}\)</span>. Its transition is <span class="math" data-tex="\(1_{\Sigma^rA}\)">\(1_{\Sigma^rA}\)</span>, which is zero exactly when <span class="math" data-tex="\(\Sigma^rA\)">\(\Sigma^rA\)</span> is injective, by Section 1. The iterated rows (1.2) then give a finite injective resolution</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+0\to A\to I_A\to I_{\Sigma A}\to\cdots
+\to I_{\Sigma^{r-1}A}\to\Sigma^rA\to0.
+\tag{7.1}
+\]">\[
+0\to A\to I_A\to I_{\Sigma A}\to\cdots
+\to I_{\Sigma^{r-1}A}\to\Sigma^rA\to0.
+\tag{7.1}
+\]</span>
+<p>Conversely a finite injective resolution represents <span class="math" data-tex="\(A\)">\(A\)</span> by a bounded injective complex in <span class="math" data-tex="\(D^b\)">\(D^b\)</span>, so <span class="math" data-tex="\(qA=0\)">\(qA=0\)</span>. Each direction has been proved without assuming that all objects have finite dimension or that the original stable stalk functor is faithful. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Over the integers every abelian group has a length-one injective resolution: embed it in a divisible group, whose quotient is divisible and hence injective. Therefore this stabilized category and its bounded derived quotient are zero. The unstabilized category need not be zero: <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is not injective. At the opposite extreme, the dual-number example below has nonzero maps at every stage.</p>
+<h2 id="8-four-graded-exercises-with-complete-solutions">8. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-a-nonzero-stable-map-can-disappear-introductory">Exercise 1 — A nonzero stable map can disappear (introductory)</h3>
+<p>For abelian groups choose <span class="math" data-tex="\(\mathbb Z\hookrightarrow\mathbb Q\)">\(\mathbb Z\hookrightarrow\mathbb Q\)</span>, so <span class="math" data-tex="\(\Sigma\mathbb Z=\mathbb Q/\mathbb Z\)">\(\Sigma\mathbb Z=\mathbb Q/\mathbb Z\)</span>. Compute the stable endomorphism group of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, its first cosyzygy transition, and the stabilization of the whole category of abelian groups.</p>
+<p><strong>Solution.</strong> Ordinary endomorphisms of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> are integer multiplication. An injective abelian group is divisible. The image of a divisible group under any homomorphism is divisible: if <span class="math" data-tex="\(x=f(y)\)">\(x=f(y)\)</span>, divide <span class="math" data-tex="\(y\)">\(y\)</span> by a positive integer before applying <span class="math" data-tex="\(f\)">\(f\)</span>. The only divisible subgroup of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is zero, since a nonzero integer cannot be divided in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> by every positive integer. Consequently every map from an injective group to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is zero, and every endomorphism through an injective is zero. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+\underline{\operatorname{End}}(\mathbb Z)=\mathbb Z.
+\tag{8.1}
+\]">\[
+\underline{\operatorname{End}}(\mathbb Z)=\mathbb Z.
+\tag{8.1}
+\]</span>
+<p>The group <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span> is divisible, so it is injective and is a zero object of the stable category. Every first transition from (8.1) is zero. Thus all these nonzero stable endomorphisms become zero after one stage. More generally every group embeds in an injective divisible group <span class="math" data-tex="\(J\)">\(J\)</span>; its quotient is divisible because representatives in <span class="math" data-tex="\(J\)">\(J\)</span> can be divided before passing to the quotient. It is injective, so every object's first cosyzygy is already zero in the stable category. All sufficiently advanced groups in (2.1) are therefore zero. Every stabilized Hom group is zero, every object has zero identity, and the entire stabilization is the zero category. Theorem 6.1 identifies the bounded derived quotient as zero as well. This explains explicitly why an unproved faithful-embedding premise would fail.</p>
+<h3 id="exercise-2-nonzero-maps-at-every-stage-intermediate">Exercise 2 — Nonzero maps at every stage (intermediate)</h3>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be any field and <span class="math" data-tex="\(\Lambda=k[t]/(t^2)\)">\(\Lambda=k[t]/(t^2)\)</span>. Work in finite-dimensional <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-modules. Prove there are enough injectives, compute the stable Hom groups between <span class="math" data-tex="\((k,n)\)">\((k,n)\)</span> and <span class="math" data-tex="\((k,m)\)">\((k,m)\)</span>, and give the complete triangle of <span class="math" data-tex="\(0\to k\xrightarrow{1\mapsto t}\Lambda\to k\to0\)">\(0\to k\xrightarrow{1\mapsto t}\Lambda\to k\to0\)</span>. Include the sign after one positive shift.</p>
+<p><strong>Solution.</strong> For a finite-dimensional module <span class="math" data-tex="\(V\)">\(V\)</span>, every linear functional <span class="math" data-tex="\(\ell:V\to k\)">\(\ell:V\to k\)</span> gives a module map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+e_\ell(v)=\ell(tv)+\ell(v)t\in\Lambda.
+\tag{8.2}
+\]">\[
+e_\ell(v)=\ell(tv)+\ell(v)t\in\Lambda.
+\tag{8.2}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(e_\ell(tv)=\ell(tv)t=t e_\ell(v)\)">\(e_\ell(tv)=\ell(tv)t=t e_\ell(v)\)</span>. Conversely a module map <span class="math" data-tex="\(e:V\to\Lambda\)">\(e:V\to\Lambda\)</span> is uniquely of this form: take <span class="math" data-tex="\(\ell\)">\(\ell\)</span> to be its coefficient of <span class="math" data-tex="\(t\)">\(t\)</span>; <span class="math" data-tex="\(e(tv)=t e(v)\)">\(e(tv)=t e(v)\)</span> forces the constant coefficient to be <span class="math" data-tex="\(\ell(tv)\)">\(\ell(tv)\)</span>. This gives a natural isomorphism <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(V,\Lambda)\simeq\operatorname{Hom}_k(V,k)\)">\(\operatorname{Hom}_\Lambda(V,\Lambda)\simeq\operatorname{Hom}_k(V,k)\)</span>. Linear functionals extend across inclusions of finite-dimensional vector spaces by extending a basis. Thus <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is injective. For a basis of the linear dual, the map with components (8.2) embeds <span class="math" data-tex="\(V\)">\(V\)</span> into a finite sum of copies of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>: vanishing of all its <span class="math" data-tex="\(t\)">\(t\)</span>-coefficients forces <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. This proves enough injectives.</p>
+<p>To identify all injectives, put <span class="math" data-tex="\(T=t\)">\(T=t\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>. Choose a basis <span class="math" data-tex="\(u_i\)">\(u_i\)</span> of <span class="math" data-tex="\(\operatorname{im}T\)">\(\operatorname{im}T\)</span>, lifts <span class="math" data-tex="\(v_i\)">\(v_i\)</span> with <span class="math" data-tex="\(Tv_i=u_i\)">\(Tv_i=u_i\)</span>, and extend the <span class="math" data-tex="\(u_i\)">\(u_i\)</span>'s to a basis of <span class="math" data-tex="\(\ker T\)">\(\ker T\)</span> by <span class="math" data-tex="\(w_j\)">\(w_j\)</span>. The <span class="math" data-tex="\(v_i,u_i,w_j\)">\(v_i,u_i,w_j\)</span> form a basis: applying <span class="math" data-tex="\(T\)">\(T\)</span> proves independence of the <span class="math" data-tex="\(v_i\)">\(v_i\)</span> coefficients; the kernel basis then proves the rest, and subtracting lifts of <span class="math" data-tex="\(Tv\)">\(Tv\)</span> proves spanning. Thus <span class="math" data-tex="\(V\simeq\Lambda^a\oplus k^b\)">\(V\simeq\Lambda^a\oplus k^b\)</span>. The displayed row does not split, because a section of <span class="math" data-tex="\(\Lambda\to k\)">\(\Lambda\to k\)</span> would send <span class="math" data-tex="\(1\)">\(1\)</span> to an element killed by <span class="math" data-tex="\(t\)">\(t\)</span>, hence to a multiple of <span class="math" data-tex="\(t\)">\(t\)</span>, whose image in <span class="math" data-tex="\(k\)">\(k\)</span> is zero. Therefore <span class="math" data-tex="\(k\)">\(k\)</span> is not injective: if its embedding into <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> split by a retraction, the row would split. Retracts of injectives are injective, so an injective <span class="math" data-tex="\(V\)">\(V\)</span> has <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Injectives are exactly the finite free modules.</p>
+<p>Every <span class="math" data-tex="\(k\to\Lambda\)">\(k\to\Lambda\)</span> lands in <span class="math" data-tex="\(kt\)">\(kt\)</span>, and every <span class="math" data-tex="\(\Lambda\to k\)">\(\Lambda\to k\)</span> kills <span class="math" data-tex="\(t\)">\(t\)</span>. Thus maps <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span> through any finite free module are zero, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+\underline{\operatorname{Hom}}_\Lambda(k,k)=k.
+\tag{8.3}
+\]">\[
+\underline{\operatorname{Hom}}_\Lambda(k,k)=k.
+\tag{8.3}
+\]</span>
+<p>Choose the displayed embedding at every cosyzygy of <span class="math" data-tex="\(k\)">\(k\)</span>, identifying its quotient with <span class="math" data-tex="\(k\)">\(k\)</span>. A scalar map lifts to the same scalar on <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, so <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> acts as identity on (8.3). Every sufficiently advanced group in (2.1) for <span class="math" data-tex="\((k,n),(k,m)\)">\((k,n),(k,m)\)</span> is consequently <span class="math" data-tex="\(k\)">\(k\)</span> with identity transitions. Its colimit is <span class="math" data-tex="\(k\)">\(k\)</span>, composition multiplies scalars, and the class of <span class="math" data-tex="\(1\)">\(1\)</span> identifies any two integer labels. The middle term <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is zero stably. In (6.1) choose <span class="math" data-tex="\(b=1_\Lambda\)">\(b=1_\Lambda\)</span>, so <span class="math" data-tex="\(h=1_k\)">\(h=1_k\)</span>. The complete triangle is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.4); horizontal scroll when needed" data-tex="\[
+\iota k\longrightarrow0\longrightarrow\iota k
+\xrightarrow{\gamma_k^{-1}}S\iota k.
+\tag{8.4}
+\]">\[
+\iota k\longrightarrow0\longrightarrow\iota k
+\xrightarrow{\gamma_k^{-1}}S\iota k.
+\tag{8.4}
+\]</span>
+<p>Its last map is the identity scalar under the just specified label identifications. After one shift, keeping the first two maps positively shifted, the last map is <span class="math" data-tex="\(-S\gamma_k^{-1}\)">\(-S\gamma_k^{-1}\)</span>, hence scalar <span class="math" data-tex="\(-1\)">\(-1\)</span>. In characteristic two the two scalars coincide; the sign formula is still valid. Since no <span class="math" data-tex="\(\Sigma^r k=k\)">\(\Sigma^r k=k\)</span> is injective, <span class="math" data-tex="\(k\)">\(k\)</span> has infinite injective dimension by Corollary 7.1 and its quotient object is nonzero.</p>
+<h3 id="exercise-3-a-cone-for-an-arbitrary-stable-map-advanced">Exercise 3 — A cone for an arbitrary stable map (advanced)</h3>
+<p>Give the three arrows of the distinguished stable triangle completing an actual map <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span>, using (6.6). Compute its third object and last map when <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, and its third object when <span class="math" data-tex="\(f=1_A\)">\(f=1_A\)</span>. Explain how it completes a map represented only at stage <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(C_f=\operatorname{coker}(f,i_A)\)">\(C_f=\operatorname{coker}(f,i_A)\)</span>, let <span class="math" data-tex="\(p:B\oplus I_A\to C_f\)">\(p:B\oplus I_A\to C_f\)</span> be the quotient, and let <span class="math" data-tex="\(j_B:B\to B\oplus I_A\)">\(j_B:B\to B\oplus I_A\)</span> be inclusion. The projection <span class="math" data-tex="\(b:B\oplus I_A\to I_A\)">\(b:B\oplus I_A\to I_A\)</span> satisfies <span class="math" data-tex="\(b(f,i_A)=i_A\)">\(b(f,i_A)=i_A\)</span>. Therefore there is a unique <span class="math" data-tex="\(h_f:C_f\to\Sigma A\)">\(h_f:C_f\to\Sigma A\)</span> with <span class="math" data-tex="\(h_fp=p_Ab\)">\(h_fp=p_Ab\)</span>. The required triangle has arrows</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.5); horizontal scroll when needed" data-tex="\[
+\iota A\xrightarrow{\iota\underline f}\iota B
+\xrightarrow{\iota\underline{p j_B}}\iota C_f
+\xrightarrow{\gamma_A^{-1}\iota\underline{h_f}}S\iota A.
+\tag{8.5}
+\]">\[
+\iota A\xrightarrow{\iota\underline f}\iota B
+\xrightarrow{\iota\underline{p j_B}}\iota C_f
+\xrightarrow{\gamma_A^{-1}\iota\underline{h_f}}S\iota A.
+\tag{8.5}
+\]</span>
+<p>Projection and inclusion identify the middle object of its original row with <span class="math" data-tex="\(B\)">\(B\)</span> stably, and their connecting square is unaffected, since the first and third vertices were not changed. This proves the displayed complete triangle, not just its first arrow.</p>
+<p>If <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, the cokernel is <span class="math" data-tex="\(B\oplus\Sigma A\)">\(B\oplus\Sigma A\)</span>, its second arrow is inclusion of <span class="math" data-tex="\(B\)">\(B\)</span>, and <span class="math" data-tex="\(h_f\)">\(h_f\)</span> is projection onto <span class="math" data-tex="\(\Sigma A\)">\(\Sigma A\)</span>. Equation (8.5) is consequently the distinguished split cone of the zero map, with the last projection followed by <span class="math" data-tex="\(\gamma_A^{-1}\)">\(\gamma_A^{-1}\)</span>. If <span class="math" data-tex="\(f=1_A\)">\(f=1_A\)</span>, the map <span class="math" data-tex="\((b,z)\mapsto z-i_Ab\)">\((b,z)\mapsto z-i_Ab\)</span> induces an isomorphism <span class="math" data-tex="\(C_f\simeq I_A\)">\(C_f\simeq I_A\)</span>: its kernel is exactly the image of <span class="math" data-tex="\((1_A,i_A)\)">\((1_A,i_A)\)</span>, and it is epic with section <span class="math" data-tex="\(z\mapsto(0,z)\)">\(z\mapsto(0,z)\)</span>. Thus its third object is zero stably, giving the identity triangle.</p>
+<p>For a stage representative <span class="math" data-tex="\(u=[\underline f,k]:(A,n)\to(B,m)\)">\(u=[\underline f,k]:(A,n)\to(B,m)\)</span>, first apply this construction to <span class="math" data-tex="\(f:\Sigma^{n+k}A\to\Sigma^{m+k}B\)">\(f:\Sigma^{n+k}A\to\Sigma^{m+k}B\)</span>. Transport the first two vertices by the inverses of <span class="math" data-tex="\(\beta_{n+k,A},\beta_{m+k,B}\)">\(\beta_{n+k,A},\beta_{m+k,B}\)</span>, including the first vertex's suspension in the last square. This completes <span class="math" data-tex="\(S^ku\)">\(S^ku\)</span> by (2.4). Apply <span class="math" data-tex="\(S^{-k}\)">\(S^{-k}\)</span> and multiply its last arrow by <span class="math" data-tex="\((-1)^k\)">\((-1)^k\)</span>. That is the signed translate (6.4), and its first arrow is exactly <span class="math" data-tex="\(u\)">\(u\)</span>. This supplies a distinguished completion for every eventual map, with its full last arrow.</p>
+<h3 id="exercise-4-changing-embeddings-and-detecting-finite-dimension-advanced">Exercise 4 — Changing embeddings and detecting finite dimension (advanced)</h3>
+<p>Given embeddings <span class="math" data-tex="\(A\to I\)">\(A\to I\)</span>, <span class="math" data-tex="\(A\to I&#x27;\)">\(A\to I&#x27;\)</span> into injectives, prove the dual Schanuel isomorphism <span class="math" data-tex="\(\Sigma A\oplus I&#x27;\simeq\Sigma&#x27; A\oplus I\)">\(\Sigma A\oplus I&#x27;\simeq\Sigma&#x27; A\oplus I\)</span>. Then prove that the identity of <span class="math" data-tex="\(\iota A\)">\(\iota A\)</span> vanishes exactly when a finite injective resolution exists. Explain why these conclusions assert neither a fixed dimension bound nor that <span class="math" data-tex="\(\underline{\mathcal A}\to\mathcal S\)">\(\underline{\mathcal A}\to\mathcal S\)</span> is faithful.</p>
+<p><strong>Solution.</strong> Form the pushout <span class="math" data-tex="\(E=I\amalg_A I&#x27;\)">\(E=I\amalg_A I&#x27;\)</span>. Pushouts of monomorphisms are monic, so it has short exact rows</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.6); horizontal scroll when needed" data-tex="\[
+0\to I&#x27;\to E\to\Sigma A\to0,
+\qquad 0\to I\to E\to\Sigma&#x27; A\to0.
+\tag{8.6}
+\]">\[
+0\to I&#x27;\to E\to\Sigma A\to0,
+\qquad 0\to I\to E\to\Sigma&#x27; A\to0.
+\tag{8.6}
+\]</span>
+<p>Their quotient descriptions follow from the pushout property: killing the respective summand leaves precisely the cokernel of the other embedding. Each inclusion has a retraction because its domain is injective. For any short exact row with a retraction <span class="math" data-tex="\(r:E\to I&#x27;\)">\(r:E\to I&#x27;\)</span>, the kernel <span class="math" data-tex="\(\ker r\)">\(\ker r\)</span> maps isomorphically onto the cokernel of <span class="math" data-tex="\(I&#x27;\to E\)">\(I&#x27;\to E\)</span>: every element of <span class="math" data-tex="\(E\)">\(E\)</span> decomposes by <span class="math" data-tex="\(e=i&#x27;r(e)+(e-i&#x27;r(e))\)">\(e=i&#x27;r(e)+(e-i&#x27;r(e))\)</span>, or categorically the maps <span class="math" data-tex="\(i&#x27;r\)">\(i&#x27;r\)</span> and <span class="math" data-tex="\(1-i&#x27;r\)">\(1-i&#x27;r\)</span> give the biproduct decomposition. Hence the two rows split and give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.7); horizontal scroll when needed" data-tex="\[
+E\simeq I&#x27;\oplus\Sigma A\simeq I\oplus\Sigma&#x27; A.
+\tag{8.7}
+\]">\[
+E\simeq I&#x27;\oplus\Sigma A\simeq I\oplus\Sigma&#x27; A.
+\tag{8.7}
+\]</span>
+<p>This is an ordinary object isomorphism, though its splittings need not be unique. The actual canonical stable comparison and its cocycle law were proved separately in Section 1, without choosing a particular splitting of (8.6).</p>
+<p>The identity of <span class="math" data-tex="\(\iota A\)">\(\iota A\)</span> is represented by <span class="math" data-tex="\(1_{\Sigma^rA}\)">\(1_{\Sigma^rA}\)</span> at any stage <span class="math" data-tex="\(r\)">\(r\)</span>. It vanishes exactly when a sufficiently advanced such identity factors through an injective. That factorization makes <span class="math" data-tex="\(\Sigma^rA\)">\(\Sigma^rA\)</span> a retract of an injective, hence injective, and the successive chosen rows give the finite resolution (7.1). Conversely a finite injective resolution of <span class="math" data-tex="\(A\)">\(A\)</span> makes its stalk belong to <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>; its quotient identity is zero. The injectivity proof of Theorem 4.3 gives a finite later stage at which the stable identity vanishes. This proves both directions even if the given finite resolution uses different embeddings.</p>
+<p>The needed stage depends on the object and on its finite resolution. Nothing in this argument bounds all objects at one common stage; Exercise 2 even has an object with no finite such stage. Exercise 1 has a nonzero identity in the original stable category whose image in stabilization is zero. Thus the construction proves a quotient equivalence and a precise eventual kernel criterion, while retaining these two limitations.</p>
+<h2 id="9-freely-accessible-references">9. Freely accessible references</h2>
+<p>The proofs above use the explicit course interfaces listed at the start. Freely accessible primary references for their basic ingredients are the Stacks Project's <a href="https://stacks.math.columbia.edu/tag/05TG">bounded-injective Hom comparison, Tag 05TG</a>, its <a href="https://stacks.math.columbia.edu/tag/013P">extension proof, Tag 013P</a> and <a href="https://stacks.math.columbia.edu/tag/013S">uniqueness proof, Tag 013S</a>, and its <a href="https://stacks.math.columbia.edu/tag/05RA">triangulated quotient construction, Section 13.6</a>. These are references for those ingredients; the cosyzygy Hom calculation and the precise row-triangle equivalence are proved here. The exposition and complete exercise solutions are independently written.</p>
+</main></body></html>

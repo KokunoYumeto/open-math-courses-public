@@ -1,0 +1,397 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite cohomology splittings and derived kernels</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="finite-cohomology-splittings-and-derived-kernels">Finite cohomology splittings and derived kernels</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>A finite list of cohomology objects does not always determine a derived object. We give explicit Ext conditions under which it does, prove the splitting with its cohomology identifications, and describe its possible nonuniqueness. We then derive the kernel functor on the category of arrows. A functorial replacement by epic arrows produces a mapping fiber, even in an abelian category with no enough-injectives hypothesis. A concrete nonsplit derived kernel connects the two constructions.</p>
+<h2 id="conventions-and-prerequisites">Conventions and prerequisites</h2>
+<p>Work in an ambient universe containing the abelian category <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, its complexes, localizations and Hom groups. Complexes are cohomological. Our conventions are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+X[r]^n=X^{n+r},\qquad d_{X[r]}=(-1)^r d_X,
+\qquad C(u)^n=Y^n\oplus X^{n+1},
+\]">\[
+X[r]^n=X^{n+r},\qquad d_{X[r]}=(-1)^r d_X,
+\qquad C(u)^n=Y^n\oplus X^{n+1},
+\]</span>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+d_{C(u)}(y,x)=(d_Yy+ux,-d_Xx)
+\quad\text{for }u:X\to Y.
+\]">\[
+d_{C(u)}(y,x)=(d_Yy+ux,-d_Xx)
+\quad\text{for }u:X\to Y.
+\]</span>
+<p>The cone triangle has positive final projection to <span class="math" data-tex="\(X[1]\)">\(X[1]\)</span>. Its shifted triangle uses a minus sign on the last map for one shift. Define <span class="math" data-tex="\(\operatorname{Ext}^q(B,A)=\operatorname{Hom}_{D(\mathcal A)}(B,A[q])\)">\(\operatorname{Ext}^q(B,A)=\operatorname{Hom}_{D(\mathcal A)}(B,A[q])\)</span>.</p>
+<p>We use the following complete course proofs.</p>
+<ul>
+<li><a href="cohomological-bounds-denominators-and-truncation-adjunctions.html">Cohomological bounds and truncation adjunctions</a>, Sections 1 and 3–5: cohomology detects isomorphisms, bounded embeddings, single-degree identifications, negative Ext and natural truncation triangles.</li>
+<li><a href="triangles-after-quasi-isomorphism-localization.html">Triangles after localization</a>, Sections 2–4 and 6: exact Hom sequences, the morphism axiom on derived arrows, signed triangles, and complete short-exact-row cohomology sequences.</li>
+<li><a href="two-cohomology-classes-and-polynomial-models.html">Two cohomology degrees and Ext classes</a>, Sections 1–5: canonical two-degree classes, splitting with actual endpoints, and changes of cohomology identifications.</li>
+<li><a href="relative-replacements-and-finite-resolution-bounds.html">Relative replacements</a>, Section 2, especially Lemma 2.2: the full localization equivalence from outgoing class replacements, including equality of roofs.</li>
+<li><a href="universal-derived-functors-and-compatible-composition.html">Universal derived functors</a>, Sections 1–4: the absolute universal property, the meaning of an adapted class, and the finite-prefix exactness test.</li>
+<li><a href="localizing-triangulated-functors-and-signed-bifunctors.html">Localizing triangulated functors</a>, Sections 1–3: the exact localization through an adapted triangulated family with its unit and shift comparison.</li>
+<li><a href="hereditary-categories-and-cohomology-splittings.html">Projective complexes and derived Hom</a>, Lemma 3.1: bounded-above projective complexes compute actual derived Hom. This is used only for the explicit module calculation in Exercise 3.</li>
+</ul>
+<p>Freely accessible primary references are <a href="https://stacks.math.columbia.edu/tag/0GM4">Stacks, the finite cohomology splitting lemma</a>, <a href="https://stacks.math.columbia.edu/tag/05T3">Stacks, derived functors on derived categories</a>, and <a href="https://stacks.math.columbia.edu/tag/06XP">Stacks, Ext groups</a>. The constructions below retain their own explicit conventions and proofs.</p>
+<h2 id="1-finite-splitting-under-precise-ext-vanishings">1. Finite splitting under precise Ext vanishings</h2>
+<p>Let <span class="math" data-tex="\(X\in D(\mathcal A)\)">\(X\in D(\mathcal A)\)</span> have <span class="math" data-tex="\(H^nX=0\)">\(H^nX=0\)</span> outside a finite interval <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>. Write <span class="math" data-tex="\(A_i=H^iX\)">\(A_i=H^iX\)</span>, allowing some of these objects to be zero.</p>
+<p><strong>Theorem 1.1.</strong> Suppose</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^{j-i+1}(A_j,A_i)=0
+\qquad\text{for every }a\le i&lt;j\le b.
+\tag{1}
+\]">\[
+\operatorname{Ext}^{j-i+1}(A_j,A_i)=0
+\qquad\text{for every }a\le i&lt;j\le b.
+\tag{1}
+\]</span>
+<p>There is an isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2); horizontal scroll when needed" data-tex="\[
+\Phi:\bigoplus_{i=a}^{b} A_i[-i]\xrightarrow{\sim}X
+\tag{2}
+\]">\[
+\Phi:\bigoplus_{i=a}^{b} A_i[-i]\xrightarrow{\sim}X
+\tag{2}
+\]</span>
+<p>whose degree-<span class="math" data-tex="\(i\)">\(i\)</span> cohomology map is the specified identity on <span class="math" data-tex="\(A_i\)">\(A_i\)</span>. The sum is finite. No enough-injectives, enough-projectives or global dimension assumption is needed.</p>
+<p><strong>Proof.</strong> Finite cohomology support places <span class="math" data-tex="\(X\)">\(X\)</span> in the fully embedded bounded derived category. If the interval has one degree, the natural smart-truncation zigzag identifies <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(A_a[-a]\)">\(A_a[-a]\)</span> with its cohomology identity. If every cohomology object is zero, cohomology detection identifies <span class="math" data-tex="\(X\)">\(X\)</span> with zero. These also handle an empty support.</p>
+<p>Proceed by induction on <span class="math" data-tex="\(b-a\)">\(b-a\)</span>. Put <span class="math" data-tex="\(L=\tau_{\le b-1}X\)">\(L=\tau_{\le b-1}X\)</span> and <span class="math" data-tex="\(V=A_b[-b]\)">\(V=A_b[-b]\)</span>. The canonical truncation triangle is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3); horizontal scroll when needed" data-tex="\[
+L\xrightarrow{i}X\xrightarrow{p}V\xrightarrow{\delta}L[1].
+\tag{3}
+\]">\[
+L\xrightarrow{i}X\xrightarrow{p}V\xrightarrow{\delta}L[1].
+\tag{3}
+\]</span>
+<p>The cohomology of <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\(A_i\)">\(A_i\)</span> for <span class="math" data-tex="\(i&lt;b\)">\(i&lt;b\)</span>, with the actual truncation identifications. Its pairwise conditions are a subset of (1). The induction therefore supplies a marked isomorphism <span class="math" data-tex="\(S=\bigoplus_{i=a}^{b-1}A_i[-i]\simeq L\)">\(S=\bigoplus_{i=a}^{b-1}A_i[-i]\simeq L\)</span>. Finite biproducts and translation give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_D(V,L[1])
+\simeq\bigoplus_{i=a}^{b-1}
+\operatorname{Ext}^{b-i+1}(A_b,A_i)=0.
+\tag{4}
+\]">\[
+\operatorname{Hom}_D(V,L[1])
+\simeq\bigoplus_{i=a}^{b-1}
+\operatorname{Ext}^{b-i+1}(A_b,A_i)=0.
+\tag{4}
+\]</span>
+<p>The equality uses only finite sums of Hom groups. Consequently <span class="math" data-tex="\(\delta=0\)">\(\delta=0\)</span>.</p>
+<p>The exact sequence obtained by applying <span class="math" data-tex="\(\operatorname{Hom}_D(V,-)\)">\(\operatorname{Hom}_D(V,-)\)</span> to (3) contains</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_D(V,X)\longrightarrow
+\operatorname{Hom}_D(V,V)\xrightarrow{\delta\circ-}
+\operatorname{Hom}_D(V,L[1]).
+\]">\[
+\operatorname{Hom}_D(V,X)\longrightarrow
+\operatorname{Hom}_D(V,V)\xrightarrow{\delta\circ-}
+\operatorname{Hom}_D(V,L[1]).
+\]</span>
+<p>Thus <span class="math" data-tex="\(1_V\)">\(1_V\)</span> lifts to a section <span class="math" data-tex="\(s:V\to X\)">\(s:V\to X\)</span> of <span class="math" data-tex="\(p\)">\(p\)</span>. The arrow <span class="math" data-tex="\((i,s):L\oplus V\to X\)">\((i,s):L\oplus V\to X\)</span> has the identity cohomology map in degrees below <span class="math" data-tex="\(b\)">\(b\)</span>, through <span class="math" data-tex="\(i\)">\(i\)</span>, and in degree <span class="math" data-tex="\(b\)">\(b\)</span>, because <span class="math" data-tex="\(ps=1\)">\(ps=1\)</span>. All remaining cohomology objects vanish. It is an isomorphism by cohomology detection. Compose it with the marked induction isomorphism on <span class="math" data-tex="\(S\)">\(S\)</span> to obtain (2), preserving every mark. The induction terminates after finitely many cutoffs, including cutoffs where <span class="math" data-tex="\(A_i=0\)">\(A_i=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.2.</strong> If <span class="math" data-tex="\(\operatorname{Ext}^q(A_j,A_i)=0\)">\(\operatorname{Ext}^q(A_j,A_i)=0\)</span> for every <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span> and <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, then (2) holds with the same marks.</p>
+<p><strong>Proof.</strong> Each degree <span class="math" data-tex="\(j-i+1\)">\(j-i+1\)</span> in (1) is at least two, so the hypotheses imply every required vanishing. Apply Theorem 1.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are sufficient conditions. They do not assert necessity: a split object can have nonzero groups in (1), with its particular boundary maps nevertheless zero.</p>
+<h2 id="2-the-ambiguity-of-finite-splittings">2. The ambiguity of finite splittings</h2>
+<p>Choose a finite ordered set of allowed degrees <span class="math" data-tex="\(s_1&lt;\cdots&lt;s_r\)">\(s_1&lt;\cdots&lt;s_r\)</span>, with <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, and put
+<span class="math" data-tex="\(S_X=\bigoplus_i A_i[-s_i]\)">\(S_X=\bigoplus_i A_i[-s_i]\)</span>, <span class="math" data-tex="\(S_Y=\bigoplus_i B_i[-s_i]\)">\(S_Y=\bigoplus_i B_i[-s_i]\)</span>. Zero summands are allowed. Here <span class="math" data-tex="\(A_i\)">\(A_i\)</span> and <span class="math" data-tex="\(B_i\)">\(B_i\)</span> denote the cohomology objects in those degrees, rather than their degree labels.</p>
+<p><strong>Proposition 2.1.</strong> A derived arrow <span class="math" data-tex="\(S_X\to S_Y\)">\(S_X\to S_Y\)</span> is uniquely a finite matrix whose target-row <span class="math" data-tex="\(i\)">\(i\)</span>, source-column <span class="math" data-tex="\(j\)">\(j\)</span> entry lies in</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_D(A_j[-s_j],B_i[-s_i])
+=\operatorname{Ext}^{s_j-s_i}(A_j,B_i).
+\tag{5}
+\]">\[
+\operatorname{Hom}_D(A_j[-s_j],B_i[-s_i])
+=\operatorname{Ext}^{s_j-s_i}(A_j,B_i).
+\tag{5}
+\]</span>
+<p>Entries below the diagonal vanish. The diagonal entries are exactly the cohomology maps. Composition is matrix composition using actual derived composition of the shifted arrows.</p>
+<p><strong>Proof.</strong> Biproduct injections and projections give a mutually inverse pair of constructions between an arrow and its matrix: recover it as the finite sum of injection–entry–projection composites. Translating an entry by <span class="math" data-tex="\(s_j\)">\(s_j\)</span> proves (5). For <span class="math" data-tex="\(i&gt;j\)">\(i&gt;j\)</span>, its Ext degree is negative, so it is zero. A diagonal entry has Ext degree zero and is its ordinary cohomology arrow by heart full faithfulness. An off-diagonal entry has source and target stalks in different degrees and therefore has zero cohomology in every degree. Composing the two finite decompositions gives the matrix law by the biproduct retraction and zero equations. This uses actual shifted arrows, so it imposes no additional unannounced Yoneda sign convention. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For one split object <span class="math" data-tex="\(S\)">\(S\)</span>, let <span class="math" data-tex="\(N\subset\operatorname{End}_D(S)\)">\(N\subset\operatorname{End}_D(S)\)</span> be the subgroup of arrows inducing zero cohomology. It is the group of strictly upper triangular matrices in (5), and is an ideal.</p>
+<p><strong>Proposition 2.2.</strong> We have <span class="math" data-tex="\(N^r=0\)">\(N^r=0\)</span>. The automorphisms inducing the identity on every cohomology object are exactly <span class="math" data-tex="\(1+n\)">\(1+n\)</span>, <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>, with inverse</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6); horizontal scroll when needed" data-tex="\[
+(1+n)^{-1}=1-n+n^2-\cdots+(-1)^{r-1}n^{r-1}.
+\tag{6}
+\]">\[
+(1+n)^{-1}=1-n+n^2-\cdots+(-1)^{r-1}n^{r-1}.
+\tag{6}
+\]</span>
+<p>The group need not be additive or abelian. Marked splittings (2), once one exists, form a torsor for this group. In particular the marked splitting is unique precisely when every group <span class="math" data-tex="\(\operatorname{Ext}^{s_j-s_i}(A_j,A_i)\)">\(\operatorname{Ext}^{s_j-s_i}(A_j,A_i)\)</span>, <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, is zero.</p>
+<p><strong>Proof.</strong> A nonzero term in a product of <span class="math" data-tex="\(r\)">\(r\)</span> strictly upper triangular matrices would require <span class="math" data-tex="\(r+1\)">\(r+1\)</span> strictly increasing indices in a set of size <span class="math" data-tex="\(r\)">\(r\)</span>. There are none, so every such product is zero. Multiplying the finite geometric sum in (6) on either side by <span class="math" data-tex="\(1+n\)">\(1+n\)</span> leaves <span class="math" data-tex="\(1+(-1)^{r-1}n^r=1\)">\(1+(-1)^{r-1}n^r=1\)</span>. Conversely an endomorphism with identity cohomology has diagonal identity and differs from it by a unique <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>. Its inverse is therefore (6).</p>
+<p>For two marked isomorphisms <span class="math" data-tex="\(\Phi,\Psi:S\to X\)">\(\Phi,\Psi:S\to X\)</span>, the map <span class="math" data-tex="\(\Phi^{-1}\Psi\)">\(\Phi^{-1}\Psi\)</span> is a unique automorphism of <span class="math" data-tex="\(S\)">\(S\)</span> with identity cohomology. Conversely composing <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> with any such automorphism gives a marked splitting. This is a free and transitive right action, which is the stated meaning of torsor. The matrix decomposition identifies <span class="math" data-tex="\(N\)">\(N\)</span> with the direct sum of all off-diagonal groups, so <span class="math" data-tex="\(N=0\)">\(N=0\)</span> is exactly their simultaneous vanishing. If <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>, a nonzero entry gives a distinct <span class="math" data-tex="\(1+n\)">\(1+n\)</span>, hence a distinct splitting. If the entire support is empty, the object is zero and its unique arrow is its identity; this is the separate trivial case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For two objects already split as in (2), every prescribed family of cohomology maps lifts: take the diagonal matrix and transport it through the chosen splittings. All lifts of that family differ by the off-diagonal additive group from (5). Choices of the two splittings can change this parametrization. In particular a finite splitting existence theorem does not by itself give a natural splitting functor.</p>
+<h2 id="3-the-abelian-arrow-category-and-its-kernel-functor">3. The abelian arrow category and its kernel functor</h2>
+<p>An object of <span class="math" data-tex="\(\operatorname{Arr}(\mathcal A)\)">\(\operatorname{Arr}(\mathcal A)\)</span> is an arrow <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span>. A morphism to <span class="math" data-tex="\(g:C\to D\)">\(g:C\to D\)</span> is a pair <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> such that <span class="math" data-tex="\(vf=gu\)">\(vf=gu\)</span>. Composition is componentwise, as are addition, zero and finite biproducts.</p>
+<p><strong>Proposition 3.1.</strong> The arrow category is abelian. Kernels, cokernels, images and coimages are computed at the two endpoints. A short exact sequence in it is exactly a pair of short exact endpoint sequences with their commuting vertical arrows.</p>
+<p><strong>Proof.</strong> For a square <span class="math" data-tex="\((u,v):f\to g\)">\((u,v):f\to g\)</span>, the composite <span class="math" data-tex="\(\ker u\to A\xrightarrow fB\xrightarrow vD\)">\(\ker u\to A\xrightarrow fB\xrightarrow vD\)</span> is zero because it equals <span class="math" data-tex="\(gu\)">\(gu\)</span> on that kernel. Hence <span class="math" data-tex="\(f\)">\(f\)</span> induces an arrow <span class="math" data-tex="\(\ker u\to\ker v\)">\(\ker u\to\ker v\)</span>. Its square into <span class="math" data-tex="\(f\)">\(f\)</span> is the kernel of <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span>: a square killed by both components factors uniquely through the two endpoint kernels, and their induced factors commute by cancellation of the monic endpoint inclusion. This proves the full universal property.</p>
+<p>Dually, <span class="math" data-tex="\(g\)">\(g\)</span> induces <span class="math" data-tex="\(\operatorname{coker}u\to\operatorname{coker}v\)">\(\operatorname{coker}u\to\operatorname{coker}v\)</span>, and the quotient square has the cokernel universal property. A square is monic exactly when its kernel object is zero, hence exactly when both components are monic. The dual criterion holds for epimorphisms. The canonical coimage-to-image square is the two endpoint coimage-to-image maps. Each is an isomorphism in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>; their inverses still commute by composing the square with those inverses. Thus it is an isomorphism in the arrow category. The category has finite biproducts, all kernels and cokernels, and the abelian comparison is invertible, so it is abelian. Componentwise computation of images and kernels now proves the short exact sequence assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define <span class="math" data-tex="\(F:\operatorname{Arr}(\mathcal A)\to\mathcal A\)">\(F:\operatorname{Arr}(\mathcal A)\to\mathcal A\)</span> by <span class="math" data-tex="\(F(f)=\ker f\)">\(F(f)=\ker f\)</span>. A square acts on its kernels by the uniquely induced map.</p>
+<p><strong>Proposition 3.2.</strong> This functor is additive and left exact.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(k_f:\ker f\to A\)">\(k_f:\ker f\to A\)</span> is the inclusion, the induced arrow for <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> is determined by <span class="math" data-tex="\(k_gF(u,v)=u k_f\)">\(k_gF(u,v)=u k_f\)</span>. This equation, monicity and addition prove additivity and compatibility with composition. For an arrow-category kernel <span class="math" data-tex="\(h:\ker u\to\ker v\)">\(h:\ker u\to\ker v\)</span> of a square <span class="math" data-tex="\((u,v):f\to g\)">\((u,v):f\to g\)</span>, its ordinary kernel represents arrows <span class="math" data-tex="\(t:T\to A\)">\(t:T\to A\)</span> satisfying both <span class="math" data-tex="\(ft=0\)">\(ft=0\)</span> and <span class="math" data-tex="\(ut=0\)">\(ut=0\)</span>. The kernel of <span class="math" data-tex="\(F(u,v):\ker f\to\ker g\)">\(F(u,v):\ker f\to\ker g\)</span> represents exactly the same pairs of equations. Their compatible universal isomorphism identifies <span class="math" data-tex="\(F(h)\)">\(F(h)\)</span> with that kernel. Thus <span class="math" data-tex="\(F\)">\(F\)</span> preserves kernels, and additivity makes it left exact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For later use, a short exact row <span class="math" data-tex="\(0\to f&#x27;\to f\to f&#x27;&#x27;\to0\)">\(0\to f&#x27;\to f\to f&#x27;&#x27;\to0\)</span> in the arrow category has a natural exact sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7); horizontal scroll when needed" data-tex="\[
+0\to\ker f&#x27;\to\ker f\to\ker f&#x27;&#x27;
+\xrightarrow{\partial}\operatorname{coker}f&#x27;
+\to\operatorname{coker}f\to\operatorname{coker}f&#x27;&#x27;\to0.
+\tag{7}
+\]">\[
+0\to\ker f&#x27;\to\ker f\to\ker f&#x27;&#x27;
+\xrightarrow{\partial}\operatorname{coker}f&#x27;
+\to\operatorname{coker}f\to\operatorname{coker}f&#x27;&#x27;\to0.
+\tag{7}
+\]</span>
+<p>To prove this with no elementwise surjectivity assumption on arbitrary abelian objects, put each arrow in the ordinary two-term complex <span class="math" data-tex="\([A\xrightarrow f B]\)">\([A\xrightarrow f B]\)</span> in degrees 0 and 1. Proposition 3.1 gives a termwise short exact row of these complexes. The complete categorical cone-to-quotient proof in the triangle prerequisite, Section 6, supplies its long cohomology sequence. The two cohomology objects of each complex are its kernel and cokernel, and all others vanish. This is precisely (7), including its natural maps. The connecting map uses our positive cone projection; Exercise 4 computes its sign in an explicit row.</p>
+<h2 id="4-epic-arrows-form-a-full-adapted-class">4. Epic arrows form a full adapted class</h2>
+<p>Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the full subcategory of arrows that are epimorphisms in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. It contains zero, is invariant under isomorphism, and is closed under finite biproducts.</p>
+<p><strong>Proposition 4.1.</strong> Every arrow embeds functorially into an object of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, by the short exact sequence of arrows</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8); horizontal scroll when needed" data-tex="\[
+0\to(A\xrightarrow fB)\longrightarrow
+(A\oplus B\xrightarrow{[f,1]}B)\longrightarrow
+(B\to0)\to0.
+\tag{8}
+\]">\[
+0\to(A\xrightarrow fB)\longrightarrow
+(A\oplus B\xrightarrow{[f,1]}B)\longrightarrow
+(B\to0)\to0.
+\tag{8}
+\]</span>
+<p>The first square has components <span class="math" data-tex="\(a\mapsto(a,0)\)">\(a\mapsto(a,0)\)</span> and <span class="math" data-tex="\(1_B\)">\(1_B\)</span>. The quotient square has components <span class="math" data-tex="\((a,b)\mapsto b\)">\((a,b)\mapsto b\)</span> and <span class="math" data-tex="\(B\to0\)">\(B\to0\)</span>.</p>
+<p><strong>Proof.</strong> The first square commutes, both its components are monic, and its endpoint quotients are <span class="math" data-tex="\(B\)">\(B\)</span> and zero. The induced quotient arrow is therefore <span class="math" data-tex="\(B\to0\)">\(B\to0\)</span>, giving (8). The middle arrow is split epic via <span class="math" data-tex="\(b\mapsto(0,b)\)">\(b\mapsto(0,b)\)</span>; the last arrow is epic because every arrow to zero is epic. For a square <span class="math" data-tex="\((u,v):f\to g\)">\((u,v):f\to g\)</span>, the middle morphism is <span class="math" data-tex="\((u\oplus v,v)\)">\((u\oplus v,v)\)</span> and the final morphism is <span class="math" data-tex="\((v,0)\)">\((v,0)\)</span>. They commute with all maps in (8) and respect identity and composition. This proves functoriality and cogeneration. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.2.</strong> In a short exact row of arrows, an epic middle arrow has an epic quotient arrow. If the first arrow is epic, the induced map from the middle kernel to the quotient kernel is epic. Consequently every short exact row with all its arrows in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> remains short exact under <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proof.</strong> Write the quotient square as <span class="math" data-tex="\((p_A,p_B):f\to f&#x27;&#x27;\)">\((p_A,p_B):f\to f&#x27;&#x27;\)</span>, with both components epic. If <span class="math" data-tex="\(f\)">\(f\)</span> is epic, then <span class="math" data-tex="\(f&#x27;&#x27;p_A=p_Bf\)">\(f&#x27;&#x27;p_A=p_Bf\)</span> is epic; canceling on its right shows that <span class="math" data-tex="\(f&#x27;&#x27;\)">\(f&#x27;&#x27;\)</span> is epic. For the second assertion, <span class="math" data-tex="\(\operatorname{coker}f&#x27;=0\)">\(\operatorname{coker}f&#x27;=0\)</span>, so exactness of (7) makes <span class="math" data-tex="\(\ker f\to\ker f&#x27;&#x27;\)">\(\ker f\to\ker f&#x27;&#x27;\)</span> epic. Left exactness supplies its other two positions. These are categorical epimorphisms, not presumed surjections on every Hom group. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This verifies the finite-prefix criterion too. If an arrow <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> has a finite exact prefix <span class="math" data-tex="\(0\to E_0\to\cdots\to E_r\to f&#x27;\to0\)">\(0\to E_0\to\cdots\to E_r\to f&#x27;\to0\)</span> with <span class="math" data-tex="\(E_i\in\mathcal E\)">\(E_i\in\mathcal E\)</span>, its final epimorphism exhibits <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> as a quotient of the epic arrow <span class="math" data-tex="\(E_r\)">\(E_r\)</span>, so <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> is epic. A short exact row <span class="math" data-tex="\(0\to f&#x27;\to f\to f&#x27;&#x27;\to0\)">\(0\to f&#x27;\to f\to f&#x27;&#x27;\to0\)</span>, with <span class="math" data-tex="\(f\in\mathcal E\)">\(f\in\mathcal E\)</span>, therefore has exact kernels by Proposition 4.2. Cogeneration and this test give the full required adapted class. We will now prove the stronger complex-level statements directly.</p>
+<h2 id="5-an-explicit-epic-replacement-of-every-complex-of-arrows">5. An explicit epic replacement of every complex of arrows</h2>
+<p>A complex of arrows is exactly a chain map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>: its degree-<span class="math" data-tex="\(n\)">\(n\)</span> arrow is <span class="math" data-tex="\(f^n:X^n\to Y^n\)">\(f^n:X^n\to Y^n\)</span>, and the arrow-complex differential is the commuting square <span class="math" data-tex="\((d_X^n,d_Y^n)\)">\((d_X^n,d_Y^n)\)</span>. Its cohomology and quasi-isomorphisms are componentwise by Proposition 3.1.</p>
+<p>Define a complex <span class="math" data-tex="\(I(f)\)">\(I(f)\)</span> of epic arrows by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9); horizontal scroll when needed" data-tex="\[
+I(f)^n=(X^n\oplus Y^n\oplus Y^{n-1}
+\xrightarrow{[f^n,1,0]}Y^n).
+\tag{9}
+\]">\[
+I(f)^n=(X^n\oplus Y^n\oplus Y^{n-1}
+\xrightarrow{[f^n,1,0]}Y^n).
+\tag{9}
+\]</span>
+<p>Its domain differential and codomain differential are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (10); horizontal scroll when needed" data-tex="\[
+D(x,b,c)=(d_Xx,d_Yb,b-d_Yc),\qquad d_Y.
+\tag{10}
+\]">\[
+D(x,b,c)=(d_Xx,d_Yb,b-d_Yc),\qquad d_Y.
+\tag{10}
+\]</span>
+<p>Coordinates in a biproduct stand for the corresponding component maps; no literal element interpretation in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is required.</p>
+<p><strong>Theorem 5.1.</strong> The maps</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (11); horizontal scroll when needed" data-tex="\[
+t_f:f\to I(f),\qquad x\mapsto(x,0,0),\quad 1_Y
+\tag{11}
+\]">\[
+t_f:f\to I(f),\qquad x\mapsto(x,0,0),\quad 1_Y
+\tag{11}
+\]</span>
+<p>form a functorial degreewise monic quasi-isomorphism. This replacement works for unbounded, bounded-below, bounded-above and bounded complexes. If both endpoint complexes are zero outside <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, <span class="math" data-tex="\(I(f)\)">\(I(f)\)</span> is zero outside <span class="math" data-tex="\([a,b+1]\)">\([a,b+1]\)</span>.</p>
+<p><strong>Proof.</strong> Squaring (10) gives zero: its third coordinate is <span class="math" data-tex="\(d_Yb-d_Y(b-d_Yc)=0\)">\(d_Yb-d_Y(b-d_Yc)=0\)</span>, and its first two coordinates are the squares of their differentials. Its square with the arrow in (9) commutes because
+<span class="math" data-tex="\(f d_Xx+d_Yb=d_Y(fx+b)\)">\(f d_Xx+d_Yb=d_Y(fx+b)\)</span>. The arrow is epic via the identity <span class="math" data-tex="\(Y^n\)">\(Y^n\)</span> summand. Formula (11) is a commuting square of chain maps and is monic at both endpoints.</p>
+<p>Its quotient complex of arrows has codomain zero and domain</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (12); horizontal scroll when needed" data-tex="\[
+Y^n\oplus Y^{n-1},\qquad d(b,c)=(d_Yb,b-d_Yc).
+\tag{12}
+\]">\[
+Y^n\oplus Y^{n-1},\qquad d(b,c)=(d_Yb,b-d_Yc).
+\tag{12}
+\]</span>
+<p>It is contractible with degree-minus-one map <span class="math" data-tex="\(h(b,c)=(c,0)\)">\(h(b,c)=(c,0)\)</span>. Indeed
+<span class="math" data-tex="\(dh(b,c)=(d_Yc,c)\)">\(dh(b,c)=(d_Yc,c)\)</span> and <span class="math" data-tex="\(hd(b,c)=(b-d_Yc,0)\)">\(hd(b,c)=(b-d_Yc,0)\)</span>, whose sum is <span class="math" data-tex="\((b,c)\)">\((b,c)\)</span>. The termwise short exact quotient row and its cohomology sequence imply that <span class="math" data-tex="\(t_f\)">\(t_f\)</span> is a quasi-isomorphism. The bound statement follows directly from the three summand degrees in (9); all sums are finite, including in the unbounded case.</p>
+<p>A square of chain maps <span class="math" data-tex="\((u,v):f\to g\)">\((u,v):f\to g\)</span> acts on the domain of <span class="math" data-tex="\(I\)">\(I\)</span> as <span class="math" data-tex="\((u,v,v)\)">\((u,v,v)\)</span> and on its codomain as <span class="math" data-tex="\(v\)">\(v\)</span>; the last component is taken in the one-lower degree. It commutes with (10) and (11), and these formulas preserve composition. A homotopy of squares with components <span class="math" data-tex="\((h_X,h_Y)\)">\((h_X,h_Y)\)</span> is sent on domains to <span class="math" data-tex="\((h_X,h_Y,-h_Y)\)">\((h_X,h_Y,-h_Y)\)</span>, and on codomains to <span class="math" data-tex="\(h_Y\)">\(h_Y\)</span>, with the corresponding degrees. Its third homotopy equation follows by cancellation of <span class="math" data-tex="\(h_Yb\)">\(h_Yb\)</span>, leaving <span class="math" data-tex="\((d_Yh_Y+h_Yd_Y)c\)">\((d_Yh_Y+h_Yd_Y)c\)</span>; the first two are the given homotopy equations. The homotopy square itself commutes, since <span class="math" data-tex="\(g h_X=h_Y f\)">\(g h_X=h_Y f\)</span> in the appropriate source and target degrees. Thus <span class="math" data-tex="\(I\)">\(I\)</span> also defines a functor on homotopy categories. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.2.</strong> If a complex of arrows is termwise epic and is acyclic at both endpoints, its kernel complex is acyclic. Moreover <span class="math" data-tex="\(F\)">\(F\)</span> sends every quasi-isomorphism between termwise epic complexes to a quasi-isomorphism.</p>
+<p><strong>Proof.</strong> For a termwise epic chain map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, the sequence of complexes <span class="math" data-tex="\(0\to\ker f\to X\to Y\to0\)">\(0\to\ker f\to X\to Y\to0\)</span> is termwise short exact. If <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> are acyclic, its long cohomology sequence makes <span class="math" data-tex="\(\ker f\)">\(\ker f\)</span> acyclic. For a quasi-isomorphism between two such complexes, its cone is again termwise epic: each term arrow is a finite biproduct of two epic arrows. It is acyclic in the arrow category. Applying the first assertion gives an acyclic kernel cone. Additivity identifies this with the cone of the induced kernel map, so that map is a quasi-isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The full homotopy subcategory of epic complexes is closed under both shifts and cones. Theorem 5.1 supplies outgoing replacements into it, and Proposition 5.2 annihilates its acyclic objects after <span class="math" data-tex="\(F\)">\(F\)</span>. These are precisely the adaptation conditions. In particular <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> is kernel-injective in the bounded-below sense, although its arrows need not be injective objects of the arrow category. The same construction applies without a bound.</p>
+<h2 id="6-the-signed-mapping-fiber-and-every-structural-map">6. The signed mapping fiber and every structural map</h2>
+<p>For a chain map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (13); horizontal scroll when needed" data-tex="\[
+T(f)^n=X^n\oplus Y^{n-1},\qquad
+d_T(x,y)=(d_Xx,fx-d_Yy).
+\tag{13}
+\]">\[
+T(f)^n=X^n\oplus Y^{n-1},\qquad
+d_T(x,y)=(d_Xx,fx-d_Yy).
+\tag{13}
+\]</span>
+<p>The equation <span class="math" data-tex="\(d_T^2=0\)">\(d_T^2=0\)</span> follows from <span class="math" data-tex="\(fd_X=d_Yf\)">\(fd_X=d_Yf\)</span>. A square <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> acts as <span class="math" data-tex="\((x,y)\mapsto(ux,vy)\)">\((x,y)\mapsto(ux,vy)\)</span>. This is a strict functor on complexes of arrows.</p>
+<p><strong>Proposition 6.1.</strong> There is a natural chain isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (14); horizontal scroll when needed" data-tex="\[
+\theta_f:T(f)\xrightarrow{\sim}\ker I(f),\qquad
+(x,y)\mapsto(x,-fx,-y).
+\tag{14}
+\]">\[
+\theta_f:T(f)\xrightarrow{\sim}\ker I(f),\qquad
+(x,y)\mapsto(x,-fx,-y).
+\tag{14}
+\]</span>
+<p>The natural map <span class="math" data-tex="\(\eta_f:\ker f\to T(f)\)">\(\eta_f:\ker f\to T(f)\)</span> is <span class="math" data-tex="\(k\mapsto(k,0)\)">\(k\mapsto(k,0)\)</span>.</p>
+<p><strong>Proof.</strong> The kernel equation in (9) forces the middle coordinate to be <span class="math" data-tex="\(-fx\)">\(-fx\)</span>. This can also be stated by the kernel universal property: the displayed map from <span class="math" data-tex="\(X^n\oplus Y^{n-1}\)">\(X^n\oplus Y^{n-1}\)</span> is monic onto that kernel, with inverse the first and negative-third projections. Applying (10) to (14) gives
+<span class="math" data-tex="\((d_Xx,-f d_Xx,-fx+d_Yy)\)">\((d_Xx,-f d_Xx,-fx+d_Yy)\)</span>, which is (14) applied to (13). Thus it is a chain isomorphism. The kernel of (11), followed by <span class="math" data-tex="\(\theta_f^{-1}\)">\(\theta_f^{-1}\)</span>, is exactly <span class="math" data-tex="\(\eta_f\)">\(\eta_f\)</span>. All formulas commute with squares, proving naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 6.2.</strong> The mapping fiber induces an exact functor on homotopy categories, with translation comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (15); horizontal scroll when needed" data-tex="\[
+\sigma_f:T(f[1])\xrightarrow{\sim}T(f)[1],
+\qquad (x,y)\mapsto(x,-y).
+\tag{15}
+\]">\[
+\sigma_f:T(f[1])\xrightarrow{\sim}T(f)[1],
+\qquad (x,y)\mapsto(x,-y).
+\tag{15}
+\]</span>
+<p>It sends componentwise quasi-isomorphisms to quasi-isomorphisms.</p>
+<p><strong>Proof.</strong> If a homotopy of squares has components <span class="math" data-tex="\((h_X,h_Y)\)">\((h_X,h_Y)\)</span>, its mapping-fiber homotopy is <span class="math" data-tex="\((h_X,-h_Y)\)">\((h_X,-h_Y)\)</span>. The lower-left component of <span class="math" data-tex="\(d_Th+h d_T\)">\(d_Th+h d_T\)</span> is <span class="math" data-tex="\(f&#x27;h_X-h_Yf=0\)">\(f&#x27;h_X-h_Yf=0\)</span> by the homotopy-square condition. Its two diagonal components are the given homotopy differences. Hence <span class="math" data-tex="\(T\)">\(T\)</span> descends to the homotopy category.</p>
+<p>In the shifted source of (15) the differential is <span class="math" data-tex="\((-d_Xx,fx+d_Yy)\)">\((-d_Xx,fx+d_Yy)\)</span>; in the shifted target it is <span class="math" data-tex="\((-d_Xx,-fx+d_Yy)\)">\((-d_Xx,-fx+d_Yy)\)</span>. The negative second coordinate in (15) makes these commute. This comparison is natural, and iterating it gives the coherent comparison for every integer shift.</p>
+<p>For a square of chain maps <span class="math" data-tex="\((u,v):f\to g\)">\((u,v):f\to g\)</span>, its arrow-category cone has endpoint cones <span class="math" data-tex="\(C(u),C(v)\)">\(C(u),C(v)\)</span>, with arrow <span class="math" data-tex="\(\operatorname{diag}(g,f[1])\)">\(\operatorname{diag}(g,f[1])\)</span>. Write a term of its fiber in the order <span class="math" data-tex="\((x&#x27;,x,y&#x27;,y)\)">\((x&#x27;,x,y&#x27;,y)\)</span>, with
+<span class="math" data-tex="\(x&#x27;\in X&#x27;^n,x\in X^{n+1},y&#x27;\in Y&#x27;^{n-1},y\in Y^n\)">\(x&#x27;\in X&#x27;^n,x\in X^{n+1},y&#x27;\in Y&#x27;^{n-1},y\in Y^n\)</span>. Its differential has components</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (16); horizontal scroll when needed" data-tex="\[
+(d_{X&#x27;}x&#x27;+ux,\ -d_Xx,\ gx&#x27;-d_{Y&#x27;}y&#x27;-vy,\ fx+d_Yy).
+\tag{16}
+\]">\[
+(d_{X&#x27;}x&#x27;+ux,\ -d_Xx,\ gx&#x27;-d_{Y&#x27;}y&#x27;-vy,\ fx+d_Yy).
+\tag{16}
+\]</span>
+<p>The map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (17); horizontal scroll when needed" data-tex="\[
+T(C(u,v))\longrightarrow C(T(u,v)),\qquad
+(x&#x27;,x,y&#x27;,y)\mapsto(x&#x27;,y&#x27;,x,-y)
+\tag{17}
+\]">\[
+T(C(u,v))\longrightarrow C(T(u,v)),\qquad
+(x&#x27;,x,y&#x27;,y)\mapsto(x&#x27;,y&#x27;,x,-y)
+\tag{17}
+\]</span>
+<p>is an isomorphism of complexes. In the target order its differential is
+<span class="math" data-tex="\((d_{X&#x27;}x&#x27;+ux,\ gx&#x27;-d_{Y&#x27;}y&#x27;+vy,\ -d_Xx,\ -fx+d_Yy)\)">\((d_{X&#x27;}x&#x27;+ux,\ gx&#x27;-d_{Y&#x27;}y&#x27;+vy,\ -d_Xx,\ -fx+d_Yy)\)</span>; substituting <span class="math" data-tex="\(-y\)">\(-y\)</span> proves the equality with (17) applied to (16). It identifies the inclusion from <span class="math" data-tex="\(T(g)\)">\(T(g)\)</span> on the nose. The final projection on the left first gives <span class="math" data-tex="\((x,y)\in T(f[1])\)">\((x,y)\in T(f[1])\)</span>; after (15) this is <span class="math" data-tex="\((x,-y)\)">\((x,-y)\)</span>, exactly the target cone projection. Therefore the first map, inclusion and signed last map all agree. This proves preservation of cone triangles and hence exactness.</p>
+<p>Finally (13) has the degreewise split short exact sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (18); horizontal scroll when needed" data-tex="\[
+0\to Y[-1]\xrightarrow{y\mapsto(0,y)}T(f)
+\xrightarrow{(x,y)\mapsto x}X\to0.
+\tag{18}
+\]">\[
+0\to Y[-1]\xrightarrow{y\mapsto(0,y)}T(f)
+\xrightarrow{(x,y)\mapsto x}X\to0.
+\tag{18}
+\]</span>
+<p>A square that is a quasi-isomorphism at <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> induces a map of these rows with the two outside cohomology maps invertible. The exact cohomology sequence and the five-term argument make every middle cohomology map invertible. Thus <span class="math" data-tex="\(T\)">\(T\)</span> inverts exactly the required quasi-isomorphisms for descent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For comparison with the fixed cone convention, <span class="math" data-tex="\(T(f)\simeq C(f)[-1]\)">\(T(f)\simeq C(f)[-1]\)</span> by <span class="math" data-tex="\((x,y)\mapsto(-y,x)\)">\((x,y)\mapsto(-y,x)\)</span>, in the target-first order. Direct substitution in the negative shifted cone differential gives (13).</p>
+<h2 id="7-the-universal-derived-kernel-including-its-unit">7. The universal derived kernel, including its unit</h2>
+<p>Let <span class="math" data-tex="\(Q\)">\(Q\)</span> denote the arrow-category localization and <span class="math" data-tex="\(Q_A\)">\(Q_A\)</span> the target localization. Apply the same notation in any one of the unbounded, bounded-below, bounded-above or bounded variants. Proposition 6.2 gives an exact functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (19); horizontal scroll when needed" data-tex="\[
+R\ker:D^*(\operatorname{Arr}(\mathcal A))\to D^*(\mathcal A),
+\qquad R\ker(Qf)=Q_AT(f).
+\tag{19}
+\]">\[
+R\ker:D^*(\operatorname{Arr}(\mathcal A))\to D^*(\mathcal A),
+\qquad R\ker(Qf)=Q_AT(f).
+\tag{19}
+\]</span>
+<p>Its unit from the termwise kernel is <span class="math" data-tex="\(Q_A\eta_f\)">\(Q_A\eta_f\)</span>.</p>
+<p><strong>Theorem 7.1.</strong> Formula (19) is the universal right derived kernel. For every further functor <span class="math" data-tex="\(L:D^*(\mathcal A)\to\mathcal B\)">\(L:D^*(\mathcal A)\to\mathcal B\)</span> and every functor <span class="math" data-tex="\(H:D^*(\operatorname{Arr}(\mathcal A))\to\mathcal B\)">\(H:D^*(\operatorname{Arr}(\mathcal A))\to\mathcal B\)</span>, composition with its unit gives a bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (20); horizontal scroll when needed" data-tex="\[
+\operatorname{Nat}(L R\ker,H)
+\simeq\operatorname{Nat}(L Q_A\ker,HQ).
+\tag{20}
+\]">\[
+\operatorname{Nat}(L R\ker,H)
+\simeq\operatorname{Nat}(L Q_A\ker,HQ).
+\tag{20}
+\]</span>
+<p>No additivity, exactness or colimit preservation is imposed on <span class="math" data-tex="\(L,H\)">\(L,H\)</span>.</p>
+<p><strong>Proof.</strong> First, <span class="math" data-tex="\(\eta_e\)">\(\eta_e\)</span> is a quasi-isomorphism for every termwise epic complex <span class="math" data-tex="\(e:X\to Y\)">\(e:X\to Y\)</span>. Indeed the quotient of its inclusion <span class="math" data-tex="\(\ker e\to T(e)\)">\(\ker e\to T(e)\)</span> identifies, via <span class="math" data-tex="\(X/\ker e\simeq Y\)">\(X/\ker e\simeq Y\)</span>, with (12). Its differential is <span class="math" data-tex="\((d_Yb,b-d_Yc)\)">\((d_Yb,b-d_Yc)\)</span>, and the same contraction proves it acyclic. Thus the unit is invertible on epic complexes.</p>
+<p>Write <span class="math" data-tex="\(R=R\ker\)">\(R=R\ker\)</span>, <span class="math" data-tex="\(G=Q_A\ker\)">\(G=Q_A\ker\)</span>, and regard <span class="math" data-tex="\(\eta:G\to RQ\)">\(\eta:G\to RQ\)</span> as a natural transformation on the homotopy category. Let <span class="math" data-tex="\(\zeta:LG\to HQ\)">\(\zeta:LG\to HQ\)</span> be given. For <span class="math" data-tex="\(t_f:f\to I(f)\)">\(t_f:f\to I(f)\)</span> of (11), define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (21); horizontal scroll when needed" data-tex="\[
+\mu_{Qf}=H(Qt_f)^{-1}\,
+\zeta_{I(f)}\,(L\eta_{I(f)})^{-1}\,L R(Qt_f).
+\tag{21}
+\]">\[
+\mu_{Qf}=H(Qt_f)^{-1}\,
+\zeta_{I(f)}\,(L\eta_{I(f)})^{-1}\,L R(Qt_f).
+\tag{21}
+\]</span>
+<p>Every inverse exists: <span class="math" data-tex="\(t_f\)">\(t_f\)</span> is a quasi-isomorphism and <span class="math" data-tex="\(I(f)\)">\(I(f)\)</span> is termwise epic. Naturality of <span class="math" data-tex="\(t,\eta,\zeta\)">\(t,\eta,\zeta\)</span> makes (21) commute with every homotopy-category arrow. Because both <span class="math" data-tex="\(LR\)">\(LR\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span> already invert denominators, the same commuting equation holds for their inverses and for all derived roofs. Thus it is a natural transformation on the derived category.</p>
+<p>Naturality of the unit gives <span class="math" data-tex="\(R(Qt_f)\eta_f=\eta_{I(f)}G(t_f)\)">\(R(Qt_f)\eta_f=\eta_{I(f)}G(t_f)\)</span>. Insert this in (21), then use naturality of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>; the result is <span class="math" data-tex="\(\mu_{Qf}L\eta_f=\zeta_f\)">\(\mu_{Qf}L\eta_f=\zeta_f\)</span>. Conversely any transformation with this property has, at the epic complex <span class="math" data-tex="\(I(f)\)">\(I(f)\)</span>, the forced component <span class="math" data-tex="\(\zeta_{I(f)}(L\eta_{I(f)})^{-1}\)">\(\zeta_{I(f)}(L\eta_{I(f)})^{-1}\)</span>. Naturality at the invertible <span class="math" data-tex="\(Qt_f\)">\(Qt_f\)</span> forces precisely (21) at <span class="math" data-tex="\(f\)">\(f\)</span>. This proves both directions and uniqueness in (20), for arbitrary <span class="math" data-tex="\(L\)">\(L\)</span>. It is the absolute universal property, not merely a formula for object values. The bounds from Theorem 5.1 and (13) ensure that every object and map used lies in the chosen variant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equivalently, the localization of the full homotopy subcategory of epic complexes is exactly <span class="math" data-tex="\(D^*(\operatorname{Arr}(\mathcal A))\)">\(D^*(\operatorname{Arr}(\mathcal A))\)</span>. For clarity, density is (11); any outgoing roof between epic complexes can have its middle object replaced by <span class="math" data-tex="\(I\)">\(I\)</span>, giving a roof inside that full subcategory. For two equal roofs, replace the common equality-refinement object as well; the equality remains a homotopy equality between epic complexes, so equality holds in their localization. This proves fullness and faithfulness by the actual fraction tests, as in the relative-replacement prerequisite. On this localization the functor is ordinary termwise kernel, by Proposition 5.2 and the invertible unit. The displayed mapping fiber supplies the exact shift and cone comparisons rather than leaving them implicit in an equivalence of categories.</p>
+<h2 id="8-ordinary-arrows-kernel-cokernel-and-acyclicity">8. Ordinary arrows: kernel, cokernel and acyclicity</h2>
+<p>For <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span> concentrated in arrow degree zero, (13) is the complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (22); horizontal scroll when needed" data-tex="\[
+R\ker(f)\simeq[A\xrightarrow fB],
+\qquad\text{in degrees }0,1.
+\tag{22}
+\]">\[
+R\ker(f)\simeq[A\xrightarrow fB],
+\qquad\text{in degrees }0,1.
+\tag{22}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (23); horizontal scroll when needed" data-tex="\[
+R^n\ker(f)=
+\begin{cases}
+\ker f&amp;n=0,\\
+\operatorname{coker}f&amp;n=1,\\
+0&amp;n\notin\{0,1\}.
+\end{cases}
+\tag{23}
+\]">\[
+R^n\ker(f)=
+\begin{cases}
+\ker f&amp;n=0,\\
+\operatorname{coker}f&amp;n=1,\\
+0&amp;n\notin\{0,1\}.
+\end{cases}
+\tag{23}
+\]</span>
+<p><strong>Proof.</strong> Substituting stalk complexes in (13) leaves exactly the two terms and differential in (22). Their cycles and boundaries give (23). The unit is the ordinary kernel inclusion in degree zero, so its degree-zero map is the canonical identity on <span class="math" data-tex="\(\ker f\)">\(\ker f\)</span>. A square <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> acts on (22) by <span class="math" data-tex="\(u\)">\(u\)</span> in degree zero and <span class="math" data-tex="\(v\)">\(v\)</span> in degree one. Thus both identifications are natural for every square. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The full class of ordinary right-acyclic arrows is exactly <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. Indeed <span class="math" data-tex="\(R^1\ker(f)=0\)">\(R^1\ker(f)=0\)</span> exactly when <span class="math" data-tex="\(f\)">\(f\)</span> is epic, and all other positive degrees already vanish. For such arrows the unit is a quasi-isomorphism by its cohomology calculation; conversely an invertible unit forces that cokernel to vanish. This is an adapted class assertion, not a claim that every epic arrow is an injective object.</p>
+<p>The two possible cohomology objects in (22) need not split. Theorem 1.1 gives a sufficient splitting condition <span class="math" data-tex="\(\operatorname{Ext}^2(\operatorname{coker}f,\ker f)=0\)">\(\operatorname{Ext}^2(\operatorname{coker}f,\ker f)=0\)</span>. More precisely the canonical class lies in this group and vanishes exactly when the derived kernel splits. Exercise 3 computes a nonzero class, so the distinction persists even though every <span class="math" data-tex="\(R^n\ker\)">\(R^n\ker\)</span> above degree one is zero.</p>
+<h2 id="9-four-graded-exercises-with-complete-solutions">9. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-foundation-the-exact-degrees-and-all-splitting-choices">Exercise 1 — Foundation: the exact degrees and all splitting choices</h3>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> have cohomology only in degrees <span class="math" data-tex="\(0,2,5\)">\(0,2,5\)</span>, denoted <span class="math" data-tex="\(A,B,C\)">\(A,B,C\)</span>. List the three groups whose vanishing suffices in Theorem 1.1. After a marked splitting, describe every marked automorphism and its multiplication and inverse. State exactly when the marked splitting is unique.</p>
+<p><strong>Solution.</strong> The required groups are <span class="math" data-tex="\(\operatorname{Ext}^3(B,A)\)">\(\operatorname{Ext}^3(B,A)\)</span>, <span class="math" data-tex="\(\operatorname{Ext}^6(C,A)\)">\(\operatorname{Ext}^6(C,A)\)</span>, and <span class="math" data-tex="\(\operatorname{Ext}^4(C,B)\)">\(\operatorname{Ext}^4(C,B)\)</span>. Their vanishing supplies <span class="math" data-tex="\(S=A\oplus B[-2]\oplus C[-5]\simeq X\)">\(S=A\oplus B[-2]\oplus C[-5]\simeq X\)</span> with all three identity marks. In this summand order a marked automorphism is uniquely</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+U(h,k,l)=
+\begin{pmatrix}1&amp;h&amp;l\\0&amp;1&amp;k\\0&amp;0&amp;1\end{pmatrix},
+\]">\[
+U(h,k,l)=
+\begin{pmatrix}1&amp;h&amp;l\\0&amp;1&amp;k\\0&amp;0&amp;1\end{pmatrix},
+\]</span>
+<p>where <span class="math" data-tex="\(h\in\operatorname{Ext}^2(B,A)\)">\(h\in\operatorname{Ext}^2(B,A)\)</span>, <span class="math" data-tex="\(k\in\operatorname{Ext}^3(C,B)\)">\(k\in\operatorname{Ext}^3(C,B)\)</span>, and <span class="math" data-tex="\(l\in\operatorname{Ext}^5(C,A)\)">\(l\in\operatorname{Ext}^5(C,A)\)</span>. These entries are actual maps between the displayed shifted objects. Matrix multiplication gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+U(h&#x27;,k&#x27;,l&#x27;)U(h,k,l)
+=U(h&#x27;+h,k&#x27;+k,l&#x27;+l+h&#x27;k).
+\]">\[
+U(h&#x27;,k&#x27;,l&#x27;)U(h,k,l)
+=U(h&#x27;+h,k&#x27;+k,l&#x27;+l+h&#x27;k).
+\]</span>
+<p>The last product is composition <span class="math" data-tex="\(C[-5]\xrightarrow kB[-2]\xrightarrow{h&#x27;}A\)">\(C[-5]\xrightarrow kB[-2]\xrightarrow{h&#x27;}A\)</span>; under Ext coordinates it is the corresponding translated composition. The inverse is <span class="math" data-tex="\(U(-h,-k,hk-l)\)">\(U(-h,-k,hk-l)\)</span>, as multiplying on either side checks. Thus the parameters form a group with a possible cross term, not automatically their additive direct sum. The marked splitting choices form its torsor. They are unique precisely when the three ambiguity groups <span class="math" data-tex="\(\operatorname{Ext}^2(B,A)\)">\(\operatorname{Ext}^2(B,A)\)</span>, <span class="math" data-tex="\(\operatorname{Ext}^3(C,B)\)">\(\operatorname{Ext}^3(C,B)\)</span>, <span class="math" data-tex="\(\operatorname{Ext}^5(C,A)\)">\(\operatorname{Ext}^5(C,A)\)</span> vanish. Their degrees differ by one from the splitting-existence groups, as the formulas show.</p>
+<h3 id="exercise-2-intermediate-an-adapted-arrow-need-not-be-injective">Exercise 2 — Intermediate: an adapted arrow need not be injective</h3>
+<p>In abelian groups, compute the derived kernel and unit for <span class="math" data-tex="\(f:\mathbb Z\to\mathbb Z/m\)">\(f:\mathbb Z\to\mathbb Z/m\)</span>, with <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, the quotient map. Show that the epic arrow <span class="math" data-tex="\((\mathbb Z\to0)\)">\((\mathbb Z\to0)\)</span> is not an injective object of the arrow category. Explain why this does not contradict adaptation.</p>
+<p><strong>Solution.</strong> Formula (22) is <span class="math" data-tex="\([\mathbb Z\to\mathbb Z/m]\)">\([\mathbb Z\to\mathbb Z/m]\)</span> in degrees 0 and 1. Its degree-zero cohomology is <span class="math" data-tex="\(m\mathbb Z\)">\(m\mathbb Z\)</span>, its degree-one cohomology is zero, and the unit is the inclusion <span class="math" data-tex="\(m\mathbb Z[0]\to[\mathbb Z\to\mathbb Z/m]\)">\(m\mathbb Z[0]\to[\mathbb Z\to\mathbb Z/m]\)</span>. This is a quasi-isomorphism by the computed cohomology; multiplication by <span class="math" data-tex="\(m\)">\(m\)</span> identifies its sole cohomology group with <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The assertion includes the actual kernel inclusion, rather than choosing a new endpoint map.</p>
+<p>There is a monomorphism <span class="math" data-tex="\((\mathbb Z\to0)\hookrightarrow(\mathbb Q\to0)\)">\((\mathbb Z\to0)\hookrightarrow(\mathbb Q\to0)\)</span>, given by the usual inclusion and the identity of zero. If the first arrow object were injective, its identity would extend through this monomorphism. The domain component would be a group map <span class="math" data-tex="\(r:\mathbb Q\to\mathbb Z\)">\(r:\mathbb Q\to\mathbb Z\)</span> restricting to the identity of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. But <span class="math" data-tex="\(r(1)=n r(1/n)\)">\(r(1)=n r(1/n)\)</span> for every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, so <span class="math" data-tex="\(r(1)\)">\(r(1)\)</span> is divisible by every <span class="math" data-tex="\(n\)">\(n\)</span> in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, forcing it to be zero, not one. Such an extension is impossible. Thus this epic arrow is not an injective object.</p>
+<p>Adaptation requires outgoing replacements and acyclicity of kernel complexes on acyclic epic complexes. Those were proved in Section 5; it never asserts extension of all arrows through arbitrary monomorphisms. The example therefore meets the adapted-class definition and fails the different injective-object definition.</p>
+<h3 id="exercise-3-advanced-a-nonsplit-derived-kernel">Exercise 3 — Advanced: a nonsplit derived kernel</h3>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a nonzero field, <span class="math" data-tex="\(R=k[t]/(t^2)\)">\(R=k[t]/(t^2)\)</span>, and <span class="math" data-tex="\(M=k=R/(t)\)">\(M=k=R/(t)\)</span>. Compute <span class="math" data-tex="\(R\ker(f)\)">\(R\ker(f)\)</span> for <span class="math" data-tex="\(f:R\xrightarrow{t}R\)">\(f:R\xrightarrow{t}R\)</span>. Give its two cohomology identifications and calculate its canonical two-degree class, with the fixed positive cone convention. Decide whether it is the sum of its cohomology stalks.</p>
+<p><strong>Solution.</strong> Write each element of <span class="math" data-tex="\(R\)">\(R\)</span> uniquely as <span class="math" data-tex="\(a+bt\)">\(a+bt\)</span>. Multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> sends it to <span class="math" data-tex="\(at\)">\(at\)</span>, so its kernel and image are both <span class="math" data-tex="\(tR\)">\(tR\)</span>. The cokernel is <span class="math" data-tex="\(M\)">\(M\)</span>. Thus <span class="math" data-tex="\(Z=R\ker(f)=[R\xrightarrow{t}R]\)">\(Z=R\ker(f)=[R\xrightarrow{t}R]\)</span> in degrees 0 and 1 has marks <span class="math" data-tex="\(H^0Z=M\)">\(H^0Z=M\)</span> via <span class="math" data-tex="\(c\mapsto ct\)">\(c\mapsto ct\)</span>, and <span class="math" data-tex="\(H^1Z=M\)">\(H^1Z=M\)</span> via quotient evaluation <span class="math" data-tex="\(\epsilon:R\to M\)">\(\epsilon:R\to M\)</span>. Its class lies in <span class="math" data-tex="\(\operatorname{Ext}^2_R(M,M)\)">\(\operatorname{Ext}^2_R(M,M)\)</span>.</p>
+<p>Use the free resolution <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(P^n=R\)">\(P^n=R\)</span> for every <span class="math" data-tex="\(n\le0\)">\(n\le0\)</span>, zero for <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, every negative differential multiplication by <span class="math" data-tex="\(t\)">\(t\)</span>, and augmentation <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> in degree zero. The equation <span class="math" data-tex="\(t^2=0\)">\(t^2=0\)</span>, the just computed kernel and image, and <span class="math" data-tex="\(\ker\epsilon=tR\)">\(\ker\epsilon=tR\)</span> prove exactness in every augmented position. Its terms are projective and it is bounded above. The projective Hom lemma computes actual derived Ext by <span class="math" data-tex="\(\operatorname{Hom}(P,M)\)">\(\operatorname{Hom}(P,M)\)</span>. All its differentials are zero because <span class="math" data-tex="\(t\)">\(t\)</span> kills <span class="math" data-tex="\(M\)">\(M\)</span>; in particular <span class="math" data-tex="\(\operatorname{Ext}^2_R(M,M)=k\)">\(\operatorname{Ext}^2_R(M,M)=k\)</span>, with coordinate <span class="math" data-tex="\(c\)">\(c\)</span> represented by <span class="math" data-tex="\(c\epsilon:P^{-2}\to M[2]^{-2}\)">\(c\epsilon:P^{-2}\to M[2]^{-2}\)</span>.</p>
+<p>The injection <span class="math" data-tex="\(M[0]\to Z\)">\(M[0]\to Z\)</span> has cone <span class="math" data-tex="\(K\)">\(K\)</span> with terms <span class="math" data-tex="\(M,R,R\)">\(M,R,R\)</span> in degrees <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span>, whose differentials are the injection <span class="math" data-tex="\(c\mapsto ct\)">\(c\mapsto ct\)</span> and multiplication by <span class="math" data-tex="\(t\)">\(t\)</span>. Its quotient comparison <span class="math" data-tex="\(q:K\to M[-1]\)">\(q:K\to M[-1]\)</span> is <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> in degree 1; exactness makes it a quasi-isomorphism. The positive projection <span class="math" data-tex="\(p:K\to M[1]\)">\(p:K\to M[1]\)</span> is identity in degree minus one. The first two transported triangle maps are precisely the marked inclusion and cohomology projection of <span class="math" data-tex="\(Z\)">\(Z\)</span>, so its canonical class is <span class="math" data-tex="\(Qp(Qq)^{-1}\)">\(Qp(Qq)^{-1}\)</span>, by the canonical comparison in the two-degree prerequisite.</p>
+<p>Translate this arrow by 1 to its degree-two Ext coordinate. The differentials of <span class="math" data-tex="\(K[1]\)">\(K[1]\)</span>, in degrees <span class="math" data-tex="\(-2,-1,0\)">\(-2,-1,0\)</span>, are the negative injection and <span class="math" data-tex="\(-t\)">\(-t\)</span>. There is a chain map <span class="math" data-tex="\(\ell:P\to K[1]\)">\(\ell:P\to K[1]\)</span> with components <span class="math" data-tex="\(\ell^0=1_R\)">\(\ell^0=1_R\)</span>, <span class="math" data-tex="\(\ell^{-1}=-1_R\)">\(\ell^{-1}=-1_R\)</span>, <span class="math" data-tex="\(\ell^{-2}=\epsilon\)">\(\ell^{-2}=\epsilon\)</span>, and zero in lower degrees. Its two nontrivial squares say <span class="math" data-tex="\((-t)(-1)=t\)">\((-t)(-1)=t\)</span> and <span class="math" data-tex="\((-t)\epsilon=(-1)t\)">\((-t)\epsilon=(-1)t\)</span>, where the first <span class="math" data-tex="\(t\)">\(t\)</span> in the second equation is the injection <span class="math" data-tex="\(M\to R\)">\(M\to R\)</span>. The lower remaining square is <span class="math" data-tex="\(\epsilon t=0\)">\(\epsilon t=0\)</span>. Thus all chain equations hold. Moreover <span class="math" data-tex="\(q[1]\ell\)">\(q[1]\ell\)</span> is the augmentation, and <span class="math" data-tex="\(p[1]\ell\)">\(p[1]\ell\)</span> has component <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> in degree minus two. The class of <span class="math" data-tex="\(Z\)">\(Z\)</span> therefore has coordinate <span class="math" data-tex="\(1\in k\)">\(1\in k\)</span>, which is nonzero.</p>
+<p>The two-degree splitting criterion now proves <span class="math" data-tex="\(Z\not\simeq M[0]\oplus M[-1]\)">\(Z\not\simeq M[0]\oplus M[-1]\)</span>, even without fixed marks. This example has no higher right-kernel cohomology, but it has a nonzero degree-two obstruction to splitting. Those are distinct assertions. The coordinate just computed is the truncation boundary; it does not silently replace it by a differently normalized Yoneda class.</p>
+<h3 id="exercise-4-synthesis-exactness-and-the-sign-of-the-connecting-map">Exercise 4 — Synthesis: exactness and the sign of the connecting map</h3>
+<p>Consider the short exact row of arrows in abelian groups</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+0\to(0\to\mathbb Z)\to
+(\mathbb Z\xrightarrow{1}\mathbb Z)\to
+(\mathbb Z\to0)\to0,
+\]">\[
+0\to(0\to\mathbb Z)\to
+(\mathbb Z\xrightarrow{1}\mathbb Z)\to
+(\mathbb Z\to0)\to0,
+\]</span>
+<p>with the evident identity endpoint maps. Compute the full six-term sequence (7), including its connecting sign in our cone convention. Use the row to show that the ordinary kernel functor is not exact, and verify that the derived kernel nevertheless gives its required distinguished triangle.</p>
+<p><strong>Solution.</strong> At domain endpoints the short row is <span class="math" data-tex="\(0\to0\to\mathbb Z\xrightarrow1\mathbb Z\to0\)">\(0\to0\to\mathbb Z\xrightarrow1\mathbb Z\to0\)</span>; at codomain endpoints it is <span class="math" data-tex="\(0\to\mathbb Z\xrightarrow1\mathbb Z\to0\to0\)">\(0\to\mathbb Z\xrightarrow1\mathbb Z\to0\to0\)</span>. Thus it is short exact in the arrow category. The two-term images are <span class="math" data-tex="\(P&#x27;=[0\to\mathbb Z]\)">\(P&#x27;=[0\to\mathbb Z]\)</span>, <span class="math" data-tex="\(P=[\mathbb Z\xrightarrow1\mathbb Z]\)">\(P=[\mathbb Z\xrightarrow1\mathbb Z]\)</span>, and <span class="math" data-tex="\(P&#x27;&#x27;=[\mathbb Z\to0]\)">\(P&#x27;&#x27;=[\mathbb Z\to0]\)</span>, all in degrees 0 and 1.</p>
+<p>The cone of the inclusion <span class="math" data-tex="\(P&#x27;\to P\)">\(P&#x27;\to P\)</span> has <span class="math" data-tex="\(\mathbb Z\oplus\mathbb Z\)">\(\mathbb Z\oplus\mathbb Z\)</span> in degree zero, <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in degree one, and differential <span class="math" data-tex="\((z,w)\mapsto z+w\)">\((z,w)\mapsto z+w\)</span>. Its quotient comparison to <span class="math" data-tex="\(P&#x27;&#x27;\)">\(P&#x27;&#x27;\)</span> is <span class="math" data-tex="\((z,w)\mapsto z\)">\((z,w)\mapsto z\)</span> in degree zero, and its positive final projection to <span class="math" data-tex="\(P&#x27;[1]\)">\(P&#x27;[1]\)</span> is <span class="math" data-tex="\((z,w)\mapsto w\)">\((z,w)\mapsto w\)</span>. A degree-zero cycle satisfies <span class="math" data-tex="\(w=-z\)">\(w=-z\)</span>, so the comparison is an isomorphism on its sole cohomology, and the transported last projection is <span class="math" data-tex="\(-1:\mathbb Z\to\mathbb Z\)">\(-1:\mathbb Z\to\mathbb Z\)</span>. The exact sequence is therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+0\to0\to0\to\mathbb Z\xrightarrow{-1}\mathbb Z
+\to0\to0\to0.
+\]">\[
+0\to0\to0\to\mathbb Z\xrightarrow{-1}\mathbb Z
+\to0\to0\to0.
+\]</span>
+<p>The map from the middle ordinary kernel, zero, to the final ordinary kernel, <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, is not epic. This proves the failure of ordinary exactness. The derived kernel images form the short-exact-complex triangle just computed: <span class="math" data-tex="\(P\)">\(P\)</span> is contractible, and its last map identifies <span class="math" data-tex="\(P&#x27;&#x27;\simeq\mathbb Z[0]\)">\(P&#x27;&#x27;\simeq\mathbb Z[0]\)</span> with <span class="math" data-tex="\(P&#x27;[1]\simeq\mathbb Z[0]\)">\(P&#x27;[1]\simeq\mathbb Z[0]\)</span> by <span class="math" data-tex="\(-1\)">\(-1\)</span>. The cone comparison and its positive projection prove distinguishedness and its actual connecting sign. This also checks the exact functor structure of Sections 6–7 on a row whose ordinary kernels fail to be exact.</p>
+</main></body></html>

@@ -1,6 +1,6 @@
 # From a discrete modular spectral invariant to an actual inner period
 
-*Independent proof reconstruction, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*Original exposition, proofs and illustration: CC0-1.0 to the extent of rights held. Cited publications and existing components retain their own terms.*
 
 Let \(M\ne0\) be a type III factor with separable predual. Suppose
 
@@ -13,9 +13,9 @@ Let \(M\ne0\) be a type III factor with separable predual. Suppose
 \]
 For every given faithful normal semifinite weight \(\psi\) on \(M\), the modular automorphism \(\sigma_P^\psi\) is inner: there is a unitary \(b\in M\) such that \(\sigma_P^\psi(x)=bxb^*\) for every \(x\in M\). This is an actual whole-algebra identity. No periodic-weight existence or classification theorem is a premise or conclusion of this chapter.
 
-The actual earlier inputs are the complete [CS-3/4 corner and spectral-translation proofs](OA-FLOW-CS.md), the precisely scoped [MG-4 positive \(S/\Gamma\) comparison](OA-FLOW-MG.md), [RF-1](OA-FLOW-RF.md#oa-flow.rf.1) and [AL-1–3](OA-FLOW-AL.md#oa-flow.al.1) for real filters, Fourier uniqueness and element-hull detection, [CF-1](OA-FLOW-CF.md#oa-flow.cf.1) for compact integrals and Banach differentiation, the already bounded star-derivation construction in [L35 Sections2–6](OA-FLOW-L35.md#oa-flow.gi.fourier), and [CT-2](OA-FLOW-CT.md#oa-flow.ct.2)/[PC-7](OA-FLOW-PC.md#oa-flow.projection.pc7)/[PC-8](OA-FLOW-PC.md#oa-flow.projection.pc8) for the actual type III corner equivalence. The modular action's normality and pointwise continuity are proved on full n.s.f. domains in [MW-4](OA-FLOW-MW.md#oa-flow.mw.4). Exact individual proof ranges, scalar prerequisites and earlier order are recorded separately. Automatic boundedness is not needed: the derivation below is explicitly a norm-convergent bounded operator series.
+The earlier mathematical inputs are the complete [CS-3/4 corner and spectral-translation proofs](OA-FLOW-CS.md), the precisely scoped [MG-4 positive \(S/\Gamma\) comparison](OA-FLOW-MG.md), [RF-1](OA-FLOW-RF.md#oa-flow.rf.1) and [AL-1–3](OA-FLOW-AL.md#oa-flow.al.1) for real filters, Fourier uniqueness and element-hull detection, [CF-1](OA-FLOW-CF.md#oa-flow.cf.1) for compact integrals and Banach differentiation, the already bounded star-derivation construction in [L35 Sections2–6](OA-FLOW-L35.md#oa-flow.gi.fourier), and [CT-2](OA-FLOW-CT.md#oa-flow.ct.2)/[PC-7](OA-FLOW-PC.md#oa-flow.projection.pc7)/[PC-8](OA-FLOW-PC.md#oa-flow.projection.pc8) for the actual type III corner equivalence. The modular action's normality and pointwise continuity are proved on full n.s.f. domains in [MW-4](OA-FLOW-MW.md#oa-flow.mw.4). Automatic boundedness is not needed: the derivation below is explicitly a norm-convergent bounded operator series.
 
-The human primary source actually read is [Connes (1973), Lemmas2.3.5–2.3.10 and the proof of Theorem2.3.1, printed179–182](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=48). Its small-corner route motivates the construction. The complete circle-filter bound and norm-logarithm proof below supply the needed innerness step locally, rather than importing its cited near-spectrum theorem.
+The classical small-corner route of [Alain Connes (1973), §2.3, Lemmas 2.3.5–2.3.6, Proposition 2.3.7 and Lemmas 2.3.8–2.3.10, printed 179–182](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=48), together with the proof of Theorem 2.3.1, motivates this construction. The complete circle-filter bound and norm-logarithm proof below establish the innerness step without invoking the source's cited near-spectrum theorem.
 
 <a id="oa-flow.ip.0"></a>
 ## IP-0. Exact real-action hypotheses and the modular reduction

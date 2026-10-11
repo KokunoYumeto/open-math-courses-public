@@ -6,7 +6,7 @@ A quotient algebra identifies elements that differ by an ideal. Lifting a map ou
 
 We prove that a completely positive map with finite-dimensional completely positive approximations lifts whenever its domain is separable. We also prove that the class of all liftable completely positive maps is closed under pointwise norm limits on such a domain. The quotient algebra and its ideal need not be separable. Finite-domain compression and spectral clipping supply bounded lifts before the sequence argument is applied.
 
-Prerequisites are [Completely positive finite models](completely-positive-finite-models.md), continuous functional calculus and the quotient norm formula for C*-algebras, Hahn–Banach and Banach–Alaoglu, and the [GNS construction](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#oa-fnd-gn-05). Lemma 2.1 constructs the approximate identity and proves the ideal-support argument in representations. Section 4 proves the nonunital cutoffs directly at every matrix size. Section 6 uses the [full unital Stinespring proof](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html#oa-fnd-cm-05); the finite-matrix criterion and the full extension proof are linked where used below.
+Prerequisites are [Completely positive finite models](completely-positive-finite-models.md), continuous functional calculus and the quotient norm formula for C*-algebras, Hahn–Banach and Banach–Alaoglu, and Hilbert completion. The scalar GNS realization and faithful representation are constructed from the exact [unital dilation below](#unital-dilation). Lemma 2.1 constructs the approximate identity and proves the ideal-support argument in representations. Section 4 proves the nonunital cutoffs directly at every matrix size. Section 6 uses the [full unital Stinespring proof](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html#oa-fnd-cm-05); the finite-matrix criterion and the full extension proof are linked where used below.
 
 Unital algebras in the unital assertions are nonzero. Inner products are linear in the second variable.
 
@@ -80,19 +80,31 @@ The scalar bound is \(t^2s/(s+t)^2\le t/4\) for \(s\ge0\). Direct these pairs by
 
 The weak convergence argument below applies to any positive contractive approximate identity of \(J\).
 
+<a id="convex-dual-separation"></a>
+
+We spell out the separation fact needed for the norm-closure step. If a nonempty convex set \(C\) in a real normed space has positive distance \(d\) from zero, then \(U=C+\{v:\|v\|<d/2\}\) is open and convex and omits zero. Choose \(u_0\in U\). The open convex neighbourhood \(V=U-u_0\) of zero has the finite sublinear gauge
+\(p(v)=\inf\{t>0:v\in tV\}\).
+Positive homogeneity follows by rescaling the defining infimum. If \(v\in sV\) and \(w\in tV\), convexity gives \((v+w)/(s+t)\in V\); letting \(s,t\) decrease to the two gauges proves subadditivity. The gauge is bounded above by a multiple of \(\|v\|\), since \(V\) contains a ball. Also \(p(-u_0)\ge1\), since \(-u_0\notin V\). The linear functional on the line through \(-u_0\) taking that vector to one is dominated by \(p\): for positive multiples use homogeneity and this last bound, and for negative multiples its value is nonpositive while the gauge is nonnegative. The complete real Hahn–Banach proof in [CF, Section 1](../../OA-FLOW/OA-FLOW-CF.html#oa-flow.cf.1) extends it to \(F\le p\). Bounds on \(F(v)\) and \(F(-v)\) make \(F\) continuous. Since \(p(v)<1\) on \(V\), we have \(F(u)<0\) on \(U\), and taking the supremum over its added ball gives
+\[
+F(c)\le-(d/2)\|F\|<0\quad(c\in C).
+\]
+For a complex normed space apply this to its real space; \(F(x)-iF(ix)\) is a bounded complex functional with real part \(F\). Translation now proves that the weak and norm closures of any convex set agree. No closedness of the image of a closed set is asserted.
+
 We next show that every bounded linear functional on \(B\) is a linear combination of positive functionals. We give the argument because weak convergence of commutators must be tested against the whole dual. Work first in a nonzero unital C*-algebra \(C\), and let \(E=C_{\mathrm{sa}}\) be its real Banach space. States norm \(E\): for \(a=a^*\), choose a spectral value \(\lambda\) with \(|\lambda|=\|a\|\). Evaluation at \(\lambda\) on \(C^*(1,a)\), followed by the positive-functional extension in [Completely positive finite models, Lemma 2.2](completely-positive-finite-models.md#lemma-2-2), gives a state \(s\) with \(|s(a)|=\|a\|\). A positive functional has norm equal to its value at \(1\), by its Cauchy–Schwarz inequality and \(a^*a\le\|a\|^2 1\).
 
 In the real dual of \(E\), consider
 \[
 K=\{s-r:s,r\ge0,\ s(1)+r(1)\le1\}.
 \]
-Here positive real functionals on \(E\) are identified with their complexifications on \(C\). The pairs in this formula form a weak* closed subset of the product of two dual unit balls: positivity and the condition on the unit are weak* closed, and positivity gives the norm bounds. Banach–Alaoglu makes the set of pairs compact. Thus \(K\) is weak* compact and convex. For every \(a\in E\),
+Here positive real functionals on \(E\) are identified with their complexifications on \(C\). The pairs in this formula form a weak* closed subset of the product of two dual unit balls: positivity and the condition on the unit are weak* closed, and positivity gives the norm bounds. The explicit dual-ball argument in [Completely positive finite models](completely-positive-finite-models.md#dual-ball-compactness) makes the set of pairs compact. Thus \(K\) is weak* compact and convex. For every \(a\in E\),
 \[
 \sup_{k\in K}k(a)=\|a\|.
 \]
-The upper bound follows from \(-\|a\|1\le a\le\|a\|1\); a norming state or its negative attains the lower bound. If a real bounded functional \(f\) on \(E\), of norm \(c>0\), lay outside \(cK\), weak* Hahn–Banach separation would give an \(a\in E\) with \(f(a)>c\|a\|\), contradicting its norm. Therefore every such \(f\) is a difference of two positive functionals; the zero case is immediate. Taking the real and imaginary parts of a complex functional on \(E\), and then complexifying, expresses it as a linear combination of four positive functionals. For a possibly nonunital \(B\), extend a bounded functional to \(B^\dagger\) by Hahn–Banach and restrict these four positive parts to \(B\). If \(B=0\), the assertion is immediate.
+The upper bound follows from \(-\|a\|1\le a\le\|a\|1\); a norming state or its negative attains the lower bound. If a real bounded functional \(f\) on \(E\), of norm \(c>0\), lay outside \(cK\), the weak* compactness of \(cK\) gives finitely many coordinates \(a_1,\ldots,a_m\in E\) whose joint image is a compact convex set avoiding the coordinate vector of \(f\). In Euclidean \(\mathbb R^m\), a closest point \(y\) to that vector \(z\) exists. Convexity and the derivative of \(\|z-y-t(w-y)\|^2\) at \(t=0\) give \((z-y)\cdot(w-y)\le0\) for every point \(w\) in the set. Thus \(z-y\) strictly separates \(z\) from it. The corresponding real linear combination \(a\) of the \(a_j\) satisfies \(f(a)>\sup_{k\in cK}k(a)=c\|a\|\), contradicting its norm. Therefore every such \(f\) is a difference of two positive functionals; the zero case is immediate. Taking the real and imaginary parts of a complex functional on \(E\), and then complexifying, expresses it as a linear combination of four positive functionals. For a possibly nonunital \(B\), extend a bounded functional to \(B^\dagger\) by Hahn–Banach and restrict these four positive parts to \(B\). If \(B=0\), the assertion is immediate.
 
-Fix a positive functional on \(B^\dagger\). Its GNS representation has the form
+Fix a positive functional \(s\) on \(B^\dagger\). Its complete positivity follows directly: for a positive matrix \([b_{ij}]\) and a scalar vector \(\lambda\),
+\(\sum_{i,j}\overline{\lambda_i}s(b_{ij})\lambda_j=s(\sum_{i,j}\overline{\lambda_i}b_{ij}\lambda_j)\ge0\).
+If \(s=0\), its commutator values are zero. Otherwise \(s/s(1)\) is ucp, and the exact [unital dilation construction](#unital-dilation), with the one-dimensional input Hilbert space, gives a representation \(\pi\) and a vector \(\xi\) of squared norm \(s(1)\). Thus
 \(s(b)=\langle\xi,\pi(b)\xi\rangle\). Put
 \[
 L=\overline{\pi(J)H},\qquad p=P_L.
@@ -114,13 +126,59 @@ For a finite \(F=\{b_1,\ldots,b_r\}\subset B\), the tuples
 \]
 therefore converge weakly to zero. Indeed, every bounded functional on the finite product is the sum of bounded functionals on its coordinates. Zero belongs to the weak closure of every tail of these tuples. A convex set has the same weak and norm closures by Hahn–Banach, so zero belongs to the norm closure of the convex hull of each tail. Choose a convex combination \(u\) of a sufficiently late tail with all the required commutator norms as small as desired. It remains a positive contraction. If the tail already has small left and right multiplication errors on a prescribed finite subset of \(J\), its convex combinations retain those errors. Direct the finite subsets of \(B\) and \(J\) and their positive tolerances. The resulting choices form a quasicentral positive contractive approximate identity. \(\square\)
 
+<a id="quotient-cstar-norm"></a>
+
+### The quotient norm and the new unit
+
+The positive approximate identity in the first paragraph of Lemma 2.1 also proves that every closed two-sided ideal \(J\) is self-adjoint. For \(j\in J\), its right multiplication approximation gives
+\(e_i j^*=(j e_i)^*\to j^*\); each left side belongs to \(J\), so closedness gives \(j^*\in J\). This argument does not assume self-adjointness to construct the approximate identity: both \(x^*x\) and \(xx^*\) already lie in a two-sided ideal containing \(x\), and the inverse in its cutoff is computed in \(B^\dagger\).
+
+The Banach quotient is complete by the explicit summable-representative argument in [CF, Section 4](../../OA-FLOW/OA-FLOW-CF.html), and its involution is isometric because \(J=J^*\). Let \((e_i)\) be the positive contractive approximate identity just constructed. The quotient of \(b(1-e_i)\) is \(q(b)\), giving
+\(\|q(b)\|\le\|b(1-e_i)\|\).
+For any \(j\in J\),
+\[
+\|b(1-e_i)\|
+\le\|(b+j)(1-e_i)\|+\|j(1-e_i)\|
+\le\|b+j\|+\|j(1-e_i)\|.
+\]
+Take the upper limit and then the infimum over \(j\), to get
+\(\|q(b)\|=\lim_i\|b(1-e_i)\|\).
+The identical argument on both sides gives
+\(\|q(c)\|=\lim_i\|(1-e_i)c(1-e_i)\|\): its lower bound is the quotient, and the compressed ideal error tends to zero. Apply this to \(c=b^*b\). The C*-identity in \(B\) now proves
+\[
+\|q(b)\|^2
+=\lim_i\|b(1-e_i)\|^2
+=\lim_i\|(1-e_i)b^*b(1-e_i)\|
+=\|q(b^*b)\|.
+\]
+Submultiplicativity follows by taking nearly minimal representatives of both factors. Thus the quotient norm is a C*-norm. The map \(q\) is a contractive surjective star homomorphism; it preserves positivity because every positive element is a square. Its entrywise matrix amplification has kernel \(M_n(J)\) and is onto.
+
+For the forced unitizations of Section 4, the formula
+\[
+q^\dagger(b+\lambda1)=q(b)+\lambda1
+\]
+is a surjective unital star homomorphism with kernel precisely \(J\). The multiplication, scalar character and norm are the complete construction in [CF, Section 9](../../OA-FLOW/OA-FLOW-CF.html). Hence \(B^\dagger/J\) is star isomorphic to \((B/J)^\dagger\). This isomorphism is isometric: an algebraic unital star isomorphism and its inverse are contractive by the spectral/norm proof in CF, Section 6. The argument includes \(J=B\), zero algebras and already unital \(B\); no older unit is identified with the newly adjoined one.
+
 **Lemma 2.2.** For a quasicentral approximate identity \((u_i)\), both \(u_i^{1/2}\) and \((1-u_i)^{1/2}\) asymptotically commute with every \(b\in B\). Moreover
 \[
 u_i^{1/2}bu_i^{1/2}+(1-u_i)^{1/2}b(1-u_i)^{1/2}\longrightarrow b
 \]
 in norm.
 
-**Proof.** For a polynomial \(p\), expand \([p(u_i),b]\) into sums involving \([u_i,b]\). Uniform polynomial approximation on \([0,1]\) then proves \([f(u_i),b]\to0\) for every continuous \(f\) on that interval. Apply this to \(f(t)=t^{1/2}\) and \(f(t)=(1-t)^{1/2}\).
+**Proof.** The [bounded-root construction (NAR1)–(NAR4)](../components/normal-representations-and-finite-trace-corners.md#na-square-root) gives positive coefficients \(c_n\) and tails \(d_N=\sum_{n>N}c_n\le(N+1)^{-1/2}\). For any positive contraction \(u\),
+\[
+\left\|u^{1/2}-\left(1-\sum_{n=1}^Nc_n(1-u)^n\right)\right\|\le d_N.
+\]
+For contractions \(v\), the identity
+\[
+[v^n,b]=\sum_{l=0}^{n-1}v^l[v,b]v^{n-1-l}
+\]
+gives \(\|[v^n,b]\|\le n\|[v,b]\|\). Hence, with \(L_N=\sum_{n=1}^Nnc_n\),
+\[
+\|[u_i^{1/2},b]\|
+\le 2d_N\|b\|+L_N\|[u_i,b]\|.
+\]
+For \((1-u_i)^{1/2}\), use the polynomial \(1-\sum_{n=1}^Nc_nu_i^n\); the same bound holds. First choose \(N\) large, and then choose \(i\) sufficiently late for that fixed \(N\). Both commutators tend to zero. This proof uses the explicit uniform root tail, at all contractions, rather than a separate polynomial-approximation theorem.
 
 Subtract \(u_ib+(1-u_i)b=b\) from the displayed expression. The norm of the difference is at most
 \(\|[b,u_i^{1/2}]\|+\|[b,(1-u_i)^{1/2}]\|\), which tends to zero. The factors involving \(1-u_i\) are computed in the unitization and still give elements of \(B\). \(\square\)
@@ -138,7 +196,7 @@ For an upper bound, choose \(j\in J\) with \(\|b+j\|<\|q(b)\|+\varepsilon\). The
 
 **Corollary 2.4.** If \(B\) is separable, \(J\) has a quasicentral positive contractive approximate identity that is a sequence.
 
-**Proof.** Choose norm-dense sequences \((b_j)\) in the unit ball of \(B\) and \((x_j)\) in the unit ball of \(J\), which is also separable. For each \(n\), Lemma 2.1 gives a positive contraction \(u_n\in J\) such that, for \(j\le n\),
+**Proof.** Choose a norm-dense sequence \((b_j)\) in the unit ball of \(B\). To obtain a norm-dense sequence \((x_j)\) in the unit ball of \(J\), note that the balls of rational radius centred at a countable dense subset of \(B\) form a countable base for its metric topology. From every such ball meeting the unit ball of \(J\), choose one point of that intersection. These points are a countable dense subset of that unit ball. For each \(n\), Lemma 2.1 gives a positive contraction \(u_n\in J\) such that, for \(j\le n\),
 \[
 \|[u_n,b_j]\|<1/n,\qquad
 \|u_nx_j-x_j\|<1/n,\qquad
@@ -211,9 +269,9 @@ This adjustment leaves the new quotient map exactly as it was. It changes the re
 
 **Theorem 3.2.** Let \(A,B\) be unital, with \(A\) separable. If a ucp map \(\theta:A\to B/J\) is a pointwise norm limit of liftable ucp maps, then \(\theta\) has a ucp lift.
 
-**Proof.** Each liftable ucp map has a ucp lift. Indeed, for any completely positive lift \(\Psi\), clip its unit image \(h=\Psi(1)\) with \(d=g(h)\) as in Proposition 1.2. Since \(q(h)=1\), \(q(d)=1\), so \(d\Psi(\,\cdot\,)d\) is a cpc lift of the same map. Its positive unit defect \(1-dhd\) lies in \(J\). Adding a state of \(A\) times that defect gives a ucp lift.
+**Proof.** Each liftable ucp map has a ucp lift. Indeed, for any completely positive lift \(\Psi\), clip its unit image \(h=\Psi(1)\) with \(d=f(h)\) as in Proposition 1.2. Since \(q(h)=1\), \(q(d)=1\), so \(d\Psi(\,\cdot\,)d\) is a cpc lift of the same map. Its positive unit defect \(1-dhd\) lies in \(J\). Adding a state of \(A\) times that defect gives a ucp lift.
 
-Choose a norm-dense sequence \(a_1,a_2,\ldots\) in the unit ball of \(A\). Pass to a subsequence of the quotient maps \(\theta_k\) so that
+Choose a norm-dense sequence \(a_1,a_2,\ldots\) in the unit ball of \(A\). Pointwise norm convergence of the given approximating net means that, for each finite initial segment and each tolerance, one sufficiently late quotient map meets all its tests. Choose such a liftable ucp map \(\theta_k\) at stage \(k\), so that
 \[
 \|\theta_k(a_j)-\theta(a_j)\|<2^{-k-3}\quad(j\le k).
 \]
@@ -221,7 +279,11 @@ Start with a ucp lift \(\Phi_1\) of \(\theta_1\). If \(\Phi_k\) is chosen, take 
 \[
 \|\Phi_{k+1}(a_j)-\Phi_k(a_j)\|<2^{-k}\quad(j\le k).
 \]
-For each fixed \(j\), these successive differences are summable after stage \(j\). Thus \(\Phi_k(a_j)\) is Cauchy.
+For each fixed \(j\), these successive differences are summable after stage \(j\). Thus \(\Phi_k(a_j)\) is Cauchy. The eventual limit satisfies the explicit tail estimate
+\[
+\|\Phi(a_j)-\Phi_k(a_j)\|\le\sum_{l=k}^{\infty}2^{-l}=2^{1-k}
+\quad(j\le k).
+\]
 
 All maps have norm one. For arbitrary \(a\) in the unit ball and a nearby \(a_j\),
 \[
@@ -338,9 +400,9 @@ The map
 \]
 takes values in \(B\) and is cpc. Indeed the positive-matrix cutoff in Lemma 4.1 gives a completely positive extension
 \[
-\Gamma^\dagger(a+\lambda1)=d\Psi_n(eae)d+\lambda dhd.
+\widehat\Gamma(a+\lambda1)=d\Psi_n(eae)d+\lambda dhd.
 \]
-Its value at the unit is \(dhd\le1\). A completely positive map on a unital C*-algebra has norm equal to the norm of its unit image. To see the needed bound directly, for \(\|x\|\le1\) the matrix \(\begin{pmatrix}1&x\\x^*&1\end{pmatrix}\) is positive; its image has diagonal entries at most \(1\), so its off-diagonal entry has norm at most \(1\) by the positive two-by-two block inequality. Thus \(\Gamma^\dagger\), and its restriction \(\Gamma\), are contractive.
+Its value at the unit is \(dhd\le1\). A completely positive map on a unital C*-algebra has norm equal to the norm of its unit image. To see the needed bound directly, for \(\|x\|\le1\) the matrix \(\begin{pmatrix}1&x\\x^*&1\end{pmatrix}\) is positive; its image has diagonal entries at most \(1\), so its off-diagonal entry has norm at most \(1\) by the positive two-by-two block inequality. Thus \(\widehat\Gamma\), and its restriction \(\Gamma\), are contractive. This compressed extension has unit image \(dhd\); it is distinct from the forced unital extension \(\Gamma(a)+\lambda1\) used below.
 Only the bounded element \(h\in B\) is clipped; no multiplier property of \(\Psi_n^{**}(1)\) is needed.
 
 Write \(r=g(q(h))\) in the unitization of the quotient. Since
@@ -377,6 +439,12 @@ For \(a\in A\), the character of \(B^\dagger\) gives
 Therefore \(\Lambda(A)\subseteq B\). Its restriction is a cpc lift of \(\theta\). Its norm equals one, since the quotient is contractive and \(\|\theta\|=1\). Rescaling proves the stated norm equality. \(\square\)
 
 The clipping step may change the intermediate quotient map slightly. Its quantified error tends to zero; the final quotient equality is exact.
+
+<a id="lifting-selection-diagram"></a>
+
+![The bounded cutoff, forced unitization, quasicentral adjustment and summable limit, with their exact norm and quotient bounds.](../assets/completely-positive-lifting-selection.svg)
+
+*Theorem 4.3 first replaces uncontrolled lifts by bounded ones. Lemma 4.1 then passes to forced unitizations. Lemma 3.1 preserves each new quotient exactly while making its representative close to the preceding lift; Theorem 3.2 takes the summable limit. The displayed \(2^{1-k}\) bound applies to the first \(k\) dense test elements. Restricting the final map to \(A\) returns its values to \(B\) by the character calculation in Theorem 4.3. The diagram records these proved maps and bounds; it is original CC0 artwork. The gluing and selection method is credited to Arveson through Olesen §2.4, and Gabe Lemma 2.6 supplies the comparison for the initial bounded-cutoff problem.*
 
 ## 5. The lifting theorem
 
@@ -420,6 +488,16 @@ since it is the Gram matrix of \((\|d\|^2 1-d^*d)^{1/2}a_j\). Hence left multipl
 
 Define \(V\xi=[1\otimes\xi]\). Then \(\langle V\xi,V\eta\rangle=\langle\xi,\eta\rangle\), so \(V\) is an isometry; direct substitution gives \(V^*\pi(d)V=\psi(d)\). This is Stinespring’s dilation for the unital map. With \(P=VV^*\), the displayed Schwarz defects in the following argument are exactly \(V^*\pi(d)^*(1-P)\pi(d)V\). Vanishing for both \(d^*d\) and \(dd^*\) is equivalent to \(P\pi(d)=\pi(d)P\). The latter elements form a closed *-subalgebra and give both multiplicative identities by inserting \(P+(1-P)\).
 
+<a id="faithful-scalar-gns"></a>
+
+### A faithful representation from the scalar case
+
+For every nonzero \(a\) in a unital C*-algebra \(A\), choose a state \(s_a\) with \(s_a(a^*a)=\|a\|^2\). Such a state is obtained by evaluation at the maximum spectral value of \(a^*a\) on \(C^*(1,a^*a)\), followed by the actual positive-functional extension of **Completely positive finite models, Lemma 2.2**, as in the norming-state step of Lemma 2.1 above. The scalar matrix-compression argument there shows that every \(s_a\) is ucp. Apply only the preceding unital dilation body to obtain \(s_a(x)=\langle\xi_a,\pi_a(x)\xi_a\rangle\), with \(\|\xi_a\|=1\). Each \(\pi_a\) is contractive by its proved left-multiplication bound. Their Hilbert direct sum is a representation \(\pi\), and
+\[
+\|\pi(a)\|^2\ge\|\pi_a(a)\xi_a\|^2=s_a(a^*a)=\|a\|^2.
+\]
+The reverse inequality is contractivity, so \(\pi\) is faithful and isometric. No separability is used. The zero algebra requires only its zero representation.
+
 ### Schwarz equality and products
 
 For a ucp map \(\psi:C\to B(K)\), write \(\psi(x)=V^*\pi(x)V\) with \(V\) an isometry, and put \(P=VV^*\). Then
@@ -451,6 +529,16 @@ a^*a=\rho_0\theta(a^*a)
 \ge\rho_0(\theta(a))^*\rho_0(\theta(a))=a^*a.
 \]
 Equality holds throughout. The same argument with \(aa^*\) shows that every \(\theta(a)\) belongs to the multiplicative domain of \(\rho_0\). That domain is a C*-subalgebra, so contains \(C^*(\theta(A))\). Thus \(\rho_0\) is a *-homomorphism on the entire generated algebra. Its range is the C*-algebra generated by the elements \(a\), namely \(A\). \(\square\)
+
+<a id="transpose-matrix-check"></a>
+
+### The scalar-order counterexample at matrix size two
+
+For the transposition map \(t:M_2\to M_2\), if \(X=R^*R\ge0\), then \(X^T=R^T\overline R=(\overline R)^*\overline R\ge0\). The map is unital and its own inverse. However \([E_{ij}]_{i,j=1}^2\) is the positive rank-one matrix \(|\Omega\rangle\langle\Omega|\), where \(\Omega=e_1\otimes e_1+e_2\otimes e_2\). Its entrywise transpose image is
+\[
+\sum_{i,j=1}^2E_{ij}\otimes E_{ji},
+\]
+which sends \(e_p\otimes e_q\) to \(e_q\otimes e_p\). The nonzero vector \(e_1\otimes e_2-e_2\otimes e_1\) therefore has eigenvalue \(-1\). This image is not positive, so \(t\) is not 2-positive. It proves the precise scalar-versus-complete-order distinction in Exercise 7 without leaving its matrix calculation implicit.
 
 ## 7. Exercises with solutions
 

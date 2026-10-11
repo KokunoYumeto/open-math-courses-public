@@ -5,7 +5,7 @@
 
 A representation extension should preserve its measurable operators, not merely its continuous functions. We first construct the finite-state expectation which detects an unwanted extra operator. Its kernel gives a direct perturbation of a state extension. An extreme extension therefore has exactly the original weak closure. Compact carriers handle one finite measure, and support corners then put the construction back into an arbitrary original representation. A separate topological dual-map proof applies the result to closed subgroups of arbitrary locally compact abelian groups.
 
-*Restored historical programme mathematics with independent completion and a new exact model, GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. Added original expression is CC0-1.0 to the extent of rights held; historical terms and separate font terms remain intact. Spot-checked in a separate AI session.*
+*Added original expression is CC0-1.0 to the extent of rights held; historical terms and separate font terms remain intact.*
 
 <a id="oa-flow.l118.inputs"></a>
 

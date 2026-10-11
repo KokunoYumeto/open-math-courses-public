@@ -1,6 +1,6 @@
 # Trace scaling, central corners and the type III criterion
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 A trace-scaling action creates an infinite crossed product, but that crossed product need not be type III. The distinction is visible in its center: a translation coordinate on a central piece produces a trace on precisely that piece. We calculate the modular action first, construct the coordinate with its normal measurable calculus, and then prove the projection-to-trace bridge needed to obtain the unrestricted type III criterion. Two concrete models show why the support of the coordinate matters.
 

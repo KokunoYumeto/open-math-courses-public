@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Topological entropy and attraction</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="a-clock-with-registers.html">Next lesson</a><a href="src/topological-entropy-and-attraction.md">Editable source</a></nav><main><article><h1 id="topological-entropy-and-attraction">Topological entropy and attraction</h1>
-<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Lemma 2.2 and the coefficient comparison were added by GPT-6 Astra (OpenAI), October 2026. Self-checked by the respective writing AIs. Public domain (CC0).</em></p>
 <p>Topological entropy measures how fast the orbits of a map become distinguishable at a fixed resolution. Shub's entropy conjecture predicts that this growth is at least the growth visible in homology. This course proves OpenAI's 2026 theorem that the conjecture fails for continuously differentiable self-maps: there is a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> map of a compact manifold with zero topological entropy whose action on second homology has the eigenvalue <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
-<p>This first lesson supplies the facts about entropy that the proof needs. Section 1 defines topological entropy and proves that it does not depend on the metric. Section 2 treats invariant subsets, unions and periodic maps, and states the conjecture. Section 3 proves a localization theorem: if every orbit approaches a compact invariant set on which the entropy is zero, the whole map has entropy zero. Section 4 shows that maps of the sphere which only move radii monotonically have zero entropy, even in products.</p>
+<p>This first lesson supplies the facts about entropy that the proof needs. Section 1 defines topological entropy and proves that it does not depend on the metric. Section 2 treats invariant subsets, unions and periodic maps, proves finite-dimensionality of the relevant homology, and states the conjecture. Section 3 proves a localization theorem: if every orbit approaches a compact invariant set on which the entropy is zero, the whole map has entropy zero. Section 4 shows that maps of the sphere which only move radii monotonically have zero entropy, even in products.</p>
 <p>We use from the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C20">Real Analysis II</a> (Lebl, <em>Basic Analysis II</em>): compactness through open covers (<a href="https://www.jirka.org/ra/html/sec_metcompact.html">Definition 7.4.7</a>), the extreme value theorem (<a href="https://www.jirka.org/ra/html/sec_metcont.html">Theorem 7.5.6</a>) and uniform continuity on compact spaces (<a href="https://www.jirka.org/ra/html/sec_metcont.html">Theorem 7.5.11</a>).</p>
 <h2 id="1-separated-sets-and-entropy">1. Separated sets and entropy</h2>
 <p>Throughout this section <span class="math" data-tex="\((X,d)\)">\((X,d)\)</span> is a nonempty compact metric space and <span class="math" data-tex="\(F:X\to X\)">\(F:X\to X\)</span> is continuous. For an integer <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> put
@@ -40,13 +40,139 @@ The number <span class="math" data-tex="\(h_{\mathrm{top}}(F)\in[0,\infty]\)">\(
 \]</span>
 and the upper limit of a maximum of two sequences is the maximum of their upper limits. Thus <span class="math" data-tex="\(h(F|_Z,\varepsilon)\leq\max_i h(F|_{Z_i},\varepsilon)\leq\max_ih_{\mathrm{top}}(F|_{Z_i})\)">\(h(F|_Z,\varepsilon)\leq\max_i h(F|_{Z_i},\varepsilon)\leq\max_ih_{\mathrm{top}}(F|_{Z_i})\)</span>; letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> gives <span class="math" data-tex="\(\leq\)">\(\leq\)</span>, and (a) applied inside <span class="math" data-tex="\(Z\)">\(Z\)</span> gives <span class="math" data-tex="\(\geq\)">\(\geq\)</span>.</p>
 <p>(c) For <span class="math" data-tex="\(n\geq p\)">\(n\geq p\)</span> every <span class="math" data-tex="\(F^j\)">\(F^j\)</span> with <span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span> equals some <span class="math" data-tex="\(F^{j&#x27;}\)">\(F^{j&#x27;}\)</span> with <span class="math" data-tex="\(j&#x27;&lt;p\)">\(j&#x27;&lt;p\)</span>, so <span class="math" data-tex="\(d_n=d_p\)">\(d_n=d_p\)</span> and <span class="math" data-tex="\(s_F(n,\varepsilon)=s_F(p,\varepsilon)\)">\(s_F(n,\varepsilon)=s_F(p,\varepsilon)\)</span>, a number independent of <span class="math" data-tex="\(n\)">\(n\)</span>. Hence <span class="math" data-tex="\(h(F,\varepsilon)=0\)">\(h(F,\varepsilon)=0\)</span> for every <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
-<p><strong>The entropy conjecture.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a compact smooth manifold and <span class="math" data-tex="\(f:M\to M\)">\(f:M\to M\)</span> continuous. The induced linear maps <span class="math" data-tex="\(f_*:H_k(M;\mathbb R)\to H_k(M;\mathbb R)\)">\(f_*:H_k(M;\mathbb R)\to H_k(M;\mathbb R)\)</span> on singular homology with real coefficients (functoriality: <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D60">Algebraic Topology</a>, Fomberg's notes, Proposition 1.9; coefficients as in Section 1 of <a href="../poincare-duality-on-manifolds/orientations-and-fundamental-classes.html">Orientations and fundamental classes</a>) have eigenvalues; put
+<h3 id="finite-dimensional-homology">Finite-dimensional homology</h3>
+<p><strong>Lemma 2.2.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a compact smooth <span class="math" data-tex="\(n\)">\(n\)</span>-manifold without boundary. It need not be orientable or connected. Each real singular homology group <span class="math" data-tex="\(H_k(M;\mathbb R)\)">\(H_k(M;\mathbb R)\)</span> is finite dimensional, and it vanishes for <span class="math" data-tex="\(k&gt;n\)">\(k&gt;n\)</span>. Consequently <span class="math" data-tex="\(\bigoplus_{k\geq0}H_k(M;\mathbb R)\)">\(\bigoplus_{k\geq0}H_k(M;\mathbb R)\)</span> is finite dimensional.</p>
+<p><em>Proof.</em> A manifold is locally path connected, so its components are open. Compactness implies that there are finitely many components. Each is also closed and compact. Every singular simplex lies in one component, so the singular chain complex, and hence its homology, is the direct sum over these components. We can therefore suppose that <span class="math" data-tex="\(M\)">\(M\)</span> is connected. The empty manifold has zero homology. A compact zero-dimensional manifold is a finite discrete set. For a point there is one singular simplex in each degree, and its boundary coefficient is <span class="math" data-tex="\(\sum_{j=0}^k(-1)^j\)">\(\sum_{j=0}^k(-1)^j\)</span>, equal to one for positive even <span class="math" data-tex="\(k\)">\(k\)</span> and zero for odd <span class="math" data-tex="\(k\)">\(k\)</span>. Thus its homology is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> in degree zero and zero in higher degrees. Taking the direct sum proves the assertion for a finite discrete set. Suppose henceforth that <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>.</p>
+<p><em>The oriented case: a finite cycle controls every degree.</em> Suppose first that <span class="math" data-tex="\(M\)">\(M\)</span> is oriented. Its real fundamental class exists by <a href="../poincare-duality-on-manifolds/orientations-and-fundamental-classes.html#5-fundamental-classes">Orientations and fundamental classes, Corollary 5.1</a>. Choose a singular cycle representing it:</p>
+<span class="math math-display" data-tex="\[
+c=\sum_{i=1}^{N}a_i\sigma_i\in C_n(M;\mathbb R).
+\]">\[
+c=\sum_{i=1}^{N}a_i\sigma_i\in C_n(M;\mathbb R).
+\]</span>
+<p>The sum is finite by the definition of ordinary singular chains. Fix <span class="math" data-tex="\(0\leq k\leq n\)">\(0\leq k\leq n\)</span>. Name the rear <span class="math" data-tex="\(k\)">\(k\)</span>-face and front <span class="math" data-tex="\((n-k)\)">\((n-k)\)</span>-face of each simplex:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau_{i,k}&amp;=\sigma_i|[v_{n-k},\ldots,v_n],\\
+\eta_{i,k}&amp;=\sigma_i|[v_0,\ldots,v_{n-k}].
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau_{i,k}&amp;=\sigma_i|[v_{n-k},\ldots,v_n],\\
+\eta_{i,k}&amp;=\sigma_i|[v_0,\ldots,v_{n-k}].
+\end{aligned}
+\]</span>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W_k=\operatorname{span}_{\mathbb R}\{\tau_{1,k},\ldots,\tau_{N,k}\}\\
+\subseteq C_k(M;\mathbb R).
+\end{gathered}
+\]">\[
+\begin{gathered}
+W_k=\operatorname{span}_{\mathbb R}\{\tau_{1,k},\ldots,\tau_{N,k}\}\\
+\subseteq C_k(M;\mathbb R).
+\end{gathered}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\dim W_k\leq N\)">\(\dim W_k\leq N\)</span>. The linear cap-product map on cocycles of degree <span class="math" data-tex="\(n-k\)">\(n-k\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z^{n-k}(M;\mathbb R)&amp;\longrightarrow W_k\cap Z_k(M;\mathbb R),\\
+\varphi&amp;\longmapsto c\frown\varphi\\
+&amp;=\sum_{i=1}^{N}a_i\varphi(\eta_{i,k})\tau_{i,k}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+Z^{n-k}(M;\mathbb R)&amp;\longrightarrow W_k\cap Z_k(M;\mathbb R),\\
+\varphi&amp;\longmapsto c\frown\varphi\\
+&amp;=\sum_{i=1}^{N}a_i\varphi(\eta_{i,k})\tau_{i,k}.
+\end{aligned}
+\]</span>
+<p>This is a cycle because <span class="math" data-tex="\(\partial c=0\)">\(\partial c=0\)</span> and <span class="math" data-tex="\(\delta\varphi=0\)">\(\delta\varphi=0\)</span>, by the cap boundary identity, <a href="../poincare-duality-on-manifolds/cap-products-and-cohomology-with-compact-supports.html#1-the-cap-product">Cap products and cohomology with compact supports, (1.1)–(1.2)</a>. The same identity makes the resulting homology class depend only on <span class="math" data-tex="\([\varphi]\)">\([\varphi]\)</span>. By <a href="../poincare-duality-on-manifolds/poincare-duality.html#2-consequences">Poincaré duality, Corollary 2.1</a>, every class of <span class="math" data-tex="\(H_k(M;\mathbb R)\)">\(H_k(M;\mathbb R)\)</span> is <span class="math" data-tex="\([c\frown\varphi]\)">\([c\frown\varphi]\)</span> for some such cocycle. Hence the map</p>
+<span class="math math-display" data-tex="\[
+W_k\cap Z_k(M;\mathbb R)\longrightarrow H_k(M;\mathbb R),
+\qquad z\longmapsto[z]
+\]">\[
+W_k\cap Z_k(M;\mathbb R)\longrightarrow H_k(M;\mathbb R),
+\qquad z\longmapsto[z]
+\]</span>
+<p>is surjective, and <span class="math" data-tex="\(\dim H_k(M;\mathbb R)\leq N\)">\(\dim H_k(M;\mathbb R)\leq N\)</span>. We do not assert that the individual faces spanning <span class="math" data-tex="\(W_k\)">\(W_k\)</span> are cycles. Vanishing for <span class="math" data-tex="\(k&gt;n\)">\(k&gt;n\)</span> is Corollary 5.1 of the orientation lesson. Thus the total dimension is at most <span class="math" data-tex="\((n+1)N\)">\((n+1)N\)</span>. The cited duality proof is local-to-global and does not assume finite-dimensional homology.</p>
+<p><em>An oriented two-sheeted cover.</em> Let <span class="math" data-tex="\(\operatorname{Or}(T_xM)\)">\(\operatorname{Or}(T_xM)\)</span> be the set of orientations of the tangent space at <span class="math" data-tex="\(x\)">\(x\)</span>. For a smooth manifold with no chosen orientation, let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widetilde M=\coprod_{x\in M}\operatorname{Or}(T_xM),\\
+p:\widetilde M\longrightarrow M,\qquad p(x,o)=x.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\widetilde M=\coprod_{x\in M}\operatorname{Or}(T_xM),\\
+p:\widetilde M\longrightarrow M,\qquad p(x,o)=x.
+\end{gathered}
+\]</span>
+<p>The disjoint union here first defines the set of pairs <span class="math" data-tex="\((x,o)\)">\((x,o)\)</span>; the following charts define its topology. An orientation is one of the two equivalence classes of ordered tangent bases, where two bases are equivalent when their change-of-basis determinant is positive. A chart <span class="math" data-tex="\(x_i:U_i\to\mathbb R^n\)">\(x_i:U_i\to\mathbb R^n\)</span> identifies <span class="math" data-tex="\(p^{-1}(U_i)\)">\(p^{-1}(U_i)\)</span> with <span class="math" data-tex="\(U_i\times\{+1,-1\}\)">\(U_i\times\{+1,-1\}\)</span>, recording whether <span class="math" data-tex="\(o\)">\(o\)</span> agrees with its coordinate basis. Write <span class="math" data-tex="\(g_{ji}=x_j\circ x_i^{-1}\)">\(g_{ji}=x_j\circ x_i^{-1}\)</span> for the coordinate change from <span class="math" data-tex="\(x_i(U_i\cap U_j)\)">\(x_i(U_i\cap U_j)\)</span> to <span class="math" data-tex="\(x_j(U_i\cap U_j)\)">\(x_j(U_i\cap U_j)\)</span>. On overlaps the labels obey</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varepsilon_j=s_{ji}(x)\varepsilon_i,
+\\
+s_{ji}(x)=\operatorname{sign}\det Dg_{ji}(x_i(x)).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\varepsilon_j=s_{ji}(x)\varepsilon_i,
+\\
+s_{ji}(x)=\operatorname{sign}\det Dg_{ji}(x_i(x)).
+\end{gathered}
+\]</span>
+<p>The sign is locally constant, and the chain rule gives <span class="math" data-tex="\(s_{ki}=s_{kj}s_{ji}\)">\(s_{ki}=s_{kj}s_{ji}\)</span>. These transitions define a smooth two-sheeted covering. Its space is Hausdorff: points over different base points have disjoint inverse-image neighbourhoods, and the two points over one base point have disjoint sheet neighbourhoods. A countable atlas of <span class="math" data-tex="\(M\)">\(M\)</span> lifts to a countable atlas with two sheets per chart, so <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> is second countable.</p>
+<p>On the sheet labelled <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, use the coordinate <span class="math" data-tex="\(R_\varepsilon\circ x_i\)">\(R_\varepsilon\circ x_i\)</span>, where <span class="math" data-tex="\(R_+=1\)">\(R_+=1\)</span> and <span class="math" data-tex="\(R_-\)">\(R_-\)</span> is reflection in the first coordinate. Its transition determinant has sign</p>
+<span class="math math-display" data-tex="\[
+\varepsilon_j s_{ji}(x)\varepsilon_i=1.
+\]">\[
+\varepsilon_j s_{ji}(x)\varepsilon_i=1.
+\]</span>
+<p>The cover is therefore oriented, by <a href="../poincare-duality-on-manifolds/orientations-and-fundamental-classes.html#3-orientations-from-charts">Orientations and fundamental classes, Corollary 3.3</a>. It is compact: finitely many closed chart balls <span class="math" data-tex="\(K_i\subset U_i\)">\(K_i\subset U_i\)</span> have interiors covering <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(p^{-1}(K_i)\cong K_i\times\{+1,-1\}\)">\(p^{-1}(K_i)\cong K_i\times\{+1,-1\}\)</span> is compact. Their inverse images cover <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span>. The oriented case already proved applies to each of its finitely many components.</p>
+<p><em>Transfer and the return to <span class="math" data-tex="\(M\)">\(M\)</span>.</em> Every continuous simplex <span class="math" data-tex="\(\sigma:\Delta^k\to M\)">\(\sigma:\Delta^k\to M\)</span> has exactly two lifts to <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span>, one for each choice over a fixed vertex. Here is the lifting argument. A path lifts uniquely after a starting sheet is chosen: subdivide its compact parameter interval into pieces mapping into covering charts and successively use their inverse sheets. For a homotopy of paths with fixed endpoints, subdivide its parameter square into a rectangular grid fine enough that the image of each cell lies in one covering chart. The lift around that cell closes in its inverse sheet. Cancelling common grid edges shows that homotopic paths have the same lifted endpoint. Paths in the convex simplex with the same endpoints are homotopic relative to their endpoints by linear interpolation. Lift their images starting over the fixed vertex; the resulting endpoint is therefore independent of the path. This defines a lift of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. It is continuous: near any point of <span class="math" data-tex="\(\Delta^k\)">\(\Delta^k\)</span>, choose a convex relative neighbourhood mapping into one covering chart, where this construction agrees with a single continuous inverse sheet. Uniqueness follows from path lifting. The two choices give precisely the two lifts.</p>
+<p>Write these lifts as <span class="math" data-tex="\(\widetilde\sigma_1,\widetilde\sigma_2\)">\(\widetilde\sigma_1,\widetilde\sigma_2\)</span>. Define the real-linear maps</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_k:C_k(M;\mathbb R)&amp;\longrightarrow C_k(\widetilde M;\mathbb R),\\
+T_k(\sigma)&amp;=\widetilde\sigma_1+\widetilde\sigma_2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+T_k:C_k(M;\mathbb R)&amp;\longrightarrow C_k(\widetilde M;\mathbb R),\\
+T_k(\sigma)&amp;=\widetilde\sigma_1+\widetilde\sigma_2.
+\end{aligned}
+\]</span>
+<p>There is no ordering choice in their sum. Restricting the two lifts to any face gives exactly the two lifts of that face: evaluation at one vertex of the face gives the two different sheet points, and a lift is determined there. Thus the alternating face sums satisfy <span class="math" data-tex="\(\partial T_k=T_{k-1}\partial\)">\(\partial T_k=T_{k-1}\partial\)</span>. Composition of simplices with <span class="math" data-tex="\(p\)">\(p\)</span> defines a chain map <span class="math" data-tex="\(p_\#:C_*(\widetilde M;\mathbb R)\to C_*(M;\mathbb R)\)">\(p_\#:C_*(\widetilde M;\mathbb R)\to C_*(M;\mathbb R)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+p_\#T_k=2\operatorname{id}_{C_k(M;\mathbb R)}.
+\]">\[
+p_\#T_k=2\operatorname{id}_{C_k(M;\mathbb R)}.
+\]</span>
+<p>Both maps therefore descend to homology, with <span class="math" data-tex="\(p_*T_*=2\operatorname{id}\)">\(p_*T_*=2\operatorname{id}\)</span>. Since <span class="math" data-tex="\(2\)">\(2\)</span> is invertible in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, <span class="math" data-tex="\(T_*:H_k(M;\mathbb R)\to H_k(\widetilde M;\mathbb R)\)">\(T_*:H_k(M;\mathbb R)\to H_k(\widetilde M;\mathbb R)\)</span> is injective: it has left inverse <span class="math" data-tex="\(\tfrac12p_*\)">\(\tfrac12p_*\)</span>. The target is finite dimensional and zero above degree <span class="math" data-tex="\(n\)">\(n\)</span>, which proves both assertions for <span class="math" data-tex="\(M\)">\(M\)</span>. This argument does not require the cover to be connected or the deck transformation to preserve orientation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Complex coefficients and spectral radius.</strong> A complex singular chain is uniquely a real chain plus <span class="math" data-tex="\(i\)">\(i\)</span> times a real chain, and the boundary acts on both parts. The same decomposition holds for cycles and boundaries. Consequently the canonical complex-linear map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_k(M;\mathbb R)\otimes_{\mathbb R}\mathbb C
+\longrightarrow H_k(M;\mathbb C),\\
+[c]\otimes z\longmapsto[zc]
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_k(M;\mathbb R)\otimes_{\mathbb R}\mathbb C
+\longrightarrow H_k(M;\mathbb C),\\
+[c]\otimes z\longmapsto[zc]
+\end{gathered}
+\]</span>
+<p>is an isomorphism, compatible with maps induced by continuous self-maps of <span class="math" data-tex="\(M\)">\(M\)</span>. Lemma 2.2 makes the total complex homology a finite-dimensional vector space. Its endomorphism is block diagonal by degree, so its eigenvalues are exactly the union of the eigenvalues of the degree blocks: its characteristic polynomial is the product of theirs. The maximum of their absolute values is therefore the usual spectral radius on total homology. In particular a nonzero real eigenvector with eigenvalue <span class="math" data-tex="\(2\)">\(2\)</span> remains nonzero after complexification and gives spectral radius at least <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+
+<p><strong>The entropy conjecture.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a nonempty compact smooth manifold without boundary and <span class="math" data-tex="\(f:M\to M\)">\(f:M\to M\)</span> continuous. The induced linear maps <span class="math" data-tex="\(f_*:H_k(M;\mathbb R)\to H_k(M;\mathbb R)\)">\(f_*:H_k(M;\mathbb R)\to H_k(M;\mathbb R)\)</span> on singular homology with real coefficients (functoriality: <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D60">Algebraic Topology</a>, Fomberg's notes, Proposition 1.9; coefficients as in Section 1 of <a href="../poincare-duality-on-manifolds/orientations-and-fundamental-classes.html">Orientations and fundamental classes</a>) have eigenvalues; put
 <span class="math math-display" data-tex="\[
 \rho(f_*)=\sup\{|\lambda|:\lambda\in\mathbb C\text{ is an eigenvalue of }f_*\otimes\mathbb C\text{ on some }H_k(M;\mathbb C)\}.
 \]">\[
 \rho(f_*)=\sup\{|\lambda|:\lambda\in\mathbb C\text{ is an eigenvalue of }f_*\otimes\mathbb C\text{ on some }H_k(M;\mathbb C)\}.
 \]</span>
-(For a compact manifold these spaces are finite dimensional and <span class="math" data-tex="\(\rho(f_*)\)">\(\rho(f_*)\)</span> is the spectral radius of <span class="math" data-tex="\(f_*\)">\(f_*\)</span> on <span class="math" data-tex="\(\bigoplus_kH_k(M;\mathbb R)\)">\(\bigoplus_kH_k(M;\mathbb R)\)</span>; this course only uses that a real eigenvector <span class="math" data-tex="\(v\neq0\)">\(v\neq0\)</span> with <span class="math" data-tex="\(f_*v=2v\)">\(f_*v=2v\)</span> forces <span class="math" data-tex="\(\rho(f_*)\geq2\)">\(\rho(f_*)\geq2\)</span>.) Shub's <strong>entropy conjecture</strong> asks whether
+(By Lemma 2.2 these spaces are finite dimensional and <span class="math" data-tex="\(\rho(f_*)\)">\(\rho(f_*)\)</span> is the spectral radius of <span class="math" data-tex="\(f_*\)">\(f_*\)</span> on <span class="math" data-tex="\(\bigoplus_kH_k(M;\mathbb R)\)">\(\bigoplus_kH_k(M;\mathbb R)\)</span>; this course only uses that a real eigenvector <span class="math" data-tex="\(v\neq0\)">\(v\neq0\)</span> with <span class="math" data-tex="\(f_*v=2v\)">\(f_*v=2v\)</span> forces <span class="math" data-tex="\(\rho(f_*)\geq2\)">\(\rho(f_*)\geq2\)</span>.) Shub's <strong>entropy conjecture</strong> asks whether
 <span class="math math-display" data-tex="\[
 h_{\mathrm{top}}(f)\geq\log\rho(f_*)\tag{2.1}
 \]">\[
@@ -143,4 +269,4 @@ a polynomial in <span class="math" data-tex="\(n\)">\(n\)</span>. Its logarithm 
 <li>[Gromov] M. Gromov, <em>Entropy, homology and semialgebraic geometry</em>, Séminaire Bourbaki, exposé 663 (1986), Numdam. https://www.numdam.org/item/SB_1985-1986__28__225_0/</li>
 <li>M. Shub (1974), A. Manning (1975), M. Misiurewicz and F. Przytycki (1977), Y. Yomdin (1987), R. Saghin and Z. Xia (2010), G. Liao, M. Viana and J. Yang (2013) are named for credit for the results quoted in Section 2; the course does not use them.</li>
 </ul>
-</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Lemma 2.2 and the coefficient comparison were added by GPT-6 Astra (OpenAI), October 2026. Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

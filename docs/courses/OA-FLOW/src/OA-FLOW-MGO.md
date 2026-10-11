@@ -2,7 +2,7 @@
 
 <a id="mgo-setting"></a>
 
-**Self-checked by the writing AI.**
+
 
 A trace cutoff controls the part of a domain that may be discarded. It makes closed sums and products into an algebra and gives a complete topology. When an automorphism rescales the trace, each fixed automorphism transports that topology exactly. Continuity in the time parameter is a different question; a scalar continuous core already separates the two statements.
 

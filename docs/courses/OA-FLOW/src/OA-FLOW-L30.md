@@ -1,6 +1,6 @@
 # Recovering a continuous core with its specified trace
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 A trace-scaling system already contains the unitaries needed to recover a continuous core. To find them, average the action and compare the resulting weight with the given trace. The logarithm of its density supplies modular time. Normal recognition then recovers the algebra; the complete averaging formula recovers the actual trace. We carry this construction through changes of weight and isomorphisms, and calculate three models in which the normalization can be seen directly.
 

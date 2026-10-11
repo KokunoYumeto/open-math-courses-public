@@ -46,7 +46,7 @@ Write \(f(h)=a+ib\), with \(a,b\) real. After expansion and subtraction of one, 
 
 Divide by positive \(t\) and let it decrease to zero to get \(b\geq0\); use negative \(t\) to get \(b\leq0\). Thus \(f(h)\) is real. If \(0\leq h\leq1\), AC4 gives \(\|1-h\|\leq1\), so \(f(h)=1-f(1-h)\geq0\). Scaling proves positivity for every positive element, including zero. This proves the asserted norm test without a representation or a faithful state.
 
-**Earlier programme route.** **Lemma 8.1** of [The universal enveloping von Neumann algebra and W*-algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-20), by Claude Opus 5.5 (Anthropic), September 2026, CC0, proves positivity from a norming net. Its unital specialization takes the constant net at the identity. The preceding argument is a local alternative; it does not replace that more general lemma.
+**Earlier programme route.** **Lemma 8.1** of The universal enveloping von Neumann algebra and W*-algebras, by Claude Opus 5.5 (Anthropic), September 2026, CC0, proves positivity from a norming net. Its unital specialization takes the constant net at the identity. The preceding argument is a local alternative; it does not replace that more general lemma.
 
 Consequently, a contractive linear map between nonzero unital C*-algebras which sends identity to identity is positive: compose it with each state of the range and apply the lemma and the state-order contract. The identities in this assertion are the respective identities of the domain and range.
 
@@ -97,7 +97,7 @@ and
 
 If \(B\neq\{0\}\), then \(\|E\|=1\). If \(B=\{0\}\), then \(E=0\) and \(\|E\|=0\). If \(A\) is unital and \(B\neq\{0\}\), the range is automatically unital and \(E(1_A)\) is its identity; this identity need not be \(1_A\).
 
-**Earlier programme proof.** Read **Definition 8.4 and Theorem 8.5(1)–(4)** of [The universal enveloping von Neumann algebra and W*-algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-21), by Claude Opus 5.5 (Anthropic), September 2026, CC0. Definition 8.4 includes contractive retractions and the zero range; the full theorem proof treats nonunital algebras, a range identity different from the ambient identity, both module identities and scalar Schwarz. That theorem proves the general scalar result.
+**Earlier programme proof.** Read **Definition 8.4 and Theorem 8.5(1)–(4)** of The universal enveloping von Neumann algebra and W*-algebras, by Claude Opus 5.5 (Anthropic), September 2026, CC0. Definition 8.4 includes contractive retractions and the zero range; the full theorem proof treats nonunital algebras, a range identity different from the ambient identity, both module identities and scalar Schwarz. That theorem proves the general scalar result.
 
 **Remark 8.6** of that lesson explicitly assigns the shorter orthogonal-support proof and complete positivity to OA-MOD. The entire shorter proof below is retained at its stated contracts.
 
@@ -234,8 +234,7 @@ To prove matrix positivity, let \(X=[x_{ij}]\geq0\) in \(M_n(A)\). For a column 
 
 The matrix \([E(x_{ij})]\) is self-adjoint because \(E\) preserves the involution. OA-MOD-CE-005 proves that it is positive. This works for all \(n\) and for nonunital \(B\).
 
-For the norm assertion, first use the extension \(P:A^{**}\to B^{**}\) from OA-MOD-CE-004, with respective identities \(1\) and \(e\). The same matrix-positivity proof applies to \(P\). Matrix multiplication and bimodularity show that \(P_n\) is a bimodule map over \(M_n(B^{**})\). Expanding the residual \(X-P_n(X)\) just as in (CE4) gives
-
+For the norm assertion, use the retraction \(P=i^{**}E^{**}:A^{**}\to N\), where \(N=i^{**}(B^{**})\subseteq A^{**}\), from OA-MOD-CE-004. The respective identities are \(1\) and \(e=i^{**}(1_{B^{**}})\). The same matrix-positivity proof applies to \(P\). Matrix multiplication and bimodularity show that \(P_n\) is a bimodule map over \(M_n(N)\). Thus both terms of the following residual lie in \(M_n(A^{**})\). Expanding the residual \(X-P_n(X)\) just as in (CE4) gives
 \[
 \begin{gathered}P_n(X)^*P_n(X)\leq P_n(X^*X)\\
 \leq\|X\|^2\operatorname{diag}(e,\ldots,e).\end{gathered}

@@ -2,7 +2,7 @@
 
 Haar averaging turns a rank-one kernel into an integrated crossed-product coefficient. This gives a direct proof of the subgroup commutation formula: every operator fixed by the combined coefficient action and right translation belongs to the regular crossed product.
 
-*Self-checked by the writing AI. Original exposition by GPT-6 Astra (OpenAI), Ultra. Original expression and figures are dedicated to the public domain under CC0-1.0, to the extent of rights held.*
+*Original expression and figures are dedicated to the public domain under CC0-1.0, to the extent of rights held.*
 
 <a id="oa-flow.compactcomm.generators"></a>
 ## The fixed algebra and its regular generators

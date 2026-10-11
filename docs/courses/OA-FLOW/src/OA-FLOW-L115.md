@@ -7,7 +7,7 @@ A frequency survives every fixed corner precisely when the corresponding dual au
 
 The group is arbitrary locally compact Hausdorff abelian and the von Neumann algebra and representation Hilbert spaces are arbitrary. There is no countability, separability, factor, finite-Haar or original-action integrability assumption.
 
-*Restored local proof candidate, GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. Spot-checked in a separate AI session. New expression is CC0-1.0 to the extent of rights held; original and prerequisite component terms retain their own terms.*
+*New expression is CC0-1.0 to the extent of rights held; original and prerequisite component terms retain their own terms.*
 
 <a id="oa-flow.l115.inputs"></a>
 
@@ -684,3 +684,176 @@ In the right model the original action on \(\mathbb C\oplus\mathbb C\) swaps the
 The source antecedent for the general kernel theorem is Takesaki, [*Theory of Operator Algebras II*, Theorem XI.2.7, printed335–336](https://doi.org/10.1007/978-3-662-10451-4). The existing free-source spectral framework and complete local prerequisites are retained. The two matrix models, diagram and explanatory organization here are original to this restoration. A source citation does not replace any internal proof.
 
 [Editable SVG](../assets/dual-center-kernel/assets/central-overlap.svg), exact semantic data and reproduction source accompany the PNG. The source uses exact symbolic matrix checks, deterministic SVG identifiers and date-free output. DejaVu Sans is used locally; no font file is redistributed. Original figure, caption and source: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. New expression is CC0-1.0 to the extent of rights held; applicable third-party font terms are retained separately.
+
+<a id="l115-general-average"></a>
+
+## Orbit averages for an arbitrary locally compact group
+
+The Fourier and Connes-spectrum arguments above concern LCA groups. Orbit averaging and inheritance of integrability also have a formulation for any locally compact Hausdorff group. Fix such a group \(G\), a point-ultraweakly continuous action \(\alpha\) on \(M\), and left Haar measure \(m\). Use the [Haar and modular conventions](OA-FLOW-L24.md#oa-flow.grp.translations)
+\[
+ m(Et)=\Delta_G(t)m(E).
+ \tag{L115G1}
+\]
+No second countability, sigma compactness, separable predual or countably decomposable algebra is assumed. Let \(F=M^\alpha\).
+
+**Theorem (whole positive cone and bounded finite domains).** For every compact \(K\subseteq G\), the compact orbit average \(A_K:M\to M\) is bounded and normal, positive, and satisfies \(A_K(1)=m(K)1\). There is a faithful normal operator-valued weight
+\[
+ T_\alpha:M_+\longrightarrow\widehat F_+,
+ \qquad
+ \widehat{\omega|_F}(T_\alpha(x))
+   =\sup_K\omega(A_K(x))
+   =\int_G\omega(\alpha_s(x))\,dm(s)
+ \quad(\omega\in M_*^+).
+ \tag{L115G2}
+\]
+The supremum is over all compact subsets, ordered by inclusion. Infinite values and the infinite spectral projection of an extended-positive element are retained. The output is fixed under \(\alpha\), while the input obeys
+\[
+ T_\alpha(\alpha_t(x))=\Delta_G(t)^{-1}T_\alpha(x).
+ \tag{L115G3}
+\]
+Define
+\[
+ F_{T_\alpha}=\{x\in M_+:\sup_K\|A_K(x)\|<\infty\},\qquad
+ N_{T_\alpha}=\{a\in M:a^*a\in F_{T_\alpha}\},\qquad
+ m_{T_\alpha}=\operatorname{span}F_{T_\alpha}
+             =\operatorname{span}N_{T_\alpha}^*N_{T_\alpha}.
+ \tag{L115G4}
+\]
+Here \(F_{T_\alpha}\) is exactly the set where \(T_\alpha\) has a bounded value in \(F_+\). The following conditions are equivalent:
+
+1. \(N_{T_\alpha}\) is weak-operator dense in \(M\), that is, \(T_\alpha\) is semifinite and \(\alpha\) is integrable.
+2. \(m_{T_\alpha}\) is ultraweakly dense in \(M\).
+3. There is an increasing net of positive contractions in \(F_{T_\alpha}\), converging strongly to \(1\).
+
+**Proof of the whole-cone construction.** For each \(\omega\in M_*\), [AT-3](OA-FLOW-AT.md#oa-flow.at.3) makes \(s\mapsto\omega\alpha_s\) norm continuous. On a compact set its image is compact and therefore separable in the metric of \(M_*\). The compact integral in [AT-5](OA-FLOW-AT.md#oa-flow.at.5) exists in the predual, and its adjoint defines
+\[
+ \omega(A_K(x))=\int_K\omega(\alpha_s(x))\,dm(s).
+\]
+Thus \(A_K\) is normal, \(\|A_K\|\leq m(K)\), and has the stated positivity and value at one. For \(x\geq0\) the operators \(A_K(x)\) increase with \(K\).
+
+The nonnegative continuous function \(s\mapsto\omega(\alpha_s(x))\) has integral equal to the supremum of its compact integrals. This follows from the compact localization in [HR-2](OA-FLOW-HR.md#hr-02) and [HR-5](OA-FLOW-HR.md#hr-05): its integral is the supremum over compact continuous functions below it, each with compact support; conversely every compact restriction is bounded above by the whole integral. This statement works for an infinite integral and for either the outer regular Haar convention or its complete locally determined counterpart in [HR-9](OA-FLOW-HR.md#hr-09). It introduces no unrestricted product-measurability assertion.
+
+Define \(m_x(\omega)=\sup_K\omega(A_K(x))\) on \(M_*^+\). Each compact term is continuous there. A common larger compact set handles any two compact indices, so this supremum is additive, positively homogeneous and norm lower semicontinuous, including infinite values. Hence \(m_x\in\widehat M_+\), by [EP-4](OA-FLOW-EP.md#oa-flow.ep.4). The complete spectral representation [EP-2](OA-FLOW-EP.md#oa-flow.ep.2)–[3](OA-FLOW-EP.md#oa-flow.ep.3) writes it as a positive affiliated operator on its finite-support subspace together with its complementary infinite projection.
+
+For \(t\in G\), testing on every \(\omega\geq0\) gives
+\[
+ \widehat{\omega\alpha_t}(m_x)
+   =\int_G\omega(\alpha_{ts}(x))\,dm(s)
+   =\widehat\omega(m_x).
+\]
+This is left translation of the integration variable. Thus \(\alpha_t\) fixes \(m_x\), including its full form domain. The unique spectral pair and its bounded truncations
+\((H_x\wedge n)e_x+n(1-e_x)\)
+are consequently fixed by every \(\alpha_t\), by [FF's spectral transport](OA-FLOW-FF.md#oa-flow.ff.6). The finite and infinite projections and all spectral projections lie in \(F\). The same pair therefore defines a unique element \(T_\alpha(x)\in\widehat F_+\) whose bounded truncations give (L115G2). Every positive normal functional on \(F\) has a positive normal extension to \(M\), by [EP-1's vector-series extension](OA-FLOW-EP.md#oa-flow.ep.1). Testing those extensions proves uniqueness as an element of \(\widehat F_+\).
+
+Additivity and positive homogeneity in \(x\) follow at each compact average and then at the directed supremum. If \(x_i\uparrow x\) is a bounded increasing positive net, normality of \(A_K\) and interchange of two independent suprema give
+\[
+ \sup_i\sup_K\omega(A_K(x_i))
+ =\sup_K\sup_i\omega(A_K(x_i))
+ =\sup_K\omega(A_K(x)).
+ \tag{L115G5}
+\]
+Positive normal extensions from \(F\) prove order normality in \(\widehat F_+\). For \(b\in F\), compact averages satisfy \(A_K(b^*xb)=b^*A_K(x)b\). The full bounded-conjugation and supremum rule of [EP-4](OA-FLOW-EP.md#oa-flow.ep.4) gives
+\(T_\alpha(b^*xb)=b^*T_\alpha(x)b\), including singular \(b\) and all infinite values. Thus this is an operator-valued weight.
+
+If \(T_\alpha(x)=0\), every nonnegative continuous function \(s\mapsto\omega(\alpha_s(x))\) has zero Haar integral. A positive value would give a positive lower bound on a nonempty open neighborhood, which has positive Haar measure by [HR-6](OA-FLOW-HR.md#hr-06). Its value at the identity is therefore zero for every \(\omega\in M_*^+\), so \(x=0\). This proves faithfulness without a countable family of states.
+
+Right translation is different from the output calculation. For every compact \(K\), the convention (L115G1) gives
+\[
+ A_K(\alpha_t(x))
+   =\Delta_G(t)^{-1}A_{Kt}(x).
+ \tag{L115G6}
+\]
+The sets \(Kt\) run through all compact sets. Taking their extended-positive supremum proves (L115G3). In the LCA case \(\Delta_G=1\), recovering the input invariance used above.
+
+If the norms of \(A_K(x)\) have a finite common bound, [WF-2](OA-FLOW-WF.md#oa-flow.wf.2) gives their bounded strong supremum in \(M\). It represents \(m_x\) and is fixed, hence belongs to \(F_+\). Conversely a bounded value of \(T_\alpha(x)\) bounds every \(A_K(x)\), by [EP-3's bounded-element test](OA-FLOW-EP.md#oa-flow.ep.3). This proves the finite-cone identity in (L115G4); [EP-6](OA-FLOW-EP.md#oa-flow.ep.6) supplies its hereditary cone, left ideal and polarization identities. Semifiniteness is a further property, not a consequence of the whole-cone construction.
+
+**Proof of the density equivalences.** The cutoff argument in [L114](OA-FLOW-L114.md#oa-flow.l114.density) uses only a hereditary finite cone and bounded spectral calculus; here are those steps for \(F_{T_\alpha}\). Let \(q\) be the join of all projections belonging to that cone, as constructed in [PC-1](OA-FLOW-PC.md#oa-flow.projection.pc1). For \(a\in F_{T_\alpha}\) and \(\epsilon>0\),
+\[
+ p_\epsilon(a)=1_{[\epsilon,\infty)}(a)
+ \leq\epsilon^{-1}a,
+\]
+so \(p_\epsilon(a)\in F_{T_\alpha}\) and the support of \(a\) is at most \(q\). If \(z\in N_{T_\alpha}\), apply this to \(z^*z\) to obtain \(z(1-q)=0\). The set of operators satisfying that equation is weak-operator closed. Condition 1 therefore forces \(q=1\). Condition 2 also forces \(q=1\), because every member of \(m_{T_\alpha}=\operatorname{span}F_{T_\alpha}\) satisfies the same equation and the set is ultraweakly closed.
+
+Index the entire cone \(F_{T_\alpha}\) by its operator order; it is directed since \(a+b\) is an upper bound. Put
+\[
+ e_a=a(1+a)^{-1}=1-(1+a)^{-1}.
+ \tag{L115G7}
+\]
+These are positive contractions in \(F_{T_\alpha}\), since \(e_a\leq a\). They increase with \(a\): if \(0<A\leq B\) are bounded invertible positives, \(A^{-1/2}BA^{-1/2}\geq1\), so its inverse is at most one and \(B^{-1}\leq A^{-1}\). Apply this with \(A=1+a\), \(B=1+b\). Their strong supremum \(E\leq1\) exists by WF-2. For every projection \(p\in F_{T_\alpha}\),
+\(e_{np}=n(1+n)^{-1}p\), so \(E\geq p\). If \(q=1\), this implies \(E=1\): positivity makes \(E\) the identity on each \(pH\), hence on the closed span defining their join. Thus either condition 1 or 2 implies condition 3.
+
+Finally any net \(e_i\) as in condition 3 has \(e_i^2\leq e_i\), so \(e_i\in N_{T_\alpha}\). For \(x\in M\), the left-ideal property gives \(xe_i\in N_{T_\alpha}\), whence \(e_i x e_i\in m_{T_\alpha}\). These nets converge strongly to \(x\) and have norms at most \(\|x\|\); the normal vector-series argument [CP-6](OA-FLOW-CP.md#oa-flow.cp.6) makes them ultraweakly convergent as well. The net \(xe_i\to x\) proves condition 1, and \(e_i x e_i\to x\) proves condition 2. This also gives controlled approximants for every positive \(x\). All arguments use nets, not sequences. The zero algebra is included, with its identity and every domain equal to zero. \(\square\)
+
+<a id="l115-integrability-inheritance"></a>
+
+## Integrability passes through invariant subalgebras, products and fixed corners
+
+**Theorem.** For the general-group notion of integrability just proved, each of the following is sufficient for an action \(\alpha\) on \(M\) to be integrable:
+
+1. A globally invariant unital von Neumann subalgebra \(B\subseteq M\) has integrable restricted action.
+2. The action is normally conjugate to \(\alpha^{(1)}\overline\otimes\alpha^{(2)}\) on \(M_1\overline\otimes M_2\), and at least one factor action is integrable.
+3. The action is normally conjugate to the restriction of an integrable action \(\beta\) on \(N\) to \(eNe\), for a fixed projection \(e\in N^\beta\).
+
+Normal conjugacy means a unital normal coefficient isomorphism with normal inverse intertwining the actions. None of these statements imposes a countability condition. They do not assert that a cocycle perturbation of an integrable action is integrable.
+
+**Proof of invariant-subalgebra inheritance.** The restriction is point ultraweakly continuous: a positive normal functional on \(B\) extends normally to \(M\), by [EP-1](OA-FLOW-EP.md#oa-flow.ep.1), and arbitrary normal functionals are linear combinations of such functionals. Compact averages in \(B\) agree with those in \(M\) on every element of \(B\), because these extensions test both predual integrals. By the preceding theorem choose positive contractions \(e_i\in F_{T_{\alpha|_B}}\) increasing strongly to one. Strong convergence is representation independent on this bounded increasing net, by normality and [WF-2](OA-FLOW-WF.md#oa-flow.wf.2). Each \(e_i\) has bounded ambient compact averages with the same norm bound.
+
+For \(a\in M_+\),
+\[
+ 0\leq e_i a e_i\leq\|a\|e_i^2\leq\|a\|e_i,
+ \qquad
+ 0\leq A_K(e_i a e_i)\leq\|a\|A_K(e_i).
+ \tag{L115I1}
+\]
+Hence \(e_i a e_i\in F_{T_\alpha}\); the bound is uniform in \(K\) for each fixed \(i\), as required. The nets converge strongly and ultraweakly to \(a\), with norm at most \(\|a\|\). Thus \(m_{T_\alpha}\) is ultraweakly dense. The proved density criterion gives integrability of \(\alpha\).
+
+**Construction of the whole product action and its inheritance.** Take faithful standard-form representations of \(M_1,M_2\). Their canonical implementing unitary groups \(U_1(s),U_2(s)\) are strongly continuous on the whole Hilbert spaces by [NR-1](OA-FLOW-NR.md#oa-flow.nr.1). On simple Hilbert tensors \(U_1(s)\otimes U_2(s)\) is strongly continuous. Finite sums of such tensors are dense, and these operators have norm one, so the tensor unitary group is strongly continuous everywhere. Its conjugation gives the required normal continuous product action.
+
+The normal tensor maps used here can also be verified without an abstract tensor-functor assumption. For a normal isomorphism \(\gamma:A\to C\) with normal inverse, [ND.TENSOR](OA-FLOW-ND.md#nd-tensor) extends \(\gamma\otimes\mathrm{id}_{B(K)}\) to a whole normal isomorphism
+\(A\overline\otimes B(K)\to C\overline\otimes B(K)\), with its whole normal inverse. If \(B_0\subseteq B(K)\) is a von Neumann algebra, restrict that extension to \(A\overline\otimes B_0\). Normality sends its ultraweakly dense algebraic tensor product into \(C\overline\otimes B_0\); the inverse does the same in the reverse direction. This gives a normal isomorphism onto the latter whole algebra. Applying the Hilbert-space flip supplies the corresponding extension in the other factor. The two extensions commute, first on elementary tensors and then everywhere by normality. Their composition is the product automorphism. The arbitrary-basis matrix proof [NCF-1](OA-FLOW-NCF.md#ncf-1) likewise supplies the whole normality used in these restrictions. Thus the spatial unitary implementation and the normal tensor maps agree on the entire product.
+
+If \(M_2\ne0\), the invariant unital subalgebra \(M_1\overline\otimes\mathbb C1\) is normally isomorphic to \(M_1\) by \(x\mapsto x\otimes1\), with normal inverse on its image. Compact averages satisfy
+\[
+ A_K^{\alpha^{(1)}\otimes\alpha^{(2)}}(x\otimes1)
+ =A_K^{\alpha^{(1)}}(x)\otimes1.
+ \tag{L115I2}
+\]
+Testing normal functionals proves the equality; the inclusion has its whole normality from the preceding construction. If the first factor is integrable, part 1 therefore proves product integrability. Use the flip if the second factor is integrable. If either factor algebra is zero, the product is zero and is integrable.
+
+**Proof of fixed-corner inheritance, with its full domains.** Let \(T_\beta:N_+\to\widehat{N^\beta}_+\), and put \(F=N^\beta\). For \(e\in F\), the corner fixed algebra is \(eFe\). Every compact average of the restricted action satisfies
+\[
+ A_K^e(eae)=eA_K^\beta(a)e\qquad(a\in N_+).
+ \tag{L115I3}
+\]
+For a normal corner functional \(\omega\), its normal extension \(z\mapsto\omega(eze)\) tests the equality. Taking directed suprema in the full extended cone, with [EP-4](OA-FLOW-EP.md#oa-flow.ep.4), gives
+\[
+ T_{\beta|_{eNe}}(eae)=eT_\beta(a)e
+ \quad\text{in }\widehat{eFe}_+.
+ \tag{L115I4}
+\]
+For a positive element of \(eNe\) its ambient average is supported in \(e\), so the ambient and corner bounded-element tests agree exactly. In particular
+\[
+ \begin{aligned}
+ F_{T_{\beta|_{eNe}}}&=F_{T_\beta}\cap(eNe)_+,\\
+ N_{T_{\beta|_{eNe}}}&=N_{T_\beta}\cap eNe,\\
+ m_{T_{\beta|_{eNe}}}&=e\,m_{T_\beta}\,e
+                      =m_{T_\beta}\cap eNe.
+ \end{aligned}
+ \tag{L115I5}
+\]
+For the last equality use [EP-6](OA-FLOW-EP.md#oa-flow.ep.6)'s \(F\)-bimodule property and its finite-positive polarization: compression of each ambient finite positive element is corner finite, and every corner finite positive is already ambient finite. The reverse intersection identity follows from \(x=exe\) for \(x\in eNe\).
+
+If \(\beta\) is integrable, \(m_{T_\beta}\) is ultraweakly dense. Normal compression by \(e\) sends its approximating nets to \(e m_{T_\beta}e\), which is therefore ultraweakly dense in \(eNe\). The preceding density criterion proves corner integrability. For \(e=0\), these identities give precisely the zero domains and zero weight, so no nonzero-corner assumption is concealed. This extends the earlier [fixed-corner proof](OA-FLOW-L115.md#oa-flow.l115.corner-integrability) from LCA to arbitrary locally compact groups.
+
+**Normal conjugacy.** If \(\psi:M\to N\) is a normal isomorphism with normal inverse and \(\psi\alpha_s=\beta_s\psi\), normal functional tests give
+\[
+ A_K^\beta(\psi(x))=\psi(A_K^\alpha(x)),\qquad
+ T_\beta(\psi(x))=\widehat\psi(T_\alpha(x)).
+ \tag{L115I6}
+\]
+Here \(\widehat\psi\) is the whole extended-positive transport proved in [EP-4](OA-FLOW-EP.md#oa-flow.ep.4) and [FF](OA-FLOW-FF.md#oa-flow.ff.6), including the infinite projection and full form domain. Norms of bounded positive averages are unchanged by [CF-6](OA-FLOW-CF.md#oa-flow.cf.6), applied to the isomorphism and its inverse. Hence \(\psi\) carries each of the three domains in (L115G4) bijectively onto the corresponding domain for \(\beta\), and transports their density. Integrability is consequently invariant under normal conjugacy. This completes parts 2 and 3 as stated. \(\square\)
+
+For LCA groups, [normal coefficient cocycle conjugacy](OA-FLOW-L29.md#l29-cocycle-conjugacy) intertwines the character dual actions. Applying the last paragraph to that normal map transports the dual orbit averages and their complete bounded finite domains. This application concerns the dual actions; it does not identify the original-action orbit averages of a cocycle perturbation.
+
+The three inheritance statements in the LCA setting are Takesaki's *Theory of Operator Algebras II*, Chapter X, Lemma 2.7. The arbitrary-group formulation here uses the compact-average construction and the modular input factor \(\Delta_G(t)^{-1}\); the preceding Fourier and Connes-spectrum conclusions retain their LCA hypotheses.
+

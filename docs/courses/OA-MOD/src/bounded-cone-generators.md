@@ -102,8 +102,7 @@ Now suppose \(K^*=-K\), and put \(U_t=e^{tK}\). This is a norm-continuous unitar
 
 JI's central splitting implies that every Jordan star automorphism sends the center onto itself: in each of its multiplicative and antimultiplicative central pieces, an element commuting with the whole algebra has an image commuting with that whole image piece; the two pieces sum to the target algebra.
 
-For any \(x\in M\), let \(j(x)=(x+Jx^*J)/2\). JR-02 proves \(U_tj(x)U_t^*=j(\theta_t(x))\). If \(z\in Z(M)\), the central standard-form identity gives \(j(z)=z\); since \(\theta_t(z)\) is central too,
-
+For any \(x\in M\), let \(j(x)=(x+Jx^*J)/2\). JR-03 proves \(U_tj(x)U_t^*=j(\theta_t(x))\). If \(z\in Z(M)\), the central standard-form identity gives \(j(z)=z\); since \(\theta_t(z)\) is central too,
 \[
  \theta_t(z)=U_tzU_t^*.
  \tag{GN.3}

@@ -1,0 +1,2103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The complete viscous rotation corrector and actual first transfer — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/the-complete-viscous-rotation-corrector-and-actual-first-transfer.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-43.html">Previous lesson</a><a href="NS-FLUID-45.html">Next lesson</a></nav><article class="lesson"><h1 id="the-complete-viscous-rotation-corrector-and-actual-first-transfer">The complete viscous rotation corrector and actual first transfer</h1>
+<p>The rotor exchanges energy between two original coordinates while an
+outgoing pump transfers it to the next scale. A useful corrected energy
+must keep the exact product-rule sign, both adjacent scales, the full
+viscous projections and the orthogonal diffusion components. This lesson
+derives that energy and its complete forcing before using it.</p>
+<p>The forcing enters at every intermediate time. We therefore calculate
+the signed input integral on every such subinterval, and give an explicit
+scalar counterexample to an estimate based only on the total integral.
+The actual circuit provides additional identities that control the
+required subintervals.</p>
+<p>The second part constructs the entire first transfer in the original
+infinite viscous flow. The weighted tail supplies continuation before
+activation is invoked. The trigger time, strongly activated interval,
+output growth and complete energy transfer are then proved on their
+actual domains. The next-drive checkpoint needs a weaker exponential
+range than the printed source bound; both the failure of the stronger
+bound and the valid replacement are derived explicitly.</p>
+<p>Human comparison: Terence Tao,
+<a href="https://arxiv.org/abs/1402.0290v3">arXiv:1402.0290v3</a>, original author
+navier-blowup.tex1506–1604,2039–2171 and2196–2550.
+<a href="NS-FLUID-40.html">Lesson40</a>,
+VD1–VD35, constructs the actual maximal flow.
+<a href="NS-FLUID-42.html">Lesson42</a>,
+CR16–CR20, gives the corrected original coefficient table.
+<a href="NS-FLUID-43.html">Lesson43</a>
+proves positive memory, all-scale activation and full receiver bounds.
+Their complete proofs remain in the course.</p>
+<p>Five solved exercises determine the exact positive domain of the
+corrected full energy, retain the decay in the forcing response to
+strengthen the actual transfer, carry that improvement into every
+original Sobolev order through ten, solve the full weighted-tail
+comparison, and compute the complete asymptotic of the scalar
+counterexample. These are editorial deductions with no novelty claim.
+All original physical constants, fields, time domains and viscosity
+remain explicit.</p>
+<h2 id="rc1-keep-the-original-physical-equations-and-every-viscous-projection">RC1. Keep the original physical equations and every viscous projection</h2>
+<p>Use the actual initial datum <span class="math" data-tex="\(u(0)=\psi_{1,n_0}\)">\(u(0)=\psi_{1,n_0}\)</span>, the original packet squared norms one, <span class="math" data-tex="\(q=1+\epsilon_0\in(1,2)\)">\(q=1+\epsilon_0\in(1,2)\)</span>, and <span class="math" data-tex="\(K,\epsilon,\nu&gt;0\)">\(K,\epsilon,\nu&gt;0\)</span>. The solution exists on its constructed maximal interval <span class="math" data-tex="\([0,T_*)\)">\([0,T_*)\)</span>. Fix an original scale <span class="math" data-tex="\(n\geq n_0\)">\(n\geq n_0\)</span> and write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a=a_n,\quad b=b_n,\quad c=c_n,\quad d=d_n,\quad z=a_{n+1},\\
+\kappa= q^{5n/2},\qquad
+\lambda=q^{5n/2}q^{5/2}K,\qquad
+v_i=\nu\langle\Delta u_{i,n},\psi_{i,n}\rangle.
+\end{gathered}
+\tag{RC1}
+\]">\[
+\begin{gathered}
+a=a_n,\quad b=b_n,\quad c=c_n,\quad d=d_n,\quad z=a_{n+1},\\
+\kappa= q^{5n/2},\qquad
+\lambda=q^{5n/2}q^{5/2}K,\qquad
+v_i=\nu\langle\Delta u_{i,n},\psi_{i,n}\rangle.
+\end{gathered}
+\tag{RC1}
+\]</span>
+<p>These are names for the original quantities, with no change of amplitude, time, viscosity or spatial scale. For later estimates the exact viscous projection and its full moment bound are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v_i&amp;=-\nu\langle\nabla u_{i,n},\nabla\psi_{i,n}\rangle,\\
+|v_i|&amp;\leq\nu q^{2n}\|\Delta\psi_i\|_2\sqrt{2E_{i,n}},\\
+\|\Delta\psi_i\|_2^2
+&amp;=\int_{\mathbb R^3}(4\pi^2|\xi|^2)^2
+|\widehat\psi_i(\xi)|^2\,d\xi.
+\end{aligned}
+\tag{RC2}
+\]">\[
+\begin{aligned}
+v_i&amp;=-\nu\langle\nabla u_{i,n},\nabla\psi_{i,n}\rangle,\\
+|v_i|&amp;\leq\nu q^{2n}\|\Delta\psi_i\|_2\sqrt{2E_{i,n}},\\
+\|\Delta\psi_i\|_2^2
+&amp;=\int_{\mathbb R^3}(4\pi^2|\xi|^2)^2
+|\widehat\psi_i(\xi)|^2\,d\xi.
+\end{aligned}
+\tag{RC2}
+\]</span>
+<p>Integration by parts, the original spatial dilation and Cauchy–Schwarz prove these identities and inequality. The band Fourier support is compact, so all displayed derivatives and pairings are defined. No viscous term is assigned a scalar damping law.</p>
+<p>Name the complete part of the input equation outside its rotor term:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A&amp;=A^{\rm q}+v_1,\\
+A^{\rm q}&amp;=\kappa\bigl[-\epsilon ab
+-\epsilon^2e^{-K^{10}}ac+K d_{n-1}^{2}\bigr].
+\end{aligned}
+\tag{RC3}
+\]">\[
+\begin{aligned}
+A&amp;=A^{\rm q}+v_1,\\
+A^{\rm q}&amp;=\kappa\bigl[-\epsilon ab
+-\epsilon^2e^{-K^{10}}ac+K d_{n-1}^{2}\bigr].
+\end{aligned}
+\tag{RC3}
+\]</span>
+<p>The relevant original equations, including the entire next-scale input derivative, are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a&#x27;&amp;=-\kappa\epsilon^{-2}cd+A,\\
+d&#x27;&amp;=\kappa\epsilon^{-2}ca-\lambda dz+v_4,\\
+c&#x27;&amp;=\kappa\epsilon^2e^{-K^{10}}a^2
++\kappa\epsilon^{-1}K^{10}bc+v_3,\\
+z&#x27;&amp;=\kappa q^{5/2}\bigl[-\epsilon z b_{n+1}
+-\epsilon^2e^{-K^{10}}z c_{n+1}\\
+&amp;\hspace{34mm}-\epsilon^{-2}c_{n+1}d_{n+1}+K d^2\bigr]
++\nu\langle\Delta u_{1,n+1},\psi_{1,n+1}\rangle.
+\end{aligned}
+\tag{RC4}
+\]">\[
+\begin{aligned}
+a&#x27;&amp;=-\kappa\epsilon^{-2}cd+A,\\
+d&#x27;&amp;=\kappa\epsilon^{-2}ca-\lambda dz+v_4,\\
+c&#x27;&amp;=\kappa\epsilon^2e^{-K^{10}}a^2
++\kappa\epsilon^{-1}K^{10}bc+v_3,\\
+z&#x27;&amp;=\kappa q^{5/2}\bigl[-\epsilon z b_{n+1}
+-\epsilon^2e^{-K^{10}}z c_{n+1}\\
+&amp;\hspace{34mm}-\epsilon^{-2}c_{n+1}d_{n+1}+K d^2\bigr]
++\nu\langle\Delta u_{1,n+1},\psi_{1,n+1}\rangle.
+\end{aligned}
+\tag{RC4}
+\]</span>
+<p>All the following differential identities hold at every <span class="math" data-tex="\(0&lt;t&lt;T_*\)">\(0&lt;t&lt;T_*\)</span>. VA17 proves <span class="math" data-tex="\(c(t)&gt;0\)">\(c(t)&gt;0\)</span>, so the divisions by <span class="math" data-tex="\(c\)">\(c\)</span> are justified on this entire open interval. Every integrated identity is taken on a closed interval <span class="math" data-tex="\([s,t]\subset(0,T_*)\)">\([s,t]\subset(0,T_*)\)</span>; no integration through a singular initial quotient is performed.</p>
+<h2 id="rc2-derive-the-signed-corrector-with-all-remainders">RC2. Derive the signed corrector with all remainders</h2>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+w=\frac{\epsilon^2}{c},\qquad
+U=\frac{a^2+d^2}{2},\qquad M=adwz.
+\tag{RC5}
+\]">\[
+w=\frac{\epsilon^2}{c},\qquad
+U=\frac{a^2+d^2}{2},\qquad M=adwz.
+\tag{RC5}
+\]</span>
+<p>Direct multiplication of the first two original equations gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U&#x27;&amp;=-\lambda z d^2+aA+d v_4,\\
+(ad)&#x27;&amp;=\kappa\epsilon^{-2}c(a^2-d^2)
+-\lambda adz+dA+a v_4,\\
+w&#x27;&amp;=-w\frac{c&#x27;}c.
+\end{aligned}
+\tag{RC6}
+\]">\[
+\begin{aligned}
+U&#x27;&amp;=-\lambda z d^2+aA+d v_4,\\
+(ad)&#x27;&amp;=\kappa\epsilon^{-2}c(a^2-d^2)
+-\lambda adz+dA+a v_4,\\
+w&#x27;&amp;=-w\frac{c&#x27;}c.
+\end{aligned}
+\tag{RC6}
+\]</span>
+<p>In particular the leading rotor product has the positive sign <span class="math" data-tex="\(a^2-d^2\)">\(a^2-d^2\)</span>. Applying the product rule to all four factors in <span class="math" data-tex="\(M\)">\(M\)</span>, with none discarded, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M&#x27;&amp;=\kappa(a^2-d^2)z+\mathcal R,\\
+\mathcal R&amp;=wz(dA+a v_4)-\lambda wad z^2
++wad z&#x27;-wad z\frac{c&#x27;}c.
+\end{aligned}
+\tag{RC7}
+\]">\[
+\begin{aligned}
+M&#x27;&amp;=\kappa(a^2-d^2)z+\mathcal R,\\
+\mathcal R&amp;=wz(dA+a v_4)-\lambda wad z^2
++wad z&#x27;-wad z\frac{c&#x27;}c.
+\end{aligned}
+\tag{RC7}
+\]</span>
+<p>RC3–RC4 give every term occurring in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>, including both adjacent scales and the four physical viscous projections. In particular the last term contains <span class="math" data-tex="\(z\)">\(z\)</span>, and the penultimate term differentiates <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>The scalar corrected energy and its complete derivative are therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U^*&amp;=U-\frac{\lambda}{2\kappa}M
+=\frac{a^2+d^2}{2}-\frac{q^{5/2}K}{2}
+ad\frac{\epsilon^2}{c}z,\\
+(U^*)&#x27;&amp;=-\frac{\lambda}{2}z(a^2+d^2)
++aA+d v_4-\frac{\lambda}{2\kappa}\mathcal R,\\
+&amp;=-\lambda zU^*+aA+d v_4
+-\frac{\lambda}{2\kappa}\mathcal R
+-\frac{\lambda^2}{2\kappa}zM.
+\end{aligned}
+\tag{RC8}
+\]">\[
+\begin{aligned}
+U^*&amp;=U-\frac{\lambda}{2\kappa}M
+=\frac{a^2+d^2}{2}-\frac{q^{5/2}K}{2}
+ad\frac{\epsilon^2}{c}z,\\
+(U^*)&#x27;&amp;=-\frac{\lambda}{2}z(a^2+d^2)
++aA+d v_4-\frac{\lambda}{2\kappa}\mathcal R,\\
+&amp;=-\lambda zU^*+aA+d v_4
+-\frac{\lambda}{2\kappa}\mathcal R
+-\frac{\lambda^2}{2\kappa}zM.
+\end{aligned}
+\tag{RC8}
+\]</span>
+<p>To verify the leading term, subtract <span class="math" data-tex="\(\lambda z(a^2-d^2)/2\)">\(\lambda z(a^2-d^2)/2\)</span> from the original <span class="math" data-tex="\(-\lambda z d^2\)">\(-\lambda z d^2\)</span>. This produces <span class="math" data-tex="\(-\lambda z(a^2+d^2)/2\)">\(-\lambda z(a^2+d^2)/2\)</span>. The last line then substitutes <span class="math" data-tex="\(U=U^*+\lambda M/(2\kappa)\)">\(U=U^*+\lambda M/(2\kappa)\)</span>. Both the minus sign of the corrector and the original outgoing factor <span class="math" data-tex="\(q^{5/2}\)">\(q^{5/2}\)</span> are forced by these exact identities.</p>
+<h2 id="rc3-keep-the-full-band-energy-and-its-orthogonal-defect">RC3. Keep the full band energy and its orthogonal defect</h2>
+<p>The full two-band energy and its scalar-projection defect are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E&amp;=E_{1,n}+E_{4,n},\\
+\mathcal D&amp;=\mathcal E-U
+=\tfrac12\|u_{1,n}-a\psi_{1,n}\|_2^2
++\tfrac12\|u_{4,n}-d\psi_{4,n}\|_2^2\geq0.
+\end{aligned}
+\tag{RC9}
+\]">\[
+\begin{aligned}
+\mathcal E&amp;=E_{1,n}+E_{4,n},\\
+\mathcal D&amp;=\mathcal E-U
+=\tfrac12\|u_{1,n}-a\psi_{1,n}\|_2^2
++\tfrac12\|u_{4,n}-d\psi_{4,n}\|_2^2\geq0.
+\end{aligned}
+\tag{RC9}
+\]</span>
+<p>The norm-one projections are orthogonal, which proves the equality. Adding the two exact field-energy equations cancels their rotor exchange and gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal E&#x27;=-\lambda z d^2+aA^{\rm q}
+-\nu\bigl(\|\nabla u_{1,n}\|_2^2
++\|\nabla u_{4,n}\|_2^2\bigr).
+\tag{RC10}
+\]">\[
+\mathcal E&#x27;=-\lambda z d^2+aA^{\rm q}
+-\nu\bigl(\|\nabla u_{1,n}\|_2^2
++\|\nabla u_{4,n}\|_2^2\bigr).
+\tag{RC10}
+\]</span>
+<p>Define the full corrected energy and retain its entire forcing:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E^*&amp;=\mathcal E-\frac{\lambda}{2\kappa}M,\\
+(\mathcal E^*)&#x27;&amp;=-\lambda z\mathcal E^*+\mathcal F,\\
+\mathcal F&amp;=aA^{\rm q}
+-\nu\bigl(\|\nabla u_{1,n}\|_2^2
++\|\nabla u_{4,n}\|_2^2\bigr)\\
+&amp;\quad-\frac{\lambda}{2\kappa}\mathcal R
++\lambda z\mathcal D
+-\frac{\lambda^2}{2\kappa}zM.
+\end{aligned}
+\tag{RC11}
+\]">\[
+\begin{aligned}
+\mathcal E^*&amp;=\mathcal E-\frac{\lambda}{2\kappa}M,\\
+(\mathcal E^*)&#x27;&amp;=-\lambda z\mathcal E^*+\mathcal F,\\
+\mathcal F&amp;=aA^{\rm q}
+-\nu\bigl(\|\nabla u_{1,n}\|_2^2
++\|\nabla u_{4,n}\|_2^2\bigr)\\
+&amp;\quad-\frac{\lambda}{2\kappa}\mathcal R
++\lambda z\mathcal D
+-\frac{\lambda^2}{2\kappa}zM.
+\end{aligned}
+\tag{RC11}
+\]</span>
+<p>Indeed RC7 and RC10 first give</p>
+<span class="math math-display" data-tex="\[
+-\lambda zU+aA^{\rm q}
+-\nu(\|\nabla u_{1,n}\|_2^2+\|\nabla u_{4,n}\|_2^2)
+-\lambda\mathcal R/(2\kappa).
+\]">\[
+-\lambda zU+aA^{\rm q}
+-\nu(\|\nabla u_{1,n}\|_2^2+\|\nabla u_{4,n}\|_2^2)
+-\lambda\mathcal R/(2\kappa).
+\]</span>
+<p>Substitution of <span class="math" data-tex="\(U=\mathcal E^*+\lambda M/(2\kappa)-\mathcal D\)">\(U=\mathcal E^*+\lambda M/(2\kappa)-\mathcal D\)</span> gives precisely RC11. Thus the full positive defect survives as its signed term <span class="math" data-tex="\(\lambda z\mathcal D\)">\(\lambda z\mathcal D\)</span>. It cannot be deleted merely because the scalar rotor calculation closes.</p>
+<p>There is also an exact quantitative comparison with the unmodified energy:</p>
+<span class="math math-display" data-tex="\[
+\left|\mathcal E^*-\mathcal E\right|
+\leq\frac{\lambda}{2\kappa}\frac{\epsilon^2}{c}|z|U
+\leq\frac{\lambda}{2\kappa}\frac{\epsilon^2}{c}|z|\mathcal E.
+\tag{RC12}
+\]">\[
+\left|\mathcal E^*-\mathcal E\right|
+\leq\frac{\lambda}{2\kappa}\frac{\epsilon^2}{c}|z|U
+\leq\frac{\lambda}{2\kappa}\frac{\epsilon^2}{c}|z|\mathcal E.
+\tag{RC12}
+\]</span>
+<p>The inequality <span class="math" data-tex="\(|ad|\leq(a^2+d^2)/2\)">\(|ad|\leq(a^2+d^2)/2\)</span> proves the first bound; RC9 proves the second. Neither <span class="math" data-tex="\(U^*\)">\(U^*\)</span> nor <span class="math" data-tex="\(\mathcal E^*\)">\(\mathcal E^*\)</span> is asserted positive without evaluating this comparison. In particular a later square-root estimate must first justify its radicand.</p>
+<h2 id="rc4-calculate-the-actual-primitive-of-a-rotating-input">RC4. Calculate the actual primitive of a rotating input</h2>
+<p>For any fixed upper scale <span class="math" data-tex="\(m\geq n_0\)">\(m\geq n_0\)</span>, give <span class="math" data-tex="\(a_m,c_m,d_m,w_m,\kappa_m,\lambda_m,v_{4,m}\)">\(a_m,c_m,d_m,w_m,\kappa_m,\lambda_m,v_{4,m}\)</span> their original definitions RC1–RC5. The fourth equation rearranges exactly to</p>
+<span class="math math-display" data-tex="\[
+a_m=\kappa_m^{-1}w_m d_m&#x27;
++\kappa_m^{-1}\lambda_m w_m d_m a_{m+1}
+-\kappa_m^{-1}w_m v_{4,m}.
+\tag{RC13}
+\]">\[
+a_m=\kappa_m^{-1}w_m d_m&#x27;
++\kappa_m^{-1}\lambda_m w_m d_m a_{m+1}
+-\kappa_m^{-1}w_m v_{4,m}.
+\tag{RC13}
+\]</span>
+<p>Integration by parts, using <span class="math" data-tex="\(w_m&#x27;=-w_m c_m&#x27;/c_m\)">\(w_m&#x27;=-w_m c_m&#x27;/c_m\)</span>, proves for every <span class="math" data-tex="\(0&lt;s&lt;t&lt;T_*\)">\(0&lt;s&lt;t&lt;T_*\)</span></p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_s^t a_m(r)\,dr
+={}&amp;\kappa_m^{-1}[w_md_m]_s^t\\
+&amp;+\kappa_m^{-1}\int_s^t w_md_m
+\left(\frac{c_m&#x27;}{c_m}+\lambda_m a_{m+1}\right)dr
+-\kappa_m^{-1}\int_s^t w_m v_{4,m}\,dr.
+\end{aligned}
+\tag{RC14}
+\]">\[
+\begin{aligned}
+\int_s^t a_m(r)\,dr
+={}&amp;\kappa_m^{-1}[w_md_m]_s^t\\
+&amp;+\kappa_m^{-1}\int_s^t w_md_m
+\left(\frac{c_m&#x27;}{c_m}+\lambda_m a_{m+1}\right)dr
+-\kappa_m^{-1}\int_s^t w_m v_{4,m}\,dr.
+\end{aligned}
+\tag{RC14}
+\]</span>
+<p>This is an identity for the actual signed input integral, including both endpoint values. Its complete absolute majorant is the explicitly defined finite quantity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal B_m(s,t)=\kappa_m^{-1}\bigg[&amp;w_m(t)|d_m(t)|+w_m(s)|d_m(s)|\\
+&amp;+\int_s^t w_m|d_m|
+\left(\left|\frac{c_m&#x27;}{c_m}\right|
++\lambda_m|a_{m+1}|\right)dr
++\int_s^t w_m|v_{4,m}|\,dr\bigg],\\
+-\mathcal B_m(s,t)&amp;\leq\int_s^t a_m(r)\,dr\leq\mathcal B_m(s,t).
+\end{aligned}
+\tag{RC15}
+\]">\[
+\begin{aligned}
+\mathcal B_m(s,t)=\kappa_m^{-1}\bigg[&amp;w_m(t)|d_m(t)|+w_m(s)|d_m(s)|\\
+&amp;+\int_s^t w_m|d_m|
+\left(\left|\frac{c_m&#x27;}{c_m}\right|
++\lambda_m|a_{m+1}|\right)dr
++\int_s^t w_m|v_{4,m}|\,dr\bigg],\\
+-\mathcal B_m(s,t)&amp;\leq\int_s^t a_m(r)\,dr\leq\mathcal B_m(s,t).
+\end{aligned}
+\tag{RC15}
+\]</span>
+<p>The integrands are continuous on the compact interval because the actual <span class="math" data-tex="\(c_m\)">\(c_m\)</span> is strictly positive there. Formula RC2 bounds the last integrand with its original spatial moment whenever an explicit viscosity estimate is needed. Formula RC4 gives the full logarithmic derivative in the preceding integrand; no monotonicity of <span class="math" data-tex="\(c_m\)">\(c_m\)</span> is assumed.</p>
+<p>Now return to the full corrected energy RC11 at scale <span class="math" data-tex="\(n\)">\(n\)</span>. Its exact propagation factor is</p>
+<span class="math math-display" data-tex="\[
+G_n(t,r)=\exp\left(-\lambda_n\int_r^t a_{n+1}(\rho)\,d\rho\right),
+\qquad s\leq r\leq t.
+\tag{RC16}
+\]">\[
+G_n(t,r)=\exp\left(-\lambda_n\int_r^t a_{n+1}(\rho)\,d\rho\right),
+\qquad s\leq r\leq t.
+\tag{RC16}
+\]</span>
+<p>Differentiating the integrating factor in RC11 proves the complete identity</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_n^*(t)
+=G_n(t,s)\mathcal E_n^*(s)
++\int_s^t G_n(t,r)\mathcal F_n(r)\,dr.
+\tag{RC17}
+\]">\[
+\mathcal E_n^*(t)
+=G_n(t,s)\mathcal E_n^*(s)
++\int_s^t G_n(t,r)\mathcal F_n(r)\,dr.
+\tag{RC17}
+\]</span>
+<p>This holds for a signed corrected energy and a signed forcing. Apply RC15 at the actual next scale <span class="math" data-tex="\(m=n+1\)">\(m=n+1\)</span> on each subinterval <span class="math" data-tex="\([r,t]\)">\([r,t]\)</span>. The result is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&lt;G_n(t,r)&amp;\leq
+\exp\bigl(\lambda_n\mathcal B_{n+1}(r,t)\bigr),\\
+|\mathcal E_n^*(t)|
+&amp;\leq e^{\lambda_n\mathcal B_{n+1}(s,t)}|\mathcal E_n^*(s)|\\
+&amp;\quad+\int_s^t e^{\lambda_n\mathcal B_{n+1}(r,t)}
+|\mathcal F_n(r)|\,dr.
+\end{aligned}
+\tag{RC18}
+\]">\[
+\begin{aligned}
+0&lt;G_n(t,r)&amp;\leq
+\exp\bigl(\lambda_n\mathcal B_{n+1}(r,t)\bigr),\\
+|\mathcal E_n^*(t)|
+&amp;\leq e^{\lambda_n\mathcal B_{n+1}(s,t)}|\mathcal E_n^*(s)|\\
+&amp;\quad+\int_s^t e^{\lambda_n\mathcal B_{n+1}(r,t)}
+|\mathcal F_n(r)|\,dr.
+\end{aligned}
+\tag{RC18}
+\]</span>
+<p>All terms are actual solution quantities with complete definitions and exact connecting identities. In the coarser-band decay argument, this uses the original rotor equation of the current input band. The bound needed for the forcing integral is a bound on every <span class="math" data-tex="\(\mathcal B_{n+1}(r,t)\)">\(\mathcal B_{n+1}(r,t)\)</span>, rather than only on the single integral beginning at the earlier initial time.</p>
+<h2 id="rc5-a-complete-counterexample-to-the-total-integral-inference-alone">RC5. A complete counterexample to the total-integral inference alone</h2>
+<p>Here we examine only a scalar integrating-factor inference. These functions are not proposed as a cascade solution. For every <span class="math" data-tex="\(K\geq4\)">\(K\geq4\)</span>, let <span class="math" data-tex="\(\delta=K^{-1/2}\)">\(\delta=K^{-1/2}\)</span>, <span class="math" data-tex="\(T=1/2+\delta\)">\(T=1/2+\delta\)</span>, and define the continuously differentiable drift on <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> by</p>
+<span class="math math-display" data-tex="\[
+z_K(t)=
+\begin{cases}
+1,&amp;0\leq t\leq1/2,\\
+1-2\left(\dfrac{t-1/2}{\delta}\right)^2,
+&amp;1/2\leq t\leq T.
+\end{cases}
+\tag{RC19}
+\]">\[
+z_K(t)=
+\begin{cases}
+1,&amp;0\leq t\leq1/2,\\
+1-2\left(\dfrac{t-1/2}{\delta}\right)^2,
+&amp;1/2\leq t\leq T.
+\end{cases}
+\tag{RC19}
+\]</span>
+<p>Its values and first derivatives match at <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and <span class="math" data-tex="\(|z_K|\leq1\)">\(|z_K|\leq1\)</span>. For <span class="math" data-tex="\(t=1/2+\delta\theta\)">\(t=1/2+\delta\theta\)</span>, <span class="math" data-tex="\(0\leq\theta\leq1\)">\(0\leq\theta\leq1\)</span>, direct integration gives</p>
+<span class="math math-display" data-tex="\[
+\int_0^t z_K(r)\,dr
+=\frac12+\delta\left(\theta-\frac23\theta^3\right)
+\geq\frac12.
+\tag{RC20}
+\]">\[
+\int_0^t z_K(r)\,dr
+=\frac12+\delta\left(\theta-\frac23\theta^3\right)
+\geq\frac12.
+\tag{RC20}
+\]</span>
+<p>The inequality follows from <span class="math" data-tex="\(\theta-2\theta^3/3\geq\theta/3\geq0\)">\(\theta-2\theta^3/3\geq\theta/3\geq0\)</span>. Thus the total drift integral has a fixed positive lower bound throughout the short final interval of length <span class="math" data-tex="\(K^{-1/2}\)">\(K^{-1/2}\)</span>.</p>
+<p>Nevertheless consider the actual unique scalar solution</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+y_K&#x27;=-Kz_Ky_K+K^{-14},\qquad y_K(0)=0,\\
+y_K(t)=K^{-14}\int_0^t
+\exp\left(-K\int_r^t z_K(\rho)\,d\rho\right)dr.
+\end{gathered}
+\tag{RC21}
+\]">\[
+\begin{gathered}
+y_K&#x27;=-Kz_Ky_K+K^{-14},\qquad y_K(0)=0,\\
+y_K(t)=K^{-14}\int_0^t
+\exp\left(-K\int_r^t z_K(\rho)\,d\rho\right)dr.
+\end{gathered}
+\tag{RC21}
+\]</span>
+<p>Multiplying by <span class="math" data-tex="\(\exp(K\int_0^t z_K)\)">\(\exp(K\int_0^t z_K)\)</span> proves this formula and uniqueness. In particular <span class="math" data-tex="\(y_K\geq0\)">\(y_K\geq0\)</span>. If <span class="math" data-tex="\(r=1/2+\delta\theta\)">\(r=1/2+\delta\theta\)</span> with <span class="math" data-tex="\(3/4\leq\theta\leq7/8\)">\(3/4\leq\theta\leq7/8\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\int_r^T z_K(\rho)\,d\rho
+=\delta\left(\frac13-\theta+\frac23\theta^3\right)
+\leq-\frac{73}{768}\delta.
+\tag{RC22}
+\]">\[
+\int_r^T z_K(\rho)\,d\rho
+=\delta\left(\frac13-\theta+\frac23\theta^3\right)
+\leq-\frac{73}{768}\delta.
+\tag{RC22}
+\]</span>
+<p>The expression in parentheses has derivative <span class="math" data-tex="\(-1+2\theta^2&gt;0\)">\(-1+2\theta^2&gt;0\)</span> on this interval and value <span class="math" data-tex="\(-73/768\)">\(-73/768\)</span> at its right endpoint. Restricting the positive integral RC21 to this subinterval of length <span class="math" data-tex="\(\delta/8\)">\(\delta/8\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+y_K(T)\geq\frac18K^{-29/2}
+\exp\left(\frac{73}{768}\sqrt K\right).
+\tag{RC23}
+\]">\[
+y_K(T)\geq\frac18K^{-29/2}
+\exp\left(\frac{73}{768}\sqrt K\right).
+\tag{RC23}
+\]</span>
+<p>Consequently no constant independent of <span class="math" data-tex="\(K\)">\(K\)</span> bounds <span class="math" data-tex="\(y_K(T)\)">\(y_K(T)\)</span> by that constant times <span class="math" data-tex="\(K^{-14}\)">\(K^{-14}\)</span>. Indeed the ratio is at least <span class="math" data-tex="\(e^{h\sqrt K}/(8\sqrt K)\)">\(e^{h\sqrt K}/(8\sqrt K)\)</span>, with <span class="math" data-tex="\(h=73/768&gt;0\)">\(h=73/768&gt;0\)</span>. The quadratic term of the positive exponential series gives the explicit divergence</p>
+<span class="math math-display" data-tex="\[
+\frac{y_K(T)}{K^{-14}}
+\geq\frac{h^2}{16}\sqrt K\longrightarrow\infty.
+\tag{RC24}
+\]">\[
+\frac{y_K(T)}{K^{-14}}
+\geq\frac{h^2}{16}\sqrt K\longrightarrow\infty.
+\tag{RC24}
+\]</span>
+<p>This example has an initial value no larger than the source coarse-energy bound, a uniformly bounded continuously differentiable drift, a constant forcing of size <span class="math" data-tex="\(K^{-14}\)">\(K^{-14}\)</span>, and a positive total drift integral throughout a final interval of the original <span class="math" data-tex="\(K^{-1/2}\)">\(K^{-1/2}\)</span> length. It disproves the scalar inference from only those data. It does not satisfy or contradict the full original circuit equations. Those additional equations supply the exact missing subinterval information through RC13–RC18.</p>
+<h2 id="rc6-what-these-calculations-establish">RC6. What these calculations establish</h2>
+<p>RC1–RC18 prove exact identities and estimates on the actual viscous cascade, with all four original coordinates, the complete next-scale equation, original physical viscosity, full band energies, orthogonal defects and every outgoing scale factor. RC19–RC24 prove that the scalar total-integral step needs additional information. Both results identify the actual rotor primitive on every relevant subinterval and the complete signed forcing in RC11. The later <span class="unlinked">complete uniform viscous cascade proof, UI1–UI59</span> supplies the quantitative transfer estimates and finite endpoint; RC1–RC24 here supply its exact identities and scalar inference test.</p>
+<p>The source product-rule signs and outgoing factors at2482–2498 are repaired by RC7–RC11; the same formulas retain the original coarser-scale factors at2417–2438. In the source's square-root differential at2500, damping must carry a negative sign, as its following negative exponential also requires. The later uniform proof establishes closeness of the corrected energy, bounds the full forcing and controls every integrating-factor subinterval. The exact quotient is used only where the previously proved positive third coordinate makes it defined.</p>
+<p>These are editorial reconstructions and an explicit scalar counterexample to one inference, with no novelty claim. The full infinite-cascade proof is supplied by the later UI1–UI59 note in its stated averaged-equation scope. Its review is author self-review; it does not validate the unmodified Navier–Stokes or separate OpenAI constructions. The scalar counterexample above identifies an insufficient inference, not a failure of the cascade theorem.</p>
+<p><img src="assets/NS-FLUID-44/original-viscous-rotation-correctors-AEDE579772456A1F9F0F37D18DBDDE79C5E4D6035F8C17F3EECCF62D9AF8E00C.png" alt="Full signed energy corrector and an exact example of short-interval forcing amplification" class="course-figure" width="2100" height="1500" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-viscous-rotation-correctors" data-asset-sha256="AEDE579772456A1F9F0F37D18DBDDE79C5E4D6035F8C17F3EECCF62D9AF8E00C"></p>
+<p>RC7–RC11 give the complete original energy corrector. The two curves sample the exact scalar functions RC19–RC22 at <span class="math" data-tex="\(K=1024\)">\(K=1024\)</span> and <span class="math" data-tex="\(T=1/2+K^{-1/2}\)">\(T=1/2+K^{-1/2}\)</span>; they are not cascade trajectories. The left panel retains the entire integral beginning at time zero; the right panel shows the actual propagation factor for a forcing input at each physical time <span class="math" data-tex="\(r\)">\(r\)</span>. The shaded interval on the right is precisely</p>
+<span class="math math-display" data-tex="\[
+1/2+(3/4)K^{-1/2}\leq r\leq1/2+(7/8)K^{-1/2},
+\]">\[
+1/2+(3/4)K^{-1/2}\leq r\leq1/2+(7/8)K^{-1/2},
+\]</span>
+<p>used in the complete proof RC22–RC24. The left shading marks the portion where the drift is negative. <a href="assets/original-viscous-rotation-correctors.py">Reproducible figure source</a> and <a href="assets/original-viscous-rotation-correctors.svg">vector rendering</a> accompany the complete argument. Human comparison: Tao, original author file navier-blowup.tex,2405–2443 and2470–2539.</p>
+<h2 id="ft1-parameters-and-the-actual-first-transfer">FT1. Parameters and the actual first transfer</h2>
+<p>Let <span class="math" data-tex="\(q=1+\epsilon_0\in(1,2)\)">\(q=1+\epsilon_0\in(1,2)\)</span>, let the original packet squared norms be one, and retain <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>. Define the original annular Laplacian bound and physical scale factor by</p>
+<span class="math math-display" data-tex="\[
+\chi=4\pi^2(1+\epsilon_0/2)^2,\qquad
+\kappa=q^{5n_0/2},\qquad
+B=K^{10},\qquad \delta=\nu\chi q^{-n_0/2}.
+\tag{FT1}
+\]">\[
+\chi=4\pi^2(1+\epsilon_0/2)^2,\qquad
+\kappa=q^{5n_0/2},\qquad
+B=K^{10},\qquad \delta=\nu\chi q^{-n_0/2}.
+\tag{FT1}
+\]</span>
+<p>The letters <span class="math" data-tex="\(B,\kappa,\delta\)">\(B,\kappa,\delta\)</span> abbreviate these full expressions; they do not alter the equations or their physical time. Take</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K\geq\max\{10^{10},(400q^5\sqrt2)^4\},\qquad
+K\geq\left(\frac{7}{1-q^{-1/100}}\right)^{1/80},\\
+0&lt;\epsilon\leq K^{-100}e^{-10K^{10}},\qquad
+\delta\leq K^{-200}e^{-10K^{10}}.
+\end{gathered}
+\tag{FT2}
+\]">\[
+\begin{gathered}
+K\geq\max\{10^{10},(400q^5\sqrt2)^4\},\qquad
+K\geq\left(\frac{7}{1-q^{-1/100}}\right)^{1/80},\\
+0&lt;\epsilon\leq K^{-100}e^{-10K^{10}},\qquad
+\delta\leq K^{-200}e^{-10K^{10}}.
+\end{gathered}
+\tag{FT2}
+\]</span>
+<p>The last restriction is achieved by any integer</p>
+<span class="math math-display" data-tex="\[
+n_0\geq\frac{2}{\log q}
+\bigl[\log(\nu\chi)+200\log K+10K^{10}\bigr].
+\tag{FT3}
+\]">\[
+n_0\geq\frac{2}{\log q}
+\bigl[\log(\nu\chi)+200\log K+10K^{10}\bigr].
+\tag{FT3}
+\]</span>
+<p>Let <span class="math" data-tex="\(u(0)=\psi_{1,n_0}\)">\(u(0)=\psi_{1,n_0}\)</span> and let <span class="math" data-tex="\([0,T_*)\)">\([0,T_*)\)</span> be its already constructed maximal <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> interval. Define an actual initial receiver endpoint by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t_J=\inf\left\{t\in(0,T_*):\int_0^t a_{n_0+1}(s)^2\,ds
+=\kappa^{-1}K^{-1/4}\right\},\\
+T_0=\min\{2\kappa^{-1},t_J,T_*\},\qquad \inf\varnothing=+\infty.
+\end{gathered}
+\tag{FT4}
+\]">\[
+\begin{gathered}
+t_J=\inf\left\{t\in(0,T_*):\int_0^t a_{n_0+1}(s)^2\,ds
+=\kappa^{-1}K^{-1/4}\right\},\\
+T_0=\min\{2\kappa^{-1},t_J,T_*\},\qquad \inf\varnothing=+\infty.
+\end{gathered}
+\tag{FT4}
+\]</span>
+<p>We prove that there is a first time <span class="math" data-tex="\(t_c\)">\(t_c\)</span> with <span class="math" data-tex="\(c_{n_0}(t_c)=\epsilon^2K^{-10}\)">\(c_{n_0}(t_c)=\epsilon^2K^{-10}\)</span>, and an actual transfer time</p>
+<span class="math math-display" data-tex="\[
+t_2=t_c+\kappa^{-1}K^{-1/2}&lt;T_0\leq2\kappa^{-1},\qquad T_0&lt;T_*,
+\tag{FT5}
+\]">\[
+t_2=t_c+\kappa^{-1}K^{-1/2}&lt;T_0\leq2\kappa^{-1},\qquad T_0&lt;T_*,
+\tag{FT5}
+\]</span>
+<p>such that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+1&lt;\kappa t_c&lt;\sqrt2,\qquad
+0&lt;\sqrt2-\kappa t_c\leq\frac{10\log K+2}{K^{10}},\\
+1-7K^{-80}\leq a_{n_0+1}(t_2)\leq1,\\
+\|u(t_2)-a_{n_0+1}(t_2)\psi_{1,n_0+1}\|_2^2\leq7K^{-80},\\
+\|u(t_2)-\psi_{1,n_0+1}\|_2\leq3K^{-40}.
+\end{gathered}
+\tag{FT6}
+\]">\[
+\begin{gathered}
+1&lt;\kappa t_c&lt;\sqrt2,\qquad
+0&lt;\sqrt2-\kappa t_c\leq\frac{10\log K+2}{K^{10}},\\
+1-7K^{-80}\leq a_{n_0+1}(t_2)\leq1,\\
+\|u(t_2)-a_{n_0+1}(t_2)\psi_{1,n_0+1}\|_2^2\leq7K^{-80},\\
+\|u(t_2)-\psi_{1,n_0+1}\|_2\leq3K^{-40}.
+\end{gathered}
+\tag{FT6}
+\]</span>
+<p>Initially all estimates are interpreted on compact subintervals of <span class="math" data-tex="\([0,T_0)\)">\([0,T_0)\)</span>. The full weighted-tail argument FT53–FT58 below depends only on this endpoint definition and VR24, and is independent of activation or transfer. It gives a uniform bound for the original <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> norm up to <span class="math" data-tex="\(T_0\)">\(T_0\)</span>. The uniform local existence time from the constructed flow therefore excludes <span class="math" data-tex="\(T_0=T_*\)">\(T_0=T_*\)</span>: otherwise restart at a time sufficiently close to <span class="math" data-tex="\(T_*\)">\(T_*\)</span> with the same bounded norm. Thus <span class="math" data-tex="\(T_0&lt;T_*\)">\(T_0&lt;T_*\)</span>, all estimates extend to <span class="math" data-tex="\(T_0\)">\(T_0\)</span> by continuity, and that endpoint is either the clock <span class="math" data-tex="\(2\kappa^{-1}\)">\(2\kappa^{-1}\)</span> or the first actual receiver-input threshold. This establishes the continuation needed before constructing the transfer; no lifetime or transfer estimate is assumed.</p>
+<p>Write only for readability</p>
+<span class="math math-display" data-tex="\[
+a=a_{n_0},\quad b=b_{n_0},\quad c=c_{n_0},\quad
+d=d_{n_0},\quad z=a_{n_0+1},\qquad
+\lambda=\kappa q^{5/2}K.
+\tag{FT7}
+\]">\[
+a=a_{n_0},\quad b=b_{n_0},\quad c=c_{n_0},\quad
+d=d_{n_0},\quad z=a_{n_0+1},\qquad
+\lambda=\kappa q^{5/2}K.
+\tag{FT7}
+\]</span>
+<p>All these are the original coordinates, evaluated at original physical time <span class="math" data-tex="\(t\)">\(t\)</span>. The total energy identity and disjoint band projections give</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_2\leq1,\quad |X_{i,n}(t)|\leq1,\quad
+|v_{i,n}(t)|\leq\nu\chi q^{2n}\sqrt{2E_{i,n}(t)},
+\qquad v_{i,n}=\nu\langle\Delta u_{i,n},\psi_{i,n}\rangle.
+\tag{FT8}
+\]">\[
+\|u(t)\|_2\leq1,\quad |X_{i,n}(t)|\leq1,\quad
+|v_{i,n}(t)|\leq\nu\chi q^{2n}\sqrt{2E_{i,n}(t)},
+\qquad v_{i,n}=\nu\langle\Delta u_{i,n},\psi_{i,n}\rangle.
+\tag{FT8}
+\]</span>
+<p>In particular <span class="math" data-tex="\(|v_{i,n_0}|\leq\kappa\delta\)">\(|v_{i,n_0}|\leq\kappa\delta\)</span>. VR7 also proves throughout this whole interval</p>
+<span class="math math-display" data-tex="\[
+\sqrt{2(E_{2,n_0}+E_{3,n_0})}
+\leq\kappa\epsilon\sqrt{1+\epsilon^2e^{-2B}}\,t
+\leq3\epsilon.
+\tag{FT9}
+\]">\[
+\sqrt{2(E_{2,n_0}+E_{3,n_0})}
+\leq\kappa\epsilon\sqrt{1+\epsilon^2e^{-2B}}\,t
+\leq3\epsilon.
+\tag{FT9}
+\]</span>
+<p>Thus <span class="math" data-tex="\(|v_{2,n_0}|\leq3\kappa\delta\epsilon\)">\(|v_{2,n_0}|\leq3\kappa\delta\epsilon\)</span>, and <span class="math" data-tex="\(b^2+c^2\leq9\epsilon^2\)">\(b^2+c^2\leq9\epsilon^2\)</span>. The actual <span class="math" data-tex="\(c\)">\(c\)</span> is positive at positive times by VA17.</p>
+<p><img src="assets/NS-FLUID-44/original-viscous-first-transfer-51FF2B7BC87648912A1DF40B779E80ACD4A9283CFF1E44CE034799E2D96D882F.png" alt="The actual first-transfer interval, original band coupling, full weighted tail and corrected next-drive range." class="course-figure" width="2250" height="1650" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-viscous-first-transfer" data-asset-sha256="51FF2B7BC87648912A1DF40B779E80ACD4A9283CFF1E44CE034799E2D96D882F"></p>
+<p>The timeline is schematic: its spacing does not represent the very different physical durations. FT19–FT29 construct the marked times, FT31–FT52 prove concentration, and FT53–FT58 control every upper band and give continuation. FT64–FT65 give the displayed lower and upper bounds for the receiving drive at the same checkpoint. The original viscosity, physical time and outgoing coefficient remain explicit. Human comparison: Terence Tao, arXiv:1402.0290v3, original author TeX, lines1506–1604,2039–2171 and2196–2550. The diagram represents proved bounds, not a numerical trajectory.</p>
+<h2 id="ft2-control-the-entire-outgoing-collection-before-activation">FT2. Control the entire outgoing collection before activation</h2>
+<p>Keep the full fourth band at the initial scale and every band above it:</p>
+<span class="math math-display" data-tex="\[
+W=E_{4,n_0}+\sum_{m&gt;n_0}\sum_{i=1}^4E_{i,m}.
+\tag{FT10}
+\]">\[
+W=E_{4,n_0}+\sum_{m&gt;n_0}\sum_{i=1}^4E_{i,m}.
+\tag{FT10}
+\]</span>
+<p>Adding their actual field-energy equations cancels every internal pump and gives</p>
+<span class="math math-display" data-tex="\[
+W&#x27;=\kappa\epsilon^{-2}cad
+-\nu\left(\|\nabla u_{4,n_0}\|_2^2
++\sum_{m&gt;n_0,i}\|\nabla u_{i,m}\|_2^2\right).
+\tag{FT11}
+\]">\[
+W&#x27;=\kappa\epsilon^{-2}cad
+-\nu\left(\|\nabla u_{4,n_0}\|_2^2
++\sum_{m&gt;n_0,i}\|\nabla u_{i,m}\|_2^2\right).
+\tag{FT11}
+\]</span>
+<p>The boundary term <span class="math" data-tex="\(-\lambda d^2z\)">\(-\lambda d^2z\)</span> from the fourth band cancels the incoming term <span class="math" data-tex="\(+\lambda d^2z\)">\(+\lambda d^2z\)</span> of the upper collection. The remaining scale boundary at infinity tends to zero: VD14 bounds each coordinate by a constant times <span class="math" data-tex="\(q^{-10m}\)">\(q^{-10m}\)</span>, uniformly on this compact time interval, whereas each cubic flux has coefficient <span class="math" data-tex="\(q^{5m/2}K\)">\(q^{5m/2}K\)</span>. The complete dissipation sum is integrable by the full energy identity. Finite partial sums followed by their integrated limit therefore justify FT11.</p>
+<p>Since <span class="math" data-tex="\(W(0)=0\)">\(W(0)=0\)</span> and <span class="math" data-tex="\(|d|\leq\sqrt{2W}\)">\(|d|\leq\sqrt{2W}\)</span>, regularization by <span class="math" data-tex="\(\sqrt{2W+\eta}\)">\(\sqrt{2W+\eta}\)</span>, integration and <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\sqrt{2W(t)}\leq\kappa\epsilon^{-2}\int_0^t c(s)|a(s)|\,ds.
+\tag{FT12}
+\]">\[
+\sqrt{2W(t)}\leq\kappa\epsilon^{-2}\int_0^t c(s)|a(s)|\,ds.
+\tag{FT12}
+\]</span>
+<p>Define the first threshold by the largest initial interval in <span class="math" data-tex="\([0,T_0]\)">\([0,T_0]\)</span> on which <span class="math" data-tex="\(c\leq\epsilon^2/B\)">\(c\leq\epsilon^2/B\)</span>. It has positive length. Until its endpoint, FT12 gives</p>
+<span class="math math-display" data-tex="\[
+|d(t)|,|z(t)|\leq\sqrt{2W(t)}\leq\frac{\kappa t}{B}\leq\frac2B.
+\tag{FT13}
+\]">\[
+|d(t)|,|z(t)|\leq\sqrt{2W(t)}\leq\frac{\kappa t}{B}\leq\frac2B.
+\tag{FT13}
+\]</span>
+<p>All lower bands vanish exactly, so the actual first-coordinate equation has no previous-scale input. It is</p>
+<span class="math math-display" data-tex="\[
+a&#x27;=-\kappa\epsilon^{-2}cd-\kappa\epsilon ab
+-\kappa\epsilon^2e^{-B}ac+v_{1,n_0}.
+\tag{FT14}
+\]">\[
+a&#x27;=-\kappa\epsilon^{-2}cd-\kappa\epsilon ab
+-\kappa\epsilon^2e^{-B}ac+v_{1,n_0}.
+\tag{FT14}
+\]</span>
+<p>Before the threshold its absolute derivative is at most
+<span class="math" data-tex="\(\kappa(2B^{-2}+4\epsilon^2+\delta)\)">\(\kappa(2B^{-2}+4\epsilon^2+\delta)\)</span>: use FT13 for the rotor, FT9 for the second coordinate, <span class="math" data-tex="\(c\leq\epsilon^2/B\)">\(c\leq\epsilon^2/B\)</span> for the weak pump, and FT8 for viscosity. Integrating for <span class="math" data-tex="\(\kappa t\leq2\)">\(\kappa t\leq2\)</span>, and using <span class="math" data-tex="\(a\leq1\)">\(a\leq1\)</span>, proves</p>
+<span class="math math-display" data-tex="\[
+0\leq1-a(t)\leq4B^{-2}+8\epsilon^2+2\delta
+\leq5B^{-2},\qquad a(t)^2\geq1-10B^{-2}.
+\tag{FT15}
+\]">\[
+0\leq1-a(t)\leq4B^{-2}+8\epsilon^2+2\delta
+\leq5B^{-2},\qquad a(t)^2\geq1-10B^{-2}.
+\tag{FT15}
+\]</span>
+<p>The last inequality uses <span class="math" data-tex="\((1-x)^2\geq1-2x\)">\((1-x)^2\geq1-2x\)</span>; FT2 gives <span class="math" data-tex="\(8\epsilon^2+2\delta\leq B^{-2}\)">\(8\epsilon^2+2\delta\leq B^{-2}\)</span>. The complete second equation and its exact signed heat-response upper bound VR12 give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b&#x27;\geq\kappa\epsilon
+(1-10B^{-2}-\epsilon^2/B-3\delta)
+\geq\kappa\epsilon(1-12B^{-2}),\\
+\epsilon\kappa t(1-12B^{-2})\leq b(t)\leq\epsilon\kappa t.
+\end{gathered}
+\tag{FT16}
+\]">\[
+\begin{gathered}
+b&#x27;\geq\kappa\epsilon
+(1-10B^{-2}-\epsilon^2/B-3\delta)
+\geq\kappa\epsilon(1-12B^{-2}),\\
+\epsilon\kappa t(1-12B^{-2})\leq b(t)\leq\epsilon\kappa t.
+\end{gathered}
+\tag{FT16}
+\]</span>
+<p>Here <span class="math" data-tex="\(\epsilon^2/B+3\delta\leq2B^{-2}\)">\(\epsilon^2/B+3\delta\leq2B^{-2}\)</span> follows directly from FT2. In particular <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span> on this initial interval.</p>
+<h2 id="ft3-construct-and-locate-the-actual-viscous-activation-time">FT3. Construct and locate the actual viscous activation time</h2>
+<p>The exact memory equation retains its positive kernel:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c&#x27;={}&amp;\kappa\epsilon^2e^{-B}a^2
++\kappa\epsilon^{-1}Bbc
+-\nu q^{2n_0}G_3c
++\nu^2\int_0^t\mathscr K_{3,n_0}(t-s)c(s)\,ds,\\
+&amp;0&lt;G_3\leq\chi,\qquad
+0\leq\mathscr K_{3,n_0}(r)\leq q^{4n_0}\chi^2.
+\end{aligned}
+\tag{FT17}
+\]">\[
+\begin{aligned}
+c&#x27;={}&amp;\kappa\epsilon^2e^{-B}a^2
++\kappa\epsilon^{-1}Bbc
+-\nu q^{2n_0}G_3c
++\nu^2\int_0^t\mathscr K_{3,n_0}(t-s)c(s)\,ds,\\
+&amp;0&lt;G_3\leq\chi,\qquad
+0\leq\mathscr K_{3,n_0}(r)\leq q^{4n_0}\chi^2.
+\end{aligned}
+\tag{FT17}
+\]</span>
+<p>The bounds are consequences of the original Fourier support, and the kernel and coordinate are nonnegative by VA2–VA9. Thus the last term can be discarded only for a lower estimate, and the remaining damping is at most <span class="math" data-tex="\(\kappa\delta c\)">\(\kappa\delta c\)</span>.</p>
+<p>For the upper estimate use the exact positive heat response VR8, with <span class="math" data-tex="\(R\leq1\)">\(R\leq1\)</span>, <span class="math" data-tex="\(a^2\leq1\)">\(a^2\leq1\)</span>, and <span class="math" data-tex="\(b(s)\leq\epsilon\kappa s\)">\(b(s)\leq\epsilon\kappa s\)</span>. The resulting scalar Volterra inequality is bounded by its integrating-factor solution. This can be proved by iterating its nonnegative kernel, whose successive iterates have the simplex-factorial bound on the compact interval. For the lower estimate integrate the differential inequality from FT17 using FT15–FT16. Keeping the factor from the physical substitution <span class="math" data-tex="\(\sigma=\kappa s\)">\(\sigma=\kappa s\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+I_B(x)=\int_0^x e^{-B\sigma^2/2}\,d\sigma,\qquad
+\ell=(1-10B^{-2})e^{-24/B-2\delta}\geq\frac12.
+\tag{FT18}
+\]">\[
+I_B(x)=\int_0^x e^{-B\sigma^2/2}\,d\sigma,\qquad
+\ell=(1-10B^{-2})e^{-24/B-2\delta}\geq\frac12.
+\tag{FT18}
+\]</span>
+<p>Indeed</p>
+<span class="math math-display" data-tex="\[
+\ell\geq1-10B^{-2}-24/B-2\delta\geq1-26/B\geq1/2.
+\]">\[
+\ell\geq1-10B^{-2}-24/B-2\delta\geq1-26/B\geq1/2.
+\]</span>
+<p>On the entire initial threshold interval the two comparisons are</p>
+<span class="math math-display" data-tex="\[
+\ell\epsilon^2e^{B((\kappa t)^2/2-1)}I_B(\kappa t)
+\leq c(t)\leq
+\epsilon^2e^{B((\kappa t)^2/2-1)}I_B(\kappa t).
+\tag{FT19}
+\]">\[
+\ell\epsilon^2e^{B((\kappa t)^2/2-1)}I_B(\kappa t)
+\leq c(t)\leq
+\epsilon^2e^{B((\kappa t)^2/2-1)}I_B(\kappa t).
+\tag{FT19}
+\]</span>
+<p>For the lower exponent, the exact integrated coefficient is at least
+<span class="math" data-tex="\(B((\kappa t)^2-(\kappa s)^2)/2-24/B-2\delta\)">\(B((\kappa t)^2-(\kappa s)^2)/2-24/B-2\delta\)</span>, because both physical endpoints have <span class="math" data-tex="\(\kappa t\leq2\)">\(\kappa t\leq2\)</span>. The forcing has the lower factor <span class="math" data-tex="\(1-10B^{-2}\)">\(1-10B^{-2}\)</span>. This proves every factor in FT19.</p>
+<p>For <span class="math" data-tex="\(\kappa t\leq1\)">\(\kappa t\leq1\)</span> the upper bound is at most <span class="math" data-tex="\(\epsilon^2e^{-B/2}&lt;\epsilon^2/B\)">\(\epsilon^2e^{-B/2}&lt;\epsilon^2/B\)</span>, since <span class="math" data-tex="\(e^{B/2}\geq B^2/8&gt;B\)">\(e^{B/2}\geq B^2/8&gt;B\)</span>. For <span class="math" data-tex="\(1\leq x\leq2\)">\(1\leq x\leq2\)</span>, direct integration gives</p>
+<span class="math math-display" data-tex="\[
+\frac{e^{-1/2}}{\sqrt B}\leq I_B(x)&lt;\frac2{\sqrt B}.
+\tag{FT20}
+\]">\[
+\frac{e^{-1/2}}{\sqrt B}\leq I_B(x)&lt;\frac2{\sqrt B}.
+\tag{FT20}
+\]</span>
+<p>The lower estimate integrates <span class="math" data-tex="\([0,B^{-1/2}]\)">\([0,B^{-1/2}]\)</span>; the upper follows from
+<span class="math" data-tex="\(\int_0^\infty e^{-v^2/2}\,dv\leq1+\int_1^\infty v e^{-v^2/2}\,dv&lt;2\)">\(\int_0^\infty e^{-v^2/2}\,dv\leq1+\int_1^\infty v e^{-v^2/2}\,dv&lt;2\)</span>, with the complete substitution factor <span class="math" data-tex="\(B^{-1/2}\)">\(B^{-1/2}\)</span>. FT19 at <span class="math" data-tex="\(\kappa t=3/2\)">\(\kappa t=3/2\)</span> exceeds the threshold: its lower bound is <span class="math" data-tex="\(\epsilon^2e^{B/8-1/2}/(2\sqrt B)&gt;\epsilon^2/B\)">\(\epsilon^2e^{B/8-1/2}/(2\sqrt B)&gt;\epsilon^2/B\)</span>, since <span class="math" data-tex="\(e^{-1/2}&gt;1/2\)">\(e^{-1/2}&gt;1/2\)</span> and <span class="math" data-tex="\(\sqrt B&gt;4\)">\(\sqrt B&gt;4\)</span>. Thus the first threshold is attained at some <span class="math" data-tex="\(1&lt;\kappa t_c&lt;3/2\)">\(1&lt;\kappa t_c&lt;3/2\)</span>.</p>
+<p>For completeness, this comparison cannot be cut off by the receiver endpoint. If the drive threshold were not attained strictly before <span class="math" data-tex="\(T_0\)">\(T_0\)</span>, FT13 would give
+<span class="math" data-tex="\(\kappa\int_0^{T_0}z^2\leq8/(3B^2)&lt;K^{-1/4}\)">\(\kappa\int_0^{T_0}z^2\leq8/(3B^2)&lt;K^{-1/4}\)</span>, excluding <span class="math" data-tex="\(T_0=t_J\)">\(T_0=t_J\)</span>. We would then have <span class="math" data-tex="\(T_0=2\kappa^{-1}\)">\(T_0=2\kappa^{-1}\)</span>, so the comparison at <span class="math" data-tex="\(3/(2\kappa)\)">\(3/(2\kappa)\)</span> would be available and contradictory. Thus the threshold occurs strictly before <span class="math" data-tex="\(T_0\)">\(T_0\)</span>. The upper comparison excludes <span class="math" data-tex="\(\kappa t_c\leq1\)">\(\kappa t_c\leq1\)</span>; if <span class="math" data-tex="\(\kappa t_c\geq3/2\)">\(\kappa t_c\geq3/2\)</span>, the lower comparison again contradicts its definition. This justifies the first threshold on the actual existence interval.</p>
+<p>Before it, FT17 gives
+<span class="math" data-tex="\(c&#x27;\geq\kappa\epsilon^2[e^{-B}(1-10B^{-2})-\delta/B]&gt;0\)">\(c&#x27;\geq\kappa\epsilon^2[e^{-B}(1-10B^{-2})-\delta/B]&gt;0\)</span>.
+The strict positivity follows from <span class="math" data-tex="\(\delta/B\leq K^{-210}e^{-10B}&lt;e^{-B}/2\)">\(\delta/B\leq K^{-210}e^{-10B}&lt;e^{-B}/2\)</span> and <span class="math" data-tex="\(1-10B^{-2}&gt;1/2\)">\(1-10B^{-2}&gt;1/2\)</span>. Hence this is the first threshold time. Substitution of its exact value into FT19–FT20 gives</p>
+<span class="math math-display" data-tex="\[
+-\tfrac12\log B-\log2
+\leq B((\kappa t_c)^2/2-1)
+\leq-\tfrac12\log B+\log2+\tfrac12&lt;0.
+\tag{FT21}
+\]">\[
+-\tfrac12\log B-\log2
+\leq B((\kappa t_c)^2/2-1)
+\leq-\tfrac12\log B+\log2+\tfrac12&lt;0.
+\tag{FT21}
+\]</span>
+<p>This proves the first line of FT6: divide the left inequality by
+<span class="math" data-tex="\(B(\sqrt2+\kappa t_c)/2\)">\(B(\sqrt2+\kappa t_c)/2\)</span>, use <span class="math" data-tex="\(\kappa t_c&gt;1\)">\(\kappa t_c&gt;1\)</span>, and retain <span class="math" data-tex="\(\log B=10\log K\)">\(\log B=10\log K\)</span>.</p>
+<h2 id="ft4-strong-activation-and-an-actual-receiver-interval">FT4. Strong activation and an actual receiver interval</h2>
+<p>First obtain bounds on the entire actual interval <span class="math" data-tex="\([0,T_0]\)">\([0,T_0]\)</span>. FT9 and the positive heat-response comparison give</p>
+<span class="math math-display" data-tex="\[
+0\leq c(t)\leq
+\epsilon^2e^{-B}\frac{e^{3B\kappa t}-1}{3B}
+\leq\epsilon^2e^{5B}.
+\tag{FT22}
+\]">\[
+0\leq c(t)\leq
+\epsilon^2e^{-B}\frac{e^{3B\kappa t}-1}{3B}
+\leq\epsilon^2e^{5B}.
+\tag{FT22}
+\]</span>
+<p>Retaining the negative amplifier and viscous terms in the integral for <span class="math" data-tex="\(b\)">\(b\)</span>, we therefore have for <span class="math" data-tex="\(t_c\leq t\leq T_0\)">\(t_c\leq t\leq T_0\)</span></p>
+<span class="math math-display" data-tex="\[
+b(t)\geq\epsilon(1-12B^{-2})
+-2\epsilon^3Be^{10B}-6\delta\epsilon
+\geq\epsilon/2.
+\tag{FT23}
+\]">\[
+b(t)\geq\epsilon(1-12B^{-2})
+-2\epsilon^3Be^{10B}-6\delta\epsilon
+\geq\epsilon/2.
+\tag{FT23}
+\]</span>
+<p>Each of <span class="math" data-tex="\(12B^{-2},2\epsilon^2Be^{10B},6\delta\)">\(12B^{-2},2\epsilon^2Be^{10B},6\delta\)</span> is at most <span class="math" data-tex="\(1/8\)">\(1/8\)</span> by FT2, so this final bound follows. FT17 now gives</p>
+<span class="math math-display" data-tex="\[
+c&#x27;\geq\kappa(B/2-\delta)c\geq\kappa Bc/3&gt;0.
+\tag{FT24}
+\]">\[
+c&#x27;\geq\kappa(B/2-\delta)c\geq\kappa Bc/3&gt;0.
+\tag{FT24}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(c\)">\(c\)</span> is nondecreasing from time zero through the whole interval. The complete viscous memory in FT17 then obeys</p>
+<span class="math math-display" data-tex="\[
+-\kappa\delta\leq\frac{v_{3,n_0}(t)}{c(t)}
+\leq\nu^2q^{4n_0}\chi^2t
+\leq2\kappa\delta^2\qquad(t&gt;0).
+\tag{FT25}
+\]">\[
+-\kappa\delta\leq\frac{v_{3,n_0}(t)}{c(t)}
+\leq\nu^2q^{4n_0}\chi^2t
+\leq2\kappa\delta^2\qquad(t&gt;0).
+\tag{FT25}
+\]</span>
+<p>No division by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> or deletion of past memory is used here. For <span class="math" data-tex="\(t\geq t_c\)">\(t\geq t_c\)</span>, the retained weak source divided by <span class="math" data-tex="\(c\)">\(c\)</span> is at most <span class="math" data-tex="\(\kappa B e^{-B}\)">\(\kappa B e^{-B}\)</span>. Together with <span class="math" data-tex="\(b\leq3\epsilon\)">\(b\leq3\epsilon\)</span>, FT24–FT25 give</p>
+<span class="math math-display" data-tex="\[
+\kappa B/3\leq c&#x27;/c\leq4\kappa B,
+\qquad
+\epsilon^2K^{-10}e^{B\kappa(t-t_c)/3}
+\leq c(t)\leq\epsilon^2K^{-10}e^{4B\kappa(t-t_c)}.
+\tag{FT26}
+\]">\[
+\kappa B/3\leq c&#x27;/c\leq4\kappa B,
+\qquad
+\epsilon^2K^{-10}e^{B\kappa(t-t_c)/3}
+\leq c(t)\leq\epsilon^2K^{-10}e^{4B\kappa(t-t_c)}.
+\tag{FT26}
+\]</span>
+<p>For the upper bound use <span class="math" data-tex="\(e^{-B}+2\delta^2/B\leq1\)">\(e^{-B}+2\delta^2/B\leq1\)</span>, which follows from <span class="math" data-tex="\(B\geq2\)">\(B\geq2\)</span> and FT2.</p>
+<p>Define actual physical times</p>
+<span class="math math-display" data-tex="\[
+s_0=t_c+\kappa^{-1}K^{-9},\qquad
+t_1=t_c+\kappa^{-1}K^{-1},\qquad
+t_2=t_c+\kappa^{-1}K^{-1/2}.
+\tag{FT27}
+\]">\[
+s_0=t_c+\kappa^{-1}K^{-9},\qquad
+t_1=t_c+\kappa^{-1}K^{-1},\qquad
+t_2=t_c+\kappa^{-1}K^{-1/2}.
+\tag{FT27}
+\]</span>
+<p>They satisfy <span class="math" data-tex="\(t_c&lt;s_0&lt;t_1&lt;t_2&lt;2\kappa^{-1}\)">\(t_c&lt;s_0&lt;t_1&lt;t_2&lt;2\kappa^{-1}\)</span>. Since <span class="math" data-tex="\(\log K\leq\sqrt K\)">\(\log K\leq\sqrt K\)</span> and <span class="math" data-tex="\(\sqrt K\geq10^5&gt;330\)">\(\sqrt K\geq10^5&gt;330\)</span>, we have <span class="math" data-tex="\(K/3\geq110\log K\)">\(K/3\geq110\log K\)</span>. Hence FT26 proves</p>
+<span class="math math-display" data-tex="\[
+\omega:=\epsilon^{-2}c\geq K^{100}
+\qquad(s_0\leq t\leq T_0).
+\tag{FT28}
+\]">\[
+\omega:=\epsilon^{-2}c\geq K^{100}
+\qquad(s_0\leq t\leq T_0).
+\tag{FT28}
+\]</span>
+<p>The receiver moment is now bounded from the actual constructed interval. Before <span class="math" data-tex="\(t_c\)">\(t_c\)</span>, FT13 gives <span class="math" data-tex="\(z^2\leq(\kappa t)^2/B^2\)">\(z^2\leq(\kappa t)^2/B^2\)</span>. Afterwards use only <span class="math" data-tex="\(|z|\leq1\)">\(|z|\leq1\)</span>. First apply these estimates up to <span class="math" data-tex="\(\min\{t_2,T_0\}\)">\(\min\{t_2,T_0\}\)</span>. They give</p>
+<span class="math math-display" data-tex="\[
+\kappa\int_0^{\min\{t_2,T_0\}}z(t)^2\,dt
+\leq4K^{-20}+K^{-1/2}&lt;K^{-1/4}.
+\tag{FT29}
+\]">\[
+\kappa\int_0^{\min\{t_2,T_0\}}z(t)^2\,dt
+\leq4K^{-20}+K^{-1/2}&lt;K^{-1/4}.
+\tag{FT29}
+\]</span>
+<p>The strict inequality follows from <span class="math" data-tex="\(K^{-1/2}\leq K^{-1/4}/2\)">\(K^{-1/2}\leq K^{-1/4}/2\)</span> and <span class="math" data-tex="\(4K^{-20}&lt;K^{-1/4}/2\)">\(4K^{-20}&lt;K^{-1/4}/2\)</span>. If <span class="math" data-tex="\(T_0\leq t_2\)">\(T_0\leq t_2\)</span>, then <span class="math" data-tex="\(t_2&lt;2\kappa^{-1}\)">\(t_2&lt;2\kappa^{-1}\)</span> forces <span class="math" data-tex="\(T_0=t_J\)">\(T_0=t_J\)</span>, contradicting this strict bound. Hence <span class="math" data-tex="\(t_2&lt;T_0&lt;T_*\)">\(t_2&lt;T_0&lt;T_*\)</span>, and FT29 also holds with its upper endpoint simply <span class="math" data-tex="\(t_2\)">\(t_2\)</span>. The receiver stopping threshold in VR20 is not reached anywhere in <span class="math" data-tex="\([0,t_2]\)">\([0,t_2]\)</span>. VR23–VR24 apply on the entire interval, giving</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|b_{n_0+1}|\leq q^{5/2}\sqrt2\epsilon K^{-1/4},\qquad
+0\leq c_{n_0+1}\leq q^{5/2}\epsilon^2K^{-1/4}e^{-3B/4},\\
+|d_{n_0+1}|\leq\sqrt{2E_{4,n_0+1}}\leq K^{-20}.
+\end{gathered}
+\tag{FT30}
+\]">\[
+\begin{gathered}
+|b_{n_0+1}|\leq q^{5/2}\sqrt2\epsilon K^{-1/4},\qquad
+0\leq c_{n_0+1}\leq q^{5/2}\epsilon^2K^{-1/4}e^{-3B/4},\\
+|d_{n_0+1}|\leq\sqrt{2E_{4,n_0+1}}\leq K^{-20}.
+\end{gathered}
+\tag{FT30}
+\]</span>
+<p>This proves that the entire chosen transfer interval lies inside the previously constructed receiver interval. It does not assume that conclusion as a bootstrap input.</p>
+<h2 id="ft5-keep-and-bound-every-output-error">FT5. Keep and bound every output error</h2>
+<p>The exact output equation is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+z&#x27;&amp;=\lambda d^2+r_z,\\
+r_z&amp;=-\kappa q^{5/2}\epsilon z b_{n_0+1}
+-\kappa q^{5/2}\epsilon^2e^{-B}z c_{n_0+1}\\
+&amp;\quad-\kappa q^{5/2}\epsilon^{-2}c_{n_0+1}d_{n_0+1}
++v_{1,n_0+1}.
+\end{aligned}
+\tag{FT31}
+\]">\[
+\begin{aligned}
+z&#x27;&amp;=\lambda d^2+r_z,\\
+r_z&amp;=-\kappa q^{5/2}\epsilon z b_{n_0+1}
+-\kappa q^{5/2}\epsilon^2e^{-B}z c_{n_0+1}\\
+&amp;\quad-\kappa q^{5/2}\epsilon^{-2}c_{n_0+1}d_{n_0+1}
++v_{1,n_0+1}.
+\end{aligned}
+\tag{FT31}
+\]</span>
+<p>FT8 and FT30 retain all four contributions in the bound</p>
+<span class="math math-display" data-tex="\[
+\frac{|r_z|}{\kappa}
+\leq q^5\sqrt2\epsilon^2K^{-1/4}
++q^5\epsilon^4K^{-1/4}e^{-7B/4}
++q^5K^{-81/4}e^{-3B/4}+q^2\delta
+\leq\eta,\qquad \eta:=K^{-100}.
+\tag{FT32}
+\]">\[
+\frac{|r_z|}{\kappa}
+\leq q^5\sqrt2\epsilon^2K^{-1/4}
++q^5\epsilon^4K^{-1/4}e^{-7B/4}
++q^5K^{-81/4}e^{-3B/4}+q^2\delta
+\leq\eta,\qquad \eta:=K^{-100}.
+\tag{FT32}
+\]</span>
+<p>Here are whole-range bounds for the last inequality. The first, second and fourth terms are each at most <span class="math" data-tex="\(\eta/4\)">\(\eta/4\)</span>: use <span class="math" data-tex="\(q^5&lt;32\)">\(q^5&lt;32\)</span>, <span class="math" data-tex="\(\sqrt2&lt;3/2\)">\(\sqrt2&lt;3/2\)</span>, <span class="math" data-tex="\(q^2&lt;4\)">\(q^2&lt;4\)</span>, <span class="math" data-tex="\(\epsilon\leq K^{-100}\)">\(\epsilon\leq K^{-100}\)</span>, <span class="math" data-tex="\(\delta\leq K^{-200}\)">\(\delta\leq K^{-200}\)</span>, and <span class="math" data-tex="\(K\geq10^{10}\)">\(K\geq10^{10}\)</span>. For the third, the ninth term of the positive exponential series gives</p>
+<span class="math math-display" data-tex="\[
+e^{-3B/4}\leq9!(4/3)^9K^{-90},\qquad
+32\cdot9!(4/3)^9&lt;2\cdot10^8&lt;K/4.
+\tag{FT33}
+\]">\[
+e^{-3B/4}\leq9!(4/3)^9K^{-90},\qquad
+32\cdot9!(4/3)^9&lt;2\cdot10^8&lt;K/4.
+\tag{FT33}
+\]</span>
+<p>It is therefore at most <span class="math" data-tex="\(K^{-437/4}/4\leq\eta/4\)">\(K^{-437/4}/4\leq\eta/4\)</span>. In particular</p>
+<span class="math math-display" data-tex="\[
+z(t)\geq-\kappa\eta t\geq-2\eta,
+\qquad z(t)\geq z(s)-\kappa\eta(t-s)
+\quad(0\leq s\leq t\leq t_2).
+\tag{FT34}
+\]">\[
+z(t)\geq-\kappa\eta t\geq-2\eta,
+\qquad z(t)\geq z(s)-\kappa\eta(t-s)
+\quad(0\leq s\leq t\leq t_2).
+\tag{FT34}
+\]</span>
+<p>Let <span class="math" data-tex="\(S_5=a^2+b^2+c^2+d^2+z^2\)">\(S_5=a^2+b^2+c^2+d^2+z^2\)</span>. Every original quadratic gate cancels in its derivative, including the full <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> pump, so</p>
+<span class="math math-display" data-tex="\[
+\tfrac12 S_5&#x27;
+=av_{1,n_0}+bv_{2,n_0}+cv_{3,n_0}+dv_{4,n_0}+zr_z.
+\tag{FT35}
+\]">\[
+\tfrac12 S_5&#x27;
+=av_{1,n_0}+bv_{2,n_0}+cv_{3,n_0}+dv_{4,n_0}+zr_z.
+\tag{FT35}
+\]</span>
+<p>FT8 and FT32 yield <span class="math" data-tex="\(|S_5&#x27;|\leq2\kappa(4\delta+\eta)\)">\(|S_5&#x27;|\leq2\kappa(4\delta+\eta)\)</span>. Its initial value is one, and <span class="math" data-tex="\(\delta\leq\eta\)">\(\delta\leq\eta\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+1-20\eta\leq S_5(t)\leq1\qquad(0\leq t\leq t_2).
+\tag{FT36}
+\]">\[
+1-20\eta\leq S_5(t)\leq1\qquad(0\leq t\leq t_2).
+\tag{FT36}
+\]</span>
+<p>The upper bound is the original total energy and orthogonality, not an assumed scalar conservation law. All actual viscous losses remain in FT35.</p>
+<h2 id="ft6-start-the-transfer-using-the-complete-rotor-product">FT6. Start the transfer using the complete rotor product</h2>
+<p>On <span class="math" data-tex="\([s_0,t_2]\)">\([s_0,t_2]\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+p=\epsilon b+\epsilon^2e^{-B}c,\qquad
+r=c&#x27;/c,\qquad M=ad/\omega.
+\tag{FT37}
+\]">\[
+p=\epsilon b+\epsilon^2e^{-B}c,\qquad
+r=c&#x27;/c,\qquad M=ad/\omega.
+\tag{FT37}
+\]</span>
+<p>We have <span class="math" data-tex="\(0\leq p\leq6\epsilon^2\leq1\)">\(0\leq p\leq6\epsilon^2\leq1\)</span>, <span class="math" data-tex="\(0&lt;r\leq4\kappa B\)">\(0&lt;r\leq4\kappa B\)</span>, <span class="math" data-tex="\(|M|\leq K^{-100}/2\)">\(|M|\leq K^{-100}/2\)</span>, and <span class="math" data-tex="\(\lambda&lt;6\kappa K\)">\(\lambda&lt;6\kappa K\)</span>. Differentiating the actual first and fourth equations gives</p>
+<span class="math math-display" data-tex="\[
+M&#x27;=\kappa(a^2-d^2)-(\kappa p+\lambda z+r)M
++\omega^{-1}(dv_{1,n_0}+av_{4,n_0}).
+\tag{FT38}
+\]">\[
+M&#x27;=\kappa(a^2-d^2)-(\kappa p+\lambda z+r)M
++\omega^{-1}(dv_{1,n_0}+av_{4,n_0}).
+\tag{FT38}
+\]</span>
+<p>The absolute value of the remainder after the leading term is at most</p>
+<span class="math math-display" data-tex="\[
+\frac{\kappa}{2}(1+6K+4B)K^{-100}
++2\kappa\delta K^{-100}
+\leq4\kappa K^{-90}.
+\tag{FT39}
+\]">\[
+\frac{\kappa}{2}(1+6K+4B)K^{-100}
++2\kappa\delta K^{-100}
+\leq4\kappa K^{-90}.
+\tag{FT39}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(1+6K+4B\leq6B\)">\(1+6K+4B\leq6B\)</span> for <span class="math" data-tex="\(K\geq2\)">\(K\geq2\)</span>, and <span class="math" data-tex="\(2\delta K^{-100}\leq K^{-90}\)">\(2\delta K^{-100}\leq K^{-90}\)</span>. Thus every subinterval of the actual strongly activated interval satisfies</p>
+<span class="math math-display" data-tex="\[
+\left|\int_u^v(a^2-d^2)\,dt\right|
+\leq\kappa^{-1}K^{-100}+4K^{-90}(v-u),
+\qquad s_0\leq u\leq v\leq t_2.
+\tag{FT40}
+\]">\[
+\left|\int_u^v(a^2-d^2)\,dt\right|
+\leq\kappa^{-1}K^{-100}+4K^{-90}(v-u),
+\qquad s_0\leq u\leq v\leq t_2.
+\tag{FT40}
+\]</span>
+<p>We claim <span class="math" data-tex="\(z(t_1)&gt;1/10\)">\(z(t_1)&gt;1/10\)</span>. Otherwise FT34 gives</p>
+<span class="math math-display" data-tex="\[
+-2\eta\leq z(t)\leq1/10+2\eta\leq11/100
+\]">\[
+-2\eta\leq z(t)\leq1/10+2\eta\leq11/100
+\]</span>
+<p>on <span class="math" data-tex="\([s_0,t_1]\)">\([s_0,t_1]\)</span>. FT9 and FT36 then imply</p>
+<span class="math math-display" data-tex="\[
+a^2+d^2\geq1-20\eta-9\epsilon^2-(11/100)^2\geq49/50.
+\]">\[
+a^2+d^2\geq1-20\eta-9\epsilon^2-(11/100)^2\geq49/50.
+\]</span>
+<p>For</p>
+<span class="math math-display" data-tex="\[
+h=t_1-s_0=\kappa^{-1}(K^{-1}-K^{-9})\geq(2\kappa K)^{-1},
+\]">\[
+h=t_1-s_0=\kappa^{-1}(K^{-1}-K^{-9})\geq(2\kappa K)^{-1},
+\]</span>
+<p>FT40 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_{s_0}^{t_1}d^2\,dt
+&amp;\geq(49/100-2K^{-90})h-\tfrac12\kappa^{-1}K^{-100}\\
+&amp;\geq(12/25)h-\tfrac12\kappa^{-1}K^{-100}
+&gt;\frac1{5\kappa K}.
+\end{aligned}
+\tag{FT41}
+\]">\[
+\begin{aligned}
+\int_{s_0}^{t_1}d^2\,dt
+&amp;\geq(49/100-2K^{-90})h-\tfrac12\kappa^{-1}K^{-100}\\
+&amp;\geq(12/25)h-\tfrac12\kappa^{-1}K^{-100}
+&gt;\frac1{5\kappa K}.
+\end{aligned}
+\tag{FT41}
+\]</span>
+<p>Use <span class="math" data-tex="\(2K^{-90}\leq1/100\)">\(2K^{-90}\leq1/100\)</span> and <span class="math" data-tex="\(K^{99}&gt;25/2\)">\(K^{99}&gt;25/2\)</span> for the last two inequalities. Integrating the full FT31, with FT32 and FT34, would then give</p>
+<span class="math math-display" data-tex="\[
+z(t_1)&gt;-2\eta+q^{5/2}/5-\eta/K&gt;1/10,
+\tag{FT42}
+\]">\[
+z(t_1)&gt;-2\eta+q^{5/2}/5-\eta/K&gt;1/10,
+\tag{FT42}
+\]</span>
+<p>contradiction. It follows that</p>
+<span class="math math-display" data-tex="\[
+z(t_1)&gt;1/10,\qquad z(t)\geq1/20
+\quad(t_1\leq t\leq t_2).
+\tag{FT43}
+\]">\[
+z(t_1)&gt;1/10,\qquad z(t)\geq1/20
+\quad(t_1\leq t\leq t_2).
+\tag{FT43}
+\]</span>
+<p>The second estimate uses FT34 and <span class="math" data-tex="\(2\eta\leq1/20\)">\(2\eta\leq1/20\)</span>. No monotonicity of the actual output is asserted.</p>
+<h2 id="ft7-complete-the-forced-energy-transfer-on-its-valid-interval">FT7. Complete the forced-energy transfer on its valid interval</h2>
+<p>Use the scalar energy outside the output and its exact corrected companion:</p>
+<span class="math math-display" data-tex="\[
+E=\tfrac12(a^2+b^2+c^2+d^2),\qquad
+E^*=E-\frac{\lambda}{2\kappa}Mz.
+\tag{FT44}
+\]">\[
+E=\tfrac12(a^2+b^2+c^2+d^2),\qquad
+E^*=E-\frac{\lambda}{2\kappa}Mz.
+\tag{FT44}
+\]</span>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+V=av_{1,n_0}+bv_{2,n_0}+cv_{3,n_0}+dv_{4,n_0}.
+\]">\[
+V=av_{1,n_0}+bv_{2,n_0}+cv_{3,n_0}+dv_{4,n_0}.
+\]</span>
+<p>FT35 gives <span class="math" data-tex="\(E&#x27;=-\lambda zd^2+V\)">\(E&#x27;=-\lambda zd^2+V\)</span>. Apply FT38 to <span class="math" data-tex="\(Mz\)">\(Mz\)</span>, differentiate <span class="math" data-tex="\(z\)">\(z\)</span> using its full FT31 equation, and substitute</p>
+<span class="math math-display" data-tex="\[
+(a^2+d^2)/2=E^*+\lambda Mz/(2\kappa)-(b^2+c^2)/2.
+\]">\[
+(a^2+d^2)/2=E^*+\lambda Mz/(2\kappa)-(b^2+c^2)/2.
+\]</span>
+<p>The result is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(E^*)&#x27;&amp;=-\lambda zE^*+\mathcal Q,\\
+\mathcal Q&amp;=\tfrac{\lambda}{2}z(b^2+c^2)+V\\
+&amp;\quad+\frac{\lambda}{2\kappa}M
+[ (\kappa p+r)z-\lambda d^2-r_z ]\\
+&amp;\quad-\frac{\lambda}{2\kappa}\omega^{-1}z
+(dv_{1,n_0}+av_{4,n_0}).
+\end{aligned}
+\tag{FT45}
+\]">\[
+\begin{aligned}
+(E^*)&#x27;&amp;=-\lambda zE^*+\mathcal Q,\\
+\mathcal Q&amp;=\tfrac{\lambda}{2}z(b^2+c^2)+V\\
+&amp;\quad+\frac{\lambda}{2\kappa}M
+[ (\kappa p+r)z-\lambda d^2-r_z ]\\
+&amp;\quad-\frac{\lambda}{2\kappa}\omega^{-1}z
+(dv_{1,n_0}+av_{4,n_0}).
+\end{aligned}
+\tag{FT45}
+\]</span>
+<p>The two terms containing <span class="math" data-tex="\(\lambda^2Mz^2/(2\kappa)\)">\(\lambda^2Mz^2/(2\kappa)\)</span> cancel exactly. FT45 retains the weak pump, the changing drive, every viscous projection, the entire next-band error and the original outgoing scale factor. It is the actual viscous specialization of the corrected product calculation, not the inviscid five-mode equation.</p>
+<p>Its error and comparison bounds on <span class="math" data-tex="\([s_0,t_2]\)">\([s_0,t_2]\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|E^*-E|&amp;\leq\tfrac32K^{-99},\\
+|\mathcal Q|&amp;\leq\kappa\bigl[
+27K\epsilon^2+4\delta+9K^{-89}+6\delta K^{-99}\bigr]
+\leq10\kappa K^{-89}.
+\end{aligned}
+\tag{FT46}
+\]">\[
+\begin{aligned}
+|E^*-E|&amp;\leq\tfrac32K^{-99},\\
+|\mathcal Q|&amp;\leq\kappa\bigl[
+27K\epsilon^2+4\delta+9K^{-89}+6\delta K^{-99}\bigr]
+\leq10\kappa K^{-89}.
+\end{aligned}
+\tag{FT46}
+\]</span>
+<p>The bracket in the third term of FT45 has absolute value at most
+<span class="math" data-tex="\(\kappa(1+4B+6K+\eta)\leq6\kappa B\)">\(\kappa(1+4B+6K+\eta)\leq6\kappa B\)</span>; its prefactor is at most <span class="math" data-tex="\((3/2)K^{-99}\)">\((3/2)K^{-99}\)</span>. The other displayed terms follow respectively from FT9, FT8 and FT28. FT2 makes their sum outside <span class="math" data-tex="\(9K^{-89}\)">\(9K^{-89}\)</span> at most <span class="math" data-tex="\(K^{-89}\)">\(K^{-89}\)</span>, proving the final bound.</p>
+<p>The exact integrating factor on this valid interval is</p>
+<span class="math math-display" data-tex="\[
+E^*(t)=e^{-\lambda\int_{s_0}^t z}E^*(s_0)
++\int_{s_0}^t e^{-\lambda\int_v^t z}\mathcal Q(v)\,dv.
+\tag{FT47}
+\]">\[
+E^*(t)=e^{-\lambda\int_{s_0}^t z}E^*(s_0)
++\int_{s_0}^t e^{-\lambda\int_v^t z}\mathcal Q(v)\,dv.
+\tag{FT47}
+\]</span>
+<p>Here <span class="math" data-tex="\(E^*(s_0)\leq1\)">\(E^*(s_0)\leq1\)</span>; its sign is immaterial. FT34 bounds every subinterval factor, including those multiplying the forcing, by</p>
+<span class="math math-display" data-tex="\[
+e^{-\lambda\int_v^t z}
+\leq e^{24K\eta}\leq2,
+\qquad s_0\leq v\leq t\leq t_2.
+\tag{FT48}
+\]">\[
+e^{-\lambda\int_v^t z}
+\leq e^{24K\eta}\leq2,
+\qquad s_0\leq v\leq t\leq t_2.
+\tag{FT48}
+\]</span>
+<p>For the final inequality, <span class="math" data-tex="\(24K\eta\leq1/2\)">\(24K\eta\leq1/2\)</span> and
+<span class="math" data-tex="\(e^{1/2}\leq\sum_{j\geq0}(1/2)^j=2\)">\(e^{1/2}\leq\sum_{j\geq0}(1/2)^j=2\)</span>. For the homogeneous term at <span class="math" data-tex="\(t_2\)">\(t_2\)</span>, split the interval at <span class="math" data-tex="\(t_1\)">\(t_1\)</span> and use FT43:</p>
+<span class="math math-display" data-tex="\[
+e^{-\lambda\int_{s_0}^{t_2}z}
+\leq2\exp\left(-\frac{q^{5/2}(\sqrt K-1)}{20}\right)
+\leq2K^{-80}.
+\tag{FT49}
+\]">\[
+e^{-\lambda\int_{s_0}^{t_2}z}
+\leq2\exp\left(-\frac{q^{5/2}(\sqrt K-1)}{20}\right)
+\leq2K^{-80}.
+\tag{FT49}
+\]</span>
+<p>To verify the final inequality over the whole range, the function
+<span class="math" data-tex="\(g(K)=(\sqrt K-1)/20-80\log K\)">\(g(K)=(\sqrt K-1)/20-80\log K\)</span> has derivative
+<span class="math" data-tex="\((\sqrt K-3200)/(40K)&gt;0\)">\((\sqrt K-3200)/(40K)&gt;0\)</span> for <span class="math" data-tex="\(K\geq10^{10}\)">\(K\geq10^{10}\)</span>, and
+<span class="math" data-tex="\(g(10^{10})&gt;99999/20-2400&gt;0\)">\(g(10^{10})&gt;99999/20-2400&gt;0\)</span>, using <span class="math" data-tex="\(\log10&lt;3\)">\(\log10&lt;3\)</span>. Finally <span class="math" data-tex="\(q^{5/2}&gt;1\)">\(q^{5/2}&gt;1\)</span>.</p>
+<p>Combining FT46–FT49 with <span class="math" data-tex="\(t_2-s_0&lt;2\kappa^{-1}\)">\(t_2-s_0&lt;2\kappa^{-1}\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+0\leq E(t_2)
+\leq2K^{-80}+40K^{-89}+\tfrac32K^{-99}
+\leq3K^{-80}.
+\tag{FT50}
+\]">\[
+0\leq E(t_2)
+\leq2K^{-80}+40K^{-89}+\tfrac32K^{-99}
+\leq3K^{-80}.
+\tag{FT50}
+\]</span>
+<p>Since <span class="math" data-tex="\(z(t_2)&gt;0\)">\(z(t_2)&gt;0\)</span>, FT36 now yields</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+z(t_2)^2=S_5(t_2)-2E(t_2)
+\geq1-20K^{-100}-6K^{-80}\geq1-7K^{-80},\\
+0\leq1-z(t_2)\leq7K^{-80}.
+\end{gathered}
+\tag{FT51}
+\]">\[
+\begin{gathered}
+z(t_2)^2=S_5(t_2)-2E(t_2)
+\geq1-20K^{-100}-6K^{-80}\geq1-7K^{-80},\\
+0\leq1-z(t_2)\leq7K^{-80}.
+\end{gathered}
+\tag{FT51}
+\]</span>
+<p>The full original state, including every orthogonal diffusion component and every other scale, satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|u(t_2)-z(t_2)\psi_{1,n_0+1}\|_2^2
+&amp;=\|u(t_2)\|_2^2-z(t_2)^2\leq7K^{-80},\\
+\|u(t_2)-\psi_{1,n_0+1}\|_2^2
+&amp;\leq7K^{-80}+49K^{-160}\leq8K^{-80}.
+\end{aligned}
+\tag{FT52}
+\]">\[
+\begin{aligned}
+\|u(t_2)-z(t_2)\psi_{1,n_0+1}\|_2^2
+&amp;=\|u(t_2)\|_2^2-z(t_2)^2\leq7K^{-80},\\
+\|u(t_2)-\psi_{1,n_0+1}\|_2^2
+&amp;\leq7K^{-80}+49K^{-160}\leq8K^{-80}.
+\end{aligned}
+\tag{FT52}
+\]</span>
+<p>This proves all concentration statements FT6 and also
+<span class="math" data-tex="\(\sum_iE_{i,n_0}(t_2)\leq(7/2)K^{-80}\)">\(\sum_iE_{i,n_0}(t_2)\leq(7/2)K^{-80}\)</span>.</p>
+<h2 id="ft8-prove-continuation-and-control-every-further-scale">FT8. Prove continuation and control every further scale</h2>
+<p>This argument is independent of the activation and transfer estimates. Set <span class="math" data-tex="\(r_0=n_0+2\)">\(r_0=n_0+2\)</span>, let <span class="math" data-tex="\(E_m=\sum_iE_{i,m}\)">\(E_m=\sum_iE_{i,m}\)</span>, and retain all weights in</p>
+<span class="math math-display" data-tex="\[
+F(t)=\sum_{m\geq r_0}q^{20(m-r_0)}E_m(t),\qquad Y(t)=\sqrt{2F(t)}.
+\tag{FT53}
+\]">\[
+F(t)=\sum_{m\geq r_0}q^{20(m-r_0)}E_m(t),\qquad Y(t)=\sqrt{2F(t)}.
+\tag{FT53}
+\]</span>
+<p>This auxiliary quantity is finite on every compact subinterval of <span class="math" data-tex="\([0,T_0)\)">\([0,T_0)\)</span> by the actual <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> regularity. Its full integrated energy identity, and its derivative almost everywhere, are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F&#x27;={}&amp;\kappa q^5K d_{n_0+1}^2a_{r_0}\\
+&amp;+K\sum_{m&gt;r_0}q^{5m/2}
+[q^{20(m-r_0)}-q^{20(m-1-r_0)}]d_{m-1}^2a_m\\
+&amp;-\nu\sum_{m\geq r_0,i}q^{20(m-r_0)}
+\|\nabla u_{i,m}\|_2^2.
+\end{aligned}
+\tag{FT54}
+\]">\[
+\begin{aligned}
+F&#x27;={}&amp;\kappa q^5K d_{n_0+1}^2a_{r_0}\\
+&amp;+K\sum_{m&gt;r_0}q^{5m/2}
+[q^{20(m-r_0)}-q^{20(m-1-r_0)}]d_{m-1}^2a_m\\
+&amp;-\nu\sum_{m\geq r_0,i}q^{20(m-r_0)}
+\|\nabla u_{i,m}\|_2^2.
+\end{aligned}
+\tag{FT54}
+\]</span>
+<p>The original local scale-energy equation gives this first for finite sums. On a fixed compact time interval the cubic terms and the final boundary flux are uniformly bounded by a constant times <span class="math" data-tex="\(q^{-15m/2}\)">\(q^{-15m/2}\)</span>, using VD14. The weighted energy is finite by <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> regularity. The nonnegative integrated dissipation partial sums are therefore bounded by the initial energy and these integrable cubic terms. Monotone convergence supplies their finite limit and proves the full integrated identity, hence the derivative almost everywhere. This argument does not assume an extra instantaneous derivative of the solution.</p>
+<p>Put <span class="math" data-tex="\(Y_m=\sqrt{2q^{20(m-r_0)}E_m}\)">\(Y_m=\sqrt{2q^{20(m-r_0)}E_m}\)</span>. Each interior coefficient in the cubic bound is exactly</p>
+<span class="math math-display" data-tex="\[
+q^{5m/2}\frac{q^{20(m-r_0)}-q^{20(m-1-r_0)}}
+{q^{20(m-1-r_0)}q^{10(m-r_0)}}
+=\kappa q^5(q^{20}-1)q^{-15(m-r_0)/2}.
+\tag{FT55}
+\]">\[
+q^{5m/2}\frac{q^{20(m-r_0)}-q^{20(m-1-r_0)}}
+{q^{20(m-1-r_0)}q^{10(m-r_0)}}
+=\kappa q^5(q^{20}-1)q^{-15(m-r_0)/2}.
+\tag{FT55}
+\]</span>
+<p>Moreover <span class="math" data-tex="\(\sum_{m&gt;r_0}Y_{m-1}^2Y_m\leq Y^3\)">\(\sum_{m&gt;r_0}Y_{m-1}^2Y_m\leq Y^3\)</span>, since each <span class="math" data-tex="\(Y_m\leq Y\)">\(Y_m\leq Y\)</span> and the squared sum is at most <span class="math" data-tex="\(Y^2\)">\(Y^2\)</span>. The endpoint definition FT4 alone places the solution inside the receiver interval VR20, so VR24 directly gives <span class="math" data-tex="\(|d_{n_0+1}|\leq K^{-20}\)">\(|d_{n_0+1}|\leq K^{-20}\)</span> on <span class="math" data-tex="\([0,T_0)\)">\([0,T_0)\)</span>. This use is independent of the later activation and transfer estimates. Keep the negative dissipation before taking an upper bound, and regularize <span class="math" data-tex="\(\sqrt{2F+\eta_0}\)">\(\sqrt{2F+\eta_0}\)</span>. Passing <span class="math" data-tex="\(\eta_0\downarrow0\)">\(\eta_0\downarrow0\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+Y(t)\leq\int_0^t
+[\kappa q^5K^{-39}
++\kappa q^5(q^{20}-1)K Y(s)^2]\,ds.
+\tag{FT56}
+\]">\[
+Y(t)\leq\int_0^t
+[\kappa q^5K^{-39}
++\kappa q^5(q^{20}-1)K Y(s)^2]\,ds.
+\tag{FT56}
+\]</span>
+<p>Its zero initial value is exact. If a first time with <span class="math" data-tex="\(Y=K^{-30}\)">\(Y=K^{-30}\)</span> occurred before <span class="math" data-tex="\(T_0\leq2\kappa^{-1}\)">\(T_0\leq2\kappa^{-1}\)</span>, FT56 before that time would give</p>
+<span class="math math-display" data-tex="\[
+Y\leq64K^{-39}+67108800K^{-59}&lt;K^{-30},
+\tag{FT57}
+\]">\[
+Y\leq64K^{-39}+67108800K^{-59}&lt;K^{-30},
+\tag{FT57}
+\]</span>
+<p>because <span class="math" data-tex="\(q^5&lt;32\)">\(q^5&lt;32\)</span>, <span class="math" data-tex="\(q^{20}-1&lt;1048575\)">\(q^{20}-1&lt;1048575\)</span>, and <span class="math" data-tex="\(64K^{-9}+67108800K^{-29}&lt;1\)">\(64K^{-9}+67108800K^{-29}&lt;1\)</span>. This contradicts first attainment. Therefore the same estimate holds throughout, and <span class="math" data-tex="\(67108800K^{-59}\leq K^{-39}\)">\(67108800K^{-59}\leq K^{-39}\)</span> implies</p>
+<span class="math math-display" data-tex="\[
+Y(t)\leq65K^{-39},\qquad
+E_m(t)\leq\frac{4225}{2}K^{-78}q^{-20(m-n_0-2)}
+\quad(m\geq n_0+2,\ 0\leq t&lt;T_0).
+\tag{FT58}
+\]">\[
+Y(t)\leq65K^{-39},\qquad
+E_m(t)\leq\frac{4225}{2}K^{-78}q^{-20(m-n_0-2)}
+\quad(m\geq n_0+2,\ 0\leq t&lt;T_0).
+\tag{FT58}
+\]</span>
+<p>These bounds control the entire original Sobolev norm up to the proposed endpoint. Indeed the two initial scale bands have total squared norm at most one, all lower bands vanish, and the original Fourier support gives</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_{H^{10}}^2
+\leq(1+\chi q^{2r_0})^{10}[1+Y(t)^2]
+\leq(1+\chi q^{2r_0})^{10}(1+4225K^{-78}).
+\]">\[
+\|u(t)\|_{H^{10}}^2
+\leq(1+\chi q^{2r_0})^{10}[1+Y(t)^2]
+\leq(1+\chi q^{2r_0})^{10}(1+4225K^{-78}).
+\]</span>
+<p>For the upper bands retain
+<span class="math" data-tex="\((1+\chi q^{2m})^{10}\leq q^{20(m-r_0)}(1+\chi q^{2r_0})^{10}\)">\((1+\chi q^{2m})^{10}\leq q^{20(m-r_0)}(1+\chi q^{2r_0})^{10}\)</span>; the factor is finite for the fixed original <span class="math" data-tex="\(n_0\)">\(n_0\)</span>. This supplies the uniform continuation bound used after FT6, so <span class="math" data-tex="\(T_0&lt;T_*\)">\(T_0&lt;T_*\)</span>. All estimates then extend to <span class="math" data-tex="\(T_0\)">\(T_0\)</span> by continuity.</p>
+<p>In particular FT58 holds throughout the constructed first transfer. Since <span class="math" data-tex="\(q^{-20(m-r_0)}\leq q^{-10(m-r_0)}\)">\(q^{-20(m-r_0)}\leq q^{-10(m-r_0)}\)</span> and <span class="math" data-tex="\((4225/2)q^{10}\leq2163200&lt;K^{48}\)">\((4225/2)q^{10}\leq2163200&lt;K^{48}\)</span>, it implies the printed forward energy estimate
+<span class="math" data-tex="\(E_{n_0+1+j}(t)\leq K^{-30}q^{-10j}\)">\(E_{n_0+1+j}(t)\leq K^{-30}q^{-10j}\)</span> for every integer <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span> on this entire first interval. All earlier scales <span class="math" data-tex="\(m&lt;n_0\)">\(m&lt;n_0\)</span> vanish exactly, and the two active scale energies sum to at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Thus the full energy statements of the first transition are controlled with their original weights.</p>
+<h2 id="ft9-the-actual-drive-at-the-next-checkpoint-and-the-printed-mismatch">FT9. The actual drive at the next checkpoint and the printed mismatch</h2>
+<p>At the end of this constructed transfer, FT23 and FT26 give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\epsilon/2\leq b_{n_0}(t_2)\leq3\epsilon,\\
+\epsilon^2K^{-10}e^{K^{19/2}/3}
+\leq c_{n_0}(t_2)\leq\epsilon^2K^{-10}e^{4K^{19/2}}.
+\end{gathered}
+\tag{FT59}
+\]">\[
+\begin{gathered}
+\epsilon/2\leq b_{n_0}(t_2)\leq3\epsilon,\\
+\epsilon^2K^{-10}e^{K^{19/2}/3}
+\leq c_{n_0}(t_2)\leq\epsilon^2K^{-10}e^{4K^{19/2}}.
+\end{gathered}
+\tag{FT59}
+\]</span>
+<p>The next second coordinate is small even under the sharper actual moment in FT29:</p>
+<span class="math math-display" data-tex="\[
+|b_{n_0+1}(t_2)|
+\leq2q^{5/2}\sqrt2\epsilon K^{-1/2}
+\leq\frac{\sqrt2}{160000q^{15/2}}\epsilon
+&lt;9\cdot10^{-6}\epsilon.
+\tag{FT60}
+\]">\[
+|b_{n_0+1}(t_2)|
+\leq2q^{5/2}\sqrt2\epsilon K^{-1/2}
+\leq\frac{\sqrt2}{160000q^{15/2}}\epsilon
+&lt;9\cdot10^{-6}\epsilon.
+\tag{FT60}
+\]</span>
+<p>The middle inequality is exactly the fourth-power restriction in FT2. Here <span class="math" data-tex="\(4K^{-20}\leq K^{-1/2}\)">\(4K^{-20}\leq K^{-1/2}\)</span>, and <span class="math" data-tex="\(\sqrt2&lt;36/25\)">\(\sqrt2&lt;36/25\)</span> proves the last inequality.</p>
+<p>The source additionally prints a next-drive bound of size
+<span class="math" data-tex="\(10^{-5}\epsilon^2e^{-K^{10}}a_{n_0+1}(t_2)\)">\(10^{-5}\epsilon^2e^{-K^{10}}a_{n_0+1}(t_2)\)</span> in its claimed reduction from lines2162–2171 to2021. Its earlier receiver proposition2046 supplies only an exponential with half that decay exponent. We now prove that the stronger printed bound actually fails at the very transfer time constructed here.</p>
+<p>Let <span class="math" data-tex="\(\ell=t_2-t_1=\kappa^{-1}(K^{-1/2}-K^{-1})\)">\(\ell=t_2-t_1=\kappa^{-1}(K^{-1/2}-K^{-1})\)</span> and
+<span class="math" data-tex="\(t_A=t_1+\ell/4\)">\(t_A=t_1+\ell/4\)</span>. FT43 gives <span class="math" data-tex="\(z^2\geq1/400\)">\(z^2\geq1/400\)</span> on <span class="math" data-tex="\([t_1,t_2]\)">\([t_1,t_2]\)</span>, and <span class="math" data-tex="\(\kappa\ell\geq K^{-1/2}/2\)">\(\kappa\ell\geq K^{-1/2}/2\)</span>. The exact signed heat response VR12, with the next-band response bounded below by <span class="math" data-tex="\(e^{-8\delta}\geq1/2\)">\(e^{-8\delta}\geq1/2\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b_{n_0+1}(t)&amp;\geq-\epsilon\eta
+&amp;&amp;(0\leq t\leq t_2),\\
+b_{n_0+1}(t)&amp;\geq\epsilon
+[q^{5/2}\kappa(t-t_1)/800-\eta]
+&amp;&amp;(t_1\leq t\leq t_2),\\
+b_{n_0+1}(t)&amp;\geq\epsilon K^{-1/2}/12800
+&amp;&amp;(t_A\leq t\leq t_2).
+\end{aligned}
+\tag{FT61}
+\]">\[
+\begin{aligned}
+b_{n_0+1}(t)&amp;\geq-\epsilon\eta
+&amp;&amp;(0\leq t\leq t_2),\\
+b_{n_0+1}(t)&amp;\geq\epsilon
+[q^{5/2}\kappa(t-t_1)/800-\eta]
+&amp;&amp;(t_1\leq t\leq t_2),\\
+b_{n_0+1}(t)&amp;\geq\epsilon K^{-1/2}/12800
+&amp;&amp;(t_A\leq t\leq t_2).
+\end{aligned}
+\tag{FT61}
+\]</span>
+<p>For the negative part retain the entire square-drive term: FT30 bounds its integral by
+<span class="math" data-tex="\(2q^{15/2}\epsilon^3K^{19/2}e^{-3B/2}\leq\epsilon\eta\)">\(2q^{15/2}\epsilon^3K^{19/2}e^{-3B/2}\leq\epsilon\eta\)</span>.
+Indeed <span class="math" data-tex="\(2q^{15/2}&lt;364\)">\(2q^{15/2}&lt;364\)</span>, and FT2 bounds its ratio to <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> by
+<span class="math" data-tex="\(364K^{-381/2}e^{-43B/2}\leq K^{-100}\)">\(364K^{-381/2}e^{-43B/2}\leq K^{-100}\)</span>.
+The positive term in the second line integrates <span class="math" data-tex="\(z^2\)">\(z^2\)</span> on <span class="math" data-tex="\([t_1,t]\)">\([t_1,t]\)</span>. For the third use <span class="math" data-tex="\(\kappa(t_A-t_1)\geq K^{-1/2}/8\)">\(\kappa(t_A-t_1)\geq K^{-1/2}/8\)</span> and <span class="math" data-tex="\(\eta\leq K^{-1/2}/12800\)">\(\eta\leq K^{-1/2}/12800\)</span>.</p>
+<p>The next third-coordinate memory is still positive. Its differential lower bound, on its original entire history, is</p>
+<span class="math math-display" data-tex="\[
+c_{n_0+1}&#x27;\geq\kappa q^{5/2}\epsilon^2e^{-B}z^2
++[\kappa q^{5/2}\epsilon^{-1}B b_{n_0+1}
+-\kappa q^2\delta]c_{n_0+1}.
+\tag{FT62}
+\]">\[
+c_{n_0+1}&#x27;\geq\kappa q^{5/2}\epsilon^2e^{-B}z^2
++[\kappa q^{5/2}\epsilon^{-1}B b_{n_0+1}
+-\kappa q^2\delta]c_{n_0+1}.
+\tag{FT62}
+\]</span>
+<p>The first line of FT61 bounds the bracket below by <span class="math" data-tex="\(-7\kappa K^{-90}\)">\(-7\kappa K^{-90}\)</span> throughout. Its integrating factor is at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span> across an interval of length at most <span class="math" data-tex="\(2\kappa^{-1}\)">\(2\kappa^{-1}\)</span>. Integrating just the positive source on <span class="math" data-tex="\([t_1,t_A]\)">\([t_1,t_A]\)</span> therefore gives</p>
+<span class="math math-display" data-tex="\[
+c_{n_0+1}(t_A)\geq
+\frac{\epsilon^2e^{-B}}{6400}K^{-1/2}.
+\tag{FT63}
+\]">\[
+c_{n_0+1}(t_A)\geq
+\frac{\epsilon^2e^{-B}}{6400}K^{-1/2}.
+\tag{FT63}
+\]</span>
+<p>On <span class="math" data-tex="\([t_A,t_2]\)">\([t_A,t_2]\)</span>, the last line of FT61 bounds the bracket in FT62 below by
+<span class="math" data-tex="\(\kappa K^{19/2}/25600\)">\(\kappa K^{19/2}/25600\)</span>; the damping <span class="math" data-tex="\(\kappa q^2\delta\)">\(\kappa q^2\delta\)</span> is smaller than the discarded half. Since <span class="math" data-tex="\(\kappa(t_2-t_A)\geq3K^{-1/2}/8\)">\(\kappa(t_2-t_A)\geq3K^{-1/2}/8\)</span>, we obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_{n_0+1}(t_2)
+&amp;\geq\frac{\epsilon^2e^{-B}}{6400}K^{-1/2}
+e^{3K^9/204800}\\
+&amp;\geq\frac{\epsilon^2e^{-B}}{6400}K^{-1/2}
+e^{K^9/100000}
+&gt;\epsilon^2e^{-B}.
+\end{aligned}
+\tag{FT64}
+\]">\[
+\begin{aligned}
+c_{n_0+1}(t_2)
+&amp;\geq\frac{\epsilon^2e^{-B}}{6400}K^{-1/2}
+e^{3K^9/204800}\\
+&amp;\geq\frac{\epsilon^2e^{-B}}{6400}K^{-1/2}
+e^{K^9/100000}
+&gt;\epsilon^2e^{-B}.
+\end{aligned}
+\tag{FT64}
+\]</span>
+<p>The second inequality uses <span class="math" data-tex="\(3/204800&gt;1/100000\)">\(3/204800&gt;1/100000\)</span>. For the strict last inequality, the linear term of the exponential series already gives the ratio at least
+<span class="math" data-tex="\(K^{17/2}/640000000&gt;1\)">\(K^{17/2}/640000000&gt;1\)</span>, because <span class="math" data-tex="\(K\geq10^{10}\)">\(K\geq10^{10}\)</span>. Thus it exceeds the printed next-drive bound even with <span class="math" data-tex="\(a_{n_0+1}(t_2)\leq1\)">\(a_{n_0+1}(t_2)\leq1\)</span>.</p>
+<p>This does not show that energy transfer fails: FT6 and FT58 prove that it succeeds. It shows that the stated reduction to the stronger drive bound cannot be applied to this constructed checkpoint. The actual upper bound FT30 still gives a much smaller drive than the activated current one, and in particular</p>
+<span class="math math-display" data-tex="\[
+c_{n_0+1}(t_2)
+\leq10^{-5}\epsilon^2e^{-B/2}a_{n_0+1}(t_2).
+\tag{FT65}
+\]">\[
+c_{n_0+1}(t_2)
+\leq10^{-5}\epsilon^2e^{-B/2}a_{n_0+1}(t_2).
+\tag{FT65}
+\]</span>
+<p>To verify this, use <span class="math" data-tex="\(a_{n_0+1}(t_2)\geq99/100\)">\(a_{n_0+1}(t_2)\geq99/100\)</span>, <span class="math" data-tex="\(q^{5/2}&lt;6\)">\(q^{5/2}&lt;6\)</span> and
+<span class="math" data-tex="\(e^{-B/4}\leq4/B\)">\(e^{-B/4}\leq4/B\)</span>. The needed ratio is at most
+<span class="math" data-tex="\(24K^{-41/4}&lt; (99/100)10^{-5}\)">\(24K^{-41/4}&lt; (99/100)10^{-5}\)</span>, valid already at <span class="math" data-tex="\(K\geq10^{10}\)">\(K\geq10^{10}\)</span>. FT65 is a proved first-checkpoint replacement bound. Propagating it through every later step is a further calculation, not asserted here. The original stronger bound remains identifiable and is not silently replaced.</p>
+<p>For an exact comparison with the other printed first-step statements, set <span class="math" data-tex="\(e_0=1\)">\(e_0=1\)</span>, <span class="math" data-tex="\(e_1=z(t_2)\)">\(e_1=z(t_2)\)</span>, <span class="math" data-tex="\(t_{n_0}=0\)">\(t_{n_0}=0\)</span> and <span class="math" data-tex="\(t_{n_0+1}=t_2\)">\(t_{n_0+1}=t_2\)</span>. The additional <span class="math" data-tex="\(q\)">\(q\)</span>-dependent lower bound on <span class="math" data-tex="\(K\)">\(K\)</span> in FT2 gives <span class="math" data-tex="\(7K^{-80}\leq1-q^{-1/100}\)">\(7K^{-80}\leq1-q^{-1/100}\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q^{-1/100}e_0\leq e_1\leq q^{1/100}e_0,\qquad
+\kappa^{-1}&lt;t_{n_0+1}-t_{n_0}&lt;2\kappa^{-1},\\
+|b_{n_0+1}(t_2)|\leq10^{-5}\epsilon e_1,\qquad
+|d_{n_0+1}(t_2)|\leq K^{-10}e_1,\\
+E_{n_0}(t_2)\leq K^{-20}e_1^2,\qquad
+10^{-5}\epsilon e_1\leq b_{n_0}(t_2)\leq10^5\epsilon e_1,\\
+e^{K^9}\epsilon^2e_1\leq c_{n_0}(t_2)
+\leq e^{K^{10}}\epsilon^2e_1.
+\end{gathered}
+\tag{FT66}
+\]">\[
+\begin{gathered}
+q^{-1/100}e_0\leq e_1\leq q^{1/100}e_0,\qquad
+\kappa^{-1}&lt;t_{n_0+1}-t_{n_0}&lt;2\kappa^{-1},\\
+|b_{n_0+1}(t_2)|\leq10^{-5}\epsilon e_1,\qquad
+|d_{n_0+1}(t_2)|\leq K^{-10}e_1,\\
+E_{n_0}(t_2)\leq K^{-20}e_1^2,\qquad
+10^{-5}\epsilon e_1\leq b_{n_0}(t_2)\leq10^5\epsilon e_1,\\
+e^{K^9}\epsilon^2e_1\leq c_{n_0}(t_2)
+\leq e^{K^{10}}\epsilon^2e_1.
+\end{gathered}
+\tag{FT66}
+\]</span>
+<p>Here <span class="math" data-tex="\(e_1\geq99/100\)">\(e_1\geq99/100\)</span>. The second-coordinate comparison follows from FT60, and the next rotor and old full energy follow from FT52. For the lower drive comparison, FT59 suffices because
+<span class="math" data-tex="\(K^{19/2}/3-10\log K\geq K^9\)">\(K^{19/2}/3-10\log K\geq K^9\)</span>: use <span class="math" data-tex="\(\sqrt K\geq10^5\)">\(\sqrt K\geq10^5\)</span> and <span class="math" data-tex="\(\log K\leq\sqrt K\)">\(\log K\leq\sqrt K\)</span>. For the upper comparison, <span class="math" data-tex="\(4K^{19/2}\leq K^{10}/2\)">\(4K^{19/2}\leq K^{10}/2\)</span>, and <span class="math" data-tex="\(K^{-10}e^{-K^{10}/2}\leq1/2&lt;e_1\)">\(K^{-10}e^{-K^{10}/2}\leq1/2&lt;e_1\)</span>. The second-coordinate spin bounds follow directly from FT59. The entire interval energy estimates were already proved in FT58, FT8 and the vanishing of the lower bands. Thus all those first-step statements hold in the original variables, with the change of the next-drive bound explicitly isolated in FT64–FT65.</p>
+<h2 id="ft10-exact-scope-of-the-completed-step">FT10. Exact scope of the completed step</h2>
+<p>The proof constructs the first actual viscous transfer and proves that the maximal flow continues through its checkpoint. The full weighted tail supplies the original <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> continuation bound before activation is used. No artificial five-coordinate trajectory replaces the original infinite system. The proof retains all of its higher bands, original viscosity, memory, outgoing scale coefficients and full energy. The first threshold, strong activation, output growth, corrected energy and forward weighted tail are all derived on their actual intervals.</p>
+<p>The next-drive lower bound FT64 is an additional finding: it rules out the printed stronger drive estimate at the particular checkpoint used by this proof, while FT65 supplies a rigorously proved weaker replacement at the same checkpoint. It is not a counterexample to the main averaged-equation blowup theorem. The <span class="unlinked">complete uniform induction, UI1–UI59</span> uses the corrected checkpoint drive range, complete physical histories and exact rotor primitive to construct every later interval and prove the finite maximal endpoint for this averaged equation. The subsequent lesson develops that full induction. The first step, its amplitude comparison for the whole stated <span class="math" data-tex="\(q\)">\(q\)</span> range, and its full band estimates are complete.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<p>These exercises use the same maximal viscous flow, physical clock, initial packet, coefficients and parameter restrictions as RC1–RC24 and FT1–FT66. They are editorial deductions from the complete arguments above. The scalar example in Exercise 5 has the separate, explicitly stated domain RC19–RC24; it is not a trajectory of the cascade.</p>
+<h3 id="exercise-1-determine-exactly-when-the-corrected-full-energy-is-positive">Exercise 1. Determine exactly when the corrected full energy is positive</h3>
+<p>At a fixed original time and scale, retain the original positive <span class="math" data-tex="\(c\)">\(c\)</span>, the real next input <span class="math" data-tex="\(z\)">\(z\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\beta=\frac{\lambda}{2\kappa}\frac{\epsilon^2}{c}z
+=\frac{q^{5/2}K}{2}\frac{\epsilon^2}{c}z.
+\tag{EX1}
+\]">\[
+\beta=\frac{\lambda}{2\kappa}\frac{\epsilon^2}{c}z
+=\frac{q^{5/2}K}{2}\frac{\epsilon^2}{c}z.
+\tag{EX1}
+\]</span>
+<p>On the direct sum of the two real band spaces for coordinates 1 and 4, determine the exact positive domain, zero space at its boundary, and best comparison constants for the full corrected energy in RC11. Then apply the result on the actual first-transfer interval <span class="math" data-tex="\([s_0,t_2]\)">\([s_0,t_2]\)</span>.</p>
+<p><strong>Solution.</strong> A pair of fields in these two original band spaces has the unique decomposition</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_{1,n}&amp;=a\psi_{1,n}+h_1,&amp;
+\langle h_1,\psi_{1,n}\rangle&amp;=0,\\
+u_{4,n}&amp;=d\psi_{4,n}+h_4,&amp;
+\langle h_4,\psi_{4,n}\rangle&amp;=0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+u_{1,n}&amp;=a\psi_{1,n}+h_1,&amp;
+\langle h_1,\psi_{1,n}\rangle&amp;=0,\\
+u_{4,n}&amp;=d\psi_{4,n}+h_4,&amp;
+\langle h_4,\psi_{4,n}\rangle&amp;=0.
+\end{aligned}
+\]</span>
+<p>Both packets have squared norm one. Thus the original energy and its correction are exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E&amp;=\frac{a^2+d^2}{2}+\mathcal D,&amp;
+\mathcal D&amp;=\frac{\|h_1\|_2^2+\|h_4\|_2^2}{2},\\
+\mathcal E^*
+&amp;=\frac{a^2+d^2}{2}-\beta ad+\mathcal D\\
+&amp;=\frac{1-\beta}{4}(a+d)^2
++\frac{1+\beta}{4}(a-d)^2+\mathcal D.
+\end{aligned}
+\tag{EX2}
+\]">\[
+\begin{aligned}
+\mathcal E&amp;=\frac{a^2+d^2}{2}+\mathcal D,&amp;
+\mathcal D&amp;=\frac{\|h_1\|_2^2+\|h_4\|_2^2}{2},\\
+\mathcal E^*
+&amp;=\frac{a^2+d^2}{2}-\beta ad+\mathcal D\\
+&amp;=\frac{1-\beta}{4}(a+d)^2
++\frac{1+\beta}{4}(a-d)^2+\mathcal D.
+\end{aligned}
+\tag{EX2}
+\]</span>
+<p>Expansion proves the last identity without changing the fields or discarding their orthogonal components. The map from the original pair to <span class="math" data-tex="\((a,d,h_1,h_4)\)">\((a,d,h_1,h_4)\)</span> is given by the two inner products and their exact residuals; its inverse is the first displayed decomposition. The further map <span class="math" data-tex="\((a,d)\mapsto(a+d,a-d)\)">\((a,d)\mapsto(a+d,a-d)\)</span> has inverse <span class="math" data-tex="\((r,s)\mapsto((r+s)/2,(r-s)/2)\)">\((r,s)\mapsto((r+s)/2,(r-s)/2)\)</span>. These formulas specify the complete comparison of coordinates, with the original norm retained in EX2.</p>
+<p>Since <span class="math" data-tex="\(|ad|\leq(a^2+d^2)/2\)">\(|ad|\leq(a^2+d^2)/2\)</span>, we obtain</p>
+<span class="math math-display" data-tex="\[
+(1-|\beta|)\mathcal E
+\leq\mathcal E^*
+\leq(1+|\beta|)\mathcal E.
+\tag{EX3}
+\]">\[
+(1-|\beta|)\mathcal E
+\leq\mathcal E^*
+\leq(1+|\beta|)\mathcal E.
+\tag{EX3}
+\]</span>
+<p>Both constants are best possible over the full band-pair space. For <span class="math" data-tex="\(\beta\ne0\)">\(\beta\ne0\)</span>, take <span class="math" data-tex="\(h_1=h_4=0\)">\(h_1=h_4=0\)</span>, <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, and respectively <span class="math" data-tex="\(d=\operatorname{sgn}(\beta)a\)">\(d=\operatorname{sgn}(\beta)a\)</span> or <span class="math" data-tex="\(d=-\operatorname{sgn}(\beta)a\)">\(d=-\operatorname{sgn}(\beta)a\)</span>. These two actual pairs of packet fields give equality in the lower and upper bounds. For <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>, both bounds are the identity.</p>
+<p>Consequently the form is strictly positive on every nonzero pair if and only if <span class="math" data-tex="\(|\beta|&lt;1\)">\(|\beta|&lt;1\)</span>. At <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span> its zero space is exactly</p>
+<span class="math math-display" data-tex="\[
+(u_{1,n},u_{4,n})=(a\psi_{1,n},a\psi_{4,n}),
+\qquad a\in\mathbb R;
+\]">\[
+(u_{1,n},u_{4,n})=(a\psi_{1,n},a\psi_{4,n}),
+\qquad a\in\mathbb R;
+\]</span>
+<p>at <span class="math" data-tex="\(\beta=-1\)">\(\beta=-1\)</span> it is exactly</p>
+<span class="math math-display" data-tex="\[
+(u_{1,n},u_{4,n})=(a\psi_{1,n},-a\psi_{4,n}),
+\qquad a\in\mathbb R.
+\]">\[
+(u_{1,n},u_{4,n})=(a\psi_{1,n},-a\psi_{4,n}),
+\qquad a\in\mathbb R.
+\]</span>
+<p>Indeed EX2 forces both orthogonal components and the remaining nonzero square to vanish. If <span class="math" data-tex="\(|\beta|&gt;1\)">\(|\beta|&gt;1\)</span>, the two equality examples give one negative and one positive value. This identifies the precise defect when coercivity fails. These equality examples classify the frozen quadratic form; they are not asserted to be states attained by the nonlinear flow.</p>
+<p>For the actual first transfer, FT28 and the total energy bound give <span class="math" data-tex="\(c\geq\epsilon^2K^{100}\)">\(c\geq\epsilon^2K^{100}\)</span> and <span class="math" data-tex="\(|z|\leq1\)">\(|z|\leq1\)</span> on <span class="math" data-tex="\([s_0,t_2]\)">\([s_0,t_2]\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+|\beta|\leq\rho,\qquad
+\rho:=\frac{q^{5/2}}2K^{-99}&lt;3K^{-99}&lt;1,
+\qquad
+(1-\rho)\mathcal E\leq\mathcal E^*
+\leq(1+\rho)\mathcal E.
+\tag{EX4}
+\]">\[
+|\beta|\leq\rho,\qquad
+\rho:=\frac{q^{5/2}}2K^{-99}&lt;3K^{-99}&lt;1,
+\qquad
+(1-\rho)\mathcal E\leq\mathcal E^*
+\leq(1+\rho)\mathcal E.
+\tag{EX4}
+\]</span>
+<p>Here <span class="math" data-tex="\(q&lt;2\)">\(q&lt;2\)</span> gives <span class="math" data-tex="\(q^{5/2}&lt;4\sqrt2&lt;6\)">\(q^{5/2}&lt;4\sqrt2&lt;6\)</span>. The scalar energy <span class="math" data-tex="\(E\)">\(E\)</span> in FT44 has the additional nonnegative term <span class="math" data-tex="\((b^2+c^2)/2\)">\((b^2+c^2)/2\)</span> and the same cross-term correction. The proof of EX3 therefore also gives</p>
+<span class="math math-display" data-tex="\[
+(1-\rho)E\leq E^*\leq(1+\rho)E
+\qquad(s_0\leq t\leq t_2).
+\tag{EX5}
+\]">\[
+(1-\rho)E\leq E^*\leq(1+\rho)E
+\qquad(s_0\leq t\leq t_2).
+\tag{EX5}
+\]</span>
+<p>This justifies positivity wherever such a corrected energy is used as a radicand. It does not remove the derivative of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>: all its time dependence and viscous contributions remain in RC11 and FT45.</p>
+<h3 id="exercise-2-keep-the-decay-inside-the-complete-forcing-integral">Exercise 2. Keep the decay inside the complete forcing integral</h3>
+<p>For the original first transfer, use the already constructed times and coefficients</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h=t_1-s_0=\kappa^{-1}(K^{-1}-K^{-9}),\qquad
+\ell=t_2-t_1=\kappa^{-1}(K^{-1/2}-K^{-1}),\\
+\eta=K^{-100},\qquad \lambda=\kappa q^{5/2}K,\qquad
+\Theta=\frac{\lambda\ell}{20}
+=\frac{q^{5/2}(\sqrt K-1)}{20}.
+\end{gathered}
+\tag{EX6}
+\]">\[
+\begin{gathered}
+h=t_1-s_0=\kappa^{-1}(K^{-1}-K^{-9}),\qquad
+\ell=t_2-t_1=\kappa^{-1}(K^{-1/2}-K^{-1}),\\
+\eta=K^{-100},\qquad \lambda=\kappa q^{5/2}K,\qquad
+\Theta=\frac{\lambda\ell}{20}
+=\frac{q^{5/2}(\sqrt K-1)}{20}.
+\end{gathered}
+\tag{EX6}
+\]</span>
+<p>Determine the exact operator norm of the scalar forcing response in FT47, retaining the actual <span class="math" data-tex="\(z\)">\(z\)</span>. Bound it using both parts of the constructed interval, and prove the stronger conclusion <span class="math" data-tex="\(E(t_2)\leq201K^{-90}\)">\(E(t_2)\leq201K^{-90}\)</span>.</p>
+<p><strong>Solution.</strong> For every actual <span class="math" data-tex="\(s_0\leq r\leq t\leq t_2\)">\(s_0\leq r\leq t\leq t_2\)</span>, write the original propagator</p>
+<span class="math math-display" data-tex="\[
+G(t,r)=\exp\left(-\lambda\int_r^t z(v)\,dv\right)&gt;0.
+\]">\[
+G(t,r)=\exp\left(-\lambda\int_r^t z(v)\,dv\right)&gt;0.
+\]</span>
+<p>At the fixed endpoint <span class="math" data-tex="\(t_2\)">\(t_2\)</span>, the linear map</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_z:L^\infty([s_0,t_2];\mathbb R)\longrightarrow\mathbb R,
+\qquad
+\mathcal T_z f=\int_{s_0}^{t_2}G(t_2,r)f(r)\,dr
+\]">\[
+\mathcal T_z:L^\infty([s_0,t_2];\mathbb R)\longrightarrow\mathbb R,
+\qquad
+\mathcal T_z f=\int_{s_0}^{t_2}G(t_2,r)f(r)\,dr
+\]</span>
+<p>has exact norm</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal T_z\|=\int_{s_0}^{t_2}G(t_2,r)\,dr.
+\tag{EX7}
+\]">\[
+\|\mathcal T_z\|=\int_{s_0}^{t_2}G(t_2,r)\,dr.
+\tag{EX7}
+\]</span>
+<p>The integral bounds the response of every function of norm at most one; the constant function one attains equality. This is the response operator for the fixed actual coefficient <span class="math" data-tex="\(z\)">\(z\)</span>. Its equality example need not be the nonlinear forcing <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>.</p>
+<p>The actual estimates FT34 and FT43 say <span class="math" data-tex="\(z\geq-2\eta\)">\(z\geq-2\eta\)</span> throughout the interval and <span class="math" data-tex="\(z\geq1/20\)">\(z\geq1/20\)</span> on <span class="math" data-tex="\([t_1,t_2]\)">\([t_1,t_2]\)</span>. Splitting the exact integral at <span class="math" data-tex="\(t_1\)">\(t_1\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+G(t_2,r)\leq
+\begin{cases}
+e^{-\Theta}e^{2\lambda\eta(t_1-r)},
+&amp;s_0\leq r\leq t_1,\\
+e^{-\lambda(t_2-r)/20},&amp;t_1\leq r\leq t_2.
+\end{cases}
+\]">\[
+G(t_2,r)\leq
+\begin{cases}
+e^{-\Theta}e^{2\lambda\eta(t_1-r)},
+&amp;s_0\leq r\leq t_1,\\
+e^{-\lambda(t_2-r)/20},&amp;t_1\leq r\leq t_2.
+\end{cases}
+\]</span>
+<p>Integration of these two full exponentials proves</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal T_z\|
+\leq e^{-\Theta}\frac{e^{2\lambda\eta h}-1}{2\lambda\eta}
++\frac{20}{\lambda}(1-e^{-\Theta}).
+\tag{EX8}
+\]">\[
+\|\mathcal T_z\|
+\leq e^{-\Theta}\frac{e^{2\lambda\eta h}-1}{2\lambda\eta}
++\frac{20}{\lambda}(1-e^{-\Theta}).
+\tag{EX8}
+\]</span>
+<p>Every denominator is positive. The estimate controls forcing arriving at every intermediate time.</p>
+<p>We need numerical bounds valid over the entire original range <span class="math" data-tex="\(K\geq10^{10}\)">\(K\geq10^{10}\)</span>. Since <span class="math" data-tex="\(h\leq(\kappa K)^{-1}\)">\(h\leq(\kappa K)^{-1}\)</span> and <span class="math" data-tex="\(q^{5/2}&lt;6\)">\(q^{5/2}&lt;6\)</span>,</p>
+<span class="math math-display" data-tex="\[
+2\lambda\eta h\leq12K^{-100}&lt;\frac12,\qquad
+e^{2\lambda\eta h}\leq2,\qquad
+\frac{e^{2\lambda\eta h}-1}{2\lambda\eta}\leq2h.
+\tag{EX9}
+\]">\[
+2\lambda\eta h\leq12K^{-100}&lt;\frac12,\qquad
+e^{2\lambda\eta h}\leq2,\qquad
+\frac{e^{2\lambda\eta h}-1}{2\lambda\eta}\leq2h.
+\tag{EX9}
+\]</span>
+<p>The middle bound follows from <span class="math" data-tex="\(e^x=\sum_{j\geq0}x^j/j!\leq\sum_{j\geq0}2^{-j}=2\)">\(e^x=\sum_{j\geq0}x^j/j!\leq\sum_{j\geq0}2^{-j}=2\)</span> for <span class="math" data-tex="\(0\leq x\leq1/2\)">\(0\leq x\leq1/2\)</span>. The last bound is also immediate by integrating <span class="math" data-tex="\(e^{2\lambda\eta r}\leq2\)">\(e^{2\lambda\eta r}\leq2\)</span> over <span class="math" data-tex="\(0\leq r\leq h\)">\(0\leq r\leq h\)</span>.</p>
+<p>In addition,</p>
+<span class="math math-display" data-tex="\[
+e^{-\Theta}\leq K^{-100}.
+\tag{EX10}
+\]">\[
+e^{-\Theta}\leq K^{-100}.
+\tag{EX10}
+\]</span>
+<p>To prove this for all permitted <span class="math" data-tex="\(K\)">\(K\)</span>, put <span class="math" data-tex="\(g(K)=(\sqrt K-1)/20-100\log K\)">\(g(K)=(\sqrt K-1)/20-100\log K\)</span>. Its derivative is</p>
+<span class="math math-display" data-tex="\[
+g&#x27;(K)=\frac{\sqrt K-4000}{40K}&gt;0
+\qquad(K\geq10^{10}),
+\]">\[
+g&#x27;(K)=\frac{\sqrt K-4000}{40K}&gt;0
+\qquad(K\geq10^{10}),
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+g(10^{10})&gt;\frac{99999}{20}-3000&gt;0.
+\]">\[
+g(10^{10})&gt;\frac{99999}{20}-3000&gt;0.
+\]</span>
+<p>For the strict inequality use <span class="math" data-tex="\(\log10&lt;3\)">\(\log10&lt;3\)</span>, which follows already from <span class="math" data-tex="\(e^3&gt;1+3+9/2+27/6&gt;10\)">\(e^3&gt;1+3+9/2+27/6&gt;10\)</span>. Finally <span class="math" data-tex="\(q^{5/2}&gt;1\)">\(q^{5/2}&gt;1\)</span>, so <span class="math" data-tex="\(\Theta\geq(\sqrt K-1)/20&gt;100\log K\)">\(\Theta\geq(\sqrt K-1)/20&gt;100\log K\)</span>.</p>
+<p>The exact FT47 identity and the complete bounds <span class="math" data-tex="\(|\mathcal Q|\leq10\kappa K^{-89}\)">\(|\mathcal Q|\leq10\kappa K^{-89}\)</span>, <span class="math" data-tex="\(E^*(s_0)\leq1\)">\(E^*(s_0)\leq1\)</span>, and <span class="math" data-tex="\(|E^*-E|\leq(3/2)K^{-99}\)">\(|E^*-E|\leq(3/2)K^{-99}\)</span> now give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\leq E(t_2)
+&amp;\leq \frac32K^{-99}
++e^{-\Theta}e^{2\lambda\eta h}\\
+&amp;\quad+10\kappa K^{-89}
+\left[e^{-\Theta}\frac{e^{2\lambda\eta h}-1}{2\lambda\eta}
++\frac{20}{\lambda}(1-e^{-\Theta})\right]\\
+&amp;\leq \frac32K^{-99}+2K^{-100}
++20K^{-190}+200q^{-5/2}K^{-90}\\
+&amp;\leq201K^{-90}.
+\end{aligned}
+\tag{EX11}
+\]">\[
+\begin{aligned}
+0\leq E(t_2)
+&amp;\leq \frac32K^{-99}
++e^{-\Theta}e^{2\lambda\eta h}\\
+&amp;\quad+10\kappa K^{-89}
+\left[e^{-\Theta}\frac{e^{2\lambda\eta h}-1}{2\lambda\eta}
++\frac{20}{\lambda}(1-e^{-\Theta})\right]\\
+&amp;\leq \frac32K^{-99}+2K^{-100}
++20K^{-190}+200q^{-5/2}K^{-90}\\
+&amp;\leq201K^{-90}.
+\end{aligned}
+\tag{EX11}
+\]</span>
+<p>For the final step, <span class="math" data-tex="\(q^{-5/2}&lt;1\)">\(q^{-5/2}&lt;1\)</span>, and division of the other three terms by <span class="math" data-tex="\(K^{-90}\)">\(K^{-90}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\frac32K^{-9}+2K^{-10}+20K^{-100}&lt;1.
+\]">\[
+\frac32K^{-9}+2K^{-10}+20K^{-100}&lt;1.
+\]</span>
+<p>For example <span class="math" data-tex="\(K\geq10\)">\(K\geq10\)</span> makes these at most <span class="math" data-tex="\(3/(2\cdot10^9)\)">\(3/(2\cdot10^9)\)</span>, <span class="math" data-tex="\(2/10^{10}\)">\(2/10^{10}\)</span>, and <span class="math" data-tex="\(20/10^{100}\)">\(20/10^{100}\)</span>, whose sum is less than one. The actual parameter range is much larger. No original viscous or adjacent-scale forcing term was removed from <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>; the gain comes from retaining the decay in its receiving integral.</p>
+<h3 id="exercise-3-receive-the-stronger-transfer-in-the-full-original-sobolev-spaces">Exercise 3. Receive the stronger transfer in the full original Sobolev spaces</h3>
+<p>Let <span class="math" data-tex="\(e_1=z(t_2)\)">\(e_1=z(t_2)\)</span>, let <span class="math" data-tex="\(\psi=\psi_{1,n_0+1}\)">\(\psi=\psi_{1,n_0+1}\)</span>, and let</p>
+<span class="math math-display" data-tex="\[
+w=u(t_2)-e_1\psi,\qquad
+D_0=403K^{-90},\qquad
+\chi=4\pi^2(1+\epsilon_0/2)^2.
+\]">\[
+w=u(t_2)-e_1\psi,\qquad
+D_0=403K^{-90},\qquad
+\chi=4\pi^2(1+\epsilon_0/2)^2.
+\]</span>
+<p>Derive explicit stronger <span class="math" data-tex="\(L^2\)">\(L^2\)</span> concentration and a complete bound for <span class="math" data-tex="\(w\)">\(w\)</span> in every original <span class="math" data-tex="\(H^\sigma\)">\(H^\sigma\)</span>, <span class="math" data-tex="\(0\leq\sigma\leq10\)">\(0\leq\sigma\leq10\)</span>, retaining <span class="math" data-tex="\(n_0\)">\(n_0\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and the full upper tail.</p>
+<p><strong>Solution.</strong> FT36, Exercise 2 and the exact identity <span class="math" data-tex="\(z^2=S_5-2E\)">\(z^2=S_5-2E\)</span> imply</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e_1^2&amp;\geq1-20K^{-100}-402K^{-90}
+\geq1-D_0,\\
+0&lt;e_1&amp;\leq1,\qquad
+0\leq1-e_1\leq D_0.
+\end{aligned}
+\tag{EX12}
+\]">\[
+\begin{aligned}
+e_1^2&amp;\geq1-20K^{-100}-402K^{-90}
+\geq1-D_0,\\
+0&lt;e_1&amp;\leq1,\qquad
+0\leq1-e_1\leq D_0.
+\end{aligned}
+\tag{EX12}
+\]</span>
+<p>The middle inequality in the first line uses <span class="math" data-tex="\(20K^{-10}&lt;1\)">\(20K^{-10}&lt;1\)</span>. Positivity of <span class="math" data-tex="\(e_1\)">\(e_1\)</span> is already proved in FT43. Since <span class="math" data-tex="\(1-e_1=(1-e_1^2)/(1+e_1)\leq1-e_1^2\)">\(1-e_1=(1-e_1^2)/(1+e_1)\leq1-e_1^2\)</span>, the stated amplitude bound follows without choosing the sign of a square root.</p>
+<p>The map from the complete velocity to <span class="math" data-tex="\(e_1\psi\)">\(e_1\psi\)</span> is the original orthogonal packet projection. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle w,\psi\rangle&amp;=0,\\
+\|w\|_2^2&amp;=\|u(t_2)\|_2^2-e_1^2\leq D_0,\\
+\|u(t_2)-\psi\|_2^2
+&amp;=\|w\|_2^2+(1-e_1)^2
+\leq D_0+D_0^2\leq404K^{-90},\\
+\|u(t_2)-\psi\|_2&amp;\leq21K^{-45},\qquad
+\sum_{i=1}^4E_{i,n_0}(t_2)\leq\frac{403}{2}K^{-90}.
+\end{aligned}
+\tag{EX13}
+\]">\[
+\begin{aligned}
+\langle w,\psi\rangle&amp;=0,\\
+\|w\|_2^2&amp;=\|u(t_2)\|_2^2-e_1^2\leq D_0,\\
+\|u(t_2)-\psi\|_2^2
+&amp;=\|w\|_2^2+(1-e_1)^2
+\leq D_0+D_0^2\leq404K^{-90},\\
+\|u(t_2)-\psi\|_2&amp;\leq21K^{-45},\qquad
+\sum_{i=1}^4E_{i,n_0}(t_2)\leq\frac{403}{2}K^{-90}.
+\end{aligned}
+\tag{EX13}
+\]</span>
+<p>For the third line, <span class="math" data-tex="\(403^2K^{-90}&lt;1\)">\(403^2K^{-90}&lt;1\)</span>; for the fourth, <span class="math" data-tex="\(404&lt;21^2\)">\(404&lt;21^2\)</span>. The old scale is orthogonal to the next packet, so its complete energy is no larger than <span class="math" data-tex="\(\|w\|_2^2/2\)">\(\|w\|_2^2/2\)</span>. These estimates include every orthogonal diffusion component and every upper band.</p>
+<p>For the Sobolev estimate, let <span class="math" data-tex="\(w_{i,m}\)">\(w_{i,m}\)</span> be the original band components of <span class="math" data-tex="\(w\)">\(w\)</span>. They vanish for <span class="math" data-tex="\(m&lt;n_0\)">\(m&lt;n_0\)</span>. Only the component <span class="math" data-tex="\(w_{1,n_0+1}=u_{1,n_0+1}(t_2)-e_1\psi\)">\(w_{1,n_0+1}=u_{1,n_0+1}(t_2)-e_1\psi\)</span> differs from the corresponding component of <span class="math" data-tex="\(u(t_2)\)">\(u(t_2)\)</span>. Retain the complete weighted sum</p>
+<span class="math math-display" data-tex="\[
+\mathcal W_{20}(w)
+=\sum_{m\geq n_0}\sum_{i=1}^4
+q^{20(m-n_0)}\|w_{i,m}\|_2^2.
+\]">\[
+\mathcal W_{20}(w)
+=\sum_{m\geq n_0}\sum_{i=1}^4
+q^{20(m-n_0)}\|w_{i,m}\|_2^2.
+\]</span>
+<p>FT58 and the exact definition <span class="math" data-tex="\(Y^2=2F\)">\(Y^2=2F\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\mathcal W_{20}(w)
+\leq q^{20}D_0+q^{40}\,4225K^{-78}.
+\tag{EX14}
+\]">\[
+\mathcal W_{20}(w)
+\leq q^{20}D_0+q^{40}\,4225K^{-78}.
+\tag{EX14}
+\]</span>
+<p>Indeed the first two scales have weights at most <span class="math" data-tex="\(q^{20}\)">\(q^{20}\)</span>, and their squared norms sum to at most <span class="math" data-tex="\(D_0\)">\(D_0\)</span>. For <span class="math" data-tex="\(m\geq n_0+2\)">\(m\geq n_0+2\)</span> the weight is exactly <span class="math" data-tex="\(q^{40}q^{20(m-n_0-2)}\)">\(q^{40}q^{20(m-n_0-2)}\)</span>, while the latter weighted squared sum is <span class="math" data-tex="\(Y(t_2)^2\leq4225K^{-78}\)">\(Y(t_2)^2\leq4225K^{-78}\)</span>.</p>
+<p>Use the original Fourier convention</p>
+<span class="math math-display" data-tex="\[
+\|w\|_{H^\sigma}^2
+=\int_{\mathbb R^3}(1+4\pi^2|\xi|^2)^\sigma
+|\widehat w(\xi)|^2\,d\xi.
+\]">\[
+\|w\|_{H^\sigma}^2
+=\int_{\mathbb R^3}(1+4\pi^2|\xi|^2)^\sigma
+|\widehat w(\xi)|^2\,d\xi.
+\]</span>
+<p>The band supports are disjoint and obey <span class="math" data-tex="\(4\pi^2|\xi|^2\leq\chi q^{2m}\)">\(4\pi^2|\xi|^2\leq\chi q^{2m}\)</span>. For <span class="math" data-tex="\(m\geq n_0\)">\(m\geq n_0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(1+\chi q^{2m})^\sigma
+\leq(1+\chi q^{2n_0})^\sigma q^{2\sigma(m-n_0)}.
+\]">\[
+(1+\chi q^{2m})^\sigma
+\leq(1+\chi q^{2n_0})^\sigma q^{2\sigma(m-n_0)}.
+\]</span>
+<p>For <span class="math" data-tex="\(0&lt;\sigma&lt;10\)">\(0&lt;\sigma&lt;10\)</span>, apply Hölder with exponents <span class="math" data-tex="\(1/(1-\sigma/10)\)">\(1/(1-\sigma/10)\)</span> and <span class="math" data-tex="\(10/\sigma\)">\(10/\sigma\)</span> to the two nonnegative sequences
+<span class="math" data-tex="\(\|w_{i,m}\|_2^2\)">\(\|w_{i,m}\|_2^2\)</span> and <span class="math" data-tex="\(q^{20(m-n_0)}\|w_{i,m}\|_2^2\)">\(q^{20(m-n_0)}\|w_{i,m}\|_2^2\)</span>. First do so on finite sums, then pass to their increasing limits. This proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|w\|_{H^\sigma}^2
+&amp;\leq(1+\chi q^{2n_0})^\sigma
+\bigl(403K^{-90}\bigr)^{1-\sigma/10}\\
+&amp;\quad{}\times
+\bigl[q^{20}\,403K^{-90}
++q^{40}\,4225K^{-78}\bigr]^{\sigma/10},
+\qquad 0\leq\sigma\leq10.
+\end{aligned}
+\tag{EX15}
+\]">\[
+\begin{aligned}
+\|w\|_{H^\sigma}^2
+&amp;\leq(1+\chi q^{2n_0})^\sigma
+\bigl(403K^{-90}\bigr)^{1-\sigma/10}\\
+&amp;\quad{}\times
+\bigl[q^{20}\,403K^{-90}
++q^{40}\,4225K^{-78}\bigr]^{\sigma/10},
+\qquad 0\leq\sigma\leq10.
+\end{aligned}
+\tag{EX15}
+\]</span>
+<p>At the two endpoints this is respectively EX13 and the direct weighted estimate EX14 with its Fourier factor, so no limiting interpretation is needed. This is the exact receiving estimate in the original physical Sobolev spaces. Since the required initial scale may be large, the retained factor <span class="math" data-tex="\((1+\chi q^{2n_0})^\sigma\)">\((1+\chi q^{2n_0})^\sigma\)</span> prevents any unsupported assertion that the physical <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> error must be small.</p>
+<h3 id="exercise-4-solve-the-full-weighted-tail-comparison-with-all-original-coefficients">Exercise 4. Solve the full weighted-tail comparison with all original coefficients</h3>
+<p>Retain <span class="math" data-tex="\(F,Y,\kappa,q,K,T_0\)">\(F,Y,\kappa,q,K,T_0\)</span> from FT4 and FT53–FT58. Solve the scalar comparison supplied by FT56 without replacing its coefficients by their endpoint bounds in <span class="math" data-tex="\(q\)">\(q\)</span>. Use it to strengthen the full weighted tail and then EX15.</p>
+<p><strong>Solution.</strong> Define the original constants</p>
+<span class="math math-display" data-tex="\[
+A=\kappa q^5K^{-39}&gt;0,\qquad
+C=\kappa q^5(q^{20}-1)K&gt;0.
+\]">\[
+A=\kappa q^5K^{-39}&gt;0,\qquad
+C=\kappa q^5(q^{20}-1)K&gt;0.
+\]</span>
+<p>The full weighted equation FT54 retains all dissipation</p>
+<span class="math math-display" data-tex="\[
+-\nu\sum_{m\geq n_0+2,i}
+q^{20(m-n_0-2)}\|\nabla u_{i,m}\|_2^2.
+\]">\[
+-\nu\sum_{m\geq n_0+2,i}
+q^{20(m-n_0-2)}\|\nabla u_{i,m}\|_2^2.
+\]</span>
+<p>The proved upper estimate FT56, after this nonpositive term is retained and bounded above by zero, is</p>
+<span class="math math-display" data-tex="\[
+0\leq Y(t)\leq\int_0^t[A+C Y(s)^2]\,ds
+\qquad(0\leq t&lt;T_0).
+\]">\[
+0\leq Y(t)\leq\int_0^t[A+C Y(s)^2]\,ds
+\qquad(0\leq t&lt;T_0).
+\]</span>
+<p>On each compact subinterval let <span class="math" data-tex="\(V(t)=\int_0^t[A+C Y(s)^2]\,ds\)">\(V(t)=\int_0^t[A+C Y(s)^2]\,ds\)</span>. It is absolutely continuous, <span class="math" data-tex="\(Y\leq V\)">\(Y\leq V\)</span>, <span class="math" data-tex="\(V(0)=0\)">\(V(0)=0\)</span>, and <span class="math" data-tex="\(V&#x27;\leq A+CV^2\)">\(V&#x27;\leq A+CV^2\)</span> almost everywhere. Therefore</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\arctan\!\left(\sqrt{C/A}\,V(t)\right)
+=\frac{\sqrt{C/A}\,V&#x27;(t)}{1+(C/A)V(t)^2}
+\leq\sqrt{AC}.
+\]">\[
+\frac{d}{dt}\arctan\!\left(\sqrt{C/A}\,V(t)\right)
+=\frac{\sqrt{C/A}\,V&#x27;(t)}{1+(C/A)V(t)^2}
+\leq\sqrt{AC}.
+\]</span>
+<p>Integrating and applying the increasing tangent on its first positive interval proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y(t)&amp;\leq \sqrt{\frac AC}\tan(\sqrt{AC}\,t)\\
+&amp;=\frac{K^{-20}}{\sqrt{q^{20}-1}}\,
+\tan\!\left(\kappa q^5\sqrt{q^{20}-1}\,K^{-19}t\right).
+\end{aligned}
+\tag{EX16}
+\]">\[
+\begin{aligned}
+Y(t)&amp;\leq \sqrt{\frac AC}\tan(\sqrt{AC}\,t)\\
+&amp;=\frac{K^{-20}}{\sqrt{q^{20}-1}}\,
+\tan\!\left(\kappa q^5\sqrt{q^{20}-1}\,K^{-19}t\right).
+\end{aligned}
+\tag{EX16}
+\]</span>
+<p>The scalar equality function has zero initial value and derivative <span class="math" data-tex="\(A+Cy^2\)">\(A+Cy^2\)</span>, as follows by direct differentiation. Thus no scalar comparison theorem has been invoked without its proof.</p>
+<p>Throughout <span class="math" data-tex="\(0\leq t\leq T_0\leq2\kappa^{-1}\)">\(0\leq t\leq T_0\leq2\kappa^{-1}\)</span>, the argument <span class="math" data-tex="\(x=\sqrt{AC}\,t\)">\(x=\sqrt{AC}\,t\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+0\leq x\leq2q^5\sqrt{q^{20}-1}\,K^{-19}
+&lt;65536K^{-19}&lt;\frac12.
+\]">\[
+0\leq x\leq2q^5\sqrt{q^{20}-1}\,K^{-19}
+&lt;65536K^{-19}&lt;\frac12.
+\]</span>
+<p>In particular the tangent pole cannot occur on this actual interval. For <span class="math" data-tex="\(0\leq x\leq1/2\)">\(0\leq x\leq1/2\)</span>, <span class="math" data-tex="\(\sin x\leq x\)">\(\sin x\leq x\)</span> follows by integrating <span class="math" data-tex="\(\cos x\leq1\)">\(\cos x\leq1\)</span>; then
+<span class="math" data-tex="\(\cos x=1-\int_0^x\sin r\,dr\geq1-x^2/2&gt;0\)">\(\cos x=1-\int_0^x\sin r\,dr\geq1-x^2/2&gt;0\)</span>.
+Consequently <span class="math" data-tex="\(\tan x\leq x/(1-x^2/2)\)">\(\tan x\leq x/(1-x^2/2)\)</span>, and EX16 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y(t)&amp;\leq
+\frac{\kappa q^5K^{-39}t}
+{1-\tfrac12\kappa^2q^{10}(q^{20}-1)K^{-38}t^2}\\
+&amp;\leq
+\frac{2q^5K^{-39}}{1-2q^{10}(q^{20}-1)K^{-38}}
+=:\mathcal Y_q,\\
+E_m(t)&amp;\leq\frac{\mathcal Y_q^2}{2}
+q^{-20(m-n_0-2)}
+\qquad(m\geq n_0+2).
+\end{aligned}
+\tag{EX17}
+\]">\[
+\begin{aligned}
+Y(t)&amp;\leq
+\frac{\kappa q^5K^{-39}t}
+{1-\tfrac12\kappa^2q^{10}(q^{20}-1)K^{-38}t^2}\\
+&amp;\leq
+\frac{2q^5K^{-39}}{1-2q^{10}(q^{20}-1)K^{-38}}
+=:\mathcal Y_q,\\
+E_m(t)&amp;\leq\frac{\mathcal Y_q^2}{2}
+q^{-20(m-n_0-2)}
+\qquad(m\geq n_0+2).
+\end{aligned}
+\tag{EX17}
+\]</span>
+<p>The first upper bound increases in <span class="math" data-tex="\(t\)">\(t\)</span> on this interval; alternatively use the upper bound on the numerator and lower bound on the denominator separately. The common denominator is positive, since</p>
+<span class="math math-display" data-tex="\[
+2q^{10}(q^{20}-1)K^{-38}
+&lt;2147481600K^{-38}&lt;\frac1{65}.
+\]">\[
+2q^{10}(q^{20}-1)K^{-38}
+&lt;2147481600K^{-38}&lt;\frac1{65}.
+\]</span>
+<p>The last inequality follows already from <span class="math" data-tex="\(K\geq10\)">\(K\geq10\)</span>: multiply <span class="math" data-tex="\(2147481600\)">\(2147481600\)</span> by <span class="math" data-tex="\(65\)">\(65\)</span>, obtaining <span class="math" data-tex="\(139586304000&lt;10^{38}\)">\(139586304000&lt;10^{38}\)</span>. As <span class="math" data-tex="\(2q^5&lt;64\)">\(2q^5&lt;64\)</span>, this also proves <span class="math" data-tex="\(\mathcal Y_q&lt;65K^{-39}\)">\(\mathcal Y_q&lt;65K^{-39}\)</span>, with the original dependence on <span class="math" data-tex="\(q\)">\(q\)</span> retained. The estimates extend to <span class="math" data-tex="\(T_0\)">\(T_0\)</span> by the already established continuation and continuity in FT1 and FT8.</p>
+<p>Replacing the upper-tail input in EX14 by EX17 yields the stronger complete receiving bound</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|w\|_{H^\sigma}^2
+&amp;\leq(1+\chi q^{2n_0})^\sigma
+\bigl(403K^{-90}\bigr)^{1-\sigma/10}\\
+&amp;\quad{}\times
+\left[q^{20}\,403K^{-90}
++q^{40}
+\left(\frac{2q^5K^{-39}}
+{1-2q^{10}(q^{20}-1)K^{-38}}\right)^2
+\right]^{\sigma/10},
+\qquad0\leq\sigma\leq10.
+\end{aligned}
+\tag{EX18}
+\]">\[
+\begin{aligned}
+\|w\|_{H^\sigma}^2
+&amp;\leq(1+\chi q^{2n_0})^\sigma
+\bigl(403K^{-90}\bigr)^{1-\sigma/10}\\
+&amp;\quad{}\times
+\left[q^{20}\,403K^{-90}
++q^{40}
+\left(\frac{2q^5K^{-39}}
+{1-2q^{10}(q^{20}-1)K^{-38}}\right)^2
+\right]^{\sigma/10},
+\qquad0\leq\sigma\leq10.
+\end{aligned}
+\tag{EX18}
+\]</span>
+<p>All weights and physical factors survive the map from the original tail to the Sobolev error. This comparison proves a sharper bound on the same actual interval; it does not assert equality of the nonlinear tail with the scalar tangent solution.</p>
+<h3 id="exercise-5-compute-the-exact-growth-of-the-scalar-forcing-counterexample">Exercise 5. Compute the exact growth of the scalar forcing counterexample</h3>
+<p>Keep exactly the continuously differentiable drift <span class="math" data-tex="\(z_K\)">\(z_K\)</span>, zero-initial scalar solution <span class="math" data-tex="\(y_K\)">\(y_K\)</span>, physical endpoint <span class="math" data-tex="\(T=1/2+K^{-1/2}\)">\(T=1/2+K^{-1/2}\)</span>, and constant forcing <span class="math" data-tex="\(K^{-14}\)">\(K^{-14}\)</span> in RC19–RC24. Determine the complete leading asymptotic of <span class="math" data-tex="\(y_K(T)\)">\(y_K(T)\)</span>, including its polynomial power and constant.</p>
+<p><strong>Solution.</strong> First integrate the original drift separately on the two physical time intervals. If <span class="math" data-tex="\(0\leq r\leq1/2\)">\(0\leq r\leq1/2\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\int_r^T z_K(v)\,dv=\frac12-r+\frac1{3\sqrt K}.
+\]">\[
+\int_r^T z_K(v)\,dv=\frac12-r+\frac1{3\sqrt K}.
+\]</span>
+<p>For <span class="math" data-tex="\(r=1/2+K^{-1/2}\theta\)">\(r=1/2+K^{-1/2}\theta\)</span>, <span class="math" data-tex="\(0\leq\theta\leq1\)">\(0\leq\theta\leq1\)</span>, the exact integral is RC22,</p>
+<span class="math math-display" data-tex="\[
+\int_r^T z_K(v)\,dv
+=K^{-1/2}\left(\frac13-\theta+\frac23\theta^3\right).
+\]">\[
+\int_r^T z_K(v)\,dv
+=K^{-1/2}\left(\frac13-\theta+\frac23\theta^3\right).
+\]</span>
+<p>Substitute both expressions, including the complete Jacobian <span class="math" data-tex="\(dr=K^{-1/2}d\theta\)">\(dr=K^{-1/2}d\theta\)</span>, into RC21. This gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y_K(T)
+&amp;=K^{-15}(1-e^{-K/2})e^{-\sqrt K/3}\\
+&amp;\quad+K^{-29/2}\int_0^1
+\exp\left[\sqrt K\left(\theta-\frac23\theta^3-\frac13\right)\right]d\theta.
+\end{aligned}
+\tag{EX19}
+\]">\[
+\begin{aligned}
+y_K(T)
+&amp;=K^{-15}(1-e^{-K/2})e^{-\sqrt K/3}\\
+&amp;\quad+K^{-29/2}\int_0^1
+\exp\left[\sqrt K\left(\theta-\frac23\theta^3-\frac13\right)\right]d\theta.
+\end{aligned}
+\tag{EX19}
+\]</span>
+<p>The first contribution remains explicit; the change of coordinate in the second has the inverse <span class="math" data-tex="\(\theta=\sqrt K(r-1/2)\)">\(\theta=\sqrt K(r-1/2)\)</span> on the stated physical interval.</p>
+<p>Define only for this exact scalar integral</p>
+<span class="math math-display" data-tex="\[
+f(\theta)=\theta-\frac23\theta^3-\frac13,\qquad
+a=\frac1{\sqrt2},\qquad
+f_*=\frac{\sqrt2-1}{3}.
+\]">\[
+f(\theta)=\theta-\frac23\theta^3-\frac13,\qquad
+a=\frac1{\sqrt2},\qquad
+f_*=\frac{\sqrt2-1}{3}.
+\]</span>
+<p>Since <span class="math" data-tex="\(f&#x27;(\theta)=1-2\theta^2\)">\(f&#x27;(\theta)=1-2\theta^2\)</span>, the unique maximum on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is at <span class="math" data-tex="\(a\)">\(a\)</span>, with <span class="math" data-tex="\(f(a)=f_*\)">\(f(a)=f_*\)</span>. The original physical source time of the maximum is</p>
+<span class="math math-display" data-tex="\[
+r_*=\frac12+\frac1{\sqrt{2K}}.
+\]">\[
+r_*=\frac12+\frac1{\sqrt{2K}}.
+\]</span>
+<p>The cubic has the exact expansion, with no omitted remainder,</p>
+<span class="math math-display" data-tex="\[
+f(a+h)=f_*-\sqrt2\,h^2-\frac23h^3
+=f_*-\left(\sqrt2+\frac23h\right)h^2.
+\tag{EX20}
+\]">\[
+f(a+h)=f_*-\sqrt2\,h^2-\frac23h^3
+=f_*-\left(\sqrt2+\frac23h\right)h^2.
+\tag{EX20}
+\]</span>
+<p>For <span class="math" data-tex="\(-a\leq h\leq1-a\)">\(-a\leq h\leq1-a\)</span>, its quadratic coefficient obeys</p>
+<span class="math math-display" data-tex="\[
+\sqrt2+\frac23h\geq\frac{2\sqrt2}{3}&gt;0.
+\tag{EX21}
+\]">\[
+\sqrt2+\frac23h\geq\frac{2\sqrt2}{3}&gt;0.
+\tag{EX21}
+\]</span>
+<p>Put <span class="math" data-tex="\(x=K^{1/4}(\theta-a)\)">\(x=K^{1/4}(\theta-a)\)</span> in the second integral in EX19, retaining the inverse <span class="math" data-tex="\(\theta=a+K^{-1/4}x\)">\(\theta=a+K^{-1/4}x\)</span> and Jacobian <span class="math" data-tex="\(d\theta=K^{-1/4}dx\)">\(d\theta=K^{-1/4}dx\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;K^{1/4}e^{-f_*\sqrt K}\int_0^1e^{\sqrt K f(\theta)}\,d\theta\\
+&amp;\qquad=
+\int_{-aK^{1/4}}^{(1-a)K^{1/4}}
+\exp\left(-\sqrt2 x^2-\frac23K^{-1/4}x^3\right)dx.
+\end{aligned}
+\tag{EX22}
+\]">\[
+\begin{aligned}
+&amp;K^{1/4}e^{-f_*\sqrt K}\int_0^1e^{\sqrt K f(\theta)}\,d\theta\\
+&amp;\qquad=
+\int_{-aK^{1/4}}^{(1-a)K^{1/4}}
+\exp\left(-\sqrt2 x^2-\frac23K^{-1/4}x^3\right)dx.
+\end{aligned}
+\tag{EX22}
+\]</span>
+<p>Extend the integrand by zero outside these exact endpoints. By EX21 it is bounded above everywhere by <span class="math" data-tex="\(e^{-(2\sqrt2/3)x^2}\)">\(e^{-(2\sqrt2/3)x^2}\)</span>. At every fixed real <span class="math" data-tex="\(x\)">\(x\)</span>, the endpoints eventually contain <span class="math" data-tex="\(x\)">\(x\)</span> and the integrand tends to <span class="math" data-tex="\(e^{-\sqrt2x^2}\)">\(e^{-\sqrt2x^2}\)</span>. Dominated convergence therefore gives</p>
+<span class="math math-display" data-tex="\[
+\lim_{K\to\infty}
+K^{1/4}e^{-f_*\sqrt K}\int_0^1e^{\sqrt K f(\theta)}\,d\theta
+=\int_{\mathbb R}e^{-\sqrt2x^2}\,dx
+=\sqrt{\frac{\pi}{\sqrt2}}.
+\tag{EX23}
+\]">\[
+\lim_{K\to\infty}
+K^{1/4}e^{-f_*\sqrt K}\int_0^1e^{\sqrt K f(\theta)}\,d\theta
+=\int_{\mathbb R}e^{-\sqrt2x^2}\,dx
+=\sqrt{\frac{\pi}{\sqrt2}}.
+\tag{EX23}
+\]</span>
+<p>For completeness, this Gaussian integral follows by squaring its positive value, applying Tonelli and polar coordinates:</p>
+<span class="math math-display" data-tex="\[
+\left(\int_{\mathbb R}e^{-b x^2}\,dx\right)^2
+=\int_0^{2\pi}\int_0^\infty e^{-b\rho^2}\rho\,d\rho\,d\varphi
+=\frac{\pi}{b}\quad(b&gt;0).
+\]">\[
+\left(\int_{\mathbb R}e^{-b x^2}\,dx\right)^2
+=\int_0^{2\pi}\int_0^\infty e^{-b\rho^2}\rho\,d\rho\,d\varphi
+=\frac{\pi}{b}\quad(b&gt;0).
+\]</span>
+<p>The same calculation proves that the dominating Gaussian is integrable.</p>
+<p>Multiply the first term in EX19 by <span class="math" data-tex="\(K^{59/4}e^{-f_*\sqrt K}\)">\(K^{59/4}e^{-f_*\sqrt K}\)</span>. Its complete value becomes</p>
+<span class="math math-display" data-tex="\[
+K^{-1/4}(1-e^{-K/2})
+e^{-(f_*+1/3)\sqrt K}
+=K^{-1/4}(1-e^{-K/2})e^{-(\sqrt2/3)\sqrt K}
+\longrightarrow0.
+\]">\[
+K^{-1/4}(1-e^{-K/2})
+e^{-(f_*+1/3)\sqrt K}
+=K^{-1/4}(1-e^{-K/2})e^{-(\sqrt2/3)\sqrt K}
+\longrightarrow0.
+\]</span>
+<p>Together with EX23 this proves the full limit</p>
+<span class="math math-display" data-tex="\[
+\boxed{\displaystyle
+\lim_{K\to\infty}
+K^{59/4}\exp\left(-\frac{\sqrt2-1}{3}\sqrt K\right)y_K(T)
+=\sqrt{\frac{\pi}{\sqrt2}}.}
+\tag{EX24}
+\]">\[
+\boxed{\displaystyle
+\lim_{K\to\infty}
+K^{59/4}\exp\left(-\frac{\sqrt2-1}{3}\sqrt K\right)y_K(T)
+=\sqrt{\frac{\pi}{\sqrt2}}.}
+\tag{EX24}
+\]</span>
+<p>The factor <span class="math" data-tex="\(K^{-59/4}\)">\(K^{-59/4}\)</span> consists of the original forcing <span class="math" data-tex="\(K^{-14}\)">\(K^{-14}\)</span>, the original final-interval Jacobian <span class="math" data-tex="\(K^{-1/2}\)">\(K^{-1/2}\)</span>, and the concentration factor <span class="math" data-tex="\(K^{-1/4}\)">\(K^{-1/4}\)</span>. The source-time peak and its Gaussian receiving integral are completely identified. This strengthens the scalar lower bound RC23; it does not claim that these scalar functions satisfy the cascade equations.</p>
+<p><img src="assets/NS-FLUID-44/original-transfer-forcing-refinement-44890AA13F80C363F10A2F90390D41C651D5466BBC2AB700A909376FDE650647.png" alt="Stronger actual forcing and full-state transfer bounds with original physical coefficients" class="course-figure" width="2400" height="1500" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-transfer-forcing-refinement" data-asset-sha256="44890AA13F80C363F10A2F90390D41C651D5466BBC2AB700A909376FDE650647"></p>
+<p>Exercises 2–4, EX6–EX18, retain the decay inside every forcing interval and receive the resulting estimate in the full original velocity and Sobolev spaces. The time spacing is schematic; every marked time and coefficient is exact. All orthogonal diffusion components and upper bands are retained. <a href="assets/original-transfer-forcing-refinement.py">Reproducible diagram source</a> and <a href="assets/original-transfer-forcing-refinement.svg">vector rendering</a>. Human comparison: Tao, original navier-blowup.tex2196–2550; the stronger estimates are editorial deductions under the complete FT1–FT3 hypotheses.</p>
+<p><img src="assets/NS-FLUID-44/original-scalar-forcing-peak-27695D1D2235C42D46357977E9A33D247D9F9EF2FEBCA169EDABA86FA2FA9185.png" alt="The exact physical source-time peak and full asymptotic of the scalar forcing example" class="course-figure" width="2400" height="1500" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-scalar-forcing-peak" data-asset-sha256="27695D1D2235C42D46357977E9A33D247D9F9EF2FEBCA169EDABA86FA2FA9185"></p>
+<p>Exercise 5, EX19–EX24, identifies the exact physical time at which the scalar forcing kernel peaks. The left plot is restricted to the final physical interval at K=1024. Its orange curve is the exact kernel, its blue dashed curve is the quadratic expression near the peak, and its gray dotted curve is the proved upper bound from EX21. The right plot numerically integrates the complete expression EX19, including its earlier-time term, and compares it with the limit proved by dominated convergence. These scalar functions test the inference RC19–RC24; they are not nonlinear cascade trajectories. <a href="assets/original-scalar-forcing-peak.py">Reproducible calculation and figure</a> and <a href="assets/original-scalar-forcing-peak.svg">vector rendering</a>. Human comparison: Tao, original navier-blowup.tex2405–2443. No novelty claim is made.</p>
+<h2 id="continue-with-the-full-uniform-viscous-induction">Continue with the full uniform viscous induction</h2>
+<p>The first actual interval, the complete rotor corrector and the stronger
+full-state estimates are now proved. The next lesson teaches the
+<span class="unlinked">complete uniform induction, UI1–UI59</span>.
+Every stage uses the actual physical past, both incoming-pump terms,
+the corrected receiving-drive range and the complete weighted tail.
+The supporting collection also retains the entire second-transfer
+proof ST1–ST68.</p>
+<p>That completed induction proves the finite endpoint for the specified
+averaged equation. It does not prove singularity for the unmodified
+Navier–Stokes equation or validate the separate OpenAI construction.
+The broader series retains its Chen–Hou, Wang–Lai–Gomez-Serrano–Buckmaster,
+Alpöge–Buckmaster, OpenAI and workbench assignments.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-43.html">Previous lesson</a><a href="NS-FLUID-45.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

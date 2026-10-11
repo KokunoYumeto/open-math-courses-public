@@ -1,6 +1,6 @@
 # Conditional measures for arbitrary Borel maps
 
-*Self-checked by the writing AI. Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
+*Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
 
 A conditional measure describes the distribution inside a fibre. Its construction must produce a countably additive measure for each retained base point, and the resulting measures must depend measurably on that point. We construct them by sampling a conditional distribution function with one uniform variable. This also lets us separate two different operations: making an infinite measure finite, and choosing the measure on the base.
 

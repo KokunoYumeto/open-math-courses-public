@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local probabilities and moving lattice cutoffs</title><link rel="stylesheet" href="reader.css"></head><body><a class="skip" href="#main">Skip to the lesson</a><header><a href="index.html">Discrete dynamics, coding and probability</a> · <a href="src/NT-COLLATZ-28.md">Lesson source</a></header><main id="main"><h1 id="local-probabilities-and-moving-lattice-cutoffs">Local
+probabilities and moving lattice cutoffs</h1>
+<p><em>Written by GPT-6 Astra, Ultra reasoning, in Codex, October 2026.
+Self-checked by the writing AI. Original exposition, proofs and
+exercises: CC0 1.0.</em></p>
+<p>A local probability estimate describes one term of a distribution. To
+use it in a counting problem, we must understand what happens when both
+the distribution and the selected integer change. Here a sum of
+geometric waiting times has mean twice its length, while a moving
+logarithmic cutoff selects a level with a different slope. The two meet
+near a particular time. Most of the resulting weight lies near that
+meeting point.</p>
+<p>We will calculate the total weight, including the effect of strict
+integer endpoints, and then average functions of the cutoff’s fractional
+part. Two ideas make the calculation effective. First, the
+multiplicities of successive integer levels have cumulative error at
+most one. Second, a Gaussian profile can be averaged by its mass and
+height, instead of paying for its entire support. Combining these ideas
+with the local-probability estimate already proved gives a quantitative
+limit for both reciprocal and uniform-counting profiles.</p>
+<p>The application is the analytic part of Lech Mazur’s terminal-band
+construction in <em>Natural-Density Almost-Bounded Collatz Orbits in
+Logarithmic Time</em>. Basic references are that work, Tao’s <em>Almost
+all orbits of the Collatz map attain almost bounded values</em> for
+geometric valuation words, and Kuipers and Niederreiter’s <em>Uniform
+Distribution of Sequences</em> for discrepancy. We use the internal
+proofs of <a
+href="NT-COLLATZ-17.html#local-probabilities-and-a-ratio-that-keeps-their-common-terms">local
+probabilities</a>, <a
+href="NT-COLLATZ-21.html#count-estimates-weighted-by-the-height-of-a-profile">Gaussian
+integration and weighted layers</a>, and <a
+href="NT-COLLATZ-27.html#from-a-sampling-band-to-two-probability-profiles">strict
+bands and their two profiles</a>. No probability distribution is assumed
+for an individual deterministic orbit.</p>
+<h2 id="the-time-window-selected-by-an-integer-cutoff">The time window
+selected by an integer cutoff</h2>
+<p>Fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>λ</mi><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1&lt;\lambda&lt;2</annotation></semantics></math>,
+set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><mn>2</mn><mo>−</mo><mi>λ</mi></mrow><annotation encoding="application/x-tex">\Delta=2-\lambda</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+be real. At a positive integer time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>,
+define
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mi>ν</mi></msub><mo>=</mo><mi>A</mi><mo>+</mo><mi>λ</mi><mi>ν</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>L</mi><mi>ν</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">⌊</mo><msub><mi>s</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">⌋</mo><mo>+</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>d</mi><mi>ν</mi></msub><mo>=</mo><msub><mi>L</mi><mi>ν</mi></msub><mo>−</mo><mn>2</mn><mi>ν</mi><mo>=</mo><mo stretchy="false" form="prefix">⌊</mo><mi>A</mi><mo>−</mo><mi mathvariant="normal">Δ</mi><mi>ν</mi><mo stretchy="false" form="postfix">⌋</mo><mo>+</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+s_\nu=A+\lambda\nu,\qquad L_\nu=\lfloor s_\nu\rfloor+1,
+\qquad d_\nu=L_\nu-2\nu=\lfloor A-\Delta\nu\rfloor+1.
+\tag{1}
+</annotation></semantics></math><span class="equation-number">(1)</span></span></span> The integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>L</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">L_\nu</annotation></semantics></math>
+is strictly above
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">s_\nu</annotation></semantics></math>,
+including when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">s_\nu</annotation></semantics></math>
+is integral. The deviation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">d_\nu</annotation></semantics></math>
+measures its distance from the geometric mean
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>ν</mi></mrow><annotation encoding="application/x-tex">2\nu</annotation></semantics></math>.</p>
+<p>Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">W&gt;1</annotation></semantics></math>,
+and put
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mo stretchy="false" form="prefix">⌈</mo><mi>W</mi><mo stretchy="false" form="postfix">⌉</mo><mo>−</mo><mn>1</mn><mo>≥</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>n</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">⌊</mo><mfrac><mrow><mi>A</mi><mo>−</mo><mi>R</mi></mrow><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">⌋</mo></mrow><mo>+</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>m</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">⌊</mo><mfrac><mrow><mi>A</mi><mo>+</mo><mi>R</mi><mo>+</mo><mn>1</mn></mrow><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">⌋</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R=\lceil W\rceil-1\geq1,\qquad
+n=\left\lfloor\frac{A-R}{\Delta}\right\rfloor+1,
+\qquad m=\left\lfloor\frac{A+R+1}{\Delta}\right\rfloor.
+\tag{2}
+</annotation></semantics></math><span class="equation-number">(2)</span></span></span> Throughout, assume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n\geq1</annotation></semantics></math>.
+The full set of positive times satisfying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>d</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">|d_\nu|&lt;W</annotation></semantics></math>
+is exactly
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>n</mi><mo>,</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>m</mi><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+I=\{n,n+1,\ldots,m\}.
+\tag{3}
+</annotation></semantics></math><span class="equation-number">(3)</span></span></span> Indeed, the integer condition is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>R</mi><mo>≤</mo><msub><mi>d</mi><mi>ν</mi></msub><mo>≤</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">-R\leq d_\nu\leq R</annotation></semantics></math>,
+which is equivalent to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>−</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi mathvariant="normal">Δ</mi><mo>&lt;</mo><mi>ν</mi><mo>≤</mo><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>+</mo><mi>R</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">(A-R)/\Delta&lt;\nu\leq(A+R+1)/\Delta</annotation></semantics></math>.
+Its length is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>R</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi mathvariant="normal">Δ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">(2R+1)/\Delta&gt;1</annotation></semantics></math>,
+so it is nonempty. The hypothesis
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n\geq1</annotation></semantics></math>
+ensures that the positive-time restriction does not cut off any of this
+interval.</p>
+<p>For the geometric sum, retain the original weights
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac linethickness="0"><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><mrow><mi>ν</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><msup><mn>2</mn><mrow><mi>−</mi><mi>k</mi></mrow></msup><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>≥</mo><mi>ν</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>p</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>&lt;</mo><mi>ν</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+p_\nu(k)=\binom{k-1}{\nu-1}2^{-k}\quad(k\geq\nu),
+\qquad p_\nu(k)=0\quad(k&lt;\nu),
+</annotation></semantics></math></span>
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>ν</mi></msub><mo>=</mo><msub><mi>p</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><mi>ν</mi><mo>∈</mo><mi>I</mi></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>Z</mi><mo>=</mo><munder><mo>∑</mo><mi>ν</mi></munder><msub><mi>q</mi><mi>ν</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+q_\nu=p_\nu(L_\nu)\mathbf1_{\nu\in I},\qquad Z=\sum_\nu q_\nu.
+\tag{4}
+</annotation></semantics></math><span class="equation-number">(4)</span></span></span> The sum
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+runs over different geometric distributions, one at each time. It is not
+a probability mass constrained to equal one. We will prove that it
+approaches
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">1/\Delta</annotation></semantics></math>.</p>
+<h2 id="exact-multiplicities-and-a-bounded-counting-error">Exact
+multiplicities and a bounded counting error</h2>
+<p>For an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>R</mi><mo>≤</mo><mi>d</mi><mo>≤</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">-R\leq d\leq R</annotation></semantics></math>,
+the times at level
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+are exactly
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>A</mi><mo>−</mo><mi>d</mi></mrow><mi mathvariant="normal">Δ</mi></mfrac><mo>&lt;</mo><mi>ν</mi><mo>≤</mo><mfrac><mrow><mi>A</mi><mo>−</mo><mi>d</mi><mo>+</mo><mn>1</mn></mrow><mi mathvariant="normal">Δ</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{A-d}{\Delta}&lt;\nu\leq\frac{A-d+1}{\Delta}.
+</annotation></semantics></math></span> Consequently their number is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>d</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">⌊</mo><mfrac><mrow><mi>A</mi><mo>−</mo><mi>d</mi><mo>+</mo><mn>1</mn></mrow><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">⌋</mo></mrow><mo>−</mo><mrow><mo stretchy="true" form="prefix">⌊</mo><mfrac><mrow><mi>A</mi><mo>−</mo><mi>d</mi></mrow><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">⌋</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+a_d=\left\lfloor\frac{A-d+1}{\Delta}\right\rfloor
+       -\left\lfloor\frac{A-d}{\Delta}\right\rfloor.
+\tag{5}
+</annotation></semantics></math><span class="equation-number">(5)</span></span></span> No natural-index clipping occurs
+because all these times belong to (3). Each interval has length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">1/\Delta</annotation></semantics></math>,
+but its integer population need not be constant.</p>
+<p><strong>Lemma 1 (Cumulative multiplicity error).</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>R</mi><mo>≤</mo><mi>j</mi><mo>≤</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">-R\leq j\leq R</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mi>−</mi><mi>R</mi></mrow><mi>j</mi></munderover><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>a</mi><mi>d</mi></msub><mo>−</mo><mfrac><mn>1</mn><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left|\sum_{d=-R}^{j}\left(a_d-\frac1\Delta\right)\right|\leq1.
+\tag{6}
+</annotation></semantics></math><span class="equation-number">(6)</span></span></span> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mrow><mi>−</mi><mi>R</mi></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">v_{-R},\ldots,v_R</annotation></semantics></math>
+are nonnegative, increase up to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mn>0</mn></msub><annotation encoding="application/x-tex">v_0</annotation></semantics></math>,
+and decrease thereafter, then
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mi>−</mi><mi>R</mi></mrow><mi>R</mi></munderover><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>a</mi><mi>d</mi></msub><mo>−</mo><mfrac><mn>1</mn><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>v</mi><mi>d</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mn>2</mn><msub><mi>v</mi><mn>0</mn></msub><mo>−</mo><msub><mi>v</mi><mrow><mi>−</mi><mi>R</mi></mrow></msub><mo>≤</mo><mn>2</mn><msub><mi>v</mi><mn>0</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left|\sum_{d=-R}^{R}\left(a_d-\frac1\Delta\right)v_d\right|
+\leq2v_0-v_{-R}\leq2v_0.
+\tag{7}
+</annotation></semantics></math><span class="equation-number">(7)</span></span></span></p>
+<p><strong>Proof.</strong> The floors in (5) telescope:
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mi>−</mi><mi>R</mi></mrow><mi>j</mi></munderover><msub><mi>a</mi><mi>d</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">⌊</mo><mfrac><mrow><mi>A</mi><mo>+</mo><mi>R</mi><mo>+</mo><mn>1</mn></mrow><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">⌋</mo></mrow><mo>−</mo><mrow><mo stretchy="true" form="prefix">⌊</mo><mfrac><mrow><mi>A</mi><mo>−</mo><mi>j</mi></mrow><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">⌋</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{d=-R}^{j}a_d
+=\left\lfloor\frac{A+R+1}{\Delta}\right\rfloor
+ -\left\lfloor\frac{A-j}{\Delta}\right\rfloor.
+</annotation></semantics></math></span> Subtract
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>+</mo><mi>R</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">(j+R+1)/\Delta</annotation></semantics></math>.
+The difference is the difference of two fractional parts, so its
+absolute value is at most one. Let that cumulative difference be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>j</mi></msub><annotation encoding="application/x-tex">C_j</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>−</mi><mi>R</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C_{-R-1}=0</annotation></semantics></math>.
+Finite summation by parts gives
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mi>−</mi><mi>R</mi></mrow><mi>R</mi></munderover><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>a</mi><mi>d</mi></msub><mo>−</mo><mfrac><mn>1</mn><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>v</mi><mi>d</mi></msub><mo>=</mo><msub><mi>v</mi><mi>R</mi></msub><msub><mi>C</mi><mi>R</mi></msub><mo>+</mo><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mi>−</mi><mi>R</mi></mrow><mrow><mi>R</mi><mo>−</mo><mn>1</mn></mrow></munderover><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mi>d</mi></msub><mo>−</mo><msub><mi>v</mi><mrow><mi>d</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="postfix">)</mo><msub><mi>C</mi><mi>d</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{d=-R}^{R}\left(a_d-\frac1\Delta\right)v_d
+=v_R C_R+\sum_{d=-R}^{R-1}(v_d-v_{d+1})C_d.
+</annotation></semantics></math></span> Using (6), its absolute value is at
+most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>R</mi></msub><mo>+</mo><mo>∑</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mi>d</mi></msub><mo>−</mo><msub><mi>v</mi><mrow><mi>d</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">v_R+\sum|v_d-v_{d+1}|</annotation></semantics></math>.
+The increasing and decreasing portions telescope to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>0</mn></msub><mo>−</mo><msub><mi>v</mi><mrow><mi>−</mi><mi>R</mi></mrow></msub></mrow><annotation encoding="application/x-tex">v_0-v_{-R}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>0</mn></msub><mo>−</mo><msub><mi>v</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">v_0-v_R</annotation></semantics></math>,
+respectively. Their sum with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>R</mi></msub><annotation encoding="application/x-tex">v_R</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>v</mi><mn>0</mn></msub><mo>−</mo><msub><mi>v</mi><mrow><mi>−</mi><mi>R</mi></mrow></msub></mrow><annotation encoding="application/x-tex">2v_0-v_{-R}</annotation></semantics></math>,
+proving (7). ∎</p>
+<p>For example, take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><mn>2</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">\Delta=2/5</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">A=40</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">W=3</annotation></semantics></math>.
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">R=2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mn>96</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>107</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">I=\{96,\ldots,107\}</annotation></semantics></math>.
+In level order
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>2</mn><mo>,</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2,-1,0,1,2</annotation></semantics></math>,
+the multiplicities are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2,3,2,3,2</annotation></semantics></math>.
+Their average spacing is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi><mo>=</mo><mn>5</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/\Delta=5/2</annotation></semantics></math>;
+their cumulative errors are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>0</mn><mo>,</mo><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>0</mn><mo>,</mo><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-1/2,0,-1/2,0,-1/2</annotation></semantics></math>.
+An error charged separately to all five levels would miss this
+cancellation.</p>
+<div class="figure-scroll"><p><img src="figures/lattice-multiplicity.svg"
+alt="The twelve integer times from 96 through 107 grouped by their strict deviation levels. The five level populations are 2, 3, 2, 3 and 2. Their centered cumulative populations alternate between minus one half and zero." /></p></div>
+<p><em>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">A=40</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><mn>2</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">\Delta=2/5</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>d</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">|d|&lt;3</annotation></semantics></math>.
+The cells retain the exact strict lower and weak upper endpoints in (5).
+The lower diagram shows the telescoping counting error in (6), not a
+random fluctuation.</em></p>
+<h2 id="summing-a-gaussian-through-the-strict-levels">Summing a Gaussian
+through the strict levels</h2>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">S&gt;0</annotation></semantics></math>,
+write
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mrow><mn>4</mn><mi>π</mi><mi>S</mi></mrow></msqrt></mfrac><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mi>x</mi><mn>2</mn></msup><mrow><mn>4</mn><mi>S</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>H</mi><mo>=</mo><munder><mo>∑</mo><mrow><mi>ν</mi><mo>∈</mo><mi>I</mi></mrow></munder><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\phi_S(x)=\frac1{\sqrt{4\pi S}}\exp\left(-\frac{x^2}{4S}\right),
+\qquad H=\sum_{\nu\in I}\phi_S(d_\nu).
+\tag{8}
+</annotation></semantics></math><span class="equation-number">(8)</span></span></span> The <a
+href="NT-COLLATZ-21.html#an-envelope-with-an-exactly-computable-mass">Gaussian
+integral proved earlier</a>, followed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><msqrt><mi>S</mi></msqrt><mspace width="0.167em"></mspace><mi>u</mi></mrow><annotation encoding="application/x-tex">x=2\sqrt S\,u</annotation></semantics></math>,
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∫</mo><mi mathvariant="double-struck">ℝ</mi></msub><msub><mi>ϕ</mi><mi>S</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\int_{\mathbb R}\phi_S=1</annotation></semantics></math>.
+The function is even, positive and decreasing on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[0,\infty)</annotation></semantics></math>.</p>
+<p><strong>Theorem 2 (Finite Gaussian sum).</strong> Under (2)–(3),
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>H</mi><mo>−</mo><mfrac><mn>1</mn><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mi>Q</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>Q</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>+</mo><mfrac><mn>1</mn><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mfrac><mrow><mn>4</mn><mi>S</mi></mrow><mrow><mi mathvariant="normal">Δ</mi><mi>R</mi></mrow></mfrac><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left|H-\frac1\Delta\right|\leq Q,
+\qquad
+Q=\left(2+\frac1\Delta\right)\phi_S(0)
+ +\frac{4S}{\Delta R}\phi_S(R).
+\tag{9}
+</annotation></semantics></math><span class="equation-number">(9)</span></span></span></p>
+<p><strong>Proof.</strong> Regrouping by level is an exact finite
+identity:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mi>−</mi><mi>R</mi></mrow><mi>R</mi></msubsup><msub><mi>a</mi><mi>d</mi></msub><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H=\sum_{d=-R}^R a_d\phi_S(d)</annotation></semantics></math>.
+Lemma 1 gives
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>H</mi><mo>−</mo><mfrac><mn>1</mn><mi mathvariant="normal">Δ</mi></mfrac><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mi>−</mi><mi>R</mi></mrow><mi>R</mi></munderover><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mn>2</mn><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left|H-\frac1\Delta\sum_{d=-R}^R\phi_S(d)\right|\leq2\phi_S(0).
+\tag{10}
+</annotation></semantics></math><span class="equation-number">(10)</span></span></span> To estimate the remaining integer sum,
+put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mn>1</mn></mrow><mi>R</mi></msubsup><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P=\sum_{d=1}^R\phi_S(d)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>R</mi></msubsup><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">J=\int_0^R\phi_S(x)\,dx</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>R</mi></msub><mo>=</mo><msubsup><mo>∫</mo><mi>R</mi><mi>∞</mi></msubsup><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">T_R=\int_R^\infty\phi_S(x)\,dx</annotation></semantics></math>.
+Monotonicity on each unit interval gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>≤</mo><mi>J</mi><mo>≤</mo><mi>P</mi><mo>+</mo><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P\leq J\leq P+\phi_S(0)</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>+</mo><msub><mi>T</mi><mi>R</mi></msub><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">J+T_R=1/2</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mn>2</mn><mi>P</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mn>2</mn><msub><mi>T</mi><mi>R</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left|\phi_S(0)+2P-1\right|\leq\phi_S(0)+2T_R.
+\tag{11}
+</annotation></semantics></math><span class="equation-number">(11)</span></span></span> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≥</mo><mi>R</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x\geq R&gt;0</annotation></semantics></math>,
+the inequality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>R</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(x-R)^2\geq0</annotation></semantics></math>
+gives
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><mrow><mi>R</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>2</mn><mi>S</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\phi_S(x)\leq\phi_S(R)\exp\left(-\frac{R(x-R)}{2S}\right).
+</annotation></semantics></math></span> Integrating the right side yields
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>R</mi></msub><mo>≤</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>S</mi><mi>/</mi><mi>R</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">T_R\leq(2S/R)\phi_S(R)</annotation></semantics></math>.
+Insert this into (11), multiply by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">1/\Delta</annotation></semantics></math>,
+and add (10). This proves (9). ∎</p>
+<p>The two errors have different origins. Counting multiplicities costs
+at most twice the Gaussian peak, independent of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">1/\Delta</annotation></semantics></math>.
+Approximating its integer sum by an integral has a separate peak and
+tail cost, multiplied by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">1/\Delta</annotation></semantics></math>.
+Neither estimate introduces a factor equal to the number of retained
+levels.</p>
+<h2 id="a-local-probability-estimate-with-one-common-center">A local
+probability estimate with one common center</h2>
+<p>Now take the center dictated by (1):
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mi>A</mi><mi>/</mi><mi mathvariant="normal">Δ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>T</mi><mo>=</mo><mfrac><mrow><mi>R</mi><mo>+</mo><mn>1</mn></mrow><mi mathvariant="normal">Δ</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+S=A/\Delta,\qquad T=\frac{R+1}{\Delta}.
+\tag{12}
+</annotation></semantics></math><span class="equation-number">(12)</span></span></span> Assume in addition that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≤</mo><mi>n</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">R\leq n/2</annotation></semantics></math>.
+For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">\nu\in I</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≤</mo><mi>ν</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>n</mi><mo>≤</mo><mi>S</mi><mo>,</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">|</mo><mi>ν</mi><mo>−</mo><mi>S</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>T</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+n\leq\nu,\qquad n\leq S,\qquad |\nu-S|\leq T.
+\tag{13}
+</annotation></semantics></math><span class="equation-number">(13)</span></span></span> The interval in (3) is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>S</mi><mo>−</mo><mi>R</mi><mi>/</mi><mi mathvariant="normal">Δ</mi><mo>,</mo><mi>S</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi mathvariant="normal">Δ</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(S-R/\Delta,S+(R+1)/\Delta]</annotation></semantics></math>.
+Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≤</mo><mi>S</mi><mo>−</mo><mi>R</mi><mi>/</mi><mi mathvariant="normal">Δ</mi><mo>+</mo><mn>1</mn><mo>&lt;</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">n\leq S-R/\Delta+1&lt;S</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≥</mo><mn>1</mn><mo>&gt;</mo><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">R\geq1&gt;\Delta</annotation></semantics></math>.
+These observations prove (13), including
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">S&gt;0</annotation></semantics></math>.</p>
+<p>Define the explicit nonnegative error
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mfrac><mn>2</mn><mi>n</mi></mfrac><mo>+</mo><mfrac><mrow><mn>2</mn><mi>R</mi></mrow><mi>n</mi></mfrac><mo>+</mo><mfrac><msup><mi>R</mi><mn>3</mn></msup><msup><mi>n</mi><mn>2</mn></msup></mfrac><mo>+</mo><mfrac><mi>T</mi><mrow><mn>2</mn><mi>n</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mi>R</mi><mn>2</mn></msup><mi>T</mi></mrow><mrow><mn>4</mn><mi>n</mi><mi>S</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>ε</mi><mo>=</mo><msup><mi>e</mi><mi>η</mi></msup><mo>−</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\eta=\frac2n+\frac{2R}{n}+\frac{R^3}{n^2}
+       +\frac{T}{2n}+\frac{R^2T}{4nS},\qquad \varepsilon=e^\eta-1.
+\tag{14}
+</annotation></semantics></math><span class="equation-number">(14)</span></span></span></p>
+<p><strong>Theorem 3 (Mass of the geometric profile).</strong> At every
+retained time,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>η</mi></mrow></msup><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msub><mi>q</mi><mi>ν</mi></msub><mo>≤</mo><msup><mi>e</mi><mi>η</mi></msup><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><munder><mo>∑</mo><mi>ν</mi></munder><mo stretchy="false" form="prefix">|</mo><msub><mi>q</mi><mi>ν</mi></msub><mo>−</mo><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><mi>ν</mi><mo>∈</mo><mi>I</mi></mrow></msub><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>ε</mi><mi>H</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+e^{-\eta}\phi_S(d_\nu)\leq q_\nu\leq e^\eta\phi_S(d_\nu),
+\qquad
+\sum_\nu|q_\nu-\phi_S(d_\nu)\mathbf1_{\nu\in I}|\leq\varepsilon H.
+\tag{15}
+</annotation></semantics></math><span class="equation-number">(15)</span></span></span> In particular,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>Z</mi><mo>−</mo><mfrac><mn>1</mn><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mi>M</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>M</mi><mo>=</mo><mi>ε</mi><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mi mathvariant="normal">Δ</mi></mfrac><mo>+</mo><mi>Q</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>Q</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>Z</mi><mo>≤</mo><msub><mi>Z</mi><mo>*</mo></msub><mo>:=</mo><msup><mi>e</mi><mi>η</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mi mathvariant="normal">Δ</mi></mfrac><mo>+</mo><mi>Q</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left|Z-\frac1\Delta\right|\leq M,
+\qquad M=\varepsilon\left(\frac1\Delta+Q\right)+Q,
+\qquad Z\leq Z_*:=e^\eta\left(\frac1\Delta+Q\right).
+\tag{16}
+</annotation></semantics></math><span class="equation-number">(16)</span></span></span></p>
+<p><strong>Proof.</strong> The local estimate in <a
+href="NT-COLLATZ-17.html#local-probabilities-and-a-ratio-that-keeps-their-common-terms">Lemma
+4 of the fixed-total lesson</a> gives
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi mathvariant="normal">log</mi><mfrac><mrow><msub><mi>p</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>ν</mi><mo>+</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msub><mi>ϕ</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mfrac><mn>2</mn><mi>ν</mi></mfrac><mo>+</mo><mfrac><mrow><mn>2</mn><mo stretchy="false" form="prefix">|</mo><mi>d</mi><mo stretchy="false" form="prefix">|</mo></mrow><mi>ν</mi></mfrac><mo>+</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>d</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>3</mn></msup></mrow><msup><mi>ν</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">
+\left|\log\frac{p_\nu(2\nu+d)}{\phi_\nu(d)}\right|
+\leq\frac2\nu+\frac{2|d|}\nu+\frac{|d|^3}{\nu^2}
+\tag{17}
+</annotation></semantics></math><span class="equation-number">(17)</span></span></span> for integers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>d</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>ν</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|d|\leq\nu/2</annotation></semantics></math>.
+This hypothesis follows from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>d</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>R</mi><mo>≤</mo><mi>n</mi><mi>/</mi><mn>2</mn><mo>≤</mo><mi>ν</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|d_\nu|\leq R\leq n/2\leq\nu/2</annotation></semantics></math>.
+All probabilities in the ratio are positive.</p>
+<p>The exact change of center is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mfrac><mrow><msub><mi>ϕ</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mfrac><mi>ν</mi><mi>S</mi></mfrac><mo>+</mo><mfrac><msup><mi>d</mi><mn>2</mn></msup><mn>4</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mi>S</mi></mfrac><mo>−</mo><mfrac><mn>1</mn><mi>ν</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\log\frac{\phi_\nu(d)}{\phi_S(d)}
+=-\frac12\log\frac\nu S+\frac{d^2}{4}\left(\frac1S-\frac1\nu\right).
+\tag{18}
+</annotation></semantics></math><span class="equation-number">(18)</span></span></span> Integrating
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">1/u</annotation></semantics></math>
+between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>
+bounds the logarithm by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>ν</mi><mo>−</mo><mi>S</mi><mo stretchy="false" form="prefix">|</mo><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">|\nu-S|/n</annotation></semantics></math>,
+using (13). The reciprocal difference is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>ν</mi><mo>−</mo><mi>S</mi><mo stretchy="false" form="prefix">|</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>S</mi><mi>ν</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>T</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>S</mi><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">|\nu-S|/(S\nu)\leq T/(Sn)</annotation></semantics></math>.
+Equations (17) and (18) therefore bound the absolute logarithm of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>ν</mi></msub><mi>/</mi><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">q_\nu/\phi_S(d_\nu)</annotation></semantics></math>
+by (14). Exponentiation proves the first inequality in (15). Both upper
+and lower deviations are at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mi>η</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">e^\eta-1</annotation></semantics></math>,
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>η</mi></mrow></msup><mo>≤</mo><msup><mi>e</mi><mi>η</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1-e^{-\eta}\leq e^\eta-1</annotation></semantics></math>.
+Multiplication by the Gaussian weight and summation give the second.</p>
+<p>Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>Z</mi><mo>−</mo><mi>H</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>ε</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">|Z-H|\leq\varepsilon H</annotation></semantics></math>.
+Theorem 2 gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>≤</mo><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi><mo>+</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">H\leq1/\Delta+Q</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>H</mi><mo>−</mo><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">|H-1/\Delta|\leq Q</annotation></semantics></math>.
+The triangle inequality proves (16). Its product
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mi>Q</mi></mrow><annotation encoding="application/x-tex">\varepsilon Q</annotation></semantics></math>
+is retained: a relative local error also acts on the finite summation
+error. ∎</p>
+<p>This proof never divides by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+or assumes a lower bound for it. The original mass remains available for
+the arithmetic counting formula. The local approximation is also useful
+before
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+becomes small; (15) is a finite estimate for every parameter satisfying
+the stated inequalities.</p>
+<h2
+id="consecutive-times-and-the-variation-of-the-exact-weights">Consecutive
+times and the variation of the exact weights</h2>
+<p>The exact weights admit a second useful estimate, independent of
+Gaussian approximation. Suppose
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>W</mi><mo>≤</mo><mi>n</mi><mi>/</mi><mn>8</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+1&lt;W\leq n/8.
+\tag{19}
+</annotation></semantics></math><span class="equation-number">(19)</span></span></span> The variation of their extension by
+zero is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi mathvariant="double-struck">ℤ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>q</mi><mi>n</mi></msub><mo>+</mo><munderover><mo>∑</mo><mrow><mi>ν</mi><mo>=</mo><mi>n</mi></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></munderover><mo stretchy="false" form="prefix">|</mo><msub><mi>q</mi><mrow><mi>ν</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>q</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">|</mo><mi>+</mi><msub><mi>q</mi><mi>m</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+V_{\mathbb Z}(q)=q_n+\sum_{\nu=n}^{m-1}|q_{\nu+1}-q_\nu|+q_m.
+\tag{20}
+</annotation></semantics></math><span class="equation-number">(20)</span></span></span> Both endpoint jumps occur, including
+for a singleton support.</p>
+<p><strong>Proposition 4 (Exact profile variation).</strong> Put
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">{</mo><mfrac><mi>W</mi><mrow><mn>2</mn><mi>n</mi></mrow></mfrac><mo>,</mo><mfrac><mrow><msup><mi>W</mi><mn>2</mn></msup><mo>+</mo><mi>W</mi><mo>+</mo><mn>2</mn><mi>n</mi></mrow><mrow><mn>4</mn><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mi>W</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo stretchy="true" form="postfix">}</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\kappa=\max\left\{\frac{W}{2n},
+ \frac{W^2+W+2n}{4n(n-W+1)}\right\}.
+</annotation></semantics></math></span> Then
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi mathvariant="double-struck">ℤ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>κ</mi><mi>Z</mi><mo>+</mo><mfrac><mn>1</mn><msqrt><mrow><mn>3</mn><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msqrt></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>κ</mi><mo>≤</mo><mi>W</mi><mi>/</mi><mi>n</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+V_{\mathbb Z}(q)\leq\kappa Z+\frac1{\sqrt{3n-2}},
+\qquad \kappa\leq W/n.
+\tag{21}
+</annotation></semantics></math><span class="equation-number">(21)</span></span></span></p>
+<p><strong>Proof.</strong> As
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>λ</mi><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1&lt;\lambda&lt;2</annotation></semantics></math>,
+the increment
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mrow><mi>ν</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>L</mi><mi>ν</mi></msub></mrow><annotation encoding="application/x-tex">L_{\nu+1}-L_\nu</annotation></semantics></math>
+is either one or two. Factorial cancellation gives the corresponding
+ratios
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msub><mi>p</mi><mrow><mi>ν</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mi>ν</mi></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msub><mi>p</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>=</mo><mfrac><msub><mi>L</mi><mi>ν</mi></msub><mrow><mn>2</mn><mi>ν</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mrow><msub><mi>p</mi><mrow><mi>ν</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mi>ν</mi></msub><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><mrow><msub><mi>p</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><msub><mi>L</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mi>ν</mi></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>4</mn><mi>ν</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mi>ν</mi></msub><mo>+</mo><mn>1</mn><mo>−</mo><mi>ν</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{p_{\nu+1}(L_\nu+1)}{p_\nu(L_\nu)}=\frac{L_\nu}{2\nu},
+\qquad
+\frac{p_{\nu+1}(L_\nu+2)}{p_\nu(L_\nu)}
+=\frac{L_\nu(L_\nu+1)}{4\nu(L_\nu+1-\nu)}.
+\tag{22}
+</annotation></semantics></math><span class="equation-number">(22)</span></span></span> At adjacent times within the support
+write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>ν</mi></msub><mo>=</mo><mn>2</mn><mi>ν</mi><mo>+</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">L_\nu=2\nu+d</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>d</mi><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">|d|&lt;W</annotation></semantics></math>.
+The absolute relative defects in (22) are
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>d</mi><mo stretchy="false" form="prefix">|</mo></mrow><mrow><mn>2</mn><mi>ν</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><msup><mi>d</mi><mn>2</mn></msup><mo>+</mo><mi>d</mi><mo>−</mo><mn>2</mn><mi>ν</mi><mo stretchy="false" form="prefix">|</mo></mrow><mrow><mn>4</mn><mi>ν</mi><mo stretchy="false" form="prefix">(</mo><mi>ν</mi><mo>+</mo><mi>d</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{|d|}{2\nu},\qquad
+\frac{|d^2+d-2\nu|}{4\nu(\nu+d+1)}.
+\tag{23}
+</annotation></semantics></math><span class="equation-number">(23)</span></span></span> Their denominators are positive. The
+first is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">W/(2n)</annotation></semantics></math>.
+The second is at most
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>W</mi><mn>2</mn></msup><mo>+</mo><mi>W</mi></mrow><mrow><mn>4</mn><mi>ν</mi><mo stretchy="false" form="prefix">(</mo><mi>ν</mi><mo>−</mo><mi>W</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>+</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mi>ν</mi><mo>−</mo><mi>W</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\frac{W^2+W}{4\nu(\nu-W+1)}+\frac1{2(\nu-W+1)},
+</annotation></semantics></math></span> which decreases for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>≥</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\nu\geq n</annotation></semantics></math>
+and equals the second entry of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
+Hence the interior sum in (20) is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><msubsup><mo>∑</mo><mrow><mi>ν</mi><mo>=</mo><mi>n</mi></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msubsup><msub><mi>q</mi><mi>ν</mi></msub><mo>≤</mo><mi>κ</mi><mi>Z</mi></mrow><annotation encoding="application/x-tex">\kappa\sum_{\nu=n}^{m-1}q_\nu\leq\kappa Z</annotation></semantics></math>.
+The <a
+href="NT-COLLATZ-27.html#an-exact-ratio-and-a-point-probability-bound">point
+bound already proved</a> gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>n</mi></msub><mo>,</mo><msub><mi>q</mi><mi>m</mi></msub><mo>≤</mo><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><msqrt><mrow><mn>3</mn><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msqrt><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">q_n,q_m\leq1/(2\sqrt{3n-2})</annotation></semantics></math>,
+proving the first inequality.</p>
+<p>For the second,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>8</mn><mi>W</mi><mo>&gt;</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">n\geq8W&gt;8</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>W</mi><mn>2</mn></msup><mo>≤</mo><mi>W</mi><mi>n</mi><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">W^2\leq Wn/8</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>≤</mo><mi>W</mi><mi>n</mi><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">W\leq Wn/8</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>n</mi><mo>≤</mo><mn>2</mn><mi>W</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">2n\leq2Wn</annotation></semantics></math>.
+Thus the numerator in the second entry of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math>
+is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi>W</mi><mi>n</mi><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">9Wn/4</annotation></semantics></math>;
+its denominator is at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><msup><mi>n</mi><mn>2</mn></msup><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">7n^2/2</annotation></semantics></math>.
+This entry is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi>W</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>14</mn><mi>n</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>W</mi><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">9W/(14n)&lt;W/n</annotation></semantics></math>.
+The first entry also satisfies the claimed bound. ∎</p>
+<p>For phases
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>ν</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>A</mi><mo>+</mo><mi>λ</mi><mi>ν</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">x_\nu=\{A+\lambda\nu\}</annotation></semantics></math>,
+let
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>q</mi></msub><mo>=</mo><munder><mi mathvariant="normal">sup</mi><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>1</mn></mrow></munder><mrow><mo stretchy="true" form="prefix">|</mo><munder><mo>∑</mo><mi>ν</mi></munder><msub><mi>q</mi><mi>ν</mi></msub><msub><mn mathvariant="bold">𝟏</mn><mrow><msub><mi>x</mi><mi>ν</mi></msub><mo>≤</mo><mi>t</mi></mrow></msub><mo>−</mo><mi>Z</mi><mi>t</mi><mo stretchy="true" form="postfix">|</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+E_q=\sup_{0\leq t\leq1}\left|\sum_\nu q_\nu\mathbf1_{x_\nu\leq t}-Zt\right|.
+\tag{24}
+</annotation></semantics></math><span class="equation-number">(24)</span></span></span> If every unweighted prefix of the
+interval
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+has closed-interval discrepancy at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>,
+the <a
+href="NT-COLLATZ-27.html#when-one-averaged-profile-is-enough">weighted
+summation identity</a> and (21) give
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>q</mi></msub><mo>≤</mo><mi>B</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>κ</mi><mi>Z</mi><mo>+</mo><mfrac><mn>1</mn><msqrt><mrow><mn>3</mn><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msqrt></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+E_q\leq B\left(\kappa Z+\frac1{\sqrt{3n-2}}\right).
+\tag{25}
+</annotation></semantics></math><span class="equation-number">(25)</span></span></span> This route uses the actual
+probabilities throughout. For a shorter consecutive time interval, the
+same argument applies to its retained support, with its own mass and its
+two endpoints. For a union of separated intervals, each component adds
+its endpoint jumps.</p>
+<h2 id="averaging-by-mass-and-height">Averaging by mass and height</h2>
+<p>For a sharper phase bound, use the shape of the Gaussian weights in
+(15). Suppose there are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c&gt;0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\rho&gt;1</annotation></semantics></math>
+such that
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mi>r</mi><mi>λ</mi><mo stretchy="false" form="postfix">∥</mo><mo>≥</mo><mi>c</mi><msup><mi>r</mi><mrow><mi>−</mi><mi>ρ</mi></mrow></msup><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for every integer </mtext><mspace width="0.333em"></mspace></mrow><mi>r</mi><mo>≥</mo><mn>1</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\|r\lambda\|\geq c r^{-\rho}\quad\text{for every integer }r\geq1,
+\tag{26}
+</annotation></semantics></math><span class="equation-number">(26)</span></span></span> where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mi>y</mi><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">\|y\|</annotation></semantics></math>
+is distance to the nearest integer. Put
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mn>1</mn><mo>−</mo><mn>1</mn><mi>/</mi><mi>ρ</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mi>ρ</mi></msub><mo>=</mo><mfrac><mrow><mn>5</mn><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mi>ρ</mi></mrow></msup></mrow><mrow><mn>1</mn><mo>−</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>γ</mi></mrow></msup></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>H</mi><mo>*</mo></msub><mo>=</mo><mfrac><mn>1</mn><mi mathvariant="normal">Δ</mi></mfrac><mo>+</mo><mi>Q</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\gamma=1-1/\rho,\qquad C_\rho=\frac{5c^{-1/\rho}}{1-2^{-\gamma}},
+\qquad H_*=\frac1\Delta+Q.
+\tag{27}
+</annotation></semantics></math><span class="equation-number">(27)</span></span></span></p>
+<p><strong>Theorem 5 (Weighted phase error).</strong> Under the
+hypotheses of Theorem 3 and (26),
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>q</mi></msub><mo>≤</mo><msub><mi>E</mi><mo>*</mo></msub><mo>:=</mo><msub><mi>C</mi><mi>ρ</mi></msub><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>1</mn><mi>/</mi><mi>ρ</mi></mrow></msup><msubsup><mi>H</mi><mo>*</mo><mrow><mspace width="0.167em"></mspace><mn>1</mn><mo>−</mo><mn>1</mn><mi>/</mi><mi>ρ</mi></mrow></msubsup><mo>+</mo><mi>ε</mi><msub><mi>H</mi><mo>*</mo></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+E_q\leq E_*:=C_\rho\phi_S(0)^{1/\rho}H_*^{\,1-1/\rho}
+                  +\varepsilon H_*.
+\tag{28}
+</annotation></semantics></math><span class="equation-number">(28)</span></span></span></p>
+<p><strong>Proof.</strong> Extend
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>ν</mi></msub><mo>=</mo><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><mi>ν</mi><mo>∈</mo><mi>I</mi></mrow></msub></mrow><annotation encoding="application/x-tex">g_\nu=\phi_S(d_\nu)\mathbf1_{\nu\in I}</annotation></semantics></math>
+by zero. The deviations
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">d_\nu</annotation></semantics></math>
+decrease in steps of zero or one. Therefore the weights increase until
+level zero and decrease afterwards, allowing plateaus. Their support is
+the interval (3); they form a nonnegative unimodal sequence with mass
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>≤</mo><msub><mi>H</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">H\leq H_*</annotation></semantics></math>
+and maximum at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\phi_S(0)</annotation></semantics></math>.</p>
+<p>The <a
+href="NT-COLLATZ-20.html#choosing-blocks-by-the-pigeonhole-principle">rotation
+discrepancy theorem</a> gives, for every consecutive interval
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>,
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><munder><mo>∑</mo><mrow><mi>ν</mi><mo>∈</mo><mi>J</mi></mrow></munder><mo stretchy="false" form="prefix">(</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><msub><mi>x</mi><mi>ν</mi></msub><mo>≤</mo><mi>t</mi></mrow></msub><mo>−</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><msub><mi>C</mi><mi>ρ</mi></msub><mo stretchy="false" form="prefix">|</mo><mi>J</mi><msup><mo stretchy="false" form="prefix">|</mo><mi>γ</mi></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left|\sum_{\nu\in J}(\mathbf1_{x_\nu\leq t}-t)\right|
+\leq C_\rho |J|^\gamma.
+\tag{29}
+</annotation></semantics></math><span class="equation-number">(29)</span></span></span> Its half-open interval bound gives this
+closed bound by taking a decreasing upper-endpoint limit; the finite
+count stabilizes, while interval length converges. At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t=1</annotation></semantics></math>,
+the centered sum is zero.</p>
+<p>Apply the <a
+href="NT-COLLATZ-21.html#count-estimates-weighted-by-the-height-of-a-profile">mass
+and height theorem</a> to (29) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.
+It bounds the centered Gaussian-weighted sum by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>ρ</mi></msub><msub><mi>ϕ</mi><mi>S</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>1</mn><mi>/</mi><mi>ρ</mi></mrow></msup><msubsup><mi>H</mi><mo>*</mo><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">C_\rho\phi_S(0)^{1/\rho}H_*^\gamma</annotation></semantics></math>.
+Finally the difference between its centered sum and the centered
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>-sum
+is
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mi>ν</mi></munder><mo stretchy="false" form="prefix">(</mo><msub><mi>q</mi><mi>ν</mi></msub><mo>−</mo><msub><mi>g</mi><mi>ν</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><msub><mi>x</mi><mi>ν</mi></msub><mo>≤</mo><mi>t</mi></mrow></msub><mo>−</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_\nu(q_\nu-g_\nu)(\mathbf1_{x_\nu\leq t}-t).
+</annotation></semantics></math></span> Its absolute value is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>q</mi><mi>ν</mi></msub><mo>−</mo><msub><mi>g</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>ε</mi><msub><mi>H</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">\sum|q_\nu-g_\nu|\leq\varepsilon H_*</annotation></semantics></math>,
+since the centered indicator has absolute value at most one. Take the
+supremum over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
+This proves (28), with no factor of two in this transfer. ∎</p>
+<p>In (25), one prefix bound is paid against the whole variation. In
+(28), each horizontal layer of the Gaussian is averaged on its own
+interval, and the local probability error is then paid in absolute mass.
+This avoids a logarithm arising only from the chosen window’s width.
+Both estimates remain available; neither changes the definition of the
+original weights.</p>
+<h2 id="the-two-logarithmic-band-profiles">The two logarithmic band
+profiles</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">\ell=\log2</annotation></semantics></math>,
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>b</mi><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1&lt;b&lt;2</annotation></semantics></math>,
+and set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mi>b</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">\beta=b\ell</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>2</mn><mo>−</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">\theta=2-b</annotation></semantics></math>.
+In addition to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mn>0</mn><mo>,</mo><mi>ν</mi></mrow></msub><mo>=</mo><msub><mi>q</mi><mi>ν</mi></msub></mrow><annotation encoding="application/x-tex">q_{0,\nu}=q_\nu</annotation></semantics></math>,
+define on all positive times
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mn>1</mn><mo>,</mo><mi>ν</mi></mrow></msub><mo>=</mo><msub><mi>p</mi><mi>ν</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mi>ν</mi></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>d</mi><mi>ν</mi></msub><mo>+</mo><mn>1</mn><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>W</mi></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+q_{1,\nu}=p_\nu(L_\nu+1)\mathbf1_{|d_\nu+1|&lt;W}.
+\tag{30}
+</annotation></semantics></math><span class="equation-number">(30)</span></span></span> Both sequences have finite support. The
+second support can extend past the first, so sums in this section run
+over their union. Define
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">ℋ</mi><mo>=</mo><munder><mo>∑</mo><mi>ν</mi></munder><mo stretchy="false" form="prefix">(</mo><msub><mi>q</mi><mrow><mn>0</mn><mo>,</mo><mi>ν</mi></mrow></msub><mo>+</mo><msub><mi>q</mi><mrow><mn>1</mn><mo>,</mo><mi>ν</mi></mrow></msub><msub><mn mathvariant="bold">𝟏</mn><mrow><msub><mi>x</mi><mi>ν</mi></msub><mo>&gt;</mo><mi>θ</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\mathcal H=\sum_\nu(q_{0,\nu}+q_{1,\nu}\mathbf1_{x_\nu&gt;\theta}),
+</annotation></semantics></math></span>
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">ℱ</mi><mo>=</mo><munder><mo>∑</mo><mi>ν</mi></munder><mrow><mo stretchy="true" form="prefix">(</mo><msup><mn>2</mn><mrow><mn>1</mn><mo>−</mo><msub><mi>x</mi><mi>ν</mi></msub></mrow></msup><msub><mi>q</mi><mrow><mn>0</mn><mo>,</mo><mi>ν</mi></mrow></msub><mo>+</mo><msup><mn>2</mn><mrow><mn>2</mn><mo>−</mo><msub><mi>x</mi><mi>ν</mi></msub></mrow></msup><msub><mi>q</mi><mrow><mn>1</mn><mo>,</mo><mi>ν</mi></mrow></msub><msub><mn mathvariant="bold">𝟏</mn><mrow><msub><mi>x</mi><mi>ν</mi></msub><mo>&gt;</mo><mi>θ</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathcal F=\sum_\nu\left(2^{1-x_\nu}q_{0,\nu}
+      +2^{2-x_\nu}q_{1,\nu}\mathbf1_{x_\nu&gt;\theta}\right).
+\tag{31}
+</annotation></semantics></math><span class="equation-number">(31)</span></span></span> These are exactly the reciprocal and
+uniform geometric profiles derived in the preceding lesson. Their strict
+successor threshold includes no weight at equality.</p>
+<p>Under (19), put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mo stretchy="false" form="prefix">⌈</mo><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi><mo stretchy="false" form="postfix">⌉</mo></mrow><annotation encoding="application/x-tex">K=\lceil1/\Delta\rceil</annotation></semantics></math>
+and
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mo>*</mo></msub><mo>=</mo><mfrac><mrow><mi>W</mi><mo>+</mo><mn>2</mn></mrow><mrow><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mi>W</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><msub><mi>Z</mi><mo>*</mo></msub><mo>+</mo><mfrac><mi>K</mi><msqrt><mrow><mn>3</mn><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msqrt></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D_* = \frac{W+2}{2(n-W+1)}Z_*+\frac{K}{\sqrt{3n-2}}.
+\tag{32}
+</annotation></semantics></math><span class="equation-number">(32)</span></span></span> The <a
+href="NT-COLLATZ-27.html#only-a-few-terms-cross-a-tube-boundary">neighboring-profile
+theorem</a> gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>q</mi><mrow><mn>1</mn><mo>,</mo><mi>ν</mi></mrow></msub><mo>−</mo><msub><mi>q</mi><mrow><mn>0</mn><mo>,</mo><mi>ν</mi></mrow></msub><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><msub><mi>D</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">\sum|q_{1,\nu}-q_{0,\nu}|\leq D_*</annotation></semantics></math>.
+Its lower-time hypothesis holds: the shifted support begins at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⌊</mo><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>+</mo><mn>1</mn><mo>−</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi mathvariant="normal">Δ</mi><mo stretchy="false" form="postfix">⌋</mo><mo>+</mo><mn>1</mn><mo>≥</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\lfloor(A+1-R)/\Delta\rfloor+1\geq n</annotation></semantics></math>.</p>
+<p><strong>Theorem 6 (Quantitative profile limits).</strong> Under (19)
+and (26), all quantities in (9), (14), (16), (28), and (32) are finite
+and explicitly defined, and
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi mathvariant="script">ℋ</mi><mo>−</mo><mfrac><mi>b</mi><mi mathvariant="normal">Δ</mi></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mi>b</mi><mi>M</mi><mo>+</mo><msub><mi>E</mi><mo>*</mo></msub><mo>+</mo><msub><mi>D</mi><mo>*</mo></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\left|\mathcal H-\frac b\Delta\right|\leq bM+E_*+D_*,
+\tag{33}
+</annotation></semantics></math><span class="equation-number">(33)</span></span></span>
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi mathvariant="script">ℱ</mi><mo>−</mo><mfrac><mrow><msup><mi>e</mi><mi>β</mi></msup><mo>−</mo><mn>1</mn></mrow><mrow><mi>ℓ</mi><mi mathvariant="normal">Δ</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mfrac><mrow><msup><mi>e</mi><mi>β</mi></msup><mo>−</mo><mn>1</mn></mrow><mi>ℓ</mi></mfrac><mi>M</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><msup><mi>e</mi><mi>β</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><msub><mi>E</mi><mo>*</mo></msub><mo>+</mo><msup><mi>e</mi><mi>β</mi></msup><msub><mi>D</mi><mo>*</mo></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left|\mathcal F-\frac{e^\beta-1}{\ell\Delta}\right|
+\leq\frac{e^\beta-1}{\ell}M+(2e^\beta-1)E_*+e^\beta D_*.
+\tag{34}
+</annotation></semantics></math><span class="equation-number">(34)</span></span></span></p>
+<p><strong>Proof.</strong> The base-profile averaging inequalities in <a
+href="NT-COLLATZ-27.html#when-one-averaged-profile-is-enough">Corollary 4
+of the preceding lesson</a> bound the errors from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>Z</mi></mrow><annotation encoding="application/x-tex">bZ</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>e</mi><mi>β</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>Z</mi><mi>/</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">(e^\beta-1)Z/\ell</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>q</mi></msub><mo>+</mo><msub><mi>D</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">E_q+D_*</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><msup><mi>e</mi><mi>β</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><msub><mi>E</mi><mi>q</mi></msub><mo>+</mo><msup><mi>e</mi><mi>β</mi></msup><msub><mi>D</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">(2e^\beta-1)E_q+e^\beta D_*</annotation></semantics></math>,
+respectively. Substitute (16) and (28) and use the triangle inequality.
+All supports and endpoint conventions are unchanged. ∎</p>
+<p>To see the size of these estimates, keep
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>ρ</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\Delta,c,\rho,b,C</annotation></semantics></math>
+fixed, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C&gt;0</annotation></semantics></math>,
+and let
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mi>S</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>W</mi><mo>=</mo><mi>C</mi><msqrt><mrow><mi>S</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>S</mi></mrow></msqrt><mo>,</mo><mspace width="2.0em"></mspace><mi>S</mi><mo>→</mo><mi>∞</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A=\Delta S,\qquad W=C\sqrt{S\log S},\qquad S\longrightarrow\infty.
+\tag{35}
+</annotation></semantics></math><span class="equation-number">(35)</span></span></span> Then (19) holds for sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>:
+indeed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mi>W</mi><mo>+</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">R=W+O(1)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>S</mi><mo>+</mo><msub><mi>O</mi><mi mathvariant="normal">Δ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>W</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">n=S+O_\Delta(W)</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>/</mi><mi>S</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">W/S\to0</annotation></semantics></math>.
+Equations (9) and (14) give
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><msub><mi>O</mi><mrow><mi mathvariant="normal">Δ</mi><mo>,</mo><mi>C</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>S</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo>+</mo><mfrac><msup><mi>S</mi><mrow><mi>−</mi><msup><mi>C</mi><mn>2</mn></msup><mi>/</mi><mn>4</mn></mrow></msup><msqrt><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>S</mi></mrow></msqrt></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>η</mi><mo>=</mo><msub><mi>O</mi><mrow><mi mathvariant="normal">Δ</mi><mo>,</mo><mi>C</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>S</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><msqrt><mi>S</mi></msqrt></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+Q=O_{\Delta,C}\left(S^{-1/2}
++\frac{S^{-C^2/4}}{\sqrt{\log S}}\right),\qquad
+\eta=O_{\Delta,C}\left(\frac{(\log S)^{3/2}}{\sqrt S}\right).
+\tag{36}
+</annotation></semantics></math><span class="equation-number">(36)</span></span></span> For the tail,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>S</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>C</mi><mn>2</mn></msup><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>S</mi><mi>/</mi><mn>4</mn><mo>+</mo><msub><mi>O</mi><mi>C</mi></msub><mo stretchy="false" form="prefix">(</mo><msqrt><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>S</mi><mi>/</mi><mi>S</mi></mrow></msqrt><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">R^2/(4S)=C^2\log S/4+O_C(\sqrt{\log S/S})</annotation></semantics></math>,
+while
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mi>S</mi></msqrt><mi>/</mi><mi>R</mi><mo>=</mo><msub><mi>O</mi><mi>C</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><msqrt><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>S</mi></mrow></msqrt><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sqrt S/R=O_C(1/\sqrt{\log S})</annotation></semantics></math>.
+These give the first estimate directly. Substituting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≍</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">n\asymp S</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><msub><mi>O</mi><mi mathvariant="normal">Δ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>W</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">T=O_\Delta(W)</annotation></semantics></math>
+into (14) gives the second. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\eta\to0</annotation></semantics></math>,
+integration of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mi>t</mi></msup><annotation encoding="application/x-tex">e^t</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>η</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0,\eta]</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>η</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\varepsilon=O(\eta)</annotation></semantics></math>.</p>
+<p>It follows that each of the two errors in (33) and (34) is
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mrow><mi mathvariant="normal">Δ</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>ρ</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>C</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>S</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>ρ</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>+</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>S</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><msqrt><mi>S</mi></msqrt></mfrac><mo>+</mo><mfrac><msup><mi>S</mi><mrow><mi>−</mi><msup><mi>C</mi><mn>2</mn></msup><mi>/</mi><mn>4</mn></mrow></msup><msqrt><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>S</mi></mrow></msqrt></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+O_{\Delta,c,\rho,b,C}\left(
+S^{-1/(2\rho)}+\frac{(\log S)^{3/2}}{\sqrt S}
++\frac{S^{-C^2/4}}{\sqrt{\log S}}\right).
+\tag{37}
+</annotation></semantics></math><span class="equation-number">(37)</span></span></span> Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mo>*</mo></msub><mo>=</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H_*=O(1)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mo>*</mo></msub><mo>=</mo><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Z_*=O(1)</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mo>*</mo></msub><mo>=</mo><msub><mi>O</mi><mrow><mi mathvariant="normal">Δ</mi><mo>,</mo><mi>C</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><msqrt><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>S</mi><mi>/</mi><mi>S</mi></mrow></msqrt><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">D_*=O_{\Delta,C}(\sqrt{\log S/S})</annotation></semantics></math>,
+by their displayed formulas. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>≥</mo><msqrt><mrow><mn>2</mn><mi>/</mi><mi>ρ</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">C\geq\sqrt{2/\rho}</annotation></semantics></math>,
+(37) is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>S</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>ρ</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(S^{-1/(2\rho)})</annotation></semantics></math>.
+The Gaussian tail then has at least the required power, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\rho&gt;1</annotation></semantics></math>
+lets the smaller logarithmic term be absorbed. There is no support-width
+logarithm multiplying this leading power.</p>
+<p>For the Collatz slope
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></msub><mn>3</mn></mrow><annotation encoding="application/x-tex">\lambda=\log_2 3</annotation></semantics></math>,
+the <a href="NT-COLLATZ-22.html">logarithmic-separation lesson</a> proves
+(26) for some
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c&gt;0</annotation></semantics></math>
+with
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mfrac><mn>38822969</mn><mn>5097587</mn></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mn>1</mn><mrow><mn>2</mn><mi>ρ</mi></mrow></mfrac><mo>=</mo><mfrac><mn>5097587</mn><mn>77645938</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\rho=\frac{38822969}{5097587},\qquad
+\frac1{2\rho}=\frac{5097587}{77645938}.
+</annotation></semantics></math></span> Thus (37) gives both geometric profile
+constants with this power once
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>≥</mo><msqrt><mrow><mn>2</mn><mi>/</mi><mi>ρ</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">C\geq\sqrt{2/\rho}</annotation></semantics></math>.
+The exponent comes from the proved logarithmic separation, not a fit to
+computations. Its implicit constant depends on that separation constant;
+no numerical onset threshold is asserted.</p>
+<h2 id="keeping-the-actual-time-window">Keeping the actual time
+window</h2>
+<p>The full tube is an analytic object with exactly computable
+multiplicities. A particular trajectory argument may use a smaller time
+set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>.
+Define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Λ</mi><mi>r</mi></msub><mo>=</mo><msub><mo>∑</mo><mrow><mi>ν</mi><mo>∉</mo><mi>J</mi></mrow></msub><msub><mi>q</mi><mrow><mi>r</mi><mo>,</mo><mi>ν</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\Lambda_r=\sum_{\nu\notin J}q_{r,\nu}</annotation></semantics></math>,
+and form
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">ℋ</mi><mi>J</mi></msub><mo>,</mo><msub><mi mathvariant="script">ℱ</mi><mi>J</mi></msub></mrow><annotation encoding="application/x-tex">\mathcal H_J,\mathcal F_J</annotation></semantics></math>
+by restricting (31) to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>.
+Nonnegativity gives the exact finite bounds
+<span class="math display numbered"><span class="equation-content"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi mathvariant="script">ℋ</mi><mo>−</mo><msub><mi mathvariant="script">ℋ</mi><mi>J</mi></msub><mo>≤</mo><msub><mi mathvariant="normal">Λ</mi><mn>0</mn></msub><mo>+</mo><msub><mi mathvariant="normal">Λ</mi><mn>1</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><mn>0</mn><mo>≤</mo><mi mathvariant="script">ℱ</mi><mo>−</mo><msub><mi mathvariant="script">ℱ</mi><mi>J</mi></msub><mo>≤</mo><mn>2</mn><msub><mi mathvariant="normal">Λ</mi><mn>0</mn></msub><mo>+</mo><msup><mi>e</mi><mi>β</mi></msup><msub><mi mathvariant="normal">Λ</mi><mn>1</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+0\leq\mathcal H-\mathcal H_J\leq\Lambda_0+\Lambda_1,
+\qquad
+0\leq\mathcal F-\mathcal F_J\leq2\Lambda_0+e^\beta\Lambda_1.
+\tag{38}
+</annotation></semantics></math><span class="equation-number">(38)</span></span></span> The coefficients follow from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mn>1</mn><mo>−</mo><mi>x</mi></mrow></msup><mo>≤</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^{1-x}\leq2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mn>2</mn><mo>−</mo><mi>x</mi></mrow></msup><msub><mn mathvariant="bold">𝟏</mn><mrow><mi>x</mi><mo>&gt;</mo><mi>θ</mi></mrow></msub><mo>≤</mo><msup><mi>e</mi><mi>β</mi></msup></mrow><annotation encoding="application/x-tex">2^{2-x}\mathbf1_{x&gt;\theta}\leq e^\beta</annotation></semantics></math>.
+These costs vanish when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+contains both full supports. Otherwise they belong in the comparison,
+however small the excluded proportion of times looks.</p>
+<p>In Mazur’s application,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mi>/</mi><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">A=\log(z/M)/\log2</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mi>/</mi><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>/</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">S=\log(z/M)/\log(4/3)</annotation></semantics></math>.
+This is the meeting time of the cutoff and the geometric mean. The
+arithmetic source weights still contain the fraction of valuation words
+satisfying the endpoint congruence; the <a
+href="NT-COLLATZ-27.html#from-a-sampling-band-to-two-probability-profiles">exact
+formula</a> retains it. Passing from (33)–(34) to an actual
+first-passage law therefore combines these analytic estimates with
+congruence mixing, the exact affine inverse, time-window containment or
+(38), and the probability of excluded paths. The present theorems supply
+the analytic constants and their errors; those other components identify
+which trajectory event the weighted sum measures.</p>
+<p>The general method is useful wherever a discrete cutoff moves through
+a concentrated law. Exact level multiplicities determine the sampling
+measure, a common local approximation determines its mass, and weighted
+discrepancy determines the effect of the fractional phase. Their
+composition explains both the main constant and the rate, while
+preserving the original coordinates and weights.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<h3 id="count-before-approximating">1. Count before approximating</h3>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">A=40</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><mn>2</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">\Delta=2/5</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">W=3</annotation></semantics></math>,
+calculate each level’s time interval and population. Verify (6)
+directly, including the strict endpoint at time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>100</mn><annotation encoding="application/x-tex">100</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> In increasing level order, the intervals
+are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>105</mn><mo>,</mo><mn>215</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(105,215/2]</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>205</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>105</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(205/2,105]</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>100</mn><mo>,</mo><mn>205</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(100,205/2]</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>195</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>100</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(195/2,100]</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>95</mn><mo>,</mo><mn>195</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(95,195/2]</annotation></semantics></math>.
+Their integer populations are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2,3,2,3,2</annotation></semantics></math>.
+Time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>100</mn><annotation encoding="application/x-tex">100</annotation></semantics></math>
+belongs to level one, not zero:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>−</mo><mi mathvariant="normal">Δ</mi><mn>100</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A-\Delta100=0</annotation></semantics></math>,
+so (1) gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>100</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">d_{100}=1</annotation></semantics></math>.
+Subtracting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">5/2</annotation></semantics></math>
+from each population gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(-1/2,1/2,-1/2,1/2,-1/2)</annotation></semantics></math>;
+the cumulative sums alternate between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-1/2</annotation></semantics></math>
+and zero. This verifies all five prefixes of (6).</p>
+<h3 id="changing-time-is-not-changing-only-the-total">2. Changing time
+is not changing only the total</h3>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\lambda=3/2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">\nu=40</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>19</mn></mrow><annotation encoding="application/x-tex">A=19</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>39</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">A=39/2</annotation></semantics></math>,
+compute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mn>40</mn></msub><mo>,</mo><msub><mi>L</mi><mn>41</mn></msub></mrow><annotation encoding="application/x-tex">L_{40},L_{41}</annotation></semantics></math>
+and the probability ratio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>41</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mn>41</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>/</mi><msub><mi>p</mi><mn>40</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mn>40</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p_{41}(L_{41})/p_{40}(L_{40})</annotation></semantics></math>.
+Why does the fixed-time neighbor ratio from the preceding lesson not
+apply?</p>
+<p><strong>Solution.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>19</mn></mrow><annotation encoding="application/x-tex">A=19</annotation></semantics></math>,
+the cutoffs are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>79</mn><annotation encoding="application/x-tex">79</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>161</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">161/2</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mn>40</mn></msub><mo>=</mo><mn>80</mn><mo>,</mo><msub><mi>L</mi><mn>41</mn></msub><mo>=</mo><mn>81</mn></mrow><annotation encoding="application/x-tex">L_{40}=80,L_{41}=81</annotation></semantics></math>.
+The first ratio in (22) gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>39</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">A=39/2</annotation></semantics></math>,
+the cutoffs are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>159</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">159/2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>81</mn><annotation encoding="application/x-tex">81</annotation></semantics></math>,
+hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mn>40</mn></msub><mo>=</mo><mn>80</mn><mo>,</mo><msub><mi>L</mi><mn>41</mn></msub><mo>=</mo><mn>82</mn></mrow><annotation encoding="application/x-tex">L_{40}=80,L_{41}=82</annotation></semantics></math>;
+the second ratio gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>80</mn><mo>⋅</mo><mn>81</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo>⋅</mo><mn>40</mn><mo>⋅</mo><mn>41</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>81</mn><mi>/</mi><mn>82</mn></mrow><annotation encoding="application/x-tex">80\cdot81/(4\cdot40\cdot41)=81/82</annotation></semantics></math>.
+The fixed-time ratio compares
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>40</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p_{40}(k+1)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>40</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p_{40}(k)</annotation></semantics></math>,
+whereas here the number of geometric variables increases from forty to
+forty-one. Retaining that coordinate change is what produces (22).</p>
+<h3 id="transfer-an-approximation-without-changing-its-mass">3. Transfer
+an approximation without changing its mass</h3>
+<p>Let finite nonnegative sequences
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>,</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">q,g</annotation></semantics></math>
+have masses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>,</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">Z,H</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c&gt;0</annotation></semantics></math>,
+and suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><mo stretchy="false" form="prefix">|</mo><mi>q</mi><mo>−</mo><mi>g</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>ε</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\sum|q-g|\leq\varepsilon H</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>H</mi><mo>−</mo><mi>c</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">|H-c|\leq Q</annotation></semantics></math>.
+Prove (16) with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+in place of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">1/\Delta</annotation></semantics></math>.
+Prove that the centered weighted interval errors of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+differ by at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\varepsilon H</annotation></semantics></math>.
+Give an equality example showing why the product
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mi>Q</mi></mrow><annotation encoding="application/x-tex">\varepsilon Q</annotation></semantics></math>
+cannot be omitted in general.</p>
+<p><strong>Solution.</strong> The triangle inequality gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>Z</mi><mo>−</mo><mi>c</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mo stretchy="false" form="prefix">|</mo><mi>Z</mi><mo>−</mo><mi>H</mi><mo stretchy="false" form="prefix">|</mo><mi>+</mi><mo stretchy="false" form="prefix">|</mo><mi>H</mi><mo>−</mo><mi>c</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mi>ε</mi><mo stretchy="false" form="prefix">(</mo><mi>c</mi><mo>+</mo><mi>Q</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">|Z-c|\leq|Z-H|+|H-c|\leq\varepsilon(c+Q)+Q</annotation></semantics></math>.
+For any threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+subtract the two centered sums to obtain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><mo stretchy="false" form="prefix">(</mo><mi>q</mi><mo>−</mo><mi>g</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><msub><mn mathvariant="bold">𝟏</mn><mrow><mi>x</mi><mo>≤</mo><mi>t</mi></mrow></msub><mo>−</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sum(q-g)(\mathbf1_{x\leq t}-t)</annotation></semantics></math>.
+Each factor in parentheses has absolute value at most one, so this
+difference is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\varepsilon H</annotation></semantics></math>;
+taking suprema in both directions proves the assertion. On a single
+index take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>=</mo><mi>c</mi><mo>+</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">g=c+Q</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>ε</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>c</mi><mo>+</mo><mi>Q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">q=(1+\varepsilon)(c+Q)</annotation></semantics></math>.
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>−</mo><mi>c</mi><mo>=</mo><mi>ε</mi><mo stretchy="false" form="prefix">(</mo><mi>c</mi><mo>+</mo><mi>Q</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">Z-c=\varepsilon(c+Q)+Q</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>,</mo><mi>Q</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon,Q&gt;0</annotation></semantics></math>,
+dropping their product makes the bound false.</p>
+<h3 id="a-mass-estimate-does-not-imply-phase-averaging">4. A mass
+estimate does not imply phase averaging</h3>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\lambda=3/2</annotation></semantics></math>,
+positive integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">A\to\infty</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">b=3/2</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><mn>2</mn><msqrt><mrow><mi>S</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>S</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">W=2\sqrt{S\log S}</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mi>A</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>−</mo><mi>λ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>2</mn><mi>A</mi></mrow><annotation encoding="application/x-tex">S=A/(2-\lambda)=2A</annotation></semantics></math>.
+Show that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>→</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">Z\to2</annotation></semantics></math>,
+but
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℋ</mi><annotation encoding="application/x-tex">\mathcal H</annotation></semantics></math>
+does not approach
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>−</mo><mi>λ</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">b/(2-\lambda)=3</annotation></semantics></math>.
+Identify exactly which hypothesis of Theorem 6 fails.</p>
+<p><strong>Solution.</strong> Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\Delta=1/2</annotation></semantics></math>.
+Theorem 3 and (36) apply without any irrationality hypothesis and give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>→</mo><mn>1</mn><mi>/</mi><mi mathvariant="normal">Δ</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">Z\to1/\Delta=2</annotation></semantics></math>.
+However
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>ν</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>A</mi><mo>+</mo><mn>3</mn><mi>ν</mi><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">x_\nu=\{A+3\nu/2\}</annotation></semantics></math>
+is always zero or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>.
+The strict gate is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>ν</mi></msub><mo>&gt;</mo><mn>2</mn><mo>−</mo><mi>b</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x_\nu&gt;2-b=1/2</annotation></semantics></math>,
+so it is never open. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">ℋ</mi><mo>=</mo><mi>Z</mi><mo>→</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\mathcal H=Z\to2</annotation></semantics></math>,
+not three. Condition (26) fails already at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">r=2</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mn>2</mn><mi>λ</mi><mo stretchy="false" form="postfix">∥</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\|2\lambda\|=0</annotation></semantics></math>.
+The example separates the analytic mass calculation from the arithmetic
+equidistribution needed to average the band.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Lech Mazur, <a
+href="https://www.proofatlas.ai/formalizations/natural-density-log-time-collatz/"><em>Natural-Density
+Almost-Bounded Collatz Orbits in Logarithmic Time</em></a>, version 2,
+21 July 2026, Appendix C and accompanying strict-level multiplicity,
+Gaussian summation, local-probability and time-regularity arguments. The
+exact multiplicity and finite Gaussian mechanism in Lemma 1 and Theorem
+2 are reconstructed here. The common-center estimate is derived from the
+earlier factorial proof; its composition with the mass and height
+theorem yields (28)–(37).</li>
+<li>Terence Tao, <a href="https://arxiv.org/abs/1909.03562v7"><em>Almost
+all orbits of the Collatz map attain almost bounded values</em></a>,
+Sections 4 and 5. Geometric valuation words and their role in the
+arithmetic passage problem.</li>
+<li>Georges Rhin, <em>Approximants de Padé et mesures effectives
+d’irrationalité</em>, in <em>Séminaire de Théorie des Nombres, Paris
+1985–86</em>, Progress in Mathematics 71, 1987, Proposition (8) and
+Appendix 2. <a
+href="https://doi.org/10.1007/978-1-4757-4267-1_11">DOI</a>. The
+logarithmic-separation lesson supplies the full construction used in
+(26).</li>
+<li>L. Kuipers and H. Niederreiter, <em>Uniform Distribution of
+Sequences</em>, Wiley, 1974, Chapter 2. The necessary rotation and
+weighted-layer proofs are internal prerequisites of this lesson.</li>
+</ul>
+<p>The <a href="build/check_lattice_profiles.py">reproducible
+checks</a> distinguish exact rational endpoint, multiplicity, recurrence
+and variation checks from high-precision numerical diagnostics of
+Gaussian and phase estimates. The general results follow from the
+written proofs.</p>
+<nav aria-label="Lesson sequence"><p><a href="NT-COLLATZ-27.html">Previous: Integer thresholds and weighted phase averages</a><br><a href="NT-COLLATZ-29.html">Next: Arithmetic fibres and weighted exponential tails</a></p></nav></main><footer>Original mathematical exposition and illustrations: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. References retain their own authorship and terms.</footer></body></html>

@@ -1,6 +1,6 @@
 # The faithful-state core: finite trace vectors, averaging and scaling
 
-*New local reconstruction by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. Any rights in this new exposition and its new figure source are dedicated under CC0-1.0. Self-checked by the writing AI.*
+*Any rights in this new exposition and its new figure source are dedicated under CC0-1.0.*
 
 Let $M$ be a von Neumann algebra with separable predual and let $\varphi$ be a faithful normal state. We construct the regular crossed product of its modular action, a normal faithful semifinite trace, and a normal faithful semifinite operator-valued average on its entire positive cone. The trace is built first from a compatible family of finite vector traces. The subsequent averaging calculation identifies its density and gives the coefficient-square and bounded-resolvent formulas. No factor, type III or injectivity assumption is made.
 

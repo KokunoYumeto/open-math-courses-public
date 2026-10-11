@@ -16,6 +16,147 @@ Its commutant support is obtained from its algebra support by the standard conju
 
 Inner products in this lesson are linear in the second variable. Unital algebras in unital assertions are nonzero.
 
+## 0. Constructing the tensor norms
+
+The representation estimates needed below can be built before using completely positive tensor maps. The scalar inputs are the [continuous C*-calculus, positivity, Hilbert completion and forced unitization](../../OA-FLOW/OA-FLOW-CF.html), the [positive scalar extension](completely-positive-finite-models.md#lemma-2-2), and the [coordinate proof of compact dual balls](completely-positive-finite-models.md#dual-ball-compactness). The scalar dilation in [the lifting lesson](completely-positive-lifting.md#unital-dilation) supplies GNS representations; its faithful scalar-state construction supplies a faithful representation. For a nonunital algebra, apply this construction to its forced unitization and restrict. None of these particular constructions uses tensoring or nuclearity.
+
+<a id="tn01"></a>
+### TN01. Hilbert tensors and a faithful algebraic action
+
+On the algebraic tensor of two Hilbert spaces put
+\[
+ \left\langle\sum_i u_i\otimes v_i,\sum_j x_j\otimes y_j\right\rangle
+ =\sum_{i,j}\langle u_i,x_j\rangle\langle v_i,y_j\rangle.
+\]
+Sesquilinearity makes this independent of the expression for a tensor. Expand its finitely many first coordinates in an orthonormal basis of their span. A tensor then has the form \(\sum_k e_k\otimes w_k\), and its squared norm is \(\sum_k\|w_k\|^2\). The form is positive definite. Its Hilbert completion defines \(L\otimes H\).
+
+For bounded operators \(x,y\), orthonormal expansion proves
+\(\|1\otimes y\|\le\|y\|\); interchanging the two coordinates proves \(\|x\otimes1\|\le\|x\|\). Thus
+\(\|x\otimes y\|\le\|x\|\|y\|\). Unit vectors approaching the individual norm suprema give the reverse inequality. Testing elementary pairs also gives \((x\otimes y)^*=x^*\otimes y^*\). These formulas define the spatial *-representation of \(A\odot B\) associated to two coefficient representations.
+
+If \(\pi:A\to B(L)\) and \(\rho:B\to B(H)\) are faithful, this algebraic representation is injective. Indeed, express \(z=\sum_{i=1}^r a_i\otimes b_i\) with linearly independent \(a_i\). The restrictions of vector coefficient functionals \(a\mapsto\langle u,\pi(a)v\rangle\) span the dual of \(\operatorname{span}\{a_i\}\): their common annihilator is zero, by faithfulness, and finite-dimensional linear algebra gives the spanning assertion. If \((\pi\otimes\rho)(z)=0\), slicing by these coefficients yields \(\sum_i f(a_i)\rho(b_i)=0\). Choose coefficients whose restrictions recover each coordinate; then \(\rho(b_i)=0\), and faithfulness gives \(b_i=0\).
+
+<a id="tn02"></a>
+### TN02. Scalar states from one faithful representation
+
+We first need only a unital C*-algebra \(D\) faithfully and unitally represented on \(K\). Its state space is compact for pointwise convergence on \(D\): it is the closed subset of the compact dual unit ball given by positivity and \(f(1)=1\). Let \(C\) be the closed convex hull of its unit-vector states, taken in that state space.
+
+If a state \(f\) were outside \(C\), some neighborhood defined by finitely many real and imaginary evaluation coordinates would miss \(C\). The corresponding finite-coordinate image of \(C\) is compact and convex and does not contain the coordinate image of \(f\). Its closest point to that image exists. The elementary closest-point inequality supplies a real linear functional strictly separating the two images. Since states are Hermitian, this functional is evaluation at one self-adjoint \(d\in D\). We would have
+\[
+ f(d)>\sup_{\|u\|=1}\langle u,du\rangle.
+\]
+The supremum on the right is the spectral upper bound \(m\) of the represented self-adjoint operator. Faithfulness and continuous C*-calculus reflect positivity, so \(d\le m1\) in \(D\). Positivity of \(f\) gives \(f(d)\le m\), a contradiction. This proves the density assertion with its actual finite-coordinate separation step.
+
+<a id="tn03"></a>
+### TN03. Every spatial representation satisfies the same bound
+
+Fix a faithful representation \(\pi:A\to B(L)\), restricted to its essential subspace, and let \(\sigma:A\to B(K)\), \(\tau:B\to B(H)\) be any representations. Restrict their tensor action to the two essential subspaces; it is zero on the other summands. We prove
+\[
+ \|(\sigma\otimes\tau)(z)\|\le\|(\pi\otimes\tau)(z)\|
+ \qquad(z\in A\odot B).
+ \tag{TN3}
+\]
+The zero-algebra cases are immediate. Otherwise extend \(\pi\) to \(A^\dagger\) on \(L\) by \(\pi^\dagger(a+\lambda1)=\pi(a)+\lambda1_L\), and add the character \(\chi(a+\lambda1)=\lambda\). The representation \(\widehat\pi=\pi^\dagger\oplus\chi\) on \(L\oplus\mathbb C\) is faithful and unital: vanishing of the character first gives \(\lambda=0\), after which faithfulness gives \(a=0\). This also works when \(A\) already has a unit. Extend \(\sigma\) by its identity on its essential Hilbert space.
+
+Take \(\zeta=\sum_{i=1}^m u_i\otimes v_i\in K\odot H\), with \(r=\sum_i\|u_i\|^2>0\). On \(M_m(A^\dagger)\) the rule
+\[
+ F([a_{ij}])=\sum_{i,j}\langle u_i,\sigma^\dagger(a_{ij})u_j\rangle
+\]
+is positive and has norm \(r\). Apply TN02 to \(F/r\) in the faithful amplified representation of \(\widehat\pi\). It gives a net of finite sums
+\[
+ F_k([a_{ij}])=
+ \sum_{\ell,i,j}\langle\xi_{k\ell i},
+             \widehat\pi(a_{ij})\xi_{k\ell j}\rangle,
+ \qquad \sum_{\ell,i}\|\xi_{k\ell i}\|^2=r,
+\]
+converging at every matrix argument to \(F\). The convex weights have been absorbed into the vectors. Write \(\xi_{k\ell i}=(x_{k\ell i},c_{k\ell i})\in L\oplus\mathbb C\), and put
+\[
+ \eta_{k\ell}=\sum_i x_{k\ell i}\otimes v_i,
+ \qquad
+ M_k=\sum_\ell\left\|\sum_i\xi_{k\ell i}\otimes v_i\right\|^2.
+\]
+The Gram entries in the last expression are the values of \(F_k\) on the individual matrix units times \(1\). Hence
+\[
+ M_k\longrightarrow
+ \sum_{i,j}\langle u_i,u_j\rangle\langle v_i,v_j\rangle
+ =\|\zeta\|^2,
+ \qquad \sum_\ell\|\eta_{k\ell}\|^2\le M_k.
+\]
+For every algebraic tensor \(t\), matrix-coordinate convergence gives
+\[
+ \sum_\ell\langle\eta_{k\ell},(\pi\otimes\tau)(t)\eta_{k\ell}\rangle
+ \longrightarrow\langle\zeta,(\sigma\otimes\tau)(t)\zeta\rangle.
+\]
+Here the character coordinates disappear because \(\chi(a)=0\) for \(a\in A\). Set \(t=z^*z\). The left side is at most \(M_k\|(\pi\otimes\tau)(z)\|^2\). Taking limits proves the squared bound on each finite tensor vector \(\zeta\); density proves (TN3). A zero \(\zeta\), or a decomposition with \(r=0\), requires no estimate.
+
+Choose also a faithful \(\rho:B\to B(H_0)\) and apply the same argument to the second factor, using the Hilbert flip. We obtain
+\[
+ \|(\sigma\otimes\tau)(z)\|
+ \le\|(\pi\otimes\rho)(z)\|.
+\]
+Consequently any faithful pair defines the same norm \(\|z\|_{\min}\). TN01 proves that it is a norm, satisfies the C*-identity, and is a cross norm on elementary tensors. Its completion is \(A\otimes_{\min}B\). This also proves isometric inclusion for C*-subalgebras: restrict a faithful spatial pair to the subalgebras and then to their essential spaces. Every spatial representation is contractive for this norm, regardless of faithfulness, degeneracy or Hilbert-space cardinality.
+
+<a id="tn04"></a>
+### TN04. The norm for commuting actions
+
+For \(z=\sum_i a_i\otimes b_i\), define
+\[
+ \|z\|_{\max}
+ =\sup_{\pi(A)\sigma(B)=\sigma(B)\pi(A)}
+       \left\|\sum_i\pi(a_i)\sigma(b_i)\right\|.
+\]
+The coefficient representations are *-representations on one Hilbert space. Their contractivity bounds the supremum by \(\sum_i\|a_i\|\|b_i\|\). Spatial pairs are commuting pairs, so TN01 gives nondegeneracy and \(\|z\|_{\min}\le\|z\|_{\max}\). Suprema of the representation bounds give submultiplicativity and \(\|z^*z\|_{\max}=\|z\|_{\max}^2\). The elementary-tensor upper bound and the spatial lower bound give the cross-norm identity. Completion is a C*-algebra, and each commuting pair extends to its representation on this completion.
+
+Every nondegenerate representation \(R\) of this completion has such coefficient representations. Let \((e_i)\), \((f_j)\) be positive contractive approximate identities in \(A,B\). The operators \(R(a\otimes f_j)\) are uniformly bounded by \(\|a\|\). On the dense vectors \(R(z)u\), \(z\in A\odot B\), they converge, since
+\[
+ (a\otimes f_j)\sum_k a_k\otimes b_k
+ \longrightarrow\sum_k aa_k\otimes b_k
+\]
+in maximal norm, by the finite projective bound above. This defines a strong limit \(\pi(a)\). The same reasoning for the adjoints, and multiplication on this dense subspace, proves that \(\pi\) is a *-representation. Similarly \(R(e_i\otimes b)\) defines \(\sigma(b)\). Their actions commute on the dense subspace, and their product there is \(R(a\otimes b)\). For a degenerate \(R\), make this construction on its essential subspace and extend both actions by zero. Thus the supremum describes precisely the commuting-action representations used later in this lesson.
+
+The identity on algebraic tensors extends to a surjective *-homomorphism
+\(A\otimes_{\max}B\to A\otimes_{\min}B\). Its range is dense and closed. To see closedness, quotient by its closed kernel, use the C*-quotient norm proved in [the lifting lesson](completely-positive-lifting.md#quotient-cstar-norm), and apply the isometry of an injective C*-homomorphism, which follows from continuous calculus and positivity. The resulting image is complete. We use equality of these two norms for every \(B\) as the nuclearity condition.
+
+<a id="tn05"></a>
+### TN05. Tensor maps and matrix coefficients
+
+For *-homomorphisms, tensor functoriality now follows directly. Compose any commuting target pair with the two coefficient maps to prove maximal contractivity. Compose a spatial target pair and apply TN03 to prove minimal contractivity.
+
+For a cpc map \(\phi:A\to C\), the complete dilation argument in [finite-model Lemma 4.1](completely-positive-finite-models.md#lemma-4-1) gives \(\phi(a)=V^*\Pi(a)V\), \(\|V\|\le1\), and, in the commuting case, a second action commuting with \(\Pi\). TN03 bounds every spatial dilation by the minimal source norm; TN04 bounds every commuting dilation by the maximal source norm. Compression therefore proves contractivity of \(\phi\otimes\operatorname{id}\) for either product. At each matrix level a positive operator matrix remains positive after compression, so these extensions are completely positive. Compose two such maps for tensoring in both variables; rescaling treats arbitrary bounded CP maps. The nonunital dilation used here is the actual bounded approximate-identity construction in that lemma.
+
+The complete matrix-unit unitary in [finite-model Lemma 4.2](completely-positive-finite-models.md#lemma-4-2) also identifies
+\[
+ M_n\otimes_{\max}B=M_n(B)=M_n\otimes_{\min}B.
+\]
+Indeed, a commuting pair becomes \(x\otimes1\), \(1\otimes\sigma(b)\) on its essential subspace. Its matrix norm is at most the norm in a faithful amplified representation of \(B\), by contractivity of the amplified *-homomorphism. The faithful spatial pair gives the reverse bound. TN03 gives the same minimal norm. This includes nonunital \(B\) and degenerate pairs.
+
+Finally every bounded scalar functional is a linear combination of four positive bounded functionals, by [the dual decomposition proved in the lifting lesson](completely-positive-lifting.md#convex-dual-separation). Their GNS vector functionals give any scalar functional as one vector coefficient of a finite direct sum representation. Explicitly, if \(f=\sum_k c_k f_k\) and \(f_k(a)=\langle\xi_k,\pi_k(a)\xi_k\rangle\), omit zero coefficients and set
+\[
+ u=\bigoplus_k |c_k|^{1/2}\xi_k,\qquad
+ v=\bigoplus_k\frac{c_k}{|c_k|}|c_k|^{1/2}\xi_k.
+\]
+Then \(f(a)=\langle u,(\bigoplus_k\pi_k)(a)v\rangle\). For a nonunital positive functional, the positive forced-unit extension and essential cyclic restriction are constructed in [Section 7](#irreducible-norm-detection). Tensoring the two coefficient formulas now proves that every algebraic product \(f\otimes g\) is minimal-norm bounded. This is the exact scalar-functional fact consumed by Proposition 1.4.
+
+<a id="tn06"></a>
+### TN06. The split unitization sequence
+
+For either \(\nu=\min\) or \(\nu=\max\), the inclusion
+\(A\odot B\subset A^\dagger\odot B\) preserves the \(\nu\)-norm. The minimal assertion is the subalgebra assertion in TN03. For the maximal assertion, extend any commuting \(A,B\) pair by sending the new unit to the identity; this extension still commutes with \(B\). The reverse inequality follows by restricting any unitized pair. The character and its section consequently give
+\[
+ 0\longrightarrow A\otimes_\nu B
+ \longrightarrow A^\dagger\otimes_\nu B
+ \xrightarrow{\chi\otimes\operatorname{id}}B\longrightarrow0,
+ \qquad s(b)=1\otimes b.
+ \tag{TN6}
+\]
+Both arrows and the section are continuous *-homomorphisms, and \(\|s(b)\|=\|b\|\). For a kernel element \(x\), choose algebraic \(x_k\to x\). The elements
+\(x_k-s((\chi\otimes\operatorname{id})(x_k))\) belong to \(A\odot B\) and converge to \(x\). The image of \(A\otimes_\nu B\) is closed by its isometry, so it is the entire kernel. This proves exactness from the splitting, including the already unital and zero cases. It supplies all tensor details of the unit-removal step in Theorem 3.1.
+
+<a id="tensor-norm-diagram"></a>
+![Finite matrix tests determine the spatial tensor bound](../assets/tensor-norm-and-nuclearity.svg)
+
+This proof diagram follows the finite-coordinate approximation in TN03. The scalar character of the forced unitization contributes no value on \(A\); dropping its vector coordinates only decreases the nonnegative Gram mass. The bound therefore retains every finite tensor vector and extends by density, with no restriction on the Hilbert spaces. TN04 and TN06 give the two algebra maps shown at the bottom. The proofs are written above; Olesen's free university thesis, Section 1.5, pp.31–34, provides the tensor conventions.
+
 ## 1. Positive bilinear forms and the dual order
 
 The Banach dual \(B^*\) has a matrix order: a matrix \([f_{ij}]\) is positive when
@@ -229,7 +370,7 @@ Only finitely many normal functionals are involved at each approximation. The ar
 
 If \(A\) is unital, both factor maps may be chosen unital. If \(A\) is separable, the approximations may be a sequence; in general they are a net.
 
-**Proof.** The implication from 2 to 1, and the assertions about unital maps and sequences, were proved in **Completely positive finite models**. We prove 1 to 2 first for unital \(A\).
+**Proof.** The implication from 2 to 1 and the assertion about sequences were proved in **Completely positive finite models**. We prove 1 to 2 first for unital \(A\), including the normalization of both factor maps.
 
 **Encode finitely many tests.** Let \(a_1,\ldots,a_r\in A\) and let \(f_1,\ldots,f_s\) be positive functionals on \(A\). Put \(w=\sum_j f_j\), viewed as a normal functional on \(M=A^{**}\). Represent \(M\) in standard form, and write \(\xi=\xi_w\). Set \(N=M'\). The formula
 \[
@@ -250,7 +391,9 @@ Let \(e\in M\) project onto \(\overline{N\xi}\). The dominated-functional invers
 \[
 f_j(a)=\langle b_j\xi,a b_j\xi\rangle.
 \]
-Thus
+To obtain this contraction explicitly, apply the preceding dominated-form proof to \(f_j\le w\): it gives \(0\le d_j\le1\) in \(M'\), and take \(b_j=d_j^{1/2}\). Also \(e\xi=\xi\), and \(e\) commutes with every \(b_j\). Thus \(eb_j\xi=b_j\xi\). The definition of the dominated inverse says exactly that
+\(TS(a)(y)=\langle\xi,yT'S(a)\xi\rangle\).
+Consequently
 \[
 |f_j(a-T'S(a))|
 =|(\theta(a)-TS(a))(b_j^*b_j)|
@@ -268,6 +411,30 @@ It follows that \(\operatorname{id}_A\) lies in the pointwise weak closure of th
 \|\beta\|=\|\beta(1_n)\|\longrightarrow1.
 \]
 Dividing \(\beta\) by its norm gives cpc reconstruction maps with the same limiting identity. This proves 2 in the unital case.
+
+**Make both arrows unital.** The recording map \(\alpha\) in this construction is already unital. Write \(\beta\) for its cpc reconstruction map, and include the unit among the finite tests. For sufficiently accurate approximations,
+\[
+ b=\beta(1_n),\qquad \delta=\|b-1\|<1,
+ \qquad (1-\delta)1\le b\le1.
+\]
+Continuous calculus gives \(q=b^{-1/2}\in A\), with
+\(\|q\|\le(1-\delta)^{-1/2}\) and
+\(\|q-1\|\le(1-\delta)^{-1/2}-1\).
+The map \(\beta_u(x)=q\beta(x)q\) is completely positive and satisfies \(\beta_u(1_n)=1\), so it is ucp. Since \(\beta\) is contractive,
+\[
+\begin{aligned}
+ \|\beta_u(x)-\beta(x)\|
+ &\le\|q-1\|(\|q\|+1)\|x\|\\
+ &\le\frac{\delta}{1-\delta}\|x\|.
+\end{aligned}
+\]
+Thus
+\[
+ \|\beta_u\alpha(a)-a\|
+ \le\|\beta\alpha(a)-a\|
+       +\frac{\delta}{1-\delta}\|a\|.
+\]
+The unit error \(\delta\) tends to zero with the finite-test errors. This proves approximation by two ucp arrows in the algebra \(A\) itself.
 
 **Remove the unit hypothesis.** Let \(A^\dagger=A+\mathbb C1\) have a newly adjoined unit. If \(A\) is nuclear, then \(A^\dagger\) is nuclear. Here are the tensor details. For either tensor norm \(\nu\), the maps induced by the character \(\chi:A^\dagger\to\mathbb C\) give an exact sequence
 \[
@@ -462,6 +629,8 @@ The [finite-model tensor lemma](completely-positive-finite-models.md#lemma-4-1) 
 For a nonunital domain, the later approximate-identity paragraph of the same full Lemma 4.1 constructs its dilation operator by a bounded form and weak limit. That construction, with no second commuting action, also supplies the minimal-case dilation. The exact finite-model body and the unital dilation are public; the same formulas give the required positive compressions at every matrix level.
 
 ## References
+
+Kristoffer Krogh Olesen, [university-hosted thesis](https://web.math.ku.dk/~musat/thesis_final_KKO_March12.pdf), Section 1.5, pp.31–34, gives the tensor conventions used here. TN01–TN06 supply the representation bounds, norm construction, tensor maps and split unitization proof in full.
 
 William B. Arveson, [Subalgebras of C*-algebras](https://projecteuclid.org/euclid.acta/1485889628), *Acta Mathematica* 123 (1969), 141–224. Theorems 1.1.1 and 1.3.1 provide the dilation and commuting-action methods used in the preceding finite-model lesson. Lemma 1.4.1 and Theorem 1.4.2 prove the order correspondence between dominated completely positive maps and operators in the dilation commutant. Section 2 above supplies the cyclic scalar case and both matrix-order directions explicitly. The tensor-duality, convexity and nuclearity consequences are proved in this lesson.
 

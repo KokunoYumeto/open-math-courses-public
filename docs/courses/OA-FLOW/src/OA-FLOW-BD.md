@@ -1,6 +1,6 @@
 # Norm-controlled density on arbitrary Hilbert spaces
 
-*Fresh local proof by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights in this new exposition.*
+*CC0-1.0 to the extent of rights in this new exposition.*
 
 This proof supplies the bounded-density input used by WH-02 and the positive contraction net used by WH-04. The algebra need not be norm closed or unital, and the Hilbert space is arbitrary. The only analytic inputs are the elementary Hilbert facts and the exact spectral calculus in [SF-0 and SB-1–SB-6](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0). The scalar compact approximation used below is proved explicitly. The earlier Hilbert facts are [SF-0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0) and [SB-0](OA-FLOW-SF.md#OA-FLOW.SF.SB0); the full spectral-domain proof is [SB-1–SB-6](OA-FLOW-SF.md#OA-FLOW.SF.SB1). Scalar spectral convergence uses [SC-04–05](OA-FLOW-SC.md#sc-04).
 

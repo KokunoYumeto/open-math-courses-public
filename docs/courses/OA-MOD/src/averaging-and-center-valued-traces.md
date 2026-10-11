@@ -24,7 +24,7 @@ t_j\geq0,\\
 
 where the \(u_j\) are unitaries. Such a map is positive, unital and contractive, fixes every element of \(Z\), and satisfies \(A(ax)=aA(x)\) for \(a\in Z\). Compositions are again averaging maps: multiply the coefficients and the unitaries in their given order. Write \(D(x)\) for the norm-closed convex hull of the unitary conjugates of \(x\).
 
-We use one exact earlier projection result: [Projections and types of von Neumann algebras, Theorem 5.5](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-03). For projections \(p,q\in M\), it gives a central projection \(z\) with \(zp\precsim zq\) and \((1-z)q\precsim(1-z)p\). Its proof matches maximal orthogonal families of equivalent subprojections and uses the central orthogonality of their unmatched remainders. No trace is an input to that comparison theorem.
+We use one exact earlier projection result: Projections and types of von Neumann algebras, Theorem 5.5. For projections \(p,q\in M\), it gives a central projection \(z\) with \(zp\precsim zq\) and \((1-z)q\precsim(1-z)p\). Its proof matches maximal orthogonal families of equivalent subprojections and uses the central orthogonality of their unmatched remainders. No trace is an input to that comparison theorem.
 
 **One-step estimate.** If \(h=h^*\) and \(\|h\|\leq1\), there are a self-adjoint unitary \(u\) and \(c=c^*\in Z\) such that, with \(b=(h+uhu)/2\),
 
@@ -36,8 +36,7 @@ We use one exact earlier projection result: [Projections and types of von Neuman
 \tag{CT.2}
 \]
 
-**Proof.** Let \(p=1_{(0,\infty)}(h)\). Bounded spectral calculus, The bounded prerequisite boundary, gives \(-(1-p)\leq h\leq p\). Apply projection comparison to \(p,1-p\), and choose partial isometries \(v,w\in M\) with
-
+**Proof.** Using the continuous calculus in BK-01, set \(h_+=\max(h,0)\) and \(h_-=\max(-h,0)\). Let \(p=s(h_+)\), the support projection constructed in BK-06. The positive contractions \(h_+\) and \(h_-\) have product zero. Thus \(h_-\) vanishes on the closure of \(h_+H\), which is \(pH\), giving \(0\leq h_-\leq1-p\); also \(0\leq h_+\leq p\). Since \(h=h_+-h_-\), we obtain \(-(1-p)\leq h\leq p\). Apply projection comparison to \(p,1-p\), and choose partial isometries \(v,w\in M\) with
 \[
 \begin{gathered}
 v^*v=pz,\\
@@ -221,7 +220,7 @@ For a finite algebra, (CT.14) already proves that \(\sigma\) is normal if and on
 
 **Arbitrary-algebra theorem.** A finite scalar trace \(\sigma\) on any von Neumann algebra \(M\) is normal exactly when its central restriction is normal. In particular every finite trace on a factor is normal.
 
-**Proof with the exact reduction.** [The programme projection lesson, Theorem 7.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-10), applied to the unit, supplies central projections \(z_f,z_\infty\) with sum \(1\), such that \(Mz_f\) is finite and \(Mz_\infty\) is properly infinite. [Proposition 13.4 there](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-17) supplies \(p\leq z_\infty\) with \(p\sim z_\infty-p\sim z_\infty\). Consequently
+**Proof with the exact reduction.** The programme projection lesson, Theorem 7.2, applied to the unit, supplies central projections \(z_f,z_\infty\) with sum \(1\), such that \(Mz_f\) is finite and \(Mz_\infty\) is properly infinite. Proposition 13.4 there supplies \(p\leq z_\infty\) with \(p\sim z_\infty-p\sim z_\infty\). Consequently
 
 \[
 \sigma(z_\infty)=2\sigma(z_\infty).

@@ -1,0 +1,41 @@
+"""Original exact two-coordinate example for PW.10; no source artwork."""
+from pathlib import Path
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+P=Path(__file__).parent
+y=np.linspace(-2,2,801)
+left=np.exp(2*y);right=np.exp(-2*y)
+assert np.allclose(np.maximum(left,right),np.exp(2*np.abs(y)))
+fig=plt.figure(figsize=(6,8.4),dpi=150,facecolor='white')
+fig.text(.5,.967,'Two frequencies, exact growth',ha='center',fontsize=17,weight='bold')
+fig.text(.5,.925,r'$M=\mathbb{C}^2,\quad x=(1,1),\quad F(z)=(e^{-2iz},e^{2iz})$',ha='center',fontsize=12)
+ax=fig.add_axes([.16,.71,.75,.13])
+ax.axhline(0,color='#637080',lw=1)
+ax.plot([-2,-2],[0,1],color='#186ca0',lw=2)
+ax.plot([2,2],[0,1],color='#b55320',lw=2)
+ax.scatter([-2],[1],s=60,color='#186ca0',zorder=3)
+ax.scatter([2],[1],s=60,color='#b55320',zorder=3)
+ax.set_xlim(-3,3);ax.set_ylim(0,1.45);ax.set_xticks([-2,0,2]);ax.set_yticks([])
+ax.set_xlabel(r'Frequency $\lambda$',fontsize=11)
+ax.text(-2,1.18,'First coordinate',ha='center',fontsize=10,color='#186ca0')
+ax.text(2,1.18,'Second coordinate',ha='center',fontsize=10,color='#b55320')
+ax.spines[['top','right','left']].set_visible(False)
+fig.text(.5,.86,r'$\alpha_f(x)=(f(-2),f(2))$',ha='center',fontsize=14)
+fig.text(.5,.59,r'$\|F(t+iy)\|_\infty=\max(e^{2y},e^{-2y})=e^{2|y|}$',ha='center',fontsize=13)
+ax2=fig.add_axes([.16,.225,.75,.30])
+ax2.plot(y,left,color='#186ca0',lw=1.5,ls='--',label='First coordinate modulus')
+ax2.plot(y,right,color='#b55320',lw=1.5,ls=':',label='Second coordinate modulus')
+ax2.plot(y,np.maximum(left,right),color='#192532',lw=2.7,label='Maximum norm')
+ax2.set_yscale('log');ax2.set_xlim(-2,2);ax2.set_ylim(np.exp(-4.2),np.exp(4.6))
+ax2.set_xticks([-2,-1,0,1,2]);ax2.set_yticks([np.exp(-4),np.exp(-2),1,np.exp(2),np.exp(4)])
+ax2.set_yticklabels([r'$e^{-4}$',r'$e^{-2}$','1',r'$e^2$',r'$e^4$'])
+ax2.minorticks_off();ax2.set_xlabel(r'Imaginary height $y$',fontsize=11)
+ax2.set_ylabel('Modulus (log scale)',fontsize=10);ax2.grid(alpha=.18)
+ax2.legend(loc='lower center',bbox_to_anchor=(.5,-.51),fontsize=9,frameon=False)
+fig.text(.5,.04,'Support is exactly {-2, 2}; exponential type is exactly 2.\nThe bound is attained at every height. Proof: PW.10.',ha='center',fontsize=10)
+dest=P/'exponential-type-sharpness.png'
+fig.savefig(dest,dpi=150)
+plt.close(fig)
+print(dest)

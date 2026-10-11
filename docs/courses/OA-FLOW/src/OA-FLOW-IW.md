@@ -2,7 +2,7 @@
 
 # Pulling a central quotient back to the group
 
-*Self-checked by the writing AI.*
+
 
 Let \(G\) be a locally compact Hausdorff group, \(H\subseteq G\) a closed subgroup, and \(Y=G/H\). Suppose a nonzero von Neumann algebra \(M\) carries a point-ultraweakly continuous action \(\alpha\) by normal automorphisms and a specified normal faithful unital embedding
 \[

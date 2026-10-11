@@ -1,0 +1,293 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Injective tests and finite homological dimension</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="injective-tests-and-finite-homological-dimension">Injective tests and finite homological dimension</h1>
+<p><strong>Level:</strong> advanced. <strong>Prerequisites:</strong> abelian categories, quasi-isomorphism roofs, smart truncations, exact Hom sequences of triangles and compatible right derived functors.</p>
+<p>Injectivity can be tested by a single extension degree even in a category without enough injectives. A global vanishing bound also has a test in one degree. The existence of enough injectives enters later, when we turn that bound into finite resolutions. Finally, an example shows why taking the first cohomology of a derived composition requires left exactness of the outer functor.</p>
+<h2 id="conventions-and-prerequisites">Conventions and prerequisites</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be an abelian category. Objects are regarded as complexes concentrated in degree zero, and shifts satisfy <span class="math" data-tex="\(H^j(X[m])=H^{j+m}(X)\)">\(H^j(X[m])=H^{j+m}(X)\)</span>. We use</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^j_{\mathcal A}(A,B)
+=\operatorname{Hom}_{D(\mathcal A)}(A,B[j]).
+\tag{0.1}
+\]">\[
+\operatorname{Ext}^j_{\mathcal A}(A,B)
+=\operatorname{Hom}_{D(\mathcal A)}(A,B[j]).
+\tag{0.1}
+\]</span>
+<p>Hom groups are taken in an ambient universe where the indicated localization is defined. <a href="cohomological-bounds-denominators-and-truncation-adjunctions.html#4-the-common-degree-hom-formula-and-orthogonality">Cohomological bounds and truncation adjunctions, Sections 1–4</a> proves the roof descriptions, bounded representatives and the natural identifications</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^0(A,B)=\operatorname{Hom}_{\mathcal A}(A,B),
+\qquad \operatorname{Ext}^j(A,B)=0\quad(j&lt;0).
+\tag{0.2}
+\]">\[
+\operatorname{Ext}^0(A,B)=\operatorname{Hom}_{\mathcal A}(A,B),
+\qquad \operatorname{Ext}^j(A,B)=0\quad(j&lt;0).
+\tag{0.2}
+\]</span>
+<p>Its Section 5 supplies truncation triangles. <a href="triangles-after-quasi-isomorphism-localization.html#1-shift-and-the-proposed-triangles">Triangles after quasi-isomorphism localization, Sections 1–6</a> proves the derived triangulation, its exact Hom sequences and the distinguished triangle of a short exact row in the heart. We use these exact sequences, rather than assuming an injective resolution exists.</p>
+<p>An object <span class="math" data-tex="\(I\)">\(I\)</span> is <em>injective</em> if every map <span class="math" data-tex="\(A\to I\)">\(A\to I\)</span> extends across every monomorphism <span class="math" data-tex="\(A\hookrightarrow B\)">\(A\hookrightarrow B\)</span>. An object <span class="math" data-tex="\(P\)">\(P\)</span> is <em>projective</em> if every map <span class="math" data-tex="\(P\to B\)">\(P\to B\)</span> lifts across every epimorphism <span class="math" data-tex="\(A\twoheadrightarrow B\)">\(A\twoheadrightarrow B\)</span>. Enough injectives means that every object embeds in an injective; enough projectives means that every object is a quotient of a projective.</p>
+<p>For an integer <span class="math" data-tex="\(n\geq-1\)">\(n\geq-1\)</span>, say that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has <em>homological dimension at most n</em> if</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^j(A,B)=0
+\quad\hbox{for every }A,B\hbox{ and every integer }j&gt;n.
+\tag{0.3}
+\]">\[
+\operatorname{Ext}^j(A,B)=0
+\quad\hbox{for every }A,B\hbox{ and every integer }j&gt;n.
+\tag{0.3}
+\]</span>
+<p>Dimension at most minus one means that the category is zero, as we will prove. A category whose groups do not have any finite bound has infinite homological dimension.</p>
+<h2 id="1-testing-a-single-injective-or-projective-object">1. Testing a single injective or projective object</h2>
+<p><strong>Theorem 1.1.</strong> For an object <span class="math" data-tex="\(I\)">\(I\)</span>, the following conditions are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(I\)">\(I\)</span> is injective.</li>
+<li><span class="math" data-tex="\(\operatorname{Ext}^1(A,I)=0\)">\(\operatorname{Ext}^1(A,I)=0\)</span> for every object <span class="math" data-tex="\(A\)">\(A\)</span>.</li>
+<li><span class="math" data-tex="\(\operatorname{Ext}^j(A,I)=0\)">\(\operatorname{Ext}^j(A,I)=0\)</span> for every object <span class="math" data-tex="\(A\)">\(A\)</span> and every <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>.</li>
+</ol>
+<p>No supply of injective objects is assumed.</p>
+<p><strong>Proof.</strong> Suppose first that <span class="math" data-tex="\(I\)">\(I\)</span> is injective. Let <span class="math" data-tex="\(E\)">\(E\)</span> be any acyclic complex and let <span class="math" data-tex="\(f: E\to I[m]\)">\(f: E\to I[m]\)</span> be a chain map. Put <span class="math" data-tex="\(k=-m\)">\(k=-m\)</span>, the only degree in which its target has a nonzero term. Its only possible component is <span class="math" data-tex="\(f^k: E^k\to I\)">\(f^k: E^k\to I\)</span>. The chain-map condition gives <span class="math" data-tex="\(f^k d_E^{k-1}=0\)">\(f^k d_E^{k-1}=0\)</span>. Since <span class="math" data-tex="\(E\)">\(E\)</span> is acyclic, <span class="math" data-tex="\(\operatorname{im}d_E^{k-1}=\ker d_E^k\)">\(\operatorname{im}d_E^{k-1}=\ker d_E^k\)</span>. Thus <span class="math" data-tex="\(f^k\)">\(f^k\)</span> factors through the quotient by <span class="math" data-tex="\(\ker d_E^k\)">\(\ker d_E^k\)</span>, or equivalently through the image of <span class="math" data-tex="\(d_E^k\)">\(d_E^k\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+E^k\twoheadrightarrow \operatorname{im}d_E^k
+\hookrightarrow E^{k+1},
+\qquad
+f^k=\bar f\,(E^k\twoheadrightarrow\operatorname{im}d_E^k).
+\tag{1.1}
+\]">\[
+E^k\twoheadrightarrow \operatorname{im}d_E^k
+\hookrightarrow E^{k+1},
+\qquad
+f^k=\bar f\,(E^k\twoheadrightarrow\operatorname{im}d_E^k).
+\tag{1.1}
+\]</span>
+<p>Extend <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span> across that image inclusion to <span class="math" data-tex="\(h^{k+1}: E^{k+1}\to I\)">\(h^{k+1}: E^{k+1}\to I\)</span>. Take all other components of a degree-minus-one homotopy to be zero. Its equation in degree <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\(f^k=h^{k+1}d_E^k\)">\(f^k=h^{k+1}d_E^k\)</span>. In other degrees both sides are zero, since the target differential is zero and no other homotopy component can contribute. This is a null-homotopy of <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>For a quasi-isomorphism <span class="math" data-tex="\(s: U\to A\)">\(s: U\to A\)</span>, its cone and all shifts are acyclic. Apply <span class="math" data-tex="\(\operatorname{Hom}_K(-,I[j])\)">\(\operatorname{Hom}_K(-,I[j])\)</span> to its cone triangle. The preceding vanishing makes precomposition an isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+s^*: \operatorname{Hom}_K(A,I[j])
+\xrightarrow{\sim}\operatorname{Hom}_K(U,I[j]).
+\tag{1.2}
+\]">\[
+s^*: \operatorname{Hom}_K(A,I[j])
+\xrightarrow{\sim}\operatorname{Hom}_K(U,I[j]).
+\tag{1.2}
+\]</span>
+<p>In an incoming roof <span class="math" data-tex="\(A\leftarrow U\to I[j]\)">\(A\leftarrow U\to I[j]\)</span>, the numerator therefore has a unique homotopy class coming from <span class="math" data-tex="\(A\)">\(A\)</span>. These inverse identifications commute with all denominator refinements: if <span class="math" data-tex="\(su=s&#x27;\)">\(su=s&#x27;\)</span>, then <span class="math" data-tex="\(u^*s^*=(s&#x27;)^*\)">\(u^*s^*=(s&#x27;)^*\)</span>. The nonempty filtered roof index consequently gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_K(A,I[j])
+\xrightarrow{\sim}\operatorname{Hom}_D(A,I[j]).
+\tag{1.3}
+\]">\[
+\operatorname{Hom}_K(A,I[j])
+\xrightarrow{\sim}\operatorname{Hom}_D(A,I[j]).
+\tag{1.3}
+\]</span>
+<p>For <span class="math" data-tex="\(j\ne0\)">\(j\ne0\)</span>, there is no common nonzero degree of the two complexes, so every chain map is zero. This proves condition 3, and condition 3 immediately implies condition 2.</p>
+<p>Assume condition 2. Given <span class="math" data-tex="\(u: A\hookrightarrow B\)">\(u: A\hookrightarrow B\)</span>, let <span class="math" data-tex="\(C=\operatorname{coker}u\)">\(C=\operatorname{coker}u\)</span>. The triangle of <span class="math" data-tex="\(0\to A\to B\to C\to0\)">\(0\to A\to B\to C\to0\)</span> gives the exact segment</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(B,I)\longrightarrow
+\operatorname{Hom}(A,I)\longrightarrow
+\operatorname{Ext}^1(C,I)=0.
+\tag{1.4}
+\]">\[
+\operatorname{Hom}(B,I)\longrightarrow
+\operatorname{Hom}(A,I)\longrightarrow
+\operatorname{Ext}^1(C,I)=0.
+\tag{1.4}
+\]</span>
+<p>The first arrow is restriction along <span class="math" data-tex="\(u\)">\(u\)</span>, so every map from <span class="math" data-tex="\(A\)">\(A\)</span> extends. This is injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.2.</strong> Dually, <span class="math" data-tex="\(P\)">\(P\)</span> is projective if and only if <span class="math" data-tex="\(\operatorname{Ext}^1(P,A)=0\)">\(\operatorname{Ext}^1(P,A)=0\)</span> for every <span class="math" data-tex="\(A\)">\(A\)</span>, and this is equivalent to <span class="math" data-tex="\(\operatorname{Ext}^j(P,A)=0\)">\(\operatorname{Ext}^j(P,A)=0\)</span> for every <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> Here is the lifting argument explicitly. For a map <span class="math" data-tex="\(f: P[0]\to E[m]\)">\(f: P[0]\to E[m]\)</span> with <span class="math" data-tex="\(E\)">\(E\)</span> acyclic, its only component has image in <span class="math" data-tex="\(Z^mE\)">\(Z^mE\)</span>. Acyclicity gives the epimorphism <span class="math" data-tex="\(E^{m-1}\twoheadrightarrow Z^mE\)">\(E^{m-1}\twoheadrightarrow Z^mE\)</span>. Projectivity lifts <span class="math" data-tex="\(f^0\)">\(f^0\)</span> through it. Multiplying the lift by <span class="math" data-tex="\((-1)^m\)">\((-1)^m\)</span>, if necessary, supplies <span class="math" data-tex="\(h^0: P\to E^{m-1}\)">\(h^0: P\to E^{m-1}\)</span> with <span class="math" data-tex="\(d_{E[m]}^{-1}h^0=f^0\)">\(d_{E[m]}^{-1}h^0=f^0\)</span>; all other homotopy components vanish. Thus maps from <span class="math" data-tex="\(P\)">\(P\)</span> to shifted acyclic complexes are null-homotopic. The exact Hom sequence of a quasi-isomorphism cone now makes postcomposition on <span class="math" data-tex="\(\operatorname{Hom}_K(P,-)\)">\(\operatorname{Hom}_K(P,-)\)</span> invertible. Outgoing roofs give <span class="math" data-tex="\(\operatorname{Hom}_K(P,A[j])=\operatorname{Hom}_D(P,A[j])\)">\(\operatorname{Hom}_K(P,A[j])=\operatorname{Hom}_D(P,A[j])\)</span>, which is zero for <span class="math" data-tex="\(j\ne0\)">\(j\ne0\)</span>.</p>
+<p>Conversely, for <span class="math" data-tex="\(B\twoheadrightarrow C\)">\(B\twoheadrightarrow C\)</span> with kernel <span class="math" data-tex="\(A\)">\(A\)</span>, the exact segment <span class="math" data-tex="\(\operatorname{Hom}(P,B)\to\operatorname{Hom}(P,C)\to\operatorname{Ext}^1(P,A)\)">\(\operatorname{Hom}(P,B)\to\operatorname{Hom}(P,C)\to\operatorname{Ext}^1(P,A)\)</span> shows that every map to <span class="math" data-tex="\(C\)">\(C\)</span> lifts when the last group vanishes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-global-bound-tested-in-one-degree">2. A global bound tested in one degree</h2>
+<p><strong>Lemma 2.1.</strong> If <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span> and <span class="math" data-tex="\(\operatorname{Ext}^s(A,B)=0\)">\(\operatorname{Ext}^s(A,B)=0\)</span> for all pairs of objects, then <span class="math" data-tex="\(\operatorname{Ext}^r(A,B)=0\)">\(\operatorname{Ext}^r(A,B)=0\)</span> for all pairs and all <span class="math" data-tex="\(r\ge s\)">\(r\ge s\)</span>.</p>
+<p><strong>Proof.</strong> Only <span class="math" data-tex="\(r&gt;s\)">\(r&gt;s\)</span> needs proof. Represent an arbitrary class by a roof <span class="math" data-tex="\(A\xleftarrow{q}U\xrightarrow{f}B[r]\)">\(A\xleftarrow{q}U\xrightarrow{f}B[r]\)</span>. The bounded denominator comparison permits the smart upper truncation at zero. Next smart-truncate below degree <span class="math" data-tex="\(-r\)">\(-r\)</span>. The numerator descends across this lower truncation: its component in degree <span class="math" data-tex="\(-r\)">\(-r\)</span> kills the image of <span class="math" data-tex="\(d_U^{-r-1}\)">\(d_U^{-r-1}\)</span>, by its chain-map equation. The denominator to <span class="math" data-tex="\(A\)">\(A\)</span> also descends. Because <span class="math" data-tex="\(U\)">\(U\)</span> has cohomology only in degree zero, both truncation comparisons are quasi-isomorphisms. We may therefore take a representative <span class="math" data-tex="\(P\)">\(P\)</span>, supported in degrees <span class="math" data-tex="\([-r,0]\)">\([-r,0]\)</span>, with a quasi-isomorphism <span class="math" data-tex="\(q: P\to A\)">\(q: P\to A\)</span> and a numerator <span class="math" data-tex="\(f: P\to B[r]\)">\(f: P\to B[r]\)</span>.</p>
+<p>Put <span class="math" data-tex="\(t=-r+s\)">\(t=-r+s\)</span>, so <span class="math" data-tex="\(-r&lt;t&lt;0\)">\(-r&lt;t&lt;0\)</span>. Let <span class="math" data-tex="\(L\)">\(L\)</span> be the brutal upper truncation, namely the quotient complex with <span class="math" data-tex="\(L^j=P^j\)">\(L^j=P^j\)</span> for <span class="math" data-tex="\(j\le t\)">\(j\le t\)</span> and zero for <span class="math" data-tex="\(j&gt;t\)">\(j&gt;t\)</span>. Its last differential is zero. The projection <span class="math" data-tex="\(\pi: P\to L\)">\(\pi: P\to L\)</span> is a chain map. Since the only possible nonzero component of <span class="math" data-tex="\(f\)">\(f\)</span> is in degree <span class="math" data-tex="\(-r&lt;t\)">\(-r&lt;t\)</span>, it factors as <span class="math" data-tex="\(g\pi\)">\(g\pi\)</span>, where <span class="math" data-tex="\(g: L\to B[r]\)">\(g: L\to B[r]\)</span> has this same component.</p>
+<p>All cohomology of <span class="math" data-tex="\(L\)">\(L\)</span> below <span class="math" data-tex="\(t\)">\(t\)</span> is zero. Its degree-<span class="math" data-tex="\(t\)">\(t\)</span> cohomology is <span class="math" data-tex="\(T=\operatorname{coker}(d_P^{t-1})\)">\(T=\operatorname{coker}(d_P^{t-1})\)</span>. The cycle quotient map in its last degree gives a quasi-isomorphism <span class="math" data-tex="\(L\to T[-t]\)">\(L\to T[-t]\)</span>: below <span class="math" data-tex="\(t\)">\(t\)</span> both cohomology groups vanish, and in degree <span class="math" data-tex="\(t\)">\(t\)</span> the map induces the identity of <span class="math" data-tex="\(T\)">\(T\)</span>. Thus the original derived arrow factors as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+A\xrightarrow{\,Q(\pi)Q(q)^{-1}\,}L
+\xrightarrow{\sim}T[r-s]
+\longrightarrow B[r].
+\tag{2.1}
+\]">\[
+A\xrightarrow{\,Q(\pi)Q(q)^{-1}\,}L
+\xrightarrow{\sim}T[r-s]
+\longrightarrow B[r].
+\tag{2.1}
+\]</span>
+<p>After shifting the last arrow back by <span class="math" data-tex="\(r-s\)">\(r-s\)</span>, it belongs to <span class="math" data-tex="\(\operatorname{Ext}^s(T,B)\)">\(\operatorname{Ext}^s(T,B)\)</span>, which is zero by hypothesis. The original arrow is therefore zero. The argument used only kernels, cokernels and bounded roof comparisons. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> For every integer <span class="math" data-tex="\(n\ge-1\)">\(n\ge-1\)</span>, the category has homological dimension at most <span class="math" data-tex="\(n\)">\(n\)</span> if and only if</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^{n+1}(A,B)=0\qquad\hbox{for all }A,B.
+\tag{2.2}
+\]">\[
+\operatorname{Ext}^{n+1}(A,B)=0\qquad\hbox{for all }A,B.
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, apply Lemma 2.1 with <span class="math" data-tex="\(s=n+1\)">\(s=n+1\)</span>; necessity follows from the definition. When <span class="math" data-tex="\(n=-1\)">\(n=-1\)</span>, (2.2) says that every Hom group in the heart is zero. In particular <span class="math" data-tex="\(1_A=0\)">\(1_A=0\)</span> for every <span class="math" data-tex="\(A\)">\(A\)</span>. Its unique maps to and from the zero object are then inverse, so every object is zero. Every derived complex and every Ext group is zero as well. Conversely a zero category satisfies the asserted bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The integer restriction matters. Over a nonzero field, vector spaces form a nonzero abelian category. Their negative Ext groups vanish by (0.2). Consequently vanishing in degree <span class="math" data-tex="\(n+1&lt;0\)">\(n+1&lt;0\)</span> holds for every <span class="math" data-tex="\(n\le-2\)">\(n\le-2\)</span>, but does not imply a bound at most <span class="math" data-tex="\(n\)">\(n\)</span>, since identities in degree zero are nonzero. Vanishing in a negative test degree supplies no such dimension criterion.</p>
+<h2 id="3-finite-injective-resolutions-and-arbitrary-terminal-objects">3. Finite injective resolutions and arbitrary terminal objects</h2>
+<p>An object <span class="math" data-tex="\(X\)">\(X\)</span> has injective dimension at most <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span> if there is an exact sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+0\to X\to I^0\to\cdots\to I^n\to0
+\tag{3.1}
+\]">\[
+0\to X\to I^0\to\cdots\to I^n\to0
+\tag{3.1}
+\]</span>
+<p>with all <span class="math" data-tex="\(I^j\)">\(I^j\)</span> injective. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> this means that <span class="math" data-tex="\(X\)">\(X\)</span> itself is injective.</p>
+<p><strong>Theorem 3.1.</strong> Suppose <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has enough injectives and <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>. For a fixed <span class="math" data-tex="\(X\)">\(X\)</span>, injective dimension at most <span class="math" data-tex="\(n\)">\(n\)</span> is equivalent to <span class="math" data-tex="\(\operatorname{Ext}^{n+1}(A,X)=0\)">\(\operatorname{Ext}^{n+1}(A,X)=0\)</span> for all <span class="math" data-tex="\(A\)">\(A\)</span>. Either condition makes <span class="math" data-tex="\(\operatorname{Ext}^j(A,X)=0\)">\(\operatorname{Ext}^j(A,X)=0\)</span> for every <span class="math" data-tex="\(j&gt;n\)">\(j&gt;n\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, this is Theorem 1.1. For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, successively embed <span class="math" data-tex="\(C^0=X\)">\(C^0=X\)</span> and its ensuing cokernels into injectives, producing the short exact rows</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+0\to C^j\to I^j\to C^{j+1}\to0
+\qquad(0\le j&lt;n).
+\tag{3.2}
+\]">\[
+0\to C^j\to I^j\to C^{j+1}\to0
+\qquad(0\le j&lt;n).
+\tag{3.2}
+\]</span>
+<p>For every <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, the long exact sequence gives a connecting isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\delta_j^r: \operatorname{Ext}^r(A,C^{j+1})
+\xrightarrow{\sim}\operatorname{Ext}^{r+1}(A,C^j).
+\tag{3.3}
+\]">\[
+\delta_j^r: \operatorname{Ext}^r(A,C^{j+1})
+\xrightarrow{\sim}\operatorname{Ext}^{r+1}(A,C^j).
+\tag{3.3}
+\]</span>
+<p>Indeed the two groups adjacent to this arrow are <span class="math" data-tex="\(\operatorname{Ext}^r(A,I^j)\)">\(\operatorname{Ext}^r(A,I^j)\)</span> and <span class="math" data-tex="\(\operatorname{Ext}^{r+1}(A,I^j)\)">\(\operatorname{Ext}^{r+1}(A,I^j)\)</span>, both zero by Theorem 1.1. Composing these actual connecting maps, in the order <span class="math" data-tex="\(j=n-1,n-2,\ldots,0\)">\(j=n-1,n-2,\ldots,0\)</span>, gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^r(A,C^n)\xrightarrow{\sim}
+\operatorname{Ext}^{r+n}(A,X)\qquad(r\ge1).
+\tag{3.4}
+\]">\[
+\operatorname{Ext}^r(A,C^n)\xrightarrow{\sim}
+\operatorname{Ext}^{r+n}(A,X)\qquad(r\ge1).
+\tag{3.4}
+\]</span>
+<p>If the asserted degree <span class="math" data-tex="\(n+1\)">\(n+1\)</span> vanishes, (3.4) with <span class="math" data-tex="\(r=1\)">\(r=1\)</span> and Theorem 1.1 show that <span class="math" data-tex="\(C^n\)">\(C^n\)</span> is injective. The spliced rows (3.2), ending in <span class="math" data-tex="\(I^n=C^n\)">\(I^n=C^n\)</span>, give (3.1). Conversely, any resolution (3.1) supplies the same rows with an injective final cokernel. Equation (3.4) then proves every stated higher-degree vanishing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> Under enough injectives, the following conditions are equivalent for <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has homological dimension at most <span class="math" data-tex="\(n\)">\(n\)</span>.</li>
+<li>Every object has a resolution (3.1).</li>
+<li>In every right-ended exact string</li>
+</ol>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+I^0\to I^1\to\cdots\to I^{n-1}\to T\to0
+\tag{3.5}
+\]">\[
+I^0\to I^1\to\cdots\to I^{n-1}\to T\to0
+\tag{3.5}
+\]</span>
+<p>whose displayed <span class="math" data-tex="\(I^j\)">\(I^j\)</span> are injective, the object <span class="math" data-tex="\(T\)">\(T\)</span> is injective. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, condition 3 means that every <span class="math" data-tex="\(T\)">\(T\)</span> is injective.</p>
+<p><strong>Proof.</strong> Conditions 1 and 2 are equivalent by Theorems 2.2 and 3.1. For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, set <span class="math" data-tex="\(X=\ker(I^0\to I^1)\)">\(X=\ker(I^0\to I^1)\)</span>, interpreting the first arrow as <span class="math" data-tex="\(I^0\to T\)">\(I^0\to T\)</span> when <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Exactness of (3.5) supplies rows (3.2) with final cokernel <span class="math" data-tex="\(C^n=T\)">\(C^n=T\)</span>. Condition 1 and (3.4) force <span class="math" data-tex="\(\operatorname{Ext}^1(A,T)=0\)">\(\operatorname{Ext}^1(A,T)=0\)</span> for every <span class="math" data-tex="\(A\)">\(A\)</span>, so condition 3 follows. Conversely, enough injectives construct the first <span class="math" data-tex="\(n\)">\(n\)</span> rows (3.2) for any <span class="math" data-tex="\(X\)">\(X\)</span>; their terminal <span class="math" data-tex="\(C^n\)">\(C^n\)</span> is injective by condition 3, yielding condition 2. When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, conditions 2 and 3 both assert that every object is injective, and Theorem 1.1 plus Theorem 2.2 give condition 1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is no initial zero in (3.5). Its first kernel may be any object; adding an initial-zero hypothesis would test fewer strings than the corollary requires.</p>
+<h2 id="4-the-projective-counterpart">4. The projective counterpart</h2>
+<p>An object has projective dimension at most <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span> if it has an exact resolution <span class="math" data-tex="\(0\to P_n\to\cdots\to P_0\to X\to0\)">\(0\to P_n\to\cdots\to P_0\to X\to0\)</span> with projective terms.</p>
+<p><strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has enough projectives, this condition for <span class="math" data-tex="\(X\)">\(X\)</span> is equivalent to <span class="math" data-tex="\(\operatorname{Ext}^{n+1}(X,B)=0\)">\(\operatorname{Ext}^{n+1}(X,B)=0\)</span> for all <span class="math" data-tex="\(B\)">\(B\)</span>. The following global conditions are equivalent: homological dimension at most <span class="math" data-tex="\(n\)">\(n\)</span>; such resolutions for all objects; and projectivity of every <span class="math" data-tex="\(T\)">\(T\)</span> in every left-ended exact string</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+0\to T\to P_{n-1}\to\cdots\to P_0
+\tag{4.1}
+\]">\[
+0\to T\to P_{n-1}\to\cdots\to P_0
+\tag{4.1}
+\]</span>
+<p>with projective displayed terms. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the last condition means that every <span class="math" data-tex="\(T\)">\(T\)</span> is projective.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(C_0=X\)">\(C_0=X\)</span> and take successive projective covers, meaning epimorphisms from projectives, not minimal covers. Their rows are <span class="math" data-tex="\(0\to C_{j+1}\to P_j\to C_j\to0\)">\(0\to C_{j+1}\to P_j\to C_j\to0\)</span>. The contravariant long exact sequence and Theorem 1.2 give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^r(C_{j+1},B)
+\xrightarrow{\sim}\operatorname{Ext}^{r+1}(C_j,B)
+\qquad(r\ge1).
+\tag{4.2}
+\]">\[
+\operatorname{Ext}^r(C_{j+1},B)
+\xrightarrow{\sim}\operatorname{Ext}^{r+1}(C_j,B)
+\qquad(r\ge1).
+\tag{4.2}
+\]</span>
+<p>Compose from <span class="math" data-tex="\(j=n-1\)">\(j=n-1\)</span> down to zero. The result identifies <span class="math" data-tex="\(\operatorname{Ext}^1(C_n,B)\)">\(\operatorname{Ext}^1(C_n,B)\)</span> with <span class="math" data-tex="\(\operatorname{Ext}^{n+1}(X,B)\)">\(\operatorname{Ext}^{n+1}(X,B)\)</span>, so the latter vanishing makes <span class="math" data-tex="\(C_n\)">\(C_n\)</span> projective by Theorem 1.2. Conversely a projective terminal kernel and (4.2) kill every degree above <span class="math" data-tex="\(n\)">\(n\)</span>. The global criterion follows from Theorem 2.2.</p>
+<p>For (4.1) with <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, put <span class="math" data-tex="\(X=\operatorname{coker}(P_1\to P_0)\)">\(X=\operatorname{coker}(P_1\to P_0)\)</span>, interpreting this as <span class="math" data-tex="\(\operatorname{coker}(T\to P_0)\)">\(\operatorname{coker}(T\to P_0)\)</span> for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Its successive kernels are the images in the string and its last kernel is <span class="math" data-tex="\(T\)">\(T\)</span>. Equation (4.2) proves projectivity of <span class="math" data-tex="\(T\)">\(T\)</span> under the global bound. In the reverse direction, enough projectives produce the first <span class="math" data-tex="\(n\)">\(n\)</span> covers, and the stipulated projectivity of their terminal kernel completes the resolution. Theorem 1.2 handles <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. No terminal zero was required in (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-first-degree-of-a-derived-composition">5. The first degree of a derived composition</h2>
+<p>Write <span class="math" data-tex="\(R^+F\)">\(R^+F\)</span> for the universal bounded-below right derived functor of an additive functor, and <span class="math" data-tex="\(R^jF(X)=H^j(R^+F(X))\)">\(R^jF(X)=H^j(R^+F(X))\)</span>. <a href="universal-derived-functors-and-compatible-composition.html#9-the-normalized-comparison-for-a-composition">Universal derived functors, Sections 5 and 9</a> proves computation by an F-injective class and the unit-normalized compatible-composition comparison. <a href="first-derived-cohomology-and-truncation-composition.html#2-the-first-cohomology-without-a-resolution-class-assumption">First derived cohomology, Theorem 2.1</a> proves, for left exact <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(Y\in D^{\ge n}\)">\(Y\in D^{\ge n}\)</span>, the natural kernel comparison <span class="math" data-tex="\(G(H^nY)\xrightarrow\sim H^n(R^+G(Y))\)">\(G(H^nY)\xrightarrow\sim H^n(R^+G(Y))\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> Let <span class="math" data-tex="\(F: \mathcal A\to\mathcal B\)">\(F: \mathcal A\to\mathcal B\)</span> and <span class="math" data-tex="\(G: \mathcal B\to\mathcal C\)">\(G: \mathcal B\to\mathcal C\)</span> be additive, and suppose the actual compatible comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+c: R^+(GF)\xrightarrow{\sim}R^+G\,R^+F
+\tag{5.1}
+\]">\[
+c: R^+(GF)\xrightarrow{\sim}R^+G\,R^+F
+\tag{5.1}
+\]</span>
+<p>is an isomorphism. For example, the prerequisite supplies this when full additive computing classes <span class="math" data-tex="\(\mathcal J,\mathcal J&#x27;\)">\(\mathcal J,\mathcal J&#x27;\)</span> are respectively F-injective and G-injective, with <span class="math" data-tex="\(F(\mathcal J)\subseteq\mathcal J&#x27;\)">\(F(\mathcal J)\subseteq\mathcal J&#x27;\)</span>. If <span class="math" data-tex="\(G\)">\(G\)</span> is left exact and <span class="math" data-tex="\(R^jF(X)=0\)">\(R^jF(X)=0\)</span> for <span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span>, then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+R^n(GF)(X)\xrightarrow{\sim}G(R^nF(X)).
+\tag{5.2}
+\]">\[
+R^n(GF)(X)\xrightarrow{\sim}G(R^nF(X)).
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(Y=R^+F(X)\)">\(Y=R^+F(X)\)</span>, which belongs to <span class="math" data-tex="\(D^{\ge n}(\mathcal B)\)">\(D^{\ge n}(\mathcal B)\)</span> by hypothesis. Compose <span class="math" data-tex="\(H^n(c_X)\)">\(H^n(c_X)\)</span> with the inverse of the kernel comparison just recalled:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+H^n(R^+(GF)(X))\xrightarrow{H^n(c_X)}
+H^n(R^+G(Y))\xrightarrow{\sim}G(H^nY).
+\tag{5.3}
+\]">\[
+H^n(R^+(GF)(X))\xrightarrow{H^n(c_X)}
+H^n(R^+G(Y))\xrightarrow{\sim}G(H^nY).
+\tag{5.3}
+\]</span>
+<p>Both comparisons are specified natural maps, so their composite is the asserted natural isomorphism. Its naturality holds for all derived maps between objects satisfying the same bound. This argument needs only a lower bound; it does not assume that <span class="math" data-tex="\(Y\)">\(Y\)</span> has just one nonzero cohomology object. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 5.2 (the left-exactness hypothesis is necessary).</strong> Work in abelian groups. Fix <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, let <span class="math" data-tex="\(F\)">\(F\)</span> be the identity and let <span class="math" data-tex="\(G(M)=M\otimes_{\mathbb Z}\mathbb Z/m\)">\(G(M)=M\otimes_{\mathbb Z}\mathbb Z/m\)</span>. The tensor universal property gives a natural isomorphism <span class="math" data-tex="\(G(M)=M/mM\)">\(G(M)=M/mM\)</span>: a balanced map out of the tensor is determined by the image of <span class="math" data-tex="\(x\otimes\overline1\)">\(x\otimes\overline1\)</span>, and that additive map kills <span class="math" data-tex="\(mM\)">\(mM\)</span>; conversely <span class="math" data-tex="\((x,\bar a)\mapsto ax+mM\)">\((x,\bar a)\mapsto ax+mM\)</span> is balanced and defines the inverse.</p>
+<p>Every injective abelian group <span class="math" data-tex="\(I\)">\(I\)</span> is divisible. To find an m-th root of <span class="math" data-tex="\(x\in I\)">\(x\in I\)</span>, extend the map <span class="math" data-tex="\(m\mathbb Z\to I\)">\(m\mathbb Z\to I\)</span> taking <span class="math" data-tex="\(m\)">\(m\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span> across <span class="math" data-tex="\(m\mathbb Z\hookrightarrow\mathbb Z\)">\(m\mathbb Z\hookrightarrow\mathbb Z\)</span>. Thus <span class="math" data-tex="\(I/mI=0\)">\(I/mI=0\)</span>. Abelian groups have enough injectives: the complete character embedding and Zorn extension proof is <a href="countable-mittag-leffler-and-formal-pro-derived-limits.html#4-enough-injectives-with-all-size-and-action-conventions">Countable Mittag–Leffler systems, Section 4</a>. Applying <span class="math" data-tex="\(G\)">\(G\)</span> to any bounded-below injective replacement gives the zero complex. The class-computation theorem therefore gives <span class="math" data-tex="\(R^+G=0\)">\(R^+G=0\)</span>, with its zero unit. Consequently all three derived functors exist, <span class="math" data-tex="\(R^+F\)">\(R^+F\)</span> is the identity, and <span class="math" data-tex="\(R^+(GF)=R^+G=0\)">\(R^+(GF)=R^+G=0\)</span>.</p>
+<p>Even the compatible classes can be the class of injective groups on both sides: they compute the identity and <span class="math" data-tex="\(G\)">\(G\)</span>, and <span class="math" data-tex="\(F\)">\(F\)</span> takes the first class into the second. Thus (5.1) is indeed an isomorphism here. For <span class="math" data-tex="\(X=\mathbb Z[0]\)">\(X=\mathbb Z[0]\)</span> and <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, its lower-bound premise holds but</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+R^0(GF)(\mathbb Z)=0,
+\qquad G(R^0F(\mathbb Z))=\mathbb Z/m\ne0.
+\tag{5.4}
+\]">\[
+R^0(GF)(\mathbb Z)=0,
+\qquad G(R^0F(\mathbb Z))=\mathbb Z/m\ne0.
+\tag{5.4}
+\]</span>
+<p>The functor <span class="math" data-tex="\(G\)">\(G\)</span> is not left exact: it sends the monomorphism <span class="math" data-tex="\(m: \mathbb Z\to\mathbb Z\)">\(m: \mathbb Z\to\mathbb Z\)</span> to the zero endomorphism of the nonzero group <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span>. Thus existence of the derived functors, even with compatible classes and an invertible comparison, does not replace left exactness in (5.2).</p>
+<h2 id="6-four-graded-exercises-with-complete-solutions">6. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-an-extension-test-over-the-integers-introductory">Exercise 1 — An extension test over the integers (introductory)</h3>
+<p>For <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, prove directly that <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is not an injective group and compute <span class="math" data-tex="\(\operatorname{Ext}^j_{\mathbb Z}(\mathbb Z/m,\mathbb Z)\)">\(\operatorname{Ext}^j_{\mathbb Z}(\mathbb Z/m,\mathbb Z)\)</span> for every integer <span class="math" data-tex="\(j\)">\(j\)</span>. Relate the two answers.</p>
+<p><strong>Solution.</strong> The map <span class="math" data-tex="\(m\mathbb Z\to\mathbb Z\)">\(m\mathbb Z\to\mathbb Z\)</span>, <span class="math" data-tex="\(m\mapsto1\)">\(m\mapsto1\)</span>, cannot extend to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>: an extension would have <span class="math" data-tex="\(m f(1)=1\)">\(m f(1)=1\)</span>, impossible in integers. The free two-term resolution <span class="math" data-tex="\(P=(\mathbb Z\xrightarrow{m}\mathbb Z)\)">\(P=(\mathbb Z\xrightarrow{m}\mathbb Z)\)</span>, in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, has augmentation to <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span> and zero negative cohomology. <a href="hereditary-categories-and-cohomology-splittings.html#3-projective-complexes-compute-the-actual-derived-hom">Hereditary categories, Lemma 3.1</a> proves that such a projective complex computes the actual derived Hom. Its Hom complex into <span class="math" data-tex="\(\mathbb Z[0]\)">\(\mathbb Z[0]\)</span> has a copy of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in degrees zero and one and differential <span class="math" data-tex="\(-m\)">\(-m\)</span>, by <span class="math" data-tex="\(d(f)=d_{\mathbb Z}f-(-1)^{|f|}f d_P\)">\(d(f)=d_{\mathbb Z}f-(-1)^{|f|}f d_P\)</span>. The degree-zero kernel is zero and the degree-one cokernel is <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span>; all other groups vanish. Hence <span class="math" data-tex="\(\operatorname{Ext}^1(\mathbb Z/m,\mathbb Z)=\mathbb Z/m\)">\(\operatorname{Ext}^1(\mathbb Z/m,\mathbb Z)=\mathbb Z/m\)</span> and every other degree is zero. This nonzero degree-one test also detects noninjectivity by Theorem 1.1.</p>
+<h3 id="exercise-2-dimension-zero-and-the-negative-endpoint-intermediate">Exercise 2 — Dimension zero and the negative endpoint (intermediate)</h3>
+<p>Prove that homological dimension at most zero is equivalent to splitting of every short exact sequence. Deduce that every object is both injective and projective, without assuming either supply. Explain the case of dimension at most minus one.</p>
+<p><strong>Solution.</strong> Under the bound, let <span class="math" data-tex="\(0\to A\to B\xrightarrow{v}C\to0\)">\(0\to A\to B\xrightarrow{v}C\to0\)</span> be exact. The segment <span class="math" data-tex="\(\operatorname{Hom}(C,B)\to\operatorname{Hom}(C,C)\to\operatorname{Ext}^1(C,A)=0\)">\(\operatorname{Hom}(C,B)\to\operatorname{Hom}(C,C)\to\operatorname{Ext}^1(C,A)=0\)</span> lifts <span class="math" data-tex="\(1_C\)">\(1_C\)</span> to <span class="math" data-tex="\(s: C\to B\)">\(s: C\to B\)</span> with <span class="math" data-tex="\(vs=1_C\)">\(vs=1_C\)</span>. The map <span class="math" data-tex="\(A\oplus C\to B\)">\(A\oplus C\to B\)</span>, <span class="math" data-tex="\((a,c)\mapsto u(a)+s(c)\)">\((a,c)\mapsto u(a)+s(c)\)</span>, is an isomorphism: <span class="math" data-tex="\(1_B-sv\)">\(1_B-sv\)</span> factors uniquely through the kernel <span class="math" data-tex="\(u\)">\(u\)</span>, supplying the inverse components, and the two composites are identities.</p>
+<p>Conversely, if every short exact row splits, every mono has a retraction and every epi has a section. A map from the source of a mono to any object extends by composing its retraction; a map from any object to the target of an epi lifts by composing its section. Thus every object is both injective and projective. Theorem 1.1 gives all positive Ext vanishing. Dimension at most minus one additionally forces every identity in degree zero to vanish, hence forces the zero category, as in Theorem 2.2. A nonzero vector space category has dimension zero: choosing preimages of a basis gives a section of every epimorphism, but its nonzero identities prevent dimension minus one.</p>
+<h3 id="exercise-3-an-injective-resolution-which-never-ends-advanced">Exercise 3 — An injective resolution which never ends (advanced)</h3>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field, <span class="math" data-tex="\(R=k[\varepsilon]/(\varepsilon^2)\)">\(R=k[\varepsilon]/(\varepsilon^2)\)</span>, and <span class="math" data-tex="\(S=R/(\varepsilon)\)">\(S=R/(\varepsilon)\)</span>. Prove that <span class="math" data-tex="\(R\)">\(R\)</span> is injective as an R-module. Construct explicit projective and injective resolutions of <span class="math" data-tex="\(S\)">\(S\)</span>, compute <span class="math" data-tex="\(\operatorname{Ext}^j_R(S,S)\)">\(\operatorname{Ext}^j_R(S,S)\)</span> in every degree, and show that neither dimension of <span class="math" data-tex="\(S\)">\(S\)</span> is finite.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(\lambda: R\to k\)">\(\lambda: R\to k\)</span> extract the coefficient of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The pairing <span class="math" data-tex="\((a,b)\mapsto\lambda(ab)\)">\((a,b)\mapsto\lambda(ab)\)</span> is nondegenerate: in the basis <span class="math" data-tex="\(1,\varepsilon\)">\(1,\varepsilon\)</span> its matrix is <span class="math" data-tex="\(\left(\begin{smallmatrix}0&amp;1\\1&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}0&amp;1\\1&amp;0\end{smallmatrix}\right)\)</span>, which is invertible over any field. Hence <span class="math" data-tex="\(\phi: R\to R^*=\operatorname{Hom}_k(R,k)\)">\(\phi: R\to R^*=\operatorname{Hom}_k(R,k)\)</span>, <span class="math" data-tex="\(a\mapsto(b\mapsto\lambda(ab))\)">\(a\mapsto(b\mapsto\lambda(ab))\)</span>, is an R-linear isomorphism for the action <span class="math" data-tex="\((r\ell)(b)=\ell(br)\)">\((r\ell)(b)=\ell(br)\)</span>.</p>
+<p>For every R-module <span class="math" data-tex="\(M\)">\(M\)</span>, evaluation at one gives the natural isomorphism <span class="math" data-tex="\(\operatorname{Hom}_R(M,R^*)\simeq\operatorname{Hom}_k(M,k)\)">\(\operatorname{Hom}_R(M,R^*)\simeq\operatorname{Hom}_k(M,k)\)</span>. Its inverse sends <span class="math" data-tex="\(f\)">\(f\)</span> to the R-linear map <span class="math" data-tex="\(m\mapsto(b\mapsto f(bm))\)">\(m\mapsto(b\mapsto f(bm))\)</span>: evaluation recovers <span class="math" data-tex="\(f\)">\(f\)</span>, and R-linearity verifies the other composite. A k-linear functional on a subspace extends by extending a basis. Consequently every map from an R-submodule to <span class="math" data-tex="\(R^*\)">\(R^*\)</span> extends across its ambient module, by this isomorphism. This proves injectivity of <span class="math" data-tex="\(R^*\)">\(R^*\)</span> and therefore of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>Multiplication by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> has image and kernel both equal to <span class="math" data-tex="\(k\varepsilon\)">\(k\varepsilon\)</span>. The following two sequences are thus exact:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\cdots\xrightarrow{\varepsilon}R\xrightarrow{\varepsilon}R
+\twoheadrightarrow S\to0,
+\qquad
+0\to S\xrightarrow{\bar a\mapsto a\varepsilon}R
+\xrightarrow{\varepsilon}R\xrightarrow{\varepsilon}\cdots.
+\tag{6.1}
+\]">\[
+\cdots\xrightarrow{\varepsilon}R\xrightarrow{\varepsilon}R
+\twoheadrightarrow S\to0,
+\qquad
+0\to S\xrightarrow{\bar a\mapsto a\varepsilon}R
+\xrightarrow{\varepsilon}R\xrightarrow{\varepsilon}\cdots.
+\tag{6.1}
+\]</span>
+<p>The first is a projective resolution, with copies of <span class="math" data-tex="\(R\)">\(R\)</span> in all degrees at most zero. The second is an injective resolution, with copies of <span class="math" data-tex="\(R\)">\(R\)</span> in all degrees at least zero. In the first resolution, every differential after applying <span class="math" data-tex="\(\operatorname{Hom}_R(-,S)\)">\(\operatorname{Hom}_R(-,S)\)</span> is zero because <span class="math" data-tex="\(\varepsilon S=0\)">\(\varepsilon S=0\)</span>, and each nonzero term is <span class="math" data-tex="\(S\simeq k\)">\(S\simeq k\)</span>. The complete bounded-above projective-complex Hom proof in the hereditary prerequisite applies even though this resolution is infinite to the left. It gives <span class="math" data-tex="\(\operatorname{Ext}^j_R(S,S)=k\)">\(\operatorname{Ext}^j_R(S,S)=k\)</span> for every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, and (0.2) gives zero for <span class="math" data-tex="\(j&lt;0\)">\(j&lt;0\)</span>. The injective resolution gives the same answer: <span class="math" data-tex="\(\operatorname{Hom}_R(S,R)=k\varepsilon\)">\(\operatorname{Hom}_R(S,R)=k\varepsilon\)</span>, and multiplication by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is zero on this subspace.</p>
+<p>If a finite injective resolution of length <span class="math" data-tex="\(n\)">\(n\)</span> existed, the direction of Theorem 3.1 using an existing resolution would kill all degrees above <span class="math" data-tex="\(n\)">\(n\)</span>, contrary to this calculation. A finite projective resolution would contradict Theorem 4.1 in the same way. These implications use the displayed finite resolution alone, so no further supply assumption is needed to obtain the contradiction.</p>
+<h3 id="exercise-4-a-failing-composition-and-a-positive-calculation-advanced">Exercise 4 — A failing composition and a positive calculation (advanced)</h3>
+<p>First verify that Example 5.2 satisfies every premise of Proposition 5.1 except left exactness of <span class="math" data-tex="\(G\)">\(G\)</span>. For a positive example, take <span class="math" data-tex="\(R=k[t]\)">\(R=k[t]\)</span>, <span class="math" data-tex="\(F=\operatorname{Hom}_R(k,-): \operatorname{Mod}R\to\operatorname{Vect}_k\)">\(F=\operatorname{Hom}_R(k,-): \operatorname{Mod}R\to\operatorname{Vect}_k\)</span>, with <span class="math" data-tex="\(t\)">\(t\)</span> acting by zero on <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(G=\operatorname{Hom}_k(V,-)\)">\(G=\operatorname{Hom}_k(V,-)\)</span> for an arbitrary vector space <span class="math" data-tex="\(V\)">\(V\)</span>. Compute <span class="math" data-tex="\(R^j(GF)(R)\)">\(R^j(GF)(R)\)</span>, including its first nonzero degree.</p>
+<p><strong>Solution.</strong> In Example 5.2 all three functors exist by injective computation; <span class="math" data-tex="\(R^+F\)">\(R^+F\)</span> is the identity, the two classes of injective groups are compatible, and the comparison identifies the zero functor with itself. For <span class="math" data-tex="\(\mathbb Z[0]\)">\(\mathbb Z[0]\)</span>, all negative <span class="math" data-tex="\(R^jF\)">\(R^jF\)</span> vanish. But <span class="math" data-tex="\(G\)">\(G\)</span> takes the mono <span class="math" data-tex="\(m\)">\(m\)</span> to zero, and the degree-zero values in (5.4) differ. Thus this example also excludes a repair which adds only compatible classes while still allowing an arbitrary additive outer functor.</p>
+<p>For the positive example, enough injectives in <span class="math" data-tex="\(\operatorname{Mod}R\)">\(\operatorname{Mod}R\)</span> follow from the full coinduction and character-product construction in the countable Mittag–Leffler prerequisite. Every vector space is injective and projective, by basis extension and basis lifting. The injective R-modules compute <span class="math" data-tex="\(F\)">\(F\)</span>; all vector spaces compute the exact functor <span class="math" data-tex="\(G\)">\(G\)</span>, so these computing classes are compatible. Exactness of <span class="math" data-tex="\(G\)">\(G\)</span> follows directly: a linear map from <span class="math" data-tex="\(V\)">\(V\)</span> into the target of an epimorphism lifts by selecting preimages of the images of a basis of <span class="math" data-tex="\(V\)">\(V\)</span>, and Hom always preserves kernels. This applies to any basis cardinality.</p>
+<p>The free resolution <span class="math" data-tex="\((R\xrightarrow{t}R)\)">\((R\xrightarrow{t}R)\)</span> of <span class="math" data-tex="\(k\)">\(k\)</span>, in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, has exact augmentation since multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> is injective and has cokernel <span class="math" data-tex="\(k\)">\(k\)</span>. Its Hom complex into <span class="math" data-tex="\(R\)">\(R\)</span> has differential <span class="math" data-tex="\(-t\)">\(-t\)</span>, zero kernel, and cokernel <span class="math" data-tex="\(R/tR=k\)">\(R/tR=k\)</span>. The injective/projective comparison for this computation is proved in <a href="derived-hom-and-bounded-resolution-pairs.html#6-enough-injectives-or-enough-projectives">Derived Hom, Sections 5–6</a>. Thus <span class="math" data-tex="\(R^jF(R)\)">\(R^jF(R)\)</span> is zero unless <span class="math" data-tex="\(j=1\)">\(j=1\)</span>, when it is <span class="math" data-tex="\(k\)">\(k\)</span>. Its derived object is canonically <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>, by the singleton-cohomology quotient in the first-derived-cohomology prerequisite. Exactness of <span class="math" data-tex="\(G\)">\(G\)</span> makes <span class="math" data-tex="\(R^+G\)">\(R^+G\)</span> its termwise functor: it sends acyclic complexes to acyclic complexes and hence already descends through quasi-isomorphisms, with the identity unit. Applying the compatible comparison gives <span class="math" data-tex="\(R^+(GF)(R)=\operatorname{Hom}_k(V,k)[-1]\)">\(R^+(GF)(R)=\operatorname{Hom}_k(V,k)[-1]\)</span>. Therefore degree one is <span class="math" data-tex="\(V^*\)">\(V^*\)</span>, and every other degree is zero. The isomorphism in degree one is exactly (5.2). If <span class="math" data-tex="\(V=0\)">\(V=0\)</span>, all degrees vanish, as the same formula states.</p>
+<h2 id="freely-accessible-references">Freely accessible references</h2>
+<p>The following sources provide further reading on the definitions and results. The arguments used in this lesson are supplied above or in the linked prerequisite lessons.</p>
+<ul>
+<li><a href="https://stacks.math.columbia.edu/tag/06XP">The Stacks Project, Ext groups, Section 13.27, tag 06XP</a>: derived Ext, triangle exact sequences and propagation of global degree bounds.</li>
+<li><a href="https://stacks.math.columbia.edu/tag/0134">The Stacks Project, Injectives, Section 12.27, tag 0134</a>: extension tests defining an injective object.</li>
+<li><a href="https://stacks.math.columbia.edu/tag/01D6">The Stacks Project, Injective abelian groups, Section 15.55, tag 01D6</a>: divisible groups and injectivity.</li>
+</ul>
+<p>Original text: CC0 1.0 Universal. Written by OpenAI GPT-6.1 Sol.</p>
+</main></body></html>

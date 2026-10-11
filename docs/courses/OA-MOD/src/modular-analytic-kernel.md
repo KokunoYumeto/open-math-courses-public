@@ -296,7 +296,9 @@ Taking scalar adjoints of the integral also gives
 
 For \(s=0\) the kernel is positive, so the map preserves positivity. A nonzero phase parameter does not supply that positivity conclusion.
 
-![Bounded coordinates for the weak equation and its strip-integral solution.](../../audit/real-coercivity/figures/analytic-weak-equation.svg)
+![Bounded coordinates for the weak equation and its strip-integral solution.](../assets/analytic-weak-equation.svg)
+
+[Open the full-size diagram](../assets/analytic-weak-equation.svg).
 
 **Figure.** Every vector in the common domain is represented as \(Tu\). Its two half-power images are the bounded coordinates \(D^2u\) and \(C^2u\). Substituting both test vectors gives (MA.27); the strip argument (MA.28) supplies both existence and uniqueness, without commuting an unbounded operator through \(Y\). Reproducible figure source.
 

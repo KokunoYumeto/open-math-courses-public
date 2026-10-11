@@ -1,6 +1,6 @@
 # Haar coordinates and integration after recognition
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0 1.0; font components retain their accompanying terms.*
+*Original exposition and illustration sources: CC0 1.0; font components retain their accompanying terms.*
 
 Recognizing a crossed product also identifies the measure class of its eigenunitaries. Their spectral algebra has a normal Haar coordinate, and the action has a canonical operator-valued average. We construct both maps, retain their complete domains and infinite values, and compute the average of every bounded positive spectral function.
 

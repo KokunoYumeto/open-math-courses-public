@@ -5,7 +5,7 @@
 
 The key object in this proof is an operator on the existing Hilbert space. If an automorphism fixes the inner products of a spectral fiber, it gives an isometry on the span of that fiber's ranges. Full aggregate support makes the isometry unitary; homogeneity makes it scalar. Fourier density then recovers the automorphism on the whole algebra.
 
-*Independent local proof written by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. New expression and illustration are dedicated under CC0-1.0 to the extent of rights held. Spot-checked by GPT-6.1 Sol in a separate session.*
+*New expression and illustration are dedicated under CC0-1.0 to the extent of rights held.*
 
 Let \(G\) be a compact Hausdorff abelian group, and let \(\alpha\) be a point-ultraweakly continuous action on a nonzero von Neumann algebra \(M\). Automorphisms in this lesson are normal. Define
 

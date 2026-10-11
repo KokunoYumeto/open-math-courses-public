@@ -1,6 +1,6 @@
 # Hilbert fibers and the represented core
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 A left operator and a right operator can act on the same vector without a preferred weight. The difficulty is keeping that statement true when vectors and operators have degrees, and when a weight changes the coordinates. We construct the vector spaces from unitary coordinate changes, characterize their left and right operators by an exact commutation test, and then integrate these operators. This produces the core on a Hilbert space together with its entire commutant.
 

@@ -4,7 +4,7 @@
 
 Normal semifinite weights can have different supports, so comparison cannot be phrased only with unitary cocycles. This lesson keeps the support projections visible. It proves the partial-isometry cocycle formula, converts comparison of weights into comparison of projections in a balanced centralizer, proves the resulting Cantor–Bernstein theorem, characterizes strict semifiniteness, and records the two transport mechanisms needed later: lacunary centralizers and faithful conditional expectations.
 
-The mathematical antecedents are Takesaki, *Theory of Operator Algebras II*, Chapter XII, §4, the opening convention, Definition 4.1, Proposition 4.2, Lemma 4.3, Definition 4.6, Lemma 4.7(i), Lemma 4.9, Lemma 4.13, and footnote 6. The arguments below are independently written and use the course's support, spatial derivative, centralizer, density, and modular-expectation results. The type-dependent input in the application after WC-07 remains an explicit OA-FLOW prerequisite.
+The mathematical antecedents are Takesaki, *Theory of Operator Algebras II*, Chapter XII, §4, the opening convention, Definition 4.1, Proposition 4.2, Lemma 4.3, Definition 4.6, Lemma 4.7(i), Lemma 4.9, Lemma 4.13, and footnote 6. The arguments below are independently written and use the course's support, spatial derivative, centralizer, density, and modular-expectation results. The type-dependent input to the application in WC-07 is proved in CAM-07, using the exact earlier OA-FLOW continuous-core spectrum theorem.
 
 ## Support corners, cuts, and the comparison relation
 
@@ -114,7 +114,9 @@ Let \(\varphi_1,\varphi_2\) be normal semifinite weights, let \(\psi\) be normal
 \]
 
 The centralizer \(P_\Phi\) is understood in the support corner
-\((p_1\otimes e_{11}+p_2\otimes e_{22})P(p_1\otimes e_{11}+p_2\otimes e_{22})\).
+\[
+ (p_1\otimes e_{11}+p_2\otimes e_{22})P(p_1\otimes e_{11}+p_2\otimes e_{22}).
+\]
 
 Let \(w\in M\) be a partial isometry with
 
@@ -134,7 +136,7 @@ Define \((\varphi_1)_w(x)=\varphi_1(wxw^*)\). The following conditions are equiv
 
    \[
    \begin{aligned}
-   [D\varphi_2:D\psi]_t
+   {}[D\varphi_2:D\psi]_t
    &=w^*[D\varphi_1:D\psi]_t\\
    &\qquad{}\cdot\sigma_t^\psi(w).
    \end{aligned}
@@ -329,7 +331,7 @@ Let \(\omega\in M_*^+\) be faithful. For a compact interval \(K\subset\mathbb R\
  \tag{WC.28}
 \]
 
-**Spectral inputs.** Use the positive Fourier convention \(f(s)=\int k(t)e^{its}\,dt\) and \(\alpha_f y=\int k(t)\alpha_t(y)\,dt\), with \(\alpha=\sigma^\omega\). The exact action-spectral inputs are the filter law, weak-star approximation, local cutoffs and closed-space criterion in OA-FLOW lesson 17, equations S4–S6, S9 and S13–S16; lesson 78, compact cutoff L3 and localization sandwich L6; and lesson 84, adjoint reflection A4 and product-frequency inclusion A9–A10. General action spectral calculus is treated in OA-FLOW, not here. The Hilbert-space measure and modular domains below use SK04–07, TC07–08 and TC10, the finite-domain involution, and the GNS modular implementation.
+**Spectral inputs.** Use the positive Fourier convention \(f(s)=\int k(t)e^{its}\,dt\) and \(\alpha_f y=\int k(t)\alpha_t(y)\,dt\), with \(\alpha=\sigma^\omega\). The required real-action proofs are RSF-01, normal filters and weak-star approximation; RSF-02, the hull spectrum, closed-space criterion and compact/open localization; and RSF-03, adjoint reflection and product-frequency inclusion for arbitrary von Neumann algebras. RSF-04 proves the narrow-band spanning statement used below. These real-line proofs use the Fourier-algebra foundation of UW-03; the broader group-action calculus remains in OA-FLOW. The Hilbert-space measure and modular domains below use SK04–07, TC07–08 and TC10, the finite-domain involution, and the GNS modular implementation.
 
 We use the following localized spanning fact. If \(C\subseteq M\) is a sigma-weakly closed subspace invariant under \(\sigma^\omega\), then, as \(a\in\mathbb R\) and \(\varepsilon>0\) vary, \(C\) is the sigma-weak closed span of
 
@@ -338,7 +340,7 @@ We use the following localized spanning fact. If \(C\subseteq M\) is a sigma-wea
  \tag{WC.29}
 \]
 
-Indeed, every filter preserves \(C\): normal functionals vanishing on \(C\) annihilate its orbit integral. S9 approximates an element weak-star by its filtered orbit; the norm density of compactly supported Fourier functions and the filter bound S5 permit compact Fourier support. Cover that support by finitely many intervals of the prescribed radius. The local cutoffs of lesson 17 give functions \(c_j\) supported in those intervals and equal to one on smaller neighborhoods covering the compact set. The finite assembly \(q_1=c_1\), \(q_j=c_j\prod_{l<j}(1-c_l)\) has sum one on the support. Expanding the products keeps every \(q_j\) in the Fourier algebra even though its constant unit need not belong to that algebra. Thus \(f=\sum_jfq_j\), and S16 puts each filtered term in the required band. These are weak-star limits; no norm continuity of an arbitrary operator orbit or Hilbert-space separability is assumed. L3 fixes a vector with compact spectrum, and L6 supplies the corresponding passage between closed spectral spaces and open localization.
+Indeed, every filter preserves \(C\): normal functionals vanishing on \(C\) annihilate its orbit integral. (RSF.6) approximates an element weak-star by its filtered orbit; the norm density of compactly supported Fourier functions and the filter bound (RSF.5) permit compact Fourier support. Cover that support by finitely many intervals of the prescribed radius. The smooth local cutoffs in RSF-01 give functions \(c_j\) supported in those intervals and equal to one on smaller neighborhoods covering the compact set. The finite assembly \(q_1=c_1\), \(q_j=c_j\prod_{l<j}(1-c_l)\) has sum one on the support. Expanding the products keeps every \(q_j\) in the Fourier algebra even though its constant unit need not belong to that algebra. Thus \(f=\sum_jfq_j\), and (RSF.8) puts each filtered term in the required band. These are weak-star limits; no norm continuity of an arbitrary operator orbit or Hilbert-space separability is assumed. (RSF.10) fixes a vector with compact spectrum, and (RSF.12) supplies the corresponding passage between closed spectral spaces and open localization.
 
 Let \(A\) be maximal abelian in \(M_\omega\), and put \(C=A'\cap M\). Since \(A\) is fixed pointwise, \(C\) is invariant. Take
 
@@ -346,7 +348,7 @@ Let \(A\) be maximal abelian in \(M_\omega\), and put \(C=A'\cap M\). Since \(A\
  x\in C\cap M^\omega([a-\delta/2,a+\delta/2]).
  \]
 
-By A4 and A10, both \(x^*x\) and \(xx^*\) have spectrum in \([ -\delta,\delta]\), hence belong to \(C\cap M_\omega=A\). Their support projections \(p=s(x^*x)\) and \(q=s(xx^*)\) also belong to \(A\). Since \(x\in A'\), the identities \(xp=x\) and \(qx=x\) imply \(px=x\) and \(xq=x\). The first implies \(q\leq p\), and the second implies \(p\leq q\), so \(p=q\). In the polar decomposition \(x=v|x|\), the partial isometry lies in the von Neumann algebra \(C\), is unitary on \(pH\), and commutes with \(|x|\in A\). It follows that \(xx^*=x^*x\): \(x\) is normal.
+By (RSF.14) and (RSF.15), both \(x^*x\) and \(xx^*\) have spectrum in \([ -\delta,\delta]\), hence belong to \(C\cap M_\omega=A\). Their support projections \(p=s(x^*x)\) and \(q=s(xx^*)\) also belong to \(A\). Since \(x\in A'\), the identities \(xp=x\) and \(qx=x\) imply \(px=x\) and \(xq=x\). The first implies \(q\leq p\), and the second implies \(p\leq q\), so \(p=q\). In the polar decomposition \(x=v|x|\), the partial isometry lies in the von Neumann algebra \(C\), is unitary on \(pH\), and commutes with \(|x|\in A\). It follows that \(xx^*=x^*x\): \(x\) is normal.
 
 We justify the spectral measure and its imaginary-time moment directly. Since \(\omega\) is bounded, its GNS map is defined on all of \(M\) and has \(\|\Lambda_\omega(y)\|\leq\omega(1)^{1/2}\|y\|\), by WG006. Put \(\xi=\Lambda_\omega(x)\), \(B=\log\Delta_\omega\) and \(U_t=e^{itB}=\Delta_\omega^{it}\). SK07 gives the actual self-adjoint logarithm, and MF06 gives \(U_t\Lambda_\omega(y)=\Lambda_\omega(\alpha_t(y))\). For every Fourier filter,
 
@@ -367,7 +369,7 @@ Let \(E_B\) be the spectral resolution of \(B\), and put \(K=[a-\delta/2,a+\delt
  \tag{WC.44}
 \]
 
-are defined for Borel \(D\subseteq\mathbb R\). The measure \(\mu_x\) is supported in \(K\). In fact, for each compact set \(L\subseteq\mathbb R\setminus K\), choose a Fourier cutoff \(c\) equal to one near \(L\) and supported off \(K\). S14 gives \(\alpha_c x=0\), and (WC.43) gives \(c(B)\xi=0\). SK04–05 imply \(\mu_x(L)=0\). The compact sets \(\{s:|s|\leq n,\ d(s,K)\geq1/n\}\) cover the complement, so it has zero measure. This countability concerns the scalar real line, not the Hilbert space. Consequently \(\nu_x\) is supported in \(-K\).
+are defined for Borel \(D\subseteq\mathbb R\). The measure \(\mu_x\) is supported in \(K\). In fact, for each compact set \(L\subseteq\mathbb R\setminus K\), choose a Fourier cutoff \(c\) equal to one near \(L\) and supported off \(K\). The closed-space criterion (RSF.9) gives \(\alpha_c x=0\), and (WC.43) gives \(c(B)\xi=0\). SK04–05 imply \(\mu_x(L)=0\). The compact sets \(\{s:|s|\leq n,\ d(s,K)\geq1/n\}\) cover the complement, so it has zero measure. This countability concerns the scalar real line, not the Hilbert space. Consequently \(\nu_x\) is supported in \(-K\).
 
 The entire function
 
@@ -417,10 +419,9 @@ The representing positive measure \(\nu_x\) is supported in \([ -a-\delta/2,-a+\
  \tag{WC.31}
 \]
 
-Normality of \(x\) gives \(F(i)=F(0)\). Since the scalar factor in (WC.31) exceeds one, faithfulness forces \(x=0\). Applying the same argument to \(x^*\), with A4, removes intervals centered below \(-\delta\).
+Normality of \(x\) gives \(F(i)=F(0)\). Since the scalar factor in (WC.31) exceeds one, faithfulness forces \(x=0\). Applying the same argument to \(x^*\), with (RSF.14), removes intervals centered below \(-\delta\).
 
-To pass from bands to all of \(C\), take any compactly supported Fourier function \(f\) whose support misses \([ -\delta,\delta]\). Cover its compact support by intervals of radius \(\delta/2\) centered at points with \(|a|>\delta\), and use the finite assembly above. Every corresponding filtered term belongs to \(C\), lies in one of the bands just shown to vanish, and is therefore zero. Hence \(\alpha_f y=0\) for every \(y\in C\). The exact closed-space criterion S14 now gives \(C\subseteq M^\omega([ -\delta,\delta])=M_\omega\). This argument avoids enlarging the final spectral set when taking a closed span of bands. Hence
-
+To pass from bands to all of \(C\), take any compactly supported Fourier function \(f\) whose support misses \([ -\delta,\delta]\). Cover its compact support by intervals of radius \(\delta/2\) centered at points with \(|a|>\delta\), and use the finite assembly above. Every corresponding filtered term belongs to \(C\), lies in one of the bands just shown to vanish, and is therefore zero. Hence \(\alpha_f y=0\) for every \(y\in C\). The exact closed-space criterion (RSF.9) now gives \(C\subseteq M^\omega([ -\delta,\delta])=M_\omega\). This argument avoids enlarging the final spectral set when taking a closed span of bands. Hence
 \[
  A'\cap M=A'\cap M_\omega=A.
  \tag{WC.32}
@@ -464,7 +465,7 @@ Conversely put \(u_t=[D\psi:D\varphi]_t\). If \(x\in M_\varphi\), then condition
 
 Thus \(u_t\in M_\varphi'\cap M=\mathcal Z(M_\varphi)\). In particular \(\sigma_s^\varphi(u_t)=u_t\), so the cocycle law becomes the ordinary group law \(u_{s+t}=u_su_t\). The strongly continuous group has the form \(u_t=h^{it}\) for a unique positive nonsingular self-adjoint \(h\) affiliated with \(\mathcal Z(M_\varphi)\). The fixed-density theorem gives (WC.35).
 
-For a separable factor of type \(\mathrm{III}_\lambda\), \(0\leq\lambda<1\), and a faithful strictly semifinite \(\varphi\), the type-dependent centralizer-MASA theorem supplies (WC.34). Under that explicit prerequisite, (WC.35) is exactly the centralizer-inclusion criterion for faithful strictly semifinite weights. Construction of that MASA in the type \(\mathrm{III}_0\) case uses flow and spectral invariants owned by OA-FLOW; it is not inferred here from strict semifiniteness alone.
+For a factor with separable predual of type \(\mathrm{III}_\lambda\), \(0\leq\lambda<1\), and a faithful strictly semifinite \(\varphi\), CAM-07 constructs an ambient maximal abelian algebra inside \(M_\varphi\) and proves (WC.34). Thus (WC.35) is the centralizer-inclusion criterion for faithful strictly semifinite weights in this setting. The construction supplies the bounded-functional inner-period argument, the annular-gap perturbation, and the finite centralizer-corner assembly. Its exact type-theoretic input is the earlier continuous-core spectrum theorem, with the center-flow convention and all-weight equality kept explicit.
 
 ## Faithful expectations preserve support, comparison, and orthogonal sums
 

@@ -84,7 +84,7 @@ C_f=Y\times_XT^*X,
 
 For \(\Lambda=\operatorname{SS}(G)\), put \(A=f_d^{-1}\Lambda\). It is closed complex analytic. Over a compact cotangent set \(K\subset T^*X\), every point of \(A\) has \(y\) in the compact set \(\operatorname{supp}(G)\cap f^{-1}(\pi K)\); even a zero transpose covector has this support condition. The preimage of \(K\) is a closed subset of the corresponding compact product with \(K\). Thus \(f_\pi|_A\) is proper. This is the full cotangent compactness check, including points at which \(df\) has a kernel.
 
-[Demailly’s account of Remmert’s theorem](https://people.math.harvard.edu/~demarco/Math274/Demailly_ComplexAnalyticDiffGeom.pdf#page=118) gives the human source. The [proper-image theorem proved in Weierstrass parametrization and connected regular loci](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-03/src/weierstrass-parametrization-and-connected-regular-loci.md#proper-holomorphic-images) applies to this restricted map and makes
+[Demailly’s account of Remmert’s theorem](https://people.math.harvard.edu/~demarco/Math274/Demailly_ComplexAnalyticDiffGeom.pdf#page=118) gives the human source. The proper-image theorem proved in Weierstrass parametrization and connected regular loci applies to this restricted map and makes
 
 \[
 B=f_\pi f_d^{-1}\Lambda
@@ -99,7 +99,7 @@ closed complex analytic. Both maps commute with complex cotangent dilation. The 
 \tag{8}
 \]
 
-Under the same support properness \(Rf_!G\simeq Rf_*G\), so the same conclusion holds for that functor. A larger cotangent bound with extra base points could violate the properness check and must not be substituted for the actual microsupport in this proof. Holomorphicity by itself does not permit unrestricted nonproper direct image.
+Under the same support properness \(Rf_!G\simeq Rf_*G\), so the same conclusion holds for that functor. The [closed-support comparison (1a)](perfect-coefficients-on-compact-fibres.md#proper-support-and-the-comparison-of-the-two-images) identifies this isomorphism with the canonical support-forgetting map, using the closed coefficient support and the ordinary and proper derived composition maps. A larger cotangent bound with extra base points could violate the properness check and must not be substituted for the actual microsupport in this proof. Holomorphicity by itself does not permit unrestricted nonproper direct image.
 
 ## Tensor and Hom use full complex limiting sums
 
@@ -179,7 +179,30 @@ The Fourier cotangent map is
 \tag{14}
 \]
 
-The formula is holomorphic. Its intrinsic base map is restriction to the vertical cotangent followed by projection to \(E^*\). The canonical-form identity determines the remaining covector coordinates uniquely in every holomorphic frame, so the formulas agree when the frame changes; no horizontal splitting was chosen. Taking real parts identifies this map with the real Fourier cotangent map. Taking exterior derivatives makes it symplectic.
+The formula is holomorphic. Its intrinsic base map is restriction to the vertical cotangent followed by projection to \(E^*\).
+
+Here is the frame-change calculation, including its base covector. Keep the base coordinates fixed and write the change of fibre frame as \(v'=A(z)v\), with \(A(z)\) holomorphic and invertible. All fibre vectors and fibre covectors are columns; a superscript \(t\) denotes transpose, not conjugate transpose. Equality of the canonical one-forms gives
+
+\[
+\begin{aligned}
+v'&=Av,\qquad \eta'=A^{-t}\eta,\\
+\zeta'&=\zeta-(\eta')^t(dA)v.
+\end{aligned}
+\tag{14a}
+\]
+
+The last term is a one-form on the base: each entry of \(dA\) is such a one-form. Indeed, expanding \((\eta')^t d(Av)\) gives \(\eta^t dv+(\eta')^t(dA)v\), so precisely that extra base term must be subtracted. On the dual bundle the fibre change is \(w'=A^{-t}w\). For the proposed Fourier image, \(w=\eta\) and its fibre covector is \(-v\), so the new fibre covector is \(-Av\). Differentiating the inverse-transpose identity gives \(d(A^{-t})=-A^{-t}(dA)^tA^{-t}\); hence its base covector transforms to
+
+\[
+\begin{aligned}
+\beta'&=\zeta-(-Av)^t d(A^{-t})\eta\\
+&=\zeta-(A^{-t}\eta)^t(dA)v\\
+&=\zeta'.
+\end{aligned}
+\tag{14b}
+\]
+
+Thus transforming the source frame and then applying (14) gives the same target point \((z,\eta';\zeta',-v')\) as applying (14) first and then transforming the target frame. A change of base coordinates pulls back each base one-form in these identities and preserves the equality. This proves that the local formulas define one global holomorphic map without a horizontal splitting. Taking real parts of the canonical-form identity identifies it with the real Fourier cotangent map; taking exterior derivatives proves that it is symplectic.
 
 Direct substitution gives the identities for complex parameters
 

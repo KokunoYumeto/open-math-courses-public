@@ -1,0 +1,2609 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Original profile residuals, coordinates and network error bounds — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/original-profile-residuals-coordinates-and-network-error-bounds.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-46.html">Previous lesson</a><a href="NS-FLUID-48.html">Next lesson</a></nav><article class="lesson"><h1 id="original-profile-residuals-coordinates-and-network-error-bounds">Original profile residuals, coordinates and network error bounds</h1>
+<p>A numerical profile gives predicted fields and their equation errors.
+To use those errors, we need exact maps back to the original temperature,
+pressure, velocity, domain and derivatives. This lesson constructs those
+maps and then proves continuous error bounds for a specified finite network.</p>
+<p>Part 1 retains all six original residuals, both curl signs, both integration
+constants and the exceptional exponent. Part 2 carries the entire system
+through the sinh coordinates, keeping its metric, Jacobian, gradient factors
+and sampling measures. Part 3 proves what finite observations can and cannot
+determine, then calculates explicit derivatives of every network layer and
+uses the actual grid to bound the errors between samples.</p>
+<p>Five solved exercises test the maps on complete fields. They include the
+original physical pressure and time, two incompatible predictions, exact
+measure comparisons, and an explicitly specified six-layer network. The
+last exercise derives every pure second derivative of all six residuals
+and proves a stronger grid estimate with both coordinate contributions.</p>
+<p>The human source is Wang, Lai, Gómez-Serrano and Buckmaster; the original
+author-source files and passage locators are identified in each part.
+These calculations are tools for the remaining profile and stability
+arguments. They do not certify missing trained parameters or a source
+blowup theorem.</p>
+<h2 id="part-1-the-original-six-profile-residuals-and-complete-temperature-and-pressure-reconstruction">Part 1. The original six profile residuals and complete temperature and pressure reconstruction</h2>
+<p>This editorial derivation compares the original author sources of Yongji Wang,
+Ching-Yao Lai, Javier Gómez-Serrano and Tristan Buckmaster,
+<a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>:
+<code>BoussinesqPRL_v5.tex</code>, lines 106–139 and 169–203, and
+<code>BoussinesqSupp_v5.tex</code>, lines 180–259. The intact source archive and
+file hashes are recorded in the private source-use ledger. The main text
+uses positive oriented curl; the included supplement writes negative curl.
+Both print the same numerical origin condition. The exact change of sign
+below changes that condition too. No convention used by unavailable trained
+weights is inferred here.</p>
+<p>The original physical/profile dictionary, including the dynamic clock,
+pressure and both original cylindrical domains, is proved in
+<span class="unlinked">lesson 46, CP1–CP20 and DR1–DR42</span>.
+That link is in the existing private course repository. This note proves the
+full stationary residual map on the original upper half-plane. It does not
+construct or certify the numerical profile or its nonlinear stability.</p>
+<p><img src="assets/NS-FLUID-47/profile-residual-reconstruction-1F8B415CA3B9423503BC145FA45CBCABECF0CC1D8B5A8777A9A8C4829CAC06AC.png" alt="Finite paths, nested integration and the complete residual map" class="course-figure" width="2700" height="1332" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="profile-residual-reconstruction" data-asset-sha256="1F8B415CA3B9423503BC145FA45CBCABECF0CC1D8B5A8777A9A8C4829CAC06AC"></p>
+<p>The diagram shows the actual horizontal and vertical paths of RQ4 and
+RQ12, with the illustrative rectangle <span class="math" data-tex="\(A=2\)">\(A=2\)</span>, <span class="math" data-tex="\(B_0=1.5\)">\(B_0=1.5\)</span> and
+point <span class="math" data-tex="\(y=(1.2,1.0)\)">\(y=(1.2,1.0)\)</span>. The triangle is the exact integration region
+<span class="math" data-tex="\(0\le t\le s\le y_2\)">\(0\le t\le s\le y_2\)</span>, whose area gives the retained factor
+<span class="math" data-tex="\(y_2^2/2\)">\(y_2^2/2\)</span> in RQ18–RQ19. It depicts the proved maps, not a
+computed profile. Its reproducible Python and SVG sources accompany it.</p>
+<h2 id="rq1-both-original-signs-and-all-six-errors">RQ1. Both original signs and all six errors</h2>
+<p>Let <span class="math" data-tex="\(H=\{(y_1,y_2):y_2\geq0\}\)">\(H=\{(y_1,y_2):y_2\geq0\}\)</span>, and fix the original exponent
+<span class="math" data-tex="\(\lambda&gt;-1\)">\(\lambda&gt;-1\)</span>. Write <span class="math" data-tex="\(\partial_i=\partial_{y_i}\)">\(\partial_i=\partial_{y_i}\)</span>.
+Take smooth real functions <span class="math" data-tex="\(U_1,U_2,\Omega,\Phi,\Psi\)">\(U_1,U_2,\Omega,\Phi,\Psi\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>,
+smooth to its boundary. Let <span class="math" data-tex="\(\varepsilon\in\{1,-1\}\)">\(\varepsilon\in\{1,-1\}\)</span> indicate
+the original sign: <span class="math" data-tex="\(+1\)">\(+1\)</span> for the main text and <span class="math" data-tex="\(-1\)">\(-1\)</span> for the
+included supplement. Put</p>
+<span class="math math-display" data-tex="\[
+V=(1+\lambda)y+U,\qquad
+\omega=\partial_1U_2-\partial_2U_1,
+\tag{RQ1}
+\]">\[
+V=(1+\lambda)y+U,\qquad
+\omega=\partial_1U_2-\partial_2U_1,
+\tag{RQ1}
+\]</span>
+<p>and retain the six residuals</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_1&amp;=\Omega+V\cdot\nabla\Omega-\Phi,\\
+f_2&amp;=(2+\partial_1U_1)\Phi+V\cdot\nabla\Phi
++(\partial_1U_2)\Psi,\\
+f_3&amp;=(2+\partial_2U_2)\Psi+V\cdot\nabla\Psi
++(\partial_2U_1)\Phi,\\
+f_4&amp;=\partial_1U_1+\partial_2U_2,\\
+f_5&amp;=\Omega-\varepsilon(\partial_1U_2-\partial_2U_1),\\
+f_6&amp;=\partial_2\Phi-\partial_1\Psi.
+\end{aligned}
+\tag{RQ2}
+\]">\[
+\begin{aligned}
+f_1&amp;=\Omega+V\cdot\nabla\Omega-\Phi,\\
+f_2&amp;=(2+\partial_1U_1)\Phi+V\cdot\nabla\Phi
++(\partial_1U_2)\Psi,\\
+f_3&amp;=(2+\partial_2U_2)\Psi+V\cdot\nabla\Psi
++(\partial_2U_1)\Phi,\\
+f_4&amp;=\partial_1U_1+\partial_2U_2,\\
+f_5&amp;=\Omega-\varepsilon(\partial_1U_2-\partial_2U_1),\\
+f_6&amp;=\partial_2\Phi-\partial_1\Psi.
+\end{aligned}
+\tag{RQ2}
+\]</span>
+<p>No residual in this definition is assumed zero. The supplement's six
+equations are exactly the case <span class="math" data-tex="\(\varepsilon=-1\)">\(\varepsilon=-1\)</span>, before changing
+spatial coordinates. The fields <span class="math" data-tex="\(\Phi,\Psi\)">\(\Phi,\Psi\)</span> are initially independent
+data; their being a temperature gradient is a conclusion only when its
+precise compatibility condition holds.</p>
+<p>The corresponding complete stationary physical-profile equations, including
+the original force sign and pressure, have errors</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M&amp;=-\lambda U+V\cdot\nabla U+\nabla P
+-\varepsilon\Theta e_2,\\
+T&amp;=(1-\lambda)\Theta+V\cdot\nabla\Theta,
+\qquad D=\operatorname{div}U.
+\end{aligned}
+\tag{RQ3}
+\]">\[
+\begin{aligned}
+M&amp;=-\lambda U+V\cdot\nabla U+\nabla P
+-\varepsilon\Theta e_2,\\
+T&amp;=(1-\lambda)\Theta+V\cdot\nabla\Theta,
+\qquad D=\operatorname{div}U.
+\end{aligned}
+\tag{RQ3}
+\]</span>
+<p>Thus the main source force is <span class="math" data-tex="\((0,\Theta)\)">\((0,\Theta)\)</span>; the negative-curl
+presentation with the unchanged right side <span class="math" data-tex="\(f_1\)">\(f_1\)</span> requires force
+<span class="math" data-tex="\((0,-\Theta)\)">\((0,-\Theta)\)</span>. This follows from the curl calculation below, not
+from a change in the name of the temperature.</p>
+<h2 id="rq2-reconstruct-the-scalar-and-retain-its-compatibility-error">RQ2. Reconstruct the scalar and retain its compatibility error</h2>
+<p>For a real constant <span class="math" data-tex="\(C\)">\(C\)</span>, define the actual finite-path integrals</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(y_1,y_2)&amp;=\int_0^{y_2} f_6(y_1,s)\,ds,\\
+\Theta_C(y_1,y_2)&amp;=C+\int_0^{y_1}\Phi(s,0)\,ds
++\int_0^{y_2}\Psi(y_1,s)\,ds.
+\end{aligned}
+\tag{RQ4}
+\]">\[
+\begin{aligned}
+I(y_1,y_2)&amp;=\int_0^{y_2} f_6(y_1,s)\,ds,\\
+\Theta_C(y_1,y_2)&amp;=C+\int_0^{y_1}\Phi(s,0)\,ds
++\int_0^{y_2}\Psi(y_1,s)\,ds.
+\end{aligned}
+\tag{RQ4}
+\]</span>
+<p>The horizontal integral is oriented when <span class="math" data-tex="\(y_1&lt;0\)">\(y_1&lt;0\)</span>. All these
+integrals are on finite compact segments, so no condition at infinity is
+needed. Differentiation and the fundamental theorem of calculus give</p>
+<span class="math math-display" data-tex="\[
+\partial_2\Theta_C=\Psi,\qquad
+\partial_1\Theta_C=\Phi-I,\qquad
+\partial_2 I=f_6.
+\tag{RQ5}
+\]">\[
+\partial_2\Theta_C=\Psi,\qquad
+\partial_1\Theta_C=\Phi-I,\qquad
+\partial_2 I=f_6.
+\tag{RQ5}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\partial_1\Psi=\partial_2\Phi-f_6\)">\(\partial_1\Psi=\partial_2\Phi-f_6\)</span>; its integral from
+zero to <span class="math" data-tex="\(y_2\)">\(y_2\)</span> is <span class="math" data-tex="\(\Phi(y_1,y_2)-\Phi(y_1,0)-I\)">\(\Phi(y_1,y_2)-\Phi(y_1,0)-I\)</span>, giving
+the second identity. Therefore <span class="math" data-tex="\(f_6=0\)">\(f_6=0\)</span> gives the prescribed
+gradient everywhere. Conversely any smooth scalar with gradient
+<span class="math" data-tex="\((\Phi,\Psi)\)">\((\Phi,\Psi)\)</span> has <span class="math" data-tex="\(f_6=0\)">\(f_6=0\)</span> by equality of mixed derivatives.
+Any two such scalars differ by a constant: integrate their zero gradient
+on the same two segments. Thus (RQ4) proves both existence and the complete
+constant freedom for the compatible data, without an unproved global
+integration step.</p>
+<p>Compute <span class="math" data-tex="\(T\)">\(T\)</span> in (RQ3) using <span class="math" data-tex="\(\Theta_C\)">\(\Theta_C\)</span>. Differentiating a
+scalar along <span class="math" data-tex="\(V\)">\(V\)</span> adds its full derivative
+<span class="math" data-tex="\(\partial_iV_j=(1+\lambda)\delta_{ij}+\partial_iU_j\)">\(\partial_iV_j=(1+\lambda)\delta_{ij}+\partial_iU_j\)</span>.
+The two terms <span class="math" data-tex="\(1-\lambda\)">\(1-\lambda\)</span> and <span class="math" data-tex="\(1+\lambda\)">\(1+\lambda\)</span> sum to two.
+Using (RQ5) in each component gives the exact identities</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_1T&amp;=f_2-(2+\partial_1U_1)I-V\cdot\nabla I,\\
+\partial_2T&amp;=f_3-(\partial_2U_1)I,\\
+T(0,0)&amp;=(1-\lambda)C+U_1(0,0)\Phi(0,0)
++U_2(0,0)\Psi(0,0).
+\end{aligned}
+\tag{RQ6}
+\]">\[
+\begin{aligned}
+\partial_1T&amp;=f_2-(2+\partial_1U_1)I-V\cdot\nabla I,\\
+\partial_2T&amp;=f_3-(\partial_2U_1)I,\\
+T(0,0)&amp;=(1-\lambda)C+U_1(0,0)\Phi(0,0)
++U_2(0,0)\Psi(0,0).
+\end{aligned}
+\tag{RQ6}
+\]</span>
+<p>For example, the first differentiated equation is</p>
+<span class="math math-display" data-tex="\[
+(2+\partial_1U_1)(\Phi-I)+(\partial_1U_2)\Psi
++V\cdot\nabla(\Phi-I)
+\]">\[
+(2+\partial_1U_1)(\Phi-I)+(\partial_1U_2)\Psi
++V\cdot\nabla(\Phi-I)
+\]</span>
+<p>which is exactly the first line. The second is</p>
+<span class="math math-display" data-tex="\[
+(2+\partial_2U_2)\Psi+(\partial_2U_1)(\Phi-I)
++V\cdot\nabla\Psi
+\]">\[
+(2+\partial_2U_2)\Psi+(\partial_2U_1)(\Phi-I)
++V\cdot\nabla\Psi
+\]</span>
+<p>as in the second line.
+These calculations retain the effect of incompatible gradient data.</p>
+<p>Integration of the actual derivatives in (RQ6) gives a particularly direct
+scalar error formula:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T(y_1,y_2)=T(0,0)
+&amp;+\int_0^{y_1}
+[f_2-(2+\partial_1U_1)I-V\cdot\nabla I](s,0)\,ds\\
+&amp;+\int_0^{y_2}
+[f_3-(\partial_2U_1)I](y_1,s)\,ds.
+\end{aligned}
+\tag{RQ7}
+\]">\[
+\begin{aligned}
+T(y_1,y_2)=T(0,0)
+&amp;+\int_0^{y_1}
+[f_2-(2+\partial_1U_1)I-V\cdot\nabla I](s,0)\,ds\\
+&amp;+\int_0^{y_2}
+[f_3-(\partial_2U_1)I](y_1,s)\,ds.
+\end{aligned}
+\tag{RQ7}
+\]</span>
+<p>There is no choice of contour hidden in this expression: it is the stated
+horizontal segment followed by the stated vertical segment. In particular,
+when the wall value <span class="math" data-tex="\(U_2(y_1,0)=0\)">\(U_2(y_1,0)=0\)</span> holds, both <span class="math" data-tex="\(I\)">\(I\)</span> and
+<span class="math" data-tex="\(\partial_1I\)">\(\partial_1I\)</span> vanish on that wall, while
+<span class="math" data-tex="\(V_2(y_1,0)=0\)">\(V_2(y_1,0)=0\)</span>. The first integrand in (RQ7) then reduces
+exactly to <span class="math" data-tex="\(f_2(s,0)\)">\(f_2(s,0)\)</span>, even if <span class="math" data-tex="\(f_6\ne0\)">\(f_6\ne0\)</span>.</p>
+<h2 id="rq3-reconstruct-the-full-pressure-and-its-vector-error">RQ3. Reconstruct the full pressure and its vector error</h2>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+K=\lambda U-V\cdot\nabla U+\varepsilon\Theta_C e_2,
+\qquad
+B=f_1-f_5-V\cdot\nabla f_5+f_4(\Omega-f_5)+I.
+\tag{RQ8}
+\]">\[
+K=\lambda U-V\cdot\nabla U+\varepsilon\Theta_C e_2,
+\qquad
+B=f_1-f_5-V\cdot\nabla f_5+f_4(\Omega-f_5)+I.
+\tag{RQ8}
+\]</span>
+<p>We now prove, with no residual set to zero,</p>
+<span class="math math-display" data-tex="\[
+\partial_1K_2-\partial_2K_1=-\varepsilon B.
+\tag{RQ9}
+\]">\[
+\partial_1K_2-\partial_2K_1=-\varepsilon B.
+\tag{RQ9}
+\]</span>
+<p>Expand the curl of the advective term. Its terms containing second
+derivatives of <span class="math" data-tex="\(U\)">\(U\)</span> are <span class="math" data-tex="\(V\cdot\nabla\omega\)">\(V\cdot\nabla\omega\)</span>. The remaining
+first-derivative products are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(\partial_1V_1)\partial_1U_2
++(\partial_1V_2)\partial_2U_2
+-(\partial_2V_1)\partial_1U_1
+-(\partial_2V_2)\partial_2U_1\\
+&amp;\hspace{2em}=(1+\lambda)\omega
++(\partial_1U_1+\partial_2U_2)\omega.
+\end{aligned}
+\tag{RQ10}
+\]">\[
+\begin{aligned}
+&amp;(\partial_1V_1)\partial_1U_2
++(\partial_1V_2)\partial_2U_2
+-(\partial_2V_1)\partial_1U_1
+-(\partial_2V_2)\partial_2U_1\\
+&amp;\hspace{2em}=(1+\lambda)\omega
++(\partial_1U_1+\partial_2U_2)\omega.
+\end{aligned}
+\tag{RQ10}
+\]</span>
+<p>Subtracting the curl of <span class="math" data-tex="\(\lambda U\)">\(\lambda U\)</span> leaves
+<span class="math" data-tex="\(\omega+V\cdot\nabla\omega+f_4\omega\)">\(\omega+V\cdot\nabla\omega+f_4\omega\)</span>.
+By (RQ2), <span class="math" data-tex="\(\varepsilon\omega=\Omega-f_5\)">\(\varepsilon\omega=\Omega-f_5\)</span>; by (RQ5),
+<span class="math" data-tex="\(\partial_1\Theta_C=\Phi-I\)">\(\partial_1\Theta_C=\Phi-I\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varepsilon\operatorname{curl}
+[-\lambda U+V\cdot\nabla U-\varepsilon\Theta_Ce_2]
+&amp;=\Omega-f_5+V\cdot\nabla(\Omega-f_5)
++f_4(\Omega-f_5)-\Phi+I\\
+&amp;=B,
+\end{aligned}
+\tag{RQ11}
+\]">\[
+\begin{aligned}
+\varepsilon\operatorname{curl}
+[-\lambda U+V\cdot\nabla U-\varepsilon\Theta_Ce_2]
+&amp;=\Omega-f_5+V\cdot\nabla(\Omega-f_5)
++f_4(\Omega-f_5)-\Phi+I\\
+&amp;=B,
+\end{aligned}
+\tag{RQ11}
+\]</span>
+<p>which is (RQ9). Both the divergence error and the derivative of the
+curl-reconstruction error are indispensable in this exact formula.</p>
+<p>For any constant <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, reconstruct</p>
+<span class="math math-display" data-tex="\[
+P(y_1,y_2)=P_0+\int_0^{y_1}K_1(s,0)\,ds
++\int_0^{y_2}K_2(y_1,s)\,ds.
+\tag{RQ12}
+\]">\[
+P(y_1,y_2)=P_0+\int_0^{y_1}K_1(s,0)\,ds
++\int_0^{y_2}K_2(y_1,s)\,ds.
+\tag{RQ12}
+\]</span>
+<p>Then <span class="math" data-tex="\(P_2=K_2\)">\(P_2=K_2\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_1-K_1
+&amp;=\int_0^{y_2}(\partial_1K_2-\partial_2K_1)(y_1,s)\,ds,\\
+M(y_1,y_2)
+&amp;=\left(-\varepsilon\int_0^{y_2}B(y_1,s)\,ds,\ 0\right),
+\qquad D=f_4.
+\end{aligned}
+\tag{RQ13}
+\]">\[
+\begin{aligned}
+P_1-K_1
+&amp;=\int_0^{y_2}(\partial_1K_2-\partial_2K_1)(y_1,s)\,ds,\\
+M(y_1,y_2)
+&amp;=\left(-\varepsilon\int_0^{y_2}B(y_1,s)\,ds,\ 0\right),
+\qquad D=f_4.
+\end{aligned}
+\tag{RQ13}
+\]</span>
+<p>The first equality follows by adding and subtracting the vertical integral
+of <span class="math" data-tex="\(\partial_2K_1\)">\(\partial_2K_1\)</span> and using the fundamental theorem of calculus.
+This proves the pressure formula, not merely a necessary curl condition.
+It also specifies the complete momentum error for arbitrary initial data.
+Any other pressure solving <span class="math" data-tex="\(\nabla P=K\)">\(\nabla P=K\)</span> differs by a constant,
+by the same finite-segment argument used for the temperature.</p>
+<h2 id="rq4-exact-solution-correspondence-and-the-exceptional-exponent">RQ4. Exact solution correspondence and the exceptional exponent</h2>
+<p>Now take exactly compatible stationary data, meaning that all six functions
+in (RQ2) vanish on <span class="math" data-tex="\(H\)">\(H\)</span>. This is a statement about the correspondence
+of two equation systems, not an assumption that a computed profile solves
+either of them. Equations (RQ4)–(RQ13) construct the full fields and prove</p>
+<span class="math math-display" data-tex="\[
+M=0,\qquad D=0,\qquad
+T(y)= (1-\lambda)C+U(0,0)\cdot(\Phi(0,0),\Psi(0,0)).
+\tag{RQ14}
+\]">\[
+M=0,\qquad D=0,\qquad
+T(y)= (1-\lambda)C+U(0,0)\cdot(\Phi(0,0),\Psi(0,0)).
+\tag{RQ14}
+\]</span>
+<p>For <span class="math" data-tex="\(\lambda\ne1\)">\(\lambda\ne1\)</span>, the unique constant giving <span class="math" data-tex="\(T=0\)">\(T=0\)</span> is</p>
+<span class="math math-display" data-tex="\[
+C=-\frac{U(0,0)\cdot(\Phi(0,0),\Psi(0,0))}{1-\lambda}.
+\tag{RQ15}
+\]">\[
+C=-\frac{U(0,0)\cdot(\Phi(0,0),\Psi(0,0))}{1-\lambda}.
+\tag{RQ15}
+\]</span>
+<p>For <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>, that value of <span class="math" data-tex="\(T\)">\(T\)</span> is independent of <span class="math" data-tex="\(C\)">\(C\)</span>.
+It vanishes if and only if the displayed scalar product is zero; when it
+does vanish, every <span class="math" data-tex="\(C\)">\(C\)</span> is allowed. This includes the exceptional
+exponent without dividing by zero or dropping a scalar equation.</p>
+<p>In the source class, <span class="math" data-tex="\(U_1,\Omega,\Phi\)">\(U_1,\Omega,\Phi\)</span> are odd in <span class="math" data-tex="\(y_1\)">\(y_1\)</span>,
+<span class="math" data-tex="\(U_2,\Psi\)">\(U_2,\Psi\)</span> are even, and <span class="math" data-tex="\(U_2(y_1,0)=0\)">\(U_2(y_1,0)=0\)</span>. Thus
+<span class="math" data-tex="\(U(0,0)=0\)">\(U(0,0)=0\)</span> and <span class="math" data-tex="\(\Phi(0,0)=0\)">\(\Phi(0,0)=0\)</span>. The scalar product is
+zero. The source reconstruction uses <span class="math" data-tex="\(C=0\)">\(C=0\)</span> if <span class="math" data-tex="\(\lambda\ne1\)">\(\lambda\ne1\)</span>,
+and allows all constants if <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>. The constructed
+<span class="math" data-tex="\(\Theta_C\)">\(\Theta_C\)</span> is even in <span class="math" data-tex="\(y_1\)">\(y_1\)</span>: the integral of the odd
+<span class="math" data-tex="\(\Phi(s,0)\)">\(\Phi(s,0)\)</span> from zero is even, and the vertical integral of
+the even <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is even. The vector <span class="math" data-tex="\(K\)">\(K\)</span> has odd first
+component and even second component, so (RQ12) gives an even pressure.</p>
+<p>When <span class="math" data-tex="\(C\)">\(C\)</span> is increased by <span class="math" data-tex="\(c\)">\(c\)</span>, the full change of the fields
+and equations is</p>
+<span class="math math-display" data-tex="\[
+\Theta\longmapsto\Theta+c,\qquad
+P\longmapsto P+\varepsilon c y_2,\qquad
+T\longmapsto T+(1-\lambda)c,
+\qquad M\longmapsto M.
+\tag{RQ16}
+\]">\[
+\Theta\longmapsto\Theta+c,\qquad
+P\longmapsto P+\varepsilon c y_2,\qquad
+T\longmapsto T+(1-\lambda)c,
+\qquad M\longmapsto M.
+\tag{RQ16}
+\]</span>
+<p>The pressure increment follows from the actual vertical term in (RQ12).
+At <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span> it gives the complete additional solution freedom.
+It does not change <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> or <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, so those variables
+alone cannot encode it.</p>
+<p>Conversely a smooth full solution of (RQ3) with <span class="math" data-tex="\(M=T=D=0\)">\(M=T=D=0\)</span>
+gives six zero residuals on setting
+<span class="math" data-tex="\(\Omega=\varepsilon\operatorname{curl}U\)">\(\Omega=\varepsilon\operatorname{curl}U\)</span>,
+<span class="math" data-tex="\(\Phi=\Theta_1\)">\(\Phi=\Theta_1\)</span>, <span class="math" data-tex="\(\Psi=\Theta_2\)">\(\Psi=\Theta_2\)</span>. The fourth, fifth
+and sixth vanish from their definitions. Formula (RQ11) with <span class="math" data-tex="\(I=0\)">\(I=0\)</span>
+gives <span class="math" data-tex="\(f_1=0\)">\(f_1=0\)</span>. Differentiating <span class="math" data-tex="\(T=0\)">\(T=0\)</span> by (RQ6) gives
+<span class="math" data-tex="\(f_2=f_3=0\)">\(f_2=f_3=0\)</span>. The reconstruction returns the original
+<span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> by choosing <span class="math" data-tex="\(C=\Theta(0,0)\)">\(C=\Theta(0,0)\)</span>, and the original
+<span class="math" data-tex="\(P\)">\(P\)</span> by choosing <span class="math" data-tex="\(P_0=P(0,0)\)">\(P_0=P(0,0)\)</span>. We have proved the exact
+correspondence in both directions, including both constant freedoms and
+the exceptional exponent.</p>
+<h2 id="rq5-finite-domain-error-bounds-with-every-contributing-residual">RQ5. Finite-domain error bounds with every contributing residual</h2>
+<p>For <span class="math" data-tex="\(A,B_0&gt;0\)">\(A,B_0&gt;0\)</span>, let
+<span class="math" data-tex="\(Q_{A,B_0}=[-A,A]\times[0,B_0]\)">\(Q_{A,B_0}=[-A,A]\times[0,B_0]\)</span>, and take suprema on this
+closed rectangle. Let <span class="math" data-tex="\(\|\cdot\|_\infty\)">\(\|\cdot\|_\infty\)</span> mean the scalar
+absolute supremum, or the Euclidean vector supremum as appropriate.
+From the actual integrals and <span class="math" data-tex="\(\partial_2I=f_6\)">\(\partial_2I=f_6\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|I\|_\infty&amp;\le B_0\|f_6\|_\infty,\\
+\|\partial_1I\|_\infty&amp;\le B_0\|\partial_1f_6\|_\infty,\\
+\|V\cdot\nabla I\|_\infty
+&amp;\le \|V_1\|_\infty B_0\|\partial_1f_6\|_\infty
++\|V_2\|_\infty\|f_6\|_\infty.
+\end{aligned}
+\tag{RQ17}
+\]">\[
+\begin{aligned}
+\|I\|_\infty&amp;\le B_0\|f_6\|_\infty,\\
+\|\partial_1I\|_\infty&amp;\le B_0\|\partial_1f_6\|_\infty,\\
+\|V\cdot\nabla I\|_\infty
+&amp;\le \|V_1\|_\infty B_0\|\partial_1f_6\|_\infty
++\|V_2\|_\infty\|f_6\|_\infty.
+\end{aligned}
+\tag{RQ17}
+\]</span>
+<p>The complete pressure error obeys</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|M\|_\infty\le B_0\bigl(&amp;\|f_1\|_\infty+\|f_5\|_\infty
++\|V_1\|_\infty\|\partial_1f_5\|_\infty
++\|V_2\|_\infty\|\partial_2f_5\|_\infty\\
+&amp;+\|f_4\|_\infty(\|\Omega\|_\infty+\|f_5\|_\infty)
++\frac{B_0}{2}\|f_6\|_\infty\bigr).
+\end{aligned}
+\tag{RQ18}
+\]">\[
+\begin{aligned}
+\|M\|_\infty\le B_0\bigl(&amp;\|f_1\|_\infty+\|f_5\|_\infty
++\|V_1\|_\infty\|\partial_1f_5\|_\infty
++\|V_2\|_\infty\|\partial_2f_5\|_\infty\\
+&amp;+\|f_4\|_\infty(\|\Omega\|_\infty+\|f_5\|_\infty)
++\frac{B_0}{2}\|f_6\|_\infty\bigr).
+\end{aligned}
+\tag{RQ18}
+\]</span>
+<p>This is the triangle inequality applied to (RQ8) and (RQ13), retaining
+<span class="math" data-tex="\(\int_0^{y_2}\int_0^s dt\,ds=y_2^2/2\)">\(\int_0^{y_2}\int_0^s dt\,ds=y_2^2/2\)</span> for the contribution
+of <span class="math" data-tex="\(I\)">\(I\)</span>. It includes the nonlinear product and both curl-error derivatives. The
+rectangle is convex along every integration segment used above.
+Under the exact source wall condition, (RQ7) gives the sharper scalar bound</p>
+<span class="math math-display" data-tex="\[
+\|T\|_\infty\le |T(0,0)|+A\|f_2(\cdot,0)\|_\infty
++B_0\|f_3\|_\infty
++\frac{B_0^2}{2}\|\partial_2U_1\|_\infty\|f_6\|_\infty.
+\tag{RQ19}
+\]">\[
+\|T\|_\infty\le |T(0,0)|+A\|f_2(\cdot,0)\|_\infty
++B_0\|f_3\|_\infty
++\frac{B_0^2}{2}\|\partial_2U_1\|_\infty\|f_6\|_\infty.
+\tag{RQ19}
+\]</span>
+<p>The last term again retains the nested integral <span class="math" data-tex="\(y_2^2/2\)">\(y_2^2/2\)</span>.
+Each factor is the length of its actual segment, not a rescaled unit
+domain. These are estimates in terms of continuous suprema of the stated
+fields. They are not supplied by a finite collection of sampled residual
+values. The next numerical comparison must control those quantities on
+the original domain and retain the coordinate multipliers used to do so.</p>
+<h2 id="rq6-coupled-sign-and-full-spatial-scale-maps">RQ6. Coupled sign and full spatial scale maps</h2>
+<p>Keep <span class="math" data-tex="\(U,P,\lambda,y\)">\(U,P,\lambda,y\)</span> fixed and change</p>
+<span class="math math-display" data-tex="\[
+(\varepsilon,\Theta,\Omega,\Phi,\Psi)
+\longmapsto(-\varepsilon,-\Theta,-\Omega,-\Phi,-\Psi).
+\tag{RQ20}
+\]">\[
+(\varepsilon,\Theta,\Omega,\Phi,\Psi)
+\longmapsto(-\varepsilon,-\Theta,-\Omega,-\Phi,-\Psi).
+\tag{RQ20}
+\]</span>
+<p>Then <span class="math" data-tex="\(M,D\)">\(M,D\)</span> are unchanged, <span class="math" data-tex="\(T\)">\(T\)</span> changes sign,
+<span class="math" data-tex="\(f_1,f_2,f_3,f_5,f_6\)">\(f_1,f_2,f_3,f_5,f_6\)</span> change sign and <span class="math" data-tex="\(f_4\)">\(f_4\)</span> is unchanged.
+Every assertion follows by substitution into (RQ2)–(RQ3), including the
+product <span class="math" data-tex="\(\varepsilon\Theta\)">\(\varepsilon\Theta\)</span>. Also <span class="math" data-tex="\(I,B,C\)">\(I,B,C\)</span> change sign,
+while <span class="math" data-tex="\(K\)">\(K\)</span> and the reconstructed <span class="math" data-tex="\(P\)">\(P\)</span> remain the same.
+The origin derivative transforms as</p>
+<span class="math math-display" data-tex="\[
+\partial_1\Omega(0,0)\longmapsto-\partial_1\Omega(0,0).
+\tag{RQ21}
+\]">\[
+\partial_1\Omega(0,0)\longmapsto-\partial_1\Omega(0,0).
+\tag{RQ21}
+\]</span>
+<p>Thus the printed value <span class="math" data-tex="\(-1\)">\(-1\)</span> in one sign convention becomes
+<span class="math" data-tex="\(+1\)">\(+1\)</span> in the other under this exact same-velocity correspondence.
+Keeping <span class="math" data-tex="\(-1\)">\(-1\)</span> in both conventions selects different constrained
+data; a sign change of the curl variable alone is not the full map.</p>
+<p>Finally let <span class="math" data-tex="\(\kappa\ne0\)">\(\kappa\ne0\)</span>, put <span class="math" data-tex="\(H_\kappa=\kappa H\)">\(H_\kappa=\kappa H\)</span>,
+and define every field on its actual image domain by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U^\kappa(y)&amp;=\kappa U(y/\kappa),&amp;
+P^\kappa(y)&amp;=\kappa^2P(y/\kappa),&amp;
+\Theta^\kappa(y)&amp;=\kappa\Theta(y/\kappa),\\
+\Omega^\kappa(y)&amp;=\Omega(y/\kappa),&amp;
+\Phi^\kappa(y)&amp;=\Phi(y/\kappa),&amp;
+\Psi^\kappa(y)&amp;=\Psi(y/\kappa).
+\end{aligned}
+\tag{RQ22}
+\]">\[
+\begin{aligned}
+U^\kappa(y)&amp;=\kappa U(y/\kappa),&amp;
+P^\kappa(y)&amp;=\kappa^2P(y/\kappa),&amp;
+\Theta^\kappa(y)&amp;=\kappa\Theta(y/\kappa),\\
+\Omega^\kappa(y)&amp;=\Omega(y/\kappa),&amp;
+\Phi^\kappa(y)&amp;=\Phi(y/\kappa),&amp;
+\Psi^\kappa(y)&amp;=\Psi(y/\kappa).
+\end{aligned}
+\tag{RQ22}
+\]</span>
+<p>Here <span class="math" data-tex="\(V^\kappa(y)=\kappa V(y/\kappa)\)">\(V^\kappa(y)=\kappa V(y/\kappa)\)</span>. Chain rule, retaining
+the factor <span class="math" data-tex="\(1/\kappa\)">\(1/\kappa\)</span> in each derivative, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M^\kappa(y)=\kappa M(y/\kappa),\quad
+T^\kappa(y)=\kappa T(y/\kappa),\quad
+D^\kappa(y)=D(y/\kappa),\\
+f_j^\kappa(y)=f_j(y/\kappa)\quad(1\le j\le5),\qquad
+f_6^\kappa(y)=\kappa^{-1}f_6(y/\kappa),\\
+\partial_1\Omega^\kappa(0,0)=\kappa^{-1}\partial_1\Omega(0,0).
+\end{gathered}
+\tag{RQ23}
+\]">\[
+\begin{gathered}
+M^\kappa(y)=\kappa M(y/\kappa),\quad
+T^\kappa(y)=\kappa T(y/\kappa),\quad
+D^\kappa(y)=D(y/\kappa),\\
+f_j^\kappa(y)=f_j(y/\kappa)\quad(1\le j\le5),\qquad
+f_6^\kappa(y)=\kappa^{-1}f_6(y/\kappa),\\
+\partial_1\Omega^\kappa(0,0)=\kappa^{-1}\partial_1\Omega(0,0).
+\end{gathered}
+\tag{RQ23}
+\]</span>
+<p>For example, each term of <span class="math" data-tex="\(f_2\)">\(f_2\)</span> contains either one derivative
+of <span class="math" data-tex="\(U^\kappa\)">\(U^\kappa\)</span>, whose factors cancel, or <span class="math" data-tex="\(V^\kappa\)">\(V^\kappa\)</span>
+times one derivative of <span class="math" data-tex="\(\Phi^\kappa\)">\(\Phi^\kappa\)</span>, whose factors also
+cancel. The compatibility error has no velocity factor and retains
+<span class="math" data-tex="\(\kappa^{-1}\)">\(\kappa^{-1}\)</span>. The original pressure gradient has exactly the
+factor <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> required in the full momentum equation.
+The inverse is the same map with <span class="math" data-tex="\(1/\kappa\)">\(1/\kappa\)</span>. If
+<span class="math" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span>, the image is the original upper half-plane. If
+<span class="math" data-tex="\(\kappa&lt;0\)">\(\kappa&lt;0\)</span>, it is the lower half-plane, with its boundary still
+mapped to the same line. No negative scalar scale is a self-map of the
+original upper half-plane. The supplement's scalar-variable scaling
+therefore has the full meaning (RQ22)–(RQ23), including velocity,
+temperature, pressure, anchor and actual image domain.</p>
+<p>These proofs establish exact maps and error bounds for the original
+profile equations. They do not supply a profile, an error bound for given
+trained weights, a tail estimate on an infinite domain, or the remaining
+source stability argument. The next calculation is the complete
+hyperbolic-sine coordinate and metric map for all six residuals and the
+continuous quantities in (RQ17)–(RQ19).</p>
+<h2 id="part-2-the-complete-hyperbolic-sine-profile-map-and-its-original-loss-measures">Part 2. The complete hyperbolic-sine profile map and its original loss measures</h2>
+<p>This editorial calculation uses the original author files of Yongji Wang,
+Ching-Yao Lai, Javier Gómez-Serrano and Tristan Buckmaster,
+<a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>,
+<code>BoussinesqPRL_v5.tex</code> lines 106–139 and 169–203 and
+<code>BoussinesqSupp_v5.tex</code> lines 180–259. It continues the complete
+<span class="unlinked">six-residual reconstruction, RQ1–RQ23</span>.
+The original author archive is retained intact. The comparison below is
+an exact change of coordinates and measures; it is not a certificate for
+the computed profile or its nonlinear stability.</p>
+<p><img src="assets/NS-FLUID-47/sinh-profile-metric-9B0BA21C9D47B921F57568ED243851AD3858190F0150F1E47599969B96993521.png" alt="Original coordinate grid and exact residual-gradient factors" class="course-figure" width="2700" height="1530" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="sinh-profile-metric" data-asset-sha256="9B0BA21C9D47B921F57568ED243851AD3858190F0150F1E47599969B96993521"></p>
+<p>The two grids show the same points before and after <span class="math" data-tex="\(S\)">\(S\)</span>, using
+<span class="math" data-tex="\(L_1=L_2=3\)">\(L_1=L_2=3\)</span> solely for this illustration. The curve is the exact
+factor <span class="math" data-tex="\(\operatorname{sech}^2 z_i\)">\(\operatorname{sech}^2 z_i\)</span>. SG19–SG23 prove the gradient
+and area relations shown; no computed profile is plotted. Reproducible
+Python and SVG sources accompany the figure.</p>
+<h2 id="sg1-original-domain-inverse-metric-and-all-scalar-derivatives">SG1. Original domain, inverse, metric and all scalar derivatives</h2>
+<p>The original domain is <span class="math" data-tex="\(H_y=\{y_2\geq0\}\)">\(H_y=\{y_2\geq0\}\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(z_1,z_2)=(\sinh z_1,\sinh z_2),\qquad
+S^{-1}(y)=(\operatorname{arsinh}y_1,\operatorname{arsinh}y_2),\\
+H_z=\{z_2\geq0\},\quad
+s_i=\sinh z_i,\quad c_i=\cosh z_i,\quad a_i=c_i^{-1},\quad
+J=c_1c_2,\qquad \widehat q=q\circ S.
+\end{gathered}
+\tag{SG1}
+\]">\[
+\begin{gathered}
+S(z_1,z_2)=(\sinh z_1,\sinh z_2),\qquad
+S^{-1}(y)=(\operatorname{arsinh}y_1,\operatorname{arsinh}y_2),\\
+H_z=\{z_2\geq0\},\quad
+s_i=\sinh z_i,\quad c_i=\cosh z_i,\quad a_i=c_i^{-1},\quad
+J=c_1c_2,\qquad \widehat q=q\circ S.
+\end{gathered}
+\tag{SG1}
+\]</span>
+<p>Since <span class="math" data-tex="\(c_i&gt;0\)">\(c_i&gt;0\)</span>, each coordinate is strictly increasing with range
+the whole real line, and the displayed inverse is smooth. In particular,
+<span class="math" data-tex="\(S\)">\(S\)</span> is a smooth bijection of these closed half-planes, including
+their boundary. Its full differential, metric and oriented area are</p>
+<span class="math math-display" data-tex="\[
+DS=\begin{pmatrix}c_1&amp;0\\0&amp;c_2\end{pmatrix},\qquad
+g=\begin{pmatrix}c_1^2&amp;0\\0&amp;c_2^2\end{pmatrix},\qquad
+dy_1\,dy_2=J\,dz_1\,dz_2.
+\tag{SG2}
+\]">\[
+DS=\begin{pmatrix}c_1&amp;0\\0&amp;c_2\end{pmatrix},\qquad
+g=\begin{pmatrix}c_1^2&amp;0\\0&amp;c_2^2\end{pmatrix},\qquad
+dy_1\,dy_2=J\,dz_1\,dz_2.
+\tag{SG2}
+\]</span>
+<p>The metric follows by expanding <span class="math" data-tex="\(|DS\,\xi|^2\)">\(|DS\,\xi|^2\)</span> for an arbitrary
+coordinate tangent vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>; the Jacobian is its positive
+determinant. Every original scalar derivative is represented by</p>
+<span class="math math-display" data-tex="\[
+D_i=a_i\partial_{z_i},\qquad
+\widehat{\partial_{y_i}q}=D_i\widehat q,\qquad
+|\nabla_y q|^2\circ S=\sum_{i=1}^2a_i^2
+|\partial_{z_i}\widehat q|^2.
+\tag{SG3}
+\]">\[
+D_i=a_i\partial_{z_i},\qquad
+\widehat{\partial_{y_i}q}=D_i\widehat q,\qquad
+|\nabla_y q|^2\circ S=\sum_{i=1}^2a_i^2
+|\partial_{z_i}\widehat q|^2.
+\tag{SG3}
+\]</span>
+<p>Here and below the derivative of a residual means the derivative of the
+fully evaluated residual, including every dependence of its predicted
+fields and their derivatives on the input. It is not a partial derivative
+holding the network output fixed.</p>
+<p>A second differentiation retains the derivative of <span class="math" data-tex="\(a_i\)">\(a_i\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat{\partial_{y_i}^2q}
+&amp;=a_i^2\left(\partial_{z_i}^2\widehat q
+-\tanh z_i\,\partial_{z_i}\widehat q\right),\\
+\widehat{\partial_{y_1}\partial_{y_2}q}
+&amp;=a_1a_2\partial_{z_1}\partial_{z_2}\widehat q,\\
+\widehat{\Delta_y q}
+&amp;=\sum_{i=1}^2a_i^2\left(\partial_{z_i}^2\widehat q
+-\tanh z_i\,\partial_{z_i}\widehat q\right)
+=\frac1J\sum_{i=1}^2\partial_{z_i}
+\left(Ja_i^2\partial_{z_i}\widehat q\right).
+\end{aligned}
+\tag{SG4}
+\]">\[
+\begin{aligned}
+\widehat{\partial_{y_i}^2q}
+&amp;=a_i^2\left(\partial_{z_i}^2\widehat q
+-\tanh z_i\,\partial_{z_i}\widehat q\right),\\
+\widehat{\partial_{y_1}\partial_{y_2}q}
+&amp;=a_1a_2\partial_{z_1}\partial_{z_2}\widehat q,\\
+\widehat{\Delta_y q}
+&amp;=\sum_{i=1}^2a_i^2\left(\partial_{z_i}^2\widehat q
+-\tanh z_i\,\partial_{z_i}\widehat q\right)
+=\frac1J\sum_{i=1}^2\partial_{z_i}
+\left(Ja_i^2\partial_{z_i}\widehat q\right).
+\end{aligned}
+\tag{SG4}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\partial_{z_i}a_i=-a_i\tanh z_i\)">\(\partial_{z_i}a_i=-a_i\tanh z_i\)</span>, and
+<span class="math" data-tex="\(Ja_i^2=c_j/c_i\)">\(Ja_i^2=c_j/c_i\)</span> for <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>; differentiating the latter
+gives the same first-order term. The off-diagonal derivatives commute
+because <span class="math" data-tex="\(a_1\)">\(a_1\)</span> and <span class="math" data-tex="\(a_2\)">\(a_2\)</span> depend on different coordinates.</p>
+<p>For positive lengths <span class="math" data-tex="\(L_1,L_2\)">\(L_1,L_2\)</span>, the exact finite domain map is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z_L&amp;=[-L_1,L_1]\times[0,L_2],\\
+Y_L&amp;=[-\sinh L_1,\sinh L_1]\times[0,\sinh L_2],\\
+|Z_L|&amp;=2L_1L_2,\qquad
+|Y_L|=2\sinh L_1\sinh L_2.
+\end{aligned}
+\tag{SG5}
+\]">\[
+\begin{aligned}
+Z_L&amp;=[-L_1,L_1]\times[0,L_2],\\
+Y_L&amp;=[-\sinh L_1,\sinh L_1]\times[0,\sinh L_2],\\
+|Z_L|&amp;=2L_1L_2,\qquad
+|Y_L|=2\sinh L_1\sinh L_2.
+\end{aligned}
+\tag{SG5}
+\]</span>
+<p>The original upper wall maps to <span class="math" data-tex="\(z_2=0\)">\(z_2=0\)</span>. The source's reported
+full numerical square instead maps
+<span class="math" data-tex="\([-L_1,L_1]\times[-L_2,L_2]\)">\([-L_1,L_1]\times[-L_2,L_2]\)</span> to
+<span class="math" data-tex="\([-\sinh L_1,\sinh L_1]\times[-\sinh L_2,\sinh L_2]\)">\([-\sinh L_1,\sinh L_1]\times[-\sinh L_2,\sinh L_2]\)</span>.
+Its two areas are <span class="math" data-tex="\(4L_1L_2\)">\(4L_1L_2\)</span> and
+<span class="math" data-tex="\(4\sinh L_1\sinh L_2\)">\(4\sinh L_1\sinh L_2\)</span>. Its negative second-coordinate part
+is not part of the original upper half-plane; a field defined there is
+additional data or an explicitly chosen extension. The stated parity in
+the first coordinate alone supplies no such extension in the second.</p>
+<h2 id="sg2-cartesian-components-coordinate-components-and-full-momentum">SG2. Cartesian components, coordinate components and full momentum</h2>
+<p>Keep the original exponent <span class="math" data-tex="\(\lambda&gt;-1\)">\(\lambda&gt;-1\)</span> and the sign
+<span class="math" data-tex="\(\varepsilon\in\{1,-1\}\)">\(\varepsilon\in\{1,-1\}\)</span> of RQ1–RQ3. Let
+<span class="math" data-tex="\(V=(1+\lambda)y+U\)">\(V=(1+\lambda)y+U\)</span>. The composed Cartesian components are
+<span class="math" data-tex="\(\widehat U_i=U_i\circ S\)">\(\widehat U_i=U_i\circ S\)</span>. The components with respect to the
+coordinate tangent vectors <span class="math" data-tex="\(\partial_{z_i}S=c_i e_i\)">\(\partial_{z_i}S=c_i e_i\)</span> are
+different, with the exact invertible map</p>
+<span class="math math-display" data-tex="\[
+u^i=a_i\widehat U_i,\qquad
+v^i=a_i\widehat V_i=(1+\lambda)\tanh z_i+u^i,\qquad
+U\circ S=\sum_{i=1}^2u^i\partial_{z_i}S.
+\tag{SG6}
+\]">\[
+u^i=a_i\widehat U_i,\qquad
+v^i=a_i\widehat V_i=(1+\lambda)\tanh z_i+u^i,\qquad
+U\circ S=\sum_{i=1}^2u^i\partial_{z_i}S.
+\tag{SG6}
+\]</span>
+<p>Thus <span class="math" data-tex="\(|U|^2\circ S=\sum_i c_i^2(u^i)^2\)">\(|U|^2\circ S=\sum_i c_i^2(u^i)^2\)</span>, and for every scalar
+<span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\widehat{V\cdot\nabla_y q}
+=\sum_{i=1}^2\widehat V_i D_i\widehat q
+=\sum_{i=1}^2 v^i\partial_{z_i}\widehat q.
+\tag{SG7}
+\]">\[
+\widehat{V\cdot\nabla_y q}
+=\sum_{i=1}^2\widehat V_i D_i\widehat q
+=\sum_{i=1}^2 v^i\partial_{z_i}\widehat q.
+\tag{SG7}
+\]</span>
+<p>This proves why the Cartesian components in the author's equations may
+be composed without being called coordinate velocity components.</p>
+<p>For the full stationary momentum error <span class="math" data-tex="\(M\)">\(M\)</span>, temperature error <span class="math" data-tex="\(T\)">\(T\)</span>
+and divergence error <span class="math" data-tex="\(D\)">\(D\)</span> defined in RQ3, the exact formulas in
+composed Cartesian components are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat M_i
+&amp;=-\lambda\widehat U_i+
+\sum_{j=1}^2v^j\partial_{z_j}\widehat U_i
++a_i\partial_{z_i}\widehat P
+-\varepsilon\widehat\Theta\,\delta_{i2},\\
+\widehat T
+&amp;=(1-\lambda)\widehat\Theta+
+\sum_{j=1}^2v^j\partial_{z_j}\widehat\Theta,\\
+\widehat D&amp;=\sum_{i=1}^2a_i\partial_{z_i}\widehat U_i
+=\frac1J\sum_{i=1}^2\partial_{z_i}(Ju^i).
+\end{aligned}
+\tag{SG8}
+\]">\[
+\begin{aligned}
+\widehat M_i
+&amp;=-\lambda\widehat U_i+
+\sum_{j=1}^2v^j\partial_{z_j}\widehat U_i
++a_i\partial_{z_i}\widehat P
+-\varepsilon\widehat\Theta\,\delta_{i2},\\
+\widehat T
+&amp;=(1-\lambda)\widehat\Theta+
+\sum_{j=1}^2v^j\partial_{z_j}\widehat\Theta,\\
+\widehat D&amp;=\sum_{i=1}^2a_i\partial_{z_i}\widehat U_i
+=\frac1J\sum_{i=1}^2\partial_{z_i}(Ju^i).
+\end{aligned}
+\tag{SG8}
+\]</span>
+<p>For the last equality <span class="math" data-tex="\(Ju^i=c_j\widehat U_i\)">\(Ju^i=c_j\widehat U_i\)</span>, where
+<span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>; its prefactor has zero <span class="math" data-tex="\(z_i\)">\(z_i\)</span>-derivative.
+If instead momentum is written in the coordinate basis, every original
+component is divided by <span class="math" data-tex="\(c_i\)">\(c_i\)</span>, and differentiation of
+<span class="math" data-tex="\(\widehat U_i=c_i u^i\)">\(\widehat U_i=c_i u^i\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+m^i:=a_i\widehat M_i
+=-\lambda u^i+\sum_{j=1}^2v^j\partial_{z_j}u^i
++\tanh z_i\,v^i u^i
++a_i^2\partial_{z_i}\widehat P
+-\varepsilon a_i\widehat\Theta\,\delta_{i2}.
+\tag{SG9}
+\]">\[
+m^i:=a_i\widehat M_i
+=-\lambda u^i+\sum_{j=1}^2v^j\partial_{z_j}u^i
++\tanh z_i\,v^i u^i
++a_i^2\partial_{z_i}\widehat P
+-\varepsilon a_i\widehat\Theta\,\delta_{i2}.
+\tag{SG9}
+\]</span>
+<p>The term <span class="math" data-tex="\(\tanh z_i\,v^iu^i\)">\(\tanh z_i\,v^iu^i\)</span> comes exactly from
+<span class="math" data-tex="\(a_i v^i(\partial_{z_i}c_i)u^i\)">\(a_i v^i(\partial_{z_i}c_i)u^i\)</span>; it cannot be removed in
+that basis. Likewise the pressure coefficient is <span class="math" data-tex="\(a_i^2\)">\(a_i^2\)</span>, and
+the force coefficient is <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. These bases have the exact
+residual-norm relation <span class="math" data-tex="\(|\widehat M|^2=\sum_i c_i^2(m^i)^2\)">\(|\widehat M|^2=\sum_i c_i^2(m^i)^2\)</span>.</p>
+<p>The original oriented curl also has both equivalent full expressions:</p>
+<span class="math math-display" data-tex="\[
+\widehat\omega=D_1\widehat U_2-D_2\widehat U_1
+=\frac1J\left[\partial_{z_1}(c_2^2u^2)
+-\partial_{z_2}(c_1^2u^1)\right].
+\tag{SG10}
+\]">\[
+\widehat\omega=D_1\widehat U_2-D_2\widehat U_1
+=\frac1J\left[\partial_{z_1}(c_2^2u^2)
+-\partial_{z_2}(c_1^2u^1)\right].
+\tag{SG10}
+\]</span>
+<p>The second follows because <span class="math" data-tex="\(c_2\)">\(c_2\)</span> is constant in the first
+derivative and <span class="math" data-tex="\(c_1\)">\(c_1\)</span> in the second. It retains the original
+orientation; the sign <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> enters the definition of
+<span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, not this oriented curl.</p>
+<h2 id="sg3-all-six-equation-residuals-compatibility-and-boundary-data">SG3. All six equation residuals, compatibility and boundary data</h2>
+<p>Let <span class="math" data-tex="\(F_j=f_j\circ S\)">\(F_j=f_j\circ S\)</span>, where all six original <span class="math" data-tex="\(f_j\)">\(f_j\)</span> are
+defined in RQ2. Every term is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_1&amp;=\widehat\Omega+\sum_{i=1}^2v^i\partial_{z_i}\widehat\Omega
+-\widehat\Phi,\\
+F_2&amp;=(2+D_1\widehat U_1)\widehat\Phi
++\sum_{i=1}^2v^i\partial_{z_i}\widehat\Phi
++(D_1\widehat U_2)\widehat\Psi,\\
+F_3&amp;=(2+D_2\widehat U_2)\widehat\Psi
++\sum_{i=1}^2v^i\partial_{z_i}\widehat\Psi
++(D_2\widehat U_1)\widehat\Phi,\\
+F_4&amp;=D_1\widehat U_1+D_2\widehat U_2,\\
+F_5&amp;=\widehat\Omega-\varepsilon
+(D_1\widehat U_2-D_2\widehat U_1),\\
+F_6&amp;=D_2\widehat\Phi-D_1\widehat\Psi.
+\end{aligned}
+\tag{SG11}
+\]">\[
+\begin{aligned}
+F_1&amp;=\widehat\Omega+\sum_{i=1}^2v^i\partial_{z_i}\widehat\Omega
+-\widehat\Phi,\\
+F_2&amp;=(2+D_1\widehat U_1)\widehat\Phi
++\sum_{i=1}^2v^i\partial_{z_i}\widehat\Phi
++(D_1\widehat U_2)\widehat\Psi,\\
+F_3&amp;=(2+D_2\widehat U_2)\widehat\Psi
++\sum_{i=1}^2v^i\partial_{z_i}\widehat\Psi
++(D_2\widehat U_1)\widehat\Phi,\\
+F_4&amp;=D_1\widehat U_1+D_2\widehat U_2,\\
+F_5&amp;=\widehat\Omega-\varepsilon
+(D_1\widehat U_2-D_2\widehat U_1),\\
+F_6&amp;=D_2\widehat\Phi-D_1\widehat\Psi.
+\end{aligned}
+\tag{SG11}
+\]</span>
+<p>Substitution of SG3 and SG7 in each of the six source expressions proves
+these identities, term by term, without setting any residual to zero.
+In particular the original gradient one-form and its compatibility error
+become</p>
+<span class="math math-display" data-tex="\[
+\alpha=c_1\widehat\Phi\,dz_1+c_2\widehat\Psi\,dz_2,
+\qquad
+d\alpha=-J F_6\,dz_1\wedge dz_2.
+\tag{SG12}
+\]">\[
+\alpha=c_1\widehat\Phi\,dz_1+c_2\widehat\Psi\,dz_2,
+\qquad
+d\alpha=-J F_6\,dz_1\wedge dz_2.
+\tag{SG12}
+\]</span>
+<p>Indeed the coefficient of its exterior derivative is
+<span class="math" data-tex="\(c_2\partial_{z_1}\widehat\Psi
+-c_1\partial_{z_2}\widehat\Phi=-JF_6\)">\(c_2\partial_{z_1}\widehat\Psi
+-c_1\partial_{z_2}\widehat\Phi=-JF_6\)</span>.
+Thus testing <span class="math" data-tex="\(\partial_{z_2}\widehat\Phi
+=\partial_{z_1}\widehat\Psi\)">\(\partial_{z_2}\widehat\Phi
+=\partial_{z_1}\widehat\Psi\)</span> would test a different one-form.</p>
+<p>The wall and origin data map exactly to</p>
+<span class="math math-display" data-tex="\[
+\widehat U_2(z_1,0)=0,\qquad
+\partial_{y_1}\Omega(0,0)=\partial_{z_1}\widehat\Omega(0,0),
+\qquad
+|\nabla_yU|^2\circ S
+=\sum_{i,j=1}^2a_j^2|\partial_{z_j}\widehat U_i|^2.
+\tag{SG13}
+\]">\[
+\widehat U_2(z_1,0)=0,\qquad
+\partial_{y_1}\Omega(0,0)=\partial_{z_1}\widehat\Omega(0,0),
+\qquad
+|\nabla_yU|^2\circ S
+=\sum_{i,j=1}^2a_j^2|\partial_{z_j}\widehat U_i|^2.
+\tag{SG13}
+\]</span>
+<p>The origin equality uses <span class="math" data-tex="\(c_1(0)=1\)">\(c_1(0)=1\)</span>. At a general point the
+factor <span class="math" data-tex="\(a_1\)">\(a_1\)</span> remains. The source side <span class="math" data-tex="\(y_1=\pm d\)">\(y_1=\pm d\)</span> maps to
+<span class="math" data-tex="\(z_1=\pm\operatorname{arsinh}d\)">\(z_1=\pm\operatorname{arsinh}d\)</span>; the upper side <span class="math" data-tex="\(y_2=d\)">\(y_2=d\)</span>
+maps to <span class="math" data-tex="\(z_2=\operatorname{arsinh}d\)">\(z_2=\operatorname{arsinh}d\)</span>. Derivative conditions on
+these sides keep all the factors in SG13. Values of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> and
+<span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> are simply composed, not multiplied by <span class="math" data-tex="\(c_i\)">\(c_i\)</span>.</p>
+<h2 id="sg4-the-complete-reconstructed-fields-and-error-integrals-in-these-coordinates">SG4. The complete reconstructed fields and error integrals in these coordinates</h2>
+<p>The finite-path maps RQ4 and RQ12 retain their full integration factors:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat I(z)&amp;=\int_0^{z_2}\cosh t\,F_6(z_1,t)\,dt,\\
+\widehat\Theta_C(z)&amp;=C+
+\int_0^{z_1}\cosh t\,\widehat\Phi(t,0)\,dt
++\int_0^{z_2}\cosh t\,\widehat\Psi(z_1,t)\,dt,\\
+\widehat P(z)&amp;=P_0+
+\int_0^{z_1}\cosh t\,\widehat K_1(t,0)\,dt
++\int_0^{z_2}\cosh t\,\widehat K_2(z_1,t)\,dt.
+\end{aligned}
+\tag{SG14}
+\]">\[
+\begin{aligned}
+\widehat I(z)&amp;=\int_0^{z_2}\cosh t\,F_6(z_1,t)\,dt,\\
+\widehat\Theta_C(z)&amp;=C+
+\int_0^{z_1}\cosh t\,\widehat\Phi(t,0)\,dt
++\int_0^{z_2}\cosh t\,\widehat\Psi(z_1,t)\,dt,\\
+\widehat P(z)&amp;=P_0+
+\int_0^{z_1}\cosh t\,\widehat K_1(t,0)\,dt
++\int_0^{z_2}\cosh t\,\widehat K_2(z_1,t)\,dt.
+\end{aligned}
+\tag{SG14}
+\]</span>
+<p>Here <span class="math" data-tex="\(K=\lambda U-V\cdot\nabla U+\varepsilon\Theta_C e_2\)">\(K=\lambda U-V\cdot\nabla U+\varepsilon\Theta_C e_2\)</span>
+is the original Cartesian vector of RQ8. The changes of variables
+<span class="math" data-tex="\(s=\sinh t\)">\(s=\sinh t\)</span> in each finite original integral give SG14, including
+the orientation for negative first endpoints. For example,
+<span class="math" data-tex="\(D_1\widehat\Theta_C=\widehat\Phi-\widehat I\)">\(D_1\widehat\Theta_C=\widehat\Phi-\widehat I\)</span> and
+<span class="math" data-tex="\(D_2\widehat\Theta_C=\widehat\Psi\)">\(D_2\widehat\Theta_C=\widehat\Psi\)</span>; no gradient component
+has been discarded.</p>
+<p>The full curl-error integrand and momentum error are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat B&amp;=F_1-F_5-\sum_{i=1}^2v^i\partial_{z_i}F_5
++F_4(\widehat\Omega-F_5)+\widehat I,\\
+\widehat M(z)&amp;=\left(-\varepsilon\int_0^{z_2}
+\cosh t\,\widehat B(z_1,t)\,dt,\ 0\right).
+\end{aligned}
+\tag{SG15}
+\]">\[
+\begin{aligned}
+\widehat B&amp;=F_1-F_5-\sum_{i=1}^2v^i\partial_{z_i}F_5
++F_4(\widehat\Omega-F_5)+\widehat I,\\
+\widehat M(z)&amp;=\left(-\varepsilon\int_0^{z_2}
+\cosh t\,\widehat B(z_1,t)\,dt,\ 0\right).
+\end{aligned}
+\tag{SG15}
+\]</span>
+<p>The scalar error, under the exact source wall condition, is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat T(z)=T(0,0)
+&amp;+\int_0^{z_1}\cosh t\,F_2(t,0)\,dt\\
+&amp;+\int_0^{z_2}\cosh t
+[F_3-(D_2\widehat U_1)\widehat I](z_1,t)\,dt.
+\end{aligned}
+\tag{SG16}
+\]">\[
+\begin{aligned}
+\widehat T(z)=T(0,0)
+&amp;+\int_0^{z_1}\cosh t\,F_2(t,0)\,dt\\
+&amp;+\int_0^{z_2}\cosh t
+[F_3-(D_2\widehat U_1)\widehat I](z_1,t)\,dt.
+\end{aligned}
+\tag{SG16}
+\]</span>
+<p>This is RQ7 with the wall cancellation already proved there, followed by
+the same change of variables. The exact nested integral now has value</p>
+<span class="math math-display" data-tex="\[
+\int_0^{z_2}\cosh s\int_0^s\cosh t\,dt\,ds
+=\int_0^{z_2}\cosh s\sinh s\,ds
+=\frac{\sinh^2 z_2}{2}.
+\tag{SG17}
+\]">\[
+\int_0^{z_2}\cosh s\int_0^s\cosh t\,dt\,ds
+=\int_0^{z_2}\cosh s\sinh s\,ds
+=\frac{\sinh^2 z_2}{2}.
+\tag{SG17}
+\]</span>
+<p>Consequently the original rectangle bounds RQ18–RQ19 have
+<span class="math" data-tex="\(A=\sinh L_1\)">\(A=\sinh L_1\)</span>, <span class="math" data-tex="\(B_0=\sinh L_2\)">\(B_0=\sinh L_2\)</span>, not <span class="math" data-tex="\(L_1,L_2\)">\(L_1,L_2\)</span>.
+Every derivative <span class="math" data-tex="\(\partial_{y_i}f_5\)">\(\partial_{y_i}f_5\)</span> in them is exactly
+<span class="math" data-tex="\(a_i\partial_{z_i}F_5\)">\(a_i\partial_{z_i}F_5\)</span>. Suprema of a composed scalar have the
+same values on the two corresponding compact domains because <span class="math" data-tex="\(S\)">\(S\)</span>
+is bijective. This proves the complete use of the earlier residual bounds
+in the source's computational coordinates.</p>
+<h2 id="sg5-sampled-gradient-losses-and-their-actual-comparison-constants">SG5. Sampled gradient losses and their actual comparison constants</h2>
+<p>Take corresponding sample points <span class="math" data-tex="\(y^{(m)}=S(z^{(m)})\)">\(y^{(m)}=S(z^{(m)})\)</span>, with
+the same number <span class="math" data-tex="\(N\)">\(N\)</span> and the same weights <span class="math" data-tex="\(1/N\)">\(1/N\)</span>.
+For a fixed original residual <span class="math" data-tex="\(f_k\)">\(f_k\)</span>, its value loss is unchanged:</p>
+<span class="math math-display" data-tex="\[
+\frac1N\sum_{m=1}^N|f_k(y^{(m)})|^2
+=\frac1N\sum_{m=1}^N|F_k(z^{(m)})|^2.
+\tag{SG18}
+\]">\[
+\frac1N\sum_{m=1}^N|f_k(y^{(m)})|^2
+=\frac1N\sum_{m=1}^N|F_k(z^{(m)})|^2.
+\tag{SG18}
+\]</span>
+<p>Its original-coordinate gradient loss, however, is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_y&amp;=\frac1N\sum_{m=1}^N\sum_{i=1}^2
+\operatorname{sech}^2z_i^{(m)}
+|\partial_{z_i}F_k(z^{(m)})|^2,\\
+L_z&amp;=\frac1N\sum_{m=1}^N\sum_{i=1}^2
+|\partial_{z_i}F_k(z^{(m)})|^2.
+\end{aligned}
+\tag{SG19}
+\]">\[
+\begin{aligned}
+L_y&amp;=\frac1N\sum_{m=1}^N\sum_{i=1}^2
+\operatorname{sech}^2z_i^{(m)}
+|\partial_{z_i}F_k(z^{(m)})|^2,\\
+L_z&amp;=\frac1N\sum_{m=1}^N\sum_{i=1}^2
+|\partial_{z_i}F_k(z^{(m)})|^2.
+\end{aligned}
+\tag{SG19}
+\]</span>
+<p>Thus the main text's gradient in its <span class="math" data-tex="\(y\)">\(y\)</span>-formula and a Euclidean
+<span class="math" data-tex="\(z\)">\(z\)</span>-gradient in the supplement are related by these exact factors.
+Writing the sample location as <span class="math" data-tex="\(z\)">\(z\)</span> does not by itself specify which
+gradient a program uses. SG19 states both meanings explicitly.</p>
+<p>If every sample satisfies <span class="math" data-tex="\(|z_i^{(m)}|\le L_i\)">\(|z_i^{(m)}|\le L_i\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\min_{i=1,2}\operatorname{sech}^2L_i\ L_z\le L_y\le L_z.
+\tag{SG20}
+\]">\[
+\min_{i=1,2}\operatorname{sech}^2L_i\ L_z\le L_y\le L_z.
+\tag{SG20}
+\]</span>
+<p>This follows term by term from
+<span class="math" data-tex="\(\operatorname{sech}^2 L_i\le\operatorname{sech}^2 z_i\le1\)">\(\operatorname{sech}^2 L_i\le\operatorname{sech}^2 z_i\le1\)</span>
+and the nonnegative squared derivatives. In particular, on the source
+neighborhood <span class="math" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{sech}^2(1)L_z\le L_y\le L_z.
+\tag{SG21}
+\]">\[
+\operatorname{sech}^2(1)L_z\le L_y\le L_z.
+\tag{SG21}
+\]</span>
+<p>These positive finite comparison constants do not make the two losses
+equal. They prove exactly what the bounded near-origin region permits.
+There is no positive uniform lower constant on the whole coordinate
+half-plane: at <span class="math" data-tex="\(z=(M,0)\)">\(z=(M,0)\)</span> take the scalar <span class="math" data-tex="\(F(z)=z_1\)">\(F(z)=z_1\)</span>.
+Then <span class="math" data-tex="\(|\nabla_zF|^2=1\)">\(|\nabla_zF|^2=1\)</span> and its original-coordinate gradient
+square is <span class="math" data-tex="\(\operatorname{sech}^2 M\)">\(\operatorname{sech}^2 M\)</span>, which tends to zero as
+<span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span>. This is a counterexample for comparison of
+general scalar derivative norms, not a claimed computed equation residual.
+All these comparisons require matched points and weights; different
+sample sets or different counts cannot silently be substituted.</p>
+<h2 id="sg6-full-area-boundary-and-average-measures">SG6. Full area, boundary and average measures</h2>
+<p>For every nonnegative measurable function, or every integrable function,
+the original change of variables gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_{Y_L}|f_k(y)|^2\,dy&amp;=\int_{Z_L}|F_k(z)|^2J(z)\,dz,\\
+\int_{Y_L}|\nabla_yf_k(y)|^2\,dy
+&amp;=\int_{Z_L}\sum_{i=1}^2 a_i^2
+|\partial_{z_i}F_k|^2J\,dz,\\
+\frac1{|Z_L|}\int_{Z_L}|F_k|^2\,dz
+&amp;=\frac1{2L_1L_2}\int_{Y_L}
+\frac{|f_k(y)|^2}{\sqrt{1+y_1^2}\sqrt{1+y_2^2}}\,dy,\\
+\frac1{|Y_L|}\int_{Y_L}|f_k|^2\,dy
+&amp;=\frac1{2\sinh L_1\sinh L_2}\int_{Z_L}|F_k|^2c_1c_2\,dz.
+\end{aligned}
+\tag{SG22}
+\]">\[
+\begin{aligned}
+\int_{Y_L}|f_k(y)|^2\,dy&amp;=\int_{Z_L}|F_k(z)|^2J(z)\,dz,\\
+\int_{Y_L}|\nabla_yf_k(y)|^2\,dy
+&amp;=\int_{Z_L}\sum_{i=1}^2 a_i^2
+|\partial_{z_i}F_k|^2J\,dz,\\
+\frac1{|Z_L|}\int_{Z_L}|F_k|^2\,dz
+&amp;=\frac1{2L_1L_2}\int_{Y_L}
+\frac{|f_k(y)|^2}{\sqrt{1+y_1^2}\sqrt{1+y_2^2}}\,dy,\\
+\frac1{|Y_L|}\int_{Y_L}|f_k|^2\,dy
+&amp;=\frac1{2\sinh L_1\sinh L_2}\int_{Z_L}|F_k|^2c_1c_2\,dz.
+\end{aligned}
+\tag{SG22}
+\]</span>
+<p>The square roots are exactly <span class="math" data-tex="\(\cosh(\operatorname{arsinh}y_i)\)">\(\cosh(\operatorname{arsinh}y_i)\)</span>,
+positive on the whole original domain. In particular uniform area in
+<span class="math" data-tex="\(z\)">\(z\)</span> corresponds to the explicit nonuniform density in the third
+line, and uniform original area corresponds to the fourth line. These
+formulas keep both original area denominators.</p>
+<p>On the horizontal and vertical sides respectively, the exact boundary
+line measures are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_{-\sinh L_1}^{\sinh L_1}|q(y_1,b)|^2\,dy_1
+&amp;=\int_{-L_1}^{L_1}|\widehat q(z_1,\operatorname{arsinh}b)|^2
+\cosh z_1\,dz_1,\\
+\int_0^{\sinh L_2}|q(a,y_2)|^2\,dy_2
+&amp;=\int_0^{L_2}|\widehat q(\operatorname{arsinh}a,z_2)|^2
+\cosh z_2\,dz_2.
+\end{aligned}
+\tag{SG23}
+\]">\[
+\begin{aligned}
+\int_{-\sinh L_1}^{\sinh L_1}|q(y_1,b)|^2\,dy_1
+&amp;=\int_{-L_1}^{L_1}|\widehat q(z_1,\operatorname{arsinh}b)|^2
+\cosh z_1\,dz_1,\\
+\int_0^{\sinh L_2}|q(a,y_2)|^2\,dy_2
+&amp;=\int_0^{L_2}|\widehat q(\operatorname{arsinh}a,z_2)|^2
+\cosh z_2\,dz_2.
+\end{aligned}
+\tag{SG23}
+\]</span>
+<p>Here <span class="math" data-tex="\(b\)">\(b\)</span> is the fixed original height of the chosen horizontal
+side and <span class="math" data-tex="\(a\)">\(a\)</span> the fixed original first coordinate of the vertical
+side. The use of these letters in this display does not replace the
+coordinate factors <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. The formulas follow from the one-dimensional
+derivatives of <span class="math" data-tex="\(\sinh\)">\(\sinh\)</span> and include the wall case <span class="math" data-tex="\(b=0\)">\(b=0\)</span>.</p>
+<p>SG1–SG23 give the complete coordinate, component, residual and measure
+maps needed to interpret the source losses. Nothing in a small finite
+sample average supplies the continuous suprema used in RQ18–RQ19.
+The next calculation constructs the exact fibers of that finite
+observation map, then derives explicit derivative bounds for finite
+hyperbolic-tangent networks to turn sample information into continuous
+finite-domain bounds when their actual parameters are supplied.</p>
+<h2 id="part-3-finite-profile-observations-and-complete-network-derivative-bounds">Part 3. Finite profile observations and complete network derivative bounds</h2>
+<p>The original profile equations and all six residuals are defined and
+reconstructed in <span class="unlinked">RQ1–RQ23</span>.
+Their complete computational-coordinate map is proved in
+<span class="unlinked">SG1–SG23</span>.
+The human source is Yongji Wang, Ching-Yao Lai, Javier Gómez-Serrano and
+Tristan Buckmaster, <a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>,
+original <code>BoussinesqPRL_v5.tex</code> lines 169–203 and included
+<code>BoussinesqSupp_v5.tex</code> lines 206–259. The source describes five separate
+networks with six hidden layers of thirty units and hyperbolic-tangent
+activation. It also describes parity projection and finite value and
+residual-gradient losses. This note retains those distinctions.</p>
+<p>We first construct the exact family of smooth fields invisible to any
+given finite collection of sampled derivatives. That family is not
+asserted to belong to a fixed finite network architecture. We then prove
+explicit bounds for the stated type of finite architecture, including
+all layers and all original coordinate factors. No actual trained
+parameter file is supplied or certified by these formulas.</p>
+<p><img src="assets/NS-FLUID-47/profile-samples-network-bounds-53E5F24258969857374FBA0718B4CCB31614C5788463B917798656C7304DD378.png" alt="Exact smooth observation supports and the complete six-layer derivative bound" class="course-figure" width="2610" height="1404" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="profile-samples-network-bounds" data-asset-sha256="53E5F24258969857374FBA0718B4CCB31614C5788463B917798656C7304DD378"></p>
+<p>The left panel gives explicit disjoint supports at
+<span class="math" data-tex="\(p=(0.6,0.85)\)">\(p=(0.6,0.85)\)</span> and <span class="math" data-tex="\(\rho p=(-0.6,0.85)\)">\(\rho p=(-0.6,0.85)\)</span>, radius <span class="math" data-tex="\(0.12\)">\(0.12\)</span>,
+inside <span class="math" data-tex="\([-1.5,1.5]\times[0,1.6]\)">\([-1.5,1.5]\times[0,1.6]\)</span>. The sample coordinates are
+<span class="math" data-tex="\(\{-1.2,0,1.2\}\times\{0,0.4,1.5\}\)">\(\{-1.2,0,1.2\}\times\{0,0.4,1.5\}\)</span>. The right panel
+evaluates the exact derivative formulas NB17–NB18 for the fully specified
+network NB16. These illustrate the two respective function classes;
+neither is identified with the source-trained profile. Reproducible
+Python and SVG sources accompany the figure.</p>
+<h2 id="nb1-the-smooth-finite-observation-fiber">NB1. The smooth finite-observation fiber</h2>
+<p>Fix a finite set <span class="math" data-tex="\(\Sigma\subset H_y\)">\(\Sigma\subset H_y\)</span>, containing every location
+used by all value, derivative, boundary and origin samples under
+consideration. If different residuals use different sets, take their
+finite union. Fix any smooth original quintuple
+<span class="math" data-tex="\((U_1,U_2,\Omega,\Phi,\Psi)\)">\((U_1,U_2,\Omega,\Phi,\Psi)\)</span> and its exponent <span class="math" data-tex="\(\lambda&gt;-1\)">\(\lambda&gt;-1\)</span>.
+For the parity conclusion, take the source class: <span class="math" data-tex="\(U_1,\Omega,\Phi\)">\(U_1,\Omega,\Phi\)</span>
+odd in <span class="math" data-tex="\(y_1\)">\(y_1\)</span>, <span class="math" data-tex="\(U_2,\Psi\)">\(U_2,\Psi\)</span> even, with <span class="math" data-tex="\(U_2(y_1,0)=0\)">\(U_2(y_1,0)=0\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(p=(p_1,p_2)\)">\(p=(p_1,p_2)\)</span> with <span class="math" data-tex="\(p_1,p_2&gt;0\)">\(p_1,p_2&gt;0\)</span>, outside
+<span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> and its reflection in the first coordinate. Such a
+point exists since an open rectangle in this quadrant contains infinitely
+many points and the excluded set is finite. If a finite source rectangle
+<span class="math" data-tex="\([-A,A]\times[0,B]\)">\([-A,A]\times[0,B]\)</span>, with <span class="math" data-tex="\(A,B&gt;0\)">\(A,B&gt;0\)</span>, is specified, choose
+<span class="math" data-tex="\(0&lt;p_1&lt;A\)">\(0&lt;p_1&lt;A\)</span>, <span class="math" data-tex="\(0&lt;p_2&lt;B\)">\(0&lt;p_2&lt;B\)</span>. Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> smaller
+than one quarter of the positive minimum of
+<span class="math" data-tex="\(p_1,p_2,A-p_1,B-p_2\)">\(p_1,p_2,A-p_1,B-p_2\)</span> and the distances from <span class="math" data-tex="\(p\)">\(p\)</span> to every
+point in <span class="math" data-tex="\(\Sigma\cup\rho\Sigma\)">\(\Sigma\cup\rho\Sigma\)</span>, omitting the last minimum
+if that set is empty. Here <span class="math" data-tex="\(\rho(y_1,y_2)=(-y_1,y_2)\)">\(\rho(y_1,y_2)=(-y_1,y_2)\)</span>.
+If no rectangle was initially specified, choose one containing <span class="math" data-tex="\(p\)">\(p\)</span>
+in its interior first. The two closed balls of radius <span class="math" data-tex="\(\delta\)">\(\delta\)</span>
+at <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(\rho p\)">\(\rho p\)</span> are disjoint, strictly above the wall,
+inside this rectangle, and disjoint from <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>.</p>
+<p>Define the complete cutoff</p>
+<span class="math math-display" data-tex="\[
+\eta(t)=
+\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}
+\qquad
+\chi(s)=\frac{\eta(1-s)}{\eta(1-s)+\eta(s-1/4)}.
+\tag{NB1}
+\]">\[
+\eta(t)=
+\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}
+\qquad
+\chi(s)=\frac{\eta(1-s)}{\eta(1-s)+\eta(s-1/4)}.
+\tag{NB1}
+\]</span>
+<p>The denominator is positive for every real <span class="math" data-tex="\(s\)">\(s\)</span>: simultaneous zeros
+would require <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span> and <span class="math" data-tex="\(s\le1/4\)">\(s\le1/4\)</span>. The function <span class="math" data-tex="\(\eta\)">\(\eta\)</span>
+is smooth at zero because each of its derivatives for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> is
+<span class="math" data-tex="\(e^{-1/t}\)">\(e^{-1/t}\)</span> times a polynomial in <span class="math" data-tex="\(1/t\)">\(1/t\)</span>, and all such products
+tend to zero there. To see the last assertion without a growth assumption,
+put <span class="math" data-tex="\(x=1/t\)">\(x=1/t\)</span>; for an integer <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span>,
+<span class="math" data-tex="\(e^x\ge x^{m+1}/(m+1)!\)">\(e^x\ge x^{m+1}/(m+1)!\)</span> implies
+<span class="math" data-tex="\(x^me^{-x}\le(m+1)!/x\to0\)">\(x^me^{-x}\le(m+1)!/x\to0\)</span>. Repeated differentiation and
+the zero one-sided derivatives therefore prove the smooth extension.
+Consequently <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is smooth, equals one for <span class="math" data-tex="\(s\le1/4\)">\(s\le1/4\)</span>
+and zero for <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>.</p>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b_p(y)&amp;=\frac{|y-p|^2}{4}\,
+\chi\!\left(\frac{|y-p|^2}{\delta^2}\right),\\
+h(y)&amp;=b_p(y)-b_p(\rho y),\\
+W_h&amp;=(-\partial_2h,\partial_1h),\qquad
+Z_h=\varepsilon\Delta h.
+\end{aligned}
+\tag{NB2}
+\]">\[
+\begin{aligned}
+b_p(y)&amp;=\frac{|y-p|^2}{4}\,
+\chi\!\left(\frac{|y-p|^2}{\delta^2}\right),\\
+h(y)&amp;=b_p(y)-b_p(\rho y),\\
+W_h&amp;=(-\partial_2h,\partial_1h),\qquad
+Z_h=\varepsilon\Delta h.
+\end{aligned}
+\tag{NB2}
+\]</span>
+<p>These are smooth and supported in the two specified balls. The function
+<span class="math" data-tex="\(h\)">\(h\)</span> is odd in <span class="math" data-tex="\(y_1\)">\(y_1\)</span>, so the first component of <span class="math" data-tex="\(W_h\)">\(W_h\)</span>
+and <span class="math" data-tex="\(Z_h\)">\(Z_h\)</span> are odd, and the second component of <span class="math" data-tex="\(W_h\)">\(W_h\)</span> is even.
+Direct mixed differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{div}W_h=0,\qquad
+\varepsilon\operatorname{curl}W_h=Z_h.
+\tag{NB3}
+\]">\[
+\operatorname{div}W_h=0,\qquad
+\varepsilon\operatorname{curl}W_h=Z_h.
+\tag{NB3}
+\]</span>
+<p>For any real amplitude <span class="math" data-tex="\(m\)">\(m\)</span>, define the actual perturbed fields</p>
+<span class="math math-display" data-tex="\[
+U^{[m]}=U+mW_h,\qquad
+\Omega^{[m]}=\Omega+mZ_h,\qquad
+\Phi^{[m]}=\Phi,\qquad \Psi^{[m]}=\Psi.
+\tag{NB4}
+\]">\[
+U^{[m]}=U+mW_h,\qquad
+\Omega^{[m]}=\Omega+mZ_h,\qquad
+\Phi^{[m]}=\Phi,\qquad \Psi^{[m]}=\Psi.
+\tag{NB4}
+\]</span>
+<p>They preserve the original parity, the wall condition, every boundary
+value outside the two balls and the original far-field behavior. They
+also preserve every derivative of every field at every point in
+<span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>: each perturbation vanishes on an open neighborhood
+of that point. As a result every sampled derivative of every local
+residual is exactly unchanged, not merely small. In particular all the
+source finite value and residual-gradient losses are unchanged.
+Equations (NB3) show the stronger global facts</p>
+<span class="math math-display" data-tex="\[
+f_4^{[m]}=f_4,\qquad f_5^{[m]}=f_5,\qquad f_6^{[m]}=f_6
+\quad\hbox{on }H_y.
+\tag{NB5}
+\]">\[
+f_4^{[m]}=f_4,\qquad f_5^{[m]}=f_5,\qquad f_6^{[m]}=f_6
+\quad\hbox{on }H_y.
+\tag{NB5}
+\]</span>
+<p>Near <span class="math" data-tex="\(p\)">\(p\)</span>, the first cutoff is one and the reflected term is zero,
+so <span class="math" data-tex="\(h(y)=|y-p|^2/4\)">\(h(y)=|y-p|^2/4\)</span> on an open neighborhood. Since the
+dimension is two, at the exact center</p>
+<span class="math math-display" data-tex="\[
+W_h(p)=0,\qquad Z_h(p)=\varepsilon,
+\qquad \nabla Z_h(p)=0.
+\tag{NB6}
+\]">\[
+W_h(p)=0,\qquad Z_h(p)=\varepsilon,
+\qquad \nabla Z_h(p)=0.
+\tag{NB6}
+\]</span>
+<p>Therefore the full first residual, including its nonlinear advection,
+obeys the exact formula</p>
+<span class="math math-display" data-tex="\[
+f_1^{[m]}(p)=f_1(p)+\varepsilon m.
+\tag{NB7}
+\]">\[
+f_1^{[m]}(p)=f_1(p)+\varepsilon m.
+\tag{NB7}
+\]</span>
+<p>Indeed its velocity perturbation and its vorticity-gradient perturbation
+both vanish at <span class="math" data-tex="\(p\)">\(p\)</span>, whereas the undifferentiated vorticity changes
+by <span class="math" data-tex="\(\varepsilon m\)">\(\varepsilon m\)</span>; the right-side field <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is unchanged.
+Thus the continuous supremum of <span class="math" data-tex="\(|f_1^{[m]}|\)">\(|f_1^{[m]}|\)</span> on the rectangle
+is unbounded as <span class="math" data-tex="\(|m|\to\infty\)">\(|m|\to\infty\)</span>, while all those finite
+observations agree exactly. This proves the limitation in the full smooth
+source parity class without claiming a singular solution or a network
+counterexample.</p>
+<p>The observation fiber contains an infinite-dimensional affine space of
+such fields. In a small open subrectangle disjoint from the finite set
+and its reflection, choose countably many pairwise disjoint closed balls
+with positive radii tending to zero, also disjoint from their reflected
+balls. For example, inside a ball of radius <span class="math" data-tex="\(r\)">\(r\)</span> at a point <span class="math" data-tex="\(q\)">\(q\)</span>
+in that subrectangle, centers <span class="math" data-tex="\(q+(r2^{-n},0)\)">\(q+(r2^{-n},0)\)</span>, <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>,
+and radii <span class="math" data-tex="\(r2^{-n-3}\)">\(r2^{-n-3}\)</span> have the required pairwise separation.
+Choose <span class="math" data-tex="\(r\)">\(r\)</span> small enough that the containing ball and its reflection
+remain disjoint and interior. Repeat NB1–NB2 there. Any finite linear
+combination remains smooth and compactly supported away from the samples.
+The resulting pairs <span class="math" data-tex="\((W_h,Z_h)\)">\((W_h,Z_h)\)</span> are linearly independent: evaluation
+of <span class="math" data-tex="\(Z_h\)">\(Z_h\)</span> at each associated center isolates its coefficient by NB6.
+Only finite linear combinations are used; no unproved smoothness of an
+infinite sum is needed.</p>
+<h2 id="nb2-why-the-fixed-finite-network-is-a-different-explicitly-related-class">NB2. Why the fixed finite network is a different, explicitly related class</h2>
+<p>Every finite real network built from affine maps and <span class="math" data-tex="\(\tanh\)">\(\tanh\)</span> is
+real analytic on the real input plane. The denominator <span class="math" data-tex="\(\cosh x\)">\(\cosh x\)</span>
+never vanishes there, so <span class="math" data-tex="\(\tanh x=\sinh x/\cosh x\)">\(\tanh x=\sinh x/\cosh x\)</span> is real
+analytic on a neighborhood of each real point; finite composition and
+addition preserve that property. Its odd or even first-coordinate
+projection is real analytic too.</p>
+<p>A nonzero compactly supported smooth function such as NB2 cannot equal
+such an analytic output on the connected open half-plane. If equality
+held, the analytic function would vanish on a nonempty open subset
+outside its support. Along any straight segment from that subset to an
+interior point, its restriction is a real analytic function of one real
+variable on a neighborhood of the segment. An analytic function vanishing
+on an interval vanishes on the entire connected interval: its zero
+neighborhood extends past any interior endpoint by the convergent Taylor
+series there, all of whose derivatives are zero by continuity from the
+zero side. Compactness of the segment then continues this identity to
+its other endpoint. The half-plane is convex, so every interior point is
+reached in this way. This contradicts NB6.</p>
+<p>Thus NB1–NB7 describe an exact obstruction and its smooth observation
+fiber, but do not by themselves settle injectivity or error control in a
+specific finite architecture. We now derive the actual finite-network
+derivative bounds needed to compare that architecture with the same
+continuous residuals.</p>
+<h2 id="nb3-every-layer-bias-and-derivative-of-a-finite-tanh-network">NB3. Every layer, bias and derivative of a finite tanh network</h2>
+<p>Let the network input be <span class="math" data-tex="\(z=(z_1,z_2)\)">\(z=(z_1,z_2)\)</span>. For a network with
+<span class="math" data-tex="\(L\)">\(L\)</span> hidden layers, define every layer by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a^{(0)}(z)&amp;=z,\\
+b_i^{(\ell)}(z)&amp;=\sum_{j=1}^{d_{\ell-1}}
+W^{(\ell)}_{ij}a_j^{(\ell-1)}(z)+\beta_i^{(\ell)},\\
+a_i^{(\ell)}(z)&amp;=\tanh b_i^{(\ell)}(z)
+\quad(1\le\ell\le L),\\
+q(z)&amp;=\sum_{j=1}^{d_L}w_j a_j^{(L)}(z)+\beta^{\rm out}.
+\end{aligned}
+\tag{NB8}
+\]">\[
+\begin{aligned}
+a^{(0)}(z)&amp;=z,\\
+b_i^{(\ell)}(z)&amp;=\sum_{j=1}^{d_{\ell-1}}
+W^{(\ell)}_{ij}a_j^{(\ell-1)}(z)+\beta_i^{(\ell)},\\
+a_i^{(\ell)}(z)&amp;=\tanh b_i^{(\ell)}(z)
+\quad(1\le\ell\le L),\\
+q(z)&amp;=\sum_{j=1}^{d_L}w_j a_j^{(L)}(z)+\beta^{\rm out}.
+\end{aligned}
+\tag{NB8}
+\]</span>
+<p>All weights and biases are arbitrary finite real numbers; no value is
+assigned to a source-trained parameter. The source architecture is the
+special case <span class="math" data-tex="\(L=6\)">\(L=6\)</span>, <span class="math" data-tex="\(d_0=2\)">\(d_0=2\)</span>, <span class="math" data-tex="\(d_1=\cdots=d_6=30\)">\(d_1=\cdots=d_6=30\)</span>.
+If the actual input is <span class="math" data-tex="\(y\)">\(y\)</span> instead, NB8 and the derivative proof
+apply in that variable first, followed by SG1–SG4. This does not infer an
+input convention from a symbol in a loss display.</p>
+<p>NB8 explicitly uses an affine output. If an implementation puts a final
+<span class="math" data-tex="\(\tanh\)">\(\tanh\)</span> after that affine map, its derivatives are obtained by
+one additional application of NB12–NB14 with its actual output weights
+and bias; the proof below covers that composition as well.</p>
+<p>Write <span class="math" data-tex="\(t=\tanh x\)">\(t=\tanh x\)</span>. Direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+(\tanh x)&#x27;=1-t^2,\quad
+(\tanh x)&#x27;&#x27;=-2t(1-t^2),\quad
+(\tanh x)&#x27;&#x27;&#x27;=-2+8t^2-6t^4.
+\tag{NB9}
+\]">\[
+(\tanh x)&#x27;=1-t^2,\quad
+(\tanh x)&#x27;&#x27;=-2t(1-t^2),\quad
+(\tanh x)&#x27;&#x27;&#x27;=-2+8t^2-6t^4.
+\tag{NB9}
+\]</span>
+<p>Since <span class="math" data-tex="\(-1&lt;t&lt;1\)">\(-1&lt;t&lt;1\)</span>, their absolute bounds are respectively</p>
+<span class="math math-display" data-tex="\[
+C_1=1,\qquad C_2=\frac4{3\sqrt3},\qquad C_3=2.
+\tag{NB10}
+\]">\[
+C_1=1,\qquad C_2=\frac4{3\sqrt3},\qquad C_3=2.
+\tag{NB10}
+\]</span>
+<p>For the second, maximize <span class="math" data-tex="\(2r(1-r^2)\)">\(2r(1-r^2)\)</span> on <span class="math" data-tex="\(0\le r\le1\)">\(0\le r\le1\)</span>;
+its derivative is <span class="math" data-tex="\(2-6r^2\)">\(2-6r^2\)</span>, and its value at <span class="math" data-tex="\(r=1/\sqrt3\)">\(r=1/\sqrt3\)</span>
+is the displayed constant. For the third put <span class="math" data-tex="\(s=t^2\in[0,1]\)">\(s=t^2\in[0,1]\)</span>.
+The polynomial <span class="math" data-tex="\(-2+8s-6s^2\)">\(-2+8s-6s^2\)</span> has endpoints <span class="math" data-tex="\(-2,0\)">\(-2,0\)</span> and
+its only interior critical point at <span class="math" data-tex="\(s=2/3\)">\(s=2/3\)</span>, with value <span class="math" data-tex="\(2/3\)">\(2/3\)</span>.
+These observations prove all three absolute bounds, including their
+extrema, without a numerical maximization.</p>
+<p>For each hidden component and coordinate indices <span class="math" data-tex="\(k,m,n\in\{1,2\}\)">\(k,m,n\in\{1,2\}\)</span>,
+define nonnegative derivative bounds recursively. The input values are</p>
+<span class="math math-display" data-tex="\[
+A^{(0)}_{j,k}=\delta_{jk},\qquad
+B^{(0)}_{j,km}=0,\qquad C^{(0)}_{j,kmn}=0.
+\tag{NB11}
+\]">\[
+A^{(0)}_{j,k}=\delta_{jk},\qquad
+B^{(0)}_{j,km}=0,\qquad C^{(0)}_{j,kmn}=0.
+\tag{NB11}
+\]</span>
+<p>Given the previous layer, first retain its complete weighted sums</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha_{i,k}^{(\ell)}&amp;=\sum_j|W^{(\ell)}_{ij}|A^{(\ell-1)}_{j,k},\\
+\beta_{i,km}^{(\ell)}&amp;=\sum_j|W^{(\ell)}_{ij}|B^{(\ell-1)}_{j,km},\\
+\gamma_{i,kmn}^{(\ell)}&amp;=\sum_j|W^{(\ell)}_{ij}|C^{(\ell-1)}_{j,kmn}.
+\end{aligned}
+\tag{NB12}
+\]">\[
+\begin{aligned}
+\alpha_{i,k}^{(\ell)}&amp;=\sum_j|W^{(\ell)}_{ij}|A^{(\ell-1)}_{j,k},\\
+\beta_{i,km}^{(\ell)}&amp;=\sum_j|W^{(\ell)}_{ij}|B^{(\ell-1)}_{j,km},\\
+\gamma_{i,kmn}^{(\ell)}&amp;=\sum_j|W^{(\ell)}_{ij}|C^{(\ell-1)}_{j,kmn}.
+\end{aligned}
+\tag{NB12}
+\]</span>
+<p>The letters in NB12 are derivative bounds; the actual affine bias in
+NB8 is the separately indexed <span class="math" data-tex="\(\beta_i^{(\ell)}\)">\(\beta_i^{(\ell)}\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A^{(\ell)}_{i,k}&amp;=\alpha^{(\ell)}_{i,k},\\
+B^{(\ell)}_{i,km}&amp;=\beta^{(\ell)}_{i,km}
++C_2\alpha^{(\ell)}_{i,k}\alpha^{(\ell)}_{i,m},\\
+C^{(\ell)}_{i,kmn}&amp;=\gamma^{(\ell)}_{i,kmn}
++C_2\bigl(\alpha^{(\ell)}_{i,k}\beta^{(\ell)}_{i,mn}
++\alpha^{(\ell)}_{i,m}\beta^{(\ell)}_{i,kn}
++\alpha^{(\ell)}_{i,n}\beta^{(\ell)}_{i,km}\bigr)\\
+&amp;\hspace{2em}+2\alpha^{(\ell)}_{i,k}\alpha^{(\ell)}_{i,m}
+\alpha^{(\ell)}_{i,n}.
+\end{aligned}
+\tag{NB13}
+\]">\[
+\begin{aligned}
+A^{(\ell)}_{i,k}&amp;=\alpha^{(\ell)}_{i,k},\\
+B^{(\ell)}_{i,km}&amp;=\beta^{(\ell)}_{i,km}
++C_2\alpha^{(\ell)}_{i,k}\alpha^{(\ell)}_{i,m},\\
+C^{(\ell)}_{i,kmn}&amp;=\gamma^{(\ell)}_{i,kmn}
++C_2\bigl(\alpha^{(\ell)}_{i,k}\beta^{(\ell)}_{i,mn}
++\alpha^{(\ell)}_{i,m}\beta^{(\ell)}_{i,kn}
++\alpha^{(\ell)}_{i,n}\beta^{(\ell)}_{i,km}\bigr)\\
+&amp;\hspace{2em}+2\alpha^{(\ell)}_{i,k}\alpha^{(\ell)}_{i,m}
+\alpha^{(\ell)}_{i,n}.
+\end{aligned}
+\tag{NB13}
+\]</span>
+<p>These bound the absolute first, second and third mixed partial derivatives
+of <span class="math" data-tex="\(a_i^{(\ell)}\)">\(a_i^{(\ell)}\)</span> on the entire input plane. Here is the induction.
+Differentiation of the affine expression NB8 gives the sums of previous
+derivatives, bounded by NB12. For a scalar <span class="math" data-tex="\(b(z)\)">\(b(z)\)</span>, the complete
+composition derivatives are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_k\tanh b&amp;=\tanh&#x27;(b)b_k,\\
+\partial_{km}\tanh b&amp;=\tanh&#x27;(b)b_{km}
++\tanh&#x27;&#x27;(b)b_kb_m,\\
+\partial_{kmn}\tanh b&amp;=\tanh&#x27;(b)b_{kmn}
++\tanh&#x27;&#x27;(b)(b_kb_{mn}+b_mb_{kn}+b_nb_{km})
++\tanh&#x27;&#x27;&#x27;(b)b_kb_mb_n.
+\end{aligned}
+\tag{NB14}
+\]">\[
+\begin{aligned}
+\partial_k\tanh b&amp;=\tanh&#x27;(b)b_k,\\
+\partial_{km}\tanh b&amp;=\tanh&#x27;(b)b_{km}
++\tanh&#x27;&#x27;(b)b_kb_m,\\
+\partial_{kmn}\tanh b&amp;=\tanh&#x27;(b)b_{kmn}
++\tanh&#x27;&#x27;(b)(b_kb_{mn}+b_mb_{kn}+b_nb_{km})
++\tanh&#x27;&#x27;&#x27;(b)b_kb_mb_n.
+\end{aligned}
+\tag{NB14}
+\]</span>
+<p>Each follows by the product and chain rules, also when indices repeat.
+Apply NB10 and the triangle inequality to get exactly NB13. NB11 starts
+the induction. All biases in NB8 remain in the network; their derivatives
+vanish and the uniform bounds NB10 are valid at their shifted arguments.</p>
+<p>For the output, the complete bounds are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q_0&amp;=|\beta^{\rm out}|+\sum_j|w_j|,\\
+Q_{1,k}&amp;=\sum_j|w_j|A^{(L)}_{j,k},\qquad
+Q_{2,km}=\sum_j|w_j|B^{(L)}_{j,km},\qquad
+Q_{3,kmn}=\sum_j|w_j|C^{(L)}_{j,kmn}.
+\end{aligned}
+\tag{NB15}
+\]">\[
+\begin{aligned}
+Q_0&amp;=|\beta^{\rm out}|+\sum_j|w_j|,\\
+Q_{1,k}&amp;=\sum_j|w_j|A^{(L)}_{j,k},\qquad
+Q_{2,km}=\sum_j|w_j|B^{(L)}_{j,km},\qquad
+Q_{3,kmn}=\sum_j|w_j|C^{(L)}_{j,kmn}.
+\end{aligned}
+\tag{NB15}
+\]</span>
+<p>The first uses <span class="math" data-tex="\(|\tanh|\le1\)">\(|\tanh|\le1\)</span>; the others follow by
+differentiating the affine output and using the proved layer bounds.
+For the exact odd or even projection
+<span class="math" data-tex="\(q_\pm(z)=[q(z)\pm q(\rho z)]/2\)">\(q_\pm(z)=[q(z)\pm q(\rho z)]/2\)</span>, the same bounds hold.
+Every reflected derivative has the appropriate factor <span class="math" data-tex="\(-1\)">\(-1\)</span> for
+each first-coordinate derivative, of absolute value one, and the factor
+one half cancels the sum of the two equal bounds. Thus the source parity
+construction is fully included.</p>
+<h2 id="nb4-an-exact-six-layer-example-of-the-bounds">NB4. An exact six-layer example of the bounds</h2>
+<p>Take the stated six-layer, thirty-unit shape. In every hidden layer keep
+only the first unit active, put its incoming first-channel weight equal
+to one, and all other weights and all biases equal to zero. The first
+layer's first channel is the first input coordinate. The output reads
+that active unit with weight one. The resulting exact function is</p>
+<span class="math math-display" data-tex="\[
+q(z)=\tanh(\tanh(\tanh(\tanh(\tanh(\tanh z_1))))).
+\tag{NB16}
+\]">\[
+q(z)=\tanh(\tanh(\tanh(\tanh(\tanh(\tanh z_1))))).
+\tag{NB16}
+\]</span>
+<p>It is independent of <span class="math" data-tex="\(z_2\)">\(z_2\)</span> and already odd in <span class="math" data-tex="\(z_1\)">\(z_1\)</span>.
+For derivatives in the first coordinate, the recurrence gives</p>
+<span class="math math-display" data-tex="\[
+A_\ell=1,\qquad B_\ell=\ell C_2,\qquad
+C_\ell=2\ell+\frac{3C_2^2}{2}\ell(\ell-1).
+\tag{NB17}
+\]">\[
+A_\ell=1,\qquad B_\ell=\ell C_2,\qquad
+C_\ell=2\ell+\frac{3C_2^2}{2}\ell(\ell-1).
+\tag{NB17}
+\]</span>
+<p>The first two follow immediately from NB13. For the third, its increment
+is <span class="math" data-tex="\(3C_2B_{\ell-1}+2=3C_2^2(\ell-1)+2\)">\(3C_2B_{\ell-1}+2=3C_2^2(\ell-1)+2\)</span>; summing all
+increments from one to <span class="math" data-tex="\(\ell\)">\(\ell\)</span> gives NB17. In particular</p>
+<span class="math math-display" data-tex="\[
+|q|\le1,\quad |\partial_1q|\le1,\quad
+|\partial_1^2q|\le\frac8{\sqrt3},\quad
+|\partial_1^3q|\le\frac{116}{3}.
+\tag{NB18}
+\]">\[
+|q|\le1,\quad |\partial_1q|\le1,\quad
+|\partial_1^2q|\le\frac8{\sqrt3},\quad
+|\partial_1^3q|\le\frac{116}{3}.
+\tag{NB18}
+\]</span>
+<p>At the origin, direct induction in NB14 gives
+<span class="math" data-tex="\(q(0)=0\)">\(q(0)=0\)</span>, <span class="math" data-tex="\(q_1(0)=1\)">\(q_1(0)=1\)</span>, <span class="math" data-tex="\(q_{11}(0)=0\)">\(q_{11}(0)=0\)</span>, and
+<span class="math" data-tex="\(q_{111}(0)=-12\)">\(q_{111}(0)=-12\)</span>: each of the six odd compositions adds
+<span class="math" data-tex="\(-2\)">\(-2\)</span> to the third derivative there. All derivatives involving
+the second coordinate vanish. This is a fully specified example in the
+actual layer shape, not the source-trained profile or a solution claim.</p>
+<h2 id="nb5-retain-the-original-derivative-factors-in-all-residual-bounds">NB5. Retain the original derivative factors in all residual bounds</h2>
+<p>For each predicted Cartesian scalar
+<span class="math" data-tex="\(q\in\{\widehat U_1,\widehat U_2,\widehat\Omega,
+\widehat\Phi,\widehat\Psi\}\)">\(q\in\{\widehat U_1,\widehat U_2,\widehat\Omega,
+\widehat\Phi,\widehat\Psi\}\)</span>, use NB15 to set
+<span class="math" data-tex="\(Q_1(q)=\max_k Q_{1,k}\)">\(Q_1(q)=\max_k Q_{1,k}\)</span>, <span class="math" data-tex="\(Q_2(q)=\max_{k,m}Q_{2,km}\)">\(Q_2(q)=\max_{k,m}Q_{2,km}\)</span>
+and <span class="math" data-tex="\(Q_3(q)=\max_{k,m,n}Q_{3,kmn}\)">\(Q_3(q)=\max_{k,m,n}Q_{3,kmn}\)</span>, retaining the individual
+arrays when a sharper value is needed. These are explicit bounds, not
+replacement definitions of the original fields. For the original
+derivative <span class="math" data-tex="\(D_iq=a_i\partial_iq\)">\(D_iq=a_i\partial_iq\)</span> of SG3, differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_k(D_iq)&amp;=a_i\partial_{ki}q
++\delta_{ik}a_i&#x27;\partial_iq,\\
+\partial_{km}(D_iq)&amp;=a_i\partial_{kmi}q
++\delta_{ik}a_i&#x27;\partial_{mi}q
++\delta_{im}a_i&#x27;\partial_{ki}q
++\delta_{ik}\delta_{im}a_i&#x27;&#x27;\partial_iq,\\
+a_i&#x27;&amp;=-\operatorname{sech}z_i\tanh z_i,\qquad
+a_i&#x27;&#x27;=\operatorname{sech}z_i(2\tanh^2z_i-1).
+\end{aligned}
+\tag{NB19}
+\]">\[
+\begin{aligned}
+\partial_k(D_iq)&amp;=a_i\partial_{ki}q
++\delta_{ik}a_i&#x27;\partial_iq,\\
+\partial_{km}(D_iq)&amp;=a_i\partial_{kmi}q
++\delta_{ik}a_i&#x27;\partial_{mi}q
++\delta_{im}a_i&#x27;\partial_{ki}q
++\delta_{ik}\delta_{im}a_i&#x27;&#x27;\partial_iq,\\
+a_i&#x27;&amp;=-\operatorname{sech}z_i\tanh z_i,\qquad
+a_i&#x27;&#x27;=\operatorname{sech}z_i(2\tanh^2z_i-1).
+\end{aligned}
+\tag{NB19}
+\]</span>
+<p>The full factors are displayed before taking their bounds. They satisfy
+<span class="math" data-tex="\(|a_i|\le1\)">\(|a_i|\le1\)</span>, <span class="math" data-tex="\(|a_i&#x27;|\le1/2\)">\(|a_i&#x27;|\le1/2\)</span>, <span class="math" data-tex="\(|a_i&#x27;&#x27;|\le1\)">\(|a_i&#x27;&#x27;|\le1\)</span>.
+For the middle bound, its square is <span class="math" data-tex="\(t^2(1-t^2)\le1/4\)">\(t^2(1-t^2)\le1/4\)</span>;
+the last follows from <span class="math" data-tex="\(|2t^2-1|\le1\)">\(|2t^2-1|\le1\)</span> and <span class="math" data-tex="\(\operatorname{sech}\le1\)">\(\operatorname{sech}\le1\)</span>.
+Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|D_iq|&amp;\le Q_1(q),\\
+|\partial_k(D_iq)|&amp;\le E_{ki}(q)
+:=Q_2(q)+\frac{\delta_{ik}}2Q_1(q),\\
+|\partial_{km}(D_iq)|&amp;\le Q_3(q)
++\frac{\delta_{ik}+\delta_{im}}2Q_2(q)
++\delta_{ik}\delta_{im}Q_1(q).
+\end{aligned}
+\tag{NB20}
+\]">\[
+\begin{aligned}
+|D_iq|&amp;\le Q_1(q),\\
+|\partial_k(D_iq)|&amp;\le E_{ki}(q)
+:=Q_2(q)+\frac{\delta_{ik}}2Q_1(q),\\
+|\partial_{km}(D_iq)|&amp;\le Q_3(q)
++\frac{\delta_{ik}+\delta_{im}}2Q_2(q)
++\delta_{ik}\delta_{im}Q_1(q).
+\end{aligned}
+\tag{NB20}
+\]</span>
+<p>Work on the actual coordinate rectangle <span class="math" data-tex="\(Z_L\)">\(Z_L\)</span> of SG5. Put
+<span class="math" data-tex="\(p=1+\lambda\)">\(p=1+\lambda\)</span> and retain the Cartesian drift components
+<span class="math" data-tex="\(A_i=p\sinh z_i+\widehat U_i\)">\(A_i=p\sinh z_i+\widehat U_i\)</span>. Their full bounds are</p>
+<span class="math math-display" data-tex="\[
+|A_i|\le M_i:=|p|\sinh L_i+Q_0(\widehat U_i),\qquad
+|\partial_kA_i|\le N_{ik}:=
+|p|\delta_{ik}\cosh L_i+Q_1(\widehat U_i).
+\tag{NB21}
+\]">\[
+|A_i|\le M_i:=|p|\sinh L_i+Q_0(\widehat U_i),\qquad
+|\partial_kA_i|\le N_{ik}:=
+|p|\delta_{ik}\cosh L_i+Q_1(\widehat U_i).
+\tag{NB21}
+\]</span>
+<p>We use <span class="math" data-tex="\(A_iD_iq\)">\(A_iD_iq\)</span>, exactly equal to <span class="math" data-tex="\(v^i\partial_iq\)">\(v^i\partial_iq\)</span>,
+in the following calculation. The original drift and the original
+derivative factor thus remain identifiable rather than being replaced
+by a different transport field.</p>
+<p>The full derivative of the first residual is</p>
+<span class="math math-display" data-tex="\[
+\partial_kF_1=\partial_k\widehat\Omega-\partial_k\widehat\Phi
++\sum_{i=1}^2[(\partial_kA_i)D_i\widehat\Omega
++A_i\partial_k(D_i\widehat\Omega)].
+\tag{NB22}
+\]">\[
+\partial_kF_1=\partial_k\widehat\Omega-\partial_k\widehat\Phi
++\sum_{i=1}^2[(\partial_kA_i)D_i\widehat\Omega
++A_i\partial_k(D_i\widehat\Omega)].
+\tag{NB22}
+\]</span>
+<p>It has the explicit bound</p>
+<span class="math math-display" data-tex="\[
+H_{1k}=Q_1(\widehat\Omega)+Q_1(\widehat\Phi)
++\sum_{i=1}^2[N_{ik}Q_1(\widehat\Omega)
++M_i E_{ki}(\widehat\Omega)].
+\tag{NB23}
+\]">\[
+H_{1k}=Q_1(\widehat\Omega)+Q_1(\widehat\Phi)
++\sum_{i=1}^2[N_{ik}Q_1(\widehat\Omega)
++M_i E_{ki}(\widehat\Omega)].
+\tag{NB23}
+\]</span>
+<p>For the next two residuals, set <span class="math" data-tex="\(G_1=\widehat\Phi\)">\(G_1=\widehat\Phi\)</span>,
+<span class="math" data-tex="\(G_2=\widehat\Psi\)">\(G_2=\widehat\Psi\)</span>, take <span class="math" data-tex="\(i\in\{1,2\}\)">\(i\in\{1,2\}\)</span> and
+<span class="math" data-tex="\(j=3-i\)">\(j=3-i\)</span>. Their complete original expression and derivative are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_{i+1}&amp;=(2+D_i\widehat U_i)G_i
++\sum_{a=1}^2 A_aD_aG_i
++(D_i\widehat U_j)G_j,\\
+\partial_kF_{i+1}
+&amp;=\partial_k(D_i\widehat U_i)G_i
++(2+D_i\widehat U_i)\partial_kG_i\\
+&amp;\quad+\sum_{a=1}^2[(\partial_kA_a)D_aG_i
++A_a\partial_k(D_aG_i)]\\
+&amp;\quad+\partial_k(D_i\widehat U_j)G_j
++(D_i\widehat U_j)\partial_kG_j.
+\end{aligned}
+\tag{NB24}
+\]">\[
+\begin{aligned}
+F_{i+1}&amp;=(2+D_i\widehat U_i)G_i
++\sum_{a=1}^2 A_aD_aG_i
++(D_i\widehat U_j)G_j,\\
+\partial_kF_{i+1}
+&amp;=\partial_k(D_i\widehat U_i)G_i
++(2+D_i\widehat U_i)\partial_kG_i\\
+&amp;\quad+\sum_{a=1}^2[(\partial_kA_a)D_aG_i
++A_a\partial_k(D_aG_i)]\\
+&amp;\quad+\partial_k(D_i\widehat U_j)G_j
++(D_i\widehat U_j)\partial_kG_j.
+\end{aligned}
+\tag{NB24}
+\]</span>
+<p>The resulting explicit bounds are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_{i+1,k}={}&amp;E_{ki}(\widehat U_i)Q_0(G_i)
++(2+Q_1(\widehat U_i))Q_1(G_i)\\
+&amp;+\sum_{a=1}^2[N_{ak}Q_1(G_i)+M_a E_{ka}(G_i)]\\
+&amp;+E_{ki}(\widehat U_j)Q_0(G_j)
++Q_1(\widehat U_j)Q_1(G_j).
+\end{aligned}
+\tag{NB25}
+\]">\[
+\begin{aligned}
+H_{i+1,k}={}&amp;E_{ki}(\widehat U_i)Q_0(G_i)
++(2+Q_1(\widehat U_i))Q_1(G_i)\\
+&amp;+\sum_{a=1}^2[N_{ak}Q_1(G_i)+M_a E_{ka}(G_i)]\\
+&amp;+E_{ki}(\widehat U_j)Q_0(G_j)
++Q_1(\widehat U_j)Q_1(G_j).
+\end{aligned}
+\tag{NB25}
+\]</span>
+<p>Finally differentiating the last three expressions of SG11 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_{4k}&amp;=E_{k1}(\widehat U_1)+E_{k2}(\widehat U_2),\\
+H_{5k}&amp;=Q_1(\widehat\Omega)+E_{k1}(\widehat U_2)
++E_{k2}(\widehat U_1),\\
+H_{6k}&amp;=E_{k2}(\widehat\Phi)+E_{k1}(\widehat\Psi).
+\end{aligned}
+\tag{NB26}
+\]">\[
+\begin{aligned}
+H_{4k}&amp;=E_{k1}(\widehat U_1)+E_{k2}(\widehat U_2),\\
+H_{5k}&amp;=Q_1(\widehat\Omega)+E_{k1}(\widehat U_2)
++E_{k2}(\widehat U_1),\\
+H_{6k}&amp;=E_{k2}(\widehat\Phi)+E_{k1}(\widehat\Psi).
+\end{aligned}
+\tag{NB26}
+\]</span>
+<p>For every <span class="math" data-tex="\(r=1,\ldots,6\)">\(r=1,\ldots,6\)</span>, these formulas prove
+<span class="math" data-tex="\(|\partial_kF_r|\le H_{rk}\)">\(|\partial_kF_r|\le H_{rk}\)</span> on the complete original
+computational rectangle. The sign <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> in <span class="math" data-tex="\(F_5\)">\(F_5\)</span>
+has absolute value one; no sign choice is imposed on the fields themselves.
+Every quantity on the right is determined by the specified weights,
+biases, exponent and actual domain lengths, via the proved finite sums.</p>
+<h2 id="nb6-from-actual-point-data-to-continuous-finite-domain-error-bounds">NB6. From actual point data to continuous finite-domain error bounds</h2>
+<p>Let sample points <span class="math" data-tex="\(z^{(m)}\in Z_L\)">\(z^{(m)}\in Z_L\)</span> cover the rectangle in the
+following precise sense: for each <span class="math" data-tex="\(z\in Z_L\)">\(z\in Z_L\)</span> there is one
+sample with <span class="math" data-tex="\(|z_k-z_k^{(m)}|\le h_k\)">\(|z_k-z_k^{(m)}|\le h_k\)</span> for <span class="math" data-tex="\(k=1,2\)">\(k=1,2\)</span>.
+For a tensor grid containing both endpoints in each coordinate, this
+holds with half of its largest mesh gap in each coordinate: choose the
+nearest coordinate node in each interval and use their tensor product.
+No covering property is inferred merely from a sample count.</p>
+<p>The straight segment between <span class="math" data-tex="\(z\)">\(z\)</span> and that sample stays in the
+rectangle. The fundamental theorem of calculus along the segment gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_r(z)-F_r(z^{(m)})
+&amp;=\int_0^1\sum_{k=1}^2
+(z_k-z_k^{(m)})\partial_kF_r
+(z^{(m)}+t(z-z^{(m)}))\,dt,\\
+\|F_r\|_{L^\infty(Z_L)}
+&amp;\le \max_m|F_r(z^{(m)})|+H_{r1}h_1+H_{r2}h_2.
+\end{aligned}
+\tag{NB27}
+\]">\[
+\begin{aligned}
+F_r(z)-F_r(z^{(m)})
+&amp;=\int_0^1\sum_{k=1}^2
+(z_k-z_k^{(m)})\partial_kF_r
+(z^{(m)}+t(z-z^{(m)}))\,dt,\\
+\|F_r\|_{L^\infty(Z_L)}
+&amp;\le \max_m|F_r(z^{(m)})|+H_{r1}h_1+H_{r2}h_2.
+\end{aligned}
+\tag{NB27}
+\]</span>
+<p>This proves a continuous bound for any particular network whose
+parameters and sample values are supplied exactly or bounded by verified
+intervals. All terms are explicit. If only the exact average loss
+<span class="math" data-tex="\(\ell_r=N_r^{-1}\sum_{m=1}^{N_r}|F_r(z^{(m)})|^2\)">\(\ell_r=N_r^{-1}\sum_{m=1}^{N_r}|F_r(z^{(m)})|^2\)</span> is
+available, nonnegativity of every summand gives the full conversion</p>
+<span class="math math-display" data-tex="\[
+\max_m|F_r(z^{(m)})|\le\sqrt{N_r\ell_r}.
+\tag{NB28}
+\]">\[
+\max_m|F_r(z^{(m)})|\le\sqrt{N_r\ell_r}.
+\tag{NB28}
+\]</span>
+<p>The factor <span class="math" data-tex="\(\sqrt{N_r}\)">\(\sqrt{N_r}\)</span> cannot be dropped. If the full source
+cost is</p>
+<span class="math math-display" data-tex="\[
+J_{\rm cost}=\frac18\sum_{j=1}^{8}\ell_{c,j}
++\gamma\left(\frac16\sum_{r=1}^{6}\ell_r
++\frac16\sum_{r=1}^{6}\ell_{s,r}\right),
+\qquad \gamma&gt;0,
+\tag{NB29}
+\]">\[
+J_{\rm cost}=\frac18\sum_{j=1}^{8}\ell_{c,j}
++\gamma\left(\frac16\sum_{r=1}^{6}\ell_r
++\frac16\sum_{r=1}^{6}\ell_{s,r}\right),
+\qquad \gamma&gt;0,
+\tag{NB29}
+\]</span>
+<p>and all its terms are nonnegative, then
+<span class="math" data-tex="\(\ell_r\le6J_{\rm cost}/\gamma\)">\(\ell_r\le6J_{\rm cost}/\gamma\)</span> and NB28 becomes
+<span class="math" data-tex="\(\max_m|F_r(z^{(m)})|\le\sqrt{6N_rJ_{\rm cost}/\gamma}\)">\(\max_m|F_r(z^{(m)})|\le\sqrt{6N_rJ_{\rm cost}/\gamma}\)</span>.
+For the stated <span class="math" data-tex="\(\gamma=1/10\)">\(\gamma=1/10\)</span>, this is
+<span class="math" data-tex="\(\sqrt{60N_rJ_{\rm cost}}\)">\(\sqrt{60N_rJ_{\rm cost}}\)</span>, before adding the two coverage
+terms in NB27. It is a bound on the actual value samples entering that
+cost, not samples belonging to a different loss.</p>
+<p>To use RQ18–RQ19, transfer these continuous bounds by SG14–SG17.
+The original lengths remain <span class="math" data-tex="\(\sinh L_1\)">\(\sinh L_1\)</span>, <span class="math" data-tex="\(\sinh L_2\)">\(\sinh L_2\)</span>,
+and the original derivative in the pressure error is
+<span class="math" data-tex="\(a_i\partial_iF_5\)">\(a_i\partial_iF_5\)</span>. Its absolute bound is supplied by NB26
+with the full factor of SG3 retained before taking a supremum.
+Wall and anchor errors require their actual values too: RQ6 supplies
+the scalar value at the origin, and the sharper scalar estimate applies
+only to a wall condition that is exact. If the wall is merely sampled,
+use the full RQ7 horizontal integrand or bound its wall error; do not
+silently replace sampled impermeability by exact impermeability.</p>
+<p>NB27 is the concrete next operation after the smooth observation
+obstruction: finite-network parameters give proved derivative bounds,
+and an actual covering radius turns finite observations into continuous
+finite-domain errors. It does not establish the missing source-trained
+parameter bounds, infinite-domain tails, an exact nearby profile or its
+nonlinear stability. Those are distinct subsequent calculations with
+their original hypotheses and equations retained.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<p>These exercises use the exact fields and signs of RQ1–RQ23, the
+coordinate map SG1–SG23 and the network bounds NB1–NB29. Write
+<span class="math" data-tex="\(H=\{(y_1,y_2):y_2\ge0\}\)">\(H=\{(y_1,y_2):y_2\ge0\}\)</span>, <span class="math" data-tex="\(\lambda&gt;-1\)">\(\lambda&gt;-1\)</span> and
+<span class="math" data-tex="\(\varepsilon\in\{-1,1\}\)">\(\varepsilon\in\{-1,1\}\)</span>. The original velocity is Cartesian.
+The residuals, scalar and pressure are the original objects of those
+parts; no coordinate factor or additive constant is absorbed into them.</p>
+<h3 id="exercise-1-an-entire-affine-family-including-pressure-and-physical-time">Exercise 1. An entire affine family, including pressure and physical time</h3>
+<p>Take real constants <span class="math" data-tex="\(\alpha,K,C,P_0\)">\(\alpha,K,C,P_0\)</span> and the fields</p>
+<span class="math math-display" data-tex="\[
+U=(\alpha y_1,-\alpha y_2),\qquad
+\Theta=C+Ky_2,\qquad \Omega=\Phi=0,\quad\Psi=K.
+\tag{EX1}
+\]">\[
+U=(\alpha y_1,-\alpha y_2),\qquad
+\Theta=C+Ky_2,\qquad \Omega=\Phi=0,\quad\Psi=K.
+\tag{EX1}
+\]</span>
+<p>Find the pressure, all six profile errors, the physical fields and every
+restriction needed for these fields to solve the original equations.
+Check the source wall, parity, origin and far-field conditions.</p>
+<p><strong>Solution.</strong> The full drift is</p>
+<span class="math math-display" data-tex="\[
+V=((1+\lambda+\alpha)y_1,(1+\lambda-\alpha)y_2).
+\]">\[
+V=((1+\lambda+\alpha)y_1,(1+\lambda-\alpha)y_2).
+\]</span>
+<p>Thus the first component of <span class="math" data-tex="\(-\lambda U+V\cdot\nabla U\)">\(-\lambda U+V\cdot\nabla U\)</span> is
+<span class="math" data-tex="\(\alpha(1+\alpha)y_1\)">\(\alpha(1+\alpha)y_1\)</span>, and the second is
+<span class="math" data-tex="\((\alpha^2-\alpha)y_2\)">\((\alpha^2-\alpha)y_2\)</span>. Subtracting
+<span class="math" data-tex="\(\varepsilon\Theta e_2\)">\(\varepsilon\Theta e_2\)</span> and integrating the two required
+pressure derivatives gives</p>
+<span class="math math-display" data-tex="\[
+P=P_0-\frac{\alpha(1+\alpha)}2y_1^2
++\frac{\varepsilon K+\alpha-\alpha^2}2y_2^2
++\varepsilon Cy_2.
+\tag{EX2}
+\]">\[
+P=P_0-\frac{\alpha(1+\alpha)}2y_1^2
++\frac{\varepsilon K+\alpha-\alpha^2}2y_2^2
++\varepsilon Cy_2.
+\tag{EX2}
+\]</span>
+<p>Direct differentiation now gives the original momentum residual
+<span class="math" data-tex="\(M=0\)">\(M=0\)</span> and divergence <span class="math" data-tex="\(D=0\)">\(D=0\)</span>. The scalar residual and all six
+predicted-field residuals are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T&amp;=(1-\lambda)C+(2-\alpha)Ky_2,\\
+(f_1,f_2,f_3,f_4,f_5,f_6)
+&amp;=(0,0,(2-\alpha)K,0,0,0).
+\end{aligned}
+\tag{EX3}
+\]">\[
+\begin{aligned}
+T&amp;=(1-\lambda)C+(2-\alpha)Ky_2,\\
+(f_1,f_2,f_3,f_4,f_5,f_6)
+&amp;=(0,0,(2-\alpha)K,0,0,0).
+\end{aligned}
+\tag{EX3}
+\]</span>
+<p>Indeed, the curl of <span class="math" data-tex="\(U\)">\(U\)</span> is zero, its divergence is
+<span class="math" data-tex="\(\alpha-\alpha=0\)">\(\alpha-\alpha=0\)</span>, both predicted scalar gradients are constant,
+and <span class="math" data-tex="\(2+\partial_2U_2=2-\alpha\)">\(2+\partial_2U_2=2-\alpha\)</span>. The scalar equation follows
+by adding <span class="math" data-tex="\((1-\lambda)(C+Ky_2)\)">\((1-\lambda)(C+Ky_2)\)</span> to
+<span class="math" data-tex="\((1+\lambda-\alpha)Ky_2\)">\((1+\lambda-\alpha)Ky_2\)</span>. Consequently the complete equations
+hold exactly when</p>
+<span class="math math-display" data-tex="\[
+(1-\lambda)C=0,\qquad (2-\alpha)K=0.
+\tag{EX4}
+\]">\[
+(1-\lambda)C=0,\qquad (2-\alpha)K=0.
+\tag{EX4}
+\]</span>
+<p>Both conditions are necessary because a constant and the function
+<span class="math" data-tex="\(y_2\)">\(y_2\)</span> are linearly independent on <span class="math" data-tex="\(H\)">\(H\)</span>; they are sufficient by
+EX2–EX3. In particular the first condition is not detected by the six
+derivative residuals alone, and <span class="math" data-tex="\(C\)">\(C\)</span> is unrestricted when
+<span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>.</p>
+<p>For physical time <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, retain <span class="math" data-tex="\(\tau=1-t&gt;0\)">\(\tau=1-t&gt;0\)</span> and
+<span class="math" data-tex="\(y=x/\tau^{1+\lambda}\)">\(y=x/\tau^{1+\lambda}\)</span>. The original similarity map gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u(t,x)&amp;=\left(\frac{\alpha x_1}{\tau},
+-\frac{\alpha x_2}{\tau}\right),\\
+\theta(t,x)&amp;=C\tau^{\lambda-1}+Kx_2\tau^{-2},\\
+p(t,x)&amp;=P_0\tau^{2\lambda}
+-\frac{\alpha(1+\alpha)x_1^2}{2\tau^2}
++\frac{(\varepsilon K+\alpha-\alpha^2)x_2^2}{2\tau^2}
++\varepsilon Cx_2\tau^{\lambda-1},\\
+\partial_t\theta+u\cdot\nabla_x\theta
+&amp;=(1-\lambda)C\tau^{\lambda-2}
++(2-\alpha)Kx_2\tau^{-3}.
+\end{aligned}
+\tag{EX5}
+\]">\[
+\begin{aligned}
+u(t,x)&amp;=\left(\frac{\alpha x_1}{\tau},
+-\frac{\alpha x_2}{\tau}\right),\\
+\theta(t,x)&amp;=C\tau^{\lambda-1}+Kx_2\tau^{-2},\\
+p(t,x)&amp;=P_0\tau^{2\lambda}
+-\frac{\alpha(1+\alpha)x_1^2}{2\tau^2}
++\frac{(\varepsilon K+\alpha-\alpha^2)x_2^2}{2\tau^2}
++\varepsilon Cx_2\tau^{\lambda-1},\\
+\partial_t\theta+u\cdot\nabla_x\theta
+&amp;=(1-\lambda)C\tau^{\lambda-2}
++(2-\alpha)Kx_2\tau^{-3}.
+\end{aligned}
+\tag{EX5}
+\]</span>
+<p>To check momentum directly, <span class="math" data-tex="\(\partial_tu_1=\alpha x_1/\tau^2\)">\(\partial_tu_1=\alpha x_1/\tau^2\)</span>
+and <span class="math" data-tex="\(u\cdot\nabla u_1=\alpha^2x_1/\tau^2\)">\(u\cdot\nabla u_1=\alpha^2x_1/\tau^2\)</span>. Their sum cancels
+<span class="math" data-tex="\(\partial_1p\)">\(\partial_1p\)</span>. Similarly the second acceleration is
+<span class="math" data-tex="\((\alpha^2-\alpha)x_2/\tau^2\)">\((\alpha^2-\alpha)x_2/\tau^2\)</span>; adding <span class="math" data-tex="\(\partial_2p\)">\(\partial_2p\)</span>
+leaves exactly <span class="math" data-tex="\(\varepsilon\theta\)">\(\varepsilon\theta\)</span>. The time-dependent pressure
+constant is retained and has zero spatial gradient.</p>
+<p>The wall condition <span class="math" data-tex="\(U_2(y_1,0)=0\)">\(U_2(y_1,0)=0\)</span> and the original horizontal
+parities hold: <span class="math" data-tex="\(U_1,\Omega,\Phi\)">\(U_1,\Omega,\Phi\)</span> are odd in <span class="math" data-tex="\(y_1\)">\(y_1\)</span>, and
+<span class="math" data-tex="\(U_2,\Psi,\Theta,P\)">\(U_2,\Psi,\Theta,P\)</span> are even. But the required source anchor
+<span class="math" data-tex="\(\partial_1\Omega(0)=-1\)">\(\partial_1\Omega(0)=-1\)</span> fails because it is zero here.
+The far-field condition <span class="math" data-tex="\(\nabla U\to0\)">\(\nabla U\to0\)</span> forces <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>,
+and <span class="math" data-tex="\(\Psi\to0\)">\(\Psi\to0\)</span> forces <span class="math" data-tex="\(K=0\)">\(K=0\)</span>. Neither restores the anchor.
+Moreover, if <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, the original kinetic energy is infinite:
+on each <span class="math" data-tex="\([-R,R]\times[0,R]\)">\([-R,R]\times[0,R]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac12\int_{-R}^R\int_0^R |u(t,x)|^2\,dx_2\,dx_1
+=\frac{\alpha^2}{2\tau^2}
+\left(\frac{2R^4}{3}+\frac{2R^4}{3}\right)
+=\frac{2\alpha^2R^4}{3\tau^2}\longrightarrow\infty.
+\tag{EX6}
+\]">\[
+\frac12\int_{-R}^R\int_0^R |u(t,x)|^2\,dx_2\,dx_1
+=\frac{\alpha^2}{2\tau^2}
+\left(\frac{2R^4}{3}+\frac{2R^4}{3}\right)
+=\frac{2\alpha^2R^4}{3\tau^2}\longrightarrow\infty.
+\tag{EX6}
+\]</span>
+<p>This family solves exactly the equations under EX4. It does not supply
+the source's anchored decaying profile or a finite-energy blowup example.</p>
+<h3 id="exercise-2-two-incompatible-predictions-and-their-exact-reconstructed-fields">Exercise 2. Two incompatible predictions and their exact reconstructed fields</h3>
+<p>Calculate every error and the RQ finite-path reconstruction for each of
+the following quintuples. What does a successful reconstructed momentum
+equation say about the separately predicted fields?</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|ccccc}
+&amp;U_1&amp;U_2&amp;\Omega&amp;\Phi&amp;\Psi\\\hline
+\mathrm{A}&amp;0&amp;0&amp;0&amp;y_1y_2&amp;0\\
+\mathrm{B}&amp;y_1y_2&amp;-y_2^2/2&amp;0&amp;0&amp;0
+\end{array}
+\qquad C=0.
+\tag{EX7}
+\]">\[
+\begin{array}{c|ccccc}
+&amp;U_1&amp;U_2&amp;\Omega&amp;\Phi&amp;\Psi\\\hline
+\mathrm{A}&amp;0&amp;0&amp;0&amp;y_1y_2&amp;0\\
+\mathrm{B}&amp;y_1y_2&amp;-y_2^2/2&amp;0&amp;0&amp;0
+\end{array}
+\qquad C=0.
+\tag{EX7}
+\]</span>
+<p><strong>Solution.</strong> For A, direct use of the six original definitions gives</p>
+<span class="math math-display" data-tex="\[
+(f_1,f_2,f_3,f_4,f_5,f_6)
+=(-y_1y_2,(4+2\lambda)y_1y_2,0,0,0,y_1).
+\tag{EX8}
+\]">\[
+(f_1,f_2,f_3,f_4,f_5,f_6)
+=(-y_1y_2,(4+2\lambda)y_1y_2,0,0,0,y_1).
+\tag{EX8}
+\]</span>
+<p>The two advection contributions to <span class="math" data-tex="\(f_2\)">\(f_2\)</span> are each
+<span class="math" data-tex="\((1+\lambda)y_1y_2\)">\((1+\lambda)y_1y_2\)</span>, in addition to <span class="math" data-tex="\(2y_1y_2\)">\(2y_1y_2\)</span>.
+The path correction is <span class="math" data-tex="\(I=y_1y_2\)">\(I=y_1y_2\)</span>. Since <span class="math" data-tex="\(\Phi(y_1,0)=0\)">\(\Phi(y_1,0)=0\)</span>
+and <span class="math" data-tex="\(\Psi=0\)">\(\Psi=0\)</span>, the reconstructed scalar is <span class="math" data-tex="\(\Theta=0\)">\(\Theta=0\)</span>.
+The entire pressure curl integrand is
+<span class="math" data-tex="\(B=f_1+I=0\)">\(B=f_1+I=0\)</span>, so <span class="math" data-tex="\(P=P_0\)">\(P=P_0\)</span> and <span class="math" data-tex="\(M=T=D=0\)">\(M=T=D=0\)</span>.
+Nevertheless <span class="math" data-tex="\(\Phi\ne\partial_1\Theta\)">\(\Phi\ne\partial_1\Theta\)</span> away from its zero
+set. RQ's exact identity is <span class="math" data-tex="\(\partial_1\Theta=\Phi-I\)">\(\partial_1\Theta=\Phi-I\)</span>, which
+records precisely this mismatch. For example,
+<span class="math" data-tex="\((2+\partial_1U_1)I+V\cdot\nabla I=(4+2\lambda)y_1y_2\)">\((2+\partial_1U_1)I+V\cdot\nabla I=(4+2\lambda)y_1y_2\)</span>,
+so the full formula for <span class="math" data-tex="\(\partial_1T\)">\(\partial_1T\)</span> cancels EX8 exactly.</p>
+<p>For B, divergence is <span class="math" data-tex="\(y_2-y_2=0\)">\(y_2-y_2=0\)</span>, whereas the actual curl is
+<span class="math" data-tex="\(-y_1\)">\(-y_1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(f_1,f_2,f_3,f_4,f_5,f_6)&amp;=(0,0,0,0,\varepsilon y_1,0),\\
+V&amp;=(y_1(1+\lambda+y_2),y_2(1+\lambda-y_2/2)),\\
+\Theta&amp;=I=0.
+\end{aligned}
+\tag{EX9}
+\]">\[
+\begin{aligned}
+(f_1,f_2,f_3,f_4,f_5,f_6)&amp;=(0,0,0,0,\varepsilon y_1,0),\\
+V&amp;=(y_1(1+\lambda+y_2),y_2(1+\lambda-y_2/2)),\\
+\Theta&amp;=I=0.
+\end{aligned}
+\tag{EX9}
+\]</span>
+<p>Retaining both contributions to each component of <span class="math" data-tex="\(V\cdot\nabla U\)">\(V\cdot\nabla U\)</span>
+gives the pressure target and its curl integrand</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_1&amp;=-(\lambda+2)y_1y_2-y_1y_2^2/2,\\
+K_2&amp;=(\lambda+2)y_2^2/2-y_2^3/2,\\
+B&amp;=-\varepsilon y_1(\lambda+2+y_2).
+\end{aligned}
+\tag{EX10}
+\]">\[
+\begin{aligned}
+K_1&amp;=-(\lambda+2)y_1y_2-y_1y_2^2/2,\\
+K_2&amp;=(\lambda+2)y_2^2/2-y_2^3/2,\\
+B&amp;=-\varepsilon y_1(\lambda+2+y_2).
+\end{aligned}
+\tag{EX10}
+\]</span>
+<p>The horizontal path contribution to pressure is zero. Its vertical
+contribution and the resulting residual are exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P&amp;=P_0+(\lambda+2)y_2^3/6-y_2^4/8,\\
+M&amp;=((\lambda+2)y_1y_2+y_1y_2^2/2,0),\qquad T=D=0.
+\end{aligned}
+\tag{EX11}
+\]">\[
+\begin{aligned}
+P&amp;=P_0+(\lambda+2)y_2^3/6-y_2^4/8,\\
+M&amp;=((\lambda+2)y_1y_2+y_1y_2^2/2,0),\qquad T=D=0.
+\end{aligned}
+\tag{EX11}
+\]</span>
+<p>Both equal direct differentiation; also
+<span class="math" data-tex="\(M_1=-\varepsilon\int_0^{y_2}B(y_1,s)\,ds\)">\(M_1=-\varepsilon\int_0^{y_2}B(y_1,s)\,ds\)</span>, retaining
+the sign twice. Since <span class="math" data-tex="\(\lambda&gt;-1\)">\(\lambda&gt;-1\)</span>, the factor multiplying
+<span class="math" data-tex="\(|y_1|\)">\(|y_1|\)</span> is nonnegative and increasing in <span class="math" data-tex="\(y_2\ge0\)">\(y_2\ge0\)</span>.
+On the original rectangle <span class="math" data-tex="\([-A,A]\times[0,B_0]\)">\([-A,A]\times[0,B_0]\)</span>, with
+<span class="math" data-tex="\(A,B_0&gt;0\)">\(A,B_0&gt;0\)</span>, its exact supremum is</p>
+<span class="math math-display" data-tex="\[
+\|M\|_\infty=A\left((\lambda+2)B_0+\frac{B_0^2}{2}\right).
+\tag{EX12}
+\]">\[
+\|M\|_\infty=A\left((\lambda+2)B_0+\frac{B_0^2}{2}\right).
+\tag{EX12}
+\]</span>
+<p>The generic RQ18 bound instead yields
+<span class="math" data-tex="\(A((\lambda+2)B_0+B_0^2)\)">\(A((\lambda+2)B_0+B_0^2)\)</span>: it first bounds the full drift by
+its rectangle supremum. Integrating the actual drift as in EX11 retains
+the smaller second term. Both quintuples obey the wall and horizontal
+parities, but neither obeys the origin vorticity anchor. Neither example
+changes a claim about a profile satisfying all six equations and all
+the original source conditions.</p>
+<h3 id="exercise-3-two-different-averages-of-an-actual-residual">Exercise 3. Two different averages of an actual residual</h3>
+<p>Let <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, <span class="math" data-tex="\(\Omega=y_1/(\lambda+2)\)">\(\Omega=y_1/(\lambda+2)\)</span>, and
+<span class="math" data-tex="\(\Phi=\Psi=0\)">\(\Phi=\Psi=0\)</span>. Calculate the original and coordinate averages
+of the first residual and its gradient on the corresponding rectangles.</p>
+<p><strong>Solution.</strong> The denominator is nonzero because <span class="math" data-tex="\(\lambda&gt;-1\)">\(\lambda&gt;-1\)</span>.
+The complete residual list is</p>
+<span class="math math-display" data-tex="\[
+f_1=y_1,\qquad f_5=\frac{y_1}{\lambda+2},\qquad
+f_2=f_3=f_4=f_6=0.
+\tag{EX13}
+\]">\[
+f_1=y_1,\qquad f_5=\frac{y_1}{\lambda+2},\qquad
+f_2=f_3=f_4=f_6=0.
+\tag{EX13}
+\]</span>
+<p>For <span class="math" data-tex="\(y_i=\sinh z_i\)">\(y_i=\sinh z_i\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z_L&amp;=[-L_1,L_1]\times[0,L_2],\quad L_1,L_2&gt;0,\\
+Y_L&amp;=[-\sinh L_1,\sinh L_1]\times[0,\sinh L_2],\\
+F_1&amp;=\sinh z_1,\quad J=\cosh z_1\cosh z_2,\\
+|\nabla_y f_1|^2\circ S
+&amp;=\operatorname{sech}^2z_1\cosh^2z_1=1,\qquad
+|\nabla_zF_1|^2=\cosh^2z_1.
+\end{aligned}
+\tag{EX14}
+\]">\[
+\begin{aligned}
+Z_L&amp;=[-L_1,L_1]\times[0,L_2],\quad L_1,L_2&gt;0,\\
+Y_L&amp;=[-\sinh L_1,\sinh L_1]\times[0,\sinh L_2],\\
+F_1&amp;=\sinh z_1,\quad J=\cosh z_1\cosh z_2,\\
+|\nabla_y f_1|^2\circ S
+&amp;=\operatorname{sech}^2z_1\cosh^2z_1=1,\qquad
+|\nabla_zF_1|^2=\cosh^2z_1.
+\end{aligned}
+\tag{EX14}
+\]</span>
+<p>Write <span class="math" data-tex="\(d_i=\sinh L_i\)">\(d_i=\sinh L_i\)</span>. The original area is <span class="math" data-tex="\(2d_1d_2\)">\(2d_1d_2\)</span>.
+Integrating the full scalar numerator, or using the full Jacobian, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_{Y_L}|f_1|^2\,dy
+&amp;=\int_{Z_L}\sinh^2z_1\cosh z_1\cosh z_2\,dz
+=\frac23\sinh^3L_1\sinh L_2,\\
+\frac{1}{2d_1d_2}\int_{Y_L}|f_1|^2\,dy&amp;=\frac{d_1^2}{3},\\
+\frac{1}{2d_1d_2}\int_{Y_L}|\nabla_yf_1|^2\,dy&amp;=1.
+\end{aligned}
+\tag{EX15}
+\]">\[
+\begin{aligned}
+\int_{Y_L}|f_1|^2\,dy
+&amp;=\int_{Z_L}\sinh^2z_1\cosh z_1\cosh z_2\,dz
+=\frac23\sinh^3L_1\sinh L_2,\\
+\frac{1}{2d_1d_2}\int_{Y_L}|f_1|^2\,dy&amp;=\frac{d_1^2}{3},\\
+\frac{1}{2d_1d_2}\int_{Y_L}|\nabla_yf_1|^2\,dy&amp;=1.
+\end{aligned}
+\tag{EX15}
+\]</span>
+<p>The unweighted coordinate numerators and area <span class="math" data-tex="\(2L_1L_2\)">\(2L_1L_2\)</span> instead give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_{Z_L}|F_1|^2\,dz&amp;=L_2\left(\frac{\sinh(2L_1)}2-L_1\right),\\
+\int_{Z_L}|\nabla_zF_1|^2\,dz&amp;=L_2\left(\frac{\sinh(2L_1)}2+L_1\right),\\
+\frac1{2L_1L_2}\int_{Z_L}|F_1|^2\,dz
+&amp;=\frac{\sinh(2L_1)}{4L_1}-\frac12,\\
+\frac1{2L_1L_2}\int_{Z_L}|\nabla_zF_1|^2\,dz
+&amp;=\frac{\sinh(2L_1)}{4L_1}+\frac12.
+\end{aligned}
+\tag{EX16}
+\]">\[
+\begin{aligned}
+\int_{Z_L}|F_1|^2\,dz&amp;=L_2\left(\frac{\sinh(2L_1)}2-L_1\right),\\
+\int_{Z_L}|\nabla_zF_1|^2\,dz&amp;=L_2\left(\frac{\sinh(2L_1)}2+L_1\right),\\
+\frac1{2L_1L_2}\int_{Z_L}|F_1|^2\,dz
+&amp;=\frac{\sinh(2L_1)}{4L_1}-\frac12,\\
+\frac1{2L_1L_2}\int_{Z_L}|\nabla_zF_1|^2\,dz
+&amp;=\frac{\sinh(2L_1)}{4L_1}+\frac12.
+\end{aligned}
+\tag{EX16}
+\]</span>
+<p>The original scalar mean is strictly larger than the coordinate scalar
+mean for every <span class="math" data-tex="\(L_1&gt;0\)">\(L_1&gt;0\)</span>. To prove this without discarding a factor,
+put <span class="math" data-tex="\(f(s)=\sinh^2s\)">\(f(s)=\sinh^2s\)</span>, <span class="math" data-tex="\(g(s)=\cosh s\)">\(g(s)=\cosh s\)</span> on <span class="math" data-tex="\([0,L_1]\)">\([0,L_1]\)</span>.
+Their exact difference is</p>
+<span class="math math-display" data-tex="\[
+\frac{\int_0^{L_1}f(s)g(s)\,ds}{\sinh L_1}
+-\frac{\int_0^{L_1}f(s)\,ds}{L_1}
+=\frac{\displaystyle\frac12\int_0^{L_1}\int_0^{L_1}
+(f(s)-f(t))(g(s)-g(t))\,ds\,dt}{L_1\sinh L_1}&gt;0.
+\tag{EX17}
+\]">\[
+\frac{\int_0^{L_1}f(s)g(s)\,ds}{\sinh L_1}
+-\frac{\int_0^{L_1}f(s)\,ds}{L_1}
+=\frac{\displaystyle\frac12\int_0^{L_1}\int_0^{L_1}
+(f(s)-f(t))(g(s)-g(t))\,ds\,dt}{L_1\sinh L_1}&gt;0.
+\tag{EX17}
+\]</span>
+<p>Expansion of the double integral gives the equality, because
+<span class="math" data-tex="\(\int_0^{L_1}g=\sinh L_1\)">\(\int_0^{L_1}g=\sinh L_1\)</span>. Strict increase of both functions
+makes the integrand positive off the diagonal, except on sets of area
+zero. These are averages of the same realized residual, under the two
+specified measures. The original-coordinate gradient under uniform
+coordinate sampling still has mean one:</p>
+<span class="math math-display" data-tex="\[
+\frac1{2L_1L_2}\int_{Z_L}
+\operatorname{sech}^2z_1|\partial_1F_1|^2\,dz=1.
+\tag{EX18}
+\]">\[
+\frac1{2L_1L_2}\int_{Z_L}
+\operatorname{sech}^2z_1|\partial_1F_1|^2\,dz=1.
+\tag{EX18}
+\]</span>
+<p>Thus the derivative factor and the sampling measure have separate,
+explicit roles. No finite sampled average is equated to one of these
+integrals without a further quadrature calculation.</p>
+<h3 id="exercise-4-a-specified-network-that-satisfies-the-anchor">Exercise 4. A specified network that satisfies the anchor</h3>
+<p>Use the six-hidden-layer, thirty-unit architecture of NB8. In one
+channel take all six successive weights equal to one, its first input
+equal to <span class="math" data-tex="\(z_1\)">\(z_1\)</span>, and all other weights and biases zero. Take the final
+output weight to be one. This gives</p>
+<span class="math math-display" data-tex="\[
+q(z_1)=\tanh(\tanh(\tanh(\tanh(\tanh(\tanh z_1))))).
+\tag{EX19}
+\]">\[
+q(z_1)=\tanh(\tanh(\tanh(\tanh(\tanh(\tanh z_1))))).
+\tag{EX19}
+\]</span>
+<p>Use four all-zero networks for <span class="math" data-tex="\(\widehat U_1,\widehat U_2,
+\widehat\Phi,\widehat\Psi\)">\(\widehat U_1,\widehat U_2,
+\widehat\Phi,\widehat\Psi\)</span>, and negate the output weight of EX19
+to obtain <span class="math" data-tex="\(\widehat\Omega=-q\)">\(\widehat\Omega=-q\)</span>. Compute the anchor, all residuals
+and explicit continuous error bounds on <span class="math" data-tex="\(Z_L\)">\(Z_L\)</span>.</p>
+<p><strong>Solution.</strong> Each layer is odd and strictly increasing. Each finite
+preactivation has positive <span class="math" data-tex="\(\tanh&#x27;\)">\(\tanh&#x27;\)</span>, so their composition has
+<span class="math" data-tex="\(q&#x27;&gt;0\)">\(q&#x27;&gt;0\)</span>, <span class="math" data-tex="\(q(0)=0\)">\(q(0)=0\)</span>, <span class="math" data-tex="\(q&#x27;(0)=1\)">\(q&#x27;(0)=1\)</span>. All prescribed horizontal
+parities hold, and the velocity wall condition is exact. Since
+<span class="math" data-tex="\(\partial_{y_1}=\operatorname{sech}z_1\partial_{z_1}\)">\(\partial_{y_1}=\operatorname{sech}z_1\partial_{z_1}\)</span>, the
+origin anchor is exactly <span class="math" data-tex="\(\partial_{y_1}\Omega(0)=-1\)">\(\partial_{y_1}\Omega(0)=-1\)</span>.
+With <span class="math" data-tex="\(p=1+\lambda&gt;0\)">\(p=1+\lambda&gt;0\)</span>, the entire residual list is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_1&amp;=-q-p\sinh z_1\operatorname{sech}z_1q&#x27;,\qquad F_5=-q,\\
+F_2&amp;=F_3=F_4=F_6=0.
+\end{aligned}
+\tag{EX20}
+\]">\[
+\begin{aligned}
+F_1&amp;=-q-p\sinh z_1\operatorname{sech}z_1q&#x27;,\qquad F_5=-q,\\
+F_2&amp;=F_3=F_4=F_6=0.
+\end{aligned}
+\tag{EX20}
+\]</span>
+<p>In particular <span class="math" data-tex="\(F_1(0)=0\)">\(F_1(0)=0\)</span>, but
+<span class="math" data-tex="\(\partial_1F_1(0)=-(\lambda+2)\)">\(\partial_1F_1(0)=-(\lambda+2)\)</span>. At every positive <span class="math" data-tex="\(z_1\)">\(z_1\)</span>,
+both nonzero terms of <span class="math" data-tex="\(F_1\)">\(F_1\)</span> are negative. Thus the network does
+not solve the profile equations despite its exact anchor. Monotonicity
+and oddness give <span class="math" data-tex="\(\|F_5\|_\infty=q(L_1)&gt;0\)">\(\|F_5\|_\infty=q(L_1)&gt;0\)</span>.</p>
+<p>Differentiate before combining the coordinate factors:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_1F_1
+&amp;=-\big[1+p(\cosh z_1\operatorname{sech}z_1
+-\sinh z_1\operatorname{sech}z_1\tanh z_1)\big]q&#x27;
+-p\sinh z_1\operatorname{sech}z_1q&#x27;&#x27;\\
+&amp;=-[1+p(1-\tanh^2z_1)]q&#x27;-p\tanh z_1q&#x27;&#x27;.
+\end{aligned}
+\tag{EX21}
+\]">\[
+\begin{aligned}
+\partial_1F_1
+&amp;=-\big[1+p(\cosh z_1\operatorname{sech}z_1
+-\sinh z_1\operatorname{sech}z_1\tanh z_1)\big]q&#x27;
+-p\sinh z_1\operatorname{sech}z_1q&#x27;&#x27;\\
+&amp;=-[1+p(1-\tanh^2z_1)]q&#x27;-p\tanh z_1q&#x27;&#x27;.
+\end{aligned}
+\tag{EX21}
+\]</span>
+<p>The second line is the exact identity of the full first line; no
+original derivative factor has been discarded. NB18 gives
+<span class="math" data-tex="\(|q&#x27;|\le1\)">\(|q&#x27;|\le1\)</span> and <span class="math" data-tex="\(|q&#x27;&#x27;|\le B_6=8/\sqrt3\)">\(|q&#x27;&#x27;|\le B_6=8/\sqrt3\)</span>. Write
+<span class="math" data-tex="\(t_L=\tanh L_1\)">\(t_L=\tanh L_1\)</span>. Since <span class="math" data-tex="\(1-r^2+B_6r\)">\(1-r^2+B_6r\)</span> has derivative
+<span class="math" data-tex="\(B_6-2r&gt;0\)">\(B_6-2r&gt;0\)</span> for <span class="math" data-tex="\(0\le r\le t_L&lt;1\)">\(0\le r\le t_L&lt;1\)</span>, we obtain</p>
+<span class="math math-display" data-tex="\[
+|\partial_1F_1|\le H:=1+p(1-t_L^2+B_6t_L),\qquad
+|\partial_1F_5|\le1,\qquad \partial_2F_1=\partial_2F_5=0.
+\tag{EX22}
+\]">\[
+|\partial_1F_1|\le H:=1+p(1-t_L^2+B_6t_L),\qquad
+|\partial_1F_5|\le1,\qquad \partial_2F_1=\partial_2F_5=0.
+\tag{EX22}
+\]</span>
+<p>For a tensor grid containing both rectangle endpoints, let
+<span class="math" data-tex="\(\Delta_1\)">\(\Delta_1\)</span> be its largest first-coordinate gap. The full NB27
+bound becomes</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|F_1\|_\infty&amp;\le\max_{\rm nodes}|F_1|+H\Delta_1/2,\\
+\|F_5\|_\infty&amp;\le\max_{\rm nodes}|q|+\Delta_1/2.
+\end{aligned}
+\tag{EX23}
+\]">\[
+\begin{aligned}
+\|F_1\|_\infty&amp;\le\max_{\rm nodes}|F_1|+H\Delta_1/2,\\
+\|F_5\|_\infty&amp;\le\max_{\rm nodes}|q|+\Delta_1/2.
+\end{aligned}
+\tag{EX23}
+\]</span>
+<p>The exact value <span class="math" data-tex="\(q(L_1)\)">\(q(L_1)\)</span> is sharper for <span class="math" data-tex="\(F_5\)">\(F_5\)</span> and is already
+attained at endpoint nodes. These bounds use actual parameters; no
+trained source weights have been substituted. RQ reconstructs
+<span class="math" data-tex="\(\Theta=0\)">\(\Theta=0\)</span>, <span class="math" data-tex="\(P=P_0\)">\(P=P_0\)</span> and <span class="math" data-tex="\(U=0\)">\(U=0\)</span> from this example with
+<span class="math" data-tex="\(C=0\)">\(C=0\)</span>, because
+<span class="math" data-tex="\(B=F_1-F_5-p\tanh z_1\partial_1F_5=0\)">\(B=F_1-F_5-p\tanh z_1\partial_1F_5=0\)</span>.
+That exact reconstructed solution still has curl zero, different from
+the network's predicted <span class="math" data-tex="\(-q\)">\(-q\)</span>. The nonzero <span class="math" data-tex="\(F_5\)">\(F_5\)</span> records it.</p>
+<h3 id="exercise-5-a-sharper-bound-between-grid-nodes">Exercise 5. A sharper bound between grid nodes</h3>
+<p>Use the network derivative arrays of NB15 and the actual coordinate
+rectangle <span class="math" data-tex="\(Z_L\)">\(Z_L\)</span>. Derive explicit bounds for both pure second
+derivatives of every original residual. Prove a cellwise estimate with
+the complete quadratic mesh terms and apply it to Exercise 4.</p>
+<p><strong>Solution.</strong> Retain the definitions <span class="math" data-tex="\(D_i=a_i\partial_i\)">\(D_i=a_i\partial_i\)</span>,
+<span class="math" data-tex="\(a_i=\operatorname{sech}z_i\)">\(a_i=\operatorname{sech}z_i\)</span>,
+<span class="math" data-tex="\(A_i=(1+\lambda)\sinh z_i+\widehat U_i\)">\(A_i=(1+\lambda)\sinh z_i+\widehat U_i\)</span>, and every constant
+<span class="math" data-tex="\(Q_0,Q_1,Q_2,Q_3,E_{ki},M_i,N_{ik}\)">\(Q_0,Q_1,Q_2,Q_3,E_{ki},M_i,N_{ik}\)</span> from NB15–NB21.
+For any one of the five predicted scalar components <span class="math" data-tex="\(q\)">\(q\)</span>, the
+complete second derivative is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_k^2(D_iq)
+&amp;=a_i\partial_{kki}q+2\delta_{ik}a_i&#x27;\partial_{ki}q
++\delta_{ik}a_i&#x27;&#x27;\partial_iq,\\
+|\partial_k^2(D_iq)|&amp;\le Z_{ki}(q)
+:=Q_3(q)+\delta_{ik}Q_2(q)+\delta_{ik}Q_1(q),\\
+\partial_k^2A_i&amp;=(1+\lambda)\delta_{ik}\sinh z_i
++\partial_k^2\widehat U_i,\\
+|\partial_k^2A_i|&amp;\le R_{ik}
+:=|1+\lambda|\delta_{ik}\sinh L_i+Q_2(\widehat U_i).
+\end{aligned}
+\tag{EX24}
+\]">\[
+\begin{aligned}
+\partial_k^2(D_iq)
+&amp;=a_i\partial_{kki}q+2\delta_{ik}a_i&#x27;\partial_{ki}q
++\delta_{ik}a_i&#x27;&#x27;\partial_iq,\\
+|\partial_k^2(D_iq)|&amp;\le Z_{ki}(q)
+:=Q_3(q)+\delta_{ik}Q_2(q)+\delta_{ik}Q_1(q),\\
+\partial_k^2A_i&amp;=(1+\lambda)\delta_{ik}\sinh z_i
++\partial_k^2\widehat U_i,\\
+|\partial_k^2A_i|&amp;\le R_{ik}
+:=|1+\lambda|\delta_{ik}\sinh L_i+Q_2(\widehat U_i).
+\end{aligned}
+\tag{EX24}
+\]</span>
+<p>Here <span class="math" data-tex="\(|a_i&#x27;|\le1/2\)">\(|a_i&#x27;|\le1/2\)</span> cancels the displayed factor two only
+after the full derivative is shown. Both Kronecker symbols are retained.
+These are bounds on the original <span class="math" data-tex="\(D_iq\)">\(D_iq\)</span>, not on a replacement
+derivative. Every product is differentiated by</p>
+<span class="math math-display" data-tex="\[
+\partial_k^2(FG)=(\partial_k^2F)G
++2(\partial_kF)(\partial_kG)+F\partial_k^2G.
+\tag{EX25}
+\]">\[
+\partial_k^2(FG)=(\partial_k^2F)G
++2(\partial_kF)(\partial_kG)+F\partial_k^2G.
+\tag{EX25}
+\]</span>
+<p>For the first residual this gives the exact formula</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_k^2F_1={}&amp;\partial_k^2\widehat\Omega
+-\partial_k^2\widehat\Phi\\
+&amp;+\sum_{i=1}^2\big[(\partial_k^2A_i)D_i\widehat\Omega
++2(\partial_kA_i)\partial_k(D_i\widehat\Omega)
++A_i\partial_k^2(D_i\widehat\Omega)\big].
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_k^2F_1={}&amp;\partial_k^2\widehat\Omega
+-\partial_k^2\widehat\Phi\\
+&amp;+\sum_{i=1}^2\big[(\partial_k^2A_i)D_i\widehat\Omega
++2(\partial_kA_i)\partial_k(D_i\widehat\Omega)
++A_i\partial_k^2(D_i\widehat\Omega)\big].
+\end{aligned}
+\]</span>
+<p>Its continuous bound is</p>
+<span class="math math-display" data-tex="\[
+K_{1k}=Q_2(\widehat\Omega)+Q_2(\widehat\Phi)
++\sum_{i=1}^2\big[R_{ik}Q_1(\widehat\Omega)
++2N_{ik}E_{ki}(\widehat\Omega)+M_iZ_{ki}(\widehat\Omega)\big].
+\tag{EX26}
+\]">\[
+K_{1k}=Q_2(\widehat\Omega)+Q_2(\widehat\Phi)
++\sum_{i=1}^2\big[R_{ik}Q_1(\widehat\Omega)
++2N_{ik}E_{ki}(\widehat\Omega)+M_iZ_{ki}(\widehat\Omega)\big].
+\tag{EX26}
+\]</span>
+<p>For <span class="math" data-tex="\(G_1=\widehat\Phi\)">\(G_1=\widehat\Phi\)</span>, <span class="math" data-tex="\(G_2=\widehat\Psi\)">\(G_2=\widehat\Psi\)</span>,
+<span class="math" data-tex="\(i\in\{1,2\}\)">\(i\in\{1,2\}\)</span> and <span class="math" data-tex="\(j=3-i\)">\(j=3-i\)</span>, the complete formula is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_k^2F_{i+1}={}&amp;\partial_k^2(D_i\widehat U_i)G_i
++2\partial_k(D_i\widehat U_i)\partial_kG_i
++(2+D_i\widehat U_i)\partial_k^2G_i\\
+&amp;+\sum_{a=1}^2\big[(\partial_k^2A_a)D_aG_i
++2(\partial_kA_a)\partial_k(D_aG_i)
++A_a\partial_k^2(D_aG_i)\big]\\
+&amp;+\partial_k^2(D_i\widehat U_j)G_j
++2\partial_k(D_i\widehat U_j)\partial_kG_j
++(D_i\widehat U_j)\partial_k^2G_j.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_k^2F_{i+1}={}&amp;\partial_k^2(D_i\widehat U_i)G_i
++2\partial_k(D_i\widehat U_i)\partial_kG_i
++(2+D_i\widehat U_i)\partial_k^2G_i\\
+&amp;+\sum_{a=1}^2\big[(\partial_k^2A_a)D_aG_i
++2(\partial_kA_a)\partial_k(D_aG_i)
++A_a\partial_k^2(D_aG_i)\big]\\
+&amp;+\partial_k^2(D_i\widehat U_j)G_j
++2\partial_k(D_i\widehat U_j)\partial_kG_j
++(D_i\widehat U_j)\partial_k^2G_j.
+\end{aligned}
+\]</span>
+<p>Applying EX24 and NB20–NB21 to each displayed factor proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_{i+1,k}={}&amp;Z_{ki}(\widehat U_i)Q_0(G_i)
++2E_{ki}(\widehat U_i)Q_1(G_i)
++(2+Q_1(\widehat U_i))Q_2(G_i)\\
+&amp;+\sum_{a=1}^2\big[R_{ak}Q_1(G_i)
++2N_{ak}E_{ka}(G_i)+M_aZ_{ka}(G_i)\big]\\
+&amp;+Z_{ki}(\widehat U_j)Q_0(G_j)
++2E_{ki}(\widehat U_j)Q_1(G_j)
++Q_1(\widehat U_j)Q_2(G_j).
+\end{aligned}
+\tag{EX27}
+\]">\[
+\begin{aligned}
+K_{i+1,k}={}&amp;Z_{ki}(\widehat U_i)Q_0(G_i)
++2E_{ki}(\widehat U_i)Q_1(G_i)
++(2+Q_1(\widehat U_i))Q_2(G_i)\\
+&amp;+\sum_{a=1}^2\big[R_{ak}Q_1(G_i)
++2N_{ak}E_{ka}(G_i)+M_aZ_{ka}(G_i)\big]\\
+&amp;+Z_{ki}(\widehat U_j)Q_0(G_j)
++2E_{ki}(\widehat U_j)Q_1(G_j)
++Q_1(\widehat U_j)Q_2(G_j).
+\end{aligned}
+\tag{EX27}
+\]</span>
+<p>Finally the last three equations are linear in the indicated fields
+and original first derivatives. Their exact second derivatives are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_k^2F_4&amp;=\partial_k^2(D_1\widehat U_1)
++\partial_k^2(D_2\widehat U_2),\\
+\partial_k^2F_5&amp;=\partial_k^2\widehat\Omega
+-\varepsilon[\partial_k^2(D_1\widehat U_2)
+-\partial_k^2(D_2\widehat U_1)],\\
+\partial_k^2F_6&amp;=\partial_k^2(D_2\widehat\Phi)
+-\partial_k^2(D_1\widehat\Psi).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_k^2F_4&amp;=\partial_k^2(D_1\widehat U_1)
++\partial_k^2(D_2\widehat U_2),\\
+\partial_k^2F_5&amp;=\partial_k^2\widehat\Omega
+-\varepsilon[\partial_k^2(D_1\widehat U_2)
+-\partial_k^2(D_2\widehat U_1)],\\
+\partial_k^2F_6&amp;=\partial_k^2(D_2\widehat\Phi)
+-\partial_k^2(D_1\widehat\Psi).
+\end{aligned}
+\]</span>
+<p>Since <span class="math" data-tex="\(|\varepsilon|=1\)">\(|\varepsilon|=1\)</span>, their bounds are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_{4k}&amp;=Z_{k1}(\widehat U_1)+Z_{k2}(\widehat U_2),\\
+K_{5k}&amp;=Q_2(\widehat\Omega)+Z_{k1}(\widehat U_2)
++Z_{k2}(\widehat U_1),\\
+K_{6k}&amp;=Z_{k2}(\widehat\Phi)+Z_{k1}(\widehat\Psi).
+\end{aligned}
+\tag{EX28}
+\]">\[
+\begin{aligned}
+K_{4k}&amp;=Z_{k1}(\widehat U_1)+Z_{k2}(\widehat U_2),\\
+K_{5k}&amp;=Q_2(\widehat\Omega)+Z_{k1}(\widehat U_2)
++Z_{k2}(\widehat U_1),\\
+K_{6k}&amp;=Z_{k2}(\widehat\Phi)+Z_{k1}(\widehat\Psi).
+\end{aligned}
+\tag{EX28}
+\]</span>
+<p>We have proved <span class="math" data-tex="\(|\partial_k^2F_r|\le K_{rk}\)">\(|\partial_k^2F_r|\le K_{rk}\)</span> on the entire
+rectangle, for all six original residuals and both coordinate directions.
+Mixed derivatives were not set to zero; the next argument explains why
+the two pure derivatives suffice for this particular bound.</p>
+<p>For a twice continuously differentiable scalar <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>,
+with <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>, its linear interpolant is</p>
+<span class="math math-display" data-tex="\[
+I_{ab}f(x)=\frac{b-x}{b-a}f(a)+\frac{x-a}{b-a}f(b).
+\]">\[
+I_{ab}f(x)=\frac{b-x}{b-a}f(a)+\frac{x-a}{b-a}f(b).
+\]</span>
+<p>Taylor's formula with an integral remainder around <span class="math" data-tex="\(x\)">\(x\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(a)&amp;=f(x)+(a-x)f&#x27;(x)+\int_a^x(t-a)f&#x27;&#x27;(t)\,dt,\\
+f(b)&amp;=f(x)+(b-x)f&#x27;(x)+\int_x^b(b-t)f&#x27;&#x27;(t)\,dt,\\
+I_{ab}f(x)-f(x)
+&amp;=\frac{b-x}{b-a}\int_a^x(t-a)f&#x27;&#x27;(t)\,dt
++\frac{x-a}{b-a}\int_x^b(b-t)f&#x27;&#x27;(t)\,dt.
+\end{aligned}
+\tag{EX29}
+\]">\[
+\begin{aligned}
+f(a)&amp;=f(x)+(a-x)f&#x27;(x)+\int_a^x(t-a)f&#x27;&#x27;(t)\,dt,\\
+f(b)&amp;=f(x)+(b-x)f&#x27;(x)+\int_x^b(b-t)f&#x27;&#x27;(t)\,dt,\\
+I_{ab}f(x)-f(x)
+&amp;=\frac{b-x}{b-a}\int_a^x(t-a)f&#x27;&#x27;(t)\,dt
++\frac{x-a}{b-a}\int_x^b(b-t)f&#x27;&#x27;(t)\,dt.
+\end{aligned}
+\tag{EX29}
+\]</span>
+<p>For completeness, the first remainder follows by integrating
+<span class="math" data-tex="\(f&#x27;(s)-f&#x27;(x)=-\int_s^xf&#x27;&#x27;(t)\,dt\)">\(f&#x27;(s)-f&#x27;(x)=-\int_s^xf&#x27;&#x27;(t)\,dt\)</span> from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>
+and reversing the order over <span class="math" data-tex="\(a\le s\le t\le x\)">\(a\le s\le t\le x\)</span>; the second
+follows over <span class="math" data-tex="\(x\le t\le s\le b\)">\(x\le t\le s\le b\)</span>. Both kernels in the last
+line are nonnegative. Their full integral is</p>
+<span class="math math-display" data-tex="\[
+\frac{b-x}{b-a}\frac{(x-a)^2}{2}
++\frac{x-a}{b-a}\frac{(b-x)^2}{2}
+=\frac{(x-a)(b-x)}2\le\frac{(b-a)^2}{8}.
+\tag{EX30}
+\]">\[
+\frac{b-x}{b-a}\frac{(x-a)^2}{2}
++\frac{x-a}{b-a}\frac{(b-x)^2}{2}
+=\frac{(x-a)(b-x)}2\le\frac{(b-a)^2}{8}.
+\tag{EX30}
+\]</span>
+<p>It follows that <span class="math" data-tex="\(|I_{ab}f-f|\le(b-a)^2\|f&#x27;&#x27;\|_\infty/8\)">\(|I_{ab}f-f|\le(b-a)^2\|f&#x27;&#x27;\|_\infty/8\)</span>.</p>
+<p>On a grid cell <span class="math" data-tex="\([a_1,b_1]\times[a_2,b_2]\)">\([a_1,b_1]\times[a_2,b_2]\)</span>, write
+<span class="math" data-tex="\(\Delta_i=b_i-a_i&gt;0\)">\(\Delta_i=b_i-a_i&gt;0\)</span> and let <span class="math" data-tex="\(I_i\)">\(I_i\)</span> interpolate in
+coordinate <span class="math" data-tex="\(i\)">\(i\)</span> alone. The exact decomposition is</p>
+<span class="math math-display" data-tex="\[
+I_1I_2F-F=(I_1F-F)+I_1(I_2F-F).
+\]">\[
+I_1I_2F-F=(I_1F-F)+I_1(I_2F-F).
+\]</span>
+<p>The weights of <span class="math" data-tex="\(I_1\)">\(I_1\)</span> are nonnegative and sum to one, so it
+does not increase a supremum bound. Applying EX30 in each coordinate
+therefore proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|F_r-I_1I_2F_r|
+&amp;\le\frac{K_{r1}\Delta_1^2+K_{r2}\Delta_2^2}{8},\\
+\sup_{\rm cell}|F_r|
+&amp;\le\max_{\rm four\ corners}|F_r|
++\frac{K_{r1}\Delta_1^2+K_{r2}\Delta_2^2}{8}.
+\end{aligned}
+\tag{EX31}
+\]">\[
+\begin{aligned}
+|F_r-I_1I_2F_r|
+&amp;\le\frac{K_{r1}\Delta_1^2+K_{r2}\Delta_2^2}{8},\\
+\sup_{\rm cell}|F_r|
+&amp;\le\max_{\rm four\ corners}|F_r|
++\frac{K_{r1}\Delta_1^2+K_{r2}\Delta_2^2}{8}.
+\end{aligned}
+\tag{EX31}
+\]</span>
+<p>The last step uses the four nonnegative product weights of the bilinear
+interpolant, whose sum is one. Applying this argument to every cell
+gives the same bound with the largest actual coordinate gaps and the
+maximum over all grid nodes. The constants can instead be bounded per
+cell for a tighter estimate. No derivative in a mixed direction is
+needed in this interpolation identity.</p>
+<p>The coefficient <span class="math" data-tex="\(1/8\)">\(1/8\)</span> and the sum of its two contributions are
+sharp for the stated scalar <span class="math" data-tex="\(C^2\)">\(C^2\)</span> class. Given <span class="math" data-tex="\(k_1,k_2\ge0\)">\(k_1,k_2\ge0\)</span>,
+take the full polynomial</p>
+<span class="math math-display" data-tex="\[
+F(z)=\frac{k_1}{2}(z_1-a_1)(b_1-z_1)
++\frac{k_2}{2}(z_2-a_2)(b_2-z_2).
+\tag{EX32}
+\]">\[
+F(z)=\frac{k_1}{2}(z_1-a_1)(b_1-z_1)
++\frac{k_2}{2}(z_2-a_2)(b_2-z_2).
+\tag{EX32}
+\]</span>
+<p>All four corner values vanish, <span class="math" data-tex="\(\partial_i^2F=-k_i\)">\(\partial_i^2F=-k_i\)</span>, and its
+cell-center value is exactly
+<span class="math" data-tex="\((k_1\Delta_1^2+k_2\Delta_2^2)/8\)">\((k_1\Delta_1^2+k_2\Delta_2^2)/8\)</span>. This proves scalar
+sharpness, without claiming that this polynomial is a residual of the
+fixed network architecture.</p>
+<p>For Exercise 4, put <span class="math" data-tex="\(t=\tanh z_1\)">\(t=\tanh z_1\)</span>. Differentiating the complete
+identity EX21, or differentiating its first line twice through the
+original factors, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_1^2F_1&amp;=-q&#x27;&#x27;-p(t&#x27;&#x27;q&#x27;+2t&#x27;q&#x27;&#x27;+tq&#x27;&#x27;&#x27;),\\
+\partial_1^2F_5&amp;=-q&#x27;&#x27;,\quad
+t&#x27;=1-t^2,\quad t&#x27;&#x27;=-2t(1-t^2),\\
+|\partial_1^2F_1|&amp;\le K_*:=\frac8{\sqrt3}
++p\left[\frac4{3\sqrt3}+\frac{16}{\sqrt3}
++\frac{116}{3}\tanh L_1\right],\\
+|\partial_1^2F_5|&amp;\le\frac8{\sqrt3},\qquad
+\partial_2^2F_1=\partial_2^2F_5=0.
+\end{aligned}
+\tag{EX33}
+\]">\[
+\begin{aligned}
+\partial_1^2F_1&amp;=-q&#x27;&#x27;-p(t&#x27;&#x27;q&#x27;+2t&#x27;q&#x27;&#x27;+tq&#x27;&#x27;&#x27;),\\
+\partial_1^2F_5&amp;=-q&#x27;&#x27;,\quad
+t&#x27;=1-t^2,\quad t&#x27;&#x27;=-2t(1-t^2),\\
+|\partial_1^2F_1|&amp;\le K_*:=\frac8{\sqrt3}
++p\left[\frac4{3\sqrt3}+\frac{16}{\sqrt3}
++\frac{116}{3}\tanh L_1\right],\\
+|\partial_1^2F_5|&amp;\le\frac8{\sqrt3},\qquad
+\partial_2^2F_1=\partial_2^2F_5=0.
+\end{aligned}
+\tag{EX33}
+\]</span>
+<p>Here the three product contributions use, respectively,
+<span class="math" data-tex="\(|t&#x27;&#x27;|\le4/(3\sqrt3)\)">\(|t&#x27;&#x27;|\le4/(3\sqrt3)\)</span>, <span class="math" data-tex="\(|t&#x27;|\le1\)">\(|t&#x27;|\le1\)</span>, <span class="math" data-tex="\(|t|\le t_L\)">\(|t|\le t_L\)</span>,
+and the full NB18 bounds <span class="math" data-tex="\(1,8/\sqrt3,116/3\)">\(1,8/\sqrt3,116/3\)</span>. The first bound
+on <span class="math" data-tex="\(t&#x27;&#x27;\)">\(t&#x27;&#x27;\)</span> follows by maximizing <span class="math" data-tex="\(2r(1-r^2)\)">\(2r(1-r^2)\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>:
+its derivative vanishes at <span class="math" data-tex="\(r=1/\sqrt3\)">\(r=1/\sqrt3\)</span>, giving the displayed
+value; both endpoint values are zero. Thus no extra network derivative
+has been assumed. Combining the two independently proved estimates,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|F_1\|_\infty&amp;\le\max_{\rm nodes}|F_1|
++\min\{H\Delta_1/2,K_*\Delta_1^2/8\},\\
+\|F_5\|_\infty&amp;\le\max_{\rm nodes}|q|
++\min\{\Delta_1/2,\Delta_1^2/\sqrt3\}.
+\end{aligned}
+\tag{EX34}
+\]">\[
+\begin{aligned}
+\|F_1\|_\infty&amp;\le\max_{\rm nodes}|F_1|
++\min\{H\Delta_1/2,K_*\Delta_1^2/8\},\\
+\|F_5\|_\infty&amp;\le\max_{\rm nodes}|q|
++\min\{\Delta_1/2,\Delta_1^2/\sqrt3\}.
+\end{aligned}
+\tag{EX34}
+\]</span>
+<p>For <span class="math" data-tex="\(0&lt;\Delta_1&lt;4H/K_*\)">\(0&lt;\Delta_1&lt;4H/K_*\)</span>, the quadratic contribution in the
+first line is strictly smaller. Both constants are positive by
+<span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>. The second line remains improvable to the exact endpoint
+value from Exercise 4.</p>
+<p>For a supplied network, EX24–EX31 give a proved finite-domain
+continuous error estimate using its parameters and grid values. SG and
+RQ carry this estimate to the original scalar and pressure errors,
+retaining <span class="math" data-tex="\(\sinh L_i\)">\(\sinh L_i\)</span>, the original derivative factors, and the
+wall and origin terms. The estimate does not supply missing trained
+parameters, infinite-domain tails, a nearby exact profile or nonlinear
+stability. Those require their own complete calculations.</p>
+<p><img src="assets/NS-FLUID-47/profile-grid-error-B7A5019693E06AF259E6AABFA3D6F57E0AD38B7184D2AC5EADD36F3CC30357AF.png" alt="Exact scalar interpolation sharpness and the specified network grid bounds" class="course-figure" width="2331" height="939" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="profile-grid-error" data-asset-sha256="B7A5019693E06AF259E6AABFA3D6F57E0AD38B7184D2AC5EADD36F3CC30357AF"></p>
+<p>The left panel shows the complete scalar polynomial EX32 on
+<span class="math" data-tex="\([-2,1]\times[0,2]\)">\([-2,1]\times[0,2]\)</span>, with <span class="math" data-tex="\(k_1=3\)">\(k_1=3\)</span>, <span class="math" data-tex="\(k_2=2\)">\(k_2=2\)</span>: its
+four corner values are zero and its center value is exactly <span class="math" data-tex="\(35/8\)">\(35/8\)</span>.
+This is the scalar sharpness example, not a fixed-network residual.
+The right panel plots the two proved error contributions in EX34 for
+the actual six-layer network EX19, with <span class="math" data-tex="\(\lambda=1/2\)">\(\lambda=1/2\)</span> and
+<span class="math" data-tex="\(L_1=1\)">\(L_1=1\)</span>. Their crossing is exactly <span class="math" data-tex="\(4H/K_*\)">\(4H/K_*\)</span>, about
+<span class="math" data-tex="\(0.433\)">\(0.433\)</span>; the curves are bounds, not observed interpolation errors.
+<a href="assets/profile-grid-error.py">Reproducible figure source</a> and
+<a href="assets/profile-grid-error.svg">vector rendering</a>.
+The human profile and architecture source is Wang, Lai, Gómez-Serrano
+and Buckmaster, <a href="https://arxiv.org/abs/2201.06780v3">arXiv:2201.06780v3</a>,
+with the exact original author-source locators recorded in RQ, SG and NB.
+The exercises and interpolation derivations here are supplementary
+calculations; no novelty claim is made.</p>
+<h2 id="continue-with-the-profile-and-stability-arguments">Continue with the profile and stability arguments</h2>
+<p>The reconstructed fields and every continuous error contribution are now
+explicit. The grid estimates apply to the actual finite parameters and
+domain supplied to them. Infinite-domain control and stability still need
+their own estimates and computational inputs.</p>
+<p>The next comparisons retain the exact real Burgers branch, the CCF anchor
+and the full approximate-profile defect in its mode identities. The series
+then continues through the original analytic and computational stability
+arguments, Alpöge–Buckmaster, OpenAI and retained workbench constructions.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-46.html">Previous lesson</a><a href="NS-FLUID-48.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

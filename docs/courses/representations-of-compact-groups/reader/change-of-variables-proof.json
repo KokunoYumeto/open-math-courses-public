@@ -1,0 +1,147 @@
+{
+  "schema": "mathematical-proof-companion/v1",
+  "title": "Measurable change of variables and finite-sheeted integration",
+  "licence_expression": "CC0-1.0",
+  "source": "change-of-variables-proof.md",
+  "source_sha256": "6b4ae52c6cd517861f0d71184640796ba901b6bf78ff070897f4e5551e4189e7",
+  "reader": "change-of-variables-proof.html",
+  "reader_sha256": "1c66bb917ec54e08250fdb80e2c990d4c97e14ec36b8bb4fa999196693b4fa23",
+  "authorship": {
+    "model": "GPT-6 Astra",
+    "provider": "OpenAI",
+    "reasoning_effort": "Ultra",
+    "date": "2026-10-11",
+    "activities": [
+      "independent exposition",
+      "proof construction",
+      "self-check"
+    ]
+  },
+  "independent_review": false,
+  "original_research": false,
+  "dependencies": [
+    {
+      "source": "courses/harmonic-analysis-on-locally-compact-groups/src/measure-and-hilbert-space-tools.md",
+      "source_sha256": "3af97aea3736d2374ee7416fb55c8577f13bb4cd81f0fd74bbccdef489994e96",
+      "reader": "courses/harmonic-analysis-on-locally-compact-groups/measure-and-hilbert-space-tools.html",
+      "reader_sha256": "8e7e91653d094d215d94410b6bdba2adc590370ef4520e05093c36b6f07ef122",
+      "results": [
+        "Section 1",
+        "Theorem 2.1",
+        "Lemma 6.1"
+      ],
+      "included_in_selected_archive": true,
+      "provider_revision": "613054f75ed9163a31133134e10f7a33025c3db4"
+    },
+    {
+      "source": "courses/harmonic-analysis-on-locally-compact-groups/src/haar-measure-on-locally-compact-groups.md",
+      "source_sha256": "6c3ba44cc4d8c0c1fb12ec478481c44bf623f4252d8366d208939e5bd79f979d",
+      "reader": "courses/harmonic-analysis-on-locally-compact-groups/haar-measure-on-locally-compact-groups.html",
+      "reader_sha256": "e43335596c242dd769f2124647e39d62921a91613895cd147056f185cc632e16",
+      "results": [
+        "Theorem 2.2 uniqueness",
+        "Proposition 3.1(1)-(2)",
+        "Theorem 5.1(4)-(5),(7)"
+      ],
+      "included_in_selected_archive": true,
+      "provider_revision": "613054f75ed9163a31133134e10f7a33025c3db4"
+    },
+    {
+      "source": "courses/DG-FND/src/local-tools-for-bundles-and-transport.md",
+      "source_sha256": "bbc71638ea4219576097b63b068a8222dc1e2699f007f45c8fab45302390a2aa",
+      "reader": "courses/DG-FND/local-tools-for-bundles-and-transport.html",
+      "reader_sha256": "99c82473d886406c43c58a71747981b22cbe8fede08c432564930139e732a415",
+      "results": [
+        "Section 0",
+        "Theorem 1.2: proof through the continuously differentiable inverse, before smooth bootstrapping"
+      ],
+      "included_in_selected_archive": true,
+      "provider_revision": "613054f75ed9163a31133134e10f7a33025c3db4"
+    }
+  ],
+  "results": [
+    {
+      "id": "CV.1",
+      "route": "change-of-variables-proof.html#cv-1",
+      "full_text": "**Lemma CV.1.** Let \\(g:I\\to J\\) be a \\(C^1\\) diffeomorphism of nonempty open intervals. For every Borel \\(h:J\\to[0,\\infty]\\),\n\\[\n\\int_J h(y)\\,d\\lambda_1(y)\n=\\int_I h(g(t))|g'(t)|\\,d\\lambda_1(t).\n\\tag{CV.1}\n\\]\n\n*Proof.* The chain rule for \\(g^{-1}g\\) gives \\(g'(t)\\ne0\\). Continuity and the intermediate value theorem make its sign constant, and the mean value theorem makes \\(g\\) strictly monotone. If \\(h\\in C_c(J)\\), its support and its inverse image are compact. Choose \\(a<b\\) in \\(I\\) whose interior contains that inverse image. Lemma 6.1 of the measure-tools reading gives\n\\(\\int_{g(a)}^{g(b)}h=\\int_a^b(h\\circ g)g'\\).\nIf \\(g\\) decreases, reversing the endpoints replaces \\(g'\\) by \\(|g'|\\); if it increases, no reversal is needed. Both integrands vanish outside the corresponding compact intervals. This proves (CV.1) for continuous compactly supported \\(h\\).\n\nThe measure \\(|g'|\\lambda_1\\) on \\(I\\) is Radon by the positive-density assertion of Proposition 3.1. Its image \\(g_*(|g'|\\lambda_1)\\) is Radon by the homeomorphism assertion there. The two Radon measures on \\(J\\) have the same integrals on \\(C_c(J)\\), so Theorem 2.2 makes them equal. Their equality first gives (CV.1) for indicators, then for nonnegative simple functions by additivity, then for arbitrary nonnegative Borel functions by monotone convergence. Infinite integrals are allowed. ∎",
+      "sha256": "3f4ba6000ad8a9ac82cb8842e2c6555c45673c2e86e36fcac789fb19d076c064",
+      "dependencies": [],
+      "original_research": false
+    },
+    {
+      "id": "CV.2",
+      "route": "change-of-variables-proof.html#cv-2",
+      "full_text": "**Lemma CV.2.** Suppose \\(S:V\\to W\\) is a \\(C^1\\) diffeomorphism between open subsets of \\(\\mathbb R^n\\), and changes only coordinate \\(k\\). Write the other coordinates as \\(z\\) and that coordinate as \\(t\\); thus\n\\[\nS(z,t)=(z,s(z,t)).\n\\]\nFor every nonnegative Borel \\(h\\) on \\(W\\),\n\\[\n\\int_W h(y)\\,d\\lambda_n(y)\n=\\int_V h(S(x))|\\det DS(x)|\\,d\\lambda_n(x).\n\\tag{CV.2}\n\\]\n\n*Proof.* The Jacobian matrix is the identity except for row \\(k\\). Expansion in that row gives \\(\\det DS=\\partial_t s\\), which is nonzero. For fixed \\(z\\), the open slice \\(V_z\\subseteq\\mathbb R\\) is a countable disjoint union of open intervals: each component is an interval, and distinct components contain distinct rational numbers. The same holds for \\(W_z\\). The map \\(t\\mapsto s(z,t)\\) is a homeomorphism from \\(V_z\\) onto \\(W_z\\), since \\(S\\) and \\(S^{-1}\\) preserve the other coordinates. It therefore maps components bijectively onto components. Its restriction to each interval is a \\(C^1\\) diffeomorphism. Apply Lemma CV.1 and sum over those intervals by nonnegative countable additivity. This proves equality of the two slice integrals, including empty slices and infinite values.\n\nThe functions \\(1_W h\\) and \\(1_V(h\\circ S)|\\partial_t s|\\), extended by zero, are Borel. Tonelli identifies their total integrals with their slice integrals and proves (CV.2). Listing coordinate \\(k\\) last is legitimate because the two orders of iterated integration agree by the same Tonelli theorem; it is not an assumption of multidimensional substitution. For \\(n=1\\) there is no outer slice integral. ∎",
+      "sha256": "024a3066efb763bf809d17db8babb536779616fd9ba9a60cfaf9634322f00a54",
+      "dependencies": [
+        "CV.1"
+      ],
+      "original_research": false
+    },
+    {
+      "id": "CV.3",
+      "route": "change-of-variables-proof.html#cv-3",
+      "full_text": "**Lemma CV.3.** For an invertible real matrix \\(A\\) and \\(b\\in\\mathbb R^n\\), the affine map \\(L(x)=Ax+b\\) satisfies (CV.2), with \\(|\\det A|\\) as its Jacobian.\n\n*Proof.* A translation of one coordinate, a nonzero scaling of one coordinate, or addition of a multiple of a different coordinate to one coordinate is covered by Lemma CV.2. Its absolute determinant is respectively \\(1\\), the absolute value of the scale, or \\(1\\). Interchanging two coordinates preserves the integral by Tonelli and has absolute determinant one.\n\nGaussian elimination expresses every invertible matrix as a product of these elementary matrices. Indeed, its first column has a nonzero entry; interchange rows to put it first, scale the pivot to one, and subtract multiples of that row to clear the entries below it. The remaining lower-right block is invertible, since a nonzero vector in its kernel would give a vector in the kernel of the full matrix after solving the first coordinate. Induction reduces that block; clearing the remaining first-row entries finishes the reduction to the identity. Reversing the elementary operations gives the claimed factorization. Translations are products of coordinate translations.\n\nSubstitution is stable under composition. If it holds for \\(P\\) and \\(Q\\), apply the formula for \\(P\\) to the nonnegative function \\((h\\circ Q)|\\det DQ|\\), and the formula for \\(Q\\) to \\(h\\). The chain rule and multiplicativity of determinants identify the product of Jacobians with \\(|\\det D(QP)|\\). Determinant multiplicativity follows directly from multilinearity and alternation in the columns: for fixed \\(A\\), the function \\(B\\mapsto\\det(AB)\\) is alternating multilinear in the columns of \\(B\\), hence equals its value at the identity, \\(\\det A\\), times \\(\\det B\\). This proves the affine formula. Restriction to an open subset follows by applying the whole-space formula to \\(h\\) extended by zero on the complement of that subset's image. ∎",
+      "sha256": "64b3d9e4a01fc995bb56d7a1cbcc44401a4a0c4363561a349b2e1a0c5e049bc6",
+      "dependencies": [
+        "CV.1",
+        "CV.2"
+      ],
+      "original_research": false
+    },
+    {
+      "id": "CV.4",
+      "route": "change-of-variables-proof.html#cv-4",
+      "full_text": "**Lemma CV.4.** If \\(F:U\\to V\\) is a \\(C^1\\) diffeomorphism of open subsets of \\(\\mathbb R^n\\), every point of \\(U\\) has an open neighbourhood \\(O\\) such that\n\\[\n\\int_{F(O)}h(y)\\,d\\lambda_n(y)\n=\\int_O h(F(x))|\\det DF(x)|\\,d\\lambda_n(x)\n\\tag{CV.3}\n\\]\nfor all nonnegative Borel \\(h\\) on \\(F(O)\\).\n\n*Proof.* Fix \\(a\\in U\\), let \\(A=DF(a)\\), and set\n\\[\nH(x)=a+A^{-1}(F(x)-F(a)),\\qquad\nP_k(x)=(H_1(x),\\ldots,H_k(x),x_{k+1},\\ldots,x_n).\n\\]\nHere \\(H_i\\) denotes the \\(i\\)-th scalar component of \\(H\\), whereas \\(P_k:U\\to\\mathbb R^n\\) is the displayed partial-coordinate map. Set \\(P_0(x)=x\\), so \\(P_n=H\\). Because \\(DH(a)=I\\), every \\(DP_k(a)=I\\). The continuously differentiable part of the inverse-function proof gives a neighbourhood on which each \\(P_k\\) is a \\(C^1\\) diffeomorphism onto its open image. More precisely, that proof uses continuity of \\(Df\\) to make \\(x\\mapsto x-f(x)\\) a contraction after affine normalization. Its fixed-point argument constructs a Lipschitz local inverse \\(g\\); the first-order remainder then gives \\(Dg=(Df\\circ g)^{-1}\\), a continuous derivative. These steps require only \\(C^1\\), not the subsequent induction proving smoothness. Intersect the finitely many resulting neighbourhoods to obtain a common \\(O\\). A restriction of a diffeomorphism to an open subset is still a diffeomorphism onto its image.\n\nThe maps\n\\[\nS_k=P_k\\circ P_{k-1}^{-1}:P_{k-1}(O)\\longrightarrow P_k(O)\n\\]\nchange only coordinate \\(k\\): the first \\(k-1\\) coordinates are already those of \\(H\\), and the coordinates after \\(k\\) are still those of \\(x\\). Lemma CV.2 applies to every \\(S_k\\). Their composition is \\(H|_O\\), so the composition calculation in Lemma CV.3 gives substitution for \\(H|_O\\). Finally\n\\(F(x)=F(a)+A(H(x)-a)\\).\nApply the affine case and that composition calculation once more. The resulting determinant is exactly \\(|\\det DF(x)|\\), proving (CV.3). No global triangular form of \\(F\\), and no positivity of its determinant, has been assumed. ∎",
+      "sha256": "2368146f4a787f677ec7ee1e7a9a9f63dc58cc37af5b7b4f20df2791f16c49ee",
+      "dependencies": [
+        "CV.1",
+        "CV.2",
+        "CV.3"
+      ],
+      "original_research": false
+    },
+    {
+      "id": "CV.5",
+      "route": "change-of-variables-proof.html#cv-5",
+      "full_text": "**Theorem CV.5.** For every \\(C^1\\) diffeomorphism \\(F:U\\to V\\) of open subsets of \\(\\mathbb R^n\\), and every nonnegative Borel \\(h:V\\to[0,\\infty]\\),\n\\[\n\\int_Vh\\,d\\lambda_n\n=\\int_U(h\\circ F)|\\det DF|\\,d\\lambda_n.\n\\tag{CV.4}\n\\]\nThe same identity holds for a complex Borel \\(h\\) whenever either side for \\(|h|\\) is finite; finiteness on the other side then follows as well.\n\n*Proof.* The neighbourhoods of Lemma CV.4 have a countable subcover \\(O_1,O_2,\\ldots\\) of \\(U\\). To see this, use rational-centre rational-radius balls as a countable basis, and for every basic ball contained in a member of the cover choose one such member. These chosen members cover every point. Put\n\\[\nE_1=O_1,\\qquad E_j=O_j\\setminus\\bigcup_{i<j}O_i\\quad(j>1).\n\\]\nThese Borel sets partition \\(U\\). Their images are Borel, since \\(F\\) is a homeomorphism, and they partition \\(V\\). Apply the local formula on \\(O_j\\) to \\(h1_{F(E_j)}\\), and sum. Monotone convergence for the partial sums proves (CV.4), even when its value is infinite. Apply this first to \\(|h|\\), and then to the positive and negative parts of its real and imaginary parts, to obtain the complex assertion without any undefined subtraction. The zero-dimensional and empty-domain cases are immediate. ∎",
+      "sha256": "2ec1e7921094e53b66351a75ce0a10b34bfd6369d4f4ceebdd03832ab92dfd09",
+      "dependencies": [
+        "CV.1",
+        "CV.2",
+        "CV.3",
+        "CV.4"
+      ],
+      "original_research": false
+    },
+    {
+      "id": "CV.6",
+      "route": "change-of-variables-proof.html#cv-6",
+      "full_text": "**Corollary CV.6.** Theorem CV.5 also holds for Lebesgue-measurable functions with respect to the completed measures. If \\(M,N\\) are second-countable \\(n\\)-dimensional \\(C^1\\) manifolds with positive continuous densities \\(\\mu_M,\\mu_N\\), and \\(F:M\\to N\\) is a \\(C^1\\) diffeomorphism, then\n\\[\n\\int_N h\\,d\\mu_N=\\int_M (h\\circ F)J_F\\,d\\mu_M\n\\tag{CV.5}\n\\]\nfor nonnegative measurable \\(h\\), or for integrable complex \\(h\\). In coordinates where the density functions are \\(r_M(x)>0\\), \\(r_N(y)>0\\),\n\\[\nJ_F(x)=\\frac{r_N(F(x))|\\det DF(x)|}{r_M(x)}.\n\\tag{CV.6}\n\\]\nFor Riemannian densities, \\(r=\\sqrt{\\det(g_{ij})}\\), so this is the absolute determinant between orthonormal tangent frames. No orientation is required.\n\n*Proof.* If \\(B\\subseteq V\\) is Borel and null, apply Theorem CV.5 to \\(1_B\\). Its inverse image has zero integral against the strictly positive continuous function \\(|\\det DF|\\), hence is Lebesgue-null: intersect it with the sets \\(\\{|\\det DF|\\geq1/m\\}\\), on each of which ordinary measure is at most \\(m\\) times the weighted integral, and take their union. Apply the theorem to \\(F^{-1}\\) as well to see that null Borel sets have null Borel images. A subset of such a null set therefore also has a null image or inverse image in the completed measures.\n\nEvery completed-measurable nonnegative function agrees with a Borel function off a Borel null set. For completeness, form its increasing dyadic simple approximants. Each of their finitely many level sets differs from a Borel set by a subset of a Borel null set, by the definition of completion. Replace those level sets by Borel sets and take the limsup of the resulting Borel simple functions. Off the countable union of the exceptional Borel null sets it is the original function. Apply Theorem CV.5 to that representative and use the null-set transport just proved. Treat complex functions by real and imaginary parts.\n\nFor densities in Euclidean charts, apply Theorem CV.5 to \\(hr_N\\), and divide the source density by the strictly positive \\(r_M\\), obtaining (CV.6). Densities in overlapping charts transform by exactly this absolute-determinant rule; Theorem CV.5 therefore makes their local integrals agree. The Riemannian transformation law follows from\n\\(g_x=(D y/D x)^Tg_y(D y/D x)\\)\nand the determinant identity. Thus the density measures are well defined, and (CV.6) is independent of charts. One can construct the global measure with any countable chart cover partitioned into Borel pieces as in Theorem CV.5; agreement on overlaps shows that this construction restricts to the prescribed measure on every chart and is independent of the partition.\n\nCover \\(M\\) by countably many open sets on which both the source and target have coordinates and \\(F\\) has a coordinate expression. Partition this cover into disjoint Borel pieces. The local density formula, applied to the indicator of each image piece, sums to (CV.5). This also proves the completed-measure and complex cases on manifolds, using countably many chartwise null sets. ∎",
+      "sha256": "792dca1225b161d20a0aa228070342b0ab0d148fc1e6469402e567b69fa22567",
+      "dependencies": [
+        "CV.1",
+        "CV.2",
+        "CV.3",
+        "CV.4",
+        "CV.5"
+      ],
+      "original_research": false
+    },
+    {
+      "id": "CV.7",
+      "route": "change-of-variables-proof.html#cv-7",
+      "full_text": "**Corollary CV.7.** Let \\(p:M\\to N\\) be a \\(C^1\\) local diffeomorphism which is a covering with exactly \\(d<\\infty\\) points in every fibre. Give \\(M,N\\) positive continuous densities as above. Then\n\\[\n\\int_M(h\\circ p)J_p\\,d\\mu_M=d\\int_Nh\\,d\\mu_N\n\\tag{CV.7}\n\\]\nfor all nonnegative measurable \\(h\\), and for all integrable complex \\(h\\).\n\n*Proof.* Choose a countable cover of \\(N\\) by evenly covered open sets, and partition it into Borel sets \\(E_j\\), each contained in its corresponding open set. Over that open set the map has exactly \\(d\\) disjoint inverse sheets, each a diffeomorphism onto the open set. Apply Corollary CV.6 on each sheet to \\(h1_{E_j}\\). Summing the \\(d\\) equal target integrals gives \\(d\\int_{E_j}h\\). Sum over \\(j\\) by monotone convergence. The inverse images of the \\(E_j\\) are disjoint and cover \\(M\\), so this is (CV.7). Applying it to \\(|h|\\) justifies the complex case. Null-set representatives are legitimate on all the sheets by Corollary CV.6. ∎",
+      "sha256": "6b9442545feb894e9e98b385178d0bc77218d8fa0bb7950a61a2f8b8845743f2",
+      "dependencies": [
+        "CV.1",
+        "CV.2",
+        "CV.3",
+        "CV.4",
+        "CV.5",
+        "CV.6"
+      ],
+      "original_research": false
+    }
+  ]
+}

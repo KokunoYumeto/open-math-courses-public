@@ -4,7 +4,7 @@
 
 The regular product constructed in [Twisted regular products and prescribed inner kernels](OA-FLOW-TRP.md) is approximately finite-dimensional whenever its prescribed normal subgroup is amenable. The ambient countable group can be nonamenable, and every normalized compatible scalar pair is allowed. We identify the actual tensor base with its diagonal and finite-support flips, verify the twisted regular representation, remove the relation cocycle by compatible finite-stage primitives, and construct increasing finite-dimensional algebras in the same product. Each comparison retains the original trace and the full ambient-group action, including its characteristic phases.
 
-The finite-subgroup, trace, Fourier, factor, inner-kernel and characteristic-pair arguments of that lesson remain the inputs to this construction. The site set here is \(G\times\mathbb N_{>0}\). The separate [Bernoulli construction](OA-FLOW-NB.md) uses the site set \(G\) and every \(0<\lambda\leq1\). The arbitrary nonamenable-normal-subgroup realization problem remains a separate question. The present argument is tracial and asserts no type-III branch.
+The finite-subgroup, trace, Fourier, factor, inner-kernel and characteristic-pair arguments of that lesson remain the inputs to this construction. The site set here is \(G\times\mathbb N_{>0}\). The separate [Bernoulli construction](OA-FLOW-NB.md) uses the site set \(G\) and every \(0<\lambda\leq1\). An explicit compatible class for a proper nonamenable normal subgroup has no AFD II1 realization, as proved in [the irrational-class obstruction](OA-FLOW-NNR.md#nnr-nonrealization). A characterization of all realizable nonamenable classes remains separate. The present argument is tracial and asserts no type-III branch.
 
 <a id="arp-setting"></a>
 ## 1. The exact regular product and the theorem
@@ -461,7 +461,7 @@ Finally pull these algebras back through the explicit unitaries (A17), (A20) and
 
 Masamichi Takesaki, *Theory of Operator Algebras III*, XVII.3 Exercise 5, printed pp.293–294, motivates the prescribed-kernel regular-product question. The amenable-to-finite-relation theorem is due to Alain Connes, Jacob Feldman and Benjamin Weiss. The diagonal/flip identification, compatible-primitive construction and finite-pattern exhaustion used here have been proved above. No crossed-product AFD theorem, factor classification or dyadic conversion is used.
 
-For this actual regular recipe the amenable branch is now proved for infinite as well as finite \(N\). TRP Section 10's \(F_2\) obstruction remains valid for the nonamenable regular recipe, and does not rule out every possible different AFD realization. An arbitrary nonamenable-\(N\) realization theorem, factor uniqueness, action classification and a type-III branch remain outside the result.
+For this actual regular recipe the amenable branch is now proved for infinite as well as finite \(N\). TRP Section 10's \(F_2\) obstruction remains valid for the nonamenable regular recipe, and does not rule out every possible different AFD realization. The separate [irrational-class obstruction](OA-FLOW-NNR.md#nnr-nonrealization) excludes every AFD II1 realization for one explicit class with nonamenable \(N\). It does not characterize all realizable nonamenable classes; factor uniqueness, action classification and a type-III branch remain outside the present result.
 
 [Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
 

@@ -1,0 +1,369 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Unbounded injective replacements and derived functors</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="unbounded-injective-replacements-and-derived-functors">Unbounded injective replacements and derived functors</h1>
+<p>An injective object solves extension problems for one degree. A K-injective complex solves the extension problems that remain after all degrees and differentials interact. We construct functorial K-injective replacements for arbitrary complexes in a Grothendieck abelian category, without a boundedness or exact-products assumption. The construction attaches a fixed set of small acyclic monomorphisms and continues through an ordinal of sufficiently large cofinality. We then prove the unbounded derived-functor transformation property, products and coproducts in the derived category, and the exact-adjoint consequence.</p>
+<p>We use <a href="chain-homotopies-mapping-cones-and-triangles.html">Chain homotopies, mapping cones and triangles</a> for the cochain Hom differential, cone signs and cohomology exactness. <a href="derived-morphisms-through-quasi-isomorphism-roofs.html">Derived morphisms through quasi-isomorphism roofs</a>, Sections 4–5, proves localization and the K-injective test in all degrees. <a href="triangles-after-quasi-isomorphism-localization.html">Triangles after quasi-isomorphism localization</a> proves the derived triangulation. <span class="unlinked">Testing injectivity on generators and constructing enough injectives</span>, Lemma 7.1, supplies the complete cardinal-product and large-cofinality proof. <a href="injective-replacements-and-right-derived-functors.html">Injective replacements and right derived functors</a> supplies the bounded-below comparison and proves the self-injectivity of the dual-number ring used below.</p>
+<p>Throughout, <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a locally small Grothendieck abelian category: it has all small coproducts, filtered colimits are exact, and it has a generator <span class="math" data-tex="\(G\)">\(G\)</span>, meaning <span class="math" data-tex="\(\operatorname{Hom}(G,-)\)">\(\operatorname{Hom}(G,-)\)</span> is faithful. We use set-indexed Choice and fixed ambient universes as in <span class="unlinked">Universes and small categories</span>. Functor categories and their chosen universal constructions may be organized in an enlargement; every indexing set and ordinal used for one object is small in the original universe.</p>
+<h2 id="1-size-bounds-and-small-epimorphic-lifts">1. Size bounds and small epimorphic lifts</h2>
+<p>First, all small colimits exist. For a small diagram take the coproduct of its objects, and quotient by the image of the map from the coproduct over its arrows whose component is the difference between the target-arrow inclusion and the source inclusion. An arrow from this quotient is exactly a compatible family of arrows from the diagram. This proves the colimit universal property, including the empty diagram.</p>
+<p>The evaluation map <span class="math" data-tex="\(\bigoplus_{f:G\to X}G\to X\)">\(\bigoplus_{f:G\to X}G\to X\)</span> is epic. If its image were proper, the nonzero quotient map from <span class="math" data-tex="\(X\)">\(X\)</span> would annihilate every map from <span class="math" data-tex="\(G\)">\(G\)</span>, contradicting faithfulness. A subobject <span class="math" data-tex="\(Y\subset X\)">\(Y\subset X\)</span> is determined by the subset of <span class="math" data-tex="\(\operatorname{Hom}(G,X)\)">\(\operatorname{Hom}(G,X)\)</span> consisting of maps that factor through <span class="math" data-tex="\(Y\)">\(Y\)</span>: those maps generate <span class="math" data-tex="\(Y\)">\(Y\)</span> by the same evaluation argument. Thus <span class="math" data-tex="\(\operatorname{Sub}(X)\)">\(\operatorname{Sub}(X)\)</span> is a small set. Put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+s(X)=|\operatorname{Sub}(X)|,
+\qquad c(\mu)=s\!\left(\bigoplus_{\mu}G\right).
+\tag{1.1}
+\]">\[
+s(X)=|\operatorname{Sub}(X)|,
+\qquad c(\mu)=s\!\left(\bigoplus_{\mu}G\right).
+\tag{1.1}
+\]</span>
+<p>Subobjects and quotients have size at most the size of the original object: composition embeds a subobject's subobject set, and inverse image embeds a quotient's subobject set. The function <span class="math" data-tex="\(c\)">\(c\)</span> is nondecreasing, since padding a coproduct with zero components gives a split inclusion into every larger coproduct.</p>
+<p>If <span class="math" data-tex="\(s(X)\leq\mu\)">\(s(X)\leq\mu\)</span>, there is an epimorphism from at most <span class="math" data-tex="\(\mu\)">\(\mu\)</span> copies of <span class="math" data-tex="\(G\)">\(G\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span>. For each proper subobject <span class="math" data-tex="\(Y\subset X\)">\(Y\subset X\)</span>, faithfulness applied to <span class="math" data-tex="\(X\to X/Y\)">\(X\to X/Y\)</span> chooses a map <span class="math" data-tex="\(G\to X\)">\(G\to X\)</span> not factoring through <span class="math" data-tex="\(Y\)">\(Y\)</span>. The sum of these maps is epic: otherwise its image is one of the subobjects it was chosen to escape. After padding with zeros, <span class="math" data-tex="\(X\)">\(X\)</span> is a quotient of <span class="math" data-tex="\(\bigoplus_\mu G\)">\(\bigoplus_\mu G\)</span>. Therefore the objects of size at most a fixed <span class="math" data-tex="\(\mu\)">\(\mu\)</span> have only a small set of isomorphism classes, represented among the quotients of that one coproduct.</p>
+<p><strong>Lemma 1.1 (small lift).</strong> For an epimorphism <span class="math" data-tex="\(B\to N\)">\(B\to N\)</span>, there is a subobject <span class="math" data-tex="\(E\subset B\)">\(E\subset B\)</span> mapping onto <span class="math" data-tex="\(N\)">\(N\)</span>, with <span class="math" data-tex="\(E\)">\(E\)</span> a quotient of at most <span class="math" data-tex="\(s(N)\)">\(s(N)\)</span> copies of <span class="math" data-tex="\(G\)">\(G\)</span>. In particular</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+s(E)\leq c(s(N)).
+\tag{1.2}
+\]">\[
+s(E)\leq c(s(N)).
+\tag{1.2}
+\]</span>
+<p><strong>Proof.</strong> For every proper subobject <span class="math" data-tex="\(V\subset N\)">\(V\subset N\)</span>, the composite <span class="math" data-tex="\(B\to N/V\)">\(B\to N/V\)</span> is nonzero. Faithfulness gives a map <span class="math" data-tex="\(G\to B\)">\(G\to B\)</span> whose composite is nonzero. Let <span class="math" data-tex="\(E\)">\(E\)</span> be the image of the sum of all these maps. If its image in <span class="math" data-tex="\(N\)">\(N\)</span> were a proper subobject <span class="math" data-tex="\(V\)">\(V\)</span>, the component chosen for that very <span class="math" data-tex="\(V\)">\(V\)</span> would contradict it. The asserted presentation and size bound follow from its defining image and the quotient inequality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Exact filtered colimits preserve kernels, images and cohomology. Indeed apply their exactness to <span class="math" data-tex="\(0\to Z^nX\to X^n\to B^{n+1}X\to0\)">\(0\to Z^nX\to X^n\to B^{n+1}X\to0\)</span> and <span class="math" data-tex="\(0\to B^nX\to Z^nX\to H^nX\to0\)">\(0\to B^nX\to Z^nX\to H^nX\to0\)</span>. Their colimits give the same two kernel/image sequences for the colimit complex. Arbitrary coproducts are exact too: they are filtered colimits of finite partial biproducts, whose exactness follows from the component projections and inclusions.</p>
+<p>We also need smallness along increasing unions. If <span class="math" data-tex="\((B_\alpha)_{\alpha&lt;\theta}\)">\((B_\alpha)_{\alpha&lt;\theta}\)</span> is a continuous increasing chain and <span class="math" data-tex="\(f:M\to\operatorname{colim}B_\alpha\)">\(f:M\to\operatorname{colim}B_\alpha\)</span>, the inverse images <span class="math" data-tex="\(f^{-1}B_\alpha\)">\(f^{-1}B_\alpha\)</span> have union <span class="math" data-tex="\(M\)">\(M\)</span>. To verify that assertion from AB5, express the pullback as the kernel of <span class="math" data-tex="\(M\oplus B_\alpha\to\operatorname{colim}B_\alpha\)">\(M\oplus B_\alpha\to\operatorname{colim}B_\alpha\)</span>; taking filtered colimits gives the graph of <span class="math" data-tex="\(f\)">\(f\)</span>, whose projection is all of <span class="math" data-tex="\(M\)">\(M\)</span>. If <span class="math" data-tex="\(s(M)\leq\lambda\)">\(s(M)\leq\lambda\)</span> and <span class="math" data-tex="\(\operatorname{cf}(\theta)&gt;\lambda\)">\(\operatorname{cf}(\theta)&gt;\lambda\)</span>, choose one stage for each distinct inverse-image subobject. Those at most <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> stages have a common upper bound below <span class="math" data-tex="\(\theta\)">\(\theta\)</span>; their union is therefore attained at that stage. Thus <span class="math" data-tex="\(f\)">\(f\)</span> factors there. Equal factorizations stay equal because the transition maps and their colimit inclusions are monic.</p>
+<p>For a complex whose component sizes are at most <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, the same factorization holds if additionally <span class="math" data-tex="\(\operatorname{cf}(\theta)&gt;\aleph_0\)">\(\operatorname{cf}(\theta)&gt;\aleph_0\)</span>. Factor each degree and take a common upper bound for their countably many stages. The component factorizations satisfy the chain-map equations because they do so after the monomorphism into the colimit. This proves smallness for complexes, not just for individual objects.</p>
+<p>Fix the following parameters, which depend only on <span class="math" data-tex="\(G\)">\(G\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\kappa_0=\max(\aleph_0,s(G)),\qquad
+\kappa_{j+1}=\max(\kappa_j,c(\kappa_j)),\\
+\kappa=\sup_{j\geq0}\kappa_j,\qquad
+\lambda=\max(\kappa,c(\kappa)),\qquad
+\theta=\lambda^+.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+\kappa_0=\max(\aleph_0,s(G)),\qquad
+\kappa_{j+1}=\max(\kappa_j,c(\kappa_j)),\\
+\kappa=\sup_{j\geq0}\kappa_j,\qquad
+\lambda=\max(\kappa,c(\kappa)),\qquad
+\theta=\lambda^+.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(\theta\)">\(\theta\)</span> denotes the initial ordinal of the successor cardinal. The linked Lemma 7.1 proves, using the infinite cardinal-product calculation and Choice, that it is a small infinite limit ordinal and that every family of at most <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> ordinals below it is bounded below it. In particular <span class="math" data-tex="\(\operatorname{cf}(\theta)&gt;\lambda\geq\aleph_0\)">\(\operatorname{cf}(\theta)&gt;\lambda\geq\aleph_0\)</span>. No fixed point inequality <span class="math" data-tex="\(c(\kappa)\leq\kappa\)">\(c(\kappa)\leq\kappa\)</span> is assumed.</p>
+<h2 id="2-a-fixed-set-generates-all-acyclic-monomorphisms">2. A fixed set generates all acyclic monomorphisms</h2>
+<p>A monomorphism of complexes means a monomorphism in every degree. Call it <em>acyclic</em> if its quotient complex is acyclic; cohomology exactness shows this is equivalent to its being a quasi-isomorphism.</p>
+<p><strong>Lemma 2.1.</strong> Every nonzero acyclic complex <span class="math" data-tex="\(M\)">\(M\)</span> contains a nonzero acyclic subcomplex <span class="math" data-tex="\(N\)">\(N\)</span>, bounded above, with <span class="math" data-tex="\(s(N^n)\leq\kappa\)">\(s(N^n)\leq\kappa\)</span> in every degree.</p>
+<p><strong>Proof.</strong> Some cycle object of <span class="math" data-tex="\(M\)">\(M\)</span> is nonzero. Otherwise every differential has zero kernel, while its image is the next zero cycle object, forcing every term to be zero. Choose a nonzero map <span class="math" data-tex="\(G\to Z^aM\)">\(G\to Z^aM\)</span>, and let its image be <span class="math" data-tex="\(N^a\)">\(N^a\)</span>. Set all terms above <span class="math" data-tex="\(a\)">\(a\)</span> to zero. Since <span class="math" data-tex="\(M\)">\(M\)</span> is acyclic, the inverse image of <span class="math" data-tex="\(N^a\)">\(N^a\)</span> under <span class="math" data-tex="\(M^{a-1}\to Z^aM\)">\(M^{a-1}\to Z^aM\)</span> maps onto it. Lemma 1.1 chooses a subobject <span class="math" data-tex="\(N^{a-1}\)">\(N^{a-1}\)</span> mapping onto <span class="math" data-tex="\(N^a\)">\(N^a\)</span>, of size at most <span class="math" data-tex="\(c(\kappa_0)\leq\kappa_1\)">\(c(\kappa_0)\leq\kappa_1\)</span>. Next lift the kernel of that restricted differential through <span class="math" data-tex="\(M^{a-2}\to Z^{a-1}M\)">\(M^{a-2}\to Z^{a-1}M\)</span>, using the same lemma. Continue downward. At the <span class="math" data-tex="\(j\)">\(j\)</span>-th step its size is at most <span class="math" data-tex="\(\kappa_j\)">\(\kappa_j\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\operatorname{im}(N^{n-1}\to N^n)
+=\ker(N^n\to N^{n+1}).
+\tag{2.1}
+\]">\[
+\operatorname{im}(N^{n-1}\to N^n)
+=\ker(N^n\to N^{n+1}).
+\tag{2.1}
+\]</span>
+<p>This gives a subcomplex, proves acyclicity in every degree, and gives the uniform bound <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Its nonzero top term proves it is nonzero. Each degree is chosen once in this downward recursion; there is no inference that <span class="math" data-tex="\(c\)">\(c\)</span> preserves a countable supremum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently every acyclic complex <span class="math" data-tex="\(Q\)">\(Q\)</span> has a continuous filtration <span class="math" data-tex="\(0=Q_0\subset Q_1\subset\cdots\subset Q\)">\(0=Q_0\subset Q_1\subset\cdots\subset Q\)</span> by acyclic subcomplexes, whose nonzero successive quotients have the properties of Lemma 2.1. At a successor stage choose such a subcomplex of the nonzero quotient and take its inverse image. At a limit take the union; it is acyclic by AB5. The quotient remains acyclic by cohomology exactness. The process reaches <span class="math" data-tex="\(Q\)">\(Q\)</span>: subcomplexes form a small set, since they are particular sequences of subobjects of its terms. A strictly increasing chain cannot have more distinct stages than that set; if the whole complex has not been reached the next step is strict. Taking an ordinal of larger cardinality proves termination at a small stage.</p>
+<p>We next lift a bounded-above small quotient using small complexes on both sides of a monomorphism. Suppose <span class="math" data-tex="\(A\subset B\)">\(A\subset B\)</span> and <span class="math" data-tex="\(B/A=N\)">\(B/A=N\)</span> is acyclic, bounded above, and <span class="math" data-tex="\(s(N^n)\leq\kappa\)">\(s(N^n)\leq\kappa\)</span>. In each degree use Lemma 1.1 to choose <span class="math" data-tex="\(E^n\subset B^n\)">\(E^n\subset B^n\)</span> mapping onto <span class="math" data-tex="\(N^n\)">\(N^n\)</span>, with a presentation by at most <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> copies of <span class="math" data-tex="\(G\)">\(G\)</span>. Take <span class="math" data-tex="\(E^n=0\)">\(E^n=0\)</span> above the upper bound of <span class="math" data-tex="\(N\)">\(N\)</span>, and set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+V^n=E^n+d(E^{n-1}),\qquad U^n=A^n\cap V^n.
+\tag{2.2}
+\]">\[
+V^n=E^n+d(E^{n-1}),\qquad U^n=A^n\cap V^n.
+\tag{2.2}
+\]</span>
+<p>Then <span class="math" data-tex="\(V\)">\(V\)</span> is a subcomplex of <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> is a subcomplex of <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(V\to N\)">\(V\to N\)</span> is epic degree by degree. Its image lies in <span class="math" data-tex="\(N\)">\(N\)</span>, and contains the image of <span class="math" data-tex="\(E^n\)">\(E^n\)</span>, which is all of <span class="math" data-tex="\(N^n\)">\(N^n\)</span>. Hence <span class="math" data-tex="\(V/U=N\)">\(V/U=N\)</span>. Both complexes are bounded above, with at most one extra upper degree. Every <span class="math" data-tex="\(V^n\)">\(V^n\)</span> is a quotient of two coproducts of at most <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> generators, and thus of at most <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> generators, by the infinite cardinal-product calculation. Therefore <span class="math" data-tex="\(s(U^n),s(V^n)\leq c(\kappa)\leq\lambda\)">\(s(U^n),s(V^n)\leq c(\kappa)\leq\lambda\)</span>.</p>
+<p>The original inclusion is the pushout of <span class="math" data-tex="\(U\to V\)">\(U\to V\)</span> along <span class="math" data-tex="\(U\to A\)">\(U\to A\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\begin{array}{ccc}
+U&amp;\longrightarrow&amp;V\\
+\big\downarrow&amp;&amp;\big\downarrow\\
+A&amp;\longrightarrow&amp;B.
+\end{array}
+\tag{2.3}
+\]">\[
+\begin{array}{ccc}
+U&amp;\longrightarrow&amp;V\\
+\big\downarrow&amp;&amp;\big\downarrow\\
+A&amp;\longrightarrow&amp;B.
+\end{array}
+\tag{2.3}
+\]</span>
+<p>Indeed the sum <span class="math" data-tex="\(A+V\)">\(A+V\)</span> is all of <span class="math" data-tex="\(B\)">\(B\)</span>, because it maps onto <span class="math" data-tex="\(B/A=N\)">\(B/A=N\)</span>, and the intersection of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> is <span class="math" data-tex="\(U\)">\(U\)</span>. The map from the biproduct to their sum has exactly the difference-of-inclusions kernel <span class="math" data-tex="\(U\)">\(U\)</span>, proving the pushout universal property.</p>
+<p>Choose a small set <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> of representatives of all acyclic monomorphisms <span class="math" data-tex="\(i_s:U_s\to V_s\)">\(i_s:U_s\to V_s\)</span> between bounded-above complexes with component sizes at most <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Such a set exists: Section 1 supplies a set of component-object representatives; sequences of those objects and their differentials form a set, as do chain maps between them. The boundedness, monomorphism and acyclicity conditions select a subset.</p>
+<p><strong>Theorem 2.2.</strong> Every acyclic monomorphism is a transfinite composite of pushouts of members of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(A\subset B\)">\(A\subset B\)</span> with acyclic quotient <span class="math" data-tex="\(Q\)">\(Q\)</span>, use its acyclic filtration above. The inverse images in <span class="math" data-tex="\(B\)">\(B\)</span> give a filtration from <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span>, and each successor quotient is a bounded-above acyclic complex of component size at most <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Apply (2.2)–(2.3) to that successor inclusion. Its small pair is isomorphic to a member of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, so the successor is a pushout of such a member. At a limit the inverse image is the union of the earlier inverse images. This follows from AB5's pullback-with-union argument in Section 1, or from taking the colimit of their short exact sequences with the fixed subcomplex <span class="math" data-tex="\(A\)">\(A\)</span>. The filtration terminates at <span class="math" data-tex="\(B\)">\(B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-functorial-attachment-and-the-terminal-lifting-property">3. Functorial attachment and the terminal lifting property</h2>
+<p>For a complex <span class="math" data-tex="\(X\)">\(X\)</span>, let <span class="math" data-tex="\(\Gamma(X)\)">\(\Gamma(X)\)</span> be the set of pairs <span class="math" data-tex="\((s,f)\)">\((s,f)\)</span> with <span class="math" data-tex="\(s\in\mathcal S\)">\(s\in\mathcal S\)</span> and a chain map <span class="math" data-tex="\(f:U_s\to X\)">\(f:U_s\to X\)</span>. Define <span class="math" data-tex="\(\mathsf A(X)\)">\(\mathsf A(X)\)</span> by the pushout</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\begin{array}{ccc}
+\displaystyle\bigoplus_{(s,f)\in\Gamma(X)}U_s
+&amp;\xrightarrow{\ \oplus i_s\ }&amp;
+\displaystyle\bigoplus_{(s,f)\in\Gamma(X)}V_s\\
+\big\downarrow{\scriptstyle\mathrm{evaluation}}
+&amp;&amp;\big\downarrow\\
+X&amp;\xrightarrow{\ j_X\ }&amp;\mathsf A(X).
+\end{array}
+\tag{3.1}
+\]">\[
+\begin{array}{ccc}
+\displaystyle\bigoplus_{(s,f)\in\Gamma(X)}U_s
+&amp;\xrightarrow{\ \oplus i_s\ }&amp;
+\displaystyle\bigoplus_{(s,f)\in\Gamma(X)}V_s\\
+\big\downarrow{\scriptstyle\mathrm{evaluation}}
+&amp;&amp;\big\downarrow\\
+X&amp;\xrightarrow{\ j_X\ }&amp;\mathsf A(X).
+\end{array}
+\tag{3.1}
+\]</span>
+<p>In an abelian category a pushout of a monomorphism is monic, with the same cokernel. This can be checked in the model <span class="math" data-tex="\((X\oplus\bigoplus V_s)/\operatorname{im}(f,-i_s)\)">\((X\oplus\bigoplus V_s)/\operatorname{im}(f,-i_s)\)</span>: a kernel arrow from <span class="math" data-tex="\(X\)">\(X\)</span> would give a source arrow killed by the monic <span class="math" data-tex="\(\oplus i_s\)">\(\oplus i_s\)</span>, and is therefore zero. The quotient by <span class="math" data-tex="\(X\)">\(X\)</span> is the quotient of the right-hand coproduct by the image of the upper arrow. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\operatorname{coker}j_X
+\simeq\bigoplus_{(s,f)\in\Gamma(X)}(V_s/U_s).
+\tag{3.2}
+\]">\[
+\operatorname{coker}j_X
+\simeq\bigoplus_{(s,f)\in\Gamma(X)}(V_s/U_s).
+\tag{3.2}
+\]</span>
+<p>Each summand is acyclic, and exact coproducts preserve cohomology, so <span class="math" data-tex="\(j_X\)">\(j_X\)</span> is an acyclic monomorphism. Every <span class="math" data-tex="\(f\)">\(f\)</span> occurring in its index extends across <span class="math" data-tex="\(i_s\)">\(i_s\)</span> to <span class="math" data-tex="\(\mathsf A(X)\)">\(\mathsf A(X)\)</span>.</p>
+<p>A chain map <span class="math" data-tex="\(u:X\to Y\)">\(u:X\to Y\)</span> sends the label <span class="math" data-tex="\((s,f)\)">\((s,f)\)</span> to <span class="math" data-tex="\((s,uf)\)">\((s,uf)\)</span>, with identity maps on its <span class="math" data-tex="\(U_s,V_s\)">\(U_s,V_s\)</span>. Distinct labels may merge; the coproduct maps then add their components into the same summand. The evaluation square commutes, giving a unique map <span class="math" data-tex="\(\mathsf A(u)\)">\(\mathsf A(u)\)</span>. Checking on coproduct components and on <span class="math" data-tex="\(X\)">\(X\)</span> proves identities, compositions and <span class="math" data-tex="\(\mathsf A(u)j_X=j_Yu\)">\(\mathsf A(u)j_X=j_Yu\)</span>. Thus <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> are functorial. This construction is not asserted to be additive on chain maps.</p>
+<p>Iterate with all connecting maps and their compositions:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+X_0=X,\qquad X_{\alpha+1}=\mathsf A(X_\alpha),\\
+X_\beta=\operatorname{colim}_{\alpha&lt;\beta}X_\alpha
+\quad(\beta\text{ a nonzero limit}),\\
+I(X)=X_\theta,\qquad q_X:X\longrightarrow I(X).
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+X_0=X,\qquad X_{\alpha+1}=\mathsf A(X_\alpha),\\
+X_\beta=\operatorname{colim}_{\alpha&lt;\beta}X_\alpha
+\quad(\beta\text{ a nonzero limit}),\\
+I(X)=X_\theta,\qquad q_X:X\longrightarrow I(X).
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>At a successor the connecting map is <span class="math" data-tex="\(j\)">\(j\)</span>; at a limit it is the colimit leg. Their composition laws determine every earlier-to-later map. The preceding naturality and the colimit universal property define each <span class="math" data-tex="\(X_\alpha\)">\(X_\alpha\)</span> on arbitrary chain maps, by transfinite induction. All connecting maps are monic quasi-isomorphisms: this holds at successors by (3.2); at limits monicity and cohomology follow by exact filtered colimits. The initial maps are therefore monic quasi-isomorphisms too, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+I(u)q_X=q_Yu.
+\tag{3.4}
+\]">\[
+I(u)q_X=q_Yu.
+\tag{3.4}
+\]</span>
+<p>For <span class="math" data-tex="\(s\in\mathcal S\)">\(s\in\mathcal S\)</span>, any map <span class="math" data-tex="\(U_s\to I(X)\)">\(U_s\to I(X)\)</span> factors through <span class="math" data-tex="\(X_\alpha\)">\(X_\alpha\)</span> for some <span class="math" data-tex="\(\alpha&lt;\theta\)">\(\alpha&lt;\theta\)</span>, by Section 1's complex smallness bound. Its labelled attachment supplies an extension <span class="math" data-tex="\(V_s\to X_{\alpha+1}\to I(X)\)">\(V_s\to X_{\alpha+1}\to I(X)\)</span>, with <span class="math" data-tex="\(\alpha+1&lt;\theta\)">\(\alpha+1&lt;\theta\)</span> since <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is a limit ordinal.</p>
+<p>This extension property propagates to pushouts and transfinite composites. For a pushout, combine the map on the old target with the chosen extension on the cell using its universal property. At a successor of a transfinite composite perform that extension; at a limit the already compatible maps define a map out of the colimit. Theorem 2.2 now proves that every map into <span class="math" data-tex="\(I(X)\)">\(I(X)\)</span> extends across every acyclic monomorphism of complexes.</p>
+<h2 id="4-k-injectivity-localization-and-the-total-derived-functor">4. K-injectivity, localization and the total derived functor</h2>
+<p><strong>Theorem 4.1.</strong> For a complex <span class="math" data-tex="\(J\)">\(J\)</span>, the extension property against all acyclic monomorphisms is equivalent to: every <span class="math" data-tex="\(J^n\)">\(J^n\)</span> is injective and <span class="math" data-tex="\(J\)">\(J\)</span> is K-injective. In particular (3.3) is a functorial, termwise monic K-injective replacement of every arbitrary complex.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(D^n(A)\)">\(D^n(A)\)</span> be the complex with <span class="math" data-tex="\(A\)">\(A\)</span> in degrees <span class="math" data-tex="\(n,n+1\)">\(n,n+1\)</span>, identity differential, and zero elsewhere. A chain map <span class="math" data-tex="\(D^n(A)\to J\)">\(D^n(A)\to J\)</span> is determined by an arbitrary map <span class="math" data-tex="\(A\to J^n\)">\(A\to J^n\)</span>; its next component must be the composite with <span class="math" data-tex="\(d_J^n\)">\(d_J^n\)</span>. For every object monomorphism <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>, the inclusion <span class="math" data-tex="\(D^n(A)\to D^n(B)\)">\(D^n(A)\to D^n(B)\)</span> has acyclic quotient. The extension property thus proves injectivity of <span class="math" data-tex="\(J^n\)">\(J^n\)</span>.</p>
+<p>For an acyclic complex <span class="math" data-tex="\(N\)">\(N\)</span>, its inclusion into the first summand of the identity cone is an acyclic monomorphism. With the chosen cochain signs,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+C_{1_N}^n=N^n\oplus N^{n+1},\\
+d(y,x)=(d_Ny+x,-d_Nx),\qquad h(y,x)=(0,y),\\
+dh+hd=1_{C_{1_N}}.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+C_{1_N}^n=N^n\oplus N^{n+1},\\
+d(y,x)=(d_Ny+x,-d_Nx),\qquad h(y,x)=(0,y),\\
+dh+hd=1_{C_{1_N}}.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>Every map <span class="math" data-tex="\(N\to J\)">\(N\to J\)</span> extends to this contractible cone and is consequently null homotopic, by composing the displayed contraction with that extension and inclusion. Thus <span class="math" data-tex="\(J\)">\(J\)</span> is K-injective.</p>
+<p>Conversely let <span class="math" data-tex="\(A\subset B\)">\(A\subset B\)</span> have acyclic quotient <span class="math" data-tex="\(Q\)">\(Q\)</span>, and let <span class="math" data-tex="\(f:A\to J\)">\(f:A\to J\)</span> be a chain map. Termwise injectivity gives a graded extension <span class="math" data-tex="\(e:B\to J\)">\(e:B\to J\)</span>. Its chain-map defect factors through <span class="math" data-tex="\(Q\)">\(Q\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+d_Je-e d_B=a\pi,
+\qquad a\in\operatorname{Hom}^1(Q,J),
+\qquad Da=0,
+\tag{4.2}
+\]">\[
+d_Je-e d_B=a\pi,
+\qquad a\in\operatorname{Hom}^1(Q,J),
+\qquad Da=0,
+\tag{4.2}
+\]</span>
+<p>where <span class="math" data-tex="\(\pi:B\to Q\)">\(\pi:B\to Q\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> is the cochain Hom differential. The defect kills <span class="math" data-tex="\(A\)">\(A\)</span>, and applying <span class="math" data-tex="\(D\)">\(D\)</span> again and cancelling each epimorphic <span class="math" data-tex="\(\pi^n\)">\(\pi^n\)</span> proves the cycle equation. The Hom-complex identity gives <span class="math" data-tex="\(H^1\operatorname{Hom}^\bullet(Q,J)=\operatorname{Hom}_{K}(Q,J[1])=0\)">\(H^1\operatorname{Hom}^\bullet(Q,J)=\operatorname{Hom}_{K}(Q,J[1])=0\)</span>: shifts preserve the K-injective test. Hence <span class="math" data-tex="\(a=Db\)">\(a=Db\)</span> for a degree-zero graded map <span class="math" data-tex="\(b:Q\to J\)">\(b:Q\to J\)</span>. The map <span class="math" data-tex="\(e-b\pi\)">\(e-b\pi\)</span> is a chain map and still extends <span class="math" data-tex="\(f\)">\(f\)</span>. This proves the converse. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(K_{\mathrm{inj}}(\mathcal A)\)">\(K_{\mathrm{inj}}(\mathcal A)\)</span> be the full homotopy subcategory of K-injective complexes. The unbounded roof test proves that</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+Q:K_{\mathrm{inj}}(\mathcal A)\xrightarrow{\ \simeq\ }D(\mathcal A)
+\tag{4.3}
+\]">\[
+Q:K_{\mathrm{inj}}(\mathcal A)\xrightarrow{\ \simeq\ }D(\mathcal A)
+\tag{4.3}
+\]</span>
+<p>is fully faithful; Theorem 4.1 proves essential surjectivity. Its Hom sets are small in the original universe: a chain map is an element of a countable product of component Hom sets, and homotopy is an equivalence relation on that set. Computing a derived Hom set using the K-injective target in (4.3) therefore proves local smallness of the unbounded derived category, even when localization was initially taken in an ambient enlargement.</p>
+<p>The strict replacement functor <span class="math" data-tex="\(I\)">\(I\)</span> descends to an additive functor on the homotopy category. If <span class="math" data-tex="\(u,v\)">\(u,v\)</span> are homotopic, (3.4) makes <span class="math" data-tex="\(I(u)-I(v)\)">\(I(u)-I(v)\)</span> vanish after precomposition with <span class="math" data-tex="\(q_X\)">\(q_X\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>; the K-injective test makes that precomposition bijective. The same argument compares <span class="math" data-tex="\(I(u+v)\)">\(I(u+v)\)</span> with <span class="math" data-tex="\(I(u)+I(v)\)">\(I(u)+I(v)\)</span>, and compares <span class="math" data-tex="\(I(0)\)">\(I(0)\)</span> with zero. Quasi-isomorphisms are sent to quasi-isomorphisms by (3.4); between K-injectives these are homotopy equivalences, again by full faithfulness in (4.3).</p>
+<p>K-injectives are closed under shifts and cones. For a cone, apply both exact Hom sequences of its cone triangle to every shifted acyclic source; the two known zero groups force the third to be zero. Thus (4.3) is an exact equivalence. It reflects triangles as well: lift an arrow between two K-injective models, take its cone, and compare its image cone triangle to the given derived triangle. The triangle comparison and the two-vertex isomorphism test make the third vertex isomorphic. Shift and comparison coherence follow by full faithfulness.</p>
+<p>Let <span class="math" data-tex="\(F:\mathcal A\to\mathcal B\)">\(F:\mathcal A\to\mathcal B\)</span> be additive, with <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> abelian and its derived category taken in the common ambient enlargement. Write <span class="math" data-tex="\(T=Q_{\mathcal B}K(F):K(\mathcal A)\to D(\mathcal B)\)">\(T=Q_{\mathcal B}K(F):K(\mathcal A)\to D(\mathcal B)\)</span>. Applying <span class="math" data-tex="\(F\)">\(F\)</span> to homotopies and to finite cone sums preserves their equations. Since <span class="math" data-tex="\(I\)">\(I\)</span> sends quasi-isomorphisms to homotopy equivalences, <span class="math" data-tex="\(TI\)">\(TI\)</span> factors through localization and defines</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+RF:D(\mathcal A)\longrightarrow D(\mathcal B),
+\qquad RF(QX)=T(I(X)),
+\qquad \eta_X=T(q_X):T(X)\longrightarrow RF(QX).
+\tag{4.4}
+\]">\[
+RF:D(\mathcal A)\longrightarrow D(\mathcal B),
+\qquad RF(QX)=T(I(X)),
+\qquad \eta_X=T(q_X):T(X)\longrightarrow RF(QX).
+\tag{4.4}
+\]</span>
+<p>Its definition on derived arrows is equivalently obtained by the unique K-injective-model arrow of (4.3). Exactness follows by applying <span class="math" data-tex="\(F\)">\(F\)</span> to the K-injective cone triangles just described. The map <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is natural by (3.4).</p>
+<p><strong>Theorem 4.2 (the transformation property).</strong> For every functor <span class="math" data-tex="\(H:D(\mathcal A)\to D(\mathcal B)\)">\(H:D(\mathcal A)\to D(\mathcal B)\)</span>, composition with <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives a bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+\operatorname{Nat}(RF,H)
+\xrightarrow{\ \sim\ }
+\operatorname{Nat}(T,HQ),
+\qquad \alpha\longmapsto(\alpha Q)\eta.
+\tag{4.5}
+\]">\[
+\operatorname{Nat}(RF,H)
+\xrightarrow{\ \sim\ }
+\operatorname{Nat}(T,HQ),
+\qquad \alpha\longmapsto(\alpha Q)\eta.
+\tag{4.5}
+\]</span>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(\phi:T\to HQ\)">\(\phi:T\to HQ\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.6); horizontal scroll when needed" data-tex="\[
+\alpha_{QX}=H(Qq_X)^{-1}\phi_{I(X)}.
+\tag{4.6}
+\]">\[
+\alpha_{QX}=H(Qq_X)^{-1}\phi_{I(X)}.
+\tag{4.6}
+\]</span>
+<p>Its source is <span class="math" data-tex="\(RF(QX)=T(I(X))\)">\(RF(QX)=T(I(X))\)</span>. Naturality for a homotopy-category arrow follows from naturality of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-tex="\(I(u)\)">\(I(u)\)</span> and (3.4). It then holds for inverses of localized quasi-isomorphisms, and hence for every derived arrow by the roof universal property. Naturality of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-tex="\(q_X\)">\(q_X\)</span> proves <span class="math" data-tex="\(\alpha_{QX}\eta_X=\phi_X\)">\(\alpha_{QX}\eta_X=\phi_X\)</span>.</p>
+<p>For uniqueness note that <span class="math" data-tex="\(I(q_X)\)">\(I(q_X)\)</span> and <span class="math" data-tex="\(q_{I(X)}\)">\(q_{I(X)}\)</span> have the same precomposition with <span class="math" data-tex="\(q_X\)">\(q_X\)</span> by (3.4). Their target is K-injective, so they are equal in the homotopy category. Therefore <span class="math" data-tex="\(RF(Qq_X)=T(q_{I(X)})=\eta_{I(X)}\)">\(RF(Qq_X)=T(q_{I(X)})=\eta_{I(X)}\)</span>. If <span class="math" data-tex="\(\beta\)">\(\beta\)</span> maps to <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, naturality on <span class="math" data-tex="\(Qq_X\)">\(Qq_X\)</span> gives <span class="math" data-tex="\(H(Qq_X)\beta_{QX}=\beta_{QI(X)}\eta_{I(X)}=\phi_{I(X)}\)">\(H(Qq_X)\beta_{QX}=\beta_{QI(X)}\eta_{I(X)}=\phi_{I(X)}\)</span>, forcing (4.6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Different K-injective choices give canonical natural isomorphisms compatible with <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. The comparison from <span class="math" data-tex="\(I_X\)">\(I_X\)</span> to <span class="math" data-tex="\(J_X\)">\(J_X\)</span> is the unique homotopy class whose precomposition with <span class="math" data-tex="\(q_X\)">\(q_X\)</span> is the other replacement map. Comparing both composites with the identity after that same precomposition makes them homotopy inverse. Comparing a third choice proves the cocycle; comparing a complex arrow proves naturality, and inverting quasi-isomorphisms proves it for derived arrows. Applying <span class="math" data-tex="\(F\)">\(F\)</span> preserves all these homotopies and inverses. This also identifies (4.4) on <span class="math" data-tex="\(D^+\)">\(D^+\)</span> with the earlier bounded-below derived functor, since its bounded injective replacements are K-injective targets for the same comparison. In particular for left exact <span class="math" data-tex="\(F\)">\(F\)</span>, the previously proved identifications of degree-zero and higher right derived functors agree with this unbounded construction.</p>
+<h2 id="5-ordinary-products-derived-sums-and-exact-adjoints">5. Ordinary products, derived sums and exact adjoints</h2>
+<p>We first prove existence of ordinary products in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, rather than assuming completeness. Fix a small family <span class="math" data-tex="\((M_i)\)">\((M_i)\)</span>, and consider pairs consisting of an object <span class="math" data-tex="\(X\)">\(X\)</span> and arrows <span class="math" data-tex="\(f_i:X\to M_i\)">\(f_i:X\to M_i\)</span>. A morphism between pairs preserves all those arrows. This category has all small colimits: form the colimit of the objects in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and use the compatible families of arrows to each <span class="math" data-tex="\(M_i\)">\(M_i\)</span>.</p>
+<p>Every such family factors through a quotient <span class="math" data-tex="\(C\)">\(C\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span> whose arrows to the <span class="math" data-tex="\(M_i\)">\(M_i\)</span> are jointly monic. Namely take the sum <span class="math" data-tex="\(L\)">\(L\)</span> of all subobjects of <span class="math" data-tex="\(X\)">\(X\)</span> annihilated by every <span class="math" data-tex="\(f_i\)">\(f_i\)</span> and put <span class="math" data-tex="\(C=X/L\)">\(C=X/L\)</span>. That sum is indexed by the small subobject set. If a subobject of <span class="math" data-tex="\(C\)">\(C\)</span> is annihilated by every induced arrow, its inverse image in <span class="math" data-tex="\(X\)">\(X\)</span> is annihilated by all <span class="math" data-tex="\(f_i\)">\(f_i\)</span>, hence contained in <span class="math" data-tex="\(L\)">\(L\)</span>; it must be zero. Thus the induced arrows are jointly monic, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(G,C)\lhook\joinrel\longrightarrow
+\prod_i\operatorname{Hom}(G,M_i).
+\tag{5.1}
+\]">\[
+\operatorname{Hom}(G,C)\lhook\joinrel\longrightarrow
+\prod_i\operatorname{Hom}(G,M_i).
+\tag{5.1}
+\]</span>
+<p>The product here is only a product of small sets. Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be an infinite cardinal bounding its size. Evaluation makes <span class="math" data-tex="\(C\)">\(C\)</span> a quotient of <span class="math" data-tex="\(\bigoplus_\mu G\)">\(\bigoplus_\mu G\)</span>. The quotients of that fixed object, together with all their families of arrows to the <span class="math" data-tex="\(M_i\)">\(M_i\)</span>, form a small set of pairs through which every pair maps. Their coproduct <span class="math" data-tex="\((W,(w_i))\)">\((W,(w_i))\)</span> is consequently weakly terminal in the pair category.</p>
+<p>Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be its set of endomorphisms in that category, and coequalize each of them with the identity:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+P=\operatorname{coker}\!\left(
+\bigoplus_{e\in\mathcal E}W\xrightarrow{\ \sum(e-1)\ }W
+\right),\qquad q:W\twoheadrightarrow P.
+\tag{5.2}
+\]">\[
+P=\operatorname{coker}\!\left(
+\bigoplus_{e\in\mathcal E}W\xrightarrow{\ \sum(e-1)\ }W
+\right),\qquad q:W\twoheadrightarrow P.
+\tag{5.2}
+\]</span>
+<p>The <span class="math" data-tex="\(w_i\)">\(w_i\)</span> factor through <span class="math" data-tex="\(q\)">\(q\)</span>, giving the pair <span class="math" data-tex="\((P,(p_i))\)">\((P,(p_i))\)</span>, which is still weakly terminal. Choose a pair morphism <span class="math" data-tex="\(v:P\to W\)">\(v:P\to W\)</span> using weak terminality of <span class="math" data-tex="\(W\)">\(W\)</span>. Since <span class="math" data-tex="\(vq\in\mathcal E\)">\(vq\in\mathcal E\)</span>, the coequalizer gives <span class="math" data-tex="\(qvq=q\)">\(qvq=q\)</span>, hence <span class="math" data-tex="\(qv=1_P\)">\(qv=1_P\)</span>. For any endomorphism <span class="math" data-tex="\(a\)">\(a\)</span> of the pair <span class="math" data-tex="\(P\)">\(P\)</span>, the same argument applied to <span class="math" data-tex="\(vaq\)">\(vaq\)</span> gives <span class="math" data-tex="\(qvaq=q\)">\(qvaq=q\)</span>, and therefore <span class="math" data-tex="\(a=1_P\)">\(a=1_P\)</span>. Finally, for two pair morphisms <span class="math" data-tex="\(u,z:X\to P\)">\(u,z:X\to P\)</span>, form their pushout with its two legs <span class="math" data-tex="\(j_1,j_2:P\to Y\)">\(j_1,j_2:P\to Y\)</span>. Weak terminality supplies <span class="math" data-tex="\(h:Y\to P\)">\(h:Y\to P\)</span>. Both <span class="math" data-tex="\(hj_1\)">\(hj_1\)</span> and <span class="math" data-tex="\(hj_2\)">\(hj_2\)</span> are identities, while <span class="math" data-tex="\(j_1u=j_2z\)">\(j_1u=j_2z\)</span>; hence <span class="math" data-tex="\(u=z\)">\(u=z\)</span>. Existence and uniqueness prove that <span class="math" data-tex="\(P\)">\(P\)</span> is terminal in the pair category, exactly the ordinary product. The argument includes the empty family.</p>
+<p><strong>Theorem 5.1.</strong> The unbounded derived category has arbitrary small sums and products. Sums are represented by termwise sums of the original complexes. Products are represented by termwise products of K-injective replacements.</p>
+<p><strong>Proof.</strong> Choose replacements <span class="math" data-tex="\(X_i\to I_i\)">\(X_i\to I_i\)</span>. A map or homotopy into a termwise product is exactly a family of maps or homotopies into its factors, by the ordinary product universal property. Consequently <span class="math" data-tex="\(\prod I_i\)">\(\prod I_i\)</span> is K-injective: every family of maps from an acyclic source has a family of null homotopies, which defines one homotopy into the product. Similarly a map or homotopy from a termwise sum is a family of maps or homotopies from its summands. Choice lets representatives and homotopies for small families be chosen simultaneously. For a K-injective target <span class="math" data-tex="\(J\)">\(J\)</span>, the unbounded Hom test now gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_D\!\left(\bigoplus_iX_i,J\right)
+\simeq\prod_i\operatorname{Hom}_D(X_i,J),\\
+\operatorname{Hom}_D\!\left(X,\prod_iI_i\right)
+\simeq\prod_i\operatorname{Hom}_D(X,X_i).
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_D\!\left(\bigoplus_iX_i,J\right)
+\simeq\prod_i\operatorname{Hom}_D(X_i,J),\\
+\operatorname{Hom}_D\!\left(X,\prod_iI_i\right)
+\simeq\prod_i\operatorname{Hom}_D(X,X_i).
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>Every derived object can be represented by <span class="math" data-tex="\(J\)">\(J\)</span>, so the first formula proves the sum universal property for all targets. The second proves the product property for all sources. The canonical inclusions and replacement-adjusted projections give the specified legs. Products of the injective component objects are injective, since each component of a map extends across an object monomorphism and their extensions assemble using the product. Thus the constructed product model may also be taken termwise injective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If products in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> are exact, a product of quasi-isomorphisms is a quasi-isomorphism: apply the exact product functor to the kernel/image cohomology sequences, or to the acyclic cones. In this additional case the product of the original complexes also represents the derived product. Theorem 5.1 itself uses no exact-products assumption.</p>
+<p><strong>Proposition 5.2.</strong> Suppose <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is Grothendieck, <span class="math" data-tex="\(L:\mathcal B\to\mathcal A\)">\(L:\mathcal B\to\mathcal A\)</span> is exact, and <span class="math" data-tex="\(L\)">\(L\)</span> is left adjoint to an additive <span class="math" data-tex="\(F:\mathcal A\to\mathcal B\)">\(F:\mathcal A\to\mathcal B\)</span>. Then <span class="math" data-tex="\(F\)">\(F\)</span> takes K-injectives to K-injectives, and <span class="math" data-tex="\(RF\)">\(RF\)</span> is right adjoint to the termwise induced <span class="math" data-tex="\(L:D(\mathcal B)\to D(\mathcal A)\)">\(L:D(\mathcal B)\to D(\mathcal A)\)</span>. It preserves all derived products.</p>
+<p><strong>Proof.</strong> The ordinary adjunction identifies chain maps and chain homotopies <span class="math" data-tex="\(LN\to I\)">\(LN\to I\)</span> with those <span class="math" data-tex="\(N\to FI\)">\(N\to FI\)</span>, degree by degree; its naturality makes the differential and homotopy equations correspond. If <span class="math" data-tex="\(N\)">\(N\)</span> is acyclic then <span class="math" data-tex="\(LN\)">\(LN\)</span> is acyclic by exactness. Thus <span class="math" data-tex="\(I\)">\(I\)</span> K-injective implies <span class="math" data-tex="\(FI\)">\(FI\)</span> K-injective. Exactness also makes <span class="math" data-tex="\(L\)">\(L\)</span> preserve quasi-isomorphisms, so it induces the stated derived functor without a replacement. For <span class="math" data-tex="\(Y\to I_Y\)">\(Y\to I_Y\)</span> use both K-injective Hom tests and the homotopy adjunction:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{D(\mathcal A)}(LX,Y)
+\simeq\operatorname{Hom}_{K(\mathcal A)}(LX,I_Y)
+\simeq\operatorname{Hom}_{K(\mathcal B)}(X,FI_Y)
+\simeq\operatorname{Hom}_{D(\mathcal B)}(X,RFY).
+\tag{5.4}
+\]">\[
+\operatorname{Hom}_{D(\mathcal A)}(LX,Y)
+\simeq\operatorname{Hom}_{K(\mathcal A)}(LX,I_Y)
+\simeq\operatorname{Hom}_{K(\mathcal B)}(X,FI_Y)
+\simeq\operatorname{Hom}_{D(\mathcal B)}(X,RFY).
+\tag{5.4}
+\]</span>
+<p>Every bijection is natural, including for derived arrows by localization; hence this is an adjunction with its natural unit and counit. For a product family, apply the bijection and the product universal property: maps from <span class="math" data-tex="\(X\)">\(X\)</span> into <span class="math" data-tex="\(RF(\prod Y_i)\)">\(RF(\prod Y_i)\)</span> are families of maps from <span class="math" data-tex="\(LX\)">\(LX\)</span> into <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span>, hence families into <span class="math" data-tex="\(RFY_i\)">\(RFY_i\)</span>. This proves the product comparison is invertible by its universal property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-two-unbounded-examples">6. Two unbounded examples</h2>
+<p><strong>Example 6.1: all degrees over a field.</strong> In vector spaces every acyclic complex is contractible. Choose in each degree a complement <span class="math" data-tex="\(U^n\)">\(U^n\)</span> to <span class="math" data-tex="\(Z^n=B^n\)">\(Z^n=B^n\)</span>. Its differential is an isomorphism <span class="math" data-tex="\(U^n\to B^{n+1}\)">\(U^n\to B^{n+1}\)</span>. Define a degree-minus-one homotopy to be its inverse on <span class="math" data-tex="\(B^{n+1}\)">\(B^{n+1}\)</span> and zero on the complement. Checking on those two summands gives <span class="math" data-tex="\(dh+hd=1\)">\(dh+hd=1\)</span> in every degree. Every map from that complex into any other complex is therefore null homotopic. Thus every complex of vector spaces is K-injective, with no bounds.</p>
+<p>For a general complex choose complements also to <span class="math" data-tex="\(B^n\)">\(B^n\)</span> in <span class="math" data-tex="\(Z^n\)">\(Z^n\)</span>. It is a direct sum in each degree of its cohomology representative and the two summands of the preceding contractible construction. Its inclusion and projection to the zero-differential cohomology complex are homotopy inverse. For zero-differential complexes a chain map is a degree-wise family, and a homotopy cannot change that family. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{D(k)}(X,Y)
+\simeq\prod_{n\in\mathbf Z}
+\operatorname{Hom}_k(H^nX,H^nY).
+\tag{6.1}
+\]">\[
+\operatorname{Hom}_{D(k)}(X,Y)
+\simeq\prod_{n\in\mathbf Z}
+\operatorname{Hom}_k(H^nX,H^nY).
+\tag{6.1}
+\]</span>
+<p>This is the bijection induced by cohomology; the splittings prove its bijectivity, so it is natural regardless of their choices. If <span class="math" data-tex="\(E_n=k[-n]\)">\(E_n=k[-n]\)</span>, the zero-differential complex having one copy of <span class="math" data-tex="\(k\)">\(k\)</span> in every integer degree is both <span class="math" data-tex="\(\bigoplus_nE_n\)">\(\bigoplus_nE_n\)</span> and <span class="math" data-tex="\(\prod_nE_n\)">\(\prod_nE_n\)</span>: in each degree the family has only one nonzero component. Its endomorphism ring is <span class="math" data-tex="\(\prod_{n\in\mathbf Z}k\)">\(\prod_{n\in\mathbf Z}k\)</span>, with coordinatewise composition. These are genuinely unbounded objects and Hom groups.</p>
+<p><strong>Example 6.2: injective terms do not suffice.</strong> Let <span class="math" data-tex="\(R=k[\varepsilon]/(\varepsilon^2)\)">\(R=k[\varepsilon]/(\varepsilon^2)\)</span>. The earlier injective-replacement lesson proves <span class="math" data-tex="\(R\)">\(R\)</span> is injective as a left module, by its natural identification with <span class="math" data-tex="\(\operatorname{Hom}_k(R,k)\)">\(\operatorname{Hom}_k(R,k)\)</span> and the restriction adjunction. Consider</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+J^n=R\quad(n\in\mathbf Z),\qquad
+d_J^n(x)=\varepsilon x.
+\tag{6.2}
+\]">\[
+J^n=R\quad(n\in\mathbf Z),\qquad
+d_J^n(x)=\varepsilon x.
+\tag{6.2}
+\]</span>
+<p>Its kernels and images are both <span class="math" data-tex="\(k\varepsilon\)">\(k\varepsilon\)</span>, so it is acyclic, and every term is injective. But it is not contractible. An <span class="math" data-tex="\(R\)">\(R\)</span>-linear component of a homotopy is multiplication by some <span class="math" data-tex="\(a_n\in R\)">\(a_n\in R\)</span>; the contraction equation would give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+1=\varepsilon a_n+a_{n+1}\varepsilon
+=\varepsilon(a_n+a_{n+1}),
+\tag{6.3}
+\]">\[
+1=\varepsilon a_n+a_{n+1}\varepsilon
+=\varepsilon(a_n+a_{n+1}),
+\tag{6.3}
+\]</span>
+<p>impossible because the right side lies in the proper ideal <span class="math" data-tex="\((\varepsilon)\)">\((\varepsilon)\)</span>. Its identity map is consequently a nonzero homotopy class from an acyclic source to itself, so <span class="math" data-tex="\(J\)">\(J\)</span> is not K-injective. This verifies directly why the bounded-below termwise-injective theorem cannot simply lose its bound.</p>
+<h2 id="7-graded-exercises-with-solutions">7. Graded exercises with solutions</h2>
+<p><strong>Exercise 1 (routine).</strong> Explain the countable-degree cofinality condition when factoring complex maps through a union. Give a bounded-above complex map which factors in every degree through a finite stage of an increasing countable chain, but does not factor as a complex through any one finite stage.</p>
+<p><strong>Solution.</strong> Section 1 first gives one factorization stage for each integer degree. A single complex map needs one stage above all those countably many stages. Cofinality greater than <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span> supplies it, and monicity into the union verifies the differential equations at the common stage. For the counterexample, let <span class="math" data-tex="\(A_j\)">\(A_j\)</span> be the zero-differential vector-space complex with one copy of <span class="math" data-tex="\(k\)">\(k\)</span> in degrees <span class="math" data-tex="\(-j,-j+1,\ldots,0\)">\(-j,-j+1,\ldots,0\)</span>, and zero elsewhere. Include each into the next in the evident components. Its union <span class="math" data-tex="\(A\)">\(A\)</span> has one copy of <span class="math" data-tex="\(k\)">\(k\)</span> in every degree <span class="math" data-tex="\(n\leq0\)">\(n\leq0\)</span>. The identity map of <span class="math" data-tex="\(A\)">\(A\)</span> factors in degree <span class="math" data-tex="\(n\)">\(n\)</span> through <span class="math" data-tex="\(A_j\)">\(A_j\)</span> for every <span class="math" data-tex="\(j\geq-n\)">\(j\geq-n\)</span>, but does not factor through any fixed <span class="math" data-tex="\(A_j\)">\(A_j\)</span>: in degree <span class="math" data-tex="\(-j-1\)">\(-j-1\)</span> its target there is zero while the identity component is nonzero. Thus bounded-above domains still need the countable-degree bound. Our choice <span class="math" data-tex="\(\operatorname{cf}(\theta)&gt;\lambda\geq\aleph_0\)">\(\operatorname{cf}(\theta)&gt;\lambda\geq\aleph_0\)</span> supplies it uniformly.</p>
+<p><strong>Exercise 2 (intermediate).</strong> In a nonzero Grothendieck category show that <span class="math" data-tex="\(c(\mu)&gt;\mu\)">\(c(\mu)&gt;\mu\)</span> for every infinite <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Explain why this does not obstruct (1.3) and the cell construction, and why replacing it by an assumed fixed point would be wrong.</p>
+<p><strong>Solution.</strong> The generator is nonzero, since faithfulness from a zero generator would equate every identity map with zero. For every subset <span class="math" data-tex="\(S\subset\mu\)">\(S\subset\mu\)</span>, its coordinate subcoproduct <span class="math" data-tex="\(\bigoplus_SG\)">\(\bigoplus_SG\)</span> is a split subobject of <span class="math" data-tex="\(\bigoplus_\mu G\)">\(\bigoplus_\mu G\)</span>. Distinct subsets give distinct subobjects: projection to a coordinate in their difference is nonzero on one subcoproduct and zero on the other. Hence there are at least <span class="math" data-tex="\(2^\mu\)">\(2^\mu\)</span> subobjects. Cantor's diagonal argument gives <span class="math" data-tex="\(c(\mu)\geq2^\mu&gt;\mu\)">\(c(\mu)\geq2^\mu&gt;\mu\)</span>, so no proposed infinite <span class="math" data-tex="\(c\)">\(c\)</span>-fixed upper bound can exist.</p>
+<p>The construction needs no such bound. The downward acyclic construction has its <span class="math" data-tex="\(j\)">\(j\)</span>-th term bounded by the separately iterated <span class="math" data-tex="\(\kappa_j\)">\(\kappa_j\)</span>, so every term is bounded by their supremum <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. It never applies <span class="math" data-tex="\(c\)">\(c\)</span> to that supremum and asserts the result stays below it. Lifting a small acyclic quotient to a pair uses the larger bound <span class="math" data-tex="\(\lambda=\max(\kappa,c(\kappa))\)">\(\lambda=\max(\kappa,c(\kappa))\)</span>. The set of cell domains has component sizes at most this <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and the still larger cofinality of <span class="math" data-tex="\(\theta=\lambda^+\)">\(\theta=\lambda^+\)</span> proves their complex smallness. Those are three different bounds serving three proved purposes; all exist by the universe and cardinal arguments already supplied.</p>
+<p><strong>Exercise 3 (advanced).</strong> Apply <span class="math" data-tex="\(F=\operatorname{Hom}_R(k,-)\)">\(F=\operatorname{Hom}_R(k,-)\)</span>, where <span class="math" data-tex="\(k=R/(\varepsilon)\)">\(k=R/(\varepsilon)\)</span>, to the acyclic complex in Example 6.2. Compute the result, and construct an explicit valid K-injective replacement showing what the right derived value must be.</p>
+<p><strong>Solution.</strong> A homomorphism <span class="math" data-tex="\(k\to R\)">\(k\to R\)</span> is determined by the image of one, which must be annihilated by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Thus each term is <span class="math" data-tex="\(k\varepsilon\simeq k\)">\(k\varepsilon\simeq k\)</span>, and multiplication by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> induces zero on it. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+H^n(FJ)=k\quad\text{for every }n\in\mathbf Z,
+\qquad RF(QJ)=0.
+\tag{7.1}
+\]">\[
+H^n(FJ)=k\quad\text{for every }n\in\mathbf Z,
+\qquad RF(QJ)=0.
+\tag{7.1}
+\]</span>
+<p>The second assertion follows because <span class="math" data-tex="\(J\)">\(J\)</span> is acyclic and hence is the zero derived object. It can also be checked through an explicit replacement. The first-summand inclusion <span class="math" data-tex="\(J\to C_{1_J}\)">\(J\to C_{1_J}\)</span> is termwise monic and a quasi-isomorphism since its quotient is the acyclic shift <span class="math" data-tex="\(J[1]\)">\(J[1]\)</span>. Formula (4.1) contracts that cone, making it K-injective: every map from any source into a contractible complex is null homotopic by its target contraction. Its terms are finite sums of injectives. An additive functor preserves the contracting equation, so <span class="math" data-tex="\(F(C_{1_J})\)">\(F(C_{1_J})\)</span> is contractible. This gives the zero derived value directly. Using only termwise injectivity of <span class="math" data-tex="\(J\)">\(J\)</span> would instead give the wrong nonzero group in every degree.</p>
+<p><strong>Exercise 4 (challenging).</strong> For the exact adjunction <span class="math" data-tex="\(L\dashv F\)">\(L\dashv F\)</span> of Proposition 5.2, prove termwise injectivity of <span class="math" data-tex="\(FI\)">\(FI\)</span> when <span class="math" data-tex="\(I\)">\(I\)</span> is termwise injective, identify the derived unit and counit through (5.4), and prove that the derived product is independent of all chosen K-injective models. Specify the extra condition under which original-complex products compute it.</p>
+<p><strong>Solution.</strong> An object map <span class="math" data-tex="\(A\to FI^n\)">\(A\to FI^n\)</span> corresponds to <span class="math" data-tex="\(LA\to I^n\)">\(LA\to I^n\)</span>. For <span class="math" data-tex="\(A\subset B\)">\(A\subset B\)</span>, exactness makes <span class="math" data-tex="\(LA\subset LB\)">\(LA\subset LB\)</span>, so injectivity of <span class="math" data-tex="\(I^n\)">\(I^n\)</span> extends that map. Adjunction converts the extension to <span class="math" data-tex="\(B\to FI^n\)">\(B\to FI^n\)</span>. Together with Proposition 5.2's acyclic-source test this proves the required termwise-injective K-injective target model.</p>
+<p>The derived unit at <span class="math" data-tex="\(X\)">\(X\)</span> is the arrow corresponding under (5.4) to <span class="math" data-tex="\(1_{LX}\)">\(1_{LX}\)</span>; the counit at <span class="math" data-tex="\(Y\)">\(Y\)</span> corresponds to <span class="math" data-tex="\(1_{RFY}\)">\(1_{RFY}\)</span>. These correspondences are natural and inverse. To check their triangle equations, apply the adjunction bijection: the composites correspond respectively to the same identity arrows, by its naturality. This proves both equations, with no restriction to bounded objects. Comparing different replacements of <span class="math" data-tex="\(Y\)">\(Y\)</span> by the unique homotopy equivalences of Section 4 makes these bijections, and hence the unit and counit, independent of choices.</p>
+<p>For a family <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, comparisons between two K-injective model families are componentwise homotopy equivalences. Their products and the products of their inverse maps exist by the ordinary product property. The component homotopies assemble to homotopies of these products. Hence the two product models are homotopy equivalent, and the comparisons preserve their projection arrows to every <span class="math" data-tex="\(X_i\)">\(X_i\)</span> in the derived category. They are the unique isomorphisms with those projection properties, so all identity, composition and cocycle compatibilities follow. Exactness of products in the original abelian category is sufficient for <span class="math" data-tex="\(\prod X_i\to\prod I_i\)">\(\prod X_i\to\prod I_i\)</span> to be a quasi-isomorphism, by the final argument after Theorem 5.1. Without that additional hypothesis, the proved prescription is to use the K-injective models; no exactness of the original product functor was used in constructing them.</p>
+<h2 id="8-further-reading">8. Further reading</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/05AB">injectives in Grothendieck categories</a>, for size and cofinality arguments.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/079I">K-injectives in Grothendieck categories</a>, for unbounded replacements.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/07D6">additional Grothendieck-category results</a>, for representability and derived products and coproducts.</li>
+</ul>
+<p>The theorem proved here covers arbitrary complexes. The filtered convergence conditions in <a href="filtered-complexes-and-cartan-eilenberg-resolutions.html">Filtered complexes and Cartan–Eilenberg resolutions</a> remain conditions on a spectral-sequence calculation; existence of an unbounded replacement does not by itself prove convergence of an arbitrary unbounded filtration.</p>
+</main></body></html>

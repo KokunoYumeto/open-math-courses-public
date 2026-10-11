@@ -1,6 +1,6 @@
 # Concrete predual balls and faithful ultraweak representations
 
-*Fresh local proof by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights in this exposition.*
+*CC0-1.0 to the extent of rights in this exposition.*
 
 This earlier portion proves ST-1–2 for arbitrary Hilbert spaces and faithful ultraweakly continuous representations. The faithful-state GNS/modular application ST-3 is a later separate lesson. No modular or arbitrary-weight theorem is an input here.
 

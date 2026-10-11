@@ -40,7 +40,7 @@ It is irreducible if and only if \(f\) is cuspidal. If \(f\) is a **normalized p
 \]
 including the factors at primes dividing \(N\).
 
-These are the complete assertions of Deligne–Serre's freely readable original article, Theorems 4.1 and 4.6. The theorem's first part does not require primitivity, normalization, or eigenvector conditions at primes dividing \(N\). In (1), \(a_p\) denotes the eigenvalue. For a normalized cusp eigenform it is also the \(p\)-th Fourier coefficient. Proposition 3.2 proves the cusp construction once the required higher-weight residual representations are supplied; Lemma 3.3 proves the exact bad-factor deduction once the primitive modular functional-equation inputs are supplied. The residual geometry, noncuspidal classification and general primitive inputs are presently unclosed, as specified in §6. The citation identifies the full result and does not substitute for those missing proofs.
+These are the complete assertions of Deligne–Serre's freely readable original article, Theorems 4.1 and 4.6. The theorem's first part does not require primitivity, normalization, or eigenvector conditions at primes dividing \(N\). In (1), \(a_p\) denotes the eigenvalue. For a normalized cusp eigenform it is also the \(p\)-th Fourier coefficient. Proposition 3.2A below proves the noncuspidal case at every level and character. Proposition 3.2 proves the cusp construction once the required higher-weight residual representations are supplied. Sections 3.2C–3.2D prove all primitive modular functional-equation and bad-factor inputs; Lemma 3.3 deduces the exact conductor and all Euler factors when the representation and its Artin equation are supplied. The remaining residual geometry and prerequisite obligations are specified in §6. The citation identifies the full result and does not substitute for its proof.
 
 Continuity makes the image finite: the compact image of the profinite group \(G_{\mathbf Q}\) in a discrete space is finite. A finite group representation over \(\mathbf C\) is semisimple. Indeed, if \(U\subset V\) is stable, average any projection \(P:V\to U\):
 \[
@@ -304,7 +304,713 @@ This is [Deligne–Serre, Proposition 5.5] with its elementary finiteness and de
    \]
    contradicting Lemma 3.0A. A bounded cross-prime sum, stronger than this density deduction, is unnecessary. This completes the claimed implication. ∎
 
-The noncuspidal part of Theorem 1.1 additionally needs the weight-one Eisenstein classification, yielding two finite Dirichlet characters with trace \(\chi_1(p)+\chi_2(p)\). The actually written character-Eisenstein construction in the earlier modular-forms lesson assumes weight at least two and cannot be substituted here. This remaining obligation, and the residual and arithmetic-lattice obligations in Proposition 3.2, are retained in §6.
+### 3.2A. Noncuspidal forms from their cusp constant terms
+
+**Proposition 3.2A.** Suppose \(f\) satisfies (1) and is not cuspidal. There are characters \(\chi_1,\chi_2:(\mathbf Z/N\mathbf Z)^\times\to\mathbf C^\times\) such that, simultaneously for every prime \(p\nmid N\),
+\[
+\chi_1\chi_2=\varepsilon,\qquad
+a_p=\chi_1(p)+\chi_2(p).
+\tag{16A}
+\]
+The representation \(\chi_{1,G}\oplus\chi_{2,G}\) proves the noncuspidal assertion of Theorem 1.1. This includes forms with a cuspidal component and forms that are not eigenvectors for any bad-prime operator. No weight-one Eisenstein series needs to be constructed for this assertion.
+
+*Proof.* We calculate the action on all cusp constant terms. Put \(U_N=(\mathbf Z/N\mathbf Z)^\times\) and
+\[
+P_N=\{(a,c)\in(\mathbf Z/N\mathbf Z)^2:(a,c)\text{ generates the unit ideal}\}.
+\tag{16B}
+\]
+An odd character cannot exist for \(N=1,2\), since then \(-1=1\) in \(U_N\). Thus (1) already implies \(N\ge3\). The following argument also explains the orientation signs at cusps.
+
+Every pair in \(P_N\) has a relatively prime integral lift. Choose a nonzero lift \(c\). For each prime divisor of \(c\) not dividing \(N\), choose \(t\) so that \(a+Nt\) is not divisible by that prime; the Chinese remainder theorem makes the choices simultaneously. Its elementary form follows from Bezout: if \(rm+sn=1\), then \(A sn+B rm\) has residues \(A\) modulo \(m\) and \(B\) modulo \(n\); iterate over the distinct primes. Bezout itself follows by expressing the last nonzero remainder in the Euclidean algorithm as an integer combination of its two inputs. At a prime dividing both \(c\) and \(N\), the unit-ideal condition already makes \(a\) nonzero modulo that prime. Hence \(\gcd(a+Nt,c)=1\). Bezout extends this first column to a matrix \(\sigma\in\mathrm{SL}_2(\mathbf Z)\).
+
+For such a matrix define \(C_f(a,c)\) to be the constant term of \(f|_1\sigma\) at infinity. It depends only on the first column modulo \(N\). Indeed, if \(\sigma'\) has the same column modulo \(N\), then
+\(\sigma^{-1}\sigma'\equiv\left(\begin{smallmatrix}1&t\\0&1\end{smallmatrix}\right)\pmod N\).
+Choose an integral lift of \(t\). It follows that \(\sigma'=\gamma\sigma T^t\) for some \(\gamma\in\Gamma(N)\), where \(T=\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)\). Left multiplication by \(\gamma\) does not change the slash transform; right multiplication by \(T^t\) translates its Fourier expansion and leaves its constant term unchanged. This proves the assertion. Replacing the column by its negative replaces \(\sigma\) by \(-\sigma\), and weight one gives \(C_f(-a,-c)=-C_f(a,c)\). All rational cusps have primitive integral columns, so
+\(C_f=0\) if and only if \(f\) is cuspidal.
+
+The same lifting argument gives a lift in \(\mathrm{SL}_2(\mathbf Z)\) of every matrix in \(\mathrm{SL}_2(\mathbf Z/N\mathbf Z)\): lift its first column primitively, extend by Bezout, and adjust the second column by a multiple of the first. To justify the last step, two second columns of determinant one differ by a multiple of the first over \(\mathbf Z/N\mathbf Z\); apply the inverse of either determinant-one matrix. We will use in particular lifts of the diagonal matrices \(\operatorname{diag}(u^{-1},u)\).
+
+The modular law for \(\Gamma_1(N)\) and the character law for \(\Gamma_0(N)\) give
+\[
+C_f(a+tc,c)=C_f(a,c),\qquad
+C_f(u^{-1}a,uc)=\varepsilon(u)C_f(a,c)
+\quad(t\bmod N,\ u\in U_N).
+\tag{16C}
+\]
+Both identities follow by left multiplying a scaling matrix by the corresponding upper unipotent or diagonal lift. Let \(\mathcal B_\varepsilon\) be the finite-dimensional space of functions on \(P_N\) satisfying (16C). The relation at \(u=-1\) incorporates the orientation sign. Thus \(C_f\in\mathcal B_\varepsilon\).
+
+For \(p\nmid N\), choose \(\tau_p\in\Gamma_0(N)\) congruent to \(\operatorname{diag}(p^{-1},p)\pmod N\). Representatives for the integral determinant-\(p\) Hecke correspondence are
+\[
+\delta_j=\begin{pmatrix}1&j\\0&p\end{pmatrix}\ (0\le j<p),\qquad
+\delta_\infty=\tau_p\begin{pmatrix}p&0\\0&1\end{pmatrix}.
+\tag{16D}
+\]
+Here the allowed matrices have \(a\equiv1\), \(c\equiv0\), \(d\equiv p\pmod N\). The representatives are exhaustive modulo left multiplication by \(\Gamma_1(N)\): the kernel of a determinant-\(p\) matrix modulo \(p\) is one of the \(p+1\) lines in \(\mathbf F_p^2\), and these representatives have all those kernels. Such a matrix has rank one modulo \(p\): rank zero would make its determinant divisible by \(p^2\). Its adjugate has image in its kernel, by the two-by-two identity \(\delta\operatorname{adj}(\delta)=pI\). If two allowed matrices have the same kernel, their quotient is therefore integral. The quotient has determinant one; modulo \(N\) it is upper unipotent, so belongs to \(\Gamma_1(N)\). This also proves uniqueness of the cosets.
+
+Use the determinant-normalized slash operator
+\(h\Vert_k\delta=(\det\delta)^{k/2}(cz+d)^{-k}h(\delta z)\).
+Then
+\(T_p h=p^{k/2-1}\sum_\delta h\Vert_k\delta\).
+On a character-\(\varepsilon\) form this has Fourier expansion
+\(p^{-1}\sum_{j=0}^{p-1}h((z+j)/p)+\varepsilon(p)p^{k-1}h(pz)\),
+which is exactly the normalization used in (1). We keep \(k\) in this one calculation to see why weight one matters.
+
+Fix an integral primitive column \((a,c)\) and its scaling matrix \(\sigma\). For each representative in (16D), let \(D\) be the positive gcd of the first column of \(\delta\sigma\). Its determinant is \(p\), so \(D=1\) or \(p\). Extending the primitive column \(v=D^{-1}\delta\sigma e_1\) to \(\sigma_v\in\mathrm{SL}_2(\mathbf Z)\) gives
+\[
+\delta\sigma=\sigma_v\begin{pmatrix}D&b\\0&p/D\end{pmatrix}.
+\]
+The second matrix contributes \(D^kp^{-k/2}\) to the constant term of the slash transform. Including the normalization of \(T_p\), its contribution is therefore \(D^k/p\) times \(C_h(v)\).
+
+Exactly one representative has \(D=p\). If \(p\nmid c\), it is the unique \(j\) for which \(a+jc\equiv0\pmod p\); if \(p\mid c\), it is \(\delta_\infty\). For the other \(p\) representatives, the primitive column modulo \(N\) lies in the upper-unipotent orbit of \((a,pc)\). For the exceptional representative it lies in the orbit of \((p^{-1}a,c)\). For \(\delta_j\) these assertions follow by dividing \((a+jc,pc)\) by \(D\); for \(\delta_\infty\) its column modulo \(N\) is \((a,pc)\) before division. Applying (16C), the \(p\) ordinary contributions of weight \(1/p\) and the exceptional contribution of weight \(p^{k-1}\) give
+\[
+C_{T_p h}(a,c)=C_h(a,pc)+p^{k-1}C_h(p^{-1}a,c).
+\tag{16E}
+\]
+This is a calculation at every cusp, including cusps whose denominators are divisible by \(p\).
+
+On \(\mathcal B_\varepsilon\), define
+\[
+(R_u C)(a,c)=C(a,uc),\qquad
+(S_u C)(a,c)=C(u^{-1}a,c).
+\tag{16F}
+\]
+These substitutions preserve (16C), since \(u\) is a unit. They are commuting actions of the finite group \(U_N\), and
+\(R_uS_u=\varepsilon(u)I\).
+Each \(R_u\) has finite order, so its minimal polynomial divides \(X^r-1\) for some \(r\) and has distinct complex roots. Diagonalize one such operator, restrict the others to its stable eigenspaces, and continue through the finite group. This gives a simultaneous decomposition
+\[
+\mathcal B_\varepsilon=\bigoplus_\alpha\mathcal B_\varepsilon[\alpha],\qquad
+R_u|_{\mathcal B_\varepsilon[\alpha]}=\alpha(u),\quad
+S_u|_{\mathcal B_\varepsilon[\alpha]}=\varepsilon(u)\alpha(u)^{-1},
+\tag{16G}
+\]
+where \(\alpha\) is a character of \(U_N\). Empty summands are simply omitted.
+
+Since \(C_f\ne0\), choose a nonzero component in (16G). Every \(T_p\) preserves each component, by (16E). At weight one its action there is the scalar
+\(\alpha(p)+\varepsilon(p)\alpha(p)^{-1}\).
+But \(C_{T_p f}=a_pC_f\). The same chosen component therefore gives (16A) for all good primes at once, with \(\chi_1=\alpha\) and \(\chi_2=\varepsilon\alpha^{-1}\). In particular the pair is not selected separately for different primes.
+
+Lemma 0.1 constructs the two continuous finite Galois characters. Their direct sum is unramified outside \(N\), has determinant \(\varepsilon_G\), and has (3) at every good prime. Their parities are opposite, because their product takes \(-1\) to \(-1\); hence they are distinct and the representation is reducible and odd. Any finite semisimple representation with these good-prime traces is isomorphic to this sum, by the actual finite-quotient Frobenius and characteristic-zero trace proofs in Lesson 02. Thus the noncuspidal branch is proved in the full scope of (1). The cuspidal branch still requires Proposition 3.2's residual-representation premise. ∎
+
+![Cusp constant terms and the two finite characters](../assets/weight-one-cusp-boundary-proof-map.png)
+
+[Open Figure 1 at full size](../assets/weight-one-cusp-boundary-proof-map.png)
+
+*Figure 1. The maps and operators proved in Proposition 3.2A. The map from modular forms to cusp functions has kernel exactly the cusp forms. At a good prime, the \(p\) ordinary cosets have weight \(1/p\); the exceptional coset has weight one in weight one. Their sum is (16E). The nonzero component chosen in (16G) gives the same two characters at every good prime. The diagram summarizes this proof, rather than asserting that every boundary function is realized by a modular form. Deligne–Serre's [free original article](https://www.numdam.org/article/ASENS_1974_4_7_4_507_0.pdf), §§1.2–1.6 and 8.1, fixes the modular and Hecke conventions; the complete cusp calculation is above.*
+
+### 3.2B. Finite-prime support and primitive eigenspaces
+
+Before using the primitive functional equation, we prove the Fourier-support statement that makes a primitive good-prime eigenspace a line. The argument keeps the character and original lower levels explicit, including primes outside the level and characters that do not descend.
+
+#### Statement and conventions
+
+Write \(S_k(N,\chi)=S_k(\Gamma_0(N),\chi)\), where \(k\ge1\), \(\chi(-1)=(-1)^k\), and \(C\mid N\) is the conductor of \(\chi\). At every multiple of \(C\), use the pullback of this same primitive character. A character factors through \(N/p\) precisely when \(C\mid N/p\). This condition is essential, even if \(p^2\mid N\).
+
+For a positive-determinant rational matrix, use
+\[
+ (f|_k A)(z)=\det(A)^{k/2}(cz+d)^{-k}f(Az),
+ \qquad A=\begin{pmatrix}a&b\\c&d\end{pmatrix}.
+\]
+The positive real square root is understood. Put
+\[
+ B_p f(z)=f(pz),\qquad
+ U_p f(z)=\frac1p\sum_{j=0}^{p-1}f((z+j)/p),\qquad
+ P_p=B_pU_p,\qquad A_p=1-P_p.
+ \tag{S1}
+\]
+If \(f=\sum_{n\ge1}a_nq^n\), then \(U_pf=\sum_{n\ge1}a_{pn}q^n\). Consequently \(P_p\) keeps exactly the coefficients whose indices are divisible by \(p\), and \(A_p\) keeps exactly the other indices. For different primes these projections commute; \(U_p\) and \(B_p\) commute with the projections at any other prime.
+
+**Theorem S.** Let \(\mathcal S\) be any finite set of primes, without a restriction on its intersection with \(N\). If \(f\in S_k(N,\chi)\) and
+\[
+ a_n(f)=0\quad\text{whenever no prime in }\mathcal S\text{ divides }n,
+ \tag{S2}
+\]
+then
+\[
+ f=\sum_{\substack{p\in\mathcal S, p\mid N\\ C\mid N/p}}B_p g_p,
+ \qquad g_p\in S_k(N/p,\chi).
+ \tag{S3}
+\]
+The empty sum is zero. Thus a character with conductor \(N\) admits no nonzero cusp form with this finite-prime support. We prove the fixed-character statement; no unproved projection from the full \(\Gamma_1(N)\) space is being used.
+
+The complex coefficient bound in the earlier programme lesson *Dimension formulas for congruence subgroups*, Theorem 6.1 and its character paragraph, makes \(S_k(L,\chi)\) finite dimensional: the map to coefficients through \(\lfloor k[\mathrm{SL}_2(\mathbf Z):\Gamma_0(L)]/12\rfloor\) is injective. For \(p\nmid L\), the operator used below is
+\[
+ T_p=U_p+\chi(p)p^{k-1}B_p.
+ \tag{S4}
+\]
+We prove its preservation locally in Lemma S.1, including weight one. The earlier Hecke lesson states its general setup for \(k\ge2\); that restriction is not silently being discarded. Only the complex coefficient bound is needed, not its conditional arithmetic reduction analogue. The earlier proof's prerequisites remain required.
+
+#### 1. Elementary level changes
+
+**Lemma S.1.** For any prime \(p\), \(B_p\) maps \(S_k(L,\chi)\) to \(S_k(Lp,\chi)\), and \(U_p\) does so as well. If \(p\mid L\), \(U_p\) already preserves \(S_k(L,\chi)\). Therefore \(A_p\) can always be regarded as a map to \(S_k(Lp^2,\chi)\).
+
+*Proof.* With \(D_p=\operatorname{diag}(p,1)\),
+\[
+ D_p\begin{pmatrix}a&b\\c&d\end{pmatrix}D_p^{-1}
+ =\begin{pmatrix}a&pb\\c/p&d\end{pmatrix}.
+\]
+For \(c\equiv0\pmod{Lp}\) this is in \(\Gamma_0(L)\), with the same character value. Also \(B_pf=p^{-k/2}f|D_p\).
+
+For \(U_p\), put \(K_j=\left(\begin{smallmatrix}1&j\\0&p\end{smallmatrix}\right)\). Suppose \(\gamma=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\in\Gamma_0(L)\) and \(p\mid c\); this holds at level \(L\) when \(p\mid L\), or at level \(Lp\) otherwise. The entry \(a\) is a unit modulo \(p\). Choose
+\(j'\equiv(b+jd)/a\pmod p\). As \(j\) varies this permutes the residues, since \(d\) is also a unit modulo \(p\). Then
+\[
+ K_j\gamma K_{j'}^{-1}
+ =\begin{pmatrix}
+ a+jc&\bigl(b+jd-(a+jc)j'\bigr)/p\\
+ pc&d-cj'
+ \end{pmatrix}\in\Gamma_0(L).
+ \tag{S5}
+\]
+Its character is \(\chi(d)\). Since \(U_pf=p^{k/2-1}\sum_j f|K_j\), this proves the asserted transformation law.
+
+All these operators preserve cuspidality. To check this directly, for any rational positive-determinant matrix \(R\) and an integral matrix \(\sigma\) carrying infinity to a cusp, choose an integral \(\sigma'\) carrying infinity to \(R\sigma\infty\). Then \(\sigma'^{-1}R\sigma\) is upper triangular with positive ratio of its diagonal entries. A cusp expansion of \(f|\sigma'\) is exponentially decaying as the imaginary part tends to infinity; the upper-triangular substitution preserves positive exponents and decay. Each finite slash sum therefore vanishes at every cusp. Inflation to a higher level preserves the same property.
+
+For completeness, (S4) preserves \(S_k(L,\chi)\) at every weight here. Let \(p\nmid L\), \(\Gamma=\Gamma_0(L)\), and \(\alpha=\operatorname{diag}(1,p)\). The intersection \(\Gamma\cap\alpha^{-1}\Gamma\alpha\) is \(H=\Gamma\cap\Gamma^0(p)\). Reduction modulo \(p\) is onto, by the elementary lifting argument in Lemma S.2 below, so \(H\backslash\Gamma\) has the \(p+1\) representatives \(T^j\) and \(\gamma_\infty=\left(\begin{smallmatrix}ap&b\\L&1\end{smallmatrix}\right)\), where \(ap-Lb=1\). All these representatives have character one. For right multiplication by \(\gamma\in\Gamma\), write \(\gamma_j\gamma=h_0\gamma_{j'}\), with \(h_0\in H\). Then \(\chi(h_0)=\chi(\gamma)\), and \(\alpha h_0\alpha^{-1}\in\Gamma\) has the same bottom-right entry as \(h_0\). Thus \(\sum_j f|\alpha\gamma_j\) transforms with character \(\chi\). Finally
+\[
+ \alpha\gamma_\infty=
+ \begin{pmatrix}a&b\\L&p\end{pmatrix}D_p,
+ \qquad
+ f|\alpha\gamma_\infty=\chi(p)f|D_p.
+\]
+Multiplication of this slash sum by \(p^{k/2-1}\) gives exactly (S4). Its cusp preservation follows from the same rational upper-triangular calculation. This proves the good-prime operator formula and preservation for \(k=1\) as well. ∎
+
+#### 2. A form supported on one prime
+
+**Lemma S.2.** Suppose \(F\in S_k(L,\chi)\) has coefficients only at indices divisible by \(p\). If \(p\mid L\) and \(C\mid L/p\), then \(F=B_pG\) with \(G\in S_k(L/p,\chi)\). If \(p\nmid L\), or if \(p\mid L\) but \(C\nmid L/p\), then \(F=0\).
+
+*Proof.* Set \(G(z)=F(z/p)\). Its Fourier expansion makes it periodic with period one. Put \(L_0=L/p\) if \(p\mid L\), and \(L_0=L\) otherwise. For
+\[
+ H=\Gamma_0(L_0)\cap\Gamma^0(p),\qquad
+ \Gamma^0(p)=\{\gamma\in\mathrm{SL}_2(\mathbf Z):p\mid\gamma_{12}\},
+\]
+conjugation by \(\operatorname{diag}(1,p)\) sends
+\(\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\) to
+\(\left(\begin{smallmatrix}a&b/p\\pc&d\end{smallmatrix}\right)\in\Gamma_0(L)\).
+Thus \(G|\gamma=\chi(d)G\) for \(\gamma\in H\), and \(G|T=G\) for \(T=\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)\).
+
+First suppose \(p\mid L\) but the character does not factor through \(L_0\). Reduction of unit groups from modulus \(L\) to \(L_0\) is onto, by the Chinese remainder theorem. Nonfactorization gives a unit \(e\equiv1\pmod{L_0}\) with \(\chi(e)\ne1\). Write \(e=1+u'L_0\pmod L\), and put
+\[
+ \eta=\begin{pmatrix}1&p\\L_0&L+1\end{pmatrix}\in H.
+\]
+Its determinant is one and its character is one, so \(G|\eta=G\). Choose \(u\equiv-u'e^{-1}\pmod p\). The matrix
+\[
+ \delta=T^u\eta T^{u'}=
+ \begin{pmatrix}
+ 1+uL_0&p+u(L+1)+u'(1+uL_0)\\
+ L_0&L+1+L_0u'
+ \end{pmatrix}
+ \tag{S6}
+\]
+has upper-right entry zero modulo \(p\), so belongs to \(H\). Its bottom-right entry is \(e\pmod L\). Periodicity and \(G|\eta=G\) give \(G|\delta=G\), whereas the character law gives \(G|\delta=\chi(e)G\). Hence \(G=0\).
+
+In the remaining cases the character on \(H\) extends to \(\Gamma_0(L_0)\) as \(\chi(d)\). This full group is generated by \(H\) and \(T\). If \(p\mid L_0\), right multiplication by a suitable power of \(T\) eliminates the upper-right entry modulo \(p\), since the upper-left entry is a unit. If \(p\nmid L_0\), reduction of \(\Gamma_0(L_0)\) onto \(\mathrm{SL}_2(\mathbf F_p)\) is surjective: prescribe a matrix modulo \(p\) and the identity modulo \(L_0\), and lift from \(\mathrm{SL}_2(\mathbf Z/pL_0\mathbf Z)\). Such lifting is elementary. Over \(\mathbf Z/m\mathbf Z\), elementary row additions can make the first entry of a primitive column a unit: choose the addition separately modulo every prime dividing \(m\), then use the Chinese remainder theorem. Eliminate the other entry and then the upper-right entry. The resulting diagonal \(\operatorname{diag}(a,a^{-1})\) is a product of elementary matrices, as multiplication of the usual three-matrix expressions for \(\left(\begin{smallmatrix}0&a\\-a^{-1}&0\end{smallmatrix}\right)\) verifies. Every elementary matrix lifts integrally. The image of \(H\) is the lower-triangular subgroup, and the image of \(T\) generates the upper unipotents; together they generate the finite special linear group. The reduction kernel is already in \(H\). This proves generation in both cases.
+
+The character law and cuspidality therefore extend to \(\Gamma_0(L_0)\); the positive upper-triangular cusp substitution in Lemma S.1 checks the latter directly. If \(p\mid L\), this proves the required descent.
+
+If \(p\nmid L\), both \(G\) and \(B_pG=F\) lie at level \(L\). The coefficient formula (S4) gives, for \(j\ge1\),
+\[
+ T_p B_p^jG=B_p^{j-1}G+\chi(p)p^{k-1}B_p^{j+1}G.
+ \tag{S7}
+\]
+Since \(\chi(p)\ne0\), induction places every \(B_p^jG\) in the same finite-dimensional space. If \(G\ne0\), their first nonzero indices are \(m,pm,p^2m,\ldots\), where \(m\) is the first nonzero index of \(G\). The least such index in any finite linear relation forces its coefficient to vanish, successively, so these forms are linearly independent. This contradicts finite dimensionality. Hence \(F=0\). ∎
+
+#### 3. The exact trace when a prime occurs once
+
+**Lemma S.3.** If \(p^2\mid L\) and \(C\mid L/p\), then \(U_p\) maps \(S_k(L,\chi)\) into \(S_k(L/p,\chi)\). If \(p\parallel L\) and \(C\mid L/p\), choose \(x,y\in\mathbf Z\) with
+\(px-(L/p)y=1\), and put
+\[
+ V_p^L=\begin{pmatrix}px&y\\L&p\end{pmatrix},\qquad
+ Q_p^L=U_p+p^{k/2-1}(|_kV_p^L).
+ \tag{S8}
+\]
+Then \(Q_p^L\) maps \(S_k(L,\chi)\) into \(S_k(L/p,\chi)\), and
+\[
+ Q_p^L B_p h=(1+p^{-1})h
+ \quad(h\in S_k(L/p,\chi)).
+ \tag{S9}
+\]
+
+*Proof.* For \(g(z)=f(z/p)\), its transformation group is
+\(H=\Gamma_0(L/p)\cap\Gamma^0(p)\), with the descended character. Unlike in Lemma S.2, \(g\) need not be periodic with period one. If \(p\mid L/p\), the \(p\) left cosets of \(H\) in \(\Gamma_0(L/p)\) have representatives \(T^j\), \(0\le j<p\). Their trace is \(pU_pf\), proving the first assertion.
+
+If \(p\nmid L/p\), the reduction argument above identifies \(H\) with the inverse image of the lower-triangular subgroup. Its left cosets are distinguished by the projective first row and have representatives \(T^j\) and
+\[
+ \delta_0=\begin{pmatrix}px&y\\L/p&1\end{pmatrix}.
+\]
+The first rows modulo \(p\) are \([1:j]\) and \([0:1]\), respectively; \(y\) is a unit modulo \(p\) by the determinant equation. These are all \(p+1\) cosets. Every representative has character value one. Therefore their unweighted trace transforms with the descended character: right multiplication permutes the left cosets, and its compensating left factor has the character of the matrix being applied. Moreover
+\(g|\delta_0=p^{k/2}f|V_p^L\), so this trace is exactly \(pQ_p^Lf\). The cusp argument already given makes it a cusp form at level \(L/p\).
+
+For (S9), \(U_pB_ph=h\) by coefficients. Also
+\[
+ D_pV_p^L=p\delta_0,\qquad
+ (B_ph)|V_p^L=p^{-k/2}h|\delta_0=p^{-k/2}h.
+\]
+Positive scalar matrices act trivially under our slash normalization, and \(\delta_0\) has descended character value one. These equalities give (S9), including its factor \(1+p^{-1}\). ∎
+
+For later use, suppose \(r\ne p\), \(p\parallel L\), and \(r\mid L\). With compatible choices define
+\[
+ V_p^{L/r}=D_rV_p^LD_r^{-1}
+   =\begin{pmatrix}px&ry\\L/r&p\end{pmatrix}.
+ \tag{S10}
+\]
+If the character factors through \(L/(rp)\), this is a permissible matrix for Lemma S.3 at level \(L/r\). Its determinant is \(p\), and direct slash composition, together with \(U_pB_r=B_rU_p\), proves
+\[
+ Q_p^LB_r=B_rQ_p^{L/r}.
+ \tag{S11}
+\]
+No character factor or unspecified choice of Atkin–Lehner operator is hidden in this equality.
+
+#### 4. Removing all primes in the support
+
+*Proof of Theorem S.* First remove ineligible primes from the support set without changing the form. For \(p\in\mathcal S\) put
+\[
+ F_p=\prod_{r\in\mathcal S\setminus\{p\}}A_r f,
+ \qquad L=N\prod_{r\in\mathcal S\setminus\{p\}}r^2.
+ \tag{S12}
+\]
+Lemma S.1 makes \(F_p\) a cusp form at level \(L\), supported only at multiples of \(p\). If \(p\nmid N\), it still does not divide \(L\), and Lemma S.2 gives \(F_p=0\). If \(C\nmid N/p\), the \(p\)-exponent of \(L\) is unchanged from that of \(N\), so \(C\nmid L/p\); again \(F_p=0\). In either case the Fourier meaning of the product says that \(f\) is already supported on \(\mathcal S\setminus\{p\}\). Repeating removes all such primes. We may now assume that every prime in \(\mathcal S\) divides \(N\) and satisfies \(C\mid N/p\).
+
+Induct on the size of this remaining set. For \(p^2\mid N\), take \(g_p=U_pf\). Lemma S.3 puts it at level \(N/p\). Then \(f-B_pg_p=A_pf\) lies at level \(N\) and is supported on the other primes. Induction applies.
+
+It remains to remove \(p\parallel N\). Enumerate the other support primes as \(r_1,\ldots,r_t\), and put
+\(M=N\prod_{i=1}^t r_i^2\). Choose one matrix
+\(V=\left(\begin{smallmatrix}px&y\\M&p\end{smallmatrix}\right)\) with \(px-(M/p)y=1\). The same matrix is admissible for the trace lemma at the original level \(N\): its corresponding extra coset matrix is
+\(\left(\begin{smallmatrix}px&y\\M/p&1\end{smallmatrix}\right)\in\Gamma_0(N/p)\), has bottom-right entry one and projective first row \([0:1]\) modulo \(p\). Thus the operator \(Q=U_p+p^{k/2-1}(|V)\) lowers \(N\) to \(N/p\) and also lowers \(M\) to \(M/p\).
+
+The Fourier projections give the exact telescoping identity
+\[
+ \begin{split}
+ f&=\sum_{i=1}^t B_{r_i}\Phi_i+B_p\Phi_p,\\
+ \Phi_i&=U_{r_i}A_{r_1}\cdots A_{r_{i-1}}f,\qquad
+ \Phi_p=U_pA_{r_1}\cdots A_{r_t}f.
+ \end{split}
+ \tag{S13}
+\]
+Each \(\Phi_i\) may be regarded as lying at level \(M/r_i\): its level divides \(N\prod_{j<i}r_j^2\), which divides \(M/r_i\). The last summand is supported on \(p\); Lemma S.2 puts \(\Phi_p\) at level \(M/p\). All characters in these level changes are the same descended character.
+
+Use (S10) for each \(r_i\), and set \(\Psi_i=Q_p^{M/r_i}\Phi_i\). Its level is \(M/(r_ip)\). Equations (S9) and (S11), applied to (S13), give
+\[
+ Qf=\sum_{i=1}^t B_{r_i}\Psi_i+(1+p^{-1})\Phi_p.
+ \tag{S14}
+\]
+Define \(g_p=Qf/(1+p^{-1})\), using the original-level trace; it lies at level \(N/p\). Subtracting \(B_pg_p\) from (S13) yields
+\[
+ f-B_pg_p=
+ \sum_{i=1}^t B_{r_i}
+ \left(\Phi_i-\frac{B_p\Psi_i}{1+p^{-1}}\right).
+ \tag{S15}
+\]
+This identity proves that its coefficients are supported on the other primes; no claim that the parenthesized forms already have original lower level is needed. Independently, \(f-B_pg_p\) lies at level \(N\), since both terms do. Induction at that original level supplies its decomposition (S3). When \(t=0\), the sum in (S15) is empty and \(f=B_pg_p\). This proves the theorem for every finite set and every fixed character. ∎
+
+#### 5. The precise consequence for the primitive-form argument
+
+Define the old space at level \(N\) as the span of all \(B_dh\), with \(h\in S_k(L,\chi)\), \(L\mid N\), \(L<N\), \(dL\mid N\), and \(C\mid L\). Define the new space as its orthogonal complement for the positive Petersson inner product.
+
+That inner product exists at weight one as well. For \(u,v\in S_k(N,\chi)\), put
+\[
+ \langle u,v\rangle=
+ \int_{\Gamma_0(N)\backslash\mathfrak H}
+       u(z)\overline{v(z)}y^k\,\frac{dx\,dy}{y^2}.
+ \tag{S15A}
+\]
+The transformation law, \(|\chi(d)|=1\), the identity \(\operatorname{Im}(\gamma z)=y/|cz+d|^2\), and the change-of-variables Jacobian \(|cz+d|^{-4}\) make the integrand invariant. In each of the finitely many cusp regions, the slash-translated cusp expansions decay exponentially; their product times \(y^{k-2}\) is integrable for every \(k\ge1\). The complement is compact, so continuity gives convergence there. Thus the integral converges absolutely. If \(u\ne0\), it is nonzero at some point, hence has positive absolute value on a neighborhood of positive area; therefore \(\langle u,u\rangle>0\). This proves that the old space and its orthogonal complement have zero intersection, including at weight one.
+
+**Corollary S.4.** On any simultaneous good-prime eigenspace in this new space, the coefficient functional \(a_1\) is injective. In particular every nonzero such eigenspace has dimension one.
+
+*Proof.* Let \(T_ph=\lambda_ph\) for all \(p\nmid N\), and suppose \(a_1(h)=0\). From (S4),
+\[
+ a_{pn}(h)=\lambda_p a_n(h)-\chi(p)p^{k-1}a_{n/p}(h),
+ \tag{S16}
+\]
+where the last term is zero when \(p\nmid n\). Induction on \(n\), choosing a prime divisor of any \(n>1\) coprime to \(N\), proves \(a_n(h)=0\) for every \((n,N)=1\). Theorem S with the primes dividing \(N\) places \(h\) in the old space. Its orthogonality gives \(\langle h,h\rangle=0\), hence \(h=0\). This proves injectivity and the dimension bound. The argument also covers \(N=1\), when the support set is empty. ∎
+
+Corollary S.4 supplies the fixed-character uniqueness step. The following §3.2C proves the simultaneous eigenspace decomposition, preservation by every bad operator and its adjoint, the character-twisted Fricke relation and every bad-prime norm. Section 3.2D then proves the full primitive Euler and Mellin equations.
+
+![Finite-prime Fourier support and the exact level-lowering trace](../assets/weight-one-finite-prime-support-proof-map.png)
+
+[Open Figure 2 at full size](../assets/weight-one-finite-prime-support-proof-map.png)
+
+*Figure 2.* The two exponent cases are alternatives. Case 3A removes the prime directly; case 3B uses the trace and its exact factor \(1+p^{-1}\), then returns to the original level before induction. The inflated level \(M\) is used only in proving the support identity. Reproducible source: `figure-sources/weight-one-finite-prime-support-proof-map.py`. Exact proof locators: Lemmas S.1–S.3 and (S1)–(S16); free human source: Li, printed pages 287–293, linked in the primary materials below.
+
+### 3.2C. Primitive eigenforms, Fricke and every bad prime
+
+The following finite-cover and matrix arguments include weight one. They use the fixed-character conventions and positive pairing just proved in §3.2B.
+
+Use the slash normalization, fixed character of conductor C, old/new spaces, positive Petersson product, coefficient bound, and Theorem S of §3.2B. Write \(\Gamma =\Gamma _{1}(N)\) and \(\alpha _{p}=\operatorname{diag}(1,p)\), \(\beta _{p}=\operatorname{diag}(p,1)\). A form with character \(\chi \) at \(\Gamma _{0}(N)\) is \(\Gamma \)-modular. On that character space the raw \(\Gamma \)-product is a fixed positive multiple of the raw \(\Gamma _{0}(N)\)-product: a projective \(\Gamma \)-domain consists of \([\overline{\Gamma}_{0}(N):\overline{\Gamma}]\) translates, and the paired density is \(\Gamma _{0}(N)\)-invariant. Thus restrictions have the same adjoints and orthogonality. Projective indices avoid an extra factor two in odd weight.
+
+#### 1. The finite-cover adjoint at weight one
+
+For any rational positive-determinant matrix A put \(A^*=\det(A)A^{-1}\) and
+\[
+ \mathcal A_A f=\sum_{\Gamma\delta\subset\Gamma A\Gamma} f|_k\delta.
+ \tag{F1}
+\]
+The sum is finite. To see this, multiply A by a positive rational scalar to make it integral with positive integral determinant m; this changes neither its slash action nor the relevant intersection groups. Both \(H=\Gamma \cap A^{-1}\Gamma A\) and \(H'=\Gamma \cap A\Gamma A^{-1}\) contain \(\Gamma (Nm)\): conjugating \(I+NmB\) gives \(I+NA^*BA\) or \(I+NABA^*\), respectively. Reindexing the cosets proves \(\Gamma \)-modularity of the sum. Rational upper-triangular substitution at every cusp, as in Lemma S.1, proves cuspidality.
+
+**Lemma F.1.** For the Petersson product on cusp forms,
+\[
+ \mathcal A_A^*=\mathcal A_{A^*}.
+ \tag{F2}
+\]
+
+*Proof.* First all integrals below are absolute, including at \(k=1\). The function \(y^{k/2}|f(z)|\) is \(\Gamma \)-invariant, bounded on the compact remainder, and bounded in each cusp chart because the cusp expansion is exponentially decreasing. Slash transformation identifies its value there with \(y^{k/2}|(f|_k\sigma)(z)|\). Hence it is bounded globally. For any rational R of positive determinant,
+\[
+ y^{k/2}|(f|_kR)(z)|=(\operatorname{Im}(Rz))^{k/2}|f(Rz)|.
+ \tag{F3}
+\]
+Every rational slash therefore has the same global bound. Products of two such functions times \(y^k\) are bounded. The finite-index domains under consideration have finite hyperbolic area, so the paired integrals are absolute. This argument uses neither a Hilbert completion nor \(k\ge 2\).
+
+Let F be a projective \(\Gamma \)-domain, up to boundary sets of measure zero. Representatives \(\gamma \) for \(H\backslash \Gamma \) give the disjoint left cosets \(\Gamma A\gamma \) and tile an H-domain by \(\gamma F\). For \(w=Az\), the imaginary-part formula and the change-of-variables Jacobian give
+\[
+ (f|_kA)(z)\overline{g(z)}y^k\,d\mu(z)
+ =f(w)\overline{(g|_kA^{-1})(w)}
+       (\operatorname{Im}w)^k\,d\mu(w).
+ \tag{F4}
+\]
+Indeed \(\operatorname{Im}(Az)=\det(A)y/|cz+d|^{2}\) and \(d\mu \) is invariant under positive real Möbius maps; the remaining complex slash factors are conjugates in exactly the displayed order.
+
+Unfold the finite sum over \(\gamma F\). The transformation law of g cancels the change of variable \(\gamma \). Apply (F4), which takes the H-domain to an H′-domain, and retile by \(H'\backslash \Gamma \). This proves
+\[
+ \begin{split}
+ \langle\mathcal A_A f,g\rangle_\Gamma
+ &=\int_{H\backslash\mathfrak H}(f|_kA)\bar g\,y^k\,d\mu\\
+ &=\int_{H'\backslash\mathfrak H}f\,
+                  \overline{g|_kA^{-1}}\,y^k\,d\mu\\
+ &=\langle f,\mathcal A_{A^{-1}}g\rangle_\Gamma.
+ \end{split}
+ \tag{F5}
+\]
+Positive scalar matrices act trivially, so \(A^{-1}\) and A* have identical slash actions and corresponding coset sums. This proves (F2). The subgroup intersections have the same status concerning \(-I\) as \(\Gamma \), so all the relative projective indices used in tiling equal the corresponding group indices. ∎
+
+For \(p\nmid N\) choose integers a,b with \(pa-Nb=1\) and set
+\[
+ \sigma_p=\begin{pmatrix}a&b\\N&p\end{pmatrix},\qquad
+ \gamma_\infty=\begin{pmatrix}pa&b\\N&1\end{pmatrix}\in\Gamma.
+ \tag{F6}
+\]
+The matrix \(\sigma _{p}\) normalizes \(\Gamma \). More generally \(\Gamma _{1}(N)\) is the kernel of the bottom-right-entry homomorphism \(\Gamma _{0}(N)\longrightarrow (\mathbf Z/N\mathbf Z)^\times\), which proves this normality directly. The intersection \(\Gamma \cap \alpha _{p}^{-1}\Gamma \alpha _{p}\) consists of matrices with p dividing the upper-right entry. For \(p\nmid N\) its \(p+1\) cosets have representatives \(T^{j}\), \(0\le j<p\), and \(\gamma_\infty\): reduction onto \(\mathrm{SL}_{2}(\mathbf F_{p})\), proved by the elementary CRT lifting in Lemma S.2, identifies them with first-row projective lines [1:j] and [0:1]. For \(p|N\) the reduction of \(\Gamma \) is the upper unipotent group, its intersection is the identity, and the p representatives are just \(T^{j}\). This also proves the claimed exhaustive coset counts.
+
+Multiplying the sum by \(p^{k/2-1}\) therefore gives precisely \(T_{p}\) from (S4) at good primes, and \(U_{p}\) at bad primes. At a good prime the extra matrix is
+\[
+ \alpha_p\gamma_\infty=\sigma_p\beta_p.
+ \tag{F7}
+\]
+For f of character \(\chi \), \(f|\sigma _{p}=\chi (p)f\), so this extra term is \(\chi (p)p^{k-1}B_{p}f\) after the normalization. Identity (F7) and normality of \(\Gamma \) give \(\Gamma \beta _{p}\Gamma =\Gamma \sigma _{p}^{-1}\alpha _{p}\Gamma \). Its sum applied to f is the \(\alpha _{p}\)-sum applied to \(f|\sigma _{p}^{-1}\). Lemma F.1, and the positive real normalizing factor, now prove on \(S_{k}(N,\chi )\)
+\[
+ T_p^*=\chi(p)^{-1}T_p\qquad(p\nmid N).
+ \tag{F8}
+\]
+There is no undefined value \(\chi (p)\) at a bad prime in this formula.
+
+#### 2. Simultaneous primitive eigenlines
+
+For different primes the Fourier operators \(U_{p},U_{r},B_{p},B_{r}\) commute whenever their prime indices differ. This follows by selecting or multiplying indices in their coefficient formulas, including the zero convention for nonintegral indices. Thus all good \(T_{p}\) commute with one another, and every bad \(U_{r}\) commutes with every good \(T_{p}\). Their preservation of the fixed character and cusp space was proved in Lemma S.1.
+
+The good operators preserve the old space: for every old generator B_dh at lower level L, a good prime \(p\nmid N\) divides neither d nor L, and the coefficient formula gives
+\[
+ T_p^N B_dh=B_dT_p^Lh.
+ \tag{F9}
+\]
+The character value and weight factor are the same at the two levels. By (F8) the adjoints also preserve the old space. Therefore its orthogonal complement is invariant under both \(T_{p}\) and \(T_{p}^*\), and the restricted operators are commuting and normal.
+
+Here is the full finite-dimensional spectral step. A normal operator A has an eigenvector v, since its characteristic polynomial has a root. The fundamental theorem of algebra is actually proved in the earlier programme lesson *The Petersson inner product and Poincaré series*, Lemma0.1, by its bounded-entire-function argument. If \(Av=\lambda v\), normality of \(B=A-\lambda I\) gives \(||Bv||^{2}=||B^*v||^{2}\), hence \(A^*v=\bar\lambda v\). The orthogonal complement of v is invariant under both, and induction gives an orthonormal eigenbasis. For a commuting family which also commutes with all its adjoints, choose a nonscalar member and split into its eigenspaces; every member and adjoint preserves each block. Induction on block dimension completes a simultaneous basis. If every member on a block is scalar, any orthonormal basis works. This proves the assertion for an infinitely indexed family without an infinite limiting process.
+
+**Theorem F.2.** At every \(k\ge 1\) and every level and fixed character, the new space has an orthogonal basis of simultaneous good-prime eigenforms. Each simultaneous eigenspace is one dimensional and has a unique member normalized by \(a_{1}=1\).
+
+*Proof.* Apply the preceding spectral argument to the finite-dimensional new space. Corollary S.4 proves that \(a_{1}\) is injective on each simultaneous eigenspace, so every nonzero block is one dimensional with nonzero \(a_{1}\). Divide by that coefficient. ∎
+
+#### 3. Fricke, conjugation, and bad adjoints
+
+Put
+\[
+ W_N=\begin{pmatrix}0&-1\\N&0\end{pmatrix},\qquad
+ \mathcal W_N f=f|_kW_N,\qquad
+ Jf(z)=\overline{f(-\bar z)}.
+ \tag{F10}
+\]
+Direct conjugation gives
+\[
+ W_N^{-1}\begin{pmatrix}a&b\\c&d\end{pmatrix}W_N
+ =\begin{pmatrix}d&-c/N\\-Nb&a\end{pmatrix}.
+ \tag{F11}
+\]
+It normalizes \(\Gamma _{0}(N)\) and \(\Gamma _{1}(N)\). At \(\Gamma _{0}(N)\), \(\chi (a)=\chi (d)^{-1}\). Consequently \(\mathcal W_N\) maps \(S_{k}(N,\chi )\) to \(S_{k}(N,\bar\chi )\). Rational cusp substitution proves its cusp conditions. Formula (F4), applied diagonally, and normalizing the group prove it is unitary between these spaces. Its square is \((-1)^{k}\), since \(W_N^{2}=-NI\).
+
+The map J has the same source and target characters. Indeed reflection \(z\mapsto-\bar z\) changes \(\gamma \) to \(\gamma^{\#}=((a,-b),(-c,d))\); conjugating its transformation law gives the character \(\bar\chi \) and the factor \((cz+d)^{k}\). It conjugates the Fourier coefficients, preserves the cusp conditions by the same reflected expansions, and satisfies \(J^{2}=1\). Reflection preserves the hyperbolic area measure and conjugates the paired density, so J is antiunitary.
+
+For an old generator h at level L and a divisor d with \(dL|N\), put \(e=N/(dL)\). Exact multiplication gives
+\[
+ D_dW_N=dW_LD_e,\qquad
+ \mathcal W_N B_dh=(e/d)^{k/2}B_e(\mathcal W_Lh),
+ \qquad JB_dh=B_dJh.
+ \tag{F12}
+\]
+Thus \(\mathcal W_N\) and J take the old space with \(\chi \) onto the old space with \(\bar\chi \). Their inverses and norm properties show they also take the corresponding new spaces onto one another.
+
+Conjugation of a double coset by W_N preserves its exhaustive coset sum because W_N normalizes \(\Gamma \). Moreover \(W_N^{-1}\beta _{p}W_N=\alpha _{p}\). Applying Lemma F.1 to the full \(\Gamma \)-space therefore proves
+\[
+ T_{p,\bar\chi}\mathcal W_N
+       =\mathcal W_N T_{p,\chi}^*\quad(p\nmid N),\qquad
+ U_{p,\chi}^*=\mathcal W_N^{-1}U_{p,\bar\chi}\mathcal W_N
+       \quad(p\mid N).
+ \tag{F13}
+\]
+These are compositions of operators, with source and target characters displayed. To check the order, the adjoint coset term \(f|\beta _{p}\gamma \) followed by \(|W_N\) equals \((f|W_N)|W_N^{-1}\beta _{p}\gamma W_N\); those conjugated terms are exactly the \(\alpha _{p}\)-coset sum. No character-twisted Atkin–Lehner convention is being assumed.
+
+Every bad \(U_{p}\) preserves the old space. On its generator B_dh there are three exhaustive possibilities. If \(p|d\), \(U_{p}B_dh=B_{d/p}h\). If \(p\nmid d\) and \(p|L\), it is \(B_dU_{p}h\), with \(U_{p}\) preserving level L. If \(p\nmid dL\), it is
+\[
+ U_pB_dh=B_dT_p^Lh-\chi(p)p^{k-1}B_{dp}h.
+ \tag{F14}
+\]
+Both terms are old: since \(p|N\) but \(p\nmid dL\), one has \(dpL|N\). The lower level in the last term remains L; no assertion that Lp is a proper divisor is needed. In all three cases the original h has \(L<N\). Formula (F13), together with (F12) and the same argument for \(\bar\chi \), proves that \(U_{p}^*\) preserves the old space as well. Thus \(U_{p}\) preserves the new space. Since it commutes with all good \(T_{r}\), it preserves each line of Theorem F.2. On a normalized member f its scalar is \(a_{p}(f)\), by the first coefficient of \(U_{p}f\). This proves every bad-prime eigenvector assertion, without assuming normality of \(U_{p}\) on the whole cusp space.
+
+#### 4. The full primitive Fricke relation
+
+**Theorem F.3.** If f is a normalized member of a primitive good-prime eigenspace at level N with character \(\chi \), then for a scalar \(\omega _f\) of absolute value one,
+\[
+ f|_kW_N=\omega_f Jf.
+ \tag{F15}
+\]
+It is also an eigenform for every bad \(U_{p}\), with eigenvalue \(a_{p}(f)\).
+
+*Proof.* If \(T_{p}f=\lambda _{p}f\), the adjoint identity (F8) in the pairing linear in its first variable gives
+\[
+ \lambda_p=\chi(p)\overline{\lambda_p},\qquad
+ \overline{\lambda_p}=\chi(p)^{-1}\lambda_p.
+ \tag{F16}
+\]
+By (F13), \(f|W_N\) is a new form with character \(\bar\chi \) and good eigenvalues \(\bar\lambda _{p}\). The coefficient formula (S4) conjugates to the formula with \(\bar\chi \), so Jf is another new form with those same eigenvalues; its first coefficient is one. Theorem F.2 at \(\bar\chi \) identifies their common eigenspace as a line. Therefore \(f|W_N=\omega _fJf\) with a nonzero scalar. Unitarity and antiunitarity give \(||f|W_N||=||Jf||=||f||>0\), hence \(|\omega _f|=1\). The bad eigenvector assertion was proved above. ∎
+
+**Corollary F.4 (existence of a lower primitive good packet).** Every simultaneous good-prime eigenpacket occurring in \(S_{k}(N,\chi )\) occurs in a normalized newform at some level \(L|N\) with \(C|L\), with the same eigenvalues at every prime outside N.
+
+*Proof.* At each level the finite-dimensional positive pairing splits its cusp space as old plus new. Induction on the proper divisors of N, using \(B_dB_e=B_{de}\), expresses \(S_{k}(N,\chi )\) as the span of B_dh where h is normalized new at some \(L|N\) and \(dL|N\). Theorem F.2 supplies the new vectors at each level. Formula (F9) says all these finitely many spanning vectors are eigenvectors for the primes outside N. To isolate the packet of a given nonzero f, for each different packet among the spanning vectors choose a good prime whose eigenvalue differs and apply \((T_{p}-\mu _{p})/(\lambda _{p}-\mu _{p})\). The finite product fixes f and kills each different packet. It follows that some nonzero spanning vector has the same packet. Its underlying h is the required lower primitive form. This proves existence without an unproved uniqueness assertion between different lower levels. ∎
+
+#### 5. The bad-prime bounds when the character descends
+
+**Theorem F.5.** Let f be a normalized newform and \(p|N\) with \(C|N/p\). If \(p^{2}|N\) then \(a_{p}(f)=0\). If \(p\parallel N\) then
+\[
+ a_p(f)^2=\chi(p)p^{k-2},\qquad |a_p(f)|=p^{k/2-1}.
+ \tag{F17}
+\]
+In particular \(|a_{p}(f)|\le 1\) in both cases at weight one.
+
+*Proof.* If \(p^{2}|N\), Lemma S.3 puts \(U_{p}f\) at level N/p. Thus \(U_{p}f=a_{p}f\) is old at level N, while it is also new. Positivity of the pairing makes it zero; normalization gives \(a_{p}=0\).
+
+For \(p\parallel N\) put \(L=N/p\), choose x,y with \(px-Ly=1\), and use \(V=((px,y),(N,p))\) and \(Q=U_{p}+p^{k/2-1}(|_{k}V)\) from Lemma S.3. We prove \(Qf=0\) by the actual trace adjoint. Put \(g(z)=f(z/p)\). It is modular at \(H=\Gamma _{0}(L)\cap \Gamma ^{0}(p)\) with the descended character. The matrices \(T^{j}\) and \(\delta _{0}=((px,y),(L,1))\) are the complete \(H\backslash \Gamma _{0}(L)\) representatives in that lemma, all of character one, and their slash sum is pQf. For \(h\in S_{k}(L,\chi )\), unfold this finite sum against h. Change variables by \(D_{p}^{-1}\); it takes H to \(\Gamma _{0}(N)\). Since \(g=p^{k/2}f|D_{p}^{-1}\) and \(h|D_{p}=p^{k/2}B_{p}h\), (F4) gives the exact raw-pairing identity
+\[
+ p\langle Qf,h\rangle_L
+   =\langle g,h\rangle_H
+   =p^k\langle f,B_ph\rangle_N.
+ \tag{F18}
+\]
+The finite-domain tiling uses the same fixed character on both factors; the chosen representatives have character one. Every \(B_{p}h\) is old, so the right side is zero. As Qf itself lies in \(S_{k}(L,\chi )\), take \(h=Qf\). Positivity proves \(Qf=0\). Consequently \(a_{p}f=-p^{k/2-1}f|V\).
+
+Here V really is unitary on the same fixed-character space, which we verify rather than assume. For \(\gamma =((a,b),(c,d))\in \Gamma _{0}(N)\), direct multiplication shows \(V\gamma V^{-1}\) is integral, its lower-left entry is \(N(a-d)+pc-(N^{2}/p)b\), and its lower-right entry is \(-Lay-cy+Nxb+pxd\). Hence it belongs to \(\Gamma _{0}(N)\) and its lower-right entry is congruent to d modulo C, because \(C|L\) and \(px\equiv 1\) modulo C. The inverse has the same normalizing property: \(V^{2}=p\gamma _{0}\) with \(\gamma _{0}\in \Gamma _{0}(N)\), as computed next, so \(V^{-1}\) differs from V by a scalar and a \(\Gamma _{0}(N)\) matrix. The density calculation (F4) therefore proves \(||f|V||=||f||\). The displayed eigenvector equation gives \(|a_{p}|=p^{k/2-1}\). Finally
+\[
+ p^{-1}V^2=
+ \begin{pmatrix}px^2+Ly&y(x+1)\\N(x+1)&Ly+p\end{pmatrix}
+ \in\Gamma_0(N).
+ \tag{F19}
+\]
+Its determinant is one and its bottom-right entry is p modulo C, so \((f|V)|V=\chi (p)f\). Applying \(|V\) twice to the eigenvector equation gives \(a_{p}^{2}=\chi (p)p^{k-2}\). This proves every asserted descending-character case. ∎
+
+#### 6. The ramified-character norm by exact coset cancellation
+
+**Theorem F.6.** Suppose \(p|N\) and C does not divide N/p. On the entire fixed-character cusp space, at every \(k\ge 1\),
+\[
+ U_p^*U_p=p^{k-1}I.
+ \tag{F20}
+\]
+Consequently every normalized primitive eigenform satisfies \(|a_{p}(f)|=p^{(k-1)/2}\). At weight one this is exactly1. Together with Theorem F.5, this proves \(|a_{p}(f)|\le 1\) at every bad prime, for every level and character.
+
+*Proof.* Put \(L=N/p\) and \(t_{s}=((1,s),(0,1))\) for rational s. The coset representatives for \(\Gamma \beta _{p}\Gamma \) are \(\beta _{p}\gamma _{r}\), where \(\gamma _{r}=((1,0),(Nr,1))\), \(0\le r<p\). Indeed \(\Gamma \cap \beta _{p}^{-1}\Gamma \beta _{p}\) consists precisely of matrices in \(\Gamma \) whose lower-left entry is divisible by Np. If \(\gamma =((a,b),(Nc,d))\) lies in \(\Gamma \), then \(d\equiv 1\) modulo p. The lower-left entry of \(\gamma \gamma _{r}^{-1}\) is \(N(c-dr)\), so exactly one r modulo p puts that product in the intersection. This proves both exhaustiveness and distinctness. Lemma F.1 therefore gives the actual adjoint sum. Composing it after the \(U_{p}\) sum, and removing the positive scalar p from each matrix, gives
+\[
+ U_p^*U_pf=p^{k-2}\sum_{j,r=0}^{p-1}f|_kM_{j,r},\qquad
+ M_{j,r}=t_{j/p}\gamma_r
+ =\begin{pmatrix}1+Ljr&j/p\\Nr&1\end{pmatrix}.
+ \tag{F21}
+\]
+The order follows directly from \((\alpha _{p}t_{j})\beta _{p}\gamma _{r}=pM_{j,r}\). Every \(j=0\) term is f, because \(\gamma _{r}\in \Gamma \). We prove that the sum of the \(j\ne 0\) terms vanishes.
+
+Here is the finite character fact needed for both cases. Reduction \((\mathbf Z/N\mathbf Z)^\times\longrightarrow (\mathbf Z/L\mathbf Z)^\times\) is onto: prime-power factors give it when \(p|L\), and the coprime factors p and L give it when \(p\nmid L\). Since C does not divide L, \(\chi \) is nontrivial on its kernel K. Otherwise \(\chi \) would factor through the reduction and hence have conductor dividing L. This last implication also follows directly by factoring the unit group into its prime-power groups: the conductor exponent is the smallest exponent through which the corresponding character factors. For any nontrivial character \(\theta \) of a finite group, \(\sum \theta =0\): translation by an element with \(\theta (u)\ne 1\) multiplies the sum by \(\theta (u)\) and also permutes it. Thus the character sum used below is proved, including its nontriviality.
+
+If \(p^{2}|N\), then \(p|L\). For every \(j\ne 0\) and every r,
+\[
+ M_{j,r}=\delta_{j,r}t_{j/p},\qquad
+ \delta_{j,r}=\begin{pmatrix}
+ 1+Ljr&-Lj^2r/p\\Nr&1-Ljr
+ \end{pmatrix}\in\Gamma_0(N).
+ \tag{F22}
+\]
+The entries are integral because \(p|L\), the determinant is one, and the lower-left entry is Nr. The kernel K consists exactly of the residues \(1+Lr\) modulo N with \(0\le r<p\); its group law is addition of r, since N divides \(L^{2}\). As \(j\ne 0\) permutes the residues r, nontriviality of \(\chi \) on K gives
+\[
+ \sum_{r=0}^{p-1}f|_kM_{j,r}
+ =\left(\sum_{r=0}^{p-1}\chi(1-Ljr)\right)f|_kt_{j/p}=0.
+ \tag{F23}
+\]
+Every argument of \(\chi \) here is a unit modulo N. This proves cancellation for \(p^{2}|N\), including \(p=2\) whenever the hypothesis is possible.
+
+If \(p\parallel N\), then \(p\nmid L\). The Chinese remainder identification makes K a copy of \((\mathbf Z/p\mathbf Z)^\times\). Let \(\psi (u)\) be \(\chi \) evaluated on the unique unit modulo N which is u modulo p and1 modulo L. It is a nontrivial character of \((\mathbf Z/p\mathbf Z)^\times\). Fix \(j\in\{1,\ldots,p-1\}\). For every r with \(1+Ljr\ne 0\) modulo p, choose \(t\in\{1,\ldots,p-1\}\) satisfying \(t\equiv j/(1+Ljr)\) modulo p. Direct multiplication yields
+\[
+ M_{j,r}=\delta_{j,r}t_{t/p},\qquad
+ \delta_{j,r}=\begin{pmatrix}
+ 1+Ljr&(j-t-Ljrt)/p\\Nr&1-Lrt
+ \end{pmatrix}\in\Gamma_0(N).
+ \tag{F24}
+\]
+The congruence defining t proves that the upper-right entry is integral. Its determinant is one. Its bottom-right entry is 1 modulo L and t/j modulo p, so its character is \(\psi (t/j)\). As r ranges over these \(p-1\) nonexceptional residues, t ranges exactly once over \((\mathbf Z/p\mathbf Z)^\times\).
+
+There is one exceptional residue \(r_{j}\) for each j, given by \(1+Ljr_{j}\equiv 0\) modulo p. Put \(M_{j}=M_{j,r_j}\) and choose \(M_{1}\) as a common representative for these exceptional terms. Another exact multiplication gives
+\[
+ M_jM_1^{-1}=\begin{pmatrix}
+ 1+Lj(r_j-r_1)&(j-1-Lj(r_j-r_1))/p\\
+ N(r_j-r_1)&1-L(r_j-r_1)
+ \end{pmatrix}\in\Gamma_0(N).
+ \tag{F25}
+\]
+Indeed \(r_{j}-r_{1}\equiv (j-1)/(Lj)\) modulo p, which proves the upper-right integrality. The determinant is one, and the bottom-right entry is 1 modulo L and1/j modulo p. Hence \(f|M_{j}=\psi (1/j)f|M_{1}\). Combining the ordinary and exceptional terms gives
+\[
+ \sum_{j=1}^{p-1}\sum_{r=0}^{p-1}f|_kM_{j,r}
+ =\sum_{t=1}^{p-1}\left(\sum_{j=1}^{p-1}\psi(t/j)\right)f|_kt_{t/p}
+   +\left(\sum_{j=1}^{p-1}\psi(1/j)\right)f|_kM_1=0.
+ \tag{F26}
+\]
+Each inner sum is zero by the proved finite character fact. The hypothesis is impossible at \(p=2\) in this simple-exponent case, since \((\mathbf Z/2\mathbf Z)^\times\) has no nontrivial character; the proof has introduced no exceptional \(p=2\) assumption.
+
+Only the p terms with \(j=0\) remain in (F21). Their normalized sum is \(p^{k-2}pf=p^{k-1}f\), proving (F20) on the full character space. For a primitive eigenform Theorem F.3 gives \(U_{p}f=a_{p}(f)f\). The positive pairing and its actual adjoint give \(||U_{p}f||^{2}=p^{k-1}||f||^{2}\), so \(|a_{p}(f)|^{2}=p^{k-1}\). No external ramified-norm theorem, functional-equation norm estimate or unproved local representation classification has been used. ∎
+
+![Finite-cover adjoints, primitive eigenlines and every bad-prime norm](../assets/weight-one-primitive-fricke-proof-map.png)
+
+[Open Figure 3 at full size](../assets/weight-one-primitive-fricke-proof-map.png)
+
+*Figure 3.* The arrows retain the fixed-character and conjugate-character spaces shown in each panel. Old-space preservation is proved before orthogonality gives new-space invariance. The last two panels cover both conductor cases, including all ordinary and exceptional ramified cosets. Exact proof locators: Lemma F.1, Theorems F.2–F.3, Corollary F.4, Theorems F.5–F.6 and (F1)–(F26). Reproducible source: `figure-sources/weight-one-primitive-fricke-proof-map.py`. Free human source for the adjoint and Fricke mechanism: Li, printed pages 294–297, linked below; the ramified norm is proved locally in F.6.
+
+### 3.2D. Euler factors and the complete primitive Mellin equation
+
+Let \(f(z)=\sum_{n\ge1}a_nq^n\) be a normalized primitive member of \(S_k(N,\chi)\), for \(k\ge1\). Put \(f^\vee=Jf\). Theorems F.2–F.3, with their explicitly written cusp and character arguments, give
+\[
+ T_pf=a_pf\quad(p\nmid N),\qquad U_pf=a_pf\quad(p\mid N),\qquad
+ f|_kW_N=\omega_f f^\vee,\quad |\omega_f|=1.
+ \tag{F27}
+\]
+
+#### 1. Every Euler factor from coefficients
+
+**Lemma F.9.** Initially in the half-plane \(\operatorname{Re}s>k/2+1\),
+\[
+ L(s,f)=\sum_{n\ge1}a_nn^{-s}
+ =\prod_{p\nmid N}(1-a_pp^{-s}+\chi(p)p^{k-1-2s})^{-1}
+   \prod_{p\mid N}(1-a_pp^{-s})^{-1}.
+ \tag{F28}
+\]
+At every bad prime at weight one, \(|a_p|\le1\), with the complete three-case values from Theorems F.5–F.6.
+
+*Proof.* The global cusp bound in Lemma F.1 gives \(y^{k/2}|f(z)|\le B\) on the upper half-plane. Fourier extraction on a horizontal segment at \(y=1/n\) gives
+\[
+ |a_n|=\left|e^{2\pi ny}\int_0^1f(x+iy)e^{-2\pi inx}\,dx\right|
+       \le Be^{2\pi}n^{k/2}.
+ \tag{F29}
+\]
+Thus the Dirichlet series is absolutely convergent in the stated half-plane.
+
+The exact coefficient formula for \(T_p\) in Lemma S.1 and (F27) give
+\[
+ a_{pn}=a_pa_n-\chi(p)p^{k-1}a_{n/p}\quad(p\nmid N),\qquad
+ a_{pn}=a_pa_n\quad(p\mid N),
+ \tag{F30}
+\]
+with a nonintegral index interpreted as zero. For \(p\nmid m\), induction on \(r\), starting with \(a_m\) and the zero predecessor, gives \(a_{p^rm}=a_{p^r}a_m\). Indeed the recurrence at each step has exactly the same two coefficients as the one starting from \(a_1=1\), and the bad-prime recurrence has only one term. Removing prime powers successively proves \(a_n=\prod_{p^r\parallel n}a_{p^r}\). At a good prime the power-series recurrence gives
+\[
+ \sum_{r\ge0}a_{p^r}X^r=(1-a_pX+\chi(p)p^{k-1}X^2)^{-1};
+ \qquad
+ \sum_{r\ge0}a_{p^r}X^r=(1-a_pX)^{-1}\quad(p\mid N).
+ \tag{F31}
+\]
+Both identities first hold as formal series. At \(X=p^{-s}\) in the initial half-plane their absolute convergence follows from (F29). A finite product equals the sum over integers supported on those primes. Its difference from the full Dirichlet series is bounded by the absolutely summable omitted terms and tends to zero as the finite prime sets exhaust the primes. This proves (F28). The bad-prime norm assertion is precisely the proved exhaustive conductor cases of F.5–F.6, rather than an additional hypothesis. ∎
+
+#### 2. The entire reciprocal Gamma function
+
+We supply the analytic continuation factor used below. For \(\operatorname{Re}s>0\) define \(\Gamma(s)=\int_0^\infty e^{-u}u^{s-1}\,du\), with the real logarithm in the power. Integration by parts on the finite beta integral, with its vanishing endpoint terms, gives
+\[
+ \int_0^1t^{s-1}(1-t)^m\,dt
+       =\frac{m!}{s(s+1)\cdots(s+m)}.
+ \tag{F32}
+\]
+Multiplying by \(m^s\) and substituting \(u=mt\) shows that the right side tends to \(\Gamma(s)\), locally uniformly for \(\operatorname{Re}s>0\). Here are the actual convergence estimates. On \(0\le u\le m\), \((1-u/m)^m\le e^{-u}\), and it converges uniformly to \(e^{-u}\) on every bounded \(u\)-interval. For a compact parameter set \(a\le\operatorname{Re}s\le b\) with \(a>0\), the absolute integrands on \((0,1]\) are bounded by \(u^{a-1}\) and on \([1,\infty)\) by \(u^{b-1}e^{-u}\). Their endpoint tails have uniformly arbitrarily small integrals. Splitting into those tails and a compact middle interval proves the asserted locally uniform limit directly.
+
+The real sequence \(H_m-\log m\), where \(H_m=\sum_{j=1}^m1/j\), is positive and decreasing. Positivity follows by comparison with \(\int_1^{m+1}dx/x\); the decrease follows from
+\(\log(1+1/m)=\int_m^{m+1}dx/x>1/(m+1)\).
+It therefore has a finite limit \(\gamma\). The reciprocals of the rational expressions in (F32), after multiplication by \(m^s\), are entire functions
+\[
+ G_m(s)=s\,m^{-s}\prod_{j=1}^m(1+s/j)
+       =s e^{s(H_m-\log m)}\prod_{j=1}^m(1+s/j)e^{-s/j}.
+ \tag{F33}
+\]
+They converge locally uniformly on the entire plane to
+\[
+ G(s)=s e^{\gamma s}\prod_{j=1}^\infty(1+s/j)e^{-s/j}.
+ \tag{F34}
+\]
+To prove this convergence, fix \(|s|\le R\) and take \(j>2R\). The geometric series integrated from zero gives
+\(\log(1+s/j)-s/j=\sum_{r\ge2}(-1)^{r+1}(s/j)^r/r\).
+Its absolute value is at most \(2R^2/j^2\). Thus the sum of these logarithms converges uniformly on the disk, and its exponential gives a uniformly convergent nonzero tail product. The finitely many omitted factors are entire. The derivative series has the same uniform tail control, since
+\((j+s)^{-1}-j^{-1}=-s/(j(j+s))\).
+It follows directly that the limit is holomorphic, hence entire, without assuming a global logarithm across its zeros. The only zeros of \(G\) are simple zeros at \(0,-1,-2,\ldots\): each comes from one finite linear factor, while every other finite factor and the exponential tail is nonzero there.
+
+On \(\operatorname{Re}s>0\), both the limit in (F32) and the reciprocal limit (F33) exist, and their products are identically one before passage to the limit. Hence \(G(s)\Gamma(s)=1\) there. This proves the needed entire reciprocal Gamma function, rather than citing it. It also gives the meromorphic continuation of \(\Gamma\) as \(1/G\).
+
+#### 3. The exact completed functional equation
+
+**Theorem F.10.** The functions
+\[
+ \Lambda(s,f)=N^{s/2}\int_0^\infty f(iy)y^{s-1}\,dy,
+ \qquad L(s,f)=(2\pi)^sN^{-s/2}G(s)\Lambda(s,f)
+ \tag{F35}
+\]
+are entire and agree with the completed and ordinary Dirichlet series in the initial half-plane. They satisfy
+\[
+ \Lambda(s,f)=\varepsilon_f\Lambda(k-s,f^\vee),\qquad
+ \varepsilon_f=i^k\omega_f,\quad |\varepsilon_f|=1,
+ \qquad \varepsilon_{f^\vee}=\overline{\varepsilon_f}.
+ \tag{F36}
+\]
+At weight one, (F28), the all-bad-prime norm bound and (F36) provide all the primitive modular-form premises used by Lemma 3.3.
+
+*Proof.* Evaluate the slash relation (F27) at \(z=iy\) with its actual determinant factor:
+\[
+ (f|_kW_N)(iy)=i^{-k}N^{-k/2}y^{-k}f(i/(Ny)),
+ \qquad
+ f(i/(Ny))=i^k\omega_f N^{k/2}y^k f^\vee(iy).
+ \tag{F37}
+\]
+The cusp expansions of both \(f\) and \(f^\vee\) give \(O(e^{-2\pi y})\) decay for \(y\ge1\). This follows either from their convergent power series in \(q\) with zero constant term on a fixed smaller disk, or from (F29) and the exponentially convergent coefficient sum. By (F37), at zero the bound is \(O(y^{-k}e^{-2\pi/(Ny)})\). Thus the integral in (F35), with every additional factor \((\log y)^r\), converges absolutely for every complex \(s\), uniformly when \(s\) lies in a compact set. To see holomorphy directly, expand \(e^{(s-s_0)\log y}\) in its power series on a parameter disk. The sum of its absolute terms is at most \(e^{R|\log y|}\); the two exponential endpoint bounds still give an integrable majorant after this extra power of \(y\) or \(y^{-1}\). Termwise integration proves a convergent local power series. Hence \(\Lambda\) is entire.
+
+For \(\operatorname{Re}s>k/2+1\), (F29) makes
+\(\sum_n|a_n|\int_0^\infty e^{-2\pi ny}y^{\operatorname{Re}s-1}dy\)
+finite. Indeed its terms are \(|a_n|(2\pi n)^{-\operatorname{Re}s}\Gamma(\operatorname{Re}s)\). Absolute tail estimates therefore justify summing the Mellin integrals and give
+\[
+ \Lambda(s,f)=N^{s/2}(2\pi)^{-s}\Gamma(s)\sum_{n\ge1}a_nn^{-s}.
+ \tag{F38}
+\]
+Equations (F34)–(F35) prove that the continued ordinary \(L\)-function is entire and agrees with that series.
+
+In the entire integral substitute \(y=1/(Nt)\) and apply (F37). Absolute convergence at both ends justifies the substitution for every \(s\). Its precise powers are
+\[
+ \begin{split}
+ N^{s/2}\int_0^\infty f(iy)y^{s-1}dy
+ &=N^{-s/2}\int_0^\infty f(i/(Nt))t^{-s-1}dt\\
+ &=i^k\omega_f N^{(k-s)/2}\int_0^\infty f^\vee(it)t^{k-s-1}dt.
+ \end{split}
+ \tag{F39}
+\]
+This proves the reflection constant in (F36), including its phase. Since \(W_N^2=-NI\), applying Fricke twice to (F27) gives
+\(f^\vee|_kW_N=(-1)^k\omega_f^{-1}f\).
+The normalization \(a_1(f^\vee)=1\) is unchanged. Thus its constant is \(i^k(-1)^k\omega_f^{-1}=\overline{i^k\omega_f}\). This proves the dual relation and its consistency under reflection twice. Finally F.5–F.6 and Lemma F.9 give precisely the bad factors and norm assumptions needed at weight one. The residual-representation existence premise and the full Artin functional equation remain their separately identified earlier proof obligations. ∎
+
+![Euler factors, reciprocal Gamma continuation and the exact primitive reflection](../assets/weight-one-primitive-mellin-proof-map.png)
+
+[Open Figure 4 at full size](../assets/weight-one-primitive-mellin-proof-map.png)
+
+*Figure 4.* The initial half-plane, both endpoint bounds, the reciprocal Gamma product and the reflection phase are proved in Lemma F.9 and Theorem F.10, (F27)–(F39). The Fricke input is the local Theorem F.3. Reproducible source: `figure-sources/weight-one-primitive-mellin-proof-map.py`. The map locates the complete written arguments above.
 
 **Lemma 3.3 (functional-equation rigidity of the bad factors).** Suppose \(f\) is a normalized primitive weight-one cusp form with completed Mellin functional equation of level \(N\), and \(\rho\) is an odd finite representation with conductor \(M\) having its good factors. Suppose the primitive bad Euler factor is \((1-a_pp^{-s})^{-1}\), with \(|a_p|\le1\), allowing \(a_p=0\). Then the completed Artin functional equation implies \(M=N\) and equality of every Euler factor.
 
@@ -318,7 +1024,7 @@ where good coincident factors cancel and zero roots do nothing. Dividing the two
 \(\operatorname{Re}s=\log|\alpha|/\log p\le0\).
 It forms an infinite arithmetic progression with imaginary period \(2\pi/\log p\). Cancel identical same-prime factors first. Progressions for distinct primes have at most one intersection: two intersections would make \(\log p/\log q\) rational and hence \(p^r=q^t\) for positive integers, contradicting unique prime factorization. A remaining zero or pole therefore survives at infinitely many points in the half-plane \(\operatorname{Re}s\le0\). Reflection of the dual factors has all its zeros and poles in \(\operatorname{Re}s\ge1\), so the functional equation prohibits any such remaining factor. Every prime factor is one. It follows that \(F(s)=(N/M)^{s/2}\). The reflected equality is then a constant times \((N/M)^{-s/2}=(N/M)^{s/2}\) for every \(s\); logarithmic differentiation gives \(N=M\). This proves all factor and conductor conclusions. ∎
 
-The full Artin/Hecke functional equation needed in this deduction is the actual argument of Lesson 09, Lemma 3.2 and Theorem 3.3, using the local factors and induction compatibility proved in Lesson 06. The primitive weight-one Fricke functional equation and the bound \(|a_p|\le1\) remain separate modular-form proof obligations; Lemma 3.3 proves their consequence and does not silently assume that the currently weight-two newform proof covers them.
+The full Artin/Hecke functional equation needed in this deduction is the actual argument of Lesson 09, Lemma 3.2 and Theorem 3.3, using the local factors and induction compatibility proved in Lesson 06. The primitive weight-one Fricke functional equation and the bound \(|a_p|\le1\) are proved in §§3.2C–3.2D. Lemma 3.3 applies those local modular proofs; the residual construction and the transitive earlier Artin proof bindings remain the distinct obligations described in §6.
 
 ## 4. Finite projective images
 
@@ -405,7 +1111,7 @@ form the icosahedron. Cyclic coordinate permutations and even sign changes act t
 
 **Proof.** If the projective image were cyclic, choose a matrix lifting its generator. Every image matrix would be a scalar times a power of that matrix. Finite-order matrices are diagonalizable, so its eigenlines would be stable under the entire image. This contradicts irreducibility. Theorem 4.1 supplies the other possibilities. ∎
 
-The converse assertion for odd irreducible representations with solvable projective image is also part of the mathematical scope: such a representation is modular of weight one. Its proof is not supplied by the rotation classification, and remains a separate required automorphic proof in §6. The \(A_5\) case is outside that solvable assertion. No paid source is used to reconstruct or cite it.
+The converse assertion for odd irreducible representations with solvable projective image is also part of the mathematical scope: such a representation is modular of weight one. Its proof is not supplied by the rotation classification, and remains a separate required automorphic proof in §6. The \(A_5\) case is outside that solvable assertion.
 
 ## 5. The level-23 example
 
@@ -582,7 +1288,7 @@ P_{23}(T)=1-T.
 \]
 Indeed, the quotient of the decomposition group by inertia is trivial; the induced Frobenius action on that invariant line is the identity. The tame conductor formula is the specialization of (4) in Lesson 05, §2, with its tame-group proof in Lemma 1.2. Thus the Artin conductor is exactly \(23\).
 
-The class-field identification used here has an actual earlier proof: *Hilbert and ring class fields, and quadratic prime forms*, §1, Theorem 19.1, constructs the maximal everywhere-unramified abelian field, identifies its degree with the ordinary class number, and identifies the ideal class of every prime with its arithmetic Frobenius. Its proof uses the actually written ray-class construction in *Ray class fields, conductors and ideal reciprocity*, §1, equation (4), Propositions 18.1 and 18.3 and Theorem 18.4, and the number-field existence proof in *Global existence and the idèlic class field correspondence*, §1, Theorem 17.1.
+The class-field identification used here has an actual earlier proof: *Hilbert and ring class fields, and quadratic prime forms*, §1, Theorem 19.1, constructs the maximal everywhere-unramified abelian field, identifies its degree with the ordinary class number, and identifies the ideal class of every prime with its arithmetic Frobenius. Its proof uses the actually written ray-class construction in *Ray class fields, conductors and ideal reciprocity*, §1, equation (4), Propositions 18.1 and 18.3 and Theorem 18.4, and the number-field existence proof in *Global existence and the idèlic class field correspondence*, §1, Theorem 17.1. The class-field construction uses those earlier prerequisite proofs.
 
 Lemma 5.0B gives \(h(K)=3\). The subgroup \(A_3\) fixes \(K\), so \(L/K\) is cyclic of degree three. At 23 its inertia is the intersection of the already computed \(C_2\) with \(A_3\), which is trivial; away from 23 it was already unramified. There are no real places of \(K\). Therefore it is an everywhere-unramified abelian degree-three extension, and the inspected Theorem 19.1 identifies it with the Hilbert class field. Choose either nontrivial character \(\psi\) under its ideal-Artin identification. Restriction of (28) to \(A_3\) is the sum of the two nontrivial characters, and
 \[
@@ -610,19 +1316,20 @@ For example \(a_2=a_3=-1\) and \(a_5=0\). The table in Exercise 7.3 checks every
 
 The representation (28) now supplies \(\rho_f\) directly, with all good traces proved by (26)–(33). Any other semisimple attached representation is isomorphic to it by the actual trace-uniqueness proof in Lesson 02. Its projective image is still \(S_3=D_3\): the standard representation is faithful, and no nonidentity element acts as a scalar, by the eigenvalues of a transposition and a three-cycle.
 
+
 ## 6. Proof scopes and required remaining work
 
 The complete assertions of Theorem 1.1 and the solvable-projective-image converse in §4 remain required mathematics. They have not been weakened, and this edition does not certify the lesson as complete while their proofs are missing.
 
-- **Higher-weight residual representations at arbitrary level and character.** Lemmas 3.0 and 3.0B–3.0D supply the cusp lattice, Eisenstein congruence, eigenpacket lift and finite-field descent. The actual higher-weight lesson proves the period injection, rational coefficient descent, and congruence-to-polynomial deduction under stated premises. It still lacks the full arithmetic modular models and descent, the supersingular compact correspondence, the nondegenerate primitive Fricke pairing for arbitrary nebentypus, and cuspidal irreducibility. Its Theorem 1.1 therefore cannot yet discharge the residual premise of Proposition 3.2. The required higher-weight primitive decomposition of a lifted good eigenpacket must also be covered in the supplied scope.
-- **The noncuspidal weight-one classification.** Prove that every noncuspidal good eigenpacket has traces equal to the sum of two finite Dirichlet characters, with product \(\varepsilon\), and then construct that sum. The written character-Eisenstein construction in the earlier Hecke lesson assumes weight at least two. It is not a proof for weight one. This is needed for the entire scope \(M_1\) of Theorem 1.1 and for its converse direction on cuspidality.
-- **Primitive exact conductor and all bad factors.** Lemma 3.3 proves the functional-equation rigidity deduction from the full Artin functional equation, the primitive weight-one Fricke equation and \(|a_p|\le1\) at bad primes. The last two modular inputs require their own all-level, all-character proof. The weight-two trivial-character newform argument does not supply them. The Mellin argument below proves entireness once the Fricke relation is available; it proves the concrete level-23 case directly.
+- **Higher-weight residual representations at arbitrary level and character.** Lemmas 3.0 and 3.0B–3.0D supply the cusp lattice, Eisenstein congruence, eigenpacket lift and finite-field descent. The actual higher-weight lesson proves the period injection, rational coefficient descent, and congruence-to-polynomial deduction under stated premises. It still lacks the full arithmetic modular models and descent, the supersingular compact correspondence, the nondegenerate primitive Fricke pairing for arbitrary nebentypus, and cuspidal irreducibility. Its Theorem 1.1 therefore cannot yet discharge the residual premise of Proposition 3.2. Corollary F.4 supplies the complex lower-level primitive decomposition of a lifted good eigenpacket at every positive weight. It does not supply the outstanding arithmetic models, integral pairing or residual construction.
+- **The noncuspidal weight-one classification is proved in Proposition 3.2A.** Its cusp calculation (16E), finite boundary decomposition (16G), and Lemma 0.1 construct the reducible representation for every noncuspidal good eigenpacket in \(M_1\), at every level and odd character. The construction uses no bad-prime eigenvector hypothesis. The prerequisites of Lemma 0.1 and the earlier Frobenius uniqueness proof remain required.
+- **Primitive exact conductor and all bad factors.** Sections 3.2B–3.2D prove the fixed-character Fourier-support lemma, primitive eigenline uniqueness, all-prime eigenrelations, the exact Fricke and Mellin equations, every Euler factor and every weight-one bad-prime bound \(|a_p|\le1\), at all levels and characters. Lemma 3.3 therefore deduces the exact conductor and all bad factors from a corresponding odd finite representation and its full Artin equation. The existence of that representation and the transitive earlier Artin proof bindings remain required; the modular inputs have complete local proofs here.
 - **Solvable-projective-image converse.** The odd irreducible finite representation with solvable projective image must be shown to come from a weight-one cusp form. The local rotation and induction calculations do not prove this automorphic assertion. Its proof remains required, independently of the direction treated in Theorem 1.1.
 - **Transitive earlier proof and source chains.** Lemma 3.0 binds the actual higher-weight rational Fourier-basis proofs, whose group-cohomology, analytic compact-curve and period prerequisites must remain within the inspected earlier programme chain. In particular the written compact-curve Riemann–Roch proof, *Dimension formulas for congruence subgroups*, Appendix A, explicitly retains exact proof bindings for real integration and convergence, weak derivatives and Hilbert completion as outstanding. The local lattice argument inherits that remaining foundation requirement. Lemma 5.0B binds the actual ideal-factorization and norm proofs; §5 binds the actual Hilbert/ray-class and number-field existence arguments with their reciprocity prerequisites.
 
 The new local proofs are substantive. Lemma 3.0A proves Rankin's weighted prime inequality for arbitrary cusp good eigenpackets without primitivity or normalization. Proposition 3.1 gives the finite coefficient set outside an arbitrarily small exception. Lemmas 3.0D–3.0F prove finite-field descent, a uniform image bound and characteristic-zero finite-group lifting. Proposition 3.2 proves the exact-polynomial recovery, removal of auxiliary ramification and cuspidal irreducibility once the genuinely needed residual premise is supplied. Lemma 4.0 and Theorem 4.1 prove the group-theoretic classification used here. Lemmas 5.0A–5.0B and the cubic calculations supply the full concrete theta/eta, ideal-class, finite representation, all-prime Euler factors and conductor calculation, using the stated actual earlier ideal and class-field proof bindings.
 
-For completeness, the Mellin consequence has a direct proof in weight one. If a cusp form satisfies its primitive Fricke relation with the conjugate form, both \(f(iy)\) at infinity and its transformed expansion at zero decay exponentially, up to the indicated weight factor. Thus
+The weight-one Mellin consequence of Theorem F.10 can also be read directly as follows. The primitive Fricke relation is now proved in Theorem F.3. Both \(f(iy)\) at infinity and its transformed expansion at zero decay exponentially, up to the indicated weight factor. Thus
 \[
  N^{s/2}\int_0^\infty f(iy)y^{s-1}\,dy
    =N^{s/2}(2\pi)^{-s}\Gamma(s)L(s,f)
@@ -633,7 +1340,7 @@ is entire, by locally uniform domination of the integral and all its parameter d
        \le Ce^{2\pi}\sqrt n.
 \]
 This bound makes the sum of the absolute values of the termwise Mellin integrals finite for \(\operatorname{Re}s>3/2\), proving the initial identity there. Substitution \(y\mapsto1/(Ny)\) gives the completed reflection at \(1-s\) with the Fricke constant. Multiplication by the entire reciprocal Gamma function proves entireness of \(L(s,f)\). For the form in §5 the actually proved relation \(f|_1W_{23}=-if\) gives
-\(f(i/(23y))=\sqrt{23}\,y f(iy)\), so its completed function reflects with constant one. In particular its irreducible Artin L-function is entire by the all-factor identity (26). The corresponding general consequence, after the remaining primitive inputs are proved, is entireness for these modular weight-one representations; it supplies no proof of entireness for every irreducible Artin representation.
+\(f(i/(23y))=\sqrt{23}\,y f(iy)\), so its completed function reflects with constant one. In particular its irreducible Artin L-function is entire by the all-factor identity (26). The corresponding modular primitive L-functions are entire by Theorem F.10. For each weight-one representation constructed with the all-factor identity, this also proves its Artin L-function entire; it supplies no proof of entireness for every irreducible Artin representation.
 
 ## 7. Exercises with complete solutions
 
@@ -707,10 +1414,75 @@ For the valid conclusion, take \(a_p\in\mathcal O_K\) and impose (10) for **ever
 
 This statement allows infinitely many exceptional coefficient values. In Deligne–Serre's proof, the uniform residual-image bound and the infinitely many congruences in (15)–(16) supply the additional argument that turns a small-exception statement into a global finite set. Once Theorem 1.1 is constructed, finite image gives the finite set directly. ∎
 
+### Exercise 7.5 — The noncuspidal boundary (medium, twelve points)
+
+Take \(N=3\) and the odd character \(\varepsilon(1)=1\), \(\varepsilon(2)=-1\).
+
+1. **Four points.** Determine \(\mathcal B_\varepsilon\) from (16C), including its dimension. Do not assume that arbitrary boundary data are constant terms of a modular form.
+2. **Four points.** Compute \(R_2\), \(S_2\) and every good-prime \(T_p\) on this space. Explain the unordered character pair and the fact that the same pair works for all good primes.
+3. **Four points.** Construct the finite Galois representation of any noncuspidal good eigenpacket with these data. Give its characteristic polynomial at the two residue classes of good primes and its value at complex conjugation.
+
+**Solution.** The primitive pairs in \((\mathbf Z/3\mathbf Z)^2\) are all eight nonzero pairs. For \(c=0\), the two possibilities are \((1,0)\) and \((2,0)\), with values \(A\) and \(-A\). For \(c=1\), upper unipotents run through all three values of \(a\), so their common value is \(B\). For \(c=2\) the common value is \(-B\), by the diagonal action at \(u=2\). These choices satisfy all of (16C), so \(\mathcal B_\varepsilon\simeq\mathbf C^2\), with coordinates \((A,B)\). This calculation concerns the full finite function space; it makes no surjectivity assertion about \(f\mapsto C_f\).
+
+On these coordinates,
+\[
+R_2=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad
+S_2=\begin{pmatrix}-1&0\\0&1\end{pmatrix},\qquad
+T_p=\begin{cases}2I&p\equiv1\pmod3,\\0&p\equiv2\pmod3.\end{cases}
+\tag{36A}
+\]
+Indeed \(R_2\) preserves \(c=0\) and swaps \(c=1,2\), while \(S_2\) swaps the two primitive values of \(a\) at \(c=0\) and leaves the other unipotent orbits unchanged. Their product is \(-I=\varepsilon(2)I\). The two boundary axes give ordered pairs \((1,\varepsilon)\) and \((\varepsilon,1)\), hence the same unordered pair. Formula (16E) computes every good prime from its residue class; there is no separate choice of characters at different primes.
+
+For a noncuspidal eigenpacket, Proposition 3.2A gives
+\(\rho=1\oplus\varepsilon_G\), where Lemma 0.1 defines \(\varepsilon_G\) on \(\mathbf Q(\zeta_3)\). At \(p\equiv1\pmod3\) its polynomial is \((X-1)^2\); at \(p\equiv2\pmod3\) it is \(X^2-1\). Complex conjugation is \(\operatorname{diag}(1,-1)\). The representation is continuous, finite, odd, reducible and unramified outside three. These conclusions are conditional only on the given noncuspidal eigenpacket; this exercise does not construct a modular form with prescribed boundary data. ∎
+
+### Exercise 7.6 — Support and a character obstruction (medium; 12 points)
+
+Let \(\chi\) be the nontrivial character modulo three, pulled back to modulus fifteen. Suppose \(f\in S_1(15,\chi)\) has \(a_n(f)=0\) whenever \((n,30)=1\).
+
+1. Identify all primes that may occur in the sum (S3), with reasons. (3 points)
+2. Prove that \(f=B_5h\) with \(h\in S_1(3,\chi)\), without using a dimension formula for that lower-level space. (3 points)
+3. With \(V=\left(\begin{smallmatrix}10&3\\15&5\end{smallmatrix}\right)\), compute the lowering operator and show explicitly that
+   \[
+    h=\frac56U_5f+\frac{\sqrt5}{6}(f|_1V).
+    \tag{S17}
+   \]
+   Check its factor by applying it to \(f=B_5h\). (4 points)
+4. Deduce the conclusion if \(f\) lies in the new subspace at level fifteen. (2 points)
+
+**Solution.** The conductor is \(C=3\). The prime two does not divide fifteen. At three, \(C\nmid15/3=5\), so the character does not descend. At five, \(C\mid15/5=3\). Thus five is the sole eligible prime. Theorem S, applied to \(\mathcal S=\{2,3,5\}\), gives exactly \(f=B_5h\) at the asserted lower level, with no use of its dimension.
+
+The matrix has determinant five, and \(5\cdot2-3\cdot3=1\); it is precisely the matrix of Lemma S.3. Its trace operator is
+\(Q=U_5+5^{-1/2}(|_1V)\), and its retraction factor is \(1+1/5=6/5\). Therefore \(h=(5/6)Qf\), which is (S17). To check the normalization directly, put
+\(\delta_0=\left(\begin{smallmatrix}10&3\\3&1\end{smallmatrix}\right)\in\Gamma_0(3)\). It has determinant one and character one. The identity \(D_5V=5\delta_0\) gives
+\((B_5h)|_1V=5^{-1/2}h\); also \(U_5B_5h=h\). The right side of (S17) is consequently \((5/6)h+(1/6)h=h\), as required. Finally \(B_5h\) is an old form at level fifteen. If it is also new, its Petersson norm is zero by orthogonality, so \(f=0\).
+
+### Exercise 7.7 — The old-plane Fricke factors (medium; 12 points)
+
+Let \(h\in S_{k}(5,\chi )\), where the conductor of \(\chi \) divides 5, and put \(h'=h|_{k}W_{5}\). Work at level 35. (1) Compute \(W_{35}\) on h and \(B_{7}h\), including all powers of 7. (4 points) (2) Compute \(U_{7}h\) and \(U_{7}B_{7}h\) in terms of \(T_{7}\) at level 5 and the same old generators. (4 points) (3) Explain why both operators and the Petersson adjoint of \(U_{7}\) preserve the full old space at level 35, and what additional condition makes a good eigenvector a bad eigenvector. (4 points)
+
+**Solution.** For \(d=1\), \(L=5\) one has \(e=7\); for \(d=7\) one has \(e=1\). Formula (F12) gives \(W_{35}h=7^{k/2}B_{7}h'\) and \(W_{35}B_{7}h=7^{-k/2}h'\). The matrix between the ordered old pairs \((h,B_{7}h)\) and \((h',B_{7}h')\) is \(((0,7^{-k/2}),(7^{k/2},0))\). Coefficients give \(U_{7}B_{7}h=h\), and the good formula at level 5 gives \(U_{7}h=T_{7}^{5}h-\chi (7)7^{k-1}B_{7}h\). Even if \(T_{7}h\) is not a multiple of h, it remains a form at lower level 5, so both summands are old at 35. The three-case generator proof and (F13) prove preservation by \(U_{7}\) and its adjoint on the full old space. Formula (F12) proves Fricke preservation between the two character spaces. A vector in a primitive common good eigenspace lies in a one-dimensional new eigenspace by Theorem F.2; invariance and commutation force \(U_{7}\) to act by a scalar. On the normalized member this scalar is its coefficient \(a_{7}\). A good eigenvector in the old space need not be a bad eigenvector, as these two-generator formulas already show. No existence or dimension of \(S_{k}(5,\chi )\) is asserted by this conditional exercise.
+
+### Exercise 7.8 — The exceptional ramified coset (medium; 10 points)
+
+Work at weight one, conditionally on a form f in the indicated fixed-character cusp space. (1) For \(N=12\), \(p=2\) and the nontrivial character of conductor4, compute \(\delta_{1,1}\) in (F22), its character value, and the sum of the two terms with \(j=1\). (4 points) (2) For \(N=15\), \(p=3\) and the nontrivial character of conductor3, compute \(r_{1},r_{2}\) and \(M_{2}M_{1}^{-1}\) in (F25). Explain cancellation of the exceptional terms and the ordinary terms. (4 points) (3) Deduce the norm of \(U_{p}f\) in each case, and the bad eigenvalue norm if f is primitive. (2 points)
+
+**Solution.** At \(N=12\) one has \(L=6\), \(j=r=1\) and \(\delta_{1,1}=((7,-3),(12,-5))\). Its determinant is 1, its lower-left entry is 12, and \(\chi (-5)=\chi (3)=-1\). Thus the \(r=0\) term is \(f|t_{1/2}\), and the \(r=1\) term is \(-f|t_{1/2}\). They cancel. The two \(j=0\) terms give 2f in (F21); its prefactor is \(2^{-1}\) at weight one, so \(U_{2}^*U_{2}f=f\).
+
+At \(N=15\) one has \(L=5\). The exceptional congruences give \(r_{1}=1\) and \(r_{2}=2\). Their matrices are \(M_{1}=((6,1/3),(15,1))\) and \(M_{2}=((21,2/3),(30,1))\), and \(M_{2}M_{1}^{-1}=((11,-3),(15,-4))\). Its determinant is 1 and \(\chi (-4)=\chi (2)=-1\), so the exceptional terms cancel. For \(j=1\) the ordinary terms are \(f|t_{1/3}-f|t_{2/3}\); for \(j=2\) they are \(f|t_{2/3}-f|t_{1/3}\). They also cancel. The three \(j=0\) terms and prefactor \(3^{-1}\) give \(U_{3}^*U_{3}f=f\). In both cases the actual adjoint identity gives \(||U_{p}f||=||f||\). If f is nonzero and primitive, \(U_{p}f=a_{p}f\) gives \(|a_{p}|=1\). The exercise asserts no existence or dimension of either weight-one space.
+
+### Exercise 7.9 — The phase in the weight-one reflection (medium; 8 points)
+
+Suppose conditionally that a normalized weight-one primitive form has \(f^\vee=f\) and \(f|_1W_N=-if\). (1) Compute \(f(i/(Ny))\), retaining the factor \(i\), the determinant normalization and the power of \(N\). (3 points) (2) Compute the completed functional-equation constant. (3 points) (3) Check the phase under applying Fricke twice, and explain why the argument is a conditional normalization check rather than a construction of such a form. (2 points)
+
+**Solution.** Equation (F37) gives \(f(i/(Ny))=i(-i)\sqrt N\,y f(iy)=\sqrt N\,y f(iy)\). The constant is \(\varepsilon_f=i\omega_f=i(-i)=1\), so \(\Lambda(s,f)=\Lambda(1-s,f)\). On the form, the square of the Fricke scalar is \((-i)^2=-1\), exactly the action of \(-NI\) in weight one. On the completed function the reflection constant squares to1, as required. These two squares refer to different operations and retain their explicit factors of \(i\). Existence, cuspidality and the Fricke relation were hypotheses; no dimension or existence assertion is concealed in the calculation.
+
 ## Freely readable primary materials
 
 - P. Deligne and J.-P. Serre, *Formes modulaires de poids 1*, Annales scientifiques de l'ÉNS (4) **7** (1974), 507–530. Actually read: Proposition 2.7, Theorems 4.1 and 4.6, Lemma 4.9, Proposition 5.1 and §§6–8, including Lemmas 6.11 and 6.13 and the finite-image construction. The citation locates the full assertions; the local proofs and remaining obligations above determine what is actually established here. [Original article and PDF](https://www.numdam.org/item/ASENS_1974_4_7_4_507_0/).
 - A. V. Sutherland, *18.785 Number Theory I*, Fall 2021, Lecture 17, Theorem 17.8 and Lemma 17.9, printed page 3: the actual Poisson and Gaussian proofs, read alongside the written multivariable programme proof used in Lemma 5.0A. [Original free lecture notes](https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/mit18_785f21_lec17.pdf).
 - J. S. Milne, *Algebraic Number Theory*, version 3.08, Chapter 3, Proposition 3.2 and Theorem 3.7 with its lemmas, and Chapter 4, Propositions 4.1–4.2 and 4.26–4.27 and the proof of Theorem 4.3: actual ideal, norm and lattice arguments read for the independent arithmetic exposition in Lemma 5.0B. [Author's free notes](https://www.jmilne.org/math/CourseNotes/ANT.pdf).
 
-The actual earlier programme proofs are identified by their written titles and theorem locators where used. Their source-origin and current public-edition checks are recorded separately; a bibliography, public URL or source theorem statement never replaces a proof.
+- W. C. W. Li, *Newforms and functional equations*, Mathematische Annalen **212** (1975), 285–315. Actually read: printed pages 285–297; the single-prime descent, conductor obstruction, finite-prime support and trace arguments on pages 287–293 were used to construct the complete local proof in §3.2B. Pages 294–297 were also read for the adjoint, old-space and Fricke mechanisms reconstructed in §3.2C. The result invoked for the ramified-character norm on page 295 is not a proof provider: Theorem F.6 gives its complete local proof. [Freely readable institutional original scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0212/LOG_0047.pdf).
+
+The actual earlier programme proofs are identified by their written titles and theorem locators where used. A bibliography, public URL or source theorem statement never replaces a proof.

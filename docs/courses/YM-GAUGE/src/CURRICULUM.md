@@ -25,10 +25,29 @@ quantities](../fields-coordinates-quantities.html),
 [Lie groups and Lie algebras](../lie-groups-and-lie-algebras.html),
 [Covariant derivatives and curvature](../covariant-derivatives-and-curvature.html),
 [Bundles, parallel transport and holonomy](../bundles-transport-holonomy.html),
-[The Yang–Mills action and field equations](../action-and-field-equations.html), and
-[Constraints, initial data and energy](../constraints-initial-data-energy.html)
-are complete, each with eight solved exercises. The remaining ten
-units are being written.
+[The Yang–Mills action and field equations](../action-and-field-equations.html),
+[Constraints, initial data and energy](../constraints-initial-data-energy.html),
+[Local and global classical evolution](../local-and-global-classical-evolution.html),
+[Euclidean Yang–Mills and instantons](../euclidean-yang-mills-instantons.html),
+[Oscillators and free quantum fields](../oscillators-and-free-quantum-fields.html),
+[Quantum gauge symmetry](../quantum-gauge-symmetry.html),
+[Renormalization and asymptotic freedom](../renormalization-and-asymptotic-freedom.html),
+[Yang–Mills theory on a lattice](../yang-mills-on-a-lattice.html),
+[Strong coupling, simulations and their errors](../strong-coupling-simulations-errors.html),
+[Spectra, mass gaps and confinement](../spectra-mass-gaps-confinement.html),
+[Continuum limits and reconstruction](../continuum-limits-and-reconstruction.html), and
+[The established research landscape and open problems](../established-approaches-and-open-problems.html)
+are complete, each with eight main exercises and full solutions.
+Unit 9 also has thirty-six analysis chapters with 289 further solutions.
+Unit 10 also includes a complete operator chapter with four further solutions.
+Unit 11 constructs the free quantum theory with complete operator domains and eight solutions.
+Unit 12 constructs quantum constraints, gauge fixing, Grassmann and BRST algebra, and finite Ward identities.
+Unit 13 derives the one-loop coefficient, spectral subtraction and full scale maps.
+Unit 14 constructs finite lattice measures, the Wilson transfer operator and its exact Hamiltonian.
+Unit 15 proves exact Wilson-loop, sampling and finite-error calculations.
+Unit 16 proves the spectral, source-sector and limit comparisons.
+Unit 17 supplies the complete free continuum construction and its exact reconstruction maps.
+Unit 18 connects the main methods and supplies complete two-dimensional and finite comparisons.
 The four earlier standalone texts remain accessible separately, with their
 original proofs and dependencies.
 
@@ -134,7 +153,7 @@ as unresolved by the [Clay Mathematics Institute](https://www.claymath.org/mille
 The final units teach its precise formulation and the relation of existing
 results to it. Classical smooth solutions, finite lattice spectra and a
 continuum quantum theory require different statements and arguments; the
-course will construct their actual mathematical connections.
+course constructs their actual mathematical connections in the models it develops.
 
 Every source is assessed by the same questions: Is its claim reliable at the
 stated scope? Is it relevant here? Does it teach something the existing
@@ -146,21 +165,19 @@ No workbench result has a reserved place, including in optional reading.
 The previously written treatments are retained for access and possible
 component reuse. Their availability is not a curriculum-selection decision.
 
-## Existing components to examine first
+## Prerequisite components and their use
 
 The course library already contains **RT-LIE**, on Lie algebras, and
-**DG-FND**, on bundles, connections and holonomy. These are concrete starting
-points for matching the prerequisites of Units 3–6. Compact-group
+**DG-FND**, on bundles, connections and holonomy. These supply precisely compared material for Units 3–6. Compact-group
 representation theory and the analysis courses are further routes for the
 later units. Exact statements, hypotheses, proofs and current editions must
 be checked before a component is adopted. This plan does not label an
 unread provider as a completed prerequisite.
 
-The next writing task is Unit 9: local and global classical evolution.
-Units 1–8 provide its calculus, symmetry, geometry, field equations and energy estimates.
-The general sequence remains independent of the previous workbench family.
-The later lessons will build from suitable existing components and complete
-the missing connections, preserving full mathematical statements and proofs.
+All eighteen units provide calculus, symmetry, geometry, classical
+evolution, quantum foundations, renormalization, lattice theory and
+quantitative sampling, spectra, static-source comparisons and continuum reconstruction. The final unit places these constructions in the established research landscape. The lessons include the receiving connections and preserve full mathematical statements and proofs. The
+general sequence remains independent of the previous workbench family.
 
 ## Representative reading routes
 
@@ -186,6 +203,6 @@ every theorem in a cited work.
 The exact scope of the present source reading is recorded in [the literature map](../literature-map.json). No protected source exposition is reproduced in this plan.
 
 
-## Current writing
+## Complete course
 
-A [partial Unit 9](../local-and-global-classical-evolution.html) now supplies the local solution construction, exact constraint and propagation proofs, smooth constrained approximation, gauge estimates and a global commuting example. The general finite-energy global argument and exercises are unfinished, so the completed-unit count remains eight.
+All eighteen units are complete, ending with [the established research landscape and open problems](../established-approaches-and-open-problems.html). The completed classical-evolution unit includes its local and global arguments, all main exercises, and the stated analytical prerequisites.

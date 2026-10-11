@@ -1,6 +1,6 @@
 # A spectral unitary and discrete decomposition from an infinite periodic weight
 
-*Fresh reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\) be a nonzero type III factor with separable predual, let \(0<\lambda<1\), and assume
 

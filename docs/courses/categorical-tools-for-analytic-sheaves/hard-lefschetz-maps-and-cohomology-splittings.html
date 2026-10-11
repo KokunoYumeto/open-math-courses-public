@@ -1,0 +1,498 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hard-Lefschetz maps and cohomology splittings</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="hard-lefschetz-maps-and-cohomology-splittings">Hard-Lefschetz maps and cohomology splittings</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>A bounded complex can carry extension information that its cohomology objects do not show. A degree-two derived map satisfying hard-Lefschetz isomorphisms forces this extension information to split. The proof constructs the two outer summands first, corrects their overlap, and repeats on an object with smaller cohomological support. The resulting splitting concerns the underlying derived object; the degree-two map can still have components invisible on cohomology.</p>
+<h2 id="conventions-and-prerequisites">Conventions and prerequisites</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be an arbitrary abelian category. Work in an ambient Grothendieck universe containing its objects, arrows and the integers as sets. All finite sums and derived Hom sets below are taken there. Put <span class="math" data-tex="\(D=D^b(\mathcal A)\)">\(D=D^b(\mathcal A)\)</span>, identified with its full image in the unbounded derived category. We require neither enough injectives nor enough projectives for the splitting theorem. A supplied injective resolution is used only in the concrete module exercises.</p>
+<p>Use cochain complexes and the conventions</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+X[r]^n=X^{n+r},\qquad d_{X[r]}=(-1)^r d_X,
+\qquad H^n(X[r])=H^{n+r}(X).
+\tag{0.1}
+\]">\[
+X[r]^n=X^{n+r},\qquad d_{X[r]}=(-1)^r d_X,
+\qquad H^n(X[r])=H^{n+r}(X).
+\tag{0.1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(A[-q]\)">\(A[-q]\)</span>, for <span class="math" data-tex="\(A\in\mathcal A\)">\(A\in\mathcal A\)</span>, is a stalk in degree <span class="math" data-tex="\(q\)">\(q\)</span>. Shifts on derived arrows have the coherent additive comparisons in <a href="triangles-after-quasi-isomorphism-localization.html#1-shift-and-the-proposed-triangles">Triangles after quasi-isomorphism localization, Sections 1–2</a>. That proof also supplies both exact Hom sequences for every distinguished triangle. Our cone has target first, with its positive last projection. Positively shifting the first two arrows of a triangle by <span class="math" data-tex="\(r\)">\(r\)</span> multiplies its last arrow by <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span>.</p>
+<p><a href="cohomological-bounds-denominators-and-truncation-adjunctions.html#1-four-localizations-and-cohomology-detection">Cohomological bounds, denominators and truncation adjunctions, Sections 1–5</a> proves cohomology detection, the full bounded embedding, smart truncations and their adjunctions, and the following actual Hom formulas:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.2); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_D(A[q],B[q])&amp;=\operatorname{Hom}_{\mathcal A}(A,B),\\
+\operatorname{Hom}_D(X,Y)&amp;=0
+\quad\text{if }H^{&gt;a}X=0\text{ and }H^{&lt;a+1}Y=0.
+\end{aligned}
+\tag{0.2}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_D(A[q],B[q])&amp;=\operatorname{Hom}_{\mathcal A}(A,B),\\
+\operatorname{Hom}_D(X,Y)&amp;=0
+\quad\text{if }H^{&gt;a}X=0\text{ and }H^{&lt;a+1}Y=0.
+\end{aligned}
+\tag{0.2}
+\]</span>
+<p>The first identification is the cohomology map in degree <span class="math" data-tex="\(-q\)">\(-q\)</span>. In particular negative Ext vanishes, where <span class="math" data-tex="\(\operatorname{Ext}^r(A,B)=\operatorname{Hom}_D(A,B[r])\)">\(\operatorname{Ext}^r(A,B)=\operatorname{Hom}_D(A,B[r])\)</span>. The same proof identifies an object supported in a single degree with its cohomology stalk, naturally through truncation. We use the explicit complement argument from <a href="null-systems-roofs-and-the-retract-kernel.html#7-zero-morphisms-and-the-retract-kernel">Null systems, roofs and the retract kernel, Section 7</a>, and reproduce it below. For the exercises, <a href="derived-morphisms-through-quasi-isomorphism-roofs.html#5-complexes-that-absorb-denominator-changes">Derived morphisms through quasi-isomorphism roofs, Section 5</a> proves that a supplied bounded-below complex of injectives computes every derived Hom into it.</p>
+<h2 id="1-the-hard-lefschetz-hypothesis-and-the-splitting-statement">1. The hard-Lefschetz hypothesis and the splitting statement</h2>
+<p>Let <span class="math" data-tex="\(K\in D\)">\(K\in D\)</span> and let <span class="math" data-tex="\(\ell:K\to K[2]\)">\(\ell:K\to K[2]\)</span> be a derived arrow. Its powers mean the actual shifted composites</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\ell^0=1_K,\qquad
+\ell^{j+1}=\ell[2j]\ell^j:K\longrightarrow K[2j+2].
+\tag{1.1}
+\]">\[
+\ell^0=1_K,\qquad
+\ell^{j+1}=\ell[2j]\ell^j:K\longrightarrow K[2j+2].
+\tag{1.1}
+\]</span>
+<p>The <em>hard-Lefschetz condition</em>, centered at degree zero, is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+H^{-j}(\ell^j):H^{-j}K\xrightarrow{\sim}H^jK
+\qquad(j\geq0).
+\tag{1.2}
+\]">\[
+H^{-j}(\ell^j):H^{-j}K\xrightarrow{\sim}H^jK
+\qquad(j\geq0).
+\tag{1.2}
+\]</span>
+<p>For <span class="math" data-tex="\(j=0\)">\(j=0\)</span> this is the identity; when both objects are zero, the unique map is an isomorphism. No characteristic, semisimplicity or dimension assumption is part of (1.2).</p>
+<p><strong>Theorem 1.1.</strong> Under (1.2) there is an isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\sigma:\bigoplus_{q\in\mathbb Z}H^qK[-q]
+\xrightarrow{\sim}K
+\tag{1.3}
+\]">\[
+\sigma:\bigoplus_{q\in\mathbb Z}H^qK[-q]
+\xrightarrow{\sim}K
+\tag{1.3}
+\]</span>
+<p>whose cohomology map in every degree is the identity of <span class="math" data-tex="\(H^qK\)">\(H^qK\)</span>. Only finitely many summands are nonzero. In particular the underlying derived object is formal: it is isomorphic to the zero-differential complex formed from its cohomology.</p>
+<p>We will construct (1.3) by induction. The statement does not require an isomorphism commuting with the pure degree-two cohomology map. Exercise 2 proves that such a stronger conclusion can fail even when all of (1.2) holds.</p>
+<h2 id="2-actual-maps-at-the-two-ends">2. Actual maps at the two ends</h2>
+<p>Choose an integer <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span> for which <span class="math" data-tex="\(H^qK=0\)">\(H^qK=0\)</span> outside <span class="math" data-tex="\([-N,N]\)">\([-N,N]\)</span>, and write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+A=H^{-N}K,\qquad B=H^NK,
+\qquad \phi=H^{-N}(\ell^N):A\xrightarrow{\sim}B.
+\tag{2.1}
+\]">\[
+A=H^{-N}K,\qquad B=H^NK,
+\qquad \phi=H^{-N}(\ell^N):A\xrightarrow{\sim}B.
+\tag{2.1}
+\]</span>
+<p>Smart truncation gives actual derived maps</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+a:A[N]\longrightarrow K,
+\qquad b:K\longrightarrow B[-N],
+\tag{2.2}
+\]">\[
+a:A[N]\longrightarrow K,
+\qquad b:K\longrightarrow B[-N],
+\tag{2.2}
+\]</span>
+<p>inducing the identity at the lower and upper degree, respectively. More explicitly, <span class="math" data-tex="\(\tau_{\leq-N}K\)">\(\tau_{\leq-N}K\)</span> has cohomology only in degree <span class="math" data-tex="\(-N\)">\(-N\)</span>; identify it with <span class="math" data-tex="\(A[N]\)">\(A[N]\)</span> by the canonical single-degree identification, then use its truncation map into <span class="math" data-tex="\(K\)">\(K\)</span>. Similarly identify <span class="math" data-tex="\(\tau_{\geq N}K\)">\(\tau_{\geq N}K\)</span> with <span class="math" data-tex="\(B[-N]\)">\(B[-N]\)</span> and use the truncation map out of <span class="math" data-tex="\(K\)">\(K\)</span>. These are derived arrows, not hypothetical termwise inclusions and projections in an arbitrary chosen representative of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Their essential composite is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+b[2N]\ell^N a=\phi[N]:A[N]\longrightarrow B[N].
+\tag{2.3}
+\]">\[
+b[2N]\ell^N a=\phi[N]:A[N]\longrightarrow B[N].
+\tag{2.3}
+\]</span>
+<p>Both sides have cohomology map <span class="math" data-tex="\(\phi\)">\(\phi\)</span> in degree <span class="math" data-tex="\(-N\)">\(-N\)</span>. The first formula of (0.2) makes that cohomology map a bijective test on this Hom group, so proves equality of the actual derived arrows.</p>
+<p>Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+r&amp;=\phi[N]^{-1}b[2N]\ell^N:K\longrightarrow A[N],\\
+s&amp;=\ell^N[-2N]a[-2N]\phi[-N]^{-1}:B[-N]\longrightarrow K.
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+r&amp;=\phi[N]^{-1}b[2N]\ell^N:K\longrightarrow A[N],\\
+s&amp;=\ell^N[-2N]a[-2N]\phi[-N]^{-1}:B[-N]\longrightarrow K.
+\end{aligned}
+\tag{2.4}
+\]</span>
+<p>All source and target shifts in these formulas are literal. Equation (2.3) and its shift by <span class="math" data-tex="\(-2N\)">\(-2N\)</span> give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+ra=1_{A[N]},\qquad bs=1_{B[-N]}.
+\tag{2.5}
+\]">\[
+ra=1_{A[N]},\qquad bs=1_{B[-N]}.
+\tag{2.5}
+\]</span>
+<p>Also</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.6); horizontal scroll when needed" data-tex="\[
+ba=0.
+\tag{2.6}
+\]">\[
+ba=0.
+\tag{2.6}
+\]</span>
+<p>Indeed its source is a stalk in degree <span class="math" data-tex="\(-N\)">\(-N\)</span>, its target a stalk in degree <span class="math" data-tex="\(N\)">\(N\)</span>, and <span class="math" data-tex="\(N&gt;0\)">\(N&gt;0\)</span>; apply the strict orthogonality in (0.2). Equivalently this Hom group is <span class="math" data-tex="\(\operatorname{Ext}^{-2N}(A,B)=0\)">\(\operatorname{Ext}^{-2N}(A,B)=0\)</span>.</p>
+<p>There is no analogous negative-Ext argument for <span class="math" data-tex="\(rs\)">\(rs\)</span>. Its group is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.7); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_D(B[-N],A[N])
+=\operatorname{Ext}^{2N}(B,A),
+\tag{2.7}
+\]">\[
+\operatorname{Hom}_D(B[-N],A[N])
+=\operatorname{Ext}^{2N}(B,A),
+\tag{2.7}
+\]</span>
+<p>which can be nonzero. The two one-sided splittings (2.5) therefore need one more operation before they split a biproduct.</p>
+<h2 id="3-correcting-the-triangular-composite">3. Correcting the triangular composite</h2>
+<p>Set <span class="math" data-tex="\(E=A[N]\oplus B[-N]\)">\(E=A[N]\oplus B[-N]\)</span>, and consider</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+i=(a,s):E\longrightarrow K,
+\qquad p_0=\binom r b:K\longrightarrow E.
+\tag{3.1}
+\]">\[
+i=(a,s):E\longrightarrow K,
+\qquad p_0=\binom r b:K\longrightarrow E.
+\tag{3.1}
+\]</span>
+<p>Equations (2.5)–(2.6) give the complete matrix</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+p_0i=\begin{pmatrix}1&amp;rs\\0&amp;1\end{pmatrix},
+\qquad
+(p_0i)^{-1}=\begin{pmatrix}1&amp;-rs\\0&amp;1\end{pmatrix}.
+\tag{3.2}
+\]">\[
+p_0i=\begin{pmatrix}1&amp;rs\\0&amp;1\end{pmatrix},
+\qquad
+(p_0i)^{-1}=\begin{pmatrix}1&amp;-rs\\0&amp;1\end{pmatrix}.
+\tag{3.2}
+\]</span>
+<p>Multiplying in either order proves the displayed inverse. Only addition and composition in an additive category are used; there is no division by a scalar or restriction on characteristic.</p>
+<p>Put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+r&#x27;=r-(rs)b,\qquad
+p=(p_0i)^{-1}p_0=\binom{r&#x27;}b.
+\tag{3.3}
+\]">\[
+r&#x27;=r-(rs)b,\qquad
+p=(p_0i)^{-1}p_0=\binom{r&#x27;}b.
+\tag{3.3}
+\]</span>
+<p>Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+r&#x27;a=1,\quad r&#x27;s=0,\quad ba=0,\quad bs=1,
+\qquad pi=1_E.
+\tag{3.4}
+\]">\[
+r&#x27;a=1,\quad r&#x27;s=0,\quad ba=0,\quad bs=1,
+\qquad pi=1_E.
+\tag{3.4}
+\]</span>
+<p>For example <span class="math" data-tex="\(r&#x27;s=rs-(rs)bs=0\)">\(r&#x27;s=rs-(rs)bs=0\)</span>, whereas <span class="math" data-tex="\(r&#x27;a=ra-(rs)ba=1\)">\(r&#x27;a=ra-(rs)ba=1\)</span>. Thus the overlap is removed without changing either end inclusion. The maps <span class="math" data-tex="\(ip\)">\(ip\)</span> and <span class="math" data-tex="\(1_K-ip\)">\(1_K-ip\)</span> are complementary idempotents, but we still need an actual object carrying the second part.</p>
+<h2 id="4-constructing-the-smaller-support-complement">4. Constructing the smaller-support complement</h2>
+<p><strong>Lemma 4.1 (a complement for a specified retraction).</strong> In any triangulated category, suppose <span class="math" data-tex="\(i:E\to K\)">\(i:E\to K\)</span>, <span class="math" data-tex="\(p:K\to E\)">\(p:K\to E\)</span>, and <span class="math" data-tex="\(pi=1_E\)">\(pi=1_E\)</span>. There are an object <span class="math" data-tex="\(C\)">\(C\)</span> and maps <span class="math" data-tex="\(u:C\to K\)">\(u:C\to K\)</span>, <span class="math" data-tex="\(j:K\to C\)">\(j:K\to C\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+ju=1_C,\qquad pu=0,\qquad ji=0,
+\qquad ip+uj=1_K.
+\tag{4.1}
+\]">\[
+ju=1_C,\qquad pu=0,\qquad ji=0,
+\qquad ip+uj=1_K.
+\tag{4.1}
+\]</span>
+<p>Consequently <span class="math" data-tex="\((i,u):E\oplus C\to K\)">\((i,u):E\oplus C\to K\)</span> and <span class="math" data-tex="\(\binom p j:K\to E\oplus C\)">\(\binom p j:K\to E\oplus C\)</span> are inverse isomorphisms.</p>
+<p><strong>Proof.</strong> Complete <span class="math" data-tex="\(i\)">\(i\)</span> to a distinguished triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+E\xrightarrow iK\xrightarrow jC\xrightarrow hE[1].
+\tag{4.2}
+\]">\[
+E\xrightarrow iK\xrightarrow jC\xrightarrow hE[1].
+\tag{4.2}
+\]</span>
+<p>Consecutive arrows give <span class="math" data-tex="\(i[1]h=0\)">\(i[1]h=0\)</span>. Multiplication by <span class="math" data-tex="\(p[1]\)">\(p[1]\)</span> and <span class="math" data-tex="\(p[1]i[1]=1\)">\(p[1]i[1]=1\)</span> gives <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. Exactness of <span class="math" data-tex="\(\operatorname{Hom}(C,-)\)">\(\operatorname{Hom}(C,-)\)</span> then provides <span class="math" data-tex="\(u_0:C\to K\)">\(u_0:C\to K\)</span> with <span class="math" data-tex="\(ju_0=1_C\)">\(ju_0=1_C\)</span>. Put <span class="math" data-tex="\(u=(1_K-ip)u_0\)">\(u=(1_K-ip)u_0\)</span>. We still have <span class="math" data-tex="\(ju=1_C\)">\(ju=1_C\)</span>, because <span class="math" data-tex="\(ji=0\)">\(ji=0\)</span>, and now <span class="math" data-tex="\(pu=0\)">\(pu=0\)</span>.</p>
+<p>For the remaining equation, let <span class="math" data-tex="\(v=1_K-ip-uj\)">\(v=1_K-ip-uj\)</span>. We have <span class="math" data-tex="\(jv=0\)">\(jv=0\)</span> and <span class="math" data-tex="\(pv=0\)">\(pv=0\)</span>. Exactness of <span class="math" data-tex="\(\operatorname{Hom}(K,-)\)">\(\operatorname{Hom}(K,-)\)</span> for (4.2) writes <span class="math" data-tex="\(v=iw\)">\(v=iw\)</span> for some <span class="math" data-tex="\(w:K\to E\)">\(w:K\to E\)</span>. Thus <span class="math" data-tex="\(w=piw=pv=0\)">\(w=piw=pv=0\)</span>, proving <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. All the block equations for the asserted inverse maps are now (4.1) and <span class="math" data-tex="\(pi=1\)">\(pi=1\)</span>. This constructs a complement for the supplied section and retraction; it does not assume that arbitrary idempotents already split. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply this to (3.4), taking the completion inside <span class="math" data-tex="\(D^b(\mathcal A)\)">\(D^b(\mathcal A)\)</span>. The resulting object <span class="math" data-tex="\(C\)">\(C\)</span> stays bounded. In degree <span class="math" data-tex="\(-N\)">\(-N\)</span>, <span class="math" data-tex="\(H^{-N}(i)\)">\(H^{-N}(i)\)</span> is the identity on <span class="math" data-tex="\(A\)">\(A\)</span>; in degree <span class="math" data-tex="\(N\)">\(N\)</span>, it is the identity on <span class="math" data-tex="\(B\)">\(B\)</span>, since <span class="math" data-tex="\(bs=1\)">\(bs=1\)</span> and <span class="math" data-tex="\(H^N(b)=1_B\)">\(H^N(b)=1_B\)</span>. All other cohomology of <span class="math" data-tex="\(E\)">\(E\)</span> is zero. The biproduct isomorphism therefore gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+H^qC=0\quad(q\notin[-N+1,N-1]),
+\qquad
+\alpha_q=H^q(u):H^qC\xrightarrow{\sim}H^qK
+\quad(-N&lt;q&lt;N).
+\tag{4.3}
+\]">\[
+H^qC=0\quad(q\notin[-N+1,N-1]),
+\qquad
+\alpha_q=H^q(u):H^qC\xrightarrow{\sim}H^qK
+\quad(-N&lt;q&lt;N).
+\tag{4.3}
+\]</span>
+<p>For the second assertion, <span class="math" data-tex="\(H^q(j)\)">\(H^q(j)\)</span> is the inverse of <span class="math" data-tex="\(\alpha_q\)">\(\alpha_q\)</span> by (4.1). At the end degrees, the isomorphism from <span class="math" data-tex="\(H^qE\oplus H^qC\)">\(H^qE\oplus H^qC\)</span> to <span class="math" data-tex="\(H^qK\)">\(H^qK\)</span> has an invertible first component; its inverse equations force the second summand to be zero. Outside <span class="math" data-tex="\([-N,N]\)">\([-N,N]\)</span> both <span class="math" data-tex="\(H^qE\)">\(H^qE\)</span> and <span class="math" data-tex="\(H^qK\)">\(H^qK\)</span> are zero, so the same biproduct equation forces <span class="math" data-tex="\(H^qC=0\)">\(H^qC=0\)</span>. This proves every bound in (4.3), including the case of a vanished end object.</p>
+<p>For any section <span class="math" data-tex="\(u_0\)">\(u_0\)</span> in the proof, the corrected <span class="math" data-tex="\(u\)">\(u\)</span> is uniquely characterized by <span class="math" data-tex="\(ju=1_C\)">\(ju=1_C\)</span>, <span class="math" data-tex="\(pu=0\)">\(pu=0\)</span>. Indeed a difference killed by <span class="math" data-tex="\(j\)">\(j\)</span> factors through <span class="math" data-tex="\(i\)">\(i\)</span>, and applying <span class="math" data-tex="\(p\)">\(p\)</span> then kills its factor. If a different completion is chosen, its cone comparison with identity first two components is invertible by exact Hom sequences. The equations <span class="math" data-tex="\(j&#x27;i=0\)">\(j&#x27;i=0\)</span>, <span class="math" data-tex="\(j&#x27;u= v\)">\(j&#x27;u= v\)</span>, <span class="math" data-tex="\(u&#x27;v=u\)">\(u&#x27;v=u\)</span>, <span class="math" data-tex="\(vj=j&#x27;\)">\(vj=j&#x27;\)</span> give the resulting compatible isomorphism <span class="math" data-tex="\(v:C\to C&#x27;\)">\(v:C\to C&#x27;\)</span>. One can verify the last equation from <span class="math" data-tex="\(uj=1-ip\)">\(uj=1-ip\)</span>, and the preceding one from <span class="math" data-tex="\(u&#x27;j&#x27;=1-ip\)">\(u&#x27;j&#x27;=1-ip\)</span>. These comparisons suffice for existence of the splitting; no functorial choice of all completions is assumed.</p>
+<h2 id="5-inheriting-every-lefschetz-isomorphism">5. Inheriting every Lefschetz isomorphism</h2>
+<p>On the constructed complement define the actual arrow</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\ell_C=j[2]\ell u:C\longrightarrow C[2].
+\tag{5.1}
+\]">\[
+\ell_C=j[2]\ell u:C\longrightarrow C[2].
+\tag{5.1}
+\]</span>
+<p>Define its powers by shifted composition just as in (1.1). For <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(q+2\)">\(q+2\)</span> strictly between <span class="math" data-tex="\(-N\)">\(-N\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span>, apply cohomology to (5.1). The inverse description after (4.3) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\alpha_{q+2}H^q(\ell_C)=H^q(\ell)\alpha_q.
+\tag{5.2}
+\]">\[
+\alpha_{q+2}H^q(\ell_C)=H^q(\ell)\alpha_q.
+\tag{5.2}
+\]</span>
+<p>This identity compares degree <span class="math" data-tex="\(q\)">\(q\)</span> to degree <span class="math" data-tex="\(q+2\)">\(q+2\)</span>. It is valid because <span class="math" data-tex="\(H^{q+2}(u)H^{q+2}(j)=1_{H^{q+2}K}\)">\(H^{q+2}(u)H^{q+2}(j)=1_{H^{q+2}K}\)</span> at that <em>interior</em> degree. There is no such identity at a removed end degree.</p>
+<p>Now let <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span> and suppose that all the integers</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+q,q+2,\ldots,q+2m
+\quad\text{are strictly between }-N\text{ and }N.
+\tag{5.3}
+\]">\[
+q,q+2,\ldots,q+2m
+\quad\text{are strictly between }-N\text{ and }N.
+\tag{5.3}
+\]</span>
+<p>Repeatedly composing (5.2), with its successive degree indices, yields</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\alpha_{q+2m}H^q(\ell_C^m)
+=H^q(\ell^m)\alpha_q.
+\tag{5.4}
+\]">\[
+\alpha_{q+2m}H^q(\ell_C^m)
+=H^q(\ell^m)\alpha_q.
+\tag{5.4}
+\]</span>
+<p>Here the comparison <span class="math" data-tex="\(H^q(\ell[2r])=H^{q+2r}(\ell)\)">\(H^q(\ell[2r])=H^{q+2r}(\ell)\)</span> follows from (0.1), so this calculation uses exactly the powers defined in (1.1). For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, it is the identity. It proves a statement about cohomology, rather than the usually unjustified derived equality <span class="math" data-tex="\(\ell_C^m=j[2m]\ell^m u\)">\(\ell_C^m=j[2m]\ell^m u\)</span>; the inserted projections between powers need not disappear as derived arrows.</p>
+<p>Take <span class="math" data-tex="\(q=-m\)">\(q=-m\)</span>, <span class="math" data-tex="\(0\leq m\leq N-1\)">\(0\leq m\leq N-1\)</span>. Every degree in the path (5.3) lies in <span class="math" data-tex="\([-m,m]\subseteq[-N+1,N-1]\)">\([-m,m]\subseteq[-N+1,N-1]\)</span>, so (5.4) and (1.2) prove</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+H^{-m}(\ell_C^m):H^{-m}C\xrightarrow{\sim}H^mC.
+\tag{5.5}
+\]">\[
+H^{-m}(\ell_C^m):H^{-m}C\xrightarrow{\sim}H^mC.
+\tag{5.5}
+\]</span>
+<p>For <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span>, both its end objects are zero by (4.3), so the same condition holds there too. Thus <span class="math" data-tex="\((C,\ell_C)\)">\((C,\ell_C)\)</span> satisfies the <em>entire</em> hard-Lefschetz condition, with a smaller support bound. Showing just the outer isomorphism for <span class="math" data-tex="\(K\)">\(K\)</span> would not justify this step: Exercise 3 exhibits that failure.</p>
+<h2 id="6-full-induction-and-cohomology-normalization">6. Full induction and cohomology normalization</h2>
+<p><strong>Proof of Theorem 1.1.</strong> Because <span class="math" data-tex="\(K\)">\(K\)</span> is bounded, choose some <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span> with cohomology supported in <span class="math" data-tex="\([-N,N]\)">\([-N,N]\)</span>. We induct on this integer; it need not be the least possible bound.</p>
+<p>If <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, the single-degree truncation identification gives an isomorphism <span class="math" data-tex="\(H^0K\to K\)">\(H^0K\to K\)</span> inducing the identity on <span class="math" data-tex="\(H^0\)">\(H^0\)</span>. No use of the two-end construction is appropriate here: the lower and upper end are the same object. If <span class="math" data-tex="\(H^0K=0\)">\(H^0K=0\)</span>, cohomology detection identifies <span class="math" data-tex="\(K\)">\(K\)</span> with zero, and the same conclusion uses the empty sum.</p>
+<p>For <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>, Sections 2–4 give <span class="math" data-tex="\(K\simeq A[N]\oplus C\oplus B[-N]\)">\(K\simeq A[N]\oplus C\oplus B[-N]\)</span>, with the specified maps <span class="math" data-tex="\(a,u,s\)">\(a,u,s\)</span>. Section 5 supplies <span class="math" data-tex="\(\ell_C\)">\(\ell_C\)</span> satisfying (1.2) and support in <span class="math" data-tex="\([-N+1,N-1]\)">\([-N+1,N-1]\)</span>. By the induction hypothesis choose</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\sigma_C: \bigoplus_{-N&lt;q&lt;N}H^qC[-q]\xrightarrow{\sim}C
+\tag{6.1}
+\]">\[
+\sigma_C: \bigoplus_{-N&lt;q&lt;N}H^qC[-q]\xrightarrow{\sim}C
+\tag{6.1}
+\]</span>
+<p>inducing each cohomology identity. Use the inverse isomorphisms <span class="math" data-tex="\(\alpha_q^{-1}:H^qK\to H^qC\)">\(\alpha_q^{-1}:H^qK\to H^qC\)</span> from (4.3). The middle inclusion in the final splitting is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\bigoplus_{-N&lt;q&lt;N}H^qK[-q]
+\xrightarrow{\ \bigoplus\alpha_q^{-1}[-q]\ }
+\bigoplus_{-N&lt;q&lt;N}H^qC[-q]
+\xrightarrow{\sigma_C}C\xrightarrow uK.
+\tag{6.2}
+\]">\[
+\bigoplus_{-N&lt;q&lt;N}H^qK[-q]
+\xrightarrow{\ \bigoplus\alpha_q^{-1}[-q]\ }
+\bigoplus_{-N&lt;q&lt;N}H^qC[-q]
+\xrightarrow{\sigma_C}C\xrightarrow uK.
+\tag{6.2}
+\]</span>
+<p>Combine it with <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(A[N]\)">\(A[N]\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> on <span class="math" data-tex="\(B[-N]\)">\(B[-N]\)</span>, arranging summands in increasing cohomological degree. Each step is a biproduct of isomorphisms followed by the actual complement isomorphism, so yields (1.3). At an interior degree, its cohomology map is <span class="math" data-tex="\(\alpha_q 1\alpha_q^{-1}=1\)">\(\alpha_q 1\alpha_q^{-1}=1\)</span>; at the ends it is <span class="math" data-tex="\(H^{-N}(a)=1\)">\(H^{-N}(a)=1\)</span> and <span class="math" data-tex="\(H^N(s)=1\)">\(H^N(s)=1\)</span>. This proves the required normalization.</p>
+<p>The support shrinks at every step even when <span class="math" data-tex="\(A=B=0\)">\(A=B=0\)</span>: then <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, <span class="math" data-tex="\(C\simeq K\)">\(C\simeq K\)</span>, but the stricter bound is already true. Condition (1.2) makes one vanished end imply that the other vanishes. At <span class="math" data-tex="\(N=1\)">\(N=1\)</span> the complement is supported only in degree zero and the next step is the base case. Thus there is no exception for a zero middle object, a missing outer pair, an acyclic object or a nonminimal initial bound. The induction terminates after finitely many steps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(\pi=\sigma^{-1}\)">\(\pi=\sigma^{-1}\)</span>, denote the components by <span class="math" data-tex="\(\sigma_q:H^qK[-q]\to K\)">\(\sigma_q:H^qK[-q]\to K\)</span>, <span class="math" data-tex="\(\pi_q:K\to H^qK[-q]\)">\(\pi_q:K\to H^qK[-q]\)</span>. They satisfy the actual derived equations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\pi_p\sigma_q=\begin{cases}1,&amp;p=q,\\0,&amp;p\ne q,\end{cases}
+\qquad \sum_q\sigma_q\pi_q=1_K.
+\tag{6.3}
+\]">\[
+\pi_p\sigma_q=\begin{cases}1,&amp;p=q,\\0,&amp;p\ne q,\end{cases}
+\qquad \sum_q\sigma_q\pi_q=1_K.
+\tag{6.3}
+\]</span>
+<p>These are stronger than an equality of cohomology groups. They are the section and projection equations needed to apply functors to the splitting.</p>
+<h2 id="7-scope-invisible-maps-and-changed-centers">7. Scope, invisible maps and changed centers</h2>
+<p>The construction splits the underlying derived object and provides its cohomology-normalized inclusions and projections. It does not discard higher Ext morphisms between those stalks. After any splitting, an endomorphism of <span class="math" data-tex="\(K\)">\(K\)</span> is a matrix whose <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> entry lies in <span class="math" data-tex="\(\operatorname{Ext}^{q-p}(H^qK,H^pK)\)">\(\operatorname{Ext}^{q-p}(H^qK,H^pK)\)</span>; a map to <span class="math" data-tex="\(K[2]\)">\(K[2]\)</span> has entries in <span class="math" data-tex="\(\operatorname{Ext}^{q-p+2}(H^qK,H^pK)\)">\(\operatorname{Ext}^{q-p+2}(H^qK,H^pK)\)</span>. Only the zero-Ext entries of the latter are the prescribed cohomology degree-two maps. Negative Ext entries vanish, while positive Ext entries can remain.</p>
+<p>Even the base case illustrates this. If <span class="math" data-tex="\(K=A[0]\)">\(K=A[0]\)</span> and <span class="math" data-tex="\(\operatorname{Ext}^2(A,A)\ne0\)">\(\operatorname{Ext}^2(A,A)\ne0\)</span>, choose a nonzero <span class="math" data-tex="\(\ell:A\to A[2]\)">\(\ell:A\to A[2]\)</span>. All the hard-Lefschetz conditions with <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span> are isomorphisms between zero objects. The theorem's underlying splitting is the identity, but the degree-two map on the cohomology stalk complex is zero. Hence an isomorphism intertwining those two maps cannot exist. Exercise 2 supplies an explicit abelian category with this nonzero Ext group.</p>
+<p>Once a splitting is chosen, equation (6.3) gives functorial Hom decompositions in a separate test object. It gives no automatic statement that the chosen splitting is natural in every arrow of <span class="math" data-tex="\(K\)">\(K\)</span>, unique among all normalized splittings, or compatible with <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. For instance any nonzero positive-Ext entry between distinct summands gives a nontrivial triangular automorphism inducing the identity on cohomology; composing <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> with it produces another normalized splitting. Such entries are concretely nonzero in Exercise 2.</p>
+<p>The same theorem has an arbitrary integer center <span class="math" data-tex="\(c\)">\(c\)</span>. If</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+H^{c-j}(\ell^j):H^{c-j}K\xrightarrow{\sim}H^{c+j}K
+\quad(j\geq0),
+\tag{7.1}
+\]">\[
+H^{c-j}(\ell^j):H^{c-j}K\xrightarrow{\sim}H^{c+j}K
+\quad(j\geq0),
+\tag{7.1}
+\]</span>
+<p>apply Theorem 1.1 to <span class="math" data-tex="\(K[c]\)">\(K[c]\)</span> and <span class="math" data-tex="\(\ell[c]\)">\(\ell[c]\)</span>. Its powers are <span class="math" data-tex="\(\ell^j[c]\)">\(\ell^j[c]\)</span> by shifted composition. Shifting the resulting splitting back by <span class="math" data-tex="\(-c\)">\(-c\)</span>, and putting <span class="math" data-tex="\(q=c+r\)">\(q=c+r\)</span>, gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+K\simeq\bigoplus_r H^{c+r}K[-r-c]
+=\bigoplus_q H^qK[-q],
+\tag{7.2}
+\]">\[
+K\simeq\bigoplus_r H^{c+r}K[-r-c]
+=\bigoplus_q H^qK[-q],
+\tag{7.2}
+\]</span>
+<p>again inducing the identity on each cohomology object. This reindexing uses a finite sum and requires no existence of infinite coproducts.</p>
+<h2 id="8-four-graded-exercises-with-complete-solutions">8. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-a-complete-computation-with-a-contractible-middle">Exercise 1 — a complete computation with a contractible middle</h3>
+<p>Over a field <span class="math" data-tex="\(k\)">\(k\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+K^{-2}=k,\quad K^{-1}=k^2,\quad K^0=k^3,
+\quad K^1=k^2,\quad K^2=k.
+\]">\[
+K^{-2}=k,\quad K^{-1}=k^2,\quad K^0=k^3,
+\quad K^1=k^2,\quad K^2=k.
+\]</span>
+<p>The only nonzero differentials are <span class="math" data-tex="\(d^{-1}(u,v)=(u,0,0)\)">\(d^{-1}(u,v)=(u,0,0)\)</span> and <span class="math" data-tex="\(d^0(a,b,c)=(b,0)\)">\(d^0(a,b,c)=(b,0)\)</span>. Define a degree-two chain map by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\ell^{-2}(z)=(0,0,z),\qquad
+\ell^{-1}(u,v)=(u,v),\qquad
+\ell^0(a,b,c)=c,
+\]">\[
+\ell^{-2}(z)=(0,0,z),\qquad
+\ell^{-1}(u,v)=(u,v),\qquad
+\ell^0(a,b,c)=c,
+\]</span>
+<p>with all other components zero. Check the chain-map and hard-Lefschetz conditions, construct the two outer splittings and the complement, and give a full cohomology splitting with a chain homotopy for its inverse equations.</p>
+<p><strong>Solution.</strong> We have <span class="math" data-tex="\(d^0d^{-1}=0\)">\(d^0d^{-1}=0\)</span>. Since the shift by two has positive differential, the chain equations are <span class="math" data-tex="\(d^{n+2}\ell^n=\ell^{n+1}d^n\)">\(d^{n+2}\ell^n=\ell^{n+1}d^n\)</span>. In degree <span class="math" data-tex="\(-2\)">\(-2\)</span>, both sides are zero because <span class="math" data-tex="\(d^0(0,0,z)=0\)">\(d^0(0,0,z)=0\)</span>. In degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, both sides are zero because <span class="math" data-tex="\(d^1=0\)">\(d^1=0\)</span> and <span class="math" data-tex="\(\ell^0(u,0,0)=0\)">\(\ell^0(u,0,0)=0\)</span>. In all remaining degrees an outgoing differential or a further component is zero. Thus <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is a chain map.</p>
+<p>All five cohomology objects, in degrees <span class="math" data-tex="\(-2,-1,0,1,2\)">\(-2,-1,0,1,2\)</span>, are <span class="math" data-tex="\(k\)">\(k\)</span>. At <span class="math" data-tex="\(-1\)">\(-1\)</span> use the second coordinate <span class="math" data-tex="\(v\)">\(v\)</span> in the kernel, at zero use <span class="math" data-tex="\(c\)">\(c\)</span> modulo the first-coordinate image, and at one use the second coordinate modulo the first-coordinate image. The other two are the unchanged end terms. The map from <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> to <span class="math" data-tex="\(H^1\)">\(H^1\)</span> is the identity. The composite <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> sends <span class="math" data-tex="\(z\)">\(z\)</span> in degree <span class="math" data-tex="\(-2\)">\(-2\)</span> to <span class="math" data-tex="\(z\)">\(z\)</span> in degree two, so is the identity on those cohomology objects. These prove (1.2), including <span class="math" data-tex="\(j=0\)">\(j=0\)</span> and the zero objects for <span class="math" data-tex="\(j&gt;2\)">\(j&gt;2\)</span>.</p>
+<p>For <span class="math" data-tex="\(N=2\)">\(N=2\)</span>, take <span class="math" data-tex="\(a\)">\(a\)</span> to be the inclusion of <span class="math" data-tex="\(K^{-2}\)">\(K^{-2}\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> the projection onto <span class="math" data-tex="\(K^2\)">\(K^2\)</span>. We have <span class="math" data-tex="\(\phi=1_k\)">\(\phi=1_k\)</span>. Formula (2.4) gives <span class="math" data-tex="\(r\)">\(r\)</span> as the projection onto <span class="math" data-tex="\(K^{-2}\)">\(K^{-2}\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> as the inclusion of <span class="math" data-tex="\(K^2\)">\(K^2\)</span>, directly from the displayed composite <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>. Hence <span class="math" data-tex="\(rs=0\)">\(rs=0\)</span> and the correction changes nothing. The complement is the complex with the same three middle terms and differentials, in degrees <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span>. Its projected map has the one component <span class="math" data-tex="\(\ell_C^{-1}=1_{k^2}:k^2\to k^2\)">\(\ell_C^{-1}=1_{k^2}:k^2\to k^2\)</span>, and induces the required identity on <span class="math" data-tex="\(H^{-1}\to H^1\)">\(H^{-1}\to H^1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be the direct sum of the five cohomology stalks. Define <span class="math" data-tex="\(\sigma:G\to K\)">\(\sigma:G\to K\)</span> by the identity at the two ends, by <span class="math" data-tex="\(v\mapsto(0,v)\)">\(v\mapsto(0,v)\)</span> in degrees <span class="math" data-tex="\(-1,1\)">\(-1,1\)</span>, and by <span class="math" data-tex="\(c\mapsto(0,0,c)\)">\(c\mapsto(0,0,c)\)</span> in degree zero. Define <span class="math" data-tex="\(\pi:K\to G\)">\(\pi:K\to G\)</span> by the identity at the ends and by the coordinates <span class="math" data-tex="\(v,c,v\)">\(v,c,v\)</span> in the middle. Each is a chain map, because <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> lands in cycles and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> kills every displayed boundary. Clearly <span class="math" data-tex="\(\pi\sigma=1_G\)">\(\pi\sigma=1_G\)</span>.</p>
+<p>Define the only nonzero homotopy components by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+h^0(a,b,c)=(a,0),\qquad h^1(u,v)=(0,u,0).
+\]">\[
+h^0(a,b,c)=(a,0),\qquad h^1(u,v)=(0,u,0).
+\]</span>
+<p>In degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, <span class="math" data-tex="\(dh+hd\)">\(dh+hd\)</span> sends <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> to <span class="math" data-tex="\((u,0)\)">\((u,0)\)</span>; in degree zero it sends <span class="math" data-tex="\((a,b,c)\)">\((a,b,c)\)</span> to <span class="math" data-tex="\((a,b,0)\)">\((a,b,0)\)</span>; in degree one it sends <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> to <span class="math" data-tex="\((u,0)\)">\((u,0)\)</span>; at the ends it is zero. These are exactly the components of <span class="math" data-tex="\(1_K-\sigma\pi\)">\(1_K-\sigma\pi\)</span>. Thus <span class="math" data-tex="\(\sigma\pi=1_K\)">\(\sigma\pi=1_K\)</span> in the homotopy category, and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is the desired cohomology-normalized derived isomorphism. The two removed middle pairs are visibly contractible, with the actual contraction just given.</p>
+<h3 id="exercise-2-a-nonzero-overlap-and-failure-of-equivariance">Exercise 2 — a nonzero overlap and failure of equivariance</h3>
+<p>Let <span class="math" data-tex="\(\Lambda=k[t]/(t^2)\)">\(\Lambda=k[t]/(t^2)\)</span>, and work in the abelian category of finite-dimensional left <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-modules. Construct a nonzero <span class="math" data-tex="\(\eta\in\operatorname{Ext}^2_\Lambda(k,k)\)">\(\eta\in\operatorname{Ext}^2_\Lambda(k,k)\)</span>, where <span class="math" data-tex="\(k=\Lambda/(t)\)">\(k=\Lambda/(t)\)</span>, and put <span class="math" data-tex="\(\beta=\eta[-1]:k[-1]\to k[1]\)">\(\beta=\eta[-1]:k[-1]\to k[1]\)</span>. For</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+K=k[1]\oplus k[-1],\qquad
+\ell:K\longrightarrow K[2],\qquad
+\ell=\begin{pmatrix}0&amp;0\\1&amp;\beta\end{pmatrix},
+\tag{8.1}
+\]">\[
+K=k[1]\oplus k[-1],\qquad
+\ell:K\longrightarrow K[2],\qquad
+\ell=\begin{pmatrix}0&amp;0\\1&amp;\beta\end{pmatrix},
+\tag{8.1}
+\]</span>
+<p>compute <span class="math" data-tex="\(r,s,rs,r&#x27;\)">\(r,s,rs,r&#x27;\)</span> for <span class="math" data-tex="\(N=1\)">\(N=1\)</span>. Prove that (1.2) holds. Let <span class="math" data-tex="\(L\)">\(L\)</span> be the same displayed matrix with <span class="math" data-tex="\(\beta\)">\(\beta\)</span> replaced by zero. Prove that no isomorphism of the underlying objects intertwines <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p><strong>Solution.</strong> First <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is injective in this finite module category. For a <span class="math" data-tex="\(k\)">\(k\)</span>-linear form <span class="math" data-tex="\(f:V\to k\)">\(f:V\to k\)</span>, set <span class="math" data-tex="\(e_f(v)=f(tv)+f(v)t\)">\(e_f(v)=f(tv)+f(v)t\)</span>. This is <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-linear, since <span class="math" data-tex="\(e_f(tv)=f(tv)t=t e_f(v)\)">\(e_f(tv)=f(tv)t=t e_f(v)\)</span>. The coefficient of <span class="math" data-tex="\(t\)">\(t\)</span> gives the inverse identification <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(V,\Lambda)=\operatorname{Hom}_k(V,k)\)">\(\operatorname{Hom}_\Lambda(V,\Lambda)=\operatorname{Hom}_k(V,k)\)</span>: if <span class="math" data-tex="\(g(v)=a(v)+b(v)t\)">\(g(v)=a(v)+b(v)t\)</span>, linearity imposes <span class="math" data-tex="\(a(v)=b(tv)\)">\(a(v)=b(tv)\)</span>. A linear form on a subspace extends to a whole finite-dimensional vector space by extending a basis. Under this identification, every map into <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> therefore extends across a module monomorphism, proving injectivity.</p>
+<p>Use the explicit resolution</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow k\xrightarrow{1\mapsto t}\Lambda
+\xrightarrow t\Lambda\xrightarrow t\Lambda\xrightarrow t\cdots,
+\tag{8.2}
+\]">\[
+0\longrightarrow k\xrightarrow{1\mapsto t}\Lambda
+\xrightarrow t\Lambda\xrightarrow t\Lambda\xrightarrow t\cdots,
+\tag{8.2}
+\]</span>
+<p>with its injective terms <span class="math" data-tex="\(I^n=\Lambda\)">\(I^n=\Lambda\)</span> for <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. It is exact after its first term because the kernel and image of multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> both equal <span class="math" data-tex="\(kt\)">\(kt\)</span>. The inclusion makes <span class="math" data-tex="\(k[0]\to I\)">\(k[0]\to I\)</span> a quasi-isomorphism. The supplied bounded-below injective comparison proves that <span class="math" data-tex="\(\operatorname{Ext}^r(k,k)\)">\(\operatorname{Ext}^r(k,k)\)</span> is <span class="math" data-tex="\(\operatorname{Hom}_{K(\mathcal A)}(k,I[r])\)">\(\operatorname{Hom}_{K(\mathcal A)}(k,I[r])\)</span>; the full bounded embedding allows this computation in the unbounded category.</p>
+<p>For <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, a chain map <span class="math" data-tex="\(k[0]\to I[r]\)">\(k[0]\to I[r]\)</span> has its sole component <span class="math" data-tex="\(1\mapsto c t\)">\(1\mapsto c t\)</span> in <span class="math" data-tex="\(I^r\)">\(I^r\)</span>, with <span class="math" data-tex="\(c\in k\)">\(c\in k\)</span>. Its outgoing differential kills that component. Every possible homotopy has degree-zero source component into <span class="math" data-tex="\(I^{r-1}\)">\(I^{r-1}\)</span>, also landing in <span class="math" data-tex="\(kt\)">\(kt\)</span>; its composition with the possibly signed multiplication-by-<span class="math" data-tex="\(t\)">\(t\)</span> differential is zero. Thus no distinct values of <span class="math" data-tex="\(c\)">\(c\)</span> are homotopic. At <span class="math" data-tex="\(r=0\)">\(r=0\)</span> the same statement uses the missing <span class="math" data-tex="\(I^{-1}\)">\(I^{-1}\)</span> term. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^r(k,k)=k\quad(r\geq0),\qquad
+\operatorname{Ext}^r(k,k)=0\quad(r&lt;0).
+\tag{8.3}
+\]">\[
+\operatorname{Ext}^r(k,k)=k\quad(r\geq0),\qquad
+\operatorname{Ext}^r(k,k)=0\quad(r&lt;0).
+\tag{8.3}
+\]</span>
+<p>Choose <span class="math" data-tex="\(\eta\)">\(\eta\)</span> as the class represented by <span class="math" data-tex="\(1\mapsto t\)">\(1\mapsto t\)</span> in <span class="math" data-tex="\(I^2\)">\(I^2\)</span>. It is nonzero by this homotopy calculation, and its shift <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is nonzero too.</p>
+<p>For (8.1), the only nonzero cohomology objects are <span class="math" data-tex="\(H^{-1}K=k\)">\(H^{-1}K=k\)</span> and <span class="math" data-tex="\(H^1K=k\)">\(H^1K=k\)</span>. The entry <span class="math" data-tex="\(1\)">\(1\)</span> induces the identity between them, whereas <span class="math" data-tex="\(\beta\)">\(\beta\)</span> has zero cohomology maps. This proves (1.2); all <span class="math" data-tex="\(j&gt;1\)">\(j&gt;1\)</span> involve zero end objects. The truncation maps are the first inclusion <span class="math" data-tex="\(a\)">\(a\)</span> and second projection <span class="math" data-tex="\(b\)">\(b\)</span>, with <span class="math" data-tex="\(\phi=1\)">\(\phi=1\)</span>. Formula (2.4) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.4); horizontal scroll when needed" data-tex="\[
+r=(1,\beta),\qquad s=\binom01,\qquad
+rs=\beta\ne0,\qquad r&#x27;=r-\beta b=(1,0).
+\tag{8.4}
+\]">\[
+r=(1,\beta),\qquad s=\binom01,\qquad
+rs=\beta\ne0,\qquad r&#x27;=r-\beta b=(1,0).
+\tag{8.4}
+\]</span>
+<p>Thus the triangular inverse in (3.2) is necessary even in an object whose underlying decomposition is already displayed.</p>
+<p>Every isomorphism <span class="math" data-tex="\(v:K\to K\)">\(v:K\to K\)</span> has matrix <span class="math" data-tex="\(\begin{pmatrix}a&amp;\gamma\\0&amp;d\end{pmatrix}\)">\(\begin{pmatrix}a&amp;\gamma\\0&amp;d\end{pmatrix}\)</span>, with <span class="math" data-tex="\(a,d\in k^\times\)">\(a,d\in k^\times\)</span> and <span class="math" data-tex="\(\gamma\in\operatorname{Hom}_D(k[-1],k[1])\)">\(\gamma\in\operatorname{Hom}_D(k[-1],k[1])\)</span>. The lower-left group is negative Ext and hence zero. Its diagonal entries must be nonzero since they are its two cohomology maps. Conversely such a matrix is invertible by its triangular inverse. The equation <span class="math" data-tex="\(\ell v=v[2]L\)">\(\ell v=v[2]L\)</span> would give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.5); horizontal scroll when needed" data-tex="\[
+\begin{pmatrix}0&amp;0\\a&amp;\gamma+\beta d\end{pmatrix}
+=\begin{pmatrix}\gamma[2]&amp;0\\d&amp;0\end{pmatrix}.
+\tag{8.5}
+\]">\[
+\begin{pmatrix}0&amp;0\\a&amp;\gamma+\beta d\end{pmatrix}
+=\begin{pmatrix}\gamma[2]&amp;0\\d&amp;0\end{pmatrix}.
+\tag{8.5}
+\]</span>
+<p>The upper-left equation forces <span class="math" data-tex="\(\gamma[2]=0\)">\(\gamma[2]=0\)</span>, hence <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span>, since shift is an equivalence. The lower-right equation then forces <span class="math" data-tex="\(\beta d=0\)">\(\beta d=0\)</span>, impossible because <span class="math" data-tex="\(d\)">\(d\)</span> is invertible and <span class="math" data-tex="\(\beta\ne0\)">\(\beta\ne0\)</span>. Thus no intertwining isomorphism exists. In particular <span class="math" data-tex="\(1+\begin{pmatrix}0&amp;\beta\\0&amp;0\end{pmatrix}\)">\(1+\begin{pmatrix}0&amp;\beta\\0&amp;0\end{pmatrix}\)</span> is a nonidentity automorphism inducing the identity on cohomology, so normalized underlying splittings need not be unique.</p>
+<h3 id="exercise-3-why-the-outer-power-alone-is-insufficient">Exercise 3 — why the outer power alone is insufficient</h3>
+<p>In the module category of Exercise 2, choose the nonzero class <span class="math" data-tex="\(\chi\in\operatorname{Ext}^3(k,k)\)">\(\chi\in\operatorname{Ext}^3(k,k)\)</span> represented by <span class="math" data-tex="\(1\mapsto t\)">\(1\mapsto t\)</span> in <span class="math" data-tex="\(I^3\)">\(I^3\)</span>, and put <span class="math" data-tex="\(\kappa=\chi[-1]:k[-1]\to k[2]\)">\(\kappa=\chi[-1]:k[-1]\to k[2]\)</span>. Choose a distinguished triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.6); horizontal scroll when needed" data-tex="\[
+k[1]\longrightarrow X\longrightarrow k[-1]
+\xrightarrow\kappa k[2].
+\tag{8.6}
+\]">\[
+k[1]\longrightarrow X\longrightarrow k[-1]
+\xrightarrow\kappa k[2].
+\tag{8.6}
+\]</span>
+<p>Let <span class="math" data-tex="\(T=k[2]\oplus k[0]\oplus k[-2]\)">\(T=k[2]\oplus k[0]\oplus k[-2]\)</span> with the degree-two arrow <span class="math" data-tex="\(L_T\)">\(L_T\)</span> sending the first summand identically to the shifted middle one and the middle one identically to the shifted last one. Put <span class="math" data-tex="\(K=X\oplus T\)">\(K=X\oplus T\)</span>, <span class="math" data-tex="\(\ell=0_X\oplus L_T\)">\(\ell=0_X\oplus L_T\)</span>. Show that <span class="math" data-tex="\(H^{-2}(\ell^2)\)">\(H^{-2}(\ell^2)\)</span> is invertible but the cohomology splitting conclusion fails. Locate exactly where the induction loses its hypothesis.</p>
+<p><strong>Solution.</strong> The class <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is nonzero by (8.3), whose calculation covers every nonnegative degree. A triangle (8.6) exists: complete <span class="math" data-tex="\(-\kappa:k[-1]\to k[2]\)">\(-\kappa:k[-1]\to k[2]\)</span>, shift its cone triangle by <span class="math" data-tex="\(-1\)">\(-1\)</span> with the signed last arrow, and rotate once. Its first two vertices are <span class="math" data-tex="\(k[1]\)">\(k[1]\)</span> and <span class="math" data-tex="\(C(-\kappa)[-1]\)">\(C(-\kappa)[-1]\)</span>; its third is <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>; its final arrow is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Thus this construction can be used for <span class="math" data-tex="\(X\)">\(X\)</span> without overlooking the rotation sign.</p>
+<p>The long cohomology sequence gives <span class="math" data-tex="\(H^{-1}X=k\)">\(H^{-1}X=k\)</span>, <span class="math" data-tex="\(H^1X=k\)">\(H^1X=k\)</span>, and zero in every other degree. The first and third objects in (8.6) lie in <span class="math" data-tex="\(D^{\leq0}\)">\(D^{\leq0}\)</span> and <span class="math" data-tex="\(D^{\geq1}\)">\(D^{\geq1}\)</span>. The truncation adjunctions compare this triangle to the canonical truncation triangle of <span class="math" data-tex="\(X\)">\(X\)</span>. The first comparison induces the identity on its only cohomology, and is invertible by cohomology detection; the same is true of the third comparison. Consequently the boundary of that truncation triangle identifies with the nonzero <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. It cannot become the zero boundary of <span class="math" data-tex="\(k[1]\oplus k[-1]\)">\(k[1]\oplus k[-1]\)</span>: naturality under an isomorphism would multiply <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> on either side by invertible arrows and could not kill it. Therefore <span class="math" data-tex="\(X\)">\(X\)</span> does not split into its cohomology stalks.</p>
+<p>The five cohomology objects of <span class="math" data-tex="\(K\)">\(K\)</span> are all <span class="math" data-tex="\(k\)">\(k\)</span> in degrees <span class="math" data-tex="\(-2,-1,0,1,2\)">\(-2,-1,0,1,2\)</span>. The square of <span class="math" data-tex="\(L_T\)">\(L_T\)</span> carries <span class="math" data-tex="\(k\)">\(k\)</span> in degree <span class="math" data-tex="\(-2\)">\(-2\)</span> identically onto <span class="math" data-tex="\(k\)">\(k\)</span> in degree two, so <span class="math" data-tex="\(H^{-2}(\ell^2)=1_k\)">\(H^{-2}(\ell^2)=1_k\)</span>. But <span class="math" data-tex="\(H^{-1}(\ell):k\to k\)">\(H^{-1}(\ell):k\to k\)</span> is zero, because the two odd degrees belong to <span class="math" data-tex="\(X\)">\(X\)</span>. Thus the condition with <span class="math" data-tex="\(j=1\)">\(j=1\)</span> fails.</p>
+<p>The outer splitting maps from <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> remove exactly the two end stalks of <span class="math" data-tex="\(T\)">\(T\)</span>. Their complement is <span class="math" data-tex="\(C=X\oplus k[0]\)">\(C=X\oplus k[0]\)</span>. The projected <span class="math" data-tex="\(\ell_C\)">\(\ell_C\)</span> is zero; in particular its map from <span class="math" data-tex="\(H^{-1}C\)">\(H^{-1}C\)</span> to <span class="math" data-tex="\(H^1C\)">\(H^1C\)</span> is zero, so it cannot satisfy the induction hypothesis. It is nonformal as well: its truncation boundary at zero is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.7); horizontal scroll when needed" data-tex="\[
+k[-1]\longrightarrow (k[1]\oplus k[0])[1],
+\qquad \binom\kappa0,
+\tag{8.7}
+\]">\[
+k[-1]\longrightarrow (k[1]\oplus k[0])[1],
+\qquad \binom\kappa0,
+\tag{8.7}
+\]</span>
+<p>which is nonzero by projection onto its first component. For the zero-differential cohomology complex this canonical boundary is zero, and truncation naturality rules out an isomorphism between them. Finally <span class="math" data-tex="\(\tau_{\geq-1}\tau_{\leq1}K\simeq C\)">\(\tau_{\geq-1}\tau_{\leq1}K\simeq C\)</span>, whereas applying those functors to a formal <span class="math" data-tex="\(K\)">\(K\)</span> would give its formal middle three stalks. Hence <span class="math" data-tex="\(K\)">\(K\)</span> itself is nonformal. This proves failure of the desired conclusion from an outer isomorphism alone, and explains why every interior power was checked in Section 5.</p>
+<h3 id="exercise-4-the-two-derived-hom-decompositions">Exercise 4 — the two derived Hom decompositions</h3>
+<p>For a splitting in Theorem 1.1, prove the two finite-sum formulas</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.8); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_D(M,K[m])
+&amp;\simeq\bigoplus_q\operatorname{Ext}^{m-q}(M,H^qK),\\
+\operatorname{Hom}_D(K,M[m])
+&amp;\simeq\bigoplus_q\operatorname{Ext}^{m+q}(H^qK,M)
+\end{aligned}
+\tag{8.8}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_D(M,K[m])
+&amp;\simeq\bigoplus_q\operatorname{Ext}^{m-q}(M,H^qK),\\
+\operatorname{Hom}_D(K,M[m])
+&amp;\simeq\bigoplus_q\operatorname{Ext}^{m+q}(H^qK,M)
+\end{aligned}
+\tag{8.8}
+\]</span>
+<p>for <span class="math" data-tex="\(M\in\mathcal A\)">\(M\in\mathcal A\)</span>, <span class="math" data-tex="\(m\in\mathbb Z\)">\(m\in\mathbb Z\)</span>. Give both directions of each map, prove naturality in <span class="math" data-tex="\(M\)">\(M\)</span>, and compute both sides for <span class="math" data-tex="\(M=k\)">\(M=k\)</span> and the <span class="math" data-tex="\(K\)">\(K\)</span> of Exercise 2, for every integer <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Solution.</strong> Use the exact sections and projections (6.3). In the first formula send <span class="math" data-tex="\(f:M\to K[m]\)">\(f:M\to K[m]\)</span> to the family <span class="math" data-tex="\(\pi_q[m]f:M\to H^qK[m-q]\)">\(\pi_q[m]f:M\to H^qK[m-q]\)</span>. Send a family <span class="math" data-tex="\((f_q)\)">\((f_q)\)</span> back to <span class="math" data-tex="\(\sum_q\sigma_q[m]f_q\)">\(\sum_q\sigma_q[m]f_q\)</span>. Their two composites are identities, respectively by <span class="math" data-tex="\(\pi_p\sigma_q=\delta_{pq}\)">\(\pi_p\sigma_q=\delta_{pq}\)</span> and <span class="math" data-tex="\(\sum_q\sigma_q\pi_q=1_K\)">\(\sum_q\sigma_q\pi_q=1_K\)</span>, shifted by <span class="math" data-tex="\(m\)">\(m\)</span>. Every sum is finite.</p>
+<p>In the second formula, send <span class="math" data-tex="\(g:K\to M[m]\)">\(g:K\to M[m]\)</span> to <span class="math" data-tex="\((g\sigma_q)[q]:H^qK\to M[m+q]\)">\((g\sigma_q)[q]:H^qK\to M[m+q]\)</span>. Send a family <span class="math" data-tex="\((g_q:H^qK\to M[m+q])\)">\((g_q:H^qK\to M[m+q])\)</span> back to <span class="math" data-tex="\(\sum_q g_q[-q]\pi_q\)">\(\sum_q g_q[-q]\pi_q\)</span>. The same identities, with these explicitly opposite shifts, prove both inverse equations. The definitions of Ext and the full bounded embedding identify the groups exactly as in (8.8); negative indices give zero by (0.2).</p>
+<p>Precomposition with an arrow <span class="math" data-tex="\(M&#x27;\to M\)">\(M&#x27;\to M\)</span> commutes with each first-formula component and sum, so proves its contravariant naturality in <span class="math" data-tex="\(M\)">\(M\)</span>. Postcomposition by the shifted arrow <span class="math" data-tex="\(M[m]\to M&#x27;[m]\)">\(M[m]\to M&#x27;[m]\)</span> commutes with each second-formula component and sum, so proves its covariant naturality. These maps use the chosen <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>; this assertion is not a new claim of canonical naturality in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>For Exercise 2 the two degrees are <span class="math" data-tex="\(-1,1\)">\(-1,1\)</span>, both with cohomology <span class="math" data-tex="\(k\)">\(k\)</span>. The first group is <span class="math" data-tex="\(\operatorname{Ext}^{m+1}(k,k)\oplus\operatorname{Ext}^{m-1}(k,k)\)">\(\operatorname{Ext}^{m+1}(k,k)\oplus\operatorname{Ext}^{m-1}(k,k)\)</span>, and the second is the same two groups in the opposite order. Formula (8.3) therefore gives, for either Hom group,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.9); horizontal scroll when needed" data-tex="\[
+\begin{cases}
+0,&amp;m\leq-2,\\
+k,&amp;m=-1\text{ or }m=0,\\
+k\oplus k,&amp;m\geq1.
+\end{cases}
+\tag{8.9}
+\]">\[
+\begin{cases}
+0,&amp;m\leq-2,\\
+k,&amp;m=-1\text{ or }m=0,\\
+k\oplus k,&amp;m\geq1.
+\end{cases}
+\tag{8.9}
+\]</span>
+<p>In particular positive Ext remains present after the underlying object splits. The calculation also covers the degree-zero and negative-degree endpoints; it does not replace a negative Ext group by a second copy of <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<h2 id="9-freely-accessible-references">9. Freely accessible references</h2>
+<ul>
+<li>The Stacks Project Authors, <a href="https://stacks.math.columbia.edu/tag/0118">Truncation of complexes, Section 12.15</a>, <a href="https://stacks.math.columbia.edu/tag/05RW">bounded derived comparison, Lemma 13.11.6</a>, and <a href="https://stacks.math.columbia.edu/tag/05QT">split triangles, Lemma 13.4.11</a>, for the underlying truncation and split-triangle ingredients. Their exact course proof interfaces are linked above, and the retraction and induction calculations are proved in this lesson.</li>
+<li>The Stacks Project Authors, <a href="https://stacks.math.columbia.edu/tag/05TG">bounded-below injective Hom comparison, Lemma 13.18.8</a>, for the comparison used with the explicitly supplied resolution (8.2).</li>
+<li>Mark Andrea de Cataldo, <a href="https://arxiv.org/abs/1312.1169">Hodge-theoretic splitting mechanisms for projective maps</a>, Sections 2.1–2.3, for a related freely accessible extremal-splitting mechanism in a <em>filtered abelian</em> setting. That category has its own filtered kernels; it is different from <span class="math" data-tex="\(D^b(\mathcal A)\)">\(D^b(\mathcal A)\)</span>. The derived complement here is constructed by a distinguished triangle, with its power identities proved separately on cohomology.</li>
+</ul>
+</main></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Presheaf exactness and pullback comparisons</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="presheaf-exactness-and-pullback-comparisons">Presheaf exactness and pullback comparisons</h1>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Presheaf exactness and pullback comparisons</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="presheaf-exactness-and-pullback-comparisons">Presheaf exactness and pullback comparisons</h1>
 <p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Original text public domain (CC0).</em></p>
 <p>A universal square carries equations as well as an object. To compare two pullbacks, keep the original projections and test every compatible pair of maps. To test an epimorphism of presheaves, a pointwise quotient supplies the target that detects a missing element. These two methods also expose a mistake in a represented coequalizer exercise: a quotient relation includes an empty path, and its edges can be traversed in either direction.</p>
 <p>We use <span class="unlinked">cancellation in an arbitrary category</span>, <a href="universal-forks-and-diagram-constructions.html#4-join-a-span-or-match-a-cospan">the full pullback and pushout factors</a>, <a href="colimits-as-connected-components.html#4-compute-presheaf-limits-and-colimits-pointwise">pointwise presheaf constructions</a>, and the <span class="unlinked">Yoneda identity test</span>. Composition is written from right to left.</p>
@@ -6,7 +6,7 @@
 <h3 id="pulling-back-a-monomorphism">Pulling back a monomorphism</h3>
 <p>Suppose the square with upper arrow <span class="math" data-tex="\(f&#x27;:X&#x27;\to Y&#x27;\)">\(f&#x27;:X&#x27;\to Y&#x27;\)</span>, lower arrow <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, and vertical arrows <span class="math" data-tex="\(g&#x27;:X&#x27;\to X\)">\(g&#x27;:X&#x27;\to X\)</span>, <span class="math" data-tex="\(g:Y&#x27;\to Y\)">\(g:Y&#x27;\to Y\)</span> is a specified pullback. Thus <span class="math" data-tex="\(fg&#x27;=gf&#x27;\)">\(fg&#x27;=gf&#x27;\)</span>, and every compatible pair into <span class="math" data-tex="\(X,Y&#x27;\)">\(X,Y&#x27;\)</span> factors uniquely through <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> is monic, then <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> is monic.</p>
 <p>Take any <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(a,b:T\to X&#x27;\)">\(a,b:T\to X&#x27;\)</span> with <span class="math" data-tex="\(f&#x27;a=f&#x27;b\)">\(f&#x27;a=f&#x27;b\)</span>. Commutativity gives</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 fg&#x27;a=gf&#x27;a=gf&#x27;b=fg&#x27;b,\\
 g&#x27;a=g&#x27;b .
@@ -22,7 +22,7 @@ g&#x27;a=g&#x27;b .
 <p>The second equality uses cancellation of <span class="math" data-tex="\(f\)">\(f\)</span>. The maps <span class="math" data-tex="\(a,b\)">\(a,b\)</span> now have equal composites with both pullback projections <span class="math" data-tex="\(g&#x27;,f&#x27;\)">\(g&#x27;,f&#x27;\)</span>, so uniqueness of the factor for that same pair gives <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. This proves the full cancellation test; it does not require the category to have other pullbacks.</p>
 <h3 id="a-pushout-of-a-span-that-already-has-a-pullback-target">A pushout of a span that already has a pullback target</h3>
 <p>Fix arrows <span class="math" data-tex="\(p:X\to Y\)">\(p:X\to Y\)</span>, <span class="math" data-tex="\(q:X\to Z\)">\(q:X\to Z\)</span> and <span class="math" data-tex="\(y:Y\to U\)">\(y:Y\to U\)</span>, <span class="math" data-tex="\(z:Z\to U\)">\(z:Z\to U\)</span>. Assume <span class="math" data-tex="\(yp=zq\)">\(yp=zq\)</span> and that <span class="math" data-tex="\(X\)">\(X\)</span>, with these actual maps, is the pullback of <span class="math" data-tex="\(y,z\)">\(y,z\)</span>. Suppose a pushout of <span class="math" data-tex="\(p,q\)">\(p,q\)</span> is also given, with <span class="math" data-tex="\(i:Y\to V\)">\(i:Y\to V\)</span>, <span class="math" data-tex="\(j:Z\to V\)">\(j:Z\to V\)</span>. The compatible pair <span class="math" data-tex="\(y,z\)">\(y,z\)</span> has a unique pushout factor <span class="math" data-tex="\(k:V\to U\)">\(k:V\to U\)</span>:</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 ip=jq,\qquad ki=y,\qquad kj=z .
 \end{gathered}
@@ -34,7 +34,7 @@ ip=jq,\qquad ki=y,\qquad kj=z .
 \tag{1.2}
 \]</span>
 <p>Then the square with apex <span class="math" data-tex="\(V\)">\(V\)</span>, sides <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, and upper-left object <span class="math" data-tex="\(X\)">\(X\)</span> is itself a pullback. Indeed, let <span class="math" data-tex="\(a:T\to Y\)">\(a:T\to Y\)</span>, <span class="math" data-tex="\(b:T\to Z\)">\(b:T\to Z\)</span> satisfy <span class="math" data-tex="\(ia=jb\)">\(ia=jb\)</span>. Applying <span class="math" data-tex="\(k\)">\(k\)</span> gives <span class="math" data-tex="\(ya=zb\)">\(ya=zb\)</span>, so the original pullback supplies a unique <span class="math" data-tex="\(c:T\to X\)">\(c:T\to X\)</span> with</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
 pc=a,\qquad qc=b .
 \tag{1.3}
 \]">\[
@@ -45,7 +45,7 @@ pc=a,\qquad qc=b .
 <p>Precomposing a pair <span class="math" data-tex="\(a,b\)">\(a,b\)</span> by <span class="math" data-tex="\(t:T&#x27;\to T\)">\(t:T&#x27;\to T\)</span> gives <span class="math" data-tex="\(at,bt\)">\(at,bt\)</span>; its factor is <span class="math" data-tex="\(ct\)">\(ct\)</span>, because it has those projections. Uniqueness proves naturality in the testing object. The pushout is used to produce <span class="math" data-tex="\(k\)">\(k\)</span>; no additional preservation hypothesis on pushouts is needed.</p>
 <h3 id="changing-the-common-target-along-a-monomorphism">Changing the common target along a monomorphism</h3>
 <p>Let <span class="math" data-tex="\(f:X\to Z\)">\(f:X\to Z\)</span>, <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span>, and let <span class="math" data-tex="\(u:Z\to Z&#x27;\)">\(u:Z\to Z&#x27;\)</span> be monic. Suppose the two pullbacks <span class="math" data-tex="\(P=X\times_Z Y\)">\(P=X\times_Z Y\)</span> and <span class="math" data-tex="\(P&#x27;=X\times_{Z&#x27;}Y\)">\(P&#x27;=X\times_{Z&#x27;}Y\)</span> exist, with projections <span class="math" data-tex="\(p_X,p_Y\)">\(p_X,p_Y\)</span> and <span class="math" data-tex="\(p&#x27;_X,p&#x27;_Y\)">\(p&#x27;_X,p&#x27;_Y\)</span>. The canonical comparison <span class="math" data-tex="\(v:P\to P&#x27;\)">\(v:P\to P&#x27;\)</span> is the unique map preserving both projections. The defining pair for <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span> satisfies</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 ufp&#x27;_X=ugp&#x27;_Y,\\
 fp&#x27;_X=gp&#x27;_Y .
@@ -59,7 +59,7 @@ fp&#x27;_X=gp&#x27;_Y .
 \tag{1.4}
 \]</span>
 <p>Cancellation of <span class="math" data-tex="\(u\)">\(u\)</span> therefore supplies a unique <span class="math" data-tex="\(w:P&#x27;\to P\)">\(w:P&#x27;\to P\)</span> with <span class="math" data-tex="\(p_Xw=p&#x27;_X\)">\(p_Xw=p&#x27;_X\)</span>, <span class="math" data-tex="\(p_Yw=p&#x27;_Y\)">\(p_Yw=p&#x27;_Y\)</span>. Both <span class="math" data-tex="\(wv\)">\(wv\)</span> and <span class="math" data-tex="\(1_P\)">\(1_P\)</span> have projections <span class="math" data-tex="\(p_X,p_Y\)">\(p_X,p_Y\)</span>, while both <span class="math" data-tex="\(vw\)">\(vw\)</span> and <span class="math" data-tex="\(1_{P&#x27;}\)">\(1_{P&#x27;}\)</span> have projections <span class="math" data-tex="\(p&#x27;_X,p&#x27;_Y\)">\(p&#x27;_X,p&#x27;_Y\)</span>. The two uniqueness properties give</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
 wv=1_P,\qquad vw=1_{P&#x27;} .
 \tag{1.5}
 \]">\[
@@ -71,7 +71,7 @@ wv=1_P,\qquad vw=1_{P&#x27;} .
 <h2 id="2-cancellation-in-presheaves">2. Cancellation in presheaves</h2>
 <p>Cancellation of natural transformations can be tested on their values. The injective test comes from the identity in a representable presheaf. For the surjective test, glue two copies of the target along the image: a missing element keeps its two copies distinct.</p>
 <p>Fix the working universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, and let <span class="math" data-tex="\(C\)">\(C\)</span> be any locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small category in the <span class="unlinked">ambient-set convention</span>. Write</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 \widehat C
 =\operatorname{Fun}(C^{\mathrm{op}},\mathsf{Set}_{\mathcal U}),\\
@@ -91,7 +91,7 @@ h_X(T)=\operatorname{Hom}_C(T,X).
 <p>Let <span class="math" data-tex="\(\phi:F\to G\)">\(\phi:F\to G\)</span> be a natural transformation. Then <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is monic precisely when every function <span class="math" data-tex="\(\phi_X:F(X)\to G(X)\)">\(\phi_X:F(X)\to G(X)\)</span> is injective.</p>
 <p>If all components are injective, take any presheaf <span class="math" data-tex="\(T\)">\(T\)</span> and transformations <span class="math" data-tex="\(a,b:T\to F\)">\(a,b:T\to F\)</span> with <span class="math" data-tex="\(\phi a=\phi b\)">\(\phi a=\phi b\)</span>. At every <span class="math" data-tex="\(X\)">\(X\)</span>, the equation <span class="math" data-tex="\(\phi_Xa_X=\phi_Xb_X\)">\(\phi_Xa_X=\phi_Xb_X\)</span> gives <span class="math" data-tex="\(a_X=b_X\)">\(a_X=b_X\)</span>. Therefore <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, which is the full <span class="unlinked">monomorphism cancellation test</span>.</p>
 <p>Conversely, suppose <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is monic, and fix <span class="math" data-tex="\(x,y\in F(X)\)">\(x,y\in F(X)\)</span> with <span class="math" data-tex="\(\phi_X(x)=\phi_X(y)\)">\(\phi_X(x)=\phi_X(y)\)</span>. The <span class="unlinked">Yoneda bijection</span> gives the transformations</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 \widetilde x,\widetilde y:h_X\longrightarrow F,\\
 \widetilde x_T(f)=F(f)(x),\\
@@ -111,7 +111,7 @@ h_X(T)=\operatorname{Hom}_C(T,X).
 <h3 id="epimorphisms-and-the-two-copies-of-a-value">Epimorphisms and the two copies of a value</h3>
 <p>The transformation <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is epic precisely when every <span class="math" data-tex="\(\phi_X\)">\(\phi_X\)</span> is surjective. Sufficiency is direct. If <span class="math" data-tex="\(r,s:G\to S\)">\(r,s:G\to S\)</span> satisfy <span class="math" data-tex="\(r\phi=s\phi\)">\(r\phi=s\phi\)</span>, then for any <span class="math" data-tex="\(g\in G(X)\)">\(g\in G(X)\)</span> there is <span class="math" data-tex="\(a\in F(X)\)">\(a\in F(X)\)</span> with <span class="math" data-tex="\(\phi_X(a)=g\)">\(\phi_X(a)=g\)</span>. Consequently <span class="math" data-tex="\(r_X(g)=r_X\phi_X(a)=s_X\phi_X(a)=s_X(g)\)">\(r_X(g)=r_X\phi_X(a)=s_X\phi_X(a)=s_X(g)\)</span>. This proves <span class="math" data-tex="\(r=s\)">\(r=s\)</span> for every target presheaf <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
 <p>For necessity, construct the actual self-pushout <span class="math" data-tex="\(P=G\amalg_FG\)">\(P=G\amalg_FG\)</span>. Its value at <span class="math" data-tex="\(X\)">\(X\)</span> is the small quotient</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 P(X)=(\{1,2\}\times G(X))/{\sim_X},\\
 (1,\phi_X(a))\\
@@ -131,7 +131,7 @@ j_{i,X}(g)=[i,g]\qquad(i=1,2).
 \tag{2.3}
 \]</span>
 <p>Here <span class="math" data-tex="\(\sim_X\)">\(\sim_X\)</span> is the equivalence relation generated by the displayed pairs. Every generator preserves the underlying element of <span class="math" data-tex="\(G(X)\)">\(G(X)\)</span>. For an element in <span class="math" data-tex="\(\phi_X(F(X))\)">\(\phi_X(F(X))\)</span>, a generator joins its two tags. Outside that image no generator meets either tagged element, so each is a singleton equivalence class. Thus the exact criterion is</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 j_{1,X}(g)=j_{2,X}(g)\\
 \Longleftrightarrow g\in\phi_X(F(X)).
@@ -146,7 +146,7 @@ j_{1,X}(g)=j_{2,X}(g)\\
 \]</span>
 <p>Within each copy, equality of classes also implies equality of the underlying elements. This is the image-and-complement description proved in <span class="unlinked">the full set self-pushout</span>, with the actual quotient maps retained.</p>
 <p>For <span class="math" data-tex="\(u:X\to Y\)">\(u:X\to Y\)</span>, define</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 P(u)([i,g])=[i,G(u)(g)]\\
 (g\in G(Y)).
@@ -162,7 +162,7 @@ P(u)([i,g])=[i,G(u)(g)]\\
 <p>This is well-defined: naturality gives
 <span class="math" data-tex="\(G(u)\phi_Y(a)=\phi_XF(u)(a)\)">\(G(u)\phi_Y(a)=\phi_XF(u)(a)\)</span>, so every generating pair maps to a generating pair. The functor laws follow on each class from those of <span class="math" data-tex="\(G\)">\(G\)</span>. Equation (2.5) makes both <span class="math" data-tex="\(j_i:G\to P\)">\(j_i:G\to P\)</span> natural, and (2.3) gives <span class="math" data-tex="\(j_1\phi=j_2\phi\)">\(j_1\phi=j_2\phi\)</span>.</p>
 <p>For completeness, take <em>any</em> presheaf <span class="math" data-tex="\(S\)">\(S\)</span> and natural transformations <span class="math" data-tex="\(r_1,r_2:G\to S\)">\(r_1,r_2:G\to S\)</span> satisfying <span class="math" data-tex="\(r_1\phi=r_2\phi\)">\(r_1\phi=r_2\phi\)</span>. The unique pushout factor is</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.6); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 \lambda_X:P(X)\longrightarrow S(X),\\
 \lambda_X([i,g])=r_{i,X}(g),\\
@@ -183,7 +183,7 @@ P(u)([i,g])=[i,G(u)(g)]\\
 <p>All quotient values are small by the universe's finite tagged-union and quotient closures. If <span class="math" data-tex="\(F(X)=\varnothing\)">\(F(X)=\varnothing\)</span>, its image is empty and <span class="math" data-tex="\(P(X)\)">\(P(X)\)</span> has two disjoint copies of <span class="math" data-tex="\(G(X)\)">\(G(X)\)</span>. If <span class="math" data-tex="\(G(X)=\varnothing\)">\(G(X)=\varnothing\)</span>, existence of <span class="math" data-tex="\(\phi_X\)">\(\phi_X\)</span> forces <span class="math" data-tex="\(F(X)=\varnothing\)">\(F(X)=\varnothing\)</span>, and <span class="math" data-tex="\(P(X)=\varnothing\)">\(P(X)=\varnothing\)</span>. The formulas and factor proofs include these cases.</p>
 <h3 id="an-epimorphism-onto-a-representable-has-a-section">An epimorphism onto a representable has a section</h3>
 <p>Let <span class="math" data-tex="\(\alpha:A\to h_U\)">\(\alpha:A\to h_U\)</span>. If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is epic, its component at <span class="math" data-tex="\(U\)">\(U\)</span> is surjective, so there exists <span class="math" data-tex="\(a\in A(U)\)">\(a\in A(U)\)</span> such that <span class="math" data-tex="\(\alpha_U(a)=1_U\)">\(\alpha_U(a)=1_U\)</span>. The full Yoneda inverse constructs</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.7); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 s:h_U\longrightarrow A,\\
 s_X(f)=A(f)(a)
@@ -206,7 +206,7 @@ s_X(f)=A(f)(a)
 <p>Conversely, any section <span class="math" data-tex="\(s:h_U\to A\)">\(s:h_U\to A\)</span> makes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> epic: if <span class="math" data-tex="\(r\alpha=t\alpha\)">\(r\alpha=t\alpha\)</span>, compose with <span class="math" data-tex="\(s\)">\(s\)</span> to get <span class="math" data-tex="\(r=r\alpha s=t\alpha s=t\)">\(r=r\alpha s=t\alpha s=t\)</span>. This cancellation argument works in every category. The existence argument uses the representable target: lifting its identity provides one datum that already determines a natural transformation. Component surjectivity onto a general presheaf does not itself provide a natural section.</p>
 <h3 id="the-small-family-of-all-representables-covers-the-terminal-presheaf">The small family of all representables covers the terminal presheaf</h3>
 <p>Now assume <span class="math" data-tex="\(C\)">\(C\)</span> is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Form the coproduct <span class="math" data-tex="\(Q=\coprod_{U\in\operatorname{Ob}C}h_U\)">\(Q=\coprod_{U\in\operatorname{Ob}C}h_U\)</span>. Explicitly,</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.8); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 Q(X)=\coprod_{U\in\operatorname{Ob}C}\\
 \operatorname{Hom}_C(X,U),\\
@@ -230,7 +230,7 @@ Q(u)(U,f)=(U,fu)\\
 <h2 id="3-the-full-kernel-pair-coequalizer">3. The full kernel-pair coequalizer</h2>
 <p>An epimorphism identifies precisely the elements with the same image. A map out of its source descends if it is constant on those fibres. The work is to show that the descended functions commute with every restriction map, so they form the required presheaf transformation.</p>
 <p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, and let <span class="math" data-tex="\(\alpha:A\to B\)">\(\alpha:A\to B\)</span> be an epimorphism in <span class="math" data-tex="\(\widehat C\)">\(\widehat C\)</span>. Section 2 makes every <span class="math" data-tex="\(\alpha_X\)">\(\alpha_X\)</span> surjective. Its specified kernel pair <span class="math" data-tex="\(R=A\times_BA\)">\(R=A\times_BA\)</span> has</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 R(X)=\{(a,a&#x27;)\in A(X)^2:\\
 \alpha_X(a)=\alpha_X(a&#x27;)\},\\
@@ -252,7 +252,7 @@ p_{2,X}(a,a&#x27;)=a&#x27;.
 <p>Here <span class="math" data-tex="\(u:X\to Y\)">\(u:X\to Y\)</span> sends pairs in <span class="math" data-tex="\(R(Y)\)">\(R(Y)\)</span> to pairs in <span class="math" data-tex="\(R(X)\)">\(R(X)\)</span>. Naturality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> preserves the defining equality. The functor laws follow coordinatewise from those of <span class="math" data-tex="\(A\)">\(A\)</span>, and both projections are natural. The value sets are small subsets of small products.</p>
 <p>These maps give the entire pullback property. If <span class="math" data-tex="\(v,w:T\to A\)">\(v,w:T\to A\)</span> are natural and <span class="math" data-tex="\(\alpha v=\alpha w\)">\(\alpha v=\alpha w\)</span>, set <span class="math" data-tex="\(k_X(t)=(v_X(t),w_X(t))\)">\(k_X(t)=(v_X(t),w_X(t))\)</span>. This lies in <span class="math" data-tex="\(R(X)\)">\(R(X)\)</span>, is natural because <span class="math" data-tex="\(v,w\)">\(v,w\)</span> are, and satisfies <span class="math" data-tex="\(p_1k=v\)">\(p_1k=v\)</span>, <span class="math" data-tex="\(p_2k=w\)">\(p_2k=w\)</span>. Every factor with these projections has exactly these pairs as its values, so it is unique. Composing a compatible pair with a transformation into <span class="math" data-tex="\(T\)">\(T\)</span> commutes with this formula. Thus (3.1) is the specified kernel pair, rather than just a pointwise set bearing that name.</p>
 <p>The equivalence relation on <span class="math" data-tex="\(A(X)\)">\(A(X)\)</span> given by equality under <span class="math" data-tex="\(\alpha_X\)">\(\alpha_X\)</span> is already reflexive, symmetric and transitive. Its quotient has the specified bijection</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 q_X:A(X)/{\sim_X}\longrightarrow B(X),\\
 a\sim_Xa&#x27; \Longleftrightarrow\\
@@ -272,7 +272,7 @@ q_X([a])=\alpha_X(a).
 <p>It is well-defined and injective by that exact equality criterion, and surjective by surjectivity of <span class="math" data-tex="\(\alpha_X\)">\(\alpha_X\)</span>. Restriction sends <span class="math" data-tex="\([a]\)">\([a]\)</span> to <span class="math" data-tex="\([A(u)a]\)">\([A(u)a]\)</span>, which is well-defined by naturality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Those restrictions satisfy the presheaf laws, and <span class="math" data-tex="\(q_X\)">\(q_X\)</span> commutes with them by the same naturality equation. The inverse of <span class="math" data-tex="\(q_X\)">\(q_X\)</span> sends <span class="math" data-tex="\(b\)">\(b\)</span> to its unique fibre class. It is uniquely determined, so it requires no simultaneous selection of representatives. This identifies the quotient presheaf with the actual target <span class="math" data-tex="\(B\)">\(B\)</span> and identifies its class map with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
 <h3 id="descend-every-equalizing-transformation">Descend every equalizing transformation</h3>
 <p>Take any presheaf <span class="math" data-tex="\(S\)">\(S\)</span> and any transformation <span class="math" data-tex="\(\rho:A\to S\)">\(\rho:A\to S\)</span> such that <span class="math" data-tex="\(\rho p_1=\rho p_2\)">\(\rho p_1=\rho p_2\)</span>. For any <span class="math" data-tex="\(a,a&#x27;\in A(X)\)">\(a,a&#x27;\in A(X)\)</span> with the same <span class="math" data-tex="\(\alpha_X\)">\(\alpha_X\)</span>-image, the pair <span class="math" data-tex="\((a,a&#x27;)\)">\((a,a&#x27;)\)</span> belongs to <span class="math" data-tex="\(R(X)\)">\(R(X)\)</span>, so</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 \alpha_X(a)=\alpha_X(a&#x27;)\\
 \Longrightarrow\quad
@@ -288,7 +288,7 @@ q_X([a])=\alpha_X(a).
 \tag{3.3}
 \]</span>
 <p>For <span class="math" data-tex="\(b\in B(X)\)">\(b\in B(X)\)</span>, its fibre is nonempty, and (3.3) shows that all values of <span class="math" data-tex="\(\rho_X\)">\(\rho_X\)</span> on it coincide. Define <span class="math" data-tex="\(\tau_X(b)\)">\(\tau_X(b)\)</span> to be that unique common value. Equivalently its graph is</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 \Gamma_X=\{(b,s)\in B(X)\times S(X):\\
 \text{there exists }a\in A(X)\text{ with}\\
@@ -305,7 +305,7 @@ q_X([a])=\alpha_X(a).
 \]</span>
 <p>Existence and uniqueness make <span class="math" data-tex="\(\Gamma_X\)">\(\Gamma_X\)</span> the graph of a function <span class="math" data-tex="\(\tau_X:B(X)\to S(X)\)">\(\tau_X:B(X)\to S(X)\)</span>. This definition takes a uniquely determined value for each fibre; it chooses no representative for each <span class="math" data-tex="\(b\)">\(b\)</span>, and no family of sections of the component functions. It immediately gives <span class="math" data-tex="\(\tau_X\alpha_X=\rho_X\)">\(\tau_X\alpha_X=\rho_X\)</span>.</p>
 <p>To check every restriction, let <span class="math" data-tex="\(u:X\to Y\)">\(u:X\to Y\)</span> and <span class="math" data-tex="\(b\in B(Y)\)">\(b\in B(Y)\)</span>. For this one element, choose any witness <span class="math" data-tex="\(a\in A(Y)\)">\(a\in A(Y)\)</span> with <span class="math" data-tex="\(\alpha_Y(a)=b\)">\(\alpha_Y(a)=b\)</span>. Naturality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> says <span class="math" data-tex="\(\alpha_X(A(u)a)=B(u)b\)">\(\alpha_X(A(u)a)=B(u)b\)</span>. Consequently the defining common values and naturality of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> give</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
 \begin{aligned}
 \tau_X(B(u)b)
 &amp;=\rho_X(A(u)a)\\
@@ -326,7 +326,7 @@ q_X([a])=\alpha_X(a).
 <p>Conversely, every <span class="math" data-tex="\(\tau:B\to S\)">\(\tau:B\to S\)</span> gives an equalizing transformation <span class="math" data-tex="\(\rho=\tau\alpha\)">\(\rho=\tau\alpha\)</span>, since <span class="math" data-tex="\(\alpha p_1=\alpha p_2\)">\(\alpha p_1=\alpha p_2\)</span>. The two assignments are inverse by their defining equations and uniqueness. Postcomposing with any <span class="math" data-tex="\(d:S\to S&#x27;\)">\(d:S\to S&#x27;\)</span> sends the descended value to <span class="math" data-tex="\(d_X(\tau_X(b))\)">\(d_X(\tau_X(b))\)</span>, which is the descended value of <span class="math" data-tex="\(d\rho\)">\(d\rho\)</span>. Thus the correspondence is natural in the arbitrary target <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
 <h3 id="the-whole-hom-equalizer">The whole Hom equalizer</h3>
 <p>Write <span class="math" data-tex="\(S(B)=\operatorname{Nat}(B,S)\)">\(S(B)=\operatorname{Nat}(B,S)\)</span>, and similarly for <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span>. These are small up to encoding because <span class="math" data-tex="\(C\)">\(C\)</span> is small, by <span class="unlinked">the full component-product bound</span>. The proved correspondence says exactly that</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.6); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 S(B)\xrightarrow{\ \alpha^*\ }S(A)\\
 \underset{p_2^*}{\overset{p_1^*}{\rightrightarrows}}S(R),\\
@@ -353,7 +353,7 @@ S(B)\xrightarrow{\ \sim\ }\\
 <p>A coequalizer of representable presheaves can be tested by two identity arrows. The identity of the target supplies a section; the identity of the middle object supplies a finite relation witness. That witness may have no edges, and its edges may be traversed in either direction. Both allowances are needed in the criterion below.</p>
 <p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be locally small, with the ambient universe and encoded Hom conventions of <span class="unlinked">Points, fibres and universal representations, Sections 1–2</span>. Thus the representables are set-valued, or are transported to small set-valued presheaves by the chosen Hom encodings. The formulas below use decoded arrows. Encoding each input and output gives the same constructions. We do not assume that the object set of <span class="math" data-tex="\(C\)">\(C\)</span> is small.</p>
 <p>Fix arrows</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 f,g: X\rightrightarrows Y,\qquad h:Y\to Z,\\
 hf=hg.
@@ -368,7 +368,7 @@ hf=hg.
 \]</span>
 <p>Write <span class="math" data-tex="\(h_A(T)=C(T,A)\)">\(h_A(T)=C(T,A)\)</span>, with restriction <span class="math" data-tex="\(a\mapsto av\)">\(a\mapsto av\)</span> along <span class="math" data-tex="\(v:T&#x27;\to T\)">\(v:T&#x27;\to T\)</span>. Postcomposition by an arrow <span class="math" data-tex="\(k:A\to B\)">\(k:A\to B\)</span> defines the transformation <span class="math" data-tex="\(h_k:h_A\to h_B\)">\(h_k:h_A\to h_B\)</span>. The represented fork associated to (4.1) has specified last map <span class="math" data-tex="\(h_h\)">\(h_h\)</span>.</p>
 <p><strong>The generated relation.</strong> For every object <span class="math" data-tex="\(T\)">\(T\)</span>, let <span class="math" data-tex="\(\sim_T\)">\(\sim_T\)</span> be the smallest equivalence relation on <span class="math" data-tex="\(C(T,Y)\)">\(C(T,Y)\)</span> containing the pairs</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
 fu\sim_T gu\qquad(u:T\to X).
 \tag{4.2}
 \]">\[
@@ -377,7 +377,7 @@ fu\sim_T gu\qquad(u:T\to X).
 \]</span>
 <p>More explicitly, <span class="math" data-tex="\(a\sim_T a&#x27;\)">\(a\sim_T a&#x27;\)</span> means that there is a finite list <span class="math" data-tex="\(a_0,\ldots,a_m:T\to Y\)">\(a_0,\ldots,a_m:T\to Y\)</span>, with <span class="math" data-tex="\(a_0=a\)">\(a_0=a\)</span> and <span class="math" data-tex="\(a_m=a&#x27;\)">\(a_m=a&#x27;\)</span>, such that each adjacent pair is <span class="math" data-tex="\((fu_i,gu_i)\)">\((fu_i,gu_i)\)</span> or <span class="math" data-tex="\((gu_i,fu_i)\)">\((gu_i,fu_i)\)</span> for some <span class="math" data-tex="\(u_i:T\to X\)">\(u_i:T\to X\)</span>. The integer <span class="math" data-tex="\(m\)">\(m\)</span> may be zero; in that case the endpoints are equal and no <span class="math" data-tex="\(u_i\)">\(u_i\)</span> is required. Length zero, reversal and concatenation give reflexivity, symmetry and transitivity. Every equivalence relation containing (4.2) contains every such list, so this description is exactly the generated relation. This is the complete finite-zigzag argument of <a href="colimits-as-connected-components.html#1-identify-every-transported-element">Colimits as connected components, Section 1</a>.</p>
 <p>Precomposition preserves the relation. Indeed a generating pair at <span class="math" data-tex="\(T\)">\(T\)</span>, precomposed by <span class="math" data-tex="\(v:T&#x27;\to T\)">\(v:T&#x27;\to T\)</span>, becomes <span class="math" data-tex="\((fuv,guv)\)">\((fuv,guv)\)</span>, a generating pair at <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>. Applying this observation to each edge, including the empty list, gives</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
 a\sim_T a&#x27;\ \Longrightarrow\ av\sim_{T&#x27;}a&#x27;v.
 \tag{4.3}
 \]">\[
@@ -385,7 +385,7 @@ a\sim_T a&#x27;\ \Longrightarrow\ av\sim_{T&#x27;}a&#x27;v.
 \tag{4.3}
 \]</span>
 <p>Consequently the quotient sets and their restrictions define a presheaf:</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 Q(T)=C(T,Y)/{\sim_T},\\
 Q(v)([a])=[av].
@@ -400,7 +400,7 @@ Q(v)([a])=[av].
 \]</span>
 <p>Equation (4.3) proves that the restriction is well-defined. Identity restrictions fix every class, and successive restrictions send <span class="math" data-tex="\([a]\)">\([a]\)</span> to <span class="math" data-tex="\([avw]\)">\([avw]\)</span>, as required for a contravariant functor. Each value is a set quotient of a Hom set, hence has the required size. The class maps <span class="math" data-tex="\(q_T(a)=[a]\)">\(q_T(a)=[a]\)</span> form a natural transformation <span class="math" data-tex="\(q:h_Y\to Q\)">\(q:h_Y\to Q\)</span>, and <span class="math" data-tex="\(q h_f=q h_g\)">\(q h_f=q h_g\)</span>.</p>
 <p>Here is its entire universal property. Let <span class="math" data-tex="\(S\)">\(S\)</span> be any presheaf and let <span class="math" data-tex="\(\rho:h_Y\to S\)">\(\rho:h_Y\to S\)</span> satisfy <span class="math" data-tex="\(\rho h_f=\rho h_g\)">\(\rho h_f=\rho h_g\)</span>. Then <span class="math" data-tex="\(\rho_T(fu)=\rho_T(gu)\)">\(\rho_T(fu)=\rho_T(gu)\)</span> for every generator. Its values agree along every finite zigzag. Thus</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
 \bar\rho_T([a])=\rho_T(a)
 \tag{4.5}
 \]">\[
@@ -410,7 +410,7 @@ Q(v)([a])=[av].
 <p>is well-defined. For <span class="math" data-tex="\(v:T&#x27;\to T\)">\(v:T&#x27;\to T\)</span>, the two naturality composites at <span class="math" data-tex="\([a]\)">\([a]\)</span> both equal <span class="math" data-tex="\(\rho_{T&#x27;}(av)\)">\(\rho_{T&#x27;}(av)\)</span>, by naturality of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.
 Hence <span class="math" data-tex="\(\bar\rho\)">\(\bar\rho\)</span> is natural and <span class="math" data-tex="\(\bar\rho q=\rho\)">\(\bar\rho q=\rho\)</span>. Every class has a representative, so these equations determine every component of <span class="math" data-tex="\(\bar\rho\)">\(\bar\rho\)</span> uniquely. If a Hom value is empty, its quotient is empty and the component factor is the unique empty function. This proves that <span class="math" data-tex="\(q\)">\(q\)</span> is a coequalizer in the presheaf category, with all its specified restrictions and factors. It instantiates the full set quotient proof in <a href="universal-forks-and-diagram-constructions.html#2-force-two-maps-to-agree">Universal forks, Section 2</a> and the arbitrary-base pointwise proof in <a href="colimits-as-connected-components.html#4-compute-presheaf-limits-and-colimits-pointwise">Colimits as connected components, Section 4</a>.</p>
 <p>Since <span class="math" data-tex="\(hf=hg\)">\(hf=hg\)</span>, postcomposition by <span class="math" data-tex="\(h\)">\(h\)</span> is constant on every generator and every zigzag. It therefore defines the specified comparison</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.6); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 \kappa:Q\longrightarrow h_Z,\\
 \kappa_T([a])=ha,\qquad\kappa q=h_h.
@@ -425,7 +425,7 @@ Hence <span class="math" data-tex="\(\bar\rho\)">\(\bar\rho\)</span> is natural 
 \]</span>
 <p>It is natural: the two routes along <span class="math" data-tex="\(v:T&#x27;\to T\)">\(v:T&#x27;\to T\)</span> send <span class="math" data-tex="\([a]\)">\([a]\)</span> to the same arrow <span class="math" data-tex="\(hav\)">\(hav\)</span>. Moreover, <span class="math" data-tex="\(h_h\)">\(h_h\)</span> is a coequalizer if and only if <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is an isomorphism. For the forward direction, its universal property gives <span class="math" data-tex="\(\lambda:h_Z\to Q\)">\(\lambda:h_Z\to Q\)</span> with <span class="math" data-tex="\(\lambda h_h=q\)">\(\lambda h_h=q\)</span>. Uniqueness for the coequalizers <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(h_h\)">\(h_h\)</span> gives <span class="math" data-tex="\(\lambda\kappa=1_Q\)">\(\lambda\kappa=1_Q\)</span> and <span class="math" data-tex="\(\kappa\lambda=1_{h_Z}\)">\(\kappa\lambda=1_{h_Z}\)</span>. For the reverse direction, transport the full factor (4.5) along the inverse of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>; uniqueness transports with it. Thus this is a comparison respecting the specified arrow out of <span class="math" data-tex="\(h_Y\)">\(h_Y\)</span>.</p>
 <p><strong>Theorem 4.1.</strong> The specified fork <span class="math" data-tex="\(h_X\rightrightarrows h_Y\xrightarrow{h_h}h_Z\)">\(h_X\rightrightarrows h_Y\xrightarrow{h_h}h_Z\)</span> is a coequalizer if and only if there is an arrow <span class="math" data-tex="\(s:Z\to Y\)">\(s:Z\to Y\)</span> such that</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.7); horizontal scroll when needed" data-tex="\[
 hs=1_Z,\qquad 1_Y\sim_Y sh.
 \tag{4.7}
 \]">\[
@@ -437,7 +437,7 @@ hs=1_Z,\qquad 1_Y\sim_Y sh.
 <p>These are identity data of the kind used in the <span class="unlinked">Yoneda identity-evaluation proof</span>. Now <span class="math" data-tex="\(\kappa_Y([1_Y])=h\)">\(\kappa_Y([1_Y])=h\)</span>, while
 <span class="math" data-tex="\(\kappa_Y([sh])=hsh=h\)">\(\kappa_Y([sh])=hsh=h\)</span>. Injectivity of <span class="math" data-tex="\(\kappa_Y\)">\(\kappa_Y\)</span> gives <span class="math" data-tex="\([1_Y]=[sh]\)">\([1_Y]=[sh]\)</span>, which is precisely <span class="math" data-tex="\(1_Y\sim_Y sh\)">\(1_Y\sim_Y sh\)</span>. The characterization after (4.2) supplies the asserted finite zigzag. When these endpoints are already equal, the relation can be witnessed by zero edges. Reflexivity supplies no arrow <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span>.</p>
 <p><strong>Proof of sufficiency.</strong> Assume (4.7). Precompose its zigzag by any <span class="math" data-tex="\(a:T\to Y\)">\(a:T\to Y\)</span>. Equation (4.3) gives <span class="math" data-tex="\(a\sim_T sha\)">\(a\sim_T sha\)</span>. Define</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.8); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 \nu_T:C(T,Z)\longrightarrow Q(T),\\
 \nu_T(b)=[sb].
@@ -451,7 +451,7 @@ hs=1_Z,\qquad 1_Y\sim_Y sh.
 \tag{4.8}
 \]</span>
 <p>The two inverse equations are</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.9); horizontal scroll when needed" data-tex="\[
 \begin{aligned}
 \kappa_T\nu_T(b)&amp;=hsb=b,\\
 \nu_T\kappa_T([a])&amp;=[sha]=[a].
@@ -465,7 +465,7 @@ hs=1_Z,\qquad 1_Y\sim_Y sh.
 \tag{4.9}
 \]</span>
 <p>The second uses the precomposed zigzag; it applies even when that zigzag has no edges. For every <span class="math" data-tex="\(v:T&#x27;\to T\)">\(v:T&#x27;\to T\)</span>,</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.10); horizontal scroll when needed" data-tex="\[
 \begin{aligned}
 Q(v)\nu_T(b)&amp;=[sbv],\\
 \nu_{T&#x27;}h_Z(v)(b)&amp;=[sbv].
@@ -480,7 +480,7 @@ Q(v)\nu_T(b)&amp;=[sbv],\\
 \]</span>
 <p>Thus <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is natural. Together with the naturality already proved for <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, (4.9) makes them inverse presheaf isomorphisms. The comparison criterion following (4.6) proves that the specified <span class="math" data-tex="\(h_h\)">\(h_h\)</span> is the coequalizer.</p>
 <p>The factor through <span class="math" data-tex="\(h_h\)">\(h_h\)</span> can also be seen directly, for every equalizing <span class="math" data-tex="\(\rho:h_Y\to S\)">\(\rho:h_Y\to S\)</span>. It is</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.11); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 \tau_T(b)=\rho_T(sb)\\
 (b:T\to Z).
@@ -496,7 +496,7 @@ Q(v)\nu_T(b)&amp;=[sbv],\\
 <p>For <span class="math" data-tex="\(v:T&#x27;\to T\)">\(v:T&#x27;\to T\)</span>, its naturality equation follows from
 <span class="math" data-tex="\(S(v)\rho_T(sb)=\rho_{T&#x27;}(sbv)\)">\(S(v)\rho_T(sb)=\rho_{T&#x27;}(sbv)\)</span>. Since <span class="math" data-tex="\(\rho_T\)">\(\rho_T\)</span> is constant on the generated relation, <span class="math" data-tex="\(a\sim_T sha\)">\(a\sim_T sha\)</span> gives
 <span class="math" data-tex="\(\tau_T(ha)=\rho_T(sha)=\rho_T(a)\)">\(\tau_T(ha)=\rho_T(sha)=\rho_T(a)\)</span>. Hence <span class="math" data-tex="\(\tau h_h=\rho\)">\(\tau h_h=\rho\)</span>. If <span class="math" data-tex="\(\tau&#x27;\)">\(\tau&#x27;\)</span> is any other such factor, then</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.12); horizontal scroll when needed" data-tex="\[
 \begin{aligned}
 \tau&#x27;_T(b)&amp;=\tau&#x27;_T(hsb)\\
 &amp;=\rho_T(sb)=\tau_T(b).
@@ -511,7 +511,7 @@ Q(v)\nu_T(b)&amp;=[sbv],\\
 \]</span>
 <p>This proves uniqueness at every object and therefore uniqueness as a natural transformation. Postcomposing <span class="math" data-tex="\(\rho\)">\(\rho\)</span> by a transformation <span class="math" data-tex="\(S\to S&#x27;\)">\(S\to S&#x27;\)</span> postcomposes (4.11) by the same transformation. The full universal correspondence is natural in its presheaf target. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <p><strong>The printed chain gives a sufficient condition.</strong> Exercise 2.25 asks for a section <span class="math" data-tex="\(s\)">\(s\)</span> and arrows <span class="math" data-tex="\(u_0,\ldots,u_n:Y\to X\)">\(u_0,\ldots,u_n:Y\to X\)</span>, where <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, satisfying</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.13); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 fu_0=1_Y,\\
 fu_k=gu_{k-1}\quad(1\leq k\leq n),\\
@@ -528,7 +528,7 @@ gu_n=sh.
 \]</span>
 <p>Starting at <span class="math" data-tex="\(1_Y=fu_0\)">\(1_Y=fu_0\)</span>, traverse the generator edge to <span class="math" data-tex="\(gu_0\)">\(gu_0\)</span>. If another arrow is present, the middle equation identifies this endpoint with <span class="math" data-tex="\(fu_1\)">\(fu_1\)</span>, and the next generator reaches <span class="math" data-tex="\(gu_1\)">\(gu_1\)</span>. Continuing gives a path ending at <span class="math" data-tex="\(gu_n=sh\)">\(gu_n=sh\)</span>. These are <span class="math" data-tex="\(n+1\)">\(n+1\)</span> generator edges, all traversed from an <span class="math" data-tex="\(f\)">\(f\)</span>-endpoint to its <span class="math" data-tex="\(g\)">\(g\)</span>-endpoint. Therefore (4.13), together with <span class="math" data-tex="\(hs=1_Z\)">\(hs=1_Z\)</span>, implies (4.7). Theorem 4.1 proves its sufficiency with the actual quotient comparisons, natural inverse and arbitrary-target factor above.</p>
 <p><strong>The printed necessity fails.</strong> Take the category of the two-element order <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span>. Its only nonidentity arrow is <span class="math" data-tex="\(e:0\to1\)">\(e:0\to1\)</span>, and there is no arrow <span class="math" data-tex="\(1\to0\)">\(1\to0\)</span>. Put</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.14); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 X=0,\qquad Y=Z=1,\\
 f=g=e,\qquad h=1_1.
@@ -580,7 +580,7 @@ f=g=e,\qquad h=1_1.
 <h3 id="exercise-2-descent-along-an-arrow-presheaf">Exercise 2 — descent along an arrow presheaf</h3>
 <p>On the category with one nonidentity arrow <span class="math" data-tex="\(t:0\to1\)">\(t:0\to1\)</span>, give a presheaf <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(A(0)=\{a,b\}\)">\(A(0)=\{a,b\}\)</span>, <span class="math" data-tex="\(A(1)=\{c,d,e\}\)">\(A(1)=\{c,d,e\}\)</span>, with restriction <span class="math" data-tex="\(c,d\mapsto a\)">\(c,d\mapsto a\)</span>, <span class="math" data-tex="\(e\mapsto b\)">\(e\mapsto b\)</span>. Let <span class="math" data-tex="\(B(0)=\{0,1\}\)">\(B(0)=\{0,1\}\)</span>, <span class="math" data-tex="\(B(1)=\{p,q\}\)">\(B(1)=\{p,q\}\)</span>, with <span class="math" data-tex="\(p\mapsto0\)">\(p\mapsto0\)</span>, <span class="math" data-tex="\(q\mapsto1\)">\(q\mapsto1\)</span>. Define <span class="math" data-tex="\(\alpha:A\to B\)">\(\alpha:A\to B\)</span> by <span class="math" data-tex="\(a\mapsto0\)">\(a\mapsto0\)</span>, <span class="math" data-tex="\(b\mapsto1\)">\(b\mapsto1\)</span>, <span class="math" data-tex="\(c,d\mapsto p\)">\(c,d\mapsto p\)</span>, <span class="math" data-tex="\(e\mapsto q\)">\(e\mapsto q\)</span>. Compute its kernel pair and prove its specified coequalizer property for every presheaf target.</p>
 <p><strong>Solution.</strong> Naturality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> follows by checking <span class="math" data-tex="\(c,d,e\)">\(c,d,e\)</span>: either route sends <span class="math" data-tex="\(c,d\)">\(c,d\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>, and <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. Both components are surjective, so <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is epic by Section 2. The kernel pair has</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 K(0)=\{(a,a),(b,b)\},\\
 K(1)=\\
@@ -599,7 +599,7 @@ K(1)=\\
 \]</span>
 <p>Its restriction sends the first four pairs at <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\((a,a)\)">\((a,a)\)</span> and the last to <span class="math" data-tex="\((b,b)\)">\((b,b)\)</span>. The two projections select the two coordinates and are natural.</p>
 <p>Take any presheaf <span class="math" data-tex="\(S\)">\(S\)</span> and natural <span class="math" data-tex="\(\rho:A\to S\)">\(\rho:A\to S\)</span> equalizing the projections. Its only additional equality beyond reflexivity is <span class="math" data-tex="\(\rho_1(c)=\rho_1(d)\)">\(\rho_1(c)=\rho_1(d)\)</span>. Define <span class="math" data-tex="\(\tau:B\to S\)">\(\tau:B\to S\)</span> by</p>
-<span class="math math-display" data-tex="\[
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
 \begin{gathered}
 \tau_0(0)=\rho_0(a),\qquad \tau_0(1)=\rho_0(b),\\
 \tau_1(p)=\rho_1(c)=\rho_1(d),\\

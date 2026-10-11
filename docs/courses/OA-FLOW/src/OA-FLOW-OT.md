@@ -1,6 +1,6 @@
 # Modular restriction and cocycle preservation for operator-valued weights
 
-*Fresh local reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(N\subset M\) be a unital inclusion of arbitrary von Neumann algebras, and let \(T:M_+\to\widehat N_+\) be a faithful normal semifinite operator-valued weight. Thus \(T\) is additive, positively homogeneous, preserves increasing positive suprema, and satisfies \(T(b^*xb)=b^*T(x)b\) for \(b\in N\). Faithfulness means \(T(x)=0\Rightarrow x=0\). Semifiniteness means that
 \[

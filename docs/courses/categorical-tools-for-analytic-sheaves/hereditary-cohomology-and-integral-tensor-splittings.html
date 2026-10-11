@@ -1,0 +1,473 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hereditary cohomology and integral tensor splittings</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="hereditary-cohomology-and-integral-tensor-splittings">Hereditary cohomology and integral tensor splittings</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p><strong>Level:</strong> advanced. <strong>Prerequisites:</strong> abelian categories, cochain complexes, quasi-isomorphisms, exact Hom sequences and bounded derived tensor.</p>
+<p>The cohomology of a complex usually forgets how its degrees are joined together. When every second extension group vanishes, those joins can be split in the derived category. Over the integers this also gives an explicit tensor calculation: ordinary tensor products occupy one degree, and first Tor groups occupy the preceding degree. We construct both splittings, retain their signs, and explain their dependence on choices.</p>
+<h2 id="conventions-and-prerequisites">Conventions and prerequisites</h2>
+<p>Work in a fixed Grothendieck universe containing the integers, with the axiom of choice; use a larger ambient universe for localizations when required. All categories are locally small in the stated universe. Complexes are cohomological, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+X[t]^i=X^{i+t},\qquad d_{X[t]}^i=(-1)^t d_X^{i+t},\qquad
+\operatorname{Ext}^j(A,B)=\operatorname{Hom}_{D(\mathcal A)}(A,B[j]).
+\tag{0.1}
+\]">\[
+X[t]^i=X^{i+t},\qquad d_{X[t]}^i=(-1)^t d_X^{i+t},\qquad
+\operatorname{Ext}^j(A,B)=\operatorname{Hom}_{D(\mathcal A)}(A,B[j]).
+\tag{0.1}
+\]</span>
+<p>An object placed in degree <span class="math" data-tex="\(r\)">\(r\)</span> is therefore <span class="math" data-tex="\(A[-r]\)">\(A[-r]\)</span>. An object of <span class="math" data-tex="\(D^+(\mathcal A)\)">\(D^+(\mathcal A)\)</span> has cohomology zero in sufficiently negative degrees; an object of <span class="math" data-tex="\(D^-(\mathcal A)\)">\(D^-(\mathcal A)\)</span> has cohomology zero in sufficiently positive degrees. Smart truncations give representatives with the corresponding term bounds.</p>
+<p>The following three lessons supply the exact interfaces we use. <a href="injective-tests-and-finite-homological-dimension.html#1-testing-a-single-injective-or-projective-object">Injective tests and finite homological dimension, Sections 1–4</a> proves the Ext criteria, their exact-sequence dimension shifts, and the finite-resolution interpretation. <a href="relative-replacements-and-finite-resolution-bounds.html#2-two-bounded-below-replacement-criteria">Relative replacements and finite resolution bounds, Sections 1–4</a> constructs bounded-below injective replacements and proves that maps into such complexes are computed in the homotopy category. <a href="derived-hom-and-bounded-resolution-pairs.html#7-projectives-and-derived-tensor-on-both-module-sides">Derived Hom and bounded resolution pairs, Sections 1–7</a> constructs bounded-above free replacements and balanced derived tensor, including its actual single-replacement comparison maps. Its normalized Hom complex computes Ext from a projective resolution to a heart object.</p>
+<p>Freely accessible comparisons are <a href="https://stacks.math.columbia.edu/tag/059Y">Stacks, Tag 059Y</a>, which records the free-subgroup fact used in Section 3, <a href="https://stacks.math.columbia.edu/tag/01D6">Tag 01D6</a>, for divisible and injective abelian groups, and <a href="https://stacks.math.columbia.edu/tag/013K">Tag 013K</a>, for injective resolutions. The arguments below give the subgroup and splitting constructions explicitly.</p>
+<h2 id="1-hereditary-quotients-of-injective-objects">1. Hereditary quotients of injective objects</h2>
+<p>Call an abelian category <strong>hereditary</strong> here if</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^j_{\mathcal A}(A,B)=0
+\quad\text{for all objects }A,B\text{ and all }j\geq2.
+\tag{1.1}
+\]">\[
+\operatorname{Ext}^j_{\mathcal A}(A,B)=0
+\quad\text{for all objects }A,B\text{ and all }j\geq2.
+\tag{1.1}
+\]</span>
+<p>By the single-degree criterion in the injective-tests prerequisite, it is equivalent to require just degree two to vanish for every pair. Enough injectives is a separate assumption.</p>
+<p><strong>Lemma 1.1.</strong> In a hereditary abelian category, every quotient of an injective object is injective.</p>
+<p><strong>Proof.</strong> Write the quotient as a short exact row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow K\longrightarrow I\longrightarrow B\longrightarrow0,
+\qquad I\text{ injective}.
+\tag{1.2}
+\]">\[
+0\longrightarrow K\longrightarrow I\longrightarrow B\longrightarrow0,
+\qquad I\text{ injective}.
+\tag{1.2}
+\]</span>
+<p>For every <span class="math" data-tex="\(T\)">\(T\)</span>, its exact Hom sequence has the segment</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^1(T,I)\longrightarrow
+\operatorname{Ext}^1(T,B)\longrightarrow
+\operatorname{Ext}^2(T,K).
+\tag{1.3}
+\]">\[
+\operatorname{Ext}^1(T,I)\longrightarrow
+\operatorname{Ext}^1(T,B)\longrightarrow
+\operatorname{Ext}^2(T,K).
+\tag{1.3}
+\]</span>
+<p>The outside groups vanish by injectivity and (1.1). Thus <span class="math" data-tex="\(\operatorname{Ext}^1(T,B)=0\)">\(\operatorname{Ext}^1(T,B)=0\)</span> for every <span class="math" data-tex="\(T\)">\(T\)</span>. The injective criterion says precisely that <span class="math" data-tex="\(B\)">\(B\)</span> is injective. This uses the quotient with its actual kernel; it does not require the kernel to be injective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also need the elementary closure under direct summands. If <span class="math" data-tex="\(J\)">\(J\)</span> is a retract of an injective <span class="math" data-tex="\(I\)">\(I\)</span>, compose a map into <span class="math" data-tex="\(J\)">\(J\)</span> with its inclusion into <span class="math" data-tex="\(I\)">\(I\)</span>, extend there, and then compose with the retraction. This extends the original map into <span class="math" data-tex="\(J\)">\(J\)</span>. Finite biproducts of injectives are injective because their finitely many component maps extend separately. No closure under infinite sums is being assumed.</p>
+<h2 id="2-splitting-every-bounded-below-complex-into-its-cohomology">2. Splitting every bounded-below complex into its cohomology</h2>
+<p><strong>Theorem 2.1.</strong> Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be hereditary and have enough injectives. For every <span class="math" data-tex="\(X\in D^+(\mathcal A)\)">\(X\in D^+(\mathcal A)\)</span>, form the complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+C(X)^r=H^rX,\qquad d_{C(X)}=0.
+\tag{2.1}
+\]">\[
+C(X)^r=H^rX,\qquad d_{C(X)}=0.
+\tag{2.1}
+\]</span>
+<p>It is bounded below. There is a generally noncanonical isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+X\simeq C(X)\qquad\text{in }D^+(\mathcal A).
+\tag{2.2}
+\]">\[
+X\simeq C(X)\qquad\text{in }D^+(\mathcal A).
+\tag{2.2}
+\]</span>
+<p>Moreover <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>, with the degree inclusions, is the coproduct of the objects <span class="math" data-tex="\(H^rX[-r]\)">\(H^rX[-r]\)</span> <strong>in <span class="math" data-tex="\(D^+(\mathcal A)\)">\(D^+(\mathcal A)\)</span></strong>. This coproduct assertion needs neither infinite coproducts in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> nor a coproduct assertion in the unbounded derived category.</p>
+<p><strong>Proof of the splitting.</strong> Choose a term-bounded-below representative <span class="math" data-tex="\(X_0\)">\(X_0\)</span> and a quasi-isomorphism <span class="math" data-tex="\(q:X_0\to I\)">\(q:X_0\to I\)</span> to a bounded-below injective complex, by the relative-replacement theorem. Put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+B^r=\operatorname{im}d_I^{r-1},\qquad Z^r=\ker d_I^r.
+\tag{2.3}
+\]">\[
+B^r=\operatorname{im}d_I^{r-1},\qquad Z^r=\ker d_I^r.
+\tag{2.3}
+\]</span>
+<p>Each <span class="math" data-tex="\(B^r\)">\(B^r\)</span> is a quotient of <span class="math" data-tex="\(I^{r-1}\)">\(I^{r-1}\)</span>, hence is injective by Lemma 1.1. This includes the zero boundaries below the lower bound. Its monomorphism into <span class="math" data-tex="\(I^r\)">\(I^r\)</span> therefore has a retraction <span class="math" data-tex="\(\rho_r:I^r\to B^r\)">\(\rho_r:I^r\to B^r\)</span>: extend the identity of <span class="math" data-tex="\(B^r\)">\(B^r\)</span> across that monomorphism. Let <span class="math" data-tex="\(J^r=\ker\rho_r\)">\(J^r=\ker\rho_r\)</span>. The split exact row gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+I^r\simeq B^r\oplus J^r,
+\qquad J^r\text{ injective}.
+\tag{2.4}
+\]">\[
+I^r\simeq B^r\oplus J^r,
+\qquad J^r\text{ injective}.
+\tag{2.4}
+\]</span>
+<p>Because <span class="math" data-tex="\(d_I^r\)">\(d_I^r\)</span> kills <span class="math" data-tex="\(B^r\)">\(B^r\)</span>, its restriction to <span class="math" data-tex="\(J^r\)">\(J^r\)</span> has the same image as the whole differential. Its factorization through that image is an epimorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+\delta_r:J^r\twoheadrightarrow B^{r+1}.
+\tag{2.5}
+\]">\[
+\delta_r:J^r\twoheadrightarrow B^{r+1}.
+\tag{2.5}
+\]</span>
+<p>Let <span class="math" data-tex="\(K^r=\ker\delta_r\)">\(K^r=\ker\delta_r\)</span>. Equation (2.4) identifies <span class="math" data-tex="\(Z^r\)">\(Z^r\)</span> with <span class="math" data-tex="\(B^r\oplus K^r\)">\(B^r\oplus K^r\)</span>. Quotienting by the first summand gives an isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.6); horizontal scroll when needed" data-tex="\[
+K^r\xrightarrow{\sim}Z^r/B^r=H^rI.
+\tag{2.6}
+\]">\[
+K^r\xrightarrow{\sim}Z^r/B^r=H^rI.
+\tag{2.6}
+\]</span>
+<p>Use its inverse and the inclusion <span class="math" data-tex="\(K^r\hookrightarrow J^r\hookrightarrow I^r\)">\(K^r\hookrightarrow J^r\hookrightarrow I^r\)</span> to define <span class="math" data-tex="\(v^r:H^rI\to I^r\)">\(v^r:H^rI\to I^r\)</span>. Its image is in the cycle kernel, so the components form a chain map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.7); horizontal scroll when needed" data-tex="\[
+v:C(I)\longrightarrow I.
+\tag{2.7}
+\]">\[
+v:C(I)\longrightarrow I.
+\tag{2.7}
+\]</span>
+<p>By (2.6), <span class="math" data-tex="\(H^rv\)">\(H^rv\)</span> is the identity of <span class="math" data-tex="\(H^rI\)">\(H^rI\)</span> for every integer <span class="math" data-tex="\(r\)">\(r\)</span>. Thus <span class="math" data-tex="\(v\)">\(v\)</span> is a quasi-isomorphism. The isomorphisms <span class="math" data-tex="\(H^rq:H^rX_0\to H^rI\)">\(H^rq:H^rX_0\to H^rI\)</span> give a chain isomorphism <span class="math" data-tex="\(C(X)\to C(I)\)">\(C(X)\to C(I)\)</span>. The two quasi-isomorphisms into <span class="math" data-tex="\(I\)">\(I\)</span> prove (2.2).</p>
+<p>The construction can also be viewed as two-term resolution blocks. Define <span class="math" data-tex="\(E_r\)">\(E_r\)</span> by the exact coresolution</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.8); horizontal scroll when needed" data-tex="\[
+0\longrightarrow H^rI\xrightarrow{v^r}J^r
+\xrightarrow{\delta_r}B^{r+1}\longrightarrow0,
+\tag{2.8}
+\]">\[
+0\longrightarrow H^rI\xrightarrow{v^r}J^r
+\xrightarrow{\delta_r}B^{r+1}\longrightarrow0,
+\tag{2.8}
+\]</span>
+<p>placing <span class="math" data-tex="\(J^r\)">\(J^r\)</span> in degree <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(B^{r+1}\)">\(B^{r+1}\)</span> in degree <span class="math" data-tex="\(r+1\)">\(r+1\)</span>. At degree <span class="math" data-tex="\(r\)">\(r\)</span>, the only blocks present are <span class="math" data-tex="\(E_r\)">\(E_r\)</span> and <span class="math" data-tex="\(E_{r-1}\)">\(E_{r-1}\)</span>. Equations (2.4)–(2.5) identify this degreewise finite assembly with <span class="math" data-tex="\(I\)">\(I\)</span>, including its differential. If the same coresolution is first placed in degrees zero and one and then shifted by <span class="math" data-tex="\([-r]\)">\([-r]\)</span>, its differential becomes <span class="math" data-tex="\((-1)^r\delta_r\)">\((-1)^r\delta_r\)</span>. The chain isomorphism to <span class="math" data-tex="\(E_r\)">\(E_r\)</span> is identity in degree <span class="math" data-tex="\(r\)">\(r\)</span> and multiplication by <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span> in degree <span class="math" data-tex="\(r+1\)">\(r+1\)</span>. These signs reconcile the resolution notation with the actual complex.</p>
+<p><strong>Proof of the coproduct property.</strong> There is a common lower bound <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(H^rX=0\)">\(H^rX=0\)</span> for <span class="math" data-tex="\(r&lt;a\)">\(r&lt;a\)</span>. The complex (2.1) exists simply by specifying its single object in each degree. For <span class="math" data-tex="\(Y\in D^+(\mathcal A)\)">\(Y\in D^+(\mathcal A)\)</span>, choose one bounded-below injective replacement <span class="math" data-tex="\(Y\to T\)">\(Y\to T\)</span>. The K-injective Hom test in the relative-replacement prerequisite gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.9); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{D^+}(C(X),Y)
+\simeq\operatorname{Hom}_{K}(C(X),T).
+\tag{2.9}
+\]">\[
+\operatorname{Hom}_{D^+}(C(X),Y)
+\simeq\operatorname{Hom}_{K}(C(X),T).
+\tag{2.9}
+\]</span>
+<p>A chain map from <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> to <span class="math" data-tex="\(T\)">\(T\)</span> is exactly a family of maps <span class="math" data-tex="\(H^rX\to T^r\)">\(H^rX\to T^r\)</span> killed by <span class="math" data-tex="\(d_T^r\)">\(d_T^r\)</span>. A homotopy between two such maps is exactly a family <span class="math" data-tex="\(h^r:H^rX\to T^{r-1}\)">\(h^r:H^rX\to T^{r-1}\)</span> with difference <span class="math" data-tex="\(d_T^{r-1}h^r\)">\(d_T^{r-1}h^r\)</span>. The equations for distinct <span class="math" data-tex="\(r\)">\(r\)</span> do not interact, because the source differential is zero. Consequently restriction to the degree inclusions gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.10); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{K}(C(X),T)
+\xrightarrow{\sim}
+\prod_{r\in\mathbb Z}
+\operatorname{Hom}_{K}(H^rX[-r],T).
+\tag{2.10}
+\]">\[
+\operatorname{Hom}_{K}(C(X),T)
+\xrightarrow{\sim}
+\prod_{r\in\mathbb Z}
+\operatorname{Hom}_{K}(H^rX[-r],T).
+\tag{2.10}
+\]</span>
+<p>For surjectivity, choose representatives of the homotopy classes independently and assemble their components. For injectivity, choose the homotopies independently and assemble them. These are choices in sets in the fixed universe, and there is only one source object in each degree. Applying the same K-injective Hom test to each factor gives the required product of derived Hom sets. The map is restriction along the stated inclusions, so is natural in <span class="math" data-tex="\(Y\)">\(Y\)</span>. This proves the universal property.</p>
+<p>Thus one may write <span class="math" data-tex="\(C(X)=\bigoplus_r H^rX[-r]\)">\(C(X)=\bigoplus_r H^rX[-r]\)</span> in <span class="math" data-tex="\(D^+\)">\(D^+\)</span>, with precisely that meaning. The retractions in (2.4) are choices; the resulting isomorphism (2.2) is not asserted to be natural. Exercise 2 supplies a concrete obstruction to any natural choice in abelian groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-why-abelian-groups-have-homological-dimension-one">3. Why abelian groups have homological dimension one</h2>
+<p>The tensor calculation will apply to arbitrary abelian groups, including groups whose free presentations have uncountable rank. We give the needed rank-independent argument.</p>
+<p><strong>Lemma 3.1.</strong> Every subgroup of a free abelian group is free.</p>
+<p><strong>Proof.</strong> Well-order a basis and write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+F=\bigoplus_{\alpha&lt;\kappa}\mathbb Ze_\alpha,
+\qquad F_\alpha=\bigoplus_{\beta&lt;\alpha}\mathbb Ze_\beta,
+\qquad L_\alpha=L\cap F_\alpha
+\tag{3.1}
+\]">\[
+F=\bigoplus_{\alpha&lt;\kappa}\mathbb Ze_\alpha,
+\qquad F_\alpha=\bigoplus_{\beta&lt;\alpha}\mathbb Ze_\beta,
+\qquad L_\alpha=L\cap F_\alpha
+\tag{3.1}
+\]</span>
+<p>for a subgroup <span class="math" data-tex="\(L\subset F\)">\(L\subset F\)</span>. The coefficient at <span class="math" data-tex="\(e_\alpha\)">\(e_\alpha\)</span> maps <span class="math" data-tex="\(L_{\alpha+1}\)">\(L_{\alpha+1}\)</span> to a subgroup of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, with kernel <span class="math" data-tex="\(L_\alpha\)">\(L_\alpha\)</span>. Every subgroup of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span> for a unique integer <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>: for a nonzero subgroup choose its least positive element and apply division with remainder.</p>
+<p>If the coefficient image is zero, <span class="math" data-tex="\(L_{\alpha+1}=L_\alpha\)">\(L_{\alpha+1}=L_\alpha\)</span>. Otherwise let its positive generator be <span class="math" data-tex="\(d_\alpha\)">\(d_\alpha\)</span>, and choose <span class="math" data-tex="\(l_\alpha\in L_{\alpha+1}\)">\(l_\alpha\in L_{\alpha+1}\)</span> with that coefficient. For each <span class="math" data-tex="\(l\in L_{\alpha+1}\)">\(l\in L_{\alpha+1}\)</span>, its coefficient is <span class="math" data-tex="\(m d_\alpha\)">\(m d_\alpha\)</span> for a unique integer <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(l-m l_\alpha\)">\(l-m l_\alpha\)</span> belongs to <span class="math" data-tex="\(L_\alpha\)">\(L_\alpha\)</span>. A nonzero multiple of <span class="math" data-tex="\(l_\alpha\)">\(l_\alpha\)</span> has nonzero <span class="math" data-tex="\(e_\alpha\)">\(e_\alpha\)</span>-coefficient. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+L_{\alpha+1}=L_\alpha\oplus\mathbb Zl_\alpha
+\tag{3.2}
+\]">\[
+L_{\alpha+1}=L_\alpha\oplus\mathbb Zl_\alpha
+\tag{3.2}
+\]</span>
+<p>at every nonzero-image stage. At a limit ordinal <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, finite support gives <span class="math" data-tex="\(F_\lambda=\bigcup_{\alpha&lt;\lambda}F_\alpha\)">\(F_\lambda=\bigcup_{\alpha&lt;\lambda}F_\alpha\)</span>, and therefore <span class="math" data-tex="\(L_\lambda=\bigcup_{\alpha&lt;\lambda}L_\alpha\)">\(L_\lambda=\bigcup_{\alpha&lt;\lambda}L_\alpha\)</span>. The same observation applies at a limit final index <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Transfinite induction using (3.2) now shows that the chosen <span class="math" data-tex="\(l_\alpha\)">\(l_\alpha\)</span>'s span <span class="math" data-tex="\(L\)">\(L\)</span>. They are independent: a nonzero finite linear combination has a largest index with nonzero coefficient, and its coefficient at the corresponding <span class="math" data-tex="\(e_\alpha\)">\(e_\alpha\)</span> cannot vanish. This is a basis of <span class="math" data-tex="\(L\)">\(L\)</span>, without a countability assumption. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every abelian group <span class="math" data-tex="\(M\)">\(M\)</span> is the quotient of the free group <span class="math" data-tex="\(F_0\)">\(F_0\)</span> on its underlying set, by the map taking its basis element <span class="math" data-tex="\(e_m\)">\(e_m\)</span> to <span class="math" data-tex="\(m\)">\(m\)</span>. Its kernel <span class="math" data-tex="\(F_1\)">\(F_1\)</span> is free by Lemma 3.1. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+0\longrightarrow F_1\xrightarrow{a}F_0\longrightarrow M\longrightarrow0
+\tag{3.3}
+\]">\[
+0\longrightarrow F_1\xrightarrow{a}F_0\longrightarrow M\longrightarrow0
+\tag{3.3}
+\]</span>
+<p>is a length-one free resolution. A free group is projective: lift a map across an epimorphism by choosing a lift for each basis image. The projective criterion in the injective-tests prerequisite therefore shows that all second and higher Ext groups vanish. Alternatively the normalized Hom complex of (3.3), placed in degrees minus one and zero, has terms only in degrees zero and one when the target is a heart object; the derived-Hom comparison identifies its cohomology with Ext. For <span class="math" data-tex="\(M=N=\mathbb Z/2\)">\(M=N=\mathbb Z/2\)</span>, that complex is <span class="math" data-tex="\(\mathbb Z/2\xrightarrow{0}\mathbb Z/2\)">\(\mathbb Z/2\xrightarrow{0}\mathbb Z/2\)</span>. Its first cohomology is nonzero. The homological dimension is consequently exactly one.</p>
+<p>To apply Theorem 2.1 in this category, we also verify enough injectives. An abelian group <span class="math" data-tex="\(J\)">\(J\)</span> is <strong>divisible</strong> if multiplication by every positive integer is surjective. If <span class="math" data-tex="\(J\)">\(J\)</span> is injective, extend the map <span class="math" data-tex="\(m\mathbb Z\to J\)">\(m\mathbb Z\to J\)</span> sending <span class="math" data-tex="\(m\)">\(m\)</span> to a prescribed <span class="math" data-tex="\(x\)">\(x\)</span> across <span class="math" data-tex="\(m\mathbb Z\subset\mathbb Z\)">\(m\mathbb Z\subset\mathbb Z\)</span>. Its value on one is a solution of <span class="math" data-tex="\(m y=x\)">\(m y=x\)</span>, proving divisibility.</p>
+<p>Conversely take a map <span class="math" data-tex="\(g:A\to J\)">\(g:A\to J\)</span> with <span class="math" data-tex="\(A\subset B\)">\(A\subset B\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> divisible. Order its partial extensions by extension. Unions of chains are compatible extensions, so Zorn's lemma supplies a maximal one, still denoted <span class="math" data-tex="\(g:A&#x27;\to J\)">\(g:A&#x27;\to J\)</span>. If <span class="math" data-tex="\(b\in B\setminus A&#x27;\)">\(b\in B\setminus A&#x27;\)</span>, the integers <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(q b\in A&#x27;\)">\(q b\in A&#x27;\)</span> form an ideal <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span>. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, set <span class="math" data-tex="\(y=0\)">\(y=0\)</span>; otherwise choose <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(d y=g(d b)\)">\(d y=g(d b)\)</span>. The formula</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+g&#x27;(a+q b)=g(a)+q y\qquad(a\in A&#x27;,\ q\in\mathbb Z)
+\tag{3.4}
+\]">\[
+g&#x27;(a+q b)=g(a)+q y\qquad(a\in A&#x27;,\ q\in\mathbb Z)
+\tag{3.4}
+\]</span>
+<p>is well-defined. Indeed, equality of two presentations gives <span class="math" data-tex="\((q-q&#x27;)b\in A&#x27;\)">\((q-q&#x27;)b\in A&#x27;\)</span>; if <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, write <span class="math" data-tex="\(q-q&#x27;=t d\)">\(q-q&#x27;=t d\)</span> and use <span class="math" data-tex="\(g(t d b)=t d y\)">\(g(t d b)=t d y\)</span>, while if <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, then <span class="math" data-tex="\(q=q&#x27;\)">\(q=q&#x27;\)</span>. Formula (3.4) strictly extends the maximal partial map, a contradiction. Thus divisible groups are injective.</p>
+<p>The group <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span> is divisible, since a representative can be divided by any positive integer. Its characters detect nonzero elements of any group <span class="math" data-tex="\(G\)">\(G\)</span>. On a cyclic subgroup generated by an element of finite order <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>, send the generator to <span class="math" data-tex="\(1/m+\mathbb Z\)">\(1/m+\mathbb Z\)</span>. On an infinite cyclic subgroup, send it to <span class="math" data-tex="\(1/2+\mathbb Z\)">\(1/2+\mathbb Z\)</span>. These characters extend to <span class="math" data-tex="\(G\)">\(G\)</span> by injectivity. Evaluation is therefore a monomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+G\longrightarrow
+\prod_{\chi\in\operatorname{Hom}(G,\mathbb Q/\mathbb Z)}\mathbb Q/\mathbb Z.
+\tag{3.5}
+\]">\[
+G\longrightarrow
+\prod_{\chi\in\operatorname{Hom}(G,\mathbb Q/\mathbb Z)}\mathbb Q/\mathbb Z.
+\tag{3.5}
+\]</span>
+<p>The product is injective, since each coordinate of a map extends across a monomorphism and the coordinate extensions assemble into a product map. Its index set and product belong to the fixed universe. This proves enough injectives, and completes all hypotheses for Theorem 2.1 in abelian groups.</p>
+<h2 id="4-free-resolution-blocks-for-a-bounded-above-complex">4. Free resolution blocks for a bounded-above complex</h2>
+<p>For tensor we use bounded-above free complexes. Choose a free replacement <span class="math" data-tex="\(p:P\to X\)">\(p:P\to X\)</span> for <span class="math" data-tex="\(X\in D^-(\mathsf{Ab})\)">\(X\in D^-(\mathsf{Ab})\)</span>, with <span class="math" data-tex="\(P^i=0\)">\(P^i=0\)</span> for <span class="math" data-tex="\(i&gt;u\)">\(i&gt;u\)</span>. The construction and incoming comparison maps are in Section 7 of the derived-Hom prerequisite. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+Z^r=\ker d_P^r,\qquad B^r=\operatorname{im}d_P^{r-1}.
+\tag{4.1}
+\]">\[
+Z^r=\ker d_P^r,\qquad B^r=\operatorname{im}d_P^{r-1}.
+\tag{4.1}
+\]</span>
+<p>Both are subgroups of free groups, so are free by Lemma 3.1. In the exact row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow Z^r\longrightarrow P^r
+\xrightarrow{\bar d_P^r}B^{r+1}\longrightarrow0,
+\tag{4.2}
+\]">\[
+0\longrightarrow Z^r\longrightarrow P^r
+\xrightarrow{\bar d_P^r}B^{r+1}\longrightarrow0,
+\tag{4.2}
+\]</span>
+<p>choose a section <span class="math" data-tex="\(s_r\)">\(s_r\)</span> of the epimorphism, using projectivity of <span class="math" data-tex="\(B^{r+1}\)">\(B^{r+1}\)</span>. The isomorphism <span class="math" data-tex="\((z,b)\mapsto z+s_r(b)\)">\((z,b)\mapsto z+s_r(b)\)</span> identifies <span class="math" data-tex="\(P^r\)">\(P^r\)</span> with <span class="math" data-tex="\(Z^r\oplus B^{r+1}\)">\(Z^r\oplus B^{r+1}\)</span>. Under these identifications the differential is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+d_P^r(z,b)=(\iota_{r+1}b,0),
+\qquad \iota_{r+1}:B^{r+1}\hookrightarrow Z^{r+1}.
+\tag{4.3}
+\]">\[
+d_P^r(z,b)=(\iota_{r+1}b,0),
+\qquad \iota_{r+1}:B^{r+1}\hookrightarrow Z^{r+1}.
+\tag{4.3}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(d_P^r z=0\)">\(d_P^r z=0\)</span>, and <span class="math" data-tex="\(d_P^rs_r(b)\)">\(d_P^rs_r(b)\)</span> is the actual inclusion of its image <span class="math" data-tex="\(B^{r+1}\)">\(B^{r+1}\)</span> into <span class="math" data-tex="\(P^{r+1}\)">\(P^{r+1}\)</span>. That image lies in <span class="math" data-tex="\(Z^{r+1}\)">\(Z^{r+1}\)</span>, by square zero, so has no second coordinate in the next decomposition.</p>
+<p>For every <span class="math" data-tex="\(r\)">\(r\)</span>, let <span class="math" data-tex="\(E_r\)">\(E_r\)</span> be the two-term complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+B^r\xrightarrow{\iota_r}Z^r
+\quad\text{in degrees }r-1,r.
+\tag{4.4}
+\]">\[
+B^r\xrightarrow{\iota_r}Z^r
+\quad\text{in degrees }r-1,r.
+\tag{4.4}
+\]</span>
+<p>The quotient <span class="math" data-tex="\(Z^r\to H^rP\)">\(Z^r\to H^rP\)</span> is an augmentation to <span class="math" data-tex="\(H^rP[-r]\)">\(H^rP[-r]\)</span>, and is a quasi-isomorphism. At degree <span class="math" data-tex="\(k\)">\(k\)</span>, only <span class="math" data-tex="\(E_k\)">\(E_k\)</span> and <span class="math" data-tex="\(E_{k+1}\)">\(E_{k+1}\)</span> contribute, with terms <span class="math" data-tex="\(Z^k\)">\(Z^k\)</span> and <span class="math" data-tex="\(B^{k+1}\)">\(B^{k+1}\)</span>. Equation (4.3) proves a chain isomorphism between their degreewise finite assembly and <span class="math" data-tex="\(P\)">\(P\)</span>. Blocks above <span class="math" data-tex="\(u\)">\(u\)</span> are zero, since <span class="math" data-tex="\(P^{u+1}=0\)">\(P^{u+1}=0\)</span> also forces <span class="math" data-tex="\(B^{u+1}=0\)">\(B^{u+1}=0\)</span>.</p>
+<p>For signs, let <span class="math" data-tex="\(A_r\)">\(A_r\)</span> denote the ordinary free resolution <span class="math" data-tex="\(B^r\to Z^r\)">\(B^r\to Z^r\)</span> in degrees minus one and zero. The complex <span class="math" data-tex="\(A_r[-r]\)">\(A_r[-r]\)</span> has differential <span class="math" data-tex="\((-1)^r\iota_r\)">\((-1)^r\iota_r\)</span>. Its chain isomorphism to <span class="math" data-tex="\(E_r\)">\(E_r\)</span> multiplies degree <span class="math" data-tex="\(r-1\)">\(r-1\)</span> by <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span> and degree <span class="math" data-tex="\(r\)">\(r\)</span> by one. It commutes with the augmentation to <span class="math" data-tex="\(H^rP[-r]\)">\(H^rP[-r]\)</span>. This convention will be used for the tensor shifts.</p>
+<p>Every assertion so far is about the actual bounded-above complex and two summands per degree. An unrestricted infinite sum of resolutions is not required to make (4.3)–(4.4) meaningful.</p>
+<h2 id="5-a-tensor-pair-and-its-shift-signs">5. A tensor pair and its shift signs</h2>
+<p>For two abelian groups <span class="math" data-tex="\(M,N\)">\(M,N\)</span>, choose free resolutions <span class="math" data-tex="\(A\to M\)">\(A\to M\)</span>, <span class="math" data-tex="\(B\to N\)">\(B\to N\)</span> in degrees minus one and zero as in (3.3). The total differential on a term <span class="math" data-tex="\(A^i\otimes B^j\)">\(A^i\otimes B^j\)</span> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+D=d_A\otimes1+(-1)^i1\otimes d_B.
+\tag{5.1}
+\]">\[
+D=d_A\otimes1+(-1)^i1\otimes d_B.
+\tag{5.1}
+\]</span>
+<p>The two mixed terms have opposite coefficients, while the two square terms vanish, so <span class="math" data-tex="\(D^2=0\)">\(D^2=0\)</span>. By the single-replacement comparison of the derived-Hom prerequisite, the augmentation induces a quasi-isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Tot}(A\otimes B)\longrightarrow A\otimes N.
+\tag{5.2}
+\]">\[
+\operatorname{Tot}(A\otimes B)\longrightarrow A\otimes N.
+\tag{5.2}
+\]</span>
+<p>The comparison is the actual map <span class="math" data-tex="\(1_A\otimes(B\to N)\)">\(1_A\otimes(B\to N)\)</span>, with the total signs in (5.1). Its quasi-isomorphism follows also directly from that prerequisite's finite-diagonal proof: each free term of <span class="math" data-tex="\(A\)">\(A\)</span> tensors the quasi-isomorphism <span class="math" data-tex="\(B\to N\)">\(B\to N\)</span> exactly.</p>
+<p>The target of (5.2) has two terms. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+H^0(M\otimes_{\mathbb Z}^{\mathbf L}N)&amp;=M\otimes_{\mathbb Z}N,\\
+H^{-1}(M\otimes_{\mathbb Z}^{\mathbf L}N)&amp;=
+\operatorname{Tor}_1^{\mathbb Z}(M,N)
+=\ker(A^{-1}\otimes N\to A^0\otimes N),\\
+H^j(M\otimes_{\mathbb Z}^{\mathbf L}N)&amp;=0\qquad(j\ne0,-1).
+\end{aligned}
+\tag{5.3}
+\]">\[
+\begin{aligned}
+H^0(M\otimes_{\mathbb Z}^{\mathbf L}N)&amp;=M\otimes_{\mathbb Z}N,\\
+H^{-1}(M\otimes_{\mathbb Z}^{\mathbf L}N)&amp;=
+\operatorname{Tor}_1^{\mathbb Z}(M,N)
+=\ker(A^{-1}\otimes N\to A^0\otimes N),\\
+H^j(M\otimes_{\mathbb Z}^{\mathbf L}N)&amp;=0\qquad(j\ne0,-1).
+\end{aligned}
+\tag{5.3}
+\]</span>
+<p>The first equality is right exactness of tensor, applied to the augmentation cokernel. The second is the definition of Tor as negative derived-tensor cohomology, evaluated using this free resolution. This also proves that higher Tor groups vanish for arbitrary abelian groups.</p>
+<p>We retain the shift comparison explicitly. A component of <span class="math" data-tex="\(A[-r]\otimes B[-s]\)">\(A[-r]\otimes B[-s]\)</span> coming from original degrees <span class="math" data-tex="\(i,j\)">\(i,j\)</span> lies in total degree <span class="math" data-tex="\(i+j+r+s\)">\(i+j+r+s\)</span>. Multiplication on that component by <span class="math" data-tex="\((-1)^{s i}\)">\((-1)^{s i}\)</span> defines a chain isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Tot}(A[-r]\otimes B[-s])
+\xrightarrow{\sim}
+\operatorname{Tot}(A\otimes B)[-(r+s)].
+\tag{5.4}
+\]">\[
+\operatorname{Tot}(A[-r]\otimes B[-s])
+\xrightarrow{\sim}
+\operatorname{Tot}(A\otimes B)[-(r+s)].
+\tag{5.4}
+\]</span>
+<p>For the first differential, its coefficient in the source is <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span>; the multiplier at the next first degree is <span class="math" data-tex="\((-1)^{s(i+1)}\)">\((-1)^{s(i+1)}\)</span>. Their product equals <span class="math" data-tex="\((-1)^{r+s}(-1)^{s i}\)">\((-1)^{r+s}(-1)^{s i}\)</span>, the target shifted coefficient. For the second differential, the source coefficient is <span class="math" data-tex="\((-1)^{i+r+s}\)">\((-1)^{i+r+s}\)</span>; the multiplier stays <span class="math" data-tex="\((-1)^{s i}\)">\((-1)^{s i}\)</span> because only <span class="math" data-tex="\(j\)">\(j\)</span> changes. The target coefficient is also <span class="math" data-tex="\((-1)^{r+s}(-1)^i\)">\((-1)^{r+s}(-1)^i\)</span>. This proves the chain equation for both summands, for all integers <span class="math" data-tex="\(r,s,i,j\)">\(r,s,i,j\)</span>. The inverse uses the same multipliers.</p>
+<p>Combining (5.3)–(5.4), the tensor of the shifted groups has ordinary tensor in cohomological degree <span class="math" data-tex="\(r+s\)">\(r+s\)</span> and first Tor in degree <span class="math" data-tex="\(r+s-1\)">\(r+s-1\)</span>. This degree distinction is the reason that Tor contributes to a different diagonal in the next theorem.</p>
+<h2 id="6-the-integral-tensor-splitting-with-finite-diagonals">6. The integral tensor splitting with finite diagonals</h2>
+<p><strong>Theorem 6.1.</strong> For <span class="math" data-tex="\(X,Y\in D^-(\mathsf{Ab})\)">\(X,Y\in D^-(\mathsf{Ab})\)</span> and every integer <span class="math" data-tex="\(n\)">\(n\)</span>, there is a generally noncanonical group isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+H^n(X\otimes_{\mathbb Z}^{\mathbf L}Y)
+\simeq{}&amp;
+\bigoplus_{r+s=n}H^rX\otimes_{\mathbb Z}H^sY\\
+&amp;\oplus
+\bigoplus_{r+s=n+1}\operatorname{Tor}_1^{\mathbb Z}(H^rX,H^sY).
+\end{aligned}
+\tag{6.1}
+\]">\[
+\begin{aligned}
+H^n(X\otimes_{\mathbb Z}^{\mathbf L}Y)
+\simeq{}&amp;
+\bigoplus_{r+s=n}H^rX\otimes_{\mathbb Z}H^sY\\
+&amp;\oplus
+\bigoplus_{r+s=n+1}\operatorname{Tor}_1^{\mathbb Z}(H^rX,H^sY).
+\end{aligned}
+\tag{6.1}
+\]</span>
+<p>Each displayed sum is finite after zero summands are omitted. No finite-generation hypothesis on the groups and no lower bound on the two complexes is required.</p>
+<p><strong>Proof.</strong> Choose bounded-above free replacements <span class="math" data-tex="\(P\to X\)">\(P\to X\)</span>, <span class="math" data-tex="\(Q\to Y\)">\(Q\to Y\)</span>, zero above <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, respectively. The derived-tensor prerequisite identifies the value with <span class="math" data-tex="\(\operatorname{Tot}(P\otimes Q)\)">\(\operatorname{Tot}(P\otimes Q)\)</span>, including its natural counit computation. Its degree-<span class="math" data-tex="\(n\)">\(n\)</span> terms have indices</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+i+j=n,\qquad n-v\leq i\leq u.
+\tag{6.2}
+\]">\[
+i+j=n,\qquad n-v\leq i\leq u.
+\tag{6.2}
+\]</span>
+<p>Thus the total diagonal is finite. Decompose <span class="math" data-tex="\(P\)">\(P\)</span> into the free blocks <span class="math" data-tex="\(E_r\)">\(E_r\)</span> of Section 4, and <span class="math" data-tex="\(Q\)">\(Q\)</span> into blocks <span class="math" data-tex="\(F_s\)">\(F_s\)</span>. Their actual chain isomorphisms induce a chain isomorphism of the tensor total to the assembly of <span class="math" data-tex="\(\operatorname{Tot}(E_r\otimes F_s)\)">\(\operatorname{Tot}(E_r\otimes F_s)\)</span>. Tensor distributes over the finite biproducts in each original entry, and (6.2) has only finitely many entries. To verify that the new block assembly is also finite in each degree, note that a pair block can have terms only in degrees</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+r+s-2,\quad r+s-1,\quad r+s.
+\tag{6.3}
+\]">\[
+r+s-2,\quad r+s-1,\quad r+s.
+\tag{6.3}
+\]</span>
+<p>For it to occur in degree <span class="math" data-tex="\(n\)">\(n\)</span>, one must have <span class="math" data-tex="\(r+s\in\{n,n+1,n+2\}\)">\(r+s\in\{n,n+1,n+2\}\)</span>, <span class="math" data-tex="\(r\leq u\)">\(r\leq u\)</span>, <span class="math" data-tex="\(s\leq v\)">\(s\leq v\)</span>. Such pairs satisfy <span class="math" data-tex="\(n-v\leq r\leq u\)">\(n-v\leq r\leq u\)</span> and <span class="math" data-tex="\(n-u\leq s\leq v\)">\(n-u\leq s\leq v\)</span>, so are a finite set. This proves the claimed degreewise finiteness without interchanging infinite sums or infinite cohomology operations.</p>
+<p>The differential preserves each pair label <span class="math" data-tex="\((r,s)\)">\((r,s)\)</span>, by (4.3) in both variables. Hence kernels and images in each degree are the finite direct sums of the block kernels and images; quotienting gives the corresponding finite direct sum of their cohomologies. More explicitly, the finite sets of blocks meeting degrees <span class="math" data-tex="\(n-1,n,n+1\)">\(n-1,n,n+1\)</span> have finite union. Compute these three degrees using that union and insert zero terms for the other blocks. Ordinary finite biproduct exactness then proves the stated cohomology decomposition.</p>
+<p>Each block <span class="math" data-tex="\(E_r\)">\(E_r\)</span> is isomorphic to <span class="math" data-tex="\(A_r[-r]\)">\(A_r[-r]\)</span>, with the sign specified in Section 4, and similarly for <span class="math" data-tex="\(F_s\)">\(F_s\)</span>. Their augmentations resolve <span class="math" data-tex="\(H^rP[-r]\)">\(H^rP[-r]\)</span> and <span class="math" data-tex="\(H^sQ[-s]\)">\(H^sQ[-s]\)</span>. Equations (5.3)–(5.4) therefore give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+H^n\operatorname{Tot}(E_r\otimes F_s)=
+\begin{cases}
+H^rP\otimes H^sQ,&amp;n=r+s,\\
+\operatorname{Tor}_1^{\mathbb Z}(H^rP,H^sQ),&amp;n=r+s-1,\\
+0,&amp;\text{otherwise}.
+\end{cases}
+\tag{6.4}
+\]">\[
+H^n\operatorname{Tot}(E_r\otimes F_s)=
+\begin{cases}
+H^rP\otimes H^sQ,&amp;n=r+s,\\
+\operatorname{Tor}_1^{\mathbb Z}(H^rP,H^sQ),&amp;n=r+s-1,\\
+0,&amp;\text{otherwise}.
+\end{cases}
+\tag{6.4}
+\]</span>
+<p>In particular the possible term in degree <span class="math" data-tex="\(r+s-2\)">\(r+s-2\)</span> contributes zero cohomology. The quasi-isomorphisms identify <span class="math" data-tex="\(H^rP,H^sQ\)">\(H^rP,H^sQ\)</span> with <span class="math" data-tex="\(H^rX,H^sY\)">\(H^rX,H^sY\)</span>. Summing (6.4) over the finite sets proves (6.1). When <span class="math" data-tex="\(n&gt;u+v\)">\(n&gt;u+v\)</span>, both displayed sets are empty and the total also has no term, so the theorem includes these degrees as well.</p>
+<p>The derived object and the identifications arising from resolution comparison are independent of the resolutions, by the incoming pair counit theorem in the prerequisite. The block decomposition, however, used the sections in (4.2). Those sections need not be compatible with maps of complexes. Formula (6.1) asserts existence of the displayed group isomorphism; it does not assign a natural splitting to every pair. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-four-graded-exercises-with-complete-solutions">7. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-shifted-cyclic-groups-18-points">Exercise 1 — shifted cyclic groups (18 points)</h3>
+<p>Let <span class="math" data-tex="\(m,l\geq1\)">\(m,l\geq1\)</span>, let <span class="math" data-tex="\(r,s\)">\(r,s\)</span> be arbitrary integers, and put <span class="math" data-tex="\(g=\gcd(m,l)\)">\(g=\gcd(m,l)\)</span>. Compute all cohomology groups of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+(\mathbb Z/m)[-r]\otimes_{\mathbb Z}^{\mathbf L}(\mathbb Z/l)[-s].
+\tag{7.1}
+\]">\[
+(\mathbb Z/m)[-r]\otimes_{\mathbb Z}^{\mathbf L}(\mathbb Z/l)[-s].
+\tag{7.1}
+\]</span>
+<p>Give a generator for the kernel defining Tor, and include the coprime and zero-group cases.</p>
+<p><strong>Solution.</strong> Resolve <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span> by <span class="math" data-tex="\(\mathbb Z\xrightarrow{m}\mathbb Z\)">\(\mathbb Z\xrightarrow{m}\mathbb Z\)</span> in degrees minus one and zero. Tensoring this single resolution with <span class="math" data-tex="\(\mathbb Z/l\)">\(\mathbb Z/l\)</span> gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+\mathbb Z/l\xrightarrow{m}\mathbb Z/l.
+\tag{7.2}
+\]">\[
+\mathbb Z/l\xrightarrow{m}\mathbb Z/l.
+\tag{7.2}
+\]</span>
+<p>Its cokernel is <span class="math" data-tex="\(\mathbb Z/g\)">\(\mathbb Z/g\)</span>. Indeed the quotient of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> by the subgroup generated by <span class="math" data-tex="\(m,l\)">\(m,l\)</span> is <span class="math" data-tex="\(\mathbb Z/g\)">\(\mathbb Z/g\)</span>, by the Bezout identity. Its kernel consists of residue classes <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(l\mid m a\)">\(l\mid m a\)</span>. Write <span class="math" data-tex="\(m=g m&#x27;\)">\(m=g m&#x27;\)</span>, <span class="math" data-tex="\(l=g l&#x27;\)">\(l=g l&#x27;\)</span>, where <span class="math" data-tex="\(m&#x27;,l&#x27;\)">\(m&#x27;,l&#x27;\)</span> are coprime. The condition is <span class="math" data-tex="\(l&#x27;\mid a\)">\(l&#x27;\mid a\)</span>; the kernel is generated by <span class="math" data-tex="\(l&#x27;=l/g\)">\(l&#x27;=l/g\)</span> modulo <span class="math" data-tex="\(l\)">\(l\)</span>, and this element has order <span class="math" data-tex="\(g\)">\(g\)</span>. Thus both groups in (5.3) are <span class="math" data-tex="\(\mathbb Z/g\)">\(\mathbb Z/g\)</span>.</p>
+<p>Use the chain comparison (5.4) to shift the tensor by <span class="math" data-tex="\([-(r+s)]\)">\([-(r+s)]\)</span>. Therefore the only possibly nonzero groups are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+H^{r+s}=\mathbb Z/g,\qquad H^{r+s-1}=\mathbb Z/g.
+\tag{7.3}
+\]">\[
+H^{r+s}=\mathbb Z/g,\qquad H^{r+s-1}=\mathbb Z/g.
+\tag{7.3}
+\]</span>
+<p>The differential signs in the shifted resolutions are <span class="math" data-tex="\((-1)^r m\)">\((-1)^r m\)</span> and <span class="math" data-tex="\((-1)^s l\)">\((-1)^s l\)</span>, and (5.4) accounts for them; changing the sign of a multiplication map changes neither its kernel nor its cokernel. If <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, both groups vanish, so the derived tensor is the zero object. If <span class="math" data-tex="\(m=1\)">\(m=1\)</span> or <span class="math" data-tex="\(l=1\)">\(l=1\)</span>, one input is already zero and <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, giving the same conclusion. The argument covers every integer shift, including negative ones.</p>
+<h3 id="exercise-2-why-the-cohomology-isomorphism-is-not-natural-16-points">Exercise 2 — why the cohomology isomorphism is not natural (16 points)</h3>
+<p>Put <span class="math" data-tex="\(A=\mathbb Z/2\)">\(A=\mathbb Z/2\)</span>. Show that there is a nonzero arrow <span class="math" data-tex="\(f:A[-1]\to A\)">\(f:A[-1]\to A\)</span> in the derived category that induces zero in every cohomology degree. Deduce that the identity functor on <span class="math" data-tex="\(D^+(\mathsf{Ab})\)">\(D^+(\mathsf{Ab})\)</span> cannot be naturally isomorphic to the functor <span class="math" data-tex="\(X\mapsto C(X)\)">\(X\mapsto C(X)\)</span>, acting by cohomology on arrows. Also construct a nonidentity automorphism of <span class="math" data-tex="\(A\oplus A[-1]\)">\(A\oplus A[-1]\)</span> inducing the identity on every cohomology group.</p>
+<p><strong>Solution.</strong> The resolution <span class="math" data-tex="\(\mathbb Z\xrightarrow{2}\mathbb Z\to A\)">\(\mathbb Z\xrightarrow{2}\mathbb Z\to A\)</span> gives the normalized Hom complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(\mathbb Z,A)\xrightarrow{0}
+\operatorname{Hom}(\mathbb Z,A)
+\tag{7.4}
+\]">\[
+\operatorname{Hom}(\mathbb Z,A)\xrightarrow{0}
+\operatorname{Hom}(\mathbb Z,A)
+\tag{7.4}
+\]</span>
+<p>in degrees zero and one. The differential is zero since multiplication by two is zero on <span class="math" data-tex="\(A\)">\(A\)</span>; the possible Hom sign has no effect on that zero map. Its first cohomology is <span class="math" data-tex="\(A\)">\(A\)</span>, so <span class="math" data-tex="\(\operatorname{Ext}^1(A,A)=A\)">\(\operatorname{Ext}^1(A,A)=A\)</span>. By shifting the derived Hom group, choose its nonzero class as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.5); horizontal scroll when needed" data-tex="\[
+f\in\operatorname{Hom}_D(A[-1],A)
+=\operatorname{Hom}_D(A,A[1]).
+\tag{7.5}
+\]">\[
+f\in\operatorname{Hom}_D(A[-1],A)
+=\operatorname{Hom}_D(A,A[1]).
+\tag{7.5}
+\]</span>
+<p>The source has its only nonzero cohomology in degree one, and the target in degree zero. Thus each degreewise cohomology map of <span class="math" data-tex="\(f\)">\(f\)</span> is zero. The assignment <span class="math" data-tex="\(C\)">\(C\)</span> is a functor: it takes the maps on cohomology as its zero-differential chain maps, so respects identity and composition. In particular <span class="math" data-tex="\(C(f)=0\)">\(C(f)=0\)</span>.</p>
+<p>If there were a natural isomorphism <span class="math" data-tex="\(\eta:\operatorname{Id}\to C\)">\(\eta:\operatorname{Id}\to C\)</span>, naturality would give <span class="math" data-tex="\(\eta_A f=C(f)\eta_{A[-1]}=0\)">\(\eta_A f=C(f)\eta_{A[-1]}=0\)</span>. Invertibility of <span class="math" data-tex="\(\eta_A\)">\(\eta_A\)</span> would force <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, a contradiction. An isomorphism in the reverse direction has an inverse in this direction, so is equally impossible.</p>
+<p>On <span class="math" data-tex="\(V=A\oplus A[-1]\)">\(V=A\oplus A[-1]\)</span>, let <span class="math" data-tex="\(N\)">\(N\)</span> have the sole off-diagonal component <span class="math" data-tex="\(f\)">\(f\)</span> from the second summand to the first. Then <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>, since the projection of the first summand to the second is zero. Hence <span class="math" data-tex="\(u=1_V+N\)">\(u=1_V+N\)</span> has inverse <span class="math" data-tex="\(1_V-N\)">\(1_V-N\)</span>. It is not identity: projecting <span class="math" data-tex="\(N\)">\(N\)</span> onto the first summand after including the second recovers <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>. Nevertheless <span class="math" data-tex="\(H^jN=0\)">\(H^jN=0\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>, so <span class="math" data-tex="\(H^ju=1\)">\(H^ju=1\)</span>. Cohomology alone does not select an isomorphism in Theorem 2.1.</p>
+<h3 id="exercise-3-infinitely-many-cohomology-groups-finite-answers-18-points">Exercise 3 — infinitely many cohomology groups, finite answers (18 points)</h3>
+<p>Let <span class="math" data-tex="\(X=Y\)">\(X=Y\)</span> be the zero-differential complex having <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> in every degree <span class="math" data-tex="\(r\leq0\)">\(r\leq0\)</span> and zero in degrees <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Compute <span class="math" data-tex="\(H^n(X\otimes^{\mathbf L}_{\mathbb Z}Y)\)">\(H^n(X\otimes^{\mathbf L}_{\mathbb Z}Y)\)</span> for every integer <span class="math" data-tex="\(n\)">\(n\)</span>. Explain why the computation is finite in each degree.</p>
+<p><strong>Solution.</strong> These are bounded-above complexes with upper bound zero. For <span class="math" data-tex="\(n\leq0\)">\(n\leq0\)</span>, the pairs <span class="math" data-tex="\(r,s\leq0\)">\(r,s\leq0\)</span> with <span class="math" data-tex="\(r+s=n\)">\(r+s=n\)</span> are indexed by <span class="math" data-tex="\(r=n,n+1,\ldots,0\)">\(r=n,n+1,\ldots,0\)</span>, so there are <span class="math" data-tex="\(1-n\)">\(1-n\)</span> pairs. Each contributes <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> to the tensor sum. The pairs with <span class="math" data-tex="\(r+s=n+1\)">\(r+s=n+1\)</span> have <span class="math" data-tex="\(-n\)">\(-n\)</span> members when <span class="math" data-tex="\(n\leq-1\)">\(n\leq-1\)</span>, and none when <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. Each contributes <span class="math" data-tex="\(\operatorname{Tor}_1(\mathbb Z/2,\mathbb Z/2)=\mathbb Z/2\)">\(\operatorname{Tor}_1(\mathbb Z/2,\mathbb Z/2)=\mathbb Z/2\)</span>, as computed in Exercise 1. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.6); horizontal scroll when needed" data-tex="\[
+H^n(X\otimes^{\mathbf L}_{\mathbb Z}Y)=
+\begin{cases}
+(\mathbb Z/2)^{\oplus(1-2n)},&amp;n\leq0,\\
+0,&amp;n&gt;0.
+\end{cases}
+\tag{7.6}
+\]">\[
+H^n(X\otimes^{\mathbf L}_{\mathbb Z}Y)=
+\begin{cases}
+(\mathbb Z/2)^{\oplus(1-2n)},&amp;n\leq0,\\
+0,&amp;n&gt;0.
+\end{cases}
+\tag{7.6}
+\]</span>
+<p>For example the degrees zero, minus one and minus two have one, three and five copies, respectively. An actual free replacement is assembled from one block <span class="math" data-tex="\(\mathbb Z\xrightarrow{2}\mathbb Z\)">\(\mathbb Z\xrightarrow{2}\mathbb Z\)</span> in degrees <span class="math" data-tex="\(r-1,r\)">\(r-1,r\)</span> for each <span class="math" data-tex="\(r\leq0\)">\(r\leq0\)</span>, with its augmentation to the degree-<span class="math" data-tex="\(r\)">\(r\)</span> group. There are two free summands in each negative degree and one in degree zero. The tensor total has the finite diagonal <span class="math" data-tex="\(n\leq i\leq0\)">\(n\leq i\leq0\)</span> in degree <span class="math" data-tex="\(n\leq0\)">\(n\leq0\)</span>. Equivalently its block labels satisfy (6.3) with <span class="math" data-tex="\(u=v=0\)">\(u=v=0\)</span>. Thus neither the infinitely many nonzero cohomology groups nor the infinitely many blocks causes an infinite sum in a fixed degree. The original complex has no lower bound, so this example also tests the full bounded-above scope of Theorem 6.1.</p>
+<h3 id="exercise-4-read-the-tor-contribution-inside-a-concrete-complex-20-points">Exercise 4 — read the Tor contribution inside a concrete complex (20 points)</h3>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span> be the free complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.7); horizontal scroll when needed" data-tex="\[
+P^{-1}=\mathbb Z,\quad P^0=\mathbb Z^2,\quad P^1=\mathbb Z,
+\quad d^{-1}(a)=(2a,0),\quad d^0(b,c)=3c,
+\tag{7.7}
+\]">\[
+P^{-1}=\mathbb Z,\quad P^0=\mathbb Z^2,\quad P^1=\mathbb Z,
+\quad d^{-1}(a)=(2a,0),\quad d^0(b,c)=3c,
+\tag{7.7}
+\]</span>
+<p>with other terms zero. Determine its cohomology and its two free blocks. Compute <span class="math" data-tex="\(H^n(P\otimes^{\mathbf L}_{\mathbb Z}\mathbb Z/6)\)">\(H^n(P\otimes^{\mathbf L}_{\mathbb Z}\mathbb Z/6)\)</span> both directly and from (6.1). Check the shift sign in the degree-one block.</p>
+<p><strong>Solution.</strong> The composite of the displayed differentials is zero. Multiplication by two is injective, so <span class="math" data-tex="\(H^{-1}P=0\)">\(H^{-1}P=0\)</span>. The kernel of <span class="math" data-tex="\(d^0\)">\(d^0\)</span> consists of the first coordinate, and its quotient by the image of <span class="math" data-tex="\(d^{-1}\)">\(d^{-1}\)</span> is <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>. The cokernel of <span class="math" data-tex="\(d^0\)">\(d^0\)</span> is <span class="math" data-tex="\(\mathbb Z/3\)">\(\mathbb Z/3\)</span>. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.8); horizontal scroll when needed" data-tex="\[
+H^0P=\mathbb Z/2,\qquad H^1P=\mathbb Z/3,
+\quad H^nP=0\ (n\ne0,1).
+\tag{7.8}
+\]">\[
+H^0P=\mathbb Z/2,\qquad H^1P=\mathbb Z/3,
+\quad H^nP=0\ (n\ne0,1).
+\tag{7.8}
+\]</span>
+<p>The first coordinate in degree zero, together with degree minus one, is the block <span class="math" data-tex="\(E_0:\mathbb Z\xrightarrow{2}\mathbb Z\)">\(E_0:\mathbb Z\xrightarrow{2}\mathbb Z\)</span> in degrees minus one and zero. The second coordinate in degree zero, together with degree one, is <span class="math" data-tex="\(E_1:\mathbb Z\xrightarrow{3}\mathbb Z\)">\(E_1:\mathbb Z\xrightarrow{3}\mathbb Z\)</span> in degrees zero and one. Their direct sum is literally (7.7). If the ordinary resolution <span class="math" data-tex="\(A_1:\mathbb Z\xrightarrow{3}\mathbb Z\)">\(A_1:\mathbb Z\xrightarrow{3}\mathbb Z\)</span> is placed in degrees minus one and zero and shifted by <span class="math" data-tex="\([-1]\)">\([-1]\)</span>, its differential is <span class="math" data-tex="\(-3\)">\(-3\)</span>. Multiplication by minus one in degree zero and by one in degree one gives a chain isomorphism <span class="math" data-tex="\(A_1[-1]\to E_1\)">\(A_1[-1]\to E_1\)</span>: both sides of its chain equation are multiplication by <span class="math" data-tex="\(-3\)">\(-3\)</span>.</p>
+<p>Since <span class="math" data-tex="\(P\)">\(P\)</span> is bounded above and free, the single-replacement comparison computes its derived tensor by the actual complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.9); horizontal scroll when needed" data-tex="\[
+\mathbb Z/6\xrightarrow{a\mapsto(2a,0)}
+(\mathbb Z/6)^2\xrightarrow{(b,c)\mapsto3c}\mathbb Z/6.
+\tag{7.9}
+\]">\[
+\mathbb Z/6\xrightarrow{a\mapsto(2a,0)}
+(\mathbb Z/6)^2\xrightarrow{(b,c)\mapsto3c}\mathbb Z/6.
+\tag{7.9}
+\]</span>
+<p>Its degree-minus-one kernel is generated by <span class="math" data-tex="\(3\)">\(3\)</span> modulo six, and is <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>. Its degree-zero cycles have arbitrary first coordinate and second coordinate in <span class="math" data-tex="\(\{0,2,4\}\)">\(\{0,2,4\}\)</span>. Its boundaries are <span class="math" data-tex="\(\{0,2,4\}\)">\(\{0,2,4\}\)</span> in the first coordinate and zero in the second. The quotient is <span class="math" data-tex="\(\mathbb Z/2\oplus\mathbb Z/3\)">\(\mathbb Z/2\oplus\mathbb Z/3\)</span>. Finally its degree-one cokernel is <span class="math" data-tex="\((\mathbb Z/6)/\{0,3\}=\mathbb Z/3\)">\((\mathbb Z/6)/\{0,3\}=\mathbb Z/3\)</span>. All other degrees vanish.</p>
+<p>Formula (6.1) gives exactly these groups. Degree minus one receives <span class="math" data-tex="\(\operatorname{Tor}_1(\mathbb Z/2,\mathbb Z/6)=\mathbb Z/2\)">\(\operatorname{Tor}_1(\mathbb Z/2,\mathbb Z/6)=\mathbb Z/2\)</span>. Degree zero receives <span class="math" data-tex="\((\mathbb Z/2)\otimes\mathbb Z/6=\mathbb Z/2\)">\((\mathbb Z/2)\otimes\mathbb Z/6=\mathbb Z/2\)</span> and <span class="math" data-tex="\(\operatorname{Tor}_1(\mathbb Z/3,\mathbb Z/6)=\mathbb Z/3\)">\(\operatorname{Tor}_1(\mathbb Z/3,\mathbb Z/6)=\mathbb Z/3\)</span>, because the latter pair has cohomology indices summing to one. Degree one receives <span class="math" data-tex="\((\mathbb Z/3)\otimes\mathbb Z/6=\mathbb Z/3\)">\((\mathbb Z/3)\otimes\mathbb Z/6=\mathbb Z/3\)</span>, with no Tor term. This checks the adjacent diagonal, both actual free blocks, and the sign required by the shifted resolution.</p>
+</main></body></html>

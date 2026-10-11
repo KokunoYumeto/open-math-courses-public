@@ -4,7 +4,7 @@
 
 A rule with several branches has two records: the states it visits and the branches it uses. A **symbolic itinerary** records the second. Such a record is useful only when we know which itineraries can occur and how much of the original trajectory they determine.
 
-This lesson develops a concrete answer for affine branches. We first compose the branches exactly. We then impose the integer restrictions that turn a formal word into an actual orbit. For the shortcut Collatz map, a word of length \(k\) specifies exactly one residue class modulo \(2^k\). This connects symbolic dynamics with congruence arithmetic and, at the end, with a finite probability experiment.
+This lesson develops a concrete answer for affine branches. We first compose the branches exactly. The positions of the odd branches give an exact extremum for the additive correction. We then impose the integer restrictions that turn a formal word into an actual orbit. For the shortcut Collatz map, a word of length \(k\) specifies exactly one residue class modulo \(2^k\). This connects symbolic dynamics with congruence arithmetic and, at the end, with a finite probability experiment.
 
 We use integer arithmetic, induction, and the definitions of iteration from [Return maps and exact changes of clock](NT-COLLATZ-01.md). Congruence means that the difference of two integers is a multiple of the modulus. The division algorithm and the basic rules for fractions are assumed. No measure theory or conjecture about eventual convergence is needed. Terras and Everett are historical sources for finite parity coding. Laarhoven and de Weger discuss its graph-theoretic form; Inselmann uses the affine and concatenation identities in quantitative orbit estimates. Full references appear below.
 
@@ -73,6 +73,45 @@ The coefficient of \(x\) alone is not the iterate. The term \(A_w\) records ever
 \]
 
 Indeed, the recurrence in the proof gives \(A_{k+1}=3A_k+2^k\), and substitution verifies \(A_k=3^k-2^k\), starting from zero. Both terms matter even before any question of asymptotic estimates arises.
+
+## The largest affine correction
+
+The additive term has an exact size determined by the positions of the odd branches. Let \(k\ge1\), let \(s=s_k\), and write \(i_1<\cdots<i_s\) for those positions, numbered from zero. Define
+\[
+ Q_w=\frac{A_w}{3^s}
+     =\sum_{j=1}^s\frac{2^{i_j}}{3^j}.
+\]
+The equality follows from the sum in Theorem 1: the contribution at \(i_j\) is multiplied by the remaining \(s-j\) odd branches. Retaining the word makes this coordinate change reversible, with \(A_w=3^sQ_w\), and
+\[
+ \Phi_w(x)=\frac{3^s}{2^k}(x+Q_w).
+\]
+
+**Affine correction bound.** Among all length-\(k\) words with exactly \(s\) ones,
+\[
+ \max Q_w=2^{k-s}\left(1-(2/3)^s\right),
+\]
+uniquely attained by \(0^{k-s}1^s\). Among all length-\(k\) words, the maximum is \(2^{k-1}/3\), attained only by \(0^{k-1}1\).
+
+**Proof.** The \(j\)-th occupied position satisfies \(i_j\le k-s+j-1\). Every summand strictly increases with its position. Their simultaneous, unique maximum is therefore
+\[
+ \sum_{j=1}^s\frac{2^{k-s+j-1}}{3^j}
+ =2^{k-s}\left(1-(2/3)^s\right),
+\]
+by the finite geometric sum. For \(s=0\) the value is zero. For \(1\le s<k\), subtracting the value at \(s+1\) from the value at \(s\) gives
+\[
+ 2^{k-s-1}\left(1-\frac43(2/3)^s\right)>0,
+\]
+because \((2/3)^s\le2/3<3/4\). Thus the largest positive value occurs at \(s=1\), proving the unrestricted assertion. ∎
+
+For example, the largest correction among length-four words with two ones is \(Q_{0011}=4/3+8/9=20/9\), but the one-one word \(0001\) has the larger value \(8/3\). Later additions have fewer remaining odd multipliers in the denominator of \(Q_w\). The number of odd branches alone does not order the corrections.
+
+Here is a uniform consequence for actual integers. For \(x\ge2^m\) and an actual prefix of length \(1\le k\le m\), put \(F_k=3^{s_k}/2^k\). Then
+\[
+ 0\le\frac{Q_w}{x}\le\frac{2^{k-1}}{3x}\le\frac16,
+ \qquad
+ xF_k\le T^k(x)=F_k(x+Q_w)\le\frac76xF_k.
+\]
+At \(k=0\) the same orbit comparison is immediate. This finite bound keeps the additive term while comparing it with the multiplicative part. The factor \(7/6\) is not asserted optimal for actual integer cylinders: the word maximizing \(Q_w\) need not occur at the smallest permitted start. The general composition identities below remain exact, with no estimate substituted for either coordinate.
 
 ## Joining two blocks
 

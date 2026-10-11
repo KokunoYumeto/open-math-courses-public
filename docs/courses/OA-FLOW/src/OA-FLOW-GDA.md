@@ -1,6 +1,6 @@
 # Whole-cone averaging and comparison of general dual weights
 
-*Independent proof development and original course-expression repair, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-05. New expression: CC0-1.0 to the extent of rights held; inherited expressions retain their recorded terms.*
+*New expression: CC0-1.0 to the extent of rights held; inherited expressions retain their recorded terms.*
 
 Let \(G\) be an arbitrary locally compact Hausdorff group with left Haar measure \(dt\) and \(\mu(Es)=\delta(s)\mu(E)\). Let \(\alpha\) be a point-ultraweak continuous normal automorphism action on an arbitrary von Neumann algebra \(M\). Scalar products are linear in the first entry. There is no countability, separability, unimodularity, invariant-weight or finite-state hypothesis. The zero algebra has the unique zero map; assume \(M\ne0\) below.
 
@@ -531,6 +531,159 @@ The output field is strongly measurable by the same bounded-resolvent approximat
 
 This proves the general whole-cone averaging map, all-normal-input extension, equality with every faithful n.s.f. GDW construction and the normalized comparison of two such dual weights. It does not prove arbitrary cocycle realization, induction, disintegration, normal LCA recognition, a factor classification or whole-course closure.
 
+<a id="gda-10"></a>
+
+## GDA10. A scalar composition determines the operator-valued map
+
+The extended-value and form arguments here use [EP2–5](OA-FLOW-EP.md#ep-2), the dense GNS left module of [GW1–4](OA-FLOW-GW.md#oa-flow.gw.1), its faithful normal representation in [NF5](OA-FLOW-NF.md#oa-flow.nf.5), and [SB4's unbounded spectral domains and graph cutoffs](OA-FLOW-SF.md#oa-flow.sf.sb4), together with [SF1's affiliation and normal transport](OA-FLOW-SF.md#oa-flow.sf.sf1). A direct uniqueness argument in the operator-valued setting is also given in [compatible modular operator-valued weights](../../OA-MOD/OA-MOD-OE.html#faithfulness-semifiniteness-and-direct-uniqueness).
+
+**Theorem.** Let \(P\subseteq N\) be von Neumann algebras and let \(S_1,S_2:N_+\to\widehat P_+\) be operator-valued weights. If a faithful normal semifinite weight \(\varphi\) on \(P\) satisfies
+
+<a id="equation-gdau1"></a>
+
+\[
+ \overline\varphi\circ S_1=\overline\varphi\circ S_2
+ \quad\hbox{on all }N_+,
+ \tag{GDAU1}
+\]
+
+then \(S_1=S_2\). The bar denotes EP5's evaluation on the entire extended positive cone. Consequently the map \(T\) of GDA1–8 is the unique operator-valued weight with its scalar composition identities for all faithful normal semifinite input weights. No countability assumption is made.
+
+**Proof.** Denote the common scalar composition by \(\Phi\), fix \(X\in N_+\), and set \(Y_i=S_i(X)\). In the faithful normal GNS representation of \(P\), write \(D=\Lambda_\varphi(\mathfrak n_\varphi)\). GW proves that \(D\) is dense and invariant under every element of \(P\). Let \(q_i\) be the extended closed quadratic form of \(Y_i\), including the component where its value is infinite. For \(a\in\mathfrak n_\varphi\), bounded spectral truncations, the GNS identity and EP4–5 give
+
+<a id="equation-gdau2"></a>
+
+\[
+ q_i(\Lambda_\varphi(a))
+ =\overline\varphi(a^*Y_i a)
+ =\Phi(a^*Xa).
+ \tag{GDAU2}
+\]
+
+Indeed for bounded positive \(b\in P\) the first identity is \(\langle\pi_\varphi(b)\Lambda_\varphi(a),\Lambda_\varphi(a)\rangle=\varphi(a^*ba)\). The normal vector functional and normal congruence extend it to \(Y_i\); the second identity is \(P\)-bimodularity of \(S_i\). Thus \(q_1=q_2\) on \(D\), with infinite values retained.
+
+To pass from this equality to the entire forms, write \((e_i,A_i)\) for EP's finite-part projection and positive affiliated operator representing \(Y_i\). Let \(e_{i,n}=1_{[0,n]}(A_i)\), zero on the infinite component. Its range satisfies \(q_i\leq n\|\cdot\|^2\), and \(e_{i,n}D\subseteq D\). Spectral truncation approximates each finite-domain vector \(\xi\) by \(e_{i,n}\xi\) in the form norm \(\|\xi\|_{q_i}=(\|\xi\|^2+q_i(\xi))^{1/2}\). For fixed \(n\), choose \(d_j\in D\) with \(d_j\to\xi\) in Hilbert norm. Then
+
+<a id="equation-gdau3"></a>
+
+\[
+ \|e_{i,n}(d_j-\xi)\|_{q_i}
+ \leq\sqrt{1+n}\,\|d_j-\xi\|\longrightarrow0.
+ \tag{GDAU3}
+\]
+
+It follows that \(D\cap\operatorname{Dom}(q_i)\) is a form core, and its Hilbert closure is the finite-part space \(e_iH_\varphi\). Equation(GDAU2) makes the two finite subsets of \(D\) equal and their polarized forms equal. Closing the common core gives identical entire closed forms and identical finite-part projections. EP3's uniqueness therefore gives \(Y_1=Y_2\). Since \(X\) was arbitrary, \(S_1=S_2\). No subtraction of infinite weight values, or continuity of an unbounded weight on a merely dense positive set, is used.
+
+For the canonical-map conclusion one faithful normal semifinite scalar input is sufficient. Such an input exists on every nonzero concrete \(P\subseteq B(K)\), without a faithful-state assumption. For a nonzero projection \(p\), choose nonzero \(v\in pK\) and let \(e\) project onto \(\overline{P'v}\). The subspace reduces \(P'\), so \(e\in P\) and \(e\leq p\), by [CF8's projection construction](OA-FLOW-CF.md#oa-flow.cf.8) and [BD1's bicommutant characterization](OA-FLOW-BD.md#oa-flow.bd.1). The normalized vector functional is faithful on \(ePe\): if \(a\in(ePe)_+\) has zero value, \(a^{1/2}\) kills \(v\), hence kills \(P'v\) by commutation, and therefore \(a=0\).
+
+Choose a maximal mutually orthogonal family of these nonzero projections \(e_i\), with unit vectors \(v_i\). Their join is one: a nonzero complementary projection would supply a further pair by the same construction. Define
+
+<a id="equation-gdau4"></a>
+
+\[
+ \varphi(a)=\sup_{F\subseteq I,\ F\text{ finite}}
+       \sum_{i\in F}\langle av_i,v_i\rangle
+ \quad(a\in P_+).
+ \tag{GDAU4}
+\]
+
+A common finite superset of indices proves additivity and homogeneity. Vector functionals are normal by [CP4/6](OA-FLOW-CP.md#oa-flow.cp.4) and the bounded increasing-operator lemma [WF2](OA-FLOW-WF.md#oa-flow.wf.2). Interchanging the two nonnegative suprema for a bounded increasing positive net proves normality of(GDAU4). If its value is zero, \(a^{1/2}\) kills every \(v_i\) and \(P'v_i\), hence all \(K\), so it is faithful. For finite \(F\), \(p_F=\sum_{i\in F}e_i\) has \(\varphi(p_F)=|F|<\infty\). These projections increase strongly to one; [GW4's finite-projection criterion](OA-FLOW-GW.md#oa-flow.gw.4) proves semifiniteness. The maximal principle is the earlier CF1 choice convention, and the index set may be arbitrary. Applying(GDAU1) to this one input proves uniqueness of \(T\). On the zero algebra the only map is zero. \(\square\)
+
+<a id="gda-11"></a>
+
+## GDA11. The balanced derivative under the action
+
+Let \(\varphi,\psi\) be faithful normal semifinite weights on \(M\), set \(\chi=\varphi\oplus\psi\) on \(M_2(M)\), and let \(\beta=\alpha\otimes\mathrm{id}_2\). For fixed \(s\in G\), write \(\varphi_s=\varphi\circ\alpha_s\) and \(\psi_s=\psi\circ\alpha_s\). [BC1](OA-FLOW-BC.md#bc-1) gives \(\chi\circ\beta_s=\varphi_s\oplus\psi_s\) on the whole positive cone. In particular its second diagonal summand is \(\psi_s\).
+
+**Theorem.** For every \(s\in G\) and \(r\in\mathbb R\),
+
+<a id="equation-gdab1"></a>
+
+\[
+ (D(\chi\circ\beta_s):D\chi)_r
+ =\begin{pmatrix}
+  (D(\varphi\circ\alpha_s):D\varphi)_r&0\\
+  0&(D(\psi\circ\alpha_s):D\psi)_r
+ \end{pmatrix}.
+ \tag{GDAB1}
+\]
+
+**Proof.** Identify \(M_2(M_2(M))\) with \(M_4(M)\), ordering the diagonal entries as \((\varphi,\psi,\varphi_s,\psi_s)\). BC1 identifies the outer balanced weight \(\Theta(\chi,\chi\circ\beta_s)\) with this four-weight matrix weight, including all finite GNS domains. The outer lower-left matrix unit becomes \(E_{31}+E_{42}\). [BC3's two-entry corner independence](OA-FLOW-BC.md#bc-3) and [BC4's normalized derivative definition](OA-FLOW-BC.md#bc-4) give
+
+<a id="equation-gdab2"></a>
+
+\[
+ \sigma_r^{\Theta_4}(E_{31})=(D\varphi_s:D\varphi)_rE_{31},
+ \qquad
+ \sigma_r^{\Theta_4}(E_{42})=(D\psi_s:D\psi)_rE_{42}.
+ \tag{GDAB2}
+\]
+
+Apply the modular group to their sum and read its outer lower-left block. BC4 gives precisely(GDAB1). This determines the normalized unitary itself, without an undetermined central phase. Only the full finite-matrix corner construction is used; compression by an arbitrary centralizer projection is unnecessary. \(\square\)
+
+<a id="gda-12"></a>
+
+## GDA12. Dualization of the balanced weight on the whole cone
+
+With \(\chi\) and \(\beta\) as in GDA11, let \(R_2=M_2(M)\rtimes_\beta G\). The finite coordinate unitary
+
+<a id="equation-gdad1"></a>
+
+\[
+ L^2(G,H\otimes\mathbb C^2)
+ \cong L^2(G,H)\otimes\mathbb C^2
+ \tag{GDAD1}
+\]
+
+identifies \(R_2\) normally with \(M_2(R)\). The coefficient generators become \([\pi(a_{ij})]\), and the group generator becomes \(\lambda_s\otimes I_2\). These generate all \(M_2(R)\): the coefficient algebra contains \(I\otimes E_{ij}\), and the diagonal regular generators give every entry of \(R\). [NR4](OA-FLOW-NR.md#oa-flow.nr.4) transports this identification to the faithful GNS regular model of \(\chi\).
+
+**Theorem.** Under(GDAD1), every \(X=[X_{ij}]\in M_2(R)_+\) satisfies
+
+<a id="equation-gdad2"></a>
+
+\[
+ \widehat\chi(X)=\widehat\varphi(X_{11})+
+                    \widehat\psi(X_{22}),
+ \tag{GDAD2}
+\]
+
+including infinite values.
+
+**Proof.** Use [GDA1–4](OA-FLOW-GDA.md#gda-1) with the same group and fixed Haar measure for \(M\) and \(M_2(M)\). Their scalar Plancherel weight and directed strict-minorant family \(\mathcal P^\circ\) are the same. For \(p\in\mathcal P^\circ\), the bounded normal Schur maps satisfy
+
+<a id="equation-gdad3"></a>
+
+\[
+ E_p^{(2)}=E_p\otimes\mathrm{id}_2.
+ \tag{GDAD3}
+\]
+
+Both normal maps agree on every \(\lambda_s\pi_\beta(A)\): their values are \(p(s)\) times that generator, entry by entry. The span of these generators is an ultraweakly dense star algebra, proving(GDAD3) everywhere. Matrix amplification is positive because GDA4 proves complete positivity by its concrete positive-kernel construction.
+
+GDA4 takes the directed supremum to construct \(T^{(2)}\) on the entire extended positive cone. With \(P_i=I\otimes E_{ii}\), [EP4's normal congruence and supremum rule](OA-FLOW-EP.md#ep-4) gives
+
+<a id="equation-gdad4"></a>
+
+\[
+ P_iT^{(2)}(X)P_i=T(X_{ii})\otimes E_{ii}.
+ \tag{GDAD4}
+\]
+
+This is first the bounded-map equality(GDAD3), then the equality of directed suprema. It applies T only to the positive diagonal entries; off-diagonal entries need not belong to its finite linear ideal.
+
+Identify \(\pi(M)\) with \(M\) and its matrix amplification with \(M_2(M)\) through the normal coefficient isomorphisms. BC1 defines \(\chi(Y)=\varphi(Y_{11})+\psi(Y_{22})\) for bounded positive \(Y\). [EP3's increasing bounded spectral approximants](OA-FLOW-EP.md#ep-3) and [EP5's scalar extension](OA-FLOW-EP.md#ep-5) extend the same formula to every extended-positive \(Y\). Its diagonal corners are the suprema of the corresponding bounded corners. The supremum of the sum of two increasing nonnegative nets with common directed index equals the sum of their suprema, including infinity: simultaneous lower bounds use a common upper index, and the reverse inequality is immediate. Hence \(\overline\chi(Y)=\overline\varphi(Y_{11})+\overline\psi(Y_{22})\) on the entire extended cone.
+
+Apply [GDA8's scalar composition theorem](OA-FLOW-GDA.md#gda-8) to \(\chi\), and then(GDAD4):
+
+\[
+ \widehat\chi(X)
+ =\overline\chi(T^{(2)}X)
+ =\overline\varphi(T(X_{11}))+\overline\psi(T(X_{22}))
+ =\widehat\varphi(X_{11})+\widehat\psi(X_{22}).
+\]
+
+This proves(GDAD2) for all positive \(X\), including each possible infinite summand. It is a finite-amplification consequence of the arbitrary-group Schur construction. No abelian dual group, Plancherel averaging over that dual, unimodularity, compatible-pair reconstruction theorem or restriction to compact convolution squares is used. \(\square\)
+
 <a id="gda-figure"></a>
 
 ## Directed kernels, exact finite transport and an infinite whole-cone value
@@ -638,3 +791,86 @@ T(I)=\Omega(I)\geq\frac{2}{3\varepsilon}\quad(\varepsilon>0).
 No finite number satisfies all these lower bounds, so \(T(I)=+\infty\) in \(\widehat{\mathbb C}_+\). This is the infinite-value part of an extended positive element; it is not a statement about Murray–von Neumann infinite projections. The plotted curve is the exact lower bound \(2/(3\varepsilon)\) for \(1/16\leq\varepsilon\leq1\). The theorem uses every \(\varepsilon>0\), not only this displayed interval. Its vertical axis is a finite lower bound for \(T(I)\), never a finite value assigned to \(T(I)\).
 
 The native PNG is \(3600\times2600\). The illustration, exact rational matrix data, SVG and reproduction code are original expressions and are CC0-1.0 to the extent of rights held. [Editable SVG](../assets/general-dual-weight-averaging/assets/general-dual-weight-averaging.svg), [exact data](../assets/general-dual-weight-averaging/figure-data.json), [reproduction source](../assets/general-dual-weight-averaging/render_general_dual_weight_averaging.py).
+
+<a id="gda-13"></a>
+
+## GDA13. Discrete Haar mass and the entire bounded expectation
+
+Suppose now that \(G\) is discrete, of arbitrary cardinality. Fix its Haar measure so that every singleton has mass \(c>0\). Let \(M\ne0\), let \(\alpha\) be a normal automorphism action, and use any faithful normal unital \(\rho:M\to B(K)\). The regular algebra \(R=M\rtimes_\alpha G\) acts on \(L^2(G,K)\) with the conventions of [NR3–4](OA-FLOW-NR.md#oa-flow.nr.3). Its coordinate inclusions are the isometries
+\[
+ J_r\eta=c^{-1/2}1_{\{r\}}\eta\qquad(r\in G,\ \eta\in K).
+ \tag{GDA13.a}
+\]
+The compact coefficient formula of [GDA6](#gda-6) determines how the canonical operator-valued weight relates to coordinate compression. We prove that relationship on the entire algebra, retaining the Haar mass.
+
+First construct the compression map independently. The finite sums of \(\lambda_s\pi_\rho(a_s)\) form a unital star algebra by covariance. Their span is ultraweakly dense in \(R\): [BD1 and BD4–5](OA-FLOW-BD.md#oa-flow.bd.1) give bounded strong-star approximants in their norm closure, and its vector-series tail estimate gives ultraweak convergence; norm approximation returns to finite polynomials. For each such polynomial,
+\[
+ J_e^*\left(\sum_s\lambda_s\pi_\rho(a_s)\right)J_e=\rho(a_e),
+ \tag{GDA13.b}
+\]
+where a missing identity coefficient is zero. This follows directly from
+\([\lambda_s\pi_\rho(a)\xi](t)
+ =\rho(\alpha_{t^{-1}s}(a))\xi(s^{-1}t)\).
+
+Compression is ultraweakly continuous, since each vector-series test pulls back by the coordinate inclusion. [ST2](OA-FLOW-ST12.md#oa-flow.st.2) proves that \(\rho(M)\) is ultraweakly closed and that \(\rho^{-1}\) is normal on its full image. Passing (GDA13.b) through the polynomial density therefore gives \(J_e^*XJ_e\in\rho(M)\) for every \(X\in R\). Define
+\[
+ E_0(X)=\pi_\rho\bigl(\rho^{-1}(J_e^*XJ_e)\bigr),
+ \qquad X\in R.
+ \tag{GDA13.c}
+\]
+This is a bounded normal map into the coefficient copy, by NR3's normal coefficient embedding and the full normal inverse just used. Compression on each finite matrix amplification proves complete positivity after transporting the coefficient representation. The two faithful coefficient embeddings are isometric, so \(\|E_0\|\le1\); its value at one gives \(\|E_0\|=1\).
+
+The identity \(\pi_\rho(a)J_e=J_e\rho(a)\) proves
+\[
+ E_0(\pi_\rho(a)X\pi_\rho(b))
+       =\pi_\rho(a)E_0(X)\pi_\rho(b),\qquad
+ E_0(\pi_\rho(a))=\pi_\rho(a).
+ \tag{GDA13.d}
+\]
+Thus \(E_0\) is a normal conditional expectation. Its faithfulness is also local to these coordinates. For polynomials, direct evaluation at any \(r\) gives
+\[
+ J_r^*XJ_r
+ =\rho\!\left(\alpha_{r^{-1}}
+       \bigl(\pi_\rho^{-1}(E_0(X))\bigr)\right).
+ \tag{GDA13.e}
+\]
+Normality of all maps in this identity extends it to every \(X\in R\). If \(X\ge0\) and \(E_0(X)=0\), it gives
+\(\|X^{1/2}J_r\eta\|^2=0\) for every \(r,\eta\). Finite-coordinate vectors span a dense subspace of the discrete Hilbert sum, even for uncountable \(G\). Hence \(X=0\).
+
+Now compute the canonical weight. The compact coefficient
+\(h=c^{-1}1_{\{e\}}1_M\) integrates to \(L_h=1_R\), while
+\(\int h(t)^*h(t)\,dt=c^{-1}1_M\). GDA6 therefore gives
+\[
+ T(1)=c^{-1}1.
+ \tag{GDA13.f}
+\]
+For every \(X\in R_+\), monotonicity implies
+\[
+ 0\le T(X)\le c^{-1}\|X\|1.
+ \tag{GDA13.g}
+\]
+The bounded-element criterion [EP3](OA-FLOW-EP.md#ep-3) makes each value a genuine bounded positive coefficient operator, rather than an extended value with an infinite part. Consequently the whole finite ideals of [EP6](OA-FLOW-EP.md#ep-6) satisfy \(N_T=m_T=R\). Its hereditary-cone and polarization proof gives a unique complex-linear positive bimodule extension of \(T\) on all of \(R\). The extension is bounded, using (GDA13.g) on the real and imaginary parts. It preserves bounded increasing positive suprema by the proved normality of the original weight. [NF6](OA-FLOW-NF.md#oa-flow.nf.6) then proves ultraweak continuity on the entire algebra. This is the required order-to-topology step for the bounded extension.
+
+Set \(E_c=cT\). It is a unital normal positive bimodule map fixing the coefficient algebra. To identify it, polarize the compact-square formula of GDA6. For compact coefficients \(g,f\), linearity of the finite extension gives
+\[
+ T(L_g^*L_f)=\pi_\rho\left(\int g(t)^*f(t)\,dt\right).
+ \tag{GDA13.h}
+\]
+In particular, put \(g=c^{-1}1_{\{e\}}1\) and
+\(f=c^{-1}1_{\{s\}}a\). Their integrated operators are \(1\) and \(\lambda_s\pi_\rho(a)\), respectively, and the ordered integral in (GDA13.h) is
+\(c^{-1}1_{\{s=e\}}a\). Thus
+\[
+ E_c(\lambda_s\pi_\rho(a))
+ =1_{\{s=e\}}\pi_\rho(a)
+ =E_0(\lambda_s\pi_\rho(a)).
+ \tag{GDA13.i}
+\]
+Both maps are bounded and normal, so polynomial density proves equality everywhere. In particular,
+\[
+ \boxed{\ T(X)=c^{-1}E_0(X)\quad(X\in R_+).\ }
+ \tag{GDA13.j}
+\]
+The equality covers every positive operator, not only finite Fourier sums or diagonal tests. The bounded linear extensions agree on all of \(R\). Complete positivity and faithfulness of \(cT\) follow from the compression proof. For a nonzero algebra, \(T\) itself is a conditional expectation if and only if \(c=1\). For the zero algebra the unique zero map has its usual zero-algebra interpretation for every Haar scale.
+
+This is the discrete normalization relevant to Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Chapter X.1, Exercise3. Counting measure gives \(c=1\); an unnormalized discrete Haar measure retains the factor in (GDA13.j).
+

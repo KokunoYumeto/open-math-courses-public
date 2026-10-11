@@ -5,7 +5,7 @@
 
 A normal action can have norm-discontinuous elements even though compact averages of every element have norm-continuous orbits. We first construct this continuous C-star part and prove its density. A translation model then separates that density statement from norm continuity of the whole algebra. Only afterwards do we identify the spectrum visible to a represented commutative system and use a cutoff to obtain a locally orthogonal projection.
 
-*Preserved historical original argument with independently written completion and teaching organization by GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. CC0-1.0 to the extent of rights held; historical and prerequisite terms remain intact. Spot-checked in a separate AI session.*
+*CC0-1.0 to the extent of rights held; historical and prerequisite terms remain intact.*
 
 <a id="oa-flow.l113.inputs"></a>
 

@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The physical ring and the full viscous dilation domain — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/the-physical-ring-and-full-viscous-dilation-domain.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-32.html">Previous lesson</a><a href="NS-FLUID-34.html">Next lesson</a></nav><article class="lesson"><h1 id="the-physical-ring-and-the-full-viscous-dilation-domain">The physical ring and the full viscous dilation domain</h1>
+<p><a href="NS-FLUID-32.html">Lesson32</a>
+constructed an actual unstable Euler ring. To bring that mode into the
+viscous problem, we need the original three-dimensional space, the exact
+domains of its operators, and the complete heat and dilation evolution.
+This lesson proves those foundations with every physical coefficient.</p>
+<p>The first part constructs the velocity receiver for arbitrary
+square-integrable pure-swirl vorticity. It retains the full cylindrical
+volume, proves the small stretching bound and compact coupling, and
+receives the already constructed ring eigenmode in the exact transport
+domain. A quantitative smooth-input estimate supplies the forcing bound
+needed for the next viscous comparison.</p>
+<p>The second part derives the full heat-and-dilation semigroup. Its graph
+identity and complete cutoff and convolution arguments prove precisely
+the required domain: both second derivatives and the original spatial
+drift must be square-integrable. Energy, smoothing, symmetry restrictions
+and the source's quarter shift are proved with the actual viscosity and
+amplitude. Neither parameter is removed by a change of variables.</p>
+<p>The human source is Dallas Albritton, Elia Brué and Maria Colombo,
+<a href="https://arxiv.org/abs/2112.03116v1"><em>Non-uniqueness of Leray solutions of the forced Navier–Stokes equations</em>,
+arXiv:2112.03116v1</a>, original
+main.tex1633–1880. The source uses viscosity one; substitution of that
+value in the formulas below gives its operator. The original ring
+coordinate and the velocity amplitude receive explicit corrections,
+with complete replacement maps rather than only error reports.</p>
+<p>Five solved exercises calculate a full Gaussian, an explicit radius
+threshold, the low-frequency velocity obstruction, a field outside the
+dilation domain, and the exact velocity-to-curl and pressure map.
+This is the foundation for the viscous spectral transfer; the full
+perturbed viscous generator and its unstable eigenvalue remain the next
+construction. Author self-check only; no independent review or novelty
+claim is asserted.</p>
+<h2 id="pt1-fix-the-original-coordinates-support-and-physical-norm">PT1. Fix the original coordinates, support and physical norm</h2>
+<p>Keep the actual compact meridian stream function <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, radius <span class="math" data-tex="\(R\geq4\)">\(R\geq4\)</span>, and radial vorticity <span class="math" data-tex="\(g_R=\partial_r^2\Psi+\partial_z^2\Psi\)">\(g_R=\partial_r^2\Psi+\partial_z^2\Psi\)</span> from lessons31–32. They are smooth and supported in the original meridian disk <span class="math" data-tex="\(B_R\)">\(B_R\)</span>. For <span class="math" data-tex="\(\ell\geq2R\)">\(\ell\geq2R\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+s=\sqrt{x_1^2+x_2^2},\qquad r=s-\ell,\qquad z=x_3,\qquad \\
+Q_\ell=\{x:(s-\ell)^2+z^2&lt;R^2\},\qquad b_\ell=\ell-R&gt;0.
+\end{gathered}
+\tag{PT1}
+\]">\[
+\begin{gathered}
+s=\sqrt{x_1^2+x_2^2},\qquad r=s-\ell,\qquad z=x_3,\qquad \\
+Q_\ell=\{x:(s-\ell)^2+z^2&lt;R^2\},\qquad b_\ell=\ell-R&gt;0.
+\end{gathered}
+\tag{PT1}
+\]</span>
+<p>The background, in these unchanged physical coordinates, is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bar U_\ell(x)&amp;=-\Psi_z(s-\ell,z)e_s+
+\left(\Psi_r(s-\ell,z)+\frac{\Psi(s-\ell,z)}s\right)e_z,\\
+\bar\Omega_\ell(x)&amp;=\operatorname{curl}\bar U_\ell(x)
+=-\left(g_R(s-\ell,z)+\frac{\Psi_r(s-\ell,z)}s
+-\frac{\Psi(s-\ell,z)}{s^2}\right)e_\theta.
+\end{aligned}
+\tag{PT2}
+\]">\[
+\begin{aligned}
+\bar U_\ell(x)&amp;=-\Psi_z(s-\ell,z)e_s+
+\left(\Psi_r(s-\ell,z)+\frac{\Psi(s-\ell,z)}s\right)e_z,\\
+\bar\Omega_\ell(x)&amp;=\operatorname{curl}\bar U_\ell(x)
+=-\left(g_R(s-\ell,z)+\frac{\Psi_r(s-\ell,z)}s
+-\frac{\Psi(s-\ell,z)}{s^2}\right)e_\theta.
+\end{aligned}
+\tag{PT2}
+\]</span>
+<p>Both fields vanish in a neighborhood of the axis and extend smoothly by zero there. The divergence is zero: differentiating the radial component gives <span class="math" data-tex="\(-\Psi_{rz}-\Psi_z/s\)">\(-\Psi_{rz}-\Psi_z/s\)</span>, while differentiating the axial component gives <span class="math" data-tex="\(\Psi_{rz}+\Psi_z/s\)">\(\Psi_{rz}+\Psi_z/s\)</span>. The curl formula follows by differentiating both displayed velocity terms. Thus neither the curvature correction nor either of its derivatives is suppressed. The source's printed evaluation at main.tex1638 must use the meridian argument <span class="math" data-tex="\(s-\ell\)">\(s-\ell\)</span>, as in PT2; evaluating at <span class="math" data-tex="\(s+\ell\)">\(s+\ell\)</span> would not place this background on its stated torus.</p>
+<p>Let <span class="math" data-tex="\(\mathcal H_{\rm aps}\)">\(\mathcal H_{\rm aps}\)</span> be the closed subspace of <span class="math" data-tex="\(L^2(\mathbb R^3;\mathbb C^3)\)">\(L^2(\mathbb R^3;\mathbb C^3)\)</span> consisting of fields <span class="math" data-tex="\(\Omega=\omega^\theta(s,z)e_\theta\)">\(\Omega=\omega^\theta(s,z)e_\theta\)</span>. Its norm and the full containing volume are exactly</p>
+<span class="math math-display" data-tex="\[
+\|\Omega\|_2^2=2\pi\int_0^\infty\int_{\mathbb R}s|\omega^\theta(s,z)|^2\,dz\,ds,
+\qquad
+|Q_\ell|=2\pi\int_{B_R}(\ell+r)\,dr\,dz=2\pi^2\ell R^2.
+\tag{PT3}
+\]">\[
+\|\Omega\|_2^2=2\pi\int_0^\infty\int_{\mathbb R}s|\omega^\theta(s,z)|^2\,dz\,ds,
+\qquad
+|Q_\ell|=2\pi\int_{B_R}(\ell+r)\,dr\,dz=2\pi^2\ell R^2.
+\tag{PT3}
+\]</span>
+<p>The last identity retains the integral of <span class="math" data-tex="\(r\)">\(r\)</span>, which is zero by reflection of the full disk. The actual support can be smaller than this containing set. Closure follows from the isometry of the indicated scalar space onto its image. Every such field has distributional divergence zero: against a compact smooth test function the divergence pairing is the integral of <span class="math" data-tex="\(\omega^\theta\partial_\theta\phi\)">\(\omega^\theta\partial_\theta\phi\)</span> over a full angular period, which is zero. Local integrability and Fubini follow from the original three-dimensional <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm. No trace at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> is imposed.</p>
+<h2 id="pt2-prove-the-complete-velocity-map-on-this-physical-space">PT2. Prove the complete velocity map on this physical space</h2>
+<p>We first prove a Sobolev bound with an explicit sufficient constant. If <span class="math" data-tex="\(h\)">\(h\)</span> is compact and continuously differentiable, the fundamental theorem along each coordinate line gives <span class="math" data-tex="\(|h(x)|\leq A_i\)">\(|h(x)|\leq A_i\)</span>, where <span class="math" data-tex="\(A_i\)">\(A_i\)</span> is the integral of <span class="math" data-tex="\(|\partial_i h|\)">\(|\partial_i h|\)</span> along that line and depends on the other two coordinates. Hence <span class="math" data-tex="\(|h|^{3/2}\leq(A_1A_2A_3)^{1/2}\)">\(|h|^{3/2}\leq(A_1A_2A_3)^{1/2}\)</span>. To integrate this product, first apply Cauchy–Schwarz in <span class="math" data-tex="\(x_1\)">\(x_1\)</span> to the factors involving <span class="math" data-tex="\(A_2,A_3\)">\(A_2,A_3\)</span>. If <span class="math" data-tex="\(B(x_3)=\int A_2(x_1,x_3)dx_1\)">\(B(x_3)=\int A_2(x_1,x_3)dx_1\)</span> and <span class="math" data-tex="\(C(x_2)=\int A_3(x_1,x_2)dx_1\)">\(C(x_2)=\int A_3(x_1,x_2)dx_1\)</span>, the remaining integral is at most <span class="math" data-tex="\(\int A_1(x_2,x_3)^{1/2}B(x_3)^{1/2}C(x_2)^{1/2}dx_2dx_3\)">\(\int A_1(x_2,x_3)^{1/2}B(x_3)^{1/2}C(x_2)^{1/2}dx_2dx_3\)</span>. Cauchy–Schwarz in the remaining pair of variables bounds it by <span class="math" data-tex="\((\int A_1\int B\int C)^{1/2}\)">\((\int A_1\int B\int C)^{1/2}\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\|h\|_{3/2}\leq\prod_{i=1}^3\|\partial_i h\|_1^{1/3},
+\qquad
+\|v\|_6\leq C_{\rm S}\|\nabla v\|_2,
+\qquad C_{\rm S}=\frac4{\sqrt3}.
+\tag{PT4}
+\]">\[
+\|h\|_{3/2}\leq\prod_{i=1}^3\|\partial_i h\|_1^{1/3},
+\qquad
+\|v\|_6\leq C_{\rm S}\|\nabla v\|_2,
+\qquad C_{\rm S}=\frac4{\sqrt3}.
+\tag{PT4}
+\]</span>
+<p>For the second inequality apply the first to <span class="math" data-tex="\(h=|v|^4\)">\(h=|v|^4\)</span>, including complex vector fields. Its derivatives satisfy <span class="math" data-tex="\(|\partial_i h|\leq4|v|^3|\partial_i v|\)">\(|\partial_i h|\leq4|v|^3|\partial_i v|\)</span>, so Hölder gives <span class="math" data-tex="\(\|v\|_6^4\leq4\|v\|_6^3\prod_i\|\partial_i v\|_2^{1/3}\)">\(\|v\|_6^4\leq4\|v\|_6^3\prod_i\|\partial_i v\|_2^{1/3}\)</span>. If the left norm is nonzero, divide by its cube; the arithmetic–geometric mean inequality for the three squared derivative norms gives PT4. The zero case satisfies it directly. Cutoff and convolution approximation extend the inequality to every <span class="math" data-tex="\(H^1\)">\(H^1\)</span> field. This extension can be checked without assuming an embedding: the compact smooth approximants are Cauchy in <span class="math" data-tex="\(L^6\)">\(L^6\)</span> by the proved inequality, and their <span class="math" data-tex="\(L^2\)">\(L^2\)</span> limit identifies the same function locally.</p>
+<p>Use the Fourier convention <span class="math" data-tex="\(\widehat f(\eta)=\int e^{-ix\cdot\eta}f(x)dx\)">\(\widehat f(\eta)=\int e^{-ix\cdot\eta}f(x)dx\)</span>, with inverse factor <span class="math" data-tex="\((2\pi)^{-3}\)">\((2\pi)^{-3}\)</span>. For any divergence-free <span class="math" data-tex="\(\Omega\in L^2\)">\(\Omega\in L^2\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\widehat{\mathcal B\Omega}(\eta)=\frac{i\eta\times\widehat\Omega(\eta)}{|\eta|^2},
+\qquad
+\|\nabla\mathcal B\Omega\|_2=\|\Omega\|_2,
+\qquad
+\|\mathcal B\Omega\|_6\leq C_{\rm S}\|\Omega\|_2.
+\tag{PT5}
+\]">\[
+\widehat{\mathcal B\Omega}(\eta)=\frac{i\eta\times\widehat\Omega(\eta)}{|\eta|^2},
+\qquad
+\|\nabla\mathcal B\Omega\|_2=\|\Omega\|_2,
+\qquad
+\|\mathcal B\Omega\|_6\leq C_{\rm S}\|\Omega\|_2.
+\tag{PT5}
+\]</span>
+<p>Here is the construction at the origin of Fourier space. Multiply <span class="math" data-tex="\(\widehat\Omega\)">\(\widehat\Omega\)</span> by cutoffs supported in finite annuli and tending to one off zero. Their velocity transforms are in <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. Plancherel and <span class="math" data-tex="\(\eta\cdot\widehat\Omega=0\)">\(\eta\cdot\widehat\Omega=0\)</span> show that their gradients are Cauchy, with norm identity PT5 in the limit. Inequality PT4 makes the velocities Cauchy in <span class="math" data-tex="\(L^6\)">\(L^6\)</span>. Their Fourier expressions converge distributionally to the displayed multiplier: locally near zero use Cauchy–Schwarz with <span class="math" data-tex="\(|\eta|^{-1}\)">\(|\eta|^{-1}\)</span>, whose square is integrable in three dimensions; away from zero use the ordinary multiplier bound. This proves PT5 with its precise full domain and codomain. The multiplier calculation gives <span class="math" data-tex="\(\operatorname{div}\mathcal B\Omega=0\)">\(\operatorname{div}\mathcal B\Omega=0\)</span> and <span class="math" data-tex="\(\operatorname{curl}\mathcal B\Omega=\Omega\)">\(\operatorname{curl}\mathcal B\Omega=\Omega\)</span>.</p>
+<p>This is the unique velocity in <span class="math" data-tex="\(L^6\)">\(L^6\)</span> with those two properties. The difference of two such fields is distributionally harmonic componentwise. Convolve it with a compact smooth approximate identity. The convolution is smooth, harmonic and in <span class="math" data-tex="\(L^6\)">\(L^6\)</span>. Its mean-value formula on a ball of radius <span class="math" data-tex="\(L\)">\(L\)</span>, followed by Hölder, bounds its value by <span class="math" data-tex="\(|B_L|^{-1/6}\)">\(|B_L|^{-1/6}\)</span> times its full <span class="math" data-tex="\(L^6\)">\(L^6\)</span> norm, which tends to zero as <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span>. The convolution is therefore zero; convergence of the approximate identity proves uniqueness. The mean-value formula used here follows by differentiating the spherical mean, applying the divergence theorem to its derivative, and using the zero Laplacian.</p>
+<p>For all integers <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span> for which the right side is finite, the same multiplier gives</p>
+<span class="math math-display" data-tex="\[
+\|\nabla^{j+1}\mathcal B\Omega\|_2=\|\nabla^j\Omega\|_2,
+\qquad
+\|\mathcal B\Omega\|_{L^2(A)}\leq |A|^{1/3}C_{\rm S}\|\Omega\|_2
+\quad (|A|&lt;\infty).
+\tag{PT6}
+\]">\[
+\|\nabla^{j+1}\mathcal B\Omega\|_2=\|\nabla^j\Omega\|_2,
+\qquad
+\|\mathcal B\Omega\|_{L^2(A)}\leq |A|^{1/3}C_{\rm S}\|\Omega\|_2
+\quad (|A|&lt;\infty).
+\tag{PT6}
+\]</span>
+<p>The derivative tensors in this identity include every ordered Cartesian derivative, so their squared Fourier norms are exactly <span class="math" data-tex="\(|\eta|^{2j}\)">\(|\eta|^{2j}\)</span>. The second bound is Hölder with exponents three and three-halves applied to <span class="math" data-tex="\(|\mathcal B\Omega|^2\)">\(|\mathcal B\Omega|^2\)</span>. Arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vorticity need not give a global <span class="math" data-tex="\(L^2\)">\(L^2\)</span> velocity; PT5–PT6 state the spaces actually proved.</p>
+<p>For pure-swirl input, <span class="math" data-tex="\(U=\mathcal B\Omega\)">\(U=\mathcal B\Omega\)</span> is axisymmetric with no swirl. To prove this, the multiplier commutes with proper rotations. Under the reflection <span class="math" data-tex="\(J=\operatorname{diag}(1,-1,1)\)">\(J=\operatorname{diag}(1,-1,1)\)</span>, writing <span class="math" data-tex="\((\mathcal J f)(x)=Jf(Jx)\)">\((\mathcal J f)(x)=Jf(Jx)\)</span>, the cross product gives <span class="math" data-tex="\(\mathcal B\mathcal J=-\mathcal J\mathcal B\)">\(\mathcal B\mathcal J=-\mathcal J\mathcal B\)</span>. A pure-swirl input is rotation-equivariant and satisfies <span class="math" data-tex="\(\mathcal J\Omega=-\Omega\)">\(\mathcal J\Omega=-\Omega\)</span>. Its velocity is rotation-equivariant and satisfies <span class="math" data-tex="\(\mathcal J U=U\)">\(\mathcal J U=U\)</span>. At angle zero the latter identity makes the second component vanish; rotation gives the assertion at every angle. These identities hold first distributionally from the multiplier and then for the <span class="math" data-tex="\(L^6\)">\(L^6\)</span> representative. Thus PT5 is precisely the physical Biot–Savart receiver for the symmetry class used below.</p>
+<h2 id="pt3-derive-both-stretching-terms-and-their-full-smallness-bound">PT3. Derive both stretching terms and their full smallness bound</h2>
+<p>For this fixed background define, on <span class="math" data-tex="\(\mathcal H_{\rm aps}\)">\(\mathcal H_{\rm aps}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal M\Omega&amp;=-\bar U_\ell\cdot\nabla\Omega,\\
+\mathcal S\Omega&amp;=\bar\Omega_\ell\cdot\nabla U+\Omega\cdot\nabla\bar U_\ell,\\
+\mathcal K\Omega&amp;=-U\cdot\nabla\bar\Omega_\ell,
+\qquad U=\mathcal B\Omega.
+\end{aligned}
+\tag{PT7}
+\]">\[
+\begin{aligned}
+\mathcal M\Omega&amp;=-\bar U_\ell\cdot\nabla\Omega,\\
+\mathcal S\Omega&amp;=\bar\Omega_\ell\cdot\nabla U+\Omega\cdot\nabla\bar U_\ell,\\
+\mathcal K\Omega&amp;=-U\cdot\nabla\bar\Omega_\ell,
+\qquad U=\mathcal B\Omega.
+\end{aligned}
+\tag{PT7}
+\]</span>
+<p>Only <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> requires an unbounded domain. The complete angular differentiation, using <span class="math" data-tex="\(\partial_\theta e_s=e_\theta\)">\(\partial_\theta e_s=e_\theta\)</span> and <span class="math" data-tex="\(\partial_\theta e_z=0\)">\(\partial_\theta e_z=0\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal S\Omega=
+\left(\frac{\bar\Omega_\ell^\theta U^s}s
++\frac{\omega^\theta\bar U_\ell^s}s\right)e_\theta,
+\qquad
+\mathcal K\Omega=-\left(U^s\partial_s\bar\Omega_\ell^\theta
++U^z\partial_z\bar\Omega_\ell^\theta\right)e_\theta.
+\tag{PT8}
+\]">\[
+\mathcal S\Omega=
+\left(\frac{\bar\Omega_\ell^\theta U^s}s
++\frac{\omega^\theta\bar U_\ell^s}s\right)e_\theta,
+\qquad
+\mathcal K\Omega=-\left(U^s\partial_s\bar\Omega_\ell^\theta
++U^z\partial_z\bar\Omega_\ell^\theta\right)e_\theta.
+\tag{PT8}
+\]</span>
+<p>In particular both outputs belong to <span class="math" data-tex="\(\mathcal H_{\rm aps}\)">\(\mathcal H_{\rm aps}\)</span> and are supported in <span class="math" data-tex="\(\overline Q_\ell\)">\(\overline Q_\ell\)</span>. Approximation and PT5–PT6 justify these formulas for every input in that space. Put</p>
+<span class="math math-display" data-tex="\[
+A_\ell=\|g_R\|_\infty+\frac{\|\Psi_r\|_\infty}{b_\ell}
++\frac{\|\Psi\|_\infty}{b_\ell^2},
+\qquad
+\mu_\ell^*=\frac{C_{\rm S}(2\pi^2\ell R^2)^{1/3}A_\ell
++\|\Psi_z\|_\infty}{b_\ell}.
+\tag{PT9}
+\]">\[
+A_\ell=\|g_R\|_\infty+\frac{\|\Psi_r\|_\infty}{b_\ell}
++\frac{\|\Psi\|_\infty}{b_\ell^2},
+\qquad
+\mu_\ell^*=\frac{C_{\rm S}(2\pi^2\ell R^2)^{1/3}A_\ell
++\|\Psi_z\|_\infty}{b_\ell}.
+\tag{PT9}
+\]</span>
+<p>Hölder, retaining the original three-dimensional measure in all factors, proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\mathcal S\Omega\|_2
+&amp;\leq\left\|\frac{\bar\Omega_\ell^\theta}s\right\|_3\|U\|_6
++\left\|\frac{\bar U_\ell^s}s\right\|_\infty\|\Omega\|_2\\
+&amp;\leq\mu_\ell^*\|\Omega\|_2,
+\qquad \mu_\ell:=\|\mathcal S\|\leq\mu_\ell^*\longrightarrow0.
+\end{aligned}
+\tag{PT10}
+\]">\[
+\begin{aligned}
+\|\mathcal S\Omega\|_2
+&amp;\leq\left\|\frac{\bar\Omega_\ell^\theta}s\right\|_3\|U\|_6
++\left\|\frac{\bar U_\ell^s}s\right\|_\infty\|\Omega\|_2\\
+&amp;\leq\mu_\ell^*\|\Omega\|_2,
+\qquad \mu_\ell:=\|\mathcal S\|\leq\mu_\ell^*\longrightarrow0.
+\end{aligned}
+\tag{PT10}
+\]</span>
+<p>All background seminorms in PT9 are those of the original fixed meridian construction and are independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Since <span class="math" data-tex="\(b_\ell\geq\ell/2\)">\(b_\ell\geq\ell/2\)</span>, its first term has an explicit <span class="math" data-tex="\(\ell^{-2/3}\)">\(\ell^{-2/3}\)</span> bound and its second has an explicit <span class="math" data-tex="\(\ell^{-1}\)">\(\ell^{-1}\)</span> bound. This is a physical <span class="math" data-tex="\(L^2\)">\(L^2\)</span> estimate with the full <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> factor. It follows from PT3–PT6 directly and does not import a norm bound from a different weighted space.</p>
+<h2 id="pt4-prove-compactness-of-the-actual-coupling">PT4. Prove compactness of the actual coupling</h2>
+<p>The immediate boundedness estimate is</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal K\Omega\|_2\leq
+\|\nabla\bar\Omega_\ell\|_\infty
+(2\pi^2\ell R^2)^{1/3}C_{\rm S}\|\Omega\|_2.
+\tag{PT11}
+\]">\[
+\|\mathcal K\Omega\|_2\leq
+\|\nabla\bar\Omega_\ell\|_\infty
+(2\pi^2\ell R^2)^{1/3}C_{\rm S}\|\Omega\|_2.
+\tag{PT11}
+\]</span>
+<p>To prove compactness, take a smooth compact cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near <span class="math" data-tex="\(\overline Q_\ell\)">\(\overline Q_\ell\)</span>. Formula PT6 and the product rule bound <span class="math" data-tex="\(\chi\mathcal B\Omega\)">\(\chi\mathcal B\Omega\)</span> in <span class="math" data-tex="\(H^1\)">\(H^1\)</span> for every bounded set of inputs. These cut-off velocities have a common bounded support. Here is the needed compactness argument: the Fourier projection onto <span class="math" data-tex="\(|\eta|\leq N\)">\(|\eta|\leq N\)</span>, acting on fields supported in that fixed bounded set, is compact, because its Fourier kernel is <span class="math" data-tex="\(e^{-ix\cdot\eta}\)">\(e^{-ix\cdot\eta}\)</span> on a product of two finite-volume sets and hence is square-integrable. Approximation of that kernel by finite sums of products proves compactness without any assertion about an infinite-dimensional bounded ball. The complementary Fourier part has norm at most <span class="math" data-tex="\(N^{-1}\|\nabla(\chi\mathcal B\Omega)\|_2\)">\(N^{-1}\|\nabla(\chi\mathcal B\Omega)\|_2\)</span>. Finite-frequency compactness and this uniform vanishing tail give a convergent subsequence in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Multiplication by the smooth bounded tensor <span class="math" data-tex="\(\nabla\bar\Omega_\ell\)">\(\nabla\bar\Omega_\ell\)</span> then gives convergence of <span class="math" data-tex="\(\mathcal K\Omega\)">\(\mathcal K\Omega\)</span>. Thus the actual operator in PT7 is compact on <span class="math" data-tex="\(\mathcal H_{\rm aps}\)">\(\mathcal H_{\rm aps}\)</span>.</p>
+<h2 id="pt5-prove-the-physical-transport-group-and-its-entire-domain">PT5. Prove the physical transport group and its entire domain</h2>
+<p>Let <span class="math" data-tex="\(\Phi_t\)">\(\Phi_t\)</span> be the flow of <span class="math" data-tex="\(\bar U_\ell\)">\(\bar U_\ell\)</span> on the original <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>. The smooth compact field is globally Lipschitz and bounded. Successive approximation on short intervals, followed by iteration, gives a unique complete flow, with inverse <span class="math" data-tex="\(\Phi_{-t}\)">\(\Phi_{-t}\)</span>. Differentiating its spatial equation gives
+<span class="math" data-tex="\(\partial_t\det D\Phi_t=(\operatorname{div}\bar U_\ell)(\Phi_t)\det D\Phi_t=0\)">\(\partial_t\det D\Phi_t=(\operatorname{div}\bar U_\ell)(\Phi_t)\det D\Phi_t=0\)</span>, so its physical Jacobian is exactly one. It preserves the angle because the background has no swirl; trajectories outside its support are stationary, and uniqueness prevents an interior trajectory from crossing a stationary exterior point at finite time.</p>
+<p>The resulting group and domain are</p>
+<span class="math math-display" data-tex="\[
+\mathcal G(t)\Omega=\Omega\circ\Phi_{-t},\qquad
+\|\mathcal G(t)\Omega\|_2=\|\Omega\|_2,\qquad
+D(\mathcal M)=\{\Omega\in\mathcal H_{\rm aps}:\bar U_\ell\cdot\nabla\Omega\in L^2\}.
+\tag{PT12}
+\]">\[
+\mathcal G(t)\Omega=\Omega\circ\Phi_{-t},\qquad
+\|\mathcal G(t)\Omega\|_2=\|\Omega\|_2,\qquad
+D(\mathcal M)=\{\Omega\in\mathcal H_{\rm aps}:\bar U_\ell\cdot\nabla\Omega\in L^2\}.
+\tag{PT12}
+\]</span>
+<p>Composition here acts on Cartesian components. Since the angle is unchanged, it preserves the pure-swirl basis as well. Strong continuity follows first for compact smooth fields by the actual flow and then by density and unitarity.</p>
+<p>For completeness that density can preserve the symmetry even at the axis. Average the operators <span class="math" data-tex="\(f(x)\mapsto R^{-1}f(Rx)\)">\(f(x)\mapsto R^{-1}f(Rx)\)</span> over all rotations about the axis, and then apply <span class="math" data-tex="\((I-\mathcal J)/2\)">\((I-\mathcal J)/2\)</span>. The two operations commute, have norm at most one on every Cartesian <span class="math" data-tex="\(H^m\)">\(H^m\)</span>, preserve smoothness and compact support, and their combined image is exactly the pure-swirl space. Applying them to ordinary compact smooth approximants proves the required density. Invariance of the Sobolev norms follows because each rotation or reflection is orthogonal on both the spatial and vector indices.</p>
+<p>If a group difference quotient converges in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, pairing it against compact smooth test fields and changing variables by <span class="math" data-tex="\(\Phi_t\)">\(\Phi_t\)</span> shows its limit is <span class="math" data-tex="\(-\bar U_\ell\cdot\nabla\Omega\)">\(-\bar U_\ell\cdot\nabla\Omega\)</span>. Conversely, if this distribution belongs to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, differentiate the same test pairing along the flow and integrate in time. It gives the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> identity</p>
+<span class="math math-display" data-tex="\[
+\mathcal G(t)\Omega-\Omega=\int_0^t\mathcal G(u)\mathcal M\Omega\,du.
+\tag{PT13}
+\]">\[
+\mathcal G(t)\Omega-\Omega=\int_0^t\mathcal G(u)\mathcal M\Omega\,du.
+\tag{PT13}
+\]</span>
+<p>To check the differentiated pairing, use <span class="math" data-tex="\(\bar U_\ell(\Phi_u x)=D\Phi_u(x)\bar U_\ell(x)\)">\(\bar U_\ell(\Phi_u x)=D\Phi_u(x)\bar U_\ell(x)\)</span>, obtained by differentiating the flow's group law, and use the unit Jacobian. All test functions retain compact support over a finite time interval. Dividing PT13 by <span class="math" data-tex="\(t\)">\(t\)</span> proves the reverse domain inclusion. This proves the entire domain in PT12. Closedness follows by passing to the limit in PT13. Both positive- and negative-time Laplace integrals provide the two half-plane inverses with bound <span class="math" data-tex="\(|\operatorname{Re}\lambda|^{-1}\)">\(|\operatorname{Re}\lambda|^{-1}\)</span>; differentiation under the integral and its two endpoints prove both inverse identities. The group is unitary, and differentiation of its inner product identity gives <span class="math" data-tex="\(\mathcal M^*=-\mathcal M\)">\(\mathcal M^*=-\mathcal M\)</span>, with equality of domains obtained from the two inverse ranges.</p>
+<h2 id="pt6-construct-the-bounded-perturbations-on-their-exact-domains">PT6. Construct the bounded perturbations on their exact domains</h2>
+<p>For <span class="math" data-tex="\(B=\mathcal S\)">\(B=\mathcal S\)</span> or <span class="math" data-tex="\(B=\mathcal S+\mathcal K\)">\(B=\mathcal S+\mathcal K\)</span>, construct the series</p>
+<span class="math math-display" data-tex="\[
+V_0(t)=\mathcal G(t),\qquad
+V_{n+1}(t)f=\int_0^t\mathcal G(t-u)B V_n(u)f\,du,
+\qquad V_B(t)=\sum_{n=0}^\infty V_n(t),\qquad t\geq0.
+\tag{PT14}
+\]">\[
+V_0(t)=\mathcal G(t),\qquad
+V_{n+1}(t)f=\int_0^t\mathcal G(t-u)B V_n(u)f\,du,
+\qquad V_B(t)=\sum_{n=0}^\infty V_n(t),\qquad t\geq0.
+\tag{PT14}
+\]</span>
+<p>Iteration bounds <span class="math" data-tex="\(\|V_n(t)\|\leq\|B\|^nt^n/n!\)">\(\|V_n(t)\|\leq\|B\|^nt^n/n!\)</span>. Thus the series converges uniformly on bounded time intervals and solves its integral equation. Iterating the difference of two possible solutions gives the same factorial bound with arbitrary order, proving uniqueness. Splitting the integral at a time <span class="math" data-tex="\(s\)">\(s\)</span> and using that uniqueness proves <span class="math" data-tex="\(V_B(t+s)=V_B(t)V_B(s)\)">\(V_B(t+s)=V_B(t)V_B(s)\)</span>. The series also proves strong continuity and <span class="math" data-tex="\(\|V_B(t)\|\leq e^{\|B\|t}\)">\(\|V_B(t)\|\leq e^{\|B\|t}\)</span>.</p>
+<p>To identify its entire generator domain, take real <span class="math" data-tex="\(\lambda&gt;\|B\|\)">\(\lambda&gt;\|B\|\)</span>. Laplace transformation of PT14 gives
+<span class="math" data-tex="\(R_B=(I-R_{\mathcal M}B)^{-1}R_{\mathcal M}\)">\(R_B=(I-R_{\mathcal M}B)^{-1}R_{\mathcal M}\)</span>, where all resolvents have argument <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The inverse is the convergent geometric series. If <span class="math" data-tex="\(x=R_B f\)">\(x=R_B f\)</span>, the equality <span class="math" data-tex="\(x=R_{\mathcal M}f+R_{\mathcal M}Bx\)">\(x=R_{\mathcal M}f+R_{\mathcal M}Bx\)</span> proves <span class="math" data-tex="\(x\in D(\mathcal M)\)">\(x\in D(\mathcal M)\)</span> and <span class="math" data-tex="\((\lambda-\mathcal M-B)x=f\)">\((\lambda-\mathcal M-B)x=f\)</span>. Conversely this equation for <span class="math" data-tex="\(x\in D(\mathcal M)\)">\(x\in D(\mathcal M)\)</span> yields that same bounded inverse. The Laplace difference-quotient argument proves that its range is exactly the generator domain of <span class="math" data-tex="\(V_B\)">\(V_B\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal N_\infty=\mathcal M+\mathcal S,\qquad
+\mathcal E=\mathcal M+\mathcal S+\mathcal K,\qquad
+D(\mathcal N_\infty)=D(\mathcal E)=D(\mathcal M),\\
+\|e^{t\mathcal N_\infty}\|\leq e^{\mu_\ell t},\qquad
+\|R_{\mathcal N_\infty}(\lambda)\|\leq
+\frac1{\operatorname{Re}\lambda-\mu_\ell}\quad
+(\operatorname{Re}\lambda&gt;\mu_\ell).
+\end{gathered}
+\tag{PT15}
+\]">\[
+\begin{gathered}
+\mathcal N_\infty=\mathcal M+\mathcal S,\qquad
+\mathcal E=\mathcal M+\mathcal S+\mathcal K,\qquad
+D(\mathcal N_\infty)=D(\mathcal E)=D(\mathcal M),\\
+\|e^{t\mathcal N_\infty}\|\leq e^{\mu_\ell t},\qquad
+\|R_{\mathcal N_\infty}(\lambda)\|\leq
+\frac1{\operatorname{Re}\lambda-\mu_\ell}\quad
+(\operatorname{Re}\lambda&gt;\mu_\ell).
+\end{gathered}
+\tag{PT15}
+\]</span>
+<p>For the last bound use the Laplace integral with the proved growth estimate. Its inverse identities follow from the semigroup law and endpoints, just as in PT13. This also proves existence throughout the displayed half-plane, beyond the initially large real parameter. The operators and domains here are in the original physical space throughout.</p>
+<h2 id="pt7-receive-the-already-constructed-unstable-ring-in-this-exact-domain">PT7. Receive the already constructed unstable ring in this exact domain</h2>
+<p>Lesson32 gives, for all sufficiently large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, a nonzero meridian eigenvorticity <span class="math" data-tex="\(\omega_\ell\)">\(\omega_\ell\)</span>, supported in <span class="math" data-tex="\(\overline B_R\)">\(\overline B_R\)</span>, with eigenvalue <span class="math" data-tex="\(\lambda_\ell\)">\(\lambda_\ell\)</span> inside a fixed small circle about the actual unstable planar eigenvalue. Write the lower bound for the real part on that circle as <span class="math" data-tex="\(a_0&gt;0\)">\(a_0&gt;0\)</span>. Define its physical field by</p>
+<span class="math math-display" data-tex="\[
+\Omega_\ell(x)=-\omega_\ell(s-\ell,z)e_\theta.
+\tag{PT16}
+\]">\[
+\Omega_\ell(x)=-\omega_\ell(s-\ell,z)e_\theta.
+\tag{PT16}
+\]</span>
+<p>The full PT3 norm is finite and positive: on this support <span class="math" data-tex="\(b_\ell\leq s\leq\ell+R\)">\(b_\ell\leq s\leq\ell+R\)</span>, and the meridian weight equals one. The incoming transport-domain statement says <span class="math" data-tex="\(V_\ell\cdot\nabla\omega_\ell\in L^2(B_R)\)">\(V_\ell\cdot\nabla\omega_\ell\in L^2(B_R)\)</span>. Multiplying its squared integral by the full bounded weight <span class="math" data-tex="\(2\pi s\)">\(2\pi s\)</span> proves <span class="math" data-tex="\(\Omega_\ell\in D(\mathcal M)\)">\(\Omega_\ell\in D(\mathcal M)\)</span>, with no claim that the mode is smooth.</p>
+<p>Its velocity from RK is the same as <span class="math" data-tex="\(\mathcal B\Omega_\ell\)">\(\mathcal B\Omega_\ell\)</span>: the former lies in <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, hence in <span class="math" data-tex="\(L^6\)">\(L^6\)</span> by PT4, and has the same divergence and curl, so the uniqueness proved after PT5 applies. Substituting PT2, PT7 and PT8 now gives exactly the full original meridian eigen-equation from RT29. In particular the half-divergence correction introduced for the weighted transport cancels with its explicitly retained partner in that equation. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathcal E\Omega_\ell=\lambda_\ell\Omega_\ell,
+\qquad \operatorname{Re}\lambda_\ell\geq a_0&gt;0.
+\tag{PT17}
+\]">\[
+\mathcal E\Omega_\ell=\lambda_\ell\Omega_\ell,
+\qquad \operatorname{Re}\lambda_\ell\geq a_0&gt;0.
+\tag{PT17}
+\]</span>
+<p>Choose <span class="math" data-tex="\(\ell\)">\(\ell\)</span> large enough both for this actual incoming construction and for <span class="math" data-tex="\(\mu_\ell^*&lt;a_0/2\)">\(\mu_\ell^*&lt;a_0/2\)</span>, which is possible by PT9–PT10. Fix that physical <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and background henceforth. Then the actual eigenvalue satisfies <span class="math" data-tex="\(\operatorname{Re}\lambda_\ell&gt;\mu_\ell\)">\(\operatorname{Re}\lambda_\ell&gt;\mu_\ell\)</span>; it has not been assumed as an abstract input.</p>
+<p>It is isolated with finite algebraic multiplicity in the half-plane <span class="math" data-tex="\(\operatorname{Re}\lambda&gt;\mu_\ell\)">\(\operatorname{Re}\lambda&gt;\mu_\ell\)</span>. Indeed
+<span class="math" data-tex="\(\lambda-\mathcal E=(\lambda-\mathcal N_\infty)(I-R_{\mathcal N_\infty}(\lambda)\mathcal K)\)">\(\lambda-\mathcal E=(\lambda-\mathcal N_\infty)(I-R_{\mathcal N_\infty}(\lambda)\mathcal K)\)</span> on the exact domain PT15. The second factor preserves that domain because its difference from the identity maps the whole space into it. The compact analytic factor has an inverse at real <span class="math" data-tex="\(\lambda&gt;\mu_\ell+\|\mathcal K\|\)">\(\lambda&gt;\mu_\ell+\|\mathcal K\|\)</span>. The finite-rank reduction and contour proof in lesson32, section RT6 and equations RT24–RT26, apply to this specified compact operator and half-plane: approximate the compact factor uniformly near a point by finite rank, invert the remaining operator by its norm-convergent geometric series, and reduce the failure of invertibility to a finite-dimensional analytic determinant. Propagating through the connected half-plane from the given inverse excludes an identically zero determinant; zeros are isolated. The resolvent has finite-rank principal part, and the contour projection therefore has finite-dimensional range. These are the exact prerequisites proved there, now checked for PT15. No assertion about a maximizing eigenvalue is required here.</p>
+<h2 id="pt8-prove-the-smooth-input-estimate-needed-by-the-viscous-comparison">PT8. Prove the smooth-input estimate needed by the viscous comparison</h2>
+<p>We need an actual <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound for the dissipative expression along the inviscid <span class="math" data-tex="\(\mathcal N_\infty\)">\(\mathcal N_\infty\)</span> flow. Write <span class="math" data-tex="\(\|f\|_{H^m,\Sigma}=\sum_{j=0}^m\|\nabla^j f\|_2\)">\(\|f\|_{H^m,\Sigma}=\sum_{j=0}^m\|\nabla^j f\|_2\)</span>, an explicitly specified equivalent Sobolev norm, with all ordered derivative tensors retained. Cartesian product differentiation in PT7 and the exact PT6 identities give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\mathcal Sf\|_{H^m,\Sigma}\leq C_m\|f\|_{H^m,\Sigma},\\
+C_m=\sum_{j=0}^m\sum_{a=0}^j\binom ja
+\left(\|\nabla^a\bar\Omega_\ell\|_\infty
++\|\nabla^{a+1}\bar U_\ell\|_\infty\right),
+\qquad m\in\{0,1,2,\ldots\}.
+\end{gathered}
+\tag{PT18}
+\]">\[
+\begin{gathered}
+\|\mathcal Sf\|_{H^m,\Sigma}\leq C_m\|f\|_{H^m,\Sigma},\\
+C_m=\sum_{j=0}^m\sum_{a=0}^j\binom ja
+\left(\|\nabla^a\bar\Omega_\ell\|_\infty
++\|\nabla^{a+1}\bar U_\ell\|_\infty\right),
+\qquad m\in\{0,1,2,\ldots\}.
+\end{gathered}
+\tag{PT18}
+\]</span>
+<p>Each product in <span class="math" data-tex="\(\nabla^j(\bar\Omega_\ell\cdot\nabla\mathcal Bf)\)">\(\nabla^j(\bar\Omega_\ell\cdot\nabla\mathcal Bf)\)</span> is bounded by <span class="math" data-tex="\(\binom ja\|\nabla^a\bar\Omega_\ell\|_\infty\|\nabla^{j-a+1}\mathcal Bf\|_2\)">\(\binom ja\|\nabla^a\bar\Omega_\ell\|_\infty\|\nabla^{j-a+1}\mathcal Bf\|_2\)</span>; PT6 identifies the latter norm with <span class="math" data-tex="\(\|\nabla^{j-a}f\|_2\)">\(\|\nabla^{j-a}f\|_2\)</span>. The second product has <span class="math" data-tex="\(\nabla^{a+1}\bar U_\ell\)">\(\nabla^{a+1}\bar U_\ell\)</span> and <span class="math" data-tex="\(\nabla^{j-a}f\)">\(\nabla^{j-a}f\)</span>. Summing gives exactly the sufficient constant displayed. Approximation by the symmetry-preserving compact smooth sequence from PT5 proves the estimate for every input in the indicated Sobolev space.</p>
+<p>Let <span class="math" data-tex="\(L=\|D\bar U_\ell\|_\infty\)">\(L=\|D\bar U_\ell\|_\infty\)</span> and <span class="math" data-tex="\(B_2=\|D^2\bar U_\ell\|_\infty\)">\(B_2=\|D^2\bar U_\ell\|_\infty\)</span>, using Euclidean tensor norms. Differentiating the flow equation and using its integral form gives <span class="math" data-tex="\(\|D\Phi_{-t}\|_\infty\leq e^{Lt}\)">\(\|D\Phi_{-t}\|_\infty\leq e^{Lt}\)</span> and <span class="math" data-tex="\(\|D^2\Phi_{-t}\|_\infty\leq B_2te^{2Lt}\)">\(\|D^2\Phi_{-t}\|_\infty\leq B_2te^{2Lt}\)</span> for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. For the second bound, its inhomogeneous term is at most <span class="math" data-tex="\(B_2e^{2Ls}\)">\(B_2e^{2Ls}\)</span>, and propagation from <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(t\)">\(t\)</span> costs at most <span class="math" data-tex="\(e^{L(t-s)}\)">\(e^{L(t-s)}\)</span>; integrate and bound the resulting integral by <span class="math" data-tex="\(te^{2Lt}\)">\(te^{2Lt}\)</span>. The full Cartesian chain rule and the unit Jacobian then give, for <span class="math" data-tex="\(0\leq t\leq T\)">\(0\leq t\leq T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal G(t)f\|_{H^2,\Sigma}\leq P_2(T)\|f\|_{H^2,\Sigma},
+\qquad
+P_2(T)=1+e^{LT}+e^{2LT}(1+B_2T).
+\tag{PT19}
+\]">\[
+\|\mathcal G(t)f\|_{H^2,\Sigma}\leq P_2(T)\|f\|_{H^2,\Sigma},
+\qquad
+P_2(T)=1+e^{LT}+e^{2LT}(1+B_2T).
+\tag{PT19}
+\]</span>
+<p>The three original terms are the unchanged <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm, the first derivative multiplied by <span class="math" data-tex="\(D\Phi\)">\(D\Phi\)</span>, and the two second-derivative contributions <span class="math" data-tex="\((D^2f)(D\Phi,D\Phi)\)">\((D^2f)(D\Phi,D\Phi)\)</span> and <span class="math" data-tex="\((Df)D^2\Phi\)">\((Df)D^2\Phi\)</span>. Thus PT19 accounts for every derivative of the actual flow. Applying the series PT14 with the bounded <span class="math" data-tex="\(H^2\)">\(H^2\)</span> operator from PT18 now yields</p>
+<span class="math math-display" data-tex="\[
+\|e^{t\mathcal N_\infty}f\|_{H^2,\Sigma}
+\leq P_2(T)e^{P_2(T)C_2t}\|f\|_{H^2,\Sigma},
+\qquad 0\leq t\leq T.
+\tag{PT20}
+\]">\[
+\|e^{t\mathcal N_\infty}f\|_{H^2,\Sigma}
+\leq P_2(T)e^{P_2(T)C_2t}\|f\|_{H^2,\Sigma},
+\qquad 0\leq t\leq T.
+\tag{PT20}
+\]</span>
+<p>The series converges in this Sobolev norm and agrees with the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> solution by uniqueness. It is continuous in <span class="math" data-tex="\(H^2\)">\(H^2\)</span>, since composition by the smooth volume-preserving flow is continuous first on compact smooth functions and then by PT19 and density.</p>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> is compactly supported, choose a physical radius <span class="math" data-tex="\(J&gt;\ell+R\)">\(J&gt;\ell+R\)</span> that also contains its support. The flow fixes every point outside <span class="math" data-tex="\(B_J\)">\(B_J\)</span>, and <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> always has support in <span class="math" data-tex="\(\overline Q_\ell\)">\(\overline Q_\ell\)</span>. Every summand of PT14 is therefore supported in <span class="math" data-tex="\(\overline B_J\)">\(\overline B_J\)</span>; so is the limit. With the original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, this proves the quantitative bound</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal D_\nu&amp;=\nu\Delta+\tfrac12 x\cdot\nabla+\tfrac34,\\
+\sup_{0\leq t\leq T}\|\mathcal D_\nu e^{t\mathcal N_\infty}f\|_2
+&amp;\leq\left(\nu+\frac J2+\frac34\right)
+P_2(T)e^{P_2(T)C_2T}\|f\|_{H^2,\Sigma}.
+\end{aligned}
+\tag{PT21}
+\]">\[
+\begin{aligned}
+\mathcal D_\nu&amp;=\nu\Delta+\tfrac12 x\cdot\nabla+\tfrac34,\\
+\sup_{0\leq t\leq T}\|\mathcal D_\nu e^{t\mathcal N_\infty}f\|_2
+&amp;\leq\left(\nu+\frac J2+\frac34\right)
+P_2(T)e^{P_2(T)C_2T}\|f\|_{H^2,\Sigma}.
+\end{aligned}
+\tag{PT21}
+\]</span>
+<p>For the diffusion term use the exact Cartesian Fourier identity <span class="math" data-tex="\(\|\Delta v\|_2=\|\nabla^2v\|_2\)">\(\|\Delta v\|_2=\|\nabla^2v\|_2\)</span>; the drift term costs <span class="math" data-tex="\(J\|\nabla v\|_2/2\)">\(J\|\nabla v\|_2/2\)</span>, and the last term costs <span class="math" data-tex="\(3\|v\|_2/4\)">\(3\|v\|_2/4\)</span>. The support and <span class="math" data-tex="\(H^2\)">\(H^2\)</span> continuity also prove continuity of this whole expression in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> as time varies. This supplies the stronger smooth-input forcing bound needed for an order <span class="math" data-tex="\(\beta^{-1}\)">\(\beta^{-1}\)</span> inviscid comparison. That rate itself requires construction of the viscous perturbed semigroup and will be proved only after that construction; an <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> energy estimate by itself does not establish it.</p>
+<h2 id="vd1-keep-the-exact-operator-and-full-physical-space">VD1. Keep the exact operator and full physical space</h2>
+<p>On <span class="math" data-tex="\(\mathcal H=L^2(\mathbb R^3;\mathbb C^3)\)">\(\mathcal H=L^2(\mathbb R^3;\mathbb C^3)\)</span>, with the original Lebesgue volume, define</p>
+<span class="math math-display" data-tex="\[
+\mathcal A f=\frac12\xi\cdot\nabla_\xi f+\frac34f,
+\qquad
+\mathcal D_\nu f=\nu\Delta f+\mathcal A f,
+\qquad
+\mathcal G_{\nu,\beta}=\frac1\beta\mathcal D_\nu,
+\quad \nu&gt;0,\quad\beta&gt;0.
+\tag{VD1}
+\]">\[
+\mathcal A f=\frac12\xi\cdot\nabla_\xi f+\frac34f,
+\qquad
+\mathcal D_\nu f=\nu\Delta f+\mathcal A f,
+\qquad
+\mathcal G_{\nu,\beta}=\frac1\beta\mathcal D_\nu,
+\quad \nu&gt;0,\quad\beta&gt;0.
+\tag{VD1}
+\]</span>
+<p>The proposed domain, which will be proved to be the full generator domain, is</p>
+<span class="math math-display" data-tex="\[
+\mathcal X=\{f\in H^2(\mathbb R^3;\mathbb C^3):\xi\cdot\nabla f\in L^2(\mathbb R^3;\mathbb C^3)\}.
+\tag{VD2}
+\]">\[
+\mathcal X=\{f\in H^2(\mathbb R^3;\mathbb C^3):\xi\cdot\nabla f\in L^2(\mathbb R^3;\mathbb C^3)\}.
+\tag{VD2}
+\]</span>
+<p>All derivatives are distributional. The separate conditions in VD2 retain both the diffusion and dilation contributions. They will not be replaced by the weaker-looking condition that their sum alone belongs to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</p>
+<p>For compact smooth fields, integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Re}\langle\xi\cdot\nabla f,f\rangle=-\frac32\|f\|_2^2,
+\qquad\operatorname{Re}\langle\mathcal Af,f\rangle=0,
+\qquad\operatorname{Re}\langle\mathcal D_\nu f,f\rangle=-\nu\|\nabla f\|_2^2.
+\tag{VD3}
+\]">\[
+\operatorname{Re}\langle\xi\cdot\nabla f,f\rangle=-\frac32\|f\|_2^2,
+\qquad\operatorname{Re}\langle\mathcal Af,f\rangle=0,
+\qquad\operatorname{Re}\langle\mathcal D_\nu f,f\rangle=-\nu\|\nabla f\|_2^2.
+\tag{VD3}
+\]</span>
+<p>Indeed integrate <span class="math" data-tex="\(\xi\cdot\nabla|f|^2\)">\(\xi\cdot\nabla|f|^2\)</span>, retaining <span class="math" data-tex="\(\operatorname{div}\xi=3\)">\(\operatorname{div}\xi=3\)</span>. The resulting <span class="math" data-tex="\(-3/4\)">\(-3/4\)</span> contribution in the real inner product cancels precisely the displayed <span class="math" data-tex="\(+3/4\)">\(+3/4\)</span>; both terms remain explicit in VD1. This establishes dissipativity in the original volume.</p>
+<h2 id="vd2-derive-the-whole-heat-and-dilation-semigroup">VD2. Derive the whole heat-and-dilation semigroup</h2>
+<p>For the actual elapsed time <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\kappa_t=e^{t/(2\beta)},\qquad q_t=\nu(e^{t/\beta}-1),\qquad
+\mathcal S_{\nu,\beta}(t)f(\xi)
+=e^{3t/(4\beta)}(e^{q_t\Delta}f)(\kappa_t\xi).
+\tag{VD4}
+\]">\[
+\kappa_t=e^{t/(2\beta)},\qquad q_t=\nu(e^{t/\beta}-1),\qquad
+\mathcal S_{\nu,\beta}(t)f(\xi)
+=e^{3t/(4\beta)}(e^{q_t\Delta}f)(\kappa_t\xi).
+\tag{VD4}
+\]</span>
+<p>For <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, the heat operator in this formula is the full physical convolution</p>
+<span class="math math-display" data-tex="\[
+(e^{q\Delta}f)(x)=(4\pi q)^{-3/2}\int_{\mathbb R^3}
+\exp\left(-\frac{|x-y|^2}{4q}\right)f(y)\,dy.
+\tag{VD5}
+\]">\[
+(e^{q\Delta}f)(x)=(4\pi q)^{-3/2}\int_{\mathbb R^3}
+\exp\left(-\frac{|x-y|^2}{4q}\right)f(y)\,dy.
+\tag{VD5}
+\]</span>
+<p>At <span class="math" data-tex="\(q=0\)">\(q=0\)</span> it is the identity. Thus no spatial coordinate, time variable or original amplitude is replaced by a new working object: VD4 is an explicit operator on the original <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-space.</p>
+<p>For a compact smooth input differentiate all factors. The prefactor gives <span class="math" data-tex="\(3/(4\beta)\)">\(3/(4\beta)\)</span>, the spatial argument gives <span class="math" data-tex="\(\xi\cdot\nabla/(2\beta)\)">\(\xi\cdot\nabla/(2\beta)\)</span>, and <span class="math" data-tex="\(q_t&#x27;=\nu e^{t/\beta}/\beta=\nu\kappa_t^2/\beta\)">\(q_t&#x27;=\nu e^{t/\beta}/\beta=\nu\kappa_t^2/\beta\)</span> gives exactly <span class="math" data-tex="\(\nu\Delta_\xi/\beta\)">\(\nu\Delta_\xi/\beta\)</span>. Hence the derivative at every positive time, and at zero on such an input, is <span class="math" data-tex="\(\mathcal G_{\nu,\beta}\mathcal S_{\nu,\beta}(t)f\)">\(\mathcal G_{\nu,\beta}\mathcal S_{\nu,\beta}(t)f\)</span>.</p>
+<p>The exact heat scaling identity is
+<span class="math" data-tex="\(e^{q\Delta}[g(\kappa\cdot)](x)=(e^{q\kappa^2\Delta}g)(\kappa x)\)">\(e^{q\Delta}[g(\kappa\cdot)](x)=(e^{q\kappa^2\Delta}g)(\kappa x)\)</span>, proved by substituting <span class="math" data-tex="\(y\mapsto\kappa y\)">\(y\mapsto\kappa y\)</span> in VD5 and retaining its factor <span class="math" data-tex="\(\kappa^{-3}\)">\(\kappa^{-3}\)</span>. Together with
+<span class="math" data-tex="\(q_{t+u}=q_u+\kappa_u^2q_t\)">\(q_{t+u}=q_u+\kappa_u^2q_t\)</span>, it proves the semigroup law in VD4. For its norm, change variables <span class="math" data-tex="\(x=\kappa_t\xi\)">\(x=\kappa_t\xi\)</span> and retain both volume and amplitude:</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal S_{\nu,\beta}(t)f\|_2^2
+=e^{3t/(2\beta)}\kappa_t^{-3}\|e^{q_t\Delta}f\|_2^2
+=\|e^{q_t\Delta}f\|_2^2\leq\|f\|_2^2.
+\tag{VD6}
+\]">\[
+\|\mathcal S_{\nu,\beta}(t)f\|_2^2
+=e^{3t/(2\beta)}\kappa_t^{-3}\|e^{q_t\Delta}f\|_2^2
+=\|e^{q_t\Delta}f\|_2^2\leq\|f\|_2^2.
+\tag{VD6}
+\]</span>
+<p>The final inequality follows from the heat multiplier <span class="math" data-tex="\(e^{-q_t|\eta|^2}\)">\(e^{-q_t|\eta|^2}\)</span>, with the unchanged Plancherel convention. Strong continuity on compact smooth inputs follows from the Gaussian approximate identity and ordinary dilation continuity; density and VD6 extend it to all of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>.</p>
+<p>With <span class="math" data-tex="\(\widehat f(\eta)=\int e^{-i\xi\cdot\eta}f(\xi)d\xi\)">\(\widehat f(\eta)=\int e^{-i\xi\cdot\eta}f(\xi)d\xi\)</span> and inverse prefactor <span class="math" data-tex="\((2\pi)^{-3}\)">\((2\pi)^{-3}\)</span>, the exact Fourier formula is</p>
+<span class="math math-display" data-tex="\[
+\widehat{\mathcal S_{\nu,\beta}(t)f}(\eta)
+=e^{-3t/(4\beta)}
+e^{-\nu(1-e^{-t/\beta})|\eta|^2}
+\widehat f(e^{-t/(2\beta)}\eta).
+\tag{VD7}
+\]">\[
+\widehat{\mathcal S_{\nu,\beta}(t)f}(\eta)
+=e^{-3t/(4\beta)}
+e^{-\nu(1-e^{-t/\beta})|\eta|^2}
+\widehat f(e^{-t/(2\beta)}\eta).
+\tag{VD7}
+\]</span>
+<p>This follows from the same physical volume change; the heat argument and amplitude are both retained. In particular there is no loss of the original coefficient <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<h2 id="vd3-prove-a-graph-estimate-that-separates-both-original-contributions">VD3. Prove a graph estimate that separates both original contributions</h2>
+<p>For compact smooth fields, the commutator is
+<span class="math" data-tex="\([\Delta,\mathcal A]=\Delta\)">\([\Delta,\mathcal A]=\Delta\)</span>. Since <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is symmetric and <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is skew-symmetric on that class, integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+2\operatorname{Re}\langle\Delta f,\mathcal Af\rangle
+=\langle f,[\Delta,\mathcal A]f\rangle=-\|\nabla f\|_2^2.
+\]">\[
+2\operatorname{Re}\langle\Delta f,\mathcal Af\rangle
+=\langle f,[\Delta,\mathcal A]f\rangle=-\|\nabla f\|_2^2.
+\]</span>
+<p>Consequently the full squared norm is</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal D_\nu f\|_2^2
+=\nu^2\|\Delta f\|_2^2+\|\mathcal Af\|_2^2-\nu\|\nabla f\|_2^2.
+\tag{VD8}
+\]">\[
+\|\mathcal D_\nu f\|_2^2
+=\nu^2\|\Delta f\|_2^2+\|\mathcal Af\|_2^2-\nu\|\nabla f\|_2^2.
+\tag{VD8}
+\]</span>
+<p>Every sign in the cross term matters. The Fourier inequality
+<span class="math" data-tex="\(\nu|\eta|^2\leq\nu^2|\eta|^4/2+1/2\)">\(\nu|\eta|^2\leq\nu^2|\eta|^4/2+1/2\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+\frac{\nu^2}{2}\|\Delta f\|_2^2+\|\mathcal Af\|_2^2
+\leq\|\mathcal D_\nu f\|_2^2+\frac12\|f\|_2^2,
+\qquad
+\|\xi\cdot\nabla f\|_2\leq2\|\mathcal Af\|_2+\frac32\|f\|_2.
+\tag{VD9}
+\]">\[
+\frac{\nu^2}{2}\|\Delta f\|_2^2+\|\mathcal Af\|_2^2
+\leq\|\mathcal D_\nu f\|_2^2+\frac12\|f\|_2^2,
+\qquad
+\|\xi\cdot\nabla f\|_2\leq2\|\mathcal Af\|_2+\frac32\|f\|_2.
+\tag{VD9}
+\]</span>
+<p>These retain the complete drift coefficient and give control of each term of VD2. The Fourier identity <span class="math" data-tex="\(\sum_{i,j}\|\partial_i\partial_jf\|_2^2=\|\Delta f\|_2^2\)">\(\sum_{i,j}\|\partial_i\partial_jf\|_2^2=\|\Delta f\|_2^2\)</span>, along with the first-derivative interpolation above, controls the complete <span class="math" data-tex="\(H^2\)">\(H^2\)</span> norm. Thus the full graph norm is equivalent to <span class="math" data-tex="\(\|f\|_{H^2}+\|\xi\cdot\nabla f\|_2\)">\(\|f\|_{H^2}+\|\xi\cdot\nabla f\|_2\)</span>, with constants depending on the actual fixed <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, which has not been absorbed.</p>
+<h2 id="vd4-prove-that-compact-smooth-fields-are-a-core-for-the-full-domain">VD4. Prove that compact smooth fields are a core for the full domain</h2>
+<p>Take a fixed smooth cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, equal to one on the unit ball and zero outside the ball of radius two, and put <span class="math" data-tex="\(\chi_R(\xi)=\chi(\xi/R)\)">\(\chi_R(\xi)=\chi(\xi/R)\)</span>. For <span class="math" data-tex="\(f\in\mathcal X\)">\(f\in\mathcal X\)</span>, the complete cutoff commutator is</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_\nu(\chi_Rf)-\chi_R\mathcal D_\nu f
+=2\nu\nabla\chi_R\cdot\nabla f+\nu(\Delta\chi_R)f
++\frac12(\xi\cdot\nabla\chi_R)f.
+\tag{VD10}
+\]">\[
+\mathcal D_\nu(\chi_Rf)-\chi_R\mathcal D_\nu f
+=2\nu\nabla\chi_R\cdot\nabla f+\nu(\Delta\chi_R)f
++\frac12(\xi\cdot\nabla\chi_R)f.
+\tag{VD10}
+\]</span>
+<p>The first two terms have the original <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> and <span class="math" data-tex="\(R^{-2}\)">\(R^{-2}\)</span> derivative factors. The last coefficient is bounded uniformly in <span class="math" data-tex="\(R\)">\(R\)</span> and supported in the escaping annulus; its product tends to zero in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by the full tail of <span class="math" data-tex="\(f\)">\(f\)</span>. The same product rules for first and second derivatives show <span class="math" data-tex="\(\chi_Rf\to f\)">\(\chi_Rf\to f\)</span> in <span class="math" data-tex="\(H^2\)">\(H^2\)</span>. Directly, <span class="math" data-tex="\(\xi\cdot\nabla(\chi_Rf)=\chi_R\xi\cdot\nabla f+(\xi\cdot\nabla\chi_R)f\)">\(\xi\cdot\nabla(\chi_Rf)=\chi_R\xi\cdot\nabla f+(\xi\cdot\nabla\chi_R)f\)</span> converges to the original drift in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Thus cutoff convergence holds in the complete domain norm, not only locally.</p>
+<p>Mollify a compactly supported member with a smooth compact approximate identity <span class="math" data-tex="\(\eta_\epsilon\)">\(\eta_\epsilon\)</span>. Diffusion commutes with convolution. The full dilation commutator is</p>
+<span class="math math-display" data-tex="\[
+\xi\cdot\nabla(f*\eta_\epsilon)
+-(\xi\cdot\nabla f)*\eta_\epsilon
+=f*(3\eta_\epsilon+y\cdot\nabla\eta_\epsilon).
+\tag{VD11}
+\]">\[
+\xi\cdot\nabla(f*\eta_\epsilon)
+-(\xi\cdot\nabla f)*\eta_\epsilon
+=f*(3\eta_\epsilon+y\cdot\nabla\eta_\epsilon).
+\tag{VD11}
+\]</span>
+<p>To verify it, integrate <span class="math" data-tex="\((\xi_j-y_j)\partial_jf(y)\eta_\epsilon(\xi-y)\)">\((\xi_j-y_j)\partial_jf(y)\eta_\epsilon(\xi-y)\)</span> by parts in <span class="math" data-tex="\(y_j\)">\(y_j\)</span> and sum over all three coordinates. The kernel on the right has integral zero, since <span class="math" data-tex="\(\int y\cdot\nabla\eta_\epsilon=-3\)">\(\int y\cdot\nabla\eta_\epsilon=-3\)</span>. Its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm is bounded independently of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> and its support shrinks to zero. Therefore its convolution tends to zero in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>: write it as the integral of <span class="math" data-tex="\(f(\cdot-y)-f\)">\(f(\cdot-y)-f\)</span> against that kernel and use translation continuity and its bounded norm. All other terms converge by the approximate identity. The approximants are compact and smooth and converge in the full VD2 norm.</p>
+<p>Let <span class="math" data-tex="\(\overline{\mathcal D_\nu}\)">\(\overline{\mathcal D_\nu}\)</span> denote the closure from compact smooth fields. The approximation proves <span class="math" data-tex="\(\mathcal X\subset D(\overline{\mathcal D_\nu})\)">\(\mathcal X\subset D(\overline{\mathcal D_\nu})\)</span>. Conversely, a Cauchy sequence in the initial graph norm is Cauchy in <span class="math" data-tex="\(H^2\)">\(H^2\)</span> and in the drift norm by VD9. The distributional limit identifies both derivatives and lies in <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+D(\overline{\mathcal D_\nu})=\mathcal X,
+\qquad\overline{\mathcal D_\nu}f=\nu\Delta f+\tfrac12\xi\cdot\nabla f+\tfrac34f.
+\tag{VD12}
+\]">\[
+D(\overline{\mathcal D_\nu})=\mathcal X,
+\qquad\overline{\mathcal D_\nu}f=\nu\Delta f+\tfrac12\xi\cdot\nabla f+\tfrac34f.
+\tag{VD12}
+\]</span>
+<p>This proves closedness and extends VD3, VD8 and VD9 to the entire domain by graph approximation.</p>
+<h2 id="vd5-identify-the-semigroup-generator-and-both-inverse-identities">VD5. Identify the semigroup generator and both inverse identities</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be the generator defined by the strong difference quotient of the contraction semigroup VD4. It is closed: the exact identity <span class="math" data-tex="\(\mathcal S(t)f-f=\int_0^t\mathcal S(u)Gf\,du\)">\(\mathcal S(t)f-f=\int_0^t\mathcal S(u)Gf\,du\)</span> for generator inputs passes to the limit whenever <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span> and <span class="math" data-tex="\(Gf_n\to g\)">\(Gf_n\to g\)</span>; dividing the resulting identity by <span class="math" data-tex="\(t\)">\(t\)</span> and using strong continuity gives <span class="math" data-tex="\(Gf=g\)">\(Gf=g\)</span>. It contains <span class="math" data-tex="\(\beta^{-1}\mathcal D_\nu\)">\(\beta^{-1}\mathcal D_\nu\)</span> on compact smooth fields by the actual derivative calculation, and therefore contains its closed extension on <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>. To prove equality, first construct the resolvent and its domain explicitly. For <span class="math" data-tex="\(\operatorname{Re}\lambda&gt;0\)">\(\operatorname{Re}\lambda&gt;0\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+R_{\nu,\beta}(\lambda)f=\int_0^\infty e^{-\lambda t}\mathcal S_{\nu,\beta}(t)f\,dt,
+\qquad\|R_{\nu,\beta}(\lambda)\|\leq(\operatorname{Re}\lambda)^{-1}.
+\tag{VD13}
+\]">\[
+R_{\nu,\beta}(\lambda)f=\int_0^\infty e^{-\lambda t}\mathcal S_{\nu,\beta}(t)f\,dt,
+\qquad\|R_{\nu,\beta}(\lambda)\|\leq(\operatorname{Re}\lambda)^{-1}.
+\tag{VD13}
+\]</span>
+<p>For compact smooth <span class="math" data-tex="\(f\)">\(f\)</span>, restrict the integral to <span class="math" data-tex="\([\epsilon,T]\)">\([\epsilon,T]\)</span>. Every field <span class="math" data-tex="\(\mathcal S(t)f\)">\(\mathcal S(t)f\)</span> there is rapidly decreasing with all derivatives, by the full Gaussian formula, so that restricted integral belongs to <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>. Differentiating in time gives the complete identity</p>
+<span class="math math-display" data-tex="\[
+\left(\lambda-\frac1\beta\mathcal D_\nu\right)
+\int_\epsilon^T e^{-\lambda t}\mathcal S(t)f\,dt
+=e^{-\lambda\epsilon}\mathcal S(\epsilon)f-e^{-\lambda T}\mathcal S(T)f.
+\tag{VD14}
+\]">\[
+\left(\lambda-\frac1\beta\mathcal D_\nu\right)
+\int_\epsilon^T e^{-\lambda t}\mathcal S(t)f\,dt
+=e^{-\lambda\epsilon}\mathcal S(\epsilon)f-e^{-\lambda T}\mathcal S(T)f.
+\tag{VD14}
+\]</span>
+<p>As <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span> and <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>, the integrals converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and the right side converges to <span class="math" data-tex="\(f\)">\(f\)</span>. Hence their <span class="math" data-tex="\(\mathcal D_\nu\)">\(\mathcal D_\nu\)</span> images converge to <span class="math" data-tex="\(\beta(\lambda Rf-f)\)">\(\beta(\lambda Rf-f)\)</span>; the closedness in VD12 proves <span class="math" data-tex="\(Rf\in\mathcal X\)">\(Rf\in\mathcal X\)</span> with that image. Approximate any <span class="math" data-tex="\(f\in\mathcal H\)">\(f\in\mathcal H\)</span> by compact smooth inputs; VD13 and the same image identity give convergence in the graph norm, so the statement holds for every input. Thus VD13 is a right inverse of <span class="math" data-tex="\(\lambda-\beta^{-1}\mathcal D_\nu\)">\(\lambda-\beta^{-1}\mathcal D_\nu\)</span> onto its full domain. Dissipativity VD3 proves injectivity, since a vector in its nullspace would satisfy <span class="math" data-tex="\(\operatorname{Re}\lambda\|f\|^2+\nu\|\nabla f\|^2/\beta=0\)">\(\operatorname{Re}\lambda\|f\|^2+\nu\|\nabla f\|^2/\beta=0\)</span>. It follows that this is a two-sided inverse.</p>
+<p>The Laplace integral is also the two-sided inverse of <span class="math" data-tex="\(\lambda-G\)">\(\lambda-G\)</span>. For the right inverse compute the difference quotient after translating the integral in time, using the semigroup law and its two endpoints. For a domain input, integrate the derivative of <span class="math" data-tex="\(e^{-\lambda t}\mathcal S(t)f\)">\(e^{-\lambda t}\mathcal S(t)f\)</span> to get the other identity; its infinite endpoint vanishes by contraction. These computations give <span class="math" data-tex="\(GRf=\lambda Rf-f\)">\(GRf=\lambda Rf-f\)</span> and <span class="math" data-tex="\(R(\lambda-G)f=f\)">\(R(\lambda-G)f=f\)</span>. Since both inverses have the same range, their domains agree. Therefore</p>
+<span class="math math-display" data-tex="\[
+G=\mathcal G_{\nu,\beta},\qquad D(G)=\mathcal X.
+\tag{VD15}
+\]">\[
+G=\mathcal G_{\nu,\beta},\qquad D(G)=\mathcal X.
+\tag{VD15}
+\]</span>
+<p>In particular the source's separate <span class="math" data-tex="\(H^2\)">\(H^2\)</span> and original dilation conditions are established as the entire generator domain, not assumed from a formal differential expression.</p>
+<p>The exact energy identity is, for every <span class="math" data-tex="\(f\in\mathcal H\)">\(f\in\mathcal H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal S_{\nu,\beta}(t)f\|_2^2
++\frac{2\nu}{\beta}\int_0^t\|\nabla\mathcal S_{\nu,\beta}(u)f\|_2^2\,du
+=\|f\|_2^2.
+\tag{VD16}
+\]">\[
+\|\mathcal S_{\nu,\beta}(t)f\|_2^2
++\frac{2\nu}{\beta}\int_0^t\|\nabla\mathcal S_{\nu,\beta}(u)f\|_2^2\,du
+=\|f\|_2^2.
+\tag{VD16}
+\]</span>
+<p>For compact smooth inputs this follows from VD3 and time differentiation. For general inputs it also follows directly from VD6 and the heat Fourier identity, using <span class="math" data-tex="\(q_u&#x27;=\nu e^{u/\beta}/\beta\)">\(q_u&#x27;=\nu e^{u/\beta}/\beta\)</span> and
+<span class="math" data-tex="\(\|\nabla\mathcal S(u)f\|_2^2=e^{u/\beta}\|\nabla e^{q_u\Delta}f\|_2^2\)">\(\|\nabla\mathcal S(u)f\|_2^2=e^{u/\beta}\|\nabla e^{q_u\Delta}f\|_2^2\)</span>. Changing variables from <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(q_u\)">\(q_u\)</span> in the nonnegative integral proves VD16 by Tonelli, retaining both endpoint norms. No initial differentiability is required.</p>
+<h2 id="vd6-prove-the-exact-smoothing-estimates-with-the-source-prefactor">VD6. Prove the exact smoothing estimates with the source prefactor</h2>
+<p>The original heat Fourier multiplier obeys
+<span class="math" data-tex="\(\sup_{\eta}|\eta|e^{-q|\eta|^2}=(2eq)^{-1/2}\)">\(\sup_{\eta}|\eta|e^{-q|\eta|^2}=(2eq)^{-1/2}\)</span>, by differentiating the scalar function of <span class="math" data-tex="\(|\eta|\)">\(|\eta|\)</span>. Formula VD4 therefore gives</p>
+<span class="math math-display" data-tex="\[
+\|\nabla\mathcal S_{\nu,\beta}(t)f\|_2
+\leq\frac{\|f\|_2}{\sqrt{2e\nu(1-e^{-t/\beta})}},\qquad t&gt;0.
+\tag{VD17}
+\]">\[
+\|\nabla\mathcal S_{\nu,\beta}(t)f\|_2
+\leq\frac{\|f\|_2}{\sqrt{2e\nu(1-e^{-t/\beta})}},\qquad t&gt;0.
+\tag{VD17}
+\]</span>
+<p>For a square-integrable matrix field <span class="math" data-tex="\(F\)">\(F\)</span>, with divergence in its first spatial index, the exact commutation rule is
+<span class="math" data-tex="\(\mathcal S(t)\operatorname{div}F=\kappa_t^{-1}\operatorname{div}\mathcal S(t)F\)">\(\mathcal S(t)\operatorname{div}F=\kappa_t^{-1}\operatorname{div}\mathcal S(t)F\)</span>, with the operator applied componentwise. This follows by differentiating the original dilated argument, or from VD7. The divergence multiplier has norm at most <span class="math" data-tex="\(|\eta|\)">\(|\eta|\)</span> relative to the full matrix norm. Consequently</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal S_{\nu,\beta}(t)\operatorname{div}F\|_2
+\leq\frac{\|F\|_2}{\sqrt{2e\nu(e^{t/\beta}-1)}}
+\leq\sqrt{\frac\beta{2e\nu t}}\,\|F\|_2.
+\tag{VD18}
+\]">\[
+\|\mathcal S_{\nu,\beta}(t)\operatorname{div}F\|_2
+\leq\frac{\|F\|_2}{\sqrt{2e\nu(e^{t/\beta}-1)}}
+\leq\sqrt{\frac\beta{2e\nu t}}\,\|F\|_2.
+\tag{VD18}
+\]</span>
+<p>This is a map from all <span class="math" data-tex="\(L^2\)">\(L^2\)</span> matrix fields, defined by the bounded multiplier even when their distributional divergence is not itself in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. The difference between the two denominators in VD17 and VD18 is the exact dilation factor, not a convention to suppress. These estimates provide the integrable time singularity needed for the original compact background transport perturbation.</p>
+<h2 id="vd7-preserve-the-physical-symmetry-spaces-and-the-source-quarter-shift">VD7. Preserve the physical symmetry spaces and the source quarter shift</h2>
+<p>Let <span class="math" data-tex="\(\mathcal H_{\rm aps}\)">\(\mathcal H_{\rm aps}\)</span> be the closed subspace of axisymmetric pure-swirl fields <span class="math" data-tex="\(f=f^\theta(s,z)e_\theta\)">\(f=f^\theta(s,z)e_\theta\)</span> in the original three-dimensional <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space. It is closed because its scalar norm is exactly <span class="math" data-tex="\(2\pi\int_0^\infty\int_{\mathbb R}s|f^\theta|^2\,dz\,ds\)">\(2\pi\int_0^\infty\int_{\mathbb R}s|f^\theta|^2\,dz\,ds\)</span>, and the corresponding scalar-to-vector map is an isometry onto that subspace. Such fields are distributionally divergence-free by full angular integration, as in RK2, without imposing an axis trace.</p>
+<p>Both heat and dilation preserve this subspace. Dilation keeps the original angle and rescales the actual positive radius and axial coordinate. For heat, evaluate at <span class="math" data-tex="\((s,0,z)\)">\((s,0,z)\)</span>. The azimuthal input is proportional to <span class="math" data-tex="\((-\sin\vartheta,\cos\vartheta,0)\)">\((-\sin\vartheta,\cos\vartheta,0)\)</span>, while its scalar Gaussian kernel depends on the angle only through <span class="math" data-tex="\(\cos\vartheta\)">\(\cos\vartheta\)</span>. The radial sine integral vanishes and the axial component is zero, leaving only the azimuthal direction. Rotation recovers this at every angle. First perform the calculation for compact smooth meridian inputs away from the axis; their density in the full weighted scalar norm and heat contraction extend it to every field in the subspace.</p>
+<p>Thus VD4 and VD13 restrict to <span class="math" data-tex="\(\mathcal H_{\rm aps}\)">\(\mathcal H_{\rm aps}\)</span>, with precisely</p>
+<span class="math math-display" data-tex="\[
+D(\mathcal G_{\nu,\beta}|_{\mathcal H_{\rm aps}})
+=\mathcal X\cap\mathcal H_{\rm aps}.
+\tag{VD19}
+\]">\[
+D(\mathcal G_{\nu,\beta}|_{\mathcal H_{\rm aps}})
+=\mathcal X\cap\mathcal H_{\rm aps}.
+\tag{VD19}
+\]</span>
+<p>Indeed convergence of a difference quotient in the closed subspace is equivalent to its convergence in the ambient space for an input in that subspace; the limit remains there. This proves the exact restricted domain. Similarly VD7 preserves the full divergence-free space <span class="math" data-tex="\(\mathcal H_\sigma\)">\(\mathcal H_\sigma\)</span>, since <span class="math" data-tex="\(\eta\cdot\widehat f(e^{-t/(2\beta)}\eta)=0\)">\(\eta\cdot\widehat f(e^{-t/(2\beta)}\eta)=0\)</span> whenever the original Fourier input is orthogonal to its own argument. No axisymmetric restriction is needed for that statement.</p>
+<p>For any smooth compact divergence-free original background <span class="math" data-tex="\(\bar U\)">\(\bar U\)</span>, write the complete Euler vorticity expression as
+<span class="math" data-tex="\(\mathcal E\Omega=-[\bar U,\Omega]-[\mathrm{BS}_{3d}\Omega,\bar\Omega]\)">\(\mathcal E\Omega=-[\bar U,\Omega]-[\mathrm{BS}_{3d}\Omega,\bar\Omega]\)</span>, where <span class="math" data-tex="\([V,W]=V\cdot\nabla W-W\cdot\nabla V\)">\([V,W]=V\cdot\nabla W-W\cdot\nabla V\)</span> and <span class="math" data-tex="\(\bar\Omega=\operatorname{curl}\bar U\)">\(\bar\Omega=\operatorname{curl}\bar U\)</span>. This line defines the original differential expression; the closed perturbed domain and its spectrum are not claimed by this definition. The source self-similar vorticity expression, with the original amplitude and viscosity, is exactly</p>
+<span class="math math-display" data-tex="\[
+\mathcal L_{\rm vor}^{(\beta,\nu)}\Omega
+=\nu\Delta\Omega+\frac12\xi\cdot\nabla\Omega+\Omega+\beta\mathcal E\Omega
+=\mathcal D_\nu\Omega+\beta\mathcal E\Omega+\frac14\Omega.
+\tag{VD20}
+\]">\[
+\mathcal L_{\rm vor}^{(\beta,\nu)}\Omega
+=\nu\Delta\Omega+\frac12\xi\cdot\nabla\Omega+\Omega+\beta\mathcal E\Omega
+=\mathcal D_\nu\Omega+\beta\mathcal E\Omega+\frac14\Omega.
+\tag{VD20}
+\]</span>
+<p>The equality retains <span class="math" data-tex="\(1=3/4+1/4\)">\(1=3/4+1/4\)</span> as two explicit contributions. Thus the source auxiliary expression <span class="math" data-tex="\(\mathcal T_{\beta,\nu}=\beta^{-1}\mathcal D_\nu+\mathcal E\)">\(\mathcal T_{\beta,\nu}=\beta^{-1}\mathcal D_\nu+\mathcal E\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\mathcal L_{\rm vor}^{(\beta,\nu)}=\beta\mathcal T_{\beta,\nu}+\frac14I,
+\tag{VD21}
+\]">\[
+\mathcal L_{\rm vor}^{(\beta,\nu)}=\beta\mathcal T_{\beta,\nu}+\frac14I,
+\tag{VD21}
+\]</span>
+<p>on any common domain where the complete displayed operations are defined. The original source case is obtained by substituting <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span>, not by changing the physical variables. PT1–PT21 have supplied the physical background coupling, stretching bounds and inviscid domain. The next work must prove the full perturbed viscous domain and resolvent convergence, and transfer the actual ring eigenvalue. It must also prove the complete velocity/curl map with its amplitude prefactor and the original pressure. Equations VD20–VD21 alone are algebraic identities and do not assert that unfinished spectral result.</p>
+<h2 id="two-pictures-of-the-physical-operators-and-exact-evolution">Two pictures of the physical operators and exact evolution</h2>
+<p><img src="assets/NS-FLUID-33/original-physical-ring-operators-3FAC2E0FAC40DE891209C71D7C06E513BB7E17CDDB61B23ADC42D0290EB4D669.png" alt="The original physical ring operators and their domains" class="course-figure" width="2240" height="1280" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-physical-ring-operators" data-asset-sha256="3FAC2E0FAC40DE891209C71D7C06E513BB7E17CDDB61B23ADC42D0290EB4D669"></p>
+<p>PT1–PT21 prove every map, norm and domain in this diagram. In particular,
+the velocity belongs to the displayed physical spaces for every input,
+and the full torus volume enters the stretching estimate. The existing
+<a href="NS-FLUID-31.html">ring geometry in lesson31</a>
+shows the original compact meridian disk and its three-dimensional torus.
+The <a href="assets/original-physical-flow-and-dilation.py">reproducible diagram source</a>
+is included. Human comparison: Albritton–Brué–Colombo, original
+main.tex1633–1716, with the coordinate correction proved in PT1–PT2.</p>
+<p><img src="assets/NS-FLUID-33/original-heat-dilation-44D49F177FA0C59EECE13B326B7527BF3116CFCAC87AF0E904ACABB651FD7696.png" alt="Exact Gaussian heat and dilation with the full energy balance" class="course-figure" width="2240" height="960" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-heat-dilation" data-asset-sha256="44D49F177FA0C59EECE13B326B7527BF3116CFCAC87AF0E904ACABB651FD7696"></p>
+<p>VD4–VD16 and Exercise1 prove these exact analytic formulas. The original
+example is <span class="math" data-tex="\(f(\xi)=(1,2,-1)e^{-0.6|\xi|^2}\)">\(f(\xi)=(1,2,-1)e^{-0.6|\xi|^2}\)</span>, with
+<span class="math" data-tex="\(\nu=0.7\)">\(\nu=0.7\)</span> and <span class="math" data-tex="\(\beta=2\)">\(\beta=2\)</span>. The left panel shows its first component;
+the right panel retains the full three-dimensional squared norm and
+dissipated energy. This example uses the full vector space and makes no
+divergence-free assertion. The <a href="assets/original-physical-flow-and-dilation.py">figure source</a>
+and <a href="assets/original-heat-dilation-data.json">parameter values</a> are
+included. These are evaluations of proved formulas, not a computed
+spectrum. Human comparison: the original dissipative operator at
+main.tex1655 and energy calculation1819, with the full proof here.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<h3 id="exercise-1-follow-an-original-gaussian-through-the-whole-semigroup">Exercise 1. Follow an original Gaussian through the whole semigroup</h3>
+<p>Take the full vector-space input <span class="math" data-tex="\(f(\xi)=b e^{-a|\xi|^2}\)">\(f(\xi)=b e^{-a|\xi|^2}\)</span>, where <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-tex="\(b\in\mathbb C^3\)">\(b\in\mathbb C^3\)</span> is retained with its actual amplitude. Keep <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> and <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span>. Calculate the solution, its squared norm, and the exact dissipated energy.</p>
+<p><strong>Solution.</strong> Complete the square in each coordinate of the full Gaussian convolution VD5. With the unchanged <span class="math" data-tex="\(q_t=\nu(e^{t/\beta}-1)\)">\(q_t=\nu(e^{t/\beta}-1)\)</span> and <span class="math" data-tex="\(\kappa_t=e^{t/(2\beta)}\)">\(\kappa_t=e^{t/(2\beta)}\)</span>, the integral in each coordinate contributes <span class="math" data-tex="\((1+4aq_t)^{-1/2}\)">\((1+4aq_t)^{-1/2}\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathcal S_{\nu,\beta}(t)f(\xi)=
+b e^{3t/(4\beta)}(1+4aq_t)^{-3/2}
+\exp\left(-\frac{a\kappa_t^2|\xi|^2}{1+4aq_t}\right).
+\tag{EX1}
+\]">\[
+\mathcal S_{\nu,\beta}(t)f(\xi)=
+b e^{3t/(4\beta)}(1+4aq_t)^{-3/2}
+\exp\left(-\frac{a\kappa_t^2|\xi|^2}{1+4aq_t}\right).
+\tag{EX1}
+\]</span>
+<p>The exact squared norm and gradient norm are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N(t)&amp;=|b|^2\left(\frac\pi{2a}\right)^{3/2}(1+4aq_t)^{-3/2},\\
+\|\nabla\mathcal S(t)f\|_2^2
+&amp;=\frac{3a\kappa_t^2}{1+4aq_t}N(t),\\
+N(t)+\frac{2\nu}\beta\int_0^t\|\nabla\mathcal S(u)f\|_2^2du&amp;=N(0).
+\end{aligned}
+\tag{EX2}
+\]">\[
+\begin{aligned}
+N(t)&amp;=|b|^2\left(\frac\pi{2a}\right)^{3/2}(1+4aq_t)^{-3/2},\\
+\|\nabla\mathcal S(t)f\|_2^2
+&amp;=\frac{3a\kappa_t^2}{1+4aq_t}N(t),\\
+N(t)+\frac{2\nu}\beta\int_0^t\|\nabla\mathcal S(u)f\|_2^2du&amp;=N(0).
+\end{aligned}
+\tag{EX2}
+\]</span>
+<p>For the second line, differentiating the Gaussian multiplies it by <span class="math" data-tex="\(-2a\kappa_t^2\xi/(1+4aq_t)\)">\(-2a\kappa_t^2\xi/(1+4aq_t)\)</span>. The Gaussian second moment is <span class="math" data-tex="\(3(1+4aq_t)/(4a\kappa_t^2)\)">\(3(1+4aq_t)/(4a\kappa_t^2)\)</span> times its squared norm. Multiplying proves the formula. Differentiating the first line and using <span class="math" data-tex="\(q_t&#x27;=\nu\kappa_t^2/\beta\)">\(q_t&#x27;=\nu\kappa_t^2/\beta\)</span> gives the last line, including both endpoints. This example is in the full vector space of VD1; it does not assert that this Gaussian is divergence-free or pure-swirl.</p>
+<h3 id="exercise-2-choose-an-actual-ring-radius-for-a-prescribed-stretching-margin">Exercise 2. Choose an actual ring radius for a prescribed stretching margin</h3>
+<p>Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, give a sufficient explicit radius threshold using the original meridian seminorms that guarantees <span class="math" data-tex="\(\|\mathcal S\|&lt;\varepsilon\)">\(\|\mathcal S\|&lt;\varepsilon\)</span>. Keep the full torus volume.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(\ell\geq2R\)">\(\ell\geq2R\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+A_* =\|g_R\|_\infty+R^{-1}\|\Psi_r\|_\infty+R^{-2}\|\Psi\|_\infty,
+\qquad H=\|\Psi_z\|_\infty.
+\tag{EX3}
+\]">\[
+A_* =\|g_R\|_\infty+R^{-1}\|\Psi_r\|_\infty+R^{-2}\|\Psi\|_\infty,
+\qquad H=\|\Psi_z\|_\infty.
+\tag{EX3}
+\]</span>
+<p>Since <span class="math" data-tex="\(b_\ell\geq R\)">\(b_\ell\geq R\)</span> and <span class="math" data-tex="\(b_\ell\geq\ell/2\)">\(b_\ell\geq\ell/2\)</span>, PT9 gives the full bound</p>
+<span class="math math-display" data-tex="\[
+\mu_\ell\leq2C_{\rm S}(2\pi^2R^2)^{1/3}A_*\ell^{-2/3}
++2H\ell^{-1}.
+\tag{EX4}
+\]">\[
+\mu_\ell\leq2C_{\rm S}(2\pi^2R^2)^{1/3}A_*\ell^{-2/3}
++2H\ell^{-1}.
+\tag{EX4}
+\]</span>
+<p>The first term is strictly below <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> and the second is at most <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> whenever</p>
+<span class="math math-display" data-tex="\[
+\ell&gt;
+\max\left\{2R,
+\left(\frac{4C_{\rm S}(2\pi^2R^2)^{1/3}A_*}{\varepsilon}\right)^{3/2},
+\frac{4H}{\varepsilon}\right\}.
+\tag{EX5}
+\]">\[
+\ell&gt;
+\max\left\{2R,
+\left(\frac{4C_{\rm S}(2\pi^2R^2)^{1/3}A_*}{\varepsilon}\right)^{3/2},
+\frac{4H}{\varepsilon}\right\}.
+\tag{EX5}
+\]</span>
+<p>If either coefficient vanishes, its corresponding term is zero and the other strict threshold suffices. If both vanish, the operator is zero by PT10. To receive the actual unstable ring, impose in addition the finite radius threshold already constructed in lesson32 and take <span class="math" data-tex="\(\varepsilon=a_0/2\)">\(\varepsilon=a_0/2\)</span>. This proves the needed common choice without changing the original background or its positive spectral margin.</p>
+<h3 id="exercise-3-show-why-the-physical-velocity-receiver-has-an-l-6-codomain">Exercise 3. Show why the physical velocity receiver has an <span class="math" data-tex="\(L^6\)">\(L^6\)</span> codomain</h3>
+<p>Construct a real pure-swirl <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vorticity whose canonical velocity does not belong to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Calculate its vorticity norm with the original Fourier prefactor.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(e_3=(0,0,1)\)">\(e_3=(0,0,1)\)</span> and specify</p>
+<span class="math math-display" data-tex="\[
+\widehat\Omega(\eta)=
+i\,\frac{\eta\times e_3}{|\eta|^2}\,\mathbf1_{0&lt;|\eta|&lt;1},
+\qquad
+\widehat U(\eta)=
+\frac{e_3-\eta\eta_3/|\eta|^2}{|\eta|^2}\,
+\mathbf1_{0&lt;|\eta|&lt;1}.
+\tag{EX6}
+\]">\[
+\widehat\Omega(\eta)=
+i\,\frac{\eta\times e_3}{|\eta|^2}\,\mathbf1_{0&lt;|\eta|&lt;1},
+\qquad
+\widehat U(\eta)=
+\frac{e_3-\eta\eta_3/|\eta|^2}{|\eta|^2}\,
+\mathbf1_{0&lt;|\eta|&lt;1}.
+\tag{EX6}
+\]</span>
+<p>The first transform is imaginary and odd, giving a real inverse transform; it is orthogonal to <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. It is also the transform of <span class="math" data-tex="\(\nabla\phi\times e_3\)">\(\nabla\phi\times e_3\)</span>, where <span class="math" data-tex="\(\widehat\phi=|\eta|^{-2}\mathbf1_{0&lt;|\eta|&lt;1}\)">\(\widehat\phi=|\eta|^{-2}\mathbf1_{0&lt;|\eta|&lt;1}\)</span>. The latter is an integrable radial function, so its inverse is radial and has every classical derivative, obtained by multiplying its compact Fourier support by powers of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Its gradient crossed with <span class="math" data-tex="\(e_3\)">\(e_3\)</span> is pure-swirl. This verifies the symmetry directly in physical coordinates.</p>
+<p>Writing <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> for the polar angle from <span class="math" data-tex="\(e_3\)">\(e_3\)</span>, the angular integral of <span class="math" data-tex="\(\sin^2\vartheta\)">\(\sin^2\vartheta\)</span> on the unit sphere is <span class="math" data-tex="\(8\pi/3\)">\(8\pi/3\)</span>: integrate <span class="math" data-tex="\(2\pi\sin^3\vartheta\)">\(2\pi\sin^3\vartheta\)</span> from zero to <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|\Omega\|_2^2=(2\pi)^{-3}\frac{8\pi}{3}\int_0^1d\rho
+=\frac1{3\pi^2},
+\qquad
+(2\pi)^{-3}\int|\widehat U|^2d\eta
+=(2\pi)^{-3}\frac{8\pi}{3}\int_0^1\rho^{-2}d\rho=+\infty.
+\tag{EX7}
+\]">\[
+\|\Omega\|_2^2=(2\pi)^{-3}\frac{8\pi}{3}\int_0^1d\rho
+=\frac1{3\pi^2},
+\qquad
+(2\pi)^{-3}\int|\widehat U|^2d\eta
+=(2\pi)^{-3}\frac{8\pi}{3}\int_0^1\rho^{-2}d\rho=+\infty.
+\tag{EX7}
+\]</span>
+<p>The cross-product multiplier PT5 applied to the first expression in EX6 gives exactly the second, including its sign. PT5 proves that its canonical inverse nevertheless belongs to <span class="math" data-tex="\(L^6\)">\(L^6\)</span> with square-integrable gradient. If it belonged to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, Plancherel would identify its distributional Fourier transform with an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function, contradicting EX7. Thus the general physical receiver must use the precise codomain PT5; extra low-frequency information is needed for a global <span class="math" data-tex="\(L^2\)">\(L^2\)</span> velocity.</p>
+<h3 id="exercise-4-exhibit-the-separate-dilation-requirement-in-the-generator-domain">Exercise 4. Exhibit the separate dilation requirement in the generator domain</h3>
+<p>Find an <span class="math" data-tex="\(H^2(\mathbb R^3)\)">\(H^2(\mathbb R^3)\)</span> field outside the domain <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> of VD2. Keep the original diffusion and unbounded spatial drift.</p>
+<p><strong>Solution.</strong> Choose a nonzero smooth scalar <span class="math" data-tex="\(\phi\)">\(\phi\)</span> supported in the unit ball with <span class="math" data-tex="\(\partial_1\phi\ne0\)">\(\partial_1\phi\ne0\)</span>, and a fixed unit vector <span class="math" data-tex="\(v\)">\(v\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+a_n=2^{3n}e_1,\qquad
+f(x)=\sum_{n=1}^\infty2^{-n}\phi(x-a_n)v.
+\tag{EX8}
+\]">\[
+a_n=2^{3n}e_1,\qquad
+f(x)=\sum_{n=1}^\infty2^{-n}\phi(x-a_n)v.
+\tag{EX8}
+\]</span>
+<p>The supports are disjoint and locally finite. For each derivative of order at most two its squared norm is the corresponding squared norm of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> multiplied by <span class="math" data-tex="\(\sum_{n\geq1}4^{-n}=1/3\)">\(\sum_{n\geq1}4^{-n}=1/3\)</span>. Hence <span class="math" data-tex="\(f\in H^2\)">\(f\in H^2\)</span> and <span class="math" data-tex="\(\nu\Delta f\in L^2\)">\(\nu\Delta f\in L^2\)</span> for every actual <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>. On the <span class="math" data-tex="\(n\)">\(n\)</span>-th support write <span class="math" data-tex="\(y=x-a_n\)">\(y=x-a_n\)</span>; then the exact drift is</p>
+<span class="math math-display" data-tex="\[
+x\cdot\nabla f(x)=2^{-n}
+\left(2^{3n}\partial_1\phi(y)+y\cdot\nabla\phi(y)\right)v.
+\tag{EX9}
+\]">\[
+x\cdot\nabla f(x)=2^{-n}
+\left(2^{3n}\partial_1\phi(y)+y\cdot\nabla\phi(y)\right)v.
+\tag{EX9}
+\]</span>
+<p>Let <span class="math" data-tex="\(c=\|\partial_1\phi\|_2&gt;0\)">\(c=\|\partial_1\phi\|_2&gt;0\)</span> and <span class="math" data-tex="\(d=\|y\cdot\nabla\phi\|_2\)">\(d=\|y\cdot\nabla\phi\|_2\)</span>. For all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, its norm on that support is at least <span class="math" data-tex="\(2^{-n}(2^{3n}c-d)\geq(c/2)2^{2n}\)">\(2^{-n}(2^{3n}c-d)\geq(c/2)2^{2n}\)</span>. The sum of their squared norms diverges. Thus <span class="math" data-tex="\(x\cdot\nabla f\notin L^2\)">\(x\cdot\nabla f\notin L^2\)</span> and <span class="math" data-tex="\(f\notin\mathcal X\)">\(f\notin\mathcal X\)</span>. In this example diffusion and the zeroth-order term are already in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, so they cannot cancel the nonintegrable drift. VD8–VD15 prove the more general exact-domain statement, including cases where that direct observation alone would not identify the domain.</p>
+<h3 id="exercise-5-retain-the-amplitude-in-the-exact-velocity-to-curl-map">Exercise 5. Retain the amplitude in the exact velocity-to-curl map</h3>
+<p>For a smooth compact divergence-free test velocity <span class="math" data-tex="\(u\)">\(u\)</span>, let <span class="math" data-tex="\(\Omega=\operatorname{curl}u\)">\(\Omega=\operatorname{curl}u\)</span>. Derive the full velocity expression whose curl is VD20, with the actual background amplitude <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, and identify the pressure. This exercise concerns an exact test-field identity; it does not presume a viscous eigenvector or its eventual velocity domain.</p>
+<p><strong>Solution.</strong> The canonical receiver of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is <span class="math" data-tex="\(u\)">\(u\)</span>: it is an <span class="math" data-tex="\(L^6\)">\(L^6\)</span> velocity with the prescribed curl and divergence, so PT5 uniqueness applies. Define</p>
+<span class="math math-display" data-tex="\[
+B(u)=\bar U_\ell\cdot\nabla u+u\cdot\nabla\bar U_\ell,
+\qquad
+\mathcal L_{\rm vel}^{(\beta,\nu)}u
+=\nu\Delta u+\frac12u+\frac12x\cdot\nabla u-\beta\mathbb P B(u).
+\tag{EX10}
+\]">\[
+B(u)=\bar U_\ell\cdot\nabla u+u\cdot\nabla\bar U_\ell,
+\qquad
+\mathcal L_{\rm vel}^{(\beta,\nu)}u
+=\nu\Delta u+\frac12u+\frac12x\cdot\nabla u-\beta\mathbb P B(u).
+\tag{EX10}
+\]</span>
+<p>The Leray map is the full original Fourier multiplier <span class="math" data-tex="\(\mathbb P(\eta)=I-\eta\otimes\eta/|\eta|^2\)">\(\mathbb P(\eta)=I-\eta\otimes\eta/|\eta|^2\)</span> from lesson2. Both products in <span class="math" data-tex="\(B(u)\)">\(B(u)\)</span> are smooth and compact. The vector identity, proved by expanding the Levi-Civita symbols, is</p>
+<span class="math math-display" data-tex="\[
+B(u)=\nabla(\bar U_\ell\cdot u)-\bar U_\ell\times\Omega-u\times\bar\Omega_\ell.
+\tag{EX11}
+\]">\[
+B(u)=\nabla(\bar U_\ell\cdot u)-\bar U_\ell\times\Omega-u\times\bar\Omega_\ell.
+\tag{EX11}
+\]</span>
+<p>In detail the <span class="math" data-tex="\(i\)">\(i\)</span>-th component of <span class="math" data-tex="\((V\times\operatorname{curl}W)\)">\((V\times\operatorname{curl}W)\)</span> is <span class="math" data-tex="\(V_j\partial_iW_j-V_j\partial_jW_i\)">\(V_j\partial_iW_j-V_j\partial_jW_i\)</span>. Applying it to both products cancels the two derivatives of the scalar product and proves EX11. All four fields whose cross products occur are divergence-free, so expansion of the curl of each cross product gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{curl}B(u)=[\bar U_\ell,\Omega]+[u,\bar\Omega_\ell],
+\quad [V,W]=V\cdot\nabla W-W\cdot\nabla V,
+\quad
+\operatorname{curl}(x\cdot\nabla u)=\Omega+x\cdot\nabla\Omega.
+\tag{EX12}
+\]">\[
+\operatorname{curl}B(u)=[\bar U_\ell,\Omega]+[u,\bar\Omega_\ell],
+\quad [V,W]=V\cdot\nabla W-W\cdot\nabla V,
+\quad
+\operatorname{curl}(x\cdot\nabla u)=\Omega+x\cdot\nabla\Omega.
+\tag{EX12}
+\]</span>
+<p>The last extra <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is the derivative falling on the original coordinate <span class="math" data-tex="\(x\)">\(x\)</span>; it cannot be discarded. Curl commutes with diffusion and removes the gradient part of the Leray map. Therefore, retaining both halves of the dilation contribution,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{curl}\mathcal L_{\rm vel}^{(\beta,\nu)}u
+&amp;=\nu\Delta\Omega+\frac12\Omega
++\frac12(\Omega+x\cdot\nabla\Omega)
+-\beta\bigl([\bar U_\ell,\Omega]+[u,\bar\Omega_\ell]\bigr)\\
+&amp;=\mathcal L_{\rm vor}^{(\beta,\nu)}\Omega.
+\end{aligned}
+\tag{EX13}
+\]">\[
+\begin{aligned}
+\operatorname{curl}\mathcal L_{\rm vel}^{(\beta,\nu)}u
+&amp;=\nu\Delta\Omega+\frac12\Omega
++\frac12(\Omega+x\cdot\nabla\Omega)
+-\beta\bigl([\bar U_\ell,\Omega]+[u,\bar\Omega_\ell]\bigr)\\
+&amp;=\mathcal L_{\rm vor}^{(\beta,\nu)}\Omega.
+\end{aligned}
+\tag{EX13}
+\]</span>
+<p>The pressure gradient is supplied by</p>
+<span class="math math-display" data-tex="\[
+\pi=-\beta\Delta^{-1}\operatorname{div}B(u),\qquad
+\widehat\pi(\eta)=\beta\frac{i\eta\cdot\widehat{B(u)}(\eta)}{|\eta|^2},
+\qquad -\beta\mathbb PB(u)=-\beta B(u)-\nabla\pi.
+\tag{EX14}
+\]">\[
+\pi=-\beta\Delta^{-1}\operatorname{div}B(u),\qquad
+\widehat\pi(\eta)=\beta\frac{i\eta\cdot\widehat{B(u)}(\eta)}{|\eta|^2},
+\qquad -\beta\mathbb PB(u)=-\beta B(u)-\nabla\pi.
+\tag{EX14}
+\]</span>
+<p>The pressure transform is locally integrable at zero because <span class="math" data-tex="\(B(u)\)">\(B(u)\)</span> is integrable, and grows at most polynomially at infinity; thus it defines a distribution without suppressing the low-frequency contribution. Its gradient is in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by the bounded Fourier projection. Direct multiplication gives <span class="math" data-tex="\(\Delta\pi=-\beta\operatorname{div}B(u)\)">\(\Delta\pi=-\beta\operatorname{div}B(u)\)</span> and the last identity. Pressure remains determined up to an additive constant, which does not enter that gradient. This proves the exact correction to the omitted amplitude in original main.tex1741: the same <span class="math" data-tex="\(\beta\)">\(\beta\)</span> as in its vorticity operator1647 must multiply the velocity interaction. If it is omitted, the curl identity has the explicit defect <span class="math" data-tex="\((\beta-1)([\bar U_\ell,\Omega]+[u,\bar\Omega_\ell])\)">\((\beta-1)([\bar U_\ell,\Omega]+[u,\bar\Omega_\ell])\)</span>.</p>
+<h2 id="continue-to-the-complete-viscous-spectral-transfer">Continue to the complete viscous spectral transfer</h2>
+<p>The actual Euler ring now lies in the original physical transport domain,
+and its stretching norm has an explicit small bound. The heat and
+dilation generator has its entire domain, exact semigroup and all needed
+smoothing estimates. The smooth inviscid input has a quantitative bound
+for the complete dissipative expression. The velocity-to-curl identity
+also retains the original amplitude and pressure.</p>
+<p>Next construct the sum of diffusion, dilation, transport and stretching
+on its full domain. Use that construction to prove resolvent convergence,
+transfer the actual unstable spectral space, and receive the viscous
+eigenmode in the full velocity domain. The nonlinear forced Leray
+construction and later Alpöge–Buckmaster, OpenAI and workbench lessons
+remain part of the assigned series.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-32.html">Previous lesson</a><a href="NS-FLUID-34.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

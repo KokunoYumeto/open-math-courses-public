@@ -1,6 +1,6 @@
 # Finite ideals and GNS spaces for arbitrary weights
 
-*Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held. No faithfulness, normality, semifiniteness or countability is imposed unless explicitly stated.*
+*CC0-1.0 to the extent of rights held. No faithfulness, normality, semifiniteness or countability is imposed unless explicitly stated.*
 
 Let \(M\subseteq B(K)\) be a von Neumann algebra acting nondegenerately on an arbitrary Hilbert space. A weight is an additive positively homogeneous map \(\varphi:M_+\to[0,\infty]\), with \(0\cdot\infty=0\). In particular \(\varphi(0)=0\). Normality here means preservation of bounded increasing positive suprema; semifiniteness initially means ultraweak density of the linear span of the finite positive cone. We prove the alternative density and cutoff characterizations below. The zero algebra and zero GNS Hilbert space are allowed.
 

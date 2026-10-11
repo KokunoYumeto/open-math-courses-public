@@ -18,7 +18,7 @@ Let \(T\in\mathcal W_0(M,N)\) be a faithful normal semifinite operator-valued we
 \tag{OM.2}
 \]
 
-The composition theorem makes \(\Phi\) and \(\Psi\) faithful normal semifinite weights on \(M\). The forward modular graph transfer, relative to its three stated component contracts, gives
+The composition theorem makes \(\Phi\) and \(\Psi\) faithful normal semifinite weights on \(M\). The forward modular graph transfer, with its mixed-graph proof and the inclusion-generator comparison in OR-04, gives
 
 \[
 \sigma_t^\Phi(n)=\sigma_t^\varphi(n).
@@ -34,7 +34,7 @@ Here \(n\in N\) and \(t\in\mathbb R\). It also gives the stronger cocycle identi
 
 The common value belongs to \(N\).
 
-The cocycle order matters: the numerator \(\Psi\) corresponds to \(\psi\), and the denominator \(\Phi\) to \(\varphi\). Equation (OM.4) follows by evaluating the equality of the two mixed isometric groups at \(1\); it is not inferred merely from (OM.3). This proves clauses (i) and (ii) of Takesaki II IX.4.22 at the same conditional public-proof boundary as OR-03.
+The cocycle order matters: the numerator \(\Psi\) corresponds to \(\psi\), and the denominator \(\Phi\) to \(\varphi\). Equation (OM.4) follows by evaluating the equality of the two mixed isometric groups at \(1\); it is not inferred merely from (OM.3). This proves clauses (i) and (ii) of Takesaki II IX.4.22 from OR-03 for the already existing operator-valued weight.
 
 ## Comparing two operator-valued weights
 
@@ -102,7 +102,7 @@ Apply the ordered cocycle chain rule twice, inserting the two \(\varphi\)-compos
 \tag{OM.10}
 \]
 
-The first and last factors lie in \(N\), while \(u_t\in N^c\). They therefore commute with \(u_t\). The reverse-cocycle identity cancels the outer factors in their displayed order, and (OM.9) becomes
+The first and last factors lie in \(N\), while \(u_t\in N^c\). They therefore commute with \(u_t\). The reverse-cocycle identity cancels the outer factors in their displayed order, and (OM.10) becomes
 
 \[
 [D\Psi_T:D\Psi_S]_t=u_t.
@@ -179,4 +179,4 @@ v_{s+t}=v_s\,\sigma_s^{T_2}(v_t).
 Here \(s,t\in\mathbb R\).
 These formulas are obtained by fixing one faithful \(\varphi\in\mathcal W_0(N)\), applying the usual scalar identities to \(\widehat\varphi\circ T_j\), and then using (OM.13). They introduce no additional source assumption.
 
-The human antecedents are Takesaki II IX.4.22–23, printed pp. 230–232 / PDF pp. 250–252. This proof is conditional on OR-03's mixed-graph, finite-matrix and analytic-generator contracts and on the provider closure of the faithful ordered chain rule. The adjacent commutant-duality bijection IX.4.24 and the scalar-weight/\(B(H)\) correspondence IX.4.25 require separate construction and proof. The stated dependencies are not proved here.
+The human antecedents are Takesaki II IX.4.22–23, printed pp. 230–232 / PDF pp. 250–252. The forward argument is supplied by OR-03–04, and the ordered chain rule by CH-01–02. The commutant-duality bijection IX.4.24 and the scalar-weight/\(B(H)\) correspondence IX.4.25 are separate constructions; neither is used here.

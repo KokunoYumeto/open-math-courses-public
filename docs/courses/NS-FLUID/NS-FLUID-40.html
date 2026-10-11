@@ -1,0 +1,1152 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The original viscous cascade and its exact memory equation — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/the-original-viscous-cascade-and-its-exact-memory-equation.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-39.html">Previous lesson</a><a href="NS-FLUID-41.html">Next lesson</a></nav><article class="lesson"><h1 id="the-original-viscous-cascade-and-its-exact-memory-equation">The original viscous cascade and its exact memory equation</h1>
+<p>The original cascade equation has an actual local flow before any claim of
+finite-time blowup. This lesson constructs that flow, proves its complete
+frequency-band equations and retains the part of each band that viscosity
+moves outside its original wave packet. Eliminating that component gives
+an exact memory equation with a strictly positive kernel and proved bounds.</p>
+<p>The human comparison is Terence Tao's
+<a href="https://arxiv.org/abs/1402.0290v3">arXiv:1402.0290v3</a>, original
+navier-blowup.tex, lines 827–1008. Every original coefficient, shift,
+field norm, viscosity, time interval and boundary energy current is kept.
+The three source corrections are shown beside their exact calculations.</p>
+<p>The local-cascade analysis and evolution used below are proved in
+<a href="NS-FLUID-38.html">lesson 38</a>,
+CC1–CC12. The complete Euler averaging representation is proved in
+<a href="NS-FLUID-39.html">lesson 39</a>,
+SP1–SP33, RF1–RF24, AF1–AF27 and AV1–AV35. The original Fourier and
+Sobolev conventions are those of these lessons and
+<a href="NS-FLUID-02.html">lesson 2</a>.</p>
+<p>Five solved exercises calculate the full heat response and its resolvent,
+improve the diffusion bound using the actual annular width, derive the
+signed energy current at every scale, and differentiate the actual flow
+with respect to its original viscosity. These results prepare the
+successive-transfer argument; they do not by themselves assert a singular
+trajectory.</p>
+<h2 id="vd1-retain-the-original-fields-four-shifts-and-all-coefficients">VD1. Retain the original fields, four shifts and all coefficients</h2>
+<p>Fix <span class="math" data-tex="\(0&lt;\epsilon_0\leq1/1024\)">\(0&lt;\epsilon_0\leq1/1024\)</span>, <span class="math" data-tex="\(q=1+\epsilon_0\)">\(q=1+\epsilon_0\)</span>, a positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, and the source balls</p>
+<span class="math math-display" data-tex="\[
+B_i\subset\{\xi:1&lt;|\xi|\leq1+\epsilon_0/2\},
+\qquad B_1,\ldots,B_m,-B_1,\ldots,-B_m
+\quad\hbox{pairwise disjoint}.
+\tag{VD1}
+\]">\[
+B_i\subset\{\xi:1&lt;|\xi|\leq1+\epsilon_0/2\},
+\qquad B_1,\ldots,B_m,-B_1,\ldots,-B_m
+\quad\hbox{pairwise disjoint}.
+\tag{VD1}
+\]</span>
+<p>Let the original <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> be nonzero real solenoidal Schwartz fields supported in these pairs of balls in Fourier space. The source also requires real Fourier transforms and squared norms one. The proof below applies to those exact fields and retains their full squared norms</p>
+<span class="math math-display" data-tex="\[
+A_i=\|\psi_i\|_2^2,\quad
+G_i=\|\nabla\psi_i\|_2^2,\quad
+J_i=\|\Delta\psi_i\|_2^2,\quad
+\psi_{i,n}=D_{q^n}\psi_i,\quad
+D_\lambda f(x)=\lambda^{3/2}f(\lambda x).
+\tag{VD2}
+\]">\[
+A_i=\|\psi_i\|_2^2,\quad
+G_i=\|\nabla\psi_i\|_2^2,\quad
+J_i=\|\Delta\psi_i\|_2^2,\quad
+\psi_{i,n}=D_{q^n}\psi_i,\quad
+D_\lambda f(x)=\lambda^{3/2}f(\lambda x).
+\tag{VD2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(A_i=1\)">\(A_i=1\)</span> for the source's specified fields. No field is divided by its norm or replaced. Keeping <span class="math" data-tex="\(A_i\)">\(A_i\)</span> in the calculation also proves the extension to arbitrary nonzero original norms. Realness of the Fourier transform is not used in the estimates; the realness of the physical field is retained.</p>
+<p>Keep exactly the original shift set and operator</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S=\{(0,0,0),(1,0,0),(0,1,0),(0,0,1)\},\\
+C_\alpha(u,v)=
+\sum_{k\in\mathbb Z}\sum_{i_1,i_2,i_3=1}^m
+\sum_{\mu\in S}\alpha_{i_1,i_2,i_3,\mu_1,\mu_2,\mu_3}q^{5k/2}
+\langle u,\psi_{i_1,k+\mu_1}\rangle
+\langle v,\psi_{i_2,k+\mu_2}\rangle\psi_{i_3,k+\mu_3}.
+\end{gathered}
+\tag{VD3}
+\]">\[
+\begin{gathered}
+S=\{(0,0,0),(1,0,0),(0,1,0),(0,0,1)\},\\
+C_\alpha(u,v)=
+\sum_{k\in\mathbb Z}\sum_{i_1,i_2,i_3=1}^m
+\sum_{\mu\in S}\alpha_{i_1,i_2,i_3,\mu_1,\mu_2,\mu_3}q^{5k/2}
+\langle u,\psi_{i_1,k+\mu_1}\rangle
+\langle v,\psi_{i_2,k+\mu_2}\rangle\psi_{i_3,k+\mu_3}.
+\end{gathered}
+\tag{VD3}
+\]</span>
+<p>All coefficients are original real numbers. The source symmetry and cancellation identities are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha_{i_1,i_2,i_3,\mu_1,\mu_2,\mu_3}
+=\alpha_{i_2,i_1,i_3,\mu_2,\mu_1,\mu_3},\\
+\sum_{\sigma\in\mathfrak S_3}
+\alpha_{i_{\sigma(1)},i_{\sigma(2)},i_{\sigma(3)},
+\mu_{\sigma(1)},\mu_{\sigma(2)},\mu_{\sigma(3)}}=0.
+\end{gathered}
+\tag{VD4}
+\]">\[
+\begin{gathered}
+\alpha_{i_1,i_2,i_3,\mu_1,\mu_2,\mu_3}
+=\alpha_{i_2,i_1,i_3,\mu_2,\mu_1,\mu_3},\\
+\sum_{\sigma\in\mathfrak S_3}
+\alpha_{i_{\sigma(1)},i_{\sigma(2)},i_{\sigma(3)},
+\mu_{\sigma(1)},\mu_{\sigma(2)},\mu_{\sigma(3)}}=0.
+\end{gathered}
+\tag{VD4}
+\]</span>
+<p>The second sum has all six permutations, including their multiplicities when indices repeat. The shift set is invariant under these permutations.</p>
+<p>For each fixed coefficient, VD3 is the original basic cascade with fields <span class="math" data-tex="\(D_{q^{\mu_j}}\psi_{i_j}\)">\(D_{q^{\mu_j}}\psi_{i_j}\)</span>. Their Fourier supports lie in the original admissible annulus <span class="math" data-tex="\([1-2\epsilon_0,1+2\epsilon_0]\)">\([1-2\epsilon_0,1+2\epsilon_0]\)</span>: the largest radius is
+<span class="math" data-tex="\(q(1+\epsilon_0/2)=1+3\epsilon_0/2+\epsilon_0^2/2\leq1+2\epsilon_0\)">\(q(1+\epsilon_0/2)=1+3\epsilon_0/2+\epsilon_0^2/2\leq1+2\epsilon_0\)</span>.
+Consequently there are <span class="math" data-tex="\(4m^3\)">\(4m^3\)</span> displayed basic terms. Source line856's <span class="math" data-tex="\(7m^3\)">\(7m^3\)</span> count does not agree with its four-element set.</p>
+<p>Here are explicit constants for the receiving maps. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L=1-2\epsilon_0,\quad U=1+2\epsilon_0,\quad
+J=\lfloor\log(U/L)/\log q\rfloor+1,\\
+a_s=\max\{1,(2\pi L)^{-s},(2\pi U)^{-s}\},\qquad
+b_s=\max\{1,(2\pi L)^s,(2\pi U)^s\},\\
+K_d=\sup_{k\in\mathbb Z}
+\frac{q^{5k/2}}{(1+q^{2k})^{d/2}},\\
+\mathcal K(p,r;s)=J^{3/2}a_pa_rb_sK_{p+r-s}
+\sum_{i_1,i_2,i_3,\mu}
+|\alpha_{i_1,i_2,i_3,\mu}|
+\prod_{j=1}^3\|D_{q^{\mu_j}}\psi_{i_j}\|_2 .
+\end{gathered}
+\tag{VD5}
+\]">\[
+\begin{gathered}
+L=1-2\epsilon_0,\quad U=1+2\epsilon_0,\quad
+J=\lfloor\log(U/L)/\log q\rfloor+1,\\
+a_s=\max\{1,(2\pi L)^{-s},(2\pi U)^{-s}\},\qquad
+b_s=\max\{1,(2\pi L)^s,(2\pi U)^s\},\\
+K_d=\sup_{k\in\mathbb Z}
+\frac{q^{5k/2}}{(1+q^{2k})^{d/2}},\\
+\mathcal K(p,r;s)=J^{3/2}a_pa_rb_sK_{p+r-s}
+\sum_{i_1,i_2,i_3,\mu}
+|\alpha_{i_1,i_2,i_3,\mu}|
+\prod_{j=1}^3\|D_{q^{\mu_j}}\psi_{i_j}\|_2 .
+\end{gathered}
+\tag{VD5}
+\]</span>
+<p>The complete CC1–CC7 analysis and synthesis proof then gives</p>
+<span class="math math-display" data-tex="\[
+\|C_\alpha(u,v)\|_{H^s}
+\leq\mathcal K(p,r;s)\|u\|_{H^p}\|v\|_{H^r},
+\qquad p+r-s\geq5/2.
+\tag{VD6}
+\]">\[
+\|C_\alpha(u,v)\|_{H^s}
+\leq\mathcal K(p,r;s)\|u\|_{H^p}\|v\|_{H^r},
+\qquad p+r-s\geq5/2.
+\tag{VD6}
+\]</span>
+<p>The Sobolev norm here is the full integral with weight
+<span class="math" data-tex="\((1+4\pi^2|\xi|^2)^s\)">\((1+4\pi^2|\xi|^2)^s\)</span>. Every summand in VD5 is retained, and <span class="math" data-tex="\(K_{5/2}=1\)">\(K_{5/2}=1\)</span>. The original series converges unconditionally in the receiving space, by the finite-tail proof in that provider.
+VD4 gives symmetry directly. For <span class="math" data-tex="\(u\in H^{5/2}_\sigma\)">\(u\in H^{5/2}_\sigma\)</span>, absolute scalar convergence permits averaging the cubic series over the six permutations. Its coefficient becomes the second VD4 sum divided by six, hence</p>
+<span class="math math-display" data-tex="\[
+\langle C_\alpha(u,u),u\rangle=0.
+\tag{VD7}
+\]">\[
+\langle C_\alpha(u,u),u\rangle=0.
+\tag{VD7}
+\]</span>
+<p>Lesson39 therefore gives a real probability-space averaged Euler representation of this exact operator, with all its original coefficients.</p>
+<h2 id="vd2-construct-the-actual-maximal-flow-before-using-its-coordinates">VD2. Construct the actual maximal flow before using its coordinates</h2>
+<p>Keep the original viscosity <span class="math" data-tex="\(\nu\geq0\)">\(\nu\geq0\)</span>, and solve</p>
+<span class="math math-display" data-tex="\[
+u(t)=e^{\nu t\Delta}u_0+
+\int_0^t e^{\nu(t-s)\Delta}C_\alpha(u(s),u(s))\,ds.
+\tag{VD8}
+\]">\[
+u(t)=e^{\nu t\Delta}u_0+
+\int_0^t e^{\nu(t-s)\Delta}C_\alpha(u(s),u(s))\,ds.
+\tag{VD8}
+\]</span>
+<p>For <span class="math" data-tex="\(s\geq5/2\)">\(s\geq5/2\)</span>, put <span class="math" data-tex="\(K_s=\mathcal K(s,s;s)\)">\(K_s=\mathcal K(s,s;s)\)</span> and <span class="math" data-tex="\(M_s=\|u_0\|_{H^s}\)">\(M_s=\|u_0\|_{H^s}\)</span>. If both are positive, on
+<span class="math" data-tex="\(T_s=(8K_sM_s)^{-1}\)">\(T_s=(8K_sM_s)^{-1}\)</span> the integral map sends the closed radius-<span class="math" data-tex="\(2M_s\)">\(2M_s\)</span> ball of <span class="math" data-tex="\(C([0,T_s];H^s_\sigma)\)">\(C([0,T_s];H^s_\sigma)\)</span> into the radius-<span class="math" data-tex="\(3M_s/2\)">\(3M_s/2\)</span> ball and has contraction factor at most one-half. These follow from the full heat contraction and VD6: the nonlinear size is <span class="math" data-tex="\(4T_sK_sM_s^2=M_s/2\)">\(4T_sK_sM_s^2=M_s/2\)</span>, and its difference coefficient is <span class="math" data-tex="\(4T_sK_sM_s=1/2\)">\(4T_sK_sM_s=1/2\)</span>.
+The geometric convergence of these actual Picard iterates constructs the solution. The same difference estimate on successive shorter intervals gives uniqueness in the whole continuous class, not just in this ball. If <span class="math" data-tex="\(M_s=0\)">\(M_s=0\)</span> the solution is zero; if <span class="math" data-tex="\(K_s=0\)">\(K_s=0\)</span> it is the original heat evolution.</p>
+<p>Restart this construction to obtain a maximal time <span class="math" data-tex="\(T_*\)">\(T_*\)</span> in <span class="math" data-tex="\(H^{5/2}\)">\(H^{5/2}\)</span>. If <span class="math" data-tex="\(T_*&lt;\infty\)">\(T_*&lt;\infty\)</span>, then
+<span class="math" data-tex="\(\|u(t)\|_{H^{5/2}}\to\infty\)">\(\|u(t)\|_{H^{5/2}}\to\infty\)</span> as <span class="math" data-tex="\(t\uparrow T_*\)">\(t\uparrow T_*\)</span>: otherwise a sequence of bounded norms tending to <span class="math" data-tex="\(T_*\)">\(T_*\)</span> supplies a uniform positive restart interval, contradicting maximality.
+For <span class="math" data-tex="\(u_0\in H^s\)">\(u_0\in H^s\)</span>, the exact mixed-order estimate gives, while that solution exists,</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_{H^s}
+\leq\|u_0\|_{H^s}
++\mathcal K(5/2,s;s)\int_0^t
+\|u(r)\|_{H^{5/2}}\|u(r)\|_{H^s}\,dr,
+\]">\[
+\|u(t)\|_{H^s}
+\leq\|u_0\|_{H^s}
++\mathcal K(5/2,s;s)\int_0^t
+\|u(r)\|_{H^{5/2}}\|u(r)\|_{H^s}\,dr,
+\]</span>
+<p>and hence</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_{H^s}
+\leq\|u_0\|_{H^s}
+\exp\!\left(\mathcal K(5/2,s;s)
+\int_0^t\|u(r)\|_{H^{5/2}}\,dr\right).
+\tag{VD9}
+\]">\[
+\|u(t)\|_{H^s}
+\leq\|u_0\|_{H^s}
+\exp\!\left(\mathcal K(5/2,s;s)
+\int_0^t\|u(r)\|_{H^{5/2}}\,dr\right).
+\tag{VD9}
+\]</span>
+<p>For every <span class="math" data-tex="\(T&lt;T_*\)">\(T&lt;T_*\)</span> the latter bound is finite. If the <span class="math" data-tex="\(H^s\)">\(H^s\)</span> solution ended earlier, its uniform norm would permit a restart there; uniqueness identifies it with the <span class="math" data-tex="\(H^{5/2}\)">\(H^{5/2}\)</span> solution. Thus all these maximal times agree. In particular source Schwartz data give an actual <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> solution on <span class="math" data-tex="\([0,T_*)\)">\([0,T_*)\)</span>, without assuming that <span class="math" data-tex="\(T_*=\infty\)">\(T_*=\infty\)</span>.</p>
+<p>Differentiating VD8 in <span class="math" data-tex="\(H^8\)">\(H^8\)</span> for the <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> solution gives <span class="math" data-tex="\(u&#x27;=\nu\Delta u+C_\alpha(u,u)\)">\(u&#x27;=\nu\Delta u+C_\alpha(u,u)\)</span>. One can verify this directly by the bounded Fourier heat difference quotients in <span class="math" data-tex="\(H^8\)">\(H^8\)</span> and continuity of the integral's <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> integrand. Pairing with <span class="math" data-tex="\(u\)">\(u\)</span>, VD7 and Fourier integration give the complete energy identity</p>
+<span class="math math-display" data-tex="\[
+\frac12\|u(t)\|_2^2+
+\nu\int_0^t\|\nabla u(r)\|_2^2\,dr
+=\frac12\|u_0\|_2^2.
+\tag{VD10}
+\]">\[
+\frac12\|u(t)\|_2^2+
+\nu\int_0^t\|\nabla u(r)\|_2^2\,dr
+=\frac12\|u_0\|_2^2.
+\tag{VD10}
+\]</span>
+<p>All ensuing claims hold on this constructed maximal interval.</p>
+<h2 id="vd3-prove-the-complete-frequency-decomposition-and-its-invariant-lower-end">VD3. Prove the complete frequency decomposition and its invariant lower end</h2>
+<p>Write <span class="math" data-tex="\(\mathcal A_{i,n}=q^n(B_i\cup-B_i)\)">\(\mathcal A_{i,n}=q^n(B_i\cup-B_i)\)</span>, and let <span class="math" data-tex="\(P_{i,n}\)">\(P_{i,n}\)</span> be its Fourier indicator projection on real solenoidal fields. The sets are pairwise disjoint: for different scales the radial upper bound <span class="math" data-tex="\(q^n(1+\epsilon_0/2)\)">\(q^n(1+\epsilon_0/2)\)</span> is strictly below <span class="math" data-tex="\(q^{n+1}\)">\(q^{n+1}\)</span>; within a scale VD1 applies. Each projection is orthogonal in every original <span class="math" data-tex="\(H^s\)">\(H^s\)</span> norm and commutes with the original heat semigroup.</p>
+<p>Let <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> be the closed subspace of fields supported in their union, interpreted up to null sets. Each VD3 output lies in <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>, by unconditional convergence. Heat preserves this space. Thus every Picard iterate and its limit lie in it when <span class="math" data-tex="\(u_0\)">\(u_0\)</span> does. In particular, for the original datum <span class="math" data-tex="\(u_0=\psi_{1,n_0}\)">\(u_0=\psi_{1,n_0}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+u(t)=\sum_{i,n}u_{i,n}(t),\qquad
+u_{i,n}=P_{i,n}u,\qquad
+\|u(t)\|_{H^s}^2=\sum_{i,n}\|u_{i,n}(t)\|_{H^s}^2.
+\tag{VD11}
+\]">\[
+u(t)=\sum_{i,n}u_{i,n}(t),\qquad
+u_{i,n}=P_{i,n}u,\qquad
+\|u(t)\|_{H^s}^2=\sum_{i,n}\|u_{i,n}(t)\|_{H^s}^2.
+\tag{VD11}
+\]</span>
+<p>The convergence is unconditional by orthogonal Fourier integration.</p>
+<p>The smaller closed subspace <span class="math" data-tex="\(\mathcal V_{\geq n_0}\)">\(\mathcal V_{\geq n_0}\)</span> using only <span class="math" data-tex="\(n\geq n_0\)">\(n\geq n_0\)</span> is also invariant. To prove the nonlinear assertion, consider a VD3 output at <span class="math" data-tex="\(k+\mu_3&lt;n_0\)">\(k+\mu_3&lt;n_0\)</span>. If <span class="math" data-tex="\(\mu_3=1\)">\(\mu_3=1\)</span>, both input indices equal <span class="math" data-tex="\(k&lt;n_0\)">\(k&lt;n_0\)</span>. If <span class="math" data-tex="\(\mu_3=0\)">\(\mu_3=0\)</span>, at least one of the two input shifts is zero, so that input index is <span class="math" data-tex="\(k&lt;n_0\)">\(k&lt;n_0\)</span>. Its pairing with a field in <span class="math" data-tex="\(\mathcal V_{\geq n_0}\)">\(\mathcal V_{\geq n_0}\)</span> vanishes. Every forbidden output coefficient is therefore zero. The heat and Picard argument proves</p>
+<span class="math math-display" data-tex="\[
+u_{i,n}(t)=0\quad(n&lt;n_0,\ 0\leq t&lt;T_*).
+\tag{VD12}
+\]">\[
+u_{i,n}(t)=0\quad(n&lt;n_0,\ 0\leq t&lt;T_*).
+\tag{VD12}
+\]</span>
+<p>This is an invariant-space proof for the actual solution; no global existence hypothesis is used.</p>
+<p>Keep the exact real coordinates and energies</p>
+<span class="math math-display" data-tex="\[
+X_{i,n}=\langle u_{i,n},\psi_{i,n}\rangle,\qquad
+E_{i,n}=\tfrac12\|u_{i,n}\|_2^2.
+\tag{VD13}
+\]">\[
+X_{i,n}=\langle u_{i,n},\psi_{i,n}\rangle,\qquad
+E_{i,n}=\tfrac12\|u_{i,n}\|_2^2.
+\tag{VD13}
+\]</span>
+<p>The original Fourier weights imply</p>
+<span class="math math-display" data-tex="\[
+(1+q^{10n})|X_{i,n}(t)|
+\leq\sqrt{A_i}\|u(t)\|_{H^{10}},\qquad
+(1+q^{10n})\sqrt{E_{i,n}(t)}
+\leq\|u(t)\|_{H^{10}}/\sqrt2.
+\tag{VD14}
+\]">\[
+(1+q^{10n})|X_{i,n}(t)|
+\leq\sqrt{A_i}\|u(t)\|_{H^{10}},\qquad
+(1+q^{10n})\sqrt{E_{i,n}(t)}
+\leq\|u(t)\|_{H^{10}}/\sqrt2.
+\tag{VD14}
+\]</span>
+<p>Indeed the lower band radius is <span class="math" data-tex="\(q^n\)">\(q^n\)</span>, and
+<span class="math" data-tex="\((1+4\pi^2q^{2n})^5\geq1+q^{10n}\)">\((1+4\pi^2q^{2n})^5\geq1+q^{10n}\)</span>. Cauchy–Schwarz then gives both bounds. These are uniform on each <span class="math" data-tex="\([0,T]\subset[0,T_*)\)">\([0,T]\subset[0,T_*)\)</span>.
+The original initial values are</p>
+<span class="math math-display" data-tex="\[
+X_{i,n}(0)=A_1\,1_{(i,n)=(1,n_0)},\qquad
+E_{i,n}(0)=\tfrac12A_1\,1_{(i,n)=(1,n_0)}
+=\frac{X_{i,n}(0)^2}{2A_i}.
+\tag{VD15}
+\]">\[
+X_{i,n}(0)=A_1\,1_{(i,n)=(1,n_0)},\qquad
+E_{i,n}(0)=\tfrac12A_1\,1_{(i,n)=(1,n_0)}
+=\frac{X_{i,n}(0)^2}{2A_i}.
+\tag{VD15}
+\]</span>
+<h2 id="vd4-keep-the-exact-scalar-and-vector-viscous-equations">VD4. Keep the exact scalar and vector viscous equations</h2>
+<p>For each original band define its actual scalar forcing coefficient</p>
+<span class="math math-display" data-tex="\[
+F_{i,n}(X)=
+\sum_{i_1,i_2=1}^m\sum_{\mu\in S}
+\alpha_{i_1,i_2,i,\mu_1,\mu_2,\mu_3}
+q^{5(n-\mu_3)/2}
+X_{i_1,n-\mu_3+\mu_1}X_{i_2,n-\mu_3+\mu_2}.
+\tag{VD16}
+\]">\[
+F_{i,n}(X)=
+\sum_{i_1,i_2=1}^m\sum_{\mu\in S}
+\alpha_{i_1,i_2,i,\mu_1,\mu_2,\mu_3}
+q^{5(n-\mu_3)/2}
+X_{i_1,n-\mu_3+\mu_1}X_{i_2,n-\mu_3+\mu_2}.
+\tag{VD16}
+\]</span>
+<p>Projecting VD8 and using disjoint supports gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_{i,n}&#x27;=\nu\Delta u_{i,n}+F_{i,n}(X)\psi_{i,n},\\
+X_{i,n}&#x27;=A_iF_{i,n}(X)+\nu\langle u_{i,n},\Delta\psi_{i,n}\rangle,\\
+E_{i,n}&#x27;=F_{i,n}(X)X_{i,n}
+-\nu\|\nabla u_{i,n}\|_2^2.
+\end{gathered}
+\tag{VD17}
+\]">\[
+\begin{gathered}
+u_{i,n}&#x27;=\nu\Delta u_{i,n}+F_{i,n}(X)\psi_{i,n},\\
+X_{i,n}&#x27;=A_iF_{i,n}(X)+\nu\langle u_{i,n},\Delta\psi_{i,n}\rangle,\\
+E_{i,n}&#x27;=F_{i,n}(X)X_{i,n}
+-\nu\|\nabla u_{i,n}\|_2^2.
+\end{gathered}
+\tag{VD17}
+\]</span>
+<p>The projected Laplacian is a bounded operator on this fixed band's <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space, with norm at most <span class="math" data-tex="\(4\pi^2(1+\epsilon_0/2)^2q^{2n}\)">\(4\pi^2(1+\epsilon_0/2)^2q^{2n}\)</span>. Thus the projected integral equation is continuously differentiable in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, which justifies every displayed derivative independently of a formal scalar reduction.
+The retained dissipation and error bounds are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+8\pi^2q^{2n}E_{i,n}
+\leq\|\nabla u_{i,n}\|_2^2
+\leq8\pi^2(1+\epsilon_0/2)^2q^{2n}E_{i,n},\\
+|\nu\langle u_{i,n},\Delta\psi_{i,n}\rangle|
+\leq\nu q^{2n}\sqrt{2E_{i,n}}\sqrt{J_i}.
+\end{gathered}
+\tag{VD18}
+\]">\[
+\begin{gathered}
+8\pi^2q^{2n}E_{i,n}
+\leq\|\nabla u_{i,n}\|_2^2
+\leq8\pi^2(1+\epsilon_0/2)^2q^{2n}E_{i,n},\\
+|\nu\langle u_{i,n},\Delta\psi_{i,n}\rangle|
+\leq\nu q^{2n}\sqrt{2E_{i,n}}\sqrt{J_i}.
+\end{gathered}
+\tag{VD18}
+\]</span>
+<p>Here <span class="math" data-tex="\(\Delta\psi_{i,n}=q^{2n}D_{q^n}\Delta\psi_i\)">\(\Delta\psi_{i,n}=q^{2n}D_{q^n}\Delta\psi_i\)</span>. Source line960 prints a squared Laplacian norm in its Cauchy–Schwarz step; the exact factor is the single norm <span class="math" data-tex="\(\sqrt{J_i}\)">\(\sqrt{J_i}\)</span>, as VD18 proves. The full viscosity and the negative term in VD17 remain in the equations.</p>
+<p>For completeness the source lower-frequency energy argument has an exact boundary identity too. Put <span class="math" data-tex="\(\mathcal E_&lt;(t)=\sum_{n&lt;n_0,i}E_{i,n}(t)\)">\(\mathcal E_&lt;(t)=\sum_{n&lt;n_0,i}E_{i,n}(t)\)</span>. Regrouping the absolutely convergent cubic series by its original base scale gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E_&lt;&#x27;(t)
+={}&amp;-\nu\sum_{n&lt;n_0,i}\|\nabla u_{i,n}\|_2^2\\
+&amp;+q^{5(n_0-1)/2}
+\sum_{i_1,i_2,i_3}\sum_{\mu\in\{(1,0,0),(0,1,0)\}}
+\alpha_{i_1,i_2,i_3,\mu}\,
+X_{i_1,n_0-1+\mu_1}X_{i_2,n_0-1+\mu_2}X_{i_3,n_0-1}.
+\end{aligned}
+\tag{VD19}
+\]">\[
+\begin{aligned}
+\mathcal E_&lt;&#x27;(t)
+={}&amp;-\nu\sum_{n&lt;n_0,i}\|\nabla u_{i,n}\|_2^2\\
+&amp;+q^{5(n_0-1)/2}
+\sum_{i_1,i_2,i_3}\sum_{\mu\in\{(1,0,0),(0,1,0)\}}
+\alpha_{i_1,i_2,i_3,\mu}\,
+X_{i_1,n_0-1+\mu_1}X_{i_2,n_0-1+\mu_2}X_{i_3,n_0-1}.
+\end{aligned}
+\tag{VD19}
+\]</span>
+<p>Every base scale below <span class="math" data-tex="\(n_0-1\)">\(n_0-1\)</span> has all three slots below the boundary and cancels by VD4; every base scale at least <span class="math" data-tex="\(n_0\)">\(n_0\)</span> has none. At base <span class="math" data-tex="\(n_0-1\)">\(n_0-1\)</span>, the shift <span class="math" data-tex="\(000\)">\(000\)</span> cancels internally, the shift <span class="math" data-tex="\(001\)">\(001\)</span> has its output above the boundary, and the two displayed shifts remain. Absolute convergence follows either from VD6's analysis bounds or from VD14 at large positive scales and the geometric factor <span class="math" data-tex="\(q^{5k/2}\)">\(q^{5k/2}\)</span> at negative scales. The quadratic dissipation sum is integrable by VD10. Equivalently one may pair the original equation with the single bounded projection onto all lower bands and obtain VD19 in the integrated form.</p>
+<p>Let <span class="math" data-tex="\(A_{\max}=\max_i A_i\)">\(A_{\max}=\max_i A_i\)</span>, let <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be the sum of the absolute values of the coefficients displayed in VD19, and let <span class="math" data-tex="\(H_T=\max_i\sup_{t\leq T}|X_{i,n_0}(t)|\)">\(H_T=\max_i\sup_{t\leq T}|X_{i,n_0}(t)|\)</span>. Each boundary product has two lower slots, whose product has absolute value at most <span class="math" data-tex="\(2A_{\max}\mathcal E_&lt;\)">\(2A_{\max}\mathcal E_&lt;\)</span>, and one upper slot bounded by <span class="math" data-tex="\(H_T\)">\(H_T\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_&lt;(t)
+\leq2q^{5(n_0-1)/2}\beta A_{\max}H_T
+\int_0^t\mathcal E_&lt;(r)\,dr
+\tag{VD20}
+\]">\[
+\mathcal E_&lt;(t)
+\leq2q^{5(n_0-1)/2}\beta A_{\max}H_T
+\int_0^t\mathcal E_&lt;(r)\,dr
+\tag{VD20}
+\]</span>
+<p>for the original zero lower initial energy. Integrating the elementary Gronwall majorant proves <span class="math" data-tex="\(\mathcal E_&lt;=0\)">\(\mathcal E_&lt;=0\)</span>, agreeing with VD12. The upper integration endpoint is <span class="math" data-tex="\(t\)">\(t\)</span>; source line987's <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span> at that position is a typographical error.</p>
+<h2 id="vd5-construct-the-exact-component-outside-each-original-wave-packet">VD5. Construct the exact component outside each original wave packet</h2>
+<p>Inside the real solenoidal <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space of a fixed original band put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Pi_{i,n}f=\frac{\langle f,\psi_{i,n}\rangle}{A_i}\psi_{i,n},
+\quad Q_{i,n}=I-\Pi_{i,n},\quad
+h_{i,n}=Q_{i,n}u_{i,n},\\
+u_{i,n}=\frac{X_{i,n}}{A_i}\psi_{i,n}+h_{i,n},
+\quad\langle h_{i,n},\psi_{i,n}\rangle=0,\\
+D_{i,n}:=E_{i,n}-\frac{X_{i,n}^2}{2A_i}
+=\frac12\|h_{i,n}\|_2^2.
+\end{gathered}
+\tag{VD21}
+\]">\[
+\begin{gathered}
+\Pi_{i,n}f=\frac{\langle f,\psi_{i,n}\rangle}{A_i}\psi_{i,n},
+\quad Q_{i,n}=I-\Pi_{i,n},\quad
+h_{i,n}=Q_{i,n}u_{i,n},\\
+u_{i,n}=\frac{X_{i,n}}{A_i}\psi_{i,n}+h_{i,n},
+\quad\langle h_{i,n},\psi_{i,n}\rangle=0,\\
+D_{i,n}:=E_{i,n}-\frac{X_{i,n}^2}{2A_i}
+=\frac12\|h_{i,n}\|_2^2.
+\end{gathered}
+\tag{VD21}
+\]</span>
+<p>This is the full orthogonal decomposition; in particular the source energy defect is an actual squared norm. Retain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_i=\Delta\psi_i+\frac{G_i}{A_i}\psi_i,\qquad
+\sigma_i^2=\|g_i\|_2^2=J_i-\frac{G_i^2}{A_i}&gt;0,\\
+g_{i,n}=Q_{i,n}\Delta\psi_{i,n}
+=q^{2n}D_{q^n}g_i,\qquad
+L_{i,n}=Q_{i,n}\Delta\big|_{\ker\Pi_{i,n}}.
+\end{gathered}
+\tag{VD22}
+\]">\[
+\begin{gathered}
+g_i=\Delta\psi_i+\frac{G_i}{A_i}\psi_i,\qquad
+\sigma_i^2=\|g_i\|_2^2=J_i-\frac{G_i^2}{A_i}&gt;0,\\
+g_{i,n}=Q_{i,n}\Delta\psi_{i,n}
+=q^{2n}D_{q^n}g_i,\qquad
+L_{i,n}=Q_{i,n}\Delta\big|_{\ker\Pi_{i,n}}.
+\end{gathered}
+\tag{VD22}
+\]</span>
+<p>Integration by parts gives <span class="math" data-tex="\(\langle\psi_i,\Delta\psi_i\rangle=-G_i\)">\(\langle\psi_i,\Delta\psi_i\rangle=-G_i\)</span>, and expansion proves the squared-norm identity. If it were zero, the Fourier transform of the nonzero <span class="math" data-tex="\(L^2\)">\(L^2\)</span> field <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> would be supported on the sphere <span class="math" data-tex="\(4\pi^2|\xi|^2=G_i/A_i\)">\(4\pi^2|\xi|^2=G_i/A_i\)</span>, a set of measure zero. This is impossible. Thus the strict inequality is proved for every original nonzero field, not assumed.</p>
+<p>The compression <span class="math" data-tex="\(L_{i,n}\)">\(L_{i,n}\)</span> is bounded and self-adjoint on the indicated closed subspace: for <span class="math" data-tex="\(h,k\)">\(h,k\)</span> there, <span class="math" data-tex="\(\langle Q\Delta h,k\rangle=\langle\Delta h,k\rangle=\langle h,\Delta k\rangle\)">\(\langle Q\Delta h,k\rangle=\langle\Delta h,k\rangle=\langle h,\Delta k\rangle\)</span>. Its entire quadratic-form bounds are</p>
+<span class="math math-display" data-tex="\[
+-4\pi^2(1+\epsilon_0/2)^2q^{2n}I
+\leq L_{i,n}\leq-4\pi^2q^{2n}I.
+\tag{VD23}
+\]">\[
+-4\pi^2(1+\epsilon_0/2)^2q^{2n}I
+\leq L_{i,n}\leq-4\pi^2q^{2n}I.
+\tag{VD23}
+\]</span>
+<p>Its exponential is defined by its norm-convergent power series. Differentiating the squared norm of this actual evolution gives
+<span class="math" data-tex="\(\|e^{\nu tL_{i,n}}\|\leq e^{-4\pi^2\nu q^{2n}t}\)">\(\|e^{\nu tL_{i,n}}\|\leq e^{-4\pi^2\nu q^{2n}t}\)</span>.
+Applying <span class="math" data-tex="\(Q_{i,n}\)">\(Q_{i,n}\)</span> to VD17, the complete equation and its solved integral are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h_{i,n}&#x27;&amp;=\nu L_{i,n}h_{i,n}
++\frac{\nu X_{i,n}}{A_i}g_{i,n},\\
+h_{i,n}(t)&amp;=e^{\nu tL_{i,n}}h_{i,n}(0)
++\frac{\nu}{A_i}\int_0^t
+e^{\nu(t-r)L_{i,n}}X_{i,n}(r)g_{i,n}\,dr .
+\end{aligned}
+\tag{VD24}
+\]">\[
+\begin{aligned}
+h_{i,n}&#x27;&amp;=\nu L_{i,n}h_{i,n}
++\frac{\nu X_{i,n}}{A_i}g_{i,n},\\
+h_{i,n}(t)&amp;=e^{\nu tL_{i,n}}h_{i,n}(0)
++\frac{\nu}{A_i}\int_0^t
+e^{\nu(t-r)L_{i,n}}X_{i,n}(r)g_{i,n}\,dr .
+\end{aligned}
+\tag{VD24}
+\]</span>
+<p>The nonlinear forcing has no omitted orthogonal component: it is exactly <span class="math" data-tex="\(F_{i,n}\psi_{i,n}\)">\(F_{i,n}\psi_{i,n}\)</span>, which <span class="math" data-tex="\(Q_{i,n}\)">\(Q_{i,n}\)</span> annihilates.</p>
+<p>For the source initial datum every <span class="math" data-tex="\(h_{i,n}(0)=0\)">\(h_{i,n}(0)=0\)</span>. Thus VD24 gives the stronger explicit defect estimate</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sqrt{D_{i,n}(t)}
+&amp;\leq\frac{\nu q^{2n}\sigma_i}{\sqrt{A_i}}
+\int_0^t e^{-4\pi^2\nu q^{2n}(t-r)}
+\sqrt{E_{i,n}(r)}\,dr,\\
+D_{i,n}(t)
+&amp;\leq\frac{\nu^2q^{4n}\sigma_i^2}{A_i}\,
+t\int_0^t E_{i,n}(r)\,dr .
+\end{aligned}
+\tag{VD25}
+\]">\[
+\begin{aligned}
+\sqrt{D_{i,n}(t)}
+&amp;\leq\frac{\nu q^{2n}\sigma_i}{\sqrt{A_i}}
+\int_0^t e^{-4\pi^2\nu q^{2n}(t-r)}
+\sqrt{E_{i,n}(r)}\,dr,\\
+D_{i,n}(t)
+&amp;\leq\frac{\nu^2q^{4n}\sigma_i^2}{A_i}\,
+t\int_0^t E_{i,n}(r)\,dr .
+\end{aligned}
+\tag{VD25}
+\]</span>
+<p>The first inequality uses the exact factor <span class="math" data-tex="\(|X|\leq\sqrt{2A_iE}\)">\(|X|\leq\sqrt{2A_iE}\)</span> and <span class="math" data-tex="\(\|h\|=\sqrt{2D}\)">\(\|h\|=\sqrt{2D}\)</span>; the second is integral Cauchy–Schwarz after retaining, then bounding, the nonnegative exponential by one.
+The original source's linear-in-time integral bound follows directly as well:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_{i,n}&#x27;=
+-\nu\|\nabla u_{i,n}\|_2^2
+-\frac{\nu X_{i,n}}{A_i}
+\langle u_{i,n},\Delta\psi_{i,n}\rangle,\\
+0\leq D_{i,n}(t)\leq
+\frac{2\nu q^{2n}\sqrt{J_i}}{\sqrt{A_i}}
+\int_0^t E_{i,n}(r)\,dr.
+\end{gathered}
+\tag{VD26}
+\]">\[
+\begin{gathered}
+D_{i,n}&#x27;=
+-\nu\|\nabla u_{i,n}\|_2^2
+-\frac{\nu X_{i,n}}{A_i}
+\langle u_{i,n},\Delta\psi_{i,n}\rangle,\\
+0\leq D_{i,n}(t)\leq
+\frac{2\nu q^{2n}\sqrt{J_i}}{\sqrt{A_i}}
+\int_0^t E_{i,n}(r)\,dr.
+\end{gathered}
+\tag{VD26}
+\]</span>
+<p>The equality keeps the full dissipation; VD18 gives the second estimate. Both VD25 and VD26 concern the same original defect.</p>
+<p>For the initially occupied band, <span class="math" data-tex="\(X_{1,n_0}(0)=A_1\)">\(X_{1,n_0}(0)=A_1\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+h_{1,n_0}&#x27;(0)=\nu g_{1,n_0},\qquad
+D_{1,n_0}(t)
+=\tfrac12\nu^2q^{4n_0}\sigma_1^2t^2+o(t^2).
+\tag{VD27}
+\]">\[
+h_{1,n_0}&#x27;(0)=\nu g_{1,n_0},\qquad
+D_{1,n_0}(t)
+=\tfrac12\nu^2q^{4n_0}\sigma_1^2t^2+o(t^2).
+\tag{VD27}
+\]</span>
+<p>This follows from differentiability in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and the exact squared norm VD21. For every <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> the actual trajectory immediately acquires a nonzero component outside the original wave packet.</p>
+<h2 id="vd6-obtain-an-exact-scalar-memory-equation-with-its-full-positive-kernel">VD6. Obtain an exact scalar memory equation with its full positive kernel</h2>
+<p>Return VD24 to the scalar VD17 equation. Define, for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathscr K_{i,n}(t)=
+\langle e^{\nu tL_{i,n}}g_{i,n},g_{i,n}\rangle .
+\tag{VD28}
+\]">\[
+\mathscr K_{i,n}(t)=
+\langle e^{\nu tL_{i,n}}g_{i,n},g_{i,n}\rangle .
+\tag{VD28}
+\]</span>
+<p>For the original data with <span class="math" data-tex="\(h(0)=0\)">\(h(0)=0\)</span>, the exact closed coordinate equation is</p>
+<span class="math math-display" data-tex="\[
+X_{i,n}&#x27;(t)=
+A_iF_{i,n}(X(t))
+-\nu q^{2n}\frac{G_i}{A_i}X_{i,n}(t)
++\frac{\nu^2}{A_i}\int_0^t
+\mathscr K_{i,n}(t-r)X_{i,n}(r)\,dr .
+\tag{VD29}
+\]">\[
+X_{i,n}&#x27;(t)=
+A_iF_{i,n}(X(t))
+-\nu q^{2n}\frac{G_i}{A_i}X_{i,n}(t)
++\frac{\nu^2}{A_i}\int_0^t
+\mathscr K_{i,n}(t-r)X_{i,n}(r)\,dr .
+\tag{VD29}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\langle h,\Delta\psi_{i,n}\rangle=\langle h,g_{i,n}\rangle\)">\(\langle h,\Delta\psi_{i,n}\rangle=\langle h,g_{i,n}\rangle\)</span>, and the component along <span class="math" data-tex="\(\psi_{i,n}\)">\(\psi_{i,n}\)</span> has pairing
+<span class="math" data-tex="\(-q^{2n}(G_i/A_i)X_{i,n}\)">\(-q^{2n}(G_i/A_i)X_{i,n}\)</span>. These two identities and VD24 give every term and sign in VD29. For general initial <span class="math" data-tex="\(h(0)\)">\(h(0)\)</span>, add the exact term
+<span class="math" data-tex="\(\nu\langle e^{\nu tL_{i,n}}h_{i,n}(0),g_{i,n}\rangle\)">\(\nu\langle e^{\nu tL_{i,n}}h_{i,n}(0),g_{i,n}\rangle\)</span>.</p>
+<p>The kernel is strictly positive and keeps both original band bounds:</p>
+<span class="math math-display" data-tex="\[
+q^{4n}\sigma_i^2
+e^{-4\pi^2\nu(1+\epsilon_0/2)^2q^{2n}t}
+\leq\mathscr K_{i,n}(t)
+\leq q^{4n}\sigma_i^2e^{-4\pi^2\nu q^{2n}t}.
+\tag{VD30}
+\]">\[
+q^{4n}\sigma_i^2
+e^{-4\pi^2\nu(1+\epsilon_0/2)^2q^{2n}t}
+\leq\mathscr K_{i,n}(t)
+\leq q^{4n}\sigma_i^2e^{-4\pi^2\nu q^{2n}t}.
+\tag{VD30}
+\]</span>
+<p>To prove this without an unproved spectral assertion, self-adjointness of the power-series exponential gives
+<span class="math" data-tex="\(\mathscr K(t)=\|e^{\nu tL/2}g\|_2^2\)">\(\mathscr K(t)=\|e^{\nu tL/2}g\|_2^2\)</span>. Differentiate this norm and apply both VD23 bounds. Integration gives VD30 with <span class="math" data-tex="\(\|g_{i,n}\|^2=q^{4n}\sigma_i^2\)">\(\|g_{i,n}\|^2=q^{4n}\sigma_i^2\)</span>.
+There is also the exact original scaling identity</p>
+<span class="math math-display" data-tex="\[
+L_{i,n}=q^{2n}D_{q^n}L_{i,0}D_{q^{-n}},
+\qquad
+\mathscr K_{i,n}(t)
+=q^{4n}\langle e^{\nu q^{2n}tL_{i,0}}g_i,g_i\rangle.
+\tag{VD31}
+\]">\[
+L_{i,n}=q^{2n}D_{q^n}L_{i,0}D_{q^{-n}},
+\qquad
+\mathscr K_{i,n}(t)
+=q^{4n}\langle e^{\nu q^{2n}tL_{i,0}}g_i,g_i\rangle.
+\tag{VD31}
+\]</span>
+<p>The dilation maps the entire orthogonal complement onto the scaled one, since its full <span class="math" data-tex="\(L^2\)">\(L^2\)</span> pairing is preserved. Its Laplacian identity proves the first formula, and the convergent exponential series proves the second.</p>
+<p>This is an exact elimination of the orthogonal component of the actual equation. It also has an exact reverse map. Given coordinates on an interval and <span class="math" data-tex="\(h\)">\(h\)</span> defined by VD24, assume their reconstructed series <span class="math" data-tex="\(u=\sum_{i,n}(X_{i,n}\psi_{i,n}/A_i+h_{i,n})\)">\(u=\sum_{i,n}(X_{i,n}\psi_{i,n}/A_i+h_{i,n})\)</span> is continuous in the original <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> norm and the coordinates satisfy VD29 with the stated initial data. Differentiating each bounded-band equation proves VD17, since its parallel and orthogonal components agree separately. Its integrated heat formula can then be summed: VD6 and the continuous <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> bound make the complete nonlinear series and its time integral converge in <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span>. Orthogonal projections of both sides of VD8 agree, and both sides lie in <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>, so VD8 holds. This proves the precise equivalence on the stated function space; it does not assert existence for arbitrary coordinate sequences. Existence on that space was already constructed in VD2.</p>
+<p>The function space in this equivalence keeps the entire Sobolev expression. In particular, its band norm is</p>
+<span class="math math-display" data-tex="\[
+\|u_{i,n}\|_{H^{10}}^2=
+\frac{X_{i,n}^2}{A_i^2}\|\psi_{i,n}\|_{H^{10}}^2
++\frac{2X_{i,n}}{A_i}
+\langle\psi_{i,n},h_{i,n}\rangle_{H^{10}}
++\|h_{i,n}\|_{H^{10}}^2.
+\tag{VD32}
+\]">\[
+\|u_{i,n}\|_{H^{10}}^2=
+\frac{X_{i,n}^2}{A_i^2}\|\psi_{i,n}\|_{H^{10}}^2
++\frac{2X_{i,n}}{A_i}
+\langle\psi_{i,n},h_{i,n}\rangle_{H^{10}}
++\|h_{i,n}\|_{H^{10}}^2.
+\tag{VD32}
+\]</span>
+<p>The middle term is not generally zero; orthogonality in VD21 is the original <span class="math" data-tex="\(L^2\)">\(L^2\)</span> orthogonality. The sum of these full band expressions, not a substituted diagonal norm, specifies the original <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> space.</p>
+<h2 id="vd7-prove-the-source-viscosity-comparison-with-all-original-variables-retained">VD7. Prove the source viscosity comparison with all original variables retained</h2>
+<p>For an integer <span class="math" data-tex="\(k\)">\(k\)</span>, retain <span class="math" data-tex="\(\lambda=q^k\)">\(\lambda=q^k\)</span>, an amplitude <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and a clock <span class="math" data-tex="\(b=a\lambda^{5/2}\)">\(b=a\lambda^{5/2}\)</span>. The full cascade covariance from VD3, by reindexing its base scale, is</p>
+<span class="math math-display" data-tex="\[
+C_\alpha(D_\lambda v,D_\lambda v)
+=\lambda^{5/2}D_\lambda C_\alpha(v,v).
+\tag{VD33}
+\]">\[
+C_\alpha(D_\lambda v,D_\lambda v)
+=\lambda^{5/2}D_\lambda C_\alpha(v,v).
+\tag{VD33}
+\]</span>
+<p>No field or coefficient changes. If <span class="math" data-tex="\(v\)">\(v\)</span> has original viscosity
+<span class="math" data-tex="\(\nu&#x27;=\nu/(a\sqrt\lambda)\)">\(\nu&#x27;=\nu/(a\sqrt\lambda)\)</span>, direct substitution proves</p>
+<span class="math math-display" data-tex="\[
+u(t,x)=a\lambda^{3/2}v(bt,\lambda x),\qquad
+u&#x27;=\nu\Delta u+C_\alpha(u,u).
+\tag{VD34}
+\]">\[
+u(t,x)=a\lambda^{3/2}v(bt,\lambda x),\qquad
+u&#x27;=\nu\Delta u+C_\alpha(u,u).
+\tag{VD34}
+\]</span>
+<p>The time derivative has factor <span class="math" data-tex="\(ab\)">\(ab\)</span>, diffusion has factor <span class="math" data-tex="\(a\nu\lambda^2\)">\(a\nu\lambda^2\)</span>, and the nonlinear term has factor <span class="math" data-tex="\(a^2\lambda^{5/2}\)">\(a^2\lambda^{5/2}\)</span>. Thus both equations agree exactly with the displayed <span class="math" data-tex="\(b,\nu&#x27;\)">\(b,\nu&#x27;\)</span>. The inverse map uses <span class="math" data-tex="\(a^{-1}D_{\lambda^{-1}}\)">\(a^{-1}D_{\lambda^{-1}}\)</span> and time <span class="math" data-tex="\(t=s/b\)">\(t=s/b\)</span>, so this is an actual two-way correspondence of the maximal solutions. Its coordinates, energy and defect retain</p>
+<span class="math math-display" data-tex="\[
+X^u_{i,n}(t)=aX^v_{i,n-k}(bt),\qquad
+E^u_{i,n}(t)=a^2E^v_{i,n-k}(bt),\qquad
+D^u_{i,n}(t)=a^2D^v_{i,n-k}(bt).
+\tag{VD35}
+\]">\[
+X^u_{i,n}(t)=aX^v_{i,n-k}(bt),\qquad
+E^u_{i,n}(t)=a^2E^v_{i,n-k}(bt),\qquad
+D^u_{i,n}(t)=a^2D^v_{i,n-k}(bt).
+\tag{VD35}
+\]</span>
+<p>These follow from the exact original unitary pairing and band dilation.
+With <span class="math" data-tex="\(a=1,k=n_0\)">\(a=1,k=n_0\)</span>, the actual datum <span class="math" data-tex="\(\psi_{1,n_0}\)">\(\psi_{1,n_0}\)</span> corresponds to the datum <span class="math" data-tex="\(\psi_{1,0}\)">\(\psi_{1,0}\)</span> at viscosity <span class="math" data-tex="\(\nu q^{-n_0/2}\)">\(\nu q^{-n_0/2}\)</span> and clock <span class="math" data-tex="\(q^{5n_0/2}\)">\(q^{5n_0/2}\)</span>. This proves the source footnote's comparison while retaining the original datum, physical time and viscosity in VD8–VD32.</p>
+<h2 id="two-pictures-of-the-original-viscous-dynamics">Two pictures of the original viscous dynamics</h2>
+<p><img src="assets/NS-FLUID-40/original-viscous-cascade-memory-2E7F8F230D67C0DACEB976EC41D8B171DBA142FD2D51ED641CB7543748B55282.png" alt="The exact original viscous band decomposition and positive memory kernel" class="course-figure" width="2560" height="1600" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-viscous-cascade-memory" data-asset-sha256="2E7F8F230D67C0DACEB976EC41D8B171DBA142FD2D51ED641CB7543748B55282"></p>
+<p>VD1–VD35 prove the complete identities and bounds shown here. Every original norm, scale and viscosity factor is retained. The <a href="assets/original-viscous-cascade-memory.py">reproducible source</a> and <a href="assets/original-viscous-cascade-memory.svg">vector rendering</a> are included. Human comparison: Tao, original navier-blowup.tex827–1008. No numerical blowup trajectory is represented.</p>
+<p><img src="assets/NS-FLUID-40/original-cascade-energy-current-756D404B7777A332AAF4F5B387A1D240499F18A17220BA9621E6502517050DAD.png" alt="The complete signed energy current between original scales" class="course-figure" width="2560" height="1600" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-cascade-energy-current" data-asset-sha256="756D404B7777A332AAF4F5B387A1D240499F18A17220BA9621E6502517050DAD"></p>
+<p>VD16–VD20 and Exercise 4, EX17–EX21 prove the complete identities and bounds shown here. Every original norm, scale and viscosity factor is retained. The arrows specify a signed current; no positivity of that current is assumed. The box widths are schematic. The <a href="assets/original-cascade-energy-current.py">reproducible source</a> and <a href="assets/original-cascade-energy-current.svg">vector rendering</a> are included. Human comparison: Tao, original navier-blowup.tex827–1008. No numerical blowup trajectory is represented.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<h3 id="exercise-1-calculate-the-full-original-heat-response-of-one-band">Exercise 1. Calculate the full original heat response of one band</h3>
+<p>Compute the scalar response of the original band field under its actual heat evolution. Recover the exact nonlinear coordinate integral equation, and calculate the energy defect for free heat evolution without replacing the field by a Laplacian eigenfunction.</p>
+<p><strong>Solution.</strong> Fix <span class="math" data-tex="\(i,n\)">\(i,n\)</span>, retain every original constant in VD2, and put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_{i,n}(t)=\langle e^{\nu t\Delta}\psi_{i,n},\psi_{i,n}\rangle\\
+\hspace{15mm}=
+\int_{\mathbb R^3}
+e^{-4\pi^2\nu q^{2n}|\xi|^2t}
+|\widehat\psi_i(\xi)|^2\,d\xi .
+\end{gathered}
+\tag{EX1}
+\]">\[
+\begin{gathered}
+H_{i,n}(t)=\langle e^{\nu t\Delta}\psi_{i,n},\psi_{i,n}\rangle\\
+\hspace{15mm}=
+\int_{\mathbb R^3}
+e^{-4\pi^2\nu q^{2n}|\xi|^2t}
+|\widehat\psi_i(\xi)|^2\,d\xi .
+\end{gathered}
+\tag{EX1}
+\]</span>
+<p>This follows from the full original Fourier dilation formula and its Jacobian. The measure in the last integral has mass <span class="math" data-tex="\(A_i\)">\(A_i\)</span>; it has not been replaced by a measure of mass one. Its compact support makes differentiation of every order legitimate, and gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(-1)^k H_{i,n}^{(k)}(t)
+=\nu^kq^{2kn}\int(4\pi^2|\xi|^2)^k
+e^{-4\pi^2\nu q^{2n}|\xi|^2t}
+|\widehat\psi_i(\xi)|^2\,d\xi\geq0,\\
+H_{i,n}(0)=A_i,\quad
+H_{i,n}&#x27;(0)=-\nu q^{2n}G_i,\quad
+H_{i,n}&#x27;&#x27;(0)=\nu^2q^{4n}J_i .
+\end{gathered}
+\tag{EX2}
+\]">\[
+\begin{gathered}
+(-1)^k H_{i,n}^{(k)}(t)
+=\nu^kq^{2kn}\int(4\pi^2|\xi|^2)^k
+e^{-4\pi^2\nu q^{2n}|\xi|^2t}
+|\widehat\psi_i(\xi)|^2\,d\xi\geq0,\\
+H_{i,n}(0)=A_i,\quad
+H_{i,n}&#x27;(0)=-\nu q^{2n}G_i,\quad
+H_{i,n}&#x27;&#x27;(0)=\nu^2q^{4n}J_i .
+\end{gathered}
+\tag{EX2}
+\]</span>
+<p>Every equality includes the original <span class="math" data-tex="\(4\pi^2\)">\(4\pi^2\)</span> convention.
+Writing <span class="math" data-tex="\(\rho=1+\epsilon_0/2\)">\(\rho=1+\epsilon_0/2\)</span>, the actual band bounds yield</p>
+<span class="math math-display" data-tex="\[
+A_i e^{-4\pi^2\nu q^{2n}\rho^2t}
+\leq H_{i,n}(t)
+\leq A_i e^{-4\pi^2\nu q^{2n}t}.
+\tag{EX3}
+\]">\[
+A_i e^{-4\pi^2\nu q^{2n}\rho^2t}
+\leq H_{i,n}(t)
+\leq A_i e^{-4\pi^2\nu q^{2n}t}.
+\tag{EX3}
+\]</span>
+<p>The vector band equation VD17 has the exact integral solution</p>
+<span class="math math-display" data-tex="\[
+u_{i,n}(t)=e^{\nu t\Delta}u_{i,n}(0)
++\int_0^t F_{i,n}(X(r))e^{\nu(t-r)\Delta}\psi_{i,n}\,dr.
+\]">\[
+u_{i,n}(t)=e^{\nu t\Delta}u_{i,n}(0)
++\int_0^t F_{i,n}(X(r))e^{\nu(t-r)\Delta}\psi_{i,n}\,dr.
+\]</span>
+<p>For the original initial data its projection is therefore</p>
+<span class="math math-display" data-tex="\[
+X_{i,n}(t)=\frac{X_{i,n}(0)}{A_i}H_{i,n}(t)
++\int_0^t F_{i,n}(X(r))H_{i,n}(t-r)\,dr.
+\tag{EX4}
+\]">\[
+X_{i,n}(t)=\frac{X_{i,n}(0)}{A_i}H_{i,n}(t)
++\int_0^t F_{i,n}(X(r))H_{i,n}(t-r)\,dr.
+\tag{EX4}
+\]</span>
+<p>This is another exact scalar integral equation for the already constructed flow. It retains the full original heat response; no scalar damping approximation is made.</p>
+<p>For the actual free heat equation with initial datum <span class="math" data-tex="\(a\psi_{i,n}\)">\(a\psi_{i,n}\)</span>, where <span class="math" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span>, the precise coordinate, energy and defect are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X(t)=aH_{i,n}(t),\qquad
+E(t)=\tfrac12a^2H_{i,n}(2t),\\
+D(t)=\frac{a^2}{2}
+\left[H_{i,n}(2t)-\frac{H_{i,n}(t)^2}{A_i}\right].
+\end{gathered}
+\tag{EX5}
+\]">\[
+\begin{gathered}
+X(t)=aH_{i,n}(t),\qquad
+E(t)=\tfrac12a^2H_{i,n}(2t),\\
+D(t)=\frac{a^2}{2}
+\left[H_{i,n}(2t)-\frac{H_{i,n}(t)^2}{A_i}\right].
+\end{gathered}
+\tag{EX5}
+\]</span>
+<p>The energy identity follows because the heat semigroup is self-adjoint and its square is the semigroup at time <span class="math" data-tex="\(2t\)">\(2t\)</span>. The bracket is nonnegative by Cauchy–Schwarz in the original measure <span class="math" data-tex="\(|\widehat\psi_i|^2d\xi\)">\(|\widehat\psi_i|^2d\xi\)</span>.
+If <span class="math" data-tex="\(a\ne0,\nu&gt;0,t&gt;0\)">\(a\ne0,\nu&gt;0,t&gt;0\)</span>, equality would force <span class="math" data-tex="\(e^{-4\pi^2\nu q^{2n}|\xi|^2t}\)">\(e^{-4\pi^2\nu q^{2n}|\xi|^2t}\)</span> to be constant almost everywhere for that measure. Its nonzero smooth density is positive on an open set, where <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span> is not constant. Thus <span class="math" data-tex="\(D(t)&gt;0\)">\(D(t)&gt;0\)</span>.
+Using the two actual derivatives in EX2 gives</p>
+<span class="math math-display" data-tex="\[
+D(t)=\frac{a^2\nu^2q^{4n}}2
+\left(J_i-\frac{G_i^2}{A_i}\right)t^2+o(t^2).
+\tag{EX6}
+\]">\[
+D(t)=\frac{a^2\nu^2q^{4n}}2
+\left(J_i-\frac{G_i^2}{A_i}\right)t^2+o(t^2).
+\tag{EX6}
+\]</span>
+<p>All original field norms and the complete diffusion variance remain.</p>
+<h3 id="exercise-2-relate-the-two-exact-kernels-through-their-full-resolvents">Exercise 2. Relate the two exact kernels through their full resolvents</h3>
+<p>Prove an exact relation between the Laplace transforms of EX1 and the memory kernel VD28. Show that the positive memory contribution is consistent with the original strictly dissipative heat operator.</p>
+<p><strong>Solution.</strong> Keep the fixed original band and write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\gamma_{i,n}=q^{2n}G_i/A_i,\qquad
+a_n=4\pi^2q^{2n},\qquad b_n=4\pi^2\rho^2q^{2n},\\
+\mathcal H(p)=\int_0^\infty e^{-pt}H_{i,n}(t)\,dt,\qquad
+\mathcal Q(p)=\int_0^\infty e^{-pt}\mathscr K_{i,n}(t)\,dt
+\quad(p&gt;0).
+\end{gathered}
+\tag{EX7}
+\]">\[
+\begin{gathered}
+\gamma_{i,n}=q^{2n}G_i/A_i,\qquad
+a_n=4\pi^2q^{2n},\qquad b_n=4\pi^2\rho^2q^{2n},\\
+\mathcal H(p)=\int_0^\infty e^{-pt}H_{i,n}(t)\,dt,\qquad
+\mathcal Q(p)=\int_0^\infty e^{-pt}\mathscr K_{i,n}(t)\,dt
+\quad(p&gt;0).
+\end{gathered}
+\tag{EX7}
+\]</span>
+<p>Tonelli's theorem applies to the nonnegative EX1 integrand, and gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal H(p)=
+\int_{\mathbb R^3}
+\frac{|\widehat\psi_i(\xi)|^2}
+{p+4\pi^2\nu q^{2n}|\xi|^2}\,d\xi
+=\langle(p-\nu\Delta)^{-1}\psi_{i,n},\psi_{i,n}\rangle .
+\tag{EX8}
+\]">\[
+\mathcal H(p)=
+\int_{\mathbb R^3}
+\frac{|\widehat\psi_i(\xi)|^2}
+{p+4\pi^2\nu q^{2n}|\xi|^2}\,d\xi
+=\langle(p-\nu\Delta)^{-1}\psi_{i,n},\psi_{i,n}\rangle .
+\tag{EX8}
+\]</span>
+<p>All operators here act on the fixed band. Both <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> and <span class="math" data-tex="\(L_{i,n}\)">\(L_{i,n}\)</span> are bounded there. Integrating the derivative of <span class="math" data-tex="\(e^{-pt}e^{\nu tL}\)">\(e^{-pt}e^{\nu tL}\)</span> in operator norm shows that its integral is a two-sided inverse of <span class="math" data-tex="\(p-\nu L\)">\(p-\nu L\)</span>; the boundary at infinity vanishes by the proved exponential bound. The same argument applies to the band Laplacian. Consequently
+<span class="math" data-tex="\(\mathcal Q(p)=\langle(p-\nu L_{i,n})^{-1}g_{i,n},g_{i,n}\rangle\)">\(\mathcal Q(p)=\langle(p-\nu L_{i,n})^{-1}g_{i,n},g_{i,n}\rangle\)</span>.</p>
+<p>Let <span class="math" data-tex="\(z=(p-\nu\Delta)^{-1}\psi_{i,n}\)">\(z=(p-\nu\Delta)^{-1}\psi_{i,n}\)</span>, and decompose it exactly as
+<span class="math" data-tex="\(z=x\psi_{i,n}/A_i+h\)">\(z=x\psi_{i,n}/A_i+h\)</span>, with <span class="math" data-tex="\(h\perp\psi_{i,n}\)">\(h\perp\psi_{i,n}\)</span>. Pairing its equation with the original field and projecting orthogonally give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(p+\nu\gamma_{i,n})x-\nu\langle h,g_{i,n}\rangle=A_i,\\
+(p-\nu L_{i,n})h=\frac{\nu x}{A_i}g_{i,n}.
+\end{gathered}
+\tag{EX9}
+\]">\[
+\begin{gathered}
+(p+\nu\gamma_{i,n})x-\nu\langle h,g_{i,n}\rangle=A_i,\\
+(p-\nu L_{i,n})h=\frac{\nu x}{A_i}g_{i,n}.
+\end{gathered}
+\tag{EX9}
+\]</span>
+<p>The second equation has the inverse just proved, and <span class="math" data-tex="\(x=\mathcal H(p)&gt;0\)">\(x=\mathcal H(p)&gt;0\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\frac{A_i}{\mathcal H(p)}
+=p+\nu\gamma_{i,n}-\frac{\nu^2}{A_i}\mathcal Q(p).
+\tag{EX10}
+\]">\[
+\frac{A_i}{\mathcal H(p)}
+=p+\nu\gamma_{i,n}-\frac{\nu^2}{A_i}\mathcal Q(p).
+\tag{EX10}
+\]</span>
+<p>This identity retains the complete direct heat response and the memory response. In particular, for <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathcal Q(p)=\frac{A_i}{\nu^2}
+\left[p+\nu\gamma_{i,n}-\frac{A_i}{\mathcal H(p)}\right].
+\tag{EX11}
+\]">\[
+\mathcal Q(p)=\frac{A_i}{\nu^2}
+\left[p+\nu\gamma_{i,n}-\frac{A_i}{\mathcal H(p)}\right].
+\tag{EX11}
+\]</span>
+<p>At <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span> the separate exact values are
+<span class="math" data-tex="\(\mathcal H(p)=A_i/p\)">\(\mathcal H(p)=A_i/p\)</span> and
+<span class="math" data-tex="\(\mathcal Q(p)=q^{4n}\sigma_i^2/p\)">\(\mathcal Q(p)=q^{4n}\sigma_i^2/p\)</span>; EX10 still holds without division by zero.</p>
+<p>The full band bounds give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{A_i}{p+\nu b_n}\leq\mathcal H(p)
+\leq\frac{A_i}{p+\nu a_n},\\
+\frac{q^{4n}\sigma_i^2}{p+\nu b_n}\leq\mathcal Q(p)
+\leq\frac{q^{4n}\sigma_i^2}{p+\nu a_n},\\
+p+\nu a_n\leq
+p+\nu\gamma_{i,n}-\frac{\nu^2}{A_i}\mathcal Q(p)
+\leq p+\nu b_n .
+\end{gathered}
+\tag{EX12}
+\]">\[
+\begin{gathered}
+\frac{A_i}{p+\nu b_n}\leq\mathcal H(p)
+\leq\frac{A_i}{p+\nu a_n},\\
+\frac{q^{4n}\sigma_i^2}{p+\nu b_n}\leq\mathcal Q(p)
+\leq\frac{q^{4n}\sigma_i^2}{p+\nu a_n},\\
+p+\nu a_n\leq
+p+\nu\gamma_{i,n}-\frac{\nu^2}{A_i}\mathcal Q(p)
+\leq p+\nu b_n .
+\end{gathered}
+\tag{EX12}
+\]</span>
+<p>The first follows directly from EX8, the second by integrating VD30, and the third by inverting the first and using EX10. Thus the exact memory correction has the positive sign in the time equation, while its full resolvent denominator remains positive with the stated original dissipative bounds.</p>
+<h3 id="exercise-3-use-the-original-annular-width-to-strengthen-the-diffusion-estimate">Exercise 3. Use the original annular width to strengthen the diffusion estimate</h3>
+<p>Bound the diffusion variance using the entire original annulus, retaining its actual mean <span class="math" data-tex="\(G_i/A_i\)">\(G_i/A_i\)</span>. Use the result to improve the defect and memory bounds. Determine whether any one constant damping rate can reproduce the original heat response.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(a=4\pi^2\)">\(a=4\pi^2\)</span> and <span class="math" data-tex="\(b=4\pi^2\rho^2\)">\(b=4\pi^2\rho^2\)</span>. On the original Fourier support, <span class="math" data-tex="\(a&lt;4\pi^2|\xi|^2&lt;b\)">\(a&lt;4\pi^2|\xi|^2&lt;b\)</span> almost everywhere for the nonzero density <span class="math" data-tex="\(|\widehat\psi_i|^2\)">\(|\widehat\psi_i|^2\)</span>. The nonnegative original integral gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;&lt;\int
+(4\pi^2|\xi|^2-a)(b-4\pi^2|\xi|^2)
+|\widehat\psi_i(\xi)|^2\,d\xi\\
+&amp;=(a+b)G_i-J_i-abA_i .
+\end{aligned}
+\tag{EX13}
+\]">\[
+\begin{aligned}
+0&amp;&lt;\int
+(4\pi^2|\xi|^2-a)(b-4\pi^2|\xi|^2)
+|\widehat\psi_i(\xi)|^2\,d\xi\\
+&amp;=(a+b)G_i-J_i-abA_i .
+\end{aligned}
+\tag{EX13}
+\]</span>
+<p>Strict positivity holds because a smooth nonzero field has positive density on an open set inside the annulus. Subtracting the retained mean square, with no change to the original measure, proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&lt;\frac{\sigma_i^2}{A_i}
+&amp;&lt;\left(\frac{G_i}{A_i}-a\right)
+\left(b-\frac{G_i}{A_i}\right)\\
+&amp;\leq\frac{(b-a)^2}{4}
+=4\pi^4(\rho^2-1)^2
+=4\pi^4(\epsilon_0+\epsilon_0^2/4)^2 .
+\end{aligned}
+\tag{EX14}
+\]">\[
+\begin{aligned}
+0&lt;\frac{\sigma_i^2}{A_i}
+&amp;&lt;\left(\frac{G_i}{A_i}-a\right)
+\left(b-\frac{G_i}{A_i}\right)\\
+&amp;\leq\frac{(b-a)^2}{4}
+=4\pi^4(\rho^2-1)^2
+=4\pi^4(\epsilon_0+\epsilon_0^2/4)^2 .
+\end{aligned}
+\tag{EX14}
+\]</span>
+<p>The second inequality is the exact identity
+<span class="math" data-tex="\((x-a)(b-x)=(b-a)^2/4-(x-(a+b)/2)^2\)">\((x-a)(b-x)=(b-a)^2/4-(x-(a+b)/2)^2\)</span>.
+Both the actual-mean estimate and its annular consequence are retained.</p>
+<p>Inserting EX14 into the original proved bounds gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_{i,n}(t)
+&amp;\leq4\pi^4\nu^2q^{4n}
+(\epsilon_0+\epsilon_0^2/4)^2
+t\int_0^t E_{i,n}(r)\,dr,\\
+\left|X_{i,n}&#x27;-A_iF_{i,n}
++\nu q^{2n}\frac{G_i}{A_i}X_{i,n}\right|
+&amp;\leq\frac{\nu^2q^{4n}\sigma_i^2}{A_i}
+\int_0^t e^{-4\pi^2\nu q^{2n}(t-r)}|X_{i,n}(r)|\,dr\\
+&amp;\leq4\pi^4\nu^2q^{4n}
+(\epsilon_0+\epsilon_0^2/4)^2
+\int_0^t e^{-4\pi^2\nu q^{2n}(t-r)}|X_{i,n}(r)|\,dr .
+\end{aligned}
+\tag{EX15}
+\]">\[
+\begin{aligned}
+D_{i,n}(t)
+&amp;\leq4\pi^4\nu^2q^{4n}
+(\epsilon_0+\epsilon_0^2/4)^2
+t\int_0^t E_{i,n}(r)\,dr,\\
+\left|X_{i,n}&#x27;-A_iF_{i,n}
++\nu q^{2n}\frac{G_i}{A_i}X_{i,n}\right|
+&amp;\leq\frac{\nu^2q^{4n}\sigma_i^2}{A_i}
+\int_0^t e^{-4\pi^2\nu q^{2n}(t-r)}|X_{i,n}(r)|\,dr\\
+&amp;\leq4\pi^4\nu^2q^{4n}
+(\epsilon_0+\epsilon_0^2/4)^2
+\int_0^t e^{-4\pi^2\nu q^{2n}(t-r)}|X_{i,n}(r)|\,dr .
+\end{aligned}
+\tag{EX15}
+\]</span>
+<p>The coordinate estimate is the actual memory equation VD29 and its full positive-kernel bound, not an assumed scalar approximation. Its original damping coefficient is still <span class="math" data-tex="\(q^{2n}G_i/A_i\)">\(q^{2n}G_i/A_i\)</span>.</p>
+<p>For <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, an exponential <span class="math" data-tex="\(A_ie^{-dt}\)">\(A_ie^{-dt}\)</span> matching the exact heat response at both value and first derivative at zero must have
+<span class="math" data-tex="\(d=\nu q^{2n}G_i/A_i\)">\(d=\nu q^{2n}G_i/A_i\)</span>. Its second derivative differs by exactly</p>
+<span class="math math-display" data-tex="\[
+H_{i,n}&#x27;&#x27;(0)-A_id^2
+=\nu^2q^{4n}
+\left(J_i-\frac{G_i^2}{A_i}\right)
+=\nu^2q^{4n}\sigma_i^2&gt;0.
+\tag{EX16}
+\]">\[
+H_{i,n}&#x27;&#x27;(0)-A_id^2
+=\nu^2q^{4n}
+\left(J_i-\frac{G_i^2}{A_i}\right)
+=\nu^2q^{4n}\sigma_i^2&gt;0.
+\tag{EX16}
+\]</span>
+<p>Thus no such constant damping law equals the original heat response on any neighborhood of zero. The memory term supplies the precise missing contribution. At <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span> the heat response is the constant <span class="math" data-tex="\(A_i\)">\(A_i\)</span>, consistent with all formulas.</p>
+<h3 id="exercise-4-derive-the-complete-signed-energy-current-between-adjacent-scales">Exercise 4. Derive the complete signed energy current between adjacent scales</h3>
+<p>For the original four-shift operator, compute the energy current at every scale boundary. Prove the exact balance for an arbitrary bounded scale weight, including the original viscous dissipation.</p>
+<p><strong>Solution.</strong> Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e_n=\sum_{i=1}^m E_{i,n},\qquad
+d_n=\sum_{i=1}^m\|\nabla u_{i,n}\|_2^2,\\
+\mathcal J_{n+1/2}
+=q^{5n/2}\sum_{i_1,i_2,i_3=1}^m
+\alpha_{i_1,i_2,i_3,0,0,1}
+X_{i_1,n}X_{i_2,n}X_{i_3,n+1}.
+\end{gathered}
+\tag{EX17}
+\]">\[
+\begin{gathered}
+e_n=\sum_{i=1}^m E_{i,n},\qquad
+d_n=\sum_{i=1}^m\|\nabla u_{i,n}\|_2^2,\\
+\mathcal J_{n+1/2}
+=q^{5n/2}\sum_{i_1,i_2,i_3=1}^m
+\alpha_{i_1,i_2,i_3,0,0,1}
+X_{i_1,n}X_{i_2,n}X_{i_3,n+1}.
+\end{gathered}
+\tag{EX17}
+\]</span>
+<p>This is a signed current. No sign restriction on these original coefficients or coordinates is introduced.
+For a fixed base scale <span class="math" data-tex="\(k\)">\(k\)</span>, denote the three cubic sums with shifts <span class="math" data-tex="\(100,010,001\)">\(100,010,001\)</span>, including their common factor <span class="math" data-tex="\(q^{5k/2}\)">\(q^{5k/2}\)</span>, by <span class="math" data-tex="\(T_{100},T_{010},T_{001}\)">\(T_{100},T_{010},T_{001}\)</span>. The six-permutation cancellation VD4, summed over the three original field indices, gives</p>
+<span class="math math-display" data-tex="\[
+T_{100}+T_{010}+T_{001}=0,\qquad
+T_{001}=\mathcal J_{k+1/2}.
+\tag{EX18}
+\]">\[
+T_{100}+T_{010}+T_{001}=0,\qquad
+T_{001}=\mathcal J_{k+1/2}.
+\tag{EX18}
+\]</span>
+<p>To check the multiplicity, each of the three locations of the high slot occurs twice in the six permutations; renaming the three summed field indices leaves their full products and coefficients in the corresponding displayed <span class="math" data-tex="\(T\)">\(T\)</span>. Hence the six-term sum is exactly twice the left side. The <span class="math" data-tex="\(000\)">\(000\)</span> sum cancels within its one scale by the same permutation argument.
+In VD17, the output at scale <span class="math" data-tex="\(n\)">\(n\)</span> receives <span class="math" data-tex="\(T_{001}\)">\(T_{001}\)</span> from base <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, and <span class="math" data-tex="\(T_{100}+T_{010}=-T_{001}\)">\(T_{100}+T_{010}=-T_{001}\)</span> from base <span class="math" data-tex="\(n\)">\(n\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+e_n&#x27;=-\nu d_n+
+\mathcal J_{n-1/2}-\mathcal J_{n+1/2}.
+\tag{EX19}
+\]">\[
+e_n&#x27;=-\nu d_n+
+\mathcal J_{n-1/2}-\mathcal J_{n+1/2}.
+\tag{EX19}
+\]</span>
+<p>Every source coefficient and scale factor in the two currents is given in EX17.</p>
+<p>For any bounded real sequence <span class="math" data-tex="\(\chi=(\chi_n)_{n\in\mathbb Z}\)">\(\chi=(\chi_n)_{n\in\mathbb Z}\)</span>, define the actual weighted energy
+<span class="math" data-tex="\(\mathcal E_\chi=\sum_n\chi_ne_n\)">\(\mathcal E_\chi=\sum_n\chi_ne_n\)</span>. On every compact time interval before <span class="math" data-tex="\(T_*\)">\(T_*\)</span>, its full identity is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E_\chi(t)-\mathcal E_\chi(0)
+={}&amp;-\nu\int_0^t\sum_n\chi_nd_n(r)\,dr\\
+&amp;+\int_0^t\sum_n(\chi_{n+1}-\chi_n)
+\mathcal J_{n+1/2}(r)\,dr .
+\end{aligned}
+\tag{EX20}
+\]">\[
+\begin{aligned}
+\mathcal E_\chi(t)-\mathcal E_\chi(0)
+={}&amp;-\nu\int_0^t\sum_n\chi_nd_n(r)\,dr\\
+&amp;+\int_0^t\sum_n(\chi_{n+1}-\chi_n)
+\mathcal J_{n+1/2}(r)\,dr .
+\end{aligned}
+\tag{EX20}
+\]</span>
+<p>The energy and dissipation sums converge by boundedness of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, VD10 and VD11. For the current sum, VD14 bounds all coordinates uniformly at negative scales and by constants times <span class="math" data-tex="\(q^{-10n}\)">\(q^{-10n}\)</span> at positive scales. EX17 then gives geometric summable bounds at both ends, uniform on the compact time interval. Thus truncation, integration of EX19, reindexing, and dominated convergence justify EX20 without hidden endpoint fluxes.</p>
+<p>If <span class="math" data-tex="\(\chi_n=1_{n\leq N}\)">\(\chi_n=1_{n\leq N}\)</span>, the exact boundary formula becomes</p>
+<span class="math math-display" data-tex="\[
+\frac d{dt}\sum_{n\leq N}e_n
+=-\nu\sum_{n\leq N}d_n-\mathcal J_{N+1/2}.
+\tag{EX21}
+\]">\[
+\frac d{dt}\sum_{n\leq N}e_n
+=-\nu\sum_{n\leq N}d_n-\mathcal J_{N+1/2}.
+\tag{EX21}
+\]</span>
+<p>For <span class="math" data-tex="\(N=n_0-1\)">\(N=n_0-1\)</span> this agrees with VD19, since its two lower-output terms sum to the negative of the displayed current. For <span class="math" data-tex="\(\chi_n=1\)">\(\chi_n=1\)</span> every difference vanishes and EX20 recovers the complete original energy identity. These are exact transfers of the same energy, including all original dissipation.</p>
+<h3 id="exercise-5-differentiate-the-actual-flow-with-respect-to-its-original-viscosity">Exercise 5. Differentiate the actual flow with respect to its original viscosity</h3>
+<p>Fix the original operator and initial datum. Construct the viscosity derivative of its actual local flow, with quantitative estimates and the differentiated energy identity. Treat the endpoint <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span> explicitly.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(s\geq5/2\)">\(s\geq5/2\)</span>, <span class="math" data-tex="\(u_0\in H^{s+4}_\sigma\)">\(u_0\in H^{s+4}_\sigma\)</span>, and retain <span class="math" data-tex="\(M=\|u_0\|_{H^{s+4}}\)">\(M=\|u_0\|_{H^{s+4}}\)</span>. Choose the actual coefficient</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K=\max\{1,\mathcal K(s,s;s),
+\mathcal K(s+2,s+2;s+2),
+\mathcal K(s+4,s+4;s+4)\},\\
+\qquad T=(8KM)^{-1},\quad a=4KM
+\end{gathered}
+\tag{EX22}
+\]">\[
+\begin{gathered}
+K=\max\{1,\mathcal K(s,s;s),
+\mathcal K(s+2,s+2;s+2),
+\mathcal K(s+4,s+4;s+4)\},\\
+\qquad T=(8KM)^{-1},\quad a=4KM
+\end{gathered}
+\tag{EX22}
+\]</span>
+<p>when <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>. The original heat contractions and VD2 give, for every <span class="math" data-tex="\(\nu\geq0\)">\(\nu\geq0\)</span>, its unique solution <span class="math" data-tex="\(u^\nu\)">\(u^\nu\)</span> on this common interval with
+<span class="math" data-tex="\(\|u^\nu(t)\|_{H^{s+4}}\leq2M\)">\(\|u^\nu(t)\|_{H^{s+4}}\leq2M\)</span>.
+If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, all solutions and derivatives below are zero for all time.</p>
+<p>Let <span class="math" data-tex="\(\nu+\delta\geq0\)">\(\nu+\delta\geq0\)</span>, and set <span class="math" data-tex="\(d=u^{\nu+\delta}-u^\nu\)">\(d=u^{\nu+\delta}-u^\nu\)</span>. Written with the original heat semigroup of viscosity <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, its exact equation is</p>
+<span class="math math-display" data-tex="\[
+d(t)=\int_0^t e^{\nu(t-r)\Delta}
+\left[\delta\Delta u^{\nu+\delta}
++C_\alpha(d,u^{\nu+\delta})+C_\alpha(u^\nu,d)\right](r)\,dr .
+\tag{EX23}
+\]">\[
+d(t)=\int_0^t e^{\nu(t-r)\Delta}
+\left[\delta\Delta u^{\nu+\delta}
++C_\alpha(d,u^{\nu+\delta})+C_\alpha(u^\nu,d)\right](r)\,dr .
+\tag{EX23}
+\]</span>
+<p>The alternate mild formula is justified by differentiating in <span class="math" data-tex="\(H^{s+2}\)">\(H^{s+2}\)</span>, integrating the original heat equation there and using the continuous <span class="math" data-tex="\(H^{s+4}\)">\(H^{s+4}\)</span> solutions. Since
+<span class="math" data-tex="\(\|\Delta f\|_{H^{s+2}}\leq\|f\|_{H^{s+4}}\)">\(\|\Delta f\|_{H^{s+2}}\leq\|f\|_{H^{s+4}}\)</span>, the complete estimate gives</p>
+<span class="math math-display" data-tex="\[
+\|d(t)\|_{H^{s+2}}\leq2M|\delta|t e^{at}.
+\tag{EX24}
+\]">\[
+\|d(t)\|_{H^{s+2}}\leq2M|\delta|t e^{at}.
+\tag{EX24}
+\]</span>
+<p>For example, subtract the heat formulas, bound the two bilinear terms by <span class="math" data-tex="\(4KM\|d\|\)">\(4KM\|d\|\)</span>, and integrate the resulting scalar majorant. The sharper integral <span class="math" data-tex="\(2M|\delta|(e^{at}-1)/a\)">\(2M|\delta|(e^{at}-1)/a\)</span> is also valid; EX24 follows because <span class="math" data-tex="\((e^{at}-1)/a\leq te^{at}\)">\((e^{at}-1)/a\leq te^{at}\)</span>.</p>
+<p>Construct <span class="math" data-tex="\(w^\nu\)">\(w^\nu\)</span> by the actual linear Volterra equation</p>
+<span class="math math-display" data-tex="\[
+w^\nu(t)=\int_0^t e^{\nu(t-r)\Delta}
+\left[\Delta u^\nu+C_\alpha(w^\nu,u^\nu)
++C_\alpha(u^\nu,w^\nu)\right](r)\,dr .
+\tag{EX25}
+\]">\[
+w^\nu(t)=\int_0^t e^{\nu(t-r)\Delta}
+\left[\Delta u^\nu+C_\alpha(w^\nu,u^\nu)
++C_\alpha(u^\nu,w^\nu)\right](r)\,dr .
+\tag{EX25}
+\]</span>
+<p>On sufficiently short intervals this integral map is a contraction in <span class="math" data-tex="\(C H^{s+2}\)">\(C H^{s+2}\)</span>, since the coefficient of its difference is at most <span class="math" data-tex="\(a\)">\(a\)</span> times the interval length. Iteration through finitely many such intervals proves existence and uniqueness on <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>. Its complete bound is</p>
+<span class="math math-display" data-tex="\[
+\|w^\nu(t)\|_{H^{s+2}}\leq2Mt e^{at}.
+\tag{EX26}
+\]">\[
+\|w^\nu(t)\|_{H^{s+2}}\leq2Mt e^{at}.
+\tag{EX26}
+\]</span>
+<p>For nonzero <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, let <span class="math" data-tex="\(z=d/\delta\)">\(z=d/\delta\)</span>. Subtract EX25 from EX23 divided by <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and put <span class="math" data-tex="\(r_\delta=z-w^\nu\)">\(r_\delta=z-w^\nu\)</span>. The exact integrand for its equation is</p>
+<span class="math math-display" data-tex="\[
+\Delta d+
+C_\alpha(r_\delta,u^{\nu+\delta})
++C_\alpha(u^\nu,r_\delta)
++C_\alpha(w^\nu,d).
+\tag{EX27}
+\]">\[
+\Delta d+
+C_\alpha(r_\delta,u^{\nu+\delta})
++C_\alpha(u^\nu,r_\delta)
++C_\alpha(w^\nu,d).
+\tag{EX27}
+\]</span>
+<p>This expression retains both the change in the original solution and the entire coefficient dependence. In <span class="math" data-tex="\(H^s\)">\(H^s\)</span>, EX24 and EX26 bound its forcing part by</p>
+<span class="math math-display" data-tex="\[
+2M|\delta|\,r e^{ar}
++4KM^2|\delta|\,r^2e^{2ar}.
+\]">\[
+2M|\delta|\,r e^{ar}
++4KM^2|\delta|\,r^2e^{2ar}.
+\]</span>
+<p>The same scalar integral majorant with difference coefficient <span class="math" data-tex="\(a\)">\(a\)</span> therefore proves</p>
+<span class="math math-display" data-tex="\[
+\sup_{0\leq r\leq t}
+\left\|\frac{u^{\nu+\delta}(r)-u^\nu(r)}{\delta}-w^\nu(r)\right\|_{H^s}
+\leq|\delta|e^{at}
+\left[Mt^2+\frac43KM^2t^3e^{at}\right].
+\tag{EX28}
+\]">\[
+\sup_{0\leq r\leq t}
+\left\|\frac{u^{\nu+\delta}(r)-u^\nu(r)}{\delta}-w^\nu(r)\right\|_{H^s}
+\leq|\delta|e^{at}
+\left[Mt^2+\frac43KM^2t^3e^{at}\right].
+\tag{EX28}
+\]</span>
+<p>Indeed integrating the first forcing term against <span class="math" data-tex="\(e^{a(t-r)}\)">\(e^{a(t-r)}\)</span> gives <span class="math" data-tex="\(M|\delta|t^2e^{at}\)">\(M|\delta|t^2e^{at}\)</span>; bounding <span class="math" data-tex="\(e^{ar}\leq e^{at}\)">\(e^{ar}\leq e^{at}\)</span> in the second gives the retained second term. This proves the actual viscosity derivative in <span class="math" data-tex="\(C([0,T];H^s)\)">\(C([0,T];H^s)\)</span>. It is two-sided when <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> and the right derivative when <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>; no negative-viscosity flow is used.
+Differentiating EX25 in <span class="math" data-tex="\(H^s\)">\(H^s\)</span> also yields the full differential equation</p>
+<span class="math math-display" data-tex="\[
+(w^\nu)&#x27;=\nu\Delta w^\nu+\Delta u^\nu+
+C_\alpha(w^\nu,u^\nu)+C_\alpha(u^\nu,w^\nu),
+\quad w^\nu(0)=0,\quad (w^\nu)&#x27;(0)=\Delta u_0 .
+\tag{EX29}
+\]">\[
+(w^\nu)&#x27;=\nu\Delta w^\nu+\Delta u^\nu+
+C_\alpha(w^\nu,u^\nu)+C_\alpha(u^\nu,w^\nu),
+\quad w^\nu(0)=0,\quad (w^\nu)&#x27;(0)=\Delta u_0 .
+\tag{EX29}
+\]</span>
+<p>Finally use VD10 for <span class="math" data-tex="\(\nu+\delta\)">\(\nu+\delta\)</span> and <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, subtract and divide by <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The convergence just proved has <span class="math" data-tex="\(s\geq5/2&gt;1\)">\(s\geq5/2&gt;1\)</span>, so the gradient pairings and time integrals converge uniformly on this finite interval. It follows that</p>
+<span class="math math-display" data-tex="\[
+\langle u^\nu(t),w^\nu(t)\rangle
++\int_0^t\|\nabla u^\nu(r)\|_2^2\,dr
++2\nu\int_0^t
+\langle\nabla u^\nu(r),\nabla w^\nu(r)\rangle\,dr=0.
+\tag{EX30}
+\]">\[
+\langle u^\nu(t),w^\nu(t)\rangle
++\int_0^t\|\nabla u^\nu(r)\|_2^2\,dr
++2\nu\int_0^t
+\langle\nabla u^\nu(r),\nabla w^\nu(r)\rangle\,dr=0.
+\tag{EX30}
+\]</span>
+<p>This retains the direct viscosity contribution as well as the variation of the actual field. The same identity holds with the right derivative at zero. It is a local parameter theorem for the constructed original flows, and gives no unproved global or blowup conclusion.</p>
+<h2 id="continue-to-the-original-quadratic-circuit">Continue to the original quadratic circuit</h2>
+<p>The actual original-viscosity flow, every band equation, its full energy
+defect and the exact scalar memory equation are now constructed. The solved
+exercises retain the direct heat response, exact resolvent, annular width,
+all signed scale currents and the derivative of the physical viscosity.</p>
+<p>The next step is the original pump, amplifier and rotor circuit, followed
+by the successive transfers and their finite-time endpoint. Those arguments
+must use the actual viscosity estimates proved here. The wider series
+continues toward the Alpöge–Buckmaster, OpenAI and workbench constructions.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-39.html">Previous lesson</a><a href="NS-FLUID-41.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

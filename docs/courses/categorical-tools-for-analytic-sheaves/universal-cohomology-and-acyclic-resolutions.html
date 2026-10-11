@@ -1,0 +1,275 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Universal cohomology and acyclic resolutions</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="universal-cohomology-and-acyclic-resolutions">Universal cohomology and acyclic resolutions</h1>
+<p>A cohomology theory has to compare different resolutions and all their connecting maps. This lesson proves those comparisons from effacement, then proves when a bounded-below complex of acyclic objects computes a derived functor. It also constructs and characterizes the comparison for a composition of functors.</p>
+<p>We use cochain complexes and the shift and cone signs fixed in <a href="chain-homotopies-mapping-cones-and-triangles.html">Chain homotopies, mapping cones and triangles</a>. <a href="derived-morphisms-through-quasi-isomorphism-roofs.html">Derived morphisms through quasi-isomorphism roofs</a>, Section 5, supplies the K-injective and K-projective Hom tests. <a href="triangles-after-quasi-isomorphism-localization.html">Triangles after quasi-isomorphism localization</a> supplies the localized triangulation, exact-sequence triangles and zero detection. <a href="injective-replacements-and-right-derived-functors.html">Injective replacements and right derived functors</a>, Sections 2–4, constructs the bounded-below resolution functor, its exact derived equivalence and its universal transformation property. Its Section 6 proves that abelian groups have enough injectives.</p>
+<p>All abelian categories and choices are taken in fixed ambient universes. Section 2 needs no enough-injectives hypothesis. In Sections 3–5 the source abelian category has enough injectives; further hypotheses are stated where used. A bounded-below complex may have nonzero terms in arbitrarily high degrees.</p>
+<h2 id="1-the-data-that-a-comparison-must-preserve">1. The data that a comparison must preserve</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A,\mathcal B\)">\(\mathcal A,\mathcal B\)</span> be abelian categories. A cohomological delta-functor <span class="math" data-tex="\(T\)">\(T\)</span> consists of additive functors <span class="math" data-tex="\(T^n:\mathcal A\to\mathcal B\)">\(T^n:\mathcal A\to\mathcal B\)</span>, for <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, and, for every short exact sequence <span class="math" data-tex="\(e=(0\to A\to B\to C\to0)\)">\(e=(0\to A\to B\to C\to0)\)</span>, arrows</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\delta^n_{T,e}:T^n(C)\longrightarrow T^{n+1}(A).
+\tag{1.1}
+\]">\[
+\delta^n_{T,e}:T^n(C)\longrightarrow T^{n+1}(A).
+\tag{1.1}
+\]</span>
+<p>Their long sequence starts with <span class="math" data-tex="\(0\to T^0(A)\to T^0(B)\to T^0(C)\)">\(0\to T^0(A)\to T^0(B)\to T^0(C)\)</span>, continues through (1.1) and all the higher terms, and is exact everywhere. The connecting arrows are natural for every commuting morphism of short exact sequences. In particular <span class="math" data-tex="\(T^0\)">\(T^0\)</span> is left exact.</p>
+<p>A morphism <span class="math" data-tex="\(t:T\to U\)">\(t:T\to U\)</span> consists of natural transformations <span class="math" data-tex="\(t^n:T^n\to U^n\)">\(t^n:T^n\to U^n\)</span> satisfying, for every <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+t^{n+1}_A\delta^n_{T,e}=\delta^n_{U,e}t^n_C.
+\tag{1.2}
+\]">\[
+t^{n+1}_A\delta^n_{T,e}=\delta^n_{U,e}t^n_C.
+\tag{1.2}
+\]</span>
+<p>We call <span class="math" data-tex="\(T\)">\(T\)</span> universal when every natural transformation <span class="math" data-tex="\(T^0\to U^0\)">\(T^0\to U^0\)</span>, for every delta-functor <span class="math" data-tex="\(U\)">\(U\)</span>, extends uniquely to such a morphism. The target <span class="math" data-tex="\(U\)">\(U\)</span> is not required to be effaceable.</p>
+<p>For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, degree <span class="math" data-tex="\(n\)">\(n\)</span> is effaceable if for every <span class="math" data-tex="\(A\)">\(A\)</span> there is a monomorphism <span class="math" data-tex="\(u:A\hookrightarrow M\)">\(u:A\hookrightarrow M\)</span> such that <span class="math" data-tex="\(T^n(u)=0\)">\(T^n(u)=0\)</span>. The choice may depend on both <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span>. Effacement concerns a zero induced arrow, and does not require <span class="math" data-tex="\(T^n(M)=0\)">\(T^n(M)=0\)</span>.</p>
+<h2 id="2-effacement-gives-the-complete-universal-property">2. Effacement gives the complete universal property</h2>
+<p><strong>Theorem 2.1.</strong> If every positive degree of <span class="math" data-tex="\(T\)">\(T\)</span> is effaceable, then <span class="math" data-tex="\(T\)">\(T\)</span> is universal.</p>
+<p><strong>Proof.</strong> Fix a natural transformation <span class="math" data-tex="\(t^0:T^0\to U^0\)">\(t^0:T^0\to U^0\)</span>. Suppose the transformations through degree <span class="math" data-tex="\(n\)">\(n\)</span> have already been constructed, are natural, and satisfy (1.2) for connecting arrows landing in those degrees. For <span class="math" data-tex="\(A\)">\(A\)</span>, choose a monomorphism <span class="math" data-tex="\(u:A\to M\)">\(u:A\to M\)</span> that effaces degree <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, and put <span class="math" data-tex="\(C_u=\operatorname{coker}u\)">\(C_u=\operatorname{coker}u\)</span>. Exactness gives an epimorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\delta^n_{T,u}:T^n(C_u)\twoheadrightarrow T^{n+1}(A),\qquad
+\ker\delta^n_{T,u}=\operatorname{im}\bigl(T^n(M)\to T^n(C_u)\bigr).
+\tag{2.1}
+\]">\[
+\delta^n_{T,u}:T^n(C_u)\twoheadrightarrow T^{n+1}(A),\qquad
+\ker\delta^n_{T,u}=\operatorname{im}\bigl(T^n(M)\to T^n(C_u)\bigr).
+\tag{2.1}
+\]</span>
+<p>Naturality of <span class="math" data-tex="\(t^n\)">\(t^n\)</span> for <span class="math" data-tex="\(M\to C_u\)">\(M\to C_u\)</span>, and the zero consecutive composite in the long sequence for <span class="math" data-tex="\(U\)">\(U\)</span>, show that <span class="math" data-tex="\(\delta^n_{U,u}t^n_{C_u}\)">\(\delta^n_{U,u}t^n_{C_u}\)</span> annihilates this image. In an abelian category an epimorphism is the cokernel of its kernel. There is therefore a unique arrow defined by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+t^{n+1}_A\delta^n_{T,u}=\delta^n_{U,u}t^n_{C_u}.
+\tag{2.2}
+\]">\[
+t^{n+1}_A\delta^n_{T,u}=\delta^n_{U,u}t^n_{C_u}.
+\tag{2.2}
+\]</span>
+<p>We now prove that this definition has all the required compatibilities.</p>
+<p>First consider a commuting morphism from the short exact sequence associated to <span class="math" data-tex="\(u:A\to M\)">\(u:A\to M\)</span> to that associated to an effacing monomorphism <span class="math" data-tex="\(v:A&#x27;\to M&#x27;\)">\(v:A&#x27;\to M&#x27;\)</span>, with components <span class="math" data-tex="\(f:A\to A&#x27;\)">\(f:A\to A&#x27;\)</span>, <span class="math" data-tex="\(g:M\to M&#x27;\)">\(g:M\to M&#x27;\)</span> and <span class="math" data-tex="\(h:C_u\to C_v\)">\(h:C_u\to C_v\)</span>. Naturality of the connecting arrows, (2.2) and naturality in degree <span class="math" data-tex="\(n\)">\(n\)</span> give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+U^{n+1}(f)t^{n+1}_A\delta^n_{T,u}
+&amp;=\delta^n_{U,v}U^n(h)t^n_{C_u}\\
+&amp;=\delta^n_{U,v}t^n_{C_v}T^n(h)
+=t^{n+1}_{A&#x27;}T^{n+1}(f)\delta^n_{T,u}.
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+U^{n+1}(f)t^{n+1}_A\delta^n_{T,u}
+&amp;=\delta^n_{U,v}U^n(h)t^n_{C_u}\\
+&amp;=\delta^n_{U,v}t^n_{C_v}T^n(h)
+=t^{n+1}_{A&#x27;}T^{n+1}(f)\delta^n_{T,u}.
+\end{aligned}
+\tag{2.3}
+\]</span>
+<p>Cancel the epimorphism in (2.1). This proves compatibility whenever such a morphism of effacing sequences exists.</p>
+<p>To compare two choices <span class="math" data-tex="\(u:A\to M\)">\(u:A\to M\)</span> and <span class="math" data-tex="\(v:A\to N\)">\(v:A\to N\)</span>, take the pushout <span class="math" data-tex="\(P=M\amalg_A N\)">\(P=M\amalg_A N\)</span>. Both maps <span class="math" data-tex="\(M\to P\)">\(M\to P\)</span> and <span class="math" data-tex="\(N\to P\)">\(N\to P\)</span> are monic, because they are pushouts of monomorphisms. The common map <span class="math" data-tex="\(w:A\to P\)">\(w:A\to P\)</span> is monic and effaces degree <span class="math" data-tex="\(n+1\)">\(n+1\)</span>: its induced arrow factors through <span class="math" data-tex="\(T^{n+1}(u)=0\)">\(T^{n+1}(u)=0\)</span>. There are morphisms from both chosen short exact sequences to the sequence for <span class="math" data-tex="\(w\)">\(w\)</span>, each with identity on <span class="math" data-tex="\(A\)">\(A\)</span>. Equation (2.3) then says that both definitions at <span class="math" data-tex="\(A\)">\(A\)</span> coincide with the definition made using <span class="math" data-tex="\(w\)">\(w\)</span>. Thus (2.2) is independent of the choice.</p>
+<p>For an arbitrary <span class="math" data-tex="\(f:A\to A&#x27;\)">\(f:A\to A&#x27;\)</span>, push an effacing monomorphism <span class="math" data-tex="\(u:A\to M\)">\(u:A\to M\)</span> along <span class="math" data-tex="\(f\)">\(f\)</span>, obtaining <span class="math" data-tex="\(P=M\amalg_A A&#x27;\)">\(P=M\amalg_A A&#x27;\)</span>. The resulting map <span class="math" data-tex="\(A&#x27;\to P\)">\(A&#x27;\to P\)</span> is monic. Choose a monomorphism <span class="math" data-tex="\(P\to E\)">\(P\to E\)</span> that effaces degree <span class="math" data-tex="\(n+1\)">\(n+1\)</span> at <span class="math" data-tex="\(P\)">\(P\)</span>. Its composite <span class="math" data-tex="\(v:A&#x27;\to E\)">\(v:A&#x27;\to E\)</span> is monic and effaces that degree at <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>. The map <span class="math" data-tex="\(M\to P\to E\)">\(M\to P\to E\)</span>, together with <span class="math" data-tex="\(f\)">\(f\)</span>, gives a morphism from the sequence for <span class="math" data-tex="\(u\)">\(u\)</span> to that for <span class="math" data-tex="\(v\)">\(v\)</span>. Choice independence and (2.3) prove naturality for this arbitrary <span class="math" data-tex="\(f\)">\(f\)</span>. The new components consequently form a natural transformation between the additive functors in degree <span class="math" data-tex="\(n+1\)">\(n+1\)</span>.</p>
+<p>Finally fix any short exact sequence <span class="math" data-tex="\(e=(0\to A\xrightarrow{i}B\to C\to0)\)">\(e=(0\to A\xrightarrow{i}B\to C\to0)\)</span>. Choose an effacing monomorphism <span class="math" data-tex="\(j:B\to E\)">\(j:B\to E\)</span> for degree <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. The composite <span class="math" data-tex="\(ji:A\to E\)">\(ji:A\to E\)</span> also effaces that degree. There is a morphism of short exact sequences from <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(0\to A\xrightarrow{ji}E\to E/A\to0\)">\(0\to A\xrightarrow{ji}E\to E/A\to0\)</span>, with identity on <span class="math" data-tex="\(A\)">\(A\)</span>, map <span class="math" data-tex="\(j\)">\(j\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>, and induced <span class="math" data-tex="\(h:C\to E/A\)">\(h:C\to E/A\)</span>. Apply (2.2) for <span class="math" data-tex="\(ji\)">\(ji\)</span>, precompose with <span class="math" data-tex="\(T^n(h)\)">\(T^n(h)\)</span>, and use naturality of both connecting maps and of <span class="math" data-tex="\(t^n\)">\(t^n\)</span>. The result is exactly (1.2) for <span class="math" data-tex="\(e\)">\(e\)</span>. Thus every connecting square commutes, not only those used to define the new components.</p>
+<p>The induction constructs a morphism in all degrees. For uniqueness, any extension has to satisfy (2.2) for every chosen effacement. The epimorphism (2.1), and induction on the degree, force each component. This proves existence and uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If two universal delta-functors have an isomorphism between their degree-zero functors, extend that isomorphism and its inverse. Each composite extends an identity, so is an identity by uniqueness. The resulting isomorphism is unique with the specified degree-zero component. With three such comparisons the composite equals the direct comparison, again by uniqueness. Identities, compositions and sums of initial transformations extend to identities, compositions and sums, since each of those operations preserves (1.2).</p>
+<h2 id="3-higher-derived-functors-and-dimension-shifting">3. Higher derived functors and dimension shifting</h2>
+<p>Let <span class="math" data-tex="\(F:\mathcal A\to\mathcal B\)">\(F:\mathcal A\to\mathcal B\)</span> be additive and left exact, with <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> having enough injectives. The prerequisite constructs the exact functor <span class="math" data-tex="\(RF:D^+(\mathcal A)\to D^+(\mathcal B)\)">\(RF:D^+(\mathcal A)\to D^+(\mathcal B)\)</span>, natural maps <span class="math" data-tex="\(\eta_X:Q_{\mathcal B}F(X)\to RF(Q_{\mathcal A}X)\)">\(\eta_X:Q_{\mathcal B}F(X)\to RF(Q_{\mathcal A}X)\)</span>, and the natural long exact sequences for <span class="math" data-tex="\(R^nF(A)=H^nRF(A[0])\)">\(R^nF(A)=H^nRF(A[0])\)</span>.</p>
+<p>These higher functors, in nonnegative degrees, are a delta-functor with degree zero naturally identified with <span class="math" data-tex="\(F\)">\(F\)</span>. For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, an injective embedding <span class="math" data-tex="\(A\to I\)">\(A\to I\)</span> effaces degree <span class="math" data-tex="\(n\)">\(n\)</span>, since <span class="math" data-tex="\(R^nF(I)=0\)">\(R^nF(I)=0\)</span>. Theorem 2.1 proves:</p>
+<p><strong>Corollary 3.1.</strong> The higher right derived functors of a left exact functor form a universal delta-functor. Every transformation <span class="math" data-tex="\(F\to U^0\)">\(F\to U^0\)</span> extends uniquely, including all its connecting-map squares. Any effaceable cohomological delta-functor with degree zero identified with <span class="math" data-tex="\(F\)">\(F\)</span> is uniquely isomorphic to <span class="math" data-tex="\(R^\bullet F\)">\(R^\bullet F\)</span> with that identification.</p>
+<p>For an object <span class="math" data-tex="\(E\)">\(E\)</span>, call it <span class="math" data-tex="\(F\)">\(F\)</span>-acyclic when <span class="math" data-tex="\(R^nF(E)=0\)">\(R^nF(E)=0\)</span> for every <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>. Left exactness and the vanishing of negative derived degrees say equivalently that</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\eta_{E[0]}:F(E)[0]\longrightarrow RF(E[0])
+\quad\text{is an isomorphism in }D^+(\mathcal B).
+\tag{3.1}
+\]">\[
+\eta_{E[0]}:F(E)[0]\longrightarrow RF(E[0])
+\quad\text{is an isomorphism in }D^+(\mathcal B).
+\tag{3.1}
+\]</span>
+<p>Indeed the map identifies degree zero and the source has no other cohomology; a map is invertible in the derived category exactly when it is a quasi-isomorphism.</p>
+<p>For a short exact sequence <span class="math" data-tex="\(0\to A\to E\to C\to0\)">\(0\to A\to E\to C\to0\)</span> with <span class="math" data-tex="\(E\)">\(E\)</span> acyclic, its long sequence gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+R^1F(A)\simeq\operatorname{coker}\bigl(F(E)\to F(C)\bigr),\qquad
+\delta^n:R^nF(C)\xrightarrow{\sim}R^{n+1}F(A)\quad(n\geq1).
+\tag{3.2}
+\]">\[
+R^1F(A)\simeq\operatorname{coker}\bigl(F(E)\to F(C)\bigr),\qquad
+\delta^n:R^nF(C)\xrightarrow{\sim}R^{n+1}F(A)\quad(n\geq1).
+\tag{3.2}
+\]</span>
+<p>All these maps are the actual connecting maps; their naturality follows from that of the exact-sequence triangle. Repeating (3.2) along an acyclic resolution gives dimension shifting with coherent comparisons, rather than an unrelated choice of isomorphism for each group.</p>
+<p>Some useful closure statements follow from the same long sequence. In <span class="math" data-tex="\(0\to A\to B\to C\to0\)">\(0\to A\to B\to C\to0\)</span>, if <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are acyclic, so is <span class="math" data-tex="\(C\)">\(C\)</span>; if <span class="math" data-tex="\(A,C\)">\(A,C\)</span> are acyclic, so is <span class="math" data-tex="\(B\)">\(B\)</span>. In either case <span class="math" data-tex="\(0\to F(A)\to F(B)\to F(C)\to0\)">\(0\to F(A)\to F(B)\to F(C)\to0\)</span> is exact. If <span class="math" data-tex="\(B,C\)">\(B,C\)</span> are acyclic, then <span class="math" data-tex="\(A\)">\(A\)</span> is acyclic exactly when <span class="math" data-tex="\(F(B)\to F(C)\)">\(F(B)\to F(C)\)</span> is epic: the only possible positive obstruction is the cokernel identifying <span class="math" data-tex="\(R^1F(A)\)">\(R^1F(A)\)</span> in (3.2), and every higher obstruction is zero. Finite biproducts of acyclic objects are acyclic because <span class="math" data-tex="\(RF\)">\(RF\)</span> and cohomology are additive. In particular injectives and the zero object are acyclic.</p>
+<h2 id="4-complete-bounded-below-acyclic-computation">4. Complete bounded-below acyclic computation</h2>
+<p><strong>Theorem 4.1.</strong> If every term of a bounded-below complex <span class="math" data-tex="\(E\)">\(E\)</span> is <span class="math" data-tex="\(F\)">\(F\)</span>-acyclic, then its canonical map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\eta_E:Q_{\mathcal B}F(E)\longrightarrow RF(Q_{\mathcal A}E)
+\tag{4.1}
+\]">\[
+\eta_E:Q_{\mathcal B}F(E)\longrightarrow RF(Q_{\mathcal A}E)
+\tag{4.1}
+\]</span>
+<p>is invertible. Consequently a bounded-below acyclic resolution computes the derived functor, including comparisons on morphisms.</p>
+<p><strong>Proof.</strong> The transformation <span class="math" data-tex="\(\eta\)">\(\eta\)</span> respects shifts and cone triangles. To check this from the construction, use <span class="math" data-tex="\(\eta_E=QF(q_E)\)">\(\eta_E=QF(q_E)\)</span>. The comparison of a replacement of <span class="math" data-tex="\(E[1]\)">\(E[1]\)</span> with <span class="math" data-tex="\(I_E[1]\)">\(I_E[1]\)</span> is the unique homotopy class compatible with the shifted replacement map. Applying <span class="math" data-tex="\(F\)">\(F\)</span> makes the shift square commute. A termwise split short exact sequence represents a cone triangle in the homotopy category. Naturality of <span class="math" data-tex="\(q\)">\(q\)</span> there, followed by the exact functor <span class="math" data-tex="\(RF\)">\(RF\)</span>, makes its image a morphism of distinguished triangles. These observations prove the compatibility needed below without selecting strictly commuting chain replacements.</p>
+<p>First suppose <span class="math" data-tex="\(E\)">\(E\)</span> has finitely many nonzero terms, in degrees <span class="math" data-tex="\(a\)">\(a\)</span> through <span class="math" data-tex="\(b\)">\(b\)</span>. A one-term complex is a shift of an acyclic object, so (4.1) is invertible by (3.1). For more terms, the termwise split short exact sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow \sigma_{\geq a+1}E\longrightarrow E
+\longrightarrow E^a[-a]\longrightarrow0
+\tag{4.2}
+\]">\[
+0\longrightarrow \sigma_{\geq a+1}E\longrightarrow E
+\longrightarrow E^a[-a]\longrightarrow0
+\tag{4.2}
+\]</span>
+<p>separates the bottom term from the remaining tail. Here a stupid truncation retains the stated terms and sets the others to zero, with the boundary differential set to zero. The sequence is termwise split, so applying additive <span class="math" data-tex="\(F\)">\(F\)</span> preserves it, and it gives a triangle already in the homotopy category. Induction makes the two outer components of the triangle morphism <span class="math" data-tex="\(\eta\)">\(\eta\)</span> invertible. The two-vertex criterion then makes the middle component invertible.</p>
+<p>Now let <span class="math" data-tex="\(E^k=0\)">\(E^k=0\)</span> for <span class="math" data-tex="\(k&lt;a\)">\(k&lt;a\)</span>, with no upper bound. Fix an integer <span class="math" data-tex="\(i\geq a\)">\(i\geq a\)</span>, and use the termwise split sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+0\to \sigma_{\geq i+2}E\to E\to\sigma_{\leq i+1}E\to0.
+\tag{4.3}
+\]">\[
+0\to \sigma_{\geq i+2}E\to E\to\sigma_{\leq i+1}E\to0.
+\tag{4.3}
+\]</span>
+<p>Write its tail as <span class="math" data-tex="\(L\)">\(L\)</span> and finite head as <span class="math" data-tex="\(B\)">\(B\)</span>. A replacement of <span class="math" data-tex="\(L\)">\(L\)</span> starts in degree <span class="math" data-tex="\(i+2\)">\(i+2\)</span>, by the bounded replacement construction. Thus <span class="math" data-tex="\(RF(QL)\)">\(RF(QL)\)</span> and <span class="math" data-tex="\(QF(L)\)">\(QF(L)\)</span> have zero cohomology in degrees <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(i+1\)">\(i+1\)</span>. The cohomology sequences of (4.3) and its <span class="math" data-tex="\(RF\)">\(RF\)</span> image identify both middle degree-<span class="math" data-tex="\(i\)">\(i\)</span> objects with the corresponding degree-<span class="math" data-tex="\(i\)">\(i\)</span> objects of the head. Naturality identifies the middle comparison with the head comparison, which is invertible by the finite case. In degrees <span class="math" data-tex="\(i&lt;a\)">\(i&lt;a\)</span>, both <span class="math" data-tex="\(QF(E)\)">\(QF(E)\)</span> and its derived value have zero cohomology, by using a replacement starting in degree <span class="math" data-tex="\(a\)">\(a\)</span>. Therefore (4.1) induces isomorphisms in every degree and is invertible. No infinite totalization, infinite exactness assertion, or convergence interchange occurred. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(q:A[0]\to E\)">\(q:A[0]\to E\)</span> is a quasi-isomorphism to such a complex, the induced comparison is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+RF(A[0])\xrightarrow{RF(Qq)}RF(QE)
+\xrightarrow{\eta_E^{-1}}QF(E).
+\tag{4.4}
+\]">\[
+RF(A[0])\xrightarrow{RF(Qq)}RF(QE)
+\xrightarrow{\eta_E^{-1}}QF(E).
+\tag{4.4}
+\]</span>
+<p>It is invertible. Naturality gives <span class="math" data-tex="\(\eta_E QF(q)=RF(Qq)\eta_{A[0]}\)">\(\eta_E QF(q)=RF(Qq)\eta_{A[0]}\)</span>, so (4.4) has the correct augmentation from <span class="math" data-tex="\(F(A)[0]\)">\(F(A)[0]\)</span>. A quasi-isomorphism <span class="math" data-tex="\(f:E\to E&#x27;\)">\(f:E\to E&#x27;\)</span> between bounded-below complexes of acyclic objects is sent by <span class="math" data-tex="\(F\)">\(F\)</span> to a quasi-isomorphism: in the square for <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, both vertical maps and <span class="math" data-tex="\(RF(Qf)\)">\(RF(Qf)\)</span> are invertible, forcing <span class="math" data-tex="\(QF(f)\)">\(QF(f)\)</span> to be invertible. For a map between two augmented resolutions that extends <span class="math" data-tex="\(g:A\to A&#x27;\)">\(g:A\to A&#x27;\)</span>, the same naturality square proves that the induced map is precisely <span class="math" data-tex="\(RF(g)\)">\(RF(g)\)</span> under (4.4). Two such maps give the same derived comparison even when no chain homotopy between their representatives has been supplied.</p>
+<p>There is also a categorical description of all these comparisons. Let <span class="math" data-tex="\(\mathcal E_F\)">\(\mathcal E_F\)</span> be the full additive subcategory of acyclic objects, and let <span class="math" data-tex="\(K^+(\mathcal E_F)\)">\(K^+(\mathcal E_F)\)</span> consist of bounded-below complexes with terms in it. Finite-biproduct closure makes this homotopy category closed under shifts and cones. Invert its arrows that are quasi-isomorphisms in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, obtaining a category <span class="math" data-tex="\(\mathcal L_F\)">\(\mathcal L_F\)</span>. Its functor to <span class="math" data-tex="\(D^+(\mathcal A)\)">\(D^+(\mathcal A)\)</span> is an equivalence.</p>
+<p>To prove the assertion, include the injective resolution functor <span class="math" data-tex="\(J:D^+(\mathcal A)\to K^+(\mathcal I)\)">\(J:D^+(\mathcal A)\to K^+(\mathcal I)\)</span> into <span class="math" data-tex="\(\mathcal L_F\)">\(\mathcal L_F\)</span>; injectives are acyclic, so this is defined. On every <span class="math" data-tex="\(E\)">\(E\)</span> the replacement <span class="math" data-tex="\(q_E:E\to I_E\)">\(q_E:E\to I_E\)</span> lies in <span class="math" data-tex="\(K^+(\mathcal E_F)\)">\(K^+(\mathcal E_F)\)</span> and becomes invertible in <span class="math" data-tex="\(\mathcal L_F\)">\(\mathcal L_F\)</span>. Equation <span class="math" data-tex="\(j(f)q_E=q_{E&#x27;}f\)">\(j(f)q_E=q_{E&#x27;}f\)</span> in the homotopy category proves naturality for every original arrow. Naturality extends to the formal inverses by inverting that square, hence to their composites. This gives an isomorphism from identity to the composite through <span class="math" data-tex="\(J\)">\(J\)</span>. In the other direction the derived isomorphisms <span class="math" data-tex="\(Qq_X\)">\(Qq_X\)</span> give identity to <span class="math" data-tex="\(QJ\)">\(QJ\)</span>. The two composites are thus naturally isomorphic to identity, which proves the equivalence, including full faithfulness. Transporting the distinguished triangles along it makes this an exact equivalence; the images of the original cone triangles are distinguished.</p>
+<p>Theorem 4.1 makes <span class="math" data-tex="\(QF\)">\(QF\)</span> invert every specified arrow in this category. Its descended functor is identified with <span class="math" data-tex="\(RF\)">\(RF\)</span> by <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. This describes derived maps between acyclic models without asserting that their ordinary homotopy Hom groups are already the derived Hom groups.</p>
+<h2 id="5-the-canonical-comparison-for-a-composition">5. The canonical comparison for a composition</h2>
+<p>Let <span class="math" data-tex="\(F:\mathcal A\to\mathcal B\)">\(F:\mathcal A\to\mathcal B\)</span> and <span class="math" data-tex="\(G:\mathcal B\to\mathcal C\)">\(G:\mathcal B\to\mathcal C\)</span> be additive left exact functors. Suppose <span class="math" data-tex="\(\mathcal A,\mathcal B\)">\(\mathcal A,\mathcal B\)</span> have enough injectives. The last abelian category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> need not have enough injectives. All three derived functors <span class="math" data-tex="\(RF,RG,R(GF)\)">\(RF,RG,R(GF)\)</span> therefore exist by the construction already proved.</p>
+<p><strong>Theorem 5.1.</strong> There is a canonical natural transformation</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+t_{F,G}:R(GF)\longrightarrow RG\,RF.
+\tag{5.1}
+\]">\[
+t_{F,G}:R(GF)\longrightarrow RG\,RF.
+\tag{5.1}
+\]</span>
+<p>It is an isomorphism on all of <span class="math" data-tex="\(D^+(\mathcal A)\)">\(D^+(\mathcal A)\)</span> if and only if <span class="math" data-tex="\(F(I)\)">\(F(I)\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>-acyclic for every injective <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(X\in D^+(\mathcal A)\)">\(X\in D^+(\mathcal A)\)</span>, choose its injective replacement <span class="math" data-tex="\(I_X\)">\(I_X\)</span>. Define the component by the canonical replacement transformation for <span class="math" data-tex="\(G\)">\(G\)</span> applied to the bounded-below complex <span class="math" data-tex="\(F(I_X)\)">\(F(I_X)\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+t_{F,G,X}=\eta^G_{F(I_X)}:
+Q_{\mathcal C}GF(I_X)\longrightarrow
+RG\bigl(Q_{\mathcal B}F(I_X)\bigr).
+\tag{5.2}
+\]">\[
+t_{F,G,X}=\eta^G_{F(I_X)}:
+Q_{\mathcal C}GF(I_X)\longrightarrow
+RG\bigl(Q_{\mathcal B}F(I_X)\bigr).
+\tag{5.2}
+\]</span>
+<p>An arbitrary derived arrow <span class="math" data-tex="\(\alpha:X\to Y\)">\(\alpha:X\to Y\)</span> is represented between the replacements by the homotopy class <span class="math" data-tex="\(J\alpha\)">\(J\alpha\)</span>. Naturality of <span class="math" data-tex="\(\eta^G\)">\(\eta^G\)</span> for the arrow <span class="math" data-tex="\(F(J\alpha)\)">\(F(J\alpha)\)</span> proves naturality of (5.2) for this arbitrary derived arrow. Thus the definition is not limited to maps between objects in degree zero.</p>
+<p>For a bounded-below complex <span class="math" data-tex="\(X\)">\(X\)</span>, naturality of <span class="math" data-tex="\(\eta^G\)">\(\eta^G\)</span> on <span class="math" data-tex="\(F(q_X)\)">\(F(q_X)\)</span> gives the compatibility</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+t_{F,G,QX}\eta^{GF}_X
+=RG(\eta^F_X)\,\eta^G_{F(X)}.
+\tag{5.3}
+\]">\[
+t_{F,G,QX}\eta^{GF}_X
+=RG(\eta^F_X)\,\eta^G_{F(X)}.
+\tag{5.3}
+\]</span>
+<p>The full universal transformation property of <span class="math" data-tex="\(R(GF)\)">\(R(GF)\)</span>, with target functor <span class="math" data-tex="\(RG\,RF\)">\(RG\,RF\)</span>, says that (5.3) uniquely determines <span class="math" data-tex="\(t\)">\(t\)</span>. Changes of replacement choices consequently change (5.1) by exactly their canonical comparisons; their cocycle law is preserved. The same construction respects shifts, since both replacement transformations do.</p>
+<p>If every <span class="math" data-tex="\(F(I)\)">\(F(I)\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>-acyclic, every term of <span class="math" data-tex="\(F(I_X)\)">\(F(I_X)\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>-acyclic. Theorem 4.1 makes (5.2) invertible for every <span class="math" data-tex="\(X\)">\(X\)</span>. Conversely evaluate an everywhere invertible comparison at an injective object <span class="math" data-tex="\(I[0]\)">\(I[0]\)</span>. Its normalized replacement is itself, and (5.2) is precisely <span class="math" data-tex="\(\eta^G_{F(I)[0]}\)">\(\eta^G_{F(I)[0]}\)</span>. Formula (3.1) then says that <span class="math" data-tex="\(F(I)\)">\(F(I)\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>-acyclic. This proves both directions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For completeness these canonical comparisons are associative even before they are known to be invertible. Let <span class="math" data-tex="\(H:\mathcal C\to\mathcal D\)">\(H:\mathcal C\to\mathcal D\)</span> also be additive left exact and suppose <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has enough injectives. The two transformations from <span class="math" data-tex="\(R(HGF)\)">\(R(HGF)\)</span> to <span class="math" data-tex="\(RH\,RG\,RF\)">\(RH\,RG\,RF\)</span> satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+(RH\,t_{F,G})\,t_{GF,H}
+=(t_{G,H}\,RF)\,t_{F,HG}.
+\tag{5.4}
+\]">\[
+(RH\,t_{F,G})\,t_{GF,H}
+=(t_{G,H}\,RF)\,t_{F,HG}.
+\tag{5.4}
+\]</span>
+<p>Here each expression includes the usual objectwise associations of functor composition. To check the equality, fix <span class="math" data-tex="\(X\)">\(X\)</span>, set <span class="math" data-tex="\(I=I_X\)">\(I=I_X\)</span>, and choose a replacement <span class="math" data-tex="\(v:F(I)\to J\)">\(v:F(I)\to J\)</span> in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. The first path in (5.4) is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+QHGF(I)\xrightarrow{\eta^H_{G(F(I))}}RH\bigl(QG(F(I))\bigr)
+\xrightarrow{RH(QG(v))}RH(QG(J)).
+\tag{5.5}
+\]">\[
+QHGF(I)\xrightarrow{\eta^H_{G(F(I))}}RH\bigl(QG(F(I))\bigr)
+\xrightarrow{RH(QG(v))}RH(QG(J)).
+\tag{5.5}
+\]</span>
+<p>The second path first applies <span class="math" data-tex="\(QHG(v)\)">\(QHG(v)\)</span> and then <span class="math" data-tex="\(\eta^H_{G(J)}\)">\(\eta^H_{G(J)}\)</span>. The square expressing naturality of <span class="math" data-tex="\(\eta^H\)">\(\eta^H\)</span> for the chain map <span class="math" data-tex="\(G(v)\)">\(G(v)\)</span> says exactly that these paths agree. The descriptions use the same chosen replacements, and their already proved canonical choice comparisons transport the equality to any other choices. This proves (5.4) on every object and hence as a natural transformation. Whenever the comparisons in question are invertible, this supplies the corresponding associativity of their isomorphisms.</p>
+<h2 id="6-two-computed-examples">6. Two computed examples</h2>
+<p><strong>Example 6.1 (torsion and its connecting arrow).</strong> Fix an integer <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, and put <span class="math" data-tex="\(F_m(A)=\operatorname{Hom}_{\mathbb Z}(\mathbb Z/m,A)=A[m]\)">\(F_m(A)=\operatorname{Hom}_{\mathbb Z}(\mathbb Z/m,A)=A[m]\)</span> on abelian groups. The complex <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(P^{-1}=P^0=\mathbb Z\)">\(P^{-1}=P^0=\mathbb Z\)</span>, differential <span class="math" data-tex="\(-m\)">\(-m\)</span>, and augmentation by reduction in degree zero is a projective resolution of <span class="math" data-tex="\((\mathbb Z/m)[0]\)">\((\mathbb Z/m)[0]\)</span>. Freeness proves projectivity: lift the image of the generator across an epimorphism. The bounded K-projective test applies to <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>The Hom differential convention in the prerequisites gives, for a group in degree zero,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}^{\bullet}(P,A[0])=
+\bigl(A\xrightarrow{m}A\bigr)\quad\text{in degrees }0,1.
+\tag{6.1}
+\]">\[
+\operatorname{Hom}^{\bullet}(P,A[0])=
+\bigl(A\xrightarrow{m}A\bigr)\quad\text{in degrees }0,1.
+\tag{6.1}
+\]</span>
+<p>This complex computes <span class="math" data-tex="\(RF_m(A)\)">\(RF_m(A)\)</span>. Here is the comparison that proves that assertion. The augmentation gives a natural chain map <span class="math" data-tex="\(\operatorname{Hom}(\mathbb Z/m,X)\to\operatorname{Hom}^{\bullet}(P,X)\)">\(\operatorname{Hom}(\mathbb Z/m,X)\to\operatorname{Hom}^{\bullet}(P,X)\)</span>. The functor on the right preserves shifts and cones, by their two-summand formulas, and sends quasi-isomorphisms to quasi-isomorphisms by the K-projective Hom test in every shifted degree. It therefore descends to the derived category. On a bounded-below injective complex <span class="math" data-tex="\(I\)">\(I\)</span>, the augmentation-induced map is a quasi-isomorphism: its degree-<span class="math" data-tex="\(n\)">\(n\)</span> cohomology map is precomposition with <span class="math" data-tex="\(P\to(\mathbb Z/m)[0]\)">\(P\to(\mathbb Z/m)[0]\)</span> on <span class="math" data-tex="\(\operatorname{Hom}_K(-,I[n])\)">\(\operatorname{Hom}_K(-,I[n])\)</span>, which is invertible by the K-injective test. The universal derived transformation property thus supplies a natural isomorphism between the descended Hom functor and <span class="math" data-tex="\(RF_m\)">\(RF_m\)</span>; evaluate on replacements to see invertibility on every object. The maps respect shifts and cone projections, so also the exact-sequence connecting arrows. In particular</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+R^0F_m(A)=A[m],\qquad R^1F_m(A)=A/mA,\qquad
+R^nF_m(A)=0\quad(n\geq2).
+\tag{6.2}
+\]">\[
+R^0F_m(A)=A[m],\qquad R^1F_m(A)=A/mA,\qquad
+R^nF_m(A)=0\quad(n\geq2).
+\tag{6.2}
+\]</span>
+<p>For <span class="math" data-tex="\(0\to A\xrightarrow{i}B\xrightarrow{p}C\to0\)">\(0\to A\xrightarrow{i}B\xrightarrow{p}C\to0\)</span>, a class <span class="math" data-tex="\(c\in C[m]\)">\(c\in C[m]\)</span> can be lifted to <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>. There is a unique <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> with <span class="math" data-tex="\(i(a)=mb\)">\(i(a)=mb\)</span>. With the fixed cone projection convention the connecting arrow is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\delta^0(c)=-[a]\in A/mA.
+\tag{6.3}
+\]">\[
+\delta^0(c)=-[a]\in A/mA.
+\tag{6.3}
+\]</span>
+<p>Indeed the termwise exact sequence of the two-term complexes (6.1) has a cone cycle <span class="math" data-tex="\((b,-a)\)">\((b,-a)\)</span> mapping to <span class="math" data-tex="\(c\)">\(c\)</span>, and the cone projection maps it to <span class="math" data-tex="\(-a\)">\(-a\)</span>. Replacing <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(b+i(x)\)">\(b+i(x)\)</span> changes <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(mx\)">\(mx\)</span>, so the result is independent of the lift. The formula is natural for commuting maps of short exact sequences. For <span class="math" data-tex="\(0\to\mathbb Z\xrightarrow{m}\mathbb Z\to\mathbb Z/m\to0\)">\(0\to\mathbb Z\xrightarrow{m}\mathbb Z\to\mathbb Z/m\to0\)</span>, it is minus identity on <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span>, and is an isomorphism as required by the long sequence.</p>
+<p><strong>Example 6.2 (an acyclic resolution with a noninjective term).</strong> For <span class="math" data-tex="\(F_2\)">\(F_2\)</span>, formula (6.2) says that a group is acyclic exactly when multiplication by two is surjective. Thus both <span class="math" data-tex="\(\mathbb Z[1/2]\)">\(\mathbb Z[1/2]\)</span> and <span class="math" data-tex="\(\mathbb Z[1/2]/\mathbb Z\)">\(\mathbb Z[1/2]/\mathbb Z\)</span> are acyclic: divide a representative by two. There is an acyclic resolution</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+0\to\mathbb Z\to\mathbb Z[1/2]\to\mathbb Z[1/2]/\mathbb Z\to0.
+\tag{6.4}
+\]">\[
+0\to\mathbb Z\to\mathbb Z[1/2]\to\mathbb Z[1/2]/\mathbb Z\to0.
+\tag{6.4}
+\]</span>
+<p>Its first resolution term is not injective. The homomorphism <span class="math" data-tex="\(3\mathbb Z\to\mathbb Z[1/2]\)">\(3\mathbb Z\to\mathbb Z[1/2]\)</span> taking <span class="math" data-tex="\(3\)">\(3\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> cannot extend to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, since an extension would require an element whose triple is <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(1/3\notin\mathbb Z[1/2]\)">\(1/3\notin\mathbb Z[1/2]\)</span>. Applying <span class="math" data-tex="\(F_2\)">\(F_2\)</span> to the resolution gives zero in degree zero and the two-element subgroup <span class="math" data-tex="\(\{[0],[1/2]\}\)">\(\{[0],[1/2]\}\)</span> in degree one. Theorem 4.1 therefore computes <span class="math" data-tex="\(RF_2(\mathbb Z)\)">\(RF_2(\mathbb Z)\)</span> with cohomology <span class="math" data-tex="\(0,\mathbb Z/2\)">\(0,\mathbb Z/2\)</span> in degrees zero and one, exactly as (6.2) predicts. The use of acyclic terms genuinely enlarges the available models beyond injective terms.</p>
+<h2 id="7-four-graded-exercises-with-complete-solutions">7. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (foundation: why the effacing arrow is monic).</strong> Show that allowing an arbitrary arrow in the definition of effacement would make the condition vacuous. Construct a nonuniversal delta-functor for which every positive induced map can be killed by an arrow to zero.</p>
+<p><strong>Solution.</strong> Any additive functor sends a zero object to a zero object, so <span class="math" data-tex="\(A\to0\)">\(A\to0\)</span> kills its induced map in every degree. On abelian groups define <span class="math" data-tex="\(T^0=0\)">\(T^0=0\)</span>, <span class="math" data-tex="\(T^1=\operatorname{id}\)">\(T^1=\operatorname{id}\)</span>, and <span class="math" data-tex="\(T^n=0\)">\(T^n=0\)</span> for <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, with every connecting map zero. For a short exact sequence its only nonzero portion is the original short exact sequence in degree one. Thus the long sequence is exact at every position, and the connecting maps are natural. There are two distinct endomorphisms of this delta-functor with the same degree-zero component: take either identity or zero in degree one. Both commute with the zero connecting maps. The unique transformation <span class="math" data-tex="\(T^0\to T^0\)">\(T^0\to T^0\)</span> therefore has more than one extension, disproving universality. A monomorphism that kills the identity functor at a nonzero group cannot exist, so this example does not satisfy the actual hypothesis of Theorem 2.1.</p>
+<p><strong>Exercise 2 (intermediate: the truncation must retain one more term).</strong> In the proof of Theorem 4.1, explain why using <span class="math" data-tex="\(\sigma_{\leq i}E\)">\(\sigma_{\leq i}E\)</span> in place of <span class="math" data-tex="\(\sigma_{\leq i+1}E\)">\(\sigma_{\leq i+1}E\)</span> need not preserve degree-<span class="math" data-tex="\(i\)">\(i\)</span> cohomology. Give a counterexample with an exact functor.</p>
+<p><strong>Solution.</strong> Cohomology in degree <span class="math" data-tex="\(i\)">\(i\)</span> involves both the incoming differential and the outgoing differential to degree <span class="math" data-tex="\(i+1\)">\(i+1\)</span>. Cutting at <span class="math" data-tex="\(i\)">\(i\)</span> replaces that outgoing differential by zero and can enlarge its kernel. Take <span class="math" data-tex="\(F=\operatorname{id}\)">\(F=\operatorname{id}\)</span> on abelian groups, <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, and <span class="math" data-tex="\(E=(\mathbb Z\xrightarrow{1}\mathbb Z)\)">\(E=(\mathbb Z\xrightarrow{1}\mathbb Z)\)</span> in degrees zero and one. Every object is <span class="math" data-tex="\(F\)">\(F\)</span>-acyclic, since an exact functor has no positive derived functors, and the complex has zero cohomology. Its head <span class="math" data-tex="\(\sigma_{\leq0}E=\mathbb Z[0]\)">\(\sigma_{\leq0}E=\mathbb Z[0]\)</span> has <span class="math" data-tex="\(H^0=\mathbb Z\)">\(H^0=\mathbb Z\)</span>. In the sequence with tail starting at degree one, <span class="math" data-tex="\(H^1\)">\(H^1\)</span> of the tail is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, so the cohomology sequence does not identify the middle and head groups in degree zero. Starting the tail at degree <span class="math" data-tex="\(i+2\)">\(i+2\)</span>, as in (4.3), removes precisely this obstruction.</p>
+<p><strong>Exercise 3 (advanced: composition can fail).</strong> Let <span class="math" data-tex="\(F=G=F_m\)">\(F=G=F_m\)</span> on abelian groups, with <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>. Although <span class="math" data-tex="\(GF\)">\(GF\)</span> is naturally isomorphic to <span class="math" data-tex="\(F_m\)">\(F_m\)</span>, show that <span class="math" data-tex="\(R(GF)\to RG\,RF\)">\(R(GF)\to RG\,RF\)</span> is not everywhere invertible.</p>
+<p><strong>Solution.</strong> Every element of <span class="math" data-tex="\(F_m(A)=A[m]\)">\(F_m(A)=A[m]\)</span> is killed by <span class="math" data-tex="\(m\)">\(m\)</span>, so evaluation at <span class="math" data-tex="\([1]\)">\([1]\)</span> identifies <span class="math" data-tex="\(F_m(F_m(A))\)">\(F_m(F_m(A))\)</span> naturally with <span class="math" data-tex="\(F_m(A)\)">\(F_m(A)\)</span>. Let <span class="math" data-tex="\(I=\mathbb Q/\mathbb Z\)">\(I=\mathbb Q/\mathbb Z\)</span>, which is injective by the divisible-group proof in the prerequisite. Its <span class="math" data-tex="\(m\)">\(m\)</span>-torsion subgroup is <span class="math" data-tex="\(\{[a/m]:a\in\mathbb Z\}\simeq\mathbb Z/m\)">\(\{[a/m]:a\in\mathbb Z\}\simeq\mathbb Z/m\)</span>. Thus <span class="math" data-tex="\(R(GF)(I[0])=GF(I)[0]\)">\(R(GF)(I[0])=GF(I)[0]\)</span> has no positive cohomology, whereas</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+H^1\bigl(RG\,RF(I[0])\bigr)
+=R^1F_m(F_m(I))=(\mathbb Z/m)/m(\mathbb Z/m)=\mathbb Z/m.
+\tag{7.1}
+\]">\[
+H^1\bigl(RG\,RF(I[0])\bigr)
+=R^1F_m(F_m(I))=(\mathbb Z/m)/m(\mathbb Z/m)=\mathbb Z/m.
+\tag{7.1}
+\]</span>
+<p>The comparison cannot be invertible because it cannot induce an isomorphism on this degree. Equivalently <span class="math" data-tex="\(F_m(I)\)">\(F_m(I)\)</span> is not <span class="math" data-tex="\(G\)">\(G\)</span>-acyclic, which violates exactly the necessary condition in Theorem 5.1. The example checks the necessity using an actual injective object, rather than the behavior of an arbitrary group.</p>
+<p><strong>Exercise 4 (synthesis: all transformations between Ext theories).</strong> In an abelian category <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> with enough injectives, let <span class="math" data-tex="\(M,N\)">\(M,N\)</span> be objects. Determine all morphisms of delta-functors from <span class="math" data-tex="\(R^\bullet\operatorname{Hom}_{\mathcal A}(M,-)\)">\(R^\bullet\operatorname{Hom}_{\mathcal A}(M,-)\)</span> to <span class="math" data-tex="\(R^\bullet\operatorname{Hom}_{\mathcal A}(N,-)\)">\(R^\bullet\operatorname{Hom}_{\mathcal A}(N,-)\)</span>. Determine the composition order for endomorphisms when <span class="math" data-tex="\(M=N\)">\(M=N\)</span>.</p>
+<p><strong>Solution.</strong> For a degree-zero transformation <span class="math" data-tex="\(s:\operatorname{Hom}(M,-)\to\operatorname{Hom}(N,-)\)">\(s:\operatorname{Hom}(M,-)\to\operatorname{Hom}(N,-)\)</span>, set <span class="math" data-tex="\(u=s_M(1_M):N\to M\)">\(u=s_M(1_M):N\to M\)</span>. Naturality for <span class="math" data-tex="\(f:M\to A\)">\(f:M\to A\)</span> says <span class="math" data-tex="\(s_A(f)=fu\)">\(s_A(f)=fu\)</span>. Conversely every such <span class="math" data-tex="\(u\)">\(u\)</span> defines an additive natural transformation by this formula. Thus the transformations in degree zero are in bijection with <span class="math" data-tex="\(\operatorname{Hom}(N,M)\)">\(\operatorname{Hom}(N,M)\)</span>. Theorem 2.1 and Corollary 3.1 extend each uniquely to all degrees, and every delta-functor morphism has this form. Under the derived Hom identification, its degree-<span class="math" data-tex="\(n\)">\(n\)</span> component is precomposition with <span class="math" data-tex="\(u[0]\)">\(u[0]\)</span> on <span class="math" data-tex="\(\operatorname{Hom}_{D(\mathcal A)}(M[0],A[n])\)">\(\operatorname{Hom}_{D(\mathcal A)}(M[0],A[n])\)</span>. It commutes with connecting arrows because those are obtained by postcomposition with the natural derived connecting morphism; precomposition and postcomposition commute.</p>
+<p>For endomorphisms, write <span class="math" data-tex="\(s_u(f)=fu\)">\(s_u(f)=fu\)</span>. Applying <span class="math" data-tex="\(s_v\)">\(s_v\)</span> first and <span class="math" data-tex="\(s_u\)">\(s_u\)</span> second gives <span class="math" data-tex="\(s_us_v(f)=fvu\)">\(s_us_v(f)=fvu\)</span>. Hence composition corresponds to the reversed product of source endomorphisms, while addition corresponds to ordinary addition. The full ring of delta-functor endomorphisms is therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+\operatorname{End}_{\delta}\bigl(R^\bullet\operatorname{Hom}(M,-)\bigr)
+\simeq\operatorname{End}_{\mathcal A}(M)^{\mathrm{op}}.
+\tag{7.2}
+\]">\[
+\operatorname{End}_{\delta}\bigl(R^\bullet\operatorname{Hom}(M,-)\bigr)
+\simeq\operatorname{End}_{\mathcal A}(M)^{\mathrm{op}}.
+\tag{7.2}
+\]</span>
+<p>This also proves that a specified degree-zero comparison leaves no freedom to alter just one higher Ext component or one connecting square.</p>
+<h2 id="references-and-further-reading">References and further reading</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/010P">cohomological delta-functors</a>, for the terminology and the effaceability criterion. Section 2 above supplies the choice, naturality and connecting-map verifications explicitly.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/015E">Leray's acyclicity lemma</a>, for bounded-below computation by acyclic terms.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/015L">composition of right derived functors</a>, for the composition criterion and further spectral-sequence developments. This lesson proves the canonical comparison, its criterion and associativity; a construction of the spectral sequence requires additional filtered-complex mathematics.</li>
+</ul>
+</main></body></html>

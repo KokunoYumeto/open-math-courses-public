@@ -1,6 +1,6 @@
 # Covariant representations over a moving diagonal
 
-Self-checked by the writing AI.
+
 
 A diagonal algebra assigns scalar coordinates to a Hilbert space. A unitary
 normalizing that algebra can move those coordinates, so its disintegration has

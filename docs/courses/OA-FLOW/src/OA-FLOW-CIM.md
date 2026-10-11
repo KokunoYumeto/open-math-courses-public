@@ -1,6 +1,6 @@
 # Canonical core automorphisms and their continuity
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 An automorphism changes a weight and therefore changes the coordinates used to represent a core. Its canonical unitary must compensate for that change. We construct the compensation on the whole Hilbert space, characterize the resulting automorphisms by the action and trace they preserve, and prove continuity for arbitrary nets. Matrix and infinite-dimensional models will distinguish canonical phases, strong continuity and operator-norm continuity.
 

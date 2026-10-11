@@ -7,7 +7,7 @@ An integrable orbit has a weak Fourier field. The proof starts with the entire p
 
 The arbitrary LCH abelian group and arbitrary von Neumann algebra are retained. Weak C0 decay is distinguished from operator-norm decay. The real translation example is a separate exact model; it is not a countable reduction of the group.
 
-*Restored local proof, 5 October 2026. Spot-checked in a separate AI session. Original expression and illustration are CC0-1.0 to the extent of rights held; earlier component terms remain their own.*
+*Original expression and illustration are CC0-1.0 to the extent of rights held; earlier component terms remain their own.*
 
 <a id="oa-flow.l114.inputs"></a>
 

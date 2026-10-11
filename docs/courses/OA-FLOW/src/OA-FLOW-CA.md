@@ -1,6 +1,6 @@
 # Countable amplification of an arbitrary faithful normal semifinite weight
 
-*Fresh reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\subseteq B(K)\) be a nonzero von Neumann algebra acting with identity \(I_K\), on an arbitrary Hilbert space. Let \(\psi\) be a faithful normal semifinite weight. We construct its countable diagonal-sum weight on \(M\bar\otimes B(\ell^2(\mathbb N_0))\), prove its exact finite domains, onto double-index GNS model, full closed involution and adjoint, every spectral domain and its modular action. No faithful-state, separability or countable-decomposability hypothesis is imposed.
 

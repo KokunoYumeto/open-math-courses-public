@@ -1,6 +1,6 @@
 # Entire modular elements and a finite-domain strip criterion
 
-*Fresh local reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(\varphi\) be a faithful normal semifinite weight on an arbitrary von Neumann algebra \(M\). All Hilbert inner products are linear in the first variable. Write \(N=\mathfrak n_\varphi\), \(m=\mathfrak m_\varphi\), \(A=N\cap N^*\), and \((H,\pi,\Lambda)\) for its faithful normal GNS representation. Put \(S=J\Delta^{1/2}\), \(F=S^*=J\Delta^{-1/2}\), and \(U_t=\Delta^{it}\).
 

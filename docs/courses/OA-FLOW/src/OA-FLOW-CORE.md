@@ -1,6 +1,6 @@
 # The core trace and its changes of weight
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 The crossed product by a modular action has a trace even when the original algebra has none. To calculate that trace one must distinguish three objects: the dual weight, the positive generator of the translation unitaries, and the weight obtained by removing that generator. We first construct these objects with their full domains. We then show that changing the original weight preserves the trace, and use the resulting coordinate changes to define the core and its center flow independently of a weight.
 

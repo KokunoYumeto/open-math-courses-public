@@ -2,7 +2,7 @@
 
 An inner automorphism with small Banach-operator spectrum has an implementer with a small principal logarithm. A commuting group can then be removed from that implementer by a central correction. We first prove the order construction that makes this correction possible for an arbitrary group. We next construct the small logarithm by spectral separation. The independent compact convex argument for a general abelian bounded cocycle and the entire earlier P argument remain available as alternative routes.
 
-*Self-checked by the writing AI. Original exposition and illustrations: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
+*Original exposition and illustrations: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
 
 <a id="l125-inputs"></a>
 <a id="oa-flow.l125.setting"></a>

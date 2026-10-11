@@ -241,7 +241,7 @@ The inequality follows by comparing the \(i\)-th term, for \(i\geq1\), with the 
 
 For the Syracuse map, take \(D=\mathcal O\) and \(F(m)=(3m+1)/2^{\nu_2(3m+1)}\). Logarithmic block laws assign an odd \(m\in[s,s^\alpha]\) weight proportional to \(1/m\). The constructions in this lesson then apply literally: \(p_x\) is its first odd iterate at most \(x\), and \(K_x\) transports the chosen starting distribution to that landing distribution.
 
-The algebra of nested passage and the transport theorem are now available. Applying the quantitative conclusion requires estimates for the actual \(d(s)\) and \(e(s)\) of these laws. In Tao's argument, this is where mixing, finite-group Fourier analysis and renewal estimates enter. Those are substantial further arguments; the general transport theorem does not supply their bounds. Conversely, once suitable bounds are proved, the deduction from them to tight orbit minima is the complete argument above, not a separate appeal to the conjecture.
+The algebra of nested passage and the transport theorem are now available. Applying the quantitative conclusion requires estimates for the actual \(d(s)\) and \(e(s)\) of these laws. The route begins with [Quotient distributions and Fourier mixing](NT-COLLATZ-05.md), develops concentration and renewal estimates, and reaches the complete integer sampling argument in [Logarithmic sampling and first-passage distributions](NT-COLLATZ-13.md). Those lessons supply the analytic bounds; the general transport theorem here does not supply them on its own. [Compatible entrance laws and weighted orbit minima](NT-COLLATZ-14.md) then applies the theorem to obtain exact compatible limits and Tao's logarithmic orbit-minimum conclusions.
 
 The clock and sampling lessons identify how to transfer the resulting orbit-minimum events back to ordinary positive-integer iteration with the corresponding logarithmic weights. A time bound needs additional clock estimates, because a small landing value alone gives no upper bound for the number of elapsed ordinary steps.
 
@@ -277,7 +277,7 @@ The coefficient is \(2^3/(1-1/2)=16\). Probabilities are also at most 1, so the 
 
 ## What carries forward
 
-The four lessons have connected several different kinds of information. Return clocks specify how much time a shorter orbit record omits. Symbolic words give exact affine blocks and their arithmetic domains. Pushforward measures determine how mass moves when starts are identified. First-passage operators then compose these distributional comparisons across scales.
+These opening lessons have connected several different kinds of information. Return clocks specify how much time a shorter orbit record omits. Symbolic words give exact affine blocks and their arithmetic domains. Pushforward measures determine how mass moves when starts are identified. First-passage operators then compose these distributional comparisons across scales.
 
 Each construction can be studied for other systems with its hypotheses stated explicitly. The Collatz example keeps their interaction concrete: an orbit identity, a congruence count and a probability estimate each do a different part of the work. Further study can now focus on proving mixing or renewal estimates, with a precise understanding of what those estimates must control and how their conclusions will be used.
 

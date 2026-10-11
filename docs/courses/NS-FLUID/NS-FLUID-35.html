@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The original velocity growth and complete smoothing maps — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/the-original-velocity-growth-and-complete-smoothing-maps.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-34.html">Previous lesson</a><a href="NS-FLUID-36.html">Next lesson</a></nav><article class="lesson"><h1 id="the-original-velocity-growth-and-complete-smoothing-maps">The original velocity growth and complete smoothing maps</h1>
+<p><a href="NS-FLUID-34.html">Lesson34</a>
+constructed the actual viscous unstable mode, its full velocity domain
+and its pressure. This lesson proves the precise growth and smoothing
+maps needed to turn that mode into a nonlinear solution.</p>
+<p>We prove compactness of the difference between the actual evolution and
+the free heat-and-dilation evolution. Its finite spectral spaces give an
+attained maximal growth rate. We then construct every real Sobolev
+smoothing map, including its full time power and exponential margin.
+The original viscosity, background amplitude, spatial drift and Fourier
+weights stay explicit throughout. The axisymmetric no-swirl restriction
+has its own proved maximal rate and all of the same receiving maps.</p>
+<p>The human source is Dallas Albritton, Elia Brué and Maria Colombo,
+<a href="https://arxiv.org/abs/2112.03116v1"><em>Non-uniqueness of Leray solutions of the forced Navier–Stokes equations</em>,
+arXiv:2112.03116v1</a>, original
+main.tex550–593,2487–2633 and2793–2917. The compact background and
+its unstable mode have complete constructions in lessons29–34. The
+source uses viscosity one; that value in our formulas recovers its case.
+The complete arguments below supply the spectral and smoothing steps
+and identify the real-mode norm correction beside its proof.</p>
+<p>Five solved exercises calculate exact Jordan growth and oscillating
+real-mode norms, construct the original compact force with its energy
+balance, evaluate the whole local kernel norm, and prove the nonlinear
+integral map with its exact Gamma factor. These are inputs to the next
+nonlinear fixed-point construction. Author self-check only; no
+independent review or novelty claim is asserted.</p>
+<h2 id="sg1-keep-the-entire-original-velocity-generator">SG1. Keep the entire original velocity generator</h2>
+<p>Use the original solenoidal Hilbert space <span class="math" data-tex="\(H_\sigma\)">\(H_\sigma\)</span>, actual background <span class="math" data-tex="\(b=\bar U_\ell\)">\(b=\bar U_\ell\)</span>, original <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> and the sufficiently large actual <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span> from VP20. Keep</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X_\sigma=\{u\in H_\sigma\cap H^2(\mathbb R^3):x\cdot\nabla u\in L^2\},\\
+L_0=\nu\Delta+\frac12x\cdot\nabla+\frac12,\qquad
+Cu=-\beta\mathbb P(b\cdot\nabla u+u\cdot\nabla b),\qquad L=L_0+C,\\
+U_0=\|b\|_\infty,\qquad U_1=\|Db\|_\infty,\qquad
+\omega=\beta U_1-\frac14.
+\end{gathered}
+\tag{SG1}
+\]">\[
+\begin{gathered}
+X_\sigma=\{u\in H_\sigma\cap H^2(\mathbb R^3):x\cdot\nabla u\in L^2\},\\
+L_0=\nu\Delta+\frac12x\cdot\nabla+\frac12,\qquad
+Cu=-\beta\mathbb P(b\cdot\nabla u+u\cdot\nabla b),\qquad L=L_0+C,\\
+U_0=\|b\|_\infty,\qquad U_1=\|Db\|_\infty,\qquad
+\omega=\beta U_1-\frac14.
+\end{gathered}
+\tag{SG1}
+\]</span>
+<p>Exercise1 of lesson34 proves that both generators have exactly domain <span class="math" data-tex="\(X_\sigma\)">\(X_\sigma\)</span>. Their strongly continuous semigroups <span class="math" data-tex="\(E(t)=e^{tL_0}\)">\(E(t)=e^{tL_0}\)</span> and <span class="math" data-tex="\(S(t)=e^{tL}\)">\(S(t)=e^{tL}\)</span> obey</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E(t)f(x)=e^{t/2}(G_{q(t)}*f)(\kappa(t)x),\qquad
+q(t)=\nu(e^t-1),\qquad\kappa(t)=e^{t/2},\\
+G_q(y)=(4\pi q)^{-3/2}e^{-|y|^2/(4q)},\qquad
+\|E(t)\|\leq e^{-t/4},\qquad\|S(t)\|\leq e^{\omega t}.
+\end{gathered}
+\tag{SG2}
+\]">\[
+\begin{gathered}
+E(t)f(x)=e^{t/2}(G_{q(t)}*f)(\kappa(t)x),\qquad
+q(t)=\nu(e^t-1),\qquad\kappa(t)=e^{t/2},\\
+G_q(y)=(4\pi q)^{-3/2}e^{-|y|^2/(4q)},\qquad
+\|E(t)\|\leq e^{-t/4},\qquad\|S(t)\|\leq e^{\omega t}.
+\end{gathered}
+\tag{SG2}
+\]</span>
+<p>The free gradient estimate VD17, including the physical dilation factor, gives</p>
+<span class="math math-display" data-tex="\[
+\|CE(t)\|\leq c(t):=
+\beta e^{-t/4}\left(
+\frac{U_0}{\sqrt{2e\nu(1-e^{-t})}}+U_1\right),\qquad t&gt;0.
+\tag{SG3}
+\]">\[
+\|CE(t)\|\leq c(t):=
+\beta e^{-t/4}\left(
+\frac{U_0}{\sqrt{2e\nu(1-e^{-t})}}+U_1\right),\qquad t&gt;0.
+\tag{SG3}
+\]</span>
+<p>Here the projection has norm one and the full convection map has bound <span class="math" data-tex="\(\beta(U_0\|\nabla u\|_2+U_1\|u\|_2)\)">\(\beta(U_0\|\nabla u\|_2+U_1\|u\|_2)\)</span>. In particular, for every fixed <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+c(t)\leq d_h t^{-1/2}\quad(0&lt;t\leq h),\qquad
+d_h=\beta\left(\frac{U_0e^{h/2}}{\sqrt{2e\nu}}+U_1\sqrt h\right).
+\tag{SG4}
+\]">\[
+c(t)\leq d_h t^{-1/2}\quad(0&lt;t\leq h),\qquad
+d_h=\beta\left(\frac{U_0e^{h/2}}{\sqrt{2e\nu}}+U_1\sqrt h\right).
+\tag{SG4}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(1-e^{-t}=\int_0^t e^{-s}ds\geq te^{-h}\)">\(1-e^{-t}=\int_0^t e^{-s}ds\geq te^{-h}\)</span>, while <span class="math" data-tex="\(e^{-t/4}\leq1\)">\(e^{-t/4}\leq1\)</span>. No smallness of the original background or of its amplitude is assumed.</p>
+<h2 id="sg2-prove-compactness-of-the-actual-evolution-difference">SG2. Prove compactness of the actual evolution difference</h2>
+<p>Before applying <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span>, the integral kernel of <span class="math" data-tex="\(CE(t)\)">\(CE(t)\)</span> has components</p>
+<span class="math math-display" data-tex="\[
+A_{ij}(t;x,y)=-\beta e^{t/2}\left[
+\delta_{ij}\kappa(t)b(x)\cdot\nabla G_{q(t)}(\kappa(t)x-y)
++(\partial_j b_i)(x)G_{q(t)}(\kappa(t)x-y)\right].
+\tag{SG5}
+\]">\[
+A_{ij}(t;x,y)=-\beta e^{t/2}\left[
+\delta_{ij}\kappa(t)b(x)\cdot\nabla G_{q(t)}(\kappa(t)x-y)
++(\partial_j b_i)(x)G_{q(t)}(\kappa(t)x-y)\right].
+\tag{SG5}
+\]</span>
+<p>Both coefficients are compactly supported in the original physical torus. Integrate the squared kernel first in <span class="math" data-tex="\(y\)">\(y\)</span>; translation removes <span class="math" data-tex="\(\kappa x\)">\(\kappa x\)</span> in that integral. The triangle inequality in the space of square-integrable matrix kernels gives the explicit bound</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|A(t)\|_{L^2_{x,y}}&amp;\leq\beta e^{t/2}
+\left(\sqrt3\kappa(t)\|b\|_2\|\nabla G_{q(t)}\|_2
++\|Db\|_2\|G_{q(t)}\|_2\right),\\
+\|G_q\|_2^2&amp;=(8\pi q)^{-3/2},\qquad
+\|\nabla G_q\|_2^2=\frac3{4q}(8\pi q)^{-3/2}.
+\end{aligned}
+\tag{SG6}
+\]">\[
+\begin{aligned}
+\|A(t)\|_{L^2_{x,y}}&amp;\leq\beta e^{t/2}
+\left(\sqrt3\kappa(t)\|b\|_2\|\nabla G_{q(t)}\|_2
++\|Db\|_2\|G_{q(t)}\|_2\right),\\
+\|G_q\|_2^2&amp;=(8\pi q)^{-3/2},\qquad
+\|\nabla G_q\|_2^2=\frac3{4q}(8\pi q)^{-3/2}.
+\end{aligned}
+\tag{SG6}
+\]</span>
+<p>The factor <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span> retains the three diagonal entries in the first matrix term; the second uses the full derivative matrix norm. The Gaussian identities follow by integrating <span class="math" data-tex="\(e^{-|y|^2/(2q)}\)">\(e^{-|y|^2/(2q)}\)</span> and its complete three-coordinate second moment. Square-integrable kernels are compact: finite sums of products of square-integrable functions in <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> approximate their entries in kernel norm, each sum gives a finite-rank operator, and the Cauchy–Schwarz kernel bound controls the operator-norm error. Applying the bounded projection afterwards and restricting the input to the closed solenoidal subspace preserve compactness. Thus <span class="math" data-tex="\(CE(t)\)">\(CE(t)\)</span> is compact for every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>.</p>
+<p>It is norm-continuous on each closed positive time interval. In fact SG5 is continuous there in kernel <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. The original <span class="math" data-tex="\(x\)">\(x\)</span> support is fixed and bounded, <span class="math" data-tex="\(q(t)\)">\(q(t)\)</span> stays positive, and the Gaussian and its derivative with a bounded translated center have a common integrable squared Gaussian bound in <span class="math" data-tex="\(y\)">\(y\)</span>. Dominated convergence proves the asserted kernel continuity, hence operator-norm continuity after projection.</p>
+<p>For <span class="math" data-tex="\(f\in X_\sigma\)">\(f\in X_\sigma\)</span>, differentiate <span class="math" data-tex="\(S(h-t)E(t)f\)">\(S(h-t)E(t)f\)</span> in <span class="math" data-tex="\(H_\sigma\)">\(H_\sigma\)</span>. Both semigroups preserve their exact common domain. Continuity of <span class="math" data-tex="\(E(t)f\)">\(E(t)f\)</span> in the free graph norm and equivalence with the full graph norm justify the derivative. It equals <span class="math" data-tex="\(-S(h-t)CE(t)f\)">\(-S(h-t)CE(t)f\)</span>. The resulting variation identity extends to all inputs by density, SG3–SG4 and the uniform semigroup bounds:</p>
+<span class="math math-display" data-tex="\[
+S(h)-E(h)=\int_0^h S(h-t)CE(t)\,dt.
+\tag{SG7}
+\]">\[
+S(h)-E(h)=\int_0^h S(h-t)CE(t)\,dt.
+\tag{SG7}
+\]</span>
+<p>This is an operator-norm convergent improper integral. For <span class="math" data-tex="\(0&lt;\epsilon&lt;h\)">\(0&lt;\epsilon&lt;h\)</span>, its omitted initial piece has norm at most</p>
+<span class="math math-display" data-tex="\[
+\left\|\int_0^\epsilon S(h-t)CE(t)dt\right\|
+\leq2e^{\max(\omega,0)h}d_h\sqrt\epsilon.
+\tag{SG8}
+\]">\[
+\left\|\int_0^\epsilon S(h-t)CE(t)dt\right\|
+\leq2e^{\max(\omega,0)h}d_h\sqrt\epsilon.
+\tag{SG8}
+\]</span>
+<p>On <span class="math" data-tex="\([\epsilon,h]\)">\([\epsilon,h]\)</span> the integrand is norm-continuous and compact. To check the only continuity point requiring care, if bounded operators converge strongly with a uniform norm bound, their products on the left of a fixed compact operator converge in norm: approximate its image of the unit ball by a finite net and use strong convergence on that net. Apply this fact to <span class="math" data-tex="\(S(h-t)\)">\(S(h-t)\)</span>, together with the norm continuity of <span class="math" data-tex="\(CE(t)\)">\(CE(t)\)</span>. The integral over <span class="math" data-tex="\([\epsilon,h]\)">\([\epsilon,h]\)</span> is consequently a norm limit of compact Riemann sums. Letting <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span> in SG8 proves</p>
+<span class="math math-display" data-tex="\[
+S(h)=E(h)+K_h,\qquad K_h\text{ compact on }H_\sigma,
+\qquad\|E(h)\|\leq e^{-h/4},\quad h&gt;0.
+\tag{SG9}
+\]">\[
+S(h)=E(h)+K_h,\qquad K_h\text{ compact on }H_\sigma,
+\qquad\|E(h)\|\leq e^{-h/4},\quad h&gt;0.
+\tag{SG9}
+\]</span>
+<p>This is compactness of the evolution difference itself. The full spatial drift and original viscosity remain in its kernel and endpoint estimate.</p>
+<h2 id="sg3-identify-the-finite-spectral-spaces-outside-the-free-disk">SG3. Identify the finite spectral spaces outside the free disk</h2>
+<p>Fix any <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, keeping it as an auxiliary time step rather than changing the physical variables. Set <span class="math" data-tex="\(T=S(h)\)">\(T=S(h)\)</span>, <span class="math" data-tex="\(T_0=E(h)\)">\(T_0=E(h)\)</span> and <span class="math" data-tex="\(r_0=e^{-h/4}\)">\(r_0=e^{-h/4}\)</span>. For <span class="math" data-tex="\(|z|&gt;r_0\)">\(|z|&gt;r_0\)</span>, the geometric series gives <span class="math" data-tex="\((z-T_0)^{-1}\)">\((z-T_0)^{-1}\)</span>, with bound <span class="math" data-tex="\((|z|-r_0)^{-1}\)">\((|z|-r_0)^{-1}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+z-T=(z-T_0)\bigl[I-(z-T_0)^{-1}K_h\bigr].
+\tag{SG10}
+\]">\[
+z-T=(z-T_0)\bigl[I-(z-T_0)^{-1}K_h\bigr].
+\tag{SG10}
+\]</span>
+<p>The compact factor is analytic on the connected exterior of the closed free disk, and invertible at large <span class="math" data-tex="\(|z|\)">\(|z|\)</span>. The finite-rank reduction RT24 in lesson32 applies directly to this bounded operator: near each point write the compact analytic family as a finite-rank map plus an operator of norm below one-half. Factoring the latter leaves a finite matrix whose determinant inverse is meromorphic. Its two kernel maps show that every noninvertible point gives an actual eigenvector. Continue along the connected exterior using overlapping disks and an invertible starting point, as in the complete proof of RT24. The resulting isolated poles have finite-rank spectral projections: their resolvent difference from the free inverse is compact, and the nested-contour identity makes each compact contour integral an idempotent. This proves finite algebraic multiplicity by the full generalized-eigenvector calculation in RT6.</p>
+<p>For any <span class="math" data-tex="\(r&gt;r_0\)">\(r&gt;r_0\)</span>, there are only finitely many such spectral points with <span class="math" data-tex="\(|z|\geq r\)">\(|z|\geq r\)</span>. Otherwise a sequence lies in the compact annulus <span class="math" data-tex="\(r\leq|z|\leq\|T\|\)">\(r\leq|z|\leq\|T\|\)</span>, has a limit there, and contradicts local discreteness in the exterior. The elementary bound <span class="math" data-tex="\(|z|&gt;\|T\|\Rightarrow z\in\rho(T)\)">\(|z|&gt;\|T\|\Rightarrow z\in\rho(T)\)</span> follows from its geometric series.</p>
+<p>Choose a radius <span class="math" data-tex="\(r=e^{wh}&gt;r_0\)">\(r=e^{wh}&gt;r_0\)</span> whose circle contains no spectrum of <span class="math" data-tex="\(T\)">\(T\)</span>. Let <span class="math" data-tex="\(P\)">\(P\)</span> be the sum of the finitely many spectral projections outside that circle and <span class="math" data-tex="\(Q=I-P\)">\(Q=I-P\)</span>. The resolvent identity gives <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>, <span class="math" data-tex="\(PT=TP\)">\(PT=TP\)</span>, and a direct-sum decomposition</p>
+<span class="math math-display" data-tex="\[
+H_\sigma=F\oplus QH_\sigma,\qquad F=PH_\sigma,\qquad
+\dim F&lt;\infty,\qquad \sigma(T|_{QH_\sigma})\subset\{|z|&lt;r\}.
+\tag{SG11}
+\]">\[
+H_\sigma=F\oplus QH_\sigma,\qquad F=PH_\sigma,\qquad
+\dim F&lt;\infty,\qquad \sigma(T|_{QH_\sigma})\subset\{|z|&lt;r\}.
+\tag{SG11}
+\]</span>
+<p>For completeness, the last spectral decomposition follows from the resolvent Laurent expansion at each removed pole. Multiplication of <span class="math" data-tex="\((z-T)^{-1}\)">\((z-T)^{-1}\)</span> by <span class="math" data-tex="\(Q\)">\(Q\)</span> cancels its entire principal part: that part has range in the corresponding generalized eigenspace, on which its spectral projection is the identity. The remaining singularities are removable. On the finite range the same Laurent calculation gives the finite matrix restriction. These inverses, and the block-diagonal action of <span class="math" data-tex="\(T\)">\(T\)</span>, prove SG11 without an assumption about normality or orthogonal projections.</p>
+<p>Every <span class="math" data-tex="\(S(t)\)">\(S(t)\)</span> commutes with <span class="math" data-tex="\(T=S(h)\)">\(T=S(h)\)</span>, hence with its resolvents and <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>. Thus both spaces in SG11 are invariant under the entire original semigroup, not just the chosen time step.</p>
+<h2 id="sg4-prove-the-full-generator-and-growth-correspondence">SG4. Prove the full generator and growth correspondence</h2>
+<p>The finite space <span class="math" data-tex="\(F\)">\(F\)</span> lies in the original domain of <span class="math" data-tex="\(L\)">\(L\)</span>. To prove this without assuming differentiability, define</p>
+<span class="math math-display" data-tex="\[
+J_\epsilon f=\frac1\epsilon\int_0^\epsilon S(t)f\,dt.
+\tag{SG12}
+\]">\[
+J_\epsilon f=\frac1\epsilon\int_0^\epsilon S(t)f\,dt.
+\tag{SG12}
+\]</span>
+<p>Its difference quotient at zero is <span class="math" data-tex="\((S(\epsilon)f-f)/\epsilon\)">\((S(\epsilon)f-f)/\epsilon\)</span>, so <span class="math" data-tex="\(J_\epsilon f\in D(L)\)">\(J_\epsilon f\in D(L)\)</span>. On the finite invariant space <span class="math" data-tex="\(F\)">\(F\)</span>, strong continuity implies <span class="math" data-tex="\(J_\epsilon|_F\to I_F\)">\(J_\epsilon|_F\to I_F\)</span> in norm. It is therefore invertible there for small <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Its range is all <span class="math" data-tex="\(F\)">\(F\)</span> and is in <span class="math" data-tex="\(D(L)\)">\(D(L)\)</span>, proving the claim. Difference quotients also show <span class="math" data-tex="\(LF\subset F\)">\(LF\subset F\)</span>. Write <span class="math" data-tex="\(A_F=L|_F\)">\(A_F=L|_F\)</span>. The finite-dimensional differential equation gives</p>
+<span class="math math-display" data-tex="\[
+S(t)|_F=e^{tA_F},\qquad T|_F=e^{hA_F}.
+\tag{SG13}
+\]">\[
+S(t)|_F=e^{tA_F},\qquad T|_F=e^{hA_F}.
+\tag{SG13}
+\]</span>
+<p>In particular, all eigenvalues of <span class="math" data-tex="\(A_F\)">\(A_F\)</span> have real part greater than <span class="math" data-tex="\(w\)">\(w\)</span>, since all eigenvalues of its exponential have modulus greater than <span class="math" data-tex="\(e^{wh}\)">\(e^{wh}\)</span>. The equality between these finite spectra follows by triangularizing the complex matrix: its exponential is triangular with the exponentials of its original diagonal entries. The full original generator, rather than a choice of logarithm branch for <span class="math" data-tex="\(T\)">\(T\)</span>, determines <span class="math" data-tex="\(A_F\)">\(A_F\)</span>.</p>
+<p>On <span class="math" data-tex="\(QH_\sigma\)">\(QH_\sigma\)</span>, write <span class="math" data-tex="\(T_Q=T|_{QH_\sigma}\)">\(T_Q=T|_{QH_\sigma}\)</span>. For each <span class="math" data-tex="\(R&gt;r\)">\(R&gt;r\)</span>, its entire spectrum is inside the circle of radius <span class="math" data-tex="\(R\)">\(R\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+T_Q^n=\frac1{2\pi i}\int_{|z|=R}z^n(z-T_Q)^{-1}dz,
+\qquad
+\|T_Q^n\|\leq R^{n+1}\sup_{|z|=R}\|(z-T_Q)^{-1}\|.
+\tag{SG14}
+\]">\[
+T_Q^n=\frac1{2\pi i}\int_{|z|=R}z^n(z-T_Q)^{-1}dz,
+\qquad
+\|T_Q^n\|\leq R^{n+1}\sup_{|z|=R}\|(z-T_Q)^{-1}\|.
+\tag{SG14}
+\]</span>
+<p>The identity follows first on a larger circle beyond <span class="math" data-tex="\(\|T_Q\|\)">\(\|T_Q\|\)</span> by integrating its geometric series; deform that circle through the resolvent annulus to <span class="math" data-tex="\(R\)">\(R\)</span>. Given <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, take <span class="math" data-tex="\(R=e^{(w+\epsilon)h}\)">\(R=e^{(w+\epsilon)h}\)</span>. Write <span class="math" data-tex="\(t=nh+s\)">\(t=nh+s\)</span>, <span class="math" data-tex="\(0\leq s&lt;h\)">\(0\leq s&lt;h\)</span>, and use <span class="math" data-tex="\(S(t)Q=S(s)T_Q^nQ\)">\(S(t)Q=S(s)T_Q^nQ\)</span>. The original semigroup bound on <span class="math" data-tex="\([0,h]\)">\([0,h]\)</span> now proves a finite constant <span class="math" data-tex="\(C_{h,w,\epsilon}\)">\(C_{h,w,\epsilon}\)</span>, retaining the norm of the potentially nonorthogonal <span class="math" data-tex="\(Q\)">\(Q\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+\|S(t)Q\|\leq C_{h,w,\epsilon}e^{(w+\epsilon)t},\qquad t\geq0.
+\tag{SG15}
+\]">\[
+\|S(t)Q\|\leq C_{h,w,\epsilon}e^{(w+\epsilon)t},\qquad t\geq0.
+\tag{SG15}
+\]</span>
+<p>For example the right constant can be taken as
+<span class="math" data-tex="\(\|Q\|e^{\max(\omega,0)h}R\sup_{|z|=R}\|(z-T_Q)^{-1}\|e^{|w+\epsilon|h}\)">\(\|Q\|e^{\max(\omega,0)h}R\sup_{|z|=R}\|(z-T_Q)^{-1}\|e^{|w+\epsilon|h}\)</span>.
+The Laplace integral on this invariant subspace, with both inverse identities proved by the same difference-quotient argument as VD5, places its generator's spectrum in <span class="math" data-tex="\(\{\operatorname{Re}z\leq w\}\)">\(\{\operatorname{Re}z\leq w\}\)</span>, since <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> is arbitrary. The restriction domain is <span class="math" data-tex="\(D(L)\cap QH_\sigma\)">\(D(L)\cap QH_\sigma\)</span>: the subspace is closed and invariant, and convergence of a difference quotient there is the same convergence in the full Hilbert space. Moreover <span class="math" data-tex="\(P\)">\(P\)</span> preserves <span class="math" data-tex="\(D(L)\)">\(D(L)\)</span> and commutes with <span class="math" data-tex="\(L\)">\(L\)</span>, by its commutation with every <span class="math" data-tex="\(S(t)\)">\(S(t)\)</span>. The full generator is therefore the direct sum of <span class="math" data-tex="\(A_F\)">\(A_F\)</span> and this exact restriction. Its resolvent is the direct sum of their inverses whenever both exist.</p>
+<p>There is already an actual nonzero velocity eigenvector <span class="math" data-tex="\(U_*\in X_\sigma\)">\(U_*\in X_\sigma\)</span>, with eigenvalue <span class="math" data-tex="\(\Lambda_*\)">\(\Lambda_*\)</span> and <span class="math" data-tex="\(a_*:=\operatorname{Re}\Lambda_*&gt;1/4\)">\(a_*:=\operatorname{Re}\Lambda_*&gt;1/4\)</span>, by lesson34. Choose <span class="math" data-tex="\(-1/4&lt;w&lt;a_*\)">\(-1/4&lt;w&lt;a_*\)</span> whose associated circle avoids <span class="math" data-tex="\(\sigma(T)\)">\(\sigma(T)\)</span>; such a choice exists because a compact subinterval of these radii contains only finitely many exceptional values. Then <span class="math" data-tex="\(S(h)U_*=e^{h\Lambda_*}U_*\)">\(S(h)U_*=e^{h\Lambda_*}U_*\)</span>, so the outside spectral projection fixes <span class="math" data-tex="\(U_*\)">\(U_*\)</span>, and <span class="math" data-tex="\(F\ne0\)">\(F\ne0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(a\)">\(a\)</span> be the largest real part of the finitely many eigenvalues of <span class="math" data-tex="\(A_F\)">\(A_F\)</span>. It is attained, and <span class="math" data-tex="\(a\geq a_*&gt;w\)">\(a\geq a_*&gt;w\)</span>. Choose an actual nonzero eigenvector <span class="math" data-tex="\(\eta\in F\subset X_\sigma\)">\(\eta\in F\subset X_\sigma\)</span> for an eigenvalue <span class="math" data-tex="\(\lambda=a+ib_0\)">\(\lambda=a+ib_0\)</span>. The complementary spectrum lies to the left of <span class="math" data-tex="\(w\)">\(w\)</span>; hence</p>
+<span class="math math-display" data-tex="\[
+a=\sup_{z\in\sigma(L)}\operatorname{Re}z&gt;0,\qquad
+L\eta=(a+ib_0)\eta,\qquad \eta\ne0.
+\tag{SG16}
+\]">\[
+a=\sup_{z\in\sigma(L)}\operatorname{Re}z&gt;0,\qquad
+L\eta=(a+ib_0)\eta,\qquad \eta\ne0.
+\tag{SG16}
+\]</span>
+<p>Finally, every finite Jordan block of <span class="math" data-tex="\(A_F\)">\(A_F\)</span> contributes exactly
+<span class="math" data-tex="\(e^{\lambda_jt}\sum_{k=0}^{m_j-1}t^kN_j^k/k!\)">\(e^{\lambda_jt}\sum_{k=0}^{m_j-1}t^kN_j^k/k!\)</span>.
+For any <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, each polynomial factor times <span class="math" data-tex="\(e^{-\delta t}\)">\(e^{-\delta t}\)</span> is bounded: its <span class="math" data-tex="\(k\)">\(k\)</span>-th term has maximum <span class="math" data-tex="\((k/(e\delta))^k\)">\((k/(e\delta))^k\)</span> for <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, and the constant term is one. Retain the finite change-of-basis norms and all block coefficients. Combining this bound with SG15, taking <span class="math" data-tex="\(w+\epsilon&lt;a\)">\(w+\epsilon&lt;a\)</span>, yields</p>
+<span class="math math-display" data-tex="\[
+\|S(t)\|\leq M(\delta)e^{(a+\delta)t},\qquad t\geq0.
+\tag{SG17}
+\]">\[
+\|S(t)\|\leq M(\delta)e^{(a+\delta)t},\qquad t\geq0.
+\tag{SG17}
+\]</span>
+<p>Conversely, the actual mode gives <span class="math" data-tex="\(\|S(t)\eta\|=e^{at}\|\eta\|\)">\(\|S(t)\eta\|=e^{at}\|\eta\|\)</span>, so no growth exponent below <span class="math" data-tex="\(a\)">\(a\)</span> can have a finite uniform prefactor. Thus the semigroup growth bound equals the spectral bound <span class="math" data-tex="\(a\)">\(a\)</span>. Neither the original viscosity and amplitude nor the actual eigenvector norm was replaced. This establishes the full spectral-growth assertion needed by the nonlinear argument for the already constructed physical background.</p>
+<h2 id="sg5-retain-the-exact-real-mode-norm-instead-of-an-unjustified-equality">SG5. Retain the exact real-mode norm instead of an unjustified equality</h2>
+<p>The generator has real coefficients and the real Leray projection, so it commutes with complex conjugation. Write <span class="math" data-tex="\(\eta=A+iB\)">\(\eta=A+iB\)</span> with real fields and <span class="math" data-tex="\(\lambda=a+ib_0\)">\(\lambda=a+ib_0\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+LA=aA-b_0B,\qquad LB=b_0A+aB,\qquad
+U^{\rm lin}(\tau)=e^{a\tau}(\cos(b_0\tau)A-\sin(b_0\tau)B).
+\tag{SG18}
+\]">\[
+LA=aA-b_0B,\qquad LB=b_0A+aB,\qquad
+U^{\rm lin}(\tau)=e^{a\tau}(\cos(b_0\tau)A-\sin(b_0\tau)B).
+\tag{SG18}
+\]</span>
+<p>For any real Hilbert norm in which <span class="math" data-tex="\(A,B\)">\(A,B\)</span> belong, retain
+<span class="math" data-tex="\(p=\|A\|^2\)">\(p=\|A\|^2\)</span>, <span class="math" data-tex="\(q=\|B\|^2\)">\(q=\|B\|^2\)</span>, <span class="math" data-tex="\(r=\langle A,B\rangle\)">\(r=\langle A,B\rangle\)</span>. Direct expansion gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e^{-2a\tau}\|U^{\rm lin}(\tau)\|^2
+&amp;=\frac{p+q}{2}+\frac{p-q}{2}\cos(2b_0\tau)-r\sin(2b_0\tau),\\
+m_\pm&amp;=\frac{p+q\pm\sqrt{(p-q)^2+4r^2}}2.
+\end{aligned}
+\tag{SG19}
+\]">\[
+\begin{aligned}
+e^{-2a\tau}\|U^{\rm lin}(\tau)\|^2
+&amp;=\frac{p+q}{2}+\frac{p-q}{2}\cos(2b_0\tau)-r\sin(2b_0\tau),\\
+m_\pm&amp;=\frac{p+q\pm\sqrt{(p-q)^2+4r^2}}2.
+\end{aligned}
+\tag{SG19}
+\]</span>
+<p>If <span class="math" data-tex="\(b_0\ne0\)">\(b_0\ne0\)</span>, the fields <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are real-linearly independent. If <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, the first equation in SG18 forces <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, a contradiction. If <span class="math" data-tex="\(B=cA\)">\(B=cA\)</span>, the two equations give <span class="math" data-tex="\(c(a-b_0c)=b_0+ac\)">\(c(a-b_0c)=b_0+ac\)</span>, hence <span class="math" data-tex="\(b_0(1+c^2)=0\)">\(b_0(1+c^2)=0\)</span>, another contradiction. Strict Cauchy–Schwarz therefore gives <span class="math" data-tex="\(pq-r^2&gt;0\)">\(pq-r^2&gt;0\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+0&lt;\sqrt{m_-}\,e^{a\tau}\leq\|U^{\rm lin}(\tau)\|
+\leq\sqrt{m_+}\,e^{a\tau},\qquad \tau\in\mathbb R.
+\tag{SG20}
+\]">\[
+0&lt;\sqrt{m_-}\,e^{a\tau}\leq\|U^{\rm lin}(\tau)\|
+\leq\sqrt{m_+}\,e^{a\tau},\qquad \tau\in\mathbb R.
+\tag{SG20}
+\]</span>
+<p>These extrema are exact because the phase covers the full circle. Its norm is a constant times <span class="math" data-tex="\(e^{a\tau}\)">\(e^{a\tau}\)</span> precisely when <span class="math" data-tex="\(p=q\)">\(p=q\)</span> and <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Those extra identities were not established at source2632. The universally justified statement is SG19–SG20, not that equality. If <span class="math" data-tex="\(b_0=0\)">\(b_0=0\)</span>, choose one of the existing nonzero real eigenvectors <span class="math" data-tex="\(A,B\)">\(A,B\)</span>; its evolution has exactly its original norm times <span class="math" data-tex="\(e^{a\tau}\)">\(e^{a\tau}\)</span>, without rescaling that vector. In particular the lower bound needed to distinguish the nonlinear solution holds in physical <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. At this stage <span class="math" data-tex="\(\eta\in H^2\)">\(\eta\in H^2\)</span> is proved; higher Sobolev applications of SG19–SG20 will follow only after the full smoothing construction.</p>
+<h2 id="sg6-preserve-the-source-s-axisymmetric-velocity-with-no-swirl">SG6. Preserve the source's axisymmetric velocity with no swirl</h2>
+<p>The source's further assertion at main.tex593 retains axisymmetry and no swirl. A maximal mode on the entire solenoidal space is not automatically known to have those symmetries. We prove the full receiving restriction.</p>
+<p>For each rotation about the third axis and the reflection <span class="math" data-tex="\(J=\operatorname{diag}(1,-1,1)\)">\(J=\operatorname{diag}(1,-1,1)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\mathscr R u)(x)=R u(R^{-1}x),\qquad\\
+H_{\rm ns}=\{u\in H_\sigma:\mathscr R u=u
+\text{ for every such rotation and reflection}\}.
+\end{gathered}
+\tag{SG21}
+\]">\[
+\begin{gathered}
+(\mathscr R u)(x)=R u(R^{-1}x),\qquad\\
+H_{\rm ns}=\{u\in H_\sigma:\mathscr R u=u
+\text{ for every such rotation and reflection}\}.
+\end{gathered}
+\tag{SG21}
+\]</span>
+<p>These maps are isometries in every original Sobolev norm, preserve the full spatial-drift domain, and commute with the free semigroup. A rotation-equivariant velocity has the form <span class="math" data-tex="\(u^s(s,z)e_s+u^\theta(s,z)e_\theta+u^z(s,z)e_3\)">\(u^s(s,z)e_s+u^\theta(s,z)e_\theta+u^z(s,z)e_3\)</span>. The reflection reverses its swirl component and preserves the other two. Thus the fixed space is exactly the closed solenoidal space of axisymmetric velocities with no swirl, with its original physical measure. All derivatives are taken distributionally in the full three-dimensional space; no extra axis boundary condition is introduced.</p>
+<p>The actual background <span class="math" data-tex="\(b\)">\(b\)</span> belongs to this space. The Cartesian chain rule gives <span class="math" data-tex="\(\mathscr R(b\cdot\nabla u)=(\mathscr R b)\cdot\nabla(\mathscr R u)\)">\(\mathscr R(b\cdot\nabla u)=(\mathscr R b)\cdot\nabla(\mathscr R u)\)</span> and the corresponding identity for the other product. The original Leray multiplier commutes with the group since <span class="math" data-tex="\(\mathbb P(R\eta)=R\mathbb P(\eta)R^{-1}\)">\(\mathbb P(R\eta)=R\mathbb P(\eta)R^{-1}\)</span>. Hence <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> commute with it on their exact domains. Their resolvent approximants, and therefore the constructed semigroup, commute with it too. Both <span class="math" data-tex="\(E(t)\)">\(E(t)\)</span> and <span class="math" data-tex="\(S(t)\)">\(S(t)\)</span> leave <span class="math" data-tex="\(H_{\rm ns}\)">\(H_{\rm ns}\)</span> invariant. The defining difference quotients show that their restricted generator domains are precisely <span class="math" data-tex="\(X_\sigma\cap H_{\rm ns}\)">\(X_\sigma\cap H_{\rm ns}\)</span>.</p>
+<p>Every hypothesis used in SG2–SG4 now holds on this closed space. The actual compact evolution difference restricts to a compact operator there, and the free norm is still at most <span class="math" data-tex="\(e^{-h/4}\)">\(e^{-h/4}\)</span>. The actual unstable velocity from VC9–VC14 lies in this space by PT5. Its finite spectral space is therefore nonzero. Applying the already proved domain, finite-generator and contour-power argument on this space gives an actual nonzero <span class="math" data-tex="\(\eta_{\rm ns}\in X_\sigma\cap H_{\rm ns}\)">\(\eta_{\rm ns}\in X_\sigma\cap H_{\rm ns}\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_{\rm ns}=\operatorname{Re}\lambda_{\rm ns}
+=\sup_{z\in\sigma(L|_{H_{\rm ns}})}\operatorname{Re}z&gt;0,\\
+L\eta_{\rm ns}=\lambda_{\rm ns}\eta_{\rm ns},\qquad
+\|S(t)|_{H_{\rm ns}}\|\leq M_{\rm ns}(\delta)e^{(a_{\rm ns}+\delta)t}.
+\end{gathered}
+\tag{SG22}
+\]">\[
+\begin{gathered}
+a_{\rm ns}=\operatorname{Re}\lambda_{\rm ns}
+=\sup_{z\in\sigma(L|_{H_{\rm ns}})}\operatorname{Re}z&gt;0,\\
+L\eta_{\rm ns}=\lambda_{\rm ns}\eta_{\rm ns},\qquad
+\|S(t)|_{H_{\rm ns}}\|\leq M_{\rm ns}(\delta)e^{(a_{\rm ns}+\delta)t}.
+\end{gathered}
+\tag{SG22}
+\]</span>
+<p>No equality between <span class="math" data-tex="\(a_{\rm ns}\)">\(a_{\rm ns}\)</span> and the full-space value <span class="math" data-tex="\(a\)">\(a\)</span> is asserted. The symmetry-preserving construction can use this restricted bound and its actual mode. The exact real-mode Gram argument SG18–SG20 applies there too, since the space is invariant under conjugation.</p>
+<p>For two fields <span class="math" data-tex="\(u,v\)">\(u,v\)</span> in the fixed space, the same chain rule and Leray identity give the exact nonlinear receiving map</p>
+<span class="math math-display" data-tex="\[
+\mathscr R\,\mathbb P(u\cdot\nabla v)
+=\mathbb P((\mathscr R u)\cdot\nabla(\mathscr R v))
+=\mathbb P(u\cdot\nabla v).
+\tag{SG23}
+\]">\[
+\mathscr R\,\mathbb P(u\cdot\nabla v)
+=\mathbb P((\mathscr R u)\cdot\nabla(\mathscr R v))
+=\mathbb P(u\cdot\nabla v).
+\tag{SG23}
+\]</span>
+<p>Thus, whenever the Sobolev product is defined, it lies in the corresponding fixed solenoidal space. This proves preservation of both original symmetries without assuming a nonlinear solution. The next calculation is full smoothing, then the nonlinear correction with all original quadratic terms, physical force and time endpoints.</p>
+<h2 id="sm1-prove-the-full-coefficient-multiplication-map-for-every-real-order">SM1. Prove the full coefficient multiplication map for every real order</h2>
+<p>For real <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>, use the original inhomogeneous norm</p>
+<span class="math math-display" data-tex="\[
+\|f\|_{H^s}^2=(2\pi)^{-3}\int_{\mathbb R^3}
+(1+|\eta|^2)^s|\widehat f(\eta)|^2d\eta,
+\qquad \langle\eta\rangle=(1+|\eta|^2)^{1/2}.
+\tag{SM1}
+\]">\[
+\|f\|_{H^s}^2=(2\pi)^{-3}\int_{\mathbb R^3}
+(1+|\eta|^2)^s|\widehat f(\eta)|^2d\eta,
+\qquad \langle\eta\rangle=(1+|\eta|^2)^{1/2}.
+\tag{SM1}
+\]</span>
+<p>Vector and tensor norms use the sum of all component squares. Keep the exact original tensor</p>
+<span class="math math-display" data-tex="\[
+\mathcal F(u)=-\beta(b\otimes u+u\otimes b),\qquad
+(v\otimes w)_{ij}=v_iw_j,\qquad
+(\operatorname{div}F)_i=\partial_jF_{ij}.
+\tag{SM2}
+\]">\[
+\mathcal F(u)=-\beta(b\otimes u+u\otimes b),\qquad
+(v\otimes w)_{ij}=v_iw_j,\qquad
+(\operatorname{div}F)_i=\partial_jF_{ij}.
+\tag{SM2}
+\]</span>
+<p>For solenoidal <span class="math" data-tex="\(u,b\)">\(u,b\)</span>, the full product rule gives <span class="math" data-tex="\(\mathbb P\operatorname{div}\mathcal F(u)=Cu\)">\(\mathbb P\operatorname{div}\mathcal F(u)=Cu\)</span> with exactly the two convection terms in SG1. The tensor itself is defined for all vector fields.</p>
+<p>The elementary inequality
+<span class="math" data-tex="\(1+|\xi|^2\leq2(1+|\xi-\eta|^2)(1+|\eta|^2)\)">\(1+|\xi|^2\leq2(1+|\xi-\eta|^2)(1+|\eta|^2)\)</span>
+follows from <span class="math" data-tex="\(|\xi|^2\leq2|\xi-\eta|^2+2|\eta|^2\)">\(|\xi|^2\leq2|\xi-\eta|^2+2|\eta|^2\)</span>. Raising this inequality to <span class="math" data-tex="\(s/2\)">\(s/2\)</span>, retaining the original convolution coefficient <span class="math" data-tex="\((2\pi)^{-3}\)">\((2\pi)^{-3}\)</span>, and applying the integral triangle inequality in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal F(u)\|_{H^s}\leq A_s\|u\|_{H^s},\qquad
+A_s=\frac{2\beta\,2^{s/2}}{(2\pi)^3}
+\int_{\mathbb R^3}\langle\eta\rangle^s|\widehat b(\eta)|d\eta.
+\tag{SM3}
+\]">\[
+\|\mathcal F(u)\|_{H^s}\leq A_s\|u\|_{H^s},\qquad
+A_s=\frac{2\beta\,2^{s/2}}{(2\pi)^3}
+\int_{\mathbb R^3}\langle\eta\rangle^s|\widehat b(\eta)|d\eta.
+\tag{SM3}
+\]</span>
+<p>Each of the two tensor terms has exactly the vector-product bound; the triangle inequality accounts for the factor two. To see the convolution bound directly, write the weighted transform as an integral over <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. For each fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, translation preserves the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm of the remaining weighted transform of <span class="math" data-tex="\(u\)">\(u\)</span>; its integral coefficient is precisely the weighted <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm of <span class="math" data-tex="\(\widehat b\)">\(\widehat b\)</span>. This also proves the bound first for smooth inputs and then by density, with no assumption of a fractional product theorem.</p>
+<p>The constant is finite for the actual compact smooth background. Choose an integer <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(2m&gt;s+3\)">\(2m&gt;s+3\)</span>. Integration by parts in the Fourier transform gives
+<span class="math" data-tex="\(\langle\eta\rangle^{2m}|\widehat b(\eta)|\leq\|(1-\Delta)^m b\|_1\)">\(\langle\eta\rangle^{2m}|\widehat b(\eta)|\leq\|(1-\Delta)^m b\|_1\)</span>, and splitting the full radial integral at one yields</p>
+<span class="math math-display" data-tex="\[
+\int\langle\eta\rangle^s|\widehat b(\eta)|d\eta
+\leq4\pi\left(\frac13+\frac1{2m-s-3}\right)
+\left\|\sum_{j=0}^m\binom mj(-\Delta)^j b\right\|_1.
+\tag{SM4}
+\]">\[
+\int\langle\eta\rangle^s|\widehat b(\eta)|d\eta
+\leq4\pi\left(\frac13+\frac1{2m-s-3}\right)
+\left\|\sum_{j=0}^m\binom mj(-\Delta)^j b\right\|_1.
+\tag{SM4}
+\]</span>
+<p>Thus every coefficient and derivative required at a real order is controlled by the original field. No spatial tail of the field has been replaced or discarded.</p>
+<h2 id="sm2-derive-the-two-exact-free-smoothing-bounds">SM2. Derive the two exact free smoothing bounds</h2>
+<p>Keep <span class="math" data-tex="\(E(t),q(t),\kappa(t)\)">\(E(t),q(t),\kappa(t)\)</span> from SG2. Changing variables only inside its Fourier norm gives the exact expression</p>
+<span class="math math-display" data-tex="\[
+\|E(t)f\|_{H^s}^2
+=e^{-t/2}(2\pi)^{-3}\int
+(1+\kappa(t)^2|\eta|^2)^s e^{-2q(t)|\eta|^2}
+|\widehat f(\eta)|^2d\eta.
+\tag{SM5}
+\]">\[
+\|E(t)f\|_{H^s}^2
+=e^{-t/2}(2\pi)^{-3}\int
+(1+\kappa(t)^2|\eta|^2)^s e^{-2q(t)|\eta|^2}
+|\widehat f(\eta)|^2d\eta.
+\tag{SM5}
+\]</span>
+<p>The physical amplitude and Jacobian give the full factor <span class="math" data-tex="\(e^{-t/2}\)">\(e^{-t/2}\)</span>. In particular, since <span class="math" data-tex="\(\kappa\geq1\)">\(\kappa\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|E(t)f\|_{H^s}&amp;\leq e^{(s/2-1/4)t}\|f\|_{H^s},\\
+\|E(t)\mathbb P\operatorname{div}F\|_{H^s}
+&amp;\leq\frac{e^{(s/2-1/4)t}}{\sqrt{2e\nu(e^t-1)}}\|F\|_{H^s},\\
+\|E(t)f\|_{H^{s+1}}
+&amp;\leq e^{(s/2-1/4)t}
+\left(1+\frac{e^{t/2}}{\sqrt{2e\nu(e^t-1)}}\right)\|f\|_{H^s}.
+\end{aligned}
+\tag{SM6}
+\]">\[
+\begin{aligned}
+\|E(t)f\|_{H^s}&amp;\leq e^{(s/2-1/4)t}\|f\|_{H^s},\\
+\|E(t)\mathbb P\operatorname{div}F\|_{H^s}
+&amp;\leq\frac{e^{(s/2-1/4)t}}{\sqrt{2e\nu(e^t-1)}}\|F\|_{H^s},\\
+\|E(t)f\|_{H^{s+1}}
+&amp;\leq e^{(s/2-1/4)t}
+\left(1+\frac{e^{t/2}}{\sqrt{2e\nu(e^t-1)}}\right)\|f\|_{H^s}.
+\end{aligned}
+\tag{SM6}
+\]</span>
+<p>For the second line, the original input Fourier divergence has magnitude at most <span class="math" data-tex="\(|\eta||\widehat F(\eta)|\)">\(|\eta||\widehat F(\eta)|\)</span>; the projection has norm at most one. The exact maximum of <span class="math" data-tex="\(r e^{-qr^2}\)">\(r e^{-qr^2}\)</span> is <span class="math" data-tex="\((2eq)^{-1/2}\)">\((2eq)^{-1/2}\)</span>, by differentiating at <span class="math" data-tex="\(r=(2q)^{-1/2}\)">\(r=(2q)^{-1/2}\)</span>. The projection commutes with dilation and the heat multiplier because its symbol has degree zero. This proves that line on all tensors without first assuming a pointwise divergence.</p>
+<p>For the last line keep the full weight <span class="math" data-tex="\((1+\kappa^2r^2)^{1/2}\leq1+\kappa r\)">\((1+\kappa^2r^2)^{1/2}\leq1+\kappa r\)</span> and apply the same maximum. The constant one in that weight remains; it is needed at low frequency. Formula SM5 also proves strong continuity of <span class="math" data-tex="\(E(t)\)">\(E(t)\)</span> on every <span class="math" data-tex="\(H^s\)">\(H^s\)</span>, first on smooth compact Fourier functions by dominated convergence and then by density and its local norm bound.</p>
+<p>For convenient finite-time bounds set <span class="math" data-tex="\(c_s=\max(s/2-1/4,0)\)">\(c_s=\max(s/2-1/4,0)\)</span>. Since <span class="math" data-tex="\(e^t-1\geq t\)">\(e^t-1\geq t\)</span>, the second line of SM6 is at most <span class="math" data-tex="\(e^{c_st}(2e\nu t)^{-1/2}\|F\|_{H^s}\)">\(e^{c_st}(2e\nu t)^{-1/2}\|F\|_{H^s}\)</span>. All original coefficients in SM6 remain available; this inequality is used only to integrate the actual short-time kernel.</p>
+<h2 id="sm3-construct-one-full-derivative-of-smoothing-including-fractional-input-orders">SM3. Construct one full derivative of smoothing, including fractional input orders</h2>
+<p>On solenoidal <span class="math" data-tex="\(H^s\)">\(H^s\)</span>, the exact mild equation for the already constructed original semigroup is</p>
+<span class="math math-display" data-tex="\[
+S(t)f=E(t)f+\int_0^t E(t-r)\mathbb P\operatorname{div}
+\mathcal F(S(r)f)\,dr.
+\tag{SM7}
+\]">\[
+S(t)f=E(t)f+\int_0^t E(t-r)\mathbb P\operatorname{div}
+\mathcal F(S(r)f)\,dr.
+\tag{SM7}
+\]</span>
+<p>First prove it on <span class="math" data-tex="\(X_\sigma\)">\(X_\sigma\)</span> by differentiating <span class="math" data-tex="\(E(t-r)S(r)f\)">\(E(t-r)S(r)f\)</span>. Both full generators have that same domain, and their graph norms are equivalent by lesson34 EX1–EX3. The derivative is the two original convection terms, represented by SM2. For arbitrary solenoidal <span class="math" data-tex="\(L^2\)">\(L^2\)</span> data use domain density, the semigroup bound, SM3 at order zero, and the integrable second line of SM6. This passes both sides to the limit in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Thus SM7 is established before using it to prove further regularity.</p>
+<p>For each actual real <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>, define the finite constants</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_s=\frac1{\sqrt{2e\nu}}
+\max\{2A_s e^{c_s},\ \pi A_{s+1}e^{c_{s+1}}\},\\
+h_s=\begin{cases}\min\{1,(4K_s)^{-2}\},&amp;K_s&gt;0,\\1,&amp;K_s=0,\end{cases}
+\qquad
+B_s=e^{c_s}\left(1+\frac{e^{1/2}}{\sqrt{2e\nu}}\right),
+\qquad M_s=\frac43 B_s.
+\end{gathered}
+\tag{SM8}
+\]">\[
+\begin{gathered}
+K_s=\frac1{\sqrt{2e\nu}}
+\max\{2A_s e^{c_s},\ \pi A_{s+1}e^{c_{s+1}}\},\\
+h_s=\begin{cases}\min\{1,(4K_s)^{-2}\},&amp;K_s&gt;0,\\1,&amp;K_s=0,\end{cases}
+\qquad
+B_s=e^{c_s}\left(1+\frac{e^{1/2}}{\sqrt{2e\nu}}\right),
+\qquad M_s=\frac43 B_s.
+\end{gathered}
+\tag{SM8}
+\]</span>
+<p>Let <span class="math" data-tex="\(Y_s\)">\(Y_s\)</span> consist of solenoidal fields continuous from <span class="math" data-tex="\([0,h_s]\)">\([0,h_s]\)</span> into <span class="math" data-tex="\(H^s\)">\(H^s\)</span>, continuous from <span class="math" data-tex="\((0,h_s]\)">\((0,h_s]\)</span> into <span class="math" data-tex="\(H^{s+1}\)">\(H^{s+1}\)</span>, with finite norm</p>
+<span class="math math-display" data-tex="\[
+\|u\|_{Y_s}=\max\left\{
+\sup_{0\leq t\leq h_s}\|u(t)\|_{H^s},\quad
+\sup_{0&lt;t\leq h_s}\sqrt t\,\|u(t)\|_{H^{s+1}}
+\right\}.
+\tag{SM9}
+\]">\[
+\|u\|_{Y_s}=\max\left\{
+\sup_{0\leq t\leq h_s}\|u(t)\|_{H^s},\quad
+\sup_{0&lt;t\leq h_s}\sqrt t\,\|u(t)\|_{H^{s+1}}
+\right\}.
+\tag{SM9}
+\]</span>
+<p>It is complete: a Cauchy sequence converges uniformly in the first space and uniformly in the weighted second norm; on every closed positive-time interval the latter is ordinary uniform convergence. The two limits agree in <span class="math" data-tex="\(H^s\)">\(H^s\)</span>, and both continuity properties and the bound pass to the limit.</p>
+<p>The free curve <span class="math" data-tex="\(E(t)f\)">\(E(t)f\)</span> has <span class="math" data-tex="\(Y_s\)">\(Y_s\)</span> norm at most <span class="math" data-tex="\(B_s\|f\|_{H^s}\)">\(B_s\|f\|_{H^s}\)</span> by SM6 and <span class="math" data-tex="\(0&lt;t\leq h_s\leq1\)">\(0&lt;t\leq h_s\leq1\)</span>. Let <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> denote the integral operator in SM7. Its two components have bounds</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sup_{t\leq h_s}\|\mathcal Vu(t)\|_{H^s}
+&amp;\leq\frac{2A_s e^{c_s}\sqrt{h_s}}{\sqrt{2e\nu}}
+\sup_{t\leq h_s}\|u(t)\|_{H^s},\\
+\sup_{0&lt;t\leq h_s}\sqrt t\,\|\mathcal Vu(t)\|_{H^{s+1}}
+&amp;\leq\frac{\pi A_{s+1}e^{c_{s+1}}\sqrt{h_s}}{\sqrt{2e\nu}}
+\sup_{0&lt;t\leq h_s}\sqrt t\,\|u(t)\|_{H^{s+1}}.
+\end{aligned}
+\tag{SM10}
+\]">\[
+\begin{aligned}
+\sup_{t\leq h_s}\|\mathcal Vu(t)\|_{H^s}
+&amp;\leq\frac{2A_s e^{c_s}\sqrt{h_s}}{\sqrt{2e\nu}}
+\sup_{t\leq h_s}\|u(t)\|_{H^s},\\
+\sup_{0&lt;t\leq h_s}\sqrt t\,\|\mathcal Vu(t)\|_{H^{s+1}}
+&amp;\leq\frac{\pi A_{s+1}e^{c_{s+1}}\sqrt{h_s}}{\sqrt{2e\nu}}
+\sup_{0&lt;t\leq h_s}\sqrt t\,\|u(t)\|_{H^{s+1}}.
+\end{aligned}
+\tag{SM10}
+\]</span>
+<p>The first integral is <span class="math" data-tex="\(\int_0^t(t-r)^{-1/2}dr=2\sqrt t\)">\(\int_0^t(t-r)^{-1/2}dr=2\sqrt t\)</span>. In the second retain both endpoint factors:
+<span class="math" data-tex="\(\int_0^t(t-r)^{-1/2}r^{-1/2}dr=\pi\)">\(\int_0^t(t-r)^{-1/2}r^{-1/2}dr=\pi\)</span>, by <span class="math" data-tex="\(r=t\sin^2\theta\)">\(r=t\sin^2\theta\)</span>. The remaining outside factor is <span class="math" data-tex="\(\sqrt t\)">\(\sqrt t\)</span>, giving the stated bound. For positive-time continuity, truncate a short interval at each singular endpoint. On the remaining compact integration interval, approximate the continuous input by step functions and use strong continuity of the free semigroup and its Fourier maps. The two discarded tails tend uniformly to zero near each positive time by the same integrable powers. At zero the first line tends to zero. Thus the integral lies in exactly <span class="math" data-tex="\(Y_s\)">\(Y_s\)</span>.</p>
+<p>Equations SM8–SM10 give <span class="math" data-tex="\(\|\mathcal V\|_{Y_s\to Y_s}\leq1/4\)">\(\|\mathcal V\|_{Y_s\to Y_s}\leq1/4\)</span>. Its geometric series constructs the unique solution of SM7 in <span class="math" data-tex="\(Y_s\)">\(Y_s\)</span>, with norm at most <span class="math" data-tex="\(M_s\|f\|_{H^s}\)">\(M_s\|f\|_{H^s}\)</span>. It is the original <span class="math" data-tex="\(S(t)f\)">\(S(t)f\)</span>: both solve SM7 in continuous <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, where the same order-zero estimate gives uniqueness on sufficiently short intervals, and successive such intervals cover <span class="math" data-tex="\([0,h_s]\)">\([0,h_s]\)</span>. We have proved</p>
+<span class="math math-display" data-tex="\[
+\|S(t)f\|_{H^s}\leq M_s\|f\|_{H^s},\qquad
+\|S(t)f\|_{H^{s+1}}\leq M_s t^{-1/2}\|f\|_{H^s},
+\quad0&lt;t\leq h_s.
+\tag{SM11}
+\]">\[
+\|S(t)f\|_{H^s}\leq M_s\|f\|_{H^s},\qquad
+\|S(t)f\|_{H^{s+1}}\leq M_s t^{-1/2}\|f\|_{H^s},
+\quad0&lt;t\leq h_s.
+\tag{SM11}
+\]</span>
+<p>This construction works for every real <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>. It proves actual fractional input regularity directly; an unproved interpolation theorem has not been used to extend an integer argument.</p>
+<h2 id="sm4-prove-every-finite-smoothing-gain-and-the-exact-large-time-margin">SM4. Prove every finite smoothing gain and the exact large-time margin</h2>
+<p>For <span class="math" data-tex="\(0\leq\theta\leq1\)">\(0\leq\theta\leq1\)</span>, Hölder applied to the complete Fourier integral in SM1 gives</p>
+<span class="math math-display" data-tex="\[
+\|g\|_{H^{s+\theta}}
+\leq\|g\|_{H^s}^{1-\theta}\|g\|_{H^{s+1}}^\theta.
+\tag{SM12}
+\]">\[
+\|g\|_{H^{s+\theta}}
+\leq\|g\|_{H^s}^{1-\theta}\|g\|_{H^{s+1}}^\theta.
+\tag{SM12}
+\]</span>
+<p>Indeed the integrand is the product of the two weighted squared integrands raised to powers <span class="math" data-tex="\(1-\theta\)">\(1-\theta\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>; their powers of the Fourier coefficient and the factor <span class="math" data-tex="\((2\pi)^{-3}\)">\((2\pi)^{-3}\)</span> agree exactly. The endpoints follow directly. Combined with SM11 this gives the gain <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with bound <span class="math" data-tex="\(M_st^{-\theta/2}\)">\(M_st^{-\theta/2}\)</span>.</p>
+<p>Take any real <span class="math" data-tex="\(\sigma_2\geq\sigma_1\geq0\)">\(\sigma_2\geq\sigma_1\geq0\)</span>, write <span class="math" data-tex="\(d=\sigma_2-\sigma_1=n+\theta\)">\(d=\sigma_2-\sigma_1=n+\theta\)</span> with integer <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span> and <span class="math" data-tex="\(0\leq\theta&lt;1\)">\(0\leq\theta&lt;1\)</span>, and put <span class="math" data-tex="\(\gamma=d/2\)">\(\gamma=d/2\)</span>. If <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, use <span class="math" data-tex="\(n\)">\(n\)</span> gains of one and, if needed, one final gain <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Let <span class="math" data-tex="\(m\)">\(m\)</span> be this number of steps and let <span class="math" data-tex="\(s_j\)">\(s_j\)</span> be their successive input orders. For <span class="math" data-tex="\(t/m\leq\min_j h_{s_j}\)">\(t/m\leq\min_j h_{s_j}\)</span>, the semigroup law and SM11–SM12 give</p>
+<span class="math math-display" data-tex="\[
+\|S(t)f\|_{H^{\sigma_2}}
+\leq\left(m^\gamma\prod_{j=1}^m M_{s_j}\right)
+t^{-\gamma}\|f\|_{H^{\sigma_1}}.
+\tag{SM13}
+\]">\[
+\|S(t)f\|_{H^{\sigma_2}}
+\leq\left(m^\gamma\prod_{j=1}^m M_{s_j}\right)
+t^{-\gamma}\|f\|_{H^{\sigma_1}}.
+\tag{SM13}
+\]</span>
+<p>Every factor is finite and has the explicit original-parameter formula SM8. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, use the first line of SM11. This proves the bound near zero.</p>
+<p>To cover <span class="math" data-tex="\(0&lt;t\leq2\)">\(0&lt;t\leq2\)</span>, choose a fixed positive <span class="math" data-tex="\(t_*\leq1\)">\(t_*\leq1\)</span> within the just-proved short interval. For <span class="math" data-tex="\(t\geq t_*\)">\(t\geq t_*\)</span>, apply the smoothing estimate at <span class="math" data-tex="\(t_*/2\)">\(t_*/2\)</span> and then act on its output with <span class="math" data-tex="\(S(t-t_*/2)\)">\(S(t-t_*/2)\)</span> in <span class="math" data-tex="\(H^{\sigma_2}\)">\(H^{\sigma_2}\)</span>. Break that remaining interval into at most <span class="math" data-tex="\(\lceil2/h_{\sigma_2}\rceil+1\)">\(\lceil2/h_{\sigma_2}\rceil+1\)</span> steps of length at most <span class="math" data-tex="\(h_{\sigma_2}\)">\(h_{\sigma_2}\)</span>. Its norm is at most <span class="math" data-tex="\(M_{\sigma_2}^{\lceil2/h_{\sigma_2}\rceil+1}\)">\(M_{\sigma_2}^{\lceil2/h_{\sigma_2}\rceil+1}\)</span>, using <span class="math" data-tex="\(M_{\sigma_2}&gt;1\)">\(M_{\sigma_2}&gt;1\)</span>. Since <span class="math" data-tex="\(t^\gamma\leq2^\gamma\)">\(t^\gamma\leq2^\gamma\)</span>, multiplying this finite bound by <span class="math" data-tex="\(2^\gamma(t_*/2)^{-\gamma}\)">\(2^\gamma(t_*/2)^{-\gamma}\)</span> supplies a finite constant for the desired form. Together with the near-zero bound this constructs <span class="math" data-tex="\(C_{\sigma_1,\sigma_2}\)">\(C_{\sigma_1,\sigma_2}\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\|S(t)f\|_{H^{\sigma_2}}\leq
+C_{\sigma_1,\sigma_2}t^{-\gamma}\|f\|_{H^{\sigma_1}},
+\qquad0&lt;t\leq2.
+\tag{SM14}
+\]">\[
+\|S(t)f\|_{H^{\sigma_2}}\leq
+C_{\sigma_1,\sigma_2}t^{-\gamma}\|f\|_{H^{\sigma_1}},
+\qquad0&lt;t\leq2.
+\tag{SM14}
+\]</span>
+<p>Now retain the attained positive spectral bound <span class="math" data-tex="\(a\)">\(a\)</span> and the actual growth constants <span class="math" data-tex="\(M(\delta)\)">\(M(\delta)\)</span> proved in SG16–SG17. For <span class="math" data-tex="\(t\geq2\)">\(t\geq2\)</span>, apply SM14 at time one from <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to <span class="math" data-tex="\(H^{\sigma_2}\)">\(H^{\sigma_2}\)</span>, after the original semigroup has run for <span class="math" data-tex="\(t-1\)">\(t-1\)</span>. With the strictly smaller exponential margin <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|S(t)f\|_{H^{\sigma_2}}
+\leq C_{0,\sigma_2}M(\delta/2)
+e^{(a+\delta/2)(t-1)}\|f\|_{H^{\sigma_1}}.
+\tag{SM15}
+\]">\[
+\|S(t)f\|_{H^{\sigma_2}}
+\leq C_{0,\sigma_2}M(\delta/2)
+e^{(a+\delta/2)(t-1)}\|f\|_{H^{\sigma_1}}.
+\tag{SM15}
+\]</span>
+<p>The original inhomogeneous norm contains the entire <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm, which justifies the input inequality. For <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>, direct differentiation gives
+<span class="math" data-tex="\(\sup_{t&gt;0}t^\gamma e^{-\delta t/2}=(2\gamma/(e\delta))^\gamma\)">\(\sup_{t&gt;0}t^\gamma e^{-\delta t/2}=(2\gamma/(e\delta))^\gamma\)</span>; for <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span> that supremum is one. Thus SM14–SM15 prove</p>
+<span class="math math-display" data-tex="\[
+\|S(t)f\|_{H^{\sigma_2}}\leq
+M(\sigma_1,\sigma_2,\delta)t^{-(\sigma_2-\sigma_1)/2}
+e^{(a+\delta)t}\|f\|_{H^{\sigma_1}},\qquad t&gt;0,
+\tag{SM16}
+\]">\[
+\|S(t)f\|_{H^{\sigma_2}}\leq
+M(\sigma_1,\sigma_2,\delta)t^{-(\sigma_2-\sigma_1)/2}
+e^{(a+\delta)t}\|f\|_{H^{\sigma_1}},\qquad t&gt;0,
+\tag{SM16}
+\]</span>
+<p>where one may take the maximum of <span class="math" data-tex="\(C_{\sigma_1,\sigma_2}\)">\(C_{\sigma_1,\sigma_2}\)</span> and
+<span class="math" data-tex="\(C_{0,\sigma_2}M(\delta/2)e^{-(a+\delta/2)}(2\gamma/(e\delta))^\gamma\)">\(C_{0,\sigma_2}M(\delta/2)e^{-(a+\delta/2)}(2\gamma/(e\delta))^\gamma\)</span>, using the stated value one when <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span>. The positive <span class="math" data-tex="\(a+\delta\)">\(a+\delta\)</span> makes the short-time bound imply the desired one immediately.</p>
+<p>The smaller intermediate margin matters. Source2611 has no negative power of time, so combining it with the small-time estimate at exactly the same exponential margin does not directly give the stronger displayed source2555 at all large times. Using <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span> and the exact polynomial maximum above supplies the complete argument while retaining the requested final margin.</p>
+<h2 id="sm5-receive-the-actual-eigenmode-at-every-order">SM5. Receive the actual eigenmode at every order</h2>
+<p>Let <span class="math" data-tex="\(\eta\ne0\)">\(\eta\ne0\)</span> be the actual maximally unstable eigenvector from SG16, with <span class="math" data-tex="\(\lambda=a+ib_0\)">\(\lambda=a+ib_0\)</span>. It is initially in the full domain <span class="math" data-tex="\(X_\sigma\)">\(X_\sigma\)</span>. For every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\eta=e^{-\lambda t}S(t)\eta.
+\tag{SM17}
+\]">\[
+\eta=e^{-\lambda t}S(t)\eta.
+\tag{SM17}
+\]</span>
+<p>Taking <span class="math" data-tex="\(\sigma_1=0\)">\(\sigma_1=0\)</span> and arbitrary <span class="math" data-tex="\(\sigma_2\)">\(\sigma_2\)</span> in SM16 proves membership in every <span class="math" data-tex="\(H^{\sigma_2}\)">\(H^{\sigma_2}\)</span>. Its original drift also has every such order: the eigen-equation retains</p>
+<span class="math math-display" data-tex="\[
+\frac12x\cdot\nabla\eta
+=\left(\lambda-\frac12\right)\eta-\nu\Delta\eta
++\beta\mathbb P(b\cdot\nabla\eta+\eta\cdot\nabla b).
+\tag{SM18}
+\]">\[
+\frac12x\cdot\nabla\eta
+=\left(\lambda-\frac12\right)\eta-\nu\Delta\eta
++\beta\mathbb P(b\cdot\nabla\eta+\eta\cdot\nabla b).
+\tag{SM18}
+\]</span>
+<p>All terms on the right are in <span class="math" data-tex="\(H^s\)">\(H^s\)</span> for each <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>, by the just-proved higher regularity and SM3, or by its direct coefficient multiplication proof applied to <span class="math" data-tex="\(Db\)">\(Db\)</span>. Thus the full equation, original viscosity, amplitude and drift remain valid at all orders. The real-mode Gram formulas SG18–SG20 now apply to every one of these Sobolev norms, for all positive and negative similarity times. This completes the smoothing input required for the actual nonlinear fixed-point construction; that construction is the next calculation.</p>
+<h2 id="sm6-retain-the-symmetry-restriction-at-every-sobolev-order">SM6. Retain the symmetry restriction at every Sobolev order</h2>
+<p>SG21–SG23 prove that the free evolution, full evolution, original coefficient map and projected convection preserve the closed space of axisymmetric solenoidal velocities with no swirl. The construction SM7–SM11 therefore stays in that space: every term of its convergent integral series is fixed by the same rotations and reflection. Its intersection with each Sobolev space is closed because those symmetry maps are isometries. All constants in SM3–SM14 remain valid on the restriction.</p>
+<p>For the long-time bound use the actual restricted spectral value and growth constant in SG22 in place of the full-space pair in SM15–SM16. The same strictly smaller intermediate margin and polynomial maximum prove every restricted smoothing map. Finally SM17–SM18 applied to the actual restricted eigenvector prove its all-order regularity and full spatial drift. The real-mode Gram bounds then hold in every restricted Sobolev norm. Consequently both the full-space construction and the source's symmetry-preserving construction have their complete growth and smoothing inputs; no identity between their two maximal spectral values is needed.</p>
+<h2 id="two-pictures-of-the-growth-maps-and-real-modes">Two pictures of the growth maps and real modes</h2>
+<p><img src="assets/NS-FLUID-35/original-velocity-spectral-growth-C137EE74406E2043645DFE1A5B607D19EE952209C534939268BF63E0804B0795.png" alt="The generator and evolution spectral spaces with the original free boundary" class="course-figure" width="2240" height="1200" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-velocity-spectral-growth" data-asset-sha256="C137EE74406E2043645DFE1A5B607D19EE952209C534939268BF63E0804B0795"></p>
+<p>SG1–SG17 prove the maps in this schematic. The finite spectral space lies
+in the full original generator domain, and its evolution is the exact
+matrix exponential of that generator. The displayed auxiliary time0.8,
+cutoff0.1 and pair0.7 plus or minus0.8i are illustrative positions;
+they are not computed fluid eigenvalues. The actual field, viscosity and
+amplitude are retained in the proof. Human comparison: Albritton–Brué–Colombo,
+original main.tex2487–2529. The
+<a href="assets/original-velocity-growth-and-smoothing.py">reproducible figure source</a>
+is included.</p>
+<p><img src="assets/NS-FLUID-35/original-real-mode-and-jordan-growth-5934F1AA27BA199CEF4506E8694917A4D657CEFB484AF6774C8E69A64B7CAC69.png" alt="Exact real-mode oscillation and full Jordan growth with the best exponential prefactor" class="course-figure" width="2240" height="1040" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-real-mode-and-jordan-growth" data-asset-sha256="5934F1AA27BA199CEF4506E8694917A4D657CEFB484AF6774C8E69A64B7CAC69"></p>
+<p>Exercises1–2 prove the exact finite-dimensional formulas shown here.
+The real orbit keeps amplitude1.5, growth0.4 and frequency1.3.
+The Jordan block keeps its off-diagonal modulus0.8 and margin0.2.
+Every curve is a numerical evaluation of those complete formulas; the
+two matrices are illustrative examples, with no assertion that either
+is a fluid discretization. The oscillating norm illustrates the source
+correction at main.tex2632. The growth curve shows why a positive
+exponential margin can be necessary even when the spectral and growth
+bounds agree. <a href="assets/original-velocity-growth-data.json">All942 samples</a>
+and their <a href="assets/original-velocity-growth-and-smoothing.py">source</a>
+are included.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<h3 id="exercise-1-keep-the-full-growth-of-an-actual-jordan-block">Exercise 1. Keep the full growth of an actual Jordan block</h3>
+<p>For real <span class="math" data-tex="\(a&gt;0,b\)">\(a&gt;0,b\)</span>, and an actual complex <span class="math" data-tex="\(\kappa\ne0\)">\(\kappa\ne0\)</span>, calculate the exact operator norm of the matrix evolution with
+<span class="math" data-tex="\(J=\begin{pmatrix}a+ib&amp;\kappa\\0&amp;a+ib\end{pmatrix}\)">\(J=\begin{pmatrix}a+ib&amp;\kappa\\0&amp;a+ib\end{pmatrix}\)</span>.
+Find its best prefactor at each exponential margin <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>.</p>
+<p><strong>Solution.</strong> The off-diagonal part has square zero, so the full exponential and its norm are</p>
+<span class="math math-display" data-tex="\[
+e^{tJ}=e^{(a+ib)t}\begin{pmatrix}1&amp;\kappa t\\0&amp;1\end{pmatrix},\qquad
+\|e^{tJ}\|=e^{at}\frac{\sqrt{4+|\kappa|^2t^2}+|\kappa|t}{2},
+\quad t\geq0.
+\tag{EX1}
+\]">\[
+e^{tJ}=e^{(a+ib)t}\begin{pmatrix}1&amp;\kappa t\\0&amp;1\end{pmatrix},\qquad
+\|e^{tJ}\|=e^{at}\frac{\sqrt{4+|\kappa|^2t^2}+|\kappa|t}{2},
+\quad t\geq0.
+\tag{EX1}
+\]</span>
+<p>Indeed the Hermitian product of the triangular matrix with its adjoint has trace <span class="math" data-tex="\(2+|\kappa|^2t^2\)">\(2+|\kappa|^2t^2\)</span> and determinant one. Its larger eigenvalue is <span class="math" data-tex="\((2+|\kappa|^2t^2+|\kappa|t\sqrt{4+|\kappa|^2t^2})/2\)">\((2+|\kappa|^2t^2+|\kappa|t\sqrt{4+|\kappa|^2t^2})/2\)</span>. Its square root is exactly the displayed factor. This proves the full norm, including its nonorthogonal contribution.</p>
+<p>Set <span class="math" data-tex="\(k=|\kappa|\)">\(k=|\kappa|\)</span>. The logarithmic derivative of the last factor is <span class="math" data-tex="\(k/\sqrt{4+k^2t^2}\)">\(k/\sqrt{4+k^2t^2}\)</span>. Thus the smallest constant in <span class="math" data-tex="\(\|e^{tJ}\|\leq M_\delta e^{(a+\delta)t}\)">\(\|e^{tJ}\|\leq M_\delta e^{(a+\delta)t}\)</span> for every <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_\delta=1\quad\text{if }\delta\geq k/2,\\
+t_* =\sqrt{\delta^{-2}-4/k^2},\qquad
+M_\delta=e^{-\delta t_*}
+\frac{\sqrt{4+k^2t_*^2}+kt_*}{2}
+\quad\text{if }0&lt;\delta&lt;k/2.
+\end{gathered}
+\tag{EX2}
+\]">\[
+\begin{gathered}
+M_\delta=1\quad\text{if }\delta\geq k/2,\\
+t_* =\sqrt{\delta^{-2}-4/k^2},\qquad
+M_\delta=e^{-\delta t_*}
+\frac{\sqrt{4+k^2t_*^2}+kt_*}{2}
+\quad\text{if }0&lt;\delta&lt;k/2.
+\end{gathered}
+\tag{EX2}
+\]</span>
+<p>The logarithmic derivative minus <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is decreasing, so these are its global maxima on the entire nonnegative time axis. At margin zero the factor grows without bound, for example by testing the original second basis vector. Nevertheless the infimum of permissible exponential growth exponents is exactly <span class="math" data-tex="\(a\)">\(a\)</span>. This explicit finite-dimensional example explains why SG17 retains an arbitrary positive margin and its prefactor. It does not assert that the actual fluid generator has this Jordan block.</p>
+<h3 id="exercise-2-compute-the-whole-oscillating-norm-of-a-real-mode">Exercise 2. Compute the whole oscillating norm of a real mode</h3>
+<p>Let <span class="math" data-tex="\(a&gt;0,b\ne0,c\ne0\)">\(a&gt;0,b\ne0,c\ne0\)</span> be real. For
+<span class="math" data-tex="\(A=\begin{pmatrix}a&amp;b/2\\-2b&amp;a\end{pmatrix}\)">\(A=\begin{pmatrix}a&amp;b/2\\-2b&amp;a\end{pmatrix}\)</span>
+and <span class="math" data-tex="\(\eta=c(1,2i)^T\)">\(\eta=c(1,2i)^T\)</span>, calculate the exact real orbit and all its norm extrema without rescaling <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p><strong>Solution.</strong> Matrix multiplication gives <span class="math" data-tex="\(A\eta=(a+ib)\eta\)">\(A\eta=(a+ib)\eta\)</span>, with actual complex norm <span class="math" data-tex="\(\|\eta\|=\sqrt5|c|\)">\(\|\eta\|=\sqrt5|c|\)</span>. Its real orbit is</p>
+<span class="math math-display" data-tex="\[
+v(\tau)=ce^{a\tau}\begin{pmatrix}\cos(b\tau)\\ -2\sin(b\tau)\end{pmatrix},\qquad
+\|v(\tau)\|^2=c^2e^{2a\tau}(\cos^2(b\tau)+4\sin^2(b\tau)).
+\tag{EX3}
+\]">\[
+v(\tau)=ce^{a\tau}\begin{pmatrix}\cos(b\tau)\\ -2\sin(b\tau)\end{pmatrix},\qquad
+\|v(\tau)\|^2=c^2e^{2a\tau}(\cos^2(b\tau)+4\sin^2(b\tau)).
+\tag{EX3}
+\]</span>
+<p>Direct differentiation also verifies <span class="math" data-tex="\(v&#x27;=Av\)">\(v&#x27;=Av\)</span>. The original Gram entries are <span class="math" data-tex="\(p=c^2,q=4c^2,r=0\)">\(p=c^2,q=4c^2,r=0\)</span>, so SG19 gives <span class="math" data-tex="\(m_-=c^2,m_+=4c^2\)">\(m_-=c^2,m_+=4c^2\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+|c|e^{a\tau}\leq\|v(\tau)\|\leq2|c|e^{a\tau},\qquad \tau\in\mathbb R.
+\tag{EX4}
+\]">\[
+|c|e^{a\tau}\leq\|v(\tau)\|\leq2|c|e^{a\tau},\qquad \tau\in\mathbb R.
+\tag{EX4}
+\]</span>
+<p>Equality holds at <span class="math" data-tex="\(b\tau\in\pi\mathbb Z\)">\(b\tau\in\pi\mathbb Z\)</span> for the lower bound and at <span class="math" data-tex="\(b\tau\in\pi/2+\pi\mathbb Z\)">\(b\tau\in\pi/2+\pi\mathbb Z\)</span> for the upper bound. The factor multiplying <span class="math" data-tex="\(e^{a\tau}\)">\(e^{a\tau}\)</span> is not constant. All original amplitudes and both phase components remain in the formula; taking the real part does not preserve the complex norm. This is an exact illustration of the Gram calculation, with no claim that this matrix is a fluid discretization.</p>
+<h3 id="exercise-3-construct-the-original-compact-force-and-its-exact-energy">Exercise 3. Construct the original compact force and its exact energy</h3>
+<p>For the actual nonzero compact smooth background <span class="math" data-tex="\(b=\bar U_\ell\)">\(b=\bar U_\ell\)</span>, keep its original <span class="math" data-tex="\(\beta&gt;0,\nu&gt;0\)">\(\beta&gt;0,\nu&gt;0\)</span>. Construct the source's physical background force with every term, prove its exact energy balance from zero, and determine the full mixed-norm thresholds.</p>
+<p><strong>Solution.</strong> Retain the unprojected compact profile from source main.tex556, with the original coefficients restored:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bar U=\beta b,\qquad
+F=-\frac\beta2(b+\xi\cdot\nabla b)-\nu\beta\Delta b
++\beta^2 b\cdot\nabla b,\\
+\bar u(x,t)=\beta t^{-1/2}b(x/\sqrt t),\qquad
+f(x,t)=t^{-3/2}F(x/\sqrt t),\qquad \bar p=0,\quad t&gt;0.
+\end{gathered}
+\tag{EX5}
+\]">\[
+\begin{gathered}
+\bar U=\beta b,\qquad
+F=-\frac\beta2(b+\xi\cdot\nabla b)-\nu\beta\Delta b
++\beta^2 b\cdot\nabla b,\\
+\bar u(x,t)=\beta t^{-1/2}b(x/\sqrt t),\qquad
+f(x,t)=t^{-3/2}F(x/\sqrt t),\qquad \bar p=0,\quad t&gt;0.
+\end{gathered}
+\tag{EX5}
+\]</span>
+<p>All profiles are smooth and supported in the original compact torus. Differentiation of <span class="math" data-tex="\(\xi=x/\sqrt t\)">\(\xi=x/\sqrt t\)</span> gives <span class="math" data-tex="\(\partial_t\xi=-\xi/(2t)\)">\(\partial_t\xi=-\xi/(2t)\)</span>; every term in the physical equation has the full factor <span class="math" data-tex="\(t^{-3/2}\)">\(t^{-3/2}\)</span>. Thus <span class="math" data-tex="\(\partial_t\bar u-\nu\Delta\bar u+\bar u\cdot\nabla\bar u+\nabla\bar p=f\)">\(\partial_t\bar u-\nu\Delta\bar u+\bar u\cdot\nabla\bar u+\nabla\bar p=f\)</span>, with <span class="math" data-tex="\(\operatorname{div}\bar u=0\)">\(\operatorname{div}\bar u=0\)</span>. The physical supports are contained in the actual dilated torus <span class="math" data-tex="\(\sqrt t\,\overline Q_\ell\)">\(\sqrt t\,\overline Q_\ell\)</span>. The arbitrary spatial pressure constant can also be any function of time; zero is the specified representative here.</p>
+<p>The force is not assumed solenoidal. Its exact divergence is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{div}F=\beta^2\sum_{i,j=1}^3
+(\partial_i b_j)(\partial_j b_i).
+\tag{EX6}
+\]">\[
+\operatorname{div}F=\beta^2\sum_{i,j=1}^3
+(\partial_i b_j)(\partial_j b_i).
+\tag{EX6}
+\]</span>
+<p>The linear terms have zero divergence by the full product rule and <span class="math" data-tex="\(\operatorname{div}b=0\)">\(\operatorname{div}b=0\)</span>. If one also wants the projected force, its exact map is <span class="math" data-tex="\(F_\sigma=F-\nabla\Delta^{-1}\operatorname{div}F\)">\(F_\sigma=F-\nabla\Delta^{-1}\operatorname{div}F\)</span> and the corresponding pressure is <span class="math" data-tex="\(P_\sigma=-\Delta^{-1}\operatorname{div}F\)">\(P_\sigma=-\Delta^{-1}\operatorname{div}F\)</span>, up to a constant. Then <span class="math" data-tex="\(F+\nabla P_\sigma=F_\sigma\)">\(F+\nabla P_\sigma=F_\sigma\)</span>. The source's compact force in EX5 remains the working force; the projection generally has an exterior tail.</p>
+<p>Compact integration by parts, including the full dimension-three drift contribution, gives</p>
+<span class="math math-display" data-tex="\[
+\int F\cdot\beta b\,d\xi
+=\frac{\beta^2}{4}\|b\|_2^2+\nu\beta^2\|\nabla b\|_2^2&gt;0.
+\tag{EX7}
+\]">\[
+\int F\cdot\beta b\,d\xi
+=\frac{\beta^2}{4}\|b\|_2^2+\nu\beta^2\|\nabla b\|_2^2&gt;0.
+\tag{EX7}
+\]</span>
+<p>The convection integral vanishes by zero divergence. The two drift pieces contribute <span class="math" data-tex="\(-\beta^2\|b\|_2^2/2\)">\(-\beta^2\|b\|_2^2/2\)</span> and <span class="math" data-tex="\(+3\beta^2\|b\|_2^2/4\)">\(+3\beta^2\|b\|_2^2/4\)</span>; diffusion contributes its positive full gradient norm. In particular <span class="math" data-tex="\(F\ne0\)">\(F\ne0\)</span>. The complete physical Jacobian now yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac12\|\bar u(t)\|_2^2&amp;=\frac{\beta^2}{2}\sqrt t\,\|b\|_2^2,\\
+\nu\int_0^t\|\nabla\bar u(s)\|_2^2ds
+&amp;=2\nu\beta^2\sqrt t\,\|\nabla b\|_2^2,\\
+\int_0^t\!\int f\cdot\bar u\,dx\,ds
+&amp;=2\sqrt t\left(\frac{\beta^2}{4}\|b\|_2^2
++\nu\beta^2\|\nabla b\|_2^2\right).
+\end{aligned}
+\tag{EX8}
+\]">\[
+\begin{aligned}
+\frac12\|\bar u(t)\|_2^2&amp;=\frac{\beta^2}{2}\sqrt t\,\|b\|_2^2,\\
+\nu\int_0^t\|\nabla\bar u(s)\|_2^2ds
+&amp;=2\nu\beta^2\sqrt t\,\|\nabla b\|_2^2,\\
+\int_0^t\!\int f\cdot\bar u\,dx\,ds
+&amp;=2\sqrt t\left(\frac{\beta^2}{4}\|b\|_2^2
++\nu\beta^2\|\nabla b\|_2^2\right).
+\end{aligned}
+\tag{EX8}
+\]</span>
+<p>Thus the energy identity holds from the actual zero initial trace, and both the full energy norm and time-integrated gradient are finite.</p>
+<p>For <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>, every nonnegative integer <span class="math" data-tex="\(k\)">\(k\)</span>, and the convention <span class="math" data-tex="\(1/\infty=0\)">\(1/\infty=0\)</span>, change variables in the original norms to obtain</p>
+<span class="math math-display" data-tex="\[
+\|\nabla^k\bar u(t)\|_p
+=\beta t^{-1/2-k/2+3/(2p)}\|\nabla^k b\|_p,\qquad
+\|\nabla^k f(t)\|_p
+=t^{-3/2-k/2+3/(2p)}\|\nabla^k F\|_p.
+\tag{EX9}
+\]">\[
+\|\nabla^k\bar u(t)\|_p
+=\beta t^{-1/2-k/2+3/(2p)}\|\nabla^k b\|_p,\qquad
+\|\nabla^k f(t)\|_p
+=t^{-3/2-k/2+3/(2p)}\|\nabla^k F\|_p.
+\tag{EX9}
+\]</span>
+<p>For zeroth order and finite <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, nonvanishing of the profiles makes the following thresholds exact on <span class="math" data-tex="\((0,T)\)">\((0,T)\)</span>, <span class="math" data-tex="\(0&lt;T&lt;\infty\)">\(0&lt;T&lt;\infty\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\bar u\in L^q_tL^p_x\ \Longleftrightarrow\ \frac3p+\frac2q&gt;1,
+\qquad
+f\in L^q_tL^p_x\ \Longleftrightarrow\ \frac3p+\frac2q&gt;3.
+\tag{EX10}
+\]">\[
+\bar u\in L^q_tL^p_x\ \Longleftrightarrow\ \frac3p+\frac2q&gt;1,
+\qquad
+f\in L^q_tL^p_x\ \Longleftrightarrow\ \frac3p+\frac2q&gt;3.
+\tag{EX10}
+\]</span>
+<p>They follow by integrating the indicated power of <span class="math" data-tex="\(t\)">\(t\)</span>; equality gives the divergent integral <span class="math" data-tex="\(\int_0^Tdt/t\)">\(\int_0^Tdt/t\)</span>. For <span class="math" data-tex="\(q=\infty\)">\(q=\infty\)</span>, boundedness instead requires respectively <span class="math" data-tex="\(3/p\geq1\)">\(3/p\geq1\)</span> and <span class="math" data-tex="\(3/p\geq3\)">\(3/p\geq3\)</span>, including equality. In particular <span class="math" data-tex="\(f\in L^1_tL^2_x\)">\(f\in L^1_tL^2_x\)</span>, since its exact time power is <span class="math" data-tex="\(-3/4\)">\(-3/4\)</span>. This proves the actual background and force needed by the nonlinear construction, with no removal of the forcing.</p>
+<h3 id="exercise-4-calculate-the-full-local-kernel-norm-and-its-time-obstruction">Exercise 4. Calculate the full local kernel norm and its time obstruction</h3>
+<p>Calculate the exact square-integrable kernel norm before projection in SG5. Compare its small-time behavior with the integrable operator bound used in SG8.</p>
+<p><strong>Solution.</strong> Keep <span class="math" data-tex="\(q=\nu(e^t-1)\)">\(q=\nu(e^t-1)\)</span>, <span class="math" data-tex="\(\kappa=e^{t/2}\)">\(\kappa=e^{t/2}\)</span>. The full Gaussian identities give</p>
+<span class="math math-display" data-tex="\[
+\int G_q\partial_jG_q\,dy=0,\qquad
+\int\partial_iG_q\partial_jG_q\,dy
+=\frac{\delta_{ij}}{4q}(8\pi q)^{-3/2}.
+\tag{EX11}
+\]">\[
+\int G_q\partial_jG_q\,dy=0,\qquad
+\int\partial_iG_q\partial_jG_q\,dy
+=\frac{\delta_{ij}}{4q}(8\pi q)^{-3/2}.
+\tag{EX11}
+\]</span>
+<p>Oddness proves the first identity and the off-diagonal second terms. The diagonal follows from the exact second moment <span class="math" data-tex="\(\int y_j^2G_q^2dy=q\int G_q^2dy\)">\(\int y_j^2G_q^2dy=q\int G_q^2dy\)</span> and <span class="math" data-tex="\(\partial_jG_q=-y_jG_q/(2q)\)">\(\partial_jG_q=-y_jG_q/(2q)\)</span>. Integrating the full matrix square in SG5, including its cross term before using EX11, yields</p>
+<span class="math math-display" data-tex="\[
+\|A(t)\|_{L^2_{x,y}}^2
+=\beta^2e^t(8\pi q)^{-3/2}
+\left(\frac{3\kappa^2}{4q}\|b\|_2^2+\|Db\|_2^2\right).
+\tag{EX12}
+\]">\[
+\|A(t)\|_{L^2_{x,y}}^2
+=\beta^2e^t(8\pi q)^{-3/2}
+\left(\frac{3\kappa^2}{4q}\|b\|_2^2+\|Db\|_2^2\right).
+\tag{EX12}
+\]</span>
+<p>The factor three counts the original diagonal matrix entries. The cross term is zero by its Gaussian odd integral, not by discarding an interaction. This is the exact norm on the full unprojected vector input. Applying the orthogonal Leray projection and restricting inputs to the solenoidal space can only decrease the operator's Hilbert–Schmidt norm; no equality after those operations is asserted.</p>
+<p>Since the actual <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span> and <span class="math" data-tex="\(q/t\to\nu\)">\(q/t\to\nu\)</span>, this gives</p>
+<span class="math math-display" data-tex="\[
+\|A(t)\|_{L^2_{x,y}}
+\sim\beta(8\pi\nu)^{-3/4}
+\sqrt{\frac3{4\nu}}\|b\|_2\,t^{-5/4}
+\quad(t\downarrow0).
+\tag{EX13}
+\]">\[
+\|A(t)\|_{L^2_{x,y}}
+\sim\beta(8\pi\nu)^{-3/4}
+\sqrt{\frac3{4\nu}}\|b\|_2\,t^{-5/4}
+\quad(t\downarrow0).
+\tag{EX13}
+\]</span>
+<p>Its time integral near zero diverges. The original operator-norm estimate SG3–SG4 has instead the integrable power <span class="math" data-tex="\(t^{-1/2}\)">\(t^{-1/2}\)</span>. Compactness of the evolution difference is therefore proved by the bounded compact kernels away from zero and the exact operator-norm remainder SG8. It does not follow by integrating the stronger kernel norm through its divergent endpoint.</p>
+<h3 id="exercise-5-construct-the-exact-nonlinear-duhamel-receiving-map">Exercise 5. Construct the exact nonlinear Duhamel receiving map</h3>
+<p>Use the actual no-swirl semigroup from SG22 and SM6. Prove the bilinear map needed for the nonlinear correction, including its full time denominator and a half derivative of additional regularity.</p>
+<p><strong>Solution.</strong> Fix any real <span class="math" data-tex="\(N&gt;5/2\)">\(N&gt;5/2\)</span> and put <span class="math" data-tex="\(s=N-1&gt;3/2\)">\(s=N-1&gt;3/2\)</span>. The full Fourier weights obey
+<span class="math" data-tex="\(\langle\xi\rangle^s\leq 2^{\max(s-1,0)}(\langle\eta\rangle^s+\langle\xi-\eta\rangle^s)\)">\(\langle\xi\rangle^s\leq 2^{\max(s-1,0)}(\langle\eta\rangle^s+\langle\xi-\eta\rangle^s)\)</span>, since <span class="math" data-tex="\(\langle\xi\rangle\leq\langle\eta\rangle+\langle\xi-\eta\rangle\)">\(\langle\xi\rangle\leq\langle\eta\rangle+\langle\xi-\eta\rangle\)</span> and the scalar power inequality has exactly that constant. Cauchy–Schwarz gives
+<span class="math" data-tex="\(\|\widehat f\|_1\leq(2\pi)^{3/2}I_s^{1/2}\|f\|_{H^s}\)">\(\|\widehat f\|_1\leq(2\pi)^{3/2}I_s^{1/2}\|f\|_{H^s}\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+I_s=\int_{\mathbb R^3}(1+|\eta|^2)^{-s}d\eta
+\leq4\pi\left(\frac13+\frac1{2s-3}\right),\qquad
+C_s=2^{\max(s-1,0)+1}(2\pi)^{-3/2}I_s^{1/2}.
+\tag{EX14}
+\]">\[
+I_s=\int_{\mathbb R^3}(1+|\eta|^2)^{-s}d\eta
+\leq4\pi\left(\frac13+\frac1{2s-3}\right),\qquad
+C_s=2^{\max(s-1,0)+1}(2\pi)^{-3/2}I_s^{1/2}.
+\tag{EX14}
+\]</span>
+<p>The integral bound splits the complete spherical integral at radius one. The two weighted convolution terms and the full coefficient <span class="math" data-tex="\((2\pi)^{-3}\)">\((2\pi)^{-3}\)</span> therefore prove</p>
+<span class="math math-display" data-tex="\[
+\|f\cdot\nabla g\|_{H^{N-1}}
+\leq C_{N-1}\|f\|_{H^N}\|g\|_{H^N}.
+\tag{EX15}
+\]">\[
+\|f\cdot\nabla g\|_{H^{N-1}}
+\leq C_{N-1}\|f\|_{H^N}\|g\|_{H^N}.
+\tag{EX15}
+\]</span>
+<p>For vector fields, Cauchy–Schwarz over every contracted component bounds the product by the vector norm times the full gradient tensor norm, so the same convolution proof applies. The inequality <span class="math" data-tex="\(\|\nabla g\|_{H^{N-1}}\leq\|g\|_{H^N}\)">\(\|\nabla g\|_{H^{N-1}}\leq\|g\|_{H^N}\)</span> retains the complete inhomogeneous weight. The product is defined by density and the proved bound, rather than assumed from a fractional algebra theorem.</p>
+<p>Let <span class="math" data-tex="\(a=a_{\rm ns}&gt;0\)">\(a=a_{\rm ns}&gt;0\)</span>, retain <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, and write <span class="math" data-tex="\(S_{\rm ns}\)">\(S_{\rm ns}\)</span> for the actual restricted semigroup. For finite real <span class="math" data-tex="\(T\)">\(T\)</span> and an actual weight <span class="math" data-tex="\(m\)">\(m\)</span>, let <span class="math" data-tex="\(X_m\)">\(X_m\)</span> be the Banach space of continuous real no-swirl solenoidal fields on <span class="math" data-tex="\(( -\infty,T]\)">\(( -\infty,T]\)</span> in <span class="math" data-tex="\(H^N\)">\(H^N\)</span>, with norm <span class="math" data-tex="\(\sup_{\tau\leq T}e^{-m\tau}\|f(\tau)\|_{H^N}\)">\(\sup_{\tau\leq T}e^{-m\tau}\|f(\tau)\|_{H^N}\)</span>. Completeness follows by uniform convergence after multiplication by the displayed scalar weight, and ordinary uniform convergence on compact time intervals.</p>
+<p>For actual weights <span class="math" data-tex="\(m,n\)">\(m,n\)</span> with <span class="math" data-tex="\(m+n&gt;a+\delta\)">\(m+n&gt;a+\delta\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\mathcal D(f,g)(\tau)=-\int_{-\infty}^\tau
+S_{\rm ns}(\tau-r)\mathbb P(f(r)\cdot\nabla g(r))\,dr.
+\tag{EX16}
+\]">\[
+\mathcal D(f,g)(\tau)=-\int_{-\infty}^\tau
+S_{\rm ns}(\tau-r)\mathbb P(f(r)\cdot\nabla g(r))\,dr.
+\tag{EX16}
+\]</span>
+<p>SM16 with input order <span class="math" data-tex="\(N-1\)">\(N-1\)</span> and output order <span class="math" data-tex="\(N+1/2\)">\(N+1/2\)</span>, followed by EX15, makes this a Bochner integral in the full <span class="math" data-tex="\(H^{N+1/2}\)">\(H^{N+1/2}\)</span> space. With <span class="math" data-tex="\(h=\tau-r\)">\(h=\tau-r\)</span> its complete bound is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\mathcal D(f,g)(\tau)\|_{H^{N+1/2}}
+&amp;\leq D_{N,\delta}(m+n)e^{(m+n)\tau}
+\|f\|_{X_m}\|g\|_{X_n},\\
+D_{N,\delta}(w)
+&amp;=C_{N-1}M_{\rm ns}(N-1,N+1/2,\delta)
+\frac{\Gamma(1/4)}{(w-a-\delta)^{1/4}}.
+\end{aligned}
+\tag{EX17}
+\]">\[
+\begin{aligned}
+\|\mathcal D(f,g)(\tau)\|_{H^{N+1/2}}
+&amp;\leq D_{N,\delta}(m+n)e^{(m+n)\tau}
+\|f\|_{X_m}\|g\|_{X_n},\\
+D_{N,\delta}(w)
+&amp;=C_{N-1}M_{\rm ns}(N-1,N+1/2,\delta)
+\frac{\Gamma(1/4)}{(w-a-\delta)^{1/4}}.
+\end{aligned}
+\tag{EX17}
+\]</span>
+<p>Indeed the exact remaining integral is
+<span class="math" data-tex="\(\int_0^\infty h^{-3/4}e^{-(m+n-a-\delta)h}dh\)">\(\int_0^\infty h^{-3/4}e^{-(m+n-a-\delta)h}dh\)</span>. Substitution of <span class="math" data-tex="\((m+n-a-\delta)h\)">\((m+n-a-\delta)h\)</span> gives the stated Gamma factor and its complete positive denominator. Both the recent-time singularity and the entire remote-time tail are thus controlled.</p>
+<p>Continuity follows by truncating those two tails uniformly for <span class="math" data-tex="\(\tau\)">\(\tau\)</span> in any compact interval, then using continuity of the input product and strong continuity of the semigroup in the middle interval. The spatial Sobolev continuity of that semigroup was constructed in SM3. The symmetry and zero-divergence assertions follow from SG23 and invariance of the semigroup; reality follows from the real coefficients. Hence EX16 is a proved bounded bilinear map into the weighted continuous <span class="math" data-tex="\(H^{N+1/2}\)">\(H^{N+1/2}\)</span> space, and in particular into <span class="math" data-tex="\(X_{m+n}\)">\(X_{m+n}\)</span>. Every original physical coefficient is retained in the already proved semigroup constant. This is the actual nonlinear integral map; the fixed point and the complete perturbed physical solution are the next construction.</p>
+<h2 id="continue-to-the-nonlinear-forced-leray-construction">Continue to the nonlinear forced Leray construction</h2>
+<p>The actual original velocity evolution now has a maximal unstable mode,
+the exact spectral growth bound and complete smoothing at every real
+Sobolev order. Both the full solenoidal space and the source's no-swirl
+space have their own proved growth and smoothing maps. The real mode
+has its full oscillating Gram norm and a positive lower bound.</p>
+<p>Exercise3 constructs the actual compact force and its physical energy
+identity. Exercise5 proves the full nonlinear integral map, including
+both time endpoints and the additional half derivative. Next we solve
+the nonlinear fixed point, retain all quadratic terms, and prove the
+refined decay, pressure, zero initial trace, energy identities and
+distinct forced Leray solutions. The later Alpöge–Buckmaster, OpenAI
+and workbench lessons remain part of the assigned series.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-34.html">Previous lesson</a><a href="NS-FLUID-36.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

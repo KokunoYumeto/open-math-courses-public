@@ -1,6 +1,6 @@
 # Comparing weights through strips and spectral tails
 
-*Self-checked by the writing AI.*
+
 
 A comparison between two weights can be transported to positive operators in one traced algebra. This identifies the exact power seen by a complex strip, and lets us recover the comparison on every positive element of the original algebra. A second construction relates all strip depths to the spectral support of a single matrix unit.
 

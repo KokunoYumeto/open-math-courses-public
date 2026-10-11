@@ -18,9 +18,9 @@ Continue with [lesson 6: Integral monodromy and the fundamental group](CG-S6-06.
 
 [Lesson 11](CG-S6-11.html) proves the exact octonion and Nijenhuis calculations, the smooth integrability theorem, and the almost-complex sphere restriction. Six solved exercises and three complete characteristic-class prerequisite chapters are included.
 
-[Lesson 10](CG-S6-10.html) proves the exact non-normal-fibre correction, proper test family, full-fibre duality and base change, and global nonvanishing for every line-bundle twist. It includes three complete analytical companion chapters and six solved exercises. The [working lesson 7](CG-S6-07.html) makes its integral-topology dependency available; that chapter is explicitly unfinished. Its integral duality, exact affine descent, CW, Hurewicz, path-fibre, cancellation, stable-framing, framed Whitney-disk, supported Whitney-move and original handle-decomposition, index-arrangement, Morse-trajectory, extreme-index removal, cancelling-pair creation and framed index-one removal proofs are included as companions.
+[Lesson 10](CG-S6-10.html) proves the exact non-normal-fibre correction, proper test family, full-fibre duality and base change, and global nonvanishing for every line-bundle twist. It includes three complete analytical companion chapters and six solved exercises. [Lesson 7](CG-S6-07.html) now includes the full integral homology, original homotopy equivalence and smooth recognition. Its [sphere-twist proof](sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map) retains both fillings, every signed incidence, the full frame defect and the homotopy to the original map. The complete prerequisite companions are included.
 
-The [series map](series.json) retains the full remaining assignment. Lessons 1â€“6 and 8â€“11 are available. The analytic lessons 8â€“9 can be read while the exact topology providers for lesson 7 are completed. The remaining foundational and smooth-recognition proofs remain assigned within lesson 7. Source reading and proof acceptance have separate records.
+The [series map](series.json) gives all eleven written lessons and their exact dependencies. There are 46 complete lesson solutions and 68 companion solutions. Source reading, finite verification and proof-review limits are recorded separately; no independent whole-course review is claimed.
 
 - [Course and result metadata](course.json)
 - Finite-quotient calculations
@@ -32,7 +32,7 @@ The [series map](series.json) retains the full remaining assignment. Lessons 1â€
 - [Canonical ring and recovered fibration](checks/verify_canonical_ring.py)
 - [Period deformation and all parameter identifications](checks/verify_period_deformation.py)
 - [Octonions, obstruction maps and integrability checks](checks/verify_almost_complex.py)
-- Included Thom/Euler proofs
+- [Included Thom/Euler proofs](thom-euler-for-lesson11.html)
 - Included integral splitting proofs
 - Included integral Chern-class proofs
 - Conormal, torsion and global nonvanishing checks
@@ -52,17 +52,38 @@ The [series map](series.json) retains the full remaining assignment. Lessons 1â€
 - [Morse trajectories and supported critical-value lowering](morse-trajectories-and-critical-value-lowering.html)
 - [Removing the original zero and top handles](removing-the-original-zero-and-top-handles.html)
 - [Creating an original cancelling handle pair](creating-an-original-cancelling-handle-pair.html)
-- Framed slides and index-one removal
+- [Framed slides and index-one removal](framed-handle-slides-and-index-one-removal.html)
 - [Integral handle chains and signed incidences](integral-handle-chains-and-signed-incidences.html)
+- [Higher-index framed slides and their exact chain maps](higher-index-framed-slides-and-chain-maps.html)
+- [Whitney moves in the original receiving dimensions](whitney-moves-in-the-receiving-dimensions.html)
+- [Actual Morse data and the six- and seven-dimensional cobordism proofs](realizing-framed-handles-and-middle-cancellation.html)
+- [The degree-six calculation in the full Milnor cobar complex](the-degree-six-milnor-cobar-calculation.html)
+- [From the original stable framing to the collapse map](framed-manifolds-and-the-pontryagin-thom-map.html)
+- [Coefficient rings and the original degree-six class](coefficient-rings-and-the-original-degree-six-class.html)
+- [The Adams tower and exact inverse limits](the-adams-tower-and-exact-inverse-limits.html)
+- [The original Adams tower and arithmetic completion](the-original-adams-tower-and-arithmetic-completion.html)
+- [The actual mod-two Adams resolution and its cooperation maps](the-actual-mod-two-adams-resolution-and-cooperation-maps.html)
+- [The exact characteristic-two coordinate calculation](the-exact-characteristic-two-coordinate-calculation.html)
+- [The original projective coordinate and its actual cooperation map](the-original-projective-coordinate-and-actual-cooperations.html)
+- [The actual mod-two cooperation comparison through degree eight](the-actual-mod-two-cooperation-comparison-through-degree-eight.html)
+- [The original odd-prime cooperations and degree-six Adams calculation](the-original-odd-prime-cooperations-and-degree-six-adams-calculation.html)
+- [The original integral stable group and its completion maps](the-original-integral-stable-group-and-its-completion-maps.html)
+- [The original six-dimensional framing obstruction](the-original-six-dimensional-framing-invariant.html)
+- [Sphere twists and the original smooth six-sphere comparison](sphere-twists-and-the-original-smooth-six-sphere-comparison.html)
 - Source identities and attribution
 - Complete current source and offline reader
 
 New mathematical exposition and diagrams are dedicated under CC0-1.0. Bundled rendering software and fonts retain their own notices in `assets/mathjax/`. Current authoring provenance: GPT-6 Astra (OpenAI), Codex, Ultra, 9 October 2026. Independent review is not claimed.
 
-Run `python rebuild_course.py` with SymPy, NumPy and Matplotlib installed and Pandoc on PATH to reproduce all twenty-nine exact checkers, regenerate the diagrams and readers and rebuild the complete offline download. For individual operations, run the checkers above or `python rebuild_reader.py`. Each SVG figure is its editable source. Open `index.html` in the extracted archive to read offline; all equation-rendering assets and fonts are included.
+Run `python rebuild_course.py` with SymPy, NumPy and Matplotlib installed and Pandoc on PATH to reproduce all forty-six exact checkers, regenerate the diagrams and readers and rebuild the complete offline download. For individual operations, run the checkers above or `python rebuild_reader.py`. Each SVG figure is its editable source. Open `index.html` in the extracted archive to read offline; all equation-rendering assets and fonts are included.
 
 Linked prerequisite courses are separate providers. The fourth lesson includes its reproducible drawing program in `checks/draw_period_quotient.py`.
 
 The fifth lesson includes its two reproducible figures in the program checks/draw_cusp_geometry.py.
 
 The eleventh lesson includes its reproducible figure program in `checks/render_lesson11_figures.py`. Its prerequisite chapters preserve GPT-6.1 Sol authorship where source arguments are retained and identify the receiving derivations by GPT-6 Astra. All original CC0 provider sources are included unchanged with hashes in `provenance.json`.
+
+
+## General analytic surface base change
+
+The [general surface theorem](general-proper-flat-surface-base-change.html) and nine proof companions supply sixty arguments for the relative finite complex, canonical full-fibre comparison and compact coherent dimension bound. The compact-smooth route remains unchanged. Earlier cross-course prerequisites are listed in [the dependency record](sources/general-analytic-dependencies.json); their full texts are not included in this course-only archive.

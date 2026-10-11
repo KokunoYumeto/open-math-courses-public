@@ -101,7 +101,7 @@ The inner product is linear in its first variable. Each coordinate is a vector s
 \]
 Joint finite spectral partitions approximate each finite family in \(D\) in norm, and finer partitions retain the approximants. Hence \(F_{\mathcal P}(d)\to d\) in norm for every \(d\in D\). Product ultraweak compactness of the norm balls of \(D\) supplies a subnet converging at every \(x\in B(H)\). Its limit is linear, unital and completely positive, since matrix positive cones are ultraweakly closed. It has range in \(D\) and fixes \(D\). The ucp retraction criterion in [Finite models of a von Neumann algebra](../../OA-APPROX/semidiscrete-finite-models.html#4-the-finite-models-give-an-extension-property), Proposition 4.1, proves injectivity. There was no separability or faithful scalar state assumption. The limiting retraction need not be normal.
 
-This independently proves the abelian case of [Averaging, crossed products, and injectivity](../../OA-APPROX/averaging-crossed-products-injectivity.html#3-the-regular-crossed-product), Proposition 5.3. Its more general type I conclusion is not required here.
+This independently proves the abelian case of Averaging, crossed products, and injectivity, Proposition 5.3. Its more general type I conclusion is not required here.
 
 The states
 \[
@@ -112,7 +112,7 @@ have a weak-star cluster point. For each integer \(r\),
 \( |m_n(f(\cdot+r))-m_n(f)|\le2|r|\|f\|_\infty/(2n+1)\).
 The bound follows from the symmetric difference of the finite intervals. Every cluster point is therefore an invariant positive normalized mean, proving amenability of \(\mathbb Z\).
 
-The crossed-product conclusion is Corollary 3.1 of [Averaging, crossed products, and injectivity](../../OA-APPROX/averaging-crossed-products-injectivity.html#3-the-regular-crossed-product). Its proof proceeds as follows. If an injective \(P\subset B(K)\) is normalized by an amenable unitary representation \(v\), its commutant \(P'\) is injective by the lesson's full commutant theorem. For \(Q=\{P,v(G)\}''\),
+The crossed-product conclusion is Corollary 3.1 of Averaging, crossed products, and injectivity. Its proof proceeds as follows. If an injective \(P\subset B(K)\) is normalized by an amenable unitary representation \(v\), its commutant \(P'\) is injective by the lesson's full commutant theorem. For \(Q=\{P,v(G)\}''\),
 \[
  Q'=(P')^{\operatorname{Ad}v}.
  \tag{HA12}

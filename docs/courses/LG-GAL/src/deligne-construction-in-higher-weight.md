@@ -237,6 +237,389 @@ The comparison maps identify the rows \(q=0,1\). In total degree one the only ot
 
 The finite-coefficient cohomology groups are finite by the earlier curve finiteness proof. Their inverse systems are Mittag–Leffler: at each fixed finite group the descending sequence of images stabilizes. Compatible inverse limits therefore have no extra degree-one \(\varprojlim^1\) term; after tensoring with \(\mathbf Q_\ell\) they give the stated coefficient comparison. The finite Betti cell complexes give the same limit. Pullback and trace are natural throughout. For a coefficient correspondence take a common torsion-basis cover on its parameter curve; there its coefficient map is a constant module map and its geometric maps are finite curve maps. The earlier curve comparison preserves those maps and their traces, so the descended comparison preserves the normalized Hecke and diamond actions whenever those correspondences have actually been constructed. On the uniformizing half-plane, the elliptic fibers are \(\mathbf C/(\mathbf Z+z\mathbf Z)\); their torsion coordinates identify this compared system with the polynomial local system of Lemma 2.1. This proves the reduction, with its geometric and analytic foundations still explicit. ∎
 
+### 2.5. The local analytic primitive-form proof
+
+Before restricting the arithmetic cup pairing, we prove the Fourier-support statement that makes a primitive good-prime eigenspace a line. The argument keeps the character and original lower levels explicit, including primes outside the level and characters that do not descend.
+
+#### Statement and conventions
+
+Write \(S_k(N,\chi)=S_k(\Gamma_0(N),\chi)\), where \(k\ge1\), \(\chi(-1)=(-1)^k\), and \(C\mid N\) is the conductor of \(\chi\). At every multiple of \(C\), use the pullback of this same primitive character. A character factors through \(N/p\) precisely when \(C\mid N/p\). This condition is essential, even if \(p^2\mid N\).
+
+For a positive-determinant rational matrix, use
+\[
+ (f|_k A)(z)=\det(A)^{k/2}(cz+d)^{-k}f(Az),
+ \qquad A=\begin{pmatrix}a&b\\c&d\end{pmatrix}.
+\]
+The positive real square root is understood. Put
+\[
+ B_p f(z)=f(pz),\qquad
+ U_p f(z)=\frac1p\sum_{j=0}^{p-1}f((z+j)/p),\qquad
+ P_p=B_pU_p,\qquad A_p=1-P_p.
+ \tag{S1}
+\]
+If \(f=\sum_{n\ge1}a_nq^n\), then \(U_pf=\sum_{n\ge1}a_{pn}q^n\). Consequently \(P_p\) keeps exactly the coefficients whose indices are divisible by \(p\), and \(A_p\) keeps exactly the other indices. For different primes these projections commute; \(U_p\) and \(B_p\) commute with the projections at any other prime.
+
+**Theorem S.** Let \(\mathcal S\) be any finite set of primes, without a restriction on its intersection with \(N\). If \(f\in S_k(N,\chi)\) and
+\[
+ a_n(f)=0\quad\text{whenever no prime in }\mathcal S\text{ divides }n,
+ \tag{S2}
+\]
+then
+\[
+ f=\sum_{\substack{p\in\mathcal S, p\mid N\\ C\mid N/p}}B_p g_p,
+ \qquad g_p\in S_k(N/p,\chi).
+ \tag{S3}
+\]
+The empty sum is zero. Thus a character with conductor \(N\) admits no nonzero cusp form with this finite-prime support. We prove the fixed-character statement; no unproved projection from the full \(\Gamma_1(N)\) space is being used.
+
+The complex coefficient bound in the earlier programme lesson *Dimension formulas for congruence subgroups*, Theorem 6.1 and its character paragraph, makes \(S_k(L,\chi)\) finite dimensional: the map to coefficients through \(\lfloor k[\mathrm{SL}_2(\mathbf Z):\Gamma_0(L)]/12\rfloor\) is injective. For \(p\nmid L\), the operator used below is
+\[
+ T_p=U_p+\chi(p)p^{k-1}B_p.
+ \tag{S4}
+\]
+We prove its preservation locally in Lemma S.1, including weight one. The earlier Hecke lesson states its general setup for \(k\ge2\); that restriction is not silently being discarded. Only the complex coefficient bound is needed, not its conditional arithmetic reduction analogue. The earlier proof's prerequisites remain required.
+
+#### 1. Elementary level changes
+
+**Lemma S.1.** For any prime \(p\), \(B_p\) maps \(S_k(L,\chi)\) to \(S_k(Lp,\chi)\), and \(U_p\) does so as well. If \(p\mid L\), \(U_p\) already preserves \(S_k(L,\chi)\). Therefore \(A_p\) can always be regarded as a map to \(S_k(Lp^2,\chi)\).
+
+*Proof.* With \(D_p=\operatorname{diag}(p,1)\),
+\[
+ D_p\begin{pmatrix}a&b\\c&d\end{pmatrix}D_p^{-1}
+ =\begin{pmatrix}a&pb\\c/p&d\end{pmatrix}.
+\]
+For \(c\equiv0\pmod{Lp}\) this is in \(\Gamma_0(L)\), with the same character value. Also \(B_pf=p^{-k/2}f|D_p\).
+
+For \(U_p\), put \(K_j=\left(\begin{smallmatrix}1&j\\0&p\end{smallmatrix}\right)\). Suppose \(\gamma=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\in\Gamma_0(L)\) and \(p\mid c\); this holds at level \(L\) when \(p\mid L\), or at level \(Lp\) otherwise. The entry \(a\) is a unit modulo \(p\). Choose
+\(j'\equiv(b+jd)/a\pmod p\). As \(j\) varies this permutes the residues, since \(d\) is also a unit modulo \(p\). Then
+\[
+ K_j\gamma K_{j'}^{-1}
+ =\begin{pmatrix}
+ a+jc&\bigl(b+jd-(a+jc)j'\bigr)/p\\
+ pc&d-cj'
+ \end{pmatrix}\in\Gamma_0(L).
+ \tag{S5}
+\]
+Its character is \(\chi(d)\). Since \(U_pf=p^{k/2-1}\sum_j f|K_j\), this proves the asserted transformation law.
+
+All these operators preserve cuspidality. To check this directly, for any rational positive-determinant matrix \(R\) and an integral matrix \(\sigma\) carrying infinity to a cusp, choose an integral \(\sigma'\) carrying infinity to \(R\sigma\infty\). Then \(\sigma'^{-1}R\sigma\) is upper triangular with positive ratio of its diagonal entries. A cusp expansion of \(f|\sigma'\) is exponentially decaying as the imaginary part tends to infinity; the upper-triangular substitution preserves positive exponents and decay. Each finite slash sum therefore vanishes at every cusp. Inflation to a higher level preserves the same property.
+
+For completeness, (S4) preserves \(S_k(L,\chi)\) at every weight here. Let \(p\nmid L\), \(\Gamma=\Gamma_0(L)\), and \(\alpha=\operatorname{diag}(1,p)\). The intersection \(\Gamma\cap\alpha^{-1}\Gamma\alpha\) is \(H=\Gamma\cap\Gamma^0(p)\). Reduction modulo \(p\) is onto, by the elementary lifting argument in Lemma S.2 below, so \(H\backslash\Gamma\) has the \(p+1\) representatives \(T^j\) and \(\gamma_\infty=\left(\begin{smallmatrix}ap&b\\L&1\end{smallmatrix}\right)\), where \(ap-Lb=1\). All these representatives have character one. For right multiplication by \(\gamma\in\Gamma\), write \(\gamma_j\gamma=h_0\gamma_{j'}\), with \(h_0\in H\). Then \(\chi(h_0)=\chi(\gamma)\), and \(\alpha h_0\alpha^{-1}\in\Gamma\) has the same bottom-right entry as \(h_0\). Thus \(\sum_j f|\alpha\gamma_j\) transforms with character \(\chi\). Finally
+\[
+ \alpha\gamma_\infty=
+ \begin{pmatrix}a&b\\L&p\end{pmatrix}D_p,
+ \qquad
+ f|\alpha\gamma_\infty=\chi(p)f|D_p.
+\]
+Multiplication of this slash sum by \(p^{k/2-1}\) gives exactly (S4). Its cusp preservation follows from the same rational upper-triangular calculation. This proves the good-prime operator formula and preservation for \(k=1\) as well. ∎
+
+#### 2. A form supported on one prime
+
+**Lemma S.2.** Suppose \(F\in S_k(L,\chi)\) has coefficients only at indices divisible by \(p\). If \(p\mid L\) and \(C\mid L/p\), then \(F=B_pG\) with \(G\in S_k(L/p,\chi)\). If \(p\nmid L\), or if \(p\mid L\) but \(C\nmid L/p\), then \(F=0\).
+
+*Proof.* Set \(G(z)=F(z/p)\). Its Fourier expansion makes it periodic with period one. Put \(L_0=L/p\) if \(p\mid L\), and \(L_0=L\) otherwise. For
+\[
+ H=\Gamma_0(L_0)\cap\Gamma^0(p),\qquad
+ \Gamma^0(p)=\{\gamma\in\mathrm{SL}_2(\mathbf Z):p\mid\gamma_{12}\},
+\]
+conjugation by \(\operatorname{diag}(1,p)\) sends
+\(\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\) to
+\(\left(\begin{smallmatrix}a&b/p\\pc&d\end{smallmatrix}\right)\in\Gamma_0(L)\).
+Thus \(G|\gamma=\chi(d)G\) for \(\gamma\in H\), and \(G|T=G\) for \(T=\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)\).
+
+First suppose \(p\mid L\) but the character does not factor through \(L_0\). Reduction of unit groups from modulus \(L\) to \(L_0\) is onto, by the Chinese remainder theorem. Nonfactorization gives a unit \(e\equiv1\pmod{L_0}\) with \(\chi(e)\ne1\). Write \(e=1+u'L_0\pmod L\), and put
+\[
+ \eta=\begin{pmatrix}1&p\\L_0&L+1\end{pmatrix}\in H.
+\]
+Its determinant is one and its character is one, so \(G|\eta=G\). Choose \(u\equiv-u'e^{-1}\pmod p\). The matrix
+\[
+ \delta=T^u\eta T^{u'}=
+ \begin{pmatrix}
+ 1+uL_0&p+u(L+1)+u'(1+uL_0)\\
+ L_0&L+1+L_0u'
+ \end{pmatrix}
+ \tag{S6}
+\]
+has upper-right entry zero modulo \(p\), so belongs to \(H\). Its bottom-right entry is \(e\pmod L\). Periodicity and \(G|\eta=G\) give \(G|\delta=G\), whereas the character law gives \(G|\delta=\chi(e)G\). Hence \(G=0\).
+
+In the remaining cases the character on \(H\) extends to \(\Gamma_0(L_0)\) as \(\chi(d)\). This full group is generated by \(H\) and \(T\). If \(p\mid L_0\), right multiplication by a suitable power of \(T\) eliminates the upper-right entry modulo \(p\), since the upper-left entry is a unit. If \(p\nmid L_0\), reduction of \(\Gamma_0(L_0)\) onto \(\mathrm{SL}_2(\mathbf F_p)\) is surjective: prescribe a matrix modulo \(p\) and the identity modulo \(L_0\), and lift from \(\mathrm{SL}_2(\mathbf Z/pL_0\mathbf Z)\). Such lifting is elementary. Over \(\mathbf Z/m\mathbf Z\), elementary row additions can make the first entry of a primitive column a unit: choose the addition separately modulo every prime dividing \(m\), then use the Chinese remainder theorem. Eliminate the other entry and then the upper-right entry. The resulting diagonal \(\operatorname{diag}(a,a^{-1})\) is a product of elementary matrices, as multiplication of the usual three-matrix expressions for \(\left(\begin{smallmatrix}0&a\\-a^{-1}&0\end{smallmatrix}\right)\) verifies. Every elementary matrix lifts integrally. The image of \(H\) is the lower-triangular subgroup, and the image of \(T\) generates the upper unipotents; together they generate the finite special linear group. The reduction kernel is already in \(H\). This proves generation in both cases.
+
+The character law and cuspidality therefore extend to \(\Gamma_0(L_0)\); the positive upper-triangular cusp substitution in Lemma S.1 checks the latter directly. If \(p\mid L\), this proves the required descent.
+
+If \(p\nmid L\), both \(G\) and \(B_pG=F\) lie at level \(L\). The coefficient formula (S4) gives, for \(j\ge1\),
+\[
+ T_p B_p^jG=B_p^{j-1}G+\chi(p)p^{k-1}B_p^{j+1}G.
+ \tag{S7}
+\]
+Since \(\chi(p)\ne0\), induction places every \(B_p^jG\) in the same finite-dimensional space. If \(G\ne0\), their first nonzero indices are \(m,pm,p^2m,\ldots\), where \(m\) is the first nonzero index of \(G\). The least such index in any finite linear relation forces its coefficient to vanish, successively, so these forms are linearly independent. This contradicts finite dimensionality. Hence \(F=0\). ∎
+
+#### 3. The exact trace when a prime occurs once
+
+**Lemma S.3.** If \(p^2\mid L\) and \(C\mid L/p\), then \(U_p\) maps \(S_k(L,\chi)\) into \(S_k(L/p,\chi)\). If \(p\parallel L\) and \(C\mid L/p\), choose \(x,y\in\mathbf Z\) with
+\(px-(L/p)y=1\), and put
+\[
+ V_p^L=\begin{pmatrix}px&y\\L&p\end{pmatrix},\qquad
+ Q_p^L=U_p+p^{k/2-1}(|_kV_p^L).
+ \tag{S8}
+\]
+Then \(Q_p^L\) maps \(S_k(L,\chi)\) into \(S_k(L/p,\chi)\), and
+\[
+ Q_p^L B_p h=(1+p^{-1})h
+ \quad(h\in S_k(L/p,\chi)).
+ \tag{S9}
+\]
+
+*Proof.* For \(g(z)=f(z/p)\), its transformation group is
+\(H=\Gamma_0(L/p)\cap\Gamma^0(p)\), with the descended character. Unlike in Lemma S.2, \(g\) need not be periodic with period one. If \(p\mid L/p\), the \(p\) left cosets of \(H\) in \(\Gamma_0(L/p)\) have representatives \(T^j\), \(0\le j<p\). Their trace is \(pU_pf\), proving the first assertion.
+
+If \(p\nmid L/p\), the reduction argument above identifies \(H\) with the inverse image of the lower-triangular subgroup. Its left cosets are distinguished by the projective first row and have representatives \(T^j\) and
+\[
+ \delta_0=\begin{pmatrix}px&y\\L/p&1\end{pmatrix}.
+\]
+The first rows modulo \(p\) are \([1:j]\) and \([0:1]\), respectively; \(y\) is a unit modulo \(p\) by the determinant equation. These are all \(p+1\) cosets. Every representative has character value one. Therefore their unweighted trace transforms with the descended character: right multiplication permutes the left cosets, and its compensating left factor has the character of the matrix being applied. Moreover
+\(g|\delta_0=p^{k/2}f|V_p^L\), so this trace is exactly \(pQ_p^Lf\). The cusp argument already given makes it a cusp form at level \(L/p\).
+
+For (S9), \(U_pB_ph=h\) by coefficients. Also
+\[
+ D_pV_p^L=p\delta_0,\qquad
+ (B_ph)|V_p^L=p^{-k/2}h|\delta_0=p^{-k/2}h.
+\]
+Positive scalar matrices act trivially under our slash normalization, and \(\delta_0\) has descended character value one. These equalities give (S9), including its factor \(1+p^{-1}\). ∎
+
+For later use, suppose \(r\ne p\), \(p\parallel L\), and \(r\mid L\). With compatible choices define
+\[
+ V_p^{L/r}=D_rV_p^LD_r^{-1}
+   =\begin{pmatrix}px&ry\\L/r&p\end{pmatrix}.
+ \tag{S10}
+\]
+If the character factors through \(L/(rp)\), this is a permissible matrix for Lemma S.3 at level \(L/r\). Its determinant is \(p\), and direct slash composition, together with \(U_pB_r=B_rU_p\), proves
+\[
+ Q_p^LB_r=B_rQ_p^{L/r}.
+ \tag{S11}
+\]
+No character factor or unspecified choice of Atkin–Lehner operator is hidden in this equality.
+
+#### 4. Removing all primes in the support
+
+*Proof of Theorem S.* First remove ineligible primes from the support set without changing the form. For \(p\in\mathcal S\) put
+\[
+ F_p=\prod_{r\in\mathcal S\setminus\{p\}}A_r f,
+ \qquad L=N\prod_{r\in\mathcal S\setminus\{p\}}r^2.
+ \tag{S12}
+\]
+Lemma S.1 makes \(F_p\) a cusp form at level \(L\), supported only at multiples of \(p\). If \(p\nmid N\), it still does not divide \(L\), and Lemma S.2 gives \(F_p=0\). If \(C\nmid N/p\), the \(p\)-exponent of \(L\) is unchanged from that of \(N\), so \(C\nmid L/p\); again \(F_p=0\). In either case the Fourier meaning of the product says that \(f\) is already supported on \(\mathcal S\setminus\{p\}\). Repeating removes all such primes. We may now assume that every prime in \(\mathcal S\) divides \(N\) and satisfies \(C\mid N/p\).
+
+Induct on the size of this remaining set. For \(p^2\mid N\), take \(g_p=U_pf\). Lemma S.3 puts it at level \(N/p\). Then \(f-B_pg_p=A_pf\) lies at level \(N\) and is supported on the other primes. Induction applies.
+
+It remains to remove \(p\parallel N\). Enumerate the other support primes as \(r_1,\ldots,r_t\), and put
+\(M=N\prod_{i=1}^t r_i^2\). Choose one matrix
+\(V=\left(\begin{smallmatrix}px&y\\M&p\end{smallmatrix}\right)\) with \(px-(M/p)y=1\). The same matrix is admissible for the trace lemma at the original level \(N\): its corresponding extra coset matrix is
+\(\left(\begin{smallmatrix}px&y\\M/p&1\end{smallmatrix}\right)\in\Gamma_0(N/p)\), has bottom-right entry one and projective first row \([0:1]\) modulo \(p\). Thus the operator \(Q=U_p+p^{k/2-1}(|V)\) lowers \(N\) to \(N/p\) and also lowers \(M\) to \(M/p\).
+
+The Fourier projections give the exact telescoping identity
+\[
+ \begin{split}
+ f&=\sum_{i=1}^t B_{r_i}\Phi_i+B_p\Phi_p,\\
+ \Phi_i&=U_{r_i}A_{r_1}\cdots A_{r_{i-1}}f,\qquad
+ \Phi_p=U_pA_{r_1}\cdots A_{r_t}f.
+ \end{split}
+ \tag{S13}
+\]
+Each \(\Phi_i\) may be regarded as lying at level \(M/r_i\): its level divides \(N\prod_{j<i}r_j^2\), which divides \(M/r_i\). The last summand is supported on \(p\); Lemma S.2 puts \(\Phi_p\) at level \(M/p\). All characters in these level changes are the same descended character.
+
+Use (S10) for each \(r_i\), and set \(\Psi_i=Q_p^{M/r_i}\Phi_i\). Its level is \(M/(r_ip)\). Equations (S9) and (S11), applied to (S13), give
+\[
+ Qf=\sum_{i=1}^t B_{r_i}\Psi_i+(1+p^{-1})\Phi_p.
+ \tag{S14}
+\]
+Define \(g_p=Qf/(1+p^{-1})\), using the original-level trace; it lies at level \(N/p\). Subtracting \(B_pg_p\) from (S13) yields
+\[
+ f-B_pg_p=
+ \sum_{i=1}^t B_{r_i}
+ \left(\Phi_i-\frac{B_p\Psi_i}{1+p^{-1}}\right).
+ \tag{S15}
+\]
+This identity proves that its coefficients are supported on the other primes; no claim that the parenthesized forms already have original lower level is needed. Independently, \(f-B_pg_p\) lies at level \(N\), since both terms do. Induction at that original level supplies its decomposition (S3). When \(t=0\), the sum in (S15) is empty and \(f=B_pg_p\). This proves the theorem for every finite set and every fixed character. ∎
+
+#### 5. The precise consequence for the primitive-form argument
+
+Define the old space at level \(N\) as the span of all \(B_dh\), with \(h\in S_k(L,\chi)\), \(L\mid N\), \(L<N\), \(dL\mid N\), and \(C\mid L\). Define the new space as its orthogonal complement for the positive Petersson inner product.
+
+That inner product exists at weight one as well. For \(u,v\in S_k(N,\chi)\), put
+\[
+ \langle u,v\rangle=
+ \int_{\Gamma_0(N)\backslash\mathfrak H}
+       u(z)\overline{v(z)}y^k\,\frac{dx\,dy}{y^2}.
+ \tag{S15A}
+\]
+The transformation law, \(|\chi(d)|=1\), the identity \(\operatorname{Im}(\gamma z)=y/|cz+d|^2\), and the change-of-variables Jacobian \(|cz+d|^{-4}\) make the integrand invariant. In each of the finitely many cusp regions, the slash-translated cusp expansions decay exponentially; their product times \(y^{k-2}\) is integrable for every \(k\ge1\). The complement is compact, so continuity gives convergence there. Thus the integral converges absolutely. If \(u\ne0\), it is nonzero at some point, hence has positive absolute value on a neighborhood of positive area; therefore \(\langle u,u\rangle>0\). This proves that the old space and its orthogonal complement have zero intersection, including at weight one.
+
+**Corollary S.4.** On any simultaneous good-prime eigenspace in this new space, the coefficient functional \(a_1\) is injective. In particular every nonzero such eigenspace has dimension one.
+
+*Proof.* Let \(T_ph=\lambda_ph\) for all \(p\nmid N\), and suppose \(a_1(h)=0\). From (S4),
+\[
+ a_{pn}(h)=\lambda_p a_n(h)-\chi(p)p^{k-1}a_{n/p}(h),
+ \tag{S16}
+\]
+where the last term is zero when \(p\nmid n\). Induction on \(n\), choosing a prime divisor of any \(n>1\) coprime to \(N\), proves \(a_n(h)=0\) for every \((n,N)=1\). Theorem S with the primes dividing \(N\) places \(h\) in the old space. Its orthogonality gives \(\langle h,h\rangle=0\), hence \(h=0\). This proves injectivity and the dimension bound. The argument also covers \(N=1\), when the support set is empty. ∎
+
+
+#### 2.5A. Primitive eigenlines and the analytic Fricke relation
+
+The following finite-cover and matrix arguments include weight one. They use the fixed-character conventions and positive pairing just proved in §2.5.
+
+Use the slash normalization, fixed character of conductor C, old/new spaces, positive Petersson product, coefficient bound, and Theorem S of §2.5. Write \(\Gamma =\Gamma _{1}(N)\) and \(\alpha _{p}=\operatorname{diag}(1,p)\), \(\beta _{p}=\operatorname{diag}(p,1)\). A form with character \(\chi \) at \(\Gamma _{0}(N)\) is \(\Gamma \)-modular. On that character space the raw \(\Gamma \)-product is a fixed positive multiple of the raw \(\Gamma _{0}(N)\)-product: a projective \(\Gamma \)-domain consists of \([\overline{\Gamma}_{0}(N):\overline{\Gamma}]\) translates, and the paired density is \(\Gamma _{0}(N)\)-invariant. Thus restrictions have the same adjoints and orthogonality. Projective indices avoid an extra factor two in odd weight.
+
+#### 1. The finite-cover adjoint in every positive weight
+
+For any rational positive-determinant matrix A put \(A^*=\det(A)A^{-1}\) and
+\[
+ \mathcal A_A f=\sum_{\Gamma\delta\subset\Gamma A\Gamma} f|_k\delta.
+ \tag{F1}
+\]
+The sum is finite. To see this, multiply A by a positive rational scalar to make it integral with positive integral determinant m; this changes neither its slash action nor the relevant intersection groups. Both \(H=\Gamma \cap A^{-1}\Gamma A\) and \(H'=\Gamma \cap A\Gamma A^{-1}\) contain \(\Gamma (Nm)\): conjugating \(I+NmB\) gives \(I+NA^*BA\) or \(I+NABA^*\), respectively. Reindexing the cosets proves \(\Gamma \)-modularity of the sum. Rational upper-triangular substitution at every cusp, as in Lemma S.1, proves cuspidality.
+
+**Lemma F.1.** For the Petersson product on cusp forms,
+\[
+ \mathcal A_A^*=\mathcal A_{A^*}.
+ \tag{F2}
+\]
+
+*Proof.* First all integrals below are absolute, including at \(k=1\). The function \(y^{k/2}|f(z)|\) is \(\Gamma \)-invariant, bounded on the compact remainder, and bounded in each cusp chart because the cusp expansion is exponentially decreasing. Slash transformation identifies its value there with \(y^{k/2}|(f|_k\sigma)(z)|\). Hence it is bounded globally. For any rational R of positive determinant,
+\[
+ y^{k/2}|(f|_kR)(z)|=(\operatorname{Im}(Rz))^{k/2}|f(Rz)|.
+ \tag{F3}
+\]
+Every rational slash therefore has the same global bound. Products of two such functions times \(y^k\) are bounded. The finite-index domains under consideration have finite hyperbolic area, so the paired integrals are absolute. This argument uses neither a Hilbert completion nor \(k\ge 2\).
+
+Let F be a projective \(\Gamma \)-domain, up to boundary sets of measure zero. Representatives \(\gamma \) for \(H\backslash \Gamma \) give the disjoint left cosets \(\Gamma A\gamma \) and tile an H-domain by \(\gamma F\). For \(w=Az\), the imaginary-part formula and the change-of-variables Jacobian give
+\[
+ (f|_kA)(z)\overline{g(z)}y^k\,d\mu(z)
+ =f(w)\overline{(g|_kA^{-1})(w)}
+       (\operatorname{Im}w)^k\,d\mu(w).
+ \tag{F4}
+\]
+Indeed \(\operatorname{Im}(Az)=\det(A)y/|cz+d|^{2}\) and \(d\mu \) is invariant under positive real Möbius maps; the remaining complex slash factors are conjugates in exactly the displayed order.
+
+Unfold the finite sum over \(\gamma F\). The transformation law of g cancels the change of variable \(\gamma \). Apply (F4), which takes the H-domain to an H′-domain, and retile by \(H'\backslash \Gamma \). This proves
+\[
+ \begin{split}
+ \langle\mathcal A_A f,g\rangle_\Gamma
+ &=\int_{H\backslash\mathfrak H}(f|_kA)\bar g\,y^k\,d\mu\\
+ &=\int_{H'\backslash\mathfrak H}f\,
+                  \overline{g|_kA^{-1}}\,y^k\,d\mu\\
+ &=\langle f,\mathcal A_{A^{-1}}g\rangle_\Gamma.
+ \end{split}
+ \tag{F5}
+\]
+Positive scalar matrices act trivially, so \(A^{-1}\) and A* have identical slash actions and corresponding coset sums. This proves (F2). The subgroup intersections have the same status concerning \(-I\) as \(\Gamma \), so all the relative projective indices used in tiling equal the corresponding group indices. ∎
+
+For \(p\nmid N\) choose integers a,b with \(pa-Nb=1\) and set
+\[
+ \sigma_p=\begin{pmatrix}a&b\\N&p\end{pmatrix},\qquad
+ \gamma_\infty=\begin{pmatrix}pa&b\\N&1\end{pmatrix}\in\Gamma.
+ \tag{F6}
+\]
+The matrix \(\sigma _{p}\) normalizes \(\Gamma \). More generally \(\Gamma _{1}(N)\) is the kernel of the bottom-right-entry homomorphism \(\Gamma _{0}(N)\longrightarrow (\mathbf Z/N\mathbf Z)^\times\), which proves this normality directly. The intersection \(\Gamma \cap \alpha _{p}^{-1}\Gamma \alpha _{p}\) consists of matrices with p dividing the upper-right entry. For \(p\nmid N\) its \(p+1\) cosets have representatives \(T^{j}\), \(0\le j<p\), and \(\gamma_\infty\): reduction onto \(\mathrm{SL}_{2}(\mathbf F_{p})\), proved by the elementary CRT lifting in Lemma S.2, identifies them with first-row projective lines [1:j] and [0:1]. For \(p|N\) the reduction of \(\Gamma \) is the upper unipotent group, its intersection is the identity, and the p representatives are just \(T^{j}\). This also proves the claimed exhaustive coset counts.
+
+Multiplying the sum by \(p^{k/2-1}\) therefore gives precisely \(T_{p}\) from (S4) at good primes, and \(U_{p}\) at bad primes. At a good prime the extra matrix is
+\[
+ \alpha_p\gamma_\infty=\sigma_p\beta_p.
+ \tag{F7}
+\]
+For f of character \(\chi \), \(f|\sigma _{p}=\chi (p)f\), so this extra term is \(\chi (p)p^{k-1}B_{p}f\) after the normalization. Identity (F7) and normality of \(\Gamma \) give \(\Gamma \beta _{p}\Gamma =\Gamma \sigma _{p}^{-1}\alpha _{p}\Gamma \). Its sum applied to f is the \(\alpha _{p}\)-sum applied to \(f|\sigma _{p}^{-1}\). Lemma F.1, and the positive real normalizing factor, now prove on \(S_{k}(N,\chi )\)
+\[
+ T_p^*=\chi(p)^{-1}T_p\qquad(p\nmid N).
+ \tag{F8}
+\]
+There is no undefined value \(\chi (p)\) at a bad prime in this formula.
+
+#### 2. Simultaneous primitive eigenlines
+
+For different primes the Fourier operators \(U_{p},U_{r},B_{p},B_{r}\) commute whenever their prime indices differ. This follows by selecting or multiplying indices in their coefficient formulas, including the zero convention for nonintegral indices. Thus all good \(T_{p}\) commute with one another, and every bad \(U_{r}\) commutes with every good \(T_{p}\). Their preservation of the fixed character and cusp space was proved in Lemma S.1.
+
+The good operators preserve the old space: for every old generator B_dh at lower level L, a good prime \(p\nmid N\) divides neither d nor L, and the coefficient formula gives
+\[
+ T_p^N B_dh=B_dT_p^Lh.
+ \tag{F9}
+\]
+The character value and weight factor are the same at the two levels. By (F8) the adjoints also preserve the old space. Therefore its orthogonal complement is invariant under both \(T_{p}\) and \(T_{p}^*\), and the restricted operators are commuting and normal.
+
+Here is the full finite-dimensional spectral step. A normal operator A has an eigenvector v, since its characteristic polynomial has a root. The fundamental theorem of algebra is actually proved in the earlier programme lesson *The Petersson inner product and Poincaré series*, Lemma0.1, by its bounded-entire-function argument. If \(Av=\lambda v\), normality of \(B=A-\lambda I\) gives \(||Bv||^{2}=||B^*v||^{2}\), hence \(A^*v=\bar\lambda v\). The orthogonal complement of v is invariant under both, and induction gives an orthonormal eigenbasis. For a commuting family which also commutes with all its adjoints, choose a nonscalar member and split into its eigenspaces; every member and adjoint preserves each block. Induction on block dimension completes a simultaneous basis. If every member on a block is scalar, any orthonormal basis works. This proves the assertion for an infinitely indexed family without an infinite limiting process.
+
+**Theorem F.2.** At every \(k\ge 1\) and every level and fixed character, the new space has an orthogonal basis of simultaneous good-prime eigenforms. Each simultaneous eigenspace is one dimensional and has a unique member normalized by \(a_{1}=1\).
+
+*Proof.* Apply the preceding spectral argument to the finite-dimensional new space. Corollary S.4 proves that \(a_{1}\) is injective on each simultaneous eigenspace, so every nonzero block is one dimensional with nonzero \(a_{1}\). Divide by that coefficient. ∎
+
+#### 3. Fricke, conjugation, and bad adjoints
+
+Put
+\[
+ W_N=\begin{pmatrix}0&-1\\N&0\end{pmatrix},\qquad
+ \mathcal W_N f=f|_kW_N,\qquad
+ Jf(z)=\overline{f(-\bar z)}.
+ \tag{F10}
+\]
+Direct conjugation gives
+\[
+ W_N^{-1}\begin{pmatrix}a&b\\c&d\end{pmatrix}W_N
+ =\begin{pmatrix}d&-c/N\\-Nb&a\end{pmatrix}.
+ \tag{F11}
+\]
+It normalizes \(\Gamma _{0}(N)\) and \(\Gamma _{1}(N)\). At \(\Gamma _{0}(N)\), \(\chi (a)=\chi (d)^{-1}\). Consequently \(\mathcal W_N\) maps \(S_{k}(N,\chi )\) to \(S_{k}(N,\bar\chi )\). Rational cusp substitution proves its cusp conditions. Formula (F4), applied diagonally, and normalizing the group prove it is unitary between these spaces. Its square is \((-1)^{k}\), since \(W_N^{2}=-NI\).
+
+The map J has the same source and target characters. Indeed reflection \(z\mapsto-\bar z\) changes \(\gamma \) to \(\gamma^{\#}=((a,-b),(-c,d))\); conjugating its transformation law gives the character \(\bar\chi \) and the factor \((cz+d)^{k}\). It conjugates the Fourier coefficients, preserves the cusp conditions by the same reflected expansions, and satisfies \(J^{2}=1\). Reflection preserves the hyperbolic area measure and conjugates the paired density, so J is antiunitary.
+
+For an old generator h at level L and a divisor d with \(dL|N\), put \(e=N/(dL)\). Exact multiplication gives
+\[
+ D_dW_N=dW_LD_e,\qquad
+ \mathcal W_N B_dh=(e/d)^{k/2}B_e(\mathcal W_Lh),
+ \qquad JB_dh=B_dJh.
+ \tag{F12}
+\]
+Thus \(\mathcal W_N\) and J take the old space with \(\chi \) onto the old space with \(\bar\chi \). Their inverses and norm properties show they also take the corresponding new spaces onto one another.
+
+Conjugation of a double coset by W_N preserves its exhaustive coset sum because W_N normalizes \(\Gamma \). Moreover \(W_N^{-1}\beta _{p}W_N=\alpha _{p}\). Applying Lemma F.1 to the full \(\Gamma \)-space therefore proves
+\[
+ T_{p,\bar\chi}\mathcal W_N
+       =\mathcal W_N T_{p,\chi}^*\quad(p\nmid N),\qquad
+ U_{p,\chi}^*=\mathcal W_N^{-1}U_{p,\bar\chi}\mathcal W_N
+       \quad(p\mid N).
+ \tag{F13}
+\]
+These are compositions of operators, with source and target characters displayed. To check the order, the adjoint coset term \(f|\beta _{p}\gamma \) followed by \(|W_N\) equals \((f|W_N)|W_N^{-1}\beta _{p}\gamma W_N\); those conjugated terms are exactly the \(\alpha _{p}\)-coset sum. No character-twisted Atkin–Lehner convention is being assumed.
+
+Every bad \(U_{p}\) preserves the old space. On its generator B_dh there are three exhaustive possibilities. If \(p|d\), \(U_{p}B_dh=B_{d/p}h\). If \(p\nmid d\) and \(p|L\), it is \(B_dU_{p}h\), with \(U_{p}\) preserving level L. If \(p\nmid dL\), it is
+\[
+ U_pB_dh=B_dT_p^Lh-\chi(p)p^{k-1}B_{dp}h.
+ \tag{F14}
+\]
+Both terms are old: since \(p|N\) but \(p\nmid dL\), one has \(dpL|N\). The lower level in the last term remains L; no assertion that Lp is a proper divisor is needed. In all three cases the original h has \(L<N\). Formula (F13), together with (F12) and the same argument for \(\bar\chi \), proves that \(U_{p}^*\) preserves the old space as well. Thus \(U_{p}\) preserves the new space. Since it commutes with all good \(T_{r}\), it preserves each line of Theorem F.2. On a normalized member f its scalar is \(a_{p}(f)\), by the first coefficient of \(U_{p}f\). This proves every bad-prime eigenvector assertion, without assuming normality of \(U_{p}\) on the whole cusp space.
+
+#### 4. The full primitive Fricke relation
+
+**Theorem F.3.** If f is a normalized member of a primitive good-prime eigenspace at level N with character \(\chi \), then for a scalar \(\omega _f\) of absolute value one,
+\[
+ f|_kW_N=\omega_f Jf.
+ \tag{F15}
+\]
+It is also an eigenform for every bad \(U_{p}\), with eigenvalue \(a_{p}(f)\).
+
+*Proof.* If \(T_{p}f=\lambda _{p}f\), the adjoint identity (F8) in the pairing linear in its first variable gives
+\[
+ \lambda_p=\chi(p)\overline{\lambda_p},\qquad
+ \overline{\lambda_p}=\chi(p)^{-1}\lambda_p.
+ \tag{F16}
+\]
+By (F13), \(f|W_N\) is a new form with character \(\bar\chi \) and good eigenvalues \(\bar\lambda _{p}\). The coefficient formula (S4) conjugates to the formula with \(\bar\chi \), so Jf is another new form with those same eigenvalues; its first coefficient is one. Theorem F.2 at \(\bar\chi \) identifies their common eigenspace as a line. Therefore \(f|W_N=\omega _fJf\) with a nonzero scalar. Unitarity and antiunitarity give \(||f|W_N||=||Jf||=||f||>0\), hence \(|\omega _f|=1\). The bad eigenvector assertion was proved above. ∎
+
+**Corollary F.4 (existence of a lower primitive good packet).** Every simultaneous good-prime eigenpacket occurring in \(S_{k}(N,\chi )\) occurs in a normalized newform at some level \(L|N\) with \(C|L\), with the same eigenvalues at every prime outside N.
+
+*Proof.* At each level the finite-dimensional positive pairing splits its cusp space as old plus new. Induction on the proper divisors of N, using \(B_dB_e=B_{de}\), expresses \(S_{k}(N,\chi )\) as the span of B_dh where h is normalized new at some \(L|N\) and \(dL|N\). Theorem F.2 supplies the new vectors at each level. Formula (F9) says all these finitely many spanning vectors are eigenvectors for the primes outside N. To isolate the packet of a given nonzero f, for each different packet among the spanning vectors choose a good prime whose eigenvalue differs and apply \((T_{p}-\mu _{p})/(\lambda _{p}-\mu _{p})\). The finite product fixes f and kills each different packet. It follows that some nonzero spanning vector has the same packet. Its underlying h is the required lower primitive form. This proves existence without an unproved uniqueness assertion between different lower levels. ∎
+
+
+The preceding support and Fricke proofs include every positive weight and fixed character. Only their complex finite-dimensional coefficient bound and the explicitly identified earlier analytic foundations are used; no arithmetic reduction theorem is inferred from that bound. Their finite-cover and old-space arguments were written from Li’s freely readable original, printed pages 287–297.
+
 ## 3. What the congruence relation does imply
 
 On the properly normalized \(f\)-constituent, the higher-weight congruence relation has the form
@@ -283,7 +666,7 @@ This relation has the modular size and sign \(C=\chi(2)2^{k-1}\) when \(k=2\) an
 
 For the actual representation, the local determinant \(C_p\) is a separate part of the construction. Proposition 3.1 proves the algebraic passage once it is available. The arbitrary-character determinant proof is still required: a cup pairing pairs a \(\chi\)-constituent with a \(\chi^{-1}\)-constituent, so the trivial-character weight-two pairing does not prove it. In particular, neither the relation (13) nor two-dimensionality alone fills that gap.
 
-**Lemma 3.2 (Fricke covariance and its determinant consequence).** Suppose the fine arithmetic family and its cyclic-isogeny correspondences have been constructed. Fix \(\zeta_N\), a primitive \(N\)-th root of unity, over \(\mathbf Q(\zeta_N)\). The Fricke correspondence takes \((E,P)\) to \((E/\langle P\rangle,\phi Q)\), where \(e_N(P,Q)=\zeta_N\). Its coefficient pullback gives an invertible operator \(w\) on parabolic cohomology. Write \(B\) for the cup pairing from the symmetric-power Weil pairing, valued in \(\mathbf Q_\ell(1-k)\). Then
+**Lemma 3.2 (Fricke covariance and its determinant consequence).** Suppose the fine arithmetic family and its cyclic-isogeny correspondences have been constructed with coefficient descent retaining the central automorphism and choosing the negative double-quotient identification. Fix \(\zeta_N\), a primitive \(N\)-th root of unity, over \(\mathbf Q(\zeta_N)\). The Fricke correspondence takes \((E,P)\) to \((E/\langle P\rangle,\phi Q)\), where \(e_N(P,Q)=\zeta_N\). Its coefficient pullback gives an invertible operator \(w\) on parabolic cohomology. Write \(B\) for the cup pairing from the symmetric-power Weil pairing, valued in \(\mathbf Q_\ell(1-k)\). Then
 \[
 w^2=(-N)^m,\qquad B(wx,wy)=N^mB(x,y),\qquad
 \Psi(x,y):=B(x,wy)
@@ -301,7 +684,7 @@ The nondegeneracy of that **restricted** pairing is a separate primitive-factor 
 e_N^{E'}(\phi Q,\phi R)=e_N^E(Q,\widehat\phi\phi R)
 =e_N^E(Q,P)=\zeta_N^{-1}.
 \]
-The next chosen point is therefore \(-\phi R\), whose image under \(\widehat\phi\) is \(-P\). Identifying the resulting marked curve with \((E,P)\) uses \([-1]\); the composite universal isogeny is \([-N]\). On the symmetric-power coefficients it acts as \((-N)^m\), proving the first identity. This works for composite \(N\) as well as prime \(N\), since all torsion here is in characteristic zero.
+The next chosen point is therefore \(-\phi R\), whose image under \(\widehat\phi\) is \(-P\). To identify the resulting marked curve with \((E,P)\), choose \([-1]\); the composite universal isogeny is \([-N]\). On the symmetric-power coefficients it acts as \((-N)^m\), proving the first identity. This works for composite \(N\) as well as prime \(N\), since all torsion here is in characteristic zero. At levels one and two the marking does not force this choice; the stated coefficient convention retains the central automorphism in the auxiliary descent.
 
 An isogeny of degree \(N\) multiplies the rank-two cohomological alternating pairing by \(N\), by the Weil-pairing adjoint formula. Its \(m\)-th symmetric-power coefficient pairing is therefore multiplied by \(N^m\). The base Fricke map is an isomorphism of the smooth curve, so preserves its degree-two trace. This proves the second identity on the parabolic cup pairing. The parity of \(B\) is \((-1)^{m+1}\): the coefficient pairing has parity \((-1)^m\) and exchanging two degree-one classes adds a minus sign. The adjoint of \(w\) is
 \(w^\dagger=N^m w^{-1}=(-1)^m w\). Consequently
@@ -318,6 +701,289 @@ If \(\sigma(\zeta_N)=\zeta_N^u\), transport of the defining point condition give
 =\chi(u)^{-1}\chi_\ell(\sigma)^{1-k}\Psi(x,y).
 \]
 For a nondegenerate alternating form on a two-dimensional space, the multiplier of a matrix is its determinant: expand \(B(Ae_1,Ae_2)\) in a basis. This proves the two determinant formulas, the second by dualizing. No restriction of a globally perfect form to an arbitrary eigenspace is automatically perfect; a commuting algebra with a nilpotent operator can have an isotropic eigenline. That is why the primitive-factor premise has been retained. ∎
+
+### 3.3. The primitive determinant pairing and stable reduction
+
+#### Objects and explicit arithmetic premises
+
+Let \(N\geq1\), \(k\geq2\), \(m=k-2\), and let \(f\) be a normalized primitive cuspidal eigenform of exact level \(N\) and character \(\chi\), where \(\chi(-1)=(-1)^k\). Put
+\[
+ K=\mathbf Q(a_n(f),\chi(d):n\geq1,\ (d,N)=1).
+\]
+Write \(f^*(z)=\overline{f(-\bar z)}\), as in Lesson 12, Proposition 2.2. On forms use the determinant-normalized positive-real slash action and
+\[
+ \mathcal W_N h=h|_k\begin{pmatrix}0&-1\\N&0\end{pmatrix}.
+\]
+
+The following are the arithmetic premises of the pairing theorem. They are requirements, not implicit imports.
+
+**A1. Realized arithmetic coefficient object.** The arbitrary-level parabolic coefficient object has been constructed over \(\overline{\mathbf Q}\), using a fine modular family or actual auxiliary full-level data with the required finite group action and descent. Its coefficient sheaf is \(\operatorname{Sym}^m R^1\pi_*\mathbf Q_\ell\) before descent. All full Hecke and diamond correspondences exist, with the normalization of Lesson 12, Proposition 2.2, and commute with the continuous Galois action.
+
+**A2. Compatible rational comparison.** Its rational Betti and étale parabolic cohomologies compare, preserving the symmetric-power coefficient pairing, the degree-normalized cup trace, full Hecke and diamond actions, and the cyclic-isogeny Fricke operator. For fine curves the reduction to the actual curve comparison proofs is Lesson 12, Lemma 2.4, using Lesson 10, Lemmas 1.2 and 1.4. The cup and Fricke clause is checked in the arithmetic-transfer proof below. For small levels the auxiliary quotient with its coefficient action still has to be supplied; a branched coarse quotient cannot be substituted into Lemma 2.3's finite étale premise.
+
+**A3. Arithmetic Fricke construction and covariance.** The cyclic quotient, its universal isogeny, and the Weil-pairing choice of the quotient point exist as algebraic maps. For the induced operator \(w\), cup pairing \(B\), and point diamond \(D_u\), Lesson 12, Lemma 3.2's conventions give
+\[
+ w^2=(-N)^m,\qquad B(wx,wy)=N^m B(x,y),\qquad
+ \sigma w\sigma^{-1}=wD_u,\quad
+ \sigma(\zeta_N)=\zeta_N^u.                                      \tag{A1}
+\]
+The target of \(B\) is \(\mathbf Q_\ell(1-k)\); its Galois multiplier is \(\chi_\ell^{1-k}\). This is cohomology, not the covariant Tate module.
+
+The complex premises are written locally in the current course: Lesson 12, Lemma 2.1 and Exercise 8.4, for the period isomorphism and its exact dimension input; the local §2.5, Theorem S and Corollary S.4, and §2.5A, Theorems F.2–F.3, for arbitrary-weight, fixed-character primitive lines and Fricke. Their stated analytic and earlier-programme foundations retain their transitive scope. Reading a numbered claim does not erase its recorded foundations.
+
+#### Theorem 3.3: the restricted pairing is nonzero
+
+**Theorem 3.3.** Under A1–A3 and the stated period/comparison premises, the primitive full-Hecke constituent has a perfect alternating Fricke-twisted cup form at every coefficient place. Its dual representation has global determinant \(\chi_G\chi_\ell^{k-1}\).
+
+*Proof.*
+
+Denote the holomorphic and antiholomorphic period maps of Lesson 12, Lemma 2.1, by
+\[
+ H(h)=\bigl[h(z)(X-zY)^m\,dz\bigr],\qquad
+ A(g)=\bigl[\overline{g(z)}(X-\bar zY)^m\,d\bar z\bigr].
+\]
+The latter is antilinear in \(g\). In the basis \(e_r=X^{m-r}Y^r\), the coefficient form is
+\[
+ b_m(e_r,e_s)=0\quad(r+s\ne m),\qquad
+ b_m(e_r,e_{m-r})=\frac{(-1)^r}{\binom mr}.
+                                                               \tag{A2}
+\]
+Its expansion on pure powers is
+\[
+ b_m((aX+bY)^m,(cX+dY)^m)=(ad-bc)^m.
+                                                               \tag{A3}
+\]
+Pure powers span: evaluating at \(m+1\) distinct values in \((X+tY)^m\) gives a Vandermonde matrix with nonzero determinant. Thus (A3) proves the \(\operatorname{SL}_2\) invariance and the nondegeneracy. Its symmetry sign is \((-1)^m\).
+
+The compact representatives constructed in Lesson 12, Lemma 2.1, make the cup integral independent of representative. Its mixed value, with the precise convention of that lemma, is
+\[
+ B(H(h),A(g))
+ =-(2i)^{m+1}\int_{\Gamma_1(N)\backslash\mathfrak H}
+                    h(z)\overline{g(z)}y^m\,dx\,dy.
+                                                               \tag{A4}
+\]
+Same-type pairings vanish. For a low-level quotient this is read through a torsion-free finite cover with division by its positive projective index. That defines the same nonzero positive Petersson norm. It is a complex computation; it is not itself arithmetic descent.
+
+Here is the Fricke normalization, including the factor which would be lost by identifying the analytic unitary operator with coefficient pullback. For \(\delta=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\), \(\det\delta=n>0\), let \(\rho(\delta)P(v)=P(\delta^{-1}v)\). On the polynomial factor,
+\[
+ \rho(\delta)^{-1}(X-\delta zY)^m
+ =\frac{n^m}{(cz+d)^m}(X-zY)^m,
+ \qquad d(\delta z)=\frac{n}{(cz+d)^2}\,dz.
+\]
+Consequently coefficient pullback on the period differential is
+\[
+ \rho(\delta)^{-1}\delta^*
+       \bigl(h(z)(X-zY)^m dz\bigr)
+ =n^{k-1}(cz+d)^{-k}h(\delta z)(X-zY)^m dz.
+                                                               \tag{A5}
+\]
+It acts on \(h\) as \(n^{m/2}(h|_k\delta)\). The coefficient action in (A5) is rational; the real square root in this expression merely records the analytic slash normalization. Since the Fricke matrix is real, the same calculation on antiholomorphic differentials gives
+\[
+ wH(h)=N^{m/2}H(\mathcal W_Nh),\qquad
+ wA(g)=N^{m/2}A(\mathcal W_Ng).                                 \tag{A6}
+\]
+
+The local Theorem F.3 applies both to \(f\) and to \(f^*\): reflection takes the primitive \(\chi\)-space to the primitive \(\chi^{-1}\)-space and conjugates the full coefficient system. It gives
+\[
+ \mathcal W_Nf^*=\omega_{f^*}f,\qquad |\omega_{f^*}|=1.           \tag{A7}
+\]
+No scalar in (A7) is assumed algebraic. Its being nonzero is enough.
+
+The full-Hecke eigenspace of \(f\) has the complex basis
+\[
+ x=H(f),\qquad y=A(f^*).                                       \tag{A8}
+\]
+This is exactly the constituent identified in Lesson 12, Proposition 2.2, which uses all Hecke operators and the period dimension input. Its second generator is \(A(f^*)\), rather than \(A(f)\) for a nonreal character.
+
+Define \(\Psi(x',y')=B(x',wy')\). Equations (A4), (A6), and (A7) now give
+\[
+ \Psi(H(f),A(f^*))
+ =-N^{m/2}\overline{\omega_{f^*}}(2i)^{m+1}
+             \int_{\Gamma_1(N)\backslash\mathfrak H}
+                         |f(z)|^2y^m\,dx\,dy \ne0.              \tag{A9}
+\]
+The integral is finite by the cusp decay proved in Lemma 2.1 and positive because \(f\) is continuous and nonzero on some disk. In the auxiliary-cover interpretation it is multiplied by a positive finite index, so cannot become zero.
+
+For completeness, alternation uses only the parity and (A1). The parity of cup \(B\) is \((-1)^{m+1}\). Its adjoint satisfies
+\[
+ w^\dagger=N^m w^{-1}=(-1)^m w.
+\]
+It follows that
+\[
+ \Psi(y',x')=(-1)^{m+1}B(wx',y')
+             =(-1)^{m+1}B(x',w^\dagger y')=-\Psi(x',y').
+\]
+In characteristic zero this is alternating. Thus its matrix in (A8) is
+\(\left(\begin{smallmatrix}0&a\\-a&0\end{smallmatrix}\right)\) with the explicitly nonzero \(a\) of (A9); it is perfect on this two-dimensional constituent.
+
+This proves the primitive restriction assertion without a claim that an arbitrary Hecke eigenspace inherits a perfect form, without good-Hecke multiplicity one on an old space, and without any normality claim for all bad operators on the whole cusp space. The primitive Fricke relation supplies the needed matching antiholomorphic line.
+
+#### Arithmetic transfer to every coefficient place
+
+Proposition 2.2 of Lesson 12 constructs the rational Betti space and proves that \(K\) is a number field. Let \(W_{f,K}\) be its full eigenspace after scalar extension to \(K\). It is the intersection of the kernels of \(T_n-a_n\) and \(D_d-\chi(d)\). A finite collection suffices because dimensions can strictly decrease only finitely many times. Its scalar extension to \(\mathbf C\) is (A8), so it has dimension two over \(K\).
+
+Coefficient cup and the Fricke operator on Betti cochains are rational. Hence \(\Psi\) restricts to a \(K\)-bilinear form on \(W_{f,K}\). Its determinant is nonzero after the chosen embedding \(K\hookrightarrow\mathbf C\), by (A9), and therefore is nonzero in \(K\). Extending to *any* \(K_\lambda\) preserves its nonzero determinant. There is no comparison between \(K_\lambda\) and \(\mathbf C\) here: both computations extend the same \(K\)-matrix.
+
+We spell out the compatibility required to identify that form with the arithmetic one. First clear the denominators of (A2), for example by replacing \(b_m\) with \(m!b_m\). This is an integral coefficient pairing; it need not be perfect modulo \(\ell^r\). At finite coefficient level the torsion-basis cover used in Lesson 12, Lemma 2.4, trivializes \(R^1\pi_*(\mathbf Z/\ell^r)\). On that cover all symmetric-power coefficient maps, the denominator-cleared pairing, and the map induced by a fixed isogeny are maps of constant finite modules. The curve comparison in Lesson 10, Lemmas 1.2 and 1.4, preserves cup, degree trace, pullback, and finite-map trace. It consequently preserves cup with these constant module maps. Take a common torsion-basis cover on the parameter curve for the cyclic-isogeny correspondence. The same argument identifies its coefficient pullback with the rational matrix (A5). The equivariant cover resolutions in Lemma 2.4 descend these compatible maps, including the compact-to-ordinary map. Thus they identify the denominator-cleared cup and Fricke maps on its parabolic image. Passage to compatible inverse limits and \(\mathbf Q_\ell\) has exactly the finiteness/Mittag–Leffler scope recorded in that lemma. Only then divide by \(m!\) to compare the rational pairing. This is valid also when \(\ell\mid m!\); no inverse of \(m!\) in a finite coefficient ring was used.
+
+This proves the extra cup/Fricke compatibility from those actual comparison proofs once the family, covers, and correspondence exist. It does not construct those geometric objects. In particular a common torsion-basis cover cannot be named before there is an arithmetic parameter curve carrying the isogeny.
+
+It follows under A1–A3 that
+\[
+ W_{f,\lambda}
+ =\bigcap_n\ker(T_n-a_n)\ \cap\
+     \bigcap_d\ker(D_d-\chi(d))
+\]
+is a two-dimensional continuous Galois representation with a perfect alternating form induced by \(B(-,w-)\).
+
+#### Small levels and their coefficient action
+
+For clarity, here is the correct *conditional* finite-quotient sheaf argument. Suppose an actual finite proper map \(q:Z\to Y\) is the quotient of a fine curve by a finite group \(H\), and the coefficient system \(L\) on \(Z\) has an \(H\)-equivariant structure. In addition retain finite-proper base change and the compact-support pushforward identity for these constructible coefficients as explicit cohomological premises; this paragraph does not prove those general theorems. Work over a characteristic-zero coefficient field. Finite proper base change makes \(R^iq_*L=0\) for \(i>0\), because its geometric fibers are finite schemes and their étale sites are finite discrete point sites. Averaging
+\[
+ e_H=|H|^{-1}\sum_{h\in H}h
+\]
+is an idempotent on \(q_*L\). Put \(F=e_Hq_*L\). The splitting and the pushforward cohomology identity give
+\[
+ H^i(Y,F)=H^i(Z,L)^H,\qquad
+ H_c^i(Y,F)=H_c^i(Z,L)^H.
+\]
+The compact-to-ordinary map commutes with the idempotent, so taking its image gives the same parabolic identification. Finiteness makes the map proper, which supplies the compact-support identity.
+
+This calculation allows a branched finite quotient, but \(F\) need not be lisse at elliptic fixed points. Its stalk is the invariants under the point stabilizer acting on the coefficient fiber. The stabilizer action must be retained: an ineffective geometric action of \(-I\) can still act as \((-1)^m\) on the coefficient fiber. An identification with the desired orbifold modular coefficient object must be proved with that action. A1–A3 at small levels require that identification, its cup normalization, and the descended cyclic-isogeny correspondence. Lesson 12, Lemma 2.3, proves the easier finite étale case and does not, as written, construct this quotient or prove these additional modular identifications.
+
+Likewise the group may act on the whole arithmetic full-level scheme and permute cyclotomic components. Using a single complex component without its arithmetic permutation action would not construct a representation of \(G_{\mathbf Q}\). A full-level construction must include those components and their descent data.
+
+The averaging computation above is over \(K_\lambda\), even when \(\ell\mid |H|\). It is not integral averaging, and says nothing about invariants commuting with reduction at such a prime.
+
+#### The global determinant
+
+Let \(\sigma(\zeta_N)=\zeta_N^u\). Galois commutes with the diamond action and preserves \(W_{f,\lambda}\) by A1. From (A1),
+\[
+ w\sigma y'=\sigma wD_u^{-1}y'
+           =\chi(u)^{-1}\sigma wy'
+       \quad(y'\in W_{f,\lambda}).
+\]
+Galois covariance of the cup trace therefore gives
+\[
+ \Psi(\sigma x',\sigma y')
+ =\chi(u)^{-1}\chi_\ell(\sigma)^{1-k}\Psi(x',y').                \tag{A10}
+\]
+If \(x',y'\) is a basis, bilinearity and alternation give
+\(\Psi(Mx',My')=\det(M)\Psi(x',y')\) by direct expansion. Since (A9) proves the latter basis value is nonzero,
+\[
+ \det W_{f,\lambda}=\chi_G^{-1}\chi_\ell^{1-k},\qquad
+ \det V_{f,\lambda}=\chi_G\chi_\ell^{k-1},
+ \quad V_{f,\lambda}=W_{f,\lambda}^{\vee}.                      \tag{A11}
+\]
+This is a global equality on every element of \(G_{\mathbf Q}\), not a density deduction from the annihilating congruence relation. It covers scalar Frobenius, composite \(N\), nonreal characters, odd weights, every \(\lambda\), and \(\ell=2\). Levels admitting no form of the given parity contribute no constituent.
+
+The geometric calculation underlying (A1) is already written in Lesson 12, Lemma 3.2: choices of \(Q\) with \(e_N(P,Q)=\zeta_N\) differ by the subgroup generated by \(P\); the dual quotient takes the second chosen point to \(-P\); choosing the negative identification to return the marking to \(P\) makes the composite isogeny \([-N]\). The pairing-adjoint identity used there is actually proved in the elliptic Tate-module lesson, Lemma 1.4, for composite torsion orders as well as primes. An isogeny of degree \(N\) has symmetric-power coefficient multiplier \(N^m\), and changing \(\zeta_N\) to \(\zeta_N^u\) changes the quotient generator by \(u\). These calculations prove the identities once the universal quotient maps exist. The construction of those maps over the relevant modular models is still A3. At levels one and two, the point marking alone cannot choose the negative double-quotient identification, because the point equals its negative. The coefficient convention in A3 retains the central automorphism through the auxiliary descent and chooses that identification; its square is not inferred from the marking alone.
+
+□
+
+#### 3.4. Perfectness on a stable rank-two lattice
+
+**Proposition 3.4.** Let \(E=K_\lambda\), \(\mathcal O=\mathcal O_E\), with uniformizer \(\varpi\) and residue field \(\kappa\). Suppose the representation \(V_{f,\lambda}\) and (A11) have been constructed. Every stable full lattice \(T\subset V_{f,\lambda}\) has a perfect alternating \(\mathcal O\)-pairing
+\[
+ T\times T\longrightarrow\mathcal O(\chi_G\chi_\ell^{k-1})
+                                                               \tag{A12}
+\]
+after choosing a scalar normalization of its rational determinant form. Its reduction is perfect and alternating in every residual characteristic. No irreducibility premise is needed.
+
+*Proof.* Stable lattices exist by the actual compact-group proof in Lesson 1, Theorem 2.1. To recall the construction, the stabilizer of any full lattice \(T_0\) is open; its inverse image in the compact group has finite index. Sum the finitely many orbit lattices \(\rho(g_i)T_0\). The sum is finitely generated, torsion-free, spans \(V\), and is stable. The DVR submodule induction of Lesson 1, Lemma 0A.1, makes it free of rank two.
+
+Let \(D=\bigwedge^2_E V\). Its action is \(\mu=\chi_G\chi_\ell^{k-1}\) by (A11). The wedge map is a perfect alternating \(E\)-pairing \(V\times V\to D\). Choose an \(\mathcal O\)-basis \(t_1,t_2\) of any stable \(T\). Then
+\[
+ D_T=\bigwedge^2_{\mathcal O}T=\mathcal O(t_1\wedge t_2)
+\]
+is a stable line: every group matrix is in \(\operatorname{GL}_2(\mathcal O)\), so its determinant is a unit. Identifying its displayed generator with a generator of \(\mathcal O(\mu)\) proves (A12). The pairing has matrix
+\(\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\), whose determinant is one.
+
+Equivalently, if the rational form obtained by dualizing Theorem 3.3 is written with value \(a\ne0\) on \(t_1,t_2\) in a fixed target generator, multiply it by \(a^{-1}\). Any alternating form on a two-dimensional space is a scalar multiple of wedge, so this is the same construction. Scalar multiplication does not change the Galois multiplier.
+
+Reduction retains that matrix and determinant, including characteristic two. Its value on any \((s,t)\) paired with itself is \(st-ts=0\), so actual alternation holds there. The finite residue field makes the reduced image finite; continuity follows from the open congruence kernel. Determinants and characteristic polynomials reduce coefficientwise in the stable basis.
+
+For a stable filtration the matrices are block triangular, so determinant and characteristic polynomial multiply over the successive quotients. Semisimplification preserves them. Lattice independence of the semisimplified representation is the exact-sequence proof in Lesson 1, Theorem 2.2, actually inspected here. Thus
+\[
+ \det\overline\rho^{\,\mathrm{ss}}
+ =\overline\chi_G\,\overline\chi_\ell^{\,k-1}.
+\]
+The same wedge construction supplies a perfect determinant form on the semisimplification. It need not identify the original nonsplit reduction with that semisimplification. \(\square\)
+
+This perfect lattice form is not claimed canonical, an integral restriction of the original cup form with unchanged target generator, or an integral Hecke spectral summand of the whole cohomology. In rank two a scalar normalization always works; none of those stronger assertions is required merely to reduce a constructed characteristic-zero representation.
+
+#### 3.5. The natural symmetric-power lattice
+
+**Lemma 3.5.** The natural \(\operatorname{Sym}^2\mathbf Z_2^2\) lattice has no perfect \(\operatorname{SL}_2(\mathbf Z_2)\)-invariant bilinear self-pairing.
+
+*Proof.*
+
+This is a general algebraic obstruction, separate from numerical checks.
+
+Let \(H=\mathbf Z_2e_1\oplus\mathbf Z_2e_2\) with its determinant-one alternating form, and let \(L=\operatorname{Sym}^2H\). In the basis
+\[
+ e_0=e_1^2,\quad e_1'=e_1e_2,\quad e_2'=e_2^2
+\]
+every \(\operatorname{SL}_2(\mathbf Z_2)\)-invariant bilinear form on \(L\otimes\mathbf Q_2\) has anti-diagonal entries
+\[
+                       c,\quad -c/2,\quad c.                   \tag{A13}
+\]
+Here is a proof of uniqueness with that normalization. Diagonal matrices \(\operatorname{diag}(a,a^{-1})\), for the infinitely many units \(a\), act on these basis vectors with weights \(2,0,-2\). Invariance forces a matrix entry to be zero unless the two weights sum to zero. This follows because a nonzero-weight power of \(a\) is not identically one on the infinite unit group. Upper unipotents send \(e_2\) in \(H\) to \(e_2+te_1\). Equate the linear coefficients in \(t\) in the invariance identity. In general degree \(m\), writing \(b_i=b(e_i,e_{m-i})\), the equations are
+\[
+ i b_{i-1}+(m-i+1)b_i=0,
+ \qquad
+ b_i=\frac{(-1)^i}{\binom mi}b_0.
+\]
+They give (A13). Polynomial identities valid for the infinitely many \(t\in\mathbf Z_2\) are identities over \(\mathbf Q_2\), so the coefficient comparison is legitimate.
+
+For the form to be integral on \(L\), its middle entry forces \(c\in2\mathbf Z_2\). Its two end entries are then nonunits. Its determinant, the product of the three anti-diagonal entries up to sign, is divisible by \(4\) when \(c=2u\) with \(u\) a unit, and is even less invertible when \(u\) is a nonunit. There is therefore **no perfect invariant integral self-pairing on this natural coefficient lattice**.
+
+The standard denominator-cleared form \(m!b_m\) has entries
+\[
+                    (-1)^i i!(m-i)!.
+\]
+These are integral, but they need not be units at small coefficient primes. Deligne's freely accessible original §3.20 explicitly distinguishes its integral coefficient form from nondegeneracy after tensoring with \(\mathbf Q_\ell\); it does not promise an unrestricted integral perfect self-pairing.
+
+Integral coefficient duality can instead pair \(\operatorname{Sym}^mH\) with its actual \(\mathcal O\)-linear dual, described by the corresponding divided-power module. In a basis the evaluation pairing with that dual is perfect. An identification of this dual with the *same* natural symmetric-power lattice is exactly where binomial denominators arise. Parabolic image saturation, torsion, congruences between Hecke packets, and integral character or auxiliary-level projectors then require their own analyses. Rational idempotents do not prove their integral counterparts.
+
+Even a perfect ambient alternating lattice can have a nonperfect saturated rank-two restriction: in the symplectic lattice with pairs \(e_i,f_i\), the direct summand generated by \(e_1\) and \(\varpi f_1+e_2\) is saturated, while their pairing is \(\varpi\). The quotient is free, since the displayed generators extend to a basis by elementary coordinate elimination. This example shows why rational primitive perfectness alone supplies no natural integral primitive perfectness.
+
+□
+
+#### 3.6. The residual polynomial
+
+**Corollary 3.6.** If A1–A5 hold, a primitive form has a continuous semisimple residual representation over its residue coefficient field with the polynomial (A14) at every good prime. Irreducibility is not required for this implication.
+
+*Proof.*
+
+Add two arithmetic conclusions to A1–A3:
+
+**A4. Good specialization.** \(V_{f,\lambda}\) is unramified outside \(N\ell\), proved by the actually constructed arithmetic model and coefficient specialization.
+
+**A5. Higher-weight congruence.** At every \(p\nmid N\ell\), the normalized geometric Frobenius on \(W_{f,\lambda}\) satisfies
+\[
+ F+\chi(p)p^{k-1}F^{-1}=a_p(f)I.
+\]
+This requires the full special-fiber correspondence, its supersingular points, and coefficient trace, not just the ordinary subgroup calculation.
+
+Equation (A11) gives determinant \(\chi(p)p^{k-1}\) for geometric Frobenius on \(W\): geometric Frobenius is the inverse of arithmetic Frobenius, and (A11)'s exponent and character invert accordingly. Lesson 12, Proposition 3.1, now gives the characteristic polynomial even when \(F\) is scalar. Arithmetic Frobenius on \(V=W^\vee\) has the same polynomial. Choosing a stable lattice and reducing as in Proposition 3.4 yields
+\[
+ \det(X-\overline\rho_{f,\lambda}^{\,\mathrm{ss}}(\operatorname{Fr}_p))
+ =X^2-\overline{a_p(f)}X+\overline{\chi(p)}p^{k-1},
+ \qquad p\nmid N\ell.                                          \tag{A14}
+\]
+
+A lifted good-Hecke packet need not already be a primitive form at level \(N\). The local proof of Corollary F.4 supplies a primitive normalized form \(h\) at some \(L\mid N\), with character descending to \(L\), and the same good eigenvalues at every prime outside \(N\). Apply the construction at that actual primitive level \(L\). Its representation is unramified outside \(L\ell\), hence outside \(N\ell\), and (A14) gives the desired packet. No uniqueness assertion across all lower levels is used.
+
+At weight \(k=\ell\), the determinant term reduces to \(\overline{\chi(p)}\) for \(p\ne\ell\). Indeed multiplication by the nonzero residue of \(p\) permutes \(\mathbf F_\ell^\times\); taking the product of its elements and cancelling that nonzero product gives \(p^{\ell-1}=1\) in \(\mathbf F_\ell\). The later weight-one construction uses this polynomial. Its descent to a smaller finite field is a separate assertion; it is not a consequence of the pairing. Proposition 3.4 itself includes residual characteristic two.
+
+This implication requires existence, determinant, good specialization, and the congruence relation. It does **not** require irreducibility of the higher-weight characteristic-zero representation or the general smooth-projective purity theorem merely to produce the semisimple residual provider. Those remain obligations of the full higher-weight theorem; this corollary makes no assertion that they have been proved. \(\square\)
+
+![The primitive determinant pairing, stable reduction and geometric premises](../assets/higher-weight-primitive-pairing-proof-map.png)
+
+[Open Figure 1 at full size](../assets/higher-weight-primitive-pairing-proof-map.png)
+
+*Figure 1.* The complex mixed value uses the exact Fricke pullback factor and conjugate phase. A separate rational matrix proves nondegeneracy at every coefficient place. The rank-two lattice is scalar-normalized; this does not assert perfectness of the natural symmetric-power lattice. A1–A5 name arithmetic premises; (A1)–(A14) name equations. Exact proof locators: §2.5, Theorem S and Corollary S.4; §2.5A, Theorems F.2–F.3; §3.3, Theorem 3.3, Proposition 3.4, Lemma 3.5 and Corollary 3.6; Exercises 8.5–8.6. Reproducible source: `figure-sources/higher-weight-primitive-pairing-proof-map.py`. Free human sources: Li, printed pages 287–297, and Deligne, original §3.20, linked below.
 
 ## 4. Why the Frobenius eigenvalues have the right size
 
@@ -382,7 +1048,230 @@ Finally weak Lefschetz reduces degree \(i<d\) to a smooth projective section of 
 
 The unresolved portion is **(4.0)**. The actual earlier trace-formula lesson, *The Riemann hypothesis over finite fields*, §§2–6, proves its rationality and three-term Leray reduction from a Lefschetz pencil, including the case where the nonzero vanishing cycles all lie in the radical. Its pencil lesson explicitly imports three geometric inputs: existence of the pencil, the general étale Picard–Lefschetz sequence, and the global assertions that the local inertia images generate monodromy and that the signed vanishing cycles are conjugate. Those are geometric proof obligations, not supplied by the tensor argument above. Rationality also uses the curve bound for covering curves and their twists, which Lemma 4.0D supplies below. The nodal resolution proved below supplies the Kuga–Sato compactification; it does not supply these arbitrary-dimensional pencil inputs.
 
-The constant-coefficient curve trace identity required below is constructed in §§4.0C.1–6. We use the actual earlier curve duality, proper base change and proper-factor Künneth proofs. The product trace is constructed from the curve traces; the normal-coordinate calculation supplies the required divisor orientation. Higher cohomological continuity, which the earlier direct-image lesson imports, remains an explicit foundational proof obligation. The argument below records each use of it.
+The constant-coefficient curve trace identity required below is constructed in §§4.0C.1–6. We use the actual earlier curve duality, proper base change and proper-factor Künneth proofs. The product trace is constructed from the curve traces; the normal-coordinate calculation supplies the required divisor orientation. Section 4.0C.0 proves the higher cohomological continuity previously imported by the direct-image lesson, with its full arbitrary-abelian coefficient scope. The argument records each use of that proved comparison and retains its exact earlier foundation premises.
+
+### 4.0C.0. Higher continuity and its canonical comparisons
+
+#### 4.0C.0.1. Scope and actual earlier interfaces
+
+Let \(I\) be a small filtered category. Our notation for an arrow \(a:i\to j\) includes the affine scheme map \(f_a:X_j\to X_i\). The \(X_i\) are quasi-compact and quasi-separated, and \(X=\varprojlim_i X_i\), with projection \(p_i:X\to X_i\). A coefficient system consists of abelian etale sheaves \(F_i\) and maps
+\[
+ \alpha_a:f_a^{-1}F_i\longrightarrow F_j
+ \tag{HC1}
+\]
+compatible with identities and composition. Set
+\[
+ L(F_i)=\varinjlim_i p_i^{-1}F_i.
+ \tag{HC2}
+\]
+Associativity of fibre products and inverse image is always interpreted through its canonical identifications. The compatibility in (HC1) includes those identifications; it does not assume that pullback functors are literally equal under composition.
+
+The actual inspected earlier proofs are these. *Topoi, morphisms and points*, Sections 2--3, constructs the inverse-image and slice adjunctions. *Cohomology on sites*, Proposition 1.1, proves exact sheafification, exact filtered sheaf colimits and enough injectives; Proposition 2.1 proves exact slice restriction and local vanishing of positive-degree classes; Lemma 3.1 and Theorem 3.2 prove the injective Cech contraction and the Cech-to-cohomology spectral sequence; Theorem 4.1 proves its simultaneous vanishing induction. 4.0C.0.5 below supplies its own finite double-complex proof of the required vanishing, without invoking spectral-sequence convergence. *The etale site and its points*, Section 2, proves the pointed-neighbourhood, sheafification-stalk and geometric-stalk criteria. Its Theorem 4.1 proves the identification of the neighbourhood ring colimit with the earlier strict-henselization construction. *Pushforward, pullback and finite morphisms*, Section 1 and Lemma 2.1, proves exact inverse image, its direct-image adjoint and the direct-image cohomology presheaf formula before importing continuity.
+
+For geometry, *Formally smooth, unramified and etale ring maps*, Sections 4--5, proves stability and the finite square-Jacobian local presentations. *Etale morphisms and their local structure*, Theorem 3.1 and Corollary 3.2, actually writes the monic standard-etale local-form proof, including its algebraic Zariski input. We use that written local-form theorem, rather than treating the stated local form in *The etale site and its points* as a proof. Its algebraic-Zariski prerequisites remain required. All finite limit and covering arguments needed from that local form are written in 4.0C.0.2.
+
+#### 4.0C.0.2. Finite etale data on an affine-transition limit
+
+Use the basis \(\mathcal B_T\) of etale morphisms of finite presentation \(V\to T\) for a qcqs scheme \(T\). Their sources are qcqs. The identity is in this basis; finite fibre products stay in it. Every etale object has a cover by members of this basis: take affine source charts over affine target charts and their finitely presented local etale equations. Covers of a basis object have a finite refinement by basis objects. Indeed etale maps have open images, as proved below, and the target is quasi-compact. Choosing finitely many small affine charts whose images cover produces the refinement. Thus sheaves on this basis, with these finite coverings, determine sheaves on the whole small etale site. Explicitly their sections on another object are matching families on a basis cover; refining two covers and using the sheaf equalizer identifies these families independently of the chosen cover.
+
+**Lemma 4.0C.0.2.** Each \(V\in\mathcal B_X\) is the base change of some \(V_i\in\mathcal B_{X_i}\). Morphisms between such objects, equality of morphisms, and every finite covering descend to a sufficiently late stage. In particular every finite covering and its finite iterated fibre products can be used at one common stage.
+
+*Proof.* We spell out the finite-data assertions, including the covering assertion. Choose one index \(i_0\) and a finite affine open cover of \(X_{i_0}\). Pullbacks of these opens to every later stage and to the limit are affine, because all transition maps are affine. On such a chart their rings satisfy
+\[
+ A=\varinjlim_j A_j.
+ \tag{HC3}
+\]
+This constructs the limit scheme by gluing the affine limits. To check the gluing, cover each overlap of base charts by finitely many principal opens, using quasi-separatedness. Ring localization commutes with (HC3): a fraction has a stage numerator and denominator, and an equality of fractions is a finite ring equation at a later stage. Hence on these principal opens the affine limits have the identical restriction rings and canonical overlap identifications. Their cocycle identities are inherited from the stage identities; ordinary scheme gluing then constructs \(X\). A compatible family of maps into the \(X_j\) gives a map into each of these affine limits by the universal property of ring colimits, and these maps glue uniquely. This verifies the inverse-limit universal property. Its projection to \(X_{i_0}\) is affine. It is quasi-compact; its diagonal is quasi-compact because its relative diagonal over \(X_{i_0}\) is affine and the base diagonal is quasi-compact. Thus the limit is qcqs. For a general filtered category use its coslice \(i_0/I\); that category is filtered and its forgetful functor is cofinal. Indeed any other index has a common receiving index with \(i_0\), and any two such choices and their finitely many parallel composites can be equalized at a further receiving index. These same common-stage operations both prove cofinality and realize all finite equations used below.
+
+For affine algebras, a finite presentation \(A[Z_1,\ldots,Z_s]/(r_1,\ldots,r_t)\) descends by choosing representatives of its finitely many coefficients. A map between two finitely presented algebras descends by choosing the images of finitely many generators. Its finitely many defining relations hold at some common later stage. Equality of two such maps is likewise witnessed by finitely many equalities on generators. This proves the affine object, map and equality assertions.
+
+We will also need the same assertion for quasi-compact opens. In an affine scheme such an open is a finite union \(\bigcup D(g_b)\). Its defining elements descend. The inclusion
+\[
+ D(g)\subset\bigcup_bD(h_b)
+ \quad\Longleftrightarrow\quad
+ g^N=\sum_b c_bh_b\text{ for some }N,c_b
+ \tag{HC4}
+\]
+is a finite ring identity. To justify the equivalence, the inclusion says that every prime containing the \(h_b\) contains \(g\). If \(g\) were outside their radical, a maximal ideal disjoint from its powers in the quotient ring, obtained by Zorn, would give a contrary prime. Radical membership is exactly the power identity. Thus inclusions and equality of finite-union opens hold at some later stage whenever they hold on the limit. A finite affine cover gives the identical conclusion on any qcqs scheme already descended. Intersections of its affine opens are quasi-compact by quasi-separatedness, so only finitely many principal charts and identities are needed.
+
+An object \(V\to X\) of the stated basis has a finite affine cover whose members map into the pulled-back base charts. Each algebra is finitely presented. Refine further by finitely many principal standard-etale charts supplied by the inspected local-form proof. Their monic equations, their inverted elements and the equations witnessing invertibility of their derivatives are finite data. They descend to etale charts: the earlier square-zero root-lifting proof establishes that these same standard presentations are etale over each stage ring.
+
+For clarity, the gluing of these charts also descends. A pairwise overlap is a quasi-compact open in each source chart and hence a finite union of principal opens. Descend those principal elements first. On finitely many principal refinements, the overlap identifications are maps between finite-presentation algebras; descend their finitely many generator images and relations. Their inverse identities descend by the affine equality assertion. The equality of the domains on each triple overlap is an equality of quasi-compact opens, governed by (HC4), and the cocycle identities are finitely many equalities of maps on principal charts. Choose one later stage where all of these identities hold. Glue the affine charts there along these open isomorphisms. The quotient of their disjoint union by the open identifications has the stated chart topology, and the structure sheaves glue by the cocycle identity. This constructs a scheme and its map to \(X_i\); its base change is \(V\). The map is etale on the charts. It is quasi-compact and quasi-separated because the chart list and all overlaps are finite and quasi-compact, and consequently it is of finite presentation. This proves object descent.
+
+Maps between two descended objects have the same finite description. Preimages of a finite affine target cover are quasi-compact opens of the source. One useful verification of this claim is that any map from a quasi-compact scheme to a quasi-separated scheme is quasi-compact: its graph is a base change of the quasi-compact target diagonal, and projection from the product is quasi-compact. Descend these preimage opens by (HC4), choose finite principal source refinements mapping into the target charts, and descend the corresponding algebra maps. Their agreement on overlaps, and equality of two entire maps, are finite identities on these refinements. Thus map descent and eventual equality are proved without a separate scheme-limit theorem.
+
+Here is also an elementary open-image calculation. On a standard etale chart write \(B=(A[T]/(f))_g\), with \(f\) monic of degree \(d\), and absorb \(f'\) into the inverted element if necessary. Put \(B_0=A[T]/(f)\), a free \(A\)-module of rank \(d\). A prime \(\mathfrak p\) is in the image of \(\operatorname{Spec}(B_0)_g\) exactly when \(g\) is not nilpotent in \(B_0\otimes_A\kappa(\mathfrak p)\). Multiplication by \(g\) on this finite-dimensional algebra is nilpotent exactly when its characteristic polynomial is \(T^d\). For the forward implication, choose a basis adapted to the filtration by the kernels of its powers; the matrix is strictly triangular. For the reverse implication the adjugate polynomial identity \((TI-M)\operatorname{adj}(TI-M)=\det(TI-M)I\) gives the characteristic-polynomial identity at \(M\): expand in powers of \(T\), compare coefficients and multiply successively by powers of \(M\); the adjacent terms telescope. Thus \(M^d=0\). The image is consequently a finite union of principal opens given by the nonleading characteristic-polynomial coefficients. General etale images are unions of these opens; a quasi-compact source gives a quasi-compact image. Images of scheme morphisms commute setwise with field base change here: a nonempty fibre remains nonempty after extending its residue field, since a nonzero vector in its nonzero coordinate algebra stays nonzero under field scalar extension.
+
+Now descend a finite covering \(W_b\to V\) and its maps to one stage. The maps there are etale, since maps between etale objects are etale by the actual lifting proof of Proposition 7.4 of the ring-map lesson. Their images have union a quasi-compact open \(O_i\subset V_i\), and its inverse image on the limit is all of \(V\). On finitely many affine charts its closed complement is \(V(h_1,\ldots,h_m)\). Emptiness after (HC3) gives an identity \(1=\sum c_ah_a\) in the limit ring. That finite identity holds at a later stage. Taking a common stage for the finite chart list makes the complement empty, so the family is a covering there. Fibre products are formed by the same finite presentations and commute with base change. This proves every assertion. \(\square\)
+
+#### 4.0C.0.3. The degree-zero comparison for a general coefficient system
+
+**Lemma 4.0C.0.3.** If \(V=V_i\times_{X_i}X\) is a basis object, then
+\[
+ \Gamma(V,L(F_i))
+ =\varinjlim_{(a:i\to j)}\Gamma(V_j,F_j),
+ \qquad V_j=V_i\times_{X_i}X_j.
+ \tag{HC5}
+\]
+In particular, filtered sheaf colimits on a fixed qcqs scheme commute with sections on every basis object. The assertion also holds for sheaves of sets.
+
+*Proof.* Define the right-hand side as a presheaf \(H\) on the limit basis. Lemma 4.0C.0.2 makes it independent of a chosen descended presentation: any two presentations and their isomorphism agree at a common later stage. It also defines restriction maps, because the relevant morphisms descend and their equalities become equalities later.
+
+This presheaf is a sheaf. Descend a finite covering of \(V\) to a covering of \(V_j\). Every finite iterated intersection descends with it. The degree-zero sheaf equalizer at each stage is
+\[
+ F_j(V_j)\longrightarrow\prod_bF_j(W_{b,j})
+ \rightrightarrows\prod_{b,c}F_j(W_{b,j}\times_{V_j}W_{c,j}).
+ \tag{HC6}
+\]
+Filtered colimits commute with these finite products and equalizers: finitely many representatives have a common target, and finitely many equality relations hold together at a further target. Taking the colimit of (HC6) proves exactly the sheaf equalizer for \(H\). Finite coverings generate the basis topology by 4.0C.0.2.
+
+Finally \(H=L(F_i)\), as an actual sheaf, by its universal property. For any sheaf \(G\) on \(X\), compatible maps \(p_i^{-1}F_i\to G\) are equivalently compatible maps \(F_i\to p_{i,*}G\). Their section maps on descended basis objects give a unique map from the right side of (HC5) to \(G(V)\). Conversely a map \(H\to G\) supplies those section maps by the stage-to-colimit arrows. Objects and arrows descend, so the two constructions are inverse. This identifies the universal sheaf colimit and proves (HC5). The same argument uses finite limits of sets without addition. \(\square\)
+
+#### 4.0C.0.4. Compatible resolutions with injective components
+
+Let \(\mathcal A\) be the category of systems (HC1). It is abelian with kernels and cokernels at each index: inverse image is exact, so the induced structure maps on those kernels and cokernels are compatible. Evaluation at an index is exact.
+
+**Lemma 4.0C.0.4.** Every system embeds in an injective object of \(\mathcal A\) whose components are injective sheaves. It therefore has a resolution in \(\mathcal A\) with injective components at every degree.
+
+*Proof.* For an index \(i\), evaluation has a right adjoint \(R_i\). On a sheaf \(M\) at \(X_i\), its component at \(j\) is
+\[
+ (R_iM)_j=\prod_{a:j\to i}f_{a,*}M.
+ \tag{HC7}
+\]
+An empty product is the zero abelian sheaf. For \(b:j\to k\), the projection indexed by \(a\circ b:j\to i\), followed by the counit, gives the component of
+\(f_b^{-1}(R_iM)_j\to(R_iM)_k\) indexed by \(a:k\to i\). The counit identities give the composition law: both successive constructions are adjoint to projection onto the factor indexed by the same composite arrow. A map from a system \(F\) to (HC7) is uniquely determined by \(F_i\to M\); all other components are its composites with (HC1) and adjunction. This proves the asserted right adjunction, including for an index category with parallel arrows.
+
+Choose embeddings \(F_i\hookrightarrow J_i\) into injective sheaves, using the actual enough-injectives proof in the cohomology lesson. Their adjoints give
+\[
+ F\longrightarrow\prod_iR_iJ_i=:J.
+ \tag{HC8}
+\]
+At index \(i\), the identity-arrow factor of \(R_iJ_i\) is the chosen embedding, so (HC8) is componentwise injective. Since evaluation is exact, its right adjoint takes an injective to an injective object of \(\mathcal A\). Products of injectives are injective: extending a map across a monomorphism is done in each component, and the product universal property combines the extensions. Thus \(J\) is injective in \(\mathcal A\).
+
+Each component of \(J\) is also injective as a sheaf. Every factor in (HC7) is a direct image of an injective; its inverse-image left adjoint is exact, so the same extension argument proves injectivity of that factor. The product remains injective. Apply (HC8) successively to cokernels to construct the stated resolution.
+
+Here are the comparison and exact-sequence arguments in this category. A map of systems extends to a chain map between two such resolutions. In degree zero extend its composite into the target injective across the source augmentation. After degrees through \(a\) are constructed, the map \(d\phi^a\) kills the kernel of the source differential, by exactness and the preceding chain identity; it therefore defines a map on its image in degree \(a+1\). Extend that map to the whole next source term by target injectivity. Two extensions induce homotopic chain maps: their difference in degree zero kills the augmentation and factors through the image of the source differential; extend this factor to a map into the target degree-zero injective, and subtract its homotopy boundary. The new difference is zero in degree zero. Repeat in each degree. Every extension occurs in \(\mathcal A\), so the resulting maps and homotopies respect the coefficient structure.
+
+For a short exact sequence \(0\to A\to B\to C\to0\) of systems, choose embeddings \(A\to J_A\), \(C\to J_C\) of the kind just constructed. Extend \(A\to J_A\) across \(B\), and combine that extension with \(B\to C\to J_C\). This embeds \(B\) into \(J_A\oplus J_C\): an element of its kernel first maps to zero in \(C\), hence lies in \(A\), where the first component is injective. The resulting diagram has split exact injective middle row \(0\to J_A\to J_A\oplus J_C\to J_C\to0\). Its three cokernels form another short exact sequence, by the kernel/cokernel calculation in that diagram. Repeat on the cokernels. This gives degreewise split exact compatible injective resolutions and hence the connecting maps by lifted cocycle boundaries. \(\square\)
+
+#### 4.0C.0.5. Why these limit sheaves are acyclic
+
+**Lemma 4.0C.0.5.** Suppose every component \(J_i\) of a coefficient system is injective. Then \(E=L(J_i)\) is acyclic for sections on every \(V\in\mathcal B_X\):
+\[
+ H^n(V,E)=0\qquad(n>0).
+ \tag{HC9}
+\]
+
+*Proof.* Let \(\mathcal U=\{W_b\to V\}\) be a finite basis covering. Descend the objects, arrows and covering to one stage by 4.0C.0.2. Lemma 4.0C.0.3 identifies its Cech complex with
+\[
+ \check C^\bullet(\mathcal U,E)
+ =\varinjlim_j\check C^\bullet(\mathcal U_j,J_j).
+ \tag{HC10}
+\]
+Each degree has finitely many tuples of indices, so its products commute with the filtered colimit. The complex at every stage has zero positive cohomology. This is the actual injective Cech proof: the augmented chain complex of free abelian sheaves on the covering nerve is locally contracted by inserting one chosen covering lift as its first entry; hence it is exact. Applying Hom into \(J_j\) gives the exact augmented Cech complex. Filtered colimits of abelian groups preserve exactness, so (HC10) has zero positive Cech cohomology.
+
+Here is the full step from Cech vanishing to derived vanishing. Induct simultaneously on \(n>0\) over all basis objects. Assume (HC9) in degrees strictly between zero and \(n\). A class \(\xi\in H^n(V,E)\) dies on a covering, by the local vanishing proof: represent it by a closed section in degree \(n\) of an injective resolution, and lift that section locally through the previous differential, using exactness as sheaves. Refine this covering by a finite basis covering.
+
+We give the finite double-complex argument explicitly, so this step requires no additional spectral-sequence convergence theorem. Let \(E\to K^\bullet\) be an injective resolution on \(X\), and put \(D^{a,b}=\check C^a(\mathcal U,K^b)\). The horizontal and vertical differentials commute, and on its first-quadrant total complex use
+\[
+ d=d_h+(-1)^a d_v\quad\hbox{on }D^{a,b}.
+ \tag{HC11}
+\]
+The augmented horizontal rows \(K^b(V)\to D^{0,b}\to D^{1,b}\to\cdots\) are exact by the injective covering contraction above. Their augmentation is injective on cohomology. Here is the needed verification: if an augmented degree-\(n\) cocycle is \(dB\), remove the largest positive Cech-degree component \(B^{a,b}\). Since \(dB\) has only Cech degree zero, \(d_hB^{a,b}=0\); horizontal exactness writes it as \(d_hC^{a-1,b}\). Subtract \(dC\) from \(B\), reducing that largest degree. There are finitely many components, so this ends with \(B^{0,n-1}\) horizontally closed. It is the augmentation of a section of \(K^{n-1}(V)\); hence the original class is already a boundary in \(K^\bullet(V)\).
+
+Represent \(\xi\) by a closed section \(z\in K^n(V)\). Its restrictions are boundaries, so its augmentation \(z_0\in D^{0,n}\) is \(d_vb_0\) for some \(b_0\in D^{0,n-1}\). Successively for \(1\leq a\leq n-1\), choose \(b_a\in D^{a,n-1-a}\) such that
+\(d_vb_a=(-1)^{a+1}d_hb_{a-1}\).
+The right-hand side is vertically closed: for \(a=1\) use \(d_hz_0=0\), and subsequently use \(d_h^2=0\). Its vertical degree is \(n-a\), strictly between zero and \(n\). The induction hypothesis on all iterated intersections makes it a vertical boundary, so the choices exist. Products here are finite, and slice restriction of \(K^\bullet\) is an injective resolution by the inspected slice proof.
+
+The only remaining component of \(d(\sum b_a)\) besides \(z_0\) is \(d_hb_{n-1}\in D^{n,0}\). It is vertically closed, hence is a Cech cochain of \(E\), and it is horizontally closed. Positive Cech vanishing in (HC10) writes it as \(d_hw\) for \(w\in\check C^{n-1}(\mathcal U,E)\). Replace \(b_{n-1}\) by \(b_{n-1}-w\); its vertical differential is unchanged, and now \(d(\sum b_a)=z_0\). The injectivity of the augmentation just proved gives \(\xi=0\). For \(n=1\) this argument uses only \(b_0\) and \(w\), with no intermediate choices. This proves the simultaneous induction in every degree. \(\square\)
+
+#### 4.0C.0.6. Higher continuity at its full coefficient scope
+
+**Theorem 4.0C.0.6.** With the hypotheses of 4.0C.0.1, the canonical map is an isomorphism for every \(n\geq0\):
+\[
+ \varinjlim_i H^n(X_i,F_i)
+ \xrightarrow{\sim} H^n(X,L(F_i)).
+ \tag{HC12}
+\]
+The comparison is natural in morphisms of systems, commutes with connecting homomorphisms and with restriction to any descended basis object. No torsion, finite generation, constructibility or cartesian-coefficient hypothesis is required.
+
+*Proof.* Resolve the system in \(\mathcal A\) as \(F\to J^\bullet\) by 4.0C.0.4. At every index this is an injective resolution. The functor \(L\) is exact: all inverse images are exact and filtered colimits of abelian sheaves are exact by the inspected sheafification proof. Hence \(L(F)\to L(J^\bullet)\) is a resolution. Each term is sections-acyclic by 4.0C.0.5, including on the final basis object \(X\).
+
+An acyclic resolution computes derived sections for the following explicit reason. If \(F\to E^\bullet\) is such a resolution, put \(Z^0=F\) and \(Z^{a+1}=\operatorname{coker}(Z^a\hookrightarrow E^a)\). In
+\(0\to Z^a\to E^a\to Z^{a+1}\to0\), acyclicity gives \(H^b(Z^{a+1})=H^{b+1}(Z^a)\) for \(b>0\). The group of degree-\(n\) cocycles in \(\Gamma(E^\bullet)\) is \(\Gamma(Z^n)\); its quotient by the previous boundaries is \(H^1(Z^{n-1})=H^n(F)\). Degree zero is \(\Gamma(F)\) by left exactness. Thus the resolution above really computes the target of (HC12).
+
+By 4.0C.0.3 its section complex is
+\[
+ \Gamma(X,L(J^\bullet))
+ =\varinjlim_i\Gamma(X_i,J_i^\bullet).
+ \tag{HC13}
+\]
+Filtered colimits of abelian groups commute with cohomology of complexes. Elementwise, a representative whose differential becomes zero is a cycle at a later stage, and a cycle that becomes a boundary has a boundary witness at a later stage. These two finite-equation tests give respectively surjectivity and injectivity of that comparison. Taking degree-\(n\) cohomology in (HC13) proves (HC12).
+
+We check that this is the canonical higher comparison, not merely an abstract isomorphism. Choose an injective resolution \(L(F)\to K^\bullet\) on \(X\). The extension induction in 4.0C.0.4 applies to any exact source resolution and injective target resolution; it constructs a chain map \(L(J^\bullet)\to K^\bullet\) extending the identity of \(L(F)\), uniquely up to homotopy. Its section map gives the acyclic-resolution identification above. Compose it with \(p_i^{-1}J_i^\bullet\to L(J^\bullet)\). This is a map from the exact pullback of the injective resolution of \(F_i\) into \(K^\bullet\), extending the canonical coefficient map \(p_i^{-1}F_i\to L(F)\). Such a map is exactly the injective-resolution construction of pullback on cohomology followed by the coefficient map; the same comparison induction proves its independence of choices. Thus taking its cohomology gives the stage-to-limit canonical map in (HC12).
+
+Comparison maps and homotopies in 4.0C.0.4 prove naturality in coefficient-system morphisms. Its split exact resolutions prove compatibility with connecting homomorphisms: inverse image, \(L\), sections and the section-colimit comparison preserve the degreewise split rows, and their lifted cocycle boundaries agree. Replacing \(X_i\) by a descended \(V_i\) and all its base changes repeats the identical proof and gives restriction compatibility. The same canonical-map description proves functoriality under compatible maps of inverse systems of schemes and coefficients: composing pullbacks is represented by composing these chain maps, and any two extensions of the same coefficient map are homotopic. No uniform bound on cohomological degrees is used; in 4.0C.0.5 each fixed total degree has finitely many components. \(\square\)
+
+The freely accessible primary targets are [Stacks, Theorem 59.51.3](https://stacks.math.columbia.edu/tag/09YQ), its [compatible-injective construction](https://stacks.math.columbia.edu/tag/0EXZ), and its [site-level continuity proof](https://stacks.math.columbia.edu/tag/09YP). They were read as materials. 4.0C.0.2--4.0C.0.6 supply the actual finite-data, resolution and acyclicity arguments rather than using these citations as proofs.
+
+#### 4.0C.0.7. Filtered sheaves and higher direct images
+
+**Corollary 4.0C.0.7.** On every qcqs scheme \(T\), for every filtered system of abelian etale sheaves \(F_i\),
+\[
+ \varinjlim_iH^n(T,F_i)
+ =H^n(T,\varinjlim_iF_i)
+ \quad(n\geq0).
+ \tag{HC14}
+\]
+If \(f:S\to T\) is qcqs, with arbitrary target \(T\), then
+\[
+ \varinjlim_iR^nf_*F_i
+ =R^nf_*(\varinjlim_iF_i).
+ \tag{HC15}
+\]
+
+*Proof.* For (HC14), set every scheme in 4.0C.0.6 equal to \(T\) and every transition map equal to its identity. This also proves the assertion for any qcqs etale object, so in particular it supplies filtered coefficient continuity on all the intersections used in the closed-support calculation.
+
+For (HC15), work on the affine etale basis of the target. Its inverse image under a qcqs \(f\) is a qcqs scheme. The direct-image presheaf proof in the earlier Lemma 2.1 computes the degree-\(n\) higher-image sheaf by sheafifying \(V\mapsto H^n(S\times_TV,F_i)\). Equation (HC14) compares the filtered colimit of these presheaves with the cohomology presheaf of the colimit sheaf. Sheafification is a left adjoint and commutes with colimits. Sheafifying that comparison proves (HC15). \(\square\)
+
+#### 4.0C.0.8. Strict localizations and pro-etale changes of base
+
+**Corollary 4.0C.0.8.** Let \(f:S\to T\) be qcqs and let \(\bar t\) be a geometric point. Let \(R\) be the ring colimit of its affine pointed etale neighbourhoods over a fixed affine open of \(T\). Then, for every abelian sheaf \(F\) and every \(n\geq0\),
+\[
+ (R^nf_*F)_{\bar t}
+ =H^n(S\times_T\operatorname{Spec}R,F|_{S\times_T\operatorname{Spec}R}).
+ \tag{HC16}
+\]
+If \(T'=\varprojlim_\lambda T_\lambda\to T\) is a limit of qcqs etale \(T\)-schemes with affine transitions, the canonical comparison for its base-changed \(f'\) is an isomorphism:
+\[
+ p^{-1}R^nf_*F\xrightarrow{\sim}R^nf'_*p_S^{-1}F.
+ \tag{HC17}
+\]
+
+*Proof.* The neighbourhood category is cofiltered by the actual geometric-neighbourhood proof: fibre products give common refinements, and the open diagonal of an etale morphism equalizes arrows near the chosen lift. Its affine subcategory suffices. Maps between affine neighbourhoods are affine. Each \(S\times_TV\) is qcqs, and their inverse limit is the scheme in (HC16). The direct-image stalk formula (2.2) is proved from slice restriction and injective resolutions before continuity is used; its left side is the colimit of their cohomology groups. Apply 4.0C.0.6 to that actual cofiltered system, with the pulled-back coefficients. This proves (HC16) without replacing a filtered category by a poset. Theorem 4.1 of *The etale site and its points*, with its specified separable residue-field closure, identifies \(R\) with the strict henselization of \(\mathcal O_{T,t}\).
+
+For (HC17), etale restriction at a finite stage is slice localization: the two direct-image presheaves are identical on the slice, and slice restriction is exact and preserves injectives. Hence its canonical comparison is an isomorphism at every etale stage.
+
+Here is the passage to the limit as an explicit stalk computation. A pointed finite-presentation etale neighbourhood \(V'\) of a geometric \(\bar t'\) on \(T'\) descends to some \(V_\lambda\to T_\lambda\), by 4.0C.0.2. For its later base changes \(V_\mu\), 4.0C.0.6 gives
+\[
+ H^n(S\times_TV',F|_{S\times_TV'})
+ =\varinjlim_{\mu\geq\lambda}
+ H^n(S\times_TV_\mu,F|_{S\times_TV_\mu}).
+ \tag{HC18}
+\]
+Here an inequality denotes the corresponding coslice if the index is a filtered category. To verify the neighbourhood colimit carefully, consider the category of pairs \((\lambda,V_\lambda)\), with \(V_\lambda\to T_\lambda\) a basis object and a lift of \(\bar t'\) to it. Refinements are maps from later-stage basis objects into the base changes of earlier ones, preserving the chosen lifts. This category is cofiltered: choose a common receiving stage, form fibre products for common refinements, and equalize parallel arrows by the open etale diagonal and an affine neighbourhood of the chosen point. Parallel stage arrows can first be equalized by filteredness.
+
+Base change of these pairs to \(T'\) supplies all pointed basis neighbourhoods there, by 4.0C.0.2. Their arrows and equalities are supplied after refinement by the same descent lemma. Consequently their cohomology colimit is the right-side stalk in (HC17), by formula (2.2). Equation (HC18) says that each class on such a limit neighbourhood is represented at a later-stage pair, and each equality of two stage classes is realized after a later-stage refinement. Thus replacing these limit-neighbourhood groups by the finite-stage groups in (HC18) changes neither classes nor their equality relations in that stalk colimit.
+
+The same pairs suffice for the neighbourhood colimit at \(\bar t=p\bar t'\) on \(T\). Indeed any pointed neighbourhood \(W\to T\) is refined by an affine neighbourhood of the paired lift in \(W\times_TT_\lambda\); over qcqs \(T_\lambda\) that affine etale neighbourhood is a finite-presentation basis object. Two arrows from a pair to \(W\) are equalized near the lift by the open diagonal of \(W/T\); take an affine neighbourhood in that equalizer. Common refinements use fibre products at a common stage. These statements give the actual representatives and equality relations of the pointed-neighbourhood colimit; they do not assume a cofinal poset. Formula (2.2) therefore identifies the finite-stage colimit with \((R^nf_*F)_{\bar t}\). The inverse-image stalk formula identifies this with the stalk of the left side of (HC17). All the identifications use canonical restrictions and the finite-stage slice comparison, so their composite is the stalk of its canonical base-change map. Every stalk comparison is an isomorphism. Geometric stalks detect isomorphisms, proving (HC17). This includes the generic-point pro-etale restriction used in the surface coordinate argument. \(\square\)
+
+The base-ring version follows directly too: if \(B=\varinjlim B_i\), \(S\to\operatorname{Spec}A\) is qcqs and the coefficients are pulled from \(S\), apply 4.0C.0.6 to \(S\times_A\operatorname{Spec}B_i\). These are qcqs with affine transitions, and their limit coefficients are the pullback sheaf by the inverse-image universal property. This is the full comparison formerly imported as (2.3), with its filtered-coefficient special case and the natural maps required in the curve argument.
+
+#### 4.0C.0.9. Proof and source boundary
+
+The former higher-continuity premise is now proved in 4.0C.0.6, including arbitrary abelian and noncartesian coefficient systems; 4.0C.0.7 and 4.0C.0.8 derive its exact applications. The proof uses the actually written elementary sheaf/cohomology interfaces of 4.0C.0.1 and the local-standard etale theorem inspected there. It does not infer higher cohomology from a degree-zero sections argument: 4.0C.0.4--4.0C.0.6 provide the compatible resolutions and the separate acyclicity argument that make that step valid.
+
+The proof of 4.0C.0.5 is a finite double-complex calculation, and 4.0C.0.4 and 4.0C.0.6 write the required comparison, homotopy, exact-sequence and acyclic-resolution arguments. Ordinary scheme gluing and the finite-presentation local etale theorem remain the named earlier programme interfaces. In particular the inspected local-standard proof invokes its written algebraic Zariski theorem, flatness, finite-fibre algebra, the primitive-element theorem and Nakayama. These earlier results remain prerequisites. The earlier sheafification, enough-injectives, geometric-stalk and strict-henselization results remain hypotheses; (HC16) may instead be read with the neighbourhood ring colimit \(R\), without a strict-henselization identification. Those named foundation premises are distinct from the higher-cohomology comparison proved here.
 
 ### 4.0C.1. Constant curve cohomology and its proof interfaces
 
@@ -391,7 +1280,7 @@ Let \(C_0/\mathbf F_q\) be a smooth geometrically connected projective curve of 
 Here are the actual earlier interfaces used in this fragment.
 
 1. *Pushforward, pullback and finite morphisms*, Lemma 6.1 and Theorem 6.2, proves topological invariance by its strictly henselian ring and stalk argument. Its Sections 2 and 5 supply the strict-local and closed-immersion functors. Localization with support is constructed from an injective resolution and sections supported on the closed set.
-2. *The proper base change theorem*, Theorem 1.1, Sections 10--11 and Corollary 11.3, proves the canonical geometric-fibre comparison. No smooth-base-change theorem is an input. The pro-etale comparison needed below is proved directly by etale localization and the explicitly retained continuity prerequisite of *Pushforward, pullback and finite morphisms*, Section 2.
+2. *The proper base change theorem*, Theorem 1.1, Sections 10--11 and Corollary 11.3, proves the canonical geometric-fibre comparison. No smooth-base-change theorem is an input. The pro-etale comparison needed below is proved directly by etale localization and the higher continuity and pro-etale comparison proved in Section 4.0C.0, which supply equation (2.3) of *Pushforward, pullback and finite morphisms*.
 3. *Cohomological dimension and the Kunneth formula*, Lemma 8.4, Proposition 8.5 and Theorem 9.1, proves the tensor and proper-product comparisons with their actual external cup-product maps. We use one proper curve factor and a second curve factor, so the needed finite dimension bounds are the earlier curve bounds. Its Lemma 10.1 proves detection for bounded-below complexes supported on closed points. *Constructible sheaves*, Theorem 5.1 and Proposition 7.1, supplies the actually written Noetherian constructible-subobject proof used in that detection. The general open-product comparison of Theorem 10.2 is not imported: its field-extension input passes through smooth base change. The special coordinate comparison is proved below directly.
 4. *Poincare duality for curves*, Section 2, Lemmas 4.1--4.2, Sections 8--11 and Section 12, proves the degree-normalized curve trace, point orientation and perfect curve cup pairing. Its degree-one proof uses the explicit finite-constant embeddings and effacement of Section 9 and the diagram chase of Section 10. Its separately stated comparison with a chosen Weil-pairing sign is not an input here.
 5. *The Picard functor and the Picard scheme of a curve*, Theorem 2.1, Sections 4--6, Proposition 7.1 and Theorem 7.2, constructs the normalized Picard functor, its charts and the genus-\(g\) Jacobian. Over the algebraically closed \(k\), the chosen point of \(C\) permits the rigidification proof of Section 2; the section-free topology-comparison assertion of Section 3 is unnecessary. *Abelian varieties*, Theorems 6.1--6.2 and 7.1--7.2, proves multiplication, the prime-to-characteristic torsion ranks and their surjective transition maps.
@@ -455,7 +1344,7 @@ Consider now \(B=\mathbf P^1\times\mathbf A^1\), with projection \(q:B\to\mathbf
  q^{-1}Rj_{0,*}A\longrightarrow Rh_*A.
  \tag{CT6a}
 \]
-Off \(\mathbf P^1\times\{0\}\) this map is the identity. It is also an isomorphism at the points over the generic point \(\eta\) of \(\mathbf P^1\). Indeed its strict localization there is \(\operatorname{Spec}L\), where \(L=k(u)^{\mathrm{sep}}\). Restrict along this pro-etale map. At each pointed etale neighbourhood, higher images commute with that restriction by slice adjunction and the geometric-stalk formula (2.2) of the direct-image lesson. Passing to the affine limit uses precisely its cohomological-continuity prerequisite (2.3). The resulting comparison is the special \(j_0\) field comparison over \(L\), which was just proved. The exact inverse-image stalk formula detects every original stalk over \(\eta\). Consequently every cohomology sheaf of \(Q\) is supported on closed points of \(B\).
+Off \(\mathbf P^1\times\{0\}\) this map is the identity. It is also an isomorphism at the points over the generic point \(\eta\) of \(\mathbf P^1\). Indeed its strict localization there is \(\operatorname{Spec}L\), where \(L=k(u)^{\mathrm{sep}}\). Restrict along this pro-etale map. At each pointed etale neighbourhood, higher images commute with that restriction by slice adjunction and the geometric-stalk formula (2.2) of the direct-image lesson. Passing to the affine limit uses the cohomological-continuity theorem proved in Section 4.0C.0, supplying its equation (2.3). The resulting comparison is the special \(j_0\) field comparison over \(L\), which was just proved. The exact inverse-image stalk formula detects every original stalk over \(\eta\). Consequently every cohomology sheaf of \(Q\) is supported on closed points of \(B\).
 
 Here is the closed-point detection used at this step. On a Noetherian scheme a torsion sheaf supported on closed points is the filtered union of constructible subsheaves, by the actual subobject and approximation proofs of *Constructible sheaves*, Theorem 5.1 and Proposition 7.1. Each such subsheaf has finite support: a constructible set of closed points contains the generic points of its finitely many closure components; those components must therefore be points. It is exact closed pushforward from that finite set. Over the algebraically closed \(k\), sections on each of these points are exact and supply its stalk. Each finite-support subsheaf thus has zero higher cohomology and is generated by global sections. Qcqs cohomological continuity for filtered sheaves extends both assertions to their union. A bounded-below complex with such cohomology sheaves has hypercohomology spectral sequence with only column zero. Every total-degree diagonal is finite, and hence its global cohomology in degree \(a\) is \(\Gamma(B,H^a(Q))\). If these groups all vanish, global generation makes every cohomology sheaf zero. This is the proof at the needed bounded-below scope of the inspected Lemma 10.1; it requires no higher-dimensional trace or smooth base change.
 
@@ -641,7 +1530,7 @@ Pullback by the second map in (CT19) is the usual arithmetic Galois action: on f
 
 **Theorem 4.0C.6.** Put
 \[
- P_{C_0}(CT)=\det\bigl(1-TF\mid H^1(C,\mathbf Q_\ell)\bigr).
+ P_{C_0}(T)=\det\bigl(1-TF\mid H^1(C,\mathbf Q_\ell)\bigr).
 \]
 Then, in \(\mathbf Q_\ell[[T]]\),
 \[
@@ -650,7 +1539,7 @@ Then, in \(\mathbf Q_\ell[[T]]\),
  &:=\exp\left(\sum_{a\geq1}
        \#C_0(\mathbf F_{q^a})\frac{T^a}{a}\right)\\
  &=\prod_{x\in|C_0|}(1-T^{\deg x})^{-1}\\
- &=\frac{P_{C_0}(CT)}{(1-T)(1-qT)}.
+ &=\frac{P_{C_0}(T)}{(1-T)(1-qT)}.
  \end{aligned}
  \tag{CT20}
 \]
@@ -668,7 +1557,7 @@ Its constant term is one, so integrating formally yields
  =-\sum_{a\geq1}\operatorname{Tr}(B^a)\frac{T^a}{a}.
  \tag{CT21}
 \]
-Apply this to (CT18). The constant and degree-two terms give \(-\log(1-T)\) and \(-\log(1-qT)\); the degree-one term gives \(\log P_{C_0}(CT)\). Exponentiation proves the last equality of (CT20), as a formal identity without an analytic convergence premise.
+Apply this to (CT18). The constant and degree-two terms give \(-\log(1-T)\) and \(-\log(1-qT)\); the degree-one term gives \(\log P_{C_0}(T)\). Exponentiation proves the last equality of (CT20), as a formal identity without an analytic convergence premise.
 
 A closed point of degree \(d\) contributes \(d\) geometric points over \(\mathbf F_{q^a}\) precisely when \(d\mid a\). Indeed its residue field is \(\mathbf F_{q^d}\); it has \(d\) embeddings into \(\mathbf F_{q^a}\) in that case and none otherwise. Thus, if \(b_d\) counts closed points of degree \(d\),
 \[
@@ -676,9 +1565,9 @@ A closed point of degree \(d\) contributes \(d\) geometric points over \(\mathbf
 \]
 There are only finitely many closed points of bounded degree, since the curve has finite type over a finite field. Expanding the logarithm of the Euler product now gives the first expression in (CT20) coefficient by coefficient.
 
-Each Euler-product factor has integer coefficients, so \(Z(C_0,T)\in\mathbf Z[[T]]\). Multiplying it by \((1-T)(1-qT)\) gives an integer series. Its image in \(\mathbf Q_\ell[[T]]\) is the finite polynomial \(P_{C_0}(CT)\), so every coefficient beyond its degree is zero already in \(\mathbf Z\). This proves integrality and makes the polynomial independent of \(\ell\). The rank in (CT1) is \(2g\). Frobenius is an etale-topos equivalence, so \(F\) is invertible and the determinant polynomial has that exact degree. Finally (CT18) already holds for every power: applying it with powers \(ba\) proves the assertion for every finite base-field extension. \(\square\)
+Each Euler-product factor has integer coefficients, so \(Z(C_0,T)\in\mathbf Z[[T]]\). Multiplying it by \((1-T)(1-qT)\) gives an integer series. Its image in \(\mathbf Q_\ell[[T]]\) is the finite polynomial \(P_{C_0}(T)\), so every coefficient beyond its degree is zero already in \(\mathbf Z\). This proves integrality and makes the polynomial independent of \(\ell\). The rank in (CT1) is \(2g\). Frobenius is an etale-topos equivalence, so \(F\) is invertible and the determinant polynomial has that exact degree. Finally (CT18) already holds for every power: applying it with powers \(ba\) proves the assertion for every finite base-field extension. \(\square\)
 
-The normal-coordinate construction proves the constant curve trace mechanism using the stated earlier interfaces. It uses neither the general smooth-base-change theorem nor the general smooth-variety trace theorem. Higher cohomological continuity in *Pushforward, pullback and finite morphisms*, §2, equation (2.3), is still required in the strict-trait calculation, the pro-étale generic restriction and the filtered-sheaf closed-point detection. That earlier lesson proves its degree-zero finite-data argument and imports the higher-cohomology assertion. Its proof, together with the recorded recursive foundations of curve duality, proper base change and the Picard construction, remains required by the proof rule. This precise scope is included in §7.
+The normal-coordinate construction proves the constant curve trace mechanism using the stated earlier interfaces. It uses neither the general smooth-base-change theorem nor the general smooth-variety trace theorem. Section 4.0C.0 now supplies the actual higher-cohomology proof behind *Pushforward, pullback and finite morphisms*, §2, equation (2.3), including the strict-local, pro-etale and filtered-coefficient comparisons used here. Its named earlier sheaf, local-etale and strict-henselization premises, and the earlier foundations of curve duality, proper base change and the Picard construction, remain prerequisites. This narrower exact scope is included in §7.
 
 **Lemma 4.0D (the curve bound needed for Chebotarev).** For every smooth projective geometrically integral curve \(C_0/\mathbf F_q\) of genus \(g\),
 \[
@@ -739,8 +1628,8 @@ Its intersection with \(\Delta\) consists of the \(\mathbf F_{q^a}\)-points, eac
 \]
 Cauchy–Schwarz proves the displayed count bound.
 
-For the cohomological conclusion, Theorem 4.0C.6 constructs the constant curve trace identity from its precise earlier curve interfaces. Its imported higher cohomological-continuity foundation remains to be proved, as recorded there. The intersection argument above proves the point-count bound in every extension field independently of that cohomological foundation. With that remaining foundation, the trace identity writes the point counts as
-\(1+q^a-\sum_i\alpha_i^a\). Its determinant polynomial on \(H^1\) has rational coefficients, because its logarithm is recovered from these rational integer counts and the rational factors for \(H^0,H^2\). The eigenvalues are therefore algebraic. For any complex embedding, the series \(\sum_{a\ge1}(\sum_i\alpha_i^a)z^a\) converges for \(|z|<q^{-1/2}\), by the count bound. It is the rational function \(\sum_i\alpha_i z/(1-\alpha_i z)\); a pole for a distinct nonzero \(\alpha_i\) cannot cancel, since its multiplicity is a positive integer. Thus \(|\alpha_i|\le q^{1/2}\). Curve duality pairs \(\alpha_i\) with \(q/\alpha_i\), giving the opposite bound and equality. A twist is another smooth projective curve with the same geometric genus, so the proved argument applies to it directly. The point-count bound is proved. The trace mechanism is now written in §§4.0C.1–6; its higher-continuity and recursive earlier-foundation obligations remain explicit for the cohomological assertion. ∎
+For the cohomological conclusion, Theorem 4.0C.6 constructs the constant curve trace identity from its precise earlier curve interfaces. Its higher cohomological-continuity step is now proved in Section 4.0C.0, relative to the specified earlier foundation interfaces. The intersection argument above proves the point-count bound in every extension field independently. The constructed trace identity writes the point counts as
+\(1+q^a-\sum_i\alpha_i^a\). Its determinant polynomial on \(H^1\) has rational coefficients, because its logarithm is recovered from these rational integer counts and the rational factors for \(H^0,H^2\). The eigenvalues are therefore algebraic. For any complex embedding, the series \(\sum_{a\ge1}(\sum_i\alpha_i^a)z^a\) converges for \(|z|<q^{-1/2}\), by the count bound. It is the rational function \(\sum_i\alpha_i z/(1-\alpha_i z)\); a pole for a distinct nonzero \(\alpha_i\) cannot cancel, since its multiplicity is a positive integer. Thus \(|\alpha_i|\le q^{1/2}\). Curve duality pairs \(\alpha_i\) with \(q/\alpha_i\), giving the opposite bound and equality. A twist is another smooth projective curve with the same geometric genus, so the proved argument applies to it directly. The point-count bound is proved. The trace mechanism is now written in §§4.0C.1–6; its higher-continuity comparison is proved in Section 4.0C.0, while the recorded recursive earlier-foundation obligations remain explicit. ∎
 
 **Lemma 4.1 (splitting by fiberwise multiplication).** Let \(S\) be smooth of finite type over \(\mathbf F_p\), let \(\ell\ne p\), and let \(f:A\to S\) be an abelian scheme. Suppose the ordinary and compactly supported Leray spectral sequences exist and are compatible with their natural comparison map. Suppose multiplication by an integer \(t>1\) on \(A\) acts on \(R^jf_*\mathbf Q_\ell\) as \(t^j\). Then both spectral sequences degenerate at their second pages. In total degree \(n\), their \(j\)-th terms identify with the \(t^j\)-eigenspaces of multiplication on the respective abutments. Write \(H^i_{\mathrm{par}}=\operatorname{im}(H^i_c\to H^i)\) in every degree. Consequently
 
@@ -951,15 +1840,15 @@ For \(k=2\), \(\mathcal L_0=\mathbf Q_\ell\), and the parabolic group is \(H^1(X
 
 ## 7. Proof scope and remaining obligations
 
-The original full construction, purity and irreducibility statements are retained in Theorem 1.1 and (22). Their complete proof chain is still required. The preceding sections now supply the period/cup injection in every regular-cusp weight, the full-Hecke multiplicity and rational coefficient descent under their geometric premises, the all-characteristic nodal product resolution, the symplectic tensor estimate, the parabolic duality bound, and the tensor-power removal of an even-dimensional error. Propositions 3.1 and 4.2 and Theorems 4.3 and 5.1 prove the stated algebraic deductions. Successful formula rendering would certify none of the remaining mathematics.
+The original full construction, purity and irreducibility statements are retained in Theorem 1.1 and (22). Their complete proof chain is still required. The preceding sections now supply the period/cup injection in every regular-cusp weight, the full-Hecke multiplicity and rational coefficient descent under their geometric premises, the all-characteristic nodal product resolution, the symplectic tensor estimate, the parabolic duality bound, and the tensor-power removal of an even-dimensional error. Sections 2.5–2.5A supply the complete local analytic primitive/Fricke proofs. Section 3.3 proves the nonzero restricted rational pairing, its global determinant, stable rank-two lattice normalization and the conditional residual polynomial, with arithmetic premises A1–A5 and transitive analytic/comparison foundations retained. Propositions 3.1 and 4.2 and Theorems 4.3 and 5.1 prove the stated algebraic deductions. Successful formula rendering would certify none of the remaining mathematics.
 
 The exact outstanding core steps are these:
 
 - **Arithmetic modular geometry at arbitrary level.** Construct the fine auxiliary modular curves over every required \(\mathbf Z[1/NM]\), the universal elliptic family, smooth compactification with semistable cusp model, and its descent at levels below five. The actual lesson 10 proves the interior level functors conditional on a family, ordinary subgroup computations and an integral modular-polynomial relation. Its §7 expressly retains the arbitrary-level models and supersingular compact correspondence as gaps. They are needed here before unramifiedness and the congruence relation can be asserted as proved.
 - **Comparison and dimension foundations.** The actual earlier LG-MF period proof supplies its cup injection, but its final theorem excludes odd weights without \(-I\). Lemma 2.1 extends that injection to the fine curves here. Surjectivity uses Exercise 8.4 and the analytic Riemann–Roch proof in the dimension lesson, Appendix A; that appendix still requires its recorded real-analysis and Hilbert-space foundations. The current earlier modular lesson, Lemmas 1.2 and 1.4, writes complex curve comparison and algebraically closed field extension. Lemma 2.4 reduces the coefficient-system degree-one comparison to those actual curve proofs, without a higher-dimensional comparison import. The complex curve proof still uses the analytic Riemann–Roch foundations, and the arithmetic family and correspondences must exist before this reduction applies.
-- **Higher-weight congruence and general-character determinant.** Prove the special-fiber correspondence, including supersingular points and the coefficient trace, giving (13). Lemma 3.2 proves the Fricke covariance and the global alternating pairing once the arithmetic cyclic-isogeny correspondence exists. Its restriction to the primitive full-Hecke eigenspace still requires a proof of nondegeneracy. The weight-two trivial-character argument in the earlier lesson does not cover arbitrary \(\chi\). The relation alone leaves the scalar defect of (16).
-- **Cuspidal irreducibility.** Prove irreducibility over every \(K_\lambda\), including arbitrary nebentypus. Proposition 2.2 constructs a two-dimensional eigenspace under the comparison premises; it proves neither irreducibility nor the required primitive Fricke pairing. Corollary 5.3 proves absolute irreducibility only after irreducibility and the determinant have been established.
-- **General smooth-projective purity.** The actual earlier trace-formula proof writes rationality, the even-dimensional Leray estimate, its radical alternative and the all-degree power argument. Its pencil lesson expressly states Veronese-pencil existence, the general étale Picard–Lefschetz sequence, and the global monodromy generation and cycle-conjugacy inputs without proof. Lemma 4.0D proves the all-extension point-count bound for curves, covers and twists from the inspected coherent prerequisites. Sections 4.0C.1–6 now construct the constant curve trace, its product and graph normalizations, and its determinant/Euler-product identity in every finite extension. They replace the previously imported general surface trace input. The higher cohomological-continuity assertion used in the strict-trait, generic-point and filtered-support arguments is still imported in the earlier direct-image lesson, §2, equation (2.3); its actual proof and the recorded recursive earlier foundations remain required. The constant-coefficient construction does not by itself prove the general lisse-sheaf trace formula used elsewhere in this lesson. Lemmas 4.0A–C remove the need for an imported symplectic invariant-basis theorem or an imported \(j_*\)-duality theorem, but these geometric pencil inputs remain. Thus general purity and consequently the full modular root assertion (22) are not yet fully proved in this edition. Lemma 4.2A closes the nodal-product resolution once the semistable family exists; it supplies no arbitrary-dimensional singular-fiber cohomology theorem.
+- **Higher-weight arithmetic correspondence and specialization.** Prove the special-fiber correspondence, including supersingular points and the coefficient trace, giving (13). Lemma 3.2 and Theorem 3.3 prove the global Fricke determinant and primitive restricted nondegeneracy for arbitrary \(\chi\) once the actual arithmetic cyclic-isogeny correspondence and compatible comparison exist. The local support and primitive Fricke arguments are in §§2.5–2.5A. Proposition 3.4 gives perfect alternating reduction after scalar normalization on every stable rank-two lattice, including residue characteristic two. Lemma 3.5 proves that the analogous unrestricted claim for the natural symmetric-power lattice is false. Corollary 3.6 proves the residual polynomial with good specialization and the full coefficient congruence still explicit as A4–A5. Those geometric premises remain required; the annihilating relation alone retains the scalar defect of (16).
+- **Cuspidal irreducibility.** Prove irreducibility over every \(K_\lambda\), including arbitrary nebentypus. Proposition 2.2 constructs a two-dimensional eigenspace under the comparison premises; it proves no irreducibility. Theorem 3.3 separately proves the primitive Fricke pairing under its explicit arithmetic premises. Corollary 3.6 requires no higher-weight irreducibility merely to supply its semisimple residual polynomial. Corollary 5.3 proves absolute irreducibility only after irreducibility and the determinant have been established.
+- **General smooth-projective purity.** The actual earlier trace-formula proof writes rationality, the even-dimensional Leray estimate, its radical alternative and the all-degree power argument. Its pencil lesson expressly states Veronese-pencil existence, the general étale Picard–Lefschetz sequence, and the global monodromy generation and cycle-conjugacy inputs without proof. Lemma 4.0D proves the all-extension point-count bound for curves, covers and twists from the inspected coherent prerequisites. Sections 4.0C.1–6 now construct the constant curve trace, its product and graph normalizations, and its determinant/Euler-product identity in every finite extension. They replace the previously imported general surface trace input. Section 4.0C.0 proves the higher cohomological-continuity assertion and its strict-local, pro-etale and filtered-coefficient applications at the full arbitrary-abelian scope. The exact earlier sheaf, local-etale and strict-henselization foundations, together with the earlier curve, proper-base-change and Picard inputs, remain prerequisites. The constant-coefficient construction does not by itself prove the general lisse-sheaf trace formula used elsewhere in this lesson. Lemmas 4.0A–C remove the need for an imported symplectic invariant-basis theorem or an imported \(j_*\)-duality theorem, but these geometric pencil inputs remain. Thus general purity and consequently the full modular root assertion (22) are not yet fully proved in this edition. Lemma 4.2A closes the nodal-product resolution once the semistable family exists; it supplies no arbitrary-dimensional singular-fiber cohomology theorem.
 
 The inspected earlier cohomological proofs used here have precise scopes: smooth duality, Gysin normalization, Künneth and weak Lefschetz occur in the smooth-duality lesson, Theorem 10.1, Proposition 12.1, Lemma 13.2 and Solution 5; the finite-coefficient curve trace formula is Theorem 1.1 and §§2–5 of *The trace formula for curves*, and its adic passage is *The trace formula in all dimensions*, Theorem 5.1. Their own recorded geometric and finiteness prerequisites remain part of the transitive proof requirement. The local elliptic torsion, Tate uniformization and twist calculations used in the Legendre example occur in the earlier lessons of this course, including Lemma 3.0, Theorem 3.1 and Lemma 4.0 of *Elliptic curves over local fields*.
 
@@ -1090,10 +1979,76 @@ For a numerical check, \(X_1(5)\) has genus zero and four cusps. These values ca
 
 To count the genus, triangulate the base modular sphere with vertices its cusp and its two elliptic points; it has three edges and two faces. Upstairs there are \(12/2=6\) vertices above the order-two point, \(12/3=4\) above the order-three point, and four cusp vertices. Open edges and faces are unramified and have twelve lifts. Hence the compact surface has Euler number \(6+4+4-3\cdot12+2\cdot12=2\); its genus is zero. Thus \(\deg\omega=1\), \(\dim S_4=-3+4=1\), and (38) gives parabolic dimension \(-6+8=2\). At weight two both dimensions are zero. This means that no weight-two cusp form exists at this level. ∎
 
+**Exercise 8.5 (medium: the primitive pairing and its determinant; 12 points).** Work under the geometric and comparison premises A1–A3 of Theorem 3.3. Suppose conditionally that a normalized primitive form has weight three and level five. Write \(f^*(z)=\overline{f(-\bar z)}\), \(\mathcal W_5f^*=\omega f\), \(|\omega|=1\), and
+\[
+ \nu=\int_{\Gamma_1(5)\backslash\mathfrak H}|f(z)|^2y\,dx\,dy>0.
+\]
+(1) Compute \(wA(f^*)\) and \(\Psi(H(f),A(f^*))\), retaining the coefficient-pullback normalization and the antilinearity of \(A\). (4 points)
+(2) Let \(\sigma(\zeta_5)=\zeta_5^u\) and put \(t=\chi_\ell(\sigma)\). Compute the multiplier of \(\Psi\) and the determinants of the cohomological constituent \(W\) and its dual \(V\). Explain why the computation works at every coefficient place without identifying \(\mathbf C\) with \(K_\lambda\). (4 points)
+(3) For arbitrary admissible weight and character, compute the determinant at complex conjugation. Assume additionally A4–A5 for this Frobenius calculation. If a good geometric Frobenius is scalar \(F=vI\), deduce its characteristic polynomial from the annihilating relation and the proved determinant. (4 points: 2 for each conclusion)
+
+*Solution.* Here \(m=1\). The coefficient pullback is \(5^{m/2}=\sqrt5\) times the unitary analytic Fricke action. Since \(A\) is antilinear,
+\[
+ wA(f^*)=\sqrt5\,A(\omega f)=\sqrt5\,\bar\omega A(f).
+\]
+The mixed cup value is \(-(2i)^2\nu=4\nu\), so
+\[
+ \Psi(H(f),A(f^*))=4\sqrt5\,\bar\omega\nu\ne0.
+\]
+Neither omitting \(\sqrt5\) nor replacing \(\bar\omega\) by \(\omega\) gives this value. No algebraicity of the analytic phase is needed for nonvanishing.
+
+The covariance gives
+\[
+ \Psi(\sigma x,\sigma y)=\chi(u)^{-1}t^{-2}\Psi(x,y),
+ \qquad \det W(\sigma)=\chi(u)^{-1}t^{-2},
+ \qquad \det V(\sigma)=\chi(u)t^2.
+\]
+An alternating form on a two-dimensional space transforms by the determinant, by expanding its value on the two transformed basis vectors. Its basis value is nonzero by the first part. Cup and Fricke define the same rational \(K\)-matrix before extension; its determinant is nonzero in one complex embedding, hence nonzero in \(K\) and in every \(K_\lambda\). This supplies the rational-to-adic argument without a map between the two completed fields.
+
+For complex conjugation \(c\), we have \(\chi_G(c)=\chi(-1)=(-1)^k\) and \(\chi_\ell(c)=-1\), since \(c\) inverts roots of unity. Therefore
+\[
+ \det V(c)=(-1)^k(-1)^{k-1}=-1.
+\]
+At a good prime write \(C=\chi(p)p^{k-1}\). The determinant of geometric Frobenius on \(W\) is \(C\). If \(F=vI\), this says \(v^2=C\). The relation \(F+CF^{-1}=a_pI\) then gives \(a_p=v+C/v=2v\). Thus
+\[
+ \det(X-F)=(X-v)^2=X^2-a_pX+C.
+\]
+This explicitly covers scalar Frobenius; the annihilating relation alone would not have supplied \(v^2=C\). The exercise assumes the primitive form and the arithmetic premises, and asserts no existence of the indicated weight-three form. \(\square\)
+
+**Exercise 8.6 (medium: integral determinant forms and a natural-lattice obstruction; 10 points).** Let \(\mathcal O\) be a DVR with uniformizer \(\varpi\), fraction field \(E\), and residue field \(\kappa\).
+(1) For a stable rank-two lattice with basis \(t_1,t_2\), a rational alternating form has nonzero value \(a\) on that pair. Normalize the form to make it perfect on the lattice. Check actual alternation after reduction when \(\operatorname{char}\kappa=2\). (4 points)
+(2) On \(\operatorname{Sym}^2\mathbf Z_2^2\), an invariant rational form has anti-diagonal entries \(c,-c/2,c\), as proved in Lemma 3.5. Determine when it is integral, compute its determinant, and rule out integral perfectness. (3 points)
+(3) In the rank-four symplectic lattice with \(\langle e_i,f_j\rangle=\delta_{ij}\) and all same-type pairings zero, prove that the submodule generated by \(e_1\) and \(\varpi f_1+e_2\) is saturated but its restricted pairing is not perfect. (3 points)
+
+*Solution.* Multiplication by \(a^{-1}\) gives the matrix
+\[
+ J=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad \det J=1.
+\]
+It induces an isomorphism from the lattice to its dual with values in the determinant-character line, so is perfect. A scalar rescaling preserves the Galois multiplier. For any vector with coordinates \((s,t)\), its value paired with itself is \(st-ts=0\). This equality persists in characteristic two, while \(\det J=1\) also persists. Skew symmetry alone would not have proved alternation in characteristic two; this calculation does.
+
+In the stated symmetric-power basis the matrix and its determinant are
+\[
+ \begin{pmatrix}0&0&c\\0&-c/2&0\\c&0&0\end{pmatrix},
+ \qquad \det=\frac{c^3}{2}.
+\]
+Integrality requires and is equivalent to \(c\in2\mathbf Z_2\). If \(c=2u\), the determinant is \(4u^3\), which is never a unit, including when \(u\) is a unit. The zero form is also not perfect. Thus scalar normalization cannot give a perfect invariant form on this fixed natural rank-three lattice. This does not contradict the rank-two construction of the first part.
+
+The vectors
+\[
+ e_1,\quad \varpi f_1+e_2,\quad f_1,\quad f_2
+\]
+form a basis of the ambient lattice: replacing the second by \(e_2\) subtracts \(\varpi\) times the third, an invertible integral basis operation. The first two therefore span a direct summand, and its quotient is free; in particular the submodule is saturated. Its Gram matrix is
+\[
+ \begin{pmatrix}0&\varpi\\-\varpi&0\end{pmatrix},
+ \qquad \det=\varpi^2,
+\]
+which is not a unit. Rescaling this restricted rational form by \(\varpi^{-1}\) makes it perfect as a rank-two determinant form, but does not make it the unchanged restriction of the ambient integral pairing. Saturation and rational nondegeneracy do not imply perfectness of that unchanged integral restriction. \(\square\)
+
 ## References
 
+- W. C. W. Li, *Newforms and functional equations*, printed pages 287–297: support, finite-cover adjoints and primitive Fricke mechanisms reconstructed in §§2.5–2.5A. [Freely readable institutional original scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0212/LOG_0047.pdf).
 - P. Deligne, *Formes modulaires et représentations \(\ell\)-adiques*, freely accessible original, §§2–5, particularly Theorem 2.10, Proposition 4.8, Theorem 4.9 and Lemmas 5.4–5.5. [Original text](https://www.numdam.org/item/SB_1968-1969__11__139_0/).
 - P. Deligne, *La conjecture de Weil I*, freely accessible original, §§3–7 and Theorem 8.2. [Original article](https://www.numdam.org/item/PMIHES_1974__43__273_0/).
 - The Stacks project authors, [the Legendre family, Tag 03VA](https://stacks.math.columbia.edu/tag/03VA). Section 2 writes the all-extension count and the vanishing argument used here; the source's trace formula is bound to the earlier programme proof with its own prerequisite scope.
 
-The sources retain their own rights; this independently written exposition retains the public-domain declaration above.
+Section 7 identifies the earlier programme proof locators and the remaining obligations. The sources retain their own rights; this independently written exposition retains the public-domain declaration above.

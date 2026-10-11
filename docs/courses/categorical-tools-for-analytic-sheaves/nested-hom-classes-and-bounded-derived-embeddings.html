@@ -1,0 +1,471 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nested Hom classes and bounded derived embeddings</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="nested-hom-classes-and-bounded-derived-embeddings">Nested Hom classes and bounded derived embeddings</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p><strong>Level:</strong> advanced. <strong>Prerequisites:</strong> abelian categories, bounded derived categories, resolution classes, normalized derived Hom and truncation triangles.</p>
+<p>A full exact inclusion of abelian categories preserves ordinary Hom and short extensions. Higher extensions can still change. Compatible resolution classes supply the extra control: the smaller category can resolve both inputs using objects that also compute the ambient derived Hom. We prove that this gives the actual comparison isomorphism, then reconstruct bounded ambient complexes from their cohomology and connecting maps.</p>
+<h2 id="conventions-and-prerequisites">Conventions and prerequisites</h2>
+<p>Work in a fixed Grothendieck universe containing the integers, with locally small abelian categories and choices of the indicated resolutions; a larger ambient universe contains the localization diagrams when necessary. Complexes are cohomological:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+X[t]^i=X^{i+t},\qquad d_{X[t]}^i=(-1)^t d_X^{i+t}.
+\tag{0.1}
+\]">\[
+X[t]^i=X^{i+t},\qquad d_{X[t]}^i=(-1)^t d_X^{i+t}.
+\tag{0.1}
+\]</span>
+<p>For a chain map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, the cone is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.2); horizontal scroll when needed" data-tex="\[
+C(f)^i=Y^i\oplus X^{i+1},\qquad
+d_{C(f)}(y,x)=(d_Yy+fx,-d_Xx).
+\tag{0.2}
+\]">\[
+C(f)^i=Y^i\oplus X^{i+1},\qquad
+d_{C(f)}(y,x)=(d_Yy+fx,-d_Xx).
+\tag{0.2}
+\]</span>
+<p>Its triangle has positive last projection to <span class="math" data-tex="\(X[1]\)">\(X[1]\)</span>; rotating a triangle <span class="math" data-tex="\(U\xrightarrow{a}V\xrightarrow{b}W\xrightarrow{c}U[1]\)">\(U\xrightarrow{a}V\xrightarrow{b}W\xrightarrow{c}U[1]\)</span> gives last arrow <span class="math" data-tex="\(-a[1]\)">\(-a[1]\)</span>.</p>
+<p><a href="derived-hom-and-bounded-resolution-pairs.html#1-the-normalized-product-hom-complex">Derived Hom and bounded resolution pairs, Sections 1–7</a> proves the complete adapted-pair computation, its coherent unit and its interpretation as derived morphisms. It also proves the one-sided injective and projective specializations and free module covers. <a href="thick-abelian-subcategories-and-derived-comparison.html#1-the-precise-subcategory-and-the-comparison-maps">Thick abelian subcategories and derived comparison, Sections 1–4</a> proves the exact inclusion and the finite triangle comparison argument. <a href="cohomological-bounds-denominators-and-truncation-adjunctions.html#5-three-natural-triangles-and-two-adjunctions">Cohomological bounds, denominators and truncation adjunctions, Sections 1–5</a> proves the bounded embeddings, cohomology detection and the specified natural truncation triangles. These interfaces keep their actual maps and signs.</p>
+<p>The freely accessible <a href="https://stacks.math.columbia.edu/tag/06UP">Stacks, Section 13.17, Tag 06UP</a>, describes the ambient derived subcategory with cohomology in a weak Serre subcategory. Its introductory construction agrees with the subcategory used here. The resolution-pair hypothesis below is stated explicitly; membership in that ambient cohomology subcategory alone does not prove a derived equivalence.</p>
+<h2 id="1-exact-inclusion-and-the-four-resolution-classes">1. Exact inclusion and the four resolution classes</h2>
+<p>Let <span class="math" data-tex="\(\mathcal B\subset\mathcal A\)">\(\mathcal B\subset\mathcal A\)</span> be a <strong>thick abelian subcategory</strong>, meaning a full replete subcategory containing zero, closed under ambient kernels and cokernels of arrows between its objects, and closed under extensions. This is the weak Serre condition, which does not require all ambient subobjects of its objects to belong to it.</p>
+<p>The inclusion <span class="math" data-tex="\(j:\mathcal B\to\mathcal A\)">\(j:\mathcal B\to\mathcal A\)</span> is exact. Its kernel and cokernel objects have the ambient universal properties restricted to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, and its coimage-to-image map is the ambient isomorphism. Extension closure supplies finite biproducts. Thus the abelian structure and cohomology calculations agree. Applied termwise, <span class="math" data-tex="\(j\)">\(j\)</span> preserves shifts, cones and quasi-isomorphisms; it induces exact functors <span class="math" data-tex="\(F^*:D^*(\mathcal B)\to D^*(\mathcal A)\)">\(F^*:D^*(\mathcal B)\to D^*(\mathcal A)\)</span> for <span class="math" data-tex="\(*=b,+,-\)">\(*=b,+,-\)</span>.</p>
+<p>For complexes define the normalized Hom complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\mathcal H(P,I)^n=\prod_i\operatorname{Hom}(P^i,I^{i+n}),\qquad
+(\partial f)^i=d_I^{i+n}f^i-(-1)^n f^{i+1}d_P^i.
+\tag{1.1}
+\]">\[
+\mathcal H(P,I)^n=\prod_i\operatorname{Hom}(P^i,I^{i+n}),\qquad
+(\partial f)^i=d_I^{i+n}f^i-(-1)^n f^{i+1}d_P^i.
+\tag{1.1}
+\]</span>
+<p>When <span class="math" data-tex="\(P\)">\(P\)</span> is zero above <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(I\)">\(I\)</span> is zero below <span class="math" data-tex="\(a\)">\(a\)</span>, its degree-<span class="math" data-tex="\(n\)">\(n\)</span> indices satisfy <span class="math" data-tex="\(a-n\leq i\leq u\)">\(a-n\leq i\leq u\)</span>, so the product is finite and the complex is zero below <span class="math" data-tex="\(a-u\)">\(a-u\)</span>.</p>
+<p>Here is the precise meaning of a <strong>Hom-adapted pair</strong> <span class="math" data-tex="\((\mathcal J,\mathcal P)\)">\((\mathcal J,\mathcal P)\)</span> in an abelian category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Both classes are full and additive, contain zero and are closed under finite biproducts. They satisfy:</p>
+<ol>
+<li>Every bounded-below complex has an outgoing quasi-isomorphism <span class="math" data-tex="\(Y\to I\)">\(Y\to I\)</span> with <span class="math" data-tex="\(I\in K^+(\mathcal J)\)">\(I\in K^+(\mathcal J)\)</span>.</li>
+<li>Every bounded-above complex has an incoming quasi-isomorphism <span class="math" data-tex="\(P\to X\)">\(P\to X\)</span> with <span class="math" data-tex="\(P\in K^-(\mathcal P)\)">\(P\in K^-(\mathcal P)\)</span>.</li>
+<li>For such class complexes <span class="math" data-tex="\(P,I\)">\(P,I\)</span>, the complex <span class="math" data-tex="\(\mathcal H(P,I)\)">\(\mathcal H(P,I)\)</span> is acyclic if either <span class="math" data-tex="\(P\)">\(P\)</span> or <span class="math" data-tex="\(I\)">\(I\)</span> is acyclic.</li>
+</ol>
+<p>This is the Hom-injective pair condition for the target-first bifunctor <span class="math" data-tex="\((Y,Z)\mapsto\operatorname{Hom}_{\mathcal C}(Z,Y)\)">\((Y,Z)\mapsto\operatorname{Hom}_{\mathcal C}(Z,Y)\)</span> on <span class="math" data-tex="\(\mathcal C\times\mathcal C^{\mathrm{op}}\)">\(\mathcal C\times\mathcal C^{\mathrm{op}}\)</span>, after reversing source degrees and using the normalization (1.1). It is a condition on two classes, not a claim that every member is an injective or projective object.</p>
+<p>Choose an ambient pair <span class="math" data-tex="\((\mathcal J_A,\mathcal P_A)\)">\((\mathcal J_A,\mathcal P_A)\)</span> in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and an intrinsic pair <span class="math" data-tex="\((\mathcal J_B,\mathcal P_B)\)">\((\mathcal J_B,\mathcal P_B)\)</span> in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, with the two nesting conditions</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+j(\mathcal J_B)\subset\mathcal J_A,
+\qquad j(\mathcal P_B)\subset\mathcal P_A.
+\tag{1.2}
+\]">\[
+j(\mathcal J_B)\subset\mathcal J_A,
+\qquad j(\mathcal P_B)\subset\mathcal P_A.
+\tag{1.2}
+\]</span>
+<p>Membership up to isomorphism suffices after transporting the replacement maps. These four classes and both adapted-pair conditions are the hypotheses of the comparison theorem. No additional global supply of actual injectives or projectives is imposed.</p>
+<h2 id="2-one-hom-complex-computes-both-derived-values">2. One Hom complex computes both derived values</h2>
+<p>Write <span class="math" data-tex="\(R_C(X,Y)=R\operatorname{Hom}_{\mathcal C}(X,Y)\)">\(R_C(X,Y)=R\operatorname{Hom}_{\mathcal C}(X,Y)\)</span>. The adapted-pair theorem in the prerequisite gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+R_C:D^-(\mathcal C)^{\mathrm{op}}\times D^+(\mathcal C)
+\longrightarrow D^+(\mathsf{Ab}),\qquad C=A,B.
+\tag{2.1}
+\]">\[
+R_C:D^-(\mathcal C)^{\mathrm{op}}\times D^+(\mathcal C)
+\longrightarrow D^+(\mathsf{Ab}),\qquad C=A,B.
+\tag{2.1}
+\]</span>
+<p>Its target is the category of complexes of abelian groups, even for a category of modules over a field. In examples the Hom groups also carry their usual linear structure.</p>
+<p><strong>Theorem 2.1.</strong> Under (1.2) and the two adapted-pair hypotheses, there is a canonical natural isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\Theta_{X,Y}:R_B(X,Y)\xrightarrow{\sim}R_A(F^-X,F^+Y)
+\tag{2.2}
+\]">\[
+\Theta_{X,Y}:R_B(X,Y)\xrightarrow{\sim}R_A(F^-X,F^+Y)
+\tag{2.2}
+\]</span>
+<p>for <span class="math" data-tex="\(X\in D^-(\mathcal B)\)">\(X\in D^-(\mathcal B)\)</span>, <span class="math" data-tex="\(Y\in D^+(\mathcal B)\)">\(Y\in D^+(\mathcal B)\)</span>. It commutes with the two shift comparisons, their negative exchange and the separately triangulated structures.</p>
+<p><strong>Proof.</strong> Choose intrinsic representatives and intrinsic class replacements</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+p:P\longrightarrow X,\qquad i:Y\longrightarrow I,
+\qquad P\in K^-(\mathcal P_B),\ I\in K^+(\mathcal J_B).
+\tag{2.3}
+\]">\[
+p:P\longrightarrow X,\qquad i:Y\longrightarrow I,
+\qquad P\in K^-(\mathcal P_B),\ I\in K^+(\mathcal J_B).
+\tag{2.3}
+\]</span>
+<p>Both maps remain quasi-isomorphisms under the exact inclusion. By (1.2), their images are also ambient class replacements. Fullness of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> identifies every group in (1.1), and exactness retains its actual differentials. Thus there is an identity of complexes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\mathcal H_{\mathcal B}(P,I)
+=\mathcal H_{\mathcal A}(jP,jI).
+\tag{2.4}
+\]">\[
+\mathcal H_{\mathcal B}(P,I)
+=\mathcal H_{\mathcal A}(jP,jI).
+\tag{2.4}
+\]</span>
+<p>Let <span class="math" data-tex="\(\eta_C\)">\(\eta_C\)</span> be the derived-Hom pair unit. It is invertible on a class pair. The exact computation is the isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+\kappa_C=
+\eta_{C,P,I}^{-1}R_C(Qp,Qi):
+R_C(X,Y)\longrightarrow Q_{\mathsf{Ab}}\mathcal H_C(P,I).
+\tag{2.5}
+\]">\[
+\kappa_C=
+\eta_{C,P,I}^{-1}R_C(Qp,Qi):
+R_C(X,Y)\longrightarrow Q_{\mathsf{Ab}}\mathcal H_C(P,I).
+\tag{2.5}
+\]</span>
+<p>For <span class="math" data-tex="\(C=A\)">\(C=A\)</span>, interpret every argument in (2.5) after inclusion. The first input is contravariant: <span class="math" data-tex="\(p:P\to X\)">\(p:P\to X\)</span> induces the arrow from the value at <span class="math" data-tex="\(X\)">\(X\)</span> to the value at <span class="math" data-tex="\(P\)">\(P\)</span>. The second input is covariant: <span class="math" data-tex="\(i:Y\to I\)">\(i:Y\to I\)</span> induces the arrow from the value at <span class="math" data-tex="\(Y\)">\(Y\)</span> to the value at <span class="math" data-tex="\(I\)">\(I\)</span>. Thus both factors in (2.5) have the stated domains. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.6); horizontal scroll when needed" data-tex="\[
+\Theta_{X,Y}=\kappa_A^{-1}\kappa_B,
+\tag{2.6}
+\]">\[
+\Theta_{X,Y}=\kappa_A^{-1}\kappa_B,
+\tag{2.6}
+\]</span>
+<p>using the identity (2.4) between them.</p>
+<p>We check that this defines a canonical natural comparison, rather than only an isomorphism for one set of choices. A quasi-isomorphism between source class complexes or between target class complexes has an acyclic cone inside its respective full class homotopy category. Condition 3 and the Hom cone comparisons in the prerequisite imply that its image under the fixed-variable Hom total is a quasi-isomorphism. Both intrinsic and ambient computations therefore invert all these same class denominators.</p>
+<p>The replacement-density part of the pair theorem identifies the source-class localization with <span class="math" data-tex="\(D^-(\mathcal B)\)">\(D^-(\mathcal B)\)</span> and the target-class localization with <span class="math" data-tex="\(D^+(\mathcal B)\)">\(D^+(\mathcal B)\)</span>. Both bifunctors in (2.2), restricted through these two localizations, are identified by their pair units with the identical functor <span class="math" data-tex="\(Q\mathcal H(P,I)\)">\(Q\mathcal H(P,I)\)</span>. The identity of this functor is natural for all original class arrows. It is also natural for their inverse denominators: multiply the original naturality square by the invertible denominator images. Each localized arrow is a fraction of these arrows, so naturality holds for every derived arrow in either variable, and the two-variable squares commute as well.</p>
+<p>For two replacement choices, the intrinsic denominator equality tests in the pair theorem supply common incoming source refinements and common outgoing target refinements, then replacements in the corresponding intrinsic classes. All homotopy equalities remain the same after inclusion. The two computation maps (2.5) commute with these common refinement maps by unit naturality, and the Hom maps on the refinements are inverted on both sides. Hence (2.6) agrees for the two choices. For three choices the same argument on a common refinement gives the cocycle equation. This proves representative independence and compatibility with identity and composition. It is equivalently descent of the identity natural transformation through the two class localizations.</p>
+<p>The identity (2.4) also retains the Hom shift formulas. In particular the target unit-shift comparison is componentwise identity, while the source comparison from <span class="math" data-tex="\(\mathcal H(P[1],I)\)">\(\mathcal H(P[1],I)\)</span> to <span class="math" data-tex="\(\mathcal H(P,I)[-1]\)">\(\mathcal H(P,I)[-1]\)</span> sends a degree-<span class="math" data-tex="\(n\)">\(n\)</span> family to <span class="math" data-tex="\(((-1)^n f^{k-1})_k\)">\(((-1)^n f^{k-1})_k\)</span>. Both intrinsic and ambient normalizations use those same multipliers, including the negative exchange of the two shifts. Their cone comparison maps are the same coordinate maps, too. Descent therefore preserves the entire separately triangulated structure specified by the pair theorem. This completes (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-comparison-is-the-actual-map-on-derived-morphisms">3. The comparison is the actual map on derived morphisms</h2>
+<p>The distinction between isomorphic complexes and the intended comparison map matters for full faithfulness. For every integer <span class="math" data-tex="\(n\)">\(n\)</span>, the derived-Hom prerequisite gives a natural identification</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+H^nR_C(X,Y)=\operatorname{Hom}_{D(\mathcal C)}(X,Y[n]).
+\tag{3.1}
+\]">\[
+H^nR_C(X,Y)=\operatorname{Hom}_{D(\mathcal C)}(X,Y[n]).
+\tag{3.1}
+\]</span>
+<p><strong>Proposition 3.1.</strong> Under these identifications, <span class="math" data-tex="\(H^n\Theta\)">\(H^n\Theta\)</span> is precisely the map induced by the inclusion:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{D(\mathcal B)}(X,Y[n])
+\longrightarrow
+\operatorname{Hom}_{D(\mathcal A)}(F^-X,F^+(Y)[n]).
+\tag{3.2}
+\]">\[
+\operatorname{Hom}_{D(\mathcal B)}(X,Y[n])
+\longrightarrow
+\operatorname{Hom}_{D(\mathcal A)}(F^-X,F^+(Y)[n]).
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> Compute both sides with the shared class pair (2.3). A degree-<span class="math" data-tex="\(n\)">\(n\)</span> cycle of (1.1) is a family <span class="math" data-tex="\(f^k:P^k\to I^{k+n}\)">\(f^k:P^k\to I^{k+n}\)</span> with <span class="math" data-tex="\(d_If=(-1)^n f d_P\)">\(d_If=(-1)^n f d_P\)</span>. These same components form a chain map <span class="math" data-tex="\(P\to I[n]\)">\(P\to I[n]\)</span>, because its target differential is <span class="math" data-tex="\((-1)^n d_I\)">\((-1)^n d_I\)</span>. If the family is a boundary <span class="math" data-tex="\(\partial h\)">\(\partial h\)</span>, the corresponding chain null-homotopy has components <span class="math" data-tex="\((-1)^n h^k\)">\((-1)^n h^k\)</span>: its differential expression is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+(-1)^n d_I((-1)^n h)+(-1)^n h d_P
+=d_Ih+(-1)^n h d_P=\partial h.
+\tag{3.3}
+\]">\[
+(-1)^n d_I((-1)^n h)+(-1)^n h d_P
+=d_Ih+(-1)^n h d_P=\partial h.
+\tag{3.3}
+\]</span>
+<p>Thus the cohomology class has exactly the homotopy-class interpretation used in (3.1). Its intrinsic derived arrow is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+(Qi[n])^{-1}\,Qf\,(Qp)^{-1}:X\longrightarrow Y[n].
+\tag{3.4}
+\]">\[
+(Qi[n])^{-1}\,Qf\,(Qp)^{-1}:X\longrightarrow Y[n].
+\tag{3.4}
+\]</span>
+<p>The full numerator and denominator formula in the prerequisite proves this for the unit-normalized computation (2.5). Under inclusion the same expression becomes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+(Qj(i)[n])^{-1}\,Qj(f)\,(Qj(p))^{-1}.
+\tag{3.5}
+\]">\[
+(Qj(i)[n])^{-1}\,Qj(f)\,(Qj(p))^{-1}.
+\tag{3.5}
+\]</span>
+<p>Equation (2.6) identifies the class through the identity (2.4), so takes (3.4) to (3.5). This is exactly (3.2), for every integer <span class="math" data-tex="\(n\)">\(n\)</span>. It preserves addition and compositions because it is the actual functor on arrows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> The functor <span class="math" data-tex="\(F^b:D^b(\mathcal B)\to D^b(\mathcal A)\)">\(F^b:D^b(\mathcal B)\to D^b(\mathcal A)\)</span> is fully faithful.</p>
+<p><strong>Proof.</strong> Both bounded inputs belong to the domains of Theorem 2.1. Take <span class="math" data-tex="\(n=0\)">\(n=0\)</span> in Proposition 3.1. Its map is an isomorphism because <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> is. The bounded-denominator theorem identifies the Hom groups of the bounded categories with the Hom groups in their full unbounded derived categories. Therefore the actual bounded inclusion map is bijective on each Hom set. The same argument with any <span class="math" data-tex="\(n\)">\(n\)</span> compares all shifted Hom groups, including positive Ext, degree zero and negative degrees. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-reconstructing-bounded-objects-by-their-connecting-maps">4. Reconstructing bounded objects by their connecting maps</h2>
+<p>Let <span class="math" data-tex="\(D^b_{\mathcal B}(\mathcal A)\)">\(D^b_{\mathcal B}(\mathcal A)\)</span> be the full subcategory of bounded ambient derived objects whose cohomology belongs to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> in every degree. It is triangulated. Indeed the long cohomology sequence of a triangle contains a five-term exact window with the missing vertex's cohomology in the middle. Its two neighboring kernel and cokernel objects belong to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, and their short extension is the middle cohomology object. This proves closure under cones; shifts and rotations cover all placements. Existing direct summands stay inside because a summand on cohomology is a kernel of an endomorphism of an object of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> Under the hypotheses of Theorem 2.1, the exact functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+F^b:D^b(\mathcal B)\xrightarrow{\sim}D^b_{\mathcal B}(\mathcal A)
+\tag{4.1}
+\]">\[
+F^b:D^b(\mathcal B)\xrightarrow{\sim}D^b_{\mathcal B}(\mathcal A)
+\tag{4.1}
+\]</span>
+<p>is an equivalence. It preserves the natural truncation maps. Every object on the right with cohomology in a finite interval <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> has an intrinsic representative with terms in that same interval.</p>
+<p><strong>Proof.</strong> The image is in the stated subcategory, since inclusion computes the same cohomology. Full faithfulness is Corollary 3.2. We prove essential surjectivity by a finite induction on the number of nonzero cohomology objects of an ambient <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p>If there are none, cohomology detection gives <span class="math" data-tex="\(Z\simeq0\)">\(Z\simeq0\)</span>. If there is one, in degree <span class="math" data-tex="\(b\)">\(b\)</span>, smart truncation identifies <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(H^bZ[-b]\)">\(H^bZ[-b]\)</span>. Its cohomology object lies in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, so it is already an intrinsic object. Otherwise choose the largest nonzero cohomology degree <span class="math" data-tex="\(b\)">\(b\)</span> and use the natural top truncation triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+L=\tau_{\leq b-1}Z\longrightarrow Z\longrightarrow
+V=H^bZ[-b]\xrightarrow{\delta}L[1].
+\tag{4.2}
+\]">\[
+L=\tau_{\leq b-1}Z\longrightarrow Z\longrightarrow
+V=H^bZ[-b]\xrightarrow{\delta}L[1].
+\tag{4.2}
+\]</span>
+<p>The object <span class="math" data-tex="\(L\)">\(L\)</span> has fewer nonzero cohomology objects, all in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. By induction choose <span class="math" data-tex="\(U\in D^b(\mathcal B)\)">\(U\in D^b(\mathcal B)\)</span> and <span class="math" data-tex="\(\alpha:F^bU\xrightarrow{\sim}L\)">\(\alpha:F^bU\xrightarrow{\sim}L\)</span>. Regard <span class="math" data-tex="\(V\)">\(V\)</span> as an intrinsic object too. Fullness lifts the actual connecting map <span class="math" data-tex="\(\alpha[1]^{-1}\delta\)">\(\alpha[1]^{-1}\delta\)</span> to an intrinsic map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\widetilde\delta:V\longrightarrow U[1].
+\tag{4.3}
+\]">\[
+\widetilde\delta:V\longrightarrow U[1].
+\tag{4.3}
+\]</span>
+<p>Complete <span class="math" data-tex="\(-\widetilde\delta[-1]:V[-1]\to U\)">\(-\widetilde\delta[-1]:V[-1]\to U\)</span> to an intrinsic distinguished triangle and rotate once. The rotation sign makes its last arrow <span class="math" data-tex="\(-(-\widetilde\delta[-1])[1]=\widetilde\delta\)">\(-(-\widetilde\delta[-1])[1]=\widetilde\delta\)</span>, so the result is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+U\longrightarrow W\longrightarrow V\xrightarrow{\widetilde\delta}U[1].
+\tag{4.4}
+\]">\[
+U\longrightarrow W\longrightarrow V\xrightarrow{\widetilde\delta}U[1].
+\tag{4.4}
+\]</span>
+<p>The bounded derived category is triangulated, so <span class="math" data-tex="\(W\)">\(W\)</span> remains a bounded intrinsic object. Applying <span class="math" data-tex="\(F^b\)">\(F^b\)</span>, using <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and rotating (4.4) and (4.2) twice puts their identical connecting arrow first. The triangle morphism axiom extends the identity square on that arrow to a triangle comparison. Its third component is an isomorphism: apply the long exact cohomology sequences and the five-term comparison lemma from the thick-subcategory prerequisite. Rotate back to obtain <span class="math" data-tex="\(F^bW\simeq Z\)">\(F^bW\simeq Z\)</span>.</p>
+<p>The number of nonzero cohomology objects decreases at each step, so this construction terminates after finitely many steps even if there are gaps between their degrees. It retains the connecting maps; it does not replace every object by the direct sum of its cohomology objects. Exercise 3 gives a nonzero connecting map that prevents that replacement.</p>
+<p>For the interval assertion, inclusion preserves the cohomology of <span class="math" data-tex="\(W\)">\(W\)</span>, so its intrinsic cohomology also vanishes outside <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>. The bounded-representative theorem in the prerequisite applies inside <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, using its own kernels and quotients, and gives a complex of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>-objects with terms only in that interval.</p>
+<p>Finally inclusion commutes with smart truncations on intrinsic complexes, since their kernels, images and quotients agree ambiently. It takes the natural maps and short-row boundary triangles to the corresponding ambient maps and triangles. This remains true on derived arrows, since quasi-isomorphisms are inverted on both sides. Thus (4.1) is compatible with the truncation structure and its maps. A fully faithful essentially surjective functor is an equivalence: choose an intrinsic preimage and an isomorphism for each target object, and define its inverse on arrows using the unique lifted conjugate arrow. Uniqueness preserves identity and composition and gives the unit and counit isomorphisms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-one-sided-injective-and-projective-criteria">5. One-sided injective and projective criteria</h2>
+<p>Two useful ways to obtain (1.2) use genuine injective or projective objects.</p>
+<p>Suppose both categories have enough injectives and every intrinsic injective is ambient injective. Take <span class="math" data-tex="\(\mathcal J_A,\mathcal J_B\)">\(\mathcal J_A,\mathcal J_B\)</span> to be their injective classes and take <span class="math" data-tex="\(\mathcal P_A=\mathcal A\)">\(\mathcal P_A=\mathcal A\)</span>, <span class="math" data-tex="\(\mathcal P_B=\mathcal B\)">\(\mathcal P_B=\mathcal B\)</span>. The source replacements are identities. Proposition 6.1 of the derived-Hom prerequisite proves the two adapted-pair assertions: bounded-below injectives supply the target replacements and the required Hom acyclicity. The stated inclusion of injectives is exactly the first nesting condition; fullness supplies the second. Shared intrinsic injective replacements therefore prove Theorems 2.1 and 4.1.</p>
+<p>Dually, suppose both categories have enough projectives and every intrinsic projective is ambient projective. Set <span class="math" data-tex="\(\mathcal P_A,\mathcal P_B\)">\(\mathcal P_A,\mathcal P_B\)</span> to those classes and take the target classes to be the entire respective categories. The target replacements are identities, and the same prerequisite's projective computation supplies the adapted pairs. The projective inclusion is the second nesting condition. This gives the same comparison and bounded equivalence without assuming enough injectives.</p>
+<p>An intrinsic injective or projective tests only intrinsic extension or lifting problems. Fullness and exactness of the inclusion do not automatically enlarge its tests to every ambient object. The nesting hypothesis is therefore substantive; Exercise 2 exhibits a Serre subcategory for which it cannot give the claimed comparison.</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<h3 id="exercise-1-a-central-summand-of-a-module-category-18-points">Exercise 1 — a central summand of a module category (18 points)</h3>
+<p>Let <span class="math" data-tex="\(R=R_1\times R_2\)">\(R=R_1\times R_2\)</span> be a product of unital rings, let <span class="math" data-tex="\(\mathcal A=\operatorname{Mod}(R)\)">\(\mathcal A=\operatorname{Mod}(R)\)</span>, and let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> consist of modules killed by <span class="math" data-tex="\(e_2=(0,1)\)">\(e_2=(0,1)\)</span>.</p>
+<ol>
+<li>Identify <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, prove that it is a Serre subcategory, and verify a nested projective pair (7 points).</li>
+<li>Compute the intrinsic-to-ambient derived-Hom comparison for <span class="math" data-tex="\(R_1\)">\(R_1\)</span>-modules, including its map on Ext (6 points).</li>
+<li>Give an explicit intrinsic preimage for a bounded ambient complex whose cohomology is killed by <span class="math" data-tex="\(e_2\)">\(e_2\)</span> (5 points).</li>
+</ol>
+<p><strong>Solution.</strong> The central idempotents <span class="math" data-tex="\(e_1=(1,0)\)">\(e_1=(1,0)\)</span> and <span class="math" data-tex="\(e_2\)">\(e_2\)</span> satisfy <span class="math" data-tex="\(e_1+e_2=1\)">\(e_1+e_2=1\)</span> and <span class="math" data-tex="\(e_1e_2=0\)">\(e_1e_2=0\)</span>. Hence every module decomposes canonically as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+M=e_1M\oplus e_2M=(M_1,M_2),
+\qquad
+\operatorname{Hom}_R(M,N)
+=\operatorname{Hom}_{R_1}(M_1,N_1)
+\oplus\operatorname{Hom}_{R_2}(M_2,N_2).
+\tag{6.1}
+\]">\[
+M=e_1M\oplus e_2M=(M_1,M_2),
+\qquad
+\operatorname{Hom}_R(M,N)
+=\operatorname{Hom}_{R_1}(M_1,N_1)
+\oplus\operatorname{Hom}_{R_2}(M_2,N_2).
+\tag{6.1}
+\]</span>
+<p>The projections are exact: an exact module sequence stays exact after either idempotent projection, as follows by applying the projection to a lift or to a kernel equation. Thus <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is equivalent to <span class="math" data-tex="\(\operatorname{Mod}(R_1)\)">\(\operatorname{Mod}(R_1)\)</span> by <span class="math" data-tex="\(M_1\mapsto(M_1,0)\)">\(M_1\mapsto(M_1,0)\)</span>. Any subobject or quotient of such a module has zero second coordinate. In a short exact sequence with zero second coordinate at both ends, exactness gives zero second coordinate in the middle. This proves the Serre property.</p>
+<p>Both module categories have enough projectives: a free module on the underlying set of a module maps onto it. If <span class="math" data-tex="\(P\)">\(P\)</span> is projective over <span class="math" data-tex="\(R_1\)">\(R_1\)</span>, then <span class="math" data-tex="\((P,0)\)">\((P,0)\)</span> is projective over <span class="math" data-tex="\(R\)">\(R\)</span>. Indeed an ambient epimorphism is a pair of epimorphisms, and a map from <span class="math" data-tex="\((P,0)\)">\((P,0)\)</span> lifts by the projective property of <span class="math" data-tex="\(P\)">\(P\)</span> in its first coordinate; the second map is zero. Consequently the classes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\mathcal J_A=\mathcal A,\quad \mathcal J_B=\mathcal B,
+\qquad
+\mathcal P_A=\operatorname{Proj}(R),\quad
+\mathcal P_B=\operatorname{Proj}(R_1)
+\tag{6.2}
+\]">\[
+\mathcal J_A=\mathcal A,\quad \mathcal J_B=\mathcal B,
+\qquad
+\mathcal P_A=\operatorname{Proj}(R),\quad
+\mathcal P_B=\operatorname{Proj}(R_1)
+\tag{6.2}
+\]</span>
+<p>give the nested pairs of Section 5.</p>
+<p>Choose a bounded-above projective resolution <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span> over <span class="math" data-tex="\(R_1\)">\(R_1\)</span>, with <span class="math" data-tex="\(M\)">\(M\)</span> in degree zero. The same resolution <span class="math" data-tex="\((P,0)\to(M,0)\)">\((P,0)\to(M,0)\)</span> is ambient projective. Fullness identifies every term and differential of the normalized Hom complexes, giving the canonical comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+R\operatorname{Hom}_{R_1}(M,N)
+\xrightarrow{\sim}
+R\operatorname{Hom}_{R}((M,0),(N,0)).
+\tag{6.3}
+\]">\[
+R\operatorname{Hom}_{R_1}(M,N)
+\xrightarrow{\sim}
+R\operatorname{Hom}_{R}((M,0),(N,0)).
+\tag{6.3}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\operatorname{Ext}_{R_1}^n(M,N)\to
+\operatorname{Ext}_{R}^n((M,0),(N,0))\)">\(\operatorname{Ext}_{R_1}^n(M,N)\to
+\operatorname{Ext}_{R}^n((M,0),(N,0))\)</span> is an isomorphism for every <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. Its map is the actual inclusion on derived arrows, by Proposition 3.1, rather than an isomorphism obtained by an unrelated choice of resolutions. The same argument computes bounded source complexes and bounded-below targets.</p>
+<p>Finally write an ambient bounded complex as <span class="math" data-tex="\(Z=(Z_1,Z_2)\)">\(Z=(Z_1,Z_2)\)</span>, term by term. Its second cohomology coordinate is <span class="math" data-tex="\(H^i(Z_2)\)">\(H^i(Z_2)\)</span>. Under the stated hypothesis <span class="math" data-tex="\(Z_2\)">\(Z_2\)</span> is acyclic, so the canonical inclusion <span class="math" data-tex="\((Z_1,0)\to Z\)">\((Z_1,0)\to Z\)</span> is a quasi-isomorphism. The bounded <span class="math" data-tex="\(R_1\)">\(R_1\)</span>-complex <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span> is the required intrinsic preimage. Its cohomology has exactly the same degree support as that of <span class="math" data-tex="\(Z\)">\(Z\)</span>; smart truncation supplies the same finite cohomology interval if desired. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-2-a-serre-subcategory-with-different-higher-ext-22-points">Exercise 2 — a Serre subcategory with different higher Ext (22 points)</h3>
+<p>Fix a field <span class="math" data-tex="\(k\)">\(k\)</span>. Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be the category of representations of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+0\xrightarrow{a_0}1\xrightarrow{a_1}2\xrightarrow{a_2}3,
+\qquad a_1a_0=0,\quad a_2a_1=0,
+\tag{6.4}
+\]">\[
+0\xrightarrow{a_0}1\xrightarrow{a_1}2\xrightarrow{a_2}3,
+\qquad a_1a_0=0,\quad a_2a_1=0,
+\tag{6.4}
+\]</span>
+<p>in arbitrary <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces. Let <span class="math" data-tex="\(S_i\)">\(S_i\)</span> have <span class="math" data-tex="\(k\)">\(k\)</span> at vertex <span class="math" data-tex="\(i\)">\(i\)</span> and zero elsewhere, and let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> consist of representations supported at vertices <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<ol>
+<li>Prove that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is abelian and <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is Serre and semisimple (6 points).</li>
+<li>For <span class="math" data-tex="\(i=0,1,2\)">\(i=0,1,2\)</span>, let <span class="math" data-tex="\(P_i\)">\(P_i\)</span> have <span class="math" data-tex="\(k\)">\(k\)</span> at <span class="math" data-tex="\(i,i+1\)">\(i,i+1\)</span> and identity on their arrow, and set <span class="math" data-tex="\(P_3=S_3\)">\(P_3=S_3\)</span>. Prove projectivity and compute <span class="math" data-tex="\(\operatorname{Ext}_{\mathcal A}^3(S_0,S_3)\)">\(\operatorname{Ext}_{\mathcal A}^3(S_0,S_3)\)</span> (10 points).</li>
+<li>Explain exactly why the conclusion of Corollary 3.2 fails and why Section 5 does not apply (6 points).</li>
+</ol>
+<p><strong>Solution.</strong> Kernels and cokernels of a morphism of representations are formed vertex by vertex; the arrow maps restrict to kernels and descend to quotients. The two zero-composite relations remain true. Images and coimages likewise agree vertexwise, since they do in vector spaces, so the category is abelian and exactness is vertexwise.</p>
+<p>The subcategory <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is equivalent to <span class="math" data-tex="\(\operatorname{Vect}_k\times\operatorname{Vect}_k\)">\(\operatorname{Vect}_k\times\operatorname{Vect}_k\)</span>, with its two endpoint spaces as coordinates. Vanishing at either interior vertex passes to subobjects, quotients and extensions by vertexwise exactness. Thus it is Serre. Every surjection of vector spaces splits by choosing lifts of a basis, so every short exact sequence in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> splits. Every object is projective and injective and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}_{\mathcal B}^n(S_0,S_3)=0
+\quad(n&gt;0).
+\tag{6.5}
+\]">\[
+\operatorname{Ext}_{\mathcal B}^n(S_0,S_3)=0
+\quad(n&gt;0).
+\tag{6.5}
+\]</span>
+<p>A map <span class="math" data-tex="\(P_i\to V\)">\(P_i\to V\)</span> is determined by a vector <span class="math" data-tex="\(v\in V_i\)">\(v\in V_i\)</span>; its next component is <span class="math" data-tex="\(a_i(v)\)">\(a_i(v)\)</span>. The next arrow equation is precisely the zero-composite relation. For <span class="math" data-tex="\(i=3\)">\(i=3\)</span> only the terminal vector is needed. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.6); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathcal A}(P_i,V)\cong V_i
+\quad(0\leq i\leq3).
+\tag{6.6}
+\]">\[
+\operatorname{Hom}_{\mathcal A}(P_i,V)\cong V_i
+\quad(0\leq i\leq3).
+\tag{6.6}
+\]</span>
+<p>Evaluation at a vertex is exact, so each <span class="math" data-tex="\(P_i\)">\(P_i\)</span> is projective. The category has enough projectives: take a basis of each <span class="math" data-tex="\(V_i\)">\(V_i\)</span>, one copy of <span class="math" data-tex="\(P_i\)">\(P_i\)</span> for each basis vector, and the maps specified by (6.6). Their direct sum maps onto <span class="math" data-tex="\(V\)">\(V\)</span> at every vertex. Such a sum is projective, since a map from it lifts across an epimorphism by lifting separately the defining vector of each summand.</p>
+<p>For <span class="math" data-tex="\(i=0,1,2\)">\(i=0,1,2\)</span>, define <span class="math" data-tex="\(d_i:P_{i+1}\to P_i\)">\(d_i:P_{i+1}\to P_i\)</span> to be identity at their common vertex <span class="math" data-tex="\(i+1\)">\(i+1\)</span> and zero at other vertices. These are representation maps and adjacent composites vanish. The sequence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.7); horizontal scroll when needed" data-tex="\[
+0\longrightarrow P_3\xrightarrow{d_2}P_2
+\xrightarrow{d_1}P_1\xrightarrow{d_0}P_0
+\longrightarrow S_0\longrightarrow0
+\tag{6.7}
+\]">\[
+0\longrightarrow P_3\xrightarrow{d_2}P_2
+\xrightarrow{d_1}P_1\xrightarrow{d_0}P_0
+\longrightarrow S_0\longrightarrow0
+\tag{6.7}
+\]</span>
+<p>is exact. At vertex zero its nonzero map is <span class="math" data-tex="\((P_0)_0\to(S_0)_0\)">\((P_0)_0\to(S_0)_0\)</span>, an identity. At vertices one, two and three the respective nonzero maps are <span class="math" data-tex="\((d_0)_1\)">\((d_0)_1\)</span>, <span class="math" data-tex="\((d_1)_2\)">\((d_1)_2\)</span> and <span class="math" data-tex="\((d_2)_3\)">\((d_2)_3\)</span>, again identities. Thus every vertex sequence is exact. Apply <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal A}(-,S_3)\)">\(\operatorname{Hom}_{\mathcal A}(-,S_3)\)</span>: by (6.6) the result has <span class="math" data-tex="\(k\)">\(k\)</span> only in cohomological degree three and zero elsewhere. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.8); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}_{\mathcal A}^3(S_0,S_3)=k.
+\tag{6.8}
+\]">\[
+\operatorname{Ext}_{\mathcal A}^3(S_0,S_3)=k.
+\tag{6.8}
+\]</span>
+<p>Equations (6.5) and (6.8) show that the actual map
+<span class="math" data-tex="\(\operatorname{Hom}_{D^b(\mathcal B)}(S_0,S_3[3])\to
+\operatorname{Hom}_{D^b(\mathcal A)}(S_0,S_3[3])\)">\(\operatorname{Hom}_{D^b(\mathcal B)}(S_0,S_3[3])\to
+\operatorname{Hom}_{D^b(\mathcal A)}(S_0,S_3[3])\)</span>
+is the map <span class="math" data-tex="\(0\to k\)">\(0\to k\)</span>, so the bounded inclusion is not full. In particular the intrinsic projective <span class="math" data-tex="\(S_0\)">\(S_0\)</span> is not ambient projective. The epimorphism <span class="math" data-tex="\(P_0\to S_0\)">\(P_0\to S_0\)</span> has no section: a section would be identity at vertex zero, but its arrow equation along <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span> would say that this identity followed by the identity arrow of <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is zero.</p>
+<p>The projective nesting required in Section 5 therefore fails. More generally there cannot be nested adapted pairs satisfying all the hypotheses of Theorem 2.1 for this inclusion, since those hypotheses would force the contradictory Ext isomorphism. Being Serre, and hence closed under extensions, alone does not settle higher derived morphisms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-3-retaining-the-truncation-boundary-20-points">Exercise 3 — retaining the truncation boundary (20 points)</h3>
+<p>Use the category <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and the objects of Exercise 2. This time put <span class="math" data-tex="\(\mathcal C=\mathcal A\times\operatorname{Vect}_k\)">\(\mathcal C=\mathcal A\times\operatorname{Vect}_k\)</span>, and include <span class="math" data-tex="\(\mathcal B&#x27;=\mathcal A\times\{0\}\)">\(\mathcal B&#x27;=\mathcal A\times\{0\}\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.9); horizontal scroll when needed" data-tex="\[
+W=(P_2\xrightarrow{d_1}P_1\xrightarrow{d_0}P_0)
+\tag{6.9}
+\]">\[
+W=(P_2\xrightarrow{d_1}P_1\xrightarrow{d_0}P_0)
+\tag{6.9}
+\]</span>
+<p>have terms in degrees <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>.</p>
+<ol>
+<li>Verify the nesting criterion for <span class="math" data-tex="\(\mathcal B&#x27;\subset\mathcal C\)">\(\mathcal B&#x27;\subset\mathcal C\)</span> and compute the cohomology of <span class="math" data-tex="\(W\)">\(W\)</span> (6 points).</li>
+<li>Prove that the top truncation boundary <span class="math" data-tex="\(\delta:S_0[-2]\to S_3[1]\)">\(\delta:S_0[-2]\to S_3[1]\)</span> is nonzero, and explain its relevance to Theorem 4.1 (9 points).</li>
+<li>Whenever a connecting map <span class="math" data-tex="\(\delta:V\to U[1]\)">\(\delta:V\to U[1]\)</span> has an actual chain representative, write the cone used in the reconstruction and verify its differential and sign (5 points).</li>
+</ol>
+<p><strong>Solution.</strong> Exercise 2 gives enough projectives in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Vector spaces have enough projectives as well. Products of the free covers give enough projectives in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. A projective <span class="math" data-tex="\(P\)">\(P\)</span> of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> becomes projective as <span class="math" data-tex="\((P,0)\)">\((P,0)\)</span>, since lifting across a product epimorphism reduces to its first component. The full target classes and the respective projective source classes are nested adapted pairs. Theorem 4.1 applies to this proper subcategory.</p>
+<p>The vertexwise resolution (6.7) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.10); horizontal scroll when needed" data-tex="\[
+H^0W=S_3,\qquad H^1W=0,\qquad H^2W=S_0.
+\tag{6.10}
+\]">\[
+H^0W=S_3,\qquad H^1W=0,\qquad H^2W=S_0.
+\tag{6.10}
+\]</span>
+<p>For example the kernel in degree zero is the copy of <span class="math" data-tex="\(S_3\)">\(S_3\)</span> in <span class="math" data-tex="\(P_2\)">\(P_2\)</span>, the middle kernel is the image of <span class="math" data-tex="\(P_2\)">\(P_2\)</span>, and the final cokernel is <span class="math" data-tex="\(S_0\)">\(S_0\)</span>. Thus its top truncation triangle is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.11); horizontal scroll when needed" data-tex="\[
+S_3\longrightarrow W\longrightarrow S_0[-2]
+\xrightarrow{\delta}S_3[1].
+\tag{6.11}
+\]">\[
+S_3\longrightarrow W\longrightarrow S_0[-2]
+\xrightarrow{\delta}S_3[1].
+\tag{6.11}
+\]</span>
+<p>Its last arrow belongs to the nonzero group
+<span class="math" data-tex="\(\operatorname{Hom}_D(S_0[-2],S_3[1])=
+\operatorname{Ext}_{\mathcal A}^3(S_0,S_3)=k\)">\(\operatorname{Hom}_D(S_0[-2],S_3[1])=
+\operatorname{Ext}_{\mathcal A}^3(S_0,S_3)=k\)</span>.
+We prove that this particular arrow is nonzero, without identifying a scalar by an unchosen Yoneda sign convention.</p>
+<p>The bounded projective complex <span class="math" data-tex="\(W\)">\(W\)</span> computes morphisms out of itself. By (6.6) all three groups <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal A}(P_i,S_3)\)">\(\operatorname{Hom}_{\mathcal A}(P_i,S_3)\)</span>, <span class="math" data-tex="\(i=0,1,2\)">\(i=0,1,2\)</span>, vanish. Its entire Hom complex into <span class="math" data-tex="\(S_3\)">\(S_3\)</span> is therefore zero, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.12); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_D(W,S_3)=0.
+\tag{6.12}
+\]">\[
+\operatorname{Hom}_D(W,S_3)=0.
+\tag{6.12}
+\]</span>
+<p>If <span class="math" data-tex="\(\delta=0\)">\(\delta=0\)</span>, apply <span class="math" data-tex="\(\operatorname{Hom}_D(S_0[-2],-)\)">\(\operatorname{Hom}_D(S_0[-2],-)\)</span> to (6.11). Exactness lifts the identity on <span class="math" data-tex="\(S_0[-2]\)">\(S_0[-2]\)</span> to a section of <span class="math" data-tex="\(W\to S_0[-2]\)">\(W\to S_0[-2]\)</span>. Together with the first map of (6.11), that section defines
+<span class="math" data-tex="\(S_3\oplus S_0[-2]\to W\)">\(S_3\oplus S_0[-2]\to W\)</span>. It is an isomorphism on every cohomology object, by (6.10) and the section identity, so is a derived isomorphism. Projection to <span class="math" data-tex="\(S_3\)">\(S_3\)</span> then gives a nonzero arrow <span class="math" data-tex="\(W\to S_3\)">\(W\to S_3\)</span>: its composite with the first map from <span class="math" data-tex="\(S_3\)">\(S_3\)</span> is identity. This contradicts (6.12), since <span class="math" data-tex="\(S_3\neq0\)">\(S_3\neq0\)</span>. Hence <span class="math" data-tex="\(\delta\neq0\)">\(\delta\neq0\)</span>.</p>
+<p>The object <span class="math" data-tex="\((W,0)\)">\((W,0)\)</span> has an intrinsic preimage under the bounded equivalence, but it cannot be replaced by <span class="math" data-tex="\((S_3\oplus S_0[-2],0)\)">\((S_3\oplus S_0[-2],0)\)</span>. Lifting the connecting map in Theorem 4.1 retains the data that distinguishes them. Here that map is a derived arrow; there need not be an actual chain map between the displayed cohomology complexes representing it.</p>
+<p>For the last part assume separately that <span class="math" data-tex="\(\delta:V\to U[1]\)">\(\delta:V\to U[1]\)</span> is an actual chain map, with components <span class="math" data-tex="\(\delta^i:V^i\to U^{i+1}\)">\(\delta^i:V^i\to U^{i+1}\)</span>. Its chain equation is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.13); horizontal scroll when needed" data-tex="\[
+d_U\delta+\delta d_V=0.
+\tag{6.13}
+\]">\[
+d_U\delta+\delta d_V=0.
+\tag{6.13}
+\]</span>
+<p>The source-shifted map <span class="math" data-tex="\(-\delta[-1]:V[-1]\to U\)">\(-\delta[-1]:V[-1]\to U\)</span> has degree-<span class="math" data-tex="\(i\)">\(i\)</span> component <span class="math" data-tex="\(-\delta^{i-1}\)">\(-\delta^{i-1}\)</span>. The target-first cone therefore has terms <span class="math" data-tex="\(U^i\oplus V^i\)">\(U^i\oplus V^i\)</span> and differential</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.14); horizontal scroll when needed" data-tex="\[
+d(u,v)=(d_Uu-\delta v,d_Vv).
+\tag{6.14}
+\]">\[
+d(u,v)=(d_Uu-\delta v,d_Vv).
+\tag{6.14}
+\]</span>
+<p>Its square is zero: the first off-diagonal entry is <span class="math" data-tex="\(-d_U\delta-\delta d_V=0\)">\(-d_U\delta-\delta d_V=0\)</span>, and both diagonal squares are zero. The unrotated triangle ends in the positive projection to <span class="math" data-tex="\(V\)">\(V\)</span>. Rotation produces the triangle <span class="math" data-tex="\(U\to\operatorname{Cone}(-\delta[-1])\to V\to U[1]\)">\(U\to\operatorname{Cone}(-\delta[-1])\to V\to U[1]\)</span>, whose last map is <span class="math" data-tex="\(-(-\delta[-1])[1]=\delta\)">\(-(-\delta[-1])[1]=\delta\)</span>, as required. This calculation verifies the sign when chain representatives are available; the abstract reconstruction uses distinguished triangles and also covers maps represented by roofs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-4-a-shared-hom-computation-with-its-actual-generator-20-points">Exercise 4 — a shared Hom computation with its actual generator (20 points)</h3>
+<p>Let <span class="math" data-tex="\(\mathcal A=\operatorname{Vect}_k\times\operatorname{Vect}_k\)">\(\mathcal A=\operatorname{Vect}_k\times\operatorname{Vect}_k\)</span> and <span class="math" data-tex="\(\mathcal B=\operatorname{Vect}_k\times\{0\}\)">\(\mathcal B=\operatorname{Vect}_k\times\{0\}\)</span>. Work in its first coordinate and define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.15); horizontal scroll when needed" data-tex="\[
+P^{-1}=k^2,\quad P^0=k,\quad d_P(x,y)=x;
+\qquad
+I^0=k,\quad I^1=k^2,\quad d_I(z)=(0,z),
+\tag{6.15}
+\]">\[
+P^{-1}=k^2,\quad P^0=k,\quad d_P(x,y)=x;
+\qquad
+I^0=k,\quad I^1=k^2,\quad d_I(z)=(0,z),
+\tag{6.15}
+\]</span>
+<p>with all other terms zero. Set <span class="math" data-tex="\(X=k[1]\)">\(X=k[1]\)</span>, <span class="math" data-tex="\(Y=k[-1]\)">\(Y=k[-1]\)</span>. Use <span class="math" data-tex="\(p:P\to X\)">\(p:P\to X\)</span>, projection to the second coordinate in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, and <span class="math" data-tex="\(i:Y\to I\)">\(i:Y\to I\)</span>, inclusion into the first coordinate in degree <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<ol>
+<li>Check the replacements and write the full normalized Hom complex (8 points).</li>
+<li>Compute its cohomology over every field, including characteristic two (7 points).</li>
+<li>Identify its surviving generator with the actual derived arrow and with the ambient comparison (5 points).</li>
+</ol>
+<p><strong>Solution.</strong> Vector spaces are projective and injective: a basis lifts across any surjection, and a linear map extends from a subspace by extending a basis. Thus the full source and target classes are nested adapted pairs. We have <span class="math" data-tex="\(H^{-1}P=\{(0,y)\}\cong k\)">\(H^{-1}P=\{(0,y)\}\cong k\)</span> and <span class="math" data-tex="\(H^0P=0\)">\(H^0P=0\)</span>, so <span class="math" data-tex="\(p\)">\(p\)</span> is a quasi-isomorphism. Likewise <span class="math" data-tex="\(H^0I=0\)">\(H^0I=0\)</span> and <span class="math" data-tex="\(H^1I=k^2/\{(0,z)\}\cong k\)">\(H^1I=k^2/\{(0,z)\}\cong k\)</span>, so <span class="math" data-tex="\(i\)">\(i\)</span> is a quasi-isomorphism.</p>
+<p>The Hom complex has nonzero terms only in degrees <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>. Write a degree-zero element as <span class="math" data-tex="\(\lambda:P^0\to I^0\)">\(\lambda:P^0\to I^0\)</span>. In degree one use a row <span class="math" data-tex="\((a,b):P^{-1}\to I^0\)">\((a,b):P^{-1}\to I^0\)</span> and a column <span class="math" data-tex="\((c,d):P^0\to I^1\)">\((c,d):P^0\to I^1\)</span>. Degree two is a matrix <span class="math" data-tex="\(P^{-1}\to I^1\)">\(P^{-1}\to I^1\)</span>. Formula (1.1) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.16); horizontal scroll when needed" data-tex="\[
+k\xrightarrow{D_0}k^4\xrightarrow{D_1}M_2(k),
+\qquad
+D_0(\lambda)=(-\lambda,0,0,\lambda),
+\tag{6.16}
+\]">\[
+k\xrightarrow{D_0}k^4\xrightarrow{D_1}M_2(k),
+\qquad
+D_0(\lambda)=(-\lambda,0,0,\lambda),
+\tag{6.16}
+\]</span>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.17); horizontal scroll when needed" data-tex="\[
+D_1(a,b,c,d)=
+\begin{pmatrix}c&amp;0\\a+d&amp;b\end{pmatrix}.
+\tag{6.17}
+\]">\[
+D_1(a,b,c,d)=
+\begin{pmatrix}c&amp;0\\a+d&amp;b\end{pmatrix}.
+\tag{6.17}
+\]</span>
+<p>Indeed in degree zero the source contribution is <span class="math" data-tex="\(-\lambda d_P\)">\(-\lambda d_P\)</span>, giving <span class="math" data-tex="\((-\lambda,0)\)">\((-\lambda,0)\)</span>, and the target contribution is <span class="math" data-tex="\(d_I\lambda=(0,\lambda)\)">\(d_I\lambda=(0,\lambda)\)</span>. In degree one the sign reverses: <span class="math" data-tex="\(d_I(a,b)+(c,d)d_P\)">\(d_I(a,b)+(c,d)d_P\)</span> gives the matrix in (6.17). In particular <span class="math" data-tex="\(D_1D_0=0\)">\(D_1D_0=0\)</span>.</p>
+<p>The map <span class="math" data-tex="\(D_0\)">\(D_0\)</span> is injective. The kernel of <span class="math" data-tex="\(D_1\)">\(D_1\)</span> consists of <span class="math" data-tex="\(c=b=0\)">\(c=b=0\)</span>, <span class="math" data-tex="\(d=-a\)">\(d=-a\)</span>, exactly the image of <span class="math" data-tex="\(D_0\)">\(D_0\)</span>. Its image consists of every matrix whose upper-right entry is zero: prescribe independently <span class="math" data-tex="\(c,b,a+d\)">\(c,b,a+d\)</span>. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.18); horizontal scroll when needed" data-tex="\[
+H^0=H^1=0,\qquad H^2\cong k,
+\tag{6.18}
+\]">\[
+H^0=H^1=0,\qquad H^2\cong k,
+\tag{6.18}
+\]</span>
+<p>where the upper-right entry is the quotient coordinate. These equations remain valid in characteristic two, since <span class="math" data-tex="\(d=-a\)">\(d=-a\)</span> and <span class="math" data-tex="\(a+d=0\)">\(a+d=0\)</span> are equivalent there too. There are no further degrees. Hence the derived Hom object is isomorphic to <span class="math" data-tex="\(k[-2]\)">\(k[-2]\)</span>; its nonzero cohomology lies in degree two.</p>
+<p>A generator is the matrix <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>, which takes <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> to <span class="math" data-tex="\((y,0)\)">\((y,0)\)</span>. It is a degree-two cycle and represents a chain map <span class="math" data-tex="\(f:P\to I[2]\)">\(f:P\to I[2]\)</span>. On the surviving source cohomology <span class="math" data-tex="\((0,y)\)">\((0,y)\)</span>, it takes the value <span class="math" data-tex="\((y,0)\)">\((y,0)\)</span>, which is the target quotient's standard generator. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.19); horizontal scroll when needed" data-tex="\[
+(Qi[2])^{-1}Qf(Qp)^{-1}:k[1]\longrightarrow k[-1][2]=k[1]
+\tag{6.19}
+\]">\[
+(Qi[2])^{-1}Qf(Qp)^{-1}:k[1]\longrightarrow k[-1][2]=k[1]
+\tag{6.19}
+\]</span>
+<p>is identity. More explicitly <span class="math" data-tex="\(f=i[2]\,1_{k[1]}\,p\)">\(f=i[2]\,1_{k[1]}\,p\)</span> as chain maps, which gives (6.19) directly after inverting the two quasi-isomorphisms.</p>
+<p>The intrinsic and ambient Hom complexes have identical entries and differentials. Their canonical comparison is identity on (6.16)–(6.17), hence takes this same generator to the identity in the first ambient coordinate. This verifies the actual-arrow conclusion of Proposition 3.1 along with the cohomology computation; an abstract comparison of dimensions would not identify that arrow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</main></body></html>

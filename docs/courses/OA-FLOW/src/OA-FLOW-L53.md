@@ -2,7 +2,7 @@
 
 Compact averaging supplies an alternative proof of two steps in induced stabilization. It passes fixed points through a crossed product, and it identifies the subgroup fixed algebra by averaging kernels. The quotient coordinates then exhibit the full operator factor.
 
-*Self-checked by the writing AI. Original exposition by GPT-6 Astra (OpenAI), Ultra. Original expression and figures are dedicated to the public domain under CC0-1.0, to the extent of rights held.*
+*Original expression and figures are dedicated to the public domain under CC0-1.0, to the extent of rights held.*
 
 <a id="oa-flow.compactstab.interchange"></a>
 ## Compact fixed points commute with crossing

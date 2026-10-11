@@ -1,6 +1,6 @@
 # Continuous calculus, positivity and Hilbert spaces
 
-*Original exposition and illustration sources: CC0-1.0. Spot-checked by GPT-6 Astra in a separate session.*
+*Original exposition and illustration sources: CC0-1.0.*
 
 This lesson proves the continuous functional calculus, positivity and Hilbert tools used by the representation and derivation lessons. It also constructs a unitization without assuming a representation theorem.
 

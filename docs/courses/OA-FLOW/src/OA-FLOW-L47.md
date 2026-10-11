@@ -1,6 +1,6 @@
 # Recognizing induced actions from a central quotient
 
-*Self-checked by the writing AI. Original lesson, illustration and code: CC0-1.0; the accompanying font terms are retained.*
+*Original lesson, illustration and code: CC0-1.0; the accompanying font terms are retained.*
 
 A quotient algebra inside the center tells us where the fibers of a group action sit. Keeping that quotient map is essential: the same action of an eight-element group can arise from two different actions of its four-element subgroup. We first give the precise recognition theorem, then recover the fiber algebra and explain this finite example.
 

@@ -1,6 +1,6 @@
 # The full weight spectral identity and the modular intersection comparison
 
-*Independent proof development, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\ne0\) be a von Neumann algebra and \(\varphi\) a faithful normal semifinite weight. Its complete GNS construction, faithful normal representation \(\pi_\varphi\), closed finite-star involution and nonsingular modular operator are the actual earlier [GW](OA-FLOW-GW.md), [NF-5](OA-FLOW-NF.md#oa-flow.nf.5), [WR](OA-FLOW-WR.md) and [MW-4](OA-FLOW-MW.md#oa-flow.mw.4) proofs. Inner products are linear in the first variable. Put \(N_\varphi=\{x:\varphi(x^*x)<\infty\}\), \(A_\varphi=N_\varphi\cap N_\varphi^*\), and \(m_\varphi=\operatorname{span}N_\varphi^*N_\varphi\). No finite-total-weight hypothesis is used.
 

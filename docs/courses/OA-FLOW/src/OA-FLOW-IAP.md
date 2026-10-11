@@ -1,6 +1,6 @@
 # Commuting approximations and finite domains of weights
 
-*Self-checked by the writing AI. Original exposition, model, data and drawing code: CC0-1.0. Source publications and installed fonts retain their own terms.*
+*Original exposition, model, data and drawing code: CC0-1.0. Source publications and installed fonts retain their own terms.*
 
 A small bounded change of density can make a modular action integrable while leaving an infinite matrix algebra fixed. We construct this change inside the original centralizer. On a type III\(_1\) factor it yields uniform approximation of one infinite-multiplicity weight by inner translates of another. For positive discrete type, a different bounded change makes the weight periodic. Both constructions lead to exact conjugacy of all four finite domains.
 

@@ -17,7 +17,7 @@ Human antecedents are M. Takesaki, *Theory of Operator Algebras I*, IV.8.18–8.
 
 The first three statements belong to *Direct integrals of von Neumann algebras*; the fourth belongs to *Decomposable operators and the diagonal algebra*. They hold over arbitrary sigma-finite measure spaces with separable fibres, without global separability or standardness. DC07 retains global separability for its explicit realization of a specified central abelian algebra. The factor criterion is applied on the nonzero effective support, as permitted by the foundation’s Remark 4.4(2). DC01–03 retain the compact-equation selection and generator construction, DC05 the finite density proof, DC06 the explicit diagonal realization, DC09 the specified common-null localization, DC11 the typed Borel-base and density transport, and DC12 the tests. These are precise statement imports; DC has no dependency on its DI consumer.
 
-Inner products are linear first. The bounded inputs are BK-02's bicommutant theorem, the Hilbert completion/projection/Riesz/adjoint contracts, and SK-02–04's finite regular cyclic spectral representation and bounded Borel calculus. Scalar integration, scalar \(L^2\) completeness and monotone/dominated convergence have their existing course bindings. We prove the finite Radon–Nikodym step in DC-05 rather than importing an unstated measure theorem. DF-01–08 supplies measurable Hilbert fields, exact operator norms, Hilbert integrals and the diagonal-commutant theorem at its declared inputs. The retained alternative proof route uses no central-decomposition theorem or general measurable-selection theorem as an input; its shared statement imports are precisely those in the table above. DC-11 additionally uses a supplied Borel realization of each standard base as a Borel subset of the real unit interval; the general standard-Borel realization theorem is a distinct input whose transitive binding is not supplied by merely naming a standard base.
+Inner products are linear first. The bounded inputs are BK-02's bicommutant theorem, the Hilbert completion/projection/Riesz/adjoint contracts, and SK-02–04's finite regular cyclic spectral representation and bounded Borel calculus. Scalar integration, scalar \(L^2\) completeness and monotone/dominated convergence have their existing course bindings. We prove the finite Radon–Nikodym step in DC-05 rather than importing an unstated measure theorem. DF-01–08 supplies measurable Hilbert fields, exact operator norms, Hilbert integrals and the diagonal-commutant theorem at its declared inputs. The retained alternative proof route uses no central-decomposition theorem or general measurable-selection theorem as an input; its shared statement imports are precisely those in the table above. DC-11 constructs real Borel coordinates for every standard Borel base, proves transport of the completed measure and Hilbert field, and then derives the general change-of-base formula.
 
 Von Neumann subalgebras are unital on the displayed Hilbert space. The zero Hilbert space is treated explicitly. Inner-product notation and fibre commutants are taken on the stated fibre Hilbert space, even when its operators are extended by zero in the ambient space. Equality of fibre fields means equality off one null set after specifying the countable data being compared; it never means a universal null set for every measurable representative.
 
@@ -298,8 +298,63 @@ This proves full same-diagonal uniqueness, including the specified algebra ident
 
 ## Change of base and the square-root density in general uniqueness
 
-For this section suppose the two standard bases are supplied as Borel subsets \(Y_i\) of \([0,1]\), with completed sigma-finite Borel measures \(\mu_i\), and nonzero fibres almost everywhere. This is the exact standard-Borel-realization input identified above. Write \(\mathcal H_1=\int_{Y_1}^{\oplus}H_x\,d\mu_1(x)\) and \(\mathcal H_2=\int_{Y_2}^{\oplus}K_y\,d\mu_2(y)\), and let \(U:\mathcal H_1\longrightarrow\mathcal H_2\) be a unitary taking the first diagonal algebra onto the second. If these Hilbert spaces are zero, faithfulness forces both measure algebras to be zero. Removing the null bases leaves the empty Borel isomorphism and empty fibre unitary, so all subsequent almost-everywhere assertions are vacuous. Henceforth the Hilbert spaces are nonzero; both measures have positive total mass, and equivalent probability measures can be chosen. The diagonal representations are faithful, so conjugation by \(U\) induces an isomorphism
+**Real coordinates for standard Borel bases.** A standard Borel space is a measurable space isomorphic to a Borel subset of a separable completely metrizable space, with the induced Borel sigma-algebra. Every such space is Borel isomorphic to a Borel subset of \([0,1]\). We give the construction, including the Borel range and inverse.
 
+Let \((P,d)\) be a nonempty complete separable metric space and choose a dense sequence \((q_j)_{j\geq0}\), repeating points when necessary. Give \(\mathcal Z=\mathbb N_0^{\mathbb N_{>0}}\) the topology whose basic open sets fix finitely many coordinates; this is a countable base. For \(x\in P\) define
+\[
+ a_n(x)=\min\{j:d(x,q_j)<2^{-n}\},\qquad
+ a(x)=(a_n(x))_{n\geq1}.
+ \tag{DC.B1}
+\]
+Every coordinate is Borel: \(\{a_n=j\}\) is the open ball about \(q_j\) with the finitely many earlier such balls removed. Hence \(a\) is Borel, by the countable cylinder base. Also \(q_{a_n(x)}\to x\), so the code is injective.
+
+To prove that the range is Borel, rather than assume that an injective Borel map has this property, put
+\[
+ \mathcal D=\bigcap_{r\geq1}\bigcup_{N\geq1}
+       \bigcap_{m,n\geq N}
+       \{z:d(q_{z_m},q_{z_n})<2^{-r}\}.
+ \tag{DC.B2}
+\]
+Each set inside the intersections is a union of coordinate cylinders, so \(\mathcal D\) is Borel. Its elements are exactly the codes whose selected points are Cauchy. Completeness gives a limit \(v(z)\in P\). For every fixed \(j\),
+\(\ell_j(z)=\lim_m d(q_{z_m},q_j)=d(v(z),q_j)\)
+is Borel on \(\mathcal D\): the distance functions are Borel, and countable suprema and infima express their pointwise limits. Therefore the set
+\[
+ \mathcal C=\left\{z\in\mathcal D:
+ \ell_{z_n}(z)<2^{-n}\ \text{and}\
+ \ell_j(z)\geq2^{-n}\ \text{for every }j<z_n,
+ \quad n\geq1\right\}
+ \tag{DC.B3}
+\]
+is Borel. For each \(n\), split into the countably many events \(z_n=k\) to read its tests as fixed-index Borel conditions. Those conditions say exactly that \(z_n\) is the least permissible index for the point \(v(z)\). Thus \(\mathcal C=a(P)\) and \(v=a^{-1}\) on \(\mathcal C\).
+
+This inverse is continuous on \(\mathcal C\). If \(z,z'\in\mathcal C\) have the same \(N\)th coordinate, then
+\[
+ d(v(z),v(z'))<2^{1-N}.
+ \tag{DC.B4}
+\]
+Fixing that coordinate is an open neighborhood in the code space, and \(N\) can be arbitrarily large. In particular, for any Borel subset \(A\subseteq P\), the set \(a(A)=v^{-1}(A)\) is Borel in \(\mathcal C\), hence in \(\mathcal Z\). Here the Borel sets of a subspace are its intersections with ambient Borel sets: the intersections form a sigma-algebra containing the relative opens, and the reverse inclusion follows by pulling back under the inclusion. This also explains why a Borel subspace of a Borel subspace remains Borel in the ambient space.
+
+Next encode \(z\in\mathcal Z\) by the binary string
+\[
+ \beta(z)=0^{z_1}1\,0^{z_2}1\,0^{z_3}1\cdots.
+ \tag{DC.B5}
+\]
+Its range \(G\subseteq\{0,1\}^{\mathbb N_{>0}}\) consists exactly of strings with infinitely many ones. It is Borel, since
+\(G=\bigcap_N\bigcup_{k\geq N}\{b:b_k=1\}\).
+The map \(\beta\) is a homeomorphism onto \(G\): finitely many input coordinates determine any prescribed finite output prefix, and the positions of the first \(n\) ones determine the first \(n\) input coordinates. Finally put
+\[
+ \kappa(b)=\sum_{k\geq1}2b_k3^{-k}\in[0,1].
+ \tag{DC.B6}
+\]
+The tail after \(N\) is at most \(3^{-N}\), which proves continuity. If two strings first differ in place \(m\), the leading difference is \(2\cdot3^{-m}\) and the remaining tail has magnitude at most \(3^{-m}\); their images therefore differ by at least \(3^{-m}\). This proves injectivity and continuity of the inverse on its image. That image is closed: from any convergent sequence of image points, successive choices of constant-coordinate subsequences and diagonalization give a subsequence whose binary digits converge at every place; the uniform tail bound identifies its real limit with the code of those limiting digits. Thus \(\kappa\) is a homeomorphism onto a closed subset of \([0,1]\).
+
+The image \(\kappa(\beta(a(A)))\) is Borel: \(a(A)\) is Borel in \(\mathcal Z\), the homeomorphism \(\beta\) takes it to a Borel subset of the Borel set \(G\), and \(\kappa\) takes that set to a Borel subset of its closed image. The composite and its inverse are Borel. This proves the assertion for every Borel \(A\subseteq P\), and hence for every standard Borel space. The empty space uses the empty subset of \([0,1]\). No assertion that an arbitrary continuous injection has closed image is used.
+
+If \(\rho:Y\to B\subseteq[0,1]\) is this isomorphism and \(\mu\) a sigma-finite Borel measure, define \(\nu(E)=\mu(\rho^{-1}(E))\). Images of a countable finite-measure exhaustion show that \(\nu\) is sigma-finite. The isomorphism extends to the completions: a completed measurable set differs from a Borel set by a subset of a Borel null set, and the same description is preserved by \(\rho\) and \(\rho^{-1}\). Transport the fibres and sections by \(H'_b=H_{\rho^{-1}(b)}\), \(\xi'(b)=\xi(\rho^{-1}(b))\). Their scalar tests and fundamental sequences remain measurable. The pushforward integral identity, first for simple functions and then by monotone convergence, makes this transport unitary on the Hilbert direct integrals. Thus real coordinates lose neither completed measure information nor fibre data. \(\square\)
+
+For a free human-source comparison with the classical Borel-realization theorem, see Chris Preston, [*Some Notes on Standard Borel and Related Spaces*](https://arxiv.org/abs/0809.3066), Theorem 6.1(1), printed page 35. The construction above uses explicit least-index Cauchy codes and proves its own range and inverse properties.
+
+By the preceding construction, choose the two standard bases as Borel subsets \(Y_i\) of \([0,1]\), with completed sigma-finite Borel measures \(\mu_i\), and nonzero fibres almost everywhere. The pushforward measures and transported fibres are those just constructed. Write \(\mathcal H_1=\int_{Y_1}^{\oplus}H_x\,d\mu_1(x)\) and \(\mathcal H_2=\int_{Y_2}^{\oplus}K_y\,d\mu_2(y)\), and let \(U:\mathcal H_1\longrightarrow\mathcal H_2\) be a unitary taking the first diagonal algebra onto the second. If these Hilbert spaces are zero, faithfulness forces both measure algebras to be zero. Removing the null bases leaves the empty Borel isomorphism and empty fibre unitary, so all subsequent almost-everywhere assertions are vacuous. Henceforth the Hilbert spaces are nonzero; both measures have positive total mass, and equivalent probability measures can be chosen. The diagonal representations are faithful, so conjugation by \(U\) induces an isomorphism
 \[
  \theta:L^\infty(Y_1,\mu_1)\longrightarrow L^\infty(Y_2,\mu_2).
  \tag{DC.25}
@@ -335,7 +390,7 @@ The transported field is measurable by its pulled-back fundamental sections. The
  \tag{DC.28}
 \]
 
-If \(U\) also conjugates the global integral algebras, DC-10 gives \(W_xM_xW_x^*=N_{\Psi(x)}\) almost everywhere. The factor \(w^{-1/2}\) in this direction is required by the exact norm identity; the reciprocal \(\sqrt w\) belongs to \(J\) in the opposite direction. These typed formulas avoid ambiguous expressions that integrate a map into a fibre over the wrong base point. The argument recovers the full change-of-base uniqueness assertion at the explicitly supplied standard-Borel models. The general Borel-realization input is not proved here. Zero-fibre sets, if originally present, must first be removed to make the diagonal faithful. \(\square\)
+If \(U\) also conjugates the global integral algebras, DC-10 gives \(W_xM_xW_x^*=N_{\Psi(x)}\) almost everywhere. The factor \(w^{-1/2}\) in this direction is required by the exact norm identity; the reciprocal \(\sqrt w\) belongs to \(J\) in the opposite direction. These typed formulas avoid ambiguous expressions that integrate a map into a fibre over the wrong base point. The argument proves change-of-base uniqueness for arbitrary standard Borel bases, using the real-coordinate construction at the start of this section.  Zero-fibre sets, if originally present, must first be removed to make the diagonal faithful. \(\square\)
 
 ## Exact finite models and tests that distinguish the hypotheses
 
@@ -366,4 +421,4 @@ is unitary from the \(p\)-weighted Hilbert sum to the \(q\)-weighted one and int
 
 Finally, on two equal-mass points with equal nonzero fibres, the block swap is unitary and carries the diagonal algebra onto itself, but fails to commute with the characteristic multiplication of the first point. Its base map interchanges \(a\) and \(b\). Thus it belongs to DC-11's general uniqueness setting, while DC-10's same-diagonal intertwining hypothesis is absent. This example distinguishes diagonal normalization from commutation with every individual scalar multiplication.
 
-DC01–10 supplies the existing CENTRAL contract through these exact foundation clauses and retained local mechanisms at the named elementary and DF inputs. DC-11 records the additional general base-change scope and its explicit Borel-model dependency; DC-12 checks the coordinate, commutant, factor and density mechanisms. The separate associated GNS-field and Hilbert-algebra SELECTION constructions are not proved in this lesson.
+DC01–10 supplies the existing CENTRAL contract through these exact foundation clauses and retained local mechanisms at the named elementary and DF inputs. DC-11 proves the standard-Borel coordinate realization and the general base-change formula; DC-12 checks the coordinate, commutant, factor and density mechanisms.  The separate associated GNS-field and Hilbert-algebra SELECTION constructions are not proved by this draft.

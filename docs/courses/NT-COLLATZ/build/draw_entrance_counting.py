@@ -1,0 +1,34 @@
+"""Reproducible time diagram; no sampled orbit heights are represented."""
+from pathlib import Path
+
+ROOT=Path(__file__).resolve().parents[1]
+SVG='''<svg xmlns="http://www.w3.org/2000/svg" width="920" height="440" viewBox="0 0 920 440" role="img" aria-labelledby="title desc">
+<title id="title">Two checks identify a first entrance</title>
+<desc id="desc">A prefix ends at M at time r. The selected band says the first entrance from M occurs m steps later, at n equals r plus m. A separate height inequality proves all times before r are above x. This is a diagram of time, not orbit height.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#24364a"/></marker></defs>
+<rect width="920" height="440" rx="16" fill="#f8fafc"/>
+<g font-family="Arial, sans-serif" fill="#172d42">
+<text x="38" y="43" font-size="24" font-weight="bold">Counting the first entrance, not a later return</text>
+<text x="38" y="76" font-size="17">Both checks are needed on the same trajectory.</text>
+<path d="M80 173H825" fill="none" stroke="#24364a" stroke-width="3" marker-end="url(#arrow)"/>
+<circle cx="90" cy="173" r="7" fill="#24364a"/>
+<circle cx="510" cy="173" r="7" fill="#147b74"/>
+<circle cx="795" cy="173" r="7" fill="#8c3a78"/>
+<text x="90" y="137" text-anchor="middle" font-size="20">N</text>
+<text x="510" y="137" text-anchor="middle" font-size="20">M = Sʳ(N)</text>
+<text x="795" y="137" text-anchor="middle" font-size="20">qₓ(M)</text>
+<text x="90" y="208" text-anchor="middle" font-size="18">time 0</text>
+<text x="510" y="208" text-anchor="middle" font-size="18">time r</text>
+<text x="795" y="208" text-anchor="middle" font-size="18">n = r + m</text>
+<rect x="38" y="246" width="433" height="112" rx="9" fill="#e0eeec"/>
+<text x="56" y="274" font-size="19" font-weight="bold">Earlier prefix: inequality (17)</text>
+<text x="56" y="308" font-size="18">Every Sʲ(N) is above x for j &lt; r.</text>
+<text x="56" y="337" font-size="16">Drift control + the lower height of M</text>
+<rect x="490" y="246" width="391" height="112" rx="9" fill="#eee3ee"/>
+<text x="508" y="274" font-size="19" font-weight="bold">Last m steps: definition of Eₓ</text>
+<text x="508" y="308" font-size="18">Tₓ(M) = m; qₓ(M) is at most x.</text>
+<text x="508" y="337" font-size="16">No earlier entrance from M</text>
+<text x="38" y="400" font-size="17">Together: Tₓ(N) = n, and the counted point is exactly the first entrance.</text>
+</g></svg>'''
+(ROOT/'figures/entrance-counting.svg').write_text(SVG,encoding='utf-8')
+print('Wrote figures/entrance-counting.svg')

@@ -2,7 +2,7 @@
 
 A compact support can meet every orbit only a few times while the return times, taken across all orbits, are unbounded. The following countable example separates these two facts. It also shows why a proper model can require a change of topology even when the measure and the action stay the same.
 
-*Self-checked by the writing AI. Original exposition, diagram, data and code: CC0-1.0. Accompanying font terms are retained.*
+*Original exposition, diagram, data and code: CC0-1.0. Accompanying font terms are retained.*
 
 <a id="oa-flow.topology-warning.space"></a>
 ## Two limiting rows and the intervening orbits

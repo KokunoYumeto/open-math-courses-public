@@ -1,12 +1,12 @@
 # Modular partitions and the full finite domain
 
-**Self-checked by the writing AI.**
+**Reading goal.** Determine when a partition at imaginary modular time preserves every value of an unbounded weight, and identify the finite-domain obstruction.
 
 A partition at imaginary modular time preserves the energy of every input already finite for the reference weight. For an unbounded weight, this leaves a second question: can the new weight have more finite inputs? We prove the finite-input theorem, construct a counterexample to the unrestricted assertion, and identify the exact domain condition which restores equality on the whole positive cone.
 
-The source assertion is Takesaki, *Theory of Operator Algebras II*, Exercise VIII.3(9), printed page 133 / PDF page 153. Its faithful normal semifinite reference weight and two bounded half-strip elements remain in scope. The assertion as printed is false at this generality. MP-03 gives a counterexample satisfying the exact analytic hypothesis and endpoint partition. MP-04 gives an explicitly corrected equivalence; the false source equivalence is not credited as proved.
+Takesaki, *Theory of Operator Algebras II*, Exercise VIII.3(9), printed page 133, asserts the unrestricted equivalence for a faithful normal semifinite weight and two bounded half-strip elements. The counterexample in MP-03 satisfies these hypotheses and the endpoint partition. MP-04 states and proves the corrected equivalence.
 
-The exact inputs are WG's finite left ideals and finite linear extension; HS-01's full closed-operator strip criterion and HS-03's right multiplication on the whole finite left ideal; MF's faithful GNS representation and conjugation; QF-03's closed-form representation; SK's spectral domains; PT-08/CZ-08's faithful normal semifinite trace densities and their modular groups; CZ-07's all-positive bounded centralizer density formula; and VR-07's dense closed restriction of a diagonal form. Their proofs, and the foundations they rest on, are not given here. No new structural import, separability assumption on the general algebra, or countable exhaustion of that algebra is used.
+The exact inputs are WG's finite left ideals and finite linear extension; HS-01's full closed-operator strip criterion and HS-03's right multiplication on the whole finite left ideal; MF's faithful GNS representation and conjugation; QF-03's closed-form representation; SK's spectral domains; PT-08/CZ-08's faithful normal semifinite trace densities and their modular groups; CZ-07's all-positive bounded centralizer density formula; and VR-07's dense closed restriction of a diagonal form. The general algebra need not be separable, and its finite ideals need not admit a countable exhaustion.
 
 ## The endpoint partition determines exactly the finite-input energies
 
@@ -240,8 +240,7 @@ If \(\varphi\) is a bounded faithful normal positive functional, then \(\mathfra
 If one \(a_j\) is invertible and both \(a_j\) and \(a_j^{-1}\) have bounded half-strip continuations, then \(xa_j^*\in\mathfrak n_\varphi\) implies
 \(x=(xa_j^*)(a_j^{-1})^*\in\mathfrak n_\varphi\) by HS-03. Thus the partition proves full equality. Analytic continuation of the inverse is an explicit hypothesis, not an inferred property of an arbitrary one-sided analytic multiplier.
 
-If \(a_1,a_2\in M_\varphi\), then \(c_j=a_j\). The all-positive bounded centralizer density formula of CZ-07 gives
-
+If \(a_1,a_2\in M_\varphi\), then \(c_j=a_j\). We first identify a single sandwich on the entire positive cone. Write the bounded polar decomposition \(a=v|a|\) inside the centralizer, and put \(p=v^*v=s(|a|)\). For \(y\geq0\), set \(T=y^{1/2}|a|\), so \(T=Tp\). Right multiplication by \(v^*\) and by \(v\), using HS-03 for their constant modular orbits, shows that \(Tv^*\in\mathfrak n_\varphi\) if and only if \(T\in\mathfrak n_\varphi\): for the reverse direction use \(T=(Tv^*)v\). In the finite case the same formula gives \(\Lambda_\varphi(Tv^*)=J_\varphi vJ_\varphi\Lambda_\varphi(T)\) and \(J_\varphi pJ_\varphi\Lambda_\varphi(T)=\Lambda_\varphi(T)\). Since \((J_\varphi vJ_\varphi)^*(J_\varphi vJ_\varphi)=J_\varphi pJ_\varphi\), their norms agree. The two weights at \(y\) are therefore equal when finite, and are both infinite otherwise. Thus \(\varphi(aya^*)=\varphi(|a|y|a|)\) on all positive inputs. Applying this to each summand and using the all-positive additivity of bounded centralizer densities in CZ-07 gives
 \[
  \Psi=\varphi_{a_1^*a_1+a_2^*a_2};
  \tag{MP.21}
@@ -283,6 +282,10 @@ The norm formula follows from the real inner product \(\sqrt{H_N/S}\). Since \(H
 \(\|P_\xi-P_\eta\|\leq(\|\xi\|+\|\eta\|)\|\xi-\eta\|\).
 Normal lower semicontinuity only requires the limiting energy zero to be at most the lower limit infinity. These vectors do not converge in the graph norm of \(B^{1/2}a\).
 
-**Figure specification.** The reproducible figure displays three exact mechanisms. Its domain diagram is schematic in Hilbert space: \(F=\ker L\) is closed only in the \(E\)-energy norm, and every displayed finite domain is Hilbert dense. The arrows \(U:H\to v^\perp\) and \(a=U^*:H\to H\) label the isometry and coisometry, their precise kernels and the analytic endpoint \(-i/2\). The energy panel plots the exact samples \(N/H_N\), shows the values at \(P_1\) and \(P_v\), and marks the null-vector limit separately rather than treating infinity as a finite numerical sample. Proof locators are MP-02–04 and (MP.22)–(MP.23).
+**Three views of the domain defect.** The figures separate the finite domains, the two bounded operators and the energy sequence. Its domain diagram is schematic in Hilbert space: \(F=\ker L\) is closed only in the \(E\)-energy norm, and every displayed finite domain is Hilbert dense. The arrows \(U:H\to v^\perp\) and \(a=U^*:H\to H\) label the isometry and coisometry, their precise kernels and the analytic endpoint \(-i/2\). The energy panel plots the exact samples \(N/H_N\), shows the values at \(P_1\) and \(P_v\), and marks the null-vector limit separately rather than treating infinity as a finite numerical sample. Proof locators are MP-02–04 and (MP.22)–(MP.23).
 
-The source page has been inspected as mathematical data. Its literal equivalence is refuted by MP-03. The finite-input replacement is proved in MP-01, and the full-domain corrected equivalence is proved in MP-04 at the exact existing course inputs. This resolves the author-side exercise obligation as a source-error correction; it does not close the transitive foundations or award theorem completion for the false printed assertion.
+![The three Hilbert-dense finite vector domains F, E and E plus the null-vector line, with their exact energies.](assets/modular-partition-domains.png)
+
+![The isometry U, its coisometric adjoint a, the full square-root domain identity and the minus-i-over-two modular endpoint.](assets/modular-partition-endpoint.png)
+
+![Exact energies N over H_N grow while the normalized vectors approach the zero-energy null vector in Hilbert norm.](assets/modular-partition-energies.png)

@@ -1,6 +1,6 @@
 # The finite-star involution, full algebra and reverse weight correspondence
 
-*Fresh reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(\varphi\) be a faithful normal semifinite weight on an arbitrary concrete von Neumann algebra \(M\), with no separability or finiteness assumption. Normality initially means preservation of bounded increasing positive suprema. We prove that its entire finite-star GNS algebra is a full left Hilbert algebra, recover \(\varphi\) exactly from it, and identify the cone of normal functionals dominated by a finite multiple of \(\varphi\) with the finite positive cone of the canonical opposite weight.
 

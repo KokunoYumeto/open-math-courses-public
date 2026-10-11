@@ -1,6 +1,6 @@
 # A dual weight from compact coefficient graphs
 
-*Independently written proof exposition, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-05. New expression: CC0-1.0 to the extent of rights held.*
+*New expression: CC0-1.0 to the extent of rights held.*
 
 Let \(G\) be an arbitrary locally compact Hausdorff group. Fix left Haar measure with \(\mu(Es)=\delta(s)\mu(E)\). Let \(\alpha\) be a point-ultraweak continuous action by normal automorphisms of an arbitrary von Neumann algebra \(M\), and let \(\varphi\) be faithful normal semifinite. There is no separability, countability, unimodularity, invariant-weight or finite-state hypothesis. Scalar products are linear in the first variable. The zero algebra has the zero Hilbert space and zero weight; below we discuss the nonzero case.
 
@@ -270,7 +270,56 @@ In particular (GDW21) includes every real/complex power and the logarithm. Since
 \qquad S=\widehat J\widehat\Delta^{1/2}.
 \tag{GDW22}
 \]
-First verify the formula on the spectral cutoffs of (GDW21), using \(A_t=C_t(A_t^*A_t)^{1/2}\), and then pass to their dense union. CI's polar factor is defined on all \(K\), and this proves the full formula and its measurability. An additional identification of \(C_t\) with a chosen canonical standard-form implementation is unnecessary here and is not being presumed.
+First verify the formula on the spectral cutoffs of (GDW21), using \(A_t=C_t(A_t^*A_t)^{1/2}\), and then pass to their dense union. CI's polar factor is defined on all \(K\), and this proves the full formula and its measurability.
+
+<a id="gdw-canonical-conjugation"></a>
+### Canonical conjugation in the regular weight space
+
+Let \((H_\omega,J_\omega,P_\omega)\) be the standard form of a faithful n.s.f. weight \(\omega\), furnished by [NC](OA-FLOW-NC.md#oa-flow.nc.3). Write \(U_\varphi(t)\) for [NR1's canonical strongly continuous implementation](OA-FLOW-NR.md#oa-flow.nr.1) of \(\alpha_t\) on \(H_\varphi\). For each fixed \(t\), put \(\psi_t=\varphi\circ\alpha_{t^{-1}}\), and let \(W_t:H_{\psi_t}\to H_\varphi\) be [MC1's canonical standard-form transport](OA-FLOW-MC.md#oa-flow.mc.1) implementing the identity of the abstract algebra \(M\). No measurability of this family \(W_t\) is assumed.
+
+Apply [MC17](OA-FLOW-MC.md#equation-mc17) to the balanced pair \((\varphi,\psi_t)\), with reference form \(H_\varphi\). Column one has \(H_\varphi\), column two has \(H_{\psi_t}\), and the canonical transports in that formula are \(I,W_t\). The antiunitary from input coordinate \((2,1)\) to output coordinate \((1,2)\) is therefore
+
+<a id="equation-gdw-c1"></a>
+
+\[
+ J_{\psi_t,\varphi}=W_t^{-1}J_\varphi.
+ \tag{GDW-C1}
+\]
+
+This identifies the relative polar conjugation on its entire source and target Hilbert spaces, by [BC2's exact coordinate graph and polar restrictions](OA-FLOW-BC.md#oa-flow.bc.2). It does not identify two different weights' modular positive operators.
+
+The GNS unitary \(V_t\) of (GDW12) implements \(\alpha_{t^{-1}}\). It also carries the ordinary standard form of \(\psi_t\) to that of \(\varphi\). To check the latter assertion from the full domains, take \(a\in N_{\psi_t}\cap N_{\psi_t}^*\). Since \(N_{\psi_t}=\alpha_t(N_\varphi)\), \(\alpha_{t^{-1}}\) maps this entire finite-star algebra bijectively onto \(N_\varphi\cap N_\varphi^*\), and
+
+\[
+ V_t\Lambda_{\psi_t}(a^*)
+ =\Lambda_\varphi(\alpha_{t^{-1}}(a)^*)
+ =S_\varphi V_t\Lambda_{\psi_t}(a).
+\]
+
+[WR3](OA-FLOW-WR.md#oa-flow.wr.3) proves that these entire finite-star ranges are the initial graph cores. Closing the transported graphs in both directions gives \(V_tS_{\psi_t}V_t^*=S_\varphi\), with equality of domains. Unitary transport of the adjoint pairing and [CI3's polar uniqueness](OA-FLOW-CI.md#oa-flow.ci.3) then give \(V_tJ_{\psi_t}V_t^*=J_\varphi\) and \(V_t\Delta_{\psi_t}^zV_t^*=\Delta_\varphi^z\), with their complete spectral domains. Moreover \(V_t\) maps the positive finite-weight generators \(\Lambda_{\psi_t}(a)\) onto the positive finite-weight generators \(\Lambda_\varphi(\alpha_{t^{-1}}(a))\). Thus it maps \(C_{l,\psi_t}\) onto \(C_{l,\varphi}\), and [NC10's quarter-power construction](OA-FLOW-NC.md#equation-nc10) gives \(V_tP_{\psi_t}=P_\varphi\).
+
+Consequently \(V_tW_t^{-1}\) implements \(\alpha_{t^{-1}}\) on \(H_\varphi\) and preserves \(P_\varphi\). MC1's uniqueness and NR1's exact group law identify it with \(U_\varphi(t^{-1})=U_\varphi(t)^*\). Since \(C_t=V_tJ_{\psi_t,\varphi}\), we obtain
+
+<a id="equation-gdw-c2"></a>
+
+\[
+ C_t=U_\varphi(t)^*J_\varphi.
+ \tag{GDW-C2}
+\]
+
+Substitution into the already proved whole-space formula (GDW22) gives
+
+<a id="equation-gdw-c3"></a>
+
+\[
+ (\widehat J\xi)(t)
+ =\delta(t)^{-1/2}U_\varphi(t)^*J_\varphi\xi(t^{-1})
+ \qquad(\xi\in L^2(G,H_\varphi)).
+ \tag{GDW-C3}
+\]
+
+All the involution, adjoint and positive-power domains remain those of (GDW17)–(GDW21). This argument is pointwise for each fixed \(t\); the resulting canonical expression is strongly continuous on fixed Hilbert vectors by NR1. It introduces no varying-GNS measurable-field premise, no faithful-state reduction and no equality between modular positive operators of unrelated weights.
+
 
 <a id="gdw-6"></a>
 
@@ -360,6 +409,129 @@ Finally (GDW27) proves the joint continuity originally needed in the older const
 \tag{GDW29}
 \]
 Rearrange its second formula as \(\pi(u(g,r))=\delta(g)^{-ir}\lambda_g^*\sigma_r^{\widehat\varphi}(\lambda_g)\). The left regular group is strongly continuous, and the modular action is a point-ultraweak continuous normal real action. AT4 gives joint strong* continuity of that action on the unit ball, so the right side is jointly strong* continuous. The regular coefficient representation is faithful normal with normal inverse on its image, by NR3 and [ST2](OA-FLOW-ST12.md#oa-flow.st.2). Its inverse transports this bounded strong* continuity to \(M\). This argument establishes joint continuity *after* the weight construction and introduces no circular prerequisite.
+
+<a id="gdw-7a"></a>
+## GDW7A. Modular time on the compact coefficient algebra
+
+For the classical antecedent see Takesaki, *Theory of Operator Algebras II*, Chapter X, Lemma 1.12, printed p.247. The following compact-coefficient argument uses the completed graph-first construction above.
+
+Use the completed construction of GDW1–7, and write \(\sigma_r=\sigma_r^\varphi\) and
+
+<a id="equation-gdw-r1"></a>
+
+\[
+ c_r(t)=(D(\varphi\circ\alpha_t):D\varphi)_r,\qquad
+ d_r(t)=\delta(t)^{ir},\qquad
+ (\rho_rx)(t)=d_r(t)c_r(t)\sigma_r(x(t)).
+ \tag{GDW-R1}
+\]
+
+**Theorem.** The \(\rho_r\) form a one-parameter group of star automorphisms of \((\mathscr K,*,\#)\). They preserve supports and the coefficient \(L^1\) norm. For every \(x\in\mathscr K\) and \(a\in M\), the pointwise right operation and covariant left operation of (GDW3) satisfy
+
+<a id="equation-gdw-r2"></a>
+
+\[
+ \rho_r(x\cdot a)=\rho_r(x)\cdot\sigma_r(a),\qquad
+ \rho_r(a\cdot x)=\sigma_r(a)\cdot\rho_r(x).
+ \tag{GDW-R2}
+\]
+
+Both \(\mathscr B\) and \(\mathscr D=\mathscr B\cap\mathscr B^\#\) are invariant. On their full coefficient/GNS domains and on the represented compact algebra the intertwining identities are
+
+<a id="equation-gdw-r3"></a>
+
+\[
+ \eta(\rho_rx)=\widehat\Delta^{ir}\eta(x)\quad(x\in\mathscr B),\qquad
+ L_{\rho_rx}=\sigma_r^{\widehat\varphi}(L_x)\quad(x\in\mathscr K).
+ \tag{GDW-R3}
+\]
+
+**Proof.** First record the factor order that makes the coefficient algebra work. [BC4's time and chain identities](OA-FLOW-BC.md#oa-flow.bc.4), [BC5's normal-isomorphism covariance](OA-FLOW-BC.md#oa-flow.bc.5), and the modular transport used in GDW7 give
+
+<a id="equation-gdw-r4"></a>
+
+\[
+ \begin{aligned}
+ c_{r+s}(t)&=c_r(t)\sigma_r(c_s(t)),\\
+ c_r(tu)&=\alpha_{u^{-1}}(c_r(t))c_r(u),\\
+ c_r(t^{-1})&=\alpha_t(c_r(t)^*),\\
+ \alpha_{t^{-1}}\sigma_r\alpha_t
+ &=\operatorname{Ad}(c_r(t))\sigma_r.
+ \end{aligned}
+ \tag{GDW-R4}
+\]
+
+For the second identity, insert the intermediate weight \(\varphi\circ\alpha_u\) in the chain rule. The first derivative compares \((\varphi\circ\alpha_t)\circ\alpha_u\) with \(\varphi\circ\alpha_u\), so covariance makes it \(\alpha_{u^{-1}}(c_r(t))\); the second is \(c_r(u)\). Taking \(u=t^{-1}\) and using the self-cocycle normalization gives the third identity. The last identity is the modular action of the pullback weight \(\varphi\circ\alpha_t\), identified both by ordinary GNS graph transport and by BC19. These identities hold for every group element and every real parameter, with the full faithful n.s.f. hypotheses. In particular \(c_0(t)=c_r(e)=1\).
+
+(GDW29) proves joint strong\* continuity of \(c_r(t)\). [MW4](OA-FLOW-MW.md#oa-flow.mw.4) supplies the point-continuous normal action \(\sigma\), and [AT4](OA-FLOW-AT.md#oa-flow.at.4), applied to this real action on bounded sets, makes \((t,r)\mapsto\sigma_r(x(t))\) jointly strong\* continuous. Products are jointly strong\* continuous on bounded sets: for vectors, split \(a_ib_i-ab=a_i(b_i-b)+(a_i-a)b\), and apply the same estimate to adjoints. Thus (GDW-R1) belongs to \(\mathscr K\), and it is complex linear in \(x\). Since \(c_r(t)\) and \(d_r(t)\) are unitary and \(\sigma_r\) is isometric, \(\|(\rho_rx)(t)\|=\|x(t)\|\). This proves support and \(L^1\)-norm preservation. The first identity in (GDW-R4) gives \(\rho_r\rho_s=\rho_{r+s}\), and the normalizations give \(\rho_0=1\); hence \(\rho_{-r}\) is its inverse.
+
+For convolution, fix \(r\), and abbreviate \(c=c_r,d=d_r\). The scalar character satisfies \(d(tu)d(u^{-1})=d(t)\). Without commuting any coefficient factors, the integrand is
+
+<a id="equation-gdw-r5"></a>
+
+\[
+ \begin{aligned}
+ &\alpha_u((\rho_rx)(tu))(\rho_ry)(u^{-1})\\
+ &=d(t)\alpha_u(c(tu))\alpha_u(\sigma_r(x(tu)))
+          c(u^{-1})\sigma_r(y(u^{-1}))\\
+ &=d(t)c(t)\alpha_u\!\left(c(u)\sigma_r(x(tu))c(u)^*\right)
+          \sigma_r(y(u^{-1}))\\
+ &=d(t)c(t)\sigma_r\!\left(\alpha_u(x(tu))y(u^{-1})\right).
+ \end{aligned}
+ \tag{GDW-R5}
+\]
+
+The middle equality uses the group and inverse identities of (GDW-R4). The last uses \(\sigma_r\alpha_u=\alpha_u\operatorname{Ad}(c(u))\sigma_r\). The actual compact integrals are the normal weak integrals of [CCM4](OA-FLOW-CCM.md#ccm-4). Normality allows \(\sigma_r\) to pass through them: test on a normal functional and compose it with \(\sigma_r\). Integrating (GDW-R5) proves \((\rho_rx)*(\rho_ry)=\rho_r(x*y)\). Only compact carriers are used.
+
+For the involution put \(a=x(t^{-1})^*\). Complex conjugation changes \(d(t^{-1})\) to \(d(t)\), while the positive real Haar factor remains. The inverse and naturality identities give
+
+<a id="equation-gdw-r6"></a>
+
+\[
+ \begin{aligned}
+ (\rho_rx)^\#(t)
+ &=\delta(t)^{-1}d(t)\alpha_{t^{-1}}\!\left(\sigma_r(a)c(t^{-1})^*\right)\\
+ &=\delta(t)^{-1}d(t)\alpha_{t^{-1}}(\sigma_r(a))c(t)\\
+ &=\delta(t)^{-1}d(t)c(t)\sigma_r(\alpha_{t^{-1}}(a))
+ =\rho_r(x^\#)(t).
+ \end{aligned}
+ \tag{GDW-R6}
+\]
+
+The right module identity in (GDW-R2) is immediate from multiplicativity of \(\sigma_r\). For the left one, rearrange the last identity in (GDW-R4) as
+
+\[
+ c_r(t)\sigma_r(\alpha_{t^{-1}}(a))
+ =\alpha_{t^{-1}}(\sigma_r(a))c_r(t).
+\]
+
+Multiply this equality on the right by \(\sigma_r(x(t))\), and include \(d_r(t)\). Since MW12 proves \(\sigma_r(N_\varphi)=N_\varphi\) on the entire finite ideal, the right module identity carries every finite sum \(z\cdot a\), \(z\in\mathscr K,a\in N_\varphi\), into \(\mathscr B\). The inverse \(\rho_{-r}\) gives equality. The involution identity then gives \(\rho_r\mathscr D=\mathscr D\).
+
+For each \(x\in\mathscr B\), every value \(x(t)\) is in \(N_\varphi\). Left multiplication and MW12 give the following continuous field, identified in \(L^2\) by the spectral formula:
+
+<a id="equation-gdw-r7"></a>
+
+\[
+ \begin{aligned}
+ \eta(\rho_rx)(t)
+ &=d_r(t)c_r(t)\Lambda_\varphi(\sigma_r(x(t)))\\
+ &=\delta(t)^{ir}c_r(t)\Delta_\varphi^{ir}\eta(x)(t)
+ =(\widehat\Delta^{ir}\eta(x))(t),
+ \end{aligned}
+ \tag{GDW-R7}
+\]
+
+The first two equalities hold at every \(t\); the last is the equality of \(L^2\) classes supplied by (GDW26) and the entire spectral formula (GDW21). The displayed continuous field is a representative of that modular-unitary image. No exceptional set common to all vectors is needed. Thus \(\eta(\mathscr D)\) is invariant under the whole modular unitary group, and its inner product is preserved.
+
+Finally (GDW27) gives, for \(x\in\mathscr K\),
+
+\[
+ \sigma_r^{\widehat\varphi}(\lambda_t\pi(x(t)))
+ =\delta(t)^{ir}\lambda_t\pi(c_r(t))\pi(\sigma_r(x(t)))
+ =\lambda_t\pi((\rho_rx)(t)).
+\]
+
+Integrate this identity over the compact support. Testing on normal functionals passes the normal automorphism through the weak integral, so it proves the second identity in (GDW-R3), equivalently \(L_{\rho_rx}=\widehat\Delta^{ir}L_x\widehat\Delta^{-ir}\). No injectivity of the compact coefficient operator map is needed. This completes the coefficient-flow theorem after the graph-first dual-weight construction. The map at one fixed group location need not be a unital star automorphism of \(M\); the proved automorphism acts on the whole twisted convolution algebra. \(\square\)
 
 <a id="gdw-8"></a>
 

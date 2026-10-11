@@ -1,0 +1,257 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Augmented finite orders and contracting coface complexes</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="augmented-finite-orders-and-contracting-coface-complexes">Augmented finite orders and contracting coface complexes</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>Alternating coface maps produce a complex in any additive category. An extra collapse map can contract it, including its augmentation. The empty order and the endpoint conditions determine whether that lowest-degree contraction exists. We prove the finite-order identities and keep the augmentation in every calculation.</p>
+<p>Use the universe conventions of <span class="unlinked">Universes and small categories</span>. The value category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is additive; only finite sums of morphisms are used. <a href="graded-complexes-contravariant-signs-and-stupid-truncations.html#1-grading-support-and-the-ordinary-homotopy-category">Graded complexes, contravariant signs and stupid truncations, Section 1</a> supplies the actual chain-homotopy equation. We write <span class="math" data-tex="\([n]=\{0,\ldots,n\}\)">\([n]=\{0,\ldots,n\}\)</span> for <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, and <span class="math" data-tex="\([-1]=\varnothing\)">\([-1]=\varnothing\)</span>.</p>
+<h2 id="1-three-categories-of-finite-orders">1. Three categories of finite orders</h2>
+<p>Let <span class="math" data-tex="\(\Delta_+\)">\(\Delta_+\)</span> be the category of all finite totally ordered sets, including the empty set, with nondecreasing maps. Identities and composites are nondecreasing. Its injective subcategory <span class="math" data-tex="\(\Delta_{+,\mathrm{inj}}\)">\(\Delta_{+,\mathrm{inj}}\)</span> has the same objects and only injective nondecreasing maps. Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> have all nonempty finite totally ordered sets, with nondecreasing maps preserving both the first and last element. Preserving the endpoints is stable under identity and composition, so this too is a category.</p>
+<p>Every finite order with <span class="math" data-tex="\(r\)">\(r\)</span> elements has a unique increasing isomorphism with <span class="math" data-tex="\([r-1]\)">\([r-1]\)</span>. Explicitly send an element to the number of its predecessors. Comparable distinct elements have strictly different predecessor counts, each count lies between zero and <span class="math" data-tex="\(r-1\)">\(r-1\)</span>, and the <span class="math" data-tex="\(r\)">\(r\)</span> different counts fill that interval. The empty order corresponds to <span class="math" data-tex="\([-1]\)">\([-1]\)</span>. Transporting morphisms by these unique rankings gives a functor to the standard orders, inverse to their inclusion up to the ranking isomorphisms. Thus <span class="math" data-tex="\(\{[n]:n\ge-1\}\)">\(\{[n]:n\ge-1\}\)</span> is a skeleton equivalent to <span class="math" data-tex="\(\Delta_+\)">\(\Delta_+\)</span>. The analogous nonempty skeleton uses <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>.</p>
+<p>Forgetting the order gives a faithful functor <span class="math" data-tex="\(\Delta_+\to\mathsf{FinSet}\)">\(\Delta_+\to\mathsf{FinSet}\)</span>: the Hom maps are inclusions of subsets of set maps. It also reflects isomorphism classes of objects. Indeed isomorphic underlying finite sets have the same cardinality, so their rankings give an increasing isomorphism. This is the <em>half-full</em> property in <span class="unlinked">Equivalences and chosen representatives, Section 7</span>. It asserts existence of an order isomorphism, not that every chosen underlying bijection preserves order.</p>
+<p>The empty order is initial in <span class="math" data-tex="\(\Delta_+\)">\(\Delta_+\)</span>, because it has one map to every finite order. A singleton is terminal, because every map into it is forced. In <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, the two-point chain is initial: its two endpoints must go to the prescribed two endpoints of the target, even when those endpoints coincide. A singleton is terminal, by the unique constant map. There is no endpoint-preserving map from a singleton to a chain with two different endpoints.</p>
+<p>Adjoin two new endpoints to define a functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\kappa:\Delta_+\longrightarrow\mathcal E,
+\qquad \kappa(A)=\{\bot\}\sqcup A\sqcup\{\top\}.
+\tag{1.1}
+\]">\[
+\kappa:\Delta_+\longrightarrow\mathcal E,
+\qquad \kappa(A)=\{\bot\}\sqcup A\sqcup\{\top\}.
+\tag{1.1}
+\]</span>
+<p>Extend every map by fixing the two new endpoints. The extension is nondecreasing and endpoint-preserving, and respects identities and composition on each of its three parts. In standard coordinates <span class="math" data-tex="\(\kappa[n]=[n+2]\)">\(\kappa[n]=[n+2]\)</span>, including <span class="math" data-tex="\(\kappa[-1]=[1]\)">\(\kappa[-1]=[1]\)</span>.</p>
+<h2 id="2-cuts-give-the-opposite-category-equivalence">2. Cuts give the opposite-category equivalence</h2>
+<p>For a finite order <span class="math" data-tex="\(A\)">\(A\)</span>, let <span class="math" data-tex="\(\operatorname{Cut}(A)\)">\(\operatorname{Cut}(A)\)</span> be its initial segments ordered by inclusion. If <span class="math" data-tex="\(|A|=s\)">\(|A|=s\)</span>, these are the segments of sizes <span class="math" data-tex="\(0,1,\ldots,s\)">\(0,1,\ldots,s\)</span>; hence this is a nonempty chain with <span class="math" data-tex="\(s+1\)">\(s+1\)</span> elements. A nondecreasing map <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span> sends initial segments backwards by inverse image:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+f^*:\operatorname{Cut}(B)\to\operatorname{Cut}(A),
+\qquad J\mapsto f^{-1}J.
+\tag{2.1}
+\]">\[
+f^*:\operatorname{Cut}(B)\to\operatorname{Cut}(A),
+\qquad J\mapsto f^{-1}J.
+\tag{2.1}
+\]</span>
+<p>Inverse images preserve inclusion, the empty segment and the whole segment. They also obey <span class="math" data-tex="\((gf)^*=f^*g^*\)">\((gf)^*=f^*g^*\)</span> and <span class="math" data-tex="\(1^*=1\)">\(1^*=1\)</span>. Thus this defines a functor <span class="math" data-tex="\(\Delta_+^{\mathrm{op}}\to\mathcal E\)">\(\Delta_+^{\mathrm{op}}\to\mathcal E\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> The cut functor is an equivalence.</p>
+<p><strong>Proof.</strong> Use the rankings to write <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(s\)">\(s\)</span> elements and <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(t\)">\(t\)</span> elements. A map <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span> gives the nondecreasing endpoint map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+g(j)=\#\{i\in A:f(i)&lt;j\},\qquad 0\le j\le t,
+\quad g(0)=0,\quad g(t)=s.
+\tag{2.2}
+\]">\[
+g(j)=\#\{i\in A:f(i)&lt;j\},\qquad 0\le j\le t,
+\quad g(0)=0,\quad g(t)=s.
+\tag{2.2}
+\]</span>
+<p>Conversely, for any nondecreasing <span class="math" data-tex="\(g:\{0,\ldots,t\}\to\{0,\ldots,s\}\)">\(g:\{0,\ldots,t\}\to\{0,\ldots,s\}\)</span> with these endpoints, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+f(i)=j\quad\Longleftrightarrow\quad g(j)\le i&lt;g(j+1),
+\qquad 0\le i&lt;s.
+\tag{2.3}
+\]">\[
+f(i)=j\quad\Longleftrightarrow\quad g(j)\le i&lt;g(j+1),
+\qquad 0\le i&lt;s.
+\tag{2.3}
+\]</span>
+<p>The successive intervals partition <span class="math" data-tex="\(\{0,\ldots,s-1\}\)">\(\{0,\ldots,s-1\}\)</span>, allowing empty intervals, so the indicated <span class="math" data-tex="\(j\)">\(j\)</span> exists uniquely. Increasing <span class="math" data-tex="\(i\)">\(i\)</span> cannot lower <span class="math" data-tex="\(j\)">\(j\)</span>, making <span class="math" data-tex="\(f\)">\(f\)</span> nondecreasing. For any <span class="math" data-tex="\(j\)">\(j\)</span>, the elements sent below <span class="math" data-tex="\(j\)">\(j\)</span> are exactly <span class="math" data-tex="\(0,\ldots,g(j)-1\)">\(0,\ldots,g(j)-1\)</span>; hence (2.2) recovers <span class="math" data-tex="\(g\)">\(g\)</span>. Starting from <span class="math" data-tex="\(f\)">\(f\)</span>, its nondecreasing fibers give exactly the intervals in (2.3), so the inverse procedure recovers <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>If <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, the endpoint equations force <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, which is exactly the condition for a map from <span class="math" data-tex="\(A\)">\(A\)</span> to the empty order. If <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, both constructions give the unique empty-source map and the constant cut map. Thus the Hom bijection includes every empty case. It proves full faithfulness. Finally every nonempty chain with <span class="math" data-tex="\(r\)">\(r\)</span> elements is isomorphic to the cuts of an order with <span class="math" data-tex="\(r-1\)">\(r-1\)</span> elements; for <span class="math" data-tex="\(r=1\)">\(r=1\)</span> use the empty order. This proves essential surjectivity, and therefore the equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The cut functor and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> are different: the first reverses arrows and adds one cut position, while the second keeps the arrow direction and adds two endpoints.</p>
+<h2 id="3-every-coface-and-collapse-identity-used-below">3. Every coface and collapse identity used below</h2>
+<p>For <span class="math" data-tex="\(n\ge-1\)">\(n\ge-1\)</span>, define the injective map omitting position <span class="math" data-tex="\(i\)">\(i\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+d_i^n:[n]\to[n+1],\qquad
+d_i^n(x)=x+\mathbf1_{x\ge i},\qquad 0\le i\le n+1.
+\tag{3.1}
+\]">\[
+d_i^n:[n]\to[n+1],\qquad
+d_i^n(x)=x+\mathbf1_{x\ge i},\qquad 0\le i\le n+1.
+\tag{3.1}
+\]</span>
+<p>When <span class="math" data-tex="\(n=-1\)">\(n=-1\)</span> this is the unique empty-source map. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, define the surjection identifying positions <span class="math" data-tex="\(i,i+1\)">\(i,i+1\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+s_i^n:[n]\to[n-1],\qquad
+s_i^n(x)=x-\mathbf1_{x&gt;i},\qquad 0\le i\le n-1.
+\tag{3.2}
+\]">\[
+s_i^n:[n]\to[n-1],\qquad
+s_i^n(x)=x-\mathbf1_{x&gt;i},\qquad 0\le i\le n-1.
+\tag{3.2}
+\]</span>
+<p>Every collapse preserves the two endpoints. Here <span class="math" data-tex="\(\mathbf1_P\)">\(\mathbf1_P\)</span> is one when <span class="math" data-tex="\(P\)">\(P\)</span> holds and zero otherwise.</p>
+<p><strong>Lemma 3.1.</strong> These maps satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+d_j^{n+1}d_i^n=d_i^{n+1}d_{j-1}^n
+\quad(0\le i&lt;j\le n+2),
+\tag{3.3}
+\]">\[
+d_j^{n+1}d_i^n=d_i^{n+1}d_{j-1}^n
+\quad(0\le i&lt;j\le n+2),
+\tag{3.3}
+\]</span>
+<p>and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+s_j^n s_i^{n+1}=s_{i-1}^n s_j^{n+1}
+\quad(0\le j&lt;i\le n),
+\tag{3.4}
+\]">\[
+s_j^n s_i^{n+1}=s_{i-1}^n s_j^{n+1}
+\quad(0\le j&lt;i\le n),
+\tag{3.4}
+\]</span>
+<p>as well as the three mixed cases, for <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, <span class="math" data-tex="\(0\le j\le n\)">\(0\le j\le n\)</span>, <span class="math" data-tex="\(0\le i\le n+1\)">\(0\le i\le n+1\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+s_j^{n+1}d_i^n=
+\begin{cases}
+d_i^{n-1}s_{j-1}^n,&amp;i&lt;j,\\
+1_{[n]},&amp;i=j\text{ or }i=j+1,\\
+d_{i-1}^{n-1}s_j^n,&amp;i&gt;j+1.
+\end{cases}
+\tag{3.5}
+\]">\[
+s_j^{n+1}d_i^n=
+\begin{cases}
+d_i^{n-1}s_{j-1}^n,&amp;i&lt;j,\\
+1_{[n]},&amp;i=j\text{ or }i=j+1,\\
+d_{i-1}^{n-1}s_j^n,&amp;i&gt;j+1.
+\end{cases}
+\tag{3.5}
+\]</span>
+<p>The nonidentity cases have <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, so all their displayed collapses exist.</p>
+<p><strong>Proof.</strong> The two sides of (3.3) are injective increasing maps with image omitting precisely <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. An increasing bijection to that ordered image is unique, so they agree. This also covers the empty source at <span class="math" data-tex="\(n=-1\)">\(n=-1\)</span>.</p>
+<p>For (3.4), both composites have the value <span class="math" data-tex="\(x-\mathbf1_{x&gt;j}-\mathbf1_{x&gt;i}\)">\(x-\mathbf1_{x&gt;j}-\mathbf1_{x&gt;i}\)</span>. On the left, after the first collapse at <span class="math" data-tex="\(i\)">\(i\)</span>, the test for the collapse at <span class="math" data-tex="\(j&lt;i\)">\(j&lt;i\)</span> is still exactly <span class="math" data-tex="\(x&gt;j\)">\(x&gt;j\)</span>. On the right, after collapsing at <span class="math" data-tex="\(j\)">\(j\)</span>, the test for exceeding <span class="math" data-tex="\(i-1\)">\(i-1\)</span> is exactly <span class="math" data-tex="\(x&gt;i\)">\(x&gt;i\)</span>. This proves the formula for every input.</p>
+<p>In (3.5), if <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, each composite has value <span class="math" data-tex="\(x+\mathbf1_{x\ge i}-\mathbf1_{x\ge j}\)">\(x+\mathbf1_{x\ge i}-\mathbf1_{x\ge j}\)</span>: inserting before <span class="math" data-tex="\(i\)">\(i\)</span> changes the collapse test to <span class="math" data-tex="\(x\ge j\)">\(x\ge j\)</span>, and doing the collapse first leaves the insertion test <span class="math" data-tex="\(x\ge i\)">\(x\ge i\)</span>. If <span class="math" data-tex="\(i=j\)">\(i=j\)</span> or <span class="math" data-tex="\(i=j+1\)">\(i=j+1\)</span>, the insertion and the collapse cancel on every input, giving <span class="math" data-tex="\(x\)">\(x\)</span>. If <span class="math" data-tex="\(i&gt;j+1\)">\(i&gt;j+1\)</span>, both composites have value <span class="math" data-tex="\(x+\mathbf1_{x\ge i}-\mathbf1_{x&gt;j}\)">\(x+\mathbf1_{x\ge i}-\mathbf1_{x&gt;j}\)</span>; after the first collapse, reaching the shifted insertion position <span class="math" data-tex="\(i-1\)">\(i-1\)</span> is exactly the condition <span class="math" data-tex="\(x\ge i\)">\(x\ge i\)</span>. Thus every case, including its boundary values, holds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Endpoint adjoining sends each coface to the interior coface</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.6); horizontal scroll when needed" data-tex="\[
+\kappa(d_i^n)=d_{i+1}^{n+2}:[n+2]\to[n+3].
+\tag{3.6}
+\]">\[
+\kappa(d_i^n)=d_{i+1}^{n+2}:[n+2]\to[n+3].
+\tag{3.6}
+\]</span>
+<p>Both maps preserve the newly adjoined endpoints and omit exactly the interior position <span class="math" data-tex="\(i+1\)">\(i+1\)</span>; their increasing image maps therefore agree.</p>
+<h2 id="4-alternating-cofaces-form-a-complex-and-an-extra-collapse-contracts-it">4. Alternating cofaces form a complex and an extra collapse contracts it</h2>
+<p>Let <span class="math" data-tex="\(F:\Delta_{+,\mathrm{inj}}\to\mathcal C\)">\(F:\Delta_{+,\mathrm{inj}}\to\mathcal C\)</span> be any functor. Set <span class="math" data-tex="\(F^n=F[n]\)">\(F^n=F[n]\)</span> for <span class="math" data-tex="\(n\ge-1\)">\(n\ge-1\)</span> and zero otherwise. Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\delta^n=\sum_{i=0}^{n+1}(-1)^iF(d_i^n):F^n\to F^{n+1}
+\quad(n\ge-1),
+\tag{4.1}
+\]">\[
+\delta^n=\sum_{i=0}^{n+1}(-1)^iF(d_i^n):F^n\to F^{n+1}
+\quad(n\ge-1),
+\tag{4.1}
+\]</span>
+<p>and use zero differentials below degree minus one. A functor here need not preserve an addition on its domain; the addition is in the Hom groups of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> The differential squares to zero. Suppose there are maps <span class="math" data-tex="\(h^n:F^n\to F^{n-1}\)">\(h^n:F^n\to F^{n-1}\)</span> for <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+h^{n+1}F(d_0^n)&amp;=1_{F^n}&amp;&amp; (n\ge-1),\\
+h^{n+1}F(d_{i+1}^n)&amp;=F(d_i^{n-1})h^n&amp;&amp; (n\ge0,\ 0\le i\le n).
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+h^{n+1}F(d_0^n)&amp;=1_{F^n}&amp;&amp; (n\ge-1),\\
+h^{n+1}F(d_{i+1}^n)&amp;=F(d_i^{n-1})h^n&amp;&amp; (n\ge0,\ 0\le i\le n).
+\end{aligned}
+\tag{4.2}
+\]</span>
+<p>Extend <span class="math" data-tex="\(h\)">\(h\)</span> by zero below degree zero. Then <span class="math" data-tex="\(h\)">\(h\)</span> is a contracting homotopy for the augmented complex.</p>
+<p><strong>Proof.</strong> Expanding <span class="math" data-tex="\(\delta^{n+1}\delta^n\)">\(\delta^{n+1}\delta^n\)</span> gives the finite sum of <span class="math" data-tex="\((-1)^{i+j}F(d_j^{n+1}d_i^n)\)">\((-1)^{i+j}F(d_j^{n+1}d_i^n)\)</span>, for <span class="math" data-tex="\(0\le i\le n+1\)">\(0\le i\le n+1\)</span>, <span class="math" data-tex="\(0\le j\le n+2\)">\(0\le j\le n+2\)</span>. Pair every term with <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> with the term whose indices are <span class="math" data-tex="\((j-1,i)\)">\((j-1,i)\)</span>. The latter has its second index at most its first, and every such term arises exactly once. Identity (3.3) makes the two maps equal; their sign exponents differ by one. They cancel. This proves square zero for <span class="math" data-tex="\(n\ge-1\)">\(n\ge-1\)</span>; below that the differential is zero.</p>
+<p>For <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, (4.2) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+h^{n+1}\delta^n
+=1_{F^n}+\sum_{i=0}^n(-1)^{i+1}F(d_i^{n-1})h^n
+=1_{F^n}-\delta^{n-1}h^n.
+\tag{4.3}
+\]">\[
+h^{n+1}\delta^n
+=1_{F^n}+\sum_{i=0}^n(-1)^{i+1}F(d_i^{n-1})h^n
+=1_{F^n}-\delta^{n-1}h^n.
+\tag{4.3}
+\]</span>
+<p>Thus <span class="math" data-tex="\(h^{n+1}\delta^n+\delta^{n-1}h^n=1\)">\(h^{n+1}\delta^n+\delta^{n-1}h^n=1\)</span>. At degree minus one, the first condition of (4.2) says <span class="math" data-tex="\(h^0\delta^{-1}=1_{F^{-1}}\)">\(h^0\delta^{-1}=1_{F^{-1}}\)</span>, while the other boundary term is zero. Below it the identity of a zero object is zero. These are exactly the homotopy equations in every degree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A natural transformation of such functors gives a chain map: each coface square commutes, so their finite alternating sum does too. If the extra collapse maps are compatible with the transformation, their homotopies are compatible as well, by the degreewise square.</p>
+<h2 id="5-endpoint-adjoining-supplies-the-required-extra-collapse">5. Endpoint adjoining supplies the required extra collapse</h2>
+<p>Let <span class="math" data-tex="\(\widetilde F:\mathcal E\to\mathcal C\)">\(\widetilde F:\mathcal E\to\mathcal C\)</span> be a functor, and first take <span class="math" data-tex="\(F=\widetilde F\kappa\)">\(F=\widetilde F\kappa\)</span> on the injective category. Then <span class="math" data-tex="\(F^n=\widetilde F[n+2]\)">\(F^n=\widetilde F[n+2]\)</span> for <span class="math" data-tex="\(n\ge-1\)">\(n\ge-1\)</span>. For <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+h^n=\widetilde F(s_0^{n+2}):F^n\longrightarrow F^{n-1}.
+\tag{5.1}
+\]">\[
+h^n=\widetilde F(s_0^{n+2}):F^n\longrightarrow F^{n-1}.
+\tag{5.1}
+\]</span>
+<p>These collapses belong to <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, since they preserve both endpoints. Set <span class="math" data-tex="\(h^{-1}=0\)">\(h^{-1}=0\)</span> into the zero term in degree minus two; no collapse to <span class="math" data-tex="\(\widetilde F[0]\)">\(\widetilde F[0]\)</span> is substituted for that zero term.</p>
+<p>For <span class="math" data-tex="\(n\ge-1\)">\(n\ge-1\)</span>, (3.5) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+s_0^{n+3}d_1^{n+2}=1_{[n+2]}.
+\tag{5.2}
+\]">\[
+s_0^{n+3}d_1^{n+2}=1_{[n+2]}.
+\tag{5.2}
+\]</span>
+<p>With (3.6), this is precisely the first equation of (4.2). For <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, <span class="math" data-tex="\(0\le i\le n\)">\(0\le i\le n\)</span>, its third mixed case gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+s_0^{n+3}d_{i+2}^{n+2}=d_{i+1}^{n+1}s_0^{n+2}.
+\tag{5.3}
+\]">\[
+s_0^{n+3}d_{i+2}^{n+2}=d_{i+1}^{n+1}s_0^{n+2}.
+\tag{5.3}
+\]</span>
+<p>Applying <span class="math" data-tex="\(\widetilde F\)">\(\widetilde F\)</span> identifies this with the second equation of (4.2). Theorem 4.1 therefore contracts the whole augmented complex. In particular its lowest identity is <span class="math" data-tex="\(\widetilde F(s_0^2d_1^1)=1_{F^{-1}}\)">\(\widetilde F(s_0^2d_1^1)=1_{F^{-1}}\)</span>.</p>
+<p>If only a natural isomorphism <span class="math" data-tex="\(a:F\to\widetilde F\kappa\)">\(a:F\to\widetilde F\kappa\)</span> is specified, naturality on all cofaces makes its components a chain isomorphism. Transport the contraction by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+h_F^n=a_{[n-1]}^{-1}\,\widetilde F(s_0^{n+2})\,a_{[n]}
+\quad(n\ge0),
+\tag{5.4}
+\]">\[
+h_F^n=a_{[n-1]}^{-1}\,\widetilde F(s_0^{n+2})\,a_{[n]}
+\quad(n\ge0),
+\tag{5.4}
+\]</span>
+<p>and use zero below it. Substituting into (4.3), or conjugating that identity by <span class="math" data-tex="\(a\)">\(a\)</span>, proves the contraction. Hence an isomorphic factorization suffices; equality of the two functors is not required.</p>
+<h2 id="6-two-worked-augmented-complexes">6. Two worked augmented complexes</h2>
+<p><strong>Example 6.1 (the constant functor).</strong> Take any object <span class="math" data-tex="\(A\)">\(A\)</span> and the constant functor with every structural map the identity. Then <span class="math" data-tex="\(F^n=A\)">\(F^n=A\)</span> for <span class="math" data-tex="\(n\ge-1\)">\(n\ge-1\)</span>, and the alternating sum (4.1) is identity for odd <span class="math" data-tex="\(n\)">\(n\)</span>, including <span class="math" data-tex="\(n=-1\)">\(n=-1\)</span>, and zero for even <span class="math" data-tex="\(n\)">\(n\)</span>. The complex begins</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+A\xrightarrow1 A\xrightarrow0 A\xrightarrow1 A\xrightarrow0 A\longrightarrow\cdots
+\tag{6.1}
+\]">\[
+A\xrightarrow1 A\xrightarrow0 A\xrightarrow1 A\xrightarrow0 A\longrightarrow\cdots
+\tag{6.1}
+\]</span>
+<p>in degrees <span class="math" data-tex="\(-1,0,1,2,\ldots\)">\(-1,0,1,2,\ldots\)</span>. The maps <span class="math" data-tex="\(h^n=1\)">\(h^n=1\)</span> for <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span> give the contraction, since exactly one of the two adjacent differentials is identity. If <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, removing degree minus one destroys contractibility: the new degree-zero differential is zero and its incoming term is zero, so its identity cannot be a homotopy boundary.</p>
+<p><strong>Example 6.2 (free groups on the adjoined order).</strong> In abelian groups let <span class="math" data-tex="\(\widetilde F(B)\)">\(\widetilde F(B)\)</span> be the free abelian group on the finite set <span class="math" data-tex="\(B\)">\(B\)</span>, and send a basis element <span class="math" data-tex="\(e_b\)">\(e_b\)</span> under a map <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(e_{v(b)}\)">\(e_{v(b)}\)</span>. Checking on the basis proves the identity and composition laws. For <span class="math" data-tex="\(F=\widetilde F\kappa\)">\(F=\widetilde F\kappa\)</span>, the term <span class="math" data-tex="\(F^n\)">\(F^n\)</span> has basis <span class="math" data-tex="\(e_0,\ldots,e_{n+2}\)">\(e_0,\ldots,e_{n+2}\)</span>. A coface omits basis position <span class="math" data-tex="\(i+1\)">\(i+1\)</span>, while <span class="math" data-tex="\(h^n\)">\(h^n\)</span> sends both <span class="math" data-tex="\(e_0,e_1\)">\(e_0,e_1\)</span> to <span class="math" data-tex="\(e_0\)">\(e_0\)</span>, and sends <span class="math" data-tex="\(e_r\)">\(e_r\)</span> to <span class="math" data-tex="\(e_{r-1}\)">\(e_{r-1}\)</span> for <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span>.</p>
+<p>The first differential sends the two degree-minus-one generators to the endpoints <span class="math" data-tex="\(e_0,e_2\)">\(e_0,e_2\)</span> in degree zero. The next differential is zero on those endpoints and sends the internal <span class="math" data-tex="\(e_1\)">\(e_1\)</span> to <span class="math" data-tex="\(e_2-e_1\)">\(e_2-e_1\)</span> in degree one. Theorem 4.1 proves every higher identity as well, with the same explicit collapse rule. Thus this supplies a contracting augmented complex with terms of increasing ranks, rather than a constant one.</p>
+<h2 id="7-four-graded-exercises-with-complete-solutions">7. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (foundation: faithfulness and half-fullness).</strong> List every endomorphism of the two-point chain in <span class="math" data-tex="\(\Delta_+\)">\(\Delta_+\)</span> and in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. Explain why the order-forgetting functor is half-full but not full.</p>
+<p><strong>Solution.</strong> The nondecreasing maps have value lists <span class="math" data-tex="\((0,0),(0,1),(1,1)\)">\((0,0),(0,1),(1,1)\)</span>. Preserving both endpoints leaves only <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. The fourth underlying set map, <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, is not nondecreasing, so the forgetful functor is not full. It is faithful because an underlying function determines the map. If two arbitrary finite orders have isomorphic underlying sets, they have equal cardinality and their unique increasing rankings give an order isomorphism. This proves half-fullness in its object-isomorphism sense; it does not require lifting that fourth chosen bijection.</p>
+<p><strong>Exercise 2 (intermediate: compute the cut dual).</strong> For <span class="math" data-tex="\(f:[2]\to[1]\)">\(f:[2]\to[1]\)</span> with values <span class="math" data-tex="\((0,0,1)\)">\((0,0,1)\)</span>, calculate its map on cut counts and recover <span class="math" data-tex="\(f\)">\(f\)</span> from that map. Also calculate <span class="math" data-tex="\(\kappa f\)">\(\kappa f\)</span>, and distinguish its direction and size from the cut map.</p>
+<p><strong>Solution.</strong> The cuts of <span class="math" data-tex="\([1]\)">\([1]\)</span> have sizes <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>. Their preimages have sizes <span class="math" data-tex="\(0,2,3\)">\(0,2,3\)</span>, so <span class="math" data-tex="\(f^*\)">\(f^*\)</span> is the map <span class="math" data-tex="\((0,1,2)\mapsto(0,2,3)\)">\((0,1,2)\mapsto(0,2,3)\)</span>, from a three-point chain to a four-point chain. In (2.3), the interval for output zero is <span class="math" data-tex="\([0,2)\)">\([0,2)\)</span> and the interval for output one is <span class="math" data-tex="\([2,3)\)">\([2,3)\)</span>; hence the recovered list is <span class="math" data-tex="\((0,0,1)\)">\((0,0,1)\)</span>. By contrast <span class="math" data-tex="\(\kappa f\)">\(\kappa f\)</span> goes from <span class="math" data-tex="\([4]\)">\([4]\)</span> to <span class="math" data-tex="\([3]\)">\([3]\)</span>, with value list <span class="math" data-tex="\((0,1,1,2,3)\)">\((0,1,1,2,3)\)</span>. It adjoins two endpoints and keeps the original arrow direction. The cut functor reverses that direction and uses the initial-segment counts instead.</p>
+<p><strong>Exercise 3 (advanced: check the two lowest contractions as matrices).</strong> In Example 6.2 compute <span class="math" data-tex="\(\delta^{-1},\delta^0,h^0,h^1\)">\(\delta^{-1},\delta^0,h^0,h^1\)</span>. Verify the homotopy identities in degrees minus one and zero.</p>
+<p><strong>Solution.</strong> In the increasing basis orders, the matrices are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\delta^{-1}=\begin{pmatrix}1&amp;0\\0&amp;0\\0&amp;1\end{pmatrix},\qquad
+\delta^0=\begin{pmatrix}0&amp;0&amp;0\\0&amp;-1&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;0\end{pmatrix},
+\tag{7.1}
+\]">\[
+\delta^{-1}=\begin{pmatrix}1&amp;0\\0&amp;0\\0&amp;1\end{pmatrix},\qquad
+\delta^0=\begin{pmatrix}0&amp;0&amp;0\\0&amp;-1&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;0\end{pmatrix},
+\tag{7.1}
+\]</span>
+<p>and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+h^0=\begin{pmatrix}1&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix},\qquad
+h^1=\begin{pmatrix}1&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix}.
+\tag{7.2}
+\]">\[
+h^0=\begin{pmatrix}1&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix},\qquad
+h^1=\begin{pmatrix}1&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix}.
+\tag{7.2}
+\]</span>
+<p>Multiplication gives <span class="math" data-tex="\(h^0\delta^{-1}=1_{\mathbb Z^2}\)">\(h^0\delta^{-1}=1_{\mathbb Z^2}\)</span>. On degree zero, <span class="math" data-tex="\(\delta^{-1}h^0\)">\(\delta^{-1}h^0\)</span> sends <span class="math" data-tex="\(e_0,e_1,e_2\)">\(e_0,e_1,e_2\)</span> to <span class="math" data-tex="\(e_0,e_0,e_2\)">\(e_0,e_0,e_2\)</span>, respectively, while <span class="math" data-tex="\(h^1\delta^0\)">\(h^1\delta^0\)</span> sends them to <span class="math" data-tex="\(0,e_1-e_0,0\)">\(0,e_1-e_0,0\)</span>. Their sum is the identity. Also <span class="math" data-tex="\(\delta^0\delta^{-1}=0\)">\(\delta^0\delta^{-1}=0\)</span>. This verifies the augmentation equation and the first cancellation with the actual signs.</p>
+<p><strong>Exercise 4 (synthesis: ordinary degeneracies do not supply the extra collapse).</strong> Define <span class="math" data-tex="\(F[-1]=0\)">\(F[-1]=0\)</span>, <span class="math" data-tex="\(F[n]=\mathbb Z\)">\(F[n]=\mathbb Z\)</span> for <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, with every map between nonempty orders acting as identity and every map from the empty order acting as zero. Show that this defines a functor even on <span class="math" data-tex="\(\Delta_+\)">\(\Delta_+\)</span>. Can its restriction to the injective category factor, up to natural isomorphism, through <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> and a functor on <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>?</p>
+<p><strong>Solution.</strong> There is no map from a nonempty order to the empty order. Thus every possible composite is either between nonempty orders, where the assigned maps are identities, or starts at the empty order, where all relevant maps are zero. The identity on the zero group is zero, so identities are preserved there too. This proves functoriality, including its ordinary collapse maps.</p>
+<p>The alternating complex has <span class="math" data-tex="\(F^{-1}=0\)">\(F^{-1}=0\)</span>, <span class="math" data-tex="\(F^0=\mathbb Z\)">\(F^0=\mathbb Z\)</span>, <span class="math" data-tex="\(\delta^{-1}=0\)">\(\delta^{-1}=0\)</span> and <span class="math" data-tex="\(\delta^0=1-1=0\)">\(\delta^0=1-1=0\)</span>. Any contraction would have its degree-zero boundary <span class="math" data-tex="\(h^1\delta^0+\delta^{-1}h^0=0\)">\(h^1\delta^0+\delta^{-1}h^0=0\)</span>, which cannot be the identity of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. So the complex is not contractible. Section 5 would give a contraction for any factorization through <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, even an isomorphic one. Hence no such factorization exists. Ordinary degeneracies and the extra endpoint collapse have different consequences at the augmentation.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project Authors, <a href="https://stacks.math.columbia.edu/tag/0164"><em>The category of finite ordered sets</em></a>, for the nonempty-order convention and its coface/collapse maps. Here the augmented category is explicitly denoted <span class="math" data-tex="\(\Delta_+\)">\(\Delta_+\)</span>, and includes <span class="math" data-tex="\([-1]\)">\([-1]\)</span>.</li>
+<li>The definitions and boundary equation for actual chain homotopies are proved in <a href="graded-complexes-contravariant-signs-and-stupid-truncations.html#1-grading-support-and-the-ordinary-homotopy-category">Graded complexes, contravariant signs and stupid truncations, Section 1</a>.</li>
+</ul>
+</main></body></html>

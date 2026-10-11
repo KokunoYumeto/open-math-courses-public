@@ -10,10 +10,11 @@ The source section fixes a separable properly infinite von Neumann algebra.
 The arguments below use neither restriction: throughout, \(M\) is a von
 Neumann algebra and \(\mathcal W_0(M)\) is its set of faithful normal semifinite
 weights. The trace model separately assumes that \(M\) is semifinite. The
-Fourier-filter convention is the one fixed in OA-FLOW. The two spectral
-applications below have complete contour and Poisson arguments relative to
-explicit Fourier and analytic inputs; their prerequisites and the
-half-strip domination theorem are not proved here.
+positive Fourier convention is fixed by its action on a single frequency.
+The two spectral applications below use a real-line Fourier-algebra proof
+and explicit contour and Poisson arguments. The half-strip domination theorem is
+proved in HS05;
+UW02 below checks the boundary continuity required by our definition.
 
 ## Contractive strips form an order
 
@@ -55,7 +56,7 @@ Reflexivity follows from \([D\varphi:D\varphi]_t=1\). If
 
 \[
  \begin{aligned}
- [D\varphi_1:D\varphi_3]_t
+ {}[D\varphi_1:D\varphi_3]_t
  &= [D\varphi_1:D\varphi_2]_t\\
  &\quad\cdot[D\varphi_2:D\varphi_3]_t.
  \end{aligned}
@@ -102,8 +103,8 @@ of (UW.2) to the closed lower half-plane.
 
 ## The half-strip recovers pointwise order
 
-We use the following exact form of the weight-domination theorem, recorded as
-OA-MOD-UW-DEP-DOMINATION. If \(\alpha,\beta\in\mathcal W_0(M)\) and
+The weight-domination theorem HS05
+has the following exact form. If \(\alpha,\beta\in\mathcal W_0(M)\) and
 \(C>0\), then
 
 \[
@@ -114,10 +115,51 @@ OA-MOD-UW-DEP-DOMINATION. If \(\alpha,\beta\in\mathcal W_0(M)\) and
 
 is equivalent to continuation of \([D\alpha:D\beta]_t\) through the strip
 \(-1/2\leq\operatorname{Im}z\leq0\), with lower-boundary norm at most
-\(C^{1/2}\). The real boundary consists of unitaries, so the bounded-strip
-maximum principle gives the corresponding bound throughout the strip. This
-is Takesaki II, VIII.3, Theorem 3.17; its complete analytic proof remains an
-explicit prerequisite rather than being hidden in the present argument.
+\(C^{1/2}\). HS05 proves both implications on the full positive cone,
+including infinite values, and gives the bound \(C^y\) at height \(-y\).
+Its construction uses the balanced matrix weight and the complete
+fixed-operator strip proof in HS01–04.
+
+We must also verify sigma-strong continuity on the boundary: the statement
+of HS05 initially specifies sigma-weak continuity. Here is the needed
+strengthening of HS01.
+Use its notation \(D>0\), \(s>0\), and bounded \(a,b\), with
+\[
+ \begin{gathered}
+ aD(D^s)\subseteq D(D^s),\\
+ D^sa\xi=bD^s\xi
+ \quad(\xi\in D(D^s)).
+ \end{gathered}
+\]
+Thus \(a\) acts continuously on \(D(D^s)\) with its graph norm.
+For a spectral-band vector \(\xi\), the HS01 extension satisfies
+\[
+ \begin{gathered}
+ F(t-iu)\xi\\
+ =D^{it+u}aD^{-it-u}\xi,\\
+ 0\leq u\leq s.
+ \end{gathered}
+\]
+The vector \(D^{-it-u}\xi\) varies continuously in that graph norm,
+because its spectral support lies in a compact subinterval of
+\((0,\infty)\). The same holds after applying \(a\).
+For each fixed \(v\in D(D^s)\), spectral dominated convergence
+makes \((t,u)\mapsto D^{it+u}v\) norm continuous up to both edges:
+the scalar multipliers obey \(r^u\leq1+r^s\) for \(r>0\).
+This bound also controls a varying \(v\) in graph norm. Hence
+\(F(t-iu)\xi\) is jointly norm continuous for every band vector.
+The strip's uniform operator bound and density of the band vectors
+extend this conclusion to every vector in the Hilbert space.
+It gives sigma-strong continuity as well: truncate a square-summable
+vector family to finitely many vectors, and bound its remaining tail
+uniformly by the common operator norm.
+
+Apply this to the balanced modular operator and matrix unit used in
+HS05. The cocycle extension is its indicated matrix entry, so it is
+sigma-strongly continuous on the entire closed half-strip. Conversely,
+a bounded sigma-strongly continuous extension is sigma-weakly continuous,
+and HS05 applies to it. Thus the theorem has exactly the boundary
+topology required in UW01, without assuming norm-continuous real orbits.
 
 Taking \(C=1\) gives the precise bridge
 
@@ -148,8 +190,7 @@ Let \(\Phi=\varphi_1\oplus\varphi_2\) be the balanced weight on
  \tag{UW.9}
 \]
 
-We use the OA-FLOW Fourier-filter definition:
-if \(f=\mathcal F b\), then
+We use the positive Fourier convention: if \(f=\mathcal F b\), then
 
 \[
  \begin{aligned}
@@ -159,24 +200,127 @@ if \(f=\mathcal F b\), then
  \tag{UW.50}
 \]
 
-The operator integral is weak-star. The spectrum is the hull of the ideal
-of Fourier functions whose filters annihilate \(x\). For the orbit
+The operator integral is weak-star. **The real-line Fourier algebra and its filters.** We prove the precise filter facts used here. The scalar Fourier transform, its Schwartz inversion, smooth cutoffs, and continuity of translations in \(L^1\) are established in BI-02–03. The argument below concerns the Fourier-algebra hull spectrum, rather than assuming its equality with a smooth-test definition.
+
+For \(a,b\in L^1(\mathbb R)\), scalar Fubini gives
+\[
+\|a*b\|_1\leq\|a\|_1\|b\|_1,
+\qquad\mathcal F(a*b)=(\mathcal Fa)(\mathcal Fb).
+\]
+The transform is injective. Indeed, if \(\mathcal Fa=0\) and \(\rho\in C_c^\infty\), Schwartz inversion and Fubini give
+\[
+\begin{aligned}
+(a*\rho)(t)
+&=\frac1{2\pi}\int e^{-ipt}
+  (\mathcal Fa)(p)(\mathcal F\rho)(p)\,dp\\
+&=0.
+\end{aligned}
+\]
+The absolute iterated integral is bounded by \(\|a\|_1\|\mathcal F\rho\|_1\). Choosing nonnegative unit-mass \(\rho\) with shrinking support gives \(a*\rho\to a\) in \(L^1\), by the translation estimate in BI-03. Thus \(a=0\).
+
+Completeness of \(L^1\) follows directly from positive integration: from a Cauchy sequence choose a subsequence whose successive norm differences are at most \(2^{-j}\). The sum of their absolute differences is integrable by monotone convergence. The subsequence therefore converges pointwise almost everywhere, and its \(L^1\) tail is bounded by the corresponding geometric tail. The original Cauchy sequence has the same \(L^1\) limit.
+
+Consequently
+\[
+A=\mathcal F(L^1(\mathbb R)),
+\qquad\|\mathcal Fa\|_A=\|a\|_1
+\]
+is a commutative Banach algebra, with \(\|f\|_\infty\leq\|f\|_A\). Each \(f\) is continuous by scalar dominated convergence. It vanishes at infinity: approximate its inverse transform in \(L^1\) by smooth compact functions, integrate their transforms by parts, and use the uniform Fourier bound. Smooth compact functions of the frequency variable belong to \(A\), by BI-03 inversion.
+
+We need norm density of the compactly supported members \(A_c=A\cap C_c(\mathbb R)\). Fix \(\chi\in C_c^\infty\) with \(\chi(0)=1\), and let \(k=\mathcal F^{-1}\chi\). For \(\chi_n(p)=\chi(p/n)\), its inverse transform is \(k_n(t)=n k(nt)\) and \(\int k=1\). If \(f=\mathcal Fa\), then \(f\chi_n\in A_c\) and
+\[
+\begin{aligned}
+\|f\chi_n-f\|_A
+&=\|a*k_n-a\|_1\\
+&\leq\int |k(s)|
+ \|a(\,\cdot-s/n)-a\|_1\,ds
+\longrightarrow0.
+\end{aligned}
+\]
+Translation continuity and the integrable bound \(2\|a\|_1|k(s)|\) justify this limit. Positivity of \(k\) is not required.
+
+Let \(X=E^*\), and suppose \(\alpha_t\) is a uniformly bounded weak-star continuous group with norm-continuous predual orbits. Put \(C_\alpha=\sup_t\|\alpha_t\|\), and write \(\beta_t\eta=\eta\circ\alpha_t\) for its predual action. For compact continuous \(a\), the norm integration construction defines
+\[
+B_a\eta=\int a(t)\beta_t\eta\,dt,
+\qquad\|B_a\|\leq C_\alpha\|a\|_1.
+\]
+Completion extends \(B_a\) to every \(a\in L^1\). Define \(\alpha_f=B_a^*\) for \(f=\mathcal Fa\). Injectivity of the transform makes this unambiguous. It gives exactly the weak-star integral in (UW.50), a weak-star continuous map with
+\(\|\alpha_f\|\leq C_\alpha\|f\|_A\).
+Compact-rectangle Fubini on the predual, followed by \(L^1\) approximation, proves
+\[
+\alpha_f\alpha_g=\alpha_{fg}.
+\]
+The group law and translation of the inverse kernel also show that these filters commute with every \(\alpha_t\).
+
+For the preceding \(\chi_n\), predual norm continuity gives
+\[
+\begin{aligned}
+\|B_{k_n}\eta-\eta\|
+&\leq\int |k(s)|\,
+ \|\beta_{s/n}\eta-\eta\|\,ds\\
+&\longrightarrow0.
+\end{aligned}
+\]
+Thus \(\alpha_{\chi_n}x\to x\) weak-star. In particular, if every Fourier filter kills \(x\), then \(x=0\). This argument does not assume norm continuity of the orbit of \(x\).
+
+**Local inversion in the actual algebra norm.** Suppose \(h=\mathcal Fa\) and \(h(p_0)=h_0\ne0\). Choose a smooth compact \(u\) equal to one near zero, put \(k=\mathcal F^{-1}u\), and set
+\[
+u_\varepsilon(p)=u((p-p_0)/\varepsilon),
+\qquad
+k_\varepsilon(t)=\varepsilon e^{-ip_0t}k(\varepsilon t).
+\]
+Then \(\mathcal Fk_\varepsilon=u_\varepsilon\). Subtracting the inverse transforms of \(hu_\varepsilon\) and \(h_0u_\varepsilon\) gives
+\[
+\begin{aligned}
+\|(h-h_0)u_\varepsilon\|_A
+&\leq\int |a(s)|\,
+ \|k(\,\cdot-\varepsilon s)-k\|_1\,ds\\
+&\longrightarrow0.
+\end{aligned}
+\]
+To see the phase, \(k_\varepsilon(t-s)=e^{ip_0s}\varepsilon e^{-ip_0t}k(\varepsilon t-\varepsilon s)\), while \(h_0=\int a(s)e^{ip_0s}\,ds\). The phases have modulus one. Translation continuity and the bound \(2\|k\|_1|a(s)|\) prove the limit.
+
+Use the unitization \(A^+=\mathbb C1\oplus A\) with norm \(|c|+\|f\|_A\). Choose \(\varepsilon\) so that \(q=(h-h_0)u_\varepsilon\) has norm less than \(|h_0|\). The convergent geometric series
+\[
+d^{-1}=h_0^{-1}\sum_{j=0}^{\infty}(-q/h_0)^j,
+\qquad d=h_0 1+q,
+\]
+is an inverse in \(A^+\): multiplication of its partial sums by \(d\) leaves a remainder tending to zero in norm. Since \(A\) is an ideal of \(A^+\), the element \(v=u_\varepsilon d^{-1}\) belongs to \(A\). On a neighborhood of \(p_0\), we have \(u_\varepsilon=1\), \(d=h\), and hence \(hv=1\). This proves local inversion without replacing the \(A\) norm by the uniform norm.
+
+**Local ideals, empty spectrum, and support.** For a closed ideal \(J\subset A\), let
+\[
+h(J)=\{p:f(p)=0\text{ for every }f\in J\}.
+\]
+If \(f\in A_c\) has support disjoint from \(h(J)\), then \(f\in J\). For each point of its compact support, choose \(h_j\in J\) nonzero there. The local inverse construction gives \(v_j\in A\) with \(h_jv_j=1\) on a neighborhood of that point. Choose finitely many such neighborhoods covering the support and a smooth compact partition \(q_j\) subordinate to them, with \(\sum_jq_j=1\) near the support; the cutoff and finite-partition construction is in BI-03. Then
+\[
+f=\sum_jfq_j=\sum_j h_j(v_jfq_j)\in J.
+\]
+Only compact supports disjoint from the hull are treated. No assertion that every function vanishing on the hull belongs to \(J\) is used.
+
+Set \(I_\alpha(x)=\{f\in A:\alpha_fx=0\}\). The norm bound and product identity make it a closed ideal. Define \(\operatorname{Sp}_\alpha(x)=h(I_\alpha(x))\). If that hull is empty, the preceding lemma gives \(A_c\subset I_\alpha(x)\). Density gives \(I_\alpha(x)=A\), and \(\alpha_{\chi_n}x\to x\) then gives \(x=0\). Conversely \(x=0\) has empty spectrum, since a smooth compact function can be nonzero at any specified point.
+
+For every \(f\in A\), the product identity gives \(I_\alpha(x)\subset I_\alpha(\alpha_fx)\). If \(p\notin\operatorname{supp}f\), a smooth compact function \(g\) supported away from \(\operatorname{supp}f\), with \(g(p)=1\), has \(gf=0\); thus it annihilates \(\alpha_fx\). These two observations prove
+\[
+\operatorname{Sp}_\alpha(\alpha_fx)
+\subseteq\operatorname{Sp}_\alpha(x)
+\cap\operatorname{supp}f.
+\]
+The support of \(f\) need not be compact. In particular, disjoint support and spectrum make the filter zero, by the empty-spectrum result just proved. Multiplying the group by \(e^{-i\delta t}\) translates the spectrum by \(-\delta\): its \(f\)-filter is the original group's filter for \(p\mapsto f(p-\delta)\), an isometric automorphism of \(A\).
+
+These hypotheses apply to the modular action used here and to its phase translates. On its faithful GNS representation, the action is conjugation by the strongly continuous group \(\Delta^{it}\). For vector functionals, predual norm continuity follows from
+\(\|\omega_\xi-\omega_\eta\|\leq(\|\xi\|+\|\eta\|)\|\xi-\eta\|\).
+The norm-convergent vector expansions of SC-02 give it for all normal functionals by a finite head and a uniformly bounded tail. The action also has sigma-strong-star continuous element orbits. Multiplication by the continuous scalar phase preserves the predual condition. Nothing here requires a separable representation.
+
+For the orbit
 \(\gamma_t(x)=e^{i\nu t}x\), with \(x\ne0\), (UW.50) gives
 \(\gamma_f(x)=f(\nu)x\), so its spectrum is \(\{\nu\}\).
 Smooth compactly supported Fourier functions separate any other point
 from \(\nu\), proving both inclusions in this hull equality.
-The positive Fourier transform of the scalar function \(e^{i\nu t}\),
-regarded as a distribution, is instead supported at \(-\nu\).
-These are different uses of the transform. Since
+Since
 \(|e^{i\nu(t-is)}|=e^{\nu s}\), boundedness below the real axis selects
 \(\nu\leq0\) in the filter spectrum.
 
-Here is a proof of the required half-plane criterion, relative to the exact
-Fourier, integration and local ideal inputs of
-OA-FLOW's spectral calculus.
-Their proofs are not given here.
-The general flow theorem is treated in OA-FLOW; this is its local
-application with the convention made explicit.
+We now prove the half-plane criterion using this filter calculus.
 
 **A bounded lower extension excludes positive frequencies.** Suppose
 \(F(t)=\gamma_t(x)\) extends holomorphically below the real axis, with
@@ -204,13 +348,9 @@ undifferentiated estimate for \(|t|\leq1\), give
 \]
 
 In particular \(b_f\in L^1(\mathbb R)\) and \(\mathcal F b_f=f\).
-For completeness, the latter inversion follows by inserting
-\(e^{-\eta t^2}\), applying Fubini and the Gaussian Fourier identity
-specified in OA-FLOW, and then letting \(\eta\downarrow0\).
-The resulting Gaussian approximate identity tends to \(f(p)\), while
-dominated convergence on the \(L^1\) function \(b_f\) removes the factor.
-Thus no distributional inversion or closed-set spectral synthesis is
-being assumed in this test-function argument.
+This is exactly the Schwartz inversion proved in BI-03; it uses scalar
+Fubini and a Gaussian approximate identity. No distributional inversion
+or closed-set spectral synthesis is assumed.
 
 For a normal functional \(\omega\), shift the contour of
 \(b_f(z)\omega(F(z))\) down by \(s\). Its vertical integrals vanish:
@@ -235,8 +375,10 @@ It belongs to the annihilator ideal and excludes \(p\) from its hull.
 Hence \(\operatorname{Sp}_\gamma(x)\subseteq(-\infty,0]\).
 
 **Negative spectrum supplies the contractive extension.** Now let
-\(\gamma\) be a sigma-strong-star continuous automorphism flow on a von
-Neumann algebra and assume that spectrum inclusion. For \(s>0\), put
+\(\gamma\) be an automorphism flow with sigma-strong-star continuous
+element orbits and norm-continuous predual orbits, and assume that spectrum
+inclusion. The preceding argument verifies both continuity properties for
+every modular flow, which is the case needed for arbitrary weights here. For \(s>0\), put
 
 \[
  \begin{gathered}
@@ -275,7 +417,7 @@ We verify holomorphy without assuming spectral synthesis at zero.
 For \(\delta>0\), use the dual Banach action
 \(\beta_t^\delta=e^{-i\delta t}\gamma_t\). It is isometric and has
 continuous predual orbits; it need not be an automorphism action.
-The frequency-origin identity in OA-FLOW gives
+The frequency-translation identity proved above gives
 \(\operatorname{Sp}_{\beta^\delta}(x)
 =\operatorname{Sp}_\gamma(x)-\delta\subseteq(-\infty,-\delta]\).
 This also follows directly from (UW.50) by translating the Fourier function.
@@ -297,7 +439,7 @@ a filter of \(\beta^\delta_t(x)\), is
 
 Its Fourier support is contained in \([0,\infty)\), disjoint from
 \(\operatorname{Sp}_{\beta^\delta}(x)\).
-OA-FLOW's filter-support inclusion (S16) and its empty-spectrum criterion
+The filter-support inclusion and empty-spectrum criterion proved above
 therefore make this filter zero. Thus
 \(\partial_sF_\delta+i\partial_tF_\delta=0\), the Cauchy--Riemann equation
 for \(z=t-is\). Continuous norm derivatives prove norm holomorphy.
@@ -359,9 +501,8 @@ We obtain the corrected equivalence
 Taking adjoints instead gives the positive half-line for \(e_{21}\).
 Indeed the filter identity for \(x^*\) replaces \(f(p)\) by
 \(\overline{f(-p)}\), so its annihilator hull is reflected.
-The earlier positive half-line for \(e_{12}\) was incompatible with
-the unchanged OA-FLOW convention. This identifies a local error;
-it makes no claim about an error in the source book's conventions.
+Using the positive half-line for \(e_{12}\) would instead contradict
+the eigenvector calculation in this convention.
 
 **A complete scalar sign test.** Take \(M=\mathbb C\),
 \(\psi(r)=r\) and \(\varphi(r)=r/2\) for \(r\geq0\).
@@ -379,10 +520,10 @@ usual trace. Hence
  \tag{UW.59}
 \]
 
-Thus \(\varphi\preceq_\infty\psi\), while the earlier positive
+Thus \(\varphi\preceq_\infty\psi\), while the positive
 half-line condition fails. The adjoint \(e_{21}\) has frequency \(\log2\).
 For equal weights the frequency is zero, retained by both closed
-half-lines. The zero vector has empty spectrum, as in OA-FLOW.
+half-lines. The zero vector has empty spectrum by the filter argument above.
 
 ## The extended uniform distance
 
@@ -390,7 +531,7 @@ Scaling a weight changes the cocycle by
 
 \[
  \begin{aligned}
- [D(c\varphi):D(d\psi)]_t
+ {}[D(c\varphi):D(d\psi)]_t
  &=(c/d)^{it}\\
  &\quad\cdot[D\varphi:D\psi]_t,\\
  &\hspace{5em}c,d>0.
@@ -753,7 +894,7 @@ This proves annihilation for the negative tests too.
 At any point outside \([-2b,2b]\), choose a smooth compactly supported
 test function nonzero there and supported entirely on the corresponding
 side, with some \(c>2b\). It lies in the annihilator ideal, so the point
-is absent from the OA-FLOW hull. Hence
+is absent from the annihilator hull defined in UW-03. Hence
 \(\operatorname{Sp}_{\sigma^\varphi}(a)\subseteq[-2b,2b]\).
 Intersecting these closed intervals over all \(\varepsilon>0\) proves
 

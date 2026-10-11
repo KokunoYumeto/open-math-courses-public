@@ -859,7 +859,14 @@ The statement is also valid if one of \(A,B\) is empty, with no openness assumpt
 \tag{X.17}
 \]
 When the relative conditions are forgotten this is exactly
-\(\operatorname{pr}_X^*u\smile\operatorname{pr}_Y^*v\).
+\(\operatorname{pr}_X^*u\smile\operatorname{pr}_Y^*v\). For two open subsets \(A,B\) of a single space \(X\), diagonal pullback gives a relative cup product
+\[
+\begin{gathered}
+H^p(X,A;R)\otimes H^q(X,B;R)\\
+\longrightarrow H^{p+q}(X,A\cup B;R),
+\end{gathered}
+\]
+denoted by (X.17a), whose image after forgetting relative conditions is the usual cup product.
 
 **Proof.** In the tensor complex, quotient by
 \[
@@ -879,7 +886,14 @@ These are actual integral chain homotopies; applying integer linear combinations
 
 For relative cocycles \(u,v\), regard them as cochains on \(X,Y\) vanishing on \(A,B\). The cochain \(u\otimes v\), evaluated on the tensor group in bidegree \((p,q)\) and zero in other bidegrees, is a cocycle: (U.5) gives its coboundary as \(du\otimes v+(-1)^p u\otimes dv\). It vanishes on (X.18). Composing with \(\mathcal A\) gives (X.17), which vanishes on (X.19). Changing either factor by a coboundary changes the resulting cochain by a coboundary, by the same tensor differential calculation. The cohomology inverse of the natural last quotient map therefore defines the relative external product.
 
-Forgetting the relative conditions commutes with the maps just used, and (X.17) is the front/back cup formula of K.5. This proves the final assertion. The product extends to one \(G\)-valued factor and one integral factor by integer multiplication on \(G\); the proof uses the same bilinear differential identity. □
+Forgetting the relative conditions commutes with the maps just used, and (X.17) is the front/back cup formula of K.5. This proves the final assertion. The product extends to one \(G\)-valued factor and one integral factor by integer multiplication on \(G\); the proof uses the same bilinear differential identity.
+
+For (X.17a), the diagonal is a map of pairs
+\[
+(X,A\cup B)\longrightarrow
+(X\times X,A\times X\cup X\times B):
+\]
+a point of \(A\cup B\) has its diagonal image in the indicated union. Pull back the external product already constructed for these open subsets. Naturality of the relative-forgetting maps and the front/back formula (X.17) show that its absolute image is the ordinary cup product. This proves the relative assertion. □
 
 **Corollary X.5 (exchange and cup commutativity).** For external products of degrees \(p,q\) with coefficients in a commutative unital ring,
 \[
@@ -995,7 +1009,7 @@ A_*g_r=\operatorname{sgn}(\det A)\,g_r.
 \tag{O.3}
 \]
 
-**Proof.** First we prove that every positive-determinant matrix can be joined to the identity through invertible matrices. On its ordered columns \(a_j\), define successively
+**Proof.** The positive square-root function is smooth on \((0,\infty)\): opening-lesson Theorem 1.2 applies to \(t\mapsto t^2\) at each \(t>0\), since its derivative is \(2t\ne0\), and its local inverse is the unique positive root established in Lemma 0.0. Together with the product and chain rules, this proves smoothness of every normalization below wherever its denominator is nonzero. First we prove that every positive-determinant matrix can be joined to the identity through invertible matrices. On its ordered columns \(a_j\), define successively
 \[
 w_j=a_j-\sum_{i<j}(q_i\cdot a_j)q_i,\qquad q_j=w_j/|w_j|.
 \]
@@ -1234,7 +1248,15 @@ e(f^*E)=f^*e(E),\qquad
 e(E_1\oplus E_2)=e(E_1)\smile e(E_2).
 \tag{T.14}
 \]
-The direct sum uses the first bundle's coordinates followed by the second's. Integral Euler classes change sign under orientation reversal, have \(2e(E)=0\) in odd rank, and vanish if \(E\) has a nowhere-zero section. The corresponding naturality, product and nonzero-section assertions hold modulo two.
+The direct sum uses the first bundle's coordinates followed by the second's. Integral Euler classes change sign under orientation reversal, have \(2e(E)=0\) in odd rank, and vanish if \(E\) has a nowhere-zero section. The corresponding naturality, product and nonzero-section assertions hold modulo two. In either coefficient setting, \(p^*\) identifies the cohomology of the base with that of the total space, and multiplication by \(u_E\) gives the equivalent Thom isomorphism from total-space cohomology. The Thom-square identities (T.16) are
+\[
+\begin{aligned}
+j^*u_E&=p^*e(E),\\
+u_E\smile u_E&=p^*e(E)\smile u_E,\\
+\Phi_R^{-1}(u_E\smile u_E)&=e(E).
+\end{aligned}
+\]
+The square here is the product of two relative classes for the same pair. For an oriented bundle, reduction modulo two carries its integral Thom and Euler classes to their mod-two counterparts.
 
 **Proof.** For a continuous \(f:A\to B\) between Hausdorff spaces, the pullback bundle is
 \[
@@ -1255,7 +1277,15 @@ On a fibre the product class evaluates to one on \(Q_{r+s}\). Indeed associativi
 
 Let \(N:E\to E\) be fibre negation. Its linear determinant sign is \((-1)^r\), so O.2 and uniqueness give \(N^*u_E=(-1)^r u_E\) integrally. Since \(Ns_0=s_0\), pulling back to the zero section gives \(e(E)=(-1)^r e(E)\), which proves the odd-rank assertion.
 
-Finally let \(s:B\to E^\times\) be a nowhere-zero section. The absolute class \(j^*u_E\) restricts to zero on \(E^\times\): a representative relative cocycle is zero on all chains in that subspace. Consequently \(s^*j^*u_E=0\). The homotopy \(s_t(b)=t\,s(b)\), \(0\leq t\leq1\), is a homotopy of maps into \(E\) from \(s_0\) to \(s\). It need not stay in \(E^\times\), since it is being applied to the absolute class. The prism cochain homotopy K.1 identifies the two pullbacks of that class, proving \(e(E)=0\). No fibre metric or normalization of \(s\) is used. All these arguments except the integral sign statement also apply over \(\mathbb F_2\). □
+Finally let \(s:B\to E^\times\) be a nowhere-zero section. The absolute class \(j^*u_E\) restricts to zero on \(E^\times\): a representative relative cocycle is zero on all chains in that subspace. Consequently \(s^*j^*u_E=0\). The homotopy \(s_t(b)=t\,s(b)\), \(0\leq t\leq1\), is a homotopy of maps into \(E\) from \(s_0\) to \(s\). It need not stay in \(E^\times\), since it is being applied to the absolute class. The prism cochain homotopy K.1 identifies the two pullbacks of that class, proving \(e(E)=0\). No fibre metric or normalization of \(s\) is used. All these arguments except the integral sign statement also apply over \(\mathbb F_2\).
+
+For the total-space assertion, \(p s_0=1_B\), while the continuous homotopy \((v,t)\mapsto t v\) joins \(s_0p\) to \(1_E\). Continuity follows in each bundle chart from scalar multiplication. The prism cochain homotopy K.1 therefore makes \(p^*\) and \(s_0^*\) inverse cohomology maps, with every coefficient group. It follows that
+\(j^*u_E=p^*s_0^*j^*u_E=p^*e(E)\).
+Composing \((p^*)^{-1}\) with (T.7) proves the asserted total-space Thom isomorphism: a class \(b=p^*a\) is sent to \(b\smile u_E\).
+
+To justify the relative square, represent \(u_E\) by a cocycle \(u\) that vanishes on chains in \(E^\times\). Its ordinary cup square vanishes there too, since both ordered face blocks of a simplex in \(E^\times\) lie in that subspace. The differential identity K.5 gives a relative cocycle, and a change of either relative cocycle by a relative coboundary changes the product by a relative coboundary. Thus it defines a product for this same pair directly, with no quotient comparison needed. Forgetting the relative condition on its first factor leaves exactly the same cochain. Multiplying the first equality of (T.16) on the right by \(u_E\) therefore gives its second equality. Applying the isomorphism (T.7) gives the third.
+
+Finally, reducing every integer cochain value modulo two commutes with the differential, pullback and cup formula because they use only finite sums and products. The reduced integral Thom class evaluates to \(1\) on each mod-two fibre generator: the latter is represented by the reduction of the same cube cycle \(Q_r\) from O.1. Uniqueness in T.3 identifies it with the mod-two Thom class. Applying the zero-section and relative-forgetting pullbacks then proves the same reduction assertion for the Euler class. These arguments include rank zero with its canonical unit. □
 
 ## 8. Euler indices and the sphere
 
@@ -1379,8 +1409,8 @@ Finally define the Euler characteristic here by the alternating sum of the dimen
 The following exact free author versions supplied construction material. The arguments used by this chapter are written out above, including the auxiliary algebra and chain identities. External references do not replace those proofs.
 
 - Jiří Lebl, *Basic Analysis II*, [author source version 6.3](https://api.github.com/repos/jirilebl/ra/zipball/v6.3), determinant subsection of the linear-algebra review. Section 1 gives the permutation-sign, alternating-multilinear, product, transpose and invertibility arguments in full.
-- Allen Hatcher, *Algebraic Topology*, free author electronic [Chapter 2](https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf) 149–150 and 152–153: singular chains, homotopy, subdivision, excision and Mayer–Vietoris.
-- Hatcher, the same free author electronic [Chapter 3](https://pi.math.cornell.edu/~hatcher/AT/ATch3.pdf) 206–207 and 233–239: cochains, coefficient algebra, cup products, local orientations and compact-support gluing.
+- Allen Hatcher, *Algebraic Topology*, free author electronic [Chapter 2](https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf), printed pages 108–124, 149–150 and 152–153: singular chains, homotopy, subdivision, excision and Mayer–Vietoris.
+- Hatcher, the same free author electronic [Chapter 3](https://pi.math.cornell.edu/~hatcher/AT/ATch3.pdf), printed pages 185–199, 206–207 and 233–239: cochains, coefficient algebra, cup products, local orientations and compact-support gluing.
 - Hatcher, free author electronic [additional Chapter 3 topics](https://pi.math.cornell.edu/~hatcher/AT/ATch3.4.pdf), printed pages 277–280: products of chains. Section 5 supplies the chain identities and the inverse homotopies.
 - Hatcher, free author electronic [additional Chapter 4 topics](https://pi.math.cornell.edu/~hatcher/AT/ATch4.4.pdf), Section 4.D, printed pages 432–434 and 440–444: local-to-global constructions and the Thom isomorphism. Section 7 gives the complete finite-cover and compact-chain argument used here.
 - Hatcher, [free author manuscript *Vector Bundles and K-Theory*, version 2.2](https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf), Section 3.2, printed pages 88 and 91–92: the Euler class defined from the Thom class and its elementary properties.

@@ -15,6 +15,8 @@ organization, proofs, checks, and exercises here are independently written.
 
 ## Compatible pairs, intersections, and sums
 
+The quotient-completeness step below uses the full Banach-space proof in CP05; it is not restricted to operator preduals.
+
 A **compatible pair** is a pair \(\mathbf X=(X_0,X_1)\) of complex Banach spaces
 with continuous injective linear maps into one Hausdorff topological vector space
 \(\mathcal V\). We identify each endpoint with its image. This identification
@@ -228,6 +230,8 @@ implicit: interior convergence takes place in \(\Sigma(\mathbf X)\), while the
 stronger endpoint norms control the boundary.
 
 ## Evaluation spaces and quotient completeness
+
+The closed-kernel quotient used here is complete by CP05, applied to the complete strip space proved above.
 
 Fix \(0<\theta<1\). Define
 

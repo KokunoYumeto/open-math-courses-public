@@ -124,6 +124,6 @@ checks.append('all orientation-reversed transgression coefficients')
 eq('actual connected-sum Euler counterexample',1+1-2+1+1,2)
 W=Path(__file__).resolve().parents[1];source=W/'src/integral-homology-and-sphere-recognition.md'
 out=dict(source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),passed=len(checks),checks=checks,
- limitations='Exact algebra checks for the current draft, not certification of topology or completion of the seventh lesson.')
+ limitations='Finite algebra checks supplement the written integral proof; they do not independently certify the topology or the smooth-recognition argument.')
 (W/'checks/INTEGRAL_HOMOLOGY_CHECKS.json').write_text(json.dumps(out,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':len(checks),'source_sha256':out['source_sha256']}))

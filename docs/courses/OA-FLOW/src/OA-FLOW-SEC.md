@@ -1,6 +1,6 @@
 # Integrating graded sections
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
+*Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.*
 
 An operator-valued function can vary continuously on every Hilbert-space vector while its values remain a fixed distance apart in operator norm. Such functions occur naturally when the degree of a graded operator varies. We build an integration theory that includes them: normal functionals determine the operator integral, vector integrals control continuity, and scalar norm estimates make the resulting convolution algebra complete.
 

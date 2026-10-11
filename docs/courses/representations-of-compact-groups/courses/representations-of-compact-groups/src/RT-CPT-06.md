@@ -84,7 +84,7 @@ For another maximal abelian subalgebra \(\mathfrak t'\), choose a regular \(Y'\i
 
 ## Why every element has a logarithm
 
-We use [*Riemannian connections and convex neighbourhoods*, Theorem 2.1](course:DG-FND/riemannian-connections-and-convex-neighbourhoods#section-2), the complete Levi–Civita and Koszul proof, and [*Completeness and the Hopf–Rinow theorem*, Theorem 3.1 and Corollary 3.2](course:DG-FND/completeness-and-the-hopf-rinow-theorem#section-3). The latter proves all four completeness equivalences for every connected Riemannian manifold, as well as minimizing geodesics and compact-manifold completeness. In the present setting their use is as follows. An \(\operatorname{Ad}(G)\)-invariant positive inner product on \(\mathfrak g\), translated on the left, defines a bi-invariant Riemannian metric. For this metric the Levi–Civita connection on left-invariant vector fields satisfies
+We use [*Riemannian connections and convex neighbourhoods*, Theorem A.1](course:DG-FND/riemannian-connections-and-convex-neighbourhoods#theorem-a-1), the complete Levi–Civita and Koszul proof, and [*Completeness and the Hopf–Rinow theorem*, Theorem B.2 and Corollary B.3](course:DG-FND/completeness-and-the-hopf-rinow-theorem#theorem-b-2). The latter proves all four completeness equivalences for every connected Riemannian manifold, as well as minimizing geodesics and compact-manifold completeness. In the present setting their use is as follows. An \(\operatorname{Ad}(G)\)-invariant positive inner product on \(\mathfrak g\), translated on the left, defines a bi-invariant Riemannian metric. For this metric the Levi–Civita connection on left-invariant vector fields satisfies
 \[
 \nabla_XY=\tfrac12[X,Y], \tag{3.1}
 \]

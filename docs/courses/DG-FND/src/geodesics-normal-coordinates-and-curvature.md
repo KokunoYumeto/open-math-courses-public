@@ -596,59 +596,80 @@ Finally this does not contradict the analytic assertion of D.2. The function \(f
 
 ## F. Three geometries with explicit geodesics
 
-The first example uses the connection specified in the historical coverage checklist; all its calculations are made below from the derivative axioms. The torus construction is already proved in [Curvature D.3](curvature-and-holonomy-groups.md). For the sphere we use Michor's exact free [author manuscript, §25.7](https://www.mat.univie.ac.at/~michor/dgbook.pdf), together with the complete sphere and projection-connection proofs in DG-CHAR-17 V.5 and [Linear G.2](linear-and-affine-connections.md). We use colatitude \(0<\theta<\pi\), with longitude restricted to an interval of length less than \(2\pi\) when a coordinate chart is needed.
+The first example derives all constant-coefficient plane connections with straight, affinely parametrized geodesics. The starting point is the relation between a connection and its quadratic geodesic equation in Michor's [free author manuscript, §§22.6–22.8](https://www.mat.univie.ac.at/~michor/dgbook.pdf), with complete programme proofs in A.1 and Linear A.3. The torus construction is already proved in [Curvature D.3](curvature-and-holonomy-groups.md). For the sphere we use Michor's §25.7 and the complete sphere and projection-connection proofs in DG-CHAR-17 V.5 and [Linear G.2](linear-and-affine-connections.md). We use colatitude \(0<\theta<\pi\), with longitude restricted to an interval of length less than \(2\pi\) when a coordinate chart is needed.
 
-**Example F.1 (straight geodesics with nonzero torsion and curvature).** On \(\mathbb R^2\), with \(e_1=\partial_x,e_2=\partial_y\), prescribe
+**Example F.1 (straight geodesics with nonzero torsion and curvature).** Write \(D\) for ordinary differentiation on \(\mathbb R^2\), and put
+\(\epsilon(X,Y)=X^1Y^2-X^2Y^1\). Exactly the connections
 \[
-\nabla_{e_1}e_2=e_1,\qquad
-\nabla_{e_2}e_1=-e_1,\qquad
-\nabla_{e_1}e_1=\nabla_{e_2}e_2=0.
+\nabla^v_XY=D_XY+\epsilon(X,Y)v,\qquad v=(a,b)\in\mathbb R^2
 \tag{F.1}
 \]
-Every maximal geodesic is \(\gamma_v(t)=p+tv\), on all of \(\mathbb R\), and \(\exp_p(v)=p+v\). Nevertheless
+have constant coefficients and all affinely parametrized straight lines as geodesics. Every maximal geodesic is \(p+tu\), for all real \(t\), and \(\exp_p(u)=p+u\). Define the constant endomorphism
 \[
-\mathcal T(e_1,e_2)=2e_1,\qquad
-R(e_1,e_2)=N=\begin{pmatrix}0&1\\0&0\end{pmatrix}\ne0.
+N_vu=\epsilon(v,u)v,\qquad
+N_v=\begin{pmatrix}-ab&a^2\\-b^2&ab\end{pmatrix}.
+\]
+Then
+\[
+\mathcal T(X,Y)=2\epsilon(X,Y)v,\qquad
+R(X,Y)=\epsilon(X,Y)N_v,\qquad
+\nabla^v\mathcal T=\nabla^vR=0.
 \tag{F.2}
 \]
-Both tensors are parallel. Full, restricted, local and infinitesimal holonomy at any point, in the coordinate frame, are \(\{I+tN:t\in\mathbb R\}\).
+If \(v\ne0\), both tensors are nonzero, and full, restricted, local and infinitesimal holonomy in the coordinate frame are
+\(\{I+tN_v:t\in\mathbb R\}\). For \(v=0\) the connection is \(D\) and all these groups are trivial.
 
-**Proof.** The matrices of (F.1) are \(A_1=N\) and \(A_2=\operatorname{diag}(-1,0)\); Linear A.1 constructs the connection. For \(v=(a,b)\),
+**Proof.** By Linear A.3, a constant-coefficient connection is uniquely \(D+B\), where \(B\) is a fixed bilinear map \(\mathbb R^2\times\mathbb R^2\to\mathbb R^2\). A.1 gives the geodesic equation
+\(\ddot\gamma+B(\dot\gamma,\dot\gamma)=0\).
+Thus every affinely parametrized straight line is a geodesic precisely when \(B(u,u)=0\) for every \(u\). Expanding \(B(x+y,x+y)=0\) gives \(B(x,y)=-B(y,x)\). With \(e_1=(1,0)\), \(e_2=(0,1)\), set \(v=B(e_1,e_2)\). Bilinearity and the two zero diagonal values now give
 \[
-(aA_1+bA_2)v
-=\begin{pmatrix}-b&a\\0&0\end{pmatrix}
- \begin{pmatrix}a\\b\end{pmatrix}=0.
+B(X,Y)=(X^1Y^2-X^2Y^1)v.
 \]
-Thus A.1's geodesic equation is ordinary zero acceleration. Local 0.3 gives precisely \(p+tv\), and this curve exists for all time. Uniqueness and maximality in A.1 prove the first assertions, including the full exponential domain. The coordinate chart centred at any \(p\) is therefore a normal chart although its coefficients are nonzero.
+Conversely this formula is alternating, so it gives the required zero quadratic term. This proves the classification and constructs every connection in (F.1) by Linear A.3. The equation is now \(\ddot\gamma=0\); the constant-derivative statement in Local 0.3 yields \(\gamma(t)=p+tu\). It exists on all of \(\mathbb R\), is the unique solution by A.1, and gives the exponential by A.2.
 
-Linear D.1 gives
-\(\mathcal T_{12}=A_1e_2-A_2e_1=2e_1\).
-The coefficient matrices are constant and
-\([A_1,A_2]=N\); C.1 gives (F.2). To check parallelism, use the full tensor formulas from C.1 and E.2. Since these tensors are alternating in two arguments on a two-dimensional space, it suffices to check the pair \((e_1,e_2)\) in each coordinate direction. They give
+In the coordinate frame the potential \(A_X\) is \(u\mapsto\epsilon(X,u)v\), so
 \[
-\begin{aligned}
-(\nabla_1\mathcal T)_{12}
- &=A_1(2e_1)-\mathcal T(0,e_2)-\mathcal T(e_1,e_1)=0,\\
-(\nabla_2\mathcal T)_{12}
- &=-2e_1-\mathcal T(-e_1,e_2)-\mathcal T(e_1,0)=0,\\
-(\nabla_1R)_{12}
- &=[N,N]-R(0,e_2)-R(e_1,e_1)=0,\\
-(\nabla_2R)_{12}
- &=[A_2,N]-R(-e_1,e_2)-R(e_1,0)=-N+N=0.
-\end{aligned}
+A_1=\begin{pmatrix}0&a\\0&b\end{pmatrix},\qquad
+A_2=\begin{pmatrix}-a&0\\-b&0\end{pmatrix},\qquad
+[A_1,A_2]=N_v,\qquad N_v^2=0.
 \tag{F.3}
 \]
-The derivative preserves alternation by Linear C.1, justifying the reduction to that pair. Thus \(\nabla\mathcal T=\nabla R=0\).
+Multiplying the displayed matrices proves the commutator identity. The last identity follows also from \(\epsilon(v,v)=0\). Linear D.1 gives
+\(\mathcal T(e_1,e_2)=A_1e_2-A_2e_1=2v\).
+The constant coefficients and C.1 give \(R(e_1,e_2)=[A_1,A_2]\). Alternation and bilinearity give (F.2) for arbitrary inputs.
 
-All higher covariant derivatives of \(R\) vanish, while the values of \(R\) span \(\mathbb RN\) at every point. The rank is constantly one, so D.2 makes the infinitesimal, local and restricted groups the connected immersed subgroup with that algebra. It is the displayed shear group: \(N^2=0\) gives \((I+sN)(I+tN)=I+(s+t)N\), the upper-right entry is a smooth inverse parameter, and its tangent algebra is \(\mathbb RN\). Uniqueness of the connected subgroup is Flat A.1. Every loop in \(\mathbb R^2\) contracts by the linear homotopy to its base point. Curvature C.5 therefore makes full holonomy equal to restricted holonomy here.
-
-As a concrete instance of D.3, write \(V=N^\#\), \(H_1=B(e_1)\), \(H_2=B(e_2)\) on the reachable reduction. They form a frame with
+We check the full tensor derivatives, including their input slots. For any \(2\)-by-\(2\) matrix \(L\), expansion in its four entries gives
 \[
-[V,H_1]=0,\qquad [V,H_2]=H_1,\qquad
-[H_1,H_2]=-V-2H_1.
+\epsilon(LY,Z)+\epsilon(Y,LZ)=(\operatorname{tr}L)\epsilon(Y,Z).
+\]
+For a constant vector \(X\), put \(c=\epsilon(X,v)\). Directly from \(A_Xu=\epsilon(X,u)v\), one has
+\(\operatorname{tr}A_X=c\), \(A_Xv=cv\),
+\(A_XN_v=cN_v\), and \(N_vA_X=0\).
+All coordinate components of \(\mathcal T,R\) are constant. The tensor rule of Linear C.1 therefore yields
+\[
+\begin{aligned}
+(\nabla_X\mathcal T)(Y,Z)
+ &=2\epsilon(Y,Z)A_Xv
+   -2\bigl(\epsilon(A_XY,Z)+\epsilon(Y,A_XZ)\bigr)v=0,\\
+(\nabla_XR)(Y,Z)
+ &=\epsilon(Y,Z)[A_X,N_v]
+   -\bigl(\epsilon(A_XY,Z)+\epsilon(Y,A_XZ)\bigr)N_v=0.
+\end{aligned}
+\]
+Checking constant coordinate vectors suffices because these derivatives are tensors. This proves both parallelism assertions.
+
+Suppose \(v\ne0\). If \(a\ne0\), the entry \(a^2\) of \(N_v\) is nonzero; if \(a=0\), then \(b\ne0\) and its entry \(-b^2\) is nonzero. Since \(R\) is parallel, Linear C.1 identifies every curvature value transported back to a base point with \(R\) evaluated there on the transported vectors. Its values span exactly \(\mathbb RN_v\). D.1 consequently gives that restricted holonomy algebra. All higher full covariant derivatives of \(R\) vanish, so D.2 gives the same infinitesimal algebra at every point, of constant dimension one, and identifies the infinitesimal, local and restricted groups.
+
+The matrices \(I+tN_v\) form a connected one-dimensional matrix Lie group: their multiplication adds parameters, their inverse is \(I-tN_v\), and a nonzero matrix entry of \(N_v\) supplies a smooth inverse coordinate on this line. Its Lie algebra is \(\mathbb RN_v\). Uniqueness of the connected immersed subgroup in Flat A.1 therefore identifies each of the three connected holonomy groups with this group. Every based loop \(\lambda\) in \(\mathbb R^2\) contracts by \(p+(1-s)(\lambda(t)-p)\); thus full holonomy equals restricted holonomy by Curvature C.5. If \(v=0\), the transport equation is ordinary constant transport and all groups are trivial.
+
+Finally take \(v\ne0\), use the standard coordinate frame at the base point of the holonomy bundle, and put \(V=N_v^\#\), \(H_i=B(e_i)\), \(H_v=aH_1+bH_2\). The constants in D.3 are \(t(e_1,e_2)=2v\), \(r(e_1,e_2)=N_v\). Substitution in its proved bracket formula gives
+\[
+[V,H_1]=-bH_v,\qquad
+[V,H_2]=aH_v,\qquad
+[H_1,H_2]=-V-2H_v.
 \tag{F.4}
 \]
-These follow by substituting (F.2) into (D.9). Straight geodesics alone therefore determine neither torsion, curvature nor this frame algebra. □
+These are three frame fields on the reachable reduction by D.3. Thus the same straight geodesics and exponential maps coexist with nonzero parallel torsion, curvature and this frame algebra. □
 
 **Example F.2 (the complete flat torus).** The ordinary derivative on \(\mathbb R^n\) descends to \(\mathbb T^n=\mathbb R^n/\mathbb Z^n\). Identify each tangent space with \(\mathbb R^n\) by its descended coordinate frame. Then
 \[

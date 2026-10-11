@@ -1,6 +1,6 @@
 # Natural cones for arbitrary faithful normal semifinite weights
 
-*Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Inner products are linear in the first variable. Let \(\varphi\) be a faithful normal semifinite weight on an arbitrary von Neumann algebra \(M\). Use its actual [GW](OA-FLOW-GW.md#oa-flow.gw.1), [NF](OA-FLOW-NF.md#oa-flow.nf.5), [WR](OA-FLOW-WR.md#oa-flow.wr.4) and [MW](OA-FLOW-MW.md#oa-flow.mw.1) construction. Identify \(M\) with its faithful normal GNS image on \(H\), using [ST-2](OA-FLOW-ST12.md#oa-flow.st.2). Put \(N=N_\varphi\), \(\mathcal A=\Lambda(N\cap N^*)\), \(S=J\Delta^{1/2}\), \(F=S^*=J\Delta^{-1/2}\), and \(j(x)=JxJ\). All domains and full bounded-vector identifications are those of WR, [HA-R](OA-FLOW-HA-R.md#oa-flow.ha-r.4) and [WH-04, Sections 2–4](OA-FLOW-WH04.md#oa-flow.wh04.2).
 

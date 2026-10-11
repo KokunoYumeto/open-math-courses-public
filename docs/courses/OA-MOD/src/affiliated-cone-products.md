@@ -392,7 +392,7 @@ It is a bounded positive functional by self-duality of \(P\). It is normal as we
 \(\Delta^{1/2}v_i=J(x-x_i)\alpha\to0\).
 The spectral inequality
 \(\|\Delta^{1/4}v_i\|^2\le\|v_i\|\|\Delta^{1/2}v_i\|\)
-therefore gives \(\psi(x_i)\to\psi(x)\). This is the positive normality criterion of CP07.
+therefore gives \(\psi(x_i)\to\psi(x)\). This is the positive normality criterion of NP02.
 Let \(\zeta\in P\) be its unique implementing vector, supplied by SF10. Set
 
 \[

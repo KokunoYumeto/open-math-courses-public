@@ -1,6 +1,6 @@
 # A continuous spectrum for an integrable abelian action
 
-*Self-checked by the writing AI.*
+
 
 A group action on an abelian von Neumann algebra can be realized by homeomorphisms of a locally compact space. The construction below chooses a countable family of positive elements with bounded orbit averages, smooths their orbits, and takes the spectrum of the resulting C* algebra. A faithful normal state then supplies the measure. We prove the normal identification with the entire measurable-function algebra, including the action and its full bounded averaging domain.
 

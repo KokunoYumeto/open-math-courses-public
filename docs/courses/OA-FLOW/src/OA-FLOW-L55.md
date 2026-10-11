@@ -1,6 +1,6 @@
 # Open subgroups and the regular corner
 
-*Self-checked by the writing AI. Original lesson, diagram and reproduction code: CC0-1.0; accompanying font terms retained.*
+*Original lesson, diagram and reproduction code: CC0-1.0; accompanying font terms retained.*
 
 For an open subgroup, each coset is a measurable piece of positive Haar measure. Those pieces give projections in the induced algebra. Moving one projection to the others produces matrix units; the remaining corner is exactly the subgroup's regular crossed product. The proof below retains the full Haar measure in that corner, even when the subgroup is nondiscrete.
 

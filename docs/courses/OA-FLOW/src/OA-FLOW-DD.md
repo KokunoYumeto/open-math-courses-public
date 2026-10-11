@@ -1,6 +1,6 @@
 # Discrete decomposition exists for every separable-predual type III lambda factor
 
-*Original synthesis and full-domain spectral proof, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 The starting data are a nonzero von Neumann factor \(M\) with separable predual, of type III, and a number \(0<\lambda<1\) such that
 

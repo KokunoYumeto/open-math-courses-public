@@ -5,7 +5,7 @@ A single normal state can send a tensor unitary to zero. A family of separating 
 
 Throughout, \(M_i\ne0\) is a concrete von Neumann algebra on an arbitrary complex Hilbert space \(H_i\), with identity \(1_{H_i}\), and \(\sigma_i\) is an algebraic unital star automorphism of \(M_i\). Thus \(H_i\ne0\). For the single-algebra statements, \(N\ne0\) is a concrete von Neumann algebra on an arbitrary Hilbert space \(K\), with automorphism \(\sigma\). Inner products are linear in the first variable. An automorphism is inner if it has the form \(x\mapsto v x v^*\) for a unitary \(v\) in the actual algebra. A central corner \(zN\) has identity \(z\); its implementing unitary satisfies \(v^*v=vv^*=z\). There is no factor, separability, countability, sigma-finiteness or faithful-normal-state assumption. Arbitrary orthogonal sums below mean nets over finite subsets.
 
-*Self-checked by the writing AI. Original exposition and illustrations: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
+*Original exposition and illustrations: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
 
 ## Exact earlier inputs
 

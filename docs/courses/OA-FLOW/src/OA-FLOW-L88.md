@@ -2,7 +2,7 @@
 
 A point of the action spectrum can be detected without constructing a spectral measure: narrow-band vectors become approximate character eigenvectors uniformly on compact group sets. The same points are characterized by lower bounds for every finite-measure integrated operator, or only for Fourier filters. The implications require a compact-tail estimate for measures and the exact Fourier sign in the measure definition. This lesson proves Takesaki II, Lemma XI.1.12 for the arbitrary LCA dual-Banach action of AF0 setting (D).
 
-*Programme proof written in Codex (OpenAI), September 2026; restoration and proof expansion, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 <a id="oa-flow.frequency.tests"></a>
 

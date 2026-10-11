@@ -3,11 +3,11 @@
 
 # Cocycle matrix actions and the representation continuity test
 
-A norm-continuous action on a C\*-algebra need not become a continuous normal action in every representation. We first state that representation test and prove a concrete obstruction in the universal representation of \(C_0(\mathbb R)\). Shrinking bumps converge strongly to nonzero atomic projections, but translating the limiting projection makes a normal vector functional jump.
+A norm-continuous action on a C\*-algebra need not become a continuous normal action in every representation. We prove that quasi-equivalence of the translated representations gives a continuous normal action on every separable represented Hilbert space. Haar averages turn measurable scalar orbits into norm-continuous predual orbits. We then prove a concrete obstruction in the universal representation of \(C_0(\mathbb R)\). Shrinking bumps converge strongly to nonzero atomic projections, but translating the limiting projection makes a normal vector functional jump.
 
 The final construction puts a unitary cocycle into a \(2\times2\) matrix action. Its two fixed diagonal corners carry the original and perturbed actions; the general equivalent-fixed-corner theorem then transfers their Connes spectra. Continuity of this action is proved directly in the concrete predual.
 
-*Restored local proof, 5 October 2026. Spot-checked in a separate AI session. The concluding Connes-spectrum application uses the exact earlier canonical GCC proof. Original exposition, new proofs and illustration are CC0-1.0 to the extent of rights held.*
+*The concluding Connes-spectrum application uses the exact earlier canonical GCC proof. Original exposition, new proofs and illustration are CC0-1.0 to the extent of rights held.*
 
 <a id="oa-flow.l112.inputs"></a>
 
@@ -116,6 +116,186 @@ then \(\widetilde\alpha_t=\operatorname{Ad}(U_t)|_P\) supplies (M16). The earlie
 Here is the exact density and topology argument. Nondegeneracy puts the essential support at \(1_{\mathcal H}\). BD4 gives, for each \(x\in P\), a uniformly bounded strong-star net from \(\pi(A)\) converging to \(x\), and BD5/CP4 turns it into an ultraweakly convergent net. Thus two normal extensions agreeing on \(\pi(A)\) agree on all of \(P\). Applying an extension and its inverse to \(\pi(a)=0\) proves invariance of the kernel.
 
 For (M18), unitary conjugation carries \(\pi(A)\) onto itself and hence carries its bicommutant onto itself: conjugating a commutation equation gives the corresponding commutation equation. The earlier full predual estimate supplies its normality and continuity on all of \(P\), not only on the C\*-generators.
+
+<a id="oa-flow.l112.qi1"></a><a id="cm-quasi-equivalence"></a>
+## Quasi-equivalence gives measurable scalar orbits
+
+For representations \(\pi_1,\pi_2\) of the same C*-algebra, **quasi-equivalence** means that there is a normal star isomorphism, with normal inverse, from \(\pi_1(A)''\) onto \(\pi_2(A)''\) taking \(\pi_1(a)\) to \(\pi_2(a)\) for every \(a\). This specifies the generator correspondence, not just an abstract isomorphism between the two algebras.
+
+**Lemma QI1.** Suppose \(\pi\) is nondegenerate on a nonzero separable Hilbert space \(\mathcal H\), and \(\pi\circ\alpha_s\) is quasi-equivalent to \(\pi\) for every \(s\in G\). There is a unique algebraic action \(\beta\) by normal automorphisms of \(P=\pi(A)''\) such that
+\[
+ \beta_s(\pi(a))=\pi(\alpha_s(a)).
+ \tag{QI1}
+\]
+For every \(x\in P\) and \(\omega\in P_*\), the function \(s\mapsto\omega(\beta_s(x))\) is Borel measurable. No separability of \(A\), second countability of \(G\), or commutativity of \(G\) is needed.
+
+**Proof.** Since \(\alpha_s(A)=A\), the two represented ranges have the same bicommutant. The normal isomorphism in the definition therefore gives \(\beta_s:P\to P\). Its uniqueness follows from the bounded density argument preceding (M18). On \(\pi(A)\), the maps \(\beta_s\beta_t\) and \(\beta_{st}\) agree, and both are normal. Thus they agree on \(P\). The same argument gives \(\beta_e=\mathrm{id}\) and \(\beta_s^{-1}=\beta_{s^{-1}}\).
+
+Choose a countable dense sequence \((\xi_j)\) in \(\mathcal H\). For any \(x\in P\), [BD4](OA-FLOW-BD.md#oa-flow.bd.4) supplies \(a_n\in A\) such that \(\|\pi(a_n)\|\leq\|x\|\) and
+\[
+ \|(\pi(a_n)-x)\xi_j\|+
+ \|(\pi(a_n)^*-x^*)\xi_j\|<1/n
+ \quad(1\leq j\leq n).
+ \tag{QI2}
+\]
+For \(x=0\), take \(a_n=0\). For other \(x\), rescale the contraction approximation. The uniform bound and approximation of each vector by some \(\xi_j\) prove strong-star convergence \(\pi(a_n)\to x\). [BD5](OA-FLOW-BD.md#oa-flow.bd.5) makes this ultraweak convergence. Normality of each fixed \(\beta_s\) gives
+\[
+ \omega(\beta_s(x))
+   =\lim_{n\to\infty}\omega(\pi(\alpha_s(a_n))).
+ \tag{QI3}
+\]
+Every function on the right is continuous, because the original action is point-norm continuous and the representation and functional are bounded. A pointwise limit of a sequence of continuous complex functions is Borel measurable. Inversion is continuous on \(G\), so the same holds with \(s^{-1}\) in place of \(s\). This is where the bounded approximation must be a sequence rather than an arbitrary net. \(\square\)
+
+We will also use two direct consequences of the same countability assumption. Choose a dense sequence of unit vectors \((\eta_j)\). Then
+\[
+ \varphi(x)=\sum_{j\geq1}2^{-j}\langle x\eta_j,\eta_j\rangle
+ \tag{QI4}
+\]
+is a faithful normal state on \(P\). [CP6](OA-FLOW-CP.md#oa-flow.cp.6) proves normality of this summable vector series. If \(x\geq0\) has value zero, \(x^{1/2}\eta_j=0\) for every \(j\), and density gives \(x=0\).
+
+Moreover \(P_*\) is norm separable. [CP4–6](OA-FLOW-CP.md#oa-flow.cp.4) represents every normal functional by a norm-convergent sum of vector coefficients. Truncate the sum, approximate its finitely many vectors by a fixed countable dense vector set, and approximate the finitely many scalar coefficients by rational complex numbers. The estimate
+\[
+ \|\omega_{\xi,\eta}-\omega_{\xi',\eta'}\|
+ \leq\|\xi-\xi'\|\,\|\eta\|+\|\xi'\|\,\|\eta-\eta'\|
+ \tag{QI5}
+\]
+makes these finite rational combinations a countable norm-dense set.
+
+<a id="oa-flow.l112.qi2"></a><a id="cm-normal-smoothing"></a>
+## Averaging gives normal functionals, including on increasing nets
+
+Use left Haar measure \(dt\), and set \(T_s\omega=\omega\circ\beta_{s^{-1}}\). These are linear isometries of \(P_*\), with
+\[
+ T_sT_t=T_{st}.
+ \tag{QI6}
+\]
+Indeed, composition on the right reverses the two inverse parameters. Define, initially for \(f\in C_c(G)\) and \(\omega\in P_*\),
+\[
+ \Omega_{f,\omega}(x)
+   =\int_G f(t)\,\omega(\beta_{t^{-1}}(x))\,dt.
+ \tag{QI7}
+\]
+QI1 gives scalar measurability, and \(|\omega(\beta_{t^{-1}}(x))|\leq\|\omega\|\|x\|\), so this is an absolutely convergent scalar integral and
+\[
+ \|\Omega_{f,\omega}\|\leq\|f\|_1\|\omega\|.
+ \tag{QI8}
+\]
+We do not presume that \(t\mapsto T_t\omega\) is norm measurable or already continuous.
+
+**Lemma QI2.** The functional \(\Omega_{f,\omega}\) belongs to \(P_*\). Furthermore
+\[
+ T_s\Omega_{f,\omega}=\Omega_{L_sf,\omega},
+ \qquad L_sf(t)=f(s^{-1}t),
+ \tag{QI9}
+\]
+and
+\[
+ \|T_s\Omega_{f,\omega}-\Omega_{f,\omega}\|
+ \leq\|L_sf-f\|_1\|\omega\|\longrightarrow0
+ \quad(s\to e).
+ \tag{QI10}
+\]
+
+**Proof.** First take \(f\geq0\) and \(\omega\geq0\). The integral is positive. For a bounded increasing positive sequence \(x_n\uparrow x\), normality of each \(\beta_{t^{-1}}\) and \(\omega\), followed by scalar monotone convergence, gives
+\(\Omega_{f,\omega}(x_n)\uparrow\Omega_{f,\omega}(x)\). Scalar monotone convergence is [SC4](OA-FLOW-SC.md#sc-04).
+
+Here is the additional step for an arbitrary bounded increasing positive net \(x_i\uparrow x\). Normality of the faithful state \(\varphi\) from (QI4) gives \(\varphi(x_i)\uparrow\varphi(x)\). Choose indices \(i_n\), increasing in the directed set, with
+\(\varphi(x-x_{i_n})<1/n\). This is possible by directedness and the scalar supremum. Let \(y=\sup_n x_{i_n}\). Bounded increasing positive operators have their strong supremum in \(P\); it lies below \(x\). Normality of \(\varphi\) and the displayed bounds give \(\varphi(x-y)=0\), so faithfulness makes \(y=x\). Applying the sequential conclusion yields
+\[
+ \sup_i\Omega_{f,\omega}(x_i)
+ \geq\sup_n\Omega_{f,\omega}(x_{i_n})
+ =\Omega_{f,\omega}(x).
+\]
+Positivity gives the opposite inequality. Thus the functional preserves all bounded increasing positive suprema. [NF1–4](OA-FLOW-NF.md#oa-flow.nf.4) proves that such a bounded positive functional is ultraweakly continuous. Hence it belongs to \(P_*\).
+
+For general \(\omega\), polarize the square-summable vector series in CP4–6. The identity, with inner products linear in the first variable,
+\[
+ \langle x\xi,\eta\rangle
+ =\frac14\sum_{k=0}^3 i^k
+       \langle x(\xi+i^k\eta),\xi+i^k\eta\rangle
+ \tag{QI11}
+\]
+expresses it as a linear combination of four positive normal vector-series functionals: each of the four squared-norm sums is finite. Decompose the real and imaginary parts of \(f\) into positive and negative parts, still in \(C_c(G)\). Linearity reduces (QI7) to the positive case.
+
+Finally,
+\[
+ \begin{aligned}
+ (T_s\Omega_{f,\omega})(x)
+ &=\int_G f(t)\,
+       \omega(\beta_{t^{-1}}\beta_{s^{-1}}(x))\,dt\\
+ &=\int_G f(t)\,
+       \omega(\beta_{(st)^{-1}}(x))\,dt
+ =\Omega_{L_sf,\omega}(x).
+ \end{aligned}
+\]
+The last substitution is \(r=st\), so left invariance introduces no modular factor. Inequality (QI8) gives (QI10), and the full left-translation continuity is proved in [L24 Lemma 3.1](OA-FLOW-L24.md#oa-flow.grp.translations). Thus every averaged functional has a norm-continuous orbit before continuity has been established for general normal functionals. \(\square\)
+
+<a id="oa-flow.l112.qi3"></a><a id="cm-quasi-invariant-criterion"></a>
+## The averages determine the entire predual
+
+**Theorem QI3.** Let \((A,G,\alpha)\) be a point-norm continuous C*-covariant system with arbitrary LCH group \(G\). Let \(\pi\) be a nondegenerate representation on a separable Hilbert space. Then the following are equivalent:
+
+1. For every \(s\in G\), the representations \(\pi\circ\alpha_s\) and \(\pi\) are quasi-equivalent.
+2. There is a point-ultraweakly continuous action by normal automorphisms of \(P=\pi(A)''\) satisfying (M17).
+
+The action is unique, and all its predual orbits are norm continuous. There is no separability assumption on \(A\), no countability assumption on \(G\), and no abelian hypothesis.
+
+**Proof.** The zero Hilbert space gives only the zero represented algebra, where the assertions have their unique zero interpretation. Otherwise QI1 and QI2 apply to the algebraic action obtained from condition 1.
+
+Let \(\mathcal E\) be the linear span of all \(\Omega_{f,\omega}\). We prove that its norm closure is \(P_*\). If the closure were proper, [CF1's complex Hahn–Banach theorem](OA-FLOW-CF.md#OA-FLOW.CF.1) would give a nonzero bounded functional on \(P_*\) vanishing there. [CP6](OA-FLOW-CP.md#oa-flow.cp.6) identifies that functional with evaluation at a nonzero \(x\in P\).
+
+Choose a countable norm-dense family \((\omega_n)\) in the unit ball of \(P_*\), available from (QI5). For each \(n\), the bounded Borel function
+\[
+ h_n(t)=\omega_n(\beta_{t^{-1}}(x))
+ \tag{QI12}
+\]
+has zero integral against every \(f\in C_c(G)\). [HR3](OA-FLOW-HR.md#hr-03) makes \(C_c(G)\) dense in \(L^1(G)\). Since \(h_n\) is bounded, approximation therefore gives
+\(\int_E h_n\,dt=0\) for every measurable finite-measure set \(E\).
+
+Fix one nonempty relatively compact open set \(V\subseteq G\). Haar measure is finite on its compact closure and positive on \(V\), by [HR6](OA-FLOW-HR.md#hr-06). Apply the preceding integral identity to the positive and negative level sets of the real and imaginary parts of \(h_n\) inside \(V\). It follows that \(h_n=0\) almost everywhere on \(V\). The union of these exceptional null sets over all \(n\) is still null. At some \(t\in V\) outside it, every \(\omega_n\) annihilates \(\beta_{t^{-1}}(x)\). Norm density and CP6 duality force \(\beta_{t^{-1}}(x)=0\), contradicting invertibility and \(x\ne0\). This proves the norm density of \(\mathcal E\). The argument used only one finite-measure open set, so it requires no sigma compactness or global countable exhaustion of \(G\).
+
+Each element of \(\mathcal E\) has a norm-continuous orbit by QI2. For \(\omega\in P_*\) and \(\eta\in\mathcal E\), isometry gives
+\[
+ \|T_s\omega-\omega\|
+ \leq2\|\omega-\eta\|+\|T_s\eta-\eta\|.
+ \tag{QI13}
+\]
+First choose \(\eta\) close to \(\omega\), then let \(s\to e\). Continuity at other parameters follows from \(T_sT_t=T_{st}\) and isometry. Consequently
+\[
+ |\omega(\beta_s(x)-\beta_t(x))|
+ \leq\|x\|\,
+       \|T_{s^{-1}}\omega-T_{t^{-1}}\omega\|
+ \longrightarrow0\quad(s\to t),
+ \tag{QI14}
+\]
+which proves condition 2 on all of \(P\). Conversely, the normal automorphism \(\beta_s\) supplied by condition 2 is exactly the generator-preserving isomorphism in the definition of quasi-equivalence. Uniqueness was proved in QI1. \(\square\)
+
+<figure style="margin-left:0;margin-right:0">
+<div style="max-width:100%;overflow-x:auto">
+<img src="../assets/quasi-invariant-extension/predual-smoothing.svg" alt="The proof passes from bounded sequential approximation to measurable scalar orbits, then to normal Haar averages with continuous norm orbits, and finally to all predual functionals by norm density. The increasing-net normality step and the single finite-measure open set are shown separately." style="min-width:700px;width:100%;max-width:960px" />
+</div>
+<figcaption>QI1–QI3 identify where countability enters: approximation and separating tests belong to the represented algebra, while the Haar argument needs only one relatively compact open set. The arrows describe proved implications, not a claim that an arbitrary pointwise limit preserves continuity. <a href="../assets/quasi-invariant-extension/predual-smoothing.svg">Open the full diagram</a>. <a href="../assets/quasi-invariant-extension/draw_figure.py">Reproduction source</a>.</figcaption>
+</figure>
+
+<a id="oa-flow.l112.qi4"></a><a id="cm-quasi-invariant-states"></a>
+## Quasi-invariant states and the limits of the criterion
+
+A representation is **quasi-invariant** for the action when it admits the continuous normal extension (M16)–(M17). On a separable represented Hilbert space, QI3 gives the equivalent test by quasi-equivalence of all translates. This is the same extension property called an \(\alpha\)-representation above. A bounded positive functional on \(A\) is called quasi-invariant when its cyclic GNS representation has that property.
+
+If \(A\) is separable, every cyclic GNS space of a bounded positive functional \(\psi\) is separable, including when \(A\) has no identity. Indeed the GNS construction has the dense set of classes \([a]\), \(a\in A\), with
+\[
+ \|[a]-[b]\|^2
+ =\psi((a-b)^*(a-b))
+ \leq\|\psi\|\,\|a-b\|^2.
+ \tag{QI15}
+\]
+The image of a countable norm-dense subset of \(A\) is therefore dense in its Hilbert completion. The earlier [GNS construction](OA-FLOW-GNS.md#gns-theorem-5-1) gives its nondegenerate representation. For the zero functional the space is zero. Thus QI3 applies to every such \(\psi\) without a unitality assumption.
+
+Two checks distinguish sufficient countability from a necessary condition for each individual action.
+
+**Constant action.** Let \(G=\mathbb R\) and \(\alpha_t=\mathrm{id}_A\). In every nondegenerate representation, including the universal one on a possibly nonseparable Hilbert space, \(\beta_t=\mathrm{id}_P\) is a normal continuous extension. Its scalar and predual orbits are constant. Therefore a universal representation is not forced to fail merely because the acting group is nondiscrete.
+
+**Translation action.** For the action of \(\mathbb R\) on \(C_0(\mathbb R)\), the next proof constructs a projection \(p_0\) whose orbit under any possible normal extensions has the discontinuous normal scalar test \(\mathbf1_{\{0\}}(t)\). The universal representation contains the mutually orthogonal evaluation GNS vectors \(\xi_s\) for every \(s\in\mathbb R\); hence its Hilbert space is not separable. QI3 consequently makes no continuity assertion for that representation. The obstruction is a failure that can occur outside the theorem's countability hypothesis, not a claim that every such action fails.
 
 <a id="oa-flow.l112.obstruction"></a>
 
@@ -372,11 +552,11 @@ The general Connes-spectrum application uses neither an ambient factor hypothesi
 <a id="cm-sources"></a>
 ## Sources and finite scope
 
-The matrix construction and representation-continuity definition correspond to Takesaki, *Theory of Operator Algebras II*, [XI.2 Lemma 2.3, Definition 2.4 and following warning, printed 333](https://doi.org/10.1007/978-3-662-10451-4). The concrete shrinking-bump proof replaces the historical unsupported abstract-bidual sentence while preserving its universal-representation counterexample and atomic-summand conclusion. The new order begins with the continuity test and obstruction, then uses the matrix construction as the concluding transport application.
+The matrix construction and representation-continuity definition correspond to Takesaki, *Theory of Operator Algebras II*, [XI.2 Lemma 2.3, Definition 2.4 and following warning, printed 333](https://doi.org/10.1007/978-3-662-10451-4). The concrete shrinking-bump proof replaces the historical unsupported abstract-bidual sentence while preserving its universal-representation counterexample and atomic-summand conclusion. The exposition begins with the continuity test, proves its quasi-equivalence criterion by normal predual averaging, and examines the concrete obstruction before the concluding matrix transport application. Takesaki, *Theory of Operator Algebras II*, X.3 Proposition 3.1, Remark 3.2 and Definition 3.3, printed 279–280, give the source criterion and terminology. QI1–QI3 state their own generality: only the represented Hilbert space is separable. QI2 supplies the increasing-net normality argument explicitly; QI3 localizes the null-set argument to one finite-measure open set. The constant-action example shows why the source remark must be read as a possible failure, not a universal prohibition for nondiscrete groups.
 
 The existing free-source GNS/CP development and normal-action alternatives are retained. Arveson, [*On groups of automorphisms of operator algebras*](https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-arveson/1970s/1974_On_groups_of_automorphisms_of_operator_algebras.pdf), J. Funct. Anal. 15 (1974), §1, provides a primary account of the distinction between weak integration and actual continuity hypotheses. The complete local providers, rather than these citations, prove every premise used here.
 
-This chapter proves the arbitrary-Hilbert continuity test and its concrete failure, the full atomic summand and both normal inverse maps, and the normal matrix action at the stated LCA cocycle hypotheses. M10 is the explicit general application of the separately accepted, earlier canonical GCC proof. It asserts no whole C3/C1–C6 completion or general recognition/integrability theorem.
+This chapter proves the arbitrary-Hilbert continuity definition and its concrete failure, the complete quasi-equivalence criterion on separable represented Hilbert spaces, quasi-invariant state definitions including nonunital GNS spaces, the full atomic summand and both normal inverse maps, and the normal matrix action at the stated LCA cocycle hypotheses. M10 is the explicit general application of the separately accepted, earlier canonical GCC proof. It asserts no whole C3/C1–C6 completion or general recognition/integrability theorem.
 
 <a id="oa-flow.l112.figure"></a>
 

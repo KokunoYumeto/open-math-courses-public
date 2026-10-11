@@ -1,6 +1,6 @@
 # Crossed products over varying compact stabilizers
 
-*Self-checked by the writing AI. Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
+*Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.*
 
 A compact stabilizer leaves a group von Neumann algebra inside the crossed product of its orbit. When the stabilizer varies, the orbit calculations must fit together measurably. We will build that fit on one fixed Hilbert space, first by averaging operators and then by changing to quotient coordinates.
 

@@ -1,0 +1,556 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Extending cohomology through filtered arrow stages</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="extending-cohomology-through-filtered-arrow-stages">Extending cohomology through filtered arrow stages</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>A map into a target object can come from many objects of a triangulated category. Their outgoing comma category keeps every such map and every comparison between them. A left Kan extension assembles the values of a functor over this category. To preserve cohomology exactness, we must also assemble commuting squares to a target arrow. The resulting arrow index lets us compare the two target values over one filtered category and identify their kernel.</p>
+<p>The argument works in an arbitrary abelian target with exact small filtered colimits. It does not need a chosen injective or projective object, nor a functorial choice of cones.</p>
+<h2 id="1-hypotheses-and-the-actual-outgoing-stages">1. Hypotheses and the actual outgoing stages</h2>
+<p>Use the universe, local smallness and choice convention of <span class="unlinked">Universes and small categories</span>. Let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\phi:\mathcal T\longrightarrow\mathcal D
+\]">\[
+\phi:\mathcal T\longrightarrow\mathcal D
+\]</span>
+<p>be a triangulated functor, with its specified natural comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\xi_U:\phi(U[1])\xrightarrow{\sim}(\phi U)[1].
+\tag{1.1}
+\]">\[
+\xi_U:\phi(U[1])\xrightarrow{\sim}(\phi U)[1].
+\tag{1.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be abelian. Assume that all small filtered colimits exist in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and that the colimit functor for each small filtered index preserves short exact sequences. Finally assume that, for each <span class="math" data-tex="\(X\in\mathcal D\)">\(X\in\mathcal D\)</span>, the outgoing comma</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+K_X=(\phi\downarrow X)
+\tag{1.2}
+\]">\[
+K_X=(\phi\downarrow X)
+\tag{1.2}
+\]</span>
+<p>is cofinally small. Thus its objects are <span class="math" data-tex="\((U,u:\phi U\to X)\)">\((U,u:\phi U\to X)\)</span>. A morphism to <span class="math" data-tex="\((V,v)\)">\((V,v)\)</span> is an actual arrow <span class="math" data-tex="\(s:U\to V\)">\(s:U\to V\)</span> in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> with <span class="math" data-tex="\(v\phi(s)=u\)">\(v\phi(s)=u\)</span>.</p>
+<p>A covariant <strong>cohomological functor</strong> <span class="math" data-tex="\(F:\mathcal T\to\mathcal A\)">\(F:\mathcal T\to\mathcal A\)</span> here means an additive functor such that each distinguished triangle <span class="math" data-tex="\(P\to U\to V\to P[1]\)">\(P\to U\to V\to P[1]\)</span> gives a sequence <span class="math" data-tex="\(FP\to FU\to FV\)">\(FP\to FU\to FV\)</span> exact at its middle object. This convention is also called homological. Rotations give its full sequence of shifted exactness assertions.</p>
+<p>The complete Hom-factorization and comma argument in <a href="triangles-finite-universal-maps-and-cohomology-boundaries.html#2-element-categories-detect-exactly-what-is-needed">Triangles, finite universal maps and the limits of cohomology, Lemma 1.1 and Corollary 2.3</a> proves that <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is categorically exact: every outgoing comma is filtered, and every incoming comma is cofiltered. This statement concerns the triangulated functor <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, whose target is triangulated. It is not an assertion that the abelian-valued functor <span class="math" data-tex="\(F\)">\(F\)</span> is categorically exact.</p>
+<p>The receiving-witness theorem in <a href="incoming-comma-tests-and-assembly-from-finite-pieces.html#5-how-many-receiving-objects-are-enough">Incoming comma tests, Section 5</a>, together with the small full replacement in <a href="change-an-index-without-changing-universal-maps.html#5-replace-a-large-index-by-a-small-full-one">Change an index, Section 5</a>, gives a small full filtered cofinal subcategory of each <span class="math" data-tex="\(K_X\)">\(K_X\)</span>. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+E_F(X)=\operatorname{colim}_{(U,u)\in K_X}F(U)
+\tag{1.3}
+\]">\[
+E_F(X)=\operatorname{colim}_{(U,u)\in K_X}F(U)
+\tag{1.3}
+\]</span>
+<p>exists: take the small filtered colimit and extend its cocone to the whole comma. The complete cocone extension and canonical inverse comparison are proved in <a href="change-an-index-without-changing-universal-maps.html#2-extend-every-cocone">Change an index, Section 2</a>.</p>
+<p>Retain the whole-comma legs</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+\lambda^X_{U,u}:FU\longrightarrow E_F(X).
+\tag{1.4}
+\]">\[
+\lambda^X_{U,u}:FU\longrightarrow E_F(X).
+\tag{1.4}
+\]</span>
+<p>Their equations are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+\lambda^X_{V,v}F(s)=\lambda^X_{U,u}
+\quad\text{if }v\phi(s)=u.
+\tag{1.5}
+\]">\[
+\lambda^X_{V,v}F(s)=\lambda^X_{U,u}
+\quad\text{if }v\phi(s)=u.
+\tag{1.5}
+\]</span>
+<p>These legs jointly determine a map out of <span class="math" data-tex="\(E_F(X)\)">\(E_F(X)\)</span>. The choice of a small witness computes this universal object; it does not discard the other labels or their cocone equations.</p>
+<h2 id="2-the-kan-functor-unit-and-universal-factors">2. The Kan functor, unit and universal factors</h2>
+<p>For <span class="math" data-tex="\(a:X\to X&#x27;\)">\(a:X\to X&#x27;\)</span>, define <span class="math" data-tex="\(E_F(a)\)">\(E_F(a)\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+E_F(a)\lambda^X_{U,u}=\lambda^{X&#x27;}_{U,au}.
+\tag{2.1}
+\]">\[
+E_F(a)\lambda^X_{U,u}=\lambda^{X&#x27;}_{U,au}.
+\tag{2.1}
+\]</span>
+<p>The right side is a cocone by (1.5). Uniqueness on all legs proves the identity and composition laws. For a natural transformation <span class="math" data-tex="\(z:F\to F&#x27;\)">\(z:F\to F&#x27;\)</span>, set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+(E_z)_X\lambda^X_{U,u}
+={\lambda&#x27;}^X_{U,u}z_U.
+\tag{2.2}
+\]">\[
+(E_z)_X\lambda^X_{U,u}
+={\lambda&#x27;}^X_{U,u}z_U.
+\tag{2.2}
+\]</span>
+<p>The same uniqueness proves naturality in <span class="math" data-tex="\(X\)">\(X\)</span> and both transformation laws.</p>
+<p>The unit has components</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\eta^F_U=\lambda^{\phi U}_{U,1_{\phi U}}:
+FU\longrightarrow E_F(\phi U).
+\tag{2.3}
+\]">\[
+\eta^F_U=\lambda^{\phi U}_{U,1_{\phi U}}:
+FU\longrightarrow E_F(\phi U).
+\tag{2.3}
+\]</span>
+<p>If <span class="math" data-tex="\(s:U\to V\)">\(s:U\to V\)</span>, the comma arrow
+<span class="math" data-tex="\((U,\phi s)\to(V,1_{\phi V})\)">\((U,\phi s)\to(V,1_{\phi V})\)</span>, together with (2.1), gives
+<span class="math" data-tex="\(E_F(\phi s)\eta^F_U=\eta^F_VF(s)\)">\(E_F(\phi s)\eta^F_U=\eta^F_VF(s)\)</span>.</p>
+<p>For any functor <span class="math" data-tex="\(G:\mathcal D\to\mathcal A\)">\(G:\mathcal D\to\mathcal A\)</span>, the inverse universal factors are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\alpha:E_F\to G
+&amp;\longmapsto
+(\alpha_{\phi U}\eta^F_U)_U,\\
+\tau:F\to G\phi
+&amp;\longmapsto \alpha,
+&amp;\alpha_X\lambda^X_{U,u}&amp;=G(u)\tau_U.
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+\alpha:E_F\to G
+&amp;\longmapsto
+(\alpha_{\phi U}\eta^F_U)_U,\\
+\tau:F\to G\phi
+&amp;\longmapsto \alpha,
+&amp;\alpha_X\lambda^X_{U,u}&amp;=G(u)\tau_U.
+\end{aligned}
+\tag{2.4}
+\]</span>
+<p>The second line is a cocone because
+<span class="math" data-tex="\(G(v)\tau_VF(s)=G(v)G(\phi s)\tau_U=G(u)\tau_U\)">\(G(v)\tau_VF(s)=G(v)G(\phi s)\tau_U=G(u)\tau_U\)</span>.
+Its naturality in <span class="math" data-tex="\(X\)">\(X\)</span> follows by testing (2.1). Inserting <span class="math" data-tex="\(u=1\)">\(u=1\)</span> recovers <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Conversely, naturality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> at <span class="math" data-tex="\(u\)">\(u\)</span>, and
+<span class="math" data-tex="\(E_F(u)\eta^F_U=\lambda^X_{U,u}\)">\(E_F(u)\eta^F_U=\lambda^X_{U,u}\)</span>, recover <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on every leg. The factors are inverse and natural in both <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, as in the complete <a href="extending-diagrams-by-universal-maps.html#3-build-the-left-extension">pointwise Kan construction</a>.</p>
+<p>Thus <span class="math" data-tex="\(E_F=\operatorname{Lan}_\phi F\)">\(E_F=\operatorname{Lan}_\phi F\)</span> and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+\operatorname{Nat}(E_F,G)
+\cong\operatorname{Nat}(F,G\phi).
+\tag{2.5}
+\]">\[
+\operatorname{Nat}(E_F,G)
+\cong\operatorname{Nat}(F,G\phi).
+\tag{2.5}
+\]</span>
+<p>The construction applies to every functor <span class="math" data-tex="\(F:\mathcal T\to\mathcal A\)">\(F:\mathcal T\to\mathcal A\)</span>, since the filtered comma hypotheses concern <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. If the ambient transformation collections require a larger universe, use the ambient functor-category convention in <a href="exactness-through-comma-categories-and-small-kan-values.html#7-two-kan-existence-branches-and-finite-exactness">Exactness and small Kan values, Section 7</a>. The colimits in (1.3) still use small witnesses in the original working universe.</p>
+<h2 id="3-zero-biproducts-and-addition-on-arrows">3. Zero, biproducts and addition on arrows</h2>
+<p>We first prove that <span class="math" data-tex="\(E_F\)">\(E_F\)</span> is additive when <span class="math" data-tex="\(F\)">\(F\)</span> is additive.</p>
+<p>The object <span class="math" data-tex="\((0,0:\phi0\to0)\)">\((0,0:\phi0\to0)\)</span> is terminal in <span class="math" data-tex="\(K_0\)">\(K_0\)</span>: the unique map <span class="math" data-tex="\(U\to0\)">\(U\to0\)</span> obeys its label equation. Since <span class="math" data-tex="\(F0=0\)">\(F0=0\)</span>, (1.3) gives <span class="math" data-tex="\(E_F(0)=0\)">\(E_F(0)=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(X_1,X_2\)">\(X_1,X_2\)</span>, let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\zeta:K_{X_1}\times K_{X_2}\longrightarrow K_{X_1\oplus X_2}
+\tag{3.1}
+\]">\[
+\zeta:K_{X_1}\times K_{X_2}\longrightarrow K_{X_1\oplus X_2}
+\tag{3.1}
+\]</span>
+<p>send <span class="math" data-tex="\(((U_1,u_1),(U_2,u_2))\)">\(((U_1,u_1),(U_2,u_2))\)</span> to
+<span class="math" data-tex="\((U_1\oplus U_2,u_1\oplus u_2)\)">\((U_1\oplus U_2,u_1\oplus u_2)\)</span>, using the canonical biproduct comparison for the additive functor <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Its left adjoint is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\epsilon(U,u)=((U,p_1u),(U,p_2u)).
+\tag{3.2}
+\]">\[
+\epsilon(U,u)=((U,p_1u),(U,p_2u)).
+\tag{3.2}
+\]</span>
+<p>Indeed, an arrow from (3.2) to a pair <span class="math" data-tex="\(((V_1,v_1),(V_2,v_2))\)">\(((V_1,v_1),(V_2,v_2))\)</span> is precisely a pair <span class="math" data-tex="\(s_i:U\to V_i\)">\(s_i:U\to V_i\)</span> satisfying <span class="math" data-tex="\(v_i\phi(s_i)=p_i u\)">\(v_i\phi(s_i)=p_i u\)</span>. The column with entries <span class="math" data-tex="\(s_1,s_2\)">\(s_1,s_2\)</span> is precisely the arrow
+<span class="math" data-tex="\((U,u)\to\zeta((V_1,v_1),(V_2,v_2))\)">\((U,u)\to\zeta((V_1,v_1),(V_2,v_2))\)</span>.
+The inverse takes its two projections. These assignments preserve composition in both variables, so give the claimed adjunction.</p>
+<p>A right adjoint is cofinal here for a concrete reason. The adjunction unit gives an initial object of each incoming comma <span class="math" data-tex="\(((U,u)\downarrow\zeta)\)">\(((U,u)\downarrow\zeta)\)</span>: its arrows correspond to arrows from <span class="math" data-tex="\(\epsilon(U,u)\)">\(\epsilon(U,u)\)</span>. These commas are therefore nonempty and connected. Thus <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> changes no colimit.</p>
+<p>Both projections <span class="math" data-tex="\(K_{X_1}\times K_{X_2}\to K_{X_i}\)">\(K_{X_1}\times K_{X_2}\to K_{X_i}\)</span> are cofinal. For the first, its incoming comma at <span class="math" data-tex="\(a\)">\(a\)</span> is <span class="math" data-tex="\((a\downarrow1_{K_{X_1}})\times K_{X_2}\)">\((a\downarrow1_{K_{X_1}})\times K_{X_2}\)</span>. The first factor has initial object <span class="math" data-tex="\((a,1)\)">\((a,1)\)</span>; the second is nonempty and connected because it is filtered. This product is nonempty and connected. The other projection has the same proof with the factors exchanged.</p>
+<p>Finite coproducts commute with these existing colimits by their universal property. A cocone on the diagram <span class="math" data-tex="\(F(U_1)\oplus F(U_2)\)">\(F(U_1)\oplus F(U_2)\)</span> is exactly a pair of cocones on the two projected diagrams: take its two injection composites, or assemble those two composites by a biproduct. Naturality in each index and the two cofinal projections identify the latter cocones with those on <span class="math" data-tex="\(K_{X_1},K_{X_2}\)">\(K_{X_1},K_{X_2}\)</span>. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+E_F(X_1\oplus X_2)
+&amp;\cong\operatorname{colim}_{K_{X_1}\times K_{X_2}}
+F(U_1\oplus U_2)\\
+&amp;\cong E_F(X_1)\oplus E_F(X_2).
+\end{aligned}
+\tag{3.3}
+\]">\[
+\begin{aligned}
+E_F(X_1\oplus X_2)
+&amp;\cong\operatorname{colim}_{K_{X_1}\times K_{X_2}}
+F(U_1\oplus U_2)\\
+&amp;\cong E_F(X_1)\oplus E_F(X_2).
+\end{aligned}
+\tag{3.3}
+\]</span>
+<p>Every comparison is the canonical one respecting the original legs. On a pair of stages its composites with the two target projections are
+<span class="math" data-tex="\(\lambda^{X_i}_{U_i,u_i}F(p_i)\)">\(\lambda^{X_i}_{U_i,u_i}F(p_i)\)</span>.
+These are also the composites of <span class="math" data-tex="\(E_F(p_i)\)">\(E_F(p_i)\)</span> by (2.1) and the comma projection arrows. Thus (3.3) is exactly the map with components <span class="math" data-tex="\(E_F(p_1),E_F(p_2)\)">\(E_F(p_1),E_F(p_2)\)</span>.</p>
+<p>We spell out the implication for addition. A zero arrow factors through the zero object, so <span class="math" data-tex="\(E_F\)">\(E_F\)</span> sends it to zero. The biproduct identities and (3.3) identify the images of the canonical injections and projections with the corresponding canonical maps. The image of a diagonal is the diagonal, since its two projection composites are identities. The image of a codiagonal is the codiagonal, since its two injection composites are identities. For <span class="math" data-tex="\(a,b:X\to Y\)">\(a,b:X\to Y\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+a+b=\nabla_Y(a\oplus b)\Delta_X.
+\tag{3.4}
+\]">\[
+a+b=\nabla_Y(a\oplus b)\Delta_X.
+\tag{3.4}
+\]</span>
+<p>The four injection/projection composites of <span class="math" data-tex="\(E_F(a\oplus b)\)">\(E_F(a\oplus b)\)</span> are those of <span class="math" data-tex="\(E_F(a)\oplus E_F(b)\)">\(E_F(a)\oplus E_F(b)\)</span>, including the two zero off-diagonal entries. Applying <span class="math" data-tex="\(E_F\)">\(E_F\)</span> to (3.4) gives
+<span class="math" data-tex="\(E_F(a+b)=E_F(a)+E_F(b)\)">\(E_F(a+b)=E_F(a)+E_F(b)\)</span>.
+Together with the zero equation, this proves additivity on every Hom group.</p>
+<h2 id="4-put-both-endpoints-over-one-filtered-index">4. Put both endpoints over one filtered index</h2>
+<p>Fix <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+J_g=(\operatorname{Mor}(\phi)\downarrow g).
+\tag{4.1}
+\]">\[
+J_g=(\operatorname{Mor}(\phi)\downarrow g).
+\tag{4.1}
+\]</span>
+<p>An object <span class="math" data-tex="\(j\)">\(j\)</span> consists of an arrow <span class="math" data-tex="\(t:U\to V\)">\(t:U\to V\)</span> and labels
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+a:\phi U\to Y,\qquad b:\phi V\to Z,\qquad
+b\phi(t)=ga.
+\tag{4.2}
+\]">\[
+a:\phi U\to Y,\qquad b:\phi V\to Z,\qquad
+b\phi(t)=ga.
+\tag{4.2}
+\]</span></p>
+<p>An arrow to <span class="math" data-tex="\(j&#x27;=(t&#x27;:U&#x27;\to V&#x27;,a&#x27;,b&#x27;)\)">\(j&#x27;=(t&#x27;:U&#x27;\to V&#x27;,a&#x27;,b&#x27;)\)</span> is a pair <span class="math" data-tex="\(s:U\to U&#x27;\)">\(s:U\to U&#x27;\)</span>, <span class="math" data-tex="\(r:V\to V&#x27;\)">\(r:V\to V&#x27;\)</span> satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+t&#x27;s=rt,\qquad a&#x27;\phi(s)=a,\qquad b&#x27;\phi(r)=b.
+\tag{4.3}
+\]">\[
+t&#x27;s=rt,\qquad a&#x27;\phi(s)=a,\qquad b&#x27;\phi(r)=b.
+\tag{4.3}
+\]</span>
+<p>The full <a href="comma-functors-iterated-cocones-and-arrow-categories.html#7-a-square-to-one-arrow-is-a-comma-object">arrow-comma theorem</a> applies because <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is categorically right exact and right small. It proves that <span class="math" data-tex="\(J_g\)">\(J_g\)</span> is filtered and cofinally small, and that the actual endpoint projections</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+q_Y:J_g\to K_Y,\quad j\mapsto(U,a),
+\qquad
+q_Z:J_g\to K_Z,\quad j\mapsto(V,b)
+\tag{4.4}
+\]">\[
+q_Y:J_g\to K_Y,\quad j\mapsto(U,a),
+\qquad
+q_Z:J_g\to K_Z,\quad j\mapsto(V,b)
+\tag{4.4}
+\]</span>
+<p>are cofinal. Its proof identifies the whole arrow comma with
+<span class="math" data-tex="\((g_*:K_Y\to K_Z\downarrow1_{K_Z})\)">\((g_*:K_Y\to K_Z\downarrow1_{K_Z})\)</span>; hence it includes the structured labels and all equations (4.3), rather than only the underlying source endpoints.</p>
+<p>Choose one small full filtered cofinal <span class="math" data-tex="\(S_g\subseteq J_g\)">\(S_g\subseteq J_g\)</span>. Composing its inclusion with the two cofinal projections gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+E_F(Y)=\operatorname{colim}_{j\in S_g}F(U_j),
+\qquad
+E_F(Z)=\operatorname{colim}_{j\in S_g}F(V_j),
+\tag{4.5}
+\]">\[
+E_F(Y)=\operatorname{colim}_{j\in S_g}F(U_j),
+\qquad
+E_F(Z)=\operatorname{colim}_{j\in S_g}F(V_j),
+\tag{4.5}
+\]</span>
+<p>with the canonical comparison isomorphisms understood. Equation (4.2) gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.6); horizontal scroll when needed" data-tex="\[
+E_F(g)\lambda^Y_{U_j,a_j}
+=\lambda^Z_{V_j,b_j}F(t_j).
+\tag{4.6}
+\]">\[
+E_F(g)\lambda^Y_{U_j,a_j}
+=\lambda^Z_{V_j,b_j}F(t_j).
+\tag{4.6}
+\]</span>
+Thus this same index represents the actual arrow <span class="math" data-tex="\(E_F(g)\)">\(E_F(g)\)</span>.</p>
+<p>Put <span class="math" data-tex="\(K_j=\ker F(t_j)\)">\(K_j=\ker F(t_j)\)</span>, with inclusion <span class="math" data-tex="\(k_j:K_j\to FU_j\)">\(k_j:K_j\to FU_j\)</span>. For an arrow (4.3), <span class="math" data-tex="\(F(r)F(t)=F(t&#x27;)F(s)\)">\(F(r)F(t)=F(t&#x27;)F(s)\)</span> implies that <span class="math" data-tex="\(F(s)k_j\)">\(F(s)k_j\)</span> is killed by <span class="math" data-tex="\(F(t&#x27;)\)">\(F(t&#x27;)\)</span>. Its unique kernel factor defines <span class="math" data-tex="\(K_j\to K_{j&#x27;}\)">\(K_j\to K_{j&#x27;}\)</span>. Kernel uniqueness proves the identity and composition laws and makes the <span class="math" data-tex="\(k_j\)">\(k_j\)</span> natural.</p>
+<p><strong>Lemma 4.1.</strong> The canonical map
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.7); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{j\in S_g}K_j
+\longrightarrow\ker E_F(g)
+\tag{4.7}
+\]">\[
+\operatorname{colim}_{j\in S_g}K_j
+\longrightarrow\ker E_F(g)
+\tag{4.7}
+\]</span>
+is an isomorphism.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(I_j=\operatorname{im}F(t_j)\)">\(I_j=\operatorname{im}F(t_j)\)</span> and <span class="math" data-tex="\(C_j=\operatorname{coker}F(t_j)\)">\(C_j=\operatorname{coker}F(t_j)\)</span>. The specified image factorizations and their universal maps make both into diagrams. At every stage there are natural short exact sequences
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.8); horizontal scroll when needed" data-tex="\[
+0\to K_j\to FU_j\to I_j\to0,
+\qquad
+0\to I_j\to FV_j\to C_j\to0.
+\tag{4.8}
+\]">\[
+0\to K_j\to FU_j\to I_j\to0,
+\qquad
+0\to I_j\to FV_j\to C_j\to0.
+\tag{4.8}
+\]</span>
+Pointwise kernels, images and cokernels form the corresponding short exact sequences of diagrams; the complete abelian diagram construction is <a href="pointwise-abelian-structure-and-natural-splittings.html#1-assemble-the-pointwise-universal-objects">Pointwise abelian structure, Sections 1–2</a>.</p>
+<p>Exact filtered colimits send the first sequence to an epimorphism <span class="math" data-tex="\(\operatorname{colim}FU_j\to\operatorname{colim}I_j\)">\(\operatorname{colim}FU_j\to\operatorname{colim}I_j\)</span> with kernel <span class="math" data-tex="\(\operatorname{colim}K_j\)">\(\operatorname{colim}K_j\)</span>. They send the second inclusion to a monomorphism <span class="math" data-tex="\(\operatorname{colim}I_j\to\operatorname{colim}FV_j\)">\(\operatorname{colim}I_j\to\operatorname{colim}FV_j\)</span>. The composite is <span class="math" data-tex="\(E_F(g)\)">\(E_F(g)\)</span> by (4.6). A monomorphism does not change the kernel of the map preceding it. The kernel inclusion so obtained has composite <span class="math" data-tex="\(\lambda^Y_{U_j,a_j}k_j\)">\(\lambda^Y_{U_j,a_j}k_j\)</span> on every stage, which characterizes (4.7). This proves its exact canonical, rather than merely abstract, identification. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses no elements of objects of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, no projective test object, and no claim that a map into a colimit lifts to one stage.</p>
+<h2 id="5-complete-each-square-to-a-triangle">5. Complete each square to a triangle</h2>
+<p><strong>Theorem 5.1.</strong> Under the hypotheses of Section 1, if <span class="math" data-tex="\(F:\mathcal T\to\mathcal A\)">\(F:\mathcal T\to\mathcal A\)</span> is covariantly cohomological, then <span class="math" data-tex="\(\operatorname{Lan}_\phi F\)">\(\operatorname{Lan}_\phi F\)</span> is additive and covariantly cohomological. It has the unit and full universal property (2.3)–(2.5).</p>
+<p><strong>Proof.</strong> Additivity and universality are already established. Take a distinguished triangle
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+X\xrightarrow fY\xrightarrow gZ\xrightarrow hX[1]
+\tag{5.1}
+\]">\[
+X\xrightarrow fY\xrightarrow gZ\xrightarrow hX[1]
+\tag{5.1}
+\]</span>
+in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Consecutive triangle arrows have zero composite, so additivity gives <span class="math" data-tex="\(E_F(g)E_F(f)=0\)">\(E_F(g)E_F(f)=0\)</span>.</p>
+<p>For a stage <span class="math" data-tex="\(j=(t:U\to V,a,b)\)">\(j=(t:U\to V,a,b)\)</span> in (4.2), complete <span class="math" data-tex="\(t\)">\(t\)</span> to a distinguished triangle
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+P\xrightarrow pU\xrightarrow tV\xrightarrow rP[1].
+\tag{5.2}
+\]">\[
+P\xrightarrow pU\xrightarrow tV\xrightarrow rP[1].
+\tag{5.2}
+\]</span>
+The triangulated functor <span class="math" data-tex="\(\phi\)">\(\phi\)</span> makes
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\phi P\xrightarrow{\phi p}\phi U
+\xrightarrow{\phi t}\phi V
+\xrightarrow{\xi_P\phi r}(\phi P)[1]
+\tag{5.3}
+\]">\[
+\phi P\xrightarrow{\phi p}\phi U
+\xrightarrow{\phi t}\phi V
+\xrightarrow{\xi_P\phi r}(\phi P)[1]
+\tag{5.3}
+\]</span>
+distinguished. Rotate (5.3) and (5.1) once. The first two vertical maps <span class="math" data-tex="\(a,b\)">\(a,b\)</span> obey the square (4.2), so the triangle-completion axiom gives a third map
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+e:(\phi P)[1]\to X[1].
+\]">\[
+e:(\phi P)[1]\to X[1].
+\]</span>
+Full faithfulness of translation gives a unique <span class="math" data-tex="\(d:\phi P\to X\)">\(d:\phi P\to X\)</span> with <span class="math" data-tex="\(d[1]=e\)">\(d[1]=e\)</span>. The last square of the rotated triangle map, with both rotation signs retained, says
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(-f[1])e=a[1](-(\phi p)[1]).
+\]">\[
+(-f[1])e=a[1](-(\phi p)[1]).
+\]</span>
+Cancelling the two minus signs and using faithfulness of translation gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+fd=a\phi p.
+\tag{5.4}
+\]">\[
+fd=a\phi p.
+\tag{5.4}
+\]</span>
+The other completed square is <span class="math" data-tex="\(hb=d[1]\xi_P\phi r\)">\(hb=d[1]\xi_P\phi r\)</span>. Thus we have the required morphism of the entire triangles, including its specified translation comparison.</p>
+<p>Write
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+q:E_F(Y)\twoheadrightarrow\operatorname{coker}E_F(f).
+\tag{5.5}
+\]">\[
+q:E_F(Y)\twoheadrightarrow\operatorname{coker}E_F(f).
+\tag{5.5}
+\]</span>
+Cohomology exactness of <span class="math" data-tex="\(F\)">\(F\)</span> at <span class="math" data-tex="\(FU\)">\(FU\)</span> in (5.2) identifies the image of <span class="math" data-tex="\(Fp\)">\(Fp\)</span> with <span class="math" data-tex="\(K_j=\ker Ft\)">\(K_j=\ker Ft\)</span>. Let its specified factor be
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+Fp=k_jv_j,\qquad v_j:FP\twoheadrightarrow K_j.
+\tag{5.6}
+\]">\[
+Fp=k_jv_j,\qquad v_j:FP\twoheadrightarrow K_j.
+\tag{5.6}
+\]</span>
+The label <span class="math" data-tex="\(d\)">\(d\)</span> gives a whole-comma leg <span class="math" data-tex="\(\lambda^X_{P,d}\)">\(\lambda^X_{P,d}\)</span>. Equation (5.4), formula (2.1) and the comma arrow <span class="math" data-tex="\(p:(P,fd)\to(U,a)\)">\(p:(P,fd)\to(U,a)\)</span> give
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.7); horizontal scroll when needed" data-tex="\[
+E_F(f)\lambda^X_{P,d}
+=\lambda^Y_{U,a}Fp.
+\tag{5.7}
+\]">\[
+E_F(f)\lambda^X_{P,d}
+=\lambda^Y_{U,a}Fp.
+\tag{5.7}
+\]</span>
+Consequently
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.8); horizontal scroll when needed" data-tex="\[
+q\lambda^Y_{U,a}k_jv_j
+=qE_F(f)\lambda^X_{P,d}=0.
+\tag{5.8}
+\]">\[
+q\lambda^Y_{U,a}k_jv_j
+=qE_F(f)\lambda^X_{P,d}=0.
+\tag{5.8}
+\]</span>
+Since <span class="math" data-tex="\(v_j\)">\(v_j\)</span> is epic, <span class="math" data-tex="\(q\lambda^Y_{U,a}k_j=0\)">\(q\lambda^Y_{U,a}k_j=0\)</span>.</p>
+<p>The maps <span class="math" data-tex="\(\lambda^Y_{U_j,a_j}k_j\)">\(\lambda^Y_{U_j,a_j}k_j\)</span> form a cocone on the kernel diagram. Lemma 4.1 and the jointly determining colimit legs therefore give
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.9); horizontal scroll when needed" data-tex="\[
+qk=0,\qquad k:\ker E_F(g)\hookrightarrow E_F(Y).
+\tag{5.9}
+\]">\[
+qk=0,\qquad k:\ker E_F(g)\hookrightarrow E_F(Y).
+\tag{5.9}
+\]</span>
+Only the existence of a triangle completion at each stage was used. No compatible family of the <span class="math" data-tex="\(P,d\)">\(P,d\)</span>, or functorial cone construction, was required: every individual completion proves the same zero equation for that stage.</p>
+<p>For completeness, let <span class="math" data-tex="\(i:I\hookrightarrow E_F(Y)\)">\(i:I\hookrightarrow E_F(Y)\)</span> be the image inclusion of <span class="math" data-tex="\(E_F(f)\)">\(E_F(f)\)</span>. Since <span class="math" data-tex="\(E_F(g)E_F(f)=0\)">\(E_F(g)E_F(f)=0\)</span>, its epimorphic image factor implies <span class="math" data-tex="\(E_F(g)i=0\)">\(E_F(g)i=0\)</span>, so <span class="math" data-tex="\(i\)">\(i\)</span> factors through <span class="math" data-tex="\(k\)">\(k\)</span>. In an abelian category <span class="math" data-tex="\(i\)">\(i\)</span> is a kernel of <span class="math" data-tex="\(q\)">\(q\)</span>. Equation (5.9) therefore makes <span class="math" data-tex="\(k\)">\(k\)</span> factor through <span class="math" data-tex="\(i\)">\(i\)</span>. Writing <span class="math" data-tex="\(i=ku\)">\(i=ku\)</span>, <span class="math" data-tex="\(k=iv\)">\(k=iv\)</span>, the monicity of <span class="math" data-tex="\(i,k\)">\(i,k\)</span> gives <span class="math" data-tex="\(vu=1_I\)">\(vu=1_I\)</span> and <span class="math" data-tex="\(uv=1_{\ker E_F(g)}\)">\(uv=1_{\ker E_F(g)}\)</span>. Hence the two subobjects coincide. This is exactly middle exactness of
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.10); horizontal scroll when needed" data-tex="\[
+E_F(X)\xrightarrow{E_F(f)}E_F(Y)
+\xrightarrow{E_F(g)}E_F(Z).
+\tag{5.10}
+\]">\[
+E_F(X)\xrightarrow{E_F(f)}E_F(Y)
+\xrightarrow{E_F(g)}E_F(Z).
+\tag{5.10}
+\]</span>
+Apply the same result to every rotation and shift of (5.1). These are distinguished triangles, with the original sign convention. Their middle exactness assertions give the entire cohomology sequence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem also makes (2.5) a universal property within cohomological functors whenever <span class="math" data-tex="\(G\)">\(G\)</span> is cohomological. Both sides are the same ordinary natural transformations; no extra compatibility condition is added.</p>
+<h2 id="6-two-explicit-computations">6. Two explicit computations</h2>
+<p><strong>Representable input.</strong> Take <span class="math" data-tex="\(\mathcal A=\mathsf{Ab}\)">\(\mathcal A=\mathsf{Ab}\)</span>, fix <span class="math" data-tex="\(P\in\mathcal T\)">\(P\in\mathcal T\)</span>, and put <span class="math" data-tex="\(F(U)=\operatorname{Hom}_{\mathcal T}(P,U)\)">\(F(U)=\operatorname{Hom}_{\mathcal T}(P,U)\)</span>. Exact triangle Hom sequences prove that <span class="math" data-tex="\(F\)">\(F\)</span> is cohomological. Under the comma smallness assumption there is a canonical isomorphism
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+E_F(X)\xrightarrow{\sim}\operatorname{Hom}_{\mathcal D}(\phi P,X),
+\qquad
+\lambda^X_{U,u}(a)\longmapsto u\phi(a).
+\tag{6.1}
+\]">\[
+E_F(X)\xrightarrow{\sim}\operatorname{Hom}_{\mathcal D}(\phi P,X),
+\qquad
+\lambda^X_{U,u}(a)\longmapsto u\phi(a).
+\tag{6.1}
+\]</span></p>
+<p>The displayed maps are homomorphisms and obey (1.5), so define the comparison. It is surjective: <span class="math" data-tex="\(v:\phi P\to X\)">\(v:\phi P\to X\)</span> is the image of <span class="math" data-tex="\(1_P\)">\(1_P\)</span> at the stage <span class="math" data-tex="\((P,v)\)">\((P,v)\)</span>. Every element of a filtered colimit of abelian groups is represented at a stage, including stages in a chosen small full witness; this is the full <a href="filtered-stages-and-finite-limits.html#3-the-underlying-set-of-a-module-colimit">filtered module representative theorem</a>.</p>
+<p>If <span class="math" data-tex="\(\lambda^X_{U,u}(a)\)">\(\lambda^X_{U,u}(a)\)</span> maps to <span class="math" data-tex="\(v\)">\(v\)</span>, then the comma arrow <span class="math" data-tex="\(a:(P,v)\to(U,u)\)">\(a:(P,v)\to(U,u)\)</span> identifies this element with <span class="math" data-tex="\(\lambda^X_{P,v}(1_P)\)">\(\lambda^X_{P,v}(1_P)\)</span>. Thus any two representatives with the same <span class="math" data-tex="\(v\)">\(v\)</span> are the same colimit element, proving injectivity. This includes zero representatives: at <span class="math" data-tex="\((P,0)\)">\((P,0)\)</span>, the arrows <span class="math" data-tex="\(1_P\)">\(1_P\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> from this object to itself give <span class="math" data-tex="\(\lambda^X_{P,0}(1_P)=\lambda^X_{P,0}(0)=0\)">\(\lambda^X_{P,0}(1_P)=\lambda^X_{P,0}(0)=0\)</span>.</p>
+<p>Naturality in <span class="math" data-tex="\(X\)">\(X\)</span> follows by postcomposing <span class="math" data-tex="\(u\)">\(u\)</span>, and under (6.1) the unit sends <span class="math" data-tex="\(a:P\to U\)">\(a:P\to U\)</span> to <span class="math" data-tex="\(\phi(a)\)">\(\phi(a)\)</span>. No full-faithfulness assumption on <span class="math" data-tex="\(\phi\)">\(\phi\)</span> was used.</p>
+<p><strong>Finite free complexes recover ordinary cohomology.</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be a unital ring. Let <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> be the full homotopy category of bounded complexes of finite-rank free left <span class="math" data-tex="\(R\)">\(R\)</span>-modules, and let <span class="math" data-tex="\(\mathcal D=K(\operatorname{Mod}R)\)">\(\mathcal D=K(\operatorname{Mod}R)\)</span>. The cone, shift and finite-sum constructions preserve bounded finite-rank freeness, so <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is triangulated and its inclusion <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is triangulated. The complete complexes and cone proof is <a href="chain-homotopies-mapping-cones-and-triangles.html">Chain homotopies, mapping cones and triangles</a>.</p>
+<p>The category <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is essentially small: use standard modules <span class="math" data-tex="\(R^n\)">\(R^n\)</span>, finite intervals of degrees, matrices for differentials satisfying <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>, and then their homotopy classes. These are small sets. For fixed <span class="math" data-tex="\(X\)">\(X\)</span>, the labels <span class="math" data-tex="\(\phi U\to X\)">\(\phi U\to X\)</span> form small Hom sets. Their union over those representatives, with all Hom sets retained, gives an essentially small comma <span class="math" data-tex="\(K_X\)">\(K_X\)</span>, hence a small cofinal witness. There is no boundedness condition on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>For <span class="math" data-tex="\(P=R[0]\)">\(P=R[0]\)</span>, a chain map <span class="math" data-tex="\(P\to U\)">\(P\to U\)</span> is a degree-zero cycle, determined by the image of <span class="math" data-tex="\(1\)">\(1\)</span>. Two maps are homotopic exactly when their cycles differ by a degree-zero boundary. Therefore
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{K(\operatorname{Mod}R)}(R[0],U)
+\cong H^0(U)
+\tag{6.2}
+\]">\[
+\operatorname{Hom}_{K(\operatorname{Mod}R)}(R[0],U)
+\cong H^0(U)
+\tag{6.2}
+\]</span>
+as abelian groups, naturally. Formula (6.1) gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Lan}_{\phi}(H^0|_{\mathcal T})(X)
+\cong H^0(X).
+\tag{6.3}
+\]">\[
+\operatorname{Lan}_{\phi}(H^0|_{\mathcal T})(X)
+\cong H^0(X).
+\tag{6.3}
+\]</span>
+It identifies each stage map with the induced cohomology map. This computation uses arbitrary complexes and the finite free test <span class="math" data-tex="\(R[0]\)">\(R[0]\)</span>; it does not require a resolution of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<h2 id="7-four-graded-exercises-with-complete-solutions">7. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (introductory: two terminal stages).</strong> Compute the extension for <span class="math" data-tex="\(\phi=1_{\mathcal T}\)">\(\phi=1_{\mathcal T}\)</span>. Then compute it for the zero triangulated functor <span class="math" data-tex="\(\phi:\mathcal T\to\mathcal D\)">\(\phi:\mathcal T\to\mathcal D\)</span>. Identify the two units and justify the smallness hypotheses.</p>
+<p><strong>Solution.</strong> For the identity functor, <span class="math" data-tex="\((X,1_X)\)">\((X,1_X)\)</span> is terminal in <span class="math" data-tex="\((1_{\mathcal T}\downarrow X)\)">\((1_{\mathcal T}\downarrow X)\)</span>: its incoming arrow from <span class="math" data-tex="\((U,u)\)">\((U,u)\)</span> is exactly <span class="math" data-tex="\(u\)">\(u\)</span>. Its one-object inclusion is cofinal because every incoming comma has this unique arrow. Thus <span class="math" data-tex="\(E_F(X)=FX\)">\(E_F(X)=FX\)</span>, the stage map is <span class="math" data-tex="\(F(u)\)">\(F(u)\)</span>, and (2.1) identifies the functor with <span class="math" data-tex="\(F\)">\(F\)</span>. The unit at <span class="math" data-tex="\(U\)">\(U\)</span> is the identity. The terminal singleton is small even when <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is ambient large.</p>
+<p>For the zero functor, each label <span class="math" data-tex="\(0\to X\)">\(0\to X\)</span> is unique, so <span class="math" data-tex="\(K_X\)">\(K_X\)</span> is the entire category <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Its zero object is terminal, making the singleton at zero cofinal. The zero triangulated functor sends every triangle to the all-zero distinguished triangle. Since <span class="math" data-tex="\(F0=0\)">\(F0=0\)</span>, every <span class="math" data-tex="\(E_F(X)\)">\(E_F(X)\)</span> is zero, every arrow is its unique map, and the unit is <span class="math" data-tex="\(FU\to0\)">\(FU\to0\)</span>. All these commas are filtered as well: they have objects, common receiver zero, and postcomposition to zero equalizes every parallel pair.</p>
+<p><strong>Exercise 2 (intermediate: keep the cone's degrees).</strong> In the second example take <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span> and <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>. Let <span class="math" data-tex="\(C_n\)">\(C_n\)</span> be the cone of multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> on <span class="math" data-tex="\(\mathbb Z[0]\)">\(\mathbb Z[0]\)</span>. Compute the extension on <span class="math" data-tex="\(\mathbb Z[0]\)">\(\mathbb Z[0]\)</span>, <span class="math" data-tex="\(C_n\)">\(C_n\)</span> and <span class="math" data-tex="\(\mathbb Z[1]\)">\(\mathbb Z[1]\)</span>, and the maps in the associated triangle. Repeat the cone computation for multiplication by zero, including the preceding cohomology group.</p>
+<p><strong>Solution.</strong> With the positive cone-projection convention, <span class="math" data-tex="\(C_n^{-1}=\mathbb Z\)">\(C_n^{-1}=\mathbb Z\)</span>, <span class="math" data-tex="\(C_n^0=\mathbb Z\)">\(C_n^0=\mathbb Z\)</span>, and its only nonzero differential is <span class="math" data-tex="\(n:C_n^{-1}\to C_n^0\)">\(n:C_n^{-1}\to C_n^0\)</span>. Formula (6.3) identifies the extension with <span class="math" data-tex="\(H^0\)">\(H^0\)</span>, including its arrow maps. Its three specified values are therefore <span class="math" data-tex="\(\mathbb Z,\mathbb Z/n\mathbb Z,0\)">\(\mathbb Z,\mathbb Z/n\mathbb Z,0\)</span>. In the triangle
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\mathbb Z[0]\xrightarrow n\mathbb Z[0]
+\xrightarrow jC_n\xrightarrow p\mathbb Z[1],
+\]">\[
+\mathbb Z[0]\xrightarrow n\mathbb Z[0]
+\xrightarrow jC_n\xrightarrow p\mathbb Z[1],
+\]</span>
+the degree-zero map <span class="math" data-tex="\(j\)">\(j\)</span> is identity into the cone's degree-zero term, so its cohomology map is the quotient <span class="math" data-tex="\(\mathbb Z\to\mathbb Z/n\mathbb Z\)">\(\mathbb Z\to\mathbb Z/n\mathbb Z\)</span>. The <span class="math" data-tex="\(p\)">\(p\)</span>-map has zero target in degree-zero cohomology. The sequence is
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\mathbb Z\xrightarrow n\mathbb Z
+\twoheadrightarrow\mathbb Z/n\mathbb Z\to0.
+\]">\[
+\mathbb Z\xrightarrow n\mathbb Z
+\twoheadrightarrow\mathbb Z/n\mathbb Z\to0.
+\]</span>
+Its middle and next exactness are the elementary kernel and quotient equations. The preceding cone group is <span class="math" data-tex="\(H^{-1}(C_n)=\ker(n:\mathbb Z\to\mathbb Z)=0\)">\(H^{-1}(C_n)=\ker(n:\mathbb Z\to\mathbb Z)=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the cone differential is zero. Hence <span class="math" data-tex="\(H^{-1}(C_0)=\mathbb Z\)">\(H^{-1}(C_0)=\mathbb Z\)</span> and <span class="math" data-tex="\(H^0(C_0)=\mathbb Z\)">\(H^0(C_0)=\mathbb Z\)</span>. The latter receives the identity from the second <span class="math" data-tex="\(\mathbb Z[0]\)">\(\mathbb Z[0]\)</span>; the preceding connecting map <span class="math" data-tex="\(H^{-1}(C_0)\to H^0(\mathbb Z[0])\)">\(H^{-1}(C_0)\to H^0(\mathbb Z[0])\)</span> is identity because the cone projection has positive identity on its shifted summand. The full relevant part is
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+0\to\mathbb Z\xrightarrow1\mathbb Z
+\xrightarrow0\mathbb Z\xrightarrow1\mathbb Z\to0.
+\]">\[
+0\to\mathbb Z\xrightarrow1\mathbb Z
+\xrightarrow0\mathbb Z\xrightarrow1\mathbb Z\to0.
+\]</span>
+This also verifies the signs and the two different cone degrees. The identity-stage unit is the identity cohomology map in both cases.</p>
+<p><strong>Exercise 3 (advanced: compose the two universal extensions).</strong> Let <span class="math" data-tex="\(\phi:\mathcal T\to\mathcal D\)">\(\phi:\mathcal T\to\mathcal D\)</span> and <span class="math" data-tex="\(\psi:\mathcal D\to\mathcal E\)">\(\psi:\mathcal D\to\mathcal E\)</span> be triangulated functors, both with cofinally small outgoing commas. Retain the exact filtered-colimit assumption on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Construct the canonical isomorphism
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Lan}_\psi(\operatorname{Lan}_\phi F)
+\xrightarrow{\sim}\operatorname{Lan}_{\psi\phi}F
+\tag{7.1}
+\]">\[
+\operatorname{Lan}_\psi(\operatorname{Lan}_\phi F)
+\xrightarrow{\sim}\operatorname{Lan}_{\psi\phi}F
+\tag{7.1}
+\]</span>
+for cohomological <span class="math" data-tex="\(F\)">\(F\)</span>. Specify it on all inner and outer legs, prove both inverse identities, and prove cohomology exactness.</p>
+<p><strong>Solution.</strong> The composite is triangulated, and right smallness composes by the complete <a href="exactness-through-comma-categories-and-small-kan-values.html#6-small-functors-and-full-cofinal-witnesses">small-composite theorem</a>. Thus all three extensions exist by Section 1. Put <span class="math" data-tex="\(L=\operatorname{Lan}_\phi F\)">\(L=\operatorname{Lan}_\phi F\)</span>, <span class="math" data-tex="\(H=\operatorname{Lan}_\psi L\)">\(H=\operatorname{Lan}_\psi L\)</span>, <span class="math" data-tex="\(N=\operatorname{Lan}_{\psi\phi}F\)">\(N=\operatorname{Lan}_{\psi\phi}F\)</span>. Write their legs as <span class="math" data-tex="\(\lambda^Y_{U,a}\)">\(\lambda^Y_{U,a}\)</span>, <span class="math" data-tex="\(\mu^Z_{Y,b}\)">\(\mu^Z_{Y,b}\)</span>, <span class="math" data-tex="\(\nu^Z_{U,c}\)">\(\nu^Z_{U,c}\)</span>.</p>
+<p>The composite's unit <span class="math" data-tex="\(F\to N\psi\phi\)">\(F\to N\psi\phi\)</span>, followed by the first adjunction, gives a transformation <span class="math" data-tex="\(L\to N\psi\)">\(L\to N\psi\)</span> whose component on <span class="math" data-tex="\(\lambda^Y_{U,a}\)">\(\lambda^Y_{U,a}\)</span> is <span class="math" data-tex="\(\nu^{\psi Y}_{U,\psi a}\)">\(\nu^{\psi Y}_{U,\psi a}\)</span>. The second adjunction gives <span class="math" data-tex="\(\kappa:H\to N\)">\(\kappa:H\to N\)</span> with
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+\kappa_Z\mu^Z_{Y,b}\lambda^Y_{U,a}
+=\nu^Z_{U,b\psi(a)}.
+\tag{7.2}
+\]">\[
+\kappa_Z\mu^Z_{Y,b}\lambda^Y_{U,a}
+=\nu^Z_{U,b\psi(a)}.
+\tag{7.2}
+\]</span>
+These are natural factors, and both sets of legs jointly determine the result.</p>
+<p>Conversely the units <span class="math" data-tex="\(F\to L\phi\to H\psi\phi\)">\(F\to L\phi\to H\psi\phi\)</span> give <span class="math" data-tex="\(\ell:N\to H\)">\(\ell:N\to H\)</span> with
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+\ell_Z\nu^Z_{U,c}
+=\mu^Z_{\phi U,c}\eta^\phi_U.
+\tag{7.3}
+\]">\[
+\ell_Z\nu^Z_{U,c}
+=\mu^Z_{\phi U,c}\eta^\phi_U.
+\tag{7.3}
+\]</span>
+Using <span class="math" data-tex="\(a=1_{\phi U}\)">\(a=1_{\phi U}\)</span> in (7.2) shows <span class="math" data-tex="\(\kappa\ell=1_N\)">\(\kappa\ell=1_N\)</span> on every <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-leg. For the other composite, (7.2)–(7.3) give
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\ell_Z\kappa_Z\mu^Z_{Y,b}\lambda^Y_{U,a}
+=\mu^Z_{\phi U,b\psi(a)}\eta^\phi_U.
+\]">\[
+\ell_Z\kappa_Z\mu^Z_{Y,b}\lambda^Y_{U,a}
+=\mu^Z_{\phi U,b\psi(a)}\eta^\phi_U.
+\]</span>
+The arrow <span class="math" data-tex="\(a:(\phi U,b\psi(a))\to(Y,b)\)">\(a:(\phi U,b\psi(a))\to(Y,b)\)</span> in the outer comma gives the right side as
+<span class="math" data-tex="\(\mu^Z_{Y,b}L(a)\eta^\phi_U\)">\(\mu^Z_{Y,b}L(a)\eta^\phi_U\)</span>.
+Equation (2.1) gives <span class="math" data-tex="\(L(a)\eta^\phi_U=\lambda^Y_{U,a}\)">\(L(a)\eta^\phi_U=\lambda^Y_{U,a}\)</span>. Thus <span class="math" data-tex="\(\ell\kappa=1_H\)">\(\ell\kappa=1_H\)</span> on each inner leg and then each outer leg. This proves (7.1) with its actual canonical maps. Theorem 5.1 applies first to <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, then to <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, and also to their composite. All three functors are additive and cohomological.</p>
+<p><strong>Exercise 4 (expert: reverse the limit hypothesis and both commas).</strong> Suppose instead that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> admits exact small cofiltered limits and every incoming comma <span class="math" data-tex="\((X\downarrow\phi)\)">\((X\downarrow\phi)\)</span> is co-initially small. Prove that the right Kan extension of a covariantly cohomological <span class="math" data-tex="\(F:\mathcal T\to\mathcal A\)">\(F:\mathcal T\to\mathcal A\)</span> exists and is additive and covariantly cohomological. Specify its counit and universal property.</p>
+<p><strong>Solution.</strong> Use the actual opposite triangulated categories, with inverse translation and the specified rotation signs proved in <a href="connecting-signs-and-opposite-triangle-structures.html#3-the-opposite-translation-and-its-complete-triangle-definition">Connecting signs and opposite triangle structures, Sections 3–6</a>. Its Exercise 4 constructs the comparison that makes <span class="math" data-tex="\(\phi^{\mathrm{op}}:\mathcal T^{\mathrm{op}}\to\mathcal D^{\mathrm{op}}\)">\(\phi^{\mathrm{op}}:\mathcal T^{\mathrm{op}}\to\mathcal D^{\mathrm{op}}\)</span> triangulated, retaining the inverse units and counits. The opposite target <span class="math" data-tex="\(\mathcal A^{\mathrm{op}}\)">\(\mathcal A^{\mathrm{op}}\)</span> is abelian: kernels and cokernels exchange, and the original coimage-to-image isomorphism, viewed oppositely, gives the required comparison.</p>
+<p>By the owned opposite definition, a distinguished triangle with first three objects <span class="math" data-tex="\(U,V,W\)">\(U,V,W\)</span> in <span class="math" data-tex="\(\mathcal T^{\mathrm{op}}\)">\(\mathcal T^{\mathrm{op}}\)</span> reverses to a distinguished triangle with first three objects <span class="math" data-tex="\(W,V,U\)">\(W,V,U\)</span> in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Applying <span class="math" data-tex="\(F\)">\(F\)</span> gives middle exactness of <span class="math" data-tex="\(FW\to FV\to FU\)">\(FW\to FV\to FU\)</span> in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Reversing that sequence gives middle exactness of <span class="math" data-tex="\(F^{\mathrm{op}}U\to F^{\mathrm{op}}V\to F^{\mathrm{op}}W\)">\(F^{\mathrm{op}}U\to F^{\mathrm{op}}V\to F^{\mathrm{op}}W\)</span> in <span class="math" data-tex="\(\mathcal A^{\mathrm{op}}\)">\(\mathcal A^{\mathrm{op}}\)</span>. Thus <span class="math" data-tex="\(F^{\mathrm{op}}\)">\(F^{\mathrm{op}}\)</span> is covariantly cohomological. Exact small cofiltered limits in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> are exact small filtered colimits in <span class="math" data-tex="\(\mathcal A^{\mathrm{op}}\)">\(\mathcal A^{\mathrm{op}}\)</span>, with short exact sequences reversed. Finally
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(\phi^{\mathrm{op}}\downarrow X)
+\cong(X\downarrow\phi)^{\mathrm{op}}
+\]">\[
+(\phi^{\mathrm{op}}\downarrow X)
+\cong(X\downarrow\phi)^{\mathrm{op}}
+\]</span>
+as whole categories: the labels <span class="math" data-tex="\(X\to\phi U\)">\(X\to\phi U\)</span> are the same, and both source arrows and their triangles reverse. The assumed co-initial smallness is therefore exactly the outgoing cofinal smallness needed for Theorem 5.1 on the opposites.</p>
+<p>Apply that theorem and reverse its result. It gives the functor
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.4); horizontal scroll when needed" data-tex="\[
+R_F(X)=\lim_{(U,u:X\to\phi U)\in(X\downarrow\phi)}FU.
+\tag{7.4}
+\]">\[
+R_F(X)=\lim_{(U,u:X\to\phi U)\in(X\downarrow\phi)}FU.
+\tag{7.4}
+\]</span>
+Its projections <span class="math" data-tex="\(\pi^X_{U,u}:R_F(X)\to FU\)">\(\pi^X_{U,u}:R_F(X)\to FU\)</span> satisfy
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\pi^{X&#x27;}_{U,u}R_F(a)=\pi^X_{U,ua}
+\quad(a:X\to X&#x27;),
+\]">\[
+\pi^{X&#x27;}_{U,u}R_F(a)=\pi^X_{U,ua}
+\quad(a:X\to X&#x27;),
+\]</span>
+and its counit is
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\varepsilon_U=\pi^{\phi U}_{U,1_{\phi U}}:
+R_F(\phi U)\to FU.
+\]">\[
+\varepsilon_U=\pi^{\phi U}_{U,1_{\phi U}}:
+R_F(\phi U)\to FU.
+\]</span>
+Reversing both inverse factors (2.4) gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.5); horizontal scroll when needed" data-tex="\[
+\operatorname{Nat}(G,R_F)
+\cong\operatorname{Nat}(G\phi,F).
+\tag{7.5}
+\]">\[
+\operatorname{Nat}(G,R_F)
+\cong\operatorname{Nat}(G\phi,F).
+\tag{7.5}
+\]</span>
+For <span class="math" data-tex="\(\tau:G\phi\to F\)">\(\tau:G\phi\to F\)</span>, the corresponding <span class="math" data-tex="\(\alpha:G\to R_F\)">\(\alpha:G\to R_F\)</span> is characterized by
+<span class="math" data-tex="\(\pi^X_{U,u}\alpha_X=\tau_UG(u)\)">\(\pi^X_{U,u}\alpha_X=\tau_UG(u)\)</span>;
+the inverse is <span class="math" data-tex="\((\varepsilon_U\alpha_{\phi U})_U\)">\((\varepsilon_U\alpha_{\phi U})_U\)</span>.
+The limit equations prove both naturalities and both inverse identities, or equivalently these are the exact reversals of the already-proved factors. Opposite additivity is the same Hom-group additivity. An original distinguished triangle with first three objects <span class="math" data-tex="\(X,Y,Z\)">\(X,Y,Z\)</span> determines an opposite distinguished triangle with first three objects <span class="math" data-tex="\(Z,Y,X\)">\(Z,Y,X\)</span>: fullness of translation supplies its last arrow through the specified inverse counit. The proved opposite cohomology exactness, reversed in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, is exactly middle exactness of <span class="math" data-tex="\(R_F(X)\to R_F(Y)\to R_F(Z)\)">\(R_F(X)\to R_F(Y)\to R_F(Z)\)</span>. Hence <span class="math" data-tex="\(R_F\)">\(R_F\)</span> has every asserted property.</p>
+<h2 id="8-freely-accessible-references">8. Freely accessible references</h2>
+<ul>
+<li>The Stacks Project Authors, <a href="https://stacks.math.columbia.edu/tag/04AX">Filtered colimits</a>, for the filtered-index conditions and common-stage equality test. The owned prerequisites supply the complete finite-diagram and module representative proofs used here.</li>
+<li>The Stacks Project Authors, <a href="https://stacks.math.columbia.edu/tag/079A">Grothendieck's AB conditions</a>, for the exact filtered-colimit convention. The theorem assumes the stated exactness directly; it needs no generator.</li>
+<li>The Stacks Project Authors, <a href="https://stacks.math.columbia.edu/tag/00DB">Homology and directed module colimits</a>, for the module case of exactness. The kernel argument in Lemma 4.1 treats the general abelian target through its two specified short exact sequences.</li>
+</ul>
+</main></body></html>

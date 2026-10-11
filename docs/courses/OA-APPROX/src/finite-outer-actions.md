@@ -4,9 +4,64 @@
 
 A finite group can act on the hyperfinite finite factor while every nonidentity element acts outerly. Averaging then produces a fixed algebra with finite-dimensional approximants. To see that this algebra is again a factor, we compute a relative commutant using finite Fourier coefficients.
 
-We use the tracial infinite product and the [finite AFD uniqueness theorem](hyperfinite-finite-factors.md). The foundational inputs are the finite trace GNS representation, \(JMJ=M'\), the bicommutant theorem and the fact that an ultraweakly closed ideal in a von Neumann algebra is a central summand. No classification theorem is used.
+We use the tracial infinite product and the [finite AFD uniqueness theorem](hyperfinite-finite-factors.md). The finite trace GNS representation is normal by the [full normal-GNS proof](../normal-representations-and-finite-trace-corners.html#normal-functional-gns-topology). We prove the exact tracial \(JMJ=M'\) and closed-kernel assertions below. [ST1–2](../../OA-FLOW/OA-FLOW-ST12.html#oa-flow.st.1) gives compact predual balls, closed faithful normal ranges and full-domain normal inverses. No classification theorem is used.
 
 An action satisfies \(\alpha_g\alpha_h=\alpha_{gh}\). Throughout Sections 1–3, \(M\) is a factor of type \(\mathrm{II}_1\), \(\tau\) is its normalized trace and \(G\) is finite. An automorphism is **outer** if it has no unitary implementer in \(M\).
+
+## 3. An explicit outer finite action
+
+For a finite group \(H\), form the tracial product
+\[
+R_H=\overline{\bigotimes_{(h,n)\in H\times\mathbb N}}
+(M_2,\operatorname{tr}).
+\tag{13}
+\]
+Let \(\beta_k\) move the algebra at \((h,n)\) to the algebra at \((kh,n)\). A permutation of the tensor coordinates preserves the product trace and extends to a normal automorphism. These maps satisfy \(\beta_k\beta_l=\beta_{kl}\).
+
+Put \(Z=\operatorname{diag}(1,-1)\) and let \(z_n\) be \(Z\) at \((e,n)\). Then \(\tau(z_n)=0\), \(\|z_n\|=\|z_n\|_2=1\), and \(z_n\) commutes eventually with every finite-coordinate element. For arbitrary \(x\in R_H\), choose a finite-coordinate \(a\) close in \(2\)-norm. Since
+\[
+\|[z_n,x]\|_2\le2\|x-a\|_2+\|[z_n,a]\|_2,
+\tag{14}
+\]
+the sequence is central.
+
+For \(k\ne e\), the sites \((e,n)\) and \((k,n)\) are different, and independence gives
+\[
+\|\beta_k(z_n)-z_n\|_2^2=2.
+\tag{15}
+\]
+If \(\beta_k=\operatorname{Ad}u\) with \(u\in R_H\), the left side would tend to zero by (14) with \(x=u\). Thus every nonidentity element acts outerly.
+
+The algebras supported on \(H\times\{1,\ldots,n\}\) are increasing invariant full matrix algebras. Theorems 2.1–2.2 show that \(R_H^H\) is another copy of \(R\) and that
+\[
+(R_H^H)'\cap R_H=\mathbb C1.
+\tag{16}
+\]
+For nontrivial \(H\), the inclusion is proper, since \(z_n\) is not fixed.
+
+## 4. Countable Bernoulli actions and the inverse index
+
+Let \(\Gamma\) be an infinite countable discrete group and use the tracial product \(R_\Gamma\) indexed by \(\Gamma\). The left Bernoulli action is
+\[
+\beta_h\!\left(\bigotimes_{g\in\Gamma}x_g\right)
+=\bigotimes_{g\in\Gamma}x_{h^{-1}g},
+\tag{17}
+\]
+where the entry on the right is placed at site \(g\). Thus a local element at site \(g\) moves to site \(hg\).
+
+**Proposition 4.1.** Formula (17) extends to a trace-preserving normal action, and \(\beta_h\) is outer for every \(h\ne e\).
+
+**Proof.** Coordinate permutation is a star automorphism of the algebraic local union, preserves its trace and has inverse \(\beta_{h^{-1}}\). Its trace GNS unitary extends it normally to the generated von Neumann algebra. On local tensors direct substitution gives \(\beta_h\beta_k=\beta_{hk}\), and normality extends the equality.
+
+Fix \(h\ne e\). Choose sites \(g_n\) so that both \(g_n\) and \(hg_n\) eventually avoid every fixed finite subset. This is possible by avoiding \(F\cup h^{-1}F\) at each step of an exhaustion. The \(Z\)-operators at \(g_n\) are central by the estimate (14), and their images are the \(Z\)-operators at the distinct sites \(hg_n\). Their \(2\)-distance is \(\sqrt2\). An inner automorphism would move them a distance tending to zero. \(\square\)
+
+Placing \(x_{hg}\) at site \(g\) instead defines
+\[
+\gamma_h=\beta_{h^{-1}},\qquad
+\gamma_h\gamma_k=\gamma_{kh}.
+\tag{18}
+\]
+Each map is an automorphism and is outer away from the identity, but the maps form an action of the opposite group. They give an action of \(\Gamma\) itself only when the relevant group elements commute. Formula (17) supplies the inverse needed for a left action.
 
 ## 1. Finite Fourier coefficients
 
@@ -74,11 +129,46 @@ P\longrightarrow(\rho(M)\cup V(G))'',
 \left\|\sum_g\rho(x_g)V_g\right\|
 \le\sum_g\|x_g\|\le |G|\|X\|,
 \]
-so this homomorphism is bounded, hence contractive by the \(C^*\)-identity. It is normal because there are finitely many normal coefficient maps. Its kernel is a central ideal in the factor \(P\), and it cannot be all of \(P\) because the map is unital. It is therefore zero. A faithful normal representation of a von Neumann algebra has ultraweakly closed range: its bounded balls are ultraweakly compact and their image is compact, and the inverse is normal. Thus the range is precisely the indicated generated algebra. \(\square\)
+so this homomorphism is bounded, hence contractive by the \(C^*\)-identity. It is normal because there are finitely many normal coefficient maps. Here is the full closed-ideal step. The normal map has an ultraweakly closed two-sided star kernel \(I\). For \(a\in I_+\), the contractions \(a(a+1/n)^{-1}\) belong to \(I\) and increase strongly to its support projection, so that support lies in \(I\). Finite joins of projections in \(I\) are supports of their positive sums, hence also lie in \(I\). Their increasing net has a supremum \(z\in I\). Unitary conjugation preserves \(I\) and its largest projection, so it fixes \(z\); the unitary span makes \(z\) central. The support of \(x^*x\) for every \(x\in I\) is below \(z\), giving \(x=xz\), and centrality gives \(x=zx\). Conversely \(z\in I\) gives \(Pz\subset I\). Thus \(I=Pz\). In the factor \(P\), the unital map excludes \(z=1\), so \(I=0\).
+
+For its range, apply the full proof [ST2](../../OA-FLOW/OA-FLOW-ST12.html#oa-flow.st.2). Its isometric image of the unit ball is ultraweakly compact. Kaplansky supplies bounded strong approximants from the image star algebra to any contraction in its bicommutant; the vector-series tail bound makes this an ultraweak limit in that compact ball. Thus the whole image equals its bicommutant. The inverse is normal on the entire domain by ST1’s linear predual criterion applied to its normal functionals, with no claim that an arbitrary ultraweakly convergent net is uniformly bounded. The range is precisely the indicated generated algebra. \(\square\)
 
 Finiteness is used in both the coefficient expansion and the norm bound. This proof does not supply an integrated isomorphism for arbitrary infinite groups.
 
+![Finite Fourier coefficients, the faithful normal realization and the fixed commutant.](../assets/finite-fourier-coefficients-and-fixed-commutant.svg)
+
+*Figure 1.* Equations (2)–(4) give all finite coefficients and their normal matrix slices. Lemma 1.3 proves the closed-kernel and full normal-range steps. Theorem 2.1 applies the same representation to the opposite factor, using the complete tracial identities (FJ1)–(FJ3), to obtain the displayed fixed relative commutant.
+
 ## 2. The fixed algebra and its relative commutant
+
+<a id="tracial-commutant"></a>
+
+**Tracial commutant, on the whole GNS space.** Write \(\Omega=\widehat1\), and use inner products linear in the first variable. The trace law makes \(J\widehat x=\widehat{x^*}\) an isometric conjugation on the dense set \(M\Omega\), so it extends to an antiunitary on its completion, with \(J^2=1\) and \(J\Omega=\Omega\). The vector \(\Omega\) separates \(M\) by trace faithfulness. It is cyclic for \(M'\): the projection onto \(\overline{M'\Omega}\) commutes with \(M'\), belongs to \(M\) by the bicommutant theorem, and its complementary projection annihilates \(\Omega\).
+
+For \(a\in M'\), pair against every \(z\Omega\), \(z\in M\). Commutation and antiunitarity give
+\[
+\langle JaJ\Omega,z\Omega\rangle
+ =\langle z^*\Omega,a\Omega\rangle
+ =\langle a^*z^*\Omega,\Omega\rangle
+ =\langle a^*\Omega,z\Omega\rangle.
+\tag{FJ1}
+\]
+Thus \(JaJ\Omega=a^*\Omega\). For \(a,b\in M'\), the same pairing gives
+\[
+\begin{aligned}
+\langle bJaJ\Omega,z\Omega\rangle
+ &=\langle a^*z^*\Omega,b^*\Omega\rangle\\
+ &=\langle z^*\Omega,aJbJ\Omega\rangle
+ =\langle JaJb\Omega,z\Omega\rangle .
+\end{aligned}
+\tag{FJ2}
+\]
+So \(bJaJ\Omega=JaJb\Omega\). Use this identity first with \(ac,b\), then with \(c,b\), where \(c\in M'\):
+\[
+bJaJ(Jc\Omega)=J(ac)Jb\Omega=JaJb(Jc\Omega).
+\tag{FJ3}
+\]
+The vectors \(JM'\Omega\) are dense. Both sides are bounded operators, hence \(JaJ\) commutes with every \(b\in M'\) on the whole space and belongs to \(M\). Conversely, \(JxJ(y\Omega)=yx^*\Omega\) for \(x,y\in M\); this right multiplication commutes with all left multipliers on the dense core, and hence everywhere. Thus \(JMJ\subset M'\) and \(JM'J\subset M\), giving \(JMJ=M'\). This proves exactly the finite-trace commutant input without an arbitrary-weight modular theorem.
 
 Let \(N=M^G=\{x:\alpha_g(x)=x\text{ for every }g\}\). On \(L^2(M,\tau)\), each action has the canonical unitary
 \[
@@ -124,64 +214,9 @@ E(x)=\frac1{|G|}\sum_{g\in G}\alpha_g(x)
 \]
 is normal, unital, completely positive, trace preserving and \(N\)-bimodular. It fixes \(N\), and trace invariance shows that it is the orthogonal projection onto \(L^2(N)\). In particular it contracts the \(2\)-norm. Also \(E(F_n)=F_n^G\), an increasing finite-dimensional algebra.
 
-For \(x\in N\), bounded elements of \(\bigcup_nF_n\) approximate \(x\) in \(2\)-norm by Kaplansky density. Their averages are bounded elements of \(\bigcup_nF_n^G\) and still approximate \(x\). Thus the latter union generates \(N\). This countable union makes \(N\) separable, and Theorem 2.1 and finite AFD uniqueness identify it with \(R\). \(\square\)
+For \(x\in N\), bounded elements of \(\bigcup_nF_n\) approximate \(x\) in \(2\)-norm by Kaplansky density. Their averages are bounded elements of \(\bigcup_nF_n^G\) and still approximate \(x\). Thus the latter union generates \(N\). The trace GNS vectors of the countable finite-dimensional union have a countable dense span, so the GNS space is separable. Its faithful normal representation makes \(N_*\) a quotient of the concrete Hilbert-tensor predual in CP6, which is separable on that Hilbert space. Hence \(N\) has separable predual, and Theorem 2.1 and finite AFD uniqueness identify it with \(R\). \(\square\)
 
 The same averaging argument works for an increasing invariant directed family of finite-dimensional algebras generating \(M\). It proves local AFD without imposing separability; the conclusion of isomorphism with the separable factor \(R\) uses the countable hypothesis.
-
-## 3. An explicit outer finite action
-
-For a finite group \(H\), form the tracial product
-\[
-R_H=\overline{\bigotimes_{(h,n)\in H\times\mathbb N}}
-(M_2,\operatorname{tr}).
-\tag{13}
-\]
-Let \(\beta_k\) move the algebra at \((h,n)\) to the algebra at \((kh,n)\). A permutation of the tensor coordinates preserves the product trace and extends to a normal automorphism. These maps satisfy \(\beta_k\beta_l=\beta_{kl}\).
-
-Put \(Z=\operatorname{diag}(1,-1)\) and let \(z_n\) be \(Z\) at \((e,n)\). Then \(\tau(z_n)=0\), \(\|z_n\|=\|z_n\|_2=1\), and \(z_n\) commutes eventually with every finite-coordinate element. For arbitrary \(x\in R_H\), choose a finite-coordinate \(a\) close in \(2\)-norm. Since
-\[
-\|[z_n,x]\|_2\le2\|x-a\|_2+\|[z_n,a]\|_2,
-\tag{14}
-\]
-the sequence is central.
-
-For \(k\ne e\), the sites \((e,n)\) and \((k,n)\) are different, and independence gives
-\[
-\|\beta_k(z_n)-z_n\|_2^2=2.
-\tag{15}
-\]
-If \(\beta_k=\operatorname{Ad}u\) with \(u\in R_H\), the left side would tend to zero by (14) with \(x=u\). Thus every nonidentity element acts outerly.
-
-The algebras supported on \(H\times\{1,\ldots,n\}\) are increasing invariant full matrix algebras. Theorems 2.1–2.2 show that \(R_H^H\) is another copy of \(R\) and that
-\[
-(R_H^H)'\cap R_H=\mathbb C1.
-\tag{16}
-\]
-For nontrivial \(H\), the inclusion is proper, since \(z_n\) is not fixed.
-
-## 4. Countable Bernoulli actions and the inverse index
-
-Let \(\Gamma\) be an infinite countable discrete group and use the tracial product \(R_\Gamma\) indexed by \(\Gamma\). The left Bernoulli action is
-\[
-\beta_h\!\left(\bigotimes_{g\in\Gamma}x_g\right)
-=\bigotimes_{g\in\Gamma}x_{h^{-1}g},
-\tag{17}
-\]
-where the entry on the right is placed at site \(g\). Thus a local element at site \(g\) moves to site \(hg\).
-
-**Proposition 4.1.** Formula (17) extends to a trace-preserving normal action, and \(\beta_h\) is outer for every \(h\ne e\).
-
-**Proof.** Coordinate permutation is a star automorphism of the algebraic local union, preserves its trace and has inverse \(\beta_{h^{-1}}\). Its trace GNS unitary extends it normally to the generated von Neumann algebra. On local tensors direct substitution gives \(\beta_h\beta_k=\beta_{hk}\), and normality extends the equality.
-
-Fix \(h\ne e\). Choose sites \(g_n\) so that both \(g_n\) and \(hg_n\) eventually avoid every fixed finite subset. This is possible by avoiding \(F\cup h^{-1}F\) at each step of an exhaustion. The \(Z\)-operators at \(g_n\) are central by the estimate (14), and their images are the \(Z\)-operators at the distinct sites \(hg_n\). Their \(2\)-distance is \(\sqrt2\). An inner automorphism would move them a distance tending to zero. \(\square\)
-
-Placing \(x_{hg}\) at site \(g\) instead defines
-\[
-\gamma_h=\beta_{h^{-1}},\qquad
-\gamma_h\gamma_k=\gamma_{kh}.
-\tag{18}
-\]
-Each map is an automorphism and is outer away from the identity, but the maps form an action of the opposite group. They give an action of \(\Gamma\) itself only when the relevant group elements commute. Formula (17) supplies the inverse needed for a left action.
 
 ## 5. Exercises with complete solutions
 
@@ -228,3 +263,5 @@ The substitution \(g\mapsto g^{-1}\) gives the second equality. Together with \(
 Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft. Section 5.2, printed pp.68–70, supplies the tracial Fourier construction and properly outer relative-commutant calculation. Exercise 5.11, printed p.81, asks for the normal faithful realization by canonical action unitaries. Sections 1–2 above give every finite coefficient, normality, factor-kernel and opposite-algebra commutant step explicitly, including an arbitrary faithful normal covariant representation and no separability hypothesis. Invariant finite stages then supply the complete AFD fixed-factor argument.
 
 The Bernoulli method is Example 5.2.4. With entries placed at the output index, its displayed \(x_{gh}\) convention composes in reverse order; (17) uses the inverse for a left action. The draft explicitly defines “countable group” to mean countably infinite in footnote 13, printed p.17. Its escaping-site proof uses that infinite index and a nontrivial tensor algebra. The examples above supply an infinite repeated index for a finite group, and Exercise 8 gives the finite-index matrix counterexample. The index and tensor-base hypotheses are explicit in the constructions above. Finite trace GNS duality, the bicommutant theorem, closed ideals and the tracial product remain declared foundations.
+
+Jesse Peterson, [*Notes on operator algebras*, April 27, 2020](https://math.vanderbilt.edu/peters10/teaching/spring2020/OperatorAlgebras.pdf#page=107), Proposition6.4.12, printed/PDF p.107, gives the full tracial conjugation/commutant method. The proof above spells out the dense commutant orbit, every operator pairing and its extension to the whole Hilbert space. It consumes only this finite-trace contract. Normal GNS, concrete preduals and bounded density retain their exact earlier proofs; no standard-representation amplification or arbitrary-weight modular theorem fills this argument.

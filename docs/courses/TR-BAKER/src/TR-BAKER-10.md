@@ -11286,7 +11286,467 @@ The proof here supplies this full rank-one application independently
 of the omitted general second-constant proof. Rank at least two
 and the general coefficient profile remain separate requirements.
 
-## 54. Exercises with solutions
+## 54. Sharp two-logarithm constants with the E-parameter
+
+The determinant comparison (10.40) contains considerably more information than the parameter choice used in Theorem 10.11. We now use smaller rectangles to obtain the constants \(36.1\) and \(53.8\), while keeping the coefficient ordering and the exponential domain explicit. The two constants accompany different cutoffs; a smaller numerical constant need not give the better bound for a particular pair.
+
+**Lemma 10.164 (factorials and the common p-part).** For an integer \(K\ge2\), put
+\[
+Q_K=\left(\prod_{j=1}^{K-1}j!\right)^{-2/(K(K-1))}.
+\tag{10.541}
+\]
+Then
+\[
+Q_K\le\frac{\mathrm e^{3/2}}{K-1}.
+\tag{10.542}
+\]
+If \(a\ge1\) and \(b\ge1\), then
+\[
+\ln b\le a\max\{\ln(b/a),1\}.
+\tag{10.543}
+\]
+Consequently, for \(a_i\ge1\), \(g\ge1\), \(q=E\ln p>0\), \(z=ga_1a_2\), positive integer coefficients \(b_i\), and
+\[
+\mathcal D=\frac{b_1}{a_2}+\frac{b_2}{a_1},\qquad
+qB\ge\max\{\ln\mathcal D+2/5,5\},
+\tag{10.544}
+\]
+the integer \(u=v_p(\gcd(b_1,b_2))\) satisfies
+\[
+u\le EzB.
+\tag{10.545}
+\]
+
+**Proof.** Write \(n=K-1\). Monotonicity of \(\ln x\) gives
+\(\ln(j!)\ge\int_1^j\ln x\,dx=j\ln j-j+1\).
+The function \(x\ln x\) is convex on \([1,\infty)\), so its trapezoid sums dominate its integral:
+\[
+\sum_{j=1}^{n}j\ln j
+\ge\int_1^n x\ln x\,dx+\frac{n\ln n}{2}
+=\frac{n(n+1)}2\ln n-\frac{n^2}{4}+\frac14.
+\tag{10.546}
+\]
+Summing the factorial bounds therefore gives
+\[
+\sum_{j=1}^{n}\ln(j!)
+\ge\frac{n(n+1)}2\ln n-\frac{3n^2}{4}+\frac n2+\frac14
+\ge\frac{n(n+1)}2(\ln n-3/2).
+\tag{10.547}
+\]
+Exponentiation proves the first assertion, including \(n=1\).
+
+If \(b\le\mathrm e a\), then \(\ln b\le1+\ln a\le a\). If \(b>\mathrm e a\), the inequality
+\[
+(a-1)\ln b-a\ln a
+\mathrel{>}(a-1)(1+\ln a)-a\ln a
+=a-1-\ln a\ge0
+\tag{10.548}
+\]
+proves the second assertion for \(a>1\); at \(a=1\) it is immediate. Finally \(p^u\mid b_1\), and \(\ln(b_1/a_2)\le\ln\mathcal D<qB\), with \(qB\ge5\). Thus
+\[
+u\le\frac{\ln b_1}{\ln p}
+\le\frac{a_2qB}{\ln p}=Ea_2B\le EzB.
+\tag{10.549}
+\]
+\(\square\)
+
+**Theorem 10.165 (sharp rational E-parameter estimates).** Let \(\alpha_1,\alpha_2\) be multiplicatively independent nonzero rational p-adic units. Let \(g\) be the least positive integer such that
+\[
+v_p(\alpha_1^g-1)>0,\qquad v_p(\alpha_2^g-1)>0.
+\tag{10.550}
+\]
+For odd \(p\), this integer divides \(p-1\); for \(p=2\) it is one. Suppose
+\[
+v_p(\alpha_1^g-1)\ge E>\frac1{p-1}.
+\tag{10.551}
+\]
+Let \(b_1,b_2\) be nonzero integers, put \(u=v_p(\gcd(b_1,b_2))\), and suppose
+\[
+p\nmid b_2/p^u.
+\tag{10.552}
+\]
+When \(p=2\), also suppose \(v_2(\alpha_2-1)\ge2\). Choose real numbers \(A_i>1\) with
+\[
+\ln A_i\ge\max\{h(\alpha_i),E\ln p\},\qquad
+B'=\frac{|b_1|}{\ln A_2}+\frac{|b_2|}{\ln A_1}.
+\tag{10.553}
+\]
+For \(\nu=6,4\), define
+\[
+H_\nu=\max\{\ln B'+\ln(E\ln p)+2/5,\ \nu E\ln p,\ 5\}.
+\tag{10.554}
+\]
+Then both estimates hold:
+\[
+\begin{aligned}
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+&\le36.1\,\frac{g}{E^3(\ln p)^4}\,
+\ln A_1\ln A_2\,H_6^2,\\
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+&\le53.8\,\frac{g}{E^3(\ln p)^4}\,
+\ln A_1\ln A_2\,H_4^2.
+\end{aligned}
+\tag{10.555}
+\]
+The coefficient-ordering requirement may be omitted if **both**
+\(v_p(\alpha_i^g-1)\ge E>1/(p-1)\). In that case the pair can be reordered to make \(b_2/p^u\) a unit; for \(p=2\) both bases are already in the required exponential domain.
+
+**Proof.** Negative coefficients are made positive by inverting the corresponding bases. This preserves heights, residue orders, independence, and all stated precision conditions. Use the notation
+\[
+q=E\ln p,\qquad a_i=\frac{\ln A_i}{q}\ge1,\qquad
+z=ga_1a_2\ge1,\qquad B=\frac{H_\nu}{q}.
+\tag{10.556}
+\]
+Then \(B\ge\nu\), \(qB\ge5\), and \(qB\ge\ln\mathcal D+2/5\), where \(\mathcal D=B'q\). Lemma 10.164 gives \(u\le EzB\).
+
+The principal-unit and error-term argument leading to (10.40) uses only \(p\nmid g\), the stated first-base precision, the integral ratio \(b_1'/b_2'\), and the exponential domain of the second base. It therefore works with this exact common residue order, rather than the possibly larger \(p-1\). Its sufficient inequality is still (10.40), and its conclusion under the two cardinalities is
+\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})<E(N-1/2)+u.
+\tag{10.557}
+\]
+In particular no assumption of precision \(E\) for the second logarithm is silently inserted.
+
+For the two choices use the following parameters:
+\[
+\begin{array}{c|cc}
+\nu&k&\ell\\ \hline
+6&47/10&12/5\\
+4&11/2&5/2
+\end{array}
+\qquad L=\lfloor\ell B\rfloor+2,\quad K=\lfloor kzL\rfloor+1.
+\tag{10.558}
+\]
+Set
+\[
+\begin{aligned}
+R_1&=\lfloor\sqrt{gLa_2/a_1}\rfloor+1,&
+S_1&=\lfloor\sqrt{gLa_1/a_2}\rfloor+1,\\
+R_2&=\lfloor\sqrt{g(K-1)La_2/a_1}\rfloor+1,&
+S_2&=\lfloor\sqrt{g(K-1)La_1/a_2}\rfloor+1.
+\end{aligned}
+\tag{10.559}
+\]
+Put \(R=R_1+R_2-1\), \(S=S_1+S_2-1\), \(N=KL\). Since \(\lfloor x\rfloor+1>x\), the first rectangle has more than \(gL\) points, and the second has more than \(g(K-1)L\). Independence makes its multiplicative labels injective. Pigeonholing the first rectangle by its \(g\) residue classes provides the first cardinality in (10.18). If the second rectangle's linear labels are injective in every residue class, pigeonholing also provides the second cardinality.
+
+We first treat this injective case. The rounded sides satisfy
+\[
+(R-1)a_1,\ (S-1)a_2
+\le\sqrt{zL}\bigl(1+\sqrt{K-1}\bigr).
+\tag{10.560}
+\]
+Thus Lemma 10.164 and the definition (10.15) imply
+\[
+\beta\le
+\frac{\mathrm e^{3/2}}{2\sqrt{k}}\,
+\frac{(1+\sqrt{K-1})\sqrt K}{K-1}\,\mathcal D.
+\tag{10.561}
+\]
+Here \(L\ge16,K\ge76\) when \(\nu=6\), and \(L\ge12,K\ge67\) when \(\nu=4\). For \(K\ge67\),
+\[
+\frac{(1+\sqrt{K-1})\sqrt K}{K-1}
+=\left(1+\frac1{\sqrt{K-1}}\right)
+\sqrt{1+\frac1{K-1}}
+<\frac98\,\frac{81}{80}<\frac65.
+\tag{10.562}
+\]
+The elementary bounds \(\mathrm e^{11/10}<10/3\) and \(k>4\) consequently give
+\[
+\ln\beta<\ln\mathcal D+2/5\le qB.
+\tag{10.563}
+\]
+These exponential bounds can also be verified directly from their series: after term \(M\), the tail is at most
+\((x^{M+1}/(M+1)!)/(1-x/(M+2))\), when \(0<x<M+2\).
+
+The height contribution in (10.40), divided by \(q\), is at most
+\[
+\frac L2\bigl((R-1)a_1+(S-1)a_2\bigr)
+\le \sqrt{k}\,zL^2+L\sqrt{zL}.
+\tag{10.564}
+\]
+After removing \((K-1)B\) from the comparison's two sides and dividing by \(zL^2\), it therefore suffices to prove
+\[
+k\left(1-\frac{B+1}{L}\right)
+\mathrel{>}\sqrt{k}+\frac1{\sqrt L}
+\mathbin{+}\frac{3B\ln(kL^2+L)}{5L^2}.
+\tag{10.565}
+\]
+Indeed \(K>kzL\), \(L-1-B>0\), and \(qB\ge5\). Also
+\(\ln(kzL^2+L)/z\) decreases for \(z\ge1\): its derivative has the sign of
+\(kzL^2/(kzL^2+L)-\ln(kzL^2+L)<0\).
+This justifies replacing \(z\) by one only in this upper envelope.
+
+From \(L>\ell B+1\) and \(B\ge\nu\) we obtain
+\[
+\frac{B+1}{L}<\frac{\nu+1}{\ell\nu+1}.
+\tag{10.566}
+\]
+Furthermore \(B<L/\ell\), and \(\ln(kL^2+L)/L\) decreases throughout either range of \(L\). Its derivative has the sign of
+\((2kL+1)/(kL+1)-\ln(kL^2+L)<0\), since the first term is less than two and the second exceeds two. The following exact bounds finish the sufficient comparison:
+\[
+\begin{array}{c|c|c|c|c}
+\nu&\text{left lower bound}&\sqrt{k}\text{ upper}
+&L^{-1/2}\text{ upper}&\text{logarithmic upper}\\ \hline
+6&141/55&217/100&1/4&9/80\\
+4&3&47/20&3/10&67/500
+\end{array}
+\tag{10.567}
+\]
+For the logarithmic entries use
+\(\ln((47/10)16^2+16)<36/5\) and
+\(\ln((11/2)12^2+12)<67/10\), respectively. The square comparisons and the exponential-series bound just given establish every entry. The sum of the three upper bounds is \(1013/400<141/55\) in the first row, and \(348/125<3\) in the second. Thus (10.40) holds.
+
+The resulting valuation bound satisfies
+\[
+\frac{EN+u}{EzB^2}
+\le k\left(\ell+\frac2\nu\right)^2
+\mathbin{+}\frac{\ell+2/\nu}{\nu}+\frac1\nu
+\mathrel{=}
+\begin{cases}
+80407/2250<36.1,&\nu=6,\\
+101/2<53.8,&\nu=4.
+\end{cases}
+\tag{10.568}
+\]
+This covers the injective alternative for every real height scale, not only a finite parameter sample.
+
+It remains to treat a collision of the linear labels within a residue class. Put \(n=\gcd(b_1,b_2)\), \(r_0=b_1/n\), \(s_0=b_2/n\), and \(\sigma=\alpha_1^{r_0}\alpha_2^{-s_0}\). If \(q_0\) is the order of the residue of \(\sigma\), the two colliding points give
+\[
+q_0\mid g,\qquad q_0r_0\le R_2-1,\qquad
+q_0s_0\le S_2-1.
+\tag{10.569}
+\]
+To see the latter inequalities, their differences are \(t(r_0,-s_0)\) for a nonzero integer \(t\). Equality of their residue classes forces \(q_0\mid t\), while both coordinate differences lie within the rectangle.
+
+If \(q_0\nmid n\), the difference has valuation zero. Otherwise \(\sigma^{q_0}\) is a deep principal unit, and the power law of Lesson 9, with \(p\nmid q_0\), gives
+\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+=u+v_p(\sigma^{q_0}-1).
+\tag{10.570}
+\]
+Independence ensures \(\sigma^{q_0}\ne1\). The one-place height bound applied to \(X-1\) yields
+\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+\le u+E\bigl((R_2-1)a_1+(S_2-1)a_2\bigr)
+\mathbin{+}\frac{\ln2}{\ln p}
+\le u+2E\sqrt{k}\,zL+\frac{\ln2}{\ln p}.
+\tag{10.571}
+\]
+Consequently its quotient by \(EzB^2\) is at most
+\[
+\frac1\nu+
+\frac{2\sqrt{k}}{\nu}\left(\ell+\frac2\nu\right)
+\mathbin{+}\frac{\ln2}{5\nu}
+<\begin{cases}3,&\nu=6,\\4,&\nu=4.\end{cases}
+\tag{10.572}
+\]
+Here we used \(z\ge1\), \(qB\ge5\), and \(\ln2<7/10\). Both desired constants exceed these bounds.
+
+Finally
+\[
+EzB^2=\frac{g}{E^3(\ln p)^4}\ln A_1\ln A_2\,H_\nu^2.
+\tag{10.573}
+\]
+This proves the two stated estimates. If both bases have precision \(E\), one of the coefficients after removal of the common p-part is a unit; reordering makes it the second coefficient without losing any precision or convergence hypothesis. \(\square\)
+
+![Guaranteed determinant margins and valuation coefficients for the two E-parameter bounds](../figures/sharp-E-parameter-budget.png)
+
+*Figure 10.47. Theorem 10.165 uses \(k=47/10,\ell=12/5\) for \(\nu=6\), and \(k=11/2,\ell=5/2\) for \(\nu=4\). Left: the proved lower envelope \(m_\nu(B)=k(1-(B+1)/L)-\sqrt{k}-L^{-1/2}-3B\ln(kL^2+L)/(5L^2)\), with \(L=\lfloor\ell B\rfloor+2\), remains positive for all \(B\ge\nu\). Right: the proved upper envelope \(k(L/B)^2+L/B^2+1/B\) for \((EN+u)/(EzB^2)\) stays below the displayed constants. The teeth come from the integer rectangle size. The plots display \(4\le B\le20\); the monotonicity and rational inequalities in the proof establish the whole infinite ranges, including every \(z\ge1\) and \(qB\ge5\). The collision alternative has the separate bounds three and four. Human-source context: Bugeaud–Laurent's freely accessible 1996 paper and Bugeaud's freely accessible 1999 paper; the complete parameter proof and coefficient-ordering correction are given here. [Figure program](../figure_sources/sharp_E_parameter_budget.py).*
+
+For a concrete family, take \(p=5\), \(\alpha_1=1+5^m\), \(\alpha_2=1+2\cdot5^m\), \(b_1=b_2=1\), \(m\ge1\). The two positive integer bases are coprime, since their second minus twice their first is \(-1\); primes dividing either base then prove independence. Their common residue order is \(g=1\), both have precision \(E=m\), and the difference has valuation exactly \(m\). With \(\ln A_i=h(\alpha_i)\), both height cutoffs are attained by \(\nu E\ln5\). Thus the two bounds give
+\[
+m\le1299.6\,
+\frac{\ln(1+5^m)\ln(1+2\cdot5^m)}{m(\ln5)^2},
+\qquad
+m\le860.8\,
+\frac{\ln(1+5^m)\ln(1+2\cdot5^m)}{m(\ln5)^2}.
+\tag{10.574}
+\]
+The bound involving \(53.8\) is stronger in this family because its height cutoff is four rather than six.
+
+## 55. The rational 2-adic bound across both unit classes
+
+The 2-adic boundary does not require pretending that every principal unit belongs to the exponential domain. There are two rational unit classes modulo four. A sign change moves either class into that domain, and the sign remaining in the linear form determines whether a logarithmic estimate is needed.
+
+**Corollary 10.166 (the rational 2-adic estimate).** Let \(\alpha_1,\alpha_2\) be multiplicatively independent nonzero rationals with \(v_2(\alpha_i)=0\). Let \(b_1,b_2\) be nonzero integers, choose \(A_i>1\) with
+\[
+\ln A_i\ge\max\{h(\alpha_i),\ln2\},
+\qquad B'=\frac{|b_1|}{\ln A_2}+\frac{|b_2|}{\ln A_1},
+\qquad T=\max\{\ln B'+1/25,10\}.
+\tag{10.575}
+\]
+Then
+\[
+v_2(\alpha_1^{b_1}-\alpha_2^{b_2})
+\le208\,\ln A_1\ln A_2\,T^2.
+\tag{10.576}
+\]
+There is no coefficient-ordering requirement and no additional restriction on either residue class modulo four.
+
+**Proof.** A rational 2-adic unit has an odd numerator and odd denominator, so its reduction modulo four is either one or three. Choose \(\eta_i\in\{1,-1\}\) such that
+\[
+\beta_i=\eta_i\alpha_i\in1+4\mathbb Z_2,\qquad
+\eta=\eta_1^{b_1}\eta_2^{-b_2},\qquad
+\frac{\alpha_1^{b_1}}{\alpha_2^{b_2}}
+=\eta\,\frac{\beta_1^{b_1}}{\beta_2^{b_2}}.
+\tag{10.577}
+\]
+The new bases have the same heights and are independent: squaring a relation among the \(\beta_i\) would give a relation among the original bases, with both exponents doubled. Inverses and integer powers preserve \(1+4\mathbb Z_2\).
+
+If \(\eta=-1\), the ratio on the right is three modulo four. Subtracting one gives valuation exactly one. This already satisfies the asserted bound, since \(\ln A_i\ge\ln2>69/100\) and \(T\ge10\).
+
+Suppose \(\eta=1\). First enlarge each prescribed logarithmic height by the same \(\varepsilon>0\), writing \(a_{i,\varepsilon}=\ln A_i+\varepsilon\), and define
+\[
+E_\varepsilon=\min\{2,a_{1,\varepsilon}/\ln2,a_{2,\varepsilon}/\ln2\}>1,
+\qquad q_\varepsilon=E_\varepsilon\ln2.
+\tag{10.578}
+\]
+Both \(\beta_i\) have precision at least two, hence at least \(E_\varepsilon\). The common residue order is one. The both-deep alternative of Theorem 10.165 applies to these bases and all coefficient sizes, after the necessary reordering. In particular its bound already includes the common p-part of the coefficients.
+
+Let \(B'_\varepsilon=|b_1|/a_{2,\varepsilon}+|b_2|/a_{1,\varepsilon}\), and \(T_\varepsilon=\max\{\ln B'_\varepsilon+1/25,10\}\). Since
+\(q_\varepsilon\le2\ln2<7/5<\mathrm e^{2/5}\),
+the cutoff for \(\nu=6\) satisfies
+\[
+\begin{aligned}
+H_{6,\varepsilon}
+&=\max\{\ln B'_\varepsilon+\ln q_\varepsilon+2/5,\ 6q_\varepsilon,\ 5\}\\
+&\le T_\varepsilon+19/25
+<\frac{11}{10}T_\varepsilon.
+\end{aligned}
+\tag{10.579}
+\]
+Indeed the logarithmic term is less than \(T_\varepsilon+19/25\), whereas \(6q_\varepsilon<42/5<10\le T_\varepsilon\) and \(5\le T_\varepsilon\).
+
+The first estimate in Theorem 10.165 consequently gives
+\[
+\begin{aligned}
+v_2(\alpha_1^{b_1}-\alpha_2^{b_2})
+&\le\frac{36.1(11/10)^2}{E_\varepsilon^3(\ln2)^4}
+a_{1,\varepsilon}a_{2,\varepsilon}T_\varepsilon^2\\
+&<\frac{4368100000}{22667121}
+a_{1,\varepsilon}a_{2,\varepsilon}T_\varepsilon^2
+<208\,a_{1,\varepsilon}a_{2,\varepsilon}T_\varepsilon^2.
+\end{aligned}
+\tag{10.580}
+\]
+The rational coefficient uses \(E_\varepsilon>1\) and \(\ln2>69/100\); its gap below \(208\) is \(346661168/22667121>0\). The bound on \(\ln2\) follows by comparing the exponential series at \(69/100\) and \(7/10\) with two, using the tail estimate in Theorem 10.165. Now let \(\varepsilon\) decrease to zero. The reciprocal heights, logarithm and maximum defining \(T_\varepsilon\) are continuous at the positive prescribed heights. This yields the desired inequality even when a prescribed height is exactly \(\ln2\). \(\square\)
+
+![The two sign cases and exact example valuations for the rational 2-adic bound](../figures/two-adic-sign-bound.png)
+
+*Figure 10.48. Left: the exact sign decomposition in Corollary 10.166 sends both bases into \(1+4\mathbb Z_2\). An odd remaining sign gives valuation one; an even sign uses the fully proved both-deep estimate with coefficient below \(208\). Right: exact integer valuations \(v_2(3^{b_1}-5^{b_2})\), \(1\le b_i\le10\). Here \(\eta_1=-1,\eta_2=1\), so every odd \(b_1\) gives valuation one, while the even columns require the deep-unit argument. Every cell is calculated by dividing the nonzero integer difference by two until it becomes odd. This finite example illustrates the two cases; the proof covers all independent rational units, signed nonzero exponents, and prescribed heights at their lower boundary. Human-source context: the rational 2-adic constant in Bugeaud's freely accessible 1999 Theorem 2; the complete sign-normalization proof is given here. [Figure program](../figure_sources/two_adic_sign_bound.py).*
+
+## 56. The constant 283 for Fermat differences and arbitrary powers
+
+For the special coefficients \(p-1,p-1\), their common p-part is zero and their logarithmic size is small enough to use a fixed rectangle height. This supplies the constant \(283\) directly from the proved determinant machinery, including the one-base case.
+
+**Theorem 10.167 (Fermat differences and arbitrary powers).** Let \(a>b\ge1\) be coprime integers, and let \(p\) be an odd prime not dividing \(ab\). Then
+\[
+v_p(a^{p-1}-b^{p-1})
+\le\frac{1631}{6}\,\frac{p-1}{(\ln p)^2}\ln(5a)\ln(5b)
+<283\,\frac p{(\ln p)^2}\ln(5a)\ln(5b).
+\tag{10.581}
+\]
+For every integer \(n\ge1\),
+\[
+v_p(a^n-b^n)
+\le283\,\frac p{(\ln p)^2}\ln(5a)\ln(5b)+v_p(n).
+\tag{10.582}
+\]
+
+**Proof.** We first prove a determinant bound for any independent rational p-adic units \(\alpha_1,\alpha_2\) whose chosen logarithmic height bounds \(H_i\) satisfy \(H_1>2\), \(H_2>3/2\). Set
+\[
+g=p-1,\quad q=\ln p>1,\quad
+a_i=H_i/q>0,\quad z=ga_1a_2,\quad
+b_1=b_2=g,\quad E=1,\quad u=0.
+\tag{10.583}
+\]
+Here \(z>3\). Indeed \(\ln^2p<p-1\): for \(x>1\), the function
+\(\sqrt x-1/\sqrt x-\ln x\) vanishes at one and has derivative
+\((\sqrt x-1)^2/(2x^{3/2})>0\). Hence
+\(\ln^2x<(x-1)^2/x<x-1\).
+Now \(g/(\ln p)^2>1\) and \(H_1H_2>3\).
+
+Fermat's theorem and the principal-unit decomposition of Lesson 9 put both principal factors in \(1+p\mathbb Z_p\), with precision at least \(E=1>1/(p-1)\). The coefficient \(b_2=g\) is a p-adic unit. Thus the analytic and arithmetic determinant comparison (10.40) applies. Its derivation requires positive chosen height bounds above the actual heights; the separate restriction \(a_i\ge1\) in Theorem 10.165 was used to simplify that theorem's parameter envelopes, and is not imposed here.
+
+Take
+\[
+L=7,\qquad k=11/2,\qquad K=\lfloor kzL\rfloor+1,
+\tag{10.584}
+\]
+and use the four rounded square-root sides from Theorem 10.165 with these positive \(a_i\). Its cardinality argument depends only on the products of these sides, so it still supplies the first residue-class cardinality and, in the injective alternative, the second one. Its two side-height bounds and factorial calculation also apply unchanged:
+\[
+(R-1)a_1,\ (S-1)a_2
+\le\sqrt{zL}(1+\sqrt{K-1}),\qquad
+\ln\beta<\ln\mathcal D+2/5,
+\tag{10.585}
+\]
+where \(\mathcal D=gq(1/H_1+1/H_2)\). For the latter inequality, \(K\ge116>67\) and \(k>4\), so the exact factorial and square-root comparisons in Lemma 10.164 and Theorem 10.165 apply.
+
+Since \(1/H_1+1/H_2<7/6<6/5\) and \(\ln(6/5)<1/5\),
+\[
+\ln\beta<\ln g+\ln q+3/5
+<q+\ln q+3/5<2q.
+\tag{10.586}
+\]
+The last inequality uses \(q-\ln q\ge1\), proved by differentiating from its minimum at \(q=1\). Dividing (10.40) by \(q\), we may therefore remove \((K-1)B\) with \(B=2\). After division by \(zL^2\), a sufficient comparison is
+\[
+\frac{22}{7}
+\mathrel{>}\sqrt{11/2}+\frac1{\sqrt{zL}}
+\mathbin{+}\frac{3\ln(kzL^2+L)}{qzL^2}.
+\tag{10.587}
+\]
+The logarithmic quotient decreases with \(z\ge3\), by the derivative calculation in Theorem 10.165. Using \(q>1\), \(z>3\), \(L=7\), \(\sqrt{11/2}<47/20\), \(1/\sqrt{21}<1/4\), and
+\(\ln((11/2)3\cdot7^2+7)<7\), its right side is less than
+\[
+\frac{47}{20}+\frac14+\frac17
+=\frac{96}{35}<\frac{22}{7}.
+\tag{10.588}
+\]
+The gap is exactly \(2/5\). The logarithmic comparison follows from the exponential series at seven, whose finite sum already exceeds \((11/2)3\cdot7^2+7=1631/2\). Thus the sufficient inequality holds and
+\[
+v_p(\alpha_1^g-\alpha_2^g)<N
+\le kzL^2+L
+<\left(\frac{539}{2}+\frac73\right)z
+=\frac{1631}{6}z.
+\tag{10.589}
+\]
+
+In the collision alternative, the residue-order argument in Theorem 10.165 gives instead
+\[
+v_p(\alpha_1^g-\alpha_2^g)
+\le2\sqrt{k}\,zL+\frac{\ln2}{q}
+<\left(\frac{329}{10}+\frac7{30}\right)z
+<34z<\frac{1631}{6}z.
+\tag{10.590}
+\]
+It uses \(u=0\), \(z>3\), \(q>1\), and \(\ln2<7/10\), and includes the possibility of valuation zero. This proves the determinant bound in both alternatives.
+
+If \(b>1\), the coprime positive integer bases \(a,b\) are independent, as proved in Corollary 10.9. Choose \(H_1=\ln(5a)\), \(H_2=\ln(5b)\); these dominate their heights and both exceed two. The bound just proved gives the first asserted inequality.
+
+If \(b=1\), use the auxiliary prime from Corollary 10.10: some \(c\in\{2,3,5\}\) is different from \(p\) and independent of \(a\), and the rational bases \(a/c,1/c\) are independent p-adic units. Choose \(H_1=\ln(5a)>2\) and \(H_2=\ln5>3/2\). They dominate the two rational heights. The exact identity
+\[
+(a/c)^{p-1}-(1/c)^{p-1}
+=c^{-(p-1)}(a^{p-1}-1)
+\tag{10.591}
+\]
+preserves valuation because \(p\nmid c\). This proves the first inequality with \(b=1\) as well. Its replacement by the constant \(283\) follows from \(1631/6<283\) and \(p-1<p\).
+
+Finally let \(d_0\) be the order of \(a/b\) in the multiplicative group of the residue field. If \(d_0\nmid n\), the difference has valuation zero. Otherwise \(d_0\mid p-1\), and the odd-prime deep power law from Lesson 9 gives
+\[
+\begin{aligned}
+v_p(a^n-b^n)
+&=v_p((a/b)^{d_0}-1)+v_p(n),\\
+v_p(a^{p-1}-b^{p-1})
+&=v_p((a/b)^{d_0}-1).
+\end{aligned}
+\tag{10.592}
+\]
+The powers of \(b\) are units, and \((p-1)/d_0\) is prime to \(p\), which justifies the second identity. Apply the first part to conclude. \(\square\)
+
+![The fixed rectangle budgets proving the constant 283](../figures/fermat-283-bound.png)
+
+*Figure 10.49. Theorem 10.167 uses \(E=1\), \(g=p-1\), \(L=7\), \(k=11/2\), \(z=gH_1H_2/(\ln p)^2>3\), and \(q=\ln p>1\). Left: the sufficient determinant comparison has left lower bound \(22/7\) and right upper bound \(47/20+1/4+1/7=96/35\), with exact gap \(2/5\). The three colored pieces bound the height contribution, rounded-side error and logarithmic term. Right: \(N/z\) is at most \(539/2+7/3=1631/6<283\); the collision case has the smaller bound \(34\). These are proved uniform budgets, not measured valuations. The coprime two-base case and the \(b=1\) auxiliary-prime construction use the same parameters and both satisfy \(H_1>2,H_2>3/2\). Human-source context: the free Bugeaud–Laurent and Bugeaud determinant papers and Yamada's freely accessible note; the complete proof, including the one-base case, is given here. [Figure program](../figure_sources/fermat_283_bound.py).*
+
+## 57. Exercises with solutions
 
 1. **Easy.** Explain exactly how nonunit bases can be reduced to unit bases. Give an example showing that the conclusion of Theorem 10.8 cannot be extended unchanged to nonunits.
 2. **Medium.** Derive (10.34) from (10.22), including the maximum in \(H\).
@@ -11463,6 +11923,12 @@ and its original residue index. For coefficients \((0,5^k)\),
 inequality \(\alpha_n>3n/2\) from the two scalar facts
 \(\alpha_2>3\) and \(F_{n+1}>3F_n\), and explain how the
 strict exponent and residue-height budgets add to \(1/4000\).
+
+68. **(Medium: ordering, residue order and the two cutoffs.)** For \(p=5\), \(\alpha_1=1+5^m\), \(\alpha_2=1+2\cdot5^m\), and \(b_1=b_2=1\), verify all hypotheses of Theorem 10.165, determine \(g,E,u,H_6,H_4\), and calculate the exact difference valuation. Which displayed bound is smaller? Explain why the coefficient-ordering condition is automatic when both bases have the same deep precision, and why it cannot be dropped solely by interchanging a pair whose first base alone has that precision.
+
+69. **(Medium: the two 2-adic unit classes.)** Apply the sign normalization of Corollary 10.166 to \((\alpha_1,\alpha_2)=(3,5)\). Compute the valuations for \((b_1,b_2)=(1,2)\) and \((2,2)\). Prove that every odd \(b_1\) gives valuation one, for every nonzero integer \(b_2\). Explain how the limiting argument permits a prescribed logarithmic height equal to \(\ln2\).
+
+70. **(Medium: fixed rectangles and the one-base case.)** Verify the exact margin \(22/7-96/35=2/5\) and the coefficient \(539/2+7/3=1631/6<283\) in Theorem 10.167. For \(a=8,b=1,p=3\), choose an allowed auxiliary prime \(c\), check the valuation-preserving identity and calculate the exact Fermat-difference valuation. Determine \(v_3(8^n-1)\) for all positive integers \(n\).
 
 **Solution 1.** Put \(q_i=v(\alpha_i)\). If \(b_1q_1\ne b_2q_2\), the ultrametric inequality gives the exact valuation \(\min(b_1q_1,b_2q_2)\), so no cancellation estimate is needed. If they are equal, choose \(\pi=p^{1/e}\) in an algebraic extension and set \(\epsilon_i=\alpha_i\pi^{-e q_i}\). The exponents \(e q_i\) are integers, the \(\epsilon_i\) are units, and
 
@@ -12845,6 +13311,27 @@ Their sum is strictly below \(1/4000\). Multiplication by
 \(dU/t=\mathcal T_n^{(2)}\) gives the asserted valuation
 bound. The original residue order and the second height floor
 have both remained in the proof.
+
+**Solution 68.** Both bases are positive 5-adic units and are congruent to one modulo five, so \(g=1\). Their difference from one has valuation \(m\), so \(E=m>1/4\). They are coprime positive integers larger than one: subtracting twice the first from the second gives \(-1\). Any multiplicative relation is trivial by comparing a prime dividing each base. Their coefficients give \(u=0\), with the second coefficient a unit. Rational heights are their logarithms, both larger than \(m\ln5\). Therefore
+\[
+B' m\ln5
+=\frac{m\ln5}{\ln(1+2\cdot5^m)}
++\frac{m\ln5}{\ln(1+5^m)}<2.
+\]
+Thus the logarithmic cutoff is less than \(\ln2+2/5<11/10\), while \(4m\ln5>5\). It follows that \(H_6=6m\ln5\) and \(H_4=4m\ln5\). The difference is \(-5^m\), so its valuation is \(m\). The two coefficient factors are
+\(36.1\cdot6^2=1299.6\) and \(53.8\cdot4^2=860.8\), respectively. The latter bound is smaller. Both estimates still exceed \(m\), since the product of the two logarithms exceeds \(m^2(\ln5)^2\).
+
+After division of both nonzero coefficients by their common p-part, at least one is a unit. If both bases have precision \(E\), swapping the pair if necessary preserves the precision and makes the second coefficient a unit. If only the first base has that precision, the same swap may assign the analytic parameter \(E\) to a logarithm with smaller valuation. The determinant argument then loses its stated Taylor-order gain. The precision condition must be checked for the newly ordered first base; the swap itself does not establish it.
+
+**Solution 69.** Choose \(\eta_1=-1,\eta_2=1\), so \(\beta_1=-3,\beta_2=5\) are both one modulo four and have precision two. They are independent by the prime exponents of three and five. The remaining sign is \((-1)^{b_1}\). If \(b_1\) is odd, \(3^{b_1}\equiv3\pmod4\) and \(5^{b_2}\equiv1\pmod4\), including negative powers because inverses preserve these unit classes. The difference is two modulo four and its valuation is exactly one. In particular \(3-25=-22\) has valuation one. For even \(b_1\), the sign is one and the deep-unit estimate applies. The example \(3^2-5^2=-16\) has valuation four.
+
+If a logarithmic height is prescribed to be \(\ln2\), assigning \(E=1\) directly would violate the strict exponential-domain condition \(E>1\) in Theorem 10.165. Add \(\varepsilon>0\) to both prescribed heights and use \(E_\varepsilon=\min\{2,(\ln A_1+\varepsilon)/\ln2,(\ln A_2+\varepsilon)/\ln2\}>1\). Both sign-normalized bases have precision at least two. The uniform coefficient in the proof is independent of \(\varepsilon\), and the height product and coefficient cutoff are continuous as \(\varepsilon\) decreases to zero. Passing to the limit therefore proves the stated closed-boundary estimate.
+
+**Solution 70.** The difference of the two normalized determinant budgets is \(110/35-96/35=14/35=2/5\). The determinant coefficient is \((1617+14)/6=1631/6\), whose gap below \(283\) is \(67/6>0\). For \(a=8,p=3\), the candidate two is dependent on \(a\), and three is excluded by the unit condition, so take \(c=5\). The rational bases \(8/5,1/5\) are independent by comparing the prime exponents of two and five. The identity
+\[
+(8/5)^2-(1/5)^2=63/25
+\]
+has valuation \(v_3(63)=2\); its denominator is a unit. The original difference \(8^2-1=63\) also has valuation two. The order of eight modulo three is two. If \(n\) is odd, \(8^n-1\equiv1\pmod3\), so its valuation is zero. If \(n\) is even, the deep power law gives \(v_3(8^n-1)=v_3(8^2-1)+v_3(n/2)=2+v_3(n)\).
 
 ## References
 

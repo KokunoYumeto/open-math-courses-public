@@ -1,0 +1,487 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Well-orders, cardinal bounds and regular successors</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="well-orders-cardinal-bounds-and-regular-successors">Well-orders, cardinal bounds and regular successors</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI; no independent review. Original exposition and exercises: CC0. Linked proofs retain their stated terms.</em></p>
+<p>A well-order gives each element a precise position. A cardinal records how many positions are needed to list a set, while forgetting the particular order of that list. We will construct this distinction from Choice, prove that an infinite set has the same cardinality as its square, and use that equality to bound unions and function sets. The proofs keep track of the actual bijections and the universe in which their encodings live.</p>
+<p>Read <span class="unlinked">Universes and small categories, Sections 1–4</span> first. We use its complete proofs of universe closure, transport along bijections, Cantor's diagonal argument and the obstruction to a small family representing every small set. Those proofs are imported here. The prerequisites for the new arguments are elementary sets, functions, natural-number induction and partially ordered sets.</p>
+<h2 id="1-foundations-and-positions-in-a-well-order">1. Foundations and positions in a well-order</h2>
+<p>Our ambient set theory has the Zermelo–Fraenkel axioms: Extensionality, Empty Set, Pairing, Union, Power Set, Infinity, Separation, Replacement and Foundation. <strong>Choice</strong> means that every set-indexed family of nonempty sets has a function selecting an element of each member. Only set-indexed choices will be used. We also assume the enlargement axiom stated in <span class="unlinked">Universes and small categories, Section 1</span>.</p>
+<p>Fix a Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>: it is transitive, contains <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, and is closed under singletons, power sets and unions of families of its members indexed by a member. A universe member is a <strong><span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-set</strong>. A set bijective to a member is <strong><span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small</strong>. The member and smallness bounds for products, function sets, quotients and indexed unions are the proved statements of <span class="unlinked">Sections 2–3</span> of that prerequisite. Choose a larger universe <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> containing <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> when collecting all <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-cardinal types.</p>
+<p>For a partially ordered set <span class="math" data-tex="\((I,\leq)\)">\((I,\leq)\)</span>, write <span class="math" data-tex="\(x&lt;y\)">\(x&lt;y\)</span> when <span class="math" data-tex="\(x\leq y\)">\(x\leq y\)</span> and <span class="math" data-tex="\(x\ne y\)">\(x\ne y\)</span>. It is <strong>well ordered</strong> if every nonempty subset has a least element. Applying this property to <span class="math" data-tex="\(\{x,y\}\)">\(\{x,y\}\)</span> proves that any two elements are comparable. Thus the order is total. The empty set is well ordered.</p>
+<p>If <span class="math" data-tex="\(x\)">\(x\)</span> is not the largest element, its strict upper tail is nonempty. Its least element is the <strong>immediate successor</strong> <span class="math" data-tex="\(x+1\)">\(x+1\)</span>: there is no element strictly between <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(x+1\)">\(x+1\)</span>. This notation denotes the successor in the particular order, rather than arithmetic on arbitrary labels.</p>
+<p><strong>Proposition 1.1.</strong> Exactly one of the following holds for an element <span class="math" data-tex="\(x\)">\(x\)</span> of a well-ordered set:</p>
+<ol>
+<li><span class="math" data-tex="\(x\)">\(x\)</span> is the least element;</li>
+<li><span class="math" data-tex="\(x\)">\(x\)</span> has an immediate predecessor;</li>
+<li>the strict lower set is nonempty, has no greatest element, and has supremum <span class="math" data-tex="\(x\)">\(x\)</span>.</li>
+</ol>
+<p>In the second case the predecessor is unique and is the supremum of that strict lower set.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(L_x=\{y\in I:y&lt;x\}\)">\(L_x=\{y\in I:y&lt;x\}\)</span>. If it is empty, <span class="math" data-tex="\(x\)">\(x\)</span> is least. If it has a greatest element <span class="math" data-tex="\(p\)">\(p\)</span>, no element lies strictly between <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(p\)">\(p\)</span> is an immediate predecessor. Every immediate predecessor must be greatest in <span class="math" data-tex="\(L_x\)">\(L_x\)</span>, proving uniqueness. A greatest element of a subset is its supremum.</p>
+<p>Suppose instead that <span class="math" data-tex="\(L_x\)">\(L_x\)</span> is nonempty with no greatest element. The element <span class="math" data-tex="\(x\)">\(x\)</span> is an upper bound. An element <span class="math" data-tex="\(z&lt;x\)">\(z&lt;x\)</span> cannot be an upper bound: it belongs to <span class="math" data-tex="\(L_x\)">\(L_x\)</span>, and some <span class="math" data-tex="\(y\in L_x\)">\(y\in L_x\)</span> satisfies <span class="math" data-tex="\(z&lt;y\)">\(z&lt;y\)</span>. Hence no smaller upper bound exists and <span class="math" data-tex="\(x=\sup L_x\)">\(x=\sup L_x\)</span>. The three cases are disjoint and exhaustive. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-set-recursion-and-a-bound-on-possible-order-types">2. Set recursion and a bound on possible order types</h2>
+<p>We need a recursion principle before deriving well-ordering from Choice. Its proof uses the set axioms and uniqueness, rather than choices of orders on arbitrary sets.</p>
+<p><strong>Lemma 2.1 (recursion on a given well-order).</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be a well-ordered set. Suppose a rule, given by a formula with fixed set parameters, assigns a unique set <span class="math" data-tex="\(F(x,p)\)">\(F(x,p)\)</span> to each <span class="math" data-tex="\(x\in I\)">\(x\in I\)</span> and each function <span class="math" data-tex="\(p\)">\(p\)</span> on <span class="math" data-tex="\(L_x\)">\(L_x\)</span>. There is a unique function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(I\)">\(I\)</span> satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+f(x)=F\bigl(x,f|_{L_x}\bigr).
+\tag{2.1}
+\]">\[
+f(x)=F\bigl(x,f|_{L_x}\bigr).
+\tag{2.1}
+\]</span>
+<p>The rule may use fixed ambient set parameters.</p>
+<p><strong>Proof.</strong> Two solutions on initial segments agree on their common domain. Otherwise the least point of disagreement has identical previous values, and the rule gives identical values there. This also proves uniqueness of any partial solution.</p>
+<p>Call a point <span class="math" data-tex="\(x\)">\(x\)</span> a failure if there is no solution on <span class="math" data-tex="\(L_x\cup\{x\}\)">\(L_x\cup\{x\}\)</span>. The failures form a subset of <span class="math" data-tex="\(I\)">\(I\)</span>, by Separation. If one existed, choose its least member <span class="math" data-tex="\(x\)">\(x\)</span>. For every <span class="math" data-tex="\(y&lt;x\)">\(y&lt;x\)</span> there is a unique solution <span class="math" data-tex="\(p_y\)">\(p_y\)</span> on <span class="math" data-tex="\(L_y\cup\{y\}\)">\(L_y\cup\{y\}\)</span>. Replacement collects this uniquely specified family as a set. Its functions agree wherever their domains meet; their union is therefore a function <span class="math" data-tex="\(p\)">\(p\)</span> on <span class="math" data-tex="\(L_x\)">\(L_x\)</span> and satisfies the rule there. Appending the value <span class="math" data-tex="\(F(x,p)\)">\(F(x,p)\)</span> gives a solution through <span class="math" data-tex="\(x\)">\(x\)</span>, a contradiction. This includes a least point, for which <span class="math" data-tex="\(p\)">\(p\)</span> is empty.</p>
+<p>There are consequently no failures. Replacement collects the unique partial solution through each <span class="math" data-tex="\(x\in I\)">\(x\in I\)</span>; their union is the required function on <span class="math" data-tex="\(I\)">\(I\)</span>. If <span class="math" data-tex="\(I\)">\(I\)</span> is empty, the empty function is that solution. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An <strong>ordinal</strong> is a transitive set well ordered by membership. We use <span class="math" data-tex="\(0=\varnothing\)">\(0=\varnothing\)</span>, the successor <span class="math" data-tex="\(\alpha+1=\alpha\cup\{\alpha\}\)">\(\alpha+1=\alpha\cup\{\alpha\}\)</span>, and the ordinal <span class="math" data-tex="\(\omega\)">\(\omega\)</span> of the natural numbers. The finite ordinals are its elements. Foundation implies <span class="math" data-tex="\(\alpha\notin\alpha\)">\(\alpha\notin\alpha\)</span>.</p>
+<p>Here are the order facts about ordinals needed below. If <span class="math" data-tex="\(\gamma\in\alpha\)">\(\gamma\in\alpha\)</span>, transitivity gives <span class="math" data-tex="\(\gamma\subseteq\alpha\)">\(\gamma\subseteq\alpha\)</span>. Transitivity of the membership order on <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> makes <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> transitive, and restriction of that well-order well orders <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Thus <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is an ordinal; its elements are exactly the earlier members of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Adding the point <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> above all its elements likewise makes <span class="math" data-tex="\(\alpha+1\)">\(\alpha+1\)</span> an ordinal. A proper downward-closed subset of an ordinal is its least omitted member: all earlier elements are included, and downward closure excludes all later ones. For ordinals <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>, their intersection is downward closed in both. If it were proper in both, it would be an element of both, hence an element of itself. Therefore one ordinal is a subset of the other; a proper inclusion makes the smaller one an element of the larger.</p>
+<p>The union of a set of ordinals is an ordinal. It is transitive, and membership is total by the preceding comparison. To find the least element of a nonempty subset, take one element <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and find the least element of the subset's intersection with <span class="math" data-tex="\(\gamma+1\)">\(\gamma+1\)</span>. Every element outside <span class="math" data-tex="\(\gamma+1\)">\(\gamma+1\)</span> is larger. This also shows that any set of ordinals is well ordered by their usual comparison. These arguments establish the comparison and union facts directly from the definition.</p>
+<p><strong>Lemma 2.2 (the ordinal of a well-order).</strong> Every well-ordered set <span class="math" data-tex="\((I,&lt;)\)">\((I,&lt;)\)</span> is uniquely order-isomorphic to an ordinal. At a point <span class="math" data-tex="\(x\)">\(x\)</span>, its position is the ordinal of its strict lower set.</p>
+<p><strong>Proof.</strong> Apply Lemma 2.1 to the rule</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+o(x)=\{o(y):y&lt;x\}.
+\tag{2.2}
+\]">\[
+o(x)=\{o(y):y&lt;x\}.
+\tag{2.2}
+\]</span>
+<p>Induction in the given well-order proves that each <span class="math" data-tex="\(o(x)\)">\(o(x)\)</span> is an ordinal. Indeed, the earlier values are ordinals; for <span class="math" data-tex="\(y&lt;z&lt;x\)">\(y&lt;z&lt;x\)</span> the definition gives <span class="math" data-tex="\(o(y)\in o(z)\)">\(o(y)\in o(z)\)</span>, so they are distinct. Their set is transitive, because an element of <span class="math" data-tex="\(o(y)\)">\(o(y)\)</span> is some <span class="math" data-tex="\(o(t)\)">\(o(t)\)</span> with <span class="math" data-tex="\(t&lt;y&lt;x\)">\(t&lt;y&lt;x\)</span>. Its membership order is exactly the well-order on <span class="math" data-tex="\(L_x\)">\(L_x\)</span>, so it is an ordinal. This is the induction step, including an empty lower set.</p>
+<p>The set <span class="math" data-tex="\(\theta=\{o(x):x\in I\}\)">\(\theta=\{o(x):x\in I\}\)</span>, formed by Replacement, is likewise transitive and well ordered by membership. The function <span class="math" data-tex="\(o:I\to\theta\)">\(o:I\to\theta\)</span> is an order-isomorphism. For any other isomorphism from <span class="math" data-tex="\(I\)">\(I\)</span> to an ordinal, the image of <span class="math" data-tex="\(x\)">\(x\)</span> must be the set of images of its predecessors. Uniqueness in Lemma 2.1 forces the same function and the same ordinal. The empty well-order has ordinal <span class="math" data-tex="\(0\)">\(0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.3 (Hartogs' bound).</strong> For every set <span class="math" data-tex="\(A\)">\(A\)</span>, there is an ordinal <span class="math" data-tex="\(h(A)\)">\(h(A)\)</span> with no injection <span class="math" data-tex="\(h(A)\to A\)">\(h(A)\to A\)</span>.</p>
+<p><strong>Proof.</strong> The pairs <span class="math" data-tex="\((B,R)\)">\((B,R)\)</span> with <span class="math" data-tex="\(B\subseteq A\)">\(B\subseteq A\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> a strict well-order on <span class="math" data-tex="\(B\)">\(B\)</span> form a set: it is a subset of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\mathcal P(A)\times\mathcal P(A\times A).
+\tag{2.3}
+\]">\[
+\mathcal P(A)\times\mathcal P(A\times A).
+\tag{2.3}
+\]</span>
+<p>By Lemma 2.2 and Replacement, their order types form a set <span class="math" data-tex="\(H\)">\(H\)</span> of ordinals. It contains <span class="math" data-tex="\(0\)">\(0\)</span>. If <span class="math" data-tex="\(\alpha\in H\)">\(\alpha\in H\)</span> and <span class="math" data-tex="\(\beta&lt;\alpha\)">\(\beta&lt;\alpha\)</span>, restricting an order representing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to its first <span class="math" data-tex="\(\beta\)">\(\beta\)</span> elements represents <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Thus <span class="math" data-tex="\(H\)">\(H\)</span> is downward closed among ordinals and is itself an ordinal. Set <span class="math" data-tex="\(h(A)=H\)">\(h(A)=H\)</span>.</p>
+<p>An injection <span class="math" data-tex="\(h(A)\to A\)">\(h(A)\to A\)</span> would transport the membership order of <span class="math" data-tex="\(h(A)\)">\(h(A)\)</span> to a well-order on its image, a subset of <span class="math" data-tex="\(A\)">\(A\)</span>. Its order type would be <span class="math" data-tex="\(h(A)\)">\(h(A)\)</span>, so <span class="math" data-tex="\(h(A)\in H=h(A)\)">\(h(A)\in H=h(A)\)</span>, contrary to Foundation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All choices of orders in this proof ranged over an existing set of relations. The construction of <span class="math" data-tex="\(h(A)\)">\(h(A)\)</span> uses only ZF; it is therefore available before well-ordering is deduced from Choice.</p>
+<h2 id="3-well-ordering-from-choice-and-universe-bounds">3. Well-ordering from Choice and universe bounds</h2>
+<p><strong>Theorem 3.1.</strong> Under Choice, every set admits a well-order.</p>
+<p><strong>Proof.</strong> Choice applied to the family of all nonempty subsets of <span class="math" data-tex="\(A\)">\(A\)</span> gives a function <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c(B)\in B\)">\(c(B)\in B\)</span>. Use the marker <span class="math" data-tex="\(A\)">\(A\)</span>, which is not an element of <span class="math" data-tex="\(A\)">\(A\)</span> by Foundation. Recursion on <span class="math" data-tex="\(h(A)\)">\(h(A)\)</span> defines <span class="math" data-tex="\(e(\alpha)\)">\(e(\alpha)\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+R_\alpha&amp;=A\setminus\{e(\beta):\beta&lt;\alpha\},\\
+e(\alpha)&amp;=
+\begin{cases}
+c(R_\alpha),&amp;R_\alpha\ne\varnothing,\\
+A,&amp;R_\alpha=\varnothing.
+\end{cases}
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+R_\alpha&amp;=A\setminus\{e(\beta):\beta&lt;\alpha\},\\
+e(\alpha)&amp;=
+\begin{cases}
+c(R_\alpha),&amp;R_\alpha\ne\varnothing,\\
+A,&amp;R_\alpha=\varnothing.
+\end{cases}
+\end{aligned}
+\tag{3.1}
+\]</span>
+<p>Lemma 2.1 applies: each previous assignment determines these sets and the next value uniquely. If every <span class="math" data-tex="\(R_\alpha\)">\(R_\alpha\)</span> were nonempty, all values would be distinct members of <span class="math" data-tex="\(A\)">\(A\)</span>. This would give an injection <span class="math" data-tex="\(h(A)\to A\)">\(h(A)\to A\)</span>, contradicting Lemma 2.3. Let <span class="math" data-tex="\(\beta&lt;h(A)\)">\(\beta&lt;h(A)\)</span> be the least stage with <span class="math" data-tex="\(R_\beta=\varnothing\)">\(R_\beta=\varnothing\)</span>. Before <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, the values are distinct members of <span class="math" data-tex="\(A\)">\(A\)</span>; their range is all of <span class="math" data-tex="\(A\)">\(A\)</span>. Consequently <span class="math" data-tex="\(e|_\beta:\beta\to A\)">\(e|_\beta:\beta\to A\)</span> is a bijection. Transporting the ordinal order along it well orders <span class="math" data-tex="\(A\)">\(A\)</span>. For <span class="math" data-tex="\(A=\varnothing\)">\(A=\varnothing\)</span>, <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span> and the same argument gives the empty order. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2.</strong> If the underlying set of a well-order belongs to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, its order type belongs to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Every <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small well-order has the same conclusion for its order type.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(I\in\mathcal U\)">\(I\in\mathcal U\)</span>. In the recursion (2.2), induction proves <span class="math" data-tex="\(o(x)\in\mathcal U\)">\(o(x)\in\mathcal U\)</span>. Its predecessor set <span class="math" data-tex="\(L_x\)">\(L_x\)</span> is a subset of <span class="math" data-tex="\(I\)">\(I\)</span>, hence a universe member. If each earlier <span class="math" data-tex="\(o(y)\)">\(o(y)\)</span> is a member, then so is <span class="math" data-tex="\(\{o(y)\}\)">\(\{o(y)\}\)</span>; the universe's indexed-union axiom gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+o(x)=\bigcup_{y\in L_x}\{o(y)\}\in\mathcal U.
+\tag{3.2}
+\]">\[
+o(x)=\bigcup_{y\in L_x}\{o(y)\}\in\mathcal U.
+\tag{3.2}
+\]</span>
+<p>The same axiom with index <span class="math" data-tex="\(I\)">\(I\)</span> gives <span class="math" data-tex="\(\theta=\bigcup_{x\in I}\{o(x)\}\in\mathcal U\)">\(\theta=\bigcup_{x\in I}\{o(x)\}\in\mathcal U\)</span>. This use of indexed unions permits ambient families; their function graphs need not have been members beforehand. The closure statement and that convention are proved and stated in the prerequisite.</p>
+<p>If <span class="math" data-tex="\(b:I\to I_0\)">\(b:I\to I_0\)</span> is a bijection with <span class="math" data-tex="\(I_0\in\mathcal U\)">\(I_0\in\mathcal U\)</span>, transport the relation by <span class="math" data-tex="\(u&lt;_0v\)">\(u&lt;_0v\)</span> exactly when <span class="math" data-tex="\(b^{-1}(u)&lt;b^{-1}(v)\)">\(b^{-1}(u)&lt;b^{-1}(v)\)</span>. It is a relation on <span class="math" data-tex="\(I_0\)">\(I_0\)</span> and belongs to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> by the imported subset and product bounds. The two well-orders have the same order type, by Lemma 2.2. Apply the member case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.3.</strong> For <span class="math" data-tex="\(A\in\mathcal U\)">\(A\in\mathcal U\)</span>, the Hartogs ordinal <span class="math" data-tex="\(h(A)\)">\(h(A)\)</span> and the choice and recursion functions used in Theorem 3.1 have encodings in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>.</p>
+<p><strong>Proof.</strong> The set <span class="math" data-tex="\(W\)">\(W\)</span> of ordered-subset pairs used in (2.3) is a universe member, by the imported power-set, product and subset bounds. For <span class="math" data-tex="\(w=(B,R)\in W\)">\(w=(B,R)\in W\)</span>, Proposition 3.2 gives its order type <span class="math" data-tex="\(\theta_w\in\mathcal U\)">\(\theta_w\in\mathcal U\)</span>. The successor <span class="math" data-tex="\(\theta_w+1\)">\(\theta_w+1\)</span> is a member by singleton and union closure. Downward closure of the represented order types gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+h(A)=\bigcup_{w\in W}(\theta_w+1)\in\mathcal U.
+\tag{3.3}
+\]">\[
+h(A)=\bigcup_{w\in W}(\theta_w+1)\in\mathcal U.
+\tag{3.3}
+\]</span>
+<p>Indeed, a term <span class="math" data-tex="\(\theta_w+1\)">\(\theta_w+1\)</span> contains that represented type and all its smaller types, and every represented type occurs in such a term. The indexed-union axiom therefore applies with index <span class="math" data-tex="\(W\)">\(W\)</span>. A choice function on nonempty subsets of <span class="math" data-tex="\(A\)">\(A\)</span> has graph in <span class="math" data-tex="\(\mathcal P(A)\times A\)">\(\mathcal P(A)\times A\)</span>. The recursion function has graph in <span class="math" data-tex="\(h(A)\times(A\cup\{A\})\)">\(h(A)\times(A\cup\{A\})\)</span>; both factors of that product are universe members. Imported subset closure gives the two graph bounds.</p>
+<p>For a small set with other labels, transporting ordered subsets along a representative bijection preserves their order types, so it preserves <span class="math" data-tex="\(h(A)\)">\(h(A)\)</span>. The original choice and recursion graphs are small by the imported transport and product bounds; their member encodings are the ones just constructed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, <span class="math" data-tex="\(\omega+2\)">\(\omega+2\)</span> has a least point <span class="math" data-tex="\(0\)">\(0\)</span>, the successor points <span class="math" data-tex="\(1,2,\ldots,\omega+1\)">\(1,2,\ldots,\omega+1\)</span>, and the point <span class="math" data-tex="\(\omega\)">\(\omega\)</span> whose nonempty strict lower set has no greatest element. Its order type differs from <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, but the bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+\omega\longmapsto0,
+\qquad\omega+1\longmapsto1,
+\qquad n\longmapsto n+2\quad(n&lt;\omega)
+\tag{3.4}
+\]">\[
+\omega\longmapsto0,
+\qquad\omega+1\longmapsto1,
+\qquad n\longmapsto n+2\quad(n&lt;\omega)
+\tag{3.4}
+\]</span>
+<p>shows that the two underlying sets have the same cardinality. Its inverse sends <span class="math" data-tex="\(0,1\)">\(0,1\)</span> to the two displayed upper points and <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span> to <span class="math" data-tex="\(m-2\)">\(m-2\)</span>.</p>
+<h2 id="4-cardinal-representatives-and-comparison-by-injections">4. Cardinal representatives and comparison by injections</h2>
+<p>Two sets have the same cardinality if a bijection exists between them. A <strong><span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-cardinal</strong> is such an equicardinality type of <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small sets. We encode all these types using the quotient</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\mathcal C_{\mathcal U}=\mathcal U/{\sim},
+\qquad A\sim B\ \Longleftrightarrow\ A\text{ and }B\text{ are bijective}.
+\tag{4.1}
+\]">\[
+\mathcal C_{\mathcal U}=\mathcal U/{\sim},
+\qquad A\sim B\ \Longleftrightarrow\ A\text{ and }B\text{ are bijective}.
+\tag{4.1}
+\]</span>
+<p>This quotient is formed in <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>, where <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> is a member. Every small set has a representative in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, so this encoding includes every small cardinal type. It avoids treating the collection of all arbitrary relabelings of one set as a set. A different labeling of a small set leaves its type unchanged.</p>
+<p>An ordinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is <strong>initial</strong> if no smaller ordinal is bijective to it. The initial ordinals will be our explicit cardinal representatives.</p>
+<p><strong>Proposition 4.1.</strong> Every set <span class="math" data-tex="\(A\)">\(A\)</span> is bijective to a unique initial ordinal, denoted <span class="math" data-tex="\(|A|\)">\(|A|\)</span>. If <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, then <span class="math" data-tex="\(|A|\in\mathcal U\)">\(|A|\in\mathcal U\)</span>.</p>
+<p><strong>Proof.</strong> Theorem 3.1 and Lemma 2.2 give an ordinal <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> bijective to <span class="math" data-tex="\(A\)">\(A\)</span>. Among the ordinals <span class="math" data-tex="\(\beta\leq\alpha\)">\(\beta\leq\alpha\)</span> bijective to <span class="math" data-tex="\(A\)">\(A\)</span>, choose the least, <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. This is a least element of a nonempty subset of <span class="math" data-tex="\(\alpha+1\)">\(\alpha+1\)</span>. A bijection between <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> and a smaller ordinal would make that smaller ordinal bijective to <span class="math" data-tex="\(A\)">\(A\)</span>, a contradiction. Thus <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is initial.</p>
+<p>If two initial ordinals are bijective, compare them as ordinals. A strict inequality contradicts initiality of the larger one, so they are equal. This proves uniqueness independent of the chosen order on <span class="math" data-tex="\(A\)">\(A\)</span>. For a small set, first take a universe-member representative and well order it. Proposition 3.2 puts its order type <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Since <span class="math" data-tex="\(\kappa\subseteq\alpha\)">\(\kappa\subseteq\alpha\)</span>, imported subset closure puts <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> there too. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The correspondence <span class="math" data-tex="\([A]\mapsto|A|\)">\([A]\mapsto|A|\)</span> identifies (4.1) with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+K_{\mathcal U}=\{\kappa\in\mathcal U:\kappa\text{ is initial}\}.
+\tag{4.2}
+\]">\[
+K_{\mathcal U}=\{\kappa\in\mathcal U:\kappa\text{ is initial}\}.
+\tag{4.2}
+\]</span>
+<p>Its inverse sends <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> to its class in (4.1). Since any set of ordinals is well ordered, the <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-cardinals are well ordered through this identification. Their entire collection is a set in <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>. It is <strong>not</strong> <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small: if it were, choosing a universe-member representative for each class would give a small family representing every object of <span class="math" data-tex="\(\mathsf{Set}_{\mathcal U}\)">\(\mathsf{Set}_{\mathcal U}\)</span>, ruled out by the complete argument in <span class="unlinked">Universes and small categories, Example 4.2</span>. This is precisely the already proved representative-family obstruction.</p>
+<p>For finite sets the cardinal representatives are the finite ordinals. The finite pigeonhole fact follows by induction, starting with the impossibility of <span class="math" data-tex="\(1\to0\)">\(1\to0\)</span>. For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, an injection <span class="math" data-tex="\(n+1\to n\)">\(n+1\to n\)</span> would, after deleting its last domain point and its image and relabeling the remaining codomain, give an injection <span class="math" data-tex="\(n\to n-1\)">\(n\to n-1\)</span>, contradicting the preceding step. An injection <span class="math" data-tex="\(\omega\to n\)">\(\omega\to n\)</span> would restrict to the forbidden injection <span class="math" data-tex="\(n+1\to n\)">\(n+1\to n\)</span>. Since every ordinal below <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is finite, the natural-number set has initial representative <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. We write <span class="math" data-tex="\(\aleph_0=\omega\)">\(\aleph_0=\omega\)</span>. An <strong>infinite cardinal</strong> is an initial ordinal <span class="math" data-tex="\(\kappa\geq\omega\)">\(\kappa\geq\omega\)</span>.</p>
+<p><strong>Theorem 4.2 (Cantor–Bernstein).</strong> Injections <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span> and <span class="math" data-tex="\(g:B\to A\)">\(g:B\to A\)</span> give a bijection <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>.</p>
+<p><strong>Proof.</strong> Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+A_0=A\setminus g(B),
+\qquad A_{n+1}=g(f(A_n)),
+\qquad D=\bigcup_{n&lt;\omega}A_n.
+\tag{4.3}
+\]">\[
+A_0=A\setminus g(B),
+\qquad A_{n+1}=g(f(A_n)),
+\qquad D=\bigcup_{n&lt;\omega}A_n.
+\tag{4.3}
+\]</span>
+<p>The graph of the inverse of <span class="math" data-tex="\(g\)">\(g\)</span> on its image is a function because <span class="math" data-tex="\(g\)">\(g\)</span> is injective. Since <span class="math" data-tex="\(A_0\subseteq D\)">\(A_0\subseteq D\)</span>, every <span class="math" data-tex="\(a\notin D\)">\(a\notin D\)</span> belongs to <span class="math" data-tex="\(g(B)\)">\(g(B)\)</span>. Set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+h(a)=
+\begin{cases}
+f(a),&amp;a\in D,\\
+g^{-1}(a),&amp;a\notin D.
+\end{cases}
+\tag{4.4}
+\]">\[
+h(a)=
+\begin{cases}
+f(a),&amp;a\in D,\\
+g^{-1}(a),&amp;a\notin D.
+\end{cases}
+\tag{4.4}
+\]</span>
+<p>Each branch is injective. Their images are disjoint: if <span class="math" data-tex="\(b=f(a)\)">\(b=f(a)\)</span> with <span class="math" data-tex="\(a\in D\)">\(a\in D\)</span>, then <span class="math" data-tex="\(g(b)=g(f(a))\in D\)">\(g(b)=g(f(a))\in D\)</span>, so <span class="math" data-tex="\(b\)">\(b\)</span> cannot be the second-branch image of a point outside <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>For surjectivity, take <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>. If <span class="math" data-tex="\(b\in f(D)\)">\(b\in f(D)\)</span>, the first branch reaches it. Otherwise <span class="math" data-tex="\(g(b)\notin D\)">\(g(b)\notin D\)</span>. Indeed, <span class="math" data-tex="\(D=A_0\cup g(f(D))\)">\(D=A_0\cup g(f(D))\)</span>; the point <span class="math" data-tex="\(g(b)\)">\(g(b)\)</span> is outside <span class="math" data-tex="\(A_0\)">\(A_0\)</span>, and membership in <span class="math" data-tex="\(g(f(D))\)">\(g(f(D))\)</span> would imply <span class="math" data-tex="\(b\in f(D)\)">\(b\in f(D)\)</span> by injectivity of <span class="math" data-tex="\(g\)">\(g\)</span>. The second branch therefore sends <span class="math" data-tex="\(g(b)\)">\(g(b)\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>. The inverse is explicitly</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+h^{-1}(b)=
+\begin{cases}
+f^{-1}(b),&amp;b\in f(D),\\
+g(b),&amp;b\notin f(D).
+\end{cases}
+\tag{4.5}
+\]">\[
+h^{-1}(b)=
+\begin{cases}
+f^{-1}(b),&amp;b\in f(D),\\
+g(b),&amp;b\notin f(D).
+\end{cases}
+\tag{4.5}
+\]</span>
+<p>The definitions include empty sets. If <span class="math" data-tex="\(A,B\in\mathcal U\)">\(A,B\in\mathcal U\)</span>, all <span class="math" data-tex="\(A_n,D\)">\(A_n,D\)</span> are subsets of <span class="math" data-tex="\(A\)">\(A\)</span>, and both function graphs are subsets of products of universe members. They belong to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> by the imported closure results. For small sets with other labels, transport the maps to universe-member representatives, apply this construction there and conjugate the resulting bijection back. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.3.</strong> For any sets <span class="math" data-tex="\(A,B\)">\(A,B\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.6); horizontal scroll when needed" data-tex="\[
+|A|\leq|B|
+\quad\Longleftrightarrow\quad
+\text{there is an injection }A\longrightarrow B.
+\tag{4.6}
+\]">\[
+|A|\leq|B|
+\quad\Longleftrightarrow\quad
+\text{there is an injection }A\longrightarrow B.
+\tag{4.6}
+\]</span>
+<p><strong>Proof.</strong> Choose bijections from <span class="math" data-tex="\(A,B\)">\(A,B\)</span> to their initial ordinals <span class="math" data-tex="\(\kappa,\lambda\)">\(\kappa,\lambda\)</span>. If <span class="math" data-tex="\(\kappa\leq\lambda\)">\(\kappa\leq\lambda\)</span>, their inclusion is injective and can be transported back. Conversely, an injection gives <span class="math" data-tex="\(\kappa\to\lambda\)">\(\kappa\to\lambda\)</span>. If <span class="math" data-tex="\(\lambda&lt;\kappa\)">\(\lambda&lt;\kappa\)</span>, inclusion gives <span class="math" data-tex="\(\lambda\to\kappa\)">\(\lambda\to\kappa\)</span>; Theorem 4.2 would make <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> bijective to the smaller ordinal <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, contradicting initiality. Therefore <span class="math" data-tex="\(\kappa\leq\lambda\)">\(\kappa\leq\lambda\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-cardinal-operations-and-the-infinite-square">5. Cardinal operations and the infinite square</h2>
+<p>For cardinals represented by sets <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+|A|\cdot|B|=|A\times B|,
+\qquad |B|^{|A|}=|B^A|,
+\qquad B^A=\{f:A\to B\}.
+\tag{5.1}
+\]">\[
+|A|\cdot|B|=|A\times B|,
+\qquad |B|^{|A|}=|B^A|,
+\qquad B^A=\{f:A\to B\}.
+\tag{5.1}
+\]</span>
+<p>We also write <span class="math" data-tex="\(\operatorname{Map}(A,B)=B^A\)">\(\operatorname{Map}(A,B)=B^A\)</span> for the set of functions. In a cardinal equality, an exponent denotes the initial cardinal of that function set. In actual arrows involving cardinal representatives, <span class="math" data-tex="\(\operatorname{Map}\)">\(\operatorname{Map}\)</span> will specify the function-set domain explicitly.</p>
+<p>The exponent is the domain cardinal. The proved transport maps in <span class="unlinked">Universes and small categories, Proposition 3.1</span> make these definitions independent of representatives: product maps use the two coordinate bijections, and a function is sent to <span class="math" data-tex="\(c\circ f\circ b^{-1}\)">\(c\circ f\circ b^{-1}\)</span> for bijections <span class="math" data-tex="\(b:A\to A_0\)">\(b:A\to A_0\)</span>, <span class="math" data-tex="\(c:B\to B_0\)">\(c:B\to B_0\)</span>. Their inverses and all universe bounds are provided there. For <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small inputs, the imported closure results and Proposition 4.1 give universe-member initial ordinals for these products and powers. The empty-domain function set is a singleton, and no function has a nonempty domain and an empty codomain.</p>
+<p>The characteristic-function bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\mathcal P(A)\longrightarrow\{0,1\}^A,
+\qquad S\longmapsto\chi_S,
+\qquad\chi_S(a)=
+\begin{cases}1,&amp;a\in S,\\0,&amp;a\notin S\end{cases}
+\tag{5.2}
+\]">\[
+\mathcal P(A)\longrightarrow\{0,1\}^A,
+\qquad S\longmapsto\chi_S,
+\qquad\chi_S(a)=
+\begin{cases}1,&amp;a\in S,\\0,&amp;a\notin S\end{cases}
+\tag{5.2}
+\]</span>
+<p>has inverse <span class="math" data-tex="\(u\mapsto u^{-1}(\{1\})\)">\(u\mapsto u^{-1}(\{1\})\)</span>. The singleton map injects <span class="math" data-tex="\(A\)">\(A\)</span> into <span class="math" data-tex="\(\mathcal P(A)\)">\(\mathcal P(A)\)</span>. The complete Cantor argument in <span class="unlinked">Universes and small categories, Lemma 1.1</span> excludes an injection in the reverse direction. By Corollary 4.3 this gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+2^\kappa&gt;\kappa
+\quad\text{for every cardinal }\kappa.
+\tag{5.3}
+\]">\[
+2^\kappa&gt;\kappa
+\quad\text{for every cardinal }\kappa.
+\tag{5.3}
+\]</span>
+<p>We retain that proved diagonal argument and supply the comparison with initial ordinals here.</p>
+<p>The square theorem needs a preliminary fact that does not use infinite cardinal multiplication. If <span class="math" data-tex="\(\alpha\geq\omega\)">\(\alpha\geq\omega\)</span>, the following is a bijection <span class="math" data-tex="\(\alpha+1\to\alpha\)">\(\alpha+1\to\alpha\)</span>: send the new upper point <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>, send each <span class="math" data-tex="\(n&lt;\omega\)">\(n&lt;\omega\)</span> to <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, and fix every <span class="math" data-tex="\(\xi\)">\(\xi\)</span> with <span class="math" data-tex="\(\omega\leq\xi&lt;\alpha\)">\(\omega\leq\xi&lt;\alpha\)</span>. The inverse sends <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, a positive natural number <span class="math" data-tex="\(n+1\)">\(n+1\)</span> to <span class="math" data-tex="\(n\)">\(n\)</span>, and fixes the remaining points. An infinite initial ordinal consequently cannot be a successor ordinal. Thus every infinite cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is a limit ordinal, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+\rho&lt;\kappa\quad\Longrightarrow\quad\rho+1&lt;\kappa.
+\tag{5.4}
+\]">\[
+\rho&lt;\kappa\quad\Longrightarrow\quad\rho+1&lt;\kappa.
+\tag{5.4}
+\]</span>
+<p><strong>Theorem 5.1.</strong> For every infinite cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, there is a bijection <span class="math" data-tex="\(\kappa\times\kappa\to\kappa\)">\(\kappa\times\kappa\to\kappa\)</span>. In particular <span class="math" data-tex="\(\kappa\cdot\kappa=\kappa\)">\(\kappa\cdot\kappa=\kappa\)</span>.</p>
+<p><strong>Proof.</strong> We use induction on the infinite initial ordinals. For a fixed cardinal under consideration, the cardinals up to it form a set, so this is ordinary well-ordered induction on a set. At the step <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, assume the theorem for each infinite cardinal strictly below <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
+<p>Order <span class="math" data-tex="\(\kappa\times\kappa\)">\(\kappa\times\kappa\)</span> by comparing the triples</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+\bigl(\max\{\alpha,\beta\},\alpha,\beta\bigr)
+\tag{5.5}
+\]">\[
+\bigl(\max\{\alpha,\beta\},\alpha,\beta\bigr)
+\tag{5.5}
+\]</span>
+<p>lexicographically. This is a well-order: in a nonempty subset first choose the least maximum coordinate, then the least first coordinate among those pairs, then the least second coordinate. These three least-element operations give its least pair.</p>
+<p>Consider a pair with maximum coordinate <span class="math" data-tex="\(\rho&lt;\kappa\)">\(\rho&lt;\kappa\)</span>. All its predecessors lie in <span class="math" data-tex="\((\rho+1)\times(\rho+1)\)">\((\rho+1)\times(\rho+1)\)</span>. Put <span class="math" data-tex="\(\mu=|\rho+1|\)">\(\mu=|\rho+1|\)</span>. Equation (5.4) and initiality of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> give <span class="math" data-tex="\(\mu&lt;\kappa\)">\(\mu&lt;\kappa\)</span>. If <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is finite, this product is finite, hence has cardinal below <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. If <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is infinite, the induction hypothesis gives its cardinal as <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, again below <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. The product transport maps of (5.1) apply to the bijection <span class="math" data-tex="\(\rho+1\to\mu\)">\(\rho+1\to\mu\)</span>. Thus every strict initial segment of our pair order has cardinal below <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\theta\)">\(\theta\)</span> be this well-order's ordinal, supplied by Lemma 2.2. If <span class="math" data-tex="\(\theta&gt;\kappa\)">\(\theta&gt;\kappa\)</span>, its point at position <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> would have a strict initial segment bijective to <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. This contradicts the bound just proved. Hence <span class="math" data-tex="\(\theta\leq\kappa\)">\(\theta\leq\kappa\)</span>. The order-isomorphism gives an injection <span class="math" data-tex="\(\kappa\times\kappa\to\kappa\)">\(\kappa\times\kappa\to\kappa\)</span>; the diagonal <span class="math" data-tex="\(\alpha\mapsto(\alpha,\alpha)\)">\(\alpha\mapsto(\alpha,\alpha)\)</span> gives the reverse injection. Theorem 4.2 proves the required bijection. In fact <span class="math" data-tex="\(\theta\)">\(\theta\)</span> must equal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>: if it were smaller, the diagonal followed by the order-isomorphism would inject <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> into a smaller ordinal, contradicting Corollary 4.3 and initiality. Therefore the position map itself is a bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+r_\kappa(\alpha,\beta)
+=\text{the ordinal of the predecessors of }(\alpha,\beta).
+\tag{5.6}
+\]">\[
+r_\kappa(\alpha,\beta)
+=\text{the ordinal of the predecessors of }(\alpha,\beta).
+\tag{5.6}
+\]</span>
+<p>For <span class="math" data-tex="\(\kappa=\omega\)">\(\kappa=\omega\)</span>, every <span class="math" data-tex="\(\rho&lt;\kappa\)">\(\rho&lt;\kappa\)</span> is finite, so the finite branch of the argument supplies the first induction step. No infinite square was assumed at that step. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The relation in (5.5) is a subset of <span class="math" data-tex="\((\kappa\times\kappa)\times(\kappa\times\kappa)\)">\((\kappa\times\kappa)\times(\kappa\times\kappa)\)</span>. For <span class="math" data-tex="\(\kappa\in\mathcal U\)">\(\kappa\in\mathcal U\)</span>, imported universe closure puts this relation and its underlying set in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Proposition 3.2 puts its order type there, and the graph of <span class="math" data-tex="\(r_\kappa\)">\(r_\kappa\)</span> is a subset of <span class="math" data-tex="\((\kappa\times\kappa)\times\kappa\)">\((\kappa\times\kappa)\times\kappa\)</span>, hence a member. For a small set <span class="math" data-tex="\(A\)">\(A\)</span> with bijection <span class="math" data-tex="\(b:A\to\kappa\)">\(b:A\to\kappa\)</span>, an actual square bijection is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.7); horizontal scroll when needed" data-tex="\[
+(a,a&#x27;)\longmapsto r_\kappa(b(a),b(a&#x27;)).
+\tag{5.7}
+\]">\[
+(a,a&#x27;)\longmapsto r_\kappa(b(a),b(a&#x27;)).
+\tag{5.7}
+\]</span>
+<p>Its inverse applies <span class="math" data-tex="\(r_\kappa^{-1}\)">\(r_\kappa^{-1}\)</span> and then <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span> to the two coordinates. With external labels these graphs are small, and membership is asserted for their encodings after transport.</p>
+<p><strong>Corollary 5.2.</strong> If <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is infinite and <span class="math" data-tex="\(1\leq\mu\leq\kappa\)">\(1\leq\mu\leq\kappa\)</span>, then <span class="math" data-tex="\(\kappa\cdot\mu=\kappa\)">\(\kappa\cdot\mu=\kappa\)</span>. If two cardinals are infinite, their product is their maximum.</p>
+<p><strong>Proof.</strong> Inclusion embeds <span class="math" data-tex="\(\kappa\times\mu\)">\(\kappa\times\mu\)</span> into <span class="math" data-tex="\(\kappa\times\kappa\)">\(\kappa\times\kappa\)</span>, whose cardinal is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. The map <span class="math" data-tex="\(\alpha\mapsto(\alpha,0)\)">\(\alpha\mapsto(\alpha,0)\)</span> embeds <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> into <span class="math" data-tex="\(\kappa\times\mu\)">\(\kappa\times\mu\)</span>, since <span class="math" data-tex="\(\mu\ne0\)">\(\mu\ne0\)</span>. Apply Theorem 4.2. For two infinite cardinals, take <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> to be their maximum and use this argument, interchanging the coordinates if needed. If a factor is zero, the product is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.3 (a union bound).</strong> Let <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> be infinite. If <span class="math" data-tex="\(|I|\leq\kappa\)">\(|I|\leq\kappa\)</span> and <span class="math" data-tex="\(|B_i|\leq\kappa\)">\(|B_i|\leq\kappa\)</span> for every <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, then the tagged union <span class="math" data-tex="\(\coprod_iB_i\)">\(\coprod_iB_i\)</span> and the ordinary union <span class="math" data-tex="\(\bigcup_iB_i\)">\(\bigcup_iB_i\)</span> have cardinal at most <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
+<p><strong>Proof.</strong> Choose an injection <span class="math" data-tex="\(e:I\to\kappa\)">\(e:I\to\kappa\)</span>. By set-indexed Choice, choose an injection <span class="math" data-tex="\(b_i:B_i\to\kappa\)">\(b_i:B_i\to\kappa\)</span> for each <span class="math" data-tex="\(i\)">\(i\)</span>; an empty <span class="math" data-tex="\(B_i\)">\(B_i\)</span> has its unique empty map. The map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.8); horizontal scroll when needed" data-tex="\[
+(i,x)\longmapsto r_\kappa(e(i),b_i(x))
+\tag{5.8}
+\]">\[
+(i,x)\longmapsto r_\kappa(e(i),b_i(x))
+\tag{5.8}
+\]</span>
+<p>is injective: injectivity of <span class="math" data-tex="\(r_\kappa\)">\(r_\kappa\)</span>, then of <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(b_i\)">\(b_i\)</span>, recovers both labels. This proves the tagged bound. For a point in the ordinary union choose the least index containing it after well-ordering <span class="math" data-tex="\(I\)">\(I\)</span>; this gives an injection of that union into the tagged union. For empty <span class="math" data-tex="\(I\)">\(I\)</span>, both unions are empty. If the sets and index are small, their smallness and the exact reindexing maps are already supplied by the imported Proposition 3.1; (5.8) supplies the sharper cardinal bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-regular-cardinals-and-successors">6. Regular cardinals and successors</h2>
+<p>An infinite cardinal <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is <strong>regular</strong> if, whenever a set <span class="math" data-tex="\(I\)">\(I\)</span> and sets <span class="math" data-tex="\(B_i\)">\(B_i\)</span> satisfy <span class="math" data-tex="\(|I|&lt;\lambda\)">\(|I|&lt;\lambda\)</span> and <span class="math" data-tex="\(|B_i|&lt;\lambda\)">\(|B_i|&lt;\lambda\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\left|\coprod_{i\in I}B_i\right|&lt;\lambda.
+\tag{6.1}
+\]">\[
+\left|\coprod_{i\in I}B_i\right|&lt;\lambda.
+\tag{6.1}
+\]</span>
+<p>For <span class="math" data-tex="\(\lambda\in\mathcal U\)">\(\lambda\in\mathcal U\)</span>, every test set in this definition is automatically <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small: Corollary 4.3 injects it into <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and it is bijective to its image, a universe member by subset closure. Thus this is exactly the fixed-universe condition using small indices and small summands. The union is tagged, so repeated elements in different summands remain distinct. Empty summands and an empty index are included. Ordinary unions satisfy the same bound, by the injection in Corollary 5.3. For <span class="math" data-tex="\(\lambda=\aleph_0\)">\(\lambda=\aleph_0\)</span>, (6.1) says that a finite union of finite sets is finite, which follows by finite induction. Thus <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span> is regular.</p>
+<p><strong>Proposition 6.1.</strong> Every cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> has a least larger cardinal <span class="math" data-tex="\(\kappa^+\)">\(\kappa^+\)</span>. If <span class="math" data-tex="\(\kappa\in\mathcal U\)">\(\kappa\in\mathcal U\)</span>, then <span class="math" data-tex="\(\kappa^+\in\mathcal U\)">\(\kappa^+\in\mathcal U\)</span>.</p>
+<p><strong>Proof.</strong> Equation (5.3) supplies a larger cardinal <span class="math" data-tex="\(2^\kappa\)">\(2^\kappa\)</span>. The cardinals in the ordinal interval <span class="math" data-tex="\((\kappa,2^\kappa]\)">\((\kappa,2^\kappa]\)</span> form a nonempty set with a least member <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Any cardinal strictly between <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> would also be in that interval, so none exists. This makes <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> the least larger cardinal, <span class="math" data-tex="\(\kappa^+\)">\(\kappa^+\)</span>. For a universe-member <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, the power set and its cardinal representative are members, by the imports and Proposition 4.1. As <span class="math" data-tex="\(\lambda\leq2^\kappa\)">\(\lambda\leq2^\kappa\)</span>, it is a subset of that ordinal and hence belongs to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2.</strong> The successor <span class="math" data-tex="\(\kappa^+\)">\(\kappa^+\)</span> of every infinite cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is regular.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(|I|&lt;\kappa^+\)">\(|I|&lt;\kappa^+\)</span> and <span class="math" data-tex="\(|B_i|&lt;\kappa^+\)">\(|B_i|&lt;\kappa^+\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>. By the definition of the next cardinal, all these cardinals are at most <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Corollary 5.3 gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\left|\coprod_{i\in I}B_i\right|
+\leq\kappa&lt;\kappa^+.
+\tag{6.2}
+\]">\[
+\left|\coprod_{i\in I}B_i\right|
+\leq\kappa&lt;\kappa^+.
+\tag{6.2}
+\]</span>
+<p>This is (6.1), including the empty cases. The maps establishing the inequality are the single injections (5.8), chosen for the whole indexed family. Their construction uses Choice and the already proved square theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For instance <span class="math" data-tex="\(\aleph_1=\aleph_0^+\)">\(\aleph_1=\aleph_0^+\)</span> is regular: a countable family of countable sets has countable tagged union. The word <em>infinite</em> alone does not imply regularity; Exercise 3 constructs an explicit failure. In the statements here, <span class="math" data-tex="\(\kappa,\mu,\lambda\)">\(\kappa,\mu,\lambda\)</span> called infinite cardinals are unrestricted infinite cardinal representatives. When <span class="math" data-tex="\(\pi\)">\(\pi\)</span> denotes a cardinal parameter, it is also assumed infinite; regularity must be stated separately.</p>
+<h2 id="7-a-larger-cardinal-unchanged-by-a-prescribed-exponent">7. A larger cardinal unchanged by a prescribed exponent</h2>
+<p>For sets <span class="math" data-tex="\(A,B,C\)">\(A,B,C\)</span>, the currying bijection is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+(C^A)^B&amp;\longrightarrow C^{A\times B},\\
+F&amp;\longmapsto\bigl((a,b)\longmapsto F(b)(a)\bigr).
+\end{aligned}
+\tag{7.1}
+\]">\[
+\begin{aligned}
+(C^A)^B&amp;\longrightarrow C^{A\times B},\\
+F&amp;\longmapsto\bigl((a,b)\longmapsto F(b)(a)\bigr).
+\end{aligned}
+\tag{7.1}
+\]</span>
+<p>Its inverse sends <span class="math" data-tex="\(G\)">\(G\)</span> to the function <span class="math" data-tex="\(b\mapsto(a\mapsto G(a,b))\)">\(b\mapsto(a\mapsto G(a,b))\)</span>. Substitution in either direction recovers the original function. For universe-member inputs, the function sets and these graphs are members by the imported closure results. For small inputs, the imported transport maps give the same bijection on representatives. Hence cardinal exponentiation satisfies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+(\nu^\kappa)^\mu=\nu^{\kappa\cdot\mu}.
+\tag{7.2}
+\]">\[
+(\nu^\kappa)^\mu=\nu^{\kappa\cdot\mu}.
+\tag{7.2}
+\]</span>
+<p><strong>Theorem 7.1.</strong> For every infinite cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, there is a cardinal <span class="math" data-tex="\(\theta&gt;\kappa\)">\(\theta&gt;\kappa\)</span> such that <span class="math" data-tex="\(\theta^\kappa=\theta\)">\(\theta^\kappa=\theta\)</span>. One can take <span class="math" data-tex="\(\theta=2^\kappa\)">\(\theta=2^\kappa\)</span>.</p>
+<p><strong>Proof.</strong> Strict inequality is (5.3). Currying and Theorem 5.1 give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+(2^\kappa)^\kappa
+=2^{\kappa\cdot\kappa}
+=2^\kappa.
+\tag{7.3}
+\]">\[
+(2^\kappa)^\kappa
+=2^{\kappa\cdot\kappa}
+=2^\kappa.
+\tag{7.3}
+\]</span>
+<p>The equality is implemented by actual maps. For <span class="math" data-tex="\(F:\kappa\to\{0,1\}^\kappa\)">\(F:\kappa\to\{0,1\}^\kappa\)</span>, define <span class="math" data-tex="\(\Phi(F):\kappa\to\{0,1\}\)">\(\Phi(F):\kappa\to\{0,1\}\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.4); horizontal scroll when needed" data-tex="\[
+\Phi(F)(\gamma)=F(\beta)(\alpha)
+\quad\text{where }(\alpha,\beta)=r_\kappa^{-1}(\gamma).
+\tag{7.4}
+\]">\[
+\Phi(F)(\gamma)=F(\beta)(\alpha)
+\quad\text{where }(\alpha,\beta)=r_\kappa^{-1}(\gamma).
+\tag{7.4}
+\]</span>
+<p>Its inverse sends <span class="math" data-tex="\(u:\kappa\to\{0,1\}\)">\(u:\kappa\to\{0,1\}\)</span> to <span class="math" data-tex="\(\beta\mapsto(\alpha\mapsto u(r_\kappa(\alpha,\beta)))\)">\(\beta\mapsto(\alpha\mapsto u(r_\kappa(\alpha,\beta)))\)</span>. The two composite identities follow from those of <span class="math" data-tex="\(r_\kappa\)">\(r_\kappa\)</span> and its inverse. Finally choose a bijection <span class="math" data-tex="\(q:\theta\to\{0,1\}^\kappa\)">\(q:\theta\to\{0,1\}^\kappa\)</span>. The actual bijection using the initial-ordinal representatives is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.5); horizontal scroll when needed" data-tex="\[
+\operatorname{Map}(\kappa,\theta)\longrightarrow\theta,
+\qquad f\longmapsto q^{-1}\bigl(\Phi(q\circ f)\bigr),
+\tag{7.5}
+\]">\[
+\operatorname{Map}(\kappa,\theta)\longrightarrow\theta,
+\qquad f\longmapsto q^{-1}\bigl(\Phi(q\circ f)\bigr),
+\tag{7.5}
+\]</span>
+<p>with inverse obtained from <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(\Phi^{-1}\)">\(\Phi^{-1}\)</span> and pointwise <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>. If <span class="math" data-tex="\(\kappa\in\mathcal U\)">\(\kappa\in\mathcal U\)</span>, then <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, all function sets in these maps, and their graphs on the displayed universe-member representatives belong to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. This follows from the imported function-set bounds and Proposition 4.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Taking <span class="math" data-tex="\(\kappa=\aleph_0\)">\(\kappa=\aleph_0\)</span> gives <span class="math" data-tex="\(\theta=2^{\aleph_0}\)">\(\theta=2^{\aleph_0}\)</span> and <span class="math" data-tex="\(\theta^{\aleph_0}=\theta\)">\(\theta^{\aleph_0}=\theta\)</span>. The construction does not require identifying <span class="math" data-tex="\(2^{\aleph_0}\)">\(2^{\aleph_0}\)</span> with any particular successor cardinal. The square theorem concerns two factors: the function set <span class="math" data-tex="\(\operatorname{Map}(\omega,\omega)\)">\(\operatorname{Map}(\omega,\omega)\)</span> has cardinal greater than <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, since it contains <span class="math" data-tex="\(\{0,1\}^\omega\)">\(\{0,1\}^\omega\)</span> and (5.3) applies.</p>
+<h2 id="8-four-exercises-with-complete-solutions">8. Four exercises with complete solutions</h2>
+<h3 id="1-a-bijection-assembled-from-two-dilations">1. A bijection assembled from two dilations</h3>
+<p><strong>Exercise.</strong> Use the proof of Cantor–Bernstein with <span class="math" data-tex="\(A=B=\mathbb N\)">\(A=B=\mathbb N\)</span>, including <span class="math" data-tex="\(0\)">\(0\)</span>, and injections <span class="math" data-tex="\(f(n)=3n\)">\(f(n)=3n\)</span>, <span class="math" data-tex="\(g(n)=2n\)">\(g(n)=2n\)</span>. Compute <span class="math" data-tex="\(D\)">\(D\)</span>, the resulting bijection and its inverse. Check the values at <span class="math" data-tex="\(0,1,2,6,12\)">\(0,1,2,6,12\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(A_0\)">\(A_0\)</span> is the set of positive odd integers and <span class="math" data-tex="\(g\circ f\)">\(g\circ f\)</span> multiplies by <span class="math" data-tex="\(6\)">\(6\)</span>. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+D=\{6^k(2m+1):k,m\in\mathbb N\},
+\qquad
+h(n)=
+\begin{cases}
+3n,&amp;n\in D,\\
+n/2,&amp;n\notin D.
+\end{cases}
+\tag{8.1}
+\]">\[
+D=\{6^k(2m+1):k,m\in\mathbb N\},
+\qquad
+h(n)=
+\begin{cases}
+3n,&amp;n\in D,\\
+n/2,&amp;n\notin D.
+\end{cases}
+\tag{8.1}
+\]</span>
+<p>Every positive odd integer lies in <span class="math" data-tex="\(D\)">\(D\)</span>, so the second branch has an integer value. Zero is outside <span class="math" data-tex="\(D\)">\(D\)</span>. The inverse is <span class="math" data-tex="\(h^{-1}(b)=b/3\)">\(h^{-1}(b)=b/3\)</span> for <span class="math" data-tex="\(b\in3D\)">\(b\in3D\)</span>, and <span class="math" data-tex="\(h^{-1}(b)=2b\)">\(h^{-1}(b)=2b\)</span> otherwise. In the first case <span class="math" data-tex="\(b/3\in D\)">\(b/3\in D\)</span>, so substitution gives <span class="math" data-tex="\(h(b/3)=b\)">\(h(b/3)=b\)</span>. In the second case <span class="math" data-tex="\(2b\notin D\)">\(2b\notin D\)</span>: if <span class="math" data-tex="\(2b=6^k(2m+1)\)">\(2b=6^k(2m+1)\)</span>, parity forces <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span> and gives <span class="math" data-tex="\(b=3\cdot6^{k-1}(2m+1)\in3D\)">\(b=3\cdot6^{k-1}(2m+1)\in3D\)</span>, a contradiction. Thus <span class="math" data-tex="\(h(2b)=b\)">\(h(2b)=b\)</span>. Conversely, <span class="math" data-tex="\(3n\in3D\)">\(3n\in3D\)</span> when <span class="math" data-tex="\(n\in D\)">\(n\in D\)</span>. When <span class="math" data-tex="\(n\notin D\)">\(n\notin D\)</span>, putting <span class="math" data-tex="\(b=n/2\)">\(b=n/2\)</span> gives <span class="math" data-tex="\(b\notin3D\)">\(b\notin3D\)</span>, since otherwise <span class="math" data-tex="\(n\in6D\subseteq D\)">\(n\in6D\subseteq D\)</span>; the inverse then recovers <span class="math" data-tex="\(n\)">\(n\)</span>. These verify both composites directly. The requested values are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+h(0)=0,\quad h(1)=3,\quad h(2)=1,
+\quad h(6)=18,\quad h(12)=6.
+\tag{8.2}
+\]">\[
+h(0)=0,\quad h(1)=3,\quad h(2)=1,
+\quad h(6)=18,\quad h(12)=6.
+\tag{8.2}
+\]</span>
+<p>For <span class="math" data-tex="\(12\)">\(12\)</span>, removing one factor of <span class="math" data-tex="\(6\)">\(6\)</span> leaves the even integer <span class="math" data-tex="\(2\)">\(2\)</span>, so <span class="math" data-tex="\(12\notin D\)">\(12\notin D\)</span>. All sets and graphs here belong to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> by the imported bounds for subsets of products of natural-number sets.</p>
+<h3 id="2-finite-words-with-a-chosen-cut">2. Finite words with a chosen cut</h3>
+<p><strong>Exercise.</strong> Let <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> be an infinite cardinal. Let <span class="math" data-tex="\(W_\kappa\)">\(W_\kappa\)</span> be the set of all finite words in the alphabet <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, including the empty word. Let <span class="math" data-tex="\(M_\kappa\)">\(M_\kappa\)</span> consist of pairs <span class="math" data-tex="\((w,k)\)">\((w,k)\)</span> with a word of length <span class="math" data-tex="\(n\)">\(n\)</span> and a cut <span class="math" data-tex="\(0\leq k\leq n\)">\(0\leq k\leq n\)</span>; the cut separates the first <span class="math" data-tex="\(k\)">\(k\)</span> letters from the remaining letters. Prove that both sets have cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, with explicit injections. Explain why this argument does not bound all infinite words by <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
+<p><strong>Solution.</strong> Define injections <span class="math" data-tex="\(p_n:\operatorname{Map}(n,\kappa)\to\kappa\)">\(p_n:\operatorname{Map}(n,\kappa)\to\kappa\)</span> recursively, interpreting a word as a function from its finite ordinal of positions. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, send the empty word to <span class="math" data-tex="\(0\)">\(0\)</span>. Given <span class="math" data-tex="\(p_n\)">\(p_n\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+p_{n+1}(a_0,\ldots,a_n)
+=r_\kappa\bigl(p_n(a_0,\ldots,a_{n-1}),a_n\bigr).
+\tag{8.3}
+\]">\[
+p_{n+1}(a_0,\ldots,a_n)
+=r_\kappa\bigl(p_n(a_0,\ldots,a_{n-1}),a_n\bigr).
+\tag{8.3}
+\]</span>
+<p>Injectivity follows by induction, using the two-coordinate injectivity of <span class="math" data-tex="\(r_\kappa\)">\(r_\kappa\)</span>; for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> it is injectivity of its second coordinate with first coordinate fixed at <span class="math" data-tex="\(0\)">\(0\)</span>. Since <span class="math" data-tex="\(n,k&lt;\omega\leq\kappa\)">\(n,k&lt;\omega\leq\kappa\)</span>, the following are injections:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.4); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+W_\kappa&amp;\longrightarrow\kappa,
+&amp;w\text{ of length }n&amp;\longmapsto r_\kappa(n,p_n(w)),\\
+M_\kappa&amp;\longrightarrow\kappa,
+&amp;(w,k)\text{ with }|w|=n&amp;\longmapsto
+r_\kappa\bigl(r_\kappa(n,k),p_n(w)\bigr).
+\end{aligned}
+\tag{8.4}
+\]">\[
+\begin{aligned}
+W_\kappa&amp;\longrightarrow\kappa,
+&amp;w\text{ of length }n&amp;\longmapsto r_\kappa(n,p_n(w)),\\
+M_\kappa&amp;\longrightarrow\kappa,
+&amp;(w,k)\text{ with }|w|=n&amp;\longmapsto
+r_\kappa\bigl(r_\kappa(n,k),p_n(w)\bigr).
+\end{aligned}
+\tag{8.4}
+\]</span>
+<p>Decoding <span class="math" data-tex="\(r_\kappa\)">\(r_\kappa\)</span> first recovers the length and, in the second map, the cut; injectivity of <span class="math" data-tex="\(p_n\)">\(p_n\)</span> then recovers the word. Conversely <span class="math" data-tex="\(a\mapsto(a)\)">\(a\mapsto(a)\)</span> injects <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> into <span class="math" data-tex="\(W_\kappa\)">\(W_\kappa\)</span>, and <span class="math" data-tex="\(a\mapsto((a),0)\)">\(a\mapsto((a),0)\)</span> injects it into <span class="math" data-tex="\(M_\kappa\)">\(M_\kappa\)</span>. Cantor–Bernstein gives the two bijections, with its construction (4.3)–(4.5) supplying inverses if desired.</p>
+<p>For <span class="math" data-tex="\(\kappa\in\mathcal U\)">\(\kappa\in\mathcal U\)</span>, these finite-domain function sets, their <span class="math" data-tex="\(\omega\)">\(\omega\)</span>-indexed tagged union, and its ordinary union <span class="math" data-tex="\(W_\kappa\)">\(W_\kappa\)</span> belong to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Length is recovered from the function's domain. The marked words form a subset of <span class="math" data-tex="\(W_\kappa\times\omega\)">\(W_\kappa\times\omega\)</span>, so they belong to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> too. The injections are graphs between universe members. An infinite word has no finite length tag <span class="math" data-tex="\(n\)">\(n\)</span> in (8.4). For <span class="math" data-tex="\(\kappa=\omega\)">\(\kappa=\omega\)</span>, binary infinite words inject into <span class="math" data-tex="\(\operatorname{Map}(\omega,\omega)\)">\(\operatorname{Map}(\omega,\omega)\)</span>, and Cantor's imported theorem gives <span class="math" data-tex="\(2^{\aleph_0}&gt;\aleph_0\)">\(2^{\aleph_0}&gt;\aleph_0\)</span>. Thus even this particular infinite-word set exceeds the proposed bound.</p>
+<h3 id="3-a-small-cardinal-that-fails-regularity">3. A small cardinal that fails regularity</h3>
+<p><strong>Exercise.</strong> Set <span class="math" data-tex="\(\kappa_0=\aleph_0\)">\(\kappa_0=\aleph_0\)</span>, <span class="math" data-tex="\(\kappa_{n+1}=2^{\kappa_n}\)">\(\kappa_{n+1}=2^{\kappa_n}\)</span>, and <span class="math" data-tex="\(\lambda=\bigcup_{n&lt;\omega}\kappa_n\)">\(\lambda=\bigcup_{n&lt;\omega}\kappa_n\)</span>, with cardinals represented by initial ordinals. Show that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a universe-member infinite cardinal and that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is not regular, although <span class="math" data-tex="\(\lambda^+\)">\(\lambda^+\)</span> is regular. Give the maps proving the size of the witnessing tagged union.</p>
+<p><strong>Solution.</strong> The imported function-set bounds, followed by Proposition 4.1, put every <span class="math" data-tex="\(\kappa_n\)">\(\kappa_n\)</span> in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Recursion on <span class="math" data-tex="\(\omega\)">\(\omega\)</span> defines this uniquely specified family, and the indexed-union axiom puts <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Cantor's theorem makes the sequence strictly increasing; its union is an ordinal and each <span class="math" data-tex="\(\kappa_n&lt;\lambda\)">\(\kappa_n&lt;\lambda\)</span>.</p>
+<p>The ordinal <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is initial. If <span class="math" data-tex="\(\beta&lt;\lambda\)">\(\beta&lt;\lambda\)</span>, choose <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(\beta&lt;\kappa_n\)">\(\beta&lt;\kappa_n\)</span>. Then <span class="math" data-tex="\(|\beta|&lt;\kappa_n\)">\(|\beta|&lt;\kappa_n\)</span>, by initiality of <span class="math" data-tex="\(\kappa_n\)">\(\kappa_n\)</span>. A bijection <span class="math" data-tex="\(\lambda\to\beta\)">\(\lambda\to\beta\)</span>, restricted to the included <span class="math" data-tex="\(\kappa_n\)">\(\kappa_n\)</span>, would give an injection <span class="math" data-tex="\(\kappa_n\to\beta\)">\(\kappa_n\to\beta\)</span>, contradicting Corollary 4.3. Hence no smaller ordinal is bijective to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. It is infinite and in fact <span class="math" data-tex="\(\aleph_0&lt;\lambda\)">\(\aleph_0&lt;\lambda\)</span>.</p>
+<p>Let <span class="math" data-tex="\(T=\coprod_{n&lt;\omega}\kappa_n\)">\(T=\coprod_{n&lt;\omega}\kappa_n\)</span>. An injection <span class="math" data-tex="\(\lambda\to T\)">\(\lambda\to T\)</span> sends <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\((n(\alpha),\alpha)\)">\((n(\alpha),\alpha)\)</span>, where <span class="math" data-tex="\(n(\alpha)\)">\(n(\alpha)\)</span> is the least natural number for which <span class="math" data-tex="\(\alpha&lt;\kappa_{n(\alpha)}\)">\(\alpha&lt;\kappa_{n(\alpha)}\)</span>. The ordinal union guarantees that this number exists, and the second coordinate recovers <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. An injection in the other direction is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.5); horizontal scroll when needed" data-tex="\[
+T\longrightarrow\lambda,
+\qquad(n,\alpha)\longmapsto r_\lambda(n,\alpha).
+\tag{8.5}
+\]">\[
+T\longrightarrow\lambda,
+\qquad(n,\alpha)\longmapsto r_\lambda(n,\alpha).
+\tag{8.5}
+\]</span>
+<p>Here <span class="math" data-tex="\(n&lt;\omega&lt;\lambda\)">\(n&lt;\omega&lt;\lambda\)</span> and <span class="math" data-tex="\(\alpha&lt;\kappa_n&lt;\lambda\)">\(\alpha&lt;\kappa_n&lt;\lambda\)</span>, and pair injectivity proves the claim. Thus <span class="math" data-tex="\(|T|=\lambda\)">\(|T|=\lambda\)</span>. Every summand has cardinal below <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and the index has cardinal <span class="math" data-tex="\(\aleph_0&lt;\lambda\)">\(\aleph_0&lt;\lambda\)</span>, but their tagged union does not. This disproves regularity of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Theorem 6.2 proves regularity of <span class="math" data-tex="\(\lambda^+\)">\(\lambda^+\)</span>. Both <span class="math" data-tex="\(T\)">\(T\)</span> and the displayed graphs are encoded by universe members, using the imported union and function bounds.</p>
+<h3 id="4-the-exact-range-of-an-exponent-collapse">4. The exact range of an exponent collapse</h3>
+<p><strong>Exercise.</strong> Fix an infinite cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> and put <span class="math" data-tex="\(\theta=2^\kappa\)">\(\theta=2^\kappa\)</span>. Prove <span class="math" data-tex="\(\theta^\mu=\theta\)">\(\theta^\mu=\theta\)</span> for every <span class="math" data-tex="\(1\leq\mu\leq\kappa\)">\(1\leq\mu\leq\kappa\)</span>, identify the actual function-table bijection, and compute <span class="math" data-tex="\(\theta^0\)">\(\theta^0\)</span>. Prove that the same equality fails when the exponent is <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.</p>
+<p><strong>Solution.</strong> Corollary 5.2 provides a bijection <span class="math" data-tex="\(t:\kappa\times\mu\to\kappa\)">\(t:\kappa\times\mu\to\kappa\)</span>. A table <span class="math" data-tex="\(F:\mu\to\{0,1\}^\kappa\)">\(F:\mu\to\{0,1\}^\kappa\)</span> corresponds to the single function</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.6); horizontal scroll when needed" data-tex="\[
+u(\gamma)=F(b)(a)
+\quad\text{where }(a,b)=t^{-1}(\gamma).
+\tag{8.6}
+\]">\[
+u(\gamma)=F(b)(a)
+\quad\text{where }(a,b)=t^{-1}(\gamma).
+\tag{8.6}
+\]</span>
+<p>Its inverse is <span class="math" data-tex="\(u\mapsto\bigl(b\mapsto(a\mapsto u(t(a,b)))\bigr)\)">\(u\mapsto\bigl(b\mapsto(a\mapsto u(t(a,b)))\bigr)\)</span>. The identities of <span class="math" data-tex="\(t\)">\(t\)</span> verify both composites. For a bijection <span class="math" data-tex="\(q:\theta\to\{0,1\}^\kappa\)">\(q:\theta\to\{0,1\}^\kappa\)</span>, conjugating this table bijection as in (7.5) gives <span class="math" data-tex="\(\operatorname{Map}(\mu,\theta)\to\theta\)">\(\operatorname{Map}(\mu,\theta)\to\theta\)</span>, with the conjugated inverse. Equivalently currying yields <span class="math" data-tex="\(\theta^\mu=2^{\kappa\cdot\mu}=2^\kappa=\theta\)">\(\theta^\mu=2^{\kappa\cdot\mu}=2^\kappa=\theta\)</span>.</p>
+<p>There is exactly one function from the empty set to <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, so <span class="math" data-tex="\(\theta^0=1\)">\(\theta^0=1\)</span>. For the exponent <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, choose two distinct elements of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>; they exist because <span class="math" data-tex="\(\theta&gt;\kappa\geq\aleph_0\)">\(\theta&gt;\kappa\geq\aleph_0\)</span>. The resulting injection <span class="math" data-tex="\(\{0,1\}\to\theta\)">\(\{0,1\}\to\theta\)</span> induces, pointwise, an injection <span class="math" data-tex="\(\{0,1\}^\theta\to\operatorname{Map}(\theta,\theta)\)">\(\{0,1\}^\theta\to\operatorname{Map}(\theta,\theta)\)</span>. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.7); horizontal scroll when needed" data-tex="\[
+\theta^\theta\geq2^\theta&gt;\theta
+\tag{8.7}
+\]">\[
+\theta^\theta\geq2^\theta&gt;\theta
+\tag{8.7}
+\]</span>
+<p>by Corollary 4.3 and Cantor's imported theorem. This establishes the failure without an additional hypothesis on the cardinal between <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. All sets and maps in the solution are universe members when their initial-ordinal inputs belong to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, by the imported operations and Proposition 4.1.</p>
+<h2 id="proof-dependencies">Proof dependencies</h2>
+<p>The complete imported provider is <span class="unlinked">Universes and small categories</span>: Lemma 1.1 for Cantor's diagonal obstruction, Propositions 2.1 and 3.1 for operations and explicit transport maps, and Example 4.2 for the failure of a small cardinal-representative family. Its independent exposition is CC0. The set recursion, ordinal-type construction, Hartogs bound, well-ordering argument, Cantor–Bernstein bijection, cardinal comparison, infinite-square induction, regular-successor proof, function-table bijections and four solved exercises are proved in this lesson under the stated foundational axioms.</p>
+</main></body></html>

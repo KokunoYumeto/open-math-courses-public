@@ -1,0 +1,226 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Real-parameter complexes and cohomology continuity</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="real-parameter-complexes-and-cohomology-continuity">Real-parameter complexes and cohomology continuity</h1>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original text: CC0. No independent review.</em></p>
+<p>Taking cohomology need not commute with an inverse limit. For a countable tower with surjective maps in every degree, the failure is exactly a first derived-limit term in the preceding cohomology degree. We prove this comparison with its actual maps, then use it to propagate cohomology isomorphisms along a real-parameter diagram.</p>
+<p>Fix a unital ring <span class="math" data-tex="\(A\)">\(A\)</span>, a Grothendieck universe containing <span class="math" data-tex="\(A,\mathbb R,\mathbb N\)">\(A,\mathbb R,\mathbb N\)</span>, and the ambient axiom of choice. Complexes are cochain complexes of small left <span class="math" data-tex="\(A\)">\(A\)</span>-modules, with <span class="math" data-tex="\(d:X^n\to X^{n+1}\)">\(d:X^n\to X^{n+1}\)</span> and <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>. No bound on their terms is imposed. Write <span class="math" data-tex="\(H^nX=\ker d^n/\operatorname{im}d^{n-1}\)">\(H^nX=\ker d^n/\operatorname{im}d^{n-1}\)</span>, with the canonical maps induced by chain maps.</p>
+<p><span class="unlinked">Hom, tensor and the exactness of module limits</span>, Sections 2–5, gives small limits, filtered representative tests and exact module products. <a href="countable-mittag-leffler-and-formal-pro-derived-limits.html">Countable Mittag-Leffler towers and formal Pro derived limits</a>, Sections 1–2 and 6, proves surjectivity of the difference map for ML towers and identifies its cokernel with the formal Pro right derived functor. <a href="real-parameter-local-tests-and-global-module-maps.html">Local tests and global maps in real-parameter module diagrams</a>, Sections 1–3, supplies the two local comparisons and their full local-to-global proofs.</p>
+<h2 id="1-the-real-parameter-hypotheses">1. The real-parameter hypotheses</h2>
+<p>Let <span class="math" data-tex="\(s\mapsto X_s\)">\(s\mapsto X_s\)</span> be a covariant diagram of complexes on the real order. Its chain maps are <span class="math" data-tex="\(v_{r,s}:X_r\to X_s\)">\(v_{r,s}:X_r\to X_s\)</span> for <span class="math" data-tex="\(r\leq s\)">\(r\leq s\)</span>, with identity and composition as usual. Assume:</p>
+<ol>
+<li>Every <span class="math" data-tex="\(v_{r,s}^n:X_r^n\to X_s^n\)">\(v_{r,s}^n:X_r^n\to X_s^n\)</span> is surjective, for every integer <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(r\leq s\)">\(r\leq s\)</span>.</li>
+<li>The canonical right comparison of terms is an isomorphism for every <span class="math" data-tex="\(s,n\)">\(s,n\)</span>:</li>
+</ol>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\rho_s^n:X_s^n\xrightarrow{\sim}\lim_{t&gt;s}X_t^n,
+\qquad x\longmapsto(v_{s,t}^nx)_{t&gt;s}.
+\tag{1.1}
+\]">\[
+\rho_s^n:X_s^n\xrightarrow{\sim}\lim_{t&gt;s}X_t^n,
+\qquad x\longmapsto(v_{s,t}^nx)_{t&gt;s}.
+\tag{1.1}
+\]</span>
+<ol start="3">
+<li>The canonical left comparison of cohomology is an isomorphism for every <span class="math" data-tex="\(s,n\)">\(s,n\)</span>:</li>
+</ol>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+a_s^n:\operatorname{colim}_{t&lt;s}H^nX_t\xrightarrow{\sim}H^nX_s,
+\qquad [t,\xi]\longmapsto H^n(v_{t,s})\xi.
+\tag{1.2}
+\]">\[
+a_s^n:\operatorname{colim}_{t&lt;s}H^nX_t\xrightarrow{\sim}H^nX_s,
+\qquad [t,\xi]\longmapsto H^n(v_{t,s})\xi.
+\tag{1.2}
+\]</span>
+<p>The right cohomology comparison is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+b_s^n:H^nX_s\longrightarrow\lim_{t&gt;s}H^nX_t,
+\qquad \xi\longmapsto(H^n(v_{s,t})\xi)_{t&gt;s}.
+\tag{1.3}
+\]">\[
+b_s^n:H^nX_s\longrightarrow\lim_{t&gt;s}H^nX_t,
+\qquad \xi\longmapsto(H^n(v_{s,t})\xi)_{t&gt;s}.
+\tag{1.3}
+\]</span>
+<p>These are the local maps from the module prerequisite applied to the term diagrams and to the cohomology diagrams. They are natural in the real parameter and in morphisms of diagrams. In particular, (1.1) specifies the isomorphism used; an unspecified isomorphism between the two modules would not be this hypothesis.</p>
+<h2 id="2-reconstruct-a-whole-future-from-a-countable-tower">2. Reconstruct a whole future from a countable tower</h2>
+<p>Fix <span class="math" data-tex="\(s\)">\(s\)</span> and put <span class="math" data-tex="\(t_m=s+1/(m+1)\)">\(t_m=s+1/(m+1)\)</span> for <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>. Then <span class="math" data-tex="\(t_{m+1}&lt;t_m\)">\(t_{m+1}&lt;t_m\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+M_m=X_{t_m},\qquad w_m=v_{t_{m+1},t_m}:M_{m+1}\to M_m
+\tag{2.1}
+\]">\[
+M_m=X_{t_m},\qquad w_m=v_{t_{m+1},t_m}:M_{m+1}\to M_m
+\tag{2.1}
+\]</span>
+<p>is an inverse tower of complexes. Its maps are termwise surjective by hypothesis 1.</p>
+<p><strong>Lemma 2.1.</strong> Restriction to these times gives canonical isomorphisms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\lim_{t&gt;s}X_t\simeq\lim_m M_m,
+\qquad
+\lim_{t&gt;s}H^nX_t\simeq\lim_m H^nM_m.
+\tag{2.2}
+\]">\[
+\lim_{t&gt;s}X_t\simeq\lim_m M_m,
+\qquad
+\lim_{t&gt;s}H^nX_t\simeq\lim_m H^nM_m.
+\tag{2.2}
+\]</span>
+<p>The first is an isomorphism of complexes, with limits computed degreewise.</p>
+<p><strong>Proof.</strong> The construction works for any covariant module diagram <span class="math" data-tex="\(Y_t\)">\(Y_t\)</span> on <span class="math" data-tex="\(t&gt;s\)">\(t&gt;s\)</span>. A compatible full tuple restricts to a compatible tower tuple. Conversely, given <span class="math" data-tex="\((y_m)\)">\((y_m)\)</span> in the tower limit, for every <span class="math" data-tex="\(t&gt;s\)">\(t&gt;s\)</span> choose <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(t_m\leq t\)">\(t_m\leq t\)</span>, and set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+y_t=v_{t_m,t}y_m.
+\tag{2.3}
+\]">\[
+y_t=v_{t_m,t}y_m.
+\tag{2.3}
+\]</span>
+<p>Such an <span class="math" data-tex="\(m\)">\(m\)</span> exists by the Archimedean property of the reals. If <span class="math" data-tex="\(m&#x27;\)">\(m&#x27;\)</span> is another choice, take <span class="math" data-tex="\(k\geq m,m&#x27;\)">\(k\geq m,m&#x27;\)</span>. Tower compatibility and the diagram equations show that both values in (2.3) equal <span class="math" data-tex="\(v_{t_k,t}y_k\)">\(v_{t_k,t}y_k\)</span>. Thus the result is independent of choices. For <span class="math" data-tex="\(s&lt;t\leq u\)">\(s&lt;t\leq u\)</span>, choose one <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(t_m\leq t\)">\(t_m\leq t\)</span>; equation (2.3) then gives <span class="math" data-tex="\(v_{t,u}y_t=y_u\)">\(v_{t,u}y_t=y_u\)</span>.</p>
+<p>Restricting this tuple back to a <span class="math" data-tex="\(t_m\)">\(t_m\)</span> recovers <span class="math" data-tex="\(y_m\)">\(y_m\)</span>, and reconstructing a restricted full tuple recovers each original coordinate by its compatibility. The maps are linear and commute with morphisms of diagrams, since their coordinate formulas do. This proves the two inverse equations and naturality. Apply it to the module diagrams <span class="math" data-tex="\(X_t^n\)">\(X_t^n\)</span> in every degree and to <span class="math" data-tex="\(H^nX_t\)">\(H^nX_t\)</span>. The chain-map equations make (2.3) commute with differentials, proving the complex assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Hypothesis 2 consequently identifies <span class="math" data-tex="\(X_s\)">\(X_s\)</span> with the ordinary complex limit of (2.1). The canonical map <span class="math" data-tex="\(\rho_s\)">\(\rho_s\)</span> is a chain map by naturality of the differentials, and its inverse is a chain map because its components are invertible.</p>
+<h2 id="3-the-exact-countable-cohomology-comparison">3. The exact countable cohomology comparison</h2>
+<p>For any module tower <span class="math" data-tex="\(N_m\)">\(N_m\)</span> with adjacent maps <span class="math" data-tex="\(u_m\)">\(u_m\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\Delta_N:\prod_mN_m\longrightarrow\prod_mN_m,
+\qquad (\Delta_Nz)_m=z_m-u_mz_{m+1},
+\quad
+\ell^1(N)=\operatorname{coker}\Delta_N.
+\tag{3.1}
+\]">\[
+\Delta_N:\prod_mN_m\longrightarrow\prod_mN_m,
+\qquad (\Delta_Nz)_m=z_m-u_mz_{m+1},
+\quad
+\ell^1(N)=\operatorname{coker}\Delta_N.
+\tag{3.1}
+\]</span>
+<p>Its kernel is the actual module limit. The ML prerequisite proves that <span class="math" data-tex="\(\ell^1(N)=0\)">\(\ell^1(N)=0\)</span> for an ML tower. It also identifies <span class="math" data-tex="\(\ell^1(N)\)">\(\ell^1(N)\)</span> naturally with <span class="math" data-tex="\(R^1\pi(\lim_m^{\rm form}cN_m)\)">\(R^1\pi(\lim_m^{\rm form}cN_m)\)</span>. This identification concerns a module tower regarded as a formal Pro object in degree zero.</p>
+<p><strong>Theorem 3.1.</strong> For any countable tower <span class="math" data-tex="\(M_m\)">\(M_m\)</span> of complexes with termwise surjective transitions there is a natural short exact sequence, for every integer <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow\ell^1(H^{n-1}M_m)
+\xrightarrow{\partial}H^n(\lim_m M_m)
+\xrightarrow{\kappa}\lim_m H^nM_m\longrightarrow0.
+\tag{3.2}
+\]">\[
+0\longrightarrow\ell^1(H^{n-1}M_m)
+\xrightarrow{\partial}H^n(\lim_m M_m)
+\xrightarrow{\kappa}\lim_m H^nM_m\longrightarrow0.
+\tag{3.2}
+\]</span>
+<p>The map <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> takes the class of a compatible cycle tuple to its compatible tuple of cycle classes. No boundedness assumption is needed.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(C=\prod_m M_m\)">\(C=\prod_m M_m\)</span>, with degreewise products, and let <span class="math" data-tex="\(\Delta:C\to C\)">\(\Delta:C\to C\)</span> be the degreewise difference map. It is a chain map since all tower transitions are chain maps. Each <span class="math" data-tex="\(\Delta^q\)">\(\Delta^q\)</span> is onto: its degree-<span class="math" data-tex="\(q\)">\(q\)</span> tower has surjective transitions, hence is ML, so the difference-map theorem applies in that degree. The subcomplex <span class="math" data-tex="\(K=\ker\Delta\)">\(K=\ker\Delta\)</span> is the ordinary complex limit. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+0\to K\to C\xrightarrow{\Delta}C\to0
+\tag{3.3}
+\]">\[
+0\to K\to C\xrightarrow{\Delta}C\to0
+\tag{3.3}
+\]</span>
+<p>is termwise short exact.</p>
+<p>The canonical coordinate map is an isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+H^q(C)\xrightarrow{\sim}\prod_mH^qM_m.
+\tag{3.4}
+\]">\[
+H^q(C)\xrightarrow{\sim}\prod_mH^qM_m.
+\tag{3.4}
+\]</span>
+<p>It is surjective by choosing a cycle representative in each coordinate. If a cycle tuple has boundary class in every coordinate, choose a preimage under the differential for each coordinate; their tuple is a boundary in <span class="math" data-tex="\(C\)">\(C\)</span>. Thus the map is injective. Its linearity and naturality follow from its coordinate projections. Under (3.4), <span class="math" data-tex="\(H^q\Delta\)">\(H^q\Delta\)</span> is exactly the difference operator of the cohomology tower. This also gives a direct verification of the product-cohomology interface, including arbitrary modules and unbounded complexes.</p>
+<p>We construct the connecting map. Given a cycle <span class="math" data-tex="\(w\in C^{n-1}\)">\(w\in C^{n-1}\)</span>, choose <span class="math" data-tex="\(z\in C^{n-1}\)">\(z\in C^{n-1}\)</span> with <span class="math" data-tex="\(\Delta z=w\)">\(\Delta z=w\)</span>. Then <span class="math" data-tex="\(d z\)">\(d z\)</span> belongs to <span class="math" data-tex="\(K^n\)">\(K^n\)</span>, since <span class="math" data-tex="\(\Delta d z=d w=0\)">\(\Delta d z=d w=0\)</span>, and it is a cycle. Send <span class="math" data-tex="\([w]\)">\([w]\)</span> to <span class="math" data-tex="\([d z]\)">\([d z]\)</span>. Changing the lift <span class="math" data-tex="\(z\)">\(z\)</span> changes <span class="math" data-tex="\(d z\)">\(d z\)</span> by a boundary in <span class="math" data-tex="\(K\)">\(K\)</span>. If <span class="math" data-tex="\(w\)">\(w\)</span> is changed by <span class="math" data-tex="\(d a\)">\(d a\)</span>, choose <span class="math" data-tex="\(b\in C^{n-2}\)">\(b\in C^{n-2}\)</span> with <span class="math" data-tex="\(\Delta b=a\)">\(\Delta b=a\)</span>; then <span class="math" data-tex="\(z+d b\)">\(z+d b\)</span> lifts <span class="math" data-tex="\(w+d a\)">\(w+d a\)</span> and has the same differential. Thus the map is independent of both choices. Sums and scalar multiples can be lifted by sums and scalar multiples of lifts, proving linearity. If <span class="math" data-tex="\([w]\)">\([w]\)</span> is in the image of <span class="math" data-tex="\(H^{n-1}\Delta\)">\(H^{n-1}\Delta\)</span>, a cycle lift gives zero connecting class. Hence it factors through the cokernel in (3.1).</p>
+<p>The factored map is injective. If <span class="math" data-tex="\([d z]=0\)">\([d z]=0\)</span> in <span class="math" data-tex="\(H^nK\)">\(H^nK\)</span>, write <span class="math" data-tex="\(d z=d h\)">\(d z=d h\)</span> for <span class="math" data-tex="\(h\in K^{n-1}\)">\(h\in K^{n-1}\)</span>. Then <span class="math" data-tex="\(z-h\)">\(z-h\)</span> is a cycle and <span class="math" data-tex="\(\Delta(z-h)=w\)">\(\Delta(z-h)=w\)</span>. Thus <span class="math" data-tex="\([w]\)">\([w]\)</span> was already in the image of <span class="math" data-tex="\(H^{n-1}\Delta\)">\(H^{n-1}\Delta\)</span>, so its cokernel class is zero.</p>
+<p>Its image is the kernel of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. The class of <span class="math" data-tex="\(d z\)">\(d z\)</span> is a boundary in <span class="math" data-tex="\(C\)">\(C\)</span>, so all of its coordinate classes vanish. Conversely, if a cycle <span class="math" data-tex="\(y\in K^n\)">\(y\in K^n\)</span> has zero coordinate classes, (3.4) makes it a boundary <span class="math" data-tex="\(d z\)">\(d z\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>. Now <span class="math" data-tex="\(\Delta z\)">\(\Delta z\)</span> is a cycle because <span class="math" data-tex="\(\Delta y=0\)">\(\Delta y=0\)</span>, and its connecting class is exactly <span class="math" data-tex="\([y]\)">\([y]\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is onto the compatible cohomology tuples. Given such a tuple, choose a cycle tuple <span class="math" data-tex="\(z\in C^n\)">\(z\in C^n\)</span> representing it. Compatibility says that <span class="math" data-tex="\(\Delta z\)">\(\Delta z\)</span> is a boundary in <span class="math" data-tex="\(C\)">\(C\)</span>; choose <span class="math" data-tex="\(w\in C^{n-1}\)">\(w\in C^{n-1}\)</span> with <span class="math" data-tex="\(d w=\Delta z\)">\(d w=\Delta z\)</span>. Choose <span class="math" data-tex="\(u\in C^{n-1}\)">\(u\in C^{n-1}\)</span> with <span class="math" data-tex="\(\Delta u=w\)">\(\Delta u=w\)</span>. The cycle <span class="math" data-tex="\(z-d u\)">\(z-d u\)</span> belongs to <span class="math" data-tex="\(K\)">\(K\)</span>, since</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+\Delta(z-d u)=\Delta z-d\Delta u=d w-d w=0.
+\tag{3.5}
+\]">\[
+\Delta(z-d u)=\Delta z-d\Delta u=d w-d w=0.
+\tag{3.5}
+\]</span>
+<p>It has the prescribed coordinate classes, proving surjectivity. All constructions commute with a morphism of towers: an image of a chosen lift is a lift of the image, and the proved choice-independence gives the same induced cohomology maps. This proves naturality and (3.2) with its stated maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-right-cohomology-comparisons-and-induction">4. Right cohomology comparisons and induction</h2>
+<p><strong>Theorem 4.1.</strong> Under hypotheses 1–3:</p>
+<ol>
+<li>Every <span class="math" data-tex="\(b_s^n\)">\(b_s^n\)</span> is surjective.</li>
+<li>If <span class="math" data-tex="\(b_s^{n-1}\)">\(b_s^{n-1}\)</span> is an isomorphism for every <span class="math" data-tex="\(s\)">\(s\)</span>, then <span class="math" data-tex="\(b_s^n\)">\(b_s^n\)</span> is an isomorphism for every <span class="math" data-tex="\(s\)">\(s\)</span>.</li>
+<li>If there is an integer <span class="math" data-tex="\(n_0\)">\(n_0\)</span> such that every <span class="math" data-tex="\(b_s^j\)">\(b_s^j\)</span> is an isomorphism for <span class="math" data-tex="\(j\leq n_0\)">\(j\leq n_0\)</span> and every <span class="math" data-tex="\(s\)">\(s\)</span>, then every cohomology transition <span class="math" data-tex="\(H^n(v_{r,s})\)">\(H^n(v_{r,s})\)</span> is an isomorphism, for all integers <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(r\leq s\)">\(r\leq s\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(s\)">\(s\)</span> and use the future tower (2.1). Theorem 3.1 applies because its transitions are termwise onto. Lemma 2.1 and the canonical chain isomorphism <span class="math" data-tex="\(\rho_s\)">\(\rho_s\)</span> identify its comparison <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> with <span class="math" data-tex="\(b_s^n\)">\(b_s^n\)</span>: on a cycle of <span class="math" data-tex="\(X_s\)">\(X_s\)</span>, the tuple is precisely its images at all future times. Surjectivity of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> proves assertion 1.</p>
+<p>For assertion 2, apply the module local-to-global corollary to the real diagram <span class="math" data-tex="\(H^{n-1}X_s\)">\(H^{n-1}X_s\)</span>. Its left comparisons are <span class="math" data-tex="\(a_s^{n-1}\)">\(a_s^{n-1}\)</span>, isomorphisms by hypothesis 3, and its right comparisons are <span class="math" data-tex="\(b_s^{n-1}\)">\(b_s^{n-1}\)</span>, isomorphisms by the assumed preceding-degree condition. The corollary proves that every transition in this cohomology diagram is an isomorphism. Its future tower is therefore ML. The left term of (3.2) vanishes, by the ML difference-map theorem. Hence <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, and therefore <span class="math" data-tex="\(b_s^n\)">\(b_s^n\)</span>, is an isomorphism. This works at every <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>For assertion 3, begin with the given isomorphisms in degrees <span class="math" data-tex="\(j\leq n_0\)">\(j\leq n_0\)</span>. Apply assertion 2 successively at <span class="math" data-tex="\(n_0+1,n_0+2,\ldots\)">\(n_0+1,n_0+2,\ldots\)</span>. For any fixed integer <span class="math" data-tex="\(n&gt;n_0\)">\(n&gt;n_0\)</span>, finitely many steps reach that degree. Thus every <span class="math" data-tex="\(b_s^n\)">\(b_s^n\)</span> is an isomorphism in every degree, with all lower degrees supplied by the original assumption. For each <span class="math" data-tex="\(n\)">\(n\)</span>, the cohomology diagram now has both local comparisons invertible; the same module corollary makes every <span class="math" data-tex="\(H^n(v_{r,s})\)">\(H^n(v_{r,s})\)</span> invertible. The lower-degree assumption concerned these comparison maps, rather than a bound on the terms of all the complexes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 4.2 (a bounded-below application).</strong> If there is a common integer <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(X_s^j=0\)">\(X_s^j=0\)</span> for <span class="math" data-tex="\(j&lt;N\)">\(j&lt;N\)</span> and all <span class="math" data-tex="\(s\)">\(s\)</span>, then <span class="math" data-tex="\(H^jX_s=0\)">\(H^jX_s=0\)</span> for <span class="math" data-tex="\(j&lt;N\)">\(j&lt;N\)</span>. Their right comparisons are the unique isomorphisms <span class="math" data-tex="\(0\to0\)">\(0\to0\)</span>. Hypotheses 1–3 and Theorem 4.1, with <span class="math" data-tex="\(n_0=N-1\)">\(n_0=N-1\)</span>, make every cohomology transition an isomorphism. The theorem also permits nonzero terms arbitrarily far down, when its given lower comparison condition is verified directly.</p>
+<h2 id="5-four-graded-exercises-with-complete-solutions">5. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic: a coinitial future and its coordinates).</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, let <span class="math" data-tex="\(Y_t=k^{\lfloor1/t\rfloor}\)">\(Y_t=k^{\lfloor1/t\rfloor}\)</span>, with prefix restrictions as <span class="math" data-tex="\(t\)">\(t\)</span> increases. Compute its limit over all <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, identify the tower at <span class="math" data-tex="\(t_m=1/(m+1)\)">\(t_m=1/(m+1)\)</span>, and verify both maps in Lemma 2.1 explicitly.</p>
+<p><strong>Solution.</strong> The tower is <span class="math" data-tex="\(Y_{t_m}=k^{m+1}\)">\(Y_{t_m}=k^{m+1}\)</span>, with the usual projection from <span class="math" data-tex="\(k^{m+2}\)">\(k^{m+2}\)</span> to <span class="math" data-tex="\(k^{m+1}\)">\(k^{m+1}\)</span>. Its compatible tuples are exactly prefixes of one sequence <span class="math" data-tex="\((a_j)_{j\geq1}\in\prod_{j\geq1}k\)">\((a_j)_{j\geq1}\in\prod_{j\geq1}k\)</span>. Such a sequence also gives a full-time tuple: at <span class="math" data-tex="\(t\)">\(t\)</span> take its prefix of length <span class="math" data-tex="\(\lfloor1/t\rfloor\)">\(\lfloor1/t\rfloor\)</span>, including the empty tuple if that length is zero.</p>
+<p>Given a tower tuple, choose <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(t_m\leq t\)">\(t_m\leq t\)</span>. Its truncation from length <span class="math" data-tex="\(m+1\)">\(m+1\)</span> to length <span class="math" data-tex="\(\lfloor1/t\rfloor\)">\(\lfloor1/t\rfloor\)</span> is the value in (2.3); increasing <span class="math" data-tex="\(m\)">\(m\)</span> retains the same coordinates. Conversely a full-time tuple restricts to its successive prefixes at the <span class="math" data-tex="\(t_m\)">\(t_m\)</span>. The two operations recover every prefix and every time coordinate, respectively. Both limits therefore identify with the product through their actual coordinate maps. This also explains the variance: the maps in the countable tower go from <span class="math" data-tex="\(m+1\)">\(m+1\)</span> to <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Exercise 2 (intermediate: the preceding-degree obstruction).</strong> For <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>, define a complex <span class="math" data-tex="\(C_m\)">\(C_m\)</span> in degrees zero and one by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+C_m^0=\mathbb Z^{m+1},\quad C_m^1=\mathbb Z^m,
+\quad d_m(a_0,\ldots,a_m)=(a_r-2a_{r+1})_{0\leq r&lt;m}.
+\tag{5.1}
+\]">\[
+C_m^0=\mathbb Z^{m+1},\quad C_m^1=\mathbb Z^m,
+\quad d_m(a_0,\ldots,a_m)=(a_r-2a_{r+1})_{0\leq r&lt;m}.
+\tag{5.1}
+\]</span>
+<p>The zero-coordinate target at <span class="math" data-tex="\(m=0\)">\(m=0\)</span> is zero. Take prefix projections <span class="math" data-tex="\(C_{m+1}\to C_m\)">\(C_{m+1}\to C_m\)</span>. Compute all stage cohomology and its transitions, the limit complex, and the kernel of its right degree-one cohomology comparison.</p>
+<p><strong>Solution.</strong> Prefix restriction commutes with (5.1), and both term maps are onto. Each <span class="math" data-tex="\(d_m\)">\(d_m\)</span> is onto: set <span class="math" data-tex="\(a_m=0\)">\(a_m=0\)</span> and solve backwards <span class="math" data-tex="\(a_r=b_r+2a_{r+1}\)">\(a_r=b_r+2a_{r+1}\)</span>. Its kernel is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+t\longmapsto(2^mt,2^{m-1}t,\ldots,2t,t).
+\tag{5.2}
+\]">\[
+t\longmapsto(2^mt,2^{m-1}t,\ldots,2t,t).
+\tag{5.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(H^0C_m\simeq\mathbb Z\)">\(H^0C_m\simeq\mathbb Z\)</span>, <span class="math" data-tex="\(H^1C_m=0\)">\(H^1C_m=0\)</span>, and all other cohomology is zero. Under the last-coordinate identification, restricting (5.2) from <span class="math" data-tex="\(m+1\)">\(m+1\)</span> to <span class="math" data-tex="\(m\)">\(m\)</span> makes the new last coordinate <span class="math" data-tex="\(2t\)">\(2t\)</span>. Hence the degree-zero cohomology tower has transitions multiplication by two.</p>
+<p>The limit complex is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+C_\infty=\left(\prod_{r\geq0}\mathbb Z
+\xrightarrow{\Delta_2}\prod_{r\geq0}\mathbb Z\right),
+\qquad (\Delta_2a)_r=a_r-2a_{r+1},
+\tag{5.3}
+\]">\[
+C_\infty=\left(\prod_{r\geq0}\mathbb Z
+\xrightarrow{\Delta_2}\prod_{r\geq0}\mathbb Z\right),
+\qquad (\Delta_2a)_r=a_r-2a_{r+1},
+\tag{5.3}
+\]</span>
+<p>in degrees zero and one. Its zeroth cohomology is zero: a compatible integer at any fixed coordinate is divisible by every power of two. Its first cohomology is <span class="math" data-tex="\(\Gamma=\operatorname{coker}\Delta_2\)">\(\Gamma=\operatorname{coker}\Delta_2\)</span>, and its right comparison is <span class="math" data-tex="\(\Gamma\to\lim_mH^1C_m=0\)">\(\Gamma\to\lim_mH^1C_m=0\)</span>. Its whole kernel is therefore <span class="math" data-tex="\(\Gamma=\ell^1(H^0C_m)\)">\(\Gamma=\ell^1(H^0C_m)\)</span>, exactly (3.2).</p>
+<p>This kernel is nonzero. Take <span class="math" data-tex="\(b_{2r}=0\)">\(b_{2r}=0\)</span>, <span class="math" data-tex="\(b_{2r+1}=1\)">\(b_{2r+1}=1\)</span>. If <span class="math" data-tex="\(a_r-2a_{r+1}=b_r\)">\(a_r-2a_{r+1}=b_r\)</span>, substituting through coordinate <span class="math" data-tex="\(2k+1\)">\(2k+1\)</span> gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+3a_0+2=4^{k+1}(2+3a_{2k+2})\quad(k\geq0).
+\tag{5.4}
+\]">\[
+3a_0+2=4^{k+1}(2+3a_{2k+2})\quad(k\geq0).
+\tag{5.4}
+\]</span>
+<p>The fixed integer on the left would be divisible by arbitrarily large powers of four, hence zero. That would require the impossible integer equation <span class="math" data-tex="\(3a_0+2=0\)">\(3a_0+2=0\)</span>. Thus <span class="math" data-tex="\([b]\ne0\)">\([b]\ne0\)</span> in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Termwise surjectivity alone guarantees the right comparison is onto, but does not make its kernel vanish.</p>
+<p><strong>Exercise 3 (intermediate: an actual constant-cohomology application).</strong> Fix an integer <span class="math" data-tex="\(p&gt;1\)">\(p&gt;1\)</span> and the complex <span class="math" data-tex="\(E=(\mathbb Z\xrightarrow p\mathbb Z)\)">\(E=(\mathbb Z\xrightarrow p\mathbb Z)\)</span> in degrees zero and one. For arbitrary signs <span class="math" data-tex="\(\varepsilon_s\in\{1,-1\}\)">\(\varepsilon_s\in\{1,-1\}\)</span>, put <span class="math" data-tex="\(X_s=E\)">\(X_s=E\)</span> and let <span class="math" data-tex="\(v_{r,s}\)">\(v_{r,s}\)</span> multiply both terms by <span class="math" data-tex="\(\varepsilon_s\varepsilon_r\)">\(\varepsilon_s\varepsilon_r\)</span>. Verify hypotheses 1–3 and the lower comparison condition. Compute every induced cohomology transition.</p>
+<p><strong>Solution.</strong> Each sign map commutes with multiplication by <span class="math" data-tex="\(p\)">\(p\)</span>. The transition composite is multiplication by <span class="math" data-tex="\(\varepsilon_t\varepsilon_s\varepsilon_s\varepsilon_r=\varepsilon_t\varepsilon_r\)">\(\varepsilon_t\varepsilon_s\varepsilon_s\varepsilon_r=\varepsilon_t\varepsilon_r\)</span>, and identity transitions multiply by one. Thus this is a diagram of chain isomorphisms, in particular termwise surjections. Multiplication by <span class="math" data-tex="\(\varepsilon_s\)">\(\varepsilon_s\)</span> identifies it with the constant diagram <span class="math" data-tex="\(E\)">\(E\)</span>. The right compatible tuple at any cut is therefore determined by one element in each term, and the canonical term map sends that element to its sign-related future values. It is an isomorphism, proving hypothesis 2.</p>
+<p>Since <span class="math" data-tex="\(p\)">\(p\)</span> has zero kernel in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, we have <span class="math" data-tex="\(H^0E=0\)">\(H^0E=0\)</span>, <span class="math" data-tex="\(H^1E=\mathbb Z/p\)">\(H^1E=\mathbb Z/p\)</span>, and zero cohomology otherwise. The same sign identifications make each cohomology diagram constant up to its specified isomorphisms. Its left comparison is invertible by the one-stage constant-colimit argument, proving hypothesis 3. Every right comparison below degree one is <span class="math" data-tex="\(0\to0\)">\(0\to0\)</span>, so the lower comparison condition holds with <span class="math" data-tex="\(n_0=0\)">\(n_0=0\)</span>.</p>
+<p>The actual degree-one transition is multiplication by <span class="math" data-tex="\(\varepsilon_s\varepsilon_r\)">\(\varepsilon_s\varepsilon_r\)</span> on <span class="math" data-tex="\(\mathbb Z/p\)">\(\mathbb Z/p\)</span>, whose inverse is the same sign. In every other degree it is the unique isomorphism of zero modules. This computes the isomorphisms asserted by Theorem 4.1 even when the signs vary discontinuously with the real parameter.</p>
+<p><strong>Exercise 4 (advanced: why left cohomology continuity is used).</strong> Use the complexes <span class="math" data-tex="\(C_m,C_\infty\)">\(C_m,C_\infty\)</span> of Exercise 2. Define a real-parameter complex diagram by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+X_t=C_\infty\ (t\leq0),\qquad
+X_t=C_{n(t)}\ (t&gt;0),\qquad n(t)=\lceil1/t\rceil-1.
+\tag{5.5}
+\]">\[
+X_t=C_\infty\ (t\leq0),\qquad
+X_t=C_{n(t)}\ (t&gt;0),\qquad n(t)=\lceil1/t\rceil-1.
+\tag{5.5}
+\]</span>
+<p>Use identity transitions before zero and the corresponding prefix restrictions afterward, including from <span class="math" data-tex="\(C_\infty\)">\(C_\infty\)</span> to a finite prefix. Prove that hypotheses 1–2 hold, that all <span class="math" data-tex="\(b_s^0\)">\(b_s^0\)</span> are isomorphisms, but that <span class="math" data-tex="\(b_0^1\)">\(b_0^1\)</span> is not an isomorphism. Locate the failure of hypothesis 3.</p>
+<p><strong>Solution.</strong> The nonnegative integer <span class="math" data-tex="\(n(t)\)">\(n(t)\)</span> is nonincreasing on <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Prefix restrictions commute with the differentials in (5.1)–(5.3) and compose as prefixes, including when a transition starts at <span class="math" data-tex="\(C_\infty\)">\(C_\infty\)</span>. Their maps in every degree are onto; in all other degrees the modules are zero. Thus the diagram laws and hypothesis 1 hold.</p>
+<p>For every positive <span class="math" data-tex="\(s\)">\(s\)</span>, the integer function <span class="math" data-tex="\(n(t)\)">\(n(t)\)</span> is constant on some interval <span class="math" data-tex="\([s,s+\eta)\)">\([s,s+\eta)\)</span>: at <span class="math" data-tex="\(s=1/k\)">\(s=1/k\)</span>, its value is <span class="math" data-tex="\(k-1\)">\(k-1\)</span>, the same as immediately to the right; away from these jumps it is locally constant. A compatible tuple strictly to the right of <span class="math" data-tex="\(s\)">\(s\)</span> is determined by its value on that constant initial interval, with all later values supplied by prefix restrictions. This identifies its degreewise future limit with <span class="math" data-tex="\(X_s\)">\(X_s\)</span> through the canonical map (1.1). For <span class="math" data-tex="\(s&lt;0\)">\(s&lt;0\)</span>, the constant interval immediately to its right similarly determines the tuple. At <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, the finite-prefix limits in both degrees are the products in (5.3), with the same difference differential. Thus (1.1) is an isomorphism at zero too. Hypothesis 2 is proved at every point.</p>
+<p>For <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, the same initial interval argument applies to cohomology, so <span class="math" data-tex="\(b_s^0\)">\(b_s^0\)</span> is an isomorphism. For <span class="math" data-tex="\(s&lt;0\)">\(s&lt;0\)</span>, its immediate future has zeroth cohomology zero, and this forces all subsequent compatible coordinates to be zero, so <span class="math" data-tex="\(b_s^0\)">\(b_s^0\)</span> is <span class="math" data-tex="\(0\to0\)">\(0\to0\)</span>. At zero the future zeroth-cohomology system is the <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-tower with maps multiplication by two; its limit is zero by Exercise 2. Since <span class="math" data-tex="\(H^0C_\infty=0\)">\(H^0C_\infty=0\)</span>, <span class="math" data-tex="\(b_0^0\)">\(b_0^0\)</span> is also an isomorphism.</p>
+<p>However <span class="math" data-tex="\(H^1X_0=\Gamma\ne0\)">\(H^1X_0=\Gamma\ne0\)</span>, while every positive-time first cohomology is zero. Thus <span class="math" data-tex="\(b_0^1:\Gamma\to0\)">\(b_0^1:\Gamma\to0\)</span> is not injective. At a positive jump <span class="math" data-tex="\(s=1/k\)">\(s=1/k\)</span>, the immediate left complex is <span class="math" data-tex="\(C_k\)">\(C_k\)</span> and the value at the cut is <span class="math" data-tex="\(C_{k-1}\)">\(C_{k-1}\)</span>. The left zeroth-cohomology comparison is consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+a_{1/k}^0:\mathbb Z\xrightarrow{2}\mathbb Z,
+\tag{5.6}
+\]">\[
+a_{1/k}^0:\mathbb Z\xrightarrow{2}\mathbb Z,
+\tag{5.6}
+\]</span>
+<p>by the transition calculation in (5.2). The immediate left interval is cofinal in the left indexing interval, so it computes this actual colimit comparison. Map (5.6) is not surjective. Hypothesis 3 fails, and its use in the preceding-degree local-to-global step cannot be omitted from that argument.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/07KV">Rlim of abelian groups, Section 15.88</a>, for the countable difference-map framework. The complete unbounded complex comparison and its cycle/lift maps are proved in Section 3 above.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/00DB">Lemma 10.8.8</a>, for comparison with exact filtered module homology. The inverse-limit correction is the preceding-degree cokernel term in (3.2), rather than a filtered-colimit assertion.</li>
+</ul>
+</main></body></html>

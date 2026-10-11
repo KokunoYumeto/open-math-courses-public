@@ -100,7 +100,7 @@ $$
 \tag{SB.4}
 $$
 
-This computes precisely the kernel used in MF equations (21)–(25), with its sign and constant.
+This computes precisely the kernel used in MF averaging formulas (MF-A1)–(MF-A3), the kernel representation (MF-A6), and the multiplication certificate (MF-F5), with its sign and constant.
 
 <a id="oa-flow.mf-sb.4"></a>
 
@@ -145,7 +145,7 @@ $$
  \int k_s(t)(A(t)-B(t))\,dt=0\quad\hbox{for every }s>0,
 $$
 
-write $s=e^r$ and cancel the scalar $e^{-r/2}$. The continuous integrable function $F(t)=(A(t)-B(t))/(2\cosh(\pi t))$ has zero Fourier transform at every $r$. SB-3 gives $A(t)=B(t)$ for every $t$. This is exactly the passage from MF (26) to (27). In that application $A(t)=U_tR_wU_{-t}Jz$ and $B(t)=(JR_zJ)U_tw$, which are norm continuous as Hilbert vectors and bounded; $JR_zJ$ is complex-linear, so SB-1 applies with no scalar-conjugation change.
+write $s=e^r$ and cancel the scalar $e^{-r/2}$. The continuous integrable function $F(t)=(A(t)-B(t))/(2\cosh(\pi t))$ has zero Fourier transform at every $r$. SB-3 gives $A(t)=B(t)$ for every $t$. This is exactly the passage from MF (MF-R1) to (MF-R2). In that application $A(t)=U_tR_wU_{-t}Jz$ and $B(t)=(JR_zJ)U_tw$, which are norm continuous as Hilbert vectors and bounded; $JR_zJ$ is complex-linear, so SB-1 applies with no scalar-conjugation change.
 
 <a id="oa-flow.mf-sb.7"></a>
 

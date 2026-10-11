@@ -2,17 +2,41 @@
 
 This reading constructs compatible locally finite triangulations of arbitrary Hausdorff second-countable real analytic manifolds. It supplies the relative Euclidean construction, elementary finite-colour chart covers, differentiable subanalytic cutoffs, a proper embedding and analytic recovery of the transported open simplices. Six exercises have complete solutions.
 
-*Original teaching text and solutions by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0.*
+*Original teaching text and solutions by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Sard and Baire dependency comparisons, the real-analytic Noetherianity proof, incidence and analytic-input comparisons, the finite-graph, affine-enlargement and radial-completion arguments, the skeleton/face comparisons, the straight-model/analytic-lifting arguments, the relative-support/isotopy proof, and the globalization dependency comparison by GPT-6 Astra (OpenAI), October 2026, self-checked by that AI. CC0.*
 
 ## Setting and dependency boundary
 
-Manifolds have finite dimension and no boundary. The prescribed family is locally finite, and each member is locally subanalytic. The compatible analytic partitions and simultaneous constant-rank refinements are proved below from the linked finite-cell calculus and compact chart covers. The relative construction retains lower subanalytic uniformization and analytic regularity prerequisites, together with analytic Noetherianity, the analytic constant-rank theorem and differential-equation facts. The dimension and frontier results have their complete linked provider below. Those lower results remain separate prerequisites. The finite-colour cover and cutoff proofs do not assume a triangulation or a covering-dimension theorem.
+Manifolds have finite dimension and no boundary. The prescribed family is locally finite, and each member is locally subanalytic. The compatible analytic partitions and simultaneous constant-rank refinements are proved below from the linked finite-cell calculus and compact chart covers. The relative construction uses the linked [compact uniformization theorem](../sheaf-proof-readings/SH03-subanalytic-sets-and-limiting-tangent-directions.html#compact-uniformization-for-the-projection-defined-class) and the exact analytic coordinate and uniqueness results compared below. [Real-analytic Noetherianity](#real-analytic-noetherianity) is proved below; we also use the analytic constant-rank theorem and differential-equation facts. The dimension and frontier results have their complete linked provider below. The uniformization application is written out in the singular-line proof below; the [analytic input comparison](#analytic-inputs-and-their-exact-uses) states the remaining coordinate and uniqueness uses precisely. The finite-colour cover and cutoff proofs do not assume a triangulation or a covering-dimension theorem.
 
-The bounded-chart comparison and global Boolean/projection calculus used for proper images have their complete written provider in [analytic finiteness and preparation](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md#local-subanalytic-sets-and-bounded-charts). Guillaume Valette is credited there for these results.
+The bounded-chart comparison and global Boolean/projection calculus used for proper images have their complete written provider in [analytic finiteness and preparation](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#local-subanalytic-sets-and-bounded-charts). Guillaume Valette is credited there for these results.
+
+### Real-analytic Noetherianity
+
+**Proposition (real analytic germs).** For every integer $n\geq0$, the ring $A_n=\mathbb R\{x_1,\ldots,x_n\}$ of convergent real power series is Noetherian: every ideal has a finite generating set. Consequently, the local ring of real-valued real analytic germs at any point of a finite-dimensional real analytic manifold is Noetherian. Every ascending sequence of ideals in such a local ring stabilizes.
+
+**Proof.** The complex-coefficient statement is [Theorem 6 of *Weierstrass preparation and division*](../analytic-finiteness-and-preparation/weierstrass-preparation-and-division.html#division-finite-generation-and-elementary-algebra). Its proof uses division by a regular germ (Corollary 3), a linear change making a nonzero germ regular (Proposition 4), and induction on the number of variables. It does not use a triangulation. We explain the change of coefficient field, since a subring of a Noetherian ring need not itself be Noetherian.
+
+Put $B_n=\mathbb C\{z_1,\ldots,z_n\}$. The coefficient-preserving map $\iota:A_n\longrightarrow B_n$, sending $\sum_\alpha a_\alpha x^\alpha$ to $\sum_\alpha a_\alpha z^\alpha$, is an injective ring homomorphism. Indeed, convergence here means absolute convergence on some sufficiently small polydisc, a condition on $\sum_\alpha |a_\alpha|r^\alpha$ that is the same for real and complex variables. Uniqueness of the Taylor coefficients gives injectivity. We identify $A_n$ with this subring of $B_n$.
+
+For $b=\sum_\alpha c_\alpha z^\alpha\in B_n$, split each coefficient into its real and imaginary parts. The two resulting series converge on every smaller polydisc on which the original series converges absolutely, because $|\operatorname{Re}c_\alpha|,|\operatorname{Im}c_\alpha|\leq|c_\alpha|$. Thus $b=u+iv$ for unique $u,v\in A_n$. This proves $B_n=A_n\oplus iA_n$ as $A_n$-modules. In particular, the coefficient projection $\rho:B_n\longrightarrow A_n$, $\rho(u+iv)=u$, satisfies $\rho(a b)=a\rho(b)$ for $a\in A_n$ and $\rho(a)=a$. It is an $A_n$-linear map; we do not claim that it is a ring homomorphism.
+
+Let $I\subset A_n$ be an ideal. The extended ideal $IB_n$ consists of finite sums of products $bf$, with $b\in B_n$ and $f\in I$. Since $B_n$ is Noetherian, choose finitely many generators $g_1,\ldots,g_t$ of $IB_n$. Write each $g_k$ as such a finite sum, and collect all the elements of $I$ that occur into a finite list $f_1,\ldots,f_s$. The ideal generated by this list in $B_n$ contains every $g_k$ and is contained in $IB_n$; hence it equals $IB_n$. For any $f\in I$, there are $b_1,\ldots,b_s\in B_n$ with
+
+$$
+f=\sum_{j=1}^s b_jf_j.
+$$
+
+Applying the $A_n$-linear map $\rho$ gives $f=\sum_{j=1}^s\rho(b_j)f_j$, now with coefficients in $A_n$. Therefore $I=(f_1,\ldots,f_s)$ in $A_n$. For $I=0$, the empty list suffices. This also covers $n=0$, when the two rings are $\mathbb R$ and $\mathbb C$.
+
+If $p$ lies in an $n$-dimensional real analytic manifold $M$, choose an analytic chart $\phi:U\longrightarrow V\subset\mathbb R^n$ with $\phi(p)=0$. Composition defines a ring isomorphism $\mathcal O^\omega_{M,p}\longrightarrow A_n$, $[h]\longmapsto[h\circ\phi^{-1}]$; its inverse sends $[a]$ to $[a\circ\phi]$. Both maps are well-defined on germs because analytic compositions are analytic and restrictions agree on smaller neighbourhoods. This transfers finite generation to $\mathcal O^\omega_{M,p}$.
+
+Finally, for an ascending sequence $I_1\subset I_2\subset\cdots$, its union $I$ is an ideal: any two elements lie in one common stage, and each stage is closed under multiplication by the ambient ring. Choose finitely many generators of $I$. They all belong to some $I_N$, so $I=I_N$, and $I_m=I_N$ for every $m\geq N$. $\square$
+
+This is a statement about germs at each fixed point. It does not supply one neighbourhood or generating family valid simultaneously at all points, and it does not prove subanalytic uniformization or the analytic regularity results used elsewhere in the construction.
 
 ## Compatible locally finite analytic partitions
 
-The [finite analytic cell theorem](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md#finite-analytic-cells-for-arbitrary-globally-subanalytic-sets), its [Boolean and projection calculus](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md#full-global-preparation-and-the-complement-theorem), and its [bounded-chart comparison](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md#local-subanalytic-sets-and-bounded-charts) give the following manifold partition. The compact chart-ball refinement is proved below in [Section 2 of the cutoff construction](#a-countable-locally-finite-nested-coordinate-ball-refinement). These are the exact inputs; no analytic regular-locus theorem or uniformization theorem is needed for this partition.
+The [finite analytic cell theorem](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#finite-analytic-cells-for-arbitrary-globally-subanalytic-sets), its [Boolean and projection calculus](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#full-global-preparation-and-the-complement-theorem), and its [bounded-chart comparison](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#local-subanalytic-sets-and-bounded-charts) give the following manifold partition. The compact chart-ball refinement is proved below in [Section 2 of the cutoff construction](#a-countable-locally-finite-nested-coordinate-ball-refinement). These are the exact inputs; no analytic regular-locus theorem or uniformization theorem is needed for this partition.
 
 **Partition theorem.** Let $M$ be a finite-dimensional Hausdorff second-countable real analytic manifold without boundary, and let $\{A_a\}_{a\in I}$ be a locally finite family of locally subanalytic subsets. There is a countable locally finite partition of $M$ into connected locally subanalytic embedded analytic submanifolds compatible with every $A_a$: each partition member is contained in or disjoint from each $A_a$. Given finitely many analytic maps $f_j:M\to N_j$ to real analytic manifolds, the partition can also make every restriction $f_j|_S$ have constant rank.
 
@@ -87,11 +111,42 @@ The theorem supplies compatible analytic partitions and constant-rank refinement
 **Sources.** Guillaume Valette, [*On subanalytic geometry*, arXiv:2507.23622v1](https://arxiv.org/abs/2507.23622v1), §1.2, gives the graph/band cell definition and cell theorem; §2.1 gives first-order definable formulas and the definability of derivatives. The linked analytic finiteness reading proves its finite-cell and Boolean/projection inputs in the stated projective product convention. The manifold globalization, explicit derivative-limit formula, and simultaneous restriction-rank induction are written out here.
 
 
+## Analytic inputs and their exact uses
+
+The analytic coordinate results used below are the [inverse, implicit and constant-rank theorems, (LAF1)–(LAF4)](../sheaf-proof-readings/SH03-subanalytic-sets-and-limiting-tangent-directions.html#real-analytic-inverse-implicit-and-constant-rank-coordinates). Their proof first complexifies a convergent real power series, applies the holomorphic inverse theorem to the parameter-preserving block map, and uses uniqueness under conjugation to restrict its inverse to real points. The constant-rank proof then uses an invertible minor as part of a coordinate system; vanishing of the remaining transverse derivatives makes the other output coordinates independent of those directions. No uniformization or triangulation is an input to these coordinate theorems.
+
+Here are the hypotheses at their uses in this construction.
+
+1. **Local equations for a partition member.** A member of the proved analytic partition is an embedded analytic submanifold. Near a point of a member of dimension $d<n$, analytic submanifold coordinates give real analytic defining functions $H_1,\ldots,H_{n-d}$ with independent differentials and common zero set exactly that member in a smaller open neighborhood. The scalar function $h=\sum_j H_j^2$ has precisely the same real zero set. We do not assert that $dh$ is nonzero; the finite-jet argument uses the analytic function $h$, not a regular-value assertion about $h$.
+
+2. **A section of the direction map.** Suppose the analytic map $q:W\to\mathbb {RP}^{n-1}$, $q(w)=[v(w)]$, has surjective differential at $w_0$. In source and target charts choose a nonzero maximal minor. It remains nonzero on a smaller neighborhood. There the map is a submersion, and the analytic coordinate theorem gives a section $s:D\to W$ on an open target chart, with $q\circ s=\operatorname{id}_D$. Shrink $D$ so that the sphere-to-projective-space covering has an analytic local inverse agreeing with $v(s(q(w_0)))$. By continuity, $v\circ s$ is this same inverse throughout a smaller connected chart. Thus the incidence argument really has analytic functions $x\circ s$ and a local unit direction $v$, as required for its determinant calculation. This is a local section, not a global choice of direction representatives.
+
+3. **Constant rank and finite fibres.** The partition is refined using the rank of each restriction to its own tangent space. On a resulting analytic member $S$ of dimension $d$, let the projection have constant rank $r$. The coordinate normal form makes its local fibres manifolds of dimension $d-r$. If the original fibres are finite, $d-r>0$ is impossible: an open coordinate neighborhood in a positive-dimensional fibre has infinitely many points. Therefore $r=d$. This proves the local rank assertion only; the later compactness, covering and height-order arguments are still needed for the finite graph decomposition.
+
+4. **The transported open simplex.** In the globalization proof, analyticity of $t|_{\sigma^\circ}$ follows from the explicit analytic chart-coordinate ratios. The equality $T|_{\sigma^\circ}=F\circ t|_{\sigma^\circ}$, with $F$ of class $C^1$, then makes $dt$ injective because $dT$ is injective. Full source rank holds at every point of this open simplex, so the analytic coordinate theorem supplies local immersion charts. The separately proved homeomorphism onto the image gives the subspace topology and makes the image an embedded analytic submanifold. Analyticity or bijectivity alone would not supply that conclusion; the example $u\mapsto u^3$ below records why the differential argument matters.
+
+The differential-equation input is narrower than analytic dependence of a flow on all its data. The needed result is the [uniform zero-solution argument for (LAF9)](../sheaf-proof-readings/SH03-subanalytic-sets-and-limiting-tangent-directions.html#analytic-differential-equations). For clarity, suppose a local analytic relation is
+
+$$
+g_{q+1}(x,v)=\sum_{j=0}^{q}a_j(x,v)g_j(x,v).
+$$
+
+For initial parameters $(x,v)$, put $U_j(t)=g_j(x+tv,v)$. Differentiation gives $U'_j=U_{j+1}$ for $j<q$ and $U'_q=\sum_{j=0}^q a_j(x+tv,v)U_j$. Choose a smaller closed parameter box inside the relation's domain and a positive time interval on which all its line segments remain there. The resulting matrix $A(t,x,v)$ has a common finite operator-norm bound $B$ on that compact product. For zero initial jets, the integral equation gives
+
+$$
+\sup_{|t|\leq\epsilon}\|U(t)\|
+\leq B\epsilon\sup_{|t|\leq\epsilon}\|U(t)\|.
+$$
+
+The supremum is finite by continuity. Taking $\epsilon$ within the chosen time interval and $B\epsilon<1$ forces it to be zero; if $B=0$, it is zero without a further restriction. The argument covers both signs of time and every parameter in the same smaller box. It proves the neighborhood assertion used in the incidence rank calculation, without asserting one interval for all charts, existence of a global flow, or analyticity of an arbitrarily given smooth solution.
+
+The stronger [intrinsic analytic regular-locus theorem](../sheaf-proof-readings/SH03-subanalytic-sets-and-limiting-tangent-directions.html#detecting-the-entire-analytic-regular-locus) recognizes **every** point at which a subanalytic set is locally an analytic manifold, independently of a chosen partition. That theorem is retained in its separate reading. The construction here uses the supplied analytic partition members, their constant-rank refinements and the coordinate arguments above; it does not identify their union of top-dimensional members with the intrinsic regular locus. Thus these local inputs should not be confused with that stronger recognition theorem. The finite-cell, Boolean/projection and frontier results remain the explicitly linked inputs stated above, and the graph-completion and relative-polyhedron arguments remain separate parts of the proof.
+
 ## How a compatible triangulation is assembled
 
 The triangulation input has a useful relative form: one may adapt a fixed locally finite polyhedron while preserving every old simplex setwise. The construction below follows the geometric method of [Masahiro Shiota, *Piecewise linearization of real analytic functions*](https://ems.press/content/serial-article-files/42219). We make its fibre ordering and straight-to-curved map explicit.
 
-The lower subanalytic prerequisites used in this construction are uniformization, the set calculus, and the following forms of the regularity and dimension calculus. A nonempty subanalytic set has lower-dimensional frontier $\overline A\setminus A$, as proved in [Dimension, fibrewise closure and the frontier](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md#dimension-fibrewise-closure-and-the-frontier). This is distinct from the topological boundary, whose dimension can equal the dimension of the set. The [compatible analytic partition theorem above](#compatible-locally-finite-analytic-partitions) proves that a locally finite family has a compatible locally finite partition into analytic submanifolds and that finitely many analytic maps have constant-rank restrictions after refinement. Compact subanalytic sets consequently have finite such partitions and finitely many connected components. These are inputs to the construction, rather than consequences of the triangulation being constructed. Analytic Noetherianity, the analytic constant-rank theorem and uniqueness for finite systems of analytic ordinary differential equations are also used.
+The lower subanalytic prerequisites used in this construction are [compact uniformization](../sheaf-proof-readings/SH03-subanalytic-sets-and-limiting-tangent-directions.html#compact-uniformization-for-the-projection-defined-class), the set calculus, and the following explicitly identified coordinate and dimension results. A nonempty subanalytic set has lower-dimensional frontier $\overline A\setminus A$, as proved in [Dimension, fibrewise closure and the frontier](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#dimension-fibrewise-closure-and-the-frontier). This is distinct from the topological boundary, whose dimension can equal the dimension of the set. The [compatible analytic partition theorem above](#compatible-locally-finite-analytic-partitions) proves that a locally finite family has a compatible locally finite partition into analytic submanifolds and that finitely many analytic maps have constant-rank restrictions after refinement. Compact subanalytic sets consequently have finite such partitions and finitely many connected components. These are inputs to the construction, rather than consequences of the triangulation being constructed. The [real-analytic Noetherianity proposition above](#real-analytic-noetherianity), the analytic constant-rank theorem and uniqueness for finite systems of analytic ordinary differential equations are also used.
 
 **Relative polyhedron theorem.** Let $K$ be a finite-dimensional locally finite linear simplicial complex with closed support in $\mathbb R^N$. Let $\{A_i\}$ be locally finite in the ambient space, with each $A_i$ subanalytic and contained in $|K|$. There are a locally finite subdivision $K'$ and a subanalytic homeomorphism
 
@@ -117,16 +172,30 @@ $$
 
 with analytic coefficients. Along $x+tv$, the vector $(g_0,\ldots,g_q)$ satisfies a finite homogeneous linear differential system. If it is zero at $t=0$, uniqueness makes it zero for all sufficiently small $t$. Conversely, vanishing of $h(x+tv)$ on an interval makes all these initial jets zero. Hence the incidence of analytic line germs in the chosen submanifold is locally an analytic set defined by finitely many jet equations. This proves local finiteness of the equations; an infinite jet intersection has not been treated as automatically analytic.
 
-Cover this incidence by countably many relatively compact closed subanalytic pieces and uniformize each piece. On its uniformizing manifold $W$, write the analytic incidence parameters as $x(w),v(w)$. The map
+Here is the exact compact-piece application of uniformization. Let $U$ be the open set on which $h^{-1}(0)$ is the chosen analytic submanifold, and let $V$ be one analytic chart of unit directions. In the analytic manifold $U\times V$, let $\mathcal I$ be the set of pairs $(x,v)$ for which $h(x+tv)=0$ for all sufficiently small real $t$. The finite-jet argument just given makes $\mathcal I$ locally analytic, hence locally closed and locally subanalytic. Choose countably many closed coordinate boxes $Q_\ell$, with interiors covering $U\times V$, each compactly contained in a neighborhood on which one finite list of jet equations defines $\mathcal I$. Such boxes come from a countable coordinate basis, by using rational smaller boxes inside these neighborhoods. Then
+
+$$
+C_\ell=\mathcal I\cap Q_\ell
+$$
+
+is compact, because it is the common zero set of finitely many continuous functions in the compact box. It is subanalytic in $U\times V$: the defining equations and box inequalities are semianalytic on a neighborhood of the box, and outside the box a neighborhood misses it. These pieces cover $\mathcal I$, including points on their boundaries.
+
+The [compact uniformization theorem](../sheaf-proof-readings/SH03-subanalytic-sets-and-limiting-tangent-directions.html#compact-uniformization-for-the-projection-defined-class) therefore gives, for each nonempty $C_\ell$, a compact finite-dimensional real analytic manifold $W_\ell$ and an analytic map $u_\ell:W_\ell\to U\times V$ whose image is exactly $C_\ell$. This map is proper; it need not be injective or an immersion. Write its coordinate maps as $x:W_\ell\to U$ and $v:W_\ell\to S^{n-1}$, the latter obtained from the unit-direction chart. Neither the dimension nor the number of preimages of an incidence parameter needs to be controlled in the argument below. For a fixed $\ell$, put $W=W_\ell$ and define
 
 $$
 F:W\times\mathbb R\longrightarrow\mathbb R^n,
-\qquad F(w,s)=x(w)+sv(w)
+\qquad F(w,s)=x(w)+sv(w).
 $$
 
-has rank less than $n$ for $s$ in a neighborhood of zero: locally its image lies in the lower-dimensional analytic zero set. At a fixed $w$, every $n$-rowed minor of its differential is a polynomial in $s$, since its columns are $dx+s\,dv$ and $v$. Vanishing on an interval makes that polynomial identically zero. Thus $F$ has rank less than $n$ for every real $s$, including values for which the line has left the original coordinate neighborhood.
+We need a neighborhood statement, not just a separate interval for each $w$. Fix $w_0\in W$. Near $(x(w_0),v(w_0))$, the finite-jet relation holds with analytic coefficients on an open parameter neighborhood. Shrink around this point to choose $\epsilon>0$ and a neighborhood $O\subset W$ of $w_0$ such that $(x(w)+sv(w),v(w))$ stays in that parameter neighborhood whenever $w\in O$ and $|s|<\epsilon$. This is possible by continuity, after choosing a smaller coordinate box whose closure lies in the relation's domain; the directions have norm one. Every initial jet vector vanishes because $u_\ell(O)\subset\mathcal I$. The finite homogeneous differential system and zero-solution uniqueness then give $h(F(w,s))=0$ throughout $O\times(-\epsilon,\epsilon)$. Thus $F$ maps this open set into the chosen embedded analytic submanifold of dimension less than $n$, and its differential there has rank less than $n$.
 
-Sard's theorem makes the image measure zero. Exhaust $W\times\mathbb R$ by countably many compact sets. Each compact image is closed, has empty interior and is nowhere dense. This proves the assertion about all points on singular lines.
+At a fixed $w$, choose local coordinates on $W$. The differential columns of $F$ are $dx+s\,dv$ and $v$. Every $n$-rowed minor is a polynomial in $s$, vanishing on an interval about zero and therefore identically zero. If there are fewer than $n$ columns, the rank bound is automatic. Consequently $\operatorname{rank}dF<n$ for every real $s$, including after the line leaves $U$. No interval common to all source manifolds is asserted or needed.
+
+**Alternative using the proved partition theorem.** Instead of compact uniformization, apply the [compatible analytic partition theorem](#compatible-locally-finite-analytic-partitions) to the single locally subanalytic set $\mathcal I\subset U\times V$. The partition members contained in $\mathcal I$ form a countable collection of embedded analytic manifolds covering it. Their inclusions give the analytic maps $x,v$. On each such manifold the same parameter-neighborhood and polynomial-minor argument applies. This route gives the same rank bound and the same Sard arguments below; it requires neither compactness of these parameter manifolds nor properness of their inclusions. The compact uniformization route remains available with its stronger proper-source conclusion.
+
+Theorem 2.1 and Corollary 2.2 of [Regular values and degree modulo two](../borsuks-conjecture-in-dimension-nine/regular-values-and-degree-modulo-two.html#2-sard-s-theorem) supply the precise Sard theorem used here: the critical values of a smooth map between finite-dimensional Hausdorff second-countable manifolds are null in every target chart. Its proof uses the smooth inverse function theorem, Taylor estimates and Euclidean measure theory; it does not use a triangulation or the uniformization being constructed here. Our analytic map $F$ is smooth and every point of its domain is critical by the rank calculation. Thus its whole image in $\mathbb R^n$ is null.
+
+The passage from nullness to meagreness uses compact pieces, not an assertion that every null set is meagre. A Hausdorff second-countable manifold admits a countable cover by compact coordinate balls: every point has a coordinate ball whose closed ball stays inside the coordinate domain, and second countability gives a countable subcover of their interiors. For completeness, to reduce any open cover to a countable one, choose for each basis element contained in some cover member one such member. These choices cover every point. The closures of the selected coordinate balls are compact because the closed Euclidean balls are compact and their inverse coordinate maps are continuous. Apply this to $W$, and take products with the intervals $[-j,j]$, $j\geq1$, to cover $W\times\mathbb R$ by countably many compact sets $K_i$. Each $F(K_i)$ is compact and therefore closed in $\mathbb R^n$. As a subset of the null image it contains no nonempty open set. It is consequently nowhere dense, and their countable union is precisely $F(W\times\mathbb R)$. This proves the assertion about all points on singular lines without assuming $W$ compact or $F$ proper.
 
 For directions, suppose $w\mapsto[v(w)]$ had surjective differential somewhere. A local analytic section over an open direction chart would give $x=x(v)$. For the resulting map $(v,s)\mapsto x(v)+sv$, the determinant of its $n$ differential columns has leading coefficient
 
@@ -134,121 +203,469 @@ $$
 \det(\partial_1v,\ldots,\partial_{n-1}v,v)
 $$
 
-in its polynomial in $s$. That coefficient is nonzero for a direction chart on the unit sphere. This contradicts the preceding rank calculation. The direction map therefore has only critical values. Sard and compact exhaustion again make its image meagre, now in projective space. In dimension one there are no line germs in a zero-dimensional set, so the assertion is immediate. Countable unions finish both claims. $\square$
+in its polynomial in $s$. That coefficient is nonzero for a direction chart on the unit sphere. This contradicts the preceding rank calculation. The direction map therefore has only critical values. Apply the same Corollary 2.2 to the smooth map from $W$ to $\mathbb{RP}^{n-1}$. Its values are critical by the preceding argument. The critical image is null in every projective coordinate chart. Each compact image is closed because projective space is Hausdorff, and it has empty interior because an open coordinate ball is not null. The countable compact cover of $W$ therefore makes the image meagre in projective space. This applies in every dimension $n\geq2$; no compactness or properness of the whole direction map is required. In dimension one there are no line germs in a zero-dimensional set, so the assertion is immediate. Countable unions finish both claims. $\square$
 
-In particular, inside any open simplex one can choose a centre outside a finite family of compact lower-dimensional sets and all their singular lines. One can also choose a parallel direction avoiding all singular directions of such a family. Baire's theorem gives the choices in any prescribed open neighborhood.
+In particular, inside any open simplex one can choose a centre outside a finite family of compact lower-dimensional sets and all their singular lines. One can also choose a parallel direction avoiding all singular directions of such a family. The precise category input is [Theorem 3.2, the locally compact Hausdorff Baire theorem](../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-03-LCH): no nonempty open subset of a locally compact Hausdorff space is contained in a countable union of nowhere dense sets. Apply it to the affine span of the simplex, identifying that span with Euclidean space, and to projective direction space. Coordinate balls with compact closure show that these spaces are locally compact; both are Hausdorff. Each compact lower-dimensional subanalytic set is closed with empty interior in the relevant affine span, hence nowhere dense, and the singular-line and direction sets have the countable nowhere-dense covers just proved. Their union cannot contain any prescribed nonempty open neighbourhood. This gives both choices. In affine dimension one the singular-line family is empty as above; affine dimension zero has no nonempty lower-dimensional set or direction choice.
 
 ### Completing a finite-fibre set so its projection is open
 
-For $p:\mathbb R^d\times\mathbb R\to\mathbb R^d$, call a set projection-open when $p$ restricted to that set is an open map. Suppose $A$ is compact subanalytic and every vertical fibre is finite. A finite analytic partition of $A$, compatible with a prescribed finite family of subsets, can be chosen in analytic graph pieces.
+For $p:\mathbb R^d\times\mathbb R\to\mathbb R^d$, call a set projection-open when the restricted map to $\mathbb R^d$ is open. All sets prescribed for compatibility in the following assertion are **subanalytic subsets of the ambient Euclidean space**; arbitrary subsets are not allowed.
 
-**Proof of the graph assertion.** Refine an analytic partition by the rank of $p$. A constant-rank restriction cannot have rank smaller than the dimension of its partition member: the constant-rank theorem would give a positive-dimensional subset of a fibre. Remove the images of lower-dimensional pieces and frontiers, and partition the remaining image into connected analytic pieces. Over each such piece, compactness supplies a proper finite analytic covering. Its sheets have a canonical order in the last real coordinate. Following the first, second and subsequent values trivializes the covering, so each sheet is an analytic graph. Apply the same argument to the remaining lower-dimensional compact part. Dimension decreases strictly, and compactness gives finitely many pieces at every step. This yields the claimed finite graph partition. The properness used here is that of the projection on the compact closed set, including its frontier. $\square$
-
-There is a compact finite-fibre subanalytic enlargement $B\supset A$ that is projection-open near a specified point of $A$.
-
-**Proof by induction on $d$.** The case $d=0$ is immediate. Separate the $d$-dimensional graph pieces, whose projection is open, from a closed compact remainder $A_2$ of dimension less than $d$. Choose a parallel direction in the base that is nonsingular for $p(A_2)$, by the preceding lemma, and take it as the last base coordinate. For fixed $x'\in\mathbb R^{d-1}$, only finitely many base points $(x',x_d)$ occur in $p(A_2)$. Each has only finitely many heights. Thus the image of $A_2$ under
+**Finite graph assertion.** Suppose $A\subset\mathbb R^d\times\mathbb R$ is compact subanalytic, every fibre $A_x=\{y:(x,y)\in A\}$ is finite, and $A_1,\ldots,A_k\subset A$ are subanalytic. There is a finite analytic cell partition of $p(A)$ such that, over each base cell $C$,
 
 $$
-p_2(x',x_d,y)=(x',y)
+A\cap p^{-1}(C)=\coprod_{i=1}^{m(C)}G_{C,i},\qquad
+G_{C,i}=\{(x,f_{C,i}(x)):x\in C\},\qquad
+f_{C,1}<\cdots<f_{C,m(C)}.
 $$
 
-has finite vertical fibres. Enlarge that compact image, by induction, to a set $B_2\subset\mathbb R^{d-1}\times\mathbb R$ whose projection is open near the specified point. Pull it back by $p_2$ and intersect with a sufficiently large closed ball. Near the specified point the ball has no effect. The resulting $B'$ has finite vertical fibres and is projection-open; its projection has the free $x_d$-coordinate. It contains $A_2$. Therefore $A\cup B'$ is projection-open there: points of the remainder lie in the projection-open enlargement, while the other pieces already have open projection. This completes the induction. $\square$
+Every $f_{C,i}:C\to\mathbb R$ is analytic and globally subanalytic. Each graph is wholly inside or wholly outside every $A_j$. The projection $G_{C,i}\to C$ is an analytic diffeomorphism, with inverse $x\mapsto(x,f_{C,i}(x))$.
 
-The same statements hold for radial projection from a centre $a$, using polar coordinates away from $a$. A local enlargement near $b\ne a$ can be turned into a compact one that is projection-open everywhere without losing local membership data. Here is the boundary step. Rotate and scale so $a=0$, $b=(0,\ldots,0,1)$. Intersect the local enlargement with a narrow conical neighborhood and a radial band about radius one. Choose the band endpoints to avoid its finite fibre over $b/|b|$; narrow the cone so no points meet those radial endpoints. Its only boundary is then on the side of the cone. Reflect the spherical cap across its boundary sphere, leaving radial distance unchanged, and adjoin the reflected copy.
+**Proof of the graph assertion.** The sets $A,A_1,\ldots,A_k$ are bounded. They are locally subanalytic at every point of their closures, because subanalyticity is assumed in the ambient space, including points not belonging to the sets. The [bounded-chart comparison, part 2](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#local-subanalytic-sets-and-bounded-charts) therefore makes them globally subanalytic. Apply the [finite analytic cell theorem](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#finite-analytic-cells-for-arbitrary-globally-subanalytic-sets) simultaneously to these sets, in the coordinate order $x_1,\ldots,x_d,y$.
 
-For completeness, such a reflection is analytic. Write a unit vector as $(v',v_n)$, let the cap boundary be $v_n=c\in(0,1)$, and put $k=(1-c)/(1+c)>0$. The formula
+Each cell contained in $A$ is a graph or a band in the last coordinate over one cell of the induced decomposition of $\mathbb R^d$. A nonempty band contains an interval over every point of its base, contradicting finite fibres. Thus only graph cells occur. Over a fixed base cell $C\subset p(A)$, list the graph cells belonging to $A$ in their order in the cylindrical stack. Their analytic endpoint functions are defined on all of $C$, are strictly ordered there, and account for every point of every fibre over $C$. Compatibility of the decomposition with each $A_j$ gives the stated membership property. Finiteness of the decomposition gives finitely many base cells and graphs. If $A$ is empty there are none; if $d=0$, the graphs are its finitely many points. $\square$
+
+**The covering interpretation and its hypotheses.** Fix $C$ and write $E=A\cap p^{-1}(C)$. The restriction $p:E\to C$ is proper: for a compact set $K\subset C$, its inclusion into $\mathbb R^d$ has compact image, and $A\cap p^{-1}(K)$ is a closed subset of the compact set $A$. This proves properness relative to $C$, even when $C$ is not closed in $\mathbb R^d$.
+
+To verify the covering property, take $x_0\in C$. When there is more than one sheet, choose disjoint open intervals about the finitely many numbers $f_{C,i}(x_0)$. Continuity gives a relative open neighbourhood $V\subset C$ of $x_0$ on which every $f_{C,i}$ stays in its chosen interval. The sets $G_{C,i}\cap p^{-1}(V)$ are then disjoint relatively open subsets of $E$, cover $p^{-1}(V)\cap E$, and map analytically diffeomorphically to $V$. With one sheet this is immediate. Hence $p:E\to C$ is a finite analytic covering. The global real-height order identifies its sheets on all of $C$, so there is no permutation of sheets on going around a loop.
+
+The rank argument remains valid: on a constant-rank analytic partition member, a rank smaller than its dimension would produce a positive-dimensional fibre by the [analytic constant-rank theorem](../sheaf-proof-readings/SH03-subanalytic-sets-and-limiting-tangent-directions.html#real-analytic-inverse-implicit-and-constant-rank-coordinates). What cannot be inferred from compactness alone is the covering property before the base has been suitably partitioned. For example, $\{(x,y):x=y^2,\ -1\le y\le1\}\to[0,1]$ is proper with finite fibres, but the fibre cardinality changes at zero. The cell proof supplies the required base partition as well as the ordered sheets.
+
+**Local compact enlargement.** For every specified $a\in A$, there is a compact subanalytic set $B\supset A$, still with finite vertical fibres, and an ambient open neighbourhood $U$ of $a$ such that
+
+$$
+p:B\cap U\longrightarrow\mathbb R^d
+$$
+
+is open. This is a local assertion near $a$, not global openness of the projection of a nonempty compact set onto $\mathbb R^d$.
+
+**Proof by induction on $d$.** For $d=0$, take $B=A$: every map to the one-point space is open. Now let $d\ge1$, and apply the graph assertion. Let $L$ be the union of the graph cells of dimension less than $d$, and set
+
+$$
+A_2=\overline L.
+$$
+
+The closure is taken in $\mathbb R^{d+1}$. Since $A$ is closed, $A_2\subset A$; it is compact. The Boolean and closure calculus and the [dimension/frontier theorem, equations (D4) and (D12)](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#dimension-fibrewise-closure-and-the-frontier), show that $A_2$ is subanalytic and $\dim A_2<d$. This also covers $L=\varnothing$, when $A_2=\varnothing$. The set $A_2$ need not be disjoint from all the other graph cells. What is needed is that every point of $A\setminus A_2$ lies on a graph over a $d$-dimensional base cell. Such a base cell is open in $\mathbb R^d$, so its graph projects openly.
+
+If $a\notin A_2$, choose $U$ disjoint from the closed set $A_2$ and take $B=A$. Given any relatively open $O\subset A\cap U$ and $b\in O$, intersect $O$ with a full-dimensional graph through $b$. Its projection is an open neighbourhood of $p(b)$ contained in $p(O)$. Taking the union over $b$ proves that $p(O)$ is open.
+
+It remains to treat $a\in A_2$. The compact subanalytic set $p(A_2)$ has dimension less than $d$, by the image inequality (D5) in the same provider. Choose a parallel direction nonsingular for $p(A_2)$, using the preceding singular-direction argument, and use an orthogonal change of base coordinates to make this the $x_d$-direction. The vertical height coordinate $y$ is unchanged. Every line parallel to this direction meets $p(A_2)$ in finitely many points: its intersection is a compact subanalytic subset of a line, hence a finite union of points and intervals by the cell theorem; an interval would give a forbidden line germ in $p(A_2)$.
+
+Write $x'=(x_1,\ldots,x_{d-1})$ and put
+
+$$
+p_2:\mathbb R^{d-1}\times\mathbb R\times\mathbb R
+\longrightarrow\mathbb R^{d-1}\times\mathbb R,
+\qquad p_2(x',x_d,y)=(x',y).
+$$
+
+The set $D=p_2(A_2)$ is compact and subanalytic. For fixed $x'$, only finitely many $x_d$ occur in $p(A_2)$, and each of these base points has only finitely many heights in $A_2\subset A$. Thus $D$ has finite vertical fibres over $\mathbb R^{d-1}$. Apply the induction hypothesis to $D$ at $p_2(a)$. It gives a compact subanalytic $B_2\supset D$, with finite fibres, and an open neighbourhood $V$ of $p_2(a)$ on which
+
+$$
+r:B_2\cap V\longrightarrow\mathbb R^{d-1},\qquad r(x',y)=x',
+$$
+
+is open.
+
+Choose $R>0$ with $A_2\subset\operatorname{int}\overline{\mathbb B}_R$, and define
+
+$$
+B'=p_2^{-1}(B_2)\cap\overline{\mathbb B}_R,
+\qquad B=A\cup B'.
+$$
+
+These sets are subanalytic. The set $B'$ is closed and bounded, hence compact, and contains $A_2$. At a fixed base point $(x',x_d)$, its possible heights belong to the finite fibre $(B_2)_{x'}$. Consequently $B$ is compact and has finite vertical fibres as well.
+
+Take an ambient open neighbourhood $U$ of $a$ contained in $\operatorname{int}\overline{\mathbb B}_R\cap p_2^{-1}(V)$. On this neighbourhood the ball has no effect. After reordering the coordinates, $p_2^{-1}(B_2\cap V)$ is $(B_2\cap V)\times\mathbb R$, and its base projection is $r\times\operatorname{id}_{\mathbb R}$. This product map is open: an open set is a union of open product sets, whose images are products of an open image under $r$ with an open interval. Its restriction to the relatively open subset cut out by $U$ remains open. Therefore $p:B'\cap U\to\mathbb R^d$ is open.
+
+Finally let $O$ be relatively open in $B\cap U$, and take $b\in O$. If $b\in B'$, the relatively open set $O\cap B'$ supplies an open base neighbourhood of $p(b)$ inside $p(O)$. If $b\notin B'$, then $b\in A\setminus A_2$, because $A_2\subset B'$. A full-dimensional graph through $b$ supplies that neighbourhood exactly as in the earlier case. Thus $p(O)$ is open. This completes the induction. $\square$
+
+#### Compact radial completion by doubling
+
+Let $a\in\mathbb R^n$, let $A\subset\mathbb R^n\setminus\{a\}$ be compact subanalytic, and suppose the radial map
+
+$$
+\rho_a:\mathbb R^n\setminus\{a\}\longrightarrow S^{n-1},
+\qquad \rho_a(x)=\frac{x-a}{|x-a|},
+$$
+
+has finite fibres on $A$. For every $b\in A$, there are a compact subanalytic set $D\subset\mathbb R^n\setminus\{a\}$ and an ambient open neighbourhood $W$ of $b$ with these properties: $A\cap W\subset D$; the fibres of $\rho_a|_D$ are finite; and $\rho_a:D\to S^{n-1}$ is open. Moreover, a finite partition of $D$ into analytic radial graphs can record membership in $A$ and any prescribed finite subanalytic family. Thus, near $b$, the original set is a union of the selected graph pieces restricted to $W$. The completion need not contain all of $A$.
+
+If $n=1$, take $D=A$. There are only two directions, with the discrete topology, so every restricted radial map is open, and finite radial fibres make $A$ finite. We now treat $n\ge2$. Translation, rotation and positive scaling let us take $a=0$ and $b=e_n$, without changing any of the required properties. Write
+
+$$
+v(z)=(z,\sqrt{1-|z|^2}),\qquad |z|<1,
+\qquad (z,r)\longmapsto r\,v(z),\quad r>0.
+$$
+
+These are analytic polar coordinates near $e_n$; the inverse sends $x$ to $((x/|x|)',|x|)$. The radial map is projection onto $z$, followed by the analytic sphere chart $v$.
+
+**A compact affine input.** Choose a small closed coordinate box $Q\subset\{|z|<1\}$ with $0$ in its interior. Restrict $A$ to directions in $v(Q)$ and take its polar-coordinate image $A_Q$. Since $A$ is compact and avoids zero, its radii lie in some compact interval $[r_-,r_+]\subset(0,\infty)$. Therefore $A_Q\subset Q\times[r_-,r_+]$ is compact subanalytic, with finite fibres over $z$. The polar coordinate maps are analytic on neighbourhoods of the compact sets in question; the bounded-chart and compact-image calculus used above justifies these subanalytic images. In particular, this step makes no assertion about an unbounded analytic image.
+
+Apply the preceding [local compact enlargement](#completing-a-finite-fibre-set-so-its-projection-is-open) to $A_Q$ at $(0,1)$. Obtain a compact subanalytic set $E\supset A_Q$ with finite vertical fibres, and an open neighbourhood $N$ of $(0,1)$, on which $\pi:E\cap N\to\mathbb R^{n-1}$, $\pi(z,r)=z$, is open. We use only the part of $E$ inside the polar coordinate domain and at positive radii.
+
+**Choosing the band before the cap.** Choose a small product neighbourhood of $(0,1)$ whose closure lies in $N\cap(\operatorname{int}Q\times(0,\infty))$. Inside its radial interval choose $\alpha<1<\beta$ so that neither endpoint belongs to the finite fibre $E_0$. The two sets
+
+$$
+F_\alpha=\pi\bigl(E\cap(\mathbb R^{n-1}\times\{\alpha\})\bigr),\qquad
+F_\beta=\pi\bigl(E\cap(\mathbb R^{n-1}\times\{\beta\})\bigr)
+$$
+
+are compact, and neither contains zero. Consequently there is an open base neighbourhood $V$ of zero, with compact closure in $\operatorname{int}Q$, such that
+
+$$
+\overline V\times[\alpha,\beta]\subset N,
+\qquad \overline V\cap(F_\alpha\cup F_\beta)=\varnothing.
+$$
+
+Thus no fibre of $E$ over $\overline V$ meets either radial endpoint. Put $E^\circ=E\cap(V\times(\alpha,\beta))$. It is relatively open in $E\cap N$, so $\pi:E^\circ\to\mathbb R^{n-1}$ is open. Its image contains zero. Choose $c\in(0,1)$, sufficiently close to one, so that the closed spherical cap
+
+$$
+K=\{v\in S^{n-1}:v_n\ge c\}
+$$
+
+has its coordinate image contained in $V\cap\pi(E^\circ)$. Define
+
+$$
+E_K=\{r v(z):(z,r)\in E,\ v(z)\in K,\ \alpha\le r\le\beta\}.
+$$
+
+This is a compact subanalytic set with finite radial fibres and radii in $[\alpha,\beta]$, none equal to either endpoint. It projects onto $K$. Its projection is open **relative to $K$**: in polar coordinates it is the restriction of $E^\circ\to\mathbb R^{n-1}$ over the closed base set corresponding to $K$. If $O$ is relatively open in this restriction, write it as the intersection of the restriction with a relatively open $O'\subset E^\circ$. Then its image is $\pi(O')\cap v^{-1}(K)$, which is relatively open in $v^{-1}(K)$. This is the elementary base-change property for an open map; the radial endpoint exclusion is what makes the closed-band restriction equal to this restriction of $E^\circ$.
+
+**Reflection.** Put $k=(1-c)/(1+c)>0$. For $v=(v',v_n)\in S^{n-1}$, define
 
 $$
 J(v',v_n)=\left(
 \frac{2k\,v'}{1-v_n+k^2(1+v_n)},
 \frac{1-v_n-k^2(1+v_n)}{1-v_n+k^2(1+v_n)}
-\right)
+\right).
 $$
 
-is an analytic involution of the sphere. Its denominator is positive; in stereographic coordinates it is inversion in the sphere of radius $\sqrt{k}$. It fixes the cap boundary pointwise and exchanges its two sides. Near the common boundary, relative openness on the cap and its reflected copy gives openness in the whole sphere. The doubled compact set still has finite radial fibres. Partition it into graph pieces, also respecting its intersection with the original set and the cap boundary. Near $b$, the original set is a union of these pieces. In dimension one radial directions form two points, and no cap construction is needed.
+The denominator is at least $2\min(1,k^2)>0$. With $u=1-v_n$ and $w=1+v_n$, the sphere equation gives $|v'|^2=uw$, and
+
+$$
+4k^2|v'|^2+(u-k^2w)^2=(u+k^2w)^2.
+$$
+
+Hence $J$ is an analytic map of the sphere to itself. Away from the south pole, use the stereographic coordinate $s=v'/(1+v_n)$. For $s\ne0$ its transformed coordinate is
+
+$$
+s\longmapsto\frac{k s}{|s|^2}.
+$$
+
+This inversion is an involution, fixes $|s|^2=k$, and interchanges $|s|^2<k$ with $|s|^2>k$. The displayed sphere formula interchanges the two poles and is analytic there as well. Thus $J^2=\operatorname{id}$ everywhere. Since $|s|^2=(1-v_n)/(1+v_n)$, the fixed sphere is exactly $v_n=c$; $J$ fixes that sphere pointwise and exchanges the interiors of $K$ and $K^*=\{v_n\le c\}$. This proves the stated reflection properties, including the inversion radius $\sqrt{k}$.
+
+Extend it radially by $\widehat J(rv)=rJ(v)$ for $r>0$, and put
+
+$$
+D=E_K\cup\widehat J(E_K).
+$$
+
+The radial extension is analytic away from zero. Both sets in the union are compact subanalytic and avoid zero. A fibre of $D$ over a direction $v$ has radii in the union of the two finite radius sets of $E_K$ over $v$ and over $J(v)$. Thus every radial fibre remains finite.
+
+**Openness on the doubled set.** The map on $E_K$ is open relative to $K$; conjugating by $\widehat J$ and $J$ gives the corresponding assertion for $\widehat J(E_K)$ over $K^*$. For a relatively open $O\subset D$ and a point $x\in O$ whose direction is in the interior of one cap, the applicable relative openness supplies an open sphere neighbourhood of $\rho_0(x)$ in $\rho_0(O)$.
+
+At a boundary direction $v_n=c$, the reflection fixes every point of the ray, so a point $x\in D$ above that direction belongs to **both** copies. If $x\in O$, their relative openness gives a relative neighbourhood $U_+\subset K$ and a relative neighbourhood $U_-\subset K^*$ of $v=\rho_0(x)$, both contained in $\rho_0(O)$. Write $U_+=V_+\cap K$ and $U_-=V_-\cap K^*$ with $V_+,V_-$ open in the sphere. Then $V_+\cap V_-$ is a sphere neighbourhood of $v$ contained in $U_+\cup U_-$, because $K\cup K^*=S^{n-1}$. This also lies in $\rho_0(O)$. Every point of that image consequently has an open neighbourhood within it, proving that $\rho_0:D\to S^{n-1}$ is open globally.
+
+**Local membership and graph pieces.** In the open neighbourhood
+
+$$
+W=\{r v:v\in\operatorname{int}K,\ \alpha<r<\beta\}
+$$
+
+of $e_n$, every point of $A$ belongs to $E_K\subset D$: its direction is in $v(Q)$, its polar coordinates belong to $A_Q\subset E$, and it satisfies the defining cap and radius conditions. The reflected copy lies over $K^*$, so it adds no points over $\operatorname{int}K$. Additional points supplied by the original affine enlargement may remain, as intended.
+
+To obtain the promised finite graph partition, cover the sphere by finitely many closed semialgebraic angular patches contained in analytic coordinate charts; for example, use $\{\pm v_i\ge1/\sqrt n\}$ and the charts on $\{\pm v_i>0\}$. The polar images of $D$ over these closed patches are compact subanalytic sets with finite height fibres. Apply the preceding finite graph assertion on each patch, requiring compatibility with the images of $D\cap A$, the prescribed subanalytic subsets, and both cap boundaries. These bounded images are globally subanalytic by the bounded-chart comparison. Transfer the resulting finitely many base pieces to the sphere and take a common finite analytic cell refinement, compatible also with the angular patches. Assign each refined base cell to one patch containing it. Restrict that patch's graph functions to the refined cell. Their domains are the whole refined cell, the functions are analytic and strictly ordered, and they account for all points of $D$ over it. Each resulting graph is wholly inside or wholly outside $A$ and every prescribed subset. In particular, $A\cap W$ is the union of the selected graphs restricted to $W$. Undoing the initial similarity proves the assertion for the original $a$ and $b$. $\square$
 
 ### Extending the skeleton without changing old simplices
 
-We prove the relative theorem by induction on $m=\dim K$. The assertion for $m=0$ is immediate. Suppose it is proved in lower dimensions.
+We prove the relative theorem by induction on $m=\dim K$. The assertion for $m=0$ is immediate. Suppose it is proved in lower dimensions. For an old $m$-simplex $\sigma$, work in its $m$-dimensional affine span; boundaries and interior in that span will be distinguished from the old skeleton.
 
-First reduce membership to closed sets. For a subanalytic $A$ in a compact old simplex, put $B_0=A$, $B_{j+1}=\overline{B_j}\setminus B_j$. The strict frontier inequality (D12) in the linked dimension provider makes this sequence terminate when the first empty set is reached. Membership in $A$ is a Boolean combination of the finitely many closed sets $\overline{B_j}$, obtained by substituting $B_j=\overline{B_j}\setminus B_{j+1}$ backwards. For a full-dimensional closed set, its boundary is lower-dimensional; a connected piece avoiding that boundary lies wholly in its interior or wholly outside it. Thus lower-dimensional closed obstacles, and the membership information on the old skeleton, suffice. Each compact old simplex meets only finitely many $A_i$, so these local reductions preserve ambient local finiteness.
+**Reduction to closed obstacles.** For a subanalytic subset $A\subset\sigma$, put $B_0=A$ and $B_{j+1}=\overline{B_j}\setminus B_j$, taking closures in the affine span. Each closure stays in the compact set $\sigma$. The [strict frontier theorem (D12)](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#dimension-fibrewise-closure-and-the-frontier) gives $\dim B_{j+1}<\dim B_j$ whenever $B_j\ne\varnothing$. Thus the sequence reaches the empty set after finitely many steps. Write $C_j=\overline{B_j}$. The identities $B_j=C_j\setminus B_{j+1}$, substituted backwards from the last nonempty term, express membership in $A$ by a finite Boolean combination of the compact closed subanalytic sets $C_j$.
 
-Fix an old $m$-simplex $\sigma$, and choose a nonsingular centre $a\in\sigma^\circ$ outside its finite union of lower-dimensional closed obstacles. Such a choice is possible because that union and the excluded singular-line sets are meagre. Let $p_a:\sigma\setminus\{a\}\to\partial\sigma$ send a point along its ray to the boundary. Each obstacle has finite radial fibres. At each of its points use the preceding compact radial completion, with an analytic graph partition that records its local membership. Finitely many such neighborhoods cover the compact obstacles.
+If $\dim C_j<m$, retain $C_j$ itself as an obstacle. If $\dim C_j=m$, retain its boundary in the affine span. This boundary has dimension less than $m$ by (D15). Its complement is the disjoint union of the two open sets $\operatorname{int}C_j$ and $\operatorname{aff}(\sigma)\setminus C_j$. Hence a connected set avoiding the boundary lies wholly in one or the other. Once the lower-dimensional obstacles and the membership data on the old skeleton are respected, this observation recovers membership in all the $C_j$, and hence in $A$. Each compact old simplex meets only finitely many members of the original locally finite family, so only finitely many obstacles are needed on $\sigma$.
 
-Let $C$ be the finite union of all the completed compact sets. Every completion was constructed away from $a$, so $C$ is compact and avoids $a$. Choose $0<\delta<1$ only now, small enough that the closed inner simplex $a+\delta(\sigma-a)$ is disjoint from $C$. Explicitly, if $C\ne\varnothing$, take $\delta R<\operatorname{dist}(a,C)$, where $R=\max_{x\in\sigma}|x-a|>0$; compactness makes the distance positive. If $C$ is empty, any $\delta\in(0,1)$ suffices. Avoiding only the original obstacles would not ensure this property, because their completions can approach the centre more closely. Clip $C$ to $\sigma$, then add both $\partial\sigma$ and the inner boundary $a+\delta(\partial\sigma-a)$. Call the resulting compact set $\Gamma$. All completed points in it have radial height strictly greater than $\delta$, so the adjoined inner boundary is the least radial branch and the open inner simplex contains no other part of $\Gamma$. It has finite radial fibres and open radial projection. Clipping does not spoil openness at an outer or inner boundary: the full boundary graph itself supplies the missing neighboring fibres.
+**A finite completed set.** Denote these compact lower-dimensional obstacles by $F_1,\ldots,F_q$. Choose $a\in\sigma^\circ$ outside their union and all their singular lines, by the preceding singular-line and Baire arguments. Every ray from $a$ meets each $F_j$ in finitely many points. Let $p_a$ send a point of the affine span other than $a$ to the unique point where its positive ray from $a$ meets $\partial\sigma$. Radial direction identifies the sphere in that affine span homeomorphically with $\partial\sigma$: every ray has exactly one boundary point, and the inverse direction map is a continuous bijection from the compact boundary to the Hausdorff sphere. Thus openness of the direction map is equivalent to openness of $p_a$.
 
-Refine its finite graph partition to respect the partitions of every completion. Any connected piece compatible with this refinement is compatible with each original closed obstacle. Indeed, its intersection with that obstacle is closed. At an intersection point, a chosen completion neighborhood makes membership locally constant on the piece, so the intersection is also open. Connectedness makes it either the entire piece or empty.
+At each point of each $F_j$, apply the [compact radial completion](#compact-radial-completion-by-doubling). Choose its graph partition to record membership in every $F_l$. Compactness of the finitely many obstacles gives finitely many completion neighbourhoods covering their union. Let $D_1,\ldots,D_N$ be the corresponding completed compact sets and put $C=\bigcup_iD_i$. Then $C$ is compact, avoids $a$, has finite radial fibres, and contains every $F_j$. The map $p_a:C\to\partial\sigma$ is open: for a relatively open $O\subset C$, each $O\cap D_i$ is relatively open in $D_i$, so $p_a(O)=\bigcup_i p_a(O\cap D_i)$ is open. If there are no obstacles, use $C=\varnothing$.
 
-Project all graph pieces and their relevant frontiers to the old skeleton, and include the original membership data on that skeleton. The images are subanalytic by properness on compact closures. The resulting family is locally finite: its members from $\sigma$ remain on $\partial\sigma$, and the old complex is locally finite. The induction hypothesis supplies a subdivision $H$ of the skeleton and a homeomorphism $\tau$ that fixes every old face setwise, is analytic on each new open simplex, and respects this projected data.
+Choose $0<\delta<1$ only after $C$ has been formed. If $C\ne\varnothing$, set $R=\max_{x\in\sigma}|x-a|>0$ and require
+
+$$
+\delta R<\operatorname{dist}(a,C).
+$$
+
+If $C=\varnothing$, any $\delta\in(0,1)$ works. Define the compact subanalytic set
+
+$$
+\Gamma=(C\cap\sigma)\ \cup\ \partial\sigma\ \cup\ \bigl(a+\delta(\partial\sigma-a)\bigr).
+$$
+
+For a point $x=a+t(u-a)$ with $u\in\partial\sigma$ and $x\in C\cap\sigma$, the inequality $|x-a|>\delta R\ge\delta|u-a|$ gives $t>\delta$. Consequently every fibre of $\Gamma$ has least height $\delta$, greatest height $1$, and finitely many heights between them. The open inner simplex contains no point of $\Gamma$. Choosing $\delta$ by the distance from the original obstacles alone would not give this conclusion for their added completions.
+
+**Why clipping retains openness.** Take a relatively open $O\subset\Gamma$ and $x\in O$. If $x$ is on the outer boundary graph $\partial\sigma$, its intersection with $O$ projects openly by the identity map of $\partial\sigma$. If $x$ is on the inner boundary graph, use the homeomorphism $a+\delta(u-a)\mapsto u$. In either case this supplies a neighbourhood of $p_a(x)$ in $p_a(O)$.
+
+Every other point of $\Gamma$ lies in $C\cap\sigma^\circ$. Choose an ambient open neighbourhood $U$ of $x$ contained in $\sigma^\circ$ and small enough that $C\cap U\subset O$; this is possible from the relative openness of $O$ in $\Gamma$. Since $C\cap U$ is relatively open in $C$, its image is an open neighbourhood of $p_a(x)$ contained in $p_a(O)$. These cases prove that $p_a:\Gamma\to\partial\sigma$ is open. In particular, the argument does not assume that cutting an open map by an arbitrary closed subset of its domain preserves openness.
+
+**Recorded membership.** Take a finite radial graph partition of $\Gamma$, refined to respect the intersections with the finitely many graph pieces of all the $D_i$, and the two boundary graphs. Suppose a refined piece $P$ meets $F_j$ at $x$. A completion neighbourhood covering $x$ supplies a graph piece $G\subset D_i$ containing $x$ and lying in $F_j$, because that partition recorded membership in $F_j$. Compatibility with $G\cap\Gamma$ implies $P\subset G\cap\Gamma\subset F_j$. Thus each refined piece is wholly inside or outside every obstacle.
+
+The equivalent local-to-global criterion is also useful: on a connected piece, its intersection with a closed obstacle is closed; if the recorded completion neighbourhoods make membership locally constant at all points of that intersection, it is open as well. Connectedness then makes it empty or the whole piece. Here the compatible finite graph refinement supplies precisely that local constancy, rather than assuming it from closedness alone.
+
+Project the graph pieces and their relevant frontiers to the old skeleton, and include the original membership data there. These images are subanalytic by the [bounded Boolean and projection calculus](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#full-global-preparation-and-the-complement-theorem). Indeed $\Gamma$ is compact and avoids $a$, and the normalized radial projection to a linear simplex has a semialgebraic graph; its restriction to these bounded pieces has a globally subanalytic graph. This also treats pieces which are not closed; properness of a restriction to a nonclosed piece is not being assumed. Only finitely many data sets are contributed by each old simplex, and all of them lie on its boundary. Local finiteness of the old complex therefore makes the resulting family locally finite. The induction hypothesis yields a subdivision $H$ of the skeleton and a subanalytic homeomorphism $\tau$ which preserves each old face setwise, is analytic on every new open simplex, and is compatible with all this projected data.
 
 ### Ordered branches, including their values on faces
 
-Over an open base simplex $\eta$ of $H$, after the boundary map $\tau$, the graph pieces of $\Gamma$ give finitely many strictly ordered positive radial functions
+Fix $\sigma$ and its completed set $\Gamma$. Pull the radial graph back by the boundary homeomorphism, retaining normalized height as a separate coordinate:
+
+$$
+\Lambda=\{(u,t)\in\partial\sigma\times[\delta,1]:
+a+t(\tau(u)-a)\in\Gamma\}.
+$$
+
+It is compact. The map $(u,t)\mapsto a+t(\tau(u)-a)$ from $\Lambda$ to $\Gamma$ is a continuous bijection: the radial base point and the positive normalized height uniquely determine $u$ and $t$. As its domain is compact and its target Hausdorff, it is a homeomorphism. Under it, the projection $\Lambda\to\partial\sigma$ corresponds to $\tau^{-1}\circ p_a$. It is consequently open and has finite fibres.
+
+Over an open simplex $\eta^\circ$ of $H$ in $\partial\sigma$, the graph partition gives all the finitely many strictly ordered heights
 
 $$
 \delta=r_0(u)<r_1(u)<\cdots<r_s(u)=1,
-\qquad u\in\eta^\circ,
+\qquad u\in\eta^\circ.
 $$
 
-where the actual point on a branch is $a+r_i(u)(\tau(u)-a)$. The functions are analytic on the open simplex. The boundary partition ensures that each branch either occurs on the entire base simplex or is absent there.
+Each function is analytic there. The recorded projected data ensure that each graph occurs over the whole open simplex or not at all; no branch has merely a proper subset as its domain. Analyticity follows by restricting a graph chart and composing with $\tau|_{\eta^\circ}$. The normalized radial coordinate is analytic on each old face cone, and $\tau$ preserves that old face. When $\eta$ is a vertex, the functions are simply its fibre heights.
 
-Each branch extends continuously to the closed base simplex. To see this at a boundary point $u_0$, intersect the open simplex with successively smaller balls centred at $u_0$. These intersections are connected. The closures of their branch graphs are nested compact connected sets. Their intersection is the cluster set over $\tau(u_0)$, and is finite because $\Gamma$ has finite fibres. A nonempty finite connected set has one point. This gives a unique limiting value. The same argument at every boundary point, together with compactness, proves continuity of the extension.
+**A single limit at every face point.** For a positive-dimensional $\eta$, fix one branch $r_i$ and $u_0\in\overline\eta$. For integers $l\ge1$, let
 
-On an open face, the limit is one of its finitely many graph branches. Its choice is locally constant, hence constant on the connected face. Consecutive branches upstairs restrict either to the same branch or to consecutive branches on a face. Otherwise a third branch strictly between their two limiting values would, by open projection, have nearby values over the interior base simplex. Those values would lie between the original consecutive branches, a contradiction. This is precisely where openness of the completed projection is needed.
+$$
+H_l=\overline{\{(u,r_i(u)):
+u\in\eta^\circ,\ |u-u_0|<1/l\}},
+$$
 
-Take a barycentric subdivision of $H$. If two branches are distinct on an open base simplex, one vertex of each new simplex is the barycentre of its largest old carrier and lies in that carrier's interior. Their values are strictly ordered at that vertex. They may agree at other vertices on lower faces; this causes a permitted collapse on that face, not a collapsed interior cell.
+taking the closure in the compact space $\Lambda\cap(\overline\eta\times[\delta,1])$. The domain inside the braces is nonempty and convex, hence connected, and its graph is connected because $r_i$ is continuous. Its closure $H_l$ is therefore connected. These are nested nonempty compact sets, so their intersection $H_\infty$ is nonempty. All of its points have base coordinate $u_0$, and that fibre of $\Lambda$ is finite.
+
+This intersection has only one point. Otherwise choose pairwise disjoint open neighbourhoods of its finitely many points. Some $H_l$ must be contained in their union: if none were, the nested nonempty compact sets obtained by intersecting $H_l$ with the complement of that union would have a common point outside the union, contrary to its covering $H_\infty$. But every $H_l$ contains $H_\infty$, so that $H_l$ would meet at least two of the disjoint neighbourhoods, contradicting its connectedness. Write the unique point as $(u_0,\overline r_i(u_0))$.
+
+Thus every sequence $u_j\in\eta^\circ$ converging to $u_0$ has $r_i(u_j)\to\overline r_i(u_0)$. If not, a subsequence of the bounded heights staying a positive distance from that value would have a convergent subsequence, producing another point of $H_\infty$. This also shows that the closure of the entire graph of $r_i$ has exactly one point over every $u_0\in\overline\eta$. Its projection onto $\overline\eta$ is a continuous bijection from a compact space to a Hausdorff space, hence a homeomorphism: closed subsets of the compact domain have compact, therefore closed, images. Its inverse proves that $\overline r_i$ is continuous on the **whole closed simplex**, including sequences travelling through different faces. Its graph is subanalytic by the closure calculus. The endpoint branches extend as the constants $\delta$ and $1$.
+
+**Which branch occurs on a face.** Let $\theta$ be a face of $\eta$. Over $\theta^\circ$, list the graph heights as $g_0<\cdots<g_t$. At each $u\in\theta^\circ$, the value $\overline r_i(u)$ is one of these heights because its graph lies in $\Lambda$. Its index is locally constant. At any fixed point the finite distinct heights have positive gaps, and continuity of $\overline r_i$ and all the $g_j$ preserves a separating interval for the chosen height on a sufficiently small neighbourhood. Only that same $g_j$ can equal $\overline r_i$ there. The connectedness of $\theta^\circ$ makes the index constant over the entire open face. This argument also covers a zero-dimensional face.
+
+**No face branch can be skipped.** Two consecutive heights $r_i,r_{i+1}$ retain their weak order on $\overline\eta$. Suppose their restrictions on $\theta^\circ$ are distinct, and at some $u_0\in\theta^\circ$ another height $g_j(u_0)$ lies strictly between their limiting values. Choose $\epsilon>0$ so that the interval $(g_j(u_0)-\epsilon,g_j(u_0)+\epsilon)$ is strictly between those two values, even after each endpoint is moved by $\epsilon$. The relatively open subset
+
+$$
+O=\Lambda\cap\{(u,t):|t-g_j(u_0)|<\epsilon\}
+$$
+
+contains $(u_0,g_j(u_0))$. Openness of the projection makes its image a neighbourhood of $u_0$ in $\partial\sigma$. Points of $\eta^\circ$ occur arbitrarily close to $u_0$. Choose one in that image close enough that continuity of the two extended branches places $r_i(u)$ below the interval and $r_{i+1}(u)$ above it. Membership in the image supplies a fibre height strictly between these consecutive heights, a contradiction.
+
+Consequently consecutive branches restrict either to the same branch or to consecutive branches on every face. Equivalently, the face-index map is nondecreasing, and each successive index increases by zero or one. The least and greatest branches are $\delta$ and $1$ on both simplices, so the index map starts at zero and ends at the greatest face index. It therefore attains every intermediate index. Thus no branch on a face is lost, and the only permitted change is the merger of consecutive branches.
+
+**The strict vertex needed for the straight model.** Take a barycentric subdivision of $H$. For any simplex of this subdivision, the chain of old faces defining it has a largest face $\eta$, and one vertex is the barycentre of $\eta$, in $\eta^\circ$. Distinct branches over $\eta^\circ$ have strictly ordered values at that vertex. Their values are weakly ordered at all other vertices, by continuity on $\overline\eta$. They may coincide on lower faces, but there is a strict vertex inequality on every new simplex whose largest carrier is $\eta$. This is the precise input for the reciprocal interpolation in the next step.
 
 ### The straight model and its analytic lifting map
 
-Let $u_0,\ldots,u_d$ be the vertices of one of the subdivided base simplices, with barycentric coordinates $\lambda_j(u)$. Model branch $i$ by the straight simplex with vertices
+Let $L$ be the barycentric subdivision of the skeleton complex $H$ used above. Fix a simplex $\eta$ of $L$ in $\partial\sigma$, with vertices $u_0,\ldots,u_d$. Its open simplex lies in the interior of one simplex of $H$, called its carrier. Use the ordered branches of that carrier and their continuous extensions to $\eta$. The carrier's barycentre is one of these vertices. Thus, writing
 
 $$
-a+r_i(u_j)(u_j-a).
+h_{ij}=r_i(u_j),\qquad 0\le i\le s,\quad 0\le j\le d,
 $$
 
-Its radial height over $u$ is
+we have $\delta=h_{0j}\le\cdots\le h_{sj}=1$, with strict inequalities between consecutive branches at the carrier-barycentre vertex. The branches themselves are strictly ordered on $\eta^\circ$. The induction hypothesis says more than that $\tau$ is analytic: on each open simplex of $H$ it is an analytic diffeomorphism onto an analytic submanifold. Its restriction to $\eta^\circ$ is therefore an analytic embedding. This immersion information will be used explicitly below.
+
+**Linear coordinates on a radial cone.** Translate the centre to the origin for the coordinate calculation and put $v_j=u_j-a$. These vectors are linearly independent. Indeed, $\eta$ lies in an old face of $\sigma$; a supporting affine hyperplane of that face has an equation $\ell(x-a)=1$, so $\ell(v_j)=1$. A linear relation among the $v_j$ first gives that its coefficients sum to zero, and then contradicts the affine independence of the $u_j$, unless every coefficient is zero. Consequently every point of the cone over $\eta$ has unique coordinates
 
 $$
-R_i(u)=\left(\sum_{j=0}^{d}\frac{\lambda_j(u)}{r_i(u_j)}\right)^{-1}.
+x=a+\sum_{j=0}^d\beta_jv_j,\qquad \beta_j\ge0.
 $$
 
-This is reciprocal, rather than arithmetic, interpolation. Indeed, if a point in the straight face has affine coefficients $\mu_j$, radial projection gives $\lambda_j=\mu_jr_i(u_j)/t$. The condition $\sum\mu_j=1$ then gives the displayed height $t=R_i(u)$. All vertex heights are positive. The strict order at an interior-carrier vertex makes $R_i<R_{i+1}$ throughout each open base simplex.
+Away from $a$, its normalized height and base point are
 
-Between two consecutive straight faces, define
+$$
+t=\sum_j\beta_j>0,\qquad
+u=\sum_j\lambda_j u_j,\qquad \lambda_j=\beta_j/t.
+$$
+
+The truncated cone inside $\sigma$ is $\sum\beta_j\le1$. Define the linear forms
+
+$$
+L_i(\beta)=\sum_j\frac{\beta_j}{h_{ij}}.
+$$
+
+The straight branch simplex $G_{\eta i}$, with vertices $a+h_{ij}v_j$, is exactly $\{\beta\ge0:L_i(\beta)=1\}$. Its radial height is
+
+$$
+R_i(u)=\left(\sum_j\frac{\lambda_j(u)}{h_{ij}}\right)^{-1}.
+$$
+
+To check the formula directly, write a point of the straight simplex with affine coefficients $\mu_j$. Then $\beta_j=\mu_jh_{ij}$, $\lambda_j=\mu_jh_{ij}/t$, and $\sum\mu_j=1$ gives $t=R_i(u)$. Conversely, $\mu_j=R_i(u)\lambda_j/h_{ij}$ are nonnegative and sum to one, so the formula describes the entire simplex. In particular the interpolation is reciprocal, not arithmetic. All denominators are positive, and the formula extends analytically to a neighbourhood of the closed base simplex in its affine span. The vertex inequalities give $R_i\le R_{i+1}$; the strict inequality at the carrier-barycentre vertex gives $R_i<R_{i+1}$ on $\eta^\circ$.
+
+**The closed bands are convex polytopes.** Define
+
+$$
+Q_{\eta i}=\{\beta\ge0:L_i(\beta)\ge1,\ L_{i+1}(\beta)\le1\},
+\qquad 0\le i<s,
+$$
+
+and define the inner cell by $I_\eta=\{\beta\ge0:\sum\beta_j\le\delta\}$. In radial coordinates $Q_{\eta i}$ is precisely
+
+$$
+u\in\eta,\qquad R_i(u)\le t\le R_{i+1}(u).
+$$
+
+The upper inequality implies $\sum\beta_j\le1$, since all $h_{i+1,j}\le1$; the lower inequality implies $\sum\beta_j\ge\delta$, since all $h_{ij}\ge\delta$. Thus this set is a bounded intersection of closed linear half-spaces. It is convex and compact. Its relative interior is the region with all $\beta_j>0$ and both displayed inequalities strict. This region is nonempty because of the strict carrier vertex. Similarly, $I_\eta$ is the simplex with vertices $a,a+\delta v_0,\ldots,a+\delta v_d$. Together the graph simplices, bands and inner cells fill the entire cone over $\eta$, without a missing radial interval.
+
+**Face restrictions, including collapsed bands.** A face $\theta\subset\eta$ is obtained by setting the coordinates of its omitted vertices to zero. The forms $L_i$ then use just the values at the vertices of $\theta$. The preceding no-skipping result says that the restrictions of the curved consecutive branches are either the same branch or consecutive branches on the carrier of $\theta$. The reciprocal formulas therefore give exactly the straight graph or band already constructed over $\theta$. If the two restrictions coincide, the two forms agree on this smaller cone, and the band becomes the single graph $L_i=1$; it is not an extra positive-dimensional radial band.
+
+These restrictions are faces of the larger polytopes: each equation $\beta_j=0$ is a supporting equation. Their lower and upper graphs are faces too, given by the supporting equations $L_i=1$ or $L_{i+1}=1$. There are no unexplained additional types of face. For a polytope defined by finitely many affine inequalities, take a point $z$ in the relative interior of a nonempty face $F$, and impose all defining inequalities that are equalities at $z$. They are equalities throughout $F$, because a small segment in $F$ through $z$ cannot cross any supporting hyperplane. Conversely, if $y$ in the polytope satisfies those equalities, then $z+\epsilon(z-y)$ remains in the polytope for sufficiently small $\epsilon>0$: the active equalities remain equalities, and the finitely many other inequalities remain strict. Since $z$ is an interior point of the segment joining this point to $y$, the face property forces $y\in F$. This proves the asserted active-inequality description. Applied here, it gives coordinate-face restrictions, one endpoint graph, or both endpoint graphs. The inner simplices have their usual coordinate faces and the outer face $\sum\beta_j=\delta$.
+
+**Intersections are common faces.** Cones over two base simplices meet in the cone over their common face, because every noncentral point has a unique radial base point. Reduce first to that common base face by the preceding coordinate-face restriction. On one fixed base, two radial cells with disjoint interiors can meet only at an endpoint height, or where different endpoint graphs coincide. For two ordered graph indices $p<q$,
+
+$$
+L_p(\beta)-L_q(\beta)
+=\sum_j\beta_j\left(\frac1{h_{pj}}-\frac1{h_{qj}}\right)\ge0.
+$$
+
+Equality holds exactly when $\beta_j=0$ at every vertex where $h_{pj}<h_{qj}$. Hence coincidence occurs over the face spanned by the vertices where the heights agree, and there the intersection is the common endpoint graph. If no vertices remain, the graph intersection is empty. The same calculation treats separated bands: for a lower band and an upper band, an intersection requires equality of the upper endpoint of the first and the lower endpoint of the second, followed by that endpoint equation. These are supporting equations for both cells. Adjacent bands simply share their intervening graph. Inner cells meet annular cells only at height $\delta$, with the same calculation for any extra endpoint merger. Distinct inner cones meet in their common inner face, or just at $a$ when the base faces are disjoint. Thus all intersections are common faces, including mergers visible only on lower-dimensional faces.
+
+Take all these cells and their faces. The active-inequality description and the face-restriction rule show that this is a finite polyhedral cell complex on $\sigma$. Its restriction to $\partial\sigma$ is exactly $L|_{\partial\sigma}$, since the outermost graph has height one. No additional cut of the old skeleton has been introduced by a collapsed branch.
+
+**The map and its continuity on collapsed faces.** On a band over $\eta^\circ$, put
 
 $$
 T\bigl(a+t(u-a)\bigr)
-=a+\left[
-r_i(u)+\frac{t-R_i(u)}{R_{i+1}(u)-R_i(u)}
-\bigl(r_{i+1}(u)-r_i(u)\bigr)
-\right](\tau(u)-a).
+=a+\left[r_i(u)+
+\frac{t-R_i(u)}{R_{i+1}(u)-R_i(u)}
+\bigl(r_{i+1}(u)-r_i(u)\bigr)\right](\tau(u)-a).
 $$
 
-On a straight branch use its endpoint value, and inside the inner simplex use the conical extension $a+t(u-a)\mapsto a+t(\tau(u)-a)$, including $a\mapsto a$. The annular map is strictly increasing on each radial interval. On every open annular cell it is analytic with an analytic inverse: $\tau$ and the branch functions are analytic there, radial projection is analytic on each old open face, and the radial derivative is
+On a straight graph use its endpoint value. For the inner cells use
 
 $$
-\frac{r_{i+1}(u)-r_i(u)}{R_{i+1}(u)-R_i(u)}>0.
+T\bigl(a+t(u-a)\bigr)=a+t(\tau(u)-a),\qquad 0\le t\le\delta,
 $$
 
-The maps agree on their common boundaries. If the two branches collapse on a lower face, every interpolated value lies between them, so continuity of their common limit supplies continuity there. There is no division by zero on an open annular cell. At the centre, the factor $t$ supplies continuity of the conical map. Thus $T$ is a homeomorphism of $\sigma$, agrees with $\tau$ on its boundary, and takes straight branch faces and cells between them to the prescribed analytic branches and bands.
+with $T(a)=a$. The band formula is defined on the open band: both height gaps are strictly positive there. Over a lower face where the endpoint branches remain distinct, their restrictions are consecutive and the formula is exactly the formula already assigned there. If they coincide, the straight endpoints also coincide. Every interpolated target height is between the two curved endpoint heights, so their common continuous limit forces the same target value, independently of the approaching interpolation fraction. This proves continuity at collapsed faces without dividing by a vanishing gap. Endpoint agreement proves continuity between adjacent bands and between the innermost band and the inner cell. At the centre, $|T(x)-a|\le t\max_{v\in\partial\sigma}|v-a|\to0$; also $t\to0$ as $x\to a$, since $|u-a|$ is bounded below by the positive distance from $a$ to $\partial\sigma$. There are finitely many cells, so these checks prove continuity everywhere on $\sigma$.
 
-The straight faces and the closed regions between consecutive faces form a finite polyhedral cell complex. Over a fixed base face, their defining inequalities are the linear half-space inequalities of the two branch hyperplanes inside the cone over that face. The face restriction and consecutive-or-collapsed property just proved makes intersections common faces. A barycentric subdivision turns this into a simplicial subdivision. On every open simplex the restriction of the preceding analytic cell map is an analytic embedding, hence an analytic diffeomorphism onto its image.
+For each base point, the map of its radial segment is a continuous strictly increasing piecewise affine function of height, taking $0$ to $0$ and $1$ to $1$. The base map $\tau$ is bijective. Therefore $T:\sigma\to\sigma$ is bijective. Compactness of $\sigma$ and the Hausdorff property make this continuous bijection a homeomorphism. At height one it is $\tau$, as required.
 
-The graph is subanalytic. On compact branch faces this follows from the subanalytic graph functions and $\tau$. For interpolation between two faces, take the closed subanalytic graph of the two endpoint maps over the same base ray, multiply by the compact parameter interval $[0,1]$, and apply the analytic affine interpolation map to both its input and output coordinates. Its domain is compact, so this is a proper-image argument. The conical extension has the same compact graph construction, with the centre included. This avoids assuming that arbitrary nonproper compositions or images are subanalytic.
+**Analyticity is accompanied by an immersion proof.** On an open band, the coordinates $(u,t)$ identify it with the region $R_i(u)<t<R_{i+1}(u)$ over $\eta^\circ$. On the target use $(v,s)$, with $v\in\tau(\eta^\circ)$ and $r_i(\tau^{-1}v)<s<r_{i+1}(\tau^{-1}v)$. These are analytic coordinates on the corresponding analytic submanifolds. To see the radial-coordinate assertion, the old supporting hyperplane gives $s=\ell(y-a)>0$, followed by $v=a+(y-a)/s$; thus both height and base point are recovered analytically. The map becomes
 
-Do this on each old top simplex. The maps coincide on the skeleton, so they glue. Each map preserves its old simplex setwise. Local finiteness therefore gives a global homeomorphism, subanalytic graph and locally finite subdivision, with no accumulation of new cells in a compact neighborhood. Compatibility follows from the completed graph partition and the connected-piece argument. This proves the relative polyhedron theorem. $\square$
+$$
+(u,t)\longmapsto(\tau(u),s(u,t)),\qquad
+\partial_t s=\frac{r_{i+1}(u)-r_i(u)}{R_{i+1}(u)-R_i(u)}>0.
+$$
+
+The differential of $\tau$ has rank $d$ by the induction hypothesis. The positive height derivative adds the independent radial direction, so the displayed map has rank $d+1$. More explicitly, first recover $u=\tau^{-1}(v)$, and then solve the displayed affine height equation for $t$; both operations are analytic. This supplies an analytic inverse onto its image. On an open graph the analytic parametrization is $u\mapsto a+r_i(u)(\tau(u)-a)$; its radial projection is $\tau(u)$, so its differential is injective, and its inverse is the analytic radial projection followed by $\tau^{-1}$. The same reasoning applies to open inner-cone cells with $t>0$, where the height derivative is one. The centre is a zero-dimensional cell. In particular, the conclusion does not follow merely from an analytic homeomorphism: the immersion and inverse have both been established.
+
+**A compatible simplicial subdivision.** Choose for each nonempty polyhedral face its vertex barycentre, which lies in its relative interior. Triangulate each face by coning this barycentre to the already triangulated proper faces, starting with vertices. For completeness, every ray from an interior point of a compact convex polytope meets its boundary exactly once; the resulting cones cover the polytope and meet along cones over common boundary faces. Induction on dimension therefore proves that this construction is a simplicial subdivision. Using the same barycentre for a shared face makes the subdivisions agree. Equivalently its simplices are indexed by chains of nonempty faces. The open simplex belonging to a chain lies in the relative interior of its largest face, since its barycentre occurs with positive coefficient. The restriction of the analytic cell embedding just proved is consequently an analytic embedding on every new open simplex. On the old skeleton this is simply a further subdivision of $L$; the already defined $\tau$ restricts to these smaller simplices without a change of values.
+
+**The graph has a compact subanalytic parametrization.** On each closed base simplex, the extended functions $r_i$, the rational functions $R_i$, and $\tau$ have compact subanalytic graphs. Form their joint graph by a fibre product over the same base $u$, and multiply by $[0,1]$. For consecutive endpoints apply the polynomial map
+
+$$
+(u,R_i,R_{i+1},v,r_i,r_{i+1},q)\longmapsto
+\left(a+\bigl((1-q)R_i+qR_{i+1}\bigr)(u-a),
+a+\bigl((1-q)r_i+qr_{i+1}\bigr)(v-a)\right).
+$$
+
+Here $v=\tau(u)$ on the parameter set. The domain is compact, so the [bounded image and projection calculus](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#full-global-preparation-and-the-complement-theorem) applies. The image is exactly the closed band graph of $T$, including collapsed faces: when the input endpoints coincide, the output endpoints coincide as well. The inner graph is obtained in the same way from $(u,\tau(u),t)$, $0\le t\le\delta$, by $(a+t(u-a),a+t(\tau(u)-a))$. It includes the centre. Finite unions give the subanalytic graph on $\sigma$, without an unproved nonproper-image claim.
+
+**Compatibility and global gluing.** A curved graph over an open base simplex lies in one of the recorded graph pieces. Indeed, compatibility with the projected graph domains makes each available graph have the whole base simplex as domain. Distinct heights have positive gaps at every base point, so the ordered branch's choice among these finitely many continuous graphs is locally constant. The connected base simplex makes the choice constant. It follows that the branch is contained in or disjoint from every closed obstacle. A curved open band is connected and avoids $\Gamma$, hence avoids every obstacle. An open inner cell does also. For a full-dimensional closed set $C_j$, a connected cell outside its recorded boundary lies either in its interior or in its exterior; a cell in the boundary is in $C_j$. For a lower-dimensional $C_j$, that set itself was an obstacle. The Boolean formulas for the original $A_i$ therefore show that every cell image has constant membership in every $A_i$. Further simplicial subdivision preserves this conclusion. The skeleton already has the required compatibility by induction.
+
+Perform the construction on every old top-dimensional simplex, retaining the lower-dimensional skeleton elsewhere. Their maps agree with the same $\tau$ on common faces, and the common barycentric face rule makes their subdivisions agree. Each old simplex is preserved setwise. Local finiteness gives continuity by finite closed-piece pasting near each point. The map is bijective by the simplexwise bijections and common-face agreement. It is closed as well: for a closed $F\subset|K|$, every $F\cap\sigma$ is compact, its image is closed and contained in $\sigma$, and these images form a locally finite family. Their union $T(F)$ is closed, since locally it is a finite union of closed sets. Thus the inverse is continuous. The new subdivision is locally finite, because each old compact simplex contributed finitely many cells and simplices. The graph is locally subanalytic for the same reason: near any pair of points only finitely many old source simplices occur. This proves the relative polyhedron theorem, from the exact lower inputs recorded above. $\square$
 
 ### Relative support and a continuous isotopy
 
-The construction can preserve a region that already needs no change. Let $L$ be a subcomplex of $K$, and suppose every old open simplex outside $L$ is already compatible with the family. All interior membership obstacles then lie in $|L|$. Their projected data stay in $|L|$, since every face of a simplex of $L$ belongs to $L$. Inductively retain the old simplices disjoint from $|L|$ and use the identity there. On a top simplex outside $L$, the only remaining operation is conical extension of its already chosen boundary map. It is the identity when that closed simplex is disjoint from $|L|$. Thus the final subdivision retains those disjoint simplices and $T$ fixes them pointwise. This is the relative support refinement, not a claim that the map must fix every simplex merely absent from $L$.
-
-There is also a subanalytic isotopy from the identity to $T$, preserving every old simplex setwise and stationary on those unchanged regions. Prove it with the same skeleton induction. Suppose $\tau_s$, $0\le s\le1$, is the boundary isotopy. On an old top simplex let $C_{\tau_s}$ be its conical extension. Put $D=C_{\tau_1}^{-1}T$. This is an increasing homeomorphism on each radial fibre, fixes the outer boundary, and has the form
+**The part that must remain unchanged.** Let $L$ be a subcomplex of the original complex $K$. Suppose every old open simplex not belonging to $L$ is already contained in or disjoint from each member of the given family. Let
 
 $$
-D(a+t(u-a))=a+q(u,t)(u-a).
+U=\{\sigma\in K:\sigma\cap|L|=\varnothing\}.
 $$
 
-Interpolate its radial coordinate by $q_s(u,t)=(1-s)t+s\,q(u,t)$. Both summands are increasing, so $q_s$ is strictly increasing, has the same endpoints and gives a fibre homeomorphism $D_s$. Define $T_s=C_{\tau_s}D_s$. Then $T_0=\mathrm{id}$, $T_1=T$, and its boundary restriction is $\tau_s$. The formulas are continuous, including collapsed face intervals and the centre by the endpoint arguments above. On the compact old simplex, a continuous family of these bijections has a continuous family of inverses: the map $(x,s)\mapsto(T_s(x),s)$ is a continuous bijection from a compact space to a Hausdorff space. Its graph is subanalytic by the same compact interpolation constructions. Local finiteness glues the family over all old simplices. This proves the asserted subanalytic isotopy; no global analyticity across cells is implied.
+This is a subcomplex: every face of a simplex disjoint from $|L|$ is disjoint from $|L|$ too. Both subcomplexes are locally finite. We prove the relative refinement with the additional requirements that every simplex of $U$ remains an unsubdivided simplex and that $T|_{|U|}=\operatorname{id}$. This does not assert that $T$ fixes every simplex absent from $L$: a simplex adjacent to $|L|$ may have to extend a nonidentity map on one of its faces.
+
+**Subdivision relative to fixed simplices.** We need a precise variant of the face-coning construction above. Let $\mathcal P$ be a locally finite polyhedral cell complex and let $V$ be a subcomplex whose cells are already simplices. There is a simplicial subdivision of $\mathcal P$ leaving every simplex of $V$ unchanged. Construct it in increasing cell dimension. If $P\in V$, retain $P$; its faces have been retained because $V$ is a subcomplex. If $P\notin V$, its boundary already has a compatible simplicial subdivision. Choose $b_P\in\operatorname{relint}P$ and take the cones from $b_P$ to those boundary simplices. A ray from $b_P$ meets the boundary once, so these cones cover $P$ and meet in common faces. Each cone is a simplex, since its boundary simplex lies in a supporting hyperplane that does not contain $b_P$. The construction agrees on shared faces because they were handled once at the earlier dimension.
+
+Each original cell has finitely many faces and produces finitely many simplices. Local finiteness is therefore preserved. Every new open simplex is either the interior of an unchanged simplex of $V$, or lies in the relative interior of the largest original cell used to construct it. In the latter case its vertices include $b_P$ for that cell. Indeed, positive barycentric weight at an interior point, combined with points of a convex cell, lies in its relative interior. This also proves that an analytic cell embedding restricts to an analytic embedding on each new open simplex. When applied to a simplicial complex, with $b_P$ the vertex barycentre, the construction is a barycentric subdivision relative to $V$, not an indiscriminate subdivision of all simplices.
+
+**The relative induction.** Strengthen the preceding induction on $\dim K$ to retain $U$. The zero-dimensional assertion uses the identity. In the next dimension, the data requiring a change in the interior of an old simplex occur only in simplices of $L$. Their compact completions are clipped to that simplex, and their projected boundary data remain in $|L|$, because $L$ contains all its faces. On old open simplices outside $L$, the existing constant-membership property requires no additional interior obstacles. Apply the strengthened induction to the skeleton with this restricted family of new data, as well as the original family. It gives $\tau$, with the required compatibility, and a skeleton subdivision retaining all simplices of $U$ there.
+
+Subdivide that skeleton relative to $U$, by the construction just proved. On the boundary of an old simplex belonging to $L$, no face meets $|U|$. Thus the relative subdivision there is the ordinary barycentric construction, with the carrier-barycentre vertex needed for strict reciprocal branch inequalities. The branch and band construction on such a simplex applies without change.
+
+On a top-dimensional old simplex outside $L$ but meeting $|L|$, no branch construction is necessary. Cone its subdivided boundary from an interior point $a$, and extend $\tau$ conically. Every new open cone simplex lies in the old open simplex, which already has constant membership in the original family. The conical map is an analytic embedding on each such open simplex by the radial-coordinate and immersion proof above. On a simplex in $U$, instead retain the old simplex and the identity map: do not insert a centre, a radial cut or any new vertex. Its boundary already has precisely these identity values and unchanged simplices.
+
+The resulting polyhedral cells agree on their common boundary subdivision. Include the retained simplices of $U$ as cells, and apply the final face-coning subdivision **relative to $U$**. This preserves them literally, while the analytic-embedding argument applies to all the newly subdivided cells. Consequently the final $K'$ and $T$ have the asserted relative support. Subdividing every cell at this last step would not prove that assertion; the relative choice is essential.
+
+**The boundary isotopy and its cone.** Simultaneously with this induction we construct a subanalytic isotopy. Here that means a jointly continuous map
+
+$$
+\mathcal T:|K|\times[0,1]\longrightarrow |K|,
+\qquad \mathcal T(x,s)=T_s(x),
+$$
+
+whose graph is subanalytic, such that $(x,s)\mapsto(T_s(x),s)$ is a homeomorphism of $|K|\times[0,1]$, $T_0=\operatorname{id}$, $T_1=T$, every $T_s$ preserves every old simplex setwise, and $T_s|_{|U|}=\operatorname{id}$. No joint analyticity across cells, or compatibility with the original family at every intermediate time, is asserted.
+
+Suppose the skeleton isotopy $\tau_s$ has already been constructed. On one old top simplex, its restriction to the boundary is a jointly continuous family of homeomorphisms of $\partial\sigma$. For an interior centre $a$, write a noncentral point uniquely as $a+t(u-a)$, $u\in\partial\sigma$, $0<t\le1$, and put
+
+$$
+C_s(a+t(u-a))=a+t(\tau_s(u)-a),\qquad C_s(a)=a.
+$$
+
+These formulas are jointly continuous away from the centre. Set
+
+$$
+r=\min_{u\in\partial\sigma}|u-a|>0,
+\qquad R=\max_{u\in\partial\sigma}|u-a|<\infty.
+$$
+
+Then $t\le |x-a|/r$ and $|C_s(x)-a|\le tR$, uniformly in $s$. This proves joint continuity at the centre as well. Each $C_s$ is a homeomorphism, with the same formula using $\tau_s^{-1}$ for its inverse. Since the closed simplex and time interval are compact, the continuous bijection $(x,s)\mapsto(C_s(x),s)$ is a homeomorphism; in particular the inverse family is jointly continuous.
+
+**A continuous radial coordinate, including height zero.** Set $D=C_1^{-1}\circ T$. The constructed $T$ and $C_1$ have the same boundary base map, so $D$ preserves every radial segment and has the form
+
+$$
+D(a+t(u-a))=a+q(u,t)(u-a),\qquad q(u,0)=0.
+$$
+
+For each fixed $u$, the function $q(u,\cdot)$ is a strictly increasing homeomorphism of $[0,1]$, with endpoints zero and one. This follows from the consecutive positive-height branch interpolation, or from the identity radial coordinate in a purely conical cell. The scalar function is jointly continuous even at height zero: it is given throughout by
+
+$$
+q(u,t)=\frac{|D(a+t(u-a))-a|}{|u-a|},
+$$
+
+whose denominator is at least $r>0$. Compactness of $\partial\sigma$ therefore gives $q(u,t)\to0$ uniformly in $u$ as $t\to0$.
+
+Define
+
+$$
+q_s(u,t)=(1-s)t+s\,q(u,t),\qquad
+D_s(a+t(u-a))=a+q_s(u,t)(u-a),
+\qquad D_s(a)=a.
+$$
+
+For $t_1<t_2$,
+
+$$
+q_s(u,t_2)-q_s(u,t_1)
+=(1-s)(t_2-t_1)+s\bigl(q(u,t_2)-q(u,t_1)\bigr)>0.
+$$
+
+Thus each interpolated radial function remains strictly increasing, including at $s=0$ and $s=1$, and retains both endpoints. It is a homeomorphism of the interval. Joint continuity of $D_s$ at $a$ follows from $0\le q_s(u,t)\le t+q(u,t)$ and the uniform limit just proved. Away from $a$, it follows from the radial coordinates. Hence $D_s$ is a jointly continuous family of fibre-preserving homeomorphisms, fixing the entire outer boundary.
+
+**The isotopy and its fixed part.** Put $T_s=C_s\circ D_s$. Then $T_0=\operatorname{id}$, $T_1=T$, and $T_s|_{\partial\sigma}=\tau_s$. Joint continuity and bijectivity on each time slice have been proved. The map $(x,s)\mapsto(T_s(x),s)$ on the compact product $\sigma\times[0,1]$ is again a continuous bijection onto a Hausdorff space, so its inverse is continuous. On a top simplex outside $L$ treated purely conically, $T=C_1$, hence $D=D_s=\operatorname{id}$ and $T_s=C_s$. On every retained simplex of $U$, the boundary isotopy is the identity and the chosen terminal map is the identity, so the whole isotopy is the identity. Thus stationarity is established for every time, not inferred merely from its endpoints.
+
+**Subanalyticity of the joint graph.** All the necessary images can be formed from compact graphs. Over this closed simplex, the graph of $(u,s)\mapsto\tau_s(u)$ is compact and subanalytic by induction. Multiply it by $t\in[0,1]$, and apply
+
+$$
+(u,s,v,t)\longmapsto
+\bigl(a+t(u-a),s,a+t(v-a)\bigr).
+$$
+
+This is the graph of the cone family, including the centre. The map on the parameter space is polynomial, so the [compact image and projection calculus](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#full-global-preparation-and-the-complement-theorem) applies. The graph of $D=C_1^{-1}T$ is obtained from the compact fibre product of the graphs of $T$ and $C_1$, equating their output coordinates and projecting onto the two input coordinates. To obtain the graph of $q$, take $u\in\partial\sigma$, $t,q\in[0,1]$, and impose
+
+$$
+\bigl(a+t(u-a),\ a+q(u-a)\bigr)\in\operatorname{graph}(D).
+$$
+
+This is a compact subanalytic set. The uniqueness of the radial coordinate says that it is exactly the graph of $q(u,t)$, also when $t=0$. Polynomial interpolation with the additional parameter $s$ now gives the graph of $D_s$. A final compact fibre product with the cone-family graph, over the same time parameter, gives the joint graph of $T_s$. None of these steps uses an unrestricted nonproper-image or composition assertion.
+
+**Gluing the entire family.** On a common old face, both adjacent constructions restrict to the prescribed skeleton family $\tau_s$. Thus they agree for all $s$. Local finiteness of the old simplices gives local finiteness of their products with $[0,1]$; on each compact product the family map is already a homeomorphism. Finite closed-piece pasting locally gives global joint continuity. The global family map is bijective, and it is closed: the image of a closed set restricted to any $\sigma\times[0,1]$ is compact, hence closed, remains within that same product, and these images form a locally finite family. Their union is closed. Its inverse is therefore continuous. The graph is locally a finite union of the subanalytic graphs just constructed. This proves the claimed subanalytic isotopy, with every old simplex preserved setwise and all of $|U|$ fixed throughout. $\square$
 
 <img src="figures/radial-triangulation-lift.svg" alt="Straight radial faces and their analytic target branches" style="display:block;width:100%;max-width:680px;height:auto;margin:1rem auto;">
 
@@ -879,6 +1296,8 @@ The relative polyhedron theorem above concerns a closed linear polyhedron in Euc
 
 The construction follows the finite-colour and proper-normalization mechanism in [Marja Kankaanrinta, *A subanalytic triangulation theorem for real analytic orbifolds*, §§5–6](https://arxiv.org/abs/1105.0209). In the manifold case ordinary analytic chart coordinates replace the invariant maps needed for an orbifold. The finite-colour covering and continuously differentiable cutoff lemmas proved above are the topological and function-theoretic ingredients. The relative polyhedron theorem retains its stated lower subanalytic prerequisites; this globalization argument does not supply uniformization or a resolution algorithm.
 
+The cover supplied by the [finite-colour proof](#finite-colour-refinement-for-a-manifold), specifically (F1) and (F22), has compact closures in assigned analytic charts. Its members need not be subanalytic, and only same-colour open sets, not their closures, are asserted disjoint. This is sufficient: the [cutoff proof](#finite-regularity-subanalytic-cutoffs-on-arbitrary-analytic-manifolds), statements 1 and 3 and (C13)–(C18), accepts arbitrary open cover members. Use it with $r=1$. It supplies locally finite compact supports, closed-set plateaus, controlled zero extensions and actual chart coordinates on the plateau. The [relative polyhedron construction](#how-a-compatible-triangulation-is-assembled) supplies an analytic embedding on every open simplex, not merely an analytic homeomorphism. These are the precise input conclusions used in the following steps.
+
 #### A finite-coordinate embedding with locally recoverable charts
 
 Choose a countable locally finite refinement $O_{j\beta}$ of a relatively compact analytic chart cover, where $1\leq j\leq k=n+1$, $\beta$ is a positive integer, and distinct sets of the same colour are disjoint. The closure of each member stays in its assigned chart. Repeated shrinking of this locally finite cover gives three open covers with the same indices and
@@ -913,7 +1332,7 @@ h'_j(x)f_j(x),&x\in O_j,\\
 \end{cases}
 $$
 
-Each $f_j$ is analytic on its open domain. At a point outside $O_j$, local finiteness and $\overline{Y_{j\beta}}\subset O_{j\beta}$ give a neighborhood meeting none of the relevant supports. Thus zero extension makes $b_j$ a $C^1$, locally subanalytic map on all of $M$. Although the integer labels and chart coordinates need not be bounded globally, only finitely many labelled chart pieces occur near any point. This is precisely the local assertion required for these operations.
+Each colour block has controlled support. The function $f_j$ is analytic on the disjoint open union $O_j$: near any point of its domain, it is the one assigned chart map with its fixed integer label. On $O_j$, the product $h'_j f_j$ is $C^1$ and locally subanalytic. The closure in $M$ of its nonzero set is contained in $\operatorname{supp}_M h'_j\subset Y_j\subset O_j$. Therefore controlled zero extension (G6) in the [cutoff proof](#finite-regularity-subanalytic-cutoffs-on-arbitrary-analytic-manifolds) applies exactly. At every point outside $O_j$, a neighbourhood misses that closed support and the extension is identically zero. This proves that $b_j$ is $C^1$ and locally subanalytic on all of $M$, without requiring the labels or chart coordinates to be bounded globally. The locally finite cover still ensures that only finitely many labelled pieces occur near each point.
 
 Set $q=k(n+2)$, and define
 
@@ -938,7 +1357,7 @@ $$
 F(x)=\frac{(F_0(x),1)}{\lambda(x)}\in\mathbb R^{q+1}.
 $$
 
-The sum is finite near every point. It follows that $\lambda$ is $C^1$, locally subanalytic and strictly positive, with $\lambda\leq1/2$. Coordinate ratios recover $F_0$ from $F$, so $F$ remains a $C^1$ topological embedding and an immersion.
+The sum is finite near every point. It follows that $\lambda$ is $C^1$, locally subanalytic and strictly positive, with $\lambda\le1/2$. On the open half-space with last coordinate $s>0$, the ratio map $R(z,s)=z/s$ is analytic and satisfies $R\circ F=F_0$. Thus injectivity of $F_0$ implies injectivity of $F$, and $F_0^{-1}\circ R$ is its continuous inverse on its image. Moreover, $dF_0=dR\circ dF$; since $dF_0$ is injective, $dF$ is injective. This proves that $F$ is a $C^1$ embedding and immersion. It does not assert that $F$ is globally analytic.
 
 For $\epsilon>0$, choose $N$ with $2^{-(N+1)}<\epsilon$. Outside $\bigcup_{i=1}^N\operatorname{supp}\lambda_i$,
 
@@ -953,6 +1372,8 @@ Thus $\{\lambda\geq\epsilon\}$ is a closed subset of a finite union of compact s
 A proper map from a locally compact space to Euclidean space is closed here: if $F(x_m)$ converges, the sequence lies in a compact Euclidean set, its inverse image is compact, and a convergent subsequence has the required image limit. Therefore $Z=F(M)$ is closed.
 
 #### The proper-image calculus needed in this construction
+
+The exact earlier inputs are [bounded local-to-global comparison](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#local-subanalytic-sets-and-bounded-charts) and [finite Boolean operations and bounded projection](../analytic-finiteness-and-preparation/analytic-finiteness-for-preparation.html#full-global-preparation-and-the-complement-theorem) in the analytic preparation reading.
 
 We give the bounded local argument rather than infer global definability from the existence of an atlas. Let $P:M\to\mathbb R^r$ be continuous, proper and locally subanalytic, and let $A\subset M$ be locally subanalytic. Fix a target point $y$ and $\rho>0$. The set
 
@@ -1025,6 +1446,8 @@ $$
 $$
 
 The left side equals $\dim\sigma$ by the relative polyhedron theorem. Thus both inequalities are equalities. The analytic constant-rank theorem gives local analytic immersion charts. Since $t$ is a homeomorphism on the entire support, its restriction is a homeomorphism onto its image with the subspace topology. Consequently the image is an analytic embedded submanifold and the restriction is an analytic diffeomorphism onto it. In particular no simplex has dimension greater than $n$.
+
+The chain-rule equality holds at every point of the open simplex. Hence the rank is constant there, equal to its dimension, and meets the neighbourhood hypothesis of the linked analytic constant-rank theorem (LAF3–LAF4). The theorem's concluding embedding assertion additionally requires the homeomorphism onto the image; that is supplied by the already constructed global $t$. No isolated rank calculation or globally analytic cutoff embedding is substituted for these two hypotheses.
 
 We have proved the arbitrary-manifold triangulation statement from the displayed lower prerequisites, with no analytic embedding theorem for $M$ and no global analyticity assertion for the cutoff construction. The $C^1$ regularity was used only in the chain-rule rank argument; finite-colour chart blocks supplied the analyticity of each transported simplex. $\square$
 

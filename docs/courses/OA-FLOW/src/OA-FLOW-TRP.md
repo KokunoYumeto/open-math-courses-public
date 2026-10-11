@@ -2,7 +2,7 @@
 
 *Original exposition, proofs, models, solved problems and figure sources: CC0-1.0. Existing mathematical sources, fonts and software retain their own terms.*
 
-**Self-checked by the writing AI.**
+
 
 A Fourier coefficient can detect whether a symmetry of a crossed product is inner. The detection works because a nonzero coefficient is an intertwiner in the original factor. We construct the Hilbert space, both multiplication actions, its trace and its coefficient maps before using that mechanism. We then build an action with a prescribed characteristic pair and prove its entire inner kernel. Finite normal subgroups give an explicit AFD branch. For the same regular construction an invariant-mean argument explains the obstruction from a nonamenable subgroup.
 

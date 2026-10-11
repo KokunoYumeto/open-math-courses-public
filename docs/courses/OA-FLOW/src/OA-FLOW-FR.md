@@ -7,7 +7,7 @@ A weight on a crossed product can be tested for dual invariance without first kn
 
 This is a consequence of the whole dual-action average, the locally proved normalized comparison of two dual weights, and the unitary modular-cocycle realization theorem. There is no separability, second-countability, sigma-compactness, or finite-state hypothesis. We first supply the existence of a reference weight on an arbitrary algebra, so choosing that reference is part of the proof.
 
-*Self-checked by the writing AI. Original exposition and illustration: CC0-1.0.*
+*Original exposition and illustration: CC0-1.0.*
 
 <a id="fr-1"></a>
 

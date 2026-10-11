@@ -2,7 +2,7 @@
 
 # A normal crossed product as a fixed algebra
 
-*Independent reconciliation, GPT-6 Astra (OpenAI), Ultra, 2026-10-05. New exposition and the finite example are CC0-1.0 to the extent of rights held.*
+*New exposition and the finite example are CC0-1.0 to the extent of rights held.*
 
 Let \(G\) be an arbitrary locally compact Hausdorff group, \(M\) a von Neumann algebra, and \(\alpha:G\to\operatorname{Aut}(M)\) a point-ultraweakly continuous action by normal automorphisms. Write \(L=L^2(G)\), with left Haar convention
 

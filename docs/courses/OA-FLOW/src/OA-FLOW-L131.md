@@ -1,6 +1,6 @@
 # Operator spaces and endomorphisms from internal Hilbert spaces
 
-*Self-checked by the writing AI.*
+
 
 Let \(M\subseteq B(H)\) be a faithful normal unital representation of a nonzero von Neumann algebra. An internal Hilbert space \(K\subseteq M\) is a norm-closed complex linear subspace for which
 \[

@@ -1,0 +1,514 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Two cohomology degrees, Ext classes and polynomial models</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="two-cohomology-degrees-ext-classes-and-polynomial-models">Two cohomology degrees, Ext classes and polynomial models</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>Two complexes can have isomorphic cohomology objects without being isomorphic in the derived category. When only two cohomology degrees are possible, one precise Ext class records the missing information. It also determines which pairs of cohomology maps come from derived morphisms. Compatible pairs always lift, but a second Ext group measures the possible choices of lift.</p>
+<p>We prove these assertions in an arbitrary abelian category. We then compute a complete example over a polynomial ring in two variables with any commutative base ring. The construction provides explicit complexes for every class, explicit maps between them, and a classification that retains the zero class when cohomology identifications are forgotten.</p>
+<h2 id="conventions-and-prerequisites">Conventions and prerequisites</h2>
+<p>Fix an ambient universe containing the complexes, localization and Hom groups being used. All rings are commutative and unital unless another convention is stated. We allow the zero ring. Complexes are cohomological:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+X[r]^n=X^{n+r},\qquad d_{X[r]}^n=(-1)^r d_X^{n+r}.
+\]">\[
+X[r]^n=X^{n+r},\qquad d_{X[r]}^n=(-1)^r d_X^{n+r}.
+\]</span>
+<p>For a chain map <span class="math" data-tex="\(f:U\to V\)">\(f:U\to V\)</span>, the cone is target first,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+C(f)^n=V^n\oplus U^{n+1},\qquad
+d(v,u)=(d_Vv+fu,-d_Uu),
+\]">\[
+C(f)^n=V^n\oplus U^{n+1},\qquad
+d(v,u)=(d_Vv+fu,-d_Uu),
+\]</span>
+<p>and its distinguished triangle has positive last projection:
+<span class="math" data-tex="\(U\to V\to C(f)\to U[1]\)">\(U\to V\to C(f)\to U[1]\)</span>. Translation of a distinguished triangle by <span class="math" data-tex="\(r\)">\(r\)</span> leaves the shifted first two arrows unchanged and multiplies its shifted last arrow by <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span>.</p>
+<p>We use these complete course proofs:</p>
+<ul>
+<li><a href="cohomological-bounds-denominators-and-truncation-adjunctions.html">Cohomological bounds and truncation adjunctions</a>, Sections 1 and 3–5, proves cohomology detection of isomorphisms, heart full faithfulness, orthogonality, bounded embeddings and the natural truncation triangles on every derived arrow.</li>
+<li><a href="triangles-after-quasi-isomorphism-localization.html">Triangles after localization</a>, Sections 2–4 and 6, proves exact Hom sequences, the morphism axiom with arbitrary derived first arrows, signed rotations and short-exact-row triangles.</li>
+<li><a href="hereditary-categories-and-cohomology-splittings.html">Projective complexes compute derived Hom</a>, Lemma 3.1, proves the actual Hom comparison for a bounded-above projective complex. Its Section 1 also proves the vector-space Ext vanishing used in Exercise 1.</li>
+<li><a href="higher-extensions-roofs-and-yoneda-composition.html">Higher extensions and their normalization</a>, Sections 1–2, fixes the sign of the augmented extension roof and the normalized Yoneda class.</li>
+<li><a href="functorial-cones-and-derived-connecting-maps.html">Functorial cones and derived connecting maps</a>, Sections 2 and 4, proves the signed cone-to-quotient and translation comparisons. We use the same convention here.</li>
+</ul>
+<p>Freely accessible references are <a href="https://stacks.math.columbia.edu/tag/0118">Stacks, truncation of complexes</a>, <a href="https://stacks.math.columbia.edu/tag/06XP">Stacks, Ext groups</a>, and <a href="https://stacks.math.columbia.edu/tag/062D">Stacks, Koszul regular sequences</a>. The polynomial resolution below is proved directly, including its signs and exactness over a base ring with zero divisors.</p>
+<p>Write <span class="math" data-tex="\(D=D(\mathcal A)\)">\(D=D(\mathcal A)\)</span> for the derived category of an abelian category <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^n(A,B)=\operatorname{Hom}_D(A[0],B[n]).
+\tag{1}
+\]">\[
+\operatorname{Ext}^n(A,B)=\operatorname{Hom}_D(A[0],B[n]).
+\tag{1}
+\]</span>
+<p>Negative Ext vanishes and degree-zero Ext is ordinary Hom, by the first prerequisite. None of the general results in Sections 1–5 assumes enough injectives or enough projectives.</p>
+<h2 id="1-the-canonical-class-and-its-precise-degree">1. The canonical class and its precise degree</h2>
+<p>Fix integers <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>. Suppose <span class="math" data-tex="\(H^nX=0\)">\(H^nX=0\)</span> for <span class="math" data-tex="\(n\notin\{a,b\}\)">\(n\notin\{a,b\}\)</span>. Either of the two allowed cohomology objects may also be zero. Put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+A_X=H^aX,\quad B_X=H^bX,\quad
+U_X=A_X[-a],\quad V_X=B_X[-b].
+\]">\[
+A_X=H^aX,\quad B_X=H^bX,\quad
+U_X=A_X[-a],\quad V_X=B_X[-b].
+\]</span>
+<p>The natural truncation triangle at <span class="math" data-tex="\(a\)">\(a\)</span> is
+<span class="math" data-tex="\(\tau_{\le a}X\to X\to\tau_{\ge a+1}X\to\tau_{\le a}X[1]\)">\(\tau_{\le a}X\to X\to\tau_{\ge a+1}X\to\tau_{\le a}X[1]\)</span>.
+Its first vertex has cohomology only in degree <span class="math" data-tex="\(a\)">\(a\)</span>, and its third vertex only in degree <span class="math" data-tex="\(b\)">\(b\)</span>. The single-degree equivalence proved by smart truncation identifies them naturally with <span class="math" data-tex="\(U_X\)">\(U_X\)</span> and <span class="math" data-tex="\(V_X\)">\(V_X\)</span>, using their actual cohomology identifications. We therefore obtain a specified natural triangle</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2); horizontal scroll when needed" data-tex="\[
+U_X\xrightarrow{i_X}X\xrightarrow{p_X}V_X
+\xrightarrow{\kappa_X}U_X[1].
+\tag{2}
+\]">\[
+U_X\xrightarrow{i_X}X\xrightarrow{p_X}V_X
+\xrightarrow{\kappa_X}U_X[1].
+\tag{2}
+\]</span>
+<p>The maps <span class="math" data-tex="\(H^a(i_X)\)">\(H^a(i_X)\)</span> and <span class="math" data-tex="\(H^b(p_X)\)">\(H^b(p_X)\)</span> are identities under those identifications. Translate the last arrow by <span class="math" data-tex="\(b\)">\(b\)</span> to identify its group as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_D(V_X,U_X[1])
+=\operatorname{Hom}_D(B_X,A_X[b-a+1])
+=\operatorname{Ext}^{b-a+1}(B_X,A_X).
+\tag{3}
+\]">\[
+\operatorname{Hom}_D(V_X,U_X[1])
+=\operatorname{Hom}_D(B_X,A_X[b-a+1])
+=\operatorname{Ext}^{b-a+1}(B_X,A_X).
+\tag{3}
+\]</span>
+<p>We call <span class="math" data-tex="\(\kappa_X\)">\(\kappa_X\)</span>, with the identification (3), the two-degree class of <span class="math" data-tex="\(X\)">\(X\)</span>. In particular adjacent degrees give an Ext group in degree two, not degree one.</p>
+<p>For clarity, the single-degree identifications used here are natural derived identifications rather than chosen splittings of cycles. A complex with cohomology only in degree <span class="math" data-tex="\(a\)">\(a\)</span> has a canonical truncation zigzag to <span class="math" data-tex="\(H^a[-a]\)">\(H^a[-a]\)</span>; all its maps are quasi-isomorphisms. The zigzag is natural before localization, so it is natural on chain maps and inverse quasi-isomorphisms, and hence on all derived arrows. This is the single-degree construction in Section 3 of the first prerequisite.</p>
+<p>The same prerequisite gives two further formulas we will repeatedly use. If source cohomology ends at <span class="math" data-tex="\(c\)">\(c\)</span> and target cohomology starts at <span class="math" data-tex="\(c\)">\(c\)</span>, then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_D(Z,W)
+\simeq\operatorname{Hom}_{\mathcal A}(H^cZ,H^cW).
+\tag{4}
+\]">\[
+\operatorname{Hom}_D(Z,W)
+\simeq\operatorname{Hom}_{\mathcal A}(H^cZ,H^cW).
+\tag{4}
+\]</span>
+<p>If the source ends at <span class="math" data-tex="\(c\)">\(c\)</span> and the target starts at <span class="math" data-tex="\(c+1\)">\(c+1\)</span>, that Hom group is zero. These statements are proved by bounded denominator representatives and their equality tests, so they control the actual derived maps as well as their existence. Every object considered here is in the fully embedded <span class="math" data-tex="\(D^b(\mathcal A)\)">\(D^b(\mathcal A)\)</span>, since its cohomology has a finite bound, even if its initially chosen complex is unbounded.</p>
+<h2 id="2-naturality-translation-and-the-splitting-test">2. Naturality, translation and the splitting test</h2>
+<p>For a derived morphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> between objects with these same two possible degrees, put
+<span class="math" data-tex="\(\alpha=H^a(f)\)">\(\alpha=H^a(f)\)</span> and <span class="math" data-tex="\(\beta=H^b(f)\)">\(\beta=H^b(f)\)</span>. Naturality of the complete truncation triangle gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5); horizontal scroll when needed" data-tex="\[
+fi_X=i_Y\alpha[-a],\qquad
+p_Yf=\beta[-b]p_X,\qquad
+\kappa_Y\beta[-b]=\alpha[1-a]\kappa_X.
+\tag{5}
+\]">\[
+fi_X=i_Y\alpha[-a],\qquad
+p_Yf=\beta[-b]p_X,\qquad
+\kappa_Y\beta[-b]=\alpha[1-a]\kappa_X.
+\tag{5}
+\]</span>
+<p>Under (3), its last identity says that pushing <span class="math" data-tex="\(\kappa_X\)">\(\kappa_X\)</span> forward along <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> equals pulling <span class="math" data-tex="\(\kappa_Y\)">\(\kappa_Y\)</span> back along <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. This applies to every derived morphism, not only maps on a chosen complex.</p>
+<p><strong>Proposition 2.1.</strong> Under the standard cohomology identifications for a shift, the class of <span class="math" data-tex="\(X[r]\)">\(X[r]\)</span>, whose allowed degrees are <span class="math" data-tex="\(a-r,b-r\)">\(a-r,b-r\)</span>, is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6); horizontal scroll when needed" data-tex="\[
+\kappa_{X[r]}=(-1)^r\kappa_X[r].
+\tag{6}
+\]">\[
+\kappa_{X[r]}=(-1)^r\kappa_X[r].
+\tag{6}
+\]</span>
+<p>After translating to the Ext group in (3), its coordinate is <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span> times the coordinate of <span class="math" data-tex="\(\kappa_X\)">\(\kappa_X\)</span>.</p>
+<p><strong>Proof.</strong> The kernel and quotient defining smart truncation commute with translation, with the cutoff translated by the same integer. Their first two structural maps commute with the standard termwise shift identifications. For one shift, the isomorphism from the cone of the shifted inclusion to the shifted cone is <span class="math" data-tex="\((v,u)\mapsto(v,-u)\)">\((v,u)\mapsto(v,-u)\)</span>. It commutes with the inclusion and with the cone-to-quotient map, but changes the positive last projection by a minus sign. Thus the canonical short-row boundary in the shifted truncation triangle is <span class="math" data-tex="\(-\kappa_X[1]\)">\(-\kappa_X[1]\)</span>. This is also the explicit quotient comparison in the fifth prerequisite, Section 4. Iterating gives (6) for positive shifts. Solving the same identity for the inverse shift gives it for negative shifts, and the zero shift is the identity. The Ext identification translates by <span class="math" data-tex="\(b-r\)">\(b-r\)</span>; together with the preceding shift by <span class="math" data-tex="\(r\)">\(r\)</span> this is translation by <span class="math" data-tex="\(b\)">\(b\)</span>, so no further sign enters that identification. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> The following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(\kappa_X=0\)">\(\kappa_X=0\)</span>.</li>
+<li>There is a section <span class="math" data-tex="\(s:V_X\to X\)">\(s:V_X\to X\)</span> of <span class="math" data-tex="\(p_X\)">\(p_X\)</span>.</li>
+<li>There is an isomorphism <span class="math" data-tex="\(U_X\oplus V_X\to X\)">\(U_X\oplus V_X\to X\)</span> inducing the specified identity maps on both cohomology objects.</li>
+<li>The object <span class="math" data-tex="\(X\)">\(X\)</span> is isomorphic to <span class="math" data-tex="\(U_X\oplus V_X\)">\(U_X\oplus V_X\)</span>, even without specifying the cohomology identifications.</li>
+</ol>
+<p><strong>Proof.</strong> Apply <span class="math" data-tex="\(\operatorname{Hom}_D(V_X,-)\)">\(\operatorname{Hom}_D(V_X,-)\)</span> to (2). Its exact sequence includes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_D(V_X,X)\longrightarrow
+\operatorname{Hom}_D(V_X,V_X)\xrightarrow{\kappa_X\circ-}
+\operatorname{Hom}_D(V_X,U_X[1]).
+\]">\[
+\operatorname{Hom}_D(V_X,X)\longrightarrow
+\operatorname{Hom}_D(V_X,V_X)\xrightarrow{\kappa_X\circ-}
+\operatorname{Hom}_D(V_X,U_X[1]).
+\]</span>
+<p>The identity of <span class="math" data-tex="\(V_X\)">\(V_X\)</span> lifts precisely when <span class="math" data-tex="\(\kappa_X=0\)">\(\kappa_X=0\)</span>, proving the equivalence of 1 and 2. Such a section gives <span class="math" data-tex="\((i_X,s):U_X\oplus V_X\to X\)">\((i_X,s):U_X\oplus V_X\to X\)</span>. On degree <span class="math" data-tex="\(a\)">\(a\)</span> this is the identity through <span class="math" data-tex="\(i_X\)">\(i_X\)</span>; on degree <span class="math" data-tex="\(b\)">\(b\)</span> it is the identity because <span class="math" data-tex="\(p_Xs=1\)">\(p_Xs=1\)</span>. All other cohomology objects vanish. Cohomology detection of isomorphisms makes this arrow invertible, proving 3. Condition 3 implies 4.</p>
+<p>The split object <span class="math" data-tex="\(U_X\oplus V_X\)">\(U_X\oplus V_X\)</span> has class zero: its projection onto <span class="math" data-tex="\(V_X\)">\(V_X\)</span> has a section, and consecutive arrows of a distinguished triangle compose to zero, so its last arrow vanishes. If it is isomorphic to <span class="math" data-tex="\(X\)">\(X\)</span>, naturality (5), with invertible endpoint cohomology maps, forces <span class="math" data-tex="\(\kappa_X=0\)">\(\kappa_X=0\)</span>. Thus 4 implies 1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem asserts existence of a splitting. It does not choose one naturally; Section 4 identifies its possible ambiguity.</p>
+<h2 id="3-every-compatible-pair-lifts-with-both-prescribed-endpoints">3. Every compatible pair lifts with both prescribed endpoints</h2>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> have cohomology only in the allowed degrees <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>. For arbitrary maps
+<span class="math" data-tex="\(\alpha:A_X\to A_Y\)">\(\alpha:A_X\to A_Y\)</span>, <span class="math" data-tex="\(\beta:B_X\to B_Y\)">\(\beta:B_X\to B_Y\)</span>, there is a derived morphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> with exactly these two cohomology maps if and only if</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7); horizontal scroll when needed" data-tex="\[
+\alpha[1-a]\kappa_X=\kappa_Y\beta[-b].
+\tag{7}
+\]">\[
+\alpha[1-a]\kappa_X=\kappa_Y\beta[-b].
+\tag{7}
+\]</span>
+<p><strong>Proof.</strong> Necessity is (5). For sufficiency, rotate the two triangles (2) twice. They become</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+V_X\xrightarrow{\kappa_X}U_X[1]
+\xrightarrow{-i_X[1]}X[1]\xrightarrow{-p_X[1]}V_X[1]
+\]">\[
+V_X\xrightarrow{\kappa_X}U_X[1]
+\xrightarrow{-i_X[1]}X[1]\xrightarrow{-p_X[1]}V_X[1]
+\]</span>
+<p>and the analogous triangle for <span class="math" data-tex="\(Y\)">\(Y\)</span>. Condition (7) is exactly a commuting square between their first arrows, with the prescribed first two components <span class="math" data-tex="\(\beta[-b]\)">\(\beta[-b]\)</span> and <span class="math" data-tex="\(\alpha[1-a]\)">\(\alpha[1-a]\)</span>. The derived triangle morphism axiom proved in the second prerequisite completes this square by a map <span class="math" data-tex="\(g:X[1]\to Y[1]\)">\(g:X[1]\to Y[1]\)</span>, respecting its last square as well.</p>
+<p>Put <span class="math" data-tex="\(f=g[-1]\)">\(f=g[-1]\)</span>. The two signed equations for <span class="math" data-tex="\(g\)">\(g\)</span>, after canceling the minus signs and translating back, give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+fi_X=i_Y\alpha[-a],\qquad p_Yf=\beta[-b]p_X.
+\]">\[
+fi_X=i_Y\alpha[-a],\qquad p_Yf=\beta[-b]p_X.
+\]</span>
+<p>Since <span class="math" data-tex="\(H^a(i_X),H^a(i_Y)\)">\(H^a(i_X),H^a(i_Y)\)</span> and <span class="math" data-tex="\(H^b(p_X),H^b(p_Y)\)">\(H^b(p_X),H^b(p_Y)\)</span> are the prescribed identities, these equations give <span class="math" data-tex="\(H^a(f)=\alpha\)">\(H^a(f)=\alpha\)</span> and <span class="math" data-tex="\(H^b(f)=\beta\)">\(H^b(f)=\beta\)</span>. The morphism axiom is valid for arbitrary derived arrows; it does not require replacing the requested cohomology maps by different endpoints, or choosing strict representatives on the original complexes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, if <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> are isomorphisms and satisfy (7), any such lift is an isomorphism: it induces isomorphisms on all cohomology, including the zero objects in the other degrees.</p>
+<h2 id="4-all-choices-of-lift-and-the-square-zero-ambiguity">4. All choices of lift and the square-zero ambiguity</h2>
+<p>Put <span class="math" data-tex="\(d=b-a&gt;0\)">\(d=b-a&gt;0\)</span>, and let <span class="math" data-tex="\(\mathcal C(X,Y)\)">\(\mathcal C(X,Y)\)</span> be the abelian group of pairs <span class="math" data-tex="\((\alpha,\beta)\)">\((\alpha,\beta)\)</span> satisfying (7). It is a subgroup of the direct sum of the two ordinary Hom groups, since the compatibility equation is additive in each entry.</p>
+<p><strong>Theorem 4.1.</strong> There is a natural short exact sequence of abelian groups</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8); horizontal scroll when needed" data-tex="\[
+0\longrightarrow\operatorname{Ext}^{d}(B_X,A_Y)
+\xrightarrow{\ J\ }\operatorname{Hom}_D(X,Y)
+\xrightarrow{\ H\ }\mathcal C(X,Y)\longrightarrow0,
+\tag{8}
+\]">\[
+0\longrightarrow\operatorname{Ext}^{d}(B_X,A_Y)
+\xrightarrow{\ J\ }\operatorname{Hom}_D(X,Y)
+\xrightarrow{\ H\ }\mathcal C(X,Y)\longrightarrow0,
+\tag{8}
+\]</span>
+<p>where, viewing <span class="math" data-tex="\(h\)">\(h\)</span> as a map <span class="math" data-tex="\(V_X\to U_Y\)">\(V_X\to U_Y\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (9); horizontal scroll when needed" data-tex="\[
+J(h)=i_Yh p_X,\qquad H(f)=(H^a(f),H^b(f)).
+\tag{9}
+\]">\[
+J(h)=i_Yh p_X,\qquad H(f)=(H^a(f),H^b(f)).
+\tag{9}
+\]</span>
+<p><strong>Proof.</strong> Theorem 3.1 proves surjectivity onto <span class="math" data-tex="\(\mathcal C(X,Y)\)">\(\mathcal C(X,Y)\)</span>. The maps (9) are additive. The map <span class="math" data-tex="\(i_Yhp_X\)">\(i_Yhp_X\)</span> has zero degree-<span class="math" data-tex="\(a\)">\(a\)</span> cohomology because <span class="math" data-tex="\(H^a(V_X)=0\)">\(H^a(V_X)=0\)</span>, and zero degree-<span class="math" data-tex="\(b\)">\(b\)</span> cohomology because <span class="math" data-tex="\(H^b(U_Y)=0\)">\(H^b(U_Y)=0\)</span>. Thus its image is in the kernel of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Conversely suppose <span class="math" data-tex="\(H(f)=0\)">\(H(f)=0\)</span>. Formula (4), at degree <span class="math" data-tex="\(b\)">\(b\)</span>, identifies <span class="math" data-tex="\(\operatorname{Hom}_D(X,V_Y)\)">\(\operatorname{Hom}_D(X,V_Y)\)</span> with <span class="math" data-tex="\(\operatorname{Hom}(B_X,B_Y)\)">\(\operatorname{Hom}(B_X,B_Y)\)</span>. It follows that <span class="math" data-tex="\(p_Yf=0\)">\(p_Yf=0\)</span>. The exact Hom sequence of the triangle for <span class="math" data-tex="\(Y\)">\(Y\)</span> supplies <span class="math" data-tex="\(g:X\to U_Y\)">\(g:X\to U_Y\)</span> with <span class="math" data-tex="\(f=i_Yg\)">\(f=i_Yg\)</span>. This <span class="math" data-tex="\(g\)">\(g\)</span> is unique: the preceding group is <span class="math" data-tex="\(\operatorname{Hom}_D(X,V_Y[-1])=0\)">\(\operatorname{Hom}_D(X,V_Y[-1])=0\)</span>, since <span class="math" data-tex="\(X\)">\(X\)</span> ends in degree <span class="math" data-tex="\(b\)">\(b\)</span>, while <span class="math" data-tex="\(V_Y[-1]\)">\(V_Y[-1]\)</span> starts in degree <span class="math" data-tex="\(b+1\)">\(b+1\)</span>.</p>
+<p>Next <span class="math" data-tex="\(fi_X=0\)">\(fi_X=0\)</span>, since (4) at degree <span class="math" data-tex="\(a\)">\(a\)</span> identifies <span class="math" data-tex="\(\operatorname{Hom}_D(U_X,Y)\)">\(\operatorname{Hom}_D(U_X,Y)\)</span> with <span class="math" data-tex="\(\operatorname{Hom}(A_X,A_Y)\)">\(\operatorname{Hom}(A_X,A_Y)\)</span>, and its cohomology map is zero. The map
+<span class="math" data-tex="\(\operatorname{Hom}_D(U_X,U_Y)\to\operatorname{Hom}_D(U_X,Y)\)">\(\operatorname{Hom}_D(U_X,U_Y)\to\operatorname{Hom}_D(U_X,Y)\)</span> induced by <span class="math" data-tex="\(i_Y\)">\(i_Y\)</span> is an isomorphism under that same identification. Therefore <span class="math" data-tex="\(gi_X=0\)">\(gi_X=0\)</span>. Apply the contravariant Hom sequence of the triangle for <span class="math" data-tex="\(X\)">\(X\)</span>, with target <span class="math" data-tex="\(U_Y\)">\(U_Y\)</span>. Its relevant part is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_D(U_X[1],U_Y)\longrightarrow
+\operatorname{Hom}_D(V_X,U_Y)\xrightarrow{p_X^*}
+\operatorname{Hom}_D(X,U_Y)\xrightarrow{i_X^*}
+\operatorname{Hom}_D(U_X,U_Y).
+\]">\[
+\operatorname{Hom}_D(U_X[1],U_Y)\longrightarrow
+\operatorname{Hom}_D(V_X,U_Y)\xrightarrow{p_X^*}
+\operatorname{Hom}_D(X,U_Y)\xrightarrow{i_X^*}
+\operatorname{Hom}_D(U_X,U_Y).
+\]</span>
+<p>Here the labeled maps are precomposition by the indicated arrows. The first group is <span class="math" data-tex="\(\operatorname{Ext}^{-1}(A_X,A_Y)=0\)">\(\operatorname{Ext}^{-1}(A_X,A_Y)=0\)</span>. Consequently there is a unique <span class="math" data-tex="\(h:V_X\to U_Y\)">\(h:V_X\to U_Y\)</span> with <span class="math" data-tex="\(g=hp_X\)">\(g=hp_X\)</span>. The identification
+<span class="math" data-tex="\(\operatorname{Hom}_D(V_X,U_Y)=\operatorname{Ext}^{b-a}(B_X,A_Y)\)">\(\operatorname{Hom}_D(V_X,U_Y)=\operatorname{Ext}^{b-a}(B_X,A_Y)\)</span> follows by translating by <span class="math" data-tex="\(b\)">\(b\)</span>. This proves exactness at the middle group and injectivity of <span class="math" data-tex="\(J\)">\(J\)</span>, since both factorizations were unique. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For each compatible pair, the set of lifts is therefore a torsor for <span class="math" data-tex="\(\operatorname{Ext}^d(B_X,A_Y)\)">\(\operatorname{Ext}^d(B_X,A_Y)\)</span>: once one lift <span class="math" data-tex="\(f_0\)">\(f_0\)</span> is chosen, all lifts are uniquely <span class="math" data-tex="\(f_0+J(h)\)">\(f_0+J(h)\)</span>. A torsor here means a set with a free and transitive action of the additive group. There is generally no distinguished choice of <span class="math" data-tex="\(f_0\)">\(f_0\)</span>.</p>
+<p>These formulas also describe naturality of (8). If <span class="math" data-tex="\(f:Y\to Z\)">\(f:Y\to Z\)</span> has lower cohomology map <span class="math" data-tex="\(\alpha_f\)">\(\alpha_f\)</span>, then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+fJ(h)=i_Z\alpha_f[-a]h p_X.
+\]">\[
+fJ(h)=i_Z\alpha_f[-a]h p_X.
+\]</span>
+<p>If <span class="math" data-tex="\(g:W\to X\)">\(g:W\to X\)</span> has upper cohomology map <span class="math" data-tex="\(\beta_g\)">\(\beta_g\)</span>, then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+J(h)g=i_Yh\beta_g[-b]p_W.
+\]">\[
+J(h)g=i_Yh\beta_g[-b]p_W.
+\]</span>
+<p>They follow directly from the first two equations in (5), and are the usual pushforward and pullback actions on the Ext group.</p>
+<p>Maps with zero cohomology in these two degrees form a square-zero ideal. Indeed, for <span class="math" data-tex="\(h:V_X\to U_Y\)">\(h:V_X\to U_Y\)</span> and <span class="math" data-tex="\(k:V_Y\to U_Z\)">\(k:V_Y\to U_Z\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (10); horizontal scroll when needed" data-tex="\[
+J(k)J(h)=i_Zk\,(p_Yi_Y)\,h p_X=0,
+\tag{10}
+\]">\[
+J(k)J(h)=i_Zk\,(p_Yi_Y)\,h p_X=0,
+\tag{10}
+\]</span>
+<p>because consecutive triangle arrows compose to zero. For one object <span class="math" data-tex="\(X\)">\(X\)</span>, its automorphisms inducing the identity on both cohomology objects are exactly</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (11); horizontal scroll when needed" data-tex="\[
+1_X+J(h),\qquad h\in\operatorname{Ext}^d(B_X,A_X).
+\tag{11}
+\]">\[
+1_X+J(h),\qquad h\in\operatorname{Ext}^d(B_X,A_X).
+\tag{11}
+\]</span>
+<p>The inverse is <span class="math" data-tex="\(1_X-J(h)\)">\(1_X-J(h)\)</span>, and multiplication of these automorphisms corresponds to addition of their parameters by (10). Conversely any such automorphism differs from the identity by a unique <span class="math" data-tex="\(J(h)\)">\(J(h)\)</span>, by (8). The same statement applies to every endomorphism with identity cohomology: it is automatically invertible.</p>
+<h2 id="5-classification-with-fixed-cohomology-identifications">5. Classification with fixed cohomology identifications</h2>
+<p>Fix <span class="math" data-tex="\(A,B\in\mathcal A\)">\(A,B\in\mathcal A\)</span> and degrees <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>. A marked object is a derived object with cohomology only in these degrees, together with isomorphisms <span class="math" data-tex="\(H^aX\simeq A\)">\(H^aX\simeq A\)</span>, <span class="math" data-tex="\(H^bX\simeq B\)">\(H^bX\simeq B\)</span>. A marked isomorphism must induce the identity of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> after these identifications.</p>
+<p><strong>Theorem 5.1.</strong> The marked isomorphism classes are in bijection with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (12); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^{b-a+1}(B,A).
+\tag{12}
+\]">\[
+\operatorname{Ext}^{b-a+1}(B,A).
+\tag{12}
+\]</span>
+<p>The class is the canonical truncation class transported by the marks. Forgetting the marks gives the orbits for the action</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (13); horizontal scroll when needed" data-tex="\[
+(u,v)\cdot\kappa=u[1-a]\kappa\,v[-b]^{-1},
+\qquad (u,v)\in\operatorname{Aut}(A)\times\operatorname{Aut}(B).
+\tag{13}
+\]">\[
+(u,v)\cdot\kappa=u[1-a]\kappa\,v[-b]^{-1},
+\qquad (u,v)\in\operatorname{Aut}(A)\times\operatorname{Aut}(B).
+\tag{13}
+\]</span>
+<p><strong>Proof.</strong> Naturality makes the class invariant under marked isomorphisms. If two marked objects have the same class, Theorem 3.1 lifts the pair <span class="math" data-tex="\((1_A,1_B)\)">\((1_A,1_B)\)</span>, and the lift is an isomorphism by cohomology detection. This proves injectivity of the proposed classification.</p>
+<p>For surjectivity, put <span class="math" data-tex="\(U=A[-a]\)">\(U=A[-a]\)</span>, <span class="math" data-tex="\(V=B[-b]\)">\(V=B[-b]\)</span>, and choose any distinguished triangle for the derived arrow <span class="math" data-tex="\(-\kappa[-1]:V[-1]\to U\)">\(-\kappa[-1]:V[-1]\to U\)</span>. Its cone object <span class="math" data-tex="\(X\)">\(X\)</span>, after one rotation, fits into</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (14); horizontal scroll when needed" data-tex="\[
+U\xrightarrow{i}X\xrightarrow{p}V\xrightarrow{\kappa}U[1].
+\tag{14}
+\]">\[
+U\xrightarrow{i}X\xrightarrow{p}V\xrightarrow{\kappa}U[1].
+\tag{14}
+\]</span>
+<p>This use of a cone means a choice of a completed triangle; it does not assert a functorial cone for an arbitrary derived arrow. Existence follows from the derived triangle theorem, including arrows given by roofs. Its cohomology sequence shows that <span class="math" data-tex="\(X\)">\(X\)</span> has no cohomology outside <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, with <span class="math" data-tex="\(H^a(i)\)">\(H^a(i)\)</span> and <span class="math" data-tex="\(H^b(p)\)">\(H^b(p)\)</span> isomorphisms. Use these as its marks.</p>
+<p>We verify that the last arrow in (14) is precisely its canonical marked class. Formula (4) shows that an arrow <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> is determined by its degree-<span class="math" data-tex="\(a\)">\(a\)</span> map, so <span class="math" data-tex="\(i\)">\(i\)</span> agrees with the canonical marked truncation inclusion. Likewise an arrow <span class="math" data-tex="\(X\to V\)">\(X\to V\)</span> is determined by its degree-<span class="math" data-tex="\(b\)">\(b\)</span> map, so <span class="math" data-tex="\(p\)">\(p\)</span> agrees with the canonical projection. Complete the identity square on <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> to a triangle comparison from (14) to the canonical triangle. Its third component <span class="math" data-tex="\(c:V\to V\)">\(c:V\to V\)</span> obeys <span class="math" data-tex="\(cp=p\)">\(cp=p\)</span>. Applying <span class="math" data-tex="\(H^b\)">\(H^b\)</span> gives <span class="math" data-tex="\(H^b(c)=1_B\)">\(H^b(c)=1_B\)</span>; full faithfulness on a single degree implies <span class="math" data-tex="\(c=1_V\)">\(c=1_V\)</span>. The last square now gives equality of the two last arrows. Thus the class is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, proving surjectivity and the exact marks in (12).</p>
+<p>Forgetting marks allows invertible cohomology maps <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. Equation (7) says exactly that two classes are related by (13). Conversely any such pair of units satisfies (7), lifts by Theorem 3.1, and has an invertible lift. This proves both directions of the orbit classification. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bijection concerns isomorphism classes. It does not make all marked objects rigid: their marked automorphism groups are given by (11).</p>
+<h2 id="6-a-signed-polynomial-resolution-over-every-base-ring">6. A signed polynomial resolution over every base ring</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be any commutative ring, put <span class="math" data-tex="\(\Lambda=R[x,y]\)">\(\Lambda=R[x,y]\)</span>, and let <span class="math" data-tex="\(M=R\)">\(M=R\)</span> be a <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module by evaluation at <span class="math" data-tex="\(x=y=0\)">\(x=y=0\)</span>. Let <span class="math" data-tex="\(\epsilon:\Lambda\to M\)">\(\epsilon:\Lambda\to M\)</span> be that evaluation map. Consider</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (15); horizontal scroll when needed" data-tex="\[
+0\longrightarrow\Lambda\xrightarrow{\ i\ }\Lambda^2
+\xrightarrow{\ j\ }\Lambda\xrightarrow{\epsilon}M
+\longrightarrow0,
+\tag{15}
+\]">\[
+0\longrightarrow\Lambda\xrightarrow{\ i\ }\Lambda^2
+\xrightarrow{\ j\ }\Lambda\xrightarrow{\epsilon}M
+\longrightarrow0,
+\tag{15}
+\]</span>
+<p>where</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (16); horizontal scroll when needed" data-tex="\[
+i(c)=(xc,yc),\qquad j(a,b)=-ya+xb.
+\tag{16}
+\]">\[
+i(c)=(xc,yc),\qquad j(a,b)=-ya+xb.
+\tag{16}
+\]</span>
+<p><strong>Proposition 6.1.</strong> Sequence (15) is exact. Its first three nonzero modules form a free resolution in cohomological degrees <span class="math" data-tex="\(-2,-1,0\)">\(-2,-1,0\)</span>.</p>
+<p><strong>Proof.</strong> Multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(R[x,y]\)">\(R[x,y]\)</span> is injective: it shifts each coefficient of a polynomial from monomial <span class="math" data-tex="\(x^ry^s\)">\(x^ry^s\)</span> to <span class="math" data-tex="\(x^{r+1}y^s\)">\(x^{r+1}y^s\)</span>, so a zero product forces every coefficient to be zero. This argument does not cancel an element of <span class="math" data-tex="\(R\)">\(R\)</span>. Thus <span class="math" data-tex="\(i\)">\(i\)</span> is injective, and <span class="math" data-tex="\(ji=0\)">\(ji=0\)</span> by commutativity.</p>
+<p>Suppose <span class="math" data-tex="\(j(a,b)=0\)">\(j(a,b)=0\)</span>, so <span class="math" data-tex="\(xb=ya\)">\(xb=ya\)</span>. Set <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Then <span class="math" data-tex="\(y a(0,y)=0\)">\(y a(0,y)=0\)</span> in <span class="math" data-tex="\(R[y]\)">\(R[y]\)</span>. Multiplication by <span class="math" data-tex="\(y\)">\(y\)</span> is injective by the same coefficient argument, so <span class="math" data-tex="\(a(0,y)=0\)">\(a(0,y)=0\)</span>. The polynomial <span class="math" data-tex="\(a\)">\(a\)</span> is consequently divisible by <span class="math" data-tex="\(x\)">\(x\)</span>; write <span class="math" data-tex="\(a=xc\)">\(a=xc\)</span>. Substitution gives <span class="math" data-tex="\(x(b-yc)=0\)">\(x(b-yc)=0\)</span>, and injectivity of multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-tex="\(b=yc\)">\(b=yc\)</span>. Hence <span class="math" data-tex="\((a,b)=i(c)\)">\((a,b)=i(c)\)</span>, proving exactness at <span class="math" data-tex="\(\Lambda^2\)">\(\Lambda^2\)</span>. Uniqueness of <span class="math" data-tex="\(c\)">\(c\)</span> also follows from that injectivity.</p>
+<p>The image of <span class="math" data-tex="\(j\)">\(j\)</span> is the ideal <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>: every value is in this ideal, while <span class="math" data-tex="\(j(0,1)=x\)">\(j(0,1)=x\)</span> and <span class="math" data-tex="\(j(-1,0)=y\)">\(j(-1,0)=y\)</span>. The kernel of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> is the same ideal, since a polynomial with zero constant coefficient is the sum of its terms divisible by <span class="math" data-tex="\(x\)">\(x\)</span> and its remaining terms divisible by <span class="math" data-tex="\(y\)">\(y\)</span>. Finally <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> is surjective on constants. This proves every position in (15). All three terms are finite free modules and hence projective, proving the resolution assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Another common ordering uses the column <span class="math" data-tex="\(c\mapsto(-yc,xc)\)">\(c\mapsto(-yc,xc)\)</span> and the row <span class="math" data-tex="\((a,b)\mapsto xa+yb\)">\((a,b)\mapsto xa+yb\)</span>. The signed change of coordinates <span class="math" data-tex="\(L(a,b)=(b,-a)\)">\(L(a,b)=(b,-a)\)</span>, together with multiplication by <span class="math" data-tex="\(-1\)">\(-1\)</span> on the leftmost <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and identity on the next <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, identifies (15) with that resolution: <span class="math" data-tex="\(Li(c)=-(-yc,xc)\)">\(Li(c)=-(-yc,xc)\)</span>, and <span class="math" data-tex="\((x,y)L(a,b)=j(a,b)\)">\((x,y)L(a,b)=j(a,b)\)</span>. Thus the row accompanying the particular column in (16) has the required minus sign.</p>
+<p><strong>Proposition 6.2.</strong> With the projective coordinates of (15),</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (17); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^n_\Lambda(M,M)=
+\begin{cases}
+R&amp;n=0,\\
+R^2&amp;n=1,\\
+R&amp;n=2,\\
+0&amp;n&lt;0\text{ or }n&gt;2.
+\end{cases}
+\tag{17}
+\]">\[
+\operatorname{Ext}^n_\Lambda(M,M)=
+\begin{cases}
+R&amp;n=0,\\
+R^2&amp;n=1,\\
+R&amp;n=2,\\
+0&amp;n&lt;0\text{ or }n&gt;2.
+\end{cases}
+\tag{17}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be the complex in Proposition 6.1. Its augmentation to <span class="math" data-tex="\(M[0]\)">\(M[0]\)</span> is a quasi-isomorphism. The projective Hom lemma in the third prerequisite proves
+<span class="math" data-tex="\(\operatorname{Hom}_D(M,M[n])=\operatorname{Hom}_K(P,M[n])\)">\(\operatorname{Hom}_D(M,M[n])=\operatorname{Hom}_K(P,M[n])\)</span>.
+The complex <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(P,M)\)">\(\operatorname{Hom}_\Lambda(P,M)\)</span> has terms <span class="math" data-tex="\(M,M^2,M\)">\(M,M^2,M\)</span> in degrees 0, 1, 2. All its differentials are zero, since precomposing with either row or column in (16) multiplies a component by <span class="math" data-tex="\(x\)">\(x\)</span> or <span class="math" data-tex="\(y\)">\(y\)</span>, both of which act as zero on <span class="math" data-tex="\(M\)">\(M\)</span>. Thus its cohomology gives (17).</p>
+<p>Equivalently, for each of degrees 0, 1, 2, the indicated component is an arbitrary chain-map component to <span class="math" data-tex="\(M[n]\)">\(M[n]\)</span>. Its chain condition is automatic for the same reason, and every possible homotopy changes it by zero. In the other degrees there is no common nonzero degree of the source and target complexes. This directly checks both the chain-map and homotopy parts of the computation. In degree two, <span class="math" data-tex="\(\lambda\in R\)">\(\lambda\in R\)</span> is represented by the sole component</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (18); horizontal scroll when needed" data-tex="\[
+P^{-2}=\Lambda\xrightarrow{\lambda\epsilon}M=M[2]^{-2}.
+\tag{18}
+\]">\[
+P^{-2}=\Lambda\xrightarrow{\lambda\epsilon}M=M[2]^{-2}.
+\tag{18}
+\]</span>
+<p>These computations establish Ext in the actual derived category, not a separately defined resolution group. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-explicit-complexes-representing-every-parameter">7. Explicit complexes representing every parameter</h2>
+<p>For <span class="math" data-tex="\(\lambda\in R\)">\(\lambda\in R\)</span>, define the <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (19); horizontal scroll when needed" data-tex="\[
+E_\lambda=(M\oplus\Lambda^2)/
+\{(-\lambda\epsilon(c),i(c)):c\in\Lambda\}.
+\tag{19}
+\]">\[
+E_\lambda=(M\oplus\Lambda^2)/
+\{(-\lambda\epsilon(c),i(c)):c\in\Lambda\}.
+\tag{19}
+\]</span>
+<p>The indicated set is the image of a module map, hence a submodule. Evaluation <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> is <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-linear when <span class="math" data-tex="\(M\)">\(M\)</span> has its specified quotient-module action. Let <span class="math" data-tex="\([m,v]\)">\([m,v]\)</span> denote the class of <span class="math" data-tex="\((m,v)\)">\((m,v)\)</span>. Its defining relation is
+<span class="math" data-tex="\([0,i(c)]=[\lambda\epsilon(c),0]\)">\([0,i(c)]=[\lambda\epsilon(c),0]\)</span>.</p>
+<p>The map <span class="math" data-tex="\(M\to E_\lambda\)">\(M\to E_\lambda\)</span>, <span class="math" data-tex="\(m\mapsto[m,0]\)">\(m\mapsto[m,0]\)</span>, is injective. Indeed if <span class="math" data-tex="\((m,0)=(-\lambda\epsilon(c),i(c))\)">\((m,0)=(-\lambda\epsilon(c),i(c))\)</span>, then <span class="math" data-tex="\(i(c)=0\)">\(i(c)=0\)</span>, so <span class="math" data-tex="\(c=0\)">\(c=0\)</span> by Proposition 6.1 and then <span class="math" data-tex="\(m=0\)">\(m=0\)</span>. The map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (20); horizontal scroll when needed" data-tex="\[
+E_\lambda\longrightarrow\Lambda,\qquad [m,v]\longmapsto j(v)
+\tag{20}
+\]">\[
+E_\lambda\longrightarrow\Lambda,\qquad [m,v]\longmapsto j(v)
+\tag{20}
+\]</span>
+<p>is well-defined because <span class="math" data-tex="\(ji=0\)">\(ji=0\)</span>. If its value vanishes, <span class="math" data-tex="\(v=i(c)\)">\(v=i(c)\)</span> for a unique <span class="math" data-tex="\(c\)">\(c\)</span>, and
+<span class="math" data-tex="\([m,v]=[m+\lambda\epsilon(c),0]\)">\([m,v]=[m+\lambda\epsilon(c),0]\)</span>. Its kernel is therefore exactly the copy of <span class="math" data-tex="\(M\)">\(M\)</span>. Its image is <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>, since the images of <span class="math" data-tex="\([0,v]\)">\([0,v]\)</span> give every value of <span class="math" data-tex="\(j\)">\(j\)</span>. We have proved the exact row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (21); horizontal scroll when needed" data-tex="\[
+0\longrightarrow M\longrightarrow E_\lambda
+\longrightarrow\Lambda\xrightarrow{\epsilon}M\longrightarrow0.
+\tag{21}
+\]">\[
+0\longrightarrow M\longrightarrow E_\lambda
+\longrightarrow\Lambda\xrightarrow{\epsilon}M\longrightarrow0.
+\tag{21}
+\]</span>
+<p>Define <span class="math" data-tex="\(X_\lambda\)">\(X_\lambda\)</span> to be (20) in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>. Row (21) gives the fixed marks
+<span class="math" data-tex="\(H^{-1}(X_\lambda)=M\)">\(H^{-1}(X_\lambda)=M\)</span>, via the injection, and <span class="math" data-tex="\(H^0(X_\lambda)=M\)">\(H^0(X_\lambda)=M\)</span>, via <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. There is no other cohomology.</p>
+<p><strong>Proposition 7.1.</strong> Under (17), the canonical marked class of <span class="math" data-tex="\(X_\lambda\)">\(X_\lambda\)</span> is exactly <span class="math" data-tex="\(\lambda\in R\)">\(\lambda\in R\)</span>.</p>
+<p><strong>Proof.</strong> Here <span class="math" data-tex="\(U=M[1]\)">\(U=M[1]\)</span>, <span class="math" data-tex="\(V=M[0]\)">\(V=M[0]\)</span>. The injection <span class="math" data-tex="\(U\to X_\lambda\)">\(U\to X_\lambda\)</span> has cone <span class="math" data-tex="\(K_\lambda\)">\(K_\lambda\)</span> with terms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+M\longrightarrow E_\lambda\longrightarrow\Lambda
+\]">\[
+M\longrightarrow E_\lambda\longrightarrow\Lambda
+\]</span>
+<p>in degrees <span class="math" data-tex="\(-2,-1,0\)">\(-2,-1,0\)</span>, with exactly the maps of (21). Its quotient comparison <span class="math" data-tex="\(q:K_\lambda\to M[0]\)">\(q:K_\lambda\to M[0]\)</span> is <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> in degree zero, and is a quasi-isomorphism by exactness of (21). Its positive last projection <span class="math" data-tex="\(p:K_\lambda\to M[2]\)">\(p:K_\lambda\to M[2]\)</span> is the identity in degree <span class="math" data-tex="\(-2\)">\(-2\)</span>. Thus the natural triangle of this short exact row, transported along <span class="math" data-tex="\(q\)">\(q\)</span>, has last arrow <span class="math" data-tex="\(Qp(Qq)^{-1}\)">\(Qp(Qq)^{-1}\)</span>. Its first two maps are the fixed cohomology inclusion and projection for <span class="math" data-tex="\(X_\lambda\)">\(X_\lambda\)</span>; the canonical-comparison argument of Theorem 5.1 identifies this last arrow with <span class="math" data-tex="\(\kappa_{X_\lambda}\)">\(\kappa_{X_\lambda}\)</span>.</p>
+<p>There is an actual chain map <span class="math" data-tex="\(\ell:P\to K_\lambda\)">\(\ell:P\to K_\lambda\)</span> with components</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (22); horizontal scroll when needed" data-tex="\[
+\ell^0=1_\Lambda,\qquad
+\ell^{-1}(v)=[0,v],\qquad
+\ell^{-2}(c)=\lambda\epsilon(c).
+\tag{22}
+\]">\[
+\ell^0=1_\Lambda,\qquad
+\ell^{-1}(v)=[0,v],\qquad
+\ell^{-2}(c)=\lambda\epsilon(c).
+\tag{22}
+\]</span>
+<p>The square in degree <span class="math" data-tex="\(-1\)">\(-1\)</span> commutes by (20). The square in degree <span class="math" data-tex="\(-2\)">\(-2\)</span> commutes because
+<span class="math" data-tex="\([0,i(c)]=[\lambda\epsilon(c),0]\)">\([0,i(c)]=[\lambda\epsilon(c),0]\)</span>, which is precisely the relation in (19). Also <span class="math" data-tex="\(q\ell\)">\(q\ell\)</span> is the resolution augmentation <span class="math" data-tex="\(P\to M[0]\)">\(P\to M[0]\)</span>. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\kappa_{X_\lambda}=Q(p\ell)\,Q(q\ell)^{-1}.
+\]">\[
+\kappa_{X_\lambda}=Q(p\ell)\,Q(q\ell)^{-1}.
+\]</span>
+<p>The numerator is (18), so its projective coordinate is <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, as claimed. This also proves directly that every parameter in (17) has the explicit representative (20). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a useful sign distinction. The augmented raw roof of the two-extension (21) is the same <span class="math" data-tex="\(Qp(Qq)^{-1}\)">\(Qp(Qq)^{-1}\)</span>, hence has coordinate <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The normalized Yoneda class used in the fourth prerequisite multiplies that raw roof by <span class="math" data-tex="\(\varepsilon_2=-1\)">\(\varepsilon_2=-1\)</span>. Its coordinate is <span class="math" data-tex="\(-\lambda\)">\(-\lambda\)</span>. Thus the truncation class here is the negative of that normalized two-extension class. The chosen projective coordinate and the positive last projection fix the sign; neither changes the vanishing or orbit criteria.</p>
+<p>For <span class="math" data-tex="\(u,v\in R\)">\(u,v\in R\)</span>, a pair of scalar cohomology maps from <span class="math" data-tex="\(X_\lambda\)">\(X_\lambda\)</span> to <span class="math" data-tex="\(X_\mu\)">\(X_\mu\)</span> is compatible precisely when</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (23); horizontal scroll when needed" data-tex="\[
+u\lambda=\mu v.
+\tag{23}
+\]">\[
+u\lambda=\mu v.
+\tag{23}
+\]</span>
+<p>An actual chain map already realizes it:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (24); horizontal scroll when needed" data-tex="\[
+f^0(z)=vz,\qquad
+f^{-1}[m,(a,b)]=[um,(va,vb)].
+\tag{24}
+\]">\[
+f^0(z)=vz,\qquad
+f^{-1}[m,(a,b)]=[um,(va,vb)].
+\tag{24}
+\]</span>
+<p>To check well-definedness, its value on the relation indexed by <span class="math" data-tex="\(c\)">\(c\)</span> in (19) is
+<span class="math" data-tex="\((-u\lambda\epsilon(c),i(vc))\)">\((-u\lambda\epsilon(c),i(vc))\)</span>, which is the target relation indexed by <span class="math" data-tex="\(vc\)">\(vc\)</span> exactly when (23) holds. Its differential square commutes because <span class="math" data-tex="\(j(va,vb)=v j(a,b)\)">\(j(va,vb)=v j(a,b)\)</span>. Its maps on the marked cohomology objects are exactly <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>. Theorem 4.1 says that all derived lifts of that same pair differ from (24) by a unique element of <span class="math" data-tex="\(R^2\)">\(R^2\)</span>; these additional lifts need not have a chain-map representative on these particular two-term complexes.</p>
+<h2 id="8-forgetting-marks-the-complete-unit-orbit-classification">8. Forgetting marks: the complete unit-orbit classification</h2>
+<p>Every <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-linear endomorphism of <span class="math" data-tex="\(M=R\)">\(M=R\)</span> is multiplication by its value at 1, so <span class="math" data-tex="\(\operatorname{End}_\Lambda(M)=R\)">\(\operatorname{End}_\Lambda(M)=R\)</span>. It is invertible exactly when that value is a unit of <span class="math" data-tex="\(R\)">\(R\)</span>. Theorem 5.1 and Proposition 7.1 therefore prove the following classification.</p>
+<p><strong>Theorem 8.1.</strong> Objects of <span class="math" data-tex="\(D(\Lambda)\)">\(D(\Lambda)\)</span> with cohomology zero outside degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, and with both cohomology objects isomorphic to <span class="math" data-tex="\(M\)">\(M\)</span>, have:</p>
+<ul>
+<li>marked isomorphism classes parametrized by all <span class="math" data-tex="\(\lambda\in R\)">\(\lambda\in R\)</span>;</li>
+<li>unmarked isomorphism classes parametrized by the orbits of <span class="math" data-tex="\(R^\times\)">\(R^\times\)</span> acting on <span class="math" data-tex="\(R\)">\(R\)</span> by multiplication.</li>
+</ul>
+<p>In particular, <span class="math" data-tex="\(X_\lambda\simeq X_\mu\)">\(X_\lambda\simeq X_\mu\)</span> if and only if <span class="math" data-tex="\(\mu=w\lambda\)">\(\mu=w\lambda\)</span> for some unit <span class="math" data-tex="\(w\in R^\times\)">\(w\in R^\times\)</span>. The zero orbit represents the split object <span class="math" data-tex="\(M[1]\oplus M[0]\)">\(M[1]\oplus M[0]\)</span>.</p>
+<p><strong>Proof.</strong> A marked isomorphism must have <span class="math" data-tex="\(u=v=1\)">\(u=v=1\)</span>, so (23) is <span class="math" data-tex="\(\lambda=\mu\)">\(\lambda=\mu\)</span>. The general marked classification proves there are no other marked classes. An unmarked isomorphism induces units <span class="math" data-tex="\(u,v\)">\(u,v\)</span> satisfying <span class="math" data-tex="\(\mu v=u\lambda\)">\(\mu v=u\lambda\)</span>, and therefore <span class="math" data-tex="\(\mu=(uv^{-1})\lambda\)">\(\mu=(uv^{-1})\lambda\)</span>. Conversely if <span class="math" data-tex="\(\mu=w\lambda\)">\(\mu=w\lambda\)</span>, take <span class="math" data-tex="\(u=w,v=1\)">\(u=w,v=1\)</span> in (24). Its cohomology maps are units, so it is an isomorphism in the derived category. Every unit ratio occurs in this way, proving that both endpoint identifications have been accounted for. Finally the splitting criterion identifies the zero class, and multiplication by a unit cannot turn a nonzero element into zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span>, the only units are <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>: an integer with an integer inverse has absolute value one. Thus an orbit is <span class="math" data-tex="\(\{n,-n\}\)">\(\{n,-n\}\)</span>, with a unique representative <span class="math" data-tex="\(|n|\)">\(|n|\)</span>, and the isomorphism classes are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (25); horizontal scroll when needed" data-tex="\[
+0,1,2,3,\ldots.
+\tag{25}
+\]">\[
+0,1,2,3,\ldots.
+\tag{25}
+\]</span>
+<p>The representative 0 must be retained. The number of nonzero classes is infinite.</p>
+<p>For a field <span class="math" data-tex="\(k\)">\(k\)</span>, every nonzero element is a unit, and any two nonzero parameters differ by a unit ratio. There are exactly two classes: the zero class and the nonzero class. The same statement applies in characteristic two. If <span class="math" data-tex="\(R\)">\(R\)</span> is the zero ring, all modules and parameters in this construction are zero, so there is a single orbit and a single object class. Its unit group consists of its identity element <span class="math" data-tex="\(0=1\)">\(0=1\)</span>, and the orbit formula still applies.</p>
+<p>Over a general ring, the precise invariant is the unit-multiplication orbit of the element. The proof does not replace that orbit by a classification of ideals. This matters when zero divisors are present.</p>
+<h2 id="9-four-graded-exercises-with-complete-solutions">9. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-foundation-degrees-shifts-and-vector-spaces">Exercise 1 — Foundation: degrees, shifts and vector spaces</h3>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> have cohomology only in degrees 2 and 5. Identify its class group, the class group for <span class="math" data-tex="\(X[3]\)">\(X[3]\)</span>, and the sign relating the two classes. When <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is the category of vector spaces over a field, prove that <span class="math" data-tex="\(X\)">\(X\)</span> splits and that any pair of its cohomology maps to another such object has a unique derived lift.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(a=2,b=5,d=3\)">\(a=2,b=5,d=3\)</span>, so</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\kappa_X\in\operatorname{Ext}^{4}(H^5X,H^2X).
+\]">\[
+\kappa_X\in\operatorname{Ext}^{4}(H^5X,H^2X).
+\]</span>
+<p>The shift <span class="math" data-tex="\(X[3]\)">\(X[3]\)</span> has its two possible cohomology degrees <span class="math" data-tex="\(-1,2\)">\(-1,2\)</span>, with the same respective cohomology objects under the standard shift identifications. Its gap is still 3, and its class belongs to the same degree-four Ext group. Proposition 2.1 makes its coordinate <span class="math" data-tex="\(-\kappa_X\)">\(-\kappa_X\)</span>, because <span class="math" data-tex="\((-1)^3=-1\)">\((-1)^3=-1\)</span>.</p>
+<p>In vector spaces every short exact sequence splits: choose a basis of the quotient, lift its basis vectors and extend linearly to a section. Section 1 of the third prerequisite uses those splittings degree by degree to contract any complex onto its cohomology. It proves <span class="math" data-tex="\(K\simeq D\)">\(K\simeq D\)</span> and vanishing of every nonzero-degree Ext group; it applies to arbitrary vector-space dimensions. Thus this degree-four class is zero. Theorem 2.2 gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+X\simeq H^2X[-2]\oplus H^5X[-5].
+\]">\[
+X\simeq H^2X[-2]\oplus H^5X[-5].
+\]</span>
+<p>For a second object <span class="math" data-tex="\(Y\)">\(Y\)</span> with the same allowed degrees, its class also vanishes, so every pair <span class="math" data-tex="\((\alpha,\beta)\)">\((\alpha,\beta)\)</span> is compatible. Theorem 3.1 supplies a lift. Its ambiguity in (8) is <span class="math" data-tex="\(\operatorname{Ext}^3(H^5X,H^2Y)=0\)">\(\operatorname{Ext}^3(H^5X,H^2Y)=0\)</span>, proving uniqueness of the derived arrow with those prescribed maps. This uniqueness does not say that a chosen chain-level splitting of a representative complex is unique; it identifies the resulting derived morphism.</p>
+<h3 id="exercise-2-intermediate-nonunique-lifts-on-a-split-object">Exercise 2 — Intermediate: nonunique lifts on a split object</h3>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field, <span class="math" data-tex="\(\Lambda=k[x,y]\)">\(\Lambda=k[x,y]\)</span>, <span class="math" data-tex="\(M=k\)">\(M=k\)</span> with <span class="math" data-tex="\(x,y\)">\(x,y\)</span> acting by zero, and <span class="math" data-tex="\(X=M[1]\oplus M[0]\)">\(X=M[1]\oplus M[0]\)</span>. Compute <span class="math" data-tex="\(\operatorname{End}_D(X)\)">\(\operatorname{End}_D(X)\)</span>, its composition law and its automorphisms. Identify all automorphisms that preserve the two cohomology identifications.</p>
+<p><strong>Solution.</strong> The four biproduct Hom groups are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{End}(M[1])=k,\quad
+\operatorname{End}(M)=k,\quad
+\operatorname{Hom}_D(M,M[1])=k^2,\quad
+\operatorname{Hom}_D(M[1],M)=0.
+\]">\[
+\operatorname{End}(M[1])=k,\quad
+\operatorname{End}(M)=k,\quad
+\operatorname{Hom}_D(M,M[1])=k^2,\quad
+\operatorname{Hom}_D(M[1],M)=0.
+\]</span>
+<p>The first two are degree-zero full faithfulness, the third is (17), and the last is negative Ext vanishing. In the displayed summand order, each endomorphism is uniquely</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+f_{a,b,h}=\begin{pmatrix}a&amp;h\\0&amp;b\end{pmatrix},
+\qquad a,b\in k,\ h\in k^2.
+\]">\[
+f_{a,b,h}=\begin{pmatrix}a&amp;h\\0&amp;b\end{pmatrix},
+\qquad a,b\in k,\ h\in k^2.
+\]</span>
+<p>For another such map <span class="math" data-tex="\(f_{a&#x27;,b&#x27;,h&#x27;}\)">\(f_{a&#x27;,b&#x27;,h&#x27;}\)</span>, biproduct composition gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+f_{a&#x27;,b&#x27;,h&#x27;}f_{a,b,h}
+=f_{a&#x27;a,b&#x27;b,a&#x27;h+h&#x27;b}.
+\]">\[
+f_{a&#x27;,b&#x27;,h&#x27;}f_{a,b,h}
+=f_{a&#x27;a,b&#x27;b,a&#x27;h+h&#x27;b}.
+\]</span>
+<p>It is invertible exactly when <span class="math" data-tex="\(a,b\ne0\)">\(a,b\ne0\)</span>, either by cohomology detection or by the explicit inverse</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{pmatrix}a^{-1}&amp;-a^{-1}hb^{-1}\\0&amp;b^{-1}\end{pmatrix}.
+\]">\[
+\begin{pmatrix}a^{-1}&amp;-a^{-1}hb^{-1}\\0&amp;b^{-1}\end{pmatrix}.
+\]</span>
+<p>The automorphisms preserving both marks are <span class="math" data-tex="\(f_{1,1,h}\)">\(f_{1,1,h}\)</span>, with law <span class="math" data-tex="\(h&#x27;+h\)">\(h&#x27;+h\)</span> and inverse <span class="math" data-tex="\(-h\)">\(-h\)</span>. They form the additive group <span class="math" data-tex="\(k^2\)">\(k^2\)</span>, so preserving both cohomology maps does not force a derived morphism to be the identity. On the naive split stalk complex, an ordinary chain map has no component from degree zero to degree minus one. The nonzero off-diagonal derived maps are instead represented after projective replacement or by roofs, as the resolution calculation (17) guarantees.</p>
+<h3 id="exercise-3-advanced-construct-the-prescribed-lift-on-the-models">Exercise 3 — Advanced: construct the prescribed lift on the models</h3>
+<p>For any base ring <span class="math" data-tex="\(R\)">\(R\)</span>, any <span class="math" data-tex="\(\lambda,\mu,u,v\in R\)">\(\lambda,\mu,u,v\in R\)</span>, determine exactly when formula (24) defines a chain map <span class="math" data-tex="\(X_\lambda\to X_\mu\)">\(X_\lambda\to X_\mu\)</span>. Prove that its cohomology maps are the requested scalars. Over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, decide whether <span class="math" data-tex="\(X_2\)">\(X_2\)</span> and <span class="math" data-tex="\(X_{-2}\)">\(X_{-2}\)</span> are isomorphic, construct an isomorphism with its actual endpoints, and decide whether they are isomorphic with both marks fixed.</p>
+<p><strong>Solution.</strong> The relation <span class="math" data-tex="\((-\lambda\epsilon(c),i(c))\)">\((-\lambda\epsilon(c),i(c))\)</span> maps to</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(-u\lambda\epsilon(c),i(vc)).
+\]">\[
+(-u\lambda\epsilon(c),i(vc)).
+\]</span>
+<p>In the target quotient this class equals
+<span class="math" data-tex="\([ (\mu v-u\lambda)\epsilon(c),0]\)">\([ (\mu v-u\lambda)\epsilon(c),0]\)</span>, by relation (19) for <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. The copy of <span class="math" data-tex="\(M\)">\(M\)</span> is injective in <span class="math" data-tex="\(E_\mu\)">\(E_\mu\)</span>, so this vanishes for all <span class="math" data-tex="\(c\)">\(c\)</span> if and only if <span class="math" data-tex="\(\mu v-u\lambda=0\)">\(\mu v-u\lambda=0\)</span>; necessity already follows by taking <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. This proves exactly the well-definedness condition (23), even if <span class="math" data-tex="\(R\)">\(R\)</span> has zero divisors. The differential square is <span class="math" data-tex="\(j(v(a,b))=v j(a,b)\)">\(j(v(a,b))=v j(a,b)\)</span>, proving the chain-map condition.</p>
+<p>On the kernel copy of <span class="math" data-tex="\(M\)">\(M\)</span> in degree minus one, <span class="math" data-tex="\([m,0]\)">\([m,0]\)</span> maps to <span class="math" data-tex="\([um,0]\)">\([um,0]\)</span>, so its lower cohomology map is <span class="math" data-tex="\(u\)">\(u\)</span>. On the quotient of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> by <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> in degree zero, multiplication by <span class="math" data-tex="\(v\)">\(v\)</span> induces the scalar <span class="math" data-tex="\(v\)">\(v\)</span>. Thus both requested endpoints are realized exactly. Necessity of the same relation for any derived lift also follows from Theorem 3.1 and Proposition 7.1; it is not merely a restriction of this particular chain-map formula.</p>
+<p>For <span class="math" data-tex="\(\lambda=2,\mu=-2\)">\(\lambda=2,\mu=-2\)</span> over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, choose <span class="math" data-tex="\(u=-1,v=1\)">\(u=-1,v=1\)</span>. Then <span class="math" data-tex="\(u\lambda=\mu v=-2\)">\(u\lambda=\mu v=-2\)</span>. The map is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+f^{-1}[m,(a,b)]=[-m,(a,b)],\qquad f^0=1_\Lambda.
+\]">\[
+f^{-1}[m,(a,b)]=[-m,(a,b)],\qquad f^0=1_\Lambda.
+\]</span>
+<p>The same formula in the opposite direction is well-defined and is its inverse already as a chain map. It induces <span class="math" data-tex="\(-1\)">\(-1\)</span> on <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(H^0\)">\(H^0\)</span>. Thus the two objects are unmarked isomorphic. With both marks fixed, compatibility would require <span class="math" data-tex="\(u=v=1\)">\(u=v=1\)</span> and hence <span class="math" data-tex="\(2=-2\)">\(2=-2\)</span> in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, which is false. They are not marked isomorphic. Their canonical classes are distinct; their normalized Yoneda classes have the opposite coordinates, so the conclusion is unchanged by keeping that separate convention.</p>
+<h3 id="exercise-4-synthesis-enumerate-orbits-and-marked-automorphisms">Exercise 4 — Synthesis: enumerate orbits and marked automorphisms</h3>
+<p>Enumerate the unmarked object classes for <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span>, for a field, and for <span class="math" data-tex="\(R=\mathbb Z/8\)">\(R=\mathbb Z/8\)</span>. In the last case distinguish the parameters 2 and 4, and decide whether 2 and 6 give the same class. For every <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> over every base ring, compute the group of automorphisms of <span class="math" data-tex="\(X_\lambda\)">\(X_\lambda\)</span> preserving both cohomology marks. Include the zero parameter.</p>
+<p><strong>Solution.</strong> Theorem 8.1 reduces the classification to multiplication by units. Over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, the orbits are <span class="math" data-tex="\(\{n,-n\}\)">\(\{n,-n\}\)</span>, with one representative <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>. Over a field there are two orbits, <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> and its nonzero elements. The zero parameter is the split object in both cases.</p>
+<p>In <span class="math" data-tex="\(\mathbb Z/8\)">\(\mathbb Z/8\)</span>, the units are <span class="math" data-tex="\(1,3,5,7\)">\(1,3,5,7\)</span>. Each odd residue is a unit: <span class="math" data-tex="\(1^2,3^2,5^2,7^2\)">\(1^2,3^2,5^2,7^2\)</span> are all 1 modulo 8. An even residue cannot be a unit because its product with any residue is even and cannot equal 1. The four orbits are therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\{0\},\qquad \{1,3,5,7\},\qquad \{2,6\},\qquad \{4\}.
+\]">\[
+\{0\},\qquad \{1,3,5,7\},\qquad \{2,6\},\qquad \{4\}.
+\]</span>
+<p>Multiplying 2 by the four units gives only 2 or 6, while multiplying 4 by any odd residue gives 4. Thus <span class="math" data-tex="\(X_2\)">\(X_2\)</span> and <span class="math" data-tex="\(X_4\)">\(X_4\)</span> are not isomorphic, and <span class="math" data-tex="\(X_2\)">\(X_2\)</span> and <span class="math" data-tex="\(X_6\)">\(X_6\)</span> are isomorphic. An explicit isomorphism for the latter uses <span class="math" data-tex="\(u=3,v=1\)">\(u=3,v=1\)</span> in (24), since <span class="math" data-tex="\(3\cdot2=6\)">\(3\cdot2=6\)</span> and 3 is a unit. The zero orbit is separate because multiplying a nonzero parameter by an invertible element cannot annihilate it.</p>
+<p>For arbitrary <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, the class has adjacent cohomology degrees, so the marked automorphism formula (11) uses
+<span class="math" data-tex="\(\operatorname{Ext}^1_\Lambda(M,M)=R^2\)">\(\operatorname{Ext}^1_\Lambda(M,M)=R^2\)</span>. Every such automorphism is uniquely</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+1_{X_\lambda}+i_{X_\lambda}h p_{X_\lambda},
+\qquad h\in R^2,
+\]">\[
+1_{X_\lambda}+i_{X_\lambda}h p_{X_\lambda},
+\qquad h\in R^2,
+\]</span>
+<p>with product corresponding to addition in <span class="math" data-tex="\(R^2\)">\(R^2\)</span> and inverse given by <span class="math" data-tex="\(-h\)">\(-h\)</span>. The square-zero identity (10) proves both formulas. Conversely (8) shows that any endomorphism inducing the two identity maps has exactly this form. This includes <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>, the split object; its cohomology marks still permit these off-diagonal derived automorphisms. Over the zero ring, <span class="math" data-tex="\(R^2=0\)">\(R^2=0\)</span>, and the group consists only of the identity of the zero object.</p>
+</main></body></html>

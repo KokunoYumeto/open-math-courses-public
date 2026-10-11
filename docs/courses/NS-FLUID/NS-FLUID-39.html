@@ -1,0 +1,2479 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The complete original cascade averaging theorem — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/the-complete-original-cascade-averaging-theorem.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-38.html">Previous lesson</a><a href="NS-FLUID-40.html">Next lesson</a></nav><article class="lesson"><h1 id="the-complete-original-cascade-averaging-theorem">The complete original cascade averaging theorem</h1>
+<p>Every original local cascade in the stated small-parameter range can be
+written as an average of the original Euler operator. This lesson proves
+the whole construction from Terence Tao's
+<a href="https://arxiv.org/abs/1402.0290v3">arXiv:1402.0290v3</a>,
+original navier-blowup.tex, lines 501–826. Every frequency, scale,
+rotation, dilation, Fourier coefficient and measure factor remains explicit.</p>
+<p>The proof begins with the exact tensor observation at a closed frequency
+triangle. It constructs the full rotation fiber and its measure, a smooth
+extension and all Fourier multipliers, then the complete scale sum and the
+maps back to the original real annular fields. Source coefficient and index
+corrections are stated next to their full derivations.</p>
+<p>The operator, Fourier and physical conventions are those of
+<a href="NS-FLUID-37.html">lesson 37</a>.
+The local-cascade fields, exact pump and full real/complex composition
+formulas are proved in
+<a href="NS-FLUID-38.html">lesson 38</a>.
+References to CC or to that lesson's EX formulas identify those proofs.
+All SP, RF, AF, AV and current EX formulas are proved below.</p>
+<p>Five solved exercises calculate the full closing measure and its moments,
+the smallest possible recovery kernel, the exact retraction derivative,
+the sharp scale-weight class for the original pump and the stability of
+its actual original-viscosity flows. The averaging theorem is one ingredient
+of the later blowup construction; the finite-time dynamics still need their
+own proof.</p>
+<h2 id="sp1-keep-the-original-triangle-orientation-and-trilinear-form">SP1. Keep the original triangle, orientation and trilinear form</h2>
+<p>Let the original real frequencies satisfy</p>
+<span class="math math-display" data-tex="\[
+\eta_1+\eta_2+\eta_3=0,\qquad
+H=|\eta_1\times\eta_2|&gt;0,\qquad r_j=|\eta_j|&gt;0.
+\tag{SP1}
+\]">\[
+\eta_1+\eta_2+\eta_3=0,\qquad
+H=|\eta_1\times\eta_2|&gt;0,\qquad r_j=|\eta_j|&gt;0.
+\tag{SP1}
+\]</span>
+<p>No frequency is replaced by a unit vector. Define the auxiliary frame, retaining every original radius,</p>
+<span class="math math-display" data-tex="\[
+n=\frac{\eta_1\times\eta_2}{H},\qquad
+w_j=\frac{\eta_j\times n}{r_j},\qquad
+E_j=\{Y\in\mathbb C^3:\eta_j\cdot Y=0\}.
+\tag{SP2}
+\]">\[
+n=\frac{\eta_1\times\eta_2}{H},\qquad
+w_j=\frac{\eta_j\times n}{r_j},\qquad
+E_j=\{Y\in\mathbb C^3:\eta_j\cdot Y=0\}.
+\tag{SP2}
+\]</span>
+<p>Here a dot without a bar is the complex bilinear extension of the real Euclidean dot product. Norms of complex vectors and tensors use the Hermitian Euclidean norm. Closure of the triangle implies <span class="math" data-tex="\(\eta_3\cdot n=0\)">\(\eta_3\cdot n=0\)</span>. Each pair <span class="math" data-tex="\(n,w_j\)">\(n,w_j\)</span> is a real orthonormal basis of the original perpendicular plane, hence a complex basis of <span class="math" data-tex="\(E_j\)">\(E_j\)</span>.</p>
+<p>The rotation about the oriented original axis <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> is specified on this plane by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_{\eta_j}^{\theta}n=\cos\theta\,n+\sin\theta\,w_j,\qquad
+R_{\eta_j}^{\theta}w_j=-\sin\theta\,n+\cos\theta\,w_j,\\
+R_{\eta_j}^{\theta}\eta_j=\eta_j.
+\end{gathered}
+\tag{SP3}
+\]">\[
+\begin{gathered}
+R_{\eta_j}^{\theta}n=\cos\theta\,n+\sin\theta\,w_j,\qquad
+R_{\eta_j}^{\theta}w_j=-\sin\theta\,n+\cos\theta\,w_j,\\
+R_{\eta_j}^{\theta}\eta_j=\eta_j.
+\end{gathered}
+\tag{SP3}
+\]</span>
+<p>The second equality follows from
+<span class="math" data-tex="\((\eta_j/r_j)\times((\eta_j/r_j)\times n)=-n\)">\((\eta_j/r_j)\times((\eta_j/r_j)\times n)=-n\)</span>.
+These formulas define a real orthogonal determinant-one map on the full orthogonal basis and fix its angle and orientation exactly. They extend complex linearly, without any restriction on the magnitude of an input vector.</p>
+<p>Retain the source trilinear expression and its actual angle function:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Lambda_\eta(Y_1,Y_2,Y_3)
+=(Y_1\cdot\eta_2)(Y_2\cdot Y_3)
++(Y_2\cdot\eta_1)(Y_1\cdot Y_3),\\
+\Theta_\eta(\gamma)
+=\Lambda_\eta(R_{\eta_1}^{\gamma_1}n,
+R_{\eta_2}^{\gamma_2}n,R_{\eta_3}^{\gamma_3}n).
+\end{gathered}
+\tag{SP4}
+\]">\[
+\begin{gathered}
+\Lambda_\eta(Y_1,Y_2,Y_3)
+=(Y_1\cdot\eta_2)(Y_2\cdot Y_3)
++(Y_2\cdot\eta_1)(Y_1\cdot Y_3),\\
+\Theta_\eta(\gamma)
+=\Lambda_\eta(R_{\eta_1}^{\gamma_1}n,
+R_{\eta_2}^{\gamma_2}n,R_{\eta_3}^{\gamma_3}n).
+\end{gathered}
+\tag{SP4}
+\]</span>
+<p>Both original summands and frequencies remain in every comparison below.</p>
+<h2 id="sp2-calculate-all-eight-coefficients-from-both-summands">SP2. Calculate all eight coefficients from both summands</h2>
+<p>The exact scalar products are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a=w_1\cdot\eta_2=-\frac{H}{r_1},\qquad
+b=w_2\cdot\eta_1=\frac{H}{r_2},\\
+d_{23}=w_2\cdot w_3
+=\frac{r_1^2-r_2^2-r_3^2}{2r_2r_3},\qquad
+d_{13}=w_1\cdot w_3
+=\frac{r_2^2-r_1^2-r_3^2}{2r_1r_3}.
+\end{gathered}
+\tag{SP5}
+\]">\[
+\begin{gathered}
+a=w_1\cdot\eta_2=-\frac{H}{r_1},\qquad
+b=w_2\cdot\eta_1=\frac{H}{r_2},\\
+d_{23}=w_2\cdot w_3
+=\frac{r_1^2-r_2^2-r_3^2}{2r_2r_3},\qquad
+d_{13}=w_1\cdot w_3
+=\frac{r_2^2-r_1^2-r_3^2}{2r_1r_3}.
+\end{gathered}
+\tag{SP5}
+\]</span>
+<p>For the first two identities, use the scalar triple product and
+<span class="math" data-tex="\(n\cdot(\eta_1\times\eta_2)=H\)">\(n\cdot(\eta_1\times\eta_2)=H\)</span>; in particular
+<span class="math" data-tex="\((\eta_1\times n)\cdot\eta_2=-H\)">\((\eta_1\times n)\cdot\eta_2=-H\)</span>.
+For the last two, the identity
+<span class="math" data-tex="\((\eta_j\times n)\cdot(\eta_k\times n)=\eta_j\cdot\eta_k\)">\((\eta_j\times n)\cdot(\eta_k\times n)=\eta_j\cdot\eta_k\)</span>
+holds because <span class="math" data-tex="\(n\)">\(n\)</span> is unit and orthogonal to both frequencies. Squaring
+<span class="math" data-tex="\(\eta_2+\eta_3=-\eta_1\)">\(\eta_2+\eta_3=-\eta_1\)</span> and
+<span class="math" data-tex="\(\eta_1+\eta_3=-\eta_2\)">\(\eta_1+\eta_3=-\eta_2\)</span> gives the two full numerators.</p>
+<p>Substitution of SP3 into both terms of SP4 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Theta_\eta(\gamma)
+={}&amp;a\sin\gamma_1\bigl(\cos\gamma_2\cos\gamma_3
++d_{23}\sin\gamma_2\sin\gamma_3\bigr)\\
+&amp;+b\sin\gamma_2\bigl(\cos\gamma_1\cos\gamma_3
++d_{13}\sin\gamma_1\sin\gamma_3\bigr).
+\end{aligned}
+\tag{SP6}
+\]">\[
+\begin{aligned}
+\Theta_\eta(\gamma)
+={}&amp;a\sin\gamma_1\bigl(\cos\gamma_2\cos\gamma_3
++d_{23}\sin\gamma_2\sin\gamma_3\bigr)\\
+&amp;+b\sin\gamma_2\bigl(\cos\gamma_1\cos\gamma_3
++d_{13}\sin\gamma_1\sin\gamma_3\bigr).
+\end{aligned}
+\tag{SP6}
+\]</span>
+<p>For each original angle, retain the exact expansions</p>
+<span class="math math-display" data-tex="\[
+\cos\gamma=\frac12\sum_{\sigma=\pm1}e^{i\sigma\gamma},
+\qquad
+\sin\gamma=\frac1{2i}\sum_{\sigma=\pm1}\sigma e^{i\sigma\gamma}.
+\]">\[
+\cos\gamma=\frac12\sum_{\sigma=\pm1}e^{i\sigma\gamma},
+\qquad
+\sin\gamma=\frac1{2i}\sum_{\sigma=\pm1}\sigma e^{i\sigma\gamma}.
+\]</span>
+<p>The product of the two sine coefficients has the negative sign from
+<span class="math" data-tex="\(i^{-2}=-1\)">\(i^{-2}=-1\)</span>. Consequently the complete Fourier series is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Theta_\eta(\gamma)=\sum_{\sigma\in\{-1,1\}^3}
+c_\sigma(\eta)e^{i(\sigma_1\gamma_1+\sigma_2\gamma_2+\sigma_3\gamma_3)},\\
+c_\sigma(\eta)=\frac1{8i}
+\left[
+-\frac{H}{r_1}\sigma_1(1-d_{23}\sigma_2\sigma_3)
++\frac{H}{r_2}\sigma_2(1-d_{13}\sigma_1\sigma_3)
+\right].
+\end{gathered}
+\tag{SP7}
+\]">\[
+\begin{gathered}
+\Theta_\eta(\gamma)=\sum_{\sigma\in\{-1,1\}^3}
+c_\sigma(\eta)e^{i(\sigma_1\gamma_1+\sigma_2\gamma_2+\sigma_3\gamma_3)},\\
+c_\sigma(\eta)=\frac1{8i}
+\left[
+-\frac{H}{r_1}\sigma_1(1-d_{23}\sigma_2\sigma_3)
++\frac{H}{r_2}\sigma_2(1-d_{13}\sigma_1\sigma_3)
+\right].
+\end{gathered}
+\tag{SP7}
+\]</span>
+<p>This is the source's general coefficient formula with its original geometric scalar products evaluated exactly.</p>
+<p>To classify its zeros, keep SP7 and prove the following additional identity:</p>
+<span class="math math-display" data-tex="\[
+c_\sigma(\eta)=
+\frac{H\sigma_1\sigma_2}{8i r_1r_2r_3}
+(\sigma_1r_1-\sigma_2r_2)
+\bigl[r_3+\sigma_3(\sigma_1r_1+\sigma_2r_2)\bigr].
+\tag{SP8}
+\]">\[
+c_\sigma(\eta)=
+\frac{H\sigma_1\sigma_2}{8i r_1r_2r_3}
+(\sigma_1r_1-\sigma_2r_2)
+\bigl[r_3+\sigma_3(\sigma_1r_1+\sigma_2r_2)\bigr].
+\tag{SP8}
+\]</span>
+<p>Indeed the constant part of <span class="math" data-tex="\(8i c_\sigma/H\)">\(8i c_\sigma/H\)</span> is
+<span class="math" data-tex="\((-\sigma_1r_2+\sigma_2r_1)/(r_1r_2)\)">\((-\sigma_1r_2+\sigma_2r_1)/(r_1r_2)\)</span>, and its triple-sign part has numerator</p>
+<span class="math math-display" data-tex="\[
+r_2d_{23}-r_1d_{13}=\frac{r_1^2-r_2^2}{r_3}.
+\]">\[
+r_2d_{23}-r_1d_{13}=\frac{r_1^2-r_2^2}{r_3}.
+\]</span>
+<p>Expanding the full right side of SP8 gives precisely those two terms. This proves an identity for the original coefficient; it does not discard either source summand.</p>
+<p>Noncollinearity in SP1 implies the strict triangle inequalities</p>
+<span class="math math-display" data-tex="\[
+|r_1-r_2|&lt;r_3&lt;r_1+r_2.
+\tag{SP9}
+\]">\[
+|r_1-r_2|&lt;r_3&lt;r_1+r_2.
+\tag{SP9}
+\]</span>
+<p>For example equality in <span class="math" data-tex="\(|\eta_1+\eta_2|\leq r_1+r_2\)">\(|\eta_1+\eta_2|\leq r_1+r_2\)</span> would make the two original vectors positively collinear, by equality in Cauchy–Schwarz. Equality in the reverse inequality would make them negatively collinear. Both contradict <span class="math" data-tex="\(H&gt;0\)">\(H&gt;0\)</span>.
+The last bracket of SP8 is therefore nonzero for all eight sign triples: the absolute value of the signed sum of <span class="math" data-tex="\(r_1,r_2\)">\(r_1,r_2\)</span> is either <span class="math" data-tex="\(r_1+r_2\)">\(r_1+r_2\)</span> or <span class="math" data-tex="\(|r_1-r_2|\)">\(|r_1-r_2|\)</span>, neither of which equals <span class="math" data-tex="\(r_3\)">\(r_3\)</span>.
+The other factor vanishes precisely when <span class="math" data-tex="\(r_1=r_2\)">\(r_1=r_2\)</span> and <span class="math" data-tex="\(\sigma_1=\sigma_2\)">\(\sigma_1=\sigma_2\)</span>.
+We have thus proved the exact condition</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\text{all eight }c_\sigma(\eta)\ne0
+\quad\Longleftrightarrow\quad r_1\ne r_2,\\
+r_1=r_2\quad\Longrightarrow\quad
+c_\sigma=0\ \Longleftrightarrow\ \sigma_1=\sigma_2.
+\end{gathered}
+\tag{SP10}
+\]">\[
+\begin{gathered}
+\text{all eight }c_\sigma(\eta)\ne0
+\quad\Longleftrightarrow\quad r_1\ne r_2,\\
+r_1=r_2\quad\Longrightarrow\quad
+c_\sigma=0\ \Longleftrightarrow\ \sigma_1=\sigma_2.
+\end{gathered}
+\tag{SP10}
+\]</span>
+<p>The radius <span class="math" data-tex="\(r_3\)">\(r_3\)</span> need not differ from both other radii.</p>
+<h2 id="sp3-check-the-source-base-frequencies-and-provide-a-full-neighborhood-bound">SP3. Check the source base frequencies and provide a full neighborhood bound</h2>
+<p>At the actual source base point retain</p>
+<span class="math math-display" data-tex="\[
+\eta_1^0=(0,1,0),\qquad
+\eta_2^0=(-1,-1,0),\qquad
+\eta_3^0=(1,0,0).
+\tag{SP11}
+\]">\[
+\eta_1^0=(0,1,0),\qquad
+\eta_2^0=(-1,-1,0),\qquad
+\eta_3^0=(1,0,0).
+\tag{SP11}
+\]</span>
+<p>Then <span class="math" data-tex="\(H=1\)">\(H=1\)</span>, <span class="math" data-tex="\(n=(0,0,1)\)">\(n=(0,0,1)\)</span>, <span class="math" data-tex="\((r_1,r_2,r_3)=(1,\sqrt2,1)\)">\((r_1,r_2,r_3)=(1,\sqrt2,1)\)</span>,
+<span class="math" data-tex="\(a=-1\)">\(a=-1\)</span>, <span class="math" data-tex="\(b=1/\sqrt2\)">\(b=1/\sqrt2\)</span>, <span class="math" data-tex="\(d_{23}=-1/\sqrt2\)">\(d_{23}=-1/\sqrt2\)</span>, <span class="math" data-tex="\(d_{13}=0\)">\(d_{13}=0\)</span>.
+The exact result is</p>
+<span class="math math-display" data-tex="\[
+c_\sigma(\eta^0)
+=\frac1{8i}
+\left(-\sigma_1+\frac{\sigma_2}{\sqrt2}
+-\frac{\sigma_1\sigma_2\sigma_3}{\sqrt2}\right),
+\qquad
+\min_\sigma|c_\sigma(\eta^0)|=\frac{\sqrt2-1}{8}.
+\tag{SP12}
+\]">\[
+c_\sigma(\eta^0)
+=\frac1{8i}
+\left(-\sigma_1+\frac{\sigma_2}{\sqrt2}
+-\frac{\sigma_1\sigma_2\sigma_3}{\sqrt2}\right),
+\qquad
+\min_\sigma|c_\sigma(\eta^0)|=\frac{\sqrt2-1}{8}.
+\tag{SP12}
+\]</span>
+<p>For the minimum, when <span class="math" data-tex="\(\sigma_1\sigma_3=1\)">\(\sigma_1\sigma_3=1\)</span> the last two terms cancel and the absolute numerator is one. When <span class="math" data-tex="\(\sigma_1\sigma_3=-1\)">\(\sigma_1\sigma_3=-1\)</span> it is <span class="math" data-tex="\(|-\sigma_1+\sqrt2\,\sigma_2|\)">\(|-\sigma_1+\sqrt2\,\sigma_2|\)</span>, whose two possible values are <span class="math" data-tex="\(\sqrt2-1\)">\(\sqrt2-1\)</span> and <span class="math" data-tex="\(\sqrt2+1\)">\(\sqrt2+1\)</span>.</p>
+<p>The original source's line 820 instead displays</p>
+<span class="math math-display" data-tex="\[
+-\frac1{8i}
+\left(-\sigma_1+\frac{\sigma_2}{\sqrt2}
++\frac{\sigma_1\sigma_2\sigma_3}{\sqrt2}\right)
++O(\epsilon_0).
+\tag{SP13}
+\]">\[
+-\frac1{8i}
+\left(-\sigma_1+\frac{\sigma_2}{\sqrt2}
++\frac{\sigma_1\sigma_2\sigma_3}{\sqrt2}\right)
++O(\epsilon_0).
+\tag{SP13}
+\]</span>
+<p>Its limiting coefficient does not agree with its own general formula at lines 809–811. For example, at the base point and signs <span class="math" data-tex="\((+,+,+)\)">\((+,+,+)\)</span>, SP12 gives <span class="math" data-tex="\(-1/(8i)\)">\(-1/(8i)\)</span>, while the displayed leading term SP13 gives <span class="math" data-tex="\(-(\sqrt2-1)/(8i)\)">\(-(\sqrt2-1)/(8i)\)</span>. This is a coefficient correction, not a failure of the required nonvanishing conclusion. Lines 814–815 also use a dot where the cross product in SP5 and source lines 810–811 is needed; a scalar dotted with <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> is not the expression being evaluated.</p>
+<p>The nonvanishing can be made uniform with every neighborhood constant explicit. Suppose the original frequencies close as in SP1 and</p>
+<span class="math math-display" data-tex="\[
+|\eta_j-\eta_j^0|\leq h,\qquad 0&lt;h\leq\frac1{16}.
+\tag{SP14}
+\]">\[
+|\eta_j-\eta_j^0|\leq h,\qquad 0&lt;h\leq\frac1{16}.
+\tag{SP14}
+\]</span>
+<p>Triangle and reverse triangle inequalities give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H\geq1-(1+\sqrt2)h-h^2,\qquad
+|r_1-r_2|\geq\sqrt2-1-2h,\\
+r_1+r_2-r_3\geq\sqrt2-3h,\qquad
+r_3-|r_1-r_2|\geq2-\sqrt2-3h,\\
+r_1r_2r_3\leq(1+h)^2(\sqrt2+h).
+\end{gathered}
+\tag{SP15}
+\]">\[
+\begin{gathered}
+H\geq1-(1+\sqrt2)h-h^2,\qquad
+|r_1-r_2|\geq\sqrt2-1-2h,\\
+r_1+r_2-r_3\geq\sqrt2-3h,\qquad
+r_3-|r_1-r_2|\geq2-\sqrt2-3h,\\
+r_1r_2r_3\leq(1+h)^2(\sqrt2+h).
+\end{gathered}
+\tag{SP15}
+\]</span>
+<p>For the first inequality, expand both perturbations in
+<span class="math" data-tex="\(\eta_1\times\eta_2-\eta_1^0\times\eta_2^0\)">\(\eta_1\times\eta_2-\eta_1^0\times\eta_2^0\)</span>;
+the three errors have bounds <span class="math" data-tex="\(\sqrt2 h,h,h^2\)">\(\sqrt2 h,h,h^2\)</span>.
+For all remaining inequalities use <span class="math" data-tex="\(|r_j-r_j^0|\leq h\)">\(|r_j-r_j^0|\leq h\)</span>, retaining the sign <span class="math" data-tex="\(r_2&gt;r_1\)">\(r_2&gt;r_1\)</span>, which follows from its displayed positive lower gap. The two strict triangle gaps in SP15 are positive for <span class="math" data-tex="\(h\leq1/16\)">\(h\leq1/16\)</span>, as is its bound for <span class="math" data-tex="\(H\)">\(H\)</span>.
+The absolute value of the last SP8 bracket is at least the smaller of those two gaps, and the first factor is at least <span class="math" data-tex="\(|r_1-r_2|\)">\(|r_1-r_2|\)</span>. Thus every coefficient obeys the original quantitative bound</p>
+<span class="math math-display" data-tex="\[
+|c_\sigma(\eta)|\geq
+\frac{\bigl[1-(1+\sqrt2)h-h^2\bigr]
+(\sqrt2-1-2h)(2-\sqrt2-3h)}
+{8(1+h)^2(\sqrt2+h)}&gt;0.
+\tag{SP16}
+\]">\[
+|c_\sigma(\eta)|\geq
+\frac{\bigl[1-(1+\sqrt2)h-h^2\bigr]
+(\sqrt2-1-2h)(2-\sqrt2-3h)}
+{8(1+h)^2(\sqrt2+h)}&gt;0.
+\tag{SP16}
+\]</span>
+<p>This estimate keeps all original frequencies; no rescaled triangle replaces them.</p>
+<h2 id="sp4-construct-the-full-tensor-inverse-for-arbitrary-input-sizes">SP4. Construct the full tensor inverse for arbitrary input sizes</h2>
+<p>Let <span class="math" data-tex="\(E=E_1\otimes_{\mathbb C}E_2\otimes_{\mathbb C}E_3\)">\(E=E_1\otimes_{\mathbb C}E_2\otimes_{\mathbb C}E_3\)</span>, of complex dimension eight. For signs <span class="math" data-tex="\(\sigma_j=\pm1\)">\(\sigma_j=\pm1\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+v_{j,\sigma_j}=\frac{n-i\sigma_jw_j}{2},\qquad
+U_\sigma=v_{1,\sigma_1}\otimes v_{2,\sigma_2}
+\otimes v_{3,\sigma_3}.
+\tag{SP17}
+\]">\[
+v_{j,\sigma_j}=\frac{n-i\sigma_jw_j}{2},\qquad
+U_\sigma=v_{1,\sigma_1}\otimes v_{2,\sigma_2}
+\otimes v_{3,\sigma_3}.
+\tag{SP17}
+\]</span>
+<p>For an arbitrary <span class="math" data-tex="\(Y_j=\alpha_j n+\beta_jw_j\in E_j\)">\(Y_j=\alpha_j n+\beta_jw_j\in E_j\)</span>,
+<span class="math" data-tex="\(\alpha_j=n\cdot Y_j\)">\(\alpha_j=n\cdot Y_j\)</span> and <span class="math" data-tex="\(\beta_j=w_j\cdot Y_j\)">\(\beta_j=w_j\cdot Y_j\)</span> are its actual complex coefficients. SP3 gives</p>
+<span class="math math-display" data-tex="\[
+R_{\eta_j}^{\theta_j}Y_j
+=\sum_{\sigma_j=\pm1}
+v_{j,\sigma_j}(\alpha_j+i\sigma_j\beta_j)e^{i\sigma_j\theta_j}.
+\tag{SP18}
+\]">\[
+R_{\eta_j}^{\theta_j}Y_j
+=\sum_{\sigma_j=\pm1}
+v_{j,\sigma_j}(\alpha_j+i\sigma_j\beta_j)e^{i\sigma_j\theta_j}.
+\tag{SP18}
+\]</span>
+<p>To verify both components, sum the terms for <span class="math" data-tex="\(Y_j=n\)">\(Y_j=n\)</span> and <span class="math" data-tex="\(Y_j=w_j\)">\(Y_j=w_j\)</span>. They are respectively
+<span class="math" data-tex="\(\cos\theta_j n+\sin\theta_j w_j\)">\(\cos\theta_j n+\sin\theta_j w_j\)</span> and
+<span class="math" data-tex="\(-\sin\theta_j n+\cos\theta_j w_j\)">\(-\sin\theta_j n+\cos\theta_j w_j\)</span>; linearity gives the full formula with its original <span class="math" data-tex="\(\alpha_j,\beta_j\)">\(\alpha_j,\beta_j\)</span>.</p>
+<p>Define a functional on simple tensors by</p>
+<span class="math math-display" data-tex="\[
+\ell_\sigma(Y_1\otimes Y_2\otimes Y_3)
+=\prod_{j=1}^3(\alpha_j+i\sigma_j\beta_j),
+\tag{SP19}
+\]">\[
+\ell_\sigma(Y_1\otimes Y_2\otimes Y_3)
+=\prod_{j=1}^3(\alpha_j+i\sigma_j\beta_j),
+\tag{SP19}
+\]</span>
+<p>and extend linearly to <span class="math" data-tex="\(E\)">\(E\)</span>. Each factor is linear in its own <span class="math" data-tex="\(Y_j\)">\(Y_j\)</span>, so the tensor functional is well-defined.
+For a basis candidate <span class="math" data-tex="\(v_{j,\tau_j}\)">\(v_{j,\tau_j}\)</span>, the factor equals
+<span class="math" data-tex="\((1+\sigma_j\tau_j)/2\)">\((1+\sigma_j\tau_j)/2\)</span>.
+It follows that</p>
+<span class="math math-display" data-tex="\[
+\ell_\sigma(U_\tau)=\delta_{\sigma,\tau},\qquad
+X=\sum_\sigma U_\sigma\ell_\sigma(X)\quad(X\in E).
+\tag{SP20}
+\]">\[
+\ell_\sigma(U_\tau)=\delta_{\sigma,\tau},\qquad
+X=\sum_\sigma U_\sigma\ell_\sigma(X)\quad(X\in E).
+\tag{SP20}
+\]</span>
+<p>Indeed the eight <span class="math" data-tex="\(U_\sigma\)">\(U_\sigma\)</span> are linearly independent by these functionals; they form a basis in the eight-dimensional tensor space, proving the expansion.
+Multilinearity, SP18 and SP7 also prove</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\eta(R_{\eta_1}^{\theta_1}Y_1,
+R_{\eta_2}^{\theta_2}Y_2,R_{\eta_3}^{\theta_3}Y_3)
+=\sum_\sigma c_\sigma\ell_\sigma(Y_1\otimes Y_2\otimes Y_3)
+e^{i\sigma\cdot\theta}.
+\tag{SP21}
+\]">\[
+\Lambda_\eta(R_{\eta_1}^{\theta_1}Y_1,
+R_{\eta_2}^{\theta_2}Y_2,R_{\eta_3}^{\theta_3}Y_3)
+=\sum_\sigma c_\sigma\ell_\sigma(Y_1\otimes Y_2\otimes Y_3)
+e^{i\sigma\cdot\theta}.
+\tag{SP21}
+\]</span>
+<p>Here <span class="math" data-tex="\(c_\sigma=\Lambda_\eta(v_{1,\sigma_1},v_{2,\sigma_2},v_{3,\sigma_3})\)">\(c_\sigma=\Lambda_\eta(v_{1,\sigma_1},v_{2,\sigma_2},v_{3,\sigma_3})\)</span>, because this is exactly the coefficient obtained by setting all <span class="math" data-tex="\(\alpha_j=1,\beta_j=0\)">\(\alpha_j=1,\beta_j=0\)</span>. Thus the coefficient in the actual rotated-input expression is the original SP7 coefficient, without an extra magnitude assumption.</p>
+<p>When <span class="math" data-tex="\(r_1\ne r_2\)">\(r_1\ne r_2\)</span>, define the actual tensor-valued kernel</p>
+<span class="math math-display" data-tex="\[
+F_\eta(\theta)=
+\sum_{\sigma\in\{-1,1\}^3}
+\frac{U_\sigma e^{-i\sigma\cdot\theta}}{(2\pi)^3c_\sigma(\eta)}.
+\tag{SP22}
+\]">\[
+F_\eta(\theta)=
+\sum_{\sigma\in\{-1,1\}^3}
+\frac{U_\sigma e^{-i\sigma\cdot\theta}}{(2\pi)^3c_\sigma(\eta)}.
+\tag{SP22}
+\]</span>
+<p>Integration uses the full Lebesgue measure <span class="math" data-tex="\(d\theta_1d\theta_2d\theta_3\)">\(d\theta_1d\theta_2d\theta_3\)</span> on <span class="math" data-tex="\([0,2\pi]^3\)">\([0,2\pi]^3\)</span>, not a probability measure. Since
+<span class="math" data-tex="\(\int_{[0,2\pi]^3}e^{i(\tau-\sigma)\cdot\theta}d\theta=(2\pi)^3\delta_{\sigma,\tau}\)">\(\int_{[0,2\pi]^3}e^{i(\tau-\sigma)\cdot\theta}d\theta=(2\pi)^3\delta_{\sigma,\tau}\)</span>,
+SP20–SP22 prove the complete original recovery identity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y_1\otimes Y_2\otimes Y_3
+={}&amp;\int_{[0,2\pi]^3}F_\eta(\theta)\,
+\Lambda_\eta(R_{\eta_1}^{\theta_1}Y_1,
+R_{\eta_2}^{\theta_2}Y_2,R_{\eta_3}^{\theta_3}Y_3)
+\,d\theta.
+\end{aligned}
+\tag{SP23}
+\]">\[
+\begin{aligned}
+Y_1\otimes Y_2\otimes Y_3
+={}&amp;\int_{[0,2\pi]^3}F_\eta(\theta)\,
+\Lambda_\eta(R_{\eta_1}^{\theta_1}Y_1,
+R_{\eta_2}^{\theta_2}Y_2,R_{\eta_3}^{\theta_3}Y_3)
+\,d\theta.
+\end{aligned}
+\tag{SP23}
+\]</span>
+<p>Every denominator, radius, orientation and input magnitude in this map is explicit.</p>
+<p>The construction is smooth in every noncollinear closed triangle with <span class="math" data-tex="\(r_1\ne r_2\)">\(r_1\ne r_2\)</span>: the cross product, positive square root, divisions by <span class="math" data-tex="\(H,r_j,c_\sigma\)">\(H,r_j,c_\sigma\)</span>, and finite exponential sum are smooth there. Differentiating these explicit formulas gives every local derivative. On a compact subset the same formulas bound all derivatives because their denominators have positive minima. SP16 provides a definite such lower bound near the original base frequencies.</p>
+<p>For real <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, <span class="math" data-tex="\(U_{-\sigma}=\overline{U_\sigma}\)">\(U_{-\sigma}=\overline{U_\sigma}\)</span> and
+<span class="math" data-tex="\(c_{-\sigma}=\overline{c_\sigma}\)">\(c_{-\sigma}=\overline{c_\sigma}\)</span>. Pairing the opposite signs in SP22 shows that <span class="math" data-tex="\(F_\eta(\theta)\)">\(F_\eta(\theta)\)</span> lies in the real tensor product for real <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.
+Also</p>
+<span class="math math-display" data-tex="\[
+\|v_{j,\sigma_j}\|=\frac1{\sqrt2},\quad
+\|U_\sigma\|=\frac1{2\sqrt2},\quad
+\|F_\eta(\theta)\|\leq
+\frac{2\sqrt2}{(2\pi)^3\min_\sigma|c_\sigma|}.
+\tag{SP24}
+\]">\[
+\|v_{j,\sigma_j}\|=\frac1{\sqrt2},\quad
+\|U_\sigma\|=\frac1{2\sqrt2},\quad
+\|F_\eta(\theta)\|\leq
+\frac{2\sqrt2}{(2\pi)^3\min_\sigma|c_\sigma|}.
+\tag{SP24}
+\]</span>
+<p>The first identity follows by the Hermitian norm of <span class="math" data-tex="\(n-i\sigma_jw_j\)">\(n-i\sigma_jw_j\)</span>; the second uses the tensor norm, and the third sums all eight original coefficients. In particular the integral in SP23 is a genuine finite-dimensional Bochner integral.</p>
+<h2 id="sp5-prove-the-exact-operator-norms-and-the-space-defined-by-degeneracy">SP5. Prove the exact operator norms and the space defined by degeneracy</h2>
+<p>Keep the full Lebesgue <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm on the angle torus. Define the actual linear observation map</p>
+<span class="math math-display" data-tex="\[
+T_\eta:E\longrightarrow L^2([0,2\pi]^3;\mathbb C),
+\qquad
+(T_\eta X)(\theta)=\sum_\sigma c_\sigma\ell_\sigma(X)e^{i\sigma\cdot\theta}.
+\tag{SP25}
+\]">\[
+T_\eta:E\longrightarrow L^2([0,2\pi]^3;\mathbb C),
+\qquad
+(T_\eta X)(\theta)=\sum_\sigma c_\sigma\ell_\sigma(X)e^{i\sigma\cdot\theta}.
+\tag{SP25}
+\]</span>
+<p>For simple tensors this is exactly the rotated original trilinear expression SP21. Its range consists of a subspace of the eight indicated Fourier characters.
+The vectors <span class="math" data-tex="\(U_\sigma\)">\(U_\sigma\)</span> are Hermitian orthogonal: in any coordinate where two signs differ, the corresponding inner product is
+<span class="math" data-tex="\((n+i\sigma_jw_j)\cdot(n+i\sigma_jw_j)/4=0\)">\((n+i\sigma_jw_j)\cdot(n+i\sigma_jw_j)/4=0\)</span>.
+Each tensor has squared norm <span class="math" data-tex="\(1/8\)">\(1/8\)</span>, hence</p>
+<span class="math math-display" data-tex="\[
+\|X\|^2=\frac18\sum_\sigma|\ell_\sigma(X)|^2,\qquad
+\|T_\eta X\|_{L^2}^2=(2\pi)^3
+\sum_\sigma|c_\sigma|^2|\ell_\sigma(X)|^2.
+\tag{SP26}
+\]">\[
+\|X\|^2=\frac18\sum_\sigma|\ell_\sigma(X)|^2,\qquad
+\|T_\eta X\|_{L^2}^2=(2\pi)^3
+\sum_\sigma|c_\sigma|^2|\ell_\sigma(X)|^2.
+\tag{SP26}
+\]</span>
+<p>Orthogonality of the original angle characters proves the second identity, including its full measure factor. The singular values on the nonzero modes are exactly
+<span class="math" data-tex="\(\sqrt8(2\pi)^{3/2}|c_\sigma|\)">\(\sqrt8(2\pi)^{3/2}|c_\sigma|\)</span>.</p>
+<p>For <span class="math" data-tex="\(r_1\ne r_2\)">\(r_1\ne r_2\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+A_\eta g=\int_{[0,2\pi]^3}F_\eta(\theta)g(\theta)d\theta
+=\sum_\sigma U_\sigma\frac{\widehat g(\sigma)}{c_\sigma},
+\quad
+\widehat g(\sigma)=\frac1{(2\pi)^3}
+\int_{[0,2\pi]^3}g(\theta)e^{-i\sigma\cdot\theta}d\theta.
+\tag{SP27}
+\]">\[
+A_\eta g=\int_{[0,2\pi]^3}F_\eta(\theta)g(\theta)d\theta
+=\sum_\sigma U_\sigma\frac{\widehat g(\sigma)}{c_\sigma},
+\quad
+\widehat g(\sigma)=\frac1{(2\pi)^3}
+\int_{[0,2\pi]^3}g(\theta)e^{-i\sigma\cdot\theta}d\theta.
+\tag{SP27}
+\]</span>
+<p>This is bounded on the full angle <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space: the eight coefficient functionals are bounded by Cauchy–Schwarz. Equations SP20 and SP25 give <span class="math" data-tex="\(A_\eta T_\eta=I_E\)">\(A_\eta T_\eta=I_E\)</span>, and <span class="math" data-tex="\(T_\eta A_\eta\)">\(T_\eta A_\eta\)</span> is the orthogonal projection onto the span of the eight angle characters. Bessel's inequality, obtained directly by subtracting the finite orthogonal projection, and SP26 prove the exact norms</p>
+<span class="math math-display" data-tex="\[
+\|T_\eta\|=\sqrt8(2\pi)^{3/2}\max_\sigma|c_\sigma|,
+\qquad
+\|A_\eta\|=\frac1{\sqrt8(2\pi)^{3/2}\min_\sigma|c_\sigma|}.
+\tag{SP28}
+\]">\[
+\|T_\eta\|=\sqrt8(2\pi)^{3/2}\max_\sigma|c_\sigma|,
+\qquad
+\|A_\eta\|=\frac1{\sqrt8(2\pi)^{3/2}\min_\sigma|c_\sigma|}.
+\tag{SP28}
+\]</span>
+<p>Equality in each bound is attained by an individual maximizing or minimizing mode. These are the full physical coefficient maps and their exact norms, not bounds on a replacement tensor.</p>
+<p>At an original noncollinear triangle with <span class="math" data-tex="\(r_1=r_2\)">\(r_1=r_2\)</span>, define instead</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_{\rm lost}=\operatorname{span}_{\mathbb C}
+\{U_\sigma:\sigma_1=\sigma_2\},\qquad
+E_{\rm seen}=\operatorname{span}_{\mathbb C}
+\{U_\sigma:\sigma_1\ne\sigma_2\},\\
+\mathcal R_{\rm seen}=\operatorname{span}_{\mathbb C}
+\{e^{i\sigma\cdot\theta}:\sigma_1\ne\sigma_2\}.
+\end{gathered}
+\tag{SP29}
+\]">\[
+\begin{gathered}
+E_{\rm lost}=\operatorname{span}_{\mathbb C}
+\{U_\sigma:\sigma_1=\sigma_2\},\qquad
+E_{\rm seen}=\operatorname{span}_{\mathbb C}
+\{U_\sigma:\sigma_1\ne\sigma_2\},\\
+\mathcal R_{\rm seen}=\operatorname{span}_{\mathbb C}
+\{e^{i\sigma\cdot\theta}:\sigma_1\ne\sigma_2\}.
+\end{gathered}
+\tag{SP29}
+\]</span>
+<p>Each has complex dimension four. The exact SP10 zeros and dual expansion SP20 imply</p>
+<span class="math math-display" data-tex="\[
+\ker T_\eta=E_{\rm lost},\qquad
+\operatorname{ran}T_\eta=\mathcal R_{\rm seen},\qquad
+E=E_{\rm lost}\oplus E_{\rm seen},\qquad
+E_{\rm lost}\perp E_{\rm seen}.
+\tag{SP30}
+\]">\[
+\ker T_\eta=E_{\rm lost},\qquad
+\operatorname{ran}T_\eta=\mathcal R_{\rm seen},\qquad
+E=E_{\rm lost}\oplus E_{\rm seen},\qquad
+E_{\rm lost}\perp E_{\rm seen}.
+\tag{SP30}
+\]</span>
+<p>Construct <span class="math" data-tex="\(F_\eta^+\)">\(F_\eta^+\)</span> and <span class="math" data-tex="\(A_\eta^+\)">\(A_\eta^+\)</span> by the SP22 and SP27 formulas with only the four signs satisfying <span class="math" data-tex="\(\sigma_1\ne\sigma_2\)">\(\sigma_1\ne\sigma_2\)</span>.
+Every retained denominator is nonzero. The same character integrals prove</p>
+<span class="math math-display" data-tex="\[
+A_\eta^+T_\eta=P_{\rm seen}
+=\sum_{\sigma_1\ne\sigma_2}U_\sigma\ell_\sigma,\qquad
+T_\eta A_\eta^+=P_{\mathcal R_{\rm seen}}.
+\tag{SP31}
+\]">\[
+A_\eta^+T_\eta=P_{\rm seen}
+=\sum_{\sigma_1\ne\sigma_2}U_\sigma\ell_\sigma,\qquad
+T_\eta A_\eta^+=P_{\mathcal R_{\rm seen}}.
+\tag{SP31}
+\]</span>
+<p>Both displayed projections are the actual orthogonal projections for the declared full norms. The restricted map <span class="math" data-tex="\(T_\eta:E_{\rm seen}\to\mathcal R_{\rm seen}\)">\(T_\eta:E_{\rm seen}\to\mathcal R_{\rm seen}\)</span> is an isomorphism with inverse <span class="math" data-tex="\(A_\eta^+\)">\(A_\eta^+\)</span>, and the exact norm calculation SP28 holds after restricting both extrema to these four signs.
+This supplies the split exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow E_{\rm lost}
+\xrightarrow{\ \iota\ }E
+\xrightarrow{\ T_\eta\ }\mathcal R_{\rm seen}
+\longrightarrow0,
+\tag{SP32}
+\]">\[
+0\longrightarrow E_{\rm lost}
+\xrightarrow{\ \iota\ }E
+\xrightarrow{\ T_\eta\ }\mathcal R_{\rm seen}
+\longrightarrow0,
+\tag{SP32}
+\]</span>
+<p>whose right splitting is <span class="math" data-tex="\(A_\eta^+|_{\mathcal R_{\rm seen}}\)">\(A_\eta^+|_{\mathcal R_{\rm seen}}\)</span>. Exactness follows from SP30; the composition with the splitting is the identity by SP31. Thus the failure of full recovery defines a precise four-dimensional space, with an exact recovery map for all remaining data.</p>
+<p>All these subspaces and maps preserve real tensors. Complex conjugation takes <span class="math" data-tex="\(U_\sigma\)">\(U_\sigma\)</span> to <span class="math" data-tex="\(U_{-\sigma}\)">\(U_{-\sigma}\)</span>, preserving both sign conditions. For the lost space a real basis is given, for each <span class="math" data-tex="\(\sigma=(+,+,+)\)">\(\sigma=(+,+,+)\)</span> and <span class="math" data-tex="\((+,+,-)\)">\((+,+,-)\)</span>, by</p>
+<span class="math math-display" data-tex="\[
+U_\sigma+U_{-\sigma},\qquad
+\frac{U_\sigma-U_{-\sigma}}{i}.
+\tag{SP33}
+\]">\[
+U_\sigma+U_{-\sigma},\qquad
+\frac{U_\sigma-U_{-\sigma}}{i}.
+\tag{SP33}
+\]</span>
+<p>Linear independence follows by the four distinct complex basis coefficients in SP20; these four real tensors span the conjugation-fixed part. The same construction from <span class="math" data-tex="\((+,-,+)\)">\((+,-,+)\)</span> and <span class="math" data-tex="\((+,-,-)\)">\((+,-,-)\)</span> gives a real basis of the seen space. Hence the original real observation also has rank four and a four-dimensional kernel. No original complex or real data have been discarded by calling this loss a notation issue.</p>
+<h2 id="rf1-close-the-original-frequencies-by-explicit-rotations">RF1. Close the original frequencies by explicit rotations</h2>
+<p>Retain the original base vectors
+<span class="math" data-tex="\(\xi_1^0=(0,1,0)\)">\(\xi_1^0=(0,1,0)\)</span>, <span class="math" data-tex="\(\xi_2^0=(-1,-1,0)\)">\(\xi_2^0=(-1,-1,0)\)</span>,
+<span class="math" data-tex="\(\xi_3^0=(1,0,0)\)">\(\xi_3^0=(1,0,0)\)</span>.
+For the current construction take the original parameter and input region</p>
+<span class="math math-display" data-tex="\[
+0&lt;\epsilon_0\leq\frac1{1024},\qquad
+h=2\epsilon_0^3,\qquad
+|\xi_j-\xi_j^0|&lt;h,\qquad r_j=|\xi_j|.
+\tag{RF1}
+\]">\[
+0&lt;\epsilon_0\leq\frac1{1024},\qquad
+h=2\epsilon_0^3,\qquad
+|\xi_j-\xi_j^0|&lt;h,\qquad r_j=|\xi_j|.
+\tag{RF1}
+\]</span>
+<p>The vectors <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span> need not close. Their original radii are never changed.
+Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b=\frac{r_2^2-r_1^2-r_3^2}{2r_1},\qquad
+a=\sqrt{r_3^2-b^2},\\
+\eta_1=(0,r_1,0),\quad
+\eta_2=(-a,-r_1-b,0),\quad
+\eta_3=(a,b,0).
+\end{gathered}
+\tag{RF2}
+\]">\[
+\begin{gathered}
+b=\frac{r_2^2-r_1^2-r_3^2}{2r_1},\qquad
+a=\sqrt{r_3^2-b^2},\\
+\eta_1=(0,r_1,0),\quad
+\eta_2=(-a,-r_1-b,0),\quad
+\eta_3=(a,b,0).
+\end{gathered}
+\tag{RF2}
+\]</span>
+<p>The positive square root is well-defined. To see this and retain definite bounds, first <span class="math" data-tex="\(|r_j-r_j^0|\leq h\)">\(|r_j-r_j^0|\leq h\)</span>, where
+<span class="math" data-tex="\((r_1^0,r_2^0,r_3^0)=(1,\sqrt2,1)\)">\((r_1^0,r_2^0,r_3^0)=(1,\sqrt2,1)\)</span>. Since <span class="math" data-tex="\(h&lt;1/128\)">\(h&lt;1/128\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|r_2^2-r_1^2-r_3^2|
+\leq(4+2\sqrt2+3h)h&lt;7h,\qquad
+|b|&lt;4h,\\
+|r_3^2-b^2-1|\leq2h+17h^2&lt;3h,\qquad
+a^2&gt;1-3h&gt;0,\qquad |a-1|&lt;3h.
+\end{gathered}
+\tag{RF3}
+\]">\[
+\begin{gathered}
+|r_2^2-r_1^2-r_3^2|
+\leq(4+2\sqrt2+3h)h&lt;7h,\qquad
+|b|&lt;4h,\\
+|r_3^2-b^2-1|\leq2h+17h^2&lt;3h,\qquad
+a^2&gt;1-3h&gt;0,\qquad |a-1|&lt;3h.
+\end{gathered}
+\tag{RF3}
+\]</span>
+<p>The first bound expands the three square differences from their original values <span class="math" data-tex="\(2,1,1\)">\(2,1,1\)</span>; the denominator <span class="math" data-tex="\(2r_1\geq2(1-h)\)">\(2r_1\geq2(1-h)\)</span> gives the second. The next follows from
+<span class="math" data-tex="\(|r_3^2-1|\leq(2+h)h\)">\(|r_3^2-1|\leq(2+h)h\)</span> and <span class="math" data-tex="\(b^2\leq16h^2\)">\(b^2\leq16h^2\)</span>.
+The last follows by dividing <span class="math" data-tex="\(|a^2-1|\)">\(|a^2-1|\)</span> by <span class="math" data-tex="\(a+1&gt;1\)">\(a+1&gt;1\)</span>.
+The definitions now give exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta_1+\eta_2+\eta_3=0,\qquad|\eta_j|=r_j,\qquad
+H=|\eta_1\times\eta_2|=r_1a&gt;0,\\
+|\eta_1-\xi_1^0|\leq h,\qquad
+|\eta_3-\xi_3^0|&lt;5h,\qquad
+|\eta_2-\xi_2^0|&lt;6h.
+\end{gathered}
+\tag{RF4}
+\]">\[
+\begin{gathered}
+\eta_1+\eta_2+\eta_3=0,\qquad|\eta_j|=r_j,\qquad
+H=|\eta_1\times\eta_2|=r_1a&gt;0,\\
+|\eta_1-\xi_1^0|\leq h,\qquad
+|\eta_3-\xi_3^0|&lt;5h,\qquad
+|\eta_2-\xi_2^0|&lt;6h.
+\end{gathered}
+\tag{RF4}
+\]</span>
+<p>For <span class="math" data-tex="\(\eta_2\)">\(\eta_2\)</span>, its squared norm is
+<span class="math" data-tex="\(a^2+(r_1+b)^2=r_3^2+r_1^2+2r_1b=r_2^2\)">\(a^2+(r_1+b)^2=r_3^2+r_1^2+2r_1b=r_2^2\)</span>.
+Its displacement has components of absolute value at most <span class="math" data-tex="\(3h,5h\)">\(3h,5h\)</span>, hence is less than <span class="math" data-tex="\(\sqrt{34}h&lt;6h\)">\(\sqrt{34}h&lt;6h\)</span>.
+Thus SP14–SP16 apply with their actual neighborhood radius <span class="math" data-tex="\(6h=12\epsilon_0^3&lt;1/16\)">\(6h=12\epsilon_0^3&lt;1/16\)</span>. In particular the eight original spin coefficients are nonzero with the complete bound supplied there.</p>
+<p>There is also an explicit original-field rotation. Write</p>
+<span class="math math-display" data-tex="\[
+u_j=\frac{\xi_j}{r_j},\quad v_j=\frac{\eta_j}{r_j},\quad
+k_j=u_j\times v_j,\quad d_j=u_j\cdot v_j,\qquad
+Q_j=I+[k_j]_\times+\frac{[k_j]_\times^2}{1+d_j},
+\tag{RF5}
+\]">\[
+u_j=\frac{\xi_j}{r_j},\quad v_j=\frac{\eta_j}{r_j},\quad
+k_j=u_j\times v_j,\quad d_j=u_j\cdot v_j,\qquad
+Q_j=I+[k_j]_\times+\frac{[k_j]_\times^2}{1+d_j},
+\tag{RF5}
+\]</span>
+<p>where <span class="math" data-tex="\([k]_\times x=k\times x\)">\([k]_\times x=k\times x\)</span>. The auxiliary unit directions retain their full original radii in this formula.
+By RF4,
+<span class="math" data-tex="\(|u_j-v_j|\leq7h/(1-h)&lt;8h\)">\(|u_j-v_j|\leq7h/(1-h)&lt;8h\)</span>, so
+<span class="math" data-tex="\(d_j=1-|u_j-v_j|^2/2&gt;1-32h^2&gt;0\)">\(d_j=1-|u_j-v_j|^2/2&gt;1-32h^2&gt;0\)</span>.
+Every denominator in RF5 is positive. To verify the map exactly, put <span class="math" data-tex="\(K=[k_j]_\times\)">\(K=[k_j]_\times\)</span>. Then
+<span class="math" data-tex="\(K^{\mathsf T}=-K\)">\(K^{\mathsf T}=-K\)</span>,
+<span class="math" data-tex="\(K^2=k_jk_j^{\mathsf T}-|k_j|^2I\)">\(K^2=k_jk_j^{\mathsf T}-|k_j|^2I\)</span>,
+<span class="math" data-tex="\(|k_j|^2=1-d_j^2\)">\(|k_j|^2=1-d_j^2\)</span>, and <span class="math" data-tex="\(K^3=-|k_j|^2K\)">\(K^3=-|k_j|^2K\)</span>.
+Put <span class="math" data-tex="\(t=(1+d_j)^{-1}\)">\(t=(1+d_j)^{-1}\)</span>. Expanding RF5 and its transpose gives</p>
+<span class="math math-display" data-tex="\[
+Q_j^{\mathsf T}Q_j
+=I+(2t-1)K^2+t^2K^4
+=I+\left[\frac{2}{1+d_j}-1
+-\frac{1-d_j^2}{(1+d_j)^2}\right]K^2=I.
+\]">\[
+Q_j^{\mathsf T}Q_j
+=I+(2t-1)K^2+t^2K^4
+=I+\left[\frac{2}{1+d_j}-1
+-\frac{1-d_j^2}{(1+d_j)^2}\right]K^2=I.
+\]</span>
+<p>Also</p>
+<span class="math math-display" data-tex="\[
+Ku_j=v_j-d_ju_j,\qquad K^2u_j=-(1-d_j^2)u_j,
+\qquad Q_ju_j=v_j.
+\]">\[
+Ku_j=v_j-d_ju_j,\qquad K^2u_j=-(1-d_j^2)u_j,
+\qquad Q_ju_j=v_j.
+\]</span>
+<p>The determinant is one: continuously move <span class="math" data-tex="\(v_j\)">\(v_j\)</span> to <span class="math" data-tex="\(u_j\)">\(u_j\)</span> along the shorter spherical arc, on which <span class="math" data-tex="\(1+d_j&gt;0\)">\(1+d_j&gt;0\)</span>; RF5 remains orthogonal and reaches <span class="math" data-tex="\(I\)">\(I\)</span>, and an orthogonal determinant cannot change between <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> continuously. Consequently</p>
+<span class="math math-display" data-tex="\[
+Q_j\in SO(3),\qquad Q_j\xi_j=\eta_j.
+\tag{RF6}
+\]">\[
+Q_j\in SO(3),\qquad Q_j\xi_j=\eta_j.
+\tag{RF6}
+\]</span>
+<p>All these maps are smooth on the entire open region RF1 by their explicit formulas.</p>
+<h2 id="rf2-identify-the-entire-six-dimensional-fiber">RF2. Identify the entire six-dimensional fiber</h2>
+<p>For the original fixed <span class="math" data-tex="\(\xi=(\xi_1,\xi_2,\xi_3)\)">\(\xi=(\xi_1,\xi_2,\xi_3)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_\xi:SO(3)^3\longrightarrow\mathbb R^3,\qquad
+G_\xi(R)=R_1\xi_1+R_2\xi_2+R_3\xi_3,\\
+\Sigma_\xi=G_\xi^{-1}(0).
+\end{gathered}
+\tag{RF7}
+\]">\[
+\begin{gathered}
+G_\xi:SO(3)^3\longrightarrow\mathbb R^3,\qquad
+G_\xi(R)=R_1\xi_1+R_2\xi_2+R_3\xi_3,\\
+\Sigma_\xi=G_\xi^{-1}(0).
+\end{gathered}
+\tag{RF7}
+\]</span>
+<p>Its full parametrization is</p>
+<span class="math math-display" data-tex="\[
+\Phi_\xi(S,\theta)=
+\bigl(SR_{\eta_1}^{\theta_1}Q_1,\,
+SR_{\eta_2}^{\theta_2}Q_2,\,
+SR_{\eta_3}^{\theta_3}Q_3\bigr),
+\qquad (S,\theta)\in SO(3)\times(\mathbb R/2\pi\mathbb Z)^3.
+\tag{RF8}
+\]">\[
+\Phi_\xi(S,\theta)=
+\bigl(SR_{\eta_1}^{\theta_1}Q_1,\,
+SR_{\eta_2}^{\theta_2}Q_2,\,
+SR_{\eta_3}^{\theta_3}Q_3\bigr),
+\qquad (S,\theta)\in SO(3)\times(\mathbb R/2\pi\mathbb Z)^3.
+\tag{RF8}
+\]</span>
+<p>Each image lies in the fiber, because its three frequency images are <span class="math" data-tex="\(S\eta_j\)">\(S\eta_j\)</span>, whose sum is zero.</p>
+<p>Conversely let <span class="math" data-tex="\(R\in\Sigma_\xi\)">\(R\in\Sigma_\xi\)</span> and <span class="math" data-tex="\(y_j=R_j\xi_j\)">\(y_j=R_j\xi_j\)</span>. The original lengths are <span class="math" data-tex="\(r_j\)">\(r_j\)</span>, the three vectors close, and</p>
+<span class="math math-display" data-tex="\[
+y_1\cdot y_2=\eta_1\cdot\eta_2
+=\frac{r_3^2-r_1^2-r_2^2}{2}.
+\tag{RF9}
+\]">\[
+y_1\cdot y_2=\eta_1\cdot\eta_2
+=\frac{r_3^2-r_1^2-r_2^2}{2}.
+\tag{RF9}
+\]</span>
+<p>Their Gram matrices agree, and their cross products are nonzero by RF4 and RF9. There is a unique <span class="math" data-tex="\(S\in SO(3)\)">\(S\in SO(3)\)</span> sending all <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> to <span class="math" data-tex="\(y_j\)">\(y_j\)</span>. Explicitly use the two oriented orthonormal frames whose first vectors are respectively <span class="math" data-tex="\(\eta_1/r_1\)">\(\eta_1/r_1\)</span> and <span class="math" data-tex="\(y_1/r_1\)">\(y_1/r_1\)</span>, whose second vectors are the components of <span class="math" data-tex="\(\eta_2\)">\(\eta_2\)</span> and <span class="math" data-tex="\(y_2\)">\(y_2\)</span> perpendicular to those first vectors divided by their common positive length, and whose third vectors are the cross products of the first two. If these frame matrices are <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>, then <span class="math" data-tex="\(S=YE^{\mathsf T}\)">\(S=YE^{\mathsf T}\)</span>. It sends the first two original vectors correctly by RF9, and the third by closure. Uniqueness follows because a proper rotation agreeing on two independent vectors also agrees on their cross product.</p>
+<p>The map <span class="math" data-tex="\(S^{-1}R_jQ_j^{-1}\)">\(S^{-1}R_jQ_j^{-1}\)</span> fixes <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span>; its restriction to the oriented perpendicular plane is therefore a unique planar rotation. Its angle determines <span class="math" data-tex="\(\theta_j\)">\(\theta_j\)</span> modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, as in SP3. This proves bijectivity of RF8. The frame formulas and the sine and cosine entries of these planar rotations give a smooth inverse valued in <span class="math" data-tex="\(SO(3)\times(\mathbb R/2\pi\mathbb Z)^3\)">\(SO(3)\times(\mathbb R/2\pi\mathbb Z)^3\)</span>; no global real angle branch is needed.
+The differential metric below is nonsingular, proving that this is a diffeomorphism of the entire fiber, not only a parametrized subset. In particular every frequency-closing rotation is included.</p>
+<h2 id="rf3-specify-the-original-group-metric-and-haar-volume">RF3. Specify the original group metric and Haar volume</h2>
+<p>On each <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>, identify a tangent vector by its spatial angular velocity <span class="math" data-tex="\(\alpha\in\mathbb R^3\)">\(\alpha\in\mathbb R^3\)</span>:
+<span class="math" data-tex="\(\dot R=[\alpha]_\times R\)">\(\dot R=[\alpha]_\times R\)</span>.
+The metric is <span class="math" data-tex="\(|\alpha|^2\)">\(|\alpha|^2\)</span>; use its product metric on <span class="math" data-tex="\(SO(3)^3\)">\(SO(3)^3\)</span>.
+Both left and right translations preserve this metric, since their angular maps are rotations. Its Riemannian volume <span class="math" data-tex="\(dV\)">\(dV\)</span> is thus invariant. Its exact total volume is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(SO(3))=8\pi^2,\qquad dR=\frac{dV(R)}{8\pi^2},
+\tag{RF10}
+\]">\[
+\operatorname{vol}(SO(3))=8\pi^2,\qquad dR=\frac{dV(R)}{8\pi^2},
+\tag{RF10}
+\]</span>
+<p>where <span class="math" data-tex="\(dR\)">\(dR\)</span> denotes probability Haar measure.
+For completeness use Euler coordinates
+<span class="math" data-tex="\(R=R_{e_3}^{\alpha}R_{e_2}^{\beta}R_{e_3}^{\gamma}\)">\(R=R_{e_3}^{\alpha}R_{e_2}^{\beta}R_{e_3}^{\gamma}\)</span>,
+with <span class="math" data-tex="\(0\leq\alpha,\gamma&lt;2\pi\)">\(0\leq\alpha,\gamma&lt;2\pi\)</span> and <span class="math" data-tex="\(0&lt;\beta&lt;\pi\)">\(0&lt;\beta&lt;\pi\)</span>.
+Their angular tangent columns are
+<span class="math" data-tex="\(e_3,R_{e_3}^{\alpha}e_2,R_{e_3}^{\alpha}R_{e_2}^{\beta}e_3\)">\(e_3,R_{e_3}^{\alpha}e_2,R_{e_3}^{\alpha}R_{e_2}^{\beta}e_3\)</span>.
+The absolute determinant is <span class="math" data-tex="\(\sin\beta\)">\(\sin\beta\)</span>. These coordinates are one-to-one away from the two pole circles: <span class="math" data-tex="\(Re_3\)">\(Re_3\)</span> determines <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>, and the remaining stabilizer rotation determines <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The omitted sets have volume zero, since local three-dimensional smooth volume assigns zero measure to those circles. Thus integrating <span class="math" data-tex="\(\sin\beta\)">\(\sin\beta\)</span> gives
+<span class="math" data-tex="\((2\pi)\cdot2\cdot(2\pi)=8\pi^2\)">\((2\pi)\cdot2\cdot(2\pi)=8\pi^2\)</span>, proving RF10 with this specified metric.</p>
+<p>At a point of the fiber put <span class="math" data-tex="\(y_j=R_j\xi_j\)">\(y_j=R_j\xi_j\)</span>. The full derivative and its Euclidean adjoint satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+DG_\xi(\alpha_1,\alpha_2,\alpha_3)
+=\sum_{j=1}^3\alpha_j\times y_j,\\
+DG_\xi DG_\xi^*
+=\sum_{j=1}^3(r_j^2I-y_jy_j^{\mathsf T}),\qquad
+J_\xi(R)=\sqrt{\det(DG_\xi DG_\xi^*)}.
+\end{gathered}
+\tag{RF11}
+\]">\[
+\begin{gathered}
+DG_\xi(\alpha_1,\alpha_2,\alpha_3)
+=\sum_{j=1}^3\alpha_j\times y_j,\\
+DG_\xi DG_\xi^*
+=\sum_{j=1}^3(r_j^2I-y_jy_j^{\mathsf T}),\qquad
+J_\xi(R)=\sqrt{\det(DG_\xi DG_\xi^*)}.
+\end{gathered}
+\tag{RF11}
+\]</span>
+<p>For example the adjoint applied to <span class="math" data-tex="\(z\)">\(z\)</span> has entries <span class="math" data-tex="\(y_j\times z\)">\(y_j\times z\)</span>, by the scalar triple product, and
+<span class="math" data-tex="\((y_j\times z)\times y_j=r_j^2z-(y_j\cdot z)y_j\)">\((y_j\times z)\times y_j=r_j^2z-(y_j\cdot z)y_j\)</span>.
+For nonzero <span class="math" data-tex="\(z\)">\(z\)</span>, the quadratic form is
+<span class="math" data-tex="\(\sum_j|y_j\times z|^2&gt;0\)">\(\sum_j|y_j\times z|^2&gt;0\)</span>, because <span class="math" data-tex="\(y_1,y_2\)">\(y_1,y_2\)</span> are noncollinear. Thus the derivative is surjective. The finite-dimensional implicit function theorem now gives an embedded six-dimensional fiber and justifies its induced surface measure <span class="math" data-tex="\(d\sigma\)">\(d\sigma\)</span>.</p>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+L_r=r_1^2+r_2^2+r_3^2,\qquad
+K_r=\sum_{j=1}^3(r_j^2I-\eta_j\eta_j^{\mathsf T}),\qquad
+K_0=\sum_{j=1}^3\left(I-\frac{\eta_j\eta_j^{\mathsf T}}{r_j^2}\right).
+\tag{RF12}
+\]">\[
+L_r=r_1^2+r_2^2+r_3^2,\qquad
+K_r=\sum_{j=1}^3(r_j^2I-\eta_j\eta_j^{\mathsf T}),\qquad
+K_0=\sum_{j=1}^3\left(I-\frac{\eta_j\eta_j^{\mathsf T}}{r_j^2}\right).
+\tag{RF12}
+\]</span>
+<p>Then <span class="math" data-tex="\(DG_\xi DG_\xi^*=SK_rS^{\mathsf T}\)">\(DG_\xi DG_\xi^*=SK_rS^{\mathsf T}\)</span> on RF8. Direct determinants give</p>
+<span class="math math-display" data-tex="\[
+\det K_r=3H^2L_r,\qquad
+\det K_0=\frac{3H^2L_r}{r_1^2r_2^2r_3^2},\qquad
+J_\xi=\sqrt{3H^2L_r}.
+\tag{RF13}
+\]">\[
+\det K_r=3H^2L_r,\qquad
+\det K_0=\frac{3H^2L_r}{r_1^2r_2^2r_3^2},\qquad
+J_\xi=\sqrt{3H^2L_r}.
+\tag{RF13}
+\]</span>
+<p>Here is the full determinant calculation. The common perpendicular vector <span class="math" data-tex="\(n\)">\(n\)</span> is an eigenvector of <span class="math" data-tex="\(K_r\)">\(K_r\)</span> with eigenvalue <span class="math" data-tex="\(L_r\)">\(L_r\)</span>. On the common plane write <span class="math" data-tex="\(M=\sum_j\eta_j\eta_j^{\mathsf T}\)">\(M=\sum_j\eta_j\eta_j^{\mathsf T}\)</span>, a two-dimensional matrix with trace <span class="math" data-tex="\(L_r\)">\(L_r\)</span>. The plane restriction of <span class="math" data-tex="\(K_r\)">\(K_r\)</span> is <span class="math" data-tex="\(L_rI-M\)">\(L_rI-M\)</span>, whose determinant is <span class="math" data-tex="\(\det M\)">\(\det M\)</span>. Expanding that determinant as a sum of all two-column minors gives
+<span class="math" data-tex="\(\det M=\sum_{j&lt;k}|\eta_j\times\eta_k|^2=3H^2\)">\(\det M=\sum_{j&lt;k}|\eta_j\times\eta_k|^2=3H^2\)</span>, since closure makes all three cross-product magnitudes <span class="math" data-tex="\(H\)">\(H\)</span>.
+For <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, its normal eigenvalue is three; the same plane calculation gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{j&lt;k}\left|\frac{\eta_j}{r_j}\times\frac{\eta_k}{r_k}\right|^2
+=H^2\left(\frac1{r_1^2r_2^2}+\frac1{r_1^2r_3^2}
++\frac1{r_2^2r_3^2}\right)
+=\frac{H^2L_r}{r_1^2r_2^2r_3^2}.
+\]">\[
+\sum_{j&lt;k}\left|\frac{\eta_j}{r_j}\times\frac{\eta_k}{r_k}\right|^2
+=H^2\left(\frac1{r_1^2r_2^2}+\frac1{r_1^2r_3^2}
++\frac1{r_2^2r_3^2}\right)
+=\frac{H^2L_r}{r_1^2r_2^2r_3^2}.
+\]</span>
+<p>This proves both determinants, retaining every original radius.</p>
+<h2 id="rf4-derive-the-complete-surface-and-delta-measures">RF4. Derive the complete surface and delta measures</h2>
+<p>In the parametrization RF8, an angular variation <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span> and angle variations <span class="math" data-tex="\(t_j\)">\(t_j\)</span> produce the three original angular velocities
+<span class="math" data-tex="\(\alpha+t_j S\eta_j/r_j\)">\(\alpha+t_j S\eta_j/r_j\)</span>.
+Writing <span class="math" data-tex="\(U\)">\(U\)</span> for the matrix with these three unit-direction columns, the six-dimensional metric matrix is exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}3I&amp;U\\U^{\mathsf T}&amp;I\end{pmatrix}.
+\tag{RF14}
+\]">\[
+\begin{pmatrix}3I&amp;U\\U^{\mathsf T}&amp;I\end{pmatrix}.
+\tag{RF14}
+\]</span>
+<p>Its determinant is <span class="math" data-tex="\(\det(3I-UU^{\mathsf T})=\det K_0&gt;0\)">\(\det(3I-UU^{\mathsf T})=\det K_0&gt;0\)</span>, by subtracting its off-diagonal blocks or the block determinant formula. Therefore the full induced surface measure pulls back to</p>
+<span class="math math-display" data-tex="\[
+\Phi_\xi^*d\sigma=\sqrt{\det K_0}\,dV(S)\,d\theta_1d\theta_2d\theta_3.
+\tag{RF15}
+\]">\[
+\Phi_\xi^*d\sigma=\sqrt{\det K_0}\,dV(S)\,d\theta_1d\theta_2d\theta_3.
+\tag{RF15}
+\]</span>
+<p>The angle measure has its full length <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> in every coordinate.</p>
+<p>The notation involving a delta function can now be defined and proved without a formal change of variables. Fix any nonnegative smooth compactly supported <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> with integral one, put <span class="math" data-tex="\(\rho_\tau(z)=\tau^{-3}\rho(z/\tau)\)">\(\rho_\tau(z)=\tau^{-3}\rho(z/\tau)\)</span>, and let <span class="math" data-tex="\(g\)">\(g\)</span> be continuous on the compact group product. Then</p>
+<span class="math math-display" data-tex="\[
+\lim_{\tau\downarrow0}\int_{SO(3)^3}
+g(R)\rho_\tau(G_\xi(R))\,dR_1dR_2dR_3
+=\frac1{(8\pi^2)^3}\int_{\Sigma_\xi}
+\frac{g(R)}{J_\xi(R)}\,d\sigma(R).
+\tag{RF16}
+\]">\[
+\lim_{\tau\downarrow0}\int_{SO(3)^3}
+g(R)\rho_\tau(G_\xi(R))\,dR_1dR_2dR_3
+=\frac1{(8\pi^2)^3}\int_{\Sigma_\xi}
+\frac{g(R)}{J_\xi(R)}\,d\sigma(R).
+\tag{RF16}
+\]</span>
+<p>To prove the measure factor, take local coordinates <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span>, with <span class="math" data-tex="\(z\in\mathbb R^6\)">\(z\in\mathbb R^6\)</span> along the fiber and <span class="math" data-tex="\(t=G_\xi(R)\in\mathbb R^3\)">\(t=G_\xi(R)\in\mathbb R^3\)</span>, allowed by the surjective derivative RF11. If the metric matrix in these coordinates is <span class="math" data-tex="\(G\)">\(G\)</span>, its lower-right inverse block is the Gram matrix of the gradients of the three coordinates <span class="math" data-tex="\(t\)">\(t\)</span>, namely <span class="math" data-tex="\(DG_\xi DG_\xi^*\)">\(DG_\xi DG_\xi^*\)</span>. The block determinant identity therefore gives
+<span class="math" data-tex="\(\det G=\det G_{zz}/\det(DG_\xi DG_\xi^*)\)">\(\det G=\det G_{zz}/\det(DG_\xi DG_\xi^*)\)</span>.
+Thus the volume at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is the fiber volume in <span class="math" data-tex="\(z\)">\(z\)</span> divided by <span class="math" data-tex="\(J_\xi\)">\(J_\xi\)</span>, times <span class="math" data-tex="\(dt\)">\(dt\)</span>. Continuity in <span class="math" data-tex="\(t\)">\(t\)</span>, compact support of the local coordinate cutoff and the integral-one approximate identity give this same limit in each chart. A finite smooth partition in a neighborhood of the compact fiber combines the chart identities. Its complementary compact set has <span class="math" data-tex="\(|G_\xi|\)">\(|G_\xi|\)</span> bounded away from zero, so contributes zero for sufficiently small <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. This proves RF16 and its independence of the chosen approximate identity. It also proves the formula for each component of a continuous tensor-valued <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p>Combining RF10, RF13 and RF15 gives the exact more explicit identity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{SO(3)^3}\delta(G_\xi(R))g(R)\,dR_1dR_2dR_3\\
+&amp;\qquad=
+\frac1{(8\pi^2)^2r_1r_2r_3}
+\int_{SO(3)}\int_{[0,2\pi]^3}
+g(\Phi_\xi(S,\theta))\,d\theta\,dS .
+\end{aligned}
+\tag{RF17}
+\]">\[
+\begin{aligned}
+&amp;\int_{SO(3)^3}\delta(G_\xi(R))g(R)\,dR_1dR_2dR_3\\
+&amp;\qquad=
+\frac1{(8\pi^2)^2r_1r_2r_3}
+\int_{SO(3)}\int_{[0,2\pi]^3}
+g(\Phi_\xi(S,\theta))\,d\theta\,dS .
+\end{aligned}
+\tag{RF17}
+\]</span>
+<p>The left side is exactly the limit RF16, and <span class="math" data-tex="\(dS\)">\(dS\)</span> is probability Haar measure. The cancellation of the two computed Jacobians is the exact identity
+<span class="math" data-tex="\(\sqrt{\det K_0}/\sqrt{\det K_r}=1/(r_1r_2r_3)\)">\(\sqrt{\det K_0}/\sqrt{\det K_r}=1/(r_1r_2r_3)\)</span>; both determinants remain explicitly available in RF13.
+In particular the total delta mass is</p>
+<span class="math math-display" data-tex="\[
+\int_{SO(3)^3}\delta(G_\xi(R))\,dR_1dR_2dR_3
+=\frac{(2\pi)^3}{(8\pi^2)^2r_1r_2r_3}
+=\frac1{8\pi r_1r_2r_3}.
+\tag{RF18}
+\]">\[
+\int_{SO(3)^3}\delta(G_\xi(R))\,dR_1dR_2dR_3
+=\frac{(2\pi)^3}{(8\pi^2)^2r_1r_2r_3}
+=\frac1{8\pi r_1r_2r_3}.
+\tag{RF18}
+\]</span>
+<p>No original angle or Haar-volume factor has been suppressed.</p>
+<h2 id="rf5-attach-the-exact-tensor-inverse-inside-the-required-rotation-region">RF5. Attach the exact tensor inverse inside the required rotation region</h2>
+<p>We require only rotations that nearly fix the original base frequencies. Choose the explicit positive number and smooth bump</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q_*=\frac{\epsilon_0^2}{16},\qquad
+\zeta(S)=
+\begin{cases}
+\exp[-1/(q_*^2-\|S-I\|_{\mathrm F}^2)],
+&amp;\|S-I\|_{\mathrm F}&lt;q_*,\\
+0,&amp;\|S-I\|_{\mathrm F}\geq q_*,
+\end{cases}\\
+Z=\int_{SO(3)}\zeta(S)dS&gt;0,\qquad \beta(S)=\zeta(S)/Z.
+\end{gathered}
+\tag{RF19}
+\]">\[
+\begin{gathered}
+q_*=\frac{\epsilon_0^2}{16},\qquad
+\zeta(S)=
+\begin{cases}
+\exp[-1/(q_*^2-\|S-I\|_{\mathrm F}^2)],
+&amp;\|S-I\|_{\mathrm F}&lt;q_*,\\
+0,&amp;\|S-I\|_{\mathrm F}\geq q_*,
+\end{cases}\\
+Z=\int_{SO(3)}\zeta(S)dS&gt;0,\qquad \beta(S)=\zeta(S)/Z.
+\end{gathered}
+\tag{RF19}
+\]</span>
+<p>Here <span class="math" data-tex="\(\|\cdot\|_{\mathrm F}\)">\(\|\cdot\|_{\mathrm F}\)</span> is the Frobenius matrix norm. The bump is smooth, including on its support boundary, because every boundary derivative is a polynomial in reciprocal positive powers times its exponential, which tends to zero faster than any power. Its value at <span class="math" data-tex="\(I\)">\(I\)</span> is positive and it is positive on an open neighborhood, so <span class="math" data-tex="\(Z&gt;0\)">\(Z&gt;0\)</span>; compactness gives finiteness. Both the original <span class="math" data-tex="\(Z\)">\(Z\)</span> and the divided weight are retained, and <span class="math" data-tex="\(\int\beta\,dS=1\)">\(\int\beta\,dS=1\)</span> follows directly.</p>
+<p>On the support of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, every angle in RF8 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|R_j\xi_j^0-\xi_j^0|
+&amp;\leq|\xi_j^0-\xi_j|+|S\eta_j-\eta_j|
++|\eta_j-\xi_j^0|\\
+&amp;&lt;7h+2q_*
+=14\epsilon_0^3+\frac{\epsilon_0^2}{8}
+&lt;\frac{\epsilon_0^2}{4}.
+\end{aligned}
+\tag{RF20}
+\]">\[
+\begin{aligned}
+|R_j\xi_j^0-\xi_j^0|
+&amp;\leq|\xi_j^0-\xi_j|+|S\eta_j-\eta_j|
++|\eta_j-\xi_j^0|\\
+&amp;&lt;7h+2q_*
+=14\epsilon_0^3+\frac{\epsilon_0^2}{8}
+&lt;\frac{\epsilon_0^2}{4}.
+\end{aligned}
+\tag{RF20}
+\]</span>
+<p>The first term uses exact preservation of length by <span class="math" data-tex="\(R_j\)">\(R_j\)</span>, and the middle term uses <span class="math" data-tex="\(r_j&lt;2\)">\(r_j&lt;2\)</span> and the operator norm bounded by the Frobenius norm. The last strict inequality follows from <span class="math" data-tex="\(14/1024+1/8&lt;1/4\)">\(14/1024+1/8&lt;1/4\)</span>. Thus this whole supported fiber lies in the precise original source rotation region, with all three spin angles unrestricted.</p>
+<p>Let <span class="math" data-tex="\(F_\eta(\theta)\)">\(F_\eta(\theta)\)</span> be the complete real tensor kernel SP22 for the actual <span class="math" data-tex="\(\eta\)">\(\eta\)</span> from RF2. Let
+<span class="math" data-tex="\(\mathcal Q^{-1}=Q_1^{-1}\otimes Q_2^{-1}\otimes Q_3^{-1}\)">\(\mathcal Q^{-1}=Q_1^{-1}\otimes Q_2^{-1}\otimes Q_3^{-1}\)</span>.
+On the entire fiber define two explicit smooth tensor functions by its unique RF8 coordinates:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W_\xi(\Phi_\xi(S,\theta))
+=(8\pi^2)^2r_1r_2r_3\,\beta(S)
+\,\mathcal Q^{-1}F_\eta(\theta),\\
+W_\xi^{\rm surf}(\Phi_\xi(S,\theta))
+=\frac{\beta(S)\mathcal Q^{-1}F_\eta(\theta)}
+{8\pi^2\sqrt{\det K_0}}.
+\end{gathered}
+\tag{RF21}
+\]">\[
+\begin{gathered}
+W_\xi(\Phi_\xi(S,\theta))
+=(8\pi^2)^2r_1r_2r_3\,\beta(S)
+\,\mathcal Q^{-1}F_\eta(\theta),\\
+W_\xi^{\rm surf}(\Phi_\xi(S,\theta))
+=\frac{\beta(S)\mathcal Q^{-1}F_\eta(\theta)}
+{8\pi^2\sqrt{\det K_0}}.
+\end{gathered}
+\tag{RF21}
+\]</span>
+<p>Smoothness follows from the proved smooth inverse of RF8, RF5, SP22 and the positive determinants. Their supports satisfy RF20.
+For arbitrary original vectors <span class="math" data-tex="\(X_j\in\xi_j^\perp\otimes\mathbb C\)">\(X_j\in\xi_j^\perp\otimes\mathbb C\)</span>, the exact original tensor identity is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X_1\otimes X_2\otimes X_3
+={}&amp;\int_{\Sigma_\xi}W_\xi^{\rm surf}(R)
+\Lambda_{R_1\xi_1,R_2\xi_2,R_3\xi_3}
+(R_1X_1,R_2X_2,R_3X_3)\,d\sigma(R).
+\end{aligned}
+\tag{RF22}
+\]">\[
+\begin{aligned}
+X_1\otimes X_2\otimes X_3
+={}&amp;\int_{\Sigma_\xi}W_\xi^{\rm surf}(R)
+\Lambda_{R_1\xi_1,R_2\xi_2,R_3\xi_3}
+(R_1X_1,R_2X_2,R_3X_3)\,d\sigma(R).
+\end{aligned}
+\tag{RF22}
+\]</span>
+<p>Equivalently, with the delta integral interpreted by RF16, it is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X_1\otimes X_2\otimes X_3
+={}&amp;\int_{SO(3)^3}\delta(G_\xi(R))W_\xi(R)
+\Lambda_{R_1\xi_1,R_2\xi_2,R_3\xi_3}
+(R_1X_1,R_2X_2,R_3X_3)\,dR_1dR_2dR_3 .
+\end{aligned}
+\tag{RF23}
+\]">\[
+\begin{aligned}
+X_1\otimes X_2\otimes X_3
+={}&amp;\int_{SO(3)^3}\delta(G_\xi(R))W_\xi(R)
+\Lambda_{R_1\xi_1,R_2\xi_2,R_3\xi_3}
+(R_1X_1,R_2X_2,R_3X_3)\,dR_1dR_2dR_3 .
+\end{aligned}
+\tag{RF23}
+\]</span>
+<p>For a function specified on the fiber, the last expression means the right side of RF16 with those fiber values; any continuous extension to a neighborhood has that same limit. No particular ambient extension is assumed to construct the later Fourier multipliers.</p>
+<p>To prove both identities, set <span class="math" data-tex="\(Y_j=Q_jX_j\in\eta_j^\perp\otimes\mathbb C\)">\(Y_j=Q_jX_j\in\eta_j^\perp\otimes\mathbb C\)</span>. The complete source trilinear expression is invariant under a common proper rotation, since each of its three dot products is preserved. Hence on RF8 its actual value is</p>
+<span class="math math-display" data-tex="\[
+\Lambda_{\eta_1,\eta_2,\eta_3}
+(R_{\eta_1}^{\theta_1}Y_1,
+R_{\eta_2}^{\theta_2}Y_2,
+R_{\eta_3}^{\theta_3}Y_3).
+\tag{RF24}
+\]">\[
+\Lambda_{\eta_1,\eta_2,\eta_3}
+(R_{\eta_1}^{\theta_1}Y_1,
+R_{\eta_2}^{\theta_2}Y_2,
+R_{\eta_3}^{\theta_3}Y_3).
+\tag{RF24}
+\]</span>
+<p>Inserting RF15 and the surface formula in RF21 gives the full angle integral SP23 and the factor
+<span class="math" data-tex="\(dV(S)/(8\pi^2)=dS\)">\(dV(S)/(8\pi^2)=dS\)</span>.
+The angle integral is <span class="math" data-tex="\(Y_1\otimes Y_2\otimes Y_3\)">\(Y_1\otimes Y_2\otimes Y_3\)</span>;
+<span class="math" data-tex="\(\mathcal Q^{-1}\)">\(\mathcal Q^{-1}\)</span> returns the original <span class="math" data-tex="\(X_1\otimes X_2\otimes X_3\)">\(X_1\otimes X_2\otimes X_3\)</span>;
+integrating <span class="math" data-tex="\(\beta\)">\(\beta\)</span> gives one. This proves RF22. Alternatively RF17 cancels precisely the prefactor <span class="math" data-tex="\((8\pi^2)^2r_1r_2r_3\)">\((8\pi^2)^2r_1r_2r_3\)</span> of RF21 and gives the same proof of RF23.
+All original tensor domains and inverse rotations are thus explicit.</p>
+<p>The third argument in RF24 uses the third angle and third closing rotation. In the original source's line 734, the second angle and second closing rotation are printed in that third slot. Substituting the actual RF8 maps proves the corrected third argument exactly; it is not an independent choice of convention.</p>
+<h2 id="af1-construct-a-definite-neighborhood-of-the-entire-original-fiber">AF1. Construct a definite neighborhood of the entire original fiber</h2>
+<p>Keep RF1, its original <span class="math" data-tex="\(\epsilon_0\)">\(\epsilon_0\)</span>, <span class="math" data-tex="\(h=2\epsilon_0^3\)">\(h=2\epsilon_0^3\)</span>, original <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span>, radii <span class="math" data-tex="\(r_j\)">\(r_j\)</span>, and closing maps <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span>. For arbitrary <span class="math" data-tex="\(R=(R_1,R_2,R_3)\in SO(3)^3\)">\(R=(R_1,R_2,R_3)\in SO(3)^3\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+y_j=R_j\xi_j,\qquad z=G_\xi(R)=y_1+y_2+y_3,\qquad
+K(R,\xi)=\sum_{j=1}^3(r_j^2I-y_jy_j^{\mathsf T}).
+\tag{AF1}
+\]">\[
+y_j=R_j\xi_j,\qquad z=G_\xi(R)=y_1+y_2+y_3,\qquad
+K(R,\xi)=\sum_{j=1}^3(r_j^2I-y_jy_j^{\mathsf T}).
+\tag{AF1}
+\]</span>
+<p>This is the exact derivative Gram matrix, including away from the fiber.
+If <span class="math" data-tex="\(|z|\leq1/64\)">\(|z|\leq1/64\)</span>, it has the definite bound</p>
+<span class="math math-display" data-tex="\[
+K(R,\xi)\geq\frac1{16}I,\qquad
+\|K(R,\xi)^{-1}\|_{\rm op}\leq16.
+\tag{AF2}
+\]">\[
+K(R,\xi)\geq\frac1{16}I,\qquad
+\|K(R,\xi)^{-1}\|_{\rm op}\leq16.
+\tag{AF2}
+\]</span>
+<p>Here and below inequalities between real symmetric matrices mean inequalities of their quadratic forms.</p>
+<p>To prove AF2 without a prospective nondegeneracy assumption, use</p>
+<span class="math math-display" data-tex="\[
+y_1\cdot y_2=\frac{r_3^2-r_1^2-r_2^2}{2}
+-z\cdot y_3+\frac{|z|^2}{2}.
+\tag{AF3}
+\]">\[
+y_1\cdot y_2=\frac{r_3^2-r_1^2-r_2^2}{2}
+-z\cdot y_3+\frac{|z|^2}{2}.
+\tag{AF3}
+\]</span>
+<p>The original radius estimates give</p>
+<span class="math math-display" data-tex="\[
+r_1\geq63/64,\qquad r_2\geq11/8,\qquad r_j&lt;2,
+\qquad
+\left|\frac{r_3^2-r_1^2-r_2^2}{2}\right|\leq1+4h.
+\]">\[
+r_1\geq63/64,\qquad r_2\geq11/8,\qquad r_j&lt;2,
+\qquad
+\left|\frac{r_3^2-r_1^2-r_2^2}{2}\right|\leq1+4h.
+\]</span>
+<p>Indeed its difference from <span class="math" data-tex="\(-1\)">\(-1\)</span> is bounded by
+<span class="math" data-tex="\((4+2\sqrt2+3h)h/2&lt;4h\)">\((4+2\sqrt2+3h)h/2&lt;4h\)</span>, as in RF3. Since <span class="math" data-tex="\(h&lt;1/128\)">\(h&lt;1/128\)</span>, AF3 implies</p>
+<span class="math math-display" data-tex="\[
+|y_1\cdot y_2|\leq1+4h+2/64+1/(2\cdot64^2)&lt;9/8,
+\]">\[
+|y_1\cdot y_2|\leq1+4h+2/64+1/(2\cdot64^2)&lt;9/8,
+\]</span>
+<p>and consequently</p>
+<span class="math math-display" data-tex="\[
+|y_1\times y_2|^2
+\geq(63/64)^2(11/8)^2-(9/8)^2&gt;\frac12.
+\tag{AF4}
+\]">\[
+|y_1\times y_2|^2
+\geq(63/64)^2(11/8)^2-(9/8)^2&gt;\frac12.
+\tag{AF4}
+\]</span>
+<p>The sum of the first two terms of <span class="math" data-tex="\(K\)">\(K\)</span> has normal eigenvalue <span class="math" data-tex="\(r_1^2+r_2^2\)">\(r_1^2+r_2^2\)</span>. On their plane its two positive eigenvalues have product <span class="math" data-tex="\(|y_1\times y_2|^2\)">\(|y_1\times y_2|^2\)</span> and sum <span class="math" data-tex="\(r_1^2+r_2^2&lt;8\)">\(r_1^2+r_2^2&lt;8\)</span>. Its smaller eigenvalue is therefore at least <span class="math" data-tex="\((1/2)/8=1/16\)">\((1/2)/8=1/16\)</span>. The third term of <span class="math" data-tex="\(K\)">\(K\)</span> is positive semidefinite. This proves AF2.</p>
+<h2 id="af2-close-the-original-frequency-sum-by-an-actual-smooth-rotation-flow">AF2. Close the original frequency sum by an actual smooth rotation flow</h2>
+<p>Fix an initial pair <span class="math" data-tex="\((R^0,\xi)\)">\((R^0,\xi)\)</span> with <span class="math" data-tex="\(|G_\xi(R^0)|&lt;1/64\)">\(|G_\xi(R^0)|&lt;1/64\)</span>, and retain its full defect
+<span class="math" data-tex="\(z_0=G_\xi(R^0)\)">\(z_0=G_\xi(R^0)\)</span>.
+For <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>, solve the actual matrix equations</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{dR_j(s)}{ds}=[\alpha_j(s)]_\times R_j(s),\qquad
+R_j(0)=R_j^0,\\
+y_j(s)=R_j(s)\xi_j,\qquad
+\alpha_j(s)=-y_j(s)\times K(R(s),\xi)^{-1}z_0.
+\end{gathered}
+\tag{AF5}
+\]">\[
+\begin{gathered}
+\frac{dR_j(s)}{ds}=[\alpha_j(s)]_\times R_j(s),\qquad
+R_j(0)=R_j^0,\\
+y_j(s)=R_j(s)\xi_j,\qquad
+\alpha_j(s)=-y_j(s)\times K(R(s),\xi)^{-1}z_0.
+\end{gathered}
+\tag{AF5}
+\]</span>
+<p>The auxiliary time <span class="math" data-tex="\(s\)">\(s\)</span> is not the physical Navier–Stokes time. This equation changes the actual rotations and keeps every original <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span> and radius fixed.
+Its coefficients are smooth in the stated open region by AF2. Local solutions are constructed by Picard iteration in matrix entries: on a compact neighborhood where the inverse is bounded, the right side and its first derivatives are bounded, and a sufficiently short time makes its integral map a contraction. The geometric series of successive differences converges to a differentiable solution. The usual bilinear difference estimate and Gronwall's inequality give uniqueness.</p>
+<p>The solution stays in <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>: differentiating <span class="math" data-tex="\(R_j^{\mathsf T}R_j\)">\(R_j^{\mathsf T}R_j\)</span> gives zero because <span class="math" data-tex="\([\alpha_j]_\times\)">\([\alpha_j]_\times\)</span> is skew, and its determinant remains one by continuity. Its original frequency sum satisfies the exact identity</p>
+<span class="math math-display" data-tex="\[
+\frac d{ds}G_\xi(R(s))
+=-\sum_{j=1}^3
+(r_j^2I-y_j(s)y_j(s)^{\mathsf T})K(R(s),\xi)^{-1}z_0
+=-z_0.
+\]">\[
+\frac d{ds}G_\xi(R(s))
+=-\sum_{j=1}^3
+(r_j^2I-y_j(s)y_j(s)^{\mathsf T})K(R(s),\xi)^{-1}z_0
+=-z_0.
+\]</span>
+<p>Thus</p>
+<span class="math math-display" data-tex="\[
+G_\xi(R(s))=(1-s)z_0,\qquad
+|\alpha_j(s)|\leq32|z_0|,\qquad
+\|R_j(s)-R_j^0\|_{\rm op}\leq32s|z_0|.
+\tag{AF6}
+\]">\[
+G_\xi(R(s))=(1-s)z_0,\qquad
+|\alpha_j(s)|\leq32|z_0|,\qquad
+\|R_j(s)-R_j^0\|_{\rm op}\leq32s|z_0|.
+\tag{AF6}
+\]</span>
+<p>The first equality prevents departure from the region where AF2 holds. The second uses <span class="math" data-tex="\(r_j&lt;2\)">\(r_j&lt;2\)</span>; the third integrates the matrix velocity and <span class="math" data-tex="\(\|R_j(s)\|_{\rm op}=1\)">\(\|R_j(s)\|_{\rm op}=1\)</span>. On any closed smaller initial-defect region, the solution remains in a compact subset where all coefficients are smooth and bounded. The same local contraction time therefore restarts it to <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. This proves actual existence and uniqueness on the entire displayed time interval.</p>
+<p>Define the exact retraction</p>
+<span class="math math-display" data-tex="\[
+\Pi_\xi(R^0)=R(1),\qquad
+G_\xi(\Pi_\xi(R^0))=0,\qquad
+G_\xi(R^0)=0\ \Longrightarrow\ \Pi_\xi(R^0)=R^0.
+\tag{AF7}
+\]">\[
+\Pi_\xi(R^0)=R(1),\qquad
+G_\xi(\Pi_\xi(R^0))=0,\qquad
+G_\xi(R^0)=0\ \Longrightarrow\ \Pi_\xi(R^0)=R^0.
+\tag{AF7}
+\]</span>
+<p>The last assertion follows because <span class="math" data-tex="\(z_0=0\)">\(z_0=0\)</span> makes every velocity in AF5 zero. The full joint map <span class="math" data-tex="\((R^0,\xi)\mapsto\Pi_\xi(R^0)\)">\((R^0,\xi)\mapsto\Pi_\xi(R^0)\)</span> is smooth, with bounded derivatives of every fixed order on compact subsets of the stated region. Here is the needed dependence argument. Regard <span class="math" data-tex="\(\xi,z_0\)">\(\xi,z_0\)</span> as fixed parameters of AF5, and then compose with the smooth original map <span class="math" data-tex="\(z_0=G_\xi(R^0)\)">\(z_0=G_\xi(R^0)\)</span>. The first parameter derivative of its integral equation solves a linear Volterra equation with continuous bounded coefficients; its successive approximations converge on the same short intervals. Difference quotients converge to that solution by the integral remainder formula and Gronwall's inequality. For an order-<span class="math" data-tex="\(m\)">\(m\)</span> derivative, differentiation gives the same linear term applied to that derivative, plus the finite sum indexed by partitions of the <span class="math" data-tex="\(m\)">\(m\)</span> derivative directions of derivatives of the smooth vector field applied to the already constructed lower derivatives. All these lower terms are bounded on the compact set. The same linear construction and difference-quotient argument prove the next derivative and its bound. Induction, followed by finitely many interval restarts, proves the assertion at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. This constructs all required derivative orders rather than assuming smooth dependence.</p>
+<h2 id="af3-extend-the-actual-supported-tensor-and-retain-its-rotation-support">AF3. Extend the actual supported tensor and retain its rotation support</h2>
+<p>An explicit scalar cutoff will be useful. Put</p>
+<span class="math math-display" data-tex="\[
+\vartheta(t)=
+\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\leq0,\end{cases}
+\qquad
+b(t)=\frac{\vartheta(1-t)}
+{\vartheta(1-t)+\vartheta(t-1/4)}.
+\tag{AF8}
+\]">\[
+\vartheta(t)=
+\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\leq0,\end{cases}
+\qquad
+b(t)=\frac{\vartheta(1-t)}
+{\vartheta(1-t)+\vartheta(t-1/4)}.
+\tag{AF8}
+\]</span>
+<p>The denominator is positive for every real <span class="math" data-tex="\(t\)">\(t\)</span>: simultaneous vanishing would require both <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span> and <span class="math" data-tex="\(t\leq1/4\)">\(t\leq1/4\)</span>. Thus <span class="math" data-tex="\(b\)">\(b\)</span> is smooth, equals one on <span class="math" data-tex="\(t\leq1/4\)">\(t\leq1/4\)</span>, vanishes on <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>, and lies in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Smoothness of <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> across zero follows from its exponential boundary-derivative estimates, as in RF19.
+To give a frequency cutoff with precisely the needed plateau, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\chi_j(\xi_j)=
+b\!\left(\frac{3}{5}\frac{|\xi_j-\xi_j^0|^2}{\epsilon_0^6}
+-\frac7{20}\right),\\
+\tau=\frac{\epsilon_0^2}{1024},\qquad
+\lambda(z)=b(|z|^2/\tau^2).
+\end{gathered}
+\tag{AF9}
+\]">\[
+\begin{gathered}
+\chi_j(\xi_j)=
+b\!\left(\frac{3}{5}\frac{|\xi_j-\xi_j^0|^2}{\epsilon_0^6}
+-\frac7{20}\right),\\
+\tau=\frac{\epsilon_0^2}{1024},\qquad
+\lambda(z)=b(|z|^2/\tau^2).
+\end{gathered}
+\tag{AF9}
+\]</span>
+<p>If <span class="math" data-tex="\(|\xi_j-\xi_j^0|\leq\epsilon_0^3\)">\(|\xi_j-\xi_j^0|\leq\epsilon_0^3\)</span>, the argument of <span class="math" data-tex="\(b\)">\(b\)</span> is at most <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, so <span class="math" data-tex="\(\chi_j=1\)">\(\chi_j=1\)</span>.
+If <span class="math" data-tex="\(|\xi_j-\xi_j^0|\geq3\epsilon_0^3/2\)">\(|\xi_j-\xi_j^0|\geq3\epsilon_0^3/2\)</span>, the argument is at least one, so <span class="math" data-tex="\(\chi_j=0\)">\(\chi_j=0\)</span>.
+Thus the supports are strictly inside the original open RF1 radius <span class="math" data-tex="\(2\epsilon_0^3\)">\(2\epsilon_0^3\)</span>.
+Also <span class="math" data-tex="\(\lambda(0)=1\)">\(\lambda(0)=1\)</span>, <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span> for <span class="math" data-tex="\(|z|\leq\tau/2\)">\(|z|\leq\tau/2\)</span>, and <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span> for <span class="math" data-tex="\(|z|\geq\tau&lt;1/64\)">\(|z|\geq\tau&lt;1/64\)</span>.</p>
+<p>Let <span class="math" data-tex="\(W_\xi\)">\(W_\xi\)</span> be the actual smooth fiber tensor RF21, with all its original measure factors and its original bump <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Define the ambient tensor</p>
+<span class="math math-display" data-tex="\[
+\mathcal E(R,\xi)=
+\left(\prod_{j=1}^3\chi_j(\xi_j)\right)
+\lambda(G_\xi(R))\,W_\xi(\Pi_\xi(R)).
+\tag{AF10}
+\]">\[
+\mathcal E(R,\xi)=
+\left(\prod_{j=1}^3\chi_j(\xi_j)\right)
+\lambda(G_\xi(R))\,W_\xi(\Pi_\xi(R)).
+\tag{AF10}
+\]</span>
+<p>Use this formula where <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is in RF1 and <span class="math" data-tex="\(|G_\xi(R)|&lt;1/64\)">\(|G_\xi(R)|&lt;1/64\)</span>, and set it to zero elsewhere. This defines a smooth function on <span class="math" data-tex="\(SO(3)^3\times\mathbb R^9\)">\(SO(3)^3\times\mathbb R^9\)</span>: both cutoffs have supports strictly inside the formula's open domain and vanish with every derivative across their support boundaries. The full tensor <span class="math" data-tex="\(W_\xi\)">\(W_\xi\)</span> is jointly smooth in <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and its fiber coordinates by the explicit RF2, RF5, RF8 and SP22 formulas, so its composition with AF7 is smooth. The frequency support is compact. Every derivative of every fixed order is bounded, since the remaining rotation variables range over a compact group.</p>
+<p>If <span class="math" data-tex="\(\mathcal E(R,\xi)\ne0\)">\(\mathcal E(R,\xi)\ne0\)</span>, then <span class="math" data-tex="\(W_\xi(\Pi_\xi(R))\ne0\)">\(W_\xi(\Pi_\xi(R))\ne0\)</span>. By RF20 and AF6,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|R_j\xi_j^0-\xi_j^0|
+&amp;\leq|\Pi_\xi(R)_j\xi_j^0-\xi_j^0|
++32|G_\xi(R)|\,|\xi_j^0|\\
+&amp;&lt;14\epsilon_0^3+\frac{\epsilon_0^2}{8}
++64\tau
+\leq\left(\frac{14}{1024}+\frac18+\frac1{16}\right)
+\epsilon_0^2
+&lt;\frac{\epsilon_0^2}{4}.
+\end{aligned}
+\tag{AF11}
+\]">\[
+\begin{aligned}
+|R_j\xi_j^0-\xi_j^0|
+&amp;\leq|\Pi_\xi(R)_j\xi_j^0-\xi_j^0|
++32|G_\xi(R)|\,|\xi_j^0|\\
+&amp;&lt;14\epsilon_0^3+\frac{\epsilon_0^2}{8}
++64\tau
+\leq\left(\frac{14}{1024}+\frac18+\frac1{16}\right)
+\epsilon_0^2
+&lt;\frac{\epsilon_0^2}{4}.
+\end{aligned}
+\tag{AF11}
+\]</span>
+<p>There is a uniform positive margin in the last inequality. Consequently the ambient tensor has compact rotation support inside the original source region of nearly fixing rotations, not merely inside the unrestricted group.
+For every <span class="math" data-tex="\(\xi_j\in B(\xi_j^0,\epsilon_0^3)\)">\(\xi_j\in B(\xi_j^0,\epsilon_0^3)\)</span>, its exact fiber restriction is</p>
+<span class="math math-display" data-tex="\[
+\mathcal E(R,\xi)=W_\xi(R)\qquad(G_\xi(R)=0),
+\tag{AF12}
+\]">\[
+\mathcal E(R,\xi)=W_\xi(R)\qquad(G_\xi(R)=0),
+\tag{AF12}
+\]</span>
+<p>because both cutoffs equal one there and the retraction fixes the fiber. The full original tensor identity RF23 therefore holds with this actual smooth ambient extension.</p>
+<h2 id="af4-separate-all-nine-original-frequency-coordinates">AF4. Separate all nine original frequency coordinates</h2>
+<p>Use the original <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> Fourier convention in all nine frequency variables. For <span class="math" data-tex="\(x=(x_1,x_2,x_3)\in\mathbb R^9\)">\(x=(x_1,x_2,x_3)\in\mathbb R^9\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathfrak a(R,x)=\int_{\mathbb R^9}
+\mathcal E(R,\xi)e^{-2\pi i\sum_{j=1}^3x_j\cdot\xi_j}\,d\xi,\\
+\mathcal E(R,\xi)=\int_{\mathbb R^9}
+\mathfrak a(R,x)\prod_{j=1}^3e^{2\pi i x_j\cdot\xi_j}\,dx .
+\end{gathered}
+\tag{AF13}
+\]">\[
+\begin{gathered}
+\mathfrak a(R,x)=\int_{\mathbb R^9}
+\mathcal E(R,\xi)e^{-2\pi i\sum_{j=1}^3x_j\cdot\xi_j}\,d\xi,\\
+\mathcal E(R,\xi)=\int_{\mathbb R^9}
+\mathfrak a(R,x)\prod_{j=1}^3e^{2\pi i x_j\cdot\xi_j}\,dx .
+\end{gathered}
+\tag{AF13}
+\]</span>
+<p>Both formulas are componentwise in the original <span class="math" data-tex="\(27\)">\(27\)</span>-dimensional tensor space.
+The second is the genuine Fourier inverse of this smooth compactly supported function. To verify the convergence needed below, for every integer <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span> integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(1+4\pi^2|x|^2)^N\mathfrak a(R,x)
+=\int_{\mathbb R^9}(1-\Delta_\xi)^N
+\mathcal E(R,\xi)e^{-2\pi i x\cdot\xi}\,d\xi,\\
+(1-\Delta_\xi)^N
+=\sum_{\ell=0}^N\binom N\ell(-1)^\ell\Delta_\xi^\ell,\qquad
+A_N=\sup_R\int_{\mathbb R^9}
+\|(1-\Delta_\xi)^N\mathcal E(R,\xi)\|\,d\xi&lt;\infty,\\
+\|\mathfrak a(R,x)\|\leq
+A_N(1+4\pi^2|x|^2)^{-N}.
+\end{gathered}
+\tag{AF14}
+\]">\[
+\begin{gathered}
+(1+4\pi^2|x|^2)^N\mathfrak a(R,x)
+=\int_{\mathbb R^9}(1-\Delta_\xi)^N
+\mathcal E(R,\xi)e^{-2\pi i x\cdot\xi}\,d\xi,\\
+(1-\Delta_\xi)^N
+=\sum_{\ell=0}^N\binom N\ell(-1)^\ell\Delta_\xi^\ell,\qquad
+A_N=\sup_R\int_{\mathbb R^9}
+\|(1-\Delta_\xi)^N\mathcal E(R,\xi)\|\,d\xi&lt;\infty,\\
+\|\mathfrak a(R,x)\|\leq
+A_N(1+4\pi^2|x|^2)^{-N}.
+\end{gathered}
+\tag{AF14}
+\]</span>
+<p>There are no boundary terms, since the complete extension is smooth with compact frequency support. Every original <span class="math" data-tex="\(4\pi^2\)">\(4\pi^2\)</span>, sign and binomial coefficient remains. Applying the same integration by parts to any fixed rotation derivative gives the corresponding rapid decay with its own finite full derivative integral.
+In particular, for every <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span> and integer <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(2N&gt;k+9\)">\(2N&gt;k+9\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_{SO(3)^3}\int_{\mathbb R^9}
+(1+|x|)^k\|\mathfrak a(R,x)\|\,dx\,dR
+\leq A_N\int_{\mathbb R^9}
+\frac{(1+|x|)^k}{(1+4\pi^2|x|^2)^N}\,dx&lt;\infty.
+\tag{AF15}
+\]">\[
+\int_{SO(3)^3}\int_{\mathbb R^9}
+(1+|x|)^k\|\mathfrak a(R,x)\|\,dx\,dR
+\leq A_N\int_{\mathbb R^9}
+\frac{(1+|x|)^k}{(1+4\pi^2|x|^2)^N}\,dx&lt;\infty.
+\tag{AF15}
+\]</span>
+<p>The integral is finite at zero; at infinity its polar radial integrand is bounded by a constant times <span class="math" data-tex="\(r^{k+8-2N}\)">\(r^{k+8-2N}\)</span>, with exponent less than <span class="math" data-tex="\(-1\)">\(-1\)</span>.
+This proves absolute Fourier convergence. For completeness, multiply the transform by <span class="math" data-tex="\(e^{-\pi\delta|x|^2}\)">\(e^{-\pi\delta|x|^2}\)</span>. Its inverse is the convolution of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> with the integral-one Gaussian
+<span class="math" data-tex="\(\delta^{-9/2}e^{-\pi|\xi|^2/\delta}\)">\(\delta^{-9/2}e^{-\pi|\xi|^2/\delta}\)</span>, as follows by the product of the nine one-dimensional Gaussian integrals. That convolution tends uniformly to <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> by uniform continuity and Gaussian tails. The absolutely convergent transform integral tends to the second AF13 formula by dominated convergence as <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. This proves the required inverse identity.</p>
+<h2 id="af5-construct-the-finite-positive-measure-and-every-original-multiplier-moment">AF5. Construct the finite positive measure and every original multiplier moment</h2>
+<p>Fix any three original complex Schwartz vector fields <span class="math" data-tex="\(\psi_j\)">\(\psi_j\)</span> whose Fourier transforms have support in <span class="math" data-tex="\(B(\xi_j^0,\epsilon_0^3)\)">\(B(\xi_j^0,\epsilon_0^3)\)</span>, with the source Fourier convention. For <span class="math" data-tex="\(\alpha_j\in\{1,2,3\}\)">\(\alpha_j\in\{1,2,3\}\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+h_{j,\alpha_j}(\xi)=\overline{\widehat\psi_{j,\alpha_j}(\xi)}.
+\tag{AF16}
+\]">\[
+h_{j,\alpha_j}(\xi)=\overline{\widehat\psi_{j,\alpha_j}(\xi)}.
+\tag{AF16}
+\]</span>
+<p>These are the full original components, without a size or polarization replacement. They are smooth with the stated compact supports. Define the finite positive measure space</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Omega=SO(3)^3\times\mathbb R^9\times\{1,2,3\}^3,\\
+d\mu(R,x,\alpha)=\|\mathfrak a(R,x)\|\,dR_1dR_2dR_3\,dx
+\quad\text{on each of the 27 component copies},\\
+f_\alpha(R,x)=
+\begin{cases}
+\mathfrak a_\alpha(R,x)/\|\mathfrak a(R,x)\|,&amp;
+\|\mathfrak a(R,x)\|&gt;0,\\
+0,&amp;\|\mathfrak a(R,x)\|=0 .
+\end{cases}
+\end{gathered}
+\tag{AF17}
+\]">\[
+\begin{gathered}
+\Omega=SO(3)^3\times\mathbb R^9\times\{1,2,3\}^3,\\
+d\mu(R,x,\alpha)=\|\mathfrak a(R,x)\|\,dR_1dR_2dR_3\,dx
+\quad\text{on each of the 27 component copies},\\
+f_\alpha(R,x)=
+\begin{cases}
+\mathfrak a_\alpha(R,x)/\|\mathfrak a(R,x)\|,&amp;
+\|\mathfrak a(R,x)\|&gt;0,\\
+0,&amp;\|\mathfrak a(R,x)\|=0 .
+\end{cases}
+\end{gathered}
+\tag{AF17}
+\]</span>
+<p>Equation AF15 proves <span class="math" data-tex="\(\mu(\Omega)&lt;\infty\)">\(\mu(\Omega)&lt;\infty\)</span>, including the factor 27. Every <span class="math" data-tex="\(f_\alpha\)">\(f_\alpha\)</span> is measurable and satisfies <span class="math" data-tex="\(|f_\alpha|\leq1\)">\(|f_\alpha|\leq1\)</span>.
+For each <span class="math" data-tex="\(\omega=(R,x,\alpha)\)">\(\omega=(R,x,\alpha)\)</span>, define the actual scalar symbols in the output frequency of its rotation:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m_{1,\omega}(\zeta)
+=\frac{f_\alpha(R,x)}{-\pi i}
+e^{2\pi i x_1\cdot R_1^{-1}\zeta}
+h_{1,\alpha_1}(R_1^{-1}\zeta),\\
+m_{j,\omega}(\zeta)
+=e^{2\pi i x_j\cdot R_j^{-1}\zeta}
+h_{j,\alpha_j}(R_j^{-1}\zeta),\qquad j=2,3.
+\end{gathered}
+\tag{AF18}
+\]">\[
+\begin{gathered}
+m_{1,\omega}(\zeta)
+=\frac{f_\alpha(R,x)}{-\pi i}
+e^{2\pi i x_1\cdot R_1^{-1}\zeta}
+h_{1,\alpha_1}(R_1^{-1}\zeta),\\
+m_{j,\omega}(\zeta)
+=e^{2\pi i x_j\cdot R_j^{-1}\zeta}
+h_{j,\alpha_j}(R_j^{-1}\zeta),\qquad j=2,3.
+\end{gathered}
+\tag{AF18}
+\]</span>
+<p>The factor <span class="math" data-tex="\(1/(-\pi i)\)">\(1/(-\pi i)\)</span> is retained explicitly to match the original Euler Fourier trilinear coefficient. Every dilation is exactly one.
+Their complete supports are</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}m_{j,\omega}
+\subset R_j\operatorname{supp}\widehat\psi_j
+\subset B(R_j\xi_j^0,\epsilon_0^3),\qquad
+r_j^0-\epsilon_0^3\leq|\zeta|\leq r_j^0+\epsilon_0^3.
+\tag{AF19}
+\]">\[
+\operatorname{supp}m_{j,\omega}
+\subset R_j\operatorname{supp}\widehat\psi_j
+\subset B(R_j\xi_j^0,\epsilon_0^3),\qquad
+r_j^0-\epsilon_0^3\leq|\zeta|\leq r_j^0+\epsilon_0^3.
+\tag{AF19}
+\]</span>
+<p>The last radii are the original base lengths <span class="math" data-tex="\(r_j^0=|\xi_j^0|\)">\(r_j^0=|\xi_j^0|\)</span>, not the varying <span class="math" data-tex="\(r_j=|\xi_j|\)">\(r_j=|\xi_j|\)</span> used in the extension. Rotations preserve radius exactly. No asserted post-rotation ball has silently been recentered.</p>
+<p>Use the complete Euclidean derivative-tensor seminorm
+<span class="math" data-tex="\(\|m\|_k=\sup_{\zeta\ne0}|\zeta|^k\|\nabla^k m(\zeta)\|\)">\(\|m\|_k=\sup_{\zeta\ne0}|\zeta|^k\|\nabla^k m(\zeta)\|\)</span>.
+For each original component retain the finite constants</p>
+<span class="math math-display" data-tex="\[
+H_{j,\alpha_j,k,\ell}
+=\sup_{\xi\in\mathbb R^3}
+|\xi|^k\|\nabla^{k-\ell}h_{j,\alpha_j}(\xi)\|,
+\qquad 0\leq\ell\leq k.
+\tag{AF20}
+\]">\[
+H_{j,\alpha_j,k,\ell}
+=\sup_{\xi\in\mathbb R^3}
+|\xi|^k\|\nabla^{k-\ell}h_{j,\alpha_j}(\xi)\|,
+\qquad 0\leq\ell\leq k.
+\tag{AF20}
+\]</span>
+<p>Rotation is an isometry on derivative tensors and preserves the weighted radius. The full Leibniz rule therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|m_{1,\omega}\|_k
+\leq\frac1\pi\sum_{\ell=0}^k
+\binom k\ell(2\pi|x_1|)^\ell H_{1,\alpha_1,k,\ell},\\
+\|m_{j,\omega}\|_k
+\leq\sum_{\ell=0}^k
+\binom k\ell(2\pi|x_j|)^\ell H_{j,\alpha_j,k,\ell},
+\qquad j=2,3.
+\end{gathered}
+\tag{AF21}
+\]">\[
+\begin{gathered}
+\|m_{1,\omega}\|_k
+\leq\frac1\pi\sum_{\ell=0}^k
+\binom k\ell(2\pi|x_1|)^\ell H_{1,\alpha_1,k,\ell},\\
+\|m_{j,\omega}\|_k
+\leq\sum_{\ell=0}^k
+\binom k\ell(2\pi|x_j|)^\ell H_{j,\alpha_j,k,\ell},
+\qquad j=2,3.
+\end{gathered}
+\tag{AF21}
+\]</span>
+<p>Each derivative of the original exponential supplies the full factor <span class="math" data-tex="\(2\pi iR_jx_j\)">\(2\pi iR_jx_j\)</span>, whose tensor norm is <span class="math" data-tex="\(2\pi|x_j|\)">\(2\pi|x_j|\)</span>. Choosing which <span class="math" data-tex="\(\ell\)">\(\ell\)</span> derivatives fall on it gives precisely the binomial coefficient; the remaining derivatives act on the original component. The first symbol also retains <span class="math" data-tex="\(|f_\alpha|/\pi\leq1/\pi\)">\(|f_\alpha|/\pi\leq1/\pi\)</span>.
+Multiplying the three displayed sums and integrating against the actual measure gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_\Omega\prod_{j=1}^3\|m_{j,\omega}\|_{k_j}\,d\mu(\omega)\\
+&amp;\leq\frac1\pi\sum_{\alpha\in\{1,2,3\}^3}
+\sum_{\ell_1=0}^{k_1}\sum_{\ell_2=0}^{k_2}\sum_{\ell_3=0}^{k_3}
+\left(\prod_{j=1}^3\binom{k_j}{\ell_j}
+(2\pi)^{\ell_j}H_{j,\alpha_j,k_j,\ell_j}\right)\\
+&amp;\qquad\cdot\int_{SO(3)^3}\int_{\mathbb R^9}
+\|\mathfrak a(R,x)\|\prod_{j=1}^3|x_j|^{\ell_j}\,dx\,dR&lt;\infty.
+\end{aligned}
+\tag{AF22}
+\]">\[
+\begin{aligned}
+&amp;\int_\Omega\prod_{j=1}^3\|m_{j,\omega}\|_{k_j}\,d\mu(\omega)\\
+&amp;\leq\frac1\pi\sum_{\alpha\in\{1,2,3\}^3}
+\sum_{\ell_1=0}^{k_1}\sum_{\ell_2=0}^{k_2}\sum_{\ell_3=0}^{k_3}
+\left(\prod_{j=1}^3\binom{k_j}{\ell_j}
+(2\pi)^{\ell_j}H_{j,\alpha_j,k_j,\ell_j}\right)\\
+&amp;\qquad\cdot\int_{SO(3)^3}\int_{\mathbb R^9}
+\|\mathfrak a(R,x)\|\prod_{j=1}^3|x_j|^{\ell_j}\,dx\,dR&lt;\infty.
+\end{aligned}
+\tag{AF22}
+\]</span>
+<p>Finiteness follows from AF15 with <span class="math" data-tex="\(k=k_1+k_2+k_3\)">\(k=k_1+k_2+k_3\)</span>. This proves every required original triple moment, not only the zeroth operator bound.</p>
+<h2 id="af6-prove-the-actual-single-scale-averaging-identity">AF6. Prove the actual single-scale averaging identity</h2>
+<p>Let <span class="math" data-tex="\(A_{j,\omega}=m_{j,\omega}(D)\operatorname{Rot}_{R_j}\)">\(A_{j,\omega}=m_{j,\omega}(D)\operatorname{Rot}_{R_j}\)</span>, with the exact symbols AF18. The complete single-scale rank-one trilinear form is</p>
+<span class="math math-display" data-tex="\[
+\mathcal C_0(u,v,w)=
+\langle u,\overline{\psi_1}\rangle
+\langle v,\overline{\psi_2}\rangle
+\langle w,\overline{\psi_3}\rangle,
+\qquad
+\langle u,\overline{\psi_j}\rangle
+=\int_{\mathbb R^3}\widehat u(\xi)\cdot
+\overline{\widehat\psi_j(\xi)}\,d\xi .
+\tag{AF23}
+\]">\[
+\mathcal C_0(u,v,w)=
+\langle u,\overline{\psi_1}\rangle
+\langle v,\overline{\psi_2}\rangle
+\langle w,\overline{\psi_3}\rangle,
+\qquad
+\langle u,\overline{\psi_j}\rangle
+=\int_{\mathbb R^3}\widehat u(\xi)\cdot
+\overline{\widehat\psi_j(\xi)}\,d\xi .
+\tag{AF23}
+\]</span>
+<p>The pairing on the left is the original complex bilinear physical-space pairing; the last equality is Fourier inversion with the original conjugated test, not a change to a Hermitian operator convention.
+Then the actual Euler operator <span class="math" data-tex="\(B\)">\(B\)</span>, with its full Fourier trilinear coefficient <span class="math" data-tex="\(-\pi i\)">\(-\pi i\)</span>, satisfies</p>
+<span class="math math-display" data-tex="\[
+\mathcal C_0(u,v,w)
+=\int_\Omega
+\langle B(A_{1,\omega}u,A_{2,\omega}v),
+A_{3,\omega}w\rangle\,d\mu(\omega)
+\tag{AF24}
+\]">\[
+\mathcal C_0(u,v,w)
+=\int_\Omega
+\langle B(A_{1,\omega}u,A_{2,\omega}v),
+A_{3,\omega}w\rangle\,d\mu(\omega)
+\tag{AF24}
+\]</span>
+<p>for all original complex solenoidal <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> inputs.</p>
+<p>First consider smooth inputs with compact Fourier support. The right side has the complete Fourier integrand</p>
+<span class="math math-display" data-tex="\[
+-\pi i\,\delta(R_1\xi_1+R_2\xi_2+R_3\xi_3)
+\prod_{j=1}^3m_{j,\omega}(R_j\xi_j)
+\Lambda_{R_1\xi_1,R_2\xi_2,R_3\xi_3}
+(R_1\widehat u(\xi_1),R_2\widehat v(\xi_2),
+R_3\widehat w(\xi_3)).
+\tag{AF25}
+\]">\[
+-\pi i\,\delta(R_1\xi_1+R_2\xi_2+R_3\xi_3)
+\prod_{j=1}^3m_{j,\omega}(R_j\xi_j)
+\Lambda_{R_1\xi_1,R_2\xi_2,R_3\xi_3}
+(R_1\widehat u(\xi_1),R_2\widehat v(\xi_2),
+R_3\widehat w(\xi_3)).
+\tag{AF25}
+\]</span>
+<p>All three rotation Jacobians are one. Integration on
+<span class="math" data-tex="\(\xi_1+\xi_2+\xi_3=0\)">\(\xi_1+\xi_2+\xi_3=0\)</span> in the source convention means
+<span class="math" data-tex="\(\int d\xi_1d\xi_2\)">\(\int d\xi_1d\xi_2\)</span> with <span class="math" data-tex="\(\xi_3=-\xi_1-\xi_2\)">\(\xi_3=-\xi_1-\xi_2\)</span>; equivalently its delta is the ordinary three-dimensional delta with total mass one. This convention agrees with RF16; it is not the unweighted induced six-dimensional Euclidean surface measure.</p>
+<p>Insert the three AF18 symbols and AF17 measure in AF25. The factors <span class="math" data-tex="\(-\pi i\)">\(-\pi i\)</span> and <span class="math" data-tex="\(1/(-\pi i)\)">\(1/(-\pi i)\)</span> cancel exactly. For each component, <span class="math" data-tex="\(f_\alpha\|\mathfrak a\|=\mathfrak a_\alpha\)">\(f_\alpha\|\mathfrak a\|=\mathfrak a_\alpha\)</span>, including at every zero. Integration in the full nine <span class="math" data-tex="\(x\)">\(x\)</span> coordinates gives <span class="math" data-tex="\(\mathcal E_\alpha(R,\xi)\)">\(\mathcal E_\alpha(R,\xi)\)</span> by AF13. Summing the 27 components contracts <span class="math" data-tex="\(\mathcal E(R,\xi)\)">\(\mathcal E(R,\xi)\)</span> with the original tensor
+<span class="math" data-tex="\(h_1(\xi_1)\otimes h_2(\xi_2)\otimes h_3(\xi_3)\)">\(h_1(\xi_1)\otimes h_2(\xi_2)\otimes h_3(\xi_3)\)</span>.
+The factors <span class="math" data-tex="\(h_j\)">\(h_j\)</span> restrict every <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span> to its original small ball. On this region AF12 and the complete RF23 tensor identity return exactly
+<span class="math" data-tex="\(\widehat u(\xi_1)\otimes\widehat v(\xi_2)\otimes\widehat w(\xi_3)\)">\(\widehat u(\xi_1)\otimes\widehat v(\xi_2)\otimes\widehat w(\xi_3)\)</span>.
+Its contraction with that original <span class="math" data-tex="\(h\)">\(h\)</span> tensor, integrated in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, is the product AF23. This proves the full algebraic identity.</p>
+<p>The preceding interchanges are absolute. The three original <span class="math" data-tex="\(h_j\)">\(h_j\)</span> supports form a fixed compact subset of <span class="math" data-tex="\(\mathbb R^9\)">\(\mathbb R^9\)</span>, and their values and the current smooth input Fourier functions are bounded there. The trilinear polynomial is bounded on that set and the compact rotation product. Formula RF18 bounds the delta mass uniformly on this input region because all three <span class="math" data-tex="\(r_j\)">\(r_j\)</span> have a positive lower bound. Finally AF15 bounds the <span class="math" data-tex="\(x\)">\(x\)</span>-integral of <span class="math" data-tex="\(\|\mathfrak a\|\)">\(\|\mathfrak a\|\)</span>. These facts provide an integrable nonnegative majorant for all component integrals. One can also first use the approximate identities RF16; their masses are uniformly bounded on the compact input set, by the same local coarea coordinates and continuity, so dominated convergence gives precisely the same delta integral.</p>
+<p>For general <span class="math" data-tex="\(H^{10}_\sigma\)">\(H^{10}_\sigma\)</span> inputs, AF22 with all orders zero and the complete original Euler product estimate from lesson37 give an absolutely convergent <span class="math" data-tex="\(H^9_\sigma\)">\(H^9_\sigma\)</span>-valued Bochner integral</p>
+<span class="math math-display" data-tex="\[
+C_0(u,v)=\int_\Omega A_{3,\omega}^{\mathrm t}
+B(A_{1,\omega}u,A_{2,\omega}v)\,d\mu(\omega).
+\tag{AF26}
+\]">\[
+C_0(u,v)=\int_\Omega A_{3,\omega}^{\mathrm t}
+B(A_{1,\omega}u,A_{2,\omega}v)\,d\mu(\omega).
+\tag{AF26}
+\]</span>
+<p>The transpose is exactly the complex bilinear transpose from lesson38 EX1, including symbol reflection and reversed rotation. Strong measurability follows from the measurable phase, continuous rotation action and smooth dependence of the compact symbols; simple-function approximation and the integrable zeroth bound justify the integral. Dense smooth compact-Fourier solenoidal inputs extend AF24 by continuity of both sides. Pairing AF26 with every original <span class="math" data-tex="\(H^{10}_\sigma\)">\(H^{10}_\sigma\)</span> test gives AF23, so it is the actual rank-one operator represented by that trilinear form.
+This proves a complete finite-measure complex average of the original Euler operator, with all original symbol moments and dilation bounds verified.</p>
+<p>The resulting original field is also explicit:</p>
+<span class="math math-display" data-tex="\[
+C_0(u,v)=\langle u,\overline{\psi_1}\rangle
+\langle v,\overline{\psi_2}\rangle\,P\overline{\psi_3}.
+\tag{AF27}
+\]">\[
+C_0(u,v)=\langle u,\overline{\psi_1}\rangle
+\langle v,\overline{\psi_2}\rangle\,P\overline{\psi_3}.
+\tag{AF27}
+\]</span>
+<p>Indeed the real even symmetric Leray multiplier is self-transpose for the complex bilinear pairing, and it fixes every solenoidal test <span class="math" data-tex="\(w\)">\(w\)</span>. Thus pairing AF27 with <span class="math" data-tex="\(w\)">\(w\)</span> gives exactly AF23. Its target is the one-dimensional span of the displayed original projected field (or zero when that field is zero). For every real <span class="math" data-tex="\(s\)">\(s\)</span>, the complete norm bound is</p>
+<span class="math math-display" data-tex="\[
+\|C_0(u,v)\|_{H^s}\leq
+\|\psi_1\|_{H^{-10}}\|\psi_2\|_{H^{-10}}
+\|P\overline{\psi_3}\|_{H^s}
+\|u\|_{H^{10}}\|v\|_{H^{10}},
+\]">\[
+\|C_0(u,v)\|_{H^s}\leq
+\|\psi_1\|_{H^{-10}}\|\psi_2\|_{H^{-10}}
+\|P\overline{\psi_3}\|_{H^s}
+\|u\|_{H^{10}}\|v\|_{H^{10}},
+\]</span>
+<p>by weighted Fourier Cauchy–Schwarz in each original pairing. The projected field has every Sobolev order because its original Fourier support is smooth, compact and away from zero. This identifies the averaged operator in all those targets without replacing its full formula.</p>
+<h2 id="av1-keep-both-cutoff-domains-and-the-complete-frequency-ratio-average">AV1. Keep both cutoff domains and the complete frequency-ratio average</h2>
+<p>Retain the original parameter <span class="math" data-tex="\(0&lt;\epsilon_0\leq1/1024\)">\(0&lt;\epsilon_0\leq1/1024\)</span>, <span class="math" data-tex="\(q=1+\epsilon_0\)">\(q=1+\epsilon_0\)</span>, and the original source base vectors
+<span class="math" data-tex="\(\xi_1^0=(0,1,0)\)">\(\xi_1^0=(0,1,0)\)</span>, <span class="math" data-tex="\(\xi_2^0=(-1,-1,0)\)">\(\xi_2^0=(-1,-1,0)\)</span>, <span class="math" data-tex="\(\xi_3^0=(1,0,0)\)">\(\xi_3^0=(1,0,0)\)</span>.
+Their lengths are <span class="math" data-tex="\(s_1=1,s_2=\sqrt2,s_3=1\)">\(s_1=1,s_2=\sqrt2,s_3=1\)</span>.
+Use the actual scalar cutoff <span class="math" data-tex="\(b\)">\(b\)</span> constructed in AF8 and define two distinct functions with their correct domains:</p>
+<span class="math math-display" data-tex="\[
+\varphi(t)=b(t^2/4)\quad(t\in\mathbb R),\qquad
+\Phi(z)=b(|z|^2/4)\quad(z\in\mathbb R^3).
+\tag{AV1}
+\]">\[
+\varphi(t)=b(t^2/4)\quad(t\in\mathbb R),\qquad
+\Phi(z)=b(|z|^2/4)\quad(z\in\mathbb R^3).
+\tag{AV1}
+\]</span>
+<p>They equal one on the respective closed unit interval and ball, and vanish outside the respective radius-two sets. Both are smooth, by AF8. The source uses its scalar <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on a vector in line585; AV1 supplies the required three-dimensional map explicitly, while retaining the scalar function in the frequency-ratio formula.</p>
+<p>For the original positive frequency magnitudes define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta(N_1,N_2,N_3)=
+\prod_{j=2}^3
+\varphi\!\left(\frac{N_j/N_1-s_j}{10\epsilon_0^2}\right),\\
+F(y_2,y_3)=\eta(1,e^{y_2},e^{y_3}),\qquad
+\phi(t_2,t_3)=\frac1{(2\pi)^2}
+\int_{\mathbb R^2}F(y_2,y_3)e^{-i(t_2y_2+t_3y_3)}\,dy_2dy_3.
+\end{gathered}
+\tag{AV2}
+\]">\[
+\begin{gathered}
+\eta(N_1,N_2,N_3)=
+\prod_{j=2}^3
+\varphi\!\left(\frac{N_j/N_1-s_j}{10\epsilon_0^2}\right),\\
+F(y_2,y_3)=\eta(1,e^{y_2},e^{y_3}),\qquad
+\phi(t_2,t_3)=\frac1{(2\pi)^2}
+\int_{\mathbb R^2}F(y_2,y_3)e^{-i(t_2y_2+t_3y_3)}\,dy_2dy_3.
+\end{gathered}
+\tag{AV2}
+\]</span>
+<p>This <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is a two-dimensional Fourier coefficient function, distinct from the three-dimensional <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. Each ratio in the support lies between <span class="math" data-tex="\(s_j-20\epsilon_0^2&gt;0\)">\(s_j-20\epsilon_0^2&gt;0\)</span> and <span class="math" data-tex="\(s_j+20\epsilon_0^2\)">\(s_j+20\epsilon_0^2\)</span>. Thus the logarithmic variables lie in a fixed compact rectangle and <span class="math" data-tex="\(F\in C^\infty_c(\mathbb R^2)\)">\(F\in C^\infty_c(\mathbb R^2)\)</span>.
+Repeated integration by parts, with the complete factor <span class="math" data-tex="\((1+|t|^2)^N\)">\((1+|t|^2)^N\)</span> and operator <span class="math" data-tex="\((1-\Delta_y)^N\)">\((1-\Delta_y)^N\)</span>, proves rapid decay of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Fourier inversion, proved by the Gaussian argument AF13–AF15 with the present angular-frequency convention, gives exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\eta(N_1,N_2,N_3)
+&amp;=\int_{\mathbb R^2}
+N_1^{-i(t_2+t_3)}N_2^{it_2}N_3^{it_3}
+\phi(t_2,t_3)\,dt_2dt_3,\\
+\int_{\mathbb R^2}|\phi(t)|(1+|t_2|+|t_3|)^k\,dt&amp;&lt;\infty
+\qquad(k\geq0).
+\end{aligned}
+\tag{AV3}
+\]">\[
+\begin{aligned}
+\eta(N_1,N_2,N_3)
+&amp;=\int_{\mathbb R^2}
+N_1^{-i(t_2+t_3)}N_2^{it_2}N_3^{it_3}
+\phi(t_2,t_3)\,dt_2dt_3,\\
+\int_{\mathbb R^2}|\phi(t)|(1+|t_2|+|t_3|)^k\,dt&amp;&lt;\infty
+\qquad(k\geq0).
+\end{aligned}
+\tag{AV3}
+\]</span>
+<p>The factor <span class="math" data-tex="\((2\pi)^{-2}\)">\((2\pi)^{-2}\)</span> in AV2 is essential for this measure convention.</p>
+<p>For <span class="math" data-tex="\(\tau\in\mathbb R\)">\(\tau\in\mathbb R\)</span>, keep the original multiplier</p>
+<span class="math math-display" data-tex="\[
+D^{i\tau}(\xi)=|\xi|^{i\tau}\qquad(\xi\ne0).
+\tag{AV4}
+\]">\[
+D^{i\tau}(\xi)=|\xi|^{i\tau}\qquad(\xi\ne0).
+\tag{AV4}
+\]</span>
+<p>Its order-<span class="math" data-tex="\(k\)">\(k\)</span> symbol seminorm is bounded by a polynomial in <span class="math" data-tex="\(|\tau|\)">\(|\tau|\)</span> of degree at most <span class="math" data-tex="\(k\)">\(k\)</span>. Here is a complete derivative construction. Write <span class="math" data-tex="\(r=|\xi|\)">\(r=|\xi|\)</span>, <span class="math" data-tex="\(\omega=\xi/r\)">\(\omega=\xi/r\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\partial_{a_1}\cdots\partial_{a_k}r^{i\tau}
+=r^{i\tau-k}T_{k,a_1\ldots a_k}(\omega;\tau).
+\tag{AV5}
+\]">\[
+\partial_{a_1}\cdots\partial_{a_k}r^{i\tau}
+=r^{i\tau-k}T_{k,a_1\ldots a_k}(\omega;\tau).
+\tag{AV5}
+\]</span>
+<p>Start with <span class="math" data-tex="\(T_0=1\)">\(T_0=1\)</span>. The exact recurrence is</p>
+<span class="math math-display" data-tex="\[
+T_{k+1,a_1\ldots a_k b}
+=(i\tau-k)\omega_bT_{k,a_1\ldots a_k}
++\sum_{c=1}^3(\delta_{bc}-\omega_b\omega_c)
+\partial_{\omega_c}T_{k,a_1\ldots a_k}.
+\tag{AV6}
+\]">\[
+T_{k+1,a_1\ldots a_k b}
+=(i\tau-k)\omega_bT_{k,a_1\ldots a_k}
++\sum_{c=1}^3(\delta_{bc}-\omega_b\omega_c)
+\partial_{\omega_c}T_{k,a_1\ldots a_k}.
+\tag{AV6}
+\]</span>
+<p>It follows by differentiating <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(\omega_c\)">\(\omega_c\)</span> directly. Every component is a polynomial in <span class="math" data-tex="\(\omega\)">\(\omega\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-degree at most <span class="math" data-tex="\(k\)">\(k\)</span>, with finitely many explicitly determined coefficients. Sum the absolute values of those coefficients over all tensor components; call this finite number <span class="math" data-tex="\(M_k\)">\(M_k\)</span>. Since <span class="math" data-tex="\(|\omega_c|\leq1\)">\(|\omega_c|\leq1\)</span>, the Euclidean tensor norm is at most the sum of its component absolute values, giving
+<span class="math" data-tex="\(\|D^{i\tau}\|_k\leq M_k(1+|\tau|)^k\)">\(\|D^{i\tau}\|_k\leq M_k(1+|\tau|)^k\)</span>.
+This proves the required bound for every derivative order while preserving AV4.</p>
+<p>Define a finite positive measure <span class="math" data-tex="\(d\nu(t)=|\phi(t)|dt\)">\(d\nu(t)=|\phi(t)|dt\)</span>, and its phase
+<span class="math" data-tex="\(\gamma(t)=\phi(t)/|\phi(t)|\)">\(\gamma(t)=\phi(t)/|\phi(t)|\)</span> where <span class="math" data-tex="\(\phi\ne0\)">\(\phi\ne0\)</span>, zero elsewhere.
+Use the symbols
+<span class="math" data-tex="\(\gamma(t)|\xi|^{-i(t_2+t_3)}\)">\(\gamma(t)|\xi|^{-i(t_2+t_3)}\)</span>,
+<span class="math" data-tex="\(|\xi|^{it_2}\)">\(|\xi|^{it_2}\)</span>, <span class="math" data-tex="\(|\xi|^{it_3}\)">\(|\xi|^{it_3}\)</span>, with identity rotations and dilations.
+AV3 and AV6 prove every triple symbol moment. The complete strong Euler product estimate from lesson37 therefore constructs the actual <span class="math" data-tex="\(H^9_\sigma\)">\(H^9_\sigma\)</span>-valued complex average <span class="math" data-tex="\(B_\eta\)">\(B_\eta\)</span>. Its trilinear formula is</p>
+<span class="math math-display" data-tex="\[
+\langle B_\eta(u,v),w\rangle
+=-\pi i\int_{\xi_1+\xi_2+\xi_3=0}
+\eta(|\xi_1|,|\xi_2|,|\xi_3|)
+\Lambda_\xi(\widehat u(\xi_1),\widehat v(\xi_2),\widehat w(\xi_3)).
+\tag{AV7}
+\]">\[
+\langle B_\eta(u,v),w\rangle
+=-\pi i\int_{\xi_1+\xi_2+\xi_3=0}
+\eta(|\xi_1|,|\xi_2|,|\xi_3|)
+\Lambda_\xi(\widehat u(\xi_1),\widehat v(\xi_2),\widehat w(\xi_3)).
+\tag{AV7}
+\]</span>
+<p>For smooth inputs this follows from AV3 and absolute Fourier convergence; for all original <span class="math" data-tex="\(H^{10}_\sigma\)">\(H^{10}_\sigma\)</span> inputs it follows by the strong integral bound and density. The frequency sets where one <span class="math" data-tex="\(\xi_j=0\)">\(\xi_j=0\)</span> have measure zero in the six integration variables, so no unassigned value affects this formula.</p>
+<h2 id="av2-construct-the-actual-three-dimensional-scale-cutoff">AV2. Construct the actual three-dimensional scale cutoff</h2>
+<p>Define the original scale sum with the correctly typed cutoff:</p>
+<span class="math math-display" data-tex="\[
+\rho(\zeta)=\sum_{n\in\mathbb Z}
+\Phi\!\left(\frac{q^{-n}\zeta-\xi_1^0}{\epsilon_0^2}\right)
+\qquad(\zeta\ne0).
+\tag{AV8}
+\]">\[
+\rho(\zeta)=\sum_{n\in\mathbb Z}
+\Phi\!\left(\frac{q^{-n}\zeta-\xi_1^0}{\epsilon_0^2}\right)
+\qquad(\zeta\ne0).
+\tag{AV8}
+\]</span>
+<p>At most one term is nonzero. In fact its radial support lies in
+<span class="math" data-tex="\([q^n(1-2\epsilon_0^2),q^n(1+2\epsilon_0^2)]\)">\([q^n(1-2\epsilon_0^2),q^n(1+2\epsilon_0^2)]\)</span>, and these intervals are disjoint because</p>
+<span class="math math-display" data-tex="\[
+\frac{1+2\epsilon_0^2}{1-2\epsilon_0^2}&lt;q
+\quad\Longleftrightarrow\quad
+(4+2\epsilon_0)\epsilon_0&lt;1,
+\tag{AV9}
+\]">\[
+\frac{1+2\epsilon_0^2}{1-2\epsilon_0^2}&lt;q
+\quad\Longleftrightarrow\quad
+(4+2\epsilon_0)\epsilon_0&lt;1,
+\tag{AV9}
+\]</span>
+<p>which holds in the original parameter range. The sum is locally finite on <span class="math" data-tex="\(\mathbb R^3\setminus\{0\}\)">\(\mathbb R^3\setminus\{0\}\)</span>, hence smooth there, and <span class="math" data-tex="\(0\leq\rho\leq1\)">\(0\leq\rho\leq1\)</span>.
+Its complete seminorm bound is</p>
+<span class="math math-display" data-tex="\[
+\|\rho\|_k\leq
+(1+2\epsilon_0^2)^k\epsilon_0^{-2k}
+\sup_{z\in\mathbb R^3}\|\nabla^k\Phi(z)\|.
+\tag{AV10}
+\]">\[
+\|\rho\|_k\leq
+(1+2\epsilon_0^2)^k\epsilon_0^{-2k}
+\sup_{z\in\mathbb R^3}\|\nabla^k\Phi(z)\|.
+\tag{AV10}
+\]</span>
+<p>On the <span class="math" data-tex="\(n\)">\(n\)</span>-th support, its derivative has the full factor
+<span class="math" data-tex="\(q^{-nk}\epsilon_0^{-2k}\)">\(q^{-nk}\epsilon_0^{-2k}\)</span>, while <span class="math" data-tex="\(|\zeta|^k\leq q^{nk}(1+2\epsilon_0^2)^k\)">\(|\zeta|^k\leq q^{nk}(1+2\epsilon_0^2)^k\)</span>.
+There is no overlap loss because only one term is active. This proves AV10 including all scale factors. Reindexing also proves <span class="math" data-tex="\(\rho(q^n\zeta)=\rho(\zeta)\)">\(\rho(q^n\zeta)=\rho(\zeta)\)</span>.</p>
+<p>The actual operator</p>
+<span class="math math-display" data-tex="\[
+B_{\eta,\rho}(u,v)=B_\eta(\rho(D)u,v)
+\tag{AV11}
+\]">\[
+B_{\eta,\rho}(u,v)=B_\eta(\rho(D)u,v)
+\tag{AV11}
+\]</span>
+<p>is a complex average of the original Euler operator: multiply its first AV4 symbol by <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. The full derivative-tensor Leibniz rule and AV3–AV10 prove all triple moments. In particular no assumed multiplier theorem is needed to justify this operation.
+The complete trilinear integral is AV7 with the additional factor <span class="math" data-tex="\(\rho(\xi_1)\)">\(\rho(\xi_1)\)</span>.</p>
+<h2 id="av3-prove-exact-separation-of-all-original-scale-indices">AV3. Prove exact separation of all original scale indices</h2>
+<p>Use the actual single-scale symbols <span class="math" data-tex="\(m_{j,\omega}\)">\(m_{j,\omega}\)</span> from AF18 and their finite measure AF17. They satisfy every moment, contain the original factor <span class="math" data-tex="\(1/(-\pi i)\)">\(1/(-\pi i)\)</span> in the first slot, and have the precise original supports AF19.
+For <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-almost every parameter their rotations obey AF11: outside that compact rotation support the ambient tensor is identically zero in every frequency, so its entire Fourier transform and the measure density are zero.
+Define</p>
+<span class="math math-display" data-tex="\[
+m_{j,\omega,n}(\zeta)=m_{j,\omega}(q^{-n}\zeta),\qquad
+\widetilde m_{j,\omega}(\zeta)=\sum_{n\in\mathbb Z}m_{j,\omega,n}(\zeta).
+\tag{AV12}
+\]">\[
+m_{j,\omega,n}(\zeta)=m_{j,\omega}(q^{-n}\zeta),\qquad
+\widetilde m_{j,\omega}(\zeta)=\sum_{n\in\mathbb Z}m_{j,\omega,n}(\zeta).
+\tag{AV12}
+\]</span>
+<p>For each fixed <span class="math" data-tex="\(j\)">\(j\)</span>, their radial supports are disjoint:</p>
+<span class="math math-display" data-tex="\[
+\frac{s_j+\epsilon_0^3}{s_j-\epsilon_0^3}&lt;q
+\quad\Longleftrightarrow\quad
+(2+\epsilon_0)\epsilon_0^2&lt;s_j.
+\tag{AV13}
+\]">\[
+\frac{s_j+\epsilon_0^3}{s_j-\epsilon_0^3}&lt;q
+\quad\Longleftrightarrow\quad
+(2+\epsilon_0)\epsilon_0^2&lt;s_j.
+\tag{AV13}
+\]</span>
+<p>The latter holds because <span class="math" data-tex="\(s_j\geq1\)">\(s_j\geq1\)</span>. Therefore the sums are smooth away from zero and keep every full seminorm:</p>
+<span class="math math-display" data-tex="\[
+\|\widetilde m_{j,\omega}\|_k\leq\|m_{j,\omega}\|_k.
+\tag{AV14}
+\]">\[
+\|\widetilde m_{j,\omega}\|_k\leq\|m_{j,\omega}\|_k.
+\tag{AV14}
+\]</span>
+<p>The equality of each rescaled seminorm before summing follows from the derivative factor <span class="math" data-tex="\(q^{-nk}\)">\(q^{-nk}\)</span> and original weight <span class="math" data-tex="\(|\zeta|^k\)">\(|\zeta|^k\)</span>; disjoint supports give the bound for their sum. All triple moments remain integrable under the same finite measure.</p>
+<p>Suppose a Fourier interaction has a nonzero contribution from the three indices <span class="math" data-tex="\(n_1,n_2,n_3\)">\(n_1,n_2,n_3\)</span> and from <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Write its actual magnitudes as</p>
+<span class="math math-display" data-tex="\[
+N_j=q^{n_j}(s_j+\delta_j),\qquad |\delta_j|\leq\epsilon_0^3.
+\tag{AV15}
+\]">\[
+N_j=q^{n_j}(s_j+\delta_j),\qquad |\delta_j|\leq\epsilon_0^3.
+\tag{AV15}
+\]</span>
+<p>For <span class="math" data-tex="\(j=2,3\)">\(j=2,3\)</span>, if <span class="math" data-tex="\(d=n_j-n_1\geq1\)">\(d=n_j-n_1\geq1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\frac{N_j}{N_1}-s_j
+\geq\frac{\epsilon_0s_j-(q+s_j)\epsilon_0^3}{1+\epsilon_0^3}
+\geq\frac{\epsilon_0-3\epsilon_0^3}{1+\epsilon_0^3}
+\geq\frac{\epsilon_0}{4}.
+\tag{AV16}
+\]">\[
+\frac{N_j}{N_1}-s_j
+\geq\frac{\epsilon_0s_j-(q+s_j)\epsilon_0^3}{1+\epsilon_0^3}
+\geq\frac{\epsilon_0-3\epsilon_0^3}{1+\epsilon_0^3}
+\geq\frac{\epsilon_0}{4}.
+\tag{AV16}
+\]</span>
+<p>Here <span class="math" data-tex="\(q+s_j&lt;3\)">\(q+s_j&lt;3\)</span>; the numerator is at least <span class="math" data-tex="\(\epsilon_0/2\)">\(\epsilon_0/2\)</span> and the denominator at most two. If <span class="math" data-tex="\(d\leq-1\)">\(d\leq-1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+s_j-\frac{N_j}{N_1}
+\geq\frac{\epsilon_0s_j-(qs_j+1)\epsilon_0^3}
+{q(1-\epsilon_0^3)}
+\geq\frac{\epsilon_0-3\epsilon_0^3}{q(1-\epsilon_0^3)}
+\geq\frac{\epsilon_0}{4}.
+\tag{AV17}
+\]">\[
+s_j-\frac{N_j}{N_1}
+\geq\frac{\epsilon_0s_j-(qs_j+1)\epsilon_0^3}
+{q(1-\epsilon_0^3)}
+\geq\frac{\epsilon_0-3\epsilon_0^3}{q(1-\epsilon_0^3)}
+\geq\frac{\epsilon_0}{4}.
+\tag{AV17}
+\]</span>
+<p>The same estimates apply, since <span class="math" data-tex="\(qs_j+1&lt;3\)">\(qs_j+1&lt;3\)</span> and the denominator is below two.
+But <span class="math" data-tex="\(\eta\ne0\)">\(\eta\ne0\)</span> requires
+<span class="math" data-tex="\(|N_j/N_1-s_j|&lt;20\epsilon_0^2&lt;\epsilon_0/4\)">\(|N_j/N_1-s_j|&lt;20\epsilon_0^2&lt;\epsilon_0/4\)</span>.
+Both alternatives are impossible. Hence</p>
+<span class="math math-display" data-tex="\[
+\eta\ne0\text{ on this interaction}\quad\Longrightarrow\quad
+n_1=n_2=n_3.
+\tag{AV18}
+\]">\[
+\eta\ne0\text{ on this interaction}\quad\Longrightarrow\quad
+n_1=n_2=n_3.
+\tag{AV18}
+\]</span>
+<p>This proves the removal of every mixed-scale term.</p>
+<p>When all three indices equal <span class="math" data-tex="\(n\)">\(n\)</span>, their ratios instead obey</p>
+<span class="math math-display" data-tex="\[
+\left|\frac{N_j}{N_1}-s_j\right|
+\leq\frac{(1+s_j)\epsilon_0^3}{1-\epsilon_0^3}
+&lt;10\epsilon_0^2,\qquad j=2,3,
+\tag{AV19}
+\]">\[
+\left|\frac{N_j}{N_1}-s_j\right|
+\leq\frac{(1+s_j)\epsilon_0^3}{1-\epsilon_0^3}
+&lt;10\epsilon_0^2,\qquad j=2,3,
+\tag{AV19}
+\]</span>
+<p>so <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span>. The rotation support AF11 and the first original cap give, on the first symbol support,</p>
+<span class="math math-display" data-tex="\[
+|q^{-n}\zeta_1-\xi_1^0|
+\leq|R_1\xi_1^0-\xi_1^0|+\epsilon_0^3
+&lt;\epsilon_0^2/4+\epsilon_0^3&lt;\epsilon_0^2.
+\tag{AV20}
+\]">\[
+|q^{-n}\zeta_1-\xi_1^0|
+\leq|R_1\xi_1^0-\xi_1^0|+\epsilon_0^3
+&lt;\epsilon_0^2/4+\epsilon_0^3&lt;\epsilon_0^2.
+\tag{AV20}
+\]</span>
+<p>Thus the <span class="math" data-tex="\(n\)">\(n\)</span>-th AV8 term is one, and all other terms are zero by AV9. Therefore <span class="math" data-tex="\(\rho=1\)">\(\rho=1\)</span> too. Both original cutoff factors are exactly retained and evaluated, not removed without a support argument.</p>
+<h2 id="av4-recover-every-original-scale-coefficient-and-prove-the-strong-infinite-sum">AV4. Recover every original scale coefficient and prove the strong infinite sum</h2>
+<p>Keep the original <span class="math" data-tex="\(L^2\)">\(L^2\)</span> dilation <span class="math" data-tex="\(D_\lambda u(x)=\lambda^{3/2}u(\lambda x)\)">\(D_\lambda u(x)=\lambda^{3/2}u(\lambda x)\)</span> and rotations. Let
+<span class="math" data-tex="\(A_{j,\omega,n}=m_{j,\omega,n}(D)\operatorname{Rot}_{R_j}\)">\(A_{j,\omega,n}=m_{j,\omega,n}(D)\operatorname{Rot}_{R_j}\)</span>,
+<span class="math" data-tex="\(A_{j,\omega}=m_{j,\omega}(D)\operatorname{Rot}_{R_j}\)">\(A_{j,\omega}=m_{j,\omega}(D)\operatorname{Rot}_{R_j}\)</span>.
+Their exact identity is</p>
+<span class="math math-display" data-tex="\[
+A_{j,\omega,n}=D_{q^n}A_{j,\omega}D_{q^{-n}}.
+\tag{AV21}
+\]">\[
+A_{j,\omega,n}=D_{q^n}A_{j,\omega}D_{q^{-n}}.
+\tag{AV21}
+\]</span>
+<p>Indeed the Fourier multiplier identity
+<span class="math" data-tex="\(D_{q^{-n}}m_{j,\omega,n}(D)=m_{j,\omega}(D)D_{q^{-n}}\)">\(D_{q^{-n}}m_{j,\omega,n}(D)=m_{j,\omega}(D)D_{q^{-n}}\)</span>
+retains the full argument <span class="math" data-tex="\(q^{-n}q^n\xi=\xi\)">\(q^{-n}q^n\xi=\xi\)</span>, and rotations commute with these scalar dilations.</p>
+<p>The original Euler trilinear form scales by <span class="math" data-tex="\(\lambda^{5/2}\)">\(\lambda^{5/2}\)</span>, as proved with all Jacobians in lessons37–38. The ratios in <span class="math" data-tex="\(\eta\)">\(\eta\)</span> are homogeneous of degree zero, and AV8 has its exact discrete invariance. Thus <span class="math" data-tex="\(B_{\eta,\rho}\)">\(B_{\eta,\rho}\)</span> has the same trilinear scaling for <span class="math" data-tex="\(\lambda=q^n\)">\(\lambda=q^n\)</span>. Alternatively this follows directly from its complete AV7/AV11 Fourier integral: the six-dimensional frequency Jacobian is <span class="math" data-tex="\(\lambda^6\)">\(\lambda^6\)</span>, the three input amplitudes give <span class="math" data-tex="\(\lambda^{-9/2}\)">\(\lambda^{-9/2}\)</span>, and <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> contributes <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, with product <span class="math" data-tex="\(\lambda^{5/2}\)">\(\lambda^{5/2}\)</span>.</p>
+<p>For the original scaled fields
+<span class="math" data-tex="\(\psi_{j,n}=D_{q^n}\psi_j\)">\(\psi_{j,n}=D_{q^n}\psi_j\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\mathcal C_n(u,v,w)
+=\prod_{j=1}^3\langle u_j,\overline{\psi_{j,n}}\rangle,
+\qquad(u_1,u_2,u_3)=(u,v,w).
+\tag{AV22}
+\]">\[
+\mathcal C_n(u,v,w)
+=\prod_{j=1}^3\langle u_j,\overline{\psi_{j,n}}\rangle,
+\qquad(u_1,u_2,u_3)=(u,v,w).
+\tag{AV22}
+\]</span>
+<p>Combining AV19–AV21 with the actual AF24 identity gives</p>
+<span class="math math-display" data-tex="\[
+\int_\Omega
+\langle B_{\eta,\rho}(A_{1,\omega,n}u,A_{2,\omega,n}v),
+A_{3,\omega,n}w\rangle\,d\mu
+=q^{5n/2}\mathcal C_n(u,v,w).
+\tag{AV23}
+\]">\[
+\int_\Omega
+\langle B_{\eta,\rho}(A_{1,\omega,n}u,A_{2,\omega,n}v),
+A_{3,\omega,n}w\rangle\,d\mu
+=q^{5n/2}\mathcal C_n(u,v,w).
+\tag{AV23}
+\]</span>
+<p>The scaled pairing is
+<span class="math" data-tex="\(\langle D_{q^{-n}}u_j,\overline{\psi_j}\rangle
+=\langle u_j,\overline{D_{q^n}\psi_j}\rangle\)">\(\langle D_{q^{-n}}u_j,\overline{\psi_j}\rangle
+=\langle u_j,\overline{D_{q^n}\psi_j}\rangle\)</span>
+by the original unitary dilation and its real coefficients. This proves the full right side, including its coefficient.</p>
+<p>The complete cascade identity is consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{n\in\mathbb Z}q^{5n/2}\mathcal C_n(u,v,w)\\
+&amp;\qquad=\int_\Omega
+\langle B_{\eta,\rho}(\widetilde m_{1,\omega}(D)\operatorname{Rot}_{R_1}u,
+\widetilde m_{2,\omega}(D)\operatorname{Rot}_{R_2}v),
+\widetilde m_{3,\omega}(D)\operatorname{Rot}_{R_3}w\rangle\,d\mu .
+\end{aligned}
+\tag{AV24}
+\]">\[
+\begin{aligned}
+&amp;\sum_{n\in\mathbb Z}q^{5n/2}\mathcal C_n(u,v,w)\\
+&amp;\qquad=\int_\Omega
+\langle B_{\eta,\rho}(\widetilde m_{1,\omega}(D)\operatorname{Rot}_{R_1}u,
+\widetilde m_{2,\omega}(D)\operatorname{Rot}_{R_2}v),
+\widetilde m_{3,\omega}(D)\operatorname{Rot}_{R_3}w\rangle\,d\mu .
+\end{aligned}
+\tag{AV24}
+\]</span>
+<p>Here is the required convergence proof. First truncate all three sums AV12 to <span class="math" data-tex="\(|n|\leq N\)">\(|n|\leq N\)</span>. Expanding this finite trilinear expression produces only equal-index terms by AV18; AV23 identifies each such term. Each truncated symbol has the same seminorm bound AV14. Its multiplier converges strongly in every original <span class="math" data-tex="\(H^s\)">\(H^s\)</span>, because at each nonzero frequency at most one index contributes and its uniform bound is the original <span class="math" data-tex="\(\|m_{j,\omega}\|_0\)">\(\|m_{j,\omega}\|_0\)</span>. Weighted Fourier dominated convergence proves this statement.
+The actual operator <span class="math" data-tex="\(B_{\eta,\rho}:H^{10}\times H^{10}\to H^9\)">\(B_{\eta,\rho}:H^{10}\times H^{10}\to H^9\)</span> is bounded by AV3, AV10 and the strong Euler estimate. Its third complex bilinear transpose acts boundedly on <span class="math" data-tex="\(H^9\)">\(H^9\)</span> with the same zeroth symbol bound. The bilinear difference identity and strong convergence therefore give convergence of the corresponding integrand in <span class="math" data-tex="\(H^9\)">\(H^9\)</span> for each <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Its norm is bounded by a fixed multiple of
+<span class="math" data-tex="\(\prod_j\|m_{j,\omega}\|_0\|u\|_{H^{10}}\|v\|_{H^{10}}\)">\(\prod_j\|m_{j,\omega}\|_0\|u\|_{H^{10}}\|v\|_{H^{10}}\)</span>, integrable by AF22. Dominated convergence in this separable Sobolev space proves that the right side of AV24 is an actual <span class="math" data-tex="\(H^9\)">\(H^9\)</span>-valued integral and is the strong limit of the finite cascade sums.</p>
+<p>The original cascade series is also directly absolutely convergent in scalar duality and unconditionally convergent in <span class="math" data-tex="\(H^9\)">\(H^9\)</span>. To verify this independently of the representation, retain the common annular bounds</p>
+<span class="math math-display" data-tex="\[
+L_*=1-\epsilon_0^3&gt;0,\qquad U_*=\sqrt2+\epsilon_0^3,
+\qquad J_*=\left\lfloor\frac{\log(U_*/L_*)}{\log q}\right\rfloor+1.
+\tag{AV25}
+\]">\[
+L_*=1-\epsilon_0^3&gt;0,\qquad U_*=\sqrt2+\epsilon_0^3,
+\qquad J_*=\left\lfloor\frac{\log(U_*/L_*)}{\log q}\right\rfloor+1.
+\tag{AV25}
+\]</span>
+<p>All original scaled supports, including the reflected output support of <span class="math" data-tex="\(P\overline{\psi_3}\)">\(P\overline{\psi_3}\)</span>, lie in these annuli. The complete CC1–CC7 proof applies with these actual bounds: its index-interval argument, both weight comparisons and finite-tail estimate use only <span class="math" data-tex="\(0&lt;L_*&lt;U_*&lt;\infty\)">\(0&lt;L_*&lt;U_*&lt;\infty\)</span> and the unchanged <span class="math" data-tex="\(q\)">\(q\)</span>.
+For input orders ten and output order nine, the retained exponent difference is <span class="math" data-tex="\(10+10-9=11&gt;5/2\)">\(10+10-9=11&gt;5/2\)</span>. Thus its exact coefficient bound is finite and gives unconditional <span class="math" data-tex="\(H^9\)">\(H^9\)</span> convergence, with all original projected field norms. Complex bilinear pairing changes no absolute-value estimate. Pairing with the third <span class="math" data-tex="\(H^{10}\)">\(H^{10}\)</span> input then proves absolute scalar convergence by the same weighted sequence inequalities. This identifies the strong limit in AV24 with the original series rather than defining a different operator.</p>
+<p>The original source line620 states the equal-index localized term without its <span class="math" data-tex="\(q^{5n/2}\)">\(q^{5n/2}\)</span> coefficient. In the source convention, where <span class="math" data-tex="\(C_0\)">\(C_0\)</span> is an average of its <span class="math" data-tex="\(B_{\eta,\rho,0}\)">\(B_{\eta,\rho,0}\)</span> without the Euler coefficient <span class="math" data-tex="\(-\pi i\)">\(-\pi i\)</span>, that term must be</p>
+<span class="math math-display" data-tex="\[
+-\pi i\,q^{5n/2}\langle C_n(u,v),w\rangle.
+\tag{AV26}
+\]">\[
+-\pi i\,q^{5n/2}\langle C_n(u,v),w\rangle.
+\tag{AV26}
+\]</span>
+<p>The source decomposition at line592 already includes that scale coefficient. Equations AV21–AV23 derive it independently. In our AF18 representation the first symbol contains <span class="math" data-tex="\(1/(-\pi i)\)">\(1/(-\pi i)\)</span>, so the precise resulting term is AV23. These are two fully stated coefficient conventions for the same original Euler integral.</p>
+<p>The full moment estimates AF22 and AV14, followed by the exact composition formula in lesson38 EX7–EX10, now express AV24 as a complex average of the original Euler <span class="math" data-tex="\(B\)">\(B\)</span>. Both intervening finite positive measures and every transformed symbol in that composition are retained. No dilation other than one has yet been used for this small-cap class.</p>
+<h2 id="av5-return-to-every-original-annular-field-with-its-exact-maps">AV5. Return to every original annular field with its exact maps</h2>
+<p>Let <span class="math" data-tex="\(\psi_j\)">\(\psi_j\)</span> now be any of the original real Schwartz fields in the source definition, with</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}\widehat\psi_j\subset
+K=\{\xi:1-2\epsilon_0\leq|\xi|\leq1+2\epsilon_0\}.
+\tag{AV27}
+\]">\[
+\operatorname{supp}\widehat\psi_j\subset
+K=\{\xi:1-2\epsilon_0\leq|\xi|\leq1+2\epsilon_0\}.
+\tag{AV27}
+\]</span>
+<p>Construct a finite smooth frequency partition as follows. Put
+<span class="math" data-tex="\(r_*=\epsilon_0^3/8\)">\(r_*=\epsilon_0^3/8\)</span> and <span class="math" data-tex="\(d_*=\epsilon_0^3/(128\sqrt3)\)">\(d_*=\epsilon_0^3/(128\sqrt3)\)</span>.
+Take all points <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> of the lattice <span class="math" data-tex="\(d_*\mathbb Z^3\)">\(d_*\mathbb Z^3\)</span> whose distance from <span class="math" data-tex="\(K\)">\(K\)</span> is at most <span class="math" data-tex="\(r_*/2\)">\(r_*/2\)</span>. This set is finite, since <span class="math" data-tex="\(K\)">\(K\)</span> is bounded. Every point of <span class="math" data-tex="\(K\)">\(K\)</span> is within distance
+<span class="math" data-tex="\(\sqrt3\,d_*/2=\epsilon_0^3/256&lt;r_*/2\)">\(\sqrt3\,d_*/2=\epsilon_0^3/256&lt;r_*/2\)</span>
+of one of these lattice points. All such centers are nonzero.
+For each center use the actual bump</p>
+<span class="math math-display" data-tex="\[
+b_\kappa(\xi)=\vartheta(1-|\xi-\kappa|^2/r_*^2),
+\qquad
+D(\xi)=\sum_\kappa b_\kappa(\xi).
+\tag{AV28}
+\]">\[
+b_\kappa(\xi)=\vartheta(1-|\xi-\kappa|^2/r_*^2),
+\qquad
+D(\xi)=\sum_\kappa b_\kappa(\xi).
+\tag{AV28}
+\]</span>
+<p>The function <span class="math" data-tex="\(D\)">\(D\)</span> is positive on a neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span>. Define
+<span class="math" data-tex="\(\widehat{\psi_{j,\kappa}}=(b_\kappa/D)\widehat\psi_j\)">\(\widehat{\psi_{j,\kappa}}=(b_\kappa/D)\widehat\psi_j\)</span>
+there and zero elsewhere. This is a globally smooth compactly supported function: a neighborhood of the zero set of <span class="math" data-tex="\(D\)">\(D\)</span> is disjoint from <span class="math" data-tex="\(K\)">\(K\)</span>, by compactness and positivity on <span class="math" data-tex="\(K\)">\(K\)</span>, and the original <span class="math" data-tex="\(\widehat\psi_j\)">\(\widehat\psi_j\)</span> is zero outside <span class="math" data-tex="\(K\)">\(K\)</span>. The quotient therefore meets the zero extension only where its numerator field is identically zero. The inverse Fourier fields are Schwartz, with</p>
+<span class="math math-display" data-tex="\[
+\sum_\kappa\psi_{j,\kappa}=\psi_j,\qquad
+\operatorname{supp}\widehat{\psi_{j,\kappa}}\subset \overline B(\kappa,r_*).
+\tag{AV29}
+\]">\[
+\sum_\kappa\psi_{j,\kappa}=\psi_j,\qquad
+\operatorname{supp}\widehat{\psi_{j,\kappa}}\subset \overline B(\kappa,r_*).
+\tag{AV29}
+\]</span>
+<p>These pieces can be complex. Since the original <span class="math" data-tex="\(\psi_j\)">\(\psi_j\)</span> is real,
+<span class="math" data-tex="\(\sum_\kappa\overline{\psi_{j,\kappa}}=\psi_j\)">\(\sum_\kappa\overline{\psi_{j,\kappa}}=\psi_j\)</span> also holds exactly.
+The finite triple expansion of its trilinear cascade is consequently a sum of the original complex small-cap forms with these conjugated pieces.</p>
+<p>For each triple of centers and each <span class="math" data-tex="\(j\)">\(j\)</span>, retain the exact positive dilation</p>
+<span class="math math-display" data-tex="\[
+\lambda_j=\frac{s_j}{|\kappa_j|}.
+\tag{AV30}
+\]">\[
+\lambda_j=\frac{s_j}{|\kappa_j|}.
+\tag{AV30}
+\]</span>
+<p>Choose a proper rotation <span class="math" data-tex="\(S_j\)">\(S_j\)</span> sending <span class="math" data-tex="\(\kappa_j/|\kappa_j|\)">\(\kappa_j/|\kappa_j|\)</span> to <span class="math" data-tex="\(\xi_j^0/s_j\)">\(\xi_j^0/s_j\)</span>. Such a rotation can be constructed by completing each direction to a positively oriented orthonormal frame and multiplying the second frame by the transpose of the first. If the directions are not opposite, RF5 gives another explicit choice. Only finitely many rotations are needed, so no global direction chart or parameter measurability issue arises.
+Define the actual maps and transformed fields</p>
+<span class="math math-display" data-tex="\[
+T_j=\operatorname{Rot}_{S_j}D_{\lambda_j},\qquad
+\psi&#x27;_j=T_j\psi_{j,\kappa_j},\qquad
+\widehat{\psi&#x27;_j}(\zeta)=
+\lambda_j^{-3/2}S_j\widehat{\psi_{j,\kappa_j}}
+(\lambda_j^{-1}S_j^{-1}\zeta).
+\tag{AV31}
+\]">\[
+T_j=\operatorname{Rot}_{S_j}D_{\lambda_j},\qquad
+\psi&#x27;_j=T_j\psi_{j,\kappa_j},\qquad
+\widehat{\psi&#x27;_j}(\zeta)=
+\lambda_j^{-3/2}S_j\widehat{\psi_{j,\kappa_j}}
+(\lambda_j^{-1}S_j^{-1}\zeta).
+\tag{AV31}
+\]</span>
+<p>Every original amplitude, coordinate and radius factor is displayed. The centers satisfy
+<span class="math" data-tex="\(1-2\epsilon_0-r_*/2\leq|\kappa_j|\leq1+2\epsilon_0+r_*/2\)">\(1-2\epsilon_0-r_*/2\leq|\kappa_j|\leq1+2\epsilon_0+r_*/2\)</span>;
+in particular <span class="math" data-tex="\(1/2&lt;|\kappa_j|&lt;2\)">\(1/2&lt;|\kappa_j|&lt;2\)</span>.
+Hence <span class="math" data-tex="\(1/2&lt;\lambda_j&lt;3\)">\(1/2&lt;\lambda_j&lt;3\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}\widehat{\psi&#x27;_j}
+\subset \overline B(\xi_j^0,\lambda_jr_*)
+\subset B(\xi_j^0,3\epsilon_0^3/8)
+\subset B(\xi_j^0,\epsilon_0^3).
+\tag{AV32}
+\]">\[
+\operatorname{supp}\widehat{\psi&#x27;_j}
+\subset \overline B(\xi_j^0,\lambda_jr_*)
+\subset B(\xi_j^0,3\epsilon_0^3/8)
+\subset B(\xi_j^0,\epsilon_0^3).
+\tag{AV32}
+\]</span>
+<p>The already completed AV24 construction applies to these actual transformed fields.</p>
+<p>The precise comparison back to the original piece is</p>
+<span class="math math-display" data-tex="\[
+\langle u_j,\overline{D_{q^n}\psi_{j,\kappa_j}}\rangle
+=\langle T_ju_j,\overline{D_{q^n}\psi&#x27;_j}\rangle .
+\tag{AV33}
+\]">\[
+\langle u_j,\overline{D_{q^n}\psi_{j,\kappa_j}}\rangle
+=\langle T_ju_j,\overline{D_{q^n}\psi&#x27;_j}\rangle .
+\tag{AV33}
+\]</span>
+<p>Rotations and the original <span class="math" data-tex="\(L^2\)">\(L^2\)</span> dilations are real unitary maps; they commute with <span class="math" data-tex="\(D_{q^n}\)">\(D_{q^n}\)</span>, and their inverses and Fourier amplitudes are exactly those in AV31. Moving <span class="math" data-tex="\(T_j\)">\(T_j\)</span> simultaneously onto both factors therefore proves AV33. Thus the original piece is the already represented transformed cascade evaluated on <span class="math" data-tex="\(T_1u,T_2v,T_3w\)">\(T_1u,T_2v,T_3w\)</span>. If a represented input map is <span class="math" data-tex="\(m_j(D)\operatorname{Rot}_{R_j}\)">\(m_j(D)\operatorname{Rot}_{R_j}\)</span>, its exact composition is</p>
+<span class="math math-display" data-tex="\[
+m_j(D)\operatorname{Rot}_{R_j}T_j
+=m_j(D)\operatorname{Rot}_{R_jS_j}D_{\lambda_j}.
+\tag{AV34}
+\]">\[
+m_j(D)\operatorname{Rot}_{R_j}T_j
+=m_j(D)\operatorname{Rot}_{R_jS_j}D_{\lambda_j}.
+\tag{AV34}
+\]</span>
+<p>No map or amplitude has been discarded in returning to the original field. The dilations lie in the fixed compact interval <span class="math" data-tex="\([1/3,3]\)">\([1/3,3]\)</span>; the multiplier moment bounds are unchanged. Summing the finitely many cap triples on disjoint finite-measure spaces proves the required complex representation for the entire original basic cascade. Finite linear combinations are handled by retaining each original scalar coefficient in that component's first symbol and taking the finite disjoint union.</p>
+<h2 id="av6-recover-the-original-real-probability-representation">AV6. Recover the original real probability representation</h2>
+<p>The original operator in AV27 is real on real fields, by its original real defining series, whose full Sobolev convergence was proved in lesson38. The actual complex representation just constructed has a finite positive measure, all source triple moments, proper rotations and compact positive dilation bounds.
+Apply the complete realification construction in lesson38 EX1–EX6: split each original symbol into</p>
+<span class="math math-display" data-tex="\[
+m_0(\xi)=\frac{m(\xi)+\overline{m(-\xi)}}2,\qquad
+m_1(\xi)=\frac{m(\xi)-\overline{m(-\xi)}}{2i}.
+\tag{AV35}
+\]">\[
+m_0(\xi)=\frac{m(\xi)+\overline{m(-\xi)}}2,\qquad
+m_1(\xi)=\frac{m(\xi)-\overline{m(-\xi)}}{2i}.
+\tag{AV35}
+\]</span>
+<p>Both preserve real fields and every seminorm is bounded by the original one. Expanding all eight terms and taking physical real parts keeps precisely signs <span class="math" data-tex="\(+,-,-,-\)">\(+,-,-,-\)</span> at indices <span class="math" data-tex="\(000,110,101,011\)">\(000,110,101,011\)</span>. If the current finite measure has mass <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>, retain four copies with measure <span class="math" data-tex="\(d\mu/(4M)\)">\(d\mu/(4M)\)</span>, first symbol multiplied by its exact <span class="math" data-tex="\(4M\)">\(4M\)</span> and sign, and unchanged second and third symbols. This has total mass one, recovers each original signed integral, and has all required moments. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, the represented operator is zero and the one-atom zero-first-symbol construction gives it.</p>
+<p>Consequently every original local cascade with <span class="math" data-tex="\(0&lt;\epsilon_0\leq1/1024\)">\(0&lt;\epsilon_0\leq1/1024\)</span> is an averaged Euler operator in the source's real probability-space sense, with the full original fields, scales and coefficients preserved by the proved maps. This conclusion concerns the representation theorem at source line478. It supplies no finite-time blowup trajectory by itself; the original viscous cascade dynamics at lines481–494 require their own complete proof.</p>
+<h2 id="four-pictures-of-the-complete-original-maps">Four pictures of the complete original maps</h2>
+<p><img src="assets/NS-FLUID-39/original-cascade-spin-frame-D89F92550416C8693160E3DA725CDC8DE162D2049B8DCDF10B8037E231BD53FF.png" alt="The original frequency triangle and all eight tensor coefficients" class="course-figure" width="2400" height="1440" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-cascade-spin-frame" data-asset-sha256="D89F92550416C8693160E3DA725CDC8DE162D2049B8DCDF10B8037E231BD53FF"></p>
+<p>SP1–SP33 supply the complete proof behind this picture. The original coordinates, coefficients and measure conventions are retained. The <a href="assets/original-cascade-spin-frame.py">reproducible source</a> and <a href="assets/original-cascade-spin-frame.svg">vector rendering</a> are included. The <a href="assets/original-cascade-spin-frame-data.json">exact expressions and evaluated data</a> are retained.</p>
+<p>Human comparison: Tao, original navier-blowup.tex501–826. The pictures show the proved constructions and their editorial consequences; they do not simulate a singular fluid trajectory.</p>
+<p><img src="assets/NS-FLUID-39/original-rotation-fiber-measure-60E17BAFA27F360FE5C0FDF36894C026A82EEE08803B9DAA4CBF9010EBD887B4.png" alt="The complete original rotation fiber and both measure factors" class="course-figure" width="2400" height="1440" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-rotation-fiber-measure" data-asset-sha256="60E17BAFA27F360FE5C0FDF36894C026A82EEE08803B9DAA4CBF9010EBD887B4"></p>
+<p>RF1–RF24 supply the complete proof behind this picture. The original coordinates, coefficients and measure conventions are retained. The <a href="assets/original-rotation-fiber-measure.py">reproducible source</a> and <a href="assets/original-rotation-fiber-measure.svg">vector rendering</a> are included.</p>
+<p>Human comparison: Tao, original navier-blowup.tex501–826. The pictures show the proved constructions and their editorial consequences; they do not simulate a singular fluid trajectory.</p>
+<p><img src="assets/NS-FLUID-39/original-fiber-extension-4D6B7D41A54290226C0B8D03D265B503609D1BCC5B9B1CB8CFB79BCF28F1DFEF.png" alt="The exact rotation flow and full Fourier multiplier construction" class="course-figure" width="2400" height="1600" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-fiber-extension" data-asset-sha256="4D6B7D41A54290226C0B8D03D265B503609D1BCC5B9B1CB8CFB79BCF28F1DFEF"></p>
+<p>AF1–AF27 supply the complete proof behind this picture. The original coordinates, coefficients and measure conventions are retained. The auxiliary rotation time is distinct from physical fluid time. The <a href="assets/original-full-cascade-averaging.py">reproducible source</a> and <a href="assets/original-fiber-extension.svg">vector rendering</a> are included.</p>
+<p>Human comparison: Tao, original navier-blowup.tex501–826. The pictures show the proved constructions and their editorial consequences; they do not simulate a singular fluid trajectory.</p>
+<p><img src="assets/NS-FLUID-39/original-cascade-scale-selection-7E9CB3CA48EE311B2AE3DF6DA2828FB5F2E2093233AD7953B2224701CA87C482.png" alt="The complete original scale selection and sharp pump-weight criterion" class="course-figure" width="2400" height="1440" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="original-cascade-scale-selection" data-asset-sha256="7E9CB3CA48EE311B2AE3DF6DA2828FB5F2E2093233AD7953B2224701CA87C482"></p>
+<p>AV1–AV35 and Exercise 4 supply the complete proof behind this picture. The original coordinates, coefficients and measure conventions are retained. The five points mark central ratios; the proof treats the full caps and every integer scale. The <a href="assets/original-full-cascade-averaging.py">reproducible source</a> and <a href="assets/original-cascade-scale-selection.svg">vector rendering</a> are included. The <a href="assets/original-cascade-scale-selection-data.json">exact expressions and evaluated data</a> are retained.</p>
+<p>Human comparison: Tao, original navier-blowup.tex501–826. The pictures show the proved constructions and their editorial consequences; they do not simulate a singular fluid trajectory.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<h3 id="exercise-1-compute-the-original-closing-measure-and-its-complete-second-moments">Exercise 1. Compute the original closing measure and its complete second moments</h3>
+<p>For a noncollinear closed reference triangle with original lengths <span class="math" data-tex="\(r_j\)">\(r_j\)</span>, use the exact rotation-fiber measure RF17. Determine its total mass and the first and second moments of the actual rotated frequencies <span class="math" data-tex="\(y_j=R_j\xi_j\)">\(y_j=R_j\xi_j\)</span>.</p>
+<p><strong>Solution.</strong> Keep <span class="math" data-tex="\(r_j&gt;0\)">\(r_j&gt;0\)</span>, the original reference vectors <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span>, and the complete delta measure</p>
+<span class="math math-display" data-tex="\[
+d\mathcal M_\xi(R)=
+\delta(R_1\xi_1+R_2\xi_2+R_3\xi_3)\,dR_1dR_2dR_3,
+\qquad
+M_\xi=\frac1{8\pi r_1r_2r_3}.
+\tag{EX1}
+\]">\[
+d\mathcal M_\xi(R)=
+\delta(R_1\xi_1+R_2\xi_2+R_3\xi_3)\,dR_1dR_2dR_3,
+\qquad
+M_\xi=\frac1{8\pi r_1r_2r_3}.
+\tag{EX1}
+\]</span>
+<p>The total mass is RF18. Retain both this original measure and the associated probability measure <span class="math" data-tex="\(d\mathbb P_\xi=d\mathcal M_\xi/M_\xi\)">\(d\mathbb P_\xi=d\mathcal M_\xi/M_\xi\)</span>. Under the full parametrization RF8, RF17 gives exactly</p>
+<span class="math math-display" data-tex="\[
+d\mathbb P_\xi=dS\,
+\frac{d\theta_1d\theta_2d\theta_3}{(2\pi)^3},
+\qquad y_j=S\eta_j.
+\tag{EX2}
+\]">\[
+d\mathbb P_\xi=dS\,
+\frac{d\theta_1d\theta_2d\theta_3}{(2\pi)^3},
+\qquad y_j=S\eta_j.
+\tag{EX2}
+\]</span>
+<p>Thus the original frequencies depend only on the common Haar rotation; the three original spin angles remain independent uniform angles in this representation.</p>
+<p>For any fixed vector <span class="math" data-tex="\(a\)">\(a\)</span>, the vector <span class="math" data-tex="\(\int Sa\,dS\)">\(\int Sa\,dS\)</span> is fixed by every rotation, by left Haar invariance. A vector fixed by rotations by <span class="math" data-tex="\(\pi\)">\(\pi\)</span> around two perpendicular coordinate axes is zero. Therefore <span class="math" data-tex="\(\mathbb E_\xi y_j=0\)">\(\mathbb E_\xi y_j=0\)</span>.
+For any original vectors <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, the matrix
+<span class="math" data-tex="\(T=\int(Sa)(Sb)^{\mathsf T}dS\)">\(T=\int(Sa)(Sb)^{\mathsf T}dS\)</span> satisfies <span class="math" data-tex="\(QTQ^{\mathsf T}=T\)">\(QTQ^{\mathsf T}=T\)</span> for every proper rotation <span class="math" data-tex="\(Q\)">\(Q\)</span>. The same three coordinate half-turns force every off-diagonal entry to vanish, and quarter-turns between coordinate axes force the diagonal entries to agree. Thus <span class="math" data-tex="\(T=cI\)">\(T=cI\)</span>, and its retained trace is <span class="math" data-tex="\(3c=a\cdot b\)">\(3c=a\cdot b\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int y_j\,d\mathcal M_\xi=0,\qquad
+\int y_jy_k^{\mathsf T}\,d\mathcal M_\xi
+=\frac{\eta_j\cdot\eta_k}{24\pi r_1r_2r_3}I,\\
+\eta_j\cdot\eta_k=
+\begin{cases}
+r_j^2,&amp;j=k,\\
+(r_\ell^2-r_j^2-r_k^2)/2,&amp;\{j,k,\ell\}=\{1,2,3\}.
+\end{cases}
+\end{gathered}
+\tag{EX3}
+\]">\[
+\begin{gathered}
+\int y_j\,d\mathcal M_\xi=0,\qquad
+\int y_jy_k^{\mathsf T}\,d\mathcal M_\xi
+=\frac{\eta_j\cdot\eta_k}{24\pi r_1r_2r_3}I,\\
+\eta_j\cdot\eta_k=
+\begin{cases}
+r_j^2,&amp;j=k,\\
+(r_\ell^2-r_j^2-r_k^2)/2,&amp;\{j,k,\ell\}=\{1,2,3\}.
+\end{cases}
+\end{gathered}
+\tag{EX3}
+\]</span>
+<p>The original mass factor is present in every unscaled integral. For arbitrary real test vectors <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, this also proves</p>
+<span class="math math-display" data-tex="\[
+\mathbb E_\xi[(a\cdot y_j)(b\cdot y_k)]
+=\frac{(a\cdot b)(\eta_j\cdot\eta_k)}3.
+\tag{EX4}
+\]">\[
+\mathbb E_\xi[(a\cdot y_j)(b\cdot y_k)]
+=\frac{(a\cdot b)(\eta_j\cdot\eta_k)}3.
+\tag{EX4}
+\]</span>
+<p>Summing EX3 over <span class="math" data-tex="\(k\)">\(k\)</span> gives zero because <span class="math" data-tex="\(\sum_k\eta_k=0\)">\(\sum_k\eta_k=0\)</span>, exactly as required by the pointwise original constraint <span class="math" data-tex="\(\sum_k y_k=0\)">\(\sum_k y_k=0\)</span>. These identities concern the constructed closing measure; no statistical law for a fluid trajectory is being assumed.</p>
+<h3 id="exercise-2-find-the-smallest-possible-full-tensor-recovery-kernel">Exercise 2. Find the smallest possible full tensor recovery kernel</h3>
+<p>Among all square-integrable tensor kernels <span class="math" data-tex="\(K(\theta)\)">\(K(\theta)\)</span> that recover every original <span class="math" data-tex="\(X\in E\)">\(X\in E\)</span> by integrating <span class="math" data-tex="\(K(\theta)(T_\eta X)(\theta)\)">\(K(\theta)(T_\eta X)(\theta)\)</span> against the full Lebesgue angle measure, prove that SP22 has the least squared norm. Compute the exact minimum at the original source base point.</p>
+<p><strong>Solution.</strong> Work first at a noncollinear original triangle with <span class="math" data-tex="\(r_1\ne r_2\)">\(r_1\ne r_2\)</span>. The exact basis and observation formula SP20 and SP25 give</p>
+<span class="math math-display" data-tex="\[
+T_\eta U_\sigma=c_\sigma e^{i\sigma\cdot\theta}.
+\]">\[
+T_\eta U_\sigma=c_\sigma e^{i\sigma\cdot\theta}.
+\]</span>
+<p>Hence the recovery constraint is equivalent to all eight exact conditions</p>
+<span class="math math-display" data-tex="\[
+\int_{[0,2\pi]^3}K(\theta)e^{i\sigma\cdot\theta}\,d\theta
+=\frac{U_\sigma}{c_\sigma}.
+\tag{EX5}
+\]">\[
+\int_{[0,2\pi]^3}K(\theta)e^{i\sigma\cdot\theta}\,d\theta
+=\frac{U_\sigma}{c_\sigma}.
+\tag{EX5}
+\]</span>
+<p>Necessity follows by testing each <span class="math" data-tex="\(U_\sigma\)">\(U_\sigma\)</span>; sufficiency follows by its full basis expansion. The orthogonal projection in tensor-valued <span class="math" data-tex="\(L^2\)">\(L^2\)</span> onto these eight characters is therefore forced to be exactly <span class="math" data-tex="\(F_\eta\)">\(F_\eta\)</span> from SP22. If <span class="math" data-tex="\(K=F_\eta+H\)">\(K=F_\eta+H\)</span>, all eight corresponding Fourier coefficients of <span class="math" data-tex="\(H\)">\(H\)</span> vanish, so orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int\|K(\theta)\|^2d\theta
+=\int\|F_\eta(\theta)\|^2d\theta+\int\|H(\theta)\|^2d\theta,\\
+\min_K\int\|K(\theta)\|^2d\theta
+=\frac1{8(2\pi)^3}\sum_{\sigma\in\{-1,1\}^3}\frac1{|c_\sigma|^2}.
+\end{gathered}
+\tag{EX6}
+\]">\[
+\begin{gathered}
+\int\|K(\theta)\|^2d\theta
+=\int\|F_\eta(\theta)\|^2d\theta+\int\|H(\theta)\|^2d\theta,\\
+\min_K\int\|K(\theta)\|^2d\theta
+=\frac1{8(2\pi)^3}\sum_{\sigma\in\{-1,1\}^3}\frac1{|c_\sigma|^2}.
+\end{gathered}
+\tag{EX6}
+\]</span>
+<p>This proof uses only the finite orthogonal projection: no completeness assertion about an infinite Fourier series is needed. Equality holds precisely when <span class="math" data-tex="\(H=0\)">\(H=0\)</span> almost everywhere. Thus the minimum is unique in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and its smooth real representative is the explicit SP22 kernel.</p>
+<p>At the original source triangle, the eight real values of <span class="math" data-tex="\(8ic_\sigma\)">\(8ic_\sigma\)</span> consist of four numbers of absolute value one, two of absolute value <span class="math" data-tex="\(\sqrt2-1\)">\(\sqrt2-1\)</span>, and two of absolute value <span class="math" data-tex="\(\sqrt2+1\)">\(\sqrt2+1\)</span>. Retaining every contribution,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_\sigma|c_\sigma|^{-2}
+=64\left[4+\frac2{(\sqrt2-1)^2}+\frac2{(\sqrt2+1)^2}\right]
+=1024,\\
+\int_{[0,2\pi]^3}\|F_{\eta^0}(\theta)\|^2d\theta
+=\frac{1024}{8(2\pi)^3}=\frac{16}{\pi^3}.
+\end{gathered}
+\tag{EX7}
+\]">\[
+\begin{gathered}
+\sum_\sigma|c_\sigma|^{-2}
+=64\left[4+\frac2{(\sqrt2-1)^2}+\frac2{(\sqrt2+1)^2}\right]
+=1024,\\
+\int_{[0,2\pi]^3}\|F_{\eta^0}(\theta)\|^2d\theta
+=\frac{1024}{8(2\pi)^3}=\frac{16}{\pi^3}.
+\end{gathered}
+\tag{EX7}
+\]</span>
+<p>The torus-volume and original tensor norms have both been retained.
+When <span class="math" data-tex="\(r_1=r_2\)">\(r_1=r_2\)</span>, no kernel can recover the lost subspace, because <span class="math" data-tex="\(T_\eta\)">\(T_\eta\)</span> is zero on it. For recovery of <span class="math" data-tex="\(P_{\rm seen}X\)">\(P_{\rm seen}X\)</span>, the same proof gives the unique minimum <span class="math" data-tex="\(F_\eta^+\)">\(F_\eta^+\)</span> using only the four signs <span class="math" data-tex="\(\sigma_1\ne\sigma_2\)">\(\sigma_1\ne\sigma_2\)</span>, and the exact EX6 sum restricted to those signs. This proves the optimal recoverable map of the precise obstruction space.</p>
+<h3 id="exercise-3-differentiate-the-exact-closing-retraction">Exercise 3. Differentiate the exact closing retraction</h3>
+<p>Compute the derivative of the actual retraction AF7 at a point of the original closing fiber. Include perturbations of the original frequencies, not only perturbations of the rotations.</p>
+<p><strong>Solution.</strong> Fix <span class="math" data-tex="\(R\in\Sigma_\xi\)">\(R\in\Sigma_\xi\)</span>, put <span class="math" data-tex="\(y_j=R_j\xi_j\)">\(y_j=R_j\xi_j\)</span>, and retain</p>
+<span class="math math-display" data-tex="\[
+\mathcal D(v_1,v_2,v_3)=\sum_jv_j\times y_j,\qquad
+K=\mathcal D\mathcal D^*=\sum_j(r_j^2I-y_jy_j^{\mathsf T}).
+\tag{EX8}
+\]">\[
+\mathcal D(v_1,v_2,v_3)=\sum_jv_j\times y_j,\qquad
+K=\mathcal D\mathcal D^*=\sum_j(r_j^2I-y_jy_j^{\mathsf T}).
+\tag{EX8}
+\]</span>
+<p>The <span class="math" data-tex="\(v_j\)">\(v_j\)</span> are spatial angular velocities of the initial rotations. Let <span class="math" data-tex="\(h_j\)">\(h_j\)</span> be arbitrary original frequency variations, and define the full varying defect</p>
+<span class="math math-display" data-tex="\[
+g=\mathcal Dv+\sum_jR_jh_j.
+\tag{EX9}
+\]">\[
+g=\mathcal Dv+\sum_jR_jh_j.
+\tag{EX9}
+\]</span>
+<p>At the base point the actual auxiliary flow AF5 is constant, because its initial defect is zero. Differentiating its vector field, all derivatives of <span class="math" data-tex="\(y_j\)">\(y_j\)</span> and <span class="math" data-tex="\(K^{-1}\)">\(K^{-1}\)</span> multiply that zero defect. The only nonzero first variation of the angular velocity is therefore
+<span class="math" data-tex="\(-y_j\times K^{-1}g\)">\(-y_j\times K^{-1}g\)</span>, independent of the auxiliary time. Integrating from zero to one gives the entire derivative</p>
+<span class="math math-display" data-tex="\[
+D\Pi_\xi(R)[v,h]_j
+=v_j-y_j\times K^{-1}
+\left(\mathcal Dv+\sum_kR_kh_k\right).
+\tag{EX10}
+\]">\[
+D\Pi_\xi(R)[v,h]_j
+=v_j-y_j\times K^{-1}
+\left(\mathcal Dv+\sum_kR_kh_k\right).
+\tag{EX10}
+\]</span>
+<p>The output frequencies remain the original <span class="math" data-tex="\(\xi+h\)">\(\xi+h\)</span>; the associated derivative in that component is <span class="math" data-tex="\(h\)">\(h\)</span>. Applying the derivative of the full closing constraint to this pair gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal D\bigl(D\Pi[v,h]\bigr)+\sum_jR_jh_j
+=g-\mathcal D\mathcal D^*K^{-1}g=0.
+\tag{EX11}
+\]">\[
+\mathcal D\bigl(D\Pi[v,h]\bigr)+\sum_jR_jh_j
+=g-\mathcal D\mathcal D^*K^{-1}g=0.
+\tag{EX11}
+\]</span>
+<p>Thus it is an actual tangent map of the complete fiber family.</p>
+<p>For fixed frequencies <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, the derivative is the orthogonal projection</p>
+<span class="math math-display" data-tex="\[
+D\Pi_\xi(R)=I-\mathcal D^*K^{-1}\mathcal D
+\tag{EX12}
+\]">\[
+D\Pi_\xi(R)=I-\mathcal D^*K^{-1}\mathcal D
+\tag{EX12}
+\]</span>
+<p>in the declared nine-dimensional product angular metric. Self-adjointness follows from the symmetric positive <span class="math" data-tex="\(K^{-1}\)">\(K^{-1}\)</span>, and squaring the complementary term gives
+<span class="math" data-tex="\(\mathcal D^*K^{-1}(\mathcal D\mathcal D^*)K^{-1}\mathcal D
+=\mathcal D^*K^{-1}\mathcal D\)">\(\mathcal D^*K^{-1}(\mathcal D\mathcal D^*)K^{-1}\mathcal D
+=\mathcal D^*K^{-1}\mathcal D\)</span>.
+Its range is exactly <span class="math" data-tex="\(\ker\mathcal D=T_R\Sigma_\xi\)">\(\ker\mathcal D=T_R\Sigma_\xi\)</span>, of dimension six; its kernel is <span class="math" data-tex="\(\operatorname{ran}\mathcal D^*\)">\(\operatorname{ran}\mathcal D^*\)</span>, of dimension three. The projection norm is one. Its exact block entries and full correction cost are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(D\Pi_\xi)_{jk}
+=\delta_{jk}I+[y_j]_\times K^{-1}[y_k]_\times,\\
+\|v-D\Pi_\xi v\|^2
+=(\mathcal Dv)^{\mathsf T}K^{-1}(\mathcal Dv).
+\end{gathered}
+\tag{EX13}
+\]">\[
+\begin{gathered}
+(D\Pi_\xi)_{jk}
+=\delta_{jk}I+[y_j]_\times K^{-1}[y_k]_\times,\\
+\|v-D\Pi_\xi v\|^2
+=(\mathcal Dv)^{\mathsf T}K^{-1}(\mathcal Dv).
+\end{gathered}
+\tag{EX13}
+\]</span>
+<p>The block sign follows from <span class="math" data-tex="\(\mathcal D_k=-[y_k]_\times\)">\(\mathcal D_k=-[y_k]_\times\)</span>, while the adjoint block is <span class="math" data-tex="\([y_j]_\times\)">\([y_j]_\times\)</span>. The norm formula follows by inserting <span class="math" data-tex="\(\mathcal D\mathcal D^*=K\)">\(\mathcal D\mathcal D^*=K\)</span>.
+These are derivatives of the actual nonlinear AF5 flow. They do not replace that flow by its tangent projection away from the fiber.</p>
+<h3 id="exercise-4-determine-the-exact-allowed-weights-of-the-original-pump-scales">Exercise 4. Determine the exact allowed weights of the original pump scales</h3>
+<p>Extend the averaging construction to bounded scale coefficients. For the explicit original pump of lesson38, prove that boundedness of those coefficients is also necessary for any averaged Euler representation with the source moment and dilation conditions.</p>
+<p><strong>Solution.</strong> For a bounded sequence <span class="math" data-tex="\(w=(w_n)_{n\in\mathbb Z}\)">\(w=(w_n)_{n\in\mathbb Z}\)</span>, keep the full modified cascade series</p>
+<span class="math math-display" data-tex="\[
+\mathcal C^w(u,v,z)=
+\sum_{n\in\mathbb Z}w_nq^{5n/2}
+\langle u,\overline{\psi_{1,n}}\rangle
+\langle v,\overline{\psi_{2,n}}\rangle
+\langle z,\overline{\psi_{3,n}}\rangle.
+\tag{EX14}
+\]">\[
+\mathcal C^w(u,v,z)=
+\sum_{n\in\mathbb Z}w_nq^{5n/2}
+\langle u,\overline{\psi_{1,n}}\rangle
+\langle v,\overline{\psi_{2,n}}\rangle
+\langle z,\overline{\psi_{3,n}}\rangle.
+\tag{EX14}
+\]</span>
+<p>In AV12 change only the first actual symbol to</p>
+<span class="math math-display" data-tex="\[
+\widetilde m^w_{1,\omega}
+=\sum_n w_nm_{1,\omega,n},\qquad
+\|\widetilde m^w_{1,\omega}\|_k
+\leq\|w\|_{\ell^\infty}\|m_{1,\omega}\|_k.
+\tag{EX15}
+\]">\[
+\widetilde m^w_{1,\omega}
+=\sum_n w_nm_{1,\omega,n},\qquad
+\|\widetilde m^w_{1,\omega}\|_k
+\leq\|w\|_{\ell^\infty}\|m_{1,\omega}\|_k.
+\tag{EX15}
+\]</span>
+<p>The disjoint original radial supports prove the estimate and smoothness for every bounded sequence; no regularity in <span class="math" data-tex="\(n\)">\(n\)</span> is needed. The mixed-scale exclusion AV18 remains unchanged. Each surviving term is multiplied by precisely its original <span class="math" data-tex="\(w_n\)">\(w_n\)</span>, and the same strong dominated-convergence proof gives EX14 as an actual complex average. The original cap partition and retargeting AV27–AV34 commute with each unchanged <span class="math" data-tex="\(q^n\)">\(q^n\)</span> scale, so the conclusion holds for the original annular fields. For real <span class="math" data-tex="\(w_n\)">\(w_n\)</span> and real original fields the full realification AV35 supplies an actual real probability representation.</p>
+<p>Now take the explicit real pump fields <span class="math" data-tex="\(\phi_1,\phi_2\)">\(\phi_1,\phi_2\)</span> from lesson38 CC13, with their mutually orthogonal scale families, <span class="math" data-tex="\(A=\|\phi_1\|_2^2&gt;0\)">\(A=\|\phi_1\|_2^2&gt;0\)</span> and <span class="math" data-tex="\(B=\|\phi_2\|_2^2&gt;0\)">\(B=\|\phi_2\|_2^2&gt;0\)</span>. Multiply all three original terms of CC15 at scale <span class="math" data-tex="\(n\)">\(n\)</span> by the same real <span class="math" data-tex="\(w_n\)">\(w_n\)</span>; denote the resulting pump by <span class="math" data-tex="\(C_{\rm pump}^w\)">\(C_{\rm pump}^w\)</span>. On its original single-scale tests the exact value is</p>
+<span class="math math-display" data-tex="\[
+\left\langle C_{\rm pump}^w(D_{q^n}\phi_1,D_{q^n}\phi_1),
+D_{q^n}\phi_2\right\rangle
+=w_nq^{5n/2}A^2B.
+\tag{EX16}
+\]">\[
+\left\langle C_{\rm pump}^w(D_{q^n}\phi_1,D_{q^n}\phi_1),
+D_{q^n}\phi_2\right\rangle
+=w_nq^{5n/2}A^2B.
+\tag{EX16}
+\]</span>
+<p>Only the incoming term at index <span class="math" data-tex="\(n\)">\(n\)</span> survives, by the proved support orthogonality. This identity holds already on those tests, even before an extension for an unbounded sequence has been chosen.</p>
+<p>For any actual averaged Euler representation with source symbols <span class="math" data-tex="\(m_{j,\omega}\)">\(m_{j,\omega}\)</span>, rotations <span class="math" data-tex="\(R_{j,\omega}\)">\(R_{j,\omega}\)</span> and original compact positive dilations <span class="math" data-tex="\(\lambda_{j,\omega}\)">\(\lambda_{j,\omega}\)</span>, its transformed inputs at a common original scale <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+m_j(D)\operatorname{Rot}_{R_j}D_{\lambda_j}D_\lambda f_j
+=D_\lambda
+m_j(\lambda D)\operatorname{Rot}_{R_j}D_{\lambda_j}f_j.
+\tag{EX17}
+\]">\[
+m_j(D)\operatorname{Rot}_{R_j}D_{\lambda_j}D_\lambda f_j
+=D_\lambda
+m_j(\lambda D)\operatorname{Rot}_{R_j}D_{\lambda_j}f_j.
+\tag{EX17}
+\]</span>
+<p>Both Fourier amplitude factors remain those of the original dilations; the argument <span class="math" data-tex="\(m_j(\lambda\xi)\)">\(m_j(\lambda\xi)\)</span> follows directly from their Fourier formula. Its zeroth seminorm is exactly <span class="math" data-tex="\(\|m_j\|_0\)">\(\|m_j\|_0\)</span>.
+The original Euler trilinear scaling and its complete <span class="math" data-tex="\(H^{10}\times H^{10}\to H^9\)">\(H^{10}\times H^{10}\to H^9\)</span> product bound <span class="math" data-tex="\(C_9\)">\(C_9\)</span>, followed by the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> third pairing, imply</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|\langle C(D_\lambda f_1,D_\lambda f_2),D_\lambda f_3\rangle|
+\leq \lambda^{5/2}\mathcal B\,
+\|f_1\|_{H^{10}}\|f_2\|_{H^{10}}\|f_3\|_2,\\
+&amp;\mathcal B=
+C_9\int_\Omega
+\prod_{j=1}^3\|m_{j,\omega}\|_0
+d_{10}(\lambda_{1,\omega})
+d_{10}(\lambda_{2,\omega})\,d\mu(\omega)&lt;\infty .
+\end{aligned}
+\tag{EX18}
+\]">\[
+\begin{aligned}
+&amp;|\langle C(D_\lambda f_1,D_\lambda f_2),D_\lambda f_3\rangle|
+\leq \lambda^{5/2}\mathcal B\,
+\|f_1\|_{H^{10}}\|f_2\|_{H^{10}}\|f_3\|_2,\\
+&amp;\mathcal B=
+C_9\int_\Omega
+\prod_{j=1}^3\|m_{j,\omega}\|_0
+d_{10}(\lambda_{1,\omega})
+d_{10}(\lambda_{2,\omega})\,d\mu(\omega)&lt;\infty .
+\end{aligned}
+\tag{EX18}
+\]</span>
+<p>Here <span class="math" data-tex="\(d_{10}\)">\(d_{10}\)</span> is the full original dilation norm bound from lesson37; the third original dilation is an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> isometry, so its complete bound is one. The source compact dilation interval and zeroth triple moment give finiteness. The rotated and dilated original fields are retained inside this estimate; they have not been replaced by unit-norm tests.</p>
+<p>Apply EX18 with <span class="math" data-tex="\(\lambda=q^n\)">\(\lambda=q^n\)</span>, <span class="math" data-tex="\(f_1=f_2=\phi_1\)">\(f_1=f_2=\phi_1\)</span>, <span class="math" data-tex="\(f_3=\phi_2\)">\(f_3=\phi_2\)</span>, and compare EX16. Every such representation forces</p>
+<span class="math math-display" data-tex="\[
+|w_n|\leq
+\frac{\mathcal B\,\|\phi_1\|_{H^{10}}^2\|\phi_2\|_2}{A^2B}
+\qquad(n\in\mathbb Z).
+\tag{EX19}
+\]">\[
+|w_n|\leq
+\frac{\mathcal B\,\|\phi_1\|_{H^{10}}^2\|\phi_2\|_2}{A^2B}
+\qquad(n\in\mathbb Z).
+\tag{EX19}
+\]</span>
+<p>Thus a real coefficient sequence for this original pump admits an averaged Euler representation if and only if it is bounded. Sufficiency is the actual construction EX14–EX15, applied to the pump's three original basic terms; necessity is the exact scale test above. Unbounded coefficients cannot be repaired by choosing a different averaging representation under the same source conditions.
+For bounded real coefficients the pump remains symmetric and energy-canceling, because the same coefficient multiplies the three terms of each original cancellation identity. Its complete critical Sobolev map and local evolution therefore remain available with their coefficient multiplied by <span class="math" data-tex="\(\|w\|_\infty\)">\(\|w\|_\infty\)</span>.</p>
+<h3 id="exercise-5-prove-stability-of-the-actual-original-viscosity-flows-under-scale-weights">Exercise 5. Prove stability of the actual original-viscosity flows under scale weights</h3>
+<p>For the same original pump, quantify the dependence of its actual local flow on the bounded scale sequence and on its initial datum, preserving the full original viscosity.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(K_*&gt;0\)">\(K_*&gt;0\)</span> be the full <span class="math" data-tex="\(H^{5/2}\times H^{5/2}\to H^{5/2}\)">\(H^{5/2}\times H^{5/2}\to H^{5/2}\)</span> coefficient of the three-term original pump from lesson38 CC7. For bounded real sequences <span class="math" data-tex="\(w,\widetilde w\)">\(w,\widetilde w\)</span>, its full series estimate gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|C_{\rm pump}^{w}(u,v)\|_{H^{5/2}}
+\leq K_*\|w\|_\infty\|u\|_{H^{5/2}}\|v\|_{H^{5/2}},\\
+\|(C_{\rm pump}^{w}-C_{\rm pump}^{\widetilde w})(u,v)\|_{H^{5/2}}
+\leq K_*\|w-\widetilde w\|_\infty
+\|u\|_{H^{5/2}}\|v\|_{H^{5/2}}.
+\end{gathered}
+\tag{EX20}
+\]">\[
+\begin{gathered}
+\|C_{\rm pump}^{w}(u,v)\|_{H^{5/2}}
+\leq K_*\|w\|_\infty\|u\|_{H^{5/2}}\|v\|_{H^{5/2}},\\
+\|(C_{\rm pump}^{w}-C_{\rm pump}^{\widetilde w})(u,v)\|_{H^{5/2}}
+\leq K_*\|w-\widetilde w\|_\infty
+\|u\|_{H^{5/2}}\|v\|_{H^{5/2}}.
+\end{gathered}
+\tag{EX20}
+\]</span>
+<p>No original field norm or annular constant in <span class="math" data-tex="\(K_*\)">\(K_*\)</span> has been replaced.
+Fix the original <span class="math" data-tex="\(\nu\geq0\)">\(\nu\geq0\)</span>, data <span class="math" data-tex="\(u_0,v_0\)">\(u_0,v_0\)</span>, and retain</p>
+<span class="math math-display" data-tex="\[
+M=\max(\|u_0\|_{H^{5/2}},\|v_0\|_{H^{5/2}}),\qquad
+L=\max(\|w\|_\infty,\|\widetilde w\|_\infty).
+\]">\[
+M=\max(\|u_0\|_{H^{5/2}},\|v_0\|_{H^{5/2}}),\qquad
+L=\max(\|w\|_\infty,\|\widetilde w\|_\infty).
+\]</span>
+<p>If <span class="math" data-tex="\(M,L&gt;0\)">\(M,L&gt;0\)</span>, the actual heat Picard construction CC11 with EX20 gives both unique flows on</p>
+<span class="math math-display" data-tex="\[
+T=(8K_*LM)^{-1},\qquad
+\|u(t)\|_{H^{5/2}},\|v(t)\|_{H^{5/2}}\leq2M.
+\tag{EX21}
+\]">\[
+T=(8K_*LM)^{-1},\qquad
+\|u(t)\|_{H^{5/2}},\|v(t)\|_{H^{5/2}}\leq2M.
+\tag{EX21}
+\]</span>
+<p>Both equations keep the same original heat semigroup <span class="math" data-tex="\(e^{\nu t\Delta}\)">\(e^{\nu t\Delta}\)</span>.
+Subtract their exact mild formulas, decompose the nonlinear difference into the two <span class="math" data-tex="\(w\)">\(w\)</span>-bilinear differences and the coefficient difference applied to <span class="math" data-tex="\(v,v\)">\(v,v\)</span>, and use its contraction norm. With</p>
+<span class="math math-display" data-tex="\[
+E(t)=\|u(t)-v(t)\|_{H^{5/2}},\quad
+\delta_0=\|u_0-v_0\|_{H^{5/2}},\quad
+\delta_w=\|w-\widetilde w\|_\infty,
+\]">\[
+E(t)=\|u(t)-v(t)\|_{H^{5/2}},\quad
+\delta_0=\|u_0-v_0\|_{H^{5/2}},\quad
+\delta_w=\|w-\widetilde w\|_\infty,
+\]</span>
+<p>the full inequality is</p>
+<span class="math math-display" data-tex="\[
+E(t)\leq\delta_0+
+4K_*LM\int_0^t E(r)\,dr+4K_*M^2\delta_w\,t.
+\tag{EX22}
+\]">\[
+E(t)\leq\delta_0+
+4K_*LM\int_0^t E(r)\,dr+4K_*M^2\delta_w\,t.
+\tag{EX22}
+\]</span>
+<p>To retain the exact forcing contribution, put
+<span class="math" data-tex="\(a=4K_*LM\)">\(a=4K_*LM\)</span> and <span class="math" data-tex="\(b=4K_*M^2\delta_w\)">\(b=4K_*M^2\delta_w\)</span>.
+The absolutely continuous majorant
+<span class="math" data-tex="\(F(t)=\delta_0+a\int_0^tE(r)\,dr+bt\)">\(F(t)=\delta_0+a\int_0^tE(r)\,dr+bt\)</span>
+satisfies <span class="math" data-tex="\(E\leq F\)">\(E\leq F\)</span>, <span class="math" data-tex="\(F(0)=\delta_0\)">\(F(0)=\delta_0\)</span>, and <span class="math" data-tex="\(F&#x27;\leq aF+b\)">\(F&#x27;\leq aF+b\)</span>.
+Multiplication by <span class="math" data-tex="\(e^{-at}\)">\(e^{-at}\)</span> and direct integration prove</p>
+<span class="math math-display" data-tex="\[
+E(t)\leq
+\delta_0e^{4K_*LMt}
++\frac{M\delta_w}{L}\bigl(e^{4K_*LMt}-1\bigr),
+\qquad 0\leq t\leq T.
+\tag{EX23}
+\]">\[
+E(t)\leq
+\delta_0e^{4K_*LMt}
++\frac{M\delta_w}{L}\bigl(e^{4K_*LMt}-1\bigr),
+\qquad 0\leq t\leq T.
+\tag{EX23}
+\]</span>
+<p>If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, both actual flows are zero. If <span class="math" data-tex="\(L=0\)">\(L=0\)</span>, both weights vanish and both flows are the original heat evolutions, so <span class="math" data-tex="\(E(t)\leq\delta_0\)">\(E(t)\leq\delta_0\)</span> for every <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>; no division by zero is used. For positive original viscosity, every individual bounded-weight pump also has the unchanged full energy identity by its exact cancellation and CC12. EX23 proves local stability of these actual trajectories; it asserts no new global regularity or finite-time cascade.</p>
+<h2 id="continue-to-the-actual-viscous-cascade-dynamics">Continue to the actual viscous cascade dynamics</h2>
+<p>The original local-cascade averaging theorem is now proved with the entire
+tensor, geometric, measure and Fourier construction. The exact bounded-weight
+classification also applies to the original pump, and its local trajectories
+have a proved quantitative stability bound.</p>
+<p>The next step is the original infinite-dimensional cascade equation:
+its actual coefficients, viscosity errors, successive transfers and
+finite-time endpoint. The series then continues through the remaining
+model and self-similar results toward the Alpöge–Buckmaster, OpenAI and
+workbench constructions.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-38.html">Previous lesson</a><a href="NS-FLUID-40.html">Next lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

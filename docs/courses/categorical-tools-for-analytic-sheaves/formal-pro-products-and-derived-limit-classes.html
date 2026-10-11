@@ -1,0 +1,340 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formal Pro products and classes that compute derived limits</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="formal-pro-products-and-classes-that-compute-derived-limits">Formal Pro products and classes that compute derived limits</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>A formal inverse system retains maps that its ordinary limit can forget. Its formal product of constant objects also has fewer maps to a constant target than an ordinary product can have. We first establish that distinction, then construct the ordinary-limit functor on the entire Pro category. A cogenerating class with three explicit properties supplies its bounded-below derived functor. For a countable tower, a finite-prefix calculation gives a two-term complex computing the result, including its maps under reindexing.</p>
+<p>Fix the <span class="unlinked">universe and choice conventions</span>. Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small abelian category; its objects need not form a small set. All presenting categories and families below are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, and presheaves on a large <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> are housed in the stated larger universe. Write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Pro}(\mathcal C)=\operatorname{Ind}(\mathcal C^{\mathrm{op}})^{\mathrm{op}},
+\qquad c:\mathcal C\longrightarrow\operatorname{Pro}(\mathcal C).
+\tag{0.1}
+\]">\[
+\operatorname{Pro}(\mathcal C)=\operatorname{Ind}(\mathcal C^{\mathrm{op}})^{\mathrm{op}},
+\qquad c:\mathcal C\longrightarrow\operatorname{Pro}(\mathcal C).
+\tag{0.1}
+\]</span>
+<p>Ordinary completeness of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is imposed starting in Section 2. It is unnecessary for the formal products in Section 1. Complexes are cochain complexes, and <span class="math" data-tex="\(D^+\)">\(D^+\)</span> means bounded-below derived category.</p>
+<h2 id="1-formal-products-and-their-finite-support-maps">1. Formal products and their finite-support maps</h2>
+<p>For cofiltered presentations <span class="math" data-tex="\(\mathbf X=(X_i)_{i\in I}\)">\(\mathbf X=(X_i)_{i\in I}\)</span> and <span class="math" data-tex="\(\mathbf Y=(Y_j)_{j\in J}\)">\(\mathbf Y=(Y_j)_{j\in J}\)</span>, the dual of the Ind Hom formula is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathrm{Pro}}(\mathbf X,\mathbf Y)
+=\lim_{j\in J}\operatorname*{colim}_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_{\mathcal C}(X_i,Y_j).
+\tag{1.1}
+\]">\[
+\operatorname{Hom}_{\mathrm{Pro}}(\mathbf X,\mathbf Y)
+=\lim_{j\in J}\operatorname*{colim}_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_{\mathcal C}(X_i,Y_j).
+\tag{1.1}
+\]</span>
+<p>The inner transitions precompose with the inverse-system maps. The outer transitions postcompose with those of <span class="math" data-tex="\(\mathbf Y\)">\(\mathbf Y\)</span>. <a href="ind-abelian-categories-and-controlled-exact-sequences.html">Two cokernels, controlled rows and abelian completion</a>, Theorems 2.2 and 3.2, applied to <span class="math" data-tex="\(\mathcal C^{\mathrm{op}}\)">\(\mathcal C^{\mathrm{op}}\)</span>, make Pro abelian and <span class="math" data-tex="\(c\)">\(c\)</span> exact and fully faithful. On a common cofiltered stage model, kernels and cokernels are the formal inverse systems of the stage kernels and cokernels. These assertions require local smallness, not essential smallness.</p>
+<p>The same lesson's Theorem 6.1, or the dual of <a href="limits-and-colimits-of-formal-objects.html#3-colimits-formed-inside-the-completion">formal colimits, Theorems 3.1 and 4.1</a>, supplies all small formal limits and exact small cofiltered limits in Pro. In particular its small products are exact. Here is the additional step for products: the product of a family is the inverse limit of its finite partial products, indexed by finite subsets with restriction projections. Finite products are biproducts and preserve exact rows. Exactness of this cofiltered limit therefore makes the product of any family of exact Pro rows exact. This argument asserts exactness inside Pro; it asserts nothing about arbitrary ordinary products in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p>For objects <span class="math" data-tex="\((A_s)_{s\in S}\)">\((A_s)_{s\in S}\)</span> of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, define their formal product by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+P(A_s)=\lim_{F\subseteq S,\ F\text{ finite}}^{\mathrm{form}}
+c\left(\bigoplus_{s\in F}A_s\right).
+\tag{1.2}
+\]">\[
+P(A_s)=\lim_{F\subseteq S,\ F\text{ finite}}^{\mathrm{form}}
+c\left(\bigoplus_{s\in F}A_s\right).
+\tag{1.2}
+\]</span>
+<p>The empty biproduct is zero. The arrows go from a larger finite subset to a smaller one. Formula (1.1), with finite products commuting with filtered colimits of Hom groups, proves</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathrm{Pro}}(\mathbf T,P(A_s))
+\simeq\prod_{s\in S}\operatorname{Hom}_{\mathrm{Pro}}(\mathbf T,cA_s).
+\tag{1.3}
+\]">\[
+\operatorname{Hom}_{\mathrm{Pro}}(\mathbf T,P(A_s))
+\simeq\prod_{s\in S}\operatorname{Hom}_{\mathrm{Pro}}(\mathbf T,cA_s).
+\tag{1.3}
+\]</span>
+<p>Indeed a map to each finite partial product is a finite tuple of maps to its coordinates, and compatibility under restrictions is exactly a family of coordinate maps. Thus (1.2) has the actual product universal property for every Pro test object.</p>
+<p>For a constant target <span class="math" data-tex="\(cB\)">\(cB\)</span>, the other direction gives a different answer:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathrm{Pro}}(P(A_s),cB)
+\simeq\operatorname*{colim}_{F\subseteq S,\ F\text{ finite}}
+\operatorname{Hom}_{\mathcal C}\left(\bigoplus_{s\in F}A_s,B\right)
+\simeq\bigoplus_{s\in S}\operatorname{Hom}_{\mathcal C}(A_s,B).
+\tag{1.4}
+\]">\[
+\operatorname{Hom}_{\mathrm{Pro}}(P(A_s),cB)
+\simeq\operatorname*{colim}_{F\subseteq S,\ F\text{ finite}}
+\operatorname{Hom}_{\mathcal C}\left(\bigoplus_{s\in F}A_s,B\right)
+\simeq\bigoplus_{s\in S}\operatorname{Hom}_{\mathcal C}(A_s,B).
+\tag{1.4}
+\]</span>
+<p>At a finite stage the Hom group is the finite product of the coordinate Hom groups. Precomposing with a restriction projection extends a tuple by zero on the new coordinates. Its filtered union consists precisely of finite-support tuples; this proves both surjectivity and injectivity of the last isomorphism. In particular (1.4) is not a formula for maps from an ordinary product to <span class="math" data-tex="\(B\)">\(B\)</span>. Exercise 1 exhibits a map missed by that mistaken identification.</p>
+<p>We shall use one further exact interface from the Ind lesson, Theorem 4.4. Its dual says: if <span class="math" data-tex="\(j:\mathbf Y\hookrightarrow\mathbf A\)">\(j:\mathbf Y\hookrightarrow\mathbf A\)</span> is monic in Pro and <span class="math" data-tex="\(p:\mathbf Y\to cB\)">\(p:\mathbf Y\to cB\)</span> is any map, then there are a monomorphism <span class="math" data-tex="\(k:B\hookrightarrow E\)">\(k:B\hookrightarrow E\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> and a map <span class="math" data-tex="\(a:\mathbf A\to cE\)">\(a:\mathbf A\to cE\)</span> such that</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+aj=(ck)p.
+\tag{1.5}
+\]">\[
+aj=(ck)p.
+\tag{1.5}
+\]</span>
+<p>To check the dualization, in <span class="math" data-tex="\(\operatorname{Ind}(\mathcal C^{\mathrm{op}})\)">\(\operatorname{Ind}(\mathcal C^{\mathrm{op}})\)</span> the arrow <span class="math" data-tex="\(j^{\mathrm{op}}:\mathbf A^{\mathrm{op}}\to\mathbf Y^{\mathrm{op}}\)">\(j^{\mathrm{op}}:\mathbf A^{\mathrm{op}}\to\mathbf Y^{\mathrm{op}}\)</span> is epic and <span class="math" data-tex="\(p^{\mathrm{op}}:cB^{\mathrm{op}}\to\mathbf Y^{\mathrm{op}}\)">\(p^{\mathrm{op}}:cB^{\mathrm{op}}\to\mathbf Y^{\mathrm{op}}\)</span> is its represented test map. The epimorphic cover in that theorem reverses to <span class="math" data-tex="\(k\)">\(k\)</span>; its lift reverses to <span class="math" data-tex="\(a\)">\(a\)</span>, giving exactly (1.5). The map <span class="math" data-tex="\(a\)">\(a\)</span> is not required to be monic.</p>
+<p><strong>Theorem 1.1 (constant injectives and their formal products).</strong> For any injective object <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, the constant object <span class="math" data-tex="\(cI\)">\(cI\)</span> is injective in <span class="math" data-tex="\(\operatorname{Pro}(\mathcal C)\)">\(\operatorname{Pro}(\mathcal C)\)</span>. For every small family of injective objects <span class="math" data-tex="\((I_s)_{s\in S}\)">\((I_s)_{s\in S}\)</span>, the formal product <span class="math" data-tex="\(P(I_s)\)">\(P(I_s)\)</span> is injective. Neither ordinary completeness of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> nor enough injectives in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is required for these assertions.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(j:\mathbf Y\hookrightarrow\mathbf A\)">\(j:\mathbf Y\hookrightarrow\mathbf A\)</span> be any Pro monomorphism and <span class="math" data-tex="\(g:\mathbf Y\to cI\)">\(g:\mathbf Y\to cI\)</span> any map. Apply (1.5) with <span class="math" data-tex="\(B=I\)">\(B=I\)</span>. It gives a monomorphism <span class="math" data-tex="\(k:I\hookrightarrow E\)">\(k:I\hookrightarrow E\)</span> and a map <span class="math" data-tex="\(a:\mathbf A\to cE\)">\(a:\mathbf A\to cE\)</span> with <span class="math" data-tex="\(aj=(ck)g\)">\(aj=(ck)g\)</span>. Injectivity of <span class="math" data-tex="\(I\)">\(I\)</span> extends <span class="math" data-tex="\(1_I\)">\(1_I\)</span> along <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\(r:E\to I\)">\(r:E\to I\)</span>, so <span class="math" data-tex="\(rk=1_I\)">\(rk=1_I\)</span>. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\widetilde g=(cr)a:\mathbf A\longrightarrow cI,
+\qquad
+\widetilde g\,j=(cr)(ck)g=c(rk)g=g.
+\]">\[
+\widetilde g=(cr)a:\mathbf A\longrightarrow cI,
+\qquad
+\widetilde g\,j=(cr)(ck)g=c(rk)g=g.
+\]</span>
+<p>This is the extension property for the actual constant object. For <span class="math" data-tex="\(g:\mathbf Y\to P(I_s)\)">\(g:\mathbf Y\to P(I_s)\)</span>, let <span class="math" data-tex="\(g_s\)">\(g_s\)</span> be its composite with the <span class="math" data-tex="\(s\)">\(s\)</span>-th product projection. Extend each <span class="math" data-tex="\(g_s\)">\(g_s\)</span> along <span class="math" data-tex="\(j\)">\(j\)</span> as just proved, making the small family of choices in the fixed ambient universe. Formula (1.3) assembles these extensions into <span class="math" data-tex="\(\widetilde g:\mathbf A\to P(I_s)\)">\(\widetilde g:\mathbf A\to P(I_s)\)</span>. Its composite with <span class="math" data-tex="\(j\)">\(j\)</span> has every coordinate equal to <span class="math" data-tex="\(g_s\)">\(g_s\)</span>, so it equals <span class="math" data-tex="\(g\)">\(g\)</span> by the product universal property. The empty family gives the zero object and its unique extensions. This proves the entire formal-product statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.2 (enough injectives before ordinary completeness).</strong> If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has enough injectives, then every object of <span class="math" data-tex="\(\operatorname{Pro}(\mathcal C)\)">\(\operatorname{Pro}(\mathcal C)\)</span> admits a monomorphism into a formal product of constant injectives. Consequently <span class="math" data-tex="\(\operatorname{Pro}(\mathcal C)\)">\(\operatorname{Pro}(\mathcal C)\)</span> has enough injectives. This assertion also does not require ordinary completeness of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p><strong>Proof.</strong> Present <span class="math" data-tex="\(\mathbf X=(X_i)_{i\in I}\)">\(\mathbf X=(X_i)_{i\in I}\)</span>. For the small set of objects of <span class="math" data-tex="\(I\)">\(I\)</span>, choose monomorphisms <span class="math" data-tex="\(e_i:X_i\hookrightarrow I_i\)">\(e_i:X_i\hookrightarrow I_i\)</span> with <span class="math" data-tex="\(I_i\)">\(I_i\)</span> injective. The structure maps <span class="math" data-tex="\(p_i:\mathbf X\to cX_i\)">\(p_i:\mathbf X\to cX_i\)</span>, followed by <span class="math" data-tex="\(ce_i\)">\(ce_i\)</span>, assemble into</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+e:\mathbf X\longrightarrow P(I_i),
+\qquad
+\operatorname{pr}_i e=(ce_i)p_i.
+\]">\[
+e:\mathbf X\longrightarrow P(I_i),
+\qquad
+\operatorname{pr}_i e=(ce_i)p_i.
+\]</span>
+<p>There is no requirement that the chosen embeddings commute with the arrows of <span class="math" data-tex="\(I\)">\(I\)</span>. To prove that <span class="math" data-tex="\(e\)">\(e\)</span> is monic, let <span class="math" data-tex="\(u,v:\mathbf T\to\mathbf X\)">\(u,v:\mathbf T\to\mathbf X\)</span> satisfy <span class="math" data-tex="\(eu=ev\)">\(eu=ev\)</span>. Each <span class="math" data-tex="\(ce_i\)">\(ce_i\)</span> is monic because <span class="math" data-tex="\(c\)">\(c\)</span> is exact, so <span class="math" data-tex="\(p_i u=p_i v\)">\(p_i u=p_i v\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. Formula (1.1) identifies a map into <span class="math" data-tex="\(\mathbf X\)">\(\mathbf X\)</span> with exactly its compatible family of these coordinate maps. Thus <span class="math" data-tex="\(u=v\)">\(u=v\)</span>. The target is injective by Theorem 1.1, proving both claims for every Pro object, not only constant objects or towers. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-presentation-independent-limit-adjunction">2. The presentation-independent limit adjunction</h2>
+<p>Assume henceforth that <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has all small limits. For a presentation <span class="math" data-tex="\(\mathbf X=(X_i)\)">\(\mathbf X=(X_i)\)</span>, put <span class="math" data-tex="\(\pi\mathbf X=\lim_i X_i\)">\(\pi\mathbf X=\lim_i X_i\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. The following bijections identify its universal maps:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathrm{Pro}}(cT,\mathbf X)
+\simeq\lim_i\operatorname{Hom}_{\mathcal C}(T,X_i)
+\simeq\operatorname{Hom}_{\mathcal C}(T,\pi\mathbf X).
+\tag{2.1}
+\]">\[
+\operatorname{Hom}_{\mathrm{Pro}}(cT,\mathbf X)
+\simeq\lim_i\operatorname{Hom}_{\mathcal C}(T,X_i)
+\simeq\operatorname{Hom}_{\mathcal C}(T,\pi\mathbf X).
+\tag{2.1}
+\]</span>
+<p>For any Pro morphism <span class="math" data-tex="\(f:\mathbf X\to\mathbf Y\)">\(f:\mathbf X\to\mathbf Y\)</span>, postcomposition on the left gives a natural transformation of the represented Hom functors on the right. Yoneda gives its unique map <span class="math" data-tex="\(\pi f:\pi\mathbf X\to\pi\mathbf Y\)">\(\pi f:\pi\mathbf X\to\pi\mathbf Y\)</span>. Identities and composition follow from uniqueness. Another presentation represents the same Hom functor, so its unique comparison isomorphism respects every such map. Thus this construction is a functor on Pro, with presentation-independent values up to the unique adjunction comparison.</p>
+<p>The bijections preserve addition, so the functor is additive, and (2.1) proves <span class="math" data-tex="\(c\dashv\pi\)">\(c\dashv\pi\)</span>. Its unit identifies <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(\pi cT\)">\(\pi cT\)</span>. Its counit <span class="math" data-tex="\(c\pi\mathbf X\to\mathbf X\)">\(c\pi\mathbf X\to\mathbf X\)</span> is the family of ordinary limit projections. A right adjoint preserves existing limits: a cone from a test object into its image corresponds under the adjunction to a cone before applying it, whose unique factorization gives the required factorization afterwards. In particular <span class="math" data-tex="\(\pi\)">\(\pi\)</span> preserves kernels and finite products, and is left exact. Applying (2.1) and (1.3) gives, with their specified projections,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\pi P(A_s)\simeq\prod_{s\in S} A_s.
+\tag{2.2}
+\]">\[
+\pi P(A_s)\simeq\prod_{s\in S} A_s.
+\tag{2.2}
+\]</span>
+<p>These are ordinary products in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. The functor <span class="math" data-tex="\(\pi\)">\(\pi\)</span> need not be exact, and (2.2) does not transfer formal-product exactness to ordinary products without additional hypotheses.</p>
+<h2 id="3-a-class-criterion-for-deriving-the-limit">3. A class criterion for deriving the limit</h2>
+<p>Let <span class="math" data-tex="\(\mathcal J\subset\mathcal C\)">\(\mathcal J\subset\mathcal C\)</span> be a full additive subcategory, containing zero, closed under finite biproducts and understood up to isomorphism. Impose three hypotheses:</p>
+<ol>
+<li>Every object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> embeds in an object of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>.</li>
+<li>The cokernel of a monomorphism between objects of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> belongs to <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>.</li>
+<li>For every small family of short exact rows <span class="math" data-tex="\(0\to J&#x27;_s\to J_s\to J&#x27;&#x27;_s\to0\)">\(0\to J&#x27;_s\to J_s\to J&#x27;&#x27;_s\to0\)</span> whose terms lie in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, the corresponding ordinary product row in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is exact.</li>
+</ol>
+<p>Write <span class="math" data-tex="\(\mathcal J_{\mathrm{pro}}\)">\(\mathcal J_{\mathrm{pro}}\)</span> for the full subcategory of objects isomorphic to some <span class="math" data-tex="\(P(J_s)\)">\(P(J_s)\)</span>, with every <span class="math" data-tex="\(J_s\in\mathcal J\)">\(J_s\in\mathcal J\)</span>. It contains zero, and the biproduct of two such objects is the formal product indexed by the disjoint union of the two index sets. Thus it is full and additive.</p>
+<p><strong>Theorem 3.1.</strong> Under these hypotheses, <span class="math" data-tex="\(\mathcal J_{\mathrm{pro}}\)">\(\mathcal J_{\mathrm{pro}}\)</span> is a <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-injective resolution class. The exact universal functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+R^+\pi:D^+(\operatorname{Pro}(\mathcal C))\longrightarrow D^+(\mathcal C)
+\tag{3.1}
+\]">\[
+R^+\pi:D^+(\operatorname{Pro}(\mathcal C))\longrightarrow D^+(\mathcal C)
+\tag{3.1}
+\]</span>
+<p>exists and is computed by applying <span class="math" data-tex="\(\pi\)">\(\pi\)</span> to bounded-below replacements in this class. For every <span class="math" data-tex="\(P(J_s)\)">\(P(J_s)\)</span>, its positive <span class="math" data-tex="\(R^q\pi\)">\(R^q\pi\)</span> vanish. For heart objects, <span class="math" data-tex="\(R^0\pi=\pi\)">\(R^0\pi=\pi\)</span> with the derived unit normalization.</p>
+<p><strong>Proof.</strong> We verify the actual hypotheses of <a href="compatible-injective-classes-and-exact-refinements.html#1-the-criterion-and-the-resolution-property">the compatible extension criterion, Theorem 1.1</a>.</p>
+<p>First present <span class="math" data-tex="\(\mathbf A=(A_i)_{i\in I}\)">\(\mathbf A=(A_i)_{i\in I}\)</span> and choose <span class="math" data-tex="\(e_i:A_i\hookrightarrow J_i\)">\(e_i:A_i\hookrightarrow J_i\)</span>, with <span class="math" data-tex="\(J_i\in\mathcal J\)">\(J_i\in\mathcal J\)</span>, for the small set of objects of <span class="math" data-tex="\(I\)">\(I\)</span>. The structure projections followed by <span class="math" data-tex="\(ce_i\)">\(ce_i\)</span> define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\mathbf A\longrightarrow P(J_i).
+\tag{3.2}
+\]">\[
+\mathbf A\longrightarrow P(J_i).
+\tag{3.2}
+\]</span>
+<p>This map is monic. If two maps <span class="math" data-tex="\(\mathbf T\to\mathbf A\)">\(\mathbf T\to\mathbf A\)</span> have the same composite with (3.2), monicity of each <span class="math" data-tex="\(ce_i\)">\(ce_i\)</span> makes their composites to <span class="math" data-tex="\(cA_i\)">\(cA_i\)</span> equal. Formula (1.1) determines a map into <span class="math" data-tex="\(\mathbf A\)">\(\mathbf A\)</span> by exactly these components, so the two original maps agree. No compatibility of the chosen embeddings <span class="math" data-tex="\(e_i\)">\(e_i\)</span> with the arrows of <span class="math" data-tex="\(I\)">\(I\)</span> was needed. This proves cogeneration of <span class="math" data-tex="\(\mathcal J_{\mathrm{pro}}\)">\(\mathcal J_{\mathrm{pro}}\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(j:P(J_s)\hookrightarrow\mathbf A\)">\(j:P(J_s)\hookrightarrow\mathbf A\)</span> be monic. Apply (1.5) separately to each projection <span class="math" data-tex="\(p_s:P(J_s)\to cJ_s\)">\(p_s:P(J_s)\to cJ_s\)</span>. It gives <span class="math" data-tex="\(k_s:J_s\hookrightarrow E_s\)">\(k_s:J_s\hookrightarrow E_s\)</span> and <span class="math" data-tex="\(a_s:\mathbf A\to cE_s\)">\(a_s:\mathbf A\to cE_s\)</span> with <span class="math" data-tex="\(a_sj=(ck_s)p_s\)">\(a_sj=(ck_s)p_s\)</span>. By hypothesis 1 embed <span class="math" data-tex="\(E_s\)">\(E_s\)</span> into <span class="math" data-tex="\(K_s\in\mathcal J\)">\(K_s\in\mathcal J\)</span>, and replace these maps by their composites. Hence we have actual monomorphisms <span class="math" data-tex="\(J_s\hookrightarrow K_s\)">\(J_s\hookrightarrow K_s\)</span>, actual maps <span class="math" data-tex="\(\mathbf A\to cK_s\)">\(\mathbf A\to cK_s\)</span>, and the same commuting equations. Put <span class="math" data-tex="\(L_s=K_s/J_s\)">\(L_s=K_s/J_s\)</span>; hypothesis 2 gives <span class="math" data-tex="\(L_s\in\mathcal J\)">\(L_s\in\mathcal J\)</span>.</p>
+<p>The small formal product of these coordinate rows is exact by Section 1:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+0\longrightarrow P(J_s)\xrightarrow{i}P(K_s)
+\longrightarrow P(L_s)\longrightarrow0.
+\tag{3.3}
+\]">\[
+0\longrightarrow P(J_s)\xrightarrow{i}P(K_s)
+\longrightarrow P(L_s)\longrightarrow0.
+\tag{3.3}
+\]</span>
+<p>The maps <span class="math" data-tex="\(\mathbf A\to cK_s\)">\(\mathbf A\to cK_s\)</span> assemble by (1.3) into <span class="math" data-tex="\(v:\mathbf A\to P(K_s)\)">\(v:\mathbf A\to P(K_s)\)</span>, with <span class="math" data-tex="\(vj=i\)">\(vj=i\)</span>. Both the middle object and the actual cokernel of <span class="math" data-tex="\(i\)">\(i\)</span> are in <span class="math" data-tex="\(\mathcal J_{\mathrm{pro}}\)">\(\mathcal J_{\mathrm{pro}}\)</span>. We neither need nor assert that <span class="math" data-tex="\(v\)">\(v\)</span> is monic. Under <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, row (3.3) is precisely</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+0\longrightarrow\prod_s J_s\longrightarrow\prod_s K_s
+\longrightarrow\prod_s L_s\longrightarrow0,
+\tag{3.4}
+\]">\[
+0\longrightarrow\prod_s J_s\longrightarrow\prod_s K_s
+\longrightarrow\prod_s L_s\longrightarrow0,
+\tag{3.4}
+\]</span>
+<p>because (2.2) identifies its coordinate maps. Hypothesis 3 makes this row exact. We have therefore checked both compatible-extension equations and the required <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-exact row, rather than assuming that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> preserves every exact Pro row.</p>
+<p>The cited criterion now proves that every bounded-below Pro complex admits an outgoing class replacement and that applying <span class="math" data-tex="\(\pi\)">\(\pi\)</span> to an acyclic class complex remains acyclic. Its full class localization theorem gives (3.1), its exactness, and its normalized, choice-independent computation. For <span class="math" data-tex="\(P(J_s)\)">\(P(J_s)\)</span> in degree zero, the identity is already a class replacement; its computed image is <span class="math" data-tex="\(\prod_s J_s\)">\(\prod_s J_s\)</span> in degree zero. This proves positive vanishing. For any heart object the replacement can start in degree zero, and left exactness identifies its degree-zero kernel with <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of that object. It also proves negative vanishing on heart objects. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-identity-after-the-constant-embedding">4. The identity after the constant embedding</h2>
+<p><strong>Theorem 4.1.</strong> With the hypotheses of Theorem 3.1, there is a natural normalized isomorphism of exact functors</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+R^+\pi\circ D^+c\simeq\operatorname{id}_{D^+(\mathcal C)}.
+\tag{4.1}
+\]">\[
+R^+\pi\circ D^+c\simeq\operatorname{id}_{D^+(\mathcal C)}.
+\tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> The functor <span class="math" data-tex="\(c\)">\(c\)</span> is exact, so it carries every acyclic complex to an acyclic complex. Cogeneration of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> supplies bounded-below class replacements by <a href="relative-replacements-and-finite-resolution-bounds.html#2-two-bounded-below-replacement-criteria">the arbitrary-class replacement theorem</a>. Therefore <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is a computing class for <span class="math" data-tex="\(c\)">\(c\)</span>, whose derived functor is its already descended exact functor <span class="math" data-tex="\(D^+c\)">\(D^+c\)</span>. Also <span class="math" data-tex="\(c\mathcal J\subset\mathcal J_{\mathrm{pro}}\)">\(c\mathcal J\subset\mathcal J_{\mathrm{pro}}\)</span>, using singleton formal products. The composite <span class="math" data-tex="\(\pi c\)">\(\pi c\)</span> is naturally the identity by (2.1), so its derived functor is naturally the identity as well.</p>
+<p>Apply <a href="universal-derived-functors-and-compatible-composition.html#9-the-normalized-comparison-for-a-composition">the normalized composition theorem, Theorem 9.1</a> to <span class="math" data-tex="\(F=c\)">\(F=c\)</span>, <span class="math" data-tex="\(F&#x27;=\pi\)">\(F&#x27;=\pi\)</span>, and these two computing classes. It proves that the specified unit comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\operatorname{id}\simeq R^+(\pi c)
+\longrightarrow R^+\pi\,D^+c
+\tag{4.2}
+\]">\[
+\operatorname{id}\simeq R^+(\pi c)
+\longrightarrow R^+\pi\,D^+c
+\tag{4.2}
+\]</span>
+<p>is an isomorphism. Its natural inverse gives (4.1). On a <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>-complex <span class="math" data-tex="\(I\)">\(I\)</span>, the computation is the actual identity <span class="math" data-tex="\(\pi cI=I\)">\(\pi cI=I\)</span>; for an arbitrary replacement <span class="math" data-tex="\(X\to I\)">\(X\to I\)</span>, the theorem transports that component through the quasi-isomorphism. Thus this is the comparison normalized by the adjunction and derived units, independent of the choice of replacement or computing class. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-every-countable-tower-has-a-finite-prefix-difference-row">5. Every countable tower has a finite-prefix difference row</h2>
+<p>Let <span class="math" data-tex="\(X_0\xleftarrow{v_0}X_1\xleftarrow{v_1}X_2\leftarrow\cdots\)">\(X_0\xleftarrow{v_0}X_1\xleftarrow{v_1}X_2\leftarrow\cdots\)</span> be a tower in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, and let <span class="math" data-tex="\(\mathbf X\)">\(\mathbf X\)</span> be its formal Pro object. Set <span class="math" data-tex="\(v_{a,b}=v_a\cdots v_{b-1}\)">\(v_{a,b}=v_a\cdots v_{b-1}\)</span> for <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>, and <span class="math" data-tex="\(v_{a,a}=1\)">\(v_{a,a}=1\)</span>. Write <span class="math" data-tex="\(P=P(X_n)\)">\(P=P(X_n)\)</span>. The formal difference map <span class="math" data-tex="\(d:P\to P\)">\(d:P\to P\)</span> is specified by its coordinate <span class="math" data-tex="\(p_nd=p_n-c(v_n)p_{n+1}\)">\(p_nd=p_n-c(v_n)p_{n+1}\)</span>. Formula (1.3) makes it an actual Pro morphism.</p>
+<p>For <span class="math" data-tex="\(P_N=\bigoplus_{r=0}^{N}X_r\)">\(P_N=\bigoplus_{r=0}^{N}X_r\)</span>, represent this map at stage <span class="math" data-tex="\(N\)">\(N\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+d_N:P_{N+1}\longrightarrow P_N,
+\qquad (d_Na)_r=a_r-v_ra_{r+1}\quad(0\leq r\leq N).
+\tag{5.1}
+\]">\[
+d_N:P_{N+1}\longrightarrow P_N,
+\qquad (d_Na)_r=a_r-v_ra_{r+1}\quad(0\leq r\leq N).
+\tag{5.1}
+\]</span>
+<p>Coordinate notation here specifies maps using biproduct projections and sums; it does not assume that <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is a category of modules. Define <span class="math" data-tex="\(s_N:P_N\to P_{N+1}\)">\(s_N:P_N\to P_{N+1}\)</span> by its last coordinate zero and recursively</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+(s_Nb)_{N+1}=0,\qquad
+(s_Nb)_r=b_r+v_r(s_Nb)_{r+1}.
+\tag{5.2}
+\]">\[
+(s_Nb)_{N+1}=0,\qquad
+(s_Nb)_r=b_r+v_r(s_Nb)_{r+1}.
+\tag{5.2}
+\]</span>
+<p>This is a finite recursion of actual morphisms, and substitution proves <span class="math" data-tex="\(d_Ns_N=1\)">\(d_Ns_N=1\)</span>. The kernel inclusion is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\kappa_N:X_{N+1}\longrightarrow P_{N+1},
+\qquad (\kappa_Nt)_r=v_{r,N+1}t.
+\tag{5.3}
+\]">\[
+\kappa_N:X_{N+1}\longrightarrow P_{N+1},
+\qquad (\kappa_Nt)_r=v_{r,N+1}t.
+\tag{5.3}
+\]</span>
+<p>Its last coordinate is the identity. A map from any test object killed by <span class="math" data-tex="\(d_N\)">\(d_N\)</span> satisfies its finite recursive coordinate equations, so it uniquely factors through (5.3) by its last coordinate. Thus each row <span class="math" data-tex="\(0\to X_{N+1}\to P_{N+1}\to P_N\to0\)">\(0\to X_{N+1}\to P_{N+1}\to P_N\to0\)</span> is short exact. The source and target restriction projections commute with <span class="math" data-tex="\(d_N\)">\(d_N\)</span>, and the induced map on kernels is <span class="math" data-tex="\(v_{N+1}\)">\(v_{N+1}\)</span>. This gives a common cofiltered stage model of the entire exact row.</p>
+<p>Finite initial subsets are cofinal among finite subsets of <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. Omitting the first stage of an inverse tower is likewise coinitial for its formal presentation. The source and target prefix systems therefore both represent <span class="math" data-tex="\(P\)">\(P\)</span>, and the kernel represents <span class="math" data-tex="\(\mathbf X\)">\(\mathbf X\)</span>. The stage kernel and cokernel formulas yield the exact Pro row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+0\longrightarrow\mathbf X\longrightarrow P
+\xrightarrow{d}P\longrightarrow0.
+\tag{5.4}
+\]">\[
+0\longrightarrow\mathbf X\longrightarrow P
+\xrightarrow{d}P\longrightarrow0.
+\tag{5.4}
+\]</span>
+<p>The splittings (5.2) are finite-stage splittings. They need not commute with restriction projections, so (5.4) is not asserted to split formally or after taking the ordinary limit.</p>
+<p><strong>Theorem 5.1.</strong> If every <span class="math" data-tex="\(X_n\)">\(X_n\)</span> belongs to a class <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> satisfying Section 3, then <span class="math" data-tex="\(R^+\pi\mathbf X\)">\(R^+\pi\mathbf X\)</span> is computed by the complex in degrees zero and one</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+\prod_{n\geq0}X_n\xrightarrow{\Delta}\prod_{n\geq0}X_n,
+\qquad (\Delta a)_n=a_n-v_na_{n+1}.
+\tag{5.5}
+\]">\[
+\prod_{n\geq0}X_n\xrightarrow{\Delta}\prod_{n\geq0}X_n,
+\qquad (\Delta a)_n=a_n-v_na_{n+1}.
+\tag{5.5}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+R^0\pi\mathbf X=\lim_nX_n=\ker\Delta,
+\quad R^1\pi\mathbf X=\operatorname{coker}\Delta,
+\quad R^q\pi\mathbf X=0\quad(q\geq2).
+\tag{5.6}
+\]">\[
+R^0\pi\mathbf X=\lim_nX_n=\ker\Delta,
+\quad R^1\pi\mathbf X=\operatorname{coker}\Delta,
+\quad R^q\pi\mathbf X=0\quad(q\geq2).
+\tag{5.6}
+\]</span>
+<p><strong>Proof.</strong> The augmentation in (5.4) is a quasi-isomorphism from <span class="math" data-tex="\(\mathbf X\)">\(\mathbf X\)</span> in degree zero to the two-term class complex <span class="math" data-tex="\([P\xrightarrow dP]\)">\([P\xrightarrow dP]\)</span>. Theorem 3.1 computes its derived image by applying <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Formula (2.2) identifies the resulting differential with the actual ordinary product map <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, proving (5.5) and all cohomology assertions. Its kernel is the ordinary limit because the coordinate equations are exactly the cone compatibility equations.</p>
+<p>Equivalently, the exact functor <span class="math" data-tex="\(R^+\pi\)">\(R^+\pi\)</span> applied to the exact-row triangle of (5.4) gives its long exact cohomology sequence. The higher groups of both formal products vanish by Theorem 3.1. The remaining segment is <span class="math" data-tex="\(0\to\pi\mathbf X\to\prod X_n\xrightarrow\Delta\prod X_n\to R^1\pi\mathbf X\to0\)">\(0\to\pi\mathbf X\to\prod X_n\xrightarrow\Delta\prod X_n\to R^1\pi\mathbf X\to0\)</span>, and the later groups vanish. This verifies the exact-sequence interpretation with its connecting map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-maps-of-towers-and-changes-of-indexing">6. Maps of towers and changes of indexing</h2>
+<p>For commuting componentwise maps <span class="math" data-tex="\(X_n\to Y_n\)">\(X_n\to Y_n\)</span>, the two product maps in (5.5) are the same componentwise product map, and commute with the two differences. We now check arbitrary Pro morphisms between these countable presentations, rather than limiting naturality to that special case.</p>
+<p>By (1.1), such a morphism has representatives <span class="math" data-tex="\(t_n:X_{m_n}\to Y_n\)">\(t_n:X_{m_n}\to Y_n\)</span> for a strictly increasing sequence <span class="math" data-tex="\(m_n\)">\(m_n\)</span>, chosen with <span class="math" data-tex="\(m_n\geq n\)">\(m_n\geq n\)</span>, satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+w_nt_{n+1}=t_nv_{m_n,m_{n+1}}.
+\tag{6.1}
+\]">\[
+w_nt_{n+1}=t_nv_{m_n,m_{n+1}}.
+\tag{6.1}
+\]</span>
+<p>To obtain them, choose a representative at the first target stage. At each successive stage choose any representative and move to a later source stage where its equality with the preceding target component holds. That equality exists by the filtered-colimit equality test. Move further to exceed the preceding source index and the target index. Precomposition preserves every equality already imposed, so induction gives (6.1). This only requires countably many choices.</p>
+<p>For <span class="math" data-tex="\(P_X=\prod_rX_r\)">\(P_X=\prod_rX_r\)</span>, <span class="math" data-tex="\(P_Y=\prod_nY_n\)">\(P_Y=\prod_nY_n\)</span>, define actual ordinary product maps</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+(T^0a)_n=t_na_{m_n},\qquad
+(T^1b)_n=t_n\sum_{r=m_n}^{m_{n+1}-1}v_{m_n,r}b_r.
+\tag{6.2}
+\]">\[
+(T^0a)_n=t_na_{m_n},\qquad
+(T^1b)_n=t_n\sum_{r=m_n}^{m_{n+1}-1}v_{m_n,r}b_r.
+\tag{6.2}
+\]</span>
+<p>Every sum is finite; hence every displayed coordinate is an actual map from a finite partial product, and the ordinary product property assembles them. Finite telescoping and (6.1) give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+\Delta_YT^0=T^1\Delta_X.
+\tag{6.3}
+\]">\[
+\Delta_YT^0=T^1\Delta_X.
+\tag{6.3}
+\]</span>
+<p>These formulas also define maps of the formal products, because each coordinate has finite support. They give a morphism between the exact rows (5.4), whose map on kernels is the original Pro morphism: its target coordinate is exactly <span class="math" data-tex="\(t_n\)">\(t_n\)</span> on source stage <span class="math" data-tex="\(m_n\)">\(m_n\)</span>. Therefore the normalized class computation makes (6.2) the map computing <span class="math" data-tex="\(R^+\pi\)">\(R^+\pi\)</span> and its cohomology maps.</p>
+<p>Independence of representatives can be checked directly. Refine <span class="math" data-tex="\(m_n\)">\(m_n\)</span> to a strictly increasing <span class="math" data-tex="\(r_n\geq m_n\)">\(r_n\geq m_n\)</span>, and put <span class="math" data-tex="\(t&#x27;_n=t_nv_{m_n,r_n}\)">\(t&#x27;_n=t_nv_{m_n,r_n}\)</span>. Let <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> be the corresponding two maps. Define the degree-minus-one map <span class="math" data-tex="\(H:P_X^1\to P_Y^0\)">\(H:P_X^1\to P_Y^0\)</span> between the two complexes by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+(Hb)_n=t_n\sum_{q=m_n}^{r_n-1}v_{m_n,q}b_q.
+\tag{6.4}
+\]">\[
+(Hb)_n=t_n\sum_{q=m_n}^{r_n-1}v_{m_n,q}b_q.
+\tag{6.4}
+\]</span>
+<p>Empty sums are zero. Telescoping gives <span class="math" data-tex="\(T^0-T&#x27;^0=H\Delta_X\)">\(T^0-T&#x27;^0=H\Delta_X\)</span>. Equation (6.1) and subdivision of finite intervals give <span class="math" data-tex="\(T^1-T&#x27;^1=\Delta_YH\)">\(T^1-T&#x27;^1=\Delta_YH\)</span>: the intervals on either side express the same difference between the sums over <span class="math" data-tex="\([m_n,r_n)\)">\([m_n,r_n)\)</span> and <span class="math" data-tex="\([m_{n+1},r_{n+1})\)">\([m_{n+1},r_{n+1})\)</span>. Thus the two chain maps are homotopic. Two representatives of the same Pro map admit such a common refinement, since their maps to each fixed <span class="math" data-tex="\(Y_n\)">\(Y_n\)</span> are eventually equal; choose the refinements increasingly. Both are homotopic to the common one, so their maps in the derived category agree.</p>
+<p>Composition also agrees with (6.2). For a second representative <span class="math" data-tex="\(u_n:Y_{l_n}\to Z_n\)">\(u_n:Y_{l_n}\to Z_n\)</span>, the composite uses source indices <span class="math" data-tex="\(m_{l_n}\)">\(m_{l_n}\)</span> and maps <span class="math" data-tex="\(u_nt_{l_n}\)">\(u_nt_{l_n}\)</span>. In degree zero the formula composes immediately. In degree one, substitute the block sum for each <span class="math" data-tex="\(Y_q\)">\(Y_q\)</span> coordinate into the block sum over <span class="math" data-tex="\(q\in[l_n,l_{n+1})\)">\(q\in[l_n,l_{n+1})\)</span>. Compatibility (6.1) moves each transition past <span class="math" data-tex="\(t_q\)">\(t_q\)</span>; the adjacent blocks <span class="math" data-tex="\([m_q,m_{q+1})\)">\([m_q,m_{q+1})\)</span> partition <span class="math" data-tex="\([m_{l_n},m_{l_{n+1}})\)">\([m_{l_n},m_{l_{n+1}})\)</span>, yielding the composite formula. Identity indices give identity chain maps. Hence (5.5)–(5.6) are natural for all Pro morphisms between these towers, including reindexing and pro-isomorphisms.</p>
+<p>This construction uses an actual class resolution in an abelian Pro category. An arbitrarily chosen completion of a morphism between product triangles in a triangulated category need not supply this same canonical map. The <a href="https://stacks.math.columbia.edu/tag/08TB">free Stacks treatment of derived limits</a>, Definition 13.34.1 and Remark 13.34.4, makes that distinction explicit.</p>
+<h2 id="7-injectives-and-arbitrary-unital-modules">7. Injectives and arbitrary unital modules</h2>
+<p><strong>Example 7.1.</strong> Suppose <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is complete and has enough injectives, and let <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> be its injective objects. It is cogenerating by definition. If <span class="math" data-tex="\(I&#x27;\hookrightarrow I\)">\(I&#x27;\hookrightarrow I\)</span> is monic with both objects injective, injectivity of <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span> supplies a retraction. The quotient is a direct summand of <span class="math" data-tex="\(I\)">\(I\)</span>, and is injective: extend a map into the whole <span class="math" data-tex="\(I\)">\(I\)</span>, then retract to the summand. Thus hypothesis 2 holds. Every exact row of injectives splits for the same reason. Choose a splitting for each row of a small family. Their ordinary product sections and retractions make the product row split exact, proving hypothesis 3 even when arbitrary ordinary products in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> fail to be exact. Finite biproducts of injectives are injective by extending each of their finitely many components. All hypotheses of Theorem 3.1 hold.</p>
+<p>In this example, Theorem 1.1 makes each formal product of constant injectives injective in Pro, and Theorem 1.2 supplies enough actual injectives. The cogenerating embeddings (3.2) are the specified levelwise construction. The class construction and the injective-resolution construction compute the same normalized derived functor by its universal property.</p>
+<p><strong>Example 7.2.</strong> For left modules over any <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small unital ring <span class="math" data-tex="\(R\)">\(R\)</span>, take <span class="math" data-tex="\(\mathcal J=\mathcal C=\operatorname{Mod}(R)\)">\(\mathcal J=\mathcal C=\operatorname{Mod}(R)\)</span>. The ring need not be commutative. Every object embeds in itself, and every cokernel is another module. Small limits exist as the submodules of products satisfying the relevant equations. Products of short exact module rows are exact: the product map is injective coordinatewise, its kernel consists of the tuples in the coordinate kernels, and a tuple in the quotient product has a lift by choosing one lift in each coordinate. These choices respect the existing module homomorphism and require no linear splitting. Coordinate scalar action makes these the actual module products. Thus hypothesis 3 holds and Theorem 3.1 derives <span class="math" data-tex="\(\pi\)">\(\pi\)</span> on the entire Pro category, without requiring the individual modules in the tower to be injective.</p>
+<p>For countable module towers, this agrees with <a href="countable-mittag-leffler-and-formal-pro-derived-limits.html#6-a-finite-prefix-exact-sequence-for-every-tower">the earlier module construction</a>: both derive the same additive left exact <span class="math" data-tex="\(\pi\)">\(\pi\)</span> with its unit, so universal uniqueness identifies their functors and computations. The <a href="https://stacks.math.columbia.edu/tag/07KV">free Stacks comparison</a>, Lemmas 15.88.1 and 15.88.4, gives the corresponding difference complex and reindexing maps for abelian groups. Its category of inverse sequences and the general abelian Pro category are different domains; the present proof supplies the latter interface directly.</p>
+<h2 id="8-four-graded-exercises-with-complete-solutions">8. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (10 points).</strong> For a nonzero field <span class="math" data-tex="\(k\)">\(k\)</span>, let <span class="math" data-tex="\(P=P(k)_{n\geq0}\)">\(P=P(k)_{n\geq0}\)</span> in <span class="math" data-tex="\(\operatorname{Pro}(\operatorname{Mod}(k))\)">\(\operatorname{Pro}(\operatorname{Mod}(k))\)</span>. Compute <span class="math" data-tex="\(\operatorname{Hom}(P,ck)\)">\(\operatorname{Hom}(P,ck)\)</span>, and construct an ordinary linear map <span class="math" data-tex="\(\pi P=k^{\mathbb N}\to k\)">\(\pi P=k^{\mathbb N}\to k\)</span> which is not the image under <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of such a Pro map.</p>
+<p><strong>Solution.</strong> Formula (1.4) identifies the Pro Hom group with <span class="math" data-tex="\(k^{(\mathbb N)}\)">\(k^{(\mathbb N)}\)</span>; its tuple <span class="math" data-tex="\((\lambda_n)\)">\((\lambda_n)\)</span> induces the finite-coordinate functional <span class="math" data-tex="\(a\mapsto\sum_n\lambda_na_n\)">\(a\mapsto\sum_n\lambda_na_n\)</span>. Let <span class="math" data-tex="\(V=k^{\mathbb N}/k^{(\mathbb N)}\)">\(V=k^{\mathbb N}/k^{(\mathbb N)}\)</span>. The class of the all-ones sequence is nonzero, since that sequence has infinite support. Choose a basis of <span class="math" data-tex="\(V\)">\(V\)</span> containing this nonzero class, and define a linear functional on <span class="math" data-tex="\(V\)">\(V\)</span> taking that basis element to one and all other basis elements to zero. Compose with the quotient map to obtain <span class="math" data-tex="\(\ell:k^{\mathbb N}\to k\)">\(\ell:k^{\mathbb N}\to k\)</span>. It vanishes on all finitely supported sequences and takes the all-ones sequence to one. Any finite-coordinate functional vanishing on each standard basis vector has every coefficient zero, so cannot equal <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Thus <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is not the image of a Pro map, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is not full. The construction uses the stated choice convention, not a continuity condition on ordinary linear maps.</p>
+<p><strong>Exercise 2 (14 points).</strong> In abelian groups, take <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> to be the groups on which multiplication by two is surjective. Verify all three hypotheses of Section 3. Show that <span class="math" data-tex="\(c\mathbb Z[1/2]\)">\(c\mathbb Z[1/2]\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-acyclic but is not an injective object of Pro.</p>
+<p><strong>Solution.</strong> The class contains zero and is closed under finite biproducts. Every group embeds into a divisible group by <a href="countable-mittag-leffler-and-formal-pro-derived-limits.html#4-enough-injectives-with-all-size-and-action-conventions">the character-evaluation construction and divisible-injectivity proof</a>. Such a group is in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, proving cogeneration. Any quotient of a two-divisible group is two-divisible: lift a quotient element to <span class="math" data-tex="\(x\)">\(x\)</span>, choose <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(2y=x\)">\(2y=x\)</span>, and take the class of <span class="math" data-tex="\(y\)">\(y\)</span>. This proves hypothesis 2, including all required monic rows. Ordinary small products of abelian-group rows are exact by Example 7.2 with <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span>, proving hypothesis 3. Hence <span class="math" data-tex="\(\mathcal J_{\mathrm{pro}}\)">\(\mathcal J_{\mathrm{pro}}\)</span> computes <span class="math" data-tex="\(R^+\pi\)">\(R^+\pi\)</span>.</p>
+<p>The group <span class="math" data-tex="\(\mathbb Z[1/2]\)">\(\mathbb Z[1/2]\)</span> is two-divisible, since <span class="math" data-tex="\(a/2^r\)">\(a/2^r\)</span> has half <span class="math" data-tex="\(a/2^{r+1}\)">\(a/2^{r+1}\)</span>. Its constant Pro object is a singleton formal product in the class, so all its positive <span class="math" data-tex="\(R^q\pi\)">\(R^q\pi\)</span> vanish. But the monomorphism <span class="math" data-tex="\(c(3\mathbb Z)\hookrightarrow c\mathbb Z\)">\(c(3\mathbb Z)\hookrightarrow c\mathbb Z\)</span> and the map <span class="math" data-tex="\(c(3\mathbb Z)\to c\mathbb Z[1/2]\)">\(c(3\mathbb Z)\to c\mathbb Z[1/2]\)</span> sending <span class="math" data-tex="\(3\)">\(3\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> have no extension. Full faithfulness of <span class="math" data-tex="\(c\)">\(c\)</span> would turn an extension into a group homomorphism <span class="math" data-tex="\(\mathbb Z\to\mathbb Z[1/2]\)">\(\mathbb Z\to\mathbb Z[1/2]\)</span>, whose value <span class="math" data-tex="\(a/2^r\)">\(a/2^r\)</span> at one would satisfy <span class="math" data-tex="\(3a=2^r\)">\(3a=2^r\)</span>, impossible. Thus a computing-class object need not be an actual injective object of Pro.</p>
+<p><strong>Exercise 3 (12 points).</strong> For a class <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> as in Section 3, compute all the derived limits of a tower of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>-objects with zero transitions, and of the constant tower <span class="math" data-tex="\(J\xleftarrow{1}J\xleftarrow{1}\cdots\)">\(J\xleftarrow{1}J\xleftarrow{1}\cdots\)</span> for <span class="math" data-tex="\(J\in\mathcal J\)">\(J\in\mathcal J\)</span>. Construct a product section in the second case.</p>
+<p><strong>Solution.</strong> For the zero-transition tower, the ordinary difference map is the identity, so (5.6) gives zero in every degree. Its formal Pro object is itself zero: for every constant target, (1.1) is a filtered colimit whose transition maps are zero, so every representative dies at the next stage. Taking the outer limit over any target presentation then gives zero Hom group to every Pro target. In particular its identity is zero.</p>
+<p>For the identity tower, define <span class="math" data-tex="\(s:\prod_n J\to\prod_n J\)">\(s:\prod_n J\to\prod_n J\)</span> by <span class="math" data-tex="\((sb)_0=0\)">\((sb)_0=0\)</span> and <span class="math" data-tex="\((sb)_n=-\sum_{r=0}^{n-1}b_r\)">\((sb)_n=-\sum_{r=0}^{n-1}b_r\)</span> for <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>. Each coordinate uses only a finite sum of product projections, so this is an actual morphism in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Subtraction gives <span class="math" data-tex="\((\Delta sb)_n=b_n\)">\((\Delta sb)_n=b_n\)</span>; hence <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is split epic. Its kernel consists precisely of equal coordinates, and the diagonal identifies it with <span class="math" data-tex="\(J\)">\(J\)</span>. Thus <span class="math" data-tex="\(R^0\pi=J\)">\(R^0\pi=J\)</span>, <span class="math" data-tex="\(R^1\pi=0\)">\(R^1\pi=0\)</span>, and all higher groups are zero. This is also (4.1) on a heart object, since the identity tower is the constant Pro object.</p>
+<p><strong>Exercise 4 (24 points).</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be a prime, and consider <span class="math" data-tex="\(\mathbf X=(\mathbb Z\xleftarrow{p}\mathbb Z\xleftarrow{p}\cdots)\)">\(\mathbf X=(\mathbb Z\xleftarrow{p}\mathbb Z\xleftarrow{p}\cdots)\)</span>. Define <span class="math" data-tex="\(\mathbb Z_p=\lim_{N\geq0}\mathbb Z/p^{N+1}\mathbb Z\)">\(\mathbb Z_p=\lim_{N\geq0}\mathbb Z/p^{N+1}\mathbb Z\)</span>. Prove that <span class="math" data-tex="\(R^0\pi\mathbf X=0\)">\(R^0\pi\mathbf X=0\)</span>, <span class="math" data-tex="\(R^1\pi\mathbf X\simeq\mathbb Z_p/\mathbb Z\)">\(R^1\pi\mathbf X\simeq\mathbb Z_p/\mathbb Z\)</span>, and all higher groups vanish. Exhibit a nonzero class explicitly.</p>
+<p><strong>Solution.</strong> Example 7.2 applies with <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span> and the whole module category, so (5.6) applies despite the terms not being injective. A compatible integer sequence satisfies <span class="math" data-tex="\(a_0=p^na_n\)">\(a_0=p^na_n\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. Thus <span class="math" data-tex="\(a_0\)">\(a_0\)</span> is divisible by every power of <span class="math" data-tex="\(p\)">\(p\)</span>, forcing <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>; torsion freeness then forces every <span class="math" data-tex="\(a_n=0\)">\(a_n=0\)</span>. This proves the ordinary limit and <span class="math" data-tex="\(R^0\pi\)">\(R^0\pi\)</span> vanish. The integer embedding <span class="math" data-tex="\(\mathbb Z\to\mathbb Z_p\)">\(\mathbb Z\to\mathbb Z_p\)</span> is injective for the same divisibility reason.</p>
+<p>For <span class="math" data-tex="\(b\in\prod_{n\geq0}\mathbb Z\)">\(b\in\prod_{n\geq0}\mathbb Z\)</span>, set <span class="math" data-tex="\(S_N(b)=\sum_{r=0}^{N}p^rb_r\)">\(S_N(b)=\sum_{r=0}^{N}p^rb_r\)</span>, and define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+\Psi(b)=\bigl(S_N(b)\bmod p^{N+1}\bigr)_{N\geq0}\in\mathbb Z_p.
+\tag{8.1}
+\]">\[
+\Psi(b)=\bigl(S_N(b)\bmod p^{N+1}\bigr)_{N\geq0}\in\mathbb Z_p.
+\tag{8.1}
+\]</span>
+<p>The residues are compatible, since adding the next term changes the sum by a multiple of the preceding modulus. The map is surjective. Given compatible residues, choose <span class="math" data-tex="\(b_0\in\{0,\ldots,p-1\}\)">\(b_0\in\{0,\ldots,p-1\}\)</span> representing the first one. After constructing <span class="math" data-tex="\(S_{N-1}\)">\(S_{N-1}\)</span>, compatibility says that the desired residue at level <span class="math" data-tex="\(N\)">\(N\)</span> differs from <span class="math" data-tex="\(S_{N-1}\)">\(S_{N-1}\)</span> by a multiple of <span class="math" data-tex="\(p^N\)">\(p^N\)</span>; choose its quotient modulo <span class="math" data-tex="\(p\)">\(p\)</span> as <span class="math" data-tex="\(b_N\)">\(b_N\)</span>. This constructs all digits and proves (8.1) has the prescribed residues.</p>
+<p>For <span class="math" data-tex="\((\Delta a)_n=a_n-pa_{n+1}\)">\((\Delta a)_n=a_n-pa_{n+1}\)</span>, finite telescoping gives <span class="math" data-tex="\(S_N(\Delta a)=a_0-p^{N+1}a_{N+1}\)">\(S_N(\Delta a)=a_0-p^{N+1}a_{N+1}\)</span>, so <span class="math" data-tex="\(\Psi(\Delta a)\)">\(\Psi(\Delta a)\)</span> is the embedded integer <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. Conversely, if <span class="math" data-tex="\(\Psi(b)\)">\(\Psi(b)\)</span> is an integer <span class="math" data-tex="\(z\)">\(z\)</span>, every <span class="math" data-tex="\(z-S_N(b)\)">\(z-S_N(b)\)</span> is divisible by <span class="math" data-tex="\(p^{N+1}\)">\(p^{N+1}\)</span>. Set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+a_0=z,\qquad a_{N+1}=\frac{z-S_N(b)}{p^{N+1}}.
+\tag{8.2}
+\]">\[
+a_0=z,\qquad a_{N+1}=\frac{z-S_N(b)}{p^{N+1}}.
+\tag{8.2}
+\]</span>
+<p>These are integers, and subtracting successive expressions proves <span class="math" data-tex="\(a_n-pa_{n+1}=b_n\)">\(a_n-pa_{n+1}=b_n\)</span>, including <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. Therefore the kernel of the surjective map <span class="math" data-tex="\(\prod\mathbb Z\xrightarrow\Psi\mathbb Z_p\to\mathbb Z_p/\mathbb Z\)">\(\prod\mathbb Z\xrightarrow\Psi\mathbb Z_p\to\mathbb Z_p/\mathbb Z\)</span> is exactly <span class="math" data-tex="\(\operatorname{im}\Delta\)">\(\operatorname{im}\Delta\)</span>. It induces the claimed isomorphism of cokernels. Formula (5.6) gives all higher vanishing.</p>
+<p>For an explicit nonzero class, take <span class="math" data-tex="\(b_{2r}=0\)">\(b_{2r}=0\)</span> and <span class="math" data-tex="\(b_{2r+1}=1\)">\(b_{2r+1}=1\)</span>. Finite geometric sums give <span class="math" data-tex="\((p^2-1)S_N(b)\equiv-p\pmod{p^{N+1}}\)">\((p^2-1)S_N(b)\equiv-p\pmod{p^{N+1}}\)</span>, so <span class="math" data-tex="\((p^2-1)\Psi(b)=-p\)">\((p^2-1)\Psi(b)=-p\)</span> in <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>. If <span class="math" data-tex="\(\Psi(b)\)">\(\Psi(b)\)</span> were an integer <span class="math" data-tex="\(z\)">\(z\)</span>, injectivity of the integer embedding would imply <span class="math" data-tex="\((p^2-1)z=-p\)">\((p^2-1)z=-p\)</span> in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. This is impossible since <span class="math" data-tex="\(p^2-1&gt;p&gt;0\)">\(p^2-1&gt;p&gt;0\)</span>. Thus its class in <span class="math" data-tex="\(\mathbb Z_p/\mathbb Z\)">\(\mathbb Z_p/\mathbb Z\)</span> is nonzero. The same argument also works at <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, where the all-ones digit sequence would instead give an integer and would not prove nonvanishing.</p>
+<h2 id="references">References</h2>
+<p>The formal abelian structure and the controlled extension used here are proved in <a href="ind-abelian-categories-and-controlled-exact-sequences.html">Two cokernels, controlled rows and abelian completion</a>, Sections 2–4 and 6. The resolution-class theorem is <a href="compatible-injective-classes-and-exact-refinements.html">Compatible injective classes and exact refinements</a>; the normalization of the composite is <a href="universal-derived-functors-and-compatible-composition.html#9-the-normalized-comparison-for-a-composition">Universal derived functors and compatible composition</a>. Their proofs retain the full universe and class hypotheses.</p>
+<p>For freely accessible comparisons, see the Stacks Project, <a href="https://stacks.math.columbia.edu/tag/07KV">Rlim of abelian groups, Lemmas 15.88.1 and 15.88.4</a>, and <a href="https://stacks.math.columbia.edu/tag/08TB">Derived limits, Definition 13.34.1 and Remark 13.34.4</a>. The arguments above are independently written, and the controlled extension and class criterion establish the general Pro interface used in this lesson.</p>
+</main></body></html>

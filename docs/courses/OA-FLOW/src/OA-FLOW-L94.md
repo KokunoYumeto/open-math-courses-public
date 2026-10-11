@@ -2,7 +2,7 @@
 
 A scalar derivative can define an unbounded generator even when the orbit is not differentiable in norm. We first establish the uniform bounds and smoothing estimates that control this domain. The generator then appears as the adjoint of the predual generator, giving its full weak-star closed graph and a weak-star dense invariant domain.
 
-*Programme proof written in Codex (OpenAI), September 2026; foundation integration and revision by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
+*New expression is dedicated under CC0 to the extent of rights held.*
 
 Let \(X=X_*^*\) be a complex dual Banach space with specified predual, and let \(\alpha:\mathbb R\to\operatorname{GL}(X)\) be a uniformly bounded group of weak-star continuous operators with norm-continuous predual orbits, with the specified-dual conventions of [BS0–1](OA-FLOW-BS.md#bs-0). Write \(C_\alpha=\sup_t\|\alpha_t\|\). Put \(\beta_t\phi=\phi\circ\alpha_t\); the specified predual hypothesis makes this a strongly continuous group on \(X_*\).
 

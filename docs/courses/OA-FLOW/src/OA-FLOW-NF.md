@@ -1,6 +1,6 @@
 # Order-normal positive functionals and ultraweak continuity
 
-*Fresh proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.*
+*CC0-1.0 to the extent of rights held.*
 
 Let \(M\subseteq B(K)\) be an arbitrary concrete von Neumann algebra. We prove that a bounded positive functional \(f\) preserving bounded increasing positive suprema belongs to its concrete predual. This finite-functional result then proves ultraweak normality of the GNS representation of every normal weight, without requiring semifiniteness. It is not the corresponding characterization of arbitrary extended-valued weights.
 

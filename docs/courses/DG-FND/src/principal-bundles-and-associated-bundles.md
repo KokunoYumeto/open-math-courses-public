@@ -149,7 +149,7 @@ Smooth sections of \(\operatorname{Fr}(E)\) are exactly smooth frames of \(E\).
 
 The map (C.1) respects \([pa,v]=[p,av]\). In a frame chart it is \([e_i(x),v]\mapsto e_i(x)v\), exactly the original vector-bundle chart, so it is a smooth fibrewise linear bijection with a smooth inverse. A section of \(\operatorname{Fr}(E)\) is locally a smooth invertible matrix \(a(x)\); its columns under \(e_i(x)\) are a smooth basis in every fibre. Conversely such columns give a smooth matrix in \(\mathrm{GL}(r)\), hence a section. Rank zero uses the unique empty basis and the one-element group \(\mathrm{GL}(0)\); the same conclusions hold. □
 
-**Lemma C.2 (tensor coordinates and the tangent frame).** Duals, tensor products, mixed tensors and exterior powers of \(E\) are associated to \(\operatorname{Fr}(E)\) by their natural representations. For \(E=TM\), the coordinate tangent bases give precisely these frame-bundle transitions; consequently cotangent vectors and differential forms are associated tensors.
+**Lemma C.2 (tensor coordinates and the tangent frame).** Duals, tensor products, mixed tensors, symmetric powers and exterior powers of \(E\) are associated to \(\operatorname{Fr}(E)\) by their natural representations. For \(E=TM\), the coordinate tangent bases give precisely these frame-bundle transitions; consequently cotangent vectors and differential forms are associated tensors. On the tangent-frame bundle, the solder form \(\theta_p(Z)=p^{-1}(d\pi_p Z)\) is smooth, vanishes on vertical vectors, and satisfies \(R_a^*\theta=a^{-1}\theta\).
 
 **Proof.** For a vector space \(V\), define \(V^*\) as its linear functionals. In a basis \(v_1,\dots,v_r\), the functionals \(v^j(v_i)=\delta_i^j\) form a basis: linearity says every functional is uniquely the sum of its values on \(v_i\) times \(v^i\). An invertible \(a:V\to V\) acts on \(V^*\) by \(\lambda\mapsto\lambda\circ a^{-1}\); two successive actions by \(b\) and \(a\) give \(\lambda\circ b^{-1}a^{-1}=\lambda\circ(ab)^{-1}\), the action by \(ab\). Its matrix is the inverse transpose, a smooth function of \(a\).
 
@@ -158,13 +158,34 @@ For clarity, the algebraic tensor space \(V\otimes W\) may be constructed as the
 
 For \(\Lambda^k V\), use the basis \(v_{i_1}\wedge\cdots\wedge v_{i_k}\) indexed by strictly increasing \(k\)-tuples. Define the wedge of \(k\) arbitrary vectors by multilinear expansion, discarding repeated indices and using the sign of the permutation that orders the distinct indices. An adjacent swap reverses the sign, so the map is alternating. Conversely, the values of an alternating multilinear map on the increasing basis tuples determine all its values by these same rules. This proves the universal property and independence of the basis construction. When \(k>r\) the space is zero; for \(k=0\) it is the scalar field. Define \(\Lambda^k a\) by applying \(a\) to every factor. The just-proved universal property makes it a linear map. Composition and inversion are checked on wedges, which span, and its entries are finite polynomials in entries of \(a\).
 
+For the symmetric power \(S^k V\), take a formal basis \(v_{i_1}\odot\cdots\odot v_{i_k}\) with \(i_1\le\cdots\le i_k\). Expand the product of arbitrary vectors multilinearly and sort every resulting list of indices, with no sign. Permuting the input vectors only permutes the summands, so this is symmetric. Any symmetric multilinear map factors uniquely through this space: assign to each displayed basis vector its value on that tuple, and extend linearly. Multilinearity and symmetry verify the factorization, and those basis values prove uniqueness. This also proves independence of the initial basis, since the maps supplied by the universal property in the two directions compose to the identity on all products. Applying \(a\) to every factor defines \(S^k a\); composition and inversion agree on the spanning products, and the matrix entries are finite polynomials in entries of \(a\). For \(k=0\), take the scalar field and its identity action. If \(V=0\) and \(k>0\), there are no basis tuples and the space is zero.
+
 It follows that \(a\) acts smoothly on each mixed tensor
 \[
 (\mathbb R^r)^{\otimes p}\otimes((\mathbb R^r)^*)^{\otimes q}
 \]
-and on each exterior power. A frame \(p:\mathbb R^r\to E_x\) transports vectors by \(p\), covectors by composition with \(p^{-1}\), and the other tensors factor by factor. The composition laws just proved say that replacing \(p\) by \(pa\) transports a tensor exactly as first applying the representation of \(a\) and then \(p\). Thus these maps descend from the associated bundles. In each frame chart they are the identity on tensor coordinates, so they and their inverses are smooth. This proves the assertions about the bundles.
+and on each symmetric or exterior power. A frame \(p:\mathbb R^r\to E_x\) transports vectors by \(p\), covectors by composition with \(p^{-1}\), and the other tensors factor by factor. The composition laws just proved say that replacing \(p\) by \(pa\) transports a tensor exactly as first applying the representation of \(a\) and then \(p\). Thus these maps descend from the associated bundles. In each frame chart they are the identity on tensor coordinates, so they and their inverses are smooth. This proves the assertions about the bundles.
 
-Finally, define a tangent vector at \(x\) by its coordinate velocity, with velocities related under a chart change \(y=y(z)\) by \(v_y=D y(z)v_z\). The chain rule in Local tools 0.3 proves the cocycle identities for these invertible Jacobians; the derivative of the inverse chart proves invertibility. A.1 and B.1 therefore construct \(TM\) from these vector transitions. The \(z\)-coordinate tangent basis, expressed in the \(y\)-basis, has columns \(\partial y^i/\partial z^j\), so its frame transition is that same Jacobian. The covector bundle is its dual and the bundle of \(k\)-forms is \(\Lambda^k T^*M\), with the transformations already proved. □
+Finally, define a tangent vector at \(x\) by its coordinate velocity, with velocities related under a chart change \(y=y(z)\) by \(v_y=D y(z)v_z\). The chain rule in Local tools 0.3 proves the cocycle identities for these invertible Jacobians; the derivative of the inverse chart proves invertibility. A.1 and B.1 therefore construct \(TM\) from these vector transitions. The \(z\)-coordinate tangent basis, expressed in the \(y\)-basis, has columns \(\partial y^i/\partial z^j\), so its frame transition is that same Jacobian. The covector bundle is its dual and the bundle of \(k\)-forms is \(\Lambda^k T^*M\), with the transformations already proved.
+
+Write \(L(M)=\operatorname{Fr}(TM)\) and let \(\pi:L(M)\to M\) be its projection. A frame \(p:\mathbb R^n\to T_xM\) converts a projected tangent vector into its coordinates. Define the \(\mathbb R^n\)-valued **solder form** by
+\[
+\theta_p(Z)=p^{-1}(d\pi_p Z),\qquad Z\in T_pL(M).
+\]
+It is linear in \(Z\). In the frame chart based on the coordinate tangent basis, write \(p=(x,b)\) with \(b\in\mathrm{GL}(n,\mathbb R)\) and write a tangent vector as \((\xi,B)\). Projection has derivative \((\xi,B)\mapsto\xi\), and hence
+\[
+\theta_{(x,b)}(\xi,B)=b^{-1}\xi.
+\]
+Smooth inversion from Local tools 0.4 makes this a smooth one-form. Its intrinsic definition agrees between charts. A vertical vector has \(d\pi_p Z=0\), so the form vanishes on it. Conversely its kernel is exactly the vertical tangent space because \(p\) is invertible. For fixed \(a\), the identity \(\pi\circ R_a=\pi\) and the chain rule give
+\[
+\begin{aligned}
+(R_a^*\theta)_p(Z)
+ &= (pa)^{-1}d\pi_{pa}(dR_a Z)\\
+ &= a^{-1}p^{-1}d\pi_p Z
+ = a^{-1}\theta_p(Z).
+\end{aligned}
+\]
+Here pullback of a one-form means composition with the derivative, as in the first equality. If \(s\) is a local tangent frame, then \(\pi\circ s\) is the identity; thus \((s^*\theta)_x(X)=s(x)^{-1}X\), its dual coframe. These formulas also hold in dimension zero with zero-dimensional vectors. □
 
 **Lemma C.3 (the Lie bracket and its adjoint action).** The vector space \(\mathfrak g=T_eG\) has a Lie bracket defined by left invariant vector fields. The maps
 \[
@@ -375,6 +396,6 @@ Its inverse onto its image is \((x,B)\mapsto(x,D(x)^{-1}B)\), smooth and equivar
 
 ## Free construction source
 
-Peter W. Michor, [*Topics in Differential Geometry*, freely accessible author draft](https://www.mat.univie.ac.at/~michor/dgbook.pdf), Sections 3.4, 4.11, 4.13 and 4.24 for the bracket and adjoint action; 8.3, 8.5 and 8.8 for gluing and vector constructions; 18.1–18.2, 18.7–18.9, 18.11–18.12 and 18.14 for principal bundles, associated bundles, frames, sections and reductions. The proofs above include the topology, smoothness and algebra needed for these constructions. The closed-subgroup theorem, a general quotient theorem for free actions, and classification theorems are not prerequisites. The Hopf coordinates are computed directly, and the stated Chern number is proved in the linked earlier programme lesson.
+Peter W. Michor, [*Topics in Differential Geometry*, freely accessible author draft](https://www.mat.univie.ac.at/~michor/dgbook.pdf), Sections 3.4, 4.11, 4.13 and 4.24 for the bracket and adjoint action; 8.3, 8.5 and 8.8 for gluing and vector constructions; 18.1–18.2, 18.7–18.9, 18.11–18.12 and 18.14 for principal bundles, associated bundles, frames, sections and reductions; and the solder-form definition and equivariance calculation in Section 25.6, here written for the full tangent-frame bundle. The proofs above include the topology, smoothness and algebra needed for these constructions. The closed-subgroup theorem, a general quotient theorem for free actions, and classification theorems are not prerequisites. The Hopf coordinates are computed directly, and the stated Chern number is proved in the linked earlier programme lesson.
 
 Original exposition: GPT-6 Astra (OpenAI), October 2026, CC0 1.0. The human construction source is credited above. No source prose, diagrams or PDFs are reproduced; earlier programme lessons retain their own source credits and licences.

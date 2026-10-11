@@ -16,15 +16,15 @@ The proof is available in [Real roots and their convex component](../../AN02-L19
 
 **Theorem.** For a positive-degree homogeneous \(F\), if \(F(N)\ne0\) and \(F(\xi+zN)\) has only real roots for every real \(\xi\), the component \(\Gamma(F,N)\) of \(N\) in \(\{F\ne0\}\subset\mathbb R^n\) is an open convex cone. Every \(\theta\in\Gamma\) is a hyperbolic direction, \(F/F(N)\) has real coefficients, and the roots of \(F(x+z\theta)\) are strictly negative exactly when \(x\in\Gamma\). Also \(F(x+iy)\ne0\) for real \(x\), \(y\in\Gamma\).
 
-The proof includes multiple roots and complex coefficients. The zero-free tube uses imaginary vectors inside the open component; no zero-free boundary assertion is made. Nonzero constant polynomials are treated separately. The analytic Taylor-order theorem retains its planned status.
+The proof includes multiple roots and complex coefficients. The zero-free tube uses imaginary vectors inside the open component; no zero-free boundary assertion is made. Nonzero constant polynomials are treated separately. The analytic Taylor-order theorem is available in [One-sided root bounds and Taylor order](../../AN02-L193.html#4-the-zero-bound-forces-the-taylor-order), Theorem 4.1.
 
 ## One-sided analytic zero-strip total Taylor order
 
-Contract identifier: `analytic-zero-strip-Taylor-order`. Proof status: planned.
+The proof is available in [One-sided root bounds and Taylor order](../../AN02-L193.html#4-the-zero-bound-forces-the-taylor-order), Theorem 4.1.
 
-- **Analytic order entry.** If a germ \(g(z,\lambda)\) is holomorphic at zero, \(g(z,0)\) has exact order \(d\), and every local zero with real \(\lambda\) satisfies \(\operatorname{Im}z\le C|\lambda|\), the total Taylor order of \(g\) is at least \(d\). The assertion permits complex coefficients and uses both signs of the real parameter.
+**Theorem.** If a germ \(g(z,\lambda)\) is holomorphic at zero, \(g(z,0)\) has exact order \(d\), and every local zero with real \(\lambda\) satisfies \(\operatorname{Im}z\le C|\lambda|\), the total Taylor order of \(g\) is at least \(d\). The assertion permits complex coefficients and uses both signs of the real parameter.
 
-Statement retained from [Hyperbolicity and lower order terms](../../src/hyperbolicity-and-lower-order-terms.md), source lines 10–10.
+The proof controls the entire convergent series and retains every root multiplicity. Both real parameter signs are essential; no reality assumption on the coefficients is needed. The axis coefficient also shows that the total order equals the finite axis order.
 
 ## Compact Fourier division and exponential-polynomial annihilator equivalence
 

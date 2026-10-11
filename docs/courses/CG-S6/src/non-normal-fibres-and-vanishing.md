@@ -2,7 +2,7 @@
 
 CG-S6 · Lesson 10
 
-This lesson includes its complete analytical prerequisite chapters. Its integral-topology inputs are written in the included working lesson 7, Sections 1–8. The smooth recognition of that manifold is a later, unfinished part of lesson 7 and is not used in the analytic arguments here. The full course remains in progress.
+This lesson includes its complete analytical prerequisite chapters. Its integral-topology inputs are written in the included lesson 7, Sections 1–8. The smooth recognition of that manifold is proved in lesson 7 and its sphere-twist companion; the analytic arguments here use only its integral-topology part.
 
 A differential on a singular surface can vanish at every smooth point without being the zero section of its cotangent sheaf. Such sections matter when the surface is a fibre in a smooth threefold. We will calculate the entire missing sheaf, including its map from the conormal line. We will then construct a proper family where both proposed endpoint vanishings hold and an ambient differential nevertheless survives.
 
@@ -1032,6 +1032,8 @@ At \(q=2\) the last term in (10.8) is consequently zero. The remaining map is pr
 \tag{10.10}
 \]
 This proof neither assumes constancy of \(h^2\) nor concludes that \(R^2f_*E\) is locally free. For example, over \(A=\mathbb C\{t\}\) the free complex \(A\xrightarrow{t}A\) in degrees \(1,2\) has \(H^2=A/(t)\), which is not free, and the degree-two fibre map is nevertheless an isomorphism. Its fibre dimension jumps from zero away from \(0\) to one at \(0\).
+
+The [general proper-flat surface theorem](general-proper-flat-surface-base-change.md#general-surface-theorem) proves the same top-degree conclusion without smoothness or compactness of the total space. It includes the full analytic construction and compact coherent dimension bound. The preceding graph and Cartier-duality proof remains the direct route for this course’s actual threefold.
 
 ### 10.4 The result for every tangent-bundle twist
 
@@ -2236,7 +2238,7 @@ These are the same integer multiples before division in \(V_G\otimes\mathbb R\).
 
 ## Sources, included proofs, and verification {#lesson10-sources}
 
-The complete analytical receiving proofs are included: [smooth duality and finite twist complexes](smooth-duality-and-finite-twist-complexes.md), [proper base change over a curve](proper-base-change-over-a-curve.md), and [the tangent index with all torsion twists](tangent-index-with-torsion-line-bundles.md). They retain the original operators, full fibre equations, multiplicities, characteristic factors and maps. The [working topology lesson](integral-homology-and-sphere-recognition.md) contains the integral lattice and homology calculation used in Section 11. Its unfinished foundational and smooth-recognition work is identified there; the full course is not declared complete.
+The complete analytical receiving proofs are included: [smooth duality and finite twist complexes](smooth-duality-and-finite-twist-complexes.md), [proper base change over a curve](proper-base-change-over-a-curve.md), and [the tangent index with all torsion twists](tangent-index-with-torsion-line-bundles.md). They retain the original operators, full fibre equations, multiplicities, characteristic factors and maps. The [topology lesson](integral-homology-and-sphere-recognition.md) contains the integral lattice and homology calculation used in Section 11. The [sphere-twist and smooth-recognition proof](sphere-twists-and-the-original-smooth-six-sphere-comparison.md#twist-original-smooth-map) now constructs the new interior gluing with its full frame defect, cancels every actual handle and gives the orientation-preserving diffeomorphism to the original six-sphere, homotopic to its original degree-one map.
 
 The original-author Campana–Demailly–Peternell sources and the retained correction and review derivations are identified where used. The edition's source ledger records exact versions and bounded reading coverage. A source being listed is not a claim that its whole paper has been read. Protected source archives are retained privately and are not relabelled as CC0 course text.
 
