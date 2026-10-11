@@ -341,7 +341,7 @@ crossed product set \(F_{ij}=U^iz_0U^{-j}\). They are matrix units:
 Indeed, the \(k\)-th coefficient of an element in this corner has central
 support inside both \(z_0\) and \(\theta^k(z_0)\); for \(k\neq0\) it is zero.
 The coefficient uniqueness proved in
-[the regular representation theorem](OA-FLOW-L128.md#regular-transport) then gives the corner identity.
+[the full matrix-coefficient theorem](OA-FLOW-L128.md#l128-fc0) then gives the corner identity.
 
 The matrix isomorphism is normal on the full algebra. In a faithful normal
 representation, the unitary
@@ -444,6 +444,44 @@ The reflected difference gives the other mixed product. Then \(vw^*\in N\) imple
 \]
 
 Thus one common narrow spectral window canonically transports the appropriate initial central corner to its final central corner. Separate narrowness of the two spectra does not imply that their mixed products have frequency zero.
+
+The statement also gives a map on the **whole support corners**, not only on one chosen partial normalizer. Put \(q=q_\phi(I)\) and \(p=p_\phi(I)\). If \(M_\phi(I)=\{0\}\), both corners are zero and there is a unique map between them. Otherwise let \(\mathcal V_I\) be the centrally supported partial normalizers with spectrum in \(I\). The factorization (LAC11), applied to every \(x\in M_\phi(I)\), gives
+\[
+ q=\bigvee_{v\in\mathcal V_I}v^*v,\qquad
+ p=\bigvee_{v\in\mathcal V_I}vv^*.
+ \tag{LACN7}
+\]
+Indeed the factor of each \(x\) has supports dominating those of \(x\), while every member of \(\mathcal V_I\) itself belongs to the spectral subspace.
+
+By [DS2](OA-FLOW-DS.md#ds-2), \(N\) has a faithful normal state \(\omega\). For each positive integer \(n\), normality supplies finitely many members of \(\mathcal V_I\) whose initial-support join leaves \(\omega\)-mass less than \(2^{-n}\) in \(q\), and finitely many whose final-support join leaves less than \(2^{-n}\) in \(p\). Enumerate their union as \((v_j)\). Faithfulness shows that their initial supports \(r_j=v_j^*v_j\) join to \(q\), and their final supports \(p_j=v_jv_j^*\) join to \(p\). A finite union is treated as a finite family.
+
+Refine the initial supports in that order:
+\[
+ d_j=r_j\Bigl(1-\bigvee_{i<j}r_i\Bigr),\qquad
+ w_j=v_jd_j,\qquad f_j=w_jw_j^*.
+ \tag{LACN8}
+\]
+The \(d_j\) are orthogonal central projections with sum \(q\). Both normalizing inclusions for \(v_j\) make conjugation an isomorphism \(Nr_j\to Np_j\), with inverse conjugation by \(v_j^*\); hence \(f_j\) is central in \(N\). For \(j\ne k\), the common window puts \(w_j^*w_k\) in \(N\), while its two central supports give
+\(w_j^*w_k=d_j(w_j^*w_k)d_k=0\). Thus the \(f_j\) are orthogonal.
+
+They fill \(p\). For each \(i,j\), the two restrictions \(v_i d_j\) and \(w_j r_i\) have the same central initial support \(r_i d_j\), central final supports, and the same narrow window. Applying the already proved equal-support case of (LAC13) gives
+\(v_i d_jv_i^*=w_jr_iw_j^*\le f_j\).
+Summing over \(j\) gives \(p_i\le\sum_jf_j\). Since the \(p_i\) join to \(p\), and each \(f_j\le p\), their sum is exactly \(p\).
+
+The full center map and its inverse are therefore
+\[
+ \begin{aligned}
+ \beta_I:Z(N)q&\longrightarrow Z(N)p,
+ &\beta_I(z)&=\sum_jw_jzw_j^*,\\
+ \beta_I^{-1}:Z(N)p&\longrightarrow Z(N)q,
+ &\beta_I^{-1}(y)&=\sum_jw_j^*yw_j.
+ \end{aligned}
+ \tag{LACN9}
+\]
+These are bounded strong-star sums on orthogonal central corners, as in [PC1](OA-FLOW-PC.md#pc-1). On the \(j\)-th corner the two formulas are inverse normal conjugations. Products and adjoints are computed on each such corner; the orthogonal supports eliminate mixed products, and the two filling identities give both inverse identities on the whole centers. Each formula preserves bounded increasing positive suprema, because its compression to every filling corner does. Thus both maps are normal.
+
+The choice of the countable family does not affect the map. For any \(v\in\mathcal V_I\), compare \(vd_j\) with \(w_jv^*v\) on their common initial support. Equation (LAC13) gives \(\beta_I(z)vd_j=vzd_j\). Summing the orthogonal initial pieces yields \(\beta_I(z)v=vz\). This identity determines \(\beta_I(z)\) on every final support \(vv^*\), whose join is \(p\), so it determines the map uniquely. Its direction is from the right-support center to the left-support center; (LACN9) also supplies the reverse direction.
+
 
 ### Positive, narrow, and primitive normalizers
 Let \(\mathcal F\) consist of partial isometries \(v\in M_\phi([\mu_0,\infty))\) whose initial and final projections are central in \(N\) and for which both conjugation inclusions land in \(N\). Put
@@ -770,7 +808,7 @@ gives a faithful n.s.f. corner weight \(\phi_e\), with
 \]
 
 The fixed-algebra theorem of
-[GCC C15–16](OA-FLOW-GCC.md#gcc-central)
+[GCC C15–16](OA-FLOW-GCC.md#gcc-intersection)
 gives \(\operatorname{Sp}(\alpha^e)=\Gamma(\alpha^e)\).
 Factoriality is required of the fixed algebra in that theorem.
 
@@ -785,7 +823,7 @@ The sums run over finite subsets of the actual filling index set. No faithful st
 The two projections \(p,q\) are fixed by \(\alpha\otimes\operatorname{id}\).
 The [equivalent-fixed-corner theorem GCC C18](OA-FLOW-GCC.md#gcc-equivalence) therefore compares the Connes
 spectra of the two restricted actions.
-Amplification itself preserves the Connes spectrum: [GCC C15](OA-FLOW-GCC.md#gcc-central) reduces the
+Amplification itself preserves the Connes spectrum: [GCC C15](OA-FLOW-GCC.md#gcc-intersection) reduces the
 intersection to central fixed projections \(z\otimes1\), and normal finite
 matrix slices show that each amplified action has exactly the unamplified
 action spectrum. Consequently \(\Gamma(\alpha^e)=\Gamma(\alpha)\). The [orbit-support proof CS1–3](OA-FLOW-CS.md#oa-flow.cs.1) supplies an independent direct proof of this equality for arbitrary-predual factors. For the all-weight step, [DDP4–5](OA-FLOW-DDP.md#dd-corners) and the entire amplified modular operator in [TW4–5](OA-FLOW-TW.md#tw-4) supply a second arbitrary-cardinal route. Neither alternative assumes separability.

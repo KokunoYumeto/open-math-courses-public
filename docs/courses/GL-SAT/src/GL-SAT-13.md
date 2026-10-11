@@ -4254,9 +4254,680 @@ It has \(E\) in degree zero and \(E(-1)\) in degree two, as \(R\Gamma(\mathbf P^
 
 **Solution.** The shifted image is \(B=E[1]\oplus E(-1)[-1]\). Its pair correspondence is \(\mathbf P^1\times\mathbf P^1\), with compact groups in degrees zero, two and four of ranks \(1,2,1\). Formula (C.25.4), with the same shift \([-2](-1)\), gives self-Hom in degrees \(-2,0,2\), of those reversed ranks. Explicitly the negative-degree entry maps the degree-one coefficient of \(B\) to its degree-minus-one coefficient; the positive-degree entry reverses them. Their two compositions are the diagonal projectors in degree zero. Thus the formula retains the full matrix algebra and its composition. A nonnegative-Hom claim about arbitrary resolution images would be false; the nonnegative IC-generator hypothesis in C.23–C.24 is a separate statement.
 
+### C.26. Actual specialization of the rootwise enhanced diagram
+
+Let \(R\) be a strictly henselian discrete valuation ring, let \(S=\operatorname{Spec}R\), and let \(\ell\) be invertible on \(S\). Retain \(O,O_n,E\) from C.25. A relative toric-cell filtration means a finite closed filtration whose open differences have étale topoi identified with finite disjoint unions of \(\mathbf A^a_S\times\mathbf G_{m,S}^b\) by closed nilpotent immersions. An actual isomorphism is allowed as the simplest case. Thus the definition concerns actual scheme maps and topological invariance, rather than a list of fibre dimensions. Choose compatible Tate generators on \(S\), once, and use their pullbacks on every fibre.
+
+The precise arbitrary-base inputs are the programme lesson *Cohomology with compact support*, Theorems 8.1, 9.1 and 10.3, and *Poincaré duality for smooth varieties*, Sections 2, 4–6, 8 and Theorem 9.1. The latter proves \(q^!A=q^*A(d)[2d]\), with the trace counit, for a separated smooth finite-presentation \(q\) over a quasi-compact quasi-separated base. Its proof uses a uniform derived trace system, including constructibility and bounded ghosts, rather than a field-only smooth normalization. Theorem 12.3 of the compact-support lesson contains its exact affine-line constructibility proof reduction; this is the premise used in that trace-system proof. C.25's independent toric-cell argument remains sufficient for the complex comparison previously proved there.
+
+#### C.26.1. Relative compact objects are perfect constants
+
+**Theorem C.26.1.1.** Suppose \(a:C\to S\) is separated of finite presentation and has a relative toric-cell filtration. Then \(Ra_!O_n\) is a perfect constant coefficient object on \(S_{\mathrm{et}}\). The actual base-change maps, followed by sections, give quasi-isomorphisms
+\[
+ K_{C,n}:=R\Gamma(S,Ra_!O_n)
+ \longrightarrow R\Gamma_c(C_b,O_n)
+ \tag{C.26.1}
+\]
+for every algebraically closed geometric fibre \(b\to S\), including an algebraically closed extension of the generic field. These comparisons retain the entire finite localization diagram, coefficient reductions and compact/ordinary cup products. The compatible complete and rational comparisons have the same properties.
+
+**Proof.** Global sections on the strictly henselian local étale site are exact. Indeed, lift a given section under an epimorphism on an étale cover. One member contains a point over the closed geometric point. The henselian property and separably closed residue field give a section of that pointed étale neighbourhood over \(S\); pulling the lift back gives the required global lift. The same argument shows that restriction of sections to the closed geometric stalk is bijective. For a constant module its sections are that module. Hence the constant functor sends a bounded finite projective coefficient complex \(K\) to a K-projective sheaf complex, with
+\[
+ R\operatorname{Hom}_{S_{\mathrm{et}}}(K_S,L_S)
+ \simeq R\operatorname{Hom}_{O_n}(K,L).
+ \tag{C.26.2}
+\]
+For finite projective terms this is the exact sections calculation; bounded totalization proves it for perfect complexes. In particular the image of the perfect constant functor is closed under finite cones and coherent retracts. All connecting maps between its objects lift through the same fully faithful enhanced functor.
+
+For \(\mathbf P^1_S\), the actual unit and relative \(c_1\mathcal O(1)\) give
+\[
+ O_{n,S}\oplus O_{n,S}(-1)[-2]
+ \xrightarrow{\sim}R\pi_*O_n.
+ \tag{C.26.3}
+\]
+This is The Satake category, Section 5.13(c)'s relative projective-line computation. It may also be checked on every geometric stalk using proper base change and the two trace-normalized generators. Its maps are the same relative unit and Kummer class before and after base change.
+
+Use the product compactification by projective lines for a relative toric cell. Remove infinity in an affine-line factor, and zero and infinity in a multiplicative-line factor. Products of (C.26.3) and their actual boundary restrictions give a finite Čech compact-support complex of perfect constant objects. Consequently the compact object of the cell is a perfect constant. This construction uses a proper compactification over \(S\), so its base-change map is precisely the compact-support base-change map, with its units and localization boundaries.
+
+Induct along the relative closed filtration. The compact localization triangle has perfect constant open term and perfect constant previous-stage term. Its connecting morphism lifts by (C.26.2), and its middle term is the corresponding coefficient cone, pulled back to \(S\). This proves the assertion about the whole object. Closed nilpotent immersions do not change the étale site or these coefficient functors, so the permitted thickened strata give the same calculation. The actual counit
+\[
+ (K_{C,n})_S\longrightarrow Ra_!O_n
+ \tag{C.26.4}
+\]
+is an isomorphism because the target is in this constant image. Pulling it back to \(b\) and applying compact base change identifies it with (C.26.1). This proves the identity of the comparison map, not only its invertibility.
+
+Do the finite compactification construction with the compatible \(O_n\)-diagram. The cell objects come from bounded finite free \(O\)-complexes. At a filtration step, take the connecting map in the complete constant category and its finite cone. The complete constant category on perfect inputs is again the coefficient category: the finite constant mapping complexes in (C.26.2) compute their compatible derived limit, equal to the mapping complex of the finite projective \(O\)-models. Thus each step gives a perfect \(O\)-model with its actual derived reductions. The inverse-limit argument of C.25.1.1 proves the complete comparison, and exact localization proves the \(E\)-comparison. No cohomology-before-reduction interchange is used. ∎
+
+#### C.26.2. The relative trace identifies specialization on Hom
+
+Let \(f:Y\to X\) and \(g:Z\to X\) be proper \(S\)-maps of separated finite-presentation schemes. Suppose \(Y,Z\) are smooth over \(S\), of relative dimensions \(r,s\), and \(C=Y\times_XZ\) has a relative toric-cell filtration. Set
+\[
+ B_f=Rf_*O_n[r],\qquad B_g=Rg_*O_n[s].
+ \tag{C.26.5}
+\]
+
+**Theorem C.26.2.1.** Actual geometric restriction gives a quasi-isomorphism on the enhanced Hom between (C.26.5) and its corresponding Hom on every algebraically closed fibre. With the compatible Tate generators, its relative formula is
+\[
+ R\operatorname{Hom}_{X}(B_f,B_g)
+ \simeq R\operatorname{Hom}_{O_n}(K_{C,n},O_n)
+ [-r-s](-s).
+ \tag{C.26.6}
+\]
+If \(\kappa_b\) is (C.26.1), restriction on Hom is \(D_{O_n}(\kappa_b^{-1})\), with these same shifts and twist. The complete and rational formulas hold as well.
+
+**Proof.** The arbitrary-base relative smooth formula quoted above is stated for cyclic coefficients. Here is the finite scalar extension needed for \(O_n\). Choose \(\mathbf Z/\ell^m\to O_n\). A derived \(O_n\)-module object is resolved by its free-coefficient bar resolution, whose terms are \(O_n\otimes^L_{\mathbf Z/\ell^m}F\). Its augmentation becomes split after forgetting the coefficient action, by the extra degeneracy given by that action and the unit. The realization is therefore the original module object. On a free term, proper-support projection and scalar adjunction identify maps into a proposed \(O_n\)-right adjoint with the cyclic-coefficient smooth adjunction. Its formula \(q^*A(d)[2d]\) retains the \(O_n\)-action of \(A\). Passing through the bar resolution proves the adjunction for all \(O_n\)-module inputs; its counit is the derived scalar extension of the same trace. Equivalently one can use a K-flat dg algebra resolution of the coefficient ring to implement this free bar resolution. This argument does not require flatness of \(O_n\) over the cyclic coefficient ring.
+
+Let \(h:C\to Z\). Ordinary adjunction and actual proper base change give
+\[
+\begin{aligned}
+ R\operatorname{Hom}_{X}(Rf_*O_n,Rg_*O_n)
+ &\simeq R\operatorname{Hom}_{Z}(g^*Rf_*O_n,O_{n,Z})\\
+ &\simeq R\operatorname{Hom}_{Z}(Rh_*O_{n,C},O_{n,Z}).
+\end{aligned}
+\tag{C.26.7}
+\]
+Writing \(q:Z\to S\), relative smooth duality says
+\(q^!O_{n,S}=O_{n,Z}(s)[2s]\), with the trace counit. Properness of \(h\) and proper-support composition then give
+\[
+ R\operatorname{Hom}_{Z}(Rh_*O_{n,C},q^!O_{n,S})
+ \simeq
+ R\operatorname{Hom}_{S}(Ra_!O_{n,C},O_{n,S}).
+ \tag{C.26.8}
+\]
+Use C.26.1.1 and (C.26.2) on the right. Removing \([2s](s)\) and inserting the two shifts in (C.26.5) yields \(-2s+s-r=-r-s\) and twist \(-s\), proving (C.26.6). These are relative dimensions: the dimension of the trait has not been added.
+
+The pairing represented by (C.26.8) is evaluation followed by the relative trace of \(q\). Proper base change, evaluation, and this trace commute with the given geometric restriction; the trace compatibility is Theorem 2.1(T1) and Theorem 9.1 of the relative-duality lesson. Thus, if \(a_b\) is the actual map on Hom,
+\[
+ \langle a_b(H),\kappa_b(v)\rangle_b=\langle H,v\rangle_S,
+ \qquad D_{O_n}(\kappa_b)\,a_b=1.
+ \tag{C.26.9}
+\]
+Since \(\kappa_b\) is an equivalence, this proves \(a_b=D_{O_n}(\kappa_b^{-1})\). It also proves that the original restriction functor supplies the quasi-isomorphism. The same functor therefore preserves compositions and homotopies.
+
+The compact \(O_n\)-complexes are derived reductions of the perfect \(O\)-object in C.26.1.1, so their duals are reductions of its perfect dual. The compatible adjunctions and traces give the same inverse-limit mapping diagram. Taking its limit, then localizing, proves the complete and rational assertions, retaining (C.26.9). This is a comparison on the family generator diagram, rather than a claim that arbitrary coefficient sheaves on the trait are determined by one geometric fibre. ∎
+
+#### C.26.3. Specialization on the genuine action nerve
+
+**Theorem C.26.3.1.** Let \(Q/S\) be a smooth affine group of relative dimension \(D\), with a relative toric-cell filtration. Suppose \(f_i:Y_i\to X\) are proper \(Q\)-equivariant maps with \(Y_i/S\) smooth of relative dimensions \(r_i\), and every pair correspondence \(Y_i\times_XY_j\) has a relative toric-cell filtration. Then geometric restriction is an enhanced equivalence from the finite shift, cone and coherent-retract envelope of these family generators onto the corresponding generator envelope of any algebraically closed fibre, both underlying and genuinely \(Q\)-equivariant. The assertion holds with the compatible complete and rational coefficients.
+
+**Proof.** On action-nerve level \(m\), the corresponding source is \(Q^m\times_SY_i\), smooth over \(S\) of relative dimension \(mD+r_i\). The proper map to \(Q^m\times_SX\) has pair correspondence \(Q^m\times_S(Y_i\times_XY_j)\). Product closed filtrations give a relative toric-cell filtration, just as in C.25.4.1. Its object retains shift \(r_i\). C.26.2.1 therefore gives the levelwise formula
+\[
+\begin{aligned}
+ R\operatorname{Hom}_{X_m}(B_{i,m},B_{j,m})
+ \simeq{}&
+ D_{O_n}K_{\,Q^m\times_S(Y_i\times_XY_j),n}\\
+ &[-2mD-r_i-r_j](-mD-r_j).
+\end{aligned}
+\tag{C.26.10}
+\]
+It proves that the actual geometric-restriction map is an equivalence on each level.
+
+Inverse image commutes with every action, identity and multiplication square. Its proper comparisons are their original adjunction mates. Hence the whole cosimplicial mapping diagram, with all its faces and degeneracies, compares. Taking its derived totalization proves fully faithful genuine equivariance. This is the complete action-nerve construction of Semi-infinite orbits and weight functors, N.4 and P.1.3.1, applied to these actual finite diagrams.
+
+There is a coefficient point when rationalizing that totalization. Put \(d_{ij}=\dim((Y_i\times_XY_j)_{\bar b})\), or any fixed uniform bound for these relative fibre dimensions. Compact cohomology on level \(m\) vanishes above \(2mD+2d_{ij}\), by the relative compact-support bound. The dual formula (C.26.10) therefore has no cohomology below
+\[
+ L_{ij}=r_i+r_j-2d_{ij},
+ \tag{C.26.11}
+\]
+independently of \(m\). Each level is a perfect complete coefficient complex. The finite coefficient cohomology groups are finite, so their inverse systems satisfy the Mittag–Leffler condition and completion retains this lower bound. For a cohomological window through degree \(N\), good truncation at the uniform lower bound uses only finitely many cosimplicial degrees, including those in degree \(N+1\) needed to compute cycles: \(m\leq N+1-L_{ij}\), since the total degree is \(m+q\) with \(q\geq L_{ij}\). Finite cohomological windows and their finite product-and-cone limit models consequently commute with exact coefficient localization. Equivalently apply the finite-filtration cosimplicial spectral sequence in each such window. Completion is already the limit of the compatible diagrams. This justifies the rational mapping comparison; it does not exchange localization with an arbitrary infinite product of coefficient modules.
+
+Extend full faithfulness to finite shifts and cones in two variables by the original mapping triangles, and to coherent retracts by applying restriction to their full splitting diagrams. Every fibre generator is the actual restriction of its family generator. A morphism or coherent projector used to build a fibre envelope object lifts through the fully faithful enhanced functor; its entire coherence diagram lifts with contractible comparison fibres, as in C.23.2.1 and A.4. Induction through the finite construction proves essential surjectivity. This proves the enhanced equivalences, including all the indicated diagrams. ∎
+
+#### C.26.4. Rootwise families and the actual IC identification
+
+**Theorem C.26.4.1.** Fix a pinned split reductive datum. There is a strictly henselian arithmetic trait with geometric closed fibre \(\overline{\mathbf F}_p\) and a complex geometric generic fibre for which C.26.3.1 applies to every finite collection of rootwise resolution words and their finite-jet Iwahori diagrams. It identifies their full generator envelopes and carries the corresponding actual IC objects to one another. It preserves the ordered wall-operation diagrams. Combining it with C.25 gives the actual comparison of these arithmetic geometric and ordinary complex Betti generator diagrams over finite \(E/\mathbf Q_\ell\).
+
+**Proof.** Take the integral pinned group of Pinnings and the classification of split reductive groups, Theorem 10.1. Choose \(p\ne\ell\), and take the strict henselization of \(\mathbf Z_{(p)}\) at a geometric closed point. Its pointed étale construction, localness and residue field are proved in *Henselian local rings and henselization*, Theorem 5.1. We verify the needed discrete valuation assertion. Localize each finite-presentation pointed étale stage at its selected closed prime, obtaining a noetherian local flat algebra \(A\). Its closed fibre is a finite separable field, so its maximal ideal is \((p)\); flatness makes multiplication by \(p\) injective. By *Noetherian and Artinian rings*, Theorem 6.1, \(\bigcap_a p^aA=0\). Every nonzero element therefore has a greatest exponent \(a\) for which it is in \(p^aA\), and is \(p^a\) times a unit. Products of two such elements are nonzero, because powers of \(p\) are nonzero divisors. Thus \(A\) is a domain and a discrete valuation ring with uniformizer \(p\).
+
+The local transition maps preserve \(p\) and units and are injective: a nonzero element \(p^a u\) cannot become zero at a later stage. Localization at a selected prime gives the same colimit as the pointed construction, since every element outside that prime becomes a unit in a further pointed neighbourhood. A nonzero ideal in this union has a least occurring exponent \(a\), and is exactly \((p^a)\). The union is consequently a noetherian discrete valuation ring. Its residue field is \(\overline{\mathbf F}_p\). Each local stage's fraction field is a finite extension of \(\mathbf Q\): its generic étale finite-presentation algebra is a finite product of finite separable fields, and localization selects one factor. The union's fraction field is algebraic over \(\mathbf Q\). Its algebraic closure embeds in \(\mathbf C\), supplying the required complex geometric generic fibre.
+
+Use the integral wall quotients and contracted products of Loop groups and the affine Grassmannian, Section 7.4, with the initial length-zero torsor. They give the family maps \(f_i:\mathcal B_i\to X\), with smooth projective sources of the word lengths as relative dimensions. All root exponents, normalizer representatives and action bounds are the same integral ones. A finite collection admits one common finite-jet Iwahori quotient. Its underlying scheme is \(T_S\times\mathbf A_S^u\), by the full ordered root and congruence coordinates of C.13. In particular it is smooth and relative toric-cell filtered.
+
+We check the relative fibre paving, not merely its two geometric-fibre versions. For a flag endpoint section \(yI\), forgetting the final wall identifies its fibre with the preceding endpoint's inverse image of \(yP_s/I\). If \(v\) is the shorter of \(y,ys\), the latter relative projective line has closed section \(vI\) and open root chart
+\[
+ z\longmapsto x_{v(a_s)}(z)\,vsI,\qquad z\in\mathbf A^1_S.
+ \tag{C.26.12}
+\]
+The root is positive and lies in the Iwahori. Its left action gives a scheme isomorphism of the open inverse image with \(\mathbf A^1_S\times F_{\mathrm{previous}}(vs)\); the closed part is \(F_{\mathrm{previous}}(v)\). Both isomorphisms are those determinant-one wall-chart formulas on all rings. At length zero the fibre is the section \(S\), or empty. Insert the recursively closed filtrations, adjoining the whole preceding closed part to each open-filtration stage. This gives the relative affine paving by induction. No root structure constant has been inverted.
+
+For a Grassmannian endpoint, insert the auxiliary flag fibre \(G/B\) and the Borel selected by the signs of \(\nu+\epsilon\gamma\), exactly as in The Mirković–Vilonen theorem: identifying the dual group, C.2.1.1. Automorphisms, forms and parabolic subgroups, Theorem 7.1 gives its relative root sections. Their conjugates by \(t^\nu\) are in the Iwahori, by the same integer root exponents. They trivialize the inverse image over a flag cell as its affine-space product with the flag-endpoint fibre just treated.
+
+The closed flag and Schubert stage orderings can be taken from the finite proper wall-word images. On every geometric fibre these images contain exactly the downward Bruhat labels established by the integral root-coordinate calculation. The relative root cells are locally closed immersions with those same labels. Hence on an open difference of two such closed stages, its root-cell immersion covers the whole underlying space. It is then a closed immersion with nilpotent defining ideal: a locally closed immersion with full underlying image is closed; every element of its ideal lies in the ambient nilradical, and finite generation makes the ideal nilpotent. Thus these differences have the étale topoi of the stated relative affine cells. This explains why neither flatness of every closed stage nor an identity of the coproduct of strata with the full test-ring functor is being assumed. It suffices for the precise relative-filtration hypothesis.
+
+For a pair correspondence, apply the root section of an Iwahori cell simultaneously to the two resolutions. On the actual root-cell scheme \(A_S^e\) this gives
+\[
+ (\mathcal B_i\times_X\mathcal B_j)|_{A_S^e}
+ \simeq A_S^e\times_S F_i(x)\times_S F_j(x).
+ \tag{C.26.13}
+\]
+Its inverse uses the inverse root section. Products of the relative fibre pavings, inserted into the pulled-back finite closed base-cell ordering, give the required relative affine paving of the pair correspondence. Pullback of the possible nilpotent stage immersions is still nilpotent. This verifies every geometric hypothesis of C.26.3.1 over the trait itself.
+
+An actual IC in the closed-fibre Iwahori category is a coherent retract of its rootwise resolution image. The equivariant lifting argument in C.25.5.1 applies in this characteristic as well: finite-jet stabilizers are connected split torus by affine unipotent coordinates; C.13–C.14 compute their full even classifying-space cohomology; matching IC and resolution parity kills the closed-open odd-Hom obstruction. Dense-cell identities give \(u,v\) with \(vu=1\), and the split triangle supplies the coherent splitting. General IC parity and the required actual dense identity are already Lesson 11, C.2–C.4. Lift this whole retract through the enhanced equivalence of C.26.3.1.
+
+To identify its generic fibre, retain both perverse tests. Relative duality on a resolution image is its smooth-source relative orientation followed by proper duality:
+\[
+ D_{X/S}B_i=B_i(r_i).
+ \tag{C.26.14}
+\]
+Here is the proper-duality identity being used. For any test object \(A\), the projection formula and exceptional adjunction identify
+\[
+\begin{aligned}
+ \operatorname{RHom}_X(A,D_{X/S}Rf_*F)
+ &\simeq\operatorname{RHom}_X(A\otimes^LRf_*F,\omega_{X/S})\\
+ &\simeq\operatorname{RHom}_Y(f^*A\otimes^LF,\omega_{Y/S})\\
+ &\simeq\operatorname{RHom}_X(A,Rf_*D_{Y/S}F).
+\end{aligned}
+\]
+Properness changes \(f_!\) into \(f_*\), and composition of exceptional right adjoints gives \(f^!\omega_{X/S}=\omega_{Y/S}\). These are the projection and composition identities already retained in C.26.2.1. Yoneda gives the asserted identity, with its evaluation map. Smooth-source orientation makes its bidual evaluation an isomorphism. This proves (C.26.14) and its biduality assertion. Finite mapping triangles and coherent splittings extend the assertion to finite cones and coherent retracts. Relative trace and the comparison of C.26.2.1 make these identities, evaluations and maps commute with restriction.
+
+On a relative Iwahori cell, ordinary restriction of a resolution image is the constant perfect relative compact object of its proper fibre, pulled to that cell by the root section. C.26.1.1 proves its actual comparison on either geometric fibre. The same is true of its dual and its coherent retracts. Write \(i:T\to X\) for the cell inclusion. The exact exceptional restriction identity is
+\[
+ i^!D_{X/S}P\simeq D_{T/S}i^*P.
+\]
+Indeed, test its left side against \(A\), move \(i_!A\) by adjunction, and use the projection formula
+\(i_!A\otimes^LP=i_!(A\otimes^Li^*P)\).
+The resulting pairing has target \(i^!\omega_{X/S}=\omega_{T/S}\) and is exactly the right side. Yoneda proves the identity. Apply it to \(D_{X/S}P\) and the bidual evaluation just proved to obtain
+\(i^!P=D_{T/S}i^*D_{X/S}P\).
+The cell's relative orientation adds exactly twice its relative dimension. Consequently the lifted IC's ordinary and exceptional restrictions have the same coefficient complexes, with the same degrees, on both geometric fibres. The strict boundary inequalities and dense constant line of the closed-fibre IC are therefore retained on the generic fibre. Intermediate-extension uniqueness identifies that fibre with the actual generic IC of the same label. This argument does not put an absolute perverse shift for the dimension of the trait into the IC.
+
+Finally, wall operations use the same integral contracted products, coefficient inverse images and proper images. Their frame actions and complete nerves commute with restriction, and the actual proper base-change maps identify their resulting words. Thus their ordered operation diagrams and homotopies compare as well. Increasing a jet level retains the affine congruence-kernel nerve comparison of C.13. Applying C.25 to the complex geometric fibre gives the stated Betti comparison. This theorem establishes the rootwise and Iwahori enhanced diagram; the spherical convolution and full fusion comparison are separate remaining assertions. ∎
+
+![Relative compact objects are perfect constants; specialization on Hom is the dual of the inverse compact comparison, with relative shifts and full action nerve](assets/relative-specialization.png)
+
+Theorems C.26.1.1–C.26.2.1 prove the compact object and trace identities in the diagram. Theorem C.26.3.1 retains the full nerve and the uniform degree bound before coefficient localization; C.26.4.1 transports the actual IC using both stalk and costalk tests. Editable SVG source.
+
+#### C.26.5. Coefficients and the growing nerve
+
+**Exercise C.26.5.1.** Let \(K=[O\xrightarrow{\varpi}O]\) in degrees zero and one. Compare \(H^0(K)\otimes_OO_1\) with \(H^0(K\otimes_O^LO_1)\). Which operation in C.26.1 preserves the correct coefficient diagram?
+
+**Solution.** The first group is zero. Since the two terms of \(K\) are free, its derived reduction is represented by the same two terms over \(O_1\) with zero differential. Its degree-zero and degree-one groups are both \(O_1\). The extra degree-zero group is the Tor contribution of \(H^1(K)=O/\varpi\). Therefore take the finite projective coefficient complex, its actual derived reductions and their cones, as in C.26.1.1. Reducing an already extracted cohomology group loses part of this diagram. After tensoring by \(E\), multiplication by \(\varpi\) is invertible and the whole complex is acyclic.
+
+**Exercise C.26.5.2.** Let \(Q=\mathbf G_m\times\mathbf A^u\) act trivially on \(X=\mathbf P^1\), and take both generator maps to be the identity. Compute the level-\(m\) Hom range and the eventual genuine equivariant self-Hom. Explain the role of the dimension cancellation in (C.26.10).
+
+**Solution.** Both relative generator dimensions are one. The level pair correspondence is \(Q^m\times\mathbf P^1\). Its compact complex has degrees from \(2mu+m\) through \(2m(u+1)+2\): an affine factor contributes only its top degree, a multiplicative factor contributes degrees one and two, and the projective line contributes zero and two. Formula (C.26.10) shifts its dual by \(-2m(u+1)-2\), giving Hom degrees zero through \(m+2\). The lower degree is independent of both \(m\) and \(u\). Hence a fixed total cohomological degree sees only finitely many nerve degrees.
+
+The affine unipotent nerve has the actual unit equivalence of C.13. The multiplicative-group classifying-space calculation of C.14 gives the degree-two class \(c\). The trivial-action product and the projective-line Chern class \(h\) therefore give
+\[
+ H^*\operatorname{RHom}_{Q}(E_{\mathbf P^1}[1],E_{\mathbf P^1}[1])
+ =E[c,h]/(h^2),\qquad |c|=|h|=2.
+ \tag{C.26.15}
+\]
+Each class carries coefficient \(E(-1)\) in degree two before the chosen Tate trivialization. Level zero sees only \(E[h]/(h^2)\), and misses every positive power of \(c\). Thus agreement on the level-zero fibre is insufficient for genuine equivariant Hom.
+
+### C.27. Spherical induction, full coordinates and ordered convolution
+
+Retain the arithmetic trait and coefficient field \(E\) of C.26. All objects below have a finite Schubert support, enlarged whenever a finite convolution word requires it. A root-word envelope contains all finite wall words, including nonreduced words and their length-zero translates, with finite shifts, cones and coherent retracts. Choose compatible finite loop and frame bounds for each finite diagram. Write \(H=J_NG\) and \(I_H\) for the inverse image of \(B\) under evaluation \(H\to G\). Thus \(H/I_H=G/B=:F\). An induced object means actual proper induction along
+\[
+ \kappa:[X/I_H]\longrightarrow[X/H],
+ \qquad \operatorname{Ind}A=R\kappa_*A.
+ \tag{C.27.1}
+\]
+These quotient presentations use the full action nerves. On the \(H\)-atlas its object is the proper endpoint image on \(H\times^{I_H}X\), with the coefficient descended from \(A\); no invariants of a graded Hom module define this induction.
+
+#### C.27.1. The unit projection and induced wall words
+
+**Theorem C.27.1.1.** For every genuinely \(H\)-equivariant bounded coefficient object \(P\), the actual flag unit is the first summand of an enhanced decomposition
+\[
+ \bigoplus_j P(-a_j)[-2a_j]
+ \xrightarrow{\sim} \operatorname{Ind}\operatorname{Res}P,
+ \qquad a_1=0,\quad b_1=1.
+ \tag{C.27.2}
+\]
+Here the \(b_j\) are the homogeneous flag Chern basis of C.14.2–C.14.3, of polynomial degrees \(a_j\). Projection onto the first summand gives a coherent retraction of \(P\). Each induced root-word resolution object restricts to the Iwahori root-word envelope. The same assertions hold with the full finite coordinate group included.
+
+**Proof.** Character lines on the \(I_H\)-presentation give the actual classes \(c(b_j)\). The unit of \(P\), followed by cup with those classes, defines (C.27.2), just as in (C.14.8). We verify its relative assertion. On the action atlas it is the pullback of
+\[
+ \bigoplus_j E_S(-a_j)[-2a_j]\longrightarrow R\pi_*E_F,
+ \qquad \pi:F\to S.
+ \tag{C.27.3}
+\]
+On each geometric fibre the actual Chern basis is C.14.2.1, valid in that characteristic. Relative flag root cells are those of Automorphisms, forms and parabolic subgroups, Theorem 7.1; C.26.1.1 makes the target a perfect constant object. Alternatively proper base change checks (C.27.3) directly on every geometric stalk, using the same relative character lines. It is therefore an equivalence. Projection formula gives (C.27.2) for the possibly singular coefficient \(P\). Conservative descent on the complete action atlas proves it on the quotient presentation. No internal-Hom pullback identity for singular coefficients is used.
+
+Choose the inverse of this equivalence in the enhanced category; its space of inverse data is contractible. Its projection onto \(j=1\), together with the specified unit inclusion, is a coherent splitting. All maps are the relative Chern, unit and projection comparisons, so their entire diagrams commute with geometric restriction. Full coordinates fix evaluation at the origin and every character of \(T\), hence these same global line classes exist on the enlarged presentation; the same atlas proof applies there.
+
+For the assertion about induced words, use the longest finite Weyl word and its integral resolution
+\[
+ \rho:\mathcal B_{w_0}\longrightarrow F.
+ \tag{C.27.4}
+\]
+Both source and target are smooth over \(S\), of relative dimension \(d_F\); \(\rho\) is proper and an isomorphism on the dense root cell. There are actual maps
+\[
+ E_F\xrightarrow{u}R\rho_*E_{\mathcal B_{w_0}}
+ \xrightarrow{v}E_F.
+ \tag{C.27.5}
+\]
+The first is the unit. The second is the proper counit after the smooth relative orientations identify
+\(\rho^!E_F=E_{\mathcal B_{w_0}}\): composition of exceptional adjoints gives
+\(\rho^!\omega_{F/S}=\omega_{\mathcal B_{w_0}/S}\), and the two equal-dimensional orientation shifts cancel. This is precisely the proper-duality calculation proved in C.26.4.1. On the dense cell the two maps are identities. Their composite lies in
+\(\operatorname{Hom}(E_F,E_F)=H^0(F,E)=E\), so it is the identity globally. Here \(F\) is connected and \(R\Gamma(F,E)\) is the perfect constant flag object just calculated.
+
+The maps retain the Iwahori and coordinate actions: the source, orientations and trace are their actual equivariant ones on every nerve level. Degree-zero endomorphisms on that presentation are again \(E\). Indeed each underlying nerve level is connected, has no negative constant-coefficient cohomology, and has \(H^0=E\); the degree-zero total equalizer is the coefficient line. Negative Hom of this constant unit is zero by the same bounded-below totalization. Thus the identity composite has its coherent splitting by the split-triangle construction used in C.25.5.1.
+
+Induction at an \(H\)-atlas is convolution of the constant coefficient on the finite flag \(F\) with the given genuinely Iwahori coefficient. The finite flag frame and its right \(I_H\)-action supply the associated kernel. Apply this actual exact convolution functor to (C.27.5), fixing its second factor. Effective coherent descent is the frame-chart Čech construction of The Mirković–Vilonen theorem: identifying the dual group, Lemma C.1.1.1; for a given coherent derived second factor its action is already specified, and the same bounded totalization constructs its kernel. This construction works over \(S\) as well: finite étale charts, their diagonal contraction and the actual ordinary étale comparison have the same proof, and compact constructibility is the arbitrary-base theorem used in C.26.
+
+On a root-word second factor, convolution with \(R\rho_*E\) is the endpoint image of the concatenated finite-wall word and that second word. This equality is checked on the final finite frame: pull the first proper image back, move the second coefficient through it by projection formula, and multiply the contracted products. These are the exact maps of The Mirković–Vilonen theorem: identifying the dual group, equation C.3.2.2. If the second word has length \(r\), its shift is \([r]\); the concatenated resolution generator has shift \([d_F+r]\), so the resulting object is that generator shifted by \([-d_F]\). A length-zero translate moves across a wall by conjugating its simple root, which still gives an allowed finite wall word. Consequently \(\operatorname{Res}\operatorname{Ind}B_i\) is a coherent retract of a finite root-word object with that shift. The same argument transports all first-factor maps and splittings, not only their cohomology. All contracted products, units and traces are integral and commute with geometric restriction. This proves the claims. ∎
+
+#### C.27.2. Every coordinate coefficient and every spherical nerve level
+
+**Lemma C.27.2.1.** At suitable finite bounds, the full origin-preserving coordinate group acts on the integral root-word and induced-word families and their frame diagrams. Its underlying scheme is \(\mathbf G_{m,S}\times\mathbf A_S^{m-2}\) for coordinates modulo \(t^m\). Both the finite loop semidirect group and its Iwahori subgroup have relative toric-cell filtrations. These statements retain all substitution coefficients, rather than only the derivative at the origin.
+
+**Proof.** A truncated coordinate has the form
+\[
+ \phi(t)=z t+b_2t^2+\cdots+b_{m-1}t^{m-1}\pmod {t^m},
+ \qquad z\in A^\times
+ \tag{C.27.6}
+\]
+on every \(S\)-algebra \(A\). Recursive comparison of coefficients constructs its inverse, dividing only by powers of \(z\). Composition and inverse therefore define the actual smooth group on the stated scheme. The precise finite-support substitution estimate and its inverse are Convolution and rigidity, Theorem C.1.2.1, and Fusion and the commutativity constraint, Theorem B.2.1.1. Their proof uses the integral binomial expansion for every integer Laurent exponent; it remains valid over the trait. More explicitly, let \(A_{\mathrm{fr}}\) bound the pole orders of each required faithful frame and its inverse, and let \(n_{\mathrm{fr}}\) be its right congruence depth. A kernel substitution \(t\pmod {t^m}\) gives
+\[
+ g^{-1}\phi(g)=1\pmod {t^{m-1-2A_{\mathrm{fr}}}}.
+ \tag{C.27.6a}
+\]
+For an entry \(t^j\), its change starts in order \(j+m-1\); multiplication by \(g^{-1}\) loses at most the second pole bound. This proves (C.27.6a), also for the inverse frame. Choose
+\(m\geq\max(2,N,n_{\mathrm{fr}}+2A_{\mathrm{fr}}+1)\)
+over the finite diagram. It kills the kernel on every required frame quotient and support, and also allows substitution on the chosen loop jet group.
+
+Substitution preserves every root ideal \(t^aA[[t]]\), because \(\phi(t)=t\,v(t)\) with \(v(t)\) a unit, also for negative integer \(a\). It fixes the constant group and evaluation at the origin. Hence it preserves the Iwahori and each wall parahoric: their ordered root ideals and their torus are preserved. For a length-zero representative \(n_\omega=t^\nu n_w\), one has
+\(\phi(n_\omega)=t^\nu\nu(v)n_w\in n_\omega I\).
+Thus it acts on the initial coset and on each contracted wall product. The action is actual substitution, so its multiplication, unit and inverse identities hold on all parameter rings and all higher frame diagrams. It also acts on the induced product by
+\([h,y]\mapsto[\phi(h),\phi(y)]\); preservation of \(I\) makes this well defined. Bounded congruence coordinates make these actions factor through the selected finite groups.
+
+The loop jet scheme is \(G_S\) times an affine congruence kernel by C.13. Pull the finite closed root-cell filtration of \(G/B\) back to \(G\). Its root sections trivialize every difference as an affine root cell times \(B=T\times U\); ordered root coordinates make \(U\) an affine space. This is a relative toric-cell filtration, with the possible nilpotent stage immersions allowed and proved in C.26.4.1. Product with the affine congruence kernel proves the assertion for loop jets. The Iwahori jet scheme is \(T_S\times\mathbf A_S^u\), already C.13. The underlying semidirect scheme is the product with (C.27.6), so the product closed filtrations give the claimed filtrations. The group multiplication need not be a product multiplication; only this actual scheme filtration is used in the Hom calculation. ∎
+
+**Theorem C.27.2.2.** Geometric restriction is an enhanced equivalence between the finite induced-generator envelope on the trait and the corresponding genuinely spherical finite-support category on either algebraically closed fibre. This holds for the complete loop action nerve, and for the loop action enlarged by full finite coordinates when that structure is retained. The restriction of each spherical IC lift to the complex fibre is the actual IC of its label. Combining with C.25 compares the corresponding genuinely equivariant complex étale and ordinary Betti envelopes.
+
+**Proof.** First compare mapping objects. By C.27.1.1 the underlying restriction of each induced generator is in the root-word envelope. At nerve level \(q\) for a chosen loop or coordinate semidirect group \(Q\), the underlying object is the ordinary pullback of that generator on \(Q^q\times_SX\). Its actual coherent action identifies all action pullbacks with this object. Product with \(Q^q\) sends the root-word expression, including its coherent retraction, to the same product envelope.
+
+C.26.2.1 applies to the original root-word generators on that product: their sources are \(Q^q\times_SY_i\), and their pairs are \(Q^q\times_S(Y_i\times_XY_j)\). Lemma C.27.2.1 and C.26.4.1 prove their relative toric-cell filtrations. Use their original generator shifts \(r_i\), not their enlarged dimensions, to get the exact formula (C.26.10). Finite mapping triangles in both variables and coherent splittings then prove mapping comparison for every pair of induced-envelope objects on that level.
+
+Restriction is an actual functor on the coherent presentation, so the comparisons commute with all action, multiplication, identity and coordinate faces, and with all degeneracies. Derived totalization gives fully faithful genuine equivariance. The coefficient justification also survives passage to these envelopes. Each fixed finite construction introduces only finitely many shifts into the uniform bounds (C.26.11); their minimum is still independent of \(q\). Thus the finite-window and completion proof of C.26.3.1 applies unchanged. No coefficient localization is exchanged with an unbounded product. Every induced fibre generator is the actual restriction of its family source and coefficient. Fully faithful enhanced mapping comparison lifts finite maps and coherent projectors, so it gives an equivalence of the induced-generator envelopes.
+
+We identify the fibre envelope. A spherical IC restricts to an Iwahori IC, with its canonical action, and is a coherent retract of a root-word image by C.25.5.1 and C.26.4.1. Induction carries its entire finite construction into the induced-generator envelope. The actual unit projection (C.27.2) then makes the original spherical IC a coherent retract there. This argument works with coordinates as well: the IC has its canonical full-coordinate action by Fusion and the commutativity constraint, Theorem B.2.1.1, and the root-word retraction lifts on the enlarged Iwahori nerve. We verify that lift on each root cell.
+
+Every substitution fixes the normalizer endpoint in the Grassmannian: the extra factor \(\nu(v)\) is integral torus and belongs to its right loop stabilizer. It also fixes the corresponding affine-flag endpoint, since the conjugated torus unit belongs to \(I\). The enlarged stabilizer is therefore the semidirect product of the original Iwahori endpoint stabilizer with the full coordinate group. The original stabilizer's torus is constant, and substitution fixes it. Quotienting by its ordered root and congruence kernel and then by derivative-one coordinates leaves exactly \(T\times\mathbf G_m\). The combined kernel has an underlying affine space: the original root/congruence coordinates and the derivative-one coordinates are independent factors, with the semidirect polynomial multiplication. Its powers on the group nerve are affine spaces as well. The actual affine-line units of C.13 remove this kernel on the complete nerve; this argument does not require its multiplication to be additive. C.14 then gives the even polynomial cohomology of \(T\times\mathbf G_m\).
+
+Connected stabilizer action makes the IC and resolution cohomology sheaves constant on the root cell. In its equivariant presentation their parity-matching Postnikov attaching maps have odd degree and vanish by this even stabilizer calculation. Apply the closed-open lifting triangles of C.25.5.1: both their odd-Hom obstructions vanish by finite cell induction. The dense identity lifts in both directions, its composite is the scalar identity of the IC, and the split triangle gives the whole coherent retraction with coordinates. This proves the claimed enlarged lift, not only a retraction after forgetting the coordinate action.
+
+Every bounded genuinely spherical constructible object with finite support is generated by its finite perverse truncation tower. Its perverse cohomology belongs to the finite-length spherical heart; semisimplicity and the classification of its simples were proved in The Satake category, Theorem B.2.3.1 and The Mirković–Vilonen theorem: identifying the dual group, Theorem B.4.1.1. Thus it is a finite direct sum of these ICs. The tower gives its finite cone construction in their enhanced envelope. With coordinates the canonical heart action is unique, by Fusion and the commutativity constraint, Theorem B.2.1.1, and the same truncation tower retains it. Conversely the induced objects have bounded constructible finite support and the indicated genuine actions. Therefore the fibre envelope is exactly the category stated in the theorem.
+
+The lift of a closed-fibre spherical IC, when restricted to the Iwahori presentation, is the lift in C.26's root-word envelope. Indeed C.27.1.1 puts it in that envelope, and full faithfulness identifies its whole closed-fibre splitting with the root-word IC splitting. C.26.4.1's ordinary and exceptional restriction comparison therefore applies. It retains the strict boundary degrees and the dense constant line, and identifies the generic object with the actual IC of the same label. Its genuine spherical and coordinate structures are the canonical ones: on the field heart their identity-normalized mapping components are contractible by negative perverse Hom vanishing, exactly the coherent-action argument of The Mirković–Vilonen theorem: identifying the dual group, Lemma C.1.1.1.
+
+Finally on the complex fibre apply C.25 to each product root-word mapping diagram just used. The group schemes are complex toric-cell filtered, and the proof needs their full nerve rather than their multiplication being a toric multiplication. Its trace and proper comparison maps are natural on all those faces. Extend through the actual induced retractions and finite constructions, and totalize with the same uniform coefficient bound. This proves the Betti assertion on the genuine envelopes, with their specified objects and actions. ∎
+
+#### C.27.3. The actual ordered convolution diagrams
+
+**Theorem C.27.3.1.** The induced spherical envelope is closed under actual derived convolution. The comparisons of C.27.2.2 preserve its associative convolution, its unit, and every ordered finite convolution correspondence with all its coherence maps. The full coordinate structures are retained. This establishes the ordered monoidal comparison; the moving fusion diagrams which determine its symmetric constraint are an additional assertion.
+
+**Proof.** Fix a coherent genuinely spherical second factor \(Q\) in the family envelope. On a bounded convolution source the final finite frame supplies its actual associated kernel \(K_Q\). Coherent étale descent constructs it as in C.27.1.1. The resulting exact functor on the whole underlying first-factor category is
+\[
+ \mathcal C_Q(A)=Rm_*(p^*A\otimes_E^LK_Q).
+ \tag{C.27.7}
+\]
+Both frame bounds and supports are finite. Arbitrary first-factor maps, finite cones and coherent splittings are therefore transported by this original enhanced functor. Genuine actions in the first factor give the transported left action on its output; the second factor supplies the frame descent.
+
+Restrict \(Q\) to the Iwahori root-word envelope using C.27.1.1. For a root-word first factor \(B_{\omega,s_1,\ldots,s_r}\), the actual proper pullback and projection calculations on the finite frame give
+\[
+ \mathcal C_Q(B_{\omega,s_1,\ldots,s_r})
+ =(n_\omega\cdot)_*\Theta_{s_1}\cdots\Theta_{s_r}(Q)[r].
+ \tag{C.27.8}
+\]
+This is the same contracted-product identity as The Mirković–Vilonen theorem: identifying the dual group, equation C.3.2.2, now for the specified coherent derived \(Q\); its proof only uses its kernel and the proper operations, so does not require \(Q\) to be perverse. Each unshifted wall operation preserves the root-word envelope. On a root-word generator it concatenates one wall to the source, with the compensating shift \([-1]\) relative to the newly shifted generator. On arbitrary envelope objects its actual exact functor preserves the finite cones and coherent splittings. Length-zero translation also preserves this envelope, conjugating the wall roots by its normalizing action. Hence (C.27.8) lies in it.
+
+The underlying first factor \(P\) of a spherical-envelope pair also restricts to that envelope. Apply (C.27.7) through its finite construction. It follows that \(\operatorname{Res}(P*Q)\) lies in the root-word envelope. The output is genuinely spherical, with full coordinates when given, by the same coherent left and frame actions. C.27.1.1 gives its unit retraction from
+\(\operatorname{Ind}\operatorname{Res}(P*Q)\).
+Induction of that root-word construction belongs to the induced-generator envelope. This proves convolution closure without requiring a separate paving of an induced pair correspondence.
+
+Geometric inverse image preserves the associated kernel: pull its entire étale frame nerve, including its action identifications and diagonal contraction, to the fibre. It becomes exactly the fibre kernel. Inverse image preserves tensor, and the endpoint proper base-change comparison is its actual adjunction mate. They therefore give
+\[
+ b^*(P*Q)\xrightarrow{\sim}b^*P*b^*Q.
+ \tag{C.27.9}
+\]
+For a longer ordered word, use one common sufficiently deep frame. Its successive contracted products and their endpoint maps are the same before and after pullback. Every change of parentheses is the original associativity of tensor and proper-image composition on that full frame, followed by coherent descent. Actual base-change naturality preserves those entire diagrams, in every higher degree. The length-zero unit source and its unit maps are preserved as well. This proves the associative enhanced monoidal assertion.
+
+For the complex Betti comparison, the corresponding statement may be checked on root-word first factors and then on their finite constructions. Equation (C.27.8) expresses each such operation through the original integral wall correspondences. On a root-word second generator a wall is the proper image of the concatenated smooth source. Its actual étale–Betti comparison is C.25's generator comparison; the two shifted source conventions give the same \([-1]\) above. Proper pullback and projection naturality identify the operation's actual comparison map with that generator map. Extend through the finite mapping and object triangles and coherent retracts of the second factor, then the first. This proves the kernel comparison on the envelopes without assuming a general proper Betti theorem for arbitrary coefficients. The ordered full-frame argument gives all its associativity coherences and unit comparisons as above. Coordinates act on those same frames by Lemma C.27.2.1, so their complete action diagrams are retained.
+
+There is as yet no point-interchange argument in this proof. In particular the unit projection in C.27.2 is a splitting of an actual coefficient functor, not a tensor-compatible averaging rule. The symmetric comparison requires the actual ordered moving families and their fusion interchange maps. ∎
+
+![The actual flag unit projection yields spherical retracts, every finite coordinate coefficient and nerve level is retained, and ordered convolution uses its original second-factor kernel](assets/spherical-induction.png)
+
+Theorem C.27.1.1 proves the unit and induced-word splittings. Lemma C.27.2.1 and Theorem C.27.2.2 retain full coordinates and genuine spherical mapping objects. Theorem C.27.3.1 compares the original ordered convolution diagrams and their associative coherences. Editable SVG source.
+
+#### C.27.4. Two tests of the induction projection
+
+**Exercise C.27.4.1.** For \(G=SL_2\), compute \(\operatorname{Ind}\operatorname{Res}P\) from the actual flag Chern basis. Identify the unit retraction and the shift of the concatenated generator in C.27.1.1.
+
+**Solution.** The finite flag is \(\mathbf P^1\), and its basis is \(1,c_1\mathcal O(1)\), of polynomial degrees zero and one. Hence the actual decomposition is \(P\oplus P(-1)[-2]\). The unit is the first inclusion; the retraction is projection onto that same summand after the inverse of the Chern comparison. The longest finite word has length one. Convolving its unshifted resolution image with a root-word generator shifted by \([r]\) gives the concatenated generator, whose defining shift is \([r+1]\), followed by \([-1]\). No flag dimension shift is hidden in the definition of induction.
+
+**Exercise C.27.4.2.** Normalize \(H_T^*(\mathrm{pt},E)=E[u]\) and \(H_{SL_2}^*(\mathrm{pt},E)=E[q]\) by \(q=u^2\). The flag basis is \(1,u\). Is the projection \(F(q)+uG(q)\mapsto F(q)\) multiplicative? What does this test exclude from the proof of C.27.3.1?
+
+**Solution.** It sends \(u\) to zero and \(u^2=q\) to \(q\ne0\), so it is not multiplicative. It is the coefficient-linear projection of the flag basis summand containing the unit. Thus the existence of this coherent induction retraction alone proves neither a tensor averaging functor nor a symmetric convolution comparison. C.27.3.1 instead compares ordered convolution by its actual kernels and frame maps. The symmetric constraint must still be compared through the moving fusion diagram.
+
+### C.28. Configuration complements and moving generator diagrams
+
+Keep the trait \(S\) of C.26 and the pinned integral group. For \(n\geq1\), let
+\[
+ B_n=\mathbf A^n_S,\qquad
+ U_n=\{x_i-x_j\text{ is invertible for all }i\ne j\}\subset B_n.
+ \tag{C.28.1}
+\]
+An ordered moving generator is the proper endpoint image of a chain whose \(i\)-th step is an induced root-word resolution at the section \(u=x_i\). Each step retains its finite flag reduction and every wall in its word. The moving-endpoint and finite-frame constructions are those of Fusion and the commutativity constraint, Sections 1–2, using its full monic completion and the all-ring gluing theorem of Beauville–Laszlo gluing and the moduli interpretation, Sections 1–3 and Theorem 8.1. They work over \(S\): their equations, splitting, monic operator resolution and detecting-line conditions are integral. We prove the geometric and coefficient comparisons required for these actual moving generators; symmetric fusion will require a further diagram argument.
+
+#### C.28.1. Compact constants for diagonal arrangements
+
+**Theorem C.28.1.1.** The compact coefficient object of \(U_n/S\) is a perfect constant object, with actual geometric base-change comparisons, finite coefficient reductions and their complete models. The same holds for a scheme with a finite relative closed filtration whose differences are finite disjoint unions of
+\[
+ U_k\times_S\mathbf A^a_S\times_S\mathbf G_{m,S}^b
+ \tag{C.28.2}
+\]
+up to closed nilpotent immersions. All conclusions of C.26.1 concerning its compact object, maps and coefficient diagram remain valid for this larger filtration class.
+
+**Proof.** Let \(D\subset B_n\) be the closed union of the diagonals \(D_{ij}:x_i=x_j\). Every nonempty finite intersection \(D_J\) of those diagonals is exactly \(\mathbf A^{c(J)}_S\), where \(c(J)\) is the number of connected components of the graph of its equalities. A spanning forest eliminates one variable at each edge by a coefficient \(1\) or \(-1\); all remaining equalities become zero. This is a scheme isomorphism over every parameter ring, including in characteristic two. It does not infer the intersection from its geometric points.
+
+The augmented finite closed-cover complex
+\[
+ E_D\longrightarrow
+ \bigoplus_{|J|=1}i_{J*}E_{D_J}\longrightarrow
+ \bigoplus_{|J|=2}i_{J*}E_{D_J}\longrightarrow\cdots
+ \tag{C.28.3}
+\]
+has alternating restriction maps. It is an equivalence from the left term to the total complex on the right. Indeed, at a geometric point of \(D\), retain exactly the diagonals containing it. That set is nonempty; the augmented cochain complex of its full simplex is contractible by inserting any selected vertex. Every other stalk summand is zero. Stalks are exact and conservative, so this verifies the original sheaf complex. The same construction applies with \(O_n\), and is compatible with coefficient maps. The closed immersions \(i_J\) are proper.
+
+Take relative compact images in (C.28.3). Every intersection's compact object is \(O_{n,S}(-c(J))[-2c(J)]\), by the affine-line calculation of C.26.1. Finite totalization gives a perfect constant object for \(D\). Its actual maps and all their coherences lift through the fully faithful perfect constant functor (C.26.2). The compact localization triangle for \(U_n\subset B_n\) then gives a perfect constant object for \(U_n\) as well. Its actual comparison with any geometric fibre is the pullback of the constant counit (C.26.4), followed by compact base change. Thus the construction identifies the map, rather than only the ranks of its cohomology.
+
+For (C.28.2), compact projection and Künneth multiply this finite perfect model by the toric compact model of C.26.1. Products of the projective-line compactifications supply the actual Künneth map and its boundary diagram, just as there. Finite closed localization then proves the filtered assertion. Nilpotent closed immersions preserve the étale coefficient site and all these maps. The complete coefficient models follow by doing this same finite complex and finite cones with the compatible \(O_n\)-diagram: C.26.1's perfect constant mapping calculation lifts each connecting map and gives a finite projective \(O\)-model with its derived reductions. Derived inverse limit and exact localization give the stated complete and rational assertions. This proof makes no toric-cell paving assumption about the configuration space itself. ∎
+
+#### C.28.2. Flag and wall chains on a collision block
+
+**Theorem C.28.2.1.** A finite same-point chain of induced root-word steps has smooth projective source, with dimension the sum of its flag and wall dimensions. Its reduced endpoint fibres admit relative affine pavings, in the precise nilpotent-filtration sense of C.26. For any two such chains, their pair correspondence over the Grassmannian admits the same type of relative affine paving. The assertions include nonreduced words, length-zero steps and different orders of the same steps.
+
+**Proof.** Keep the current endpoint in the affine flag whenever a flag has been chosen. There are three elementary source operations. Inserting a flag at a Grassmannian endpoint pulls back the proper smooth map
+\(\operatorname{Fl}_G\to\operatorname{Gr}_G\), whose fibre is \(G/B\).
+Appending a wall is its contracted \(\mathbf P^1\) bundle, with the determinant-one charts of Loop groups and the affine Grassmannian, Section 7.4. A length-zero step is right multiplication by its normalizing representative on the affine flag; it is an isomorphism there. The normalizing condition makes it well defined on the quotient by \(I\). Starting at the trivial endpoint, these operations give the chain, followed by forgetting its final flag. Thus its source is smooth projective over \(S\); each flag adds \(d_F=\dim(G/B)\), each wall adds one, and a length-zero step adds zero. Their finite pole bounds and detecting-line conditions give a finite separated endpoint target. The graph of the endpoint map is closed, so properness of the source makes that map proper.
+
+We prove the fibre assertion during this construction, retaining fibres over normalizer sections in both endpoint spaces. At a flag-insertion step, the fibre over a fixed affine-flag section is exactly the previous fibre over its underlying Grassmannian section, by the defining pullback square. No assertion about triviality of a general flag bundle is required. At a length-zero step the fibre is the previous fibre at the inverse-translated normalizer section.
+
+At a wall step, forgetting the final factor identifies the fibre over \(yI\) with the previous source's inverse image of \(yP_s/I\). For the shorter \(v\) of \(y,ys\), this line has the closed section \(vI\) and open root chart \(z\mapsto x_{v(a_s)}(z)vsI\). The root is positive and belongs to \(I\). Its left action on the previous source gives the actual product trivialization of the open inverse image. The two pieces are therefore
+\[
+ F_{\mathrm{prev}}(v),\qquad
+ \mathbf A^1_S\times_SF_{\mathrm{prev}}(vs).
+ \tag{C.28.4}
+\]
+This is C.26.4's integral fibre recurrence, and is valid whether or not the total word is reduced. Inductively insert their closed filtrations, adjoining the whole closed piece to each closed stage in the open piece.
+
+When forgetting a flag, the inverse image of a normalizer Grassmannian endpoint \(t^\nu\) is the pullback over its finite flag fibre \(t^\nu G/B\). Choose the finite Borel by the signs of \(\nu+\epsilon\gamma\), as in The Mirković–Vilonen theorem: identifying the dual group, Lemma C.2.1.1. Its root sections \(v(z)\) have conjugates
+\(t^\nu v(z)t^{-\nu}\in I\).
+They fix the Grassmannian endpoint, since conjugating back gives an integral loop. Hence their left action identifies the source above each of these relative flag cells with that affine cell times the source's fibre at the corresponding affine-flag normalizer endpoint. All these fibres were handled by the preceding recurrence. The finite flag closed ordering and its root sections are Automorphisms, forms and parabolic subgroups, Theorem 7.1. Inserting its finite closed stages proves the claimed Grassmannian fibre paving.
+
+Every intermediate source and map has a genuine left loop action, at sufficiently deep common finite bounds: flag insertion, right wall multiplication and right normalizer multiplication commute with that action. In particular it has the Iwahori action used in the trivializations. Over an actual Grassmannian Iwahori cell \(A_S^e\), its endpoint root section identifies a pair of chain fibres simultaneously, giving
+\[
+ (Y\times_XZ)|_{A_S^e}
+ =A_S^e\times_SF_Y(x)\times_SF_Z(x).
+ \tag{C.28.5}
+\]
+The inverse is action by the inverse section. Products of the two fibre pavings and the finite closed endpoint-cell ordering give the pair paving.
+
+We retain the scheme qualification on those closed stages. Endpoints are in finite proper word images. The allowed labels and their downward order are the integral wall and flag root-coordinate calculation: each reachable normalizer section is obtained by the closed or open wall endpoint and a finite flag normalizer, and its whole root cell factors through the proper image by the source action. On each geometric fibre these are exactly its labels. The corresponding locally closed cell immersion into an open difference of stages consequently has the full underlying image. Its defining ideal is in the nilradical and is finitely generated, so it is nilpotent, exactly as proved in C.26.4.1. Pulling these immersions to the pair space preserves nilpotence. Thus (C.28.5) yields the precise permitted filtration, without a flatness assumption on every closed image or a coproduct identity on all test-ring points. This proves all assertions. ∎
+
+#### C.28.3. The complete moving divisor-frame comparison
+
+**Theorem C.28.3.1.** Fix \(n\) and a finite collection of ordered moving induced generators, including any selected permutations of their factors. Geometric restriction compares their actual enhanced finite envelopes over \(B_n\). This includes the full moving divisor-frame action nerve, restriction to any collision partition and to the all-distinct locus, and all original proper-operation diagrams between the selected generators. The analogous complex étale–Betti comparison holds. No symmetric fusion constraint is asserted by this theorem alone.
+
+**Proof.** Put
+\[
+ f(u)=\prod_{i=1}^n(u-x_i),\qquad
+ Q_N(A)=G\bigl(A[u]/f(u)^N\bigr)
+ \tag{C.28.6}
+\]
+for a \(B_n\)-algebra \(A\). The algebra in this formula is finite free of rank \(nN\), by monic division. Expanding a finite affine presentation of \(G\) in its basis \(1,u,\ldots,u^{nN-1}\) represents \(Q_N\) by an affine finitely presented \(B_n\)-scheme, with its actual group laws.
+
+This group is smooth. A square-zero ideal \(J\subset A\) gives a square-zero quotient of the displayed finite free algebra, so formal smoothness of the affine group algebra lifts a \(G\)-point through it. Here the requisite global affine formal smoothness follows from *Formally smooth, unramified and étale ring maps*, Theorem 3.1: local standard smooth presentations give the injective conormal sequence; its differentials are finite projective on the affine smooth scheme, so that sequence splits globally. The theorem's explicit derivation correction then gives the global square-zero lift. Consequently the represented algebra of \(Q_N\) is formally smooth and finitely presented, hence smooth in the local standard form proved in that lesson's Theorem 5.1. Its tangent module is
+\(\operatorname{Lie}(G)\otimes A[u]/f^N\), of rank
+\[
+ D=nN\dim G
+ \tag{C.28.7}
+\]
+over \(A\). Thus its relative dimension over \(B_n\) is this same \(D\), including on collisions.
+
+We verify that its finite action is the actual one on the moving chain. Let a common \(f\)-pole bound \(M\) contain every required faithful frame and inverse frame, at every step of the finite diagram. The monic lattice construction of Lesson 8, Section 1, places them in a finite \(f\)-window on all parameter rings; multiplication of successive bounds gives one such \(M\). If a formal loop is \(1\pmod {f^N}\), conjugating it by such a frame gives
+\[
+ h^{-1}gh=1\pmod {f^{N-2M}}.
+ \tag{C.28.8}
+\]
+This follows entry by entry from the two pole bounds, without dividing by a difference \(x_i-x_j\). Choose \(N-2M\) at least every right congruence depth in the diagram. Since \(f\) is divisible by each \(u-x_i\), (C.28.8) kills the kernel on every flag, wall and endpoint frame quotient. Formal lifts of a jet exist successively by the just-proved square-zero lifting property; different lifts differ by this kernel. The action therefore factors through exactly \(Q_N\), with all parameter-ring identities and higher frame maps. The finite quotient action is algebraic: its coefficient operations in the finite monic window are polynomial with the same permitted unit inverses as the original frame charts.
+
+Each generator source is constructed by associating its induced smooth projective word source to the current formal frame at \(x_i\), then proceeding to the next point. The proper moving construction of Lesson 8, Section 2, gives the actual finite target and endpoint map. The associated source is smooth proper over the preceding source, since its frame torsor is smooth and its fibre is the specified smooth projective induced word. Descending its equivariant projective embedding gives properness, as in that construction. Over \(B_n\) it has relative dimension
+\(\sum_i(d_F+r_i)\), where \(r_i\) are its wall lengths. Its dimension over \(S\) is therefore
+\[
+ R_Y=n+nd_F+\sum_i r_i.
+ \tag{C.28.9}
+\]
+The original unshifted moving-generator coefficient has shift \(\alpha_Y=\sum_i r_i\). Thus every selected \(n\)-factor generator has the same deficit
+\(R_Y-\alpha_Y=n(1+d_F)\).
+Adding the common moving base shift \([n]\), when desired for IC normalization, changes none of their mapping objects.
+
+Stratify \(B_n\) by exact collision partitions. For a partition with \(k\) blocks, the stratum is an actual copy of \(U_k\): coordinates in each block are equal, and all differences between blocks are invertible. Order partitions by number of blocks. Unions of the closed partial diagonals with at most \(k\) blocks are closed, and their differences are these finitely many disjoint strata. The equations are the integral equalities already treated in C.28.1.
+
+On a partition stratum, the Chinese remainder theorem identifies (C.28.6) with
+\[
+ \prod_{\text{blocks }C}J_{N|C|}G.
+ \tag{C.28.10}
+\]
+Indeed \(f^N\) becomes the product of the relatively prime powers
+\((u-x_C)^{N|C|}\).
+This identity includes every parameter algebra on that stratum. The same completion splitting and the all-ring gluing equivalence separate the moving source into one same-point flag/wall chain for each block, in the original order within that block. Modifications in different blocks commute by that actual gluing equivalence. Translation supplies the fixed parameter \(u-x_C\), so these are products over the configuration stratum, not merely fibre descriptions.
+
+C.28.2 therefore gives the relative affine pair filtrations of any two selected moving sources on that stratum. The group in (C.28.10) has the toric-cell filtration of C.27.2.1. At nerve level \(q\) their product pair is
+\(Q_N^q\times_{B_n}(Y\times_XZ)\).
+Its partition differences consequently have finite filtrations by \(U_k\) times affine and multiplicative cells. Insert their finite closed stages into the partition ordering. A closed stage in an open difference becomes closed in the whole space after adjoining its preceding closed boundary, because its complement is open. Possible nilpotent stage immersions are those of C.28.2 and remain nilpotent under these pullbacks. This verifies the exact larger-filtration hypothesis of C.28.1 for every level pair correspondence.
+
+The smooth level sources have dimensions \(qD+R_Y,qD+R_Z\) over \(S\), but shifts \(\alpha_Y,\alpha_Z\). Since their shift deficit is common, the relative trace adjunction of C.26.2 gives
+\[
+ \operatorname{RHom}_{X_q}(B_{Y,q},B_{Z,q})
+ \simeq
+ D_EK_{\,Q_N^q\times_{B_n}(Y\times_XZ)}
+ [-2qD-R_Y-R_Z](-qD-R_Z).
+ \tag{C.28.11}
+\]
+Equivalently its unshifted adjunction has shift
+\(-2(qD+R_Z)+\alpha_Z-\alpha_Y\), which is the same integer. C.28.1 supplies the actual compact comparison and perfect complete coefficient models on the right. Evaluation and relative trace identify the actual forward restriction with the dual of the inverse compact comparison, exactly (C.26.9). Hence actual mapping comparison holds at every nerve level.
+
+All those maps are the original inverse-image, proper, multiplication and identity comparisons; thus their entire cosimplicial diagrams compare. For coefficient totalization, choose a common fibre-dimension bound \(d_C\) of \(Y\times_XZ\) over \(S\), from the finitely many partition-cell dimensions. The level pair has bound \(qD+d_C\). Formula (C.28.11) has no cohomology below \(R_Y+R_Z-2d_C\), independently of \(q\). The finite-window, Mittag–Leffler completion and exact localization proof of C.26.3 applies. Derived totalization proves the genuine divisor-frame mapping comparison. Finite cones in both variables and coherent retracts extend it to the stated enhanced envelopes. Every fibre generator is the actual restriction of its family generator; full faithfulness lifts the finite construction and gives essential surjectivity onto that fibre generator envelope.
+
+The same proof on a selected partition, or the all-distinct open part, uses its configuration-times-toric compact model and the same relative adjunction. On a \(k\)-block partition replace \(R_Y\) by \(R_Y-n+k\); its shift deficit becomes \(k+nd_F\), still common to all selected \(n\)-step sources. Its group dimension \(D\) remains (C.28.7). Restriction of the whole family diagram commutes with these scheme maps by actual base-change naturality, so it retains all the stated restriction and proper-operation diagrams.
+
+On the complex fibre, the compact comparison for an arrangement complement uses the same finite closed-cover complex (C.28.3), projective-line affine compact models and localization. Their maps are the actual comparisons of C.25.1, so it proves the Betti version of C.28.1 as well. The moving-source proper comparison is an equivalence on every geometric stalk: on a collision partition its endpoint fibre is the product of the same-point chain fibres of C.28.2, with their actual affine pavings. Proper base change and C.25.1 compare those fibres. This identifies the Betti generator with the original ordinary moving endpoint image.
+
+We also check trace when a smooth moving source itself has not been given a toric paving. Over a geometric field the smooth exceptional formula of C.26 and its compact adjunction identify the dual of its top compact group with its degree-zero ordinary constant-coefficient group, one coefficient line per connected component. With \(O_n\), the self-injective coefficient dual separates elements: a nonzero element of a cyclic submodule has a nonzero functional to the corresponding ideal of \(O_n\), and injectivity extends it to the whole module. If the dual is one finite coefficient line, the module therefore injects into its finite double dual and is finite. Biduality on finite cyclic summands of the principal Artin ring then gives that same top coefficient line. The classical smooth orientation and compact adjunction proved in C.25.2.2 give these same top lines on the complex manifold. A supported point class is their trace-one generator: the actual positive Kummer boundary and local complex orientation comparison is C.25.2.1, and the chart transitivity and trace counit preserve its normalization. Naturality sends that class to the analytic supported point class. A finite coefficient derived trace to \(O_n[-2d]\) is determined by this top group, using the self-injective dual; thus the original trace diagrams compare on every connected component. Taking compatible complete models and then localizing gives the same rational trace comparison. This does not assume a paving or general proper Betti theorem for that smooth source.
+
+The level pair filtrations, whose compact objects are perfect, now give C.25's trace-normalized inverse-dual Hom comparison, with the shifts in (C.28.11). Full divisor-frame totalization and finite coherent constructions finish the Betti assertion. This proves a comparison of the actual moving generator diagrams. Turning its permutation maps into the symmetric fusion comparison still requires identifying the actual moving IC coefficients and their full fusion diagram. ∎
+
+![Configuration compact support uses the actual diagonal complex; collision flag/wall fibres give pair filtrations; the moving divisor-frame nerve retains longer jets at collisions and the correct Hom shifts](assets/moving-generators.png)
+
+Theorem C.28.1.1 proves the configuration compact comparison without a toric paving assumption. Theorem C.28.2.1 proves the actual flag/wall chain fibre and pair filtrations. Theorem C.28.3.1 compares the complete moving frame and partition-restriction diagrams with their relative dimensions. Editable SVG source.
+
+#### C.28.4. Two configuration and frame calculations
+
+**Exercise C.28.4.1.** Compute the compact cohomology of \(U_3\). Explain why a toric-cell paving cannot replace the diagonal-arrangement argument in C.28.1.
+
+**Solution.** The coordinates
+\[
+ (x_1,\delta=x_2-x_1,\tau=(x_3-x_1)/\delta)
+ \tag{C.28.12}
+\]
+give the all-ring isomorphism
+\(U_3=\mathbf A^1\times\mathbf G_m\times(\mathbf A^1\setminus\{0,1\})\).
+The punctured line has compact groups \(E^2\) in degree one and \(E(-1)\) in degree two: in the projective-line localization complex, quotient the three point classes by their diagonal unit. Multiplying by the affine and multiplicative compact complexes gives
+\[
+ H_c^4(U_3,E)=E(-1)^2,\quad
+ H_c^5(U_3,E)=E(-2)^3,\quad
+ H_c^6(U_3,E)=E(-3),
+ \tag{C.28.13}
+\]
+and zero otherwise.
+
+In fact over an algebraic closure of a finite field, \(U_3\) has no finite paving by affine-times-multiplicative cells. If it did, its finitely many closed stages and cell isomorphisms would descend to one finite field. Counting points over all its finite extensions would give the polynomial identity
+\[
+ q(q-1)(q-2)=\sum_{\text{cells}}q^a(q-1)^b.
+\]
+There are infinitely many such \(q\), so this is an identity of integer polynomials. At a real \(q\) strictly between one and two the left side is negative and every right summand is positive. This is impossible. The actual point count on the left merely chooses three distinct field elements; no cohomological trace theorem was used in this obstruction. The finite closed-cover calculation proves the needed compact comparison nonetheless.
+
+**Exercise C.28.4.2.** For \(G=\mathbf G_m\), \(n=2\), \(N=1\), compute the all-ring frame group \(Q_1\) and its distinct-point and collision restrictions.
+
+**Solution.** Write \(f(u)=(u-a)(u-b)\). An element of \(A[u]/f\) is \(c_0+c_1u\). Its multiplication matrix has determinant
+\[
+ (c_0+c_1a)(c_0+c_1b).
+ \tag{C.28.14}
+\]
+It is a unit exactly when this determinant is a unit: an invertible multiplication matrix sends its inverse image of \(1\) to a multiplicative inverse, and the converse is immediate. Thus \(Q_1\) is the determinant-open part of the two-dimensional coefficient affine space over \((a,b)\), and is smooth of relative dimension two.
+
+When \(a-b\) is invertible, evaluation at \(a,b\) gives \(\mathbf G_m^2\), with its actual Chinese remainder inverse. When \(a=b\), put \(t=u-a\). Units of \(A[t]/t^2\) are uniquely \(r(1+vt)\), \(r\in A^\times\), \(v\in A\). Their multiplication is \((r,v)(r',v')=(rr',v+v')\), so the collision group is \(\mathbf G_m\times\mathbf G_a\). Both have dimension two. Replacing the whole moving group by a constant two-dimensional torus would therefore discard the actual collision group and its complete nerve.
+
+### C.29. Actual complex fusion and its coherent symmetric enhancement
+
+We use finite \(E/\mathbf Q_\ell\) first. The geometric group in this section is the loop group \(G\), with its complete finite divisor-frame nerves. The moving curve is the affine line with its specified coordinate. Its existence gives an actual moving functor on the \(G\)-equivariant derived category: the chain coefficient descends through the \(G\)-frame torsors of Convolution and rigidity, A.4, and Fusion and the commutativity constraint, C.1. Coordinate equivariance of a perverse input is available for the intrinsic curve description in Lesson 8. It is not used to claim that every derived \(G\)-equivariant morphism lifts to the category with a rotation action.
+
+Write \(\mathcal C_a,\mathcal C_s,\mathcal C_c\) for the enhanced finite spherical envelopes on the arithmetic geometric fibre, over the strict arithmetic trait, and on the complex geometric fibre. The middle notation refers to the generator envelope, rather than to a perverse heart over the trait. The actual restriction and comparison functors give
+\[
+ \mathcal C_a\ \xleftarrow{\,r_a\,}\ \mathcal C_s\
+ \xrightarrow{\,r_c\,}\ \mathcal C_c.
+ \tag{C.29.1}
+\]
+C.27 proves that both arrows are enhanced equivalences with their original ordered convolution, associators and units. The complex right arrow includes the actual étale–Betti comparison. We retain these particular functors throughout.
+
+#### C.29.1. The moving IC objects, including their strict extension tests
+
+**Theorem C.29.1.1.** Let \(P_1,\ldots,P_n\) be spherical IC objects, or finite perverse convolution words in them, and take their corresponding objects through (C.29.1). Their actual moving endpoint coefficients on the affine line correspond through C.28.3, with the common shift \([n]\). On each geometric fibre they are the intermediate extensions of their all-distinct external products. Comparison retains their ordinary and exceptional stratum restrictions and the strict boundary inequalities.
+
+**Proof.** For fixed finite supports, take the moving chain with its specified away frame. The coefficient on it is constructed on the finite frame charts as the external product of the \(n\) input coefficients; the transition maps are their genuine \(G\)-actions. The original action cocycles and frame refinements provide the entire descent diagram. This gives a multilinear exact enhanced functor, followed by the proper endpoint image. Exactness means that in each input it retains finite cofibres, shifts and coherent retracts. It follows directly from exact external tensor over the field \(E\), exact derived inverse image, descent and exact derived proper image. Neither the definition nor this verification involves lifting an arbitrary morphism through a coordinate-forgetting functor.
+
+C.27 expresses each input as a coherent finite construction from induced wall-word generators. Apply the moving functor to these constructions one variable at a time. Its resulting objects and maps lie in the enhanced envelope of precisely the moving induced generators in C.28.3. That theorem compares the original coefficient descent, proper endpoint image and the whole divisor-frame nerve. Thus the moving object of corresponding inputs corresponds as an enhanced object, rather than merely having isomorphic stalk groups. It also corresponds on the all-distinct locus and on every selected collision partition. Adding the same base shift \([n]\) gives the normalized objects \(F_n\).
+
+We check the perverse assertions without assuming that every finite construction on a configuration space is constant. Choose the finite stratification by collision partitions and endpoint root cells on each block. A stratum is a configuration space \(U_k\) times the finite product of these cells. The Chinese remainder and root-section identifications of C.28.3 and C.28.2 identify the ordinary restriction of a moving generator with the actual constant compact coefficient of its paved endpoint fibre, with its original shift. Proper base change identifies the map defining this restriction. C.26.1 and C.28.3 compare this coefficient and its geometric and Betti restrictions. This proves comparison of the restriction functors on generators. Exactness, and coherent retracts in the source and target, extend that comparison to the finite envelope. It does not replace the resulting complexes on \(U_k\) by constant complexes: for example a cone using a positive-degree class of \(U_k\) can retain a nontrivial local system.
+
+The exceptional restriction comparison follows from actual duality. On a smooth moving source \(Y\) of dimension \(R_Y\) over the trait, its shifted constant coefficient \(E_Y[\alpha_Y]\) has relative dual
+\[
+ D_Y(E_Y[\alpha_Y])
+   =E_Y[2R_Y-\alpha_Y](R_Y).
+ \tag{C.29.2}
+\]
+Proper dual exchange therefore identifies the dual of its endpoint generator with that generator shifted by \(2(R_Y-\alpha_Y)\) and twisted by \(R_Y\). Evaluation, rather than an unspecified isomorphism, defines this identification. The relative trace comparison in C.28.3 preserves that evaluation on the geometric fibres and on the complex manifold. Hence duality compares on generators and, contravariantly, on every finite cofibred construction and coherent retract. For a stratum immersion \(i\), the identity
+\(i^!D=D i^*\) follows from the compact adjunction and projection formula as in C.26.4. Its evaluation diagram is retained. On the smooth stratum, the duality of the constant restricted generators is its original smooth orientation; C.28.3 compares this orientation and trace. The ordinary restriction comparison applied to dual generators consequently proves the exceptional restriction comparison as well. These arguments are statements about functors and their evaluations, so remain valid for the nonconstant finite constructions just mentioned.
+
+On the arithmetic geometric fibre, Fusion and the commutativity constraint, Theorem C.2.1.1, proves that \(F_n\) is perverse and is the strict intermediate extension of its all-distinct product. Its proof supplies both inequalities: on a partition with \(k\) blocks, of codimension \(c=n-k\), ordinary perverse restriction is in degrees at most \(-c\), and exceptional perverse restriction in degrees at least \(c\). The inputs on the complex fibre are their actual IC objects by C.27's two IC restriction tests. Comparison of ordinary and exceptional stratum functors preserves the vanishing groups defining these inequalities. Thus they hold for the actual complex moving object as well. On the open part its coefficient is the actual independent external product, by disc gluing. The closed-open intermediate-extension criterion proved in Fusion and the commutativity constraint, A.1.2.1, now identifies the complex object as that product's intermediate extension. Finite perverse convolution words are allowed because Lesson 7 proves their perversity and the same moving proof applies to those perverse inputs. This proves every assertion. ∎
+
+#### C.29.2. Comparison of the geometric permutation components
+
+**Theorem C.29.2.1.** On the IC and perverse convolution-word objects, the components of the arithmetic fusion permutations compare with the actual complex geometric fusion permutations. This includes all partial-diagonal regroupings, their further collisions, their supported maps, and the component parity correction. This assertion identifies the components of the constraints; their full enhanced naturality is supplied separately in C.29.3.
+
+**Proof.** Fix finitely many inputs, permutations and partition maps occurring in a desired diagram. Include their permuted moving chains among the finite collection of generators. The objects constructed in C.29.1 lie in their envelope. A permutation also pulls back the base \(B_n\) by the actual coordinate permutation; it carries \(f(u)=\prod_i(u-x_i)\) and its complete frame group to that of the permuted chain. C.28.3 applies to this pullback diagram.
+
+Full faithfulness of its actual arithmetic restriction equivalence lifts each arithmetic moving fusion component, with all compositions in this selected diagram, to the trait envelope. More explicitly, an equivalence induces an equivalence on the mapping spaces of the finite diagram; the fibre over its specified map, homotopy or iterated homotopy is contractible. This allows us to lift the diagram itself, retaining its given identifications. It is not an assertion that an enhanced space of natural transformations between all functors is contractible.
+
+Restrict this lift to \(U_n\). The proper and open restriction squares of C.28.3 commute as their original functor squares. On \(U_n\), independent-disc gluing defines the actual external permutation of coefficients, with the ordinary derived Koszul sign. Its arithmetic restriction is the external permutation of the arithmetic inputs. Full faithfulness of the *open* comparison therefore identifies the restricted lift with that actual external permutation over the trait. Its complex restriction is consequently the actual complex external permutation, with the same sign.
+
+C.29.1 identifies source and target of the complex moving map as intermediate extensions. The intermediate-extension functor on the perverse heart is fully faithful on morphisms of its open objects: a kernel or cokernel supported on the closed boundary would be a forbidden subobject or quotient, by the same closed-open criterion; existence and the image construction are proved in Fusion and the commutativity constraint, A.1.2.1. Hence a map extending the specified external permutation is unique. The compared component is exactly the complex geometric fusion component. This uses uniqueness of a degree-zero perverse map to identify that component, without drawing a conclusion about all enhanced natural transformations.
+
+For a partition \(\pi\) with \(k\) blocks, put \(c=n-k\), order blocks by their least labels, and preserve order within each block. The proper and supported comparisons of C.28.3 retain the actual diagonal maps in Fusion and the commutativity constraint, Theorem C.3.1.1:
+\[
+ i_\pi^*F_n[-c]=F_k\bigl(*_{i\in\pi_1}P_i,\ldots,
+                              *_{i\in\pi_k}P_i\bigr),\qquad
+ i_\pi^!F_n[c]=F_k\bigl(*_{i\in\pi_1}P_i,\ldots,
+                              *_{i\in\pi_k}P_i\bigr)(-c).
+ \tag{C.29.3}
+\]
+That theorem is proved on the entire partial diagonal. Its supported class consists of the \(c\) independent differences of graph coordinates, and its Kummer orientation and trace compare by C.28.3. Thus the exceptional map, including its twist, compares as well. For noncontiguous blocks, the all-ring independent-disc regrouping is the original chain isomorphism, and its coefficient shuffle is the original derived external shuffle. It compares before intermediate extension. On the all-distinct block locus the lifted map is therefore the specified regrouping; the strict extension proof in Fusion and the commutativity constraint, C.3, identifies it at every further collision. It retains the supported map and its evaluation, not only the two objects in (C.29.3).
+
+Finally the correction of Fusion and the commutativity constraint, C.5–C.6, multiplies the geometric permutation on connected input components by the parity sign determined by their component labels. Those labels are the same integral coweight classes on every base: their normalizer representatives and central quotient were retained in C.26–C.28. The correction is therefore the same scalar \(1\) or \(-1\) on the lifted and compared component. With that correction the fibre functor has its ordinary symmetric constraint, as proved by the explicit cohomology shuffle computation in Fusion and the commutativity constraint, C.4–C.6. Its actual cohomology comparison is C.17 and C.22, so the normalization is retained too. This proves the stated component comparisons. ∎
+
+#### C.29.3. The full enhanced symmetric equivalence
+
+**Theorem C.29.3.1.** The actual ordered comparison (C.29.1) carries an enhanced symmetric monoidal structure on the complex finite spherical envelope. On IC objects and their perverse convolution words its symmetry is the actual corrected geometric fusion symmetry. With this enhancement it yields the symmetric monoidal equivalence
+\[
+ D^b_G(\operatorname{Gr}_{G,\mathbf C},E)
+   \ \simeq\ \operatorname{Perf}_H
+       \bigl(\operatorname{Sym}_E(\mathfrak h[-2])\bigr),
+ \tag{C.29.4}
+\]
+where the left category has finite support and the full loop-action descent of C.27, and \(H\) is the full split dual group. The equivalence sends \(\mathrm{IC}_\lambda\) to
+\(\operatorname{Sym}_E(\mathfrak h[-2])\otimes V_\lambda\).
+Its ordered convolution, associators and units are the original geometric ones.
+
+**Proof.** We first describe exactly which higher coherence is being used. C.23.4 constructs the entire arithmetic enhanced symmetric diagram on normalized convolution words: its Weil coefficient replacement, all moving proper maps, restrictions, permutation maps, block maps and their homotopies. C.23.3 applies simultaneous formality to that full diagram, and C.23.5 extends it through finite cones and coherent retracts. Thus \(\mathcal C_a\) already carries an enhanced symmetric monoidal structure on its original ordered convolution, and an enhanced symmetric equivalence to the right side of (C.29.4).
+
+An enhanced equivalence with its ordered tensor comparison has an ordered monoidal inverse. To see what this statement requires, choose inverse objects and the unit and counit equivalences. Lift its binary tensor comparison and unit through the equivalence on mapping spaces. Their associativity diagrams, and the homotopies between those diagrams, lift by that same equivalence. At each stage the space of lifts of the *specified* datum is contractible. Continue over the skeleta of the diagram of finite ordered strings; the coherent unit and counit identify the composite with the original ordered functor. This constructs the inverse with all ordered coherence, rather than choosing unrelated binary isomorphisms. This is the mapping-space construction used for the finite coherent envelopes in C.23.5.
+
+Choose such an inverse \(r_a^{-1}\) and form the ordered equivalence
+\(T=r_c r_a^{-1}:\mathcal C_a\to\mathcal C_c\).
+Transport the arithmetic symmetric structure through this ordered equivalence. Concretely, for each finite ordered string apply \(T\) to the original arithmetic operation and use its given ordered tensor comparisons to express the result in the existing complex ordered tensor product. Do this for every permutation, regrouping, unit insertion and their higher compositions. A relation between operations is carried to its specified homotopy; a relation between those homotopies is carried to its specified next homotopy. The coherent inverse identifies the composite diagram back with the original one. Hence this construction is an enhanced symmetric structure on the *existing* complex ordered tensor operation. It does not assert uniqueness of arbitrary enhanced natural-transformation spaces, or reconstruct a higher homotopy from a vanishing negative Hom group of perverse objects.
+
+For IC and perverse-word inputs the transported symmetry has exactly the compared arithmetic components. C.29.2 identifies these with the actual corrected complex fusion components, including their diagonal identifications and normalization. Thus the constructed enhanced structure extends the geometric Satake symmetry on its heart and perverse convolution words. Its enhanced naturality on all finite derived constructions comes from transport of the complete arithmetic diagram. Its ordered part remains the actual C.27 comparison, whose associator and unit come from the original finite-frame chain maps. This proves the claimed relation to the geometric tensor operation.
+
+Compose the inverse of \(T\) with C.23.5's arithmetic enhanced symmetric model. C.27 proves that the finite spherical envelope is the whole finite-support bounded spherical derived category: IC coherent retracts lie in the generator envelope, every perverse object is a finite sum of them, and its finite perverse truncation tower puts every bounded object there. This gives (C.29.4). C.23.5 identifies every IC image as the indicated free equivariant \(A\)-module, for \(A=\operatorname{Sym}_E(\mathfrak h[-2])\).
+
+The group and algebra are retained with their actual normalizations. The root lattice, central characters and full \(H\) were proved in C.18–C.22, including the central directions of \(\mathfrak h\). The graded generator map is the actual cohomology and supported cup construction in C.21–C.22. The trace-normalized comparisons in C.26–C.28 commute with these original proper, external and supported maps; C.29.2 retains their fusion normalization. Consequently composition uses this particular graded generator identification, with its actual cup classes and Kostant coordinates, before the coherent formality step. It does not replace \(H\) by its adjoint quotient or select an unrelated isomorphism of Ext ranks.
+
+This theorem concerns the loop-equivariant category on the complex Grassmannian. A derived rotation-equivariant category has an additional action nerve and is a separate object; the full coordinate comparison in C.27 remains valid on its own stated envelopes. No fully faithful coordinate-forgetting functor, nor an enhanced intrinsic construction on every uncoordinated curve, is deduced here. ∎
+
+#### C.29.4. Flat coefficient extensions and complex coefficients
+
+**Theorem C.29.4.1.** For a field extension \(E\to L\), the coefficient extension of the left side of (C.29.4), including idempotent completion, is the full finite-support \(L\)-coefficient spherical category. Its actual ordered tensor product and moving fusion components compare, so (C.29.4) extends to
+\[
+ D^b_G(\operatorname{Gr}_{G,\mathbf C},L)
+   \ \simeq\ \operatorname{Perf}_{H_L}
+       \bigl(\operatorname{Sym}_L(\mathfrak h_L[-2])\bigr)
+ \tag{C.29.5}
+\]
+with the transported enhanced symmetric structure. In particular this gives the complex-coefficient statement after choosing an embedding \(E\hookrightarrow\mathbf C\). Descent to characteristic-zero fields admitting no such \(E\)-embedding is a further requirement.
+
+**Proof.** On two induced generators, every finite group-nerve level mapping object is the shifted coefficient dual of the compact pair model of C.26–C.27. That model is a finite perfect \(E\)-complex. Its coefficient extension is its actual compact \(L\)-model, by the finite affine/projective-line and localization construction. Finite perfect dual commutes with \(E\to L\), and evaluation and trace give the same mapping map. Thus generator mapping objects compare at each level.
+
+One must check the entire action nerve before commuting coefficient extension with it. The lower bound \(L_0\) in C.26.3 is independent of the nerve degree. In a fixed total cohomological degree \(d\), levels greater than \(d+1-L_0\) contribute neither the terms nor their incoming differential relevant to that degree. The totalization truncation in that finite window computes it, by the finite-window proof there. Field extension is exact and commutes with these finite complexes. It therefore compares the full mapping objects degree by degree. This argument uses the uniform lower bound; it does not commute tensor with an arbitrary infinite product. Finite cofibres in both variables and coherent retracts then prove full faithfulness of coefficient extension on the enhanced finite envelope.
+
+Its essential image is all of the \(L\)-category. Ordinary and exceptional IC tests are the finite restriction complexes of C.27, so flat coefficient extension preserves their vanishing, their rank-one open coefficient and the strict boundary tests. It sends \(\mathrm{IC}_{\lambda,E}\) to the actual \(\mathrm{IC}_{\lambda,L}\). The IC projector used to produce it was a coherent projector over \(E\), so its extension is already in the completed image. Over \(L\), the classical semisimplicity proof of The Mirković–Vilonen theorem: identifying the dual group, Theorem 8.3, identifies every spherical perverse object as a finite sum of these IC objects tensored by finite-dimensional \(L\)-spaces. That theorem is proved over the original arbitrary characteristic-zero coefficient field, without assuming a scalar-extension equivalence of hearts. Finite perverse truncation then gives every bounded finite-support object.
+
+The same coefficient check on the ordered first-factor wall kernels of C.27 compares their actual proper and tensor operations. On each finite moving collection, C.28's configuration-times-toric pair models are again finite perfect, and its full divisor-frame nerve again has the uniform bound. The preceding finite-window argument therefore compares actual moving objects and maps after extension as well. C.29.1–C.29.2 identify the \(L\)-perverse geometric fusion components by the same strict extension tests. Extend the entire \(E\)-enhanced symmetric diagram through these exact coefficient functors, or equivalently through their ordered enhanced equivalence. Its heart components are consequently the actual \(L\)-fusion components. The free-generator model on the right extends to the displayed \(L\)-model: its finite free modules, equivariant maps, cofibres and coherent retracts are the same constructions after extension. This proves (C.29.5).
+
+For completeness, existence of an abstract \(E\)-embedding into \(\mathbf C\) does not require a continuous embedding. Both fields have cardinality the continuum. For \(\mathbf Q_\ell\), digit sequences supply this cardinality, and a finite extension has the same cardinality; the elementary expansions also give the upper bound. The real and imaginary expansions give it for \(\mathbf C\). A transcendence basis over \(\mathbf Q\) exists by maximal algebraic independence. If its cardinality is \(\kappa\), the rational-function field and its algebraic closure have cardinality \(\max(\aleph_0,\kappa)\): expressions use finitely many basis elements, and each nonzero polynomial has only finitely many roots. Since the two fields are uncountable of continuum cardinality, each such basis has continuum cardinality. Match their bases to embed the rational-function subfield of \(E\) into \(\mathbf C\).
+
+Here is also the needed algebraic closedness of \(\mathbf C\). For a nonconstant complex polynomial \(p\), its leading term gives \(|p(z)|\to\infty\). It attains a minimum on a sufficiently large closed disc. If at its minimizer \(z_0\) the value \(c\) were nonzero, write
+\(p(z_0+w)/c=1+aw^m+O(|w|^{m+1})\) with \(a\ne0\) and \(m\ge1\).
+Choose the argument of \(w\), of small modulus \(r\), so \(aw^m=-|a|r^m\). The remainder is bounded by \(Cr^{m+1}\), giving
+\(|p(z_0+w)/c|\le1-|a|r^m+Cr^{m+1}<1\).
+This contradicts minimality. Thus every nonconstant polynomial has a root; division and induction split it. The compact-disc minimum used here follows directly from sequential compactness in \(\mathbf R^2\): a minimizing sequence has a convergent subsequence and continuity gives its limit value.
+
+Finally order the extensions of the rational-function embedding to intermediate algebraic subfields of \(E\). Unions of chains remain embeddings. A maximal one has domain all of \(E\), since otherwise an omitted algebraic element has a minimal polynomial whose transported polynomial has a root in \(\mathbf C\); quotienting by that irreducible polynomial extends the embedding. This proves the asserted abstract embedding and the complex-coefficient consequence. It supplies no descent to, for example, \(\overline{\mathbf Q}\), which cannot contain \(\mathbf Q_\ell\) since it is countable. The complete characteristic-zero tensor descent remains to be proved. ∎
+
+![The original ordered comparison retains geometric convolution; strict moving extension identifies the geometric permutation components, while the entire arithmetic diagram supplies enhanced coherence; diagonal normalizations retain their supported maps](assets/coherent-complex-fusion.png)
+
+Theorem C.29.1.1 compares the actual moving IC objects and strict extension tests. Theorem C.29.2.1 identifies geometric permutation and supported partial-diagonal components. Theorem C.29.3.1 retains the entire higher coherence through the original ordered equivalence; Theorem C.29.4.1 proves flat coefficient extensions. Exercise C.29.5.1 computes the negative-degree diagonal compatibility datum. Editable SVG source.
+
+#### C.29.5. Two coherence and diagonal calculations
+
+**Exercise C.29.5.1.** Let \(A=E[u]\), with \(|u|=2\) and zero differential. Compute the derived diagonal endomorphism complex
+\(\operatorname{RHom}_{A\otimes A}(A,A)\).
+Explain why discrete negative-degree maps between perverse word objects cannot by themselves justify discarding all higher coherence.
+
+**Solution.** Write \(A^e=E[u_l,u_r]\), and use its free graded resolution
+\[
+ K=A^e\otimes\Lambda(\epsilon),\qquad
+ |\epsilon|=1,\qquad d\epsilon=u_l-u_r.
+ \tag{C.29.6}
+\]
+The differential has degree one. Multiplication by \(u_l-u_r\) is injective in the polynomial ring, so the augmentation \(K\to A\) is a quasi-isomorphism: its surviving quotient is exactly \(u_l=u_r=u\). The two-stage free filtration makes \(K\) an appropriate derived free resolution. Applying \(\operatorname{Hom}_{A^e}(-,A)\) gives
+\[
+ \operatorname{RHom}_{A^e}(A,A)
+     =A\oplus A\theta,\qquad |\theta|=-1,\qquad d=0.
+ \tag{C.29.7}
+\]
+The differential becomes zero because \(u_l-u_r\) acts by zero on the diagonal. In particular its cohomology in degree \(-1\) is \(E\theta\), nonzero, although \(H^{<0}(A)=0\). The diagonal adds compatibility with the algebra action; it is not the plain underlying generator endomorphism complex. An enhanced compatibility problem can therefore retain a higher datum even when the objectwise mapping spaces used to identify perverse components are discrete. C.29.3 retains the already constructed arithmetic coherent diagram and transports it through an enhanced equivalence; C.29.2 uses perverse uniqueness only for the component identification.
+
+**Exercise C.29.5.2.** For three inputs, compare first identifying labels \(1,3\) and then colliding that block with label \(2\), with imposing the full diagonal at once. Compute the total ordinary shift, exceptional shift and twist. Compute the open coefficient shuffle needed to put the noncontiguous block first.
+
+**Solution.** The first partition has two blocks, so \(c_1=1\); the next has one block, so \(c_2=1\). Ordinary restriction in (C.29.3) has total normalization \([-2]\). Exceptional restriction has total normalization \([2]\) and twist \((-2)\), the two trace-one normal orientations. The full diagonal has codimension two and gives exactly these same integers. Its independent equations may be chosen \(x_3-x_1,x_2-x_1\). Their successive supported cup and trace are the composite supported class, as in Fusion and the commutativity constraint, C.3, including its actual transitivity map.
+
+For homogeneous open coefficients of degrees \(a,b,c\), regrouping the ordered list \((1,2,3)\) into \((1,3,2)\) crosses only the second and third factors and gives sign \((-1)^{bc}\). Independent-disc gluing supplies this actual shuffle before any collision. The corrected symmetry further supplies the same component-parity factor as Fusion and the commutativity constraint, C.5, when the indicated factors are in specified components. Both paths retain that shuffle and the supported composition. Once the intermediate extensions and their actual supported maps are identified, (C.29.3) agrees on further collisions. Matching the integers alone would not have checked the shuffle or the supported map.
+
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. Geometric specialization from the arithmetic fibre, spherical induction and moving fusion, descent of full symmetric tensor coherence to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
+The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. C.26 proves actual arithmetic-trait specialization of the rootwise enhanced generator diagram: perfect constant compact objects, trace-normalized Hom comparison, the complete action nerve with its coefficient bound, integral pair pavings, both IC perverse tests and ordered wall operations. C.27 proves the genuinely spherical enhanced comparison by the actual flag unit projection and induced root-word retractions. It retains the full coordinate semidirect action and every nerve level, and compares ordered associative convolution with its original kernels, units and full-frame coherences. C.28 proves configuration-arrangement compact constants, same-point flag/wall chain fibre and pair filtrations, and the actual moving enhanced generator comparison. Its complete divisor-frame nerve retains longer jets on collisions, the uniform coefficient bound, and every selected partition and all-distinct restriction diagram. C.29 identifies the actual complex moving IC objects and corrected geometric fusion components, retains supported maps on every partial diagonal, and proves the complex enhanced symmetric comparison by transport of the complete arithmetic coherent diagram through the actual ordered equivalence. It also proves flat field extensions, including complex coefficients after an abstract embedding. Descent of the full symmetric tensor structure to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
 
 Free further reading:
 

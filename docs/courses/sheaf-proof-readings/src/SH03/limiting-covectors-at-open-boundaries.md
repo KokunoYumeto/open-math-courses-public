@@ -2,7 +2,7 @@
 
 Extending a sheaf across an open boundary can create singular directions. The new direction need not be the sum of two convergent covectors: their bases may approach one another while their lengths tend to infinity. We first isolate the error estimate that makes such cancellation meaningful. We then move the boundary into the region where the sheaf is already defined, pass to the actual extension functors, and finally treat the trace across a missing submanifold.
 
-Let \(k\) be a commutative ring and let the manifolds be finite dimensional, Hausdorff and countable at infinity. All complexes in the extension and trace statements belong to \(D^+(k_X)\) or the indicated open subspace; they are bounded below, and their stalk modules need not be finite or perfect. Smooth charts suffice, and the coordinate estimates below are invariant under \(C^2\) changes. We use the noncharacteristic extension bounds and uniform directional localization, the two extension-continuity calculations, and the proper-image and closed-embedding support tests. Each has its proof in the linked reading.
+Let \(k\) be a commutative ring and let the manifolds be finite dimensional, Hausdorff and countable at infinity. All complexes in the extension and trace statements belong to \(D^+(k_X)\) or the indicated open subspace; they are bounded below, and their stalk modules need not be finite or perfect. Smooth charts suffice, and the coordinate estimates below are invariant under \(C^2\) changes. We use the [noncharacteristic extension bounds and uniform directional localization](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#noncharacteristic-open-boundaries), the [two extension-continuity calculations](../../SH03-small-balls-central-fibres-and-supported-cohomology.html#extension-continuity-proof), and the [proper-image and closed-embedding support tests](../../SH03-small-balls-central-fibres-and-supported-cohomology.html#proper-image-microsupport-proof). Each has its proof in the linked reading.
 
 ## Cancellation with a controlled base error {#limiting-sum-sequences}
 
@@ -36,7 +36,7 @@ The last summand has norm at most \(C|x_n-y_n||\alpha_n|\), hence tends to zero.
 
 ## Inward directions and the two signs {#inward-directions}
 
-For an open set \(\Omega\), an inward direction at \(x\) is a vector having an open cone of nearby directions whose sufficiently short translations take nearby points of \(\Omega\) into \(\Omega\). Denote the open convex cone of these directions by \(D_x(\Omega)\). This is the local translation definition proved in the boundary-cone calculation. Its positive polar is
+For an open set \(\Omega\), an inward direction at \(x\) is a vector having an open cone of nearby directions whose sufficiently short translations take nearby points of \(\Omega\) into \(\Omega\). Denote the open convex cone of these directions by \(D_x(\Omega)\). This is the local translation definition proved in the [boundary-cone calculation](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#noncharacteristic-open-boundaries). Its positive polar is
 
 \[
 N_x^*(\Omega)=\{\eta:\langle w,\eta\rangle\geq0
@@ -176,7 +176,7 @@ j_{t,s!}(F|_{\Omega_{t,s}}),&\epsilon=-1.
 \tag{L15}
 \]
 
-At every relevant relative boundary point, \(F\) is defined on a neighborhood, because \(\overline{\Omega_{t,s}}^{\,Z_s}\subset\Omega\). The pointwise noncharacteristic estimates therefore apply to this actual local ambient complex. The first line of (L10) supplies their hypothesis; the second excludes the chosen covector window. At interior points the same exclusion follows by adding the zero normal. Outside the relative closure the extension vanishes. Thus
+At every relevant relative boundary point, \(F\) is defined on a neighborhood, because \(\overline{\Omega_{t,s}}^{\,Z_s}\subset\Omega\). The [pointwise noncharacteristic estimates](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#noncharacteristic-open-boundaries) therefore apply to this actual local ambient complex. The first line of (L10) supplies their hypothesis; the second excludes the chosen covector window. At interior points the same exclusion follows by adding the zero normal. Outside the relative closure the extension vanishes. Thus
 
 \[
 \operatorname{SS}(K_t)\cap((V\cap Z_s)\times W)=\varnothing
@@ -184,7 +184,7 @@ At every relevant relative boundary point, \(F\) is defined on a neighborhood, b
 \tag{L16}
 \]
 
-For ordinary extension, first choose a closed pointed cone \(C'\) such that \(\xi_0\in\operatorname{Int}(C')^-\) and \((C')^-\setminus\{0\}\subset\mathbb R_{>0}W\), where the negative polar means \(\langle c,\eta\rangle\leq0\). Such a cone is the negative polar of a sufficiently narrow closed covector cone about \(\xi_0\); the bipolar theorem and a strict angular margin give the stated properties. Conicity converts (L16) into avoidance on the entire interior negative polar. Let \(\iota:Z_s\hookrightarrow E\) be inclusion in the full coordinate vector space and set \(\widetilde K_t=R\iota_*K_t\). These are one coherent full-chart tower, agreeing with \(K_t\) on \(Z_s\). Use uniform directional localization to choose one relatively compact lens \(S\), with \(x_0\in\operatorname{Int}S\) and \(\overline S\subset V\cap Z_s\), such that
+For ordinary extension, first choose a closed pointed cone \(C'\) such that \(\xi_0\in\operatorname{Int}(C')^-\) and \((C')^-\setminus\{0\}\subset\mathbb R_{>0}W\), where the negative polar means \(\langle c,\eta\rangle\leq0\). Such a cone is the negative polar of a sufficiently narrow closed covector cone about \(\xi_0\); the bipolar theorem and a strict angular margin give the stated properties. Conicity converts (L16) into avoidance on the entire interior negative polar. Let \(\iota:Z_s\hookrightarrow E\) be inclusion in the full coordinate vector space and set \(\widetilde K_t=R\iota_*K_t\). These are one coherent full-chart tower, agreeing with \(K_t\) on \(Z_s\). Use [uniform directional localization](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#uniform-directional-localization) to choose one relatively compact lens \(S\), with \(x_0\in\operatorname{Int}S\) and \(\overline S\subset V\cap Z_s\), such that
 
 \[
 Rq_{C'*}\mathcal L_S\widetilde K_t=0
@@ -203,7 +203,7 @@ Rj_*F|_{Z_s}\simeq\operatorname{holim}_n K_{t_n}.
 
 All these objects have the common lower bound of \(F\). The right adjoint \(\iota_*\) preserves injectives and products, because its left adjoint is exact. The same bounded-below injective product-and-fibre calculation as P17 consequently gives \(\operatorname{holim}_n\widetilde K_{t_n}\simeq R\iota_*(Rj_*F|_{Z_s})\). Applying P17 to the fixed functor \(Rq_{C'*}\mathcal L_S\) and this coherent tower carries (L17) through the limit. Its value is zero. The localized limit agrees with \(Rj_*F\) near \(x_0\), and \(\xi_0\in\operatorname{Int}(C')^-\); the cone-to-support-test implication therefore excludes \((x_0;\xi_0)\). This uses one vanishing localized object before taking products, not an interchange of a stalk with arbitrary products.
 
-For extension by zero, use the uniform compact-cap theorem on (L16). It supplies a single cap geometry, with compact cap \(K_x\) and closed base \(L_x\) inside \(V\cap Z_s\), for every vertex \(x\) near \(x_0\), such that
+For extension by zero, use the [uniform compact-cap theorem](../../SH03-small-balls-central-fibres-and-supported-cohomology.html#uniform-compact-cap-proof) on (L16). It supplies a single cap geometry, with compact cap \(K_x\) and closed base \(L_x\) inside \(V\cap Z_s\), for every vertex \(x\) near \(x_0\), such that
 
 \[
 H^q(K_x;K_t)\xrightarrow{\sim}H^q(L_x;K_t)
@@ -211,7 +211,7 @@ H^q(K_x;K_t)\xrightarrow{\sim}H^q(L_x;K_t)
 \tag{L19}
 \]
 
-By J2, the direct limits of the two sides along \(t_n\downarrow0\) are the corresponding groups of \(j_!F\). These identifications commute with the actual cap-to-base restriction map, since both are made using compact supports and extension by zero. Exactness of filtered colimits preserves the isomorphism. The converse cap test now excludes \((x_0;\xi_0)\) from \(\operatorname{SS}(j_!F)\). This proves the second estimate directly, without using biduality to impose a finiteness condition.
+By J2, the direct limits of the two sides along \(t_n\downarrow0\) are the corresponding groups of \(j_!F\). These identifications commute with the actual cap-to-base restriction map, since both are made using compact supports and extension by zero. Exactness of filtered colimits preserves the isomorphism. The [converse cap test](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#compact-cap-converse) now excludes \((x_0;\xi_0)\) from \(\operatorname{SS}(j_!F)\). This proves the second estimate directly, without using biduality to impose a finiteness condition.
 
 ## Adding a full conormal {#full-conormal-sequence}
 
@@ -329,7 +329,7 @@ R\beta_*Rk_*G\simeq Rj_*F|_W,
 \tag{L29}
 \]
 
-In the second comparison \(R\beta_*=R\beta_!\) by properness; \(\beta k=jh\), and the diffeomorphism \(h\) cancels its inverse image. These are the actual composition maps supplied in the proper-support proof, not a fibre substitution for the nonproper map \(j\).
+In the second comparison \(R\beta_*=R\beta_!\) by properness; \(\beta k=jh\), and the diffeomorphism \(h\) cancels its inverse image. These are the actual composition maps supplied in the [proper-support proof](../../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html), not a fibre substitution for the nonproper map \(j\).
 
 Apply (L14) on \(B_W\). At the hypersurface \(D\), either signed half-normal is contained in \(T_D^*B_W\), so the microsupport of each extension in (L29) is bounded there by \(\operatorname{SS}(G)\widehat+T_D^*B_W\). The proper-image microsupport theorem implies that an ambient covector \((0,z_0;a_0,b_0)\) in either left side of (L27) has a lift, for some \(\theta_0\), satisfying
 
@@ -360,7 +360,7 @@ i_*i^{-1}Rj_*F\xrightarrow{+1}.
 \tag{L32}
 \]
 
-The first map is the adjunction map corresponding to the identity of \(F\); the second is restriction to the closed submanifold. The triangle inequality for microsupport bounds the third term by the union of the first two. Since it is supported on \(M\), the ambient estimates apply everywhere it can have microsupport. The exact closed-embedding formula identifies its microsupport with \(\rho^{-1}\operatorname{SS}(i^{-1}Rj_*F)\). The surjective map \(\rho\), (L21), and (L25) give the final trace bound. If \(M\) is empty there is no boundary to estimate, and the trace complex is zero.
+The first map is the adjunction map corresponding to the identity of \(F\); the second is restriction to the closed submanifold. The triangle inequality for microsupport bounds the third term by the union of the first two. Since it is supported on \(M\), the ambient estimates apply everywhere it can have microsupport. The [exact closed-embedding formula](../../SH03-small-balls-central-fibres-and-supported-cohomology.html#closed-embedding-microsupport-proof) identifies its microsupport with \(\rho^{-1}\operatorname{SS}(i^{-1}Rj_*F)\). The surjective map \(\rho\), (L21), and (L25) give the final trace bound. If \(M\) is empty there is no boundary to estimate, and the trace complex is zero.
 
 ## Products, restriction, and the limiting sum {#limiting-tensor-estimate}
 
@@ -379,7 +379,7 @@ F\in D^{[a,b]}(k_X),\quad G\in D^{[c,e]}(k_Y).
 \tag{Q1}
 \]
 
-The finite flat replacement gives a flat model for \(F\) in degrees \([a-d,b]\). Inverse image preserves flatness: its stalks are the corresponding original flat stalks. Tensoring with a bounded representative for the second factor therefore gives
+The [finite flat replacement](../../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#finite-flat-models) gives a flat model for \(F\) in degrees \([a-d,b]\). Inverse image preserves flatness: its stalks are the corresponding original flat stalks. Tensoring with a bounded representative for the second factor therefore gives
 
 \[
 F\boxtimes^L G\in D^{[a+c-d,b+e]}(k_{X\times Y}),
@@ -400,7 +400,7 @@ R\Gamma(Q;(F\otimes_k^L M_E)|_Q).
 \tag{Q3}
 \]
 
-Here is a resolution proof that also fixes its naturality. Write \(i_Q:Q\hookrightarrow E\) and \(B_Q=i_{Q*}i_Q^{-1}F\). Exact closed extension identifies \(R\Gamma(Q;F|_Q)\) with \(R\Gamma_c(E;B_Q)\). The closed-subspace tensor map \(B_Q\otimes^L M_E\to i_{Q*}(F|_Q\otimes^L M_Q)\) is an isomorphism on stalks, checked with a flat model for \(M\). The compact-support projection proof now applies on the manifold \(E\), not on the possibly singular or lower-dimensional compact set \(Q\).
+Here is a resolution proof that also fixes its naturality. Write \(i_Q:Q\hookrightarrow E\) and \(B_Q=i_{Q*}i_Q^{-1}F\). Exact closed extension identifies \(R\Gamma(Q;F|_Q)\) with \(R\Gamma_c(E;B_Q)\). The closed-subspace tensor map \(B_Q\otimes^L M_E\to i_{Q*}(F|_Q\otimes^L M_Q)\) is an isomorphism on stalks, checked with a flat model for \(M\). The [compact-support projection proof](../../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#projection-arbitrary-coefficients) now applies on the manifold \(E\), not on the possibly singular or lower-dimensional compact set \(Q\).
 
 More explicitly, choose a bounded c-soft resolution \(A\) of \(B_Q\), using the finite manifold cohomological-dimension argument proved there. Choose a bounded projective module complex \(P\) representing \(M\); finite global dimension permits this even for infinitely generated modules. Each projective term is a summand of a free module. Thus \(A^i\otimes P^j_E\) is a summand of a coproduct of c-soft sheaves and remains c-soft. Compactly supported sections commute with that coproduct: a compact support meets only finitely many nonzero local coefficient indices after a finite subcover. They also preserve the splitting. Consequently the actual map
 
@@ -424,7 +424,7 @@ We claim
 
 Consider \((x_0,y_0;\xi_0,\eta_0)\) outside the right side, and suppose first that \((x_0;\xi_0)\notin\operatorname{SS}(F)\). If \(\xi_0=0\), the constant-function support tests vanish on a whole base neighborhood. Those tests are the stalks of \(F\), so \(F\) is zero on that neighborhood. The external product is then locally zero for every second covector. Exclusion of a zero covector supplies this neighborhood; a single zero stalk would not suffice.
 
-Suppose \(\xi_0\ne0\). The uniform compact-cap implication supplies a nonzero closed pointed cone \(C\), a number \(h>0\), and the fixed halfspace and base
+Suppose \(\xi_0\ne0\). The [uniform compact-cap implication](../../SH03-small-balls-central-fibres-and-supported-cohomology.html#uniform-compact-cap-proof) supplies a nonzero closed pointed cone \(C\), a number \(h>0\), and the fixed halfspace and base
 
 \[
 H_X=\{x:\langle x-x_0,\xi_0\rangle\geq-h\},\quad
@@ -457,7 +457,7 @@ Equations (Q2)–(Q3), including their naturality, identify the product cap comp
 
 It is an isomorphism for every nearby \((z,w)\), with geometry independent of the module complex \(G_w\).
 
-We spell out why this comparison excludes \(\nu\), even though the cut uses \(\lambda\). The cap-to-cone proof (D17)–(D19) starts with \(J=F\boxtimes^L G\), extended from its chart, and \(B=J_{H_\lambda\setminus L_\lambda}\). Its cone projector has stalk the fibre of the cap-to-base map, hence vanishes on a vertex neighborhood \(V\). Properness used here follows from strict negativity: \(\lambda(c)\leq-a|c|\) on \(\Gamma\), for some \(a>0\); if \(p\) ranges in a compact set and \(p+c\in H_\lambda\), then \(|c|\) is bounded. The closed correspondence over that compact set is therefore compact, including when \(\Gamma\) has empty interior.
+We spell out why this comparison excludes \(\nu\), even though the cut uses \(\lambda\). The [cap-to-cone proof (D17)–(D19)](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#compact-cap-converse) starts with \(J=F\boxtimes^L G\), extended from its chart, and \(B=J_{H_\lambda\setminus L_\lambda}\). Its cone projector has stalk the fibre of the cap-to-base map, hence vanishes on a vertex neighborhood \(V\). Properness used here follows from strict negativity: \(\lambda(c)\leq-a|c|\) on \(\Gamma\), for some \(a>0\); if \(p\) ranges in a compact set and \(p+c\in H_\lambda\), then \(|c|\) is bounded. The closed correspondence over that compact set is therefore compact, including when \(\Gamma\) has empty interior.
 
 Choose a directional lens \(S=O_1\setminus O_0\), where \(O_1=B_r(p_0)+\Gamma\), \(O_0=O_1\cap\{\lambda(p-p_0)<-b\}\), and \(r,b>0\) are small. If \(p=p_0+v+c\in S\), then \(|v|<r\) and \(a|c|\leq b+|\lambda|r\). Thus the closure of the lens lies in \(V\cap\operatorname{Int}H_\lambda\), while \(p_0\) is in its interior. Directional support compatibility and the actual projector unit give a complex
 
@@ -506,7 +506,7 @@ and the unit is their restriction map. These are locally compact Hausdorff space
 \tag{Q13}
 \]
 
-It stays in \(W\), and stays in \(Z\) when started there: if \(x\in M\), the initial \(t\) is already positive. The relative contraction (D11)–(D12) identifies the actual pullbacks \(R\Gamma(U;F)\to R\Gamma(W;q^{-1}F)\) and \(R\Gamma(U;F)\to R\Gamma(Z;q^{-1}F)\) as isomorphisms. Their triangle with restriction commutes. Thus the restriction is an isomorphism as an actual map. The product boxes form a neighborhood basis, proving the assertion on stalks. Properness is used in D11 for the compact homotopy interval, not for either projection in (Q12).
+It stays in \(W\), and stays in \(Z\) when started there: if \(x\in M\), the initial \(t\) is already positive. The [relative contraction (D11)–(D12)](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#directional-kernel) identifies the actual pullbacks \(R\Gamma(U;F)\to R\Gamma(W;q^{-1}F)\) and \(R\Gamma(U;F)\to R\Gamma(Z;q^{-1}F)\) as isomorphisms. Their triangle with restriction commutes. Thus the restriction is an isomorphism as an actual map. The product boxes form a neighborhood basis, proving the assertion on stalks. Properness is used in D11 for the compact homotopy interval, not for either projection in (Q12).
 
 Writing \(i_N:N\hookrightarrow Y\), we consequently have the canonical identification
 

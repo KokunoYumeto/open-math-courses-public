@@ -1,6 +1,6 @@
 # Geodesics, normal coordinates and curvature
 
-A connection determines trajectories from initial vectors, local coordinates from its exponential map, and curvature through parallel transport. This lesson proves these constructions for arbitrary smooth linear connections, including torsion, convex neighbourhoods, curvature jets and holonomy. Complete calculations distinguish local and global behaviour on the line, plane, torus and sphere. Every proof uses freely accessible construction material and exact earlier programme proofs.
+A connection determines trajectories from initial vectors, local coordinates from its exponential map, and curvature through parallel transport. This lesson proves these constructions for arbitrary smooth linear connections, including torsion, convex neighbourhoods, curvature jets and holonomy. Complete calculations distinguish local and global behaviour on the line, plane, torus and sphere.
 
 ## A. From a connection to its trajectories
 
@@ -102,7 +102,14 @@ is a diffeomorphism of that domain onto \(\mathbb R\). Nevertheless the connecti
 
 **Proof.** Apply Local 2.3 to the multiplicative Lie group \(\mathbb R_{>0}\). Its identity-starting exponential \(E\) satisfies \(E'=E\), \(E(0)=1\), \(E(t+s)=E(t)E(s)\), and is positive by its target. Hence it is strictly increasing. For \(t\ge0\), \(E(t)=1+\int_0^tE(s)\,ds\ge1+t\), so it tends to infinity; \(E(-t)=1/E(t)\) makes it tend to zero as \(t\to-\infty\). Every \(u>0\) is attained: choose \(a<b\) with \(E(a)<u<E(b)\) and take \(c=\sup\{t\in[a,b]:E(t)\le u\}\), using Local 0.0's real supremum property. Continuity forces \(E(c)=u\); a smaller value would permit a larger member of the set, and a larger value would exclude members approaching \(c\) from below. Thus the image is \((0,\infty)\). Local 1.2 supplies a smooth inverse \(\log\), whose derivative is \(1/u\) by differentiating \(E(\log u)=u\). This justifies all logarithmic facts used here.
 
-For (A.9), direct differentiation gives \(\dot\gamma=v/(1+vt)\) and \(\ddot\gamma=-v^2/(1+vt)^2=-\dot\gamma^2\), which is (A.1) for this connection. The initial data are \(p,v\); A.1 supplies uniqueness. For nonzero \(v\), the finite boundary time of the indicated interval has \(1+vt\to0^+\), hence \(\gamma_v(t)\to-\infty\). No continuous extension as an \(\mathbb R\)-valued curve across that endpoint exists. The other endpoint is infinite, proving maximality. Evaluating at time one gives the domain and (A.10). Its smooth inverse is \(q\mapsto E(q-p)-1\). Taking, for instance, \(v=1\) gives the finite lower endpoint \(-1\), proving incompleteness. □
+For (A.9), direct differentiation gives \(\dot\gamma=v/(1+vt)\) and \(\ddot\gamma=-v^2/(1+vt)^2=-\dot\gamma^2\), which is (A.1) for this connection. The initial data are \(p,v\); A.1 supplies uniqueness. For nonzero \(v\), the finite boundary time of the indicated interval has \(1+vt\to0^+\), hence \(\gamma_v(t)\to-\infty\). No continuous extension as an \(\mathbb R\)-valued curve across that endpoint exists. The other endpoint is infinite, proving maximality. Evaluating at time one gives the domain and (A.10). Its smooth inverse is \(q\mapsto E(q-p)-1\). Taking, for instance, \(v=1\) gives the finite lower endpoint \(-1\), proving incompleteness.
+
+The exponential coordinate on this line is \(y=E(x-p)-1\), with range \(y>-1\). Its coordinate vector is \(\partial_y=(1+y)^{-1}\partial_x\). Put \(a=(1+y)^{-1}\), regarded as a function of \(x\). Since \(dy/dx=1+y\), the ordinary chain rule gives \(da/dx=-a\). The connection product rule, Linear A.1, therefore yields
+\[
+\nabla_{\partial_y}\partial_y
+=\bigl(a\,\partial_xa+a^2\bigr)\partial_x=0.
+\]
+Thus the coefficient really is zero in this global normal coordinate, while the coordinate range is the proper interval \((-1,\infty)\). The geodesic with initial coordinate \(y=0\) and velocity \(-1\) is \(y(t)=-t\) for \(t<1\); it reaches the missing boundary value at finite affine time. This identifies the incompleteness in the normal coordinate itself. □
 
 ## B. Local endpoint coordinates and convexity
 
@@ -137,7 +144,9 @@ Use a coordinate trivialization of \(TM\). Along the zero section, \(\exp_x(0)=x
 d\Psi_{(p,0)}=
 \begin{pmatrix}I&0\\ I&I\end{pmatrix}.
 \]
-Its inverse sends \((a,b)\) to \((a,b-a)\). Local 1.2 applies and proves the last assertion. This is a local inverse near one diagonal point; no assertion of global injectivity of the full exponential domain is being used. □
+Its inverse sends \((a,b)\) to \((a,b-a)\). Local 1.2 applies and proves the last assertion. This is a local inverse near one diagonal point; no assertion of global injectivity of the full exponential domain is being used.
+
+For a fixed initial basis the germ of the normal coordinates is unique. To see this, identify \(T_pM\) with its coordinate columns by that basis. Any other chart \(z\) with \(z(p)=0\) and \(z(\exp_p(v))=v\) for all sufficiently small \(v\) agrees with the inverse of \(\exp_p\) on the image of a common small ball, hence agrees there with \(x\). Equivalently, it is enough that its differential at \(p\) is this identification and that every sufficiently short radial geodesic has the affine coordinate expression \(t\mapsto tv\); evaluation at time one gives the same equality. This is a germ statement and does not identify possibly different larger coordinate domains. □
 
 **Lemma B.2 (a small contained geodesic cannot have a large velocity).** Suppose the connection coefficients on a Euclidean coordinate ball satisfy
 \[
@@ -250,7 +259,17 @@ Finally, subtract the two defining second derivatives. Their difference is
 \]
 Linear D.1 says
 \(\nabla_XY-\nabla_YX=[X,Y]+\mathcal T(X,Y)\).
-Linearity of the derivative in its direction now proves (C.3). The scalar case uses the zero curvature already proved. These computations also show that the second derivative is tensorial in \(X,Y\): the differentiated coefficient in \(\nabla_X(\nabla_{fY}S)\) cancels that in \(\nabla_{\nabla_X(fY)}S\), and linearity in \(X\) is immediate. □
+Linearity of the derivative in its direction now proves (C.3). The scalar case uses the zero curvature already proved. These computations also show that the second derivative is tensorial in \(X,Y\): the differentiated coefficient in \(\nabla_X(\nabla_{fY}S)\) cancels that in \(\nabla_{\nabla_X(fY)}S\), and linearity in \(X\) is immediate.
+
+For clarity, the coordinate transformation underlying these formulas holds without a torsion assumption. On an overlap write \(J^i_a=\partial x^i/\partial y^a\), \(K^c_k=\partial y^c/\partial x^k\), so \(K=J^{-1}\). The chain rule gives \(\partial_{y^a}=J^i_a\partial_{x^i}\). Expanding its derivative of \(\partial_{y^b}\) by Linear A.1's function-linearity and product rule, and then using \(\partial_{x^k}=K^c_k\partial_{y^c}\), gives
+\[
+\begin{aligned}
+\widetilde\Gamma^c_{ab}
+&=K^c_k\Gamma^k_{ij}J^i_aJ^j_b\\
+&\quad+K^c_k\,\partial_{y^a}J^k_b.
+\end{aligned}
+\]
+The second term is \(K^c_k\partial^2x^k/\partial y^a\partial y^b\), so the coefficients do not obey a tensor transformation law. Conversely, suppose smooth coefficient arrays in coordinate charts satisfy this identity. In each chart define \((\nabla_XY)^k=X(Y^k)+\Gamma^k_{ij}X^iY^j\). Substituting \(Y_x=JY_y\) and applying the same product rule shows that the displayed change law cancels exactly the derivatives of \(J\), so the output vector agrees on overlaps. These local derivatives therefore glue to a smooth global derivative; the coordinate formula verifies additivity, function-linearity in \(X\) and the Leibniz rule in \(Y\). No symmetry of either lower index pair was used. □
 
 **Theorem C.2 (Bianchi identities with torsion).** With \(\sum_{\mathrm{cyc}}\) denoting the sum over \((X,Y,Z),(Y,Z,X),(Z,X,Y)\), one has
 \[
@@ -669,7 +688,9 @@ Finally take \(v\ne0\), use the standard coordinate frame at the base point of t
 [H_1,H_2]=-V-2H_v.
 \tag{F.4}
 \]
-These are three frame fields on the reachable reduction by D.3. Thus the same straight geodesics and exponential maps coexist with nonzero parallel torsion, curvature and this frame algebra. □
+These are three frame fields on the reachable reduction by D.3. Thus the same straight geodesics and exponential maps coexist with nonzero parallel torsion, curvature and this frame algebra.
+
+In this example the translated Cartesian coordinates \(x=q-p\) are normal coordinates about every point \(p\), since \(\exp_p(u)=p+u\) on the whole tangent plane and its inverse is \(q\mapsto q-p\). Nevertheless their coefficients are the alternating bilinear map \(\Gamma(X,Y)=\epsilon(X,Y)v\). Formula (F.2) gives \(\Gamma^k_{ij}=\mathcal T^k_{ij}/2\), exactly as B.1 requires. For \(v\ne0\) these coefficients are nonzero at every point despite the globally straight geodesics. □
 
 **Example F.2 (the complete flat torus).** The ordinary derivative on \(\mathbb R^n\) descends to \(\mathbb T^n=\mathbb R^n/\mathbb Z^n\). Identify each tangent space with \(\mathbb R^n\) by its descended coordinate frame. Then
 \[
@@ -762,7 +783,7 @@ The values of \(R_p\) span the nonzero line \(\mathbb RJ\), and all its higher c
 
 ## G. Global trajectories and pointwise distinctions
 
-This part supplies additional coverage identified after the preceding six parts were written. Its construction uses their complete proofs and the exact earlier programme proofs cited below. In particular, the horizontal-lift theorem is [Connections C.1–C.2](connections-and-parallel-transport.md), tensor and frame differentiation are [Linear A.2, C.1 and H.2](linear-and-affine-connections.md), and exterior differentiation is [Curvature A.2 and A.5](curvature-and-holonomy-groups.md). These earlier chapters retain the free human sources used in their construction.
+The following results relate complete trajectories to horizontal frame fields, and distinguish pointwise conditions from conditions on a neighbourhood. In particular, the horizontal-lift theorem is [Connections C.1–C.2](connections-and-parallel-transport.md), tensor and frame differentiation are [Linear A.2, C.1 and H.2](linear-and-affine-connections.md), and exterior differentiation is [Curvature A.2 and A.5](curvature-and-holonomy-groups.md). These earlier chapters retain the free human sources used in their construction.
 
 **Theorem G.1 (completeness on the frame bundle).** Fix a frame \(u:\mathbb R^n\to T_pM\) and a vector \(a\in\mathbb R^n\). The maximal integral curve of the standard horizontal field \(B(a)\) through \(u\) has exactly the maximal time interval \(I_{ua}\) of the geodesic with initial velocity \(ua\). Its projection is that geodesic. Consequently the connection is geodesically complete if and only if every \(B(a)\) on the full frame bundle is complete.
 

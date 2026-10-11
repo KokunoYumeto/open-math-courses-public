@@ -1,6 +1,6 @@
 # Linear and affine connections
 
-A covariant derivative compares nearby vectors; an affine connection also records the motion of their origins. Construction uses only exact freely accessible material and earlier programme proofs.
+A covariant derivative compares nearby vectors; an affine connection also records the motion of their origins. Throughout, manifolds are finite dimensional, Hausdorff and second countable.
 
 ## A. Covariant differentiation and the frame bundle
 
@@ -474,9 +474,9 @@ For any based loop \(c\), write its affine endpoint as \(q h(c)\). Equivariance 
 
 ## F. Transporting points and developing paths
 
-We now derive affine transport from the connection just constructed. The only integration and transport facts used are the complete proofs in [Local 0.3](local-tools-for-bundles-and-transport.md), [Conn C.1–C.2](connections-and-parallel-transport.md), and B.2. Curvature D.0, proved in the [curvature chapter](curvature-and-holonomy-groups.md), supplies circle angles and winding for the example below.
+We now derive affine transport from the connection just constructed. The integration and transport arguments use the complete proofs in [Local 0.3](local-tools-for-bundles-and-transport.md), [Conn C.1–C.2](connections-and-parallel-transport.md), and B.2. Curvature C.2 in the [curvature chapter](curvature-and-holonomy-groups.md) proves transport for continuous time coefficients, and its D.0 supplies circle angles and winding for the example below.
 
-**Theorem F.1 (affine transport and development).** For a finitely piecewise smooth path \(\gamma:[0,b]\to M\), let \(T_{st}:T_{\gamma(s)}M\to T_{\gamma(t)}M\) be linear transport. For the generalized affine connection \((\nabla,K)\), set
+**Theorem F.1 (affine transport and development).** For a finitely piecewise \(C^1\) path \(\gamma:[0,b]\to M\), let \(T_{st}:T_{\gamma(s)}M\to T_{\gamma(t)}M\) be linear transport. For the generalized affine connection \((\nabla,K)\), set
 \[
 \delta_K(t)=\int_0^t T_{r0}K_{\gamma(r)}\dot\gamma(r)\,dr\in T_{\gamma(0)}M.
 \tag{F.1}
@@ -491,13 +491,13 @@ It is the unique solution of the inhomogeneous equation
 D_t w=-K\dot\gamma,\qquad w(0)=v.
 \tag{F.3}
 \]
-When \(K=I\), \(\delta=\delta_I\) is the development of the path in its initial tangent space; \(\delta(0)=0\) and \(\dot\delta(t)=T_{t0}\dot\gamma(t)\) on each smooth piece. Affine transports are invertible, concatenate in path order, and are unchanged by orientation-preserving piecewise smooth reparametrization.
+When \(K=I\), \(\delta=\delta_I\) is the development of the path in its initial tangent space; \(\delta(0)=0\) and \(\dot\delta(t)=T_{t0}\dot\gamma(t)\) on each \(C^1\) piece. Affine transports are invertible, concatenate in path order, and are unchanged by orientation-preserving piecewise \(C^1\) reparametrization.
 
 **Proof.** The bundle associated to \(Q\) by its affine action on \(\mathbb R^n\) is \(TM\) as a bundle of affine spaces: the evaluation map \([q,z]\mapsto q(z)\) is well defined because \([qh,z]=[q,hz]\). In a local zero-origin frame its formula and inverse are simply the ordinary tangent-bundle coordinates. PB B.1 therefore gives a smooth bundle identification. A horizontal path \(q(t)\) defines \(F_{0t}(q(0)z)=q(t)z\). Equivariance of principal transport shows this definition is independent of the chosen initial affine frame.
 
 In a local section write \(q(t)=j(e(\gamma(t)))h(t)\), where
 \(h=\left(\begin{smallmatrix}a&c\\0&1\end{smallmatrix}\right)\).
-Conn C.1 gives \(h'=-\mathcal A(\dot\gamma)h\), hence
+Conn C.1 gives \(h'=-\mathcal A(\dot\gamma)h\) for smooth paths. Curvature C.2 proves the same whole-interval transport equation for continuous time coefficients on each closed \(C^1\) piece, so this equation holds under the stated path hypothesis. Hence
 \[
 a'=-A(\dot\gamma)a,\qquad c'=-A(\dot\gamma)c-k(\dot\gamma).
 \]
@@ -507,7 +507,7 @@ Choose an initial linear frame and transport it along the whole path by A.2. In 
 \[
 \frac{d}{dt}\bigl(T_{t0}w(t)\bigr)=T_{t0}D_t w(t).
 \]
-The integrand in (F.1) is continuous on each closed smooth piece and has the appropriate one-sided values at the finitely many corners. Componentwise integration and the fundamental theorem in Local 0.3 give (F.2), with continuity across corners. Conversely differentiating this integral gives (F.3) and its initial value. If two solutions exist, their difference has constant coordinates in the moving frame and initial value zero, proving uniqueness. Since \(T_{0t}\) is invertible, (F.2) gives the inverse image of zero exactly as stated. The derivative formula for \(\delta\) is again the fundamental theorem on each piece. Finally the evaluation construction transfers inverse, concatenation and reparametrization identities from Conn C.2 to \(F\); these also follow from the just-proved uniqueness. No completeness assumption on the manifold or connection is involved. □
+The integrand in (F.1) is continuous on each closed \(C^1\) piece and has the appropriate one-sided values at the finitely many corners. Componentwise integration and the fundamental theorem in Local 0.3 give (F.2), with continuity across corners. Conversely differentiating this integral gives (F.3) and its initial value. If two solutions exist, their difference has constant coordinates in the moving frame and initial value zero, proving uniqueness. Since \(T_{0t}\) is invertible, (F.2) gives the inverse image of zero exactly as stated. The derivative formula for \(\delta\) is again the fundamental theorem on each piece. Finally the evaluation construction transfers inverse, concatenation and reparametrization identities from Conn C.2 to \(F\). For the stated piecewise \(C^1\) paths, the same identities follow by reversing, joining or reparametrizing the inhomogeneous equation and applying its just-proved uniqueness; at junctions the endpoint values agree. No completeness assumption on the manifold or connection is involved. □
 
 **Theorem F.2 (moving the origin and parallel point fields).** For a vector field \(V\), let \(j_V(u)(z)=V(x)+uz\). In the generalized connection,
 \[
@@ -539,7 +539,11 @@ For the circle use \(z\in U(1)\), its global nonzero tangent frame \(e(z)=iz\), 
 F(ae_x)=(a-2\pi m)e_x.
 \tag{F.6}
 \]
-Every integer winding occurs by D.0, proving the holonomy assertion, with either sign giving the same translation subgroup. A parallel point field would have a value fixed by the once-positive loop; no real \(a\) satisfies \(a-2\pi=a\). This proves nonexistence. In particular, preserving zero is not automatic for a normalized affine connection. □
+Every integer winding occurs by D.0, proving the holonomy assertion, with either sign giving the same translation subgroup. A parallel point field would have a value fixed by the once-positive loop; no real \(a\) satisfies \(a-2\pi=a\). This proves nonexistence. In particular, preserving zero is not automatic for a normalized affine connection.
+
+Moving the origin changes the translational endomorphism in (E.3) to \(K+\nabla V\), because \(u(\varphi+Dv)(Z)=K(d\pi Z)+\nabla_{d\pi Z}V\). In particular, if the original connection is normalized, its pullback by \(j_V\) has the original solder form as translational component exactly when \(\nabla V=0\). Being a parallel point field instead requires \(\nabla V=-I\), by (F.5); these are different conditions.
+
+The restricted affine holonomy of this circle connection is trivial. Curvature D.0 proves that the winding of a continuously nullhomotopic loop is zero. Equation (F.6) then gives the identity translation for every loop defining restricted holonomy, and the constant loop gives the identity itself. This proves the assertion directly, including the distinction from the full translation subgroup. □
 
 **Example F.3 (a noncommuting potential and a varying frame).** On the trivial rank-two bundle over \(\mathbb R^2\), let
 \[
@@ -629,7 +633,16 @@ For \(c\ne0\), subtracting \(a\) from (G.4) gives \((s/c)(\cos(c\phi),\sin(c\phi
 \[
 F(v)=R(-2\pi c)(v-d(2\pi)).
 \]
-Write \(r=s/c\). Since \(d(2\pi)=r(R(2\pi c)-I)(1,0)\), its constant term is \(r(R(-2\pi c)-I)(1,0)=a-R(-2\pi c)a\). This is (G.5), with its sign determined by the affine transport equation. Here \(-1<c<1\). If \(c\ne0\), then \(c\) is not an integer, so Conn E.1's period and injectivity show that \(R(-2\pi c)\ne I\). Moreover \(\det(I-R(b))=2(1-\cos b)>0\) for any nonidentity rotation, by direct multiplication and \(\cos^2b+\sin^2b=1\). Thus its fixed-point equation has the unique solution \(a\). At \(c=0\), (G.4) and F.2 give the stated nonzero translation and identity linear part. The poles are excluded because the latitude degenerates there and (G.3) no longer supplies the stated loop parametrization by a nonzero velocity. □
+Write \(r=s/c\). Since \(d(2\pi)=r(R(2\pi c)-I)(1,0)\), its constant term is \(r(R(-2\pi c)-I)(1,0)=a-R(-2\pi c)a\). This is (G.5), with its sign determined by the affine transport equation. Here \(-1<c<1\). If \(c\ne0\), then \(c\) is not an integer, so Conn E.1's period and injectivity show that \(R(-2\pi c)\ne I\). Moreover \(\det(I-R(b))=2(1-\cos b)>0\) for any nonidentity rotation, by direct multiplication and \(\cos^2b+\sin^2b=1\). Thus its fixed-point equation has the unique solution \(a\). At \(c=0\), (G.4) and F.2 give the stated nonzero translation and identity linear part. The poles are excluded because the latitude degenerates there and (G.3) no longer supplies the stated loop parametrization by a nonzero velocity.
+
+The equatorial case is also the continuous limit of the developed paths in their displayed initial-frame coordinates, uniformly for \(0\leq\phi\leq2\pi\). Indeed the integral formula already proved gives \(d_1=-s\int_0^\phi\sin(ct)\,dt\) and \(d_2=s\int_0^\phi\cos(ct)\,dt\). The unit-circle identity bounds the absolute values of sine and cosine by one. Integrating their derivatives from zero, using Conn E.1 and Local 0.3, first gives \(|\sin z|\leq|z|\) and then \(|1-\cos z|\leq z^2/2\), for either sign of \(z\). Consequently
+\[
+\begin{aligned}
+|d_1(\phi)|&\leq |c|\phi^2/2,\\
+|d_2(\phi)-\phi|&\leq |s-1|\phi+c^2\phi^3/6.
+\end{aligned}
+\]
+As \(\theta\to\pi/2\), continuity gives \(c\to0\) and \(s\to1\), so both bounds tend uniformly to zero. Also \(R(-2\pi c)\to I\). Substitution into \(F(v)=R(-2\pi c)(v-d(2\pi))\) proves convergence to the equatorial translation, uniformly for \(v\) in a bounded subset of the initial coordinate plane. Thus the diverging centre \(a=(-s/c,0)\) causes no singularity in the limiting affine map. □
 
 **Example G.3 (the specified latitudes and the equator).** At \(\theta=\pi/3\),
 \[

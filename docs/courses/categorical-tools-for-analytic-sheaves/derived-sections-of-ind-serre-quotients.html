@@ -1,0 +1,377 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Derived sections of Ind Serre quotients</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="derived-sections-of-ind-serre-quotients">Derived sections of Ind Serre quotients</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>The section of an abelian quotient is fully faithful but can fail to be exact. Passing to complexes therefore requires its right derived functor. We construct that functor for the Ind Serre quotient, prove the full derived adjunction, and obtain an equivalence with a Verdier quotient. A finite ring example shows why a local object of the abelian category can fail the derived local-object test, and why the derived section can have infinitely many nonzero cohomology groups.</p>
+<p>All complexes are cohomological, with <span class="math" data-tex="\(H^n(X[r])=H^{n+r}(X)\)">\(H^n(X[r])=H^{n+r}(X)\)</span>. We use bounded-below derived categories: their objects have cohomology zero below some integer. No upper cohomology bound is imposed.</p>
+<p><a href="ind-completion-and-serre-quotients.html">Ind-completion and Serre quotients</a> constructs the exact quotient and its section, including the quotient-fraction counit proof. <span class="unlinked">Testing injectivity on generators and constructing enough injectives</span>, Theorem 7.2, proves enough injectives in a Grothendieck category. <a href="injective-replacements-and-right-derived-functors.html">Injective replacements and right derived functors</a>, Sections 1–3, constructs bounded-below injective replacements and their comparisons. <a href="derived-morphisms-through-quasi-isomorphism-roofs.html">Derived morphisms through quasi-isomorphism roofs</a>, Section 5, proves both the K-injective and K-projective Hom tests. <a href="null-systems-roofs-and-the-retract-kernel.html">Null systems, roofs and the retract kernel</a>, Section 6, supplies the structured Verdier universal property; <a href="orthogonal-localization-and-the-morphisms-between-pieces.html">Orthogonal localization and the morphisms between pieces</a>, Sections 1–2, supplies the localization triangle and orthogonal Hom theorem. We use the actual truncation triangles from <a href="cohomological-bounds-denominators-and-truncation-adjunctions.html">Cohomological bounds, denominators and truncation adjunctions</a>, Section 5.</p>
+<h2 id="1-the-abelian-quotient-and-its-supply-of-injectives">1. The abelian quotient and its supply of injectives</h2>
+<p>Fix a small abelian category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, a Serre subcategory <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, and the small quotient <span class="math" data-tex="\(Q:\mathcal C\to\mathcal B=\mathcal C/\mathcal S\)">\(Q:\mathcal C\to\mathcal B=\mathcal C/\mathcal S\)</span>. A small skeleton of an essentially small category has the same role. Put
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\mathcal A=\operatorname{Ind}(\mathcal C),\qquad
+\mathcal D=\operatorname{Ind}(\mathcal B),\qquad
+\mathcal T=\operatorname{Ind}(\mathcal S).
+\tag{1.1}
+\]">\[
+\mathcal A=\operatorname{Ind}(\mathcal C),\qquad
+\mathcal D=\operatorname{Ind}(\mathcal B),\qquad
+\mathcal T=\operatorname{Ind}(\mathcal S).
+\tag{1.1}
+\]</span>
+The Ind Serre comparison provides an exact functor <span class="math" data-tex="\(L:\mathcal A\to\mathcal D\)">\(L:\mathcal A\to\mathcal D\)</span> and an additive right adjoint <span class="math" data-tex="\(R\)">\(R\)</span>, with
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+(RY)(A)=\operatorname{Hom}_{\mathcal D}(c_{\mathcal B}QA,Y),
+\qquad LR\xrightarrow{\epsilon^0}1_{\mathcal D}\text{ invertible},
+\qquad\ker L=\mathcal T.
+\tag{1.2}
+\]">\[
+(RY)(A)=\operatorname{Hom}_{\mathcal D}(c_{\mathcal B}QA,Y),
+\qquad LR\xrightarrow{\epsilon^0}1_{\mathcal D}\text{ invertible},
+\qquad\ker L=\mathcal T.
+\tag{1.2}
+\]</span>
+It proves that both categories are abelian, have all small coproducts and exact filtered colimits, and have a small separating family of constant objects. Their coproduct is a generator. Thus they are Grothendieck abelian categories, and the stated injective-existence theorem applies to both.</p>
+<p>Work in an ambient universe containing these categories and the choices of resolutions. The Hom computations below are nevertheless small in the original universe for fixed objects: a Hom group of complexes is a subgroup of a countable product of the original Hom sets, and homotopy classes are its quotient. Bounded-below injective replacements will identify all the derived Hom groups we use with such groups.</p>
+<h2 id="2-the-right-adjoint-preserves-injectives">2. The right adjoint preserves injectives</h2>
+<p><strong>Lemma 2.1.</strong> If <span class="math" data-tex="\(I\)">\(I\)</span> is injective in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, then <span class="math" data-tex="\(RI\)">\(RI\)</span> is injective in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>.</p>
+<p><strong>Proof.</strong> Given a monomorphism <span class="math" data-tex="\(U\hookrightarrow V\)">\(U\hookrightarrow V\)</span> and a map <span class="math" data-tex="\(U\to RI\)">\(U\to RI\)</span>, transpose it to <span class="math" data-tex="\(LU\to I\)">\(LU\to I\)</span>. Exactness of <span class="math" data-tex="\(L\)">\(L\)</span> makes <span class="math" data-tex="\(LU\hookrightarrow LV\)">\(LU\hookrightarrow LV\)</span> monic. Extend the transposed map to <span class="math" data-tex="\(LV\to I\)">\(LV\to I\)</span> by injectivity, then transpose back. Naturality of adjunction says that the resulting <span class="math" data-tex="\(V\to RI\)">\(V\to RI\)</span> extends the original map. This is the defining injectivity test. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choose a bounded-below injective replacement <span class="math" data-tex="\(q_Y:Y\to I_Y\)">\(q_Y:Y\to I_Y\)</span> for each <span class="math" data-tex="\(Y\in D^+(\mathcal D)\)">\(Y\in D^+(\mathcal D)\)</span>, using a bounded-below representative first when needed. Define the <strong>derived section</strong> by
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\mathbf S(Y)=\mathbf R R(Y)=R(I_Y)\in D^+(\mathcal A).
+\tag{2.1}
+\]">\[
+\mathbf S(Y)=\mathbf R R(Y)=R(I_Y)\in D^+(\mathcal A).
+\tag{2.1}
+\]</span>
+The right derived functor theorem gives its action on all derived arrows, its triangulated structure, and the canonical comparisons between different choices. Lemma 2.1 makes <span class="math" data-tex="\(R(I_Y)\)">\(R(I_Y)\)</span> itself a bounded-below complex of injectives in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Consequently it is K-injective there. This additional fact will prove the adjunction directly.</p>
+<p>Apply <span class="math" data-tex="\(L\)">\(L\)</span> term by term. Exactness makes it preserve acyclic complexes and quasi-isomorphisms, since
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+H^n(LX)=L(H^nX).
+\tag{2.2}
+\]">\[
+H^n(LX)=L(H^nX).
+\tag{2.2}
+\]</span>
+Indeed it preserves the kernels defining cycles, the cokernels and images defining boundaries, and their cohomology quotient. Additivity preserves homotopies, shifts and cones. It therefore defines a triangulated functor <span class="math" data-tex="\(\mathbf L:D^+(\mathcal A)\to D^+(\mathcal D)\)">\(\mathbf L:D^+(\mathcal A)\to D^+(\mathcal D)\)</span>.</p>
+<h2 id="3-lift-the-adjunction-including-its-units-and-counits">3. Lift the adjunction, including its units and counits</h2>
+<p><strong>Theorem 3.1.</strong> There is a natural derived adjunction <span class="math" data-tex="\(\mathbf L\dashv\mathbf S\)">\(\mathbf L\dashv\mathbf S\)</span>. Its counit <span class="math" data-tex="\(\epsilon:\mathbf L\mathbf S\to1\)">\(\epsilon:\mathbf L\mathbf S\to1\)</span> is invertible, so <span class="math" data-tex="\(\mathbf S\)">\(\mathbf S\)</span> is fully faithful.</p>
+<p><strong>Proof.</strong> Use a bounded-below representative of <span class="math" data-tex="\(X\)">\(X\)</span> and the replacement <span class="math" data-tex="\(I_Y\)">\(I_Y\)</span>. The K-injective tests give
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{D^+(\mathcal A)}(X,\mathbf S Y)
+&amp;=\operatorname{Hom}_{K(\mathcal A)}(X,RI_Y)\\
+&amp;\simeq\operatorname{Hom}_{K(\mathcal D)}(LX,I_Y)\\
+&amp;=\operatorname{Hom}_{D^+(\mathcal D)}(\mathbf L X,Y).
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{D^+(\mathcal A)}(X,\mathbf S Y)
+&amp;=\operatorname{Hom}_{K(\mathcal A)}(X,RI_Y)\\
+&amp;\simeq\operatorname{Hom}_{K(\mathcal D)}(LX,I_Y)\\
+&amp;=\operatorname{Hom}_{D^+(\mathcal D)}(\mathbf L X,Y).
+\end{aligned}
+\tag{3.1}
+\]</span>
+For the middle bijection, transpose every degree component. Naturality of the ordinary adjunction says that the chain-map equations transpose to the chain-map equations. It also says that an equation <span class="math" data-tex="\(f-g=dh+hd\)">\(f-g=dh+hd\)</span> transposes to the same homotopy equation. Additivity preserves the sums and signs. Thus this is a bijection of homotopy Hom groups, natural on chain maps.</p>
+<p>It is natural on all derived source arrows too: for a quasi-isomorphism into a source, both K-injective tests make precomposition a bijection, so the same commuting square remains commuting after inverting it. Every source arrow is a roof. For a derived target arrow, use the unique homotopy map between injective replacements representing it; its image under <span class="math" data-tex="\(R\)">\(R\)</span> represents the section arrow. Degreewise adjunction is natural on that homotopy map. This proves naturality in both derived variables, including all comparison isomorphisms between replacements.</p>
+<p>For a bounded-below <span class="math" data-tex="\(X\)">\(X\)</span>, the unit <span class="math" data-tex="\(\eta_X:X\to\mathbf S\mathbf L X\)">\(\eta_X:X\to\mathbf S\mathbf L X\)</span> is represented by
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+X\xrightarrow{\eta_X^0}R(LX)
+\xrightarrow{R(q_{LX})}R(I_{LX}).
+\tag{3.2}
+\]">\[
+X\xrightarrow{\eta_X^0}R(LX)
+\xrightarrow{R(q_{LX})}R(I_{LX}).
+\tag{3.2}
+\]</span>
+The ordinary unit is applied degreewise. The second map need not be a quasi-isomorphism by itself; formula (3.1) identifies the composite as the map corresponding to identity of <span class="math" data-tex="\(\mathbf L X\)">\(\mathbf L X\)</span>.</p>
+<p>The derived counit is
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\mathbf L\mathbf S Y=LR(I_Y)
+\xrightarrow{\epsilon_{I_Y}^0}I_Y
+\xrightarrow{q_Y^{-1}}Y.
+\tag{3.3}
+\]">\[
+\mathbf L\mathbf S Y=LR(I_Y)
+\xrightarrow{\epsilon_{I_Y}^0}I_Y
+\xrightarrow{q_Y^{-1}}Y.
+\tag{3.3}
+\]</span>
+Both arrows here are invertible in the derived category: the first is a degreewise isomorphism of complexes by (1.2), and the second is inverse to a quasi-isomorphism. They are the counit of (3.1), since the ordinary transposition sends identity of <span class="math" data-tex="\(RI_Y\)">\(RI_Y\)</span> to <span class="math" data-tex="\(\epsilon^0_{I_Y}\)">\(\epsilon^0_{I_Y}\)</span>. A natural Hom adjunction supplies both triangle identities; specifically the two composites transpose to the identities in (3.1). Hence
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+\epsilon_{\mathbf L X}\,\mathbf L\eta_X=1_{\mathbf L X},
+\qquad
+\mathbf S\epsilon_Y\,\eta_{\mathbf S Y}=1_{\mathbf S Y}.
+\tag{3.4}
+\]">\[
+\epsilon_{\mathbf L X}\,\mathbf L\eta_X=1_{\mathbf L X},
+\qquad
+\mathbf S\epsilon_Y\,\eta_{\mathbf S Y}=1_{\mathbf S Y}.
+\tag{3.4}
+\]</span>
+The isomorphic counit then gives
+<span class="math" data-tex="\(\operatorname{Hom}(\mathbf S Y,\mathbf S Z)\simeq
+\operatorname{Hom}(\mathbf L\mathbf S Y,Z)\simeq\operatorname{Hom}(Y,Z)\)">\(\operatorname{Hom}(\mathbf S Y,\mathbf S Z)\simeq
+\operatorname{Hom}(\mathbf L\mathbf S Y,Z)\simeq\operatorname{Hom}(Y,Z)\)</span>
+with the section's actual map correspondence. This proves full faithfulness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All comparisons respect shifts and cone triangles: on the injective models they are the degreewise adjunction comparisons, which commute with differential signs and finite biproducts. The derived comparisons are characterized by those models, so the same compatibility holds after localization.</p>
+<h2 id="4-identify-the-kernel-and-the-verdier-comparison">4. Identify the kernel and the Verdier comparison</h2>
+<p>Put
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\mathcal N=D^+_{\mathcal T}(\mathcal A)
+=\{X\in D^+(\mathcal A):H^nX\in\mathcal T\text{ for every }n\}.
+\tag{4.1}
+\]">\[
+\mathcal N=D^+_{\mathcal T}(\mathcal A)
+=\{X\in D^+(\mathcal A):H^nX\in\mathcal T\text{ for every }n\}.
+\tag{4.1}
+\]</span>
+By (2.2) and <span class="math" data-tex="\(\ker L=\mathcal T\)">\(\ker L=\mathcal T\)</span>, this is precisely the object kernel of <span class="math" data-tex="\(\mathbf L\)">\(\mathbf L\)</span>. It is a replete triangulated subcategory: the long exact cohomology sequence and Serre closure treat each triangle, and shifts reindex its cohomology. It is closed under retracts because each cohomology retract is a subquotient of an object of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Thus it is thick. Let <span class="math" data-tex="\(p:D^+(\mathcal A)\to D^+(\mathcal A)/\mathcal N\)">\(p:D^+(\mathcal A)\to D^+(\mathcal A)/\mathcal N\)</span> be its Verdier quotient.</p>
+<p><strong>Theorem 4.1.</strong> The functor induced by <span class="math" data-tex="\(\mathbf L\)">\(\mathbf L\)</span> is a triangulated equivalence
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\overline{\mathbf L}:
+D^+(\operatorname{Ind}(\mathcal C))/
+D^+_{\operatorname{Ind}(\mathcal S)}(\operatorname{Ind}(\mathcal C))
+\ \simeq\ D^+(\operatorname{Ind}(\mathcal C/\mathcal S)).
+\tag{4.2}
+\]">\[
+\overline{\mathbf L}:
+D^+(\operatorname{Ind}(\mathcal C))/
+D^+_{\operatorname{Ind}(\mathcal S)}(\operatorname{Ind}(\mathcal C))
+\ \simeq\ D^+(\operatorname{Ind}(\mathcal C/\mathcal S)).
+\tag{4.2}
+\]</span>
+A quasi-inverse is <span class="math" data-tex="\(p\mathbf S\)">\(p\mathbf S\)</span>.</p>
+<p><strong>Proof.</strong> The structured Verdier universal property descends <span class="math" data-tex="\(\mathbf L\)">\(\mathbf L\)</span>, since it kills <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. The counit gives <span class="math" data-tex="\(\overline{\mathbf L}\,p\mathbf S\simeq1\)">\(\overline{\mathbf L}\,p\mathbf S\simeq1\)</span>. The first triangle identity and invertibility of the counit make <span class="math" data-tex="\(\mathbf L\eta_X\)">\(\mathbf L\eta_X\)</span> invertible. A cone of <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span> is therefore killed by <span class="math" data-tex="\(\mathbf L\)">\(\mathbf L\)</span>, and belongs to <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. Hence <span class="math" data-tex="\(p\eta_X\)">\(p\eta_X\)</span> is invertible. It gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+1_{D^+(\mathcal A)/\mathcal N}
+\xrightarrow{\sim}p\mathbf S\,\overline{\mathbf L}.
+\tag{4.3}
+\]">\[
+1_{D^+(\mathcal A)/\mathcal N}
+\xrightarrow{\sim}p\mathbf S\,\overline{\mathbf L}.
+\tag{4.3}
+\]</span>
+The comparison is natural on ordinary derived arrows by Theorem 3.1. It is then natural on their inverted Verdier denominators and hence on every quotient roof. Shift compatibility was proved after (3.4), so these are comparisons of triangulated functors. They prove the asserted equivalence with its specified quasi-inverse. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The denominator category here uses complexes whose cohomology lies in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. An intrinsic derived category of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> has a separate comparison to this subcategory. Full faithfulness of that comparison requires its own proof, as explained in <a href="thick-abelian-subcategories-and-derived-comparison.html">Thick abelian subcategories and derived comparison</a>. Formula (4.2) uses exactly (4.1) and needs no extra identification.</p>
+<h2 id="5-local-complexes-and-actual-quotient-hom-groups">5. Local complexes and actual quotient Hom groups</h2>
+<p>Call a complex <strong>derived local</strong> if it belongs to the right orthogonal
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\mathcal N^\perp=\{Z:\operatorname{Hom}_{D^+(\mathcal A)}(N,Z[r])=0
+\text{ for every }N\in\mathcal N,\ r\in\mathbb Z\}.
+\tag{5.1}
+\]">\[
+\mathcal N^\perp=\{Z:\operatorname{Hom}_{D^+(\mathcal A)}(N,Z[r])=0
+\text{ for every }N\in\mathcal N,\ r\in\mathbb Z\}.
+\tag{5.1}
+\]</span>
+Every <span class="math" data-tex="\(\mathbf S Y\)">\(\mathbf S Y\)</span> is local by (3.1), since <span class="math" data-tex="\(\mathbf L N=0\)">\(\mathbf L N=0\)</span>. Complete its unit, with an inverse rotation, to
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+N_X\longrightarrow X\xrightarrow{\eta_X}\mathbf S\mathbf L X
+\longrightarrow N_X[1],\qquad N_X\in\mathcal N.
+\tag{5.2}
+\]">\[
+N_X\longrightarrow X\xrightarrow{\eta_X}\mathbf S\mathbf L X
+\longrightarrow N_X[1],\qquad N_X\in\mathcal N.
+\tag{5.2}
+\]</span>
+This is the actual hypothesis of the orthogonal-localization theorem. Its Hom proof makes the third vertex the universal local target of <span class="math" data-tex="\(X\)">\(X\)</span> and makes the first vertex its universal target for arrows from <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. In particular <span class="math" data-tex="\(Z\)">\(Z\)</span> is local exactly when <span class="math" data-tex="\(\eta_Z\)">\(\eta_Z\)</span> is invertible: if <span class="math" data-tex="\(Z\)">\(Z\)</span> is local, (5.2) has both middle and third vertices local; its first vertex lies in <span class="math" data-tex="\(\mathcal N\cap\mathcal N^\perp\)">\(\mathcal N\cap\mathcal N^\perp\)</span>, so its identity is zero. Conversely an invertible unit identifies <span class="math" data-tex="\(Z\)">\(Z\)</span> with a section object.</p>
+<p>The same theorem's roof calculation and Theorem 4.1 yield the natural formula
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{D^+(\mathcal A)/\mathcal N}(pX,pY[r])
+&amp;\simeq\operatorname{Hom}_{D^+(\mathcal A)}(X,\mathbf S\mathbf L Y[r])\\
+&amp;\simeq\operatorname{Hom}_{D^+(\mathcal D)}(\mathbf L X,\mathbf L Y[r]).
+\end{aligned}
+\tag{5.3}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{D^+(\mathcal A)/\mathcal N}(pX,pY[r])
+&amp;\simeq\operatorname{Hom}_{D^+(\mathcal A)}(X,\mathbf S\mathbf L Y[r])\\
+&amp;\simeq\operatorname{Hom}_{D^+(\mathcal D)}(\mathbf L X,\mathbf L Y[r]).
+\end{aligned}
+\tag{5.3}
+\]</span>
+For the first equality replace the quotient target by its invertible unit image. A roof into that local target has a unique ordinary derived numerator because its two adjacent cone Hom groups vanish. This also preserves the equality relation and composition. Thus (5.3) concerns actual morphisms, not only object classes.</p>
+<p>For a heart object <span class="math" data-tex="\(H\)">\(H\)</span>, the abelian local-object criterion involves Hom and degree-one Ext from objects of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Definition (5.1) involves all shifts of all complexes in <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. Solution 8.4 finds the first missed obstruction in degree two.</p>
+<h2 id="6-truncations-the-heart-and-cohomological-bounds">6. Truncations, the heart and cohomological bounds</h2>
+<p>Exactness of <span class="math" data-tex="\(L\)">\(L\)</span> gives natural comparisons
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\mathbf L\tau_{\leq a}X\simeq\tau_{\leq a}\mathbf L X,
+\qquad
+\mathbf L\tau_{\geq a}X\simeq\tau_{\geq a}\mathbf L X.
+\tag{6.1}
+\]">\[
+\mathbf L\tau_{\leq a}X\simeq\tau_{\leq a}\mathbf L X,
+\qquad
+\mathbf L\tau_{\geq a}X\simeq\tau_{\geq a}\mathbf L X.
+\tag{6.1}
+\]</span>
+On a complex these are the kernel and cokernel comparisons in the smart truncation definitions. They commute with chain maps; localization gives naturality on all derived arrows. The subcategory <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> is stable under both truncations because they retain or remove its cohomology groups. Thus <span class="math" data-tex="\(\tau\)">\(\tau\)</span> preserves Verdier denominators: a denominator becomes a quasi-isomorphism after <span class="math" data-tex="\(\mathbf L\)">\(\mathbf L\)</span>, and (6.1) makes its truncated image a quasi-isomorphism as well. The truncation functors and triangles therefore descend through <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Transport the usual t-structure on <span class="math" data-tex="\(D^+(\mathcal D)\)">\(D^+(\mathcal D)\)</span> across (4.2). Its truncation of <span class="math" data-tex="\(pX\)">\(pX\)</span> is <span class="math" data-tex="\(p\tau X\)">\(p\tau X\)</span> by (6.1). Its heart is <span class="math" data-tex="\(\mathcal D\simeq\mathcal A/\mathcal T\)">\(\mathcal D\simeq\mathcal A/\mathcal T\)</span>, with the original exact quotient on heart objects. The transported lower and upper bounded subcategories are exactly the essential images under <span class="math" data-tex="\(p\)">\(p\)</span> of the corresponding ones in <span class="math" data-tex="\(D^+(\mathcal A)\)">\(D^+(\mathcal A)\)</span>. For a target with lower bound <span class="math" data-tex="\(a\)">\(a\)</span>, use its section replacement starting in degree <span class="math" data-tex="\(a\)">\(a\)</span>. For a target with upper bound <span class="math" data-tex="\(b\)">\(b\)</span>, truncate its section above at <span class="math" data-tex="\(b\)">\(b\)</span>; (6.1) and the counit show that it still maps to the given target. This proves both image assertions even when the untruncated section has extra positive cohomology.</p>
+<p>The functor <span class="math" data-tex="\(\mathbf S\)">\(\mathbf S\)</span> preserves lower cohomology bounds. Indeed a lower smart truncation and then an injective replacement can start at the same bound; applying <span class="math" data-tex="\(R\)">\(R\)</span> retains its zero terms below that bound. This is left t-exactness. On a heart object <span class="math" data-tex="\(Y\)">\(Y\)</span>, left exactness gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+H^0(\mathbf S Y)=RY,
+\qquad H^q(\mathbf S Y)=R^qR(Y)\quad(q&gt;0).
+\tag{6.2}
+\]">\[
+H^0(\mathbf S Y)=RY,
+\qquad H^q(\mathbf S Y)=R^qR(Y)\quad(q&gt;0).
+\tag{6.2}
+\]</span>
+For the first equality use <span class="math" data-tex="\(Y=\ker(I_Y^0\to I_Y^1)\)">\(Y=\ker(I_Y^0\to I_Y^1)\)</span> and preservation of that kernel by <span class="math" data-tex="\(R\)">\(R\)</span>; the higher groups are the definition of the right derived functors. Applying the exact <span class="math" data-tex="\(L\)">\(L\)</span> to (6.2) and using the counit shows that every positive group in (6.2) belongs to <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. It can still be nonzero. Solution 8.2 gives a bounded heart object whose section has nonzero cohomology in every positive degree.</p>
+<h2 id="7-two-successive-quotients-and-coherent-section-comparisons">7. Two successive quotients and coherent section comparisons</h2>
+<p>Let <span class="math" data-tex="\(\mathcal S_0\subseteq\mathcal S_1\)">\(\mathcal S_0\subseteq\mathcal S_1\)</span> be Serre subcategories of the same small abelian <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. The ordinary two-quotient theorem, proved in Solution 4 of <a href="serre-quotients-and-local-saturation.html">Serre quotients and local saturation</a>, identifies
+<span class="math" data-tex="\((\mathcal C/\mathcal S_0)/\overline{\mathcal S_1}\simeq\mathcal C/\mathcal S_1\)">\((\mathcal C/\mathcal S_0)/\overline{\mathcal S_1}\simeq\mathcal C/\mathcal S_1\)</span>, where <span class="math" data-tex="\(\overline{\mathcal S_1}\)">\(\overline{\mathcal S_1}\)</span> is the image Serre subcategory. The exact universal-property portion of that proof uses only Serre closure and applies to these small quotients. The additional coproduct conclusion is unnecessary here.</p>
+<p>On Ind categories write <span class="math" data-tex="\(L_0:\mathcal A\to\mathcal D_0\)">\(L_0:\mathcal A\to\mathcal D_0\)</span> and <span class="math" data-tex="\(L_{10}:\mathcal D_0\to\mathcal D_1\)">\(L_{10}:\mathcal D_0\to\mathcal D_1\)</span> for the two exact quotients, with sections <span class="math" data-tex="\(R_0,R_{10}\)">\(R_0,R_{10}\)</span>. Use the specified constant comparisons to identify their composite with <span class="math" data-tex="\(L_1\)">\(L_1\)</span>. The ordinary Hom adjunctions identify its section with <span class="math" data-tex="\(R_0R_{10}\)">\(R_0R_{10}\)</span>, preserving the adjunction. Each right adjoint preserves injectives by Lemma 2.1. An injective replacement <span class="math" data-tex="\(I\)">\(I\)</span> in <span class="math" data-tex="\(\mathcal D_1\)">\(\mathcal D_1\)</span> consequently gives an injective complex <span class="math" data-tex="\(R_{10}I\)">\(R_{10}I\)</span> in <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span>. It can be used directly to compute the outer derived section. Hence
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\mathbf S_1\simeq\mathbf S_0\mathbf S_{10},
+\qquad
+\mathbf L_1\simeq\mathbf L_{10}\mathbf L_0.
+\tag{7.1}
+\]">\[
+\mathbf S_1\simeq\mathbf S_0\mathbf S_{10},
+\qquad
+\mathbf L_1\simeq\mathbf L_{10}\mathbf L_0.
+\tag{7.1}
+\]</span>
+Naturality on derived arrows follows on the maps between injective replacements and then on their inverses. Other choices give the same comparison by the resolution cocycle law.</p>
+<p>With these identifications the units and counits are precisely
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+\eta^1_X=(\mathbf S_0\eta^{10}_{\mathbf L_0X})\eta^0_X,
+\qquad
+\epsilon^1_Y=\epsilon^{10}_Y\,
+\mathbf L_{10}(\epsilon^0_{\mathbf S_{10}Y}).
+\tag{7.2}
+\]">\[
+\eta^1_X=(\mathbf S_0\eta^{10}_{\mathbf L_0X})\eta^0_X,
+\qquad
+\epsilon^1_Y=\epsilon^{10}_Y\,
+\mathbf L_{10}(\epsilon^0_{\mathbf S_{10}Y}).
+\tag{7.2}
+\]</span>
+To check them, transpose a map <span class="math" data-tex="\(\mathbf L_{10}\mathbf L_0X\to Y\)">\(\mathbf L_{10}\mathbf L_0X\to Y\)</span> first along the outer quotient adjunction and then along the inner one. The resulting map is
+<span class="math" data-tex="\(\mathbf S_0\mathbf S_{10}(f)\,
+\mathbf S_0(\eta^{10}_{\mathbf L_0X})\eta^0_X\)">\(\mathbf S_0\mathbf S_{10}(f)\,
+\mathbf S_0(\eta^{10}_{\mathbf L_0X})\eta^0_X\)</span>.
+Taking identity gives the first formula; transposing identity of the composite section gives the second. These natural bijections are the composite adjunction, so their two triangles hold. For three quotients, all associations give the same three successive Hom bijections and the same three unit factors. Uniqueness of the adjunction-preserving comparison proves their coherence. The Verdier equivalences likewise commute with these specified exact composite quotient functors.</p>
+<h2 id="8-four-graded-exercises-with-complete-solutions">8. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-8-1-rational-cohomology-computes-quotient-morphisms-intermediate">Exercise 8.1 — Rational cohomology computes quotient morphisms (intermediate)</h3>
+<p>Take finitely generated abelian groups modulo finite groups. Characterize derived local complexes and compute <span class="math" data-tex="\(\operatorname{Hom}(pX,pY[r])\)">\(\operatorname{Hom}(pX,pY[r])\)</span> in the Verdier quotient for arbitrary <span class="math" data-tex="\(X,Y\in D^+(\mathsf{Ab})\)">\(X,Y\in D^+(\mathsf{Ab})\)</span>.</p>
+<p><strong>Solution.</strong> The Ind Serre lesson proves <span class="math" data-tex="\(L(M)=M\otimes\mathbb Q\)">\(L(M)=M\otimes\mathbb Q\)</span>, <span class="math" data-tex="\(\mathcal T=\mathsf{Tors}\)">\(\mathcal T=\mathsf{Tors}\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> is restriction of scalars from rational spaces. Here <span class="math" data-tex="\(R\)">\(R\)</span> is exact: kernels and quotients of rational linear maps have their underlying group kernels and quotients. It therefore takes quasi-isomorphisms to quasi-isomorphisms. The derived section agrees with termwise <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>The unit induces on cohomology the rationalization map <span class="math" data-tex="\(H^nX\to H^nX\otimes\mathbb Q\)">\(H^nX\to H^nX\otimes\mathbb Q\)</span>. It is invertible exactly when <span class="math" data-tex="\(H^nX\)">\(H^nX\)</span> is uniquely divisible, by the proved abelian local-object criterion. Cohomology detects derived isomorphisms, so <span class="math" data-tex="\(X\)">\(X\)</span> is derived local exactly when every cohomology group is a rational vector space.</p>
+<p>Over a field every complex splits, degree by degree, into its graded cohomology and a contractible complex: choose complements of boundaries in cycles and of cycles in each term. The differential identifies the last complement with the next boundaries; the inverse identifications give the contraction. Section 6 of the quasi-isomorphism-roof lesson proves that its canonical cohomology map identifies all derived Hom groups with the product of degreewise cohomology Hom groups. Applying (5.3) thus gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(pX,pY[r])
+\simeq\prod_{n\in\mathbb Z}
+\operatorname{Hom}_{\mathbb Q}
+\bigl(H^nX\otimes\mathbb Q,H^{n+r}Y\otimes\mathbb Q\bigr).
+\tag{8.1}
+\]">\[
+\operatorname{Hom}(pX,pY[r])
+\simeq\prod_{n\in\mathbb Z}
+\operatorname{Hom}_{\mathbb Q}
+\bigl(H^nX\otimes\mathbb Q,H^{n+r}Y\otimes\mathbb Q\bigr).
+\tag{8.1}
+\]</span>
+The product permits infinitely many nonzero degrees; it follows from actual degreewise maps of the split complexes. Although the splitting choices are not natural, the displayed cohomology map is canonical, as the prerequisite's proof checks. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-8-2-a-bounded-object-with-a-section-of-infinite-amplitude-advanced">Exercise 8.2 — A bounded object with a section of infinite amplitude (advanced)</h3>
+<p>Use <span class="math" data-tex="\(B=\mathbb Z/4\)">\(B=\mathbb Z/4\)</span>, <span class="math" data-tex="\(k=\mathbb F_2\)">\(k=\mathbb F_2\)</span>, and <span class="math" data-tex="\(\Lambda=\left(\begin{smallmatrix}B&amp;k\\0&amp;k\end{smallmatrix}\right)\)">\(\Lambda=\left(\begin{smallmatrix}B&amp;k\\0&amp;k\end{smallmatrix}\right)\)</span>, with the bimodule action through reduction modulo two. The Ind Serre lesson identifies the quotient <span class="math" data-tex="\(E:\mathsf{Mod}(\Lambda)\to\mathsf{Mod}(B)\)">\(E:\mathsf{Mod}(\Lambda)\to\mathsf{Mod}(B)\)</span>, <span class="math" data-tex="\(E(V,W,t)=V\)">\(E(V,W,t)=V\)</span>, and its section <span class="math" data-tex="\(J(H)=(H,H[2],\mathrm{ev})\)">\(J(H)=(H,H[2],\mathrm{ev})\)</span>. Compute <span class="math" data-tex="\(\mathbf R J(k)\)">\(\mathbf R J(k)\)</span> and all its cohomology groups.</p>
+<p><strong>Solution.</strong> First <span class="math" data-tex="\(B\)">\(B\)</span> is injective as a left <span class="math" data-tex="\(B\)">\(B\)</span>-module. The coinduced-character construction in <a href="injective-objects-in-locally-module-stacks.html">Injective objects in locally module stacks</a>, Section 3, proves that <span class="math" data-tex="\(\operatorname{Hom}_{\mathbb Z}(B,\mathbb Q/\mathbb Z)\)">\(\operatorname{Hom}_{\mathbb Z}(B,\mathbb Q/\mathbb Z)\)</span> is injective. The map
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+B\longrightarrow\operatorname{Hom}_{\mathbb Z}(B,\mathbb Q/\mathbb Z),
+\qquad a\longmapsto\bigl(b\longmapsto ab/4\bmod\mathbb Z\bigr)
+\tag{8.2}
+\]">\[
+B\longrightarrow\operatorname{Hom}_{\mathbb Z}(B,\mathbb Q/\mathbb Z),
+\qquad a\longmapsto\bigl(b\longmapsto ab/4\bmod\mathbb Z\bigr)
+\tag{8.2}
+\]</span>
+is well defined and <span class="math" data-tex="\(B\)">\(B\)</span>-linear for its coinduced action. A character is determined by its value on one, and that value is one of the four multiples of <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. Hence (8.2) is bijective, proving the assertion.</p>
+<p>An injective resolution of <span class="math" data-tex="\(k\)">\(k\)</span> is
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+0\to k\xrightarrow{\bar a\mapsto2a}B
+\xrightarrow{2}B\xrightarrow{2}B\xrightarrow{2}\cdots.
+\tag{8.3}
+\]">\[
+0\to k\xrightarrow{\bar a\mapsto2a}B
+\xrightarrow{2}B\xrightarrow{2}B\xrightarrow{2}\cdots.
+\tag{8.3}
+\]</span>
+The first map is monic and its image is <span class="math" data-tex="\(2B\)">\(2B\)</span>. Each multiplication-by-two map has kernel and image <span class="math" data-tex="\(2B\)">\(2B\)</span>, proving exactness at every term. Thus the injective complex has a copy of <span class="math" data-tex="\(B\)">\(B\)</span> in each degree <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>.</p>
+<p>Apply <span class="math" data-tex="\(J\)">\(J\)</span>. Each term is <span class="math" data-tex="\(J(B)=(B,k,\mathrm{ev})\)">\(J(B)=(B,k,\mathrm{ev})\)</span>, where the evaluation of the lower generator is <span class="math" data-tex="\(2\in B\)">\(2\in B\)</span>. Its differential is multiplication by two on the upper component and zero on the lower component, since multiplication by two kills <span class="math" data-tex="\(B[2]\)">\(B[2]\)</span>. Each term is injective over <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, by Lemma 2.1 for the exact evaluation <span class="math" data-tex="\(E\)">\(E\)</span>. This is the explicit complex representing <span class="math" data-tex="\(\mathbf R J(k)\)">\(\mathbf R J(k)\)</span>.</p>
+<p>Kernels and quotients of these representations are computed componentwise. Its degree-zero kernel has upper component <span class="math" data-tex="\(2B\)">\(2B\)</span>, lower component <span class="math" data-tex="\(k\)">\(k\)</span>, and structure map sending the lower generator to two. Identify <span class="math" data-tex="\(2B\)">\(2B\)</span> with <span class="math" data-tex="\(k\)">\(k\)</span>; this kernel is <span class="math" data-tex="\(J(k)=(k,k,1)\)">\(J(k)=(k,k,1)\)</span>. In each degree <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, the upper cohomology is <span class="math" data-tex="\(2B/2B=0\)">\(2B/2B=0\)</span>, the lower cohomology is <span class="math" data-tex="\(k/0=k\)">\(k/0=k\)</span>, and the induced structure map is zero. Therefore
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.4); horizontal scroll when needed" data-tex="\[
+H^0(\mathbf R J(k))=J(k),\qquad
+H^q(\mathbf R J(k))=(0,k,0)\quad(q\geq1).
+\tag{8.4}
+\]">\[
+H^0(\mathbf R J(k))=J(k),\qquad
+H^q(\mathbf R J(k))=(0,k,0)\quad(q\geq1).
+\tag{8.4}
+\]</span>
+Negative groups vanish. The positive groups are killed by <span class="math" data-tex="\(E\)">\(E\)</span>, as Theorem 3.1 requires. They are all nonzero, so the derived section of this bounded heart object does not belong to <span class="math" data-tex="\(D^b(\mathsf{Mod}(\Lambda))\)">\(D^b(\mathsf{Mod}(\Lambda))\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-8-3-when-the-equivalence-has-a-bounded-section-advanced">Exercise 8.3 — When the equivalence has a bounded section (advanced)</h3>
+<p>Suppose that <span class="math" data-tex="\(R^qR(H)=0\)">\(R^qR(H)=0\)</span> for every <span class="math" data-tex="\(H\in\mathcal D\)">\(H\in\mathcal D\)</span> and every <span class="math" data-tex="\(q&gt;d\)">\(q&gt;d\)</span>, for a fixed <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>. If <span class="math" data-tex="\(Y\)">\(Y\)</span> has cohomology only in <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, prove that <span class="math" data-tex="\(\mathbf S Y\)">\(\mathbf S Y\)</span> has cohomology only in <span class="math" data-tex="\([a,b+d]\)">\([a,b+d]\)</span>. Deduce the bounded Verdier equivalence with a fully faithful bounded section.</p>
+<p><strong>Solution.</strong> For a heart object <span class="math" data-tex="\(H\)">\(H\)</span>, the lower-bound statement and the hypothesis put <span class="math" data-tex="\(\mathbf S H\)">\(\mathbf S H\)</span> in degrees <span class="math" data-tex="\([0,d]\)">\([0,d]\)</span>. Its shifted version <span class="math" data-tex="\(H[-n]\)">\(H[-n]\)</span> therefore has section cohomology in <span class="math" data-tex="\([n,n+d]\)">\([n,n+d]\)</span>.</p>
+<p>Use the finite truncation tower of <span class="math" data-tex="\(Y\)">\(Y\)</span>: the successive triangles are
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.5); horizontal scroll when needed" data-tex="\[
+\tau_{\leq n-1}Y\longrightarrow\tau_{\leq n}Y
+\longrightarrow H^nY[-n]\longrightarrow\tau_{\leq n-1}Y[1],
+\quad a\leq n\leq b.
+\tag{8.5}
+\]">\[
+\tau_{\leq n-1}Y\longrightarrow\tau_{\leq n}Y
+\longrightarrow H^nY[-n]\longrightarrow\tau_{\leq n-1}Y[1],
+\quad a\leq n\leq b.
+\tag{8.5}
+\]</span>
+The initial vertex <span class="math" data-tex="\(\tau_{\leq a-1}Y\)">\(\tau_{\leq a-1}Y\)</span> is zero and the final truncation is <span class="math" data-tex="\(Y\)">\(Y\)</span>. Apply the triangulated <span class="math" data-tex="\(\mathbf S\)">\(\mathbf S\)</span>. Inductively the long exact cohomology sequence says that the middle vertex has no groups outside the union of the ranges of the first and third vertices: at an excluded degree both adjacent groups <span class="math" data-tex="\(H^q\)">\(H^q\)</span> of those vertices are zero. Their union is contained in <span class="math" data-tex="\([a,n+d]\)">\([a,n+d]\)</span>. The induction ends at <span class="math" data-tex="\([a,b+d]\)">\([a,b+d]\)</span>, proving the precise bound without an infinite convergence argument.</p>
+<p>Consequently <span class="math" data-tex="\(\mathbf S\)">\(\mathbf S\)</span> restricts to <span class="math" data-tex="\(D^b(\mathcal D)\to D^b(\mathcal A)\)">\(D^b(\mathcal D)\to D^b(\mathcal A)\)</span>. The exact <span class="math" data-tex="\(\mathbf L\)">\(\mathbf L\)</span> also restricts, its kernel there is <span class="math" data-tex="\(D^b_{\mathcal T}(\mathcal A)\)">\(D^b_{\mathcal T}(\mathcal A)\)</span>, and the counit and unit of Section 3 restrict. Their cone objects are still bounded. The proof of Theorem 4.1 therefore applies inside these bounded categories, giving
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.6); horizontal scroll when needed" data-tex="\[
+D^b(\mathcal A)/D^b_{\mathcal T}(\mathcal A)
+\simeq D^b(\mathcal D)
+\tag{8.6}
+\]">\[
+D^b(\mathcal A)/D^b_{\mathcal T}(\mathcal A)
+\simeq D^b(\mathcal D)
+\tag{8.6}
+\]</span>
+with fully faithful section <span class="math" data-tex="\(\mathbf S\)">\(\mathbf S\)</span> of the stated amplitude. Solution 8.2 fails the hypothesis for every finite <span class="math" data-tex="\(d\)">\(d\)</span>; its nonbounded section is therefore consistent with this conclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-8-4-the-degree-two-obstruction-to-derived-locality-expert">Exercise 8.4 — The degree-two obstruction to derived locality (expert)</h3>
+<p>In Solution 8.2 put <span class="math" data-tex="\(P=(0,k,0)\)">\(P=(0,k,0)\)</span> and <span class="math" data-tex="\(G=J(k)=(k,k,1)\)">\(G=J(k)=(k,k,1)\)</span>. Compute every <span class="math" data-tex="\(\operatorname{Ext}^n_\Lambda(P,G)\)">\(\operatorname{Ext}^n_\Lambda(P,G)\)</span>, and use the result to test both <span class="math" data-tex="\(G[0]\)">\(G[0]\)</span> and <span class="math" data-tex="\(\mathbf R J(k)\)">\(\mathbf R J(k)\)</span> for derived locality.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> be the two diagonal idempotents. The modules <span class="math" data-tex="\(P_1=\Lambda e_1=(B,0,0)\)">\(P_1=\Lambda e_1=(B,0,0)\)</span> and <span class="math" data-tex="\(P_2=\Lambda e_2=(k,k,1)=G\)">\(P_2=\Lambda e_2=(k,k,1)=G\)</span> are projective: <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(\Lambda e_i,M)\simeq e_iM\)">\(\operatorname{Hom}_\Lambda(\Lambda e_i,M)\simeq e_iM\)</span>, by evaluation at <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, with inverse <span class="math" data-tex="\(x\mapsto(ae_i\mapsto ax)\)">\(x\mapsto(ae_i\mapsto ax)\)</span>. The component functor <span class="math" data-tex="\(e_i(-)\)">\(e_i(-)\)</span> is exact because module kernels and quotients are componentwise.</p>
+<p>Projection <span class="math" data-tex="\(G\to P\)">\(G\to P\)</span> is identity on the lower component and zero on the upper. Its kernel is <span class="math" data-tex="\((k,0,0)\)">\((k,0,0)\)</span>. Reduction on the upper component defines <span class="math" data-tex="\(P_1\to G\)">\(P_1\to G\)</span> with exactly that image; its kernel is <span class="math" data-tex="\((2B,0,0)\)">\((2B,0,0)\)</span>. The subsequent multiplication-by-two maps on <span class="math" data-tex="\(P_1\)">\(P_1\)</span> have that same kernel and image. Thus a complete projective resolution is
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.7); horizontal scroll when needed" data-tex="\[
+\cdots\xrightarrow{2}P_1\xrightarrow{2}P_1
+\xrightarrow{\mathrm{red}}G\longrightarrow P\longrightarrow0.
+\tag{8.7}
+\]">\[
+\cdots\xrightarrow{2}P_1\xrightarrow{2}P_1
+\xrightarrow{\mathrm{red}}G\longrightarrow P\longrightarrow0.
+\tag{8.7}
+\]</span>
+Here <span class="math" data-tex="\(G\)">\(G\)</span> is homological degree zero, the rightmost <span class="math" data-tex="\(P_1\)">\(P_1\)</span> is degree one, and every later <span class="math" data-tex="\(P_1\)">\(P_1\)</span> has the next degree. Regard this as a bounded-above cochain projective replacement in degrees <span class="math" data-tex="\(0,-1,-2,\ldots\)">\(0,-1,-2,\ldots\)</span>. Its K-projectivity, proved in the roof lesson, makes Hom from this replacement compute all derived morphisms, including the groups of negative degree.</p>
+<p>Now <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(G,G)=k\)">\(\operatorname{Hom}_\Lambda(G,G)=k\)</span>: the structure square forces its upper and lower scalars to be equal. Also <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(P_1,G)=k\)">\(\operatorname{Hom}_\Lambda(P_1,G)=k\)</span>, by its upper component. Precomposition by reduction takes that common scalar to the same upper scalar, so the first differential of the Hom complex is identity of <span class="math" data-tex="\(k\)">\(k\)</span>. Every subsequent differential is zero, since it is induced by multiplication by two into a target killed by two. The Hom complex is therefore
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.8); horizontal scroll when needed" data-tex="\[
+k\xrightarrow{1}k\xrightarrow{0}k\xrightarrow{0}k\xrightarrow{0}\cdots
+\tag{8.8}
+\]">\[
+k\xrightarrow{1}k\xrightarrow{0}k\xrightarrow{0}k\xrightarrow{0}\cdots
+\tag{8.8}
+\]</span>
+in degrees <span class="math" data-tex="\(0,1,2,\ldots\)">\(0,1,2,\ldots\)</span>. Signs from an alternative Hom differential convention do not change identity being invertible or the other maps being zero. Its cohomology gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.9); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^n_\Lambda(P,G)=
+\begin{cases}0,&amp;n&lt;2,\\k,&amp;n\geq2.\end{cases}
+\tag{8.9}
+\]">\[
+\operatorname{Ext}^n_\Lambda(P,G)=
+\begin{cases}0,&amp;n&lt;2,\\k,&amp;n\geq2.\end{cases}
+\tag{8.9}
+\]</span>
+This includes all negative degrees, degree zero and degree one.</p>
+<p>The object <span class="math" data-tex="\(G\)">\(G\)</span> is abelian local, since it is the ordinary section <span class="math" data-tex="\(J(k)\)">\(J(k)\)</span>. Nevertheless <span class="math" data-tex="\(P\in\mathcal T\)">\(P\in\mathcal T\)</span> and <span class="math" data-tex="\(\operatorname{Hom}(P,G[2])=k\ne0\)">\(\operatorname{Hom}(P,G[2])=k\ne0\)</span>, so <span class="math" data-tex="\(G[0]\)">\(G[0]\)</span> is not derived local. Equivalently its derived unit <span class="math" data-tex="\(G\to\mathbf R J(EG)=\mathbf R J(k)\)">\(G\to\mathbf R J(EG)=\mathbf R J(k)\)</span> is an isomorphism on <span class="math" data-tex="\(H^0\)">\(H^0\)</span> but cannot be a quasi-isomorphism, by (8.4).</p>
+<p>In contrast <span class="math" data-tex="\(\mathbf R J(k)\)">\(\mathbf R J(k)\)</span> is derived local by Theorem 3.1 and (5.1). Its positive cohomology objects <span class="math" data-tex="\(P\)">\(P\)</span> are not even abelian local: <span class="math" data-tex="\(\operatorname{Hom}(P,P)\)">\(\operatorname{Hom}(P,P)\)</span> contains identity, whereas abelian locality requires Hom from every torsion object to vanish. Hence neither an abelian local heart object nor a degreewise test of abelian locality characterizes the derived section. The full orthogonal condition is the required test. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="9-further-reading">9. Further reading</h2>
+<p>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/015Z">Injectives and adjoint functors</a>, explains injective preservation by a right adjoint with exact left adjoint. <a href="https://stacks.math.columbia.edu/tag/0FNC">Deriving adjoints</a> gives the general derived adjunction interface. <a href="https://stacks.math.columbia.edu/tag/06UQ">Cohomology in a weak Serre subcategory</a> treats the supported-cohomology triangulated subcategory. The programme proofs linked above supply the replacement, fraction, truncation and quotient arguments used here.</p>
+</main></body></html>

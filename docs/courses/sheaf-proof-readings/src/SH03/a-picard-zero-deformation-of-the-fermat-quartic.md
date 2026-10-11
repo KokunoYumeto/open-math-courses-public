@@ -4,7 +4,7 @@ Starting with the Fermat quartic, this reading constructs a convergent family of
 
 *Original programme exposition by GPT-6 Astra (OpenAI), Ultra, October 2026. This independently expressed exposition is dedicated under CC0-1.0. Human sources retain their own terms.*
 
-Take the smooth quartic surface \(X_0=\{P=0\}\subset\mathbb {CP}^3\) of The ordinary topology of the Fermat quartic, with \(P\) homogeneous of degree four. That route supplies compact connectedness, ordinary \(\pi_1(X_0)=1\) and \(b_2(X_0)=22\). Holomorphic canonical triviality is proved here, so that the complete starting data are
+Take the smooth quartic surface \(X_0=\{P=0\}\subset\mathbb {CP}^3\) of [The ordinary topology of the Fermat quartic](../../SH03-ordinary-topology-of-the-fermat-quartic.html), with \(P\) homogeneous of degree four. That route supplies compact connectedness, ordinary \(\pi_1(X_0)=1\) and \(b_2(X_0)=22\). Holomorphic canonical triviality is proved here, so that the complete starting data are
 \[
  K_{X_0}\simeq\mathcal O_{X_0},\qquad
  \pi_1(X_0)=1,\qquad b_2(X_0)=22.                 \tag{A1}
@@ -38,16 +38,16 @@ Smoothness of the divisor means some \(\partial_jP_i\) is nonzero at each point.
 
 ## 1. The precise linear analytic inputs and their consequences
 
-The Dolbeault complex, Theorem 2.2, Corollary 2.3 and Theorem 3.2, proves the local \(\bar\partial\) lemma, its vector-bundle resolution, and
+[The Dolbeault complex](../../../complex-analytic-spaces-and-coherent-sheaves/the-dolbeault-complex.html#2-the-dolbeault-grothendieck-lemma), Theorem 2.2, Corollary 2.3 and Theorem 3.2, proves the local \(\bar\partial\) lemma, its vector-bundle resolution, and
 \[
  H^q(X,\mathcal O(E))
   =H^q\bigl(A^{0,\bullet}(X,E),\bar\partial_E\bigr).       \tag{A2}
 \]
-Elliptic complexes, diagonal traces, and fixed points, equations EC4–EC14a and §§11.2,13.1, supplies the compact elliptic Green operators on all Sobolev orders.
+[Elliptic complexes, diagonal traces, and fixed points](../../../elliptic-operators-and-boundary-problems/elliptic-complex-lefschetz.html#the-full-laplacian-symbol-and-hodge-representative), equations EC4–EC14a and §§11.2,13.1, supplies the compact elliptic Green operators on all Sobolev orders.
 
 The comparison with topological cohomology has a separate precise route. On a star-shaped real chart, radial integration gives the homotopy
 \(K\alpha(x)=\int_0^1t^{q-1}\iota_x\alpha(tx)\,dt\)
-on a \(q\)-form, with \(dK+Kd=1\) in positive degrees and \(1-\operatorname{ev}_0\) in degree zero. The identity follows by differentiating pullback along \(x\mapsto tx\) and integrating from zero to one. Thus the smooth de Rham complex resolves the constant complex sheaf. Its terms are fine, and the partition-of-unity homotopy in the Dolbeault provider applies unchanged. Theorem 1.3 of Sheaf cohomology and singular cohomology on manifolds identifies the resulting constant-sheaf cohomology with singular cohomology. The wedge product extends constant multiplication and hence induces the same cohomology product. Its top-degree integral has the complex orientation normalization: on a chart a positive compactly supported top form of integral one represents the positive local class, and Stokes makes the integral vanish on exact forms. This identifies the form pairing below with the usual intersection pairing. The comparison uses the singular small-chain and acyclic-resolution inputs stated in that reading.
+on a \(q\)-form, with \(dK+Kd=1\) in positive degrees and \(1-\operatorname{ev}_0\) in degree zero. The identity follows by differentiating pullback along \(x\mapsto tx\) and integrating from zero to one. Thus the smooth de Rham complex resolves the constant complex sheaf. Its terms are fine, and the partition-of-unity homotopy in the Dolbeault provider applies unchanged. Theorem 1.3 of [Sheaf cohomology and singular cohomology on manifolds](../../../poincare-duality-on-manifolds/sheaf-cohomology-and-singular-cohomology-on-manifolds.html#1-the-sheaf-of-singular-cochains) identifies the resulting constant-sheaf cohomology with singular cohomology. The wedge product extends constant multiplication and hence induces the same cohomology product. Its top-degree integral has the complex orientation normalization: on a chart a positive compactly supported top form of integral one represents the positive local class, and Stokes makes the integral vanish on exact forms. This identifies the form pairing below with the usual intersection pairing. The comparison uses the singular small-chain and acyclic-resolution inputs stated in that reading.
 
 Here is the application, including the bundle and degree conventions. On a compact Hermitian complex manifold, choose a Hermitian metric on \(E\), put \(D=\bar\partial_E\), and use the formal adjoint for the volume form and these metrics. If the provider is expressed on half-densities, conjugate \(D\) by multiplication by the square root of this volume density. For a nonzero real covector \(\xi\), the symbol is multiplication by \(i\xi^{0,1}\). Its complex is exact because exterior multiplication by a nonzero covector is contracted by any vector pairing to one. The provider therefore gives
 \[
@@ -162,7 +162,7 @@ The construction uses the following coordinate theorem.
 
 **NN.** An almost-complex structure of class \(C^{5,1/2}\) on a real 44-dimensional manifold whose \((0,1)\)-distribution is involutive admits local complex coordinates of class at least \(C^2\) in which that structure is the standard one. The coordinate changes are holomorphic. The usual stronger \(C^{6,1/2}\) coordinate conclusion suffices.
 
-The coordinate input is developed in Integrable structures and finite-regularity coordinates, Section 1. Its finite regularity is enough for the total almost-complex structure constructed next.
+The coordinate input is developed in [Integrable structures and finite-regularity coordinates, Section 1](../../SH03-integrable-structures-and-finite-regularity-coordinates.html#statement-and-regularity-budget). Its finite regularity is enough for the total almost-complex structure constructed next.
 
 On the smooth product \(X_0\times B\), for a sufficiently small ball \(B\subset\mathcal H^1\), declare the \((0,1)\)-distribution to be generated locally by
 \[
@@ -302,7 +302,7 @@ The selected period therefore kills \(c_1(A)\) in the torsion-free integral latt
               \pi_1(X_h)=1,\quad
               H^2(X_h;\mathbb Q)\simeq\mathbb Q^{22}.    \tag{A28}
 \]
-The fibre is a compact connected complex K3 surface. Together with NN and the ordinary quartic topology, it gives exactly the geometry required by the complex-constructible sheaf example.
+The fibre is a compact connected complex K3 surface. Together with NN and the [ordinary quartic topology](../../SH03-ordinary-topology-of-the-fermat-quartic.html), it gives exactly the geometry required by the [complex-constructible sheaf example](../../SH03-complex-constructible-sheaves-and-missing-derived-classes.html).
 
 ## 8. Why finite regularity suffices
 

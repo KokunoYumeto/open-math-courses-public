@@ -50,7 +50,19 @@ For \(x\in E\), denote its signed visit times by \(q_j(x)\), where
  \cdots<q_{-1}(x)<q_0(x)=0<q_1(x)<q_2(x)<\cdots.
  \tag{IC5}
 \]
-Their level sets are countable Boolean combinations of \(T^{-k}E\), so all these functions are Borel. Put \(r_E=q_1\), \(T_Ex=T^{r_E(x)}x\), and
+Their level sets are countable Boolean combinations of \(T^{-k}E\), so all these functions are Borel.
+
+The same visit index is defined on the whole retained space. For \(y\in\Omega\), enumerate \(\{m\in\mathbb Z:T^my\in E\}\) as \((h_j(y))_{j\in\mathbb Z}\), normalized by \(h_0(y)\le0<h_1(y)\). Both ends are unbounded by recurrence. For \(k\in\mathbb Z\), put \(n_E(k,y)=\max\{j:h_j(y)\le k\}\). The maximum exists and is finite. Successive minima and maxima in countable sets show that every \(h_j\) is Borel; explicitly, each of their integer level sets is a countable Boolean combination of the sets \(T^{-m}E\). Also \(\{n_E(k,\cdot)=j\}=\{h_j\le k<h_{j+1}\}\), so the signed index is Borel. For all integers \(j,k,l\),
+\[
+ \begin{aligned}
+ h_j(T^ky)&=h_{j+n_E(k,y)}(y)-k,\\
+ n_E(k+l,y)&=n_E(k,y)+n_E(l,T^ky).
+ \end{aligned}
+ \tag{IC5a}
+\]
+Indeed the visit set at \(T^ky\) is the visit set at \(y\) translated by \(-k\). Its last nonpositive member is \(h_{n_E(k,y)}(y)-k\), which fixes the normalized indexing and proves the first equality. The largest index with \(h_j(T^ky)\le l\) is therefore \(n_E(k+l,y)-n_E(k,y)\), proving the second. In particular \(n_E(0,y)=0\). These are simultaneous pointwise identities on the invariant recurrent model, including negative integers. On \(E\), \(h_j=q_j\).
+
+Put \(r_E=q_1\), \(T_Ex=T^{r_E(x)}x\), and
 \[
  e_n=1_{\{x\in E:r_E(x)=n\}}
      =\left(e-\sum_{j<n}e_j\right)\alpha^{-n}(e),

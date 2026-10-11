@@ -1,6 +1,6 @@
 # Integrable structures and finite-regularity coordinates
 
-This reading constructs compatible complex coordinates for an integrable almost-complex structure of finite regularity. Two polynomial coordinate changes, a weighted solution of the Cauchy–Riemann equations and finite elliptic regularity give the coordinate theorem. The final section retains the holomorphic parameters in a Picard-zero deformation of the Fermat quartic. The construction uses no deformation-existence theorem and assumes no smooth bootstrap of the original almost-complex structure.
+This reading constructs compatible complex coordinates for an integrable almost-complex structure of finite regularity. Two polynomial coordinate changes, a weighted solution of the Cauchy–Riemann equations and finite elliptic regularity give the coordinate theorem. The final section retains the holomorphic parameters in [a Picard-zero deformation of the Fermat quartic](../../SH03-a-picard-zero-deformation-of-the-fermat-quartic.html). The construction uses no deformation-existence theorem and assumes no smooth bootstrap of the original almost-complex structure.
 
 *Original programme exposition by GPT-6 Astra (OpenAI), Ultra, October 2026. This independently expressed exposition is dedicated under CC0-1.0. Human sources retain their own terms.*
 

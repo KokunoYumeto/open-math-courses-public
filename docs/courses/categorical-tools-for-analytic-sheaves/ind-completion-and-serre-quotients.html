@@ -1,0 +1,312 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ind-completion and Serre quotients</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="ind-completion-and-serre-quotients">Ind-completion and Serre quotients</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>A Serre quotient removes objects while preserving exact sequences. Ind-completion adds filtered families of objects. We prove that these operations commute for a small abelian category, construct the right adjoint explicitly, and identify the objects it recovers. The counit proof retains the source restrictions and target quotients in a quotient morphism. Examples distinguish the exact quotient functor from its possibly nonexact right adjoint.</p>
+<p>Fix a universe and a small abelian category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. A small skeleton of an essentially small abelian category works equally well. Let <span class="math" data-tex="\(\mathcal S\subseteq\mathcal C\)">\(\mathcal S\subseteq\mathcal C\)</span> be a full Serre subcategory, closed under subobjects, quotients, extensions and isomorphisms within <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Write
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (0.1); horizontal scroll when needed" data-tex="\[
+Q:\mathcal C\longrightarrow\mathcal B=\mathcal C/\mathcal S,
+\qquad
+\mathcal A=\operatorname{Ind}(\mathcal C),\quad
+\mathcal D=\operatorname{Ind}(\mathcal B).
+\tag{0.1}
+\]">\[
+Q:\mathcal C\longrightarrow\mathcal B=\mathcal C/\mathcal S,
+\qquad
+\mathcal A=\operatorname{Ind}(\mathcal C),\quad
+\mathcal D=\operatorname{Ind}(\mathcal B).
+\tag{0.1}
+\]</span>
+Choose the quotient with objects labelled by those of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Its Hom sets are small by the quotient formula below. Write <span class="math" data-tex="\(c_{\mathcal C},c_{\mathcal B}\)">\(c_{\mathcal C},c_{\mathcal B}\)</span> for constant embeddings.</p>
+<p><a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a>, Sections 1–3, proves the element-category criterion, the Hom formula and extension of a functor through filtered presentations. <a href="limits-and-colimits-of-formal-objects.html">Limits and colimits of formal objects</a>, Section 1, recognizes Ind presheaves by their finite-colimit tests. <a href="ind-abelian-categories-and-controlled-exact-sequences.html">Two cokernels, controlled rows and abelian completion</a>, Sections 2–5, proves the abelian structure, exact constant embeddings and exactness of induced Ind functors. <a href="serre-quotients-and-local-saturation.html">Serre quotients and local saturation</a>, Sections 1–2 and 8, constructs the exact quotient and its fractions. <a href="short-exact-extensions-and-the-baer-group.html">Short exact extensions and the Baer group</a> supplies the extension interpretation of <span class="math" data-tex="\(\operatorname{Ext}^1\)">\(\operatorname{Ext}^1\)</span>. Module examples use <a href="formal-colimits-and-compact-presentations.html">Formal colimits and compact presentations</a>, Section 4, and the integer-module proofs in <a href="right-derived-tensor-and-torsion-free-quotients.html">Right derived tensor and torsion-free quotients</a>, Section 1.</p>
+<h2 id="1-the-exact-induced-functor-and-the-fraction-formula">1. The exact induced functor and the fraction formula</h2>
+<p>The induced functor
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+L=\operatorname{Ind}(Q):\mathcal A\longrightarrow\mathcal D
+\tag{1.1}
+\]">\[
+L=\operatorname{Ind}(Q):\mathcal A\longrightarrow\mathcal D
+\tag{1.1}
+\]</span>
+is exact by the Ind exactness theorem, and preserves filtered colimits by construction. Explicitly it takes <span class="math" data-tex="\(\operatorname{colim}_i c_{\mathcal C}C_i\)">\(\operatorname{colim}_i c_{\mathcal C}C_i\)</span> to <span class="math" data-tex="\(\operatorname{colim}_i c_{\mathcal B}QC_i\)">\(\operatorname{colim}_i c_{\mathcal B}QC_i\)</span>, with the induced stage arrows.</p>
+<p>We need the precise quotient Hom formula. A morphism <span class="math" data-tex="\(QB\to QA\)">\(QB\to QA\)</span> can be represented by
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+B&#x27;\subseteq B,\quad B/B&#x27;\in\mathcal S,\qquad
+S&#x27;\subseteq A,\quad S&#x27;\in\mathcal S,\qquad
+a:B&#x27;\longrightarrow A/S&#x27;.
+\tag{1.2}
+\]">\[
+B&#x27;\subseteq B,\quad B/B&#x27;\in\mathcal S,\qquad
+S&#x27;\subseteq A,\quad S&#x27;\in\mathcal S,\qquad
+a:B&#x27;\longrightarrow A/S&#x27;.
+\tag{1.2}
+\]</span>
+Its value is <span class="math" data-tex="\(Q\pi^{-1}\,Qa\,Qi^{-1}\)">\(Q\pi^{-1}\,Qa\,Qi^{-1}\)</span>, for the target quotient <span class="math" data-tex="\(\pi:A\to A/S&#x27;\)">\(\pi:A\to A/S&#x27;\)</span> and source inclusion <span class="math" data-tex="\(i:B&#x27;\hookrightarrow B\)">\(i:B&#x27;\hookrightarrow B\)</span>. Representatives are identified after decreasing the source and increasing the negligible target. The complete quotient proof shows that this is a filtered colimit formula for Hom, compatible with composition. In particular <span class="math" data-tex="\(Qt=0\)">\(Qt=0\)</span> for an ordinary morphism <span class="math" data-tex="\(t\)">\(t\)</span> exactly when <span class="math" data-tex="\(\operatorname{im}t\in\mathcal S\)">\(\operatorname{im}t\in\mathcal S\)</span>, since <span class="math" data-tex="\(Q\)">\(Q\)</span> is exact and its object kernel is <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>.</p>
+<p>All subsequent completions use this small quotient category; no cofinal-smallness claim about an arbitrary large coefficient category is implicit.</p>
+<h2 id="2-construct-the-right-adjoint-as-a-presheaf">2. Construct the right adjoint as a presheaf</h2>
+<p>For <span class="math" data-tex="\(Y\in\mathcal D\)">\(Y\in\mathcal D\)</span>, put
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+(RY)(A)=\operatorname{Hom}_{\mathcal D}(c_{\mathcal B}QA,Y),
+\qquad A\in\mathcal C,
+\tag{2.1}
+\]">\[
+(RY)(A)=\operatorname{Hom}_{\mathcal D}(c_{\mathcal B}QA,Y),
+\qquad A\in\mathcal C,
+\tag{2.1}
+\]</span>
+with precomposition along <span class="math" data-tex="\(Qu\)">\(Qu\)</span> for <span class="math" data-tex="\(u:A\to A&#x27;\)">\(u:A\to A&#x27;\)</span>. These are abelian groups, and their maps are additive.</p>
+<p><strong>Proposition 2.1.</strong> The presheaf (2.1) is an Ind-object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> and defines an additive right adjoint <span class="math" data-tex="\(R\)">\(R\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Proof.</strong> The composite <span class="math" data-tex="\(c_{\mathcal B}Q\)">\(c_{\mathcal B}Q\)</span> preserves finite colimits: <span class="math" data-tex="\(Q\)">\(Q\)</span> is exact and additive, and the constant embedding preserves finite colimits. Hom from a colimit to <span class="math" data-tex="\(Y\)">\(Y\)</span> is the limit of the corresponding Hom sets. Thus (2.1) passes the finite-colimit test. Its category of elements is small, since <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is small and every value in (2.1) is a small set. The proved recognition criterion therefore makes it an Ind-object.</p>
+<p>For <span class="math" data-tex="\(X=\operatorname{colim}_i c_{\mathcal C}C_i\)">\(X=\operatorname{colim}_i c_{\mathcal C}C_i\)</span>, the Hom formula and Yoneda give
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\mathcal A}(X,RY)
+&amp;=\lim_i (RY)(C_i)\\
+&amp;=\lim_i\operatorname{Hom}_{\mathcal D}(c_{\mathcal B}QC_i,Y)\\
+&amp;=\operatorname{Hom}_{\mathcal D}(LX,Y).
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\mathcal A}(X,RY)
+&amp;=\lim_i (RY)(C_i)\\
+&amp;=\lim_i\operatorname{Hom}_{\mathcal D}(c_{\mathcal B}QC_i,Y)\\
+&amp;=\operatorname{Hom}_{\mathcal D}(LX,Y).
+\end{aligned}
+\tag{2.2}
+\]</span>
+Every equality is its natural universal-property bijection. Precomposition and postcomposition commute with all three steps, so this is an adjunction on every arrow, independent of the chosen presentation. Addition agrees in (2.1), hence in the represented Hom maps; <span class="math" data-tex="\(R\)">\(R\)</span> is additive. The units and counits are those given by identity maps under (2.2), and its naturality proves both triangle identities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>More explicitly, the element category <span class="math" data-tex="\(E_{RY}\)">\(E_{RY}\)</span> has objects <span class="math" data-tex="\((A,f)\)">\((A,f)\)</span>, where <span class="math" data-tex="\(f:c_{\mathcal B}QA\to Y\)">\(f:c_{\mathcal B}QA\to Y\)</span>, and arrows <span class="math" data-tex="\(t:(A,f)\to(A&#x27;,f&#x27;)\)">\(t:(A,f)\to(A&#x27;,f&#x27;)\)</span> with <span class="math" data-tex="\(f&#x27;c_{\mathcal B}Qt=f\)">\(f&#x27;c_{\mathcal B}Qt=f\)</span>. The recognized presentation is <span class="math" data-tex="\(RY=\operatorname{colim}_{E_{RY}}c_{\mathcal C}A\)">\(RY=\operatorname{colim}_{E_{RY}}c_{\mathcal C}A\)</span>. Its counit is the cocone
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\epsilon_Y:\operatorname{colim}_{(A,f)\in E_{RY}}c_{\mathcal B}QA
+\longrightarrow Y
+\tag{2.3}
+\]">\[
+\epsilon_Y:\operatorname{colim}_{(A,f)\in E_{RY}}c_{\mathcal B}QA
+\longrightarrow Y
+\tag{2.3}
+\]</span>
+with components <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<h2 id="3-prove-the-counit-is-invertible">3. Prove the counit is invertible</h2>
+<p><strong>Theorem 3.1.</strong> Every <span class="math" data-tex="\(\epsilon_Y\)">\(\epsilon_Y\)</span> is an isomorphism. Consequently <span class="math" data-tex="\(R\)">\(R\)</span> is fully faithful and <span class="math" data-tex="\(L\)">\(L\)</span> is essentially surjective.</p>
+<p><strong>Proof.</strong> Test (2.3) by <span class="math" data-tex="\(c_{\mathcal B}QB\)">\(c_{\mathcal B}QB\)</span>, for every <span class="math" data-tex="\(B\in\mathcal C\)">\(B\in\mathcal C\)</span>. These are all the representable tests in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. They are finitely presented, so maps into its filtered source are represented by
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+g:QB\longrightarrow QA\quad\hbox{at some }(A,f).
+\]">\[
+g:QB\longrightarrow QA\quad\hbox{at some }(A,f).
+\]</span>
+The induced map sends that representative to <span class="math" data-tex="\(f\,c_{\mathcal B}g\)">\(f\,c_{\mathcal B}g\)</span>.</p>
+<p>It is surjective: a map <span class="math" data-tex="\(u:c_{\mathcal B}QB\to Y\)">\(u:c_{\mathcal B}QB\to Y\)</span> itself supplies the object <span class="math" data-tex="\((B,u)\)">\((B,u)\)</span>, and <span class="math" data-tex="\(1_{QB}\)">\(1_{QB}\)</span> represents its preimage.</p>
+<p>For injectivity, first move two representatives to the single element <span class="math" data-tex="\((D,f_D)\)">\((D,f_D)\)</span>, where <span class="math" data-tex="\(D=A\oplus A&#x27;\)">\(D=A\oplus A&#x27;\)</span> and <span class="math" data-tex="\(f_D\)">\(f_D\)</span> has components <span class="math" data-tex="\(f,f&#x27;\)">\(f,f&#x27;\)</span>. Let <span class="math" data-tex="\(v:QB\to QD\)">\(v:QB\to QD\)</span> be the difference of their two maps. Equality of their images says <span class="math" data-tex="\(f_Dc_{\mathcal B}v=0\)">\(f_Dc_{\mathcal B}v=0\)</span>. Represent <span class="math" data-tex="\(v\)">\(v\)</span> by (1.2), now as <span class="math" data-tex="\(a:B&#x27;\to D/S&#x27;\)">\(a:B&#x27;\to D/S&#x27;\)</span>. Put <span class="math" data-tex="\(\pi:D\to D/S&#x27;\)">\(\pi:D\to D/S&#x27;\)</span> and
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+f_{D/S&#x27;}=f_D(c_{\mathcal B}Q\pi)^{-1}.
+\tag{3.1}
+\]">\[
+f_{D/S&#x27;}=f_D(c_{\mathcal B}Q\pi)^{-1}.
+\tag{3.1}
+\]</span>
+Then <span class="math" data-tex="\(f_{D/S&#x27;}c_{\mathcal B}Qa=0\)">\(f_{D/S&#x27;}c_{\mathcal B}Qa=0\)</span>, because <span class="math" data-tex="\(Qi\)">\(Qi\)</span> is invertible. Let <span class="math" data-tex="\(I=\operatorname{im}a\subseteq D/S&#x27;\)">\(I=\operatorname{im}a\subseteq D/S&#x27;\)</span>. Exactness of <span class="math" data-tex="\(Q\)">\(Q\)</span> and of the constant embedding makes <span class="math" data-tex="\(c_{\mathcal B}QB&#x27;\to c_{\mathcal B}QI\)">\(c_{\mathcal B}QB&#x27;\to c_{\mathcal B}QI\)</span> epic. Therefore <span class="math" data-tex="\(f_{D/S&#x27;}\)">\(f_{D/S&#x27;}\)</span> kills <span class="math" data-tex="\(c_{\mathcal B}QI\)">\(c_{\mathcal B}QI\)</span>, and factors uniquely through
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+E=(D/S&#x27;)/I.
+\tag{3.2}
+\]">\[
+E=(D/S&#x27;)/I.
+\tag{3.2}
+\]</span>
+Denote the factor by <span class="math" data-tex="\(f_E:c_{\mathcal B}QE\to Y\)">\(f_E:c_{\mathcal B}QE\to Y\)</span>. The composite <span class="math" data-tex="\(t:D\to E\)">\(t:D\to E\)</span> is an arrow <span class="math" data-tex="\((D,f_D)\to(E,f_E)\)">\((D,f_D)\to(E,f_E)\)</span> in <span class="math" data-tex="\(E_{RY}\)">\(E_{RY}\)</span>. Its quotient map kills <span class="math" data-tex="\(a\)">\(a\)</span>, so <span class="math" data-tex="\(Qt\,v=0\)">\(Qt\,v=0\)</span>. Thus the two representatives agree at this later filtered stage, proving injectivity.</p>
+<p>The image <span class="math" data-tex="\(I\)">\(I\)</span> in (3.2) need not belong to <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>; this transition is a map in the element category, not a quotient denominator. The argument uses exactly the vanishing after mapping to <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>We have proved that <span class="math" data-tex="\(\operatorname{Hom}(c_{\mathcal B}QB,\epsilon_Y)\)">\(\operatorname{Hom}(c_{\mathcal B}QB,\epsilon_Y)\)</span> is bijective for every <span class="math" data-tex="\(B\)">\(B\)</span>. Ind-objects are full presheaves on <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, and these bijections are all their pointwise tests, so <span class="math" data-tex="\(\epsilon_Y\)">\(\epsilon_Y\)</span> is invertible. The adjunction now gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathcal A}(RY,RZ)
+\simeq\operatorname{Hom}_{\mathcal D}(LRY,Z)
+\simeq\operatorname{Hom}_{\mathcal D}(Y,Z),
+\]">\[
+\operatorname{Hom}_{\mathcal A}(RY,RZ)
+\simeq\operatorname{Hom}_{\mathcal D}(LRY,Z)
+\simeq\operatorname{Hom}_{\mathcal D}(Y,Z),
+\]</span>
+with the usual <span class="math" data-tex="\(R\)">\(R\)</span>-map correspondence. Hence <span class="math" data-tex="\(R\)">\(R\)</span> is fully faithful. The presentation <span class="math" data-tex="\(Y\simeq LRY\)">\(Y\simeq LRY\)</span> proves essential surjectivity of <span class="math" data-tex="\(L\)">\(L\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-objects-killed-by-completion-of-the-quotient">4. The objects killed by completion of the quotient</h2>
+<p>Regard <span class="math" data-tex="\(\operatorname{Ind}(\mathcal S)\)">\(\operatorname{Ind}(\mathcal S)\)</span> as a full subcategory of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>: its full faithfulness follows from the Ind Hom formula and fullness of <span class="math" data-tex="\(\mathcal S\subseteq\mathcal C\)">\(\mathcal S\subseteq\mathcal C\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> The object kernel of <span class="math" data-tex="\(L\)">\(L\)</span> is exactly
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\mathcal T=\operatorname{Ind}(\mathcal S).
+\tag{4.1}
+\]">\[
+\mathcal T=\operatorname{Ind}(\mathcal S).
+\tag{4.1}
+\]</span>
+It is a localizing Serre subcategory, meaning a Serre subcategory closed under small coproducts.</p>
+<p><strong>Proof.</strong> A filtered colimit of constants from <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> is killed by <span class="math" data-tex="\(L\)">\(L\)</span>, since their quotient objects are zero. Conversely let <span class="math" data-tex="\(X=\operatorname{colim}_i c_{\mathcal C}C_i\)">\(X=\operatorname{colim}_i c_{\mathcal C}C_i\)</span> and <span class="math" data-tex="\(LX=0\)">\(LX=0\)</span>. The structural map from <span class="math" data-tex="\(c_{\mathcal B}QC_i\)">\(c_{\mathcal B}QC_i\)</span> to this zero colimit is zero. Finite presentation of that constant test and the filtered equality rule give an arrow <span class="math" data-tex="\(i\to j\)">\(i\to j\)</span> for which <span class="math" data-tex="\(Q(C_i\to C_j)=0\)">\(Q(C_i\to C_j)=0\)</span>. Its ordinary image <span class="math" data-tex="\(S_{ij}\)">\(S_{ij}\)</span> belongs to <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. The structural map <span class="math" data-tex="\(c_{\mathcal C}C_i\to X\)">\(c_{\mathcal C}C_i\to X\)</span> thus factors through <span class="math" data-tex="\(c_{\mathcal C}S_{ij}\)">\(c_{\mathcal C}S_{ij}\)</span>.</p>
+<p>Every map from a constant <span class="math" data-tex="\(c_{\mathcal C}A\)">\(c_{\mathcal C}A\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span> factors at some <span class="math" data-tex="\(C_i\)">\(C_i\)</span>, and hence through such a constant from <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. In the filtered element category of <span class="math" data-tex="\(X\)">\(X\)</span>, take the full subcategory on the objects <span class="math" data-tex="\((S,s)\)">\((S,s)\)</span> with <span class="math" data-tex="\(S\in\mathcal S\)">\(S\in\mathcal S\)</span>. It is nonempty and cofinal by this factorization. It is filtered too: a finite diagram of its objects has a cocone in the full element category, and factorization of that cocone's vertex through a constant from <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> supplies a cocone within the subcategory. It is small, since the category and all its element sets are small. The element presentation therefore realizes <span class="math" data-tex="\(X\)">\(X\)</span> as a filtered colimit of constants from <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, proving (4.1).</p>
+<p>Exactness of <span class="math" data-tex="\(L\)">\(L\)</span> makes its object kernel Serre. The adjunction makes <span class="math" data-tex="\(L\)">\(L\)</span> preserve all small colimits, so its kernel is closed under coproducts as well. These colimits exist: small abelian Ind categories have filtered colimits, finite colimits and coproducts formed from the filtered finite partial sums; arbitrary colimits are the cokernel of the two arrows between coproducts indexed by diagram arrows and objects. This completes the asserted localizing property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-equivalence-of-abelian-quotients">5. The equivalence of abelian quotients</h2>
+<p><strong>Theorem 5.1.</strong> The exact comparison functor is an equivalence
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Ind}(\mathcal C)/\operatorname{Ind}(\mathcal S)
+\ \simeq\ \operatorname{Ind}(\mathcal C/\mathcal S).
+\tag{5.1}
+\]">\[
+\operatorname{Ind}(\mathcal C)/\operatorname{Ind}(\mathcal S)
+\ \simeq\ \operatorname{Ind}(\mathcal C/\mathcal S).
+\tag{5.1}
+\]</span>
+It is induced by <span class="math" data-tex="\(L\)">\(L\)</span>, with its specified identification on constants. An exact functor from <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> annihilating <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> factors through <span class="math" data-tex="\(L\)">\(L\)</span>, uniquely up to the unique compatible natural isomorphism.</p>
+<p><strong>Proof.</strong> The quotient on the left is locally small. A subobject of an Ind presheaf is a pointwise subpresheaf, since a monomorphism is injective under every representable Hom test. For small <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, possible such subpresheaves lie in the small product of power sets of its values. Thus each object has only a small set of subobject classes. The proved Serre fraction formula gives the required small Hom sets and the exact quotient
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\pi:\mathcal A\longrightarrow\mathcal A/\mathcal T.
+\]">\[
+\pi:\mathcal A\longrightarrow\mathcal A/\mathcal T.
+\]</span>
+Exactness of <span class="math" data-tex="\(L\)">\(L\)</span> and (4.1) give an induced exact <span class="math" data-tex="\(\bar L\)">\(\bar L\)</span>, with <span class="math" data-tex="\(\bar L\pi=L\)">\(\bar L\pi=L\)</span>. Define <span class="math" data-tex="\(H=\pi R\)">\(H=\pi R\)</span>. The counit gives <span class="math" data-tex="\(\bar LH\simeq1_{\mathcal D}\)">\(\bar LH\simeq1_{\mathcal D}\)</span>.</p>
+<p>For the other direction, the unit <span class="math" data-tex="\(\eta_X:X\to RLX\)">\(\eta_X:X\to RLX\)</span> has kernel and cokernel in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Indeed <span class="math" data-tex="\(L\eta_X\)">\(L\eta_X\)</span> is invertible: its inverse is <span class="math" data-tex="\(\epsilon_{LX}\)">\(\epsilon_{LX}\)</span> by the triangle identity and Theorem 3.1. Exactness of <span class="math" data-tex="\(L\)">\(L\)</span> proves the kernel and cokernel assertion. Hence <span class="math" data-tex="\(\pi\eta_X\)">\(\pi\eta_X\)</span> is invertible, giving a natural comparison <span class="math" data-tex="\(1_{\mathcal A/\mathcal T}\simeq H\bar L\)">\(1_{\mathcal A/\mathcal T}\simeq H\bar L\)</span>. Naturality passes through quotient arrows because it holds on ordinary maps and therefore on their inverted denominators. These two comparisons prove (5.1), with their compatibility inherited from the adjunction triangles.</p>
+<p>Finally an exact functor annihilating <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> factors through <span class="math" data-tex="\(\pi\)">\(\pi\)</span> by the exact quotient theorem. Transport that factor through (5.1) to obtain the factor through <span class="math" data-tex="\(L\)">\(L\)</span>. The localization universal property includes natural transformations, so it also gives the stated uniqueness. No preservation of filtered colimits by the test functor is required for this exact quotient property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-local-objects-and-the-extension-obstruction">6. Local objects and the extension obstruction</h2>
+<p>Let <span class="math" data-tex="\(W_{\mathcal T}\)">\(W_{\mathcal T}\)</span> be the maps of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> whose kernel and cokernel belong to <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Call <span class="math" data-tex="\(H\in\mathcal A\)">\(H\in\mathcal A\)</span> <strong>local</strong> if every <span class="math" data-tex="\(w:X\to X&#x27;\)">\(w:X\to X&#x27;\)</span> in this class induces a bijection <span class="math" data-tex="\(\operatorname{Hom}(X&#x27;,H)\to\operatorname{Hom}(X,H)\)">\(\operatorname{Hom}(X&#x27;,H)\to\operatorname{Hom}(X,H)\)</span>.</p>
+<p><strong>Proposition 6.1.</strong> The following are equivalent: <span class="math" data-tex="\(H\)">\(H\)</span> belongs to the essential image of <span class="math" data-tex="\(R\)">\(R\)</span>; <span class="math" data-tex="\(H\)">\(H\)</span> is local; and
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathcal A}(T,H)=0,\qquad
+\operatorname{Ext}^1_{\mathcal A}(T,H)=0
+\quad\hbox{for every }T\in\mathcal T.
+\tag{6.1}
+\]">\[
+\operatorname{Hom}_{\mathcal A}(T,H)=0,\qquad
+\operatorname{Ext}^1_{\mathcal A}(T,H)=0
+\quad\hbox{for every }T\in\mathcal T.
+\tag{6.1}
+\]</span>
+Here <span class="math" data-tex="\(\operatorname{Ext}^1\)">\(\operatorname{Ext}^1\)</span> is the Baer group of short exact extensions.</p>
+<p><strong>Proof.</strong> Objects <span class="math" data-tex="\(RY\)">\(RY\)</span> are local, since adjunction identifies their restriction map with precomposition by <span class="math" data-tex="\(Lw\)">\(Lw\)</span>, an isomorphism. Conversely, for a local <span class="math" data-tex="\(H\)">\(H\)</span>, its unit <span class="math" data-tex="\(\eta_H:H\to RLH\)">\(\eta_H:H\to RLH\)</span> belongs to <span class="math" data-tex="\(W_{\mathcal T}\)">\(W_{\mathcal T}\)</span>. Locality extends <span class="math" data-tex="\(1_H\)">\(1_H\)</span> across it to <span class="math" data-tex="\(v:RLH\to H\)">\(v:RLH\to H\)</span>, so <span class="math" data-tex="\(v\eta_H=1_H\)">\(v\eta_H=1_H\)</span>. The object <span class="math" data-tex="\(RLH\)">\(RLH\)</span> is already local; injectivity of its restriction map along <span class="math" data-tex="\(\eta_H\)">\(\eta_H\)</span> shows <span class="math" data-tex="\(\eta_Hv=1_{RLH}\)">\(\eta_Hv=1_{RLH}\)</span>, by precomposing both sides with <span class="math" data-tex="\(\eta_H\)">\(\eta_H\)</span>. Thus <span class="math" data-tex="\(\eta_H\)">\(\eta_H\)</span> is invertible and <span class="math" data-tex="\(H\)">\(H\)</span> belongs to the image.</p>
+<p>If <span class="math" data-tex="\(H\)">\(H\)</span> is local, applying its definition to <span class="math" data-tex="\(T\to0\)">\(T\to0\)</span> gives the Hom vanishing. In any extension <span class="math" data-tex="\(0\to H\to E\to T\to0\)">\(0\to H\to E\to T\to0\)</span>, the inclusion belongs to <span class="math" data-tex="\(W_{\mathcal T}\)">\(W_{\mathcal T}\)</span>. Extending identity gives a retraction, so the extension splits. The extension interpretation gives the second vanishing.</p>
+<p>Conversely suppose (6.1). For an epimorphism with kernel in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, every map to <span class="math" data-tex="\(H\)">\(H\)</span> kills that kernel and factors uniquely through its target, by Hom vanishing. For a monomorphism <span class="math" data-tex="\(i:A\hookrightarrow B\)">\(i:A\hookrightarrow B\)</span> with cokernel <span class="math" data-tex="\(T\in\mathcal T\)">\(T\in\mathcal T\)</span>, push a given <span class="math" data-tex="\(a:A\to H\)">\(a:A\to H\)</span> out along <span class="math" data-tex="\(i\)">\(i\)</span>. The abelian pushout gives <span class="math" data-tex="\(0\to H\to E\to T\to0\)">\(0\to H\to E\to T\to0\)</span>. It splits by the Ext vanishing; compose its retraction with <span class="math" data-tex="\(B\to E\)">\(B\to E\)</span> to extend <span class="math" data-tex="\(a\)">\(a\)</span>. Two extensions differ by a map <span class="math" data-tex="\(T\to H\)">\(T\to H\)</span>, so are equal. Every <span class="math" data-tex="\(w\in W_{\mathcal T}\)">\(w\in W_{\mathcal T}\)</span> factors as its epimorphism onto the image followed by its monomorphism into the target; the two arguments apply and prove the required bijection. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The functor <span class="math" data-tex="\(R\)">\(R\)</span> is left exact as an additive right adjoint. It need not preserve cokernels; Solution 8.4 computes an explicit failure.</p>
+<h2 id="7-filtered-colimits-and-finite-tests-survive-the-comparison">7. Filtered colimits and finite tests survive the comparison</h2>
+<p>The right adjoint <span class="math" data-tex="\(R\)">\(R\)</span> preserves filtered colimits, although it need not be exact. Indeed for every <span class="math" data-tex="\(A\in\mathcal C\)">\(A\in\mathcal C\)</span>, formula (2.1) commutes with a filtered colimit because <span class="math" data-tex="\(c_{\mathcal B}QA\)">\(c_{\mathcal B}QA\)</span> is finitely presented. Filtered colimits of Ind-objects are their pointwise presheaf colimits, so these pointwise isomorphisms give the asserted natural comparison for <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>The images of constant objects under (5.1) are precisely <span class="math" data-tex="\(c_{\mathcal B}QA\)">\(c_{\mathcal B}QA\)</span>, hence are finitely presented. They form a small separating family: every Ind-object has a filtered presentation by them, and Yoneda detects different arrows. Their coproduct is a generator, since a nonzero arrow is detected by a map from one member, which extends to a map from that coproduct by taking zero on the other members. These statements concern finite presentation and filtered colimits in the quotient category, with its actual constant tests.</p>
+<p>For completeness, its filtered colimits are exact. Theorem 4.1 of the limits-and-colimits lesson proves that filtered colimits in <span class="math" data-tex="\(\operatorname{Ind}(\mathcal B)\)">\(\operatorname{Ind}(\mathcal B)\)</span> commute with finite limits and finite colimits, since <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> has both. Kernels are finite limits and cokernels are finite colimits; hence the filtered-colimit functor preserves both and is exact. Thus both sides of (5.1) have the same abelian and filtered-colimit interfaces. This does not assert exactness of arbitrary inverse limits or of <span class="math" data-tex="\(R\)">\(R\)</span>; neither follows from finite presentation.</p>
+<h2 id="8-four-graded-exercises-with-complete-solutions">8. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-8-1-finitely-generated-groups-modulo-finite-groups-introductory">Exercise 8.1 — Finitely generated groups modulo finite groups (introductory)</h3>
+<p>Take <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> to be a small skeleton of finitely generated abelian groups and <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> its finite groups. Identify both sides of (5.1), the induced <span class="math" data-tex="\(L,R\)">\(L,R\)</span>, and the unit on <span class="math" data-tex="\(\mathbb Z\oplus\mathbb Z/n\)">\(\mathbb Z\oplus\mathbb Z/n\)</span>.</p>
+<p><strong>Solution.</strong> A finitely generated group <span class="math" data-tex="\(M\)">\(M\)</span> has a finite torsion subgroup <span class="math" data-tex="\(T_M\)">\(T_M\)</span>, and <span class="math" data-tex="\(M/T_M\)">\(M/T_M\)</span> is finite free. Indeed the torsion-free finite-generation theorem gives the latter statement; lift its basis to <span class="math" data-tex="\(M\)">\(M\)</span> to split the quotient map. Projection of a finite generating set of <span class="math" data-tex="\(M\)">\(M\)</span> then generates <span class="math" data-tex="\(T_M\)">\(T_M\)</span>. Finitely many torsion generators generate a finite group, by the product of their finite cyclic groups.</p>
+<p>Rationalization is exact: a localized element is zero precisely when a nonzero integer kills a representative. A kernel equation can therefore be cleared by an integer and then lifted through the original exact row; surjections lift representatives directly. It kills precisely finite groups in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p>The quotient <span class="math" data-tex="\(\mathcal C/\mathcal S\)">\(\mathcal C/\mathcal S\)</span> is the category of finite-dimensional rational vector spaces. Every such space is the rationalization of <span class="math" data-tex="\(\mathbb Z^r\)">\(\mathbb Z^r\)</span>. For fullness, remove the finite torsion subgroups and use the lifted free bases just described. A rational matrix between the free rationalizations becomes integral after multiplying by one positive common denominator <span class="math" data-tex="\(d\)">\(d\)</span>. It therefore comes from an ordinary map <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span>, with the quotient morphism <span class="math" data-tex="\(Qf\,(Q(d\,1_M))^{-1}\)">\(Qf\,(Q(d\,1_M))^{-1}\)</span>. Multiplication by <span class="math" data-tex="\(d\)">\(d\)</span> has finite kernel and cokernel on a finitely generated group, so it is a quotient denominator.</p>
+<p>For faithfulness take a fraction represented by (1.2). If its rationalization is zero, its numerator has torsion image. That image is finitely generated and torsion, hence finite; exactness of the quotient kills the numerator. Its fraction is zero. Thus the induced functor is fully faithful and essentially surjective.</p>
+<p>Finitely generated integer modules are finitely presented: their relations are submodules of a finite free integer module and are finite free by the earlier PID proof. The module-presentation theorem therefore identifies <span class="math" data-tex="\(\operatorname{Ind}(\mathcal C)\)">\(\operatorname{Ind}(\mathcal C)\)</span> with all abelian groups. Similarly the Ind category of finite-dimensional rational spaces is all rational vector spaces. The subcategory <span class="math" data-tex="\(\operatorname{Ind}(\mathcal S)\)">\(\operatorname{Ind}(\mathcal S)\)</span> is all torsion groups: every torsion group is the filtered union of its finitely generated subgroups, each of which is finite, and every element of a colimit of finite groups is torsion.</p>
+<p>Consequently (5.1) reads
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+\mathsf{Ab}/\mathsf{Tors}\simeq\mathsf{Vect}_{\mathbb Q}.
+\tag{8.1}
+\]">\[
+\mathsf{Ab}/\mathsf{Tors}\simeq\mathsf{Vect}_{\mathbb Q}.
+\tag{8.1}
+\]</span>
+Here <span class="math" data-tex="\(L(M)=M\otimes_{\mathbb Z}\mathbb Q\)">\(L(M)=M\otimes_{\mathbb Z}\mathbb Q\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> forgets the rational action. The adjunction is explicit: a group map <span class="math" data-tex="\(M\to V\)">\(M\to V\)</span> to a rational space extends uniquely by <span class="math" data-tex="\(m\otimes(a/b)\mapsto(a/b)f(m)\)">\(m\otimes(a/b)\mapsto(a/b)f(m)\)</span>. On the stated group, the unit is <span class="math" data-tex="\((z,\bar t)\mapsto z\in\mathbb Q\)">\((z,\bar t)\mapsto z\in\mathbb Q\)</span>; its kernel is <span class="math" data-tex="\(\mathbb Z/n\)">\(\mathbb Z/n\)</span>, and its cokernel is <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span>, both torsion. The whole group need not be a local object just because its free summand survives rationalization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-8-2-hom-vanishing-is-not-the-local-object-criterion-intermediate">Exercise 8.2 — Hom vanishing is not the local-object criterion (intermediate)</h3>
+<p>In (8.1), characterize local objects, show that <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> fails despite having no maps from torsion groups, and compute <span class="math" data-tex="\(\operatorname{Ext}^1(\mathbb Z/p,\mathbb Z)\)">\(\operatorname{Ext}^1(\mathbb Z/p,\mathbb Z)\)</span> for a prime <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Solution.</strong> Multiplication by each positive integer <span class="math" data-tex="\(d\)">\(d\)</span> on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> belongs to <span class="math" data-tex="\(W_{\mathsf{Tors}}\)">\(W_{\mathsf{Tors}}\)</span>. Applying Hom into a local group <span class="math" data-tex="\(H\)">\(H\)</span> says that multiplication by <span class="math" data-tex="\(d\)">\(d\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> is bijective. Such a group has a unique rational vector-space structure: define <span class="math" data-tex="\((a/b)h\)">\((a/b)h\)</span> as the unique solution <span class="math" data-tex="\(x\)">\(x\)</span> of <span class="math" data-tex="\(bx=ah\)">\(bx=ah\)</span>. Equality of fractions and the vector-space equations follow after multiplying by a common denominator, which is injective. Conversely any rational space is in the image of <span class="math" data-tex="\(R\)">\(R\)</span> and hence is local by Proposition 6.1. Thus local means uniquely divisible.</p>
+<p>A map from a torsion group to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is zero, since the image of each torsion element must be torsion. But the exact sequence
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+0\to\mathbb Z\xrightarrow{p}\mathbb Z\to\mathbb Z/p\to0
+\tag{8.2}
+\]">\[
+0\to\mathbb Z\xrightarrow{p}\mathbb Z\to\mathbb Z/p\to0
+\tag{8.2}
+\]</span>
+does not split: a retraction of multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> would give an integer <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(pr=1\)">\(pr=1\)</span>. This is the missing extension condition.</p>
+<p>For the full Ext calculation, in any extension choose a lift <span class="math" data-tex="\(e\)">\(e\)</span> of the generator of <span class="math" data-tex="\(\mathbb Z/p\)">\(\mathbb Z/p\)</span>. Its relation is <span class="math" data-tex="\(pe=i(z)\)">\(pe=i(z)\)</span> for some <span class="math" data-tex="\(z\in\mathbb Z\)">\(z\in\mathbb Z\)</span>. Replacing <span class="math" data-tex="\(e\)">\(e\)</span> by <span class="math" data-tex="\(e+i(t)\)">\(e+i(t)\)</span> changes <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(z+pt\)">\(z+pt\)</span>. Conversely the group
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+E_z=(\mathbb Z\oplus\mathbb Z)/\langle(-z,p)\rangle
+\tag{8.3}
+\]">\[
+E_z=(\mathbb Z\oplus\mathbb Z)/\langle(-z,p)\rangle
+\tag{8.3}
+\]</span>
+with injection <span class="math" data-tex="\(a\mapsto[(a,0)]\)">\(a\mapsto[(a,0)]\)</span> and quotient <span class="math" data-tex="\([(a,b)]\mapsto\bar b\)">\([(a,b)]\mapsto\bar b\)</span> realizes that parameter. The injection is monic, since a multiple of <span class="math" data-tex="\((-z,p)\)">\((-z,p)\)</span> with second coordinate zero is the zero multiple. The quotient kernel is its image, because <span class="math" data-tex="\(b=pt\)">\(b=pt\)</span> permits subtraction of <span class="math" data-tex="\(t(-z,p)\)">\(t(-z,p)\)</span>. These formulas give a short exact sequence.</p>
+<p>Every extension is isomorphic to (8.3) by sending the two generators to <span class="math" data-tex="\(i(1),e\)">\(i(1),e\)</span>; its kernel relation is precisely the one displayed, by looking first at the quotient and then the injected group. Parameters differing by <span class="math" data-tex="\(pt\)">\(pt\)</span> give equivalent extensions by the indicated change of lift, and any equivalence forces such a change. A splitting exists exactly when the parameter is a multiple of <span class="math" data-tex="\(p\)">\(p\)</span>. Finally Baer addition chooses the pair of lifts in the pullback and adds their injected relations in the pushout, so its parameter is <span class="math" data-tex="\(z+z&#x27;\)">\(z+z&#x27;\)</span>. Therefore
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Ext}^1_{\mathbb Z}(\mathbb Z/p,\mathbb Z)\simeq\mathbb Z/p,
+\tag{8.4}
+\]">\[
+\operatorname{Ext}^1_{\mathbb Z}(\mathbb Z/p,\mathbb Z)\simeq\mathbb Z/p,
+\tag{8.4}
+\]</span>
+with (8.2) the parameter <span class="math" data-tex="\(1\)">\(1\)</span>. This proves both the group calculation and the obstruction to locality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-8-3-invert-only-one-prime-advanced">Exercise 8.3 — Invert only one prime (advanced)</h3>
+<p>Let <span class="math" data-tex="\(\mathcal S_p\)">\(\mathcal S_p\)</span> be the finite <span class="math" data-tex="\(p\)">\(p\)</span>-primary groups inside the finitely generated abelian groups. Identify the Ind quotient and its local objects. Specify its action on groups with torsion at another prime.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(D=\mathbb Z[1/p]\)">\(D=\mathbb Z[1/p]\)</span>. Localization <span class="math" data-tex="\(M\mapsto M[1/p]\)">\(M\mapsto M[1/p]\)</span> is exact: an element represented by <span class="math" data-tex="\(m/p^a\)">\(m/p^a\)</span> maps to zero exactly when a further power of <span class="math" data-tex="\(p\)">\(p\)</span> kills its image; moving to that representative reduces the kernel problem to the original exact row. The same representative argument lifts a quotient element. Its kernel on finitely generated groups is exactly <span class="math" data-tex="\(\mathcal S_p\)">\(\mathcal S_p\)</span>, since finitely many generators individually killed by powers of <span class="math" data-tex="\(p\)">\(p\)</span> are jointly killed by one power.</p>
+<p>Every ideal of <span class="math" data-tex="\(D\)">\(D\)</span> is generated by an integer: multiplication by the denominator, a unit in <span class="math" data-tex="\(D\)">\(D\)</span>, puts each ideal element in its integer contraction, an ideal <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span>. Hence the ideal is <span class="math" data-tex="\(dD\)">\(dD\)</span>. The finite-submodule induction in the PID proof applies to <span class="math" data-tex="\(D\)">\(D\)</span>. Thus its finitely generated modules have finite presentations. Clearing a common power-of-<span class="math" data-tex="\(p\)">\(p\)</span> denominator in a finite presentation matrix shows every such module is the localization of a finitely presented integer module.</p>
+<p>For an arrow <span class="math" data-tex="\(M[1/p]\to N[1/p]\)">\(M[1/p]\to N[1/p]\)</span>, choose finite integer generators and relations for <span class="math" data-tex="\(M\)">\(M\)</span>. Lift the generator images to <span class="math" data-tex="\(N\)">\(N\)</span> after multiplying by one power of <span class="math" data-tex="\(p\)">\(p\)</span>. Each of the finitely many relation images vanishes after localization; another common power kills all of them. This yields an ordinary <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span> and a representation of the arrow as <span class="math" data-tex="\(f/p^r\)">\(f/p^r\)</span>. Multiplication by <span class="math" data-tex="\(p^r\)">\(p^r\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span> has kernel and cokernel in <span class="math" data-tex="\(\mathcal S_p\)">\(\mathcal S_p\)</span>. These arrows therefore come from quotient morphisms. If a quotient fraction becomes zero after localization, its numerator has a finitely generated <span class="math" data-tex="\(p\)">\(p\)</span>-power-torsion image, so its image belongs to <span class="math" data-tex="\(\mathcal S_p\)">\(\mathcal S_p\)</span> and the fraction is zero. This proves
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.5); horizontal scroll when needed" data-tex="\[
+\mathcal C/\mathcal S_p\simeq\mathsf{Mod}_{\mathrm{fg}}(D).
+\tag{8.5}
+\]">\[
+\mathcal C/\mathcal S_p\simeq\mathsf{Mod}_{\mathrm{fg}}(D).
+\tag{8.5}
+\]</span></p>
+<p>The module-presentation theorem and (5.1) now give
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.6); horizontal scroll when needed" data-tex="\[
+\mathsf{Ab}/\mathsf{Tors}_p\simeq\mathsf{Mod}(D),
+\tag{8.6}
+\]">\[
+\mathsf{Ab}/\mathsf{Tors}_p\simeq\mathsf{Mod}(D),
+\tag{8.6}
+\]</span>
+where <span class="math" data-tex="\(\mathsf{Tors}_p\)">\(\mathsf{Tors}_p\)</span> comprises groups whose elements are individually killed by powers of <span class="math" data-tex="\(p\)">\(p\)</span>. Such groups are filtered unions of finite <span class="math" data-tex="\(p\)">\(p\)</span>-primary subgroups, proving that this is exactly <span class="math" data-tex="\(\operatorname{Ind}(\mathcal S_p)\)">\(\operatorname{Ind}(\mathcal S_p)\)</span>.</p>
+<p>The right adjoint forgets the <span class="math" data-tex="\(D\)">\(D\)</span>-module action: a group map into a group with invertible multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> extends uniquely by <span class="math" data-tex="\(m/p^r\mapsto p^{-r}f(m)\)">\(m/p^r\mapsto p^{-r}f(m)\)</span>. Consequently local objects are precisely groups on which multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> is bijective; the inverse of that multiplication specifies the unique <span class="math" data-tex="\(D\)">\(D\)</span>-action. For a different prime <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> on <span class="math" data-tex="\(\mathbb Z/\ell^a\)">\(\mathbb Z/\ell^a\)</span> is invertible by Bézout, so that group is already local and survives unchanged. Multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> on a <span class="math" data-tex="\(p\)">\(p\)</span>-primary group eventually kills every element under localization, so those groups disappear. The unit's kernel and cokernel are <span class="math" data-tex="\(p\)">\(p\)</span>-power torsion: a kernel element is killed by a power, and the class of <span class="math" data-tex="\(m/p^r\)">\(m/p^r\)</span> modulo the unit image is killed by <span class="math" data-tex="\(p^r\)">\(p^r\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-8-4-an-explicit-nonexact-section-functor-advanced">Exercise 8.4 — An explicit nonexact section functor (advanced)</h3>
+<p>Let <span class="math" data-tex="\(B=\mathbb Z/4\)">\(B=\mathbb Z/4\)</span>, <span class="math" data-tex="\(k=\mathbb F_2\)">\(k=\mathbb F_2\)</span>, and <span class="math" data-tex="\(U=k\)">\(U=k\)</span> as a <span class="math" data-tex="\((B,k)\)">\((B,k)\)</span>-bimodule via reduction modulo two. Consider the finite triangular ring
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.7); horizontal scroll when needed" data-tex="\[
+\Lambda=\begin{pmatrix}B&amp;U\\0&amp;k\end{pmatrix}.
+\tag{8.7}
+\]">\[
+\Lambda=\begin{pmatrix}B&amp;U\\0&amp;k\end{pmatrix}.
+\tag{8.7}
+\]</span>
+Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a small skeleton of its finitely generated left modules, and let <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> be those with zero upper <span class="math" data-tex="\(B\)">\(B\)</span>-component. Identify the quotient and section functor, and show that the latter is not exact.</p>
+<p><strong>Solution.</strong> A left <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module is data <span class="math" data-tex="\((V,W,t)\)">\((V,W,t)\)</span>, where <span class="math" data-tex="\(V\)">\(V\)</span> is a left <span class="math" data-tex="\(B\)">\(B\)</span>-module, <span class="math" data-tex="\(W\)">\(W\)</span> a left <span class="math" data-tex="\(k\)">\(k\)</span>-module, and <span class="math" data-tex="\(t:U\otimes_k W\to V\)">\(t:U\otimes_k W\to V\)</span> is <span class="math" data-tex="\(B\)">\(B\)</span>-linear. The two diagonal idempotents split its underlying group into <span class="math" data-tex="\(V\oplus W\)">\(V\oplus W\)</span>; multiplying by an upper off-diagonal element gives <span class="math" data-tex="\(t\)">\(t\)</span>. Conversely let a matrix act by
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.8); horizontal scroll when needed" data-tex="\[
+\begin{pmatrix}b&amp;u\\0&amp;a\end{pmatrix}(v,w)
+=(bv+t(u\otimes w),aw).
+\tag{8.8}
+\]">\[
+\begin{pmatrix}b&amp;u\\0&amp;a\end{pmatrix}(v,w)
+=(bv+t(u\otimes w),aw).
+\tag{8.8}
+\]</span>
+The balancing and <span class="math" data-tex="\(B\)">\(B\)</span>-linearity of <span class="math" data-tex="\(t\)">\(t\)</span> verify matrix multiplication and the identity. Morphisms are component pairs commuting with <span class="math" data-tex="\(t\)">\(t\)</span>, and kernels and cokernels are componentwise with their induced structure maps.</p>
+<p>The ring is finite, so every finitely generated module is finite. Its submodules and quotients are finite and finitely generated; hence <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is abelian. Evaluation <span class="math" data-tex="\(E(V,W,t)=V\)">\(E(V,W,t)=V\)</span> is exact, with kernel <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, which is therefore Serre. A right adjoint is
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.9); horizontal scroll when needed" data-tex="\[
+J(H)=(H,H[2],\mathrm{ev}),\qquad
+H[2]=\{h\in H:2h=0\},\quad
+\mathrm{ev}(\bar a\otimes h)=a h.
+\tag{8.9}
+\]">\[
+J(H)=(H,H[2],\mathrm{ev}),\qquad
+H[2]=\{h\in H:2h=0\},\quad
+\mathrm{ev}(\bar a\otimes h)=a h.
+\tag{8.9}
+\]</span>
+Its adjunction bijection is explicit. Given <span class="math" data-tex="\(f:V\to H\)">\(f:V\to H\)</span>, the second component of the corresponding map to <span class="math" data-tex="\(J(H)\)">\(J(H)\)</span> is <span class="math" data-tex="\(w\mapsto f(t(\bar1\otimes w))\)">\(w\mapsto f(t(\bar1\otimes w))\)</span>. Its value lies in <span class="math" data-tex="\(H[2]\)">\(H[2]\)</span> by <span class="math" data-tex="\(B\)">\(B\)</span>-linearity, and <span class="math" data-tex="\(k\)">\(k\)</span>-linearity and the structure square follow from balancing. Conversely that square forces this second component, so projection onto <span class="math" data-tex="\(f\)">\(f\)</span> is the inverse bijection.</p>
+<p>The counit <span class="math" data-tex="\(EJ(H)\to H\)">\(EJ(H)\to H\)</span> is identity. The unit has first component <span class="math" data-tex="\(1_V\)">\(1_V\)</span> and second component <span class="math" data-tex="\(w\mapsto t(\bar1\otimes w)\)">\(w\mapsto t(\bar1\otimes w)\)</span>; its kernel and cokernel have zero first component and belong to <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Thus <span class="math" data-tex="\(E\)">\(E\)</span> induces <span class="math" data-tex="\(\mathcal C/\mathcal S\simeq\mathsf{Mod}_{\mathrm{fg}}(B)\)">\(\mathcal C/\mathcal S\simeq\mathsf{Mod}_{\mathrm{fg}}(B)\)</span>, by the exact quotient and these unit/counit comparisons. All the modules in (8.9) remain finite when <span class="math" data-tex="\(H\)">\(H\)</span> is finite.</p>
+<p>A finitely generated module over either finite ring <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> or <span class="math" data-tex="\(B\)">\(B\)</span> is finitely presented: a finite free cover has a finite kernel, generated by its finitely many elements. Their Ind categories are therefore all module categories by the module-presentation theorem. Applying (5.1) gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.10); horizontal scroll when needed" data-tex="\[
+\mathsf{Mod}(\Lambda)/\{(0,W,0)\}\simeq\mathsf{Mod}(B),
+\tag{8.10}
+\]">\[
+\mathsf{Mod}(\Lambda)/\{(0,W,0)\}\simeq\mathsf{Mod}(B),
+\tag{8.10}
+\]</span>
+with section (8.9) on all <span class="math" data-tex="\(B\)">\(B\)</span>-modules.</p>
+<p>Now take the epimorphism <span class="math" data-tex="\(B\to k\)">\(B\to k\)</span>. Its map on the second component of (8.9) is
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.11); horizontal scroll when needed" data-tex="\[
+B[2]=\{0,2\}\longrightarrow k[2]=k,
+\qquad 2\longmapsto0.
+\tag{8.11}
+\]">\[
+B[2]=\{0,2\}\longrightarrow k[2]=k,
+\qquad 2\longmapsto0.
+\tag{8.11}
+\]</span>
+It is zero and not surjective. The induced arrow <span class="math" data-tex="\(J(B)\to J(k)\)">\(J(B)\to J(k)\)</span> consequently is not epic, even though its first component is the given epimorphism. This disproves exactness of the fully faithful right adjoint while retaining its proved left exactness and filtered-colimit preservation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="9-further-reading">9. Further reading</h2>
+<p>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/02MS">Serre subcategories and the exact quotient</a>, provides the abelian quotient and its universal property.</p>
+<p>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf">An Introduction to Categories and Homological Algebra</a>, Section 2.7, introduces Ind-objects and their filtered presentations. The programme lessons linked above provide the complete recognition and exactness proofs used in the comparison.</p>
+</main></body></html>

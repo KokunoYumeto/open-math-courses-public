@@ -27,7 +27,7 @@ The orbit is strongly measurable. Choose a countable dense set \((v_j)\) of \(E_
 \]
 This is the same elementary Banach integral construction as RF/FF, now with its measurability supplied explicitly.
 
-Substitution gives \(S_s\omega_g=\omega_{g_s}\), where \(g_s(t)=g(t-s)\). Thus [RF-1](OA-FLOW-RF.md#oa-flow.rf.1)'s translation continuity proves that every \(\omega_g\) has a norm-continuous orbit. The subspace of all such vectors is norm closed, because every \(S_s\) is an isometry. For \(g_n=(n/2)1_{[-1/n,1/n]}\), \(\omega_{g_n}\to\omega\) weakly by the assumed scalar continuity. A norm-closed linear subspace is weakly closed by CF separation. Hence \(\omega\) lies in that subspace. This proves the claimed predual norm continuity on all of \(M_*\).
+Substitution gives \(S_s\omega_g=\omega_{g_s}\), where \(g_s(t)=g(t-s)\). Thus [FF-1](OA-FLOW-FF.md#oa-flow.ff.2)'s translation continuity proves that every \(\omega_g\) has a norm-continuous orbit. The subspace of all such vectors is norm closed, because every \(S_s\) is an isometry. For \(g_n=(n/2)1_{[-1/n,1/n]}\), \(\omega_{g_n}\to\omega\) weakly by the assumed scalar continuity. A norm-closed linear subspace is weakly closed by CF separation. Hence \(\omega\) lies in that subspace. This proves the claimed predual norm continuity on all of \(M_*\).
 
 Define \(T_g:M\to M\) as the adjoint of \(\omega\mapsto\omega_g\). Then it is normal, has norm at most \(\|g\|_1\), and satisfies
 

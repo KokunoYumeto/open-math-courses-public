@@ -359,7 +359,7 @@ The same embedding theorem applies to the graph Hom kernels when their stated bo
 
 **Normal geometry and the recovery sign.**
 
-![Normal and conormal coordinates, the codimension sign, and the recovery trace square](../assets/recovery-normalization.png)
+![Normal and conormal coordinates, the codimension sign, and the recovery trace square](../../assets/baa0d26f17d1-recovery-normalization.png)
 
 Panels A and B are the coordinate model \(i:\mathbb R\hookrightarrow\mathbb R^2\),
 \(i(x)=(x,0)\). The coordinates \(v\) and \(\xi\) lie in the normal and
@@ -384,7 +384,7 @@ finite global dimension. It adds no field, constructibility, orientability,
 compactness or noncharacteristic assumption. The locally closed embedding
 case is obtained by the restriction described above.
 
-This programme diagram depicts REC1–REC20, including the explicit parity comparison proved above. The classical recoveries and boundary triangle are compared with Kashiwara and Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985), §2.3, Proposition 2.3.2 and Corollary 2.3.3, pp. 46–47](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf). That source is credited for the mathematics, not as the source of the diagram or of the course's parity recipe. A vector copy of the diagram retains the same labels and arrows.
+This programme diagram depicts REC1–REC20, including the explicit parity comparison proved above. The classical recoveries and boundary triangle are compared with Kashiwara and Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985), §2.3, Proposition 2.3.2 and Corollary 2.3.3, pp. 46–47](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf). That source is credited for the mathematics, not as the source of the diagram or of the course's parity recipe. A [vector copy of the diagram](../../assets/9ae6eee40003-recovery-normalization.svg) retains the same labels and arrows.
 
 ## SH02-MIC-CORRESPONDENCE — A map gives two covector arrows
 

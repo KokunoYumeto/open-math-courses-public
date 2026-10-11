@@ -126,7 +126,7 @@ r_F^*\nu_\pi(r_F^!)^{-1}=\theta_i\sigma_{U,\Omega}.
 Proper and ordinary external pushforward satisfy
 \(\nu_\pi K_!=K_*(\nu_{\pi_1}\boxtimes\nu_{\pi_2})\), as maps into the product pushforward. Expand the actual inclusion of properly supported sections and the composition/base-exchange maps to obtain that identity; no properness assumption is introduced. The product of the two trace comparisons, after C4 and the symmetry placing the relative line on the left, equals the trace comparison for the product followed by \(\operatorname{Ex}_i\). Its exceptional adjunct is the same tensor product of counits with coefficients retained, exactly as in C6. These facts and REC19 prove the whole product recovery/trace diagram. In particular neither an uncontracted unsigned MEP endpoint nor an inverse coevaluation substituted for the prescribed right-Hom contraction is used.
 
-![The selected compact and ordinary product-recovery squares, with each actual comparison map labeled](../assets/product-recovery-squares.png)
+![The selected compact and ordinary product-recovery squares, with each actual comparison map labeled](../../assets/44cf19c9a0b0-product-recovery-squares.png)
 
 The left panel draws the first equality of C5, restated as S2: the top map
 \(C_!=R\pi_!(P)K_!\) goes from \(R\pi_{1!}H_1\boxtimes R\pi_{2!}H_2\)
@@ -148,7 +148,7 @@ sources at the end of the lesson; the specific product squares and their
 normalizations are proved at C5–C12 and P1–P20. This diagram and its labeling
 are original course material. Its PNG and SVG share this lesson's
 CC0 1.0 dedication.
-A vector copy of both product squares
+A [vector copy of both product squares](../../assets/26ec4e76abf9-product-recovery-squares.svg)
 preserves the map labels.
 
 ### 5. Application to MH30/MH31
@@ -596,7 +596,7 @@ C_{12}\otimes C_{23}&\xrightarrow{c_C}&C_{13}.
 \]
 The required proof is the pasted S2, the just-described transverse unit comparison, naturality at MH30, and S12/S13. This constructs a map between raw compact kernel endpoints. It is not a claim that those endpoints equal \(D'F_i\otimes F_j\) or \(R\mathcal Hom(F_i,F_j)\) for unrestricted inputs.
 
-![Compact graph-composition recovery through raw diagonal restrictions, with the ordinary derived source order below](../assets/composition-recovery-square.png)
+![Compact graph-composition recovery through raw diagonal restrictions, with the ordinary derived source order below](../../assets/23c636d3dfe3-composition-recovery-square.png)
 
 The square is S14. Its upper arrow is \(R\pi_!(m)\kappa_!^\Delta\)
 from \(R\pi_!A_{12}\otimes R\pi_!A_{23}\) to \(R\pi_!A_{13}\);
@@ -618,7 +618,7 @@ constructions are compared with published sources at the end of the lesson;
 the ordered composition, raw compact endpoints and selected normalization
 are established by the S1–S14 calculations here. The figure and explanatory
 routing are original course material; its PNG and SVG share this lesson's CC0 1.0 dedication. A
-vector copy of the composition square
+[vector copy of the composition square](../../assets/1289bb70929d-composition-recovery-square.svg)
 preserves the labels.
 
 Finally, the MH30 kernel evaluation must itself retain its orientation ordering. Evaluation of \(K_f\otimes K_g\otimes H_z\) first gives \(F_x\otimes\omega_Y\otimes\omega_Z\). In the right-ordered smooth purity presentation of \(q^!K_h\), the corresponding target for its Hom adjunct is \(F_x\otimes\omega_Z\otimes\omega_Y\). The required map between these is \(1_{F_x}\otimes\sigma_{\omega_Y,\omega_Z}\). Transpose this evaluated map using internal Hom and exceptional adjunction; if the left-ordered presentation \(\theta_q^L\) is then used, include its coefficient-line symmetry as in S13. This avoids expressing a single scalar in terms of unspecified homogeneous evaluation inputs. Together with step 1 above, it retains both the initial graph-factor symmetry and the \(\omega_Y/\omega_Z\) braid.

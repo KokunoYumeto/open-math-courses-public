@@ -28,14 +28,14 @@ def walk(value, visit):
 
 
 def convert(args, text):
-    result = subprocess.run(['pandoc', *args], input=text, text=True,
-                            encoding='utf-8', capture_output=True)
+    result = subprocess.run(['pandoc', *args], input=text.encode('utf-8'),
+                            capture_output=True)
     if result.returncode or result.stderr.strip():
-        raise RuntimeError(result.stderr)
-    return result.stdout
+        raise RuntimeError(result.stderr.decode('utf-8', errors='replace'))
+    return result.stdout.decode('utf-8')
 
 
-def render(body, title, links):
+def render(body, title, links, heading_ids=None):
     doc = json.loads(convert(['-f','markdown+tex_math_single_backslash','-t','json'], body))
     count = 0
     def amend(node):
@@ -133,6 +133,14 @@ def render(body, title, links):
         identity = re.match(r'(SH02-[A-Z0-9-]+)',heading.get_text())
         if identity and not soup.find(id=identity[1]):
             heading.insert_before(soup.new_tag('span',id=identity[1]))
+    # Preserve published section URLs when an editorial heading is renamed.
+    for generated, published in (heading_ids or {}).items():
+        heading = soup.find(id=generated)
+        if heading is None or not re.fullmatch(r'h[1-6]', heading.name):
+            raise ValueError('Missing renamed heading: '+generated)
+        if generated != published and soup.find(id=published):
+            raise ValueError('Duplicate published heading id: '+published)
+        heading['id'] = published
     if len(soup.find_all('math')) != count or soup.find('merror'):
         raise ValueError('MathML projection failed: '+title)
     return repair_empty_set_glyphs(str(soup)), count
@@ -150,7 +158,7 @@ def rebuild(root):
             raise ValueError('Frozen source differs: '+row['source'])
     expressions = 0
     for row in manifest['readings']:
-        result, count = render(local(row['source']).read_text(encoding='utf-8'),row['title'],row['links'])
+        result, count = render(local(row['source']).read_bytes().decode('utf-8'),row['title'],row['links'],row.get('heading_ids'))
         if count != row['math_expressions']:
             raise ValueError('Unexpected formula count: '+row['reader'])
         local(row['reader']).write_bytes(result.encode('utf-8'))

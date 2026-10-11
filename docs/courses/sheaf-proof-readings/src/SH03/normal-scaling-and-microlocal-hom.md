@@ -12,11 +12,11 @@ The following previous readings supply the sheaf operations and local tests used
 
 | Input | Exact available argument |
 |---|---|
-| Injectives, compact germs and c-soft lifting; proper-support base change, composition, adjunction and orientation trace | Duality maps, together with its injective models and ordinary cohomology bound |
-| Proper-image and closed-embedding microsupport; uniform compact caps | Small-ball comparisons and its closed-embedding proof |
-| Directional unit, correspondence kernel, cap converse, propagation and opposite open extension | Directional neighborhoods, especially the kernel and propagation |
-| Arbitrary-open boundary limits and the trace from a missing submanifold | Limiting covectors and the trace proof |
-| Closed-set Hamiltonian invariance once involutivity is known | Involutive subsets |
+| Injectives, compact germs and c-soft lifting; proper-support base change, composition, adjunction and orientation trace | [Duality maps](../../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#compact-germ-gluing), together with its [injective models](../../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#explicit-injective-models) and [ordinary cohomology bound](../../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#ordinary-cohomology-bound) |
+| Proper-image and closed-embedding microsupport; uniform compact caps | [Small-ball comparisons](../../SH03-small-balls-central-fibres-and-supported-cohomology.html#proper-image-microsupport-proof) and its [closed-embedding proof](../../SH03-small-balls-central-fibres-and-supported-cohomology.html#closed-embedding-microsupport-proof) |
+| Directional unit, correspondence kernel, cap converse, propagation and opposite open extension | [Directional neighborhoods](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#directional-derived-unit), especially [the kernel](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#directional-kernel) and [propagation](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#directional-propagation) |
+| Arbitrary-open boundary limits and the trace from a missing submanifold | [Limiting covectors](../../SH03-limiting-covectors-at-open-boundaries.html#arbitrary-open-extensions) and [the trace proof](../../SH03-limiting-covectors-at-open-boundaries.html#missing-submanifold-trace) |
+| Closed-set Hamiltonian invariance once involutivity is known | [Involutive subsets](../../SH03-involutive-subsets-of-subanalytic-isotropic-sets.html#hamiltonian-invariance-proved) |
 
 Smooth product charts give the constant-factor submersion formula used here; the radial section spells out its bounded-below argument. Local normal calculations take place in adapted product charts. A global supported-specialization statement is also given with its explicit tubular-neighborhood input; the diagonal application and the proof of involutivity use the product chart itself. Further subanalytic stratification, finiteness and constructible-duality theorems remain separate work.
 
@@ -266,7 +266,7 @@ All functors here preserve a lower cohomological bound. The positive scaling
 
 Fix an arbitrary commutative ring \(k\). In this section \(Y\) is locally compact Hausdorff and second countable, and \(Z\subset Y\) is locally closed. In particular these hypotheses hold for a locally closed subset of one of our metrizable manifolds. Write \(i:Z\hookrightarrow Y\). Sections on \(Z\) always mean sections of the inverse-image sheaf, not sections on \(Y\) supported in \(Z\).
 
-We use the proved compact-germ comparison, compact lifting and c-soft quotient properties. Their proofs apply to locally compact Hausdorff spaces and arbitrary \(k\)-modules. We will extend the neighborhood comparison to noncompact \(Z\), rather than infer it from its compact version.
+We use the proved [compact-germ comparison, compact lifting and c-soft quotient properties](../../../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#compact-germ-gluing). Their proofs apply to locally compact Hausdorff spaces and arbitrary \(k\)-modules. We will extend the neighborhood comparison to noncompact \(Z\), rather than infer it from its compact version.
 
 First choose an ambient open \(Y_0\) in which \(Z\) is closed. Neighborhoods contained in \(Y_0\) are cofinal among all ambient neighborhoods of \(Z\), so we may work in \(Y_0\). It is again locally compact Hausdorff and second countable. Such a space has a compact exhaustion
 
@@ -368,7 +368,7 @@ It would be wrong to replace this varying-pair statement by commutation with a f
 
 ## Ordinary interval fibres and actual product base change {#ordinary-interval-fibre-unit}
 
-We use the proved proper-interval unit and relative contraction, valid for \(D^+\) and arbitrary coefficients. Namely, a map of locally compact Hausdorff spaces with a section and a homotopy over the base from the identity to that section induces an isomorphism on ordinary derived sections of every inverse-image coefficient complex. Its proof uses properness only of the auxiliary projection with fibre \([0,1]\), not of the given map.
+We use the proved [proper-interval unit and relative contraction](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#directional-kernel), valid for \(D^+\) and arbitrary coefficients. Namely, a map of locally compact Hausdorff spaces with a section and a homotopy over the base from the identity to that section induces an isomorphism on ordinary derived sections of every inverse-image coefficient complex. Its proof uses properness only of the auxiliary projection with fibre \([0,1]\), not of the given map.
 
 Let \(B\) be locally compact Hausdorff and \(W\subset B\times\mathbb R\) be open, with nonempty interval fibres over \(B\). For \(L\in D^+(k_B)\), the actual adjunction unit is an isomorphism
 
@@ -949,7 +949,7 @@ To prove it, the smooth-submersion formula on \(t>0\) gives exactly the possible
 \tag{N6}
 \]
 
-Apply the missing-submanifold trace estimate to the hypersurface \(t=0\), with zero coefficient on the negative chamber. Any \((v,z;\alpha,\beta)\in\operatorname{SS}(\nu_MF)\) has witnesses in (N6) with \(t_i\downarrow0\), \((v_i,z_i;\alpha_i,\beta_i)\to(v,z;\alpha,\beta)\), and \(t_i|\tau_i|\to0\). Conicity of \(\operatorname{SS}(F)\) allows multiplication of its original covector by \(t_i\), giving
+Apply the [missing-submanifold trace estimate](../../SH03-limiting-covectors-at-open-boundaries.html#missing-submanifold-trace) to the hypersurface \(t=0\), with zero coefficient on the negative chamber. Any \((v,z;\alpha,\beta)\in\operatorname{SS}(\nu_MF)\) has witnesses in (N6) with \(t_i\downarrow0\), \((v_i,z_i;\alpha_i,\beta_i)\to(v,z;\alpha,\beta)\), and \(t_i|\tau_i|\to0\). Conicity of \(\operatorname{SS}(F)\) allows multiplication of its original covector by \(t_i\), giving
 
 \[
 (t_iv_i,z_i;\alpha_i,t_i\beta_i)\in\operatorname{SS}(F),
@@ -1028,7 +1028,7 @@ H^rR\operatorname{Hom}_U((P_\gamma G_U)|_U,F|_U),
 \tag{M6}
 \]
 
-Here \(U\) runs through relatively compact neighbourhoods of \(x_0\), \(\gamma\) runs through closed convex cones with no line, and \(P_\gamma=q_\gamma^{-1}Rq_{\gamma*}\) is the directional projector. The zero cone is allowed. It is the only cone when \(\xi_0=0\).
+Here \(U\) runs through relatively compact neighbourhoods of \(x_0\), \(\gamma\) runs through closed convex cones with no line, and \(P_\gamma=q_\gamma^{-1}Rq_{\gamma*}\) is the [directional projector](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#directional-derived-unit). The zero cone is allowed. It is the only cone when \(\xi_0=0\).
 
 We verify the formula and its maps. In normal coordinate \(x-y\), the supports \(Z_\gamma=\{y-x\in\gamma\}\) are cofinal among the local closed supports in (T29). Indeed the unit directions of an admissible normal cone at the base point form a compact subset of the strict positive \(\xi_0\)-halfspace. A slightly larger circular closed convex cone still lies strictly in that halfspace. If no sufficiently small product neighbourhood made the original support lie in this wedge, normalize a sequence of offending differences \(x_i-y_i\). A unit subsequential limit would be an offending normal direction, a contradiction. Negating the normal difference gives the displayed negative condition on \(\gamma\). If the unit-normal set is empty, the same argument shows that the support is locally contained in the diagonal; at \(\xi_0=0\) this is precisely the permitted case. Taking unions of two compact angular sets and then a slightly larger circular cone supplies common support refinements.
 
@@ -1044,7 +1044,7 @@ R\Gamma_{Z_\gamma}(U\times W;K_{G,F})
 \tag{M7}
 \]
 
-The first equality also uses open-extension adjunction in the second coordinate. Choose \(W\) relatively compact. The closed support of the kernel is contained in \(V\times\overline W\), so its projection to the first factor is proper: over a compact set it is a closed subset of a compact product. Hence its shriek image equals its ordinary image. The ordinary-space kernel calculation, including its actual comparison map, identifies that image with \(P_\gamma G_W\). The compact-localized kernel is bounded, and the finite proper-image cohomological-dimension bound makes this projector output bounded as well. Its use as the first Hom input is therefore within the established bounded-input range. No equality of ordinary and shriek images is asserted for unlocalized \(G\). Replacing \(U,W\) by \(U\cap W\) is cofinal, proving (M6).
+The first equality also uses open-extension adjunction in the second coordinate. Choose \(W\) relatively compact. The closed support of the kernel is contained in \(V\times\overline W\), so its projection to the first factor is proper: over a compact set it is a closed subset of a compact product. Hence its shriek image equals its ordinary image. The [ordinary-space kernel calculation](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#directional-kernel), including its actual comparison map, identifies that image with \(P_\gamma G_W\). The compact-localized kernel is bounded, and the finite proper-image cohomological-dimension bound makes this projector output bounded as well. Its use as the first Hom input is therefore within the established bounded-input range. No equality of ordinary and shriek images is asserted for unlocalized \(G\). Replacing \(U,W\) by \(U\cap W\) is cofinal, proving (M6).
 
 At the zero cone, the diagonal kernel gives \(P_0G_U=G_U\). For \(G=F\), the identity of \(F|_U\) therefore determines a class in degree zero of the stalk in (M6). Enlarging the support from the diagonal to \(Z_\gamma\) reverses the first-Hom argument: the map \(k_{Z_\gamma}\to k_\Delta\) becomes the projector counit. After open adjunction, this class is represented by the actual arrow
 
@@ -1055,7 +1055,7 @@ Q_{U,\gamma}=(P_\gamma F_U)_U\longrightarrow F.
 
 Neighbourhood restriction gives the same arrows after passing to smaller \(U\), because all comparisons in (M7) use restriction, proper-support adjunction and the fixed kernel counit. This verifies the transition maps of the identity class, rather than assigning an abstract name to it.
 
-If \((\mu hom(F,F))_p=0\), exactness of filtered colimits says that this identity class becomes zero at one refined pair \((U,\gamma)\). Thus (M8) is zero as a derived morphism. The cone of the counit \(P_\gamma F_U\to F_U\) is killed by \(Rq_{\gamma*}\), since its unit is an isomorphism and the adjunction triangle identity identifies the induced map with that isomorphism's inverse. The cone test consequently excludes \(p\) from this cone's microsupport: \(\xi_0\) lies in the interior of the negative polar when it is nonzero. For \(\gamma=0\), the cone is zero directly. Restricting to \(U\) and extending again does not change its germ near \(x_0\). But the cone of the zero map (M8) is \(F\oplus Q_{U,\gamma}[1]\), so its microsupport contains \(\operatorname{SS}(F)\) there. We have proved
+If \((\mu hom(F,F))_p=0\), exactness of filtered colimits says that this identity class becomes zero at one refined pair \((U,\gamma)\). Thus (M8) is zero as a derived morphism. The cone of the counit \(P_\gamma F_U\to F_U\) is killed by \(Rq_{\gamma*}\), since its unit is an isomorphism and the adjunction triangle identity identifies the induced map with that isomorphism's inverse. The [cone test](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#compact-cap-converse) consequently excludes \(p\) from this cone's microsupport: \(\xi_0\) lies in the interior of the negative polar when it is nonzero. For \(\gamma=0\), the cone is zero directly. Restricting to \(U\) and extending again does not change its germ near \(x_0\). But the cone of the zero map (M8) is \(F\oplus Q_{U,\gamma}[1]\), so its microsupport contains \(\operatorname{SS}(F)\) there. We have proved
 
 \[
 (\mu hom(F,F))_p=0\quad\Longrightarrow\quad p\notin\operatorname{SS}(F).
@@ -1100,7 +1100,7 @@ Both opens are invariant under addition by \(C\), and \(0\in O_{1,\epsilon}\). P
 \tag{I4}
 \]
 
-For each \(x\in O_{1,\epsilon}\), the set \((x+C)\setminus O_0\) is closed and lies in this bounded cap, hence compact. For small \(\epsilon\), all caps lie in \(W_1\). Apply prescribed-cone propagation to obtain the actual restriction isomorphism
+For each \(x\in O_{1,\epsilon}\), the set \((x+C)\setminus O_0\) is closed and lies in this bounded cap, hence compact. For small \(\epsilon\), all caps lie in \(W_1\). Apply [prescribed-cone propagation](../../SH03-directional-neighborhoods-and-the-compact-cap-test.html#directional-propagation) to obtain the actual restriction isomorphism
 
 \[
 R\Gamma(O_{1,\epsilon}\cap W;A)
@@ -1137,7 +1137,7 @@ Take \(A=\mu hom(F,F)\). It belongs to \(D^+\), and (M2) makes it zero on this o
 
 Thus (I1) holds. The empty-cone lemma gives \(A_p=0\), and (M9) contradicts \(p\in S\). This proves involutivity at every point, including singular points and the zero section. In dimension zero the tangent and cotangent spaces are zero and the assertion is immediate.
 
-Combining (I6) with the already proved Hamiltonian invariance argument, a \(C^2\) function vanishing on \(\operatorname{SS}(F)\) has Hamiltonian trajectories that remain in that closed set as long as they stay in its domain. No subanalyticity or constructibility assumption is used for the involutivity theorem. The later recovery of Lagrangian strata inside a subanalytic isotropic containing set continues to require the explicitly stated subanalytic foundations in that separate lesson.
+Combining (I6) with the already proved [Hamiltonian invariance argument](../../SH03-involutive-subsets-of-subanalytic-isotropic-sets.html#hamiltonian-invariance-proved), a \(C^2\) function vanishing on \(\operatorname{SS}(F)\) has Hamiltonian trajectories that remain in that closed set as long as they stay in its domain. No subanalyticity or constructibility assumption is used for the involutivity theorem. The later recovery of Lagrangian strata inside a subanalytic isotropic containing set continues to require the explicitly stated subanalytic foundations in that separate lesson.
 
 ## Four checks on specialization and involutivity {#microlocal-worked-checks}
 

@@ -4,7 +4,7 @@
 
 The integral root datum remembers a reductive group up to isomorphism. A pinning removes the conjugation ambiguity and makes this assertion functorial. The main work is to show that the multiplication of root groups is forced by the datum, including over rings in which two or three vanish. We first do those calculations and glue them across the open cell. We then construct groups in characteristic zero and pass to an integral model.
 
-Throughout, a split group has a specified split maximal torus, a constant identification of its character lattice, and trivial root lines. All assertions about a base scheme allow nilpotents and arbitrary characteristic. On a disconnected base, maps of constant data are locally constant; they need not have one value on every component. The purely combinatorial Coxeter presentation and length formula are the precise prerequisites from Root systems and their Weyl groups, identified at the end.
+Throughout, a split group has a specified split maximal torus, a constant identification of its character lattice, and trivial root lines. All assertions about a base scheme allow nilpotents and arbitrary characteristic. On a disconnected base, maps of constant data are locally constant; they need not have one value on every component. The purely combinatorial Coxeter presentation and length formula are proved in the preceding AG-RG-04, Proposition 3.1 and Theorem 3.4, before their use here.
 
 ## 1. What a pinning fixes
 
@@ -32,7 +32,7 @@ n_\alpha t n_\alpha^{-1}=s_\alpha(t),\quad
 \tag{1.2}
 $$
 
-It also proves \((n_\alpha x_\alpha(1))^3=1\). These are identities of group schemes, including in characteristic two.
+It also proves \((n_\alpha x_\alpha(1))^3=1\). These are identities of group schemes, including in characteristic two. Explicitly, in $\mathrm{SL}_2$ the matrix $nx_\alpha(1)$ is $\left(\begin{smallmatrix}0&1\\-1&-1\end{smallmatrix}\right)$, its square is $\left(\begin{smallmatrix}-1&-1\\1&0\end{smallmatrix}\right)$, and its cube is the identity. Also $n^2=-I$, $n\operatorname{diag}(z,z^{-1})n^{-1}=\operatorname{diag}(z^{-1},z)$ and $nE_{12}n^{-1}=-E_{21}$ by matrix multiplication. The rank-one homomorphism transports each of these identities on every test ring.
 
 For example, the usual pinning of \(\operatorname{SL}_2\) uses the diagonal torus, the upper triangular Borel, and
 
@@ -73,7 +73,7 @@ n_\alpha=x_\alpha(1)x_{-\alpha}(-1)x_\alpha(1),
 \]
 These identities are proved in AG-RG-03 Theorem 7.1 and AG-RG-05 (1.1)–(1.2). Since the simple reflections generate the Weyl group, selecting one reflection word for each \(w\) and multiplying these elements yields \(n_w\in N(\mathbb Z)\). This choice uses no word-independence assertion.
 
-AG-RG-04 Theorem 4.2 makes \(Q=N/T\) finite étale. The chosen classes define a map \(\coprod_{w\in W}\operatorname{Spec}\mathbb Z\to Q\). By AG-RG-04 Theorem 4.1, on every geometric fibre these classes are distinct and exhaust its Weyl group. On coordinate rings the map is between finite free \(\mathbb Z\)-modules of equal rank, and its determinant is invertible modulo every prime; the determinant is therefore \(\pm1\). The map is an isomorphism. Its group laws agree on geometric fibres and hence on the constant reduced source. This identifies \(Q\) with \(\underline W\) as a group scheme.
+AG-RG-04 Theorem 4.2 makes $Q=N/T$ finite étale. The chosen classes define a map $\coprod_{w\in W}\operatorname{Spec}\mathbb Z\to Q$. By AG-RG-04 Theorem 4.1, on every geometric fibre these classes are distinct and exhaust its Weyl group. Its coordinate algebras are finite projective over $\mathbb Z$, by the complete finite-projective construction in RG04 Theorem 4.2. Locally at each prime, choose bases using CA07 Theorem 5.3. The algebra map is a square matrix and is an isomorphism on the residue-field fibre, since this can be tested after an algebraic closure by S06 Section 1. Its determinant is consequently a unit in that local ring, and the adjugate calculation in S06 Section 8 gives an inverse. Its kernel and cokernel vanish at every prime and thus vanish: a nonzero module element has a proper annihilator, contained in a maximal ideal, where its localization is nonzero. Hence the scheme map is an isomorphism. The group laws also agree. A map from a component $\operatorname{Spec}\mathbb Z$ of the constant source to the constant finite target has one label, since $\operatorname{Spec}\mathbb Z$ is connected. Indeed its basic nonempty opens all contain the generic point, so it is irreducible. The labels of multiplication and inversion agree on the geometric fibres, and hence everywhere. This identifies $Q$ with $\underline W$ as a group scheme.
 
 A section of \(N\) maps to the identity section of \(Q\) exactly when it factors through the kernel \(T\). The chosen representatives prove surjectivity on \(\mathbb Z\)-points. Since
 \[
@@ -96,9 +96,9 @@ We need two facts about root systems. The first explains why rank-two calculatio
 
 **Lemma 2.1.** For independent roots \(\alpha,\gamma\), there is a base of the root system containing \(\alpha\) and another root \(\beta\) such that \(\gamma=a\alpha+b\beta\), with \(a,b\) nonnegative integers.
 
-**Proof.** In the plane \(E=\mathbf R\alpha+\mathbf R\gamma\), choose a positive system for \(\Phi\cap E\) in which \(\alpha\) is simple and \(\gamma\) is positive. One can do this by taking a linear functional which is positive and sufficiently small on \(\alpha\), and positive on \(\gamma\). In the limit in which its value on \(\alpha\) is zero, the only roots of \(E\) on that wall are \(\pm\alpha\). Thus \(\alpha\) is an extremal positive root; reducedness makes it simple. Let \(\beta\) be the other simple root of this plane system. The positive-root expansion gives the asserted integers.
+**Proof.** In the plane $E=\mathbf R\alpha+\mathbf R\gamma$, take a functional $p_0$ with $p_0(\alpha)=0$ and $p_0(\gamma)=1$; prescribing these values on the independent pair defines it. Its only root zeros in the plane are $\pm\alpha$, by reducedness. Choose $p_1$ with $p_1(\alpha)=1$, and put $p=p_0+\varepsilon p_1$. For a sufficiently small positive $\varepsilon$, its values on all other plane roots keep their $p_0$-signs, and its values on $\alpha,\gamma$ are positive. Explicitly, choose $\varepsilon$ smaller than every positive $|p_0(\delta)|/(|p_1(\delta)|+1)$ for the finitely many roots with $p_0(\delta)\ne0$, and small enough to keep $p(\gamma)>0$. Thus this is a positive system. Every positive root has nonnegative $p_0$-value. A decomposition of $\alpha$ into two positive roots would force both values to be zero; both roots would then be $\alpha$, which cannot sum to $\alpha$. Hence $\alpha$ is simple. The plane-root proof in RG04 Section 3 supplies exactly one other simple root $\beta$, and the positive-root expansion gives the asserted nonnegative integers for $\gamma$.
 
-Extend this positive system to the whole root system as follows. Choose a functional \(q\) vanishing on \(E\) and nonzero on each root outside \(E\), and add a sufficiently small extension of the functional just chosen on \(E\). Roots outside \(E\) keep the sign of \(q\). A sum of positive roots involving any root outside \(E\) has positive \(q\)-value and cannot equal \(\alpha\) or \(\beta\). Their indecomposability in the plane therefore implies their indecomposability in the full positive system. They belong to its base. If \(E\) is the full root space, the extension step is unnecessary. \(\square\)
+Extend this positive system to the whole root system as follows. Extend a basis of $E$ to the full root space, using S06 Section 1. Every root outside $E$ has a nonzero image in the quotient, so its vanishing equation is a proper hyperplane in the dual quotient. The finite polynomial avoidance proof in RG04 Section 3 supplies a functional $q$ vanishing on $E$ and nonzero on every such root. Then extend $p$ by setting its values on the added basis vectors to zero and take $q+\varepsilon' p$. Choose positive $\varepsilon'$ smaller than every $|q(\delta)|/(|p(\delta)|+1)$ for roots $\delta$ outside $E$. Roots outside \(E\) keep the sign of \(q\). A sum of positive roots involving any root outside \(E\) has positive \(q\)-value and cannot equal \(\alpha\) or \(\beta\). Their indecomposability in the plane therefore implies their indecomposability in the full positive system. They belong to its base. If \(E\) is the full root space, the extension step is unnecessary. \(\square\)
 
 The next fact controls different choices for transporting a simple root to another root. Write
 
@@ -272,7 +272,7 @@ $$
 x_c(y)x_d(-Ey)x_e(Fy)x_f(-Gy^2).
 $$
 
-The right side is \(x_{-\alpha}(1)x_d(y)x_e(Hy)x_{-\alpha}(-1)\). Move \(x_{-\alpha}\) past these factors, using the conjugates by \(n_\alpha\) of the already written relations. In this movement a \(d\)-factor can create a \(c\)-factor, and an \(e\)-factor can create \(\beta,c,d\)-factors; none creates an additional \(e\)-factor. The \(e\)-coordinate is therefore \(Hy\). This gives \(F=H\). Equations (3.4) now imply \(F=D+2\) and \(2D=F-1\), so \(D=1\) by subtraction, and \(F=G=H=3\). No cancellation by two or three has occurred. This proves (3.1).
+The right side is $x_{-\alpha}(1)x_d(y)x_e(Hy)x_{-\alpha}(-1)$. Move $x_{-\alpha}$ past these factors, using the conjugates by $n_\alpha$ of the already written relations. Here is the full coordinate check for the coefficient being extracted. The only roots of the form $-i\alpha+jd$ with $i,j>0$ are $c,\beta,f$, and the only roots of the form $-i\alpha+je$ are $d,c,\beta,f$; these lists follow by substituting $d=2\alpha+\beta$, $e=3\alpha+\beta$ in the complete $G_2$ root list. The $-\alpha$-factor therefore creates only $\beta,c,d,f$-factors, never an $e$-factor or an $\alpha$-factor. It commutes with $\beta$ and $f$, since no positive integral combination with $-\alpha$ is a root. Among $\beta,c,d,f$, the only noncommuting pair is $c,d$, whose extra coordinate is $f$ by the fifth written relation. Collecting these factors therefore never creates $e$ either. After the negative end factors cancel, the $e$-coordinate is exactly the original $Hy$. Comparing it with the left normal form gives $F=H$. Equations (3.4) now imply $F=D+2$ and $2D=F-1$, so subtraction gives $D=1$, and $F=G=H=3$. No cancellation by two or three has occurred. This proves (3.1).
 
 ### Checking the normalizer powers
 
@@ -320,7 +320,7 @@ n_\alpha(n_\beta n_\alpha)^5&=n_\beta^{-1}.
 \end{aligned}
 $$
 
-Multiplying the last word by \(n_\beta\) proves the sixth-power relation. The commuting case follows at once from \(n_\alpha^2=t_\alpha\) and \(n_\beta^2=t_\beta\). This completes all the rank-two assertions.
+Multiplying the last word by \(n_\beta\) proves the sixth-power relation. The commuting case follows at once from \(n_\alpha^2=t_\alpha\) and \(n_\beta^2=t_\beta\). This completes all the rank-two assertions. The successive reductions can be verified explicitly with $A=n_\alpha$, $B=n_\beta$, $a=t_\alpha$, $b=t_\beta$, and $C,D,E,F$ the representatives of $c,d,e,f$. Always $a^2=b^2=1$, $A^2=a$, $B^2=b$. In $A_2$, $ABA=C^{-1}a$, $BCB^{-1}=A^{-1}$ and $s_\beta(a)=ab$, so $BABAB=Aa=A^{-1}$. In $B_2$, $ABA=Da$, $BDB^{-1}=D$ and $s_\beta(a)=a$, giving $BABAB=Dab$. Also $ADA^{-1}=B$ and $s_\alpha(ab)=b$, so $ABABABA=Bba=B^{-1}a$. The simple pairings of the short coroot are $2,-2$, so $a$ commutes with the torus and every root group of this rank-two group; multiplying the last word by $B$ gives $a$. In $G_2$, start with $ABA=E^{-1}a$. Since $BEB^{-1}=F$ and $s_\beta(a)=ab$, the next word is $BABAB=F^{-1}a$. Since $AFA^{-1}=F$ and $s_\alpha(a)=a$, the next word is $ABABABA=F^{-1}$. Since $BFB^{-1}=E^{-1}$, the next is $BABABABAB=Eb$. Finally $AEA^{-1}=B$ and $s_\alpha(b)=ba$, so $ABABABABABA=Bba^2=B^{-1}$. These substitutions prove every displayed alternating-word reduction over all test rings.
 
 ## 4. From local multiplication to the entire group
 
@@ -335,7 +335,7 @@ $$
 
 extends uniquely to a homomorphism \(K\to H\).
 
-**Proof.** The regular-component argument in S08 Theorem G.4.2 shows that a smooth geometrically connected field group is geometrically irreducible: its regular irreducible components are disjoint and open, so only one remains. For any test scheme \(R\to S\) and any finite list \(g_1,\ldots,g_d\in K(R)\), the open
+**Proof.** The full regular-component and affine-chart argument in the earlier RG03 Lemma 8.B proves that a smooth geometrically connected field group is geometrically irreducible, without a quasi-compactness assumption. For any test scheme \(R\to S\) and any finite list \(g_1,\ldots,g_d\in K(R)\), the open
 
 $$
 \Omega_R\cap\bigcap_{i=1}^d\Omega_Rg_i^{-1}

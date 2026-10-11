@@ -1,6 +1,6 @@
 # Riemannian connections and convex neighbourhoods
 
-A metric determines lengths, its Levi-Civita derivative and locally minimizing paths. This lesson proves these constructions for positive and nondegenerate metrics with their distinct hypotheses, develops radial parallel frames and strong convexity, and works out the upper half-space and the exact convexity radius of the sphere. Every used result is proved here or in an exact earlier programme lesson, using freely accessible construction material.
+A metric determines lengths, its Levi-Civita derivative and locally minimizing paths. This lesson proves these constructions for positive and nondegenerate metrics with their distinct hypotheses, develops radial parallel frames and strong convexity, and works out the upper half-space and the exact convexity radius of the sphere.
 
 ## A. Metric derivatives and the induced distance
 
@@ -141,7 +141,14 @@ D_t^h(dF\,V)=dF(D_t^gV).
 \]
 Thus \(dF\) takes parallel fields to parallel fields. Uniqueness of parallel transport, Linear A.2, identifies the endpoint transports. This is valid on an entire piecewise smooth path: compactness gives finitely many local-isometry charts and the identities compose across their endpoints. Setting \(V=\dot\gamma\) proves preservation of the geodesic equation and its parameter wherever the curve is defined. No equality of maximal existence intervals is asserted for a merely local isometry.
 
-For positive metrics \(h(dF\dot\eta,dF\dot\eta)=g(\dot\eta,\dot\eta)\) gives equality of the integrands in (A.5), hence of lengths. Every path from \(p\) to \(q\) maps to a path from \(Fp\) to \(Fq\); taking infima proves (A.10). For a global isometry its smooth inverse is also an isometry, so applying the same inequality in reverse proves equality. □
+For positive metrics \(h(dF\dot\eta,dF\dot\eta)=g(\dot\eta,\dot\eta)\) gives equality of the integrands in (A.5), hence of lengths. Every path from \(p\) to \(q\) maps to a path from \(Fp\) to \(Fq\); taking infima proves (A.10). For a global isometry its smooth inverse is also an isometry, so applying the same inequality in reverse proves equality.
+
+In particular, the exponential maps commute with \(F\), with their domains accounted for. Let \(\mathcal E^g_p\) and \(\mathcal E^h_{F(p)}\) denote the full time-one exponential domains of Geo A.2. For \(v\in\mathcal E^g_p\), the image under \(F\) of the source geodesic with initial vector \(v\) is a target geodesic with initial vector \(dF_pv\), by (A.11). It is defined throughout the source interval, which contains time one. Uniqueness and maximality in Geo A.1 identify it with the restriction of the target maximal geodesic. Thus \(dF_p(\mathcal E^g_p)\subset\mathcal E^h_{F(p)}\), and evaluation at time one gives
+\[
+F\bigl(\exp^g_pv\bigr)
+=\exp^h_{F(p)}\bigl(dF_pv\bigr).
+\]
+This conclusion requires only the given local-isometry property of the map \(F:M\to N\). □
 
 **Exercise A.4 (all metric connections with the same parametrized geodesics).** Let \(g\) be pseudo-Riemannian and \(\nabla\) its Levi-Civita connection. For a smooth three-form \(H\), define \(K\) by
 \[
@@ -165,7 +172,9 @@ g(K(X,Y),Z)+g(Y,K(X,Z))
 \]
 Thus \(\nabla'\) is metric. Its torsion is the old zero torsion plus \(K(X,Y)-K(Y,X)=2K(X,Y)\), proving (A.13).
 
-Conversely let \(\nabla'\) be metric with the same geodesics, and put \(K=\nabla'-\nabla\). Linear A.3 makes \(K\) a smooth tensor; Geo A.3 makes it skew in \(X,Y\). Subtracting metric compatibility makes \(B(X,Y,Z)=g(K(X,Y),Z)\) skew in \(Y,Z\) as well. These two adjacent transpositions generate all permutations of three positions: in particular exchanging the first and third is the composition of three adjacent exchanges and also changes the sign. Hence \(B\) is alternating in all three positions. Set \(H=2B\). It is a smooth three-form giving (A.12); its uniqueness follows directly from that formula. This converse uses no definiteness assumption. □
+Conversely let \(\nabla'\) be metric with the same geodesics, and put \(K=\nabla'-\nabla\). Linear A.3 makes \(K\) a smooth tensor; Geo A.3 makes it skew in \(X,Y\). Subtracting metric compatibility makes \(B(X,Y,Z)=g(K(X,Y),Z)\) skew in \(Y,Z\) as well. These two adjacent transpositions generate all permutations of three positions: in particular exchanging the first and third is the composition of three adjacent exchanges and also changes the sign. Hence \(B\) is alternating in all three positions. Set \(H=2B\). It is a smooth three-form giving (A.12); its uniqueness follows directly from that formula. This converse uses no definiteness assumption.
+
+If \(\dim M<3\), this classification leaves only the Levi-Civita connection. At a point choose a basis of the tangent space and expand the three arguments of \(H\) by multilinearity. Each coefficient has a repeated basis vector, since there are fewer than three basis vectors. Interchanging the two repeated positions both fixes that coefficient and changes its sign, so it is zero over \(\mathbb R\). In dimension zero there are no nonzero inputs. Hence \(H=0\), and (A.12) and nondegeneracy force \(K=0\). □
 
 **Exercise A.5 (a variable transverse scale).** For a smooth function \(f:\mathbb R\to(0,\infty)\), put
 \(g=dx^2+f(x)^2dy^2\). Its only possibly nonzero connection coefficients and its geodesic equations are
@@ -190,7 +199,9 @@ Their only nonzero coefficient derivative is
 \(\partial_xg_{yy}=2ff'\).
 Substitute into (A.2). For the upper \(x\) component the only contribution is
 \(-\tfrac12\partial_xg_{yy}=-ff'\) when both lower indices are \(y\). For the upper \(y\) component it is
-\(\tfrac12f^{-2}\partial_xg_{yy}=f'/f\) when the lower indices are \(x,y\) in either order. All other terms are zero. Geo A.1's coordinate geodesic equation now gives (A.14), with the factor two coming from the two mixed lower-index orders. Geo A.4 constructs the positive real exponential and proves its derivative is itself. Thus \(f'=f=e^x\), and substitution gives (A.15). □
+\(\tfrac12f^{-2}\partial_xg_{yy}=f'/f\) when the lower indices are \(x,y\) in either order. All other terms are zero. Geo A.1's coordinate geodesic equation now gives (A.14), with the factor two coming from the two mixed lower-index orders. Geo A.4 constructs the positive real exponential and proves its derivative is itself. Thus \(f'=f=e^x\), and substitution gives (A.15).
+
+For every such \(f\), each curve \(x(t)=at+b\), \(y(t)=y_0\) is an affinely parametrized geodesic: both accelerations and \(y'\) vanish in (A.14). For \(f(x)=e^x\), a curve with \(x(t)=c\) and nonzero \(y'\) cannot be a geodesic, since its first equation would require \(-e^{2c}(y')^2=0\). Thus the two families of coordinate lines have different geodesic behaviour even though both are straight in the displayed coordinates. □
 
 ## B. Radial length and genuinely minimizing neighbourhoods
 
@@ -281,7 +292,9 @@ Where \(r>0\), on each smooth piece the continuous function \(|\dot\eta|_g-r'\) 
 \]
 This includes any initial pause at \(p\). The scalar \(r\) is piecewise \(C^1\) even at that pause, because in (B.9) it equals the smooth linear functional \(u\mapsto g_p(u,v/r_0)\) applied to the piecewise \(C^1\) inverse-coordinate path \(u\). Conversely any nondecreasing piecewise \(C^1\) scalar \(r\) with endpoints \(0,r_0\) gives length \(\int r'=r_0\) in (B.9).
 
-Finally a minimizing affine geodesic has constant speed by A.1, so its length on each interval is that speed times the parameter length. On \([0,1]\) the speed is \(r_0\), and the equality just proved gives \(r(t)=tr_0\). This identifies it with the stated radial geodesic, including the constant case. □
+Finally a minimizing affine geodesic has constant speed by A.1, so its length on each interval is that speed times the parameter length. On \([0,1]\) the speed is \(r_0\), and the equality just proved gives \(r(t)=tr_0\). This identifies it with the stated radial geodesic, including the constant case.
+
+Consequently every geodesic is minimizing on sufficiently short segments starting at any one of its times. Fix such a time \(t_0\) and put \(p=\gamma(t_0)\). Geo B.1 supplies a normal ball at \(p\). For all sufficiently small real \(s\), the vector \(s\dot\gamma(t_0)\) lies in that ball and \(t_0+s\) lies in the original interval. Geo A.2 and initial-value uniqueness identify its radial segment, parametrized by \(0\leq u\leq1\), with \(\gamma(t_0+su)\). The result just proved makes this segment globally minimizing between its endpoints. Both signs of \(s\), and the constant geodesic, are included; no completeness assumption is needed. □
 
 **Exercise B.4 (the exact cost of an outward excursion).** Let a path \(\eta:[a,b]\to U\) in (B.4) go from \(p\) to \(q=\exp_pv\), \(r_0=|v|_{g_p}\). If it visits radius \(\rho\) with \(r_0<\rho<R\), then
 \[
@@ -295,6 +308,8 @@ This bound is sharp. If, on a smooth interval away from \(p\), its angular direc
 For strictness choose a smaller closed interval \([s,t]\), away from the centre and from the finitely many corners, on which the angular derivative is nonzero at an interior point. Continuity and invertibility in (B.6) make
 \(\delta=\int_s^t(|\dot\eta|_g-|r'|)>0\).
 Insert \(s,t\) and the visiting time into a partition. On the pieces of \([s,t]\), speed integrates to the integral of \(|r'|\) plus this positive excess; outside it B.2 bounds length by the absolute radial increments. The sum of those absolute increments is at least \(2\rho-r_0\), by grouping the pieces before and after the visiting time and applying the real triangle inequality. Hence \(L_g(\eta)\geq2\rho-r_0+\delta\). □
+
+An open set is called **strongly convex** here when every ordered pair of its points has a unique globally minimizing affine geodesic on \([0,1]\), and that segment lies in the set.
 
 **Theorem B.5 (arbitrarily small strong convexity and smooth squared distance).** Every point of a Riemannian manifold has arbitrarily small open neighbourhoods \(V\) such that each pair \(x,y\in V\) has a unique minimizing affine geodesic \([0,1]\to M\), and that geodesic lies in \(V\) and depends smoothly on \((x,y)\). Every other minimizing piecewise \(C^1\) path traces it monotonically. For each \(x\in V\), an open star-shaped neighbourhood \(W_x\subset T_xM\) is mapped diffeomorphically onto \(V\) by \(\exp_x\). The global squared distance is smooth on all of \(V\times V\), including its diagonal.
 
@@ -317,7 +332,13 @@ For \(x,y\in V\), the same vector \(v(x,y)\) lies in \(B_\delta(0)\). B.3 applie
 d_g(x,y)^2=g_x\bigl(v(x,y),v(x,y)\bigr).
 \tag{B.13}
 \]
-The right side is a smooth function on \(V\times V\), since \(g\) and the endpoint inverse are smooth. At the diagonal \(v(x,x)=0\), so this formula proves smoothness there without differentiating a square root. No completeness or global existence of minimizing curves was assumed. □
+The right side is a smooth function on \(V\times V\), since \(g\) and the endpoint inverse are smooth. At the diagonal \(v(x,x)=0\), so this formula proves smoothness there without differentiating a square root. No completeness or global existence of minimizing curves was assumed.
+
+The distance \(d_g\) itself is smooth on \((V\times V)\setminus\{(x,x):x\in V\}\): there (B.13) is strictly positive by A.2, and its positive square root is smooth by Local 1.2 applied to squaring on \((0,\infty)\). In positive dimension it is not differentiable at any diagonal point. Indeed, fix \(p\in V\) and a nonzero \(v\in T_pM\). For all sufficiently small positive and negative \(t\), \(\exp_p(tv)\) belongs to \(V\) and to a normal ball at \(p\). B.3 gives
+\[
+d_g\bigl(p,\exp_p(tv)\bigr)=|t|\,|v|_{g_p}.
+\]
+Its right derivative at zero is \(|v|_{g_p}\), and its left derivative is \(-|v|_{g_p}\). Differentiability of the distance at \((p,p)\) would, by the chain rule along the smooth curve \(t\mapsto(p,\exp_p(tv))\), make this one-variable function differentiable there, a contradiction. Squared distance avoids this obstruction by (B.13). □
 
 **Exercise B.6 (a distance whose infimum is not attained).** In \(M=\mathbb R^2\setminus\{0\}\) with its Euclidean metric, let \(p=(-1,0)\), \(q=(1,0)\). Then \(d_g(p,q)=2\), but no piecewise \(C^1\) path attains this distance. This is consistent with B.5.
 
