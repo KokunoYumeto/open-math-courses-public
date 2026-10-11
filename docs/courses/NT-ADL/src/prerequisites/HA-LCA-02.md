@@ -2,7 +2,7 @@
 
 **Lesson HA-LCA-02.** A character records a frequency without choosing coordinates on a group. This lesson constructs the topology on the set of characters, computes the classical examples, and proves local compactness directly. Every group below is Hausdorff, locally compact and abelian unless another hypothesis is stated.
 
-The freely accessible sources are D. H. Fremlin, [*Measure Theory*, §445A–B, version of 20 March 2008](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex), and Terence Tao, [245C, Notes 2, Definition 8 and Exercises 9–11](https://terrytao.wordpress.com/2009/04/06/the-fourier-transform/), dated 6 April 2009. Source hints and elementary auxiliary claims are proved below. The earlier programme proofs we use are compactness and elementary calculus, compact cutoffs and representation, uniform approximation, [integration](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html), and Haar measure.
+The freely accessible sources are D. H. Fremlin, [*Measure Theory*, §445A–B, version of 20 March 2008](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex), and Terence Tao, [245C, Notes 2, Definition 8 and Exercises 9–11](https://terrytao.wordpress.com/2009/04/06/the-fourier-transform/), dated 6 April 2009. Source hints and elementary auxiliary claims are proved below. The earlier programme proofs we use are [compactness and elementary calculus](HA-LCA-PRE-BANACH.md), [compact cutoffs and representation](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-representation.html), [uniform approximation](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/uniform-approximation.html), [integration](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html), and [Haar measure](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/haar-measure.html).
 
 Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's original copyright 1998 and source notices are retained in the original source package.
 
@@ -165,7 +165,7 @@ There is a unique Borel measure \(\lambda\) on \(\mathbb R\) with
 \]
 for measurable \(A\) and nonnegative measurable or integrable \(h\).
 
-**Proof.** The earlier Haar reading, Theorems 4.1 and 5.1, supplies a nonzero translation-invariant measure, finite on compact sets and positive on nonempty open sets. Since \(\mathbb R\) is a countable union of compact intervals, its completed domain is the ordinary completion of its Borel domain.
+**Proof.** The earlier [Haar reading, Theorems 4.1 and 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/haar-measure.html#ha-lca-pre-haar-theorem-4-1), supplies a nonzero translation-invariant measure, finite on compact sets and positive on nonempty open sets. Since \(\mathbb R\) is a countable union of compact intervals, its completed domain is the ordinary completion of its Borel domain.
 
 Every singleton has the same mass \(c\). Arbitrarily many distinct points fit in \([-1,1]\), so \(nc\le\mu([-1,1])<\infty\) for every \(n\); hence \(c=0\). The number \(\mu((0,1])\) is finite and positive. Divide the measure by that number. Partitioning \((0,1]\) into \(q\) translates of \((0,1/q]\) gives mass \(1/q\) for the latter interval, and then mass \(p/q\) for \((0,p/q]\). Monotonicity and rational upper and lower approximations to a positive real \(t\) give \(\mu((0,t])=t\). Translation gives all the asserted interval values.
 
@@ -415,7 +415,7 @@ Translation invariance and the homomorphism identity give, for every \(x\),
    =\int_{\mathbb R}f(t)\chi(t+x)\,dt
    =c\chi(x).                                         \tag{6.1}
 \]
-All integrals exist because \(|\chi|=1\). The earlier Haar reading, Lemma 6.1, proves continuity of \(x\mapsto L_xf\) in \(L^1\), where \(L_xf(y)=f(y-x)\). Consequently the left side of (6.1) is continuous: its change between \(x\) and \(x_0\) is bounded by \(\|L_xf-L_{x_0}f\|_1\). Division by \(c\) proves continuity of \(\chi\), and Theorem 3.1 supplies its form and uniqueness. \(\square\)
+All integrals exist because \(|\chi|=1\). The earlier [Haar reading, Lemma 6.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/haar-measure.html#ha-lca-pre-haar-lemma-6-1), proves continuity of \(x\mapsto L_xf\) in \(L^1\), where \(L_xf(y)=f(y-x)\). Consequently the left side of (6.1) is continuous: its change between \(x\) and \(x_0\) is bounded by \(\|L_xf-L_{x_0}f\|_1\). Division by \(c\) proves continuity of \(\chi\), and Theorem 3.1 supplies its form and uniqueness. \(\square\)
 
 <a id="ha-lca-02-exercise-6-5"></a>
 ### Exercise 6.5. A compact metrizable group has countable dual
@@ -424,7 +424,7 @@ Prove countability of \(\widehat K\) when \(K\) is a compact metrizable abelian 
 
 **Solution.** Normalize Haar measure \(\mu\) so that \(\mu(K)=1\), using the earlier Haar existence and uniqueness theorem. Fix a metric \(d\) inducing the compact topology.
 
-First \(C(K)\) is separable in the uniform norm. For each positive integer \(n\), compactness gives a finite \(1/n\)-net in \(K\); their union \(D\) is countable and dense. The real continuous functions \(x\mapsto d(x,a)\), \(a\in D\), separate points: for \(x\ne y\), choose \(a\in D\) with \(d(x,a)<d(x,y)/3\), and the triangle inequality gives \(d(y,a)>2d(x,y)/3\). The real algebra generated by these functions and constants is uniformly dense in \(C(K,\mathbb R)\), by the proved uniform approximation reading, Theorem 2.1. Its polynomials with rational coefficients in finitely many generators form a countable dense subset of this algebra: for any one polynomial, all its finitely many monomials are bounded on \(K\), so sufficiently close rational coefficients give any prescribed uniform accuracy. The resulting countable family is dense in all of \(C(K,\mathbb R)\). Taking its pairs as real and imaginary parts proves separability of \(C(K)\).
+First \(C(K)\) is separable in the uniform norm. For each positive integer \(n\), compactness gives a finite \(1/n\)-net in \(K\); their union \(D\) is countable and dense. The real continuous functions \(x\mapsto d(x,a)\), \(a\in D\), separate points: for \(x\ne y\), choose \(a\in D\) with \(d(x,a)<d(x,y)/3\), and the triangle inequality gives \(d(y,a)>2d(x,y)/3\). The real algebra generated by these functions and constants is uniformly dense in \(C(K,\mathbb R)\), by the proved [uniform approximation reading, Theorem 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/uniform-approximation.html#ha-lca-pre-approx-theorem-2-1). Its polynomials with rational coefficients in finitely many generators form a countable dense subset of this algebra: for any one polynomial, all its finitely many monomials are bounded on \(K\), so sufficiently close rational coefficients give any prescribed uniform accuracy. The resulting countable family is dense in all of \(C(K,\mathbb R)\). Taking its pairs as real and imaginary parts proves separability of \(C(K)\).
 
 We next prove that \(C(K)\) is dense in \(L^2(\mu)\), where functions agreeing almost everywhere are identified and
 \(\|f\|_2=(\int|f|^2\,d\mu)^{1/2}\).
@@ -442,7 +442,7 @@ For \(f\in L^2\), the bounded truncations \(f\mathbf1_{\{|f|\le N\}}\) approach 
 
 For each completed measurable \(A\subseteq K\) and \(\varepsilon>0\), replace \(A\) by a Borel representative modulo a null set. Compact inner regularity and outer regularity supply a compact \(F\) and open \(U\) with
 \(F\subseteq A_{\mathrm B}\subseteq U\) and \(\mu(U\setminus F)<\varepsilon\).
-These regularity properties on compact \(K\) are proved in the earlier Haar reading, Theorem 4.1; the Borel representative is supplied by the integration reading, Lemma 1.1. The earlier Radon reading, Lemma 1.3, gives \(u\in C(K)\) with \(0\le u\le1\), \(u=1\) on \(F\) and \(u=0\) outside \(U\). Thus
+These regularity properties on compact \(K\) are proved in the earlier Haar reading, Theorem 4.1; the Borel representative is supplied by the integration reading, Lemma 1.1. The earlier [Radon reading, Lemma 1.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-3), gives \(u\in C(K)\) with \(0\le u\le1\), \(u=1\) on \(F\) and \(u=0\) outside \(U\). Thus
 \[
  \|\mathbf1_A-u\|_2^2\le \mu(U\setminus F)<\varepsilon .
 \]

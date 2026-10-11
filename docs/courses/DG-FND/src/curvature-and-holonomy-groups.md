@@ -2866,7 +2866,7 @@ For a point \(z\) on the joint zero set, use
 It has invertible derivative, carries \(p\) to \(s\) and \(q\) to \(t\), and makes \(X_p=\partial_q\), \(X_q=-\partial_p\). The identities defining these Hamiltonian fields force every mixed coefficient between \(p,q\) and the remaining coordinates to vanish. Jacobi says that every Hamiltonian flow preserves the bracket: \(X_f\{g,h\}=\{X_fg,h\}+\{g,X_fh\}\). Taking the remaining coordinate functions shows that the remaining coefficients are independent of both \(p\) and \(q\). Consequently
 \(\pi=\partial_p\wedge\partial_q+\pi_0(z)\), where \(\pi_0\) satisfies (I.5) and has constant rank \(2r-2\). Induction gives (I.8); at rank zero all coefficients vanish. A skew form has even rank by the elementary elimination into nondegenerate two-dimensional pairs used in F.1, so this accounts for the entire rank. The flow and inverse constructions are analytic by I.1 when the coefficients are analytic.
 
-The constant matrix of (I.9) is invertible, its exterior derivative is zero, and I.3 gives its bracket as \(\sum_i\partial_{p_i}\wedge\partial_{q_i}+\sum_\alpha\partial_{z_\alpha}\wedge\partial_{w_\alpha}\). For functions pulled back from the original neighbourhood, the second sum vanishes. Projection is a submersion, proving the realization assertion and dimension. □
+The constant matrix of (I.9) is invertible, its exterior derivative is zero, and I.3 gives its bracket as \(\sum_i\partial_{p_i}\wedge\partial_{q_i}+\sum_\alpha\partial_{z_\alpha}\wedge\partial_{w_\alpha}\). For functions pulled back from the original neighbourhood, the second sum vanishes. Explicitly, \(X_{p_i}=\partial_{q_i}\), \(X_{q_i}=-\partial_{p_i}\), and \(X_{z_\alpha}=\partial_{w_\alpha}\), by contraction with (I.9). Thus the \(z_\alpha\) are Casimirs of the target bracket. On the target the Hamiltonian fields span exactly the \(p_i,q_i\) coordinate directions; their integral leaves are the constant-\(z\) slices, of dimension \(2r\), with the nondegenerate form \(\sum_i dq_i\wedge dp_i\). Projection is a submersion, proving the realization assertion and dimension. □
 
 **Lemma I.5 (a two-form from a cotangent spray).** Let \(O\subset\mathbb R^n\) be open, with Poisson matrix \(P(x)\), and put \(B(x)=-P(x)\), the matrix of \(\pi^\sharp\). In cotangent coordinates \((x,a)\), consider a smooth vector field
 \[
@@ -2880,7 +2880,7 @@ There is an open neighbourhood \(S\) of the entire zero section in \(T^*O\) on w
  \qquad \sigma_{\rm can}=\sum_i dx^i\wedge da_i
  \tag{I.12}
 \]
-is closed and nondegenerate. Such a field exists with \(\gamma=0\). Every ordinary Poisson spray on this chart has the form (I.11). If the coefficients are analytic, so is \(\sigma\).
+is exact and nondegenerate. Such a field exists with \(\gamma=0\). Every ordinary Poisson spray on this chart has the form (I.11). If the coefficients are analytic, so is \(\sigma\).
 
 **Proof.** Every \((x,0)\) is stationary. Local tools 2.1, iterated along the compact stationary time interval, gives an open neighbourhood of this point on which the flow exists throughout that interval. Taking their union gives an open neighbourhood of the zero section. This does not require a common fibre radius over a noncompact \(O\). Differentiate the field at \((x,0)\). The identity \(\gamma(x,0)=0\) also gives \(D_x\gamma(x,0)=0\), so its derivative is the block matrix \(\left(\begin{smallmatrix}0&B(x)\\0&0\end{smallmatrix}\right)\). The variational equation therefore gives
 \[
@@ -2893,7 +2893,20 @@ For two such tangent vectors,
    =z(u)-v(w)+\pi_x(v,z).
  \tag{I.14}
 \]
-Indeed substitution into \(\sigma_{\rm can}\) adds \(2t\pi(v,z)\), whose integral is \(\pi(v,z)\). Pairing first with all \((w,0)\) shows that a null vector has \(v=0\); pairing then with all \((0,z)\) gives \(u=0\). Thus the form is nondegenerate at every zero. The determinant remains nonzero on an open neighbourhood; intersect it with the flow domain to define \(S\). Differentiation under the fixed integral is justified by Local tools 0.3 on compact time intervals. Pullback commutes with \(d\), so \(d\sigma=0\).
+Indeed substitution into \(\sigma_{\rm can}\) adds \(2t\pi(v,z)\), whose integral is \(\pi(v,z)\). Pairing first with all \((w,0)\) shows that a null vector has \(v=0\); pairing then with all \((0,z)\) gives \(u=0\). Thus the form is nondegenerate at every zero. The determinant remains nonzero on an open neighbourhood; intersect it with the flow domain to define \(S\). The zero-section matrix and its inverse, in base-then-fibre order, are explicitly
+\[
+ \begin{aligned}
+ W_0&=\begin{pmatrix}0&I\\-I&-B\end{pmatrix},\\
+ W_0^{-1}&=\begin{pmatrix}-B&-I\\I&0\end{pmatrix}.
+ \end{aligned}
+\]
+Their product in either order is the identity by block multiplication; no inverse of \(B\) occurs.
+
+In fact the two-form is exact. Put \(\lambda=\sum_i a_i\,dx^i\), so that \(\sigma_{\rm can}=-d\lambda\). Differentiation under the fixed integral is justified by Local tools 0.3 on compact time intervals. Since pullback commutes with \(d\), we obtain
+\[
+ \sigma=-d\left(\int_0^1\varphi_t^*\lambda\,dt\right).
+\]
+The identity \(d^2=0\), proved in A.2, then gives \(d\sigma=0\).
 
 A Poisson spray is a field with base projection \(B(x)a\) and dilation law \(m_t^*\mathcal V=t\mathcal V\), where \(m_t(x,a)=(x,ta)\), \(t>0\). The law says \(\gamma(x,ta)=t^2\gamma(x,a)\). Taylor expansion at zero shows \(\gamma(x,0)=D_a\gamma(x,0)=0\); indeed it also identifies \(\gamma\) with its quadratic Taylor term. Thus every such spray is covered. Our proof even allows any smooth vertical term vanishing to first order at the zero section. Lemma I.1 proves analytic dependence of the flow and analyticity of its fixed-time integral. □
 
@@ -2940,14 +2953,14 @@ The first is the product rule with cancelling \(A\)-terms. For the second use \(
 
 These auxiliary equations are finite-dimensional inhomogeneous linear ODEs on the compact interval. To see that their solutions cannot stop inside it, bound their coefficients by \(L\) and inhomogeneous term by \(C\). On intervals of length \(\delta\) with \(\delta L<1/2\), the integral equation bounds the supremum of a solution by \(2(|\eta(t_0)|+\delta C)\). Finitely many such intervals cover \([0,1]\); Local tools 2.1 continues each solution through them. Reversing time treats final data. □
 
-**Theorem I.7 (symplectic realization at every Poisson point).** With \(S,\sigma\) from I.5, the cotangent projection \(p:S\to O\) is a Poisson submersion, regardless of changes in the rank of \(\pi\). Moreover, with \(p_1=p\circ\varphi_1\),
+**Theorem I.7 (symplectic realization at every Poisson point).** With \(S,\sigma\) from I.5, the cotangent projection \(p:S\to O\) is a surjective Poisson submersion, regardless of changes in the rank of \(\pi\). Moreover, with \(p_1=p\circ\varphi_1\),
 \[
  (\ker dp)^{\perp_\sigma}=\ker dp_1.
  \tag{I.20}
 \]
 This gives a local smooth symplectic realization near every point of every smooth Poisson manifold, and an analytic one for analytic input. The conclusion holds for every spray covered by I.11.
 
-**Proof.** Both \(p\) and \(p_1\) are submersions: projection is one, and a flow map is locally a diffeomorphism, with inverse the reversed flow by uniqueness. Their kernels have dimension \(n\). Take \(v_0\in\ker dp\), \(w_0\in\ker dp_1\), so that \(u(0)=0\), \(w(1)=0\). Choose the auxiliary solutions in I.6 with \(\eta_v(0)=0\), \(\eta_w(1)=0\). Both endpoint values in (I.17) vanish. Thus \(\ker dp_1\subset(\ker dp)^\perp\). Nondegeneracy identifies the latter with the annihilator of an \(n\)-dimensional subspace in a \(2n\)-dimensional space, so it too has dimension \(n\). This proves (I.20).
+**Proof.** Since \(S\) contains the entire zero section and \(p(0_x)=x\), the map \(p\) is onto \(O\). Both \(p\) and \(p_1\) are submersions: projection is one, and a flow map is locally a diffeomorphism, with inverse the reversed flow by uniqueness. Their kernels have dimension \(n\). Take \(v_0\in\ker dp\), \(w_0\in\ker dp_1\), so that \(u(0)=0\), \(w(1)=0\). Choose the auxiliary solutions in I.6 with \(\eta_v(0)=0\), \(\eta_w(1)=0\). Both endpoint values in (I.17) vanish. Thus \(\ker dp_1\subset(\ker dp)^\perp\). Nondegeneracy identifies the latter with the annihilator of an \(n\)-dimensional subspace in a \(2n\)-dimensional space, so it too has dimension \(n\). This proves (I.20).
 
 Let \(\theta\in T^*_{p(\xi)}O\), and let \(v_0\) be defined by
 \(\iota_{v_0}\sigma=p^*\theta\).
@@ -2995,7 +3008,15 @@ For \(v\ne0\),
  H(v)=\frac{v-1+e^{-v}}{v^2}.
  \tag{I.25}
 \]
-The integral definitions remove both apparent singularities. Expanding the exponential proves absolute convergence of the resulting series on every bounded interval: \(\sum |v|^k/k!\) converges by a ratio bound once \(k>2|v|\). Termwise integration yields the stated values and analyticity. The identity \(h'-H+h=0\) proves \(d\sigma=0\) directly. Its matrix determinant is \(h(v)^2>0\), since the defining integral for \(h\) is positive. Direct inversion gives the \(xy\) entry of the Poisson matrix equal to \(x\), in agreement with I.7. Thus the total symplectic form remains nondegenerate above the entire rank-zero line; no division by \(x\) has been used. □
+The integral definitions remove both apparent singularities. Expanding the exponential proves absolute convergence of the resulting series on every bounded interval: \(\sum |v|^k/k!\) converges by a ratio bound once \(k>2|v|\). Termwise integration yields the stated values and analyticity. The identity \(h'-H+h=0\) proves \(d\sigma=0\) directly. Its matrix determinant is \(h(v)^2>0\), since the defining integral for \(h\) is positive. The Hamiltonian fields of the two base coordinates are explicitly
+\[
+ \begin{aligned}
+ X_x&=x\,\partial_y-h(v)^{-1}\partial_u,\\
+ X_y&=-x\,\partial_x+
+       \frac{uH(v)}{h(v)}\partial_u-\partial_v.
+ \end{aligned}
+\]
+Substitution in (I.23) gives \(\iota_{X_x}\sigma=dx\) and \(\iota_{X_y}\sigma=dy\): in each case the extra \(dv\)-terms cancel. Their projections are \(x\,\partial_y\) and \(-x\,\partial_x\), and hence \(\{x,y\}=X_xy=x\), in agreement with I.7. Thus the total symplectic form remains nondegenerate above the entire rank-zero line; no division by \(x\) has been used. □
 
 **Theorem I.9 (admissible maps and every Jacobi identity).** Let \(\mathfrak g\subset\mathfrak{gl}(V)\) be a finite-dimensional real Lie algebra, and let \(\phi:\mathfrak g^*\to\Lambda^2V^*\) be smooth. For \(a\in\mathfrak g^*\), define
 \[
@@ -3022,9 +3043,9 @@ On \(W^*=\mathfrak g^*\oplus V^*\), define the bracket on linear coordinate func
  \{\ell_x,\ell_y\}=\phi_a(x,y),
  \tag{I.28}
 \]
-and extend by the coordinate bivector rule. This is Poisson. Conversely its Jacobi identities imply (I.27). The first condition holds, in particular, if
+and extend by the coordinate bivector rule. This is Poisson. Conversely its Jacobi identities imply (I.27). For a connected matrix group with Lie algebra \(\mathfrak g\), the first condition is equivalent to
 \(\phi(a\circ\operatorname{Ad}_g)(x,y)=\phi(a)(gx,gy)\)
-for every element of a connected matrix group with Lie algebra \(\mathfrak g\).
+for every group element \(g\).
 
 **Proof.** By I.3 it is enough to check triples of linear coordinates. For three elements of \(\mathfrak g\), the identity is the Lie algebra Jacobi identity. For \(A,B,x\), it is
 \(A(Bx)-B(Ax)-[A,B]x=0\), the defining matrix commutator identity. For \(A,x,y\), the cyclic sum is
@@ -3038,7 +3059,16 @@ which is zero by (I.27). Finally the \(\mathfrak g^*\)-component of \(X_{\ell_x}
  -q\bigl(D_a(y,z)x+D_a(z,x)y+D_a(x,y)z\bigr).
  \tag{I.30}
 \]
-It vanishes by the second condition. Conversely, (I.29) and (I.30), for all \(q\), imply both conditions. Differentiating the stated group equivariance at \(g=\exp(tA)\) gives the first. Thus every coordinate Jacobi identity has been accounted for. □
+It vanishes by the second condition. Conversely, (I.29) and (I.30), for all \(q\), imply both conditions. Differentiating the stated group equivariance at \(g=\exp(tA)\) gives the first condition.
+
+Conversely, suppose that condition holds. For fixed \(A\), set \(a_t=a\circ\operatorname{Ad}_{\exp(tA)}\); differentiation of matrix conjugation gives \(a_t'=\delta_Aa_t\). The product and chain rules, followed by the first equation of (I.27), give
+\[
+ \frac{d}{dt}\left[
+   \phi_{a_t}(e^{-tA}x,e^{-tA}y)\right]=0.
+\]
+The two derivatives of the input vectors cancel the two terms in that equation. The value at zero therefore gives the stated equivariance for \(\exp(tA)\). If it holds for \(g\) and \(h\), applying it twice gives it for \(gh\), since
+\(a\circ\operatorname{Ad}_{gh}=(a\circ\operatorname{Ad}_g)\circ\operatorname{Ad}_h\).
+By the complete group-exponential proof in Local tools 2.3, exponentials contain an open identity neighbourhood in the group. The subgroup they generate is open, and each of its cosets is open. Connectedness forces it to be the whole group. Thus the infinitesimal equation gives equivariance for every \(g\), completing the converse and every coordinate Jacobi identity. □
 
 **Theorem I.10 (a connection from any realized parameter).** For an admissible \(\phi\) as in I.9 and any point \((a_0,q_0)\in W^*\), there is a local torsion-free connection on a manifold of dimension \(\dim V\), with connection matrices in \(\mathfrak g\), and a frame at which
 \[
@@ -3065,7 +3095,12 @@ The rank-\(\dim W\) distribution spanned by these fields is involutive: the brac
        =-\tfrac12D_a(\theta\wedge\theta).
  \tag{I.33}
 \]
-We normalize \(D_a(\theta\wedge\theta)(U,V)=2D_a(\theta(U),\theta(V))\), and \((\omega\wedge\theta)(U,V)=\omega(U)\theta(V)-\omega(V)\theta(U)\). For two vertical fields (I.33) is the first bracket of (I.32); for one vertical and one horizontal field it is the second; for two horizontal fields it is the third. This verifies all components and factors.
+We normalize \(D_a(\theta\wedge\theta)(U,V)=2D_a(\theta(U),\theta(V))\), and \((\omega\wedge\theta)(U,V)=\omega(U)\theta(V)-\omega(V)\theta(U)\). For two vertical fields (I.33) is the first bracket of (I.32); for one vertical and one horizontal field it is the second; for two horizontal fields it is the third. This verifies all components and factors. The vertical equivariance identities are also explicit:
+\[
+ \mathcal L_{\xi_A}\theta=-A\theta,\qquad
+ \mathcal L_{\xi_A}\omega=-[A,\omega].
+\]
+Indeed, evaluate the first identity on each \(\xi_B,\xi_x\). The coframe values are constant, so the Lie derivative is minus the coframe evaluated on the bracket: (I.32) gives respectively zero and \(-Ax\). For the second identity the same evaluations give \(-[A,B]\) and zero. Since these fields form a frame, both identities hold on every tangent vector.
 
 The vertical distribution spanned by the \(\xi_A\) is itself involutive. Use I.2 to choose a local quotient \(F\to M\) and a transverse local section \(s:M\to F\) through \(s_0\). Then \(e=s^*\theta\) is a \(V\)-valued coframe, since \(\ker\theta\) is precisely that vertical distribution; put \(A=s^*\omega\). Define a connection by
 \[
@@ -3149,7 +3184,7 @@ Substitution in (I.37) gives the following six entries of its directional deriva
 \]
 Using \(Ee_j=je_{j-1}\), \(He_j=(3-2j)e_j\), \(Fe_j=(3-j)e_{j+1}\) from H.1, the entries of \(\phi(Ae_i,e_j)+\phi(e_i,Ae_j)\) are these same lists. For example the \(13\) entry for \(E\) is \(\phi_{03}+3\phi_{12}=6\alpha\gamma-3\beta^2\); the constants cancel. The other potentially constant combinations are checked in the same lists. Thus every entry of the first condition of (I.27) is verified for a basis of \(\mathfrak{sl}_2\), hence for every \(A\).
 
-Choose \(a_0=(1,0,0)\), \(q_0=e_1^*\), \(c=0\). Equation (I.38) gives \(D_{a_0}=R(1,0,0)\), whose values at \(01,02,03\) are \(-6E,3H,-9F\); they span the acting algebra. Moreover
+Choose \(a_0=(1,0,0)\) and \(q_0=e_1^*\). Both \(D\) and \(dD\) are independent of the constant \(c\), so keep \(c\) arbitrary for the following holonomy and nonparallel-curvature argument. Equation (I.38) gives \(D_{a_0}=R(1,0,0)\), whose values at \(01,02,03\) are \(-6E,3H,-9F\); they span the acting algebra. Moreover
 \[
  j(q_0,e_0)=(0,0,3),\qquad
  dD_{a_0}(j(q_0,e_0))=R(0,0,-3)\ne0.
@@ -3161,7 +3196,9 @@ To identify its restricted group, first \(SL(2,\mathbb R)\) is an analytic Lie g
 
 The restricted holonomy lies in this image and has its full Lie algebra. Its inclusion has invertible derivative at the identity, so the inverse function theorem gives an open identity neighbourhood in the image. The subgroup is therefore open; its cosets are open, and connectedness of the image forces it to be the whole image. This argument uses the intrinsic group topology and does not assume the image is closed.
 
-At the chosen parameter, the seven-dimensional target Poisson matrix, in coordinates \((\alpha,\beta,\gamma,q_0,q_1,q_2,q_3)\), has rank six. Its last row and column are zero, and its first six rows and columns form
+The holonomy action is irreducible by H.1 and preserves no nondegenerate symmetric bilinear form by H.2: every invariant bilinear form on \(V_3\) is alternating. Hence the connection is nonmetric, even allowing indefinite signature. Indeed, if a symmetric metric were parallel, the tensor product rule of F.6 would make its value on any two parallel vector fields constant along a curve. Every holonomy loop would then preserve its value at the initial frame, contradicting H.2.
+
+For the dimension comparison, now set \(c=0\). At the chosen parameter, the seven-dimensional target Poisson matrix, in coordinates \((\alpha,\beta,\gamma,q_0,q_1,q_2,q_3)\), has rank six. Its last row and column are zero, and its first six rows and columns form
 \[
  \begin{pmatrix}
  0&-2&0&0&0&2\\
@@ -3173,7 +3210,114 @@ At the chosen parameter, the seven-dimensional target Poisson matrix, in coordin
  \end{pmatrix}.
  \tag{I.42}
 \]
-Expanding along the last row and then its paired column, and next along the \(\gamma\)-row and its paired column, leaves the \((\beta,q_1)\) block. The determinant is \(2^2\,3^2\,1^2=36\). This proves rank six; the same minor remains nonzero nearby, while an odd-dimensional skew matrix has rank at most six. The regular realization I.4 consequently has dimension eight, while the cotangent realization I.7 has dimension fourteen. In both cases the independent Hamiltonian distribution has dimension seven and its vertical subdistribution dimension three, giving the same four-dimensional connection base. The larger realization changes neither of these latter dimensions. □
+Expanding along the last row and then its paired column, and next along the \(\gamma\)-row and its paired column, leaves the \((\beta,q_1)\) block. The determinant is \(2^2\,3^2\,1^2=36\). This proves rank six; the same minor remains nonzero nearby, while an odd-dimensional skew matrix has rank at most six. The regular realization I.4 consequently has dimension eight, while the cotangent realization I.7 has dimension fourteen. In both cases the independent Hamiltonian distribution has dimension seven and its vertical subdistribution dimension three, giving the same four-dimensional connection base. The larger realization changes neither of these latter dimensions.
+
+There is also an invariant description of the cubic quadratic map. Let \(\omega_0\) be H.2's invariant form normalized by
+\(\omega_0(e_0,e_3)=1\) and \(\omega_0(e_1,e_2)=-1/3\).
+For the actual Killing form \(\kappa(A,C)=\operatorname{tr}(\operatorname{ad}A\,\operatorname{ad}C)\), the three commutators in H.1 give
+\[
+ [\kappa]_{E,H,F}=
+ \begin{pmatrix}0&0&4\\0&8&0\\4&0&0\end{pmatrix},
+ \qquad \det[\kappa]=-128.
+\]
+For example \(\operatorname{ad}H\) has diagonal entries \(2,0,-2\), and multiplying the adjoint matrices of \(E,F\) gives trace \(4\); their other products give the remaining displayed entries. Thus \(\kappa\) is nondegenerate. It is invariant under conjugation: the adjoint matrices transform by simultaneous similarity, and
+\(\operatorname{tr}(UV)=\sum_{i,j}U_{ij}V_{ji}=\operatorname{tr}(VU)\).
+The form \(\omega_0\) is group invariant as well. Its infinitesimal invariance from H.2 makes its value constant along each exponential acting on both arguments, and the exponential-generation argument in I.9 applies to the connected group.
+
+Define the symmetric moment map by
+\[
+ \kappa(C,u\circ v)=\omega_0(Cu,v).
+\]
+Nondegeneracy defines it uniquely. Infinitesimal symplectic invariance gives
+\(\omega_0(Cu,v)=-\omega_0(u,Cv)=\omega_0(Cv,u)\), proving symmetry. Invariance of both forms, paired with every \(C\), proves
+\((gu)\circ(gv)=\operatorname{Ad}_g(u\circ v)\); differentiation also gives
+\([C,u\circ v]=(Cu)\circ v+u\circ(Cv)\).
+All nonzero products of basis vectors with \(i\leq j\) are
+\[
+ \begin{array}{c|c}
+ ij&e_i\circ e_j\\ \hline
+ 02&-E/4\\
+ 03&3H/8\\
+ 11&E/6\\
+ 12&-H/24\\
+ 13&F/4\\
+ 22&-F/6 .
+ \end{array}
+\]
+The other four such products are zero. These values follow by pairing each entry with \(E,H,F\): if those three pairings are \(\mu_E,\mu_H,\mu_F\), the entry is
+\((\mu_F/4)E+(\mu_H/8)H+(\mu_E/4)F\).
+
+For \(A=xE+yH+zF\), put
+\[
+ \rho_A(u,v)=\tfrac34\omega_0(u,v)A
+                 -u\circ(Av)+v\circ(Au).
+\]
+Substitution of the moment table gives its six coefficient rows:
+\[
+ \begin{array}{c|ccc}
+ ij&E&H&F\\ \hline
+ 01&z&0&0\\
+ 02&-y&-z/2&0\\
+ 03&3x/2&3y&3z/2\\
+ 12&-5x/6&-y/3&-5z/6\\
+ 13&0&x/2&y\\
+ 23&0&0&x .
+ \end{array}
+\]
+Comparing every row with (H.12) proves
+\(\rho_A=R(-z/6,y/3,x/6)\). The inverse parameter change is
+\(x=6c_R,\ y=3b_R,\ z=-6a_R\), where \(R(a_R,b_R,c_R)\) denotes (H.12). Therefore \(A\mapsto\rho_A\) is an isomorphism onto the whole curvature space. Its equivariance follows from its invariant defining formula.
+
+Write \(\kappa^\flat A=\kappa(A,\cdot)\). For a real constant \(k\), define a map on the dual algebra by
+\[
+ \begin{aligned}
+ \Psi_{\kappa^\flat A}^{(k)}(u,v)
+   ={}&\left(\tfrac38\kappa(A,A)+k\right)\omega_0(u,v)\\
+      &-\omega_0(Au,Av).
+ \end{aligned}
+\]
+Its derivative transpose is exactly \(\rho_A\). To prove this without a normalization assumption, the moment definition gives
+\[
+ \begin{aligned}
+ \kappa(C,\rho_A(u,v))
+   ={}&\tfrac34\omega_0(u,v)\kappa(C,A)\\
+      &-\omega_0(Cu,Av)-\omega_0(Au,Cv).
+ \end{aligned}
+\]
+The right side is symmetric in \(A,C\), and the formula for \(\Psi\) is
+\(\Psi_{\kappa^\flat A}^{(k)}
+=\tfrac12\kappa(A,\rho_A)+k\omega_0\).
+Consequently its derivative in the arbitrary dual direction \(\kappa^\flat C\) is \(\kappa(C,\rho_A)\), which proves the transpose assertion. The invariant formulas give group equivariance, and the full curvature-space calculation gives Bianchi. Thus I.9 makes \(\Psi^{(k)}\) admissible.
+
+Writing \(\phi^{(c)}\) for (I.37), the exact relation between the two normalizations is
+\[
+ \phi_{\kappa^\flat A}^{(-24k)}
+       =-24\,\Psi_{\kappa^\flat A}^{(k)}.
+\]
+Indeed \(\kappa^\flat A=(4z,8y,4x)\), so (I.38) and the proved table give
+\(D_{\kappa^\flat A}=R(4z,-8y,-4x)=-24\rho_A\).
+Thus both sides have the same derivative in every dual direction. At \(A=0\) both are \(-24k\omega_0\); integrating their zero derivative along straight segments proves the equality everywhere.
+
+The invariant normalization gives another explicit full-holonomy, nonparallel example. Set \(A=H\), \(q=e_0^*\), \(k=0\) for \(\Psi^{(k)}\). Then
+\[
+ \begin{aligned}
+ \rho_H(e_0,e_2)&=-E,\\
+ \rho_H(e_0,e_3)&=3H,\\
+ \rho_H(e_1,e_3)&=F.
+ \end{aligned}
+\]
+These span the algebra. Also \(j(q,e_0)=(0,3,0)=\kappa^\flat(3H/8)\), so
+\(dD(j(q,e_0))=3\rho_H/8\ne0\); in particular
+\((\nabla_{e_0}R)(e_0,e_3)=9H/8\). Theorems I.10–I.11 therefore apply, with the same irreducible nonmetric holonomy just proved.
+In the first six target coordinates \((\alpha,\beta,\gamma,q_0,q_1,q_2)\), the only nonzero upper-triangular entries of the Poisson matrix at this point are
+\[
+ \begin{aligned}
+ P_{\alpha\gamma}&=8,&P_{\alpha q_1}&=1,\\
+ P_{\beta q_0}&=3,&P_{q_1q_2}&=-4/3 .
+ \end{aligned}
+\]
+The \(\gamma\)-row can pair only with \(\alpha\), and the \(q_0\)-row only with \(\beta\); expansion leaves the \(q_1,q_2\) block. Hence this principal determinant is
+\(8^2\,3^2\,(4/3)^2=1024\). The same rank and dimension reasoning as above gives target, regular realization, cotangent realization, integral frame manifold and base dimensions \(7,8,14,7,4\), respectively. □
 
 The cubic structure equations for every connection, determination of the full germ by curvature data, the complex representation tests, and the complete converse at singular structure-equation data remain to be proved in subsequent parts. The existence theorem and endpoint calculation above are not substitutes for those assertions.
 
@@ -3272,6 +3416,8 @@ dc&=0,\qquad \mathcal R=-D_a,\qquad \nabla\mathcal R=L_q.
 \]
 The normalization is \(D_a(\theta\wedge\theta)(U,W)=2D_a(\theta U,\theta W)\). The functions transform by \(a(ug)=a(u)\circ\operatorname{Ad}_g\), \(q(ug)=q(u)\circ g\); \(c\) is invariant.
 
+Conversely, let a seven-dimensional manifold carry a \(\mathfrak g\oplus V\)-valued coframe \((\omega,\theta)\) and smooth functions \(a,q,c\) satisfying the first five equations of (J.10). Locally it is the reduced frame bundle of a torsion-free cubic connection, with the given coframe as its connection and solder forms. Its curvature and first covariant derivative are the last two tensors in (J.10). At each frame, \(\nabla\mathcal R=0\) if and only if \(q=0\).
+
 **Proof.** The form \((\omega,\theta)\) is a coframe on the seven-dimensional reduced bundle: its kernel is horizontal with zero solder value and hence zero, and dimensions agree. Denote its dual fields by \(\xi_A,\xi_x\), for constant \(A\in\mathfrak g\), \(x\in V\). The torsion-free first Bianchi identity and the differentiated Bianchi identity were proved in F.6. Thus \(\mathcal R\in K(\mathfrak g)\) and \(\nabla\mathcal R\in K^1(\mathfrak g)\). J.2 defines unique \(a,q\) by \(\mathcal R=-D_a\) and \(\nabla\mathcal R=L_q\). These are smooth because the inverse maps are fixed linear maps. Tensorial change of frame and (J.8) prove the stated equivariance. In particular
 \[
 \xi_Aa=\delta_Aa,\qquad (\xi_Aq)(y)=q(Ay).
@@ -3321,7 +3467,39 @@ The right side is \(q(D_a(x,y)z)\). The first Bianchi identity for \(D_a\) says 
 \ell(x)\Omega(y,z)=\ell(y)\Omega(x,z).
 \tag{J.17}
 \]
-If \(\ell(x)\ne0\), choose a nonzero \(y\in\ker\ell\), possible since \(\dim V=4\). The equation forces \(\Omega(y,z)=0\) for every \(z\), contradicting nondegeneracy. Hence \(\ell=0\). Since all the \(\xi_A,\xi_x\) span the tangent space, \(dc=0\). In a coordinate ball the fundamental theorem of calculus along segments makes \(c\) constant; such balls show local constancy, and connectedness gives constancy on the connected component. Every equation in (J.10) has now been proved, and the constructions of \(a,q,c\) prove uniqueness. \(\square\)
+If \(\ell(x)\ne0\), choose a nonzero \(y\in\ker\ell\), possible since \(\dim V=4\). The equation forces \(\Omega(y,z)=0\) for every \(z\), contradicting nondegeneracy. Hence \(\ell=0\). Since all the \(\xi_A,\xi_x\) span the tangent space, \(dc=0\). In a coordinate ball the fundamental theorem of calculus along segments makes \(c\) constant; such balls show local constancy, and connectedness gives constancy on the connected component. Every equation in (J.10) has now been proved, and the constructions of \(a,q,c\) prove uniqueness.
+
+For the converse, start with the given coframe. Its exterior equations give all the brackets (J.12) by evaluation on its dual fields. Thus \(\ker\theta=\operatorname{span}\{\xi_E,\xi_H,\xi_F\}\) is an involutive rank-three distribution. The smooth construction in I.2 gives a four-dimensional transverse section \(s:M\to F\). Put \(e=s^*\theta\), \(A=s^*\omega\). The restriction \(e\) is invertible because its kernel is the intersection of the transverse tangent space with \(\ker\theta\). Define
+\[
+ e(\nabla_XY)=X(e(Y))+A(X)e(Y).
+\]
+The calculation in I.10 proves the connection axioms, zero torsion, and curvature \(-D_{a\circ s}\). On \(M\times G\) its solder and connection forms are
+\[
+ \begin{aligned}
+ \widehat\theta&=g^{-1}e,\\
+ \widehat\omega&=\operatorname{Ad}_{g^{-1}}A+g^{-1}dg.
+ \end{aligned}
+\]
+This is a cubic reduction of the frame bundle by the injective frame map \((m,g)\mapsto e_m^{-1}g\), as proved in I.10.
+
+We check that it also recovers the original coframe. Evaluation on the dual frame, exactly as in I.10, gives
+\[
+ \mathcal L_{\xi_C}\theta=-C\theta,\qquad
+ \mathcal L_{\xi_C}\omega=-[C,\omega].
+\]
+By the flow and variational equations of Local tools 2.1, the time-\(t\) flow of \(\xi_C\) therefore pulls these forms back to \(e^{-tC}\theta\) and \(\operatorname{Ad}_{e^{-tC}}\omega\). For a variable time, its time column has values \(0,C\) under \(\theta,\omega\). These identities determine the forms on every tangent vector.
+
+Use the group coordinates \(g=\exp(t_1E)\exp(t_2H)\exp(t_3F)\). The derivative at zero is the basis \(E,H,F\), by Local tools 2.3 and the product rule in PB C.3, so Local tools 1.2 makes these coordinates on a neighbourhood of the identity. Starting at \(s(m)\), apply the three vertical flows in this order. The resulting map from \(M\) times that group neighbourhood to \(F\) has an invertible derivative along \(t=0\): the section directions and the three vertical fields form a direct sum. Local tools 1.2 makes it a local diffeomorphism. Composing the preceding pullback and time-column identities gives exactly \(\widehat\theta,\widehat\omega\). For the connection form, the successive time terms are the product identity
+\[
+ \begin{aligned}
+ (g_1g_2)^{-1}d(g_1g_2)
+ &=\operatorname{Ad}_{g_2^{-1}}(g_1^{-1}dg_1)\\
+ &\quad+g_2^{-1}dg_2,
+ \end{aligned}
+\]
+which follows by differentiating the two matrix factors. Hence the original forms are the reduced solder and connection forms locally, not just forms with the same restriction to the section.
+
+Finally the equation for \(da\) and the tensor derivative calculation in I.10 give \(\nabla\mathcal R=L_q\); equivalently differentiate \(\mathcal R=-D_a\) horizontally and use \(da(\xi_x)=-j(q,x)\). J.2 makes this tensor zero exactly when \(q=0\). The constructions recover the specified \(a,q,c\), so the converse has all the asserted parameters and uniqueness. \(\square\)
 
 **Lemma J.4 (local determination of a coframe by parameter equations).** Suppose a smooth \(n\)-manifold has a frame \(X_1,\ldots,X_n\) and a smooth parameter map \(z\) into an open set of \(\mathbb R^m\), with
 \[
@@ -3493,6 +3671,8 @@ For example the first equality is \(3\alpha_0e_2-3\beta_0e_3=3\beta_3e_0+3\gamma
 
 The mathematical construction lead is Quo-Shin Chi, Sergey A. Merkulov and Lorenz J. Schwachhöfer, *On the Existence of Infinite Series of Exotic Holonomies*, the freely readable [author preprint dated 9 April 1996](https://wwwold.mathematik.tu-dortmund.de/~lschwach/papers/Berger/InfExoticHol.pdf), native PDF pages 12–13, Theorem 3.10 and its proof, and the cubic calculation requested on native page 17. J.1 proves that calculation; J.3 supplies all differentiated equations with the conventions of Part I; J.4–J.5 prove the local equivalence and analytic assertions, including singular parameter values. The remaining linear tests and exercises are proved directly from the complete programme arguments in F–I. The exact free Bryant and Etingof source versions credited in H and the Crainic–Mărcuț and Teschl versions credited in I remain the construction sources of those earlier proofs.
 
+The real and complex representation tests J.7–J.8 also use Sergei Merkulov and Lorenz Schwachhöfer, *Classification of irreducible holonomies of torsion-free affine connections*, [arXiv:math/9907206v1](https://arxiv.org/pdf/math/9907206v1), Section 2.3, native PDF pages 10–12. Their realification argument is proved here directly: J.7 proves the conjugate decomposition and complexification of both Bianchi kernels, and J.8 proves the two curvature-space decompositions from the ordinary-prolongation hypothesis. No classification table or onward reference supplies a proof.
+
 These are new proofs and exposition; no source prose, images or source files are reproduced. This part completes the real cubic equations, local determination, the representation tests and the associated exercises. Part K treats the Spencer and tensor-product calculations; Parts L and M treat the infinite families and their full structure-equation hypotheses.
 
 ## K. Spencer algebra and tensor-product curvature
@@ -3556,7 +3736,7 @@ Its kernel is exactly the curvature space of F.6, which proves (K.5). Finally \(
 \operatorname{Sym}^pE\otimes\Lambda^q F
 \tag{K.7}
 \]
-take the differential that differentiates a symmetric factor and wedges that factor, using \(E\subset F\), into the exterior part. Its cohomology vanishes at \(p>0\); at \(p=0\) it is canonically \(\Lambda^q(F/E)\). These assertions remain true after tensoring with an arbitrary finite-dimensional coefficient space.
+take the differential that differentiates a symmetric factor and wedges that factor, using \(E\subset F\), into the exterior part. Its cohomology vanishes at \(p>0\); at \(p=0\) it is canonically \(\Lambda^q(F/E)\). These assertions remain true after tensoring with an arbitrary finite-dimensional coefficient space. They also hold locally for an inclusion of smooth or holomorphic vector subbundles, with cohomology bundle in symmetric degree zero equal to the exterior power of the quotient bundle.
 
 **Proof.** For the full endomorphism algebra, (K.1) is \(V\otimes\operatorname{Sym}^{r+1}V^*\). Choose coordinates \(z_i\) on \(V\). Represent a symmetric \(p\)-tensor \(T\) by the polynomial \(T(z,\ldots,z)/p!\). Then (K.3) becomes the ordinary polynomial exterior derivative \(d=\sum_i dz_i\wedge\partial_{z_i}\). The factorial ensures that insertion into a symmetric slot agrees with differentiation with coefficient one in this correspondence.
 
@@ -3573,7 +3753,11 @@ For (K.7), choose a complement \(F=E\oplus T\), whose existence is elementary ba
 \qquad a+b=q.
 \tag{K.9}
 \]
-Using basis symbols \(e_i\) for the symmetric factors, the differential is \(d=\sum_i(e_i\wedge\,\cdot\,)\partial_{e_i}\). Contraction is \(h=\sum_i e_i\,\iota_{e_i^*}\), where \(e_i^*\) is extended to vanish on \(T\). The same monomial calculation gives \(dh+hd=(p+a)I\) on (K.9); the \(T\) factors are unchanged. All summands with \(p+a>0\) are exact. The remaining summands have \(p=a=0\) and consist of \(\Lambda^qT\). Canonically they are the quotient of \(\Lambda^q F\) by the image of \(E\otimes\Lambda^{q-1}F\), namely \(\Lambda^q(F/E)\). A basis extending a basis of \(E\) proves this quotient description directly: exactly the exterior basis monomials containing an \(E\) basis vector are removed. It also proves independence from the complement. Extra coefficient factors do not affect the differential or this calculation. \(\square\)
+Using basis symbols \(e_i\) for the symmetric factors, the differential is \(d=\sum_i(e_i\wedge\,\cdot\,)\partial_{e_i}\). Contraction is \(h=\sum_i e_i\,\iota_{e_i^*}\), where \(e_i^*\) is extended to vanish on \(T\). The same monomial calculation gives \(dh+hd=(p+a)I\) on (K.9); the \(T\) factors are unchanged. All summands with \(p+a>0\) are exact. The remaining summands have \(p=a=0\) and consist of \(\Lambda^qT\). Canonically they are the quotient of \(\Lambda^q F\) by the image of \(E\otimes\Lambda^{q-1}F\), namely \(\Lambda^q(F/E)\). A basis extending a basis of \(E\) proves this quotient description directly: exactly the exterior basis monomials containing an \(E\) basis vector are removed. It also proves independence from the complement. Extra coefficient factors do not affect the differential or this calculation.
+
+For the bundle assertion, choose local frames for the subbundle \(E\) and the ambient bundle \(F\), as in Principal bundles A.1. At a chosen point some maximal minor of the inclusion matrix is nonzero. Append the ambient frame vectors complementary to those minor rows; together with the \(E\) frame these form a frame for \(F\) near that point, because their determinant is, up to sign, that nonzero minor. They define a local complement \(T\). The change-of-frame matrix has a smooth inverse by Local tools 0.4. In the holomorphic case its inverse is holomorphic as well: the determinant and adjugate are polynomial in its entries, and the reciprocal proof in I.1 works unchanged for absolutely convergent complex power series. The coefficient norm uses complex absolute values; its completeness follows by taking real and imaginary coefficient limits.
+
+In these frames the differential and the contraction just constructed act only on the tensor factors, not on base-dependent coefficient functions. Thus the identity \(dh+hd=(p+a)I\) holds for local sections. Every local cycle with \(p+a>0\) is the differential of its contracted section divided by \(p+a\); that primitive is smooth or holomorphic in the same category. The surviving \(p=a=0\) sections identify with \(\Lambda^q(F/E)\) by the canonical quotient map already proved above. Tensoring with another vector bundle does not change this argument in a local frame. This proves local exactness, without asserting vanishing of global sheaf cohomology. \(\square\)
 
 Let \(\dim U=m\geq3\), \(\dim W=n\geq3\), and \(V=U\otimes W\). Define the represented algebra
 \[
@@ -3600,9 +3784,32 @@ This is separately multilinear in the six factor vectors, so it extends uniquely
 V^*\otimes V^*\longrightarrow K(\mathfrak a),\qquad Q\longmapsto R_Q.
 \tag{K.12}
 \]
-In particular it describes the entire curvature space, over either field, for every \(m,n\geq3\).
+In particular it describes the entire curvature space, over either field, for every \(m,n\geq3\). Every such curvature tensor is a Spencer coboundary; hence \(H^{1,2}(\mathfrak a)=0\).
 
 **Proof.** Formula (K.11) is skew in the first two \(V\) arguments. For fixed \(u,a,v,b\), its first two terms are an endomorphism of \(U\) tensored with \(I_W\), and its last two an endomorphism of \(W\) tensored with \(I_U\). Thus its values lie in \(\mathfrak a\). In the cyclic sum on three decomposable arguments, each of the twelve terms cancels one other term with the same output tensor and the same ordered inputs of \(Q\), but opposite sign. For example \(u\otimes c\,Q(v\otimes b,w\otimes a)\) cancels the last term of \(R_Q(v\otimes b,w\otimes c)(u\otimes a)\). The other cancellations are obtained by cyclically permuting this example and by doing the same for the second term. Multilinearity proves the first Bianchi identity on all arguments. Simultaneous basis changes commute with the displayed tensor contractions, proving equivariance.
+
+The coboundary is explicit. For \(q\in V^*\), define
+\[
+ \begin{aligned}
+ S_q(u\otimes a,v\otimes b)
+ ={}&q(v\otimes a)\,u\otimes b\\
+    &+q(u\otimes b)\,v\otimes a.
+ \end{aligned}
+\]
+This is symmetric in its two \(V\) arguments. For a fixed \(u\otimes a\), its operator on the second argument is
+\[
+ \bigl(u\otimes q(\,\cdot\,\otimes a)\bigr)\otimes I_W
+ +I_U\otimes\bigl(a\otimes q(u\otimes\,\cdot\,)\bigr),
+\]
+which belongs to \(\mathfrak a\). Linearity then proves \(S_q\in\mathfrak a^{(1)}\) for every fixed first argument, including nondecomposable ones. Put \(q_y(t)=Q(y,t)\), and define \(T_Q(s,t;y)=S_{q_y}(s,t)\). Thus \(T_Q\in C^{2,1}=\mathfrak a^{(1)}\otimes V^*\). With exactly the slot order and omission signs of (K.3),
+\[
+ \begin{aligned}
+ (\partial T_Q)(t;x,y)
+ &=S_{q_y}(t,x)-S_{q_x}(t,y)\\
+ &=R_Q(x,y)t.
+ \end{aligned}
+\]
+The last equality follows by substituting the four terms of (K.11) and using the symmetry of \(S_q\). This proves the asserted coboundary statement with its sign. The surjectivity proved next will then make the quotient (K.5) zero.
 
 We prove surjectivity explicitly. Choose bases \(u_i\), \(w_a\), and abbreviate \(u_i\otimes w_a\) to \(v_{ia}\). Write an arbitrary \(R\in K(\mathfrak a)\) as
 \[
@@ -3909,7 +4116,24 @@ The trace of a rank-one operator \(z\otimes\lambda\) is \(\lambda(z)\), as a bas
 \]
 This proves (L.6).
 
-On the basis \(H,E,F\), the nonzero entries of \(B\) are \(B(H,H)=-1\) and \(B(E,F)=B(F,E)=-1/2\), so that block is nondegenerate. Choose an \(h\)-orthogonal basis \(w_i\), with \(h(w_i,w_i)=d_i\ne0\). Such a basis is obtained by induction: polarization supplies a vector of nonzero square; subtract its component to form its nondegenerate perpendicular complement and repeat. This works over both fields without choosing complex square roots. The preservation equation in this basis is \(d_iM^i_j+d_jM^j_i=0\); it shows that the \(T_{ij}=T(w_i,w_j)\), \(i<j\), form a basis of the orthogonal algebra. Equation (L.6) makes them pairwise \(B\)-orthogonal, with \(B(T_{ij},T_{ij})=d_id_j\ne0\). Thus the second block, and hence \(B\), is nondegenerate. \(\square\)
+On the basis \(H,E,F\), the nonzero entries of \(B\) are \(B(H,H)=-1\) and \(B(E,F)=B(F,E)=-1/2\), so that block is nondegenerate. Choose an \(h\)-orthogonal basis \(w_i\), with \(h(w_i,w_i)=d_i\ne0\). Such a basis is obtained by induction: polarization supplies a vector of nonzero square; subtract its component to form its nondegenerate perpendicular complement and repeat. This works over both fields without choosing complex square roots. The preservation equation in this basis is \(d_iM^i_j+d_jM^j_i=0\); it shows that the \(T_{ij}=T(w_i,w_j)\), \(i<j\), form a basis of the orthogonal algebra. Equation (L.6) makes them pairwise \(B\)-orthogonal, with \(B(T_{ij},T_{ij})=d_id_j\ne0\). Thus the second block, and hence \(B\), is nondegenerate.
+
+The symmetric moment map for this pairing is
+\[
+ \begin{aligned}
+ \mu(u\otimes x,v\otimes y)
+ ={}&h(x,y)S(u,v)\\
+    &+\varepsilon(u,v)T(x,y).
+ \end{aligned}
+\]
+Indeed, both products are unchanged when the two tensor arguments are exchanged, and (L.6) gives
+\[
+ \begin{gathered}
+ B(Z,\mu(v,w))=\sigma(Zv,w),\\
+ Z\in\mathfrak g,\quad v,w\in V.
+ \end{gathered}
+\]
+This identity determines \(\mu\) uniquely by nondegeneracy of \(B\). Its equivariance follows as well: apply invariance of \(B,\sigma\) to both sides and then use uniqueness. Thus the normalization and the moment identity hold on all tensors, by bilinearity from decomposable ones. \(\square\)
 
 **Proposition L.2 (irreducibility and all invariant bilinear forms).** The representation (L.1) is irreducible over \(\mathbb F\), and every invariant bilinear form on \(V\) is a scalar multiple of \(\sigma\). In particular it has no nonzero invariant symmetric bilinear form.
 
@@ -4060,7 +4284,60 @@ For a direction \(\lambda=B(Z',\,\cdot\,)\), differentiation of (L.22) and symme
 \((d\phi_c)_a(\lambda)(x,y)=\Phi(Z,Z';x,y)=\lambda(\rho_Z(x,y))\).
 Thus \(D_a=\rho_Z\); the factor \(1/2\) in (L.22) is required by this convention. The second admissibility equation is L.3's proved Bianchi identity. For the first, let \(g\) be an element of the represented factor group. Invariance of \(B\) identifies \(a\circ\operatorname{Ad}_g\) with \(g^{-1}Zg\). The tensor invariance just proved gives
 \(\phi_c(a\circ\operatorname{Ad}_g)(x,y)=\phi_c(a)(gx,gy)\).
-Differentiation at the identity is precisely the first equation I.27, as proved in I.9. Finally, if the quadratic term vanished identically, polarization would give \(\Phi=0\). Equation (L.23), nondegeneracy of \(B\) and injectivity of \(\rho\) would then force every element of the nonzero algebra \(\mathfrak g\) to be zero, a contradiction. \(\square\)
+Differentiation at the identity is precisely the first equation I.27, as proved in I.9. Finally, if the quadratic term vanished identically, polarization would give \(\Phi=0\). Equation (L.23), nondegeneracy of \(B\) and injectivity of \(\rho\) would then force every element of the nonzero algebra \(\mathfrak g\) to be zero, a contradiction.
+
+One can also express the same curvature family using a different trace normalization. Write \(J(A+M)=2A+M\), and set
+\[
+ \begin{aligned}
+ \widehat B(X,C)&=-B(JX,C),\\
+ \widehat\mu(u x,v y)
+   &=-\tfrac12 h(x,y)S(u,v)\\
+   &\quad-\varepsilon(u,v)T(x,y).
+ \end{aligned}
+\]
+Thus
+\[
+ \begin{aligned}
+ \widehat B(A+M,A'+M')
+   ={}&\operatorname{tr}_U(AA')\\
+      &+\tfrac12\operatorname{tr}_W(MM').
+ \end{aligned}
+\]
+The map \(J\) is invertible and commutes with the factor action, so this is another nondegenerate invariant symmetric pairing. Equation (L.6) gives
+\(\widehat B(C,\widehat\mu(v,w))=\sigma(Cv,w)\).
+In this convention the curvature map and its quadratic primitive are
+\[
+ \begin{aligned}
+ \widehat\rho_X(v,w)
+  &=\sigma(v,w)X-\widehat\mu(v,Xw)\\
+  &\hspace{2em}+\widehat\mu(w,Xv)
+    =\rho_{JX}(v,w),\\
+ \widehat Q_X(v,w)
+  &=\tfrac12\widehat B(X,X)\sigma(v,w)
+    -\sigma(Xv,Xw).
+ \end{aligned}
+\]
+To verify the curvature equality, expand on \(v=u\otimes x,w=t\otimes y\). For \(X=A\), use
+\(S(u,At)-S(t,Au)=2\varepsilon(u,t)A\); both sides are alternating in \(u,t\), and substitution of \(u=e,t=f\) and \(A=H,E,F\) verifies this identity on bases. The two factor components then are
+\(2\varepsilon(u,t)h(x,y)A\) and
+\(-2\varepsilon(Au,t)T(x,y)\).
+For \(X=M\), expansion gives
+\(h(x,My)S(u,t)\) in the first factor and
+\(\varepsilon(u,t)(h(x,y)M+T(x,My)+T(y,Mx))\)
+in the second. These are precisely (L.9) with parameter \(JX\).
+
+For the quadratic primitive, differentiation in direction \(C\) gives
+\[
+ \begin{aligned}
+ (d\widehat Q)_X(C)(v,w)
+  ={}&\widehat B(X,C)\sigma(v,w)\\
+     &-\sigma(Cv,Xw)-\sigma(Xv,Cw)\\
+  ={}&\widehat B(C,\widehat\rho_X(v,w)).
+ \end{aligned}
+\]
+The last equality uses the just-proved moment identity twice and alternation of \(\sigma\). In particular this primitive has the correct derivative transpose for the \(\widehat B\) identification; adding \(c\sigma\) preserves admissibility. The two normalizations are explicitly related by
+\(\widehat Q_X=-\tfrac12\Phi(JX,JX)\):
+their derivatives agree by (L.23) and \(\widehat B(C,Y)=-B(JC,Y)\), and both vanish at zero. Equality also follows by differentiating their difference along \(tX\) and integrating from \(0\) to \(1\). \(\square\)
 
 **Lemma L.6 (zero ordinary first prolongation).** For the algebra (L.1), \(\mathfrak g^{(1)}=0\). For the complex algebra acting on its underlying real vector space, its ordinary real first prolongation is also zero.
 
@@ -4102,7 +4379,7 @@ For a real-linear prolongation map in the complex representation, each value \(P
 \(P_{ix}y=P_y(ix)=iP_yx=iP_xy\).
 Therefore \(P_{ix}=iP_x\) as endomorphisms, so the map is actually complex-linear. The complex calculation just proved makes it zero. \(\square\)
 
-**Theorem L.7 (actual analytic connections in every stated dimension and signature).** For every real \((p,q)\) with \(p+q=n\geq3\), there are real analytic torsion-free connections on a base of dimension \(2n\), with full holonomy algebra \(\mathfrak{sl}(2,\mathbb R)\oplus\mathfrak{so}(p,q)\) in its tensor representation, and with nonparallel curvature. Over \(\mathbb C\) there are holomorphic examples on a base of complex dimension \(2n\); their underlying real connections have dimension \(4n\) and the full underlying real algebra of \(\mathfrak{sl}(2,\mathbb C)\oplus\mathfrak{so}(n,\mathbb C)\). For (L.22), realization is possible at every parameter, including singular Poisson parameters.
+**Theorem L.7 (actual analytic connections in every stated dimension and signature).** For every real \((p,q)\) with \(p+q=n\geq3\), there are real analytic torsion-free connections on a base of dimension \(2n\), with full holonomy algebra \(\mathfrak{sl}(2,\mathbb R)\oplus\mathfrak{so}(p,q)\) in its tensor representation, and with nonparallel curvature. Over \(\mathbb C\) there are holomorphic examples on a base of complex dimension \(2n\); their underlying real connections have dimension \(4n\) and the full underlying real algebra of \(\mathfrak{sl}(2,\mathbb C)\oplus\mathfrak{so}(n,\mathbb C)\). For (L.22), realization is possible at every parameter, including singular Poisson parameters. At a realized frame, \(\nabla R=0\) if and only if the covector parameter \(q\) is zero.
 
 **Proof.** First take \(\mathbb F=\mathbb R\). Proposition L.5 supplies every hypothesis of I.9. Theorems I.7 and I.10 therefore construct an actual analytic connection at any chosen \((a,q)\in\mathfrak g^*\oplus V^*\), for any real \(c\). At \(a_0=B(Z_0,\,\cdot\,)\), L.4 makes the curvature values span \(\mathfrak g\); I.11 proves the full holonomy-algebra assertion.
 
@@ -4112,6 +4389,8 @@ j(q_0,x)(H)=q_0(Hx)=1.
 \tag{L.28}
 \]
 Consequently \(B^{-1}j(q_0,x)\ne0\), and injectivity in L.3 gives \(dD_{a_0}(j(q_0,x))\ne0\). Equation I.31 proves nonparallel curvature at the selected frame. This conclusion is independent of \(c\). It is obtained at a specified parameter, without a generic-rank assumption.
+
+More generally, I.31 gives \(\nabla_xR=\rho_{B^{-1}j(q,x)}\) at any realized frame. If all these tensors vanish, injectivity of \(\rho\) and invertibility of \(B\) give \(q(Cx)=0\) for every \(C,x\). Taking \(C=H\) proves \(q=0\), since \(H^2=I\) on \(V\). Conversely \(q=0\) makes every derivative zero. The same argument is valid over either field and on the underlying real space of the complex representation.
 
 Here are the analytic details allowing the same construction over \(\mathbb C\), so a complex existence assertion is not hidden in terminology. The coefficient Banach algebras and contraction proof in I.1 work with complex coefficients: their estimates use absolute values and the same convergent majorants; a Cauchy sequence is complete by taking real and imaginary parts. The implicit-function proof uses the invertible complex derivative and its Neumann series, so its resulting convergent series has complex coefficients and is holomorphic. The flow construction in that proof likewise permits a complex time variable and gives holomorphic flows for holomorphic vector fields. The identities needed in I.2's straightening and induction follow by their convergent derivatives and uniqueness. Thus that full Frobenius proof gives holomorphic integral manifolds and local quotient sections for holomorphic involutive constant-rank distributions.
 
@@ -4125,7 +4404,7 @@ SL(2,\mathbb R)\times SO_0(p,q),\qquad
 SL(2,\mathbb C)\times SO_0(n,\mathbb C)
 \tag{L.29}
 \]
-under tensor product; the subscript denotes the identity component. The real kernel is trivial unless both \(p,q\) are even, in which case it consists of \((I,I)\) and \((-I,-I)\). The complex kernel has two elements exactly when \(n\) is even. The underlying real complex representation is irreducible. Its invariant real bilinear forms are exactly
+under tensor product; the subscript denotes the identity component. In fact \(SO_0(n,\mathbb C)=SO(n,\mathbb C)\), the full determinant-one complex orthogonal group. The real kernel is trivial unless both \(p,q\) are even, in which case it consists of \((I,I)\) and \((-I,-I)\). The complex kernel has two elements exactly when \(n\) is even. The underlying real complex representation is irreducible. Its invariant real bilinear forms are exactly
 \[
 \operatorname{Re}(z\sigma),\qquad z\in\mathbb C,
 \tag{L.30}
@@ -4141,7 +4420,16 @@ U(t)L(-t^{-1})U(t)=
 \qquad w(t)w(-1)=\operatorname{diag}(t,t^{-1}).
 \tag{L.31}
 \]
-Every elementary matrix is joined to the identity by replacing its parameter by \(s\) times that parameter, \(0\leq s\leq1\). Products give the required paths, also for complex parameters. The other factors in (L.29) are connected by definition. Their images are connected Lie subgroups with the faithful infinitesimal representation (L.1). The image may be given its quotient Lie-group structure by the finite kernel computed below; local charts follow because the differential is injective and the kernel is discrete. The complete subgroup result C.1 gives the same intrinsic image structure.
+Every elementary matrix is joined to the identity by replacing its parameter by \(s\) times that parameter, \(0\leq s\leq1\). Products give the required paths, also for complex parameters. The real orthogonal factor in (L.29) is connected by definition. We prove the stronger complex assertion directly. If \(h(a,a)\ne0\), put
+\[
+ r_a(v)=v-\frac{2h(a,v)}{h(a,a)}a.
+\]
+The splitting into the line of \(a\) and its perpendicular complement shows that this is an isometry, is minus the identity on that line, is the identity on the complement, and has determinant \(-1\).
+
+Every complex isometry is a product of these reflections. Induct on the dimension, with the zero-dimensional identity as base case, and choose \(v\) with \(h(v,v)\ne0\), available by L.1. For an isometry \(g\), the sum of the squares of \(gv-v\) and \(gv+v\) is \(4h(v,v)\), so at least one is nonzero. If \(a=gv-v\) has nonzero square, then \(2h(a,gv)=h(a,a)\), and \(r_a gv=v\). Otherwise \(b=gv+v\) has nonzero square, the same calculation gives \(r_b gv=-v\), and \(r_vr_bgv=v\). The resulting isometry fixes \(v\), preserves its nondegenerate perpendicular complement, and by induction restricts there to a product of reflections. Those reflections, extended by the identity on \(v\), are reflections of the full space. Reversing the initial one or two reflections proves the assertion. Their determinants imply that a determinant-one isometry is a product of an even number of reflections.
+
+Finally, any two vectors \(a,b\) of nonzero square are joined through such vectors over \(\mathbb C\). The polynomial
+\(h(a+z(b-a),a+z(b-a))\) is nonzero at \(z=0,1\), and has only finitely many roots. There is a polygonal path from \(0\) to \(1\) avoiding these roots: choose an intermediate point outside the finitely many real lines through an endpoint and a root, then use the two line segments. Such a point exists, for a real line with direction different from those finitely many lines meets each in at most one point. This produces a continuous path of reflections from \(r_a\) to \(r_b\). Multiplying it by \(r_b\) joins \(r_ar_b\) to the identity. Pairing the reflections in an even product and multiplying these paths joins every determinant-one complex isometry to the identity. This proves the asserted connectedness. Their images are connected Lie subgroups with the faithful infinitesimal representation (L.1). The image may be given its quotient Lie-group structure by the finite kernel computed below; local charts follow because the differential is injective and the kernel is discrete. The complete subgroup result C.1 gives the same intrinsic image structure.
 
 After restricting the constructed base to a coordinate ball, every based loop is contractible, by linear contraction in the coordinates. The holonomy group is therefore its restricted group. Its algebra is the full algebra by L.7. The inclusion into the connected represented group has invertible differential between equal-dimensional manifolds, so the inverse theorem gives an open identity neighbourhood in its image. A subgroup containing such a neighbourhood is open; its cosets are open and connectedness makes it the whole group. This proves (L.29).
 
@@ -4163,6 +4451,12 @@ N=\dim_{\mathbb F}(\mathfrak g\oplus V)
 For real input the arbitrary-point realization I.7 has dimension \(2N\); the coframe integral manifold in I.10 has dimension \(N\); its vertical leaves have dimension \(d\); and its base has dimension \(N-d=2n\). These are dimensions of different manifolds. A regular-point realization may be smaller by I.4, but is not needed for the arbitrary-point assertion. For holomorphic input the same numbers are complex dimensions; the underlying real dimensions are respectively \(4N,2N,2d,4n\).
 
 For every real signature use \(Z_0=2H+T_{12}\), \(a_0=B(Z_0,\,\cdot\,)\), and the covector \(q_0\) from (L.28), with any \(c\). Formula (L.20) is either \((5/2)H\) or \((3/2)H\), never zero. Thus the curvature spans the full algebra. The nonzero value \(j(q_0,e\otimes w_1)(H)=1\), followed by the injective map (L.10), makes the covariant derivative of curvature nonzero. These are actual parameters of the constructed connections, not merely an algebraic tensor example.
+
+The derivative at this parameter can be evaluated exactly. The functional \(j(q_0,e\otimes w_1)\) equals \(1\) on \(H\), and zero on \(E,F\) and every \(T_{ij}\): those operators either kill \(e\otimes w_1\) or send it to a different basis vector. Since \(B(H,H)=-1\) and its other pairings with this basis vanish, \(B^{-1}j(q_0,e\otimes w_1)=-H\). Therefore I.31 gives
+\[
+ \nabla_{e\otimes w_1}R=-\rho_H\ne0.
+\]
+This sign and coefficient use exactly the trace pairing (L.5); the computation applies to every stated real signature.
 
 Over \(\mathbb C\), L.2 gives one complex dimension of invariant complex bilinear forms; L.8 gives two real dimensions of invariant real bilinear forms, with basis \(\operatorname{Re}\sigma,\operatorname{Im}\sigma\). They are independent: a real combination corresponds to \(\operatorname{Re}(z\sigma)=0\), and evaluating also at \(ix\) gives \(z\sigma=0\), hence \(z=0\). No symmetric invariant appears on realification. The complex vector space has dimension \(2n\), so its realification has dimension \(4n\), not \(8n\).
 
@@ -4333,7 +4627,29 @@ B(T,L_q(x)(y,z))
 \end{aligned}
 \tag{M.17}
 \]
-The cyclic sum is zero by the complete first Bianchi proof L.3. Nondegeneracy of \(B\) proves membership in \(K^1\). If \(L_q=0\), injectivity of \(D\) gives \(q(Ax)=0\) for all \(A,x\); taking the invertible represented operator \(H\) gives \(q=0\). All contractions are equivariant, so the isomorphism is equivariant. \(\square\)
+The cyclic sum is zero by the complete first Bianchi proof L.3. Nondegeneracy of \(B\) proves membership in \(K^1\). If \(L_q=0\), injectivity of \(D\) gives \(q(Ax)=0\) for all \(A,x\); taking the invertible represented operator \(H\) gives \(q=0\). All contractions are equivariant, so the isomorphism is equivariant.
+
+The same space can be parametrized by vectors through the moment map in L.1:
+\[
+ \begin{aligned}
+ \Theta_t(x)&=\rho_{\mu(x,t)},\\
+ \Theta_t&=-L_{\sigma(t,\cdot)}.
+ \end{aligned}
+\]
+Indeed, for every \(A\in\mathfrak g\),
+\[
+ \begin{aligned}
+ j(\sigma(t,\cdot),x)(A)
+   &=\sigma(t,Ax)\\
+   &=-B(A,\mu(x,t)).
+ \end{aligned}
+\]
+Nondegeneracy of \(B\) gives
+\(B^{-1}j(\sigma(t,\cdot),x)=-\mu(x,t)\).
+The preceding isomorphism and nondegeneracy of \(\sigma\) now prove that
+\(t\mapsto\Theta_t\) is an equivariant isomorphism from \(V\) onto the whole
+\(K^1(\mathfrak g)\). The minus sign is fixed by the convention
+\(j(q,x)(A)=q(Ax)\). \(\square\)
 
 **Proposition M.3 (the whole spaces after realification).** For the full complex algebra acting on the underlying real space of \(\mathbb C^2\otimes\mathbb C^n\), every real curvature tensor is complex bilinear, and every real derivative tensor is complex linear in all three vector arguments. Its curvature and derivative spaces are therefore the underlying real spaces of the complex ones. Their real dimensions are \(2d\) and \(4n\).
 
@@ -4395,6 +4711,41 @@ T=\begin{pmatrix}aI+M&-bI\\cI&aI-M\end{pmatrix}.
 \]
 The upper-right block of \(TE\in\mathfrak g\) is \(aI+M\), which must be scalar, so \(M\) is scalar. A scalar skew-adjoint operator for nondegenerate symmetric \(h\) is zero. The two diagonal blocks of \(TE\) are then \(0,cI\); for them to be opposite scalar blocks plus the same skew-adjoint block forces \(c=0\). Similarly the diagonal blocks of \(TF\), namely \(-bI,0\), force \(b=0\). Hence \(T=aI\) and \(C=aI\). L.5 proves that \(\Psi_0\) is symmetric, invariant and in the required space; it is nonzero because \(D\) is injective. This proves the assertion.
 
+The two natural contractions can be read directly from the Hessian of \(Q\).
+Choose \(B\)-dual bases \(C_i,C^i\) of \(\mathfrak g\), so
+\(B(C_i,C^j)=\delta_i^j\). As an element of
+\(\mathfrak g\otimes K(\mathfrak g)\), that Hessian is
+\[
+ \operatorname{Hess}Q=\Psi_0
+   =\sum_i C_i\otimes\rho_{C^i}.
+\]
+To verify the equality, contract the first factor with \(a\) and then the
+curvature value with \(\lambda\). The result is
+\(\lambda(\rho_{B^{-1}a}(x,y))=\Psi_0(a,\lambda;x,y)\),
+because
+\[
+ \sum_i a(C_i)C^i=B^{-1}a.
+\]
+This dual-basis identity follows by pairing both sides with each \(C_j\).
+It also shows that the contraction with \(a\) is exactly \(D_a\).
+Alternatively, regard the first factor as its represented operator in
+\(V\otimes V^*\), and contract its \(V\)-slot with \(q\). The remaining
+map, evaluated at \(x\), is
+\[
+ \begin{aligned}
+ \sum_i q(C_i x)\rho_{C^i}
+   &=\rho_{B^{-1}j(q,x)}\\
+   &=L_q(x).
+ \end{aligned}
+\]
+The same dual-basis identity proves the first equality. M.2 proves that this
+lies in \(K^1(\mathfrak g)\) and that the contraction is an isomorphism.
+Thus both contractions of the Hessian have exactly the chosen normalizations.
+The symmetric coefficient tensor of the polynomial
+\(Q(a)=\Psi_0(a,a)/2\) is instead \(\Psi_0/2\); its contractions are
+\(D/2\) and \(L/2\). This distinguishes a quadratic coefficient tensor from
+its Hessian without suppressing the factor of two.
+
 For realification, use M.3 and the nondegenerate real pairing \(\operatorname{Re}B\); nondegeneracy follows by testing \(Y\) and \(iY\). The same argument yields a real operator \(T\) with \(T\mathfrak g_{\mathbb R}\subset\mathfrak g_{\mathbb R}\). Now \(TH\) is complex linear and \(H^{-1}=H\) is complex linear, so \(T\) is complex linear. The block argument just given makes \(T=zI\), \(z\in\mathbb C\). Transposition under \(\operatorname{Re}B\) identifies its induced tensor with \(\operatorname{Re}(z\Phi)\). Every such tensor works by the complex contraction identity; the two real parameters are independent since the complex tensor is nonzero. \(\square\)
 
 We next state the structure result in its full algebraic generality. This also explains exactly which facts must be checked before applying it to a representation. Let \(G\) be a connected real matrix group with faithful algebra \(\mathfrak g\subset\operatorname{End}(V)\). For \(a\in\mathfrak g^*\), put \((\delta_Aa)(B)=a([A,B])\). Assume the following four properties have been proved:
@@ -4418,6 +4769,13 @@ d\tau&=0,\qquad \mathcal R=-D_a,\qquad \nabla\mathcal R=L_q.
 \tag{M.24}
 \]
 The wedge normalization is that in J.3. Frame change is \(a(ug)=a(u)\circ\operatorname{Ad}_g\), \(q(ug)=q(u)\circ g\); \(\tau\) is invariant. Curvature is parallel on an open set if and only if \(q\) vanishes on that open set; at a single point \(\nabla\mathcal R=0\) if and only if \(q=0\) there.
+
+Conversely, suppose a manifold of dimension \(\dim\mathfrak g+\dim V\)
+carries a \(\mathfrak g\oplus V\)-valued coframe \((\omega,\theta)\) and
+functions \(a,q,\tau\), with \(\tau\) valued in \(\mathcal I\), satisfying
+the first five equations of (M.24). Locally this coframe is the connection
+and solder forms of a reduced frame bundle of a torsion-free \(G\)-connection.
+Its curvature, derivative and parameters are exactly those in (M.24).
 
 **Proof.** The linear-algebra and differential identities used here do not depend on a special representation. We give them explicitly. On the local reduced bundle, \((\omega,\theta)\) is a coframe: the kernel of \(\omega\) is horizontal, the solder form identifies horizontal vectors with \(V\), and the vertical vectors are identified with \(\mathfrak g\) by \(\omega\). Write \(\xi_A,\xi_x\) for its dual fields. F.6 gives both Bianchi memberships. Hypotheses 1 and 3 therefore define unique smooth \(a,q\) by \(\mathcal R=-D_a\), \(\nabla\mathcal R=L_q\). Their fixed linear inverse maps and equivariance give
 \[
@@ -4451,7 +4809,70 @@ Finally apply \([\xi_x,\xi_y]\) to \(q(z)\). The derivative of the quadratic ter
 (\xi_x\tau)(y,z)=(\xi_y\tau)(x,z).
 \tag{M.28}
 \]
-At any fixed point, the left side is a trilinear tensor symmetric in \(x,y\) and skew in \(y,z\). The six interchanges in (M.8) make it zero. Thus all horizontal derivatives of \(\tau\) vanish as well. The coframe spans every tangent direction, so \(d\tau=0\); integration along coordinate segments and connectedness give constancy. No nondegeneracy or one-dimensionality of \(\mathcal I\) was needed. All of (M.24) and uniqueness now follow. The two parallel-curvature assertions follow from injectivity of \(q\mapsto L_q\). \(\square\)
+At any fixed point, the left side is a trilinear tensor symmetric in \(x,y\) and skew in \(y,z\). The six interchanges in (M.8) make it zero. Thus all horizontal derivatives of \(\tau\) vanish as well. The coframe spans every tangent direction, so \(d\tau=0\); integration along coordinate segments and connectedness give constancy. No nondegeneracy or one-dimensionality of \(\mathcal I\) was needed. All of (M.24) and uniqueness now follow. The two parallel-curvature assertions follow from injectivity of \(q\mapsto L_q\).
+
+For the converse, evaluation of the exterior equations on the dual frame
+gives (M.26). Consequently \(\ker\theta\), spanned by the \(\xi_A\), is
+involutive. The smooth Frobenius proof in I.2 supplies local quotient
+coordinates and a transverse section \(s:M\to F\). Put \(e=s^*\theta\)
+and \(\alpha=s^*\omega\). Transversality makes \(e\) an invertible
+\(V\)-valued coframe. Define
+\[
+ e(\nabla_XY)=X(e(Y))+\alpha(X)e(Y).
+\]
+The coordinate calculation in I.10 proves the connection axioms; its torsion
+is represented by \(de+\alpha\wedge e=0\), and its curvature by
+\(-D_{a\circ s}\). The frame map
+\((m,g)\mapsto e_m^{-1}g\) realizes the local \(G\)-reduction. Its forms are
+\[
+ \begin{aligned}
+ \widehat\theta&=g^{-1}e,\\
+ \widehat\omega&=\operatorname{Ad}_{g^{-1}}\alpha+g^{-1}dg.
+ \end{aligned}
+\]
+We verify that they recover the original forms on \(F\), including vertical
+directions. Evaluating Lie derivatives on each dual field using (M.26) gives
+\[
+ \mathcal L_{\xi_A}\theta=-A\theta,\qquad
+ \mathcal L_{\xi_A}\omega=-[A,\omega].
+\]
+The flow and variational equations in Local tools 2.1 therefore show that
+the time-\(t\) flow of \(\xi_A\) pulls these forms back to
+\(e^{-tA}\theta\) and \(\operatorname{Ad}_{e^{-tA}}\omega\).
+Its time column has form values \(0,A\).
+
+Choose a basis \(A_1,\ldots,A_r\) of \(\mathfrak g\) and write
+\[
+ g(t)=\exp(t_1A_1)\cdots\exp(t_rA_r).
+\]
+Local tools 2.3 and the product rule in PB C.3 give derivative
+\((t_i)\mapsto\sum_i t_iA_i\) at zero, so Local tools 1.2 makes this a
+group chart near the identity. Starting at \(s(m)\), apply the corresponding
+vertical flows in that order. The derivative of the resulting map at
+\((m,0)\) is invertible: section directions complement the vertical basis.
+The same inverse function theorem makes this a local diffeomorphism.
+On section directions its pullbacks are \(g^{-1}e\) and
+\(\operatorname{Ad}_{g^{-1}}\alpha\), by the flow identities.
+On the \(j\)-th time direction the values are
+\[
+ \begin{aligned}
+ \theta&=0,\\
+ \omega&=\operatorname{Ad}_{h_j^{-1}}A_j,\\
+ h_j&=\exp(t_{j+1}A_{j+1})\cdots\exp(t_rA_r).
+ \end{aligned}
+\]
+The empty product is the identity. Direct differentiation of the product
+for \(g\) gives \(g^{-1}\partial_{t_j}g=
+\operatorname{Ad}_{h_j^{-1}}A_j\). Thus the original coframe pulls back to
+\((\widehat\omega,\widehat\theta)\) on every tangent direction. This
+establishes the asserted local identification with the reduced frame bundle.
+
+Finally, horizontal differentiation of its curvature \(-D_a\), using the
+given equation for \(da\), gives \(\nabla\mathcal R=L_q\).
+Injectivity of \(D,L\) recovers the original \(a,q\) everywhere under the
+identification. Their horizontal derivative equation then recovers
+\(\tau=(\nabla q)-Q(a)\). All parameters, as well as both forms, are
+therefore the specified ones. \(\square\)
 
 **Theorem M.7 (analytic germs and the converse at every parameter).** Under the same four hypotheses, every such smooth connection is locally real analytic in suitable coordinates. Its germ at a specified reduced frame is determined by \((a,q,\tau)\) at that frame, and hence by \(\mathcal R,\nabla\mathcal R,\nabla^2\mathcal R\) there. Every triple \((a_0,q_0,\tau_0)\in\mathfrak g^*\times V^*\times\mathcal I\) occurs in a real-analytic local connection. The converse includes points where the associated Poisson rank changes.
 

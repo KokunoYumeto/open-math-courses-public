@@ -1,0 +1,7 @@
+# Condition (P) and the geometry of characteristic saturation
+
+Read the lesson or edit its source. Complete receiving proofs establish the coisotropic saturation, its leaves, the maximal-interval normal forms and the distinction between escaping and persistent regular characteristics. Three solved examples include an explicit obstruction to a Hessian-proportionality assertion on the full semidefinite stratum.
+
+The proof map connects 16 new entries to 710 earlier entries in 34 maps. Its 102 human foundations remain external, so internal P514 closure is unclaimed. A reproducible figure, source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [25 exact checks](model-check.json) accompany the lesson. Run python -B model_check.py for the finite identities; the analytic proofs are in the lesson.
+
+The quadratic division theorem, the intended invariant affine construction and the remainder of the full course stay active. Original expression is CC0-1.0; linked components retain their terms. All nine approved books remain valid mathematical sources.

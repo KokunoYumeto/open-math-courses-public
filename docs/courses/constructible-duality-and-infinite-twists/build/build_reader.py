@@ -12,13 +12,16 @@ def rebuild(root):
     rows=json.loads((root/'readings.json').read_text(encoding='utf-8'))['readings']
     for entry in rows:
         data=(root/entry['source']).read_bytes()
+        text=data.decode('utf-8').replace('\r\n','\n')
+        for source_href, reader_href in entry.get('reader_links', {}).items():
+            text=text.replace(']('+source_href+')', ']('+reader_href+')')
         if 'links' not in entry:
             template=(root/'build/reader-template.html').read_text(encoding='utf-8')
             if Path(entry['reader']).parent!=Path('.'):
                 template=template.replace('href="reader.css"','href="../reader.css"').replace('href="index.html"','href="../index.html"')
             temp=root/'build/current-template.html'
             temp.write_text(template,encoding='utf-8')
-            source=re.sub(r'\\tag\{([^}]+)\}',lambda m:r'\qquad\text{('+m[1]+')}',data.decode('utf-8'))
+            source=re.sub(r'\\tag\{([^}]+)\}',lambda m:r'\qquad\text{('+m[1]+')}',text)
             try:
                 run=subprocess.run(['pandoc','--from=markdown+tex_math_single_backslash','--to=html5',
                     '--mathml','--template',str(temp),'--metadata','title='+entry['title']],
@@ -31,7 +34,7 @@ def rebuild(root):
             continue
         if entry.get('sha256') and hashlib.sha256(data).hexdigest()!=entry['sha256']:
             raise ValueError('Selected source changed: '+entry['source'])
-        page,count=render(data.decode('utf-8'),entry['title'],entry.get('links',{}))
+        page,count=render(text,entry['title'],entry.get('links',{}))
         if entry.get('math_expressions') is not None and count!=entry['math_expressions']:
             raise ValueError('Formula count changed')
         page=page.replace('>Sheaf proof readings</a>','>Constructible duality and infinite twists</a>')

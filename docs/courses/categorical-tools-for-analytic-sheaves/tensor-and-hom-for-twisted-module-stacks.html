@@ -1,0 +1,367 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tensor and Hom for twisted module stacks</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="tensor-and-hom-for-twisted-module-stacks">Tensor and Hom for twisted module stacks</h1>
+<p>Gluing two modules with different coherence factors changes the coherence factor of their tensor product. A Hom module changes it in the opposite direction in its first argument. These rules make evaluation and composition descend, and explain where a dual belongs.</p>
+<p>We use the line-cocycle description and effective descent proved in <a href="twisted-modules-from-coherent-gluing.html">Twisted modules from coherent gluing</a>. Throughout, <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> is the category of sheaves on a small site, <span class="math" data-tex="\(R\)">\(R\)</span> is a sheaf of commutative rings, and <span class="math" data-tex="\(U\to1\)">\(U\to1\)</span> is an epimorphism. Products such as <span class="math" data-tex="\(U^3\)">\(U^3\)</span> are products in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. A module on a slice is understood on its element site, as in Section 7 of that lesson. No points, representable intersections, or bases for invertible modules are assumed.</p>
+<h2 id="1-the-module-operations-used-on-a-slice">1. The module operations used on a slice</h2>
+<p>For module sheaves <span class="math" data-tex="\(A,B\)">\(A,B\)</span> over a base sheaf <span class="math" data-tex="\(V\)">\(V\)</span>, write <span class="math" data-tex="\([A,B]\)">\([A,B]\)</span> for the sheaf whose sections over a generalized section <span class="math" data-tex="\((T,v)\)">\((T,v)\)</span> are module maps between their restrictions to the element site over <span class="math" data-tex="\((T,v)\)">\((T,v)\)</span>. Restrictions restrict these maps. Addition and scalar multiplication act on their values.</p>
+<p><strong>Lemma 1.1.</strong> This is a module sheaf. There is a natural bijection
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(X\otimes A,B)
+\simeq\operatorname{Hom}(X,[A,B]).
+\tag{1.1}
+\]">\[
+\operatorname{Hom}(X\otimes A,B)
+\simeq\operatorname{Hom}(X,[A,B]).
+\tag{1.1}
+\]</span>
+Tensor product and internal Hom commute with restriction along a map of base sheaves <span class="math" data-tex="\(W\to V\)">\(W\to V\)</span>, with <span class="math" data-tex="\(R\)">\(R\)</span> restricted from the original site.</p>
+<p><strong>Proof.</strong> Suppose maps between the restricted modules are given compatibly on a covering sieve of <span class="math" data-tex="\((T,v)\)">\((T,v)\)</span>. For any further arrow <span class="math" data-tex="\((S,w)\to(T,v)\)">\((S,w)\to(T,v)\)</span> and section <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> there, the pullback covering sieve gives compatible images of <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(B\)">\(B\)</span>. The sheaf condition of <span class="math" data-tex="\(B\)">\(B\)</span> glues them uniquely. These glued values commute with restriction and preserve addition and scalars, because those identities hold on a covering sieve and <span class="math" data-tex="\(B\)">\(B\)</span> is separated. They define the unique glued module map. This proves the sheaf assertion.</p>
+<p>A map <span class="math" data-tex="\(X\otimes A\to B\)">\(X\otimes A\to B\)</span> gives, for each section <span class="math" data-tex="\(x\)">\(x\)</span>, the map <span class="math" data-tex="\(a\mapsto f(x\otimes a)\)">\(a\mapsto f(x\otimes a)\)</span> on every further restriction. This is a section of <span class="math" data-tex="\([A,B]\)">\([A,B]\)</span>, is linear in <span class="math" data-tex="\(x\)">\(x\)</span>, and commutes with restriction. Conversely such a map to <span class="math" data-tex="\([A,B]\)">\([A,B]\)</span> gives a bilinear rule on pairs <span class="math" data-tex="\((x,a)\)">\((x,a)\)</span>. The tensor universal property, including sheafification, extends it uniquely. The two rules are inverse on pure tensors, which locally generate the sheaf tensor product.</p>
+<p>On the element site, restricting a module along <span class="math" data-tex="\(W\to V\)">\(W\to V\)</span> replaces the label <span class="math" data-tex="\(w\)">\(w\)</span> by its image <span class="math" data-tex="\(v\)">\(v\)</span>. The category of further arrows out of <span class="math" data-tex="\((T,w)\)">\((T,w)\)</span> has exactly the arrows out of <span class="math" data-tex="\((T,v)\)">\((T,v)\)</span>: every further label is the restriction of the indicated label. Hence the formula defining internal Hom gives identical map sets after this restriction. Sectionwise tensor and its sheafification also commute with restriction: covering sieves and all their labels are unchanged. This proves both assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This restriction assertion concerns slices of the same sheaf category. For a general morphism of ringed sites, the canonical pullback map for internal Hom need not be an isomorphism.</p>
+<p>Call <span class="math" data-tex="\(A\)">\(A\)</span> <strong>finite with a local dual basis</strong> if, after a covering refinement on its element site, there are finitely many sections <span class="math" data-tex="\(a_r\)">\(a_r\)</span> and module maps <span class="math" data-tex="\(\alpha_r:A\to R\)">\(\alpha_r:A\to R\)</span> with
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+a=\sum_r\alpha_r(a)a_r
+\quad\hbox{on every further restriction.}
+\tag{1.2}
+\]">\[
+a=\sum_r\alpha_r(a)a_r
+\quad\hbox{on every further restriction.}
+\tag{1.2}
+\]</span>
+Equivalently, <span class="math" data-tex="\(A\)">\(A\)</span> is locally a retract of a finite free module: the maps <span class="math" data-tex="\(a\mapsto(\alpha_r(a))_r\)">\(a\mapsto(\alpha_r(a))_r\)</span> and <span class="math" data-tex="\((x_r)_r\mapsto\sum_rx_ra_r\)">\((x_r)_r\mapsto\sum_rx_ra_r\)</span> exhibit the retract. Conversely a retract of <span class="math" data-tex="\(R^n\)">\(R^n\)</span> supplies (1.2) by restricting its coordinate maps. This condition does not require a local basis.</p>
+<p><strong>Lemma 1.2.</strong> Put <span class="math" data-tex="\(A^*=[A,R]\)">\(A^*=[A,R]\)</span>. If <span class="math" data-tex="\(A\)">\(A\)</span> has a local dual basis, then
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+A^*\otimes B\xrightarrow{\sim}[A,B],
+\qquad \alpha\otimes b\longmapsto(a\mapsto\alpha(a)b).
+\tag{1.3}
+\]">\[
+A^*\otimes B\xrightarrow{\sim}[A,B],
+\qquad \alpha\otimes b\longmapsto(a\mapsto\alpha(a)b).
+\tag{1.3}
+\]</span>
+The maps <span class="math" data-tex="\(\epsilon:A^*\otimes A\to R\)">\(\epsilon:A^*\otimes A\to R\)</span> given by evaluation and <span class="math" data-tex="\(\eta:R\to A\otimes A^*\)">\(\eta:R\to A\otimes A^*\)</span> corresponding to <span class="math" data-tex="\(1_A\)">\(1_A\)</span> are a dual pair. Conversely any dual pair for <span class="math" data-tex="\(A\)">\(A\)</span> gives a local dual basis. Every invertible module satisfies these conclusions, and its evaluation is an isomorphism.</p>
+<p><strong>Proof.</strong> Locally the inverse in (1.3) sends <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(\sum_r\alpha_r\otimes f(a_r)\)">\(\sum_r\alpha_r\otimes f(a_r)\)</span>. Evaluating its image at <span class="math" data-tex="\(a\)">\(a\)</span> gives <span class="math" data-tex="\(f(\sum_r\alpha_r(a)a_r)=f(a)\)">\(f(\sum_r\alpha_r(a)a_r)=f(a)\)</span>. Applied to <span class="math" data-tex="\(\alpha\otimes b\)">\(\alpha\otimes b\)</span>, the other composite gives <span class="math" data-tex="\(\sum_r\alpha_r\otimes\alpha(a_r)b=\alpha\otimes b\)">\(\sum_r\alpha_r\otimes\alpha(a_r)b=\alpha\otimes b\)</span>, since applying <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to (1.2) gives <span class="math" data-tex="\(\alpha=\sum_r\alpha(a_r)\alpha_r\)">\(\alpha=\sum_r\alpha(a_r)\alpha_r\)</span>. Thus the canonical map is locally an isomorphism; its unique local inverses agree on overlaps and glue. Define <span class="math" data-tex="\(\eta(1)=\sum_ra_r\otimes\alpha_r\)">\(\eta(1)=\sum_ra_r\otimes\alpha_r\)</span> using the isomorphism with <span class="math" data-tex="\([A,A]\)">\([A,A]\)</span>. It is independent of the chosen dual basis. The two triangle identities reduce respectively to (1.2) and its dual identity just proved, so hold globally.</p>
+<p>Conversely let <span class="math" data-tex="\(D\)">\(D\)</span> be a dual with evaluation <span class="math" data-tex="\(D\otimes A\to R\)">\(D\otimes A\to R\)</span> and coevaluation <span class="math" data-tex="\(R\to A\otimes D\)">\(R\to A\otimes D\)</span>. Locally the latter's value at one is a finite sum <span class="math" data-tex="\(\sum_ra_r\otimes d_r\)">\(\sum_ra_r\otimes d_r\)</span>, by the local pure-tensor assertion. Put <span class="math" data-tex="\(\alpha_r(a)=\epsilon(d_r,a)\)">\(\alpha_r(a)=\epsilon(d_r,a)\)</span>. The triangle on <span class="math" data-tex="\(A\)">\(A\)</span> gives (1.2). The map <span class="math" data-tex="\(D\to A^*\)">\(D\to A^*\)</span>, <span class="math" data-tex="\(d\mapsto\epsilon(d,-)\)">\(d\mapsto\epsilon(d,-)\)</span>, is an isomorphism: its inverse sends <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(\sum_r\alpha(a_r)d_r\)">\(\sum_r\alpha(a_r)d_r\)</span>. One composite uses (1.2); the other uses the triangle on <span class="math" data-tex="\(D\)">\(D\)</span>. These formulas also identify the supplied evaluation with the canonical one.</p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> is invertible with inverse <span class="math" data-tex="\(J\)">\(J\)</span>, the tensor functors by <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> are quasi-inverse, by their two inverse isomorphisms and associativity. The coherent choices proved in <a href="tensor-duality-and-coherent-inverses.html#4-making-two-tensor-inverses-coherent">Tensor duality and coherent inverses, Section 4</a> make these inverse isomorphisms a dual pair. Apply the preceding paragraph to identify <span class="math" data-tex="\(J\)">\(J\)</span> with <span class="math" data-tex="\(A^*\)">\(A^*\)</span>. Its evaluation was an inverse isomorphism, so the canonical evaluation is also an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For later use, if <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> are invertible, these constructions give
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+Q\otimes P^*\otimes[A,B]
+\xrightarrow{\sim}[P\otimes A,Q\otimes B].
+\tag{1.4}
+\]">\[
+Q\otimes P^*\otimes[A,B]
+\xrightarrow{\sim}[P\otimes A,Q\otimes B].
+\tag{1.4}
+\]</span>
+Here is a formula that also proves the claim without a finiteness hypothesis on <span class="math" data-tex="\(A\)">\(A\)</span>. A pure tensor <span class="math" data-tex="\(q\otimes\lambda\otimes f\)">\(q\otimes\lambda\otimes f\)</span> sends <span class="math" data-tex="\(p\otimes a\)">\(p\otimes a\)</span> to <span class="math" data-tex="\(\lambda(p)q\otimes f(a)\)">\(\lambda(p)q\otimes f(a)\)</span>. For an arbitrary map <span class="math" data-tex="\(g:P\otimes A\to Q\otimes B\)">\(g:P\otimes A\to Q\otimes B\)</span>, take local dual bases <span class="math" data-tex="\((p_r,\lambda_r)\)">\((p_r,\lambda_r)\)</span> and <span class="math" data-tex="\((q_s,\beta_s)\)">\((q_s,\beta_s)\)</span>. Its inverse image is
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+\sum_{r,s}q_s\otimes\lambda_r\otimes
+\big(a\mapsto(\beta_s\otimes1)g(p_r\otimes a)\big).
+\tag{1.5}
+\]">\[
+\sum_{r,s}q_s\otimes\lambda_r\otimes
+\big(a\mapsto(\beta_s\otimes1)g(p_r\otimes a)\big).
+\tag{1.5}
+\]</span>
+The two dual-basis identities prove the two inverse equations. The canonical map therefore has a unique inverse, so these local inverses glue and commute with all restrictions.</p>
+<h2 id="2-products-and-inverse-line-cocycles">2. Products and inverse line cocycles</h2>
+<p>A line cocycle <span class="math" data-tex="\(L\)">\(L\)</span> has invertible modules <span class="math" data-tex="\(L_{ij}\)">\(L_{ij}\)</span> on <span class="math" data-tex="\(U^2\)">\(U^2\)</span>, maps
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\mu^L_{ijk}:L_{ij}\otimes L_{jk}\xrightarrow{\sim}L_{ik},
+\tag{2.1}
+\]">\[
+\mu^L_{ijk}:L_{ij}\otimes L_{jk}\xrightarrow{\sim}L_{ik},
+\tag{2.1}
+\]</span>
+an associative quadruple equation, and diagonal units. Generalized coordinates <span class="math" data-tex="\(i,j,k\)">\(i,j,k\)</span> mean pullbacks from the corresponding factors of <span class="math" data-tex="\(U^n\)">\(U^n\)</span>.</p>
+<p>For two such cocycles <span class="math" data-tex="\(L,B\)">\(L,B\)</span>, define <span class="math" data-tex="\((LB)_{ij}=L_{ij}\otimes B_{ij}\)">\((LB)_{ij}=L_{ij}\otimes B_{ij}\)</span>. Its multiplication first interchanges the middle factors and then applies <span class="math" data-tex="\(\mu^L\otimes\mu^B\)">\(\mu^L\otimes\mu^B\)</span>. Its diagonal unit is the product of their units. On four coordinates, both parenthesizations move the three <span class="math" data-tex="\(L\)">\(L\)</span> factors together and the three <span class="math" data-tex="\(B\)">\(B\)</span> factors together. They then agree by the two given associativity equations. Equalities on locally generating pure tensors prove the equation on the full modules. This constructs the product cocycle.</p>
+<p>The inverse cocycle <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span> has module <span class="math" data-tex="\(L_{ij}^*\)">\(L_{ij}^*\)</span>. Define its multiplication by
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+L_{ij}^*\otimes L_{jk}^*
+\simeq (L_{ij}\otimes L_{jk})^*
+\xrightarrow{((\mu^L_{ijk})^*)^{-1}}L_{ik}^*.
+\tag{2.2}
+\]">\[
+L_{ij}^*\otimes L_{jk}^*
+\simeq (L_{ij}\otimes L_{jk})^*
+\xrightarrow{((\mu^L_{ijk})^*)^{-1}}L_{ik}^*.
+\tag{2.2}
+\]</span>
+The first map pairs the corresponding factors. It is an isomorphism by Lemma 1.2, since both lines are invertible. This direction of the second arrow matters: dualizing <span class="math" data-tex="\(\mu^L\)">\(\mu^L\)</span> itself gives an arrow out of <span class="math" data-tex="\(L_{ik}^*\)">\(L_{ik}^*\)</span>.</p>
+<p>For three dual factors, pair either candidate multiplication with the multiplication of the three original factors. In both cases the pairing is the product of the three evaluations, by (2.2). Original associativity identifies the original products. Their perfect pairings identify the two dual products. Thus (2.2) is associative. The dual of the diagonal unit gives the diagonal inverse unit with the same pairing property. Evaluation then gives an isomorphism of cocycles
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+L^{-1}L\simeq1,
+\tag{2.3}
+\]">\[
+L^{-1}L\simeq1,
+\tag{2.3}
+\]</span>
+where <span class="math" data-tex="\(1\)">\(1\)</span> has module <span class="math" data-tex="\(R\)">\(R\)</span> and ordinary multiplication. Indeed the compatibility on triples is precisely the defining pairing property of (2.2), and the units pair to one. All these assertions use invertible modules, not chosen frames.</p>
+<h2 id="3-tensoring-objects-with-different-twists">3. Tensoring objects with different twists</h2>
+<p>Write <span class="math" data-tex="\(\mathsf T_L(V)\)">\(\mathsf T_L(V)\)</span> for the category of <span class="math" data-tex="\(L\)">\(L\)</span>-twisted modules over <span class="math" data-tex="\(V\)">\(V\)</span>. Its object <span class="math" data-tex="\(M\)">\(M\)</span> has underlying module on <span class="math" data-tex="\(U\times V\)">\(U\times V\)</span> and transition
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\theta^M_{ij}:L_{ij}\otimes M_j\xrightarrow{\sim}M_i,
+\qquad
+\theta^M_{ij}(1\otimes\theta^M_{jk})
+=\theta^M_{ik}(\mu^L_{ijk}\otimes1).
+\tag{3.1}
+\]">\[
+\theta^M_{ij}:L_{ij}\otimes M_j\xrightarrow{\sim}M_i,
+\qquad
+\theta^M_{ij}(1\otimes\theta^M_{jk})
+=\theta^M_{ik}(\mu^L_{ijk}\otimes1).
+\tag{3.1}
+\]</span>
+Morphisms commute with these transitions.</p>
+<p><strong>Theorem 3.1.</strong> Tensor product defines a functor of stacks
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\mathsf T_L\times\mathsf T_B\longrightarrow\mathsf T_{LB},
+\qquad (M,N)\longmapsto M\otimes N.
+\tag{3.2}
+\]">\[
+\mathsf T_L\times\mathsf T_B\longrightarrow\mathsf T_{LB},
+\qquad (M,N)\longmapsto M\otimes N.
+\tag{3.2}
+\]</span>
+It commutes with slice restriction and common refinements of the cover. Associativity, symmetry and units of module tensor product induce coherent comparisons for these functors.</p>
+<p><strong>Proof.</strong> Its transition interchanges the middle factors in
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+L_{ij}\otimes B_{ij}\otimes M_j\otimes N_j
+\longrightarrow M_i\otimes N_i
+\tag{3.3}
+\]">\[
+L_{ij}\otimes B_{ij}\otimes M_j\otimes N_j
+\longrightarrow M_i\otimes N_i
+\tag{3.3}
+\]</span>
+and applies <span class="math" data-tex="\(\theta^M_{ij}\otimes\theta^N_{ij}\)">\(\theta^M_{ij}\otimes\theta^N_{ij}\)</span>. On three coordinates, the successive transition sends a local tensor <span class="math" data-tex="\(l\otimes b\otimes l&#x27;\otimes b&#x27;\otimes m\otimes n\)">\(l\otimes b\otimes l&#x27;\otimes b&#x27;\otimes m\otimes n\)</span> to
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\theta^M_{ik}(\mu^L(l,l&#x27;)\otimes m)
+\otimes\theta^N_{ik}(\mu^B(b,b&#x27;)\otimes n).
+\]">\[
+\theta^M_{ik}(\mu^L(l,l&#x27;)\otimes m)
+\otimes\theta^N_{ik}(\mu^B(b,b&#x27;)\otimes n).
+\]</span>
+This is exactly the single transition after product multiplication. The unit equations are the two diagonal equations. Tensoring two equivariant maps gives an equivariant map by substituting their equations in (3.3); identities and compositions are preserved on pure tensors.</p>
+<p>Lemma 1.1 makes (3.3) compatible with every slice restriction. Pulling all cocycle and object maps to a common refinement gives the same formula, so is compatible with the refinement equivalences of the gluing lesson. An associator or symmetry on the underlying modules commutes with (3.3), since either order sends each pure tensor to the same ordered factors and their transitions. The pentagon, hexagon and unit equations similarly give the same reordering or parenthesization on each pure tensor, so agree. This proves the full coherence assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The neutral stack <span class="math" data-tex="\(\mathsf T_1\)">\(\mathsf T_1\)</span> is the ordinary module stack by effective descent. It acts on every <span class="math" data-tex="\(\mathsf T_L\)">\(\mathsf T_L\)</span>. Tensoring two objects of <span class="math" data-tex="\(\mathsf T_L\)">\(\mathsf T_L\)</span> lands in <span class="math" data-tex="\(\mathsf T_{L^2}\)">\(\mathsf T_{L^2}\)</span>; turning it into an operation within <span class="math" data-tex="\(\mathsf T_L\)">\(\mathsf T_L\)</span> would require additional identifications of twists.</p>
+<h2 id="4-the-hom-twist-and-its-transitions">4. The Hom twist and its transitions</h2>
+<p><strong>Theorem 4.1.</strong> There is a functor of stacks
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\mathsf T_L^{\mathrm{op}}\times\mathsf T_B
+\longrightarrow\mathsf T_{BL^{-1}},
+\qquad (M,N)\longmapsto\underline{\operatorname{Hom}}(M,N),
+\tag{4.1}
+\]">\[
+\mathsf T_L^{\mathrm{op}}\times\mathsf T_B
+\longrightarrow\mathsf T_{BL^{-1}},
+\qquad (M,N)\longmapsto\underline{\operatorname{Hom}}(M,N),
+\tag{4.1}
+\]</span>
+whose underlying module on <span class="math" data-tex="\(U\)">\(U\)</span> is <span class="math" data-tex="\([M,N]\)">\([M,N]\)</span>. It is defined for arbitrary module sheaves. Its evaluation and composition have the types
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\underline{\operatorname{Hom}}(M,N)\otimes M&amp;\longrightarrow N,\\
+\underline{\operatorname{Hom}}(N,P)\otimes
+\underline{\operatorname{Hom}}(M,N)&amp;\longrightarrow
+\underline{\operatorname{Hom}}(M,P),
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+\underline{\operatorname{Hom}}(M,N)\otimes M&amp;\longrightarrow N,\\
+\underline{\operatorname{Hom}}(N,P)\otimes
+\underline{\operatorname{Hom}}(M,N)&amp;\longrightarrow
+\underline{\operatorname{Hom}}(M,P),
+\end{aligned}
+\tag{4.2}
+\]</span>
+using canonical cancellation of the intermediate twists.</p>
+<p><strong>Proof.</strong> Over <span class="math" data-tex="\(U^2\)">\(U^2\)</span>, use (1.4) to identify
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+B_{ij}\otimes L_{ij}^*\otimes[M_j,N_j]
+\simeq[L_{ij}\otimes M_j,B_{ij}\otimes N_j].
+\]">\[
+B_{ij}\otimes L_{ij}^*\otimes[M_j,N_j]
+\simeq[L_{ij}\otimes M_j,B_{ij}\otimes N_j].
+\]</span>
+Follow this with precomposition by <span class="math" data-tex="\((\theta^M_{ij})^{-1}\)">\((\theta^M_{ij})^{-1}\)</span> and postcomposition by <span class="math" data-tex="\(\theta^N_{ij}\)">\(\theta^N_{ij}\)</span>. This is an isomorphism to <span class="math" data-tex="\([M_i,N_i]\)">\([M_i,N_i]\)</span>, and is the required transition.</p>
+<p>Its formula on <span class="math" data-tex="\(b\otimes\lambda\otimes f\)">\(b\otimes\lambda\otimes f\)</span> is the map sending <span class="math" data-tex="\(m_i\)">\(m_i\)</span> to
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\theta^N_{ij}\!left(b\otimes
+f\!left((\lambda\otimes1)(\theta^M_{ij})^{-1}(m_i)\right)\right).
+\tag{4.3}
+\]">\[
+\theta^N_{ij}\!left(b\otimes
+f\!left((\lambda\otimes1)(\theta^M_{ij})^{-1}(m_i)\right)\right).
+\tag{4.3}
+\]</span>
+Contraction with <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a module map, so this formula does not assume that the inverse transition sends a section to a single pure tensor.</p>
+<p>For the triple equation, the two inverse transitions for <span class="math" data-tex="\(M\)">\(M\)</span> give
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+(1\otimes(\theta^M_{jk})^{-1})(\theta^M_{ij})^{-1}
+=( (\mu^L_{ijk})^{-1}\otimes1)(\theta^M_{ik})^{-1}.
+\tag{4.4}
+\]">\[
+(1\otimes(\theta^M_{jk})^{-1})(\theta^M_{ij})^{-1}
+=( (\mu^L_{ijk})^{-1}\otimes1)(\theta^M_{ik})^{-1}.
+\tag{4.4}
+\]</span>
+Contracting its two line factors with <span class="math" data-tex="\(\lambda\otimes\lambda&#x27;\)">\(\lambda\otimes\lambda&#x27;\)</span> is the same as contracting its single line factor with their product in (2.2). The two forward transitions for <span class="math" data-tex="\(N\)">\(N\)</span> multiply their <span class="math" data-tex="\(B\)">\(B\)</span> factors by <span class="math" data-tex="\(\mu^B\)">\(\mu^B\)</span>. Substituting these two facts in two applications of (4.3) proves exactly the <span class="math" data-tex="\(BL^{-1}\)">\(BL^{-1}\)</span> triple equation. Diagonal contraction gives the identity map, so the unit equation holds as well.</p>
+<p>For maps <span class="math" data-tex="\(a:M&#x27;\to M\)">\(a:M&#x27;\to M\)</span> and <span class="math" data-tex="\(b:N\to N&#x27;\)">\(b:N\to N&#x27;\)</span>, the underlying Hom map is <span class="math" data-tex="\(f\mapsto bfa\)">\(f\mapsto bfa\)</span>. Their equivariance equations, substituted in (4.3), show its equivariance. Ordinary composition proves functoriality. Lemma 1.1 and the displayed canonical formulas prove compatibility with restriction and refinement.</p>
+<p>Evaluation is equivariant because, after a simultaneous transition, the line factors <span class="math" data-tex="\(L^*\)">\(L^*\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> contract by (2.3); what remains is the forward transition of <span class="math" data-tex="\(N\)">\(N\)</span>. This can be checked on <span class="math" data-tex="\(\lambda\otimes l\otimes f\otimes m\)">\(\lambda\otimes l\otimes f\otimes m\)</span>, where the contracted scalar is <span class="math" data-tex="\(\lambda(l)\)">\(\lambda(l)\)</span>. Composition is equivariant by the same check: the forward transition for its middle argument cancels its inverse transition. Its remaining twist is
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(CB^{-1})(BL^{-1})\simeq CL^{-1}.
+\]">\[
+(CB^{-1})(BL^{-1})\simeq CL^{-1}.
+\]</span>
+Associativity of composition is equality of ordinary composite maps on every restriction; identity sections have the neutral transition. This proves (4.2) with their units and associativity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, <span class="math" data-tex="\(\underline{\operatorname{Hom}}(M,N)\)">\(\underline{\operatorname{Hom}}(M,N)\)</span> for two <span class="math" data-tex="\(L\)">\(L\)</span>-twisted objects is neutral and descends to an ordinary module sheaf. Sections of that descended sheaf are exactly the twisted morphisms: its ordinary descent equation is, by its construction, <span class="math" data-tex="\(f_i\theta^M_{ij}=\theta^N_{ij}(1\otimes f_j)\)">\(f_i\theta^M_{ij}=\theta^N_{ij}(1\otimes f_j)\)</span>. For <span class="math" data-tex="\(M=N\)">\(M=N\)</span>, composition gives an ordinary sheaf of endomorphism algebras, which may be noncommutative even though <span class="math" data-tex="\(R\)">\(R\)</span> is commutative.</p>
+<h2 id="5-adjunction-including-the-overlap-equation">5. Adjunction including the overlap equation</h2>
+<p><strong>Theorem 5.1.</strong> For <span class="math" data-tex="\(M\in\mathsf T_L(V)\)">\(M\in\mathsf T_L(V)\)</span>, <span class="math" data-tex="\(N\in\mathsf T_B(V)\)">\(N\in\mathsf T_B(V)\)</span>, and <span class="math" data-tex="\(P\in\mathsf T_C(V)\)">\(P\in\mathsf T_C(V)\)</span>, currying gives a natural bijection
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathsf T_C(V)}(M\otimes N,P)
+\simeq
+\operatorname{Hom}_{\mathsf T_L(V)}
+\big(M,\underline{\operatorname{Hom}}(N,P)\big)
+\tag{5.1}
+\]">\[
+\operatorname{Hom}_{\mathsf T_C(V)}(M\otimes N,P)
+\simeq
+\operatorname{Hom}_{\mathsf T_L(V)}
+\big(M,\underline{\operatorname{Hom}}(N,P)\big)
+\tag{5.1}
+\]</span>
+when the left source has been identified with twist <span class="math" data-tex="\(C=LB\)">\(C=LB\)</span>. Equivalently, without imposing that identification, take <span class="math" data-tex="\(P\in\mathsf T_{LB}(V)\)">\(P\in\mathsf T_{LB}(V)\)</span>; the right target has twist <span class="math" data-tex="\((LB)B^{-1}\simeq L\)">\((LB)B^{-1}\simeq L\)</span>.</p>
+<p><strong>Proof.</strong> First use Lemma 1.1 on <span class="math" data-tex="\(U\times V\)">\(U\times V\)</span>. If <span class="math" data-tex="\(q:M\otimes N\to P\)">\(q:M\otimes N\to P\)</span>, its curry is <span class="math" data-tex="\(\widehat q(m)(n)=q(m\otimes n)\)">\(\widehat q(m)(n)=q(m\otimes n)\)</span>, and the inverse evaluates this formula. We check that exactly the equivariant maps correspond.</p>
+<p>The left overlap equation says, on local generating tensors,
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+q_i\big(\theta^M_{ij}(l\otimes m)\otimes
+\theta^N_{ij}(b\otimes n)\big)
+=\theta^P_{ij}\big((l\otimes b)\otimes q_j(m\otimes n)\big).
+\tag{5.2}
+\]">\[
+q_i\big(\theta^M_{ij}(l\otimes m)\otimes
+\theta^N_{ij}(b\otimes n)\big)
+=\theta^P_{ij}\big((l\otimes b)\otimes q_j(m\otimes n)\big).
+\tag{5.2}
+\]</span>
+The right overlap equation for <span class="math" data-tex="\(\widehat q\)">\(\widehat q\)</span>, using (4.3), says precisely that its value after the transition for <span class="math" data-tex="\(M\)">\(M\)</span> is the transported map <span class="math" data-tex="\(N_i\to P_i\)">\(N_i\to P_i\)</span>. To compare these equations, evaluate that transported map at <span class="math" data-tex="\(\theta^N_{ij}(b\otimes n)\)">\(\theta^N_{ij}(b\otimes n)\)</span>. Its inverse transition gives <span class="math" data-tex="\(b\otimes n\)">\(b\otimes n\)</span>. The <span class="math" data-tex="\(B^{-1}\)">\(B^{-1}\)</span> factor in the Hom transition contracts with this <span class="math" data-tex="\(b\)">\(b\)</span>; after cancellation, the resulting equation is (5.2). Formally, the cancellation identification <span class="math" data-tex="\((LB)B^{-1}\simeq L\)">\((LB)B^{-1}\simeq L\)</span> can be expanded using a local dual basis for <span class="math" data-tex="\(B\)">\(B\)</span>: inserting <span class="math" data-tex="\(\sum_rb_r\otimes\beta_r\)">\(\sum_rb_r\otimes\beta_r\)</span> and summing contracts to the identity. Thus the comparison works without choosing a frame for <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Conversely (5.2) implies the right equation by evaluating at all such sections and using the surjective isomorphism <span class="math" data-tex="\(\theta^N\)">\(\theta^N\)</span> and local generation by pure tensors. Maps to internal Hom agree exactly when all their evaluations agree, directly from its definition. Hence currying and its inverse restrict to the asserted bijection. Their section formulas show naturality in all arguments and compatibility with restriction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-duals-and-the-finiteness-condition">6. Duals and the finiteness condition</h2>
+<p>For any <span class="math" data-tex="\(M\in\mathsf T_L\)">\(M\in\mathsf T_L\)</span>, define <span class="math" data-tex="\(M^\vee=\underline{\operatorname{Hom}}(M,R)\)">\(M^\vee=\underline{\operatorname{Hom}}(M,R)\)</span>, where <span class="math" data-tex="\(R\)">\(R\)</span> is neutral. Thus <span class="math" data-tex="\(M^\vee\in\mathsf T_{L^{-1}}\)">\(M^\vee\in\mathsf T_{L^{-1}}\)</span>, and evaluation <span class="math" data-tex="\(M^\vee\otimes M\to R\)">\(M^\vee\otimes M\to R\)</span> always exists.</p>
+<p><strong>Theorem 6.1.</strong> The following are equivalent:</p>
+<ol>
+<li>The underlying module of <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> is locally a retract of a finite free module.</li>
+<li>There is a coevaluation <span class="math" data-tex="\(R\to M\otimes M^\vee\)">\(R\to M\otimes M^\vee\)</span> which, with evaluation, satisfies both triangle identities.</li>
+<li><span class="math" data-tex="\(M\)">\(M\)</span> has a dual object of inverse twist with evaluation and coevaluation satisfying both triangles.</li>
+</ol>
+<p>When they hold, the canonical maps
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+M^\vee\otimes N\xrightarrow{\sim}
+\underline{\operatorname{Hom}}(M,N),
+\qquad M\xrightarrow{\sim}M^{\vee\vee}
+\tag{6.1}
+\]">\[
+M^\vee\otimes N\xrightarrow{\sim}
+\underline{\operatorname{Hom}}(M,N),
+\qquad M\xrightarrow{\sim}M^{\vee\vee}
+\tag{6.1}
+\]</span>
+are isomorphisms of twisted objects. Neither (6.1) nor coevaluation is asserted for arbitrary modules.</p>
+<p><strong>Proof.</strong> Under (1), (1.3) gives the first isomorphism locally. The map <span class="math" data-tex="\(\alpha\otimes n\mapsto(m\mapsto\alpha(m)n)\)">\(\alpha\otimes n\mapsto(m\mapsto\alpha(m)n)\)</span> is equivariant by the evaluation and composition checks of Theorem 4.1, so is an isomorphism of twisted objects. Taking <span class="math" data-tex="\(N=M\)">\(N=M\)</span> identifies <span class="math" data-tex="\(M\otimes M^\vee\)">\(M\otimes M^\vee\)</span> with the neutral endomorphism object, using symmetry. The identity endomorphism is equivariant. Its inverse image gives a global coevaluation, locally <span class="math" data-tex="\(\sum_rm_r\otimes\alpha_r\)">\(\sum_rm_r\otimes\alpha_r\)</span>. Lemma 1.2 proves both triangles, which remain valid after descent. This proves (2), and (2) implies (3).</p>
+<p>Under (3), restrict its maps to <span class="math" data-tex="\(U\)">\(U\)</span>. The inverse twist pairing identifies their targets and sources with the ordinary unit there. They give a dual pair of ordinary modules, so Lemma 1.2 supplies a local dual basis and hence (1). The same lemma identifies any such dual with <span class="math" data-tex="\(M^\vee\)">\(M^\vee\)</span>.</p>
+<p>For double duality, the canonical map sends <span class="math" data-tex="\(m\)">\(m\)</span> to <span class="math" data-tex="\(\alpha\mapsto\alpha(m)\)">\(\alpha\mapsto\alpha(m)\)</span>. With a local dual basis its inverse sends <span class="math" data-tex="\(\xi\in M^{\vee\vee}\)">\(\xi\in M^{\vee\vee}\)</span> to <span class="math" data-tex="\(\sum_r\xi(\alpha_r)m_r\)">\(\sum_r\xi(\alpha_r)m_r\)</span>. One composite is (1.2). The other follows from <span class="math" data-tex="\(\alpha=\sum_r\alpha(m_r)\alpha_r\)">\(\alpha=\sum_r\alpha(m_r)\alpha_r\)</span>, after applying <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. The maps are therefore inverse. Evaluation equivariance proves that the canonical map respects transitions; its inverse then does too. This proves the second isomorphism with its correct twist. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An invertible underlying module is included, even on a site where it has no local frame. Finite locally free modules are included as a special case. On a general ringed site the retract formulation is the one used here; no identification with local freeness is needed.</p>
+<h2 id="7-reading-the-formulas-in-frames">7. Reading the formulas in frames</h2>
+<p>On an open cover where the two line cocycles have frames, let their scalar factors be <span class="math" data-tex="\(c_{ijk}\)">\(c_{ijk}\)</span> and <span class="math" data-tex="\(d_{ijk}\)">\(d_{ijk}\)</span>, and object transitions be <span class="math" data-tex="\(t_{ij}\)">\(t_{ij}\)</span> and <span class="math" data-tex="\(u_{ij}\)">\(u_{ij}\)</span>. The product object has transition <span class="math" data-tex="\(t_{ij}\otimes u_{ij}\)">\(t_{ij}\otimes u_{ij}\)</span> and factor <span class="math" data-tex="\(c_{ijk}d_{ijk}\)">\(c_{ijk}d_{ijk}\)</span>. The Hom transition is
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+f\longmapsto u_{ij}ft_{ij}^{-1},
+\tag{7.1}
+\]">\[
+f\longmapsto u_{ij}ft_{ij}^{-1},
+\tag{7.1}
+\]</span>
+and its successive composite equals
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+u_{ij}u_{jk}f(t_{ij}t_{jk})^{-1}
+=d_{ijk}c_{ijk}^{-1}u_{ik}ft_{ik}^{-1}.
+\tag{7.2}
+\]">\[
+u_{ij}u_{jk}f(t_{ij}t_{jk})^{-1}
+=d_{ijk}c_{ijk}^{-1}u_{ik}ft_{ik}^{-1}.
+\tag{7.2}
+\]</span>
+Commutativity of the scalar action justifies moving the two units past <span class="math" data-tex="\(f\)">\(f\)</span>. The dual transition is <span class="math" data-tex="\((t_{ij}^{-1})^*\)">\((t_{ij}^{-1})^*\)</span>, with factor <span class="math" data-tex="\(c_{ijk}^{-1}\)">\(c_{ijk}^{-1}\)</span>. In a finite free frame, its evaluation and the tensor corresponding to the identity matrix are the evaluation and coevaluation of Section 6. This is a specialization of the line formulas, not an assumption in their proofs.</p>
+<h2 id="8-graded-exercises-with-complete-solutions">8. Graded exercises with complete solutions</h2>
+<p><strong>Exercise 8.1 (foundation).</strong> In the scalar description, let <span class="math" data-tex="\(M,N,P\)">\(M,N,P\)</span> have factors <span class="math" data-tex="\(c,d,e\)">\(c,d,e\)</span>. Compute the twists of their tensor and Hom objects. Check the factor of composition and prove its overlap equation directly.</p>
+<p><strong>Solution.</strong> Tensor has factor <span class="math" data-tex="\(cd\)">\(cd\)</span>. The three Hom objects from <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\(N\)">\(N\)</span>, from <span class="math" data-tex="\(N\)">\(N\)</span> to <span class="math" data-tex="\(P\)">\(P\)</span>, and from <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\(P\)">\(P\)</span> have factors <span class="math" data-tex="\(d/c,e/d,e/c\)">\(d/c,e/d,e/c\)</span>, by (7.2). The product of the first two factors is <span class="math" data-tex="\(e/c\)">\(e/c\)</span>. Write the object transitions as <span class="math" data-tex="\(t,u,v\)">\(t,u,v\)</span>. If <span class="math" data-tex="\(f:M_j\to N_j\)">\(f:M_j\to N_j\)</span> and <span class="math" data-tex="\(g:N_j\to P_j\)">\(g:N_j\to P_j\)</span>, their transported composite is
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(v_{ij}gu_{ij}^{-1})(u_{ij}ft_{ij}^{-1})
+=v_{ij}(gf)t_{ij}^{-1}.
+\]">\[
+(v_{ij}gu_{ij}^{-1})(u_{ij}ft_{ij}^{-1})
+=v_{ij}(gf)t_{ij}^{-1}.
+\]</span>
+This is the transport of the composite, so composition is equivariant. Evaluating the transported <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(t_{ij}m\)">\(t_{ij}m\)</span> gives <span class="math" data-tex="\(u_{ij}f(m)\)">\(u_{ij}f(m)\)</span>, which also directly checks evaluation. Identity maps transport to identity maps, and threefold composition agrees by associativity of module maps.</p>
+<p><strong>Exercise 8.2 (calculation).</strong> Let <span class="math" data-tex="\(G=\{1,s\}\)">\(G=\{1,s\}\)</span>, <span class="math" data-tex="\(s^2=1\)">\(s^2=1\)</span>, and use the normalized real scalar group cocycle with <span class="math" data-tex="\(c(s,s)=-1\)">\(c(s,s)=-1\)</span> and all other values one. A <span class="math" data-tex="\(c\)">\(c\)</span>-projective representation satisfies <span class="math" data-tex="\(T_gT_h=c(g,h)T_{gh}\)">\(T_gT_h=c(g,h)T_{gh}\)</span>. Verify the cocycle equation, classify possible finite real dimensions, and compute the tensor square and endomorphisms of the two-dimensional example.</p>
+<p><strong>Solution.</strong> If any argument in <span class="math" data-tex="\(c(g,h)c(gh,k)=c(h,k)c(g,hk)\)">\(c(g,h)c(gh,k)=c(h,k)c(g,hk)\)</span> is one, normalization makes both sides equal to the remaining factor. For <span class="math" data-tex="\((s,s,s)\)">\((s,s,s)\)</span>, both sides are <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus it is a cocycle. The representation consists of <span class="math" data-tex="\(T_1=1\)">\(T_1=1\)</span> and <span class="math" data-tex="\(J=T_s\)">\(J=T_s\)</span> with <span class="math" data-tex="\(J^2=-1\)">\(J^2=-1\)</span>. For dimension <span class="math" data-tex="\(r\)">\(r\)</span>, determinants give <span class="math" data-tex="\((\det J)^2=(-1)^r\)">\((\det J)^2=(-1)^r\)</span>, so <span class="math" data-tex="\(r\)">\(r\)</span> is even. Conversely every even dimension has a block diagonal sum of
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},
+\]">\[
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},
+\]</span>
+including the zero-dimensional case. The factor cannot be removed by a normalized real scalar cochain: that would require <span class="math" data-tex="\(b_s^2=-1\)">\(b_s^2=-1\)</span>.</p>
+<p>On <span class="math" data-tex="\(\mathbb R^2\otimes\mathbb R^2\)">\(\mathbb R^2\otimes\mathbb R^2\)</span>, the transition is <span class="math" data-tex="\(J\otimes J\)">\(J\otimes J\)</span>, whose square is <span class="math" data-tex="\(1\)">\(1\)</span>; its factor is the neutral cocycle <span class="math" data-tex="\(c^2\)">\(c^2\)</span>. Its <span class="math" data-tex="\(+1\)">\(+1\)</span> eigenspace has basis
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+e_1\otimes e_1+e_2\otimes e_2,\qquad
+e_1\otimes e_2-e_2\otimes e_1,
+\]">\[
+e_1\otimes e_1+e_2\otimes e_2,\qquad
+e_1\otimes e_2-e_2\otimes e_1,
+\]</span>
+and its <span class="math" data-tex="\(-1\)">\(-1\)</span> eigenspace has basis
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+e_1\otimes e_1-e_2\otimes e_2,\qquad
+e_1\otimes e_2+e_2\otimes e_1.
+\]">\[
+e_1\otimes e_1-e_2\otimes e_2,\qquad
+e_1\otimes e_2+e_2\otimes e_1.
+\]</span>
+Applying <span class="math" data-tex="\(J\)">\(J\)</span> to each factor checks these signs. The four vectors form a basis, by adding and subtracting the displayed pairs. The neutral Hom action on matrices is <span class="math" data-tex="\(A\mapsto JAJ^{-1}\)">\(A\mapsto JAJ^{-1}\)</span>. Its invariant matrices satisfy <span class="math" data-tex="\(AJ=JA\)">\(AJ=JA\)</span>; writing four entries and equating them gives exactly <span class="math" data-tex="\(A=aI+bJ\)">\(A=aI+bJ\)</span>. Thus the projective representation has endomorphism algebra <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> as a real algebra. Its dual action is <span class="math" data-tex="\((J^{-1})^{\mathsf t}=J\)">\((J^{-1})^{\mathsf t}=J\)</span>, so evaluation is invariant. These are group-cocycle calculations; they do not claim a nontrivial open-cover cocycle on a point.</p>
+<p><strong>Exercise 8.3 (obstruction).</strong> Over a field <span class="math" data-tex="\(k\)">\(k\)</span>, let <span class="math" data-tex="\(V=\bigoplus_{n\geq0}ke_n\)">\(V=\bigoplus_{n\geq0}ke_n\)</span> with neutral twist. Identify <span class="math" data-tex="\(V^*\)">\(V^*\)</span>, describe the image of <span class="math" data-tex="\(V^*\otimes V\to[V,V]\)">\(V^*\otimes V\to[V,V]\)</span>, and decide whether <span class="math" data-tex="\(V\)">\(V\)</span> has a dual pair.</p>
+<p><strong>Solution.</strong> A linear functional is determined by arbitrary values on the basis, because each input has finite support. Hence <span class="math" data-tex="\(V^*=\prod_{n\geq0}k\)">\(V^*=\prod_{n\geq0}k\)</span>. A finite sum <span class="math" data-tex="\(\sum_r\lambda_r\otimes v_r\)">\(\sum_r\lambda_r\otimes v_r\)</span> gives the operator <span class="math" data-tex="\(v\mapsto\sum_r\lambda_r(v)v_r\)">\(v\mapsto\sum_r\lambda_r(v)v_r\)</span>, whose image lies in the finite-dimensional span of the <span class="math" data-tex="\(v_r\)">\(v_r\)</span>. Conversely a finite-rank operator has image with a finite basis <span class="math" data-tex="\(v_1,\ldots,v_m\)">\(v_1,\ldots,v_m\)</span>; its coordinate functions on that image, composed with the operator, are linear functionals <span class="math" data-tex="\(\lambda_r\)">\(\lambda_r\)</span>, giving the displayed tensor. Therefore the image is exactly the finite-rank operators. The identity has infinite-dimensional image and is absent. If a dual pair existed, its finite coevaluation expression and the triangle would write every <span class="math" data-tex="\(v\)">\(v\)</span> as a linear combination of finitely many fixed vectors. This contradicts the infinite independent basis. Internal Hom and evaluation exist, but coevaluation and the duality isomorphism do not.</p>
+<p><strong>Exercise 8.4 (synthesis).</strong> Suppose line changes send twists <span class="math" data-tex="\(L,B\)">\(L,B\)</span> to <span class="math" data-tex="\(L&#x27;,B&#x27;\)">\(L&#x27;,B&#x27;\)</span>, with underlying invertible modules <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>. Describe the induced line change on Hom objects, and show compatibility with evaluation. Use the conventions
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+L&#x27;_{ij}\otimes P_j\simeq P_i\otimes L_{ij},
+\qquad B&#x27;_{ij}\otimes Q_j\simeq Q_i\otimes B_{ij}.
+\]">\[
+L&#x27;_{ij}\otimes P_j\simeq P_i\otimes L_{ij},
+\qquad B&#x27;_{ij}\otimes Q_j\simeq Q_i\otimes B_{ij}.
+\]</span></p>
+<p><strong>Solution.</strong> Invert the first line equation in the tensor group of invertible modules to obtain
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(L&#x27;_{ij})^{-1}\otimes P_j^{-1}
+\simeq P_i^{-1}\otimes L_{ij}^{-1}.
+\]">\[
+(L&#x27;_{ij})^{-1}\otimes P_j^{-1}
+\simeq P_i^{-1}\otimes L_{ij}^{-1}.
+\]</span>
+Tensor it with the second equation. This gives a line change from <span class="math" data-tex="\(BL^{-1}\)">\(BL^{-1}\)</span> to <span class="math" data-tex="\(B&#x27;(L&#x27;)^{-1}\)">\(B&#x27;(L&#x27;)^{-1}\)</span> with underlying module <span class="math" data-tex="\(Q\otimes P^{-1}\)">\(Q\otimes P^{-1}\)</span>. Its triple equation is the product of the second original triple equation and the inverse of the first. Inverse multiplication is (2.2), so all contraction factors cancel in this product; the diagonal equation follows in the same way.</p>
+<p>The canonical object comparison is (1.4):
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+Q\otimes P^{-1}\otimes\underline{\operatorname{Hom}}(M,N)
+\simeq\underline{\operatorname{Hom}}(P\otimes M,Q\otimes N).
+\]">\[
+Q\otimes P^{-1}\otimes\underline{\operatorname{Hom}}(M,N)
+\simeq\underline{\operatorname{Hom}}(P\otimes M,Q\otimes N).
+\]</span>
+To check its overlap equation, insert the two line-change comparisons in the transported Hom map. The <span class="math" data-tex="\(P\)">\(P\)</span> comparison occurs once forward and once inverse, by (4.3), and cancels; the <span class="math" data-tex="\(Q\)">\(Q\)</span> comparison remains forward. The result is exactly the product line change just constructed. Equivalently (1.5) verifies this equation after evaluation on every local <span class="math" data-tex="\(p\otimes m\)">\(p\otimes m\)</span>, which determines a Hom map. On a generating tensor <span class="math" data-tex="\(q\otimes\lambda\otimes f\otimes p\otimes m\)">\(q\otimes\lambda\otimes f\otimes p\otimes m\)</span>, evaluation on either side is <span class="math" data-tex="\(\lambda(p)q\otimes f(m)\)">\(\lambda(p)q\otimes f(m)\)</span>. Hence the comparison also respects evaluation. Since pure tensors locally generate, both equalities hold globally, with no frames assumed for <span class="math" data-tex="\(P\)">\(P\)</span> or <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<h2 id="9-further-reading">9. Further reading</h2>
+<ul>
+<li>Andrea D'Agnolo and Pietro Polesello, <a href="https://arxiv.org/abs/math/0307387"><em>Stacks of twisted modules and integral transforms</em></a>, open preprint, Section 3.5, for products and opposite twisting data. Their operations on stacks also include functors between module stacks; those stack operations should be distinguished from the object-level internal Hom constructed here.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/04TT">Internal Hom on sites, Section 18.27</a>, for the restricted-Hom definition and tensor–Hom adjunction.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/0FNU">Duals, Section 17.18</a>, for the finite-retract criterion on ringed spaces.</li>
+</ul>
+<p>The line cocycles, their units, and the effectiveness of ordinary module descent used above are established in <a href="twisted-modules-from-coherent-gluing.html">Twisted modules from coherent gluing</a>. The compatibility of inverse identifications used in Lemma 1.2 is established in <a href="tensor-duality-and-coherent-inverses.html">Tensor duality and coherent inverses</a>.</p>
+</main></body></html>

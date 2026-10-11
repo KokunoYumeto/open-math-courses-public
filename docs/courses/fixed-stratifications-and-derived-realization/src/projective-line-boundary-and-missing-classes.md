@@ -62,7 +62,7 @@ If it were realized by a bounded complex from either heart, its cohomology there
 
 ### The link explains why contractible strata do not suffice
 
-The fixed-stratification criterion tests not only the strata but the comparison between direct images derived internally and in all sheaves. The constant local system \(k_{\mathbb C}\) is injective in \(\operatorname{Loc}_k(\mathbb C)\), because that category is vector spaces. Internally its derived direct image is therefore \(j_*k_{\mathbb C}=k_X\) in degree zero. Ambient direct image has the boundary stalk
+The [fixed-stratification criterion](fixed-stratification-realization.md#the-full-fixed-stratification-criterion) tests not only the strata but the comparison between direct images derived internally and in all sheaves. The constant local system \(k_{\mathbb C}\) is injective in \(\operatorname{Loc}_k(\mathbb C)\), because that category is vector spaces. Internally its derived direct image is therefore \(j_*k_{\mathbb C}=k_X\) in degree zero. Ambient direct image has the boundary stalk
 
 \[
 (R^qj_*k_{\mathbb C})_\infty

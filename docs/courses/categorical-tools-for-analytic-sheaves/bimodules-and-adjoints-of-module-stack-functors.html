@@ -1,0 +1,253 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bimodules and adjoints of module-stack functors</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="bimodules-and-adjoints-of-module-stack-functors">Bimodules and adjoints of module-stack functors</h1>
+<p>A bimodule gives a tensor functor between module categories. For sheaves, recovering that bimodule requires the functor's behavior on restrictions as well as on the global regular module. The right adjoint must respect those restrictions too. This lesson proves the reconstruction theorem, describes all its natural transformations, and exhibits the failure when only adjoints on individual fibres are supplied.</p>
+<p>Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the sheaf category of a small site and <span class="math" data-tex="\(R\)">\(R\)</span> a commutative ring sheaf. Let <span class="math" data-tex="\(A,B,C\)">\(A,B,C\)</span> be unital, possibly noncommutative <span class="math" data-tex="\(R\)">\(R\)</span>-algebra sheaves. Their scalar maps land in their centers. All modules are left modules unless a right action is specified, and section sets and coproducts are taken in a fixed universe.</p>
+<p>The module stack <span class="math" data-tex="\(\mathsf{Mod}(A)\)">\(\mathsf{Mod}(A)\)</span> assigns to a base sheaf <span class="math" data-tex="\(V\)">\(V\)</span> the modules over the restriction of <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(\mathcal E/V\)">\(\mathcal E/V\)</span>, interpreted on the element site. A linear functor of module stacks has functors on these fibres and coherent comparisons with restriction. A <strong>right adjoint as a stack functor</strong> consists of a functor <span class="math" data-tex="\(H\)">\(H\)</span> with the same restriction compatibility and units and counits compatible with it. Thus every <span class="math" data-tex="\(F_V\dashv H_V\)">\(F_V\dashv H_V\)</span>, and those adjunctions form one stack adjunction. Section 7 describes the obstruction to assembling fibre adjoints.</p>
+<p>For prerequisites, <a href="local-module-categories-and-morita-equivalence.html#4-recover-the-bimodule-from-an-equivalence">Local module categories and Morita equivalence, Section 4</a> proves the generator presentation and extension construction used below. <a href="tensor-and-hom-for-twisted-module-stacks.html#1-the-module-operations-used-on-a-slice">Tensor and Hom for twisted module stacks, Section 1</a> constructs internal Hom, currying, and restriction on element sites. Here the Hom maps are also required to respect the indicated noncommutative action.</p>
+<h2 id="1-adjoint-functors-preserve-the-colimits-needed-here">1. Adjoint functors preserve the colimits needed here</h2>
+<p><strong>Lemma 1.1.</strong> If a linear module-stack functor <span class="math" data-tex="\(F:\mathsf{Mod}(B)\to\mathsf{Mod}(A)\)">\(F:\mathsf{Mod}(B)\to\mathsf{Mod}(A)\)</span> has a right adjoint as a stack functor, then each <span class="math" data-tex="\(F_V\)">\(F_V\)</span> preserves small colimits. It also commutes with extension from a localized test object to its base.</p>
+<p><strong>Proof.</strong> For a diagram <span class="math" data-tex="\((M_i)\)">\((M_i)\)</span> in one fibre, maps from <span class="math" data-tex="\(F(\operatorname{colim}_i M_i)\)">\(F(\operatorname{colim}_i M_i)\)</span> to <span class="math" data-tex="\(N\)">\(N\)</span> correspond successively to
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(\operatorname{colim}_iM_i,HN)
+\simeq\lim_i\operatorname{Hom}(M_i,HN)
+\simeq\lim_i\operatorname{Hom}(FM_i,N).
+\tag{1.1}
+\]">\[
+\operatorname{Hom}(\operatorname{colim}_iM_i,HN)
+\simeq\lim_i\operatorname{Hom}(M_i,HN)
+\simeq\lim_i\operatorname{Hom}(FM_i,N).
+\tag{1.1}
+\]</span>
+The bijections are natural, and the maps from <span class="math" data-tex="\(FM_i\)">\(FM_i\)</span> are the images of the colimit maps. Thus <span class="math" data-tex="\(F\)">\(F\)</span> takes the colimit cocone to a colimit cocone. In particular it preserves coproducts and cokernels.</p>
+<p>On the element site of a base, for a test object <span class="math" data-tex="\(S\)">\(S\)</span>, restriction <span class="math" data-tex="\(j_S^*\)">\(j_S^*\)</span> has the left adjoint <span class="math" data-tex="\(j_{S!}\)">\(j_{S!}\)</span> constructed by sheafifying
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+T\longmapsto\bigoplus_{a:T\to S}N(T\xrightarrow a S).
+\tag{1.2}
+\]">\[
+T\longmapsto\bigoplus_{a:T\to S}N(T\xrightarrow a S).
+\tag{1.2}
+\]</span>
+The indicated scalar actions are those of the restricted algebra. A map from this presheaf to <span class="math" data-tex="\(M\)">\(M\)</span> is exactly a map <span class="math" data-tex="\(N\to j_S^*M\)">\(N\to j_S^*M\)</span>, by evaluating each summand; sheafification preserves this universal property. Let <span class="math" data-tex="\(N\)">\(N\)</span> be a <span class="math" data-tex="\(B\)">\(B\)</span>-module on that localization and <span class="math" data-tex="\(L\)">\(L\)</span> an <span class="math" data-tex="\(A\)">\(A\)</span>-module on the base. Then
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_A(Fj_{S!}N,L)
+&amp;\simeq\operatorname{Hom}_B(j_{S!}N,HL)\\
+&amp;\simeq\operatorname{Hom}_{B|_S}(N,j_S^*HL)\\
+&amp;\simeq\operatorname{Hom}_{B|_S}(N,H_Sj_S^*L)\\
+&amp;\simeq\operatorname{Hom}_{A|_S}(F_SN,j_S^*L)\\
+&amp;\simeq\operatorname{Hom}_A(j_{S!}F_SN,L).
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_A(Fj_{S!}N,L)
+&amp;\simeq\operatorname{Hom}_B(j_{S!}N,HL)\\
+&amp;\simeq\operatorname{Hom}_{B|_S}(N,j_S^*HL)\\
+&amp;\simeq\operatorname{Hom}_{B|_S}(N,H_Sj_S^*L)\\
+&amp;\simeq\operatorname{Hom}_{A|_S}(F_SN,j_S^*L)\\
+&amp;\simeq\operatorname{Hom}_A(j_{S!}F_SN,L).
+\end{aligned}
+\tag{1.3}
+\]</span>
+All bijections are natural. Taking the identity of either represented object constructs mutually inverse maps between them. Hence <span class="math" data-tex="\(Fj_{S!}\simeq j_{S!}F_S\)">\(Fj_{S!}\simeq j_{S!}F_S\)</span>. The middle comparison uses restriction compatibility of the right adjoint, not just the existence of separate right adjoints. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These arguments apply on every element site. Units, counits and the restriction comparisons make the resulting extension comparisons compatible with further restriction.</p>
+<h2 id="2-the-tensor-functor-and-its-stack-right-adjoint">2. The tensor functor and its stack right adjoint</h2>
+<p>An <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span>-bimodule <span class="math" data-tex="\(P\)">\(P\)</span> is a left <span class="math" data-tex="\(A\)">\(A\)</span>-module and a right <span class="math" data-tex="\(B\)">\(B\)</span>-module with commuting actions and agreeing central <span class="math" data-tex="\(R\)">\(R\)</span>-actions. Define
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+T_P(M)=P\otimes_B M,
+\qquad H_P(N)=[P,N]_A.
+\tag{2.1}
+\]">\[
+T_P(M)=P\otimes_B M,
+\qquad H_P(N)=[P,N]_A.
+\tag{2.1}
+\]</span>
+The second object consists of the <span class="math" data-tex="\(A\)">\(A\)</span>-linear local maps. Its left <span class="math" data-tex="\(B\)">\(B\)</span>-action is
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+(b\cdot f)(p)=f(pb).
+\tag{2.2}
+\]">\[
+(b\cdot f)(p)=f(pb).
+\tag{2.2}
+\]</span>
+Indeed <span class="math" data-tex="\(b\cdot(c\cdot f)\)">\(b\cdot(c\cdot f)\)</span> sends <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(f((pb)c)=f(p(bc))\)">\(f((pb)c)=f(p(bc))\)</span>, so is <span class="math" data-tex="\((bc)\cdot f\)">\((bc)\cdot f\)</span>. Commuting actions on <span class="math" data-tex="\(P\)">\(P\)</span> ensure that this remains an <span class="math" data-tex="\(A\)">\(A\)</span>-linear map. The two central scalar actions agree.</p>
+<p><strong>Proposition 2.1.</strong> These are linear functors of stacks, and <span class="math" data-tex="\(T_P\dashv H_P\)">\(T_P\dashv H_P\)</span> as stack functors. No flatness, finite generation or projectivity assumption on <span class="math" data-tex="\(P\)">\(P\)</span> is required.</p>
+<p><strong>Proof.</strong> Construct the tensor sheaf from the sectionwise balanced tensor presheaf and sheafify. It inherits the left <span class="math" data-tex="\(A\)">\(A\)</span>-action. The sheaf of <span class="math" data-tex="\(A\)">\(A\)</span>-linear maps is a subsheaf of the ordinary <span class="math" data-tex="\(R\)">\(R\)</span>-linear internal Hom: linearity can be checked locally, so compatible local linear maps glue to a linear map. Both constructions commute with slice restriction. For tensor this follows from the sectionwise relations and sheafification on the element site; for Hom it follows from the restriction description of the map sets. The extra <span class="math" data-tex="\(A\)">\(A\)</span>-linearity equations are unchanged on all further restrictions.</p>
+<p>For an <span class="math" data-tex="\(A\)">\(A\)</span>-linear map <span class="math" data-tex="\(q:P\otimes_B M\to N\)">\(q:P\otimes_B M\to N\)</span>, put <span class="math" data-tex="\(\widehat q(m)(p)=q(p\otimes m)\)">\(\widehat q(m)(p)=q(p\otimes m)\)</span>. This is <span class="math" data-tex="\(A\)">\(A\)</span>-linear in <span class="math" data-tex="\(p\)">\(p\)</span> and satisfies
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\widehat q(bm)(p)=q(p\otimes bm)=q(pb\otimes m)
+=(b\cdot\widehat q(m))(p).
+\]">\[
+\widehat q(bm)(p)=q(p\otimes bm)=q(pb\otimes m)
+=(b\cdot\widehat q(m))(p).
+\]</span>
+Hence it is a <span class="math" data-tex="\(B\)">\(B\)</span>-linear map <span class="math" data-tex="\(M\to H_P(N)\)">\(M\to H_P(N)\)</span>. Conversely such a map gives the balanced rule <span class="math" data-tex="\(q(p\otimes m)=\widehat q(m)(p)\)">\(q(p\otimes m)=\widehat q(m)(p)\)</span>. Tensor's universal property makes it a unique <span class="math" data-tex="\(A\)">\(A\)</span>-linear map. These two rules are inverse and natural, also after every restriction. This is the stack adjunction.</p>
+<p>Its unit and counit are
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\eta_M(m)(p)=p\otimes m,
+\qquad\epsilon_N(p\otimes f)=f(p).
+\tag{2.3}
+\]">\[
+\eta_M(m)(p)=p\otimes m,
+\qquad\epsilon_N(p\otimes f)=f(p).
+\tag{2.3}
+\]</span>
+The triangle on <span class="math" data-tex="\(P\otimes_B M\)">\(P\otimes_B M\)</span> sends <span class="math" data-tex="\(p\otimes m\)">\(p\otimes m\)</span> to <span class="math" data-tex="\(p\otimes\eta_M(m)\)">\(p\otimes\eta_M(m)\)</span>, then back to <span class="math" data-tex="\(p\otimes m\)">\(p\otimes m\)</span>. The triangle on <span class="math" data-tex="\([P,N]_A\)">\([P,N]_A\)</span> sends <span class="math" data-tex="\(f\)">\(f\)</span> to the map <span class="math" data-tex="\(p\mapsto\epsilon_N(p\otimes f)=f(p)\)">\(p\mapsto\epsilon_N(p\otimes f)=f(p)\)</span>. Pure tensors locally generate, and Hom maps are determined by evaluations, so these checks prove both triangles globally. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-recovering-the-bimodule-and-the-functor">3. Recovering the bimodule and the functor</h2>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(F:\mathsf{Mod}(B)\to\mathsf{Mod}(A)\)">\(F:\mathsf{Mod}(B)\to\mathsf{Mod}(A)\)</span> be linear and have a right adjoint as a stack functor. Then <span class="math" data-tex="\(P=F(B)\)">\(P=F(B)\)</span> has a canonical <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span>-bimodule structure, and
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+P\otimes_B-\xrightarrow{\sim}F
+\tag{3.1}
+\]">\[
+P\otimes_B-\xrightarrow{\sim}F
+\tag{3.1}
+\]</span>
+is an isomorphism of linear stack functors.</p>
+<p><strong>Proof.</strong> On every localization, a section <span class="math" data-tex="\(b\)">\(b\)</span> defines the left <span class="math" data-tex="\(B\)">\(B\)</span>-linear map <span class="math" data-tex="\(r_b:B\to B\)">\(r_b:B\to B\)</span>, <span class="math" data-tex="\(x\mapsto xb\)">\(x\mapsto xb\)</span>. Set <span class="math" data-tex="\(pb=F(r_b)(p)\)">\(pb=F(r_b)(p)\)</span>. The equation <span class="math" data-tex="\(r_c\circ r_b=r_{bc}\)">\(r_c\circ r_b=r_{bc}\)</span> gives <span class="math" data-tex="\((pb)c=p(bc)\)">\((pb)c=p(bc)\)</span>; addition and units follow from linearity and functoriality. Each <span class="math" data-tex="\(F(r_b)\)">\(F(r_b)\)</span> is <span class="math" data-tex="\(A\)">\(A\)</span>-linear, so the actions commute. Linearity over <span class="math" data-tex="\(R\)">\(R\)</span> identifies the two central actions. The comparisons for restriction make these into sheaf actions on <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>For a local section <span class="math" data-tex="\(m\)">\(m\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span>, let <span class="math" data-tex="\(\ell_m:B\to M\)">\(\ell_m:B\to M\)</span> send <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(xm\)">\(xm\)</span>. Define
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+\theta_M(p\otimes m)=F(\ell_m)(p).
+\tag{3.2}
+\]">\[
+\theta_M(p\otimes m)=F(\ell_m)(p).
+\tag{3.2}
+\]</span>
+It is additive in both entries and <span class="math" data-tex="\(A\)">\(A\)</span>-linear. Since <span class="math" data-tex="\(\ell_{bm}=\ell_m\circ r_b\)">\(\ell_{bm}=\ell_m\circ r_b\)</span>, it is balanced. The formula commutes with restriction and is natural in <span class="math" data-tex="\(M\)">\(M\)</span>; its local bilinear maps therefore give a stack transformation <span class="math" data-tex="\(\theta:T_P\to F\)">\(\theta:T_P\to F\)</span>.</p>
+<p>We prove it invertible without assuming that the global regular module alone generates all sheaves. Put <span class="math" data-tex="\(B[S]=j_{S!}(B|_S)\)">\(B[S]=j_{S!}(B|_S)\)</span>. For a module sheaf <span class="math" data-tex="\(M\)">\(M\)</span>, a map <span class="math" data-tex="\(B[S]\to M\)">\(B[S]\to M\)</span> is determined by a section <span class="math" data-tex="\(m\in M(S)\)">\(m\in M(S)\)</span>: the summand at <span class="math" data-tex="\(a:T\to S\)">\(a:T\to S\)</span> sends <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(b(m|_a)\)">\(b(m|_a)\)</span>. Conversely evaluating at the identity summand recovers <span class="math" data-tex="\(m\)">\(m\)</span>. A coproduct over all pairs <span class="math" data-tex="\((S,m)\)">\((S,m)\)</span> consequently maps epimorphically to <span class="math" data-tex="\(M\)">\(M\)</span>; every section has its indicated lift. Apply this construction to the kernel of that map. This gives a presentation
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\bigoplus_jB[S_j]\longrightarrow\bigoplus_iB[S_i]
+\longrightarrow M\longrightarrow0.
+\tag{3.3}
+\]">\[
+\bigoplus_jB[S_j]\longrightarrow\bigoplus_iB[S_i]
+\longrightarrow M\longrightarrow0.
+\tag{3.3}
+\]</span>
+All index sets are small in the fixed universe.</p>
+<p>Lemma 1.1 identifies <span class="math" data-tex="\(F(B[S])\)">\(F(B[S])\)</span> with <span class="math" data-tex="\(j_{S!}P|_S\)">\(j_{S!}P|_S\)</span>. The sectionwise extension formula also identifies <span class="math" data-tex="\(P\otimes_B B[S]\)">\(P\otimes_B B[S]\)</span> with that module: tensor distributes over its sums and commutes with their sheafification, by its balanced universal property. We identify the actual map. Let <span class="math" data-tex="\(e:B|_S\to j_S^*B[S]\)">\(e:B|_S\to j_S^*B[S]\)</span> be the extension unit, whose universal section is the summand labeled by <span class="math" data-tex="\(\operatorname{id}_S\)">\(\operatorname{id}_S\)</span>. The inverse of the extension comparison in (1.3), a map <span class="math" data-tex="\(j_{S!}P|_S\to F(B[S])\)">\(j_{S!}P|_S\to F(B[S])\)</span>, has adjoint transpose <span class="math" data-tex="\(F_S(e)\)">\(F_S(e)\)</span>, with the restriction comparison understood. This follows by tracing the identity through the five bijections in (1.3). Formula (3.2) also takes the universal section to <span class="math" data-tex="\(F_S(e)(p)\)">\(F_S(e)(p)\)</span>. By the extension adjunction, these two maps are equal. Thus <span class="math" data-tex="\(\theta_{B[S]}\)">\(\theta_{B[S]}\)</span> is exactly the invertible extension comparison, not merely a map between isomorphic objects.</p>
+<p>Both functors preserve coproducts and cokernels, by their adjunctions. Naturality of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> gives a map between the two images of (3.3). It is an isomorphism on both coproduct terms, so induces an isomorphism on their cokernels. Hence <span class="math" data-tex="\(\theta_M\)">\(\theta_M\)</span> is invertible for every <span class="math" data-tex="\(M\)">\(M\)</span>. The same proof on each element site and the restriction formula (3.2) prove (3.1) for stack functors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-all-transformations-are-bimodule-maps">4. All transformations are bimodule maps</h2>
+<p>Let <span class="math" data-tex="\(\mathsf{Adj}_R(B,A)\)">\(\mathsf{Adj}_R(B,A)\)</span> be the category of linear functors <span class="math" data-tex="\(\mathsf{Mod}(B)\to\mathsf{Mod}(A)\)">\(\mathsf{Mod}(B)\to\mathsf{Mod}(A)\)</span> that have a right adjoint as a stack functor. Its arrows are all stack natural transformations; no choice of adjoint is part of an object.</p>
+<p><strong>Theorem 4.1.</strong> The functor
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\mathsf{Mod}(A\otimes_R B^{\mathrm{op}})
+\longrightarrow\mathsf{Adj}_R(B,A),
+\qquad P\longmapsto T_P
+\tag{4.1}
+\]">\[
+\mathsf{Mod}(A\otimes_R B^{\mathrm{op}})
+\longrightarrow\mathsf{Adj}_R(B,A),
+\qquad P\longmapsto T_P
+\tag{4.1}
+\]</span>
+is an equivalence. On arrows it sends <span class="math" data-tex="\(h:P\to Q\)">\(h:P\to Q\)</span> to <span class="math" data-tex="\(h\otimes1\)">\(h\otimes1\)</span>. The reconstruction is compatible with localization.</p>
+<p><strong>Proof.</strong> Commuting left <span class="math" data-tex="\(A\)">\(A\)</span>- and right <span class="math" data-tex="\(B\)">\(B\)</span>-actions are exactly a left action of <span class="math" data-tex="\(A\otimes_RB^{\mathrm{op}}\)">\(A\otimes_RB^{\mathrm{op}}\)</span>, with <span class="math" data-tex="\((a\otimes b^{\mathrm{op}})p=apb\)">\((a\otimes b^{\mathrm{op}})p=apb\)</span>. The multiplication in the opposite algebra makes the right-action order correct. Proposition 2.1 and Theorem 3.1 give existence of the functor and essential surjectivity.</p>
+<p>Given <span class="math" data-tex="\(\alpha:T_P\to T_Q\)">\(\alpha:T_P\to T_Q\)</span>, identify <span class="math" data-tex="\(P\otimes_B B\simeq P\)">\(P\otimes_B B\simeq P\)</span> and <span class="math" data-tex="\(Q\otimes_B B\simeq Q\)">\(Q\otimes_B B\simeq Q\)</span> by multiplication. Its component at <span class="math" data-tex="\(B\)">\(B\)</span> gives an <span class="math" data-tex="\(A\)">\(A\)</span>-linear map <span class="math" data-tex="\(h:P\to Q\)">\(h:P\to Q\)</span>. Naturality at <span class="math" data-tex="\(r_b\)">\(r_b\)</span>, on every localization, gives <span class="math" data-tex="\(h(pb)=h(p)b\)">\(h(pb)=h(p)b\)</span>. Thus it is a bimodule map. Naturality at <span class="math" data-tex="\(\ell_m:B\to M\)">\(\ell_m:B\to M\)</span> gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\alpha_M(p\otimes m)=h(p)\otimes m.
+\tag{4.2}
+\]">\[
+\alpha_M(p\otimes m)=h(p)\otimes m.
+\tag{4.2}
+\]</span>
+Restriction compatibility makes this formula valid for all local sections. Pure tensors locally generate, so it determines the whole transformation. Conversely a bimodule map defines (4.2), which is balanced, linear, natural and compatible with restriction. Evaluation at <span class="math" data-tex="\(B\)">\(B\)</span> recovers <span class="math" data-tex="\(h\)">\(h\)</span>. These are inverse bijections on all arrow sets. They preserve identities and composition by their displayed formulas, proving full faithfulness. The same construction on any localization proves its last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, transformations between noninvertible tensor functors are included. They are not determined merely by an arbitrary <span class="math" data-tex="\(A\)">\(A\)</span>-linear endomorphism of the regular value: the right <span class="math" data-tex="\(B\)">\(B\)</span>-linearity is essential.</p>
+<h2 id="5-composition-and-the-order-of-the-adjoints">5. Composition and the order of the adjoints</h2>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span> be an <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span>-bimodule and <span class="math" data-tex="\(Q\)">\(Q\)</span> a <span class="math" data-tex="\((C,A)\)">\((C,A)\)</span>-bimodule. Then
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+T_QT_P\simeq T_{Q\otimes_A P},
+\qquad H_{Q\otimes_A P}\simeq H_PH_Q.
+\tag{5.1}
+\]">\[
+T_QT_P\simeq T_{Q\otimes_A P},
+\qquad H_{Q\otimes_A P}\simeq H_PH_Q.
+\tag{5.1}
+\]</span>
+The first comparison sends <span class="math" data-tex="\(q\otimes(p\otimes m)\)">\(q\otimes(p\otimes m)\)</span> to <span class="math" data-tex="\((q\otimes p)\otimes m\)">\((q\otimes p)\otimes m\)</span>. Both sides impose exactly the <span class="math" data-tex="\(A\)">\(A\)</span>- and <span class="math" data-tex="\(B\)">\(B\)</span>-balancing equations. The reverse parenthesization defines its inverse, so it is an isomorphism commuting with all restrictions.</p>
+<p>For the second comparison, curry an element of <span class="math" data-tex="\([Q\otimes_A P,N]_C\)">\([Q\otimes_A P,N]_C\)</span> by
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+f\longmapsto\big(p\mapsto(q\mapsto f(q\otimes p))\big).
+\tag{5.2}
+\]">\[
+f\longmapsto\big(p\mapsto(q\mapsto f(q\otimes p))\big).
+\tag{5.2}
+\]</span>
+The inner map is <span class="math" data-tex="\(C\)">\(C\)</span>-linear. The <span class="math" data-tex="\(A\)">\(A\)</span>-balancing identity makes the outer map <span class="math" data-tex="\(A\)">\(A\)</span>-linear for the action <span class="math" data-tex="\((a\cdot g)(q)=g(qa)\)">\((a\cdot g)(q)=g(qa)\)</span>. The right action on <span class="math" data-tex="\(P\)">\(P\)</span> makes the comparison <span class="math" data-tex="\(B\)">\(B\)</span>-linear, since acting by <span class="math" data-tex="\(b\)">\(b\)</span> replaces <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(pb\)">\(pb\)</span> in both formulas. Uncurrying is its inverse. This proves the second comparison, including its restriction compatibility.</p>
+<p>The unit bimodule <span class="math" data-tex="\(A\)">\(A\)</span> gives the identity functor: multiplication identifies <span class="math" data-tex="\(A\otimes_A M\)">\(A\otimes_A M\)</span> with <span class="math" data-tex="\(M\)">\(M\)</span>, with inverse <span class="math" data-tex="\(m\mapsto1\otimes m\)">\(m\mapsto1\otimes m\)</span>. Horizontal composition of transformations is tensor product of the corresponding bimodule maps. For three bimodules, both associativity comparisons send a pure tensor to the same ordered four factors; the pentagon and the two unit equations follow in the same way. Thus reconstruction preserves composition, its associators and its units, in addition to individual functors and transformations.</p>
+<h2 id="6-recovering-equivalences-as-the-invertible-case">6. Recovering equivalences as the invertible case</h2>
+<p><strong>Corollary 6.1.</strong> The tensor functor <span class="math" data-tex="\(T_P\)">\(T_P\)</span> is a linear equivalence of module stacks exactly when there is a <span class="math" data-tex="\((B,A)\)">\((B,A)\)</span>-bimodule <span class="math" data-tex="\(Q\)">\(Q\)</span> with bimodule isomorphisms
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+P\otimes_B Q\simeq A,
+\qquad Q\otimes_A P\simeq B.
+\tag{6.1}
+\]">\[
+P\otimes_B Q\simeq A,
+\qquad Q\otimes_A P\simeq B.
+\tag{6.1}
+\]</span></p>
+<p><strong>Proof.</strong> These isomorphisms and (5.1) give mutually inverse tensor functors, with natural comparisons to the two identity functors. Conversely let <span class="math" data-tex="\(G\)">\(G\)</span> be an inverse linear stack equivalence to <span class="math" data-tex="\(F=T_P\)">\(F=T_P\)</span>. Choose an invertible counit <span class="math" data-tex="\(\epsilon:FG\to1\)">\(\epsilon:FG\to1\)</span>. Full faithfulness of <span class="math" data-tex="\(F\)">\(F\)</span> gives a unique invertible <span class="math" data-tex="\(\eta_X:X\to GFX\)">\(\eta_X:X\to GFX\)</span> with <span class="math" data-tex="\(F\eta_X=\epsilon_{FX}^{-1}\)">\(F\eta_X=\epsilon_{FX}^{-1}\)</span>. It is natural, and the first triangle is immediate. Naturality of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> at <span class="math" data-tex="\(\epsilon_Y:FGY\to Y\)">\(\epsilon_Y:FGY\to Y\)</span> gives <span class="math" data-tex="\(FG\epsilon_Y=\epsilon_{FGY}\)">\(FG\epsilon_Y=\epsilon_{FGY}\)</span>, after canceling <span class="math" data-tex="\(\epsilon_Y\)">\(\epsilon_Y\)</span>. Applying faithful <span class="math" data-tex="\(F\)">\(F\)</span> to the second triangle therefore gives <span class="math" data-tex="\(FG\epsilon_Y\,\epsilon_{FGY}^{-1}=1\)">\(FG\epsilon_Y\,\epsilon_{FGY}^{-1}=1\)</span>. Thus the second triangle holds too. Uniqueness of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> makes it compatible with restrictions; the supplied counit already is. This proves the stack adjoint-equivalence assertion, and interchanging the two functors gives a stack right adjoint for <span class="math" data-tex="\(G\)">\(G\)</span> as well. Theorem 3.1 now writes <span class="math" data-tex="\(G=T_Q\)">\(G=T_Q\)</span>. The two inverse comparisons, by Theorems 4.1 and (5.1), are precisely bimodule isomorphisms (6.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This recovers the equivalence case of the earlier Morita lesson. The broader reconstruction theorem needs no finite or projective hypothesis on <span class="math" data-tex="\(P\)">\(P\)</span>; invertibility is a further property, not a condition for having a tensor right adjoint.</p>
+<h2 id="7-testing-whether-fibre-adjoints-assemble">7. Testing whether fibre adjoints assemble</h2>
+<p>Suppose instead that each fibre functor <span class="math" data-tex="\(F_V\)">\(F_V\)</span> has a chosen right adjoint <span class="math" data-tex="\(H_V\)">\(H_V\)</span>, with unit <span class="math" data-tex="\(\eta^V\)">\(\eta^V\)</span> and counit <span class="math" data-tex="\(\epsilon^V\)">\(\epsilon^V\)</span>. For a restriction <span class="math" data-tex="\(h^*\)">\(h^*\)</span> from <span class="math" data-tex="\(V\)">\(V\)</span> to <span class="math" data-tex="\(W\)">\(W\)</span>, the comparison for <span class="math" data-tex="\(F\)">\(F\)</span> defines a canonical map
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\beta_h:h^*H_VN\longrightarrow H_Wh^*N.
+\tag{7.1}
+\]">\[
+\beta_h:h^*H_VN\longrightarrow H_Wh^*N.
+\tag{7.1}
+\]</span>
+It is the adjoint transpose of
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+F_Wh^*H_VN\simeq h^*F_VH_VN
+\xrightarrow{h^*\epsilon^V_N}h^*N.
+\tag{7.2}
+\]">\[
+F_Wh^*H_VN\simeq h^*F_VH_VN
+\xrightarrow{h^*\epsilon^V_N}h^*N.
+\tag{7.2}
+\]</span>
+Explicitly, insert <span class="math" data-tex="\(\eta^W\)">\(\eta^W\)</span> into <span class="math" data-tex="\(h^*H_VN\)">\(h^*H_VN\)</span>, use the comparison for <span class="math" data-tex="\(F\)">\(F\)</span>, and then apply <span class="math" data-tex="\(H_W\)">\(H_W\)</span> to the restricted counit.</p>
+<p><strong>Proposition 7.1.</strong> These fibre adjunctions assemble to a stack adjunction if and only if every <span class="math" data-tex="\(\beta_h\)">\(\beta_h\)</span> is invertible.</p>
+<p><strong>Proof.</strong> If there is a stack right adjoint, its restriction comparison satisfies the counit compatibility equation (7.2). Adjunction's bijection says it is exactly <span class="math" data-tex="\(\beta_h\)">\(\beta_h\)</span>, so it is invertible.</p>
+<p>Conversely use the invertible <span class="math" data-tex="\(\beta_h\)">\(\beta_h\)</span> as the restriction comparisons for <span class="math" data-tex="\(H\)">\(H\)</span>. The identity restriction gives the identity comparison by the triangle identity: its transpose is the counit. For composable restrictions <span class="math" data-tex="\(h^*,k^*\)">\(h^*,k^*\)</span>, the composite <span class="math" data-tex="\(\beta_k\,k^*\beta_h\)">\(\beta_k\,k^*\beta_h\)</span> has transpose the composite restriction of <span class="math" data-tex="\(\epsilon^V\)">\(\epsilon^V\)</span>. Indeed the equation defining <span class="math" data-tex="\(\beta_k\)">\(\beta_k\)</span> replaces <span class="math" data-tex="\(\epsilon\,F\beta_k\)">\(\epsilon\,F\beta_k\)</span> by the restricted counit, and the equation defining <span class="math" data-tex="\(\beta_h\)">\(\beta_h\)</span> makes the next replacement. What remains is exactly (7.2) for <span class="math" data-tex="\(k^*h^*\)">\(k^*h^*\)</span>, using the coherent comparison of <span class="math" data-tex="\(F\)">\(F\)</span>. Uniqueness of the transpose therefore gives the comparison for the composite. This proves the restriction coherence.</p>
+<p>Counits are compatible by (7.2). Units are compatible as well: transpose either proposed unit comparison under the fibre adjunction; the unit-counit triangle turns both transposes into the restriction comparison for <span class="math" data-tex="\(F\)">\(F\)</span>. The transpose bijection makes the two unit maps equal. The triangles already hold in every fibre, so now hold as stack transformations. This constructs the required stack adjunction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The distinction is consequential even on a site with two nonempty opens, as Exercise 8.3 shows.</p>
+<h2 id="8-graded-exercises-with-complete-solutions">8. Graded exercises with complete solutions</h2>
+<p><strong>Exercise 8.1 (foundation).</strong> On a point let <span class="math" data-tex="\(B=k[t]\)">\(B=k[t]\)</span>, <span class="math" data-tex="\(A=k\)">\(A=k\)</span>, and let <span class="math" data-tex="\(P=k\)">\(P=k\)</span> with right <span class="math" data-tex="\(B\)">\(B\)</span>-action given by evaluation at zero. Identify its tensor functor, its right adjoint, its unit and counit. Is it exact or an equivalence?</p>
+<p><strong>Solution.</strong> Balancing <span class="math" data-tex="\(p\otimes tm=(p\cdot t)\otimes m=0\)">\(p\otimes tm=(p\cdot t)\otimes m=0\)</span> makes the tensor <span class="math" data-tex="\(M/tM\)">\(M/tM\)</span>. The isomorphism sends <span class="math" data-tex="\(p\otimes m\)">\(p\otimes m\)</span> to <span class="math" data-tex="\(p\bar m\)">\(p\bar m\)</span>; its inverse sends <span class="math" data-tex="\(\bar m\)">\(\bar m\)</span> to <span class="math" data-tex="\(1\otimes m\)">\(1\otimes m\)</span>, well-defined by the same balancing equation. A <span class="math" data-tex="\(k\)">\(k\)</span>-linear map <span class="math" data-tex="\(P=k\to N\)">\(P=k\to N\)</span> is determined by its value at one. Formula (2.2) makes <span class="math" data-tex="\(t\)">\(t\)</span> act as zero on this Hom. Thus the right adjoint regards <span class="math" data-tex="\(N\)">\(N\)</span> as a <span class="math" data-tex="\(B\)">\(B\)</span>-module annihilated by <span class="math" data-tex="\(t\)">\(t\)</span>. The unit is the quotient <span class="math" data-tex="\(M\to M/tM\)">\(M\to M/tM\)</span>; the counit is the identity on <span class="math" data-tex="\(N\)">\(N\)</span>, since <span class="math" data-tex="\(N/tN=N\)">\(N/tN=N\)</span>. Tensor sends the injection <span class="math" data-tex="\(t:B\to B\)">\(t:B\to B\)</span> to the zero map <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span>, which is not injective. Hence this left adjoint is not exact and is not an equivalence. Existence of a stack right adjoint on a point imposes no flatness on <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Exercise 8.2 (calculation).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be an algebra and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> an automorphism. Give <span class="math" data-tex="\(P=A\)">\(P=A\)</span> its usual left action and right action <span class="math" data-tex="\(p\cdot b=p\sigma(b)\)">\(p\cdot b=p\sigma(b)\)</span>. Identify <span class="math" data-tex="\(T_P(M)\)">\(T_P(M)\)</span> with a module whose underlying additive group is <span class="math" data-tex="\(M\)">\(M\)</span>. Determine the tensor composition for two automorphisms. For <span class="math" data-tex="\(A=k[t]\)">\(A=k[t]\)</span>, <span class="math" data-tex="\(\sigma(t)=t+1\)">\(\sigma(t)=t+1\)</span>, compute the new action of <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><strong>Solution.</strong> The map <span class="math" data-tex="\(p\otimes m\mapsto\sigma^{-1}(p)m\)">\(p\otimes m\mapsto\sigma^{-1}(p)m\)</span> is balanced, because <span class="math" data-tex="\(\sigma^{-1}(p\sigma(b))m=\sigma^{-1}(p)bm\)">\(\sigma^{-1}(p\sigma(b))m=\sigma^{-1}(p)bm\)</span>. Its inverse is <span class="math" data-tex="\(m\mapsto1\otimes m\)">\(m\mapsto1\otimes m\)</span>: balancing with <span class="math" data-tex="\(b=\sigma^{-1}(p)\)">\(b=\sigma^{-1}(p)\)</span> proves <span class="math" data-tex="\(p\otimes m=1\otimes\sigma^{-1}(p)m\)">\(p\otimes m=1\otimes\sigma^{-1}(p)m\)</span>. The target action is consequently <span class="math" data-tex="\(a\cdot_{\mathrm{new}}m=\sigma^{-1}(a)m\)">\(a\cdot_{\mathrm{new}}m=\sigma^{-1}(a)m\)</span>, not <span class="math" data-tex="\(\sigma(a)m\)">\(\sigma(a)m\)</span>.</p>
+<p>Write <span class="math" data-tex="\(P_\sigma,P_\tau\)">\(P_\sigma,P_\tau\)</span> for the two bimodules. The isomorphism
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+P_\tau\otimes_A P_\sigma\xrightarrow{\sim}P_{\tau\circ\sigma},
+\qquad q\otimes p\longmapsto q\tau(p)
+\]">\[
+P_\tau\otimes_A P_\sigma\xrightarrow{\sim}P_{\tau\circ\sigma},
+\qquad q\otimes p\longmapsto q\tau(p)
+\]</span>
+is balanced: <span class="math" data-tex="\(q\tau(a)\tau(p)=q\tau(ap)\)">\(q\tau(a)\tau(p)=q\tau(ap)\)</span>. The right action maps to <span class="math" data-tex="\(q\tau(p\sigma(b))=q\tau(p)(\tau\circ\sigma)(b)\)">\(q\tau(p\sigma(b))=q\tau(p)(\tau\circ\sigma)(b)\)</span>, and the left action is the usual one. Its inverse is <span class="math" data-tex="\(x\mapsto x\otimes1\)">\(x\mapsto x\otimes1\)</span>, since <span class="math" data-tex="\(q\otimes p=q\tau(p)\otimes1\)">\(q\otimes p=q\tau(p)\otimes1\)</span>. This also checks the order of functor composition: <span class="math" data-tex="\(T_{P_\tau}T_{P_\sigma}\)">\(T_{P_\tau}T_{P_\sigma}\)</span> has new action <span class="math" data-tex="\((\tau\circ\sigma)^{-1}=\sigma^{-1}\circ\tau^{-1}\)">\((\tau\circ\sigma)^{-1}=\sigma^{-1}\circ\tau^{-1}\)</span>. For the indicated polynomial automorphism, <span class="math" data-tex="\(t\)">\(t\)</span> acts by the old operator <span class="math" data-tex="\(t-1\)">\(t-1\)</span>. The inverse functor uses <span class="math" data-tex="\(\sigma^{-1}\)">\(\sigma^{-1}\)</span>, so these tensor functors are equivalences.</p>
+<p><strong>Exercise 8.3 (obstruction).</strong> Take the topological space <span class="math" data-tex="\(X=\{0,1\}\)">\(X=\{0,1\}\)</span> with opens <span class="math" data-tex="\(\varnothing,U=\{1\},X\)">\(\varnothing,U=\{1\},X\)</span>, and the constant ring sheaf <span class="math" data-tex="\(k_X\)">\(k_X\)</span>. Show that <span class="math" data-tex="\(F_X(V\xrightarrow f W)=(W\xrightarrow1W)\)">\(F_X(V\xrightarrow f W)=(W\xrightarrow1W)\)</span> and <span class="math" data-tex="\(F_U=1\)">\(F_U=1\)</span> define a linear module-stack functor with right adjoints on both fibres. Compute its maps (7.1) and show that it is not tensoring with its regular value.</p>
+<p><strong>Solution.</strong> A sheaf of modules here is precisely an arrow of vector spaces: no covering of <span class="math" data-tex="\(X\)">\(X\)</span> by smaller opens covers the point zero, and a cover of <span class="math" data-tex="\(U\)">\(U\)</span> contains <span class="math" data-tex="\(U\)">\(U\)</span>. A morphism is a commuting pair. Restriction to <span class="math" data-tex="\(U\)">\(U\)</span> takes <span class="math" data-tex="\(V\to W\)">\(V\to W\)</span> to <span class="math" data-tex="\(W\)">\(W\)</span>, and <span class="math" data-tex="\(k_X\)">\(k_X\)</span> is the arrow <span class="math" data-tex="\(k\xrightarrow1k\)">\(k\xrightarrow1k\)</span>. Thus the two specified functors commute with restriction and are linear; the empty-open fibre is the trivial category.</p>
+<p>For a target <span class="math" data-tex="\(Y\xrightarrow g Z\)">\(Y\xrightarrow g Z\)</span>, a map <span class="math" data-tex="\((W\xrightarrow1W)\to(Y\xrightarrow g Z)\)">\((W\xrightarrow1W)\to(Y\xrightarrow g Z)\)</span> is determined by a map <span class="math" data-tex="\(a:W\to Y\)">\(a:W\to Y\)</span>, with its other component forced to be <span class="math" data-tex="\(ga\)">\(ga\)</span>. A map <span class="math" data-tex="\((V\xrightarrow f W)\to(Y\xrightarrow1Y)\)">\((V\xrightarrow f W)\to(Y\xrightarrow1Y)\)</span> is also determined by <span class="math" data-tex="\(a:W\to Y\)">\(a:W\to Y\)</span>, with its first component forced to be <span class="math" data-tex="\(af\)">\(af\)</span>. Hence
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+H_X(Y\xrightarrow g Z)=(Y\xrightarrow1Y),\qquad H_U=1
+\]">\[
+H_X(Y\xrightarrow g Z)=(Y\xrightarrow1Y),\qquad H_U=1
+\]</span>
+are right adjoints on their fibres. Their unit at <span class="math" data-tex="\(V\to W\)">\(V\to W\)</span> is the pair <span class="math" data-tex="\((f,1_W)\)">\((f,1_W)\)</span>, and their counit at <span class="math" data-tex="\(Y\to Z\)">\(Y\to Z\)</span> is <span class="math" data-tex="\((1_Y,g)\)">\((1_Y,g)\)</span>, as the two Hom bijections show. Formula (7.2) therefore gives the mate <span class="math" data-tex="\(\beta_U:Y\to Z\)">\(\beta_U:Y\to Z\)</span> equal to <span class="math" data-tex="\(g\)">\(g\)</span>. Choose <span class="math" data-tex="\(Y=k,Z=0\)">\(Y=k,Z=0\)</span>; it is not invertible. By Proposition 7.1 the right adjoints cannot assemble into a stack adjoint. Any other fibre right adjoints are isomorphic to these by the adjunction bijections, so cannot cure this defect.</p>
+<p>The regular value is <span class="math" data-tex="\(F_X(k\xrightarrow1k)=k_X\)">\(F_X(k\xrightarrow1k)=k_X\)</span>. Tensoring with that regular bimodule is the identity on all sheaves. But <span class="math" data-tex="\(F_X(k\to0)=0\)">\(F_X(k\to0)=0\)</span>, whereas <span class="math" data-tex="\(k\to0\)">\(k\to0\)</span> is nonzero. Thus reconstruction from the regular value fails under the weaker fibrewise condition. This does not contradict Theorem 3.1: precisely its stack-adjoint hypothesis is missing.</p>
+<p><strong>Exercise 8.4 (synthesis).</strong> On a point let <span class="math" data-tex="\(A=M_2(k)\)">\(A=M_2(k)\)</span>. Classify natural transformations from the identity functor on left <span class="math" data-tex="\(A\)">\(A\)</span>-modules to its direct sum with itself. Explain why a pair of arbitrary left <span class="math" data-tex="\(A\)">\(A\)</span>-linear maps <span class="math" data-tex="\(A\to A\)">\(A\to A\)</span> does not necessarily extend to such a transformation.</p>
+<p><strong>Solution.</strong> Theorem 4.1 identifies these transformations with bimodule maps <span class="math" data-tex="\(A\to A\oplus A\)">\(A\to A\oplus A\)</span>. A left-linear component sends <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(ac\)">\(ac\)</span>, where <span class="math" data-tex="\(c\)">\(c\)</span> is its value at one. Right-linearity additionally gives <span class="math" data-tex="\(bc=cb\)">\(bc=cb\)</span> for every <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span>. Thus the two components are multiplication by two elements of the center. If <span class="math" data-tex="\(c=\begin{pmatrix}a&amp;b\\c&#x27;&amp;d\end{pmatrix}\)">\(c=\begin{pmatrix}a&amp;b\\c&#x27;&amp;d\end{pmatrix}\)</span>, commuting with the diagonal matrix unit <span class="math" data-tex="\(E_{11}\)">\(E_{11}\)</span> gives <span class="math" data-tex="\(b=c&#x27;=0\)">\(b=c&#x27;=0\)</span>; commuting with <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> then gives <span class="math" data-tex="\(a=d\)">\(a=d\)</span>. The center is exactly <span class="math" data-tex="\(kI\)">\(kI\)</span>. The transformations are therefore
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+m\longmapsto(\lambda m,\mu m),\qquad \lambda,\mu\in k.
+\]">\[
+m\longmapsto(\lambda m,\mu m),\qquad \lambda,\mu\in k.
+\]</span>
+Conversely these maps are linear and natural on every module. For a specific failure, right multiplication by <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> is left-linear on <span class="math" data-tex="\(A\)">\(A\)</span>, but is not right-linear: at <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, right-linearity with <span class="math" data-tex="\(b=E_{21}\)">\(b=E_{21}\)</span> would require <span class="math" data-tex="\(E_{21}E_{12}=E_{12}E_{21}\)">\(E_{21}E_{12}=E_{12}E_{21}\)</span>, whereas these are <span class="math" data-tex="\(E_{22}\)">\(E_{22}\)</span> and <span class="math" data-tex="\(E_{11}\)">\(E_{11}\)</span>. It cannot be the component of a natural transformation on all left modules. This calculation records the extra action that evaluation at the regular object must preserve.</p>
+<h2 id="9-further-reading">9. Further reading</h2>
+<ul>
+<li>Andrea D'Agnolo and Pietro Polesello, <a href="https://arxiv.org/abs/math/0307387"><em>Stacks of twisted modules and integral transforms</em></a>, open preprint, Proposition 2.1 and Lemma 2.2, for the module-stack reconstruction theorem and the role of extension from an open subset.</li>
+<li><a href="local-module-categories-and-morita-equivalence.html">Local module categories and Morita equivalence</a>, especially Section 4, for the generator presentations, extension functors and equivalence case on a ringed site.</li>
+<li><a href="tensor-and-hom-for-twisted-module-stacks.html">Tensor and Hom for twisted module stacks</a>, Section 1, for slice internal Hom and its restriction conventions.</li>
+<li><a href="tensor-duality-and-coherent-inverses.html">Tensor duality and coherent inverses</a>, Section 4, for coherent adjoint-equivalence choices.</li>
+</ul>
+</main></body></html>

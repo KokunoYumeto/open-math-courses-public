@@ -2,7 +2,7 @@
 
 **Lesson HA-LCA-09.** Self-checked by the writing AI.
 
-Let \(G\) be a locally compact Hausdorff abelian group. There is no countability assumption. Put \(\Gamma=\widehat G\) and \(D=\widehat\Gamma\), both with their compact-open topologies. Characters take values in \(\mathbb T\). We use additive notation in \(G\) and multiplicative notation for characters. Haar measure \(dx\) has the complete locally determined domain constructed in the earlier Haar reading. Its dual measure is \(d\xi\), as constructed in HA-LCA-07, Theorem 2.1. Our conventions are
+Let \(G\) be a locally compact Hausdorff abelian group. There is no countability assumption. Put \(\Gamma=\widehat G\) and \(D=\widehat\Gamma\), both with their compact-open topologies. Characters take values in \(\mathbb T\). We use additive notation in \(G\) and multiplicative notation for characters. Haar measure \(dx\) has the complete locally determined domain constructed in the earlier Haar reading. Its dual measure is \(d\xi\), as constructed in [HA-LCA-07, Theorem 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-theorem-2-1). Our conventions are
 \[
  \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx,
  \qquad T\mu(x)=\int_\Gamma\gamma(x)\,d\mu(\gamma),
@@ -17,10 +17,10 @@ Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public doma
 
 We will use these earlier results:
 
-- HA-LCA-02, Proposition 1.4 proves joint continuity of the character pairing; Theorem 5.2 proves that the dual is LCA. HA-LCA-05, Corollary 4.2 proves that characters separate points and that \(J_G\) is continuous and injective.
-- HA-LCA-04, Proposition 2.2 proves positivity and continuity of \(u*\widetilde u\), where \(\widetilde u(x)=\overline{u(-x)}\). HA-LCA-06, Theorem 2.1 proves Bochner's representation; its Proposition 1.1 proves injectivity of \(T\) on finite Radon measures on the dual.
-- HA-LCA-07, Theorem 2.1 proves pointwise inversion for \(B^1(G)=B(G)\cap L^1(G)\), where HA-LCA-06, Proposition 4.1 identifies \(B(G)\) with transforms \(T\mu\) of finite complex Radon measures. HA-LCA-08, Theorem 1.1 proves Plancherel; its Corollary 3.2 gives a nonzero Fourier-algebra function supported inside any nonempty open subset of a dual group.
-- The Radon reading, Lemma 1.3 gives compactly supported continuous cutoffs, and its Corollary 4.5 gives compact tails for finite Radon measures. The general Haar reading, Theorems 3.1 and 3.3 supplies full support and uniqueness up to scale, and its Theorem 4.1 gives Haar-preserving inversion in an abelian group.
+- [HA-LCA-02, Proposition 1.4](HA-LCA-02.md#ha-lca-02-proposition-1-4) proves joint continuity of the character pairing; [Theorem 5.2](HA-LCA-02.md#ha-lca-02-theorem-5-2) proves that the dual is LCA. [HA-LCA-05, Corollary 4.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/raikovs-theorem-and-the-gelfand-raikov-theorem.html#ha-lca-05-corollary-4-2) proves that characters separate points and that \(J_G\) is continuous and injective.
+- [HA-LCA-04, Proposition 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/functions-of-positive-type.html#ha-lca-04-proposition-2-2) proves positivity and continuity of \(u*\widetilde u\), where \(\widetilde u(x)=\overline{u(-x)}\). [HA-LCA-06, Theorem 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/bochners-theorem.html#ha-lca-06-theorem-2-1) proves Bochner's representation; its [Proposition 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/bochners-theorem.html#ha-lca-06-proposition-1-1) proves injectivity of \(T\) on finite Radon measures on the dual.
+- [HA-LCA-07, Theorem 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-theorem-2-1) proves pointwise inversion for \(B^1(G)=B(G)\cap L^1(G)\), where [HA-LCA-06, Proposition 4.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/bochners-theorem.html#ha-lca-06-proposition-4-1) identifies \(B(G)\) with transforms \(T\mu\) of finite complex Radon measures. [HA-LCA-08, Theorem 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-plancherel-theorem.html#ha-lca-08-theorem-1-1) proves Plancherel; its [Corollary 3.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-plancherel-theorem.html#ha-lca-08-corollary-3-2) gives a nonzero Fourier-algebra function supported inside any nonempty open subset of a dual group.
+- [The Radon reading, Lemma 1.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-3) gives compactly supported continuous cutoffs, and its [Corollary 4.5](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-corollary-4-5) gives compact tails for finite Radon measures. [The general Haar reading, Theorems 3.1 and 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-3-1) supplies full support and uniqueness up to scale, and its [Theorem 4.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-4-1) gives Haar-preserving inversion in an abelian group.
 
 ## 1. Evaluation and its topology
 
@@ -82,7 +82,7 @@ is an isomorphism of topological groups.
    =T(g\,d\xi)(-x).
  \tag{5}
 \]
-The measure \(g\,d\xi\) is finite Radon by HA-LCA-03, Lemma 4.1. The injectivity of \(T\) in HA-LCA-06, Proposition 1.1, is a theorem about measures on \(\Gamma=\widehat G\) and does not presuppose bidual surjectivity. It gives \(g\,d\xi=0\), hence \(g=0\) almost everywhere by the same density lemma. This contradicts \(v\ne0\). Therefore \(H=D\), and Lemma 1.3 proves the topological assertion. \(\square\)
+The measure \(g\,d\xi\) is finite Radon by [HA-LCA-03, Lemma 4.1](HA-LCA-03.md#ha-lca-03-lemma-4-1). The injectivity of \(T\) in HA-LCA-06, Proposition 1.1, is a theorem about measures on \(\Gamma=\widehat G\) and does not presuppose bidual surjectivity. It gives \(g\,d\xi=0\), hence \(g=0\) almost everywhere by the same density lemma. This contradicts \(v\ne0\). Therefore \(H=D\), and Lemma 1.3 proves the topological assertion. \(\square\)
 
 <a id="ha-lca-09-lemma-2-2"></a>
 **Lemma 2.2 — Bounded evaluation polynomials.** Let \(K\subseteq\Gamma\) be compact, let \(q\in C(K)\) satisfy \(\|q\|_K\le1\), and let \(\varepsilon>0\). There is a finite sum
@@ -94,7 +94,7 @@ The measure \(g\,d\xi\) is finite Radon by HA-LCA-03, Lemma 4.1. The injectivity
  \tag{6}
 \]
 
-**Proof.** For \(K=\varnothing\), take \(p=0\). Otherwise the finite evaluation sums form a unital self-adjoint algebra: products add the \(x_j\), conjugation replaces \(x_j\) by \(-x_j\), and \(x=0\) gives the constant one. They separate distinct characters by the definition of distinct functions on \(G\). The uniform approximation reading, Corollary 2.2, therefore gives such a sum \(p_0\) with \(\|p_0-q\|_K<a\), for a chosen \(a>0\).
+**Proof.** For \(K=\varnothing\), take \(p=0\). Otherwise the finite evaluation sums form a unital self-adjoint algebra: products add the \(x_j\), conjugation replaces \(x_j\) by \(-x_j\), and \(x=0\) gives the constant one. They separate distinct characters by the definition of distinct functions on \(G\). The [uniform approximation reading, Corollary 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/uniform-approximation.html#ha-lca-pre-approx-corollary-2-2), therefore gives such a sum \(p_0\) with \(\|p_0-q\|_K<a\), for a chosen \(a>0\).
 
 Put \(M=\sum_j|c_j|\), so \(|p_0|\le M\) globally. If \(M=0\), the choice \(p=0\) already has error less than \(a\). Assume \(M>0\). Define the continuous function
 \[
@@ -106,7 +106,7 @@ The function \(r(z)=z c(|z|^2)\) has modulus at most one. For \(|w|\le1\),
  |r(z)-w|\le |r(z)-z|+|z-w|
        =\max(0,|z|-1)+|z-w|\le2|z-w|.
 \]
-By the same reading, Lemma 1.1, choose a real polynomial \(R\) with \(|R(t)-c(t)|<b\) on \([0,M^2]\). The evaluation sum
+By [the same reading, Lemma 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/uniform-approximation.html#ha-lca-pre-approx-lemma-1-1), choose a real polynomial \(R\) with \(|R(t)-c(t)|<b\) on \([0,M^2]\). The evaluation sum
 \(p_1=p_0R(p_0\overline{p_0})\) satisfies
 \(\|p_1-r(p_0)\|_\Gamma\le Mb\), hence \(\|p_1\|_\Gamma\le1+Mb\). Set \(p=p_1/(1+Mb)\). Then \(\|p\|_\Gamma\le1\) and \(\|p-p_1\|_\Gamma\le Mb\), so
 \[
@@ -146,7 +146,7 @@ Apply \(B^1\) inversion on \(\Gamma\) at its identity character \(1\):
 \]
 The left side is \(\int_G f\). There exists such an \(f\) with nonzero integral: choose a nonzero nonnegative \(u\in C_c(G)\) and take \(f=u*\widetilde u\). It is in \(C_c(G)\cap P(G)\subset B^1(G)\), and the convolution integral formula gives \(\int f=(\int u)^2>0\). The convolution formula and Fubini here are those already proved in the general Haar reading, Theorem 6.1, by reduction to an open sigma-compact subgroup. It follows that \(c=1\), proving (7).
 
-For \(f\in C_c(G)\cap P(G)\), both \(f\) and \(\widehat f\) are in the appropriate \(L^1\cap L^2\): \(f\) is bounded with compact support, \(\widehat f\in L^1\) by inversion and \(\widehat f\in L^2\) by Plancherel. Thus (9) agrees with both Plancherel transforms. The linear span of these \(f\)'s is dense in \(L^2(G)\) by HA-LCA-05, Proposition 3.1. Both transforms are unitary, as is reflection by Haar-preserving inversion. Taking \(L^2\) limits proves (8). \(\square\)
+For \(f\in C_c(G)\cap P(G)\), both \(f\) and \(\widehat f\) are in the appropriate \(L^1\cap L^2\): \(f\) is bounded with compact support, \(\widehat f\in L^1\) by inversion and \(\widehat f\in L^2\) by Plancherel. Thus (9) agrees with both Plancherel transforms. The linear span of these \(f\)'s is dense in \(L^2(G)\) by [HA-LCA-05, Proposition 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/raikovs-theorem-and-the-gelfand-raikov-theorem.html#ha-lca-05-proposition-3-1). Both transforms are unitary, as is reflection by Haar-preserving inversion. Taking \(L^2\) limits proves (8). \(\square\)
 
 ## 4. General inversion and uniqueness
 
@@ -177,7 +177,7 @@ Now let \(q=\widehat f\). Formula (11) with \(\mu=f\,dx\) shows that \(q\in B(\G
  q(\gamma)=\int_D v(\chi)\chi(\gamma)\,d\nu(\chi).
  \tag{12}
 \]
-The general \(L^1\) transform theorem HA-LCA-03, Corollary 2.2 also gives \(v\in C_0(D)\). Define \(u(x)=v(J_G(-x))\). This is exactly (10), and (7) implies \(u\in L^1(G)\cap C_0(G)\). In (12) substitute \(\chi=J_Gx\), then replace \(x\) by \(-x\). Haar inversion gives
+The general \(L^1\) transform theorem [HA-LCA-03, Corollary 2.2](HA-LCA-03.md#ha-lca-03-corollary-2-2) also gives \(v\in C_0(D)\). Define \(u(x)=v(J_G(-x))\). This is exactly (10), and (7) implies \(u\in L^1(G)\cap C_0(G)\). In (12) substitute \(\chi=J_Gx\), then replace \(x\) by \(-x\). Haar inversion gives
 \[
  q(\gamma)=\int_Gu(-x)\gamma(x)\,dx
            =\int_Gu(x)\overline{\gamma(x)}\,dx=\widehat u(\gamma).
@@ -189,9 +189,9 @@ Therefore \((f-u)\,dx\) has zero Fourier transform. The uniqueness just proved g
 
 **Proof.** Theorem 4.1 proved finite-measure uniqueness in (11), without an integrability assumption on \(\widehat\mu\). Its application to \(f\,dx\) proves \(L^1\) uniqueness.
 
-For completeness, semisimplicity means that the Jacobson radical is zero. For a commutative unital Banach algebra its radical is the intersection of its maximal ideals. The Banach reading, Theorem 3.3, proves that these ideals are exactly character kernels. For a possibly nonunital algebra \(A\), take the intersection with \(A\) of the radical of its unitization. Theorem 3.4 of that reading shows that characters of the unitization either extend a character of \(A\) or vanish on \(A\). Thus in either case the radical equals the intersection of character kernels on \(A\).
+For completeness, semisimplicity means that the Jacobson radical is zero. For a commutative unital Banach algebra its radical is the intersection of its maximal ideals. The [Banach reading, Theorem 3.3](HA-LCA-PRE-BANACH.md#ha-lca-pre-banach-theorem-3-3), proves that these ideals are exactly character kernels. For a possibly nonunital algebra \(A\), take the intersection with \(A\) of the radical of its unitization. [Theorem 3.4 of that reading](HA-LCA-PRE-BANACH.md#ha-lca-pre-banach-theorem-3-4) shows that characters of the unitization either extend a character of \(A\) or vanish on \(A\). Thus in either case the radical equals the intersection of character kernels on \(A\).
 
-The maps \(f\mapsto\widehat f(\gamma)\) are characters on \(L^1(G)\), by HA-LCA-03, Lemma 1.2. They separate its elements by uniqueness. For \(M(G)\), the maps \(\mu\mapsto\widehat\mu(\gamma)\) are linear and multiplicative, since the character identity and the finite Radon product formula give
+The maps \(f\mapsto\widehat f(\gamma)\) are characters on \(L^1(G)\), by [HA-LCA-03, Lemma 1.2](HA-LCA-03.md#ha-lca-03-lemma-1-2). They separate its elements by uniqueness. For \(M(G)\), the maps \(\mu\mapsto\widehat\mu(\gamma)\) are linear and multiplicative, since the character identity and the finite Radon product formula give
 \[
  \widehat{\mu*\eta}(\gamma)
  =\int_{G\times G}\overline{\gamma(x+y)}\,d(\mu\otimes\eta)(x,y)
@@ -219,7 +219,7 @@ The product and its full-Borel integration were proved in [the product reading, 
  \tag{14}
 \]
 
-**Proof.** The forward implications are HA-LCA-02, Theorem 2.1. If \(\widehat G\) is discrete, that theorem makes \(D\) compact; if \(\widehat G\) is compact, it makes \(D\) discrete. Theorem 2.1 identifies \(G\) homeomorphically with \(D\), proving both converses. \(\square\)
+**Proof.** The forward implications are [HA-LCA-02, Theorem 2.1](HA-LCA-02.md#ha-lca-02-theorem-2-1). If \(\widehat G\) is discrete, that theorem makes \(D\) compact; if \(\widehat G\) is compact, it makes \(D\) discrete. Theorem 2.1 identifies \(G\) homeomorphically with \(D\), proving both converses. \(\square\)
 
 ## 5. Maps, naturality and examples
 
@@ -265,9 +265,9 @@ Hence \(\widehat p=q\). If two maps have the same dual, all characters of \(H\) 
 <a id="ha-lca-09-example-5-2"></a>
 **Example 5.2 — The familiar double duals.** With characters \(x\mapsto e^{2\pi itx}\) on \(\mathbb R\), evaluation identifies the double dual with the original real coordinate. Evaluation likewise gives the usual double-dual identifications of \(\mathbb Z\), \(\mathbb T\) and finite abelian groups.
 
-**Proof.** HA-LCA-02, Theorem 3.1 and Corollary 3.2 prove the topological identifications \(\widehat{\mathbb R}=\mathbb R\), \(\widehat{\mathbb Z}=\mathbb T\), and \(\widehat{\mathbb T}=\mathbb Z\). Under the first, \(J_{\mathbb R}(x)\) is the character \(t\mapsto e^{2\pi itx}\), whose parameter is \(x\). On \(\mathbb Z\), the character with parameter \(z\in\mathbb T\) sends \(n\) to \(z^n\); hence \(J_{\mathbb Z}(n)\) is precisely \(z\mapsto z^n\), with integer parameter \(n\). Similarly \(J_{\mathbb T}(z)\) sends \(n\) to \(z^n\), recovering \(z\).
+**Proof.** [HA-LCA-02, Theorem 3.1 and Corollary 3.2](HA-LCA-02.md#ha-lca-02-theorem-3-1) prove the topological identifications \(\widehat{\mathbb R}=\mathbb R\), \(\widehat{\mathbb Z}=\mathbb T\), and \(\widehat{\mathbb T}=\mathbb Z\). Under the first, \(J_{\mathbb R}(x)\) is the character \(t\mapsto e^{2\pi itx}\), whose parameter is \(x\). On \(\mathbb Z\), the character with parameter \(z\in\mathbb T\) sends \(n\) to \(z^n\); hence \(J_{\mathbb Z}(n)\) is precisely \(z\mapsto z^n\), with integer parameter \(n\). Similarly \(J_{\mathbb T}(z)\) sends \(n\) to \(z^n\), recovering \(z\).
 
-For finite abelian \(F\), HA-LCA-01, Theorem 1.3 already proves the evaluation bijection. Both groups are discrete, so it is a homeomorphism. On a cyclic factor \(\mathbb Z/N\mathbb Z\), the formula is \(J(a)(k)=e^{2\pi iak/N}\); products give the same coordinatewise formula for every finite abelian group. Theorem 2.1 extends these calculations to all LCA groups. \(\square\)
+For finite abelian \(F\), [HA-LCA-01, Theorem 1.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-theorem-1-3) already proves the evaluation bijection. Both groups are discrete, so it is a homeomorphism. On a cyclic factor \(\mathbb Z/N\mathbb Z\), the formula is \(J(a)(k)=e^{2\pi iak/N}\); products give the same coordinatewise formula for every finite abelian group. Theorem 2.1 extends these calculations to all LCA groups. \(\square\)
 
 <a id="ha-lca-09-example-5-3"></a>
 **Example 5.3 — The dual of the integer inclusion.** For \(i:\mathbb Z\hookrightarrow\mathbb R\), the dual map, in the preceding coordinates, is
@@ -277,7 +277,7 @@ For finite abelian \(F\), HA-LCA-01, Theorem 1.3 already proves the evaluation b
 \]
 It is an open surjection with kernel \(\mathbb Z\).
 
-**Proof.** Restricting \(x\mapsto e^{2\pi itx}\) to the integers gives \(n\mapsto(e^{2\pi it})^n\), so (17) follows. Surjectivity and the stated kernel are proved in HA-LCA-02, Lemma 1.3. To check openness directly, fix an open \(U\subseteq\mathbb R\) and \(t\in U\). Choose \(0<a<1/2\) with \([t-a,t+a]\subseteq U\). The image of the compact interval \([t+a,t+1-a]\) is closed in \(\mathbb T\) and does not contain \(e^{2\pi it}\), by the kernel calculation. Its complement is an open neighbourhood of that point. Every circle point has a representative in \([t-a,t+1-a]\), so this complement is contained in the image of \((t-a,t+a)\), hence in the image of \(U\). This proves openness. \(\square\)
+**Proof.** Restricting \(x\mapsto e^{2\pi itx}\) to the integers gives \(n\mapsto(e^{2\pi it})^n\), so (17) follows. Surjectivity and the stated kernel are proved in [HA-LCA-02, Lemma 1.3](HA-LCA-02.md#ha-lca-02-lemma-1-3). To check openness directly, fix an open \(U\subseteq\mathbb R\) and \(t\in U\). Choose \(0<a<1/2\) with \([t-a,t+a]\subseteq U\). The image of the compact interval \([t+a,t+1-a]\) is closed in \(\mathbb T\) and does not contain \(e^{2\pi it}\), by the kernel calculation. Its complement is an open neighbourhood of that point. Every circle point has a representative in \([t-a,t+1-a]\), so this complement is contained in the image of \((t-a,t+a)\), hence in the image of \(U\). This proves openness. \(\square\)
 
 <a id="ha-lca-09-example-5-4"></a>
 **Example 5.4 — The dual of the discrete rational group.** Give \(\mathbb Q\) the discrete topology. Its dual is the compact group
@@ -296,7 +296,7 @@ called the universal solenoid. The identification is
 \]
 Every rational has this form. If \(m\ge n\), compatibility gives \(z_n=z_m^{m!/n!}\), so the value in (19) agrees with the denominator \(m!\). Two representations have a common factorial denominator and therefore give the same value. Addition after passage to such a denominator proves the character identity. Continuity is automatic on \(\mathbb Q_d\).
 
-Compact subsets of a discrete space are finite: the singleton cover of a compact set has a finite subcover. Thus the compact-open topology on \(\widehat{\mathbb Q_d}\) is the topology of finitely many evaluations. Each coordinate in (18) is an evaluation, and the evaluation at any rational is a power of one coordinate by (19). Consequently the bijection and its inverse are continuous. The dual of a discrete group is compact by HA-LCA-02, Theorem 2.1; equivalently, using the arbitrary product theorem of the Banach reading, Lemma 4.1, (18) is a closed subgroup of the compact product \(\mathbb T^{\mathbb N}\), since its defining equations are closed. Finally Theorem 2.1 and Proposition 5.1 identify its dual with \(\mathbb Q_d\). Connectedness will follow from the fully proved criterion in Exercise 6.5. \(\square\)
+Compact subsets of a discrete space are finite: the singleton cover of a compact set has a finite subcover. Thus the compact-open topology on \(\widehat{\mathbb Q_d}\) is the topology of finitely many evaluations. Each coordinate in (18) is an evaluation, and the evaluation at any rational is a power of one coordinate by (19). Consequently the bijection and its inverse are continuous. The dual of a discrete group is compact by HA-LCA-02, Theorem 2.1; equivalently, using the arbitrary product theorem of [the Banach reading, Lemma 4.1](HA-LCA-PRE-BANACH.md#ha-lca-pre-banach-lemma-4-1), (18) is a closed subgroup of the compact product \(\mathbb T^{\mathbb N}\), since its defining equations are closed. Finally Theorem 2.1 and Proposition 5.1 identify its dual with \(\mathbb Q_d\). Connectedness will follow from the fully proved criterion in Exercise 6.5. \(\square\)
 
 ## 6. Quotients and exercises
 
@@ -321,7 +321,7 @@ Choose a compact identity neighbourhood \(C\subseteq H\). Its image \(q(C)\) is 
                  =\gamma(x)\gamma(y)
                  =(J_G(x)J_G(y))(\gamma).
 \]
-Thus \(J_G(x+y)=J_G(x)J_G(y)\). If \(J_G(x)=J_G(y)\), every character takes value one at \(x-y\). HA-LCA-05, Corollary 4.2, proved from Gelfand–Raikov, supplies a character with value different from one at every nonzero element. Therefore \(x-y=0\). Injectivity uses that theorem; it is not a formal consequence of the definition of the dual. \(\square\)
+Thus \(J_G(x+y)=J_G(x)J_G(y)\). If \(J_G(x)=J_G(y)\), every character takes value one at \(x-y\). [HA-LCA-05, Corollary 4.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/raikovs-theorem-and-the-gelfand-raikov-theorem.html#ha-lca-05-corollary-4-2), proved from Gelfand–Raikov, supplies a character with value different from one at every nonzero element. Therefore \(x-y=0\). Injectivity uses that theorem; it is not a formal consequence of the definition of the dual. \(\square\)
 
 <a id="ha-lca-09-exercise-6-2"></a>
 **Exercise 6.2 — A net proof of subgroup closedness.** Prove Lemma 1.2 by considering a net in \(H\) that converges in \(P\).
@@ -360,7 +360,7 @@ For each \(k\in G\), evaluation \(\gamma\mapsto\gamma(k)\) is continuous in the 
 
 **Solution.** We first supply the compact-space fact used in the group argument. A space is connected if it cannot be written as the union of two disjoint nonempty relatively open sets. A set is clopen if it is both open and closed. For a compact Hausdorff space \(X\) and \(x\in X\), let \(Q_x\) be the intersection of all clopen neighbourhoods of \(x\). It is closed and compact and contains \(x\).
 
-We claim that \(Q_x\) is connected. Otherwise write it as the disjoint union of two nonempty relatively clopen sets \(A,B\), with \(x\in A\). Both are compact, hence closed in \(X\). The compact Hausdorff separation theorem proved in the Radon reading, Lemma 1.1 gives disjoint open \(U,V\subseteq X\) with \(A\subseteq U\), \(B\subseteq V\). The compact set \(F=X\setminus(U\cup V)\) is disjoint from \(Q_x\). For each \(y\in F\), some clopen neighbourhood \(C_y\) of \(x\) excludes \(y\), by the definition of \(Q_x\). The sets \(X\setminus C_y\) cover \(F\). A finite subcover gives a finite intersection \(C\) of the corresponding \(C_y\)'s with
+We claim that \(Q_x\) is connected. Otherwise write it as the disjoint union of two nonempty relatively clopen sets \(A,B\), with \(x\in A\). Both are compact, hence closed in \(X\). The compact Hausdorff separation theorem proved in [the Radon reading, Lemma 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-1) gives disjoint open \(U,V\subseteq X\) with \(A\subseteq U\), \(B\subseteq V\). The compact set \(F=X\setminus(U\cup V)\) is disjoint from \(Q_x\). For each \(y\in F\), some clopen neighbourhood \(C_y\) of \(x\) excludes \(y\), by the definition of \(Q_x\). The sets \(X\setminus C_y\) cover \(F\). A finite subcover gives a finite intersection \(C\) of the corresponding \(C_y\)'s with
 \[
  Q_x\subseteq C\subseteq U\cup V.
 \]
@@ -368,7 +368,7 @@ If \(F=\varnothing\), take \(C=X\). The set \(C\cap U\) is open, and its complem
 
 Every connected subset of \(X\) containing \(x\) lies in each clopen neighbourhood of \(x\): otherwise that neighbourhood and its complement would separate the subset. Thus every such connected subset lies in \(Q_x\). As \(Q_x\) is itself connected, it is exactly the connected component of \(x\).
 
-Now let \(X=G\) be a compact group and let \(U\) be a clopen identity neighbourhood. The function \(1_U\) is continuous with compact support. Uniform translation continuity, proved in the general Haar reading, Lemma 1.1, gives an identity neighbourhood \(V\) on which
+Now let \(X=G\) be a compact group and let \(U\) be a clopen identity neighbourhood. The function \(1_U\) is continuous with compact support. Uniform translation continuity, proved in [the general Haar reading, Lemma 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-1-1), gives an identity neighbourhood \(V\) on which
 \[
  \|L_v1_U-1_U\|_\infty<1.
 \]
@@ -382,9 +382,9 @@ Every open subgroup is closed, because its other cosets are open. It has finite 
 \]
 This also proves, without any separate assumption about components, that \(G_0\) is a closed subgroup.
 
-Suppose \(G\) is connected and \(\gamma^N=1\) for a character \(\gamma\) and integer \(N\ge1\). Its image lies among the finitely many \(N\)-th roots of unity, whose description was proved in HA-LCA-02, Lemma 1.3. A finite subset of a Hausdorff space is discrete in its relative topology: intersect finitely many separating neighbourhoods to isolate each point. A continuous image of a connected space is connected, since a separation of the image would pull back to a separation of the space. Thus \(\gamma(G)\), being both connected and finite discrete, is a singleton. It contains one, so \(\gamma=1\). The dual is torsion-free.
+Suppose \(G\) is connected and \(\gamma^N=1\) for a character \(\gamma\) and integer \(N\ge1\). Its image lies among the finitely many \(N\)-th roots of unity, whose description was proved in [HA-LCA-02, Lemma 1.3](HA-LCA-02.md#ha-lca-02-lemma-1-3). A finite subset of a Hausdorff space is discrete in its relative topology: intersect finitely many separating neighbourhoods to isolate each point. A continuous image of a connected space is connected, since a separation of the image would pull back to a separation of the space. Thus \(\gamma(G)\), being both connected and finite discrete, is a singleton. It contains one, so \(\gamma=1\). The dual is torsion-free.
 
-Conversely suppose \(G\) is disconnected. Then \(G_0\ne G\). Formula (21) gives a proper open subgroup \(H\). Since \(G\) is abelian, Lemma 6.0 gives the quotient group \(G/H\); it is finite by the preceding compact-cover argument and discrete because \(H\) is open. By HA-LCA-01, Theorem 1.1, its characters separate points. Choose a nontrivial character \(\zeta\). If \(m=|G/H|\), every quotient element has order dividing \(m\), by the coset-counting proof in HA-LCA-01, Lemma 0.0. Hence \(\zeta^m=1\). Its pullback to \(G\) is a nontrivial finite-order continuous character, so the dual is not torsion-free. This proves the equivalence.
+Conversely suppose \(G\) is disconnected. Then \(G_0\ne G\). Formula (21) gives a proper open subgroup \(H\). Since \(G\) is abelian, Lemma 6.0 gives the quotient group \(G/H\); it is finite by the preceding compact-cover argument and discrete because \(H\) is open. By [HA-LCA-01, Theorem 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-theorem-1-1), its characters separate points. Choose a nontrivial character \(\zeta\). If \(m=|G/H|\), every quotient element has order dividing \(m\), by the coset-counting proof in [HA-LCA-01, Lemma 0.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-lemma-0-0). Hence \(\zeta^m=1\). Its pullback to \(G\) is a nontrivial finite-order continuous character, so the dual is not torsion-free. This proves the equivalence.
 
 Finally Example 5.4 gives \(\widehat\Sigma\cong\mathbb Q_d\), and the additive rational group is torsion-free: \(nq=0\), for nonzero integer \(n\), forces \(q=0\). The compact group \(\Sigma\) is therefore connected. \(\square\)
 

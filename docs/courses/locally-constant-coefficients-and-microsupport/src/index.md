@@ -2,9 +2,9 @@
 
 A proof that a nonzero locally constant complex over a field preserves microsupport under tensor product and internal Hom, with arbitrary bounded target and infinite-dimensional coefficients. Two exercises with full solutions explain the role of connectedness and show why a perfect integral coefficient can still erase microsupport.
 
-Read the theorem, proof and solutions online
+[Read the theorem, proof and solutions online](../locally-constant-coefficients-and-microsupport.html)
 
-Native MathML reader · Editable source · Reuse terms · Provenance
+[Native MathML reader](../locally-constant-coefficients-and-microsupport.html) · [Editable source](../src/locally-constant-coefficients-and-microsupport.md) · [Reuse terms](../LICENSE.txt) · Provenance
 
 Andreas Hohl and Pierre Schapira receive credit for the modern result; Kashiwara and Schapira receive credit for the precise limiting-sum estimates in Microlocal study of sheaves, Astérisque 128 (1985). Their source text is not imported. Original AI writing and reader code are CC0.
 

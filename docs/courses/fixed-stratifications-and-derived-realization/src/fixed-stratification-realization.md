@@ -209,7 +209,7 @@ D^+(\operatorname{Cons}_R(\mathbb P^1,\{\mathbb C^*,0,\infty\}))
 \tag{35}
 \]
 
-for every unital \(R\), with arbitrary stalk modules. It also proves the bounded restriction of (35). A different stratification of this same space fails, as shown in the missing-derived-classes lesson. The distinction is in the actual boundary map of fundamental groups.
+for every unital \(R\), with arbitrary stalk modules. It also proves the bounded restriction of (35). A different stratification of this same space fails, as shown in [the missing-derived-classes lesson](projective-line-boundary-and-missing-classes.md). The distinction is in the actual boundary map of fundamental groups.
 
 The general normal toric-variety result uses the same argument on each affine orbit star: a normal cone chart contracts to its closed orbit, and the orbit-link inclusion induces an injection on fundamental groups. These geometric cone charts are a separate toric-geometry input. Equation (35) supplies a complete explicit example without requiring that general input. Finite-stalk realization requires an additional finite-type argument; (35) by itself concerns the unrestricted constructible heart.
 

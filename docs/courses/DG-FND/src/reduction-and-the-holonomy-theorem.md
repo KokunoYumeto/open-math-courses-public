@@ -33,7 +33,21 @@ This exact earlier proof therefore supplies each bundle and restriction assertio
 
 We supply the connectedness assertion explicitly. For any \(q=T_cu\in Q\), lift \(c\) in the restricted principal \(H\)-bundle starting at \(u\). Conn C.1–C.2 and the piecewise-\(C^1\) extension Curv C.2 give a continuous, piecewise \(C^1\) path in \(Q\) defined on the whole parameter interval. By uniqueness its image in \(P\) is the original horizontal lift, so its endpoint is \(q\). Thus every point is connected to \(u\) by a path in the intrinsic topology of \(Q\). This proves path connectedness and hence connectedness.
 
-Finally, \(j^*\omega\) vanishes on precisely the original horizontal vectors that are tangent to \(Q\). Its kernel has dimension \(\dim M\) and projects isomorphically to \(TM\), by the connection decomposition in Conn A.1. The ambient horizontal space also has dimension \(\dim M\); its horizontal lift through \(Q\) was just shown to stay in \(Q\). The two horizontal spaces therefore coincide. \(\square\)
+Finally, \(j^*\omega\) vanishes on precisely the original horizontal vectors that are tangent to \(Q\). Its kernel has dimension \(\dim M\) and projects isomorphically to \(TM\), by the connection decomposition in Conn A.1. The ambient horizontal space also has dimension \(\dim M\); its horizontal lift through \(Q\) was just shown to stay in \(Q\). The two horizontal spaces therefore coincide. 
+
+The restricted curvature is \(j^*\Omega\), by Curv A.7 applied to the
+inclusion and the Lie-algebra inclusion. It is \(\mathfrak h\)-valued;
+the equality of horizontal spaces gives this conclusion for every original
+horizontal pair at a point of \(Q\).
+
+If \(H\hookrightarrow G\) is a closed embedding, then \(Q\hookrightarrow P\)
+is a closed embedding as well. Indeed, each \(\sigma_i\) also trivializes
+the ambient \(G\)-bundle, and the inclusion in these charts is
+\(U_i\times H\hookrightarrow U_i\times G\). This identifies the intrinsic
+topology of \(Q\) with the subspace topology locally and gives embedded
+submanifold charts. The subset is closed over each \(U_i\); these open
+trivializations cover \(P\), so its complement is open in \(P\).
+For a nonclosed immersed \(H\) these conclusions are not asserted. \(\square\)
 
 For a smooth left \(G\)-manifold \(F\), use the associated-bundle relation
 \([pa,v]=[p,av]\) of PB B.1. Its transport along a path is defined by
@@ -52,7 +66,30 @@ v'(t)=-\zeta^F_{A(c'(t))}(v(t)),\qquad
 
 **Proof.** Replacing \((p,v)\) by \((pa,a^{-1}v)\) changes the proposed output to \([T_c(pa),a^{-1}v]=[T_cp\,a,a^{-1}v]=[T_cp,v]\), using the principal equivariance proved in Conn C.2. In associated charts PB B.1, the map on the fibre is the action of a fixed group element, hence smooth. Reversal supplies its inverse; concatenation and parameter dependence follow directly from those properties of \(T_c\).
 
-If the horizontal principal lift is \(s(c(t))g(t)\), then the associated coordinate is \(v(t)=g(t)v_0\). Conn C.1 gives \(g'=-dR_g A(c')\). Differentiating the identity \((\exp(rX)g)v_0=\exp(rX)(gv_0)\) at zero shows that the derivative of the action sends \(dR_gX\) to \(\zeta^F_X(gv_0)\). This proves (A.5). Local uniqueness for that smooth time-dependent equation is the coordinate ODE uniqueness in Local tools 2.1 and Curv C.2. Existence over the whole path already follows from (A.4), even when individual fundamental fields are being combined with variable coefficients. \(\square\)
+If the horizontal principal lift is \(s(c(t))g(t)\), then the associated coordinate is \(v(t)=g(t)v_0\). Conn C.1 gives \(g'=-dR_g A(c')\). Differentiating the identity \((\exp(rX)g)v_0=\exp(rX)(gv_0)\) at zero shows that the derivative of the action sends \(dR_gX\) to \(\zeta^F_X(gv_0)\). This proves (A.5). Local uniqueness for that smooth time-dependent equation is the coordinate ODE uniqueness in Local tools 2.1 and Curv C.2. Existence over the whole path already follows from (A.4), even when individual fundamental fields are being combined with variable coefficients. 
+
+This also gives the differential criterion for a section to be parallel.
+In an associated chart the horizontal space at \((y,v)\) is the graph
+\[
+ X\longmapsto-\zeta^F_{A_y(X)}(v).
+\]
+It is a smooth linear complement to the vertical tangent space. The graph
+is independent of the chart, because it is obtained by differentiating
+the well-defined transported curves (A.4). A smooth section with local
+coordinate \(f:U\to F\) is tangent to this distribution exactly when
+\[
+ df_y(X)=-\zeta^F_{A_y(X)}(f(y))
+ \qquad(X\in T_yM).
+\]
+If the section is preserved by transport, differentiation along coordinate
+curves proves this equality. Conversely the equality makes \(f(c(t))\)
+solve (A.5) on each piece of every path. Uniqueness and concatenation then
+give transport preservation over the whole path. For a linear
+representation \(\rho\), the fundamental field is
+\(\zeta_X(v)=\rho_*(X)v\), by its definition. The equation is precisely
+\(df+\rho_*(A)f=0\), hence \(\nabla f=0\) by Conn D.1–D.2.
+This applies in particular to every tensor representation of a vector
+bundle. \(\square\)
 
 **Theorem A.3 (parallel sections are holonomy-fixed points).** Evaluation in \(u\) gives a bijection
 \[
@@ -73,7 +110,26 @@ s(y)=[T_cu,v]
 \]
 All possible endpoints over \(y\) form the single \(H\)-orbit \(Q_y\), by (A.2). Replacing \(T_cu\) by \(T_cu\,h\) therefore changes its class to \([T_cu,hv]\), which is the same class. Thus (A.7) is independent of the path. In a radial chart (A.2) it equals \([\sigma_i(y),v]\), proving smoothness by PB B.1. Appending a path from \(y\) to \(z\) proves that its values are transported by (A.4). Its value at \(x\) is \([u,v]\), and any parallel section with that value must obey (A.7). This proves bijectivity.
 
-The distinction between \(H\) and \(H^0\) is substantive: a flat connection can have nontrivial full holonomy, by Curv D.4. On an associated fibre where that discrete holonomy acts nontrivially, a point may be fixed by the trivial group \(H^0\) but not by \(H\); (A.7) then depends on the chosen loop. \(\square\)
+The distinction between \(H\) and \(H^0\) is substantive: a flat connection can have nontrivial full holonomy, by Curv D.4. On an associated fibre where that discrete holonomy acts nontrivially, a point may be fixed by the trivial group \(H^0\) but not by \(H\); (A.7) then depends on the chosen loop. 
+
+For a closed embedded subgroup \(K\subset G\), PB D.1 constructs the smooth
+bundle \(P/K=P\times_G(G/K)\) and proves that its sections correspond to
+smooth \(K\)-reductions. Under that correspondence, a reduction \(B\) is
+preserved by the connection if and only if its coset section is parallel.
+If the connection restricts to \(B\), its horizontal lifts are also the
+ambient lifts by uniqueness, and (A.4) preserves the coset section.
+Conversely, if that section is parallel, the lift from any \(b\in B\)
+has at every time the prescribed coset, hence lies in \(B\).
+PB D.1 makes \(B\) an embedded submanifold. A smooth ambient curve with
+image in \(B\) is smooth in its submanifold charts, so all its horizontal
+tangents are tangent to \(B\). For \(Y\in T_bB\), subtract the ambient
+horizontal lift of \(d\pi(Y)\). The remainder is vertical and tangent to
+the \(K\)-fibre, so it is a fundamental vector for an element of
+\(\mathfrak k\). Conn A.1–A.2 show that the restricted form takes values
+in \(\mathfrak k\), reproduces those fundamental vectors and is
+\(K\)-equivariant. It is the required principal connection on \(B\).
+Together with (A.6), this proves that preserved reductions correspond
+exactly to the holonomy-fixed points of \(G/K\). \(\square\)
 
 **Exercise A.4 (parallel positive metrics and their reduction).** A connection on a real vector bundle preserves a positive-definite metric if and only if its full holonomy fixes a positive-definite inner product in one fibre. Such a metric determines an orthogonal reduction preserved by the connection.
 
@@ -135,7 +191,66 @@ In the chosen charts, if \(k(t)\) solves the principal \(K\)-transport equation,
 T^G_c[b,g]=[T^K_cb,g].
 \tag{B.3}
 \]
-For a loop at the base point, \(T^K_cb=bk\) becomes \([b,\varphi(k)g]\). Taking all loops, or only the nullhomotopic loops in the same base, proves the two holonomy image assertions. These are equalities of represented groups; no assertion about the image's subspace topology is needed. \(\square\)
+For a loop at the base point, \(T^K_cb=bk\) becomes \([b,\varphi(k)g]\). Taking all loops, or only the nullhomotopic loops in the same base, proves the two holonomy image assertions. These are equalities of represented groups; no assertion about the image's subspace topology is needed. 
+
+Pullback transport has the more explicit formula
+\[
+ T^{f^*P}_c(y,p)=\bigl(c(1),T^P_{f\circ c}p\bigr),
+ \qquad y=c(0).
+\]
+In pullback charts its group coordinate solves the original transport
+equation along \(f\circ c\), so uniqueness proves the formula.
+Consequently, after identifying initial frames, pullback full holonomy
+is contained in the original full holonomy. The same holds for restricted
+holonomy: composing a nullhomotopy with \(f\) is a nullhomotopy.
+If \(f\) is a diffeomorphism, every original path and homotopy pulls back
+by \(f^{-1}\), giving equality of both groups.
+The containment can be strict: pullback to a point has trivial holonomy,
+whereas the original connection in Curv D.4 has nontrivial full holonomy.
+
+For two principal bundles over the same base, their fibre product has
+local charts \(U\times G_1\times G_2\); its transitions are the pairs of
+the original transitions. These charts define its smooth principal
+\(G_1\times G_2\)-bundle structure. The connection and curvature are
+\[
+ \omega=(\operatorname{pr}_1^*\omega_1,
+          \operatorname{pr}_2^*\omega_2),\qquad
+ \Omega=(\operatorname{pr}_1^*\Omega_1,
+          \operatorname{pr}_2^*\Omega_2).
+\]
+Each component reproduces its vertical fundamental vector and is
+equivariant, so Conn A.2 proves the connection assertion. The bracket
+in a product group is componentwise: its left-invariant fields and
+their coordinate brackets are componentwise. The structure equation
+therefore gives the displayed curvature. The horizontal lift is the pair
+of lifts along the same path. Its holonomy group is thus a subgroup of
+the product of the two holonomy groups, surjecting onto each factor.
+The same assertion holds for restricted holonomy, since a nullhomotopic
+loop realizing an element in either factor is available in both bundles.
+For two copies of one connection with matching initial frames, the two
+coordinates agree for every loop, giving exactly the diagonal subgroup.
+In particular, product holonomy need not be the whole product.
+
+There is also a connection obtained by projection onto a reduction.
+Suppose \(B\hookrightarrow P\) is a smooth \(K\)-reduction and
+\(\mathfrak g=\mathfrak k\oplus\mathfrak m\), with \(\mathfrak m\)
+invariant under \(\operatorname{Ad}(K)\). Let
+\(\operatorname{pr}_{\mathfrak k}\) be projection along this complement.
+Both summands are invariant, so the projection commutes with
+\(\operatorname{Ad}(K)\). It is the identity on \(\mathfrak k\).
+It follows directly from equivariance and reproduction that
+\[
+ \beta=\operatorname{pr}_{\mathfrak k}(j^*\omega)
+\]
+is a principal \(K\)-connection on \(B\).
+Its included form equals \(j^*\omega\) exactly when the latter already
+takes values in \(\mathfrak k\). In that case its kernel consists of
+ambient horizontal vectors tangent to \(B\). Conn A.1 gives this kernel
+dimension \(\dim M\), equal to the ambient horizontal dimension, so the
+two spaces agree. Conversely equality of horizontal spaces, together
+with equality on vertical \(K\)-vectors, makes the two forms agree by
+the tangent decomposition. Thus projection preserves the original
+horizontal spaces exactly in the restriction case. \(\square\)
 
 **Theorem B.2 (variation of horizontal transport).** Let \(q(s,t)\) be a smooth parameter family of horizontal path lifts, with the piecewise-time regularity of Curv C.2 allowed on a fixed finite subdivision. Put
 \[
@@ -160,7 +275,20 @@ In particular, if the initial lift is fixed and the endpoint lies over a fixed b
 \]
 The bracket term in the curvature structure equation vanishes on this pair because \(q^*\omega(\partial_t)=0\). Hence \(\partial_t b=q^*\Omega(\partial_t,\partial_s)\). Integrating uses the fundamental theorem of calculus in Local tools 0.3. At the finitely many subdivision points, the parameter derivative of the lift and therefore \(b\) have matching values, by Curv C.2. Adding the integrals over the pieces proves (B.4) on the entire interval.
 
-For fixed initial lift, \(b(s,0)=0\). At the endpoint the principal division map PB A.2 makes \(g(s)\) smooth; the reproduction identity for a principal connection in Conn A.2 gives \(b(s,1)=\vartheta_G^L(g'(s))\). This proves (B.5), with the order of the two curvature arguments and the left Maurer convention fixed explicitly. Curv G.2 contains the same fixed-start calculation; (B.4) also retains the initial boundary term. \(\square\)
+For fixed initial lift, \(b(s,0)=0\). At the endpoint the principal division map PB A.2 makes \(g(s)\) smooth; the reproduction identity for a principal connection in Conn A.2 gives \(b(s,1)=\vartheta_G^L(g'(s))\). This proves (B.5), with the order of the two curvature arguments and the left Maurer convention fixed explicitly. Curv G.2 contains the same fixed-start calculation; (B.4) also retains the initial boundary term. 
+
+The formula also applies to any finite-dimensional parameter family:
+hold all but one parameter fixed and apply (B.5) in the remaining
+coordinate direction. If all the curvature values in the integrals
+belong to a fixed linear subspace \(W\subset\mathfrak g\), then the
+left-translated differential of the endpoint map takes values in \(W\).
+To check the integral assertion, choose a basis of \(W\), extend it to
+a basis of \(\mathfrak g\) using Local tools 0.2, and project to the
+remaining coordinates. Every projected integrand is zero, so every
+projected integral is zero. This requires no closure operation on \(W\).
+Curvature horizontality also permits replacing either argument in the
+integrand by its horizontal projection. None of these assertions assumes
+that transport is invariant under a homotopy. \(\square\)
 
 **Theorem B.3 (curvature generation and flatness).** In the notation of A.1,
 \[
@@ -200,6 +328,10 @@ Every coefficient is compactly supported inside the chart. The displayed form an
 
 **Theorem C.2 (realizing every connected reduction group).** Let \(K\) be a connected Lie subgroup of \(G\), with its own Hausdorff second-countable Lie-group topology and injectively immersive inclusion. Suppose a principal \(G\)-bundle over a connected smooth base of dimension at least two has a smooth principal \(K\)-reduction \(B\), whose inclusion is injectively immersive. Then there is a connection on the original bundle whose full and restricted holonomy, in a frame of \(B\), are both the represented subgroup \(K\).
 
+The analogous conclusion holds for a possibly disconnected \(K\)
+when the total space \(B\) is connected: full holonomy is \(K\) and
+restricted holonomy is its identity component \(K^0\).
+
 **Proof.** First work on the principal \(K\)-bundle \(B\), with its own smooth structure. Conn B.1 supplies a global principal connection \(\omega_0\), using the complete partition-of-unity proof in Local tools 3.1; neither compactness nor closedness of \(K\) in \(G\) is needed. Choose a coordinate ball and a local section \(s\) of \(B\), with original potential \(A_0\). In a smaller ball choose the form \(A\), axis segment and points from Lemma C.1.
 
 There is a smooth cutoff \(\eta\) supported in the original chart and equal to one on a neighbourhood of that entire closed axis segment and all chosen small supports. To see the required containment, their union is compact inside the chart; Local tools 3.1 constructs a cutoff equal to one near any such compact set. In the chart replace the potential by
@@ -218,7 +350,47 @@ Finally extend this connection along the inclusion \(K\hookrightarrow G\) by The
 B\times_KG\longrightarrow P,\qquad [b,g]\longmapsto j(b)g
 \tag{C.4}
 \]
-is well defined, and each local section \(s\) of \(B\) is also a local section of \(P\). In their principal charts (C.4) is the identity \((y,g)\mapsto(y,g)\); it is therefore a global bundle isomorphism, with a smooth inverse, even though \(B\hookrightarrow P\) need not be embedded. The holonomy image assertion of B.1 now proves both required equalities in \(G\). \(\square\)
+is well defined, and each local section \(s\) of \(B\) is also a local section of \(P\). In their principal charts (C.4) is the identity \((y,g)\mapsto(y,g)\); it is therefore a global bundle isomorphism, with a smooth inverse, even though \(B\hookrightarrow P\) need not be embedded. The holonomy image assertion of B.1 now proves both required equalities in \(G\). 
+
+For the stated extension, retain the same construction on the possibly
+disconnected \(K\)-bundle. Nothing before the connected-group argument
+uses connectedness of \(K\), so the holonomy Lie algebra is again
+\(\mathfrak k\). Its identity component \(K^0\) is an open subgroup:
+a connected coordinate neighbourhood of the identity lies in it,
+translations give openness, and multiplication and inversion preserve
+the identity component because they send connected sets containing the
+identity to connected sets containing it. The connected restricted
+holonomy \(J^0\) lies in \(K^0\) and has the same Lie algebra. The previous
+inverse-function and open-coset argument inside the connected group
+\(K^0\) gives \(J^0=K^0\).
+
+We now use connectedness of the total space \(B\). Any point \(b\in B_y\)
+has the form \(T_cu\,k\): choose a path \(c:x\to y\), then use the
+principal division map. Reversal, concatenation and equivariance of
+transport show that its holonomy group is
+\(k^{-1}\operatorname{Hol}_u k\). One may check this by lifting
+\(c\), a loop at \(y\), and the reverse of \(c\); conjugation by \(k\)
+is exactly the change of initial frame. Its Lie algebra is consequently
+all of \(\mathfrak k\). Theorem A.1 makes the reachable bundle through
+each \(b\) an injectively immersed manifold of dimension
+\(\dim M+\dim\mathfrak k=\dim B\).
+Local tools 1.2 makes each inclusion locally a diffeomorphism, so each
+reachable set is open in \(B\).
+Reachability is an equivalence relation by reversal and concatenation.
+Its classes therefore partition \(B\) into disjoint open sets.
+Connectedness of \(B\) forces one class, so all of \(uK\) is reachable
+and full holonomy is \(K\). Extension to \(P\) again uses (C.4) and B.1.
+This argument includes \(\mathfrak k=0\), when \(K^0=\{e\}\).
+
+Connectedness of the base alone cannot replace connectedness of \(B\)
+in this extension. For a nontrivial discrete group \(K\), the product
+bundle over \(\mathbb R^2\) has zero-dimensional vertical tangent spaces.
+Its horizontal space must therefore be the entire tangent space of each
+component, so every loop lift has constant \(K\)-coordinate and trivial
+holonomy. Finally, the dimension bound in the theorem is necessary when
+\(\mathfrak k\ne0\): over a one-dimensional base a horizontal curvature
+two-form is zero, since any two projected tangent vectors are dependent.
+Theorem B.3 then makes restricted holonomy trivial. \(\square\)
 
 ## D. Complete examples and exercises
 
@@ -242,11 +414,22 @@ q(t)h_n=q(t+2\pi n).
 \]
 This proves invariance under the full holonomy group. The projection is \(t\mapsto e^{it}\), with the ordinary line topology on the total space and the discrete topology on its structure group.
 
-This reduction is not embedded in the product torus. Local tools 6.4 proves that the image of the irrational line \(t\mapsto(e^{it},e^{-i\alpha t})\) is a dense proper subset of the torus. It also gives nonzero integers \(n_j\) of unbounded absolute value with \(e^{-2\pi i\alpha n_j}\to1\): the integer multiples of an irrational angle approach the identity, and no bounded set of nonzero integers can give an infinite sequence of distinct angles tending to it. Thus \(q(2\pi n_j)\to q(0)\) in the ambient torus, whereas \(2\pi n_j\not\to0\) in the intrinsic line. The inverse of the inclusion onto its image is not continuous. This is precisely the failure of embeddedness. \(\square\)
+This reduction is not embedded in the product torus. Local tools 6.4 proves that the image of the irrational line \(t\mapsto(e^{it},e^{-i\alpha t})\) is a dense proper subset of the torus. It also gives nonzero integers \(n_j\) of unbounded absolute value with \(e^{-2\pi i\alpha n_j}\to1\): the integer multiples of an irrational angle approach the identity, and no bounded set of nonzero integers can give an infinite sequence of distinct angles tending to it. Thus \(q(2\pi n_j)\to q(0)\) in the ambient torus, whereas \(2\pi n_j\not\to0\) in the intrinsic line. The inverse of the inclusion onto its image is not continuous. This is precisely the failure of embeddedness. 
+The connection form restricted to this reduction is zero: Theorem A.1
+places its values in the zero Lie algebra of the discrete group \(H\).
+Equivalently every tangent of the one-dimensional total space \(Q\)
+is horizontal. \(\square\)
 
 **Exercise D.2 (curvature at one frame is insufficient).** On the product \(U(1)\)-bundle over \(\mathbb R^2\), take \(A=ix^2\,dy\). Determine curvature and restricted holonomy at the origin.
 
-**Solution.** The structure equation gives \(F=2ix\,dx\wedge dy\), so \(F\) vanishes at the origin. Traverse the rectangle with vertices \((0,0),(1,0),(1,b),(0,b)\). The horizontal sides contribute zero to \(\int A\), the side at \(x=0\) contributes zero, and the side at \(x=1\) contributes \(ib\). Conn E.1 therefore gives holonomy \(e^{-ib}\). Those values fill \(U(1)\) as \(b\) varies, and every plane loop is nullhomotopic by straight contraction. Both holonomy groups are \(U(1)\). This is the complete earlier calculation Curv G.7, restated here with its exact rectangle and sign. Formula (B.6) requires curvature over all reachable frames, not only its value at the initial frame. \(\square\)
+**Solution.** The structure equation gives \(F=2ix\,dx\wedge dy\), so \(F\) vanishes at the origin. Traverse the rectangle with vertices \((0,0),(1,0),(1,b),(0,b)\). The horizontal sides contribute zero to \(\int A\), the side at \(x=0\) contributes zero, and the side at \(x=1\) contributes \(ib\). Conn E.1 therefore gives holonomy \(e^{-ib}\). Those values fill \(U(1)\) as \(b\) varies, and every plane loop is nullhomotopic by straight contraction. Both holonomy groups are \(U(1)\). This is the complete earlier calculation Curv G.7, restated here with its exact rectangle and sign. Formula (B.6) requires curvature over all reachable frames, not only its value at the initial frame. 
+
+For comparison, the Hopf connection of Curv D.1 has full holonomy
+\(U(1)\) and nonzero curvature. Its reachable bundle is the whole
+principal bundle \(S^3\): Theorem A.1 supplies a reachable point over
+each base point, and its fibre is the full holonomy orbit, hence the
+entire \(U(1)\)-fibre. Its nonzero curvature values span the
+one-dimensional algebra \(i\mathbb R\), in agreement with (B.6). \(\square\)
 
 **Exercise D.3 (full \(\mathrm{SO}(3)\) holonomy supported in a disc).** Construct a smooth connection on the trivial \(\mathrm{SO}(3)\)-bundle over the two-torus with restricted holonomy \(\mathrm{SO}(3)\), whose curvature is supported in one coordinate disc.
 

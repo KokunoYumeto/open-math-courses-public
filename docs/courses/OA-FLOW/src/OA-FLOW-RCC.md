@@ -201,7 +201,7 @@ The [full scalar Fourier theorem](OA-FLOW-FF.md#oa-flow.ff.3) proves its normali
  \Pi(x)=\mathscr F\pi_\omega(x)\mathscr F^*.
 \]
 
-**Multiplier lemma.** Suppose \(a:\mathbb R\to Q\) is bounded and norm continuous, and multiplication by \(a(q)\) commutes with \(\Pi(Q)\). Then
+**Multiplier lemma.** Suppose \(a:\mathbb R\to Q\) is bounded and sigma-strong-star continuous, and multiplication by \(a(q)\) commutes with \(\Pi(Q)\). In particular, \(q\mapsto a(q)\xi\) and \(q\mapsto a(q)^*\xi\) are continuous for every \(\xi\in H_\omega\). Then
 \[
  a(q)\in Q_\omega\qquad(q\in\mathbb R).
  \tag{RCC2.b}
@@ -236,14 +236,14 @@ Apply [the state KMS strip and its norm bound](OA-FLOW-KT.md#oa-flow.kt.2) to \(
  \end{gathered}
  \tag{RCC2.d}
 \]
-Explicitly, if \(G_{x,a(p)}\) is KT's upper-strip function, use \(G(z,p)=G_{x,a(p)}(-z)\). Uniqueness of the strip and its bound applied to differences give
+Explicitly, if \(G_{x,a(p)}\) is KT's upper-strip function, use \(G(z,p)=G_{x,a(p)}(-z)\). Write \(d=a(p)-a(p')\). Since \(\omega(y)=\langle y\xi_\omega,\xi_\omega\rangle\), Hilbert Cauchy–Schwarz bounds the two horizontal-edge differences by \(\|x\|\|d\xi_\omega\|\) and \(\|x\|\|d^*\xi_\omega\|\), respectively: move the left factor across the inner product in \(\omega(\sigma_{-s}(x)d)\) and in \(\omega(d\sigma_{-s}(x))\). The strip difference is bounded on the whole strip by (RCC2.d), so the earlier [bounded-strip maximum principle AS1](OA-FLOW-AS.md#equation-as1) gives
 \[
  \sup_{-1\le\operatorname{Im}z\le0}
      |G(z,p)-G(z,p')|
-       \le\|x\|\,\|a(p)-a(p')\|.
+       \le\|x\|\max\{\|d\xi_\omega\|,\|d^*\xi_\omega\|\}.
  \tag{RCC2.e}
 \]
-In particular its dependence on \(p\) is uniformly continuous on each compact set, throughout the strip.
+Strong-star continuity makes both vector seminorms tend to zero as \(p'\to p\). Their vector-valued maps are uniformly continuous on each compact set, so the dependence of \(G(z,p)\) on \(p\) is uniformly continuous there throughout the strip.
 
 Put
 \[
@@ -272,7 +272,7 @@ The two pairings in (RCC2.c) are equal. Replacing their second member by (RCC2.g
 \]
 This function is bounded and jointly continuous. For example
 \(H(q,s)=\langle\sigma_{-s}(x)\xi_\omega,a(q)^*\xi_\omega\rangle\);
-modular strong continuity and norm continuity of \(a\) give joint continuity. Section 1 therefore makes it independent of \(s\).
+modular strong continuity and strong-star continuity of \(a\) give joint continuity. Section 1 therefore makes it independent of \(s\).
 
 By [whole-positive modular invariance and GNS covariance](OA-FLOW-MW.md#oa-flow.mw.4), the state is invariant under \(\sigma\). Hence
 \[

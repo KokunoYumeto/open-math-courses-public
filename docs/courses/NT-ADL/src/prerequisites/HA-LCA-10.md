@@ -2,14 +2,14 @@
 
 **Lesson HA-LCA-10.** Self-checked by the writing AI.
 
-Let \(G\) be an arbitrary locally compact Hausdorff abelian group, \(H\) a closed subgroup, \(Q=G/H\), and \(q:G\to Q\) the quotient map. Put \(\Gamma=\widehat G\). The quotient is LCA and \(q\) is open by HA-LCA-09, Lemma 6.0. The subgroup \(H\) is LCA: intersect a compact identity neighbourhood of \(G\) with the closed set \(H\). We use Pontryagin evaluation to identify every LCA group with its bidual, as proved in HA-LCA-09, Theorem 2.1. Fourier transforms have negative sign.
+Let \(G\) be an arbitrary locally compact Hausdorff abelian group, \(H\) a closed subgroup, \(Q=G/H\), and \(q:G\to Q\) the quotient map. Put \(\Gamma=\widehat G\). The quotient is LCA and \(q\) is open by [HA-LCA-09, Lemma 6.0](HA-LCA-09.md#ha-lca-09-lemma-6-0). The subgroup \(H\) is LCA: intersect a compact identity neighbourhood of \(G\) with the closed set \(H\). We use Pontryagin evaluation to identify every LCA group with its bidual, as proved in [HA-LCA-09, Theorem 2.1](HA-LCA-09.md#ha-lca-09-theorem-2-1). Fourier transforms have negative sign.
 
 For a subset \(S\subseteq G\), its annihilator is
 \[
  S^\perp=\{\gamma\in\Gamma:\gamma(s)=1\text{ for every }s\in S\}.
  \tag{1}
 \]
-For a subset of \(\Gamma\), use the same notation for its annihilator in \(G\). Each is a closed subgroup: it is the intersection of the closed kernels of the appropriate continuous evaluations. Evaluation continuity and functoriality were proved in HA-LCA-09, Proposition 5.1.
+For a subset of \(\Gamma\), use the same notation for its annihilator in \(G\). Each is a closed subgroup: it is the intersection of the closed kernels of the appropriate continuous evaluations. Evaluation continuity and functoriality were proved in [HA-LCA-09, Proposition 5.1](HA-LCA-09.md#ha-lca-09-proposition-5-1).
 
 The free mathematical sources are Dikran Dikranjan, [*Introduction to Topological Groups*](https://users.dimi.uniud.it/~dikran.dikranjan/ITG.pdf), version 26 February 2018, Lemma 7.2.5, §§8.1–8.2, Lemma 12.3.5 and §§12.4.2, 12.5; D. H. Fremlin, [*Measure Theory*, §§443P–Q](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex), version 14 January 2013; Pekka Salmi, [*Idempotent states on locally compact groups and quantum groups*, §§2–3](https://arxiv.org/pdf/1209.0314v1), 3 September 2012; and Keith Conrad, [*The Character Group of \(\mathbb Q\)*, §2 and Appendix A](https://kconrad.math.uconn.edu/blurbs/gradnumthy/characterQ.pdf), for the \(p\)-adic example. The topology notes' contents have stale page numbers; the relevant printed pages for §§8.1–8.2 and §12.5 are 51–54 and 97.
 
@@ -33,7 +33,7 @@ is compact: \(E\) is closed in the Hausdorff quotient, so this is a closed subse
  \tag{2}
 \]
 
-**Proof.** Every character trivial on \(S\) is trivial on its closure, so the right side is contained in the left. If \(x\notin\overline S\), then \(x+\overline S\) is a nonzero point of the LCA quotient \(G/\overline S\). Character separation, HA-LCA-05, Corollary 4.2, gives a quotient character not equal to one there. Its pullback to \(G\) is trivial on \(S\) and not on \(x\). Thus \(x\notin(S^\perp)^\perp\). \(\square\)
+**Proof.** Every character trivial on \(S\) is trivial on its closure, so the right side is contained in the left. If \(x\notin\overline S\), then \(x+\overline S\) is a nonzero point of the LCA quotient \(G/\overline S\). Character separation, [HA-LCA-05, Corollary 4.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/raikovs-theorem-and-the-gelfand-raikov-theorem.html#ha-lca-05-corollary-4-2), gives a quotient character not equal to one there. Its pullback to \(G\) is trivial on \(S\) and not on \(x\). Thus \(x\notin(S^\perp)^\perp\). \(\square\)
 
 ## 2. Both topological duality identifications
 
@@ -80,7 +80,7 @@ is a topological isomorphism. Evaluating it at \(h\in H\) gives \(\gamma(h)\), s
 
 **Proof.** Restriction is surjective by Theorem 2.1. If \(H_1\subseteq H_2\), a character trivial on \(H_2\) is trivial on \(H_1\), proving reversal of inclusion. Proposition 1.2, also applied with base group \(\Gamma\), says that the two annihilator operations are inverse on closed subgroups.
 
-The subgroup \(H\) is open exactly when \(Q\) is discrete: the identity singleton is open in \(Q\) exactly when its inverse image \(H\) is open in \(G\), and translate this condition to all points. By HA-LCA-09, Corollary 4.4, \(Q\) is discrete exactly when \(\widehat Q\cong H^\perp\) is compact. Applying this equivalence with base \(\Gamma\) and subgroup \(H^\perp\), and using its double annihilator \(H\), gives the second equivalence. \(\square\)
+The subgroup \(H\) is open exactly when \(Q\) is discrete: the identity singleton is open in \(Q\) exactly when its inverse image \(H\) is open in \(G\), and translate this condition to all points. By [HA-LCA-09, Corollary 4.4](HA-LCA-09.md#ha-lca-09-corollary-4-4), \(Q\) is discrete exactly when \(\widehat Q\cong H^\perp\) is compact. Applying this equivalence with base \(\Gamma\) and subgroup \(H^\perp\), and using its double annihilator \(H\), gives the second equivalence. \(\square\)
 
 <a id="ha-lca-10-corollary-2-3"></a>
 **Corollary 2.3 — A subgroup need not be closed for character extension.** If \(S\le G\) has its relative topology, every continuous character \(\chi:S\to\mathbb T\) extends to a continuous character of \(G\).
@@ -127,14 +127,14 @@ For each compact \(E\subseteq Q\) there is a nonnegative \(b\in C_c(G)\) with \(
 
 To prove continuity, restrict \(x\) to a compact neighbourhood \(C\) of a fixed \(x_0\). All the relevant \(h\)'s lie in the fixed compact set
 \(L=H\cap(\operatorname{supp}f-C)\).
-Uniform translation continuity of \(f\), proved in the general Haar reading, Lemma 1.1, gives
+Uniform translation continuity of \(f\), proved in [the general Haar reading, Lemma 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-1-1), gives
 \[
  |Pf(q(x))-Pf(q(x_0))|
  \le dh(L)\sup_{h\in H}|f(x+h)-f(x_0+h)|\longrightarrow0.
 \]
 Thus \(Pf\circ q\) is continuous; the quotient property makes \(Pf\) continuous. If a coset misses \(\operatorname{supp}f\), its integral is zero. The set \(q(\operatorname{supp}f)\) is compact and hence closed, proving the support assertion. Positivity and linearity follow from the integral.
 
-For each \(z\in Q\), choose \(x\) above it and a nonnegative \(u_z\in C_c(G)\) with \(u_z(x)>0\), using the Radon reading, Lemma 1.3. Haar full support on \(H\) implies \(Pu_z(z)>0\). For compact \(E\), finitely many open sets \(\{Pu_z>0\}\) cover \(E\); the sum \(u\) of their functions satisfies \(Pu>0\) on \(E\). In the open set \(O=\{Pu>0\}\), choose \(v\in C_c(Q)\) with \(0\le v\le1\), \(v=1\) on \(E\), and support inside \(O\). Then
+For each \(z\in Q\), choose \(x\) above it and a nonnegative \(u_z\in C_c(G)\) with \(u_z(x)>0\), using [the Radon reading, Lemma 1.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-3). Haar full support on \(H\) implies \(Pu_z(z)>0\). For compact \(E\), finitely many open sets \(\{Pu_z>0\}\) cover \(E\); the sum \(u\) of their functions satisfies \(Pu>0\) on \(E\). In the open set \(O=\{Pu>0\}\), choose \(v\in C_c(Q)\) with \(0\le v\le1\), \(v=1\) on \(E\), and support inside \(O\). Then
 \[
  b(x)=
  \begin{cases}
@@ -185,7 +185,7 @@ Every \(L^1\) class has a Borel representative \(f_0\) which is zero outside an 
 \[
  P(L_a f)(z)=Pf(z-q(a)).
 \]
-HA-LCA-07, Lemma 1.0 proves that every such invariant, nonzero, positive functional is integration against a Haar measure on the full domain. Haar uniqueness therefore gives \(I(f)=c\int_G f\,dx\) for \(c>0\). Set \(dz=c^{-1}dz_0\). This proves (10). Since \(P\) maps onto \(C_c(Q)\), (10) determines integration of every \(C_c(Q)\) function and hence the Haar measure uniquely, by the general Haar reading, Lemma 3.2.
+[HA-LCA-07, Lemma 1.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-lemma-1-0) proves that every such invariant, nonzero, positive functional is integration against a Haar measure on the full domain. Haar uniqueness therefore gives \(I(f)=c\int_G f\,dx\) for \(c>0\). Set \(dz=c^{-1}dz_0\). This proves (10). Since \(P\) maps onto \(C_c(Q)\), (10) determines integration of every \(C_c(Q)\) function and hence the Haar measure uniquely, by [the general Haar reading, Lemma 3.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-3-2).
 
 We next justify slicing beyond continuous functions. For a coset \(z=q(x)\) and a Borel set \(E\subseteq G\), put
 \[
@@ -221,7 +221,7 @@ If \(N\subseteq U\) is Borel and \(dx(N)=0\), (14) makes \(\nu_z(N)=0\) outside 
 
 A sigma-compact subset of \(G\) is covered by countably many relatively compact open sets: cover each compact part by finitely many such neighbourhoods. Partition their union into disjoint Borel pieces, each contained in one of these open sets. Applying (14) on the pieces and using monotone convergence proves the set formula for all completed-measurable sets contained in their union. Positive simple approximation and monotone convergence then give the integral formula for every nonnegative measurable function zero outside that union. Applying the formula to \(|f_0|\) and to the positive and negative real and imaginary parts gives (10) for every integrable such \(f_0\). In particular its absolute coset integrals are finite outside a quotient null set. This construction also proves measurability of the integral, using one countable union of exceptional null sets.
 
-Every \(L^1(G)\) class has a Borel representative zero outside an open sigma-compact subgroup, by the general Haar reading, Lemma 5.1. For two such representatives \(f_0,g_0\), their supports lie in a union of two sigma-compact sets, so the preceding result applied to \(|f_0-g_0|\) proves
+Every \(L^1(G)\) class has a Borel representative zero outside an open sigma-compact subgroup, by [the general Haar reading, Lemma 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-5-1). For two such representatives \(f_0,g_0\), their supports lie in a union of two sigma-compact sets, so the preceding result applied to \(|f_0-g_0|\) proves
 \[
  \int_Q\int_H|f_0(x+h)-g_0(x+h)|\,dh\,dz
        =\|f_0-g_0\|_1.
@@ -250,7 +250,7 @@ This cannot represent \(P_1[0]=0\). The diagonal is not contained in any open si
 <a id="ha-lca-10-proposition-4-2"></a>
 **Proposition 4.2 — Idempotent probability measures.** A Radon probability measure \(\mu\) on an LCA group satisfies \(\mu*\mu=\mu\) if and only if it is normalized Haar measure on a compact subgroup, regarded as a measure on \(G\).
 
-**Proof.** Suppose \(\mu*\mu=\mu\). The finite-measure convolution law from [the product reading, Theorem 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-theorem-3-3) gives \(\widehat\mu^2=\widehat\mu\), so every value is zero or one. Continuity of the Fourier–Stieltjes transform, proved in HA-LCA-03, Theorem 4.3, makes
+**Proof.** Suppose \(\mu*\mu=\mu\). The finite-measure convolution law from [the product reading, Theorem 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-theorem-3-3) gives \(\widehat\mu^2=\widehat\mu\), so every value is zero or one. Continuity of the Fourier–Stieltjes transform, proved in [HA-LCA-03, Theorem 4.3](HA-LCA-03.md#ha-lca-03-theorem-4-3), makes
 \(A=\{\gamma:\widehat\mu(\gamma)=1\}\) both open and closed. It contains the identity since \(\mu(G)=1\). For \(\gamma\in A\),
 \[
  \int_G|\gamma(x)-1|^2\,d\mu(x)
@@ -258,7 +258,7 @@ This cannot represent \(P_1[0]=0\). The diagonal is not contained in any open si
 \]
 Thus \(\gamma=1\) \(\mu\)-almost everywhere. Two such equalities hold simultaneously outside the union of their two null sets, so \(\gamma\eta^{-1}=1\) almost everywhere whenever \(\gamma,\eta\in A\). Hence \(A\) is a subgroup. By Corollary 2.2, \(K=A^\perp\) is compact; by Proposition 1.2, \(K^\perp=A\).
 
-Let \(m_K\) be Haar probability measure on \(K\), pushed to \(G\). Its transform equals one on \(K^\perp\). If \(\gamma\notin K^\perp\), choose \(k\in K\) with \(\gamma(k)\ne1\). Translation of its character integral multiplies that integral by \(\overline{\gamma(k)}\) and leaves it unchanged, so it is zero. Thus \(\widehat{m_K}=1_A=\widehat\mu\). HA-LCA-09, Corollary 4.2 gives \(\mu=m_K\).
+Let \(m_K\) be Haar probability measure on \(K\), pushed to \(G\). Its transform equals one on \(K^\perp\). If \(\gamma\notin K^\perp\), choose \(k\in K\) with \(\gamma(k)\ne1\). Translation of its character integral multiplies that integral by \(\overline{\gamma(k)}\) and leaves it unchanged, so it is zero. Thus \(\widehat{m_K}=1_A=\widehat\mu\). [HA-LCA-09, Corollary 4.2](HA-LCA-09.md#ha-lca-09-corollary-4-2) gives \(\mu=m_K\).
 
 Conversely the same character-integral computation shows that \(\widehat{m_K}\) is an indicator. Its square equals itself, so the convolution law and uniqueness give \(m_K*m_K=m_K\). The pushforward is a finite Radon probability measure by [the product reading, Proposition 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-proposition-3-1). \(\square\)
 
@@ -271,9 +271,9 @@ Conversely the same character-integral computation shows that \(\widehat{m_K}\) 
  \left(\tfrac12(\delta_0+\delta_3)\right)
        =\tfrac12(\delta_0+\delta_3).
 \]
-Proposition 4.2 also gives uniform measures on the \(n\)-th roots of unity and Haar probability on \(\mathbb T\). A compact subgroup of \(\mathbb R\) has no nonzero member, since all integer multiples of such a member would be unbounded, whereas compact subsets of \(\mathbb R\) are bounded by the Banach reading, Lemma 1.1. Thus on \(\mathbb R\) only \(\delta_0\) is an idempotent probability measure.
+Proposition 4.2 also gives uniform measures on the \(n\)-th roots of unity and Haar probability on \(\mathbb T\). A compact subgroup of \(\mathbb R\) has no nonzero member, since all integer multiples of such a member would be unbounded, whereas compact subsets of \(\mathbb R\) are bounded by [the Banach reading, Lemma 1.1](HA-LCA-PRE-BANACH.md#ha-lca-pre-banach-lemma-1-1). Thus on \(\mathbb R\) only \(\delta_0\) is an idempotent probability measure.
 
-For a complex example on \(\mathbb Z/3\mathbb Z\), put \(\zeta=e^{2\pi i/3}\) and assign mass \((1+\zeta^x)/3\) to \(x=0,1,2\). The finite orthogonality formula in HA-LCA-01, Theorem 2.1 gives Fourier values \(1,1,0\). The convolution law and finite Fourier injectivity make this measure idempotent. Its mass at \(1\) is not real: if the primitive cube root \(\zeta\) were real, it would be \(1\) or \(-1\); neither is a primitive cube root. Thus it is not a positive measure, despite having total mass one. \(\square\)
+For a complex example on \(\mathbb Z/3\mathbb Z\), put \(\zeta=e^{2\pi i/3}\) and assign mass \((1+\zeta^x)/3\) to \(x=0,1,2\). The finite orthogonality formula in [HA-LCA-01, Theorem 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-theorem-2-1) gives Fourier values \(1,1,0\). The convolution law and finite Fourier injectivity make this measure idempotent. Its mass at \(1\) is not real: if the primitive cube root \(\zeta\) were real, it would be \(1\) or \(-1\); neither is a primitive cube root. Thus it is not a positive measure, despite having total mass one. \(\square\)
 
 ## 5. Compatible dual measures
 
@@ -316,10 +316,10 @@ This holds on \(C_c(\Gamma)\) and with the \(L^1\)-class interpretation of Theor
 
 Take a nonzero \(u\in C_c(G)\) and \(f=u*\widetilde u\). Then \(f\in C_c(G)\) is of positive type, \(f(0)=\|u\|_2^2>0\), and
 \(\widehat f=|\widehat u|^2\ge0\).
-The positive autocorrelation and transform identities are HA-LCA-04, Proposition 2.2 and HA-LCA-03, Theorem 3.1. In particular \(f\in B^1(G)\).
+The positive autocorrelation and transform identities are [HA-LCA-04, Proposition 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/functions-of-positive-type.html#ha-lca-04-proposition-2-2) and [HA-LCA-03, Theorem 3.1](HA-LCA-03.md#ha-lca-03-theorem-3-1). In particular \(f\in B^1(G)\).
 
 For every \(\gamma\in\Gamma\), the function \(\overline\gamma f\) is the autocorrelation of \(\overline\gamma u\), by substitution in convolution. Lemma 5.0 therefore makes
-\(P(\overline\gamma f)\) a \(C_c(Q)\) positive autocorrelation. Its transform at \(a\in A\) is \(\widehat f(\gamma a)\), again by (17). Apply HA-LCA-07, Theorem 2.1 on \(Q\) at its identity to get, for every \(\gamma\),
+\(P(\overline\gamma f)\) a \(C_c(Q)\) positive autocorrelation. Its transform at \(a\in A\) is \(\widehat f(\gamma a)\), again by (17). Apply [HA-LCA-07, Theorem 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-theorem-2-1) on \(Q\) at its identity to get, for every \(\gamma\),
 \[
  \int_A\widehat f(\gamma a)\,da
  =P(\overline\gamma f)(0)
@@ -353,7 +353,7 @@ The subspace is the zero set of the complementary projection, hence closed.
 
 For the subsequence assertion, place a bounded sequence in a closed cube. Bisect each side and choose one of the finitely many resulting closed subcubes containing infinitely many terms. Repeat inside that cube. Choose successive terms, with strictly increasing indices, from these nested cubes. Their diameters tend to zero, so the selected coordinates are Cauchy and converge by completeness of \(\mathbb R\). This proves the assertion, including for sequences on a closed bounded subset.
 
-Lebesgue measure on \(\mathbb R^n\) is the product of its one-dimensional measures, as proved in HA-LCA-07, Proposition 3.2. The full-Borel sigma-finite Fubini theorem is [the integration reading, Theorem 4.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-4-4). Interchanging coordinates preserves that measure. Multiplying one coordinate by \(a\ne0\) multiplies measure by \(|a|\), by the one-dimensional affine-substitution formula proved in HA-LCA-02, Lemma 3.3 and Fubini. Replacing \(x_i\) by \(x_i+t x_j\), \(i\ne j\), preserves measure: hold the other coordinates fixed and apply translation invariance to the \(x_i\)-section, then Fubini.
+Lebesgue measure on \(\mathbb R^n\) is the product of its one-dimensional measures, as proved in [HA-LCA-07, Proposition 3.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-proposition-3-2). The full-Borel sigma-finite Fubini theorem is [the integration reading, Theorem 4.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-4-4). Interchanging coordinates preserves that measure. Multiplying one coordinate by \(a\ne0\) multiplies measure by \(|a|\), by the one-dimensional affine-substitution formula proved in [HA-LCA-02, Lemma 3.3](HA-LCA-02.md#ha-lca-02-lemma-3-3) and Fubini. Replacing \(x_i\) by \(x_i+t x_j\), \(i\ne j\), preserves measure: hold the other coordinates fixed and apply translation invariance to the \(x_i\)-section, then Fubini.
 
 For clarity, take the determinant to be its finite permutation formula
 \(\det A=\sum_{\sigma}\operatorname{sgn}(\sigma)\prod_i A_{i,\sigma(i)}\).
@@ -413,7 +413,7 @@ For self-dual Lebesgue measure and counting measure on the lattice, the quotient
 
 **Proof.** The equality \(e^{2\pi i (Ak)\cdot\xi}=1\) for every \(k\in\mathbb Z^n\) is equivalent to each coordinate of \(A^T\xi\) being integral, using the exact kernel of the circle exponential from HA-LCA-02, Lemma 1.3. This proves (23).
 
-The half-open set \(F=A[0,1)^n\) and its translates by \(\Lambda\) form a disjoint partition of \(\mathbb R^n\): apply \(A^{-1}\) and take integer and fractional parts of each coordinate. It has measure \(|\det A|\) by Lemma 6.0. The measure \(1_F\,dx\) is a finite Radon measure, by HA-LCA-03, Lemma 4.1, and its pushforward \(\rho\) to \(\mathbb R^n/\Lambda\) is finite Radon. For \(f\in C_c(\mathbb R^n)\), countable additivity over the tiles gives, with absolute convergence justified first for \(|f|\),
+The half-open set \(F=A[0,1)^n\) and its translates by \(\Lambda\) form a disjoint partition of \(\mathbb R^n\): apply \(A^{-1}\) and take integer and fractional parts of each coordinate. It has measure \(|\det A|\) by Lemma 6.0. The measure \(1_F\,dx\) is a finite Radon measure, by [HA-LCA-03, Lemma 4.1](HA-LCA-03.md#ha-lca-03-lemma-4-1), and its pushforward \(\rho\) to \(\mathbb R^n/\Lambda\) is finite Radon. For \(f\in C_c(\mathbb R^n)\), countable additivity over the tiles gives, with absolute convergence justified first for \(|f|\),
 \[
  \int_{\mathbb R^n}f\,dx
  =\int_F\sum_{\lambda\in\Lambda}f(x+\lambda)\,dx
@@ -422,7 +422,7 @@ The half-open set \(F=A[0,1)^n\) and its translates by \(\Lambda\) form a disjoi
 \]
 Counting measure is the chosen \(dh\), so the sum is \(Pf\). Comparing (25) with Theorem 4.1 and using the surjectivity of \(P\) makes \(\rho\) equal to its quotient Haar measure. Its total mass is \(\operatorname{vol}F=|\det A|\). Apply the same argument to \(A^{-T}\), then use (21) and determinant invariance under transpose. This proves (24).
 
-For \(a\mathbb Z\subseteq\mathbb R\), \(a>0\), the annihilator is \(a^{-1}\mathbb Z\), the primal quotient measure is ordinary length on \([0,a)\), and its dual is counting measure divided by \(a\), by HA-LCA-07, Proposition 3.3. The dual of counting measure on \(a\mathbb Z\) is probability measure on its circle dual, represented by \(a\,dt\) on \([0,1/a)\). Thus the dual Weil formula reads
+For \(a\mathbb Z\subseteq\mathbb R\), \(a>0\), the annihilator is \(a^{-1}\mathbb Z\), the primal quotient measure is ordinary length on \([0,a)\), and its dual is counting measure divided by \(a\), by [HA-LCA-07, Proposition 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-proposition-3-3). The dual of counting measure on \(a\mathbb Z\) is probability measure on its circle dual, represented by \(a\,dt\) on \([0,1/a)\). Thus the dual Weil formula reads
 \[
  \int_\mathbb R F(t)\,dt
  =\int_0^{1/a}
@@ -445,7 +445,7 @@ is injective and has dense, proper image. Its dual is
 \]
 which is not surjective.
 
-**Proof.** If \(j(t)=(1,1)\), then \(t\) and \(at\) are integers. A nonzero such \(t\) would make \(a\) rational, so \(t=0\). By the finite-product dual formula HA-LCA-02, Proposition 4.1 and Corollary 4.2, the characters of \(\mathbb T^2\) are \((z,w)\mapsto z^mw^n\). Restriction gives \(t\mapsto e^{2\pi i(m+an)t}\), proving (27). Only \((m,n)=(0,0)\) gives zero, since \(a\) is irrational. Thus the annihilator of \(j(\mathbb R)\) is trivial, and Proposition 1.2 gives density.
+**Proof.** If \(j(t)=(1,1)\), then \(t\) and \(at\) are integers. A nonzero such \(t\) would make \(a\) rational, so \(t=0\). By the finite-product dual formula [HA-LCA-02, Proposition 4.1 and Corollary 4.2](HA-LCA-02.md#ha-lca-02-proposition-4-1), the characters of \(\mathbb T^2\) are \((z,w)\mapsto z^mw^n\). Restriction gives \(t\mapsto e^{2\pi i(m+an)t}\), proving (27). Only \((m,n)=(0,0)\) gives zero, since \(a\) is irrational. Thus the annihilator of \(j(\mathbb R)\) is trivial, and Proposition 1.2 gives density.
 
 The image is proper without any dimension argument. Points of that image with first coordinate one have \(t\in\mathbb Z\), and their second coordinates lie in the countable set \(\{e^{2\pi iak}:k\in\mathbb Z\}\). The circle is uncountable: the exponential is injective on \([0,1)\), and a real interval is uncountable: for any proposed list, choose nested closed intervals of positive length, each inside the interior of the preceding interval and avoiding the next listed point. Compactness gives a point common to all of them, absent from the list. Hence some point \((1,z)\) is outside the image. Likewise the countable image \(\mathbb Z+a\mathbb Z\) in (27) cannot be all of \(\mathbb R\). Thus this example has nonclosed primal image and nonsurjective dual despite primal injectivity. \(\square\)
 
@@ -473,7 +473,7 @@ In particular \(\mathbb Z_p^\perp=\mathbb Z_p\). Haar measure normalized by \(\o
                        a_{n+1}\equiv a_n\pmod{p^n}\}.
  \tag{30}
 \]
-Coordinatewise addition and multiplication preserve compatibility, so this is a commutative ring. Give each finite residue ring its discrete topology and \(\mathbb Z_p\) the subspace topology of their product. The compatibility equations are closed. The product is compact Hausdorff by the Banach reading, Lemma 4.1, and ring operations are continuous coordinatewise. Thus \(\mathbb Z_p\) is a compact Hausdorff topological ring.
+Coordinatewise addition and multiplication preserve compatibility, so this is a commutative ring. Give each finite residue ring its discrete topology and \(\mathbb Z_p\) the subspace topology of their product. The compatibility equations are closed. The product is compact Hausdorff by [the Banach reading, Lemma 4.1](HA-LCA-PRE-BANACH.md#ha-lca-pre-banach-lemma-4-1), and ring operations are continuous coordinatewise. Thus \(\mathbb Z_p\) is a compact Hausdorff topological ring.
 
 The integer map \(k\mapsto(k\bmod p^n)_n\) is injective: an integer divisible by every \(p^n\) must be zero, since eventually \(p^n>|k|\). Write \(\pi_n\) for the \(n\)-th coordinate. Then
 \[
@@ -482,7 +482,7 @@ The integer map \(k\mapsto(k\bmod p^n)_n\) is injective: an integer divisible by
 \]
 One inclusion is immediate. For the other, if \(a_n=0\), each \(a_{n+j}\) is divisible by \(p^n\); dividing these residues by \(p^n\), modulo \(p^j\), gives compatible residues of a \(b\in\mathbb Z_p\) with \(a=p^n b\). Multiplication by \(p\) is injective: if \(pa=0\), its coordinate modulo \(p^{n+1}\) forces the coordinate \(a_n\) to be zero for every \(n\). The same holds for every power of \(p\). Finite intersections of coordinate conditions in (30) reduce to one condition at the largest index. Hence the groups \(p^n\mathbb Z_p\) form an identity-neighbourhood basis.
 
-An element \(u\) with \(\pi_1(u)\ne0\) is a unit. Each residue \(\pi_n(u)\) is coprime to \(p^n\), so has a unique multiplicative inverse modulo \(p^n\) by Bézout's identity, proved in HA-LCA-01, Lemma 4.2. These inverses are compatible by uniqueness and give \(u^{-1}\in\mathbb Z_p\). Every nonzero \(a\in\mathbb Z_p\) has a unique expression \(p^v u\) with \(v\ge0\) and \(u\) a unit: \(v\) is the number of its initial zero coordinates, and (31) performs the division. A product of units is a unit, so a product of nonzero elements cannot vanish. Thus \(\mathbb Z_p\) is an integral domain.
+An element \(u\) with \(\pi_1(u)\ne0\) is a unit. Each residue \(\pi_n(u)\) is coprime to \(p^n\), so has a unique multiplicative inverse modulo \(p^n\) by Bézout's identity, proved in [HA-LCA-01, Lemma 4.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-lemma-4-2). These inverses are compatible by uniqueness and give \(u^{-1}\in\mathbb Z_p\). Every nonzero \(a\in\mathbb Z_p\) has a unique expression \(p^v u\) with \(v\ge0\) and \(u\) a unit: \(v\) is the number of its initial zero coordinates, and (31) performs the division. A product of units is a unit, so a product of nonzero elements cannot vanish. Thus \(\mathbb Z_p\) is an integral domain.
 
 **The locally compact field.** Adjoin inverses of \(p\) by taking fractions \(p^{-r}a\), \(r\ge0\), \(a\in\mathbb Z_p\), with
 \[
@@ -525,7 +525,7 @@ is an additive character. Its kernel is exactly \(\mathbb Z_p\), using the circl
 
 **All characters and their topology.** Each \(\chi_y(x)=\psi(xy)\) is continuous. If \(y\ne0\), take \(x=(py)^{-1}\); then \(\chi_y(x)=e^{2\pi i/p}\ne1\). Thus (28) is injective.
 
-For any continuous character \(\chi:\mathbb Q_p\to\mathbb T\), there is \(N\ge0\) such that \(|\chi(x)-1|<1\) on \(p^N\mathbb Z_p\). A subgroup of the circle contained in that arc is trivial, by HA-LCA-02, Lemma 1.2. Hence \(\chi\) kills \(p^N\mathbb Z_p\). The character \(\theta(x)=\chi(p^Nx)\) kills \(\mathbb Z_p\).
+For any continuous character \(\chi:\mathbb Q_p\to\mathbb T\), there is \(N\ge0\) such that \(|\chi(x)-1|<1\) on \(p^N\mathbb Z_p\). A subgroup of the circle contained in that arc is trivial, by [HA-LCA-02, Lemma 1.2](HA-LCA-02.md#ha-lca-02-lemma-1-2). Hence \(\chi\) kills \(p^N\mathbb Z_p\). The character \(\theta(x)=\chi(p^Nx)\) kills \(\mathbb Z_p\).
 
 For every \(n\ge1\), its value \(\theta(p^{-n})\) is a \(p^n\)-th root of unity, so uniquely
 \[
@@ -576,7 +576,7 @@ In dimension two, (22) gives exactly: the zero group; an infinite cyclic group \
 <a id="ha-lca-10-exercise-7-4"></a>
 **Exercise 7.4 — Injectivity is insufficient.** Give a continuous injective homomorphism of LCA groups with nonclosed image and nonsurjective dual. Explain the distinction from Theorem 2.1.
 
-**Solution.** Use (26) with irrational \(a\). Example 6.3 proves injectivity, density and properness of the image, and computes its dual image as the proper subgroup \(\mathbb Z+a\mathbb Z\) of \(\mathbb R\). This map is not a homeomorphism onto its image. If it were, that image would be locally compact in the relative topology, and HA-LCA-09, Lemma 1.2 would make it closed, a contradiction. Theorem 2.1 concerns an actual closed subgroup with its relative topology; mere injectivity supplies neither of these properties. \(\square\)
+**Solution.** Use (26) with irrational \(a\). Example 6.3 proves injectivity, density and properness of the image, and computes its dual image as the proper subgroup \(\mathbb Z+a\mathbb Z\) of \(\mathbb R\). This map is not a homeomorphism onto its image. If it were, that image would be locally compact in the relative topology, and [HA-LCA-09, Lemma 1.2](HA-LCA-09.md#ha-lca-09-lemma-1-2) would make it closed, a contradiction. Theorem 2.1 concerns an actual closed subgroup with its relative topology; mere injectivity supplies neither of these properties. \(\square\)
 
 <a id="ha-lca-10-exercise-7-5"></a>
 **Exercise 7.5 — Determine the dual quotient constant.** Give the coset-integral computation that fixes the constant in Proposition 5.1 for an arbitrary closed \(H\).

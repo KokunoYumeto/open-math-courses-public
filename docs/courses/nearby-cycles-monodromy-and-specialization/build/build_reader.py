@@ -9,6 +9,8 @@ readings = json.loads((root/'readings.json').read_text(encoding='utf8'))['readin
 sources = []
 for entry in readings:
     source = (root/entry['source']).read_text(encoding='utf8')
+    for source_href, reader_href in entry.get('reader_links', {}).items():
+        source=source.replace(']('+source_href+')', ']('+reader_href+')')
     sources.append(source.strip())
     normalized = re.sub(r'(\]\()\.\./', r'\1', source)
     normalized = re.sub(r'\\tag\{([^}]+)\}', lambda m:r'\qquad\text{('+m[1]+')}', normalized)

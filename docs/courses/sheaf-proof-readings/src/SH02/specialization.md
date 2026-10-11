@@ -74,6 +74,8 @@ The proof dependencies are as follows. The identifiers are contracts, not claims
 
 Derived cohomology of a locally closed subspace of a metrizable manifold is the filtered colimit over its neighborhoods, in every degree; the same holds for restriction to a closed submanifold.
 
+A proof for the full noncompact case, with arbitrary commutative coefficients and bounded-below complexes, is given in Neighborhoods of a noncompact locally closed set and Derived neighborhood comparison with arbitrary coefficients. The locally finite gluing argument proves the ordinary section comparison; restriction of an injective resolution and exact filtered colimits give the derived comparison for the natural restriction map. The manifold assumptions above meet its locally compact, Hausdorff and second-countable hypotheses.
+
 ### SH02-OPS-SIX — Six-operation prerequisite contract
 
 Exact inverse image, derived direct images, their units/counits, localization, $Rf_!\dashv f^!$, proper-support base change, projection formula, smooth base change, and trace-compatible pasting of these maps.

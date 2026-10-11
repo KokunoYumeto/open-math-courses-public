@@ -50,6 +50,56 @@ Thus the angular group has mass two when the norm coordinate has measure \(dt/t\
 
 The space \(\mathcal S(F)\) consists of smooth functions on the underlying real vector space for which every derivative, multiplied by every polynomial, is bounded. Differentiating a Fourier integral inserts polynomial factors; integrating by parts transfers powers of the Fourier variable to derivatives. All these integrals are absolutely convergent for a Schwartz function. Consequently \(\widehat f\in\mathcal S(F)\). For example the bound for \(y^\alpha\partial_y^\beta\widehat f\) follows from the \(L^1\)-norm of the corresponding derivative of \(x^\beta f\), with fixed powers of \(2\pi\) or \(4\pi\). This also justifies the differential identities used below.
 
+## Exact substitution proofs
+
+<a id="nt-adl-08-polar-substitution"></a>
+**Polar coordinates and scalar substitutions.** The complete planar formula is proved in [Banach foundation bridges, Section 15.6, (PC1)–(PC7)](https://kokunoyumeto.github.io/open-math-courses-public/courses/elliptic-boundary-reduction/banach-foundation-bridges.html#AN03-BFD-POLAR-001). For every nonnegative Lebesgue measurable \(h\), and for every absolutely integrable complex \(h\), it gives
+\[
+ \int_{\mathbb R^2}h(u,v)\,du\,dv
+ =\int_0^{2\pi}\int_0^\infty
+       h(r\cos\theta,r\sin\theta)\,r\,dr\,d\theta.
+ \tag{S1}
+\]
+The map \((r,\theta)\mapsto(r\cos\theta,r\sin\theta)\) is a Borel bijection from \((0,\infty)\times[0,2\pi)\) onto the punctured plane; its determinant is \(r\). The cited proof obtains sector areas from the linear Jacobian, proves equality of the resulting measures, and treats completed measurability, the collapsed origin and the duplicated angular endpoint. Thus it is not an appeal to an unproved nonlinear substitution theorem. Applied to the absolute value, (S1) also gives the exact equivalence of absolute integrability. Integrals of completed-measurable functions have the usual almost-everywhere section interpretation; the functions used in this lesson are Borel.
+
+Our multiplicative measure is \(2\,du\,dv/(\pi r^2)\). Consequently (S1) gives
+\[
+ \frac{2}{\pi r^2}\,r\,dr\,d\theta
+   =4\,\frac{dr}{r}\frac{d\theta}{2\pi}.
+\]
+This verifies the first equality of (4) with its original factor four. For the second equality use \(t=r^2\), so \(dt=2r\,dr\) and \(dr/r=dt/(2t)\).
+
+The scalar substitutions here are justified on compact subintervals by [Real-variable calculations, Lemma 1.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-lemma-1-3), which proves substitution from the fundamental theorem and chain rule. Its endpoint argument uses monotone convergence for nonnegative integrands and dominated convergence for absolutely convergent complex integrals. In particular \(t=r^2\) and \(t=\pi r^2\) are first used on \(0<a\le r\le b<\infty\), then \(a\downarrow0\), \(b\uparrow\infty\). No inverse derivative at radius zero is required. The same proof covers the affine substitution \(t=(1+a)/2\) and the substitution \(b=a^2\) on \(0<a<1\) in (32). Their endpoint integrals are absolute when \(\operatorname{Re}z>0\): after squaring, the absolute-value bound is \(b^{-1/2}(1-b)^{\operatorname{Re}z-1}\), integrable at both endpoints. All positive-base complex powers use the real logarithm. For the Mellin integrals the already stated half-plane bounds and Schwartz decay supply the required endpoint integrability.
+
+<a id="nt-adl-08-beta-substitution"></a>
+**The beta substitution, with its full domain.** Define
+\[
+ \begin{aligned}
+ \Psi:(0,\infty)\times(0,1)&\longrightarrow(0,\infty)^2,
+ &\Psi(r,t)&=(rt,r(1-t)),\\
+ \Psi^{-1}(x,y)&=(x+y,x/(x+y)),
+ &D\Psi(r,t)&=\begin{pmatrix}t&r\\1-t&-r\end{pmatrix}.
+ \end{aligned}
+\]
+Both compositions are the identity on the displayed domains; in particular every denominator is positive. The determinant is \(-rt-r(1-t)=-r\), and its absolute value is \(r\). For every nonnegative Borel \(H\), [Tonelli and the affine substitution formula, Section 15.1, (LP4)–(LP5)](https://kokunoyumeto.github.io/open-math-courses-public/courses/elliptic-boundary-reduction/banach-foundation-bridges.html#AN03-BFD-LP-001), give
+\[
+ \begin{aligned}
+ \int_0^\infty\!\int_0^\infty H(x,y)\,dy\,dx
+ &=\int_0^\infty\!\int_x^\infty H(x,r-x)\,dr\,dx\\
+ &=\int_0^\infty\!\int_0^r H(x,r-x)\,dx\,dr\\
+ &=\int_0^\infty\!\int_0^1 H(rt,r(1-t))\,r\,dt\,dr.
+ \end{aligned}                                                   \tag{S2}
+\]
+The first step is the translation \(y=r-x\) at fixed \(x>0\). The second applies Tonelli to the Borel function \(\mathbf1_{\{0<x<r\}}H(x,r-x)\), defined to be zero outside that region. The third uses \(x=rt\) at fixed \(r>0\), retaining its scale factor \(r\). These nonnegative identities allow infinite values and require no prior integrability assumption.
+
+There is also no restriction to the uncompleted Borel measure. Apply (S2) to Borel indicators. Since \(\Psi\) and its inverse are continuous on their domains, this identifies the image of the measure \(r\,dr\,dt\) with plane Lebesgue measure. On the increasing sets \([1/k,k]\times[1/k,1-1/k]\), \(k\ge3\), the weight \(r\) is bounded above and below by positive constants. Thus weighted null sets and coordinate null sets coincide. The Borel bijection therefore transports Borel null sets in both directions; subsets of these null sets give the same assertion for the completions. Indicator approximation proves (S2) for every nonnegative Lebesgue measurable \(H\). Applying it to \(|H|\) gives absolute integrability on one side if and only if on the other. Applying it to the positive and negative parts of the real and imaginary components proves (S2) for absolutely integrable complex \(H\), with almost-everywhere section conventions.
+
+For (31), take \(H(x,y)=e^{-x-y}x^{u-1}y^{v-1}\), where \(\operatorname{Re}u,\operatorname{Re}v>0\). Its absolute integral is the product of the two convergent positive Euler integrals with exponents \(\operatorname{Re}u\) and \(\operatorname{Re}v\). Formula (S2) transforms it into
+\[
+ e^{-r}r^{u+v-1}t^{u-1}(1-t)^{v-1}\,dt\,dr.
+\]
+The powers multiply without branch ambiguity because \(r,t,1-t\) are positive. Absolute Fubini now gives \(\Gamma(u)\Gamma(v)=\Gamma(u+v)B(u,v)\). The beta factor converges at zero and one precisely under the displayed real-part hypotheses. The previously proved nonvanishing of Gamma permits division by \(\Gamma(u+v)\). This proves the exact substitution used in Proposition 8.4 for complex parameters, not only for positive real ones.
+
 ## Mellin continuation without a functional equation
 
 The measure-theoretic inputs are [dominated convergence, Theorem 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-2-2), and [sigma-finite Radon Tonelli and Fubini, Theorem 4.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-4-4). Lebesgue measure on \(\mathbb R\) and \(\mathbb R^2\), and their restrictions to the radial intervals used below, are sigma-finite: bounded intervals or boxes form countable finite-measure covers. The positive and absolutely integrable versions of that theorem are the ones used here; no unrestricted Fubini assertion for a non-sigma-finite Haar measure is needed.
@@ -69,7 +119,7 @@ Repeated integration by parts gives
       =\frac{N!}{w(w+1)\cdots(w+N)}.
  \tag{5}
 \]
-After \(u=Nt\), the left side multiplied by \(N^w\) tends to \(\Gamma(w)\). Indeed \((1-u/N)^N\leq e^{-u}\) on \([0,N]\), and dominated convergence applies to \(u^{w-1}\), uniformly on compact subsets of \(\operatorname{Re}w>0\). The limit of the reciprocals of (5) is therefore
+After \(u=Nt\), the left side multiplied by \(N^w\) tends to \(\Gamma(w)\). Indeed \((1-u/N)^N\leq e^{-u}\) on \([0,N]\), and dominated convergence applies to \(u^{w-1}\), uniformly on compact subsets of \(\operatorname{Re}w>0\). For the scaled integrals, the [finite reciprocal identity and locally uniform product proof below](#nt-adl-08-gamma-product-proof) justify the limit without assuming nonvanishing; they give
 \[
  \frac1{\Gamma(w)}
    =w e^{\gamma w}\prod_{k=1}^\infty(1+w/k)e^{-w/k},
@@ -78,6 +128,100 @@ After \(u=Nt\), the left side multiplied by \(N^w\) tends to \(\Gamma(w)\). Inde
  \tag{6}
 \]
 The harmonic-sum limit exists by comparison with the integral of \(1/t\). On a fixed compact set, all sufficiently large factors have logarithm \(O(k^{-2})\), uniformly there. Thus the product defines an entire function and is nonzero away from the displayed linear-factor zeros. At \(0,-1,-2,\ldots\) exactly one such factor vanishes simply. Equality initially holds in the right half-plane and then agrees with the reciprocal of the recurrence continuation. In particular \(\Gamma\) has no zeros and has exactly the asserted simple poles.
+
+<a id="nt-adl-08-gamma-product-proof"></a>
+**Why the reciprocal limit does not assume nonvanishing.** For integers \(N\ge1\) and \(\operatorname{Re}w>0\), define
+\[
+ \begin{aligned}
+ I_N(w)&=N^w\int_0^1t^{w-1}(1-t)^N\,dt,\\
+ P_N(w)&=wN^{-w}\prod_{k=1}^N(1+w/k),\\
+ I_N(w)P_N(w)&=1.
+ \end{aligned}                                                    \tag{G1}
+\]
+To see the finite identity (5) with its endpoint conditions, put \(J_N(w)=\int_0^1t^{w-1}(1-t)^Ndt\). For \(N\ge1\), integrate the derivative of \(t^w/w\) against \((1-t)^N\). Both boundary terms vanish when \(\operatorname{Re}w>0\), and
+\(J_N(w)=N J_{N-1}(w+1)/w\).
+The terminal integral is \(J_0(w+N)=1/(w+N)\). Iteration gives exactly (5). The last equality in (G1) follows from it, since
+\(w\prod_{k=1}^N(1+w/k)=w(w+1)\cdots(w+N)/N!\).
+Here \(N^{\pm w}=\exp(\pm w\log N)\) uses the real logarithm. None of the finite denominators in (5) vanishes in the right half-plane. The product \(P_N\), unlike \(I_N\), is defined and entire on all of \(\mathbb C\).
+
+Write \(H_N=\sum_{k=1}^N1/k\) and \(\delta_N=H_N-\log N\). The integral comparison is explicit:
+\[
+ \begin{aligned}
+ \delta_N&>0,\\
+ 0<\delta_N-\delta_{N+1}
+ &=\int_N^{N+1}\frac{dx}{x}-\frac1{N+1}
+ <\frac1N-\frac1{N+1}.
+ \end{aligned}                                                    \tag{G2}
+\]
+Indeed \(H_N\ge\int_1^{N+1}dx/x>\log N\). The displayed monotone, bounded sequence therefore has a limit \(\gamma\), and summing the last bound from \(N\) onwards gives \(0\le\delta_N-\gamma\le1/N\).
+
+<a id="nt-adl-08-gamma-entire-tail"></a>
+To justify the infinite product, fix \(R>0\) and an integer \(K>2R\). For \(k>K\), on the disc \(|w|<k\), put
+\[
+ L_k(w)=\sum_{j=2}^{\infty}\frac{(-1)^{j+1}}j(w/k)^j.
+\]
+[The power-series lemma and the locally uniform holomorphic-limit theorem, Lemma 3.1 and Corollary 3.5 of the Cauchy reading](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-03), apply to these exact scalar series. Termwise differentiation gives
+\[
+ L_k'(w)=\frac1{k+w}-\frac1k.
+\]
+Consequently the derivative of \((1+w/k)\exp(-w/k-L_k(w))\) is zero on that disc; its value at zero is one. A zero derivative makes it constant by integration along line segments. Hence
+\[
+ \exp L_k(w)=(1+w/k)e^{-w/k}.
+\]
+This constructs the logarithm needed for the tail without choosing a logarithm across any zero of a finite factor. On \(|w|\le R\),
+\[
+ |L_k(w)|\le\sum_{j=2}^{\infty}(R/k)^j
+       \le \frac{2R^2}{k^2},\qquad
+ \sum_{k>M}\frac1{k^2}\le\frac1M.                                 \tag{G3}
+\]
+The last inequality follows by comparison with \(\int_M^\infty x^{-2}dx\). Thus the logarithmic tail converges uniformly on every smaller compact disc and defines a holomorphic sum. Exponentiation is compatible with that uniform convergence, since the sums are uniformly bounded on each compact disc.
+
+For \(N\ge K\), the exact finite identity
+\[
+ P_N(w)=w e^{\delta_N w}
+           \prod_{k=1}^{K}(1+w/k)e^{-w/k}
+           \exp\!\left(\sum_{k=K+1}^{N}L_k(w)\right)
+\]
+therefore converges uniformly on \(|w|\le R\) to
+\[
+ F(w)=w e^{\gamma w}
+           \prod_{k=1}^{K}(1+w/k)e^{-w/k}
+           \exp\!\left(\sum_{k>K}L_k(w)\right).                   \tag{G4}
+\]
+Different choices of \(R,K\) agree because they are limits of the same \(P_N\). Corollary 3.5 consequently makes \(F\) entire. Its exponential factors never vanish, since \(e^ze^{-z}=1\). In a neighbourhood of any fixed point, choose \(K\) larger than twice its modulus and then a small disc about the point. Formula (G4) shows that the only zeros there are those of \(w\prod_{k=1}^K(1+w/k)\). They are the distinct points \(0,-1,\ldots,-K\), each of multiplicity one. Varying the disc proves that \(F\) has precisely the simple zeros \(0,-1,-2,\ldots\), and no others.
+
+The Euler-integral limit also holds locally uniformly, with an explicit majorant. If a compact set of parameters lies in \(\sigma_0\le\operatorname{Re}w\le\sigma_1\), where \(0<\sigma_0\le\sigma_1\), write
+\[
+ I_N(w)=\int_0^\infty u^{w-1}a_N(u)\,du,\qquad
+ a_N(u)=
+ \begin{cases}(1-u/N)^N,&0\le u<N,\\0,&u\ge N.\end{cases}
+\]
+For \(0\le u<N\), integrating \(1/(1-v)\ge1\) gives \(\log(1-u/N)\le-u/N\), so \(0\le a_N(u)\le e^{-u}\). For each fixed \(u\), the same logarithmic series gives \(N\log(1-u/N)=-u+O(u^2/N)\) as \(N\to\infty\); hence \(a_N(u)\to e^{-u}\). The error, uniformly over the parameter compact set, is bounded by the integrable function
+\[
+ g(u)=
+ \begin{cases}
+ u^{\sigma_0-1}e^{-u},&0<u\le1,\\
+ u^{\sigma_1-1}e^{-u},&u>1.
+ \end{cases}
+\]
+At zero its integral is bounded by \(1/\sigma_0\). At infinity an exponential-series bound makes every fixed power times \(e^{-u/2}\) bounded, leaving an integrable multiple of \(e^{-u/2}\). Apply [dominated convergence, Theorem 2.2 of the integration reading](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-2-2), to
+\(\max(u^{\sigma_0-1},u^{\sigma_1-1})|a_N(u)-e^{-u}|\).
+Its integral tends to zero and bounds \(\sup_w|I_N(w)-\Gamma(w)|\) on that compact set. Thus \(I_N\to\Gamma\) locally uniformly there.
+
+<a id="nt-adl-08-gamma-identity-limit"></a>
+Taking limits in the finite identity (G1) now gives \(\Gamma(w)F(w)=1\) on \(\operatorname{Re}w>0\). This proves nonvanishing there before any limiting reciprocal is taken. The meromorphic function \(1/F\) extends this integral, and agrees with the recurrence continuation because they agree on the initial half-plane. Equivalently, for each integer \(m\ge1\), on \(\operatorname{Re}w>-m\) away from \(0,-1,\ldots,-(m-1)\), the recurrence writes that continuation as
+\[
+ \Gamma(w)=\frac{\Gamma(w+m)}{w(w+1)\cdots(w+m-1)};
+\]
+these expressions agree on their overlaps by the original recurrence, and the meromorphic identity principle proved later in this lesson identifies them with \(1/F\). The simple zeros of \(F\) give exactly the asserted simple poles of \(\Gamma\); a reciprocal of an entire function has no zeros at its finite holomorphic points.
+
+The residues used in the exercises follow with their signs unchanged. Apply the recurrence \(m+1\) times, and cancel only the explicit denominator factor \(w+m\). Since \(\Gamma(1)=\int_0^\infty e^{-t}dt=1\), for every integer \(m\ge0\),
+\[
+ \lim_{w\to-m}(w+m)\Gamma(w)
+ =\frac{\Gamma(1)}{\prod_{j=0}^{m-1}(-m+j)}
+ =\frac{(-1)^m}{m!}.                                             \tag{G5}
+\]
+For \(m=0\) the product is empty and equals one. The numerator is holomorphic near \(1\); the other denominator factors are nonzero near \(-m\), so this limit is the residue of a simple pole, not a cancellation of unexamined singularities.
 
 The Taylor remainder used below is uniform in direction. To see this directly, let \(f\) be \(C^{M+1}\) on a neighbourhood of a closed ball about zero in \(\mathbb R^d\), where \(d=1\) or \(2\), and set \(g(t)=f(tx)\) for \(0\le t\le1\). The [fundamental theorem and chain rule, Lemma 0.1(2)](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-07), give
 \[
@@ -333,7 +477,7 @@ In particular replacing the negative character in our table by the positive one 
  \tag{30}
 \]
 
-*Proof.* For \(\operatorname{Re}u,\operatorname{Re}v>0\), change variables \((x,y)=(rt,r(1-t))\) in the absolutely convergent product of two Euler Gamma integrals. The Jacobian is \(r\), which proves
+*Proof.* For \(\operatorname{Re}u,\operatorname{Re}v>0\), change variables \((x,y)=(rt,r(1-t))\) in the absolutely convergent product of two Euler Gamma integrals. The absolute Jacobian is \(r\); the [beta-substitution proof above](#nt-adl-08-beta-substitution) establishes the change of variables and absolute Fubini for these complex parameters. This proves
 \[
  B(u,v):=\int_0^1t^{u-1}(1-t)^{v-1}dt
                   =\frac{\Gamma(u)\Gamma(v)}{\Gamma(u+v)}.
@@ -381,7 +525,7 @@ The dual has exponent \(-n\), so the epsilon product is \((-i)^{2|n|}=(-1)^n=c_{
 ## Prerequisites and further directions
 
 - The classification of real and complex quasi-characters is imported exactly from Proposition 6.1. The additive pairing, its self-dual measures, Fourier inversion, and the Gaussian Fourier transforms are imported from Propositions 5.1–5.2. Preservation of the Schwartz space and the polynomial transforms used here are justified above.
-- Dominated convergence and sigma-finite Fubini are [Theorems 2.2 and 4.4 of Integration and \(L^1\)](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html). The parameter, uniform Taylor-remainder and meromorphic-identity arguments above give their exact applications. [Lemma 0.1 and Theorems 3.5 and 3.7 of the Cauchy reading](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-03) supply the fundamental theorem, locally uniform holomorphic limits and the holomorphic identity theorem. The needed Gamma continuation, nonvanishing, beta identity, and duplication remain proved here. The Euclidean change-of-variables formula is also used for polar coordinates and the beta-integral Jacobian.
+- Dominated convergence and sigma-finite Fubini are [Theorems 2.2 and 4.4 of Integration and \(L^1\)](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html). The parameter, uniform Taylor-remainder and meromorphic-identity arguments above give their exact applications. [Lemma 0.1 and Theorems 3.5 and 3.7 of the Cauchy reading](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-03) supply the fundamental theorem, locally uniform holomorphic limits and the holomorphic identity theorem. The needed Gamma continuation, nonvanishing, beta identity, and duplication remain proved here. The [polar and scalar substitutions](#nt-adl-08-polar-substitution) are bound to their exact earlier programme proofs, and the [beta substitution](#nt-adl-08-beta-substitution) is proved above from Tonelli and affine substitution, with its domains, determinant and completed-measure conditions.
 - The global Poisson argument, the completed Hecke functional equation, and class-number residues are the subjects of the next two lessons. Archimedean Weil-group induction and higher-dimensional constants, discussed in [Deligne 1973, §§3 and 5], are not used to prove the one-dimensional assertions here.
 
 ## References

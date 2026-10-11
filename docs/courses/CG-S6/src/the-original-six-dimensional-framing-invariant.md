@@ -960,13 +960,13 @@ Hence the following definition is independent of every integral lift:
 \]
 Its exact comparison with the original geometric construction is
 \[
- \begin{split}
+ \begin{aligned}
  q_\tau(\rho f_*[S^3])&=\varepsilon_\tau(f)+\mu(f),\\
  q_\tau(\rho f_*[S^3])&=\varepsilon_\tau(f)
                                       &&\text{if }f\text{ is embedded},\\
  q_\tau(a+b)&=q_\tau(a)+q_\tau(b)+\lambda_2(a,b)
                                       &&\text{for all }a,b.
- \end{split}
+ \end{aligned}
  \tag{6.22}
 \]
 The first line holds for any self-transverse immersion without triple points; the second is its specialization with the actual double count zero. Together with \(q_\tau(0)=0\), this supplies precisely the quadratic space required in Section 4.
@@ -1335,12 +1335,12 @@ The exact integral belt pairings are
 \]
 Thus \(L^\perp\) is precisely the sublattice \(v_1=v_2=0\). Its actual quotient map and inverse are
 \[
- \begin{split}
+ \begin{aligned}
   L^\perp/L&\longrightarrow\mathbb ZA\oplus\mathbb ZB,
        &z+L&\longmapsto xA+yB,\\
   \mathbb ZA\oplus\mathbb ZB&\longrightarrow L^\perp/L,
        &xA+yB&\longmapsto xA+yB+L.
- \end{split}
+ \end{aligned}
  \tag{10.10}
 \]
 The two original signs in (10.9) have been retained, although both reduce to the same nonzero sign in the coefficient field.

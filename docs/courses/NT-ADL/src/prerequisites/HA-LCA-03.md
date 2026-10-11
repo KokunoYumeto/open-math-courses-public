@@ -2,7 +2,7 @@
 
 **Lesson HA-LCA-03.** This lesson identifies frequencies with all multiplicative functionals on the convolution algebra, proves the transform laws, and computes explicit examples. Self-checked by the writing AI.
 
-Let \(G\) be a locally compact Hausdorff abelian group. Fix the Haar measure \(dx\) on the complete locally determined domain constructed in the Haar reading, Theorem 5.1. Write \(\Gamma=\widehat G\), with the compact-convergence topology from Characters and the dual group. We impose no countability assumption.
+Let \(G\) be a locally compact Hausdorff abelian group. Fix the Haar measure \(dx\) on the complete locally determined domain constructed in [the Haar reading, Theorem 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/haar-measure.html#ha-lca-pre-haar-theorem-5-1). Write \(\Gamma=\widehat G\), with the compact-convergence topology from [Characters and the dual group](HA-LCA-02.md). We impose no countability assumption.
 
 The source for the spectrum and transform arguments is D. H. Fremlin, [*Measure Theory*, §§445F–K, version of 20 March 2008](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex), in the freely accessible 2013 source collection. We supply a finite-approximation proof of the integral step instead of importing a dual-space representation theorem. All compactness, integration, representation and Banach-algebra results invoked below have exact earlier programme proofs.
 
@@ -15,9 +15,9 @@ Put
  L_af(x)=f(x-a),\qquad f^*(x)=\overline{f(-x)},\qquad
  (f*g)(x)=\int_G f(y)g(x-y)\,dy .
 \]
-The convolution expression represents an \(L^1\) class; its existence and independence of representatives are proved in the Haar reading, Theorem 6.2. That theorem proves that \(L^1(G)\) is a commutative Banach star algebra. Translations are isometries and depend continuously on \(a\) in \(L^1\), by its Lemma 6.1.
+The convolution expression represents an \(L^1\) class; its existence and independence of representatives are proved in [the Haar reading, Theorem 6.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/haar-measure.html#ha-lca-pre-haar-theorem-6-2). That theorem proves that \(L^1(G)\) is a commutative Banach star algebra. Translations are isometries and depend continuously on \(a\) in \(L^1\), by its Lemma 6.1.
 
-Let \(\Delta(L^1(G))\) be the set of nonzero complex-linear multiplicative functionals on this algebra. Such functionals are automatically contractive by the Banach reading, Theorem 3.4; continuity is a conclusion, not an extra assumption in this definition.
+Let \(\Delta(L^1(G))\) be the set of nonzero complex-linear multiplicative functionals on this algebra. Such functionals are automatically contractive by [the Banach reading, Theorem 3.4](HA-LCA-PRE-BANACH.md#ha-lca-pre-banach-theorem-3-4); continuity is a conclusion, not an extra assumption in this definition.
 
 <a id="ha-lca-03-lemma-1-1"></a>
 ### Lemma 1.1. Translations inside convolution
@@ -89,7 +89,7 @@ The first interchange involves only the compact supports of \(f,g\) and their su
 
 Choose nonnegative \(u\in C_c(G)\) with \(\int u=1\), as constructed in the Haar reading, Corollary 6.3. The function \(f=\overline\gamma u\) has norm one and \(h_\gamma(f)=1\). This proves nontriviality and the exact norm.
 
-If \(\gamma\ne\eta\), their difference \(d=\gamma-\eta\) is nonzero at some point \(x_0\). On some open neighbourhood \(O\) of \(x_0\), \(|d|\ge c>0\). The earlier Radon reading, Lemma 1.3, supplies a nonnegative \(u\in C_c(G)\), supported in \(O\), with \(u(x_0)=1\). Haar positivity on open sets gives \(\int u>0\). For \(f=\overline d\,u\),
+If \(\gamma\ne\eta\), their difference \(d=\gamma-\eta\) is nonzero at some point \(x_0\). On some open neighbourhood \(O\) of \(x_0\), \(|d|\ge c>0\). The earlier [Radon reading, Lemma 1.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-3), supplies a nonnegative \(u\in C_c(G)\), supported in \(O\), with \(u(x_0)=1\). Haar positivity on open sets gives \(\int u>0\). For \(f=\overline d\,u\),
 \[
  h_\gamma(f)-h_\eta(f)=\int |d|^2u>0 .
 \]
@@ -172,7 +172,7 @@ belongs to \(C_0(\Gamma)\), and
 \]
 Here \(f^{*n}\) means \(n\)-fold convolution, whereas \(f^*\) means the involution.
 
-**Proof.** The earlier Banach reading, Theorem 4.2, proves local compactness and the \(C_0\) property for the spectrum of any commutative Banach algebra, as well as the displayed radius formula in its unitization. Apply it to \(L^1(G)\), already proved a Banach algebra in the Haar reading, Theorem 6.2. The homeomorphism of Theorem 2.1 transfers each assertion to \(\Gamma\). Its topological group structure is proved in the character lesson, Proposition 1.1. This also gives a second route to that lesson's direct local-compactness theorem. \(\square\)
+**Proof.** The earlier [Banach reading, Theorem 4.2](HA-LCA-PRE-BANACH.md#ha-lca-pre-banach-theorem-4-2), proves local compactness and the \(C_0\) property for the spectrum of any commutative Banach algebra, as well as the displayed radius formula in its unitization. Apply it to \(L^1(G)\), already proved a Banach algebra in the Haar reading, Theorem 6.2. The homeomorphism of Theorem 2.1 transfers each assertion to \(\Gamma\). Its topological group structure is proved in the character lesson, Proposition 1.1. This also gives a second route to that lesson's direct local-compactness theorem. \(\square\)
 
 ## 3. The Fourier algebra
 
@@ -225,11 +225,11 @@ is a self-adjoint subalgebra of \(C_0(\Gamma)\), separates points of \(\Gamma\),
 
 **Proof.** Linearity, the product formula and the involution formula in Theorem 3.1 give the algebra and self-adjointness assertions. Given \(\gamma\), Lemma 1.2 supplies \(f\) with \(h_{\gamma^{-1}}(f)\ne0\), which is \(\widehat f(\gamma)\). For \(\gamma\ne\eta\), the characters \(\gamma^{-1},\eta^{-1}\) are distinct, and the same lemma supplies \(f\) with
 \(h_{\gamma^{-1}}(f)\ne h_{\eta^{-1}}(f)\).
-This is separation by \(\widehat f\). The earlier uniform approximation reading, Theorem 3.2, proves that a self-adjoint, point-separating and nowhere-vanishing subalgebra of \(C_0\) on an LCH space is uniformly dense. Its hypotheses have all been checked, and Corollary 2.2 supplies the LCH property. \(\square\)
+This is separation by \(\widehat f\). The earlier [uniform approximation reading, Theorem 3.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/uniform-approximation.html#ha-lca-pre-approx-theorem-3-2), proves that a self-adjoint, point-separating and nowhere-vanishing subalgebra of \(C_0\) on an LCH space is uniformly dense. Its hypotheses have all been checked, and Corollary 2.2 supplies the LCH property. \(\square\)
 
 ## 4. Measures and the \(L^1\) ideal
 
-Let \(M(G)\) be the complex finite Radon measures, with the total-variation norm. Its identification with \(C_0(G)^*\) is proved in the Radon reading, Theorem 4.3. Convolution of measures is defined using the finite Radon product and addition:
+Let \(M(G)\) be the complex finite Radon measures, with the total-variation norm. Its identification with \(C_0(G)^*\) is proved in [the Radon reading, Theorem 4.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-theorem-4-3). Convolution of measures is defined using the finite Radon product and addition:
 \[
  \mu*\nu=(x,y\mapsto x+y)_*(\mu\otimes\nu),\qquad
  \mu^*(B)=\overline{\mu(-B)} .
@@ -407,7 +407,7 @@ Use Lebesgue measure and the pairing \(E(x\xi)\). Then
 
 **Verification.** For the interval, put \(\omega=2\pi\xi\). If \(\omega\ne0\), integrate \(e^{-i\omega x}\) on \([-1,1]\) with antiderivative \(e^{-i\omega x}/(-i\omega)\), giving \(2\sin\omega/\omega\). At zero the interval has measure two.
 
-The Gaussian formula is the real-variable reading, Theorem 2.1, with parameter \(u=-\xi\). That proof establishes absolute integrability, the normalization and the transform without using general Fourier inversion.
+The Gaussian formula is [the real-variable reading, Theorem 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-theorem-2-1), with parameter \(u=-\xi\). That proof establishes absolute integrability, the normalization and the transform without using general Fourier inversion.
 
 For the exponential, split the integral into its positive and negative half-lines. The first gives
 \(\int_0^\infty e^{-(1+i\omega)x}\,dx=1/(1+i\omega)\).

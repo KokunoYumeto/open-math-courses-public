@@ -6,7 +6,7 @@ Poisson summation is Fourier inversion after averaging over a closed subgroup. T
 
 Write \(E(t)=e^{2\pi it}\). Our Fourier transform uses the conjugate of the character:
 \(\widehat f(\gamma)=\int f(x)\overline{\gamma(x)}\,dx\).
-The general inversion theorem is HA-LCA-09, Theorem 4.1. Closed-subgroup duality, quotient integration and all three dual measure normalizations are HA-LCA-10, Theorems 2.1 and 4.1, Proposition 5.1.
+The general inversion theorem is [HA-LCA-09, Theorem 4.1](HA-LCA-09.md#ha-lca-09-theorem-4-1). Closed-subgroup duality, quotient integration and all three dual measure normalizations are [HA-LCA-10, Theorems 2.1 and 4.1, Proposition 5.1](HA-LCA-10.md#ha-lca-10-theorem-2-1).
 
 Free sources used for this lesson are David Applebaum, [*Probabilistic Trace and Poisson Summation Formulae on Locally Compact Abelian Groups*, §2 and §5.1](https://arxiv.org/pdf/1602.01252v2), version 4 February 2016, together with his [free author corrigendum](https://eprints.whiterose.ac.uk/id/eprint/106772/12/ProbTracecorrigendum1.pdf); Thomas Fidler and Otmar Scherzer, [*An Introduction to Signal and Image Processing*, Theorem 2.2](https://csc.univie.ac.at/files/SIP_lecture_notes_SS2012.pdf), 14 June 2012; and Keith Conrad, [*The Character Group of \(\mathbb Q\)*, §§2–4](https://kconrad.math.uconn.edu/blurbs/gradnumthy/characterQ.pdf). Quotient integration derives from the preceding lesson's reconstruction of D. H. Fremlin, [*Measure Theory*, §§443P–Q](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex). Every result used from these sources is proved here or in the linked earlier lessons.
 
@@ -24,7 +24,7 @@ on \(C_c(G)\). Put \(A=H^\perp\subseteq\widehat G\), identified with \(\widehat 
 <a id="ha-lca-11-lemma-1-0"></a>
 **Lemma 1.0 — Null sets under the quotient map.** If \(N\) is Haar-null in the full completed domain of \(Q\), then \(q^{-1}(N)\) is Haar-null in the full domain of \(G\).
 
-**Proof.** First let \(U\subseteq G\) be relatively compact and open. Its compact image \(q(\overline U)\) is contained in an open sigma-compact subgroup \(J\) of \(Q\): adjoining a compact identity neighbourhood and taking finite sums and differences gives such a subgroup, by the general Haar reading, Lemma 1.1. On \(J\), the full Haar domain is the completion of the sigma-compact Borel Haar measure. Thus \(N\cap J\) is contained in a Borel null set \(N_0\subseteq J\), which is also Borel in \(Q\).
+**Proof.** First let \(U\subseteq G\) be relatively compact and open. Its compact image \(q(\overline U)\) is contained in an open sigma-compact subgroup \(J\) of \(Q\): adjoining a compact identity neighbourhood and taking finite sums and differences gives such a subgroup, by [the general Haar reading, Lemma 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-1-1). On \(J\), the full Haar domain is the completion of the sigma-compact Borel Haar measure. Thus \(N\cap J\) is contained in a Borel null set \(N_0\subseteq J\), which is also Borel in \(Q\).
 
 Apply HA-LCA-10, Theorem 4.1, to the Borel function
 \(1_U(x)1_{N_0}(q(x))\). It has finite integral and is zero outside a relatively compact set, so its representative satisfies the theorem's condition. Its coset integral is
@@ -33,7 +33,7 @@ Apply HA-LCA-10, Theorem 4.1, to the Borel function
 \]
 The second factor is finite for every coset, since its section is contained in a compact subset of \(H\). Consequently the integral over \(Q\) is zero. Hence \(U\cap q^{-1}(N)\), a subset of a Haar-null Borel set, is measurable and null.
 
-Choose an open sigma-compact subgroup of \(G\). Each of its cosets has a countable cover by relatively compact open sets, so its intersection with \(q^{-1}(N)\) is null by the preceding paragraph. The full Haar domain and measure are the completed sum over these open cosets, as proved in the general Haar reading, Theorem 3.1. All component measures are zero; their sum is zero, even if there are uncountably many components. \(\square\)
+Choose an open sigma-compact subgroup of \(G\). Each of its cosets has a countable cover by relatively compact open sets, so its intersection with \(q^{-1}(N)\) is null by the preceding paragraph. The full Haar domain and measure are the completed sum over these open cosets, as proved in [the general Haar reading, Theorem 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-3-1). All component measures are zero; their sum is zero, even if there are uncountably many components. \(\square\)
 
 <a id="ha-lca-11-theorem-1-1"></a>
 **Theorem 1.1 — Poisson summation for a closed subgroup.** Let \(f\in L^1(G)\), and let
@@ -55,9 +55,9 @@ For a Borel representative \(f_0\) zero outside an open sigma-compact subgroup, 
 \]
 holds for almost every coset and for almost every \(x\in G\). Every \(L^1\) class has such an \(f_0\). If \(G\) is sigma-compact, every completed-measurable representative is permitted. If the actual coset integrals exist absolutely everywhere and give a continuous function on \(Q\), equality holds everywhere for that function. In particular this last conclusion applies to \(f\in C_c(G)\) whenever the transform restriction is integrable.
 
-**Proof.** Choose \(f_j\in C_c(G)\) with \(\|f_j-f\|_1\to0\), using the general Haar reading, Lemma 5.1. Averaging is a contraction, so \(Pf_j\to F\) in \(L^1(Q)\). The integral definition gives the uniform bound
+**Proof.** Choose \(f_j\in C_c(G)\) with \(\|f_j-f\|_1\to0\), using [the general Haar reading, Lemma 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-5-1). Averaging is a contraction, so \(Pf_j\to F\) in \(L^1(Q)\). The integral definition gives the uniform bound
 \(\|\widehat u\|_\infty\le\|u\|_1\) on each group. Thus \(\widehat{Pf_j}\to\widehat F\) uniformly, and \(\widehat f_j|_A\to\widehat f|_A\) uniformly. The \(C_c\) identity
-\(\widehat{Pf_j}=\widehat f_j|_A\) is HA-LCA-10, Lemma 5.0. Passing to the limit proves (2) at every point.
+\(\widehat{Pf_j}=\widehat f_j|_A\) is [HA-LCA-10, Lemma 5.0](HA-LCA-10.md#ha-lca-10-lemma-5-0). Passing to the limit proves (2) at every point.
 
 Under the extra integrability hypothesis, general inversion on the LCA group \(Q\), HA-LCA-09, Theorem 4.1, gives exactly (3), continuous and equal to \(F\) almost everywhere. The character \(a\) kills \(H\), so the integral depends only on \(q(x)\). The representative assertions and the almost-everywhere existence of the absolute coset integrals are precisely HA-LCA-10, Theorem 4.1. Combine its exceptional quotient null set with the inversion exceptional set and apply Lemma 1.0 to obtain the assertion on \(G\).
 
@@ -65,7 +65,7 @@ If the actual average is continuous, it and \(F^\circ\) are two continuous repre
 
 For later use, every continuous integrable function on \(G\) also satisfies the required support condition. Indeed, fix an open sigma-compact subgroup \(J\). A coset on which \(f\) is nonzero has strictly positive integral of \(|f|\), by continuity and full support. There can be only countably many such cosets: those with mass greater than \(1/n\) are finite for each \(n\). Adjoining one representative from each to \(J\) generates an open sigma-compact subgroup containing the nonzero set of \(f\). Thus the continuous functions used below are legitimate representatives. \(\square\)
 
-The representative condition is essential on arbitrary groups. HA-LCA-10, Example 4.0 proves that a Borel representative of zero on \(\mathbb R_d\times\mathbb R\) can have every coset integral equal to one. Equation (2), being an identity on \(L^1\) classes, has no such ambiguity.
+The representative condition is essential on arbitrary groups. [HA-LCA-10, Example 4.0](HA-LCA-10.md#ha-lca-10-example-4-0) proves that a Borel representative of zero on \(\mathbb R_d\times\mathbb R\) can have every coset integral equal to one. Equation (2), being an identity on \(L^1\) classes, has no such ambiguity.
 
 <a id="ha-lca-11-proposition-1-2"></a>
 **Proposition 1.2 — Convolution tests on a lattice.** Let \(L\le G\) be discrete and cocompact. Give \(L\) counting measure and let \(c=dz(G/L)\) for the quotient measure in (1). Then \(A=L^\perp\) is discrete with \(da=c^{-1}\) times counting measure. For \(u,v\in C_c(G)\) and \(f=u*\widetilde v\),
@@ -77,9 +77,9 @@ The representative condition is essential on arbitrary groups. HA-LCA-10, Exampl
 \]
 The left sum is finite at each point; the right sum is absolutely and uniformly convergent. The conclusion extends to every finite linear combination of these convolutions.
 
-**Proof.** The discrete subgroup is closed by HA-LCA-09, Lemma 1.2. Subgroup duality identifies \(A\) with the dual of the compact quotient. Compact-discrete duality and HA-LCA-07, Proposition 3.3 give discreteness and point mass \(1/c\).
+**Proof.** The discrete subgroup is closed by [HA-LCA-09, Lemma 1.2](HA-LCA-09.md#ha-lca-09-lemma-1-2). Subgroup duality identifies \(A\) with the dual of the compact quotient. Compact-discrete duality and [HA-LCA-07, Proposition 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-proposition-3-3) give discreteness and point mass \(1/c\).
 
-The averages \(Pu,Pv\) are continuous on the compact quotient, hence in \(L^2(Q)\). By (2) and HA-LCA-08, Theorem 1.1,
+The averages \(Pu,Pv\) are continuous on the compact quotient, hence in \(L^2(Q)\). By (2) and [HA-LCA-08, Theorem 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-plancherel-theorem.html#ha-lca-08-theorem-1-1),
 \[
  \frac1c\sum_{a\in A}|\widehat u(a)|^2=\|Pu\|_2^2,\qquad
  \frac1c\sum_{a\in A}|\widehat v(a)|^2=\|Pv\|_2^2.
@@ -92,7 +92,7 @@ Cauchy–Schwarz, first for finite subsets and then taking their supremum, gives
 \]
 An absolutely summable family has countable support: for each \(n\), only finitely many terms exceed \(1/n\) in absolute value. Its finite-subset tails control the sup norm of the character series, proving absolute uniform convergence.
 
-The function \(f\) is in \(C_c(G)\), supported in \(\operatorname{supp}u-\operatorname{supp}v\), and its transform is the product in (5), by HA-LCA-03, Theorem 3.1. Apply Theorem 1.1 and (6). The intersection of \(L\) with any compact set is finite: it is a closed compact discrete space, whose singleton cover has a finite subcover. This proves the left-side finiteness. Finite linear combinations preserve all conclusions. \(\square\)
+The function \(f\) is in \(C_c(G)\), supported in \(\operatorname{supp}u-\operatorname{supp}v\), and its transform is the product in (5), by [HA-LCA-03, Theorem 3.1](HA-LCA-03.md#ha-lca-03-theorem-3-1). Apply Theorem 1.1 and (6). The intersection of \(L\) with any compact set is finite: it is a closed compact discrete space, whose singleton cover has a finite subcover. This proves the left-side finiteness. Finite linear combinations preserve all conclusions. \(\square\)
 
 ## 2. Integer periods and Euclidean lattices
 
@@ -128,7 +128,7 @@ The first series converges absolutely and uniformly on each compact interval. Th
 
 **Proof.** The tails of the first series on \([0,1]\) are bounded by the corresponding tails of the first nonnegative sum in (8). Thus it is uniformly convergent and its sum is continuous there. A compact interval is covered by finitely many integer translates of \([0,1]\); shifting the summation index proves the same assertion on that interval. Absolute convergence permits reindexing, so the sum is one-periodic and descends to a continuous function on \(\mathbb R/\mathbb Z\).
 
-For Lebesgue measure on \(\mathbb R\) and counting measure on \(\mathbb Z\), the quotient has mass one and its dual \(\mathbb Z\) has counting measure, by HA-LCA-10, Example 6.2. The second condition in (8) is precisely the transform-restriction hypothesis of Theorem 1.1. That theorem gives (9) everywhere. The sup norm of each dual-series term is \(|\widehat f(n)|\); summable tails give the last convergence assertion. \(\square\)
+For Lebesgue measure on \(\mathbb R\) and counting measure on \(\mathbb Z\), the quotient has mass one and its dual \(\mathbb Z\) has counting measure, by [HA-LCA-10, Example 6.2](HA-LCA-10.md#ha-lca-10-example-6-2). The second condition in (8) is precisely the transform-restriction hypothesis of Theorem 1.1. That theorem gives (9) everywhere. The sup norm of each dual-series term is \(|\widehat f(n)|\); summable tails give the last convergence assertion. \(\square\)
 
 <a id="ha-lca-11-corollary-2-2"></a>
 **Corollary 2.2 — Poisson summation on a Euclidean lattice.** Let \(\Lambda=M\mathbb Z^d\), where \(M\) is invertible, put \(v=|\det M|\), and let \(\Lambda^*=M^{-T}\mathbb Z^d\). Suppose \(f\) is continuous and, for some \(C,\delta>0\),
@@ -180,14 +180,14 @@ This checks the dual basis and the constant directly. Corollary 2.2 applies to a
  \tag{13}
 \]
 
-**Proof.** The Gaussian calculation proved in HA-LCA-03, Example 5.2 is
+**Proof.** The Gaussian calculation proved in [HA-LCA-03, Example 5.2](HA-LCA-03.md#ha-lca-03-example-5-2) is
 \[
  \widehat{\,e^{-\pi t x^2}\,}(\xi)
         =t^{-1/2}e^{-\pi \xi^2/t}.
  \tag{14}
 \]
 Both functions decay faster than any prescribed inverse power. Indeed, the exponential series gives \(e^u\ge u^N/N!\) for \(u>0\); use a sufficiently large \(N\), and use boundedness on \([-1,1]\). The periodization and dual sums therefore converge as in Lemma 2.0. Corollary 2.1 at \(x=0\) gives
-\(\theta(t)=t^{-1/2}\theta(1/t)\), which is (13). Applying the product Gaussian transform, HA-LCA-07, Proposition 3.2, proves the corresponding identity on \(\mathbb Z^d\), and Corollary 2.2 supplies the covolume factor for any full lattice. \(\square\)
+\(\theta(t)=t^{-1/2}\theta(1/t)\), which is (13). Applying the product Gaussian transform, [HA-LCA-07, Proposition 3.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-proposition-3-2), proves the corresponding identity on \(\mathbb Z^d\), and Corollary 2.2 supplies the covolume factor for any full lattice. \(\square\)
 
 <a id="ha-lca-11-example-3-2"></a>
 **Example 3.2 — The heat kernel of \(\mathbb R/\mathbb Z\).** For \(t>0\),
@@ -206,9 +206,9 @@ It is positive, has integral one over a period, satisfies
 **Proof.** Apply (14) with parameter \(1/(4\pi t)\), including the prefactor in (15). Its transform is \(e^{-4\pi^2t\xi^2}\). Corollary 2.1 proves (15). The positive Gaussian summands make \(K_t>0\). Monotone convergence and the tiling of the line by intervals of length one give
 \(\int_0^1K_t(x)\,dx=\int_\mathbb R(4\pi t)^{-1/2}e^{-x^2/(4t)}\,dx=1\).
 
-On each region \(t\ge\varepsilon>0\), multiplying the Fourier terms by any fixed power of \(n\) still gives a uniformly summable family. To see this, absorb that power into \(e^{-2\pi^2\varepsilon n^2}\) using the exponential-series estimate in Example 3.1; the remaining Gaussian terms are summable. Thus the series of every fixed \(x\)-derivative and \(t\)-derivative converge uniformly there. The rule permitting these differentiations follows from the fundamental theorem of calculus already proved in the real-variable reading, Lemmas 1.1–1.3: integrate the uniformly convergent derivative series on a compact interval, pass the limit through its finite integral, and recover the original uniformly convergent series at one endpoint. Repeat for each derivative. Both \(\partial_t\) and \(\partial_x^2\) multiply the \(n\)-th term by \(-4\pi^2n^2\), proving the equation.
+On each region \(t\ge\varepsilon>0\), multiplying the Fourier terms by any fixed power of \(n\) still gives a uniformly summable family. To see this, absorb that power into \(e^{-2\pi^2\varepsilon n^2}\) using the exponential-series estimate in Example 3.1; the remaining Gaussian terms are summable. Thus the series of every fixed \(x\)-derivative and \(t\)-derivative converge uniformly there. The rule permitting these differentiations follows from the fundamental theorem of calculus already proved in [the real-variable reading, Lemmas 1.1–1.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-lemma-1-1): integrate the uniformly convergent derivative series on a compact interval, pass the limit through its finite integral, and recover the original uniformly convergent series at one endpoint. Repeat for each derivative. Both \(\partial_t\) and \(\partial_x^2\) multiply the \(n\)-th term by \(-4\pi^2n^2\), proving the equation.
 
-The Fourier coefficients of \(K_s*K_t\) are the products of those of \(K_s,K_t\), hence those of \(K_{s+t}\). The convolution identity and uniqueness are HA-LCA-03, Theorem 3.1, and HA-LCA-09, Corollary 4.2. All these functions are continuous, so the equality is everywhere.
+The Fourier coefficients of \(K_s*K_t\) are the products of those of \(K_s,K_t\), hence those of \(K_{s+t}\). The convolution identity and uniqueness are HA-LCA-03, Theorem 3.1, and [HA-LCA-09, Corollary 4.2](HA-LCA-09.md#ha-lca-09-corollary-4-2). All these functions are continuous, so the equality is everywhere.
 
 Finally let \(0<\eta<1/2\). On the circle, the mass of \(K_t\) outside the \(\eta\)-neighbourhood of zero is at most the real Gaussian mass over \(|y|\ge\eta\), since lifting that circle set to the line yields a subset of \(\{|y|\ge\eta\}\). This mass is at most
 \[
@@ -217,7 +217,7 @@ Finally let \(0<\eta<1/2\). On the circle, the mass of \(K_t\) outside the \(\et
        =\sqrt2\,e^{-\eta^2/(8t)}\longrightarrow0.
  \tag{17}
 \]
-Uniform translation continuity of continuous functions on the compact circle is the general Haar reading, Lemma 1.1. Split the convolution difference into the \(\eta\)-neighbourhood, where \(|F(x-y)-F(x)|\) is uniformly small, and its complement, bounded by \(2\|F\|_\infty\) times (17). This proves (16). For \(t>0\), differentiation under the compact convolution integral is justified by the derivative bounds above, so \(K_t*F\) solves the heat equation with this initial limit. \(\square\)
+Uniform translation continuity of continuous functions on the compact circle is [the general Haar reading, Lemma 1.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-1-1). Split the convolution difference into the \(\eta\)-neighbourhood, where \(|F(x-y)-F(x)|\) is uniformly small, and its complement, bounded by \(2\|F\|_\infty\) times (17). This proves (16). For \(t>0\), differentiation under the compact convolution integral is justified by the derivative bounds above, so \(K_t*F\) solves the heat equation with this initial limit. \(\square\)
 
 ## 4. A rational series, finite groups and rational adèles
 
@@ -230,7 +230,7 @@ Uniform translation continuity of continuous functions on the compact circle is 
  \tag{18}
 \]
 
-**Proof.** Let \(f(x)=e^{-2\pi a|x|}\). Its transform, proved by integrating the two exponential half-lines in HA-LCA-03, Example 5.2, is
+**Proof.** Let \(f(x)=e^{-2\pi a|x|}\). Its transform, proved by integrating the two exponential half-lines in [HA-LCA-03, Example 5.2](HA-LCA-03.md#ha-lca-03-example-5-2), is
 \[
  \widehat f(\xi)=\frac{a}{\pi(a^2+\xi^2)}.
  \tag{19}
@@ -257,9 +257,9 @@ This proves (18). In particular the Fourier convention in (19) has the factor \(
 
 **Proof.** The cosets partition \(G\), so counting measure satisfies (1), with quotient mass \(|G|/|H|\). The dual quotient measure is therefore \(|H|/|G|\) times counting measure, giving (20) from Theorem 1.1. There are no convergence questions because all sets are finite.
 
-One can also check the identity directly by HA-LCA-01, Theorem 3.1. That theorem gives \(|H^\perp|=|G|/|H|\) and says the sum of its characters at \(x-y\) is \(|H^\perp|\) if \(x-y\in H\), zero otherwise. Insert the finite definition of \(\widehat f\) in the right side of (20) and interchange two finite sums. The coefficient of \(f(y)\) is exactly the indicator of \(x-y\in H\). This recovers the finite Poisson formula with the present counting convention. \(\square\)
+One can also check the identity directly by [HA-LCA-01, Theorem 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-theorem-3-1). That theorem gives \(|H^\perp|=|G|/|H|\) and says the sum of its characters at \(x-y\) is \(|H^\perp|\) if \(x-y\in H\), zero otherwise. Insert the finite definition of \(\widehat f\) in the right side of (20) and interchange two finite sums. The coefficient of \(f(y)\) is exactly the indicator of \(x-y\in H\). This recovers the finite Poisson formula with the present counting convention. \(\square\)
 
-To give an actual adelic instance of Theorem 1.1, we now prove its needed group, measure and test-function facts. Only the rational field is considered. The \(p\)-adic fields, rings, characters and their self-dual Haar measures are already constructed in HA-LCA-10, Example 6.4. Write
+To give an actual adelic instance of Theorem 1.1, we now prove its needed group, measure and test-function facts. Only the rational field is considered. The \(p\)-adic fields, rings, characters and their self-dual Haar measures are already constructed in [HA-LCA-10, Example 6.4](HA-LCA-10.md#ha-lca-10-example-6-4). Write
 \(\psi_p(x)=E(\{x\}_p)\) for the character with kernel \(\mathbb Z_p\).
 
 <a id="ha-lca-11-lemma-4-2"></a>
@@ -287,7 +287,7 @@ contains exactly one representative of every rational coset.
 
 **Proof.** The restricted tuples form a group under coordinatewise addition, since the union of two finite sets of nonintegral coordinates is finite. The displayed neighbourhoods give a Hausdorff group topology: choose smaller coordinate neighbourhoods for addition and inversion at the finitely many designated coordinates; elsewhere \(\mathbb Z_p\) is already a subgroup. Any two different tuples are separated in a coordinate where they differ. This topology restricts to the product topology on \(K\).
 
-The group \(K\) is compact by the Banach reading, Lemma 4.1 and compactness of every \(\mathbb Z_p\). It is open in \(\mathbb A_f\), so \(\mathbb A_f\) is locally compact. For every positive integer \(D\), multiplication by \(D\) is a homeomorphism of \(\mathbb A_f\): it and its inverse act continuously in each coordinate and alter the integrality condition at only the finitely many primes dividing \(D\). Therefore \(D^{-1}K\) is compact and open.
+The group \(K\) is compact by [the Banach reading, Lemma 4.1](HA-LCA-PRE-BANACH.md#ha-lca-pre-banach-lemma-4-1) and compactness of every \(\mathbb Z_p\). It is open in \(\mathbb A_f\), so \(\mathbb A_f\) is locally compact. For every positive integer \(D\), multiplication by \(D\) is a homeomorphism of \(\mathbb A_f\): it and its inverse act continuously in each coordinate and alter the integrality condition at only the finitely many primes dividing \(D\). Therefore \(D^{-1}K\) is compact and open.
 
 Every tuple belongs to some \(D^{-1}K\): choose \(D\) with sufficiently large powers of the finitely many primes at which the tuple is nonintegral. Moreover the sets \(n!^{-1}K\) are increasing and cover \(\mathbb A_f\), since every \(D\) divides some factorial. Thus \(\mathbb A_f\), and hence its product with \(\mathbb R\), is sigma-compact. Every compact subset of \(\mathbb A_f\) is contained in one \(D^{-1}K\), by a finite subcover. The sets \(DK\), \(D\ge1\), form an identity-neighbourhood basis: a large enough power at each of the finitely many specified primes fits inside the prescribed \(U_p\).
 
@@ -307,7 +307,7 @@ For an arbitrary \(x\in\mathbb A\), form the finite rational sum \(r=\sum_p\{x_p
 \]
 The compact set \([0,1]\times K\) maps onto \(\mathbb A/\mathbb Q\), proving cocompactness.
 
-Normalize Haar measure on \(\mathbb A_f\) by \(du(K)=1\); this is possible since \(K\) is nonempty, open and compact. Product Haar measure with Lebesgue measure is (22), by HA-LCA-07, Lemma 3.0. The set \(\mathcal F\) has mass one. Its finite restricted measure is Radon, and so is its pushforward \(\rho\) to the quotient, by HA-LCA-03, Lemma 4.1 and [the product reading, Proposition 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-proposition-3-1). For \(f\in C_c(\mathbb A)\), the countable tiling and translation invariance give
+Normalize Haar measure on \(\mathbb A_f\) by \(du(K)=1\); this is possible since \(K\) is nonempty, open and compact. Product Haar measure with Lebesgue measure is (22), by [HA-LCA-07, Lemma 3.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-lemma-3-0). The set \(\mathcal F\) has mass one. Its finite restricted measure is Radon, and so is its pushforward \(\rho\) to the quotient, by [HA-LCA-03, Lemma 4.1](HA-LCA-03.md#ha-lca-03-lemma-4-1) and [the product reading, Proposition 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-proposition-3-1). For \(f\in C_c(\mathbb A)\), the countable tiling and translation invariance give
 \[
  \int_\mathbb A f(x)\,dx
  =\int_\mathcal F\sum_{q\in\mathbb Q}f(x+q)\,dx
@@ -335,7 +335,7 @@ identifies \(\mathbb A\) topologically with its dual. The Haar measure (22) is s
 For fixed \(v\in D^{-1}K\), it is trivial when \(u\in DK\), so it is a continuous character. If \(v\ne0\), test a tuple supported only at a coordinate where \(v_p\ne0\), and use the nondegeneracy proved in HA-LCA-10, Example 6.4. Thus the parameter map into \(\widehat{\mathbb A_f}\) is injective.
 
 Let \(\chi\) be any continuous character of \(\mathbb A_f\). Its restriction to the \(p\)-th coordinate copy of \(\mathbb Q_p\) has the form
-\(u_p\mapsto\overline{\psi_p(u_pv_p)}\) for a unique \(v_p\), by that same earlier example (replace its parameter by its negative). Continuity gives some subgroup \(DK\) whose image under \(\chi\) lies in \(\{z:|z-1|<1\}\). The small-arc lemma, HA-LCA-02, Lemma 1.2, makes that image trivial. For every prime not dividing \(D\), the coordinate copy of \(\mathbb Z_p\) lies in \(DK\), so \(v_p\in\mathbb Z_p\) by the local annihilator formula. Consequently \(v\in\mathbb A_f\).
+\(u_p\mapsto\overline{\psi_p(u_pv_p)}\) for a unique \(v_p\), by that same earlier example (replace its parameter by its negative). Continuity gives some subgroup \(DK\) whose image under \(\chi\) lies in \(\{z:|z-1|<1\}\). The small-arc lemma, [HA-LCA-02, Lemma 1.2](HA-LCA-02.md#ha-lca-02-lemma-1-2), makes that image trivial. For every prime not dividing \(D\), the coordinate copy of \(\mathbb Z_p\) lies in \(DK\), so \(v_p\in\mathbb Z_p\) by the local annihilator formula. Consequently \(v\in\mathbb A_f\).
 
 Tuples with finitely many nonzero coordinates are dense in \(\mathbb A_f\). Given a tuple and a basic neighbourhood of it, match its finitely many designated coordinates and its finitely many nonintegral coordinates; set the other coordinates to zero. The resulting tuple is in that neighbourhood. On these finite tuples, \(\chi\) and the character with parameter \(v\) agree by multiplication of the coordinate characters. Continuity and density prove agreement everywhere. This proves surjectivity.
 
@@ -355,7 +355,7 @@ For compact-open continuity of the parameter map, a compact set of \(\mathbb A_f
 \]
 The equality follows from (29) and the small-arc lemma applied to the image of the entire subgroup \(D^{-1}K\). This is an open set in the dual since \(D^{-1}K\) is compact. The sets \(DK\) form a neighbourhood basis, proving the inverse continuity.
 
-The measure \(du\) is self-dual for this finite-place identification. To see the constant, \(1_K\in C_c(\mathbb A_f)\) is its own autocorrelation, since \(du(K)=1\), so it has positive type. Its Fourier transform is \(1_K\) under the identification: a character integral over \(K\) is one when it is trivial, and otherwise is zero by translating the integral by a point where the character is not one. The annihilator of \(K\) is \(K\). The transported dual measure is \(c\,du\) for some \(c>0\), by Haar uniqueness. The \(B^1\) inversion formula, HA-LCA-07, Theorem 2.1, at zero gives \(1=c\,du(K)=c\). Thus \(c=1\).
+The measure \(du\) is self-dual for this finite-place identification. To see the constant, \(1_K\in C_c(\mathbb A_f)\) is its own autocorrelation, since \(du(K)=1\), so it has positive type. Its Fourier transform is \(1_K\) under the identification: a character integral over \(K\) is one when it is trivial, and otherwise is zero by translating the integral by a point where the character is not one. The annihilator of \(K\) is \(K\). The transported dual measure is \(c\,du\) for some \(c>0\), by Haar uniqueness. The \(B^1\) inversion formula, [HA-LCA-07, Theorem 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-theorem-2-1), at zero gives \(1=c\,du(K)=c\). Thus \(c=1\).
 
 Real self-duality and finite-product duality, proved in HA-LCA-02, Theorem 3.1 and Proposition 4.1, now give precisely the topological identification (27). The product normalization of HA-LCA-07, Lemma 3.0, gives the self-duality of (22).
 
@@ -381,7 +381,7 @@ Conversely take \(y\in\mathbb Q^\perp\). Subtract its unique rational translate 
 is preserved by the Fourier transform for (27). For every member \(f\), the rational periodization
 \(\sum_{q\in\mathbb Q}f(x+q)\) converges absolutely and uniformly on each compact subset of \(\mathbb A\), and \(\sum_{q\in\mathbb Q}|\widehat f(q)|<\infty\).
 
-**Proof.** First consider the real factor. The decay conditions make every polynomial times every derivative of \(g\) integrable, using Lemma 2.0 in dimension one. Differentiation under the integral, as justified in the real-variable reading, Lemma 1.4, gives
+**Proof.** First consider the real factor. The decay conditions make every polynomial times every derivative of \(g\) integrable, using Lemma 2.0 in dimension one. Differentiation under the integral, as justified in [the real-variable reading, Lemma 1.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-lemma-1-4), gives
 \[
  \frac{d^j}{d\xi^j}\widehat g(\xi)
    =\int_\mathbb R(-2\pi ix)^j g(x)E(-x\xi)\,dx.
@@ -491,7 +491,7 @@ Multiply by \(\pi/a\). Every sum used here is absolutely convergent by the verif
 <a id="ha-lca-11-exercise-5-3"></a>
 **Exercise 5.3 — Recover the lattice constant.** Prove Corollary 2.2 from Theorem 1.1, and identify the roles of continuity and covolume.
 
-**Solution.** With \(dx\) self-dual Lebesgue measure and counting measure on \(\Lambda=M\mathbb Z^d\), HA-LCA-10, Example 6.2 gives quotient mass \(v=|\det M|\). Its dual group is \(\Lambda^*=M^{-T}\mathbb Z^d\). The Haar measure dual to a compact group's measure of mass \(v\) assigns each dual point mass \(1/v\), by HA-LCA-07, Proposition 3.3. Hence the right integral in (4) is exactly
+**Solution.** With \(dx\) self-dual Lebesgue measure and counting measure on \(\Lambda=M\mathbb Z^d\), [HA-LCA-10, Example 6.2](HA-LCA-10.md#ha-lca-10-example-6-2) gives quotient mass \(v=|\det M|\). Its dual group is \(\Lambda^*=M^{-T}\mathbb Z^d\). The Haar measure dual to a compact group's measure of mass \(v\) assigns each dual point mass \(1/v\), by HA-LCA-07, Proposition 3.3. Hence the right integral in (4) is exactly
 \(v^{-1}\sum_{\xi\in\Lambda^*}\widehat f(\xi)E(x\cdot\xi)\).
 
 The decay estimate with exponent \(d+\delta>d\) gives \(f\in L^1\), compact-local uniform convergence of its lattice periodization, and summability of the dual values, all by Lemma 2.0. Continuity of \(f\) then makes the actual periodization continuous, so Theorem 1.1 upgrades almost-everywhere equality to equality at every point. This gives every assertion of Corollary 2.2. If continuity is omitted, Example 2.3 shows that the numerical pointwise formula can fail even under arbitrary decay. \(\square\)
@@ -511,19 +511,19 @@ The decay estimate with exponent \(d+\delta>d\) gives \(f\in L^1\), compact-loca
 with convergence in \(L^2(\mathbb R)\) and uniformly on \(\mathbb R\).
 
 **Solution.** Let \(g=\mathcal F_2 f\). Since \(g\) is supported on a set of length one, Cauchy–Schwarz gives
-\(\|g\|_1\le\|g\|_2\). Thus \(g\in L^1\cap L^2\). By HA-LCA-08, Lemma 2.2, its inverse integral is the inverse Plancherel transform and is continuous:
+\(\|g\|_1\le\|g\|_2\). Thus \(g\in L^1\cap L^2\). By [HA-LCA-08, Lemma 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-plancherel-theorem.html#ha-lca-08-lemma-2-2), its inverse integral is the inverse Plancherel transform and is continuous:
 \[
  f(x)=\int_I g(\xi)E(x\xi)\,d\xi.
  \tag{42}
 \]
 Initially this equals \(f\) almost everywhere; both sides are continuous, so Haar full support gives equality everywhere.
 
-The functions \(e_n(\xi)=E(-n\xi)\), \(n\in\mathbb Z\), are a complete orthonormal basis of \(L^2(I)\). This is the circle Fourier basis of HA-LCA-08, Corollary 4.1, with the endpoints identified; changing the values at those two null points does not alter the \(L^2\) space. Its coefficient for \(g\) is
+The functions \(e_n(\xi)=E(-n\xi)\), \(n\in\mathbb Z\), are a complete orthonormal basis of \(L^2(I)\). This is the circle Fourier basis of [HA-LCA-08, Corollary 4.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-plancherel-theorem.html#ha-lca-08-corollary-4-1), with the endpoints identified; changing the values at those two null points does not alter the \(L^2\) space. Its coefficient for \(g\) is
 \[
  \langle g,e_n\rangle=\int_I g(\xi)E(n\xi)\,d\xi=f(n).
  \tag{43}
 \]
-The Hilbert expansion and Parseval theorem, proved in the Hilbert reading, Theorem 4.2, therefore give
+The Hilbert expansion and Parseval theorem, proved in [the Hilbert reading, Theorem 4.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-4-2), therefore give
 \[
  \sum_{n\in\mathbb Z}|f(n)|^2=\|g\|_2^2=\|f\|_2^2,\qquad
  g=\lim_{F}\sum_{n\in F}f(n)e_n

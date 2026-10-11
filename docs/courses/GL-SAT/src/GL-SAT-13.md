@@ -3732,9 +3732,531 @@ Finally an operation of degree \(-r\) sends inputs of degrees \(n_i\) and weight
 
 **Solution.** The differential is injective in the Laurent polynomial domain and has cokernel \(E\), by evaluation at \(t=a\). Thus \(H^0=0\), and \(H^1=E\) with Frobenius \(a=a^1\), exactly diagonal purity. Yet every nonzero Laurent polynomial has linearly independent translates among sufficiently many powers of \(t\): a finite polynomial relation among them would contradict the domain property. There is no nonzero locally finite vector in either term. Taking those termwise subspaces gives the zero complex and loses \(H^1\). A geometric application must construct a compatible derived locally finite model, rather than making that termwise substitution from cohomological purity alone.
 
+### C.23. Derived primary replacement and coherent arithmetic formality
+
+We retain the arithmetic field and normalized Weil objects of §22. Put
+\[
+ R=E[t,t^{-1}],\qquad K=E(t),\qquad
+ \mathcal W=\{t-a^w:w\in\mathbb Z\}.
+ \tag{C.23.1}
+\]
+An \(R\)-module is the same thing as an \(E\)-vector space with an invertible operator \(F=t\). In every tensor product in this section the base is \(E\), and \(t\) acts diagonally, \(F_{M\otimes N}=F_M\otimes F_N\). It is not a tensor product over \(R\). Let \(\mathsf L_{\mathcal W}\) be the full abelian category of modules that are locally finite for \(F\) and have only the primary eigenvalues \(a^w\). Thus
+\[
+ M=\bigoplus_{w\in\mathbb Z}
+       \bigcup_{r\ge1}\ker(F-a^w)^r.
+ \tag{C.23.2}
+\]
+The Jordan blocks in (C.23.2) are allowed. A bounded-below derived object will mean one with cohomology zero below some integer; it need not be presented initially by a bounded-below cochain complex.
+
+The free corrected author version of [Cirici and Horel, *Étale cohomology, purity and formality with torsion coefficients*](https://geoffroy.horel.org/formality-etale.pdf), §§2 and 4, explains the distinction between locally finite cochains and locally finite cohomology. Here the coefficient field has characteristic zero and \(a\) has infinite multiplicative order. We prove the required derived replacement and coherence statement below; no theorem from that paper stands in place of a proof.
+
+#### C.23.1. Resolve first, then take primary vectors
+
+**Theorem C.23.1.1.** There is a natural bounded-below complex \(L(C)\) in \(\mathsf L_{\mathcal W}\), for every bounded-below complex \(C\) of \(R\)-modules whose cohomology lies in \(\mathsf L_{\mathcal W}\), and a natural zigzag
+\[
+ C\longrightarrow J(C)\longleftarrow L(C)
+ \tag{C.23.3}
+\]
+of quasi-isomorphisms. Both \(J(C)\) and \(L(C)\) have injective \(R\)-modules in each term. In particular, this construction applies to the Laurent-polynomial complex of Exercise C.22.5.2, although its original terms have no locally finite vectors.
+
+**Proof.** The ring \(R\) is a principal ideal domain: every ideal is obtained by localizing an ideal of the Euclidean polynomial ring \(E[t]\). An \(R\)-module is locally finite precisely when it is torsion. In one direction a finite-dimensional invariant subspace gives an annihilating polynomial with nonzero constant coefficient, since \(F\) is invertible. In the other direction \(Rv\), annihilated by a nonzero Laurent polynomial, is a quotient of a finite-dimensional vector space \(R/(p)\).
+
+We need two elementary facts about injectivity. An injective \(R\)-module \(I\) is divisible: a map \((p)\to I\) sending \(p\) to a specified element extends to \(R\). Conversely a divisible module is injective. To prove the converse, extend a map on a submodule to a maximal larger domain by the union of chains. If \(x\) is outside that domain, the ideal \(\{r:rx\text{ belongs to the domain}\}\) is either zero or \((p)\). In the zero case assign any value to \(x\). In the second case choose \(y\) with \(py\) equal to the already prescribed value of \(px\). Then \(f(n+rx)=f(n)+ry\) is well defined and extends the map, contradicting maximality. This proves injectivity without invoking a criterion.
+
+Write \(\Gamma_{\rm tor}I\) for the torsion submodule of an injective module. It is divisible: if \(px=v\) in \(I\) and \(qv=0\), then \(qpx=0\), so \(x\) is torsion. It is therefore itself injective. The quotient \(I/\Gamma_{\rm tor}I\) is canonically \(K\otimes_R I\). The kernel of the localization map is precisely torsion; surjectivity follows from divisibility, which supplies division by every nonzero denominator. We have consequently proved
+\[
+ 0\longrightarrow\Gamma_{\rm tor}I
+   \longrightarrow I\longrightarrow K\otimes_R I
+   \longrightarrow0.
+ \tag{C.23.4}
+\]
+
+Torsion modules have their canonical primary direct sum decomposition. Indeed an element has an annihilating polynomial with finitely many irreducible factors; Bézout identities for the mutually coprime factor powers give its unique primary pieces. These identities agree when one enlarges an annihilating polynomial. Projection onto the summands in \(\mathcal W\), denoted \(\Gamma_{\mathcal W}\), is exact on torsion modules. Also \(\Gamma_{\mathcal W}I\) is divisible: choose a torsion solution of \(px=v\) as just above, and project that solution onto its \(\mathcal W\)-primary summands. The projection commutes with \(p\) and fixes \(v\). Thus \(\Gamma_{\mathcal W}I\) too is injective over \(R\).
+
+Here is a functorial resolution, including the boundedness needed to totalize it. For an \(E\)-vector space \(V\), put
+\[
+ I(V)=\operatorname{Hom}_E(R,V),\qquad
+ (t f)(t^j)=f(t^{j+1}).
+ \tag{C.23.5}
+\]
+If \(U\) forgets the \(R\)-action, evaluation at \(1\) identifies
+\(\operatorname{Hom}_R(M,I(V))=\operatorname{Hom}_E(UM,V)\).
+The latter functor is exact, so \(I(V)\) is injective. Let \(T=IU\), with unit \(\eta_M(m)(r)=rm\) and multiplication \(I\epsilon U:T^2\to T\), where \(\epsilon\) is evaluation at \(1\).
+
+The augmented cosimplicial resolution of \(M\) has term \(T^{p+1}M\) in degree \(p\ge0\); its cofaces insert \(\eta\) in each position, and its codegeneracies apply \(I\epsilon U\). The unit and multiplication identities give the cosimplicial identities. After applying \(U\), evaluation at the outermost \(1\) is an extra codegeneracy \(e\). If \(d^i\) is a coface, then \(ed^0=1\) and \(ed^i=d^{i-1}e\) for \(i>0\). Taking the alternating sum gives \(e\delta+\delta e=1\) on the augmented complex. Thus it is exact.
+
+Apply this construction degreewise to \(C\), whose terms may be taken zero in degrees below \(b\). Totalize with
+\[
+ J(C)^n=\bigoplus_{\substack{p\ge0\\p+q=n}}
+                 T^{p+1}C^q,\qquad
+ d_{\rm tot}=\delta+(-1)^p d_C.
+ \tag{C.23.6}
+\]
+For each \(n\) the sum has at most \(n-b+1\) nonzero terms. Every term is injective and the total complex is bounded below. The preceding extra codegeneracy contracts the augmented horizontal direction; its cancellation with the vertical differential follows from the signs in (C.23.6). Equivalently filter by the bounded finite diagonals: horizontal exactness says that \(C\to J(C)\) induces an isomorphism on cohomology. This proves the first quasi-isomorphism in (C.23.3).
+
+Apply (C.23.4) termwise to \(J(C)\). Localization is exact, so
+\[
+ H^n(K\otimes_R J(C))=K\otimes_R H^n(C)=0.
+ \tag{C.23.7}
+\]
+The exact sequence of complexes therefore proves
+\(\Gamma_{\rm tor}J(C)\to J(C)\) a quasi-isomorphism. The primary decomposition of the torsion complex is a direct sum of subcomplexes. Exactness of taking primary summands shows that its summands outside \(\mathcal W\) have zero cohomology, because \(H^n(C)\) belongs to \(\mathsf L_{\mathcal W}\). Hence
+\[
+ L(C)=\Gamma_{\mathcal W}J(C)
+ \tag{C.23.8}
+\]
+has the claimed inclusion and cohomology. Its terms are injective over \(R\) by the divisibility argument. All constructions commute with \(R\)-linear cochain maps. The resolution is taken before (C.23.8); no assertion has been made about \(\Gamma_{\mathcal W}C\) in an arbitrary original cochain model. ∎
+
+#### C.23.2. The replacement retains tensor coherence
+
+Let \(D^+_{\mathcal W}(R)\) be the full enhanced derived category of bounded-below \(R\)-complexes with cohomology in \(\mathsf L_{\mathcal W}\). “Enhanced” here retains mapping complexes and their homotopies, rather than just the degree-zero morphisms in a triangulated category. The tensor product is the diagonal \(E\)-tensor product specified after (C.23.1).
+
+**Theorem C.23.2.1.** Inclusion induces a symmetric monoidal equivalence of enhanced derived categories
+\[
+ D^+(\mathsf L_{\mathcal W})
+       \ \xrightarrow{\ \simeq\ }\ D^+_{\mathcal W}(R).
+ \tag{C.23.9}
+\]
+Its inverse retains a complete homotopy-coherent diagram of multilinear maps, including units, associators and permutations. It is not the termwise functor \(\Gamma_{\mathcal W}\) on the original diagram.
+
+**Proof.** Kernels, cokernels and extensions of modules in \(\mathsf L_{\mathcal W}\) remain in that category. For an extension, lift an element killed by a product of allowed primary powers in the quotient; a second such product kills its image in the submodule, so their product kills the lift. The primary decomposition then proves (C.23.2) for the extension. The category has enough injectives that are also injective over \(R\): embed a module \(M\) in \(I(UM)\) by \(\eta_M\), and take \(\Gamma_{\mathcal W}I(UM)\). Its image contains \(M\); divisibility above proves the target injective over \(R\), hence also in the full subcategory \(\mathsf L_{\mathcal W}\).
+
+A bounded-below complex of injective modules is an injective mapping model. Here is the required argument for unbounded source complexes as well. If \(B\) is acyclic and a cochain map \(f:B\to J\) is given, start below the lowest nonzero term of \(J\). Inductively, after choosing \(h^n:B^n\to J^{n-1}\), the map \(f^n-d_Jh^n\) vanishes on \(\ker d_B^n=\operatorname{im}d_B^{n-1}\), by the cochain-map identity and the preceding induction step. It defines a map on \(\operatorname{im}d_B^n\) with values in \(J^n\). Injectivity extends this to \(h^{n+1}:B^{n+1}\to J^n\). These extensions give \(f=dh+hd\). Apply the same argument to every shift of \(J\). Thus its Hom complex from an acyclic complex is acyclic, which is precisely the mapping-model property.
+
+For two complexes in \(\mathsf L_{\mathcal W}\), resolve the target by these injectives. The very same Hom complex computes its enhanced derived maps in \(\mathsf L_{\mathcal W}\) and in \(R\)-modules: the inclusion is full, and the chosen injectives work in both categories. This proves full faithfulness on mapping complexes, in every degree. Theorem C.23.1.1 proves essential surjectivity. An object initially bounded below only in cohomology may first be replaced by its good quotient truncation; its canonical quasi-isomorphism supplies the same derived object.
+
+The diagonal tensor product preserves \(\mathsf L_{\mathcal W}\). Each finite collection of vectors lies in finite-dimensional primary spaces. On weights \(w,v\), the tensor automorphism has sole eigenvalue \(a^{w+v}\), with a nilpotent remaining part, by the commuting-nilpotent calculation in C.22.4. The tensor product is exact over the field \(E\). It preserves quasi-isomorphisms: a splitting of an acyclic vector-space complex into its boundary pairs supplies a contracting homotopy after tensoring. Tensor products of bounded-below complexes are bounded below. The inclusion in (C.23.9) is therefore an honest symmetric monoidal functor before passing to enhanced derived categories.
+
+We explain explicitly why its inverse retains coherence. The functor \(L\) of (C.23.8) preserves quasi-isomorphisms on this subcategory, and (C.23.3) gives a natural derived equivalence \(\zeta_C:UL(C)\simeq C\). The desired tensor comparison is the lift, by full faithfulness, of
+\[
+ \zeta_{C\otimes D}^{-1}
+       (\zeta_C\otimes\zeta_D):
+       UL(C)\otimes UL(D)\longrightarrow UL(C\otimes D).
+ \tag{C.23.10}
+\]
+It is an equivalence. The unit comparison is obtained in the same way. This lifting uses the full mapping objects, not only their \(H^0\): the preceding identical mapping complexes make the space of a lift, together with its comparison homotopy, contractible.
+
+Consequently the associativity and permutation homotopies of (C.23.10) lift too. Their next coherence homotopies lift for the same reason, and so on over the dimension of the supplied diagram. More concretely, a discrepancy on the boundary of a chosen higher homotopy is a cycle in the homotopy fibre of the mapping comparison; that fibre is acyclic, so the discrepancy has a primitive. Differences between choices are filled one degree lower in the same fibre. Each fixed finite-dimensional diagram requires finitely many such steps; the constructions agree as that dimension is enlarged. This proves all coherent identities and their compatible lifts. It proves a symmetric monoidal equivalence, without claiming a strictly symmetric tensor product on the particular coinduced total complex (C.23.6). ∎
+
+#### C.23.3. Diagonal purity formalizes the whole diagram
+
+Call a derived \(R\)-complex diagonally pure if it is bounded below, has degreewise finite-dimensional cohomology, and \(H^n\) has sole generalized eigenvalue \(a^n\). These objects are closed under the diagonal \(E\)-tensor product: in each total degree the Künneth sum is finite, and the input eigenvalues multiply to \(a^{n+m}\).
+
+**Theorem C.23.3.1.** On the diagonally pure full subcategory, the functor which forgets the \(R\)-action is equivalent, as a symmetric monoidal enhanced functor, to its graded cohomology with zero differential. Therefore a complete diagram of diagonally pure mapping objects with Frobenius-equivariant compositions, tensor maps and structural homotopies is formal together with that entire structure.
+
+**Proof.** Use (C.23.9) to lift the derived diagram to locally finite primary complexes. This is a symmetric monoidal lift; it is not a replacement of its members independently followed by unspecified new tensor maps. On complexes in \(\mathsf L_{\mathcal W}\) with diagonal cohomology, C.22.4 gives the two natural maps
+\[
+ UC\ \longleftarrow\ UD(C)\ \longrightarrow\ H^*(UC),
+ \tag{C.23.11}
+\]
+where
+\[
+ D(C)^n=\bigoplus_{w>n}C_w^n
+             \oplus\ker(d:C_n^n\to C_n^{n+1}).
+ \tag{C.23.12}
+\]
+Both arrows are quasi-isomorphisms, and \(D\) preserves quasi-isomorphisms on these objects because its cohomology map is the defining cohomology isomorphism.
+
+The cochain functor \(D\) is lax symmetric monoidal. Its comparison sends a tensor of representatives to the same tensor in \(D(C\otimes C')\). Input weights at least the input degrees give this inclusion; diagonal inputs are cycles. C.22.4 proved the comparison a quasi-isomorphism. The associative, unit and signed permutation diagrams commute on the representatives themselves. The projection in (C.23.11) is monoidal under the field Künneth isomorphism: diagonal cycles project to their classes, and any positive weight excess projects to zero before or after taking a product. Thus, after passing to derived objects, all comparisons are equivalences and (C.23.11) is a symmetric monoidal equivalence of functors.
+
+Compose this equivalence with the coherent inverse of (C.23.9) and with \(\zeta\). Cohomology of that inverse is canonically the original cohomology by (C.23.3), so the result is exactly the asserted formal functor, with no altered graded multiplication.
+
+For clarity, a coherent algebraic diagram is made of tensor products of its mapping objects, structure maps out of those products, and specified homotopies among composites. Apply the functors and their monoidal comparisons to every member and every such map. Naturality carries each specified homotopy and its higher faces to the corresponding one. Objectwise equivalences give an equivalence of the entire diagram. On the formal output a strictly equivariant operation of degree \(-r<0\) would have to take eigenvalue \(a^{\sum n_i}\) into eigenvalue \(a^{\sum n_i-r}\); these differ, even with Jordan parts. The map is zero. This is also the representative calculation in C.22.4. Ordinary degree-zero structure maps remain their actual graded cohomology maps. The result is simultaneous formality, not merely an unrelated quasi-isomorphism for each Hom complex. ∎
+
+**Lemma C.23.3.2.** For two diagonally pure objects \(C,D\), every negative-degree derived \(R\)-linear map is zero, and
+\[
+ \operatorname{Hom}_{D(R)}(C,D)
+       =\prod_n\operatorname{Hom}_R(H^nC,H^nD).
+ \tag{C.23.13}
+\]
+This statement does not assert the vanishing of positive-degree derived \(R\)-linear maps.
+
+**Proof.** In a locally finite primary model, decompose into its weight subcomplexes. The weight-\(w\) subcomplex has cohomology only in degree \(w\). Its good subcomplex truncation through \(w\), followed by its cycle quotient in degree \(w\), gives a natural quasi-isomorphism zigzag to \(H^w[-w]\). Direct sums are exact. By (C.23.9), this proves in \(D(R)\)
+\[
+ C\simeq\bigoplus_n(H^nC)[-n],
+ \qquad D\simeq\bigoplus_m(H^mD)[-m].
+ \tag{C.23.14}
+\]
+For a finite-dimensional module \(M\) with invertible \(F_M\), the following is a free resolution:
+\[
+ 0\longrightarrow R\otimes_E M
+ \xrightarrow{\,t\otimes1-1\otimes F_M\,}
+ R\otimes_E M\longrightarrow M\longrightarrow0.
+ \tag{C.23.15}
+\]
+The last map sends \(t^j\otimes v\) to \(F_M^jv\). The middle map is injective by comparing the highest Laurent exponent in a nonzero finite sum. In its cokernel the relation \(t\otimes v=1\otimes F_Mv\), and its inverse using \(F_M^{-1}\), reduces every Laurent sum uniquely to \(1\otimes v\). This proves exactness.
+
+Applied to a target module \(N\), its Hom differential, up to a harmless overall sign, is
+\[
+ g\longmapsto F_Ng-gF_M.
+ \tag{C.23.16}
+\]
+If the two sole eigenvalues are \(a^m,a^n\) with \(m\ne n\), this is invertible: left and right multiplication commute, their nonconstant parts are nilpotent, and their scalar difference is nonzero. Thus both Hom and \(\operatorname{Ext}^1_R(M,N)\) vanish for different weights, and higher Ext vanish by (C.23.15).
+
+The direct sum of the shifted two-term resolutions (C.23.15) is a valid projective mapping model for (C.23.14). Each two-term resolution has acyclic Hom into an acyclic complex, and the Hom of their direct sum is the product of those complexes. Products of exact sequences of modules are exact, by choosing a preimage in each coordinate. Hence that product is acyclic. This argument avoids assuming that an arbitrary bounded-below complex of projectives is such a mapping model.
+
+For the \(n,m\) terms, a degree-\(k\) map is computed by \(\operatorname{Ext}_R^{k+n-m}(H^nC,H^mD)\). The different-weight terms vanish. The same-weight terms can occur only for \(k=0,1\); their \(k=0\) terms give (C.23.13). This proves the lemma. In particular mapping homotopies of positive dimension, which are negative-degree maps, have no nonzero homotopy classes here. Same-weight \(\operatorname{Ext}^1_R\) may still encode a nontrivial Jordan extension. ∎
+
+#### C.23.4. The actual Weil diagram for convolution words
+
+Let \(\mathcal P_{\rm word}\) contain the normalized IC objects, the unit, their finite direct sums, and every finite ordered convolution word, with all parenthesizations retained. The Weil map on a word is the one induced by the actual descended convolution correspondence. It is not assigned after choosing a decomposition into its simple constituents.
+
+**Theorem C.23.4.1.** The enhanced geometric mapping objects of \(\mathcal P_{\rm word}\), together with their composition, convolution maps, unit, corrected symmetry and all coherence maps, form a Frobenius-equivariant diagram of diagonally pure objects of \(D^+(R)\). Applying Theorem C.23.3.1 gives an equivalence of the complete symmetric monoidal enhanced generator diagram with its actual graded Ext diagram.
+
+**Proof.** We first construct an action on mapping objects, not merely a list of actions on Ext groups. On a finite jet and action-nerve coefficient site, write \(\sigma\) for arithmetic pullback. It is an exact equivalence. A Weil coefficient object is an object \(P\) with an isomorphism \(\alpha_P:\sigma P\to P\). Work in the ambient sheaf or compatible coefficient-diagram categories used for the resolution enhancement in A.4; injectives are not required to be constructible.
+
+The forgetful functor from Weil objects has exact left adjoint
+\[
+ P\longmapsto\bigoplus_{j\in\mathbb Z}\sigma^jP,
+ \tag{C.23.17}
+\]
+where the Weil map shifts the summand labels. Its right adjoint is the corresponding product. The adjunctions follow by evaluating at the summand or coordinate with label zero; the other coordinates of a Weil map are then determined by its structural isomorphism. The left adjoint is exact because \(\sigma\) and direct sums are exact. Consequently forgetting a Weil injective gives an underlying injective: its Hom functor is the Hom functor from the exact left adjoint.
+
+There are enough Weil injectives. Embed the underlying object in an injective \(I\), and map the Weil object into the coinduced product of the \(\sigma^j I\). The coordinate at zero makes this map a monomorphism. Coinduction sends an injective to an injective, since forgetting is exact. Repeating on cokernels constructs Weil injective resolutions. The bounded-below mapping-model argument in C.23.2 works both before and after forgetting. Thus the Hom complex between chosen resolved Weil objects computes the actual geometric derived mapping object.
+
+For a homogeneous map \(f\) its strict chain automorphism is
+\[
+ F(f)=\alpha_Q\,\sigma(f)\,\alpha_P^{-1}.
+ \tag{C.23.18}
+\]
+It commutes with the differential and with composition. We have not taken invariant vectors in this Hom complex. Its cohomology is geometric Ext equipped with Frobenius, rather than Ext in the category of Weil objects.
+
+At finite coefficient levels (C.23.17) and the coinduced resolution are carried out in the ambient categories, retaining their coefficient reductions and action faces as a derived coefficient diagram. Resolving such a diagram retains its reduction comparisons as maps and their coherent homotopies; we do not claim that a nonflat coefficient reduction preserves an arbitrary injective term. The derived inverse limits in the rational-adic enhancement retain the Weil action: their product and mapping-cone models apply (C.23.18) to each coordinate and each transition. Inversion of \(\ell\) retains it as well. The actual mapping and composition comparisons are Lesson 5, Lemma P.1.3.1 and the enhanced construction in P.1.2; actual rational internal Hom is Theorem O.3.2.2 and rationalization Theorem N.4.3.1. Their underlying Hom complex is consequently the same actual rational-adic geometric mapping object. No locally finite assertion about these product cochain terms is needed.
+
+Next retain the operations. The pullbacks, tensor products, descent and proper images that define convolution are performed over the finite field. They act on Weil objects using their structural isomorphisms. Derive these functors in that category. Underlying injective resolutions compute the underlying derived proper images by the forgetful argument above; tensor products use flat resolutions, for which the exact free construction (C.23.17) retains flatness. Hence forgetting recovers the actual geometric derived convolution correspondence.
+
+This also proves compatibility at the enhanced level: the correspondence comparisons, adjunction units and counits, and their compositions are maps of Weil coefficient diagrams. On resolution models they give the corresponding maps and comparison homotopies, still with their Weil action. Resolving the entire coefficient diagram retains its faces, rather than choosing independent resolutions for its separate arrows. Derived passage retains the identities and their higher comparison homotopies, because a resolution equivalence induces the same mapping-complex equivalence at every face. This is the full action-nerve and fusion construction of Lesson 8, A–C, with the affine-parameter counits and all block maps proved in C.17. The sign correcting component symmetry is a constant scalar, so it too commutes with Frobenius. All finite ordered fusion coherence diagrams are therefore present in the Weil enhancement.
+
+Theorem C.22.3.1 now verifies purity for every member of this diagram: actual mapping cohomology between convolution words in degree \(n\) has sole eigenvalue \(a^n\), with Jordan parts permitted. The earlier parity and finiteness calculations make it finite-dimensional in each degree and zero below degree zero. Although an injective Hom complex may have nonzero cochain terms arbitrarily far below zero, it is a bounded-below *derived* object. Its tensor products remain bounded below and diagonally pure by the field Künneth calculation preceding C.23.3.
+
+Thus every required hypothesis of Theorem C.23.3.1 has been verified for this entire diagram. Apply its symmetric monoidal formal functor to the mapping objects and all the operations. Their zero-differential output is the actual graded Ext, with actual composition and convolution. Its associator, unit and corrected permutation maps are their degree-zero cohomology maps. Naturality retains all higher coherent identities. This proves the asserted equivalence of enhanced generator diagrams, not merely a monoidal structure transported abstractly across an unrelated category equivalence. ∎
+
+#### C.23.5. The arithmetic monoidal Satake envelope
+
+Recall \(A=\operatorname{Sym}_E(\mathfrak h[-2])\) with zero differential and the full dual group \(H\), including its centre. A free generator is \(F_V=A\otimes_E V\), and \(\operatorname{Perf}_H(A)\) means its idempotent-complete finite-cone envelope, as in C.22.2. Its tensor product is the derived tensor product over \(A\).
+
+**Theorem C.23.5.1.** Over the arithmetic geometric fibre with the rational-adic coefficient field fixed above, there is an enhanced symmetric monoidal equivalence
+\[
+ \bigl(D^b_{L^+G,\mathrm{fin}}(\mathrm{Gr}_G,E),*\bigr)
+       \ \simeq\
+ \bigl(\operatorname{Perf}_H(A),\otimes_A^{\mathbf L}\bigr),
+ \qquad A_\lambda\longmapsto A\otimes_E V_\lambda.
+ \tag{C.23.19}
+\]
+Its graded generator morphism comparison is the actual cup-and-Kostant map of C.21–C.22. The corrected component symmetry is used on the geometric side. This theorem does not assert a comparison with complex constructible coefficients.
+
+**Proof.** Theorem C.23.4.1 formalizes the full enhanced generator diagram, with convolution and every structural map retained. Theorem C.22.1.1 identifies that actual graded symmetric monoidal diagram with the free dual polynomial generators. This identification preserves the actual Yoneda composition and convolution of every homogeneous morphism; its cohomology degree and grading are the ones already checked in C.21. It sends the unit to \(A\) and sends \(A_\lambda\) to \(F_{V_\lambda}\). Composing the two comparisons gives an enhanced symmetric monoidal comparison on all generator objects and morphisms.
+
+We spell out extension to the finite envelope. A finite cone construction can be represented by a finite sum of shifted generators with a matrix differential of degree one, whose square is zero; successive cone matrices are upper triangular. Enhanced Yoneda identifies mapping complexes on generators, and its comparison on two such cone constructions is the corresponding finite total matrix mapping complex. It is a quasi-isomorphism by filtering the matrices by the number of cone steps, or by the two-variable mapping-cone induction of A.4 and C.22.2. In the idempotent completion a retract is its coherent projector and splitting data. A mapping-complex equivalence carries that entire data and its retraction identities, so extends to the retracts as well. No image of an arbitrary merely homotopy-idempotent cochain map is being taken as a new cochain subcomplex.
+
+The tensor comparison extends with these constructions. On a pair of shifted generators use the generator comparison with its shift signs. On their finite cone matrices the tensor differential is
+\[
+ d_{X\otimes Y}=d_X\otimes1+1\otimes d_Y,
+ \tag{C.23.20}
+\]
+with the Koszul sign in the second term. The cross terms cancel, so its square is zero. Exactness of actual derived convolution and of derived \(A\)-tensor says that these are their actual total cone constructions. The comparison on the graded entries and on the degree-one cone maps identifies (C.23.20) on the two sides. For retracts tensor their splitting maps and their coherent projectors; the two retraction identities remain identities after tensoring. This supplies a natural tensor equivalence on every finite-envelope object and its full mapping complex.
+
+The unit and every associator and permutation comparison extend by the same finite matrix construction; all their coherent identities already hold on the enhanced generator diagram by C.23.4. Thus they hold on these total complexes and on their retracts. Equivalently each finite cone extends the corresponding coherent generator diagram by its actual cone functor, and its comparison is a mapping-complex equivalence in both variables. No new coherence class is introduced by that operation.
+
+Every bounded finite-support spherical object belongs to this envelope, by bounded perverse truncation and the semisimple spherical heart, proved in A.4. Every object of \(\operatorname{Perf}_H(A)\) belongs to its specified free envelope by definition. The free-generator mapping complexes are actual derived maps, as the injective-invariant argument of C.22.2 proved; ordinary equivariant coherent Hom has not been substituted for them. Hence the fully faithful comparison on the finite envelopes is essentially surjective and has the tensor structure just constructed. This proves (C.23.19). The entire construction retains the full group \(H\), its central directions and every connected component of \(\mathrm{Gr}_G\). ∎
+
+![Resolve the Laurent complex before taking primary vectors; transport its entire coherent Weil diagram; obtain actual arithmetic monoidal Satake](assets/derived-primary-monoidal-formality.png)
+
+The first panel is the actual complex and its explicit primary model in Exercise C.23.6.1; the basis is infinite, and a finite cutoff does not have the displayed cohomology. The middle panel displays the derived equivalence and simultaneous weight truncation of C.23.2.1–C.23.3.1, applied to the actual Weil mapping objects of C.23.4.1. Its tensor product is over \(E\) with diagonal Frobenius. The last panel is C.23.5.1, whose target tensor is over \(A\); its IC labels mean the normalized objects \(A_\lambda\). This is the arithmetic geometric fibre, with the full dual group and corrected component symmetry. Editable SVG source.
+
+#### C.23.6. Two derived-action exercises
+
+**Exercise C.23.6.1 (intermediate).** Put \(C=R\xrightarrow{t-a}R\) in degrees zero and one. Use the derived replacement theorem to compute \(L(C)\) up to quasi-isomorphism. What is the formal underlying \(E\)-complex, and why does the zero termwise locally finite subcomplex not compute it?
+
+**Solution.** The injective differential in \(C\) has cokernel \(R/(t-a)\), so \(H^1(C)=E\) with action \(a\), and all other cohomology is zero. Equations (C.23.3) and (C.23.8) give \(L(C)\simeq E[-1]\) as a derived \(R\)-object. An explicit locally finite model is obtained by setting \(p=t-a\) and \(P_a=R[p^{-1}]/R\), and placing
+\[
+ P_a\xrightarrow{p}P_a
+ \quad\text{in degrees one and two}.
+ \tag{C.23.21}
+\]
+Its basis \(e_j=p^{-j}\bmod R\), \(j\ge1\), satisfies \(p e_j=e_{j-1}\), where \(e_0=0\), and \(t e_j=a e_j+e_{j-1}\). To obtain that basis, reduce a numerator modulo \(p^j\); since \(a\ne0\), the Laurent variable is invertible in this quotient, and its residue has a unique polynomial representative of degree less than \(j\). Thus every vector in \(P_a\) lies in a finite Jordan block of eigenvalue \(a\). Multiplication by \(p\) is surjective with kernel \(Ee_1\). The cochain map from \(C\) to (C.23.21) is zero in degree zero and sends \(r\) in degree one to \(r e_1\). It is \(R\)-linear, commutes with the differential, and induces the isomorphism on \(H^1\). This also checks the recovery of cohomology without an abstract resolution choice.
+
+The underlying formal complex is the one-dimensional space in degree one. The original terms \(R\) are torsion free, so their termwise locally finite submodules are zero. The resolution adds the torsion injective terms needed before taking primary submodules. The computation distinguishes the derived replacement from that invalid zero complex. A finite cutoff of \(P_a\) would create a spurious cokernel at its last basis vector; the surjectivity just used depends on retaining all \(e_j\).
+
+**Exercise C.23.6.2 (advanced).** Let \(M=R/(t-a)^2\), with the two-dimensional Jordan action of eigenvalue \(a\), placed in cohomological degree one. Compute all \(H^kR\operatorname{Hom}_R(M[-1],M[-1])\), and compute the derived maps to \(E[-2]\) with eigenvalue \(a^2\). Explain which result is used for coherent formality.
+
+**Solution.** The resolution \(R\xrightarrow{(t-a)^2}R\) of \(M\) gives a zero differential after applying \(\operatorname{Hom}_R(-,M)\). Thus the self-mapping complex has \(M\) in degrees zero and one, and zero cohomology elsewhere. In particular its negative-degree cohomology is zero, but its degree-one group is two dimensional. For the target with eigenvalue \(a^2\), the same differential is multiplication by \((a^2-a)^2\), a nonzero scalar. Its Hom complex is acyclic; the shift of the target does not change that fact. The vanished cross-weight maps and negative-degree maps agree with C.23.3.2. The retained self-\(\operatorname{Ext}^1_R\) records possible Weil extensions; it is not an extra geometric IC Ext group. Coherent formality uses the derived primary equivalence and diagonal truncation, retaining the given Jordan action throughout.
+
+### C.24. Descending composition formality through coefficient fields
+
+The following coefficient argument is independent of a Betti–étale comparison. Its conclusion supplies descent of the enhanced *composition* model. A comparison of the actual geometric mapping diagrams and descent of their complete symmetric monoidal structure are still required for the complex theorem. We do not claim either merely from the lemmas here.
+
+The elementary algebraic inputs are proved in the earlier programme: The Nullstellensatz and Jacobson rings, Theorems 2.1–2.2, Formally smooth, unramified and étale ring maps, Theorems 1.2 and 4.1, and Krull dimension and Noether normalization, Lemmas 1.3 and 4.1 and Theorem 4.2.
+
+#### C.24.1. Rational points on triangular torsors
+
+**Lemma C.24.1.1.** Let \(k\) be a field of characteristic zero, \(U\) a reduced closed subgroup of a finite unitriangular matrix group over \(k\), and \(T\) a right \(U\)-torsor of finite type over \(k\). If \(T\) is geometrically nonempty, it has a \(k\)-point. Images and kernels of homomorphisms between such groups are reduced closed connected unipotent groups, and a surjection between them is surjective on points over any characteristic-zero extension of \(k\).
+
+**Proof.** Write \(N\) for the strictly upper triangular matrix algebra, with \(N^r=0\) for a sufficiently large \(r\). The matrix polynomials
+\[
+ \log(1+x)=\sum_{j=1}^{r-1}(-1)^{j+1}x^j/j,
+ \qquad
+ \exp(x)=\sum_{j=0}^{r-1}x^j/j!
+ \tag{C.24.1}
+\]
+are inverse on \(N\) and \(1+N\). We verify their restriction to \(U\).
+
+Over an algebraic closure, a reduced algebraic group in characteristic zero is smooth. For the generic-point calculation, the function field of an irreducible component has a separating transcendence basis: choose any transcendence basis, and its remaining finite algebraic extension is separable in characteristic zero. Choose a finite generating tower for that extension. Each successive minimal polynomial has nonzero derivative, since an irreducible polynomial in characteristic zero is relatively prime to its derivative. Clearing the finitely many denominators of the equations and of the coordinate-ring generators, and inverting those derivatives, identifies a nonempty open with a successive tower of standard étale hypersurfaces over an open in affine space. The standard smooth presentation theorem and composition give a smooth nonempty open. Translation moves one such smooth point to any group point. Thus every point is smooth. For \(u\in U\), every integer power \(u^j\) belongs to \(U\). Each defining equation of \(U\) therefore vanishes on \(\exp(s\log u)\) at every integer \(s\). It is a polynomial in \(s\), so vanishes identically. Its derivative at zero shows \(\log u\in\mathfrak u=\operatorname{Lie}U\).
+
+Conversely let \(x\in\mathfrak u\). The left invariant vector field defined by \(x\) is tangent to \(U\) at each point, by translation. For a polynomial \(f\) in the radical defining ideal of \(U\), its derivative under that field vanishes on \(U\), so remains in that ideal. The same is true of all iterated derivatives. The derivative of \(f(\exp(sx))\) is that vector-field derivative along the curve, since \((\exp(sx))'=\exp(sx)x\). All Taylor coefficients at zero are therefore zero. As the expression is polynomial, \(f(\exp(sx))=0\). Hence \(\exp(x)\in U\).
+
+Thus (C.24.1) restricts to inverse polynomial isomorphisms between the variety \(U\) and the vector space \(\mathfrak u\). The argument is over the algebraic closure and all formulas are defined over \(k\), so the isomorphisms descend to \(k\). In particular \(U\) is connected. For a homomorphism \(\phi:U\to V\),
+\[
+ \phi(\exp(sx))=\exp(s\,d\phi(x)).
+ \tag{C.24.2}
+\]
+Indeed its left side is a polynomial one-parameter group; differentiating \(h(s+t)=h(s)h(t)\) at \(t=0\) gives \(h'=h\,d\phi(x)\), \(h(0)=1\). Coefficient comparison in that polynomial differential equation proves the stated exponential. Its image is therefore \(\exp(d\phi(\mathfrak u))\), a closed connected subvariety and subgroup of \(V\); its kernel is \(\exp(\ker d\phi)\). Over any extension field, a point of the image has a logarithm in that linear image, and a linear lift gives a preimage. This proves the image, kernel and point-surjectivity assertions.
+
+Choose a point \(z\) of \(T\) over an algebraic closure. Because \(T\) is of finite type and nonempty, such a point exists and its finitely many coordinates lie in a finite extension; this is the weak Nullstellensatz applied after scalar extension. Enlarge it to a finite Galois extension \(L/k\) containing those coordinates. Write
+\[
+ \sigma z=z\,u_\sigma,\qquad
+ u_{\sigma\tau}=u_\sigma\,\sigma(u_\tau).
+ \tag{C.24.3}
+\]
+The \(u_\sigma\) lie in \(U(L)\), since the torsor action identifies each fibre with \(U\).
+
+Put \(U_i=U\cap(1+N^i)\). The degree-\(i\) matrix entries define a homomorphism from \(U_i\) into the additive vector space \(N^i/N^{i+1}\), with kernel \(U_{i+1}\). Its image is the \(k\)-linear image of \(\mathfrak u\cap N^i\): exponential reduces to \(1+x\) modulo \(N^{i+1}\). Therefore the map is onto that vector space on \(L\)-points, by a linear lift followed by exponential. Also \([U,U_i]\subset U_{i+1}\), since multiplying matrices of degrees one and \(i\) gives degree at least \(i+1\).
+
+Suppose the cocycle values have already been put in \(U_i\). Their degree-\(i\) components \(c_\sigma\) satisfy the additive cocycle identity \(c_{\sigma\tau}=c_\sigma+\sigma c_\tau\). Let
+\[
+ b=\frac1{|\operatorname{Gal}(L/k)|}\sum_\tau c_\tau.
+ \tag{C.24.4}
+\]
+Then \(\sigma b=b-c_\sigma\). Choose \(v\in U_i(L)\) with degree-\(i\) component \(b\). Replacing \(z\) by \(zv\) replaces the cocycle by \(v^{-1}u_\sigma\sigma v\); its degree-\(i\) component is \(-b+c_\sigma+\sigma b=0\). Its values now lie in \(U_{i+1}\). Beginning with \(U_1=U\) and iterating through the finite matrix filtration kills the whole cocycle. The resulting point is fixed by \(\operatorname{Gal}(L/k)\), hence has coordinates in \(k\). It is the required \(k\)-point. ∎
+
+#### C.24.2. Compatible points on a tower of formality torsors
+
+**Theorem C.24.2.1.** Suppose \(T_1\leftarrow T_2\leftarrow\cdots\) is a tower of geometrically nonempty finite-type torsors under finite-dimensional reduced closed unitriangular groups \(G_i\), with transition maps equivariant for group homomorphisms \(G_{i+1}\to G_i\). Then there is a compatible system of \(k\)-points. Surjectivity of the original transition maps is not required.
+
+**Proof.** For \(i\ge j\), the geometric image of \(T_i\to T_j\) is a coset of the image \(G_i\to G_j\). The latter is closed and connected by C.24.1. Thus this image is a reduced closed subvariety of \(T_j\); its defining ideal is the scheme-theoretic image ideal, and it descends to \(k\) because the transition map is defined over \(k\). It is a torsor under that image group.
+
+For a fixed \(j\), these closed image groups form a descending chain in \(G_j\). Their dimensions can decrease only finitely often. Once the dimension is constant, a closed connected subgroup contained in the previous connected group of the same dimension equals it: a proper closed subset of an irreducible variety has smaller dimension, and a connected unipotent group is irreducible by its exponential vector-space parametrization. The groups therefore stabilize. Their nested nonempty cosets stabilize too. Denote the resulting image torsor in \(T_j\) by \(S_j\), and its group by \(H_j\).
+
+The map \(S_{j+1}\to S_j\) is geometrically onto. To check this, choose \(i\) large enough that the images in both \(T_j\) and \(T_{j+1}\) have stabilized. The image of \(T_i\) in \(T_{j+1}\) is \(S_{j+1}\), and its image in \(T_j\) is \(S_j\); composition gives the assertion. The corresponding homomorphism \(H_{j+1}\to H_j\) is onto as well, by the same stabilized image calculation.
+
+By C.24.1, \(S_1\) has a \(k\)-point. Over any chosen \(k\)-point of \(S_j\), the fibre of \(S_{j+1}\to S_j\) is a geometrically nonempty torsor under the kernel \(H_{j+1}\to H_j\). Indeed the map is equivariant and geometrically surjective, and two lifts differ by precisely that kernel. The kernel is a reduced closed connected unipotent group by C.24.1. The same lemma supplies a \(k\)-point in the fibre. Induction chooses compatible \(k\)-points for all \(j\), giving a compatible system in the original \(T_j\). This proves the assertion without choosing points independently in a nonsurjective tower. ∎
+
+#### C.24.3. A composition-formality descent theorem
+
+**Theorem C.24.3.1.** Let \(\mathcal C\) be a strictly unital minimal \(A_\infty\) category over \(k\) with countably many objects. Suppose each Hom space is zero in negative degrees and degree one, is finite-dimensional in each degree, and has only the scalar identities in degree zero: \(\operatorname{Hom}^0(X,Y)=0\) for \(X\ne Y\), and \(\operatorname{Hom}^0(X,X)=k\,1_X\). If a characteristic-zero field extension makes \(\mathcal C\) strictly unital \(A_\infty\)-equivalent to its ordinary graded category, then such an equivalence already exists over \(k\), with first component the identity on the graded Hom spaces.
+
+**Proof.** Normalize all higher operations at identity arguments; strict unitality means they vanish there. Use the reduced suspended Hom spaces \(s\overline{\operatorname{Hom}}\), where \(s\) lowers degree by one and the identities have been omitted. They have degrees at least one. The reduced bar coalgebra \(B\) is the direct sum of their finite composable words. Its degree-one coderivation \(b\) records the given operations; \(b_2\) records just the ordinary product, with \(b_2^2=0\). An equivalence to the formal model is a degree-zero coalgebra automorphism \(g\) with
+\[
+ g b=b_2g.
+ \tag{C.24.5}
+\]
+If its first component is an invertible graded map, the arity-two identity says that component preserves the ordinary product. Composing on the target by its graded inverse consequently makes the first component the identity. Thus the hypothesis gives a solution of (C.24.5) with that first component over the extension field.
+
+Enumerate the objects. For stage \(D\), retain the first \(D\) objects and the reduced bar subcoalgebra \(B_{\le D}\), relative to their scalar identity algebra, of total suspended degree at most \(D\). It is finite-dimensional: a word has at most \(D\) letters, all their degrees are between one and \(D\), the object set is finite, and each Hom degree is finite-dimensional. Its coproduct remains inside it because each subword has no greater degree. Coordinate changes fix the objects, respect every Hom source and target, preserve degree, and have first component the identity. Every other component lowers word length. They form a reduced closed algebraic subgroup \(U_D\) of a finite unitriangular group: the coalgebra, object-label and identity-component equations are polynomial, and inversion is the finite sum for a word-length-lowering matrix.
+
+Impose (C.24.5) on inputs of total degree at most \(D-1\), so every required output has degree at most \(D\). No claim that \(b\) preserves the bar subcoalgebra in its top degree is needed. These are finite polynomial equations in \(U_D\). Over the extension field they have a solution. If \(g,h\) are two solutions, then \(h g^{-1}\) is precisely a coordinate change commuting with \(b_2\) in the same output degree range; conversely any such change sends a solution to a solution. Thus the reduced solution variety \(T_D\) is a geometrically nonempty torsor under the reduced closed stabilizer \(G_D\subset U_D\).
+
+Restriction of words and objects gives the equivariant transition maps \(T_{D+1}\to T_D\) and \(G_{D+1}\to G_D\). Theorem C.24.2.1 gives compatible solutions over \(k\). Each fixed finite word, output coefficient and object tuple occurs at some finite stage and its coordinate stabilizes thereafter. The compatible solutions therefore define a coalgebra automorphism on all of \(B\). Its inverse is still determined by the finite word-length recursion. Every instance of (C.24.5) has finite input degree and finitely many object labels, so is checked at a sufficiently large stage. The resulting \(g\) proves the theorem.
+
+For a dg category with these cohomological properties, A.3.1.1 supplies the minimal model over \(k\). Its chosen contraction remains a contraction after field extension, so the minimal-model operations base-change to that same model. The theorem then descends composition formality of the dg generator category and its finite enhanced Yoneda envelope. This last passage is the two-variable cone and coherent-retract argument of A.4. It does not descend extra tensor coherence that has not been included in the coordinate equations, and does not supply a geometric Betti–étale comparison. ∎
+
+### C.25. Actual Betti comparison on rootwise resolution generators
+
+Fix a finite extension \(E/\mathbf Q_\ell\), its valuation ring \(O\), and \(O_n=O/\varpi^n\). Analytification is first applied to the finite coefficient diagrams, before derived completion and rationalization. On the Betti side the resulting comparison with ordinary constructible \(E\)-complexes will be proved on the generator category in question. In particular, a discrete constant étale \(\mathbf Q_\ell\)-sheaf is not being substituted for the complete coefficient theory. Trivialize the Tate lines on the complex side with compatible positive complex roots of unity.
+
+Only the comparison maps, rather than the general comparison theorem, are imported from *Comparison with singular cohomology*, Section 3. Its maps are transposed inverse-image counits, preserve the mixed compact/ordinary cup product, and commute with localization and proper base change. The proof of its Theorem 7.2 uses a proper-constructibility input. None of C.25.1–C.25.5 below consumes that theorem.
+
+#### C.25.1. Compact comparison for a finite toric-cell filtration
+
+Call a finite-type complex scheme toric-cell filtered if its reduced scheme has a finite closed filtration whose differences are finite disjoint unions of \(\mathbf A^a\times\mathbf G_m^b\). The filtration is part of the hypothesis; a partition without closed initial unions is insufficient.
+
+**Theorem C.25.1.1.** For such a scheme \(C\), the actual compact analytification map
+\[
+ R\Gamma_{c,\mathrm{et}}(C,O_n)
+ \longrightarrow R\Gamma_c(C^{\mathrm{an}},O_n)
+ \tag{C.25.1}
+\]
+is a quasi-isomorphism. These maps preserve coefficient reductions, the compact/ordinary cup product, and all the localization triangles defining the filtration. Both sides are perfect coefficient complexes. Derived completion and rationalization give the corresponding comparison for \(E\), with its actual cup and localization maps.
+
+**Proof.** Start with \(\mathbf P^1\). The unit and the trace-positive \(c_1\mathcal O(1)\) give its two free groups in degrees zero and two, by Lesson 6, Section 5.13(c). Section 5.13(d) checks the actual analytification map on those classes: for transition functions \(g_{ij}=\exp(2\pi i u_{ij})\), the integral cocycle \(u_{ij}+u_{jk}-u_{ik}\) reduces to the Kummer boundary of \(\exp(2\pi i u_{ij}/\ell^m)\). The positive-root trivialization therefore sends that Chern class to the positive classical class. This proves the projective-line comparison itself, not just equality of its two ranks.
+
+Products of projective lines have the tensor product of these two-term projective complexes. The actual external cup and iterated proper projection identify the monomial bases, as in (5.45) there. Coordinate boundary intersections are again products of projective lines or points, and their restriction maps retain the units and Chern classes. For \(\mathbf A^a\times\mathbf G_m^b\), take the product compactification \((\mathbf P^1)^{a+b}\), removing infinity in the first \(a\) factors and zero and infinity in the last \(b\). The finite boundary Čech resolution is the tensor product of the one-factor localization triangles. Comparison is an isomorphism on every compactification and boundary term, and commutes with their restriction maps. It is consequently an isomorphism on their total compact-support complex. This also proves that this complex is perfect; the individual boundary terms are finite projective complexes.
+
+Induct along the stated closed filtration. For a closed previous stage and its open difference, extension by zero gives a compact localization triangle on each side. The maps between these triangles are the actual maps of Section 3 of the comparison lesson. The open term compares by the preceding computation and the previous closed term by induction. Two out of three gives the new stage, with its original map. Disjoint finite unions cause no additional issue. Reduction to \(C_{\mathrm{red}}\) is legitimate by nilpotent invariance of the étale site and of the analytic underlying space.
+
+Use the same finite compactifications and localization diagrams with \(O\) coefficients on the classical side. Their cell complexes are finite free, and the resulting complex is perfect by closure under finitely many cones. Its reductions are the preceding finite complexes. A bounded finite projective \(O\)-complex maps isomorphically to the derived inverse limit of its reductions: termwise the limit is the original finite projective module, and the surjective reductions have no positive derived limit. The complete étale comparison is the derived limit of (C.25.1), so is an isomorphism as well. Tensoring by \(E\) is exact. Since each step used the same finite diagrams, all the asserted maps, rather than independently chosen cohomology identifications, survive completion and rationalization. ∎
+
+#### C.25.2. The trace in a smooth toric-cell filtered scheme
+
+**Lemma C.25.2.1.** If \(Z\) is smooth of pure complex dimension \(d\) and toric-cell filtered, compact comparison commutes with the structural trace
+\[
+ R\Gamma_{c,\mathrm{et}}(Z,E(d))[2d]\longrightarrow E
+ \quad\text{and}\quad
+ R\Gamma_c(Z^{\mathrm{an}},E)[2d]\longrightarrow E.
+ \tag{C.25.2}
+\]
+The second trace uses the complex orientation. The compatibility is retained for finite coefficients and their complete diagrams when the input has finite Tor amplitude.
+
+**Proof.** The smooth trace and supported point classes on the étale side are those of Lesson 5, P.2.4 and Q.1.2. The classical compact-support adjoint and its orientation are constructed in GL-PERV, Appendices F.4–F.5 and H.5. Both point classes have trace one.
+
+Their local compatibility can be checked without a comparison theorem for a general smooth variety. At the origin of the affine line, the trace-positive class is the negative of the raw supported Kummer boundary. The explicit singular-cochain calculation in *Sheaf cohomology and singular cohomology on manifolds*, Proposition 6.3 and Corollary 6.4, evaluates that boundary as the inverse positive root on the oriented relative disc. Its negative is the positive oriented class. Taking external products gives the same statement for the origin of \(\mathbf A^d\); there is no permutation sign because the point classes have even degree. An étale coordinate chart at a smooth complex point is an analytic local biholomorphism. Restriction, étale purity and excision preserve these supported classes, so this local assertion holds at every smooth point of \(Z\).
+
+For each connected component, the étale top compact group is \(E(-d)\), with the point class a generator and trace one, by the trace-normalized smooth formula of Lesson 5. The classical group is \(E\), with the same property, by oriented compact-support duality and GL-PERV F.5. The actual compact comparison sends the point class to that class: this is naturality for its closed support and the local calculation just made. Thus the two traces agree on a generator, and on the finite sum over components.
+
+This is an equality of derived maps as well. Smooth trace and classical orientation vanish outside the top compact degree. More explicitly, over \(E\), maps from a bounded complex to \(E[-2d]\) are its top-degree linear dual; no higher coefficient Ext remains. At finite level \(O_n\) the coefficient ring is injective over itself: a map from its ideal \((\varpi^a)\) to \(O_n\) takes the generator to an element annihilated by \(\varpi^{n-a}\), hence to \(\varpi^a y\), and extends by multiplication by \(y\). The ideal extension argument of C.23.1.1 then gives injectivity. Consequently the same assertion about maps into the top coefficient holds there. The classical adjoint construction can be computed on bounded flat models of finite-Tor inputs; replacing tensor by derived tensor in F.4–F.5 preserves the adjunction calculation. The point calculation and traces commute with reduction, so their equalities hold in the whole complete diagram. ∎
+
+**Lemma C.25.2.2 (the classical adjoint with these coefficient rings).** The classical compact-support adjoint and complex-manifold orientation used above exist over \(O\) and \(O_n\), with derived coefficient Hom. On a smooth complex \(d\)-manifold their structural dualizing object is respectively \(O[2d]\) and \(O_n[2d]\), with its orientation trace. Thus the classical adjunction in C.25.3 may be computed integrally before completion.
+
+**Proof.** We give the coefficient repair to GL-PERV F.1–F.5 explicitly, because their stated coefficient scope is a field. The compact closed-section extension, c-soft quotient argument and compact continuity in F.1–F.2 use only finite gluing and exact filtered colimits. They apply to modules over either ring. The dimension bound in F.2 uses the minimal closed subset of the real line on which a nonzero class survives, and the exact closed-cover sequence splitting that subset into two half-lines. That proof likewise uses no tensor operation or field property. Iterating it and the local c-soft gluing proves a finite uniform compact cohomological bound on the finite Euclidean atlases in use.
+
+Products and filtered colimits of flat modules are flat over either coefficient ring. Over \(O\), a product of flat modules is torsion free, and the finite principal-ideal tensor test proves flatness; filtered colimits preserve that test. For \(O_n\), the test is
+\[
+ \ker(\varpi^a:M\to M)=\varpi^{n-a}M,\qquad 1\leq a\leq n.
+ \tag{C.25.2a}
+\]
+Indeed the alternating free resolution of \(O_n/(\varpi^a)\), with maps \(\varpi^a\) and \(\varpi^{n-a}\), identifies its first Tor with this kernel quotient. Every finitely presented module is a finite sum of cyclic modules: diagonalize its finite presentation matrix by choosing an entry of least valuation, using divisibility to clear its row and column, and repeating on the smaller matrix. Testing the resulting cyclic summands proves the flatness criterion. The passage from finitely presented tests to arbitrary modules is by their finite presentation diagrams and exact filtered colimits, equivalently the finite-relation tensor test. Equation (C.25.2a) holds for a product of flat modules componentwise; a family in the right-hand image has a preimage chosen in each component. It also passes to filtered colimits, since the kernel is a finite linear equation. This proves the assertion.
+
+For a sheaf with flat stalks, its Godement sheaf has flat stalks: sections of that sheaf are products of the original stalk modules, and a new stalk is the filtered colimit of such products. The original sheaf embeds with a stalkwise split map, since evaluation of a germ of a Godement section at that very point is a retraction. Its quotient therefore has flat stalks too. Iterate. The Godement terms are flasque and hence c-soft here. Truncate at the compact cohomological bound \(N\). Dimension shifting and the c-soft criterion of F.1 show that the last quotient is c-soft, and its stalks are still flat. We obtain a bounded flat c-soft resolution of the constant coefficient sheaf. Its augmented complex is stalkwise split exact, by the successive evaluation splittings, so tensoring it with any sheaf preserves the augmentation quasi-isomorphism.
+
+If \(M\) is flat and c-soft, the proof of F.3 shows that \(F\otimes M\) is c-soft for every sheaf \(F\). Its resolution by sums of the free open-extension sheaves stays exact after tensoring, because \(M\) is flat. The tensor terms are sums of open extensions of \(M\), and are c-soft. Dimension shifting through \(N\) of these terms gives vanishing of \(H_c^1\) for the tensor; the criterion in F.1 proves c-softness. Thus \(T_M(F)=\Gamma_c(F\otimes M)\) is exact and preserves colimits. The explicit adjoint
+\[
+ \mathcal D_M(J)(U)=
+ \operatorname{Hom}_R\!\left(\Gamma_c(U,M|_U),J\right),
+ \qquad R=O\text{ or }O_n,
+ \tag{C.25.2b}
+\]
+is proved by the same free-open section presentation and its relation presentation in F.3. For injective \(J\), it is an injective sheaf, since \(T_M\) is exact.
+
+Use the bounded flat c-soft resolution just constructed in formula F.12, and an injective coefficient resolution of \(R\). For \(O_n\), \(R\) itself is injective by C.25.2.1. For \(O\), use \(O\to\operatorname{Frac}(O)\to\operatorname{Frac}(O)/O\); the last two modules are divisible, and the ideal extension proof of C.23.1.1, applied to this principal ideal domain, makes them injective. The same finite-total-complex currying and its differential in F.13 give
+\[
+ R\operatorname{Hom}_R(R\Gamma_c(U,F),R)
+ \simeq R\operatorname{Hom}_U(F,a_U^!R).
+ \tag{C.25.2c}
+\]
+All target terms are injective by (C.25.2b). This verifies derived Hom, not only the underived adjunction. The proper-support composition argument of H.3 uses sections and their supports, so retains its proof with these coefficients as well.
+
+On coordinate balls of real dimension \(m\), compact singular cochains have the sole group \(R\) in degree \(m\), by the relative sphere calculation of GL-PERV C.5. The local form of (C.25.2c) therefore gives the orientation sheaf in degree \(-m\), just as in F.5. Smaller-ball extension preserves its oriented generator, and complex-coordinate changes have positive real determinant. Hence on a complex \(d\)-manifold it is \(R[2d]\). Evaluation identifies its counit with the orientation trace. This proves the coefficient extension used in the preceding lemma and in the following correspondence formula. ∎
+
+#### C.25.3. A correspondence formula for the actual mapping complex
+
+Let \(f:Y\to X\) and \(g:Z\to X\) be proper maps of separated finite-type complex schemes, with \(Y,Z\) smooth of dimensions \(d_Y,d_Z\). Put \(C=Y\times_XZ\), with projections \(k:C\to Y\) and \(h:C\to Z\). Suppose \(Z\) and \(C\) are toric-cell filtered, and all geometric fibres of \(f\) and \(g\) have such filtrations. Let
+\[
+ B_f=Rf_*E_Y[d_Y],\qquad B_g=Rg_*E_Z[d_Z].
+ \tag{C.25.3}
+\]
+Their Betti versions use the same proper maps and shifts.
+
+**Theorem C.25.3.1.** Completed analytification identifies these objects and induces a quasi-isomorphism on their actual enhanced mapping complexes. Under the trace-normalized identifications, the mapping complex is
+\[
+ R\operatorname{Hom}_X(B_f,B_g)
+ \simeq
+ R\operatorname{Hom}_E\!\left(R\Gamma_c(C,E),E\right)
+ [-d_Y-d_Z](-d_Z).
+ \tag{C.25.4}
+\]
+The analogous Betti formula uses the complex orientation and the trivialized Tate line. If \(c\) is the compact comparison from the étale complex to the Betti complex, the map from the étale Hom complex to the Betti Hom complex is \(D_E(c^{-1})\), with the displayed shift and twist. The inverse matters because linear duality reverses arrows. This is the map induced by analytification of morphisms, rather than an unrelated isomorphism having the same dimensions.
+
+**Proof.** Proper base change computes every stalk of the object comparison for \(Rf_*O_n\) as the ordinary comparison of its proper fibre. That fibre is toric-cell filtered by hypothesis, and ordinary and compact cohomology coincide on it. C.25.1.1 therefore proves that the original proper-pushforward comparison is a stalkwise quasi-isomorphism. The same holds for \(g\).
+
+To compute the map on Hom, apply ordinary adjunction for \(g^*,Rg_*\), then actual proper base change for \(f\):
+\[
+\begin{aligned}
+ R\operatorname{Hom}_X(Rf_*E_Y,Rg_*E_Z)
+ &\simeq R\operatorname{Hom}_Z(g^*Rf_*E_Y,E_Z)\\
+ &\simeq R\operatorname{Hom}_Z(Rh_*E_C,E_Z).
+\end{aligned}
+\tag{C.25.5}
+\]
+These equalities are equalities of enhanced mapping objects. They do not take invariants or discard chain homotopies. If \(a_Z\) is the structural map, its smooth dualizing object is \(a_Z^!E=E_Z(d_Z)[2d_Z]\). Properness of \(h\) and proper-support adjunction give
+\[
+\begin{aligned}
+ R\operatorname{Hom}_Z(Rh_*E_C,a_Z^!E)
+ &\simeq R\operatorname{Hom}_E(Ra_{Z!}Rh_*E_C,E)\\
+ &\simeq R\operatorname{Hom}_E(R\Gamma_c(C,E),E).
+\end{aligned}
+\tag{C.25.6}
+\]
+Here \(Z\) need not be proper over the point. The first equality uses \(a_{Z!}\), and \(Rh_*=Rh_!\) only because \(h\) is proper. Removing the smooth dualizing shift and then inserting the two shifts in (C.25.3) gives \(-2d_Z+d_Z-d_Y=-d_Y-d_Z\), with twist \(-d_Z\). This proves (C.25.4). The algebraic adjunction and smooth normalization are precisely Lesson 5, P.2.3–P.2.4; the classical adjunction and orientation are GL-PERV F.4–F.5 and H.3–H.5.
+
+There is a useful way to verify which Hom map this computes. The pairing of a morphism in (C.25.5) with compact cohomology of \(C\) is pullback and proper base change to \(Z\), followed by evaluation and the structural trace of \(Z\). The analytification maps commute with the first two operations and evaluation, by the transposed-counit calculation in the comparison lesson, Lemma 3.1. They commute with the last trace by C.25.2.1. The resulting square of pairings commutes. Since (C.25.6) is exactly the derived-dual adjunction representing this pairing, that square gives \(\langle a(H),c(v)\rangle_{\mathrm{an}}=\langle H,v\rangle_{\mathrm{et}}\). Thus \(D_E(c)\,a=1\) under the displayed identifications, and \(a=D_E(c^{-1})\), with the stated shift and twist. A degree-by-degree dimension argument would not establish this assertion.
+
+For clarity about coefficients, do this calculation first on finite-Tor \(O_n\)-models. Classical smooth duality on these models is the explicit flat c-soft and injective coefficient construction of C.25.2.2; algebraic finite reduction and mapping adjunction are Lesson 5, P.1.2 and P.2.2. All the compact complexes of \(C\) are the reductions of the perfect \(O\)-complex constructed in C.25.1.1. Their duals therefore have the same property. Taking derived limits computes the complete Hom comparison, and localization computes the rational one.
+
+On the ordinary Betti side one obtains the same perfect integral mapping model. One can use an injective coefficient resolution \(O\to\operatorname{Frac}(O)\to\operatorname{Frac}(O)/O\) in the classical compact-adjoint construction; both latter modules are injective by the divisible-module ideal extension proof, and flat resolutions supply derived tensor. A coordinate ball has free compact cohomology in its top dimension, so that construction gives \(O_Z[2d_Z]\) with its trace. Equations (C.25.5)–(C.25.6) then give the dual of the perfect \(O\)-complex of \(C\). Its completion and rationalization are exactly its ordinary \(E\)-version. This proves the required identification of the completed Betti generator enhancement with the ordinary constructible \(E\)-enhancement, without a claim about naive inverse limits of arbitrary analytic sheaves. ∎
+
+#### C.25.4. Retaining the entire group action nerve
+
+**Theorem C.25.4.1.** Let \(Q\) be a smooth complex algebraic group with a finite toric-cell filtration, and let \(f_i:Y_i\to X\) be proper \(Q\)-equivariant maps with smooth toric-cell filtered sources. Suppose every \(Y_i\times_XY_j\) and every fibre of \(f_i\) is toric-cell filtered. Completed analytification is fully faithful on the enhanced generator category of the actual \(Rf_{i*}E[d_i]\), both underlying and genuinely \(Q\)-equivariant, and on its finite cone and coherent-retract envelope. It retains all compositions, units, and homotopies in these diagrams.
+
+**Proof.** On action-nerve level \(m\), use \(X_m=Q^m\times X\), \(Y_{i,m}=Q^m\times Y_i\), and the proper map \(f_{i,m}\). Its fibres are the original proper fibres. Its pair correspondence is \(Q^m\times(Y_i\times_XY_j)\). Products of two finite toric-cell filtrations have a finite closed toric-cell filtration: use the product closed-open triangles, or order pairs of closed stages lexicographically and insert their open product filtrations. Its source is smooth of dimension \(m\dim Q+d_i\). Thus C.25.3.1 applies at every nerve level.
+
+The objects at that level retain shift \(d_i\), rather than the dimension of \(Y_{i,m}\). Repeating (C.25.5)–(C.25.6) with these actual shifts gives
+\[
+\begin{aligned}
+ R\operatorname{Hom}_{X_m}(B_{i,m},B_{j,m})
+ \simeq{}&
+ R\operatorname{Hom}_E\!\left(
+ R\Gamma_c(Q^m\times(Y_i\times_XY_j),E),E\right)\\
+ &[-2m\dim Q-d_i-d_j](-m\dim Q-d_j).
+\end{aligned}
+\tag{C.25.7}
+\]
+This is the levelwise formula, not the equivariant answer at level zero.
+
+The object comparison was defined by the same inverse-image counits on every level. It is therefore natural for the action, projection, multiplication, identity and all their iterated pullback comparisons. The Hom comparison is induced by that functor on morphisms; C.25.3.1 proves that it is an equivalence, without replacing it by an independently chosen map. It follows that the whole cosimplicial mapping diagram compares. The genuine equivariant mapping object is its derived totalization, by Lesson 5 N.4 and the complete action-nerve mapping construction of P.1.3.1. A levelwise equivalence induces an equivalence on the derived limit: this follows directly by computing a homotopy limit with its product and cone model, or by the defining mapping property of a limit. No invariants in a single ordinary group representation, nor an underived product totalization, is substituted.
+
+Composition, identity and their higher coherence are already preserved by completed analytification. The totalized maps inherit them from that same diagram. Finally extend to finite shifts and cones in two variables, using the actual long exact mapping triangles. This is the fully faithful finite-envelope argument of A.4. Extend to coherent retracts using their actual projector and splitting diagrams; apply the functor to those diagrams. Thus no image of an arbitrary homotopy-idempotent cochain is taken. This proves the assertion on the full stated envelope. ∎
+
+#### C.25.5. Applying the comparison to the rootwise Grassmannian objects
+
+**Theorem C.25.5.1.** For a split complex reductive \(G\), the preceding comparison applies to every finite collection of rootwise resolution images on finite Grassmannian supports, including their full finite-jet Iwahori action diagrams. It identifies the corresponding underlying and genuinely Iwahori-equivariant \(E\)-generator envelopes with their ordinary Betti versions. The actual IC objects in those envelopes are sent to the Betti IC objects, with their stalk and costalk tests. Ordered wall-operation diagrams in this scope also compare.
+
+**Proof.** Use the wall resolutions of Lesson 11, C.2.1.1. Its proof establishes a smooth projective source, an actual \(I\)-equivariant proper map, and affine-paved reduced geometric fibres. These are all-characteristic statements, so apply over \(\mathbf C\). The finite-word root charts bound every loop coefficient needed for the source action. For a given finite collection, take a common jet order larger than those finitely many bounds and the target-support bounds. This gives an actual smooth finite-jet Iwahori quotient \(I_N\), not just its action on tangent vectors. Its scheme is \(T\times\mathbf A^u\) by the ordered root and congruence coordinates of Lesson 1, Theorem 2.C, and C.13. Consequently it has a toric-cell filtration.
+
+The source of each wall word has a finite affine paving. To see it in the same charts, select successively the closed point and the open affine-line chart in each wall factor. Over an already selected root chart the torsor has its explicit root representative, so the next open chart is its product with \(\mathbf A^1\); the next closed chart is that previous chart. Ordering the closed chart before the open chart recursively gives closed initial unions. This is the wall-chart construction of Lesson 2, Section 7.4 and Lesson 6, Section 5.3.
+
+It remains to check the pair correspondence, since fibre pavings alone would not establish that hypothesis of C.25.4.1. Choose a finite union of Iwahori cells containing both images and a finite closed cell ordering. Over one such cell \(S\simeq\mathbf A^e\), its ordered root coordinates give a section \(S\to I_N\) taking a fixed normalizer point \(x\) to the varying point. Acting with this section on each resolution gives actual isomorphisms
+\[
+ f_i^{-1}(S)\simeq S\times f_i^{-1}(x),\qquad
+ (Y_i\times_XY_j)|_S
+ \simeq S\times f_i^{-1}(x)\times f_j^{-1}(x).
+ \tag{C.25.8}
+\]
+The inverses act with the inverse section. These are scheme isomorphisms coming from the action, not merely pointwise homeomorphisms. The fibres have the closed affine pavings of Lesson 11, C.2.1.1: at a flag endpoint its closed/open induction is \(F_{a-1}(v)\) and \(\mathbf A^1\times F_{a-1}(vs_a)\); at a Grassmannian endpoint the auxiliary finite-flag root sections give the products in (C.2.1.4) there. Product pavings and the pullback of the closed base-cell ordering now give a finite closed affine paving of the reduced pair correspondence. To insert a closed stage of an open product cell, adjoin the whole preceding closed base part; its complement is open in the total stage. This verifies closedness at every step. Since the maps are proper and the supports proper, the pair correspondence itself is proper.
+
+All hypotheses of C.25.4.1 are now verified for \(Q=I_N\). Increasing the common jet level retains the full group nerve; the omitted congruence kernel is handled by the actual affine-space unit comparison on that nerve in C.13. It is not discarded on the basis of one fibre computation.
+
+For completeness, an IC retract can be chosen in the genuine Iwahori envelope, as well as in the underlying envelope. At an Iwahori cell, the finite-jet stabilizer of its normalizer point has its split torus and the explicitly ordered affine unipotent root coordinates. It is connected. Its classifying-space cohomology is therefore the even polynomial torus cohomology: the full unipotent nerve comparison is C.13, and the torus calculation is C.14. A genuine equivariant constant cohomology sheaf there has the trivial stabilizer coefficient action, because its isomorphism matrix is locally constant on this connected group and equals the identity at the unit. Successive Postnikov attachments between cohomology degrees of the same parity vanish: their degree differences plus one are odd, whereas this actual stabilizer Hom has only even degrees. Thus these restrictions split into shifted constant coefficients in the stabilizer category.
+
+The closed-open Hom induction of Lesson 11, C.2.2.1 consequently works equivariantly too. Its open-cell term is computed with that stabilizer polynomial cohomology; its closed-cell term uses ordinary restriction of the source and exceptional restriction of the target. Matching parities make both odd Hom groups zero. It follows that the dense-cell identities lift to equivariant maps \(u:I_\lambda\to B_\lambda\) and \(v:B_\lambda\to I_\lambda\). Their underlying composite is the identity by intermediate-extension uniqueness, exactly as in Lesson 11, C.2.3.1. Their equivariant composite is the identity as well, since degree-zero morphisms between perverse sheaves are their actual sheaf morphisms with a compatibility condition; the forgetful map in degree zero is injective. The split triangle for \(u\) therefore gives \(B_\lambda\simeq I_\lambda\oplus\operatorname{Cone}(u)\). Transport the literal direct-sum projection and inclusion along this equivalence. This supplies the coherent projector and splitting diagram needed in the finite envelope, rather than the image of a homotopy-idempotent cochain.
+
+Analytification carries this coherent splitting to a Betti retract \(P\). Its ordinary restrictions are the analytifications of those of \(I_\lambda\), by the proper object comparison and the same projector. Duality on the resolution image is its smooth-source orientation followed by proper duality. The trace compatibility of C.25.2.1 and the adjunction calculation of C.25.3.1 identify this duality with Betti duality, including its evaluation on morphisms. It extends over the finite cone and coherent-retract envelope by applying these actual dual diagrams. Therefore exceptional restriction of \(P\), computed as stratum dual of ordinary restriction of its dual, is also the comparison of the original exceptional restriction. All the perverse inequalities and strict boundary inequalities of the IC are retained. The dense restriction is the constant line in degree \(-d_\lambda\). The intermediate-extension characterization identifies \(P\) with the Betti \(I_\lambda\).
+
+Finally, the proper wall operation is built from a wall contracted product, exact inverse image, tensor, and its proper image. The finite root frames and their action nerve are the same ones used above. Analytification preserves the first two operations and their units, and its proper comparison on these wall-word resolution objects is the already proved one. The comparisons are natural for concatenation and for the actual descended maps. Thus the ordered wall-operation diagrams, their compositions and homotopies compare as asserted. This statement concerns these Iwahori generators and wall operations; spherical induction, geometric specialization from a finite-field fibre, and ordered moving fusion still require their own comparisons. ∎
+
+![The actual correspondence Hom formula retains dimensions and twists; its forward Betti map is the dual of the inverse compact comparison; every Iwahori nerve level is retained](assets/complex-generator-correspondence.png)
+
+Theorem C.25.3.1 proves the displayed mapping formula and identifies the actual arrow by evaluation and trace. Theorems C.25.4.1-C.25.5.1 retain the full action nerve and verify the rootwise pair-correspondence pavings and both IC perverse tests. Editable SVG source.
+
+#### C.25.6. Two shift and coefficient checks
+
+**Exercise C.25.6.1.** Apply (C.25.4) to \(f=g=1_{\mathbf P^1}\). What are the two Hom degrees, including the Tate coefficient?
+
+**Solution.** Here \(d_Y=d_Z=1\) and \(C=\mathbf P^1\). Its compact complex is \(E\oplus E(-1)[-2]\). Formula (C.25.4) is
+\[
+ (E\oplus E(1)[2])[-2](-1)
+ =E(-1)[-2]\oplus E.
+ \tag{C.25.9}
+\]
+It has \(E\) in degree zero and \(E(-1)\) in degree two, as \(R\Gamma(\mathbf P^1,E)\) must. Using \(+d_Y+d_Z\), or omitting the twist, would fail this check.
+
+**Exercise C.25.6.2.** Let both maps be \(\mathbf P^1\to\operatorname{Spec}\mathbf C\). Can the resolution generator have negative self-Hom, and what does its pair correspondence predict?
+
+**Solution.** The shifted image is \(B=E[1]\oplus E(-1)[-1]\). Its pair correspondence is \(\mathbf P^1\times\mathbf P^1\), with compact groups in degrees zero, two and four of ranks \(1,2,1\). Formula (C.25.4), with the same shift \([-2](-1)\), gives self-Hom in degrees \(-2,0,2\), of those reversed ranks. Explicitly the negative-degree entry maps the degree-one coefficient of \(B\) to its degree-minus-one coefficient; the positive-degree entry reverses them. Their two compositions are the diagonal projectors in degree zero. Thus the formula retains the full matrix algebra and its composition. A nonnegative-Hom claim about arbitrary resolution images would be false; the nonnegative IC-generator hypothesis in C.23–C.24 is a separate statement.
+
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. The enhanced monoidal upgrade, its compatible cochain model, complex coefficient comparisons, and the renormalized, singular-support and factorization theorems of §8 remain necessary.
+The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. Geometric specialization from the arithmetic fibre, spherical induction and moving fusion, descent of full symmetric tensor coherence to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
 
 Free further reading:
 

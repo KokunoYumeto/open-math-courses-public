@@ -4,7 +4,7 @@
 
 This selection retains the complete natural-comparison arguments used by the duality lesson. The geometric stability of weak constructibility, the small-ball theorem, finite constructible duality and the bounded sheaf-operation results remain their stated prerequisite contracts. A locally constant twist may have infinite modules; finite evaluation is used for the untwisted constructible objects.
 
-Complete original source · Editable proof selection · Reuse terms · Provenance
+[Complete original source](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/providers/src/weak-constructibility-under-sheaf-operations.md) · [Editable proof selection](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/providers/src/comparisons-selection.md) · [Reuse terms](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/LICENSE.txt) · Provenance
 
 ## Coefficients, bounds and the geometric criterion
 
@@ -32,7 +32,7 @@ D^{[c-b,\ d-a+3\dim X+g+1]}(k_X).
 \tag{2}
 \]
 
-This is the existing bounded-Hom prerequisite, for arbitrary bounded coefficients. Normal specialization and Fourier transformation in fixed rank have finite amplitude as well. We retain these inputs rather than infer boundedness just from a symbol \(R\mathcal Hom\) or from fibrewise bounded stalks.
+The uniform local Ext argument (M38–M44) proves this bound for arbitrary bounded coefficients. It applies on every open chart with the same dimension bound and uses diagonal support cohomology; neither perfect stalks nor biduality are used. Normal specialization and Fourier transformation in fixed rank have finite amplitude as well. We retain these inputs rather than infer boundedness just from a symbol \(R\mathcal Hom\) or from fibrewise bounded stalks.
 
 
 ## Natural comparisons with infinite locally constant coefficients
@@ -256,9 +256,9 @@ Rf_*F\simeq j_Y^{-1}Rq_{2*}B(F).
 \]
 
 For the first factor the graph embedding followed by \(q_2\), using ordinary restriction and zero extension. For the second use
-\(R\mathcal Hom(k_\Gamma,H)=Ri_{\Gamma*}i_\Gamma^!H\). Exceptional composition identifies \(i_\Gamma^!q_1^!Rj_{X*}F=j_X^!Rj_{X*}F=F\). Restricting to the open \(Y\) then gives ordinary graph-image composition. Open \(j_Y^!\) and \(j_Y^{-1}\) coincide; this does not replace an exceptional inverse image for a general map.
+\(R\mathcal Hom(k_\Gamma,H)=Ri_{\Gamma*}i_\Gamma^!H\). Trace-normalized exceptional composition (EX.13–EX.16) identifies \(i_\Gamma^!q_1^!Rj_{X*}F=j_X^!Rj_{X*}F=F\). Restricting to the open \(Y\) then gives ordinary graph-image composition. Open \(j_Y^!\) and \(j_Y^{-1}\) coincide; this does not replace an exceptional inverse image for a general map.
 
-Proper-support image stability makes both ambient images in (33) weakly constructible. Their restriction followed by \(j_{Y!}\) is their tensor with \(k_Y\), hence still weakly constructible. This proves the claim on the target pair. If \(F\) is constructible up to infinity with perfect stalks, every operation in (32), the proper images and the final cutoff preserves perfection by the existing perfect-operation and compact-fibre proofs. Thus both images are constructible up to infinity in this stronger sense as well.
+Proper-support image stability makes both ambient images in (33) weakly constructible. Their restriction followed by \(j_{Y!}\) is their tensor with \(k_Y\), hence still weakly constructible. This proves the claim on the target pair. If \(F\) is constructible up to infinity with perfect stalks, perfect inverse-image, tensor and internal-Hom closure handles every operation in (32) and the final cutoff; perfect direct image on the actual closed support, (12)–(13) handles the two proper images. These perfect-coefficient inputs are used only for this stronger conclusion. Their weak-stability inputs are the first part of this lesson, already proved before the infinite-coefficient comparisons. Thus both images are constructible up to infinity in this stronger sense as well.
 
 **Proof of the comparisons.** The question is local on the output \(Y\). On a chart where \(M=L_Y\), we can test the canonical maps using the globally constant \(L_Y\): open base change restricts both images to that chart and their inputs to its inverse image. This does not assume a global constant trivialization, or an extension of \(M\) to \(\widehat Y\). Set \(L_Z\) and \(L_{\widehat X},L_{\widehat Y}\) to be the associated constant complexes.
 
