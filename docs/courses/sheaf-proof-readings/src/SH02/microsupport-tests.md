@@ -656,6 +656,79 @@ If $C=\{0\}$, its negative polar is all of $E^*$, including the zero covectors. 
 
 The proof establishes both the propagation theorem used in `SH02-MST-CUTOFF-CONVERSE` and its halfspace case. Together with that convex-extension argument, it completes (T24) at the stated generality, relative to the declared foundational imports.
 
+## SH02-MST-UNIFORM-TESTS — Tests shared by a family {#SH02-MST-UNIFORM-TESTS}
+
+The boundary estimates use a family of complexes obtained by moving an open set. The test domains must remain fixed while that family varies. The preceding proofs give the following precise form of uniformity.
+
+Let $X\subset E$ be open, let $x_0\in V\subset X$ with $V$ open, and let $W\subset E^*$ be an open neighborhood of a nonzero covector $\xi_0$. Suppose a family $(F_\lambda)_{\lambda\in I}$ of bounded complexes satisfies
+
+\[
+\operatorname{SS}(F_\lambda)\cap(V\times W)=\varnothing
+\quad\text{for every }\lambda\in I.
+\tag{U1}
+\]
+
+There are a pointed full-dimensional closed convex cone $C$, a neighborhood $V_0$ of $x_0$, and $h>0$, chosen independently of $\lambda$, with the following properties. Put $\ell(y)=\langle y-x_0,\xi_0\rangle$, $H=\{\ell\geq-h\}$ and $L=\{\ell=-h\}$. Every nonzero vector of $C$ pairs strictly negatively with $\xi_0$. For every $x\in V_0$, the cap $(x+C)\cap H$ lies in $V$ and restriction gives
+
+\[
+R\Gamma((x+C)\cap H;F_\lambda)
+\xrightarrow{\sim}
+R\Gamma((x+C)\cap L;F_\lambda)
+\quad\text{for every }\lambda\in I.
+\tag{U2}
+\]
+
+There are also fixed $C$-open sets $O_0\subset O_1$ such that, with $D=O_1\setminus O_0$,
+
+\[
+x_0\in\operatorname{Int}D,\qquad
+\overline D\text{ is compact and contained in }V,\qquad
+Rq_{C*}R\Gamma_D\widetilde F_\lambda=0
+\quad(\lambda\in I).
+\tag{U3}
+\]
+
+Here $\widetilde F_\lambda$ is extension by zero from $X$ to $E$, and $R\Gamma_D=R\mathcal Hom(k_D,-)$ is the sheaf support functor. Its restriction near $x_0$ agrees with $F_\lambda$. No common bound on the cohomological ranges of the family is required for these conclusions; each complex remains bounded as in the standing hypotheses.
+
+**Proof.** Positive conicity enlarges (U1) to the positive conic hull of $W$. Choose linear coordinates with $x_0=0$ and $\xi_0=dx_1$. A sufficiently small $\delta>0$ makes every positive multiple of $dx_1+\eta\cdot dx'$ with $|\eta|\leq\delta$ belong to that conic hull. Take
+
+\[
+C=\{(v_1,v'):v_1\leq-\delta|v'|\}.
+\tag{U4}
+\]
+
+Its negative polar consists of the covectors $a\,dx_1+\eta\cdot dx'$ with $a\geq0$ and $|\eta|\leq\delta a$. In particular, its nonzero covectors lie in the same excluded conic hull. Choose $h$ and then $V_0$ small enough that all the caps and the slightly larger caps used in (T14)–(T20) lie in $V$.
+
+The analytic boundaries (T14), their conormal bound (T16), and the compact neighborhoods at their rims depend only on $C,h$ and the cap vertex. Condition (U1) makes the required support tests vanish for every $F_\lambda$ on these very same boundaries. Apply the deformation argument and compact-neighborhood comparison separately to each complex, using the same geometric domains and the same restriction maps. Formula (T20) therefore gives (U2) for the entire family. This verifies uniformity from the construction; it does not infer it from separately chosen neighborhoods for each complex.
+
+For (U3), choose a small $\epsilon>0$ and set
+
+\[
+O_1=(x_0+B_\epsilon)+C,\qquad
+O_0=O_1\cap\{\ell<-h\}.
+\tag{U5}
+\]
+
+Both sets are $C$-open. There is $a>0$ with $-\langle v,\xi_0\rangle\geq a|v|$ on $C$. If $y=x_0+b+v\in D$, then $|b|<\epsilon$ and
+
+\[
+a|v|\leq h+|\xi_0|\epsilon.
+\tag{U6}
+\]
+
+Thus $\overline D$ is compact and lies in $V$ after the preceding choices are made small enough. Also $x_0\in\operatorname{Int}D$. For each $x\in O_1$, the set $(x+C)\setminus O_0$ equals the closed truncated cone $(x+C)\cap H$ and is compact by strict negativity. The same microsupport avoidance (U1) therefore satisfies (T41) for every $\widetilde F_\lambda$, with these fixed $O_0,O_1$.
+
+The supported propagation conclusion (T44) says that $Rq_{C*}R\Gamma_{E\setminus O_0}\widetilde F_\lambda$ vanishes on $O_1$. If $j_1:O_1\hookrightarrow E$ and $j_{1,C}:O_1\hookrightarrow E_C$ denote the open inclusions in the two topologies, locally closed support and direct-image composition give
+
+\[
+Rq_{C*}R\Gamma_D\widetilde F_\lambda
+\simeq Rj_{1,C*}
+\bigl((Rq_{C*}R\Gamma_{E\setminus O_0}\widetilde F_\lambda)|_{O_1}\bigr)=0.
+\tag{U7}
+\]
+
+Near $x_0$, the set $D$ contains an ordinary neighborhood, so its sheaf support functor is the identity there. This proves (U3). Every choice of a domain preceded the choice of $\lambda$; the cohomological arguments apply to each bounded complex individually. $\square$
+
 ## SH02-MST-PROBLEMS — Examples and problems with solutions
 
 Local identifier: `SH02-MST-PROBLEMS`.

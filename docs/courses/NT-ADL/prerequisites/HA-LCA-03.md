@@ -53,7 +53,7 @@ Both \(g*f\) and the finitely many translates in \(v\) vanish off the compact se
  \le\sum_j\int_{E_j}|g(y)|\,\|L_yf-L_{y_j}f\|_1\,dy
  \le\varepsilon\|g\|_1.                               \tag{1.3}
 \]
-The Fubini statement here is precisely the earlier integration reading, Theorem 4.2: the kernel is Borel, and both variables are restricted to compact sets with finite Radon Haar restrictions. It does not require the whole Haar measure to be sigma-finite.
+The Fubini statement here is precisely the earlier [integration reading, Theorem 4.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-4-2): the kernel is Borel, and both variables are restricted to compact sets with finite Radon Haar restrictions. It does not require the whole Haar measure to be sigma-finite.
 
 The function \(y\mapsto\Lambda(L_yf)\) is continuous and bounded by \(\|\Lambda\|\|f\|_1\). Its scalar integral differs from
 \(\sum_j(\int_{E_j}g)\Lambda(L_{y_j}f)=\Lambda(v)\)
@@ -85,7 +85,7 @@ Then \(h_\gamma\in\Delta(L^1(G))\), \(\|h_\gamma\|=1\), and
    =\iint_{G\times G} f(y)g(z)\gamma(y+z)\,dy\,dz
    =h_\gamma(f)h_\gamma(g).                            \tag{1.4}
 \]
-The first interchange involves only the compact supports of \(f,g\) and their sum, so the finite-product reading, Corollary 2.3, applies. Translation invariance justifies the substitution; the last equality uses the character law and finite Fubini. The \(L^1\) convolution bound and \(C_c\)-density extend (1.4) to arbitrary \(f,g\in L^1\).
+The first interchange involves only the compact supports of \(f,g\) and their sum, so the [finite-product reading, Corollary 2.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-corollary-2-3), applies. Translation invariance justifies the substitution; the last equality uses the character law and finite Fubini. The \(L^1\) convolution bound and \(C_c\)-density extend (1.4) to arbitrary \(f,g\in L^1\).
 
 Choose nonnegative \(u\in C_c(G)\) with \(\int u=1\), as constructed in the Haar reading, Corollary 6.3. The function \(f=\overline\gamma u\) has norm one and \(h_\gamma(f)=1\). This proves nontriviality and the exact norm.
 
@@ -234,7 +234,7 @@ Let \(M(G)\) be the complex finite Radon measures, with the total-variation norm
  \mu*\nu=(x,y\mapsto x+y)_*(\mu\otimes\nu),\qquad
  \mu^*(B)=\overline{\mu(-B)} .
 \]
-The full construction, associativity, involution and norm inequality are proved in the finite-product reading, Theorem 3.3. In particular \(M(G)\) is a commutative unital Banach star algebra with unit \(\delta_0\). This definition uses the finite Radon product, not an unproved product of two infinite Haar measures.
+The full construction, associativity, involution and norm inequality are proved in [the finite-product reading, Theorem 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-theorem-3-3). In particular \(M(G)\) is a commutative unital Banach star algebra with unit \(\delta_0\). This definition uses the finite Radon product, not an unproved product of two infinite Haar measures.
 
 <a id="ha-lca-03-lemma-4-1"></a>
 ### Lemma 4.1. Integrable densities are finite Radon measures

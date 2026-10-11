@@ -6,7 +6,7 @@ The minimal tensor product describes two algebras acting on separate Hilbert spa
 
 The difficult direction is to turn information about all commuting actions into maps with values in the algebra itself. We do this by first encoding operators as normal functionals, then correcting one distinguished functional, and finally using separation to bring the reconstruction maps back into the algebra.
 
-Prerequisites are [Completely positive finite models](completely-positive-finite-models.md), [Completely positive maps](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html), and [the enveloping von Neumann algebra \(A^{**}\)](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html). The density step is proved in [Operator density from finite vector tests](../components/operator-density-foundations.md#odf06): its positive matrix approximants have the same norm bound and converge ultraweakly. Its bicommutant and entire contraction-ball arguments also supply the density inputs in the enveloping-algebra construction.
+Prerequisites are [Completely positive finite models](completely-positive-finite-models.md), the retained CF1–10 and CP01–06, and the [minimal tensor and universal bidual construction](../components/abstract-tensor-and-universal-bidual-foundations.md#abf-universal-predual). The density step is proved in [Operator density from finite vector tests](../components/operator-density-foundations.md#odf06): its positive matrix approximants have the same norm bound and converge ultraweakly. Its bicommutant and entire contraction-ball arguments also supply the density inputs in the enveloping-algebra construction.
 
 [Standard-cone geometry](../components/standard-cone-geometry.md) supplies the support, corner, orthogonal-decomposition and norm-estimate arguments used here. Every normal positive functional \(\psi\) has a unique cone representative \(\xi_\psi\), and
 \[
@@ -18,7 +18,7 @@ Inner products in this lesson are linear in the second variable. Unital algebras
 
 ## 0. Constructing the tensor norms
 
-The representation estimates needed below can be built before using completely positive tensor maps. The scalar inputs are the [continuous C*-calculus, positivity, Hilbert completion and forced unitization](../../OA-FLOW/OA-FLOW-CF.html), the [positive scalar extension](completely-positive-finite-models.md#lemma-2-2), and the [coordinate proof of compact dual balls](completely-positive-finite-models.md#dual-ball-compactness). The scalar dilation in [the lifting lesson](completely-positive-lifting.md#unital-dilation) supplies GNS representations; its faithful scalar-state construction supplies a faithful representation. For a nonunital algebra, apply this construction to its forced unitization and restrict. None of these particular constructions uses tensoring or nuclearity.
+The representation estimates needed below can be built before using completely positive tensor maps. The scalar inputs are the continuous C*-calculus, positivity, Hilbert completion and forced unitization, the [positive scalar extension](completely-positive-finite-models.md#lemma-2-2), and the [coordinate proof of compact dual balls](completely-positive-finite-models.md#dual-ball-compactness). The scalar dilation in [the lifting lesson](completely-positive-lifting.md#unital-dilation) supplies GNS representations; its faithful scalar-state construction supplies a faithful representation. For a nonunital algebra, apply this construction to its forced unitization and restrict. None of these particular constructions uses tensoring or nuclearity.
 
 <a id="tn01"></a>
 ### TN01. Hilbert tensors and a faithful algebraic action
@@ -115,7 +115,7 @@ Every nondegenerate representation \(R\) of this completion has such coefficient
 in maximal norm, by the finite projective bound above. This defines a strong limit \(\pi(a)\). The same reasoning for the adjoints, and multiplication on this dense subspace, proves that \(\pi\) is a *-representation. Similarly \(R(e_i\otimes b)\) defines \(\sigma(b)\). Their actions commute on the dense subspace, and their product there is \(R(a\otimes b)\). For a degenerate \(R\), make this construction on its essential subspace and extend both actions by zero. Thus the supremum describes precisely the commuting-action representations used later in this lesson.
 
 The identity on algebraic tensors extends to a surjective *-homomorphism
-\(A\otimes_{\max}B\to A\otimes_{\min}B\). Its range is dense and closed. To see closedness, quotient by its closed kernel, use the C*-quotient norm proved in [the lifting lesson](completely-positive-lifting.md#quotient-cstar-norm), and apply the isometry of an injective C*-homomorphism, which follows from continuous calculus and positivity. The resulting image is complete. We use equality of these two norms for every \(B\) as the nuclearity condition.
+\(A\otimes_{\max}B\to A\otimes_{\min}B\). Its range is dense and closed. To see closedness, quotient by its closed kernel and use the complete quotient and injective-homomorphism arguments in [TN07](#tn07). The resulting image is complete. We use equality of these two norms for every \(B\) as the nuclearity condition.
 
 <a id="tn05"></a>
 ### TN05. Tensor maps and matrix coefficients
@@ -130,7 +130,7 @@ The complete matrix-unit unitary in [finite-model Lemma 4.2](completely-positive
 \]
 Indeed, a commuting pair becomes \(x\otimes1\), \(1\otimes\sigma(b)\) on its essential subspace. Its matrix norm is at most the norm in a faithful amplified representation of \(B\), by contractivity of the amplified *-homomorphism. The faithful spatial pair gives the reverse bound. TN03 gives the same minimal norm. This includes nonunital \(B\) and degenerate pairs.
 
-Finally every bounded scalar functional is a linear combination of four positive bounded functionals, by [the dual decomposition proved in the lifting lesson](completely-positive-lifting.md#convex-dual-separation). Their GNS vector functionals give any scalar functional as one vector coefficient of a finite direct sum representation. Explicitly, if \(f=\sum_k c_k f_k\) and \(f_k(a)=\langle\xi_k,\pi_k(a)\xi_k\rangle\), omit zero coefficients and set
+Finally every bounded scalar functional is a linear combination of four positive bounded functionals, by [the state-coefficient decomposition](../components/abstract-tensor-and-universal-bidual-foundations.md#abf-four-positive-parts). Their GNS vector functionals give any scalar functional as one vector coefficient of a finite direct sum representation. Explicitly, if \(f=\sum_k c_k f_k\) and \(f_k(a)=\langle\xi_k,\pi_k(a)\xi_k\rangle\), omit zero coefficients and set
 \[
  u=\bigoplus_k |c_k|^{1/2}\xi_k,\qquad
  v=\bigoplus_k\frac{c_k}{|c_k|}|c_k|^{1/2}\xi_k.
@@ -156,6 +156,83 @@ Both arrows and the section are continuous *-homomorphisms, and \(\|s(b)\|=\|b\|
 ![Finite matrix tests determine the spatial tensor bound](../assets/tensor-norm-and-nuclearity.svg)
 
 This proof diagram follows the finite-coordinate approximation in TN03. The scalar character of the forced unitization contributes no value on \(A\); dropping its vector coordinates only decreases the nonnegative Gram mass. The bound therefore retains every finite tensor vector and extends by density, with no restriction on the Hilbert spaces. TN04 and TN06 give the two algebra maps shown at the bottom. The proofs are written above; Olesen's free university thesis, Section 1.5, pp.31–34, provides the tensor conventions.
+
+
+<a id="tn07"></a>
+### TN07. Quotients, completeness and the closed range
+
+Here are all quotient steps consumed by TN04 and the unitization argument. Use the complete calculus, norm separation, unitization and Hilbert proofs CF1–10, and the positive two-sided approximate identity F09. The same quotient conclusion is proved in F10.
+
+Let \(D\) be a C*-algebra and \(J\) a closed self-adjoint two-sided ideal. On the algebraic quotient put
+
+\[
+ \|d+J\|_q=\inf_{j\in J}\|d+j\|.
+\]
+
+This is a norm: zero distance puts \(d\) in the closed set \(J\), and homogeneity and the triangle inequality follow by choosing representatives within any positive error of each infimum. The quotient map \(q\) contracts the norm. Its involution is isometric since \(J=J^*\); multiplication is submultiplicative by multiplying two representatives close to their infima. Their product represents the product of the two cosets, because \(J\) is a two-sided ideal.
+
+For completeness, take a Cauchy sequence of cosets and select a subsequence \((z_k)\) with \(\|z_{k+1}-z_k\|_q<2^{-k}\). Choose a representative \(d_1\) of \(z_1\) and, for each difference, a representative \(v_k\) with \(\|v_k\|<2^{1-k}\). The norm series \(d=d_1+\sum_{k\ge1}v_k\) converges in \(D\), by CF1. Its partial sums represent \(z_{k+1}\), and their tails tend to zero in quotient norm by contractivity of \(q\). Hence \(z_k\to q(d)\). The original Cauchy sequence has the same limit: use its Cauchy bound and a sufficiently late member of that subsequence. Thus no completeness theorem for a quotient is an additional assumption.
+
+Let \((e_i)\) be the positive contractive two-sided approximate identity of \(J\) from F09, computing \(1-e_i\) in the forced unitization. For every \(d\in D\), \(d(1-e_i)\in D\) represents \(q(d)\). Therefore its norm is at least \(\|q(d)\|_q\). For any \(j\in J\),
+
+\[
+ \|d(1-e_i)\|
+ \le\|d+j\|+\|j(1-e_i)\|.
+\]
+
+The second term tends to zero and \(\|1-e_i\|\le1\). Infimizing the first term gives
+
+\[
+ \|q(d)\|_q=\lim_i\|d(1-e_i)\|.
+ \tag{TN7a}
+\]
+
+The same argument with compression on both sides gives, for every \(c\in D\),
+
+\[
+ \|q(c)\|_q=\lim_i\|(1-e_i)c(1-e_i)\|.
+ \tag{TN7b}
+\]
+
+Indeed the compression still represents \(q(c)\), while its difference from the compression of \(c+j\) has norm at most \(\|(1-e_i)j(1-e_i)\|\to0\). Apply (TN7b) to \(c=d^*d\) and use the C*-identity in the unitization:
+
+\[
+ \|q(d)\|_q^2
+ =\lim_i\|d(1-e_i)\|^2
+ =\lim_i\|(1-e_i)d^*d(1-e_i)\|
+ =\|q(d^*d)\|_q.
+ \tag{TN7c}
+\]
+
+Consequently the quotient, with precisely its distance norm, is a C*-algebra. This includes \(J=0\), \(J=D\) and \(D=0\), using respectively the constant zero approximate identity or the usual identity of the ideal.
+
+For clarity, an injective star homomorphism \(\phi:D\to E\) is isometric. Its forced unital extension is a unital star homomorphism; preservation of inverses gives spectrum inclusion. The normal spectral-radius formula and the C*-identity give contractivity, including for the original nonunital algebras. If \(h\in D_+\) lost norm, choose a continuous nonnegative function vanishing on \([0,\|\phi(h)\|]\), vanishing at zero, and nonzero at \(\|h\|\). The isometric calculus gives a nonzero \(f(h)\in D\), while polynomial approximation and spectrum inclusion give \(\phi(f(h))=f(\phi(h))=0\), contradicting injectivity. Thus norms of positive elements are preserved, and applying this to \(d^*d\) preserves every norm.
+
+For an arbitrary star homomorphism \(\phi\), its closed kernel is self-adjoint, and the induced map \(D/\ker\phi\to E\) is injective and therefore isometric. Its range is complete by the quotient argument and hence closed in \(E\): a convergent sequence in the range is Cauchy there and its range limit must equal its limit in \(E\). A star homomorphism with dense range is consequently onto. These are the precise closed-range and quotient facts used in TN04.
+
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="tn07-title tn07-desc" width="540" height="360" viewBox="0 0 540 360">
+<title id="tn07-title">The quotient distance and the C-star identity</title>
+<desc id="tn07-desc">The quotient norm of q(d) is the infimum of norms of d plus an ideal element. The right compression d times one minus e_i represents the same coset. Its squared norm equals the norm of the two-sided compression of d star d; both limits are quotient norms. All compressions use a positive contractive approximate identity in the ideal.</desc>
+<defs><marker id="tn07-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#285d7d"/></marker></defs>
+<rect x="1" y="1" width="538" height="358" rx="12" fill="#f7fafc" stroke="#a4b9c8"/>
+<g font-family="Arial,sans-serif" fill="#15394f">
+<text x="20" y="31" font-size="20" font-weight="bold">One ideal net proves the exact quotient norm</text>
+<text x="20" y="58" font-size="16">0 ≤ e_i ≤ 1, e_i ∈ J; e_i j → j and j e_i → j.</text>
+<rect x="20" y="78" width="500" height="57" rx="8" fill="#edf4fb" stroke="#285d7d"/>
+<text x="270" y="103" text-anchor="middle" font-size="17">‖q(d)‖_q = inf_(j∈J) ‖d+j‖</text>
+<text x="270" y="125" text-anchor="middle" font-size="14">completeness: summable representatives of Cauchy differences</text>
+<path d="M270 137V160" stroke="#285d7d" stroke-width="2" marker-end="url(#tn07-arrow)"/>
+<rect x="20" y="164" width="500" height="52" rx="8" fill="#edf4fb" stroke="#285d7d"/>
+<text x="270" y="186" text-anchor="middle" font-size="17">‖q(d)‖_q = lim_i ‖d(1−e_i)‖</text>
+<text x="270" y="207" text-anchor="middle" font-size="14">same coset; the ideal error tends to zero (TN7a)</text>
+<path d="M270 219V242" stroke="#285d7d" stroke-width="2" marker-end="url(#tn07-arrow)"/>
+<rect x="20" y="246" width="500" height="70" rx="8" fill="#edf7f1" stroke="#2b7553"/>
+<text x="270" y="268" text-anchor="middle" font-size="17">‖d(1−e_i)‖² = ‖(1−e_i)d*d(1−e_i)‖</text>
+<text x="270" y="292" text-anchor="middle" font-size="17">limit: ‖q(d)‖_q² = ‖q(d*d)‖_q (TN7b–c)</text>
+<text x="20" y="342" font-size="14">All limits are nets. No unit, separability or attained distance required.</text>
+</g></svg>
+
+*Figure.* The two compressions retain the same quotient cosets; their norm limits prove the C*-identity of the complete distance quotient. Equations (TN7a)–(TN7c) supply the exact proof. Each \(e_i\) is a positive contraction in the ideal; the quotient-norm infimum need not be attained.
 
 ## 1. Positive bilinear forms and the dual order
 
@@ -309,7 +386,7 @@ For the inverse, let \([f_{ij}]\) be positive in that inherited dual order and p
 \]
 because \([a_i^*a_j]\) is positive. The tuples \((a_i\xi)_i\) are dense in \((qH)^m\), so \([z_{ij}]\ge0\). This proves complete positivity of the inverse without asserting any uniform inverse norm bound. It also explains why restricting to the actual support, rather than assuming a faithful state, is sufficient.
 
-The exact norm-additive decomposition of a self-adjoint normal functional used below is [Corollary 2.8 and its polar-decomposition proof](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-03). Its normal positive summands remain in the predual. The decomposition of a vector in a real self-dual cone is a separate statement.
+The exact norm-additive decomposition of a self-adjoint normal functional is proved in [NJ01–NJ06](../components/normal-jordan-from-scalar-norm-attainment.md#nj01). That construction uses only the retained CF1–10 scalar and Hilbert arguments and CP01–06 concrete predual, together with the scalar positive-functional norm identity proved in [MG01](../components/scalar-gns-and-matrix-cstar-norms.md#mg01). Its normal positive summands remain in the predual; it does not use a bidual or a cone. The decomposition of a vector in a real self-dual cone is a separate statement.
 
 **Lemma 2.1 (Marginal correction).** Let \(A\) be unital, and suppose a completely positive map \(\theta:A\to N_*\) is in the pointwise norm closure of completely positive matrix factorizations. Put \(\psi=\theta(1)\). For every finite \(F\subset A\) and \(\varepsilon>0\), there is a completely positive factorization \(\theta_3=TS\) through a matrix algebra such that
 \[
@@ -335,6 +412,16 @@ satisfies \(\chi\ge\psi\) and \(\|\chi-\psi\|=\|g\|<\delta\). Also
 
 Normalize its recording map to be unital. Explicitly, if \(\theta_2=T_0S_0\) and \(h=S_0(1)\), invert \(h^{1/2}\) on its finite-dimensional support and add a state times the complementary projection. This gives a ucp \(S\) with
 \(S_0(a)=h^{1/2}S(a)h^{1/2}\).
+Here are the support details of this normalization. Let \(p\) be the support of the positive finite matrix \(h\), and let \(d\) be its inverse square root on \(p\mathbb C^n\), extended by zero. For \(a\in A\), the matrix
+\[
+\begin{pmatrix}\|a\|1&a\\a^*&\|a\|1\end{pmatrix}
+\]
+is positive, by the scalar Cauchy–Schwarz bound on its quadratic form. Applying \((S_0)_2\) and testing a vector in \(\ker h\) in either diagonal coordinate forces both \(S_0(a)\) and its adjoint to vanish on that kernel: arbitrary scalar phases in the other coordinate make every mixed coefficient zero. Hence \(S_0(a)=pS_0(a)p\). The explicit formula
+\[
+ S(a)=dS_0(a)d+\omega(a)(1-p)
+\]
+is completely positive, has \(S(1)=p+(1-p)=1_n\), and satisfies the asserted identity. The scalar state map is completely positive by its positive matrix quadratic-form test. If the original recording map is normal and a normal state is used, both displayed terms are normal as well. Thus the support normalization used in the semidiscrete converse preserves normality. A nonzero concrete von Neumann algebra has a normal state by taking a nonzero vector coefficient and dividing by its value at the unit.
+
 Replace \(T_0\) by \(T_2(x)=T_0(h^{1/2}xh^{1/2})\). Then \(T_2(1)=\chi\).
 
 By the dominated-functional theorem,
@@ -371,6 +458,8 @@ Only finitely many normal functionals are involved at each approximation. The ar
 If \(A\) is unital, both factor maps may be chosen unital. If \(A\) is separable, the approximations may be a sequence; in general they are a net.
 
 **Proof.** The implication from 2 to 1 and the assertion about sequences were proved in **Completely positive finite models**. We prove 1 to 2 first for unital \(A\), including the normalization of both factor maps.
+
+The [universal predual and bidual product](../components/abstract-tensor-and-universal-bidual-foundations.md#abf-universal-predual) identify every positive \(f\in A^*\) with its positive normal evaluation functional on \(A^{**}\), preserving its norm. Use [NC00–NC08](../components/natural-cone-construction.md#nc00) and [CG01–CG10](../components/standard-cone-geometry.md#cg01) for the standard representation and its cone, [CG07–CG08](../components/standard-cone-geometry.md#cg07) for the complete dominated-functional inverse, and [ODF06](../components/operator-density-foundations.md#odf06) for the exact positive-matrix density used below. The reverse implication uses the complete commuting and nonunital dilations in [finite-model Lemma 4.1](completely-positive-finite-models.md#lemma-4-1), its [matrix-unit proof](completely-positive-finite-models.md#lemma-4-2), and [Theorem 4.3](completely-positive-finite-models.md#theorem-4-3). [Propositions 1.1–1.2](completely-positive-finite-models.md#proposition-1-1) supply the net and separable-sequence assertions.
 
 **Encode finitely many tests.** Let \(a_1,\ldots,a_r\in A\) and let \(f_1,\ldots,f_s\) be positive functionals on \(A\). Put \(w=\sum_j f_j\), viewed as a normal functional on \(M=A^{**}\). Represent \(M\) in standard form, and write \(\xi=\xi_w\). Set \(N=M'\). The formula
 \[
@@ -544,7 +633,7 @@ The following proofs supply the representation and dual-order facts used above.
 <a id="type-i-spatial-form"></a>
 ### Type I factors in their given representation
 
-Use the [Hilbert-space and kernel constructions H00–H02](regular-group-operator-foundations.md#h00), [bounded polar decomposition T04a](regular-group-operator-foundations.md#t04a), C*-functional calculus F01–F08, and the [projection lattice C02](projection-comparison-and-finite-traces.md#c02) and [central contact C04](projection-comparison-and-finite-traces.md#c04).
+Use the exact CF1–10 calculus, Hilbert projection and arbitrary inner-product completion. With that calculus, the complete [H00–H02 coordinate, commutant and positive-inverse proofs](regular-group-operator-foundations.md#h00), [bounded polar construction T04a](regular-group-operator-foundations.md#t04a), and [C01–C02 strong-product and projection-lattice proofs](projection-comparison-and-finite-traces.md#c01) supply the operator inputs. The full [central-contact proof C04](projection-comparison-and-finite-traces.md#c04) uses only these inputs and the unitary span from continuous calculus.
 
 Let \(M\subset B(H)\) be a nonzero type I factor. The defining condition for type I, applied to the nonzero central projection \(1\), supplies \(p\ne0\) with \(pMp\) commutative. A nonzero projection in a factor has central support one, because its central support is a nonzero central projection.
 
@@ -571,7 +660,7 @@ An operator commuting with all \(1_L\otimes E_{ij}\) has off-diagonal entries ze
 <a id="irreducible-norm-detection"></a>
 ### Irreducible representations detect the C*-norm
 
-Use positive scalar Cauchy–Schwarz, C*-functional calculus, the [positive norm-preserving scalar extension](completely-positive-finite-models.md#lemma-2-2), and the GNS, separation and compactness proofs in [Hypertraces and finite injective algebras, Section 1](hypertraces-finite-injectivity.md). The compact-face argument below supplies the needed extreme point directly.
+Use CF1–10, the complete [scalar GNS construction MG01–MG02](../components/scalar-gns-and-matrix-cstar-norms.md#mg01), the [positive norm-preserving scalar extension](completely-positive-finite-models.md#lemma-2-2), F09 positive two-sided approximate identities, and the full [SEPARATION and COMPACT proofs](hypertraces-finite-injectivity.md#separation). The compact-face argument below supplies the needed extreme point directly.
 
 For a possibly nonunital nonzero C*-algebra \(D\), let \(Q=\{f\in D^*:f\ge0,\ \|f\|\le1\}\). This is weak* compact: positivity is closed on every positive element, and COMPACT gives the compact dual unit ball. It is convex. A faithful representation supplies vector functionals in \(Q\), and the quadratic-form characterization and order calculus give
 \(\sup_{f\in Q}f(h)=\|h\|\) for \(h\ge0\).
@@ -629,6 +718,8 @@ The [finite-model tensor lemma](completely-positive-finite-models.md#lemma-4-1) 
 For a nonunital domain, the later approximate-identity paragraph of the same full Lemma 4.1 constructs its dilation operator by a bounded form and weak limit. That construction, with no second commuting action, also supplies the minimal-case dilation. The exact finite-model body and the unital dilation are public; the same formulas give the required positive compressions at every matrix level.
 
 ## References
+
+Bruce Blackadar, [*Operator Algebras*, author-hosted edition of 8 February 2017](https://www.bruceblackadar.com/Mathematics/Cycr.pdf), II.9.4.7–9, printed p.198; III.1.5.1–5, printed pp.247–248; and IV.3.1.6–7, printed pp.392–393. These give mathematical comparisons for positive tensor functionals, spatial type I factors and the nuclearity equivalences. The exact-marginal, unit-normalization, quotient-completeness and nonunital arguments consumed here are proved in this lesson and its linked components. The author-hosted edition retains its own rights; new expression in this lesson remains under the terms stated above.
 
 Kristoffer Krogh Olesen, [university-hosted thesis](https://web.math.ku.dk/~musat/thesis_final_KKO_March12.pdf), Section 1.5, pp.31–34, gives the tensor conventions used here. TN01–TN06 supply the representation bounds, norm construction, tensor maps and split unitization proof in full.
 

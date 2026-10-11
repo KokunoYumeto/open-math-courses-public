@@ -54,7 +54,7 @@ with \(r_{\sigma\sigma}=\mathrm{id}\) and
 \(r_{\tau\upsilon}r_{\sigma\tau}=r_{\sigma\upsilon}\).
 Thus a face diagram is a covariant functor from the face poset to \(k\)-modules. Write \(\mathcal A_S\) for this abelian category. Exactness is evaluated at each simplex.
 
-### The algebra of face diagrams {#the-algebra-of-face-diagrams}
+### The algebra of face diagrams
 
 Here is a direct verification of the abelian-category assertion for the modules and arrows in (2). It applies to an arbitrary set of simplices; neither local finiteness nor a dimension bound is needed for this algebraic step.
 

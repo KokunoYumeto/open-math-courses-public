@@ -215,7 +215,7 @@ Fix a relatively compact open \(U\subseteq G\). Then \(dx(U)<\infty\) and each \
  \int_Q\nu_z(E)\,dz=dx(E)
  \tag{14}
 \]
-hold for \(E=U\), for relative open sets by (13), for complements within \(U\) by subtraction from the finite value \(\nu_z(U)\), and for disjoint countable unions by monotone convergence. Thus they form a Dynkin class containing the intersection-closed family of relative open sets. The proved integration reading, Lemma 4.1, gives (14) for every Borel subset of \(U\).
+hold for \(E=U\), for relative open sets by (13), for complements within \(U\) by subtraction from the finite value \(\nu_z(U)\), and for disjoint countable unions by monotone convergence. Thus they form a Dynkin class containing the intersection-closed family of relative open sets. The proved [integration reading, Lemma 4.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-lemma-4-1), gives (14) for every Borel subset of \(U\).
 
 If \(N\subseteq U\) is Borel and \(dx(N)=0\), (14) makes \(\nu_z(N)=0\) outside a quotient null set. Every subset of \(N\) is then measurable with zero measure on those cosets, by completeness of Haar measure on \(H\). This proves (14), with arbitrary values assigned on that quotient null set, for every completed-measurable subset of \(U\). The full Haar domain on relatively compact sets is exactly this ordinary local completion, by the general Haar reading, Theorem 3.1.
 
@@ -250,7 +250,7 @@ This cannot represent \(P_1[0]=0\). The diagonal is not contained in any open si
 <a id="ha-lca-10-proposition-4-2"></a>
 **Proposition 4.2 — Idempotent probability measures.** A Radon probability measure \(\mu\) on an LCA group satisfies \(\mu*\mu=\mu\) if and only if it is normalized Haar measure on a compact subgroup, regarded as a measure on \(G\).
 
-**Proof.** Suppose \(\mu*\mu=\mu\). The finite-measure convolution law from the product reading, Theorem 3.3 gives \(\widehat\mu^2=\widehat\mu\), so every value is zero or one. Continuity of the Fourier–Stieltjes transform, proved in HA-LCA-03, Theorem 4.3, makes
+**Proof.** Suppose \(\mu*\mu=\mu\). The finite-measure convolution law from [the product reading, Theorem 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-theorem-3-3) gives \(\widehat\mu^2=\widehat\mu\), so every value is zero or one. Continuity of the Fourier–Stieltjes transform, proved in HA-LCA-03, Theorem 4.3, makes
 \(A=\{\gamma:\widehat\mu(\gamma)=1\}\) both open and closed. It contains the identity since \(\mu(G)=1\). For \(\gamma\in A\),
 \[
  \int_G|\gamma(x)-1|^2\,d\mu(x)
@@ -260,7 +260,7 @@ Thus \(\gamma=1\) \(\mu\)-almost everywhere. Two such equalities hold simultaneo
 
 Let \(m_K\) be Haar probability measure on \(K\), pushed to \(G\). Its transform equals one on \(K^\perp\). If \(\gamma\notin K^\perp\), choose \(k\in K\) with \(\gamma(k)\ne1\). Translation of its character integral multiplies that integral by \(\overline{\gamma(k)}\) and leaves it unchanged, so it is zero. Thus \(\widehat{m_K}=1_A=\widehat\mu\). HA-LCA-09, Corollary 4.2 gives \(\mu=m_K\).
 
-Conversely the same character-integral computation shows that \(\widehat{m_K}\) is an indicator. Its square equals itself, so the convolution law and uniqueness give \(m_K*m_K=m_K\). The pushforward is a finite Radon probability measure by the product reading, Proposition 3.1. \(\square\)
+Conversely the same character-integral computation shows that \(\widehat{m_K}\) is an indicator. Its square equals itself, so the convolution law and uniqueness give \(m_K*m_K=m_K\). The pushforward is a finite Radon probability measure by [the product reading, Proposition 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-proposition-3-1). \(\square\)
 
 <a id="ha-lca-10-example-4-3"></a>
 **Example 4.3 — The positivity hypothesis.** Uniform measure on a finite subgroup, and normalized Haar measure on any compact subgroup, are idempotent probability laws. Complex idempotent measures need not be probability laws.
@@ -295,7 +295,7 @@ the integrand is supported in
  y\in\operatorname{supp}u,\qquad
  h\in H\cap(\operatorname{supp}v-x+\operatorname{supp}u).
 \]
-Both are compact. The finite Radon product and Fubini theorem proved in the product reading, Theorem 2.2 therefore allow reversal of integration. This gives
+Both are compact. The finite Radon product and Fubini theorem proved in [the product reading, Theorem 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-theorem-2-2) therefore allow reversal of integration. This gives
 \[
  P(u*v)(q(x))=\int_Gu(y)Pv(q(x)-q(y))\,dy.
 \]
@@ -353,7 +353,7 @@ The subspace is the zero set of the complementary projection, hence closed.
 
 For the subsequence assertion, place a bounded sequence in a closed cube. Bisect each side and choose one of the finitely many resulting closed subcubes containing infinitely many terms. Repeat inside that cube. Choose successive terms, with strictly increasing indices, from these nested cubes. Their diameters tend to zero, so the selected coordinates are Cauchy and converge by completeness of \(\mathbb R\). This proves the assertion, including for sequences on a closed bounded subset.
 
-Lebesgue measure on \(\mathbb R^n\) is the product of its one-dimensional measures, as proved in HA-LCA-07, Proposition 3.2. The full-Borel sigma-finite Fubini theorem is the integration reading, Theorem 4.4. Interchanging coordinates preserves that measure. Multiplying one coordinate by \(a\ne0\) multiplies measure by \(|a|\), by the one-dimensional affine-substitution formula proved in HA-LCA-02, Lemma 3.3 and Fubini. Replacing \(x_i\) by \(x_i+t x_j\), \(i\ne j\), preserves measure: hold the other coordinates fixed and apply translation invariance to the \(x_i\)-section, then Fubini.
+Lebesgue measure on \(\mathbb R^n\) is the product of its one-dimensional measures, as proved in HA-LCA-07, Proposition 3.2. The full-Borel sigma-finite Fubini theorem is [the integration reading, Theorem 4.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-4-4). Interchanging coordinates preserves that measure. Multiplying one coordinate by \(a\ne0\) multiplies measure by \(|a|\), by the one-dimensional affine-substitution formula proved in HA-LCA-02, Lemma 3.3 and Fubini. Replacing \(x_i\) by \(x_i+t x_j\), \(i\ne j\), preserves measure: hold the other coordinates fixed and apply translation invariance to the \(x_i\)-section, then Fubini.
 
 For clarity, take the determinant to be its finite permutation formula
 \(\det A=\sum_{\sigma}\operatorname{sgn}(\sigma)\prod_i A_{i,\sigma(i)}\).

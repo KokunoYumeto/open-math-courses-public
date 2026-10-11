@@ -2,7 +2,7 @@
 
 **Lesson HA-LCA-02.** A character records a frequency without choosing coordinates on a group. This lesson constructs the topology on the set of characters, computes the classical examples, and proves local compactness directly. Every group below is Hausdorff, locally compact and abelian unless another hypothesis is stated.
 
-The freely accessible sources are D. H. Fremlin, [*Measure Theory*, §445A–B, version of 20 March 2008](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex), and Terence Tao, [245C, Notes 2, Definition 8 and Exercises 9–11](https://terrytao.wordpress.com/2009/04/06/the-fourier-transform/), dated 6 April 2009. Source hints and elementary auxiliary claims are proved below. The earlier programme proofs we use are compactness and elementary calculus, compact cutoffs and representation, uniform approximation, integration, and Haar measure.
+The freely accessible sources are D. H. Fremlin, [*Measure Theory*, §445A–B, version of 20 March 2008](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex), and Terence Tao, [245C, Notes 2, Definition 8 and Exercises 9–11](https://terrytao.wordpress.com/2009/04/06/the-fourier-transform/), dated 6 April 2009. Source hints and elementary auxiliary claims are proved below. The earlier programme proofs we use are compactness and elementary calculus, compact cutoffs and representation, uniform approximation, [integration](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html), and Haar measure.
 
 Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's original copyright 1998 and source notices are retained in the original source package.
 
@@ -169,7 +169,7 @@ for measurable \(A\) and nonnegative measurable or integrable \(h\).
 
 Every singleton has the same mass \(c\). Arbitrarily many distinct points fit in \([-1,1]\), so \(nc\le\mu([-1,1])<\infty\) for every \(n\); hence \(c=0\). The number \(\mu((0,1])\) is finite and positive. Divide the measure by that number. Partitioning \((0,1]\) into \(q\) translates of \((0,1/q]\) gives mass \(1/q\) for the latter interval, and then mass \(p/q\) for \((0,p/q]\). Monotonicity and rational upper and lower approximations to a positive real \(t\) give \(\mu((0,t])=t\). Translation gives all the asserted interval values.
 
-These values determine the Borel measure. On each finite window \((-n,n]\), the intersections with half-open intervals, together with the empty set and the window, form a family closed under intersections that generates its Borel sets. Indeed open intervals, and then all open sets, are countable unions of intervals with rational endpoints of this kind, after intersection with the window. The measures restricted to the window are finite and have equal total mass. The proved \(\pi\)-\(\lambda\) argument in the earlier integration reading, Lemma 4.1, therefore makes the restrictions equal. Increasing the windows proves uniqueness on \(\mathbb R\).
+These values determine the Borel measure. On each finite window \((-n,n]\), the intersections with half-open intervals, together with the empty set and the window, form a family closed under intersections that generates its Borel sets. Indeed open intervals, and then all open sets, are countable unions of intervals with rational endpoints of this kind, after intersection with the window. The measures restricted to the window are finite and have equal total mass. The proved \(\pi\)-\(\lambda\) argument in the earlier [integration reading, Lemma 4.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-lemma-4-1), therefore makes the restrictions equal. Increasing the windows proves uniqueness on \(\mathbb R\).
 
 For \(s\ne0\), the Borel measure \(A\mapsto |s|^{-1}\lambda(sA+b)\) has the same interval values; when \(s<0\), the possible change of included endpoint has zero mass. Uniqueness proves the first formula on Borel sets. Affine maps take Borel null sets to Borel null sets, so the formula extends to the completion. Applying it to indicators, then finite simple functions, and then increasing simple approximations proves the integral formula for nonnegative functions. Decomposing an integrable function into real and imaginary positive and negative parts gives the remaining case. \(\square\)
 
@@ -405,7 +405,7 @@ Prove that a Lebesgue-measurable homomorphism \(\chi:\mathbb R\to\mathbb T\) is 
 
 **Solution.** Set \(g=\overline\chi\,\mathbf1_{[0,1]}\). By Lemma 3.3 this is an \(L^1\) function and
 \(\int g\chi\,d\lambda=1\).
-The earlier integration reading, Theorem 3.1, gives a continuous compactly supported \(f\) with \(\|f-g\|_1<1/2\). Thus
+The earlier [integration reading, Theorem 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-3-1), gives a continuous compactly supported \(f\) with \(\|f-g\|_1<1/2\). Thus
 \(c=\int f\chi\,d\lambda\)
 satisfies \(|c-1|<1/2\), so \(c\ne0\).
 

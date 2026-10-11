@@ -903,7 +903,7 @@ Equation (C38) proves both norm identities; positivity and finiteness give inver
  L^\infty(\Gamma,\mu)=\int_S^\oplus L^\infty(\Gamma_y,\mu_y)\,d\nu(y).
  \tag{C40}
 \]
-The second equality means equality of multiplication-operator algebras, and its onto assertion has a short proof. A bounded Borel global multiplier has Borel matrix coefficients in the displayed conditional bases, by kernel integration. Conversely an essentially bounded measurable field of fiber multiplication operators gives a bounded global operator by the corner matrix lemma. It commutes with every global multiplier, since the two operators commute on each fiber and their matrix equations integrate. The [scalar multiplication commutant theorem](OA-FLOW-IW.md#iw-1) on \(L^2(\Gamma,\mu)\) makes it one global multiplication operator. Thus every such field occurs. The kernel norm identities and this commutant argument establish both full statements in (C40).
+The second equality means equality of multiplication-operator algebras, and its onto assertion has a short proof. A bounded Borel global multiplier has Borel matrix coefficients in the displayed conditional bases, by kernel integration. Conversely an essentially bounded measurable field of fiber multiplication operators gives a bounded global operator by the corner matrix lemma. It commutes with every global multiplier, since the two operators commute on each fiber and their matrix equations integrate. The [scalar multiplication commutant theorem](OA-FLOW-IW.md#iw-1) on \(L^2(\Gamma,\mu)\) makes it one global multiplication operator. Thus every such field occurs. The kernel norm identities and this commutant argument establish both full statements in (C40). The [fixed-point quotient theorem](OA-FLOW-L69.md#oa-flow.orbits.ergodic) proves that these are ergodic fiber systems and that the scalar base is exactly the fixed algebra of the original abelian action. Thus (C40), with its fiber actions, is its ergodic disintegration; the center of the crossed product need not equal that orbit base.
 
 Every bounded multiplication operator \(M_F\) is carried to the same \(M_F\) by \(\mathcal W_d\). In the regular crossed-product model on
 \(L^2(G_t)\otimes L^2(\Gamma,\mu)\), the generators are
@@ -913,6 +913,52 @@ Every bounded multiplication operator \(M_F\) is carried to the same \(M_F\) by 
  \tag{C41}
 \]
 The unitary \(1\otimes\mathcal W_d\) changes only the coefficient coordinate. It intertwines the two multiplication representations of \(F(tz)\) and commutes with the regular translations of \(t\). Hence it gives the exact normal identification of the regular crossed products formed with \(\mu\) and with \(\bar m\). This argument makes no assertion that \(d\) is invariant under the action on \(\Gamma\); the commuting translations in (C41) act on the separate regular group coordinate.
+
+<a id="oa-flow.field.orbit-weight"></a>
+## The exact measure of the orbit weight
+
+The quotient Haar measure in (C2) uses the forward orbit map. The averaging convention uses the inverse orbit map. To retain their exact values, define another kernel on the same bundle by
+\[
+ \widehat m_y(D)=\int_G1_D(p(y,g^{-1}))\,dg,
+ \qquad \widehat m(D)=\int_S\widehat m_y(D)\,d\nu(y).
+ \tag{C42}
+\]
+The maps are Borel, so the parameter-integral proof gives a Borel measure kernel and its global measure. Each kernel is concentrated on its fiber. If \(z=p(y,a)\), left Haar substitution \(g=ak\) proves, for every nonnegative Borel \(F\),
+\[
+ \int_GF(g^{-1}z)\,dg
+ =\int_GF(p(y,k^{-1}))\,dk
+ =\int_{\Gamma_y}F\,d\widehat m_y.
+ \tag{C43}
+\]
+Thus the integral is independent of the point chosen in the orbit, with infinite values allowed. In particular this is a numerical identity, beyond the Haar-class correspondence.
+
+Put \(\delta(z)=\Delta_G(\sigma(z))\). This does not depend on the coset representative, because \(\Delta_G|_{H_y}=1\). It is strictly positive and continuous on \(\Gamma\): the continuous function \((y,g)\mapsto\Delta_G(g)\) descends through the open quotient map \(p\). [Haar inversion](OA-FLOW-L24.md#oa-flow.grp.translations) and (C2) give
+\[
+ d\widehat m_y(z)=\delta(z)^{-1}\,dm_y(z),
+ \qquad d\widehat m(z)=\delta(z)^{-1}\,d\bar m(z).
+ \tag{C44}
+\]
+Indeed substitute \(k=g^{-1}\) in (C42): inversion contributes \(\Delta_G(k)^{-1}\), which is constant on its right coset and equals \(\delta(p(y,k))^{-1}\). Apply (C2), first to nonnegative Borel tests, and then integrate over \(y\). These calculations fix the modular factor for nonunimodular \(G\). Each \(\widehat m_y\) is Radon by [finite-density regularity on compact carriers](OA-FLOW-QF.md#qf-7), since \(m_y\) is Radon and its continuous positive density is bounded on each compact set. The countable finite-measure cover (C5), intersected with the sets \(\{\delta^{-1}\le n\}\), proves sigma-finiteness of \(\widehat m\).
+
+The global measure is Radon as well. If \(K\subset\Gamma\) is compact, choose \(u\in C_c(\Gamma)_+\) with \(u\ge1\) on \(K\). The [proper-action averaging theorem](OA-FLOW-L71.md#oa-flow.proper.averages) gives \(E(u)\in C_b(\Gamma)\). Formula (C43) and the probability \(\nu\) imply \(\widehat m(K)\le\|E(u)\|_\infty<\infty\). Finite metric-measure regularity on a countable relatively compact open cover, followed by increasing unions, gives Radon regularity. In particular (C42) is the disintegration identity for the actual orbit-weight measure on compact continuous tests and on all nonnegative Borel functions.
+
+The C* algebra generated by the compact orbit averages is exactly \(C_0(S)\), acting by pullback through \(q\). First \(q\) is an open continuous surjection: for an open \(O\subset\Gamma\), its inverse image under \(p\) is open in \(S\times G\), and its projection to \(S\) is \(q(O)\). Since \(q\) is a quotient map, the continuous invariant average of \(F\in C_c(\Gamma)\) descends to a continuous \(e_F\) on \(S\). It vanishes off the compact set \(q(\operatorname{supp}F)\), so \(e_F\in C_c(S)\). These functions are nonzero at every base point and separate distinct base points. Indeed, for \(y\ne y'\), choose \(z\in\Gamma_y\), a base neighborhood of \(y\) missing \(y'\), and a nonnegative compact bump at \(z\) supported in its inverse image. Its orbit integral is positive at \(y\), by continuity at the identity and positive Haar measure of an identity neighborhood, and zero at \(y'\). The same construction proves nonvanishing when no second point is specified. Adjoin constants on the compact Hausdorff one-point compactification constructed in [H0](OA-FLOW-TOPOLOGY.md#l138-h0); if the base is already compact, the extra point is isolated. The enlarged algebra separates finite points by the construction above and separates each finite point from infinity by nonvanishing. [CF5](OA-FLOW-CF.md#oa-flow.cf.5) makes it dense in the continuous functions on that compactification. For a target vanishing at infinity, subtract the value at infinity from each approximant; the error increases by at most a factor of two and the resulting approximants lie in the original algebra. Thus the generated C* algebra is all of \(C_0(S)\). This identifies its spectrum with the chosen orbit base, as well as identifying its normal closure.
+
+The [fixed-point quotient theorem](OA-FLOW-L69.md#oa-flow.orbits.ergodic), transported through the proper model, identifies the fixed algebra with \(L^\infty(S,\nu)\). Let \(\psi(b)=\int_Sb\,d\nu\) on that algebra. This is a faithful normal state by the scalar predual theorem. For \(F\ge0\), write \(e_F(y)=\int_{\Gamma_y}F\,d\widehat m_y\), an extended positive Borel function. Formula (C43) says precisely that the orbit average is \(e_F\circ q\). Hence its scalar composition is
+\[
+ (\psi\circ E)(F)=\int_Se_F(y)\,d\nu(y)
+ =\int_\Gamma F(z)\,d\widehat m(z).
+ \tag{C45}
+\]
+The extended value of \(\psi\) here is defined by integration, or equivalently by truncating the nonnegative function on \(S\).
+
+This is a faithful normal semifinite weight on the original measured algebra, not merely a functional on continuous tests. In (C38) we proved \(d\mu=d\,d\bar m\) with \(d\) everywhere finite and strictly positive. Thus
+\[
+ d\widehat m=t\,d\mu,
+ \qquad t(z)=\frac{\delta(z)^{-1}}{d(z)}\in(0,\infty).
+ \tag{C46}
+\]
+Each \(t1_{\{t\le n\}}\) is in \(L^1(\mu)\), since \(\mu\) is a probability, and gives a normal positive functional by [IW1](OA-FLOW-IW.md#iw-1). Their increasing supremum is (C45). For a bounded increasing positive net \(F_i\uparrow F\), exchange the two scalar suprema over \(i\) and \(n\); normality of each finite functional proves normality of the weight. Positivity of \(t\) proves faithfulness. Finally \(F1_{\{t\le n\}}\uparrow F\) and each of these cutdowns has finite weight, proving semifiniteness. Equality (C46) also proves that the formula is independent of the Borel representative. The original conditional probabilities \(\mu_y\), the quotient Haar measures \(m_y\), and the orbit-weight measures \(\widehat m_y\) are thereby distinguished and related by explicit positive densities.
 
 <a id="oa-flow.field.theorem"></a>
 ## The full normal isomorphism
@@ -925,7 +971,7 @@ Equation (B16) identifies the entire crossed product of the original action norm
  \,d\nu(y).}
  \tag{T1}
 \]
-Every step has its specified inverse. Unitary conjugation is normal by vector coefficients, the removal of the identity amplification has a normal unit-vector slice, and the coefficient and representation identifications have normal inverses. Hence (T2) is a normal isomorphism of the full algebras, rather than only an agreement of generating symbols.
+Every step has its specified inverse. Unitary conjugation is normal by vector coefficients, the removal of the identity amplification has a normal unit-vector slice, and the coefficient and representation identifications have normal inverses. Hence (T1) is a normal isomorphism of the full algebras, rather than only an agreement of generating symbols.
 
 The same construction preserves the scalar base: \(b\circ q\) maps to the operator field \(b(y)1\). Thus the base algebra \(L^\infty(S,\nu)\) is central. The fiber algebra may itself have a nontrivial center; the orbit base is not asserted to be a decomposition into factors.
 

@@ -2,11 +2,15 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).*
 
+*The algebraic trace calculation in Section 3 was written by GPT-6.1 Sol (OpenAI), Ultra, for the NT-ADL bundled edition on 5 October 2026; its integration here is by GPT-6 Astra (OpenAI), Ultra, 11 October 2026. CC0.*
+
 The ramification index separates tame extensions from wild ones, but it does not measure how far a wild automorphism moves an integral element. The lower ramification groups make that measurement. Their successive quotients constrain the Galois group, and the sum of their sizes gives the exponent of the different.
 
 Throughout the local discussion, \(L/K\) is a finite Galois extension of nonarchimedean local fields, in either characteristic. Write \(G=\operatorname{Gal}(L/K)\), \(\mathcal O_L\) for the valuation ring, \(\mathfrak P\) for its maximal ideal, and \(\kappa_L\) for its residue field. Normalize \(v_L(L^\times)=\mathbf Z\), put \(v_L(0)=+\infty\), and let \(p=\operatorname{char}\kappa_L\). Thus \(v_L|_K=e\,v_K\), where \(e=e(L/K)\). Every automorphism preserves \(v_L\).
 
 We use **Unramified and totally ramified extensions** for the maximal unramified subfield, integral monogenicity and Eisenstein extensions. **Tame ramification and the tame Galois group** supplies the meaning of tame ramification. Exact additional imports are listed at the end.
+
+*Finite-Galois maps and the wild-inertia group argument: supplementary exposition by GPT-6 Astra (OpenAI), Ultra, 11 October 2026, CC0.*
 
 ## 1. Measuring an automorphism intrinsically
 
@@ -45,7 +49,7 @@ and preservation of valuation proves closure; replacing \(x\) by \(\sigma^{-1}x\
 
 Every difference of integral elements is integral, so \(G_{-1}=G\). Trivial action modulo \(\mathfrak P\) is precisely the definition of inertia, so \(G_0\) is inertia. If \(\sigma\ne1\), it cannot fix the generator \(\alpha\); its value \(i_G(\sigma)\) is finite. There are finitely many such automorphisms, and taking \(i\) above all their values makes \(G_i\) trivial.
 
-The extension \(L/L^H\) is again Galois and local. Its intrinsic test (1.2) uses the same ring \(\mathcal O_L\) and the same \(v_L\), so its condition on an element \(\sigma\in H\) is exactly the condition defining \(G_i\). This proves (1.3), without assuming \(H\) normal in \(G\). \(\square\)
+The extension \(L/L^H\) is again Galois and local. The [finite-group fixed-field lemma](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2786) applies because \(H\leq G\) acts faithfully on \(L\); it gives \(\operatorname{Gal}(L/L^H)=H\) and \([L:L^H]=|H|\), whether or not \(H\) is normal in \(G\). Its intrinsic test (1.2) uses the same ring \(\mathcal O_L\) and the same \(v_L\), so its condition on an element \(\sigma\in H\) is exactly the condition defining \(G_i\). This proves (1.3), without assuming \(H\) normal in \(G\). \(\square\)
 
 For real \(u\geq-1\), our convention is
 \[
@@ -63,6 +67,15 @@ The correspondence between unramified extensions and residue extensions identifi
 |G_0|=[L:L_0]=e.
 \tag{2.1}
 \]
+
+The exact field-theory input to this restriction is the [extension-of-embeddings lemma](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2004). It applies to the algebraic tower \(L/L_0/K\), since \(L/K\) is normal: each \(K\)-embedding \(L_0\to L\), including every automorphism of \(L_0/K\), extends to a \(K\)-automorphism of \(L\). The resulting maps form the [finite-Galois restriction sequence](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2886)
+\[
+1\longrightarrow\operatorname{Gal}(L/L_0)
+\xrightarrow{\ \mathrm{inclusion}\ }G
+\xrightarrow{\ \sigma\mapsto\sigma|_{L_0}\ }
+\operatorname{Gal}(L_0/K)\longrightarrow1.
+\]
+The first map includes the automorphisms fixing \(L_0\) among those fixing \(K\); these are exactly the kernel of the second map. Surjectivity is the extension just described. The unramified residue correspondence identifies that kernel with inertia, not merely with a group of the same order. The [finite Galois correspondence](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2845) identifies its fixed field with \(L_0\).
 
 Fix a uniformizer \(\pi\) of \(L\). Total ramification gives \(\mathcal O_L=\mathcal O_{L_0}[\pi]\). Every \(\sigma\in G_0\) fixes \(L_0\), so the same polynomial-difference argument as before now gives
 \[
@@ -127,7 +140,16 @@ L/K\text{ is tame}\quad\Longleftrightarrow\quad G_1=1.
 
 *Proof.* The finite cyclic group \(\kappa_L^\times\) has order prime to \(p\). Equation (2.3) proves the first assertion. Each quotient \(G_r/G_{r+1}\), for \(r\geq1\), is a subgroup of the additive residue field, so it is an elementary abelian \(p\)-group. The filtration terminates; multiplying its quotient orders shows that \(G_1\) is a \(p\)-group. Its index in \(G_0\) is prime to \(p\), and its normality makes it the unique Sylow subgroup.
 
+Here uniqueness of the Sylow subgroup follows directly, without invoking the general Sylow existence or conjugacy theorems. Let \(P\leq G_0\) be any \(p\)-subgroup. Under the quotient homomorphism \(G_0\to G_0/G_1\), its image has order dividing \(|P|\): every fibre is a coset of the kernel of the restricted homomorphism. Its image also has order dividing \(|G_0/G_1|\), because the cosets of that image partition the finite quotient. The first order is a power of \(p\), whereas the second is prime to \(p\); the image is therefore trivial and \(P\subseteq G_1\). Since \(G_1\) is itself a \(p\)-group and its index in \(G_0\) is prime to \(p\), its order is the full \(p\)-part of \(|G_0|\). It is consequently the unique Sylow \(p\)-subgroup of inertia. This conclusion is about \(G_0\), not necessarily about the larger group \(G\).
+
 The same terminating filtration has abelian quotients, so \(G_1\), and then \(G_0\), are solvable. Finally \(G/G_0\) is the cyclic finite-field Galois group described above. A group with a solvable normal subgroup and solvable quotient is solvable: lift a derived series for the quotient and then append one for the normal subgroup. This proves the assertion for \(G\). By (2.1), \(p\nmid e\) exactly when \(G_1=1\); residue extensions of local fields are separable, so this is precisely tameness. \(\square\)
+
+One can see the solvability step directly in the derived series. Write \(D^0(A)=A\) and \(D^{j+1}(A)=[D^j(A),D^j(A)]\) for any group \(A\). The abelian graded quotients imply inductively
+\[
+D^j(G_1)\subseteq G_{j+1}\qquad(j\geq0).
+\]
+Indeed, if the containment holds at step \(j\), the commutators on its left lie in \([G_{j+1},G_{j+1}]\subseteq G_{j+2}\). The ramification filtration terminates, so some derived group of \(G_1\) is trivial. Since \(G/G_0\) and \(G_0/G_1\) are abelian, also \(D(G)\subseteq G_0\) and \(D^2(G)\subseteq G_1\). Taking further commutators therefore makes the derived series of \(G\) trivial as well. No bound on the unramified residue degree, beyond its finiteness, is imposed.
+
 
 ## 3. Hilbert's formula
 
@@ -139,12 +161,50 @@ For any finite separable extension of local fields, define its trace-dual lattic
 \mathfrak D_{L/K}=(\mathcal O_L^*)^{-1}.
 \tag{3.1}
 \]
-The trace form is nondegenerate: [**Unramified and totally ramified extensions**, Lemma 4.0](NT-LOC-07.md) proves that every finite separable field extension has an element \(t\) of trace one. For any nonzero \(x\in L\), set \(y=t/x\); then \(\operatorname{Tr}_{L/K}(xy)=1\). This proves nondegeneracy in every characteristic. Its dual lattice is a fractional \(\mathcal O_L\)-ideal, and inversion is fractional-ideal inversion. If \(\mathcal O_L=\mathcal O_K[\alpha]\), with monic minimal polynomial \(f\), the monogenic different theorem gives
+The trace form is nondegenerate: [**Unramified and totally ramified extensions**, Lemma 4.0](../NT-LOC-07.html#4-norms-from-unramified-extensions) proves that every finite separable field extension has an element \(t\) of trace one. For any nonzero \(x\in L\), set \(y=t/x\); then \(\operatorname{Tr}_{L/K}(xy)=1\). This proves nondegeneracy in every characteristic. Its dual lattice is a fractional \(\mathcal O_L\)-ideal, and inversion is fractional-ideal inversion. If \(\mathcal O_L=\mathcal O_K[\alpha]\), with monic minimal polynomial \(f\), the monogenic different theorem gives
 \[
 \mathfrak D_{L/K}=f'(\alpha)\mathcal O_L.
 \tag{3.2}
 \]
-This algebraic trace-dual theorem is proved in *Number fields*, lesson 14, **The different and the discriminant**, “The trace dual,” Euler's dual-basis lemma and Proposition 14.2. Its hypotheses are a Dedekind base ring and a finite separable extension with finite integral closure; the monogenic formula additionally requires the full integral closure to be \(\mathcal O_K[\alpha]\). Complete local integer rings satisfy these conditions by **Extensions of complete valued fields**, Theorem 3.1. The separable trace pairing is proved nondegenerate above, using the exact earlier trace-one lemma; [Stacks, Tag 0BIL](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-separable-trace-pairing) is a comparison. The ramification formula that follows is proved here.
+This algebraic trace-dual theorem is proved in *Number fields*, lesson 14, [**The different and the discriminant**](../../NT-ANT/the-different-and-the-discriminant.html#euler-s-lemma-and-a-power-basis), “The trace dual,” Euler's dual-basis lemma and Proposition 14.2. The calculation immediately below also supplies it here. Its hypotheses are a Dedekind base ring and a finite separable extension with finite integral closure; the monogenic formula additionally requires the full integral closure to be \(\mathcal O_K[\alpha]\). Complete local integer rings satisfy these conditions by **Extensions of complete valued fields**, Theorem 3.1. The separable trace pairing is proved nondegenerate above, using the exact earlier trace-one lemma; [Stacks, Tag 0BIL](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-separable-trace-pairing) is a comparison. The ramification formula that follows is proved here.
+
+### The algebraic trace calculation and its scope
+
+Here is a direct verification of the algebraic identities used in (3.1)–(3.2) and in Section 4. Let \(A\) be a Dedekind domain with fraction field \(F\), let \(E/F\) be finite separable, and suppose its full integral closure \(B\) is finite over \(A\). Define
+\[
+ B^*=\{y\in E:\operatorname{Tr}_{E/F}(yB)\subseteq A\},\qquad
+ D=(B^*)^{-1}.
+\]
+The trace-one argument above proves the required nondegenerate field trace pairing. Choose an \(F\)-basis \(b_1,\ldots,b_m\) from \(B\), and set \(V=\sum A b_i\subseteq B\). In this basis the trace matrix is invertible over \(F\), so \(V^*=T^{-1}A^m\) is a finite \(A\)-lattice. Since \(B^*\subseteq V^*\) and \(A\) is Noetherian, \(B^*\) is finite over \(A\). It is stable under multiplication by \(B\). Also \(B\subseteq B^*\): products of integral elements have integral field trace, and an element of \(F\) integral over the integrally closed ring \(A\) lies in \(A\). Thus \(B^*\) is a nonzero fractional \(B\)-ideal spanning \(E\); it is invertible because \(B\) is Dedekind. Its inverse \(D\) is an integral ideal, since \(B\subseteq B^*\). None of this requires a separable residue extension.
+
+If in addition \(B=A[\alpha]\), write the monic minimal polynomial as \(f(X)\in A[X]\), of degree \(m\), and
+\[
+ \frac{f(X)}{X-\alpha}=\sum_{j=0}^{m-1}c_j(\alpha)X^j.
+\]
+The elements \(c_{m-1}(\alpha),c_{m-2}(\alpha),\ldots,c_0(\alpha)\) have leading terms \(1,\alpha,\ldots,\alpha^{m-1}\); their change of basis from these powers is unit triangular over \(A\). In a splitting field, the distinct roots \(\beta\) of \(f\) satisfy the Lagrange interpolation identity
+\[
+ X^r=\sum_{f(\beta)=0}\frac{\beta^r}{f'(\beta)}\frac{f(X)}{X-\beta}\qquad(0\le r<m).
+\]
+Comparing coefficients of \(X^j\) proves
+\[
+ \operatorname{Tr}_{E/F}\!\left(\alpha^r\frac{c_j(\alpha)}{f'(\alpha)}\right)=\delta_{rj}.
+\]
+Consequently these \(m\) elements are the trace-dual basis to \(1,\alpha,\ldots,\alpha^{m-1}\). The unit-triangular observation gives \(B^*=f'(\alpha)^{-1}B\), hence \(D=f'(\alpha)B\). Separability supplies the distinct roots and nonzero derivative; the additional ring equality \(B=A[\alpha]\) is essential.
+
+Trace-dual formation commutes with localization: a finite set of generators of \(B\) gives finitely many trace-integrality conditions, whose denominators can be cleared by one element of the multiplicative set. Thus the localized lattice is exactly the trace dual of the localized ring.
+
+For the discriminant, localize at a nonzero prime \(\mathfrak p\) of \(A\). Then \(B_{\mathfrak p}\) is a finite free \(A_{\mathfrak p}\)-module. In a basis with trace matrix \(T\), its trace dual is \(T^{-1}A_{\mathfrak p}^{m}\), and elementary divisors over this DVR give
+\[
+ \operatorname{length}_{A_{\mathfrak p}}(B^*_{\mathfrak p}/B_{\mathfrak p})
+ =v_{\mathfrak p}(\det T).
+\]
+If \(D=\prod_{\mathfrak P}\mathfrak P^{d_{\mathfrak P}}\), the quotient on the left has \(d_{\mathfrak P}\) composition factors isomorphic to \(B/\mathfrak P\) at each \(\mathfrak P\mid\mathfrak p\). Each such factor has \(A_{\mathfrak p}\)-length \(f(\mathfrak P/\mathfrak p)\). Therefore
+\[
+ v_{\mathfrak p}(\mathfrak d_{B/A})
+ =\sum_{\mathfrak P\mid\mathfrak p} f(\mathfrak P/\mathfrak p)d_{\mathfrak P},\qquad
+ \mathfrak d_{B/A}=N_{B/A}(D),
+\]
+where the ideal norm sends \(\mathfrak P\) to \(\mathfrak p^{\,f(\mathfrak P/\mathfrak p)}\). This proves the norm identity without a monogenic assumption. As usual the discriminant ideal is defined locally by these determinants when the global module is projective rather than free. The hypotheses remain finite separability and finite integral closure over a Dedekind base; residue separability is not used. The complete earlier programme proofs are [the trace dual](../../NT-ANT/the-different-and-the-discriminant.html#the-trace-dual), [Euler’s dual-basis lemma and Proposition 14.2](../../NT-ANT/the-different-and-the-discriminant.html#euler-s-lemma-and-a-power-basis), and [Theorem 14.3](../../NT-ANT/the-different-and-the-discriminant.html#norm-and-discriminant). The finite-integral-closure input is [Theorem 5.1](../../NT-ANT/decomposition-of-primes-in-extensions.html#the-larger-ring-is-still-dedekind). These results have the Dedekind-domain and finite-separability hypotheses used here, not a characteristic-zero restriction.
 
 **Theorem 3.1 (Hilbert).** For the finite Galois extension \(L/K\),
 \[
@@ -421,10 +481,10 @@ Adding \(N-1\) gives \(nN-p^{n-1}=np^n-(n+1)p^{n-1}\). The calculation includes 
 
 ## 9. What this lesson does not prove
 
-- Integral monogenicity for a finite separable extension of local fields, \(\mathcal O_L=\mathcal O_K[\alpha]\), is Corollary 6.2 of **Unramified and totally ramified extensions**. Its Proposition 6.1 gives the maximal unramified subfield; Theorem 5.1 gives uniformizers and integral bases in a totally ramified extension. The finite-field Galois correspondence and Frobenius description are its Corollary 3.1.
+- Integral monogenicity for a finite separable extension of local fields, \(\mathcal O_L=\mathcal O_K[\alpha]\), is [Corollary 6.2 of **Unramified and totally ramified extensions**](../NT-LOC-07.html#6-separating-a-general-extension-and-finding-one-integral-generator). Its Proposition 6.1 gives the maximal unramified subfield; Theorem 5.1 gives uniformizers and integral bases in a totally ramified extension. The finite-field Galois correspondence and Frobenius description are its Corollary 3.1.
 - Trace nondegeneracy is proved in Section 3 above from lesson 7, Lemma 4.0; Stacks, Tag 0BIL remains a comparison; the invertible trace dual and monogenic derivative formula are the exact written proofs in *Number fields*, lesson 14, **The different and the discriminant**, “The trace dual,” Euler's lemma and Proposition 14.2. Its Theorem 14.3 proves that the discriminant ideal is the ideal norm of the different, without a monogenic hypothesis. These results require a finite separable field extension and finite integral closure over a Dedekind domain; no residue-separability hypothesis is needed for these algebraic identities.
 - The written *Number fields* proofs are lesson 2, **Discriminants and integral bases**, Theorem 2.3 for the integer lattice; lesson 3, **Discrete valuation rings and Dedekind domains**, Proposition 3.1, Theorem 3.2 and Proposition 3.3 for Dedekindness, fractional-ideal factorization and Chinese remainders; and lesson 5, **Decomposition of primes in extensions**, Theorems 5.1–5.2 for finite integral closure and prime ideal norms. Milne, Proposition 2.29, Theorems 3.7 and 3.29 and Chapter 4 are classical references for the same facts. The field-completion decomposition and base change of trace are Theorem 2.1 and Corollary 2.2 of **Places of number fields in extensions and the product formula**.
-- The extension of embeddings to a finite normal extension, the fixed-field theorem, and Sylow theory are the field and finite-group background of **Graduate Algebra**. Cyclicity of finite subgroups of a field's multiplicative group is proved in [**Hensel's lemma, squares and roots of unity in p-adic fields**, Lemma 4.0](NT-LOC-03.md). Stacks, Tag 09HX remains a comparison. Milne, *Fields and Galois Theory*, Proposition 4.19 with Exercise 1-3 is another classical reference.
+- The field-theory inputs are the [extension-of-embeddings lemma](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2004), [finite-group fixed-field lemma](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2786) and [finite Galois correspondence](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2845) in the AI Integrated Stacks Project, *Fields*, revision `565b10e987aba5969b21145a0833f42d69f96790`. Their hypotheses and maps are applied explicitly in Sections 1–2. Section 2 proves Sylow uniqueness directly from the prime-to-p inertia quotient and proves solvability using the derived series. Cyclicity of finite subgroups of a field's multiplicative group is proved in [**Hensel's lemma, squares and roots of unity in p-adic fields**, Lemma 4.0](NT-LOC-03.md). Stacks, Tag 09HX remains a comparison. Milne, *Fields and Galois Theory*, Proposition 4.19 with Exercise 1-3 is another classical reference.
 
 ## References
 J. S. Milne, [*Algebraic Number Theory*](https://www.jmilne.org/math/CourseNotes/ANT.pdf), Chapter 7, “Ramification groups,” Theorem 7.58 and Corollary 7.59.

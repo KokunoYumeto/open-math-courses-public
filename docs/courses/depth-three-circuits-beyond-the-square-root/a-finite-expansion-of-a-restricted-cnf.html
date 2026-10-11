@@ -1,0 +1,142 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A finite expansion of a restricted CNF</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="depth-three-circuits-and-the-square-root-barrier.html">Previous lesson</a><a href="path-weights-and-backward-counting.html">Next lesson</a><a href="src/a-finite-expansion-of-a-restricted-cnf.md">Editable source</a></nav><main><article><h1 id="a-finite-expansion-of-a-restricted-cnf">A finite expansion of a restricted CNF</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The first structural step of the proof outlined in <a href="depth-three-circuits-and-the-square-root-barrier.html">Depth-three circuits and the square-root barrier</a> compares a CNF of large width <span class="math" data-tex="\(k\)">\(k\)</span> with CNFs of a small width <span class="math" data-tex="\(b\)">\(b\)</span>. After a random restriction, some clauses keep more than <span class="math" data-tex="\(b\)">\(b\)</span> live variables, and their number is not bounded. This lesson writes the restricted CNF <em>exactly</em> as a finite signed combination of terms indexed by <em>paths</em>: sequences of clauses that are wide when chosen. The next lesson, <a href="path-weights-and-backward-counting.html">Path weights and backward counting</a>, shows that each term is a positive multiple of an average of width-<span class="math" data-tex="\(b\)">\(b\)</span> CNFs, and that the total weight has bounded expectation, independently of the number of clauses.</p>
+<h2 id="1-the-restriction-bound">1. The restriction bound</h2>
+<p>Notation is that of the first lesson: <span class="math" data-tex="\(\mathcal C_b(T)\)">\(\mathcal C_b(T)\)</span> is the set of CNFs on <span class="math" data-tex="\(\{0,1\}^T\)">\(\{0,1\}^T\)</span> with clauses of width at most <span class="math" data-tex="\(b\)">\(b\)</span>, and <span class="math" data-tex="\(\operatorname{corr}_b(G)=\max_{J\in\mathcal C_b(T)}|\mathbb E_zG(z)J(z)|\)">\(\operatorname{corr}_b(G)=\max_{J\in\mathcal C_b(T)}|\mathbb E_zG(z)J(z)|\)</span>.</p>
+<p><strong>Lemma 1.1 (restriction bound).</strong> Let <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span> and <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span> be integers, <span class="math" data-tex="\(H\)">\(H\)</span> a CNF of width at most <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\([d]\)">\([d]\)</span>, and <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>. Let <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> be a <span class="math" data-tex="\(p\)">\(p\)</span>-random restriction, and suppose
+<span class="math math-display" data-tex="\[
+\theta=\sum_{\ell=b+1}^{k}\binom k\ell\Bigl(\frac{2p}{1-p}\Bigr)^{\ell}&lt;1
+\]">\[
+\theta=\sum_{\ell=b+1}^{k}\binom k\ell\Bigl(\frac{2p}{1-p}\Bigr)^{\ell}&lt;1
+\]</span>
+(an empty sum is <span class="math" data-tex="\(0\)">\(0\)</span>). Then there are numbers <span class="math" data-tex="\(W(H,T,\rho)\geq0\)">\(W(H,T,\rho)\geq0\)</span>, depending only on <span class="math" data-tex="\(H\)">\(H\)</span> and the restriction, with
+<span class="math math-display" data-tex="\[
+\mathbb E_{T,\rho}W(H,T,\rho)\leq\frac1{1-\theta},
+\]">\[
+\mathbb E_{T,\rho}W(H,T,\rho)\leq\frac1{1-\theta},
+\]</span>
+such that for every function <span class="math" data-tex="\(G:\{0,1\}^T\to\mathbb R\)">\(G:\{0,1\}^T\to\mathbb R\)</span>,
+<span class="math math-display" data-tex="\[
+\bigl|\mathbb E_z\,G\,H_{T,\rho}\bigr|\leq W(H,T,\rho)\operatorname{corr}_b(G).
+\]">\[
+\bigl|\mathbb E_z\,G\,H_{T,\rho}\bigr|\leq W(H,T,\rho)\operatorname{corr}_b(G).
+\]</span></p>
+<p>The same numbers <span class="math" data-tex="\(W\)">\(W\)</span> serve for all <span class="math" data-tex="\(G\)">\(G\)</span> at once. The number of clauses of <span class="math" data-tex="\(H\)">\(H\)</span> does not appear anywhere. This lesson proves the exact expansion behind the lemma (Proposition 5.1); the next lesson defines <span class="math" data-tex="\(W\)">\(W\)</span> and proves both inequalities.</p>
+<h2 id="2-easy-and-hard-clauses">2. Easy and hard clauses</h2>
+<p>Remove from <span class="math" data-tex="\(H\)">\(H\)</span> all clauses that are always true. List the remaining clauses as <span class="math" data-tex="\(C_1,\ldots,C_N\)">\(C_1,\ldots,C_N\)</span>, keeping repetitions as separate indices. Let <span class="math" data-tex="\(E_i\subseteq[d]\)">\(E_i\subseteq[d]\)</span> be the scope of <span class="math" data-tex="\(C_i\)">\(C_i\)</span>; so <span class="math" data-tex="\(|E_i|\leq k\)">\(|E_i|\leq k\)</span>, and <span class="math" data-tex="\(C_i\)">\(C_i\)</span> is violated by exactly one pattern on <span class="math" data-tex="\(E_i\)">\(E_i\)</span>. The false clause has <span class="math" data-tex="\(E_i=\varnothing\)">\(E_i=\varnothing\)</span>.</p>
+<p>Fix a restriction <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span>. For <span class="math" data-tex="\(z\in\{0,1\}^T\)">\(z\in\{0,1\}^T\)</span> let <span class="math" data-tex="\(v_i(z)\in\{0,1\}\)">\(v_i(z)\in\{0,1\}\)</span> indicate that <span class="math" data-tex="\(C_i\)">\(C_i\)</span> is violated at the point given by <span class="math" data-tex="\(\rho\)">\(\rho\)</span> outside <span class="math" data-tex="\(T\)">\(T\)</span> and by <span class="math" data-tex="\(z\)">\(z\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>, and put <span class="math" data-tex="\(q=\sum_iv_i\)">\(q=\sum_iv_i\)</span>, the number of violated clauses. Then <span class="math" data-tex="\(H_{T,\rho}=\mathbf 1[q=0]\)">\(H_{T,\rho}=\mathbf 1[q=0]\)</span>. For a set <span class="math" data-tex="\(U\subseteq T\)">\(U\subseteq T\)</span>, call the index <span class="math" data-tex="\(i\)">\(i\)</span> <em>easy at</em> <span class="math" data-tex="\(U\)">\(U\)</span> if <span class="math" data-tex="\(|E_i\cap(T\setminus U)|\leq b\)">\(|E_i\cap(T\setminus U)|\leq b\)</span>, and <em>hard at</em> <span class="math" data-tex="\(U\)">\(U\)</span> otherwise, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_U=\sum_{i\text{ easy at }U}v_i,\\
+c_U=\sum_{i:\,E_i\cap(T\setminus U)=\varnothing}v_i .
+\end{gathered}
+\]">\[
+\begin{gathered}
+a_U=\sum_{i\text{ easy at }U}v_i,\\
+c_U=\sum_{i:\,E_i\cap(T\setminus U)=\varnothing}v_i .
+\end{gathered}
+\]</span>
+Here <span class="math" data-tex="\(U\)">\(U\)</span> stands for coordinates whose values will be prescribed: an easy clause has at most <span class="math" data-tex="\(b\)">\(b\)</span> live variables outside <span class="math" data-tex="\(U\)">\(U\)</span>, and the clauses counted by <span class="math" data-tex="\(c_U\)">\(c_U\)</span> have none. The classification depends only on the scopes, not on <span class="math" data-tex="\(z\)">\(z\)</span>, and <span class="math" data-tex="\(c_U\leq a_U\)">\(c_U\leq a_U\)</span>.</p>
+<p>Let <span class="math" data-tex="\(K=\mathbf 1[a_\varnothing=0]\)">\(K=\mathbf 1[a_\varnothing=0]\)</span>. It is the conjunction of the clauses easy at <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, with <span class="math" data-tex="\(\rho\)">\(\rho\)</span> substituted; each has at most <span class="math" data-tex="\(b\)">\(b\)</span> live variables, so <span class="math" data-tex="\(K\in\mathcal C_b(T)\)">\(K\in\mathcal C_b(T)\)</span>.</p>
+<p>Compare <span class="math" data-tex="\(K\)">\(K\)</span> with <span class="math" data-tex="\(H_{T,\rho}\)">\(H_{T,\rho}\)</span>. Where <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, an easy clause is violated, so <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> and <span class="math" data-tex="\(H_{T,\rho}=0\)">\(H_{T,\rho}=0\)</span>. Where <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, both equal <span class="math" data-tex="\(1\)">\(1\)</span>. The only discrepancy is on the set where <span class="math" data-tex="\(K=1\)">\(K=1\)</span> and <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>: there <span class="math" data-tex="\(K-H_{T,\rho}=1\)">\(K-H_{T,\rho}=1\)</span>, and every violated clause is hard at <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, so
+<span class="math math-display" data-tex="\[
+1=\sum_{i\text{ hard at }\varnothing}\frac{v_i}q .
+\]">\[
+1=\sum_{i\text{ hard at }\varnothing}\frac{v_i}q .
+\]</span>
+The expansion below rewrites this unit, replacing the common denominator <span class="math" data-tex="\(q\)">\(q\)</span> step by step with counts of easy clauses.</p>
+<h2 id="3-paths-of-wide-clauses">3. Paths of wide clauses</h2>
+<p>A <em>path</em> of length <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span> is a sequence <span class="math" data-tex="\(P=(i_1,\ldots,i_j)\)">\(P=(i_1,\ldots,i_j)\)</span> of indices together with sets <span class="math" data-tex="\(U_0=\varnothing\subseteq U_1\subseteq\cdots\subseteq U_j\subseteq T\)">\(U_0=\varnothing\subseteq U_1\subseteq\cdots\subseteq U_j\subseteq T\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+i_h\text{ is hard at }U_{h-1},\\
+U_h=U_{h-1}\cup(E_{i_h}\cap T)\qquad(1\leq h\leq j).
+\end{gathered}
+\]">\[
+\begin{gathered}
+i_h\text{ is hard at }U_{h-1},\\
+U_h=U_{h-1}\cup(E_{i_h}\cap T)\qquad(1\leq h\leq j).
+\end{gathered}
+\]</span>
+The sets <span class="math" data-tex="\(U_h\)">\(U_h\)</span> are determined by the indices. Write <span class="math" data-tex="\(\mathcal P_j(T)\)">\(\mathcal P_j(T)\)</span> for the set of paths of length <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> (a) Each step adds at least <span class="math" data-tex="\(b+1\)">\(b+1\)</span> coordinates to <span class="math" data-tex="\(U\)">\(U\)</span>, so every path has length at most <span class="math" data-tex="\(L=\lfloor|T|/(b+1)\rfloor\)">\(L=\lfloor|T|/(b+1)\rfloor\)</span>. (b) The indices of a path are distinct, and <span class="math" data-tex="\(i_1,\ldots,i_h\)">\(i_1,\ldots,i_h\)</span> are easy at <span class="math" data-tex="\(U_h\)">\(U_h\)</span> and at every later <span class="math" data-tex="\(U\)">\(U\)</span>. (c) If all the clauses <span class="math" data-tex="\(C_{i_1},\ldots,C_{i_j}\)">\(C_{i_1},\ldots,C_{i_j}\)</span> are violated at <span class="math" data-tex="\(z\)">\(z\)</span>, then <span class="math" data-tex="\(a_{U_h}(z)\geq c_{U_h}(z)\geq h\)">\(a_{U_h}(z)\geq c_{U_h}(z)\geq h\)</span> for <span class="math" data-tex="\(1\leq h\leq j\)">\(1\leq h\leq j\)</span>.</p>
+<p><em>Proof.</em> (a) Since <span class="math" data-tex="\(i_h\)">\(i_h\)</span> is hard at <span class="math" data-tex="\(U_{h-1}\)">\(U_{h-1}\)</span>, the set <span class="math" data-tex="\(E_{i_h}\cap(T\setminus U_{h-1})\)">\(E_{i_h}\cap(T\setminus U_{h-1})\)</span> has more than <span class="math" data-tex="\(b\)">\(b\)</span> elements, and all of them are added. (b) After step <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(E_{i_h}\cap T\subseteq U_h\)">\(E_{i_h}\cap T\subseteq U_h\)</span>, so <span class="math" data-tex="\(E_{i_h}\cap(T\setminus U)=\varnothing\)">\(E_{i_h}\cap(T\setminus U)=\varnothing\)</span> for every later <span class="math" data-tex="\(U\)">\(U\)</span>; such an index is easy and cannot be chosen again. (c) The indices <span class="math" data-tex="\(i_1,\ldots,i_h\)">\(i_1,\ldots,i_h\)</span> are violated and their scopes miss <span class="math" data-tex="\(T\setminus U_h\)">\(T\setminus U_h\)</span>, so they are counted in <span class="math" data-tex="\(c_{U_h}\)">\(c_{U_h}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-peeling-off-one-step">4. Peeling off one step</h2>
+<p>A <em>path fraction</em> is a quotient whose numerator is a product of violation indicators; it is defined to be <span class="math" data-tex="\(0\)">\(0\)</span> wherever the numerator vanishes. In all fractions below the denominators are positive on the support of the numerator, by Lemma 3.1(c) and because <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span> where some clause is violated.</p>
+<p>Work at a point with <span class="math" data-tex="\(K=1\)">\(K=1\)</span> and <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>. For a path <span class="math" data-tex="\(P=(i_1,\ldots,i_j)\)">\(P=(i_1,\ldots,i_j)\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r_P&amp;=\frac{v_{i_1}\cdots v_{i_j}}{q\;a_{U_1}\cdots a_{U_{j-1}}},\\
+t_P&amp;=\frac{v_{i_1}\cdots v_{i_j}}{a_{U_1}\cdots a_{U_j}}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+r_P&amp;=\frac{v_{i_1}\cdots v_{i_j}}{q\;a_{U_1}\cdots a_{U_{j-1}}},\\
+t_P&amp;=\frac{v_{i_1}\cdots v_{i_j}}{a_{U_1}\cdots a_{U_j}}.
+\end{aligned}
+\]</span>
+The term <span class="math" data-tex="\(t_P\)">\(t_P\)</span> is <span class="math" data-tex="\(r_P\)">\(r_P\)</span> with the last factor <span class="math" data-tex="\(q\)">\(q\)</span> of its denominator replaced by <span class="math" data-tex="\(a_{U_j}\)">\(a_{U_j}\)</span>. For an index <span class="math" data-tex="\(i\)">\(i\)</span> hard at <span class="math" data-tex="\(U_j\)">\(U_j\)</span>, write <span class="math" data-tex="\(Pi\)">\(Pi\)</span> for the path extended by <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><strong>Lemma 4.1 (peeling).</strong> For every path <span class="math" data-tex="\(P\)">\(P\)</span> of length <span class="math" data-tex="\(j\)">\(j\)</span>,
+<span class="math math-display" data-tex="\[
+r_P=t_P-\sum_{i\text{ hard at }U_j}r_{Pi}.
+\]">\[
+r_P=t_P-\sum_{i\text{ hard at }U_j}r_{Pi}.
+\]</span></p>
+<p><em>Proof.</em> Off the support of <span class="math" data-tex="\(v_{i_1}\cdots v_{i_j}\)">\(v_{i_1}\cdots v_{i_j}\)</span> all terms vanish. On it, every violated clause is easy or hard at <span class="math" data-tex="\(U_j\)">\(U_j\)</span>, so <span class="math" data-tex="\(q=a_{U_j}+\sum_{i\text{ hard at }U_j}v_i\)">\(q=a_{U_j}+\sum_{i\text{ hard at }U_j}v_i\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{i\text{ hard at }U_j}r_{Pi}&amp;=t_P\,\frac{q-a_{U_j}}q\\
+&amp;=t_P-t_P\frac{a_{U_j}}q\\
+&amp;=t_P-r_P. \qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{i\text{ hard at }U_j}r_{Pi}&amp;=t_P\,\frac{q-a_{U_j}}q\\
+&amp;=t_P-t_P\frac{a_{U_j}}q\\
+&amp;=t_P-r_P. \qquad\square
+\end{aligned}
+\]</span></p>
+<h2 id="5-the-expansion">5. The expansion</h2>
+<p><strong>Proposition 5.1 (finite expansion).</strong> As functions on <span class="math" data-tex="\(\{0,1\}^T\)">\(\{0,1\}^T\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_{T,\rho}=K+K\sum_{j=1}^{L}(-1)^j\tau_j,\\
+\tau_j=\sum_{P\in\mathcal P_j(T)}\frac{v_{i_1}\cdots v_{i_j}}{a_{U_1}\cdots a_{U_j}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_{T,\rho}=K+K\sum_{j=1}^{L}(-1)^j\tau_j,\\
+\tau_j=\sum_{P\in\mathcal P_j(T)}\frac{v_{i_1}\cdots v_{i_j}}{a_{U_1}\cdots a_{U_j}} .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Where <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, both sides vanish. Where <span class="math" data-tex="\(K=1\)">\(K=1\)</span> and <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, every numerator vanishes and both sides equal <span class="math" data-tex="\(1\)">\(1\)</span>. Fix a point with <span class="math" data-tex="\(K=1\)">\(K=1\)</span> and <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>. The paths of length one are the single indices hard at <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, so the display at the end of Section 2 says <span class="math" data-tex="\(\sum_{P\in\mathcal P_1(T)}r_P=1\)">\(\sum_{P\in\mathcal P_1(T)}r_P=1\)</span>. Applying Lemma 4.1 to every path of length <span class="math" data-tex="\(j\)">\(j\)</span> and summing turns <span class="math" data-tex="\(\sum_{\mathcal P_j}r_P\)">\(\sum_{\mathcal P_j}r_P\)</span> into <span class="math" data-tex="\(\sum_{\mathcal P_j}t_P-\sum_{\mathcal P_{j+1}}r_P\)">\(\sum_{\mathcal P_j}t_P-\sum_{\mathcal P_{j+1}}r_P\)</span>, because every path of length <span class="math" data-tex="\(j+1\)">\(j+1\)</span> arises exactly once as an extension. By induction on <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0=1&amp;+\sum_{j=1}^{s}(-1)^j\sum_{\mathcal P_j(T)}t_P\\
+&amp;+(-1)^{s+1}\sum_{\mathcal P_{s+1}(T)}r_P
+\end{aligned}
+\]">\[
+\begin{aligned}
+0=1&amp;+\sum_{j=1}^{s}(-1)^j\sum_{\mathcal P_j(T)}t_P\\
+&amp;+(-1)^{s+1}\sum_{\mathcal P_{s+1}(T)}r_P
+\end{aligned}
+\]</span>
+for <span class="math" data-tex="\(0\leq s\leq L\)">\(0\leq s\leq L\)</span>. For <span class="math" data-tex="\(s=L\)">\(s=L\)</span> the last sum is empty, by Lemma 3.1(a). So <span class="math" data-tex="\(\sum_{j=1}^L(-1)^j\sum_{\mathcal P_j}t_P=-1\)">\(\sum_{j=1}^L(-1)^j\sum_{\mathcal P_j}t_P=-1\)</span>, and the right side of the proposition is <span class="math" data-tex="\(1-1=0=H_{T,\rho}\)">\(1-1=0=H_{T,\rho}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Everything here is a finite identity between functions on a finite cube; no series and no convergence are involved. The number of paths may be enormous when <span class="math" data-tex="\(H\)">\(H\)</span> has many clauses. The next lesson controls the <em>sum of their weights</em> instead of their number.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> consist of a single clause of width <span class="math" data-tex="\(k&gt;b\)">\(k&gt;b\)</span>, and let <span class="math" data-tex="\(T=[d]\)">\(T=[d]\)</span>. List the paths and check Proposition 5.1 directly.</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> consist of two clauses with disjoint scopes of width <span class="math" data-tex="\(k&gt;b\)">\(k&gt;b\)</span>, and <span class="math" data-tex="\(T=[d]\)">\(T=[d]\)</span>. List the four paths and check the expansion at a point violating both clauses and at a point violating only the first.</p>
+<p><strong>6.3.</strong> Show that if <span class="math" data-tex="\(k\leq b\)">\(k\leq b\)</span>, there are no paths and Proposition 5.1 says <span class="math" data-tex="\(H_{T,\rho}=K\)">\(H_{T,\rho}=K\)</span>.</p>
+<p><strong>6.4.</strong> In Lemma 4.1, why is it important that <span class="math" data-tex="\(a_{U_j}\)">\(a_{U_j}\)</span> counts <em>all</em> violated clauses easy at <span class="math" data-tex="\(U_j\)">\(U_j\)</span>, including those not on the path?</p>
+<p><strong>6.5.</strong> Show that a repeated clause (two indices with the same clause) causes no difficulty in the expansion.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> The clause is hard at <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, so <span class="math" data-tex="\(K=1\)">\(K=1\)</span>. The only path is <span class="math" data-tex="\((1)\)">\((1)\)</span>, with <span class="math" data-tex="\(U_1=E_1\)">\(U_1=E_1\)</span>; at <span class="math" data-tex="\(U_1\)">\(U_1\)</span> the clause is easy, so <span class="math" data-tex="\(a_{U_1}=v_1\)">\(a_{U_1}=v_1\)</span> and the term is <span class="math" data-tex="\(v_1/v_1=v_1\)">\(v_1/v_1=v_1\)</span> (zero where <span class="math" data-tex="\(v_1=0\)">\(v_1=0\)</span>). The expansion gives <span class="math" data-tex="\(1-v_1\)">\(1-v_1\)</span>, which is the clause.</p>
+<p><strong>6.2.</strong> Paths: <span class="math" data-tex="\((1)\)">\((1)\)</span>, <span class="math" data-tex="\((2)\)">\((2)\)</span>, <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span>, <span class="math" data-tex="\((2,1)\)">\((2,1)\)</span>. Where both clauses are violated, <span class="math" data-tex="\(a_{U_1}=1\)">\(a_{U_1}=1\)</span> after the first step and <span class="math" data-tex="\(a_{U_2}=2\)">\(a_{U_2}=2\)</span> after the second, so the terms are <span class="math" data-tex="\(1,1,\frac12,\frac12\)">\(1,1,\frac12,\frac12\)</span> and the expansion gives <span class="math" data-tex="\(1-(1+1)+(\frac12+\frac12)=0\)">\(1-(1+1)+(\frac12+\frac12)=0\)</span>. Where only the first is violated, only <span class="math" data-tex="\((1)\)">\((1)\)</span> has a nonzero numerator, with value <span class="math" data-tex="\(1\)">\(1\)</span>, and the expansion gives <span class="math" data-tex="\(1-1=0\)">\(1-1=0\)</span>. Both agree with <span class="math" data-tex="\(H=0\)">\(H=0\)</span>.</p>
+<p><strong>6.3.</strong> Every clause has at most <span class="math" data-tex="\(k\leq b\)">\(k\leq b\)</span> live variables, so every index is easy at <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> and no first step exists. Then <span class="math" data-tex="\(H_{T,\rho}=\mathbf 1[q=0]=\mathbf 1[a_\varnothing=0]=K\)">\(H_{T,\rho}=\mathbf 1[q=0]=\mathbf 1[a_\varnothing=0]=K\)</span>.</p>
+<p><strong>6.4.</strong> The identity <span class="math" data-tex="\(q=a_{U_j}+\sum_{i\text{ hard at }U_j}v_i\)">\(q=a_{U_j}+\sum_{i\text{ hard at }U_j}v_i\)</span> needs every violated clause to be counted on exactly one side; a violated easy clause that is not on the path still contributes to <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>6.5.</strong> Repeated clauses are separate indices with equal scopes. They appear separately in <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(a_U\)">\(a_U\)</span> and <span class="math" data-tex="\(c_U\)">\(c_U\)</span>, and in separate paths; every identity above is a statement about indices, so multiplicities are carried consistently.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-P] OpenAI, <em>Beyond the Square-Root Exponent for Depth-Three Boolean Circuits</em>, OpenAI Math Release preprint, 23 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

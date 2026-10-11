@@ -2945,9 +2945,796 @@ acts by \(v_+\mapsto v_++ap\,v_-\), \(v_-\mapsto v_-\). The added term has degre
 \]
 Applying any representation proves its compatibility with that representation's semilinear degree action. These group elements therefore give graded natural tensor automorphisms on all representations. Composing a trivialization with \(g_a\) preserves its specified augmentation, while distinct \(a\)'s already act differently on the standard representation. ∎
 
+### C.19. The determinant cup operator is a regular Lie element
+
+Fix the closed faithful representation \(\rho:G\hookrightarrow GL(V)\) used in Loop groups and the affine Grassmannian, Theorem 7.1 and Lemmas 7.2–7.12. Its finite-stage closed embeddings retain nilpotents in every geometric characteristic. Write \(b=\dim_kV\), \(O_A=A[[t]]\), and \(F_A=A((t))\), for a parameter algebra \(A\). The coefficient field remains the finite characteristic-zero extension \(E/\mathbb Q_\ell\). The representation's integral torus weights will be used over \(E\); no trace-form nondegeneracy over \(k\) is assumed.
+
+#### C.19.1. Relative determinants on the full lattice functor
+
+**Lemma C.19.1.1.** The formula
+\[
+ \mathscr D_\rho(L)=
+ \det_A(L/t^NO_A^b)^{-1}\otimes
+ \det_A(O_A^b/t^NO_A^b)
+ \tag{C.19.1}
+\]
+defines a line bundle on \(\operatorname{Gr}_G\), independent of a sufficiently large bound \(N\), on the full scheme functor. It has genuine positive-loop equivariance and a canonical equivariant trivialization at the unit lattice. For three commensurable lattices its relative version has associative isomorphisms
+\[
+ \mathscr D(L_2,L_0)=
+ \mathscr D(L_1,L_0)\otimes
+ \mathscr D(L_2,L_1).
+ \tag{C.19.2}
+\]
+Determinants may be retained as graded lines: \(\det M\) has integer degree \(\operatorname{rk}M\), and their interchange has the sign prescribed by these degrees.
+
+**Proof.** Lesson 2 Lemma 2.1 makes every bounded lattice quotient finite projective over \(A\). In particular \(L/t^NO_A^b\) is finite projective: it is the kernel of the quotient between the finite bounding window and its projective quotient by \(L\), so that exact sequence splits over \(A\). This argument is valid before reduction and after every base change.
+
+For a finite projective module \(M\), define \(\det M=\bigwedge^{\operatorname{rk}M}M\) separately on its open-and-closed rank loci. If \(0\to M'\to M\to M''\to0\) is exact with all terms finite projective, a local splitting and an ordered basis give \(\det M=\det M'\otimes\det M''\). A second splitting changes the concatenated basis by a block triangular matrix of determinant one. Thus the comparison is independent of that splitting and glues. For a longer filtration the two successive comparisons both concatenate the same ordered bases, proving associativity. Interchanging two blocks has wedge sign \((-1)^{\operatorname{rk}M'\operatorname{rk}M''}\), explaining the graded-line convention.
+
+If a common lower lattice \(U\) is replaced by \(U'\subset U\), the exact sequences for both lattices add the same determinant \(\det(U/U')\). In the relative ratio
+\[
+ \mathscr D(L_i,L_j)=
+       \det(L_i/U)^{-1}\otimes\det(L_j/U)
+ \tag{C.19.3}
+\]
+these extra factors cancel by their evaluation. The filtration calculation proves compatibility for successive smaller \(U'\). Any two bounds have a smaller common bound, so this gives a choice-free relative line. Cancellation of the middle determinant proves (C.19.2), with the indicated ordering and graded interchanges. Its three-factor associativity is the same cancellation and ordered-basis equality. This constructs (C.19.1) on every finite window and identifies its restrictions through all transitions.
+
+A positive integral matrix preserves \(O_A^b\) and \(t^NO_A^b\). It acts on both finite quotients and hence on their determinant ratio. The action law is the determinant action law, and the bound comparisons are equivariant. On a fixed window the action factors through a sufficiently deep genuine jet quotient, since a matrix congruent to one modulo \(t^{2N}\) acts trivially on \(t^{-N}O_A^b/t^NO_A^b\). At \(L=O_A^b\), evaluation of the two identical determinant factors gives the canonical unit frame, also preserved by that action. All these maps commute with base change. Descent through the full faithful-representation lattice charts therefore gives the stated line on \(\operatorname{Gr}_G\), with its actual equivariance. ∎
+
+#### C.19.2. The moving line and independent-disc factorization
+
+**Lemma C.19.2.1.** On every ordered moving chain \(Y_r\to\mathbb A^r\) of Fusion and the symmetric tensor structure, C.1–C.6, there is a constant-\(G\)-equivariant determinant line of its last bundle relative to the standard bundle. On the distinct-point locus it is the ordered tensor product of the individual \(\mathscr D_\rho\)'s. On the full collision it is the pullback of (C.19.1) by the convolution endpoint. All ordered block, bound and unit comparisons agree with (C.19.2), on every parameter algebra.
+
+**Proof.** In the affine coordinate write
+\[
+ f(t)=\prod_{i=1}^r(t-a_i),\qquad u=f(t).
+ \tag{C.19.4}
+\]
+The monic construction of Lesson 8 §1 identifies the completed disc ring with a finite free \(A[[u]]\)-algebra, with basis \(1,t,\ldots,t^{r-1}\). The associated last \(V\)-bundle lattice \(L\) and standard lattice \(L_0\) have common finite bounds \(f^ML_0\subset L\subset f^{-M}L_0\). That lesson's operator-kernel and quotient calculation gives finite projective \(A\)-modules \(L/f^ML_0\) and \(L_0/f^ML_0\). Their determinant ratio is therefore a line on the full finite moving scheme. Smaller common lower lattices give the same canonical comparisons proved in C.19.1. It descends through the actual formal-frame charts; the away frame fixes the standard lattice. The construction is constant-\(G\)-equivariant.
+
+On the distinct-point locus the ideals \((t-a_i)\) are pairwise comaximal. CRT and completion identify the disc ring with the product of the individual completed discs. Locally on the \(i\)-th disc, the other factors of \(f\) are units, so \(f^ML_0=(t-a_i)^ML_0\) as a submodule. Both finite quotients are the corresponding ordered direct sums. The exact determinant direct-sum maps of C.19.1 identify their relative ratio with the product of the individual relative lines, including its graded interchange signs.
+
+For a separated collection of blocks the same CRT argument uses their monic block polynomials. When labels inside a block collide, its polynomial becomes a power of \(t-a\). The corresponding lower lattice is \((t-a)^{M|\text{block}|}L_0\), which is just a larger bound in C.19.1. Thus its specialization is the single-disc line on the actual last bundle. If all labels collide, this is the convolution endpoint's line. Regrouping a chain compares its successive relative lattices by (C.19.2); associativity of determinant filtrations and of CRT makes those comparisons agree before and after further collisions. The empty chain has \(L=L_0\), with its specified unit frame. No section displacement or infinitesimal lattice direction has been discarded. ∎
+
+#### C.19.3. The actual primitive cup map
+
+Set
+\[
+ c_\rho=c_1(\mathscr D_\rho)
+       \in H_G^2(\operatorname{Gr}_G,E(1)).
+ \tag{C.19.5}
+\]
+This notation means the compatible actual Kummer classes on the bounded stages; its action on a supported object is computed on that support.
+
+**Theorem C.19.3.1.** Cup with \(c_\rho\) gives a natural degree-two operator
+\[
+ d_{\rho,P}:\omega_G(P)\longrightarrow\omega_G(P)(1)
+ \tag{C.19.6}
+\]
+with its displayed Tate line. Its actual tensor rule is
+\[
+ d_{\rho,P*Q}
+   =d_{\rho,P}\otimes1+1\otimes d_{\rho,Q}
+ \tag{C.19.7}
+\]
+under C.17.10. It is zero on the unit and retains all ordered block comparisons. After choosing \(\tau\) in C.18.12 it corresponds to an element
+\[
+ \xi_\rho\in R_0\otimes_E\mathfrak h\otimes_E E(1)
+ \tag{C.19.8}
+\]
+of total degree two.
+
+**Proof.** The Kummer connecting map is additive on line tensors and negates inverse lines. At each finite coefficient level this follows by multiplying or inverting the frame transitions and their root cocycles in the actual exact coefficient sequence; the connecting map is a homomorphism. The completed coefficient construction of The Satake category and IC sheaves, A.1–A.2, retains those same maps and their inverse-limit homotopies. Thus the equality is for the actual complete class, with no interchange of invariants and reductions. It holds also on the equivariant nerve because the line comparisons are equivariant.
+
+On \(Y_r\), cup with the moving line is a morphism \(A_r\to A_r(1)[2]\). Proper image gives the same morphism of each \(K_{r,n}\) on \(\mathbb A^r\times G^n\) in C.17.12. That complex is in the essential image of the affine pullback. The full faithfulness proved in C.17.3 therefore lifts this morphism uniquely to \(Rp_{n,*}K_{r,n}\to Rp_{n,*}K_{r,n}(1)[2]\). Its natural counit square commutes. Those lifts commute with every action face and degeneracy by the actual base-change and adjunction comparisons of that lemma. Consequently the operator commutes with the complete nerve transport and its derived sections.
+
+At a distinct-point section, C.19.2 and Kummer additivity make this the sum of the external individual cup maps. At a collision it is the convolution endpoint cup map, by proper base change and the line specialization. The external cup map of C.17.2 identifies those two descriptions under C.17.10, proving (C.19.7). Its degree is even, so no external Koszul sign enters this sum. The same proof for \(r\) factors and their block maps proves the ordered block compatibility. The unit frame makes its Kummer class zero on the unit. Tensoring a class with an object commutes with every coefficient morphism, proving naturality.
+
+Apply C.18.4 to this tensor derivation. To keep its coefficient line, choose temporarily a nonzero vector in \(E(1)\) and divide the operator by that vector; the lemma gives its unique Lie element. Changing the vector rescales that element inversely, so their tensor is the well-defined (C.19.8). This proves the Tate-valued assertion and its total degree. ∎
+
+#### C.19.4. Fixed-point characters and localized projectors
+
+List the torus weights \(\chi_1,\ldots,\chi_b\) of \(V\), with multiplicity, and define
+\[
+ B_\rho(\lambda,\mu)
+    =\sum_{j=1}^b
+          \langle\chi_j,\lambda\rangle
+          \langle\chi_j,\mu\rangle,\qquad
+ \psi_\lambda=\sum_j\langle\chi_j,\lambda\rangle\chi_j.
+ \tag{C.19.9}
+\]
+The pairing is regarded on the integral coweight lattice and then over \(E\).
+
+**Lemma C.19.4.1.** The constant-\(T\) character of \(\mathscr D_\rho\) at \(t^\lambda\) is \(\psi_\lambda\). The pairing \(B_\rho\) is Weyl invariant and nondegenerate over \(E\), including the entire central torus, and \(\psi_\lambda\ne\psi_\mu\) for distinct coweights. Put \(Q=\operatorname{Frac}S\). On a proper spherical support \(X\), the actual restriction identifies
+\[
+ Q\otimes_S H_T^*(X,P)
+   \simeq
+ \bigoplus_{t^\lambda\in X^T}
+     Q\otimes_S H_T^*(t^\lambda,i_\lambda^*P).
+ \tag{C.19.10}
+\]
+There \(d_{\rho,P}\) is scalar cup with \(c_1(\psi_\lambda)\) on the \(\lambda\)-summand. Its localized Lagrange polynomials are the projectors onto those summands.
+
+**Proof.** In a weight basis, \(t^\lambda V(O)\) has \(j\)-th lattice \(t^{\langle\chi_j,\lambda\rangle}O\). At a large bound \(N\), the first quotient in (C.19.1) has \(N-\langle\chi_j,\lambda\rangle\) vectors of character \(\chi_j\), and the second has \(N\). The determinant inverse cancels the \(N\) terms and leaves precisely \(\langle\chi_j,\lambda\rangle\chi_j\). This proves the character and hence its actual Kummer restriction.
+
+Lesson 2 Lemma 7.10 proves that these weights generate \(X^*(T)\), including detection of non-smooth finite kernels. On the real coweight space the Gram sum in (C.19.9) is strictly positive on every nonzero vector. Its matrix is integral, with nonzero rational determinant; it therefore stays nondegenerate over the characteristic-zero field \(E\), also when \(k\) has positive characteristic. Normalizer conjugation permutes the weight multiset, proving Weyl invariance. Nondegeneracy makes \(\lambda\mapsto\psi_\lambda\) injective, so distinct coweights give distinct nonzero differences as linear elements of \(S\).
+
+To prove (C.19.10) for these coefficients, remove the fixed points from the finite Iwahori-cell filtration of \(X\). On each cell the constant-parity restrictions split equivariantly as in C.10. Its punctured linear cell has localized compact cohomology zero by the supported Euler proof C.5.1: every root weight is a nonzero polynomial in \(S\), and their product becomes invertible in \(Q\). Finite sums and shifts retain this vanishing. Closed–open induction gives \(QH_{T,c}^*(X\setminus X^T,P)=0\). Since \(X\) is proper, its actual localization triangle now gives (C.19.10). Cup with the line restricts on a point to its character class, so acts by the asserted scalar.
+
+Choose a Tate vector only to write those scalars as \(\nu_\lambda\in S^2\). For the finitely many fixed labels, the polynomial
+\[
+ \prod_{\mu\ne\lambda}
+       \frac{d_\rho-\nu_\mu}{\nu_\lambda-\nu_\mu}
+ \tag{C.19.11}
+\]
+has value one on the \(\lambda\)-summand and zero on every other summand. All denominators are nonzero in \(Q\). These are therefore exactly its actual localized projectors; they sum to one and are mutually orthogonal. Each ratio has total degree zero, and a change of Tate vector cancels in it. This proves the claim without extending a polynomial identity from ordinary fixed-point stalk dimensions. ∎
+
+#### C.19.5. A nonzero top cup power on the actual IC object
+
+**Lemma C.19.5.1.** Let \(X=\overline{\operatorname{Gr}}^\lambda\) have dimension \(d=h_G(\lambda)\). Then
+\[
+ c_\rho^d:H^{-d}(X,IC_\lambda)
+             \longrightarrow H^d(X,IC_\lambda)(d)
+ \tag{C.19.12}
+\]
+is nonzero. This is the actual ordinary cup map; no hard Lefschetz theorem for singular IC objects is used.
+
+**Proof.** For \(d=0\), \(X\) is its point support and the assertion is the identity, so assume \(d>0\). On its fixed component and a sufficiently large finite window, C.19.1 is the inverse determinant of the tautological subbundle times a constant line. It is therefore the pullback of the Plücker \(\mathcal O(1)\) under the finite closed embedding of Lesson 2 Theorem 7.1. In particular it is very ample on \(X\).
+
+Let \(U\simeq\mathbb A^d\) be the dense Iwahori cell and \(i:Z=X\setminus U\to X\). There exists an actual \(T\)-equivariant map
+\[
+ u:E_X[d]\longrightarrow IC_\lambda
+ \tag{C.19.13}
+\]
+restricting to the identity on \(U\). Here is its lifting proof. On every cell of \(Z\), the ordinary restriction of \(E_Z[d]\) is constant in parity \(d\), and the exceptional restriction of \(i^!IC_\lambda\) is constant in that same parity by Lesson 11 C.4.1.1. On a cell, the constant-system equivariant Ext ring is the even polynomial ring \(S\), as proved in C.10. Thus their odd Ext vanishes. Induct on the closed cell filtration using the source ordinary and target exceptional restrictions, as in C.16.2; the two outer odd Ext groups are zero, so the middle odd group is zero. In particular
+\(\operatorname{Ext}_T^1(E_Z[d],i^!IC_\lambda)=0\).
+The target localization triangle
+\[
+ i_*i^!IC_\lambda\to IC_\lambda
+       \to Rj_*E_U[d]\to i_*i^!IC_\lambda[1]
+\]
+therefore lifts the ordinary open unit to (C.19.13). No costalk-parity assertion for the constant sheaf on the singular \(X\) is needed.
+
+Raw Verdier self-duality gives \(DIC_\lambda=IC_\lambda(d)\). Dualize \(u\) and untwist to obtain
+\[
+ v:IC_\lambda\longrightarrow\omega_X(-d)[-d].
+ \tag{C.19.14}
+\]
+On \(U\) these two maps have the actual constant unit and smooth orientation normalizations.
+
+We supply the finite linear-section argument for their top trace. Embed \(X\) by this very ample line in \(\mathbb P^M\). A general ordered \(d\)-tuple of hyperplanes has finite nonempty intersection with \(X\), entirely inside \(U\), and transverse there. For the avoidance and transversality assertions, a fixed point imposes one independent condition on each hyperplane. The incidence over \(Z\), of dimension at most \(d-1\), has dimension at most \(dM-1\). Over a smooth point of \(U\), hyperplane derivatives surject onto the cotangent space because the map is an immersion. A dependent \(d\)-tuple of derivatives is cut out by a nonzero determinant; its incidence again has dimension at most \(dM-1\). The closures of the images of these two incidences consequently miss a nonempty open in the \(dM\)-dimensional hyperplane parameter space. The dimension bound follows on each component by injection of function fields into those of its dominating incidence component.
+
+Nonemptiness of the projective intersection also has an elementary proof. The homogeneous coordinate domain of the affine cone has dimension \(d+1\); away from its vertex its affine charts are line charts times \(\mathbb G_m\). Krull dimension and Noether normalization, Theorem 4.2 and Corollary 4.4, make its vertex maximal ideal have height \(d+1\). An ideal generated by the \(d\) hyperplane forms cannot have that vertex as its only prime, by Dimension theory of Noetherian local rings, Theorem 3.1. If its projective zero set were empty, localization at every degree-one coordinate would be zero; every such coordinate would be nilpotent in the quotient, making the vertex its only prime. This contradiction proves nonemptiness. A tuple outside the two incidence images thus has a nonempty finite reduced intersection \(Z'\subset U\).
+
+Each hyperplane section has the global supported Kummer class of its divisor, whose forget-support image is \(c_1(\mathscr D_\rho)\). This is the relative class and orientation construction of Lesson 6 A.1–A.2, pulled from the ambient hyperplane line. Their supported product has support in \(Z'\). At each of those points the \(d\) independent parameters give the iterated normalized section class, of trace \(1\). On that support \(u\) and \(v\) are precisely the constant identity and smooth orientation. Therefore actual supported cup, forget support and proper trace give
+\[
+ \operatorname{Tr}\bigl(v(d)\,c_\rho^d\,u(1)\bigr)
+      =|Z'|\ne0
+      \quad\text{in }E.
+ \tag{C.19.15}
+\]
+Here \(u(1)\) is the image of the constant global section in degree \(-d\); the notation \(v(d)\) retains the displayed Tate cancellation. All point traces have the same positive Kummer normalization. The coefficient field has characteristic zero, so this positive integer is nonzero even in bad geometric characteristic. The composite factors through (C.19.12), proving the lemma. ∎
+
+#### C.19.6. The regularity of the geometric Lie element
+
+**Theorem C.19.6.1.** Choose a Tate vector and a graded tensor trivialization in C.18.12 to express (C.19.8) as an \(R_0\)-valued Lie element. Its origin value is a regular principal nilpotent, and every geometric value is regular. This assertion holds for the full dual reductive group, including its centre. Identifying its adjoint quotient with the specified coefficient coordinates, and identifying all higher Kostant-gradient operators, are additional steps.
+
+**Proof.** The ordinary cohomology grading cocharacter is \(\vartheta=2\rho_G\) in the dual torus, by the weight degrees and dual-root identification of Lesson 11 B.1–B.4. Degree two in C.18.4 implies
+\[
+ \xi_\rho(0)=\sum_i a_i e_i,
+ \tag{C.19.16}
+\]
+where \(e_i\) are the simple positive root vectors of \(H\). Indeed the Cartan has grading zero, the simple roots have grading two, and a positive root of height at least two has grading at least four; negative roots have negative grading. At the origin every positive-degree coefficient vanishes, leaving exactly the degree-two root spaces.
+
+If the derived root system is empty, every Lie element of the torus is regular, so the conclusions already hold. Otherwise choose a strictly dominant integral highest \(H\)-weight \(\lambda\) in the root lattice; it corresponds to an allowed \(G\)-coweight. For example \(2\rho_H\) has this property. On \(\omega(IC_\lambda)\), the degrees \(-d,d\), with \(d=\langle2\rho_G,\lambda\rangle\), are its one-dimensional lowest and highest weight spaces, of weights \(w_0\lambda,\lambda\). This is the full highest-weight and weight-degree theorem of Lesson 11.
+
+Every simple-root coefficient in (C.19.16) is nonzero. Suppose \(a_i=0\). Every monomial in its \(d\)-th power then raises the lowest weight by a sum of simple roots omitting \(\alpha_i\). It cannot reach the highest weight. To check that the latter difference uses every simple root, take a reduced word \(w_0=s_{i_1}\cdots s_{i_N}\). Telescoping gives
+\[
+ \lambda-w_0\lambda
+   =\sum_{k=1}^N
+       \langle\lambda,\alpha_{i_k}^{\vee}\rangle
+       s_{i_1}\cdots s_{i_{k-1}}\alpha_{i_k}.
+\]
+The inversion roots in this reduced word are all positive roots: at each prefix, a simple reflection permutes the positive roots other than its simple root, so the inverse inversion set gains exactly the new positive prefix root; for the longest element that set is the entire positive system. All displayed coefficients are positive by strict dominance. In particular their simple-root coefficients include each simple root with a positive coefficient. The reduced-word and inversion-root facts have the complete root proof in Finite-dimensional Lie theory, §5. Therefore the hypothesized missing \(a_i\) makes the map from degree \(-d\) to degree \(d\) zero. Actual augmentation identifies that map with the ordinary \(c_\rho^d\) of C.19.12, contradicting C.19.5.1.
+
+The simple characters are a basis of the character lattice of the adjoint torus. Their nonzero values can therefore rescale every \(a_i\) to one, over an algebraic closure or by the split adjoint torus itself. Thus \(\xi_\rho(0)\) is adjoint-conjugate to the principal \(e=\sum_i e_i\), proved regular in B.2. The central summand is zero at the origin and adds its full rank to the centralizer, so causes no exception.
+
+For global regularity, C.18.4 gives the precise homogeneous identity
+\[
+ \xi_\rho(t\cdot p)
+     =t^2\operatorname{Ad}_{\vartheta(t^{-1})}\xi_\rho(p).
+ \tag{C.19.17}
+\]
+The nonregular locus is closed by the minors of the centralizer matrix and is invariant under conjugation and nonzero scalar multiplication, as in B.3. Its inverse image in \(\operatorname{Spec}R_0\) is therefore a closed subset stable under the positive grading action. If it had a geometric point \(p\), the map \(t\mapsto t\cdot p\) would extend to \(\mathbb A^1\), with value the coefficient origin at zero. Closedness would put that origin in the nonregular inverse image. This contradicts the principal origin value just proved. The inverse image is empty, so every geometric value is regular. ∎
+
+![Relative determinant cancellation, the actual collision cup sum, and the principal-origin regularity argument](assets/determinant-cup-regularity.png)
+
+The common lower lattice retains the full finite quotients. The moving line transports its degree-two Tate-valued cup map through the collision. Its nonzero top IC cup power forces every simple-root coefficient at the origin, and positive grading propagates regularity. Proofs C.19.1.1–C.19.6.1. The disc symbols and the final grading arrow are schematics of those proved comparisons. Editable SVG source.
+
+#### C.19.7. Two determinant-operator exercises
+
+**Exercise C.19.7.1 (basic).** Take \(G=\mathbb G_m\) and its identity character representation. Compute the determinant character and primitive cup action on the point-supported object at label \(n\), and compare labels \(n,m,n+m\).
+
+**Solution.** For \(N>|n|\), the two ranks in (C.19.1) are \(N-n,N\), so their character difference is \(n\chi\). If \(u=c_1(\chi)\), the action on its module \(S\) is multiplication by \(nu\), with its Tate line. Labels add under convolution, and \((n+m)u=nu+mu\) is exactly (C.19.7). At label zero the line has its canonical unit frame and the operator is zero. These supported cohomology objects use the reduced points, while the line was constructed on the full torus Grassmannian including its nilpotent directions. Integrally the operator \(nu\) alone does not recover the degree-zero label operator \(n\) by division by \(u\); that division requires localization.
+
+**Exercise C.19.7.2 (intermediate).** Take \(G=GL_2\), its standard representation, and the minuscule \(P=E_{\mathbb P^1}[1]\). Choose a Tate vector for the scalar formulas. Let \(u_1,u_2\) be the two character classes and \(\sigma_1=u_1+u_2,\sigma_2=u_1u_2\). Compute the determinant cup matrix and its normalized rank-one companion form.
+
+**Solution.** At the support \(tO^2\subset L\subset O^2\), the tautological line is \(L/tO^2\). Formula (C.19.1) is its inverse times \(\det(k^2)\). If its class is \(a\), put \(x=\sigma_1-a\). The relative flag Chern-basis calculation of C.14 gives
+\[
+ H_T^*(\mathbb P^1,E)=
+    S[a]/((a-u_1)(a-u_2))
+   =S[x]/(x^2-\sigma_1x+\sigma_2).
+\]
+The two fixed values of \(x\) are \(u_1,u_2\), agreeing with (C.19.9). The invariant basis \(1,x\) descends through C.14 to the \(R_0=E[\sigma_1,\sigma_2]\)-basis of \(H_G^*(P)\), in degrees \(-1,1\). Actual cup with \(x\) has matrix
+\[
+ \begin{pmatrix}0&-\sigma_2\\1&\sigma_1\end{pmatrix}.
+ \tag{C.19.18}
+\]
+Set \(y=x-\sigma_1/2\) and \(c=\sigma_1^2/4-\sigma_2\). In the ordered homogeneous basis \((y,1)\), of degrees \(1,-1\), the matrix becomes
+\[
+ \frac{\sigma_1}{2}I+
+       \begin{pmatrix}0&1\\c&0\end{pmatrix}.
+ \tag{C.19.19}
+\]
+The second matrix is the rank-one Kostant companion, with \(c\) of degree four; the scalar part retains the full \(GL_2\) centre. At the coefficient origin its raising map is nonzero and its square is zero. The eigenvalues are \(u_1,u_2\), and their difference is nonzero after localization. The basis change is graded and has determinant a unit. These are actual cup matrices on this geometric module; they do not identify all higher operators for a general group.
+
+### C.20. Fixed-point weights and the actual Kostant quotient
+
+Retain the coefficient rings, full dual group \(H\), faithful representation \(\rho\), and actual determinant cup element of Sections 17–19. In this section choose one nonzero vector of \(E(1)\) for the scalar Lie and polynomial formulas. The conclusions with their Tate lines follow by undoing that choice. Write
+\[
+ L=X_*(T_G)=X^*(T_H),\qquad
+ \mathfrak t_G=X_*(T_G)\otimes E,\qquad
+ \mathfrak t_H=\operatorname{Hom}_{\mathbb Z}(L,E).
+ \tag{C.20.1}
+\]
+The trace pairing from C.19.4 defines the isomorphism
+\[
+ \beta_\rho:\mathfrak t_G\longrightarrow\mathfrak t_H,\qquad
+ \lambda(\beta_\rho(u))
+     =\sum_{\chi\text{ a weight of }V_\rho}
+           \langle\chi,\lambda\rangle\,\chi(u).
+ \tag{C.20.2}
+\]
+Multiplicities occur in this sum. It is \(W\)-equivariant and invertible, including on the centre, by C.19.4. The cohomological degree of a linear coordinate is two. Thus \(\beta_\rho\) identifies the positively graded quotient bases. We first check which multiplicities occur in the localized geometric operator.
+
+![Compact attracting-slice localization, invariant trace tests and the adapted graded frame](assets/geometric-kostant-quotient.png)
+
+The first panel concerns the reduced cohomological support of the finite attracting scheme: invertible character coordinates kill its punctured compact image only after extension to \(Q\). The second uses the resulting actual weight multiplicities to test every invariant polynomial and then descends along the injective coefficient map. The third shows the full smooth conjugation scheme and the precise grading sign that permits a polynomial section through the identity. Proofs C.20.1.1–C.20.4.1 establish these maps; Exercise C.20.5.2 explains why adapting the rational pinning matters. Editable SVG source.
+
+#### C.20.1. Compact attraction computes the fixed-point rank
+
+**Lemma C.20.1.1.** For a raw spherical \(P=IC_\lambda\), supported on a finite projective Schubert variety \(X\), and any torus label \(\mu\), there is an actual restriction isomorphism
+\[
+ Q\otimes_S H_{T,c}^*(S_\mu\cap X,P)
+       \xrightarrow{\ \sim\ }
+ Q\otimes_S H_T^*(t^\mu,i_\mu^*P),
+ \qquad Q=\operatorname{Frac}S.
+ \tag{C.20.3}
+\]
+An empty slice gives zero on both sides. In particular
+\[
+ \dim_E F_\mu(IC_\lambda)
+       =\sum_j\dim_E H^j(i_\mu^*IC_\lambda).
+ \tag{C.20.4}
+\]
+Under the full Satake equivalence, this is the multiplicity of weight \(\mu\) in \(V_\lambda\).
+
+**Proof.** The finite projective lattice embedding is \(T\)-equivariant. Choose a strictly dominant constant cocharacter \(\gamma\) which does not annihilate any nonzero difference of the finitely many ambient weights. Such an integral choice exists: the strictly dominant rational cone is open, and finitely many proper rational hyperplanes cannot cover it. The root-parameter calculation of Lesson 5, §7, equation (7.1), applies to this \(\gamma\). Its positive root powers contract every point of \(S_\mu\) to \(t^\mu\); the proved Iwasawa partition and uniqueness of a limit show that this is precisely the corresponding attracting locus.
+
+Here is a finite coordinate realization sufficient for localization. Choose an eigen-coordinate \(z_0\) nonzero at the fixed point in the projective embedding. Its chart is \(T\)-stable. If \(\eta_i\) is the weight of the ratio \(z_i/z_0\), attraction to this point sets the negative \(\gamma\)-weight ratios to zero and the zero-weight ratios to their point values. The remaining ratios \(x_i\) have \(\langle\eta_i,\gamma\rangle>0\). Intersecting these equations with the closed equations of \(X\) gives a closed affine attracting scheme \(A\), with distinguished origin. The description holds on every parameter algebra: an equivariant polynomial path has coordinate \(s^{\langle\eta_i,\gamma\rangle}x_i\); a negative power belongs to \(R[s]\) only when its coefficient is zero, including for nilpotent coefficients. The underlying reduced locus is \(S_\mu\cap X\), by the preceding partition. Actual closed-reduction comparison in C.12 and Lesson 5 O.4.2.1 identifies their cohomology and compact images, so we may use this finite scheme.
+
+The finitely many invariant opens \(D(x_i)\) cover \(A\setminus\{t^\mu\}\). Each \(\eta_i\) is a nonzero character. On \(D(x_i)\) the function \(x_i\) is an invertible equivariant section of the line with character \(\eta_i\), up to the harmless inverse convention for the function action. Its first Chern class is therefore zero on that open. This is an actual equivariant line trivialization: after tensoring by the inverse character, the section has weight zero and gives the trivial frame on the whole action nerve. The Kummer cocycle of that frame is zero. Consequently the nonzero linear class \(c_1(\eta_i)\), or its negative, acts by zero on the compact equivariant cohomology of any restricted coefficient complex there.
+
+The same argument works on every intersection in this finite open cover. Localization to \(Q\) therefore kills all these compact cohomology modules. The compact Mayer–Vietoris triangle follows from the two extension-by-zero maps and their overlap, checked on stalks; induction on the number of opens gives
+\[
+ Q\otimes_S H_{T,c}^*(A\setminus\{t^\mu\},P)=0.
+ \tag{C.20.5}
+\]
+The compact image of the actual open–closed triangle
+\(j_!j^*P\to P\to i_{\mu*}i_\mu^*P\)
+now gives exactly (C.20.3). Localization is flat, so this conclusion preserves the specified restriction map.
+
+To compute its two ranks, form the genuine \(T\)-equivariant compact image of \(P|_A\) on the point. Its underlying complex is concentrated in degree \(h_\mu=\langle2\rho_G,\mu\rangle\), with coefficient \(F_\mu(P)\), by Lesson 5, Theorem Q.4.2.1. A complex with one ordinary cohomology sheaf is canonically that sheaf shifted. The equivariant point sheaf here is constant: its action matrix is a degree-zero section on the connected torus, hence is a constant matrix, and the identity section forces that matrix to be the identity. Its cocycle is consequently the constant cocycle. Taking equivariant cohomology gives
+\[
+ H_{T,c}^*(A,P)=S\otimes_E F_\mu(P)[-h_\mu].
+ \tag{C.20.6}
+\]
+This computation uses the actual compact image object, whose construction on the action nerve commutes with the smooth atlas comparisons; it does not assert nonproper ordinary base change.
+
+At the fixed point, the ordinary stalk of \(IC_\lambda\) has one parity by Lesson 11 C.4.1.1. Its finite equivariant ordinary tower splits as in C.10: an attaching map between constant even-separated terms belongs to an odd group of \(S\), which is zero. Thus its equivariant cohomology is a free \(S\)-module of rank \(\sum_j\dim H^j(i_\mu^*P)\). Comparing ranks in (C.20.3) proves (C.20.4). Finally the full weight identification in Lesson 11 B.1–B.4 identifies \(F_\mu(IC_\lambda)\) with the \(\mu\)-weight space of \(V_\lambda\). This proves the last assertion. ∎
+
+#### C.20.2. Traces test every invariant polynomial
+
+**Lemma C.20.2.1.** Let \(H\) be the original split connected reductive group in characteristic zero, with its full character lattice \(L\). In each positive polynomial degree \(n\), the functions
+\[
+ x\longmapsto\operatorname{tr}_{V_\lambda}(x^n),
+ \qquad \lambda\in L\text{ dominant},
+ \tag{C.20.7}
+\]
+span \(E[\mathfrak h]^H_n\). No change to a simply connected cover is required.
+
+**Proof.** First work on \(\mathfrak t_H\). Integral linear forms \(\mu\in L\) span its linear dual. Their \(n\)-th powers span all degree-\(n\) polynomials, because
+\[
+ n!\,\ell_1\cdots\ell_n
+    =\sum_{J\subset\{1,\ldots,n\}}
+          (-1)^{n-|J|}
+          \left(\sum_{j\in J}\ell_j\right)^n.
+ \tag{C.20.8}
+\]
+Expansion proves this identity: any monomial omitting an index cancels in the subset sum, and the sole monomial using every index has coefficient \(n!\). Choose the \(\ell_j\) from an integral basis and use linearity. Averaging over the finite Weyl group therefore shows that the invariant polynomials are spanned by
+\(\sum_{\mu\in W\lambda}\mu^n\)
+for dominant \(\lambda\in L\), with distinct orbit elements.
+
+The formal character of \(V_\lambda\) is the orbit sum of \(\lambda\), with coefficient one, plus a finite combination of orbit sums of strictly lower dominant weights. This is the highest-weight theorem of Lesson 11: the extremal weights \(W\lambda\) have multiplicity one, and all other weights differ from \(\lambda\) by positive-root sums. This triangular relation can be inverted using only representations of the original group. To see termination, pair the dominant weights with the sum of positive coroots of the derived group. The resulting nonnegative integers strictly decrease under a strict dominance drop. All terms keep the same central character. For a torus there are no lower terms. Thus induction expresses every orbit sum as a finite linear combination of these full-group characters.
+
+Apply the linear operation \(e^\mu\mapsto\mu^n\) to that character identity. The character of \(V_\lambda\) becomes the torus restriction of (C.20.7), because a torus Lie element acts by the scalar \(\mu(x)\) on its \(\mu\)-weight space. Hence those trace functions span the torus invariants. Chevalley restriction and its full reductive centre, including the descent to every characteristic-zero coefficient field proved in §3 of this lesson, identify the latter with \(E[\mathfrak h]^H\). The trace polynomials are themselves conjugation invariant, so the spanning assertion follows. ∎
+
+#### C.20.3. The quotient is the trace-pairing coordinate map
+
+**Theorem C.20.3.1.** The actual geometric element satisfies, for every invariant polynomial \(f\),
+\[
+ f(\xi_\rho)=f(\beta_\rho(u))
+       \quad\text{in }R_0=E[\mathfrak t_G]^W.
+ \tag{C.20.9}
+\]
+Here the right side denotes restriction of \(f\) to \(\mathfrak t_H\), followed by \(\beta_\rho\). Thus its adjoint quotient is the specified isomorphism of the coefficient base with \(\mathfrak h/\!/H\).
+
+**Proof.** Extend the actual cup action and its graded tensor trivialization to \(S\), and then to \(Q\). C.19.4 gives the actual fixed-point decomposition and projectors. On the block at \(\mu\) the determinant cup element acts by
+\[
+ \nu_\mu(u)=\mu(\beta_\rho(u)).
+ \tag{C.20.10}
+\]
+These eigenvalues are distinct for distinct labels, since \(\beta_\rho\) is an isomorphism. Lemma C.20.1.1 identifies the dimension of that block with \(\dim V_\lambda[\mu]\). Consequently, for every \(n>0\),
+\[
+ \operatorname{tr}_{V_\lambda}(\xi_\rho^n)
+       =\sum_\mu\dim V_\lambda[\mu]\,
+                         \mu(\beta_\rho(u))^n
+       =\operatorname{tr}_{V_\lambda}(\beta_\rho(u)^n)
+       \quad\text{in }Q.
+ \tag{C.20.11}
+\]
+The first trace is taken on the finite free module \(\omega_G(IC_\lambda)\); under C.18 it is precisely the represented Lie action on \(R_0\otimes V_\lambda\). The actual torus restriction and fixed-point projectors computed its trace, rather than substituting an abstract module with the same rank.
+
+Lemma C.20.2.1 gives (C.20.9) for homogeneous invariant polynomials of positive degree. Constants agree as well, and finite sums handle every polynomial. Both sides lie in \(R_0\). Its inclusion into \(S\), and into \(Q\), is injective by C.14, so the equality already holds in \(R_0\). Since \(\beta_\rho\) is invertible and \(W\)-equivariant, its map on the two invariant polynomial rings is an isomorphism. This proves the precise quotient statement over every coefficient parameter algebra, including nonreduced ones. ∎
+
+#### C.20.4. A rational pinning and a graded conjugation
+
+**Theorem C.20.4.1.** Adapt the pinning of \(H\) to the nonzero simple coefficients of \(\xi_\rho(0)\). Let
+\(\sigma_\rho:\mathfrak h/\!/H\to\mathfrak h_{\mathrm{reg}}\)
+be the resulting Kostant section. There is a graded tensor trivialization, with the same actual augmentation as C.18, in which the determinant cup element is exactly
+\[
+ \sigma_\rho\!\left(\beta_\rho(u)\bmod W\right).
+ \tag{C.20.12}
+\]
+The construction preserves the original full dual group and centre. It need not give a conjugation to an arbitrarily prescribed old pinning over \(E\).
+
+**Proof.** By C.19.6 write \(e_\rho=\xi_\rho(0)=\sum_i a_i e_i\), with every \(a_i\in E^\times\). Set
+\[
+ e_i^\rho=a_i e_i,\qquad
+ f_i^\rho=a_i^{-1}f_i,\qquad
+ f_\rho=\sum_i c_i f_i^\rho .
+ \tag{C.20.13}
+\]
+Their principal triple has the same \(h=2\rho_H^\vee\) and cocharacter \(\vartheta\) as B.2. These are a full rational pinning, not a claim about an \(H(E)\)-conjugator. Indeed the simple characters form a basis on the adjoint torus, so the tuple \((a_i)\) gives an \(E\)-point there. After a finite extension it lifts to the original split torus: in character bases, Smith normal form reduces the lift to finitely many equations \(z^m=a\), all with \(a\ne0\). The corresponding extensions are separable in characteristic zero. Two lifts differ by the centre and hence give the same conjugation on \(H\). The resulting conjugation automorphism and its inverse descend to \(E\); the matrix coefficients agree on the two overlap projections, so affine faithful-flat descent supplies the descended maps. Denote this automorphism by \(\phi_\rho\). It fixes the torus, the centre, \(\vartheta\), and every invariant polynomial. The last assertion can be tested after that finite extension, where it is ordinary inner conjugation, and then descends injectively.
+
+Apply \(\phi_\rho\) to the complete proofs of B.2–B.3. The adapted slice is
+\(\Sigma_\rho=e_\rho+\ker\operatorname{ad}f_\rho\).
+Its quotient is the same polynomial isomorphism on all parameter algebras; its positive action is still \(t^2\operatorname{Ad}_{\vartheta(t^{-1})}\). Its inverse defines \(\sigma_\rho\). The full map
+\(H\times\Sigma_\rho\to\mathfrak h_{\mathrm{reg}}\)
+is smooth surjective. In the torus case \(\phi_\rho\) is the identity and the slice is all of \(\mathfrak h\); the argument includes it.
+
+Let \(B=\operatorname{Spec}R_0\), and put
+\(s(p)=\sigma_\rho(\beta_\rho(p)\bmod W)\).
+Consider the affine scheme of finite presentation
+\[
+ P=\{(p,g)\in B\times H:
+                 \operatorname{Ad}_g s(p)=\xi_\rho(p)\}.
+ \tag{C.20.14}
+\]
+It is the base change of the preceding smooth surjection along \(\xi_\rho:B\to\mathfrak h_{\mathrm{reg}}\). To check this scheme equality, the base change initially has a variable slice point \(\sigma\). Applying the quotient to its defining equality forces \(\sigma=s(p)\), by (C.20.9) and the polynomial inverse on the full slice. This argument holds for every parameter algebra. Thus \(P\to B\) is smooth surjective. Its fibres retain the full centralizer, including its centre and all components.
+
+Homogeneity of \(\xi_\rho\) and of the slice gives the algebraic action
+\[
+ t\cdot(p,g)
+    =\bigl(t\cdot p,\,
+            \vartheta(t^{-1})g\vartheta(t)\bigr)
+       \quad\text{on }P.
+ \tag{C.20.15}
+\]
+Substitution in (C.20.14) proves this identity, including its sign: both \(s(t\cdot p)\) and \(\xi_\rho(t\cdot p)\) equal \(t^2\operatorname{Ad}_{\vartheta(t^{-1})}\) of their values at \(p\). The point \((0,1)\) is fixed, since \(s(0)=e_\rho=\xi_\rho(0)\). The base coordinates have positive weights. Lemma C.18.1.1 therefore gives an actual polynomial equivariant section \(g:B\to H\) through the identity, by its finite-order lifts and homogeneous stabilization. No field-point lifting or merely formal section is substituted.
+
+If \(\tau\) is the former tensor trivialization, replace it on each representation by \(g^{-1}\tau\). The represented group action is a natural tensor automorphism on every test algebra. Equation (C.20.15) makes the new frame graded; its identity value at the origin retains the actual augmentation. Finally
+\(\operatorname{Ad}_{g^{-1}}\xi_\rho=s\)
+is exactly (C.20.12). The higher primitive operators still have to be constructed and identified with the centralizer gradients. ∎
+
+#### C.20.5. Two quotient and pinning exercises
+
+**Exercise C.20.5.1 (basic).** For \(GL_2\) with its standard trace pairing, recover the two adjoint-quotient coordinates from the actual matrix C.19.18. Check that the centre survives the comparison.
+
+**Solution.** Here \(\beta_\rho\) is the identity on the two diagonal coordinates. The matrix has trace \(\sigma_1\), determinant \(\sigma_2\), and squared trace invariant \(\operatorname{tr}(\xi_\rho^2)=\sigma_1^2-2\sigma_2\). Hence its characteristic polynomial is \(z^2-\sigma_1z+\sigma_2\), exactly the polynomial of the diagonal pair \((u_1,u_2)\). The central scalar in C.19.19 is \(\sigma_1/2\); it is retained by this quotient map. Trace and squared trace generate the same invariant algebra as trace and determinant since \(2\) is invertible in \(E\).
+
+**Exercise C.20.5.2 (intermediate).** In \(SL_2\) over a characteristic-zero coefficient field \(E\), let \(a\in E^\times\). Determine when \(aE_{12}\) is conjugate to \(E_{12}\) by an \(SL_2(E)\)-matrix. Construct its adapted principal triple even when that conjugator does not exist.
+
+**Solution.** Any such conjugator preserves the unique kernel line \(Ee_1\), so has the form
+\(\left(\begin{smallmatrix}z&b\\0&z^{-1}\end{smallmatrix}\right)\).
+Its conjugation sends \(E_{12}\) to \(z^2E_{12}\). A conjugator exists exactly when \(a\) is a square in \(E^\times\). For any \(a\ne0\), however, the vectors \(e_a=aE_{12}\), \(f_a=a^{-1}E_{21}\), and \(h=\operatorname{diag}(1,-1)\) satisfy \([e_a,f_a]=h\), \([h,e_a]=2e_a\), and \([h,f_a]=-2f_a\). They define the adapted slice \(e_a+Ef_a\) with the same invariant quotient. Its adjoint-torus rescaling descends over \(E\) even if its original-torus lift requires adjoining a square root. This is the precise distinction used in C.20.4.
+
+### C.21. Higher primitive cup operators and the generator modules
+
+Keep the adapted graded tensor frame of C.20.4. Choose a Tate vector as in C.20 for scalar formulas. For a homogeneous coefficient class \(q\in R_0\) of polynomial degree \(d\geq1\), its cohomological degree and natural twist are \(2d\) and \(E(d)\). We construct a cup class of degree \(2d-2\), with twist \(E(d-1)\). Its normalization will be a directional derivative, including in polynomial degree one.
+
+![The fixed-point curve sign, actual higher gradients and the whole-ring generator morphism comparison](assets/higher-cup-kostant-modules.png)
+
+The first panel is the exact torus-fixed calculation on the curve, with its negative lattice degree and trace normalization. The second uses the full framed moving torsor to obtain the primitive operator before identifying its gradient. The third displays the two coefficient descents that recover linearity over every whole-Grassmannian class. Here the diagram abbreviation \(B_{\mathrm{op}}\) denotes the polynomial operator algebra \(\mathcal B_\rho\), while the inverse trace form is \(B_H\). Proofs C.21.1.1–C.21.5.1 supply the maps; the coherent Hom uses the deformation grading of B.5. Editable SVG source.
+
+#### C.21.1. The inverse trace form on the full dual Lie algebra
+
+**Lemma C.21.1.1.** There is a nondegenerate \(H\)-invariant symmetric bilinear form \(B_H\) on \(\mathfrak h\) whose restriction to \(\mathfrak t_H\) is
+\[
+ B_H(v,w)=B_\rho(\beta_\rho^{-1}v,\beta_\rho^{-1}w).
+ \tag{C.21.1}
+\]
+For \(f=q\circ\beta_\rho^{-1}\), regarded as an invariant polynomial on \(\mathfrak h\) by Chevalley restriction, its gradient satisfies
+\[
+ \lambda\!\left(\nabla_{B_H}f(\beta_\rho(u))\right)
+                  =D_\lambda q(u)\qquad(\lambda\in L).
+ \tag{C.21.2}
+\]
+
+**Proof.** The displayed Cartan form is nondegenerate and \(W\)-invariant by C.19.4. It is orthogonal between distinct derived simple components, and between the derived Cartan and the centre. Indeed a reflection fixes the other component and the centre, while negating its simple coroot; invariance makes the pairing with that coroot zero. The simple coroots span the derived Cartan.
+
+On one simple component, compare this form with the Cartan restriction of the Killing form. Its Cartan matrix is the root Gram form \(\sum_{\alpha}\alpha\otimes\alpha\): these roots span the rational Cartan dual, and the real Gram form is positive definite. Its determinant is therefore a nonzero rational number, hence remains nonzero over every characteristic-zero \(E\). The Killing form is invariant by the trace-of-a-commutator identity. Distinct root spaces pair only when their roots are opposite, by Cartan invariance. For a normalized root pair its value is \(K(e_\alpha,f_\alpha)=K(\alpha^\vee,\alpha^\vee)/2\), again nonzero by that rational Gram calculation. This also verifies nondegeneracy on the full simple Lie ideal. The comparison endomorphism commutes with every reflection. A reflection's negative eigenspace is its simple-coroot line, so the endomorphism has some scalar on each such line. For adjacent simple coroots, the formula \(s_i(\alpha_j^\vee)=\alpha_j^\vee-m_{ij}\alpha_i^\vee\), with \(m_{ij}\ne0\), forces their scalars to agree. The connected simple Dynkin diagram makes the comparison a single scalar. That scalar is nonzero by nondegeneracy. Extend by this scalar times the Killing form on each simple Lie ideal, and by the prescribed form on the centre. This constructs the required full nondegenerate invariant form; neither a central direction nor a simple factor is discarded. Invariance for the algebraic group follows from the same torus and root-exponential argument as §3: a Lie-invariant polynomial tensor is torus-invariant and root-group-invariant, and those subgroups generate \(H\).
+
+Put \(v=\beta_\rho(u)\), and let \(b=\beta_\rho^{-1}\nabla_{B_H}f(v)\) in the Cartan. The gradient lies there: invariant gradients are fixed by the torus stabilizing \(v\), so this holds on the dense regular Cartan and then as a polynomial identity on the entire Cartan. For \(x\in\mathfrak t_G\), the gradient definition gives
+\[
+ B_\rho(b,x)
+    =B_H(\nabla f(v),\beta_\rho(x))
+    =df_v(\beta_\rho(x))
+    =dq_u(x).
+ \tag{C.21.3}
+\]
+By C.20.2, \(\lambda(\beta_\rho(b))=B_\rho(\lambda,b)\). Substituting \(x=\lambda\) in (C.21.3) proves (C.21.2). The equality extends from the regular Cartan to all its points because both sides are polynomials. ∎
+
+#### C.21.2. A framed characteristic class and its primitive cup map
+
+**Theorem C.21.2.1.** There is a compatible actual whole-Grassmannian equivariant class
+\[
+ z_q\in H_G^{2d-2}(\operatorname{Gr}_G,E(d-1)).
+ \tag{C.21.4}
+\]
+Its cup maps on the spherical cohomology modules are natural and \(R_0\)-linear, vanish on the tensor unit, and satisfy
+\[
+ z_q|_{\omega_G(P*Q)}
+      =z_q|_{\omega_G(P)}\otimes1
+           +1\otimes z_q|_{\omega_G(Q)}
+ \tag{C.21.5}
+\]
+under the actual tensor comparison C.17. The class is linear in \(q\). The construction uses the full lattice and moving-chain functors before taking their cohomological supports.
+
+**Proof.** Use \(\mathbb P^1\) with modification point \(0\). The full gluing equivalence of Lesson 3, Proposition 2.1 and Theorem 3.1, gives on \(\mathbb P^1\times\operatorname{Gr}_G\) the universal right \(G\)-torsor \(\mathcal P\), with its specified frame off \(0\). This assertion can be read stage by stage: pull back to the local loop-frame covers, glue the disc torsor to the framed trivial torsor on the complement, and descend along the exact change-of-frame maps. The gluing equivalence includes morphisms, so these transitions satisfy the cocycle on the full parameter algebras. A framed automorphism which is the identity off \(0\) is the identity: on a local trivialization its defining functions vanish after inverting the curve parameter, which is a nonzerodivisor on the flat torsor. Thus there is no residual automorphism ambiguity in this descent.
+
+The constant \(G\)-action is retained. Let \(\mathcal P_{\mathrm{ref}}\) be the trivial curve torsor with its diagonal constant-\(G\) equivariance. Its characteristic class is the base class \(q\); its ordinary bundle being trivial does not make its equivariant class zero. Characteristic classes here mean actual pullback from the \(G\)-torsor classifying nerve: the element \(q\in H_G^{2d}(\mathrm{pt},E(d))\) pulls back along each torsor's classifying map. The off-point frame gives a specified isomorphism of these torsors there.
+
+We spell out how that frame supplies a supported class, rather than choosing a lift of a vanishing restriction. In the completed derived mapping models of Lesson 5, M.6 and Lemma P.1.3.1, use the relative-cone construction of Lesson 6 A.2 and represent \(q\) by a closed cochain. Write \(F_b,F_r\) for its two classifying pullback chain maps. On the complement \(U\) the framed torsor isomorphism gives a chain homotopy \(K\) with
+\[
+ (F_b-F_r)|_U=dK+Kd.
+ \tag{C.21.6}
+\]
+It is the ordinary nerve prism: in a string of composable transition arrows insert the isomorphism in each possible position and take the alternating sum. All inner faces cancel in pairs; the two remaining end faces are the two classifying maps. This verifies (C.21.6) directly. On a common trivializing cover the formula is finite in every nerve degree. Refining that cover preserves the formula, and the same prism for change of cover identifies its augmentations. Étale descent and the completed inverse limits retain these finite identities. Hence it defines the specified homotopy in the genuine equivariant enhancement, with all action faces and degeneracies.
+
+In the relative complex
+\(\operatorname{Cone}(C(\mathbb P^1\times X)\to C(U))[-1]\)
+of any finite stage, use the pair
+\[
+ c_q=\big((F_b-F_r)q,Kq\big),\qquad
+       d(c,u)=(dc,c|_U-du).
+ \tag{C.21.7}
+\]
+It is closed by (C.21.6). Replacing \(q\) by \(q+dv\) changes it by the relative boundary of \(((F_b-F_r)v,Kv)\), since
+\(Kdv=(F_b-F_r)v|_U-dKv\).
+Thus its supported class is well defined and linear in the original cohomology class. The construction commutes with parameter pullback, change of frame and the constant-\(G\) nerve maps through their actual prism homotopies.
+
+Let \(\pi:\mathbb P^1\times X\to X\). Forget the support in (C.21.7), and apply the actual smooth proper curve trace of Lesson 5, Theorems P.2.3.1–P.2.4.1, with the Kummer orientation normalized in Lesson 6 A.1.1. Define
+\[
+ z_q=-\pi_*\bigl(q(\mathcal P)-q(\mathcal P_{\mathrm{ref}})\bigr).
+ \tag{C.21.8}
+\]
+The minus sign belongs to the lattice convention and is checked below. This trace lowers degree by two and twist by one, proving the degree in (C.21.4). The supported construction remains available to compare sums of modifications. Proper base change and the trace comparisons make these classes compatible on every finite stage and on all action-nerve levels. C.12 identifies these compatible classes with an actual class of the whole ind-Grassmannian, including all its component products.
+
+For primitivity, construct the same framed relative class on \(\mathbb P^1\times Y_r\) for the full moving ordered chain of Lesson 8. Its support is the union of the graphs of the moving points. Off the diagonals those graphs are disjoint. Cochains supported on a finite disjoint union split as the direct sum of the individual support complexes: the corresponding closed support functor is the sum of their extension-by-zero functors, an equality checked on stalks. On the open obtained by deleting the other graphs, the full gluing and CRT comparison of Lesson 8 C.1–C.6 identifies the last framed torsor with the single input modification. Consequently the prism class restricts to that input's prism class on each support summand. Curve trace then gives the sum of the input \(z_q\)'s.
+
+On a full collision the last framed torsor is the endpoint pullback of \(\mathcal P\); its off-point frame is the endpoint frame. Proper curve base change therefore identifies the same moving class with the endpoint pullback of (C.21.8). These statements concern the actual maps on the full families and their nilpotent parameters.
+
+Cup with the moving class gives the actual morphism of the moving coefficient complex, shifted by \(2d-2\) and twisted by \(d-1\). Take its proper image on the full action nerve as in C.17.4. The canonical affine counits of C.17.3 transport this morphism to the base: both its source and its shifted target belong to the fully faithful essential image. Thus its lift is unique. Restriction to distinct sections is the sum just proved, and restriction to collision is the endpoint cup map. All finite block maps, action faces and degeneracies commute with those counits. Derived sections and the actual external cup comparison give (C.21.5). This repeats the morphism-level transport of C.19.3 with its actual higher degree and twist. At the zero modification the framed torsors are identical; their prism difference is zero, proving the unit assertion. ∎
+
+#### C.21.3. The fixed-point derivative and the lattice sign
+
+**Lemma C.21.3.1.** Restriction to a torus point is
+\[
+ z_q|_{t^\lambda}=D_\lambda q(u)\in S,
+       \qquad \lambda\in L.
+ \tag{C.21.9}
+\]
+The natural twist of this equality is \(E(d-1)\).
+
+**Proof.** At \(t^\lambda\) the universal bundle has its torus reduction. For a character \(\chi\), its associated line on the curve is
+\[
+ \mathcal O_{\mathbb P^1}
+       (-\langle\chi,\lambda\rangle\,0)\otimes k_\chi,
+ \tag{C.21.10}
+\]
+where \(k_\chi\) denotes the geometric character line. The negative sign is exactly the full lattice gluing convention of Lesson 3, §3. Its equivariant first Chern class is
+\(\chi(u)-\langle\chi,\lambda\rangle h\),
+where \(h=c_1(\mathcal O(1))\).
+
+The curve has trivial \(T\)-action. Its affine-line and point filtration, with the normalized supported point class of Lesson 6 A.1 and the compact affine trace, gives the two actual ordinary basis classes \(1,h\). Above degree two its ordinary cohomology is zero, so \(h^2=0\); the trivial equivariant action tensors this calculation with \(S\). Equivalently this is the relative projective Chern basis of C.14 for the trivial rank-two bundle. The actual trace gives
+\[
+ H_T^*(\mathbb P^1)=S[h]/(h^2),\qquad
+             \pi_*h=1,\quad\pi_*1=0.
+ \tag{C.21.11}
+\]
+The reference line has class \(\chi(u)\). Restriction of \(q\) along the torus classifying map is its actual polynomial in the character Chern classes, by C.14. Hence the two curve characteristic classes differ by
+\[
+ q(u-\lambda h)-q(u)
+          =-D_\lambda q(u)\,h.
+ \tag{C.21.12}
+\]
+Expansion of each polynomial monomial proves the equality, since \(h^2=0\). Taking the negative trace in (C.21.8) proves (C.21.9). The trace removes the \(E(1)\) of \(h\), leaving exactly \(E(d-1)\). No character, coefficient variable or lattice index is inverted. ∎
+
+#### C.21.4. The higher operators are the full centralizer gradients
+
+**Theorem C.21.4.1.** Let \(q_1,\ldots,q_r\) be homogeneous polynomial generators of \(R_0\), of degrees \(d_i\), and put \(f_i=q_i\circ\beta_\rho^{-1}\) on the dual adjoint quotient. In the adapted frame C.20.4, the actual \(z_q\)-operator is
+\[
+ \nabla_{B_H}(q\circ\beta_\rho^{-1})
+           \bigl(\sigma_\rho(\beta_\rho(u)\bmod W)\bigr).
+ \tag{C.21.13}
+\]
+In particular the \(z_{q_i}\) act by the entire basis of the full centralizer Lie bundle in B.5. They give the geometric module \(\omega_G(IC_\lambda)\) exactly the Kostant presentation
+\[
+ M(V_\lambda)=R_0\otimes_E V_\lambda,\qquad
+ z_{q_i}\cdot v=
+       \rho_{V_\lambda}(\nabla_{B_H}f_i(\sigma_\rho))v,
+             \quad |z_{q_i}|=2d_i-2.
+ \tag{C.21.14}
+\]
+The polynomial algebra
+\(\mathcal B_\rho=R_0[z_{q_1},\ldots,z_{q_r}]\)
+embeds in the actual whole equivariant cohomology ring; equality with that whole ring is not asserted.
+
+**Proof.** Theorem C.21.2.1 and C.18.4 express cup with \(z_q\) as a homogeneous Lie element \(\eta_q\) of total degree \(2d-2\), retaining the Tate line. Cups of these even-degree classes commute with the determinant cup. Reconstruction identifies their commutator with \([\eta_q,\xi_\rho]\), so that bracket is zero. Thus in the adapted slice frame \(\eta_q\) is a section of the full centralizer Lie bundle.
+
+Extend to the fraction field \(Q\) of \(S\) and then to an algebraic closure of \(Q\). The vector \(\beta_\rho(u)\) is regular semisimple: its root values are nonzero linear polynomials, since \(\beta_\rho\) is invertible. C.20.3 and B.3 identify \(\xi_\rho\) with its geometric adjoint orbit. Choose a conjugator taking it to \(\beta_\rho(u)\). The corresponding \(\eta_q\) then belongs to \(\mathfrak t_H\).
+
+In every \(V_\lambda\), the eigenvalues of this Cartan vector \(\beta_\rho(u)\) distinguish its distinct weights. Therefore its \(\mu\)-weight blocks are precisely the transported actual fixed-point blocks of C.19.4. Actual cup restriction and C.21.9 show that \(\eta_q\) acts on such a block by \(D_\mu q(u)\). Lemma C.21.1.1 gives exactly the same scalar for the gradient in (C.21.13). The weights of a faithful \(H\)-representation span its full character lattice by the all-kernel argument of Lesson 2, Lemma 7.10. Decomposing that representation into its genuine simple modules proves that these scalar equalities determine the Cartan Lie element, including its centre. The two elements agree over the extended fraction field.
+
+Invariant gradients are equivariant under \(H\), by invariance of \(B_H\) and the chain rule. Conjugating back consequently identifies \(\eta_q\) with the gradient at the slice point. Both are sections of the finite free module \(R_0\otimes_E\mathfrak h\). Its injection into the extended fraction-field module makes this equality hold already over \(R_0\), proving (C.21.13) on every parameter algebra.
+
+The \(f_i\) are polynomial generators of the dual invariant ring by C.20.2. Their differentials form the cotangent basis of the quotient along the polynomial slice isomorphism. B.5 therefore makes their gradients the entire Lie-centralizer basis, with the specified total degrees. This proves the actual action and grading in (C.21.14). The full centre supplies its degree-zero gradient operators when \(d_i=1\).
+
+For completeness these actual cup classes have no polynomial relation over \(R_0\). A relation would act as zero on every \(IC_\lambda\), and hence on every localized fixed-point block. Each label \(\mu\in L\) occurs: its dominant Weyl translate has that extremal weight with multiplicity one, and C.20.1 supplies the corresponding nonzero block. At the generic regular Cartan the map
+\[
+ \mu\longmapsto(D_\mu q_1(u),\ldots,D_\mu q_r(u))
+ \tag{C.21.15}
+\]
+extends to an invertible linear map over \(Q\); equivalently the quotient differentials are independent there, as checked in B.2. The integral lattice \(L\) is polynomially dense in its affine space: in a lattice basis, repeated one-variable infinite-root arguments prove this for the integer grid. Its image under that invertible map is equally dense. The proposed relation, evaluated at (C.21.15), is therefore the zero polynomial in its operator variables over \(Q\). Injectivity \(R_0\to Q\) makes every coefficient zero already over \(R_0\). This proves the claimed embedding. It leaves the whole ring's degreewise component products intact. ∎
+
+#### C.21.5. Morphisms over the actual whole cohomology ring
+
+**Theorem C.21.5.1.** For two spherical IC generators, actual cup linearity gives
+\[
+ \operatorname{Hom}_{H_G^*(\operatorname{Gr}_G)}^*
+       (\omega_G(IC_\lambda),\omega_G(IC_\mu))
+   =\operatorname{Hom}_{\mathcal B_\rho}^*
+       (M(V_\lambda),M(V_\mu)).
+ \tag{C.21.16}
+\]
+Consequently C.16 and B.5 give an actual composition-preserving graded comparison
+\[
+ \operatorname{Ext}_{L^+G}^*(IC_\lambda,IC_\mu)
+     \xrightarrow{\ \sim\ }
+ \operatorname{Hom}_{A,H}^*
+       (A\otimes V_\lambda,A\otimes V_\mu),
+       \qquad A=E[\mathfrak h^*],
+ \tag{C.21.17}
+\]
+with the deformation grading and full group of B.5. This is the geometric generator module and morphism comparison. An enhanced monoidal equivalence and dg formality remain separate requirements.
+
+**Proof.** Write \(A_G=H_G^*(\operatorname{Gr}_G)\). Since the \(z_{q_i}\) are actual cup classes, every \(A_G\)-linear map is \(\mathcal B_\rho\)-linear. Conversely let \(F\) be \(\mathcal B_\rho\)-linear. The section \(\xi_\rho=\sigma_\rho\) commutes with itself and hence belongs to the full Lie-centralizer bundle. Its basis from C.21.4 writes it as an \(R_0\)-linear combination of the gradient operators. Thus \(F\) commutes with the actual determinant operator.
+
+Extend \(F\) along the actual scalar comparison \(R_0\to S\) of C.14, then to \(Q\). The determinant eigenvalues \(\mu(\beta_\rho(u))\) distinguish labels, so \(F_Q\) preserves each fixed-point block. Every class of the whole \(A_T=H_T^*(\operatorname{Gr}_G)\) acts on that block by its scalar restriction at \(t^\mu\). This follows from the actual fixed-point restriction isomorphism of C.19.4, which is a module map for those whole classes. The scalar is the same on source and target blocks. Hence \(F_Q\) commutes with every such cup class.
+
+The underlying source and target torus cohomology modules are finite free over \(S\) by C.17. A matrix commutator which becomes zero over \(Q\) is already zero over \(S\). In particular \(F\otimes_{R_0}S\) commutes with the restrictions of every class of \(A_G\). The faithful flatness of \(S/R_0\) makes the original commutator zero. Thus \(F\) is \(A_G\)-linear, proving (C.21.16). This uses scalar actions on the actual generic blocks, not a polynomial presentation of the whole ind-Grassmannian cohomology.
+
+C.16.4 identifies the left side with the original finite-jet spherical generator Ext, through the actual cup comparison preserving Yoneda composition. C.21.4 identifies the right side with the exact modules of B.5, using \(B_H\) to identify the coadjoint coordinates and using the adapted pinning automorphism from C.20.4. Both preserve the original full group. B.5 then gives the right side of (C.21.17), including its specified grading and composition. Composing these isomorphisms proves (C.21.17). None of these graded Hom isomorphisms asserts a dg lift or eliminates higher composition obstructions. ∎
+
+#### C.21.6. Two derivative and centre exercises
+
+**Exercise C.21.6.1 (basic).** For \(G=\mathbb G_m\), take \(R_0=E[u]\), label \(n\), and \(q=u^d\). Compute \(z_q\), including \(d=1\), and check primitivity on labels \(n,m\).
+
+**Solution.** The curve line at that label has class \(u-nh\), with \(h^2=0\). Thus \(-\pi_*((u-nh)^d-u^d)=dn\,u^{d-1}\). Its degree is \(2d-2\), with twist \(E(d-1)\). At \(d=1\) it is the degree-zero label operator \(n\), obtained without dividing by \(u\). At label \(n+m\) its value is \(d(n+m)u^{d-1}=dn u^{d-1}+dm u^{d-1}\), the actual tensor rule.
+
+**Exercise C.21.6.2 (intermediate).** For \(G=GL_2\), use \(q_1=u_1+u_2\) and \(q_2=u_1u_2\). On the standard minuscule module with determinant cup matrix \(M\) of C.19.18, compute the two higher operators and verify the polynomial relation expressing \(M\) in their span.
+
+**Solution.** The two labels are \((1,0)\) and \((0,1)\). Their \(q_1\)-derivatives are both one, while their \(q_2\)-derivatives are respectively \(u_2,u_1\). Therefore the two operators are \(I\) and \(\sigma_1I-M\). Equality holds over \(R_0\): localization computes their two distinct eigenspaces, and finite freeness descends the matrix equality. Explicitly \(M=\left(\begin{smallmatrix}0&-\sigma_2\\1&\sigma_1\end{smallmatrix}\right)\), so \(z_{q_2}=\left(\begin{smallmatrix}\sigma_1&\sigma_2\\-1&0\end{smallmatrix}\right)\). The standard trace form gives \(\nabla q_1=I\) and \(\nabla q_2(X)=(\operatorname{tr}X)I-X\), exactly these matrices. Finally \(q_{\rho,2}=\tfrac12(u_1^2+u_2^2)=q_1^2/2-q_2\) has gradient \(X\), and its actual derivative operator is \(\sigma_1 z_{q_1}-z_{q_2}=M\). The degree-zero central operator is essential to this integral formula.
+
+### C.22. Tensor generators, their enhanced envelope and arithmetic purity
+
+For the arithmetic statements in this section work over \(k=\overline{\mathbf F}_q\), with finite characteristic-zero coefficient field \(E\) containing \(a\) such that \(a^2=q\). The underlying split group and all the rootwise constructions descend to the finite field. Taking a square power of its prime field makes \(a\) a rational integer, if that is needed to keep the original coefficient field. Let \(A_\lambda\) denote the raw geometric IC with its canonical Weil map multiplied by \(a^{-d_\lambda}\). This is a normalization of the Weil map; it changes neither the underlying geometric object nor its cohomological shift. In the statements not mentioning Frobenius, retain the general geometric coefficient scope of C.21.
+
+Write
+\[
+ A=\operatorname{Sym}_E(\mathfrak h[-2]).
+ \tag{C.22.1}
+\]
+Thus each linear polynomial has cohomological degree two and the differential is zero. Put a representation \(V\) in degree zero in the free equivariant dg module \(F_V=A\otimes V\). On slice restriction, its grading is the coefficient-plus-principal grading proved in B.5. The notation \(\operatorname{Perf}^H(A)\) means the finite shift, cone and retract envelope of these free modules, exactly as in §8.1.
+
+![Actual tensor generators, their arithmetic enhanced envelope and the locally finite weight model](assets/tensor-generators-weight-model.png)
+
+The first panel distinguishes the actual graded tensor comparison from the enhanced arithmetic equivalence of finite envelopes. The second records the normalized IC Weil maps \(A_\lambda\), the identity action on multiplicities and the sole Ext eigenvalues; the diagram's IC labels denote those same normalized maps. The third gives the strict, locally finite hypothesis and the exact weight-versus-degree truncation. The target keeps the full \(H\), with polynomial coordinates in cohomological degree two. Proofs C.22.1.1–C.22.4.1 establish these maps. Exercise C.22.5.2 shows why cohomological purity alone does not authorize a termwise locally finite replacement. Editable SVG source.
+
+#### C.22.1. The actual tensor comparison on every generator morphism
+
+**Theorem C.22.1.1.** Let \(\mathcal E_G^\oplus\) be the graded category of spherical perverse objects, with their actual spherical Ext as morphisms and the corrected Satake convolution symmetry. The comparisons of C.21 extend to a graded symmetric monoidal equivalence
+\[
+ \Phi:\mathcal E_G^\oplus\xrightarrow{\ \sim\ }\mathcal F_H,
+       \qquad P\longmapsto F_{\omega(P)},
+ \tag{C.22.2}
+\]
+where \(\mathcal F_H\) has the free modules \(F_V\), their genuine graded \(A,H\)-linear Hom, and tensor over \(A\). For homogeneous generator morphisms \(b,c\),
+\[
+ \Phi(b*c)=\Phi(b)\otimes_A\Phi(c).
+ \tag{C.22.3}
+\]
+This is a comparison of the actual graded tensor operations. It does not yet identify the enhanced convolution functor.
+
+**Proof.** Semisimplicity of the geometric spherical heart makes every object a finite sum of IC generators. Thus C.21.5 extends by matrices to a fully faithful graded functor with the displayed objects. Every finite-dimensional representation of the original \(H\) is a finite sum of its true simple modules, by Lesson 11, so these objects give its whole target.
+
+The required naturality is for derived morphisms, rather than just degree-zero maps in the heart. Choose common finite supports and jet bounds for \(b:P\to P'[n]\) and \(c:Q\to Q'[m]\). Genuine equivariant pullback and descent give their external map on the full moving ordered chain. Its target is the moving coefficient for \(P',Q'\), shifted by \(n+m\). The proper images of both coefficient complexes lie in the affine pullback essential image of C.17.3, since the proved constant-cohomology property is unchanged by shifts. The actual affine counits therefore transport this map uniquely on every action-nerve level, including the action face, and on all finite block diagrams.
+
+At distinct points its derived sections are the actual external product map. At collision they are the actual convolution map. The external cup comparison in C.17.2 is functorial for these coefficient maps: its construction uses the tensor of representatives, the projection comparison and composed proper counits; each commutes with a coefficient morphism, with the usual tensor sign. Therefore
+\[
+ \omega_G(b*c)=\omega_G(b)\otimes_{R_0}\omega_G(c)
+ \tag{C.22.4}
+\]
+under the actual tensor isomorphism C.17.4. In particular the argument did not require an arbitrarily chosen lift of a morphism to fusion.
+
+There is no hidden odd sign on the unshifted generator category. Distinct component supports have zero Ext. Within one component the IC dimensions have the same parity, since a simple coroot changes the dimension height by two. Their star and costalk cell coefficients thus have matching parity. The actual comparison C.16, with the even coefficient ring of C.10, makes their odd Ext zero. Homogeneous nonzero \(b,c\) have even degrees. The shifted finite envelope will use the usual dg signs.
+
+The frame of C.20.4 is tensor on objects and on the heart. Substituting it in (C.22.4) makes the slice module map the coefficient tensor of the two maps in C.21. This equals restriction of their coherent tensor product: on every slice point it is literally the matrix tensor product over the common coefficient ring. The full faithfulness in B.5 makes the inverse polynomial extension equal to that coherent tensor map, proving (C.22.3).
+
+The same tensor frame carries the associator, unit and corrected symmetry on the heart to the usual associator, unit and flip of representations. These are the degree-zero structural maps in the graded category. The genuine finite-set comparisons of C.17 preserve every pentagon, unit and permutation identity, and B.5 preserves their compositions. Hence all diagrams for a graded symmetric monoidal functor commute. This proves (C.22.2) with its actual structural maps. ∎
+
+#### C.22.2. The enhanced arithmetic free-generator envelope
+
+**Theorem C.22.2.1.** At the stated arithmetic coefficients and geometric base, there is an equivalence of enhanced categories
+\[
+ D^b_{L^+G,\mathrm{sph}}(\operatorname{Gr}_G,E)
+       \xrightarrow{\ \sim\ }\operatorname{Perf}^H(A)
+ \tag{C.22.5}
+\]
+sending every IC generator to \(A\otimes V_\lambda\). The left category has bounded, finite-supported objects. This theorem does not assert that the chosen enhanced equivalence is monoidal, or that it has been transferred to complex coefficients.
+
+**Proof.** The actual arithmetic formality and generator envelope A.4 identify the left side with the finite-cone and retract envelope of the graded Ext category with zero differential. Its hypotheses are the split finite-field geometry, the actual IC stalk/costalk Frobenius of Lesson 12 C.3, and the enhanced Frobenius lift in A.4. The nonresonance proof A.3 permits its Jordan parts. C.22.1 identifies that formal graded category, including composition, with \(\mathcal F_H\).
+
+We check that its envelope is the asserted dg module envelope, rather than invoking an ordinary coherent derived category in its place. For a rational \(H\)-equivariant dg \(A\)-module \(M\),
+\[
+ \operatorname{Hom}_{A,H}^\bullet(F_V,M)
+         =(V^\vee\otimes_E M)^H .
+ \tag{C.22.6}
+\]
+Invariants of rational \(H\)-modules are exact in characteristic zero. For an arbitrary rational module this follows from the finite-dimensional proof: an element and a chosen lift lie in finite-dimensional \(H\)-stable spans, and complete reducibility splits the resulting finite image. An invariant image vector consequently has an invariant lift. Applying this to the cycles and boundaries in an acyclic dg module proves that (C.22.6) is acyclic whenever \(M\) is acyclic. Thus each \(F_V\) computes its derived Hom directly.
+
+In particular the actual dg Hom between two free objects is
+\[
+ \operatorname{Hom}_{A,H}^\bullet(F_V,F_W)
+       =(A\otimes V^\vee\otimes W)^H
+ \tag{C.22.7}
+\]
+with differential zero, the very graded category \(\mathcal F_H\). There are no extra rational group cohomology terms. Its enriched Yoneda comparison is an isomorphism on these free generators, with their actual composition. In each variable it extends through shifts and cones by the corresponding mapping-cone identity, and through retracts by the image of a commuting idempotent. This proves an enhanced equivalence of its finite envelope with the finite shift, cone and retract subcategory of equivariant dg \(A\)-modules. That subcategory is our definition of \(\operatorname{Perf}^H(A)\).
+
+Composing this equivalence with A.4 and C.22.1 gives (C.22.5), with the specified generator images. Although C.22.1 is monoidal on the graded generators, the formality coordinate change in A.4 was constructed for composition. A comparison of the enhanced convolution bifunctor and its coherent structural maps is still needed to make this chosen equivalence monoidal. ∎
+
+#### C.22.3. Scalar Frobenius on ordinary IC cohomology and tensor multiplicities
+
+**Theorem C.22.3.1.** The actual normalized ordinary cohomology of \(A_\lambda\) has scalar Frobenius
+\[
+ F|_{H^n(\operatorname{Gr}_G,A_\lambda)}
+                        =a^n\operatorname{id}.
+ \tag{C.22.8}
+\]
+For any finite convolution word \(P=A_{\lambda_1}*\cdots*A_{\lambda_r}\), every multiplicity space in its canonical geometric isotypic decomposition
+\[
+ P=\bigoplus_\nu A_\nu\otimes_E M_\nu(P),
+        \qquad M_\nu(P)=\operatorname{Hom}_{\mathrm{Perv}}(A_\nu,P),
+ \tag{C.22.9}
+\]
+has the identity Frobenius. Consequently every degree-\(n\) Ext between normalized convolution words has sole eigenvalue \(a^n\), with Jordan parts allowed. Associators, units and the corrected permutations on these words retain their actual arithmetic structures.
+
+**Proof.** The rootwise source \(\mathcal B_\lambda\) of Lesson 11 C.2.1 is an iterated wall projective-line bundle, beginning with a point, defined over \(\mathbf F_q\). On each last line choose the global character line of C.16.1, whose fibre degree is a nonzero integer \(-m\). The class
+\(-c_1(\mathcal L)/m\)
+has fibre trace one. The coefficient field has characteristic zero, so this division is allowed even when the geometric wall central kernel is nonsmooth.
+
+For a wall projection \(p\), its classes \(1,-c_1(\mathcal L)/m\) give the actual proper-image comparison
+\[
+ E\oplus E(-1)[-2]\xrightarrow{\ \sim\ }Rp_*E.
+ \tag{C.22.10}
+\]
+Indeed on every geometric fibre \(\mathbb P^1\) they give its two independent normalized basis classes; actual proper base change checks the cone at those fibres. The line and divisor transitions are defined over the finite field. Kummer Frobenius sends its untwisted degree-two class to \(q\) times that class. Thus (C.22.10) is compatible with the two displayed Frobenius scalars.
+
+Iterate (C.22.10). Products of its degree-two classes give an actual basis of \(H^{2j}(\mathcal B_\lambda,E)\), on which Frobenius is \(q^j\) times the identity, and the odd groups vanish. For the raw resolution image \(B_\lambda=Rf_{\lambda*}E[d_\lambda]\), its ordinary degree-\(n\) cohomology therefore has scalar \(q^{(n+d_\lambda)/2}\).
+
+Use the actual underlying IC retractions \(I_\lambda\xrightarrow{u}B_\lambda\xrightarrow{v}I_\lambda\), with \(vu=1\) and both dense restrictions the identity, proved in Lesson 11 C.4.2. The compression proof of Lesson 12 C.2 applies also to ordinary cohomology on this proper support. Here is its required transport. If \(s:X\to\operatorname{Spec}k\) is the support map, the field square \(s\sigma_X=\sigma_ks\), actual proper base change and pullback composition identify \(R\Gamma(X,\sigma_X^*K)\) with the pullback of \(R\Gamma(X,K)\) to the geometric field point. Field pullback on its coefficient-module category is canonically the identity, naturally for every underlying derived map.
+
+The composite \(v\alpha_{B_\lambda}\sigma^*u\) is the canonical raw IC Weil map: it has the same identity on the dense cell, and intermediate extension excludes an endomorphism with boundary-supported image. With the just-specified global transport, its degree-\(n\) action is therefore
+\[
+ H^n(v)\,F_{B_\lambda}\,H^n(u)
+         =q^{(n+d_\lambda)/2}\operatorname{id}.
+ \tag{C.22.11}
+\]
+No separate arithmetic equivariance of \(u,v\) was assumed. Multiplication of the Weil map by \(a^{-d_\lambda}\) gives (C.22.8).
+
+The actual ordinary cohomology tensor comparison of Lesson 8 and C.17 is arithmetic-compatible: all its gluing, proper maps, normalization traces and external cup maps descend to the finite field. Hence the degree-\(n\) cohomology of \(P\) also has scalar \(a^n\), as a tensor of the scalars in (C.22.8).
+
+The geometric semisimple heart gives the canonical evaluation isomorphism (C.22.9). It is arithmetic-equivariant when \(M_\nu(P)\) has the conjugation action defined by the two Weil maps. Frobenius fixes the labels, since their rootwise data are split. Applying \(H^n\) gives a direct sum of \(H^n(A_\nu)\otimes M_\nu(P)\). For each occurring \(\nu\), choose \(n\) with \(H^n(A_\nu)\ne0\); such an \(n\) exists by the proved faithfulness of total cohomology. On this summand the two scalar formulas force
+\(a^n(1\otimes F_{M_\nu})=a^n1\).
+Tensoring with a nonzero finite-dimensional vector space is faithful, so \(F_{M_\nu}=1\), proving the assertion even against a possible Jordan part.
+
+Decompose both convolution words by (C.22.9). Their actual Ext is the finite sum of IC Ext tensored with coefficient Hom between identity-Frobenius multiplicities. A.2 gives its sole eigenvalue \(a^n\). The structural maps mentioned in the theorem were actual finite-field fusion maps in Lesson 8; normalization uses the same scalar on every ordered input. They consequently retain their descended arithmetic structures under this isotypic description. ∎
+
+#### C.22.4. A multiplicative truncation when the cochain action is locally finite
+
+**Theorem C.22.4.1.** Let \(C\) be a dg category, dg algebra, or diagram of complexes over \(E\), with a strict chain automorphism \(F\), fixing every object in the category case. Suppose \(F\) is locally finite on every cochain vector, all its eigenvalues are among \(a^w\) for integers \(w\), and \(a\) is not a root of unity. Suppose
+\[
+ H^n(C)\text{ has sole eigenvalue }a^n.
+ \tag{C.22.12}
+\]
+Its composition and specified degree-zero multilinear structure maps commute strictly with \(F\). Then there is a natural multiplicative zigzag
+\[
+ C\ \longleftarrow\ D(C)\
+                 \longrightarrow\ H^*(C)
+ \tag{C.22.13}
+\]
+of quasi-isomorphisms, retaining the ordinary graded structure. For a strictly \(F\)-equivariant higher operation of degree \(-r<0\), its restriction to \(D(C)\) lands in \(D(C)\) and its projection to \(H^*(C)\) is zero. The locally finite and strict cochain hypotheses in this statement must be verified before applying it to an enhanced geometric diagram.
+
+**Proof.** Local finiteness means that each vector lies in a finite-dimensional \(F\)-stable space. Primary decomposition there, followed by its unique compatible inclusions, gives the canonical direct sum
+\[
+ C=\bigoplus_{w\in\mathbb Z}C_w,\qquad
+ C_w=\{x:(F-a^w)^N x=0\text{ for some }N\}.
+ \tag{C.22.14}
+\]
+Distinct integer weights have distinct eigenvalues. The differential preserves these subspaces. Products add their weights: on finite-dimensional primary spaces the tensor automorphism has sole eigenvalue \(a^{w+v}\), since its remaining part is a polynomial without constant term in commuting nilpotent operators. Every \(F\)-equivariant multilinear map therefore sends input weights to their sum.
+
+Define, in cohomological degree \(n\),
+\[
+ D(C)^n=
+   \bigoplus_{w>n}C_w^n
+       \ \oplus\
+   \ker(d:C_n^n\to C_n^{n+1}).
+ \tag{C.22.15}
+\]
+Weights below \(n\) are omitted. This is a subcomplex. If \(w>n+1\), the differential remains in the full \(w\)-summand; if \(w=n+1\), it lands in the diagonal cycle term; the differential of a diagonal cycle is zero. For a fixed weight \(w\) it is exactly the good subcomplex truncation \(\tau_{\leq w}C_w\). Equation (C.22.12) says that \(H^n(C_w)=0\) for \(n\ne w\), so its inclusion into \(C_w\) is a quasi-isomorphism. Direct sums of vector-space complexes are exact, proving the left arrow in (C.22.13).
+
+The right arrow takes a diagonal cycle to its cohomology class and every term of weight \(w>n\) to zero. It is a chain map: an off-diagonal differential can reach the diagonal only as an ordinary boundary. On the sole weight-\(w\) cohomology group it is its defining quotient map, so it too is a quasi-isomorphism.
+
+If two inputs have weights at least their degrees, their product has that property. When both weights equal the degrees, both inputs are cycles and the degree-zero chain product is a cycle. Thus (C.22.15) is closed under composition and the degree-zero chain structure maps. The right arrow preserves them: any strict weight excess on an input leaves an excess on the output, and on diagonal cycles it is ordinary cohomological composition. Units lie in degree and weight zero, and are retained. These observations also prove naturality in strictly \(F\)-equivariant chain maps.
+
+Tensor comparisons are compatible as well. There is a natural product map \(D(C)\otimes D(C')\to D(C\otimes C')\); both paths to \(C\otimes C'\) are the inclusion of the same tensor of cochains. Tensoring quasi-isomorphisms over a field preserves them, even for unbounded complexes: an acyclic vector-space complex has a contracting homotopy by complements to its cycles, and tensoring that homotopy contracts its tensor with any complex. The two inclusion maps are quasi-isomorphisms, so this product comparison is one. The same multiplication of representatives proves its associative and permutation identities.
+
+Finally an operation of degree \(-r\) sends inputs of degrees \(n_i\) and weights \(w_i\ge n_i\) to output degree \(\sum n_i-r\) and weight \(\sum w_i\). For \(r>0\) that output has strictly larger weight than degree. It belongs to the full off-diagonal term of \(D(C)\), and its cohomology projection is zero. Restriction thus retains any supplied operation identities; projection kills their negative-degree terms. Jordan parts have been retained throughout by primary spaces, not discarded by diagonalization. ∎
+
+#### C.22.5. Two cochain-model exercises
+
+**Exercise C.22.5.1 (intermediate).** Let \(C=E[x,z]\otimes\Lambda(y)\), with \(|x|=|z|=2,|y|=1\), \(dy=z\) and \(dx=dz=0\). Give all three generators weight two and let \(F\) act by \(a^2\) on them. Compute \(D(C)\) and its map to cohomology.
+
+**Solution.** The polynomial generators give diagonal cycle monomials \(x^i z^j\); the monomials \(yx^i z^j\) have weight one above their cohomological degree. These exhaust the basis, so \(D(C)=C\). Their differentials are \(x^i z^{j+1}\). Thus every monomial containing \(z\) is a boundary, the odd terms have no cycles, and \(H^*(C)=E[x]\). The right arrow sends \(x\) to \(x\), \(z,y\) to zero. It is multiplicative and retains the weight-two class of \(x\). The calculation demonstrates why diagonal boundaries are killed, while an off-diagonal primitive is retained until the projection.
+
+**Exercise C.22.5.2 (advanced).** In degrees zero and one take \(C^0=C^1=E[t,t^{-1}]\), differential multiplication by \(t-a\), and chain automorphism multiplication by \(t\). Compute its cohomology and show why taking the locally finite subspace of each term is not a valid replacement.
+
+**Solution.** The differential is injective in the Laurent polynomial domain and has cokernel \(E\), by evaluation at \(t=a\). Thus \(H^0=0\), and \(H^1=E\) with Frobenius \(a=a^1\), exactly diagonal purity. Yet every nonzero Laurent polynomial has linearly independent translates among sufficiently many powers of \(t\): a finite polynomial relation among them would contradict the domain property. There is no nonzero locally finite vector in either term. Taking those termwise subspaces gives the zero complex and loses \(H^1\). A geometric application must construct a compatible derived locally finite model, rather than making that termwise substitution from cohomological purity alone.
+
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its weight implication explicitly assumes the compact-support bound; applying the criterion to all spherical generators requires the unconditional stalk-surjectivity input and actual change of group. Identifying their geometric modules with Appendix B, proving enhanced convolution and complex coefficient comparisons, and proving the renormalized, singular-support and factorization theorems of §8 remain necessary.
+The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. The enhanced monoidal upgrade, its compatible cochain model, complex coefficient comparisons, and the renormalized, singular-support and factorization theorems of §8 remain necessary.
 
 Free further reading:
 

@@ -18,6 +18,8 @@ for a complex place write
 \]
 Here the unadorned \(|z|\) in the angular part is the ordinary radius. In both cases \(\sigma(c)=\operatorname{Re}s\), and \(\check c=c^{-1}|\cdot|_F\). Thus the dual parameters are \((\epsilon,1-s)\) over \(\mathbb R\) and \((-n,1-s)\) over \(\mathbb C\).
 
+*Analysis dependency details: supplementary exposition by GPT-6 Astra (OpenAI), Ultra, 11 October 2026, CC0.*
+
 ## A common normalization
 
 For \(F=\mathbb R\) or \(\mathbb C\), define
@@ -50,6 +52,15 @@ The space \(\mathcal S(F)\) consists of smooth functions on the underlying real 
 
 ## Mellin continuation without a functional equation
 
+The measure-theoretic inputs are [dominated convergence, Theorem 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-2-2), and [sigma-finite Radon Tonelli and Fubini, Theorem 4.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-4-4). Lebesgue measure on \(\mathbb R\) and \(\mathbb R^2\), and their restrictions to the radial intervals used below, are sigma-finite: bounded intervals or boxes form countable finite-measure covers. The positive and absolutely integrable versions of that theorem are the ones used here; no unrestricted Fubini assertion for a non-sigma-finite Haar measure is needed.
+
+For parameter differentiation, [Lemma 1.4 of Real-variable calculations](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-lemma-1-4) proves the real-parameter assertion from an integrable derivative bound. The complex version used here follows by the same difference-quotient argument. Let each \(H(s,\cdot)\) be measurable, let \(H(s_0,\cdot)\) be integrable at the centre of a small closed parameter disc, and let \(H(\cdot,x)\) be holomorphic on a neighbourhood of that disc. Suppose that \(|\partial_sH(s,x)|\le M(x)\) throughout the disc with \(M\) integrable. The fundamental theorem along a segment first gives \(|H(s,x)-H(s_0,x)|\le |s-s_0|M(x)\), so every kernel in the disc is integrable. It also gives
+\[
+\frac{H(s+h,x)-H(s,x)}h
+=\int_0^1\partial_sH(s+th,x)\,dt.
+\]
+For an interior parameter, take \(h\) small enough that its segment stays in the disc. The quotient is measurable, its absolute value is at most \(M(x)\), and it tends to \(\partial_sH(s,x)\) for every complex sequence \(h\to0\). The derivative is measurable as such a limit. Dominated convergence proves complex differentiation under the integral. For the Mellin kernels, choose a slightly larger compact parameter disc inside the stated convergence half-plane. At zero its lower real-part bound gives a power of \(r\); at infinity its upper bound and Schwartz decay give an integrable negative power. The resulting bounds absorb each fixed power of \(|\log r|\): after \(r=e^{-u}\) at zero or \(r=e^u\) at infinity, this is boundedness of \(u^k e^{-\delta u}\) for \(\delta>0\). It follows, for example, from the exponential series, which bounds that expression by \(k!\delta^{-k}\). The same argument applies to every derivative order separately.
+
 First define \(\Gamma(w)=\int_0^\infty e^{-t}t^{w-1}\,dt\) for \(\operatorname{Re}w>0\). Integration by parts gives \(\Gamma(w+1)=w\Gamma(w)\), so this continues meromorphically, with simple poles at \(0,-1,-2,\ldots\). We will also use its absence of zeros; the following elementary argument fixes precisely that fact.
 
 Repeated integration by parts gives
@@ -67,6 +78,22 @@ After \(u=Nt\), the left side multiplied by \(N^w\) tends to \(\Gamma(w)\). Inde
  \tag{6}
 \]
 The harmonic-sum limit exists by comparison with the integral of \(1/t\). On a fixed compact set, all sufficiently large factors have logarithm \(O(k^{-2})\), uniformly there. Thus the product defines an entire function and is nonzero away from the displayed linear-factor zeros. At \(0,-1,-2,\ldots\) exactly one such factor vanishes simply. Equality initially holds in the right half-plane and then agrees with the reciprocal of the recurrence continuation. In particular \(\Gamma\) has no zeros and has exactly the asserted simple poles.
+
+The Taylor remainder used below is uniform in direction. To see this directly, let \(f\) be \(C^{M+1}\) on a neighbourhood of a closed ball about zero in \(\mathbb R^d\), where \(d=1\) or \(2\), and set \(g(t)=f(tx)\) for \(0\le t\le1\). The [fundamental theorem and chain rule, Lemma 0.1(2)](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-07), give
+\[
+g(1)=\sum_{j=0}^M\frac{g^{(j)}(0)}{j!}
+ +\frac1{M!}\int_0^1(1-t)^M g^{(M+1)}(t)\,dt.
+\]
+Indeed the integral remainder for \(M=0\) is \(g(1)-g(0)\). Integration by parts for \(M\ge1\) makes the remainder equal to the preceding remainder minus \(g^{(M)}(0)/M!\); induction proves the formula. Repeated differentiation of \(f(tx)\) gives
+\[
+g^{(j)}(t)=\sum_{|\alpha|=j}\frac{j!}{\alpha!}
+ x^\alpha\partial^\alpha f(tx).
+\]
+If every derivative of total order \(M+1\) is bounded in absolute value by \(B\) on that ball, the remainder is at most
+\[
+\frac{B}{(M+1)!}\left(\sum_{j=1}^d|x_j|\right)^{M+1}.
+\]
+Thus it is \(O(|x|^{M+1})\), uniformly over all directions. This proves the real expansion and the uniform circular remainder used in (9) and (11), including their use for complex-valued smooth functions.
 
 **Mellin lemma.** For every \(f\in\mathcal S(F)\), \(Z(f,c)\) is absolutely convergent for \(\operatorname{Re}s>0\), locally uniformly there. It has meromorphic continuation to all \(s\). Its possible poles are simple, at
 \[
@@ -239,7 +266,7 @@ The absolute-value double integral is finite by undoing that substitution in (22
 \]
 Insert (24) in (23). The absolute-value double integral of the new expression is finite as well: reversing the change \(y=zt\) gives the product of the two convergent absolute zeta integrals for \(g\) and \(\widehat f\). That same substitution now evaluates it as the right side of (20). A singleton has additive measure zero over either field, so the inserted or removed points at zero do not affect these steps.
 
-Take \(g=g_\epsilon\) or \(h_n\). Its zeta integral is the nonzero Gamma function from Proposition 8.2; it has neither poles nor zeros in the strip. Dividing (20) by this integral proves (21) there. The Mellin lemma continues all its integrals, and the explicit Gamma ratio from (14) or (15) continues \(\rho\). The identity theorem proves (21) throughout the plane meromorphically. Fourier inversion applied twice also gives \(\rho(c)\rho(\check c)=c(-1)\), so the factor is not identically zero. ∎
+Take \(g=g_\epsilon\) or \(h_n\). Its zeta integral is the nonzero Gamma function from Proposition 8.2; it has neither poles nor zeros in the strip. Dividing (20) by this integral proves (21) there. The Mellin lemma continues all its integrals, and the explicit Gamma ratio from (14) or (15) continues \(\rho\). The [holomorphic identity theorem, Theorem 3.7](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-03), gives the meromorphic version needed here as follows. For the difference of the two meromorphic sides, the set of points where its meromorphic germ is zero is open. At any limit point \(a\) of this set, take a small disc on which multiplication by \((s-a)^m\), for some nonnegative integer \(m\), removes the possible pole. The product is holomorphic and vanishes on a nonempty open subset of that disc, so the holomorphic identity theorem makes it zero on the whole disc. The set of zero germs is therefore closed as well. It contains the strip, and the plane is connected, so it is the whole plane. This proves (21) meromorphically, including at every pole. Fourier inversion applied twice also gives \(\rho(c)\rho(\check c)=c(-1)\), so the factor is not identically zero. ∎
 
 The two-variable proof has the same algebra as Theorem 7.2, but its convergence here comes from Schwartz bounds. The proof justifies the fixed-parameter Fourier interchange separately from the two absolutely convergent double integrals; it requires no absolutely convergent oscillatory triple integral.
 
@@ -354,7 +381,7 @@ The dual has exponent \(-n\), so the epsilon product is \((-i)^{2|n|}=(-1)^n=c_{
 ## Prerequisites and further directions
 
 - The classification of real and complex quasi-characters is imported exactly from Proposition 6.1. The additive pairing, its self-dual measures, Fourier inversion, and the Gaussian Fourier transforms are imported from Propositions 5.1–5.2. Preservation of the Schwartz space and the polynomial transforms used here are justified above.
-- Basic integration on real Euclidean spaces, Taylor's theorem with remainder, dominated convergence, and the identity theorem for meromorphic functions are used as analysis prerequisites. The needed Gamma continuation, nonvanishing, beta identity, and duplication are proved here.
+- Dominated convergence and sigma-finite Fubini are [Theorems 2.2 and 4.4 of Integration and \(L^1\)](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html). The parameter, uniform Taylor-remainder and meromorphic-identity arguments above give their exact applications. [Lemma 0.1 and Theorems 3.5 and 3.7 of the Cauchy reading](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-03) supply the fundamental theorem, locally uniform holomorphic limits and the holomorphic identity theorem. The needed Gamma continuation, nonvanishing, beta identity, and duplication remain proved here. The Euclidean change-of-variables formula is also used for polar coordinates and the beta-integral Jacobian.
 - The global Poisson argument, the completed Hecke functional equation, and class-number residues are the subjects of the next two lessons. Archimedean Weil-group induction and higher-dimensional constants, discussed in [Deligne 1973, §§3 and 5], are not used to prove the one-dimensional assertions here.
 
 ## References

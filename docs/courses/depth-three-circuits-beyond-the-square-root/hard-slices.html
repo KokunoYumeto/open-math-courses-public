@@ -1,0 +1,173 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hard slices</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="an-explicit-language.html">Previous lesson</a><a href="the-lower-bound.html">Next lesson</a><a href="src/hard-slices.md">Editable source</a></nav><main><article><h1 id="hard-slices">Hard slices</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The language of <a href="an-explicit-language.html">An explicit language</a> has, at each length, many <em>slices</em>: the functions of the data bits obtained by fixing the parameter bits. This lesson shows that some slice is <em>hard</em> in the following sense: after a random restriction that leaves about <span class="math" data-tex="\(\sqrt d\)">\(\sqrt d\)</span> of the <span class="math" data-tex="\(d\)">\(d\)</span> data bits live, its sign has correlation at most <span class="math" data-tex="\(2^{-|T|/8}\)">\(2^{-|T|/8}\)</span> with <em>every</em> CNF of a fixed width <span class="math" data-tex="\(b\)">\(b\)</span>, with high probability over the restriction. The proof chooses the parameter bits at random and combines three facts: the limited independence of a random slice on a small subcube, the sparse partition of <a href="sunflowers-and-a-disjoint-sparse-partition.html">Sunflowers and a disjoint sparse partition</a>, and a moment bound.</p>
+<p>Notation: <span class="math" data-tex="\(d,r,t\)">\(d,r,t\)</span>, the hash <span class="math" data-tex="\(h\)">\(h\)</span>, the bits <span class="math" data-tex="\(u\)">\(u\)</span>, the polynomial <span class="math" data-tex="\(P\)">\(P\)</span> and the elements <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span> are those of the previous lesson; <span class="math" data-tex="\(\mathcal C_b(T)\)">\(\mathcal C_b(T)\)</span> and <span class="math" data-tex="\(\operatorname{corr}_b\)">\(\operatorname{corr}_b\)</span> are those of <a href="depth-three-circuits-and-the-square-root-barrier.html">Depth-three circuits and the square-root barrier</a>.</p>
+<h2 id="1-the-statement">1. The statement</h2>
+<p><strong>Proposition 1.1 (hard slices).</strong> Fix an integer <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span> and a real <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>. For every sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span> there is a setting of the parameter bits such that, with
+<span class="math math-display" data-tex="\[
+p=\frac B{\sqrt d},\qquad m_0=pd=B\sqrt d,
+\]">\[
+p=\frac B{\sqrt d},\qquad m_0=pd=B\sqrt d,
+\]</span>
+the sign <span class="math" data-tex="\(g:\{0,1\}^d\to\{-1,1\}\)">\(g:\{0,1\}^d\to\{-1,1\}\)</span> of the resulting slice has the following property. Call a restriction <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> of the <span class="math" data-tex="\(d\)">\(d\)</span> data coordinates <em>exceptional</em> if <span class="math" data-tex="\(|T|\notin[\frac{m_0}2,2m_0]\)">\(|T|\notin[\frac{m_0}2,2m_0]\)</span> or <span class="math" data-tex="\(\operatorname{corr}_b(g_{T,\rho})&gt;2^{-|T|/8}\)">\(\operatorname{corr}_b(g_{T,\rho})&gt;2^{-|T|/8}\)</span>. Then, for a <span class="math" data-tex="\(p\)">\(p\)</span>-random restriction,
+<span class="math math-display" data-tex="\[
+\Pr_{T,\rho}[\text{exceptional}]\leq4\cdot2^{-m_0/16}.
+\]">\[
+\Pr_{T,\rho}[\text{exceptional}]\leq4\cdot2^{-m_0/16}.
+\]</span></p>
+<p>The setting may depend on <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span>. On a restriction that is not exceptional, the bound <span class="math" data-tex="\(2^{-|T|/8}\)">\(2^{-|T|/8}\)</span> holds for all CNFs of width at most <span class="math" data-tex="\(b\)">\(b\)</span> on the live variables at once, whatever their number of clauses.</p>
+<p>Throughout, <span class="math" data-tex="\(P\)">\(P\)</span> is a polynomial as in Lemma 1.1 of the previous lesson, so that <span class="math" data-tex="\(F=R_P\)">\(F=R_P\)</span> is a field; the hash bits <span class="math" data-tex="\(u\)">\(u\)</span> and the elements <span class="math" data-tex="\(\beta_0,\ldots,\beta_{t-1}\in F\)">\(\beta_0,\ldots,\beta_{t-1}\in F\)</span> are uniformly random and independent, and <span class="math" data-tex="\(d\)">\(d\)</span> is large enough that <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>. At the end one good choice of <span class="math" data-tex="\((u,\beta)\)">\((u,\beta)\)</span> is fixed.</p>
+<h2 id="2-counting-sparse-tests">2. Counting sparse tests</h2>
+<p>Let <span class="math" data-tex="\(M=M(b,\frac18)\)">\(M=M(b,\frac18)\)</span> be the constant of the sparse partition lemma for <span class="math" data-tex="\(\eta=\frac18\)">\(\eta=\frac18\)</span>. Call a CNF on <span class="math" data-tex="\(\{0,1\}^T\)">\(\{0,1\}^T\)</span>, <span class="math" data-tex="\(|T|=m\geq1\)">\(|T|=m\geq1\)</span>, a <em>sparse test</em> if its clauses have width at most <span class="math" data-tex="\(b\)">\(b\)</span> and it has at most <span class="math" data-tex="\(Mm\)">\(Mm\)</span> clauses.</p>
+<p><strong>Lemma 2.1.</strong> The number of sparse tests on <span class="math" data-tex="\(m\)">\(m\)</span> variables is at most
+<span class="math math-display" data-tex="\[
+2^{Mm\,[\,1+b\log_2(2m+1)\,]} .
+\]">\[
+2^{Mm\,[\,1+b\log_2(2m+1)\,]} .
+\]</span></p>
+<p><em>Proof.</em> A clause of width at most <span class="math" data-tex="\(b\)">\(b\)</span> is a set of at most <span class="math" data-tex="\(b\)">\(b\)</span> literals. Listing its literals in a fixed order and filling up to length <span class="math" data-tex="\(b\)">\(b\)</span> with a padding symbol encodes it by a word of length <span class="math" data-tex="\(b\)">\(b\)</span> over <span class="math" data-tex="\(2m+1\)">\(2m+1\)</span> symbols; so there are at most <span class="math" data-tex="\((2m+1)^b\)">\((2m+1)^b\)</span> clauses, the false clause included. A sparse test is encoded by a list of <span class="math" data-tex="\(Mm\)">\(Mm\)</span> entries, each a clause or a padding symbol: at most <span class="math" data-tex="\(((2m+1)^b+1)^{Mm}\leq(2(2m+1)^b)^{Mm}\)">\(((2m+1)^b+1)^{Mm}\leq(2(2m+1)^b)^{Mm}\)</span> lists. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The count is <span class="math" data-tex="\(2^{O(m\log m)}\)">\(2^{O(m\log m)}\)</span>, far less than the <span class="math" data-tex="\(2^{2^m}\)">\(2^{2^m}\)</span> functions on the cube. This is what the sparse partition buys.</p>
+<h2 id="3-one-test-a-moment-bound">3. One test: a moment bound</h2>
+<p>Fix a restriction <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> with <span class="math" data-tex="\(m=|T|\geq1\)">\(m=|T|\geq1\)</span>, and hash bits <span class="math" data-tex="\(u\)">\(u\)</span> for which <span class="math" data-tex="\(h\)">\(h\)</span> is injective on the restricted cube. By Proposition 5.2 of the previous lesson, over the random <span class="math" data-tex="\(\beta\)">\(\beta\)</span> the signs <span class="math" data-tex="\(g_{T,\rho}(z)\)">\(g_{T,\rho}(z)\)</span>, <span class="math" data-tex="\(z\in\{0,1\}^T\)">\(z\in\{0,1\}^T\)</span>, are unbiased and <span class="math" data-tex="\(t\)">\(t\)</span>-wise independent. Recall that <span class="math" data-tex="\(t\)">\(t\)</span> is even.</p>
+<p><strong>Lemma 3.1.</strong> For every function <span class="math" data-tex="\(J:\{0,1\}^T\to\{0,1\}\)">\(J:\{0,1\}^T\to\{0,1\}\)</span>, the sum <span class="math" data-tex="\(Y=\sum_zg_{T,\rho}(z)J(z)\)">\(Y=\sum_zg_{T,\rho}(z)J(z)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E_\beta\,Y^t\leq t^t\,2^{mt/2},\\
+\Pr_\beta\bigl[\,|Y|&gt;2^{3m/4}\bigr]\leq t^t\,2^{-mt/4}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E_\beta\,Y^t\leq t^t\,2^{mt/2},\\
+\Pr_\beta\bigl[\,|Y|&gt;2^{3m/4}\bigr]\leq t^t\,2^{-mt/4}.
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Expand <span class="math" data-tex="\(Y^t\)">\(Y^t\)</span> as a sum over ordered <span class="math" data-tex="\(t\)">\(t\)</span>-tuples <span class="math" data-tex="\((z_1,\ldots,z_t)\)">\((z_1,\ldots,z_t)\)</span> of points of the cube; the term of a tuple is <span class="math" data-tex="\(\prod_ig(z_i)J(z_i)\)">\(\prod_ig(z_i)J(z_i)\)</span>. A tuple involves at most <span class="math" data-tex="\(t\)">\(t\)</span> distinct points, and their signs are independent. If some point occurs exactly once in the tuple, its sign appears to the first power and has mean zero, so the term has expectation zero. In the other tuples every point occurs at least twice, so at most <span class="math" data-tex="\(t/2\)">\(t/2\)</span> distinct points occur. Such a tuple is described by a list of <span class="math" data-tex="\(t/2\)">\(t/2\)</span> points of the cube (repeating points if fewer occur) and, for each of the <span class="math" data-tex="\(t\)">\(t\)</span> positions, an entry of the list: at most <span class="math" data-tex="\(2^{mt/2}(t/2)^t\)">\(2^{mt/2}(t/2)^t\)</span> descriptions. Each term has absolute value at most <span class="math" data-tex="\(1\)">\(1\)</span>. This gives the first bound. Since <span class="math" data-tex="\(t\)">\(t\)</span> is even, <span class="math" data-tex="\(Y^t=|Y|^t\geq0\)">\(Y^t=|Y|^t\geq0\)</span>, and Markov's inequality gives
+<span class="math math-display" data-tex="\[
+\Pr\bigl[\,|Y|&gt;2^{3m/4}\bigr]\leq\frac{\mathbb EY^t}{2^{3mt/4}},
+\]">\[
+\Pr\bigl[\,|Y|&gt;2^{3m/4}\bigr]\leq\frac{\mathbb EY^t}{2^{3mt/4}},
+\]</span>
+which is at most <span class="math" data-tex="\(t^t\,2^{-mt/4}\)">\(t^t\,2^{-mt/4}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Note that <span class="math" data-tex="\(|Y|&gt;2^{3m/4}\)">\(|Y|&gt;2^{3m/4}\)</span> says exactly that <span class="math" data-tex="\(|\mathbb E_zg_{T,\rho}(z)J(z)|&gt;2^{-m/4}\)">\(|\mathbb E_zg_{T,\rho}(z)J(z)|&gt;2^{-m/4}\)</span>.</p>
+<h2 id="4-all-narrow-tests">4. All narrow tests</h2>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> be as in Section 3, and suppose
+<span class="math math-display" data-tex="\[
+\frac{M\,[\,1+b\log_2(2m+1)\,]}t+\frac{\log_2t}m\leq\frac18.
+\]">\[
+\frac{M\,[\,1+b\log_2(2m+1)\,]}t+\frac{\log_2t}m\leq\frac18.
+\]</span>
+Call this inequality the <em>growth condition</em>. Then with probability at least <span class="math" data-tex="\(1-2^{-mt/8}\)">\(1-2^{-mt/8}\)</span> over <span class="math" data-tex="\(\beta\)">\(\beta\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{corr}_b(g_{T,\rho})\leq2^{-m/8}.
+\]">\[
+\operatorname{corr}_b(g_{T,\rho})\leq2^{-m/8}.
+\]</span></p>
+<p><em>Proof.</em> By Lemma 2.1, Lemma 3.1 and the union bound, the probability that some sparse test <span class="math" data-tex="\(J\)">\(J\)</span> has <span class="math" data-tex="\(|\mathbb E_zg_{T,\rho}J|&gt;2^{-m/4}\)">\(|\mathbb E_zg_{T,\rho}J|&gt;2^{-m/4}\)</span> is at most
+<span class="math math-display" data-tex="\[
+2^{Mm[1+b\log_2(2m+1)]+t\log_2t-mt/4}\leq2^{-mt/8},
+\]">\[
+2^{Mm[1+b\log_2(2m+1)]+t\log_2t-mt/4}\leq2^{-mt/8},
+\]</span>
+the inequality being the growth condition multiplied by <span class="math" data-tex="\(mt\)">\(mt\)</span>. Suppose no sparse test fails, and let <span class="math" data-tex="\(J\in\mathcal C_b(T)\)">\(J\in\mathcal C_b(T)\)</span> be arbitrary. By the sparse partition lemma with <span class="math" data-tex="\(\eta=\frac18\)">\(\eta=\frac18\)</span>, <span class="math" data-tex="\(J=\sum_aH_a\)">\(J=\sum_aH_a\)</span> pointwise, with at most <span class="math" data-tex="\(2^{m/8}\)">\(2^{m/8}\)</span> sparse tests <span class="math" data-tex="\(H_a\)">\(H_a\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bigl|\mathbb E_zg_{T,\rho}J\bigr|&amp;\leq\sum_a\bigl|\mathbb E_zg_{T,\rho}H_a\bigr|\\
+&amp;\leq2^{m/8}\cdot2^{-m/4}=2^{-m/8}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\bigl|\mathbb E_zg_{T,\rho}J\bigr|&amp;\leq\sum_a\bigl|\mathbb E_zg_{T,\rho}H_a\bigr|\\
+&amp;\leq2^{m/8}\cdot2^{-m/4}=2^{-m/8}.
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(\operatorname{corr}_b(g_{T,\rho})\leq2^{-m/8}\)">\(\operatorname{corr}_b(g_{T,\rho})\leq2^{-m/8}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The probability estimate concerns only the sparse tests. Once they are all under control, the bound for the other CNFs of width <span class="math" data-tex="\(b\)">\(b\)</span>, of which there may be vastly more, follows deterministically.</p>
+<p><strong>Lemma 4.2.</strong> For fixed <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>, the growth condition holds for all <span class="math" data-tex="\(m\in[\frac{m_0}2,2m_0]\)">\(m\in[\frac{m_0}2,2m_0]\)</span>, once <span class="math" data-tex="\(d\)">\(d\)</span> is large enough.</p>
+<p><em>Proof.</em> In this range <span class="math" data-tex="\(m\leq2B\sqrt d\)">\(m\leq2B\sqrt d\)</span> and <span class="math" data-tex="\(m\geq\frac12B\sqrt d\)">\(m\geq\frac12B\sqrt d\)</span>, while <span class="math" data-tex="\(d^{1/6}-2&lt;t\leq d^{1/6}\)">\(d^{1/6}-2&lt;t\leq d^{1/6}\)</span> by Lemma 2.2 of the previous lesson. So the first term of the growth condition is at most <span class="math" data-tex="\(M[1+b\log_2(4B\sqrt d+1)]/(d^{1/6}-2)\)">\(M[1+b\log_2(4B\sqrt d+1)]/(d^{1/6}-2)\)</span> and the second at most <span class="math" data-tex="\(2\log_2(d^{1/6})/(B\sqrt d)\)">\(2\log_2(d^{1/6})/(B\sqrt d)\)</span>. Both tend to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(d\to\infty\)">\(d\to\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here the growth of <span class="math" data-tex="\(t\)">\(t\)</span> is used: a bounded amount of independence would not beat the <span class="math" data-tex="\(2^{O(m\log m)}\)">\(2^{O(m\log m)}\)</span> sparse tests (Exercise 7.3).</p>
+<h2 id="5-the-size-of-the-live-set">5. The size of the live set</h2>
+<p><strong>Lemma 5.1.</strong> Let <span class="math" data-tex="\(m=|T|\)">\(m=|T|\)</span> for a <span class="math" data-tex="\(p\)">\(p\)</span>-random live set <span class="math" data-tex="\(T\subseteq[d]\)">\(T\subseteq[d]\)</span>, and <span class="math" data-tex="\(m_0=pd\)">\(m_0=pd\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Pr\bigl[m&lt;\tfrac{m_0}2\bigr]\leq2^{-m_0/16},\\
+\Pr[m&gt;2m_0]\leq2^{-m_0/16}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Pr\bigl[m&lt;\tfrac{m_0}2\bigr]\leq2^{-m_0/16},\\
+\Pr[m&gt;2m_0]\leq2^{-m_0/16}.
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> The coordinates are independent, so with <span class="math" data-tex="\(1+v\leq e^v\)">\(1+v\leq e^v\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E\,2^{-m}=\bigl(1-\tfrac p2\bigr)^d\leq e^{-m_0/2},\\
+\mathbb E\,2^{m}=(1+p)^d\leq e^{m_0}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E\,2^{-m}=\bigl(1-\tfrac p2\bigr)^d\leq e^{-m_0/2},\\
+\mathbb E\,2^{m}=(1+p)^d\leq e^{m_0}.
+\end{gathered}
+\]</span>
+By Markov's inequality,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Pr\bigl[m&lt;\tfrac{m_0}2\bigr]&amp;=\Pr\bigl[2^{-m}&gt;2^{-m_0/2}\bigr]\\
+&amp;\leq2^{m_0/2}e^{-m_0/2}\\
+&amp;=2^{-\frac12(\log_2e-1)m_0},\\
+\Pr[m&gt;2m_0]&amp;=\Pr\bigl[2^{m}&gt;2^{2m_0}\bigr]\\
+&amp;\leq2^{-2m_0}e^{m_0}\\
+&amp;=2^{-(2-\log_2e)m_0}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Pr\bigl[m&lt;\tfrac{m_0}2\bigr]&amp;=\Pr\bigl[2^{-m}&gt;2^{-m_0/2}\bigr]\\
+&amp;\leq2^{m_0/2}e^{-m_0/2}\\
+&amp;=2^{-\frac12(\log_2e-1)m_0},\\
+\Pr[m&gt;2m_0]&amp;=\Pr\bigl[2^{m}&gt;2^{2m_0}\bigr]\\
+&amp;\leq2^{-2m_0}e^{m_0}\\
+&amp;=2^{-(2-\log_2e)m_0}.
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(\frac1x\)">\(\frac1x\)</span> is convex, comparing <span class="math" data-tex="\(\ln2=\int_1^2\frac{dx}x\)">\(\ln2=\int_1^2\frac{dx}x\)</span> with the tangent at <span class="math" data-tex="\(x=\frac32\)">\(x=\frac32\)</span> and with the chord gives <span class="math" data-tex="\(\frac23&lt;\ln2&lt;\frac34\)">\(\frac23&lt;\ln2&lt;\frac34\)</span>, so <span class="math" data-tex="\(\frac43&lt;\log_2e&lt;\frac32\)">\(\frac43&lt;\log_2e&lt;\frac32\)</span>. Hence <span class="math" data-tex="\(\frac12(\log_2e-1)&gt;\frac16\)">\(\frac12(\log_2e-1)&gt;\frac16\)</span> and <span class="math" data-tex="\(2-\log_2e&gt;\frac12\)">\(2-\log_2e&gt;\frac12\)</span>; both exceed <span class="math" data-tex="\(\frac1{16}\)">\(\frac1{16}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-fixing-the-parameters">6. Fixing the parameters</h2>
+<p><strong>Proof of Proposition 1.1.</strong> Take <span class="math" data-tex="\(d\)">\(d\)</span> so large that <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>, that Lemma 4.2 applies, and that <span class="math" data-tex="\(r\geq(2+\frac1{16})m_0\)">\(r\geq(2+\frac1{16})m_0\)</span>; the last is possible because <span class="math" data-tex="\(r\geq d^{2/3}\)">\(r\geq d^{2/3}\)</span> and <span class="math" data-tex="\(m_0=B\sqrt d\)">\(m_0=B\sqrt d\)</span>. Consider <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> all random and independent, and the event <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> that <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> is exceptional for the slice given by <span class="math" data-tex="\((u,\beta)\)">\((u,\beta)\)</span>: that <span class="math" data-tex="\(|T|\notin[\frac{m_0}2,2m_0]\)">\(|T|\notin[\frac{m_0}2,2m_0]\)</span> or <span class="math" data-tex="\(\operatorname{corr}_b(g_{T,\rho})&gt;2^{-|T|/8}\)">\(\operatorname{corr}_b(g_{T,\rho})&gt;2^{-|T|/8}\)</span>. By Lemma 5.1 the first alternative has probability at most <span class="math" data-tex="\(2\cdot2^{-m_0/16}\)">\(2\cdot2^{-m_0/16}\)</span>. Fix a restriction with <span class="math" data-tex="\(m=|T|\)">\(m=|T|\)</span> in the range; then <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>. By Lemma 4.2 of the previous lesson, <span class="math" data-tex="\(h\)">\(h\)</span> fails to be injective on the restricted cube with probability at most
+<span class="math math-display" data-tex="\[
+2^{m-r}\leq2^{2m_0-r}\leq2^{-m_0/16}
+\]">\[
+2^{m-r}\leq2^{2m_0-r}\leq2^{-m_0/16}
+\]</span>
+over <span class="math" data-tex="\(u\)">\(u\)</span>. For each <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(h\)">\(h\)</span> injective, Lemma 4.1 bounds the probability over <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of <span class="math" data-tex="\(\operatorname{corr}_b(g_{T,\rho})&gt;2^{-m/8}\)">\(\operatorname{corr}_b(g_{T,\rho})&gt;2^{-m/8}\)</span> by
+<span class="math math-display" data-tex="\[
+2^{-mt/8}\leq2^{-m_0/16},
+\]">\[
+2^{-mt/8}\leq2^{-m_0/16},
+\]</span>
+because <span class="math" data-tex="\(m\geq\frac{m_0}2\)">\(m\geq\frac{m_0}2\)</span> and <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>. So for every restriction in the range, the second alternative has probability at most <span class="math" data-tex="\(2\cdot2^{-m_0/16}\)">\(2\cdot2^{-m_0/16}\)</span> over <span class="math" data-tex="\((u,\beta)\)">\((u,\beta)\)</span>. Altogether
+<span class="math math-display" data-tex="\[
+\Pr_{u,\beta,T,\rho}[\mathcal E]\leq4\cdot2^{-m_0/16}.
+\]">\[
+\Pr_{u,\beta,T,\rho}[\mathcal E]\leq4\cdot2^{-m_0/16}.
+\]</span>
+For each fixed <span class="math" data-tex="\((u,\beta)\)">\((u,\beta)\)</span> let <span class="math" data-tex="\(\phi(u,\beta)\)">\(\phi(u,\beta)\)</span> be the probability of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> over <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span>. The average of the finitely many numbers <span class="math" data-tex="\(\phi(u,\beta)\)">\(\phi(u,\beta)\)</span> is the probability just bounded, so some <span class="math" data-tex="\((u,\beta)\)">\((u,\beta)\)</span> has <span class="math" data-tex="\(\phi(u,\beta)\leq4\cdot2^{-m_0/16}\)">\(\phi(u,\beta)\leq4\cdot2^{-m_0/16}\)</span>. Fix it, together with <span class="math" data-tex="\(P\)">\(P\)</span> and arbitrary values of the unused input bits. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument does not say <em>which</em> setting is good, and the algorithm for the language never needs to know: a good setting is just one particular input prefix. The two probability spaces are used in different ways. The parameter bits are averaged out and then fixed; the restriction stays random and reappears in the last lesson.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> For <span class="math" data-tex="\(b=1\)">\(b=1\)</span>, list the clauses of width at most <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(m\)">\(m\)</span> variables and compare their number with the bound <span class="math" data-tex="\((2m+1)^b\)">\((2m+1)^b\)</span> in the proof of Lemma 2.1.</p>
+<p><strong>7.2.</strong> Let the signs <span class="math" data-tex="\(g(z)\)">\(g(z)\)</span> be fully independent and unbiased, <span class="math" data-tex="\(J=1\)">\(J=1\)</span> and <span class="math" data-tex="\(N=2^m\)">\(N=2^m\)</span>. Compute <span class="math" data-tex="\(\mathbb EY^4\)">\(\mathbb EY^4\)</span> exactly and compare with the bound of Lemma 3.1 for <span class="math" data-tex="\(t=4\)">\(t=4\)</span>.</p>
+<p><strong>7.3.</strong> Suppose the signs were only <span class="math" data-tex="\(t\)">\(t\)</span>-wise independent for a <em>fixed</em> even <span class="math" data-tex="\(t\)">\(t\)</span>, not growing with <span class="math" data-tex="\(d\)">\(d\)</span>. Explain why the union bound in Lemma 4.1 would fail for large <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>7.4.</strong> Where is the <em>disjointness</em> of the pieces in the sparse partition used in Lemma 4.1?</p>
+<p><strong>7.5.</strong> Prove <span class="math" data-tex="\(\mathbb E\,2^{-m}=(1-\frac p2)^d\)">\(\mathbb E\,2^{-m}=(1-\frac p2)^d\)</span> and <span class="math" data-tex="\(\mathbb E\,2^m=(1+p)^d\)">\(\mathbb E\,2^m=(1+p)^d\)</span> for the size <span class="math" data-tex="\(m\)">\(m\)</span> of a <span class="math" data-tex="\(p\)">\(p\)</span>-random subset of <span class="math" data-tex="\([d]\)">\([d]\)</span>.</p>
+<p><strong>7.6.</strong> Why does the proof need <span class="math" data-tex="\(t\)">\(t\)</span> to be even?</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> The false clause, and the <span class="math" data-tex="\(2m\)">\(2m\)</span> single literals: <span class="math" data-tex="\(2m+1\)">\(2m+1\)</span> clauses, which is exactly <span class="math" data-tex="\((2m+1)^1\)">\((2m+1)^1\)</span>.</p>
+<p><strong>7.2.</strong> In <span class="math" data-tex="\(\mathbb E(\sum_zg(z))^4\)">\(\mathbb E(\sum_zg(z))^4\)</span> a <span class="math" data-tex="\(4\)">\(4\)</span>-tuple contributes <span class="math" data-tex="\(1\)">\(1\)</span> if every point occurs an even number of times and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. There are <span class="math" data-tex="\(N\)">\(N\)</span> tuples with one point and <span class="math" data-tex="\(3N(N-1)\)">\(3N(N-1)\)</span> with two points occurring twice each. So <span class="math" data-tex="\(\mathbb EY^4=3N^2-2N\)">\(\mathbb EY^4=3N^2-2N\)</span>, against the bound <span class="math" data-tex="\(4^4N^2=256N^2\)">\(4^4N^2=256N^2\)</span>. The bound is crude in its constant; only the factor <span class="math" data-tex="\(2^{mt/2}=N^{t/2}\)">\(2^{mt/2}=N^{t/2}\)</span> matters.</p>
+<p><strong>7.3.</strong> One test fails with probability at most <span class="math" data-tex="\(t^t2^{-mt/4}\)">\(t^t2^{-mt/4}\)</span>, and there are up to <span class="math" data-tex="\(2^{Mm[1+b\log_2(2m+1)]}\)">\(2^{Mm[1+b\log_2(2m+1)]}\)</span> sparse tests. The product is small only if <span class="math" data-tex="\(mt/4\)">\(mt/4\)</span> exceeds <span class="math" data-tex="\(Mm[1+b\log_2(2m+1)]\)">\(Mm[1+b\log_2(2m+1)]\)</span>, that is, <span class="math" data-tex="\(t&gt;4M[1+b\log_2(2m+1)]\)">\(t&gt;4M[1+b\log_2(2m+1)]\)</span>, which fails for large <span class="math" data-tex="\(m\)">\(m\)</span> when <span class="math" data-tex="\(t\)">\(t\)</span> is fixed. With <span class="math" data-tex="\(t\)">\(t\)</span> about <span class="math" data-tex="\(d^{1/6}\)">\(d^{1/6}\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> about <span class="math" data-tex="\(\sqrt d\)">\(\sqrt d\)</span>, the condition holds for large <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>7.4.</strong> In the identity <span class="math" data-tex="\(J=\sum_aH_a\)">\(J=\sum_aH_a\)</span> between indicators. For pieces with overlapping supports, <span class="math" data-tex="\(J\)">\(J\)</span> would be the maximum of the <span class="math" data-tex="\(H_a\)">\(H_a\)</span>, not their sum, and <span class="math" data-tex="\(\mathbb E_zgJ\)">\(\mathbb E_zgJ\)</span> could not be split into the terms <span class="math" data-tex="\(\mathbb E_zgH_a\)">\(\mathbb E_zgH_a\)</span> without inclusion and exclusion.</p>
+<p><strong>7.5.</strong> <span class="math" data-tex="\(m=\sum_i\xi_i\)">\(m=\sum_i\xi_i\)</span> with independent indicators <span class="math" data-tex="\(\xi_i\)">\(\xi_i\)</span> of probability <span class="math" data-tex="\(p\)">\(p\)</span>. So <span class="math" data-tex="\(\mathbb E\,2^{-m}=\prod_i\mathbb E\,2^{-\xi_i}=(1-p+\frac p2)^d\)">\(\mathbb E\,2^{-m}=\prod_i\mathbb E\,2^{-\xi_i}=(1-p+\frac p2)^d\)</span> and <span class="math" data-tex="\(\mathbb E\,2^m=\prod_i\mathbb E\,2^{\xi_i}=(1-p+2p)^d\)">\(\mathbb E\,2^m=\prod_i\mathbb E\,2^{\xi_i}=(1-p+2p)^d\)</span>.</p>
+<p><strong>7.6.</strong> For even <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(Y^t=|Y|^t\)">\(Y^t=|Y|^t\)</span> is nonnegative, so Markov's inequality applies to it and bounds the probability that <span class="math" data-tex="\(|Y|\)">\(|Y|\)</span> is large. Also a tuple in which every point occurs at least twice then has at most <span class="math" data-tex="\(t/2\)">\(t/2\)</span> distinct points, with <span class="math" data-tex="\(t/2\)">\(t/2\)</span> an integer.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-P] OpenAI, <em>Beyond the Square-Root Exponent for Depth-Three Boolean Circuits</em>, OpenAI Math Release preprint, 23 September 2026, Section 5. https://github.com/openai/math/tree/main/preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

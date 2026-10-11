@@ -4087,6 +4087,8 @@ This is compact and therefore closed in the Hausdorff manifold \(M\), and it lie
 
 The graph is locally semianalytic on \(V\), by the three analytic branch conditions from (C2) with \(q=|\phi(x)-c|^2\); at every point outside \(K\), the graph is locally the analytic zero graph. These cases cover all ambient graph points, so \(\beta:M\to\mathbb R\) is locally semianalytic and locally subanalytic globally on \(M\). A different analytic chart does not change this conclusion: analytic coordinate transitions substitute analytic functions in the finitely many local equations and inequalities. The construction also works for a zero-dimensional chart, where the coordinate ball is the singleton \(\mathbb R^0\).
 
+<a name="a-countable-locally-finite-nested-coordinate-ball-refinement"></a>
+
 #### 2. A countable locally finite nested coordinate-ball refinement
 
 We prove the topological refinement needed above instead of assuming an analytic partition of unity or requiring a cover member to be subanalytic.
@@ -4313,6 +4315,8 @@ Marja Kankaanrinta, [*A subanalytic triangulation theorem for real analytic orbi
 John Milnor's *Differential Topology*, Princeton lectures, Fall 1958, notes by James Munkres, Lemma 2.19, gives the colouring by strict inequalities between partition coordinates. That text assumes the covering-dimension bound for a manifold. The actual source was read at the opening page (attribution and chapter structure) and printed pages 18–19, especially Lemma 2.19 on printed page 19, PDF page index 18. [Available lecture notes](https://www.maths.ed.ac.uk/~v1ranick/papers/difftop.pdf).
 
 The strict-inequality colouring in the last section below is this Milnor construction, with its openness and local finiteness checked explicitly. The missing manifold dimension input is supplied here by a proved local approximation lemma and a locally finite elimination of nerve simplices. The resulting proof is an elementary argument. In particular, Palais’s theorem and an asserted equality of manifold and covering dimensions are not dependencies of this proof.
+
+<a name="locally-finite-compact-chart-supports"></a>
 
 #### 1. Locally finite compact chart supports
 

@@ -40,6 +40,7 @@ The cyclic realization statement, denoted **CR**, is:
 
 Normal positive functionals in a cyclic natural cone proves CR. Its positive Fourier correction, supported-corner domain calculation, residual bound by a factor of \(1/4\), and real separation proof give the representing vector as an actual norm limit. The geometry below proves uniqueness before using CR, and then passes from cyclic corners to arbitrary, possibly nonfaithful functionals. Bounded continuous functional calculus, the bicommutant characterization, and Hilbert-space completeness are the elementary operator prerequisites.
 
+<a id="cg01"></a>
 ## CG01. Normal supports without a representing vector
 
 A bounded increasing net \((a_i)\) of positive operators has a strong supremum. Indeed, its scalar quadratic forms have limits, polarization gives a bounded positive operator \(a\), and
@@ -76,6 +77,7 @@ If \(\psi\le\omega\), then \(\psi(1-s(\omega))=0\), and hence
 \]
 This is an order statement about functional supports. It makes no assertion that functional order is the order of their eventual cone vectors.
 
+<a id="cg02"></a>
 ## CG02. Algebra and commutant supports of a cone vector
 
 For any \(\xi\in H\), the projection \(s_\xi\) onto \(\overline{M'\xi}\) belongs to \(M\): the subspace reduces \(M'\). It is the least projection in \(M\) fixing \(\xi\). Since
@@ -91,6 +93,7 @@ If \(\xi\in P\), then \(J\xi=\xi\), and applying \(J\) to \(\overline{M'\xi}\) g
 \]
 In particular \(\xi\) is separating for \(M\) exactly when \(s_\xi=1\), and is cyclic exactly when \(q_\xi=1\). The same conclusions hold on every support corner constructed below.
 
+<a id="cg03"></a>
 ## CG03. Orthogonality detects disjoint supports
 
 For \(\xi,\eta\in P\),
@@ -111,6 +114,7 @@ where \(A=\langle\eta,a\xi\rangle\) and \(C=\langle\eta,aJaJ\xi\rangle\ge0\). In
 
 By CG02, \(q_\xi\eta=0\). Conjugating by \(J\) gives \(s_\xi\eta=0\). The projection \(1-s_\xi\) fixes \(\eta\), so minimality of \(s_\eta\) gives \(s_\eta\le1-s_\xi\). Conversely, disjoint supports put \(\xi\) and \(\eta\) in orthogonal projection ranges. Applying \(J\) also gives \(q_\xi q_\eta=0\).
 
+<a id="cg04"></a>
 ## CG04. Orthogonal positive and negative parts
 
 Let \(H_J=\{v:Jv=v\}\), regarded as a real Hilbert space. Every \(v\in H_J\) has a unique decomposition
@@ -134,6 +138,7 @@ Equality holds at \(u=p\), and can hold only there. Thus \(p\) is the unique clo
 
 Every \(v\in H\) is a complex linear combination of four cone vectors: apply (6) to \((v+Jv)/2\) and \((v-Jv)/(2i)\). In particular the complex span of \(P\) is dense in \(H\), indeed equals \(H\).
 
+<a id="cg05"></a>
 ## CG05. The two norm bounds and uniqueness
 
 For \(\xi,\eta\in P\),
@@ -213,6 +218,7 @@ Cauchy–Schwarz proves the upper bound in (7). For any positive functional \(\o
 
 In this figure \(M=\mathbb C^2\) acts diagonally on \(H=\mathbb C^2\), \(J\) is coordinate conjugation, and \(P=\mathbb R_+^2\). With \(\xi=(3,1)\) and \(\eta=(1,2)\), the closest cone point to \(d=(2,-1)\) is \(p=(2,0)\), and \(n=(0,1)\). The support test \(e-f=\operatorname{diag}(1,-1)\) gives \(\|\omega_\xi-\omega_\eta\|=|8|+|-3|=11\ge5=\|d\|^2\). The excess is \(2\langle p,\eta\rangle+2\langle n,\xi\rangle=6\). This is a concrete commutative example of CG04–CG05, not a claim that a general natural cone is two-dimensional. Araki's related general conclusions are Theorem 4(6)–(8), printed pages 328–332; Haagerup's two bounds are Lemma 2.10, printed pages 278–279.
 
+<a id="cg06"></a>
 ## CG06. A corner commutant proved by a Gram form
 
 We need a corner theorem at arbitrary Hilbert-space cardinality. If \(A\subset B(K)\) is a von Neumann algebra and \(p\in A\) is a projection, then, on \(pK\),
@@ -250,6 +256,7 @@ Finally,
 \]
 To see this, extend \(T\in Z(pAp)\) by (9). The operator \(T\) itself belongs to \(A\), so it commutes with every \(b\in A'\) on \(pK\). On \(ApK\), equation (9) then shows \(\widehat T b=b\widehat T\). Both extensions preserve \(L\), and the extension is zero on \(L^\perp\), so \(\widehat T\) also commutes with \(A'\). The bicommutant theorem puts it in \(A\cap A'=Z(A)\), with \(p\widehat T p=T\). The reverse inclusion in (11) is immediate.
 
+<a id="cg07"></a>
 ## CG07. The simultaneous support corner
 
 For \(p\in M\) put \(j(p)=JpJ\) and \(q=pj(p)\). The central identity in MC gives
@@ -273,7 +280,7 @@ To verify (13) without an induction theorem, first apply (8) to \(M,p\) on \(H\)
 
 Because \(j(p)\) commutes with \(pMp\), (12) is multiplicative. It is onto because \(qxq=q(pxp)q\) for \(x\in M\). For injectivity suppose \(a\in pMp\) and \(aq=0\). Then \(aj(p)=0\). Let \(e\le p\) be the range projection of \(|a|\), obtained by increasing continuous-calculus contractions. Commutation with \(j(p)\) gives \(ej(p)=0\). By (10), \(z_M(e)\) is orthogonal to \(z_{M'}(j(p))=z_M(p)\), while \(z_M(e)\le z_M(p)\). Hence \(e=0\) and \(a=0\).
 
-A faithful *-isomorphism reflects positivity: apply it to the negative part of a self-adjoint operator, using continuous functional calculus. It is therefore an order isomorphism. Suprema of bounded increasing positive nets are characterized by order alone, so both \(\theta\) and its inverse preserve them. This proves the asserted normality.
+A faithful *-isomorphism reflects positivity: apply it to the negative part of a self-adjoint operator, using continuous functional calculus. It is therefore an order isomorphism. Suprema of bounded increasing positive nets are characterized by order alone, so both \(\theta\) and its inverse preserve them. This proves order preservation of increasing suprema. For the ultraweak normality used to transport normal functionals, there is also a direct predual proof. The pullback by \(\theta\) of each vector coefficient on \(qH\) is the same coefficient on \(pH\); the norm-summable series description in CP01–06 therefore proves ultraweak continuity. Both algebras have ultraweakly compact closed unit balls by CF4 and this concrete predual. A faithful *-isomorphism is isometric by continuous calculus, so its unit-ball restriction is a continuous bijection from a compact space to a Hausdorff space. Its inverse is continuous on that ball. The ST12 unit-ball criterion gives the full normal inverse: for a functional whose unit-ball restriction is continuous, its norm on the common kernel of finitely many predual tests is arbitrarily small; Hahn–Banach extends that restriction, and subtracting the extension leaves a finite span of those tests. Norm-closedness of the predual then proves that the functional itself belongs to it. Thus \(\theta^{-1}\) is ultraweak continuous as well. No general equivalence between order normality and ultraweak continuity is required here.
 
 The restriction \(J_q=J|_{qH}\) is an antiunitary involution, since \(JqJ=q\). The cone
 \[
@@ -284,6 +291,7 @@ is closed: \(qP\subset P\) follows from MC with \(a=p\), and a vector of \(P\cap
 
 Equations (13)–(14) give \(J_q(qMq)J_q=(qMq)'\). Cone preservation restricts as well: if \(a\in pMp\), then the operator \(\theta(a)J_q\theta(a)J_q\) on \(qH\) is the restriction of \(aJaJ\). The center is \(qZ(M)q\), by (11) and (12), and \(J_q cJ_q=c^*\) follows from MC. Hence the corner has all the displayed geometric properties of the constructed form. These conclusions correspond to Haagerup's Lemma 2.6, printed page 277, with the reduction facts here supplied by CG06.
 
+<a id="cg08"></a>
 ## CG08. A cyclic separating cone vector on a state corner
 
 Suppose \(M\) has a faithful normal state \(\alpha\). There is a cyclic separating vector \(\gamma\in P\).
@@ -300,6 +308,7 @@ Orthogonal supports make the series norm convergent. For \(b'\in M'\), each \(b'
 \]
 If \(b'\gamma=0\), it follows that \(b'\gamma_i=0\) for every \(i\). Commutation with \(M\) makes \(b'\) vanish on \(M\gamma_i\), and therefore on its closure \(q_iH\), where \(q_i=Jp_iJ\). The join of the \(q_i\) is one, so \(b'=0\). The projection onto \(\overline{M\gamma}\) is consequently one. Since \(J\gamma=\gamma\), CG02 then also gives \(s_\gamma=1\). Thus \(\gamma\) is cyclic and separating. This proves the assertion without assuming a countable Hilbert-space dimension or a faithful normal state on the original arbitrary algebra.
 
+<a id="cg09"></a>
 ## CG09. Identifying the cone after choosing that vector
 
 Let \(\gamma\in P\) be cyclic and separating. The modular-core part of MC identifies its modular conjugation \(J_\gamma\) with \(J\), and hence identifies its natural cone with \(P\), as follows.
@@ -319,6 +328,7 @@ Thus \(JS\) and its adjoint have the same core and action, so \(JS\) is positive
 
 MC now gives a self-dual cone \(P_\gamma\) generated by \(aJaJ\gamma\). It is contained in \(P\) by cone preservation. Inclusion reverses under taking dual cones, so self-duality of both gives \(P_\gamma=P\). This proves the comparison needed here directly; it does not use a comparison of two different weight representations.
 
+<a id="cg09a"></a>
 ## CG09a. A dominated functional has a bounded commutant derivative
 
 One elementary part of the analytic realization problem can be supplied without a representation theorem. Let \(\gamma\) be cyclic for \(M\), and let \(0\le\psi\le C\omega_\gamma\). The rule
@@ -344,6 +354,7 @@ Thus \(x^*T=Tx^*\) on a dense set and then on \(H\), so \(T\in M'\). Its bounded
 \]
 This proves bounded commutant realization for a dominated functional. It does not assert that \(T^{1/2}\gamma\) lies in the natural cone, and so does not replace CR.
 
+<a id="cg10"></a>
 ## CG10. Positive functionals on an arbitrary algebra
 
 Assume MC and CR. Every \(\omega\in M_*^+\) has a unique vector \(\xi_\omega\in P\) with

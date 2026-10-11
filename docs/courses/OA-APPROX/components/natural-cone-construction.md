@@ -14,14 +14,13 @@ Inner products are linear in the second variable. A first-variable-linear source
 \]
 All operator equalities below include their actual domains. In particular, a displayed product of unbounded operators is not an equality of formal expressions alone.
 
-The preceding proofs used here are the following.
+The preceding proofs used here are the following. Their complete arguments are retained in the weight foundations, with the original component terms and inner-product conventions preserved.
 
-* NC01 and NC01b construct a faithful normal semifinite weight on an arbitrary algebra, its normal GNS representation, and the full left Hilbert algebra with its original closed involution. NC01b includes the normal-functional GNS and arbitrary direct-sum proofs. For a different, preselected faithful n.s.f. weight, [WG003–010](../../OA-MOD/OA-MOD-WG.html) and [WH02 and WH09–11](../../OA-MOD/OA-MOD-WH.html) give the corresponding realization.
-* [RC–GP–RS–IK–MC–MP](../../OA-MOD/notes/real-coercivity/bounded-modular-polar.html) prove the modular commutant theorem for that Hilbert algebra and identify the **original** closed involution and its adjoint. The route constructs the bounded real-subspace coordinates, proves both commutant inclusions, and obtains the polar factors with their domains; it does not replace the original graph by a newly defined modular graph.
-* [MF06–09](../../OA-MOD/OA-MOD-MF.html) prove modular covariance, the common analytic multiplication algebra, its product identities and bounded-multiplier Gaussian approximation. The approximation of merely bounded multiplication vectors needed below is proved directly in NC01a from the full operator ideals.
-* [QF03–04](../../OA-MOD/OA-MOD-QF.html) represent a densely defined closed positive form, with the exact operator domain, and prove unitary transport of its representing operator. [SK04–09](../../OA-MOD/OA-MOD-SK.html) provide the spectral domains, bounded transforms, powers, inverse domains and pairing identities. The bounded continuous calculus and Hilbert representation are proved in [BK01](../../OA-MOD/OA-MOD-BK.html).
-* For the compact-metric representation step SS3 in the spectral construction, this route uses [RM01–RM05](compact-rmk-from-function-covers.md) for the finite regular measure of a positive functional on a compact metric space, including a compact rectangle. [SC01–SC02](scalar-topology-completion-bridges.md) prove rectangle compactness and completion of an arbitrary measure. Together with [SS1–SS2 and SS4](../../OA-MOD/notes/analytic-programme/spectral-scalar-prerequisites.html), these supply scalar Hilbert completeness, compact-metric approximation and measurable representatives. The [scalar complex and integration proofs](../../OA-MOD/notes/analytic-programme/scalar-complex-programme.html) and their boundary and product-integration continuations supply the contour, convergence and Gaussian formulas used by IK and MA.
-* [MA03/16](../../OA-MOD/OA-MOD-MA.html) prove Gaussian regularization for operators and arbitrary Hilbert vectors, including the scalar Gaussian Fourier identity. Its use below requires only that particular positive Gaussian kernel, not a general positive-definite-function representation theorem.
+* NC01 and NC01b construct the chosen diagonal weight and its original GNS graph on an arbitrary algebra. For an arbitrary preselected faithful normal semifinite weight, WR1–7 construct and recover its full GNS finite ideal; MW1–4 prove covariance and the opposite-weight formulas.
+* BG1–6 prove both commutant inclusions, modular normalization, fullification and the original closed involution and adjoint, including their whole graph cores. BW1–5 prove the two whole multiplier ideals, their adjoint intersections, mixed multiplication and real modular covariance. Thus these inputs apply before a cone or a cyclic state vector has been constructed.
+* SF0, SB0–6 and SF1–4 construct the bounded and unbounded spectral calculus, actual inverse and power domains, and pairing identities. FF4–5 construct the representing operator of a closed positive form and prove its commutant covariance. NC02 below gives the operator-domain criterion needed for the extension argument.
+* CF1–10 supply scalar completeness, choice, compactness, Hahn–Banach, continuous C*-calculus and arbitrary-cardinality Hilbert projection and representation. CP01–06 construct the concrete predual and its norm-closed vector-series realization. SC00–10 construct scalar measure and integration. FF1–3 supply Gaussian Fourier integration and vectorwise integrals; the rectangle proof in SF4 supplies the elementary analytic uniqueness used below.
+* NC00c proves the common analytic multiplication algebra from these real modular and scalar inputs. It includes the complex-power domains, product law and uniformly bounded multiplier approximation. NC01a treats merely bounded multiplication vectors by the full operator ideals.
 
 Here is the combined concrete interface, which fixes the objects used in the rest of this proof. For a faithful n.s.f. weight \(\varphi\) on \(N\), its GNS representation identifies \(N\) faithfully and normally with \(M\subset B(H)\), and
 \[
@@ -85,7 +84,7 @@ We record the proof of (3)–(4), to make their bounded tests and adjoint tests 
 \[
  K=\overline{\operatorname{span}_{\mathbb R}\{a^\sharp a:a\in\mathcal A\}},
 \]
-and MC5 proves \(D(S)=K+iK\), \(S(k+i\ell)=k-i\ell\). Approximating \(k\) and \(\ell\) by real square spans proves that \(\mathcal A^2\) is a graph core for this **original** \(S\). The same conclusion holds for the right algebra and \(F\), by MC1/MC3/MC5 and MP's adjoint identification.
+and BG6 proves \(D(S)=K+iK\), \(S(k+i\ell)=k-i\ell\). Approximating \(k\) and \(\ell\) by real square spans proves that \(\mathcal A^2\) is a graph core for this **original** \(S\). The same conclusion holds for the right algebra and \(F\), by BG5–6, including its exact adjoint graph.
 
 For a right-bounded vector \(\eta\), the operator determined by \(R_\eta a=L_a\eta\) commutes with all \(L_b\), by associativity on \(\mathcal A\), and hence belongs to \(M'\). The assignments are linear and injective, because \(L_a\eta=0\) for all \(a\) implies \(\eta=0\) by nondegeneracy. For \(y\in M'\), the defining tests immediately give \(R_{y\eta}=yR_\eta\). Thus their range \(\mathfrak n_r\) is a left ideal.
 
@@ -104,13 +103,96 @@ Density shows that \(F\eta\in B_r\) and \(R_{F\eta}=R_\eta^*\). Conversely, if \
  \langle S(a^\sharp b),\eta\rangle
  =\langle\theta,a^\sharp b\rangle.
 \]
-Extend this over the proved product graph core. It is exactly the adjoint-domain test (1), so \(\eta\in D(F)\) and \(F\eta=\theta\). Consequently the right algebra defined by the two bounded multiplier tests in GP–MC is precisely \(\mathcal D=B_r\cap D(F)\), and
+Extend this over the proved product graph core. It is exactly the adjoint-domain test (1), so \(\eta\in D(F)\) and \(F\eta=\theta\). Consequently the right algebra defined by the two bounded multiplier tests in BG2 and BG6 is precisely \(\mathcal D=B_r\cap D(F)\), and
 \[
  R(\mathcal D)=\mathfrak n_r\cap\mathfrak n_r^*.
 \]
-The right algebra is full, dense and nondegenerate by MC1–MC6. Apply the proved argument to its opposite left Hilbert algebra. Its closed involution is \(F\), its adjoint is \(S\), and its generated algebra is \(M'\). This gives all the left assertions of (3)–(4), including covariance, injectivity, the ideal intersection, and equality with the full left completion. In particular, the definition of \(B_l\) is exactly boundedness of \(\eta\mapsto R_\eta\xi\) on \(\mathcal D\), with multiplier \(L_\xi\).
+The right algebra is full, dense and nondegenerate by BG1–6. Apply the proved argument to its opposite left Hilbert algebra. Its closed involution is \(F\), its adjoint is \(S\), and its generated algebra is \(M'\). This gives all the left assertions of (3)–(4), including covariance, injectivity, the ideal intersection, and equality with the full left completion. In particular, the definition of \(B_l\) is exactly boundedness of \(\eta\mapsto R_\eta\xi\) on \(\mathcal D\), with multiplier \(L_\xi\).
 
 The mixed identity initially holds for \(\eta\in\mathcal D\) by that definition. Its extension to every \(\eta\in B_r\) is proved after the approximating net in NC01a. This derivation of the full bounded tests uses the complete modular graph construction, and supplies the exact product-core density used later in NC03.
+
+<a id="nc00c"></a>
+## NC00c. Gaussian vectors, complex powers and analytic multiplication
+
+The real modular identities in BG6 and BW4 suffice to construct the analytic algebra used in (7). Put
+\[
+ g_n(t)=\sqrt{n/\pi}\,e^{-nt^2},\qquad
+ \xi_n(z)=\int_{\mathbb R}g_n(t-z)U_t\xi\,dt
+ \quad(\xi\in\mathcal A,\ z\in\mathbb C).
+ \tag{7a}
+\]
+These are vectorwise integrals. On each compact set of complex parameters, the Gaussian and each of its derivatives have an integrable common majorant. Difference quotients therefore give an entire vector function and entire strong-operator functions
+\[
+ X_n(z)=\int g_n(t-z)U_tL_\xi U_{-t}\,dt,
+ \qquad S\xi_n(z)=\int\overline{g_n(t-z)}U_tS\xi\,dt.
+ \tag{7b}
+\]
+The second equality follows by taking finite real-parameter Riemann sums in the closed graph of the conjugate-linear \(S\). Their graph-norm tails converge by the same Gaussian majorant. In the first equality, test the integral against each \(\eta\in\mathcal D\) using mixed multiplication and BW4. It gives \(R_\eta\xi_n(z)=X_n(z)\eta\). Hence \(\xi_n(z)\in B_l\cap D(S)=\mathcal A\), with \(L_{\xi_n(z)}=X_n(z)\). There is no assertion that an arbitrary operator integral belongs to the weight's finite ideal without this vector test.
+
+Let \(A=\log\Delta\), with its spectral domain, and let \(e_k=1_{[-k,k]}(A)\). The proved scalar Gaussian transform gives
+\[
+ e_k\xi_n(z)=e^{izA}e^{-A^2/(4n)}e_k\xi.
+ \tag{7c}
+\]
+For every real \(\alpha\), the scalar function \(e^{\alpha s-s^2/(4n)}\) is bounded on the whole real line. Thus the spectral-domain criterion and (7c), followed by \(e_k\uparrow1\), give
+\[
+ \xi_n(z)\in\bigcap_{w\in\mathbb C}D(\Delta^w),
+ \qquad \Delta^w\xi_n(z)=\xi_n(z-iw).
+ \tag{7d}
+\]
+The sign comes from \(U_t=e^{itA}\): \(e^{izA}=\Delta^{iz}\). This computation includes all inverse domains.
+
+The word “common” also requires right boundedness. For \(\xi\in\mathcal A\), put \(\chi=\Delta^{1/2}\xi=JS\xi\in\mathcal D\), by BG6. Its right Gaussian integral is a vector of \(\mathcal D\) by the right version of (7b). On every spectral band, (7c) gives
+\[
+ \xi_n(z)=\chi_n(z+i/2).
+ \tag{7g}
+\]
+Both sides are actual Hilbert vectors, so the band identity passes to their full limits. Consequently every \(\xi_n(z)\) is in \(\mathcal A\cap\mathcal D\), with both bounded multipliers. The right argument uses \(F\chi\), which exists since \(\chi\in\mathcal D\), and hence proves its full right involution domain too. Likewise, anti-linearity and \(J\Delta^{1/2}J=\Delta^{-1/2}\) give
+\[
+ J\xi_n(z)=(S\xi)_n(\bar z-i/2).
+ \tag{7h}
+\]
+To check (7h), write \(J\xi_n(z)\) as the right Gaussian of \(J\xi\) at \(\bar z\), and use \(\Delta^{-1/2}J\xi=S\xi\) on finite spectral bands. Thus conjugation preserves the left generating family as well. On the common intersection the two products agree, since \(L_\xi\zeta=R_\zeta\xi\), so finite products remain in both algebras. No boundedness of an unsmeared complex modular orbit is inferred.
+
+For real \(r\), changing the integration variable gives
+\(U_r\xi_n(z)=\xi_n(z+r)\) and
+\(L_{\xi_n(z+r)}=U_rL_{\xi_n(z)}U_{-r}\).
+The vector and multiplier functions for a product are
+\[
+ F(r)=\xi_n(z+r)\zeta_m(v+r),\qquad
+ L_{F(r)}=L_{\xi_n(z+r)}L_{\zeta_m(v+r)}.
+\]
+They extend entirely in \(r\), by the locally bounded entire operator and vector functions in (7b). Each value is an algebra vector. The involution is the reversed product of the two involutions, so its graph function has the required conjugated parameter and locally bounded norm as well. On the real axis \(F(r)=U_rF(0)\), because BG6 gives algebra covariance. For each \(k\), the entire functions \(e_kF(z)\) and \(e^{izA}e_kF(0)\) agree on the real axis; scalar pairing and the power-series uniqueness proof make them equal everywhere. Since \(F(z)\) is an actual Hilbert vector, the spectral-domain criterion now gives \(F(0)\in D(\Delta^w)\) and \(\Delta^wF(0)=F(-iw)\). This proves the complex-power product law, including its domains, rather than analytically continuing a formal unbounded product.
+
+Take the algebra generated by all the vectors \(\xi_n(z)\), and close this generating family under the involution and complex translates just described. The finite sums and products form \(\mathcal A_0\). The same entire-function argument for every finite product proves
+\[
+ \Delta^w\mathcal A_0=\mathcal A_0,
+ \qquad \Delta^w(\xi\zeta)=(\Delta^w\xi)(\Delta^w\zeta).
+ \tag{7e}
+\]
+For the involution of a Gaussian generator, conjugation of the kernel in (7b) gives the Gaussian of \(S\xi\) at \(\bar z\); its complex translates are still generators. Thus the indicated closure under involution creates no extra spectral-domain assumption.
+
+Finally \(\xi_n(0)\to\xi\) and \(S\xi_n(0)\to S\xi\), because the positive mass-one Gaussian kernels form an approximate identity and \(U_t\) is strongly continuous. Also
+\[
+ \|L_{\xi_n(0)}\|\le\|L_\xi\|,
+ \qquad L_{\xi_n(0)}\to L_\xi\text{ strongly}.
+ \tag{7f}
+\]
+For the last assertion test each Hilbert vector in the strongly continuous orbit \(U_tL_\xi U_{-t}\), split the integral into a small interval and its Gaussian tail, and use the uniform operator bound. The identical argument for adjoints gives strong* convergence. Applying the whole argument to the opposite right algebra replaces \(\Delta\) by \(\Delta^{-1}\) and gives the right analytic graph and multiplier approximation. These are the full analytic and approximation inputs used in NC03–NC06.
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="240" viewBox="0 0 1050 240">
+<rect width="1050" height="240" fill="#f8fbff"/>
+<g font-family="Arial, sans-serif" fill="#17344c">
+<text x="24" y="36" font-size="24" font-weight="bold">A Gaussian controls every spectral power</text>
+<text x="24" y="73" font-size="19">s = log λ ∈ ℝ; Uₜ has multiplier exp(its)</text>
+<text x="24" y="109" font-size="19">ξₙ(z): exp(izs − s²/(4n))     →     Δʷξₙ(z) = ξₙ(z − iw)</text>
+<text x="24" y="146" font-size="19">On each band |s| ≤ k: analytic multiplication is a bounded identity.</text>
+<text x="24" y="180" font-size="19">All bands together: an actual vector value proves the full power domain.</text>
+<text x="24" y="215" font-size="16">Proof: NC00c (7a)–(7f). No spectral bound on Δ and no cyclic vector are assumed.</text>
+</g>
+</svg>
+
+The diagram displays the exact scalar multipliers and domain mechanism; it is a schematic of spectral calculus, not a plotted spectral distribution. Its editable source is the inline SVG. The scalar Gaussian and spectral arguments are the earlier CF/SC/SF/FF proofs; the bounded modular method is credited to Rieffel–Van Daele.
 
 <a id="nc01"></a>
 ## NC01. Choosing a weight at arbitrary cardinality
@@ -157,7 +239,7 @@ For \(\xi\in B_l\), the defining equality \(L_\xi\eta_i=R_{\eta_i}\xi\) now tend
 <a id="nc01b"></a>
 ## NC01b. Normal GNS models and the original full diagonal-weight algebra
 
-We use the complete Hilbert and concrete-predual constructions [H00–H03](../src/regular-group-operator-foundations.md#h00), their arbitrary-Hilbert-space identification [P00](../src/tracial-adjoints-and-rational-matrix-models.md#p00), and the bounded calculus F03–F08. H03 identifies a concrete von Neumann algebra \(N\) isometrically with \((N_*)^*\). Its quotient predual is a norm-closed subspace of \(N^*\): Hahn–Banach gives the quotient norm as the supremum of its pairings with the unit ball of its dual. The normal coefficients therefore remain normal under functional-norm limits.
+We use the complete CF1–10 Hilbert and bounded-calculus arguments and the CP01–06 concrete predual. In the following calculations the inner product is translated to the second-variable convention. CP06 identifies a concrete von Neumann algebra \(N\) isometrically with \((N_*)^*\). Its quotient predual is a norm-closed subspace of \(N^*\): Hahn–Banach gives the quotient norm as the supremum of its pairings with the unit ball of its dual. The normal coefficients therefore remain normal under functional-norm limits.
 
 **Normal positive functionals.** For \(\omega\in N_*^+\), positivity and the scalar quadratic-polynomial test give
 \[
@@ -172,7 +254,7 @@ Quotient \(N\) by the null space of this form and complete, using
 Thus \(\pi_\omega(a)[c]=[ac]\) defines a contractive unital *-representation on \(H_\omega\), with cyclic vector \(\Omega_\omega=[1]\) representing \(\omega\). Multiplication, adjoints and the identity follow on quotient vectors by taking the displayed pairings, and extend by density.
 
 This representation is normal. Indeed every predual functional is a series
-\(f(a)=\sum_j\langle u_j,av_j\rangle\) with \(\sum_j\|u_j\|\|v_j\|<\infty\), by H03 and P00. Fixed multiplication gives
+\(f(a)=\sum_j\langle u_j,av_j\rangle\) with \(\sum_j\|u_j\|\|v_j\|<\infty\), by CP03–06. Fixed multiplication gives
 \[
  f(b^*ac)=\sum_j\langle bu_j,acv_j\rangle,
  \qquad \sum_j\|bu_j\|\|cv_j\|
@@ -186,7 +268,7 @@ In particular the coefficients on quotient vectors, \(\omega(b^*ac)\), belong to
 \]
 The norm-closedness just proved puts each limiting coefficient in \(N_*\). An ultraweak functional on the target is itself a norm-summable series of coefficients. Its pullback is a norm-convergent series in \(N_*\), so \(\pi_\omega\) is ultraweak continuous. The zero functional gives the zero space.
 
-**Arbitrary sums.** For any set-indexed family of such representations, take their Hilbert direct sum \(H=\bigoplus_i H_i\), with the componentwise action \(\pi(a)\). Each vector has countable support: for every positive integer \(n\), only finitely many component norms can exceed \(1/n\). Finite-support vectors are dense, and completeness follows by the coordinate argument in H00. The coefficient series obeys
+**Arbitrary sums.** For any set-indexed family of such representations, take their Hilbert direct sum \(H=\bigoplus_i H_i\), with the componentwise action \(\pi(a)\). Each vector has countable support: for every positive integer \(n\), only finitely many component norms can exceed \(1/n\). Finite-support vectors are dense, and completeness follows by the coordinate argument in CF8. The coefficient series obeys
 \[
  \langle\xi,\pi(a)\eta\rangle
  =\sum_i\langle\xi_i,\pi_i(a)\eta_i\rangle,
@@ -213,9 +295,9 @@ Here \(xp_i\in\mathfrak n_\varphi\), since its square weight is \(\omega_i(x^*x)
 
 **The image is a von Neumann algebra.** We give the compactness step explicitly. For a Banach space \(X\), place its dual unit ball in the product of closed scalar discs \(\prod_{x\in X}\{z:|z|\le\|x\|\}\), by evaluation. This product is compact. One direct proof uses choice to extend a filter with the finite-intersection property to an ultrafilter. On each scalar disc, repeated finite subdivision into closed squares chooses a nested square sequence of diameters tending to zero whose intersections with the disc belong to the ultrafilter. Scalar completeness gives a limit point in the disc; every neighbourhood belongs to that coordinate ultrafilter. The coordinate limits therefore give a product limit, because a basic neighbourhood tests only finitely many coordinates. If a family of product-closed sets with the finite-intersection property had empty intersection, its extending ultrafilter would give a limit lying in each of them, a contradiction. This proves compactness. The evaluation families satisfying additivity and complex homogeneity form a closed subset of the product, and the coordinate bound makes them precisely the dual unit ball. Its product topology is the weak* topology. This is Banach–Alaoglu with its scalar and choice inputs displayed.
 
-Since \(N=(N_*)^*\), its unit ball is compact ultraweakly. Put \(B=\pi(N)\), a unital norm-closed C*-algebra by isometry. The complete self-adjoint contraction-density proof [ODF03–05](operator-density-foundations.md#odf03) supplies, for each self-adjoint contraction \(T\in B''\), a net of self-adjoint contractions \(\pi(a_\lambda)\) converging strongly to \(T\), with \(\|a_\lambda\|\le1\). Here the represented algebra has an identity, so the orbit closure in ODF03 contains each test tuple directly by using that identity. Compactness supplies a convergent subnet by the complete net construction in [COMPACT](../src/hypertraces-finite-injectivity.md#compactness). Explicitly, the closures of the tails have a common cluster point; index the subnet by triples consisting of a neighbourhood, an original tail index and a chosen later index hitting that neighbourhood. Shrink the neighbourhood and advance both indices in the order. A hit beyond both previously chosen indices gives a common successor, so this is directed, and projection onto the chosen index is order preserving and eventually beyond each original index. It gives the convergent subnet. Write its ultraweak limit as \(a\in N\). Normality makes \(\pi(a_\lambda)\) converge ultraweakly to \(\pi(a)\), while its bounded strong convergence has limit \(T\), by H03's series-tail test. Coefficients separate operators, so \(T=\pi(a)\). Scaling and taking the real and imaginary self-adjoint parts of an arbitrary \(T\in B''\) prove \(B''=B\). We now write \(M=\pi(N)\).
+Since \(N=(N_*)^*\), its unit ball is compact ultraweakly. Put \(B=\pi(N)\), a unital norm-closed C*-algebra by isometry. The complete self-adjoint contraction-density proof [ODF03–05](operator-density-foundations.md#odf03) supplies, for each self-adjoint contraction \(T\in B''\), a net of self-adjoint contractions \(\pi(a_\lambda)\) converging strongly to \(T\), with \(\|a_\lambda\|\le1\). Here the represented algebra has an identity, so the orbit closure in ODF03 contains each test tuple directly by using that identity. Compactness supplies a convergent subnet by the complete net construction in [COMPACT](../src/hypertraces-finite-injectivity.md#compactness). Explicitly, the closures of the tails have a common cluster point; index the subnet by triples consisting of a neighbourhood, an original tail index and a chosen later index hitting that neighbourhood. Shrink the neighbourhood and advance both indices in the order. A hit beyond both previously chosen indices gives a common successor, so this is directed, and projection onto the chosen index is order preserving and eventually beyond each original index. It gives the convergent subnet. Write its ultraweak limit as \(a\in N\). Normality makes \(\pi(a_\lambda)\) converge ultraweakly to \(\pi(a)\), while its bounded strong convergence has limit \(T\), by CP03–06's series-tail test. Coefficients separate operators, so \(T=\pi(a)\). Scaling and taking the real and imaginary self-adjoint parts of an arbitrary \(T\in B''\) prove \(B''=B\). We now write \(M=\pi(N)\).
 
-The inverse identification is normal as well. On each closed norm ball, \(\pi\) is a continuous bijection from a compact ultraweak space to a Hausdorff ultraweak space, so its inverse is continuous there: a compact subset of a Hausdorff space is closed, by separating one exterior point from its points and taking a finite subcover. Let \(f\in N_*\), and put \(g=f\circ\pi^{-1}\in M^*\). Its restriction to the unit ball is ultraweak continuous. For \(\varepsilon>0\), continuity at zero gives finitely many \(h_1,\ldots,h_n\in M_*\) such that \(|g(x)|<\varepsilon\) whenever \(\|x\|\le1\) and all the \(h_j(x)\) are sufficiently small. In particular \(g\) has norm at most \(\varepsilon\) on the common kernel \(V=\bigcap_j\ker h_j\). Hahn–Banach F01 extends this restriction to \(G\in M^*\) with \(\|G\|\le\varepsilon\). The functional \(g-G\) vanishes on \(V\), so it factors through the finite-dimensional map \(x\mapsto(h_1(x),\ldots,h_n(x))\). Extending a linear functional on its image to \(\mathbb C^n\) proves \(g-G\in\operatorname{span}\{h_j\}\subset M_*\). Since \(\varepsilon\) is arbitrary and \(M_*\) is norm closed, \(g\in M_*\). Thus \(\pi^{-1}\) pulls every normal functional back to a normal functional. Normal positive functionals can consequently be transported in both directions without a normality-converse theorem.
+The inverse identification is normal as well. On each closed norm ball, \(\pi\) is a continuous bijection from a compact ultraweak space to a Hausdorff ultraweak space, so its inverse is continuous there: a compact subset of a Hausdorff space is closed, by separating one exterior point from its points and taking a finite subcover. Let \(f\in N_*\), and put \(g=f\circ\pi^{-1}\in M^*\). Its restriction to the unit ball is ultraweak continuous. For \(\varepsilon>0\), continuity at zero gives finitely many \(h_1,\ldots,h_n\in M_*\) such that \(|g(x)|<\varepsilon\) whenever \(\|x\|\le1\) and all the \(h_j(x)\) are sufficiently small. In particular \(g\) has norm at most \(\varepsilon\) on the common kernel \(V=\bigcap_j\ker h_j\). Hahn–Banach CF3 extends this restriction to \(G\in M^*\) with \(\|G\|\le\varepsilon\). The functional \(g-G\) vanishes on \(V\), so it factors through the finite-dimensional map \(x\mapsto(h_1(x),\ldots,h_n(x))\). Extending a linear functional on its image to \(\mathbb C^n\) proves \(g-G\in\operatorname{span}\{h_j\}\subset M_*\). Since \(\varepsilon\) is arbitrary and \(M_*\) is norm closed, \(g\in M_*\). Thus \(\pi^{-1}\) pulls every normal functional back to a normal functional. Normal positive functionals can consequently be transported in both directions without a normality-converse theorem.
 
 **The initial left Hilbert algebra and its closed graph.** Let
 \(\mathcal A=\Lambda(\mathfrak n_\varphi\cap\mathfrak n_\varphi^*)\), with product \(\Lambda(x)\Lambda(y)=\Lambda(xy)\) and involution \(\Lambda(x)^\sharp=\Lambda(x^*)\). The left-ideal estimate gives bounded left multiplication, and the original sum pairings give
@@ -232,7 +314,7 @@ The original involution is closable. First the subspace
  =\langle\Lambda(x),R_jb'^*\eta_i\rangle.
  \tag{9b}
 \]
-If \(\Lambda(x_n)\to0\) and \(\Lambda(x_n^*)\to\zeta\), (9b) makes \(\zeta\) orthogonal to \(R_iK\) for every \(i\). These spaces together span \(H\), so \(\zeta=0\). This proves closability of precisely the initial involution. Let its closure be \(S\). We have now supplied the left Hilbert algebra to which the complete RC–GP–RS–IK–MC–MP construction applies.
+If \(\Lambda(x_n)\to0\) and \(\Lambda(x_n^*)\to\zeta\), (9b) makes \(\zeta\) orthogonal to \(R_iK\) for every \(i\). These spaces together span \(H\), so \(\zeta=0\). This proves closability of precisely the initial involution. Let its closure be \(S\). We have now supplied the left Hilbert algebra to which the complete BG1–6 construction applies.
 
 **The bounded part of the original closed graph.** If \(x\in\mathfrak n_\varphi\), \(\Lambda(x)\in D(S)\), and \(S\Lambda(x)=\eta\), take finite-star \(x_n\) converging in this original graph. Identity (9b) passes to the limit. The same bounded adjoint computation with \(x\) on the right gives
 \[
@@ -252,7 +334,7 @@ Thus \(x\in\mathfrak n_\varphi\), and (9a) gives \(\xi=\Lambda(x)\). Conversely,
 \[
  B_l\cap D(S)=\Lambda(\mathfrak n_\varphi\cap\mathfrak n_\varphi^*)=\mathcal A.
 \]
-To check fullness as an algebra, let \(\mathcal A''\) be the double completion from MC6. Every \(\xi\in\mathcal A''\) satisfies the bounded left-multiplier tests MC6.2, so \(\xi\in B_l\). MC6.5 and MC5 prove that its closed involution has the same original graph \(S\), so \(\xi\in D(S)\). Therefore \(\mathcal A''\subset B_l\cap D(S)=\mathcal A\); the reverse inclusion is also proved by MC6.2. Hence \(\mathcal A''=\mathcal A\). This is the full original left Hilbert algebra required in (2)–(4). The proof uses no normality converse for a general weight, no opposite-weight reconstruction, and no separability hypothesis.
+To check fullness as an algebra, let \(\mathcal A''\) be the double completion from BG6. Every \(\xi\in\mathcal A''\) satisfies the bounded left-multiplier tests in BG6, so \(\xi\in B_l\). BG6 prove that its closed involution has the same original graph \(S\), so \(\xi\in D(S)\). Therefore \(\mathcal A''\subset B_l\cap D(S)=\mathcal A\); the reverse inclusion is also proved in BG6. Hence \(\mathcal A''=\mathcal A\). This is the full original left Hilbert algebra required in (2)–(4). The proof uses no normality converse for a general weight, no opposite-weight reconstruction, and no separability hypothesis.
 
 <a id="nc02"></a>
 ## NC02. A positive symmetric operator has a covariant positive extension
@@ -269,9 +351,13 @@ The inclusion into \(H\) extends to a contraction \(\iota:V\to H\). This map is 
 \]
 Consequently \(v\) is orthogonal in \(V\) to its dense subspace \(D\), and \(v=0\). Identify \(V\) with \(\iota V\subset H\). The continuous extension of the second term in (10) is a densely defined closed positive form \(q\), since its form norm is exactly the complete \(V\)-norm.
 
-QF03 constructs its positive self-adjoint representing operator \(h\). Its operator-domain criterion says that \(v\in D(h)\) precisely when the form \(q(w,v)\) is \(\langle w,f\rangle\) for some \(f\in H\), for every \(w\in V\), and then \(hv=f\). For \(v\in D\), symmetry and form-norm approximation give \(q(w,v)=\langle w,T_0v\rangle\), so \(h\) extends \(T_0\).
+FF4 constructs its positive self-adjoint representing operator \(h\). Its operator-domain criterion says that \(v\in D(h)\) precisely when the form \(q(w,v)\) is \(\langle w,f\rangle\) for some \(f\in H\), for every \(w\in V\), and then \(hv=f\). Here is that criterion directly from FF4. Let \(j:V\to H\) be inclusion and \(B=jj^*\), so \(h=B^{-1}-1\) and \(D(h)=\operatorname{Ran}B\). If \(q(w,v)=\langle w,f\rangle_H\) for every \(w\in V\), then
+\(\langle w,v\rangle_V=\langle jw,v+f\rangle_H\).
+Hilbert representation gives \(v=j^*(v+f)\) as a vector of \(V\), hence its Hilbert image is \(B(v+f)\). Thus \(v\in D(h)\) and \(hv=f\). Conversely, if \(v=B u\), the identity \(j^*u\) for its graph vector gives \(q(w,v)=\langle w,u-v\rangle_H\). This proves both directions, with the exact operator domain.
 
-If every unitary in a von Neumann algebra \(B\) preserves \(D\) and commutes with \(T_0\) there, it preserves (10), hence \(V\) and \(q\). QF04's uniqueness and transport prove \(uhu^*=h\), including domains, for every such unitary. The spectral calculus then places every bounded transform of \(h\) in \(B'\). Thus \(h\) is affiliated with \(B'\). This proves the extension and its covariance, including the form-closure step used in Hiai's endpoint argument.
+For \(v\in D\), symmetry and form-norm approximation give \(q(w,v)=\langle w,T_0v\rangle\), so \(h\) extends \(T_0\).
+
+If every unitary in a von Neumann algebra \(B\) preserves \(D\) and commutes with \(T_0\) there, it preserves (10), hence \(V\) and \(q\). FF5's uniqueness and commutant transport prove \(uhu^*=h\), including domains, for every such unitary. The spectral calculus then places every bounded transform of \(h\) in \(B'\). Thus \(h\) is affiliated with \(B'\). This proves the extension and its covariance, including the form-closure step used in Hiai's endpoint argument.
 
 <a id="nc03"></a>
 ## NC03. Endpoint duality using all right-bounded vectors

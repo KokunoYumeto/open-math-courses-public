@@ -255,6 +255,29 @@ The closures are nested inside the first compact closure and their diameters ten
 \]
 Every relative neighborhood of a stabilizer point contains a basis member \(U_i\) meeting \(H_y\), and its selector lies in that neighborhood; this proves density.
 
+<a id="oa-flow.orbits.ergodic"></a>
+## The orbit quotient is exactly the fixed-point algebra
+
+The homogeneous systems in (K19) are ergodic: the [compact homogeneous-space converse](OA-FLOW-EOR.md#eor-6) proves that every invariant bounded measurable class on \(G/H_y\) is scalar. Thus each retained conditional component has scalar fixed algebra. To identify the global fixed algebra, we must also handle the null sets that can depend on the group element.
+
+First the action on each of these fiber algebras is point-ultraweakly continuous. Left translation acts unitarily on \(L^2(G/H_y,m_{G/H_y})\), since quotient Haar is invariant. On compact continuous vectors it is strongly continuous: near the identity, all translated supports lie in one compact set and the continuous translates converge uniformly there. Haar measure is finite on that compact set. [HR3's density](OA-FLOW-HR.md#hr-03) and unitarity extend this convergence to every vector. Conjugating a multiplier by these unitaries gives the translated multiplier; vector coefficients and the summable-vector tails of [CP4](OA-FLOW-CP.md#oa-flow.cp.4) give point-ultraweak continuity. The normal equivariant identification (K19) transports it to \(L^\infty(q^{-1}(y),\lambda_y)\).
+
+Now let \(F\) be a bounded Borel representative of an element of \(L^\infty(X,\lambda)^\alpha\). Choose a countable dense subset \(D\subset G\), by taking one point in each nonempty member of a countable basis. For every \(g\in D\), the function \(F(g^{-1}x)-F(x)\) vanishes \(\lambda\)-almost everywhere. The conditional identity (K16), applied to its absolute value, shows that it vanishes \(\lambda_y\)-almost everywhere for \(\nu\)-almost every \(y\). Intersect these countably many conull Borel sets with \(Y_1\). On the resulting single conull set, the fiber class \(F_y\) is fixed by every \(g\in D\). Point-ultraweak continuity and density of \(D\) make it fixed by every \(g\in G\). Ergodicity of that fiber makes it scalar.
+
+Its scalar is necessarily
+\[
+ c(y)=\int_{q^{-1}(y)}F(x)\,d\lambda_y(x),
+ \qquad |c(y)|\le\|F\|_\infty.
+ \tag{K21a}
+\]
+Kernel integration makes \(c\) Borel. On the common conull base just constructed, \(F=c(y)\) almost everywhere in each fiber. Applying (K16) to \(|F-c\circ q|\) proves \(F=c\circ q\) \(\lambda\)-almost everywhere. Conversely \(q(gx)=q(x)\) makes every \(c\circ q\) invariant. Therefore
+\[
+ L^\infty(X,\lambda)^\alpha
+   =\{c\circ q:c\in L^\infty(Y,\nu)\}.
+ \tag{K21b}
+\]
+The pullback is faithful and isometric because \(q_*\lambda=\nu\), testing the absolute-value level sets. Both it and its inverse on the range preserve order. The fixed algebra is a von Neumann algebra: it is the intersection of the ultraweakly closed solution spaces of \(\alpha_g(F)=F\), and is a unital star algebra. [NF6](OA-FLOW-NF.md#oa-flow.nf.6) consequently makes the order isomorphism normal in both directions. The quotient is the precise fixed-point base, and (K16) disintegrates the measure into ergodic conditional components. No intersection over uncountably many exceptional sets was used.
+
 <a id="oa-flow.orbits.example"></a>
 ## An exact finite kernel
 

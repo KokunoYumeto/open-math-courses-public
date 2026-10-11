@@ -1,0 +1,158 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Path weights and backward counting</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="a-finite-expansion-of-a-restricted-cnf.html">Previous lesson</a><a href="sunflowers-and-a-disjoint-sparse-partition.html">Next lesson</a><a href="src/path-weights-and-backward-counting.md">Editable source</a></nav><main><article><h1 id="path-weights-and-backward-counting">Path weights and backward counting</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><a href="a-finite-expansion-of-a-restricted-cnf.html">A finite expansion of a restricted CNF</a> wrote a restricted CNF of width <span class="math" data-tex="\(k\)">\(k\)</span> as <span class="math" data-tex="\(K\)">\(K\)</span> plus a signed sum over paths of wide clauses. This lesson finishes the proof of the restriction bound (Lemma 1.1 of that lesson). Each path term is a positive weight times an <em>average</em> of CNFs of width at most <span class="math" data-tex="\(b\)">\(b\)</span>; this gives the correlation inequality with the total weight <span class="math" data-tex="\(W\)">\(W\)</span>. The expected total weight is then bounded by counting the paths <em>backwards</em> from a full random assignment. At each backward step the count is divided by the number of candidate clauses, which is why the number of clauses never enters.</p>
+<p>Notation is that of the previous lesson: the clauses <span class="math" data-tex="\(C_i\)">\(C_i\)</span> with scopes <span class="math" data-tex="\(E_i\)">\(E_i\)</span>, the restriction <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span>, the indicators <span class="math" data-tex="\(v_i\)">\(v_i\)</span>, the counts <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(a_U\)">\(a_U\)</span>, <span class="math" data-tex="\(c_U\)">\(c_U\)</span>, the CNF <span class="math" data-tex="\(K\)">\(K\)</span>, and paths <span class="math" data-tex="\(P=(i_1,\ldots,i_j)\)">\(P=(i_1,\ldots,i_j)\)</span> with sets <span class="math" data-tex="\(U_1\subseteq\cdots\subseteq U_j\)">\(U_1\subseteq\cdots\subseteq U_j\)</span>.</p>
+<h2 id="1-a-finite-mixture">1. A finite mixture</h2>
+<p><strong>Lemma 1.1 (marker mixture).</strong> Let <span class="math" data-tex="\(D_1,\ldots,D_a\)">\(D_1,\ldots,D_a\)</span> be an indexed family of clauses (repetitions and constant clauses allowed, <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>) and <span class="math" data-tex="\(c\geq1\)">\(c\geq1\)</span> an integer. Put the <span class="math" data-tex="\(a\)">\(a\)</span> clauses and <span class="math" data-tex="\(c\)">\(c\)</span> distinct markers in a uniformly random order, and let <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> be the conjunction of the clauses placed before the first marker. If an assignment violates exactly <span class="math" data-tex="\(w\)">\(w\)</span> of the clauses, then <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> holds there with probability
+<span class="math math-display" data-tex="\[
+\frac c{c+w}.
+\]">\[
+\frac c{c+w}.
+\]</span></p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> holds exactly when no violated clause comes before the first marker, that is, when the first of the <span class="math" data-tex="\(w+c\)">\(w+c\)</span> objects consisting of the violated clauses and the markers is a marker. In a uniform order each of these objects is equally likely to come first. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The random conjunction <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is a CNF built from the given clauses, so if they have width at most <span class="math" data-tex="\(b\)">\(b\)</span>, every outcome of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> does too.</p>
+<h2 id="2-compatible-paths">2. Compatible paths</h2>
+<p>A path <span class="math" data-tex="\(P=(i_1,\ldots,i_j)\)">\(P=(i_1,\ldots,i_j)\)</span> is <em>compatible</em> with <span class="math" data-tex="\(\rho\)">\(\rho\)</span> if the clauses <span class="math" data-tex="\(C_{i_1},\ldots,C_{i_j}\)">\(C_{i_1},\ldots,C_{i_j}\)</span> can be violated simultaneously at some point that agrees with <span class="math" data-tex="\(\rho\)">\(\rho\)</span> outside <span class="math" data-tex="\(T\)">\(T\)</span>. Violating a clause prescribes its unique violating pattern on its scope, so a compatible path prescribes exactly one pattern <span class="math" data-tex="\(\sigma_P\)">\(\sigma_P\)</span> on <span class="math" data-tex="\(U_j\)">\(U_j\)</span>, the live part of the union of the selected scopes, and nothing elsewhere on <span class="math" data-tex="\(T\)">\(T\)</span>. Let
+<span class="math math-display" data-tex="\[
+\mathcal Z_P=\{z\in\{0,1\}^T:z|_{U_j}=\sigma_P\}
+\]">\[
+\mathcal Z_P=\{z\in\{0,1\}^T:z|_{U_j}=\sigma_P\}
+\]</span>
+be this cylinder. Then <span class="math" data-tex="\(v_{i_1}\cdots v_{i_j}=\mathbf 1_{\mathcal Z_P}\)">\(v_{i_1}\cdots v_{i_j}=\mathbf 1_{\mathcal Z_P}\)</span>. For an incompatible path the product vanishes identically, and the path can be dropped from the expansion.</p>
+<p>For a compatible path and <span class="math" data-tex="\(1\leq h\leq j\)">\(1\leq h\leq j\)</span>, the count <span class="math" data-tex="\(c_{U_h}\)">\(c_{U_h}\)</span> is constant on <span class="math" data-tex="\(\mathcal Z_P\)">\(\mathcal Z_P\)</span>: it counts violated clauses whose live variables lie in <span class="math" data-tex="\(U_h\subseteq U_j\)">\(U_h\subseteq U_j\)</span>, and these are all fixed there. Denote this constant by <span class="math" data-tex="\(c_h\)">\(c_h\)</span>; it is at least <span class="math" data-tex="\(h\)">\(h\)</span>, by Lemma 3.1(c) of the previous lesson. Define the <em>weight</em>
+<span class="math math-display" data-tex="\[
+\omega(P)=\frac1{c_1c_2\cdots c_j}.
+\]">\[
+\omega(P)=\frac1{c_1c_2\cdots c_j}.
+\]</span></p>
+<h2 id="3-each-term-is-a-weighted-average-of-narrow-cnfs">3. Each term is a weighted average of narrow CNFs</h2>
+<p><strong>Lemma 3.1.</strong> For a compatible path <span class="math" data-tex="\(P\)">\(P\)</span> of length <span class="math" data-tex="\(j\)">\(j\)</span> there is a random CNF <span class="math" data-tex="\(J_P\)">\(J_P\)</span>, drawn from a finite probability space independent of everything else, such that every outcome of <span class="math" data-tex="\(J_P\)">\(J_P\)</span> lies in <span class="math" data-tex="\(\mathcal C_b(T)\)">\(\mathcal C_b(T)\)</span>, and as functions on <span class="math" data-tex="\(\{0,1\}^T\)">\(\{0,1\}^T\)</span>
+<span class="math math-display" data-tex="\[
+K\,\frac{v_{i_1}\cdots v_{i_j}}{a_{U_1}\cdots a_{U_j}}=\omega(P)\,\mathbb E[J_P].
+\]">\[
+K\,\frac{v_{i_1}\cdots v_{i_j}}{a_{U_1}\cdots a_{U_j}}=\omega(P)\,\mathbb E[J_P].
+\]</span></p>
+<p><em>Proof.</em> On <span class="math" data-tex="\(\mathcal Z_P\)">\(\mathcal Z_P\)</span>, split <span class="math" data-tex="\(a_{U_h}=c_h+w_h\)">\(a_{U_h}=c_h+w_h\)</span>, where <span class="math" data-tex="\(w_h=\sum_{i\in I_h}v_i\)">\(w_h=\sum_{i\in I_h}v_i\)</span> counts the violated clauses in
+<span class="math math-display" data-tex="\[
+I_h=\{i:0&lt;|E_i\cap(T\setminus U_h)|\leq b\}.
+\]">\[
+I_h=\{i:0&lt;|E_i\cap(T\setminus U_h)|\leq b\}.
+\]</span>
+Substitute <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and the pattern <span class="math" data-tex="\(\sigma_P\)">\(\sigma_P\)</span> into each clause <span class="math" data-tex="\(C_i\)">\(C_i\)</span> with <span class="math" data-tex="\(i\in I_h\)">\(i\in I_h\)</span>. The result is a clause on <span class="math" data-tex="\(T\setminus U_j\)">\(T\setminus U_j\)</span> of width at most <span class="math" data-tex="\(b\)">\(b\)</span>, since <span class="math" data-tex="\(T\setminus U_j\subseteq T\setminus U_h\)">\(T\setminus U_j\subseteq T\setminus U_h\)</span>, or a constant clause; keep the indexing, repetitions and constants included. On <span class="math" data-tex="\(\mathcal Z_P\)">\(\mathcal Z_P\)</span>, the clause <span class="math" data-tex="\(C_i\)">\(C_i\)</span> is violated exactly when its substituted version is, so <span class="math" data-tex="\(w_h\)">\(w_h\)</span> is the number of violated clauses in this indexed family.</p>
+<p>For each <span class="math" data-tex="\(h\)">\(h\)</span>, apply Lemma 1.1 to this family with <span class="math" data-tex="\(c=c_h\)">\(c=c_h\)</span>, independently for different <span class="math" data-tex="\(h\)">\(h\)</span>, and let <span class="math" data-tex="\(J_P\)">\(J_P\)</span> be the conjunction of the <span class="math" data-tex="\(j\)">\(j\)</span> resulting CNFs, of <span class="math" data-tex="\(K\)">\(K\)</span>, and of the unit clauses prescribing <span class="math" data-tex="\(\sigma_P\)">\(\sigma_P\)</span> on <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. True clauses can be dropped and a false clause makes <span class="math" data-tex="\(J_P\)">\(J_P\)</span> the false CNF; every outcome lies in <span class="math" data-tex="\(\mathcal C_b(T)\)">\(\mathcal C_b(T)\)</span>, using <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span> for the unit clauses. Off <span class="math" data-tex="\(\mathcal Z_P\)">\(\mathcal Z_P\)</span> both sides vanish. On <span class="math" data-tex="\(\mathcal Z_P\)">\(\mathcal Z_P\)</span>, independence and Lemma 1.1 give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E[J_P]&amp;=K\prod_{h=1}^{j}\frac{c_h}{c_h+w_h}\\
+&amp;=\frac K{\omega(P)\,a_{U_1}\cdots a_{U_j}},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E[J_P]&amp;=K\prod_{h=1}^{j}\frac{c_h}{c_h+w_h}\\
+&amp;=\frac K{\omega(P)\,a_{U_1}\cdots a_{U_j}},
+\end{aligned}
+\]</span>
+which is the claim, since the numerator <span class="math" data-tex="\(v_{i_1}\cdots v_{i_j}\)">\(v_{i_1}\cdots v_{i_j}\)</span> equals <span class="math" data-tex="\(1\)">\(1\)</span> there. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of the correlation inequality.</strong> Put
+<span class="math math-display" data-tex="\[
+W_0=1,\qquad W_j=\sum_{P}\omega(P)\quad(j\geq1),
+\]">\[
+W_0=1,\qquad W_j=\sum_{P}\omega(P)\quad(j\geq1),
+\]</span>
+the sum over compatible paths of length <span class="math" data-tex="\(j\)">\(j\)</span>, and <span class="math" data-tex="\(W=W(H,T,\rho)=\sum_{j\geq0}W_j\)">\(W=W(H,T,\rho)=\sum_{j\geq0}W_j\)</span>, a finite sum by Lemma 3.1(a) of the previous lesson. By Proposition 5.1 of the previous lesson and Lemma 3.1,
+<span class="math math-display" data-tex="\[
+H_{T,\rho}=K+\sum_{j\geq1}(-1)^j\sum_P\omega(P)\,\mathbb E[J_P].
+\]">\[
+H_{T,\rho}=K+\sum_{j\geq1}(-1)^j\sum_P\omega(P)\,\mathbb E[J_P].
+\]</span>
+For any <span class="math" data-tex="\(G:\{0,1\}^T\to\mathbb R\)">\(G:\{0,1\}^T\to\mathbb R\)</span>, take the correlation with <span class="math" data-tex="\(G\)">\(G\)</span> and exchange the finite averages. Every outcome of <span class="math" data-tex="\(J_P\)">\(J_P\)</span>, and <span class="math" data-tex="\(K\)">\(K\)</span>, lies in <span class="math" data-tex="\(\mathcal C_b(T)\)">\(\mathcal C_b(T)\)</span>, so each correlation is at most <span class="math" data-tex="\(\operatorname{corr}_b(G)\)">\(\operatorname{corr}_b(G)\)</span> in absolute value, and the triangle inequality gives <span class="math" data-tex="\(|\mathbb E_zG(z)H_{T,\rho}(z)|\leq W\operatorname{corr}_b(G)\)">\(|\mathbb E_zG(z)H_{T,\rho}(z)|\leq W\operatorname{corr}_b(G)\)</span>. The weights and the mixtures were chosen without reference to <span class="math" data-tex="\(G\)">\(G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-reweighting-by-a-full-assignment">4. Reweighting by a full assignment</h2>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(y\)">\(y\)</span> be a uniform point of <span class="math" data-tex="\(\{0,1\}^d\)">\(\{0,1\}^d\)</span>, independent of <span class="math" data-tex="\(T\)">\(T\)</span>, and let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be its restriction to <span class="math" data-tex="\([d]\setminus T\)">\([d]\setminus T\)</span>. Then for <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>
+<span class="math math-display" data-tex="\[
+\mathbb E_{T,\rho}W_j=\mathbb E_{T,y}\Bigl[\sum_P2^{|U_j|}\prod_{h=1}^{j}\frac1{c_{U_h}(y)}\Bigr],
+\]">\[
+\mathbb E_{T,\rho}W_j=\mathbb E_{T,y}\Bigl[\sum_P2^{|U_j|}\prod_{h=1}^{j}\frac1{c_{U_h}(y)}\Bigr],
+\]</span>
+the sum over paths <span class="math" data-tex="\(P\in\mathcal P_j(T)\)">\(P\in\mathcal P_j(T)\)</span> whose clauses <span class="math" data-tex="\(C_{i_1},\ldots,C_{i_j}\)">\(C_{i_1},\ldots,C_{i_j}\)</span> are all violated at <span class="math" data-tex="\(y\)">\(y\)</span>; here <span class="math" data-tex="\(c_{U_h}(y)\)">\(c_{U_h}(y)\)</span> is evaluated at the live part of <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p><em>Proof.</em> The pair <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> has the law of a <span class="math" data-tex="\(p\)">\(p\)</span>-random restriction, and given <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> the live part of <span class="math" data-tex="\(y\)">\(y\)</span> is uniform on <span class="math" data-tex="\(\{0,1\}^T\)">\(\{0,1\}^T\)</span>. Fix <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> and a path <span class="math" data-tex="\(P\)">\(P\)</span>. If <span class="math" data-tex="\(P\)">\(P\)</span> is compatible, the live part of <span class="math" data-tex="\(y\)">\(y\)</span> lies in <span class="math" data-tex="\(\mathcal Z_P\)">\(\mathcal Z_P\)</span> with probability <span class="math" data-tex="\(2^{-|U_j|}\)">\(2^{-|U_j|}\)</span>, and on that event all the selected clauses are violated and <span class="math" data-tex="\(c_{U_h}=c_h\)">\(c_{U_h}=c_h\)</span>. So the conditional expectation of <span class="math" data-tex="\(2^{|U_j|}\mathbf 1[\text{all selected violated}]\prod_h1/c_{U_h}\)">\(2^{|U_j|}\mathbf 1[\text{all selected violated}]\prod_h1/c_{U_h}\)</span> is exactly <span class="math" data-tex="\(\omega(P)\)">\(\omega(P)\)</span>. If <span class="math" data-tex="\(P\)">\(P\)</span> is incompatible, the indicator vanishes. Summing over paths and averaging over <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> gives the identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The identity holds path by path, before any summation; it does not require compatibility or the counts <span class="math" data-tex="\(c_{U_h}\)">\(c_{U_h}\)</span> to be independent of the restriction.</p>
+<h2 id="5-counting-backwards">5. Counting backwards</h2>
+<p>Fix <span class="math" data-tex="\(y\)">\(y\)</span>. For <span class="math" data-tex="\(R\subseteq[d]\)">\(R\subseteq[d]\)</span> let <span class="math" data-tex="\(V_R\)">\(V_R\)</span> be the set of indices <span class="math" data-tex="\(i\)">\(i\)</span> such that <span class="math" data-tex="\(C_i\)">\(C_i\)</span> is violated at <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(E_i\cap R=\varnothing\)">\(E_i\cap R=\varnothing\)</span>. For a path counted in Lemma 4.1 put <span class="math" data-tex="\(D_h=U_h\setminus U_{h-1}\)">\(D_h=U_h\setminus U_{h-1}\)</span> and <span class="math" data-tex="\(R_h=T\setminus U_h\)">\(R_h=T\setminus U_h\)</span>, the live coordinates not yet prescribed. Then for <span class="math" data-tex="\(1\leq h\leq j\)">\(1\leq h\leq j\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+i_h\in V_{R_h},\qquad D_h\subseteq E_{i_h},\qquad|D_h|&gt;b,\\
+R_{h-1}=R_h\cup D_h\ \text{(disjointly)},\\
+c_{U_h}(y)=|V_{R_h}|.
+\end{gathered}
+\]">\[
+\begin{gathered}
+i_h\in V_{R_h},\qquad D_h\subseteq E_{i_h},\qquad|D_h|&gt;b,\\
+R_{h-1}=R_h\cup D_h\ \text{(disjointly)},\\
+c_{U_h}(y)=|V_{R_h}|.
+\end{gathered}
+\]</span>
+Indeed <span class="math" data-tex="\(D_h=E_{i_h}\cap(T\setminus U_{h-1})\)">\(D_h=E_{i_h}\cap(T\setminus U_{h-1})\)</span> has more than <span class="math" data-tex="\(b\)">\(b\)</span> elements, the scope of <span class="math" data-tex="\(i_h\)">\(i_h\)</span> misses <span class="math" data-tex="\(T\setminus U_h\)">\(T\setminus U_h\)</span>, and <span class="math" data-tex="\(c_{U_h}\)">\(c_{U_h}\)</span> counts the violated clauses whose scopes miss <span class="math" data-tex="\(T\setminus U_h\)">\(T\setminus U_h\)</span>.</p>
+<p>So the pair <span class="math" data-tex="\((T,P)\)">\((T,P)\)</span> is determined by the final set <span class="math" data-tex="\(R_j\)">\(R_j\)</span> and the <em>reverse choices</em> <span class="math" data-tex="\((i_j,D_j),\ldots,(i_1,D_1)\)">\((i_j,D_j),\ldots,(i_1,D_1)\)</span>: each choice recovers <span class="math" data-tex="\(R_{h-1}=R_h\cup D_h\)">\(R_{h-1}=R_h\cup D_h\)</span>, and finally <span class="math" data-tex="\(T=R_0\)">\(T=R_0\)</span>. Conversely, define a <em>reverse step</em> from any set <span class="math" data-tex="\(R\)">\(R\)</span> to be a choice of <span class="math" data-tex="\(i\in V_R\)">\(i\in V_R\)</span> and of <span class="math" data-tex="\(D\subseteq E_i\)">\(D\subseteq E_i\)</span> with <span class="math" data-tex="\(|D|&gt;b\)">\(|D|&gt;b\)</span>, leading to <span class="math" data-tex="\(R\cup D\)">\(R\cup D\)</span>; since <span class="math" data-tex="\(E_i\cap R=\varnothing\)">\(E_i\cap R=\varnothing\)</span>, the union is disjoint. Every counted pair <span class="math" data-tex="\((T,P)\)">\((T,P)\)</span> gives a sequence of <span class="math" data-tex="\(j\)">\(j\)</span> reverse steps starting at <span class="math" data-tex="\(R_j\)">\(R_j\)</span>, and different pairs give different sequences.</p>
+<p>Put <span class="math" data-tex="\(\alpha=2p/(1-p)\)">\(\alpha=2p/(1-p)\)</span> and <span class="math" data-tex="\(\pi(R)=p^{|R|}(1-p)^{d-|R|}\)">\(\pi(R)=p^{|R|}(1-p)^{d-|R|}\)</span>, the probability that the live set equals <span class="math" data-tex="\(R\)">\(R\)</span>. Since <span class="math" data-tex="\(T=R_j\cup U_j\)">\(T=R_j\cup U_j\)</span> disjointly and the <span class="math" data-tex="\(D_h\)">\(D_h\)</span> partition <span class="math" data-tex="\(U_j\)">\(U_j\)</span>,
+<span class="math math-display" data-tex="\[
+\pi(T)\,2^{|U_j|}\prod_{h=1}^{j}\frac1{c_{U_h}(y)}=\pi(R_j)\prod_{h=1}^{j}\frac{\alpha^{|D_h|}}{|V_{R_h}|}.
+\]">\[
+\pi(T)\,2^{|U_j|}\prod_{h=1}^{j}\frac1{c_{U_h}(y)}=\pi(R_j)\prod_{h=1}^{j}\frac{\alpha^{|D_h|}}{|V_{R_h}|}.
+\]</span>
+The factor <span class="math" data-tex="\(1/|V_{R_h}|\)">\(1/|V_{R_h}|\)</span> belongs to the state <span class="math" data-tex="\(R_h\)">\(R_h\)</span> from which the reverse step is taken. Define <span class="math" data-tex="\(F_0(R)=1\)">\(F_0(R)=1\)</span> and, for <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_s(R)=\frac1{|V_R|}\sum_{i\in V_R}\,&amp;\sum_{\substack{D\subseteq E_i\\|D|&gt;b}}\alpha^{|D|}\\
+&amp;\times F_{s-1}(R\cup D)
+\end{aligned}
+\]">\[
+\begin{aligned}
+F_s(R)=\frac1{|V_R|}\sum_{i\in V_R}\,&amp;\sum_{\substack{D\subseteq E_i\\|D|&gt;b}}\alpha^{|D|}\\
+&amp;\times F_{s-1}(R\cup D)
+\end{aligned}
+\]</span>
+if <span class="math" data-tex="\(V_R\neq\varnothing\)">\(V_R\neq\varnothing\)</span>, and <span class="math" data-tex="\(F_s(R)=0\)">\(F_s(R)=0\)</span> otherwise: the total weight of all sequences of <span class="math" data-tex="\(s\)">\(s\)</span> reverse steps from <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><strong>Lemma 5.1.</strong> <span class="math" data-tex="\(F_s(R)\leq\theta^s\)">\(F_s(R)\leq\theta^s\)</span> for every <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>.</p>
+<p><em>Proof.</em> For each <span class="math" data-tex="\(i\)">\(i\)</span>, since <span class="math" data-tex="\(|E_i|\leq k\)">\(|E_i|\leq k\)</span> and <span class="math" data-tex="\(\binom e\ell\leq\binom k\ell\)">\(\binom e\ell\leq\binom k\ell\)</span> for <span class="math" data-tex="\(e\leq k\)">\(e\leq k\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{D\subseteq E_i,\,|D|&gt;b}\alpha^{|D|}=\sum_{\ell=b+1}^{|E_i|}\binom{|E_i|}\ell\alpha^\ell\leq\theta .
+\]">\[
+\sum_{D\subseteq E_i,\,|D|&gt;b}\alpha^{|D|}=\sum_{\ell=b+1}^{|E_i|}\binom{|E_i|}\ell\alpha^\ell\leq\theta .
+\]</span>
+By induction <span class="math" data-tex="\(F_{s-1}\leq\theta^{s-1}\)">\(F_{s-1}\leq\theta^{s-1}\)</span>, so <span class="math" data-tex="\(F_s(R)\)">\(F_s(R)\)</span> is at most <span class="math" data-tex="\(\theta^{s-1}\)">\(\theta^{s-1}\)</span> times the <em>average</em> over <span class="math" data-tex="\(i\in V_R\)">\(i\in V_R\)</span> of the left side, which is at most <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Averaging over <span class="math" data-tex="\(i\in V_R\)">\(i\in V_R\)</span>, rather than summing, is the decisive point: the number of violated clauses cancels against the reciprocal count that the paths carry.</p>
+<p><strong>Proof of the expectation bound.</strong> For fixed <span class="math" data-tex="\(y\)">\(y\)</span>, the inner expectation over <span class="math" data-tex="\(T\)">\(T\)</span> in Lemma 4.1 is a sum over counted pairs <span class="math" data-tex="\((T,P)\)">\((T,P)\)</span> of the left side of the weight identity. By the injective encoding it is at most
+<span class="math math-display" data-tex="\[
+\sum_{R\subseteq[d]}\pi(R)F_j(R)\leq\theta^j\sum_{R\subseteq[d]}\pi(R)=\theta^j ,
+\]">\[
+\sum_{R\subseteq[d]}\pi(R)F_j(R)\leq\theta^j\sum_{R\subseteq[d]}\pi(R)=\theta^j ,
+\]</span>
+since all weights are nonnegative and the actual reverse sequences are among those counted by <span class="math" data-tex="\(F_j\)">\(F_j\)</span>. Averaging over <span class="math" data-tex="\(y\)">\(y\)</span> gives <span class="math" data-tex="\(\mathbb EW_j\leq\theta^j\)">\(\mathbb EW_j\leq\theta^j\)</span>, and since <span class="math" data-tex="\(\theta&lt;1\)">\(\theta&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb EW=\sum_{j\geq0}\mathbb EW_j\leq\frac1{1-\theta} . \qquad\square
+\]">\[
+\mathbb EW=\sum_{j\geq0}\mathbb EW_j\leq\frac1{1-\theta} . \qquad\square
+\]</span></p>
+<p>This completes the proof of the restriction bound. If <span class="math" data-tex="\(k\leq b\)">\(k\leq b\)</span>, there are no paths and <span class="math" data-tex="\(W=1\)">\(W=1\)</span>; empty formulas, false clauses and empty live sets are covered by the same construction.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Check Lemma 1.1 for two clauses and one marker by listing the six orders, for an assignment violating one of the two clauses.</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be a single clause of width <span class="math" data-tex="\(k&gt;b\)">\(k&gt;b\)</span>. Show that <span class="math" data-tex="\(W=2\)">\(W=2\)</span> if <span class="math" data-tex="\(|E_1\cap T|&gt;b\)">\(|E_1\cap T|&gt;b\)</span> and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> falsifies the literals of <span class="math" data-tex="\(C_1\)">\(C_1\)</span> outside <span class="math" data-tex="\(T\)">\(T\)</span>, and <span class="math" data-tex="\(W=1\)">\(W=1\)</span> otherwise; compute <span class="math" data-tex="\(\mathbb EW\)">\(\mathbb EW\)</span>. Compare with <span class="math" data-tex="\(1/(1-\theta)\)">\(1/(1-\theta)\)</span>.</p>
+<p><strong>6.3.</strong> Where does the proof use that every path step adds <em>more than</em> <span class="math" data-tex="\(b\)">\(b\)</span> coordinates?</p>
+<p><strong>6.4.</strong> Why is the weight <span class="math" data-tex="\(\omega(P)\)">\(\omega(P)\)</span> defined through the counts <span class="math" data-tex="\(c_h\)">\(c_h\)</span> of clauses with <em>no</em> live variables outside <span class="math" data-tex="\(U_h\)">\(U_h\)</span>, and not through <span class="math" data-tex="\(a_{U_h}\)">\(a_{U_h}\)</span>?</p>
+<p><strong>6.5.</strong> Show that <span class="math" data-tex="\(\binom k\ell\leq k^\ell/\ell!\)">\(\binom k\ell\leq k^\ell/\ell!\)</span>, and deduce that <span class="math" data-tex="\(\theta\leq\sum_{\ell&gt;b}(k\alpha)^\ell/\ell!\)">\(\theta\leq\sum_{\ell&gt;b}(k\alpha)^\ell/\ell!\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> Let the clauses be <span class="math" data-tex="\(D_1\)">\(D_1\)</span> (violated) and <span class="math" data-tex="\(D_2\)">\(D_2\)</span> (satisfied), with marker <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Of the six orders, <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> holds when <span class="math" data-tex="\(\mu\)">\(\mu\)</span> precedes <span class="math" data-tex="\(D_1\)">\(D_1\)</span>: the orders <span class="math" data-tex="\(\mu D_1D_2\)">\(\mu D_1D_2\)</span>, <span class="math" data-tex="\(\mu D_2D_1\)">\(\mu D_2D_1\)</span> and <span class="math" data-tex="\(D_2\mu D_1\)">\(D_2\mu D_1\)</span>. That is <span class="math" data-tex="\(3/6=1/2=c/(c+w)\)">\(3/6=1/2=c/(c+w)\)</span> with <span class="math" data-tex="\(c=w=1\)">\(c=w=1\)</span>.</p>
+<p><strong>6.2.</strong> There is at most one path, <span class="math" data-tex="\((1)\)">\((1)\)</span>, and it exists exactly when <span class="math" data-tex="\(|E_1\cap T|&gt;b\)">\(|E_1\cap T|&gt;b\)</span>; it is compatible exactly when <span class="math" data-tex="\(\rho\)">\(\rho\)</span> falsifies the literals of <span class="math" data-tex="\(C_1\)">\(C_1\)</span> outside <span class="math" data-tex="\(T\)">\(T\)</span>. On its cylinder the only violated clause is <span class="math" data-tex="\(C_1\)">\(C_1\)</span>, so <span class="math" data-tex="\(c_1=1\)">\(c_1=1\)</span> and <span class="math" data-tex="\(\omega=1\)">\(\omega=1\)</span>. With <span class="math" data-tex="\(\ell=|E_1\cap T|\)">\(\ell=|E_1\cap T|\)</span> binomial,
+<span class="math math-display" data-tex="\[
+\mathbb EW=1+\sum_{\ell=b+1}^{k}\binom k\ell p^\ell\Bigl(\frac{1-p}2\Bigr)^{k-\ell} .
+\]">\[
+\mathbb EW=1+\sum_{\ell=b+1}^{k}\binom k\ell p^\ell\Bigl(\frac{1-p}2\Bigr)^{k-\ell} .
+\]</span>
+Each term equals <span class="math" data-tex="\(\binom k\ell\alpha^\ell\)">\(\binom k\ell\alpha^\ell\)</span> times <span class="math" data-tex="\(2^{-k}(1-p)^k\leq1\)">\(2^{-k}(1-p)^k\leq1\)</span>, so <span class="math" data-tex="\(\mathbb EW\leq1+\theta\leq1/(1-\theta)\)">\(\mathbb EW\leq1+\theta\leq1/(1-\theta)\)</span>.</p>
+<p><strong>6.3.</strong> In Lemma 5.1: reverse steps only use sets <span class="math" data-tex="\(D\)">\(D\)</span> with <span class="math" data-tex="\(|D|&gt;b\)">\(|D|&gt;b\)</span>, so only the terms with <span class="math" data-tex="\(\ell&gt;b\)">\(\ell&gt;b\)</span> occur, and their sum <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is small. It also bounds the length of paths.</p>
+<p><strong>6.4.</strong> On the cylinder <span class="math" data-tex="\(\mathcal Z_P\)">\(\mathcal Z_P\)</span> the counts <span class="math" data-tex="\(c_{U_h}\)">\(c_{U_h}\)</span> are constants, while <span class="math" data-tex="\(a_{U_h}\)">\(a_{U_h}\)</span> still depends on the free coordinates through <span class="math" data-tex="\(w_h\)">\(w_h\)</span>. Lemma 1.1 turns exactly the varying part <span class="math" data-tex="\(c_h/(c_h+w_h)\)">\(c_h/(c_h+w_h)\)</span> into an average of CNFs, leaving the constant <span class="math" data-tex="\(1/c_h\)">\(1/c_h\)</span> as weight.</p>
+<p><strong>6.5.</strong> <span class="math" data-tex="\(\binom k\ell=k(k-1)\cdots(k-\ell+1)/\ell!\leq k^\ell/\ell!\)">\(\binom k\ell=k(k-1)\cdots(k-\ell+1)/\ell!\leq k^\ell/\ell!\)</span>. Hence <span class="math" data-tex="\(\binom k\ell\alpha^\ell\leq(k\alpha)^\ell/\ell!\)">\(\binom k\ell\alpha^\ell\leq(k\alpha)^\ell/\ell!\)</span>, and summing over <span class="math" data-tex="\(\ell&gt;b\)">\(\ell&gt;b\)</span> gives the bound. The last lesson, <a href="the-lower-bound.html">The lower bound</a>, uses it with <span class="math" data-tex="\(k\alpha\)">\(k\alpha\)</span> bounded.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-P] OpenAI, <em>Beyond the Square-Root Exponent for Depth-Three Boolean Circuits</em>, OpenAI Math Release preprint, 23 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -307,7 +307,7 @@ For an arbitrary \(x\in\mathbb A\), form the finite rational sum \(r=\sum_p\{x_p
 \]
 The compact set \([0,1]\times K\) maps onto \(\mathbb A/\mathbb Q\), proving cocompactness.
 
-Normalize Haar measure on \(\mathbb A_f\) by \(du(K)=1\); this is possible since \(K\) is nonempty, open and compact. Product Haar measure with Lebesgue measure is (22), by HA-LCA-07, Lemma 3.0. The set \(\mathcal F\) has mass one. Its finite restricted measure is Radon, and so is its pushforward \(\rho\) to the quotient, by HA-LCA-03, Lemma 4.1 and the product reading, Proposition 3.1. For \(f\in C_c(\mathbb A)\), the countable tiling and translation invariance give
+Normalize Haar measure on \(\mathbb A_f\) by \(du(K)=1\); this is possible since \(K\) is nonempty, open and compact. Product Haar measure with Lebesgue measure is (22), by HA-LCA-07, Lemma 3.0. The set \(\mathcal F\) has mass one. Its finite restricted measure is Radon, and so is its pushforward \(\rho\) to the quotient, by HA-LCA-03, Lemma 4.1 and [the product reading, Proposition 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-proposition-3-1). For \(f\in C_c(\mathbb A)\), the countable tiling and translation invariance give
 \[
  \int_\mathbb A f(x)\,dx
  =\int_\mathcal F\sum_{q\in\mathbb Q}f(x+q)\,dx
@@ -407,7 +407,7 @@ The quotient \(K/DK\) has exactly \(D\) elements. Indeed, if \(D=\prod_{p\mid D}
 \]
 Every finite-place character is locally constant, since the proof of Lemma 4.3 shows that it kills some \(EK\). Consequently (35) is locally constant and compactly supported. Linearity proves Fourier stability of \(\mathcal D(\mathbb A_f)\).
 
-Each tensor in (32) is continuous and in \(L^1(\mathbb A)\). The absolutely integrable product formula, or the sigma-finite Fubini theorem in the integration reading, Theorem 4.4, yields
+Each tensor in (32) is continuous and in \(L^1(\mathbb A)\). The absolutely integrable product formula, or the sigma-finite Fubini theorem [in the integration reading, Theorem 4.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-4-4), yields
 \[
  \widehat{g\otimes v}=\widehat g\otimes\widehat v.
  \tag{36}

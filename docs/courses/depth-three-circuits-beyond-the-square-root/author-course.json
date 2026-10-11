@@ -1,0 +1,39 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "depth-three-circuits-beyond-the-square-root",
+  "title": "Depth-three circuits beyond the square root",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-11",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "OpenAI's theorem (2026) that one explicit language, decidable in polynomial time, needs depth-three OR-AND-OR circuits with more than 2^(A sqrt n) gates for every constant A at every large length: a restriction bound that writes a restricted CNF of width k as a signed combination of CNFs of constant width with bounded expected weight, whatever the number of clauses; a partition of a CNF of bounded width into few sparse CNFs with disjoint supports, by sunflowers; a language that evaluates a polynomial at a linear hash, whose random slices have limited independence on small subcubes; and a count of all gates of a circuit.",
+  "prerequisites": [
+    "finite probability: expectation, independence, Markov's inequality, the union bound",
+    "the existence of a field with 2^r elements (core course Abstract Algebra II, Judson, Theorem 22.1.6) and division with remainder for polynomials over a field",
+    "the course proves every other fact it uses"
+  ],
+  "lessons": [
+    "depth-three-circuits-and-the-square-root-barrier",
+    "a-finite-expansion-of-a-restricted-cnf",
+    "path-weights-and-backward-counting",
+    "sunflowers-and-a-disjoint-sparse-partition",
+    "an-explicit-language",
+    "hard-slices",
+    "the-lower-bound"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "exact_checks": "Python (scratch dt_checks.py, 11 Oct 2026), exact arithmetic and exhaustive enumeration: 95795 checks of 56 kinds, 0 problems. Restricted CNFs (random CNFs on 2 to 6 variables, widths up to 4, b = 1 and 2): the finite expansion pointwise on every live cube; path lengths, distinct indices and the counts a_U >= c_U >= h; cylinders, constancy of c_U and the identity 'path term = weight times mixture'; the inequality |E G H| <= W corr_b(G) with corr_b computed over all CNFs of width b; E W <= 1/(1-theta) and E W_j <= theta^j summed exactly over all restrictions; the reweighting identity; the single-clause example. The marker mixture by listing all orders. Sunflowers: random families above the Erdős-Rado bound and the transversal family. The sparse partition procedure run on 362 random CNFs (widths up to 4, thresholds 2 and 3, up to 49 leaves, 1,683 branching steps): antichains, fresh insertions, the branching identity, the bound e_u + 1 for added clauses at every state, N_u <= D_u m, step and branch-1 budgets, occurrence and clause counts at leaves, the partition of H into disjoint leaves, and the leaf count against the entropy bound. The hash: uniformity of h(w) for every nonzero w (d up to 5). Finite fields: irreducible polynomials of degree 1 to 10, the degree count, R_P a field for an irreducible P and not for a reducible one. Interpolation: uniformity of the values at up to t points and independence of the signs, over the fields with 4 and 8 elements; the fourth moment with 4-wise independent signs. The parameters r, t and the block lengths for 3,341 values of d. Binomial tails of the live set. The arithmetic of the last lesson; for A = 1: B = 256, Q = 13312 and a sufficient width of about 36,000.",
+    "lint": "dt_lint.py (scratch): title and provenance lines, balanced TeX delimiters, no control characters, section numbering, exercises matched with solutions, link texts equal to lesson titles, every reference to a numbered result of this or another lesson resolved.",
+    "source_reading": "OpenAI preprint 'Beyond the Square-Root Exponent for Depth-Three Boolean Circuits' (23 Sep 2026), TeX read in full (introduction, preliminaries, restriction, sparse partition, construction, lower bound, appendix on finite fields; library copy openai-math-20261006); every step rederived; no error found. Lean scope document lean/docs/112.md read. Differences: the restriction bound is split into two lessons (the exact expansion; weights and backward counting) with worked small cases; the existence of a suitable modulus P is proved from the existence of a field with 2^r elements by counting elements of smaller degree, and the course only needs that R_P is a field; the sparse partition is proved with the survivors and the deletions counted separately; the last lesson states where the square root comes from and gives the size of the constants for A = 1.",
+    "layout": "Formula widths measured in the rendered pages at 1100, 768, 543 and 375 px (overflow of the math span or of MathJax's container): 0 overflowing formulas in all seven lessons (1,640 formulas, no MathJax errors, no page overflow); 48 displays and inline formulas were restacked, split or moved into prose after the first measurement, and one equation tag was replaced by a named condition."
+  },
+  "open_obligations": [
+    "The translation of the membership algorithm (third section of the fifth lesson) into a Turing machine with an explicit time bound C(n+1)^a is described, not written out; the operation count is proved. OpenAI's Lean formalization contains the machine.",
+    "Context only, not used in any proof: Håstad (1989), Håstad-Jukna-Pudlák (1995), Paturi-Pudlák-Zane (1999), Paturi-Pudlák-Saks-Zane (2005), Paturi-Saks-Zane (2000), Gurumukhani-Paturi-Pudlák-Saks-Talebanfard (2024), Impagliazzo-Paturi-Zane (2001), Dell-Husfeldt-Marx-Taslaman-Wahlén (2014), Krawczyk (1994), Alon-Babai-Itai (1986)."
+  ],
+  "free_sources": [
+    "OpenAI, Beyond the Square-Root Exponent for Depth-Three Boolean Circuits (OpenAI Math Release preprint, 23 Sep 2026), with its Lean formalization (scope document lean/docs/112.md)",
+    "T. W. Judson, Abstract Algebra: Theory and Applications, online edition, Section 22.1 (Theorem 22.1.6)"
+  ]
+}

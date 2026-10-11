@@ -2,6 +2,8 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).*
 
+*The inverse-limit comparison, prerequisite links and source-convention comparison were clarified by GPT-6 Astra (OpenAI), Ultra, 11 October 2026. CC0.*
+
 Lower ramification numbers measure motion in the upper field's normalized valuation. They behave well when we restrict to a subgroup. Passing to a quotient changes that upper field and its valuation scale, so the same indices no longer work. Herbrand's function makes the required change of variable. The resulting upper numbering is compatible with every Galois quotient and therefore with infinite Galois extensions.
 
 Let \(L/K\) be finite Galois, with both fields nonarchimedean local fields in either characteristic, and put \(G=\operatorname{Gal}(L/K)\). We use the results of **Ramification groups and the different of a local extension**:
@@ -180,15 +182,30 @@ Restriction onto each finite upper group is surjective. A cofinal family of fini
 
 *Proof.* Finite Galois subextensions form a directed system under compositum. The finite quotient theorem says that restriction between their upper groups at this fixed \(v\) is surjective. Thus they form an inverse system of finite groups.
 
-The usual Galois inverse-limit identification turns (4.1) exactly into (4.2). Each condition in (4.1) is the inverse image of a normal subgroup in a finite discrete group, so is closed and normal. Intersections preserve these properties; decrease follows at every finite level.
+Here is the comparison map, extending the restriction/gluing construction in [Unramified and totally ramified extensions, Section 2.3](../NT-LOC-07.html#krull-comparison) to this algebraic Galois extension. Let \(\mathcal I\) be the set of finite Galois subextensions of \(M/K\). Define
+\[
+\rho:\operatorname{Gal}(M/K)\longrightarrow
+\varprojlim_{L\in\mathcal I}\operatorname{Gal}(L/K),
+\qquad \rho(\sigma)=(\sigma|_L)_L.
+\]
+Normality makes each restriction an automorphism of its target field. Every element of \(M\) belongs to a finite Galois subextension: its separable minimal polynomial has finitely many roots, all in \(M\), and their splitting field is such a subextension. Therefore \(\rho\) is injective. For a compatible family \((\tau_L)_L\), define \(\tau(x)=\tau_L(x)\) in any member containing \(x\). A common compositum proves independence of the member and preservation of field operations. The compatible inverse family \((\tau_L^{-1})_L\) defines its inverse, so \(\tau\) is a field automorphism fixing \(K\). This constructs the inverse of \(\rho\).
 
-For surjectivity onto one finite level, fix an element of its upper group. In the product of the finite groups, impose compatibility and that fixed coordinate. Every finite set of these conditions can be solved at a common larger finite Galois level, using the surjective restriction maps. They are closed conditions in a compact product of finite spaces. The finite intersection property gives a compatible point solving all of them. This proves surjectivity.
+The subgroups fixing finite Galois subextensions form an identity-neighborhood basis for the Krull topology: the Galois closure inside \(M\) of any finite subextension is still finite. Under \(\rho\) these subgroups are exactly the kernels of the finite-coordinate projections. A common compositum refines every finite intersection of coordinate kernels. Their cosets are bases on both sides; thus \(\rho\) and its inverse are continuous. Restricting this topological group isomorphism to the coordinate conditions in (4.1) gives (4.2). Each condition in (4.1) is the inverse image of a normal subgroup in a finite discrete group, so is closed and normal. Intersections preserve these properties; decrease follows at every finite level.
+
+For surjectivity onto one finite level, fix an element of its upper group. In the product of the finite groups, impose compatibility and that fixed coordinate. Every finite set of these conditions can be solved at a common larger finite Galois level, using the surjective restriction maps. More explicitly, write \(A_L=\operatorname{Gal}(L/K)^v\). For \(L\subset E\), the compatibility condition is the closed cylinder
+\[
+C_{E,L}=\{(a_F)_F\in\prod_{F\in\mathcal I}A_F:
+                 \operatorname{res}_{E,L}(a_E)=a_L\}.
+\]
+Fixing the prescribed coordinate \(a_{L_0}=b\) is also a closed cylinder. To satisfy finitely many cylinders together with this one, take a finite Galois compositum \(T\) containing all their fields and \(L_0\), lift \(b\) to \(A_T\) by Theorem 3.1, and restrict that lift to the involved fields. Assign identity to all uninvolved coordinates. This proves the finite intersection property without requiring a prechosen family of lifts.
+
+Each \(A_L\) is a nonempty finite discrete compact space. Their product is compact by [the compact-product proof, Lemmas 2.1–2.2 and Theorem 2.3](../../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-02). That proof uses the ultrafilter extension principle obtained from choice; no countable-tower hypothesis is being substituted here. In a compact space, closed sets with the finite intersection property have nonempty intersection, since otherwise their open complements give an open cover with a finite subcover. A point in this intersection is a compatible family with coordinate \(b\); the inverse of \(\rho\) turns it into the required automorphism in (4.1). This proves surjectivity.
 
 A cofinal family determines all other coordinates by restriction; Herbrand's theorem carries its upper-group conditions down to every smaller level. Conversely any full inverse-limit element satisfies the cofinal conditions. Hence the choice of cofinal family changes nothing. \(\square\)
 
 This definition concerns the algebraic extension \(M\). It does not replace \(M\) by its valuation completion.
 
-**Hasse–Arf theorem, stated without proof here.** For a finite abelian extension of local fields, every upper jump is an integer. Here a jump \(v\) means \(G^v\ne G^{v+\epsilon}\) for every \(\epsilon>0\). Its programme proof provider is *Class field theory*, lesson 10, **Abelian ramification, conductors and Hasse–Arf**, Corollary 10.3. That provider is written. This names its exact proof; its own preceding reciprocity and existence dependencies are separate programme results. The quotient theorem proved above does not require Hasse–Arf. Section 7 gives a nonabelian jump at \(1/2\).
+**Hasse–Arf theorem, stated without proof here.** For a finite abelian extension of local fields, every upper jump is an integer. Here a jump \(v\) means \(G^v\ne G^{v+\epsilon}\) for every \(\epsilon>0\). Its programme proof provider is *Class field theory*, lesson 10, [**Abelian ramification, conductors and Hasse–Arf**, Corollary 10.3](../../NT-CFT/abelian-ramification-conductors-and-hasse-arf.html#corollary-10-3-hasse-arf). There Theorem 10.2 transports the Lubin–Tate filtration through the finite quotient theorem, using the local existence theorem of lesson 9 to contain each finite abelian extension in an unramified–Lubin–Tate compositum. Those Lubin–Tate and existence results are separate prerequisites, not consequences of Proposition 4.1. The quotient theorem proved above does not require Hasse–Arf. Section 7 gives a nonabelian jump at \(1/2\).
 
 ## 5. Cyclotomic upper numbering
 
@@ -359,10 +376,18 @@ This also attains the sharp wild bound in [**Ramification groups and the differe
 
 ## 9. What this lesson does not prove
 
-- The intrinsic motion formula, integral monogenicity, inertia order, subgroup compatibility and cyclotomic lower groups are Proposition 1.1, Section 2 and Proposition 5.1 of **Ramification groups and the different of a local extension**. Its Theorem 3.1 is Hilbert's different formula. Integral uniformizer generation and multiplication of ramification indices are supplied by **Unramified and totally ramified extensions**, Theorem 5.1 and Section 1.
-- A Galois group of an algebraic normal separable extension is the inverse limit of its finite Galois quotient groups, with the Krull topology. Compactness of a product of finite discrete spaces is the compact-product theorem. Proposition 4.1 proves the additional compatibility and surjectivity needed for upper groups.
-- Hasse–Arf is stated in Section 4 and used only to compare the abelian examples with its conclusion. The exact written internal provider is *Class field theory*, lesson 10, **Abelian ramification, conductors and Hasse–Arf**, Corollary 10.3.
-- In the final different check, transitivity means \(\mathfrak D_{L/K}=\mathfrak D_{L/M}\mathfrak D_{M/K}\mathcal O_L\), hence \(d(L/K)=d(L/M)+e(L/M)d(M/K)\). The written programme proof is *Number fields*, lesson 14, **The different and the discriminant**, Proposition 14.1 for finite separable towers over a Dedekind base with finite integral closures. Its Proposition 14.2 proves the derivative formula for a monogenic full integral closure. The ramification filtrations themselves were computed without either tower calculation.
+- The intrinsic motion formula, integral monogenicity, inertia order, subgroup compatibility and cyclotomic lower groups are [Proposition 1.1](../NT-LOC-09.html#1-measuring-an-automorphism-intrinsically), Section 2 and Proposition 5.1 of **Ramification groups and the different of a local extension**. Its Theorem 3.1 is Hilbert's different formula. Integral uniformizer generation and multiplication of ramification indices are supplied by **Unramified and totally ramified extensions**, Theorem 5.1 and [Section 1](../NT-LOC-07.html#1-the-integral-basis-we-will-use). The full integral-ring generator used in Lemma 2.1 is [Corollary 6.2 of that lesson](../NT-LOC-07.html#6-separating-a-general-extension-and-finding-one-integral-generator).
+- A Galois group of an algebraic normal separable extension is the inverse limit of its finite Galois quotient groups, with the Krull topology. The restriction and inverse maps, their continuity and the exact compact-product provider are supplied in Proposition 4.1 above. Proposition 4.1 proves the additional compatibility and surjectivity needed for upper groups.
+- Hasse–Arf is stated in Section 4 and used only to compare the abelian examples with its conclusion. The exact written internal provider is [*Class field theory*, lesson 10, Corollary 10.3](../../NT-CFT/abelian-ramification-conductors-and-hasse-arf.html#corollary-10-3-hasse-arf), with the preceding Lubin–Tate and local existence dependencies described there.
+- In the final different check, transitivity means \(\mathfrak D_{L/K}=\mathfrak D_{L/M}\mathfrak D_{M/K}\mathcal O_L\), hence \(d(L/K)=d(L/M)+e(L/M)d(M/K)\). The written programme proof is *Number fields*, lesson 14, **The different and the discriminant**, [Proposition 14.1](../../NT-ANT/the-different-and-the-discriminant.html#the-trace-dual) for finite separable towers over a Dedekind base with finite integral closures. Its [Proposition 14.2](../../NT-ANT/the-different-and-the-discriminant.html#euler-s-lemma-and-a-power-basis) proves the derivative formula for a monogenic full integral closure. The ramification filtrations themselves were computed without either tower calculation.
+
+## Source comparison for this edition
+
+Fesenko–Vostokov, *Local Fields and Their Extensions*, second edition, Chapter III, Section 3, provides a norm-theoretic route to the same change of index. Their \(h_{L/K}\) is our \(\psi_{L/K}\), not our \(\varphi_{L/K}\); see the first remark after Proposition (3.7), printed page 88. Their tower formula in (3.3), page 83, is therefore the second formula of (3.2). In their Theorem (3.5), pages 85–86, set \(y=u\) and \(x=\varphi_{L/L'}(u)\); the condition \(y=h_{L/L'}(x)\) then gives exactly (3.1) for nonnegative indices. Its corollary and following definition on page 86 give quotient-compatible upper numbering and its inverse-limit extension.
+
+Their nonnegative-index convention is extended here by the explicit identity segment on \([-1,0]\). The finite coset argument in Sections 2–3 supplies the quotient and tower results directly, including unramified parts and jump endpoints; it does not import the norm-polynomial proof. Proposition 4.1 also supplies the comparison maps, topology and surjectivity behind the inverse-limit notation. The source comparison makes no claim that Hasse–Arf or the additional norm results in that chapter have been proved here.
 
 ## References
 J. S. Milne, [*Algebraic Number Theory*](https://www.jmilne.org/math/CourseNotes/ANT.pdf), Chapter 7, “Ramification groups,” for the lower filtration used here.
+
+I. B. Fesenko and S. V. Vostokov, [*Local Fields and Their Extensions*, second edition (2002)](https://ivanfesenko.org/vol.pdf), Chapter III, Section 3, especially (3.3), Theorem (3.5), its corollary and definition, and the remark after (3.7), printed pages 83, 85–86 and 88.

@@ -10,6 +10,8 @@ Throughout the local discussion, \(L/K\) is a finite Galois extension of nonarch
 
 We use **Unramified and totally ramified extensions** for the maximal unramified subfield, integral monogenicity and Eisenstein extensions. **Tame ramification and the tame Galois group** supplies the meaning of tame ramification. Exact additional imports are listed at the end.
 
+*Finite-Galois maps and the wild-inertia group argument: supplementary exposition by GPT-6 Astra (OpenAI), Ultra, 11 October 2026, CC0.*
+
 ## 1. Measuring an automorphism intrinsically
 
 Choose \(\alpha\) with \(\mathcal O_L=\mathcal O_K[\alpha]\). For \(\sigma\in G\), define
@@ -47,7 +49,7 @@ and preservation of valuation proves closure; replacing \(x\) by \(\sigma^{-1}x\
 
 Every difference of integral elements is integral, so \(G_{-1}=G\). Trivial action modulo \(\mathfrak P\) is precisely the definition of inertia, so \(G_0\) is inertia. If \(\sigma\ne1\), it cannot fix the generator \(\alpha\); its value \(i_G(\sigma)\) is finite. There are finitely many such automorphisms, and taking \(i\) above all their values makes \(G_i\) trivial.
 
-The extension \(L/L^H\) is again Galois and local. Its intrinsic test (1.2) uses the same ring \(\mathcal O_L\) and the same \(v_L\), so its condition on an element \(\sigma\in H\) is exactly the condition defining \(G_i\). This proves (1.3), without assuming \(H\) normal in \(G\). \(\square\)
+The extension \(L/L^H\) is again Galois and local. The [finite-group fixed-field lemma](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2786) applies because \(H\leq G\) acts faithfully on \(L\); it gives \(\operatorname{Gal}(L/L^H)=H\) and \([L:L^H]=|H|\), whether or not \(H\) is normal in \(G\). Its intrinsic test (1.2) uses the same ring \(\mathcal O_L\) and the same \(v_L\), so its condition on an element \(\sigma\in H\) is exactly the condition defining \(G_i\). This proves (1.3), without assuming \(H\) normal in \(G\). \(\square\)
 
 For real \(u\geq-1\), our convention is
 \[
@@ -65,6 +67,15 @@ The correspondence between unramified extensions and residue extensions identifi
 |G_0|=[L:L_0]=e.
 \tag{2.1}
 \]
+
+The exact field-theory input to this restriction is the [extension-of-embeddings lemma](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2004). It applies to the algebraic tower \(L/L_0/K\), since \(L/K\) is normal: each \(K\)-embedding \(L_0\to L\), including every automorphism of \(L_0/K\), extends to a \(K\)-automorphism of \(L\). The resulting maps form the [finite-Galois restriction sequence](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2886)
+\[
+1\longrightarrow\operatorname{Gal}(L/L_0)
+\xrightarrow{\ \mathrm{inclusion}\ }G
+\xrightarrow{\ \sigma\mapsto\sigma|_{L_0}\ }
+\operatorname{Gal}(L_0/K)\longrightarrow1.
+\]
+The first map includes the automorphisms fixing \(L_0\) among those fixing \(K\); these are exactly the kernel of the second map. Surjectivity is the extension just described. The unramified residue correspondence identifies that kernel with inertia, not merely with a group of the same order. The [finite Galois correspondence](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2845) identifies its fixed field with \(L_0\).
 
 Fix a uniformizer \(\pi\) of \(L\). Total ramification gives \(\mathcal O_L=\mathcal O_{L_0}[\pi]\). Every \(\sigma\in G_0\) fixes \(L_0\), so the same polynomial-difference argument as before now gives
 \[
@@ -129,7 +140,16 @@ L/K\text{ is tame}\quad\Longleftrightarrow\quad G_1=1.
 
 *Proof.* The finite cyclic group \(\kappa_L^\times\) has order prime to \(p\). Equation (2.3) proves the first assertion. Each quotient \(G_r/G_{r+1}\), for \(r\geq1\), is a subgroup of the additive residue field, so it is an elementary abelian \(p\)-group. The filtration terminates; multiplying its quotient orders shows that \(G_1\) is a \(p\)-group. Its index in \(G_0\) is prime to \(p\), and its normality makes it the unique Sylow subgroup.
 
+Here uniqueness of the Sylow subgroup follows directly, without invoking the general Sylow existence or conjugacy theorems. Let \(P\leq G_0\) be any \(p\)-subgroup. Under the quotient homomorphism \(G_0\to G_0/G_1\), its image has order dividing \(|P|\): every fibre is a coset of the kernel of the restricted homomorphism. Its image also has order dividing \(|G_0/G_1|\), because the cosets of that image partition the finite quotient. The first order is a power of \(p\), whereas the second is prime to \(p\); the image is therefore trivial and \(P\subseteq G_1\). Since \(G_1\) is itself a \(p\)-group and its index in \(G_0\) is prime to \(p\), its order is the full \(p\)-part of \(|G_0|\). It is consequently the unique Sylow \(p\)-subgroup of inertia. This conclusion is about \(G_0\), not necessarily about the larger group \(G\).
+
 The same terminating filtration has abelian quotients, so \(G_1\), and then \(G_0\), are solvable. Finally \(G/G_0\) is the cyclic finite-field Galois group described above. A group with a solvable normal subgroup and solvable quotient is solvable: lift a derived series for the quotient and then append one for the normal subgroup. This proves the assertion for \(G\). By (2.1), \(p\nmid e\) exactly when \(G_1=1\); residue extensions of local fields are separable, so this is precisely tameness. \(\square\)
+
+One can see the solvability step directly in the derived series. Write \(D^0(A)=A\) and \(D^{j+1}(A)=[D^j(A),D^j(A)]\) for any group \(A\). The abelian graded quotients imply inductively
+\[
+D^j(G_1)\subseteq G_{j+1}\qquad(j\geq0).
+\]
+Indeed, if the containment holds at step \(j\), the commutators on its left lie in \([G_{j+1},G_{j+1}]\subseteq G_{j+2}\). The ramification filtration terminates, so some derived group of \(G_1\) is trivial. Since \(G/G_0\) and \(G_0/G_1\) are abelian, also \(D(G)\subseteq G_0\) and \(D^2(G)\subseteq G_1\). Taking further commutators therefore makes the derived series of \(G\) trivial as well. No bound on the unramified residue degree, beyond its finiteness, is imposed.
+
 
 ## 3. Hilbert's formula
 
@@ -472,7 +492,7 @@ The ramification criteria in Sutherland, Lecture 12, Theorems 12.19 and 12.27, a
 - Integral monogenicity for a finite separable extension of local fields, \(\mathcal O_L=\mathcal O_K[\alpha]\), is Corollary 6.2 of **Unramified and totally ramified extensions**. Its Proposition 6.1 gives the maximal unramified subfield; Theorem 5.1 gives uniformizers and integral bases in a totally ramified extension. The finite-field Galois correspondence and Frobenius description are its Corollary 3.1.
 - Trace nondegeneracy is proved in Section 3 from the trace-one lemma; Stacks, Tag 0BIL is a comparison. Section 3 supplies the trace-dual, monogenic derivative and ideal-norm calculations with their general algebraic hypotheses. The exact written companion provider is *Number fields*, lesson 14, **The different and the discriminant**, “The trace dual,” Euler's lemma, Proposition 14.2 and Theorem 14.3. The Dedekind-ring and finite-integral-closure prerequisites for those calculations remain the imports in the next bullet. Sutherland, Lecture 12, Definition 12.2, Proposition 12.24 and Theorem 12.17, is a classical comparison.
 - The written *Number fields* proofs are lesson 2, **Discriminants and integral bases**, Theorem 2.3 for the integer lattice; lesson 3, **Discrete valuation rings and Dedekind domains**, Proposition 3.1, Theorem 3.2 and Proposition 3.3 for Dedekindness, fractional-ideal factorization and Chinese remainders; and lesson 5, **Decomposition of primes in extensions**, Theorems 5.1–5.2 for finite integral closure and prime ideal norms. Milne, Proposition 2.29, Theorems 3.7 and 3.29 and Chapter 4 are classical references for the same facts. The field-completion decomposition and base change of trace are Theorem 2.1 and Corollary 2.2 of **Places of number fields in extensions and the product formula**.
-- The extension of embeddings to a finite normal extension, the fixed-field theorem, and Sylow theory are the field and finite-group background of **Graduate Algebra**. Cyclicity of finite subgroups of a field's multiplicative group is proved in **Hensel's lemma, squares and roots of unity in p-adic fields**, Lemma 4.0. Stacks, Tag 09HX is a comparison. Milne, *Fields and Galois Theory*, Proposition 4.19 with Exercise 1-3 is another classical reference.
+- The field-theory inputs are the [extension-of-embeddings lemma](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2004), [finite-group fixed-field lemma](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2786) and [finite Galois correspondence](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2845) in the AI Integrated Stacks Project, *Fields*, revision `565b10e987aba5969b21145a0833f42d69f96790`. Their hypotheses and maps are applied explicitly in Sections 1–2. Section 2 proves Sylow uniqueness directly from the prime-to-p inertia quotient and proves solvability using the derived series. Cyclicity of finite subgroups of a field's multiplicative group is proved in **Hensel's lemma, squares and roots of unity in p-adic fields**, Lemma 4.0. Stacks, Tag 09HX is a comparison. Milne, *Fields and Galois Theory*, Proposition 4.19 with Exercise 1-3 is another classical reference.
 
 ## References
 

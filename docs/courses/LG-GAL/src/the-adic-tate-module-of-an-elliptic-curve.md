@@ -3831,7 +3831,7 @@ Its matrix has unit determinant minus one and its square is the identity. Put \(
 
 All constructions in this section commute with base change: the retained section bases and relation do so by RC4; homogeneous quotient tensor retains the cubic; the two coordinate decompositions and the finite locally free map retain their bases; and (RWR14) is a matrix with the pulled-back coefficients. On every field fibre WC6 proves generic separability of the degree-two map in every characteristic, and WC7 identifies this involution with inverse in the field-valued divisor-class group. That statement does not assert étaleness of its ramified fibres.
 
-The whole relative cubic and degree-two map are now proved under RC's family hypotheses. GS1–GS7 below supply the full residual secant graph, regular addition, all scheme group identities and the identification of this explicit involution with inverse over the full Noetherian base. MP1–MP6 below prove the product-divisor identity, full multiplication ranks and the finite étale case. Finite étale/Henselian splitting interfaces and the other fifteen-lesson prerequisites remain required. The converse construction of a universal smooth family from arbitrary coefficients and its discriminant condition is also a separate obligation.
+The whole relative cubic and degree-two map are now proved under RC's family hypotheses. GS1–GS7 below supply the full residual secant graph, regular addition, all scheme group identities and the identification of this explicit involution with inverse over the full Noetherian base. MP1–MP6 below prove the product-divisor identity, full multiplication ranks and the finite étale case. Finite étale/Henselian splitting interfaces and the other fifteen-lesson prerequisites remain required. UW1–UW8 below construct that universal family and prove its exact discriminant condition over every coefficient ring.
 
 #### 0.F.4.11. Residual graphs, addition and the inverse over a full base
 
@@ -4045,7 +4045,7 @@ Induct on \(n\geq1\). In \(A/J^{n+1}\), the base ideal \(J^n/J^{n+1}\) is square
 
 The local involutions therefore agree on overlaps with the globally constructed inverse. These are equalities over the entire Noetherian base, and remain equalities after every later base change. In characteristic two the term \(-a_1X-a_3Z\) in RW6 can retain nonzero nilpotent coefficients; the proof neither divides by two nor removes them.
 
-We have now proved the residual graph, the regular secant/tangent addition law, every scheme group identity, and the identification of the explicit involution with inverse under RC's hypotheses. Formula (GSR14) supplies invariant differentials; it does not by itself identify a canonical Serre-duality pairing. MP1–MP6 below prove the product-divisor identity and full multiplication degrees, including the differential and finite étale case. SD1–SD7 below prove canonical curve duality, and HS1–HS5 and UR1–UR6 prove the finite étale/Henselian and valuation comparisons. The converse universal-family/discriminant construction, modular parameter spaces and their arithmetic, and the remaining fifteen-lesson proofs remain to be completed.
+We have now proved the residual graph, the regular secant/tangent addition law, every scheme group identity, and the identification of the explicit involution with inverse under RC's hypotheses. Formula (GSR14) supplies invariant differentials; it does not by itself identify a canonical Serre-duality pairing. MP1–MP6 below prove the product-divisor identity and full multiplication degrees, including the differential and finite étale case. SD1–SD7 below prove canonical curve duality, and HS1–HS5 and UR1–UR6 prove the finite étale/Henselian and valuation comparisons. UW1–UW8 below supply the integral universal-family/discriminant construction. Modular parameter spaces and their arithmetic,and the remaining fifteen-lesson proofs,remain to be completed.
 
 #### 0.F.4.12. The full product-divisor identity and multiplication maps
 
@@ -4208,7 +4208,7 @@ Here is the passage to actual étale charts, with no extra étale criterion impo
 
 For the kernel, pull back the finite free algebra and these actual charts along the origin. A unit Jacobian stays a unit after any tensor, and the Taylor correction with no free coordinates retains unique lifting over the new ring. This also proves arbitrary base change of the asserted finite étale maps.
 
-For completeness, on an algebraically closed fibre each kernel point has full length one. Its smooth local parameter \(t\) has cotangent generator \(dt\). Pullback of a target origin parameter has nonzero linear coefficient by (MPR14), so in the source DVR it is a uniformizer times a unit. The full local fibre quotient is the residue field. PCF12 and rank \(n^2\) therefore give exactly \(n^2\) distinct geometric kernel points in the unit case. If the characteristic divides \(n\), (MPR14) instead vanishes on that field fibre; the rank statement (MPR12) still holds, while this length-one argument does not. HS1–HS5 and TT1–TT3 below supply the finite étale/Henselian interfaces and compatible torsion bases. SD1–SD7 below prove canonical duality for smooth proper curves. QS1–QS8 below construct full subgroup quotients and relative isogenies over Noetherian bases. Classification of nonreduced torsion types,the converse universal-family/discriminant construction and the remaining fifteen-lesson mathematics remain in scope.
+For completeness, on an algebraically closed fibre each kernel point has full length one. Its smooth local parameter \(t\) has cotangent generator \(dt\). Pullback of a target origin parameter has nonzero linear coefficient by (MPR14), so in the source DVR it is a uniformizer times a unit. The full local fibre quotient is the residue field. PCF12 and rank \(n^2\) therefore give exactly \(n^2\) distinct geometric kernel points in the unit case. If the characteristic divides \(n\), (MPR14) instead vanishes on that field fibre; the rank statement (MPR12) still holds, while this length-one argument does not. HS1–HS5 and TT1–TT3 below supply the finite étale/Henselian interfaces and compatible torsion bases. SD1–SD7 below prove canonical duality for smooth proper curves. QS1–QS8 below construct full subgroup quotients and relative isogenies over Noetherian bases. NT1–NT8 below prove geometric characteristic-prime torsion,full dual kernels and formal heights. UW1–UW8 below prove the integral coefficient-family construction and its discriminant criterion. The remaining fifteen-lesson mathematics stays in scope.
 
 ### 0.F.4.13. Finite étale algebras, Henselian lifting and compatible torsion
 
@@ -5251,7 +5251,484 @@ If \(n\) is a unit on \(S\), MP6 makes \(E[n]\) finite étale. Its closed subsch
  \tag{QSR21}
 \]
 
-In particular QS7–QS8 prove Proposition 0.F.4 in its stated characteristic-zero scope and the finite locally free assertions in all characteristics. They construct quotients of every finite locally free elliptic subgroup under the stated Noetherian hypotheses, including nonreduced kernels. Classification of the different nonreduced torsion types, the converse universal-family/discriminant construction and the remaining modular, arithmetic and \(p\)-adic results are separate obligations.
+In particular QS7–QS8 prove Proposition 0.F.4 in its stated characteristic-zero scope and the finite locally free assertions in all characteristics. They construct quotients of every finite locally free elliptic subgroup under the stated Noetherian hypotheses, including nonreduced kernels. NT1–NT8 below prove the full geometric torsion types and dual kernels. UW1–UW8 below prove that universal construction. The remaining modular,arithmetic and \(p\)-adic results are separate obligations.
+
+### 0.F.4.18. Frobenius, kernel duality and nonreduced geometric torsion
+
+Let \(E/k\) be an elliptic curve over a field of characteristic \(p>0\), with the group law already proved in GS. The multiplication degrees MP4, full quotients and relative duals QS1–QS8, and divisor classes GS2–GS4 are the inputs. We first construct maps over \(k\); the split group-scheme descriptions below are over an algebraic closure \(\bar k\). In particular \(p=2\) and \(p=3\) are included. Free comparisons are Brinon and Conrad's [CMI notes, Exercise 12.5.3](https://math.stanford.edu/~conrad/papers/notes.pdf), for the dual Hopf algebra, and Sutherland's [MIT Lecture 13, opening discussion](https://math.mit.edu/classes/18.783/2023/LectureNotes13.pdf), for Frobenius and the ordinary/supersingular distinction. We prove the required scheme assertions here.
+
+##### NT1. Relative Frobenius has full degree \(p\)
+
+Write \(E^{(p)}=E\times_{\operatorname{Spec}k,F_k}\operatorname{Spec}k\), where \(F_k(c)=c^p\). On an affine chart with ring \(R\), the relative Frobenius is the ring map
+
+\[
+ F:E\longrightarrow E^{(p)},\qquad
+ F^*:R\otimes_{k,F_k}k\longrightarrow R,
+ \quad r\otimes a\longmapsto ar^p.
+ \tag{NTR1}
+\]
+
+The tensor relations verify this formula; restriction by localization verifies gluing. Naturality with respect to multiplication, origin and inverse makes it a group map. The twist is elliptic because properness, smooth charts, the origin and genus-one fibre cohomology are preserved by the field base change already proved in RC, SF and DC6. Its geometric coordinate formula raises coordinates to their \(p\)-th powers, with the coefficients raised in the target equation. It is nonconstant and has a unique inverse image of each geometric point: over an algebraically closed extension, every coordinate has a unique \(p\)-th root. QS7 therefore makes \(F\) a finite locally free surjection.
+
+Here is its rank computation without counting those points. Work over \(\bar k\), write \(L=\bar k(E)\), and choose the separating rational parameter \(x\) supplied in SD1, so \(L/\bar k(x)\) is finite separable of degree \(d\). The \(p\)-th-power isomorphism sends this extension to \(L^p/\bar k(x^p)\) with the same degree. The basis \(1,x,\ldots,x^{p-1}\) of \(\bar k(x)/\bar k(x^p)\) follows by separating exponents modulo \(p\) in rational polynomials, or the irreducibility of \(T^p-x^p\) over \(\bar k(x^p)\). Consequently
+
+\[
+ [L:\bar k(x^p)]=pd,
+ \qquad[L^p:\bar k(x^p)]=d,
+ \qquad[L:L^p]=p.
+ \tag{NTR2}
+\]
+
+The geometric image of (NTR1) is \(L^p\), so its degree and its finite locally free rank are \(p\). Field extension preserves an actual finite module basis and detects its rank, giving the same rank over \(k\). Its kernel \(H=\ker F\) has rank \(p\) and one geometric support point. At that point the smooth curve local ring is a DVR, by SF6. Its length-\(p\) quotient is its quotient by the \(p\)-th power of a uniformizer. Successively lifting the residue coefficients gives
+
+\[
+ \mathcal O(H_{\bar k})\simeq\bar k[t]/(t^p)
+ \quad\text{as an algebra, before specifying its group law.}
+ \tag{NTR3}
+\]
+
+More explicitly every ideal of a DVR is a power of its uniformizer: take an element of least valuation, divide by its unit, and use that it divides every other ideal element. Its quotient by \(t^m\) has successive one-dimensional residue quotients and length \(m\). Thus length \(p\) forces (NTR3). Equality of this algebra with the full kernel, rather than only its completed ring, follows from these successive finite quotients.
+
+QS8 constructs the dual \(V=\widehat F:E^{(p)}\to E\), called Verschiebung. It has degree \(p\), and the identities are actual scheme maps over \(k\):
+
+\[
+ VF=[p]_E,\qquad FV=[p]_{E^{(p)}}.
+ \tag{NTR4}
+\]
+
+##### NT2. A finite dual represents characters on full test algebras
+
+For any finite commutative group scheme \(H=\operatorname{Spec}A\) over a field, its coordinate algebra has comultiplication \(\Delta\), counit \(\varepsilon\), and antipode. Define \(A^\vee=\operatorname{Hom}_k(A,k)\). Dualizing \(\Delta\) gives the convolution product, dualizing \(\varepsilon\) gives its unit, and dualizing multiplication and the unit of \(A\) gives comultiplication and counit on \(A^\vee\). The finite-dimensional identification \((A\otimes A)^\vee=A^\vee\otimes A^\vee\) makes these actual maps. Each associative, group or inverse identity is the dual of the corresponding identity for \(A\). Commutativity of \(H\) makes convolution commutative; commutativity of \(A\) makes the dual group commutative. Hence
+
+\[
+ H^D=\operatorname{Spec}A^\vee
+ \quad\text{is a finite commutative group of rank }\dim_k A.
+ \tag{NTR5}
+\]
+
+For a \(k\)-algebra \(C\), an algebra map \(A^\vee\to C\) corresponds under finite linear duality to an element \(u\in A\otimes_k C\). Its multiplication and unit conditions are exactly
+
+\[
+ (\Delta\otimes1)u=u\otimes u,
+ \qquad(\varepsilon\otimes1)u=1.
+ \tag{NTR6}
+\]
+
+The antipode makes \(u\) invertible. Thus it is exactly a scheme character \(H_C\to\mathbf G_{m,C}\), obtained by sending the invertible coordinate of \(\mathbf G_m\) to \(u\). Conversely each character gives that algebra map. This proves representation on all algebras, including nilpotent ones. Double linear duality respects the same structure maps, so \((H^D)^D=H\). For the constant cyclic group \((\mathbf Z/m\mathbf Z)_k\), a character is determined by the image \(z\) of \(1\), with \(z^m=1\); conversely such a unit defines the character. Therefore
+
+\[
+ ((\mathbf Z/m\mathbf Z)_k)^D=\mu_m,
+ \qquad\mu_m^D=(\mathbf Z/m\mathbf Z)_k.
+ \tag{NTR7}
+\]
+
+##### NT3. The kernel of a dual isogeny is the dual of the full kernel
+
+Let \(q:E\to E'\) be an isogeny of degree \(m\), with full kernel \(H\). QS7 identifies its relation scheme with \(H\times E\), and QS8 constructs \(\widehat q\) by pullback of degree-zero line classes. We prove
+
+\[
+ \ker\widehat q\simeq H^D.
+ \tag{NTR8}
+\]
+
+It suffices first to use Noetherian parameter schemes \(T/k\), as required by GS2–GS3; both finite schemes in (NTR8) themselves are such parameter schemes. Let \(Q\in(\ker\widehat q)(T)\). Its degree-zero line class on \(E'_T\) is represented by \(\mathcal O(Q-O')\), rigidified along \(O'\) by tensoring with the inverse of its restriction there. Formula (QSR16) says its pullback to \(E_T\) is a base line class. The rigidification gives a trivialization of that pullback, unique once its value at the origin is fixed. Indeed MP1's base-change statement \((\pi_T)_*\mathcal O_{E_T}=\mathcal O_T\) says every automorphism of a trivial line on \(E_T\) is a base unit.
+
+Transport its descent isomorphism through this trivialization. On the relation scheme it is multiplication by a unit on \(H_T\times_T E_T\). That unit comes from \(H_T\), again by MP1 applied after the finite base change \(H_T\to T\). The descent cocycle on three related points says that this unit at \(h_1+h_2\) is its product at \(h_1\) and \(h_2\). The diagonal says its identity value is one. It is thus precisely a character (NTR6). Changing the normalized trivialization by a base unit does not change the character.
+
+Conversely a character supplies that cocycle on the trivial line of \(E_T\). On any affine open of \(E'_T\), its inverse image is affine because \(q_T\) is finite. FD1–FD4 descend the rank-one module on that inverse image to a rank-one locally free module on the open. Full faithfulness makes these modules and their identifications agree on overlaps, so they glue to a line on \(E'_T\). Its pullback is trivial. On every field fibre, DC7 therefore gives \(m\deg L=0\), hence \(\deg L=0\). GS3 gives its unique point class \(Q\); (QSR16) and GS3's injectivity put \(Q\) in \(\ker\widehat q\). FD1's two inverse module constructions show that descending and pulling back with this cocycle recover the same line and character. They also show that tensor of lines corresponds to multiplication of characters.
+
+These constructions are natural in Noetherian \(T\). Apply them to the universal points on \(H^D\) and \(\ker\widehat q\) to get inverse group-scheme maps. Applying naturality to those parameter schemes proves their compositions are identities on the full schemes. This proves (NTR8), without a pre-assumed Weil pairing or an argument only on geometric points. The constructed isomorphism then survives every field extension and every further base change.
+
+##### NT4. A connected rank-\(p\) curve kernel is \(\alpha_p\) or \(\mu_p\)
+
+Now let \(k\) be algebraically closed and let a connected group \(H\) have the algebra (NTR3). Its counit is evaluation at \(t=0\). Let \(\delta:A\to k\) be the derivation at that point with \(\delta(t)=1\). In the dual Hopf algebra it is primitive:
+
+\[
+ \Delta_{A^\vee}(\delta)=\delta\otimes1+1\otimes\delta.
+ \tag{NTR9}
+\]
+
+The counit identities on \(A\) give \(\Delta(t)=t\otimes1+1\otimes t\) plus terms having positive degree in both variables. In the iterated comultiplication, total-degree-one terms are the sum of the individual variables and all other terms have larger total degree. Evaluating its \(i\)-fold convolution by \(\delta\) therefore yields
+
+\[
+ \delta^i(t^j)=0\ (j>i),\qquad
+ \delta^i(t^i)=i!\quad(0\leq i<p).
+ \tag{NTR10}
+\]
+
+Here \(\delta^0=\varepsilon\). The triangular matrix has nonzero diagonal, so \(1,\delta,\ldots,\delta^{p-1}\) are a basis of \(A^\vee\). Primitive elements of \(A^\vee\) are exactly derivations \(A\to k\), by dualizing their primitive equation; they are a one-dimensional space because a derivation is determined by its value at \(t\). In characteristic \(p\), (NTR9) and the binomial formula make \(\delta^p\) primitive as well. Thus for some \(c\in k\),
+
+\[
+ \delta^p=c\delta,\qquad
+ A^\vee\simeq k[z]/(z^p-cz),\quad\Delta z=z\otimes1+1\otimes z.
+ \tag{NTR11}
+\]
+
+If \(c=0\), this is the additive group \(\alpha_p\). The same triangular calculation for its additive coordinate gives its dual as \(k[z]/z^p\) with primitive coordinate, so \(\alpha_p^D=\alpha_p\). Double duality gives \(H\simeq\alpha_p\). If \(c\ne0\), choose \(\lambda\in k^\times\) with \(\lambda^{p-1}c=1\) and replace \(\delta\) by \(\lambda\delta\). Its relation is \(z^p=z\), whose roots are the \(p\) distinct elements of \(\mathbf F_p\), with their additive group law. Thus \(H^D\simeq(\mathbf Z/p\mathbf Z)_k\), and (NTR7) gives \(H\simeq\mu_p\). We have proved the complete dichotomy for (NTR3), rather than invoking a classification of all finite group schemes.
+
+##### NT5. Ordinary and supersingular are full kernel alternatives
+
+Apply NT4 to \(\ker F\) and NT3 to \(V\). If \(\ker F\simeq\mu_p\), then \(\ker V\simeq\mathbf Z/p\mathbf Z\), so \(V\) is étale by QS8. Call this case **ordinary**. If \(\ker F\simeq\alpha_p\), then \(\ker V\simeq\alpha_p\); every geometric fibre of \(V\) is one length-\(p\) point, since translation identifies it with its kernel. Call this case **supersingular**. These alternatives exhaust all curves in every characteristic \(p>0\).
+
+For clarity the latter map is purely inseparable. At the generic point a finite field extension with only one geometric point has separable degree one. To check this elementary assertion, repeatedly divide an irreducible polynomial's exponents by \(p\) until the resulting polynomial has nonzero derivative. Its distinct roots count its separable part. If there is only one root, that last polynomial has degree one, so a sufficiently high \(p\)-power of the original element lies in the base field. Apply this to a finite generating list. The extension is purely inseparable. Conversely a purely inseparable extension has unique roots over any algebraic closure. This argument also explains universal injectivity of the finite maps with connected geometric kernel used here.
+
+The identity \([p]=VF\) gives a full finite faithfully flat sequence
+
+\[
+ 0\longrightarrow\ker F\longrightarrow E[p]
+     \xrightarrow{F}\ker V\longrightarrow0:
+ \quad E[p]=E\times_{E^{(p)}}\ker V.
+ \tag{NTR12}
+\]
+
+The last equality is the scheme inverse image of the origin under \(VF\); the asserted surjection and torsor are base changes of \(F\). In the ordinary case it has \(p\) components, each a translate of \(\mu_p\) and of full length \(p\). Its reduced subscheme consists of their \(p\) rational points. It is a subgroup: the tensor product of two such reduced finite algebras is a product of copies of \(k\), so every nilpotent vanishes after restricting multiplication to it; inverse and origin restrict too. It maps isomorphically to the reduced \(\ker V\). Multiplication from the origin component times this reduced subgroup is an isomorphism on each translated component, hence
+
+\[
+ E[p]\simeq\mu_p\times(\mathbf Z/p\mathbf Z)_k,
+ \quad\#E[p](k)=p.
+ \tag{NTR13}
+\]
+
+The decomposition into connected and reduced factors is canonical; a chosen identification of the cyclic factor is not.
+
+In the supersingular case \([p]\) is purely inseparable of degree \(p^2\), and its kernel is one point of full length \(p^2\). The DVR argument in NT1 gives
+
+\[
+ \mathcal O(E[p])\simeq k[t]/(t^{p^2}),\qquad
+ 0\longrightarrow\alpha_p\longrightarrow E[p]
+    \longrightarrow\alpha_p\longrightarrow0.
+ \tag{NTR14}
+\]
+
+This extension does not split. Its tangent space is one-dimensional, since the maximal ideal in the displayed algebra is generated by \(t\). The product \(\alpha_p\times\alpha_p\) has algebra \(k[x,y]/(x^p,y^p)\) and a two-dimensional tangent space. A splitting of this commutative group extension would identify it with that product: multiply the kernel inclusion and the section, with inverse obtained by subtracting the section of the quotient. The tangent dimensions exclude this. Thus neither the sole geometric point nor a product of two additive kernels describes the full supersingular torsion.
+
+##### NT6. Every \(p\)-power level and the formal height
+
+Iterate Frobenius to get \(F_r:E\to E^{(p^r)}\), of degree \(p^r\), and let \(V_r=\widehat F_r\). Uniqueness in QS8 proves that the dual of a composition is the reverse composition of the duals: that reverse composition satisfies its required multiplication identity, since homomorphisms commute with integer multiplication. Hence
+
+\[
+ V_rF_r=[p^r],\qquad
+ \ker V_r=(\ker F_r)^D,
+ \qquad\deg F_r=\deg V_r=p^r.
+ \tag{NTR15}
+\]
+
+Over an algebraically closed field its Frobenius automorphism twists actual finite algebra maps and their bases; therefore it preserves the ordinary or supersingular alternative. In the ordinary case every factor of \(V_r\) is étale, so its kernel is a constant group of order \(p^r\). It is a subgroup of \(E^{(p^r)}[p^r]\), and its elements killed by \(p\) form a group of at most \(p\) elements by NT5 on that twist. A nonzero finite group of \(p\)-power order has an element of order \(p\), by successively multiplying any nonzero element by \(p\), so the number is exactly \(p\).
+
+Such a commutative group \(G\) is cyclic: the kernel-image count for \([p]:G\to G\) gives \(|G/pG|=|G[p]|=p\). Choose \(g\) generating this quotient. Then \(G=\langle g\rangle+pG\); iteration gives \(G=\langle g\rangle+p^rG=\langle g\rangle\). This applies to \(\ker V_r\). Equations (NTR7) and (NTR15) now give \(\ker F_r\simeq\mu_{p^r}\). Base changing the \(F_r\)-torsor to \(\ker V_r\) and using the same reduced-subgroup argument as in NT5 proves
+
+\[
+ E[p^r]\simeq\mu_{p^r}\times(\mathbf Z/p^r\mathbf Z)_k
+ \quad\text{in the ordinary case.}
+ \tag{NTR16}
+\]
+
+There are \(p^r\) support points, each of length \(p^r\). In the supersingular case both composites in (NTR15) are purely inseparable, and \([p^r]\) has degree \(p^{2r}\) by MP4. Its single kernel point has the full algebra
+
+\[
+ \mathcal O(E[p^r])\simeq k[t]/(t^{p^{2r}}),
+ \quad\ker F_r\text{ has algebra }k[t]/(t^{p^r}).
+ \tag{NTR17}
+\]
+
+These last displayed identifications specify the algebras, not an additive group law. At the ordinary origin the algebra is likewise \(k[t]/(t^{p^r})\), since it is the origin component of (NTR16).
+
+One can state the same length information in the formal parameter. The completion of the smooth origin DVR is \(k[[t]]\): successive residue lifting determines each coefficient uniquely, gives the map from series to the completion, and its inverse by reduction modulo every \(t^m\). The group operation induces a formal power series law \(\mathcal F(X,Y)\), since its two-variable maps preserve the origin ideal; its first terms are \(X+Y\) by MP5. Write \([p](t)\) for the induced multiplication series. The length of its zero quotient is its least nonzero exponent, by the DVR calculation. NT5 therefore proves
+
+\[
+ [p](t)=a t^{p^h}+\text{higher powers},\quad a\ne0,
+ \qquad h=1\text{ ordinary},\quad h=2\text{ supersingular}.
+ \tag{NTR18}
+\]
+
+This integer \(h\) is the formal height here. Composing a series of order \(e\) with itself multiplies its least exponent by \(e\): its leading coefficient becomes a nonzero product of powers of \(a\). Induction gives order \(p^{hr}\) for \([p^r](t)\), agreeing with the full local lengths just proved. No zero series or undefined infinite height occurs for these elliptic curves, because MP4 proves finite multiplication of degree \(p^2\).
+
+##### NT7. Rank-\(p\) subgroups and isogeny invariance
+
+A rank-\(p\) subgroup \(K\subset E[p]\) over this algebraically closed field is either connected or reduced. Indeed translation by each rational support point identifies every local component with the origin component; thus its length is the number of components times their common positive length. Primality of \(p\) forces one component of length \(p\), or \(p\) length-one components. In the ordinary case a connected subgroup has to be the entire origin component \(\mu_p\): their equal lengths make its surjection of local algebras an isomorphism. A reduced subgroup must be the entire reduced \(\mathbf Z/p\mathbf Z\), by its number of points. In the supersingular case every subgroup is supported at the origin. The ideals in its ambient smooth DVR show that the sole length-\(p\) closed subscheme is the quotient by \(t^p\); hence its only rank-\(p\) subgroup is \(\ker F\simeq\alpha_p\). In particular
+
+\[
+ \#\{K\subset E[p]:\operatorname{rank}K=p\}
+   =2\text{ ordinary},\quad=1\text{ supersingular}.
+ \tag{NTR19}
+\]
+
+An isogeny cannot change the alternative. If \(q:E_1\to E_2\) has degree \(d\), write \(d=p^a b\) with \(p\nmid b\). Suppose \(E_1\) is supersingular and \(E_2\) ordinary. NT6 gives a point \(P\in E_2[p^r]\) of order \(p^r\) for \(r>a\). Then \(\widehat q(P)\in E_1[p^r](k)=0\), so \(q\widehat q(P)=[d]P=0\), contrary to its order. If the alternatives were reversed, apply this argument to the dual isogeny. This proves isogeny invariance without importing multiplicativity of separable degrees.
+
+##### NT8. Geometric characteristic-\(p\) Tate modules and the scope
+
+Let \(G_r=E[p^r](k)\) over an algebraically closed field of characteristic \(p\). In the ordinary case these groups are cyclic of order \(p^r\) by NT6. Multiplication by \(p\) maps \(G_{r+1}\) onto \(G_r\): a preimage under the finite surjection \([p]:E\to E\) exists as a rational point over an algebraically closed field, and is killed by \(p^{r+1}\). Choose a generator \(P_1\) and successively lift it with \(pP_{r+1}=P_r\). Each lift has order \(p^{r+1}\), since its image has order \(p^r\). These bases identify the transitions with ordinary coefficient reduction. In the supersingular case all these point groups are zero. Thus
+
+\[
+ \varprojlim_r E[p^r](k)
+   \simeq\mathbf Z_p\text{ ordinary},\qquad
+   =0\text{ supersingular}.
+ \tag{NTR20}
+\]
+
+As in TT3, finite coefficient cylinders give the inverse-limit topology and make the ordinary identification a topological module isomorphism. Nevertheless both schemes \(E[p^r]\) have rank \(p^{2r}\). Their geometric point limit has discarded exactly the connected nilpotent information. This proves why the rank-two Tate construction of TT, with its invertible prime, cannot be transferred to the characteristic prime by point counting.
+
+Over the original field, (NTR1), (NTR4), (NTR8) and the finite ranks are defined and proved there. Statements (NTR13)–(NTR20) are geometric assertions after algebraic closure; they do not assert those split models over an imperfect original field or a nilpotent family base. UW1–UW8 below prove the integral universal-family/discriminant construction. Relative Hasse strata,deformation multiplicities,the remaining arithmetic and \(p\)-adic arguments and independent whole-lesson review remain obligations.
+
+### 0.F.4.19. The integral universal Weierstrass family and discriminant
+
+RW constructed a Weierstrass equation from a given Noetherian elliptic family. We now prove the converse, including the exact smoothness condition, over every characteristic and over rings with nilpotents. The coefficient family is an actual family of full schemes. A free comparison is the Stacks project authors' [Introducing Algebraic Stacks, §6](https://stacks.math.columbia.edu/download/stacks-introduction.pdf). Its coefficient-family sketch is not a substitute for the constructions and proofs here. The local inputs are monic division N3, projective properness and its Čech cohomology PF, the smooth charts SF1–SF3, and the full Cartier, section and group-law constructions RC–GS.
+
+##### UW1. Arbitrary coefficients give a flat cubic and a full origin
+
+Let \(A\) be any commutative ring and choose \(a_1,a_2,a_3,a_4,a_6\in A\). Put
+
+\[
+ f=y^2+a_1xy+a_3y-x^3-a_2x^2-a_4x-a_6,
+ \quad W=V(F)\subset\mathbf P^2_A,
+ \tag{UWR1}
+\]
+
+where \(F\) is its degree-three homogenization (RWR4). The point \(O=(0:1:0)\) is a section. The opens \(Z\ne0\) and \(Y\ne0\) cover \(W\): a prime in their complement would have \(Y=Z=0\), and the equation \(-X^3=0\) would force \(X=0\), which is impossible in projective space. On the first open \(f\) is monic in \(y\), giving a free \(A[x]\)-module with basis \(1,y\). On the second, with \(u=X/Y,v=Z/Y\), its equation is
+
+\[
+ g=v+a_1uv+a_3v^2-u^3-a_2u^2v-a_4uv^2-a_6v^3=0.
+ \tag{UWR2}
+\]
+
+It is monic up to the unit \(-1\) in \(u\), giving a free \(A[v]\)-module with basis \(1,u,u^2\). Both rings are free as \(A\)-modules and therefore flat by T1. Their localizations and stalks remain flat, proving flatness of the whole family. All these statements survive any ring base change, since the same monic division gives the displayed bases.
+
+Set
+
+\[
+ h=1+a_1u+a_3v-a_2u^2-a_4uv-a_6v^2,
+ \qquad vh=u^3.
+ \tag{UWR3}
+\]
+
+The open \(D(h)\) contains the entire origin section. Multiplication by \(v\) is injective in the second chart because it is free over \(A[v]\); localization preserves that injection. As \(h\) is a unit there, \(u^3=vh\) is regular, and so is \(u\). The origin ideal \((u,v)\) is consequently the regular principal ideal \((u)\), with quotient \(A\). Thus \(O\) is a full effective Cartier section, including over a nonreduced ring. The zero scheme of the hyperplane section \(Z\) on this chart has ideal \((v)=(u^3)\), and off this section \(Z\) is a unit. Hence
+
+\[
+ \mathcal O_W(1)\simeq\mathcal O_W(3O).
+ \tag{UWR4}
+\]
+
+The calculation proves the multiplicity three on the full scheme and after any base change.
+
+##### UW2. The integral discriminant identities
+
+Define the following polynomials with integer coefficients:
+
+\[
+ \begin{aligned}
+ b_2&=a_1^2+4a_2,& b_4&=a_1a_3+2a_4,\\
+ b_6&=a_3^2+4a_6,&
+ b_8&=a_1^2a_6+4a_2a_6-a_1a_3a_4+a_2a_3^2-a_4^2,\\
+ c_4&=b_2^2-24b_4,&
+ c_6&=-b_2^3+36b_2b_4-216b_6,\\
+ \Delta&=-b_2^2b_8-8b_4^3-27b_6^2+9b_2b_4b_6.
+ \end{aligned}
+ \tag{UWR5}
+\]
+
+Multiplying the definitions gives \(b_2b_6-b_4^2=4b_8\). Expanding the cube and square in the next formula and substituting this last identity gives
+
+\[
+ c_4^3-c_6^2=1728\Delta.
+ \tag{UWR6}
+\]
+
+For example the left expansion is
+\(432b_2^2b_4^2-13824b_4^3-432b_2^3b_6+15552b_2b_4b_6-46656b_6^2\).
+Its first and third terms combine to \(-1728b_2^2b_8\), giving (UWR6). This is a polynomial identity; the definition of \(\Delta\) does not divide by \(1728\).
+
+We will also use a proved cubic identity. If
+\(q(x)=B_0x^3+B_1x^2+B_2x+B_3=B_0\prod_i(x-r_i)\), then
+
+\[
+ B_0^4\prod_{i<j}(r_i-r_j)^2
+ =B_1^2B_2^2-4B_0B_2^3-4B_1^3B_3
+    -27B_0^2B_3^2+18B_0B_1B_2B_3.
+ \tag{UWR7}
+\]
+
+Here is an explicit algebraic verification: put \(e_1=r_1+r_2+r_3\), \(e_2=r_1r_2+r_1r_3+r_2r_3\), \(e_3=r_1r_2r_3\). Expanding the three squared differences gives \(e_1^2e_2^2-4e_2^3-4e_1^3e_3-27e_3^2+18e_1e_2e_3\); substitute \((B_1,B_2,B_3)=B_0(-e_1,e_2,-e_3)\). All expansions are over the integers. Over any algebraically closed field with \(B_0\ne0\), their common value is zero exactly when two roots coincide. A root of a polynomial is repeated exactly when it also annihilates its derivative: factor out its highest power of \(x-r\) and differentiate. Thus this criterion includes characteristic three.
+
+##### UW3. The precise geometric smoothness test, including characteristic two
+
+At infinity (UWR2) has \(g_v(O)=1\), so the origin is always smooth by SF3. All other geometric points are in the affine chart. There the derivatives are
+
+\[
+ f_y=2y+a_1x+a_3,
+ \qquad f_x=a_1y-3x^2-2a_2x-a_4.
+ \tag{UWR8}
+\]
+
+If either is nonzero at a point, its principal open has a standard smooth chart with one free coordinate by SF3. If both vanish, the defining equation has no linear relation in the point's cotangent presentation, so that space has dimension two. The chart is a one-dimensional curve: it is finite over the polynomial \(k[x]\) by monic division, and its integral finite projection has dimension one by the prime-chain and lying-over proofs I3–I4. A smooth relative-dimension-one chart has cotangent dimension one, so such a point is not smooth. This proves the gradient test being used.
+
+In characteristic other than two complete the square, setting \(z=2y+a_1x+a_3\). Then
+
+\[
+ z^2=q(x)=4x^3+b_2x^2+2b_4x+b_6.
+ \tag{UWR9}
+\]
+
+This is an invertible affine coordinate change. Its singular points are exactly \(z=0\), \(q(x)=q'(x)=0\). Substitute \((B_0,B_1,B_2,B_3)=(4,b_2,2b_4,b_6)\) in (UWR7). Using \(b_2b_6-b_4^2=4b_8\) reduces its value to \(16\Delta\). Since sixteen is a unit in these fields, the fibre is smooth exactly when \(\Delta\ne0\), also in characteristic three.
+
+In characteristic two the formula becomes
+
+\[
+ \Delta=a_1^6a_6+a_1^5a_3a_4+a_1^4a_2a_3^2
+              +a_1^4a_4^2+a_1^3a_3^3+a_3^4.
+ \tag{UWR10}
+\]
+
+If \(a_1\ne0\), the two gradient equations have the unique solution
+
+\[
+ x=a_3/a_1,
+ \qquad y=(x^2+a_4)/a_1,
+ \qquad a_1^6f(x,y)=\Delta.
+ \tag{UWR11}
+\]
+
+The last identity follows by substitution: the linear-in-\(y\) terms cancel, and the remaining six terms are precisely (UWR10). Thus this point is on the cubic exactly when \(\Delta=0\). If \(a_1=0\) and \(a_3\ne0\), the derivative \(f_y=a_3\) never vanishes and \(\Delta=a_3^4\ne0\). If both are zero, choose over the algebraic closure a root \(x\) of \(x^2+a_4\) and then a root \(y\) of the cubic's remaining square equation. That point lies on the cubic with both derivatives zero, and \(\Delta=0\). These three cases prove the exact characteristic-two test without dividing by two.
+
+##### UW4. Unit discriminant gives an elliptic family over the full ring
+
+We prove the ring-level equivalence
+
+\[
+ W\longrightarrow\operatorname{Spec}A\text{ is smooth}
+                  \quad\Longleftrightarrow\quad\Delta\in A^\times.
+ \tag{UWR12}
+\]
+
+If \(\Delta\) is a unit, every geometric residue fibre passes UW3's test. On the affine chart the opens \(D(f_x),D(f_y)\) cover: otherwise a prime containing both derivatives gives, after extension of its residue field to an algebraic closure, a forbidden singular point. Existence of a prime over every proper ideal, proved in S1–S2, justifies this detection. They give actual one-free-coordinate smooth presentations over \(A\), not only smooth reduced fibres. On the second chart, points outside \(Z\ne0\) have \(u=v=0\) in their residue fields and \(g_v=1\). The additional open \(D(g_v)\) therefore completes a standard smooth chart cover of \(W\). Conversely smoothness preserves these smooth geometric fibres; UW3 makes \(\Delta\) nonzero in every residue field. An element outside every prime is a unit by S1, proving the other implication. This applies to arbitrary rings.
+
+The cubic is proper. For example first form it over \(A_0=\mathbf Z[a_1,a_2,a_3,a_4,a_6]\), where PF3 gives projective properness and its closed-immersion stability; pullback gives the same proper morphism for every \(A\). It is flat by UW1. We verify its entire genus-one cohomology as well. Monicity in \(X\) makes multiplication by \(F\) regular in \(A[X,Y,Z]\), even with zero divisors in \(A\). Its homogeneous localization gives the exact Cartier sequence
+
+\[
+ 0\longrightarrow\mathcal O_{\mathbf P^2_A}(-3)
+   \xrightarrow{F}\mathcal O_{\mathbf P^2_A}
+   \longrightarrow\mathcal O_W\longrightarrow0.
+ \tag{UWR13}
+\]
+
+The PF Čech calculation gives \(H^0(\mathcal O)=A\), higher \(H^i(\mathcal O)=0\), and for \(\mathcal O(-3)\) only \(H^2=A\), generated by \(1/(XYZ)\). To see these particular calculations directly, decompose the three-coordinate Čech complex into Laurent monomials. Degree zero has just the all-nonnegative monomial one in its surviving degree-zero summand; degree minus three has just the all-negative exponent triple \((-1,-1,-1)\) in degree two. Each other summand contracts by adjoining or deleting a fixed variable outside its negative-exponent set, with the Čech sign. The written PF contraction verifies that deletion and adjoining compose to the identity. Thus there is no degree-one survivor in either complex. The long exact sequence of (UWR13) gives
+
+\[
+ H^0(W,\mathcal O_W)=A,
+ \qquad H^1(W,\mathcal O_W)=A,
+ \qquad H^i(W,\mathcal O_W)=0\ (i\ge2).
+ \tag{UWR14}
+\]
+
+The same complexes and generator commute with every ring base change. Applied on affine base opens, they give the corresponding pushforward lines and their base-change identifications.
+
+On a geometric fibre with unit discriminant, (UWR14) makes the smooth proper curve connected: two disjoint nonempty open and closed parts would give a nontrivial idempotent in its field of global functions. It is integral as well. Its local rings are regular curve domains by SF6, so different irreducible components cannot meet; the finitely many components would otherwise give a disconnected decomposition. Its genus is one by its displayed first cohomology. The origin is the Cartier section proved in UW1. Over the Noetherian universal open \(U=\operatorname{Spec}A_0[1/\Delta]\), the hypotheses RC and GS are now fulfilled, so GS4 constructs the full group law with origin \(O\). Pull this actual group law and its identities back along any ring map \(A_0[1/\Delta]\to A\). Thus every unit-discriminant coefficient cubic is an elliptic group family over \(A\); initial Noetherianity of \(A\) is unnecessary.
+
+##### UW5. Every existing family has these local coefficient models
+
+For a given Noetherian elliptic family \(E/S\), RW1–RW4 construct, on a sufficiently small affine open, full section coordinates \(1,x,y\) and the entire cubic (RWR4), retaining its nilpotents. Its smooth geometric fibres imply by UW3 that its discriminant is a unit. Hence it is a pullback of the just-constructed family over \(U\), as a pointed scheme. Its group law agrees with that pullback: GS4 defines addition from its full relative degree-zero line classes, and pointed isomorphisms preserve origin divisors, tensor product and those classes; GS3's injectivity therefore identifies addition. This verifies the converse for full families rather than only their field-valued fibres.
+
+We also prove the precise form of all local pointed coordinate changes. The section flags have bases \(1\) in degree one, \(1,x\) in degree two, and \(1,x,y\) in degree three. RC's degree-one flag quotients are full invertible modules, so an isomorphism between two such choices has
+
+\[
+ x=\alpha x'+r,\qquad y=\gamma y'+\beta x'+t,
+ \quad\alpha,\gamma\in A^\times.
+ \tag{UWR15}
+\]
+
+The sections \(1,x,y,x^2,xy\) are a basis in degree five: their distinct fibre pole orders \(0,2,3,4,5\) and RC4's rank five make their coefficient determinant a unit, by RW1's full-ring argument. In degree six RW1 gives a basis after adjoining either \(x^3\) or \(y^2\). Thus the quotients by degree five are lines, and monicity of the two relations says that the leading classes of \(y^2\) and \(x^3\), and of their primed versions, agree and are generators. Comparing those full line classes gives \(\gamma^2=\alpha^3\) over \(A\) itself. Put \(\lambda=\gamma/\alpha\), so \(\lambda^2=\alpha\), \(\lambda^3=\gamma\), and put \(s=\beta/\alpha\). Thus every such change is uniquely of the form
+
+\[
+ x=\lambda^2x'+r,\qquad
+ y=\lambda^3y'+s\lambda^2x'+t,
+ \quad\lambda\in A^\times, r,s,t\in A.
+ \tag{UWR16}
+\]
+
+No extraction of a square or cube root was required. The same reasoning applies to a pointed isomorphism between two local models, since it preserves their actual Cartier origin and section flags.
+
+##### UW6. All coefficient transformations and discriminant weights
+
+Substitute (UWR16) into \(f\) and divide only by the unit \(\lambda^6\). Collecting the coefficients of \(x'y',x'^2,y',x',1\) gives
+
+\[
+ \begin{aligned}
+ \lambda a_1'&=a_1+2s,\\
+ \lambda^2a_2'&=a_2-sa_1+3r-s^2,\\
+ \lambda^3a_3'&=a_3+ra_1+2t,\\
+ \lambda^4a_4'&=a_4-sa_3+2ra_2-(t+rs)a_1+3r^2-2st,\\
+ \lambda^6a_6'&=a_6+ra_4+r^2a_2+r^3-ta_3-rta_1-t^2.
+ \end{aligned}
+ \tag{UWR17}
+\]
+
+These five coefficient comparisons prove equality of the whole cubic equations; the linear-in-\(y'\) coefficients and the cubic leading coefficients are included. The homogeneous coordinate matrix is invertible with determinant \(\lambda^5\). Hence these substitutions and their inverses are pointed scheme isomorphisms over any ring when the coefficients satisfy (UWR17).
+
+Expanding the definitions in (UWR5) using (UWR17) gives
+
+\[
+ \begin{aligned}
+ \lambda^2b_2'&=b_2+12r,\\
+ \lambda^4b_4'&=b_4+rb_2+6r^2,\\
+ \lambda^6b_6'&=b_6+2rb_4+r^2b_2+4r^3,\\
+ \lambda^4c_4'&=c_4,\qquad \lambda^6c_6'=c_6.
+ \end{aligned}
+ \tag{UWR18}
+\]
+
+The last two follow by inserting the first three into \(c_4,c_6\) and canceling the powers of \(r\). The corresponding discriminant identity is
+
+\[
+ \lambda^{12}\Delta'=\Delta.
+ \tag{UWR19}
+\]
+
+Here is a characteristic-independent proof that avoids canceling \(1728\) after specialization. Work first in the torsion-free Laurent polynomial ring \(B=\mathbf Z[a_i,r,s,t,\lambda,\lambda^{-1}]\), which injects into its rationalization. There (UWR9) and (UWR16) give \(q(\lambda^2x'+r)=\lambda^6q'(x')\). Each of the three root differences is therefore multiplied by \(\lambda^2\). The leading coefficient of both cubics is four. Formula (UWR7) scales its value by \(\lambda^{12}\); because that value is \(16\Delta\), this proves (UWR19) in the rationalization. Both sides already belong to \(B\), and the injection proves their equality in \(B\). Applying any ring map out of \(B\) proves the identity in every characteristic and with all nilpotents. This proves a universal polynomial identity; it does not divide by sixteen in the final ring.
+
+##### UW7. The full invariant differential and globally glued invariants
+
+On the first chart define the relative differential by the two compatible local expressions
+
+\[
+ \omega=\frac{dx}{2y+a_1x+a_3}
+           =-\frac{dy}{a_1y-3x^2-2a_2x-a_4}.
+ \tag{UWR20}
+\]
+
+Use the first on \(D(f_y)\), the second on \(D(f_x)\). Differentiating \(f=0\) over \(A\) proves agreement on the overlap. Each expression is a basis of the rank-one differential module in its smooth chart. On \(D(g_v)\) around the origin it is
+
+\[
+ \omega=-du/g_v.
+ \tag{UWR21}
+\]
+
+To check extension, \(x=u/v,y=1/v\) gives \(f_x=g_u/v^2\), while (UWR2) gives
+\(vg_v+ug_u=-v(2+a_1u+a_3v)\).
+On the overlap where \(f_y\) is a unit this identity turns \(dx/f_y\) into \(-du/g_v\); where \(f_x\) is a unit the relation \(g_udu+g_vdv=0\) does the same for \(-dy/f_x\). These are equalities on the actual localized rings. Thus \(\omega\) is a nowhere-zero relative differential, with origin value \(-du\). On the Noetherian universal family, GS7 and MP1 identify it with the invariant differential determined by that origin value; pulling back proves invariance for every coefficient base ring.
+
+Under (UWR16), relative differentiation kills base coefficients. The numerator scales by \(\lambda^2\), and its denominator by \(\lambda^3\), by the first and third equations of (UWR17). Hence
+
+\[
+ \omega'=\lambda\omega,
+ \quad j=\frac{c_4^3}{\Delta},
+ \quad\Delta\,\omega^{\otimes12}\text{ is independent of these coordinates.}
+ \tag{UWR22}
+\]
+
+The differential identity on the complement of the origin holds on the whole scheme: in the second chart \(v\) is regular by UW1, so restriction of this free differential line to its localization at \(v\) is injective. Equations (UWR18)–(UWR19) then prove that \(j\) glues as a regular base function, and \(\Delta\omega^{\otimes12}\) glues as a nowhere-zero section of the twelfth power of the origin differential line. Likewise \(c_4\omega^{\otimes4}\) and \(c_6\omega^{\otimes6}\) glue as sections of its fourth and sixth powers. This gluing retains ring coefficients, rather than comparing only residues.
+
+##### UW8. What this universal family represents
+
+The full construction has coefficient scheme and family
+
+\[
+ U=\operatorname{Spec}\mathbf Z[a_1,a_2,a_3,a_4,a_6,1/\Delta],
+ \qquad\mathcal W_U=V(F)\subset\mathbf P^2_U.
+ \tag{UWR23}
+\]
+
+A ring map from its displayed ring to \(A\) is exactly a choice of five coefficients with unit discriminant: the image of \(1/\Delta\) must be the unique inverse of that polynomial value. Its family pullback is the entire cubic, origin and group law constructed above. Conversely every such coefficient cubic is that pullback. All ring maps between coefficient bases preserve this construction, its monic modules, cohomology lines, smooth charts, Cartier section and scheme identities. Over an arbitrary scheme, compatible choices on affine opens glue these same schemes and operations by ordinary sheaf gluing.
+
+RW and UW5 prove that every Noetherian elliptic family admits these local models, and (UWR16)–(UWR17) describe all pointed changes between them. They form the change-of-coordinates group represented by \(\mathbf Z[\lambda,\lambda^{-1},r,s,t]\): composition and inverse of the displayed affine substitutions are again of that form, with unique parameters by UW5. Coefficient transformations give its action on \(U\), and (UWR19) keeps that action inside the unit-discriminant open. Thus the coefficient family and its full coordinate identifications are available for subsequent moduli arguments. \(U\) represents chosen coefficients; it has not been asserted to be a fine parameter scheme for elliptic curves without those choices. Fine level structures, stabilizers, modular compactification, relative Hasse strata and deformation multiplicities, the remaining arithmetic and \(p\)-adic mathematics, and independent whole-lesson review remain to be proved in their required scopes.
 
 ### 0.F.4A. Finite covers have explicit projective coordinates
 
@@ -7189,9 +7666,102 @@ For \(\mu_p\), put \(C=k[z]/(z^p-1)\) and \(\rho(x)=x\otimes z\) on \(k[x,x^{-1}
 
 Both relations have rank \(p\) although a geometric kernel has one point. The nilpotent relation ideals are therefore essential. Award 2 points for each complete algebra calculation.
 
+### Exercise 6.39. Full characteristic-prime torsion and dual kernels (48 points)
+
+Use NT1–NT8 and their proved local inputs. The split descriptions in this exercise are over an algebraically closed field \(k\) of characteristic \(p>0\); construction of relative Frobenius and the dual-kernel isomorphism is over the original field.
+
+(a) **6 points.** Define relative Frobenius on an arbitrary field's affine chart. Use a separating parameter to compute its full degree. Explain why its one geometric kernel point has length \(p\), and give its entire coordinate algebra.
+
+(b) **6 points.** Construct the dual Hopf algebra of a finite commutative group scheme. Prove that it represents scheme characters on every test algebra. Compute the dual of the constant cyclic group and explain why a calculation only on field-valued characters is insufficient for \(\alpha_p\).
+
+(c) **8 points.** For an isogeny \(q:E\to E'\), prove \(\ker\widehat q\simeq(\ker q)^D\) using a normalized trivialization of a pulled-back line and effective descent. Identify the actual scheme that makes the transported descent unit a character.
+
+(d) **6 points.** Let the coordinate algebra of a connected rank-\(p\) curve subgroup be \(k[t]/t^p\). Prove the triangular convolution formula and the relation \(\delta^p=c\delta\). Deduce the two possible groups. For \(p=2\), compute this relation directly for \(\Delta t=x+y\) and \(\Delta t=x+y+xy\).
+
+(e) **7 points.** Prove the full ordinary decomposition of \(E[p]\) and the nonsplit supersingular extension. Give the local algebras and tangent dimensions that distinguish \(E[p]\) from \(\alpha_p\times\alpha_p\); include characteristics two and three.
+
+(f) **6 points.** Prove the classification at every level \(p^r\), including the cyclic étale factor in the ordinary case and the full connected length in the supersingular case. Derive the order of the formal multiplication series.
+
+(g) **5 points.** Classify all rank-\(p\) closed subgroup schemes of \(E\), and prove that the ordinary/supersingular alternative is unchanged by an isogeny. Do not assume multiplicativity of separable degrees.
+
+(h) **4 points.** Compute the geometric point inverse limit at the characteristic prime. Explain both its topology and the information it discards. State the field and family scope of the split descriptions precisely.
+
+#### Full solution and point allocation
+
+**(a)** The chart map is \(R\otimes_{k,F_k}k\to R\), \(r\otimes a\mapsto ar^p\). Its tensor relation is valid because multiplying the first factor by \(c\) multiplies the second by \(c^p\). Localization glues these maps and naturality gives a group map. **[2]** Over \(\bar k\), choose \(x\) with \(L=\bar k(E)\) finite separable of degree \(d\) over \(\bar k(x)\). Its \(p\)-power extension has degree \(d\) over \(\bar k(x^p)\); the rational-function extension between those parameter fields has basis \(1,x,\ldots,x^{p-1}\). The tower gives \([L:L^p]=p\), and QS7 supplies finite local freeness. Field base change retains that rank. **[2]** The geometric coordinate map has unique roots, so the kernel is supported at the origin. Its rank is its length, \(p\). The smooth origin DVR has a length-\(p\) quotient only by \((t^p)\), with full algebra \(\bar k[t]/t^p\). Successive residues establish this finite quotient itself, without replacing it by its reduced point. **[2]**
+
+**(b)** Dualize the finite comultiplication and counit to obtain convolution and its unit on \(A^\vee\); dualize multiplication and the unit of \(A\) to obtain the group structure on \(\operatorname{Spec}A^\vee\). Finite tensor duality makes these actual maps, and every identity is dual to an existing Hopf identity. **[2]** Under \(\operatorname{Hom}_k(A^\vee,C)=A\otimes C\), the algebra-map conditions are \(\Delta u=u\otimes u\) and \(\varepsilon(u)=1\). The antipode gives its inverse, so these are exactly scheme characters to \(\mathbf G_m\). Double duality recovers the original group. **[2]** A character of \(\mathbf Z/m\mathbf Z\) is determined by an \(m\)-th root of unity and hence is represented by \(\mu_m\). On a field \(C\), \(\alpha_p(C)\) is zero, but its characters on nilpotent test rings are not: for \(C=k[\epsilon]/\epsilon^2\), the unit \(1+\epsilon t\) in \(C[t]/t^p\) has comultiplication \((1+\epsilon x)(1+\epsilon y)=1+\epsilon(x+y)\), counit one, and is a nontrivial character. It therefore cannot be reconstructed from characters on its field point group. **[2]**
+
+**(c)** Take a Noetherian parameter scheme \(T\) and a point \(Q\in\ker\widehat q(T)\). Rigidify its line \(\mathcal O(Q-O')\) at the origin by its restricted inverse base line. (QSR16) trivializes its pullback class. Restricting to the origin normalizes a trivialization; MP1 says all automorphisms of the trivial line on \(E_T\) are base units. **[2]** The full relation scheme is \(E_T\times_{E'_T}E_T=H_T\times_T E_T\), where \(H=\ker q\). The transported descent isomorphism is a unit there. Apply MP1 after base change to \(H_T\) to see that this unit comes from \(H_T\). Its cocycle and diagonal identities are precisely multiplicativity and identity value one, so it defines a scheme character of \(H_T\). **[2]** Conversely that character is a cocycle on the trivial line over \(E_T\). On each affine target open, FD1–FD4 descend its rank-one module through the finite faithfully flat cover. Full faithfulness glues those modules into a line; its trivial pullback gives fibre degree \(m\deg L=0\), so its degree is zero. GS3 assigns its unique point class, and (QSR16) puts it in \(\ker\widehat q\). **[2]** The two inverse descent constructions recover both line and character. They respect tensor products, and are natural on Noetherian test schemes. Taking the universal points on the two finite Noetherian schemes gives inverse group maps, including their nilpotents. These maps survive later base change. No point-counting argument or pre-assumed perfect pairing is used. **[2]**
+
+**(d)** The counit identities give \(\Delta t=x+y\) plus terms of total degree at least two. The primitive dual element \(\delta\) is the derivation at the origin. Its iterated convolution on \(t^j\) has zero value for \(j>i\), and value \(i!\) for \(j=i<p\), because only the product of the \(i\) linear variables contributes to that coefficient. Thus its first \(p\) powers form a basis. **[2]** The primitive dual space consists of derivations at the origin and has dimension one. The characteristic-\(p\) binomial identity makes \(\delta^p\) primitive, so \(\delta^p=c\delta\), giving the full algebra \(k[z]/(z^p-cz)\). For \(c=0\) it is self-dual \(\alpha_p\); otherwise rescale using \(\lambda^{p-1}c=1\), identify \(z^p-z\) with the constant additive group on \(\mathbf F_p\), and dualize to get \(\mu_p\). **[2]** For \(p=2\), the basis is \(1,t\). With additive comultiplication the coefficient of \(xy\) in \(\Delta t\) is zero, so \(\delta^2(t)=0\) and \(\delta^2=0\). With multiplicative coordinate \(t=z-1\), it is one, so \(\delta^2(t)=1\) and \(\delta^2=\delta\). In each case its value on one is zero. These are the two relations even in characteristic two. **[2]**
+
+**(e)** The scheme inverse image of \(\ker V\) under \(F\) is \(E[p]\), by \(VF=[p]\). Thus its map to \(\ker V\) is the base-changed rank-\(p\) torsor, not just a surjection on point sets. **[2]** In the ordinary case kernel duality gives \(\ker V=\mathbf Z/p\mathbf Z\). Each of its fibres has a rational support point and is a translate of \(\ker F=\mu_p\). The reduced subscheme is a subgroup because multiplication and inverse kill nilpotents when restricted to products of reduced finite \(k\)-algebras. It maps isomorphically to \(\ker V\); multiplying its points by the connected factor gives an isomorphism on every component. Hence \(E[p]=\mu_p\times\mathbf Z/p\mathbf Z\). **[2]** In the other case both kernels are \(\alpha_p\), and the full single kernel point of \([p]\) has algebra \(k[t]/t^{p^2}\), tangent dimension one. **[1]** A splitting would give a product, with algebra \(k[x,y]/(x^p,y^p)\) and tangent dimension two. Their origin cotangent spaces are respectively generated by \(t\), and independently by \(x,y\), modulo the squares of their maximal ideals. Thus no splitting exists. For \(p=2\), these are \(k[t]/t^4\) versus \(k[x,y]/(x^2,y^2)\); for \(p=3\), \(k[t]/t^9\) versus \(k[x,y]/(x^3,y^3)\). Each pair has equal length but different tangent dimension. **[2]**
+
+**(f)** Frobenius twists preserve the two alternatives over this algebraically closed field, so the dual of \(F_r\) is a composite of étale maps in the ordinary case. Its constant kernel has order \(p^r\) and only \(p\) elements killed by \(p\). The finite kernel-image count gives \(|G/pG|=|G[p]|=p\). A lift \(g\) of a generator satisfies \(G=\langle g\rangle+pG\); repeat \(r\) times to get \(G=\langle g\rangle\), since \(p^rG=0\). **[2]** Kernel duality gives \(\ker F_r=\mu_{p^r}\). The full torsor over the cyclic étale kernel splits by the reduced subgroup, as in (e), yielding (NTR16), with \(p^r\) components of length \(p^r\). In the supersingular case both composites are purely inseparable, so the entire rank-\(p^{2r}\) kernel has one support point and algebra \(k[t]/t^{p^{2r}}\). **[2]** The formal parameter ring is \(k[[t]]\) by successive residue lifting. Length of the origin quotient makes the first exponent of \([p](t)\) equal to \(p\) or \(p^2\). Composition multiplies first exponents and retains a nonzero leading coefficient, so the order of \([p^r](t)\) is \(p^{hr}\), with \(h=1\) or \(2\) respectively. The algebra statement alone does not assign an additive law to the supersingular kernel. **[2]**
+
+**(g)** QS8 puts every rank-\(p\) subgroup in \(E[p]\). Translation identifies all its local component lengths, whose product with the number of components is \(p\). Thus it is connected or reduced. In the ordinary case those two possibilities are the whole connected and reduced factors, by their lengths. In the supersingular case the ambient DVR has exactly one length-\(p\) quotient, so its unique subgroup is \(\ker F=\alpha_p\). **[2]** For an isogeny of degree \(d=p^a b\), \(p\nmid b\), assume its source is supersingular and target ordinary. Choose a target torsion point of order \(p^r\) with \(r>a\). Its dual image is zero since the source's geometric torsion is zero. But the composition is \([d]\), which cannot kill this point: \(b\) is invertible modulo \(p^r\), and \(p^a\) does not annihilate an element of that order. This contradiction excludes that pair of alternatives. Apply it to the dual map to exclude the reverse pair. **[3]**
+
+**(h)** In the ordinary case the point groups are cyclic of orders \(p^r\), and multiplication by \(p\) is onto because a preimage under the finite surjection \([p]\) exists over \(k\) and is killed at the next level. Successively lifting a generator gives compatible generators, so the inverse limit is \(\mathbf Z_p\); in the supersingular case it is zero. **[2]** Coefficient cylinders give the topological module identification, as in TT3. Both scheme ranks remain \(p^{2r}\): taking points discarded their connected nilpotent algebras. These are geometric descriptions over an algebraic closure. The relative maps, dual-kernel isomorphism and finite ranks are defined over the original field, while split models over imperfect fields or nilpotent families, relative Hasse strata and deformation multiplicities have not been inferred. **[2]**
+
+### Exercise 6.40. Integral coefficient families, discriminants and full coordinate changes (50 points)
+
+Use UW1–UW8 and the earlier written section, smooth-chart and cohomology proofs. Every coefficient calculation is over the full ring indicated, not only its residue fields.
+
+(a) **6 points.** Prove flatness of the arbitrary-coefficient projective cubic using two monic charts. Prove the origin is a regular Cartier section and that the hyperplane divisor is exactly \(3O\), even over a ring with zero divisors.
+
+(b) **6 points.** Prove both integral invariant identities in UW2 and the cubic root-difference identity. Deduce the discriminant of the completed-square cubic without dividing by \(1728\).
+
+(c) **8 points.** Give the exact singularity test in characteristics two and three. Prove the full-ring equivalence between smoothness and unit discriminant. Over \(A=k[\epsilon]/\epsilon^2\), check smoothness of \(y^2+\epsilon xy+y=x^3\) in characteristic two, and of \(y^2=x^3+(1+\epsilon)x^2+1\) in characteristic three.
+
+(d) **7 points.** Prove properness and compute the entire cohomology of the structure sheaf of the arbitrary-coefficient cubic. Explain why a unit-discriminant fibre is geometrically integral of genus one, and construct the group family over arbitrary coefficient rings.
+
+(e) **6 points.** Starting from the full section flags, derive the general pointed coordinate change. Prove that the units satisfying \(\gamma^2=\alpha^3\) give one unit \(\lambda\) with \(\lambda^2=\alpha\), \(\lambda^3=\gamma\). Explain why this proof retains nilpotents and requires no roots in the coefficient ring.
+
+(f) **7 points.** Derive all five coefficient transformations by polynomial substitution. Prove the invariant and discriminant weight laws over the integers, including the justification for checking an integral identity in a torsion-free rationalization.
+
+(g) **6 points.** Construct the full nowhere-zero relative differential, including its infinity chart. Prove its coordinate-change law and the gluing of \(j\) and the twelfth-power discriminant section. With \(\lambda=1+\epsilon\) in the characteristic-two ring of (c), explain how the differential frame can change while the discriminant value does not.
+
+(h) **4 points.** State precisely what the coefficient scheme represents. Prove the converse local-model statement for Noetherian elliptic families and specify which modular and deformation claims have not thereby been proved.
+
+#### Full solution and point allocation
+
+**(a)** The opens \(Z\ne0\), \(Y\ne0\) cover because the remaining projective point would have \(Y=Z=0\), and the cubic forces \(X=0\). Their rings are free over \(A[x]\) with basis \(1,y\), and over \(A[v]\) with basis \(1,u,u^2\), respectively. These polynomial rings are free over \(A\), so both charts and all their stalks are flat. **[2]** In the second chart write \(g=vh-u^3\), with \(h\) as (UWR3); it is a unit near the entire origin. The coordinate \(v\) is regular because that chart is free over \(A[v]\). Localization retains regularity, so \(u^3=vh\), and hence \(u\), is regular there. The origin ideal \((u,v)\) is \((u)\), with quotient \(A\). **[2]** The hyperplane's local ideal is \((v)=(u^3)\); off the origin the hyperplane coordinate is a unit. Thus its whole zero divisor is \(3O\). All ring bases and equations remain valid after tensor with any coefficient ring, so this assertion also retains the full base-changed origin. **[2]**
+
+**(b)** Multiplying the definitions gives \(b_2b_6-b_4^2=4b_8\). The difference \(c_4^3-c_6^2\) expands to the five terms displayed in UW2; combine its \(432b_2^2(b_4^2-b_2b_6)\) to obtain \(-1728b_2^2b_8\). The remaining terms are \(1728(-8b_4^3-27b_6^2+9b_2b_4b_6)\). This proves \(c_4^3-c_6^2=1728\Delta\) as an integral polynomial identity. **[2]** Expanding \(\prod_{i<j}(r_i-r_j)^2\) in the three elementary symmetric polynomials gives the five-term expression in (UWR7); substitution of \(B_1=-B_0e_1,B_2=B_0e_2,B_3=-B_0e_3\) gives that identity in every characteristic. **[2]** For \(q(x)=4x^3+b_2x^2+2b_4x+b_6\), it yields
+
+\[
+ 4b_2^2b_4^2-128b_4^3-4b_2^3b_6-432b_6^2+144b_2b_4b_6
+       =16\Delta.
+\]
+
+The first and third terms combine using \(4b_8=b_2b_6-b_4^2\). This last identity is integral, although the completed-square change of coordinates itself is used only where two is invertible. No definition divides by \(1728\). **[2]**
+
+**(c)** In characteristic different from two, the invertible coordinate \(z=2y+a_1x+a_3\) gives \(z^2=q(x)\). A singular point is exactly a repeated root \(q=q'=0\) with \(z=0\), equivalently \(16\Delta=0\), by the proved root identity. This includes characteristic three. **[2]** In characteristic two, when \(a_1\ne0\), the gradient equations force \(x=a_3/a_1\), \(y=(x^2+a_4)/a_1\), and substitution gives \(a_1^6f(x,y)=\Delta\). When \(a_1=0,a_3\ne0\), the derivative \(f_y\) is a unit field coefficient and \(\Delta=a_3^4\). When both are zero, choose the square roots of \(a_4\) and the remaining right-hand side over an algebraic closure to get a singular point, and \(\Delta=0\). **[2]** At infinity \(g_v=1\). If the discriminant is a unit, no prime of the affine chart contains both derivatives, by applying those field tests to an algebraically closed extension of its residue field. Thus the two affine derivative opens and the infinity derivative open give actual smooth charts over the ring. Conversely smoothness implies all these geometric fibres are smooth; the discriminant is outside every prime and is a unit. **[2]** In the characteristic-two example, \((a_1,a_2,a_3,a_4,a_6)=(\epsilon,0,1,0,0)\); the definitions give \(\Delta=1\) and \(f_y=1+\epsilon x\), with inverse \(1+\epsilon x\). In the characteristic-three example the tuple is \((0,1+\epsilon,0,0,1)\), giving \(b_2=b_8=1+\epsilon\), \(b_6=1\), \(b_4=0\), and \(\Delta=-(1+\epsilon)^3=-1\). Both are smooth full families by the unit criterion; reducing the nilpotent coefficients was not needed. **[2]**
+
+**(d)** Form the projective cubic over the Noetherian integer coefficient ring, where projective properness and closed-immersion properness were proved in PF3, and pull back to \(A\). This gives properness for arbitrary coefficient rings. **[1]** Monicity in \(X\) makes the homogeneous polynomial regular, so its sheaf sequence is \(0\to\mathcal O(-3)\to\mathcal O\to\mathcal O_W\to0\). The three-coordinate Čech monomial calculation gives \(H^0(\mathcal O)=A\) and no higher group, while \(\mathcal O(-3)\) has only \(H^2=A\), with generator \(1/(XYZ)\). All other monomial summands contract as in PF. The long exact sequence gives \(H^0(W,\mathcal O)=H^1(W,\mathcal O)=A\) and no higher groups. The same complexes give arbitrary ring base change. **[3]** A smooth geometric fibre is connected since a disconnected decomposition would give a nontrivial idempotent in its field of global functions. Its regular curve local rings are domains, so distinct irreducible components cannot meet; finitely many disjoint components contradict connectedness. Thus it is geometrically integral, and its first cohomology gives genus one. **[2]** Apply the already written GS group construction to the unit-discriminant universal family over its Noetherian coefficient open. Pull back its actual maps and identities to every coefficient ring. This produces the required group family without imposing Noetherianity on that final ring. **[1]**
+
+**(e)** An origin-preserving isomorphism preserves the Cartier divisor and hence its complete section flags. Its canonical one is fixed. In degrees two and three the basis comparison gives \(x=\alpha x'+r\) and \(y=\gamma y'+\beta x'+t\), with \(\alpha,\gamma\) units because they induce isomorphisms of the full flag quotient lines. **[2]** The five sections of pole orders \(0,2,3,4,5\) are actual degree-five bases by RC4 and RW1's unit-determinant argument. Appending \(x^3\) or \(y^2\) gives a degree-six basis. Modulo degree five, the monic relation equates their generating classes. Comparing the primed and unprimed generators yields \(\gamma^2=\alpha^3\) over the whole ring. **[2]** Put \(\lambda=\gamma/\alpha\). Then \(\lambda^2=\gamma^2/\alpha^2=\alpha\) and \(\lambda^3=\gamma^3/\alpha^3=\gamma\). With \(s=\beta/\alpha\) the result is (UWR16). Its parameters are unique by the two flag coefficients and remaining basis coordinates. This uses only units and equality of full modules, so it works with nilpotents and neither assumes nor extracts roots in \(A\). **[2]**
+
+**(f)** Substitute \(x=\lambda^2x'+r\), \(y=\lambda^3y'+s\lambda^2x'+t\) into \(f\). The coefficients of \(x'y'\) and \(y'\) give the first and third equations of (UWR17). Moving the square, linear and constant terms in \(x'\) to the right gives the other three equations; their respective numerators are
+
+\[
+ \begin{aligned}
+ &a_2-sa_1+3r-s^2,\\
+ &a_4-sa_3+2ra_2-(t+rs)a_1+3r^2-2st,\\
+ &a_6+ra_4+r^2a_2+r^3-ta_3-rta_1-t^2.
+ \end{aligned}
+\]
+
+Division by the unit \(\lambda^6\) normalizes the cubic, and the coordinate matrix has unit determinant \(\lambda^5\); hence this proves a full scheme isomorphism. **[3]** Substituting into \(b_2,b_4,b_6\) gives their three laws (UWR18); inserting those laws in \(c_4,c_6\) cancels all terms in \(r\), giving weights four and six. **[2]** In the integer Laurent coefficient ring inject into its rationalization. There the completed-square cubic changes by \(x=\lambda^2x'+r\), so each root difference gains \(\lambda^2\). The three squared differences give weight twelve, and their common leading coefficient four gives \(\lambda^{12}\Delta'=\Delta\). Both sides are integral Laurent polynomials; their equality in the injective rationalization proves equality before tensoring, and therefore in every final ring. Injectivity applies to that torsion-free universal ring, not to an arbitrary specialized ring where sixteen might vanish. **[2]**
+
+**(g)** On \(D(f_y)\) use \(dx/f_y\), and on \(D(f_x)\) use \(-dy/f_x\); the differentiated equation proves agreement, and each is a chart basis. Near infinity use \(-du/g_v\). The identities \(f_x=g_u/v^2\) and \(vg_v+ug_u=-v(2+a_1u+a_3v)\), in the full cubic ring, prove its agreement with both affine expressions. It is a basis there too, and restricts to \(-du\) at the origin. Thus the differential is globally nowhere zero. **[2]** Relative differentiation of the coordinate change scales \(dx\) by \(\lambda^2\) and its denominator by \(\lambda^3\), so \(\omega'=\lambda\omega\). The identity extends across the origin since \(v\) is regular and its free differential line injects into localization at \(v\). The invariant weights then give \(j'=j\) and \(\Delta'\omega'^{\otimes12}=\Delta\omega^{\otimes12}\), proving actual gluing. Invariance under translation follows from GS7 and MP1 on the universal Noetherian family and its base changes. **[2]** For \(\lambda=1+\epsilon\) in characteristic two, \(\lambda^{12}=1+12\epsilon=1\), while \(\lambda\ne1\). Thus the changed differential frame is \((1+\epsilon)\omega\) even though \(\Delta'=\Delta\). For the coefficient model in (c), the affine frame itself is \((1+\epsilon x)dx\). These full-ring expressions record nilpotent information absent from their residue frames. **[2]**
+
+**(h)** A ring map \(\mathbf Z[a_1,a_2,a_3,a_4,a_6,1/\Delta]\to A\) is precisely five coefficients with unit discriminant; the inverse's image is forced. Pullback gives the entire cubic, origin and group law, and all such cubics arise this way. Thus the scheme represents chosen coefficient data. **[2]** RW gives every Noetherian elliptic family these whole local cubics; the field criterion makes their discriminants units. Pointed isomorphisms preserve the full origin flags, so (e)–(f) describe their local identifications and GS identifies the group laws. Choices of coordinates are still part of the represented data. Fine level structures, stabilizers, compactification, Hasse strata, deformation multiplicities and the remaining arithmetic conclusions require further proofs; they do not follow merely from the coefficient scheme. **[2]**
+
 ## Proof dependencies and further study
 
-Sections 0.A–0.F give the local module and affine/sheaf arguments, projective and proper coherent cohomology, formal functions, proper finite-fibre finiteness, valuation rings, principal parts and a finite curve map, full-fibre embedding criteria, and SF1–SF6's smooth-chart and regularity proofs. DC1–DC7 prove the divisor and line-bundle correspondence, valuation and residue-field degree, the Euler-characteristic Riemann–Roch identity, field-extension comparison and finite-map pullback degree. GR1–GR6 prove genus-one numerical Riemann–Roch and positive-degree vanishing, the perfect pairing with values in the cohomology line, and the degree-at-least-three section embedding over any field under the stated geometric hypotheses. WC1–WC7 prove the pointed Weierstrass cubic over the original field, including its full infinity local ring and triple hyperplane section, its separable degree-two map and involution in every characteristic, and its divisor-class group on field-valued points. These are explicit proofs with their stated hypotheses. RC1–RC6 prove the relative Cartier section ideals, full finite locally free sums of sections, positive-degree section modules with arbitrary base change, and the degree-three embedding for the stated flat smooth genus-one families. RW1–RW6 prove the entire relative Weierstrass cubic, its full coordinate rings and origin hyperplane sections, the finite locally free degree-two map and the relative involution. GS1–GS7 prove the fibre-regular flat quotient, full degree-one graph, relative line-class uniqueness, regular addition and scheme group identities, full secant/tangent intersections, invariant differentials and relative inversion across nilpotents. MP1–MP6 prove the rigidified product-divisor identity with its full base-line correction, quadratic multiplication pullback, finite locally free multiplication and full kernel rank, and the differential-based finite étale case. HS1–HS5 and TT1–TT3 prove finite étale residue equivalence, strict Henselian full splitting, compatible torsion bases and inverse-limit continuity. UR1–UR6 prove the unramified valuation comparison, actual inertia kernel, natural good-reduction torsion comparison and proper étale finiteness over Noetherian targets. FD1–FD7 provide effective descent,and QS1–QS8 construct full subgroup quotients,relative duals and finite locally free isogenies over Noetherian bases. The converse universal-family construction and its discriminant condition also remain to be proved. SD1–SD7 prove canonical trace duality for lines and vector bundles, full Riemann–Roch, canonical degree and section bounds for smooth proper geometrically integral curves over arbitrary fields. The arithmetic arguments depend on those prerequisites. The results that need these additional interfaces are still part of the unfinished draft.
+Sections 0.A–0.F give the local module and affine/sheaf arguments, projective and proper coherent cohomology, formal functions, proper finite-fibre finiteness, valuation rings, principal parts and a finite curve map, full-fibre embedding criteria, and SF1–SF6's smooth-chart and regularity proofs. DC1–DC7 prove the divisor and line-bundle correspondence, valuation and residue-field degree, the Euler-characteristic Riemann–Roch identity, field-extension comparison and finite-map pullback degree. GR1–GR6 prove genus-one numerical Riemann–Roch and positive-degree vanishing, the perfect pairing with values in the cohomology line, and the degree-at-least-three section embedding over any field under the stated geometric hypotheses. WC1–WC7 prove the pointed Weierstrass cubic over the original field, including its full infinity local ring and triple hyperplane section, its separable degree-two map and involution in every characteristic, and its divisor-class group on field-valued points. These are explicit proofs with their stated hypotheses. RC1–RC6 prove the relative Cartier section ideals, full finite locally free sums of sections, positive-degree section modules with arbitrary base change, and the degree-three embedding for the stated flat smooth genus-one families. RW1–RW6 prove the entire relative Weierstrass cubic, its full coordinate rings and origin hyperplane sections, the finite locally free degree-two map and the relative involution. GS1–GS7 prove the fibre-regular flat quotient, full degree-one graph, relative line-class uniqueness, regular addition and scheme group identities, full secant/tangent intersections, invariant differentials and relative inversion across nilpotents. MP1–MP6 prove the rigidified product-divisor identity with its full base-line correction, quadratic multiplication pullback, finite locally free multiplication and full kernel rank, and the differential-based finite étale case. HS1–HS5 and TT1–TT3 prove finite étale residue equivalence, strict Henselian full splitting, compatible torsion bases and inverse-limit continuity. UR1–UR6 prove the unramified valuation comparison, actual inertia kernel, natural good-reduction torsion comparison and proper étale finiteness over Noetherian targets. FD1–FD7 provide effective descent,and QS1–QS8 construct full subgroup quotients,relative duals and finite locally free isogenies over Noetherian bases. NT1–NT8 construct relative Frobenius,prove full dual-kernel character representation and classify all geometric characteristic-prime torsion levels,formal heights and geometric point limits. UW1–UW8 construct the integral universal coefficient family and exact discriminant criterion,full pointed coordinate changes,invariant differential and glued invariant sections. SD1–SD7 prove canonical trace duality for lines and vector bundles, full Riemann–Roch, canonical degree and section bounds for smooth proper geometrically integral curves over arbitrary fields. The arithmetic arguments depend on those prerequisites. The results that need these additional interfaces are still part of the unfinished draft.
 
 The displayed eta-product computation compares finitely many coefficients. Its identification as the modular form attached to the curve and the general bad-reduction local-factor theorem belong to the subsequent lessons; they are not inputs to the determinant or Hasse proofs. General higher-dimensional abelian-variety theory and higher-degree étale cohomology are not needed here.
 

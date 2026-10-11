@@ -47,6 +47,8 @@ The bounded calculus, logarithm, spectral bands, and strong continuity of \(\Del
 <a id="cr01"></a>
 ## CR01. A positive Fourier kernel of mass one
 
+The scalar integrations here use the retained SC00–10 and FF1–3; the four-rectangle cancellation and small-square normalization are proved in SF4. SF0–4 supplies every spectral-band limit and power domain in CR02–CR03. The original cyclic graphs and analytic multiplication come from NC00–NC00c and NC08. These inputs do not import a general positive-definite-function representation theorem.
+
 With the Fourier convention \(\widehat k(s)=\int_{\mathbb R}e^{its}k(t)\,dt\), we claim
 \[
  k(t)=\frac{2}{\cosh(2\pi t)}\ge0,\qquad

@@ -132,7 +132,7 @@ With this identification, the two Plancherel transforms satisfy
 **Proof.** The homeomorphism \(J_G\) carries \(dx\), including its complete locally determined domain, to a Haar measure on \(D\). Indeed translations, compact sets and Borel sets correspond, and the compact-local description of the completion in the general Haar reading, Theorem 3.1, is preserved. Haar uniqueness, Theorem 3.3 of that reading, gives \(\nu=c(J_G)_*dx\) for some \(c>0\).
 
 Take \(f\in B^1(G)\). Its transform is integrable by HA-LCA-07, Theorem 2.1. It is also in \(B(\Gamma)\): the finite Radon measure
-\((J_G\circ(-\mathrm{id}))_*(f\,dx)\) has \(T\)-transform on \(\Gamma\) equal to \(\widehat f\). The pushforward is finite Radon by the product reading, Proposition 3.1. Hence \(\widehat f\in B^1(\Gamma)\). Inversion on \(G\) gives, at every \(x\),
+\((J_G\circ(-\mathrm{id}))_*(f\,dx)\) has \(T\)-transform on \(\Gamma\) equal to \(\widehat f\). The pushforward is finite Radon by [the product reading, Proposition 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-proposition-3-1). Hence \(\widehat f\in B^1(\Gamma)\). Inversion on \(G\) gives, at every \(x\),
 \[
  \widehat{\widehat f}(J_Gx)
  =\int_\Gamma\widehat f(\gamma)\overline{\gamma(x)}\,d\xi(\gamma)
@@ -197,7 +197,7 @@ The maps \(f\mapsto\widehat f(\gamma)\) are characters on \(L^1(G)\), by HA-LCA-
  =\int_{G\times G}\overline{\gamma(x+y)}\,d(\mu\otimes\eta)(x,y)
  =\widehat\mu(\gamma)\widehat\eta(\gamma).
 \]
-The product and its full-Borel integration were proved in the product reading, Theorems 2.1 and 3.3. These functionals are nonzero because their value on \(\delta_0\) is one. They too separate points by uniqueness. The intersection of all character kernels, being contained in the intersection of these kernels, is zero. This proves semisimplicity of both algebras; it does not assert that these are all the characters of \(M(G)\). \(\square\)
+The product and its full-Borel integration were proved in [the product reading, Theorems 2.1 and 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/finite-radon-products.html#ha-lca-pre-product-theorem-3-3). These functionals are nonzero because their value on \(\delta_0\) is one. They too separate points by uniqueness. The intersection of all character kernels, being contained in the intersection of these kernels, is zero. This proves semisimplicity of both algebras; it does not assert that these are all the characters of \(M(G)\). \(\square\)
 
 <a id="ha-lca-09-corollary-4-3"></a>
 **Corollary 4.3 — An integrable measure transform gives a density.** If \(\mu\in M(G)\) and \(\widehat\mu\in L^1(\Gamma)\), then

@@ -507,7 +507,18 @@ The last two terms in \(Z_{XY}-Z_{YX}\), after substituting \(u_Y,u_X\), contain
 \((\partial_y\Gamma_X)\Gamma_Y-(\partial_y\Gamma_Y)\Gamma_X\).
 Finally \(X(Ys)-Y(Xs)=[X,Y]s\) by PB C.3. The remaining base derivatives are exactly the first two entries in the second line of (B.13). This proves the displayed expansion without assuming coordinate fields commute in the original formula.
 
-Subtracting \(D_{[X,Y]}s=(x;s,[X,Y]s+\Gamma_{[X,Y]})\) leaves \(X^iY^j\mathcal R_{ij}\) by (B.11). Since \(d\pi\,ds=\mathrm{id}\) and \(\mathcal R\) is horizontal, this is \(\mathcal R(ds(X),ds(Y))\). All differences used above are the intrinsic ones of B.1, so the coordinate proof proves (B.12) globally on the section's domain. □
+Subtracting \(D_{[X,Y]}s=(x;s,[X,Y]s+\Gamma_{[X,Y]})\) leaves \(X^iY^j\mathcal R_{ij}\) by (B.11). Since \(d\pi\,ds=\mathrm{id}\) and \(\mathcal R\) is horizontal, this is \(\mathcal R(ds(X),ds(Y))\). All differences used above are the intrinsic ones of B.1, so the coordinate proof proves (B.12) globally on the section's domain. 
+
+The vanishing of this nonlinear curvature also has a local geometric characterization: there are bundle coordinates in which the horizontal spaces are tangent to the sets with constant fibre coordinate if and only if \(\mathcal R=0\).
+
+Here is a proof requiring no unproved integrability theorem. In a bundle chart the horizontal fields are \(H_i=\partial_{x^i}-\Gamma_i^\alpha\partial_{y^\alpha}\). Their bracket is vertical, and (B.9) says that its negative is the curvature on this pair; hence \(\mathcal R=0\) makes them commute. Local tools 2.1 supplies smooth local flows and their differentiated integral equations. If two fields \(X,Y\) commute, their flows commute wherever the small compositions are defined: along \(q(t)=\mathrm{Fl}^X_t(q_0)\), the vector \(d\mathrm{Fl}^X_t(Y(q_0))\) solves \(v'=DX(q(t))v\). The vector \(Y(q(t))\) solves the same equation, since \([X,Y]=DY\,X-DX\,Y=0\). Their initial values agree, so linear ODE uniqueness gives equality. Thus the flow of \(X\) sends \(Y\)-integral curves to \(Y\)-integral curves; uniqueness again gives the commuting-flow identity.
+
+Fix \(x_0\) and a fibre coordinate \(y_0\). On sufficiently small product neighbourhoods define
+\[
+\chi(t,y)=\mathrm{Fl}^{H_n}_{t_n}\circ\cdots\circ
+             \mathrm{Fl}^{H_1}_{t_1}(x_0,y).
+\]
+The finitely many local flows are defined there by continuity. Their projection is \(x_0+t\). Commutation gives \(\partial_{t_i}\chi=H_i(\chi)\); at \((0,y_0)\), the \(y\)-derivatives are the coordinate vertical vectors. These two sets of vectors form a basis, because the first set projects to the base coordinate basis and the second is a vertical basis. Local tools 1.2 makes \(\chi\) a coordinate diffeomorphism after restriction to a smaller product. In these coordinates the horizontal distribution is exactly the span of the \(t\)-directions. Its local leaves are the slices with \(y\) fixed, each projecting diffeomorphically to a base neighbourhood. Conversely such coordinates make brackets of horizontal fields horizontal by the coordinate bracket rule, so \(-\Phi[hU,hV]=0\). This proves both directions, including the local leaves. □
 
 **Theorem B.4 (parallel maps and naturality).** A smooth bundle map \(F:E\to E'\) over \(M\) is parallel when
 \[
@@ -589,7 +600,28 @@ a_{z(t,0)}z_\epsilon(t,0)=Y+tZ.
 Differentiating in \(t\) at zero yields
 \(B(X,Y)+z_{t\epsilon}(0,0)=Z\), hence
 \(z_{t\epsilon}(0,0)=Z+\frac12[X,Y]\).
-These are exactly the value, first derivatives and mixed derivative of the exponent in (B.19). Applying the smooth exponential map preserves equality of these four jets by the chain rule, as in (B.4). This proves the asserted equality in \(V(VP)\); it makes no claim about the unmixed second derivatives. □
+These are exactly the value, first derivatives and mixed derivative of the exponent in (B.19). Applying the smooth exponential map preserves equality of these four jets by the chain rule, as in (B.4). This proves the asserted equality in \(V(VP)\); it makes no claim about the unmixed second derivatives. 
+
+The same Maurer–Cartan argument gives the full differential formula underlying the mixed term. With \(\operatorname{ad}Z(W)=[Z,W]\), for every \(Z,W\in\mathfrak g\),
+\[
+\begin{aligned}
+(\exp^*\theta)_Z(W)&=\int_0^1 e^{-u\operatorname{ad}Z}W\,du,\\
+(\exp^*\theta)_Z(W)&=W-\tfrac12[Z,W]+O(|Z|^2|W|).
+\end{aligned}
+\]
+The second equality is the expansion near \(Z=0\). To prove these formulas, put \(q(u,s)=\exp(u(Z+sW))\) and \(B(u)=\theta(q_s(u,0))\). The left \(u\)-velocity is \(Z+sW\). Equation (B.20) gives \(B'=W-[Z,B]\), with \(B(0)=0\). The matrix exponential and its derivative are proved by the group ODE in Local tools 2.3 and Conn F.4. They imply
+\[
+\frac{d}{du}\bigl(e^{u\operatorname{ad}Z}B(u)\bigr)
+       =e^{u\operatorname{ad}Z}W.
+\]
+Integration from zero and evaluation at one give the first formula after the substitution \(u\mapsto1-u\) in the integral. For the remainder, set \(E(u)=e^{-u\operatorname{ad}Z}\). Its equation gives \(E''(u)=(\operatorname{ad}Z)^2E(u)\). Integrating twice by Local tools 0.3 yields
+\[
+\begin{aligned}
+E(u)&=I-u\operatorname{ad}Z\\
+ &\quad+\int_0^u(u-v)(\operatorname{ad}Z)^2E(v)\,dv.
+\end{aligned}
+\]
+In a fixed norm, bilinearity of the bracket gives \(\|\operatorname{ad}Z\|\le C|Z|\). Smoothness of the exponential and compactness, Local tools 0.1, bound \(\|E(v)\|\) uniformly for \(0\le v\le1\) and \(Z\) in a fixed small closed ball. The integral remainder is therefore bounded by a constant times \(u^2|Z|^2\). Apply it to \(W\) and integrate in \(u\): the first two terms give \(W-\tfrac12[Z,W]\) and the remainder is \(O(|Z|^2|W|)\). Thus this formula, as well as its mixed-order consequence, has its proof here. □
 
 **Theorem B.6 (the principal commutator recovers the structure equation).** For a principal connection, the vertical trivialization \(VP\to P\times\mathfrak g\) is parallel when the target carries the product of the original connection on \(P\) and the trivial connection on \(\mathfrak g\). For a section \(s\) put \(a_X=(s^*\omega)(X)\). In the coordinate order of B.5,
 \[
@@ -865,7 +897,11 @@ T_{\alpha^{-1}}T_dT_\alpha(p)
  =T_{\alpha^{-1}}(q\,g_q(d))
  =p\,g_q(d).
 \]
-Thus \(g_q(d)\in H_p\); reversing the role of the path proves the converse inclusion. Conjugation by a fixed path preserves nullhomotopy by the same insertion, contraction and cancellation argument used above, so the restricted groups agree too. □
+Thus \(g_q(d)\in H_p\); reversing the role of the path proves the converse inclusion. Conjugation by a fixed path preserves nullhomotopy by the same insertion, contraction and cancellation argument used above, so the restricted groups agree too. 
+
+The topology just constructed also gives the following parameter conclusion. If \(c_z\) is a family of based loops satisfying the fixed-subdivision hypotheses of C.2, its holonomy is smooth as a map into the full holonomy Lie group, and locally takes values in a single coset of \(H^0\). In particular, a family of nullhomotopic loops is smooth into \(H^0\), even when its values do not include the identity.
+
+To verify this at \(z_0\), restrict the parameter to a convex ball about \(z_0\). The continuous map \((s,t)\mapsto c_{z_0+s(z-z_0)}(t)\) is a based homotopy from \(c_{z_0}\) to \(c_z\). Thus (C.14) and normality give \(h(z_0)^{-1}h(z)\in H^0\), where \(h(z)=g_p(c_z)\). By C.2 this normalized map is smooth into \(G\), and it takes the value \(e\) at \(z_0\). It is therefore one of the generating maps used in C.5's construction, and C.1 makes it smooth into \(H^0\). Left translation by \(h(z_0)\) proves the assertion in the coset chart. For nullhomotopic loops that chart is in \(H^0\) itself. This establishes the parameter assertion in the immersed topology, rather than inferring it from ambient continuity. □
 
 In particular, a simply connected base has connected full holonomy: every continuous based loop is nullhomotopic, so \(H=H^0\) in C.5. This conclusion concerns the constructed Lie-group topology; it makes no closedness assertion about the image in \(G\).
 
@@ -931,7 +967,16 @@ For holonomy based over \(w=0\), take the radial segment to \(r>0\), the loop \(
 \exp\!\left(-\frac{2\pi i r^2}{1+r^2}\right).
 \tag{D.4}
 \]
-All these lassos contract in the coordinate plane. As \(r\ge0\) varies, \(r^2/(1+r^2)\) takes every value in \([0,1)\): for \(0\le a<1\), take \(r=\sqrt{a/(1-a)}\), using Local tools 0.0. Conn E.1 proves that the exponential of an interval of this one-period length gives the whole circle. Hence the restricted holonomy already contains every element of \(U(1)\). The full group is a subgroup of \(U(1)\), so both equal it. Formula (C.13) and the path comparison in C.5 give the same conclusion at every point of the connected base. □
+All these lassos contract in the coordinate plane. As \(r\ge0\) varies, \(r^2/(1+r^2)\) takes every value in \([0,1)\): for \(0\le a<1\), take \(r=\sqrt{a/(1-a)}\), using Local tools 0.0. Conn E.1 proves that the exponential of an interval of this one-period length gives the whole circle. Hence the restricted holonomy already contains every element of \(U(1)\). The full group is a subgroup of \(U(1)\), so both equal it. Formula (C.13) and the path comparison in C.5 give the same conclusion at every point of the connected base. 
+
+For the associated tautological complex line, the Chern-form convention is \(c_1(\nabla)=iF/(2\pi)\). Formula (D.2) gives
+\[
+\begin{aligned}
+c_1(\nabla)&=-\frac{dx\wedge dy}{\pi(1+x^2+y^2)^2},\\
+\int_{\mathbb{CP}^1}c_1(\nabla)&=-1.
+\end{aligned}
+\]
+Indeed its coefficient is \(i(2i)/(2\pi h^2)=-1/(\pi h^2)\), and multiplication of \(\int F=2\pi i\) by \(i/(2\pi)\) gives \(-1\). The unit-section connection used here is the projection connection of DG-CHAR-17 V.4: replacing the frame \(v=(1,w)\) there by \(v/\sqrt h\) changes its potential by \(-dh/(2h)\), leaving \((\bar w\,dw-w\,d\bar w)/(2h)\), exactly Conn E.3. The frame rule is proved in Conn D.1. Thus V.4's fully proved identification with the real image of the integral tautological Chern class applies to this same connection; it also fixes the integral sign independently of the curvature calculation. □
 
 **Example D.2 (the round sphere's tangent connection).** On the unit sphere in \(\mathbb R^3\), orthogonal projection of the ordinary derivative onto the tangent plane is its Levi-Civita connection. Its full and restricted holonomy groups, in an oriented orthonormal frame, are \(\mathrm{SO}(2)\).
 
@@ -1326,7 +1371,14 @@ More generally, if \(D_j=\mathcal L_{K_j}+i_{L_j}\) has degree \(r_j\), so \(K_j
 Expand its four operator commutators. The pure Lie and pure insertion terms are (E.13) and (E.16). For the other two use (E.15) and graded antisymmetry; the conversion
 \((-1)^{r_2}[L_1,K_2]_{\mathrm{FN}}
 =-(-1)^{r_1r_2}[K_2,L_1]_{\mathrm{FN}}\)
-gives the displayed sign. This proves the full decomposition of the commutator. □
+gives the displayed sign. This proves the full decomposition of the commutator. 
+
+There is also a coordinate formula that avoids choosing decomposable summands. Write \(K=\sum_aK^a\otimes\partial_a\) and \(L=\sum_aL^a\otimes\partial_a\). Then
+\[
+[K,L]^a_{\mathrm{FN}}
+ =\mathcal L_K(L^a)-(-1)^{k\ell}\mathcal L_L(K^a).
+\]
+Indeed \(\mathcal L_Kx^a=K^a\), and similarly for \(L\). Apply (E.13) to \(x^a\): its left side is the displayed right side, while its right side is the \(a\)-component of the bracket. Locality in E.1 justifies using these coordinate functions. This proves the formula in every chart. □
 
 **Theorem E.6 (curvature and cocurvature of a tangent projection).** Let \(P:TN\to TN\) be a smooth projection, \(P^2=P\), and put \(h=I-P\). Define two tangent-valued two-forms
 \[
@@ -1347,7 +1399,11 @@ and
 \]
 The first form is the obstruction to closure of the horizontal sections under brackets; the second is the corresponding obstruction for vertical sections.
 
-**Proof.** Function-linearity of \(C\) follows from
+**Proof.** First the projection actually supplies smooth complementary subbundles. Pointwise every vector is \(Pv+(I-P)v\), and the intersection of \(\operatorname{im}P\) with \(\ker P\) is zero, because \(P\) is the identity on its image. In a basis adapted to this direct sum its matrix is \(\operatorname{diag}(I_r,0)\); hence its trace is its rank \(r\). Trace is independent of the chosen basis: the finite sums defining matrix multiplication give \(\operatorname{tr}(AB)=\sum_{i,j}A_{ij}B_{ji}=\operatorname{tr}(BA)\), which applies to a change of basis and its inverse. The trace of the smooth matrix \(P\) in any chart is a continuous integer-valued function. Near a point it differs from its value there by less than \(1/2\), so its rank is constant.
+
+In a local tangent frame \(e_j\), select \(r\) vectors among \(Pe_j\) that are independent at that point. An invertible minor remains invertible nearby, and constant rank makes these vectors span the image there. Their coefficients in that minor, and the inverse matrix, are smooth by Local tools 0.4; hence they give a smooth local frame for \(\operatorname{im}P\). Apply the same argument to \(I-P\) to frame its image, which is \(\ker P\). The two frames together give a local trivialization of \(TN=\ker P\oplus\operatorname{im}P\). Empty frames cover rank zero as well. This proves the subbundle assertion without assuming a foliation or a global constant rank across disconnected components.
+
+Function-linearity of \(C\) follows from
 \([f hX,hY]=f[hX,hY]-(hYf)hX\), since \(Ph=0\). The other slot follows by antisymmetry. The same proof with \(hP=0\) makes \(\overline C\) tensorial. Both are smooth alternating two-forms. Their values are vertical and horizontal, respectively; \(C\) vanishes if an argument is vertical and \(\overline C\) if an argument is horizontal. Their vanishing is consequently exactly the asserted bracket-closure condition.
 
 For tangent endomorphisms \(K,L\), (E.13) implies the explicit formula
@@ -1483,7 +1539,42 @@ The result is a tangent vector because \(T\pi(Pw)=0\); it is vertical for \(E'\t
 (\Gamma')_a^b(x',y)
 =\sum_i(\partial_a f^i)(x')\Gamma_i^b(f(x'),y),
 \]
-and the curvature relation is the tensor pullback in the two base arguments. Thus the construction also covers maps whose derivative has nonconstant rank. □
+and the curvature relation is the tensor pullback in the two base arguments. Thus the construction also covers maps whose derivative has nonconstant rank. 
+
+The coefficient equation (E.29) is also the value of the FN identity on horizontal coordinate lifts. To check this directly, take any local scalar function \(f\), put \(\alpha=df\circ R\) and \(\beta=df\circ h\), and abbreviate \(R(H_i,H_j)\) by \(R_{ij}\). The two-form \(\alpha\) is horizontal, so \(i_h\alpha=2\alpha\). On three horizontal arguments \(i_hd\alpha=3d\alpha\). Consequently \(\mathcal L_h\alpha=d\alpha\) on those arguments. By A.2, since \([H_i,H_j]\) is vertical,
+\[
+(\mathcal L_h\alpha)(H_i,H_j,H_k)
+       =\sum_{\mathrm{cyc}}H_i(R_{jk}f).
+\]
+On the other hand \(i_R\beta=0\), so \(\mathcal L_R\beta=i_Rd\beta\). The shuffle formula E.1 gives its value as \(\sum_{\mathrm{cyc}}d\beta(R_{ij},H_k)\). Both \(\beta(R_{ij})\) and \(\beta([R_{ij},H_k])\) vanish, because these vector fields are vertical. Thus
+\[
+(\mathcal L_R\beta)(H_i,H_j,H_k)
+       =\sum_{\mathrm{cyc}}R_{ij}(H_kf).
+\]
+Subtracting and reindexing the cyclic sum gives
+\[
+df\!\left([h,R]_{\mathrm{FN}}(H_i,H_j,H_k)\right)
+       =\sum_{\mathrm{cyc}}[H_i,R_{jk}]f.
+\]
+Coordinate differentials separate tangent vectors, so this identifies the horizontal value with the vector-field equation that yielded (E.29), including its sign.
+
+For linear coefficients \(\Gamma_i(x,y)=A_i(x)y\), direct substitution into (E.28) gives
+\[
+\begin{aligned}
+R_{ij}(x,y)&=F_{ij}(x)y,\\
+F_{ij}&=\partial_iA_j-\partial_jA_i+[A_i,A_j],
+\end{aligned}
+\]
+where the matrix bracket means \(AB-BA\). For a vertical linear field \(V(x,y)=B(x)y\), the bracket formula just before (E.29) becomes
+\[
+[H_i,V](x,y)=\bigl(\partial_iB+[A_i,B]\bigr)(x)y.
+\]
+Indeed its three terms are \((\partial_iB)y\), \(-BA_i y\) and \(A_iB y\), respectively. Since (E.29) holds for every \(y\), it is therefore exactly
+\[
+\sum_{\mathrm{cyc}(i,j,k)}
+       \bigl(\partial_iF_{jk}+[A_i,F_{jk}]\bigr)=0.
+\]
+This is the matrix Bianchi equation of A.6, now obtained from the nonlinear vertical-field equation. No completeness of the connection or transport is needed. □
 
 **Exercise E.9 (distinguish the two gradings).** For a tangent-valued \(k\)-form \(K\), compute both orders of its insertion bracket with \(I\), and compare the FN bracket.
 
@@ -1557,7 +1648,9 @@ i_C\overline C+i_{\overline C}C
 Indeed \(i_C\eta^1=\theta^1\wedge\theta^2,\ i_C\eta^2=0\), and
 \(i_{\overline C}\theta^1=\eta^1\wedge\eta^2,\ i_{\overline C}\theta^2=0\); the insertion product rule gives exactly (E.33). Its value on \((H_1,H_2,V_2)\) is \(H_1\ne0\). By (E.21) it equals \([C,P]_{\mathrm{FN}}\); graded antisymmetry gives
 \([P,C]_{\mathrm{FN}}=-[C,P]_{\mathrm{FN}}\ne0\).
-The vertical space is not bracket-closed, since \([V_1,V_2]=H_1\). It therefore does not have the special vertical integrability of a fibre bundle, and the unrestricted Bianchi formula correctly retains cocurvature. □
+The vertical space is not bracket-closed, since \([V_1,V_2]=H_1\). It therefore does not have the special vertical integrability of a fibre bundle, and the unrestricted Bianchi formula correctly retains cocurvature. 
+
+On the other tuple \((V_1,H_2,V_2)\), the first summand of (E.33) vanishes and the second gives \(-V_1\): its scalar wedge \(\eta^1\wedge\eta^2\wedge\theta^2\) evaluates to \(-1\) by the displayed duality. Thus both output components are detected explicitly. Also the horizontal distribution is not bracket-closed, because \([H_1,H_2]=V_1\) is outside it. Both obstructions are present; the valid identity is \([P,C+\overline C]_{\mathrm{FN}}=0\), as E.6 proves. □
 
 The free construction source is Peter W. Michor, [*Topics in Differential Geometry*, freely accessible author draft](https://www.mat.univie.ac.at/~michor/dgbook.pdf), Sections 16.1–16.7, 16.11–16.16. Every consumed identity and prerequisite is proved above or in an exact earlier programme proof. The positive auxiliary projection curvature \(C\) is distinguished from the negative-bracket connection curvature \(R\), and the mixed-commutator sign is derived explicitly from the operator definitions.
 
@@ -1569,7 +1662,7 @@ A reduction of a frame bundle carries more information than a connection with va
 
 Our conventions use frames \(u:V\to T_xM\), with right action \(u\cdot h=u\circ h\). All manifolds are smooth, Hausdorff and second countable; all vector spaces in this part are finite dimensional over \(\mathbb R\). An \(H\)-structure means a smooth principal \(H\)-subbundle \(B\) of the frame bundle, for an embedded matrix Lie group \(H\subset\mathrm{GL}(V)\). Its Lie algebra is \(\mathfrak h\subset\operatorname{End}(V)\).
 
-The free comparison source is Robert L. Bryant, *Recent advances in the theory of holonomy*, [arXiv:math/9910059v2](https://arxiv.org/abs/math/9910059v2), Sections 1.2–1.4. The proofs below include the linear inverses, the global gluing and the coordinate calculations needed here. No onward reference in that paper is a proof provider. The earlier programme dependencies are Local tools 0.0, 0.2, 0.3, 1.3, 2.1 and 3.1; Principal bundles A.2 and C.1–C.3; Connections A.3–A.4, B.1, C.2 and D.1; DG-CHAR-17 D.1; and Parts A and C above.
+The free comparison source is Robert L. Bryant, *Recent advances in the theory of holonomy*, [arXiv:math/9910059v2](https://arxiv.org/abs/math/9910059v2), Sections 1.2–1.4. The proofs below include the linear inverses, the global gluing and the coordinate calculations needed here. No onward reference in that paper is a proof provider. The earlier programme dependencies are Local tools 0.0, 0.2, 0.3, 0.4, 1.3, 2.1 and 3.1; Principal bundles A.2 and C.1–C.3; Connections A.3–A.4, B.1, C.2 and D.1; DG-CHAR-17 D.1; and Parts A and C above.
 
 **Lemma F.1 (metric and alternating-form reductions).** A smooth nondegenerate symmetric form of locally constant signature \((p,q)\) gives a smooth \(\mathrm O(p,q)\)-reduction. A smooth nondegenerate alternating two-form gives a smooth symplectic reduction. Their Lie algebras consist, respectively, of the endomorphisms satisfying
 \[
@@ -1599,7 +1692,7 @@ For completeness the model groups are embedded Lie groups without an appeal to a
 \[
  B\longmapsto B^TQ+QB.
 \]
-It is onto: a prescribed symmetric \(S\) is the image of \(B=\frac12Q^{-1}S\). The implicit-function theorem, Local tools 1.3, makes the level \(A^TQA=Q\) a submanifold near the identity. Multiplication by an element of the level transports this conclusion to every point. Matrix multiplication and inverse restrict smoothly, so this is an embedded matrix Lie group.
+It is onto: a prescribed symmetric \(S\) is the image of \(B=\frac12Q^{-1}S\). The implicit-function theorem, Local tools 1.3, makes the level \(A^TQA=Q\) a submanifold near the identity. Multiplication by an element of the level transports this conclusion to every point. Matrix multiplication is polynomial, and matrix inversion is smooth by Local tools 0.4. Their restrictions are therefore smooth, so this is an embedded matrix Lie group.
 
 For a fixed nonsingular skew matrix \(J\), the same argument has target the skew matrices. If \(S^T=-S\), then \(B=\frac12J^{-1}S\) satisfies \(B^TJ+JB=S\). Thus the symplectic group is also an embedded matrix Lie group. Differentiating their defining equations gives exactly (F.1). The equations are closed conditions within \(\mathrm{GL}(V)\). Finally an adapted local frame identifies all adapted frames over that neighbourhood with \(U\times H\); a change of adapted frame is a smooth \(H\)-valued matrix. These are the required principal-bundle charts. The zero-dimensional cases have the single trivial frame and require no induction. \(\square\)
 
@@ -1675,7 +1768,7 @@ Moreover, a compatible torsion-free connection given near a closed subset extend
 Independence follows from (F.7). Necessity of vanishing follows by choosing a torsion-free connection. For sufficiency take an initial compatible connection \(\nabla^0\) with torsion \(T^0\). Vanishing means \(T^0\) is a smooth section of the image bundle. Choose any linear right inverse of \(\delta\) on its image in a model fibre, by restricting \(\delta\) to a linear complement of its kernel and inverting that restriction. In each adapted trivialization this gives a smooth local tensor \(A_i\) with
 \(\delta A_i=-T^0\). This chosen right inverse need not be \(H\)-equivariant; only its local use is required.
 
-Choose a subordinate locally finite smooth partition \((\chi_i)\), using the complete proof in Local tools 3.1. This prerequisite retains the human attribution and component terms of its integrated Brenner partition-of-unity material. Extend \(\chi_i A_i\) by zero off its chart, and put
+Choose a subordinate locally finite smooth partition \((\chi_i)\), using the complete proof in Local tools 3.1. The partition construction is proved in Local tools 3.E, and its cutoff consequence is proved in 3.1. Extend \(\chi_i A_i\) by zero off its chart, and put
 \[
  A=\sum_i\chi_i A_i.
  \tag{F.10}
@@ -1914,7 +2007,7 @@ Conversely, traverse the rectangle with vertices
        =\{I+tN:t\in\mathbb R\}.
  \tag{F.30}
 \]
-Every loop in \(\mathbb R^2\) contracts to its base point by straight interpolation, so full and restricted holonomy coincide, also as asserted in C.5. This group is a smooth embedded copy of the additive real line: its parameter is the lower-left matrix entry, and multiplication adds that entry. Its intrinsic holonomy Lie-group structure agrees with this one: in C.1 every generating map into these matrices has rank at most one, whereas the rectangle family has rank one. It is a proper subgroup of the symplectic group, since for example the matrix \(\operatorname{diag}(2,\frac12)\) preserves \(dx\wedge dy\) and is not \(I+tN\). Thus preserving a structure does not assert that the connection has its full structure group as holonomy. \(\square\)
+Every loop in \(\mathbb R^2\) contracts to its base point by straight interpolation, so full and restricted holonomy coincide, also as asserted in C.5. This group is a smooth embedded copy of the additive real line: its parameter is the lower-left matrix entry, and multiplication adds that entry. Its intrinsic holonomy Lie-group structure agrees with this one: in C.1 every generating map into these matrices has rank at most one, whereas the rectangle family has rank one. It is a proper subgroup of the symplectic group, since for example the matrix \(\operatorname{diag}(2,\frac12)\) preserves \(dx\wedge dy\) and is not \(I+tN\). Moreover, \(Ne_2=0\) implies \((I+tN)e_2=e_2\) for every \(t\). The nonzero proper line \(\mathbb Re_2\) is therefore fixed pointwise, so this holonomy representation is reducible. The same connection coefficients give \(\nabla_Xe_2=0\) for every \(X\), making \(e_2\) a global parallel field. Thus a torsion-free connection preserving a symplectic form need not have irreducible or full symplectic holonomy. \(\square\)
 
 **Theorem F.10 (the derivative criterion for actual holonomy).** Let \(\nabla\) be a smooth torsion-free tangent connection on a connected manifold. Let
 \(\mathfrak h_x\subset\operatorname{End}(T_xM)\) be its holonomy Lie algebra, with the immersed Lie-group structure proved in C.5. If
@@ -2101,9 +2194,9 @@ The identity map \(K\to H^0\) is smooth. Every chart of \(K\) in C.1 is a transl
 \]
 Together with \(\mathfrak k\subseteq\mathfrak h\), equality of dimensions proves (G.4). No closedness, simply connectedness or completeness hypothesis has entered. \(\square\)
 
-**Theorem G.4 (the full immersed holonomy reduction).** The reachable set \(P(u)\) has a Hausdorff second-countable smooth principal \(H\)-bundle structure over \(M\). Inclusion \(P(u)\hookrightarrow P\) is an injective immersion. The original connection restricts to an \(\mathfrak h\)-valued principal connection on this bundle, with the same horizontal transport and holonomy. Embeddedness is not asserted.
+**Theorem G.4 (the full immersed holonomy reduction).** Let \(M_x\) be the connected component of the starting point \(x\). The reachable set \(P(u)\) has a path-connected, Hausdorff, second-countable smooth principal \(H\)-bundle structure over \(M_x\). In particular it is a reduction over all of \(M\) when \(M\) is connected. Inclusion \(P(u)\hookrightarrow P\) is an injective immersion. The original connection restricts to an \(\mathfrak h\)-valued principal connection on this bundle, with the same horizontal transport and holonomy. Embeddedness is not asserted.
 
-**Proof.** Choose a countable cover by convex coordinate balls \(U_i\), with centres \(z_i\), and a fixed path from \(x\) to each \(z_i\). Such paths exist: the points reachable by piecewise coordinate segments form an open set with open complement in a connected manifold, by the ball argument of C.1. Transport \(u\) along the fixed stem to \(v_i\), then along the straight segment from \(z_i\) to \(y\in U_i\). The resulting section \(\sigma_i(y)\) is smooth into \(P\) by C.2, and lies in \(P(u)\).
+**Proof.** A path from \(x\) remains in \(M_x\). Every connected component of a manifold is open: a connected coordinate ball about each of its points lies in that component. Thus \(M_x\) is itself a smooth second-countable manifold. Choose a countable cover of \(M_x\) by convex coordinate balls \(U_i\), with centres \(z_i\), and a fixed path from \(x\) to each \(z_i\). Such paths exist: the points reachable by piecewise coordinate segments form an open set with open complement in a connected manifold, by the ball argument of C.1. Transport \(u\) along the fixed stem to \(v_i\), then along the straight segment from \(z_i\) to \(y\in U_i\). The resulting section \(\sigma_i(y)\) is smooth into \(P\) by C.2, and lies in \(P(u)\).
 
 Each fibre of \(P(u)\) is exactly \(\sigma_i(y)H\). The inclusion from right to left follows by first transporting around a loop representing \(h\in H\), then following the path defining \(\sigma_i\). For the reverse inclusion, compare the path reaching a given \(w\in P(u)_y\) with the path defining \(\sigma_i(y)\), using reversal, equivariance and the division map. The unique element \(h\) with \(w=\sigma_i(y)h\) is the holonomy of their based concatenation. Thus
 \[
@@ -2133,7 +2226,7 @@ All points \(q(y,t)\) are reachable from \(u\), so membership follows from G.3. 
 \]
 which is \(\mathfrak h\)-valued and smooth. It reproduces fundamental \(H\)-vectors and is \(H\)-equivariant by the already proved connection transformation law, Connections A.3. Thus it is a principal \(H\)-connection.
 
-Horizontal lifting for this connection exists over every finite path by Connections C.1 and C.2, applied to the Lie group \(H\). Its image in \(P\) solves the original horizontal-lift equation with the same initial value, because (G.13) is the pulled-back original form. Uniqueness gives equality of the lifts. Curvature is the pullback of \(\Omega\), by the structure equation and preservation of brackets under the inclusion of Lie algebras. Every original holonomy element is obtained by the same loop lift in \(P(u)\); conversely each loop lift there is an original loop lift. The holonomy group is exactly \(H\). \(\square\)
+Horizontal lifting for this connection exists over every finite path by Connections C.1 and C.2, applied to the Lie group \(H\). Its image in \(P\) solves the original horizontal-lift equation with the same initial value, because (G.13) is the pulled-back original form. Uniqueness gives equality of the lifts. Curvature is the pullback of \(\Omega\), by the structure equation and preservation of brackets under the inclusion of Lie algebras. Every original holonomy element is obtained by the same loop lift in \(P(u)\); conversely each loop lift there is an original loop lift. The holonomy group is exactly \(H\). Finally, every point of \(P(u)\) is the endpoint of an ambient horizontal lift from \(u\). The same lift just constructed in the intrinsic bundle is continuous there and has that endpoint. It joins the point to \(u\), so \(P(u)\) is path connected, even when \(H\) is disconnected. \(\square\)
 
 **Theorem G.5 (the first algebraic holonomy criterion).** Let \(\nabla\) be a smooth torsion-free tangent connection on a connected manifold, and let \(\mathfrak h_x\subseteq\operatorname{End}(T_xM)\) be its actual holonomy algebra. With \(K(\mathfrak h_x)\) and \((\mathfrak h_x)_K\) defined in F.6–F.7,
 \[
@@ -2155,9 +2248,9 @@ Transport both tangent arguments too and set
 \]
 Curvature containment and change of base in F.10 make this tensor \(\mathfrak h_x\)-valued. Transporting the three inputs of the first Bianchi identity F.20 gives its cyclic identity, so \(r_\gamma\in K(\mathfrak h_x)\). Since \(P_\gamma\) is an isomorphism, the values in (G.15) still span \(\mathfrak h_x\). They are among the defining generators of \((\mathfrak h_x)_K\), giving one inclusion; the reverse inclusion follows from the definition of \(K(\mathfrak h_x)\). This proves (G.14). The derivative condition is exactly F.10 by contraposition. \(\square\)
 
-**Theorem G.6 (flatness and transport).** A principal connection is flat, meaning \(\Omega=0\), if and only if its restricted holonomy is trivial. For a flat connection, transports along endpoint-fixed homotopic paths agree. On a simply connected base there is a global horizontal section through any prescribed initial point, and its trivialization identifies the connection with the product connection. Every flat connection has such a horizontal trivialization locally.
+**Theorem G.6 (flatness and transport).** A principal connection on an arbitrary base is flat, meaning \(\Omega=0\), if and only if its restricted holonomy is trivial at every base point. It is enough to check one base point in each connected component. For a flat connection, transports along endpoint-fixed homotopic paths agree. On a simply connected base there is a global horizontal section through any prescribed initial point, and its trivialization identifies the connection with the product connection. Every flat connection has such a horizontal trivialization locally.
 
-**Proof.** Equation (G.4) shows that \(\Omega=0\) implies \(\mathfrak h=0\). A zero-dimensional Lie group is discrete, since its charts are points. The connected group \(H^0\) must therefore be the singleton identity. Conversely \(H^0=\{e\}\) gives \(\mathfrak h=0\), so G.4 makes curvature vanish at every point reachable from \(u\). Every base point has a reachable point above it, and every other point of that principal fibre is its right translate. Curvature equivariance then makes \(\Omega\) vanish everywhere.
+**Proof.** Work first on the connected component \(M_x\) of a chosen base point \(x\). Equation (G.4) applied to the bundle restricted to this component shows that \(\Omega=0\) there implies \(\mathfrak h=0\). A zero-dimensional Lie group is discrete, since its charts are points. The connected group \(H^0\) must therefore be the singleton identity. Conversely \(H^0=\{e\}\) gives \(\mathfrak h=0\), so G.4 makes curvature vanish at every point reachable from \(u\). Every point of \(M_x\) has a reachable point above it, and every other point of that principal fibre is its right translate. Curvature equivariance then makes \(\Omega\) vanish over all of \(M_x\). Applying this equivalence on every connected component proves both the global criterion and the assertion that one base point per component suffices.
 
 If two paths \(c,d:x\to y\) are homotopic with endpoints fixed, \(c*d^{-1}\) is a nullhomotopic based loop, using the explicit cancellation of C.3. Its transport is \(T_d^{-1}T_c\). Trivial restricted holonomy gives \(T_c=T_d\). On a simply connected base all paths with fixed endpoints are homotopic, by applying this same concatenation and cancellation to a contraction of \(c*d^{-1}\). Thus \(\sigma(y)=T_cu\) is independent of the chosen path \(c:x\to y\).
 
@@ -2490,6 +2583,24 @@ For \(m=4\), write \(S(e_i)=\lambda_iR_0\). Using (H.13), the triples \(012,013,
 \(-\lambda_0E=0,\ -2\lambda_1E=0,\ -2\lambda_2E=0\).
 The triple \(034\) then gives \(4\lambda_3H+2\lambda_4E=0\). Independence of \(E,H\) forces every \(\lambda_i=0\). For \(m\ge5\), \(K=0\) already forces \(K^1=0\). Together with H.3–H.4 these facts prove the full table.
 
+The same calculation gives the sizes and ranks of the defining equation matrices in every degree. Put \(d_m=\dim K\) and \(e_m=\dim K^1\). Let \(A_m\) be the first Bianchi matrix: its columns are the \(E,H,F\) coefficients of \(R_{ij}\) for \(i<j\), and its rows are the output coordinates of (H.8) for \(i<j<k\). Let \(B_m\) be the matrix of (H.18), after any basis of \(K\) has been chosen. Then
+\[
+ \begin{aligned}
+ \operatorname{cols}A_m&=3\binom{m+1}{2},\\
+ \operatorname{rows}A_m&=(m+1)\binom{m+1}{3},\\
+ \operatorname{rank}A_m&=3\binom{m+1}{2}-d_m,
+ \end{aligned}
+\]
+and
+\[
+ \begin{aligned}
+ \operatorname{cols}B_m&=(m+1)d_m,\\
+ \operatorname{rows}B_m&=3\binom{m+1}{3},\\
+ \operatorname{rank}B_m&=(m+1)d_m-e_m.
+ \end{aligned}
+\]
+Indeed, an unordered pair of distinct indices has two orderings, and an unordered triple has six; counting the ordered choices therefore gives the two binomial coefficients. Each pair has three curvature coefficients and each first Bianchi triple has \(m+1\) output coordinates. A map \(S:V_m\to K\) has \((m+1)d_m\) coefficients, and each second Bianchi triple has three output coordinates in \(\mathfrak h\). Their kernels are exactly \(K\) and \(K^1\), respectively, by (H.8) and (H.18). The dimension formula proved above gives both ranks. Inserting (H.16) therefore determines the ranks for every \(m\ge1\), including all degrees in any finite table.
+
 Theorem H.1 exhausts all irreducible real representations. The first holonomy criterion G.5 eliminates all \(m\ge5\), since their curvature-value span is zero but their acting algebra is three-dimensional. Theorem F.10 applied to the quartic zero derivative space forces \(\nabla R=0\). Its contraposition gives the stated restriction for nonparallel curvature. \(\square\)
 
 **Theorem H.6 (complete cubic higher symbols).** Regard \(K^1\) as the subspace of \(V_3^*\otimes K\) given by (H.17). Define
@@ -2543,7 +2654,37 @@ Putting \(t=w_1\) gives (H.21), and substitution verifies every row of (H.22). T
 
 Let \(T_i\) be the four rows of the matrix in (H.21). A member of \(V_3^*\otimes K^2\) has coefficients \(\lambda_i\) multiplying that fixed matrix. Symmetry of its first two inputs requires
 \(\lambda_iT_j=\lambda_jT_i\) for all \(i,j\).
-All four \(T_i\) are nonzero and pairwise linearly independent, since their nonzero entries occur in different columns. For each \(i\), choose \(j\ne i\); the displayed equality forces \(\lambda_i=\lambda_j=0\). Thus every coefficient is zero, proving \(K^3=0\). The inner two-input symmetry is already built into \(K^2\), so these additional transpositions give exactly full three-input symmetry, as required by (H.20). \(\square\)
+All four \(T_i\) are nonzero and pairwise linearly independent, since their nonzero entries occur in different columns. For each \(i\), choose \(j\ne i\); the displayed equality forces \(\lambda_i=\lambda_j=0\). Thus every coefficient is zero, proving \(K^3=0\). The inner two-input symmetry is already built into \(K^2\), so these additional transpositions give exactly full three-input symmetry, as required by (H.20).
+
+These symmetric symbols must be distinguished from actual iterated covariant derivatives. For a torsion-free tangent connection, use the tensor derivative of F.6 and define
+\[
+ (\nabla^2R)(X,Y)
+   =\nabla_X(\nabla_YR)-\nabla_{\nabla_XY}R.
+\]
+Then
+\[
+ \begin{aligned}
+ &(\nabla^2R)(X,Y)-(\nabla^2R)(Y,X)\\
+ &\hspace{2em}=R(X,Y)\mathbin{\cdot}R,
+ \end{aligned}
+\]
+where the tensor action is
+\[
+ \begin{aligned}
+ (A\mathbin{\cdot}R)(Z,W)
+   ={}&[A,R(Z,W)]\\
+      &-R(AZ,W)-R(Z,AW).
+ \end{aligned}
+\]
+To prove this, subtract the two definitions. Since the torsion is zero, \(\nabla_XY-\nabla_YX=[X,Y]\); the result is
+\[
+ \nabla_X\nabla_YR-\nabla_Y\nabla_XR-\nabla_{[X,Y]}R.
+\]
+By the complete associated-curvature calculation in A.7 this is the curvature acting in the tensor representation. The output-vector action contributes \(A(R(Z,W)U)\), while the endomorphism input contributes \(-R(Z,W)(AU)\); together these are \([A,R(Z,W)]U\). The other two covariant slots contribute \(-R(AZ,W)U\) and \(-R(Z,AW)U\). With \(A=R(X,Y)\) this is exactly the action of F.7 and proves the identity.
+
+Thus the antisymmetric part of \(\nabla^2R\) is prescribed by a quadratic expression in \(R\), and need not vanish. The equivariant linear equations defining \(K^1\) are preserved by the tensor connection, so differentiating \(\nabla R\in K^1\) gives \(\nabla^2R\in V_3^*\otimes K^1\) in an adapted frame. With \(R\) fixed, the difference of two possible second derivatives is symmetric by the identity just proved and hence lies in \(K^2\).
+
+At the next order the same associated-curvature identity applied to the tensor \(\nabla R\) prescribes the difference obtained by swapping the first two derivative slots as \(R(X,Y)\mathbin{\cdot}\nabla R\). Differentiating the displayed identity for \(\nabla^2R\), using the tensor product rule of F.6, prescribes the swap of the last two slots by terms involving only \(R\) and \(\nabla R\). If those lower-order tensors are fixed, both differences cancel when two possible third derivatives are subtracted. Their difference lies in \(V_3^*\otimes K^2\) and is symmetric under both adjacent swaps, hence belongs to \(K^3\). These are precisely the homogeneous symbols in (H.20). In particular \(K^3=0\) does not assert that an actual third covariant derivative of curvature is zero. The compatibility terms and the construction of actual connections still require the subsequent arguments. \(\square\)
 
 **Theorem H.7 (the cubic modules and a regular flag).** As \(\mathfrak{sl}_2\)-modules, the cubic \(K\) and \(K^1\) are isomorphic to \(V_2\) and \(V_3\). The tableau \(K^1\subset V_3^*\otimes K\) has a flag with successive kernel drops \(3,1,0,0\), while its first symmetric prolongation has dimension one. These symbol calculations alone do not construct a torsion-free connection.
 

@@ -4,7 +4,7 @@ Differential geometry foundations
 
 A bundle supplies a fibre at each point. A connection specifies how to compare nearby fibres along a chosen direction. We first express that choice as a splitting of tangent spaces, then as local one-forms. The same formulas will construct connections, extend prescribed ones, and transport a point or vector along an entire path.
 
-Manifolds and Lie groups are finite dimensional, Hausdorff, second countable, smooth and without boundary. Bundles have finite dimensional fibres. Paths are continuous and have finitely many smooth pieces, each smooth up to its endpoints; smooth dependence on parameters always uses a fixed finite division into such pieces. A right principal action is written \(p\mapsto pa\). All group and associated-bundle conventions are those of the earlier [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), abbreviated **PB**.
+Manifolds and Lie groups are finite dimensional, Hausdorff, second countable, smooth and without boundary. Bundles have finite dimensional fibres. Paths are continuous and have finitely many \(C^1\) pieces, each \(C^1\) up to its endpoints. A smooth path family means a family smooth in time and its parameters on each piece of a fixed finite division; only these families carry the joint smooth-dependence assertion. A right principal action is written \(p\mapsto pa\). All group and associated-bundle conventions are those of the earlier [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), abbreviated **PB**.
 
 We use complete earlier programme proofs in [Local tools for bundles and transport](local-tools-for-bundles-and-transport.md): finite linear algebra 0.2, calculus 0.3, smooth inversion 0.4, scalar exponential and flat functions 0.5, inverse functions 1.2, local differential equations with parameters 2.1, the global invariant group equation 2.2, the group exponential 2.3, and partitions and cutoffs 3.1. PB A.2 proves smooth division and principal trivializations; PB B.1–B.2 prove associated bundles and their sections; PB C.2–C.3 construct tangent and tensor bundles and the adjoint representation. The one circular normalization used in E.1 has its integral proof in DG-CHAR-17, Lemma A.5.
 
@@ -37,7 +37,13 @@ for a smooth matrix \(B(p)\). Its kernel is the graph \(\{(v,-B(p)v)\}\), with s
 
 Conversely, for a given smooth complement \(HE\), \(d\pi_p|_{H_pE}\) is injective because its kernel is \(H_pE\cap V_pE=0\); it is onto because every tangent vector decomposes into its horizontal and vertical parts. In local frames of \(HE\) and \(TM\), it is therefore an invertible matrix. Local tools 0.4 makes its inverse smooth. This gives \(L_p\) and the smooth \(\Phi\) in (A.1).
 
-Finally if \(L_p\) is given, it is injective since \(d\pi_p L_p=\mathrm{id}\). In the same product coordinates it has form \(L_p(v)=(v,C(p)v)\); hence its image is a smooth complement and \(w-L_p(d\pi_p w)\) is its vertical projection. All three constructions are inverse in these coordinates. The claimed projection identities follow either from them or from \(\Phi|_{VE}=\mathrm{id}\). □
+Finally if \(L_p\) is given, it is injective since \(d\pi_p L_p=\mathrm{id}\). In the same product coordinates it has form \(L_p(v)=(v,C(p)v)\); hence its image is a smooth complement and \(w-L_p(d\pi_p w)\) is its vertical projection. All three constructions are inverse in these coordinates. The claimed projection identities follow either from them or from \(\Phi|_{VE}=\mathrm{id}\).
+
+There is also a useful criterion for a map to preserve a connection. Let \(f:E\to E'\) be smooth over the same base, so \(\pi' f=\pi\), with vertical projections \(\Phi,\Phi'\). Call \(f\) **parallel** when
+\[
+df\circ\Phi=\Phi'\circ df.
+\]
+This holds exactly when \(df(H_pE)\subset H_{f(p)}E'\) for every \(p\); \(f\) need not be invertible. To prove this, differentiate \(\pi'f=\pi\), which shows that \(df\) sends vertical vectors to vertical vectors. If the displayed identity holds, a vector killed by \(\Phi\) is sent to one killed by \(\Phi'\). Conversely decompose an arbitrary vector uniquely as \(w=h+v\), horizontal plus vertical. When horizontal vectors are preserved, \(\Phi' df(w)=df(v)=df\Phi(w)\), proving the identity. □
 
 For a principal \(G\)-bundle \(P\to M\), let \(\mathfrak g=T_eG\), with the Lie algebra and adjoint action proved in PB C.3. For \(X\in\mathfrak g\), its fundamental vector at \(p\) is
 \[
@@ -74,7 +80,7 @@ which is the conjugation identity in Local tools 2.3, proves (A.3).
 
 For a principal complement, its vertical projection \(\Phi\) commutes with \(dR_a\): right translation preserves both the vertical subbundle, since \(\pi R_a=\pi\), and the given horizontal subbundle, so it carries each of the two components of a vector to the corresponding components of its image. Define \(\omega_p=\zeta_p^{-1}\Phi_p\). Smoothness follows from A.1 and the smooth inverse just proved. Vertical reproduction gives the first equation of (A.4); commutation and (A.3) give the second.
 
-Conversely (A.4) makes the map \(\Phi\) in (A.5) a smooth vertical projection equal to the identity on vertical vectors. By A.1 its kernel is a smooth complement, and \(\ker\Phi=\ker\omega\) because \(\zeta_p\) is injective. The second equation in (A.4) preserves this kernel under \(dR_a\), in both directions by replacing \(a\) by \(a^{-1}\). Thus it is principal. The lift in (A.5) exists, is unique and is smooth by A.1. Reproduction of vertical vectors also shows that constructing \(\omega\) back from \(\Phi\) recovers it exactly. □
+Conversely (A.4) makes the map \(\Phi\) in (A.5) a smooth vertical projection equal to the identity on vertical vectors. By A.1 its kernel is a smooth complement, and \(\ker\Phi=\ker\omega\) because \(\zeta_p\) is injective. The second equation in (A.4) preserves this kernel under \(dR_a\), in both directions by replacing \(a\) by \(a^{-1}\). Thus it is principal. The lift in (A.5) exists, is unique and is smooth by A.1. Reproduction of vertical vectors also shows that constructing \(\omega\) back from \(\Phi\) recovers it exactly. For a smooth vector field \(X\) on the base, its unique horizontal lift is \(X^H(p)=L_p(X(\pi(p)))\). Smoothness follows from that of \(L\) and \(X\). Both \(dR_aX^H(p)\) and \(X^H(pa)\) are horizontal and project to \(X(\pi(p))\); uniqueness of the lift gives their equality. □
 
 **Theorem A.3 (local potentials and their change of section).** Define the left Maurer–Cartan one-form on \(G\) by
 \[
@@ -121,7 +127,17 @@ If \(s_j=s_i h\), the coordinate identification is \((x,g)\) in the \(j\)-chart 
 \operatorname{Ad}(g^{-1})
 \bigl(\operatorname{Ad}(h^{-1})A_i+h^*\theta\bigr)+\theta_g.
 \]
-This equals the \(j\)-formula exactly when (A.7) holds. Equality follows for every tangent vector, so the local one-forms glue smoothly; conversely a global form has (A.7) by the first part. □
+This equals the \(j\)-formula exactly when (A.7) holds. Equality follows for every tangent vector, so the local one-forms glue smoothly; conversely a global form has (A.7) by the first part.
+
+The same calculation gives a single curve identity for principal connections. For any smooth curves \(p(t)\) in \(P\) and \(a(t)\) in \(G\),
+\[
+\begin{aligned}
+&\omega_{p(t)a(t)}\!\left(\frac{d}{dt}(p(t)a(t))\right)\\
+ &=\operatorname{Ad}(a(t)^{-1})\omega_{p(t)}(p'(t))\\
+ &\quad+\theta_{a(t)}(a'(t)).
+\end{aligned}
+\]
+Indeed the differential of the action splits the product velocity into \(dR_a p'\) and the velocity of \(a\mapsto pa\). The first has the stated value by equivariance; writing \(a'=dL_a Y\) makes the second the fundamental vector \(\zeta_Y(pa)\), whose value is \(Y=\theta_a a'\). Conversely, suppose a smooth \(\mathfrak g\)-valued one-form obeys this identity for all such curves. Constant \(a(t)=a\) gives equivariance on every tangent vector, since each is represented by a smooth coordinate curve. Constant \(p(t)=p\) and \(a(t)=\exp(tY)\), evaluated at zero, give vertical reproduction. A.2 then makes the form a principal connection. □
 
 **Theorem A.4 (differences and adjoint-valued one-forms).** The difference of two principal connection forms is a horizontal, adjoint-equivariant \(\mathfrak g\)-valued one-form. Here horizontal means that it vanishes on every vertical vector. Such forms correspond bijectively to \(\Omega^1(M,\operatorname{ad}(P))\). Adding any one of them to a connection again gives a connection, so the set of connections, when nonempty, is an affine space over \(\Omega^1(M,\operatorname{ad}(P))\).
 
@@ -161,7 +177,7 @@ For the stronger neighbourhood statement, choose by Local tools 3.1 a smooth \(\
 \omega=\omega_0+(\chi\circ\pi)(\omega_U-\omega_0),
 \tag{B.2}
 \]
-with the second term extended by zero. The same closed-support argument proves smoothness. A.4 proves it is a connection, and where \(\chi=1\) it equals \(\omega_U\). No smooth extension property is claimed for arbitrary pointwise data on a closed set; the stated local extendibility is the hypothesis used. □
+with the second term extended by zero. The same closed-support argument proves smoothness. A.4 proves it is a connection, and where \(\chi=1\) it equals \(\omega_U\). Local extendibility is essential. For example, on the product \(U(1)\)-bundle over \(\mathbb R\), let \(K=\{0\}\cup\{1/n:n\ge1\}\). Prescribe potential coefficient \(i\) at zero and zero at each \(1/n\); A.3 converts each value into principal connection data over that point. The set \(K\) is closed: away from zero, only finitely many of its points can lie in a sufficiently small bounded interval, so every point outside \(K\) has a neighbourhood avoiding it. By the Archimedean property in Local tools 0.0, \(1/n\to0\). A continuous extending potential would therefore have coefficient zero at zero, contradicting the prescribed \(i\). Thus even a continuous extension can fail without the stated hypothesis. □
 
 **Theorem B.3 (a connection on a closed embedded submanifold).** Let \(S\subset M\) be a closed embedded submanifold. Every connection on \(P|_S\to S\) is the restriction of a global connection on \(P\).
 
@@ -175,7 +191,7 @@ Cover \(S\) by these boxes and add the open set \(M\setminus S\), on which use a
 
 ## C. A horizontal lift exists along the whole path
 
-For a path \(\gamma:[a,b]\to M\), a horizontal lift is a continuous path \(p(t)\) with \(\pi(p(t))=\gamma(t)\), smooth on each smooth piece, and \(\omega(p'(t))=0\) there. At an endpoint or a corner, the derivatives mean the appropriate one-sided derivatives of the smooth pieces.
+For a path \(\gamma:[a,b]\to M\), a horizontal lift is a continuous path \(p(t)\) with \(\pi(p(t))=\gamma(t)\), \(C^1\) on each \(C^1\) piece, and \(\omega(p'(t))=0\) there. At an endpoint or a corner, the derivatives mean the appropriate one-sided derivatives of the \(C^1\) pieces.
 
 **Theorem C.1 (global path lifting).** Every initial point \(p_a\in P_{\gamma(a)}\) has a unique horizontal lift on all of \([a,b]\). In a section chart \(p(t)=s(\gamma(t))g(t)\), its group equation is
 \[
@@ -191,23 +207,23 @@ dL_g\,\operatorname{Ad}(g^{-1})X=dR_g X
 \]
 follows by differentiating \(g\exp(t\operatorname{Ad}(g^{-1})X)=\exp(tX)g\) at zero, using Local tools 2.3. Applying \(dL_g\) proves (C.1), including its minus sign.
 
-On any closed time segment whose path image lies in a single section chart, \(b(t)=-A_{\gamma(t)}(\gamma'(t))\) is continuous on each of its finitely many smooth pieces and has finite one-sided limits at their endpoints. Local tools 2.2 therefore solves the right invariant equation \(g'=dR_g b(t)\) on the entire segment, for any initial value. Its result does not assume compactness of \(G\) or completeness of a Riemannian metric. Where \(b\) is smooth, Local tools 2.1 gives a smooth solution.
+On any closed time segment whose path image lies in a single section chart, \(b(t)=-A_{\gamma(t)}(\gamma'(t))\) is continuous on each of its finitely many \(C^1\) path pieces and has finite one-sided limits at their endpoints. Local tools 2.2 therefore solves the right invariant equation \(g'=dR_g b(t)\) on the entire segment, for any initial value. Its result does not assume compactness of \(G\) or completeness of a Riemannian metric. Where \(b\) is smooth, Local tools 2.1 gives a smooth solution.
 
 We justify a finite subdivision into such segments. The inverse images of trivializing sets are an open cover of the compact interval. Around each time \(t\), choose a relative interval of radius \(2\epsilon_t>0\) contained in one inverse image. Finitely many intervals of radii \(\epsilon_t\) cover \([a,b]\), by Local tools 0.1. Let \(\delta>0\) be smaller than all those finitely many \(\epsilon_t\). If an interval has length less than \(\delta\), choose one of its points and one of the smaller intervals containing that point; every point of the original interval then lies within \(2\epsilon_t\) of its centre. Thus its entire image lies in the chosen trivializing set. Partition \([a,b]\) into intervals of length below \(\delta\), also inserting the original path corners. Finiteness and existence of such a subdivision follow by choosing an integer larger than \((b-a)/\delta\).
 
-Solve successively on these segments, using the endpoint of one as the initial point of the next. In each chart the right invariant equation has a unique solution. Consequently any two constructed lifts agree first near the initial time and then on each subsequent segment. At an artificially inserted division point where \(\gamma\) is smooth, choose a chart around the value of \(\gamma\) there; the local smooth equation and uniqueness identify the two pieces with one smooth solution. Thus no new corner was introduced. This gives a lift on the whole path and proves its uniqueness. The same argument runs backwards from any specified time. For \(a=b\), the lift is the single given point. □
+Solve successively on these segments, using the endpoint of one as the initial point of the next. In each chart the right invariant equation has a unique solution. Consequently any two constructed lifts agree first near the initial time and then on each subsequent segment. At an artificially inserted division point where \(\gamma\) is \(C^1\), choose a chart around its value. The coefficient is continuous there, and Local tools 2.2 identifies both pieces with one \(C^1\) solution by uniqueness. If \(\gamma\) is smooth there, Local tools 2.1 makes that solution smooth as well. Thus no new corner was introduced. This gives a lift on the whole path and proves its uniqueness. The same argument runs backwards from any specified time. For \(a=b\), the lift is the single given point. □
 
-**Theorem C.2 (smoothness and the transport identities).** Let \(T_\gamma:P_{\gamma(a)}\to P_{\gamma(b)}\) send an initial point to the endpoint of its horizontal lift. It is a smooth \(G\)-equivariant diffeomorphism. Reversing the path inverts it, and following \(\gamma_1\) by \(\gamma_2\) gives \(T_{\gamma_2}\circ T_{\gamma_1}\). Orientation-preserving piecewise smooth reparametrizations leave transport unchanged. Lifts depend smoothly on initial data and on finite dimensional smooth families of paths, on each fixed smooth piece.
+**Theorem C.2 (smoothness and the transport identities).** Let \(T_\gamma:P_{\gamma(a)}\to P_{\gamma(b)}\) send an initial point to the endpoint of its horizontal lift. It is a smooth \(G\)-equivariant diffeomorphism. Reversing the path inverts it, and following \(\gamma_1\) by \(\gamma_2\) gives \(T_{\gamma_2}\circ T_{\gamma_1}\). Orientation-preserving piecewise \(C^1\) reparametrizations leave transport unchanged. For any fixed path, its lift at a fixed time depends smoothly on the initial point. For finite dimensional smooth families of paths, lifts depend smoothly on parameters, initial data and time on each fixed smooth piece.
 
 **Proof.** We first make the parameter statement precise. Let \(\lambda\) range in an open subset of a finite dimensional Euclidean space; assume \((\lambda,t)\mapsto\gamma_\lambda(t)\) is smooth on each fixed closed time piece, in the sense that it extends smoothly near that piece. For a fixed \(\lambda_0\), choose the subdivision in C.1 with each closed segment lying inside an open trivializing set. Each such containment persists for all \(\lambda\) sufficiently near \(\lambda_0\): for every time in the segment, continuity gives a product of a parameter neighbourhood and a time neighbourhood mapping into that trivializing set; finitely many time neighbourhoods cover the compact segment, and their parameter neighbourhoods have an open intersection containing \(\lambda_0\). Take the intersection over the finitely many segments as well. Thus the same finite subdivision and charts work near \(\lambda_0\).
 
-In each chart (C.1) is a smooth ordinary differential equation in time, position and parameter on a fixed piece. Local tools 2.1 supplies smooth dependence locally around every point of a reference solution. To obtain dependence up to a fixed segment endpoint, cover the reference graph on that segment by finitely many such local existence neighbourhoods and choose a subdivision fine enough to remain in them. Iterating their smooth solution maps gives smooth dependence at each successive endpoint. After each iteration, shrink the neighbourhood of the initial datum and parameter if necessary so that its endpoint lies in the next existence neighbourhood; only finitely many restrictions are made. This constructs a common neighbourhood with smooth dependence across the whole segment. Changes of principal chart are smooth by PB A.2, and composition over the finite path subdivision proves the assertion. Initial points in varying initial fibres are described using a section near \(\gamma_{\lambda_0}(a)\); this gives precisely the local meaning of smooth dependence on initial data. The assertion on each fixed smooth piece follows from the corresponding local time-dependent solution maps. In particular \(T_\gamma\) is smooth.
+In each chart (C.1) is a smooth ordinary differential equation in time, position and parameter on a fixed piece. Local tools 2.1 supplies smooth dependence locally around every point of a reference solution. To obtain dependence up to a fixed segment endpoint, cover the reference graph on that segment by finitely many such local existence neighbourhoods and choose a subdivision fine enough to remain in them. Iterating their smooth solution maps gives smooth dependence at each successive endpoint. After each iteration, shrink the neighbourhood of the initial datum and parameter if necessary so that its endpoint lies in the next existence neighbourhood; only finitely many restrictions are made. This constructs a common neighbourhood with smooth dependence across the whole segment. Changes of principal chart are smooth by PB A.2, and composition over the finite path subdivision proves the assertion. Initial points in varying initial fibres are described using a section near \(\gamma_{\lambda_0}(a)\); this gives precisely the local meaning of smooth dependence on initial data. The assertion on each fixed smooth piece follows from the corresponding local time-dependent solution maps. This proves the joint smooth-family assertion. For an arbitrary fixed piecewise \(C^1\) path, choose a reference initial point \(p_0\) with lift \(p_0(t)\). Equivariance in (A.4) and uniqueness imply that the lift from \(p_0a\) is \(p_0(t)a\). At each fixed time this is a smooth function of \(a\), and PB A.2 identifies \(a\mapsto p_0a\) smoothly with the initial fibre. In particular \(T_\gamma\) is smooth even for these paths; its smoothness in the initial point does not assert smoothness in time for a merely \(C^1\) base path.
 
 If \(p(t)\) is horizontal, (A.4) makes \(p(t)c\) horizontal for any fixed \(c\in G\), with initial point \(p(a)c\). Uniqueness gives \(T_\gamma(pc)=T_\gamma(p)c\). The reversed lift \(p(a+b-t)\) is horizontal by the chain rule; its endpoint is the original initial point. Hence reverse transport is a two-sided inverse, and is smooth by the first part. Concatenated lifts give the composite endpoint map; uniqueness proves the stated order.
 
-For reparametrization, let \(\tau:[c,d]\to[a,b]\) be a continuous, piecewise smooth, increasing bijection with the endpoints in this order. Then \(p\circ\tau\) lifts \(\gamma\circ\tau\), and on each smooth piece
+For reparametrization, let \(\tau:[c,d]\to[a,b]\) be a continuous, piecewise \(C^1\), increasing bijection with the endpoints in this order. Then \(p\circ\tau\) lifts \(\gamma\circ\tau\), and on each of the resulting pieces
 \(\omega((p\circ\tau)')=\tau'\omega(p'\circ\tau)=0\).
-Preimages of the finitely many corners introduce only finitely many additional division points. This holds even where \(\tau'=0\); no division by that derivative is used. Uniqueness proves equality of transport. The same proof permits nondecreasing surjections with finitely many smooth pieces: preimages of original corner times are intervals or points, so their finitely many endpoints suffice, and the lift is constant on each intervening constant interval. □
+Preimages of the finitely many corners introduce only finitely many additional division points. This holds even where \(\tau'=0\); no division by that derivative is used. Uniqueness proves equality of transport. The same proof permits nondecreasing surjections with finitely many \(C^1\) pieces: preimages of original corner times are intervals or points, so their finitely many endpoints suffice, and the lift is constant on each intervening constant interval. □
 
 ## D. The derivative on an associated vector bundle
 
@@ -257,7 +273,7 @@ It is the unique transport for which vectors along a path satisfy the local equa
 v'(t)+\rho_*(A_{\gamma(t)}(\gamma'(t)))v(t)=0.
 \tag{D.5}
 \]
-In particular it is the parallel transport of the derivative (D.2).
+In particular it is the parallel transport of the derivative (D.2). The same rule \([p,f]\mapsto[T_\gamma(p),f]\) gives a smooth fibre diffeomorphism for any smooth left \(G\)-manifold \(F\), commutes with maps induced by smooth equivariant maps of fibres, and preserves structures on the fibres induced from \(G\)-invariant structures on \(F\).
 
 **Proof.** If a representative is changed to \((pc,\rho(c^{-1})w)\), equivariance of \(T_\gamma\) makes the output class unchanged. In fibre charts (D.4) is multiplication by a matrix \(\rho(g)\), so it is smooth and linear. The reverse path gives its smooth linear inverse by C.2.
 
@@ -268,9 +284,26 @@ at zero gives
 d\rho_g(dR_g X)=\rho_*X\,\rho(g).
 \tag{D.6}
 \]
-If \(p(t)=s(\gamma(t))g(t)\) is horizontal, the coordinate of \([p(t),w]\) is \(v(t)=\rho(g(t))w\). Combining (C.1) with (D.6) yields exactly (D.5). For arbitrary initial \(v(a)\), (D.4) provides a solution on the whole path. Uniqueness is the local linear differential-equation uniqueness in Local tools 2.1, applied successively on the same finite chart subdivision; hence it is the unique solution.
+If \(p(t)=s(\gamma(t))g(t)\) is horizontal, the coordinate of \([p(t),w]\) is \(v(t)=\rho(g(t))w\). Combining (C.1) with (D.6) yields exactly (D.5). For arbitrary initial \(v(a)\), (D.4) provides a solution on the whole path. For uniqueness on a chart segment, put \(K(t)=\rho(g(t))\), so \(K\) is invertible, \(C^1\), and \(\dot K=-\rho_*(A(\dot\gamma))K\). If \(v\) is any other solution, differentiate \(K^{-1}v\), using the product rule applied to \(K^{-1}K=I\). Its derivative is zero, so it is constant by Local tools 0.3. Its initial value therefore determines \(v\) uniquely. Apply this on the finite subdivision to prove global uniqueness, including for piecewise \(C^1\) base paths.
 
-For completeness, the derivative of a general vector field \(v(t)\) along a smooth path is locally \(v'+\rho_*(A(\gamma'))v\). This is (D.2) applied to the pullback bundle over the time interval. The pullback principal charts are those of PB A.3, and (A.7) pulled back along \(\gamma\) proves that their potentials still transform correctly. Thus the derivative is independent of the chart, and its zero equation is (D.5). For a section of \(E\), substituting its values along the path recovers D.1 by the chain rule. □
+For a \(C^1\) vector field along a \(C^1\) path, define its derivative in local coordinates by \(v'+\rho_*(A(\gamma'))v\). We check the coordinate change explicitly. If \(s_j=s_i h\), put \(h(t)=h(\gamma(t))\); the vector coordinates satisfy \(v_i=\rho(h)v_j\). Differentiating the representation identity along \(h\exp(tX)\), and differentiating it along \(h^{-1}\exp(tX)h\), respectively, give
+\[
+\begin{aligned}
+\frac{d}{dt}\rho(h)&=\rho(h)\rho_*(\theta_h h'),\\
+\rho_*(\operatorname{Ad}(h^{-1})X)
+ &=\rho(h)^{-1}\rho_*X\rho(h).
+\end{aligned}
+\]
+For the first formula, write the tangent \(h'=dL_h X\); no smoothness in time beyond \(C^1\) is needed. The product rule and (A.7) now imply
+\[
+v_i'+\rho_*(A_i(\gamma'))v_i
+=\rho(h)\bigl(v_j'+\rho_*(A_j(\gamma'))v_j\bigr).
+\]
+Thus these expressions are coordinates of a well-defined vector along the path. For the restriction of a section of \(E\), they agree with D.1 by the chain rule. Its zero equation is (D.5); at corners all assertions are made on the separate pieces with their one-sided derivatives.
+
+For general \(F\), change a representative \((p,f)\) to \((pa,a^{-1}f)\). Its transported representative is \((T_\gamma(p)a,a^{-1}f)\), the same associated class. This proves well-definedness. Fix principal frames \(p\) and \(q\) in the endpoint fibres and write \(T_\gamma(p)=qh\) using PB A.2. In the corresponding associated charts, transport is \(f\mapsto hf\), a smooth diffeomorphism with inverse action by \(h^{-1}\). Reversal, concatenation and the smooth-family properties follow from C.2 in these charts. If \(r:F\to F'\) is smooth and equivariant, the induced map sends \([p,f]\) to \([p,r(f)]\); applying it before or after transport gives \([T_\gamma(p),r(f)]\). This proves naturality.
+
+Here preservation of an invariant fibre structure has a precise meaning. For each principal frame \(p\), the map \(j_p:F\to(P\times_G F)_x\), \(f\mapsto[p,f]\), is a diffeomorphism by PB B.1. Transport satisfies \(\mathcal T_\gamma j_p=j_{T_\gamma(p)}\). A tensor field, distribution, or subset of a tensor bundle on \(F\) preserved by every action map \(f\mapsto af\) defines a structure on this fibre through \(j_p\), independently of \(p\): the replacement \(p\mapsto pa\) replaces \(j_p\) by \(j_p\circ(f\mapsto af)\). Applying the displayed transport identity and its derivative shows that \(\mathcal T_\gamma\) preserves the induced structure. In particular, invariant multilinear forms on a representation space, including an invariant inner product, are preserved. □
 
 ## E. Product transport and transport on the Hopf bundle
 
@@ -405,7 +438,7 @@ H(a,b)=I-ab[B,C]
  +O\!\left(|ab|(|a|+|b|)\right).
 \tag{F.5}
 \]
-This remainder estimate remains valid when either side is zero, because then the exact transport is \(I\). It fixes both the travel order and the sign of the leading commutator. □
+This remainder estimate remains valid when either side is zero, because then the exact transport is \(I\). It fixes both the travel order and the sign of the leading commutator. If \([B,C]\ne0\), choose \(a=b=t>0\). The remainder has norm at most \(K t^3\) for some constant \(K\), whereas the leading term has norm \(t^2\|[B,C]\|\). For sufficiently small positive \(t\), the former is less than half the latter, so \(H(t,t)\ne I\). The constant path at the same base point has transport \(I\). These two paths have identical endpoints and different transports. □
 
 ## Free construction source
 

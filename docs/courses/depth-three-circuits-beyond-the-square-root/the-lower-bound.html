@@ -1,0 +1,172 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The lower bound</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents</a><a href="hard-slices.html">Previous lesson</a><a href="src/the-lower-bound.md">Editable source</a></nav><main><article><h1 id="the-lower-bound">The lower bound</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the theorem of <a href="depth-three-circuits-and-the-square-root-barrier.html">Depth-three circuits and the square-root barrier</a>: the language <span class="math" data-tex="\(L\)">\(L\)</span> of <a href="an-explicit-language.html">An explicit language</a> needs depth-three circuits with more than <span class="math" data-tex="\(2^{A\sqrt n}\)">\(2^{A\sqrt n}\)</span> gates, for every constant <span class="math" data-tex="\(A\)">\(A\)</span> and every large <span class="math" data-tex="\(n\)">\(n\)</span>. The restriction bound and the hard slices are combined first: a hard slice has small correlation with every CNF of width about <span class="math" data-tex="\(\sqrt d\)">\(\sqrt d\)</span>. Then a small circuit is shown to accept too few inputs.</p>
+<p>The order of choices is: first <span class="math" data-tex="\(A\)">\(A\)</span>; then constants <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> depending on <span class="math" data-tex="\(A\)">\(A\)</span>; then <span class="math" data-tex="\(n\)">\(n\)</span> large. The language and its algorithm were fixed before all of them.</p>
+<h2 id="1-parameters">1. Parameters</h2>
+<p>Fix <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d=\lfloor n/5\rfloor,\qquad s=3A,\\
+B=64(s+1),\qquad p=\frac B{\sqrt d},\\
+m_0=B\sqrt d,\qquad k=\bigl\lceil3(s+1)\sqrt d\,\bigr\rceil .
+\end{gathered}
+\]">\[
+\begin{gathered}
+d=\lfloor n/5\rfloor,\qquad s=3A,\\
+B=64(s+1),\qquad p=\frac B{\sqrt d},\\
+m_0=B\sqrt d,\qquad k=\bigl\lceil3(s+1)\sqrt d\,\bigr\rceil .
+\end{gathered}
+\]</span>
+All statements below hold for <span class="math" data-tex="\(n\)">\(n\)</span> large enough, how large depending on <span class="math" data-tex="\(A\)">\(A\)</span>. In particular <span class="math" data-tex="\(d\geq64\)">\(d\geq64\)</span>, <span class="math" data-tex="\(0&lt;p\leq\frac12\)">\(0&lt;p\leq\frac12\)</span>, and <span class="math" data-tex="\(n\leq5d+4\leq9d\)">\(n\leq5d+4\leq9d\)</span>, so that
+<span class="math math-display" data-tex="\[
+2^{A\sqrt n}\leq2^{3A\sqrt d}=2^{s\sqrt d}. \tag{1.1}
+\]">\[
+2^{A\sqrt n}\leq2^{3A\sqrt d}=2^{s\sqrt d}. \tag{1.1}
+\]</span>
+The numbers <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(1/p\)">\(1/p\)</span> are both of order <span class="math" data-tex="\(\sqrt d\)">\(\sqrt d\)</span>, so <span class="math" data-tex="\(pk\)">\(pk\)</span> is bounded:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{2pk}{1-p}\leq4pk\leq Q,\\
+Q=4B\,[\,3(s+1)+1\,],
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{2pk}{1-p}\leq4pk\leq Q,\\
+Q=4B\,[\,3(s+1)+1\,],
+\end{gathered}
+\]</span>
+because <span class="math" data-tex="\(k\leq3(s+1)\sqrt d+1\leq[3(s+1)+1]\sqrt d\)">\(k\leq3(s+1)\sqrt d+1\leq[3(s+1)+1]\sqrt d\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> There is an integer <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span>, depending only on <span class="math" data-tex="\(A\)">\(A\)</span>, such that the number <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of the restriction bound, for these <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> and this <span class="math" data-tex="\(b\)">\(b\)</span>, satisfies <span class="math" data-tex="\(\theta\leq\frac12\)">\(\theta\leq\frac12\)</span>.</p>
+<p><em>Proof.</em> The series <span class="math" data-tex="\(\sum_\ell Q^\ell/\ell!\)">\(\sum_\ell Q^\ell/\ell!\)</span> converges (from <span class="math" data-tex="\(\ell+1\geq2Q\)">\(\ell+1\geq2Q\)</span> on, each term is at most half the previous one), so there is <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span> with <span class="math" data-tex="\(\sum_{\ell&gt;b}Q^\ell/\ell!\leq\frac12\)">\(\sum_{\ell&gt;b}Q^\ell/\ell!\leq\frac12\)</span>. With <span class="math" data-tex="\(\binom k\ell\leq k^\ell/\ell!\)">\(\binom k\ell\leq k^\ell/\ell!\)</span> (Exercise 6.5 of <a href="path-weights-and-backward-counting.html">Path weights and backward counting</a>),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\theta&amp;=\sum_{\ell=b+1}^{k}\binom k\ell\Bigl(\frac{2p}{1-p}\Bigr)^{\ell}\\
+&amp;\leq\sum_{\ell&gt;b}\frac1{\ell!}\Bigl(\frac{2pk}{1-p}\Bigr)^{\ell}\\
+&amp;\leq\sum_{\ell&gt;b}\frac{Q^\ell}{\ell!}\leq\frac12. \qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+\theta&amp;=\sum_{\ell=b+1}^{k}\binom k\ell\Bigl(\frac{2p}{1-p}\Bigr)^{\ell}\\
+&amp;\leq\sum_{\ell&gt;b}\frac1{\ell!}\Bigl(\frac{2pk}{1-p}\Bigr)^{\ell}\\
+&amp;\leq\sum_{\ell&gt;b}\frac{Q^\ell}{\ell!}\leq\frac12. \qquad\square
+\end{aligned}
+\]</span></p>
+<p>This is the only place where <span class="math" data-tex="\(A\)">\(A\)</span> influences the width <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<h2 id="2-a-hard-slice-against-wide-cnfs">2. A hard slice against wide CNFs</h2>
+<p>Apply Proposition 1.1 of <a href="hard-slices.html">Hard slices</a> with this <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>: for large <span class="math" data-tex="\(n\)">\(n\)</span> there is a setting of the parameter bits whose slice has sign <span class="math" data-tex="\(g:\{0,1\}^d\to\{-1,1\}\)">\(g:\{0,1\}^d\to\{-1,1\}\)</span> with the following property. Call a restriction <span class="math" data-tex="\((T,\rho)\)">\((T,\rho)\)</span> <em>good</em> if it is not exceptional, that is, if <span class="math" data-tex="\(|T|\in[\frac{m_0}2,2m_0]\)">\(|T|\in[\frac{m_0}2,2m_0]\)</span> and <span class="math" data-tex="\(\operatorname{corr}_b(g_{T,\rho})\leq2^{-|T|/8}\)">\(\operatorname{corr}_b(g_{T,\rho})\leq2^{-|T|/8}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\Pr[(T,\rho)\text{ is not good}]\leq4\cdot2^{-m_0/16},
+\]">\[
+\Pr[(T,\rho)\text{ is not good}]\leq4\cdot2^{-m_0/16},
+\]</span>
+and on a good restriction <span class="math" data-tex="\(\operatorname{corr}_b(g_{T,\rho})\leq2^{-m_0/16}\)">\(\operatorname{corr}_b(g_{T,\rho})\leq2^{-m_0/16}\)</span>. Fix this setting.</p>
+<p><strong>Proposition 2.1.</strong> For every CNF <span class="math" data-tex="\(H\)">\(H\)</span> of width at most <span class="math" data-tex="\(k\)">\(k\)</span> on the <span class="math" data-tex="\(d\)">\(d\)</span> data variables,
+<span class="math math-display" data-tex="\[
+\bigl|\mathbb E_xg(x)H(x)\bigr|\leq6\cdot2^{-m_0/16}.
+\]">\[
+\bigl|\mathbb E_xg(x)H(x)\bigr|\leq6\cdot2^{-m_0/16}.
+\]</span></p>
+<p><em>Proof.</em> By Lemma 4.1 of the first lesson (averaging over restrictions),
+<span class="math math-display" data-tex="\[
+\bigl|\mathbb E_xgH\bigr|\leq\mathbb E_{T,\rho}\bigl|\mathbb E_zg_{T,\rho}H_{T,\rho}\bigr| .
+\]">\[
+\bigl|\mathbb E_xgH\bigr|\leq\mathbb E_{T,\rho}\bigl|\mathbb E_zg_{T,\rho}H_{T,\rho}\bigr| .
+\]</span>
+By the restriction bound (Lemma 1.1 of <a href="a-finite-expansion-of-a-restricted-cnf.html">A finite expansion of a restricted CNF</a>) and Lemma 1.1 above, there are numbers <span class="math" data-tex="\(W(H,T,\rho)\geq0\)">\(W(H,T,\rho)\geq0\)</span> with <span class="math" data-tex="\(\mathbb EW\leq1/(1-\theta)\leq2\)">\(\mathbb EW\leq1/(1-\theta)\leq2\)</span> and
+<span class="math math-display" data-tex="\[
+\bigl|\mathbb E_zg_{T,\rho}H_{T,\rho}\bigr|\leq W(H,T,\rho)\operatorname{corr}_b(g_{T,\rho})
+\]">\[
+\bigl|\mathbb E_zg_{T,\rho}H_{T,\rho}\bigr|\leq W(H,T,\rho)\operatorname{corr}_b(g_{T,\rho})
+\]</span>
+for every restriction. On a good restriction the right side is at most <span class="math" data-tex="\(2^{-m_0/16}W\)">\(2^{-m_0/16}W\)</span>. On any restriction the left side is at most <span class="math" data-tex="\(1\)">\(1\)</span>, because <span class="math" data-tex="\(g\)">\(g\)</span> is a sign and <span class="math" data-tex="\(H\)">\(H\)</span> an indicator. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bigl|\mathbb E_xgH\bigr|&amp;\leq2^{-m_0/16}\,\mathbb E\bigl[W\,\mathbf 1_{\text{good}}\bigr]\\
+&amp;\qquad+\Pr[\text{not good}]\\
+&amp;\leq2\cdot2^{-m_0/16}+4\cdot2^{-m_0/16}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\bigl|\mathbb E_xgH\bigr|&amp;\leq2^{-m_0/16}\,\mathbb E\bigl[W\,\mathbf 1_{\text{good}}\bigr]\\
+&amp;\qquad+\Pr[\text{not good}]\\
+&amp;\leq2\cdot2^{-m_0/16}+4\cdot2^{-m_0/16}.
+\end{aligned}
+\]</span>
+This is the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Two remarks on the logic. The weight <span class="math" data-tex="\(W\)">\(W\)</span> and the event that the restriction is good may depend on each other in any way; the proof bounds <span class="math" data-tex="\(W\mathbf 1_{\text{good}}\leq W\)">\(W\mathbf 1_{\text{good}}\leq W\)</span> and uses only <span class="math" data-tex="\(\mathbb EW\leq2\)">\(\mathbb EW\leq2\)</span>. And the slice was fixed before <span class="math" data-tex="\(H\)">\(H\)</span>: goodness of a restriction controls all CNFs of width <span class="math" data-tex="\(b\)">\(b\)</span> at once, and the restriction bound is applied to each <span class="math" data-tex="\(H\)">\(H\)</span> separately, so one slice serves for every <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Corollary 2.2.</strong> For <span class="math" data-tex="\(n\)">\(n\)</span> large, the slice accepts at least a quarter of the inputs: <span class="math" data-tex="\(\Pr_x[g(x)=1]\geq\frac14\)">\(\Pr_x[g(x)=1]\geq\frac14\)</span>.</p>
+<p><em>Proof.</em> The constant true function is a CNF of width at most <span class="math" data-tex="\(k\)">\(k\)</span> (with no clauses). So <span class="math" data-tex="\(|\mathbb Eg|\leq6\cdot2^{-m_0/16}\)">\(|\mathbb Eg|\leq6\cdot2^{-m_0/16}\)</span>, which is less than <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> for large <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(\Pr[g=1]=\frac12(1+\mathbb Eg)\geq\frac14\)">\(\Pr[g=1]=\frac12(1+\mathbb Eg)\geq\frac14\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-small-circuit-accepts-too-little">3. A small circuit accepts too little</h2>
+<p><strong>Proposition 3.1.</strong> Let an OR–AND–OR circuit with <span class="math" data-tex="\(S\)">\(S\)</span> gates compute the slice of Section 2 exactly, as a function of the <span class="math" data-tex="\(d\)">\(d\)</span> data variables. Then
+<span class="math math-display" data-tex="\[
+\Pr_x[g(x)=1]\leq6S\cdot2^{-m_0/16}+S^2\,2^{-k}.
+\]">\[
+\Pr_x[g(x)=1]\leq6S\cdot2^{-m_0/16}+S^2\,2^{-k}.
+\]</span></p>
+<p><em>Proof.</em> Remove the gates from which no path leads to the output; then every middle gate feeds the top gate. There are at most <span class="math" data-tex="\(S\)">\(S\)</span> middle gates, and each computes a CNF with at most <span class="math" data-tex="\(S\)">\(S\)</span> clauses, one for each bottom gate wired to it (Exercise 6.5 of the first lesson). Normalize the clauses: drop clauses that are always true, and drop a middle gate that has a false clause, since it computes <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be the CNF of a remaining middle gate, and let <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> be <span class="math" data-tex="\(H\)">\(H\)</span> without its clauses of width greater than <span class="math" data-tex="\(k\)">\(k\)</span>. Then <span class="math" data-tex="\(H&#x27;\geq H\)">\(H&#x27;\geq H\)</span>, and <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> has width at most <span class="math" data-tex="\(k\)">\(k\)</span>. A clause of width <span class="math" data-tex="\(\ell&gt;k\)">\(\ell&gt;k\)</span> is violated on a fraction <span class="math" data-tex="\(2^{-\ell}\leq2^{-k}\)">\(2^{-\ell}\leq2^{-k}\)</span> of the cube, and <span class="math" data-tex="\(H&#x27;-H\)">\(H&#x27;-H\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> only where a deleted clause is violated, so
+<span class="math math-display" data-tex="\[
+\mathbb E(H&#x27;-H)\leq S\,2^{-k}.
+\]">\[
+\mathbb E(H&#x27;-H)\leq S\,2^{-k}.
+\]</span>
+Every input accepted by <span class="math" data-tex="\(H\)">\(H\)</span> is accepted by the top gate, which computes the slice. So <span class="math" data-tex="\(H=1\)">\(H=1\)</span> implies <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, that is, <span class="math" data-tex="\(gH=H\)">\(gH=H\)</span> pointwise. With Proposition 2.1 applied to <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb EH&amp;=\mathbb E(gH)\\
+&amp;=\mathbb E(gH&#x27;)-\mathbb E\bigl(g(H&#x27;-H)\bigr)\\
+&amp;\leq6\cdot2^{-m_0/16}+S\,2^{-k}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb EH&amp;=\mathbb E(gH)\\
+&amp;=\mathbb E(gH&#x27;)-\mathbb E\bigl(g(H&#x27;-H)\bigr)\\
+&amp;\leq6\cdot2^{-m_0/16}+S\,2^{-k}.
+\end{aligned}
+\]</span>
+The accepted set of the circuit is the union of the accepted sets of its middle gates. Summing over at most <span class="math" data-tex="\(S\)">\(S\)</span> gates gives the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof counts <em>all</em> gates: the number of middle gates bounds the number of CNFs, and the number of bottom gates bounds the clauses of each CNF, hence the cost of deleting the wide ones. A CNF with few clauses but large width, and an OR of many narrow CNFs, are both expensive in this count.</p>
+<h2 id="4-proof-of-the-theorem">4. Proof of the theorem</h2>
+<p><strong>Theorem 4.1 (OpenAI, 2026).</strong> Let <span class="math" data-tex="\(f_n\)">\(f_n\)</span> be the membership function of <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(\{0,1\}^n\)">\(\{0,1\}^n\)</span>. For every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> there is <span class="math" data-tex="\(N_A\)">\(N_A\)</span> such that <span class="math" data-tex="\(S_3(f_n)&gt;2^{A\sqrt n}\)">\(S_3(f_n)&gt;2^{A\sqrt n}\)</span> for all <span class="math" data-tex="\(n\geq N_A\)">\(n\geq N_A\)</span>. The language <span class="math" data-tex="\(L\)">\(L\)</span> is decided in polynomial time.</p>
+<p><em>Proof.</em> Polynomial time is Proposition 3.1 of <a href="an-explicit-language.html">An explicit language</a>. Fix <span class="math" data-tex="\(A\)">\(A\)</span> and let <span class="math" data-tex="\(n\)">\(n\)</span> be large. Suppose an OR–AND–OR circuit with <span class="math" data-tex="\(S\leq2^{A\sqrt n}\)">\(S\leq2^{A\sqrt n}\)</span> gates computes <span class="math" data-tex="\(f_n\)">\(f_n\)</span>. Substitute the parameter bits fixed in Section 2, and arbitrary constants for the unused bits, into its inputs: bottom gates then read data literals and constants, the number of gates does not grow, and the circuit computes the slice. By Corollary 2.2, Proposition 3.1 and (1.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac14\leq\Pr[g=1]&amp;\leq6\cdot2^{s\sqrt d-m_0/16}\\
+&amp;\qquad+2^{2s\sqrt d-k}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac14\leq\Pr[g=1]&amp;\leq6\cdot2^{s\sqrt d-m_0/16}\\
+&amp;\qquad+2^{2s\sqrt d-k}.
+\end{aligned}
+\]</span>
+Now <span class="math" data-tex="\(m_0/16=4(s+1)\sqrt d\)">\(m_0/16=4(s+1)\sqrt d\)</span> and <span class="math" data-tex="\(k\geq3(s+1)\sqrt d\)">\(k\geq3(s+1)\sqrt d\)</span>, so the right side is at most
+<span class="math math-display" data-tex="\[
+6\cdot2^{-(3s+4)\sqrt d}+2^{-(s+3)\sqrt d},
+\]">\[
+6\cdot2^{-(3s+4)\sqrt d}+2^{-(s+3)\sqrt d},
+\]</span>
+which tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>. This is a contradiction for large <span class="math" data-tex="\(n\)">\(n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is Theorem 2.1 of the first lesson: <span class="math" data-tex="\(\log_2S_3(f_n)/\sqrt n\)">\(\log_2S_3(f_n)/\sqrt n\)</span> exceeds every constant <span class="math" data-tex="\(A\)">\(A\)</span> from <span class="math" data-tex="\(N_A\)">\(N_A\)</span> on, so it tends to infinity.</p>
+<h2 id="5-what-the-proof-gives-and-what-it-does-not">5. What the proof gives and what it does not</h2>
+<p><strong>Where the square root sits.</strong> The restriction leaves about <span class="math" data-tex="\(m_0=B\sqrt d\)">\(m_0=B\sqrt d\)</span> variables live, and CNFs are truncated at width <span class="math" data-tex="\(k\approx3(s+1)\sqrt d\)">\(k\approx3(s+1)\sqrt d\)</span>. The two scales are tied together: the restriction bound needs <span class="math" data-tex="\(pk\)">\(pk\)</span> bounded, so <span class="math" data-tex="\(p\)">\(p\)</span> is of order <span class="math" data-tex="\(1/k\)">\(1/k\)</span>, and then the number of live variables <span class="math" data-tex="\(pd\)">\(pd\)</span> is of order <span class="math" data-tex="\(d/k\)">\(d/k\)</span>. The gain <span class="math" data-tex="\(2^{-m_0/16}\)">\(2^{-m_0/16}\)</span> from the hard slice and the truncation loss <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span> are balanced when <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(d/k\)">\(d/k\)</span> are both of order <span class="math" data-tex="\(\sqrt d\)">\(\sqrt d\)</span>. Raising the constant <span class="math" data-tex="\(A\)">\(A\)</span> is paid for by a larger constant <span class="math" data-tex="\(B\)">\(B\)</span> and a larger width <span class="math" data-tex="\(b\)">\(b\)</span>, and by a larger threshold <span class="math" data-tex="\(N_A\)">\(N_A\)</span>; nothing else changes. The constants are large: for <span class="math" data-tex="\(A=1\)">\(A=1\)</span> the proof takes <span class="math" data-tex="\(B=256\)">\(B=256\)</span> and <span class="math" data-tex="\(Q=13312\)">\(Q=13312\)</span>, a width <span class="math" data-tex="\(b\)">\(b\)</span> of about <span class="math" data-tex="\(36{,}000\)">\(36{,}000\)</span> is needed in Lemma 1.1, and the constant <span class="math" data-tex="\(M(b,\frac18)\)">\(M(b,\frac18)\)</span> of the sparse partition for such a width is far larger still. The proof makes no attempt to keep <span class="math" data-tex="\(N_A\)">\(N_A\)</span> small.</p>
+<p><strong>No fixed larger exponent.</strong> The proof does not give a bound <span class="math" data-tex="\(2^{n^{1/2+\varepsilon}}\)">\(2^{n^{1/2+\varepsilon}}\)</span> for a fixed <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. In the proof of the hard slices the constants <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> must be fixed before <span class="math" data-tex="\(d\)">\(d\)</span> grows: the amount of independence <span class="math" data-tex="\(t\approx d^{1/6}\)">\(t\approx d^{1/6}\)</span> has to beat the number <span class="math" data-tex="\(2^{O(m\log m)}\)">\(2^{O(m\log m)}\)</span> of sparse tests with a constant <span class="math" data-tex="\(M(b,\frac18)\)">\(M(b,\frac18)\)</span>, and <span class="math" data-tex="\(M\)">\(M\)</span> grows quickly with <span class="math" data-tex="\(b\)">\(b\)</span>. Whether an explicit function needs depth-three circuits of size <span class="math" data-tex="\(2^{n^{1/2+\varepsilon}}\)">\(2^{n^{1/2+\varepsilon}}\)</span> is not settled by this theorem.</p>
+<p><strong>Formal verification.</strong> OpenAI's release contains a Lean formalization of the theorem in the form stated here: one polynomial-time language, a Turing machine with an explicit time bound, total gate count with unrestricted fan-in and sharing, and the bound for every <span class="math" data-tex="\(A\)">\(A\)</span> at all large lengths.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Check the arithmetic at the end of the proof of Theorem 4.1: with <span class="math" data-tex="\(S\leq2^{s\sqrt d}\)">\(S\leq2^{s\sqrt d}\)</span>, show <span class="math" data-tex="\(6S2^{-m_0/16}\leq6\cdot2^{-(3s+4)\sqrt d}\)">\(6S2^{-m_0/16}\leq6\cdot2^{-(3s+4)\sqrt d}\)</span> and <span class="math" data-tex="\(S^22^{-k}\leq2^{-(s+3)\sqrt d}\)">\(S^22^{-k}\leq2^{-(s+3)\sqrt d}\)</span>.</p>
+<p><strong>6.2.</strong> Why is the truncation at width <span class="math" data-tex="\(k\)">\(k\)</span> needed at all? What goes wrong if Proposition 2.1 is applied to a CNF of unbounded width?</p>
+<p><strong>6.3.</strong> Proposition 3.1 uses that the circuit computes the slice <em>exactly</em>. Where? Show that the argument still works if the circuit only computes a function <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> with <span class="math" data-tex="\(f&#x27;\leq f\)">\(f&#x27;\leq f\)</span> and <span class="math" data-tex="\(\Pr[f&#x27;=1]\geq\frac18\)">\(\Pr[f&#x27;=1]\geq\frac18\)</span>.</p>
+<p><strong>6.4.</strong> The parity function on <span class="math" data-tex="\(d\)">\(d\)</span> variables has depth-three circuits of size <span class="math" data-tex="\(2^{O(\sqrt d)}\)">\(2^{O(\sqrt d)}\)</span>. Which step of the proof must therefore fail for parity in place of the slice?</p>
+<p><strong>6.5.</strong> Show that the theorem implies: for every <span class="math" data-tex="\(A\)">\(A\)</span>, every OR–AND–OR circuit for <span class="math" data-tex="\(f_n\)">\(f_n\)</span> with <span class="math" data-tex="\(n\geq N_A\)">\(n\geq N_A\)</span> has more than <span class="math" data-tex="\(2^{A\sqrt n}\)">\(2^{A\sqrt n}\)</span> <em>bottom or middle</em> gates, up to one gate.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(m_0/16=64(s+1)\sqrt d/16\)">\(m_0/16=64(s+1)\sqrt d/16\)</span>, which is <span class="math" data-tex="\(4(s+1)\sqrt d\)">\(4(s+1)\sqrt d\)</span>, so <span class="math" data-tex="\(S2^{-m_0/16}\leq2^{(s-4s-4)\sqrt d}=2^{-(3s+4)\sqrt d}\)">\(S2^{-m_0/16}\leq2^{(s-4s-4)\sqrt d}=2^{-(3s+4)\sqrt d}\)</span>. And <span class="math" data-tex="\(k\geq3(s+1)\sqrt d\)">\(k\geq3(s+1)\sqrt d\)</span> gives <span class="math" data-tex="\(S^22^{-k}\leq2^{(2s-3s-3)\sqrt d}=2^{-(s+3)\sqrt d}\)">\(S^22^{-k}\leq2^{(2s-3s-3)\sqrt d}=2^{-(s+3)\sqrt d}\)</span>.</p>
+<p><strong>6.2.</strong> The restriction bound needs <span class="math" data-tex="\(\theta&lt;1\)">\(\theta&lt;1\)</span>, and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> contains the terms <span class="math" data-tex="\(\binom k\ell(2p/(1-p))^\ell\)">\(\binom k\ell(2p/(1-p))^\ell\)</span> up to <span class="math" data-tex="\(\ell=k\)">\(\ell=k\)</span>. With <span class="math" data-tex="\(p\)">\(p\)</span> of order <span class="math" data-tex="\(1/\sqrt d\)">\(1/\sqrt d\)</span>, this requires <span class="math" data-tex="\(k\)">\(k\)</span> of order at most <span class="math" data-tex="\(\sqrt d\)">\(\sqrt d\)</span>. For wider CNFs the expected weight <span class="math" data-tex="\(W\)">\(W\)</span> is not bounded. The truncation trades width for the error <span class="math" data-tex="\(S2^{-k}\)">\(S2^{-k}\)</span> per gate.</p>
+<p><strong>6.3.</strong> It is used for <span class="math" data-tex="\(gH=H\)">\(gH=H\)</span> (every input accepted by a middle gate is accepted by the slice) and for the accepted set of the slice being the union over the middle gates. If the circuit computes <span class="math" data-tex="\(f&#x27;\leq f\)">\(f&#x27;\leq f\)</span>, then <span class="math" data-tex="\(gH=H\)">\(gH=H\)</span> still holds for its middle gates, and summing gives <span class="math" data-tex="\(\Pr[f&#x27;=1]\leq6S2^{-m_0/16}+S^22^{-k}\)">\(\Pr[f&#x27;=1]\leq6S2^{-m_0/16}+S^22^{-k}\)</span>, which contradicts <span class="math" data-tex="\(\Pr[f&#x27;=1]\geq\frac18\)">\(\Pr[f&#x27;=1]\geq\frac18\)</span> for large <span class="math" data-tex="\(n\)">\(n\)</span> in the same way.</p>
+<p><strong>6.4.</strong> The hard-slice property (Proposition 1.1 of <a href="hard-slices.html">Hard slices</a>) fails for parity. After a restriction, the sign of parity is, up to a constant sign, the parity of the <span class="math" data-tex="\(m\)">\(m\)</span> live variables. Split the live variables into <span class="math" data-tex="\(\lceil m/b\rceil\)">\(\lceil m/b\rceil\)</span> blocks of at most <span class="math" data-tex="\(b\)">\(b\)</span> variables, and let <span class="math" data-tex="\(J\)">\(J\)</span> say that every block has even parity. Each block condition is a CNF of width at most <span class="math" data-tex="\(b\)">\(b\)</span> (one clause for each odd assignment of the block), so <span class="math" data-tex="\(J\in\mathcal C_b(T)\)">\(J\in\mathcal C_b(T)\)</span>; it accepts a fraction <span class="math" data-tex="\(2^{-\lceil m/b\rceil}\)">\(2^{-\lceil m/b\rceil}\)</span> of the cube, and the parity is constant on the accepted set. So <span class="math" data-tex="\(\operatorname{corr}_b\geq2^{-\lceil m/b\rceil}\)">\(\operatorname{corr}_b\geq2^{-\lceil m/b\rceil}\)</span>, which is larger than <span class="math" data-tex="\(2^{-m/8}\)">\(2^{-m/8}\)</span> when <span class="math" data-tex="\(b\geq9\)">\(b\geq9\)</span> and <span class="math" data-tex="\(m&gt;72\)">\(m&gt;72\)</span>. The width <span class="math" data-tex="\(b\)">\(b\)</span> of Lemma 1.1 is much larger than <span class="math" data-tex="\(9\)">\(9\)</span>: since <span class="math" data-tex="\(Q^\ell/\ell!\geq1\)">\(Q^\ell/\ell!\geq1\)</span> for <span class="math" data-tex="\(\ell\leq Q\)">\(\ell\leq Q\)</span>, the condition <span class="math" data-tex="\(\sum_{\ell&gt;b}Q^\ell/\ell!\leq\frac12\)">\(\sum_{\ell&gt;b}Q^\ell/\ell!\leq\frac12\)</span> forces <span class="math" data-tex="\(b\geq Q\geq1024\)">\(b\geq Q\geq1024\)</span>. The other steps (the restriction bound and Proposition 3.1) hold for every function.</p>
+<p><strong>6.5.</strong> The top gate is one gate, so a circuit with <span class="math" data-tex="\(S\)">\(S\)</span> gates has <span class="math" data-tex="\(S-1\)">\(S-1\)</span> bottom and middle gates. If these numbered at most <span class="math" data-tex="\(2^{A\sqrt n}-1\)">\(2^{A\sqrt n}-1\)</span>, the circuit would have at most <span class="math" data-tex="\(2^{A\sqrt n}\)">\(2^{A\sqrt n}\)</span> gates, contradicting the theorem.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-P] OpenAI, <em>Beyond the Square-Root Exponent for Depth-Three Boolean Circuits</em>, OpenAI Math Release preprint, 23 September 2026, Section 6. https://github.com/openai/math/tree/main/preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026</li>
+<li>[OpenAI-Lean] OpenAI Math Release, scope of the Lean formalization of the same paper. https://github.com/openai/math/blob/main/lean/docs/112.md</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

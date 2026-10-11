@@ -126,7 +126,7 @@ For density, let \(h\in C_c(G)\). Theorem 1.1 puts its support in a compact open
 \]
 Haar invariance makes this \(K\)-invariant; hence it is locally constant. It vanishes outside \(K'\), and its uniform distance from \(h\) is at most \(\varepsilon\). For \(r=1,2\),
 \(\|h_K-h\|_r\le\varepsilon\mu(K')^{1/r}\).
-The density of \(C_c(G)\) in \(L^1(G)\), PRE-INTEGRAL, Theorem 3.1, and in \(L^2(G)\), PRE-HILBERT, Proposition 6.2, proves the claim, for the full Haar spaces without a sigma-finiteness restriction. \(\square\)
+The density of \(C_c(G)\) in \(L^1(G)\), [PRE-INTEGRAL, Theorem 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-3-1), and in \(L^2(G)\), PRE-HILBERT, Proposition 6.2, proves the claim, for the full Haar spaces without a sigma-finiteness restriction. \(\square\)
 
 ## 4. Duality for unions and inverse limits
 
