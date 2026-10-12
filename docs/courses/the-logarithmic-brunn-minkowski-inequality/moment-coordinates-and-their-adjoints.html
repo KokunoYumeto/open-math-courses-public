@@ -1,0 +1,250 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Moment coordinates and their adjoints</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The logarithmic Brunn-Minkowski inequality)</a><a href="wulff-bodies-and-the-reduction-to-a-variance-bound.html">Previous lesson</a><a href="the-tensor-estimate.html">Next lesson</a><a href="src/moment-coordinates-and-their-adjoints.md">Editable source</a></nav><main><article><h1 id="moment-coordinates-and-their-adjoints">Moment coordinates and their adjoints</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The variance bound of [OpenAI-L] is proved in new coordinates. A probability density <span class="math" data-tex="\(Z^{-1}e^{-V(x)}\)">\(Z^{-1}e^{-V(x)}\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> is written as the image of a density <span class="math" data-tex="\(e^{-\varphi(z)}\)">\(e^{-\varphi(z)}\)</span> under the gradient map <span class="math" data-tex="\(x=\nabla\varphi(z)\)">\(x=\nabla\varphi(z)\)</span> of the same convex function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. In these <em>moment coordinates</em> the Hessian <span class="math" data-tex="\(\tau=D^2\varphi\)">\(\tau=D^2\varphi\)</span> turns integration by parts against <span class="math" data-tex="\(x\)">\(x\)</span> into a first-order expression, and it defines a second-order operator <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(A1=0\)">\(A1=0\)</span> and <span class="math" data-tex="\(Ax_j=x_j\)">\(Ax_j=x_j\)</span>.</p>
+<p>This lesson defines moment pairs, states the existence theorem that the course takes from the literature as a named hypothesis, and proves the identities for <span class="math" data-tex="\(A\)">\(A\)</span> and for the test functions <span class="math" data-tex="\(A(A-1)f\)">\(A(A-1)f\)</span> on which the proof of the variance bound rests.</p>
+<ul>
+<li>Moment pairs and the moment equation (Lemma 1.1); the hypothesis (M).</li>
+<li>Adjoints of the derivatives in the two coordinates (Lemma 2.1).</li>
+<li>The operator <span class="math" data-tex="\(A\)">\(A\)</span> (Proposition 3.1).</li>
+<li>The test fields <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span> and their pairings; the Hessian identity (Proposition 4.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-L, Sections 3 and 4]. It continues <a href="wulff-bodies-and-the-reduction-to-a-variance-bound.html">Wulff bodies and the reduction to a variance bound</a>, but uses from it only the notation <span class="math" data-tex="\(\mathbb E_\mu\)">\(\mathbb E_\mu\)</span>. It uses integration by parts and the change of variables for integrals in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>.</p>
+<h2 id="1-moment-pairs">1. Moment pairs</h2>
+<p><strong>Definition.</strong> A <em>moment pair</em> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> consists of smooth real functions <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> such that</p>
+<ul>
+<li><span class="math" data-tex="\(Z=\int e^{-V(x)}dx\)">\(Z=\int e^{-V(x)}dx\)</span> is finite, and <span class="math" data-tex="\(\int e^{-\varphi(z)}dz=1\)">\(\int e^{-\varphi(z)}dz=1\)</span>;</li>
+<li>the Hessian <span class="math" data-tex="\(D^2\varphi(z)\)">\(D^2\varphi(z)\)</span> is positive definite at every point, and <span class="math" data-tex="\(\nabla\varphi\)">\(\nabla\varphi\)</span> is a one-to-one map of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> onto <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>;</li>
+<li>the image of the probability measure <span class="math" data-tex="\(d\nu=e^{-\varphi(z)}dz\)">\(d\nu=e^{-\varphi(z)}dz\)</span> under <span class="math" data-tex="\(\nabla\varphi\)">\(\nabla\varphi\)</span> is <span class="math" data-tex="\(d\mu=Z^{-1}e^{-V(x)}dx\)">\(d\mu=Z^{-1}e^{-V(x)}dx\)</span>.</li>
+</ul>
+<p>Since the Jacobian matrix <span class="math" data-tex="\(D^2\varphi\)">\(D^2\varphi\)</span> of <span class="math" data-tex="\(\nabla\varphi\)">\(\nabla\varphi\)</span> is invertible, the inverse map is smooth. We write
+<span class="math math-display" data-tex="\[
+x=\nabla\varphi(z),\quad\tau=D^2\varphi,\quad M=\tau^{-1}.
+\]">\[
+x=\nabla\varphi(z),\quad\tau=D^2\varphi,\quad M=\tau^{-1}.
+\]</span>
+A function of <span class="math" data-tex="\(z\)">\(z\)</span> is also regarded as a function of <span class="math" data-tex="\(x\)">\(x\)</span>, and conversely, through this map; so <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> are matrix fields in both coordinates. For a function <span class="math" data-tex="\(g\)">\(g\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, the chain rule reads
+<span class="math math-display" data-tex="\[
+\partial_{z_k}\bigl(g(x(z))\bigr)=\sum_ig_{x_i}\,\tau_{ik}. \tag{C}
+\]">\[
+\partial_{z_k}\bigl(g(x(z))\bigr)=\sum_ig_{x_i}\,\tau_{ik}. \tag{C}
+\]</span>
+The expectation of a function under <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, or of the same function in the other coordinates under <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, is written <span class="math" data-tex="\(\mathbb E\)">\(\mathbb E\)</span>. A function has compact support in <span class="math" data-tex="\(x\)">\(x\)</span> exactly if it has compact support in <span class="math" data-tex="\(z\)">\(z\)</span>, because the map and its inverse are continuous.</p>
+<p><strong>Lemma 1.1 (moment equation).</strong> For a moment pair,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\log\det D^2\varphi(z)\\
+&amp;\quad=V(\nabla\varphi(z))+\log Z-\varphi(z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\log\det D^2\varphi(z)\\
+&amp;\quad=V(\nabla\varphi(z))+\log Z-\varphi(z).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> For a continuous function <span class="math" data-tex="\(g\)">\(g\)</span> with compact support, the change of variables <span class="math" data-tex="\(x=\nabla\varphi(z)\)">\(x=\nabla\varphi(z)\)</span>, whose Jacobian determinant is <span class="math" data-tex="\(\det\tau&gt;0\)">\(\det\tau&gt;0\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int g(x)\,Z^{-1}e^{-V(x)}dx\\
+&amp;\quad=\int g(x(z))\,Z^{-1}e^{-V(x(z))}\det\tau(z)\,dz .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int g(x)\,Z^{-1}e^{-V(x)}dx\\
+&amp;\quad=\int g(x(z))\,Z^{-1}e^{-V(x(z))}\det\tau(z)\,dz .
+\end{aligned}
+\]</span>
+By the third condition the left side is <span class="math" data-tex="\(\int g(x(z))e^{-\varphi(z)}dz\)">\(\int g(x(z))e^{-\varphi(z)}dz\)</span>. The functions <span class="math" data-tex="\(g(x(z))\)">\(g(x(z))\)</span> run through all continuous functions of <span class="math" data-tex="\(z\)">\(z\)</span> with compact support, so the two continuous densities agree: <span class="math" data-tex="\(e^{-\varphi}=Z^{-1}e^{-V(x(z))}\det\tau\)">\(e^{-\varphi}=Z^{-1}e^{-V(x(z))}\det\tau\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Example 1.2.</strong> Let <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(V(x)=\tfrac1{2a}|x|^2\)">\(V(x)=\tfrac1{2a}|x|^2\)</span> and <span class="math" data-tex="\(\varphi(z)=\tfrac a2|z|^2+\tfrac n2\log\tfrac{2\pi}a\)">\(\varphi(z)=\tfrac a2|z|^2+\tfrac n2\log\tfrac{2\pi}a\)</span>. Then <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is the Gaussian measure with the covariance <span class="math" data-tex="\(\tfrac1aI\)">\(\tfrac1aI\)</span>, the map <span class="math" data-tex="\(x=az\)">\(x=az\)</span> carries it to the Gaussian measure with the covariance <span class="math" data-tex="\(aI\)">\(aI\)</span>, which is <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and <span class="math" data-tex="\(\tau=aI\)">\(\tau=aI\)</span>. Here <span class="math" data-tex="\(D^2V=\tfrac1aI\)">\(D^2V=\tfrac1aI\)</span>; with <span class="math" data-tex="\(\varepsilon=\tfrac1a\)">\(\varepsilon=\tfrac1a\)</span> the Hessian of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is <span class="math" data-tex="\(\tfrac1\varepsilon I\)">\(\tfrac1\varepsilon I\)</span>.</p>
+<p><strong>Hypothesis (M).</strong> Let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and let <span class="math" data-tex="\(V\)">\(V\)</span> be a smooth even function on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> with <span class="math" data-tex="\(D^2V\ge\varepsilon I\)">\(D^2V\ge\varepsilon I\)</span> at every point. Then there is an even smooth function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> such that <span class="math" data-tex="\((V,\varphi)\)">\((V,\varphi)\)</span> is a moment pair and
+<span class="math math-display" data-tex="\[
+D^2\varphi\le\frac4\varepsilon\,I\qquad\text{at every point.}
+\]">\[
+D^2\varphi\le\frac4\varepsilon\,I\qquad\text{at every point.}
+\]</span></p>
+<p>This is the lemma on moment coordinates of [OpenAI-L, Section 3]. It is not proved in this course. According to [OpenAI-L], its proof starts from a theorem of R. Berman and B. Berndtsson, which gives the function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> when the density lives on a ball, and from an estimate of B. Klartag, which gives the bound <span class="math" data-tex="\(4/\varepsilon\)">\(4/\varepsilon\)</span> for the Hessian independently of the radius of the ball; the passage to the whole space uses interior estimates for elliptic equations. The general theory of such pairs is attributed there to D. Cordero-Erausquin and B. Klartag. Lemma 1.1 shows that the equation in the statement of [OpenAI-L] follows from the other properties.</p>
+<p>The results of Sections 2 to 4 hold for every moment pair. They use neither the evenness nor the bound for the Hessian.</p>
+<h2 id="2-adjoints">2. Adjoints</h2>
+<p>Fix a moment pair. Write <span class="math" data-tex="\(\partial_k=\partial_{z_k}\)">\(\partial_k=\partial_{z_k}\)</span>, and for a function <span class="math" data-tex="\(F\)">\(F\)</span> of <span class="math" data-tex="\(z\)">\(z\)</span>
+<span class="math math-display" data-tex="\[
+\partial_k^*F=x_kF-\partial_kF .
+\]">\[
+\partial_k^*F=x_kF-\partial_kF .
+\]</span>
+For a vector field <span class="math" data-tex="\(W=(W_1,\dots,W_n)\)">\(W=(W_1,\dots,W_n)\)</span> in the coordinates <span class="math" data-tex="\(x\)">\(x\)</span> let
+<span class="math math-display" data-tex="\[
+\delta_\mu W=\sum_j\bigl(V_{x_j}W_j-\partial_{x_j}W_j\bigr).
+\]">\[
+\delta_\mu W=\sum_j\bigl(V_{x_j}W_j-\partial_{x_j}W_j\bigr).
+\]</span>
+For a matrix field, <span class="math" data-tex="\(\delta_\mu\)">\(\delta_\mu\)</span> is applied to each row and gives a vector field.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(g,F\)">\(g,F\)</span> be smooth functions and <span class="math" data-tex="\(W\)">\(W\)</span> a smooth vector field, and let <span class="math" data-tex="\(g\)">\(g\)</span>, or else <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span>, have compact support.</p>
+<ol>
+<li><span class="math" data-tex="\(\mathbb E\,(\partial_kg)\,F=\mathbb E\,g\,\partial_k^*F\)">\(\mathbb E\,(\partial_kg)\,F=\mathbb E\,g\,\partial_k^*F\)</span>.</li>
+<li><span class="math" data-tex="\(\mathbb E\,\nabla_xg\cdot W=\mathbb E\,g\,\delta_\mu W\)">\(\mathbb E\,\nabla_xg\cdot W=\mathbb E\,g\,\delta_\mu W\)</span>.</li>
+<li>For a smooth matrix field <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(\sum_k\partial_k^*P_{ak}=(\delta_\mu(P\tau))_a\)">\(\sum_k\partial_k^*P_{ak}=(\delta_\mu(P\tau))_a\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>.</li>
+<li><span class="math" data-tex="\(\delta_\mu\tau=x\)">\(\delta_\mu\tau=x\)</span>; that is, <span class="math" data-tex="\(\mathbb E\,x_jg=\mathbb E\sum_k\tau_{jk}\,g_{x_k}\)">\(\mathbb E\,x_jg=\mathbb E\sum_k\tau_{jk}\,g_{x_k}\)</span> for smooth <span class="math" data-tex="\(g\)">\(g\)</span> with compact support.</li>
+</ol>
+<p><strong>Proof.</strong> (1) Integrate <span class="math" data-tex="\(\partial_k(gFe^{-\varphi})\)">\(\partial_k(gFe^{-\varphi})\)</span> over <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>; the integral is <span class="math" data-tex="\(0\)">\(0\)</span>, and <span class="math" data-tex="\(\partial_ke^{-\varphi}=-x_ke^{-\varphi}\)">\(\partial_ke^{-\varphi}=-x_ke^{-\varphi}\)</span> because <span class="math" data-tex="\(\partial_k\varphi=x_k\)">\(\partial_k\varphi=x_k\)</span>. (2) In the same way, integrate <span class="math" data-tex="\(\partial_{x_j}(gW_je^{-V})\)">\(\partial_{x_j}(gW_je^{-V})\)</span> and sum over <span class="math" data-tex="\(j\)">\(j\)</span>. (3) Let <span class="math" data-tex="\(g\)">\(g\)</span> have compact support. By (1), the chain rule (C) and (2),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,g\sum_k\partial_k^*P_{ak}&amp;=\mathbb E\sum_k(\partial_kg)\,P_{ak}\\
+&amp;=\mathbb E\sum_{i,k}g_{x_i}\,\tau_{ik}P_{ak}\\
+&amp;=\mathbb E\,g\,(\delta_\mu(P\tau))_a .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,g\sum_k\partial_k^*P_{ak}&amp;=\mathbb E\sum_k(\partial_kg)\,P_{ak}\\
+&amp;=\mathbb E\sum_{i,k}g_{x_i}\,\tau_{ik}P_{ak}\\
+&amp;=\mathbb E\,g\,(\delta_\mu(P\tau))_a .
+\end{aligned}
+\]</span>
+This holds for all such <span class="math" data-tex="\(g\)">\(g\)</span>, and both functions are continuous. (4) Take for <span class="math" data-tex="\(P\)">\(P\)</span> the identity matrix in (3): <span class="math" data-tex="\(\sum_k\partial_k^*\delta_{ak}=x_a\)">\(\sum_k\partial_k^*\delta_{ak}=x_a\)</span>. The second form is (2). <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Statement (4) says that <span class="math" data-tex="\(\tau\)">\(\tau\)</span> turns a multiplication by <span class="math" data-tex="\(x_j\)">\(x_j\)</span> into derivatives. For the Gaussian pair of Example 1.2 with <span class="math" data-tex="\(a=1\)">\(a=1\)</span> it is the familiar formula <span class="math" data-tex="\(\mathbb E\,x_jg=\mathbb E\,g_{x_j}\)">\(\mathbb E\,x_jg=\mathbb E\,g_{x_j}\)</span>. According to [OpenAI-L], this construction of such a matrix field from the moment map is due to M. Fathi.</p>
+<h2 id="3-the-operator-a">3. The operator <span class="math" data-tex="\(A\)">\(A\)</span></h2>
+<p>For a smooth function <span class="math" data-tex="\(f\)">\(f\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Af=\delta_\mu(\tau\nabla_xf),\\
+\Gamma(f,g)=\nabla_xf\cdot\tau\nabla_xg .
+\end{gathered}
+\]">\[
+\begin{gathered}
+Af=\delta_\mu(\tau\nabla_xf),\\
+\Gamma(f,g)=\nabla_xf\cdot\tau\nabla_xg .
+\end{gathered}
+\]</span></p>
+<p><strong>Proposition 3.1.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(Af=\sum_k\partial_k^*f_{x_k}\)">\(Af=\sum_k\partial_k^*f_{x_k}\)</span>, and this is <span class="math" data-tex="\(x\cdot\nabla_xf-\sum_{i,k}\tau_{ik}f_{x_ix_k}\)">\(x\cdot\nabla_xf-\sum_{i,k}\tau_{ik}f_{x_ix_k}\)</span>.</li>
+<li><span class="math" data-tex="\(\mathbb E\,g\,Af=\mathbb E\,\Gamma(g,f)\)">\(\mathbb E\,g\,Af=\mathbb E\,\Gamma(g,f)\)</span> if <span class="math" data-tex="\(f\)">\(f\)</span> or <span class="math" data-tex="\(g\)">\(g\)</span> has compact support. In particular <span class="math" data-tex="\(\mathbb E\,g\,Af=\mathbb E\,f\,Ag\)">\(\mathbb E\,g\,Af=\mathbb E\,f\,Ag\)</span>, and <span class="math" data-tex="\(\mathbb E\,Af=0\)">\(\mathbb E\,Af=0\)</span> for <span class="math" data-tex="\(f\)">\(f\)</span> with compact support.</li>
+<li><span class="math" data-tex="\(A1=0\)">\(A1=0\)</span> and <span class="math" data-tex="\(Ax_j=x_j\)">\(Ax_j=x_j\)</span>.</li>
+<li><span class="math" data-tex="\(A(fg)=f\,Ag+g\,Af-2\,\Gamma(f,g)\)">\(A(fg)=f\,Ag+g\,Af-2\,\Gamma(f,g)\)</span>. For a smooth function <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of one variable, <span class="math" data-tex="\(A(\beta(f))\)">\(A(\beta(f))\)</span> is <span class="math" data-tex="\(\beta&#x27;(f)\,Af-\beta&#x27;&#x27;(f)\,\Gamma(f,f)\)">\(\beta&#x27;(f)\,Af-\beta&#x27;&#x27;(f)\,\Gamma(f,f)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) The first equality is Lemma 2.1 (3) for the matrix with the single row <span class="math" data-tex="\((f_{x_1},\dots,f_{x_n})\)">\((f_{x_1},\dots,f_{x_n})\)</span>. By the chain rule (C), <span class="math" data-tex="\(\partial_kf_{x_k}=\sum_if_{x_kx_i}\tau_{ik}\)">\(\partial_kf_{x_k}=\sum_if_{x_kx_i}\tau_{ik}\)</span>, which gives the second. (2) is Lemma 2.1 (2) for <span class="math" data-tex="\(W=\tau\nabla_xf\)">\(W=\tau\nabla_xf\)</span>. (3) follows from the formula in (1). (4) The first-order part <span class="math" data-tex="\(x\cdot\nabla\)">\(x\cdot\nabla\)</span> obeys the product rule and the chain rule. For the second-order part write <span class="math" data-tex="\(\tau{:}D^2f=\sum_{i,k}\tau_{ik}f_{x_ix_k}\)">\(\tau{:}D^2f=\sum_{i,k}\tau_{ik}f_{x_ix_k}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau{:}D^2(fg)&amp;=f\,\tau{:}D^2g+g\,\tau{:}D^2f\\
+&amp;\quad+2\,\Gamma(f,g),\\
+\tau{:}D^2(\beta(f))&amp;=\beta&#x27;(f)\,\tau{:}D^2f\\
+&amp;\quad+\beta&#x27;&#x27;(f)\,\Gamma(f,f).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau{:}D^2(fg)&amp;=f\,\tau{:}D^2g+g\,\tau{:}D^2f\\
+&amp;\quad+2\,\Gamma(f,g),\\
+\tau{:}D^2(\beta(f))&amp;=\beta&#x27;(f)\,\tau{:}D^2f\\
+&amp;\quad+\beta&#x27;&#x27;(f)\,\Gamma(f,f).
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So <span class="math" data-tex="\(A\)">\(A\)</span> is a symmetric operator on smooth functions with compact support, constants are in its kernel, and the coordinate functions are eigenfunctions with the eigenvalue <span class="math" data-tex="\(1\)">\(1\)</span>. Hence <span class="math" data-tex="\(A(A-1)\)">\(A(A-1)\)</span> annihilates every affine function. For the Gaussian pair, <span class="math" data-tex="\(A=x\cdot\nabla-\Delta\)">\(A=x\cdot\nabla-\Delta\)</span>.</p>
+<h2 id="4-the-test-functions">4. The test functions</h2>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be a smooth function of <span class="math" data-tex="\(x\)">\(x\)</span> with compact support. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h=D_x^2f,\qquad P=\tau h,\qquad B=\tau h\tau,\\
+W_a=\sum_k\partial_k^*P_{ak},\qquad u=\delta_\mu W .
+\end{gathered}
+\]">\[
+\begin{gathered}
+h=D_x^2f,\qquad P=\tau h,\qquad B=\tau h\tau,\\
+W_a=\sum_k\partial_k^*P_{ak},\qquad u=\delta_\mu W .
+\end{gathered}
+\]</span>
+These fields have compact support. The matrices <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> are symmetric.</p>
+<p><strong>Proposition 4.1.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(W=\delta_\mu B\)">\(W=\delta_\mu B\)</span>.</li>
+<li>For every smooth function <span class="math" data-tex="\(F\)">\(F\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,uF&amp;=\mathbb E\,W\cdot\nabla_xF\\
+&amp;=\mathbb E\sum_{a,i}B_{ai}F_{x_ax_i}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,uF&amp;=\mathbb E\,W\cdot\nabla_xF\\
+&amp;=\mathbb E\sum_{a,i}B_{ai}F_{x_ax_i}.
+\end{aligned}
+\]</span></li>
+<li><span class="math" data-tex="\(W\)">\(W\)</span> is the gradient in <span class="math" data-tex="\(z\)">\(z\)</span> of the function <span class="math" data-tex="\((Af-f)(x(z))\)">\((Af-f)(x(z))\)</span>; so <span class="math" data-tex="\(W=\tau\,\nabla_x(Af-f)\)">\(W=\tau\,\nabla_x(Af-f)\)</span>, and <span class="math" data-tex="\(u=A(A-1)f\)">\(u=A(A-1)f\)</span>. In particular the matrix <span class="math" data-tex="\(D_zW=(\partial_lW_a)\)">\(D_zW=(\partial_lW_a)\)</span> is symmetric.</li>
+<li>(Hessian identity)
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\,(Af)\,(Af-f)\\
+&amp;\quad=\mathbb E\,\operatorname{tr}(h\tau h\tau)\\
+&amp;\quad=\mathbb E\,\bigl\|\tau^{1/2}\,D_x^2f\,\tau^{1/2}\bigr\|^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\,(Af)\,(Af-f)\\
+&amp;\quad=\mathbb E\,\operatorname{tr}(h\tau h\tau)\\
+&amp;\quad=\mathbb E\,\bigl\|\tau^{1/2}\,D_x^2f\,\tau^{1/2}\bigr\|^2 ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\|Q\|^2=\operatorname{tr}(Q^TQ)\)">\(\|Q\|^2=\operatorname{tr}(Q^TQ)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) is Lemma 2.1 (3), since <span class="math" data-tex="\(P\tau=B\)">\(P\tau=B\)</span>. (2) Apply Lemma 2.1 (2) twice: first to <span class="math" data-tex="\(g=F\)">\(g=F\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span>, then, for each <span class="math" data-tex="\(a\)">\(a\)</span>, to <span class="math" data-tex="\(g=F_{x_a}\)">\(g=F_{x_a}\)</span> and the row <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>(3) Let <span class="math" data-tex="\(C_{aik}=\partial_a\partial_i\partial_k\varphi\)">\(C_{aik}=\partial_a\partial_i\partial_k\varphi\)</span>. By the definition and the chain rule (C),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W_a&amp;=\sum_kx_k\,P_{ak}-\sum_k\partial_k\Bigl(\sum_i\tau_{ai}f_{x_ix_k}\Bigr)\\
+&amp;=\sum_{i,k}x_k\tau_{ai}f_{x_ix_k}-\sum_{i,k}C_{aik}f_{x_ix_k}\\
+&amp;\quad-\sum_{i,j,k}\tau_{ai}\tau_{jk}f_{x_ix_kx_j}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+W_a&amp;=\sum_kx_k\,P_{ak}-\sum_k\partial_k\Bigl(\sum_i\tau_{ai}f_{x_ix_k}\Bigr)\\
+&amp;=\sum_{i,k}x_k\tau_{ai}f_{x_ix_k}-\sum_{i,k}C_{aik}f_{x_ix_k}\\
+&amp;\quad-\sum_{i,j,k}\tau_{ai}\tau_{jk}f_{x_ix_kx_j}.
+\end{aligned}
+\]</span>
+On the other hand <span class="math" data-tex="\(Af-f=\sum_kx_kf_{x_k}-\sum_{i,k}\tau_{ik}f_{x_ix_k}-f\)">\(Af-f=\sum_kx_kf_{x_k}-\sum_{i,k}\tau_{ik}f_{x_ix_k}-f\)</span>, and its derivative in <span class="math" data-tex="\(z_a\)">\(z_a\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_k\tau_{ak}f_{x_k}+\sum_{i,k}x_kf_{x_kx_i}\tau_{ia}\\
+&amp;\quad-\sum_{i,k}C_{aik}f_{x_ix_k}-\sum_{i,j,k}\tau_{ik}f_{x_ix_kx_j}\tau_{ja}\\
+&amp;\quad-\sum_if_{x_i}\tau_{ia}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_k\tau_{ak}f_{x_k}+\sum_{i,k}x_kf_{x_kx_i}\tau_{ia}\\
+&amp;\quad-\sum_{i,k}C_{aik}f_{x_ix_k}-\sum_{i,j,k}\tau_{ik}f_{x_ix_kx_j}\tau_{ja}\\
+&amp;\quad-\sum_if_{x_i}\tau_{ia}.
+\end{aligned}
+\]</span>
+The first and the last sum cancel, and the rest is <span class="math" data-tex="\(W_a\)">\(W_a\)</span>. The second form of <span class="math" data-tex="\(W\)">\(W\)</span> is the chain rule (C). Then <span class="math" data-tex="\(u=\delta_\mu(\tau\nabla_x(Af-f))=A(Af-f)\)">\(u=\delta_\mu(\tau\nabla_x(Af-f))=A(Af-f)\)</span>. A gradient in <span class="math" data-tex="\(z\)">\(z\)</span> has a symmetric matrix of derivatives.</p>
+<p>(4) By Proposition 3.1 (2), then (3), then Lemma 2.1 (2) for the rows of <span class="math" data-tex="\(B\)">\(B\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\,(Af)(Af-f)\\
+&amp;\quad=\mathbb E\,\nabla_xf\cdot\tau\nabla_x(Af-f)\\
+&amp;\quad=\mathbb E\,\nabla_xf\cdot W\\
+&amp;\quad=\mathbb E\sum_{a,i}B_{ai}f_{x_ax_i},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\,(Af)(Af-f)\\
+&amp;\quad=\mathbb E\,\nabla_xf\cdot\tau\nabla_x(Af-f)\\
+&amp;\quad=\mathbb E\,\nabla_xf\cdot W\\
+&amp;\quad=\mathbb E\sum_{a,i}B_{ai}f_{x_ax_i},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\sum B_{ai}h_{ai}=\operatorname{tr}(\tau h\tau h)\)">\(\sum B_{ai}h_{ai}=\operatorname{tr}(\tau h\tau h)\)</span>, which is the squared norm of the symmetric matrix <span class="math" data-tex="\(\tau^{1/2}h\tau^{1/2}\)">\(\tau^{1/2}h\tau^{1/2}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Statement (2) allows to compute the pairing of the test function <span class="math" data-tex="\(u\)">\(u\)</span> with a function <span class="math" data-tex="\(F\)">\(F\)</span> through the first or through the second derivatives of <span class="math" data-tex="\(F\)">\(F\)</span>; the function <span class="math" data-tex="\(F\)">\(F\)</span> need not have compact support. The Hessian identity shows why affine functions play a special role: if <span class="math" data-tex="\(Af=f\)">\(Af=f\)</span> or <span class="math" data-tex="\(Af=0\)">\(Af=0\)</span> held for a function with compact support, its Hessian would vanish. According to [OpenAI-L], the identity is a special case of a formula of A. Kolesnikov, G. Livshyts and L. Rotem.</p>
+<p><strong>Example 4.2.</strong> For the Gaussian pair with <span class="math" data-tex="\(a=1\)">\(a=1\)</span> and a polynomial <span class="math" data-tex="\(f\)">\(f\)</span> (the formulas of this section do not need compact support when all functions are polynomials), <span class="math" data-tex="\(B=D^2f\)">\(B=D^2f\)</span>, <span class="math" data-tex="\(W=\nabla(Af-f)\)">\(W=\nabla(Af-f)\)</span> and <span class="math" data-tex="\(u=A(A-1)f\)">\(u=A(A-1)f\)</span>. For <span class="math" data-tex="\(f=x_1^3\)">\(f=x_1^3\)</span>: <span class="math" data-tex="\(Af=3x_1^3-6x_1\)">\(Af=3x_1^3-6x_1\)</span>, <span class="math" data-tex="\((A-1)f=2x_1^3-6x_1\)">\((A-1)f=2x_1^3-6x_1\)</span>, <span class="math" data-tex="\(W=(6x_1^2-6,0,\dots,0)\)">\(W=(6x_1^2-6,0,\dots,0)\)</span>, and <span class="math" data-tex="\(u=A(2x_1^3-6x_1)=6x_1^3-18x_1\)">\(u=A(2x_1^3-6x_1)=6x_1^3-18x_1\)</span>. The Hessian identity reads <span class="math" data-tex="\(\mathbb E(3x_1^3-6x_1)(2x_1^3-6x_1)=\mathbb E\,36x_1^2\)">\(\mathbb E(3x_1^3-6x_1)(2x_1^3-6x_1)=\mathbb E\,36x_1^2\)</span>; both sides are <span class="math" data-tex="\(36\)">\(36\)</span>, since <span class="math" data-tex="\(\mathbb Ex_1^2=1\)">\(\mathbb Ex_1^2=1\)</span>, <span class="math" data-tex="\(\mathbb Ex_1^4=3\)">\(\mathbb Ex_1^4=3\)</span>, <span class="math" data-tex="\(\mathbb Ex_1^6=15\)">\(\mathbb Ex_1^6=15\)</span>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Let <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, and let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a smooth function on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with <span class="math" data-tex="\(\varphi&#x27;&#x27;&gt;0\)">\(\varphi&#x27;&#x27;&gt;0\)</span>, <span class="math" data-tex="\(\int e^{-\varphi}=1\)">\(\int e^{-\varphi}=1\)</span> and <span class="math" data-tex="\(\varphi&#x27;(\mathbb R)=\mathbb R\)">\(\varphi&#x27;(\mathbb R)=\mathbb R\)</span>. Show that there is a function <span class="math" data-tex="\(V\)">\(V\)</span>, unique up to the choice of <span class="math" data-tex="\(Z\)">\(Z\)</span>, such that <span class="math" data-tex="\((V,\varphi)\)">\((V,\varphi)\)</span> is a moment pair, and give <span class="math" data-tex="\(V&#x27;(x)\)">\(V&#x27;(x)\)</span> in terms of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.</p>
+<p><strong>5.2.</strong> Show that for a moment pair the mean of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>: <span class="math" data-tex="\(\mathbb E\,x_j=0\)">\(\mathbb E\,x_j=0\)</span>.</p>
+<p><strong>5.3.</strong> Show that <span class="math" data-tex="\(\mathbb E\,\operatorname{tr}\tau=\mathbb E\,|x|^2\)">\(\mathbb E\,\operatorname{tr}\tau=\mathbb E\,|x|^2\)</span>, if <span class="math" data-tex="\(|x|^2\)">\(|x|^2\)</span> is integrable for <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is bounded.</p>
+<p><strong>5.4.</strong> Check Proposition 4.1 (2) for the Gaussian pair with <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(f=x_1^3\)">\(f=x_1^3\)</span> and <span class="math" data-tex="\(F=x_1^4\)">\(F=x_1^4\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> The map <span class="math" data-tex="\(x=\varphi&#x27;(z)\)">\(x=\varphi&#x27;(z)\)</span> is a smooth bijection of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with <span class="math" data-tex="\(dx=\varphi&#x27;&#x27;dz\)">\(dx=\varphi&#x27;&#x27;dz\)</span>. The image of <span class="math" data-tex="\(e^{-\varphi}dz\)">\(e^{-\varphi}dz\)</span> has the density <span class="math" data-tex="\(e^{-\varphi(z)}/\varphi&#x27;&#x27;(z)\)">\(e^{-\varphi(z)}/\varphi&#x27;&#x27;(z)\)</span> at <span class="math" data-tex="\(x=\varphi&#x27;(z)\)">\(x=\varphi&#x27;(z)\)</span>. So one must take <span class="math" data-tex="\(V(x)=\varphi(z)+\log\varphi&#x27;&#x27;(z)-\log Z\)">\(V(x)=\varphi(z)+\log\varphi&#x27;&#x27;(z)-\log Z\)</span>, as in Lemma 1.1, and this function is smooth with <span class="math" data-tex="\(\int e^{-V}dx=Z\)">\(\int e^{-V}dx=Z\)</span>. Differentiating in <span class="math" data-tex="\(z\)">\(z\)</span>: <span class="math" data-tex="\(V&#x27;(x)\,\varphi&#x27;&#x27;=\varphi&#x27;+\varphi&#x27;&#x27;&#x27;/\varphi&#x27;&#x27;\)">\(V&#x27;(x)\,\varphi&#x27;&#x27;=\varphi&#x27;+\varphi&#x27;&#x27;&#x27;/\varphi&#x27;&#x27;\)</span>, so <span class="math" data-tex="\(V&#x27;(x)=\bigl(x+\varphi&#x27;&#x27;&#x27;(z)/\varphi&#x27;&#x27;(z)\bigr)/\varphi&#x27;&#x27;(z)\)">\(V&#x27;(x)=\bigl(x+\varphi&#x27;&#x27;&#x27;(z)/\varphi&#x27;&#x27;(z)\bigr)/\varphi&#x27;&#x27;(z)\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(\mathbb E\,x_j=\int\partial_j\varphi\,e^{-\varphi}dz=-\int\partial_j(e^{-\varphi})dz\)">\(\mathbb E\,x_j=\int\partial_j\varphi\,e^{-\varphi}dz=-\int\partial_j(e^{-\varphi})dz\)</span>. Since <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is convex and <span class="math" data-tex="\(e^{-\varphi}\)">\(e^{-\varphi}\)</span> is integrable, <span class="math" data-tex="\(\varphi(z)\ge c|z|-b\)">\(\varphi(z)\ge c|z|-b\)</span> for some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, so <span class="math" data-tex="\(e^{-\varphi}\)">\(e^{-\varphi}\)</span> tends to <span class="math" data-tex="\(0\)">\(0\)</span> at infinity and the integral of its derivative over each line parallel to the axis <span class="math" data-tex="\(j\)">\(j\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>. On such a line <span class="math" data-tex="\(e^{-\varphi}\)">\(e^{-\varphi}\)</span> increases and then decreases, so the integral of <span class="math" data-tex="\(|\partial_je^{-\varphi}|\)">\(|\partial_je^{-\varphi}|\)</span> over the line is at most twice the maximum of <span class="math" data-tex="\(e^{-\varphi}\)">\(e^{-\varphi}\)</span> on it, which is integrable over the family of lines; this justifies the integration line by line. (For the bound: the convex set where <span class="math" data-tex="\(\varphi\le\varphi(0)+1\)">\(\varphi\le\varphi(0)+1\)</span> has finite volume, so it is bounded, say by the radius <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span>; then by convexity <span class="math" data-tex="\(\varphi(z)\ge\varphi(0)+|z|/\varrho\)">\(\varphi(z)\ge\varphi(0)+|z|/\varrho\)</span> for <span class="math" data-tex="\(|z|\ge\varrho\)">\(|z|\ge\varrho\)</span>.)</p>
+<p><strong>5.3.</strong> Apply Lemma 2.1 (4) to <span class="math" data-tex="\(g=\eta_r(x)\,x_j\)">\(g=\eta_r(x)\,x_j\)</span>, where <span class="math" data-tex="\(\eta_r\)">\(\eta_r\)</span> is a smooth function with <span class="math" data-tex="\(\eta_r=1\)">\(\eta_r=1\)</span> for <span class="math" data-tex="\(|x|\le r\)">\(|x|\le r\)</span>, <span class="math" data-tex="\(\eta_r=0\)">\(\eta_r=0\)</span> for <span class="math" data-tex="\(|x|\ge2r\)">\(|x|\ge2r\)</span> and <span class="math" data-tex="\(|\nabla\eta_r|\le2/r\)">\(|\nabla\eta_r|\le2/r\)</span>, and sum over <span class="math" data-tex="\(j\)">\(j\)</span>: <span class="math" data-tex="\(\mathbb E\,\eta_r|x|^2=\mathbb E\,\eta_r\operatorname{tr}\tau+\mathbb E\,x\cdot\tau\nabla\eta_r\)">\(\mathbb E\,\eta_r|x|^2=\mathbb E\,\eta_r\operatorname{tr}\tau+\mathbb E\,x\cdot\tau\nabla\eta_r\)</span>. The last term is at most <span class="math" data-tex="\(4\|\tau\|\,\mathbb P(|x|\ge r)\)">\(4\|\tau\|\,\mathbb P(|x|\ge r)\)</span> in absolute value, because <span class="math" data-tex="\(|x|\le2r\)">\(|x|\le2r\)</span> where <span class="math" data-tex="\(\nabla\eta_r\ne0\)">\(\nabla\eta_r\ne0\)</span>. Let <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(u=6x_1^3-18x_1\)">\(u=6x_1^3-18x_1\)</span> and <span class="math" data-tex="\(F=x_1^4\)">\(F=x_1^4\)</span>: <span class="math" data-tex="\(\mathbb E\,uF=6\,\mathbb Ex_1^7-18\,\mathbb Ex_1^5=0\)">\(\mathbb E\,uF=6\,\mathbb Ex_1^7-18\,\mathbb Ex_1^5=0\)</span>. <span class="math" data-tex="\(W\cdot\nabla F=(6x_1^2-6)\,4x_1^3\)">\(W\cdot\nabla F=(6x_1^2-6)\,4x_1^3\)</span>, with the mean <span class="math" data-tex="\(0\)">\(0\)</span>. <span class="math" data-tex="\(\sum B_{ai}F_{x_ax_i}=6x_1\cdot12x_1^2\)">\(\sum B_{ai}F_{x_ax_i}=6x_1\cdot12x_1^2\)</span>, with the mean <span class="math" data-tex="\(0\)">\(0\)</span>. All three vanish because the integrands are odd. With <span class="math" data-tex="\(F=x_1^3\)">\(F=x_1^3\)</span> instead: <span class="math" data-tex="\(\mathbb E\,uF=6\cdot15-18\cdot3=36\)">\(\mathbb E\,uF=6\cdot15-18\cdot3=36\)</span>, <span class="math" data-tex="\(\mathbb E\,(6x_1^2-6)\,3x_1^2=54-18=36\)">\(\mathbb E\,(6x_1^2-6)\,3x_1^2=54-18=36\)</span>, and <span class="math" data-tex="\(\mathbb E\,6x_1\cdot6x_1=36\)">\(\mathbb E\,6x_1\cdot6x_1=36\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-L] OpenAI, <em>The logarithmic Brunn-Minkowski conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Sections 3 and 4. https://github.com/openai/math/tree/main/preprints/The-logarithmic-Brunn-Minkowski-conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

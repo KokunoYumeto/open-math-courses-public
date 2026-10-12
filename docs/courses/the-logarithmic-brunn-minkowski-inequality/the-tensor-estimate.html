@@ -1,0 +1,389 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The tensor estimate</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The logarithmic Brunn-Minkowski inequality)</a><a href="moment-coordinates-and-their-adjoints.html">Previous lesson</a><a href="density-of-the-even-tests.html">Next lesson</a><a href="src/the-tensor-estimate.md">Editable source</a></nav><main><article><h1 id="the-tensor-estimate">The tensor estimate</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>For a moment pair <span class="math" data-tex="\((V,\varphi)\)">\((V,\varphi)\)</span> and a test function <span class="math" data-tex="\(f\)">\(f\)</span>, the lesson on moment coordinates defined the matrix field <span class="math" data-tex="\(B=\tau\,D_x^2f\,\tau\)">\(B=\tau\,D_x^2f\,\tau\)</span>, the vector field <span class="math" data-tex="\(W=\delta_\mu B\)">\(W=\delta_\mu B\)</span> and the function <span class="math" data-tex="\(u=\delta_\mu W=A(A-1)f\)">\(u=\delta_\mu W=A(A-1)f\)</span>. This lesson proves the inequality of [OpenAI-L, Section 6] between them:
+<span class="math math-display" data-tex="\[
+\mathbb E\,u^2\ \ge\ \mathbb E\operatorname{tr}(MBHB)+\mathbb E\,W^THW ,
+\]">\[
+\mathbb E\,u^2\ \ge\ \mathbb E\operatorname{tr}(MBHB)+\mathbb E\,W^THW ,
+\]</span>
+where <span class="math" data-tex="\(H=D_x^2V\)">\(H=D_x^2V\)</span> and <span class="math" data-tex="\(M=\tau^{-1}\)">\(M=\tau^{-1}\)</span>. It bounds the size of the test function <span class="math" data-tex="\(u\)">\(u\)</span> from below by two quadratic expressions in which the Hessian of <span class="math" data-tex="\(V\)">\(V\)</span> appears linearly. In the proof of the variance bound, <span class="math" data-tex="\(H\)">\(H\)</span> is a sum of the Hessians of the functions <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span>, and the inequality is used for each summand.</p>
+<ul>
+<li>The identity <span class="math" data-tex="\(\mathbb Eu^2=\mathbb EW^THW+\mathbb E\operatorname{tr}((D_xW)^2)\)">\(\mathbb Eu^2=\mathbb EW^THW+\mathbb E\operatorname{tr}((D_xW)^2)\)</span> (Lemma 2.1).</li>
+<li>The moment equation, differentiated twice (Lemma 3.2).</li>
+<li>Two expansions (Lemmas 4.1 and 4.2) and three contractions (Lemma 5.1).</li>
+<li>A sum of squares, and the estimate (Lemma 6.1, Theorem 1.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-L, Section 6]. It continues <a href="moment-coordinates-and-their-adjoints.html">Moment coordinates and their adjoints</a> and uses its notation and results. No hypothesis is used: the results hold for every moment pair.</p>
+<h2 id="1-the-statement">1. The statement</h2>
+<p>Fix a moment pair <span class="math" data-tex="\((V,\varphi)\)">\((V,\varphi)\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, with <span class="math" data-tex="\(x=\nabla\varphi(z)\)">\(x=\nabla\varphi(z)\)</span>, <span class="math" data-tex="\(\tau=D^2\varphi\)">\(\tau=D^2\varphi\)</span>, <span class="math" data-tex="\(M=\tau^{-1}\)">\(M=\tau^{-1}\)</span>, and a smooth function <span class="math" data-tex="\(f\)">\(f\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> with compact support. As in the lesson on moment coordinates,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h=D_x^2f,\qquad P=\tau h,\qquad B=\tau h\tau,\\
+W=\delta_\mu B,\qquad u=\delta_\mu W .
+\end{gathered}
+\]">\[
+\begin{gathered}
+h=D_x^2f,\qquad P=\tau h,\qquad B=\tau h\tau,\\
+W=\delta_\mu B,\qquad u=\delta_\mu W .
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(H=D_x^2V\)">\(H=D_x^2V\)</span>, and let <span class="math" data-tex="\(D_xW\)">\(D_xW\)</span> be the matrix with the entries <span class="math" data-tex="\((D_xW)_{ij}=\partial_{x_j}W_i\)">\((D_xW)_{ij}=\partial_{x_j}W_i\)</span>.</p>
+<p>In this lesson <em>repeated indices are summed from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(n\)">\(n\)</span></em>. We write <span class="math" data-tex="\(\partial_k=\partial_{z_k}\)">\(\partial_k=\partial_{z_k}\)</span>, <span class="math" data-tex="\(\partial_k^*=x_k-\partial_k\)">\(\partial_k^*=x_k-\partial_k\)</span>, and
+<span class="math math-display" data-tex="\[
+C_{ijk}=\partial_i\partial_j\partial_k\varphi ,
+\]">\[
+C_{ijk}=\partial_i\partial_j\partial_k\varphi ,
+\]</span>
+a tensor that is symmetric in its three indices; <span class="math" data-tex="\(C_i\)">\(C_i\)</span> is the matrix with the entries <span class="math" data-tex="\((C_i)_{jk}=C_{ijk}\)">\((C_i)_{jk}=C_{ijk}\)</span>. Recall the chain rule <span class="math" data-tex="\(\partial_k(g(x(z)))=g_{x_i}\tau_{ik}\)">\(\partial_k(g(x(z)))=g_{x_i}\tau_{ik}\)</span>.</p>
+<p><strong>Theorem 1.1 (tensor estimate).</strong>
+<span class="math math-display" data-tex="\[
+\mathbb E\operatorname{tr}\bigl((D_xW)^2\bigr)\ \ge\ \mathbb E\operatorname{tr}(MBHB),
+\]">\[
+\mathbb E\operatorname{tr}\bigl((D_xW)^2\bigr)\ \ge\ \mathbb E\operatorname{tr}(MBHB),
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\mathbb E\,u^2\ \ge\ \mathbb E\operatorname{tr}(MBHB)+\mathbb E\,W^THW .
+\]">\[
+\mathbb E\,u^2\ \ge\ \mathbb E\operatorname{tr}(MBHB)+\mathbb E\,W^THW .
+\]</span></p>
+<p>The square in the first line is the square of a matrix, and <span class="math" data-tex="\(\operatorname{tr}((D_xW)^2)=(\partial_{x_j}W_i)(\partial_{x_i}W_j)\)">\(\operatorname{tr}((D_xW)^2)=(\partial_{x_j}W_i)(\partial_{x_i}W_j)\)</span>. It need not be positive at each point.</p>
+<h2 id="2-the-first-identity">2. The first identity</h2>
+<p><strong>Lemma 2.1.</strong> For a smooth vector field <span class="math" data-tex="\(W\)">\(W\)</span> with compact support and <span class="math" data-tex="\(u=\delta_\mu W\)">\(u=\delta_\mu W\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E\,u^2=\mathbb E\,W^THW+\mathbb E\operatorname{tr}\bigl((D_xW)^2\bigr).
+\]">\[
+\mathbb E\,u^2=\mathbb E\,W^THW+\mathbb E\operatorname{tr}\bigl((D_xW)^2\bigr).
+\]</span></p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(u=V_{x_j}W_j-\partial_{x_j}W_j\)">\(u=V_{x_j}W_j-\partial_{x_j}W_j\)</span>,
+<span class="math math-display" data-tex="\[
+\partial_{x_i}u=H_{ij}W_j+\bigl(V_{x_j}-\partial_{x_j}\bigr)\partial_{x_i}W_j .
+\]">\[
+\partial_{x_i}u=H_{ij}W_j+\bigl(V_{x_j}-\partial_{x_j}\bigr)\partial_{x_i}W_j .
+\]</span>
+By Lemma 2.1 (2) of the lesson on moment coordinates, <span class="math" data-tex="\(\mathbb E\,u^2=\mathbb E\,u\,\delta_\mu W=\mathbb E\,W_i\,\partial_{x_i}u\)">\(\mathbb E\,u^2=\mathbb E\,u\,\delta_\mu W=\mathbb E\,W_i\,\partial_{x_i}u\)</span>, and for each <span class="math" data-tex="\(i,j\)">\(i,j\)</span> the same lemma, read from right to left, shows that the mean of <span class="math" data-tex="\(W_i(V_{x_j}-\partial_{x_j})\partial_{x_i}W_j\)">\(W_i(V_{x_j}-\partial_{x_j})\partial_{x_i}W_j\)</span> is the mean of <span class="math" data-tex="\((\partial_{x_j}W_i)(\partial_{x_i}W_j)\)">\((\partial_{x_j}W_i)(\partial_{x_i}W_j)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So the second inequality of Theorem 1.1 follows from the first.</p>
+<h2 id="3-the-moment-equation-differentiated-twice">3. The moment equation, differentiated twice</h2>
+<p><strong>Lemma 3.1.</strong> With <span class="math" data-tex="\(c_i=\operatorname{tr}(MC_i)\)">\(c_i=\operatorname{tr}(MC_i)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau_{ik}V_{x_k}=x_i+c_i,\\
+\partial_dM_{dk}-x_dM_{dk}=-V_{x_k}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\tau_{ik}V_{x_k}=x_i+c_i,\\
+\partial_dM_{dk}-x_dM_{dk}=-V_{x_k}.
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> By Lemma 1.1 of the lesson on moment coordinates, <span class="math" data-tex="\(V(x(z))=\varphi+\log\det\tau-\log Z\)">\(V(x(z))=\varphi+\log\det\tau-\log Z\)</span>. Apply <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span>: the left side gives <span class="math" data-tex="\(V_{x_k}\tau_{ki}\)">\(V_{x_k}\tau_{ki}\)</span> by the chain rule, and the right side gives <span class="math" data-tex="\(x_i+\operatorname{tr}(M\,\partial_i\tau)=x_i+c_i\)">\(x_i+\operatorname{tr}(M\,\partial_i\tau)=x_i+c_i\)</span>, by the rule for the derivative of the logarithm of a determinant. For the second formula, <span class="math" data-tex="\(\partial_dM=-M(\partial_d\tau)M=-MC_dM\)">\(\partial_dM=-M(\partial_d\tau)M=-MC_dM\)</span>, so
+<span class="math math-display" data-tex="\[
+\partial_dM_{dk}=-M_{da}C_{dab}M_{bk}=-c_bM_{bk},
+\]">\[
+\partial_dM_{dk}=-M_{da}C_{dab}M_{bk}=-c_bM_{bk},
+\]</span>
+and by the first formula
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_dM_{dk}-x_dM_{dk}&amp;=-(c_b+x_b)M_{bk}\\
+&amp;=-\tau_{bl}V_{x_l}M_{bk}=-V_{x_k}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_dM_{dk}-x_dM_{dk}&amp;=-(c_b+x_b)M_{bk}\\
+&amp;=-\tau_{bl}V_{x_l}M_{bk}=-V_{x_k}.
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.2.</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\tau H\tau-\tau)_{ij}&amp;=(\partial_d-x_d)\bigl(M_{dk}C_{ijk}\bigr)\\
+&amp;\quad-\operatorname{tr}(MC_iMC_j).
+\end{aligned}
+\]">\[
+\begin{aligned}
+(\tau H\tau-\tau)_{ij}&amp;=(\partial_d-x_d)\bigl(M_{dk}C_{ijk}\bigr)\\
+&amp;\quad-\operatorname{tr}(MC_iMC_j).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Apply <span class="math" data-tex="\(\partial_j\)">\(\partial_j\)</span> to the first formula of Lemma 3.1. On the left,
+<span class="math math-display" data-tex="\[
+\partial_j(\tau_{ik}V_{x_k})=C_{ijk}V_{x_k}+\tau_{ik}H_{kl}\tau_{lj}.
+\]">\[
+\partial_j(\tau_{ik}V_{x_k})=C_{ijk}V_{x_k}+\tau_{ik}H_{kl}\tau_{lj}.
+\]</span>
+On the right, with <span class="math" data-tex="\(\partial_jM=-MC_jM\)">\(\partial_jM=-MC_jM\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_j(x_i+c_i)&amp;=\tau_{ij}-\operatorname{tr}(MC_jMC_i)\\
+&amp;\quad+M_{kl}\,\partial_jC_{ikl}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_j(x_i+c_i)&amp;=\tau_{ij}-\operatorname{tr}(MC_jMC_i)\\
+&amp;\quad+M_{kl}\,\partial_jC_{ikl}.
+\end{aligned}
+\]</span>
+So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\tau H\tau-\tau)_{ij}&amp;=M_{dk}\,\partial_dC_{ijk}-C_{ijk}V_{x_k}\\
+&amp;\quad-\operatorname{tr}(MC_iMC_j),
+\end{aligned}
+\]">\[
+\begin{aligned}
+(\tau H\tau-\tau)_{ij}&amp;=M_{dk}\,\partial_dC_{ijk}-C_{ijk}V_{x_k}\\
+&amp;\quad-\operatorname{tr}(MC_iMC_j),
+\end{aligned}
+\]</span>
+where the fourth derivatives of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> were renamed by their symmetry. By the second formula of Lemma 3.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(\partial_d-x_d)(M_{dk}C_{ijk})\\
+&amp;\quad=-V_{x_k}C_{ijk}+M_{dk}\,\partial_dC_{ijk}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(\partial_d-x_d)(M_{dk}C_{ijk})\\
+&amp;\quad=-V_{x_k}C_{ijk}+M_{dk}\,\partial_dC_{ijk}.
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The operator <span class="math" data-tex="\(\partial_d-x_d\)">\(\partial_d-x_d\)</span> is <span class="math" data-tex="\(-\partial_d^*\)">\(-\partial_d^*\)</span>. So when the right side of Lemma 3.2 is integrated against a function, its first term can be moved to the other factor.</p>
+<h2 id="4-two-expansions">4. Two expansions</h2>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(R_{al}=\partial_k^*\partial_lP_{ak}\)">\(R_{al}=\partial_k^*\partial_lP_{ak}\)</span>. Then <span class="math" data-tex="\(D_zW=B+R\)">\(D_zW=B+R\)</span>, the matrix <span class="math" data-tex="\(R\)">\(R\)</span> is symmetric, <span class="math" data-tex="\(D_xW=(B+R)M\)">\(D_xW=(B+R)M\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\operatorname{tr}\bigl((D_xW)^2\bigr)&amp;=\mathbb E\operatorname{tr}(MBMB)\\
+&amp;\quad+2\,\mathbb E\,(\partial_kh_{al})(\partial_lP_{ak})\\
+&amp;\quad+\mathbb E\operatorname{tr}(MRMR).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\operatorname{tr}\bigl((D_xW)^2\bigr)&amp;=\mathbb E\operatorname{tr}(MBMB)\\
+&amp;\quad+2\,\mathbb E\,(\partial_kh_{al})(\partial_lP_{ak})\\
+&amp;\quad+\mathbb E\operatorname{tr}(MRMR).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\partial_l(x_kF)-x_k\partial_lF=\tau_{kl}F\)">\(\partial_l(x_kF)-x_k\partial_lF=\tau_{kl}F\)</span>, we have <span class="math" data-tex="\(\partial_l\partial_k^*F=\partial_k^*\partial_lF+\tau_{kl}F\)">\(\partial_l\partial_k^*F=\partial_k^*\partial_lF+\tau_{kl}F\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_lW_a&amp;=\partial_l\partial_k^*P_{ak}\\
+&amp;=R_{al}+P_{ak}\tau_{kl}=R_{al}+B_{al}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_lW_a&amp;=\partial_l\partial_k^*P_{ak}\\
+&amp;=R_{al}+P_{ak}\tau_{kl}=R_{al}+B_{al}.
+\end{aligned}
+\]</span>
+By Proposition 4.1 (3) of the lesson on moment coordinates <span class="math" data-tex="\(D_zW\)">\(D_zW\)</span> is symmetric, and <span class="math" data-tex="\(B\)">\(B\)</span> is symmetric; so <span class="math" data-tex="\(R\)">\(R\)</span> is symmetric. The chain rule for the inverse map gives <span class="math" data-tex="\(\partial_{x_j}W_i=(\partial_lW_i)M_{lj}\)">\(\partial_{x_j}W_i=(\partial_lW_i)M_{lj}\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\operatorname{tr}\bigl((D_xW)^2\bigr)\\
+&amp;\quad=\operatorname{tr}\bigl((B+R)M(B+R)M\bigr)\\
+&amp;\quad=\operatorname{tr}(MBMB)+2\operatorname{tr}(MBMR)\\
+&amp;\qquad+\operatorname{tr}(MRMR).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\operatorname{tr}\bigl((D_xW)^2\bigr)\\
+&amp;\quad=\operatorname{tr}\bigl((B+R)M(B+R)M\bigr)\\
+&amp;\quad=\operatorname{tr}(MBMB)+2\operatorname{tr}(MBMR)\\
+&amp;\qquad+\operatorname{tr}(MRMR).
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(MBM=h\)">\(MBM=h\)</span>, the middle term is <span class="math" data-tex="\(2h_{al}R_{al}=2h_{al}\,\partial_k^*\partial_lP_{ak}\)">\(2h_{al}R_{al}=2h_{al}\,\partial_k^*\partial_lP_{ak}\)</span>, and by Lemma 2.1 (1) of the lesson on moment coordinates its mean is <span class="math" data-tex="\(2\,\mathbb E\,(\partial_kh_{al})(\partial_lP_{ak})\)">\(2\,\mathbb E\,(\partial_kh_{al})(\partial_lP_{ak})\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 4.2.</strong> Let <span class="math" data-tex="\(Q=h\tau h\)">\(Q=h\tau h\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\operatorname{tr}(MBHB)&amp;=\mathbb E\operatorname{tr}(MBMB)\\
+&amp;\quad-\mathbb E\,(\partial_dQ_{ij})\,M_{dk}C_{ijk}\\
+&amp;\quad-\mathbb E\,Q_{ij}\operatorname{tr}(MC_iMC_j).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\operatorname{tr}(MBHB)&amp;=\mathbb E\operatorname{tr}(MBMB)\\
+&amp;\quad-\mathbb E\,(\partial_dQ_{ij})\,M_{dk}C_{ijk}\\
+&amp;\quad-\mathbb E\,Q_{ij}\operatorname{tr}(MC_iMC_j).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(\operatorname{tr}(MBHB)=\operatorname{tr}\bigl((\tau H\tau)\,MBMBM\bigr)\)">\(\operatorname{tr}(MBHB)=\operatorname{tr}\bigl((\tau H\tau)\,MBMBM\bigr)\)</span> and <span class="math" data-tex="\(MBMBM=h\tau h=Q\)">\(MBMBM=h\tau h=Q\)</span>. So <span class="math" data-tex="\(\operatorname{tr}(MBHB)=Q_{ij}(\tau H\tau)_{ij}\)">\(\operatorname{tr}(MBHB)=Q_{ij}(\tau H\tau)_{ij}\)</span>. Insert Lemma 3.2. The term with <span class="math" data-tex="\(\tau_{ij}\)">\(\tau_{ij}\)</span> gives <span class="math" data-tex="\(\operatorname{tr}(Q\tau)=\operatorname{tr}(MBMB)\)">\(\operatorname{tr}(Q\tau)=\operatorname{tr}(MBMB)\)</span>. In the term with <span class="math" data-tex="\((\partial_d-x_d)=-\partial_d^*\)">\((\partial_d-x_d)=-\partial_d^*\)</span>, Lemma 2.1 (1) of the lesson on moment coordinates moves the derivative to <span class="math" data-tex="\(Q_{ij}\)">\(Q_{ij}\)</span>, which has compact support. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Subtracting, the terms <span class="math" data-tex="\(\mathbb E\operatorname{tr}(MBMB)\)">\(\mathbb E\operatorname{tr}(MBMB)\)</span> cancel. Let <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> be the difference of the two sides of the first inequality of Theorem 1.1,
+<span class="math math-display" data-tex="\[
+\Delta=\mathbb E\operatorname{tr}\bigl((D_xW)^2\bigr)-\mathbb E\operatorname{tr}(MBHB).
+\]">\[
+\Delta=\mathbb E\operatorname{tr}\bigl((D_xW)^2\bigr)-\mathbb E\operatorname{tr}(MBHB).
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\Delta=\mathbb E\operatorname{tr}(MRMR)+\mathbb E\,(T_1+T_2+T_3),
+\]">\[
+\Delta=\mathbb E\operatorname{tr}(MRMR)+\mathbb E\,(T_1+T_2+T_3),
+\]</span>
+with the three functions
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_1=2\,(\partial_kh_{al})(\partial_lP_{ak}),\\
+T_2=(\partial_dQ_{ij})\,M_{dk}C_{ijk},\\
+T_3=Q_{ij}\operatorname{tr}(MC_iMC_j).
+\end{gathered}
+\]">\[
+\begin{gathered}
+T_1=2\,(\partial_kh_{al})(\partial_lP_{ak}),\\
+T_2=(\partial_dQ_{ij})\,M_{dk}C_{ijk},\\
+T_3=Q_{ij}\operatorname{tr}(MC_iMC_j).
+\end{gathered}
+\]</span>
+The matrix <span class="math" data-tex="\(M^{1/2}RM^{1/2}\)">\(M^{1/2}RM^{1/2}\)</span> is symmetric and <span class="math" data-tex="\(\operatorname{tr}(MRMR)\)">\(\operatorname{tr}(MRMR)\)</span> is its squared norm, so the first term in this formula for <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is not negative. It remains to show that <span class="math" data-tex="\(T_1+T_2+T_3\ge0\)">\(T_1+T_2+T_3\ge0\)</span> at every point.</p>
+<h2 id="5-three-contractions">5. Three contractions</h2>
+<p>At a point, let <span class="math" data-tex="\(\tau^{1/2}\)">\(\tau^{1/2}\)</span> be the positive square root of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and <span class="math" data-tex="\(\tau^{-1/2}\)">\(\tau^{-1/2}\)</span> its inverse. Let <span class="math" data-tex="\(S_{abc}=f_{x_ax_bx_c}\)">\(S_{abc}=f_{x_ax_bx_c}\)</span>, and define the tensors
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\hat S_{ijk}=\tau^{1/2}_{ia}\tau^{1/2}_{jb}\tau^{1/2}_{kc}\,S_{abc},\\
+\hat J_{ijk}=(\tau^{1/2}h)_{iq}\,\tau^{-1/2}_{jr}\tau^{-1/2}_{ks}\,C_{qrs}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\hat S_{ijk}=\tau^{1/2}_{ia}\tau^{1/2}_{jb}\tau^{1/2}_{kc}\,S_{abc},\\
+\hat J_{ijk}=(\tau^{1/2}h)_{iq}\,\tau^{-1/2}_{jr}\tau^{-1/2}_{ks}\,C_{qrs}.
+\end{gathered}
+\]</span>
+<span class="math" data-tex="\(\hat S\)">\(\hat S\)</span> is symmetric in its three indices, and <span class="math" data-tex="\(\hat J\)">\(\hat J\)</span> is symmetric in its last two indices. For tensors with three indices let <span class="math" data-tex="\(\langle X,Y\rangle=X_{ijk}Y_{ijk}\)">\(\langle X,Y\rangle=X_{ijk}Y_{ijk}\)</span>, <span class="math" data-tex="\(\|X\|^2=\langle X,X\rangle\)">\(\|X\|^2=\langle X,X\rangle\)</span>, and <span class="math" data-tex="\(X^{(12)}_{ijk}=X_{jik}\)">\(X^{(12)}_{ijk}=X_{jik}\)</span>. If <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is the identity matrix at the point, then <span class="math" data-tex="\(\hat S=S\)">\(\hat S=S\)</span> and <span class="math" data-tex="\(\hat J_{ijk}=h_{iq}C_{qjk}\)">\(\hat J_{ijk}=h_{iq}C_{qjk}\)</span>.</p>
+<p><strong>Lemma 5.1.</strong> At every point,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_1&amp;=2\,\|\hat S\|^2+2\,\langle\hat S,\hat J\rangle,\\
+T_2&amp;=2\,\langle\hat S,\hat J\rangle+\langle\hat J,\hat J^{(12)}\rangle,\\
+T_3&amp;=\|\hat J\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+T_1&amp;=2\,\|\hat S\|^2+2\,\langle\hat S,\hat J\rangle,\\
+T_2&amp;=2\,\langle\hat S,\hat J\rangle+\langle\hat J,\hat J^{(12)}\rangle,\\
+T_3&amp;=\|\hat J\|^2 .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Inserting the definitions and using <span class="math" data-tex="\(\tau^{1/2}\tau^{1/2}=\tau\)">\(\tau^{1/2}\tau^{1/2}=\tau\)</span>, <span class="math" data-tex="\(\tau^{1/2}\tau^{-1/2}=I\)">\(\tau^{1/2}\tau^{-1/2}=I\)</span>, <span class="math" data-tex="\(\tau^{-1/2}\tau^{-1/2}=M\)">\(\tau^{-1/2}\tau^{-1/2}=M\)</span>, one finds
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\hat S\|^2&amp;=S_{abc}S_{a&#x27;b&#x27;c&#x27;}\,\tau_{aa&#x27;}\tau_{bb&#x27;}\tau_{cc&#x27;},\\
+\langle\hat S,\hat J\rangle&amp;=S_{abc}\,(\tau h)_{aq}\,C_{qbc},\\
+\langle\hat J,\hat J^{(12)}\rangle&amp;=h_{ia}C_{abd}\,h_{bj}C_{jik}\,M_{dk},\\
+\|\hat J\|^2&amp;=Q_{qq&#x27;}\,M_{rr&#x27;}M_{ss&#x27;}\,C_{qrs}C_{q&#x27;r&#x27;s&#x27;} ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\hat S\|^2&amp;=S_{abc}S_{a&#x27;b&#x27;c&#x27;}\,\tau_{aa&#x27;}\tau_{bb&#x27;}\tau_{cc&#x27;},\\
+\langle\hat S,\hat J\rangle&amp;=S_{abc}\,(\tau h)_{aq}\,C_{qbc},\\
+\langle\hat J,\hat J^{(12)}\rangle&amp;=h_{ia}C_{abd}\,h_{bj}C_{jik}\,M_{dk},\\
+\|\hat J\|^2&amp;=Q_{qq&#x27;}\,M_{rr&#x27;}M_{ss&#x27;}\,C_{qrs}C_{q&#x27;r&#x27;s&#x27;} ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(Q=h\tau h\)">\(Q=h\tau h\)</span>. Now compute the three functions with the chain rule.</p>
+<p>For <span class="math" data-tex="\(T_1\)">\(T_1\)</span>: <span class="math" data-tex="\(\partial_kh_{al}=S_{alm}\tau_{mk}\)">\(\partial_kh_{al}=S_{alm}\tau_{mk}\)</span> and <span class="math" data-tex="\(\partial_lP_{ak}=C_{ail}h_{ik}+\tau_{ai}S_{ikp}\tau_{pl}\)">\(\partial_lP_{ak}=C_{ail}h_{ik}+\tau_{ai}S_{ikp}\tau_{pl}\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tfrac12T_1&amp;=S_{alm}S_{ikp}\,\tau_{ai}\tau_{mk}\tau_{lp}\\
+&amp;\quad+S_{alm}\,(\tau h)_{mi}\,C_{ial}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tfrac12T_1&amp;=S_{alm}S_{ikp}\,\tau_{ai}\tau_{mk}\tau_{lp}\\
+&amp;\quad+S_{alm}\,(\tau h)_{mi}\,C_{ial}.
+\end{aligned}
+\]</span>
+By the symmetry of <span class="math" data-tex="\(S\)">\(S\)</span>, the first term is <span class="math" data-tex="\(\|\hat S\|^2\)">\(\|\hat S\|^2\)</span> and the second is <span class="math" data-tex="\(\langle\hat S,\hat J\rangle\)">\(\langle\hat S,\hat J\rangle\)</span>.</p>
+<p>For <span class="math" data-tex="\(T_2\)">\(T_2\)</span>: differentiating the three factors of <span class="math" data-tex="\(Q=h\tau h\)">\(Q=h\tau h\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_dQ_{ij}&amp;=S_{iap}\tau_{pd}\,(\tau h)_{aj}+h_{ia}C_{abd}h_{bj}\\
+&amp;\quad+(h\tau)_{ib}\,S_{bjp}\tau_{pd}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_dQ_{ij}&amp;=S_{iap}\tau_{pd}\,(\tau h)_{aj}+h_{ia}C_{abd}h_{bj}\\
+&amp;\quad+(h\tau)_{ib}\,S_{bjp}\tau_{pd}.
+\end{aligned}
+\]</span>
+Multiply by <span class="math" data-tex="\(M_{dk}C_{ijk}\)">\(M_{dk}C_{ijk}\)</span> and use <span class="math" data-tex="\(\tau_{pd}M_{dk}=\delta_{pk}\)">\(\tau_{pd}M_{dk}=\delta_{pk}\)</span>. The first and the third term give <span class="math" data-tex="\(S_{iak}(\tau h)_{aj}C_{ijk}\)">\(S_{iak}(\tau h)_{aj}C_{ijk}\)</span> and <span class="math" data-tex="\(S_{bjk}(\tau h)_{bi}C_{ijk}\)">\(S_{bjk}(\tau h)_{bi}C_{ijk}\)</span>, each equal to <span class="math" data-tex="\(\langle\hat S,\hat J\rangle\)">\(\langle\hat S,\hat J\rangle\)</span>. The second gives <span class="math" data-tex="\(h_{ia}C_{abd}h_{bj}C_{ijk}M_{dk}=\langle\hat J,\hat J^{(12)}\rangle\)">\(h_{ia}C_{abd}h_{bj}C_{ijk}M_{dk}=\langle\hat J,\hat J^{(12)}\rangle\)</span>.</p>
+<p>For <span class="math" data-tex="\(T_3\)">\(T_3\)</span>: <span class="math" data-tex="\(Q_{ij}\,M_{ab}C_{ibc}M_{cd}C_{jda}\)">\(Q_{ij}\,M_{ab}C_{ibc}M_{cd}C_{jda}\)</span> is the expression for <span class="math" data-tex="\(\|\hat J\|^2\)">\(\|\hat J\|^2\)</span>, after renaming the indices. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="6-a-sum-of-squares">6. A sum of squares</h2>
+<p><strong>Lemma 6.1.</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be a tensor with three indices that is symmetric in all of them, and <span class="math" data-tex="\(J\)">\(J\)</span> one that is symmetric in its last two indices. Let <span class="math" data-tex="\((\operatorname{Sym}J)_{ijk}=\tfrac13(J_{ijk}+J_{jik}+J_{kij})\)">\((\operatorname{Sym}J)_{ijk}=\tfrac13(J_{ijk}+J_{jik}+J_{kij})\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;2\|S\|^2+4\langle S,J\rangle+\|J\|^2+\langle J,J^{(12)}\rangle\\
+&amp;\quad=2\,\|S+\operatorname{Sym}J\|^2+\tfrac16\,\|J-J^{(12)}\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;2\|S\|^2+4\langle S,J\rangle+\|J\|^2+\langle J,J^{(12)}\rangle\\
+&amp;\quad=2\,\|S+\operatorname{Sym}J\|^2+\tfrac16\,\|J-J^{(12)}\|^2 .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(J&#x27;_{ijk}=J_{kij}\)">\(J&#x27;_{ijk}=J_{kij}\)</span>. Since <span class="math" data-tex="\(J\)">\(J\)</span> is symmetric in its last two indices, <span class="math" data-tex="\(\langle J,J&#x27;\rangle=J_{ijk}J_{kji}\)">\(\langle J,J&#x27;\rangle=J_{ijk}J_{kji}\)</span>, and renaming the indices and using the symmetry again shows <span class="math" data-tex="\(\langle J,J&#x27;\rangle=\langle J,J^{(12)}\rangle=\langle J^{(12)},J&#x27;\rangle\)">\(\langle J,J&#x27;\rangle=\langle J,J^{(12)}\rangle=\langle J^{(12)},J&#x27;\rangle\)</span>. The three tensors <span class="math" data-tex="\(J,J^{(12)},J&#x27;\)">\(J,J^{(12)},J&#x27;\)</span> have the same norm. So
+<span class="math math-display" data-tex="\[
+\|\operatorname{Sym}J\|^2=\tfrac19\bigl(3\|J\|^2+6\langle J,J^{(12)}\rangle\bigr),
+\]">\[
+\|\operatorname{Sym}J\|^2=\tfrac19\bigl(3\|J\|^2+6\langle J,J^{(12)}\rangle\bigr),
+\]</span>
+and <span class="math" data-tex="\(\langle S,\operatorname{Sym}J\rangle=\langle S,J\rangle\)">\(\langle S,\operatorname{Sym}J\rangle=\langle S,J\rangle\)</span> because <span class="math" data-tex="\(S\)">\(S\)</span> is symmetric. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;2\,\|S+\operatorname{Sym}J\|^2\\
+&amp;\quad=2\|S\|^2+4\langle S,J\rangle\\
+&amp;\qquad+\tfrac23\|J\|^2+\tfrac43\langle J,J^{(12)}\rangle,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;2\,\|S+\operatorname{Sym}J\|^2\\
+&amp;\quad=2\|S\|^2+4\langle S,J\rangle\\
+&amp;\qquad+\tfrac23\|J\|^2+\tfrac43\langle J,J^{(12)}\rangle,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\tfrac16\|J-J^{(12)}\|^2=\tfrac13\|J\|^2-\tfrac13\langle J,J^{(12)}\rangle\)">\(\tfrac16\|J-J^{(12)}\|^2=\tfrac13\|J\|^2-\tfrac13\langle J,J^{(12)}\rangle\)</span>. Add. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proof of Theorem 1.1.</strong> By Lemma 5.1, <span class="math" data-tex="\(T_1+T_2+T_3\)">\(T_1+T_2+T_3\)</span> is the left side of Lemma 6.1 for <span class="math" data-tex="\(\hat S\)">\(\hat S\)</span> and <span class="math" data-tex="\(\hat J\)">\(\hat J\)</span>; so it is a sum of two squares. By the formula for <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> of Section 4,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta&amp;=\mathbb E\,\bigl\|M^{1/2}RM^{1/2}\bigr\|^2\\
+&amp;\quad+2\,\mathbb E\,\bigl\|\hat S+\operatorname{Sym}\hat J\bigr\|^2\\
+&amp;\quad+\tfrac16\,\mathbb E\,\bigl\|\hat J-\hat J^{(12)}\bigr\|^2\ \ge\ 0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta&amp;=\mathbb E\,\bigl\|M^{1/2}RM^{1/2}\bigr\|^2\\
+&amp;\quad+2\,\mathbb E\,\bigl\|\hat S+\operatorname{Sym}\hat J\bigr\|^2\\
+&amp;\quad+\tfrac16\,\mathbb E\,\bigl\|\hat J-\hat J^{(12)}\bigr\|^2\ \ge\ 0 .
+\end{aligned}
+\]</span>
+The second inequality follows with Lemma 2.1. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The proof gives more than the inequality: the difference of the two sides is written as the mean of three squares. [OpenAI-L] obtains the three contractions by a linear change of the coordinates that makes <span class="math" data-tex="\(\tau\)">\(\tau\)</span> the identity at one point; the tensors <span class="math" data-tex="\(\hat S\)">\(\hat S\)</span> and <span class="math" data-tex="\(\hat J\)">\(\hat J\)</span> are the tensors <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(h_{iq}C_{qjk}\)">\(h_{iq}C_{qjk}\)</span> in those coordinates.</p>
+<p><strong>Example 6.2.</strong> For the Gaussian pair (<span class="math" data-tex="\(\tau=I\)">\(\tau=I\)</span>, <span class="math" data-tex="\(V=\tfrac12|x|^2\)">\(V=\tfrac12|x|^2\)</span>, <span class="math" data-tex="\(H=I\)">\(H=I\)</span>, <span class="math" data-tex="\(C=0\)">\(C=0\)</span>) and <span class="math" data-tex="\(f=x_1^3\)">\(f=x_1^3\)</span>, Example 4.2 of the lesson on moment coordinates gives <span class="math" data-tex="\(W=(6x_1^2-6,0,\dots,0)\)">\(W=(6x_1^2-6,0,\dots,0)\)</span> and <span class="math" data-tex="\(B=D^2f\)">\(B=D^2f\)</span> with the single entry <span class="math" data-tex="\(6x_1\)">\(6x_1\)</span>. Then <span class="math" data-tex="\(D_xW\)">\(D_xW\)</span> has the single entry <span class="math" data-tex="\(12x_1\)">\(12x_1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E\operatorname{tr}((D_xW)^2)=144,\\
+\mathbb E\operatorname{tr}(MBHB)=36 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E\operatorname{tr}((D_xW)^2)=144,\\
+\mathbb E\operatorname{tr}(MBHB)=36 .
+\end{gathered}
+\]</span>
+The three squares: <span class="math" data-tex="\(R=D_zW-B\)">\(R=D_zW-B\)</span> has the entry <span class="math" data-tex="\(6x_1\)">\(6x_1\)</span>, with <span class="math" data-tex="\(\mathbb E\|R\|^2=36\)">\(\mathbb E\|R\|^2=36\)</span>; <span class="math" data-tex="\(\hat S\)">\(\hat S\)</span> has the entry <span class="math" data-tex="\(6\)">\(6\)</span>, so <span class="math" data-tex="\(2\|\hat S\|^2=72\)">\(2\|\hat S\|^2=72\)</span>; and <span class="math" data-tex="\(\hat J=0\)">\(\hat J=0\)</span>. Indeed <span class="math" data-tex="\(144-36=36+72\)">\(144-36=36+72\)</span>. Also <span class="math" data-tex="\(u=6x_1^3-18x_1\)">\(u=6x_1^3-18x_1\)</span>, <span class="math" data-tex="\(\mathbb Eu^2=36\cdot15-216\cdot3+324=216\)">\(\mathbb Eu^2=36\cdot15-216\cdot3+324=216\)</span>, and <span class="math" data-tex="\(\mathbb EW^THW=\mathbb E(6x_1^2-6)^2=72\)">\(\mathbb EW^THW=\mathbb E(6x_1^2-6)^2=72\)</span>: Lemma 2.1 reads <span class="math" data-tex="\(216=72+144\)">\(216=72+144\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Prove Lemma 6.1 directly for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, where all tensors are numbers.</p>
+<p><strong>7.2.</strong> For the Gaussian pair let <span class="math" data-tex="\(f\)">\(f\)</span> be a polynomial with <span class="math" data-tex="\(Af=kf\)">\(Af=kf\)</span> for an integer <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. Show that <span class="math" data-tex="\(\mathbb E\operatorname{tr}((D_xW)^2)=(k-1)^2\,\mathbb E\|D^2f\|^2\)">\(\mathbb E\operatorname{tr}((D_xW)^2)=(k-1)^2\,\mathbb E\|D^2f\|^2\)</span> and <span class="math" data-tex="\(\mathbb E\operatorname{tr}(MBHB)=\mathbb E\|D^2f\|^2\)">\(\mathbb E\operatorname{tr}(MBHB)=\mathbb E\|D^2f\|^2\)</span>. For which <span class="math" data-tex="\(k\)">\(k\)</span> is the first inequality of Theorem 1.1 an equality?</p>
+<p><strong>7.3.</strong> Show that <span class="math" data-tex="\(\operatorname{tr}(MBHB)\ge0\)">\(\operatorname{tr}(MBHB)\ge0\)</span> at every point where <span class="math" data-tex="\(H\)">\(H\)</span> is positive semidefinite, and that <span class="math" data-tex="\(\operatorname{tr}(MBH_1B)\le\operatorname{tr}(MBH_2B)\)">\(\operatorname{tr}(MBH_1B)\le\operatorname{tr}(MBH_2B)\)</span> if <span class="math" data-tex="\(H_2-H_1\)">\(H_2-H_1\)</span> is positive semidefinite.</p>
+<p><strong>7.4.</strong> Let <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Write <span class="math" data-tex="\(T_1\)">\(T_1\)</span>, <span class="math" data-tex="\(T_2\)">\(T_2\)</span>, <span class="math" data-tex="\(T_3\)">\(T_3\)</span> in terms of <span class="math" data-tex="\(\tau=\varphi&#x27;&#x27;\)">\(\tau=\varphi&#x27;&#x27;\)</span>, <span class="math" data-tex="\(C=\varphi&#x27;&#x27;&#x27;\)">\(C=\varphi&#x27;&#x27;&#x27;\)</span>, <span class="math" data-tex="\(h=f&#x27;&#x27;\)">\(h=f&#x27;&#x27;\)</span> and <span class="math" data-tex="\(S=f&#x27;&#x27;&#x27;\)">\(S=f&#x27;&#x27;&#x27;\)</span>, and check Lemma 5.1 and the sum of squares.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> For numbers, <span class="math" data-tex="\(J^{(12)}=J\)">\(J^{(12)}=J\)</span> and <span class="math" data-tex="\(\operatorname{Sym}J=J\)">\(\operatorname{Sym}J=J\)</span>. The left side is <span class="math" data-tex="\(2S^2+4SJ+2J^2=2(S+J)^2\)">\(2S^2+4SJ+2J^2=2(S+J)^2\)</span>, and the right side is <span class="math" data-tex="\(2(S+J)^2+0\)">\(2(S+J)^2+0\)</span>.</p>
+<p><strong>7.2.</strong> Here <span class="math" data-tex="\(W=\nabla(Af-f)=(k-1)\nabla f\)">\(W=\nabla(Af-f)=(k-1)\nabla f\)</span>, so <span class="math" data-tex="\(D_xW=(k-1)D^2f\)">\(D_xW=(k-1)D^2f\)</span>, a symmetric matrix, and <span class="math" data-tex="\(\operatorname{tr}((D_xW)^2)=(k-1)^2\|D^2f\|^2\)">\(\operatorname{tr}((D_xW)^2)=(k-1)^2\|D^2f\|^2\)</span>. And <span class="math" data-tex="\(M=H=I\)">\(M=H=I\)</span>, <span class="math" data-tex="\(B=D^2f\)">\(B=D^2f\)</span>. The two sides are equal exactly if <span class="math" data-tex="\(k=2\)">\(k=2\)</span> or <span class="math" data-tex="\(D^2f=0\)">\(D^2f=0\)</span>. (For polynomials and the Gaussian measure the integrations by parts of this lesson are valid without compact support.)</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(G=H^{1/2}BM^{1/2}\)">\(G=H^{1/2}BM^{1/2}\)</span>. Then <span class="math" data-tex="\(\operatorname{tr}(MBHB)\)">\(\operatorname{tr}(MBHB)\)</span> is <span class="math" data-tex="\(\operatorname{tr}(M^{1/2}BH^{1/2}\cdot H^{1/2}BM^{1/2})\)">\(\operatorname{tr}(M^{1/2}BH^{1/2}\cdot H^{1/2}BM^{1/2})\)</span>, which is <span class="math" data-tex="\(\operatorname{tr}(G^TG)=\|G\|^2\ge0\)">\(\operatorname{tr}(G^TG)=\|G\|^2\ge0\)</span>. The expression is linear in <span class="math" data-tex="\(H\)">\(H\)</span>, so the difference for <span class="math" data-tex="\(H_2\)">\(H_2\)</span> and <span class="math" data-tex="\(H_1\)">\(H_1\)</span> is the expression for <span class="math" data-tex="\(H_2-H_1\)">\(H_2-H_1\)</span>.</p>
+<p><strong>7.4.</strong> <span class="math" data-tex="\(P=\tau h\)">\(P=\tau h\)</span> and <span class="math" data-tex="\(Q=\tau h^2\)">\(Q=\tau h^2\)</span>. <span class="math" data-tex="\(\partial h=S\tau\)">\(\partial h=S\tau\)</span>, <span class="math" data-tex="\(\partial P=Ch+\tau^2S\)">\(\partial P=Ch+\tau^2S\)</span>, <span class="math" data-tex="\(\partial Q=Ch^2+2\tau^2hS\)">\(\partial Q=Ch^2+2\tau^2hS\)</span>. So <span class="math" data-tex="\(T_1=2S\tau(Ch+\tau^2S)\)">\(T_1=2S\tau(Ch+\tau^2S)\)</span>, which is <span class="math" data-tex="\(2\tau^3S^2+2\tau hCS\)">\(2\tau^3S^2+2\tau hCS\)</span>; <span class="math" data-tex="\(T_2=(Ch^2+2\tau^2hS)C/\tau\)">\(T_2=(Ch^2+2\tau^2hS)C/\tau\)</span>, which is <span class="math" data-tex="\(C^2h^2/\tau+2\tau hCS\)">\(C^2h^2/\tau+2\tau hCS\)</span>; and <span class="math" data-tex="\(T_3=\tau h^2C^2/\tau^2=C^2h^2/\tau\)">\(T_3=\tau h^2C^2/\tau^2=C^2h^2/\tau\)</span>. With <span class="math" data-tex="\(\hat S=\tau^{3/2}S\)">\(\hat S=\tau^{3/2}S\)</span> and <span class="math" data-tex="\(\hat J=\tau^{-1/2}hC\)">\(\hat J=\tau^{-1/2}hC\)</span>: <span class="math" data-tex="\(\|\hat S\|^2=\tau^3S^2\)">\(\|\hat S\|^2=\tau^3S^2\)</span>, <span class="math" data-tex="\(\hat S\hat J=\tau hCS\)">\(\hat S\hat J=\tau hCS\)</span>, <span class="math" data-tex="\(\hat J^2=h^2C^2/\tau\)">\(\hat J^2=h^2C^2/\tau\)</span>, in agreement with Lemma 5.1. The sum of the three is <span class="math" data-tex="\(2\tau^3S^2+4\tau hCS+2h^2C^2/\tau\)">\(2\tau^3S^2+4\tau hCS+2h^2C^2/\tau\)</span>, and this is <span class="math" data-tex="\(2(\hat S+\hat J)^2\)">\(2(\hat S+\hat J)^2\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-L] OpenAI, <em>The logarithmic Brunn-Minkowski conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Section 6. https://github.com/openai/math/tree/main/preprints/The-logarithmic-Brunn-Minkowski-conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,0 +1,196 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The variance bound and the inequality</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The logarithmic Brunn-Minkowski inequality)</a><a href="density-of-the-even-tests.html">Previous lesson</a><a href="src/the-variance-bound-and-the-inequality.md">Editable source</a></nav><main><article><h1 id="the-variance-bound-and-the-inequality">The variance bound and the inequality</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the variance bound for the soft polytopes,
+<span class="math math-display" data-tex="\[
+\operatorname{Var}_\mu\Bigl(\sum_ib_i\psi_i\Bigr)\le\sum_ib_i^2\,\mathbb E_\mu\psi_i ,
+\]">\[
+\operatorname{Var}_\mu\Bigl(\sum_ib_i\psi_i\Bigr)\le\sum_ib_i^2\,\mathbb E_\mu\psi_i ,
+\]</span>
+from the tensor estimate and the density of the test functions, and with it the logarithmic Brunn-Minkowski inequality. The proof is that of [OpenAI-L, Section 7]. It uses the two statements from the literature that the course names as hypotheses: (M), the existence of moment coordinates with a bounded Hessian, and (ER), interior elliptic regularity. For the exponent <span class="math" data-tex="\(q=2\)">\(q=2\)</span> the lesson also gives a short proof of the variance bound that needs no hypothesis.</p>
+<ul>
+<li>The functions <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> in moment coordinates (Lemma 2.1).</li>
+<li>The bound on the test functions, by two inequalities of Cauchy and Schwarz (Proposition 3.1).</li>
+<li>The variance bound (Theorem 4.1) and the inequality (Theorem 5.1).</li>
+<li>The case <span class="math" data-tex="\(q=2\)">\(q=2\)</span> (Proposition 6.1).</li>
+</ul>
+<p>The lesson uses all the earlier lessons of the course: <a href="wulff-bodies-and-the-reduction-to-a-variance-bound.html">Wulff bodies and the reduction to a variance bound</a>, <a href="moment-coordinates-and-their-adjoints.html">Moment coordinates and their adjoints</a>, <a href="the-tensor-estimate.html">The tensor estimate</a> and <a href="density-of-the-even-tests.html">Density of the even tests</a>.</p>
+<h2 id="1-the-setting">1. The setting</h2>
+<p>Let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, let <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span> be an even integer, <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, <span class="math" data-tex="\(p_1,\dots,p_N\)">\(p_1,\dots,p_N\)</span> nonzero vectors and <span class="math" data-tex="\(h_1,\dots,h_N&gt;0\)">\(h_1,\dots,h_N&gt;0\)</span>. As in the first lesson,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\psi_i(x)=\Bigl(\frac{\langle p_i,x\rangle}{h_i}\Bigr)^q,\\
+V=\frac\varepsilon2|x|^2+\sum_i\psi_i,\\
+d\mu=Z^{-1}e^{-V}dx,\qquad a_i=\mathbb E\,\psi_i .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\psi_i(x)=\Bigl(\frac{\langle p_i,x\rangle}{h_i}\Bigr)^q,\\
+V=\frac\varepsilon2|x|^2+\sum_i\psi_i,\\
+d\mu=Z^{-1}e^{-V}dx,\qquad a_i=\mathbb E\,\psi_i .
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(H_i=D^2\psi_i\)">\(H_i=D^2\psi_i\)</span> and <span class="math" data-tex="\(H=D^2V=\varepsilon I+\sum_iH_i\)">\(H=D^2V=\varepsilon I+\sum_iH_i\)</span>. With the linear function <span class="math" data-tex="\(\ell_i=\langle p_i,x\rangle/h_i\)">\(\ell_i=\langle p_i,x\rangle/h_i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\nabla\psi_i=q\,\ell_i^{q-1}\,\frac{p_i}{h_i},\\
+H_i=q(q-1)\,\ell_i^{q-2}\,\frac{p_ip_i^T}{h_i^2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\nabla\psi_i=q\,\ell_i^{q-1}\,\frac{p_i}{h_i},\\
+H_i=q(q-1)\,\ell_i^{q-2}\,\frac{p_ip_i^T}{h_i^2}.
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(q-2\)">\(q-2\)</span> is even, <span class="math" data-tex="\(H_i\)">\(H_i\)</span> is positive semidefinite, and <span class="math" data-tex="\(H\ge\varepsilon I\)">\(H\ge\varepsilon I\)</span>. The function <span class="math" data-tex="\(V\)">\(V\)</span> is smooth and even. Every polynomial is integrable for <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, because <span class="math" data-tex="\(e^{-V}\le e^{-\varepsilon|x|^2/2}\)">\(e^{-V}\le e^{-\varepsilon|x|^2/2}\)</span>; and <span class="math" data-tex="\(a_i&gt;0\)">\(a_i&gt;0\)</span>. The functions <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> are homogeneous of the degree <span class="math" data-tex="\(q\)">\(q\)</span>, so
+<span class="math math-display" data-tex="\[
+x\cdot\nabla\psi_i=q\,\psi_i,\qquad H_i\,x=(q-1)\,\nabla\psi_i .
+\]">\[
+x\cdot\nabla\psi_i=q\,\psi_i,\qquad H_i\,x=(q-1)\,\nabla\psi_i .
+\]</span>
+These two formulas are called the homogeneity relations below.</p>
+<p>Assume the hypothesis (M) of the lesson on moment coordinates. It gives an even function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> such that <span class="math" data-tex="\((V,\varphi)\)">\((V,\varphi)\)</span> is a moment pair with <span class="math" data-tex="\(\tau=D^2\varphi\le\tfrac4\varepsilon I\)">\(\tau=D^2\varphi\le\tfrac4\varepsilon I\)</span>. We use the notation of that lesson: <span class="math" data-tex="\(M=\tau^{-1}\)">\(M=\tau^{-1}\)</span>, the operator <span class="math" data-tex="\(A\)">\(A\)</span>, and for a smooth <span class="math" data-tex="\(f\)">\(f\)</span> with compact support the fields <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span> and <span class="math" data-tex="\(u=A(A-1)f\)">\(u=A(A-1)f\)</span>. Expectations are means for <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<h2 id="2-the-functions-psi_i-in-moment-coordinates">2. The functions <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> in moment coordinates</h2>
+<p><strong>Lemma 2.1.</strong> <span class="math" data-tex="\(\mathbb E\operatorname{tr}(\tau H_i)=\mathbb E\,x\cdot\nabla\psi_i=q\,a_i\)">\(\mathbb E\operatorname{tr}(\tau H_i)=\mathbb E\,x\cdot\nabla\psi_i=q\,a_i\)</span>.</p>
+<p><strong>Proof.</strong> The second equality is the first homogeneity relation. For the first, let <span class="math" data-tex="\(\eta_r\)">\(\eta_r\)</span> be the cutoff functions of the lesson on the density of the even tests. By Lemma 2.1 (4) of the lesson on moment coordinates, applied to <span class="math" data-tex="\(g=\eta_r\,\partial_{x_j}\psi_i\)">\(g=\eta_r\,\partial_{x_j}\psi_i\)</span> and summed over <span class="math" data-tex="\(j\)">\(j\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,\eta_r\,x\cdot\nabla\psi_i&amp;=\mathbb E\,\eta_r\operatorname{tr}(\tau H_i)\\
+&amp;\quad+\mathbb E\,\nabla\psi_i\cdot\tau\nabla\eta_r .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,\eta_r\,x\cdot\nabla\psi_i&amp;=\mathbb E\,\eta_r\operatorname{tr}(\tau H_i)\\
+&amp;\quad+\mathbb E\,\nabla\psi_i\cdot\tau\nabla\eta_r .
+\end{aligned}
+\]</span>
+The last term is at most <span class="math" data-tex="\(\tfrac4\varepsilon\tfrac{c_1}r\,\mathbb E|\nabla\psi_i|\)">\(\tfrac4\varepsilon\tfrac{c_1}r\,\mathbb E|\nabla\psi_i|\)</span> in absolute value and tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>. In the other two terms the integrands are bounded by integrable functions, since <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is bounded and <span class="math" data-tex="\(H_i\)">\(H_i\)</span>, <span class="math" data-tex="\(x\cdot\nabla\psi_i\)">\(x\cdot\nabla\psi_i\)</span> are polynomials; so they converge to the means without <span class="math" data-tex="\(\eta_r\)">\(\eta_r\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Write <span class="math" data-tex="\(m_i=\mathbb E\operatorname{tr}(\tau H_i)=q\,a_i\)">\(m_i=\mathbb E\operatorname{tr}(\tau H_i)=q\,a_i\)</span>.</p>
+<h2 id="3-the-bound-on-the-test-functions">3. The bound on the test functions</h2>
+<p><strong>Proposition 3.1.</strong> Assume (M). Let <span class="math" data-tex="\(f\)">\(f\)</span> be smooth with compact support, <span class="math" data-tex="\(u=A(A-1)f\)">\(u=A(A-1)f\)</span>, and <span class="math" data-tex="\(d_i=\mathbb E\,u\,\psi_i\)">\(d_i=\mathbb E\,u\,\psi_i\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^N\frac{d_i^2}{a_i}\ \le\ \mathbb E\,u^2 .
+\]">\[
+\sum_{i=1}^N\frac{d_i^2}{a_i}\ \le\ \mathbb E\,u^2 .
+\]</span></p>
+<p><strong>Proof.</strong> By Proposition 4.1 (2) of the lesson on moment coordinates with <span class="math" data-tex="\(F=\psi_i\)">\(F=\psi_i\)</span>,
+<span class="math math-display" data-tex="\[
+d_i=\mathbb E\,W\cdot\nabla\psi_i=\mathbb E\operatorname{tr}(BH_i).
+\]">\[
+d_i=\mathbb E\,W\cdot\nabla\psi_i=\mathbb E\operatorname{tr}(BH_i).
+\]</span>
+<em>First inequality.</em> Let <span class="math" data-tex="\(G_1=H_i^{1/2}\tau^{1/2}\)">\(G_1=H_i^{1/2}\tau^{1/2}\)</span> and <span class="math" data-tex="\(G_2=H_i^{1/2}BM^{1/2}\)">\(G_2=H_i^{1/2}BM^{1/2}\)</span>. Then <span class="math" data-tex="\(\operatorname{tr}(G_1^TG_2)=\operatorname{tr}(H_iB)\)">\(\operatorname{tr}(G_1^TG_2)=\operatorname{tr}(H_iB)\)</span>, <span class="math" data-tex="\(\|G_1\|^2=\operatorname{tr}(\tau H_i)\)">\(\|G_1\|^2=\operatorname{tr}(\tau H_i)\)</span> and <span class="math" data-tex="\(\|G_2\|^2=\operatorname{tr}(MBH_iB)\)">\(\|G_2\|^2=\operatorname{tr}(MBH_iB)\)</span>. The inequality of Cauchy and Schwarz, for the trace and for the mean, gives
+<span class="math math-display" data-tex="\[
+d_i^2\ \le\ m_i\;\mathbb E\operatorname{tr}(MBH_iB).
+\]">\[
+d_i^2\ \le\ m_i\;\mathbb E\operatorname{tr}(MBH_iB).
+\]</span>
+<em>Second inequality.</em> By the homogeneity relations and Lemma 2.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,x^TH_ix&amp;=(q-1)\,\mathbb E\,x\cdot\nabla\psi_i\\
+&amp;=(q-1)\,m_i,\\
+\mathbb E\,x^TH_iW&amp;=(q-1)\,\mathbb E\,\nabla\psi_i\cdot W\\
+&amp;=(q-1)\,d_i .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,x^TH_ix&amp;=(q-1)\,\mathbb E\,x\cdot\nabla\psi_i\\
+&amp;=(q-1)\,m_i,\\
+\mathbb E\,x^TH_iW&amp;=(q-1)\,\mathbb E\,\nabla\psi_i\cdot W\\
+&amp;=(q-1)\,d_i .
+\end{aligned}
+\]</span>
+The form <span class="math" data-tex="\((X,Y)\mapsto\mathbb E\,X^TH_iY\)">\((X,Y)\mapsto\mathbb E\,X^TH_iY\)</span> is positive semidefinite, so <span class="math" data-tex="\((\mathbb E\,x^TH_iW)^2\le\mathbb E\,x^TH_ix\cdot\mathbb E\,W^TH_iW\)">\((\mathbb E\,x^TH_iW)^2\le\mathbb E\,x^TH_ix\cdot\mathbb E\,W^TH_iW\)</span>, that is,
+<span class="math math-display" data-tex="\[
+\mathbb E\,W^TH_iW\ \ge\ (q-1)\,\frac{d_i^2}{m_i}.
+\]">\[
+\mathbb E\,W^TH_iW\ \ge\ (q-1)\,\frac{d_i^2}{m_i}.
+\]</span>
+<em>The tensor estimate.</em> By Theorem 1.1 of the lesson on the tensor estimate, <span class="math" data-tex="\(\mathbb E\,u^2\ge\mathbb E\operatorname{tr}(MBHB)+\mathbb E\,W^THW\)">\(\mathbb E\,u^2\ge\mathbb E\operatorname{tr}(MBHB)+\mathbb E\,W^THW\)</span>. Both terms are linear in <span class="math" data-tex="\(H=\varepsilon I+\sum_iH_i\)">\(H=\varepsilon I+\sum_iH_i\)</span>, and the part of <span class="math" data-tex="\(\varepsilon I\)">\(\varepsilon I\)</span> is not negative: <span class="math" data-tex="\(\operatorname{tr}(MB^2)=\|BM^{1/2}\|^2\)">\(\operatorname{tr}(MB^2)=\|BM^{1/2}\|^2\)</span> and <span class="math" data-tex="\(W^TW\ge0\)">\(W^TW\ge0\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,u^2&amp;\ge\sum_i\mathbb E\operatorname{tr}(MBH_iB)\\
+&amp;\quad+\sum_i\mathbb E\,W^TH_iW\\
+&amp;\ge\sum_i\Bigl(\frac{d_i^2}{m_i}+(q-1)\frac{d_i^2}{m_i}\Bigr)\\
+&amp;=\sum_i\frac{q\,d_i^2}{m_i}=\sum_i\frac{d_i^2}{a_i}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,u^2&amp;\ge\sum_i\mathbb E\operatorname{tr}(MBH_iB)\\
+&amp;\quad+\sum_i\mathbb E\,W^TH_iW\\
+&amp;\ge\sum_i\Bigl(\frac{d_i^2}{m_i}+(q-1)\frac{d_i^2}{m_i}\Bigr)\\
+&amp;=\sum_i\frac{q\,d_i^2}{m_i}=\sum_i\frac{d_i^2}{a_i}.
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The two inequalities bound the same number <span class="math" data-tex="\(d_i\)">\(d_i\)</span> in two ways, through the second derivatives of <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> and through the first. Their sum gives the factor <span class="math" data-tex="\(q\)">\(q\)</span>, which is exactly the factor between <span class="math" data-tex="\(m_i\)">\(m_i\)</span> and <span class="math" data-tex="\(a_i\)">\(a_i\)</span>.</p>
+<h2 id="4-the-variance-bound">4. The variance bound</h2>
+<p><strong>Theorem 4.1.</strong> Assume (M) and (ER). Then the variance bound holds in every dimension <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>: for all real <span class="math" data-tex="\(b_1,\dots,b_N\)">\(b_1,\dots,b_N\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Var}_\mu\Bigl(\sum_{i=1}^Nb_i\psi_i\Bigr)\ \le\ \sum_{i=1}^Nb_i^2\,\mathbb E_\mu\psi_i .
+\]">\[
+\operatorname{Var}_\mu\Bigl(\sum_{i=1}^Nb_i\psi_i\Bigr)\ \le\ \sum_{i=1}^Nb_i^2\,\mathbb E_\mu\psi_i .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(u\in L^2(\mu)\)">\(u\in L^2(\mu)\)</span> be even with <span class="math" data-tex="\(\mathbb E\,u=0\)">\(\mathbb E\,u=0\)</span>. By Theorem 1.1 of the lesson on the density of the even tests, with <span class="math" data-tex="\(\Lambda=4/\varepsilon\)">\(\Lambda=4/\varepsilon\)</span>, there are even smooth functions <span class="math" data-tex="\(f_m\)">\(f_m\)</span> with compact support such that <span class="math" data-tex="\(u_m=A(A-1)f_m\to u\)">\(u_m=A(A-1)f_m\to u\)</span> in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>. The functions <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> are in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>, so <span class="math" data-tex="\(\mathbb E\,u_m\psi_i\to\mathbb E\,u\,\psi_i\)">\(\mathbb E\,u_m\psi_i\to\mathbb E\,u\,\psi_i\)</span>, and Proposition 3.1 passes to the limit:
+<span class="math math-display" data-tex="\[
+\sum_i\frac{(\mathbb E\,u\,\psi_i)^2}{a_i}\ \le\ \mathbb E\,u^2 .
+\]">\[
+\sum_i\frac{(\mathbb E\,u\,\psi_i)^2}{a_i}\ \le\ \mathbb E\,u^2 .
+\]</span>
+Now let <span class="math" data-tex="\(F=\sum_ib_i\psi_i\)">\(F=\sum_ib_i\psi_i\)</span> and <span class="math" data-tex="\(u=F-\mathbb E\,F\)">\(u=F-\mathbb E\,F\)</span>. This function is even, because <span class="math" data-tex="\(q\)">\(q\)</span> is even, and it has the mean <span class="math" data-tex="\(0\)">\(0\)</span>. With <span class="math" data-tex="\(d_i=\mathbb E\,u\,\psi_i\)">\(d_i=\mathbb E\,u\,\psi_i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,u^2&amp;=\mathbb E\,u\,F=\sum_ib_id_i\\
+&amp;\le\Bigl(\sum_ib_i^2a_i\Bigr)^{1/2}\Bigl(\sum_i\frac{d_i^2}{a_i}\Bigr)^{1/2}\\
+&amp;\le\Bigl(\sum_ib_i^2a_i\Bigr)^{1/2}\bigl(\mathbb E\,u^2\bigr)^{1/2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,u^2&amp;=\mathbb E\,u\,F=\sum_ib_id_i\\
+&amp;\le\Bigl(\sum_ib_i^2a_i\Bigr)^{1/2}\Bigl(\sum_i\frac{d_i^2}{a_i}\Bigr)^{1/2}\\
+&amp;\le\Bigl(\sum_ib_i^2a_i\Bigr)^{1/2}\bigl(\mathbb E\,u^2\bigr)^{1/2}.
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(\mathbb E\,u^2\le\sum_ib_i^2a_i\)">\(\mathbb E\,u^2\le\sum_ib_i^2a_i\)</span>, and <span class="math" data-tex="\(\mathbb E\,u^2\)">\(\mathbb E\,u^2\)</span> is the variance of <span class="math" data-tex="\(F\)">\(F\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-the-inequality">5. The inequality</h2>
+<p><strong>Theorem 5.1.</strong> Assume (M) and (ER). Then for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, all convex bodies <span class="math" data-tex="\(K=-K\)">\(K=-K\)</span>, <span class="math" data-tex="\(L=-L\)">\(L=-L\)</span> in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> and all <span class="math" data-tex="\(0\le\lambda\le1\)">\(0\le\lambda\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\Bigl|\mathcal W\bigl[h_K^{1-\lambda}h_L^\lambda\bigr]\Bigr|\ \ge\ |K|^{1-\lambda}\,|L|^\lambda ,
+\]">\[
+\Bigl|\mathcal W\bigl[h_K^{1-\lambda}h_L^\lambda\bigr]\Bigr|\ \ge\ |K|^{1-\lambda}\,|L|^\lambda ,
+\]</span>
+and for <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span> the additive inequality of Corollary 6.1 of the first lesson holds.</p>
+<p><strong>Proof.</strong> Theorem 4.1, and Theorem 2.2 and Corollary 6.1 of the lesson on Wulff bodies. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>What the course proves and what it assumes: the reduction to the variance bound, the identities in moment coordinates, the tensor estimate, the density argument and the two inequalities of this lesson are proved in the course. The existence of the moment coordinates with the bound <span class="math" data-tex="\(\tau\le4/\varepsilon\)">\(\tau\le4/\varepsilon\)</span>, and the smoothness of weak solutions of an elliptic equation of order four, are taken from the literature, as in [OpenAI-L].</p>
+<p>[OpenAI-L, Section 8.2] also deduces the same inequality for every even log-concave measure in place of the volume, and the statement that <span class="math" data-tex="\(t\mapsto\mu(e^tK)\)">\(t\mapsto\mu(e^tK)\)</span> is log-concave for such a measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and a symmetric convex body <span class="math" data-tex="\(K\)">\(K\)</span>. This uses a theorem of C. Saroglou and a theorem of C. Borell and is not part of the course.</p>
+<h2 id="6-the-exponent-2">6. The exponent 2</h2>
+<p>For <span class="math" data-tex="\(q=2\)">\(q=2\)</span> the measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is Gaussian, and the variance bound can be proved directly.</p>
+<p><strong>Proposition 6.1.</strong> The variance bound holds for <span class="math" data-tex="\(q=2\)">\(q=2\)</span> in every dimension <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, without any hypothesis.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\alpha_i=p_i/h_i\)">\(\alpha_i=p_i/h_i\)</span>, so <span class="math" data-tex="\(\psi_i=\langle\alpha_i,x\rangle^2\)">\(\psi_i=\langle\alpha_i,x\rangle^2\)</span> and <span class="math" data-tex="\(V=\tfrac12x^T\Sigma^{-1}x\)">\(V=\tfrac12x^T\Sigma^{-1}x\)</span> with
+<span class="math math-display" data-tex="\[
+\Sigma^{-1}=\varepsilon I+2\sum_i\alpha_i\alpha_i^T .
+\]">\[
+\Sigma^{-1}=\varepsilon I+2\sum_i\alpha_i\alpha_i^T .
+\]</span>
+So <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the centered Gaussian measure with the covariance matrix <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>. For two linear functions, <span class="math" data-tex="\(\mathbb E\,\langle\alpha,x\rangle\langle\beta,x\rangle=\alpha^T\Sigma\beta\)">\(\mathbb E\,\langle\alpha,x\rangle\langle\beta,x\rangle=\alpha^T\Sigma\beta\)</span>, and by Exercise 7.1 the covariance of their squares is <span class="math" data-tex="\(2(\alpha^T\Sigma\beta)^2\)">\(2(\alpha^T\Sigma\beta)^2\)</span>. Let <span class="math" data-tex="\(g_i=\Sigma^{1/2}\alpha_i\)">\(g_i=\Sigma^{1/2}\alpha_i\)</span> and <span class="math" data-tex="\(\Gamma_{ij}=\langle g_i,g_j\rangle\)">\(\Gamma_{ij}=\langle g_i,g_j\rangle\)</span>. Then <span class="math" data-tex="\(a_i=\Gamma_{ii}\)">\(a_i=\Gamma_{ii}\)</span>, the covariance matrix of the <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> has the entries <span class="math" data-tex="\(2\Gamma_{ij}^2\)">\(2\Gamma_{ij}^2\)</span>, and the variance bound says that the matrix with the entries
+<span class="math math-display" data-tex="\[
+\Gamma_{ii}\,\delta_{ij}-2\,\Gamma_{ij}^2
+\]">\[
+\Gamma_{ii}\,\delta_{ij}-2\,\Gamma_{ij}^2
+\]</span>
+is positive semidefinite. Multiply the formula for <span class="math" data-tex="\(\Sigma^{-1}\)">\(\Sigma^{-1}\)</span> from both sides by <span class="math" data-tex="\(\Sigma^{1/2}\)">\(\Sigma^{1/2}\)</span>: <span class="math" data-tex="\(I=\varepsilon\Sigma+2\sum_ig_ig_i^T\)">\(I=\varepsilon\Sigma+2\sum_ig_ig_i^T\)</span>. So <span class="math" data-tex="\(2\sum_ig_ig_i^T\le I\)">\(2\sum_ig_ig_i^T\le I\)</span>. If <span class="math" data-tex="\(\mathsf G\)">\(\mathsf G\)</span> is the matrix with the columns <span class="math" data-tex="\(g_i\)">\(g_i\)</span>, this says <span class="math" data-tex="\(2\mathsf G\mathsf G^T\le I\)">\(2\mathsf G\mathsf G^T\le I\)</span>, and then also <span class="math" data-tex="\(2\mathsf G^T\mathsf G=2\Gamma\le I\)">\(2\mathsf G^T\mathsf G=2\Gamma\le I\)</span>, because <span class="math" data-tex="\(\mathsf G\mathsf G^T\)">\(\mathsf G\mathsf G^T\)</span> and <span class="math" data-tex="\(\mathsf G^T\mathsf G\)">\(\mathsf G^T\mathsf G\)</span> have the same eigenvalues different from <span class="math" data-tex="\(0\)">\(0\)</span>. The matrices <span class="math" data-tex="\(I-2\Gamma\)">\(I-2\Gamma\)</span> and <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> are positive semidefinite. So is the matrix of the products of their entries, by Exercise 7.2, and its entries are <span class="math" data-tex="\((\delta_{ij}-2\Gamma_{ij})\Gamma_{ij}\)">\((\delta_{ij}-2\Gamma_{ij})\Gamma_{ij}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Let <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> be centered jointly Gaussian variables with the variances <span class="math" data-tex="\(s^2,t^2\)">\(s^2,t^2\)</span> and the covariance <span class="math" data-tex="\(c\)">\(c\)</span>. Show that <span class="math" data-tex="\(\mathbb E\,X^2Y^2=s^2t^2+2c^2\)">\(\mathbb E\,X^2Y^2=s^2t^2+2c^2\)</span>, so that the covariance of <span class="math" data-tex="\(X^2\)">\(X^2\)</span> and <span class="math" data-tex="\(Y^2\)">\(Y^2\)</span> is <span class="math" data-tex="\(2c^2\)">\(2c^2\)</span>.</p>
+<p><strong>7.2.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be positive semidefinite matrices of the same size. Show that the matrix with the entries <span class="math" data-tex="\(P_{ij}\Gamma_{ij}\)">\(P_{ij}\Gamma_{ij}\)</span> is positive semidefinite.</p>
+<p><strong>7.3.</strong> Show that the bound <span class="math" data-tex="\(\sum_i(\mathbb E\,u\,\psi_i)^2/a_i\le\mathbb E\,u^2\)">\(\sum_i(\mathbb E\,u\,\psi_i)^2/a_i\le\mathbb E\,u^2\)</span> of the proof of Theorem 4.1 holds for every <span class="math" data-tex="\(u\in L^2(\mu)\)">\(u\in L^2(\mu)\)</span> with mean <span class="math" data-tex="\(0\)">\(0\)</span>, even or not.</p>
+<p><strong>7.4.</strong> Let <span class="math" data-tex="\(n=1\)">\(n=1\)</span> and <span class="math" data-tex="\(V=\psi=x^2\)">\(V=\psi=x^2\)</span> (one function, <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, and <span class="math" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span>; the density <span class="math" data-tex="\(e^{-x^2}\)">\(e^{-x^2}\)</span> is integrable). Use the Gaussian pair of Example 1.2 of the lesson on moment coordinates with <span class="math" data-tex="\(a=\tfrac12\)">\(a=\tfrac12\)</span>, for which <span class="math" data-tex="\(\tau=\tfrac12\)">\(\tau=\tfrac12\)</span>, and <span class="math" data-tex="\(f=x^2\)">\(f=x^2\)</span>. Compute <span class="math" data-tex="\(a_1\)">\(a_1\)</span>, <span class="math" data-tex="\(m_1\)">\(m_1\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span>, <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(d_1\)">\(d_1\)</span>, and check the two inequalities of the proof of Proposition 3.1 and its conclusion. (For polynomials and a Gaussian measure the integrations by parts are valid without compact support.)</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> If <span class="math" data-tex="\(s=0\)">\(s=0\)</span> both sides are <span class="math" data-tex="\(0\)">\(0\)</span>. Otherwise <span class="math" data-tex="\(R=Y-\tfrac c{s^2}X\)">\(R=Y-\tfrac c{s^2}X\)</span> is Gaussian and uncorrelated with <span class="math" data-tex="\(X\)">\(X\)</span>, hence independent of <span class="math" data-tex="\(X\)">\(X\)</span>, with the variance <span class="math" data-tex="\(t^2-c^2/s^2\)">\(t^2-c^2/s^2\)</span>. Then <span class="math" data-tex="\(\mathbb E\,X^2Y^2\)">\(\mathbb E\,X^2Y^2\)</span> is <span class="math" data-tex="\(\tfrac{c^2}{s^4}\mathbb E\,X^4+\mathbb E\,X^2\,\mathbb E\,R^2\)">\(\tfrac{c^2}{s^4}\mathbb E\,X^4+\mathbb E\,X^2\,\mathbb E\,R^2\)</span>, since the mixed term has the mean <span class="math" data-tex="\(0\)">\(0\)</span>; with <span class="math" data-tex="\(\mathbb E\,X^4=3s^4\)">\(\mathbb E\,X^4=3s^4\)</span> this is <span class="math" data-tex="\(3c^2+s^2t^2-c^2\)">\(3c^2+s^2t^2-c^2\)</span>.</p>
+<p><strong>7.2.</strong> Write <span class="math" data-tex="\(\Gamma=\sum_k\lambda_kv_kv_k^T\)">\(\Gamma=\sum_k\lambda_kv_kv_k^T\)</span> with <span class="math" data-tex="\(\lambda_k\ge0\)">\(\lambda_k\ge0\)</span>. The matrix with the entries <span class="math" data-tex="\(P_{ij}(v_k)_i(v_k)_j\)">\(P_{ij}(v_k)_i(v_k)_j\)</span> is <span class="math" data-tex="\(D_kPD_k\)">\(D_kPD_k\)</span>, where <span class="math" data-tex="\(D_k\)">\(D_k\)</span> is the diagonal matrix of the vector <span class="math" data-tex="\(v_k\)">\(v_k\)</span>; it is positive semidefinite. The matrix in question is the sum of these with the weights <span class="math" data-tex="\(\lambda_k\)">\(\lambda_k\)</span>.</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(u_0(x)=\tfrac12(u(x)+u(-x))\)">\(u_0(x)=\tfrac12(u(x)+u(-x))\)</span>. Since <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> are even, <span class="math" data-tex="\(\mathbb E\,u\,\psi_i=\mathbb E\,u_0\psi_i\)">\(\mathbb E\,u\,\psi_i=\mathbb E\,u_0\psi_i\)</span>, <span class="math" data-tex="\(\mathbb E\,u_0=0\)">\(\mathbb E\,u_0=0\)</span>, and <span class="math" data-tex="\(\mathbb E\,u_0^2\le\mathbb E\,u^2\)">\(\mathbb E\,u_0^2\le\mathbb E\,u^2\)</span>. Apply the bound to the even function <span class="math" data-tex="\(u_0\)">\(u_0\)</span>.</p>
+<p><strong>7.4.</strong> <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the Gaussian measure with the variance <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>, so <span class="math" data-tex="\(\mathbb E\,x^2=\tfrac12\)">\(\mathbb E\,x^2=\tfrac12\)</span> and <span class="math" data-tex="\(\mathbb E\,x^4=\tfrac34\)">\(\mathbb E\,x^4=\tfrac34\)</span>. <span class="math" data-tex="\(a_1=\tfrac12\)">\(a_1=\tfrac12\)</span>, <span class="math" data-tex="\(H_1=2\)">\(H_1=2\)</span>, <span class="math" data-tex="\(m_1=\mathbb E\,\tau H_1=1=q\,a_1\)">\(m_1=\mathbb E\,\tau H_1=1=q\,a_1\)</span>. Here <span class="math" data-tex="\(A=x\,\partial_x-\tfrac12\partial_x^2\)">\(A=x\,\partial_x-\tfrac12\partial_x^2\)</span>. For <span class="math" data-tex="\(f=x^2\)">\(f=x^2\)</span>: <span class="math" data-tex="\(h=2\)">\(h=2\)</span>, <span class="math" data-tex="\(B=\tau h\tau=\tfrac12\)">\(B=\tau h\tau=\tfrac12\)</span>, <span class="math" data-tex="\(Af=2x^2-1\)">\(Af=2x^2-1\)</span>, <span class="math" data-tex="\(Af-f=x^2-1\)">\(Af-f=x^2-1\)</span>, <span class="math" data-tex="\(W=\tau\,\partial_x(x^2-1)=x\)">\(W=\tau\,\partial_x(x^2-1)=x\)</span>, and <span class="math" data-tex="\(u=A(x^2-1)=2x^2-1\)">\(u=A(x^2-1)=2x^2-1\)</span>. Then <span class="math" data-tex="\(d_1=\mathbb E\,(2x^2-1)x^2=\tfrac32-\tfrac12=1\)">\(d_1=\mathbb E\,(2x^2-1)x^2=\tfrac32-\tfrac12=1\)</span>; also <span class="math" data-tex="\(\mathbb E\,W\psi&#x27;=\mathbb E\,2x^2=1\)">\(\mathbb E\,W\psi&#x27;=\mathbb E\,2x^2=1\)</span> and <span class="math" data-tex="\(\mathbb E\,BH_1=1\)">\(\mathbb E\,BH_1=1\)</span>. First inequality: <span class="math" data-tex="\(\mathbb E\,MBH_1B=2\cdot\tfrac12\cdot2\cdot\tfrac12=1\)">\(\mathbb E\,MBH_1B=2\cdot\tfrac12\cdot2\cdot\tfrac12=1\)</span> and <span class="math" data-tex="\(d_1^2/m_1=1\)">\(d_1^2/m_1=1\)</span>. Second: <span class="math" data-tex="\(\mathbb E\,WH_1W=2\,\mathbb E\,x^2=1\)">\(\mathbb E\,WH_1W=2\,\mathbb E\,x^2=1\)</span> and <span class="math" data-tex="\((q-1)d_1^2/m_1=1\)">\((q-1)d_1^2/m_1=1\)</span>. Conclusion: <span class="math" data-tex="\(\mathbb E\,u^2=4\cdot\tfrac34-4\cdot\tfrac12+1=2\)">\(\mathbb E\,u^2=4\cdot\tfrac34-4\cdot\tfrac12+1=2\)</span> and <span class="math" data-tex="\(d_1^2/a_1=2\)">\(d_1^2/a_1=2\)</span>. All three are equalities, in agreement with Exercise 7.2 of the first lesson, where the variance bound for one direction and <span class="math" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span> is an equality.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-L] OpenAI, <em>The logarithmic Brunn-Minkowski conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Sections 7 and 8. https://github.com/openai/math/tree/main/preprints/The-logarithmic-Brunn-Minkowski-conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

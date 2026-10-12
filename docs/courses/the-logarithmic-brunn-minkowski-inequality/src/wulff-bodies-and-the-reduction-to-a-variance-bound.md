@@ -101,7 +101,7 @@ The term \(\tfrac\varepsilon2|x|^2\) makes \(Z\) finite, and all polynomials are
 
 **Theorem 2.2.** Let \(n\ge2\). If the variance bound holds in dimension \(n\), then the logarithmic Brunn-Minkowski inequality holds in dimension \(n\). In dimension \(1\) the inequality (LBM) holds with equality.
 
-[OpenAI-L, Sections 3 to 7] proves the variance bound in every dimension \(n\ge2\). Sections 3 to 5 of this lesson prove Theorem 2.2.
+[OpenAI-L, Sections 3 to 7] proves the variance bound in every dimension \(n\ge2\). In this course it is Theorem 4.1 of the lesson [The variance bound and the inequality](the-variance-bound-and-the-inequality.md), which rests on two statements from the literature that the course names as hypotheses. Sections 3 to 5 of this lesson prove Theorem 2.2.
 
 ## 3. Soft polytopes
 

@@ -1,0 +1,214 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Density of the even tests</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The logarithmic Brunn-Minkowski inequality)</a><a href="the-tensor-estimate.html">Previous lesson</a><a href="the-variance-bound-and-the-inequality.html">Next lesson</a><a href="src/density-of-the-even-tests.md">Editable source</a></nav><main><article><h1 id="density-of-the-even-tests">Density of the even tests</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The tensor estimate is an inequality for the functions <span class="math" data-tex="\(u=A(A-1)f\)">\(u=A(A-1)f\)</span>, where <span class="math" data-tex="\(f\)">\(f\)</span> is a test function. To use it for other functions one must know which functions are limits of such <span class="math" data-tex="\(u\)">\(u\)</span>. The operator <span class="math" data-tex="\(A(A-1)\)">\(A(A-1)\)</span> annihilates the affine functions, and by its symmetry every <span class="math" data-tex="\(u\)">\(u\)</span> is orthogonal to them. This lesson proves that there is no other restriction: if the pair is even and the Hessian <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is bounded, the functions <span class="math" data-tex="\(A(A-1)f\)">\(A(A-1)f\)</span> with <span class="math" data-tex="\(f\)">\(f\)</span> even are dense in the space of the even square-integrable functions with mean zero. Evenness removes the linear functions, and the mean zero removes the constants.</p>
+<ul>
+<li>The statement (Theorem 1.1) and the hypothesis (ER) on elliptic regularity.</li>
+<li>Cutoff functions (Lemma 2.1).</li>
+<li>A function orthogonal to all tests is smooth and satisfies <span class="math" data-tex="\(A(A-1)g=0\)">\(A(A-1)g=0\)</span> (Lemma 3.1).</li>
+<li>Then <span class="math" data-tex="\(Ag\)">\(Ag\)</span> is square integrable (Lemma 4.1), and <span class="math" data-tex="\(g\)">\(g\)</span> is affine (Proposition 5.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-L, Section 5]. It continues <a href="moment-coordinates-and-their-adjoints.html">Moment coordinates and their adjoints</a> and uses its notation and results.</p>
+<h2 id="1-the-statement">1. The statement</h2>
+<p>Let <span class="math" data-tex="\((V,\varphi)\)">\((V,\varphi)\)</span> be a moment pair on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> in which <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> are even, and assume that
+<span class="math math-display" data-tex="\[
+\tau\le\Lambda I\qquad\text{at every point,}
+\]">\[
+\tau\le\Lambda I\qquad\text{at every point,}
+\]</span>
+for a number <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. This is the situation of the hypothesis (M), with <span class="math" data-tex="\(\Lambda=4/\varepsilon\)">\(\Lambda=4/\varepsilon\)</span>. Since <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is even, the map <span class="math" data-tex="\(x=\nabla\varphi(z)\)">\(x=\nabla\varphi(z)\)</span> is odd, and so is its inverse; hence <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, as a function of <span class="math" data-tex="\(x\)">\(x\)</span>, is even. The operator
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Af=x\cdot\nabla f-\tau{:}D^2f,\\
+\tau{:}D^2f=\sum_{i,k}\tau_{ik}f_{x_ix_k},
+\end{gathered}
+\]">\[
+\begin{gathered}
+Af=x\cdot\nabla f-\tau{:}D^2f,\\
+\tau{:}D^2f=\sum_{i,k}\tau_{ik}f_{x_ix_k},
+\end{gathered}
+\]</span>
+therefore maps even functions to even functions and odd functions to odd functions. In this lesson all functions are functions of <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(\nabla=\nabla_x\)">\(\nabla=\nabla_x\)</span>, <span class="math" data-tex="\(\mathbb E\)">\(\mathbb E\)</span> is the mean for <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, <span class="math" data-tex="\(\|g\|\)">\(\|g\|\)</span> is the norm of <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>, and <span class="math" data-tex="\(\Gamma(f,g)=\nabla f\cdot\tau\nabla g\)">\(\Gamma(f,g)=\nabla f\cdot\tau\nabla g\)</span>, <span class="math" data-tex="\(\Gamma(f)=\Gamma(f,f)\)">\(\Gamma(f)=\Gamma(f,f)\)</span>. Since <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is positive definite,
+<span class="math math-display" data-tex="\[
+|\Gamma(f,g)|\le\Gamma(f)^{1/2}\,\Gamma(g)^{1/2}.
+\]">\[
+|\Gamma(f,g)|\le\Gamma(f)^{1/2}\,\Gamma(g)^{1/2}.
+\]</span>
+We write <span class="math" data-tex="\(\mathcal P=A(A-1)\)">\(\mathcal P=A(A-1)\)</span>, so that <span class="math" data-tex="\(\mathcal Pf=A(Af)-Af\)">\(\mathcal Pf=A(Af)-Af\)</span>.</p>
+<p><strong>Hypothesis (ER).</strong> Let <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> be a linear differential operator of order <span class="math" data-tex="\(4\)">\(4\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> with smooth coefficients, whose principal symbol <span class="math" data-tex="\(q_4(x,\xi)\)">\(q_4(x,\xi)\)</span> is positive for all <span class="math" data-tex="\(x\)">\(x\)</span> and all <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>. Let <span class="math" data-tex="\(g\)">\(g\)</span> be a locally square-integrable function with <span class="math" data-tex="\(\int g\,\mathcal Q\chi\,dx=0\)">\(\int g\,\mathcal Q\chi\,dx=0\)</span> for every smooth function <span class="math" data-tex="\(\chi\)">\(\chi\)</span> with compact support. Then <span class="math" data-tex="\(g\)">\(g\)</span> is equal almost everywhere to a smooth function.</p>
+<p>This is the interior regularity theorem for elliptic operators, applied to the transposed operator of <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>. It is not proved in this course.</p>
+<p><strong>Theorem 1.1 (density).</strong> Assume (ER). In the situation above, the functions <span class="math" data-tex="\(\mathcal Pf\)">\(\mathcal Pf\)</span>, where <span class="math" data-tex="\(f\)">\(f\)</span> runs through the even smooth functions with compact support, are dense in the space of the even functions <span class="math" data-tex="\(g\in L^2(\mu)\)">\(g\in L^2(\mu)\)</span> with <span class="math" data-tex="\(\mathbb E\,g=0\)">\(\mathbb E\,g=0\)</span>.</p>
+<p>Each <span class="math" data-tex="\(\mathcal Pf\)">\(\mathcal Pf\)</span> lies in this space: it is even, and <span class="math" data-tex="\(\mathbb E\,A(Af-f)=0\)">\(\mathbb E\,A(Af-f)=0\)</span> by Proposition 3.1 (2) of the lesson on moment coordinates. The space is a closed subspace of <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>. So the theorem follows if every <span class="math" data-tex="\(g\)">\(g\)</span> in it that is orthogonal to all <span class="math" data-tex="\(\mathcal Pf\)">\(\mathcal Pf\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>. Sections 2 to 5 prove this.</p>
+<h2 id="2-cutoff-functions">2. Cutoff functions</h2>
+<p>Fix a smooth function <span class="math" data-tex="\(\eta\)">\(\eta\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> with <span class="math" data-tex="\(0\le\eta\le1\)">\(0\le\eta\le1\)</span>, <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span> for <span class="math" data-tex="\(|x|\le1\)">\(|x|\le1\)</span> and <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span> for <span class="math" data-tex="\(|x|\ge2\)">\(|x|\ge2\)</span>, and let <span class="math" data-tex="\(\eta_r(x)=\eta(x/r)\)">\(\eta_r(x)=\eta(x/r)\)</span> for <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> There are numbers <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span>, which do not depend on <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, with
+<span class="math math-display" data-tex="\[
+\Gamma(\eta_r)\le\frac{B^2}{r^2},\qquad|A\eta_r|\le K .
+\]">\[
+\Gamma(\eta_r)\le\frac{B^2}{r^2},\qquad|A\eta_r|\le K .
+\]</span>
+Both functions vanish where <span class="math" data-tex="\(|x|&lt;r\)">\(|x|&lt;r\)</span> and where <span class="math" data-tex="\(|x|&gt;2r\)">\(|x|&gt;2r\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(c_1\)">\(c_1\)</span> and <span class="math" data-tex="\(c_2\)">\(c_2\)</span> bound the first and the second derivatives of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Then <span class="math" data-tex="\(|\nabla\eta_r|\le c_1/r\)">\(|\nabla\eta_r|\le c_1/r\)</span> and the second derivatives of <span class="math" data-tex="\(\eta_r\)">\(\eta_r\)</span> are at most <span class="math" data-tex="\(c_2/r^2\)">\(c_2/r^2\)</span>. So <span class="math" data-tex="\(\Gamma(\eta_r)\le\Lambda c_1^2/r^2\)">\(\Gamma(\eta_r)\le\Lambda c_1^2/r^2\)</span>. Where the derivatives of <span class="math" data-tex="\(\eta_r\)">\(\eta_r\)</span> do not vanish, <span class="math" data-tex="\(|x|\le2r\)">\(|x|\le2r\)</span>, so <span class="math" data-tex="\(|x\cdot\nabla\eta_r|\le2c_1\)">\(|x\cdot\nabla\eta_r|\le2c_1\)</span>, and <span class="math" data-tex="\(|\tau{:}D^2\eta_r|\le n^2\Lambda c_2\)">\(|\tau{:}D^2\eta_r|\le n^2\Lambda c_2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>This lemma is the only place where the bound <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> for <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is used.</p>
+<h2 id="3-the-orthogonal-complement">3. The orthogonal complement</h2>
+<p><strong>Lemma 3.1.</strong> Assume (ER). Let <span class="math" data-tex="\(g\in L^2(\mu)\)">\(g\in L^2(\mu)\)</span> be even and orthogonal to <span class="math" data-tex="\(\mathcal Pf\)">\(\mathcal Pf\)</span> for every even smooth <span class="math" data-tex="\(f\)">\(f\)</span> with compact support. Then <span class="math" data-tex="\(g\)">\(g\)</span> is smooth, and <span class="math" data-tex="\(\mathcal Pg=0\)">\(\mathcal Pg=0\)</span> at every point.</p>
+<p><strong>Proof.</strong> A smooth function <span class="math" data-tex="\(f\)">\(f\)</span> with compact support is the sum of an even and an odd one. For the odd part, <span class="math" data-tex="\(\mathcal Pf\)">\(\mathcal Pf\)</span> is odd and <span class="math" data-tex="\(g\)">\(g\)</span> is even, so <span class="math" data-tex="\(\mathbb E\,g\,\mathcal Pf=0\)">\(\mathbb E\,g\,\mathcal Pf=0\)</span>. Hence <span class="math" data-tex="\(\mathbb E\,g\,\mathcal Pf=0\)">\(\mathbb E\,g\,\mathcal Pf=0\)</span> for all smooth <span class="math" data-tex="\(f\)">\(f\)</span> with compact support, that is,
+<span class="math math-display" data-tex="\[
+\int g\,\varrho\,\mathcal Pf\,dx=0,\qquad\varrho=Z^{-1}e^{-V}.
+\]">\[
+\int g\,\varrho\,\mathcal Pf\,dx=0,\qquad\varrho=Z^{-1}e^{-V}.
+\]</span>
+The operator <span class="math" data-tex="\(\mathcal Qf=\varrho\,\mathcal Pf\)">\(\mathcal Qf=\varrho\,\mathcal Pf\)</span> has smooth coefficients and the order <span class="math" data-tex="\(4\)">\(4\)</span>. The terms of the highest order of <span class="math" data-tex="\(A\)">\(A\)</span> are <span class="math" data-tex="\(-\tau_{ik}\partial_{x_i}\partial_{x_k}\)">\(-\tau_{ik}\partial_{x_i}\partial_{x_k}\)</span>, so the principal symbol of <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> is <span class="math" data-tex="\(\varrho(x)\,(\xi\cdot\tau(x)\xi)^2\)">\(\varrho(x)\,(\xi\cdot\tau(x)\xi)^2\)</span>, which is positive for <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>. The function <span class="math" data-tex="\(g\)">\(g\)</span> is locally square integrable for the Lebesgue measure, because <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span> is bounded below on bounded sets. By (ER), <span class="math" data-tex="\(g\)">\(g\)</span> is smooth.</p>
+<p>For smooth <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> with compact support, Proposition 3.1 (2) of the lesson on moment coordinates, applied twice, gives <span class="math" data-tex="\(\mathbb E\,g\,\mathcal Pf=\mathbb E\,(\mathcal Pg)\,f\)">\(\mathbb E\,g\,\mathcal Pf=\mathbb E\,(\mathcal Pg)\,f\)</span>. So <span class="math" data-tex="\(\mathbb E\,(\mathcal Pg)f=0\)">\(\mathbb E\,(\mathcal Pg)f=0\)</span> for all such <span class="math" data-tex="\(f\)">\(f\)</span>, and the continuous function <span class="math" data-tex="\(\mathcal Pg\)">\(\mathcal Pg\)</span> vanishes. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>From here on, <span class="math" data-tex="\(g\)">\(g\)</span> is a smooth function in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span> with <span class="math" data-tex="\(\mathcal Pg=0\)">\(\mathcal Pg=0\)</span>. Let
+<span class="math math-display" data-tex="\[
+v=Ag .
+\]">\[
+v=Ag .
+\]</span>
+It is smooth, and <span class="math" data-tex="\(Av-v=\mathcal Pg=0\)">\(Av-v=\mathcal Pg=0\)</span>.</p>
+<h2 id="4-the-function-ag-is-square-integrable">4. The function <span class="math" data-tex="\(Ag\)">\(Ag\)</span> is square integrable</h2>
+<p><strong>Lemma 4.1.</strong> <span class="math" data-tex="\(v\in L^2(\mu)\)">\(v\in L^2(\mu)\)</span>, and <span class="math" data-tex="\(\mathbb E\,\Gamma(g)&lt;\infty\)">\(\mathbb E\,\Gamma(g)&lt;\infty\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, <span class="math" data-tex="\(\eta=\eta_r\)">\(\eta=\eta_r\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G=\|g\|,\qquad X=\|\eta^2v\|,\\
+Y=\bigl(\mathbb E\,\eta^2\Gamma(g)\bigr)^{1/2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+G=\|g\|,\qquad X=\|\eta^2v\|,\\
+Y=\bigl(\mathbb E\,\eta^2\Gamma(g)\bigr)^{1/2}.
+\end{gathered}
+\]</span>
+The last two are finite because <span class="math" data-tex="\(\eta\)">\(\eta\)</span> has compact support.</p>
+<p><em>First inequality.</em> The function <span class="math" data-tex="\(\eta^4g\)">\(\eta^4g\)</span> has compact support. By the symmetry of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(Av-v=0\)">\(Av-v=0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\,v\,\bigl(A(\eta^4g)-\eta^4g\bigr)\\
+&amp;\quad=\mathbb E\,(Av-v)\,\eta^4g=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\,v\,\bigl(A(\eta^4g)-\eta^4g\bigr)\\
+&amp;\quad=\mathbb E\,(Av-v)\,\eta^4g=0 .
+\end{aligned}
+\]</span>
+By the product rule and the chain rule of Proposition 3.1 (4) of the lesson on moment coordinates,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;A(\eta^4g)-\eta^4g\\
+&amp;\quad=\eta^4v+g\,E_r-8\eta^3\,\Gamma(\eta,g),\\
+&amp;E_r=4\eta^3A\eta-12\eta^2\Gamma(\eta)-\eta^4 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;A(\eta^4g)-\eta^4g\\
+&amp;\quad=\eta^4v+g\,E_r-8\eta^3\,\Gamma(\eta,g),\\
+&amp;E_r=4\eta^3A\eta-12\eta^2\Gamma(\eta)-\eta^4 .
+\end{aligned}
+\]</span>
+By Lemma 2.1, <span class="math" data-tex="\(|E_r|\le a\,\eta^2\)">\(|E_r|\le a\,\eta^2\)</span> with <span class="math" data-tex="\(a=4K+12B^2+1\)">\(a=4K+12B^2+1\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X^2&amp;=\mathbb E\,\eta^4v^2\\
+&amp;=-\mathbb E\,v\,g\,E_r+8\,\mathbb E\,v\,\eta^3\,\Gamma(\eta,g)\\
+&amp;\le a\,X\,G+8\,X\,\frac Br\,Y ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+X^2&amp;=\mathbb E\,\eta^4v^2\\
+&amp;=-\mathbb E\,v\,g\,E_r+8\,\mathbb E\,v\,\eta^3\,\Gamma(\eta,g)\\
+&amp;\le a\,X\,G+8\,X\,\frac Br\,Y ,
+\end{aligned}
+\]</span>
+where the last term was bounded with <span class="math" data-tex="\(|\Gamma(\eta,g)|\le\Gamma(\eta)^{1/2}\Gamma(g)^{1/2}\)">\(|\Gamma(\eta,g)|\le\Gamma(\eta)^{1/2}\Gamma(g)^{1/2}\)</span> and the inequality of Cauchy and Schwarz. Hence
+<span class="math math-display" data-tex="\[
+X\le a\,G+\frac{8B}r\,Y .
+\]">\[
+X\le a\,G+\frac{8B}r\,Y .
+\]</span></p>
+<p><em>Second inequality.</em> By Proposition 3.1 (2) of that lesson, <span class="math" data-tex="\(\mathbb E\,\eta^2g\,Ag=\mathbb E\,\Gamma(\eta^2g,g)\)">\(\mathbb E\,\eta^2g\,Ag=\mathbb E\,\Gamma(\eta^2g,g)\)</span>, and <span class="math" data-tex="\(\Gamma(\eta^2g,g)=\eta^2\Gamma(g)+2\eta g\,\Gamma(\eta,g)\)">\(\Gamma(\eta^2g,g)=\eta^2\Gamma(g)+2\eta g\,\Gamma(\eta,g)\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y^2&amp;=\mathbb E\,\eta^2g\,v-2\,\mathbb E\,\eta\,g\,\Gamma(\eta,g)\\
+&amp;\le G\,X+\frac{2B}r\,G\,Y .
+\end{aligned}
+\]">\[
+\begin{aligned}
+Y^2&amp;=\mathbb E\,\eta^2g\,v-2\,\mathbb E\,\eta\,g\,\Gamma(\eta,g)\\
+&amp;\le G\,X+\frac{2B}r\,G\,Y .
+\end{aligned}
+\]</span></p>
+<p>Insert the first inequality into the second and use <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>: <span class="math" data-tex="\(Y^2\le a\,G^2+10\,B\,G\,Y\)">\(Y^2\le a\,G^2+10\,B\,G\,Y\)</span>. So <span class="math" data-tex="\(Y\le(10B+\sqrt a)\,G\)">\(Y\le(10B+\sqrt a)\,G\)</span>, and then <span class="math" data-tex="\(X\le(a+8B(10B+\sqrt a))\,G\)">\(X\le(a+8B(10B+\sqrt a))\,G\)</span>. These bounds do not depend on <span class="math" data-tex="\(r\)">\(r\)</span>. As <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>, <span class="math" data-tex="\(\eta_r\)">\(\eta_r\)</span> increases to <span class="math" data-tex="\(1\)">\(1\)</span>, and by monotone convergence <span class="math" data-tex="\(\|v\|\)">\(\|v\|\)</span> and <span class="math" data-tex="\(\mathbb E\,\Gamma(g)\)">\(\mathbb E\,\Gamma(g)\)</span> are finite. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-the-function-is-affine">5. The function is affine</h2>
+<p><strong>Proposition 5.1.</strong> Let <span class="math" data-tex="\(g\)">\(g\)</span> be a smooth function in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span> with <span class="math" data-tex="\(\mathcal Pg=0\)">\(\mathcal Pg=0\)</span>. Then <span class="math" data-tex="\(g\)">\(g\)</span> is affine: <span class="math" data-tex="\(g(x)=c+\ell\cdot x\)">\(g(x)=c+\ell\cdot x\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(v=Ag\)">\(v=Ag\)</span> and <span class="math" data-tex="\(w=g-v\)">\(w=g-v\)</span>. By Lemma 4.1 both are in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>; and <span class="math" data-tex="\(Av=v\)">\(Av=v\)</span>, <span class="math" data-tex="\(Aw=Ag-Av=0\)">\(Aw=Ag-Av=0\)</span>.</p>
+<p><em>The function <span class="math" data-tex="\(w\)">\(w\)</span> is constant.</em> For <span class="math" data-tex="\(\eta=\eta_r\)">\(\eta=\eta_r\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;=\mathbb E\,\eta^2w\,Aw\\
+&amp;=\mathbb E\,\eta^2\Gamma(w)+2\,\mathbb E\,\eta\,w\,\Gamma(\eta,w),
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;=\mathbb E\,\eta^2w\,Aw\\
+&amp;=\mathbb E\,\eta^2\Gamma(w)+2\,\mathbb E\,\eta\,w\,\Gamma(\eta,w),
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(\mathbb E\,\eta^2\Gamma(w)\le2\|w\|\tfrac Br(\mathbb E\,\eta^2\Gamma(w))^{1/2}\)">\(\mathbb E\,\eta^2\Gamma(w)\le2\|w\|\tfrac Br(\mathbb E\,\eta^2\Gamma(w))^{1/2}\)</span>, that is,
+<span class="math math-display" data-tex="\[
+\bigl(\mathbb E\,\eta_r^2\,\Gamma(w)\bigr)^{1/2}\le\frac{2B}r\,\|w\| .
+\]">\[
+\bigl(\mathbb E\,\eta_r^2\,\Gamma(w)\bigr)^{1/2}\le\frac{2B}r\,\|w\| .
+\]</span>
+Let <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>: <span class="math" data-tex="\(\Gamma(w)=0\)">\(\Gamma(w)=0\)</span> everywhere. Since <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is positive definite, <span class="math" data-tex="\(\nabla w=0\)">\(\nabla w=0\)</span>.</p>
+<p><em>The function <span class="math" data-tex="\(v\)">\(v\)</span> is linear.</em> In the same way, from <span class="math" data-tex="\(\mathbb E\,\eta^2v\,Av=\mathbb E\,\eta^2v^2\)">\(\mathbb E\,\eta^2v\,Av=\mathbb E\,\eta^2v^2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,\eta^2\Gamma(v)&amp;\le\|v\|^2\\
+&amp;\quad+\frac{2B}r\,\|v\|\,\bigl(\mathbb E\,\eta^2\Gamma(v)\bigr)^{1/2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,\eta^2\Gamma(v)&amp;\le\|v\|^2\\
+&amp;\quad+\frac{2B}r\,\|v\|\,\bigl(\mathbb E\,\eta^2\Gamma(v)\bigr)^{1/2},
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(\mathbb E\,\eta_r^2\Gamma(v)\)">\(\mathbb E\,\eta_r^2\Gamma(v)\)</span> is bounded in <span class="math" data-tex="\(r\)">\(r\)</span>, and <span class="math" data-tex="\(\mathbb E\,\Gamma(v)&lt;\infty\)">\(\mathbb E\,\Gamma(v)&lt;\infty\)</span>. Let <span class="math" data-tex="\(f_r=\eta_rv\)">\(f_r=\eta_rv\)</span>, a smooth function with compact support. Then <span class="math" data-tex="\(f_r\to v\)">\(f_r\to v\)</span> in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>, and
+<span class="math math-display" data-tex="\[
+Af_r=\eta_r\,v+v\,A\eta_r-2\,\Gamma(\eta_r,v).
+\]">\[
+Af_r=\eta_r\,v+v\,A\eta_r-2\,\Gamma(\eta_r,v).
+\]</span>
+The first term tends to <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>. The second has a norm of at most <span class="math" data-tex="\(K\)">\(K\)</span> times the norm of <span class="math" data-tex="\(v\)">\(v\)</span> on the set where <span class="math" data-tex="\(|x|\ge r\)">\(|x|\ge r\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span>. The third has a norm of at most <span class="math" data-tex="\(\tfrac{2B}r(\mathbb E\,\Gamma(v))^{1/2}\)">\(\tfrac{2B}r(\mathbb E\,\Gamma(v))^{1/2}\)</span>. So <span class="math" data-tex="\(Af_r\to v\)">\(Af_r\to v\)</span> in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>. By the Hessian identity, Proposition 4.1 (4) of the lesson on moment coordinates,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\,\bigl\|\tau^{1/2}D^2f_r\,\tau^{1/2}\bigr\|^2\\
+&amp;\quad=\|Af_r\|^2-\mathbb E\,f_r\,Af_r\\
+&amp;\quad\longrightarrow\|v\|^2-\|v\|^2=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\,\bigl\|\tau^{1/2}D^2f_r\,\tau^{1/2}\bigr\|^2\\
+&amp;\quad=\|Af_r\|^2-\mathbb E\,f_r\,Af_r\\
+&amp;\quad\longrightarrow\|v\|^2-\|v\|^2=0 .
+\end{aligned}
+\]</span>
+On a ball <span class="math" data-tex="\(|x|&lt;r_0\)">\(|x|&lt;r_0\)</span>, <span class="math" data-tex="\(f_r=v\)">\(f_r=v\)</span> for all <span class="math" data-tex="\(r\ge r_0\)">\(r\ge r_0\)</span>. So the integral of <span class="math" data-tex="\(\|\tau^{1/2}D^2v\,\tau^{1/2}\|^2\)">\(\|\tau^{1/2}D^2v\,\tau^{1/2}\|^2\)</span> over this ball, for <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, is <span class="math" data-tex="\(0\)">\(0\)</span>, and <span class="math" data-tex="\(D^2v=0\)">\(D^2v=0\)</span> there, because the density of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and the matrix <span class="math" data-tex="\(\tau\)">\(\tau\)</span> are positive. Hence <span class="math" data-tex="\(v\)">\(v\)</span> is affine, <span class="math" data-tex="\(v=c&#x27;+\ell\cdot x\)">\(v=c&#x27;+\ell\cdot x\)</span>. By Proposition 3.1 (3) of that lesson, <span class="math" data-tex="\(Av=\ell\cdot x\)">\(Av=\ell\cdot x\)</span>, and <span class="math" data-tex="\(Av=v\)">\(Av=v\)</span> gives <span class="math" data-tex="\(c&#x27;=0\)">\(c&#x27;=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proof of Theorem 1.1.</strong> Let <span class="math" data-tex="\(g\)">\(g\)</span> be even, in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>, with <span class="math" data-tex="\(\mathbb E\,g=0\)">\(\mathbb E\,g=0\)</span>, and orthogonal to all <span class="math" data-tex="\(\mathcal Pf\)">\(\mathcal Pf\)</span> with <span class="math" data-tex="\(f\)">\(f\)</span> even. By Lemma 3.1 and Proposition 5.1, <span class="math" data-tex="\(g=c+\ell\cdot x\)">\(g=c+\ell\cdot x\)</span>. Since <span class="math" data-tex="\(g\)">\(g\)</span> is even, <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>; since its mean is <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The proof used a global upper bound for <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, but no lower bound: the positivity of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> entered only at single points and on bounded sets.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> For the Gaussian pair (<span class="math" data-tex="\(\tau=I\)">\(\tau=I\)</span>, <span class="math" data-tex="\(A=x\cdot\nabla-\Delta\)">\(A=x\cdot\nabla-\Delta\)</span>) in dimension <span class="math" data-tex="\(1\)">\(1\)</span>, compute <span class="math" data-tex="\(\mathcal Pf\)">\(\mathcal Pf\)</span> for <span class="math" data-tex="\(f=x^2\)">\(f=x^2\)</span>, <span class="math" data-tex="\(f=x^3\)">\(f=x^3\)</span> and <span class="math" data-tex="\(f=x^4\)">\(f=x^4\)</span>. Which polynomials of degree at most <span class="math" data-tex="\(4\)">\(4\)</span> are of the form <span class="math" data-tex="\(\mathcal Pf\)">\(\mathcal Pf\)</span> with a polynomial <span class="math" data-tex="\(f\)">\(f\)</span>?</p>
+<p><strong>6.2.</strong> Show that every <span class="math" data-tex="\(\mathcal Pf\)">\(\mathcal Pf\)</span>, for smooth <span class="math" data-tex="\(f\)">\(f\)</span> with compact support, is orthogonal in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span> to the constants and to the coordinate functions <span class="math" data-tex="\(x_j\)">\(x_j\)</span>, if the <span class="math" data-tex="\(x_j\)">\(x_j\)</span> are in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>.</p>
+<p><strong>6.3.</strong> Prove the bound <span class="math" data-tex="\(Y\le(10B+\sqrt a)\,G\)">\(Y\le(10B+\sqrt a)\,G\)</span> from <span class="math" data-tex="\(Y^2\le aG^2+10BGY\)">\(Y^2\le aG^2+10BGY\)</span>.</p>
+<p><strong>6.4.</strong> Where does the proof of Proposition 5.1 fail for the function <span class="math" data-tex="\(g=x_1^2-\mathbb E\,x_1^2\)">\(g=x_1^2-\mathbb E\,x_1^2\)</span> in the Gaussian case, which is even, centered and not zero?</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(A x^k=kx^k-k(k-1)x^{k-2}\)">\(A x^k=kx^k-k(k-1)x^{k-2}\)</span>. So <span class="math" data-tex="\(Ax^2=2x^2-2\)">\(Ax^2=2x^2-2\)</span>, <span class="math" data-tex="\((A-1)x^2=x^2-2\)">\((A-1)x^2=x^2-2\)</span>, and <span class="math" data-tex="\(\mathcal Px^2=A(x^2-2)=2x^2-2\)">\(\mathcal Px^2=A(x^2-2)=2x^2-2\)</span>. <span class="math" data-tex="\((A-1)x^3=2x^3-6x\)">\((A-1)x^3=2x^3-6x\)</span> and <span class="math" data-tex="\(\mathcal Px^3=6x^3-18x\)">\(\mathcal Px^3=6x^3-18x\)</span>. <span class="math" data-tex="\((A-1)x^4=3x^4-12x^2\)">\((A-1)x^4=3x^4-12x^2\)</span>, and <span class="math" data-tex="\(\mathcal Px^4\)">\(\mathcal Px^4\)</span> is <span class="math" data-tex="\(12x^4-36x^2-24x^2+24\)">\(12x^4-36x^2-24x^2+24\)</span>, that is, <span class="math" data-tex="\(12x^4-60x^2+24\)">\(12x^4-60x^2+24\)</span>. In terms of the Hermite polynomials <span class="math" data-tex="\(H_2=x^2-1\)">\(H_2=x^2-1\)</span>, <span class="math" data-tex="\(H_3=x^3-3x\)">\(H_3=x^3-3x\)</span>, <span class="math" data-tex="\(H_4=x^4-6x^2+3\)">\(H_4=x^4-6x^2+3\)</span>: <span class="math" data-tex="\(\mathcal Px^2=2H_2\)">\(\mathcal Px^2=2H_2\)</span>, <span class="math" data-tex="\(\mathcal Px^3=6H_3\)">\(\mathcal Px^3=6H_3\)</span> and <span class="math" data-tex="\(\mathcal Px^4=12H_4+12H_2\)">\(\mathcal Px^4=12H_4+12H_2\)</span>. On <span class="math" data-tex="\(H_2,H_3,H_4\)">\(H_2,H_3,H_4\)</span> the operator <span class="math" data-tex="\(A\)">\(A\)</span> is the multiplication by <span class="math" data-tex="\(2,3,4\)">\(2,3,4\)</span> and <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> the multiplication by <span class="math" data-tex="\(2,6,12\)">\(2,6,12\)</span>; on <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> it is <span class="math" data-tex="\(0\)">\(0\)</span>. So the polynomials <span class="math" data-tex="\(\mathcal Pf\)">\(\mathcal Pf\)</span> of degree at most <span class="math" data-tex="\(4\)">\(4\)</span> are the combinations of these three Hermite polynomials: the polynomials orthogonal to <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> for the Gaussian measure.</p>
+<p><strong>6.2.</strong> By Proposition 3.1 (2) of the lesson on moment coordinates, used twice with the compactly supported <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(\mathbb E\,(\mathcal Pf)\,F=\mathbb E\,f\,\mathcal PF\)">\(\mathbb E\,(\mathcal Pf)\,F=\mathbb E\,f\,\mathcal PF\)</span> for smooth <span class="math" data-tex="\(F\)">\(F\)</span>, and <span class="math" data-tex="\(\mathcal P1=0\)">\(\mathcal P1=0\)</span>, <span class="math" data-tex="\(\mathcal Px_j=A(x_j-x_j)=0\)">\(\mathcal Px_j=A(x_j-x_j)=0\)</span>.</p>
+<p><strong>6.3.</strong> If <span class="math" data-tex="\(Y&gt;10BG+\sqrt a\,G\)">\(Y&gt;10BG+\sqrt a\,G\)</span>, then both <span class="math" data-tex="\(Y\)">\(Y\)</span> and <span class="math" data-tex="\(Y-10BG\)">\(Y-10BG\)</span> are larger than <span class="math" data-tex="\(\sqrt a\,G\)">\(\sqrt a\,G\)</span>, so <span class="math" data-tex="\(Y^2-10BGY=Y(Y-10BG)&gt;aG^2\)">\(Y^2-10BGY=Y(Y-10BG)&gt;aG^2\)</span>, a contradiction.</p>
+<p><strong>6.4.</strong> It does not fail: this <span class="math" data-tex="\(g\)">\(g\)</span> is not orthogonal to the tests. <span class="math" data-tex="\(g=x_1^2-1\)">\(g=x_1^2-1\)</span> and <span class="math" data-tex="\(\mathcal Pg=2g\ne0\)">\(\mathcal Pg=2g\ne0\)</span>, so Lemma 3.1 excludes it; indeed <span class="math" data-tex="\(g=\mathcal P(\tfrac12x_1^2)\)">\(g=\mathcal P(\tfrac12x_1^2)\)</span> is itself a limit of tests, as Theorem 1.1 says.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-L] OpenAI, <em>The logarithmic Brunn-Minkowski conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Section 5. https://github.com/openai/math/tree/main/preprints/The-logarithmic-Brunn-Minkowski-conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
