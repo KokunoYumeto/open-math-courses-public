@@ -1800,6 +1800,153 @@ The three maps other than \(\beta_g\) in this equality are isomorphisms. Therefo
 
 The broader generic-base-change theorem for general separated finite-type morphisms and bounded constructible coefficients still requires a separate proof; E.2b neither proves nor replaces that full statement. It supplies the smooth/lisse instance, including the canonical geometric-fibre map, used in the relative-pairing argument below.
 
+#### Recovering comparison on a finite residual locus
+
+The general generic-base-change argument must eventually pass from a comparison on an open set to a comparison on the whole target. Here is the precise detection step. It does not require knowing in advance that the unknown direct-image complex is constructible. We first state it for ordinary étale sheaves of modules over a fixed commutative ring \(\Lambda\); an adic or rational application needs its own coefficient comparison.
+
+**Lemma E.2c (finite residual detection).** Let \(b:Y\to S\) be a morphism of schemes, \(i:Z\hookrightarrow Y\) a closed immersion, and \(u:W=Y\setminus Z\hookrightarrow Y\) its open complement. Suppose \(q=b i:Z\to S\) is finite. For a morphism
+\[
+\alpha:M\longrightarrow N,\qquad
+M,N\in D^+(Y_{\mathrm{\acute et}},\Lambda),
+\tag{E.R1}
+\]
+assume that both \(u^*\alpha\) and \(Rb_*\alpha\) are isomorphisms. Then \(\alpha\) is an isomorphism. Neither constructibility of \(M,N\) nor properness of \(b\) is an additional hypothesis of this lemma.
+
+**Proof: why the finite direct image detects a map.** Finite pushforward, Theorem 4.1 proves exactness and the natural geometric-stalk formula
+\[
+(q_*G)_{\bar s}=\prod_{\bar z\mid\bar s}G_{\bar z},
+\qquad R^rq_*G=0\quad(r>0).
+\tag{E.R2}
+\]
+The same formulas hold for \(\Lambda\)-modules: the restrictions defining them respect the coefficient action. The finite set indexes the geometric lifts with one fixed algebraically closed field, not chosen isomorphism classes of stalks. Every geometric point of \(Z\) is a lift of its image in \(S\). Consequently \(q_*G=0\) implies that every stalk of \(G\) is zero, so \(G=0\). Surjectivity of \(q\) is unnecessary. An empty fibre contributes the zero module and loses no point upstairs.
+
+Exactness gives \(\mathcal H^r(Rq_*K)=q_*\mathcal H^r(K)\) for a bounded-below complex \(K\). Thus \(Rq_*K=0\) implies \(K=0\). Applying this conclusion to a cone shows that \(Rq_*\) reflects isomorphisms. This is a property of the finite morphism \(q\), not an assertion that an arbitrary proper direct image is conservative.
+
+Put \(C=\operatorname{Cone}(\alpha)\). Inverse images and extension by zero for the open and closed immersions are exact. Localization, Proposition 5.2 therefore gives the natural triangle
+\[
+u_!u^*C\longrightarrow C\longrightarrow i_*i^*C
+\longrightarrow (u_!u^*C)[1].
+\tag{E.R3}
+\]
+It follows by applying the sheaf-level short exact sequence to a representative complex; exact functors preserve its quasi-isomorphisms. The first assumption gives \(u^*C=0\), hence the displayed map identifies \(C\) with \(i_*i^*C\). The second assumption gives \(Rb_*C=0\).
+
+There is a natural composition identification \(Rb_*i_*K=Rq_*K\). Indeed \(i_*\) is exact by (E.R2), and it sends injectives to injectives because its left adjoint \(i^*\) is exact. An injective resolution of \(K\) thus computes both sides, using the actual equality \(b_*i_*=q_*\). With \(K=i^*C\) we obtain
+\[
+0=Rb_*C=Rq_*i^*C.
+\tag{E.R4}
+\]
+Finite detection gives \(i^*C=0\), and (E.R3) then gives \(C=0\). Thus the original morphism \(\alpha\), rather than some independently chosen comparison of its endpoints, is invertible. \(\square\)
+
+**Corollary E.2d (the actual base-change map).** Let \(f:X\to Y\), let \(a=b f:X\to S\), and let \(F\in D^+(X_{\mathrm{\acute et}},\Lambda)\). For any \(g:T\to S\), form the Cartesian diagrams, with the indicated projections:
+\[
+\begin{gathered}
+X_T\xrightarrow{f_T}Y_T\xrightarrow{b_T}T,\qquad
+X\xrightarrow{f}Y\xrightarrow{b}S,\\
+h_X:X_T\to X,\quad h_Y:Y_T\to Y,\quad a_T=b_Tf_T,\\
+Z_T=Z\times_ST,\quad W_T=W\times_ST.
+\end{gathered}
+\tag{E.R5}
+\]
+Retain the hypothesis that \(Z\to S\) is finite. Assume the following three particular maps are isomorphisms:
+
+1. The restriction to \(W_T\) of \(\beta_{f,g}:h_Y^*Rf_*F\to Rf_{T*}h_X^*F\).
+2. The canonical comparison \(\gamma_{b,g}:g^*Rb_*Rf_*F\to Rb_{T*}h_Y^*Rf_*F\).
+3. The canonical comparison \(\beta_{a,g}:g^*Ra_*F\to Ra_{T*}h_X^*F\).
+
+Then \(\beta_{f,g}\) itself is an isomorphism everywhere on \(Y_T\).
+
+**Proof: compatibility under composition.** Use the composition identifications for ordinary derived direct images. They are computed by injective resolutions because direct image preserves injectives, its inverse-image left adjoint being exact. The comparison maps satisfy
+\[
+\beta_{a,g}
+= Rb_{T*}(\beta_{f,g})\circ\gamma_{b,g}.
+\tag{E.R6}
+\]
+Here both sides go from \(g^*Rb_*Rf_*F\) to \(Rb_{T*}Rf_{T*}h_X^*F\). To verify equality rather than merely compare these objects, recall the defining adjunction transpose of ordinary base change. For \(f\), this is
+\[
+f_T^*h_Y^*Rf_*F
+=h_X^*f^*Rf_*F
+\xrightarrow{h_X^*\varepsilon_f}h_X^*F,
+\tag{E.R7}
+\]
+where \(\varepsilon_f:f^*Rf_*\to\mathrm{id}\) is the derived counit. Transpose the right side of (E.R6) successively across \(b_T^*\dashv Rb_{T*}\) and \(f_T^*\dashv Rf_{T*}\). Naturality of the latter comparison and the defining transpose of \(\gamma_{b,g}\) give, in order, the pullback of \(f^*\varepsilon_b\) followed by the pullback of \(\varepsilon_f\). Their composite is the counit of the composed adjunction \(a^*=f^*b^*\dashv Rb_*Rf_*=Ra_*\). This is precisely the transpose defining \(\beta_{a,g}\); uniqueness of adjunction transposes proves (E.R6).
+
+Assumptions 2 and 3 now imply that \(Rb_{T*}(\beta_{f,g})\) is invertible. The closed complement \(Z_T\to T\) is finite, since it is a base change of \(q\). Apply Lemma E.2c over \(T\) to the morphism \(\beta_{f,g}\), using assumption 1 on \(W_T\). This proves the corollary. \(\square\)
+
+If \(b\) is proper, a proper-base-change theorem at the stated coefficient and boundedness scope can supply assumption 2. It must apply to the actual object \(Rf_*F\); invoking a version restricted to constructible inputs before establishing constructibility of that object would be circular. The corollary deliberately records that comparison as an input, rather than concealing such an assumption.
+
+This is the finite-residual step in the proof strategy of Deligne, [*SGA 4½*, Théorèmes de finitude, §2.6](https://publications.ias.edu/node/378), printed p.240. The separate tasks are to construct the good open locus and finite complement, prove the whole-space comparison, establish bounded constructibility, and justify the required coefficients. In particular E.2b's geometric-fibre statement is not automatically an arbitrary-base-change statement; this corollary does not change its scope. Nor does it pass from torsion levels to adic or rational coefficients by an infinite intersection of dense opens. These lemmas complete the detection argument, not the general generic-base-change theorem.
+
+#### Constructing the finite residual locus by coordinates
+
+Lemma E.2c requires a complement that is **finite over the base**, not merely a finite set in a generic fibre. We now supply the geometric construction used in the dimension induction. The geometry works over an integral Noetherian base; no smoothness, reducedness, or equality of component dimensions is imposed on the schemes over that base.
+
+**Lemma E.2e (coordinate opens and their finite complement).** Let \(S\) be integral Noetherian with generic field \(K\), and let \(Y\to S\) be of finite type. On a finite affine cover of \(Y\), after replacing \(S\) by an affine neighbourhood of its generic point, choose closed embeddings
+\[
+Y_a\hookrightarrow\mathbf A^{r_a}_S,\qquad
+p_{ai}:Y_a\longrightarrow\mathbf A^1_S.
+\tag{E.G1}
+\]
+Suppose that for every chosen coordinate there is a dense open \(V_{ai}\subset\mathbf A^1_S\). Set
+\[
+W=\bigcup_{a,i}p_{ai}^{-1}(V_{ai})\subset Y.
+\tag{E.G2}
+\]
+After one further nonempty open restriction of \(S\), the reduced closed complement \(Z=(Y\setminus W)_{\mathrm{red}}\) is finite over \(S\). A chart needing no generators may be embedded using the extra coordinate zero, so every \(r_a\) can be taken positive.
+
+**Proof on an affine chart.** Write \(S=\operatorname{Spec}A\). Since \(A\) is a domain, \(\mathbf A^1_S\) is integral and every dense open \(V_{ai}\) contains its generic point. Give its closed complement an ideal \(I_{ai}\subset A[T]\). This ideal contains a nonzero polynomial. Choose one and invert its nonzero leading coefficient in \(A\); after scaling, it is a monic polynomial
+\[
+P_{ai}(T)=T^{d_{ai}}+\sum_{e<d_{ai}}c_{ai,e}T^e\in I_{ai}A_s[T].
+\tag{E.G3}
+\]
+There are finitely many coordinates and charts, so the same nonzero \(s\in A\) works for all of them. If the polynomial has degree zero, its scaled value is one and that closed complement is empty. Otherwise the quotient \(A_s[T]/I_{ai}A_s[T]\) is generated as an \(A_s\)-module by the powers \(1,T,\ldots,T^{d_{ai}-1}\): division by a monic polynomial uses no further denominators.
+
+For a fixed chart, the complement of its union of coordinate opens has the underlying closed set of
+\[
+C_a=Y_{a,s}\mathbin{\times}_{\mathbf A^{r_a}_{A_s}}
+\prod_i\operatorname{Spec}(A_s[T_i]/I_{ai}A_s[T_i]).
+\tag{E.G4}
+\]
+The product is over \(\operatorname{Spec}A_s\). Its algebra is generated as a module by the monomials \(\prod_iT_i^{e_i}\), with \(0\le e_i<d_{ai}\). The embedding of \(Y_a\) makes \(C_a\) a closed subscheme of this finite scheme. Quotienting a finite module is finite, so \(C_a\to\operatorname{Spec}A_s\) is finite, including all its nilpotents. If one factor is empty, \(C_a\) is empty.
+
+**Passage from the charts to \(Y\).** The open \(W\) in (E.G2) may also contain points supplied by another chart. Thus \(Z\cap Y_{a,s}\) is a reduced closed subscheme of \(C_a\), not necessarily all of \(C_a\). To check the scheme inclusion, every equation of \(C_a\) vanishes at every point of this reduced scheme, hence vanishes in its coordinate sheaf. Each \(Z\cap Y_{a,s}\) is therefore finite over the restricted base.
+
+Finiteness is not, in general, a property that one may glue from opens of the source. Instead inspect the generic fibre. The finitely many opens \((Z\cap Y_{a,s})_K\) are finite \(K\)-schemes. Hence \(Z_K\) has finitely many points, all closed, with finite-dimensional local \(K\)-algebras. Each singleton is open: it is the complement of finitely many closed points. Its scheme structure is an open-and-closed component of one of those finite affine charts, so it is affine and finite over \(K\). Their finite disjoint union is affine and finite. This proves that \(Z_K\to\operatorname{Spec}K\) is finite.
+
+Now apply Limits of schemes, Theorem 4.2 to the inverse system \(\operatorname{Spec}A_{st}\), \(0\ne t\in A\), whose limit is \(\operatorname{Spec}K\). The model \(Z\) is of finite presentation: it is a closed subscheme of a finite-type scheme over a Noetherian base. The transition maps are affine, and the models are quasi-compact and quasi-separated. These are exactly the theorem's hypotheses. Its proof first descends affineness by Lemma 2.3 and then descends a finite multiplication table of module generators. It consequently makes the actual morphism \(Z_{A_{st}}\to\operatorname{Spec}A_{st}\) finite for one nonzero \(t\). This supplies the required common shrinking; it is not an appeal to generic dimension alone. \(\square\)
+
+The shrinking is necessary. For \(A=k[s]\), the closed subscheme \(V(sT-1)\subset\mathbf A^1_A\) has algebra \(A[1/s]\). Over \(D(s)\) it has the monic equation \(T-1/s=0\), but it is not finite over \(A\). Otherwise \(1/s\) would satisfy a monic equation; multiplying that equation by the appropriate power of \(s\) would give \(1\in(s)\), a contradiction. The empty fibre at \(s=0\) does not repair that failure.
+
+**Corollary E.2f (the lower-dimensional induction supplies the opens).** Fix \(n\ge1\), a dense open immersion \(j:X\hookrightarrow Y\) of finite-type \(S\)-schemes, and a constructible torsion \(\Lambda\)-sheaf \(F\), with its annihilating integer invertible on \(S\). Assume \(\dim X_K\le n\). Use the same coefficient hypotheses throughout the following induction assumption: for every integral Noetherian base and every such dense open immersion with generic source dimension at most \(n-1\), there is a dense base open over which all ordinary higher direct images are constructible, vanish outside a finite range, and commute with **every** base change. This assumption is the lower-dimensional theorem, not its geometric-fibre variant.
+
+Then, after shrinking \(S\), there is an open \(W\subset Y\) with finite closed complement over \(S\), such that the conclusions just listed hold for \(Rj_*F\) on \(W\). For each \(g:T\to S\), this includes the restriction of the actual canonical map
+\[
+h_Y^*Rj_*F\longrightarrow Rj_{T*}h_X^*F
+\tag{E.G5}
+\]
+to \(W_T=W\times_ST\), where \(h_X:X_T\to X\) and \(h_Y:Y_T\to Y\) are the projections. It does not yet assert that (E.G5) is invertible on the finite complement.
+
+**Proof: the dimension decrease for each coordinate.** On a chart in (E.G1), write \(X_a=X\cap Y_a\). The generic point of the new base \(\mathbf A^1_S\) has field \(K(T)\). For an irreducible component of \((X_a)_K\), with function field \(L\), there are two cases. If the coordinate \(p_{ai}\) is algebraic over \(K\) in \(L\), some nonzero polynomial in \(K[T]\) becomes zero, so this component has empty fibre over \(K(T)\). If it is transcendental, then
+\[
+\operatorname{trdeg}_{K(T)}L=\operatorname{trdeg}_K L-1\le n-1.
+\tag{E.G6}
+\]
+The equality follows by adjoining the coordinate to a transcendence basis and applying exchange. The dimension/transcendence-degree calculation is the monic-normalization proof in Constructible complexes, K.1 and M.1; its algebraic part applies over arbitrary fields. It identifies the dimension of the nonempty generic component with the left side of (E.G6). Nilpotents do not change prime chains. Taking the maximum over the finitely many surviving components proves the bound without assuming equal dimensions. An empty generic source is harmless.
+
+Here “algebraic” must not be replaced by “a scalar in \(K\)”. For example, over \(\mathbf Q\), the coordinate \(x\) on \(\operatorname{Spec}\mathbf Q[x,y]/(x^2-2)\) is algebraic but not rational constant. Its generic fibre over the \(x\)-line is empty, since \(T^2-2\) is inverted in \(\mathbf Q(T)\). The projection to the \(y\)-line instead has a zero-dimensional generic fibre. Both fall within the two cases above.
+
+The restriction \(X_a\hookrightarrow Y_a\), now viewed over \(\mathbf A^1_S\) through \(p_{ai}\), is still an open immersion between finite-type schemes. Its open image is dense; localization to a generic fibre retains the generic points of the components that survive. The lower-dimensional induction assumption supplies a dense open \(V_{ai}\) of that base. Lemma E.2e then makes the complement of the union (E.G2) finite after a common shrinking.
+
+**Proof: why this gives the required comparison on \(W\).** Restriction of ordinary derived direct image to an open of its target is the direct image for the restricted morphism. At sheaf level the two functors have the same sections on every etale open. At derived level the target-open restriction preserves injectives, since its left adjoint is the exact extension by zero; the corresponding source-open restriction does too. Thus an injective resolution proves the identity, and the counits identify the canonical comparisons, not merely their endpoints.
+
+For an arbitrary \(T\to S\), apply the induction conclusion over \(V_{ai}\) to the base change
+\[
+V_{ai}\times_ST\longrightarrow V_{ai}.
+\tag{E.G7}
+\]
+The resulting Cartesian source and target are exactly the original ones restricted to \(p_{ai}^{-1}(V_{ai})\times_ST\). Consequently its comparison is the restriction of (E.G5), by the just-described counit identity. Those opens cover \(W_T\). A morphism of sheaf complexes is an isomorphism if it is so on this cover, because the cohomology sheaves of its cone then vanish on every open in the cover. Constructibility is also local on a finite open cover: intersect the finitely many strata and opens to form one finite locally closed stratification. Taking the maximum of the finitely many cohomological bounds supplies a common finite bound on \(W\). This proves the stated conclusions. \(\square\)
+
+This expands the coordinate reduction in Deligne, [*SGA 4½*, Théorèmes de finitude, Lemma 2.4](https://publications.ias.edu/node/378), printed pp.239–240. In the general generic-base-change proof, E.2f supplies the good-open input of E.2d, and E.2e supplies its finite complement. The lower-dimensional induction hypothesis, the whole-space comparison, constructibility across that complement, and the coefficient passage must still be established in their proper order. These results complete the geometric reduction, not the general theorem; they do not replace arbitrary base changes by geometric fibres or discard a difficult coefficient range.
+
 **Retained proof using generic base change.** The sheaf \(L_0^\vee\) is pure of the opposite weight. Appendix D makes all \(R^qa_!L_0^\vee\) mixed. There are only finitely many nonzero such sheaves and finitely many terms in their mixed filtrations. By ordinary constructibility, shrink the base until those terms and quotients are lisse. Proposition E.2b supplies a further dense open on which the ordinary direct-image sheaves are lisse and their formation commutes with geometric fibres, by the canonical comparison maps. Intersect it with the open already chosen for the finite mixed filtrations.
 
 The relative smooth trace pairing, with fibrewise Poincaré duality, identifies lisse sheaves as

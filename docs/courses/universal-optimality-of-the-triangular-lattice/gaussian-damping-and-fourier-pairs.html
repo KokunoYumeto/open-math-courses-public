@@ -1,0 +1,488 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gaussian damping and Fourier pairs</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Universal optimality of the triangular lattice)</a><a href="the-sine-product-and-cardinal-functions.html">Previous lesson</a><a href="the-transformed-function-at-distant-nodes.html">Next lesson</a><a href="src/gaussian-damping-and-fourier-pairs.md">Editable source</a></nav><main><article><h1 id="gaussian-damping-and-fourier-pairs">Gaussian damping and Fourier pairs</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><a href="the-sine-product-and-cardinal-functions.html">The sine product and cardinal functions</a> constructs entire functions <span class="math" data-tex="\(p\)">\(p\)</span> with prescribed values and derivatives at the nodes. The normalized statement <span class="math" data-tex="\((\mathrm N_k)\)">\((\mathrm N_k)\)</span> of <a href="shells-and-gaussian-duality.html">Shells and Gaussian duality</a> is about a radial function <span class="math" data-tex="\(e^{-\pi hs}H_1(s)\)">\(e^{-\pi hs}H_1(s)\)</span> on the plane, with <span class="math" data-tex="\(s=b|x|^2\)">\(s=b|x|^2\)</span>, and its Fourier transform <span class="math" data-tex="\(e^{-\pi hs}H_2(s)\)">\(e^{-\pi hs}H_2(s)\)</span>. This lesson computes the Fourier transform of <span class="math" data-tex="\(e^{-\pi hs}p(s)\)">\(e^{-\pi hs}p(s)\)</span> for a cardinal function <span class="math" data-tex="\(p\)">\(p\)</span>, and writes down the equations that the construction has to solve.</p>
+<ul>
+<li>The Fourier transform of the planar Gaussian <span class="math" data-tex="\(e^{-\pi\gamma|x|^2}\)">\(e^{-\pi\gamma|x|^2}\)</span> with a complex parameter <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, <span class="math" data-tex="\(\operatorname{Re}\gamma&gt;0\)">\(\operatorname{Re}\gamma&gt;0\)</span>, is <span class="math" data-tex="\(\gamma^{-1}e^{-\pi|\xi|^2/\gamma}\)">\(\gamma^{-1}e^{-\pi|\xi|^2/\gamma}\)</span> (Proposition 1.2).</li>
+<li>For a cardinal function <span class="math" data-tex="\(p\)">\(p\)</span> there is an entire function <span class="math" data-tex="\(K_p\)">\(K_p\)</span>, given by an explicit integral, such that <span class="math" data-tex="\(e^{-\pi hs}p(s)\)">\(e^{-\pi hs}p(s)\)</span> and <span class="math" data-tex="\(e^{-\pi hs}K_p(s)\)">\(e^{-\pi hs}K_p(s)\)</span> are Fourier transforms of each other (Theorem 3.2). The function <span class="math" data-tex="\(K_p\)">\(K_p\)</span> and all its derivatives decay exponentially on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>.</li>
+<li>For two coefficient lists, <span class="math" data-tex="\(H_1=p_1+K_{p_2}\)">\(H_1=p_1+K_{p_2}\)</span> and <span class="math" data-tex="\(H_2=p_2+K_{p_1}\)">\(H_2=p_2+K_{p_1}\)</span> give an admissible radial function and its transform. So <span class="math" data-tex="\((\mathrm N_k)\)">\((\mathrm N_k)\)</span> holds as soon as two lists are found for which <span class="math" data-tex="\(H_1\)">\(H_1\)</span> and <span class="math" data-tex="\(H_2\)">\(H_2\)</span> have the required contacts and signs (Corollary 3.3).</li>
+<li>The contact conditions form a linear system for the two lists, written with an operator <span class="math" data-tex="\(S\)">\(S\)</span> on lists. The operator <span class="math" data-tex="\(S\)">\(S\)</span> is bounded, with norm less than <span class="math" data-tex="\(4000\)">\(4000\)</span> (Proposition 4.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-T, Section 2, the parts on Gaussian damping and on the jet operator]. It uses Fubini's theorem and dominated convergence (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>) and power series (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50">Complex Analysis</a>).</p>
+<h2 id="1-gaussians-with-a-complex-parameter">1. Gaussians with a complex parameter</h2>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(U\)">\(U\)</span> be an open interval of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or a convex open subset of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and <span class="math" data-tex="\(F\colon\mathbb R\times U\to\mathbb C\)">\(F\colon\mathbb R\times U\to\mathbb C\)</span> a function with these properties: for every <span class="math" data-tex="\(u\in U\)">\(u\in U\)</span> the function <span class="math" data-tex="\(x\mapsto F(x,u)\)">\(x\mapsto F(x,u)\)</span> is integrable; for every <span class="math" data-tex="\(x\)">\(x\)</span> the function <span class="math" data-tex="\(u\mapsto F(x,u)\)">\(u\mapsto F(x,u)\)</span> is differentiable (complex differentiable if <span class="math" data-tex="\(U\subset\mathbb C\)">\(U\subset\mathbb C\)</span>), with derivative <span class="math" data-tex="\(F_u(x,u)\)">\(F_u(x,u)\)</span>; and there is an integrable function <span class="math" data-tex="\(G\)">\(G\)</span> with <span class="math" data-tex="\(|F_u(x,u)|\le G(x)\)">\(|F_u(x,u)|\le G(x)\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span>. Then <span class="math" data-tex="\(\Phi(u)=\int F(x,u)\,dx\)">\(\Phi(u)=\int F(x,u)\,dx\)</span> is differentiable on <span class="math" data-tex="\(U\)">\(U\)</span> (complex differentiable if <span class="math" data-tex="\(U\subset\mathbb C\)">\(U\subset\mathbb C\)</span>), and
+<span class="math math-display" data-tex="\[
+\Phi&#x27;(u)=\int F_u(x,u)\,dx .
+\]">\[
+\Phi&#x27;(u)=\int F_u(x,u)\,dx .
+\]</span></p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(x\)">\(x\)</span> and two points <span class="math" data-tex="\(u\ne u&#x27;\)">\(u\ne u&#x27;\)</span> of <span class="math" data-tex="\(U\)">\(U\)</span>. The function <span class="math" data-tex="\(\varphi(\tau)=F(x,u+\tau(u&#x27;-u))\)">\(\varphi(\tau)=F(x,u+\tau(u&#x27;-u))\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is differentiable with <span class="math" data-tex="\(|\varphi&#x27;(\tau)|\le|u&#x27;-u|\,G(x)\)">\(|\varphi&#x27;(\tau)|\le|u&#x27;-u|\,G(x)\)</span>. Choose a complex number <span class="math" data-tex="\(\omega\)">\(\omega\)</span> of absolute value <span class="math" data-tex="\(1\)">\(1\)</span> with <span class="math" data-tex="\(\omega(\varphi(1)-\varphi(0))=|\varphi(1)-\varphi(0)|\)">\(\omega(\varphi(1)-\varphi(0))=|\varphi(1)-\varphi(0)|\)</span>. The mean value theorem for the real function <span class="math" data-tex="\(\operatorname{Re}(\omega\varphi)\)">\(\operatorname{Re}(\omega\varphi)\)</span> gives
+<span class="math math-display" data-tex="\[
+|F(x,u&#x27;)-F(x,u)|\le|u&#x27;-u|\,G(x).
+\]">\[
+|F(x,u&#x27;)-F(x,u)|\le|u&#x27;-u|\,G(x).
+\]</span>
+So the difference quotients <span class="math" data-tex="\((F(x,u&#x27;)-F(x,u))/(u&#x27;-u)\)">\((F(x,u&#x27;)-F(x,u))/(u&#x27;-u)\)</span> are bounded by <span class="math" data-tex="\(G(x)\)">\(G(x)\)</span>, and they converge to <span class="math" data-tex="\(F_u(x,u)\)">\(F_u(x,u)\)</span> as <span class="math" data-tex="\(u&#x27;\to u\)">\(u&#x27;\to u\)</span>. By dominated convergence <span class="math" data-tex="\((\Phi(u&#x27;)-\Phi(u))/(u&#x27;-u)\)">\((\Phi(u&#x27;)-\Phi(u))/(u&#x27;-u)\)</span> converges to <span class="math" data-tex="\(\int F_u(x,u)\,dx\)">\(\int F_u(x,u)\,dx\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 1.2.</strong> Let <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> be a complex number with <span class="math" data-tex="\(\operatorname{Re}\gamma&gt;0\)">\(\operatorname{Re}\gamma&gt;0\)</span>. For every <span class="math" data-tex="\(\xi\in\mathbb R^2\)">\(\xi\in\mathbb R^2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{\mathbb R^2}e^{-\pi\gamma|x|^2}e^{-2\pi ix\cdot\xi}\,dx\\
+=\gamma^{-1}e^{-\pi|\xi|^2/\gamma}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int_{\mathbb R^2}e^{-\pi\gamma|x|^2}e^{-2\pi ix\cdot\xi}\,dx\\
+=\gamma^{-1}e^{-\pi|\xi|^2/\gamma}.
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\rho=\operatorname{Re}\gamma\)">\(\rho=\operatorname{Re}\gamma\)</span>. For real <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> write <span class="math" data-tex="\(E_\xi(x)=e^{-2\pi ix\xi}\)">\(E_\xi(x)=e^{-2\pi ix\xi}\)</span>, and let
+<span class="math math-display" data-tex="\[
+F_\gamma(\xi)=\int_{\mathbb R}e^{-\pi\gamma x^2}E_\xi(x)\,dx .
+\]">\[
+F_\gamma(\xi)=\int_{\mathbb R}e^{-\pi\gamma x^2}E_\xi(x)\,dx .
+\]</span>
+The integrand has absolute value <span class="math" data-tex="\(e^{-\pi\rho x^2}\)">\(e^{-\pi\rho x^2}\)</span>.</p>
+<p><em>Step 1: the dependence on <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</em> By Lemma 1.1 with the parameter <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and <span class="math" data-tex="\(G(x)=2\pi|x|e^{-\pi\rho x^2}\)">\(G(x)=2\pi|x|e^{-\pi\rho x^2}\)</span>,
+<span class="math math-display" data-tex="\[
+F_\gamma&#x27;(\xi)=\int(-2\pi ix)\,e^{-\pi\gamma x^2}E_\xi(x)\,dx .
+\]">\[
+F_\gamma&#x27;(\xi)=\int(-2\pi ix)\,e^{-\pi\gamma x^2}E_\xi(x)\,dx .
+\]</span>
+Here <span class="math" data-tex="\((-2\pi ix)e^{-\pi\gamma x^2}\)">\((-2\pi ix)e^{-\pi\gamma x^2}\)</span> is the derivative in <span class="math" data-tex="\(x\)">\(x\)</span> of <span class="math" data-tex="\((i/\gamma)e^{-\pi\gamma x^2}\)">\((i/\gamma)e^{-\pi\gamma x^2}\)</span>, and the derivative of <span class="math" data-tex="\(E_\xi\)">\(E_\xi\)</span> is <span class="math" data-tex="\(-2\pi i\xi E_\xi\)">\(-2\pi i\xi E_\xi\)</span>. Integrate by parts over <span class="math" data-tex="\([-R,R]\)">\([-R,R]\)</span> and let <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>; the boundary terms have absolute value <span class="math" data-tex="\(e^{-\pi\rho R^2}/|\gamma|\)">\(e^{-\pi\rho R^2}/|\gamma|\)</span> and tend to <span class="math" data-tex="\(0\)">\(0\)</span>. The result is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_\gamma&#x27;(\xi)&amp;=-\frac i\gamma\int e^{-\pi\gamma x^2}E_\xi&#x27;(x)\,dx\\
+&amp;=-\frac{2\pi\xi}\gamma\,F_\gamma(\xi).
+\end{aligned}
+\]">\[
+\begin{aligned}
+F_\gamma&#x27;(\xi)&amp;=-\frac i\gamma\int e^{-\pi\gamma x^2}E_\xi&#x27;(x)\,dx\\
+&amp;=-\frac{2\pi\xi}\gamma\,F_\gamma(\xi).
+\end{aligned}
+\]</span>
+So the derivative of <span class="math" data-tex="\(F_\gamma(\xi)e^{\pi\xi^2/\gamma}\)">\(F_\gamma(\xi)e^{\pi\xi^2/\gamma}\)</span> is zero, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F_\gamma(\xi)=I(\gamma)\,e^{-\pi\xi^2/\gamma},\\
+I(\gamma)=\int_{\mathbb R}e^{-\pi\gamma x^2}\,dx .
+\end{gathered}
+\]">\[
+\begin{gathered}
+F_\gamma(\xi)=I(\gamma)\,e^{-\pi\xi^2/\gamma},\\
+I(\gamma)=\int_{\mathbb R}e^{-\pi\gamma x^2}\,dx .
+\end{gathered}
+\]</span></p>
+<p><em>Step 2: <span class="math" data-tex="\(\gamma I(\gamma)^2=1\)">\(\gamma I(\gamma)^2=1\)</span>.</em> Let <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. On the half-plane <span class="math" data-tex="\(\operatorname{Re}\gamma&gt;\delta\)">\(\operatorname{Re}\gamma&gt;\delta\)</span>, Lemma 1.1 with the parameter <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and <span class="math" data-tex="\(G(x)=\pi x^2e^{-\pi\delta x^2}\)">\(G(x)=\pi x^2e^{-\pi\delta x^2}\)</span> shows that <span class="math" data-tex="\(I\)">\(I\)</span> is complex differentiable with
+<span class="math math-display" data-tex="\[
+I&#x27;(\gamma)=-\pi\int x^2e^{-\pi\gamma x^2}\,dx .
+\]">\[
+I&#x27;(\gamma)=-\pi\int x^2e^{-\pi\gamma x^2}\,dx .
+\]</span>
+Since <span class="math" data-tex="\(xe^{-\pi\gamma x^2}\)">\(xe^{-\pi\gamma x^2}\)</span> is the derivative of <span class="math" data-tex="\(-(2\pi\gamma)^{-1}e^{-\pi\gamma x^2}\)">\(-(2\pi\gamma)^{-1}e^{-\pi\gamma x^2}\)</span>, integration by parts gives
+<span class="math math-display" data-tex="\[
+\int x\cdot xe^{-\pi\gamma x^2}\,dx=\frac1{2\pi\gamma}\,I(\gamma).
+\]">\[
+\int x\cdot xe^{-\pi\gamma x^2}\,dx=\frac1{2\pi\gamma}\,I(\gamma).
+\]</span>
+So <span class="math" data-tex="\(I&#x27;(\gamma)=-I(\gamma)/(2\gamma)\)">\(I&#x27;(\gamma)=-I(\gamma)/(2\gamma)\)</span>, and the derivative of <span class="math" data-tex="\(\gamma I(\gamma)^2\)">\(\gamma I(\gamma)^2\)</span> is <span class="math" data-tex="\(I^2+2\gamma II&#x27;=0\)">\(I^2+2\gamma II&#x27;=0\)</span>. Two points of the half-plane <span class="math" data-tex="\(\operatorname{Re}\gamma&gt;0\)">\(\operatorname{Re}\gamma&gt;0\)</span> are joined by a segment, which lies in a half-plane <span class="math" data-tex="\(\operatorname{Re}\gamma&gt;\delta\)">\(\operatorname{Re}\gamma&gt;\delta\)</span>; along the segment <span class="math" data-tex="\(\gamma I(\gamma)^2\)">\(\gamma I(\gamma)^2\)</span> has derivative zero. So <span class="math" data-tex="\(\gamma I(\gamma)^2\)">\(\gamma I(\gamma)^2\)</span> is constant. At <span class="math" data-tex="\(\gamma=1\)">\(\gamma=1\)</span> its value is <span class="math" data-tex="\(1\)">\(1\)</span>, because <span class="math" data-tex="\(\int e^{-\pi x^2}dx=1\)">\(\int e^{-\pi x^2}dx=1\)</span> (<a href="../HA-LCA/prerequisites/src/real-variable-calculations.html">Real-variable calculations for the Fourier examples</a>, Theorem 2.1, at the frequency <span class="math" data-tex="\(0\)">\(0\)</span>).</p>
+<p><em>Step 3: two variables.</em> The integrand of the planar integral has absolute value <span class="math" data-tex="\(e^{-\pi\rho|x|^2}\)">\(e^{-\pi\rho|x|^2}\)</span>, which is integrable over <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>. By Fubini's theorem the integral is
+<span class="math math-display" data-tex="\[
+F_\gamma(\xi_1)F_\gamma(\xi_2)=I(\gamma)^2e^{-\pi|\xi|^2/\gamma},
+\]">\[
+F_\gamma(\xi_1)F_\gamma(\xi_2)=I(\gamma)^2e^{-\pi|\xi|^2/\gamma},
+\]</span>
+and <span class="math" data-tex="\(I(\gamma)^2=\gamma^{-1}\)">\(I(\gamma)^2=\gamma^{-1}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Only the square of <span class="math" data-tex="\(I(\gamma)\)">\(I(\gamma)\)</span> occurs, so no choice of a square root of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is needed.</p>
+<h2 id="2-the-transform-of-a-damped-exponential">2. The transform of a damped exponential</h2>
+<p>The constants of the construction are
+<span class="math math-display" data-tex="\[
+b=\frac{\sqrt3}2,\quad h=\frac25,\quad B=\frac1{b^2}=\frac43 .
+\]">\[
+b=\frac{\sqrt3}2,\quad h=\frac25,\quad B=\frac1{b^2}=\frac43 .
+\]</span>
+For real <span class="math" data-tex="\(t\)">\(t\)</span> let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\gamma_t=b(h-it),\qquad\lambda(t)=\frac1{\gamma_t},\\
+z(t)=\frac{iB}{h-it}-ih .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\gamma_t=b(h-it),\qquad\lambda(t)=\frac1{\gamma_t},\\
+z(t)=\frac{iB}{h-it}-ih .
+\end{gathered}
+\]</span>
+The radial coordinate <span class="math" data-tex="\(s=b|x|^2\)">\(s=b|x|^2\)</span> is used for the variable of a function and for the variable of its Fourier transform.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(t\)">\(t\)</span> be real.</p>
+<ol>
+<li><span class="math" data-tex="\(e^{-\pi hs}e^{i\pi ts}=e^{-\pi\gamma_t|x|^2}\)">\(e^{-\pi hs}e^{i\pi ts}=e^{-\pi\gamma_t|x|^2}\)</span> for <span class="math" data-tex="\(x\in\mathbb R^2\)">\(x\in\mathbb R^2\)</span>, <span class="math" data-tex="\(s=b|x|^2\)">\(s=b|x|^2\)</span>.</li>
+<li>The Fourier transform of <span class="math" data-tex="\(x\mapsto e^{-\pi hs}e^{i\pi ts}\)">\(x\mapsto e^{-\pi hs}e^{i\pi ts}\)</span> is <span class="math" data-tex="\(x\mapsto e^{-\pi hs}\lambda(t)e^{i\pi z(t)s}\)">\(x\mapsto e^{-\pi hs}\lambda(t)e^{i\pi z(t)s}\)</span>.</li>
+<li>The Fourier transform of <span class="math" data-tex="\(x\mapsto e^{-\pi hs}\lambda(t)e^{i\pi z(t)s}\)">\(x\mapsto e^{-\pi hs}\lambda(t)e^{i\pi z(t)s}\)</span> is <span class="math" data-tex="\(x\mapsto e^{-\pi hs}e^{i\pi ts}\)">\(x\mapsto e^{-\pi hs}e^{i\pi ts}\)</span>.</li>
+<li>With <span class="math" data-tex="\(r=t^2+h^2\)">\(r=t^2+h^2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Re}\frac1{\gamma_t}=\frac h{br},\qquad|\lambda(t)|=\frac1{b\sqrt r},\\
+\operatorname{Im}z(t)=h\Bigl(\frac Br-1\Bigr),\\
+|z(t)|^2=h^2+\frac{B^2-2Bh^2}r .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Re}\frac1{\gamma_t}=\frac h{br},\qquad|\lambda(t)|=\frac1{b\sqrt r},\\
+\operatorname{Im}z(t)=h\Bigl(\frac Br-1\Bigr),\\
+|z(t)|^2=h^2+\frac{B^2-2Bh^2}r .
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(|t|\le1\)">\(|t|\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\lambda(t)|\le\frac5{\sqrt3}&lt;3,\qquad|z(t)|\le\frac{44}{15},\\
+\operatorname{Im}z(t)\ge\frac{26}{435},\\
+\operatorname{Re}\frac1{\gamma_t}\ge\frac{20}{29\sqrt3}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\lambda(t)|\le\frac5{\sqrt3}&lt;3,\qquad|z(t)|\le\frac{44}{15},\\
+\operatorname{Im}z(t)\ge\frac{26}{435},\\
+\operatorname{Re}\frac1{\gamma_t}\ge\frac{20}{29\sqrt3}.
+\end{gathered}
+\]</span></li>
+</ol>
+<p><strong>Proof.</strong> (1) <span class="math" data-tex="\(\gamma_t|x|^2=(h-it)\,b|x|^2=hs-its\)">\(\gamma_t|x|^2=(h-it)\,b|x|^2=hs-its\)</span>.</p>
+<p>(2) By (1) and Proposition 1.2 with <span class="math" data-tex="\(\gamma=\gamma_t\)">\(\gamma=\gamma_t\)</span>, whose real part is <span class="math" data-tex="\(bh&gt;0\)">\(bh&gt;0\)</span>, the transform at <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is <span class="math" data-tex="\(\lambda(t)e^{-\pi|\xi|^2/\gamma_t}\)">\(\lambda(t)e^{-\pi|\xi|^2/\gamma_t}\)</span>. With <span class="math" data-tex="\(s=b|\xi|^2\)">\(s=b|\xi|^2\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{|\xi|^2}{\gamma_t}=\frac s{b^2(h-it)}=\frac{Bs}{h-it},
+\]">\[
+\frac{|\xi|^2}{\gamma_t}=\frac s{b^2(h-it)}=\frac{Bs}{h-it},
+\]</span>
+and <span class="math" data-tex="\(B/(h-it)=h-iz(t)\)">\(B/(h-it)=h-iz(t)\)</span> by the definition of <span class="math" data-tex="\(z\)">\(z\)</span>. So <span class="math" data-tex="\(e^{-\pi|\xi|^2/\gamma_t}=e^{-\pi hs}e^{i\pi z(t)s}\)">\(e^{-\pi|\xi|^2/\gamma_t}=e^{-\pi hs}e^{i\pi z(t)s}\)</span>.</p>
+<p>(3) By the computation in (2) the function is <span class="math" data-tex="\(x\mapsto\lambda(t)e^{-\pi|x|^2/\gamma_t}\)">\(x\mapsto\lambda(t)e^{-\pi|x|^2/\gamma_t}\)</span>. The real part of <span class="math" data-tex="\(1/\gamma_t\)">\(1/\gamma_t\)</span> is positive. Proposition 1.2 with the parameter <span class="math" data-tex="\(1/\gamma_t\)">\(1/\gamma_t\)</span> gives the transform <span class="math" data-tex="\(\lambda(t)\gamma_t\,e^{-\pi\gamma_t|\xi|^2}=e^{-\pi\gamma_t|\xi|^2}\)">\(\lambda(t)\gamma_t\,e^{-\pi\gamma_t|\xi|^2}=e^{-\pi\gamma_t|\xi|^2}\)</span>, and (1) applies.</p>
+<p>(4) Since <span class="math" data-tex="\(1/(h-it)=(h+it)/r\)">\(1/(h-it)=(h+it)/r\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac1{\gamma_t}=\frac{h+it}{br},\\
+z(t)=-\frac{Bt}r+ih\Bigl(\frac Br-1\Bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac1{\gamma_t}=\frac{h+it}{br},\\
+z(t)=-\frac{Bt}r+ih\Bigl(\frac Br-1\Bigr).
+\end{gathered}
+\]</span>
+This gives the first three formulas, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|z(t)|^2&amp;=\frac{B^2t^2}{r^2}+\frac{B^2h^2}{r^2}-\frac{2Bh^2}r+h^2\\
+&amp;=\frac{B^2}r-\frac{2Bh^2}r+h^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|z(t)|^2&amp;=\frac{B^2t^2}{r^2}+\frac{B^2h^2}{r^2}-\frac{2Bh^2}r+h^2\\
+&amp;=\frac{B^2}r-\frac{2Bh^2}r+h^2 .
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(B^2-2Bh^2=\tfrac{16}9-\tfrac{32}{75}=\tfrac{304}{225}&gt;0\)">\(B^2-2Bh^2=\tfrac{16}9-\tfrac{32}{75}=\tfrac{304}{225}&gt;0\)</span>. So all four quantities decrease when <span class="math" data-tex="\(|t|\)">\(|t|\)</span> increases. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, where <span class="math" data-tex="\(r=h^2\)">\(r=h^2\)</span>: <span class="math" data-tex="\(|\lambda|=1/(bh)=5/\sqrt3\)">\(|\lambda|=1/(bh)=5/\sqrt3\)</span>, and <span class="math" data-tex="\(25/3&lt;9\)">\(25/3&lt;9\)</span>; <span class="math" data-tex="\(|z|=B/h-h=\tfrac{10}3-\tfrac25=\tfrac{44}{15}\)">\(|z|=B/h-h=\tfrac{10}3-\tfrac25=\tfrac{44}{15}\)</span>. At <span class="math" data-tex="\(|t|=1\)">\(|t|=1\)</span>, where <span class="math" data-tex="\(r=\tfrac{29}{25}\)">\(r=\tfrac{29}{25}\)</span>: <span class="math" data-tex="\(B/r=\tfrac{100}{87}\)">\(B/r=\tfrac{100}{87}\)</span>, so <span class="math" data-tex="\(\operatorname{Im}z=\tfrac25\cdot\tfrac{13}{87}=\tfrac{26}{435}\)">\(\operatorname{Im}z=\tfrac25\cdot\tfrac{13}{87}=\tfrac{26}{435}\)</span>; and <span class="math" data-tex="\(h/(br)=\tfrac25\cdot\tfrac2{\sqrt3}\cdot\tfrac{25}{29}=\tfrac{20}{29\sqrt3}\)">\(h/(br)=\tfrac25\cdot\tfrac2{\sqrt3}\cdot\tfrac{25}{29}=\tfrac{20}{29\sqrt3}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So damping the exponential <span class="math" data-tex="\(e^{i\pi ts}\)">\(e^{i\pi ts}\)</span> by <span class="math" data-tex="\(e^{-\pi hs}\)">\(e^{-\pi hs}\)</span> gives a Gaussian with a complex parameter, and the transform is again the damping factor times an exponential, with the complex frequency <span class="math" data-tex="\(z(t)\)">\(z(t)\)</span> in the upper half-plane.</p>
+<h2 id="3-the-transformed-function">3. The transformed function</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(m\)">\(m\)</span> be an integrable function on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, and <span class="math" data-tex="\(v,w\)">\(v,w\)</span> bounded measurable complex functions on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Then
+<span class="math math-display" data-tex="\[
+\Phi(s)=\int_{-1}^1m(t)\,v(t)\,e^{i\pi w(t)s}\,dt
+\]">\[
+\Phi(s)=\int_{-1}^1m(t)\,v(t)\,e^{i\pi w(t)s}\,dt
+\]</span>
+is an entire function of <span class="math" data-tex="\(s\)">\(s\)</span>, and for every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi^{(j)}(s)=\int_{-1}^1&amp;m(t)\,v(t)\,(i\pi w(t))^j\\
+&amp;\cdot e^{i\pi w(t)s}\,dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi^{(j)}(s)=\int_{-1}^1&amp;m(t)\,v(t)\,(i\pi w(t))^j\\
+&amp;\cdot e^{i\pi w(t)s}\,dt .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a bound for <span class="math" data-tex="\(|w|\)">\(|w|\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> a bound for <span class="math" data-tex="\(|v|\)">\(|v|\)</span>. The partial sums of the series <span class="math" data-tex="\(e^{i\pi w(t)s}=\sum_j(i\pi w(t)s)^j/j!\)">\(e^{i\pi w(t)s}=\sum_j(i\pi w(t)s)^j/j!\)</span> are bounded by <span class="math" data-tex="\(e^{\pi M|s|}\)">\(e^{\pi M|s|}\)</span>. By dominated convergence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi(s)=\sum_{j\ge0}a_js^j,\\
+a_j=\frac{(i\pi)^j}{j!}\int_{-1}^1m(t)\,v(t)\,w(t)^j\,dt,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Phi(s)=\sum_{j\ge0}a_js^j,\\
+a_j=\frac{(i\pi)^j}{j!}\int_{-1}^1m(t)\,v(t)\,w(t)^j\,dt,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(|a_j|\le(\pi M)^jN\int|m|/j!\)">\(|a_j|\le(\pi M)^jN\int|m|/j!\)</span>. So the power series converges for all <span class="math" data-tex="\(s\)">\(s\)</span>, and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is entire. Differentiating the series <span class="math" data-tex="\(j\)">\(j\)</span> times term by term gives the power series, obtained in the same way, of the integral with <span class="math" data-tex="\(v\)">\(v\)</span> replaced by <span class="math" data-tex="\(v\cdot(i\pi w)^j\)">\(v\cdot(i\pi w)^j\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Let <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span> be a coefficient list with entries <span class="math" data-tex="\(C,c_n,d_n\)">\(C,c_n,d_n\)</span>, let <span class="math" data-tex="\(W=\sum_n(|c_n|+|d_n|)\)">\(W=\sum_n(|c_n|+|d_n|)\)</span>, and let <span class="math" data-tex="\(p\)">\(p\)</span> be its cardinal function. By Theorem 2.2 of <a href="the-sine-product-and-cardinal-functions.html">The sine product and cardinal functions</a> there is an integrable function <span class="math" data-tex="\(m\)">\(m\)</span> on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p(s)=C\,P(s)+\int_{-1}^1m(t)\,e^{i\pi ts}\,dt,\\
+\int_{-1}^1|m(t)|\,dt\le36\,W .
+\end{gathered}
+\]">\[
+\begin{gathered}
+p(s)=C\,P(s)+\int_{-1}^1m(t)\,e^{i\pi ts}\,dt,\\
+\int_{-1}^1|m(t)|\,dt\le36\,W .
+\end{gathered}
+\]</span>
+Recall <span class="math" data-tex="\(P(s)=\sum_{l=-6}^6P_le^{i\pi t_ls}\)">\(P(s)=\sum_{l=-6}^6P_le^{i\pi t_ls}\)</span> with <span class="math" data-tex="\(t_l=l/6\)">\(t_l=l/6\)</span> and <span class="math" data-tex="\(\sum_l|P_l|=25\)">\(\sum_l|P_l|=25\)</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K(s)={}&amp;C\sum_{l=-6}^6P_l\,\lambda(t_l)\,e^{i\pi z(t_l)s}\\
+&amp;+\int_{-1}^1m(t)\,\lambda(t)\,e^{i\pi z(t)s}\,dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+K(s)={}&amp;C\sum_{l=-6}^6P_l\,\lambda(t_l)\,e^{i\pi z(t_l)s}\\
+&amp;+\int_{-1}^1m(t)\,\lambda(t)\,e^{i\pi z(t)s}\,dt .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(K\)">\(K\)</span> is obtained from <span class="math" data-tex="\(p\)">\(p\)</span> by replacing every exponential <span class="math" data-tex="\(e^{i\pi ts}\)">\(e^{i\pi ts}\)</span> by <span class="math" data-tex="\(\lambda(t)e^{i\pi z(t)s}\)">\(\lambda(t)e^{i\pi z(t)s}\)</span>. Let
+<span class="math math-display" data-tex="\[
+q=\frac{26\pi}{435},\qquad V=25|C|+36\,W .
+\]">\[
+q=\frac{26\pi}{435},\qquad V=25|C|+36\,W .
+\]</span>
+Since <span class="math" data-tex="\(\pi&gt;3.14\)">\(\pi&gt;3.14\)</span>, <span class="math" data-tex="\(q&gt;0.187\)">\(q&gt;0.187\)</span>.</p>
+<p><strong>Theorem 3.2.</strong> With these notations:</p>
+<ol>
+<li><span class="math" data-tex="\(K\)">\(K\)</span> is entire, and for every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> and every real <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+|K^{(j)}(s)|\le3\Bigl(\frac{44\pi}{15}\Bigr)^jV\,e^{-qs}.
+\]">\[
+|K^{(j)}(s)|\le3\Bigl(\frac{44\pi}{15}\Bigr)^jV\,e^{-qs}.
+\]</span></li>
+<li>The functions <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> defined, with <span class="math" data-tex="\(s=b|x|^2\)">\(s=b|x|^2\)</span>, by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(x)=e^{-\pi hs}p(s),\\
+g(x)=e^{-\pi hs}K(s)
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(x)=e^{-\pi hs}p(s),\\
+g(x)=e^{-\pi hs}K(s)
+\end{gathered}
+\]</span>
+are continuous and bounded in absolute value by <span class="math" data-tex="\(3Ve^{-\pi hb|x|^2}\)">\(3Ve^{-\pi hb|x|^2}\)</span>. Each is the Fourier transform of the other: <span class="math" data-tex="\(\widehat f=g\)">\(\widehat f=g\)</span> and <span class="math" data-tex="\(\widehat g=f\)">\(\widehat g=f\)</span>.</li>
+<li><span class="math" data-tex="\(K\)">\(K\)</span> is real on the real axis. It is determined by <span class="math" data-tex="\(p\)">\(p\)</span>: another choice of <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> representing the same function <span class="math" data-tex="\(p\)">\(p\)</span> gives the same <span class="math" data-tex="\(K\)">\(K\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) The integral is entire by Lemma 3.1 with <span class="math" data-tex="\(v=\lambda\)">\(v=\lambda\)</span> and <span class="math" data-tex="\(w=z\)">\(w=z\)</span>, which are continuous on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>; the finite sum is entire. For real <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span> and <span class="math" data-tex="\(|t|\le1\)">\(|t|\le1\)</span>, Lemma 2.1(4) gives
+<span class="math math-display" data-tex="\[
+|e^{i\pi z(t)s}|=e^{-\pi s\operatorname{Im}z(t)}\le e^{-qs},
+\]">\[
+|e^{i\pi z(t)s}|=e^{-\pi s\operatorname{Im}z(t)}\le e^{-qs},
+\]</span>
+and <span class="math" data-tex="\(|\lambda(t)|&lt;3\)">\(|\lambda(t)|&lt;3\)</span>, <span class="math" data-tex="\(|\pi z(t)|\le44\pi/15\)">\(|\pi z(t)|\le44\pi/15\)</span>. With the formula for the derivatives in Lemma 3.1, and the same for the finite sum,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|K^{(j)}(s)|\le{}&amp;3\Bigl(\frac{44\pi}{15}\Bigr)^je^{-qs}\\
+&amp;\cdot\Bigl(25|C|+\int|m|\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+|K^{(j)}(s)|\le{}&amp;3\Bigl(\frac{44\pi}{15}\Bigr)^je^{-qs}\\
+&amp;\cdot\Bigl(25|C|+\int|m|\Bigr),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(25|C|+\int|m|\le V\)">\(25|C|+\int|m|\le V\)</span>.</p>
+<p>(2) The function <span class="math" data-tex="\(p\)">\(p\)</span> is entire, so <span class="math" data-tex="\(f\)">\(f\)</span> is continuous, and <span class="math" data-tex="\(|p(s)|\le25|C|+\int|m|\le V\)">\(|p(s)|\le25|C|+\int|m|\le V\)</span> for real <span class="math" data-tex="\(s\)">\(s\)</span>. The bound for <span class="math" data-tex="\(g\)">\(g\)</span> is (1) with <span class="math" data-tex="\(j=0\)">\(j=0\)</span>. By Lemma 2.1(1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(x)={}&amp;C\sum_lP_l\,e^{-\pi\gamma_{t_l}|x|^2}\\
+&amp;+\int_{-1}^1m(t)\,e^{-\pi\gamma_t|x|^2}\,dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+f(x)={}&amp;C\sum_lP_l\,e^{-\pi\gamma_{t_l}|x|^2}\\
+&amp;+\int_{-1}^1m(t)\,e^{-\pi\gamma_t|x|^2}\,dt .
+\end{aligned}
+\]</span>
+For fixed <span class="math" data-tex="\(\xi\)">\(\xi\)</span> the function <span class="math" data-tex="\((t,x)\mapsto m(t)e^{-\pi\gamma_t|x|^2}e^{-2\pi ix\cdot\xi}\)">\((t,x)\mapsto m(t)e^{-\pi\gamma_t|x|^2}e^{-2\pi ix\cdot\xi}\)</span> has absolute value <span class="math" data-tex="\(|m(t)|e^{-\pi bh|x|^2}\)">\(|m(t)|e^{-\pi bh|x|^2}\)</span>, which is integrable over <span class="math" data-tex="\([-1,1]\times\mathbb R^2\)">\([-1,1]\times\mathbb R^2\)</span>. By Fubini's theorem the Fourier transform of <span class="math" data-tex="\(f\)">\(f\)</span> is obtained by transforming the Gaussians under the sum and under the integral. By Lemma 2.1(2) the result is <span class="math" data-tex="\(e^{-\pi hs}K(s)\)">\(e^{-\pi hs}K(s)\)</span> with <span class="math" data-tex="\(s=b|\xi|^2\)">\(s=b|\xi|^2\)</span>. So <span class="math" data-tex="\(\widehat f=g\)">\(\widehat f=g\)</span>.</p>
+<p>In the same way
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g(x)={}&amp;C\sum_lP_l\,\lambda(t_l)\,e^{-\pi|x|^2/\gamma_{t_l}}\\
+&amp;+\int_{-1}^1m(t)\,\lambda(t)\,e^{-\pi|x|^2/\gamma_t}\,dt,
+\end{aligned}
+\]">\[
+\begin{aligned}
+g(x)={}&amp;C\sum_lP_l\,\lambda(t_l)\,e^{-\pi|x|^2/\gamma_{t_l}}\\
+&amp;+\int_{-1}^1m(t)\,\lambda(t)\,e^{-\pi|x|^2/\gamma_t}\,dt,
+\end{aligned}
+\]</span>
+and the integrand has absolute value at most <span class="math" data-tex="\(3|m(t)|e^{-\pi\rho|x|^2}\)">\(3|m(t)|e^{-\pi\rho|x|^2}\)</span> with <span class="math" data-tex="\(\rho=20/(29\sqrt3)\)">\(\rho=20/(29\sqrt3)\)</span>, by Lemma 2.1(4). Fubini's theorem and Lemma 2.1(3) give <span class="math" data-tex="\(\widehat g=f\)">\(\widehat g=f\)</span>.</p>
+<p>(3) The function <span class="math" data-tex="\(p\)">\(p\)</span> is real on the real axis, so <span class="math" data-tex="\(f\)">\(f\)</span> is real, and <span class="math" data-tex="\(f\)">\(f\)</span> is even. Hence
+<span class="math math-display" data-tex="\[
+\overline{\widehat f(\xi)}=\int f(x)\,e^{2\pi ix\cdot\xi}\,dx=\widehat f(-\xi),
+\]">\[
+\overline{\widehat f(\xi)}=\int f(x)\,e^{2\pi ix\cdot\xi}\,dx=\widehat f(-\xi),
+\]</span>
+and <span class="math" data-tex="\(\widehat f(-\xi)=\widehat f(\xi)\)">\(\widehat f(-\xi)=\widehat f(\xi)\)</span> because <span class="math" data-tex="\(g\)">\(g\)</span> depends only on <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span>. So <span class="math" data-tex="\(K(s)\)">\(K(s)\)</span> is real for <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>. Then all derivatives of <span class="math" data-tex="\(K\)">\(K\)</span> at the point <span class="math" data-tex="\(1\)">\(1\)</span> are real. The entire function <span class="math" data-tex="\(K\)">\(K\)</span> is the sum of its Taylor series at <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(K\)">\(K\)</span> is real on the whole real axis.</p>
+<p>If <span class="math" data-tex="\(C&#x27;,m&#x27;\)">\(C&#x27;,m&#x27;\)</span> is another choice with the same <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> the function it defines, then the proof of <span class="math" data-tex="\(\widehat f=g\)">\(\widehat f=g\)</span> in (2) applies to <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> as well: for <span class="math" data-tex="\(s=b|\xi|^2\)">\(s=b|\xi|^2\)</span>, both <span class="math" data-tex="\(e^{-\pi hs}K&#x27;(s)\)">\(e^{-\pi hs}K&#x27;(s)\)</span> and <span class="math" data-tex="\(e^{-\pi hs}K(s)\)">\(e^{-\pi hs}K(s)\)</span> are equal to <span class="math" data-tex="\(\widehat f(\xi)\)">\(\widehat f(\xi)\)</span>. So <span class="math" data-tex="\(K&#x27;=K\)">\(K&#x27;=K\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>; the two entire functions have the same Taylor series at <span class="math" data-tex="\(1\)">\(1\)</span> and are equal. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>We write <span class="math" data-tex="\(K_p\)">\(K_p\)</span> for the function <span class="math" data-tex="\(K\)">\(K\)</span> of Theorem 3.2. The map <span class="math" data-tex="\(p\mapsto K_p\)">\(p\mapsto K_p\)</span> is linear, since <span class="math" data-tex="\(p\mapsto f\mapsto\widehat f\)">\(p\mapsto f\mapsto\widehat f\)</span> is linear.</p>
+<p><strong>Corollary 3.3.</strong> Let <span class="math" data-tex="\(\mathbf a_1,\mathbf a_2\)">\(\mathbf a_1,\mathbf a_2\)</span> be two coefficient lists with cardinal functions <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span>, and
+<span class="math math-display" data-tex="\[
+H_1=p_1+K_{p_2},\qquad H_2=p_2+K_{p_1}.
+\]">\[
+H_1=p_1+K_{p_2},\qquad H_2=p_2+K_{p_1}.
+\]</span>
+Then <span class="math" data-tex="\(H_1\)">\(H_1\)</span> and <span class="math" data-tex="\(H_2\)">\(H_2\)</span> are entire and real on the real axis, the function <span class="math" data-tex="\(f(x)=e^{-\pi hs}H_1(s)\)">\(f(x)=e^{-\pi hs}H_1(s)\)</span>, <span class="math" data-tex="\(s=b|x|^2\)">\(s=b|x|^2\)</span>, is an admissible radial function on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, and <span class="math" data-tex="\(\widehat f(x)=e^{-\pi hs}H_2(s)\)">\(\widehat f(x)=e^{-\pi hs}H_2(s)\)</span>.</p>
+<p>Consequently, let <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>. If the lists can be chosen such that, for all <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span> and all <span class="math" data-tex="\(n\in\mathcal N\)">\(n\in\mathcal N\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_1(s)\le T_k(s),\qquad H_2(s)\ge0,\\
+H_1(n)=T_k(n),\qquad H_2(n)=0,
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_1(s)\le T_k(s),\qquad H_2(s)\ge0,\\
+H_1(n)=T_k(n),\qquad H_2(n)=0,
+\end{gathered}
+\]</span>
+then the normalized statement <span class="math" data-tex="\((\mathrm N_k)\)">\((\mathrm N_k)\)</span> holds.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(f_i(x)=e^{-\pi hs}p_i(s)\)">\(f_i(x)=e^{-\pi hs}p_i(s)\)</span> and <span class="math" data-tex="\(g_i(x)=e^{-\pi hs}K_{p_i}(s)\)">\(g_i(x)=e^{-\pi hs}K_{p_i}(s)\)</span> for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>. Then <span class="math" data-tex="\(f=f_1+g_2\)">\(f=f_1+g_2\)</span>, and by Theorem 3.2(2) <span class="math" data-tex="\(\widehat f=g_1+f_2\)">\(\widehat f=g_1+f_2\)</span>, which is <span class="math" data-tex="\(e^{-\pi hs}H_2(s)\)">\(e^{-\pi hs}H_2(s)\)</span>. The function <span class="math" data-tex="\(f\)">\(f\)</span> is continuous, real and radial, in particular even. Both <span class="math" data-tex="\(|f|\)">\(|f|\)</span> and <span class="math" data-tex="\(|\widehat f|\)">\(|\widehat f|\)</span> are bounded by a constant multiple of <span class="math" data-tex="\(e^{-\pi hb|x|^2}\)">\(e^{-\pi hb|x|^2}\)</span>, hence by a constant multiple of <span class="math" data-tex="\((1+|x|)^{-3}\)">\((1+|x|)^{-3}\)</span>. So <span class="math" data-tex="\(f\)">\(f\)</span> is admissible. The last statement is the definition of <span class="math" data-tex="\((\mathrm N_k)\)">\((\mathrm N_k)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-jets-and-the-interpolation-system">4. Jets and the interpolation system</h2>
+<p>Recall the numbers <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> and <span class="math" data-tex="\(D_n\)">\(D_n\)</span> that describe the sine product at a node <span class="math" data-tex="\(n\)">\(n\)</span>, with <span class="math" data-tex="\(Q_n&gt;7/4\)">\(Q_n&gt;7/4\)</span> and <span class="math" data-tex="\(|D_n|&lt;53/25\)">\(|D_n|&lt;53/25\)</span> (Proposition 1.2 of <a href="the-sine-product-and-cardinal-functions.html">The sine product and cardinal functions</a>). For a real function <span class="math" data-tex="\(\psi\)">\(\psi\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> that is differentiable at the points of <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, the <em>jet list</em> <span class="math" data-tex="\(\mathcal J\psi\)">\(\mathcal J\psi\)</span> consists of the numbers
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\mathcal J\psi)_{c,n}=\frac{\psi(n)}{Q_n},\\
+(\mathcal J\psi)_{d,n}=\frac{\psi&#x27;(n)-D_n\psi(n)}{Q_n}
+\end{gathered}
+\]">\[
+\begin{gathered}
+(\mathcal J\psi)_{c,n}=\frac{\psi(n)}{Q_n},\\
+(\mathcal J\psi)_{d,n}=\frac{\psi&#x27;(n)-D_n\psi(n)}{Q_n}
+\end{gathered}
+\]</span>
+for <span class="math" data-tex="\(n\in\mathcal N\)">\(n\in\mathcal N\)</span>. The map <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is linear, and two functions have the same jet list exactly when they have the same value and the same derivative at every node.</p>
+<p>For a coefficient list <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span> let <span class="math" data-tex="\(\mathbf a^+\)">\(\mathbf a^+\)</span> be its <em>positive part</em>, the numbers <span class="math" data-tex="\(c_n,d_n\)">\(c_n,d_n\)</span> for <span class="math" data-tex="\(n\in\mathcal N\)">\(n\in\mathcal N\)</span>. The three remaining entries <span class="math" data-tex="\(C,c_0,d_0\)">\(C,c_0,d_0\)</span> are the <em>extra entries</em>. By Theorem 2.2(3) of the same lesson,
+<span class="math math-display" data-tex="\[
+\mathcal Jp_{\mathbf a}=\mathbf a^+ .
+\]">\[
+\mathcal Jp_{\mathbf a}=\mathbf a^+ .
+\]</span>
+Define the list
+<span class="math math-display" data-tex="\[
+S\mathbf a=-\mathcal JK_{p_{\mathbf a}} .
+\]">\[
+S\mathbf a=-\mathcal JK_{p_{\mathbf a}} .
+\]</span>
+It is indexed by <span class="math" data-tex="\(n\in\mathcal N\)">\(n\in\mathcal N\)</span> like a positive part, and it depends linearly on <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> For every coefficient list <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{n\in\mathcal N}\bigl(|(S\mathbf a)_{c,n}|+|(S\mathbf a)_{d,n}|\bigr)\\
+\le4000\,\bigl(|C|+W\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{n\in\mathcal N}\bigl(|(S\mathbf a)_{c,n}|+|(S\mathbf a)_{d,n}|\bigr)\\
+\le4000\,\bigl(|C|+W\bigr).
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(K=K_{p_{\mathbf a}}\)">\(K=K_{p_{\mathbf a}}\)</span>. By Theorem 3.2(1), <span class="math" data-tex="\(|K(n)|\le3Ve^{-qn}\)">\(|K(n)|\le3Ve^{-qn}\)</span> and <span class="math" data-tex="\(|K&#x27;(n)|\le3\cdot\tfrac{44\pi}{15}Ve^{-qn}\)">\(|K&#x27;(n)|\le3\cdot\tfrac{44\pi}{15}Ve^{-qn}\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|(S\mathbf a)_{c,n}|+|(S\mathbf a)_{d,n}|\\
+&amp;\quad\le\frac{(1+|D_n|)\,|K(n)|+|K&#x27;(n)|}{Q_n}\\
+&amp;\quad\le\frac{3V}{Q_n}\Bigl(1+|D_n|+\frac{44\pi}{15}\Bigr)e^{-qn}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|(S\mathbf a)_{c,n}|+|(S\mathbf a)_{d,n}|\\
+&amp;\quad\le\frac{(1+|D_n|)\,|K(n)|+|K&#x27;(n)|}{Q_n}\\
+&amp;\quad\le\frac{3V}{Q_n}\Bigl(1+|D_n|+\frac{44\pi}{15}\Bigr)e^{-qn}.
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(44\pi/15&lt;9.22\)">\(44\pi/15&lt;9.22\)</span>, the factor in front of <span class="math" data-tex="\(e^{-qn}\)">\(e^{-qn}\)</span> is at most <span class="math" data-tex="\(3V\cdot12.34/1.75&lt;22\,V\)">\(3V\cdot12.34/1.75&lt;22\,V\)</span>. The sum of <span class="math" data-tex="\(e^{-qn}\)">\(e^{-qn}\)</span> over all integers <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> is <span class="math" data-tex="\(1/(e^q-1)\)">\(1/(e^q-1)\)</span>, and <span class="math" data-tex="\(e^q-1&gt;q+q^2/2\)">\(e^q-1&gt;q+q^2/2\)</span>, which is more than <span class="math" data-tex="\(0.187+0.017=0.204\)">\(0.187+0.017=0.204\)</span>. Since <span class="math" data-tex="\(V\le36(|C|+W)\)">\(V\le36(|C|+W)\)</span> and <span class="math" data-tex="\(22\cdot36/0.204&lt;3883\)">\(22\cdot36/0.204&lt;3883\)</span>, the sum is less than <span class="math" data-tex="\(3883\,(|C|+W)\)">\(3883\,(|C|+W)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So <span class="math" data-tex="\(S\)">\(S\)</span> maps coefficient lists to summable lists indexed by <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, and the bound does not depend on the position of the nonzero entries.</p>
+<p>Let <span class="math" data-tex="\(\mathbf a_1,\mathbf a_2\)">\(\mathbf a_1,\mathbf a_2\)</span> and <span class="math" data-tex="\(H_1,H_2\)">\(H_1,H_2\)</span> be as in Corollary 3.3. Since <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is linear,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal JH_1=\mathbf a_1^+-S\mathbf a_2,\\
+\mathcal JH_2=\mathbf a_2^+-S\mathbf a_1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal JH_1=\mathbf a_1^+-S\mathbf a_2,\\
+\mathcal JH_2=\mathbf a_2^+-S\mathbf a_1 .
+\end{gathered}
+\]</span>
+Suppose the conditions of Corollary 3.3 hold. Then <span class="math" data-tex="\(T_k-H_1\)">\(T_k-H_1\)</span> and <span class="math" data-tex="\(H_2\)">\(H_2\)</span> are nonnegative on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> and vanish at every node, so their derivatives vanish there too (Exercise 5.3 of <a href="shells-and-gaussian-duality.html">Shells and Gaussian duality</a>). Hence <span class="math" data-tex="\(\mathcal JH_1=\mathcal JT_k\)">\(\mathcal JH_1=\mathcal JT_k\)</span> and <span class="math" data-tex="\(\mathcal JH_2=0\)">\(\mathcal JH_2=0\)</span>, that is,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbf a_1^+-S\mathbf a_2=\mathcal JT_k,\\
+\mathbf a_2^+-S\mathbf a_1=0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbf a_1^+-S\mathbf a_2=\mathcal JT_k,\\
+\mathbf a_2^+-S\mathbf a_1=0 .
+\end{gathered}
+\]</span>
+These two equations between lists are the <em>interpolation system</em>. Since <span class="math" data-tex="\(T_k(s)=k^{-1}e^{-k(s-1)}\)">\(T_k(s)=k^{-1}e^{-k(s-1)}\)</span> and <span class="math" data-tex="\(T_k&#x27;(s)=-e^{-k(s-1)}\)">\(T_k&#x27;(s)=-e^{-k(s-1)}\)</span>, the right side is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\mathcal JT_k)_{c,n}=\frac{e^{-k(n-1)}}{kQ_n},\\
+(\mathcal JT_k)_{d,n}=-\Bigl(1+\frac{D_n}k\Bigr)\frac{e^{-k(n-1)}}{Q_n}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+(\mathcal JT_k)_{c,n}=\frac{e^{-k(n-1)}}{kQ_n},\\
+(\mathcal JT_k)_{d,n}=-\Bigl(1+\frac{D_n}k\Bigr)\frac{e^{-k(n-1)}}{Q_n}.
+\end{gathered}
+\]</span></p>
+<p>The interpolation system is a linear system for the two lists. It is necessary for the conditions of Corollary 3.3, and it expresses exactly that <span class="math" data-tex="\(H_1\)">\(H_1\)</span> touches <span class="math" data-tex="\(T_k\)">\(T_k\)</span> and <span class="math" data-tex="\(H_2\)">\(H_2\)</span> touches <span class="math" data-tex="\(0\)">\(0\)</span> at every node, with equal values and equal first derivatives. It does not contain the two sign conditions between the nodes; these have to be proved separately for a solution. The system has infinitely many equations, two for each node and each list, and the unknowns are the two positive parts and the six extra entries, which enter only through <span class="math" data-tex="\(S\mathbf a_1\)">\(S\mathbf a_1\)</span> and <span class="math" data-tex="\(S\mathbf a_2\)">\(S\mathbf a_2\)</span>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> The formulas <span class="math" data-tex="\(\lambda(t)=1/(b(h-it))\)">\(\lambda(t)=1/(b(h-it))\)</span> and <span class="math" data-tex="\(z(t)=iB/(h-it)-ih\)">\(z(t)=iB/(h-it)-ih\)</span> make sense for complex <span class="math" data-tex="\(t\ne-ih\)">\(t\ne-ih\)</span>. Show that <span class="math" data-tex="\(z(t)\ne-ih\)">\(z(t)\ne-ih\)</span>, <span class="math" data-tex="\(z(z(t))=t\)">\(z(z(t))=t\)</span> and <span class="math" data-tex="\(\lambda(t)\lambda(z(t))=1\)">\(\lambda(t)\lambda(z(t))=1\)</span>.</p>
+<p><strong>5.2.</strong> Show that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{\mathbb R^2}e^{-\pi hb|x|^2}P(b|x|^2)\,dx\\
+=\sum_{l=-6}^6\frac{P_l}{b(h-it_l)},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int_{\mathbb R^2}e^{-\pi hb|x|^2}P(b|x|^2)\,dx\\
+=\sum_{l=-6}^6\frac{P_l}{b(h-it_l)},
+\end{gathered}
+\]</span>
+and that the right side is a real number.</p>
+<p><strong>5.3.</strong> Compute <span class="math" data-tex="\(\operatorname{Re}(1/\gamma_t)\)">\(\operatorname{Re}(1/\gamma_t)\)</span> for <span class="math" data-tex="\(t=0\)">\(t=0\)</span> and for <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, to three decimals. What does the result say about the Fourier transform of <span class="math" data-tex="\(e^{-\pi hs}e^{i\pi ts}\)">\(e^{-\pi hs}e^{i\pi ts}\)</span>?</p>
+<p><strong>5.4.</strong> Let <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span> be the list with <span class="math" data-tex="\(C=1\)">\(C=1\)</span> and all other entries <span class="math" data-tex="\(0\)">\(0\)</span>. Express <span class="math" data-tex="\((S\mathbf a)_{c,n}\)">\((S\mathbf a)_{c,n}\)</span> by the numbers <span class="math" data-tex="\(P_l\)">\(P_l\)</span>, and show <span class="math" data-tex="\(|(S\mathbf a)_{c,n}|&lt;43\,e^{-0.187n}\)">\(|(S\mathbf a)_{c,n}|&lt;43\,e^{-0.187n}\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> Since <span class="math" data-tex="\(h-it=-i(t+ih)\)">\(h-it=-i(t+ih)\)</span>, we have <span class="math" data-tex="\(z(t)+ih=-B/(t+ih)\)">\(z(t)+ih=-B/(t+ih)\)</span>, which is not zero. Applying this twice, <span class="math" data-tex="\(z(z(t))+ih=-B/(z(t)+ih)=t+ih\)">\(z(z(t))+ih=-B/(z(t)+ih)=t+ih\)</span>. Also <span class="math" data-tex="\(\lambda(t)=i/(b(t+ih))\)">\(\lambda(t)=i/(b(t+ih))\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\lambda(t)\,\lambda(z(t))&amp;=\frac i{b(t+ih)}\cdot\frac i{b(z(t)+ih)}\\
+&amp;=\frac i{b(t+ih)}\cdot\frac{-i(t+ih)}{bB}\\
+&amp;=\frac1{b^2B}=1 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\lambda(t)\,\lambda(z(t))&amp;=\frac i{b(t+ih)}\cdot\frac i{b(z(t)+ih)}\\
+&amp;=\frac i{b(t+ih)}\cdot\frac{-i(t+ih)}{bB}\\
+&amp;=\frac1{b^2B}=1 .
+\end{aligned}
+\]</span></p>
+<p><strong>5.2.</strong> The list with <span class="math" data-tex="\(C=1\)">\(C=1\)</span> and all other entries <span class="math" data-tex="\(0\)">\(0\)</span> has the cardinal function <span class="math" data-tex="\(P\)">\(P\)</span>, with <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, and <span class="math" data-tex="\(K_P(s)=\sum_lP_l\lambda(t_l)e^{i\pi z(t_l)s}\)">\(K_P(s)=\sum_lP_l\lambda(t_l)e^{i\pi z(t_l)s}\)</span>. The left side is <span class="math" data-tex="\(\widehat f(0)\)">\(\widehat f(0)\)</span> for <span class="math" data-tex="\(f(x)=e^{-\pi hs}P(s)\)">\(f(x)=e^{-\pi hs}P(s)\)</span>, and by Theorem 3.2(2) <span class="math" data-tex="\(\widehat f(0)=K_P(0)=\sum_lP_l\lambda(t_l)\)">\(\widehat f(0)=K_P(0)=\sum_lP_l\lambda(t_l)\)</span>. The terms with indices <span class="math" data-tex="\(l\)">\(l\)</span> and <span class="math" data-tex="\(-l\)">\(-l\)</span> are complex conjugates, because <span class="math" data-tex="\(P_{-l}=\overline{P_l}\)">\(P_{-l}=\overline{P_l}\)</span> and <span class="math" data-tex="\(t_{-l}=-t_l\)">\(t_{-l}=-t_l\)</span>; so the sum is real.</p>
+<p><strong>5.3.</strong> By Lemma 2.1(4), <span class="math" data-tex="\(\operatorname{Re}(1/\gamma_0)=1/(bh)=5/\sqrt3\)">\(\operatorname{Re}(1/\gamma_0)=1/(bh)=5/\sqrt3\)</span>, about <span class="math" data-tex="\(2.887\)">\(2.887\)</span>, and <span class="math" data-tex="\(\operatorname{Re}(1/\gamma_1)=20/(29\sqrt3)\)">\(\operatorname{Re}(1/\gamma_1)=20/(29\sqrt3)\)</span>, about <span class="math" data-tex="\(0.398\)">\(0.398\)</span>. The transform has absolute value <span class="math" data-tex="\(|\lambda(t)|e^{-\pi\operatorname{Re}(1/\gamma_t)|\xi|^2}\)">\(|\lambda(t)|e^{-\pi\operatorname{Re}(1/\gamma_t)|\xi|^2}\)</span>. So the transform of the damped exponential with the highest frequency <span class="math" data-tex="\(t=1\)">\(t=1\)</span> decays much more slowly than that of the pure damping factor <span class="math" data-tex="\(t=0\)">\(t=0\)</span>: high frequencies in <span class="math" data-tex="\(p\)">\(p\)</span> become slowly decaying parts of <span class="math" data-tex="\(K_p\)">\(K_p\)</span>.</p>
+<p><strong>5.4.</strong> The cardinal function of this list is <span class="math" data-tex="\(P\)">\(P\)</span>, and by the solution of Exercise 5.2
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(S\mathbf a)_{c,n}=-\frac{K_P(n)}{Q_n},\\
+K_P(n)=\sum_{l=-6}^6P_l\,\lambda(t_l)\,e^{i\pi z(t_l)n}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+(S\mathbf a)_{c,n}=-\frac{K_P(n)}{Q_n},\\
+K_P(n)=\sum_{l=-6}^6P_l\,\lambda(t_l)\,e^{i\pi z(t_l)n}.
+\end{gathered}
+\]</span>
+By Theorem 3.2(1) with <span class="math" data-tex="\(V=25\)">\(V=25\)</span>, <span class="math" data-tex="\(|K_P(n)|\le75\,e^{-qn}\)">\(|K_P(n)|\le75\,e^{-qn}\)</span>. With <span class="math" data-tex="\(Q_n&gt;7/4\)">\(Q_n&gt;7/4\)</span> and <span class="math" data-tex="\(q&gt;0.187\)">\(q&gt;0.187\)</span> this gives <span class="math" data-tex="\(|(S\mathbf a)_{c,n}|&lt;\tfrac{75}{1.75}e^{-0.187n}\)">\(|(S\mathbf a)_{c,n}|&lt;\tfrac{75}{1.75}e^{-0.187n}\)</span>, and <span class="math" data-tex="\(75/1.75&lt;43\)">\(75/1.75&lt;43\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-T] OpenAI, <em>Universal optimality of the triangular lattice</em>, OpenAI Math Release preprint, 23 September 2026, Section 2. https://github.com/openai/math/tree/main/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

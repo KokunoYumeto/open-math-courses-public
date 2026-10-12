@@ -1,0 +1,360 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A positive quadrature rule</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Universal optimality of the triangular lattice)</a><a href="the-transformed-function-at-distant-nodes.html">Previous lesson</a><a href="the-reference-lists.html">Next lesson</a><a href="src/a-positive-quadrature-rule.md">Editable source</a></nav><main><article><h1 id="a-positive-quadrature-rule">A positive quadrature rule</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A cardinal function <span class="math" data-tex="\(p\)">\(p\)</span> and its transformed function <span class="math" data-tex="\(K_p\)">\(K_p\)</span> are given by integrals over the frequencies <span class="math" data-tex="\(t\in[-1,1]\)">\(t\in[-1,1]\)</span> (<a href="the-sine-product-and-cardinal-functions.html">The sine product and cardinal functions</a>, <a href="gaussian-damping-and-fourier-pairs.html">Gaussian damping and Fourier pairs</a>). The construction of the functions <span class="math" data-tex="\(H_1,H_2\)">\(H_1,H_2\)</span> of the normalized statement needs explicit numbers: values and derivatives of <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(K_p\)">\(K_p\)</span> at many points, for many coefficient lists. This lesson replaces the integrals by finite sums with <span class="math" data-tex="\(2304\)">\(2304\)</span> terms and proves that every quantity that is needed changes by less than <span class="math" data-tex="\(10^{-31}\)">\(10^{-31}\)</span>.</p>
+<ul>
+<li>The rule of Fejér with <span class="math" data-tex="\(N\)">\(N\)</span> points integrates polynomials of degree less than <span class="math" data-tex="\(N\)">\(N\)</span> exactly, and its weights are positive (Theorem 1.2).</li>
+<li>For a function that is holomorphic and bounded by <span class="math" data-tex="\(A\)">\(A\)</span> on a disc of twice the radius of the interval, the error of the rule is at most <span class="math" data-tex="\(4A\cdot2^{-N}\)">\(4A\cdot2^{-N}\)</span> (Proposition 2.1).</li>
+<li>For <span class="math" data-tex="\(N=384\)">\(N=384\)</span> on each of six frequency intervals, the values and all scaled derivatives of <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(K_p\)">\(K_p\)</span> on <span class="math" data-tex="\([0,168]\)">\([0,168]\)</span>, for lists with one entry <span class="math" data-tex="\(1\)">\(1\)</span> at a node up to <span class="math" data-tex="\(168\)">\(168\)</span>, are reproduced with an error below <span class="math" data-tex="\(10^{-31}\)">\(10^{-31}\)</span> (Theorem 3.3).</li>
+</ul>
+<p>The lesson follows [OpenAI-T, Section 3, the part on the positive rule for the density integrals]. The rule is the first rule of Fejér, with the formula for the weights as given by J. Waldvogel [Waldvogel, formula (2.3)], divided by two. The lesson uses the estimate of Cauchy for Taylor coefficients (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50">Complex Analysis</a>).</p>
+<h2 id="1-the-rule-and-its-weights">1. The rule and its weights</h2>
+<p>Let <span class="math" data-tex="\(N\ge2\)">\(N\ge2\)</span> be an even integer. For <span class="math" data-tex="\(v=0,1,\dots,N-1\)">\(v=0,1,\dots,N-1\)</span> let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\theta_v=\frac{\pi(v+\frac12)}N,\qquad x_v=\cos\theta_v,\\
+o_v=\frac1N\Bigl(1-2\sum_{a=1}^{N/2-1}\frac{\cos(2a\theta_v)}{4a^2-1}\Bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\theta_v=\frac{\pi(v+\frac12)}N,\qquad x_v=\cos\theta_v,\\
+o_v=\frac1N\Bigl(1-2\sum_{a=1}^{N/2-1}\frac{\cos(2a\theta_v)}{4a^2-1}\Bigr).
+\end{gathered}
+\]</span>
+The points <span class="math" data-tex="\(x_v\)">\(x_v\)</span> lie in the open interval <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(l\)">\(l\)</span> be an integer with <span class="math" data-tex="\(1\le l\le2N-1\)">\(1\le l\le2N-1\)</span>. Then <span class="math" data-tex="\(\sum_{v=0}^{N-1}\cos(l\theta_v)=0\)">\(\sum_{v=0}^{N-1}\cos(l\theta_v)=0\)</span>.</p>
+<p><strong>Proof.</strong> For real <span class="math" data-tex="\(\tau\)">\(\tau\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;2\sin\frac\tau2\,\cos((v+\tfrac12)\tau)\\
+&amp;\quad=\sin((v+1)\tau)-\sin(v\tau).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;2\sin\frac\tau2\,\cos((v+\tfrac12)\tau)\\
+&amp;\quad=\sin((v+1)\tau)-\sin(v\tau).
+\end{aligned}
+\]</span>
+Summing over <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+2\sin\frac\tau2\sum_{v=0}^{N-1}\cos((v+\tfrac12)\tau)=\sin(N\tau).
+\]">\[
+2\sin\frac\tau2\sum_{v=0}^{N-1}\cos((v+\tfrac12)\tau)=\sin(N\tau).
+\]</span>
+For <span class="math" data-tex="\(\tau=l\pi/N\)">\(\tau=l\pi/N\)</span> the right side is <span class="math" data-tex="\(\sin(l\pi)=0\)">\(\sin(l\pi)=0\)</span>, and <span class="math" data-tex="\(\sin(\tau/2)=\sin(l\pi/(2N))\ne0\)">\(\sin(\tau/2)=\sin(l\pi/(2N))\ne0\)</span> because <span class="math" data-tex="\(0&lt;l\pi/(2N)&lt;\pi\)">\(0&lt;l\pi/(2N)&lt;\pi\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 1.2.</strong></p>
+<ol>
+<li>For every polynomial <span class="math" data-tex="\(f\)">\(f\)</span> of degree at most <span class="math" data-tex="\(N-1\)">\(N-1\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{v=0}^{N-1}o_vf(x_v)=\frac12\int_{-1}^1f(x)\,dx .
+\]">\[
+\sum_{v=0}^{N-1}o_vf(x_v)=\frac12\int_{-1}^1f(x)\,dx .
+\]</span></li>
+<li><span class="math" data-tex="\(\sum_vo_v=1\)">\(\sum_vo_v=1\)</span>, and <span class="math" data-tex="\(o_v\ge\dfrac1{N(N-1)}\)">\(o_v\ge\dfrac1{N(N-1)}\)</span> for every <span class="math" data-tex="\(v\)">\(v\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) Let <span class="math" data-tex="\(C_l\)">\(C_l\)</span> be the polynomial of degree <span class="math" data-tex="\(l\)">\(l\)</span> with <span class="math" data-tex="\(C_l(\cos\theta)=\cos(l\theta)\)">\(C_l(\cos\theta)=\cos(l\theta)\)</span>; it exists by the recursion
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\cos((l+1)\theta)\\
+&amp;\quad=2\cos\theta\cos(l\theta)-\cos((l-1)\theta).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\cos((l+1)\theta)\\
+&amp;\quad=2\cos\theta\cos(l\theta)-\cos((l-1)\theta).
+\end{aligned}
+\]</span>
+The polynomials <span class="math" data-tex="\(C_0,\dots,C_{N-1}\)">\(C_0,\dots,C_{N-1}\)</span> span the polynomials of degree at most <span class="math" data-tex="\(N-1\)">\(N-1\)</span>. So it is enough to prove (1) for <span class="math" data-tex="\(f=C_l\)">\(f=C_l\)</span>, <span class="math" data-tex="\(0\le l\le N-1\)">\(0\le l\le N-1\)</span>.</p>
+<p><em>The right side.</em> With <span class="math" data-tex="\(x=\cos\theta\)">\(x=\cos\theta\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac12\int_{-1}^1C_l(x)\,dx\\
+&amp;\quad=\frac12\int_0^\pi\cos(l\theta)\sin\theta\,d\theta .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac12\int_{-1}^1C_l(x)\,dx\\
+&amp;\quad=\frac12\int_0^\pi\cos(l\theta)\sin\theta\,d\theta .
+\end{aligned}
+\]</span>
+Here
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\cos(l\theta)\sin\theta\\
+&amp;\quad=\tfrac12\sin((l+1)\theta)-\tfrac12\sin((l-1)\theta),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\cos(l\theta)\sin\theta\\
+&amp;\quad=\tfrac12\sin((l+1)\theta)-\tfrac12\sin((l-1)\theta),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\int_0^\pi\sin(k\theta)\,d\theta\)">\(\int_0^\pi\sin(k\theta)\,d\theta\)</span> is <span class="math" data-tex="\(2/k\)">\(2/k\)</span> for odd <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> for even <span class="math" data-tex="\(k\)">\(k\)</span>. So the value is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(l=0\)">\(l=0\)</span>, it is <span class="math" data-tex="\(0\)">\(0\)</span> for odd <span class="math" data-tex="\(l\)">\(l\)</span>, and for even <span class="math" data-tex="\(l\ge2\)">\(l\ge2\)</span> it is
+<span class="math math-display" data-tex="\[
+\frac12\Bigl(\frac1{l+1}-\frac1{l-1}\Bigr)=\frac1{1-l^2}.
+\]">\[
+\frac12\Bigl(\frac1{l+1}-\frac1{l-1}\Bigr)=\frac1{1-l^2}.
+\]</span></p>
+<p><em>The left side.</em> Let <span class="math" data-tex="\(0\le l\le N-1\)">\(0\le l\le N-1\)</span> and <span class="math" data-tex="\(1\le a\le N/2-1\)">\(1\le a\le N/2-1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\cos(l\theta_v)\cos(2a\theta_v)\\
+&amp;\quad=\tfrac12\cos((l+2a)\theta_v)\\
+&amp;\qquad+\tfrac12\cos((l-2a)\theta_v),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\cos(l\theta_v)\cos(2a\theta_v)\\
+&amp;\quad=\tfrac12\cos((l+2a)\theta_v)\\
+&amp;\qquad+\tfrac12\cos((l-2a)\theta_v),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(1\le l+2a\le2N-1\)">\(1\le l+2a\le2N-1\)</span>, <span class="math" data-tex="\(|l-2a|\le2N-1\)">\(|l-2a|\le2N-1\)</span>. By Lemma 1.1 the sum over <span class="math" data-tex="\(v\)">\(v\)</span> of the first term is <span class="math" data-tex="\(0\)">\(0\)</span>, and the sum of the second term is <span class="math" data-tex="\(0\)">\(0\)</span> unless <span class="math" data-tex="\(l=2a\)">\(l=2a\)</span>, when it is <span class="math" data-tex="\(N/2\)">\(N/2\)</span>. So the number
+<span class="math math-display" data-tex="\[
+\kappa_{l,a}=\frac1N\sum_v\cos(l\theta_v)\cos(2a\theta_v)
+\]">\[
+\kappa_{l,a}=\frac1N\sum_v\cos(l\theta_v)\cos(2a\theta_v)
+\]</span>
+is <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> if <span class="math" data-tex="\(l=2a\)">\(l=2a\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. Now <span class="math" data-tex="\(\sum_vo_vC_l(x_v)=\sum_vo_v\cos(l\theta_v)\)">\(\sum_vo_vC_l(x_v)=\sum_vo_v\cos(l\theta_v)\)</span> is, by the definition of <span class="math" data-tex="\(o_v\)">\(o_v\)</span>,
+<span class="math math-display" data-tex="\[
+\frac1N\sum_v\cos(l\theta_v)-2\sum_{a=1}^{N/2-1}\frac{\kappa_{l,a}}{4a^2-1}.
+\]">\[
+\frac1N\sum_v\cos(l\theta_v)-2\sum_{a=1}^{N/2-1}\frac{\kappa_{l,a}}{4a^2-1}.
+\]</span>
+For <span class="math" data-tex="\(l=0\)">\(l=0\)</span> the first term is <span class="math" data-tex="\(1\)">\(1\)</span> and the second is <span class="math" data-tex="\(0\)">\(0\)</span>. For odd <span class="math" data-tex="\(l\)">\(l\)</span> both are <span class="math" data-tex="\(0\)">\(0\)</span>. For even <span class="math" data-tex="\(l\)">\(l\)</span> with <span class="math" data-tex="\(2\le l\le N-2\)">\(2\le l\le N-2\)</span> the first is <span class="math" data-tex="\(0\)">\(0\)</span>, and the second is <span class="math" data-tex="\(-2\cdot\tfrac1{l^2-1}\cdot\tfrac12\)">\(-2\cdot\tfrac1{l^2-1}\cdot\tfrac12\)</span>, from <span class="math" data-tex="\(a=l/2\)">\(a=l/2\)</span>. These are the values of the right side.</p>
+<p>(2) The case <span class="math" data-tex="\(l=0\)">\(l=0\)</span> of (1) is <span class="math" data-tex="\(\sum_vo_v=1\)">\(\sum_vo_v=1\)</span>. Further
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{a=1}^{N/2-1}\frac2{4a^2-1}\\
+&amp;\quad=\sum_{a=1}^{N/2-1}\Bigl(\frac1{2a-1}-\frac1{2a+1}\Bigr)\\
+&amp;\quad=1-\frac1{N-1}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{a=1}^{N/2-1}\frac2{4a^2-1}\\
+&amp;\quad=\sum_{a=1}^{N/2-1}\Bigl(\frac1{2a-1}-\frac1{2a+1}\Bigr)\\
+&amp;\quad=1-\frac1{N-1}.
+\end{aligned}
+\]</span>
+Since every cosine is at most <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(No_v\ge1-(1-\tfrac1{N-1})=\tfrac1{N-1}\)">\(No_v\ge1-(1-\tfrac1{N-1})=\tfrac1{N-1}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So the rule <span class="math" data-tex="\(f\mapsto\sum_vo_vf(x_v)\)">\(f\mapsto\sum_vo_vf(x_v)\)</span> approximates the average of <span class="math" data-tex="\(f\)">\(f\)</span> over <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, and it is a positive functional of total mass <span class="math" data-tex="\(1\)">\(1\)</span>: <span class="math" data-tex="\(|\sum_vo_vf(x_v)|\le\max|f|\)">\(|\sum_vo_vf(x_v)|\le\max|f|\)</span>.</p>
+<h2 id="2-the-error-for-holomorphic-functions">2. The error for holomorphic functions</h2>
+<p>For an interval with midpoint <span class="math" data-tex="\(u\)">\(u\)</span> and half-length <span class="math" data-tex="\(\rho\)">\(\rho\)</span> the rule is transported by <span class="math" data-tex="\(t=u+\rho x\)">\(t=u+\rho x\)</span>.</p>
+<p><strong>Proposition 2.1.</strong> Let <span class="math" data-tex="\(u\)">\(u\)</span> be real, <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, and let <span class="math" data-tex="\(g\)">\(g\)</span> be holomorphic on an open set containing the closed disc <span class="math" data-tex="\(|t-u|\le2\rho\)">\(|t-u|\le2\rho\)</span>, with <span class="math" data-tex="\(|g(t)|\le A\)">\(|g(t)|\le A\)</span> on this disc. Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal A=\frac1{2\rho}\int_{u-\rho}^{u+\rho}g(t)\,dt,\\
+\mathcal R=\sum_{v=0}^{N-1}o_v\,g(u+\rho x_v)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal A=\frac1{2\rho}\int_{u-\rho}^{u+\rho}g(t)\,dt,\\
+\mathcal R=\sum_{v=0}^{N-1}o_v\,g(u+\rho x_v)
+\end{gathered}
+\]</span>
+be the average of <span class="math" data-tex="\(g\)">\(g\)</span> over the interval and the value of the rule. Then
+<span class="math math-display" data-tex="\[
+|\mathcal A-\mathcal R|\le4A\cdot2^{-N}.
+\]">\[
+|\mathcal A-\mathcal R|\le4A\cdot2^{-N}.
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(g(t)=\sum_ra_r(t-u)^r\)">\(g(t)=\sum_ra_r(t-u)^r\)</span> be the Taylor series at <span class="math" data-tex="\(u\)">\(u\)</span>. By the estimate of Cauchy on the circle of radius <span class="math" data-tex="\(2\rho\)">\(2\rho\)</span>, <span class="math" data-tex="\(|a_r|\le A/(2\rho)^r\)">\(|a_r|\le A/(2\rho)^r\)</span>. Let <span class="math" data-tex="\(g_0\)">\(g_0\)</span> be the sum of the terms with <span class="math" data-tex="\(r\le N-1\)">\(r\le N-1\)</span> and <span class="math" data-tex="\(g_1=g-g_0\)">\(g_1=g-g_0\)</span>. For real <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(|t-u|\le\rho\)">\(|t-u|\le\rho\)</span>,
+<span class="math math-display" data-tex="\[
+|g_1(t)|\le A\sum_{r\ge N}2^{-r}=2A\cdot2^{-N}.
+\]">\[
+|g_1(t)|\le A\sum_{r\ge N}2^{-r}=2A\cdot2^{-N}.
+\]</span>
+The function <span class="math" data-tex="\(x\mapsto g_0(u+\rho x)\)">\(x\mapsto g_0(u+\rho x)\)</span> is a polynomial of degree at most <span class="math" data-tex="\(N-1\)">\(N-1\)</span>, so by Theorem 1.2(1) the rule gives its average exactly. For <span class="math" data-tex="\(g_1\)">\(g_1\)</span>, both the average and the rule are at most <span class="math" data-tex="\(\max|g_1|\)">\(\max|g_1|\)</span> in absolute value, the rule by Theorem 1.2(2). So the two differ by at most <span class="math" data-tex="\(2\cdot2A\cdot2^{-N}\)">\(2\cdot2A\cdot2^{-N}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The positivity of the weights is used here: without it the rule applied to <span class="math" data-tex="\(g_1\)">\(g_1\)</span> could only be bounded by <span class="math" data-tex="\(\sum_v|o_v|\max|g_1|\)">\(\sum_v|o_v|\max|g_1|\)</span>.</p>
+<h2 id="3-the-rule-for-the-spectral-integrals">3. The rule for the spectral integrals</h2>
+<p>Let <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span> be a coefficient list with finitely many nonzero entries <span class="math" data-tex="\(C,c_n,d_n\)">\(C,c_n,d_n\)</span>, let <span class="math" data-tex="\(p\)">\(p\)</span> be its cardinal function, <span class="math" data-tex="\(K=K_p\)">\(K=K_p\)</span> its transformed function, and <span class="math" data-tex="\(m\)">\(m\)</span> the function on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> of <a href="the-transformed-function-at-distant-nodes.html">The transformed function at distant nodes</a>, Section 2. With <span class="math" data-tex="\(t_l=l/6\)">\(t_l=l/6\)</span>, <span class="math" data-tex="\(\pi_l=P_le^{i\pi t_ln}\)">\(\pi_l=P_le^{i\pi t_ln}\)</span>, and <span class="math" data-tex="\(j\)">\(j\)</span> the index with <span class="math" data-tex="\(t_{j-1}&lt;t&lt;t_j\)">\(t_{j-1}&lt;t&lt;t_j\)</span>, <span class="math" data-tex="\(1\le j\le6\)">\(1\le j\le6\)</span>, it is <span class="math" data-tex="\(m=\sum_n(c_nm_n&#x27;&#x27;+d_nm_n&#x27;)\)">\(m=\sum_n(c_nm_n&#x27;&#x27;+d_nm_n&#x27;)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+m_n&#x27;(t)&amp;=i\pi\,e^{-i\pi tn}\sum_{l=j}^6\pi_l,\\
+m_n&#x27;&#x27;(t)&amp;=-\pi^2e^{-i\pi tn}\sum_{l=j}^6\pi_l\,(t_l-t).
+\end{aligned}
+\]">\[
+\begin{aligned}
+m_n&#x27;(t)&amp;=i\pi\,e^{-i\pi tn}\sum_{l=j}^6\pi_l,\\
+m_n&#x27;&#x27;(t)&amp;=-\pi^2e^{-i\pi tn}\sum_{l=j}^6\pi_l\,(t_l-t).
+\end{aligned}
+\]</span>
+On each interval <span class="math" data-tex="\(I_j=(t_{j-1},t_j)\)">\(I_j=(t_{j-1},t_j)\)</span> these formulas define entire functions of <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> For <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span> and real <span class="math" data-tex="\(s,y\)">\(s,y\)</span>, and every integer <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>: <span class="math" data-tex="\(m(-t)=\overline{m(t)}\)">\(m(-t)=\overline{m(t)}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{y^a}{a!}p^{(a)}(s)={}&amp;C\,\frac{y^a}{a!}P^{(a)}(s)\\
+&amp;+2\operatorname{Re}\int_0^1m(t)\,\Phi_a(t)\,dt,\\
+\frac{y^a}{a!}K^{(a)}(s)={}&amp;C\sum_{l=-6}^6P_l\,\Psi_a(t_l)\\
+&amp;+2\operatorname{Re}\int_0^1m(t)\,\Psi_a(t)\,dt,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{y^a}{a!}p^{(a)}(s)={}&amp;C\,\frac{y^a}{a!}P^{(a)}(s)\\
+&amp;+2\operatorname{Re}\int_0^1m(t)\,\Phi_a(t)\,dt,\\
+\frac{y^a}{a!}K^{(a)}(s)={}&amp;C\sum_{l=-6}^6P_l\,\Psi_a(t_l)\\
+&amp;+2\operatorname{Re}\int_0^1m(t)\,\Psi_a(t)\,dt,
+\end{aligned}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi_a(t)&amp;=e^{i\pi ts}\,\frac{(i\pi ty)^a}{a!},\\
+\Psi_a(t)&amp;=\lambda(t)\,e^{i\pi z(t)s}\,\frac{(i\pi z(t)y)^a}{a!}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi_a(t)&amp;=e^{i\pi ts}\,\frac{(i\pi ty)^a}{a!},\\
+\Psi_a(t)&amp;=\lambda(t)\,e^{i\pi z(t)s}\,\frac{(i\pi z(t)y)^a}{a!}.
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(-1&lt;t&lt;0\)">\(-1&lt;t&lt;0\)</span> the functions <span class="math" data-tex="\(m_n&#x27;,m_n&#x27;&#x27;\)">\(m_n&#x27;,m_n&#x27;&#x27;\)</span> are given by the sums over the indices <span class="math" data-tex="\(l\)">\(l\)</span> with <span class="math" data-tex="\(t_l&lt;t\)">\(t_l&lt;t\)</span>, with the opposite sign. Since <span class="math" data-tex="\(P_{-l}=\overline{P_l}\)">\(P_{-l}=\overline{P_l}\)</span> and <span class="math" data-tex="\(t_{-l}=-t_l\)">\(t_{-l}=-t_l\)</span>, we have <span class="math" data-tex="\(\pi_{-l}=\overline{\pi_l}\)">\(\pi_{-l}=\overline{\pi_l}\)</span>, and the formulas give <span class="math" data-tex="\(m_n&#x27;(-t)=\overline{m_n&#x27;(t)}\)">\(m_n&#x27;(-t)=\overline{m_n&#x27;(t)}\)</span> and <span class="math" data-tex="\(m_n&#x27;&#x27;(-t)=\overline{m_n&#x27;&#x27;(t)}\)">\(m_n&#x27;&#x27;(-t)=\overline{m_n&#x27;&#x27;(t)}\)</span>. The entries of the list are real, so <span class="math" data-tex="\(m(-t)=\overline{m(t)}\)">\(m(-t)=\overline{m(t)}\)</span>.</p>
+<p>The derivatives of <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span> are obtained by differentiating under the integral sign (Lemma 3.1 of the lesson on Gaussian damping), which gives the integrals of <span class="math" data-tex="\(m\Phi_a\)">\(m\Phi_a\)</span> and <span class="math" data-tex="\(m\Psi_a\)">\(m\Psi_a\)</span> over <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. For real <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>, <span class="math" data-tex="\(\Phi_a(-t)=\overline{\Phi_a(t)}\)">\(\Phi_a(-t)=\overline{\Phi_a(t)}\)</span>. Also <span class="math" data-tex="\(\lambda(-t)=\overline{\lambda(t)}\)">\(\lambda(-t)=\overline{\lambda(t)}\)</span> and <span class="math" data-tex="\(z(-t)=-\overline{z(t)}\)">\(z(-t)=-\overline{z(t)}\)</span> by the definitions, hence <span class="math" data-tex="\(\Psi_a(-t)=\overline{\Psi_a(t)}\)">\(\Psi_a(-t)=\overline{\Psi_a(t)}\)</span>. So the integrals over <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span> are the complex conjugates of those over <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Now fix <span class="math" data-tex="\(N=384\)">\(N=384\)</span>, with the points <span class="math" data-tex="\(x_v\)">\(x_v\)</span> and weights <span class="math" data-tex="\(o_v\)">\(o_v\)</span> of Section 1. The interval <span class="math" data-tex="\(I_j\)">\(I_j\)</span> has the midpoint <span class="math" data-tex="\(u_j=(2j-1)/12\)">\(u_j=(2j-1)/12\)</span> and the half-length <span class="math" data-tex="\(1/12\)">\(1/12\)</span>. For <span class="math" data-tex="\(1\le j\le6\)">\(1\le j\le6\)</span> and <span class="math" data-tex="\(0\le v&lt;N\)">\(0\le v&lt;N\)</span> let
+<span class="math math-display" data-tex="\[
+\tau_{jv}=u_j+\frac{x_v}{12}.
+\]">\[
+\tau_{jv}=u_j+\frac{x_v}{12}.
+\]</span>
+For a function <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> define
+<span class="math math-display" data-tex="\[
+\mathcal Q(g)=\sum_{j=1}^6\sum_{v=0}^{N-1}\frac{o_v}6\,g(\tau_{jv}).
+\]">\[
+\mathcal Q(g)=\sum_{j=1}^6\sum_{v=0}^{N-1}\frac{o_v}6\,g(\tau_{jv}).
+\]</span>
+The <em>quadrature form</em> of <span class="math" data-tex="\(\tfrac{y^a}{a!}p^{(a)}(s)\)">\(\tfrac{y^a}{a!}p^{(a)}(s)\)</span> or <span class="math" data-tex="\(\tfrac{y^a}{a!}K^{(a)}(s)\)">\(\tfrac{y^a}{a!}K^{(a)}(s)\)</span> is the expression of Lemma 3.1 with <span class="math" data-tex="\(\int_0^1m\Phi_a\,dt\)">\(\int_0^1m\Phi_a\,dt\)</span> replaced by <span class="math" data-tex="\(\mathcal Q(m\Phi_a)\)">\(\mathcal Q(m\Phi_a)\)</span>, respectively <span class="math" data-tex="\(\int_0^1m\Psi_a\,dt\)">\(\int_0^1m\Psi_a\,dt\)</span> by <span class="math" data-tex="\(\mathcal Q(m\Psi_a)\)">\(\mathcal Q(m\Psi_a)\)</span>. The terms with the factor <span class="math" data-tex="\(C\)">\(C\)</span> are not changed. The quadrature forms are finite sums, with <span class="math" data-tex="\(6N=2304\)">\(6N=2304\)</span> points.</p>
+<p><strong>Lemma 3.2.</strong> Let <span class="math" data-tex="\(w,a\)">\(w,a\)</span> be complex numbers and <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> with <span class="math" data-tex="\(|w-a|\le\rho&lt;|a|\)">\(|w-a|\le\rho&lt;|a|\)</span>. Then
+<span class="math math-display" data-tex="\[
+\Bigl|\frac1w-\frac{\overline a}{|a|^2-\rho^2}\Bigr|\le\frac\rho{|a|^2-\rho^2}.
+\]">\[
+\Bigl|\frac1w-\frac{\overline a}{|a|^2-\rho^2}\Bigr|\le\frac\rho{|a|^2-\rho^2}.
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(e=|a|^2-\rho^2&gt;0\)">\(e=|a|^2-\rho^2&gt;0\)</span>. The left side is <span class="math" data-tex="\(|e-\overline aw|/(e|w|)\)">\(|e-\overline aw|/(e|w|)\)</span>, so the claim is <span class="math" data-tex="\(|e-\overline aw|^2\le\rho^2|w|^2\)">\(|e-\overline aw|^2\le\rho^2|w|^2\)</span>. Now
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|e-\overline aw|^2-\rho^2|w|^2\\
+&amp;\quad=e^2-2e\operatorname{Re}(\overline aw)+(|a|^2-\rho^2)|w|^2\\
+&amp;\quad=e\,\bigl(|a|^2-\rho^2-2\operatorname{Re}(\overline aw)+|w|^2\bigr)\\
+&amp;\quad=e\,\bigl(|w-a|^2-\rho^2\bigr)\le0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|e-\overline aw|^2-\rho^2|w|^2\\
+&amp;\quad=e^2-2e\operatorname{Re}(\overline aw)+(|a|^2-\rho^2)|w|^2\\
+&amp;\quad=e\,\bigl(|a|^2-\rho^2-2\operatorname{Re}(\overline aw)+|w|^2\bigr)\\
+&amp;\quad=e\,\bigl(|w-a|^2-\rho^2\bigr)\le0 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 3.3.</strong> Let <span class="math" data-tex="\(M=168\)">\(M=168\)</span>. Let <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span> be a list with exactly one nonzero entry, equal to <span class="math" data-tex="\(1\)">\(1\)</span>: the entry <span class="math" data-tex="\(C\)">\(C\)</span>, or <span class="math" data-tex="\(c_n\)">\(c_n\)</span> or <span class="math" data-tex="\(d_n\)">\(d_n\)</span> for a node <span class="math" data-tex="\(n\in\mathcal N_0\)">\(n\in\mathcal N_0\)</span> with <span class="math" data-tex="\(n\le M\)">\(n\le M\)</span>. Let <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span> be an integer, and <span class="math" data-tex="\(s,y\)">\(s,y\)</span> real with <span class="math" data-tex="\(0\le s\le M\)">\(0\le s\le M\)</span> and <span class="math" data-tex="\(|y|\le3/2\)">\(|y|\le3/2\)</span>. Then each of
+<span class="math math-display" data-tex="\[
+\frac{y^a}{a!}p^{(a)}(s),\qquad\frac{y^a}{a!}K^{(a)}(s)
+\]">\[
+\frac{y^a}{a!}p^{(a)}(s),\qquad\frac{y^a}{a!}K^{(a)}(s)
+\]</span>
+differs from its quadrature form by less than <span class="math" data-tex="\(10^{-31}\)">\(10^{-31}\)</span>.</p>
+<p><strong>Proof.</strong> If the entry is <span class="math" data-tex="\(C\)">\(C\)</span>, then <span class="math" data-tex="\(m=0\)">\(m=0\)</span> and nothing is changed. Let the entry be <span class="math" data-tex="\(c_n\)">\(c_n\)</span> or <span class="math" data-tex="\(d_n\)">\(d_n\)</span>. Fix <span class="math" data-tex="\(j\)">\(j\)</span>, and let <span class="math" data-tex="\(t\)">\(t\)</span> be a complex number in the disc <span class="math" data-tex="\(|t-u_j|\le1/6\)">\(|t-u_j|\le1/6\)</span>, which has twice the radius of the interval <span class="math" data-tex="\(I_j\)">\(I_j\)</span>. We bound the functions that occur, extended to this disc by their formulas.</p>
+<p><em>The frequency.</em> <span class="math" data-tex="\(|t|\le\tfrac{11}{12}+\tfrac16&lt;1.1\)">\(|t|\le\tfrac{11}{12}+\tfrac16&lt;1.1\)</span> and <span class="math" data-tex="\(|\operatorname{Im}t|\le\tfrac16\)">\(|\operatorname{Im}t|\le\tfrac16\)</span>.</p>
+<p><em>The functions <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span>.</em> Recall <span class="math" data-tex="\(\lambda(t)=i/(b(t+ih))\)">\(\lambda(t)=i/(b(t+ih))\)</span> and <span class="math" data-tex="\(z(t)=-B/(t+ih)-ih\)">\(z(t)=-B/(t+ih)-ih\)</span>. The imaginary part of <span class="math" data-tex="\(t+ih\)">\(t+ih\)</span> is at least <span class="math" data-tex="\(h-\tfrac16=\tfrac7{30}\)">\(h-\tfrac16=\tfrac7{30}\)</span>. So <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span> are holomorphic on a neighbourhood of the disc, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\lambda(t)|\le\frac{30}{7b}=\frac{60}{7\sqrt3}&lt;5,\\
+|z(t)|\le\frac{30B}7+h=\frac{214}{35}&lt;6.2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\lambda(t)|\le\frac{30}{7b}=\frac{60}{7\sqrt3}&lt;5,\\
+|z(t)|\le\frac{30B}7+h=\frac{214}{35}&lt;6.2 .
+\end{gathered}
+\]</span>
+The point <span class="math" data-tex="\(w=t+ih\)">\(w=t+ih\)</span> lies in the disc with centre <span class="math" data-tex="\(u_j+ih\)">\(u_j+ih\)</span> and radius <span class="math" data-tex="\(\tfrac16\)">\(\tfrac16\)</span>. By Lemma 3.2, with <span class="math" data-tex="\(e=u_j^2+h^2-\tfrac1{36}\)">\(e=u_j^2+h^2-\tfrac1{36}\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Im}\frac1w\le\frac{-h+\frac16}e .
+\]">\[
+\operatorname{Im}\frac1w\le\frac{-h+\frac16}e .
+\]</span>
+Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Im}z(t)&amp;=-B\operatorname{Im}\frac1w-h\\
+&amp;\ge\frac{B(h-\frac16)}e-h .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Im}z(t)&amp;=-B\operatorname{Im}\frac1w-h\\
+&amp;\ge\frac{B(h-\frac16)}e-h .
+\end{aligned}
+\]</span>
+The right side is smallest for the largest <span class="math" data-tex="\(u_j\)">\(u_j\)</span>, which is <span class="math" data-tex="\(\tfrac{11}{12}\)">\(\tfrac{11}{12}\)</span>. There <span class="math" data-tex="\(e=\tfrac{3501}{3600}\)">\(e=\tfrac{3501}{3600}\)</span>, and the right side is <span class="math" data-tex="\(\tfrac{1120}{3501}-\tfrac25=-\tfrac{1402}{17505}\)">\(\tfrac{1120}{3501}-\tfrac25=-\tfrac{1402}{17505}\)</span>, which is more than <span class="math" data-tex="\(-0.081\)">\(-0.081\)</span>.</p>
+<p><em>The density.</em> <span class="math" data-tex="\(|e^{-i\pi tn}|=e^{\pi n\operatorname{Im}t}\le e^{\pi M/6}\)">\(|e^{-i\pi tn}|=e^{\pi n\operatorname{Im}t}\le e^{\pi M/6}\)</span>, and <span class="math" data-tex="\(|\pi_l|=|P_l|\)">\(|\pi_l|=|P_l|\)</span>. For <span class="math" data-tex="\(l\ge j\)">\(l\ge j\)</span>, <span class="math" data-tex="\(|t_l-t|\le t_l-u_j+\tfrac16\)">\(|t_l-t|\le t_l-u_j+\tfrac16\)</span>. The numbers <span class="math" data-tex="\(|P_1|,\dots,|P_6|\)">\(|P_1|,\dots,|P_6|\)</span> are <span class="math" data-tex="\(2,2,2,1,2,1\)">\(2,2,2,1,2,1\)</span>, with <span class="math" data-tex="\(\sum_l|P_l|=10\)">\(\sum_l|P_l|=10\)</span> and <span class="math" data-tex="\(\sum_lt_l|P_l|=\tfrac{16}3\)">\(\sum_lt_l|P_l|=\tfrac{16}3\)</span>. Since <span class="math" data-tex="\(\tfrac16-u_j\)">\(\tfrac16-u_j\)</span> is <span class="math" data-tex="\(\tfrac1{12}\)">\(\tfrac1{12}\)</span> for <span class="math" data-tex="\(j=1\)">\(j=1\)</span> and negative for <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{l=j}^6|P_l|\,\bigl(t_l-u_j+\tfrac16\bigr)\\
+&amp;\quad\le\frac{16}3+\frac{10}{12}=\frac{37}6 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{l=j}^6|P_l|\,\bigl(t_l-u_j+\tfrac16\bigr)\\
+&amp;\quad\le\frac{16}3+\frac{10}{12}=\frac{37}6 .
+\end{aligned}
+\]</span>
+So
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|2m_n&#x27;&#x27;(t)|\le\frac{37\pi^2}3\,e^{\pi M/6},\\
+|2m_n&#x27;(t)|\le20\pi\,e^{\pi M/6},
+\end{gathered}
+\]">\[
+\begin{gathered}
+|2m_n&#x27;&#x27;(t)|\le\frac{37\pi^2}3\,e^{\pi M/6},\\
+|2m_n&#x27;(t)|\le20\pi\,e^{\pi M/6},
+\end{gathered}
+\]</span>
+and both are less than <span class="math" data-tex="\(220\,e^{\pi M/6}\)">\(220\,e^{\pi M/6}\)</span>.</p>
+<p><em>The kernels.</em> For <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>, <span class="math" data-tex="\(x^a/a!\le e^x\)">\(x^a/a!\le e^x\)</span>. With <span class="math" data-tex="\(|ty|\le1.65\)">\(|ty|\le1.65\)</span> and <span class="math" data-tex="\(|z(t)y|\le9.3\)">\(|z(t)y|\le9.3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\Phi_a(t)|&amp;\le e^{\pi s|\operatorname{Im}t|}\,e^{\pi|ty|}\\
+&amp;\le e^{\pi M/6}\,e^{1.65\pi},\\
+|\Psi_a(t)|&amp;\le5\,e^{-\pi s\operatorname{Im}z(t)}\,e^{\pi|z(t)y|}\\
+&amp;\le5\,e^{0.081\pi M}\,e^{9.3\pi}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\Phi_a(t)|&amp;\le e^{\pi s|\operatorname{Im}t|}\,e^{\pi|ty|}\\
+&amp;\le e^{\pi M/6}\,e^{1.65\pi},\\
+|\Psi_a(t)|&amp;\le5\,e^{-\pi s\operatorname{Im}z(t)}\,e^{\pi|z(t)y|}\\
+&amp;\le5\,e^{0.081\pi M}\,e^{9.3\pi}.
+\end{aligned}
+\]</span>
+These bounds do not depend on <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><em>The products.</em> On the disc, <span class="math" data-tex="\(|2m\Phi_a|\le220\,e^{\pi(M/3+1.65)}\)">\(|2m\Phi_a|\le220\,e^{\pi(M/3+1.65)}\)</span> and <span class="math" data-tex="\(|2m\Psi_a|\le1100\,e^{\pi(M/6+0.081M+9.3)}\)">\(|2m\Psi_a|\le1100\,e^{\pi(M/6+0.081M+9.3)}\)</span>. With <span class="math" data-tex="\(M=168\)">\(M=168\)</span> the exponents are <span class="math" data-tex="\(57.65\,\pi\)">\(57.65\,\pi\)</span> and <span class="math" data-tex="\(50.908\,\pi\)">\(50.908\,\pi\)</span>; since <span class="math" data-tex="\(\pi&lt;22/7\)">\(\pi&lt;22/7\)</span> they are less than <span class="math" data-tex="\(182\)">\(182\)</span> and <span class="math" data-tex="\(160\)">\(160\)</span>. Since <span class="math" data-tex="\(e^{2.3}&lt;10\)">\(e^{2.3}&lt;10\)</span>, we get <span class="math" data-tex="\(e^{182}&lt;10^{79.2}\)">\(e^{182}&lt;10^{79.2}\)</span> and <span class="math" data-tex="\(e^{160}&lt;10^{69.6}\)">\(e^{160}&lt;10^{69.6}\)</span>. So both products are bounded on the disc by <span class="math" data-tex="\(A=10^{82}\)">\(A=10^{82}\)</span>.</p>
+<p><em>The rule.</em> By Proposition 2.1 with <span class="math" data-tex="\(\rho=\tfrac1{12}\)">\(\rho=\tfrac1{12}\)</span>, for <span class="math" data-tex="\(g=2m\Phi_a\)">\(g=2m\Phi_a\)</span> or <span class="math" data-tex="\(g=2m\Psi_a\)">\(g=2m\Psi_a\)</span> on <span class="math" data-tex="\(I_j\)">\(I_j\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\int_{I_j}g\,dt-\sum_v\frac{o_v}6\,g(\tau_{jv})\Bigr|\\
+\le\frac{4A}6\cdot2^{-N}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\int_{I_j}g\,dt-\sum_v\frac{o_v}6\,g(\tau_{jv})\Bigr|\\
+\le\frac{4A}6\cdot2^{-N}.
+\end{gathered}
+\]</span>
+Summing over the six intervals, <span class="math" data-tex="\(\int_0^1g\,dt\)">\(\int_0^1g\,dt\)</span> and <span class="math" data-tex="\(\mathcal Q(g)\)">\(\mathcal Q(g)\)</span> differ by at most <span class="math" data-tex="\(4A\cdot2^{-384}\)">\(4A\cdot2^{-384}\)</span>. Now <span class="math" data-tex="\(2^{384}=1024^{38}\cdot16&gt;16\cdot10^{114}\)">\(2^{384}=1024^{38}\cdot16&gt;16\cdot10^{114}\)</span>, so <span class="math" data-tex="\(4A\cdot2^{-384}&lt;\tfrac14\cdot10^{-32}\)">\(4A\cdot2^{-384}&lt;\tfrac14\cdot10^{-32}\)</span>. Taking real parts does not increase the difference. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>By linearity, for a list supported on the nodes up to <span class="math" data-tex="\(M\)">\(M\)</span> the difference is less than <span class="math" data-tex="\(10^{-31}\)">\(10^{-31}\)</span> times the sum of the absolute values of its entries <span class="math" data-tex="\(c_n,d_n\)">\(c_n,d_n\)</span>.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Write down the rule of Section 1 for <span class="math" data-tex="\(N=2\)">\(N=2\)</span> and for <span class="math" data-tex="\(N=4\)">\(N=4\)</span>. Check <span class="math" data-tex="\(\sum_vo_v=1\)">\(\sum_vo_v=1\)</span> and the lower bound of Theorem 1.2(2) for <span class="math" data-tex="\(N=4\)">\(N=4\)</span>.</p>
+<p><strong>4.2.</strong> Show that the rule with <span class="math" data-tex="\(N=2\)">\(N=2\)</span> is not exact for <span class="math" data-tex="\(f(x)=x^2\)">\(f(x)=x^2\)</span>.</p>
+<p><strong>4.3.</strong> In the proof of Theorem 3.3 the bound <span class="math" data-tex="\(A=10^{82}\)">\(A=10^{82}\)</span> is used. Which values of <span class="math" data-tex="\(N\)">\(N\)</span> give, by the same argument, an error below <span class="math" data-tex="\(10^{-31}\)">\(10^{-31}\)</span>?</p>
+<p><strong>4.4.</strong> Let <span class="math" data-tex="\(g\)">\(g\)</span> be as in Proposition 2.1, but holomorphic and bounded by <span class="math" data-tex="\(A\)">\(A\)</span> on the larger disc <span class="math" data-tex="\(|t-u|\le4\rho\)">\(|t-u|\le4\rho\)</span>. What bound does the proof give?</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> For <span class="math" data-tex="\(N=2\)">\(N=2\)</span>: <span class="math" data-tex="\(\theta_0=\pi/4\)">\(\theta_0=\pi/4\)</span>, <span class="math" data-tex="\(\theta_1=3\pi/4\)">\(\theta_1=3\pi/4\)</span>, <span class="math" data-tex="\(x_0=\tfrac{\sqrt2}2\)">\(x_0=\tfrac{\sqrt2}2\)</span>, <span class="math" data-tex="\(x_1=-\tfrac{\sqrt2}2\)">\(x_1=-\tfrac{\sqrt2}2\)</span>; the sum in <span class="math" data-tex="\(o_v\)">\(o_v\)</span> is empty, so <span class="math" data-tex="\(o_0=o_1=\tfrac12\)">\(o_0=o_1=\tfrac12\)</span>. For <span class="math" data-tex="\(N=4\)">\(N=4\)</span>: <span class="math" data-tex="\(\theta_v=\pi/8,3\pi/8,5\pi/8,7\pi/8\)">\(\theta_v=\pi/8,3\pi/8,5\pi/8,7\pi/8\)</span>, and <span class="math" data-tex="\(o_v=\tfrac14(1-\tfrac23\cos(2\theta_v))\)">\(o_v=\tfrac14(1-\tfrac23\cos(2\theta_v))\)</span>. The numbers <span class="math" data-tex="\(\cos(2\theta_v)\)">\(\cos(2\theta_v)\)</span> are <span class="math" data-tex="\(\tfrac{\sqrt2}2,-\tfrac{\sqrt2}2,-\tfrac{\sqrt2}2,\tfrac{\sqrt2}2\)">\(\tfrac{\sqrt2}2,-\tfrac{\sqrt2}2,-\tfrac{\sqrt2}2,\tfrac{\sqrt2}2\)</span>. So <span class="math" data-tex="\(o_0=o_3=\tfrac14(1-\tfrac{\sqrt2}3)\)">\(o_0=o_3=\tfrac14(1-\tfrac{\sqrt2}3)\)</span>, about <span class="math" data-tex="\(0.132\)">\(0.132\)</span>, and <span class="math" data-tex="\(o_1=o_2=\tfrac14(1+\tfrac{\sqrt2}3)\)">\(o_1=o_2=\tfrac14(1+\tfrac{\sqrt2}3)\)</span>, about <span class="math" data-tex="\(0.368\)">\(0.368\)</span>. Their sum is <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(0.132&gt;\tfrac1{12}\)">\(0.132&gt;\tfrac1{12}\)</span>.</p>
+<p><strong>4.2.</strong> The rule gives <span class="math" data-tex="\(\tfrac12(\tfrac12+\tfrac12)=\tfrac12\)">\(\tfrac12(\tfrac12+\tfrac12)=\tfrac12\)</span>, and <span class="math" data-tex="\(\tfrac12\int_{-1}^1x^2\,dx=\tfrac13\)">\(\tfrac12\int_{-1}^1x^2\,dx=\tfrac13\)</span>.</p>
+<p><strong>4.3.</strong> The argument gives the error <span class="math" data-tex="\(4\cdot10^{82}\cdot2^{-N}\)">\(4\cdot10^{82}\cdot2^{-N}\)</span>. This is below <span class="math" data-tex="\(10^{-31}\)">\(10^{-31}\)</span> when <span class="math" data-tex="\(2^N&gt;4\cdot10^{113}\)">\(2^N&gt;4\cdot10^{113}\)</span>, that is <span class="math" data-tex="\(N&gt;2+113\log_210\)">\(N&gt;2+113\log_210\)</span>, which is about <span class="math" data-tex="\(377.4\)">\(377.4\)</span>. So every even <span class="math" data-tex="\(N\ge378\)">\(N\ge378\)</span> suffices.</p>
+<p><strong>4.4.</strong> Then <span class="math" data-tex="\(|a_r|\le A/(4\rho)^r\)">\(|a_r|\le A/(4\rho)^r\)</span> and <span class="math" data-tex="\(|g_1(t)|\le A\sum_{r\ge N}4^{-r}=\tfrac43A\cdot4^{-N}\)">\(|g_1(t)|\le A\sum_{r\ge N}4^{-r}=\tfrac43A\cdot4^{-N}\)</span> on the interval. The error is at most <span class="math" data-tex="\(\tfrac83A\cdot4^{-N}\)">\(\tfrac83A\cdot4^{-N}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-T] OpenAI, <em>Universal optimality of the triangular lattice</em>, OpenAI Math Release preprint, 23 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026</li>
+<li>[Waldvogel] J. Waldvogel, <em>Fast construction of the Fejér and Clenshaw–Curtis quadrature rules</em>, BIT Numerical Mathematics 46 (2006), Section 2. Author's version: https://people.math.ethz.ch/~waldvoge/Papers/fejer.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

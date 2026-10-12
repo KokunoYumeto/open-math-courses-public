@@ -100,9 +100,55 @@ To prove this, use Cauchy's derivative estimate on the circle of radius \(1/\del
  \|F'(w)\|\leq \delta e^{1+\delta R}.
  \tag{UM8}
 \]
-The estimate for a Banach-valued function follows by applying the scalar Cauchy formula to bounded linear functionals and using norm separation; the coefficient integral has the same norm bound. Integrate the derivative along the segment from \(0\) to \(z\) to obtain (UM7). For \(\delta=0\), circles of arbitrary radius give \(\|F'(w)\|\leq1/L\); letting \(L\to\infty\) makes \(F\) constant. These arguments use the scalar Cauchy formula and vector integral already proved in [SF3–4](OA-FLOW-SF.md#oa-flow.sf4.cauchy-formula).
+The estimate for a Banach-valued function follows by applying the scalar Cauchy formula to bounded linear functionals and using [CF1's proved norm separation](OA-FLOW-CF.md#oa-flow.cf.1); the coefficient integral has the same norm bound. Integrate the derivative along the segment from \(0\) to \(z\) using CF1's Banach-valued Riemann integral and fundamental theorem to obtain (UM7). For \(\delta=0\), circles of arbitrary radius give \(\|F'(w)\|\leq1/L\); letting \(L\to\infty\) makes \(F\) constant. The scalar Cauchy formula is proved in [SF4](OA-FLOW-SF.md#oa-flow.sf4.cauchy-formula).
 
-For every fixed \(R\), \(\eta_\delta(R)\to0\) as \(\delta\downarrow0\). This quantitative fact supplies the compact-uniform convergence needed below; no compactness theorem for a family of functions is required.
+For every fixed \(R\), \(\eta_\delta(R)\to0\) as \(\delta\downarrow0\). Given \(\varepsilon,R>0\), the explicit choice \(\delta=\min\{R^{-1},\varepsilon e^{-2}R^{-1}\}\) has \(\delta R\leq1\) and makes the right side of (UM7) at most \(\varepsilon\). This quantitative fact supplies the compact-uniform convergence needed below; no compactness theorem for a family of functions is required.
+
+
+### The scalar compactness route, with its metric proof
+
+For \(c\geq0\), let
+\[
+ \mathcal H_c=\{f:\mathbb C\to\mathbb C\text{ entire}:
+                     |f(z)|\leq e^{c|\operatorname{Im}z|}\}.
+ \tag{UM7A}
+\]
+We prove the compactness assertion directly. Put \(D_m=\{z:|z|\leq m\}\), \(m\geq1\). The topology of uniform convergence on compact sets is given by
+\[
+ d_{\mathcal H}(f,g)=
+    \sum_{m\geq1}2^{-m}\min\{1,\sup_{D_m}|f-g|\}.
+ \tag{UM7B}
+\]
+This is a metric: positivity and symmetry are immediate, and the triangle inequality follows from \(\min(1,a+b)\leq\min(1,a)+\min(1,b)\). Convergence in this metric forces convergence of each fixed supremum, while convergence of the suprema controls a finite head of the sum and its geometric tail. Thus it has the asserted topology.
+
+A sequence in \(\mathcal H_c\) is uniformly bounded on each \(D_m\). Cauchy's estimate on circles of radius one gives
+\[
+ |f'(z)|\leq e^{c(m+2)}=:L_m\qquad(|z|\leq m+1,\ f\in\mathcal H_c).
+ \tag{UM7C}
+\]
+Enumerate a dense rational grid by uniting the finite sets
+\(\{a/n+ib/n:a,b\in\mathbb Z,\ |a|,|b|\leq n^2\}\).
+At each grid point the function values have a convergent subsequence. Here is the scalar subsequence argument: subdivide a closed square containing those values into four closed squares, retain a child containing infinitely many terms, and repeat. Choose increasing term indices in the successive children. Their diameters tend to zero, and real completeness gives the common limit. Successively take subsequences at the enumerated grid points and choose their diagonal. This diagonal converges at every grid point.
+
+It is uniformly Cauchy on each \(D_m\). Given a tolerance, choose \(\delta<1\) so that \(2L_m\delta\) is less than half that tolerance. The compact-disc proof in CF1 gives a finite cover of \(D_m\) by radius-\(\delta\) balls centred at grid points in \(D_{m+1}\). At those finitely many centres the diagonal is eventually Cauchy within half the tolerance. For any other point of \(D_m\), integrate (UM7C) along the segment to its centre. The two differences to that centre total at most \(2L_m\delta\). This proves uniform Cauchy convergence on \(D_m\).
+
+Completeness of the scalars gives a locally uniform limit \(f\). Passing the limit through the circle Cauchy formula and its geometric kernel expansion, as proved in SF4, supplies a local power series for \(f\); hence it is entire. The defining bound in (UM7A) passes to the limit at every \(z\). We have proved that every sequence in \(\mathcal H_c\) has a subsequence converging in (UM7B) to another member.
+
+For completeness, this sequential property implies compactness for the present metric. Otherwise the space could fail to have a finite cover by balls of some fixed radius; successively choosing a point outside the preceding balls would give a separated sequence with no convergent subsequence. Thus finite ball covers exist at every radius. For any open cover there is also a common ball radius such that each ball lies in a member of the cover. If there were none, choose \(f_n\) whose radius-\(1/n\) ball lies in no cover member. A convergent subsequence has a limit in an open cover member, which contains a ball about that limit. Eventually the chosen radius-\(1/n\) balls lie in that same member, a contradiction. A finite cover by balls of the common radius now gives a finite subcover of the original cover. Therefore \(\mathcal H_c\) is compact.
+
+The intersection of the \(\mathcal H_c\) over \(c>0\) is exactly the constant functions of modulus at most one. Letting \(c\downarrow0\) at each fixed point gives the bound \(|f(z)|\leq1\). Cauchy's derivative estimate on circles of radius \(L\) then gives \(|f'(z)|\leq1/L\). Letting \(L\to\infty\), and using the scalar fundamental theorem along segments, makes \(f\) constant.
+
+Finally
+\[
+ q_R(f)=\sup_{|z|\leq R}|f(z)-f(0)|,\qquad
+ \mathcal U_{\varepsilon,R}=\{f:q_R(f)<\varepsilon\}
+ \tag{UM7D}
+\]
+defines an open neighborhood of that constant disc, since
+\(|q_R(f)-q_R(g)|\leq2\sup_{D_{\lceil R\rceil}}|f-g|\).
+If no \(\mathcal H_\delta\) lay inside this neighborhood, choose
+\(f_n\in\mathcal H_{1/n}\setminus\mathcal U_{\varepsilon,R}\).
+Compactness of \(\mathcal H_1\) supplies a convergent subsequence. For every fixed \(c>0\), its eventual terms lie in \(\mathcal H_c\); the limit is therefore constant. Continuity of \(q_R\) gives \(q_R(f)\geq\varepsilon\), contradicting that constancy. This proves the scalar small-type conclusion by the compactness route as well. For a Banach-valued \(F\), apply it to each \(\ell\circ F\), \(\|\ell\|\leq1\), and use CF1's norm separation. The same \(\delta\) works for every Banach space.
 
 <a id="um-completeness"></a>
 ## 4. Construct the limiting weight
@@ -172,7 +218,9 @@ For a selfadjoint contraction \(b\), write \(b=2x-1\). Since \((\psi-\varphi)(1)
 \]
 The bound \(2\) follows also by the triangle inequality for two norm-one states. The displayed estimate is not claimed sharp.
 
-There is a precise extension of this statement to nonfaithful normal states. If their supports coincide at \(p\), define their distance by applying (UM1) to their faithful restrictions to \(pMp\); if their supports differ, define it to be infinity. This is an extended metric on all normal states: any finite pair shares a support, and a pair of finite edges in a triangle puts all three states in the same support corner. The norm of a difference supported on \(p\) is unchanged by restriction to \(pMp\), since compression is contractive and the corner unit ball is already a subset of the original unit ball. Thus (UM17) holds for this extension too, with the right side interpreted as \(2\) at infinite distance. This explicitly declares the convention instead of applying a faithful-weight definition to an unsupported state.
+This also gives the global estimate \(\|\psi-\varphi\|\leq4d(\varphi,\psi)\). Put \(r=d(\varphi,\psi)\). For \(0\leq r<1/2\), the positive exponential series gives \(e^r-1=\sum_{n\geq1}r^n/n!\leq\sum_{n\geq1}r^n=r/(1-r)\leq2r\), so (UM17) gives the result. For \(r\geq1/2\), including \(r=\infty\), use \(\|\psi-\varphi\|\leq2\leq4r\). Thus the exponential estimate is used only where it supplies the linear bound.
+
+There is a precise extension of this statement to nonfaithful normal states. [CR8's support theorem](OA-FLOW-CR.md#oa-flow.cr.8) proves that each normal state is compressed by its support and is faithful on that corner. If their supports coincide at \(p\), define their distance by applying (UM1) to their faithful restrictions to \(pMp\); if their supports differ, define it to be infinity. This is an extended metric on all normal states: any finite pair shares a support, and a pair of finite edges in a triangle puts all three states in the same support corner. The norm of a difference supported on \(p\) is unchanged by restriction to \(pMp\), since compression is contractive and the corner unit ball is already a subset of the original unit ball. Thus (UM17) holds for this extension too, with the right side interpreted as \(2\) at infinite distance. This explicitly declares the convention instead of applying a faithful-weight definition to an unsupported state.
 
 <a id="um-spectrum"></a>
 ## 6. Finite distance bounds the modular frequencies of the perturbation
@@ -312,4 +360,4 @@ The table compares complex spectral subspaces; the plotted lines are their real 
 <a id="um-sources"></a>
 ## Further reading
 
-M. Takesaki, *Theory of Operator Algebras II*, Chapter XII, Section 5, Definition 5.5, Example 5.6(ii)–(iii), Proposition 5.7 and Lemma 5.8, printed pp.422–425, develops this uniform topology. The argument above uses an explicit Cauchy estimate instead of a compactness argument for entire functions, constructs the limiting weight through the complete earlier UR theorem, and proves the required Fourier support estimate directly by contours. L157 separately proves the full logarithm-domain equivalence without assuming finite uniform distance.
+M. Takesaki, *Theory of Operator Algebras II*, Chapter XII, Section 5, Definition 5.5, Example 5.6(ii)–(iii), Proposition 5.7 and Lemma 5.8, printed pp.422–425, develops this uniform topology. An explicit Cauchy estimate drives the completeness proof; the scalar compactness route is also proved here from the earlier local foundations. The limiting weight is constructed through the complete earlier UR theorem, and the required Fourier support estimate is proved directly by contours. L157 separately proves the full logarithm-domain equivalence without assuming finite uniform distance.

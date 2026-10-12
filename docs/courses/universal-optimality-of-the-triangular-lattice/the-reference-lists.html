@@ -1,0 +1,408 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The reference lists</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Universal optimality of the triangular lattice)</a><a href="a-positive-quadrature-rule.html">Previous lesson</a><a href="src/the-reference-lists.md">Editable source</a></nav><main><article><h1 id="the-reference-lists">The reference lists</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The interpolation system of <a href="gaussian-damping-and-fourier-pairs.html">Gaussian damping and Fourier pairs</a> is a linear system with infinitely many unknowns, the entries of two coefficient lists. This lesson constructs, for every parameter <span class="math" data-tex="\(k\)">\(k\)</span>, two explicit lists with finitely many nonzero entries that solve the system up to a very small error: the <em>reference lists</em>. They are obtained from a matrix with <span class="math" data-tex="\(168\)">\(168\)</span> rows by finitely many matrix operations. A later step of the proof corrects them to an exact solution.</p>
+<ul>
+<li>On lists that vanish beyond the node <span class="math" data-tex="\(168\)">\(168\)</span>, the jet operator is a matrix. Replacing the spectral integrals by the quadrature rule changes its entries by less than <span class="math" data-tex="\(2\cdot10^{-31}\)">\(2\cdot10^{-31}\)</span> (Lemma 1.1).</li>
+<li>The target of the interpolation system is described by ten numbers depending on <span class="math" data-tex="\(k\)">\(k\)</span>, and the six extra entries of the two lists are fixed as explicit functions of <span class="math" data-tex="\(k\)">\(k\)</span> (Section 2).</li>
+<li>The reference lists are given by two matrices <span class="math" data-tex="\(X_1,X_2\)">\(X_1,X_2\)</span> with ten columns. They solve a finite form of the system up to a term that contains the power <span class="math" data-tex="\(\mathbf D^{512}\)">\(\mathbf D^{512}\)</span> of the matrix (Lemma 3.1).</li>
+<li>The sizes of the matrices are bounded: <span class="math" data-tex="\(\|\mathbf D^{64}\|&lt;0.004\)">\(\|\mathbf D^{64}\|&lt;0.004\)</span>, and the reference lists have total size less than <span class="math" data-tex="\(4.8\)">\(4.8\)</span> for <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span> (Proposition 4.1, Corollary 4.2).</li>
+</ul>
+<p>Proposition 4.1 is a statement about finitely many explicitly defined numbers. It is established by a computation with rigorous error bounds. Section 5 describes the computation and prints the program, so that it can be repeated.</p>
+<p>The lesson follows [OpenAI-T, Section 3, the parts on the transformed jets, the target data and the finite reference columns, and the bounds for norms in the finite certificate].</p>
+<h2 id="1-finite-lists-and-the-matrix-of-the-jet-operator">1. Finite lists and the matrix of the jet operator</h2>
+<p>Let <span class="math" data-tex="\(M=168\)">\(M=168\)</span> and let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be the set of the nodes <span class="math" data-tex="\(n\in\mathcal N\)">\(n\in\mathcal N\)</span> with <span class="math" data-tex="\(n\le M\)">\(n\le M\)</span>. Each of the fourteen blocks of twelve consecutive integers from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(168\)">\(168\)</span> contains six nodes, so <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> has <span class="math" data-tex="\(84\)">\(84\)</span> elements. A <em>finite list</em> is a coefficient list with <span class="math" data-tex="\(c_n=d_n=0\)">\(c_n=d_n=0\)</span> for <span class="math" data-tex="\(n&gt;M\)">\(n&gt;M\)</span>. It has <span class="math" data-tex="\(171\)">\(171\)</span> entries, which we order as follows: first the <span class="math" data-tex="\(c_n\)">\(c_n\)</span> for <span class="math" data-tex="\(n\in\mathcal F\)">\(n\in\mathcal F\)</span> in increasing order, then the <span class="math" data-tex="\(d_n\)">\(d_n\)</span> for <span class="math" data-tex="\(n\in\mathcal F\)">\(n\in\mathcal F\)</span>, then the extra entries <span class="math" data-tex="\(c_0,d_0,C\)">\(c_0,d_0,C\)</span>. The first <span class="math" data-tex="\(168\)">\(168\)</span> entries are the positive part.</p>
+<p>For a vector <span class="math" data-tex="\(v\)">\(v\)</span> let <span class="math" data-tex="\(\|v\|_1\)">\(\|v\|_1\)</span> be the sum of the absolute values of its entries. For a matrix <span class="math" data-tex="\(A\)">\(A\)</span> with columns <span class="math" data-tex="\(A_j\)">\(A_j\)</span> let <span class="math" data-tex="\(\|A\|\)">\(\|A\|\)</span> be the largest of the numbers <span class="math" data-tex="\(\|A_j\|_1\)">\(\|A_j\|_1\)</span>. Then <span class="math" data-tex="\(\|Av\|_1\le\|A\|\,\|v\|_1\)">\(\|Av\|_1\le\|A\|\,\|v\|_1\)</span> and <span class="math" data-tex="\(\|AB\|\le\|A\|\,\|B\|\)">\(\|AB\|\le\|A\|\,\|B\|\)</span> (Exercise 6.1).</p>
+<p>For each of the <span class="math" data-tex="\(171\)">\(171\)</span> entries <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> let <span class="math" data-tex="\(K_\kappa\)">\(K_\kappa\)</span> be the transformed function of the list in which the entry <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> and all other entries are <span class="math" data-tex="\(0\)">\(0\)</span>. Let <span class="math" data-tex="\(S_{\mathcal F}\)">\(S_{\mathcal F}\)</span> be the matrix with <span class="math" data-tex="\(171\)">\(171\)</span> columns and <span class="math" data-tex="\(168\)">\(168\)</span> rows, the rows indexed like a positive part by <span class="math" data-tex="\((c,n)\)">\((c,n)\)</span> and <span class="math" data-tex="\((d,n)\)">\((d,n)\)</span> with <span class="math" data-tex="\(n\in\mathcal F\)">\(n\in\mathcal F\)</span>, and with the entries
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(S_{\mathcal F})_{(c,n),\kappa}=-\frac{K_\kappa(n)}{Q_n},\\
+(S_{\mathcal F})_{(d,n),\kappa}=-\frac{K_\kappa&#x27;(n)-D_nK_\kappa(n)}{Q_n}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+(S_{\mathcal F})_{(c,n),\kappa}=-\frac{K_\kappa(n)}{Q_n},\\
+(S_{\mathcal F})_{(d,n),\kappa}=-\frac{K_\kappa&#x27;(n)-D_nK_\kappa(n)}{Q_n}.
+\end{gathered}
+\]</span>
+By the definition of the jet operator <span class="math" data-tex="\(S\)">\(S\)</span> and by linearity, for a finite list <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span>, written as a column of <span class="math" data-tex="\(171\)">\(171\)</span> numbers, the column <span class="math" data-tex="\(S_{\mathcal F}\mathbf a\)">\(S_{\mathcal F}\mathbf a\)</span> consists of the entries of <span class="math" data-tex="\(S\mathbf a\)">\(S\mathbf a\)</span> at the nodes of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\widetilde S\)">\(\widetilde S\)</span> be the matrix obtained when <span class="math" data-tex="\(K_\kappa(n)\)">\(K_\kappa(n)\)</span> and <span class="math" data-tex="\(K_\kappa&#x27;(n)\)">\(K_\kappa&#x27;(n)\)</span> are replaced by their quadrature forms (<a href="a-positive-quadrature-rule.html">A positive quadrature rule</a>, Section 3, with <span class="math" data-tex="\(a=0\)">\(a=0\)</span> and <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(y=1\)">\(y=1\)</span>, <span class="math" data-tex="\(s=n\)">\(s=n\)</span>). Its entries are finite sums of explicit terms.</p>
+<p><strong>Lemma 1.1.</strong> Every entry of <span class="math" data-tex="\(S_{\mathcal F}-\widetilde S\)">\(S_{\mathcal F}-\widetilde S\)</span> has absolute value less than <span class="math" data-tex="\(2\cdot10^{-31}\)">\(2\cdot10^{-31}\)</span>.</p>
+<p><strong>Proof.</strong> By Theorem 3.3 of the lesson on the quadrature rule, <span class="math" data-tex="\(K_\kappa(n)\)">\(K_\kappa(n)\)</span> and <span class="math" data-tex="\(K_\kappa&#x27;(n)\)">\(K_\kappa&#x27;(n)\)</span> differ from their quadrature forms by less than <span class="math" data-tex="\(10^{-31}\)">\(10^{-31}\)</span>. In the row <span class="math" data-tex="\((c,n)\)">\((c,n)\)</span> the difference is divided by <span class="math" data-tex="\(Q_n&gt;7/4\)">\(Q_n&gt;7/4\)</span>. In the row <span class="math" data-tex="\((d,n)\)">\((d,n)\)</span> the two differences are multiplied by at most <span class="math" data-tex="\(|D_n|/Q_n\)">\(|D_n|/Q_n\)</span> and <span class="math" data-tex="\(1/Q_n\)">\(1/Q_n\)</span>, and <span class="math" data-tex="\((1+|D_n|)/Q_n&lt;3.12/1.75&lt;2\)">\((1+|D_n|)/Q_n&lt;3.12/1.75&lt;2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Write <span class="math" data-tex="\(\widetilde S=(\mathbf D,\widetilde S_e)\)">\(\widetilde S=(\mathbf D,\widetilde S_e)\)</span>, where <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span> consists of the first <span class="math" data-tex="\(168\)">\(168\)</span> columns and <span class="math" data-tex="\(\widetilde S_e\)">\(\widetilde S_e\)</span> of the last three. The square matrix <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span> describes, up to the quadrature error, how the positive part of a finite list acts through <span class="math" data-tex="\(S\)">\(S\)</span> on the jets at the nodes of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. It is not to be confused with the numbers <span class="math" data-tex="\(D_n\)">\(D_n\)</span>.</p>
+<h2 id="2-the-target-and-the-extra-entries">2. The target and the extra entries</h2>
+<p>Let <span class="math" data-tex="\(n_1,\dots,n_5\)">\(n_1,\dots,n_5\)</span> be the first five positive nodes <span class="math" data-tex="\(1,3,4,7,9\)">\(1,3,4,7,9\)</span>. For <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span> let <span class="math" data-tex="\(v_j=e^{-k(n_j-1)}\)">\(v_j=e^{-k(n_j-1)}\)</span>, that is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v_1=1,\quad v_2=e^{-2k},\quad v_3=e^{-3k},\\
+v_4=e^{-6k},\quad v_5=e^{-8k},
+\end{gathered}
+\]">\[
+\begin{gathered}
+v_1=1,\quad v_2=e^{-2k},\quad v_3=e^{-3k},\\
+v_4=e^{-6k},\quad v_5=e^{-8k},
+\end{gathered}
+\]</span>
+and let <span class="math" data-tex="\(q(k)\)">\(q(k)\)</span> be the column with the ten entries
+<span class="math math-display" data-tex="\[
+v_1,\ \dots,\ v_5,\ \frac{v_1}k,\ \dots,\ \frac{v_5}k .
+\]">\[
+v_1,\ \dots,\ v_5,\ \frac{v_1}k,\ \dots,\ \frac{v_5}k .
+\]</span>
+Since <span class="math" data-tex="\(T_k(s)=k^{-1}e^{-k(s-1)}\)">\(T_k(s)=k^{-1}e^{-k(s-1)}\)</span>, we have <span class="math" data-tex="\(T_k(n_j)=v_j/k\)">\(T_k(n_j)=v_j/k\)</span> and <span class="math" data-tex="\(T_k&#x27;(n_j)=-v_j\)">\(T_k&#x27;(n_j)=-v_j\)</span>. Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be the matrix with <span class="math" data-tex="\(168\)">\(168\)</span> rows, indexed like a positive part, and ten columns, whose only nonzero entries are, for <span class="math" data-tex="\(1\le j\le5\)">\(1\le j\le5\)</span> and <span class="math" data-tex="\(n=n_j\)">\(n=n_j\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Y_{(d,n),\,j}=-\frac1{Q_n},\\
+Y_{(c,n),\,5+j}=\frac1{Q_n},\\
+Y_{(d,n),\,5+j}=-\frac{D_n}{Q_n}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+Y_{(d,n),\,j}=-\frac1{Q_n},\\
+Y_{(c,n),\,5+j}=\frac1{Q_n},\\
+Y_{(d,n),\,5+j}=-\frac{D_n}{Q_n}.
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(Yq(k)\)">\(Yq(k)\)</span> has the entries <span class="math" data-tex="\(T_k(n)/Q_n\)">\(T_k(n)/Q_n\)</span> and <span class="math" data-tex="\((T_k&#x27;(n)-D_nT_k(n))/Q_n\)">\((T_k&#x27;(n)-D_nT_k(n))/Q_n\)</span> at the five nodes <span class="math" data-tex="\(n=n_j\)">\(n=n_j\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> at the other nodes of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. So <span class="math" data-tex="\(Yq(k)\)">\(Yq(k)\)</span> is the jet list <span class="math" data-tex="\(\mathcal JT_k\)">\(\mathcal JT_k\)</span>, restricted to <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, with the entries at the nodes <span class="math" data-tex="\(n\ge12\)">\(n\ge12\)</span> replaced by <span class="math" data-tex="\(0\)">\(0\)</span>. These entries are small, of the order <span class="math" data-tex="\(e^{-11k}\)">\(e^{-11k}\)</span>.</p>
+<p>The extra entries of the two lists are chosen as follows. Let <span class="math" data-tex="\(E_1\)">\(E_1\)</span> and <span class="math" data-tex="\(E_2\)">\(E_2\)</span> be the matrices with three rows, for <span class="math" data-tex="\(c_0,d_0,C\)">\(c_0,d_0,C\)</span> in this order, and ten columns, of which only the first and the sixth are different from zero:</p>
+<ul>
+<li><span class="math" data-tex="\(E_1\)">\(E_1\)</span>: first column <span class="math" data-tex="\((0.567,\ 0.250,\ -0.0074)\)">\((0.567,\ 0.250,\ -0.0074)\)</span>, sixth column <span class="math" data-tex="\((-0.976,\ 0.408,\ 0.0115)\)">\((-0.976,\ 0.408,\ 0.0115)\)</span>;</li>
+<li><span class="math" data-tex="\(E_2\)">\(E_2\)</span>: first column <span class="math" data-tex="\((0,\ -0.209,\ 0.0096)\)">\((0,\ -0.209,\ 0.0096)\)</span>, sixth column <span class="math" data-tex="\((1,\ 0.938,\ -0.017)\)">\((1,\ 0.938,\ -0.017)\)</span>.</li>
+</ul>
+<p>Since the first and sixth entries of <span class="math" data-tex="\(q(k)\)">\(q(k)\)</span> are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(1/k\)">\(1/k\)</span>, the column <span class="math" data-tex="\(E_iq(k)\)">\(E_iq(k)\)</span> is the first column plus <span class="math" data-tex="\(1/k\)">\(1/k\)</span> times the sixth. These twelve decimal numbers are a choice made in [OpenAI-T]. Nothing has to be proved about how they were found; what matters is that the bounds below, and later the sign conditions, hold for them.</p>
+<h2 id="3-the-reference-columns">3. The reference columns</h2>
+<p>Suppose two lists are sought whose positive parts vanish beyond <span class="math" data-tex="\(M\)">\(M\)</span>, given by matrices <span class="math" data-tex="\(A_1,A_2\)">\(A_1,A_2\)</span> with <span class="math" data-tex="\(168\)">\(168\)</span> rows and ten columns as <span class="math" data-tex="\(A_1q(k)\)">\(A_1q(k)\)</span> and <span class="math" data-tex="\(A_2q(k)\)">\(A_2q(k)\)</span>, and whose extra entries are <span class="math" data-tex="\(E_1q(k)\)">\(E_1q(k)\)</span> and <span class="math" data-tex="\(E_2q(k)\)">\(E_2q(k)\)</span>. The interpolation system, restricted to the nodes of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, with <span class="math" data-tex="\(S\)">\(S\)</span> replaced by <span class="math" data-tex="\(\widetilde S\)">\(\widetilde S\)</span> and the target by <span class="math" data-tex="\(Yq(k)\)">\(Yq(k)\)</span>, holds for all <span class="math" data-tex="\(k\)">\(k\)</span> if
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_1-\mathbf DA_2=g_1,\\
+A_2-\mathbf DA_1=g_2,
+\end{gathered}
+\]">\[
+\begin{gathered}
+A_1-\mathbf DA_2=g_1,\\
+A_2-\mathbf DA_1=g_2,
+\end{gathered}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+g_1=Y+\widetilde S_eE_2,\qquad g_2=\widetilde S_eE_1 .
+\]">\[
+g_1=Y+\widetilde S_eE_2,\qquad g_2=\widetilde S_eE_1 .
+\]</span>
+Each right side contains the extra entries of the other list, because the transformed function in <span class="math" data-tex="\(H_i\)">\(H_i\)</span> comes from the other list. Adding and subtracting the two equations gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(I-\mathbf D)(A_1+A_2)=g_1+g_2,\\
+(I+\mathbf D)(A_1-A_2)=g_1-g_2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+(I-\mathbf D)(A_1+A_2)=g_1+g_2,\\
+(I+\mathbf D)(A_1-A_2)=g_1-g_2 .
+\end{gathered}
+\]</span>
+In place of the inverses of <span class="math" data-tex="\(I-\mathbf D\)">\(I-\mathbf D\)</span> and <span class="math" data-tex="\(I+\mathbf D\)">\(I+\mathbf D\)</span> we use finite geometric sums. Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V_+=\sum_{j=0}^{511}\mathbf D^j,\\
+V_-=\sum_{j=0}^{511}(-\mathbf D)^j,
+\end{gathered}
+\]">\[
+\begin{gathered}
+V_+=\sum_{j=0}^{511}\mathbf D^j,\\
+V_-=\sum_{j=0}^{511}(-\mathbf D)^j,
+\end{gathered}
+\]</span>
+so that
+<span class="math math-display" data-tex="\[
+(I-\mathbf D)V_+=(I+\mathbf D)V_-=I-\mathbf D^{512}.
+\]">\[
+(I-\mathbf D)V_+=(I+\mathbf D)V_-=I-\mathbf D^{512}.
+\]</span>
+Define the matrices with <span class="math" data-tex="\(168\)">\(168\)</span> rows and ten columns
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma=V_+(g_1+g_2),\qquad\delta=V_-(g_1-g_2),\\
+X_1^+=\tfrac12(\sigma+\delta),\qquad X_2^+=\tfrac12(\sigma-\delta),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sigma=V_+(g_1+g_2),\qquad\delta=V_-(g_1-g_2),\\
+X_1^+=\tfrac12(\sigma+\delta),\qquad X_2^+=\tfrac12(\sigma-\delta),
+\end{gathered}
+\]</span>
+and let <span class="math" data-tex="\(X_i\)">\(X_i\)</span> be the matrix with <span class="math" data-tex="\(171\)">\(171\)</span> rows that consists of <span class="math" data-tex="\(X_i^+\)">\(X_i^+\)</span> and, below it, the three rows of <span class="math" data-tex="\(E_i\)">\(E_i\)</span>.</p>
+<p><strong>Lemma 3.1.</strong>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X_1^+-\mathbf DX_2^+=g_1-\mathbf D^{512}g_1,\\
+X_2^+-\mathbf DX_1^+=g_2-\mathbf D^{512}g_2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+X_1^+-\mathbf DX_2^+=g_1-\mathbf D^{512}g_1,\\
+X_2^+-\mathbf DX_1^+=g_2-\mathbf D^{512}g_2 .
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> By the identity for <span class="math" data-tex="\(V_+\)">\(V_+\)</span> and <span class="math" data-tex="\(V_-\)">\(V_-\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(I-\mathbf D)\sigma=(I-\mathbf D^{512})(g_1+g_2),\\
+(I+\mathbf D)\delta=(I-\mathbf D^{512})(g_1-g_2).
+\end{gathered}
+\]">\[
+\begin{gathered}
+(I-\mathbf D)\sigma=(I-\mathbf D^{512})(g_1+g_2),\\
+(I+\mathbf D)\delta=(I-\mathbf D^{512})(g_1-g_2).
+\end{gathered}
+\]</span>
+Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X_1^+-\mathbf DX_2^+&amp;=\tfrac12(I-\mathbf D)\sigma+\tfrac12(I+\mathbf D)\delta\\
+&amp;=(I-\mathbf D^{512})g_1,\\
+X_2^+-\mathbf DX_1^+&amp;=\tfrac12(I-\mathbf D)\sigma-\tfrac12(I+\mathbf D)\delta\\
+&amp;=(I-\mathbf D^{512})g_2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+X_1^+-\mathbf DX_2^+&amp;=\tfrac12(I-\mathbf D)\sigma+\tfrac12(I+\mathbf D)\delta\\
+&amp;=(I-\mathbf D^{512})g_1,\\
+X_2^+-\mathbf DX_1^+&amp;=\tfrac12(I-\mathbf D)\sigma-\tfrac12(I+\mathbf D)\delta\\
+&amp;=(I-\mathbf D^{512})g_2 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span> the <em>reference lists</em> are the finite lists
+<span class="math math-display" data-tex="\[
+\ell_1^{\mathrm{ref}}=X_1q(k),\qquad\ell_2^{\mathrm{ref}}=X_2q(k).
+\]">\[
+\ell_1^{\mathrm{ref}}=X_1q(k),\qquad\ell_2^{\mathrm{ref}}=X_2q(k).
+\]</span>
+Their extra entries are <span class="math" data-tex="\(E_1q(k)\)">\(E_1q(k)\)</span> and <span class="math" data-tex="\(E_2q(k)\)">\(E_2q(k)\)</span>. By Lemma 3.1 they solve the finite form of the interpolation system up to the columns <span class="math" data-tex="\(\mathbf D^{512}g_iq(k)\)">\(\mathbf D^{512}g_iq(k)\)</span>. The matrices <span class="math" data-tex="\(X_1,X_2\)">\(X_1,X_2\)</span> do not depend on <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<h2 id="4-the-sizes-of-the-matrices">4. The sizes of the matrices</h2>
+<p><strong>Proposition 4.1.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(\|\mathbf D^{64}\|&lt;0.004\)">\(\|\mathbf D^{64}\|&lt;0.004\)</span>.</li>
+<li><span class="math" data-tex="\(\|V_+\|+\|V_-\|&lt;36\)">\(\|V_+\|+\|V_-\|&lt;36\)</span>.</li>
+<li>For the columns <span class="math" data-tex="\((X_i)_j\)">\((X_i)_j\)</span> of <span class="math" data-tex="\(X_1\)">\(X_1\)</span> and <span class="math" data-tex="\(X_2\)">\(X_2\)</span>: <span class="math" data-tex="\(\|(X_1)_j\|_1+\|(X_2)_j\|_1\)">\(\|(X_1)_j\|_1+\|(X_2)_j\|_1\)</span> is less than <span class="math" data-tex="\(2.3\)">\(2.3\)</span> for <span class="math" data-tex="\(1\le j\le5\)">\(1\le j\le5\)</span> and less than <span class="math" data-tex="\(5.6\)">\(5.6\)</span> for <span class="math" data-tex="\(6\le j\le10\)">\(6\le j\le10\)</span>.</li>
+</ol>
+<p><strong>Verification.</strong> Every entry of <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span>, <span class="math" data-tex="\(\widetilde S_e\)">\(\widetilde S_e\)</span>, <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\(E_1\)">\(E_1\)</span>, <span class="math" data-tex="\(E_2\)">\(E_2\)</span> is a finite expression in rational numbers, <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span>, and values of the exponential function and of sine and cosine, given by the formulas of this lesson and of the lessons on cardinal functions, Gaussian damping and the quadrature rule. The matrices <span class="math" data-tex="\(\mathbf D^{64}\)">\(\mathbf D^{64}\)</span>, <span class="math" data-tex="\(V_\pm\)">\(V_\pm\)</span>, <span class="math" data-tex="\(X_i\)">\(X_i\)</span> are obtained from them by finitely many additions and multiplications. So the three statements are inequalities between explicitly defined real numbers.</p>
+<p>They were established by a computation in <em>ball arithmetic</em>: every real number is represented by a midpoint and a radius such that the number lies in the interval they describe; every arithmetic operation and every evaluation of a function returns an interval that contains the exact result; and an inequality is accepted only if it holds for all numbers of the intervals concerned. The computation used midpoints with <span class="math" data-tex="\(256\)">\(256\)</span> binary digits. The powers are formed by squaring, <span class="math" data-tex="\(U_0=\mathbf D\)">\(U_0=\mathbf D\)</span> and <span class="math" data-tex="\(U_{r+1}=U_r^2\)">\(U_{r+1}=U_r^2\)</span>, so that <span class="math" data-tex="\(U_r=\mathbf D^{2^r}\)">\(U_r=\mathbf D^{2^r}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V_+=\prod_{r=0}^8(I+U_r),\\
+V_-=(I-U_0)\prod_{r=1}^8(I+U_r)
+\end{gathered}
+\]">\[
+\begin{gathered}
+V_+=\prod_{r=0}^8(I+U_r),\\
+V_-=(I-U_0)\prod_{r=1}^8(I+U_r)
+\end{gathered}
+\]</span>
+(Exercise 6.2). The results, with the numbers rounded upwards in the last digit:</p>
+<ul>
+<li><span class="math" data-tex="\(\|\mathbf D^{2^r}\|\)">\(\|\mathbf D^{2^r}\|\)</span> for <span class="math" data-tex="\(r=0,\dots,8\)">\(r=0,\dots,8\)</span>: <span class="math" data-tex="\(1.7258\)">\(1.7258\)</span>, <span class="math" data-tex="\(2.0769\)">\(2.0769\)</span>, <span class="math" data-tex="\(2.2537\)">\(2.2537\)</span>, <span class="math" data-tex="\(1.7389\)">\(1.7389\)</span>, <span class="math" data-tex="\(0.7391\)">\(0.7391\)</span>, <span class="math" data-tex="\(0.1178\)">\(0.1178\)</span>, <span class="math" data-tex="\(0.002957\)">\(0.002957\)</span>, <span class="math" data-tex="\(1.864\cdot10^{-6}\)">\(1.864\cdot10^{-6}\)</span>, <span class="math" data-tex="\(7.4\cdot10^{-13}\)">\(7.4\cdot10^{-13}\)</span>;</li>
+<li><span class="math" data-tex="\(\|V_+\|\le32.1015\)">\(\|V_+\|\le32.1015\)</span> and <span class="math" data-tex="\(\|V_-\|\le1.8438\)">\(\|V_-\|\le1.8438\)</span>;</li>
+<li>the sums <span class="math" data-tex="\(\|(X_1)_j\|_1+\|(X_2)_j\|_1\)">\(\|(X_1)_j\|_1+\|(X_2)_j\|_1\)</span> for <span class="math" data-tex="\(j=1,\dots,10\)">\(j=1,\dots,10\)</span>: <span class="math" data-tex="\(1.8003\)">\(1.8003\)</span>, <span class="math" data-tex="\(2.1656\)">\(2.1656\)</span>, <span class="math" data-tex="\(1.1033\)">\(1.1033\)</span>, <span class="math" data-tex="\(0.1595\)">\(0.1595\)</span>, <span class="math" data-tex="\(0.0785\)">\(0.0785\)</span>, <span class="math" data-tex="\(5.3427\)">\(5.3427\)</span>, <span class="math" data-tex="\(5.1525\)">\(5.1525\)</span>, <span class="math" data-tex="\(2.1923\)">\(2.1923\)</span>, <span class="math" data-tex="\(0.1744\)">\(0.1744\)</span>, <span class="math" data-tex="\(0.0630\)">\(0.0630\)</span>.</li>
+</ul>
+<p>The inequalities certified by the computation are <span class="math" data-tex="\(\|\mathbf D^{64}\|&lt;0.0031\)">\(\|\mathbf D^{64}\|&lt;0.0031\)</span>, <span class="math" data-tex="\(\|V_+\|&lt;32.12\)">\(\|V_+\|&lt;32.12\)</span>, <span class="math" data-tex="\(\|V_-\|&lt;1.85\)">\(\|V_-\|&lt;1.85\)</span>, and the bounds <span class="math" data-tex="\(2.20\)">\(2.20\)</span> and <span class="math" data-tex="\(5.40\)">\(5.40\)</span> for the column sums; they imply the three statements. Section 5 prints a program for this computation. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The matrix <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span> has norm larger than <span class="math" data-tex="\(1\)">\(1\)</span>, and its powers first grow. So the interpolation system cannot be solved by a simple iteration; but the high powers of <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span> are very small.</p>
+<p><strong>Corollary 4.2.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(\|\mathbf D^{512}\|&lt;\eta\)">\(\|\mathbf D^{512}\|&lt;\eta\)</span>, where <span class="math" data-tex="\(\eta=0.004^8&lt;6.6\cdot10^{-20}\)">\(\eta=0.004^8&lt;6.6\cdot10^{-20}\)</span>.</li>
+<li>For <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span>, <span class="math" data-tex="\(\|\ell_1^{\mathrm{ref}}\|_1+\|\ell_2^{\mathrm{ref}}\|_1&lt;4.8\)">\(\|\ell_1^{\mathrm{ref}}\|_1+\|\ell_2^{\mathrm{ref}}\|_1&lt;4.8\)</span>.</li>
+<li>For <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span>, the entries <span class="math" data-tex="\(C\)">\(C\)</span> of the two reference lists satisfy <span class="math" data-tex="\(|C_1|+|C_2|&lt;0.02\)">\(|C_1|+|C_2|&lt;0.02\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) <span class="math" data-tex="\(\mathbf D^{512}=(\mathbf D^{64})^8\)">\(\mathbf D^{512}=(\mathbf D^{64})^8\)</span>, and <span class="math" data-tex="\(0.004^8=65536\cdot10^{-24}\)">\(0.004^8=65536\cdot10^{-24}\)</span>.</p>
+<p>(2) The entries of <span class="math" data-tex="\(q(k)\)">\(q(k)\)</span> are positive, so <span class="math" data-tex="\(\|X_iq(k)\|_1\le\sum_jq_j(k)\,\|(X_i)_j\|_1\)">\(\|X_iq(k)\|_1\le\sum_jq_j(k)\,\|(X_i)_j\|_1\)</span>. By Proposition 4.1(3) the sum for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span> is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl(2.3+\frac{5.6}k\Bigr)\\
+&amp;\quad\cdot\bigl(1+e^{-2k}+e^{-3k}+e^{-6k}+e^{-8k}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl(2.3+\frac{5.6}k\Bigr)\\
+&amp;\quad\cdot\bigl(1+e^{-2k}+e^{-3k}+e^{-6k}+e^{-8k}\bigr).
+\end{aligned}
+\]</span>
+This decreases in <span class="math" data-tex="\(k\)">\(k\)</span>. At <span class="math" data-tex="\(k=2.36\)">\(k=2.36\)</span> the first factor is less than <span class="math" data-tex="\(4.673\)">\(4.673\)</span>, and <span class="math" data-tex="\(e^{-4.72}&lt;0.009\)">\(e^{-4.72}&lt;0.009\)</span>, <span class="math" data-tex="\(e^{-7.08}&lt;0.001\)">\(e^{-7.08}&lt;0.001\)</span>, <span class="math" data-tex="\(e^{-14.16}+e^{-18.88}&lt;10^{-6}\)">\(e^{-14.16}+e^{-18.88}&lt;10^{-6}\)</span>, so the second factor is less than <span class="math" data-tex="\(1.0101\)">\(1.0101\)</span>. The product is less than <span class="math" data-tex="\(4.73\)">\(4.73\)</span>.</p>
+<p>(3) <span class="math" data-tex="\(C_1=-0.0074+0.0115/k\)">\(C_1=-0.0074+0.0115/k\)</span> and <span class="math" data-tex="\(C_2=0.0096-0.017/k\)">\(C_2=0.0096-0.017/k\)</span>. For <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span>, <span class="math" data-tex="\(0.0115/k&lt;0.0049\)">\(0.0115/k&lt;0.0049\)</span> and <span class="math" data-tex="\(0.017/k&lt;0.0073\)">\(0.017/k&lt;0.0073\)</span>. So <span class="math" data-tex="\(C_1\)">\(C_1\)</span> is negative with <span class="math" data-tex="\(|C_1|&lt;0.0074\)">\(|C_1|&lt;0.0074\)</span>, and <span class="math" data-tex="\(C_2\)">\(C_2\)</span> is positive with <span class="math" data-tex="\(C_2&lt;0.0096\)">\(C_2&lt;0.0096\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-the-program">5. The program</h2>
+<p>The following program in the language Python carries out the computation of Proposition 4.1. It uses the package python-flint, which gives access to the ball arithmetic of the library Arb of F. Johansson. The names follow the lesson. The array <code>W</code> contains, for each frequency point <code>t[r]</code> and each of the 171 entries, the weight with which the exponential of that frequency occurs in the quadrature form: for the entries <span class="math" data-tex="\(c_n\)">\(c_n\)</span> and <span class="math" data-tex="\(d_n\)">\(d_n\)</span> it is <span class="math" data-tex="\(o_v/6\)">\(o_v/6\)</span> times twice the value of the density <span class="math" data-tex="\(m_n&#x27;&#x27;\)">\(m_n&#x27;&#x27;\)</span> or <span class="math" data-tex="\(m_n&#x27;\)">\(m_n&#x27;\)</span> at the point <span class="math" data-tex="\(\tau_{jv}\)">\(\tau_{jv}\)</span>, and for the entry <span class="math" data-tex="\(C\)">\(C\)</span> it is <span class="math" data-tex="\(P_0\)">\(P_0\)</span> at the frequency <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(2P_l\)">\(2P_l\)</span> at the frequencies <span class="math" data-tex="\(t_l\)">\(t_l\)</span>, <span class="math" data-tex="\(1\le l\le6\)">\(1\le l\le6\)</span>. The quadrature form of <span class="math" data-tex="\(K_\kappa(n)\)">\(K_\kappa(n)\)</span> is then the real part of the sum of <span class="math" data-tex="\(\lambda(t_r)e^{i\pi z(t_r)n}\)">\(\lambda(t_r)e^{i\pi z(t_r)n}\)</span> times the weights, and for <span class="math" data-tex="\(K_\kappa&#x27;(n)\)">\(K_\kappa&#x27;(n)\)</span> each term has the additional factor <span class="math" data-tex="\(i\pi z(t_r)\)">\(i\pi z(t_r)\)</span>.</p>
+<pre><code># The matrix D, the sums V+ and V-, and the reference columns X1, X2,
+# with rigorous bounds for their norms. Needs python-flint (Arb balls).
+from fractions import Fraction
+from flint import arb, acb, arb_mat, acb_mat, fmpq, ctx
+
+ctx.prec = 256
+PI, I = arb.pi(), acb(0, 1)
+b, h, B = arb(3).sqrt() / 2, arb(fmpq(2, 5)), arb(fmpq(4, 3))
+RES = [0, 1, 3, 4, 7, 9]
+P = [acb(5), acb(arb(-1), 2 * b), acb(arb(1), 2 * b), acb(-2),
+     acb(arb(fmpq(-1, 2)), b), acb(arb(-1), -2 * b), acb(1)]
+
+
+def node_constants(a):
+    # Q_n and D_n for a node n congruent to a modulo 12
+    Q, D = (PI / 6) ** 2, arb(0)
+    for d in RES:
+        if d != a:
+            x = PI * arb(fmpq(a - d, 12))
+            Q, D = Q * (2 * x.sin()) ** 2, D + x.cos() / x.sin()
+    return Q, D * PI / 6
+
+
+QD = {a: node_constants(a) for a in RES}
+F = [n for n in range(1, 169) if n % 12 in RES]
+col_c = {n: i for i, n in enumerate(F)}
+col_d = {n: 84 + i for i, n in enumerate(F)}
+col_c[0], col_d[0], COL_C = 168, 169, 170
+
+# the rule with N = 384 points on each of the six frequency intervals
+N = 384
+theta = [PI * arb(fmpq(2 * v + 1, 2 * N)) for v in range(N)]
+o = [(1 - 2 * sum(((2 * a * th).cos() / (4 * a * a - 1)
+                   for a in range(1, N // 2)), arb(0))) / N
+     for th in theta]
+t = [(2 * j - 1 + th.cos()) / 12 for j in range(1, 7) for th in theta]
+t += [arb(fmpq(j, 6)) for j in range(7)]
+lam = [1 / (b * (h - I * x)) for x in t]
+z = [I * B / (h - I * x) - I * h for x in t]
+
+# W[r, c]: weight of the frequency t[r] for the list with entry c equal to 1
+W = acb_mat(len(t), 171)
+for n in [0] + F:
+    pi_l = [P[l] * (I * PI * n * l / 6).exp() for l in range(7)]
+    for j in range(1, 7):
+        s0 = sum(pi_l[j:], acb(0))
+        s1 = sum((pi_l[l] * l / 6 for l in range(j, 7)), acb(0))
+        for v in range(N):
+            r = (j - 1) * N + v
+            e = (-I * PI * t[r] * n).exp() * o[v] / 6
+            W[r, col_c[n]] = -2 * PI ** 2 * e * (s1 - t[r] * s0)
+            W[r, col_d[n]] = 2 * PI * I * e * s0
+for j in range(7):
+    W[6 * N + j, COL_C] = (1 if j == 0 else 2) * P[j]
+
+# quadrature forms of K(n) and K'(n) for the 84 nodes and the 171 entries
+G0, G1 = acb_mat(84, len(t)), acb_mat(84, len(t))
+for i, n in enumerate(F):
+    for r in range(len(t)):
+        G0[i, r] = lam[r] * (I * PI * z[r] * n).exp()
+        G1[i, r] = G0[i, r] * I * PI * z[r]
+K0, K1 = (G0 * W).real, (G1 * W).real
+S = arb_mat(168, 171)
+for i, n in enumerate(F):
+    Q, Dn = QD[n % 12]
+    for c in range(171):
+        S[i, c] = -K0[i, c] / Q
+        S[84 + i, c] = (Dn * K0[i, c] - K1[i, c]) / Q
+
+
+def block(A, rows, cols):
+    R = arb_mat(len(rows), len(cols))
+    for i, r in enumerate(rows):
+        for j, c in enumerate(cols):
+            R[i, j] = A[r, c]
+    return R
+
+
+def dec(s):
+    # the exact rational number with the decimal expansion s
+    f = Fraction(s)
+    return arb(fmpq(f.numerator, f.denominator))
+
+
+def column_sums(A):
+    return [sum((abs(A[r, c]) for r in range(A.nrows())), arb(0))
+            for c in range(A.ncols())]
+
+
+def below(A, cut):
+    # True only if every column sum is certainly less than cut
+    sums = column_sums(A)
+    return all(x &lt; dec(cut) for x in sums), max(float(x.mid()) for x in sums)
+
+
+D = block(S, range(168), range(168))
+Se = block(S, range(168), range(168, 171))
+
+# target data and extra entries
+E1, E2, Y = arb_mat(3, 10), arb_mat(3, 10), arb_mat(168, 10)
+for r in range(3):
+    E1[r, 0] = dec([&quot;0.567&quot;, &quot;0.250&quot;, &quot;-0.0074&quot;][r])
+    E1[r, 5] = dec([&quot;-0.976&quot;, &quot;0.408&quot;, &quot;0.0115&quot;][r])
+    E2[r, 0] = dec([&quot;0&quot;, &quot;-0.209&quot;, &quot;0.0096&quot;][r])
+    E2[r, 5] = dec([&quot;1&quot;, &quot;0.938&quot;, &quot;-0.017&quot;][r])
+for j, n in enumerate([1, 3, 4, 7, 9]):
+    Q, Dn = QD[n % 12]
+    Y[col_d[n], j] = -1 / Q
+    Y[col_c[n], j + 5] = 1 / Q
+    Y[col_d[n], j + 5] = -Dn / Q
+g1, g2 = Y + Se * E2, Se * E1
+
+# powers of D by squaring, V+ and V- by nine multiplications
+Id = arb_mat(168, 168)
+for i in range(168):
+    Id[i, i] = 1
+CUTS = [(&quot;1.74&quot;, &quot;2.74&quot;, &quot;2.1&quot;), (&quot;2.09&quot;, &quot;6.94&quot;, &quot;2.2&quot;),
+        (&quot;2.27&quot;, &quot;15.32&quot;, &quot;2.13&quot;), (&quot;1.75&quot;, &quot;25.3&quot;, &quot;1.97&quot;),
+        (&quot;0.75&quot;, &quot;31.1&quot;, &quot;1.88&quot;), (&quot;0.12&quot;, &quot;32.09&quot;, &quot;1.85&quot;),
+        (&quot;0.0031&quot;, &quot;32.12&quot;, &quot;1.85&quot;), (&quot;0.000002&quot;, &quot;32.12&quot;, &quot;1.85&quot;),
+        (&quot;0.000000000001&quot;, &quot;32.12&quot;, &quot;1.85&quot;)]
+U, Vp, Vm = D, Id, Id
+for r in range(9):
+    u = below(U, CUTS[r][0])
+    Vp = Vp * (Id + U)
+    Vm = Vm * (Id - U if r == 0 else Id + U)
+    print(r, u, below(Vp, CUTS[r][1]), below(Vm, CUTS[r][2]))
+    U = U * U
+
+# the reference columns; rows 168 to 170 are the extra entries
+sm, df = Vp * (g1 + g2), Vm * (g1 - g2)
+X1, X2 = arb_mat(171, 10), arb_mat(171, 10)
+for c in range(10):
+    for r in range(168):
+        X1[r, c] = (sm[r, c] + df[r, c]) / 2
+        X2[r, c] = (sm[r, c] - df[r, c]) / 2
+    for r in range(3):
+        X1[168 + r, c], X2[168 + r, c] = E1[r, c], E2[r, c]
+both = [x + y for x, y in zip(column_sums(X1), column_sums(X2))]
+print(all(x &lt; dec(&quot;2.20&quot;) for x in both[:5]),
+      all(x &lt; dec(&quot;5.40&quot;) for x in both[5:]),
+      [round(float(x.mid()), 4) for x in both])
+</code></pre>
+<p>A comparison <code>x &lt; cut</code> between two balls is true only if every number of the ball <code>x</code> is smaller than every number of the ball <code>cut</code>. For <span class="math" data-tex="\(r=0,\dots,8\)">\(r=0,\dots,8\)</span> the program prints the result of the comparisons for <span class="math" data-tex="\(\|U_r\|\)">\(\|U_r\|\)</span>, <span class="math" data-tex="\(\|V_+\|\)">\(\|V_+\|\)</span> and <span class="math" data-tex="\(\|V_-\|\)">\(\|V_-\|\)</span> after the step <span class="math" data-tex="\(r\)">\(r\)</span>, each with the midpoint of the largest column sum, and in the last line the two comparisons for the column sums of <span class="math" data-tex="\(X_1\)">\(X_1\)</span> and <span class="math" data-tex="\(X_2\)">\(X_2\)</span> with their ten midpoints. All comparisons give <code>True</code>. On a current computer the program runs for about ten seconds.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show <span class="math" data-tex="\(\|Av\|_1\le\|A\|\,\|v\|_1\)">\(\|Av\|_1\le\|A\|\,\|v\|_1\)</span> and <span class="math" data-tex="\(\|AB\|\le\|A\|\,\|B\|\)">\(\|AB\|\le\|A\|\,\|B\|\)</span> for the norms of Section 1.</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span> be a square matrix and <span class="math" data-tex="\(U_r=\mathbf D^{2^r}\)">\(U_r=\mathbf D^{2^r}\)</span>. Prove the two product formulas for <span class="math" data-tex="\(V_+\)">\(V_+\)</span> and <span class="math" data-tex="\(V_-\)">\(V_-\)</span> of Section 4.</p>
+<p><strong>6.3.</strong> Write the six extra entries of the two reference lists as functions of <span class="math" data-tex="\(k\)">\(k\)</span>, and give their limits for <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>.</p>
+<p><strong>6.4.</strong> Show that for every node <span class="math" data-tex="\(n\)">\(n\)</span> and every <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\frac{T_k(n)}{Q_n}\Bigr|+\Bigl|\frac{T_k&#x27;(n)-D_nT_k(n)}{Q_n}\Bigr|\\
+\le\frac{1+3.12/k}{1.75}\,e^{-k(n-1)}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\frac{T_k(n)}{Q_n}\Bigr|+\Bigl|\frac{T_k&#x27;(n)-D_nT_k(n)}{Q_n}\Bigr|\\
+\le\frac{1+3.12/k}{1.75}\,e^{-k(n-1)}.
+\end{gathered}
+\]</span></p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(Av=\sum_jv_jA_j\)">\(Av=\sum_jv_jA_j\)</span>, so <span class="math" data-tex="\(\|Av\|_1\le\sum_j|v_j|\,\|A_j\|_1\le\|A\|\,\|v\|_1\)">\(\|Av\|_1\le\sum_j|v_j|\,\|A_j\|_1\le\|A\|\,\|v\|_1\)</span>. The columns of <span class="math" data-tex="\(AB\)">\(AB\)</span> are the vectors <span class="math" data-tex="\(AB_j\)">\(AB_j\)</span>, and <span class="math" data-tex="\(\|AB_j\|_1\le\|A\|\,\|B_j\|_1\le\|A\|\,\|B\|\)">\(\|AB_j\|_1\le\|A\|\,\|B_j\|_1\le\|A\|\,\|B\|\)</span>.</p>
+<p><strong>6.2.</strong> Multiplying out <span class="math" data-tex="\(\prod_{r=0}^8(I+\mathbf D^{2^r})\)">\(\prod_{r=0}^8(I+\mathbf D^{2^r})\)</span> gives the sum of the powers <span class="math" data-tex="\(\mathbf D^j\)">\(\mathbf D^j\)</span>, where <span class="math" data-tex="\(j\)">\(j\)</span> runs through the sums of the subsets of <span class="math" data-tex="\(\{1,2,4,\dots,256\}\)">\(\{1,2,4,\dots,256\}\)</span>. Every integer <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(0\le j\le511\)">\(0\le j\le511\)</span> is such a sum in exactly one way, by its binary expansion. In the same way <span class="math" data-tex="\(\prod_{r=1}^8(I+\mathbf D^{2^r})\)">\(\prod_{r=1}^8(I+\mathbf D^{2^r})\)</span> is the sum of the powers <span class="math" data-tex="\(\mathbf D^{2i}\)">\(\mathbf D^{2i}\)</span> with <span class="math" data-tex="\(0\le i\le255\)">\(0\le i\le255\)</span>. Multiplying by <span class="math" data-tex="\(I-\mathbf D\)">\(I-\mathbf D\)</span> gives
+<span class="math math-display" data-tex="\[
+\sum_{i=0}^{255}(\mathbf D^{2i}-\mathbf D^{2i+1})=\sum_{j=0}^{511}(-\mathbf D)^j .
+\]">\[
+\sum_{i=0}^{255}(\mathbf D^{2i}-\mathbf D^{2i+1})=\sum_{j=0}^{511}(-\mathbf D)^j .
+\]</span></p>
+<p><strong>6.3.</strong> For the first list <span class="math" data-tex="\(c_0=0.567-0.976/k\)">\(c_0=0.567-0.976/k\)</span>, <span class="math" data-tex="\(d_0=0.250+0.408/k\)">\(d_0=0.250+0.408/k\)</span>, <span class="math" data-tex="\(C=-0.0074+0.0115/k\)">\(C=-0.0074+0.0115/k\)</span>. For the second list <span class="math" data-tex="\(c_0=1/k\)">\(c_0=1/k\)</span>, <span class="math" data-tex="\(d_0=-0.209+0.938/k\)">\(d_0=-0.209+0.938/k\)</span>, <span class="math" data-tex="\(C=0.0096-0.017/k\)">\(C=0.0096-0.017/k\)</span>. The limits are <span class="math" data-tex="\((0.567,0.250,-0.0074)\)">\((0.567,0.250,-0.0074)\)</span> and <span class="math" data-tex="\((0,-0.209,0.0096)\)">\((0,-0.209,0.0096)\)</span>.</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(T_k(n)=k^{-1}e^{-k(n-1)}\)">\(T_k(n)=k^{-1}e^{-k(n-1)}\)</span> and <span class="math" data-tex="\(T_k&#x27;(n)=-e^{-k(n-1)}\)">\(T_k&#x27;(n)=-e^{-k(n-1)}\)</span>. With <span class="math" data-tex="\(Q_n&gt;1.75\)">\(Q_n&gt;1.75\)</span> and <span class="math" data-tex="\(|D_n|&lt;2.12\)">\(|D_n|&lt;2.12\)</span>, the first term is at most <span class="math" data-tex="\(e^{-k(n-1)}/(1.75\,k)\)">\(e^{-k(n-1)}/(1.75\,k)\)</span> and the second at most <span class="math" data-tex="\((1+2.12/k)\,e^{-k(n-1)}/1.75\)">\((1+2.12/k)\,e^{-k(n-1)}/1.75\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-T] OpenAI, <em>Universal optimality of the triangular lattice</em>, OpenAI Math Release preprint, 23 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026</li>
+<li>[Arb] F. Johansson, <em>Arb: efficient arbitrary-precision midpoint-radius interval arithmetic</em>, IEEE Transactions on Computers 66 (2017). https://arxiv.org/abs/1611.02831</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

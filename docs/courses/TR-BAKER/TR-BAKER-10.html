@@ -14678,7 +14678,639 @@ v_p(a^{p-1}-b^{p-1})
 The powers of <span class="math" data-tex="\(b\)">\(b\)</span> are units, and <span class="math" data-tex="\((p-1)/d_0\)">\((p-1)/d_0\)</span> is prime to <span class="math" data-tex="\(p\)">\(p\)</span>, which justifies the second identity. Apply the first part to conclude. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <p><img src="figures/fermat-283-bound.png" alt="The fixed rectangle budgets proving the constant 283" class="course-figure" width="1888" height="640" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="fermat-283-bound-budget" data-asset-sha256="175F06BCD5F9446AFF5BC778BA8140C3E8061AF850AEF8ACA1E3D42FE47FE83A"></p>
 <p><em>Figure 10.49. Theorem 10.167 uses <span class="math" data-tex="\(E=1\)">\(E=1\)</span>, <span class="math" data-tex="\(g=p-1\)">\(g=p-1\)</span>, <span class="math" data-tex="\(L=7\)">\(L=7\)</span>, <span class="math" data-tex="\(k=11/2\)">\(k=11/2\)</span>, <span class="math" data-tex="\(z=gH_1H_2/(\ln p)^2&gt;3\)">\(z=gH_1H_2/(\ln p)^2&gt;3\)</span>, and <span class="math" data-tex="\(q=\ln p&gt;1\)">\(q=\ln p&gt;1\)</span>. Left: the sufficient determinant comparison has left lower bound <span class="math" data-tex="\(22/7\)">\(22/7\)</span> and right upper bound <span class="math" data-tex="\(47/20+1/4+1/7=96/35\)">\(47/20+1/4+1/7=96/35\)</span>, with exact gap <span class="math" data-tex="\(2/5\)">\(2/5\)</span>. The three colored pieces bound the height contribution, rounded-side error and logarithmic term. Right: <span class="math" data-tex="\(N/z\)">\(N/z\)</span> is at most <span class="math" data-tex="\(539/2+7/3=1631/6&lt;283\)">\(539/2+7/3=1631/6&lt;283\)</span>; the collision case has the smaller bound <span class="math" data-tex="\(34\)">\(34\)</span>. These are proved uniform budgets, not measured valuations. The coprime two-base case and the <span class="math" data-tex="\(b=1\)">\(b=1\)</span> auxiliary-prime construction use the same parameters and both satisfy <span class="math" data-tex="\(H_1&gt;2,H_2&gt;3/2\)">\(H_1&gt;2,H_2&gt;3/2\)</span>. Human-source context: the free Bugeaud–Laurent and Bugeaud determinant papers and Yamada's freely accessible note; the complete proof, including the one-base case, is given here. <a href="figure_sources/fermat_283_bound.py">Figure program</a>.</em></p>
-<h2 id="57-exercises-with-solutions"><span id="7-exercises-with-solutions"></span><span id="8-exercises-with-solutions"></span><span id="9-exercises-with-solutions"></span><span id="10-exercises-with-solutions"></span><span id="11-exercises-with-solutions"></span><span id="12-exercises-with-solutions"></span><span id="13-exercises-with-solutions"></span><span id="14-exercises-with-solutions"></span><span id="15-exercises-with-solutions"></span><span id="16-exercises-with-solutions"></span><span id="17-exercises-with-solutions"></span><span id="18-exercises-with-solutions"></span><span id="19-exercises-with-solutions"></span><span id="20-exercises-with-solutions"></span><span id="21-exercises-with-solutions"></span><span id="22-exercises-with-solutions"></span><span id="23-exercises-with-solutions"></span><span id="24-exercises-with-solutions"></span><span id="25-exercises-with-solutions"></span><span id="26-exercises-with-solutions"></span><span id="27-exercises-with-solutions"></span><span id="28-exercises-with-solutions"></span><span id="29-exercises-with-solutions"></span><span id="30-exercises-with-solutions"></span><span id="31-exercises-with-solutions"></span><span id="32-exercises-with-solutions"></span><span id="33-exercises-with-solutions"></span><span id="34-exercises-with-solutions"></span><span id="35-exercises-with-solutions"></span><span id="36-exercises-with-solutions"></span><span id="37-exercises-with-solutions"></span><span id="38-exercises-with-solutions"></span><span id="39-exercises-with-solutions"></span><span id="40-exercises-with-solutions"></span><span id="41-exercises-with-solutions"></span><span id="42-exercises-with-solutions"></span><span id="43-exercises-with-solutions"></span><span id="44-exercises-with-solutions"></span><span id="45-exercises-with-solutions"></span><span id="46-exercises-with-solutions"></span><span id="47-exercises-with-solutions"></span><span id="48-exercises-with-solutions"></span><span id="49-exercises-with-solutions"></span><span id="50-exercises-with-solutions"></span><span id="51-exercises-with-solutions"></span><span id="52-exercises-with-solutions"></span><span id="53-exercises-with-solutions"></span><span id="54-exercises-with-solutions"></span><span id="55-exercises-with-solutions"></span><span id="56-exercises-with-solutions"></span>57. Exercises with solutions</h2>
+<h2 id="57-residue-occupancy-and-the-number-field-estimate">57. Residue occupancy and the number-field estimate</h2>
+<p>The residue order of a pair of units is often smaller than the order of the entire residue-field multiplicative group. Using that smaller order does more than shrink the rectangles: a single residue congruence also limits how often a coordinate can occur. The centered occupancy theorem from Lesson 6 then improves the arithmetic height of the determinant.</p>
+<p><strong>Lemma 10.168 (occupancy in one residue class).</strong> Let <span class="math" data-tex="\(K,L,R,S,g\)">\(K,L,R,S,g\)</span> be positive integers, <span class="math" data-tex="\(N=KL\)">\(N=KL\)</span>, and suppose <span class="math" data-tex="\(\gcd(m_1,m_2,g)=1\)">\(\gcd(m_1,m_2,g)=1\)</span>. Let <span class="math" data-tex="\((r_j,s_j)\)">\((r_j,s_j)\)</span>, <span class="math" data-tex="\(1\le j\le N\)">\(1\le j\le N\)</span>, be distinct integer pairs satisfying
+<span class="math math-display" data-tex="\[
+0\le r_j&lt;R,\quad 0\le s_j&lt;S,\quad m_1r_j+m_2s_j\equiv c\pmod g.
+\tag{10.593}
+\]">\[
+0\le r_j&lt;R,\quad 0\le s_j&lt;S,\quad m_1r_j+m_2s_j\equiv c\pmod g.
+\tag{10.593}
+\]</span>
+Let <span class="math" data-tex="\(l_1,\ldots,l_N\)">\(l_1,\ldots,l_N\)</span> contain each integer <span class="math" data-tex="\(0,\ldots,L-1\)">\(0,\ldots,L-1\)</span> exactly <span class="math" data-tex="\(K\)">\(K\)</span> times. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M_1&amp;=\frac{L-1}{2}\sum_jr_j,&amp;
+G_1&amp;=\frac{NL(R+g-1)}8-\frac{gN^2L}{24(S+g-1)},\\
+M_2&amp;=\frac{L-1}{2}\sum_js_j,&amp;
+G_2&amp;=\frac{NL(S+g-1)}8-\frac{gN^2L}{24(R+g-1)}.
+\end{aligned}
+\tag{10.594}
+\]">\[
+\begin{aligned}
+M_1&amp;=\frac{L-1}{2}\sum_jr_j,&amp;
+G_1&amp;=\frac{NL(R+g-1)}8-\frac{gN^2L}{24(S+g-1)},\\
+M_2&amp;=\frac{L-1}{2}\sum_js_j,&amp;
+G_2&amp;=\frac{NL(S+g-1)}8-\frac{gN^2L}{24(R+g-1)}.
+\end{aligned}
+\tag{10.594}
+\]</span>
+Then <span class="math" data-tex="\(G_1,G_2\ge0\)">\(G_1,G_2\ge0\)</span>, and for every permutation <span class="math" data-tex="\(\pi\)">\(\pi\)</span>,
+<span class="math math-display" data-tex="\[
+\left|\sum_i l_ir_{\pi(i)}-M_1\right|\le G_1,\qquad
+\left|\sum_i l_is_{\pi(i)}-M_2\right|\le G_2.
+\tag{10.595}
+\]">\[
+\left|\sum_i l_ir_{\pi(i)}-M_1\right|\le G_1,\qquad
+\left|\sum_i l_is_{\pi(i)}-M_2\right|\le G_2.
+\tag{10.595}
+\]</span></p>
+<p><strong>Proof.</strong> We use the completely proved <a href="TR-BAKER-06.html#11-centering-the-exponents-the-occupancy-bound">centered occupancy lemma</a>, Lemma 6.4. Put <span class="math" data-tex="\(g_0=\gcd(m_2,g)\)">\(g_0=\gcd(m_2,g)\)</span>, <span class="math" data-tex="\(g_1=g/g_0\)">\(g_1=g/g_0\)</span>. Since <span class="math" data-tex="\(\gcd(m_1,g_0)=1\)">\(\gcd(m_1,g_0)=1\)</span>, every <span class="math" data-tex="\(r_j\)">\(r_j\)</span> is in the same class <span class="math" data-tex="\(c_0\pmod{g_0}\)">\(c_0\pmod{g_0}\)</span>, with <span class="math" data-tex="\(0\le c_0&lt;g_0\)">\(0\le c_0&lt;g_0\)</span>. Write <span class="math" data-tex="\(r_j=c_0+g_0r_j&#x27;\)">\(r_j=c_0+g_0r_j&#x27;\)</span>. These nonnegative integers lie in a range of length at most
+<span class="math math-display" data-tex="\[
+R&#x27;=\left\lfloor\frac{R-1}{g_0}\right\rfloor+1.
+\tag{10.596}
+\]">\[
+R&#x27;=\left\lfloor\frac{R-1}{g_0}\right\rfloor+1.
+\tag{10.596}
+\]</span>
+For a fixed <span class="math" data-tex="\(r_j\)">\(r_j\)</span>, division of the original congruence by <span class="math" data-tex="\(g_0\)">\(g_0\)</span> determines <span class="math" data-tex="\(s_j\)">\(s_j\)</span> uniquely modulo <span class="math" data-tex="\(g_1\)">\(g_1\)</span>, because <span class="math" data-tex="\(m_2/g_0\)">\(m_2/g_0\)</span> is invertible modulo <span class="math" data-tex="\(g_1\)">\(g_1\)</span>. Therefore each <span class="math" data-tex="\(r_j&#x27;\)">\(r_j&#x27;\)</span> is repeated at most
+<span class="math math-display" data-tex="\[
+S&#x27;=\left\lfloor\frac{S-1}{g_1}\right\rfloor+1
+\tag{10.597}
+\]">\[
+S&#x27;=\left\lfloor\frac{S-1}{g_1}\right\rfloor+1
+\tag{10.597}
+\]</span>
+times. There are <span class="math" data-tex="\(N\)">\(N\)</span> actual selected pairs, so <span class="math" data-tex="\(N\le R&#x27;S&#x27;\)">\(N\le R&#x27;S&#x27;\)</span>. Lemma 6.4 applies to this compressed coordinate and capacity:
+<span class="math math-display" data-tex="\[
+\left|\sum_i\left(l_i-\frac{L-1}{2}\right)r_{\pi(i)}\right|
+\le g_0\left(\frac{NLR&#x27;}8-\frac{N^2L}{24S&#x27;}\right).
+\tag{10.598}
+\]">\[
+\left|\sum_i\left(l_i-\frac{L-1}{2}\right)r_{\pi(i)}\right|
+\le g_0\left(\frac{NLR&#x27;}8-\frac{N^2L}{24S&#x27;}\right).
+\tag{10.598}
+\]</span>
+The constant <span class="math" data-tex="\(c_0\)">\(c_0\)</span> disappears since the centered row weights sum to zero. Now
+<span class="math math-display" data-tex="\[
+g_0R&#x27;\le R+g_0-1,\qquad
+\frac{g_0}{S&#x27;}\ge\frac{g}{S+g_1-1}.
+\tag{10.599}
+\]">\[
+g_0R&#x27;\le R+g_0-1,\qquad
+\frac{g_0}{S&#x27;}\ge\frac{g}{S+g_1-1}.
+\tag{10.599}
+\]</span>
+Inserting these two inequalities, and then <span class="math" data-tex="\(g_0,g_1\le g\)">\(g_0,g_1\le g\)</span>, gives the asserted <span class="math" data-tex="\(G_1\)">\(G_1\)</span>. The compressed occupancy bound is nonnegative: <span class="math" data-tex="\(N\le R&#x27;S&#x27;\)">\(N\le R&#x27;S&#x27;\)</span> implies its value is at least <span class="math" data-tex="\(NLR&#x27;/12&gt;0\)">\(NLR&#x27;/12&gt;0\)</span>. Its successive upper bounds are nonnegative as well. Interchanging the two coordinates proves the assertion for <span class="math" data-tex="\(G_2\)">\(G_2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the rest of this section, let <span class="math" data-tex="\(g\)">\(g\)</span> be the order of the subgroup generated by the residues of <span class="math" data-tex="\(\alpha_1,\alpha_2\)">\(\alpha_1,\alpha_2\)</span>, rather than the full <span class="math" data-tex="\(p^f-1\)">\(p^f-1\)</span> of (10.1). This subgroup is cyclic by the proof in Section 1. Lift its generator to a root of unity <span class="math" data-tex="\(\eta\)">\(\eta\)</span> of order <span class="math" data-tex="\(g\)">\(g\)</span>, and write <span class="math" data-tex="\(\alpha_i=\eta^{m_i}\epsilon_i\)">\(\alpha_i=\eta^{m_i}\epsilon_i\)</span>. The minimality of this subgroup gives
+<span class="math math-display" data-tex="\[
+g\mid p^f-1,\qquad \gcd(m_1,m_2,g)=1.
+\tag{10.600}
+\]">\[
+g\mid p^f-1,\qquad \gcd(m_1,m_2,g)=1.
+\tag{10.600}
+\]</span>
+The principal factors and the integer <span class="math" data-tex="\(t\)">\(t\)</span> from (10.2) are unchanged. All analytic estimates and residue-class zero arguments proved earlier apply to this subgroup.</p>
+<p><strong>Theorem 10.169 (the refined determinant parameter theorem).</strong> Retain the local and global data <span class="math" data-tex="\(d,e,f,t\)">\(d,e,f,t\)</span> of Section 1, now with the subgroup order <span class="math" data-tex="\(g\)">\(g\)</span> just defined. Set
+<span class="math math-display" data-tex="\[
+D=d/f,\qquad
+\gamma_1=\frac{R+g-1}{2R}-\frac{gN}{6R(S+g-1)},\qquad
+\gamma_2=\frac{S+g-1}{2S}-\frac{gN}{6S(R+g-1)}.
+\tag{10.601}
+\]">\[
+D=d/f,\qquad
+\gamma_1=\frac{R+g-1}{2R}-\frac{gN}{6R(S+g-1)},\qquad
+\gamma_2=\frac{S+g-1}{2S}-\frac{gN}{6S(R+g-1)}.
+\tag{10.601}
+\]</span>
+Let <span class="math" data-tex="\(K\ge3,L\ge2\)">\(K\ge3,L\ge2\)</span>, <span class="math" data-tex="\(R=R_1+R_2-1\)">\(R=R_1+R_2-1\)</span>, <span class="math" data-tex="\(S=S_1+S_2-1\)">\(S=S_1+S_2-1\)</span>, <span class="math" data-tex="\(N=KL\)">\(N=KL\)</span>, and let <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be (10.15). Suppose both residue-class cardinalities (10.18) hold, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p^tK(L-1)\ln p&gt;{}&amp;(D+2e)\ln N+D(K-1)\ln\beta\\
+&amp;+Dp^tL\bigl(\gamma_1Rh(\alpha_1)+\gamma_2Sh(\alpha_2)\bigr).
+\end{aligned}
+\tag{10.602}
+\]">\[
+\begin{aligned}
+p^tK(L-1)\ln p&gt;{}&amp;(D+2e)\ln N+D(K-1)\ln\beta\\
+&amp;+Dp^tL\bigl(\gamma_1Rh(\alpha_1)+\gamma_2Sh(\alpha_2)\bigr).
+\end{aligned}
+\tag{10.602}
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+&lt;\frac{p^t}{e}(N-1/2)+u,
+\qquad u=v_p(\gcd(b_1,b_2)).
+\tag{10.603}
+\]">\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+&lt;\frac{p^t}{e}(N-1/2)+u,
+\qquad u=v_p(\gcd(b_1,b_2)).
+\tag{10.603}
+\]</span></p>
+<p><strong>Proof.</strong> As in Theorem 10.7, the zero lemma supplies a nonzero determinant <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> with all selected columns in one class. In the polynomial <span class="math" data-tex="\(P(X,Y)\)">\(P(X,Y)\)</span> used in Lemma 10.6, every first exponent lies between <span class="math" data-tex="\(M_1-G_1\)">\(M_1-G_1\)</span> and <span class="math" data-tex="\(M_1+G_1\)">\(M_1+G_1\)</span>, and every second exponent lies between <span class="math" data-tex="\(M_2-G_2\)">\(M_2-G_2\)</span> and <span class="math" data-tex="\(M_2+G_2\)">\(M_2+G_2\)</span>, by Lemma 10.168. Removing the smallest actual powers gives an integer polynomial of partial degrees at most <span class="math" data-tex="\(2G_1,2G_2\)">\(2G_1,2G_2\)</span>. Its torus norm is still bounded by (10.17). The complete one-place height proof in Lemma 10.6 therefore gives
+<span class="math math-display" data-tex="\[
+v_p(\Delta)\le\frac{DN}{2e\ln p}
+\left(\ln N+(K-1)\ln\beta+
+p^tL\bigl(\gamma_1Rh(\alpha_1)+\gamma_2Sh(\alpha_2)\bigr)\right),
+\tag{10.604}
+\]">\[
+v_p(\Delta)\le\frac{DN}{2e\ln p}
+\left(\ln N+(K-1)\ln\beta+
+p^tL\bigl(\gamma_1Rh(\alpha_1)+\gamma_2Sh(\alpha_2)\bigr)\right),
+\tag{10.604}
+\]</span>
+because <span class="math" data-tex="\(4G_1/N=\gamma_1LR\)">\(4G_1/N=\gamma_1LR\)</span> and <span class="math" data-tex="\(4G_2/N=\gamma_2LS\)">\(4G_2/N=\gamma_2LS\)</span>. The constants <span class="math" data-tex="\(\gamma_i\)">\(\gamma_i\)</span> are nonnegative by Lemma 10.168. The analytic estimate (10.10) is unchanged. If the asserted valuation inequality failed, comparing these two bounds and multiplying by <span class="math" data-tex="\(2e\ln p/N\)">\(2e\ln p/N\)</span> would give the opposite weak inequality to the stated strict parameter condition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 10.170 (the explicit number-field bound).</strong> Let <span class="math" data-tex="\(\alpha_1,\alpha_2\)">\(\alpha_1,\alpha_2\)</span> be multiplicatively independent nonzero algebraic numbers, with a fixed p-adic embedding and <span class="math" data-tex="\(v_p(\alpha_i)=0\)">\(v_p(\alpha_i)=0\)</span>. Put
+<span class="math math-display" data-tex="\[
+d=[\mathbb Q(\alpha_1,\alpha_2):\mathbb Q],\qquad
+F=\mathbb Q_p(\alpha_1,\alpha_2),\qquad
+[F:\mathbb Q_p]=ef,\qquad D=d/f.
+\tag{10.605}
+\]">\[
+d=[\mathbb Q(\alpha_1,\alpha_2):\mathbb Q],\qquad
+F=\mathbb Q_p(\alpha_1,\alpha_2),\qquad
+[F:\mathbb Q_p]=ef,\qquad D=d/f.
+\tag{10.605}
+\]</span>
+Let <span class="math" data-tex="\(g\)">\(g\)</span> be the order of the subgroup generated by their nonzero residues. For nonzero integer coefficients <span class="math" data-tex="\(b_1,b_2\)">\(b_1,b_2\)</span>, choose <span class="math" data-tex="\(A_i&gt;1\)">\(A_i&gt;1\)</span> with
+<span class="math math-display" data-tex="\[
+\ln A_i\ge\max\{h(\alpha_i),\ln p/D\},
+\qquad B&#x27;=\frac{|b_1|}{D\ln A_2}+\frac{|b_2|}{D\ln A_1}.
+\tag{10.606}
+\]">\[
+\ln A_i\ge\max\{h(\alpha_i),\ln p/D\},
+\qquad B&#x27;=\frac{|b_1|}{D\ln A_2}+\frac{|b_2|}{D\ln A_1}.
+\tag{10.606}
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+H=\max\{\ln B&#x27;+\ln\ln p+2/5,\ 10\ln p/D,\ 10\}.
+\tag{10.607}
+\]">\[
+H=\max\{\ln B&#x27;+\ln\ln p+2/5,\ 10\ln p/D,\ 10\}.
+\tag{10.607}
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+\le24\,\frac{pg}{(p-1)(\ln p)^4}\,
+D^4\ln A_1\ln A_2\,H^2.
+\tag{10.608}
+\]">\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+\le24\,\frac{pg}{(p-1)(\ln p)^4}\,
+D^4\ln A_1\ln A_2\,H^2.
+\tag{10.608}
+\]</span>
+In particular <span class="math" data-tex="\(g\le p^f-1\)">\(g\le p^f-1\)</span> gives the same bound with <span class="math" data-tex="\(p(p^f-1)\)">\(p(p^f-1)\)</span> in place of <span class="math" data-tex="\(pg\)">\(pg\)</span>. Neither unramifiedness nor an ordering of the coefficient valuations is assumed.</p>
+<p><strong>Proof.</strong> Inverting bases handles negative coefficients, preserving all relevant data; multiplying the resulting difference by a local unit preserves its valuation. We may assume positive coefficients. Write
+<span class="math math-display" data-tex="\[
+D_0=D/\ln p,\qquad a_i=D\ln A_i/\ln p\ge1,\qquad
+z=ga_1a_2\ge1,\qquad B=D_0H.
+\tag{10.609}
+\]">\[
+D_0=D/\ln p,\qquad a_i=D\ln A_i/\ln p\ge1,\qquad
+z=ga_1a_2\ge1,\qquad B=D_0H.
+\tag{10.609}
+\]</span>
+Then <span class="math" data-tex="\(D\ge e\ge1\)">\(D\ge e\ge1\)</span>, <span class="math" data-tex="\(B\ge10\)">\(B\ge10\)</span>, and <span class="math" data-tex="\(B\ge10D_0\)">\(B\ge10D_0\)</span>. Use
+<span class="math math-display" data-tex="\[
+k=3,\qquad \ell=13/5,\qquad
+L=\lfloor\ell B\rfloor+2,\qquad K=\lfloor kzL\rfloor+1
+\tag{10.610}
+\]">\[
+k=3,\qquad \ell=13/5,\qquad
+L=\lfloor\ell B\rfloor+2,\qquad K=\lfloor kzL\rfloor+1
+\tag{10.610}
+\]</span>
+and the four rounded square-root sides from Theorem 10.165, with this <span class="math" data-tex="\(g\)">\(g\)</span> and these <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. Their products exceed <span class="math" data-tex="\(gL\)">\(gL\)</span> and <span class="math" data-tex="\(g(K-1)L\)">\(g(K-1)L\)</span>. Independence gives injective multiplicative labels in the first rectangle, so pigeonholing its residue classes supplies the first cardinality.</p>
+<p>First assume the linear labels in the second rectangle are injective within each residue class. Pigeonholing supplies the second cardinality. Theorem 10.169 applies once its parameter inequality is checked.</p>
+<p>Let <span class="math" data-tex="\(\mathcal D=b_1/a_2+b_2/a_1=B&#x27;\ln p\)">\(\mathcal D=b_1/a_2+b_2/a_1=B&#x27;\ln p\)</span>. The factorial proof in Lemma 10.164 and the side bounds in Theorem 10.165 give
+<span class="math math-display" data-tex="\[
+\beta\le\frac{\mathrm e^{3/2}}{2\sqrt3}\,
+\frac{(1+\sqrt{K-1})\sqrt K}{K-1}\,\mathcal D.
+\tag{10.611}
+\]">\[
+\beta\le\frac{\mathrm e^{3/2}}{2\sqrt3}\,
+\frac{(1+\sqrt{K-1})\sqrt K}{K-1}\,\mathcal D.
+\tag{10.611}
+\]</span>
+Here <span class="math" data-tex="\(L\ge28\)">\(L\ge28\)</span> and <span class="math" data-tex="\(K\ge85\)">\(K\ge85\)</span>. Since <span class="math" data-tex="\(K-1\ge84&gt;81\)">\(K-1\ge84&gt;81\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{(1+\sqrt{K-1})\sqrt K}{K-1}
+&lt;\frac{10}{9}\frac{81}{80}=\frac98.
+\tag{10.612}
+\]">\[
+\frac{(1+\sqrt{K-1})\sqrt K}{K-1}
+&lt;\frac{10}{9}\frac{81}{80}=\frac98.
+\tag{10.612}
+\]</span>
+The exponential-series bound <span class="math" data-tex="\(\mathrm e^{11/10}&lt;61/20\)">\(\mathrm e^{11/10}&lt;61/20\)</span>, together with
+<span class="math" data-tex="\((9\cdot61)^2&lt;3(16\cdot20)^2\)">\((9\cdot61)^2&lt;3(16\cdot20)^2\)</span>, implies
+<span class="math math-display" data-tex="\[
+\ln\beta&lt;\ln\mathcal D+2/5\le H.
+\tag{10.613}
+\]">\[
+\ln\beta&lt;\ln\mathcal D+2/5\le H.
+\tag{10.613}
+\]</span>
+The square comparison is exact: <span class="math" data-tex="\(301401&lt;307200\)">\(301401&lt;307200\)</span>.</p>
+<p>We next bound the refined height terms. Put
+<span class="math math-display" data-tex="\[
+X=\sqrt{g(K-1)La_1a_2},\qquad Y=\sqrt{gLa_1a_2}.
+\tag{10.614}
+\]">\[
+X=\sqrt{g(K-1)La_1a_2},\qquad Y=\sqrt{gLa_1a_2}.
+\tag{10.614}
+\]</span>
+The rounded sides give <span class="math" data-tex="\((R+g-1)a_1\le X+Y+ga_1\)">\((R+g-1)a_1\le X+Y+ga_1\)</span>. Also
+<span class="math math-display" data-tex="\[
+\frac{gKLa_1}{S+g-1}
+\ge\frac{X^2}{X+(S_1+g-1)a_2}
+\ge X-(S_1+g-1)a_2
+\ge X-Y-ga_2.
+\tag{10.615}
+\]">\[
+\frac{gKLa_1}{S+g-1}
+\ge\frac{X^2}{X+(S_1+g-1)a_2}
+\ge X-(S_1+g-1)a_2
+\ge X-Y-ga_2.
+\tag{10.615}
+\]</span>
+The middle inequality is <span class="math" data-tex="\(x^2/(x+y)\ge x-y\)">\(x^2/(x+y)\ge x-y\)</span> for <span class="math" data-tex="\(x,y\ge0\)">\(x,y\ge0\)</span>. Inserting these estimates in <span class="math" data-tex="\(\gamma_1Ra_1\)">\(\gamma_1Ra_1\)</span>, and then interchanging the two coordinates, yields
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\gamma_1Ra_1&amp;\le X/3+2Y/3+ga_1/2+ga_2/6,\\
+\gamma_2Sa_2&amp;\le X/3+2Y/3+ga_2/2+ga_1/6.
+\end{aligned}
+\tag{10.616}
+\]">\[
+\begin{aligned}
+\gamma_1Ra_1&amp;\le X/3+2Y/3+ga_1/2+ga_2/6,\\
+\gamma_2Sa_2&amp;\le X/3+2Y/3+ga_2/2+ga_1/6.
+\end{aligned}
+\tag{10.616}
+\]</span>
+Since <span class="math" data-tex="\(a_i\ge1\)">\(a_i\ge1\)</span>, their sum is at most
+<span class="math math-display" data-tex="\[
+\frac23\sqrt{k}\,zL+\frac43\sqrt{zL}+\frac43z.
+\tag{10.617}
+\]">\[
+\frac23\sqrt{k}\,zL+\frac43\sqrt{zL}+\frac43z.
+\tag{10.617}
+\]</span>
+The nonnegativity of <span class="math" data-tex="\(\gamma_i\)">\(\gamma_i\)</span> justifies replacing the actual heights by their prescribed bounds.</p>
+<p>Divide the parameter condition by <span class="math" data-tex="\(p^t\ln p\)">\(p^t\ln p\)</span>. Because
+<span class="math" data-tex="\((D+2e)/p^t\le3D\)">\((D+2e)/p^t\le3D\)</span>, <span class="math" data-tex="\(\ln\beta\le H\)">\(\ln\beta\le H\)</span>, and <span class="math" data-tex="\(B=D_0H\)">\(B=D_0H\)</span>, it suffices to prove
+<span class="math math-display" data-tex="\[
+K(L-1)&gt;3D_0\ln N+(K-1)B
+\mathbin{+}L(\gamma_1Ra_1+\gamma_2Sa_2).
+\tag{10.618}
+\]">\[
+K(L-1)&gt;3D_0\ln N+(K-1)B
+\mathbin{+}L(\gamma_1Ra_1+\gamma_2Sa_2).
+\tag{10.618}
+\]</span>
+This replacement remains valid if <span class="math" data-tex="\(\ln\beta&lt;0\)">\(\ln\beta&lt;0\)</span>, since <span class="math" data-tex="\(H&gt;0\)">\(H&gt;0\)</span>.
+Set <span class="math" data-tex="\(\lambda=\ell+2/10=14/5\)">\(\lambda=\ell+2/10=14/5\)</span>; then
+<span class="math" data-tex="\(\ell B&lt;L-1&lt;L\le\lambda B\)">\(\ell B&lt;L-1&lt;L\le\lambda B\)</span>.
+After dividing by <span class="math" data-tex="\(zB^2\)">\(zB^2\)</span>, the left side minus the coefficient term is larger than
+<span class="math math-display" data-tex="\[
+k\ell^2-k\ell-\frac{2k}{B}
+\tag{10.619}
+\]">\[
+k\ell^2-k\ell-\frac{2k}{B}
+\tag{10.619}
+\]</span>
+and the height terms are bounded by
+<span class="math math-display" data-tex="\[
+\frac23\sqrt{k}\lambda^2
+\mathbin{+}\frac43\frac{\lambda^{3/2}}{\sqrt B}
+\mathbin{+}\frac43\frac{\lambda}{B}.
+\tag{10.620}
+\]">\[
+\frac23\sqrt{k}\lambda^2
+\mathbin{+}\frac43\frac{\lambda^{3/2}}{\sqrt B}
+\mathbin{+}\frac43\frac{\lambda}{B}.
+\tag{10.620}
+\]</span>
+Moreover <span class="math" data-tex="\(N\le kzL^2+L\)">\(N\le kzL^2+L\)</span>, <span class="math" data-tex="\(D_0\le B/10\)">\(D_0\le B/10\)</span>. The function
+<span class="math" data-tex="\(\ln(kz\lambda^2B^2+\lambda B)/z\)">\(\ln(kz\lambda^2B^2+\lambda B)/z\)</span> decreases for <span class="math" data-tex="\(z\ge1\)">\(z\ge1\)</span>, and
+<span class="math" data-tex="\(\ln(k\lambda^2B^2+\lambda B)/B\)">\(\ln(k\lambda^2B^2+\lambda B)/B\)</span> decreases for <span class="math" data-tex="\(B\ge10\)">\(B\ge10\)</span>.
+For the first assertion differentiate and use <span class="math" data-tex="\(N&gt; \mathrm e\)">\(N&gt; \mathrm e\)</span>; for the second, the logarithmic derivative times <span class="math" data-tex="\(B\)">\(B\)</span> is less than two, while the logarithm exceeds two. Thus
+<span class="math math-display" data-tex="\[
+\frac{3D_0\ln N}{zB^2}
+\le\frac{3\ln(k\lambda^2B^2+\lambda B)}{10B}
+\le\frac{3\ln2380}{100}&lt;\frac{117}{500}.
+\tag{10.621}
+\]">\[
+\frac{3D_0\ln N}{zB^2}
+\le\frac{3\ln(k\lambda^2B^2+\lambda B)}{10B}
+\le\frac{3\ln2380}{100}&lt;\frac{117}{500}.
+\tag{10.621}
+\]</span>
+Using <span class="math" data-tex="\(\sqrt3&lt;26/15\)">\(\sqrt3&lt;26/15\)</span>, <span class="math" data-tex="\(\lambda^{3/2}/\sqrt{10}&lt;149/100\)">\(\lambda^{3/2}/\sqrt{10}&lt;149/100\)</span>, and <span class="math" data-tex="\(\ln2380&lt;39/5\)">\(\ln2380&lt;39/5\)</span>, the sufficient comparison follows from the exact rational inequality
+<span class="math math-display" data-tex="\[
+3(13/5)^2-3(13/5)-\frac23\frac{26}{15}(14/5)^2
+\mathrel{&gt;}
+\frac35+\frac{149}{75}+\frac{28}{75}+\frac{117}{500}.
+\tag{10.622}
+\]">\[
+3(13/5)^2-3(13/5)-\frac23\frac{26}{15}(14/5)^2
+\mathrel{&gt;}
+\frac35+\frac{149}{75}+\frac{28}{75}+\frac{117}{500}.
+\tag{10.622}
+\]</span>
+Its two sides are <span class="math" data-tex="\(3848/1125\)">\(3848/1125\)</span> and <span class="math" data-tex="\(4791/1500\)">\(4791/1500\)</span>, with positive difference <span class="math" data-tex="\(1019/4500\)">\(1019/4500\)</span>. The square and logarithmic bounds follow by squaring and the exponential-series certificate already used above. This establishes the strict parameter condition.</p>
+<p>To include the common coefficient p-part, use Lemma 10.164's logarithmic inequality with <span class="math" data-tex="\(a=a_2\)">\(a=a_2\)</span>, <span class="math" data-tex="\(b=b_1\)">\(b=b_1\)</span>. Since
+<span class="math" data-tex="\(\ln(b_1/a_2)\le\ln\mathcal D&lt;H\)">\(\ln(b_1/a_2)\le\ln\mathcal D&lt;H\)</span> and <span class="math" data-tex="\(H\ge10\)">\(H\ge10\)</span>,
+<span class="math math-display" data-tex="\[
+u\le\frac{\ln b_1}{\ln p}
+\le\frac{a_2H}{\ln p}
+=\frac{a_2B}{D}\le zB.
+\tag{10.623}
+\]">\[
+u\le\frac{\ln b_1}{\ln p}
+\le\frac{a_2H}{\ln p}
+=\frac{a_2B}{D}\le zB.
+\tag{10.623}
+\]</span>
+Theorem 10.169, <span class="math" data-tex="\(p^t/e\le C=p/(p-1)\)">\(p^t/e\le C=p/(p-1)\)</span>, and <span class="math" data-tex="\(L\le(14/5)B\)">\(L\le(14/5)B\)</span> now give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+&amp;&lt;CN+u\\
+&amp;\le C\left(3(14/5)^2+\frac{14/5}{10}+\frac1{10}\right)zB^2\\
+&amp;=\frac{239}{10}CzB^2&lt;24CzB^2.
+\end{aligned}
+\tag{10.624}
+\]">\[
+\begin{aligned}
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+&amp;&lt;CN+u\\
+&amp;\le C\left(3(14/5)^2+\frac{14/5}{10}+\frac1{10}\right)zB^2\\
+&amp;=\frac{239}{10}CzB^2&lt;24CzB^2.
+\end{aligned}
+\tag{10.624}
+\]</span></p>
+<p>It remains to handle a collision of linear labels inside a residue class. Write <span class="math" data-tex="\(n=\gcd(b_1,b_2)\)">\(n=\gcd(b_1,b_2)\)</span>, <span class="math" data-tex="\(r_0=b_1/n\)">\(r_0=b_1/n\)</span>, <span class="math" data-tex="\(s_0=b_2/n\)">\(s_0=b_2/n\)</span>, and <span class="math" data-tex="\(\sigma=\alpha_1^{r_0}\alpha_2^{-s_0}\)">\(\sigma=\alpha_1^{r_0}\alpha_2^{-s_0}\)</span>. The residue of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> has order <span class="math" data-tex="\(q_0\mid g\)">\(q_0\mid g\)</span>. The colliding differences give
+<span class="math math-display" data-tex="\[
+q_0r_0\le R_2-1,\qquad q_0s_0\le S_2-1.
+\tag{10.625}
+\]">\[
+q_0r_0\le R_2-1,\qquad q_0s_0\le S_2-1.
+\tag{10.625}
+\]</span>
+If <span class="math" data-tex="\(q_0\nmid n\)">\(q_0\nmid n\)</span>, the valuation is zero. Otherwise the prime-to-p and p-power laws of Lesson 9 give
+<span class="math math-display" data-tex="\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+\le u+v_p(\sigma^{q_0p^t}-1).
+\tag{10.626}
+\]">\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+\le u+v_p(\sigma^{q_0p^t}-1).
+\tag{10.626}
+\]</span>
+For <span class="math" data-tex="\(u\ge t\)">\(u\ge t\)</span> the deep-unit law gives the sharper exact subtraction <span class="math" data-tex="\(u-t\)">\(u-t\)</span>; for <span class="math" data-tex="\(u&lt;t\)">\(u&lt;t\)</span>, further p-th powers do not decrease positive valuation. Thus this inequality covers both sides of the exponential boundary. Independence ensures <span class="math" data-tex="\(\sigma^{q_0p^t}\ne1\)">\(\sigma^{q_0p^t}\ne1\)</span>.</p>
+<p>The one-place height bound from Lemma 10.6, applied to <span class="math" data-tex="\(X-1\)">\(X-1\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+&amp;\le u+\frac{p^t}{e}\bigl((R_2-1)a_1+(S_2-1)a_2\bigr)
+\mathbin{+}\frac{D_0}{e}\ln2\\
+&amp;\le zB+2C\sqrt3\,zL+\frac{B}{10}\ln2
+&lt;\frac{28}{25}CzB^2&lt;24CzB^2.
+\end{aligned}
+\tag{10.627}
+\]">\[
+\begin{aligned}
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+&amp;\le u+\frac{p^t}{e}\bigl((R_2-1)a_1+(S_2-1)a_2\bigr)
+\mathbin{+}\frac{D_0}{e}\ln2\\
+&amp;\le zB+2C\sqrt3\,zL+\frac{B}{10}\ln2
+&lt;\frac{28}{25}CzB^2&lt;24CzB^2.
+\end{aligned}
+\tag{10.627}
+\]</span>
+For the displayed coarse bound, divide by <span class="math" data-tex="\(CzB^2\)">\(CzB^2\)</span>, use <span class="math" data-tex="\(B\ge10,z\ge1,C\ge1\)">\(B\ge10,z\ge1,C\ge1\)</span>, <span class="math" data-tex="\(\sqrt3&lt;7/4\)">\(\sqrt3&lt;7/4\)</span>, <span class="math" data-tex="\(\ln2&lt;7/10\)">\(\ln2&lt;7/10\)</span>, and <span class="math" data-tex="\(L\le(14/5)B\)">\(L\le(14/5)B\)</span>. The sum is at most <span class="math" data-tex="\(1/10+49/50+7/1000=1087/1000&lt;28/25\)">\(1/10+49/50+7/1000=1087/1000&lt;28/25\)</span>. No root of unity outside the given local field is required.</p>
+<p>Finally
+<span class="math math-display" data-tex="\[
+zB^2=\frac{gD^4}{(\ln p)^4}\ln A_1\ln A_2\,H^2.
+\tag{10.628}
+\]">\[
+zB^2=\frac{gD^4}{(\ln p)^4}\ln A_1\ln A_2\,H^2.
+\tag{10.628}
+\]</span>
+This proves the claimed constant <span class="math" data-tex="\(24\)">\(24\)</span> in both alternatives, for all ramification indices and coefficient sizes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><img src="figures/BL-number-field-occupancy.png" alt="Residue-class capacity and the exact numerical margin for the number-field estimate" class="course-figure" width="2288" height="736" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="BL-number-field-budget" data-asset-sha256="41792BB391B22451689D07BB5D5CE1B0BF5AA434278C4E7544B16AE1B7105ACE"></p>
+<p><em>Figure 10.50. Left: all 32 selected pairs in the <span class="math" data-tex="\(8\)">\(8\)</span>-by-<span class="math" data-tex="\(8\)">\(8\)</span> rectangle satisfying <span class="math" data-tex="\(r+s\equiv0\pmod2\)">\(r+s\equiv0\pmod2\)</span>. Each first coordinate occurs four times; the congruence reduces the capacity from eight to four. With <span class="math" data-tex="\(K=4,L=8\)">\(K=4,L=8\)</span>, arrange first coordinates increasingly against the row labels to attain the exact centered sum <span class="math" data-tex="\(168\)">\(168\)</span>. Middle: the compressed Lemma 6.4 bound is <span class="math" data-tex="\(512/3\)">\(512/3\)</span>; its relaxed residue-class bound in Lemma 10.168 is <span class="math" data-tex="\(5728/27\)">\(5728/27\)</span>; ignoring coordinate capacity gives <span class="math" data-tex="\(224\)">\(224\)</span>. These are proved bounds for every permutation, while <span class="math" data-tex="\(168\)">\(168\)</span> is the exact maximum for this example. Right: Theorem 10.170's uniform sufficient comparison has lower side <span class="math" data-tex="\(3848/1125\)">\(3848/1125\)</span>, upper side <span class="math" data-tex="\(4791/1500\)">\(4791/1500\)</span>, and exact positive margin <span class="math" data-tex="\(1019/4500\)">\(1019/4500\)</span>. The infinite ranges <span class="math" data-tex="\(B\ge10\)">\(B\ge10\)</span>, <span class="math" data-tex="\(z\ge1\)">\(z\ge1\)</span>, <span class="math" data-tex="\(D_0\le B/10\)">\(D_0\le B/10\)</span> are covered by the proof's monotonicity arguments. The resulting valuation coefficient is <span class="math" data-tex="\(23.9&lt;24\)">\(23.9&lt;24\)</span>, including the common coefficient p-part; the collision bound is separately smaller. Human-source context: Bugeaud–Laurent's freely accessible 1996 paper, Lemmas 10–13 and Theorem 3; all used occupancy, height, analytic and numerical arguments are proved in this programme. <a href="figure_sources/BL_number_field_occupancy.py">Figure program</a>.</em></p>
+<p><strong>Corollary 10.171 (the complete cutoff table).</strong> Under the algebraic, local-unit, independence and height hypotheses of Theorem 10.170, put
+<span class="math math-display" data-tex="\[
+H_{\nu,\eta}
+=\max\{\ln B&#x27;+\ln\ln p+2/5,\ \nu\ln p/D,\ \eta\}.
+\tag{10.629}
+\]">\[
+H_{\nu,\eta}
+=\max\{\ln B&#x27;+\ln\ln p+2/5,\ \nu\ln p/D,\ \eta\}.
+\tag{10.629}
+\]</span>
+For each entry in the table,
+<span class="math math-display" data-tex="\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+\le c(\nu,\eta)\,
+\frac{pgD^4}{(p-1)(\ln p)^4}
+\ln A_1\ln A_2\,H_{\nu,\eta}^2,
+\tag{10.630}
+\]">\[
+v_p(\alpha_1^{b_1}-\alpha_2^{b_2})
+\le c(\nu,\eta)\,
+\frac{pgD^4}{(p-1)(\ln p)^4}
+\ln A_1\ln A_2\,H_{\nu,\eta}^2,
+\tag{10.630}
+\]</span>
+where the constants are exactly
+<span class="math math-display" data-tex="\[
+\begin{array}{c|ccccc}
+&amp;\nu=4&amp;\nu=6&amp;\nu=8&amp;\nu=10&amp;\nu=15\\ \hline
+\eta=5&amp;53.8&amp;36.1&amp;28.1&amp;24&amp;18.6\\
+\eta=10&amp;51.7&amp;34.8&amp;27.3&amp;23.2&amp;18
+\end{array}.
+\tag{10.631}
+\]">\[
+\begin{array}{c|ccccc}
+&amp;\nu=4&amp;\nu=6&amp;\nu=8&amp;\nu=10&amp;\nu=15\\ \hline
+\eta=5&amp;53.8&amp;36.1&amp;28.1&amp;24&amp;18.6\\
+\eta=10&amp;51.7&amp;34.8&amp;27.3&amp;23.2&amp;18
+\end{array}.
+\tag{10.631}
+\]</span></p>
+<p><strong>Proof.</strong> Use Theorem 10.170's complete proof with <span class="math" data-tex="\(B=D_0H_{\nu,\eta}\)">\(B=D_0H_{\nu,\eta}\)</span>. Now <span class="math" data-tex="\(B\ge\nu\)">\(B\ge\nu\)</span> and <span class="math" data-tex="\(D_0\le B/\eta\)">\(D_0\le B/\eta\)</span>. Use the following parameters and literal minimum integer <span class="math" data-tex="\(K_0=\lfloor k(\lfloor\ell\nu\rfloor+2)\rfloor+1\)">\(K_0=\lfloor k(\lfloor\ell\nu\rfloor+2)\rfloor+1\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{array}{cc|cc|r|c}
+\eta&amp;\nu&amp;k&amp;\ell&amp;K_0&amp;\delta\\ \hline
+5&amp;4&amp;4.3&amp;3.0&amp;61&amp;0.170\\
+5&amp;6&amp;3.6&amp;2.8&amp;65&amp;0.093\\
+5&amp;8&amp;3.4&amp;2.6&amp;75&amp;0.004\\
+5&amp;10&amp;3.0&amp;2.6&amp;85&amp;0.011\\
+5&amp;15&amp;3.1&amp;2.3&amp;112&amp;0.049\\
+10&amp;4&amp;3.9&amp;3.1&amp;55&amp;0.119\\
+10&amp;6&amp;3.7&amp;2.7&amp;67&amp;0.044\\
+10&amp;8&amp;3.3&amp;2.6&amp;73&amp;0.043\\
+10&amp;10&amp;2.9&amp;2.6&amp;82&amp;0.002\\
+10&amp;15&amp;3.0&amp;2.3&amp;109&amp;0.043
+\end{array}.
+\tag{10.632}
+\]">\[
+\begin{array}{cc|cc|r|c}
+\eta&amp;\nu&amp;k&amp;\ell&amp;K_0&amp;\delta\\ \hline
+5&amp;4&amp;4.3&amp;3.0&amp;61&amp;0.170\\
+5&amp;6&amp;3.6&amp;2.8&amp;65&amp;0.093\\
+5&amp;8&amp;3.4&amp;2.6&amp;75&amp;0.004\\
+5&amp;10&amp;3.0&amp;2.6&amp;85&amp;0.011\\
+5&amp;15&amp;3.1&amp;2.3&amp;112&amp;0.049\\
+10&amp;4&amp;3.9&amp;3.1&amp;55&amp;0.119\\
+10&amp;6&amp;3.7&amp;2.7&amp;67&amp;0.044\\
+10&amp;8&amp;3.3&amp;2.6&amp;73&amp;0.043\\
+10&amp;10&amp;2.9&amp;2.6&amp;82&amp;0.002\\
+10&amp;15&amp;3.0&amp;2.3&amp;109&amp;0.043
+\end{array}.
+\tag{10.632}
+\]</span>
+Here <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is a strict lower bound for the sufficient-comparison margin, verified below, rather than a measured valuation. Put <span class="math" data-tex="\(L=\lfloor\ell B\rfloor+2\)">\(L=\lfloor\ell B\rfloor+2\)</span>, <span class="math" data-tex="\(K=\lfloor kzL\rfloor+1\)">\(K=\lfloor kzL\rfloor+1\)</span>, and <span class="math" data-tex="\(\lambda=\ell+2/\nu\)">\(\lambda=\ell+2/\nu\)</span>. The cardinalities, refined side-height inequalities and common p-part bound remain exactly those proved above.</p>
+<p>The factorial logarithmic cutoff is valid in all ten cases. The factor
+<span class="math math-display" data-tex="\[
+f(K)=\left(1+\frac1{\sqrt{K-1}}\right)\sqrt{\frac K{K-1}}
+\tag{10.633}
+\]">\[
+f(K)=\left(1+\frac1{\sqrt{K-1}}\right)\sqrt{\frac K{K-1}}
+\tag{10.633}
+\]</span>
+decreases with <span class="math" data-tex="\(K\)">\(K\)</span>. For <span class="math" data-tex="\(K\ge82\)">\(K\ge82\)</span>, it is less than <span class="math" data-tex="\(9/8\)">\(9/8\)</span>, by the same comparison as above with <span class="math" data-tex="\(K-1\ge81\)">\(K-1\ge81\)</span>. All such rows have <span class="math" data-tex="\(k\ge2.9\)">\(k\ge2.9\)</span>, and
+<span class="math math-display" data-tex="\[
+\left(\frac{601}{200}\frac98\right)^2&lt;4(2.9).
+\tag{10.634}
+\]">\[
+\left(\frac{601}{200}\frac98\right)^2&lt;4(2.9).
+\tag{10.634}
+\]</span>
+The remaining rows have <span class="math" data-tex="\(K\ge55\)">\(K\ge55\)</span>, <span class="math" data-tex="\(k\ge3.3\)">\(k\ge3.3\)</span>, and
+<span class="math math-display" data-tex="\[
+f(K)&lt;\left(1+\frac7{50}\right)\frac{101}{100}
+&lt;\frac{29}{25},\qquad
+\left(\frac{601}{200}\frac{29}{25}\right)^2&lt;4(3.3).
+\tag{10.635}
+\]">\[
+f(K)&lt;\left(1+\frac7{50}\right)\frac{101}{100}
+&lt;\frac{29}{25},\qquad
+\left(\frac{601}{200}\frac{29}{25}\right)^2&lt;4(3.3).
+\tag{10.635}
+\]</span>
+The square comparisons are exact; <span class="math" data-tex="\(1/\sqrt{54}&lt;7/50\)">\(1/\sqrt{54}&lt;7/50\)</span> and <span class="math" data-tex="\(\sqrt{55/54}&lt;101/100\)">\(\sqrt{55/54}&lt;101/100\)</span>. Since <span class="math" data-tex="\(\mathrm e^{11/10}&lt;601/200\)">\(\mathrm e^{11/10}&lt;601/200\)</span>, every row therefore has
+<span class="math" data-tex="\(\ln\beta&lt;\ln\mathcal D+2/5\le H_{\nu,\eta}\)">\(\ln\beta&lt;\ln\mathcal D+2/5\le H_{\nu,\eta}\)</span>.</p>
+<p>The uniform determinant comparison reduces, exactly as in Theorem 10.170, to
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+k\ell^2-k\ell-\frac23\sqrt{k}\lambda^2
+\mathrel{&gt;}\frac{2k}{\nu}
+\mathbin{+}\frac43\sqrt{\lambda^3/\nu}
+\mathbin{+}\frac{4\lambda}{3\nu}
+\mathbin{+}\frac{3}{\eta\nu}\ln(k\lambda^2\nu^2+\lambda\nu).
+\end{aligned}
+\tag{10.636}
+\]">\[
+\begin{aligned}
+k\ell^2-k\ell-\frac23\sqrt{k}\lambda^2
+\mathrel{&gt;}\frac{2k}{\nu}
+\mathbin{+}\frac43\sqrt{\lambda^3/\nu}
+\mathbin{+}\frac{4\lambda}{3\nu}
+\mathbin{+}\frac{3}{\eta\nu}\ln(k\lambda^2\nu^2+\lambda\nu).
+\end{aligned}
+\tag{10.636}
+\]</span>
+The same two monotonicity arguments cover the entire ranges <span class="math" data-tex="\(z\ge1\)">\(z\ge1\)</span>, <span class="math" data-tex="\(B\ge\nu\)">\(B\ge\nu\)</span>; their logarithmic arguments exceed <span class="math" data-tex="\(\mathrm e^2\)">\(\mathrm e^2\)</span> already at the minimum parameters. To verify this comparison explicitly, the following rational upper endpoints suffice:
+<span class="math math-display" data-tex="\[
+\begin{array}{cc|rrr}
+\eta&amp;\nu&amp;\sqrt{k}&amp;\sqrt{\lambda^3/\nu}
+&amp;\ln(k\lambda^2\nu^2+\lambda\nu)\\ \hline
+5&amp;4&amp;2.07365&amp;3.27396&amp;6.75321\\
+5&amp;6&amp;1.89737&amp;2.26431&amp;7.16332\\
+5&amp;8&amp;1.84391&amp;1.70108&amp;7.49012\\
+5&amp;10&amp;1.73206&amp;1.48163&amp;7.77486\\
+5&amp;15&amp;1.76069&amp;0.98007&amp;8.33483\\
+10&amp;4&amp;1.97485&amp;3.41526&amp;6.71309\\
+10&amp;6&amp;1.92354&amp;2.15678&amp;7.12592\\
+10&amp;8&amp;1.81660&amp;1.70108&amp;7.46065\\
+10&amp;10&amp;1.70294&amp;1.48163&amp;7.74136\\
+10&amp;15&amp;1.73206&amp;0.98007&amp;8.30233
+\end{array}.
+\tag{10.637}
+\]">\[
+\begin{array}{cc|rrr}
+\eta&amp;\nu&amp;\sqrt{k}&amp;\sqrt{\lambda^3/\nu}
+&amp;\ln(k\lambda^2\nu^2+\lambda\nu)\\ \hline
+5&amp;4&amp;2.07365&amp;3.27396&amp;6.75321\\
+5&amp;6&amp;1.89737&amp;2.26431&amp;7.16332\\
+5&amp;8&amp;1.84391&amp;1.70108&amp;7.49012\\
+5&amp;10&amp;1.73206&amp;1.48163&amp;7.77486\\
+5&amp;15&amp;1.76069&amp;0.98007&amp;8.33483\\
+10&amp;4&amp;1.97485&amp;3.41526&amp;6.71309\\
+10&amp;6&amp;1.92354&amp;2.15678&amp;7.12592\\
+10&amp;8&amp;1.81660&amp;1.70108&amp;7.46065\\
+10&amp;10&amp;1.70294&amp;1.48163&amp;7.74136\\
+10&amp;15&amp;1.73206&amp;0.98007&amp;8.30233
+\end{array}.
+\tag{10.637}
+\]</span>
+Each finite decimal means the exact rational with denominator <span class="math" data-tex="\(100000\)">\(100000\)</span>, and is a strict upper bound. The first two columns are checked by squaring. For a logarithmic endpoint <span class="math" data-tex="\(x\)">\(x\)</span>, use the positive partial sum <span class="math" data-tex="\(\sum_{j=0}^{64}x^j/j!\)">\(\sum_{j=0}^{64}x^j/j!\)</span>, which exceeds the displayed argument <span class="math" data-tex="\(k\lambda^2\nu^2+\lambda\nu\)">\(k\lambda^2\nu^2+\lambda\nu\)</span> in every row. Substituting these endpoints makes the left side minus the right side strictly larger than the corresponding positive <span class="math" data-tex="\(\delta\)">\(\delta\)</span> in the first table. These are ten exact rational calculations. Together with the monotonicity proof they establish the comparison for every allowed real parameter, not just the tabulated minima.</p>
+<p>In the injective alternative, the total valuation coefficient, including <span class="math" data-tex="\(u\)">\(u\)</span>, is at most
+<span class="math math-display" data-tex="\[
+k(\ell+2/\nu)^2+\frac{\ell+2/\nu}{\nu}+\frac1\nu.
+\tag{10.638}
+\]">\[
+k(\ell+2/\nu)^2+\frac{\ell+2/\nu}{\nu}+\frac1\nu.
+\tag{10.638}
+\]</span>
+For the ten rows in order, its exact values are
+<span class="math math-display" data-tex="\[
+\begin{array}{cc|r}
+\eta&amp;\nu&amp;\text{coefficient upper bound}\\ \hline
+5&amp;4&amp;269/5\\
+5&amp;6&amp;40537/1125\\
+5&amp;8&amp;112391/4000\\
+5&amp;10&amp;239/10\\
+5&amp;15&amp;55753/3000\\
+10&amp;4&amp;25847/500\\
+10&amp;6&amp;104149/3000\\
+10&amp;8&amp;54571/2000\\
+10&amp;10&amp;5779/250\\
+10&amp;15&amp;16193/900
+\end{array}.
+\tag{10.639}
+\]">\[
+\begin{array}{cc|r}
+\eta&amp;\nu&amp;\text{coefficient upper bound}\\ \hline
+5&amp;4&amp;269/5\\
+5&amp;6&amp;40537/1125\\
+5&amp;8&amp;112391/4000\\
+5&amp;10&amp;239/10\\
+5&amp;15&amp;55753/3000\\
+10&amp;4&amp;25847/500\\
+10&amp;6&amp;104149/3000\\
+10&amp;8&amp;54571/2000\\
+10&amp;10&amp;5779/250\\
+10&amp;15&amp;16193/900
+\end{array}.
+\tag{10.639}
+\]</span>
+Each is at most the stated <span class="math" data-tex="\(c(\nu,\eta)\)">\(c(\nu,\eta)\)</span>; equality in the first row is harmless because the determinant valuation comparison is strict. In the collision alternative, the proof above gives a coefficient at most
+<span class="math math-display" data-tex="\[
+\frac1\nu+\frac{2\sqrt{k}\lambda}{\nu}
+\mathbin{+}\frac{\ln2}{\eta\nu}
+&lt;\frac14+\frac{189}{50}+\frac7{200}
+=\frac{813}{200}&lt;5.
+\tag{10.640}
+\]">\[
+\frac1\nu+\frac{2\sqrt{k}\lambda}{\nu}
+\mathbin{+}\frac{\ln2}{\eta\nu}
+&lt;\frac14+\frac{189}{50}+\frac7{200}
+=\frac{813}{200}&lt;5.
+\tag{10.640}
+\]</span>
+Here <span class="math" data-tex="\(\nu\ge4,\eta\ge5,\lambda\le18/5\)">\(\nu\ge4,\eta\ge5,\lambda\le18/5\)</span>, <span class="math" data-tex="\(\sqrt{k}&lt;21/10\)">\(\sqrt{k}&lt;21/10\)</span> and <span class="math" data-tex="\(\ln2&lt;7/10\)">\(\ln2&lt;7/10\)</span>. Every stated constant is at least <span class="math" data-tex="\(18\)">\(18\)</span>, so this alternative satisfies each estimate as well. The final identity for <span class="math" data-tex="\(zB^2\)">\(zB^2\)</span> proves the asserted table. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="58-exercises-with-solutions"><span id="7-exercises-with-solutions"></span><span id="8-exercises-with-solutions"></span><span id="9-exercises-with-solutions"></span><span id="10-exercises-with-solutions"></span><span id="11-exercises-with-solutions"></span><span id="12-exercises-with-solutions"></span><span id="13-exercises-with-solutions"></span><span id="14-exercises-with-solutions"></span><span id="15-exercises-with-solutions"></span><span id="16-exercises-with-solutions"></span><span id="17-exercises-with-solutions"></span><span id="18-exercises-with-solutions"></span><span id="19-exercises-with-solutions"></span><span id="20-exercises-with-solutions"></span><span id="21-exercises-with-solutions"></span><span id="22-exercises-with-solutions"></span><span id="23-exercises-with-solutions"></span><span id="24-exercises-with-solutions"></span><span id="25-exercises-with-solutions"></span><span id="26-exercises-with-solutions"></span><span id="27-exercises-with-solutions"></span><span id="28-exercises-with-solutions"></span><span id="29-exercises-with-solutions"></span><span id="30-exercises-with-solutions"></span><span id="31-exercises-with-solutions"></span><span id="32-exercises-with-solutions"></span><span id="33-exercises-with-solutions"></span><span id="34-exercises-with-solutions"></span><span id="35-exercises-with-solutions"></span><span id="36-exercises-with-solutions"></span><span id="37-exercises-with-solutions"></span><span id="38-exercises-with-solutions"></span><span id="39-exercises-with-solutions"></span><span id="40-exercises-with-solutions"></span><span id="41-exercises-with-solutions"></span><span id="42-exercises-with-solutions"></span><span id="43-exercises-with-solutions"></span><span id="44-exercises-with-solutions"></span><span id="45-exercises-with-solutions"></span><span id="46-exercises-with-solutions"></span><span id="47-exercises-with-solutions"></span><span id="48-exercises-with-solutions"></span><span id="49-exercises-with-solutions"></span><span id="50-exercises-with-solutions"></span><span id="51-exercises-with-solutions"></span><span id="52-exercises-with-solutions"></span><span id="53-exercises-with-solutions"></span><span id="54-exercises-with-solutions"></span><span id="55-exercises-with-solutions"></span><span id="56-exercises-with-solutions"></span><span id="57-exercises-with-solutions"></span>58. Exercises with solutions</h2>
 <ol>
 <li>
 <p><strong>Easy.</strong> Explain exactly how nonunit bases can be reduced to unit bases. Give an example showing that the conclusion of Theorem 10.8 cannot be extended unchanged to nonunits.</p>
@@ -14936,6 +15568,9 @@ strict exponent and residue-height budgets add to <span class="math" data-tex="\
 </li>
 <li>
 <p><strong>(Medium: fixed rectangles and the one-base case.)</strong> Verify the exact margin <span class="math" data-tex="\(22/7-96/35=2/5\)">\(22/7-96/35=2/5\)</span> and the coefficient <span class="math" data-tex="\(539/2+7/3=1631/6&lt;283\)">\(539/2+7/3=1631/6&lt;283\)</span> in Theorem 10.167. For <span class="math" data-tex="\(a=8,b=1,p=3\)">\(a=8,b=1,p=3\)</span>, choose an allowed auxiliary prime <span class="math" data-tex="\(c\)">\(c\)</span>, check the valuation-preserving identity and calculate the exact Fermat-difference valuation. Determine <span class="math" data-tex="\(v_3(8^n-1)\)">\(v_3(8^n-1)\)</span> for all positive integers <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+</li>
+<li>
+<p><strong>(Medium: congruence capacity and field data.)</strong> In the <span class="math" data-tex="\(8\)">\(8\)</span>-by-<span class="math" data-tex="\(8\)">\(8\)</span> rectangle with <span class="math" data-tex="\(r+s\equiv0\pmod2\)">\(r+s\equiv0\pmod2\)</span>, select all 32 admissible pairs and put <span class="math" data-tex="\(K=4,L=8\)">\(K=4,L=8\)</span>. Compute the exact maximum centered first-coordinate sum, the compressed occupancy bound and the relaxed bound <span class="math" data-tex="\(G_1\)">\(G_1\)</span> of Lemma 10.168. Then take the independent rational bases <span class="math" data-tex="\(2,3\)">\(2,3\)</span> at <span class="math" data-tex="\(p=5\)">\(p=5\)</span>: determine <span class="math" data-tex="\(d,e,f,D,g\)">\(d,e,f,D,g\)</span> in Theorem 10.170 and explain why no unramifiedness assumption or coefficient-ordering assumption is needed in its general statement.</p>
 </li>
 </ol>
 <p><strong>Solution 1.</strong> Put <span class="math" data-tex="\(q_i=v(\alpha_i)\)">\(q_i=v(\alpha_i)\)</span>. If <span class="math" data-tex="\(b_1q_1\ne b_2q_2\)">\(b_1q_1\ne b_2q_2\)</span>, the ultrametric inequality gives the exact valuation <span class="math" data-tex="\(\min(b_1q_1,b_2q_2)\)">\(\min(b_1q_1,b_2q_2)\)</span>, so no cancellation estimate is needed. If they are equal, choose <span class="math" data-tex="\(\pi=p^{1/e}\)">\(\pi=p^{1/e}\)</span> in an algebraic extension and set <span class="math" data-tex="\(\epsilon_i=\alpha_i\pi^{-e q_i}\)">\(\epsilon_i=\alpha_i\pi^{-e q_i}\)</span>. The exponents <span class="math" data-tex="\(e q_i\)">\(e q_i\)</span> are integers, the <span class="math" data-tex="\(\epsilon_i\)">\(\epsilon_i\)</span> are units, and</p>
@@ -16707,6 +17342,36 @@ Thus the logarithmic cutoff is less than <span class="math" data-tex="\(\ln2+2/5
 (8/5)^2-(1/5)^2=63/25
 \]</span>
 has valuation <span class="math" data-tex="\(v_3(63)=2\)">\(v_3(63)=2\)</span>; its denominator is a unit. The original difference <span class="math" data-tex="\(8^2-1=63\)">\(8^2-1=63\)</span> also has valuation two. The order of eight modulo three is two. If <span class="math" data-tex="\(n\)">\(n\)</span> is odd, <span class="math" data-tex="\(8^n-1\equiv1\pmod3\)">\(8^n-1\equiv1\pmod3\)</span>, so its valuation is zero. If <span class="math" data-tex="\(n\)">\(n\)</span> is even, the deep power law gives <span class="math" data-tex="\(v_3(8^n-1)=v_3(8^2-1)+v_3(n/2)=2+v_3(n)\)">\(v_3(8^n-1)=v_3(8^2-1)+v_3(n/2)=2+v_3(n)\)</span>.</p>
+<p><strong>Solution 71.</strong> Every first coordinate <span class="math" data-tex="\(r=0,\ldots,7\)">\(r=0,\ldots,7\)</span> appears four times. Pairing the increasing row labels <span class="math" data-tex="\(0,\ldots,7\)">\(0,\ldots,7\)</span>, also each repeated four times, with the increasing coordinates maximizes the weighted sum. Indeed swapping an inverted pair changes it by the nonnegative product of the two coordinate differences. Thus the exact centered maximum is
+<span class="math math-display" data-tex="\[
+4\sum_{r=0}^{7}(r-7/2)r
+=4(140-98)=168.
+\]">\[
+4\sum_{r=0}^{7}(r-7/2)r
+=4(140-98)=168.
+\]</span>
+The congruence gives <span class="math" data-tex="\(g_0=1,g_1=2\)">\(g_0=1,g_1=2\)</span>, so <span class="math" data-tex="\(R&#x27;=8,S&#x27;=4\)">\(R&#x27;=8,S&#x27;=4\)</span>. Lemma 6.4 yields
+<span class="math math-display" data-tex="\[
+\frac{32\cdot8\cdot8}{8}
+-\frac{32^2\cdot8}{24\cdot4}
+=\frac{512}{3}.
+\]">\[
+\frac{32\cdot8\cdot8}{8}
+-\frac{32^2\cdot8}{24\cdot4}
+=\frac{512}{3}.
+\]</span>
+The relaxed residue-class bound is
+<span class="math math-display" data-tex="\[
+G_1=\frac{32\cdot8\cdot9}{8}
+-\frac{2\cdot32^2\cdot8}{24\cdot9}
+=\frac{5728}{27}.
+\]">\[
+G_1=\frac{32\cdot8\cdot9}{8}
+-\frac{2\cdot32^2\cdot8}{24\cdot9}
+=\frac{5728}{27}.
+\]</span>
+It is less than the no-capacity bound <span class="math" data-tex="\(32\cdot8\cdot7/8=224\)">\(32\cdot8\cdot7/8=224\)</span>, though relaxing the compressed parameters loses some of the stronger bound <span class="math" data-tex="\(512/3\)">\(512/3\)</span>.</p>
+<p>For the bases <span class="math" data-tex="\(2,3\)">\(2,3\)</span>, the global field and the local field are <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and <span class="math" data-tex="\(\mathbb Q_5\)">\(\mathbb Q_5\)</span>, so <span class="math" data-tex="\(d=e=f=D=1\)">\(d=e=f=D=1\)</span>. The residue of two has order four and already generates the whole residue group, so <span class="math" data-tex="\(g=4\)">\(g=4\)</span>. Independence follows by comparing exponents at the primes two and three. The general proof keeps <span class="math" data-tex="\(e\)">\(e\)</span> throughout the analytic and one-place height estimates and uses only <span class="math" data-tex="\(ef\le d\)">\(ef\le d\)</span>. It handles whichever coefficient becomes a unit after removing their common p-part by interchanging the bases inside the analytic argument; both principal factors have the same universally guaranteed precision <span class="math" data-tex="\(p^t/e\)">\(p^t/e\)</span>. Hence neither unramifiedness nor an asymmetric coefficient condition is imposed by Theorem 10.170.</p>
 <h2 id="references">References</h2>
 <ul>
 <li>
@@ -16735,7 +17400,7 @@ has valuation <span class="math" data-tex="\(v_3(63)=2\)">\(v_3(63)=2\)</span>; 
 </article>
 
 <nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-09.html">← p-adic analysis for linear forms in logarithms</a><a href="./">Course contents</a><span></span></nav>
-<p class="small source-link"><a href="sources/TR-BAKER-10.tex" download>Editable LaTeX source of this lesson</a> · <a href="src/TR-BAKER-10.md" download>Markdown source</a></p>
+<p class="small source-link"><a href="sources/TR-BAKER-10.tex" download>Editable LaTeX source of this lesson</a> · <a href="src/TR-BAKER-10.md" download>Markdown source</a> · <a href="TR-BAKER-10.pdf" download>PDF of this lesson</a></p>
 </main>
 <footer class="site-footer">
 <p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>

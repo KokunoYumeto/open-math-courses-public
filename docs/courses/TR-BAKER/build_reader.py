@@ -25,6 +25,19 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest().upper()
 
 
+def current_pdf(unit):
+    """Expose a compiled edition only when its source and bytes are current."""
+    edition = unit.get('compiled_pdf')
+    if not edition or edition['source_sha256'].upper() != unit['sha256'].upper():
+        return None
+    path = COURSE / edition['path']
+    if path.parent != COURSE or path.suffix != '.pdf':
+        raise ValueError('Unexpected compiled PDF path')
+    if digest(path) != edition['sha256'].upper() or path.stat().st_size != edition['bytes']:
+        raise ValueError('Compiled PDF identity mismatch')
+    return path
+
+
 def bind_figures(tex):
     """Keep an authored Figure paragraph with its image, including mathematics."""
     pattern = re.compile(r'\\begin\{figure\}\n[\s\S]*?\\end\{figure\}\n\s*\\emph\{')
@@ -133,6 +146,9 @@ def render_unit(unit, template, number, total, units):
         generated = asset_output_path('TR-BAKER', uid, row).split('/', 2)[2]
         body = body.replace('src="' + generated + '"', 'src="' + row['source'] + '"')
     direct = '<p class="small source-link"><a href="sources/' + uid + '.tex" download>Editable LaTeX source of this lesson</a> · <a href="src/' + uid + '.md" download>Markdown source</a></p>'
+    edition = current_pdf(unit)
+    if edition is not None:
+        direct = direct[:-4] + ' · <a href="' + edition.name + '" download>PDF of this lesson</a></p>'
     document = re.sub(r'(<article class="lesson">).*?(</article>)',
                       lambda m: m.group(1) + '\n' + body + '\n' + m.group(2), template, count=1, flags=re.S)
     document = re.sub(r'<title>.*?</title>', '<title>' + html.escape(unit['title']) + ' · Linear forms in logarithms and their applications</title>', document, count=1)
@@ -154,6 +170,11 @@ def source_archive(destination):
     for path in COURSE.rglob('*'):
         if path.is_file() and '__pycache__' not in path.parts and path.suffix not in {'.aux', '.log', '.out', '.zip', '.pdf'}:
             members.append((path, 'docs/courses/TR-BAKER/' + path.relative_to(COURSE).as_posix()))
+    metadata = json.loads((COURSE / 'course.json').read_text(encoding='utf-8'))
+    for unit in metadata['units']:
+        edition = current_pdf(unit)
+        if edition is not None:
+            members.append((edition, 'docs/courses/TR-BAKER/' + edition.name))
     for name in ['site.css', 'mathjax']:
         path = docs / 'assets' / name
         files = list(path.rglob('*')) if path.is_dir() else [path]

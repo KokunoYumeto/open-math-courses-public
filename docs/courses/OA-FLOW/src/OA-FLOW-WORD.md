@@ -121,6 +121,27 @@ At the lower edge the extension is the bounded closure prescribed by L158:
 \]
 Before closure the product is taken on the entire natural domain \(D(h_\psi^{-a})\); the form comparison ensures that it maps there as stated. Formula (WO9) puts \(B_a\) in \(\pi(M)\) even though its two formal unbounded factors need not be affiliated with \(\pi(M)\).
 
+<a id="wo-trace-densities"></a>
+
+**Trace densities in the original algebra.** If \(M\) is semifinite with a fixed faithful normal semifinite trace \(\tau\), take positive injective self-adjoint \(h,k\) affiliated with \(M\). The [trace-weight normalization in L157](OA-FLOW-L157.md#oa-flow.l157.trace-weights) proves the required faithful density weights and normalized cocycle. The local whole-cone construction [CZ2](OA-FLOW-CZ.md#oa-flow.cz.2) agrees with TD's cutoff definition of these weights, and the balanced calculation [CZ6(CZ32)](OA-FLOW-CZ.md#oa-flow.cz.6) gives \((D\tau_h:D\tau)_t=h^{it}\). The chain and reversal laws in BC4 therefore give
+\[
+ (D\tau_h:D\tau_k)_t=h^{it}k^{-it}.
+ \tag{WO26}
+\]
+Apply L158 directly to these two operators. It gives
+\[
+ \begin{aligned}
+ \tau_h\preceq_a\tau_k
+ &\Longleftrightarrow D(k^a)\subseteq D(h^a),\\
+ &\qquad \|h^a\xi\|\leq\|k^a\xi\|
+       \quad(\xi\in D(k^a))\\
+ &\Longleftrightarrow h^{2a}\leq k^{2a}
+       \quad\text{as complete closed forms}.
+ \end{aligned}
+ \tag{WO10T}
+\]
+The lower edge is the bounded closure of \(h^ak^{-a}\) on all of \(D(k^{-a})\). L158 proves its contraction bound, algebra membership and joint intrinsic strong-star boundary limits. The exponent \(2a\) therefore applies to the original trace densities as well as to the common-core densities in (WO2).
+
 Reflexivity follows from the constant extension \(1\). For transitivity, multiply the two extensions in the order of [BC21](OA-FLOW-BC.md#oa-flow.bc.4):
 \[
  (D\varphi:D\chi)_t
@@ -264,12 +285,7 @@ The curves sample the exact scalar formulas in (WO14)–(WO20); they illustrate 
 <a id="wo-model"></a>
 ## 7. Exact models and solved diagnostics
 
-**Semifinite density chart.** In a semifinite algebra with faithful normal semifinite trace \(\tau\), let \(h,k\) be nonsingular positive affiliated operators. The trace centralizer is the whole algebra. The whole-cone construction in [CZ2](OA-FLOW-CZ.md#oa-flow.cz.2) agrees with TD's cutoff definition of \(\tau_h,\tau_k\), and the normalized balanced calculation [CZ6(CZ32)](OA-FLOW-CZ.md#oa-flow.cz.6) gives \((D\tau_h:D\tau)_t=h^{it}\). The chain and adjoint identities of BC4 therefore give
-\[
- (D\tau_h:D\tau_k)_t=h^{it}k^{-it}.
- \tag{WO26}
-\]
-Apply L158 directly in this represented algebra: \(\tau_h\preceq_a\tau_k\) is equivalent to \(h^{2a}\leq k^{2a}\) as complete forms, and all-depth order is equivalent to the corresponding low-spectral-projection order. Here \(h,k\) are the original semifinite densities; this calculation does not identify them with continuous-core densities. It justifies all the models below and the commuting-density and matrix-distance computations in the next lesson.
+**Semifinite density chart.** The examples use the faithful density weights and complete-domain criterion proved in [the trace specialization](#wo-trace-densities). Here \(h,k\) are the original trace densities. The same calculation supplies the commuting-density and matrix-distance models in the next lesson.
 
 **1. The half-depth test can stop before depth one.** On \(M_2(\mathbb C)\), with its usual trace, let
 \[

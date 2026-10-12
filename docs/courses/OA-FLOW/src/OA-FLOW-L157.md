@@ -227,7 +227,20 @@ B_t^*=\alpha_t^H(a)u_t^*.
 
 The perturbation is consequently on the right in \(u'_t=iu_t\alpha_t^H(a)\). This identity follows after the prescribed product has been identified, without solving an unconnected differential equation.
 
-If \(h\) and \(k\) are positive injective affiliated operators, the full spectral calculus defines \(H=\log h,\quad K=\log k\), regardless of whether their inverses are bounded. The theorem applies to \(k^{it}h^{-it}\). In a semifinite algebra with a fixed n.s.f. trace \(\tau\), interpreting this as \([D\tau_k:D\tau_h]_t\) additionally requires the trace-density cocycle theorem, and identifying \(\alpha^H\) with the density modular flow requires its modular theorem. Those are separate weight inputs, not consequences of the operator proof. No order or product of unbounded densities is evaluated inside a weight here.
+If \(h\) and \(k\) are positive injective affiliated operators, the full spectral calculus defines \(H=\log h,\quad K=\log k\), regardless of whether their inverses are bounded. The theorem applies to \(k^{it}h^{-it}\).
+
+<a id="oa-flow.l157.trace-weights"></a>
+
+For its weight interpretation, fix a faithful normal semifinite trace \(\tau\) on \(M\). The earlier [trace-density construction](../../OA-MOD/OA-MOD-PT.html#radon-nikodym-densities-relative-to-a-semifinite-trace) gives normal semifinite weights \(\tau_h,\tau_k\), faithful because their supports are \(s(h)=s(k)=1\). The [exact density-cocycle computation](../../OA-MOD/OA-MOD-PT.html#a-density-has-exactly-the-prescribed-cocycle) gives \((D\tau_h:D\tau)_t=h^{it}\) and \((D\tau_k:D\tau)_t=k^{it}\). The ordered chain and reversal laws in [BC4](OA-FLOW-BC.md#oa-flow.bc.4) now give
+\[
+ \begin{aligned}
+ (D\tau_k:D\tau_h)_t
+ &=(D\tau_k:D\tau)_t(D\tau:D\tau_h)_t\\
+ &=k^{it}h^{-it}.
+ \end{aligned}
+ \tag{LP11T}
+\]
+The trace-density proof also establishes \(\sigma_t^\tau=\mathrm{id}\). Modular covariance (BC19), applied to \(\tau_h\) and \(\tau\), therefore gives \(\sigma_t^{\tau_h}(x)=h^{it}xh^{-it}=\alpha_t^H(x)\). Thus the complete-domain equivalence and the right-hand perturbation equation (LP11) apply to this actual normalized weight cocycle. Every product in (LP11T) consists of bounded unitaries; the densities and their inverses may be unbounded.
 
 ![Full logarithm-domain equivalence and the two vector integral limits.](../assets/operator-reconstruction/assets/logarithmic-proof-map.png)
 

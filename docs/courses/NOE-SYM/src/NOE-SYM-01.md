@@ -4,7 +4,7 @@
 
 Why should a symmetry produce a conserved quantity? A variation of an action has two parts: the equations of motion, multiplied by the variation, and a boundary term. If a symmetry changes the action only through its boundary, those two boundary terms differ by a current whose divergence vanishes on solutions. The useful statement is an identity before any equations are imposed.
 
-We assume [Multivariable Calculus](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B50), including differentiation and integration by parts. The fundamental lemma is proved in §2. Basic references are Emmy Noether's *Invariant variational problems*, Halder, Paliathanasis and Leach's *Noether's theorem and symmetry*, and Compère's *Symmetries and conservation laws in Lagrangian gauge theories*. The geometric prolongation formula is available in Prolongation, differential invariants and the projective group. We use its characteristic form, including differential functions that depend on derivatives.
+We assume [Multivariable Calculus](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B50), including differentiation and integration by parts. The fundamental lemma is proved in §2. Basic references are Emmy Noether's *Invariant variational problems*, Halder, Paliathanasis and Leach's *Noether's theorem and symmetry*, and Compère's *Symmetries and conservation laws in Lagrangian gauge theories*. The geometric prolongation formula is available in Prolongation, differential invariants and the projective group (Lie’s theory of transformation groups). We use its characteristic form, including differential functions that depend on derivatives.
 
 ## 1. The boundary term that makes the theorem work
 
@@ -85,7 +85,30 @@ Thus stationarity for all compactly supported variations is equivalent to $E_\al
 
 **Proposition 2.1.** $E_\alpha(D_iF)=0$ for every finite-order differential function $F$.
 
-*Proof.* The integral of $D_iF$ is a boundary integral on every graph. Its first variation under a compactly supported $h$ is zero, since all derivatives of $h$ vanish near the boundary. The preceding calculation gives $\int h^\alpha E_\alpha(D_iF)=0$ for every $h$, hence the Euler expression vanishes on every graph. Polynomial realization of each sufficiently high finite jet proves that it vanishes identically. $\square$
+*Proof.* Differentiate the definition of $D_i$ with respect to a jet coordinate. With $F_{\alpha J}=\partial F/\partial u^\alpha_J$ and a term of negative multi-index interpreted as zero, the product rule gives
+
+$$
+\frac{\partial(D_iF)}{\partial u^\alpha_J}
+=D_iF_{\alpha J}+
+\begin{cases}
+F_{\alpha,J-i},&J_i>0,\\
+0,&J_i=0.
+\end{cases}
+$$
+
+Insert this into the Euler sum and reindex the second sum by $J=K+i$:
+
+$$
+\begin{aligned}
+E_\alpha(D_iF)
+&=\sum_J(-D)_J D_iF_{\alpha J}
++\sum_K(-D)_{K+i}F_{\alpha K}\\
+&=D_i\sum_J(-D)_J F_{\alpha J}
+-D_i\sum_K(-D)_K F_{\alpha K}=0.
+\end{aligned}
+$$
+
+The sums include the highest derivative order of $D_iF$. They are finite because $F$ has finite order, and the total derivatives commute. This is an identity on unrestricted jets, with no boundary conditions or equations of motion. $\square$
 
 This also proves $E_\alpha(\operatorname{Div}F)=0$. The converse is local and will be proved in the later lesson *The formal calculus of variations and differential invariants*.
 
@@ -412,7 +435,7 @@ Linear independence of characteristic functions alone does not guarantee distinc
 
 ## Proof dependencies and scope
 
-The point-prolongation theorem is supplied by Prolongation, differential invariants and the projective group. The fundamental lemma for smooth compactly supported variations is proved in §2. The regular current-symmetry correspondence is proved in §6 for the precisely stated normal local systems; gauge identities require the separate treatment in the next lesson. We neither assume that every generalized derivation integrates to a finite-order transformation group nor identify linearly independent generators with independent first integrals.
+The point-prolongation theorem is supplied by Prolongation, differential invariants and the projective group (Lie’s theory of transformation groups). The fundamental lemma for smooth compactly supported variations is proved in §2. The regular current-symmetry correspondence is proved in §6 for the precisely stated normal local systems; gauge identities require the separate treatment in the next lesson. We neither assume that every generalized derivation integrates to a finite-order transformation group nor identify linearly independent generators with independent first integrals.
 
 ## References
 
@@ -421,4 +444,4 @@ The point-prolongation theorem is supplied by Prolongation, differential invaria
 - Geoffrey Compère, *Symmetries and conservation laws in Lagrangian gauge theories with applications to the mechanics of black holes and to gravity in three dimensions* (2007), Preamble §1; Part I, Chapter 1, §1; Appendix B. [Thesis](https://arxiv.org/abs/0708.3153).
 - Glenn Barnich, Friedemann Brandt and Marc Henneaux, *Local BRST cohomology in gauge theories*, Physics Reports **338** (2000), 439--569, §6.1 and Theorem 6.1. [Article](https://arxiv.org/abs/hep-th/0002245).
 - Joël Merker, *Four explicit formulas for the prolongations of an infinitesimal Lie symmetry and multivariate Faà di Bruno formulas* (2004), §1. [Article](https://arxiv.org/abs/math/0411650).
-- Jana Musilová, Pavla Musilová and Olga Rossi, *Calculus of Variations on Fibred Manifolds and Variational Physics: A Geometrical Approach to Variational Problems in Physics*, Lecture Notes in Physics **1033**, Springer (2025), §§8.3--8.4. [Book record](https://doi.org/10.1007/978-3-031-77408-9). A complementary account consulted for geometric first variation and divergence symmetries.
+- Peter E. Hydon and Elizabeth L. Mansfield, *Extensions of Noether's Second Theorem: from continuous to discrete systems*, §2, especially equations (2.1)--(2.3). [Free author preprint](https://arxiv.org/abs/1103.3267). The section develops finite-order Euler operators and variational symmetries; the complete product-rule and divergence proofs used here are given in §§1--3.
