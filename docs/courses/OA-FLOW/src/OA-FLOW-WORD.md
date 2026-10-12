@@ -9,6 +9,8 @@ A comparison between two weights can be transported to positive operators in one
 
 Let \(M\) be a von Neumann algebra and let \(\mathcal W_0(M)\) denote its faithful normal semifinite weights. No separability, factoriality, proper infiniteness or finiteness of the weights is assumed. Ordinary order means comparison on the entire positive cone, with infinite values allowed.
 
+The real-time cocycle in (WO1) is unitary because both weights are faithful. A nonfaithful denominator requires a separately specified support-corner convention; (WO1) does not define that additional comparison.
+
 For the zero algebra there is a single weight, all comparisons below hold, and its cocycle is the sole element of that algebra. This settles that case. In the rest of the proof and the scalar-rescaling diagnostics, assume \(M\ne0\).
 
 For \(a>0\), put
@@ -42,6 +44,8 @@ We will prove that every \(\preceq_a\), and also \(\preceq_\infty\), is a partia
 Thus the exponent is \(2a\). No product of two unbounded operators is presumed to be everywhere defined.
 
 We use [L158's full power-strip theorem](OA-FLOW-L158.md#oa-flow.l158.theorem), including its endpoint domains, both boundary topologies, and all-powers converse. The continuous core, its normalized trace and its normal changes of chart are proved in [CORE](OA-FLOW-CORE.md#core-6); the whole-cone density identity is [SCW2](OA-FLOW-SCW.md#scw-2). Sections 2–3 supply the additional weight-order bridge, rather than assuming that an operator inequality is already a weight inequality.
+
+An earlier programme route proves the same faithful-weight statements directly. [Contractive strips form an order](../../OA-MOD/OA-MOD-UW.html#contractive-strips-form-an-order) proves reflexivity, transitivity and antisymmetry from the normalized cocycle. [The half-strip recovers pointwise order](../../OA-MOD/OA-MOD-UW.html#the-half-strip-recovers-pointwise-order) supplies the joint sigma-strong boundary continuity for [the full half-strip domination theorem](../../OA-MOD/OA-MOD-HS.html#domination-of-weights-is-the-norm-of-a-cocycle-endpoint). The proof below instead uses complete forms in a common core.
 
 <a id="wo-dual-order"></a>
 ## 2. The averaging map reaches every positive coefficient
@@ -222,6 +226,8 @@ is entire. Choose \(\varepsilon>0\) with \(\operatorname{supp}\chi\subseteq[\var
 Integrate the scalar coefficient of \(k_\chi(z)F(z)\) around a rectangle between the real line and \(\operatorname{Im}z=-y\). First let its vertical sides tend to infinity; (WO20) makes them vanish for each fixed \(y\). One may initially place the upper side below the real axis and then use bounded boundary convergence. The remaining bottom integral tends to zero as \(y\to\infty\), by (WO20) and boundedness of \(F\). Thus \(T_{k_\chi}(x)=0\), tested against every normal functional. AL7 proves the asserted spectral containment.
 
 Finally two bounded extensions with the same boundary orbit are equal: their scalar difference extends by zero across a real interval, is holomorphic by the boundary-gluing proof in [SF4](OA-FLOW-SF.md#oa-flow.sf4.zero-edge), and vanishes by the identity theorem. The forward construction must therefore equal any proposed bounded extension, proving its optimal bound \(\|x\|\). This proves (WO15).
+
+For modular flows, [the earlier Fourier-algebra proof](../../OA-MOD/OA-MOD-UW.html#infinite-strips-and-the-balanced-spectral-subspace) establishes the same half-plane criterion for the annihilator-hull definition of spectrum. It proves local inversion in the Fourier-algebra norm and the empty-spectrum criterion before applying the Poisson kernel. Thus this alternative spectral definition gives the same balanced-corner test below.
 
 <a id="wo-balanced"></a>
 ## 6. One balanced matrix unit detects the order

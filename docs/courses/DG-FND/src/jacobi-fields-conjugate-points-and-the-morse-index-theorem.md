@@ -36,7 +36,28 @@ For realization, write \(u=J(a)\), \(w=J'(a)\), \(v=T(a)\). Choose a smooth curv
 v(s)=P_s\bigl(v+s(w+\mathcal T(u,v))\bigr).
 \tag{A.3}
 \]
-Then \(v(0)=v\) and \(D_sv(0)=w+\mathcal T(u,v)\). [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1) gives the smooth geodesic flow on an open domain in time and initial data. That domain contains the compact time segment with initial datum \(v\). A finite product-neighbourhood cover supplies one neighbourhood of \(v\) on which every time in the segment is allowed. For sufficiently small \(s\), start the flow at \(v(s)\), with time shifted by \(a\). Its variation field has value \(u\) at \(a\). By (A.2), its derivative there is \(D_sv(0)-\mathcal T(u,v)=w\). The first part and uniqueness therefore identify it with \(J\). For the Levi-Civita connection torsion vanishes by [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1). □
+Then \(v(0)=v\) and \(D_sv(0)=w+\mathcal T(u,v)\). [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1) gives the smooth geodesic flow on an open domain in time and initial data. That domain contains the compact time segment with initial datum \(v\). A finite product-neighbourhood cover supplies one neighbourhood of \(v\) on which every time in the segment is allowed. For sufficiently small \(s\), start the flow at \(v(s)\), with time shifted by \(a\). Its variation field has value \(u\) at \(a\). By (A.2), its derivative there is \(D_sv(0)-\mathcal T(u,v)=w\). The first part and uniqueness therefore identify it with \(J\). For the Levi-Civita connection torsion vanishes by [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1). 
+
+The torsion derivative can also be expanded. In a parallel frame, differentiate the coefficients of the tensor and of its two arguments by the ordinary product rule. Because \(T'=0\), this gives
+\[
+\bigl(\mathcal T(J,T)\bigr)'
+ =(\nabla_T\mathcal T)(J,T)+\mathcal T(J',T).
+\]
+
+An infinitesimal affine field means a smooth field \(X\) whose local flow \(\phi_s\) preserves the connection. Its restriction to any geodesic is Jacobi: preservation gives
+\(D_t(d\phi_s T)=d\phi_s(D_tT)=0\), so \(F(s,t)=\phi_s(\gamma(t))\) is a geodesic variation with field \(X\circ\gamma\). The open flow domain from Local tools 2.1 contains \(\{0\}\times\gamma([a,b])\); compactness gives one small interval of \(s\) on which this variation is defined on the entire segment.
+
+In particular this applies to a Killing field for a Riemannian metric. Here the Killing condition \(\mathcal L_Xg=0\) means, in coordinates,
+\[
+(\mathcal L_Xg)_{ij}
+ =X^k\partial_k g_{ij}
+  +g_{kj}\partial_iX^k+g_{ik}\partial_jX^k=0,
+\]
+with repeated indices summed. To verify the implication, differentiate
+\((\phi_s^*g)_{ij}=g_{ab}(\phi_s)\partial_i\phi_s^a\partial_j\phi_s^b\).
+Using \(\partial_s\phi_s^a=X^a(\phi_s)\) and the chain rule gives
+\(\partial_s(\phi_s^*g)=\phi_s^*(\mathcal L_Xg)=0\).
+Its initial value is \(g\), so integration gives \(\phi_s^*g=g\). [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3) then proves that this flow preserves the Levi-Civita connection and the affine geodesic parameter. The preceding argument proves that \(X\circ\gamma\) is Jacobi. □
 
 **Lemma A.2 (realizing fields and removing corners).** Every piecewise smooth field \(V\) along a compact piecewise smooth curve \(c\) is the field of a piecewise smooth variation. If \(V\) vanishes at the endpoints, the variation can fix the endpoints. A continuous piecewise smooth field along a smooth curve can be approximated by smooth fields with the same endpoint values so that, in a fixed smooth frame,
 \[
@@ -93,7 +114,16 @@ Differentiate the finitely many compact-interval integrals, justified by the uni
 
 If the energy derivative vanishes for every endpoint-fixed variation, take fields supported in one piece. A.2 realizes them. If \(T'\) were nonzero at a point, a nonnegative smooth bump there multiplied by \(T'\) would have a strictly positive integral against \(T'\), contradicting (A.6). Cutoffs are supplied by [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Thus \(T'=0\) on each piece. Fields with an arbitrary prescribed value at a single node, constructed with the same cutoffs and a smooth local frame, now force \(T_i^-=T_i^+\). The pieces have identical positions and velocities at their joins. Uniqueness of the geodesic equation, [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1), makes them one smooth affinely parametrized geodesic. The converse follows immediately from (A.6), and includes zero velocity.
 
-For length the identical argument forces \(u'=0\) on each piece and \(u_i^-=u_i^+\) at each node. The increasing parameter \(\rho(t)=\int_a^t|T|\,dt\) has positive derivative on each piece and has a smooth inverse there by [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion). In that parameter the velocity is \(u\), with zero covariant derivative. At the joins the unit velocities agree, so geodesic uniqueness again glues the pieces. Conversely these conditions make (A.7) zero. □
+For length the identical argument forces \(u'=0\) on each piece and \(u_i^-=u_i^+\) at each node. The increasing parameter \(\rho(t)=\int_a^t|T|\,dt\) has positive derivative on each piece and has a smooth inverse there by [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion). In that parameter the velocity is \(u\), with zero covariant derivative. At the joins the unit velocities agree, so geodesic uniqueness again glues the pieces. Conversely these conditions make (A.7) zero. 
+
+There is also an exact relation between energy and length. Put \(h=b-a>0\), \(v(t)=|\dot c(t)|\), \(L=\int_a^b v\) and \(E=\frac12\int_a^b v^2\). Expanding a square and integrating gives
+\[
+2E-\frac{L^2}{h}
+ =\int_a^b\left(v-\frac Lh\right)^2dt\geq0.
+\]
+Thus \(L^2\leq2hE\), with equality precisely when the speed is constant with the same value on every piece. Indeed zero integral of this nonnegative piecewise continuous function forces it to vanish on each piece's interior, and continuity on each closed piece gives the one-sided endpoint values as well. The converse follows by substitution; it includes constant curves.
+
+Length is unchanged by an increasing piecewise smooth reparametrization with positive derivative on each closed piece. If \(\phi:[\alpha,\beta]\to[a,b]\) is such a reparametrization, the new speed is \(v(\phi(u))\phi'(u)\). On a subdivision respecting all breaks, the primitive \(H(t)=\int_a^t v\) satisfies \((H\circ\phi)'=v(\phi)\phi'\). Integrating and summing cancels all inner endpoints and gives \(L(c\circ\phi)=H(b)-H(a)=L(c)\). This uses only the fundamental theorem in Local tools 0.3. Energy generally changes because its integrand contains \(\phi'^2\); the equality case above identifies the constant-speed parametrizations on a fixed interval. □
 
 **Theorem A.4 (energy and length Hessians).** Suppose the central curve \(\gamma\) is an affinely parametrized Riemannian geodesic, and put
 \[
@@ -134,7 +164,17 @@ Here \(u'=0\). Write \(V=V^\perp+fu\). The two components and their derivatives 
 I(V,V)=I(V^\perp,V^\perp)+\int_a^b(f')^2\,dt,
 \qquad \langle V',u\rangle=f',
 \]
-which proves (A.10). For endpoint-fixed variations the endpoint accelerations are zero. Polarization of these quadratic expressions gives the bilinear Hessians; mixed variations with given two fields are obtained by replacing \(sV\) in (A.5) by \(sV+rW\). A nonzero endpoint-fixed \(f\) cannot have \(f'\equiv0\); its derivative-square integral is positive. This proves the final statements, including the vanishing of every mixed length-Hessian term containing a tangential field. □
+which proves (A.10). For endpoint-fixed variations the endpoint accelerations are zero. Polarization of these quadratic expressions gives the bilinear Hessians; mixed variations with given two fields are obtained by replacing \(sV\) in (A.5) by \(sV+rW\). A nonzero endpoint-fixed \(f\) cannot have \(f'\equiv0\); its derivative-square integral is positive. This proves the final statements, including the vanishing of every mixed length-Hessian term containing a tangential field. 
+
+The same integrand calculation also gives the second energy variation away from a geodesic. For a piecewise smooth central curve \(c\), let \(I_c\) denote the integral in (A.8) along \(c\), and retain the subdivision and one-sided velocities of A.3. Integration by parts of \(\langle D_tA,T\rangle\) on each piece gives
+\[
+\begin{aligned}
+E''(0)={}&I_c(V,V)+[\langle A,T\rangle]_a^b\\
+ &+\sum_{i=1}^{N-1}\langle A(t_i),T_i^--T_i^+\rangle\\
+ &-\sum_{i=0}^{N-1}\int_{t_i}^{t_{i+1}}\langle A,T'\rangle\,dt.
+\end{aligned}
+\]
+The node accelerations agree from both sides because the endpoint curve \(s\mapsto F(s,t_i)\) is common. For a smooth central curve the jump sum vanishes; for a geodesic \(T'=0\) too, recovering (A.9). In general the integral against \(T'\) and the velocity-jump terms explain why the second variation can depend on the acceleration of the variation, even when its endpoints are fixed. □
 
 ## B. Endpoint Jacobi fields and conjugacy
 
@@ -185,7 +225,24 @@ In the Riemannian case,
 \frac{d^2}{du^2}\langle J,T\rangle
  =-\langle R(J,T)T,T\rangle=0
 \]
-by [Geodesics C.3](geodesics-normal-coordinates-and-curvature.md#corollary-c-3). This scalar function is affine and, if zero at two distinct endpoints, is identically zero. The field is then normal, and its initial derivative is a normal vector. Uniqueness makes the map from endpoint-vanishing fields to their initial derivatives injective, giving the dimension bound. The same affine calculation proves the last assertion. □
+by [Geodesics C.3](geodesics-normal-coordinates-and-curvature.md#corollary-c-3). This scalar function is affine and, if zero at two distinct endpoints, is identically zero. The field is then normal, and its initial derivative is a normal vector. Uniqueness makes the map from endpoint-vanishing fields to their initial derivatives injective, giving the dimension bound. The same affine calculation proves the last assertion. 
+
+More explicitly, for a nonconstant Riemannian geodesic put \(c=|T|>0\) and \(u=T/c\). Every Jacobi field has the unique decomposition
+\[
+J=(\alpha+\beta t)u+J^\perp.
+\]
+The affine scalar assertion just proved gives this formula. The tangent summand is Jacobi because \(u'=0\) and \(R(u,T)T=0\); subtraction shows that the normal summand is Jacobi too. Initial pairs of normal vectors give exactly the normal fields, since their tangential initial data vanish. A.1 therefore gives dimension \(2(\dim M-1)\) for the normal solution space. The tangent summands themselves are realized by
+\(F(s,t)=\gamma(t+s(\alpha+\beta t)/c)\): for fixed small \(s\) the parameter is affine in \(t\), and its variation field is \((\alpha+\beta t)u\). Extend \(\gamma\) slightly past both ends using the geodesic ODE to define this on the compact original interval. Along a constant geodesic the curvature and torsion terms in (A.1) vanish, so \(J(t)=U+tW\) in its fixed tangent space, and there are no conjugate times.
+
+In a parallel orthonormal normal frame write the equation as \(j''+B(t)j=0\), where \(B\) is symmetric by Geodesics C.3. For any two solutions the Wronskian is constant:
+\[
+\begin{aligned}
+\frac d{dt}\bigl(j'\cdot k-j\cdot k'\bigr)
+ &=j''\cdot k-j\cdot k''\\
+ &=-(Bj)\cdot k+j\cdot Bk=0.
+\end{aligned}
+\]
+This calculation holds for every smooth symmetric matrix \(B(t)\), not only those coming from curvature. Finally let \(Y(t)\) be the matrix whose columns solve this system with \(Y(0)=0\), \(Y'(0)=I\), supplied by A.1. Uniqueness gives \(j(t)=Y(t)w\) for every solution with \(j(0)=0\), where \(w=j'(0)\). Consequently \(\mu(t)=\dim\ker Y(t)\) for \(t>0\), an equivalent finite-matrix test for conjugacy. □
 
 **Example B.3 (all constant-curvature solutions).** Along a unit-speed geodesic in constant sectional curvature \(k\), choose a parallel orthonormal frame \(E_1,\ldots,E_{n-1},T\). Every Jacobi field is
 \[
@@ -422,7 +479,14 @@ The middle pairing is zero because \(j\) is in the radical on all endpoint-fixed
 E.2 makes every singular parameter isolated. The singular set in \([\lambda_0,0]\) is closed, since it is the zero set of the continuous determinant, and hence compact by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). The neighbourhoods isolating its individual points form an open cover; a finite subcover shows that the singular set is finite. Each multiplicity is finite because an endpoint-zero solution is determined by its initial derivative in \(\mathbb R^d\), by A.1.
 
 The initial index is zero. It is constant between singular parameters by C.2, and increases at each interior singular parameter by exactly its kernel dimension, by E.2. At a possible final singular parameter \(0\), its value equals the preceding index; that endpoint contributes nullity, not negative index. Combining this count with (E.4) at zero proves (E.6). Integration by parts gives the asserted identification of the zero eigenspace, and B.2 identifies its geometric multiplicity. For the full energy operator the tangential scalar equation is \(-f''=\lambda f\) with zero endpoints. Its integrated identity
-\(\lambda\int f^2=\int(f')^2\) excludes negative and zero eigenvalues, so it changes neither the negative count nor nullity. □
+\(\lambda\int f^2=\int(f')^2\) excludes negative and zero eigenvalues, so it changes neither the negative count nor nullity. 
+
+Distinct Dirichlet eigenvalues give orthogonal eigenfields in the integral inner product. If \(\mathcal Lv=\lambda v\), \(\mathcal Lw=\eta w\), with both fields zero at both endpoints, integration by parts and symmetry of \(B\) give
+\[
+\lambda\int_0^b v\cdot w\,dt
+ =I_B(v,w)=\eta\int_0^b v\cdot w\,dt.
+\]
+For \(\lambda\ne\eta\) the integral is therefore zero. On a negative eigenspace the form is \(\lambda\int|v|^2<0\) for nonzero \(v\). Cross terms between different eigenspaces vanish by the displayed identity, so their direct sum is a negative subspace. Formula (E.6), already proved by the finite crossing argument, says that these negative eigenspaces account for the full negative index. □
 
 ## F. What conjugate points say about minimization
 
@@ -460,7 +524,17 @@ The final equality follows by integrating the derivative of
 
 **Proof.** For a normal field,
 \(\langle R(V,T)T,V\rangle\leq0\), with the zero-vector case immediate and the nonzero case given by the definition of sectional curvature. Consequently
-\(I(V,V)\geq\int|V'|^2>0\) for every nonzero endpoint-fixed normal field. A nonzero endpoint Jacobi field would have square zero by B.1, a contradiction. Tangential endpoint-fixed fields add the positive derivative-square form of A.4, so positivity holds for all such fields too. □
+\(I(V,V)\geq\int|V'|^2>0\) for every nonzero endpoint-fixed normal field. A nonzero endpoint Jacobi field would have square zero by B.1, a contradiction. Tangential endpoint-fixed fields add the positive derivative-square form of A.4, so positivity holds for all such fields too. 
+
+There is a pointwise convexity proof of the absence of conjugate points as well. For any Jacobi field, including one with a tangential component, the Jacobi equation and the curvature symmetries give
+\[
+\frac{d^2}{dt^2}|J|^2
+ =2|J'|^2-2\langle R(J,T)T,J\rangle\geq0.
+\]
+Indeed the tangential part has zero curvature contribution, so the stated radial sectional-curvature assumption applies to the remaining normal part. If \(f=|J|^2\), the fundamental theorem in [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) makes \(f'\) nondecreasing. For \(a<t<b\), every value of \(f'\) on \([a,t]\) is at most every value on \([t,b]\). Comparing the two averages gives
+\((f(t)-f(a))/(t-a)\leq(f(b)-f(t))/(b-t)\), or
+\(f(t)\leq((b-t)f(a)+(t-a)f(b))/(b-a)\).
+If \(J(a)=J(b)=0\), this is \(0\leq|J(t)|^2\leq0\); hence \(J=0\) throughout. No global length-minimization assertion is needed. □
 
 **Example F.4 (endpoint degeneracy and global minimization are different).** On the unit \(S^n\), \(n\geq2\), every great semicircle minimizes between its antipodal endpoints despite having nullity \(n-1\). On the flat circle, a geodesic can have no conjugate times and nevertheless fail to minimize globally.
 
@@ -506,7 +580,16 @@ These accelerations depend on the endpoint curves, not just on their initial vel
 \[
 E''(0)=\int_0^b(f')^2\,dt,\qquad L''(0)=0.
 \]
-The energy value is strictly positive unless the field vanishes. More generally, if endpoints are free, even a tangential field can have a nonzero length second variation because the acceleration term in (G.3) remains. This accounts for every term in both formulas. □
+The energy value is strictly positive unless the field vanishes. More generally, if endpoints are free, even a tangential field can have a nonzero length second variation because the acceleration term in (G.3) remains. This accounts for every term in both formulas. 
+
+The tangent case has an explicit endpoint-fixed realization. For piecewise smooth \(f\) vanishing at \(0,b\), set \(F(s,t)=\gamma(t+sf(t))\). The derivative \(1+sf'(t)\) is positive on every piece when \(|s|\sup|f'|<1\), so \(t\mapsto t+sf(t)\) is an increasing reparametrization of \([0,b]\) onto itself. Since \(\gamma\) has unit speed, A.3 gives \(L(s)=b\), and direct integration gives
+\[
+\begin{aligned}
+E(s)&=\frac12\int_0^b(1+sf')^2\,dt\\
+ &=\frac b2+\frac{s^2}{2}\int_0^b(f')^2\,dt.
+\end{aligned}
+\]
+The linear term is zero because the fundamental theorem of Local tools 0.3 gives \(\int_0^b f'=f(b)-f(0)=0\), with cancellation at the piece boundaries. Thus this variation realizes exactly the positive energy and zero length second variations above. □
 
 **Exercise G.3 (extend past a conjugate point).** Without using the Morse index-counting formula, prove that a geodesic extending strictly past a conjugate time is not minimizing. Give an explicit negative direction for a unit-sphere arc of length \(b>\pi\).
 
@@ -531,7 +614,7 @@ I(V,V)=\int_0^b\left((\pi/b)^2\cos^2(\pi t/b)
 \]
 The two integrals of squared sine and cosine are \(b/2\), by their addition identities and integration over a half-period, as follows from [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). The field is endpoint-fixed, so it gives the required explicit decreasing direction. □
 
-**Exercise G.4 (moving-node crossings and the sphere matrix).** Prove the Morse index formula using the moving-node family (D.2) by computing its derivative on each kernel and applying E.2. Then calculate the complete broken-Jacobi matrix for a unit-sphere arc with equally spaced sufficiently short nodes, and determine its index and nullity directly.
+**Exercise G.4 (moving-node crossings and the sphere matrix).** Prove the Morse index formula using the moving-node family (D.2) by computing its derivative on each kernel and applying E.2. Then calculate the complete broken-Jacobi matrix for a unit-sphere arc with equally spaced nodes whose successive distances are less than \(\pi\), and determine its index and nullity directly.
 
 **Solution.** Work in a parallel orthonormal normal frame and fix \(r_0>0\). Write \(j_r\) for the interpolant of a fixed node vector \(x\) in the family (D.2). Suppose \(x\in\ker Q(r_0)\). Then \(j=j_{r_0}\) is a global Jacobi field, by C.3 and B.1. On each moving subinterval let \(z=\partial_rj_r|_{r_0}\), differentiating at fixed \(t\). Since the value at node \(t_i(r)\) is fixed,
 \[
@@ -554,13 +637,12 @@ Q'(r_0)(x,x)
 \]
 The second equality uses the Jacobi equation and continuity of \(z\). Final-data uniqueness makes \(j\mapsto j'(r_0)\) injective on the endpoint kernel. Thus this derivative is negative definite there. E.2 says that the finite index increases by exactly the conjugate multiplicity at every crossing and takes the lower value at the crossing itself. It begins at zero by C.1. C.4 supplies finitely many crossings, and C.2 makes the index constant between them. This proves the sum over \(0<t<b\) directly, without using D.1; B.1 and C.3 give its nullity and maximal nonpositive dimension as well.
 
-Now let \(\gamma\) be a unit-speed arc on the unit \(n\)-sphere, \(n\geq2\). Take \(N\geq2\) equally spaced pieces of length
-\(\delta=b/N<\min\{\sqrt2,\pi\}\). The normal curvature matrix is \(I_{n-1}\), by [Sectional curvature A.1](sectional-curvature-and-space-forms.md#theorem-a-1) and C.1. In one normal coordinate the solution with values \(x,y\) at the ends of a piece is
+Now let \(\gamma\) be a unit-speed arc on the unit \(n\)-sphere, \(n\geq2\). Take \(N\geq1\) equally spaced pieces of length \(0<\delta=b/N<\pi\). The normal curvature matrix is \(I_{n-1}\), by [Sectional curvature A.1](sectional-curvature-and-space-forms.md#theorem-a-1) and [Sectional curvature C.1](sectional-curvature-and-space-forms.md#theorem-c-1). By B.3 there is no conjugacy within such a piece, including its right endpoint. D.2 therefore gives positivity on fields zero at its ends and uniqueness of interpolation. These are exactly the two properties used in the splitting proof of C.3, so that splitting applies to this partition even when \(\delta\geq\sqrt2\). In one normal coordinate the solution with values \(x,y\) at the ends of a piece is
 \[
 j(t)=\frac{\sin(\delta-t)}{\sin\delta}\,x
        +\frac{\sin t}{\sin\delta}\,y,\qquad 0\leq t\leq\delta.
 \]
-Direct differentiation gives \(j''+j=0\) and the two endpoint values, so C.1 identifies it with the unique interpolant. Its contribution to the form is
+Direct differentiation gives \(j''+j=0\) and the two endpoint values, so D.2 identifies it with the unique interpolant. Its contribution to the form is
 \[
 [j'j]_0^\delta
  =\frac{\cos\delta(x^2+y^2)-2xy}{\sin\delta}.
@@ -578,7 +660,7 @@ H_\delta=\frac1{\sin\delta}
 \end{pmatrix}.
 \tag{G.8}
 \]
-For \(N=2\) this means the single entry \(2\cot\delta\). The full normal matrix is the direct sum of \(n-1\) copies of (G.8).
+For \(N=1\) there are no interior nodes: the matrix is empty, with index and nullity zero. For \(N=2\) this means the single entry \(2\cot\delta\). The full normal matrix is the direct sum of \(n-1\) copies of (G.8).
 
 For each \(k=1,\ldots,N-1\), the vector with components
 \(x_j=\sin(jk\pi/N)\) is an eigenvector, with eigenvalue
@@ -588,7 +670,7 @@ For each \(k=1,\ldots,N-1\), the vector with components
 \]
 Indeed insert it in each row, using
 \(\sin((j-1)\theta)+\sin((j+1)\theta)=2\cos\theta\sin(j\theta)\)
-and its zero boundary components at \(j=0,N\). These identities follow from the circle multiplication in [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). Each vector is nonzero because its first component is positive. Cosine is strictly decreasing on \((0,\pi)\), by [Sectional curvature B.2](sectional-curvature-and-space-forms.md#lemma-b-2), so the \(N-1\) eigenvalues are distinct. Eigenvectors of a symmetric matrix with distinct eigenvalues are orthogonal: taking their mutual inner product in the two eigenvalue equations proves this. They therefore form a basis.
+and its zero boundary components at \(j=0,N\). These identities follow from the circle multiplication in [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). Each vector is nonzero because its first component is positive. Cosine is strictly decreasing on \((0,\pi)\), by [Sectional curvature B.2](sectional-curvature-and-space-forms.md#lemma-b-2), so the \(N-1\) eigenvalues are distinct. Eigenvectors of a symmetric matrix with distinct eigenvalues are orthogonal: taking their mutual inner product in the two eigenvalue equations proves this. They therefore form a basis; for \(N=1\) the empty list is the basis of the zero-dimensional node space. The eigenvalues in (G.9) belong to this finite node matrix. They are not the Dirichlet eigenvalues of the differential operator in E.1; C.3 transfers the matrix's index and nullity to the full index form.
 
 Since \(\sin\delta>0\), (G.9) is negative exactly when \(k\pi<b\), and zero exactly when \(k\pi=b\). Our choice \(b<N\pi\) ensures that all positive integers satisfying either condition already lie in \(1,\ldots,N-1\). Thus the normal index is
 \[

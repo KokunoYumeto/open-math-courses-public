@@ -29,6 +29,8 @@ If \(d(\varphi,\psi)=0\), ordinary weight order [WO2](OA-FLOW-WORD.md#wo-dual-or
 \]
 For a finite \(\varphi(x)\), let \(\varepsilon\downarrow0\). For \(\varphi(x)=\infty\), the left inequality already forces \(\psi(x)=\infty\). Hence \(\varphi=\psi\). The converse is immediate. Thus \(d\) is an extended metric. Finite-distance equivalence classes are genuine metric spaces, by the triangle inequality.
 
+The earlier programme proof of [the extended uniform distance](../../OA-MOD/OA-MOD-UW.html#the-extended-uniform-distance) derives these metric properties directly from faithful-weight cocycles. It also constructs the entire extension at finite distance. The next section proves the exact growth bound, including attainment of the finite infimum.
+
 <a id="um-entire"></a>
 ## 2. The exact entire-function criterion
 

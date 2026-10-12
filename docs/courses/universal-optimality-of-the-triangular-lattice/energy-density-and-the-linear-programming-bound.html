@@ -1,0 +1,236 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Energy, density and the linear programming bound</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Universal optimality of the triangular lattice)</a><a href="completely-monotone-interactions.html">Next lesson</a><a href="src/energy-density-and-the-linear-programming-bound.md">Editable source</a></nav><main><article><h1 id="energy-density-and-the-linear-programming-bound">Energy, density and the linear programming bound</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Place infinitely many points in the plane, on average one per unit of area, and let every two of them repel each other with a force that depends on their distance. Which arrangement has the least energy per point? For a wide class of repulsions the answer was conjectured by H. Cohn and A. Kumar to be the same [Cohn–Kumar]: the triangular lattice, in which every point has six nearest neighbours at the corners of a regular hexagon. In September 2026 OpenAI released a proof [OpenAI-T]. This lesson sets up the problem and proves the mechanism that turns it into a question of Fourier analysis.</p>
+<ul>
+<li>The energy <span class="math" data-tex="\(E_g(\mathcal C)\)">\(E_g(\mathcal C)\)</span> of a point configuration <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of density one, for an interaction <span class="math" data-tex="\(g\)">\(g\)</span> of the squared distance, and its value for a lattice (Section 1).</li>
+<li>The <em>linear programming bound</em> (Theorem 3.1): if a function <span class="math" data-tex="\(f\)">\(f\)</span> lies below the interaction and has a nonnegative Fourier transform, then every configuration of density one has energy at least <span class="math" data-tex="\(\widehat f(0)-f(0)\)">\(\widehat f(0)-f(0)\)</span>. No periodicity or separation of the points is assumed.</li>
+<li>The bound can never exceed the energy of a lattice, and it equals the energy of the triangular lattice exactly if <span class="math" data-tex="\(f\)">\(f\)</span> touches the interaction at the lattice points and <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> vanishes at the dual lattice points (Proposition 4.1). Such a function is a <em>sharp pair</em>; if one exists for the Gaussian interaction <span class="math" data-tex="\(e^{-\pi\alpha t}\)">\(e^{-\pi\alpha t}\)</span>, the triangular lattice has the least energy for it (Theorem 4.2).</li>
+</ul>
+<p>The existence of sharp pairs for all Gaussians is the main work of [OpenAI-T]; it is not proved in this lesson. The bound of Theorem 3.1 goes back to [Cohn–Kumar] for periodic configurations; the form for arbitrary configurations of a given density is due to H. Cohn and M. de Courcy-Ireland [Cohn-de Courcy-Ireland]. The presentation follows [OpenAI-T, Sections 1 and 6].</p>
+<p>The lesson uses Lebesgue integration in the plane (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration (D10)</a>) and two theorems of the course on harmonic analysis on locally compact abelian groups: Fourier inversion and the Poisson summation formula for a lattice.</p>
+<h2 id="1-configurations-and-their-energy">1. Configurations and their energy</h2>
+<p>A <em>configuration</em> is a subset <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> that is <em>locally finite</em>: every bounded set contains finitely many of its points. Let <span class="math" data-tex="\(B_R\)">\(B_R\)</span> be the closed disk of radius <span class="math" data-tex="\(R\)">\(R\)</span> around the origin, <span class="math" data-tex="\(\mathcal C_R=\mathcal C\cap B_R\)">\(\mathcal C_R=\mathcal C\cap B_R\)</span> and <span class="math" data-tex="\(N_R=\#\mathcal C_R\)">\(N_R=\#\mathcal C_R\)</span>. The configuration has <em>density one</em> if
+<span class="math math-display" data-tex="\[
+\frac{N_R}{\pi R^2}\longrightarrow1\qquad(R\to\infty).
+\]">\[
+\frac{N_R}{\pi R^2}\longrightarrow1\qquad(R\to\infty).
+\]</span>
+Then <span class="math" data-tex="\(N_R&gt;0\)">\(N_R&gt;0\)</span> for all large <span class="math" data-tex="\(R\)">\(R\)</span>, and <span class="math" data-tex="\(N_R\to\infty\)">\(N_R\to\infty\)</span>.</p>
+<p>An <em>interaction</em> is a function <span class="math" data-tex="\(g\colon(0,\infty)\to[0,\infty]\)">\(g\colon(0,\infty)\to[0,\infty]\)</span>. The <em>energy</em> of a configuration <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of density one is
+<span class="math math-display" data-tex="\[
+E_g(\mathcal C)=\liminf_{R\to\infty}\frac1{N_R}\sum_{\substack{x,y\in\mathcal C_R\\x\ne y}}g(|x-y|^2).
+\]">\[
+E_g(\mathcal C)=\liminf_{R\to\infty}\frac1{N_R}\sum_{\substack{x,y\in\mathcal C_R\\x\ne y}}g(|x-y|^2).
+\]</span>
+The sum is over ordered pairs, so every pair of points is counted twice. The energy is an element of <span class="math" data-tex="\([0,\infty]\)">\([0,\infty]\)</span>. The argument of <span class="math" data-tex="\(g\)">\(g\)</span> is the squared distance; a Gaussian repulsion is <span class="math" data-tex="\(g(t)=e^{-\pi\alpha t}\)">\(g(t)=e^{-\pi\alpha t}\)</span> with <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, and an inverse power law is <span class="math" data-tex="\(g(t)=t^{-s/2}\)">\(g(t)=t^{-s/2}\)</span>.</p>
+<p>A <em>lattice</em> is a set <span class="math" data-tex="\(\Lambda=M\mathbb Z^2\)">\(\Lambda=M\mathbb Z^2\)</span> with an invertible real matrix <span class="math" data-tex="\(M\)">\(M\)</span>; its <em>covolume</em> is <span class="math" data-tex="\(|\det M|\)">\(|\det M|\)</span>. Let <span class="math" data-tex="\(b=\sqrt3/2\)">\(b=\sqrt3/2\)</span>. The <em>triangular lattice</em> of covolume one is
+<span class="math math-display" data-tex="\[
+A=b^{-1/2}\{j(1,0)+k(\tfrac12,b)\mid j,k\in\mathbb Z\}.
+\]">\[
+A=b^{-1/2}\{j(1,0)+k(\tfrac12,b)\mid j,k\in\mathbb Z\}.
+\]</span>
+Its matrix has determinant <span class="math" data-tex="\(b^{-1}\cdot b=1\)">\(b^{-1}\cdot b=1\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be a lattice of covolume one. Then <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> has density one, and for every interaction <span class="math" data-tex="\(g\)">\(g\)</span>
+<span class="math math-display" data-tex="\[
+E_g(\Lambda)=\sum_{a\in\Lambda\setminus\{0\}}g(|a|^2).
+\]">\[
+E_g(\Lambda)=\sum_{a\in\Lambda\setminus\{0\}}g(|a|^2).
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(P=M[0,1)^2\)">\(P=M[0,1)^2\)</span>. The translates <span class="math" data-tex="\(a+P\)">\(a+P\)</span>, <span class="math" data-tex="\(a\in\Lambda\)">\(a\in\Lambda\)</span>, are pairwise disjoint, cover the plane and have area one. Let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be the largest distance of a point of the closure of <span class="math" data-tex="\(P\)">\(P\)</span> from the origin. For <span class="math" data-tex="\(R&gt;\rho\)">\(R&gt;\rho\)</span>, the union of the cells <span class="math" data-tex="\(a+P\)">\(a+P\)</span> with <span class="math" data-tex="\(a\in\Lambda\cap B_R\)">\(a\in\Lambda\cap B_R\)</span> lies in <span class="math" data-tex="\(B_{R+\rho}\)">\(B_{R+\rho}\)</span> and contains <span class="math" data-tex="\(B_{R-\rho}\)">\(B_{R-\rho}\)</span>: a point <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(B_{R-\rho}\)">\(B_{R-\rho}\)</span> lies in a cell <span class="math" data-tex="\(a+P\)">\(a+P\)</span>, and then <span class="math" data-tex="\(|a|\le|z|+\rho\le R\)">\(|a|\le|z|+\rho\le R\)</span>. The area of the union is <span class="math" data-tex="\(N_R\)">\(N_R\)</span>. So
+<span class="math math-display" data-tex="\[
+\pi(R-\rho)^2\le N_R\le\pi(R+\rho)^2 ,
+\]">\[
+\pi(R-\rho)^2\le N_R\le\pi(R+\rho)^2 ,
+\]</span>
+and <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> has density one.</p>
+<p><em>Upper bound.</em> For <span class="math" data-tex="\(x\in\Lambda_R\)">\(x\in\Lambda_R\)</span> the differences <span class="math" data-tex="\(y-x\)">\(y-x\)</span>, <span class="math" data-tex="\(y\in\Lambda_R\)">\(y\in\Lambda_R\)</span>, <span class="math" data-tex="\(y\ne x\)">\(y\ne x\)</span>, are distinct elements of <span class="math" data-tex="\(\Lambda\setminus\{0\}\)">\(\Lambda\setminus\{0\}\)</span>. So the inner sum over <span class="math" data-tex="\(y\)">\(y\)</span> is at most <span class="math" data-tex="\(L=\sum_{a\ne0}g(|a|^2)\)">\(L=\sum_{a\ne0}g(|a|^2)\)</span>, and the average over <span class="math" data-tex="\(x\)">\(x\)</span> is at most <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><em>Lower bound.</em> Let <span class="math" data-tex="\(S\)">\(S\)</span> be a finite subset of <span class="math" data-tex="\(\Lambda\setminus\{0\}\)">\(\Lambda\setminus\{0\}\)</span> and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> the largest length of its elements. For <span class="math" data-tex="\(x\in\Lambda_{R-\sigma}\)">\(x\in\Lambda_{R-\sigma}\)</span> all points <span class="math" data-tex="\(x+a\)">\(x+a\)</span>, <span class="math" data-tex="\(a\in S\)">\(a\in S\)</span>, lie in <span class="math" data-tex="\(\Lambda_R\)">\(\Lambda_R\)</span>. So the double sum is at least <span class="math" data-tex="\(N_{R-\sigma}\sum_{a\in S}g(|a|^2)\)">\(N_{R-\sigma}\sum_{a\in S}g(|a|^2)\)</span>. Since <span class="math" data-tex="\(N_{R-\sigma}/N_R\to1\)">\(N_{R-\sigma}/N_R\to1\)</span>, we get <span class="math" data-tex="\(E_g(\Lambda)\ge\sum_{a\in S}g(|a|^2)\)">\(E_g(\Lambda)\ge\sum_{a\in S}g(|a|^2)\)</span> for every finite <span class="math" data-tex="\(S\)">\(S\)</span>, hence <span class="math" data-tex="\(E_g(\Lambda)\ge L\)">\(E_g(\Lambda)\ge L\)</span>. This also covers <span class="math" data-tex="\(L=\infty\)">\(L=\infty\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The question is whether <span class="math" data-tex="\(E_g(\mathcal C)\ge E_g(A)\)">\(E_g(\mathcal C)\ge E_g(A)\)</span> for every configuration <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of density one. A configuration may contain points that are arbitrarily close together, and the numbers of its points in unit squares may be unbounded; only the counts <span class="math" data-tex="\(N_R\)">\(N_R\)</span> in the disks around the origin are controlled.</p>
+<h2 id="2-fourier-transforms-and-a-positive-form">2. Fourier transforms and a positive form</h2>
+<p>For an integrable function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> let
+<span class="math math-display" data-tex="\[
+\widehat f(\xi)=\int_{\mathbb R^2}f(x)\,e^{-2\pi ix\cdot\xi}\,dx .
+\]">\[
+\widehat f(\xi)=\int_{\mathbb R^2}f(x)\,e^{-2\pi ix\cdot\xi}\,dx .
+\]</span>
+We call a function <span class="math" data-tex="\(f\colon\mathbb R^2\to\mathbb R\)">\(f\colon\mathbb R^2\to\mathbb R\)</span> <em>admissible</em> if it is continuous and even, <span class="math" data-tex="\(f(-x)=f(x)\)">\(f(-x)=f(x)\)</span>, and there are <span class="math" data-tex="\(C,\delta&gt;0\)">\(C,\delta&gt;0\)</span> with
+<span class="math math-display" data-tex="\[
+|f(x)|+|\widehat f(x)|\le C(1+|x|)^{-2-\delta}
+\]">\[
+|f(x)|+|\widehat f(x)|\le C(1+|x|)^{-2-\delta}
+\]</span>
+for all <span class="math" data-tex="\(x\in\mathbb R^2\)">\(x\in\mathbb R^2\)</span>. The function <span class="math" data-tex="\((1+|x|)^{-2-\delta}\)">\((1+|x|)^{-2-\delta}\)</span> is integrable over the plane (<a href="../HA-LCA/src/the-poisson-summation-formula.html">The Poisson summation formula</a>, Lemma 2.0), so <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> are integrable. Since <span class="math" data-tex="\(f\)">\(f\)</span> is real and even, <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> is real and even. Rapidly decreasing smooth functions, in particular the Gaussians <span class="math" data-tex="\(e^{-\pi\alpha|x|^2}\)">\(e^{-\pi\alpha|x|^2}\)</span>, are admissible; this is not needed below.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be admissible.</p>
+<ol>
+<li>For every <span class="math" data-tex="\(x\in\mathbb R^2\)">\(x\in\mathbb R^2\)</span>,
+<span class="math math-display" data-tex="\[
+f(x)=\int_{\mathbb R^2}\widehat f(\xi)\,e^{2\pi ix\cdot\xi}\,d\xi .
+\]">\[
+f(x)=\int_{\mathbb R^2}\widehat f(\xi)\,e^{2\pi ix\cdot\xi}\,d\xi .
+\]</span></li>
+<li>Let <span class="math" data-tex="\(\mu,\nu\)">\(\mu,\nu\)</span> be finite positive Borel measures on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, and <span class="math" data-tex="\(\widehat\mu(\xi)=\int e^{-2\pi ix\cdot\xi}\,d\mu(x)\)">\(\widehat\mu(\xi)=\int e^{-2\pi ix\cdot\xi}\,d\mu(x)\)</span>. Let <span class="math" data-tex="\(Q(\mu,\nu)\)">\(Q(\mu,\nu)\)</span> be the integral of <span class="math" data-tex="\(f(x-y)\)">\(f(x-y)\)</span> with respect to the product measure <span class="math" data-tex="\(d\mu(x)\,d\nu(y)\)">\(d\mu(x)\,d\nu(y)\)</span>. Then
+<span class="math math-display" data-tex="\[
+Q(\mu,\nu)=\int\widehat f\;\overline{\widehat\mu}\;\widehat\nu\,d\xi .
+\]">\[
+Q(\mu,\nu)=\int\widehat f\;\overline{\widehat\mu}\;\widehat\nu\,d\xi .
+\]</span></li>
+<li>If <span class="math" data-tex="\(\widehat f\ge0\)">\(\widehat f\ge0\)</span>, then <span class="math" data-tex="\(Q(\mu,\mu)\ge0\)">\(Q(\mu,\mu)\ge0\)</span>, <span class="math" data-tex="\(Q(\nu,\nu)\ge0\)">\(Q(\nu,\nu)\ge0\)</span> and
+<span class="math math-display" data-tex="\[
+Q(\mu,\nu)^2\le Q(\mu,\mu)\,Q(\nu,\nu).
+\]">\[
+Q(\mu,\nu)^2\le Q(\mu,\mu)\,Q(\nu,\nu).
+\]</span></li>
+</ol>
+<p><strong>Proof.</strong> (1) is the inversion theorem for integrable functions with integrable transform (<a href="../HA-LCA/src/the-pontryagin-duality-theorem.html">The Pontryagin duality theorem</a>, Theorem 4.1) for the group <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, whose characters are <span class="math" data-tex="\(x\mapsto e^{2\pi ix\cdot\xi}\)">\(x\mapsto e^{2\pi ix\cdot\xi}\)</span> and whose Lebesgue measure is its own dual measure (<a href="../HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html">The Fourier inversion theorem and the dual Haar measure</a>, Proposition 3.2); the formula holds at every point because <span class="math" data-tex="\(f\)">\(f\)</span> is continuous.</p>
+<p>(2) Insert (1) for <span class="math" data-tex="\(f(x-y)\)">\(f(x-y)\)</span>. The integrand <span class="math" data-tex="\(\widehat f(\xi)e^{2\pi i(x-y)\cdot\xi}\)">\(\widehat f(\xi)e^{2\pi i(x-y)\cdot\xi}\)</span> is integrable for the product of <span class="math" data-tex="\(d\xi\)">\(d\xi\)</span>, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, because <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> is integrable and the measures are finite. By Fubini's theorem the integrations over <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> can be carried out first; they give <span class="math" data-tex="\(\overline{\widehat\mu(\xi)}\)">\(\overline{\widehat\mu(\xi)}\)</span> and <span class="math" data-tex="\(\widehat\nu(\xi)\)">\(\widehat\nu(\xi)\)</span>. The value <span class="math" data-tex="\(Q(\mu,\nu)\)">\(Q(\mu,\nu)\)</span> is real and symmetric in <span class="math" data-tex="\(\mu,\nu\)">\(\mu,\nu\)</span>, because <span class="math" data-tex="\(f\)">\(f\)</span> is real and even.</p>
+<p>(3) By (2), <span class="math" data-tex="\(Q(\mu,\mu)=\int\widehat f\,|\widehat\mu|^2\ge0\)">\(Q(\mu,\mu)=\int\widehat f\,|\widehat\mu|^2\ge0\)</span>. For real <span class="math" data-tex="\(t\)">\(t\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\le\int\widehat f\,|\widehat\mu+t\widehat\nu|^2\,d\xi\\
+&amp;=Q(\mu,\mu)+2tQ(\mu,\nu)+t^2Q(\nu,\nu).
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;\le\int\widehat f\,|\widehat\mu+t\widehat\nu|^2\,d\xi\\
+&amp;=Q(\mu,\mu)+2tQ(\mu,\nu)+t^2Q(\nu,\nu).
+\end{aligned}
+\]</span>
+A real quadratic polynomial in <span class="math" data-tex="\(t\)">\(t\)</span> without negative values has discriminant at most zero. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-linear-programming-bound">3. The linear programming bound</h2>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be an admissible function with <span class="math" data-tex="\(\widehat f\ge0\)">\(\widehat f\ge0\)</span>. For every configuration <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of density one,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\liminf_{R\to\infty}\frac1{N_R}\sum_{\substack{x,y\in\mathcal C_R\\x\ne y}}f(x-y)\\
+\ge\ \widehat f(0)-f(0).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\liminf_{R\to\infty}\frac1{N_R}\sum_{\substack{x,y\in\mathcal C_R\\x\ne y}}f(x-y)\\
+\ge\ \widehat f(0)-f(0).
+\end{gathered}
+\]</span>
+Consequently, if <span class="math" data-tex="\(g\)">\(g\)</span> is an interaction with <span class="math" data-tex="\(g(|z|^2)\ge f(z)\)">\(g(|z|^2)\ge f(z)\)</span> for all <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, then
+<span class="math math-display" data-tex="\[
+E_g(\mathcal C)\ge\widehat f(0)-f(0).
+\]">\[
+E_g(\mathcal C)\ge\widehat f(0)-f(0).
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(a=\widehat f(0)=\int f\)">\(a=\widehat f(0)=\int f\)</span>; it is <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>. Let <span class="math" data-tex="\(\mu_R\)">\(\mu_R\)</span> be the sum of the unit point masses at the points of <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span>. Then
+<span class="math math-display" data-tex="\[
+Q(\mu_R,\mu_R)=N_Rf(0)+\sum_{\substack{x,y\in\mathcal C_R\\x\ne y}}f(x-y),
+\]">\[
+Q(\mu_R,\mu_R)=N_Rf(0)+\sum_{\substack{x,y\in\mathcal C_R\\x\ne y}}f(x-y),
+\]</span>
+so the assertion is <span class="math" data-tex="\(\liminf_RQ(\mu_R,\mu_R)/N_R\ge a\)">\(\liminf_RQ(\mu_R,\mu_R)/N_R\ge a\)</span>. If <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, this holds because <span class="math" data-tex="\(Q(\mu_R,\mu_R)\ge0\)">\(Q(\mu_R,\mu_R)\ge0\)</span>. Let <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Let <span class="math" data-tex="\(\nu_R\)">\(\nu_R\)</span> be Lebesgue measure on the disk <span class="math" data-tex="\(B&#x27;=B_{(1+\varepsilon)R}\)">\(B&#x27;=B_{(1+\varepsilon)R}\)</span>, of area <span class="math" data-tex="\(V_R=\pi(1+\varepsilon)^2R^2\)">\(V_R=\pi(1+\varepsilon)^2R^2\)</span>.</p>
+<p><em>The mixed term.</em> For <span class="math" data-tex="\(x\in\mathcal C_R\)">\(x\in\mathcal C_R\)</span>,
+<span class="math math-display" data-tex="\[
+\int_{B&#x27;}f(x-y)\,dy=\int_{x-B&#x27;}f(z)\,dz ,
+\]">\[
+\int_{B&#x27;}f(x-y)\,dy=\int_{x-B&#x27;}f(z)\,dz ,
+\]</span>
+and the set <span class="math" data-tex="\(x-B&#x27;\)">\(x-B&#x27;\)</span> contains <span class="math" data-tex="\(B_{\varepsilon R}\)">\(B_{\varepsilon R}\)</span>, because <span class="math" data-tex="\(|x|\le R\)">\(|x|\le R\)</span>. So this integral differs from <span class="math" data-tex="\(a=\int f\)">\(a=\int f\)</span> by at most
+<span class="math math-display" data-tex="\[
+\eta(R)=\int_{|z|&gt;\varepsilon R}|f(z)|\,dz ,
+\]">\[
+\eta(R)=\int_{|z|&gt;\varepsilon R}|f(z)|\,dz ,
+\]</span>
+which tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>, since <span class="math" data-tex="\(f\)">\(f\)</span> is integrable. Summing over <span class="math" data-tex="\(x\in\mathcal C_R\)">\(x\in\mathcal C_R\)</span>:
+<span class="math math-display" data-tex="\[
+|Q(\mu_R,\nu_R)-N_Ra|\le N_R\,\eta(R).
+\]">\[
+|Q(\mu_R,\nu_R)-N_Ra|\le N_R\,\eta(R).
+\]</span>
+The bound does not depend on where the points of <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span> lie.</p>
+<p><em>The term of the disk.</em> By the substitution <span class="math" data-tex="\(z=x-y\)">\(z=x-y\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{Q(\nu_R,\nu_R)}{V_R}=\int f(z)\,\frac{|B&#x27;\cap(B&#x27;+z)|}{V_R}\,dz ,
+\]">\[
+\frac{Q(\nu_R,\nu_R)}{V_R}=\int f(z)\,\frac{|B&#x27;\cap(B&#x27;+z)|}{V_R}\,dz ,
+\]</span>
+where <span class="math" data-tex="\(|\cdot|\)">\(|\cdot|\)</span> is the area. The quotient lies between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. For fixed <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\((1+\varepsilon)R&gt;|z|\)">\((1+\varepsilon)R&gt;|z|\)</span> the set <span class="math" data-tex="\(B&#x27;\cap(B&#x27;+z)\)">\(B&#x27;\cap(B&#x27;+z)\)</span> contains the disk of radius <span class="math" data-tex="\((1+\varepsilon)R-|z|\)">\((1+\varepsilon)R-|z|\)</span> around <span class="math" data-tex="\(z/2\)">\(z/2\)</span>, so the quotient tends to <span class="math" data-tex="\(1\)">\(1\)</span>. By dominated convergence, <span class="math" data-tex="\(Q(\nu_R,\nu_R)/V_R\to a\)">\(Q(\nu_R,\nu_R)/V_R\to a\)</span>.</p>
+<p><em>Conclusion.</em> For large <span class="math" data-tex="\(R\)">\(R\)</span> we have <span class="math" data-tex="\(\eta(R)&lt;a\)">\(\eta(R)&lt;a\)</span> and <span class="math" data-tex="\(Q(\nu_R,\nu_R)&gt;0\)">\(Q(\nu_R,\nu_R)&gt;0\)</span>. By Lemma 2.1(3),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{Q(\mu_R,\mu_R)}{N_R}&amp;\ge\frac{Q(\mu_R,\nu_R)^2}{N_R\,Q(\nu_R,\nu_R)}\\
+&amp;\ge\frac{N_R}{V_R}\cdot\frac{(a-\eta(R))^2}{Q(\nu_R,\nu_R)/V_R}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{Q(\mu_R,\mu_R)}{N_R}&amp;\ge\frac{Q(\mu_R,\nu_R)^2}{N_R\,Q(\nu_R,\nu_R)}\\
+&amp;\ge\frac{N_R}{V_R}\cdot\frac{(a-\eta(R))^2}{Q(\nu_R,\nu_R)/V_R}.
+\end{aligned}
+\]</span>
+As <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>, <span class="math" data-tex="\(N_R/V_R\to(1+\varepsilon)^{-2}\)">\(N_R/V_R\to(1+\varepsilon)^{-2}\)</span> by the density, and the second factor tends to <span class="math" data-tex="\(a^2/a=a\)">\(a^2/a=a\)</span>. So <span class="math" data-tex="\(\liminf_RQ(\mu_R,\mu_R)/N_R\ge a/(1+\varepsilon)^2\)">\(\liminf_RQ(\mu_R,\mu_R)/N_R\ge a/(1+\varepsilon)^2\)</span> for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, hence <span class="math" data-tex="\(\ge a\)">\(\ge a\)</span>.</p>
+<p>The statement on <span class="math" data-tex="\(g\)">\(g\)</span> follows by comparing the finite sums term by term. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The name comes from the fact that the conditions on <span class="math" data-tex="\(f\)">\(f\)</span>, namely <span class="math" data-tex="\(f\le g\)">\(f\le g\)</span> and <span class="math" data-tex="\(\widehat f\ge0\)">\(\widehat f\ge0\)</span>, are linear inequalities, and the bound <span class="math" data-tex="\(\widehat f(0)-f(0)\)">\(\widehat f(0)-f(0)\)</span> is a linear function of <span class="math" data-tex="\(f\)">\(f\)</span>; finding the best <span class="math" data-tex="\(f\)">\(f\)</span> is a linear programme in infinitely many variables.</p>
+<h2 id="4-when-the-bound-is-sharp">4. When the bound is sharp</h2>
+<p>The <em>dual lattice</em> of a lattice <span class="math" data-tex="\(\Lambda=M\mathbb Z^2\)">\(\Lambda=M\mathbb Z^2\)</span> is the set <span class="math" data-tex="\(\Lambda^*\)">\(\Lambda^*\)</span> of all <span class="math" data-tex="\(w\in\mathbb R^2\)">\(w\in\mathbb R^2\)</span> with <span class="math" data-tex="\(w\cdot a\in\mathbb Z\)">\(w\cdot a\in\mathbb Z\)</span> for all <span class="math" data-tex="\(a\in\Lambda\)">\(a\in\Lambda\)</span>. It is the lattice <span class="math" data-tex="\(M^{-T}\mathbb Z^2\)">\(M^{-T}\mathbb Z^2\)</span>, where <span class="math" data-tex="\(M^{-T}\)">\(M^{-T}\)</span> is the inverse of the transpose: <span class="math" data-tex="\(w\cdot Mk\in\mathbb Z\)">\(w\cdot Mk\in\mathbb Z\)</span> for all <span class="math" data-tex="\(k\in\mathbb Z^2\)">\(k\in\mathbb Z^2\)</span> means <span class="math" data-tex="\(M^Tw\in\mathbb Z^2\)">\(M^Tw\in\mathbb Z^2\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be a lattice of covolume one, <span class="math" data-tex="\(g\)">\(g\)</span> an interaction, and <span class="math" data-tex="\(f\)">\(f\)</span> an admissible function with <span class="math" data-tex="\(\widehat f\ge0\)">\(\widehat f\ge0\)</span> and <span class="math" data-tex="\(f(z)\le g(|z|^2)\)">\(f(z)\le g(|z|^2)\)</span> for <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\widehat f(0)-f(0)\le\sum_{a\in\Lambda\setminus\{0\}}g(|a|^2)=E_g(\Lambda).
+\]">\[
+\widehat f(0)-f(0)\le\sum_{a\in\Lambda\setminus\{0\}}g(|a|^2)=E_g(\Lambda).
+\]</span>
+If the right side is finite, equality holds exactly if
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(a)=g(|a|^2)\quad(a\in\Lambda\setminus\{0\}),\\
+\widehat f(w)=0\quad(w\in\Lambda^*\setminus\{0\}).
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(a)=g(|a|^2)\quad(a\in\Lambda\setminus\{0\}),\\
+\widehat f(w)=0\quad(w\in\Lambda^*\setminus\{0\}).
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> By the Poisson summation formula for the lattice <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> of covolume one (<a href="../HA-LCA/src/the-poisson-summation-formula.html">The Poisson summation formula</a>, Corollary 2.2, at the point <span class="math" data-tex="\(0\)">\(0\)</span>), both series converge absolutely and
+<span class="math math-display" data-tex="\[
+\sum_{a\in\Lambda}f(a)=\sum_{w\in\Lambda^*}\widehat f(w).
+\]">\[
+\sum_{a\in\Lambda}f(a)=\sum_{w\in\Lambda^*}\widehat f(w).
+\]</span>
+The right side is at least <span class="math" data-tex="\(\widehat f(0)\)">\(\widehat f(0)\)</span>, with equality exactly if <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> vanishes on <span class="math" data-tex="\(\Lambda^*\setminus\{0\}\)">\(\Lambda^*\setminus\{0\}\)</span>. The left side is at most <span class="math" data-tex="\(f(0)+\sum_{a\ne0}g(|a|^2)\)">\(f(0)+\sum_{a\ne0}g(|a|^2)\)</span>, with equality, when this sum is finite, exactly if <span class="math" data-tex="\(f(a)=g(|a|^2)\)">\(f(a)=g(|a|^2)\)</span> for all <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So the linear programming bound can prove at most that a lattice is optimal, and for a given lattice it does so only through a function <span class="math" data-tex="\(f\)">\(f\)</span> with all these contacts.</p>
+<p>For <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span> let <span class="math" data-tex="\(G_\alpha(x)=e^{-\pi\alpha|x|^2}\)">\(G_\alpha(x)=e^{-\pi\alpha|x|^2}\)</span>. A <em>sharp pair</em> for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is an admissible function <span class="math" data-tex="\(f\)">\(f\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f\le G_\alpha,\qquad\widehat f\ge0,\\
+f(a)=G_\alpha(a)\quad(a\in A\setminus\{0\}),\\
+\widehat f(w)=0\quad(w\in A^*\setminus\{0\}).
+\end{gathered}
+\]">\[
+\begin{gathered}
+f\le G_\alpha,\qquad\widehat f\ge0,\\
+f(a)=G_\alpha(a)\quad(a\in A\setminus\{0\}),\\
+\widehat f(w)=0\quad(w\in A^*\setminus\{0\}).
+\end{gathered}
+\]</span></p>
+<p><strong>Theorem 4.2.</strong> Let <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, and suppose there is a sharp pair for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Then every configuration <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of density one satisfies
+<span class="math math-display" data-tex="\[
+E_g(\mathcal C)\ \ge\ \sum_{a\in A\setminus\{0\}}e^{-\pi\alpha|a|^2}=E_g(A)
+\]">\[
+E_g(\mathcal C)\ \ge\ \sum_{a\in A\setminus\{0\}}e^{-\pi\alpha|a|^2}=E_g(A)
+\]</span>
+for the interaction <span class="math" data-tex="\(g(t)=e^{-\pi\alpha t}\)">\(g(t)=e^{-\pi\alpha t}\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a sharp pair. By Theorem 3.1, <span class="math" data-tex="\(E_g(\mathcal C)\ge\widehat f(0)-f(0)\)">\(E_g(\mathcal C)\ge\widehat f(0)-f(0)\)</span>. By Proposition 4.1 for <span class="math" data-tex="\(\Lambda=A\)">\(\Lambda=A\)</span>, whose energy is finite, <span class="math" data-tex="\(\widehat f(0)-f(0)=E_g(A)\)">\(\widehat f(0)-f(0)=E_g(A)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><em>What is known.</em> [OpenAI-T] constructs, for every <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, a sharp pair that is a rapidly decreasing radial function (its Theorem on normalized pairs and its lemma on Gaussian duality). The construction is long, and parts of it are verified by exact computer calculations. With it, Theorem 4.2 gives the optimality of the triangular lattice for every Gaussian interaction. This existence statement is used in this course as a hypothesis until it is proved here.</p>
+<p><em>What the theorem does not say.</em> It gives the least value of the energy and does not describe all configurations that attain it. Removing one point from <span class="math" data-tex="\(A\)">\(A\)</span> does not change the energy (Exercise 5.3). This is pointed out in [OpenAI-T, Section 1], and for the formal version of the theorem in [Callens].</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a configuration with <span class="math" data-tex="\(N_R/(\pi R^2)\to\rho\)">\(N_R/(\pi R^2)\to\rho\)</span> for some <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>. Show that under the assumptions of Theorem 3.1 the lower limit is at least <span class="math" data-tex="\(\rho\widehat f(0)-f(0)\)">\(\rho\widehat f(0)-f(0)\)</span>.</p>
+<p><strong>5.2.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be admissible with <span class="math" data-tex="\(\widehat f\ge0\)">\(\widehat f\ge0\)</span>, and <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> a lattice of covolume one. Show without Theorem 3.1 that <span class="math" data-tex="\(\sum_{a\in\Lambda\setminus\{0\}}f(a)\ge\widehat f(0)-f(0)\)">\(\sum_{a\in\Lambda\setminus\{0\}}f(a)\ge\widehat f(0)-f(0)\)</span>.</p>
+<p><strong>5.3.</strong> Let <span class="math" data-tex="\(g\)">\(g\)</span> be an interaction with <span class="math" data-tex="\(L=\sum_{a\in A\setminus\{0\}}g(|a|^2)&lt;\infty\)">\(L=\sum_{a\in A\setminus\{0\}}g(|a|^2)&lt;\infty\)</span>, and let <span class="math" data-tex="\(\mathcal C=A\setminus\{0\}\)">\(\mathcal C=A\setminus\{0\}\)</span>. Show that <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has density one and <span class="math" data-tex="\(E_g(\mathcal C)=E_g(A)\)">\(E_g(\mathcal C)=E_g(A)\)</span>.</p>
+<p><strong>5.4.</strong> Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a configuration of density one. Show that every translate <span class="math" data-tex="\(c+\mathcal C\)">\(c+\mathcal C\)</span>, <span class="math" data-tex="\(c\in\mathbb R^2\)">\(c\in\mathbb R^2\)</span>, has density one, and that the energy is not changed by a rotation of the configuration about the origin.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> In the proof only the limit of <span class="math" data-tex="\(N_R/V_R\)">\(N_R/V_R\)</span> changes: it is <span class="math" data-tex="\(\rho(1+\varepsilon)^{-2}\)">\(\rho(1+\varepsilon)^{-2}\)</span>. So <span class="math" data-tex="\(\liminf Q(\mu_R,\mu_R)/N_R\ge\rho a\)">\(\liminf Q(\mu_R,\mu_R)/N_R\ge\rho a\)</span>.</p>
+<p><strong>5.2.</strong> By Poisson summation, <span class="math" data-tex="\(f(0)+\sum_{a\ne0}f(a)=\sum_{w\in\Lambda^*}\widehat f(w)\ge\widehat f(0)\)">\(f(0)+\sum_{a\ne0}f(a)=\sum_{w\in\Lambda^*}\widehat f(w)\ge\widehat f(0)\)</span>.</p>
+<p><strong>5.3.</strong> The counts change by one, <span class="math" data-tex="\(N_R(\mathcal C)=N_R(A)-1\)">\(N_R(\mathcal C)=N_R(A)-1\)</span>, so the density is one. The double sum for <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span> is the double sum for <span class="math" data-tex="\(A_R\)">\(A_R\)</span> minus the terms with <span class="math" data-tex="\(x=0\)">\(x=0\)</span> or <span class="math" data-tex="\(y=0\)">\(y=0\)</span>; these are at most <span class="math" data-tex="\(2L\)">\(2L\)</span> in total. So the two double sums differ by at most <span class="math" data-tex="\(2L\)">\(2L\)</span>, and after division by <span class="math" data-tex="\(N_R\to\infty\)">\(N_R\to\infty\)</span> the lower limits agree.</p>
+<p><strong>5.4.</strong> The points of <span class="math" data-tex="\(c+\mathcal C\)">\(c+\mathcal C\)</span> in <span class="math" data-tex="\(B_R\)">\(B_R\)</span> correspond to the points of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> in the disk of radius <span class="math" data-tex="\(R\)">\(R\)</span> around <span class="math" data-tex="\(-c\)">\(-c\)</span>. This disk contains <span class="math" data-tex="\(B_{R-|c|}\)">\(B_{R-|c|}\)</span> and lies in <span class="math" data-tex="\(B_{R+|c|}\)">\(B_{R+|c|}\)</span>. So the count for <span class="math" data-tex="\(c+\mathcal C\)">\(c+\mathcal C\)</span> lies between <span class="math" data-tex="\(N_{R-|c|}\)">\(N_{R-|c|}\)</span> and <span class="math" data-tex="\(N_{R+|c|}\)">\(N_{R+|c|}\)</span>, and both are <span class="math" data-tex="\(\pi R^2\)">\(\pi R^2\)</span> times a factor that tends to <span class="math" data-tex="\(1\)">\(1\)</span>. A rotation about the origin maps <span class="math" data-tex="\(B_R\)">\(B_R\)</span> to itself and preserves distances; so <span class="math" data-tex="\(N_R\)">\(N_R\)</span> and all the sums are unchanged.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-T] OpenAI, <em>Universal optimality of the triangular lattice</em>, OpenAI Math Release preprint, 23 September 2026, Sections 1 and 6. https://github.com/openai/math/tree/main/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026</li>
+<li>[Cohn–Kumar] H. Cohn and A. Kumar, <em>Universally optimal distribution of points on spheres</em>, Journal of the American Mathematical Society 20 (2007), Section 9. https://arxiv.org/abs/math/0607446</li>
+<li>[Cohn-de Courcy-Ireland] H. Cohn and M. de Courcy-Ireland, <em>The Gaussian core model in high dimensions</em>, Duke Mathematical Journal 167 (2018), Proposition 2.2. https://arxiv.org/abs/1603.09684</li>
+<li>[Callens] X. Callens, <em>Planar universal optimality, tiered</em>, preprint, 11 October 2026. https://zenodo.org/records/23293429</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

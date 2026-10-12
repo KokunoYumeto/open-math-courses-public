@@ -1644,7 +1644,7 @@ For a bounded complex whose ordinary cohomology sheaves have bounds \(w+b\), the
 
 The compact-support theorem does not establish ordinary direct-image mixedness merely by writing a duality formula: that would already require mixedness of the dual. We first prove ordinary direct-image mixedness without that assumption. Duality is then obtained by stratification, and the other operations follow.
 
-We work in the finite-field constructible characteristic-zero étale category of this lesson. In addition to Appendix D, the ordinary inputs are bounded constructibility and generic base change for ordinary direct image, relative smooth Poincaré duality, finite universal-homeomorphism invariance, finite étale descent, open–closed localization, and constructible Verdier biduality with its functorial exchanges. The geometric inputs include generic smoothness after reduction and finite purely inseparable base change, projective closure of affine schemes, and the dimension formula. Proposition D.2a supplies the radicial coefficient comparison; the paragraph after D.2b identifies AU.6 as the exact proper quasi-finite provider. Lemma E.2a supplies the arbitrary-dimensional smooth-spreading argument with its exact algebraic providers. The operation providers and coefficient identifications listed in Appendix D supply the ordinary constructibility, support, smooth-trace and biduality maps at this full adic scope. Their recursive inputs and the geometric statements remain separate obligations. The first proof of Lemma E.2 below does not use generic base change; that input is retained for the alternative relative-pairing proof only. No assertion about preservation of weights by these operations is assumed.
+We work in the finite-field constructible characteristic-zero étale category of this lesson. In addition to Appendix D, the ordinary inputs are bounded constructibility and generic base change for ordinary direct image, relative smooth Poincaré duality, finite universal-homeomorphism invariance, finite étale descent, open–closed localization, and constructible Verdier biduality with its functorial exchanges. The geometric inputs include generic smoothness after reduction and finite purely inseparable base change, projective closure of affine schemes, and the dimension formula. Proposition D.2a supplies the radicial coefficient comparison; the paragraph after D.2b identifies AU.6 as the exact proper quasi-finite provider. Lemma E.2a supplies the arbitrary-dimensional smooth-spreading argument with its exact algebraic providers. The operation providers and coefficient identifications listed in Appendix D supply the ordinary constructibility, support, smooth-trace and biduality maps at this full adic scope. Their recursive inputs and the geometric statements remain separate obligations. The first proof of Lemma E.2 below does not use generic base change. Proposition E.2b proves the smooth/lisse geometric-fibre comparison for the alternative relative-pairing proof. The broader generic-base-change theorem retains its separate proof obligation. No assertion about preservation of weights by these operations is assumed.
 
 ### Mixedness can be detected after a finite map
 
@@ -1709,9 +1709,98 @@ G_i/G_{i-1}\\
 \]
 The first formula is for \(0\leq i\leq m\), and the second for \(1\leq i\leq m\). Restriction to a lisse subrepresentation is surjective on dual vector spaces, hence is an epimorphism of these lisse sheaves. This proves the displayed graded identification and exactness, without a semisimplicity assumption. Dualizing a pure lisse grade inverts its Frobenius eigenvalues and negates its weight; twisting by \((-d)\) adds \(2d\). Formula (E.1c) therefore supplies an actual finite mixed filtration for every \(R^ra_*L_0\). The inverse filtration works equally for zero sheaves, and only finitely many degrees occur by the ordinary-image bound. This proves the full assertion of Lemma E.2.
 
-The only dual-mixedness fact used in this proof is the explicit dual filtration (E.1d) for lisse sheaves. We have not assumed Theorem E.4, general mixed stability of Verdier duality, or generic base change. The original relative-pairing proof is retained below as an alternative with its extra generic-base-change input. \(\square\)
+The only dual-mixedness fact used in this proof is the explicit dual filtration (E.1d) for lisse sheaves. We have not assumed Theorem E.4, general mixed stability of Verdier duality, or generic base change. The relative-pairing proof below uses the actual fibre comparison supplied by Proposition E.2b. \(\square\)
 
-**Retained proof using generic base change.** The sheaf \(L_0^\vee\) is pure of the opposite weight. Appendix D makes all \(R^qa_!L_0^\vee\) mixed. There are only finitely many nonzero such sheaves and finitely many terms in their mixed filtrations. By ordinary constructibility, shrink the base until those terms and quotients are lisse. Shrink also so that the ordinary direct-image sheaves are lisse and their formation commutes with geometric fibres. Generic base change is used at this step.
+#### The actual fibre comparison for the relative-pairing proof
+
+**Proposition E.2b (smooth source and lisse coefficients).** Let \(a:V\to S\) be a separated smooth morphism of pure relative dimension \(d\) between finite-type schemes over a finite field, with \(S\) integral. Let \(E\) be a finite extension of \(\mathbb Q_\ell\), where \(\ell\) is invertible on \(S\), and let \(L\) be a finite-rank lisse \(E\)-sheaf on \(V\). There is a dense open \(U\subset S\) such that every \(R^ra_*L|_U\) is lisse and, for every geometric point \(g:\bar s=\operatorname{Spec}\Omega\to U\), the canonical map
+\[
+\begin{gathered}
+\beta_g:g^*Ra_*L\longrightarrow Ra_{\bar s,*}L_{\bar s},\\
+(R^ra_*L)_{\bar s}\longrightarrow
+H^r(V_{\bar s},L_{\bar s})
+\end{gathered}
+\tag{E.F1}
+\]
+is an isomorphism, in the derived category and on cohomology, respectively. Here the morphism and the sheaf on the right are the pullbacks to \(\bar s\), and on the left \(a\) has been restricted over \(U\). The algebraically closed field \(\Omega\) need not be finite over a residue field. No purity, mixedness, semisimplicity or smoothness of \(S\) is assumed. This proposition proves the comparison used in the following proof. It does not state generic base change for arbitrary morphisms and arbitrary constructible coefficients.
+
+**Proof: relative duality before taking a fibre.** All operations below are the actual rational constructible operations identified in Constructible complexes, BX.7. Put \(A=Ra_!L^\vee\), \(B=Ra_*L\), and \(A^\vee=R\mathcal Hom_E(A,E_S)\). Bounded constructibility is supplied by BV.1 and BM.6 there. Applying the internal exceptional adjunction (BV.22) to \(K=L^\vee\) and \(G=E_S\), and using the smooth orientation (BV.15), gives the particular map
+\[
+\lambda:B\xrightarrow{\sim}A^\vee(-d)[-2d].
+\tag{E.F2}
+\]
+Indeed \(a^!E_S=E_V(d)[2d]\), while
+\(R\mathcal Hom_E(L^\vee,E_V)=L\): on a pro-étale trivialization this is finite-dimensional double evaluation, with its dual transition maps. Thus (BV.22) identifies \(B(d)[2d]\) with \(A^\vee\). Moving the invertible Tate line through ordinary direct image is its projection comparison. No dualizing complex for a smooth base is needed.
+
+Specify the pairing that defines \(\lambda\). In the following display \(\otimes\) denotes derived tensor over the indicated coefficient sheaf, \(\varepsilon:a^*Ra_*L\to L\) is the ordinary adjunction counit, and the last arrow is the positive smooth trace with its twist and shift removed:
+\[
+\begin{aligned}
+B\otimes A
+&\longrightarrow Ra_!(a^*B\otimes L^\vee)\\
+&\xrightarrow{Ra_!(\varepsilon\otimes1)}Ra_!(L\otimes L^\vee)\\
+&\xrightarrow{Ra_!(\mathrm{ev})}Ra_!E_V
+\xrightarrow{\mathrm{Tr}_a}E_S(-d)[-2d].
+\end{aligned}
+\tag{E.F3}
+\]
+The first arrow is the proper-support projection isomorphism. BV.7 proves that (BV.22) is obtained by transposing this evaluation through the specified exceptional counit; consequently (E.F2) is the transpose of (E.F3), not an arbitrary isomorphism between its source and target.
+
+**Proof: a dense open and dual pullback.** Only finitely many cohomology sheaves of \(A\) occur. For each choose a dense open of the integral base on which it is lisse, and intersect these opens to obtain \(U\). Restriction of both images to this open is the usual slice restriction; for proper support it is also BM.5. On \(U\), every \(\mathcal H^q(A)\) is locally finite free in the pro-étale topology. The evaluation-defined map
+\[
+\kappa_g:g^*A^\vee\longrightarrow
+R\mathcal Hom_E(g^*A,E_{\bar s})
+\tag{E.F4}
+\]
+is an isomorphism. Here \(g^*\) is derived ringed inverse image, including the coefficient map, not an unmentioned identification of coefficient sheaves. For a shifted finite lisse sheaf, pull back its trivializing cover: both sides are the same finite dual module with the same transition maps, and (E.F4) is its identity comparison. Both sides are contravariantly exact in \(A\). Apply the finite ordinary truncation triangles of \(A\); induction through this finite tower proves the assertion for \(A\). This argument neither takes an infinite limit of duals nor assumes realization from the derived category of the constructible heart. The same tower, before pullback, gives
+\[
+\mathcal H^r(B)\simeq
+\bigl(\mathcal H^{2d-r}(A)\bigr)^\vee(-d),
+\tag{E.F5}
+\]
+so these sheaves are lisse. This follows because internal Hom from a finite lisse sheaf is exact locally; the finite internal-Ext spectral sequence has only its degree-zero row.
+
+**Proof: identify the canonical map.** Write \(g_V:V_{\bar s}\to V\) for the other projection, and set
+\(A_{\bar s}=Ra_{\bar s,!}L_{\bar s}^\vee\) and
+\(B_{\bar s}=Ra_{\bar s,*}L_{\bar s}\). The compact-support comparison is
+\[
+\alpha_g:g^*A\xrightarrow{\sim}A_{\bar s}.
+\tag{E.F6}
+\]
+BM.5 constructs this map for arbitrary base change, explicitly including bases not of finite type over the original field. Its proper compactification and quasi-compact open pull back to \(\bar s\). For rational coefficients the same map is obtained from that completed comparison by localization: BW.7 preserves the comparison, and BX.3 and BX.7 identify inverse image and proper support with their actual ringed functors. The local finite-complex inverse-image calculation and the quasi-compact-slice localization calculation used there apply also to \(g\). On the fibre, apply BV and BX over the algebraically closed field \(\Omega\), where \(V_{\bar s}\) is of finite type. This gives
+\(\lambda_{\bar s}:B_{\bar s}\xrightarrow{\sim}A_{\bar s}^\vee(-d)[-2d]\).
+
+Define the map on duals in the required direction by
+\[
+\begin{gathered}
+\delta_g:g^*A^\vee\longrightarrow A_{\bar s}^\vee,\\
+\delta_g=R\mathcal Hom_E(\alpha_g^{-1},E_{\bar s})\circ\kappa_g.
+\end{gathered}
+\tag{E.F7}
+\]
+It is an isomorphism. The inverse in this formula is essential: duality reverses the arrow \(\alpha_g\).
+
+The ordinary comparison \(\beta_g\) is defined by the ordinary adjunction \(a_{\bar s}^*\dashv Ra_{\bar s,*}\). Its transpose is the map
+\(a_{\bar s}^*g^*B=g_V^*a^*B\xrightarrow{g_V^*\varepsilon}L_{\bar s}\).
+In particular, with \(\varepsilon_{\bar s}\) the fibre counit,
+\[
+\varepsilon_{\bar s}\circ a_{\bar s}^*\beta_g
+=g_V^*\varepsilon.
+\tag{E.F8}
+\]
+Both sides are maps \(a_{\bar s}^*g^*B\to L_{\bar s}\). Expand (E.F3) on the base and on the fibre. The projection comparisons commute with (E.F6), since they are induced by the same tensor adjunction and support maps. Their next arrows commute by (E.F8); evaluation commutes with pullback of a finite lisse dual. Finally the trace commutes with this base change. The latter is the coordinate-trace assertion of BJ.6: coordinate covers, the affine-space positive trace and the étale summation trace all pull back, including to geometric fields. BV.2–BV.4 construct the compatible coefficient-diagram counits from those traces; BW.7 and BX.7 preserve these maps. Thus this use requires no exceptional adjoint on an arbitrary scheme outside their field scope.
+
+Consequently, if \(p\) and \(p_{\bar s}\) denote the two pairings (E.F3), then
+\(p_{\bar s}\circ(\beta_g\otimes\alpha_g)=g^*p\), with the canonical tensor and Tate identifications. Transposing this equality, and using the definition (E.F4), proves the equality of actual morphisms
+\[
+\lambda_{\bar s}\circ\beta_g
+=\delta_g(-d)[-2d]\circ g^*\lambda.
+\tag{E.F9}
+\]
+The three maps other than \(\beta_g\) in this equality are isomorphisms. Therefore \(\beta_g\) itself is an isomorphism. Inverse image is exact on constructible rational sheaves (BQ and BX.3), so cohomology gives exactly the second map in (E.F1). The construction uses only canonical evaluation, counits and the fixed positive trace, and hence also retains any arithmetic action carried by the original sheaves. For the empty source all objects and maps are zero; for \(d=0\) the trace is the same étale summation trace. Unequal relative dimensions are treated on the finitely many open-and-closed relative-dimension pieces, not identified with one another. \(\square\)
+
+The broader generic-base-change theorem for general separated finite-type morphisms and bounded constructible coefficients still requires a separate proof; E.2b neither proves nor replaces that full statement. It supplies the smooth/lisse instance, including the canonical geometric-fibre map, used in the relative-pairing argument below.
+
+**Retained proof using generic base change.** The sheaf \(L_0^\vee\) is pure of the opposite weight. Appendix D makes all \(R^qa_!L_0^\vee\) mixed. There are only finitely many nonzero such sheaves and finitely many terms in their mixed filtrations. By ordinary constructibility, shrink the base until those terms and quotients are lisse. Proposition E.2b supplies a further dense open on which the ordinary direct-image sheaves are lisse and their formation commutes with geometric fibres, by the canonical comparison maps. Intersect it with the open already chosen for the finite mixed filtrations.
 
 The relative smooth trace pairing, with fibrewise Poincaré duality, identifies lisse sheaves as
 \[
@@ -1876,11 +1965,11 @@ D_{X_0}(K\otimes D_{X_0}L)
 \]
 The left side is mixed by the proved tensor and dual stability. This gives derived internal-Hom stability and hence mixedness of its ordinary Ext sheaves. \(\square\)
 
-These deductions establish mixed stability before the perverse weight arguments. They use no hard Lefschetz theorem, decomposition theorem or higher-dimensional IC-purity theorem. Their use of normalized adic localization, trace and biduality is substantive: the exact operation providers linked above supply those maps, but checking only finite diagram shapes would not prove their recursive foundations. Generic base change is an additional input of the retained alternative proof of Lemma E.2, not of its first proof or the mixed-stability deduction using it. In particular an arbitrary inverse limit of finite-coefficient triangles is not a substitute for the constructible adic comparison required throughout.
+These deductions establish mixed stability before the perverse weight arguments. They use no hard Lefschetz theorem, decomposition theorem or higher-dimensional IC-purity theorem. Their use of normalized adic localization, trace and biduality is substantive: the exact operation providers linked above supply those maps, but checking only finite diagram shapes would not prove their recursive foundations. Proposition E.2b supplies the precise smooth/lisse base-change input of the relative-pairing proof of Lemma E.2. The general generic-base-change theorem remains separate; neither the first proof nor the mixed-stability deduction assumes it. In particular an arbitrary inverse limit of finite-coefficient triangles is not a substitute for the constructible adic comparison required throughout.
 
 ## Exact prerequisites still required
 
-Appendix D derives the general compact-support estimate of Theorem 4.1 from the curve results and the stated ordinary foundations. Lemma D.2b supplies the smooth proper curve pair with finite étale boundary after the purely inseparable change and shrinking; Proposition D.2a supplies the actual radicial coefficient equivalence. Their recursive inputs remain separate. The other requirements include the finite covering argument supplied by Lemma B.3a and Proposition B.3b and used in Lemma D.1a to derive the full adic fibre and monodromy-filtration comparison, and full adic constructibility, base change and Leray. Appendix E supplies the remaining mixed-stability deduction. Lemma E.2a now supplies its arbitrary-dimensional geometric reduction, including nilpotents, the finite field stage, smooth charts and the strict generic-dimension decrease. Its ordinary requirements remain the smooth-orientation and dual-exchange maps, finite universal-homeomorphism invariance, the recursive algebraic providers, normalized adic localization, and constructible biduality. The exact operation providers are linked in Appendix D. The first proof of Lemma E.2 supplies its dense-open comparison without generic base change; the retained relative-pairing proof still requires that additional theorem. Recursive proofs of the linked providers and geometric inputs remain separate; the mixed-stability deduction does not certify them. Appendix A gives the coarse and strict curve bounds, boundary monodromy grading, curve continuation and real-sheaf argument from their explicitly specified ordinary foundations. Appendix B now proves the pencil geometry by explicit interpolation and incidence counts, including the étale equation of a node, and gives the transverse tame local-acyclicity deduction. Its ordinary algebraic foundations include regular local rings, dimensions of incidences and images, the Jacobian criterion, blowups and finite maps of proper curves. For the cohomological deduction, Constructible complexes, AT.1–AT.3 and AT.5 supply ordinary smooth local acyclicity through the canonical smooth comparison of AS.1–AS.7. Lemma B.3c supplies ordinary proper nearby-cycle compatibility, retaining the specialization map, its cone convention and arithmetic action. Lemma C.2a connects the completed coefficient formalism to the actual normalized specialization unit, cone and geometric fibre. Lemma B.3a and Proposition B.3b supply the general tame Kummer covering description, reusing Constructible complexes, AP.1–AP.5 and AQ.1–AQ.2 for purity and gluing. The general branchwise calculation includes covers outside the invertible-degree Galois case of AP.6–AP.7. These providers retain their stated recursive algebraic dependencies. Appendix C derives the node and boundary formulas, their arithmetic signs, the exact coefficient filtration and compact-support specialization. It uses ordinary finite proper comparison, smooth local acyclicity, projective-line cohomology with its Chern-class normalization, and normal-crossing purity for the intrinsic branch generator. Lemma B.3c identifies the ordinary proper-comparison provider. Lemma C.2a supplies the normalized comparison for these local computations using the explicit completion and coherent coefficient-diagram proofs in Constructible complexes, BK–BS. The other finite foundations and the recursive inputs of those providers still require their exact checks. The supplied ordinary smooth local-acyclicity proof retains its recursive curve, coefficient-continuity and algebraic inputs; linking it here is not certification of that entire chain. Constant-coefficient curve Riemann hypothesis alone does not supply these ordinary foundations.
+Appendix D derives the general compact-support estimate of Theorem 4.1 from the curve results and the stated ordinary foundations. Lemma D.2b supplies the smooth proper curve pair with finite étale boundary after the purely inseparable change and shrinking; Proposition D.2a supplies the actual radicial coefficient equivalence. Their recursive inputs remain separate. The other requirements include the finite covering argument supplied by Lemma B.3a and Proposition B.3b and used in Lemma D.1a to derive the full adic fibre and monodromy-filtration comparison, and full adic constructibility, base change and Leray. Appendix E supplies the remaining mixed-stability deduction. Lemma E.2a now supplies its arbitrary-dimensional geometric reduction, including nilpotents, the finite field stage, smooth charts and the strict generic-dimension decrease. Its ordinary requirements remain the smooth-orientation and dual-exchange maps, finite universal-homeomorphism invariance, the recursive algebraic providers, normalized adic localization, and constructible biduality. The exact operation providers are linked in Appendix D. The first proof of Lemma E.2 supplies its dense-open mixedness conclusion without generic base change. Proposition E.2b supplies the actual geometric-fibre comparison used in the relative-pairing proof. The full generic-base-change theorem for general morphisms and constructible coefficients remains a separate obligation. Recursive proofs of the linked providers and geometric inputs remain separate; the mixed-stability deduction does not certify them. Appendix A gives the coarse and strict curve bounds, boundary monodromy grading, curve continuation and real-sheaf argument from their explicitly specified ordinary foundations. Appendix B now proves the pencil geometry by explicit interpolation and incidence counts, including the étale equation of a node, and gives the transverse tame local-acyclicity deduction. Its ordinary algebraic foundations include regular local rings, dimensions of incidences and images, the Jacobian criterion, blowups and finite maps of proper curves. For the cohomological deduction, Constructible complexes, AT.1–AT.3 and AT.5 supply ordinary smooth local acyclicity through the canonical smooth comparison of AS.1–AS.7. Lemma B.3c supplies ordinary proper nearby-cycle compatibility, retaining the specialization map, its cone convention and arithmetic action. Lemma C.2a connects the completed coefficient formalism to the actual normalized specialization unit, cone and geometric fibre. Lemma B.3a and Proposition B.3b supply the general tame Kummer covering description, reusing Constructible complexes, AP.1–AP.5 and AQ.1–AQ.2 for purity and gluing. The general branchwise calculation includes covers outside the invertible-degree Galois case of AP.6–AP.7. These providers retain their stated recursive algebraic dependencies. Appendix C derives the node and boundary formulas, their arithmetic signs, the exact coefficient filtration and compact-support specialization. It uses ordinary finite proper comparison, smooth local acyclicity, projective-line cohomology with its Chern-class normalization, and normal-crossing purity for the intrinsic branch generator. Lemma B.3c identifies the ordinary proper-comparison provider. Lemma C.2a supplies the normalized comparison for these local computations using the explicit completion and coherent coefficient-diagram proofs in Constructible complexes, BK–BS. The other finite foundations and the recursive inputs of those providers still require their exact checks. The supplied ordinary smooth local-acyclicity proof retains its recursive curve, coefficient-continuity and algebraic inputs; linking it here is not certification of that entire chain. Constant-coefficient curve Riemann hypothesis alone does not supply these ordinary foundations.
 
 The cover-growth and affine-test arguments additionally require generic constructible local acyclicity, the full Grothendieck–Ogg–Shafarevich formula with Swan conductors, and the indicated curve-cover and genus inputs. Ordinary and normalized adic constructibility, localization, trace, duality, Künneth, base change, finite-to-adic comparison and continuous Galois descent must be proved at their actual scope, including the prerequisites of linked provider lessons. The perverse finite-length, smooth, affine and IC arguments must likewise have their recursive foundations established. The ordinary genus-one calculation used in Exercise 3 retains its stated curve-cohomology inputs. Sections 4–6 give the perverse deductions from these hypotheses; the relative Lefschetz proof lies in the linked next lesson and retains the same foundations.
 

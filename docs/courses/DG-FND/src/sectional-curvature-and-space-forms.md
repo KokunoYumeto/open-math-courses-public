@@ -2249,7 +2249,7 @@ E_\rho=(P\times N)/\Gamma\longrightarrow B,\qquad
 \gamma(p,z)=(\gamma p,\rho(\gamma)z),
 \tag{Q.5}
 \]
-where \(\rho(\gamma)=A_\gamma|_N\). Its zero section is a deformation retract.
+where \(\rho(\gamma)=A_\gamma|_N\). Its zero section is a compact totally geodesic submanifold and a deformation retract.
 
 Conversely, if \(B=P/\Gamma\) is a connected compact flat manifold with Euclidean universal cover \(P\), every orthogonal representation \(\rho:\Gamma\to\mathrm O(k)\) gives by (Q.5) a connected complete flat Riemannian manifold of dimension \(\dim B+k\). Every connected complete flat Riemannian manifold has the bundle description above, including the point base for Euclidean space.
 
@@ -2270,6 +2270,8 @@ U\times N\longrightarrow E_\rho|_U,\qquad
 is a bundle chart. In covering charts its inverse and itself are smooth. If another inverse branch satisfies \(s'(y)=\gamma s(y)\) on a connected overlap, then the same orbit has coordinates \(w'=\rho(\gamma)w\). The deck element is locally constant on overlaps by uniqueness of covering sheets and path lifting, [Flat connections D.1](flat-connections-and-infinitesimal-holonomy.md#lemma-d-1). Hence these transitions are locally constant orthogonal matrices. Their inverse and cocycle identities follow from those of the deck transformations. They define a smooth vector bundle with a fibre metric.
 
 The ordinary derivative of vector-valued functions in each chart is preserved by a constant transition matrix, so these derivatives agree to give a connection. Its local connection matrices are zero; [Linear connections B.3](linear-and-affine-connections.md#theorem-b-3) gives zero curvature, and [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1) shows that the constant fibre metric is parallel. This proves the asserted flat orthogonal structure. At the zero section the vertical vectors are precisely the Euclidean orthogonal normals to \(P\), so this bundle is also its normal bundle in the quotient.
+
+The zero section is the embedded copy of \(B\): in (Q.6) its inclusion is \(y\mapsto(y,0)\), and the bundle projection restricts to its inverse. Its induced metric is the quotient metric of \(P\), and it is compact by Q.2. A geodesic starting tangent to this section lifts to a Euclidean line starting in the affine plane \(P\) with direction in \(V\). Such a line remains in \(P\) for its whole domain, so its projection remains in the zero section. The covering and straight-line geodesic description in G.2 therefore prove that the section is totally geodesic.
 
 For \(0\leq t\leq1\), the formula
 \[
@@ -2497,7 +2499,32 @@ For the last statement start with one \(E_\rho\). R.2 and S.2 replace it, withou
 \]
 The first block has finite image by J.3 for the compact base, and the second has finite image by construction. Thus these block matrices form a finite group.
 
-To relate this directly to holonomy, lift a loop in the quotient to the Euclidean universal cover. Parallel vectors in its standard connection are constant in Euclidean coordinates, by [Linear connections A.2](linear-and-affine-connections.md#theorem-a-2) with zero connection matrix. If the lifted loop ends at \(\gamma x\), identifying its endpoint with \(x\) uses the inverse derivative of \(\gamma\). Hence the resulting linear parallel transport belongs to the inverses of the finite group (S.4). This proves finite linear holonomy. Dimension zero again consists only of a point. □
+To relate this directly to holonomy, lift a loop in the quotient to the Euclidean universal cover. Parallel vectors in its standard connection are constant in Euclidean coordinates, by [Linear connections A.2](linear-and-affine-connections.md#theorem-a-2) with zero connection matrix. If the lifted loop ends at \(\gamma x\), identifying its endpoint with \(x\) uses the inverse derivative of \(\gamma\). Hence the resulting linear parallel transport belongs to the inverses of the finite group (S.4). This proves finite linear holonomy. Dimension zero again consists only of a point.
+
+The distinction between smooth and affine type is visible in the screw example. Let \(\ell>0\), choose an irrational \(\alpha\), and write \(\theta=2\pi\alpha\). Use the circle \(B=\mathbb R/\ell\mathbb Z\) and the orthogonal representation of its deck group that sends \(j\in\mathbb Z\) to the planar rotation \(R_{j\theta}\). Q.3 gives the complete flat quotient
+\[
+\begin{gathered}
+M_{\theta,\ell}
+ =(\mathbb R^2\times\mathbb R)/\langle\gamma\rangle,\\
+\gamma(v,z)=(R_\theta v,z+\ell).
+\end{gathered}
+\]
+Its axis circle is the zero section, and the bundle projection is \([v,z]\mapsto[z]\). The following maps exhibit a smooth vector-bundle trivialization over that circle:
+\[
+\begin{aligned}
+\Phi([v,z])&=([z],R_{-\theta z/\ell}v),\\
+\Phi^{-1}([z],u)&=[R_{\theta z/\ell}u,z].
+\end{aligned}
+\]
+Indeed replacing \((v,z)\) by \((R_{j\theta}v,z+j\ell)\) leaves the displayed fibre coordinate unchanged, since rotations add their angles. Changing the representative \(z\) in the inverse formula changes its value by exactly \(\gamma^j\). Both compositions are the identity. In each angle chart of the circle the displayed formulas are smooth, and the fibre maps are linear and invertible. Thus \(M_{\theta,\ell}\) is diffeomorphic to \(B\times\mathbb R^2\). Replacing \(\theta\) by \((1-t)\theta\) also gives an explicit smooth deformation of the deck representation to the trivial one, with the same bundle trivializations for every \(t\).
+
+Nevertheless the original flat connection has infinite linear holonomy. Its deck linear parts are the matrices \(\operatorname{diag}(R_{j\theta},1)\), and H.2 proves that the irrational rotation has infinite image. The loop-lifting calculation above identifies that image with linear holonomy.
+
+Finiteness of this image is invariant under affine diffeomorphism, including for noncompact quotients. In fact, let \(f\) be an affine diffeomorphism between two complete flat quotients with Euclidean universal covers \(q_1,q_2\). The simply connected covers \(f\circ q_1\) and \(q_2\) of the second manifold are isomorphic as based covers by [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3). This gives a smooth lift \(F\) with \(q_2F=fq_1\). Lifting the inverse with the matching base points gives its inverse, by unique path lifting in [Flat connections D.1](flat-connections-and-infinitesimal-holonomy.md#lemma-d-1). In covering charts \(F\) preserves the standard connections. The zero-Hessian calculation in G.1 on connected Euclidean space gives \(F(x)=Sx+a\) with \(S\) invertible. Conjugation by \(F\) is a bijection between the deck groups, since \(q_2F=fq_1\) and the analogous identity holds for the inverse. The linear parts consequently satisfy
+\[
+A_{F\gamma F^{-1}}=S A_\gamma S^{-1}.
+\]
+Their image groups are conjugate, so one is finite exactly when the other is. Hence this irrational screw quotient is smoothly diffeomorphic to the product with its trivial linear holonomy, but cannot be affinely diffeomorphic to any complete flat quotient with finite linear holonomy. □
 
 ## T. Complete flat surfaces and shortest Klein-bottle loops
 
@@ -2565,7 +2592,28 @@ Conversely, the cyclic actions above are free because every nontrivial power has
 
 An orientation on a quotient pulls back to a deck-invariant orientation on the connected plane. Relative to the usual orientation its sign is locally constant and hence constant, so such an orientation is possible only when every deck transformation has positive determinant. Conversely the usual plane orientation descends through the covering charts whenever all deck transformations have positive determinant. This gives exactly the orientation assertions.
 
-A torus is compact by G.3. In (T.2) the translations generated by \(g^2\) and \(h\) form a full rank-two lattice of index two, so its compact torus maps onto the Klein bottle, making that quotient compact too. The plane is noncompact. On the cylinder and Möbius band the function \([(x,y)]\mapsto |y|\) is continuous and unbounded, so neither quotient is compact. This completes all the classifications asserted. □
+A torus is compact by G.3. In (T.2) the translations generated by \(g^2\) and \(h\) form a full rank-two lattice of index two, so its compact torus maps onto the Klein bottle, making that quotient compact too. The plane is noncompact. On the cylinder and Möbius band the function \([(x,y)]\mapsto |y|\) is continuous and unbounded, so neither quotient is compact. This completes all the classifications asserted.
+
+The metric data of a flat torus can be read from any lattice basis, without assuming that it is rectangular. Write \(L=\mathbb Zv+\mathbb Zw\), where \(v=(v_1,v_2)\) and \(w=(w_1,w_2)\) are linearly independent. The map \((s,t)\mapsto sv+tw\) parametrizes a fundamental parallelogram for \(0\leq s,t\leq1\). The pulled-back metric has constant Gram matrix
+\[
+G=\begin{pmatrix}|v|^2&\langle v,w\rangle\\
+\langle v,w\rangle&|w|^2\end{pmatrix}.
+\]
+By definition its coordinate area density is \(\sqrt{\det G}\,ds\,dt\). Expanding the two-by-two determinant gives
+\[
+\begin{aligned}
+\det G&=(v_1w_2-v_2w_1)^2,\\
+\operatorname{Area}(\mathbb R^2/L)
+ &=|v_1w_2-v_2w_1|.
+\end{aligned}
+\]
+Indeed integrate this constant density over the unit square, using the elementary integration in [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) in each coordinate. Identifying opposite edges adds no area: their parameter strips of width \(\varepsilon\) have total area at most \(4\varepsilon\sqrt{\det G}\), which tends to zero. Thus the formula is the quotient's area and not merely a quantity attached to the chosen parallelogram.
+
+For every nonzero \(\lambda\in L\), the path \(s\mapsto[z+s\lambda]\), \(0\leq s\leq1\), is a closed geodesic of length \(|\lambda|\). Its lift is straight and its endpoint translation has identity derivative, so the tangent also matches at the closing point. Conversely a nonconstant closed geodesic of period \(T>0\) lifts, by G.2, to \(z+su\) with \(u\ne0\); closure says \(Tu\in L\setminus\{0\}\). These describe all the nonconstant closed geodesics, including multiple traversals. The return-map calculation in G.2 also shows that the torus has trivial linear holonomy and full affine holonomy equal to its translation lattice.
+
+For the Klein bottle, direct composition of (T.1) gives \(ghg^{-1}(x,y)=(x,y-b)\), so \(ghg^{-1}=h^{-1}\). Formula (T.2) has identity linear part exactly when \(q\) is even. Its full translation subgroup is therefore \(\langle g^2,h\rangle\), the rectangular lattice with basis \((2\ell,0),(0,b)\). The parity of \(q\) gives its two cosets. The associated covering in J.3 is the orientable rectangular torus mapping to the Klein bottle with two sheets, because each fibre is indexed by those two cosets in the covering charts. G.2 identifies the full linear holonomy with \(\{I,\operatorname{diag}(1,-1)\}\), and the full affine holonomy with the group of translations and glide reflections in (T.2).
+
+The corresponding complete classification in dimension one, including the isometric circle of each positive circumference, was proved in D.3. □
 
 **Exercise T.2 (shortest noncontractible loops on a flat Klein bottle).** On the Klein bottle (T.1), find the least length of a noncontractible piecewise smooth loop based at \([(x,y)]\). Then find the least length of a noncontractible closed geodesic when the basepoint is free to vary.
 
@@ -2592,7 +2640,9 @@ The covering is a local isometry, so lifting preserves length. The length of a E
 \]
 When \(q=0,p\ne0\), the minimum is \(b\). When \(q\) is nonzero and even, it is \(2\ell\), obtained at \(q=\pm2,p=0\). When \(q\) is odd, its absolute value is at least one and the smallest vertical difference is \(\Delta(y)\); the minimum is therefore \(\sqrt{\ell^2+\Delta(y)^2}\). Each minimum is attained, proving the first part of (T.4). Changing the representative of the basepoint does not change \(\Delta\), since \(y\) changes to \(\pm y+pb\).
 
-Every noncontractible loop, at any basepoint, has length at least \(\min\{b,\ell\}\) by this formula. This lower bound is attained by a closed geodesic. The vertical line through any point, divided by \(h\), gives one of length \(b\); the horizontal axis \(y=0\), divided by \(g\), gives one of length \(\ell\). Their Euclidean tangent vectors agree under the endpoint deck derivatives, so the projections are smooth periodic geodesics, not merely loops with a corner. Their lifted endpoints differ by a nonidentity deck transformation, so both are noncontractible. Taking the shorter proves the second formula. □
+Every noncontractible loop, at any basepoint, has length at least \(\min\{b,\ell\}\) by this formula. This lower bound is attained by a closed geodesic. The vertical line through any point, divided by \(h\), gives one of length \(b\); the horizontal axis \(y=0\), divided by \(g\), gives one of length \(\ell\). Their Euclidean tangent vectors agree under the endpoint deck derivatives, so the projections are smooth periodic geodesics, not merely loops with a corner. Their lifted endpoints differ by a nonidentity deck transformation, so both are noncontractible. Taking the shorter proves the second formula.
+
+The distinction between a shortest based loop and a smooth closed geodesic can be strict. For an odd \(q\), the minimizing segment to \(h^pg^qz\) has constant velocity \((q\ell,pb-2y)\). The endpoint deck derivative changes this to \((q\ell,-(pb-2y))\). Thus the tangents agree at the basepoint exactly when \(pb-2y=0\); otherwise the projected segment has a corner there. For example, take \(\ell=1\), \(b=3\) and \(y=1/2\). Then \(\Delta(y)=1\), so the least based length is \(\sqrt2\), attained by the segment to \(gz\), while the least closed-geodesic length with varying basepoint is \(1\). The segment to \(gz\) has velocity \((1,-1)\), which does not match its image \((1,1)\) under the glide derivative. □
 
 ## Further reading
 - Werner Ballmann, [*Basic Differential Geometry: Semi-Riemannian Metrics*, author lecture notes, 29 May 2003](https://people.mpim-bonn.mpg.de/hwbllmnn/archiv/dg2srm03.pdf), especially the curvature identities, sectional and Ricci curvature, quadric models, and Schur exercises.

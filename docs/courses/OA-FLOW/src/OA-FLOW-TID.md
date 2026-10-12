@@ -34,7 +34,7 @@ its exact value is
  \tag{TI2}
 \]
 
-Here \(\sigma_c^\phi\) is the concrete action defined by the dominant-model generator prescription and supported-corner transport in Section 7. The proof of the density criterion is independent of the abstract carrier construction. The general supported integrability theorem is also available in [CGF](OA-FLOW-CGF.md#cgf-8), and the explicit translation-cocycle transfer in [TCC](OA-FLOW-TCC.md#tcc-4).
+Section 7 identifies the previously defined carrier-indexed extended action with the dominant-model generator prescription and supported-corner transport. It proves that the coefficient evaluation in the specified trace coordinate is \(g\mapsto g(\log h)\). The proof of the density criterion is independent of this identification. The general supported integrability theorem is also available in [CGF](OA-FLOW-CGF.md#cgf-8), and the explicit translation-cocycle transfer in [TCC](OA-FLOW-TCC.md#tcc-4).
 
 <a id="tid-1"></a>
 ## 1. The prescribed trace fixes the density
@@ -480,7 +480,76 @@ The bounded unitary \(b_\nu\) lies in \(Z(N)\) and satisfies
 Indeed \(u(s)b_\nu^*u(s)^*=\rho_\nu(\theta_s(b^*))\).
 Because \(N\) and the \(u(s)\) generate \(M\), (TI40) is the unique normal automorphism with that generator prescription. Existence follows from the displayed bounded inner implementer in this semifinite model.
 
-For the supported realization \(v\) of \(\phi\), \(b_\nu\) commutes with \(e=vv^*\). Its conjugation preserves \(eMe\), so define
+### Identify the carrier coordinate and the previously defined action
+
+Write \(\mathcal C d\) for the continuous carrier corner, with \(d=p_M(\nu)\). The [centralizer–carrier isomorphism](OA-FLOW-CGF.md#cgf-5) is
+\[
+ J_\nu:Z(N)\longrightarrow\mathcal C d,\qquad
+ J_\nu(E)=p_M(\nu_E)\quad(E\text{ a central projection}).
+\]
+It intertwines \(\operatorname{Ad}u(s)\) and the carrier flow \(\Theta_s\). Consequently
+\[
+ \chi_\tau=J_\nu\rho_\nu:
+       L^\infty(\mathbb R,dq)\longrightarrow\mathcal C d
+ \tag{TI40a}
+\]
+is a normal flow isomorphism. This is the positive translation coordinate fixed by the specified trace, not a coordinate chosen only up to a translation.
+
+Here is an explicit check against the core coordinate. Suppress the constant factor \(R=P\bar\otimes B(\ell^2)\), and use \(q\) for the coordinate of \(k=e^Q\). In the regular \(\nu\)-core, with additional real variable \(r\), the generators act as
+\[
+ \pi_\nu(g(Q))=g(Q),\qquad
+ (\pi_\nu(u(s))\xi)(r,q)=e^{irs}\xi(r,q+s),\qquad
+ (\ell_t\xi)(r,q)=\xi(r-t,q).
+\]
+The positive Fourier transform in \(r\), followed by the unitary coordinate change \(z=q-p\), \(q=z+p\), gives
+\[
+ \pi_\nu(g(Q))=M_{g(z+p)},\qquad
+ \pi_\nu(u(s))\eta(z,p)=\eta(z,p+s),\qquad
+ \ell_t=M_{e^{itp}}.
+\]
+The two changes are unitary on the complete \(L^2\) spaces: Plancherel applies in \(r\), and the shear preserves Lebesgue measure. These formulas therefore describe normal isomorphisms, not just identities on formal kernels. The generators include \(e^{itp}\) and \(e^{it(z+p)}\), hence all bounded multipliers in \(z,p\) by spectral calculus. The multipliers in \(p\) and its translations generate \(B(L^2(\mathbb R_p))\): an operator commuting with all multipliers is a multiplier by [ND's multiplication proof](OA-FLOW-ND.md#nd-multiplication); commuting also with translations makes that function scalar by the approximate-identity argument above. The bicommutant theorem now gives the assertion. Keeping \(R\) yields the entire algebra
+\[
+ R\bar\otimes L^\infty(\mathbb R_z)
+       \bar\otimes B(L^2(\mathbb R_p)),
+\]
+whose center is exactly \(L^\infty(\mathbb R_z)\), since \(R\) is a factor. Normal slices give this last assertion just as in Section 3. The duality identification sends \(g(Q)\in Z(N)\) to \(g(z)\); equivalently, on the central unitary generators,
+\[
+ \pi_\nu(k^{-it})\ell_t=e^{-itz}.
+ \tag{TI40b}
+\]
+This also fixes the origin. Indeed the decomposable unitary
+\((V\xi)(r)=k^{ir}\xi(r)\) untwists the core to the trace representation:
+\(V\pi_\nu(x)V^*=x\) and \(V\ell_tV^*=k^{it}L_t\).
+Thus the left side of (TI40b) becomes \(L_t\). In the positive trace Fourier coordinate \(p_0\), this is \(e^{itp_0}\); the reflected coordinate of [CORE9](OA-FLOW-CORE.md#core-9) is therefore precisely \(q_0=-p_0=z\). No scalar phase or coordinate translation occurs. The dual action sends \(p\) to \(p-s\) while keeping \(q=z+p\) fixed, so it sends \(z\) to \(z+s\), as in (TI40a).
+
+The chart is also independent of the dominant realization. If \(\nu'\) is another faithful dominant reference on \(M\), [dominant-weight uniqueness](OA-FLOW-DS.md#ds-6) supplies a unitary \(a\) such that \(\nu'=\nu\circ\operatorname{Ad}a\). Write \(\nu'=\tau_{k'}\) using the same trace. Trace cyclicity and the full positive-cone cutoff definition, followed by [TD uniqueness](OA-FLOW-TD.md#oa-flow.td.4), give \(k'=a^*ka\). Central cuts then satisfy
+\[
+ J_{\nu'}(E)=J_\nu(aEa^*),\qquad
+ g(\log k')=a^*g(\log k)a.
+\]
+The first identity holds on projections because the two cut weights are equivalent through \(aE\); normality extends it to the whole center. Hence \(J_{\nu'}(g(\log k'))=\chi_\tau(g)\). In particular the carrier chart and its origin do not change when the filling isometries or the dominant reference change.
+
+Now regard \(c\) as the carrier cocycle \(\chi_\tau(c_s)\). In the actual trace-scaling presentation proved in Section 3, the earlier [extended-action theorem RCC6](OA-FLOW-RCC.md#rcc-6) defines its automorphism \(\alpha_c\) by
+\[
+ \alpha_c|_N=\operatorname{id},\qquad
+ \alpha_c(u(s))=\rho_\nu(c_s)u(s).
+\]
+RCC6 applies to this semifinite presentation as well as to type III presentations. Its normal automorphism has exactly (TI40)'s generators, so \(\alpha_c=\operatorname{Ad}b_\nu\). This identifies the already defined action; it does not define a new action solely by its proposed inner implementer. Another implementing unitary of modular frequency \(-s\) differs from \(u(s)\) by a unitary in \(N\). Since \(\alpha_c\) fixes \(N\) and \(\rho_\nu(c_s)\) is central there, the same generator rule holds for that unitary too.
+
+For the supported comparison \(\phi=\nu\circ\operatorname{Ad}v\), put \(e=vv^*\) and \(z_0=z_N(e)\). In Section 6, \(w\in N\) has \(w^*w=e\), \(ww^*=z_0\). Thus
+\(p_M(\phi)=J_\nu(z_0)\). For a Borel set \(G\subset\mathbb R\), let \(E=\rho_\nu(1_G)\). The projection \(v^*Ev\) is central in \(M_\phi\). The partial isometry \(wv\), restricted to this projection, compares the cut weight \(\phi_{v^*Ev}\) with \(\nu_{z_0E}\), including zero cuts. Therefore
+\[
+ p_M(\phi_{v^*Ev})
+   =J_\nu(z_0E)
+   =p_M(\phi)\chi_\tau(1_G),\qquad
+ v^*\rho_\nu(g)v=g(\log h).
+ \tag{TI40c}
+\]
+For the second identity, use \(wv=u\) from (TI35), centrality of \(\rho_\nu(g)\), and the full Borel spectral transport (TI36)–(TI37). Indicator approximation and normality cover every \(L^\infty\) class. Thus the coefficient evaluation of a carrier function in the \(\phi\) corner is exactly \(\rho_\phi\), including a proper carrier support.
+
+Finally RCC6 fixes \(e\), so its restriction to \(eMe\) transports through \(v\). This is the supported extended action, and is the map computed next. If \(v_1,v_2\) realize the same \(\phi\), uniqueness of its fixed-trace density gives \(k^{it}v_j=v_jh^{it}\). Hence \(v_2v_1^*\in N\), and \(\alpha_c\) fixes this intertwiner. Substitution shows that the two transported maps agree. Changing the dominant reference conjugates the same generators through the unitary \(a\) above, and the carrier coefficients agree by (TI40a); the transported action is unchanged in that case as well.
+
+For the supported realization \(v\) of \(\phi\), \(b_\nu\) commutes with \(e=vv^*\). The identified extended action therefore has the formula
 \[
  \sigma_c^\phi(x)
  =v^*\operatorname{Ad}b_\nu(vxv^*)v
@@ -532,7 +601,7 @@ The latter equality follows by change of variables in each absolutely integrable
 
 If \(\omega\in M_*\) annihilates every eigenoperator, then the \(L^1\) function \(t\mapsto\omega(\alpha_t(a))\) has zero Fourier transform by (TI45). Fourier uniqueness makes it zero almost everywhere; continuity makes it zero at \(0\). The positive integrable elements span an ultraweakly dense space by (TI7), so \(\omega=0\). Annihilator separation therefore proves that the ultraweak span of all eigenspaces is \(M\). Hence (TI44) determines a normal automorphism uniquely.
 
-In particular the concrete construction (TI41) is independent of the chosen filling families, supported isometry, projection comparison and type-I model: the unique fixed-trace density already makes (TI42) intrinsic, and (TI44) supplies a second uniqueness check. If a separately defined carrier-indexed extended action is proved to satisfy this generator/corner prescription or this frequency formula in the fixed-trace chart, that compatibility identifies it with (TI41). The general carrier identification in [CGF](OA-FLOW-CGF.md#cgf-5) does not by itself identify this coefficient evaluation with a separately defined carrier-indexed action; that identification requires the stated compatibility formula.
+Thus (TI40a)–(TI40c) identify the carrier chart, its supported coefficient evaluation, and RCC6's extended action, while (TI41)–(TI42) give its inner implementer. The action is independent of the filling families, dominant reference, supported isometry, projection comparison and type-I model. Formula (TI44), together with the proved ultraweak density of the eigenoperators, supplies a further intrinsic uniqueness characterization.
 
 <a id="tid-8"></a>
 ## 8. Coordinate changes, character signs and the separate core density
@@ -660,6 +729,6 @@ The figure displays the actual intervals and multiplicities in (TI49)–(TI50), 
 <a id="tid-reading"></a>
 ## Further reading
 
-M. Takesaki, *Theory of Operator Algebras II*, Exercise XII.4.1(c), printed p. 420, asks for the type-I density criterion for an integrable weight of infinite multiplicity relative to a specified trace. Part (d) asks for the corresponding functional-calculus formula for the extended action. Sections 1–6 here prove the complete density criterion, including variable spectral multiplicity and the supported comparison step; Sections 7–8 construct the concrete generator/corner action and prove its exact formula and coordinate invariance. Identification with an independently defined abstract carrier-indexed action additionally requires the compatibility described in Section 7.
+M. Takesaki, *Theory of Operator Algebras II*, Exercise XII.4.1(c), printed p. 420, asks for the type-I density criterion for an integrable weight of infinite multiplicity relative to a specified trace. Part (d) asks for the corresponding functional-calculus formula for the extended action. Sections 1–6 here prove the complete density criterion, including variable spectral multiplicity and the supported comparison step; Sections 7–8 identify the carrier-indexed extended action with RCC6's generator action and its supported transport, prove its exact functional-calculus formula, and check the trace coordinate, signs and independence of all comparison choices.
 
 The earlier programme proofs include [trace densities](OA-FLOW-TD.md#oa-flow.td.4), [the full modular density formula](OA-FLOW-CZ.md#oa-flow.cz.5), [projection comparison](OA-FLOW-PC.md#oa-flow.pc.7), [tensor weights](OA-FLOW-TW.md#tw-2), [scalar Fourier theory](OA-FLOW-FF.md#oa-flow.ff.3), [general supported integrability](OA-FLOW-CGF.md#cgf-8), and [constructive translation cocycles](OA-FLOW-TCC.md#tcc-4).

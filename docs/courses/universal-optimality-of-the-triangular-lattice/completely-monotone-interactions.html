@@ -1,0 +1,241 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Completely monotone interactions</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Universal optimality of the triangular lattice)</a><a href="energy-density-and-the-linear-programming-bound.html">Previous lesson</a><a href="shells-and-gaussian-duality.html">Next lesson</a><a href="src/completely-monotone-interactions.md">Editable source</a></nav><main><article><h1 id="completely-monotone-interactions">Completely monotone interactions</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><a href="energy-density-and-the-linear-programming-bound.html">Energy, density and the linear programming bound</a> shows how the triangular lattice <span class="math" data-tex="\(A\)">\(A\)</span> can be proved optimal for one Gaussian interaction <span class="math" data-tex="\(e^{-\pi\alpha t}\)">\(e^{-\pi\alpha t}\)</span> at a time. The interactions of interest are more general: inverse power laws <span class="math" data-tex="\(t^{-s/2}\)">\(t^{-s/2}\)</span>, sums of exponentials, and others. This lesson treats all interactions that are <em>completely monotone</em> functions of the squared distance, the class for which H. Cohn and A. Kumar conjectured the triangular lattice to be optimal [Cohn–Kumar]. The results:</p>
+<ul>
+<li>a completely monotone function that is finite at <span class="math" data-tex="\(0\)">\(0\)</span> is a mixture of the functions <span class="math" data-tex="\(t\mapsto v^t\)">\(t\mapsto v^t\)</span>, <span class="math" data-tex="\(0&lt;v\le1\)">\(0&lt;v\le1\)</span>, with a positive measure as weights (Theorem 3.1); this is the theorem of Hausdorff, Bernstein and Widder in the form needed here, and it is proved through the moment problem on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> (Theorem 2.3);</li>
+<li>if a configuration has at least the energy of <span class="math" data-tex="\(A\)">\(A\)</span> for every Gaussian interaction, it has at least the energy of <span class="math" data-tex="\(A\)">\(A\)</span> for every completely monotone interaction, including interactions that are infinite at distance zero and lattice sums that diverge (Theorem 4.1);</li>
+<li>hence: if sharp pairs exist for all Gaussians, the triangular lattice is universally optimal (Theorem 5.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-T, Section 7]. The representation theorem is proved here by a different route: the measure is obtained from the Riesz representation theorem and identified through the uniqueness of the moment problem, which avoids limits of measures.</p>
+<p>It uses the previous lesson, the core courses <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration (D10)</a> (Fatou's lemma, monotone and dominated convergence, image measures, uniqueness of measures) and <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C20">Real Analysis II</a> (the Weierstrass approximation theorem), and the representation of positive functionals by measures from <a href="../HA-LCA/prerequisites/src/finite-radon-representation.html">Finite Radon representation on locally compact spaces</a>.</p>
+<h2 id="1-completely-monotone-functions">1. Completely monotone functions</h2>
+<p>Let <span class="math" data-tex="\(J\)">\(J\)</span> be the interval <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> or <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. A function <span class="math" data-tex="\(g\colon J\to[0,\infty)\)">\(g\colon J\to[0,\infty)\)</span> is <em>completely monotone</em> if it is infinitely differentiable, with one-sided derivatives at <span class="math" data-tex="\(0\)">\(0\)</span> if <span class="math" data-tex="\(0\in J\)">\(0\in J\)</span>, and
+<span class="math math-display" data-tex="\[
+(-1)^r g^{(r)}(t)\ge0\qquad(r\ge0,\ t\in J).
+\]">\[
+(-1)^r g^{(r)}(t)\ge0\qquad(r\ge0,\ t\in J).
+\]</span>
+So <span class="math" data-tex="\(g\ge0\)">\(g\ge0\)</span>, <span class="math" data-tex="\(g&#x27;\le0\)">\(g&#x27;\le0\)</span>, <span class="math" data-tex="\(g&#x27;&#x27;\ge0\)">\(g&#x27;&#x27;\ge0\)</span>, and so on: <span class="math" data-tex="\(g\)">\(g\)</span> is nonincreasing and convex.</p>
+<p><strong>Examples 1.1.</strong> For <span class="math" data-tex="\(c\ge0\)">\(c\ge0\)</span> the function <span class="math" data-tex="\(e^{-ct}\)">\(e^{-ct}\)</span> is completely monotone on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. For <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> the function <span class="math" data-tex="\(t^{-s}\)">\(t^{-s}\)</span> is completely monotone on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>: its <span class="math" data-tex="\(r\)">\(r\)</span>-th derivative is <span class="math" data-tex="\((-1)^rs(s+1)\cdots(s+r-1)\,t^{-s-r}\)">\((-1)^rs(s+1)\cdots(s+r-1)\,t^{-s-r}\)</span>. Sums and nonnegative multiples of completely monotone functions are completely monotone. If <span class="math" data-tex="\(g\)">\(g\)</span> is completely monotone on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, then <span class="math" data-tex="\(F(t)=g(\varepsilon+t)\)">\(F(t)=g(\varepsilon+t)\)</span> is completely monotone on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>.</p>
+<p>For <span class="math" data-tex="\(0\le v\le1\)">\(0\le v\le1\)</span> and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> let <span class="math" data-tex="\(v^t\)">\(v^t\)</span> have its usual meaning, with <span class="math" data-tex="\(0^t=0\)">\(0^t=0\)</span>; and let <span class="math" data-tex="\(v^0=1\)">\(v^0=1\)</span> for all <span class="math" data-tex="\(v\in[0,1]\)">\(v\in[0,1]\)</span>. For fixed <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(v\mapsto v^t\)">\(v\mapsto v^t\)</span> is continuous on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. With <span class="math" data-tex="\(v=e^{-c}\)">\(v=e^{-c}\)</span>, the functions <span class="math" data-tex="\(t\mapsto v^t\)">\(t\mapsto v^t\)</span>, <span class="math" data-tex="\(0&lt;v\le1\)">\(0&lt;v\le1\)</span>, are the exponentials <span class="math" data-tex="\(e^{-ct}\)">\(e^{-ct}\)</span>, <span class="math" data-tex="\(c\ge0\)">\(c\ge0\)</span>.</p>
+<h2 id="2-the-moment-problem-on-the-unit-interval">2. The moment problem on the unit interval</h2>
+<p>For a sequence <span class="math" data-tex="\(m=(m_j)_{j\ge0}\)">\(m=(m_j)_{j\ge0}\)</span> of real numbers let <span class="math" data-tex="\(\Delta m_j=m_{j+1}-m_j\)">\(\Delta m_j=m_{j+1}-m_j\)</span>, and let <span class="math" data-tex="\(\Delta^r\)">\(\Delta^r\)</span> be the <span class="math" data-tex="\(r\)">\(r\)</span>-fold application, <span class="math" data-tex="\(\Delta^0m=m\)">\(\Delta^0m=m\)</span>. By induction on <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+\Delta^nm_p=\sum_{i=0}^n\binom ni(-1)^{n-i}m_{p+i}.
+\]">\[
+\Delta^nm_p=\sum_{i=0}^n\binom ni(-1)^{n-i}m_{p+i}.
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be completely monotone on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, and <span class="math" data-tex="\(m_j=F(jd)\)">\(m_j=F(jd)\)</span>. Then <span class="math" data-tex="\((-1)^r\Delta^rm_j\ge0\)">\((-1)^r\Delta^rm_j\ge0\)</span> for all <span class="math" data-tex="\(r,j\ge0\)">\(r,j\ge0\)</span>.</p>
+<p><strong>Proof.</strong> For an infinitely differentiable function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> let <span class="math" data-tex="\((\Delta_d\phi)(t)=\phi(t+d)-\phi(t)\)">\((\Delta_d\phi)(t)=\phi(t+d)-\phi(t)\)</span>; this is <span class="math" data-tex="\(\int_0^d\phi&#x27;(t+u)\,du\)">\(\int_0^d\phi&#x27;(t+u)\,du\)</span>. By induction on <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\Delta_d^r\phi)(t)=\int_{[0,d]^r}\phi^{(r)}(t+u)\,du_1\cdots du_r,\\
+u=u_1+\dots+u_r .
+\end{gathered}
+\]">\[
+\begin{gathered}
+(\Delta_d^r\phi)(t)=\int_{[0,d]^r}\phi^{(r)}(t+u)\,du_1\cdots du_r,\\
+u=u_1+\dots+u_r .
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(\phi=F\)">\(\phi=F\)</span> and <span class="math" data-tex="\(t=jd\)">\(t=jd\)</span> the left side is <span class="math" data-tex="\(\Delta^rm_j\)">\(\Delta^rm_j\)</span>, and <span class="math" data-tex="\((-1)^rF^{(r)}\ge0\)">\((-1)^rF^{(r)}\ge0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Let <span class="math" data-tex="\(\beta_{M,p}(x)=\binom Mpx^p(1-x)^{M-p}\)">\(\beta_{M,p}(x)=\binom Mpx^p(1-x)^{M-p}\)</span> for <span class="math" data-tex="\(0\le p\le M\)">\(0\le p\le M\)</span>. For a polynomial <span class="math" data-tex="\(P\)">\(P\)</span> let
+<span class="math math-display" data-tex="\[
+B_MP=\sum_{p=0}^MP(p/M)\,\beta_{M,p},
+\]">\[
+B_MP=\sum_{p=0}^MP(p/M)\,\beta_{M,p},
+\]</span>
+the <em>Bernstein polynomial</em> of <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Lemma 2.2.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(\sum_{p=0}^M\binom pi\beta_{M,p}=\binom Mix^i\)">\(\sum_{p=0}^M\binom pi\beta_{M,p}=\binom Mix^i\)</span> for <span class="math" data-tex="\(0\le i\le M\)">\(0\le i\le M\)</span>.</li>
+<li>For every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> and <span class="math" data-tex="\(M\ge j\)">\(M\ge j\)</span>, <span class="math" data-tex="\(B_M(x^j)=\sum_{i=0}^jc_{M,j,i}x^i\)">\(B_M(x^j)=\sum_{i=0}^jc_{M,j,i}x^i\)</span> with numbers <span class="math" data-tex="\(c_{M,j,i}\)">\(c_{M,j,i}\)</span> such that, as <span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span>, <span class="math" data-tex="\(c_{M,j,j}\to1\)">\(c_{M,j,j}\to1\)</span> and <span class="math" data-tex="\(c_{M,j,i}\to0\)">\(c_{M,j,i}\to0\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) Since <span class="math" data-tex="\(\binom Mp\binom pi=\binom Mi\binom{M-i}{p-i}\)">\(\binom Mp\binom pi=\binom Mi\binom{M-i}{p-i}\)</span>, the left side is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\binom Mix^i\sum_{q=0}^{M-i}\binom{M-i}qx^q(1-x)^{M-i-q}\\
+=\binom Mix^i .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\binom Mix^i\sum_{q=0}^{M-i}\binom{M-i}qx^q(1-x)^{M-i-q}\\
+=\binom Mix^i .
+\end{gathered}
+\]</span>
+(2) The polynomials <span class="math" data-tex="\(p(p-1)\cdots(p-i+1)=i!\binom pi\)">\(p(p-1)\cdots(p-i+1)=i!\binom pi\)</span> in the variable <span class="math" data-tex="\(p\)">\(p\)</span>, for <span class="math" data-tex="\(i=0,\dots,j\)">\(i=0,\dots,j\)</span>, have degrees <span class="math" data-tex="\(0,\dots,j\)">\(0,\dots,j\)</span> and leading coefficient <span class="math" data-tex="\(1\)">\(1\)</span>. So there are numbers <span class="math" data-tex="\(s_{j,i}\)">\(s_{j,i}\)</span>, with <span class="math" data-tex="\(s_{j,j}=1\)">\(s_{j,j}=1\)</span>, such that <span class="math" data-tex="\(p^j=\sum_{i\le j}s_{j,i}\,i!\binom pi\)">\(p^j=\sum_{i\le j}s_{j,i}\,i!\binom pi\)</span> for all <span class="math" data-tex="\(p\)">\(p\)</span>. By (1),
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B_M(x^j)=M^{-j}\sum_{i\le j}s_{j,i}\,i!\binom Mix^i\\
+=\sum_{i\le j}s_{j,i}\,q_{M,i}\,x^i,\\
+q_{M,i}=\frac{M(M-1)\cdots(M-i+1)}{M^j}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+B_M(x^j)=M^{-j}\sum_{i\le j}s_{j,i}\,i!\binom Mix^i\\
+=\sum_{i\le j}s_{j,i}\,q_{M,i}\,x^i,\\
+q_{M,i}=\frac{M(M-1)\cdots(M-i+1)}{M^j}.
+\end{gathered}
+\]</span>
+The quotient <span class="math" data-tex="\(q_{M,i}\)">\(q_{M,i}\)</span> is <span class="math" data-tex="\(\prod_{r&lt;j}(1-r/M)\to1\)">\(\prod_{r&lt;j}(1-r/M)\to1\)</span> for <span class="math" data-tex="\(i=j\)">\(i=j\)</span>, and at most <span class="math" data-tex="\(M^{i-j}\to0\)">\(M^{i-j}\to0\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 2.3</strong> (Hausdorff). Let <span class="math" data-tex="\((m_j)_{j\ge0}\)">\((m_j)_{j\ge0}\)</span> be real numbers with <span class="math" data-tex="\((-1)^r\Delta^rm_j\ge0\)">\((-1)^r\Delta^rm_j\ge0\)</span> for all <span class="math" data-tex="\(r,j\ge0\)">\(r,j\ge0\)</span>. Then there is exactly one finite positive Borel measure <span class="math" data-tex="\(\eta\)">\(\eta\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> with
+<span class="math math-display" data-tex="\[
+\int_{[0,1]}x^j\,d\eta(x)=m_j\qquad(j\ge0).
+\]">\[
+\int_{[0,1]}x^j\,d\eta(x)=m_j\qquad(j\ge0).
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be the linear map from the polynomials to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with <span class="math" data-tex="\(\Lambda(x^j)=m_j\)">\(\Lambda(x^j)=m_j\)</span>.</p>
+<p><em>Step 1.</em> Expanding <span class="math" data-tex="\((1-x)^n\)">\((1-x)^n\)</span> and using the formula for <span class="math" data-tex="\(\Delta^n\)">\(\Delta^n\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda\bigl(x^p(1-x)^n\bigr)&amp;=\sum_{i=0}^n\binom ni(-1)^im_{p+i}\\
+&amp;=(-1)^n\Delta^nm_p\ge0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Lambda\bigl(x^p(1-x)^n\bigr)&amp;=\sum_{i=0}^n\binom ni(-1)^im_{p+i}\\
+&amp;=(-1)^n\Delta^nm_p\ge0 .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(\Lambda(\beta_{M,p})\ge0\)">\(\Lambda(\beta_{M,p})\ge0\)</span> for all <span class="math" data-tex="\(M,p\)">\(M,p\)</span>.</p>
+<p><em>Step 2.</em> For every polynomial <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(\Lambda(B_MP)\to\Lambda(P)\)">\(\Lambda(B_MP)\to\Lambda(P)\)</span> as <span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span>. By linearity it suffices to take <span class="math" data-tex="\(P=x^j\)">\(P=x^j\)</span>, and then it follows from Lemma 2.2(2).</p>
+<p><em>Step 3.</em> If <span class="math" data-tex="\(P\ge0\)">\(P\ge0\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, then <span class="math" data-tex="\(\Lambda(B_MP)=\sum_pP(p/M)\Lambda(\beta_{M,p})\ge0\)">\(\Lambda(B_MP)=\sum_pP(p/M)\Lambda(\beta_{M,p})\ge0\)</span>, hence <span class="math" data-tex="\(\Lambda(P)\ge0\)">\(\Lambda(P)\ge0\)</span> by Step 2. Applied to <span class="math" data-tex="\(\|P\|\pm P\)">\(\|P\|\pm P\)</span>, where <span class="math" data-tex="\(\|P\|\)">\(\|P\|\)</span> is the largest value of <span class="math" data-tex="\(|P|\)">\(|P|\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, this gives
+<span class="math math-display" data-tex="\[
+|\Lambda(P)|\le m_0\,\|P\| .
+\]">\[
+|\Lambda(P)|\le m_0\,\|P\| .
+\]</span>
+<em>Step 4.</em> By the Weierstrass approximation theorem the polynomials are dense in the space <span class="math" data-tex="\(C[0,1]\)">\(C[0,1]\)</span> of continuous real functions with the norm <span class="math" data-tex="\(\|\cdot\|\)">\(\|\cdot\|\)</span>. By Step 3, <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> extends uniquely to a continuous linear functional on <span class="math" data-tex="\(C[0,1]\)">\(C[0,1]\)</span>, and the extension is positive: a continuous <span class="math" data-tex="\(\phi\ge0\)">\(\phi\ge0\)</span> is the uniform limit of the polynomials <span class="math" data-tex="\(P_n+\|P_n-\phi\|\ge0\)">\(P_n+\|P_n-\phi\|\ge0\)</span>, where <span class="math" data-tex="\(P_n\to\phi\)">\(P_n\to\phi\)</span>.</p>
+<p><em>Step 5.</em> By the representation theorem for positive functionals (Theorem 3.1 of the lesson on finite Radon representation, for the compact space <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>) there is a finite positive Borel measure <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(\Lambda(\phi)=\int\phi\,d\eta\)">\(\Lambda(\phi)=\int\phi\,d\eta\)</span> for all <span class="math" data-tex="\(\phi\in C[0,1]\)">\(\phi\in C[0,1]\)</span>. In particular <span class="math" data-tex="\(\int x^j\,d\eta=m_j\)">\(\int x^j\,d\eta=m_j\)</span>.</p>
+<p><em>Uniqueness.</em> Let <span class="math" data-tex="\(\eta&#x27;\)">\(\eta&#x27;\)</span> be a second such measure. Then <span class="math" data-tex="\(\int P\,d\eta&#x27;=\int P\,d\eta\)">\(\int P\,d\eta&#x27;=\int P\,d\eta\)</span> for polynomials, hence for all continuous functions, by uniform approximation. For a closed set <span class="math" data-tex="\(C\subseteq[0,1]\)">\(C\subseteq[0,1]\)</span> the continuous functions <span class="math" data-tex="\(\phi_n(x)=\max(0,1-n\operatorname{dist}(x,C))\)">\(\phi_n(x)=\max(0,1-n\operatorname{dist}(x,C))\)</span> decrease to the indicator function of <span class="math" data-tex="\(C\)">\(C\)</span>, so <span class="math" data-tex="\(\eta&#x27;(C)=\eta(C)\)">\(\eta&#x27;(C)=\eta(C)\)</span> by dominated convergence. The closed sets are closed under finite intersections and generate the Borel sets, and <span class="math" data-tex="\(\eta&#x27;([0,1])=\eta([0,1])\)">\(\eta&#x27;([0,1])=\eta([0,1])\)</span>; so <span class="math" data-tex="\(\eta&#x27;=\eta\)">\(\eta&#x27;=\eta\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-representation">3. The representation</h2>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be completely monotone on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. There is a finite positive Borel measure <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> such that
+<span class="math math-display" data-tex="\[
+F(t)=\int_{[0,1]}v^t\,d\rho(v)\qquad(t\ge0).
+\]">\[
+F(t)=\int_{[0,1]}v^t\,d\rho(v)\qquad(t\ge0).
+\]</span>
+It has total mass <span class="math" data-tex="\(F(0)\)">\(F(0)\)</span>, and <span class="math" data-tex="\(\rho(\{0\})=0\)">\(\rho(\{0\})=0\)</span>.</p>
+<p><strong>Proof.</strong> For an integer <span class="math" data-tex="\(l\ge1\)">\(l\ge1\)</span> the sequence <span class="math" data-tex="\(m_j=F(j/l)\)">\(m_j=F(j/l)\)</span> satisfies the assumption of Theorem 2.3, by Lemma 2.1. Let <span class="math" data-tex="\(\eta_l\)">\(\eta_l\)</span> be its measure, and <span class="math" data-tex="\(\rho=\eta_1\)">\(\rho=\eta_1\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int x^j\,d\eta_l(x)=F(j/l),\\
+\int v^j\,d\rho(v)=F(j).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int x^j\,d\eta_l(x)=F(j/l),\\
+\int v^j\,d\rho(v)=F(j).
+\end{gathered}
+\]</span>
+<em>The measures <span class="math" data-tex="\(\eta_l\)">\(\eta_l\)</span> are images of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</em> Let <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> be the image of <span class="math" data-tex="\(\eta_l\)">\(\eta_l\)</span> under the map <span class="math" data-tex="\(x\mapsto x^l\)">\(x\mapsto x^l\)</span> of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Then <span class="math" data-tex="\(\int v^j\,d\kappa(v)=\int x^{lj}\,d\eta_l(x)=F(j)\)">\(\int v^j\,d\kappa(v)=\int x^{lj}\,d\eta_l(x)=F(j)\)</span>. By the uniqueness in Theorem 2.3, <span class="math" data-tex="\(\kappa=\rho\)">\(\kappa=\rho\)</span>. The map <span class="math" data-tex="\(x\mapsto x^l\)">\(x\mapsto x^l\)</span> is a homeomorphism of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> with inverse <span class="math" data-tex="\(v\mapsto v^{1/l}\)">\(v\mapsto v^{1/l}\)</span>; so <span class="math" data-tex="\(\eta_l\)">\(\eta_l\)</span> is the image of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> under <span class="math" data-tex="\(v\mapsto v^{1/l}\)">\(v\mapsto v^{1/l}\)</span>, and
+<span class="math math-display" data-tex="\[
+\int v^{j/l}\,d\rho(v)=\int x^j\,d\eta_l(x)=F(j/l).
+\]">\[
+\int v^{j/l}\,d\rho(v)=\int x^j\,d\eta_l(x)=F(j/l).
+\]</span>
+<em>All real exponents.</em> So <span class="math" data-tex="\(F(t)=\int v^t\,d\rho\)">\(F(t)=\int v^t\,d\rho\)</span> for all rational <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>. Let <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> be real and <span class="math" data-tex="\(t_n\to t\)">\(t_n\to t\)</span> rational, <span class="math" data-tex="\(t_n&gt;0\)">\(t_n&gt;0\)</span>. Then <span class="math" data-tex="\(v^{t_n}\to v^t\)">\(v^{t_n}\to v^t\)</span> for every <span class="math" data-tex="\(v\in[0,1]\)">\(v\in[0,1]\)</span>, and these functions are bounded by <span class="math" data-tex="\(1\)">\(1\)</span>. By dominated convergence <span class="math" data-tex="\(\int v^{t_n}\,d\rho\to\int v^t\,d\rho\)">\(\int v^{t_n}\,d\rho\to\int v^t\,d\rho\)</span>, and <span class="math" data-tex="\(F(t_n)\to F(t)\)">\(F(t_n)\to F(t)\)</span> because <span class="math" data-tex="\(F\)">\(F\)</span> is continuous.</p>
+<p><em>The mass.</em> For <span class="math" data-tex="\(t=0\)">\(t=0\)</span> the formula says <span class="math" data-tex="\(\rho([0,1])=F(0)\)">\(\rho([0,1])=F(0)\)</span>. As <span class="math" data-tex="\(t\)">\(t\)</span> decreases to <span class="math" data-tex="\(0\)">\(0\)</span>, the functions <span class="math" data-tex="\(v^t\)">\(v^t\)</span> increase to the indicator function of <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>. By monotone convergence <span class="math" data-tex="\(\rho((0,1])=\lim_{t\to0}F(t)=F(0)\)">\(\rho((0,1])=\lim_{t\to0}F(t)=F(0)\)</span>. So <span class="math" data-tex="\(\rho(\{0\})=0\)">\(\rho(\{0\})=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Examples 3.2.</strong> For <span class="math" data-tex="\(F(t)=e^{-ct}\)">\(F(t)=e^{-ct}\)</span> the measure <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is the unit mass at <span class="math" data-tex="\(v=e^{-c}\)">\(v=e^{-c}\)</span>. For <span class="math" data-tex="\(F(t)=1/(1+t)\)">\(F(t)=1/(1+t)\)</span> it is Lebesgue measure on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, since <span class="math" data-tex="\(\int_0^1v^t\,dv=1/(t+1)\)">\(\int_0^1v^t\,dv=1/(t+1)\)</span>.</p>
+<p>Under the substitution <span class="math" data-tex="\(v=e^{-c}\)">\(v=e^{-c}\)</span> the theorem says that <span class="math" data-tex="\(F\)">\(F\)</span> is the Laplace transform of a finite positive measure on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. A completely monotone function on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> that is unbounded near <span class="math" data-tex="\(0\)">\(0\)</span>, such as <span class="math" data-tex="\(t^{-s}\)">\(t^{-s}\)</span>, has no representation with a finite measure. For such functions the theorem is applied to the shifted functions <span class="math" data-tex="\(g(\varepsilon+t)\)">\(g(\varepsilon+t)\)</span>.</p>
+<h2 id="4-from-gaussians-to-completely-monotone-interactions">4. From Gaussians to completely monotone interactions</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be the triangular lattice of covolume one. For a configuration <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of density one, the sets <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span>, the numbers <span class="math" data-tex="\(N_R\)">\(N_R\)</span> and the energy <span class="math" data-tex="\(E_g(\mathcal C)\)">\(E_g(\mathcal C)\)</span> are as in the previous lesson.</p>
+<p><strong>Theorem 4.1.</strong> Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a configuration of density one such that for every <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\liminf_{R\to\infty}\frac1{N_R}\sum_{\substack{x,y\in\mathcal C_R\\x\ne y}}e^{-\pi\alpha|x-y|^2}\\
+\ge\sum_{a\in A\setminus\{0\}}e^{-\pi\alpha|a|^2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\liminf_{R\to\infty}\frac1{N_R}\sum_{\substack{x,y\in\mathcal C_R\\x\ne y}}e^{-\pi\alpha|x-y|^2}\\
+\ge\sum_{a\in A\setminus\{0\}}e^{-\pi\alpha|a|^2}.
+\end{gathered}
+\]</span>
+Then for every completely monotone <span class="math" data-tex="\(g\colon(0,\infty)\to[0,\infty)\)">\(g\colon(0,\infty)\to[0,\infty)\)</span>
+<span class="math math-display" data-tex="\[
+E_g(\mathcal C)\ \ge\ \sum_{a\in A\setminus\{0\}}g(|a|^2),
+\]">\[
+E_g(\mathcal C)\ \ge\ \sum_{a\in A\setminus\{0\}}g(|a|^2),
+\]</span>
+where both sides may be <span class="math" data-tex="\(\infty\)">\(\infty\)</span>.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and let <span class="math" data-tex="\(F(t)=g(\varepsilon+t)\)">\(F(t)=g(\varepsilon+t)\)</span>, completely monotone on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be its measure from Theorem 3.1.</p>
+<p>Let <span class="math" data-tex="\(R_n\to\infty\)">\(R_n\to\infty\)</span> be any sequence with <span class="math" data-tex="\(N_{R_n}&gt;0\)">\(N_{R_n}&gt;0\)</span>. For <span class="math" data-tex="\(v\in[0,1]\)">\(v\in[0,1]\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_n(v)=\frac1{N_{R_n}}\sum_{\substack{x,y\in\mathcal C_{R_n}\\x\ne y}}v^{|x-y|^2},\\
+L(v)=\sum_{a\in A\setminus\{0\}}v^{|a|^2}\in[0,\infty].
+\end{gathered}
+\]">\[
+\begin{gathered}
+A_n(v)=\frac1{N_{R_n}}\sum_{\substack{x,y\in\mathcal C_{R_n}\\x\ne y}}v^{|x-y|^2},\\
+L(v)=\sum_{a\in A\setminus\{0\}}v^{|a|^2}\in[0,\infty].
+\end{gathered}
+\]</span>
+All exponents are positive. The functions <span class="math" data-tex="\(A_n\)">\(A_n\)</span> are continuous, and <span class="math" data-tex="\(L\)">\(L\)</span> is a sum of nonnegative continuous functions, hence measurable.</p>
+<p><em><span class="math" data-tex="\(\liminf_nA_n(v)\ge L(v)\)">\(\liminf_nA_n(v)\ge L(v)\)</span> for every <span class="math" data-tex="\(v\in[0,1]\)">\(v\in[0,1]\)</span>.</em> For <span class="math" data-tex="\(0&lt;v&lt;1\)">\(0&lt;v&lt;1\)</span> this is the assumption with <span class="math" data-tex="\(\alpha=-\log(v)/\pi\)">\(\alpha=-\log(v)/\pi\)</span>, because <span class="math" data-tex="\(v^t=e^{-\pi\alpha t}\)">\(v^t=e^{-\pi\alpha t}\)</span>; a lower limit over all <span class="math" data-tex="\(R\)">\(R\)</span> is at most the lower limit along a sequence. For <span class="math" data-tex="\(v=0\)">\(v=0\)</span> both sides are <span class="math" data-tex="\(0\)">\(0\)</span>. For <span class="math" data-tex="\(v=1\)">\(v=1\)</span>, <span class="math" data-tex="\(A_n(1)=N_{R_n}-1\to\infty=L(1)\)">\(A_n(1)=N_{R_n}-1\to\infty=L(1)\)</span>.</p>
+<p><em>Integration.</em> By Theorem 3.1, applied to each term,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac1{N_{R_n}}\sum_{\substack{x,y\in\mathcal C_{R_n}\\x\ne y}}F(|x-y|^2)\\
+=\int A_n\,d\rho .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac1{N_{R_n}}\sum_{\substack{x,y\in\mathcal C_{R_n}\\x\ne y}}F(|x-y|^2)\\
+=\int A_n\,d\rho .
+\end{gathered}
+\]</span>
+By Fatou's lemma and the monotone convergence theorem for the series <span class="math" data-tex="\(L\)">\(L\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\liminf_n\int A_n\,d\rho&amp;\ge\int\liminf_nA_n\,d\rho\\
+&amp;\ge\int L\,d\rho\\
+&amp;=\sum_{a\in A\setminus\{0\}}\int v^{|a|^2}\,d\rho\\
+&amp;=\sum_{a\in A\setminus\{0\}}F(|a|^2).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\liminf_n\int A_n\,d\rho&amp;\ge\int\liminf_nA_n\,d\rho\\
+&amp;\ge\int L\,d\rho\\
+&amp;=\sum_{a\in A\setminus\{0\}}\int v^{|a|^2}\,d\rho\\
+&amp;=\sum_{a\in A\setminus\{0\}}F(|a|^2).
+\end{aligned}
+\]</span>
+All integrands are nonnegative, so this holds also when the last sum is infinite. The sequence <span class="math" data-tex="\((R_n)\)">\((R_n)\)</span> was arbitrary. Hence
+<span class="math math-display" data-tex="\[
+E_F(\mathcal C)\ \ge\ \sum_{a\in A\setminus\{0\}}g(\varepsilon+|a|^2),
+\]">\[
+E_F(\mathcal C)\ \ge\ \sum_{a\in A\setminus\{0\}}g(\varepsilon+|a|^2),
+\]</span>
+where <span class="math" data-tex="\(E_F\)">\(E_F\)</span> is the energy for the interaction <span class="math" data-tex="\(t\mapsto F(t)\)">\(t\mapsto F(t)\)</span>, <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>.</p>
+<p><em>Removing the shift.</em> Since <span class="math" data-tex="\(g\)">\(g\)</span> is nonincreasing, <span class="math" data-tex="\(g(t)\ge g(\varepsilon+t)=F(t)\)">\(g(t)\ge g(\varepsilon+t)=F(t)\)</span>, so <span class="math" data-tex="\(E_g(\mathcal C)\ge E_F(\mathcal C)\)">\(E_g(\mathcal C)\ge E_F(\mathcal C)\)</span>. As <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decreases to <span class="math" data-tex="\(0\)">\(0\)</span>, the terms <span class="math" data-tex="\(g(\varepsilon+|a|^2)\)">\(g(\varepsilon+|a|^2)\)</span> increase to <span class="math" data-tex="\(g(|a|^2)\)">\(g(|a|^2)\)</span>, and the sums increase to <span class="math" data-tex="\(\sum_{a\ne0}g(|a|^2)\)">\(\sum_{a\ne0}g(|a|^2)\)</span> by monotone convergence. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The shift is removed after the lattice sum has been formed. At no point is a representing measure for <span class="math" data-tex="\(g\)">\(g\)</span> itself needed, and no limit in <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is exchanged with the lower limit in <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<h2 id="5-the-theorem">5. The theorem</h2>
+<p>Let <span class="math" data-tex="\((\mathrm G)\)">\((\mathrm G)\)</span> be the statement: <em>for every <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span> there is a sharp pair for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span></em>, in the sense of Section 4 of the previous lesson.</p>
+<p><strong>Theorem 5.1.</strong> Assume <span class="math" data-tex="\((\mathrm G)\)">\((\mathrm G)\)</span>. Let <span class="math" data-tex="\(g\colon(0,\infty)\to[0,\infty)\)">\(g\colon(0,\infty)\to[0,\infty)\)</span> be completely monotone. Then for every configuration <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of density one in the plane
+<span class="math math-display" data-tex="\[
+E_g(\mathcal C)\ \ge\ E_g(A)=\sum_{a\in A\setminus\{0\}}g(|a|^2)
+\]">\[
+E_g(\mathcal C)\ \ge\ E_g(A)=\sum_{a\in A\setminus\{0\}}g(|a|^2)
+\]</span>
+in <span class="math" data-tex="\([0,\infty]\)">\([0,\infty]\)</span>.</p>
+<p><strong>Proof.</strong> By <span class="math" data-tex="\((\mathrm G)\)">\((\mathrm G)\)</span> and Theorem 4.2 of the previous lesson, <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> satisfies the assumption of Theorem 4.1. The equality is Lemma 1.1 of the previous lesson. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The statement <span class="math" data-tex="\((\mathrm G)\)">\((\mathrm G)\)</span> is a theorem of [OpenAI-T]: its Sections 2 to 5, with two appendices of verified computations, construct the sharp pairs. With it, Theorem 5.1 is the <em>universal optimality</em> of the triangular lattice, the main theorem of [OpenAI-T, Section 1]. In this course <span class="math" data-tex="\((\mathrm G)\)">\((\mathrm G)\)</span> is a hypothesis; everything else in the proof of Theorem 5.1 is proved in these two lessons and the lessons they cite.</p>
+<p>The theorem covers inverse power laws <span class="math" data-tex="\(g(t)=t^{-s/2}\)">\(g(t)=t^{-s/2}\)</span> for all <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>. For <span class="math" data-tex="\(s\le2\)">\(s\le2\)</span> the lattice sum diverges, and the statement is that every configuration of density one has infinite energy (Exercise 6.3).</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show that the product of two completely monotone functions on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> is completely monotone.</p>
+<p><strong>6.2.</strong> Determine the sequence <span class="math" data-tex="\(m_j=F(j)\)">\(m_j=F(j)\)</span> and check the inequalities <span class="math" data-tex="\((-1)^r\Delta^rm_j\ge0\)">\((-1)^r\Delta^rm_j\ge0\)</span> directly for <span class="math" data-tex="\(F(t)=e^{-ct}\)">\(F(t)=e^{-ct}\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.</p>
+<p><strong>6.3.</strong> Let <span class="math" data-tex="\(0&lt;s\le2\)">\(0&lt;s\le2\)</span>. Show that <span class="math" data-tex="\(\sum_{a\in A\setminus\{0\}}|a|^{-s}=\infty\)">\(\sum_{a\in A\setminus\{0\}}|a|^{-s}=\infty\)</span>.</p>
+<p><strong>6.4.</strong> Let <span class="math" data-tex="\(g\)">\(g\)</span> be completely monotone on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> with <span class="math" data-tex="\(g(t_0)=0\)">\(g(t_0)=0\)</span> for some <span class="math" data-tex="\(t_0&gt;0\)">\(t_0&gt;0\)</span>. Show that <span class="math" data-tex="\(g=0\)">\(g=0\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> By the product rule, <span class="math" data-tex="\((fg)^{(r)}=\sum_i\binom rif^{(i)}g^{(r-i)}\)">\((fg)^{(r)}=\sum_i\binom rif^{(i)}g^{(r-i)}\)</span>, and <span class="math" data-tex="\((-1)^rf^{(i)}g^{(r-i)}\)">\((-1)^rf^{(i)}g^{(r-i)}\)</span> is the product of <span class="math" data-tex="\((-1)^if^{(i)}\ge0\)">\((-1)^if^{(i)}\ge0\)</span> and <span class="math" data-tex="\((-1)^{r-i}g^{(r-i)}\ge0\)">\((-1)^{r-i}g^{(r-i)}\ge0\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(m_j=q^j\)">\(m_j=q^j\)</span> with <span class="math" data-tex="\(q=e^{-c}\in(0,1)\)">\(q=e^{-c}\in(0,1)\)</span>. Then <span class="math" data-tex="\(\Delta m_j=q^j(q-1)\)">\(\Delta m_j=q^j(q-1)\)</span>, and by induction <span class="math" data-tex="\(\Delta^rm_j=q^j(q-1)^r\)">\(\Delta^rm_j=q^j(q-1)^r\)</span>. So <span class="math" data-tex="\((-1)^r\Delta^rm_j=q^j(1-q)^r\ge0\)">\((-1)^r\Delta^rm_j=q^j(1-q)^r\ge0\)</span>. The measure of Theorem 2.3 is the unit mass at <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>6.3.</strong> By Lemma 1.1 of the previous lesson, the number of points of <span class="math" data-tex="\(A\)">\(A\)</span> in the disk <span class="math" data-tex="\(B_R\)">\(B_R\)</span> is <span class="math" data-tex="\(\pi R^2(1+o(1))\)">\(\pi R^2(1+o(1))\)</span>. So the number of <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> with <span class="math" data-tex="\(2^k&lt;|a|\le2^{k+1}\)">\(2^k&lt;|a|\le2^{k+1}\)</span> is <span class="math" data-tex="\(3\pi4^k(1+o(1))\)">\(3\pi4^k(1+o(1))\)</span> as <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>, and each of them has <span class="math" data-tex="\(|a|^{-s}\ge2^{-s(k+1)}\)">\(|a|^{-s}\ge2^{-s(k+1)}\)</span>. The sum over this ring is at least a positive constant times <span class="math" data-tex="\(4^k2^{-sk}=2^{(2-s)k}\ge1\)">\(4^k2^{-sk}=2^{(2-s)k}\ge1\)</span> for large <span class="math" data-tex="\(k\)">\(k\)</span>. So the series diverges.</p>
+<p><strong>6.4.</strong> Let <span class="math" data-tex="\(0&lt;\varepsilon&lt;t_0\)">\(0&lt;\varepsilon&lt;t_0\)</span> and <span class="math" data-tex="\(F(t)=g(\varepsilon+t)\)">\(F(t)=g(\varepsilon+t)\)</span>, with measure <span class="math" data-tex="\(\rho\)">\(\rho\)</span> by Theorem 3.1. Then <span class="math" data-tex="\(0=F(t_0-\varepsilon)=\int v^{t_0-\varepsilon}\,d\rho\)">\(0=F(t_0-\varepsilon)=\int v^{t_0-\varepsilon}\,d\rho\)</span>, and the integrand is positive on <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>; so <span class="math" data-tex="\(\rho((0,1])=0\)">\(\rho((0,1])=0\)</span>. Since <span class="math" data-tex="\(\rho(\{0\})=0\)">\(\rho(\{0\})=0\)</span>, <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span> and <span class="math" data-tex="\(F=0\)">\(F=0\)</span>. Hence <span class="math" data-tex="\(g=0\)">\(g=0\)</span> on <span class="math" data-tex="\([\varepsilon,\infty)\)">\([\varepsilon,\infty)\)</span> for every small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-T] OpenAI, <em>Universal optimality of the triangular lattice</em>, OpenAI Math Release preprint, 23 September 2026, Section 7. https://github.com/openai/math/tree/main/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026</li>
+<li>[Cohn–Kumar] H. Cohn and A. Kumar, <em>Universally optimal distribution of points on spheres</em>, Journal of the American Mathematical Society 20 (2007), Section 9. https://arxiv.org/abs/math/0607446</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
