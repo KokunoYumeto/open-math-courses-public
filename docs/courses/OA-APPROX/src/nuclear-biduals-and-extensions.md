@@ -6,13 +6,33 @@ There are two different approximation questions here. A finite model of a C*-alg
 
 The central projection is useful even before approximation enters the argument: it explains how the quotient map acts on the bidual, and why the original algebra need not split. The other construction is a completely positive retraction onto a represented commutant. We build it on a dilation space, including the extra step needed when the coefficient algebra has no unit. These two constructions meet in the nuclearity and extension theorems below.
 
-Prerequisites are [Tensor positivity and nuclearity](tensor-positivity-nuclearity.md), [Finite models of a von Neumann algebra](semidiscrete-finite-models.md), and Averaging, crossed products, and injectivity. The [state representation and bidual construction](../../foundations-of-von-neumann-algebras/src/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.md#constructing-the-bidual-before-using-it) identifies \(A^{**}\) with its universal represented closure and its predual with \(A^*\). [The normal-extension theorem](../../foundations-of-von-neumann-algebras/src/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.md#oa-fnd-wa-02) gives central kernels and normal isomorphisms onto essential represented closures. Its [second-adjoint proof](../../foundations-of-von-neumann-algebras/src/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.md#second-adjoints-of-homomorphisms) treats inclusions and quotients. The underlying central-ideal result is [Theorem 8.3(4)](../../foundations-of-von-neumann-algebras/src/the-double-commutant-theorem.md#oa-fnd-bi-10).
+Prerequisites are [Tensor positivity and nuclearity](tensor-positivity-nuclearity.md), [Finite models of a von Neumann algebra](semidiscrete-finite-models.md), and Averaging, crossed products, and injectivity. The complete universal predual and bidual product identify the represented bidual with \(A^{**}\) and its predual with \(A^*\). The normal extension and central quotient prove the image, central kernel and globally normal inverse on the essential representation space. The [exact quotient norm and completeness argument](tensor-positivity-nuclearity.md#tn07) and positive two-sided approximate identity supply the nonunital quotient and ideal inputs. Scalar calculus, Hilbert projections, Hahn–Banach, dual-ball compactness and the concrete predual are proved in the scalar and coefficient foundations.
 
 All algebras may be nonunital, and all Hilbert spaces and index sets may be arbitrary. Zero algebras have the unique zero interpretation. Inner products are linear in the second variable.
 
 ## Read the approximation topology first
 
 **Example 3.3.** For any set \(I\), \(c_0(I)^*=\ell^1(I)\) and \(c_0(I)^{**}=\ell^\infty(I)\). Coordinate truncations through \(\mathbb C^F\), directed by finite subsets \(F\subset I\), approximate the identity of \(c_0(I)\) in norm. On the bidual the same truncations approximate the identity ultraweakly, because every normal functional is an absolutely summable coordinate family. Both algebras therefore have the appropriate finite models, even when \(I\) is uncountable. The maps land in finite commutative algebras, which embed as diagonal matrix algebras with completely positive diagonal retractions.
+
+<a id="coordinate-duality-detail"></a>
+**Proof of the coordinate identifications.** Let \(\delta_i\) be the function that is one at \(i\) and zero elsewhere. For \(f\in c_0(I)^*\), put \(a_i=f(\delta_i)\). For every finite \(F\subset I\), choose scalars \(\theta_i\) of modulus one with \(\theta_i a_i=|a_i|\), choosing any phase if \(a_i=0\). The vector \(\sum_{i\in F}\theta_i\delta_i\) has norm at most one, so
+\[
+\sum_{i\in F}|a_i|\leq\|f\|.
+\]
+Thus \(a\in\ell^1(I)\), where the sum is the supremum of its finite subsums. For each positive integer \(n\), the set of indices with \(|a_i|\geq1/n\) is finite; their union contains the support of \(a\). Finite tails therefore tend to zero. Finite-support functions are norm dense in \(c_0(I)\): for \(x\in c_0(I)\), the set where \(|x_i|\geq\varepsilon\) is finite and contains every coordinate needing an error of that size. Hence continuity gives
+\[
+f(x)=\sum_i a_i x_i,\qquad \|f\|=\sum_i|a_i|.
+\]
+The upper norm bound follows by absolute summation, and the finite phase tests give the reverse bound. Conversely every absolutely summable family defines this bounded functional.
+
+If \(g\in\ell^1(I)^*\), its coordinates \(y_i=g(\delta_i)\) satisfy \(|y_i|\leq\|g\|\). Density of finite-support families in \(\ell^1(I)\) gives \(g(a)=\sum_i a_i y_i\); conversely each bounded \(y\) defines such a functional. Single-coordinate tests and the absolute-sum bound give \(\|g\|=\sup_i|y_i|\). These are the asserted isometric dual identifications. Coordinatewise multiplication on \(\ell^\infty(I)\) extends that of \(c_0(I)\) and is separately weak* continuous, because multiplication by a fixed bounded family preserves \(\ell^1(I)\). The bidual product construction identifies this product with the universal bidual product.
+
+At every matrix size positivity is coordinatewise. Restriction to a finite set, diagonal inclusion into \(M_{|F|}\), diagonal compression from \(M_{|F|}\), and extension by zero all preserve these positive matrix cones and contract the norm. Their composite is the truncation \(P_F\). The empty set uses the zero maps through \(M_1\). For \(x\in c_0(I)\), \(\|x-P_Fx\|\to0\); for \(a\in\ell^1(I)\) and bounded \(x\), absolute summation gives
+\[
+|\langle a,x-P_Fx\rangle|
+\leq\|x\|_\infty\sum_{i\notin F}|a_i|\longrightarrow0.
+\]
+This proves both finite-model assertions, including empty and uncountable index sets.
 
 Exercise 5 gives the estimate that separates ultraweak convergence from norm convergence in this model.
 
@@ -33,7 +53,7 @@ All identifications are normal *-isomorphisms; the first extends the inclusion o
 
 Choose a positive contractive approximate identity \((u_i)\) of \(I\). It converges strongly to the projection \(p\) onto \(\overline{IH}\). Indeed it tends to the identity on vectors \(a\eta\), \(a\in I\), by norm approximation of \(a\); it vanishes on the orthogonal complement, since that complement is killed by \(I\). Uniform boundedness extends the convergence to all vectors. The subspace \(\overline{IH}\) reduces \(A\), since \(I\) is a two-sided *-ideal, so \(p\in M'\). Also \(p\in M\), as the bounded strong limit of \((u_i)\). Thus \(p\) is central.
 
-Every element of \(I\), and hence of \(J\), satisfies \(x=px\). Conversely \(u_i x\in J\) for \(x\in M\), and \(u_i x\to px\) ultraweakly. Hence \(J=pM\). The second adjoint of the inclusion identifies \(I^{**}\) normally and isometrically with this closure.
+Every element of \(I\), and hence of \(J\), satisfies \(x=px\). Conversely \(u_i x\in J\) for \(x\in M\), and \(u_i x\to px\) ultraweakly. Hence \(J=pM\). Here is that second-adjoint identification explicitly. Restriction \(r:A^*\to I^*\) is onto by Hahn–Banach and gives every functional on \(I\) an extension of the same norm. Thus \(r^*:I^{**}\to A^{**}\) is a normal isometry. Its range is \((I^\perp)^\perp\): one inclusion is immediate, and an \(X\) annihilating \(I^\perp=\ker r\) defines a well-defined bounded functional \(r(f)\mapsto X(f)\) on \(I^*\), with the same norm by those norm-preserving extensions. The weak* annihilator identity gives \((I^\perp)^\perp=J\). Composing the inclusion \(I\to A\) with the universal representation of \(A\), the full normal-extension construction identifies \(r^*\) with its normal star-homomorphic extension, by agreement on the weak* dense copy of \(I\). Hence \(I^{**}\) is normally and isometrically identified with \(J=pM\).
 
 On the dual side \(q^*:(A/I)^*\to A^*\) is an isometry with range
 \[
@@ -43,11 +63,11 @@ Therefore
 \[
 \ker q^{**}=(I^\perp)^\perp=J=pM.
 \]
-The middle equality is the weak* annihilator identity proved in [CP-05](../../OA-FLOW/src/OA-FLOW-CP.md#oa-flow.cp.5): a point outside a weak* closed linear subspace is separated from it by a finite linear combination of the coordinates defining a disjoint basic neighborhood. The map \(q^{**}\) is onto: a bounded functional on \(I^\perp\subset A^*\) extends to \(A^*\) by Hahn–Banach, and that extension is an element of \(A^{**}\) with the required image. It is a normal \*-homomorphism by the second-adjoint theorem. Restricting to \(E=(1-p)M\) gives a bijective normal \*-homomorphism \(V:E\to N=(A/I)^{**}\). An injective \*-homomorphism is isometric. Moreover \(V\) maps the closed unit ball onto the closed unit ball: Hahn–Banach gives a lift of any \(Y\in N\) with norm \(\|Y\|\), and compression by \(1-p\) leaves its image unchanged and cannot increase its norm.
+The middle equality is the weak* annihilator identity proved in the predual annihilator proof: a point outside a weak* closed linear subspace is separated from it by a finite linear combination of the coordinates defining a disjoint basic neighborhood. The map \(q^{**}\) is onto: a bounded functional on \(I^\perp\subset A^*\) extends to \(A^*\) by Hahn–Banach, and that extension is an element of \(A^{**}\) with the required image. It is a normal star homomorphism by the normal-extension proof, applied to the quotient followed by its universal representation; agreement on \(A\) identifies that extension with \(q^{**}\). Restricting to \(E=(1-p)M\) gives a bijective normal \*-homomorphism \(V:E\to N=(A/I)^{**}\). An injective \*-homomorphism is isometric. Moreover \(V\) maps the closed unit ball onto the closed unit ball: Hahn–Banach gives a lift of any \(Y\in N\) with norm \(\|Y\|\), and compression by \(1-p\) leaves its image unchanged and cannot increase its norm.
 
 <a id="ideal-splitting-normal-inverse"></a>
 
-Here is a direct proof that the inverse is normal. The concrete predual of \(E\) is the quotient of \(M_*\) by the annihilator of \(E\), with \(E=(E_*)^*\) isometrically, by [CP-05–06](../../OA-FLOW/src/OA-FLOW-CP.md#oa-flow.cp.5). The preadjoint \(V_*:N_*\to E_*\) is an isometry because \(V\) maps the unit ball onto the unit ball, so its range is norm closed. If \(X\in E=(E_*)^*\) annihilates that range, then \(\rho(VX)=0\) for every \(\rho\in N_*\), whence \(VX=0\) and \(X=0\). Hahn–Banach makes the range norm dense: otherwise it would supply a nonzero bounded functional annihilating its closed range. Thus \(V_*\) is a surjective isometry, its inverse is bounded, and \(V^{-1}=(V_*^{-1})^*\) is weak* continuous. This proves normality of the inverse, including zero summands. Combining the two central summands proves the decomposition. \(\square\)
+Here is a direct proof that the inverse is normal. The concrete predual of \(E\) is the quotient of \(M_*\) by the annihilator of \(E\), with \(E=(E_*)^*\) isometrically, by the complete concrete-predual quotient proof. The preadjoint \(V_*:N_*\to E_*\) is an isometry because \(V\) maps the unit ball onto the unit ball, so its range is norm closed. If \(X\in E=(E_*)^*\) annihilates that range, then \(\rho(VX)=0\) for every \(\rho\in N_*\), whence \(VX=0\) and \(X=0\). Hahn–Banach makes the range norm dense: otherwise it would supply a nonzero bounded functional annihilating its closed range. Thus \(V_*\) is a surjective isometry, its inverse is bounded, and \(V^{-1}=(V_*^{-1})^*\) is weak* continuous. This proves normality of the inverse, including zero summands. Combining the two central summands proves the decomposition. \(\square\)
 
 The splitting takes place in \(A^{**}\). It does not assert that \(A\) is a direct sum of its ideal and quotient.
 
@@ -140,7 +160,7 @@ E_F(x)=z_Fx,\qquad E_F(1)=z_F.
 \]
 The finite sets are directed by inclusion, and \(z_F\uparrow1\) strongly, hence ultraweakly, by the bounded monotone convergence theorem. The compactness of the product of ultraweakly compact balls gives a subnet of \((E_F)\) converging ultraweakly at each \(b\in B(H)\). Its limit \(E\) is linear and completely positive: each matrix quadratic form is a finite sum of vector coefficients and preserves positivity under the limit. Its norm is at most one, \(E(1)=1\), and \(E(x)=x\) for all \(x\in M\). Thus \(E\) is a ucp retraction onto \(M\). This uses finite overlapping covers rather than a maximal disjoint family of cyclic summands, and works for arbitrary state sets and Hilbert spaces. \(\square\)
 
-The full [normal-extension theorem](../../foundations-of-von-neumann-algebras/src/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.md#oa-fnd-wa-02) supplies the central kernels used here. Bounded monotone convergence is [Vigier's theorem](../../foundations-of-von-neumann-algebras/src/the-spectral-theorem-for-bounded-self-adjoint-operators.md#oa-fnd-st-06). The product compactness and predual inputs are [CF-02–03](../../OA-FLOW/src/OA-FLOW-CF.md#oa-flow.cf.2) and [CP-05–06](../../OA-FLOW/src/OA-FLOW-CP.md#oa-flow.cp.5). The commutant permanence theorem also lets the hypothesis be stated using injectivity of each \(\pi_\varphi(A)'\).
+The complete normal-extension and central-quotient proofs supply the central kernels used here. C02 proves the arbitrary projection supremum and strong convergence. The product compactness and predual quotient arguments are in the scalar foundations and coefficient foundations. For commutant permanence use the complete normal-representation corner comparison and amplification, opposite and commutant proofs. Their standard pair is supplied by the arbitrary-algebra construction; the full natural-cone construction provides a standard representation as well. These arguments let the hypothesis be stated using injectivity of each \(\pi_\varphi(A)'\).
 
 <a id="3-nuclearity-is-injectivity-of-the-universal-bidual"></a>
 ## Convert the two approximation questions
@@ -152,9 +172,9 @@ A\text{ is nuclear}
 A^{**}\text{ is injective}.
 \]
 
-**Proof.** Starting with nuclear \(A\), Proposition 2.1 constructs a retraction onto every state GNS commutant. Commutant permanence gives injectivity of the corresponding represented von Neumann algebras; the finite-cover construction of Lemma 1.1 then gives injectivity of \(A^{**}\).
+**Proof.** If \(A=0\), the zero maps through \(M_1\) give its identity, and its zero bidual is injective. Now assume \(A\ne0\). Starting with nuclear \(A\), Proposition 2.1 constructs a retraction onto every state GNS commutant. Commutant permanence gives injectivity of the corresponding represented von Neumann algebras; the finite-cover construction of Lemma 1.1 then gives injectivity of \(A^{**}\).
 
-In the reverse direction, let \(M=A^{**}\) be injective. The injective/semidiscrete equivalence in the averaging lesson produces cpc predual factorizations
+In the reverse direction, let \(M=A^{**}\) be injective. The full continuous-core construction, [faithful-trace finite matrix models](hypertraces-finite-injectivity.md#theorem-5-1), [finite-trace corner passage](hypertraces-finite-injectivity.md#semifinite-trace-corner-bootstrap), and normal coefficient-compression transfer prove the injectivity-to-semidiscreteness implication used here. The core uses the real-line modular action of a faithful normal semifinite weight; the algebra itself need not have a faithful normal state. Its weight, spectral and coefficient inputs are proved in the earlier scalar and weight foundations, with the complete balanced-weight graph and cocycle arguments. All normal tests and arbitrary projection families are retained. The injective/semidiscrete equivalence in the averaging lesson produces cpc predual factorizations
 \[
 M_*\longrightarrow M_n^*\longrightarrow M_*
 \]
@@ -180,6 +200,45 @@ I\text{ and }A/I\text{ are nuclear}.
 If \(A\) is nuclear, Theorem 3.1 makes its bidual injective. Its two central corners are injective, so their identifications with \(I^{**}\) and \((A/I)^{**}\), followed by Theorem 3.1, make \(I\) and \(A/I\) nuclear. Conversely, nuclearity of those two algebras makes both bidual summands injective. Their product is injective, and the normal splitting then makes \(A^{**}\) injective. Theorem 3.1 returns nuclearity of \(A\). \(\square\)
 
 **Example 4.3.** Let \(A=C([0,1])\), and \(I=\{f:f(0)=0\}\cong C_0((0,1])\). Evaluation at zero gives \(A/I\cong\mathbb C\). The ideal and quotient are nuclear by the commutative finite-model construction, so the extension theorem gives nuclearity of \(A\). The central projection selecting \(I^{**}\) belongs to \(A^{**}\) and not to \(A\); the next exercise section verifies this directly.
+
+<a id="interval-finite-model-detail"></a>
+**The finite models in this example.** For \(n\geq1\), put \(t_j=j/n\), \(0\leq j\leq n\). Let \(h_j\) be the continuous piecewise linear function that is one at \(t_j\), zero at all other grid points, and linear on each interval between consecutive grid points. Then \(h_j\geq0\), \(\sum_jh_j=1\), and \(h_j(t)>0\) only when \(|t-t_j|<1/n\). Define
+\[
+S_n(f)=\operatorname{diag}(f(t_0),\ldots,f(t_n)),\qquad
+T_n(X)=\sum_{j=0}^n X_{jj}h_j.
+\]
+The recording map is a unital star homomorphism into diagonal matrices. The reconstruction map is ucp: for a positive matrix \([X_{ab}]\) over \(M_{n+1}\), its pointwise image is the positive matrix \(\sum_jh_j(t)[(X_{ab})_{jj}]\), a convex combination of positive scalar compressions. Its unit value is one; the complete unit-value norm formula gives contractivity. Uniform continuity yields
+\[
+\|T_nS_n(f)-f\|_\infty
+\leq\sup_{|s-t|\leq1/n}|f(s)-f(t)|\longrightarrow0.
+\]
+For \(I=\{f:f(0)=0\}\), omit the coordinate \(j=0\) in both maps. Each remaining \(h_j\) vanishes at zero, so reconstruction takes values in \(I\); its unit-value function in the ambient algebra is \(1-h_0\leq1\), and the same matrix calculation gives complete positivity and contractivity. Since the omitted sample equals \(f(0)=0\), the composite and its error estimate are unchanged. The quotient \(\mathbb C\) uses the identity through \(M_1\). The full finite-model/nuclearity equivalence in [Theorem 3.1 of the tensor lesson](tensor-positivity-nuclearity.md#theorem-3-1) therefore proves all three nuclearity assertions directly.
+
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="interval-title interval-desc" width="820" height="370" viewBox="0 0 820 370">
+<title id="interval-title">Sampling and positive interpolation for the interval</title>
+<desc id="interval-desc">For the exact grid n equals four, the hat function h two has value zero at one quarter and three quarters and one at one half. Its support is the closed interval from one quarter to three quarters. Sampling records the five endpoint and interior values, and reconstruction uses all nonnegative hats, which sum to one. For the ideal of functions vanishing at zero, omit sample zero and hat zero. The same composite is obtained on that ideal and the reconstruction unit value is one minus hat zero, at most one.</desc>
+<rect x="1" y="1" width="818" height="368" rx="12" fill="#f7fafc" stroke="#a4b9c8"/>
+<g font-family="Arial,sans-serif" fill="#15394f">
+<text x="24" y="34" font-size="21" font-weight="bold">The exact grid n = 4: one hat, then the matrix model</text>
+<path d="M70 190H750 M70 190V64" stroke="#285d7d" stroke-width="2" fill="none"/>
+<path d="M70 190H240L410 82L580 190H750" stroke="#2b7553" stroke-width="3" fill="none"/>
+<text x="425" y="84" font-size="18">h₂(1/2) = 1</text>
+<text x="310" y="151" font-size="16">h₂ ≥ 0</text>
+<text x="35" y="87" font-size="16">1</text>
+<text x="35" y="195" font-size="16">0</text>
+<g font-size="16" text-anchor="middle">
+<text x="70" y="215">0</text><text x="240" y="215">1/4</text><text x="410" y="215">1/2</text><text x="580" y="215">3/4</text><text x="750" y="215">1</text>
+</g>
+<text x="24" y="251" font-size="17">S₄(f) = diag(f(0), f(1/4), f(1/2), f(3/4), f(1))</text>
+<text x="24" y="279" font-size="17">T₄(X) = Σⱼ Xⱼⱼ hⱼ; hⱼ ≥ 0 and Σⱼ hⱼ = 1. Both maps are cpc.</text>
+<text x="24" y="310" font-size="16">For I = {f : f(0) = 0}, omit j = 0: T₄(1) = 1 − h₀ ≤ 1.</text>
+<text x="24" y="342" font-size="16">Every n: ‖TₙSₙ(f) − f‖∞ ≤ sup{|f(s) − f(t)| : |s − t| ≤ 1/n}.</text>
+</g>
+</svg>
+
+*Figure.* The plotted triangle is exactly \(h_2\) for \(n=4\); all five hats together give the partition of unity. The maps and the error bound are the ones proved above. Restricting to \(I\) removes the zero sample while preserving the composite because \(f(0)=0\).
+
+The integration state in Exercise 4 uses the [complete scalar integral and \(L^2\) construction](constant-car-reviewed-weight-foundations.html#p-oa-flow-sc). Its GNS norm is exactly \(\|f\|_2^2=\int_0^1|f|^2\). Continuous functions are dense in this \(L^2\) space by the compact-cutoff approximation in that construction, so its GNS representation is multiplication on \(L^2([0,1])\). Multiplication by an interval indicator is a bounded projection commuting with every continuous multiplication operator. The nonzero normalized interval indicator belongs to its range, proving its norm is one, as used in the exercise.
 
 ## Order laboratory: domination and ambient norm
 
@@ -213,6 +272,15 @@ Commutation identifies all other form coefficients from this functional, proving
 \qquad z_{ij}=R_\varphi^{-1}(f_{ij}).
 \]
 Density of \(\pi(A)\xi\) proves \([z_{ij}]\ge0\). Thus both directions preserve every matrix cone even in the nonunital case, while no ambient inverse norm bound has been introduced.
+
+<a id="cyclic-central-support-detail"></a>
+### The central support used by a cyclic restriction
+
+For a projection \(e\in M'\), let \(w\) project onto \(\overline{M'eH}\). This closed space reduces \(M'\). It also reduces \(M\): for \(x\in M\) and \(y\in M'\), the vector \(xye\eta=yex\eta\) stays in \(M'eH\), and the same calculation applies to \(x^*\). Consequently \(w\) belongs to both commutants and is central. It majorizes \(e\). If \(z\) is any central projection majorizing \(e\), then \(M'eH\subset zH\); hence \(w\leq z\). This proves directly that \(w=c_{M'}(e)\), as in the complete central-support construction C04.
+
+The restriction \(T\) of \(M\) to \(eH\) has kernel \(M(1-w)\). If \(xe=0\), then \(xy e\eta=yxe\eta=0\) for every \(y\in M'\), so \(xw=0\) by density; the converse follows from \(e\leq w\). Restriction is normal: a series-vector functional on \(B(eH)\) remains such a functional when its vectors are included in \(H\). On \(Mw\), it is an injective star homomorphism and hence isometric by TN07. Multiplication by \(w\) does not change its value, so the image of the unit ball of \(M\) is the image of the unit ball of \(Mw\). Normality and dual-ball compactness make this image ultraweakly compact and closed. Bounded strong density ODF07 for the represented algebra then puts the entire unit ball of its closure in that image. Thus the restriction maps \(Mw\) isometrically onto the represented closure. The complete preadjoint argument in the central quotient and globally normal inverse, applied to this corner, proves that its inverse is normal as well: its preadjoint is an isometry with closed range, and Hahn–Banach and injectivity make that range all of the corner predual.
+
+In Exercise 2, \(\overline{A\xi}\) reduces \(M\) by bounded strong density, contains \(\xi\), and lies in \(zH\); its projection is a nonzero \(e\in M'\) with \(e\leq z\). The preceding least-central-projection argument gives \(0\ne w\leq z\), without requiring \(e\in M\).
 
 ## 5. Exercises with solutions
 
@@ -260,6 +328,8 @@ Nathanial P. Brown, [The symbiosis of C*- and W*-algebras](https://arxiv.org/pdf
 William B. Arveson, [Subalgebras of C*-algebras](https://projecteuclid.org/euclid.acta/1485889628), *Acta Mathematica* 123 (1969), 141–224. Theorem 1.2.3 proves the extension method behind Brown's commuting-range construction. Lemma 1.4.1 and Theorem 1.4.2 prove the dilation-commutant order correspondence. The full extension and unital dilation providers are linked in Proposition 2.1, which then supplies the nonunital tensor-factor construction. The order laboratory supplies the scalar cyclic form, both matrix directions and the precise domination bound.
 
 - Bruce Blackadar, [Operator Algebras](https://www.bruceblackadar.com/Mathematics/Cycr.pdf#page=347), author-hosted edition dated 8 February 2017. III.1.1.13, printed pp.238–239 (PDF pp.246–247), describes central ideals; III.5.2.9–11, printed p.339 (PDF p.347), describes representation extensions, second adjoints of homomorphisms and the ideal bidual splitting. The full ideal approximate-unit, duality and normal-inverse arguments are given in the linked proofs and Proposition 4.1 above.
-- [Bidual foundations] The [state representation and predual identification](../../foundations-of-von-neumann-algebras/src/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.md#constructing-the-bidual-before-using-it), [Lemma 2.1](../../foundations-of-von-neumann-algebras/src/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.md#oa-fnd-wa-02), and the [second-adjoint proof](../../foundations-of-von-neumann-algebras/src/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.md#second-adjoints-of-homomorphisms), in the foundations of von Neumann algebras course. The central-kernel input is [Theorem 8.3(4)](../../foundations-of-von-neumann-algebras/src/the-double-commutant-theorem.md#oa-fnd-bi-10).
-- [GNS order] *Completely positive maps*, Theorem 7.3(1) and (4), in the existing foundations course. The inverse is used with domination by the distinguished state, with no unjustified ambient norm bound.
-- [Central support] *Projections and types of von Neumann algebras*, Proposition 3.5, in the existing foundations course. The central-support geometry is used in Exercise 2. Lemma 1.1 instead uses the normal-extension theorem for all state kernels and finite covers.
+- [Bidual foundations] The complete state-coefficient predual and bidual product, normal extension, and central quotient with normal inverse.
+- [GNS order] The full [exact-marginal cyclic order construction](tensor-positivity-nuclearity.md#2-keep-a-marginal-exactly-fixed) and the order laboratory above, including both matrix directions and domination bounds.
+- [Central support] The full C04 central-support construction and the cyclic-restriction proof above.
+
+The linked human publications retain their own rights. Their free reading access supplies no redistribution or adaptation licence.

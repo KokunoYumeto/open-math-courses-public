@@ -49,7 +49,7 @@ A real function \(\psi\) on a topological space \(X\) is an **exhaustion functio
 
 **Definition 2.1.** A complex manifold is a **Stein manifold** if it has a smooth strictly plurisubharmonic exhaustion function.
 
-*Reference:* this is the form of the definition used in [Complex analytic spaces and analytification](course:AG-QC/complex-analytic-spaces-and-analytification) and in the lesson [Serre's comparison theorems and Chow's theorem](course:AG-QC/serres-comparison-theorems-and-chows-theorem). H. Grauert proved its equivalence with the classical definition by holomorphic convexity; no result of this course uses that equivalence.
+*Reference:* this is the form of the definition used in Complex analytic spaces and analytification and in the lesson Serre's comparison theorems and Chow's theorem. H. Grauert proved its equivalence with the classical definition by holomorphic convexity; no result of this course uses that equivalence.
 
 **Proposition 2.2.** Let \(X\) be a complex manifold.
 

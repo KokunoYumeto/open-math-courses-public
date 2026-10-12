@@ -529,7 +529,7 @@ w_q(\alpha)\le a+1\quad\text{on }H_c^1(U,L).
 \]
 For the usual algebraic purity at every complex embedding and integral \(a\), this cohomology has an integral mixed filtration with weights at most \(a+1\).
 
-Here is the geometric package proved in Proposition B.2, together with the cohomological hypotheses still needed. After sufficient ampleness and a finite constant-field extension, a smooth projective surface with normal-crossing boundary has a pencil whose axis is transverse and disjoint from that boundary. Blowing up its finitely many axis points produces a map to \(\mathbb P^1\). Outside finitely many exceptional values its open fibres and coefficient sheaf are transversely tamely locally acyclic. Each exceptional fibre has at most one exceptional point, of one of three types: an interior ordinary node, simple tangency with a smooth boundary branch, or passage through a crossing of two boundary branches. Propositions C.1–C.3 compute the ordinary arithmetic node and both boundary configurations, including the coefficient filtration. The relevant primary loci are Weil II, 3.1.1–3.1.5 and 3.2.14. Appendix B proves the pencil geometry, including the actual étale nodal equation, and deduces transverse tame local acyclicity from explicit ordinary covering and cohomology inputs. Appendix C derives the arithmetic nodal formula from a proper conic and an intrinsic branch calculation. Smooth local acyclicity, proper comparison, projective-line cohomology, normal-crossing purity and the normalized adic formalism retain their own programme proof obligations. Neither the inequalities below nor nearby-cycle t-exactness alone supplies those foundations.
+Here is the geometric package proved in Proposition B.2, together with the cohomological hypotheses still needed. After sufficient ampleness and a finite constant-field extension, a smooth projective surface with normal-crossing boundary has a pencil whose axis is transverse and disjoint from that boundary. Blowing up its finitely many axis points produces a map to \(\mathbb P^1\). Outside finitely many exceptional values its open fibres and coefficient sheaf are transversely tamely locally acyclic. Each exceptional fibre has at most one exceptional point, of one of three types: an interior ordinary node, simple tangency with a smooth boundary branch, or passage through a crossing of two boundary branches. Propositions C.1–C.3 compute the ordinary arithmetic node and both boundary configurations, including the coefficient filtration. The relevant primary loci are Weil II, 3.1.1–3.1.5 and 3.2.14. Appendix B proves the pencil geometry, including the actual étale nodal equation, and deduces transverse tame local acyclicity from explicit ordinary covering and cohomology inputs. Appendix C derives the arithmetic nodal formula from a proper conic and an intrinsic branch calculation. Ordinary smooth local acyclicity is supplied by Constructible complexes, AT.1–AT.3, with its canonical nearby-cycle unit in AT.5. Lemma B.3c below supplies ordinary proper nearby-cycle transport from Constructible complexes, BE.7–BE.8 and BZ.2. Projective-line cohomology, normal-crossing purity and normalized adic comparison remain separate inputs; both supplied comparison proofs retain their recursive foundations. Neither the inequalities below nor nearby-cycle t-exactness alone supplies those foundations.
 
 **Proof.** The unit-character normalization in the strict estimate reduces \(a\) to zero: choose an eigenvalue \(\delta\) at a closed point of degree \(e\), and twist by the continuous character with geometric Frobenius an \(e\)-th root of \(\delta^{-1}\). Its complex modulus is \(q^{-a/2}\); it is an \(\ell\)-adic unit. Undoing it adds \(a\) to every weight. Define \(B(k)\), for integers \(k\ge0\), to be the assertion
 \[
@@ -932,16 +932,64 @@ Finally let \(A\) be the strict localization of a smooth pair at a geometric poi
 
 The source comparison for these independently written arguments is the pinned [AI Integrated Stacks, More on Algebra](https://raw.githubusercontent.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/565b10e987aba5969b21145a0833f42d69f96790/more-algebra.tex), `lemma-abhyankar` and `lemma-characterize-tame`, and [Fundamental Groups of Schemes](https://raw.githubusercontent.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/565b10e987aba5969b21145a0833f42d69f96790/pione.tex), `lemma-abhyankar-one-divisor`. The programme purity, gluing, regular-local algebra and henselian providers are the exact links above. Their recursive foundations are not certified by this finite-cover argument.
 
+### Proper transport of the specialization triangle
+
+**Lemma B.3c.** Let \(S\) be a strictly henselian trait, choose geometric points \(\bar s\) and \(\bar\eta\) over its closed and generic points, and let \(h:X\to Y\) be a proper \(S\)-morphism. Write \(h_{\bar s}:X_{\bar s}\to Y_{\bar s}\) and \(h_{\bar\eta}:X_{\bar\eta}\to Y_{\bar\eta}\) for its fibre maps, and \(i_X,j_X,i_Y,j_Y\) for the respective maps from those fibres to the total spaces. For a bounded-below complex \(E\) of étale \(\Lambda=\mathbb Z/\ell^n\)-module sheaves on \(X\), define ordinary nearby cycles and the unshifted specialization cone by
+\[
+R\Psi_X E=i_X^*Rj_{X,*}j_X^*E,\qquad
+R\Phi_X E=\operatorname{Cone}(i_X^*E\xrightarrow{u_X}R\Psi_X E).
+\tag{B.8g}
+\]
+The map \(u_X\) is restriction of the adjunction unit. Then there are natural comparison isomorphisms
+\[
+\begin{aligned}
+i_Y^*Rh_*E&\xrightarrow{\sim}Rh_{\bar s,*}i_X^*E,\\
+R\Psi_Y(Rh_*E)&\xrightarrow{\sim}Rh_{\bar s,*}R\Psi_X E,\\
+R\Phi_Y(Rh_*E)&\xrightarrow{\sim}Rh_{\bar s,*}R\Phi_X E.
+\end{aligned}
+\tag{B.8h}
+\]
+They identify the specialization triangles, including the first arrow and the connecting map. The comparison is natural for coefficient maps and geometric-generic-point automorphisms. In particular it retains the inertia action and any arithmetic descent present in the data. No invertibility of the degree of a finite \(h\) is required.
+
+**Proof.** The input is the actual proper-base-change morphism proved in Constructible complexes, BE.7–BE.8. Its BZ.2 gives the corresponding strict-local transport argument. We spell out the maps and the prime-power coefficient check needed here. All derived images can be computed on underlying abelian complexes; naturality in scalar endomorphisms gives the displayed maps their \(\Lambda\)-linearity. Multiplication by \(\ell^n\) is the zero chain map on \(E\). Derived image is additive and therefore carries that zero morphism to multiplication by \(\ell^n\) on its image. Thus every cohomology sheaf of \(Rh_*E\), \(Rj_{X,*}j_X^*E\) and the other iterated images is killed by \(\ell^n\). These images are bounded below, since their left exact direct-image functors have bounded-below injective resolutions. Consequently BE.14 applies also to \(Rj_{X,*}j_X^*E\); its cohomology need not be constructible. No field-coefficient assumption from the opening scope of Appendix BZ is needed for this deduction.
+
+Denote proper base change in the generic and special squares by \(\beta_j\) and \(\beta_i\). The first isomorphism in (B.8h) is \(\beta_i(E)\). The second is the following composite, with every term on \(Y_{\bar s}\):
+\[
+\begin{aligned}
+i_Y^*Rj_{Y,*}j_Y^*Rh_*E
+&\xrightarrow{i_Y^*Rj_{Y,*}\beta_j(E)}
+ i_Y^*Rj_{Y,*}Rh_{\bar\eta,*}j_X^*E\\
+&\xrightarrow{\sim}i_Y^*Rh_*Rj_{X,*}j_X^*E\\
+&\xrightarrow{\beta_i(Rj_{X,*}j_X^*E)}
+ Rh_{\bar s,*}i_X^*Rj_{X,*}j_X^*E.
+\end{aligned}
+\tag{B.8i}
+\]
+The middle arrow is derived composition for the equality \(j_Yh_{\bar\eta}=hj_X\), not base change for a nonproper direct image. Direct image preserves injectives because its left adjoint, inverse image of abelian sheaves, is exact. Composing these injective models therefore gives the stated derived-composition isomorphism. The two other arrows are BE.14 for the proper map \(h\), which remains proper after either change of base.
+
+We check the specialization arrow itself. Before applying \(i_Y^*\), there are two maps from \(Rh_*E\) to \(Rj_{Y,*}Rh_{\bar\eta,*}j_X^*E\): the generic unit followed by \(Rj_{Y,*}\beta_j(E)\), and \(Rh_*\) of the unit \(E\to Rj_{X,*}j_X^*E\), followed by the composition identification. Transpose each through \(j_Y^*\dashv Rj_{Y,*}\) and then \(h_{\bar\eta}^*\dashv Rh_{\bar\eta,*}\). Both transposes are the same morphism
+\[
+j_X^*h^*Rh_*E\xrightarrow{j_X^*\epsilon_h(E)}j_X^*E,
+\tag{B.8j}
+\]
+where \(\epsilon_h:h^*Rh_*E\to E\) is the counit. For the first map this is the defining adjoint of \(\beta_j\). For the second, the \(j_X\)-unit followed by its counit cancels by the adjunction triangle identity, leaving precisely (B.8j). Equality of the transposes proves equality of the two maps. Restricting to \(Y_{\bar s}\) and using naturality of \(\beta_i\) now identifies \(u_Y\) with \(Rh_{\bar s,*}u_X\) under (B.8h).
+
+Use the mapping-cone triangles of these maps on injective complex models, as constructed for abelian sheaves in Constructible complexes, BF.3–BF.4. A homotopy-commuting square is carried to its cone map with the homotopy in the off-diagonal entry; its cone inclusion and projection commute with the first two maps. This is the cone comparison for the unit/counit construction above, not an arbitrary choice of a third arrow from an abstract isomorphism of groups. Derived direct image preserves these cone models. The comparison of their first two terms therefore induces the third isomorphism of (B.8h), with its connecting map and the convention (B.8g). All comparisons were defined by restriction, composition, units and counits. Applying a coefficient homomorphism or an automorphism of the chosen geometric generic point preserves each defining transpose, hence preserves the entire comparison. This proves the asserted actions without a choice of inertia generator. \(\square\)
+
+Two consequences identify the uses below. For a proper \(f:X\to S\), apply the lemma to \(h=f\). The geometric-point form of BE.8 identifies the resulting middle term with \(R\Gamma(X_{\bar\eta},E|_{X_{\bar\eta}})\). Thus applying \(R\Gamma(X_{\bar s},-)\) to the specialization triangle gives the actual special-to-generic cohomology map used in (C.5). For a finite boundary map, its geometric direct image is the finite sum of the fibre stalks and has no higher direct images. A constant section restricts to that same section at every generic point; when the special fibre has one underlying point and the generic fibre is the finite set \(B\), the unit is exactly the diagonal \(\Lambda\to\Lambda^B\). This gives the map in the tangency calculation, including a possibly wild permutation action.
+
+The lemma applies to closed immersions, finite normalizations and finite root covers because they are proper. It does not assert commutation with arbitrary nonproper pushforward. It supplies the ordinary finite-level comparison only: normalized adic nearby cycles and passage through coefficient limits require their own comparison. The recursive algebraic, curve and cohomological inputs of BE.1–BE.8 remain the stated dependencies of the provider.
+
 ### Vanishing away from the exceptional points
 
-We give the transverse boundary deduction with its cohomological inputs explicit. Use the proved tame Kummer covering description of a strictly local regular pair together with the following cohomological inputs: smooth local acyclicity for finite torsion coefficients of order invertible on the surface, and compatibility of nearby cycles with finite or proper pushforward. The last description says that a finite tame local system on the complement of a smooth divisor becomes constant after a cover obtained by adjoining a prime-to-characteristic root of its boundary parameter. Lemma B.3a and Proposition B.3b above prove the general tame DVR calculation and the strictly local covering description. Their purity and extension inputs are the exact programme proofs in Constructible complexes, AP.1–AP.5 and AQ.1–AQ.2. No prime-to-characteristic restriction on the total degree is introduced. Proposition B.2 alone does not supply this separate finite-cover argument.
+We give the transverse boundary deduction with its cohomological inputs explicit. Use the proved tame Kummer covering description of a strictly local regular pair together with ordinary smooth local acyclicity for finite torsion coefficients of order invertible on the surface, as proved in Constructible complexes, AT.3 and AT.5. The required ordinary finite/proper pushforward comparison, including the specialization cone, is [Lemma B.3c](#proper-transport-of-the-specialization-triangle). The covering description says that a finite tame local system on the complement of a smooth divisor becomes constant after a cover obtained by adjoining a prime-to-characteristic root of its boundary parameter. Lemma B.3a and Proposition B.3b above prove the general tame DVR calculation and the strictly local covering description. Their purity and extension inputs are the exact programme proofs in Constructible complexes, AP.1–AP.5 and AQ.1–AQ.2. No prime-to-characteristic restriction on the total degree is introduced. Proposition B.2 alone does not supply this separate finite-cover argument.
 
 **Lemma B.4.** Under these inputs, if both \(f:X\to B\) and \(D\to B\) are smooth near a point of a smooth boundary divisor, then
 \[
 R\Phi_f(j_!L)=0
 \tag{B.9}
 \]
-there for every finite tame lisse sheaf \(L\) on \(X-D\). The same deduction applies to adic sheaves when normalized adic nearby cycles are compatible with their finite coefficient systems.
+there for every finite tame lisse sheaf \(L\) on \(X-D\). The same deduction applies to adic sheaves by [Lemma C.2a](#normalized-nearby-cycles-and-the-completed-fibre): its normalized comparison retains the finite specialization cones, and a complete complex with zero reductions is zero.
 
 **Proof.** For a constant module \(M\), the sequence
 \[
@@ -949,7 +997,7 @@ there for every finite tame lisse sheaf \(L\) on \(X-D\). The same deduction app
 \longrightarrow i_*M_D\longrightarrow0
 \tag{B.10}
 \]
-reduces the claim to smooth local acyclicity on \(X,D\), using proper compatibility for the closed immersion \(i\).
+reduces the claim to smooth local acyclicity on \(X,D\), using [Lemma B.3c](#proper-transport-of-the-specialization-triangle) for the proper closed immersion \(i\). The constant sheaves meet the locally constant invertible-torsion hypotheses of Constructible complexes, AT.3; AT.5 identifies their actual specialization units, so their cones vanish. This applies separately on the smooth total space and smooth boundary after passage to the strict trait. It neither assumes the Kummer degree invertible in the coefficient ring nor passes to adic coefficients.
 
 Pass to the strictly local pair. Choose a Kummer cover \(g:X'\to X\), given in transverse coordinates by \(y=v^m\), which makes \(L\) constant on its open complement \(U'\); here \(m\) is prime to the field characteristic. Both \(X'\) and its boundary remain smooth over \(B\). On the complements, the adjunction map embeds \(L\) into \(g'_*g'^*L\): after the étale cover it is the diagonal map into a direct sum indexed by the cover. The cokernel is again a local system trivialized by that same cover. Iteration gives
 \[
@@ -958,14 +1006,14 @@ Pass to the strictly local pair. Choose a Kummer cover \(g:X'\to X\), given in t
 \qquad L_0=L,
 \tag{B.11}
 \]
-where each \(M_i\) is constant on \(U'\). Extension by zero is exact, and \(j_!g'_*M_i=g_*j'_!M_i\). The middle term has zero vanishing cycles by (B.10) upstairs and finite proper compatibility. Thus
+where each \(M_i\) is constant on \(U'\). Extension by zero is exact, and \(j_!g'_*M_i=g_*j'_!M_i\). The middle term has zero vanishing cycles by (B.10) upstairs and [Lemma B.3c](#proper-transport-of-the-specialization-triangle). Thus
 \[
 R\Phi_f(j_!L_i)\simeq R\Phi_f(j_!L_{i+1})[-1].
 \tag{B.12}
 \]
 For a degree-zero sheaf, the defining cone of its specialization map to \(R\Psi\) has no cohomology below degree \(-1\). Iterating (B.12) more than \(q+1\) times identifies its degree-\(q\) cohomology with a group below degree \(-1\), which is zero. This proves all degrees vanish. It does not divide by \(m\), so it is valid even when the coefficient prime divides the Kummer degree.
 
-For an adic sheaf, choose a stable lattice and apply the finite argument to its reductions. The stated finite-to-adic compatibility carries their zero nearby-cycle cones to zero, and inverting the coefficient prime preserves zero. Alternatively, for the tame-unipotent coefficients of Appendix A, the procyclic local tame representation has a finite flag with trivial grades. Extend those grades as constant sheaves and use (B.10) successively. This shorter argument still requires the local covering description and ordinary local-acyclicity formalism. \(\square\)
+For an adic sheaf, choose a stable lattice and apply the finite argument to its reductions. [Lemma C.2a](#normalized-nearby-cycles-and-the-completed-fibre) carries their zero nearby-cycle cones to zero in the derived-complete category, and inverting the coefficient prime preserves zero. Alternatively, for the tame-unipotent coefficients of Appendix A, the procyclic local tame representation has a finite flag with trivial grades. Extend those grades as constant sheaves and use (B.10) successively. This shorter argument still requires the local covering description and ordinary local-acyclicity formalism. \(\square\)
 
 Apply the lemma to \(j_!\pi^*G\) on the pencil surface. Off the exceptional values, the boundary is smooth over the parameter line, so (B.9) and interior smooth local acyclicity give local acyclicity everywhere. Proper compatibility and constructibility then give lisse sheaves \(R^rf_!\pi^*G\) on that parameter open. Over a strict trait at an exceptional value, vanishing cycles are supported at its unique exceptional point. This proves the support reduction used for (A.11), relative to the stated ordinary foundations. Propositions C.1–C.3 compute the étale cohomology of that local model, its arithmetic descent and the two boundary cases, proving the required degree-one concentration.
 
@@ -985,7 +1033,7 @@ In particular a sheaf supported on the special fibre has vanishing cycles equal 
 \]
 It is free of rank one, and interchanging the elements acts by \(-1\). This description also works at \(\ell=2\); only its reduction modulo two has trivial sign.
 
-The ordinary foundations used below are finite-coefficient proper base change, smooth local acyclicity, the specialization triangle and its étale locality, finite normalization, and the cohomology of the projective line with the degree-one Chern-class normalization. The intrinsic branch calculation additionally uses purity for a regular normal-crossing pair and the resulting acyclicity of its tower of prime-to-characteristic root covers. These foundations, and the normalized constructible adic comparison used at the end, retain their own proof obligations. No weight estimate or perverse purity theorem is an input to the local computations.
+The ordinary foundations used below are finite-coefficient proper base change, smooth local acyclicity, the specialization triangle and its étale locality, finite normalization, and the cohomology of the projective line with the degree-one Chern-class normalization. For the smooth local-acyclicity input, Constructible complexes, AT.1–AT.3 gives the strict-local restriction isomorphism for locally constant invertible-torsion coefficients, and AT.5 identifies it with the nearby-cycle unit. Its input is the canonical smooth comparison of AS.1–AS.7, with the actual stalk map in AT.1. Thus the constant finite coefficients used here have zero ordinary vanishing cycles on the smooth locus. The intrinsic branch calculation additionally uses purity for a regular normal-crossing pair and the resulting acyclicity of its tower of prime-to-characteristic root covers. Ordinary proper comparison and its specialization triangle are supplied by [Lemma B.3c](#proper-transport-of-the-specialization-triangle) from BE.7–BE.8 and BZ.2. The normalized finite-system and completed-fibre comparison is supplied by [Lemma C.2a](#normalized-nearby-cycles-and-the-completed-fibre). Normal-crossing purity and the other listed foundations remain separate; the smooth-comparison provider also retains its recursive curve, coefficient-continuity and algebraic dependencies. No weight estimate or perverse purity theorem is an input to the local computations.
 
 ### Compute a node inside a proper family
 
@@ -1008,7 +1056,7 @@ The only nonsmooth point of the map on the special fibre is \(x=[0:0:1]\). The c
 \]
 on the charts with \(s\ne0\) or \(r\ne0\), the inverse is given by the corresponding ratio of the displayed coordinates. The equations and parametrization remain valid in characteristic two.
 
-Smooth local acyclicity puts all vanishing cycles at \(x\). If \(V^q=\Phi_x^q(\Lambda)\), proper comparison gives
+The ordinary smooth-locus comparison of Constructible complexes, AT.5 puts all vanishing cycles at \(x\). If \(V^q=\Phi_x^q(\Lambda)\), [Lemma B.3c](#proper-transport-of-the-specialization-triangle) applied to this proper conic family gives
 \[
 \cdots\to H^q(C_{\bar s},\Lambda)\to
 H^q(C_{\bar\eta},\Lambda)\to V^q\to
@@ -1083,7 +1131,7 @@ R\Phi_f(j_!\Lambda)_x\simeq
 \]
 where \(B\) is the set of two geometric nearby boundary points. At a transverse crossing of two boundary branches the same formula holds, with \(B\) the branch set. Both identifications retain the full permutation action, and neither has a Tate factor.
 
-**Proof at a tangency.** In the strictly local trait the boundary map is finite of degree two and generically separable by Proposition B.2. Its geometric generic fibre is \(B\); its special fibre has one underlying geometric point. Nilpotents do not change the étale site. Finite base change gives nearby cohomology \(\Lambda^B\) in degree zero, while the specialization map is the diagonal \(\Lambda\to\Lambda^B\). Thus, for the boundary immersion \(i_D\),
+**Proof at a tangency.** In the strictly local trait the boundary map is finite of degree two and generically separable by Proposition B.2. Its geometric generic fibre is \(B\); its special fibre has one underlying geometric point. Nilpotents do not change the étale site. The finite-map case of [Lemma B.3c](#proper-transport-of-the-specialization-triangle) gives nearby cohomology \(\Lambda^B\) in degree zero and identifies the specialization map with the diagonal \(\Lambda\to\Lambda^B\). Thus, for the boundary immersion \(i_D\),
 \[
 R\Phi_f(i_{D*}\Lambda_D)_x=\varepsilon_\Lambda(B)[0].
 \]
@@ -1092,7 +1140,7 @@ Apply (C.1) to the exact sequence
 0\to j_!\Lambda\to\Lambda_X\to i_{D*}\Lambda_D\to0.
 \tag{C.13}
 \]
-The middle term has zero vanishing cycles by smooth local acyclicity. The resulting triangle gives (C.12), with its nonzero cohomology in degree one.
+The middle term has zero vanishing cycles by Constructible complexes, AT.5, at the stated finite invertible coefficient level. The resulting triangle gives (C.12), with its nonzero cohomology in degree one.
 
 In characteristic two, the boundary germ (B.6) is separable because its cubic coefficient is nonzero. Its two-point permutation action can be wildly ramified as a representation of the parameter trait. This is allowed in (C.12). The inseparable germ \(t=u^2\) would have only one geometric nearby point and cannot be substituted. Tameness of the coefficient around the boundary divisor is a separate condition from ramification of this boundary map.
 
@@ -1101,13 +1149,74 @@ In characteristic two, the boundary germ (B.6) is separable because its cubic co
 0\to j_!\Lambda\to\Lambda_X\to\nu_*\Lambda_{D'}\to S_x\to0.
 \tag{C.14}
 \]
-Let \(T\) be the image of its middle map. The ambient map and both normalized branch maps are smooth. Therefore \(R\Phi_f\Lambda_X=0\) and \(R\Phi_f\nu_*\Lambda_{D'}=0\), using finite proper comparison for the latter. Since \(S_x\) has zero generic restriction, (C.1) gives \(R\Phi_f S_x=S_x[1]\), concentrated in degree \(-1\). Applying vanishing cycles to the two short exact sequences defined by \(T\) gives
+Let \(T\) be the image of its middle map. The ambient map and both normalized branch maps are smooth. Therefore \(R\Phi_f\Lambda_X=0\) and \(R\Phi_f\nu_*\Lambda_{D'}=0\), using [Lemma B.3c](#proper-transport-of-the-specialization-triangle) for the finite normalization in the latter. Since \(S_x\) has zero generic restriction, (C.1) gives \(R\Phi_f S_x=S_x[1]\), concentrated in degree \(-1\). Applying vanishing cycles to the two short exact sequences defined by \(T\) gives
 \[
 R\Phi_f(j_!\Lambda)=R\Phi_fT[-1]
 =R\Phi_fS_x[-2]=S_x[-1].
 \tag{C.15}
 \]
 All maps respect permutations of the two branches. This proves the second formula and its arithmetic sign. \(\square\)
+
+### Normalized nearby cycles and the completed fibre
+
+**Lemma C.2a.** The finite-system comparison needed here is a comparison in the derived-complete category, not an interchange of an ordinary stalk and an inverse limit. Let \(O\) be the integers of a finite extension of \(\mathbb Q_\ell\), with uniformizer \(\pi\), and write \(O_n=O/\pi^n\). Let \(X\) be a scheme over a strictly henselian trait \(S\), with \(\ell\) invertible on \(S\). Choose geometric closed and generic points, and denote the induced maps by \(i:X_{\bar s}\to X\) and \(j:X_{\bar\eta}\to X\). On each pro-étale site use the constant coefficient sheaf \(\underline O\). Write \(C\) for derived \(\pi\)-completion, \(D^c\) for its complete objects, and \(a_c^*=Ca^*\) for completed inverse image.
+
+Let \(K\in D^c(X_{\mathrm{pro\acute et}},\underline O)\), and suppose its actual derived reductions \(K_n=K\otimes_O^LO_n\) come from bounded-below étale complexes \(K_n^{\mathrm e}\). Use the coherent reduction diagram, with its quotient transitions, rather than independently chosen identifications at each level. Define
+\[
+\begin{aligned}
+R\Psi^c K&=i_c^*Rj_*j_c^*K,\\
+u_K^c&:i_c^*K\longrightarrow i_c^*Rj_*j_c^*K,\\
+R\Phi^c K&=\operatorname{Cone}(u_K^c).
+\end{aligned}
+\tag{C.14a}
+\]
+Here \(u_K^c\) is \(i_c^*\) applied to the unit of \(j_c^*\dashv Rj_*\); the cone has the convention (C.1). These are complete complexes, and their reductions, including the unit and the cone maps, are
+\[
+\begin{aligned}
+(R\Psi^c K)_n&\simeq
+ \nu_{\bar s}^*\bigl(i_{\mathrm e}^*Rj_{\mathrm e,*}j_{\mathrm e}^*K_n^{\mathrm e}\bigr),\\
+(R\Phi^c K)_n&\simeq
+ \nu_{\bar s}^*\operatorname{Cone}
+ \bigl(i_{\mathrm e}^*K_n^{\mathrm e}
+ \longrightarrow i_{\mathrm e}^*Rj_{\mathrm e,*}j_{\mathrm e}^*K_n^{\mathrm e}\bigr).
+\end{aligned}
+\tag{C.14b}
+\]
+The map \(\nu_{\bar s}\) is the pro-étale to étale morphism of sites. In particular these are the normalized coefficient-diagram nearby cycles. When the reductions have the constructibility and boundedness established by the local calculations below, they belong to the constructible adic category.
+
+For a geometric point \(x:\operatorname{Spec}\Omega\to X_{\bar s}\), its completed geometric fibre is \(x_c^*R\Phi^c K\). Its cohomology as a coefficient complex is computed by
+\[
+R\Gamma\bigl((\operatorname{Spec}\Omega)_{\mathrm{pro\acute et}},
+ x_c^*R\Phi^c K\bigr)
+\simeq
+R\varprojlim_n (R\Phi K_n^{\mathrm e})_{\bar x}.
+\tag{C.14c}
+\]
+This comparison retains the coefficient transitions, inertia, arithmetic descent and all maps of specialization triangles.
+
+**Proof.** The constructions and their maps are the ones proved in Constructible complexes, BK.1–BK.6 and BL.6. In particular
+\[
+(C A)\otimes_O^LO_n\simeq A\otimes_O^LO_n,\qquad
+(Ra_*A)\otimes_O^LO_n\simeq Ra_*(A\otimes_O^LO_n)
+\tag{C.14d}
+\]
+are the actual reduction maps. The second uses the perfect two-term \(O\)-complex \([O\xrightarrow{\pi^n}O]\), not a claim that \(O_n\) has finite projective dimension over every \(O_m\). Its transition from \(m\) to \(n\) is multiplication by \(\pi^{m-n}\) in degree minus one and the identity in degree zero. Derived image preserves this finite cone and its transition maps. It also preserves homotopy limits, as the right adjoint of exact inverse image. Thus it preserves completeness. Completion, completed inverse image and finite cones have the other stated completeness properties.
+
+Apply (C.14d) successively to \(j_c^*,Rj_*,i_c^*\). For the passage from the pro-étale image to the étale image use the actual comparison BK.4, proved in BK.2. Its direct-image hypothesis is qcqs, with bounded-below classical coefficients. It applies to this \(j\): the generic point of the affine trait is the principal open of a uniformizer, extension to its geometric field is affine, and \(j\) is the base change of their composite. Hence \(j\) is affine, in particular qcqs. It need not be of finite type. We have not applied a finite-type six-operation theorem to this geometric-generic-point map.
+
+BL.6 identifies the reductions of its completed adjunction unit and counit with the ordinary finite-coefficient unit and counit. BK.2 identifies the pro-étale/étale comparison by those same restriction maps. Consequently the first comparison of (C.14b) carries the reduction of \(u_K^c\) to the finite-level specialization unit, not merely to some map between isomorphic objects. Taking the actual cone comparison gives its second line and connecting map. The cone models and homotopy-square maps are BF.3–BF.4.
+
+The word “normalized” here specifies a category and a functor. BR.1–BR.4 identifies complete complexes with actual derived-cartesian coefficient diagrams. BS.1–BS.3 supplies their bounded-below étale presentation, retaining transitions, units, counits and derived morphisms. Thus (C.14b) identifies the coefficient diagram of (C.14a) with the finite nearby-cycle diagram in that presentation. In the present application the reductions of the input lattice extended by zero are sheaves: the nearby-cycle reductions have lower bound zero and their cone reductions lower bound minus one, uniformly in \(n\). This supplies the common lower bound for the bounded-below diagram comparison. No equivalence with the bounded derived category of its heart is being assumed.
+
+To prove (C.14c), apply completed inverse image to the cone. BL.6 identifies each of its reductions with
+\(\nu_x^*(R\Phi K_n^{\mathrm e})_{\bar x}\).
+Completeness reconstructs the object as the homotopy limit of these actual reductions, by BK.4. Derived sections is a right adjoint, so it preserves that homotopy limit. On the geometric point the étale coefficient category is the category of coefficient modules; its sections functor is exact. The comparison BK.3 therefore identifies the derived sections of each displayed classical pullback with \((R\Phi K_n^{\mathrm e})_{\bar x}\) itself. Taking the homotopy limit gives (C.14c). Only derived sections **after completed inverse image** have been moved past the limit; an arbitrary ordinary sheaf stalk has not.
+
+All maps just used come from coefficient reduction, adjunction and restriction. Pullback by a geometric-generic-point automorphism commutes with these constructions, so the comparisons preserve the actual inertia actions and their arithmetic descent. The same argument preserves the connecting map in a coefficient-filtration triangle. If every finite cone is zero, the complete cone is zero by BK.4's reduction detection. This proves the finite-to-adic vanishing used in Appendix B. Likewise the completed proper-transport mate reduces to Lemma B.3c's proper-transport map at every level; its complete cone has zero reductions, so that mate is an isomorphism.
+
+For the constructible assertion needed by Proposition C.3, work on the geometric special fibre of the finite-type surface family. The finite calculations concentrate the cone on its finite exceptional locus and give finite modules there, in one degree. Its first reduction is therefore bounded constructible. This is precisely the constructible subcategory defined in BM.6, with its normalized cohomology supplied by BQ.1–BQ.5. Alternatively, at an individual geometric point (C.14c) already gives the required coefficient calculation without a general constructibility theorem for arbitrary nearby cycles.
+
+Finally rational coefficients here are obtained from the integral normalized construction by inverting \(\pi\). This is the exact localization of BW.6. Changing a stable lattice does not change the result: two lattices in the same finite-dimensional representation are commensurable, so an inclusion after multiplication by a power of \(\pi\) has quotient killed by a power of \(\pi\). Extension by zero and the exact \(O\)-linear functors in (C.14a) carry that torsion cone to a torsion cone, which becomes zero upon localization. The comparison is the one induced by the lattice maps and respects their common refinements. Finite extension of the coefficient field is compatible as well: its integer ring is finite free over \(O\), so extension of scalars commutes with the finite cones, products and adjunction maps above. The two uniformizer-adic filtrations are cofinal, since a power of the new uniformizer is a unit times \(\pi\). Thus the completions agree under this scalar extension. This supplies the normalized rational comparison used below, without claiming a new arbitrary nonproper rational-image comparison. \(\square\)
 
 ### Coefficient filtrations and the adic limit
 
@@ -1119,7 +1228,7 @@ A_m\otimes\varepsilon(B),&\text{at either boundary configuration}.
 \end{cases}
 \tag{C.16}
 \]
-This holds for rational-adic coefficients under the normalized finite-system comparison stated above.
+This holds for rational-adic coefficients by the normalized finite-system and completed-fibre comparison of [Lemma C.2a](#normalized-nearby-cycles-and-the-completed-fibre).
 
 **Proof.** A finite free lisse grade is constant on the strict local total scheme. Tensoring the preceding free finite-coefficient computations with its module gives the three formulas. Since extension by zero is exact, a filtration step gives a triangle of vanishing cycles. Inductively both end terms have cohomology only in degree one. Its long exact sequence is consequently the short exact sequence
 \[
@@ -1131,7 +1240,7 @@ This constructs an actual filtration with the claimed grades.
 
 For the adic assertion choose a stable free lattice over the integers \(\mathcal O_E\) of a finite extension of \(\mathbb Q_\ell\). Intersect it with each rational filtration term. These intersections are saturated: if a nonzero integral multiple of a lattice vector lies in a rational subspace, the vector itself lies there. Their successive quotients are finite free over the discrete valuation ring. Reduction modulo \(\varpi^n\) therefore preserves exactness. The constant-grade calculations remain valid over \(\mathcal O_E/\varpi^n\), by extending the free finite complexes already computed.
 
-Each grade cycle module is finite free over \(\mathcal O_E/\varpi^n\), and reduction is its usual surjective transition map. Induction in (C.17), lifting first in its quotient and then correcting in its submodule, proves surjectivity of the transitions for every filtration term. These systems satisfy Mittag-Leffler. Explicitly, the map \((a_n)\mapsto(a_n-r_n a_{n+1})\) on their products is surjective: given its target sequence, choose \(a_1\) and lift recursively through the surjections \(r_n\). The product description of the derived limit thus has no degree-one obstruction. Taking limits in (C.17) stays exact and creates no additional cohomological degree. Inverting \(\varpi\) and extending scalars gives (C.16). This calculation uses normalized constructible nearby cycles and their finite-stalk comparison; it does not claim that arbitrary stalks commute with arbitrary inverse limits. \(\square\)
+Each grade cycle module is finite free over \(\mathcal O_E/\varpi^n\), and reduction is its usual surjective transition map. Induction in (C.17), lifting first in its quotient and then correcting in its submodule, proves surjectivity of the transitions for every filtration term. The surjective map at successive levels factors through reduction modulo the lower power of the uniformizer. Both sides are free of the same rank, determined by the constant-grade formula, so that reduction map is an isomorphism: after choosing bases its matrix is invertible modulo the maximal ideal, and its determinant is consequently a unit. Lift a basis successively through these maps. Nakayama's argument, or the same determinant test, makes the lifts bases; their compatible limit identifies the limit module with a finite free lattice of that rank. This proves actual coefficient reduction compatibility, not just equality of ranks. These systems satisfy Mittag-Leffler. Explicitly, the map \((a_n)\mapsto(a_n-r_n a_{n+1})\) on their products is surjective: given its target sequence, choose \(a_1\) and lift recursively through the surjections \(r_n\). The product description of the derived limit thus has no degree-one obstruction. Taking limits in (C.17) stays exact and creates no additional cohomological degree. Inverting \(\varpi\) and extending scalars gives (C.16). Formula (C.14c) of [Lemma C.2a](#normalized-nearby-cycles-and-the-completed-fibre) identifies this derived module limit with the completed geometric fibre of the actual normalized cone. Its comparisons preserve the filtration maps, inertia and arithmetic signs. Thus this calculation supplies the asserted normalized constructible adic vanishing cycles; it does not claim that arbitrary stalks commute with arbitrary inverse limits. \(\square\)
 
 The requisite filtrations exist for tame-unipotent coefficients. For one or two boundary branches, the tame Kummer description gives commuting unipotent operators \(\exp(t_\ell N_i)\), with nilpotent \(N_i\). The prime-to-\(\ell\) part acts trivially: its compact image injects into a finite congruence quotient, whereas a finite unipotent group in characteristic zero is trivial. The filtration
 \[
@@ -1512,7 +1621,7 @@ These deductions establish mixed stability before the perverse weight arguments.
 
 ## Exact prerequisites still required
 
-Appendix D derives the general compact-support estimate of Theorem 4.1 from the curve results and the stated ordinary foundations. Its extra requirements are smooth proper curve models after finite purely inseparable extension, geometric spreading, the finite covering argument supplied by Lemma B.3a and Proposition B.3b and used in Lemma D.1a to derive the full adic fibre and monodromy-filtration comparison, and full adic constructibility, base change and Leray. Appendix E supplies the remaining mixed-stability deduction. Its ordinary requirements include generic base change for direct image, relative smooth Poincaré duality, finite universal-homeomorphism invariance, the geometric spreading and dimension statements used in its induction, normalized adic localization, and constructible biduality with the required exchanges. Those foundations still require recursive proofs; the mixed-stability deduction does not supply them. Appendix A gives the coarse and strict curve bounds, boundary monodromy grading, curve continuation and real-sheaf argument from their explicitly specified ordinary foundations. Appendix B now proves the pencil geometry by explicit interpolation and incidence counts, including the étale equation of a node, and gives the transverse tame local-acyclicity deduction. Its ordinary algebraic foundations include regular local rings, dimensions of incidences and images, the Jacobian criterion, blowups and finite maps of proper curves. The cohomological deduction still requires smooth local acyclicity, proper compatibility of nearby cycles, and normalized adic comparison. Lemma B.3a and Proposition B.3b supply the general tame Kummer covering description, reusing Constructible complexes, AP.1–AP.5 and AQ.1–AQ.2 for purity and gluing. The general branchwise calculation includes covers outside the invertible-degree Galois case of AP.6–AP.7. These providers retain their stated recursive algebraic dependencies. Appendix C derives the node and boundary formulas, their arithmetic signs, the exact coefficient filtration and compact-support specialization. It uses ordinary finite proper comparison, smooth local acyclicity, projective-line cohomology with its Chern-class normalization, and normal-crossing purity for the intrinsic branch generator. The normalized adic comparison and these finite foundations still need their recursive programme proofs. Constant-coefficient curve Riemann hypothesis alone does not supply these ordinary foundations.
+Appendix D derives the general compact-support estimate of Theorem 4.1 from the curve results and the stated ordinary foundations. Its extra requirements are smooth proper curve models after finite purely inseparable extension, geometric spreading, the finite covering argument supplied by Lemma B.3a and Proposition B.3b and used in Lemma D.1a to derive the full adic fibre and monodromy-filtration comparison, and full adic constructibility, base change and Leray. Appendix E supplies the remaining mixed-stability deduction. Its ordinary requirements include generic base change for direct image, relative smooth Poincaré duality, finite universal-homeomorphism invariance, the geometric spreading and dimension statements used in its induction, normalized adic localization, and constructible biduality with the required exchanges. Those foundations still require recursive proofs; the mixed-stability deduction does not supply them. Appendix A gives the coarse and strict curve bounds, boundary monodromy grading, curve continuation and real-sheaf argument from their explicitly specified ordinary foundations. Appendix B now proves the pencil geometry by explicit interpolation and incidence counts, including the étale equation of a node, and gives the transverse tame local-acyclicity deduction. Its ordinary algebraic foundations include regular local rings, dimensions of incidences and images, the Jacobian criterion, blowups and finite maps of proper curves. For the cohomological deduction, Constructible complexes, AT.1–AT.3 and AT.5 supply ordinary smooth local acyclicity through the canonical smooth comparison of AS.1–AS.7. Lemma B.3c supplies ordinary proper nearby-cycle compatibility, retaining the specialization map, its cone convention and arithmetic action. Lemma C.2a connects the completed coefficient formalism to the actual normalized specialization unit, cone and geometric fibre. Lemma B.3a and Proposition B.3b supply the general tame Kummer covering description, reusing Constructible complexes, AP.1–AP.5 and AQ.1–AQ.2 for purity and gluing. The general branchwise calculation includes covers outside the invertible-degree Galois case of AP.6–AP.7. These providers retain their stated recursive algebraic dependencies. Appendix C derives the node and boundary formulas, their arithmetic signs, the exact coefficient filtration and compact-support specialization. It uses ordinary finite proper comparison, smooth local acyclicity, projective-line cohomology with its Chern-class normalization, and normal-crossing purity for the intrinsic branch generator. Lemma B.3c identifies the ordinary proper-comparison provider. Lemma C.2a supplies the normalized comparison for these local computations using the explicit completion and coherent coefficient-diagram proofs in Constructible complexes, BK–BS. The other finite foundations and the recursive inputs of those providers still require their exact checks. The supplied ordinary smooth local-acyclicity proof retains its recursive curve, coefficient-continuity and algebraic inputs; linking it here is not certification of that entire chain. Constant-coefficient curve Riemann hypothesis alone does not supply these ordinary foundations.
 
 The cover-growth and affine-test arguments additionally require generic constructible local acyclicity, the full Grothendieck–Ogg–Shafarevich formula with Swan conductors, and the indicated curve-cover and genus inputs. Ordinary and normalized adic constructibility, localization, trace, duality, Künneth, base change, finite-to-adic comparison and continuous Galois descent must be proved at their actual scope, including the prerequisites of linked provider lessons. The perverse finite-length, smooth, affine and IC arguments must likewise have their recursive foundations established. The ordinary genus-one calculation used in Exercise 3 retains its stated curve-cohomology inputs. Sections 4–6 give the perverse deductions from these hypotheses; the relative Lefschetz proof lies in the linked next lesson and retains the same foundations.
 

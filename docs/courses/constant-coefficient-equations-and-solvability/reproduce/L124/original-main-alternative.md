@@ -51,7 +51,7 @@ For a field \(k\), a singular chain complex \(C_*\) has cochain complex \(C^q=\o
 
 **Proof.** Each finite chain has compact image, because it has only finitely many compact simplex images. An increasing open cover contains this image in a single stage: choose a finite subcover and take the largest index. Thus every cycle occurs in a stage. If it bounds in \(X\), its finite bounding chain and the cycle occur together in a later stage. These two observations prove surjectivity and injectivity respectively. They also work for finite chains with integer coefficients. They do not apply to an infinite locally finite chain. \(\square\)
 
-The complete proof of smooth period detection independently supplies the subdivision, prism, smooth/continuous comparison and de Rham detection used in AN02. In particular it proves faithful \(\mathbb Q\)-to-\(\mathbb C\) extension for finite homology. TP2 is an independently written elementary extraction for the present receiver; it does not prove the provider's other conditional C8 inputs.
+The complete proof of [smooth period detection](context/providers/smooth-period-detection.html) independently supplies the subdivision, prism, smooth/continuous comparison and de Rham detection used in AN02. In particular it proves faithful \(\mathbb Q\)-to-\(\mathbb C\) extension for finite homology. TP2 is an independently written elementary extraction for the present receiver; it does not prove the provider's other conditional C8 inputs.
 
 ## TP3. An explicit projective exhaustion
 
@@ -90,9 +90,9 @@ Define the globally continuous function
 
 which is compact and lies inside \(U\). This proves properness and exhaustion. Adding a constant makes \(\rho\) nonnegative if desired without changing its Levi form. The argument applies to singular or nonreduced removed hypersurfaces because no differentiation occurs at their zeros. \(\square\)
 
-This directly supplies the **exhaustion-definition** of Stein used by the new plurisubharmonic lesson. We do not use the equivalence with another definition of Stein. We also do not infer homology vanishing from this definition alone. The same exhaustion restricts properly and strictly plurisubharmonically to \(Y\), since it is closed in \(U\) and its inclusion is a holomorphic immersion. The vanishing needed below is the one on \(U\), in complex dimension \(d\).
+This directly supplies the **exhaustion-definition** of Stein used by the new [plurisubharmonic lesson](context/providers/plurisubharmonic-functions-and-stein-manifolds.html). We do not use the equivalence with another definition of Stein. We also do not infer homology vanishing from this definition alone. The same exhaustion restricts properly and strictly plurisubharmonically to \(Y\), since it is closed in \(U\) and its inclusion is a holomorphic immersion. The vanishing needed below is the one on \(U\), in complex dimension \(d\).
 
-![Exact projective exhaustion on the punctured projective line.](figures/projective-exhaustion.png)
+![Exact projective exhaustion on the punctured projective line.](context/figures/projective-exhaustion.png)
 
 *Figure 1.* The actual specialization is \(d=1\), \(F(z_0,z_1)=z_0z_1\), \(m=2\), \(U=\mathbb C^*\). In the chart \(w=z_1/z_0\), with \(r=|w|>0\) and \(t=\log r\), the exhaustion is \(\rho=2\log(2\cosh t)\). The marked level \(\log(25/4)\) has the exact sublevel annulus \(1/2\leq r\leq2\); the minimum is \(\log4\) at \(r=1\). This is a real radial section of the exhaustion, not the whole complex manifold. Strict positivity follows from the actual one-variable Levi coefficient \(2/(1+r^2)^2\), not from the appearance of the plot. The two ends correspond to the removed projective points. Formulae TP5–TP8 give the full geometric argument. Portable renderer and exact geometry are included.
 
@@ -112,13 +112,13 @@ Let \(W\) be the negative eigenspace of \(B\), of real dimension \(q\). If \(q>d
 Strict positivity does not guarantee nondegeneracy. For example
 
 \[
- \psi(z)=\sum_{j=1}^d|z_j|^2+operatorname{Re}\sum_{j=1}^d a_jz_j^2
+ \psi(z)=\sum_{j=1}^d|z_j|^2+\operatorname{Re}\sum_{j=1}^d a_jz_j^2
  =\sum_j(1+a_j)x_j^2+(1-a_j)y_j^2 \tag{TP10}
 \]
 
 has Levi matrix the identity. If each real \(a_j>1\), its real Hessian has exactly \(d\) negative eigenvalues, so the bound is sharp. If one \(a_j=1\), the corresponding eigenvalue is zero. This is a local Hessian example; when all \(a_j>1\), it is unbounded below and is not a proper exhaustion.
 
-The current SH03 Morse exhaustion proof supplies a compactly supported, summably small perturbation family, a finite-parameter transversality/Sard reduction and a Baire argument for a proper strictly plurisubharmonic Morse exhaustion, relative to its stated smooth-coordinate, cutoff, Sard and related lower inputs. Its index calculation agrees with TP9. Its later sheaf support calculations are not an ordinary singular-chain handle attachment theorem. We use this distinction when stating the next input.
+The current [SH03 Morse exhaustion proof](context/providers/holomorphic-morse-exhaustions-on-stein-manifolds.html) supplies a compactly supported, summably small perturbation family, a finite-parameter transversality/Sard reduction and a Baire argument for a proper strictly plurisubharmonic Morse exhaustion, relative to its stated smooth-coordinate, cutoff, Sard and related lower inputs. Its index calculation agrees with TP9. Its later sheaf support calculations are not an ordinary singular-chain handle attachment theorem. We use this distinction when stating the next input.
 
 ## TP5. What a finite-chain handle proof would give
 
@@ -143,7 +143,7 @@ The exact alternative deduction can be stated conditionally. Suppose the SH03 th
 
 ## TP6. The included normal-bundle argument and the tube deduction
 
-The current complete Thom/Euler lesson, Sections1–7, supplies singular excision, products, cap and coefficient calculations, finite-cover gluing and the ordinary finite-chain passage to arbitrary Hausdorff bases. Its Theorem7.1 proves the homological Thom isomorphism. The exact included duality and tubular sections, Section3, supply the inverse/flow and noncompact tubular-neighborhood construction. These are actual full written arguments for the selected assertions, not shelf hits or assumed independent admissions.
+The current complete Thom/Euler lesson, Sections1–7, supplies singular excision, products, cap and coefficient calculations, finite-cover gluing and the ordinary finite-chain passage to arbitrary Hausdorff bases. Its Theorem7.1 proves the homological Thom isomorphism. The exact included [duality and tubular sections](context/providers/manifold-duality-and-tubular-sections.html), Section3, supply the inverse/flow and noncompact tubular-neighborhood construction. These are actual full written arguments for the selected assertions, not shelf hits or assumed independent admissions.
 
 **Normal-bundle argument T, with its written providers.** For the closed complex hypersurface \(Y\subset U\) and \(V=U\setminus Y\), these arguments give an ordinary finite-chain Thom isomorphism
 
@@ -215,7 +215,7 @@ The compact-support route to TP13 needs the **closed–open** sequence for the c
 
 If duality and the exact closed–open/tube comparison have been proved, TP11 kills the first group of TP16, so exactness makes \(\delta\) injective; the other two duality isomorphisms identify the result with the tube injection, up to the explicitly checked sign. This explains the classical degree ledger. It does not add proofs of the comparison.
 
-Read the complete incoming orientation, cap-product and compact-support, and Poincaré duality texts. They supply actual arguments for local classes, open Mayer–Vietoris, direct limits and local-to-global duality. Their cap-product Proposition 3.2 explicitly leaves the full connecting-map calculation to Hatcher's Lemma 3.36. The duality proof then uses that proposition. The actually included current DGCHAR duality sections, Lemma2.1, provide a separate complete written connecting-map calculation with their unshifted **right-cap** convention, and Theorem2.2 gives the local-to-global proof in that convention. These arguments can use the incoming orientation classes, whose construction is independent of the cap convention. The original source expressions and both conventions remain visible.
+Read the complete incoming [orientation](context/providers/orientations-and-fundamental-classes.html), [cap-product and compact-support](context/providers/cap-products-and-cohomology-with-compact-supports.html), and [Poincaré duality](context/providers/poincare-duality.html) texts. They supply actual arguments for local classes, open Mayer–Vietoris, direct limits and local-to-global duality. Their cap-product Proposition 3.2 explicitly leaves the full connecting-map calculation to Hatcher's Lemma 3.36. The duality proof then uses that proposition. The actually included current [DGCHAR duality sections](context/providers/manifold-duality-and-tubular-sections.html), Lemma2.1, provide a separate complete written connecting-map calculation with their unshifted **right-cap** convention, and Theorem2.2 gives the local-to-global proof in that convention. These arguments can use the incoming orientation classes, whose construction is independent of the cap convention. The original source expressions and both conventions remain visible.
 
 The ordinary-pair route TP14 and the compact-support route TP16 are two correctly typed alternatives. Supplying H and checking the included written T scope closes the first. Supplying and checking duality, the still-separate closed–open comparison with the tube, and the homology bound closes the second. Mixing the first route's ordinary pair sequence with the second route's compact-support groups without comparison would leave an unproved step.
 
@@ -249,7 +249,7 @@ The torus is represented by the two oriented triangles of a parameter square, wi
 
 The base \(Y\) retracts to a circle, whose first group is generated by the once traversed circle as in Example 1. Thus this nonzero period proves injection of the entire map \(H_1(Y;\mathbb Q)\to H_2(V;\mathbb Q)\), not just nonvanishing of an unspecified tube. There is a global product normal coordinate \(b\) in this example; no global trivialization of the general normal bundle has been inferred.
 
-![The actual product tube and the correctly shifted degree ledger.](figures/normal-first-tube-and-degrees.png)
+![The actual product tube and the correctly shifted degree ledger.](context/figures/normal-first-tube-and-degrees.png)
 
 *Figure 2.* The phase square parametrizes the torus in TP18–TP19; horizontal \(\phi\) is the positive **normal** phase and vertical \(\theta\) the base phase. Opposite edges are identified and \(d\phi\wedge d\theta\) gives period one. This is a parameter diagram, not an embedding of the whole torus into a square. The lower rows display TP14 and TP16 for \(d=2\). Here \(U\) retracts to a circle, so \(H_3(U;\mathbb Q)=0\); the top row's relative Thom comparison and the bottom row's duality/closed–open comparison are labelled as required interfaces in the general argument. Example 2 proves its actual product tube directly by the displayed period. No schematic arrow is presented as a general proof. Exact geometry and renderer are included.
 
@@ -301,7 +301,7 @@ The full supporting readings are actual included files, not promised bridge titl
 
 Hatcher's small-chain/prism and orientation/cap methods, and the elementary Levi geometry taught by Demailly and Lebl, receive method credit. Our explicit projective formula and new explanations are independently written. Exact original-source proofs were not compared in this task, so no source error or exact original-lemma match is claimed.
 
-The current DGCHAR Thom lesson and selected complete duality/tubular sections are written by GPT-6.1 Sol (OpenAI), Ultra. Their original CC0 headers, Hatcher/Roberts and Milnor–Stasheff coverage credits, and source-license qualifications are retained. Only the complete relevant §§1–3 and the full original credit/scope paragraphs of the duality chapter are included; the unrelated diagonal/Wu sections are not consumed. Its exact extraction ledger distinguishes that selected-section download from an entire chapter. The entire Thom lesson is included unchanged. No Milnor–Stasheff body or other external textbook was read or imported by this integration.
+The DGCHAR Thom lesson and complete selected duality/tubular Sections 1–3 are independently written by GPT-6.1 Sol (OpenAI), Ultra. Their complete mathematical proof, formula and exercise bodies, original CC0 authorship headers and valid Hatcher/Roberts credits are preserved. The current source-credit and scope paragraphs are revised: they cite the verified Spring 1957 Milnor manuscript, notes by James Stasheff, as related background and give the actual selected-section proof locators. The unrelated diagonal/Wu sections are outside the selected download.
 
 The usable new material consists of TP2's finite-chain algebra, TP3's projective exhaustion, TP4's index lemma, TP5's full deduction from H, TP6's specialization of the actual written Thom/tubular arguments and conditional injection from H, the dimension ledger, and the three direct worked examples. The exact remaining general proof interfaces are:
 

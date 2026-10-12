@@ -82,6 +82,29 @@ Both supports belong to their own faithful reduced algebras. Equivalence transpo
 \]
 The weight-to-projection implication uses WC's supported transport criterion to put the actual implementer in \(N\). Comparison in the larger algebra \(M\) would not suffice.
 
+The [supported derivative theorem and its full mixed-strip proof](../../OA-MOD/OA-MOD-PC.html#the-six-clause-derivative-and-the-spatial-interface) retain the moving initial projection, the fixed final projection, both finite boundary domains and the normalization at time zero. Those support conventions are also essential in (CI6).
+
+**Why both range projections are required.** On \(M_2(\mathbb C)\), put
+\[
+ h=\operatorname{diag}(1,2),\qquad
+ \varphi(x)=\operatorname{Tr}(hx),\qquad
+ u=e_{21},\quad v=e_{11}.
+ \tag{CI7a}
+\]
+The finite-density modular formula gives
+\(\sigma_t^\varphi(x)=h^{it}xh^{-it}\), so \(M_\varphi\) is exactly the diagonal algebra. Although
+\(p=u^*u=e_{11}=vv^*=q\) belongs to that centralizer, for every \(x\ge0\) the transported weights are
+\[
+ \varphi_u(x)=\varphi(uxu^*)=2x_{11},\qquad
+ \varphi_v(x)=\varphi(vxv^*)=x_{11}.
+ \tag{CI7b}
+\]
+They have the same rank-one support. The only nonzero centralizer cut of \(\varphi_v\) is \(\varphi_v\) itself, and every partial isometry with initial and final projection \(e_{11}\) is a scalar unitary in \(e_{11}Me_{11}\). Its conjugation fixes that one-dimensional algebra and cannot change mass \(1\) to mass \(2\). Thus \(\varphi_u\not\precsim\varphi_v\), even though \(p=q\). The correct transported-cut criterion compares \(uu^*=e_{22}\) with \(vv^*=e_{11}\), both in \(M_\varphi\); these two projections are incomparable in the diagonal algebra, in agreement with the weight calculation.
+
+![Support transport in the two-dimensional example: u sends the first coordinate ray to the second and pulls back mass 2, while v keeps the first ray and mass 1.](../assets/global-flow/comparison-supports.svg)
+
+The arrows identify the initial and final coordinate rays of the actual partial isometries in (CI7a). Equal initial support for \(u\) and final support for \(v\) does not identify the transported weights. The [editable vector source](../assets/global-flow/comparison-supports.svg) is original and dedicated to CC0.
+
 Here is the arbitrary balanced-sum argument needed beyond a finite matrix theorem. Given normal semifinite \(\phi_i\) and arbitrary set \(I\), set
 \[
  \Lambda(X)=\sum_{i\in I}\phi_i(X_{ii}),\qquad

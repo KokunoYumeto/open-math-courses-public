@@ -69,3 +69,7 @@ Section 11CK, ECH.1–ECH.10, Exercises 381–382 and complete solutions, the di
 Section 11CL, PFG.1–PFG.16, Exercises 383–384 with complete solutions, both diagrams and their generator are original CC0 mathematical expression. The complete actual flat perfect-isotropy, proper affine Hilbert action and groupoid compatibility proofs are included. Historical human mathematical credits and free primary locators remain in the lesson. No source text, protected proof expression or external artwork is incorporated; installed fonts and software retain their terms.
 
 Section 11CM, SGD.1–SGD.16, Exercises385–386 with full solutions, both diagrams and their generator are original CC0 mathematical expression. The complete compact smooth full-lift foliation, actual reduced algebra splitting and local Bott nullhomotopy are proved here. Human mathematical credits are retained; no protected text, PDF or external artwork is incorporated. Fonts and software retain their terms.
+
+The complete elementary analytic foundations in Lemma11CM.0, SGA.1–SGA.4, are original CC0 mathematical expression. The local power-series coefficient bounds, complete parameter-series Banach algebra, Picard construction and identity-principle proof are supplied here; no external source expression is incorporated.
+
+The question-specific marking criteria in the five principal lessons are original CC0 expression. The existing exercise questions, mathematical solutions and credited sources are retained.
