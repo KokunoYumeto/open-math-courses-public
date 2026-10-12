@@ -1,0 +1,437 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The estimate at the free edge</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A metric with no local isometric immersion)</a><a href="the-differentiated-height-equation.html">Previous lesson</a><a href="regularity-on-a-cap.html">Next lesson</a><a href="src/the-estimate-at-the-free-edge.md">Editable source</a></nav><main><article><h1 id="the-estimate-at-the-free-edge">The estimate at the free edge</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The lesson on the differentiated height equation led to a linear equation
+<span class="math math-display" data-tex="\[
+u_{tt}+A\,u_{ss}+B\,u_t+C\,u_s=f
+\]">\[
+u_{tt}+A\,u_{ss}+B\,u_t+C\,u_s=f
+\]</span>
+on a rectangle, in which the coefficient <span class="math" data-tex="\(A\)">\(A\)</span> changes its sign: the equation is elliptic where <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> and hyperbolic where <span class="math" data-tex="\(A&lt;0\)">\(A&lt;0\)</span>. This lesson proves an estimate for the first derivatives of <span class="math" data-tex="\(u\)">\(u\)</span> by the mean squares of <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span>, on a rectangle with three edges in the elliptic region and a fourth edge, the <em>free edge</em>, at which nothing is assumed: <span class="math" data-tex="\(A\)">\(A\)</span> may be negative there, and no condition on <span class="math" data-tex="\(u\)">\(u\)</span> is imposed. What makes this possible is the structure of <span class="math" data-tex="\(C\)">\(C\)</span> found in that lesson, <span class="math" data-tex="\(C=(l+1)A_s\)">\(C=(l+1)A_s\)</span> up to a multiple of <span class="math" data-tex="\(A\)">\(A\)</span>, together with a sign condition on the derivatives of <span class="math" data-tex="\(A\)">\(A\)</span> where <span class="math" data-tex="\(A\)">\(A\)</span> is small.</p>
+<ul>
+<li>The identity obtained by multiplying the equation by <span class="math" data-tex="\(m\,u_s+n\,u_t\)">\(m\,u_s+n\,u_t\)</span> and integrating by parts (Lemma 2.1).</li>
+<li>With a weight that vanishes at the free edge, the resulting quadratic form is positive where <span class="math" data-tex="\(A\)">\(A\)</span> is negative or small (Proposition 3.1).</li>
+<li>Where <span class="math" data-tex="\(A\)">\(A\)</span> is positive, an elliptic estimate with a weaker weight (Proposition 4.1).</li>
+<li>The estimate (Theorem 5.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-I, Section 3, the lemma on the free cap edge], formulated for a general equation with these properties; all constants are tracked. It uses only integration by parts on a rectangle and the inequality <span class="math" data-tex="\(2xy\le\delta x^2+y^2/\delta\)">\(2xy\le\delta x^2+y^2/\delta\)</span>.</p>
+<h2 id="1-the-assumptions">1. The assumptions</h2>
+<p>Let <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>, <span class="math" data-tex="\(s_0&lt;b\)">\(s_0&lt;b\)</span>, and <span class="math" data-tex="\(\Omega=[-T,T]\times[s_0,b]\)">\(\Omega=[-T,T]\times[s_0,b]\)</span> in the plane with the coordinates <span class="math" data-tex="\(t,s\)">\(t,s\)</span>. Let <span class="math" data-tex="\(d=b-s\)">\(d=b-s\)</span>, the distance to the edge <span class="math" data-tex="\(s=b\)">\(s=b\)</span>, and <span class="math" data-tex="\(d_{\max}=b-s_0\)">\(d_{\max}=b-s_0\)</span>. Let <span class="math" data-tex="\(A,B,C,f,u\)">\(A,B,C,f,u\)</span> be smooth functions on a neighbourhood of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> with
+<span class="math math-display" data-tex="\[
+u_{tt}+A\,u_{ss}+B\,u_t+C\,u_s=f .
+\]">\[
+u_{tt}+A\,u_{ss}+B\,u_t+C\,u_s=f .
+\]</span>
+We assume, with numbers <span class="math" data-tex="\(l\ge0\)">\(l\ge0\)</span>, <span class="math" data-tex="\(M_0\ge1\)">\(M_0\ge1\)</span>, <span class="math" data-tex="\(0&lt;T_1&lt;T\)">\(0&lt;T_1&lt;T\)</span>, <span class="math" data-tex="\(s_0&lt;s_1&lt;b\)">\(s_0&lt;s_1&lt;b\)</span>, <span class="math" data-tex="\(\alpha_0&gt;0\)">\(\alpha_0&gt;0\)</span>, <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>, <span class="math" data-tex="\(a_0&gt;0\)">\(a_0&gt;0\)</span> and <span class="math" data-tex="\(\theta_0&gt;0\)">\(\theta_0&gt;0\)</span>:</p>
+<p><strong>(A1)</strong> <span class="math" data-tex="\(C=(l+1)A_s+A\omega\)">\(C=(l+1)A_s+A\omega\)</span> with a continuous function <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, and <span class="math" data-tex="\(|A|,|A_t|,|A_s|,|B|,|B_s|,|\omega|\le M_0\)">\(|A|,|A_t|,|A_s|,|B|,|B_s|,|\omega|\le M_0\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p><strong>(A2)</strong> <span class="math" data-tex="\(A\ge\alpha_0\)">\(A\ge\alpha_0\)</span> at the points of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> with <span class="math" data-tex="\(|t|\ge T_1\)">\(|t|\ge T_1\)</span> or <span class="math" data-tex="\(s\le s_1\)">\(s\le s_1\)</span>.</p>
+<p><strong>(A3)</strong> <span class="math" data-tex="\(16\,\varepsilon^2T^2M_0\le1\)">\(16\,\varepsilon^2T^2M_0\le1\)</span>, and at the points of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> with <span class="math" data-tex="\(|A|\le a_0\)">\(|A|\le a_0\)</span>,
+<span class="math math-display" data-tex="\[
+\Theta:=-(l+\tfrac12)A_s+\tfrac\varepsilon2\,t\,A_t\ \ge\ \theta_0 .
+\]">\[
+\Theta:=-(l+\tfrac12)A_s+\tfrac\varepsilon2\,t\,A_t\ \ge\ \theta_0 .
+\]</span></p>
+<p>Assumption (A2) says that the equation is elliptic near the edges <span class="math" data-tex="\(t=\pm T\)">\(t=\pm T\)</span> and <span class="math" data-tex="\(s=s_0\)">\(s=s_0\)</span>. Nothing is assumed at the edge <span class="math" data-tex="\(s=b\)">\(s=b\)</span>. Assumption (A3) concerns the curve where <span class="math" data-tex="\(A\)">\(A\)</span> changes its sign: across it, <span class="math" data-tex="\(A\)">\(A\)</span> decreases in the direction of increasing <span class="math" data-tex="\(s\)">\(s\)</span>, or it increases in the direction away from <span class="math" data-tex="\(t=0\)">\(t=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\Omega_0=[-T_1,T_1]\times[s_1,b_0]\)">\(\Omega_0=[-T_1,T_1]\times[s_1,b_0]\)</span> with <span class="math" data-tex="\(s_1&lt;b_0&lt;b\)">\(s_1&lt;b_0&lt;b\)</span>. We write <span class="math" data-tex="\(\|w\|^2=\iint_\Omega w^2\,dt\,ds\)">\(\|w\|^2=\iint_\Omega w^2\,dt\,ds\)</span> and <span class="math" data-tex="\(|\nabla u|^2=u_t^2+u_s^2\)">\(|\nabla u|^2=u_t^2+u_s^2\)</span>.</p>
+<h2 id="2-the-multiplier-identity">2. The multiplier identity</h2>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(m,n\)">\(m,n\)</span> be smooth functions on a neighbourhood of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> that vanish on the edge <span class="math" data-tex="\(s=b\)">\(s=b\)</span> and in a neighbourhood of the other three edges. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\iint_\Omega f\,(m\,u_s+n\,u_t)=\iint_\Omega Q[u],\\
+Q[u]=Q_{tt}u_t^2+Q_{ss}u_s^2+Q_{ts}u_tu_s,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\iint_\Omega f\,(m\,u_s+n\,u_t)=\iint_\Omega Q[u],\\
+Q[u]=Q_{tt}u_t^2+Q_{ss}u_s^2+Q_{ts}u_tu_s,
+\end{gathered}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q_{tt}&amp;=\tfrac12(m_s-n_t)+Bn,\\
+Q_{ss}&amp;=-\tfrac12(Am)_s+\tfrac12(An)_t+Cm,\\
+Q_{ts}&amp;=-m_t+Bm-(An)_s+Cn .
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q_{tt}&amp;=\tfrac12(m_s-n_t)+Bn,\\
+Q_{ss}&amp;=-\tfrac12(Am)_s+\tfrac12(An)_t+Cm,\\
+Q_{ts}&amp;=-m_t+Bm-(An)_s+Cn .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> The product <span class="math" data-tex="\((u_{tt}+Au_{ss}+Bu_t+Cu_s)(mu_s+nu_t)\)">\((u_{tt}+Au_{ss}+Bu_t+Cu_s)(mu_s+nu_t)\)</span> is equal to
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;Q_{tt}u_t^2+Q_{ss}u_s^2+Q_{ts}u_tu_s\\
+&amp;\quad+\partial_t\bigl(m\,u_tu_s+\tfrac12n\,u_t^2-\tfrac12An\,u_s^2\bigr)\\
+&amp;\quad+\partial_s\bigl(-\tfrac12m\,u_t^2+\tfrac12Am\,u_s^2+An\,u_su_t\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;Q_{tt}u_t^2+Q_{ss}u_s^2+Q_{ts}u_tu_s\\
+&amp;\quad+\partial_t\bigl(m\,u_tu_s+\tfrac12n\,u_t^2-\tfrac12An\,u_s^2\bigr)\\
+&amp;\quad+\partial_s\bigl(-\tfrac12m\,u_t^2+\tfrac12Am\,u_s^2+An\,u_su_t\bigr).
+\end{aligned}
+\]</span>
+This is checked by carrying out the differentiations: for example
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_{tt}\,m\,u_s&amp;=\partial_t(mu_tu_s)-m_tu_tu_s\\
+&amp;\quad-\partial_s(\tfrac12mu_t^2)+\tfrac12m_su_t^2,\\
+Au_{ss}\,n\,u_t&amp;=\partial_s(Anu_su_t)-(An)_su_su_t\\
+&amp;\quad-\partial_t(\tfrac12Anu_s^2)+\tfrac12(An)_tu_s^2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+u_{tt}\,m\,u_s&amp;=\partial_t(mu_tu_s)-m_tu_tu_s\\
+&amp;\quad-\partial_s(\tfrac12mu_t^2)+\tfrac12m_su_t^2,\\
+Au_{ss}\,n\,u_t&amp;=\partial_s(Anu_su_t)-(An)_su_su_t\\
+&amp;\quad-\partial_t(\tfrac12Anu_s^2)+\tfrac12(An)_tu_s^2,
+\end{aligned}
+\]</span>
+and similarly for the other products. Integrate over <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. The integrals of the two derivatives are integrals over the edges of expressions that contain <span class="math" data-tex="\(m\)">\(m\)</span> or <span class="math" data-tex="\(n\)">\(n\)</span> as a factor, and these vanish on all four edges. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-positivity-where-a-is-negative-or-small">3. Positivity where <span class="math" data-tex="\(A\)">\(A\)</span> is negative or small</h2>
+<p>Fix <span class="math" data-tex="\(p=8\)">\(p=8\)</span>. Let <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, to be chosen, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+I(t,s)=\int_0^tB(r,s)\,dr,\\
+W=d^{\,p}\,e^{-\lambda s+I},\qquad H_0=\lambda+\frac pd .
+\end{gathered}
+\]">\[
+\begin{gathered}
+I(t,s)=\int_0^tB(r,s)\,dr,\\
+W=d^{\,p}\,e^{-\lambda s+I},\qquad H_0=\lambda+\frac pd .
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(W_t=BW\)">\(W_t=BW\)</span> and <span class="math" data-tex="\(W_s=-(H_0-I_s)W\)">\(W_s=-(H_0-I_s)W\)</span>, and <span class="math" data-tex="\(|I_s|\le TM_0\)">\(|I_s|\le TM_0\)</span>. Let <span class="math" data-tex="\(Q^W_{tt},Q^W_{ss},Q^W_{ts}\)">\(Q^W_{tt},Q^W_{ss},Q^W_{ts}\)</span> be the functions of Lemma 2.1 for <span class="math" data-tex="\(m=-W\)">\(m=-W\)</span> and <span class="math" data-tex="\(n=\varepsilon tW\)">\(n=\varepsilon tW\)</span>. A computation gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q^W_{tt}/W&amp;=\tfrac12(H_0-I_s)-\tfrac\varepsilon2+\tfrac\varepsilon2tB,\\
+Q^W_{ss}/W&amp;=\Theta-\tfrac12H_0A+A\beta,\\
+Q^W_{ts}/W&amp;=\varepsilon t\,\bigl(lA_s+A\omega-AI_s+H_0A\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q^W_{tt}/W&amp;=\tfrac12(H_0-I_s)-\tfrac\varepsilon2+\tfrac\varepsilon2tB,\\
+Q^W_{ss}/W&amp;=\Theta-\tfrac12H_0A+A\beta,\\
+Q^W_{ts}/W&amp;=\varepsilon t\,\bigl(lA_s+A\omega-AI_s+H_0A\bigr),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(\beta=\tfrac12I_s+\tfrac\varepsilon2(1+tB)-\omega\)">\(\beta=\tfrac12I_s+\tfrac\varepsilon2(1+tB)-\omega\)</span>. Indeed <span class="math" data-tex="\(-m_t+Bm=W_t-BW=0\)">\(-m_t+Bm=W_t-BW=0\)</span>; <span class="math" data-tex="\(-\tfrac12(Am)_s=\tfrac12A_sW-\tfrac12A(H_0-I_s)W\)">\(-\tfrac12(Am)_s=\tfrac12A_sW-\tfrac12A(H_0-I_s)W\)</span>; <span class="math" data-tex="\(\tfrac12(An)_t=\tfrac\varepsilon2(tA_t+A+tAB)W\)">\(\tfrac12(An)_t=\tfrac\varepsilon2(tA_t+A+tAB)W\)</span>; and <span class="math" data-tex="\(Cm=-(l+1)A_sW-A\omega W\)">\(Cm=-(l+1)A_sW-A\omega W\)</span>. The term <span class="math" data-tex="\(-(l+1)A_s\)">\(-(l+1)A_s\)</span> of <span class="math" data-tex="\(C\)">\(C\)</span>, together with <span class="math" data-tex="\(\tfrac12A_s\)">\(\tfrac12A_s\)</span>, gives the term <span class="math" data-tex="\(-(l+\tfrac12)A_s\)">\(-(l+\tfrac12)A_s\)</span> of <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\beta_0=M_0(T+1)+1,\\
+c_J=M_0(l+M_0+TM_0),\\
+\Theta_1=(l+1+T)M_0,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\beta_0=M_0(T+1)+1,\\
+c_J=M_0(l+M_0+TM_0),\\
+\Theta_1=(l+1+T)M_0,
+\end{gathered}
+\]</span>
+so that <span class="math" data-tex="\(|\beta|\le\beta_0\)">\(|\beta|\le\beta_0\)</span>, <span class="math" data-tex="\(|lA_s+A\omega-AI_s|\le c_J\)">\(|lA_s+A\omega-AI_s|\le c_J\)</span> and <span class="math" data-tex="\(|\Theta|\le\Theta_1\)">\(|\Theta|\le\Theta_1\)</span>.</p>
+<p><strong>Proposition 3.1.</strong> Assume (A1) and (A3), and let <span class="math" data-tex="\(\alpha_0&gt;0\)">\(\alpha_0&gt;0\)</span> be the number of (A2). Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda=\max\{\lambda_1,\lambda_2,\lambda_3,\lambda_4\},\\
+\lambda_1=2+4TM_0,\qquad\lambda_2=8\beta_0,\\
+\lambda_3=\frac{16T^2c_J^2}{\theta_0},\qquad\lambda_4=\frac{8(\Theta_1+\theta_0)}{a_0},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\lambda=\max\{\lambda_1,\lambda_2,\lambda_3,\lambda_4\},\\
+\lambda_1=2+4TM_0,\qquad\lambda_2=8\beta_0,\\
+\lambda_3=\frac{16T^2c_J^2}{\theta_0},\qquad\lambda_4=\frac{8(\Theta_1+\theta_0)}{a_0},
+\end{gathered}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_1=\min\{\gamma_1,\gamma_2,\gamma_3\},\\
+\gamma_1=\frac{a_0}{d_{\max}},\qquad\gamma_2=\frac{\alpha_0}{d_{\max}},\\
+\gamma_3=\frac{\theta_0}{4(\lambda d_{\max}+p+d_{\max}\beta_0)}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+c_1=\min\{\gamma_1,\gamma_2,\gamma_3\},\\
+\gamma_1=\frac{a_0}{d_{\max}},\qquad\gamma_2=\frac{\alpha_0}{d_{\max}},\\
+\gamma_3=\frac{\theta_0}{4(\lambda d_{\max}+p+d_{\max}\beta_0)}.
+\end{gathered}
+\]</span>
+Then at every point of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> with <span class="math" data-tex="\(s&lt;b\)">\(s&lt;b\)</span> and <span class="math" data-tex="\(A\le c_1d\)">\(A\le c_1d\)</span>, and for all real <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;Q^W_{tt}\xi^2+Q^W_{ss}\eta^2+Q^W_{ts}\xi\eta\\
+&amp;\quad\ge c_2W(\xi^2+\eta^2),\\
+&amp;c_2=\min\bigl\{\tfrac\lambda8,\tfrac{\theta_0}2\bigr\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;Q^W_{tt}\xi^2+Q^W_{ss}\eta^2+Q^W_{ts}\xi\eta\\
+&amp;\quad\ge c_2W(\xi^2+\eta^2),\\
+&amp;c_2=\min\bigl\{\tfrac\lambda8,\tfrac{\theta_0}2\bigr\}.
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(H_0\ge\lambda\ge2+4TM_0\)">\(H_0\ge\lambda\ge2+4TM_0\)</span>, we have <span class="math" data-tex="\(Q^W_{tt}/W\ge\tfrac12H_0-\tfrac12(1+2TM_0)\ge\tfrac14H_0\)">\(Q^W_{tt}/W\ge\tfrac12H_0-\tfrac12(1+2TM_0)\ge\tfrac14H_0\)</span>. By <span class="math" data-tex="\(|Q^W_{ts}\xi\eta|\le\tfrac12Q^W_{tt}\xi^2+(Q^W_{ts})^2\eta^2/(2Q^W_{tt})\)">\(|Q^W_{ts}\xi\eta|\le\tfrac12Q^W_{tt}\xi^2+(Q^W_{ts})^2\eta^2/(2Q^W_{tt})\)</span>, the quadratic form is at least
+<span class="math math-display" data-tex="\[
+\tfrac12Q^W_{tt}\,\xi^2+\Bigl(Q^W_{ss}-\frac{(Q^W_{ts})^2}{2Q^W_{tt}}\Bigr)\eta^2 .
+\]">\[
+\tfrac12Q^W_{tt}\,\xi^2+\Bigl(Q^W_{ss}-\frac{(Q^W_{ts})^2}{2Q^W_{tt}}\Bigr)\eta^2 .
+\]</span>
+The first coefficient is at least <span class="math" data-tex="\(\tfrac18H_0W\ge\tfrac\lambda8W\)">\(\tfrac18H_0W\ge\tfrac\lambda8W\)</span>. For the second, <span class="math" data-tex="\(|Q^W_{ts}|/W\le\varepsilon T(c_J+H_0|A|)\)">\(|Q^W_{ts}|/W\le\varepsilon T(c_J+H_0|A|)\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{(Q^W_{ts})^2}{2Q^W_{tt}W}&amp;\le\frac{2\varepsilon^2T^2(c_J+H_0|A|)^2}{H_0}\\
+&amp;\le4\varepsilon^2T^2\Bigl(\frac{c_J^2}{H_0}+H_0A^2\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{(Q^W_{ts})^2}{2Q^W_{tt}W}&amp;\le\frac{2\varepsilon^2T^2(c_J+H_0|A|)^2}{H_0}\\
+&amp;\le4\varepsilon^2T^2\Bigl(\frac{c_J^2}{H_0}+H_0A^2\Bigr).
+\end{aligned}
+\]</span>
+The first of these two terms is at most <span class="math" data-tex="\(4T^2c_J^2/\lambda\le\tfrac14\theta_0\)">\(4T^2c_J^2/\lambda\le\tfrac14\theta_0\)</span>. By (A3) and <span class="math" data-tex="\(|A|\le M_0\)">\(|A|\le M_0\)</span>, the second is at most <span class="math" data-tex="\(\tfrac14H_0|A|\)">\(\tfrac14H_0|A|\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1W\Bigl(Q^W_{ss}-\frac{(Q^W_{ts})^2}{2Q^W_{tt}}\Bigr)\\
+&amp;\quad\ge\Theta-\tfrac12H_0A-\tfrac14H_0|A|\\
+&amp;\qquad-|A|\beta_0-\tfrac14\theta_0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1W\Bigl(Q^W_{ss}-\frac{(Q^W_{ts})^2}{2Q^W_{tt}}\Bigr)\\
+&amp;\quad\ge\Theta-\tfrac12H_0A-\tfrac14H_0|A|\\
+&amp;\qquad-|A|\beta_0-\tfrac14\theta_0 .
+\end{aligned}
+\]</span>
+We show that the right side is at least <span class="math" data-tex="\(\tfrac12\theta_0\)">\(\tfrac12\theta_0\)</span> where <span class="math" data-tex="\(A\le c_1d\)">\(A\le c_1d\)</span>.</p>
+<p><em>Where <span class="math" data-tex="\(A\le0\)">\(A\le0\)</span>.</em> The right side is <span class="math" data-tex="\(\Theta+\tfrac14H_0|A|-|A|\beta_0-\tfrac14\theta_0\)">\(\Theta+\tfrac14H_0|A|-|A|\beta_0-\tfrac14\theta_0\)</span>, and this is at least <span class="math" data-tex="\(\Theta+\tfrac18H_0|A|-\tfrac14\theta_0\)">\(\Theta+\tfrac18H_0|A|-\tfrac14\theta_0\)</span>, because <span class="math" data-tex="\(H_0\ge8\beta_0\)">\(H_0\ge8\beta_0\)</span>. If <span class="math" data-tex="\(|A|\le a_0\)">\(|A|\le a_0\)</span>, then <span class="math" data-tex="\(\Theta\ge\theta_0\)">\(\Theta\ge\theta_0\)</span> by (A3). If <span class="math" data-tex="\(A&lt;-a_0\)">\(A&lt;-a_0\)</span>, then <span class="math" data-tex="\(\Theta+\tfrac18H_0|A|\ge-\Theta_1+\tfrac18\lambda a_0\ge\theta_0\)">\(\Theta+\tfrac18H_0|A|\ge-\Theta_1+\tfrac18\lambda a_0\ge\theta_0\)</span>. In both cases the right side is at least <span class="math" data-tex="\(\tfrac34\theta_0\)">\(\tfrac34\theta_0\)</span>.</p>
+<p><em>Where <span class="math" data-tex="\(0&lt;A\le c_1d\)">\(0&lt;A\le c_1d\)</span>.</em> Then <span class="math" data-tex="\(A\le c_1d_{\max}\le a_0\)">\(A\le c_1d_{\max}\le a_0\)</span>, so <span class="math" data-tex="\(\Theta\ge\theta_0\)">\(\Theta\ge\theta_0\)</span>. Further <span class="math" data-tex="\(H_0A\le c_1(\lambda d+p)\le c_1(\lambda d_{\max}+p)\)">\(H_0A\le c_1(\lambda d+p)\le c_1(\lambda d_{\max}+p)\)</span> and <span class="math" data-tex="\(A\beta_0\le c_1d_{\max}\beta_0\)">\(A\beta_0\le c_1d_{\max}\beta_0\)</span>. The right side is at least
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\theta_0-\tfrac34c_1(\lambda d_{\max}+p)\\
+&amp;\quad-c_1d_{\max}\beta_0-\tfrac14\theta_0\ \ge\ \tfrac12\theta_0
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\theta_0-\tfrac34c_1(\lambda d_{\max}+p)\\
+&amp;\quad-c_1d_{\max}\beta_0-\tfrac14\theta_0\ \ge\ \tfrac12\theta_0
+\end{aligned}
+\]</span>
+by the choice of <span class="math" data-tex="\(c_1\)">\(c_1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The order of the choices is: <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> in (A3), then <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, then <span class="math" data-tex="\(c_1\)">\(c_1\)</span>. Where <span class="math" data-tex="\(A\)">\(A\)</span> is definitely negative the term <span class="math" data-tex="\(-\tfrac12H_0A\)">\(-\tfrac12H_0A\)</span> is favourable and large; near the curve <span class="math" data-tex="\(A=0\)">\(A=0\)</span> the positivity comes from <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>; and on the side <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> the unfavourable term <span class="math" data-tex="\(-\tfrac12H_0A\)">\(-\tfrac12H_0A\)</span> is small only as long as <span class="math" data-tex="\(A\le c_1d\)">\(A\le c_1d\)</span>, because <span class="math" data-tex="\(H_0\)">\(H_0\)</span> contains <span class="math" data-tex="\(p/d\)">\(p/d\)</span>.</p>
+<h2 id="4-an-elliptic-estimate-where-a-is-positive">4. An elliptic estimate where <span class="math" data-tex="\(A\)">\(A\)</span> is positive</h2>
+<p>Let <span class="math" data-tex="\(T_2=\tfrac12(T_1+T)\)">\(T_2=\tfrac12(T_1+T)\)</span>, <span class="math" data-tex="\(T_3=\tfrac12(T_2+T)\)">\(T_3=\tfrac12(T_2+T)\)</span>, <span class="math" data-tex="\(s_2=\tfrac12(s_0+s_1)\)">\(s_2=\tfrac12(s_0+s_1)\)</span>, <span class="math" data-tex="\(s_3=\tfrac12(s_0+s_2)\)">\(s_3=\tfrac12(s_0+s_2)\)</span>. Fix smooth functions <span class="math" data-tex="\(\zeta,\chi\)">\(\zeta,\chi\)</span> of <span class="math" data-tex="\((t,s)\)">\((t,s)\)</span> with values in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, products of a function of <span class="math" data-tex="\(t\)">\(t\)</span> and a function of <span class="math" data-tex="\(s\)">\(s\)</span>, such that</p>
+<ul>
+<li><span class="math" data-tex="\(\zeta=1\)">\(\zeta=1\)</span> where <span class="math" data-tex="\(|t|\le T_1\)">\(|t|\le T_1\)</span> and <span class="math" data-tex="\(s\ge s_1\)">\(s\ge s_1\)</span>, and <span class="math" data-tex="\(\zeta=0\)">\(\zeta=0\)</span> where <span class="math" data-tex="\(|t|\ge T_2\)">\(|t|\ge T_2\)</span> or <span class="math" data-tex="\(s\le s_2\)">\(s\le s_2\)</span>;</li>
+<li><span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> where <span class="math" data-tex="\(|t|\le T_2\)">\(|t|\le T_2\)</span> and <span class="math" data-tex="\(s\ge s_2\)">\(s\ge s_2\)</span>, and <span class="math" data-tex="\(\chi=0\)">\(\chi=0\)</span> where <span class="math" data-tex="\(|t|\ge T_3\)">\(|t|\ge T_3\)</span> or <span class="math" data-tex="\(s\le s_3\)">\(s\le s_3\)</span>.</li>
+</ul>
+<p>Let <span class="math" data-tex="\(c_\zeta\)">\(c_\zeta\)</span> be a bound for the first derivatives of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> and <span class="math" data-tex="\(\chi\)">\(\chi\)</span>; it depends only on <span class="math" data-tex="\(T-T_1\)">\(T-T_1\)</span> and <span class="math" data-tex="\(s_1-s_0\)">\(s_1-s_0\)</span>. Fix a smooth function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with values in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, equal to <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\((-\infty,\tfrac12]\)">\((-\infty,\tfrac12]\)</span> and to <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span>, with <span class="math" data-tex="\(|\varphi&#x27;|\le3\)">\(|\varphi&#x27;|\le3\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> Assume (A1), and let <span class="math" data-tex="\(c_1&gt;0\)">\(c_1&gt;0\)</span>. Let <span class="math" data-tex="\(\Omega_e\)">\(\Omega_e\)</span> be the set of the points of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> with <span class="math" data-tex="\(A\ge c_1d\)">\(A\ge c_1d\)</span> and <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>. There is a constant <span class="math" data-tex="\(C_e\)">\(C_e\)</span>, depending only on <span class="math" data-tex="\(l,M_0,d_{\max},c_1,c_\zeta\)">\(l,M_0,d_{\max},c_1,c_\zeta\)</span>, such that
+<span class="math math-display" data-tex="\[
+\iint_{\Omega_e}d^{\,p-1}\,|\nabla u|^2\le C_e\bigl(\|u\|^2+\|f\|^2\bigr).
+\]">\[
+\iint_{\Omega_e}d^{\,p-1}\,|\nabla u|^2\le C_e\bigl(\|u\|^2+\|f\|^2\bigr).
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(v=d^{\,p-2}\chi^2\,\varphi(A/(c_1d))^2\)">\(v=d^{\,p-2}\chi^2\,\varphi(A/(c_1d))^2\)</span> for <span class="math" data-tex="\(s&lt;b\)">\(s&lt;b\)</span>, and <span class="math" data-tex="\(v=0\)">\(v=0\)</span> on the edge <span class="math" data-tex="\(s=b\)">\(s=b\)</span>. Where <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span> we have <span class="math" data-tex="\(A&gt;\tfrac12c_1d\)">\(A&gt;\tfrac12c_1d\)</span>. The product <span class="math" data-tex="\(-vu\,(u_{tt}+Au_{ss}+Bu_t+Cu_s)\)">\(-vu\,(u_{tt}+Au_{ss}+Bu_t+Cu_s)\)</span> is equal to
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;v\,(u_t^2+Au_s^2)+u\,(v_t-vB)\,u_t\\
+&amp;\quad+u\,((Av)_s-vC)\,u_s\\
+&amp;\quad-\partial_t(vuu_t)-\partial_s(vAuu_s).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;v\,(u_t^2+Au_s^2)+u\,(v_t-vB)\,u_t\\
+&amp;\quad+u\,((Av)_s-vC)\,u_s\\
+&amp;\quad-\partial_t(vuu_t)-\partial_s(vAuu_s).
+\end{aligned}
+\]</span>
+Integrate over <span class="math" data-tex="\([-T,T]\times[s_0,b-\eta]\)">\([-T,T]\times[s_0,b-\eta]\)</span> and let <span class="math" data-tex="\(\eta\to0\)">\(\eta\to0\)</span>. The integrals of the two derivatives vanish in the limit: <span class="math" data-tex="\(v=0\)">\(v=0\)</span> near the three edges, and on the line <span class="math" data-tex="\(s=b-\eta\)">\(s=b-\eta\)</span> the function <span class="math" data-tex="\(v\)">\(v\)</span> is at most <span class="math" data-tex="\(\eta^{p-2}\)">\(\eta^{p-2}\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\iint v\,(u_t^2+Au_s^2)\\
+&amp;\quad=-\iint vuf-\iint u\,(v_t-vB)\,u_t\\
+&amp;\qquad-\iint u\,((Av)_s-vC)\,u_s .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\iint v\,(u_t^2+Au_s^2)\\
+&amp;\quad=-\iint vuf-\iint u\,(v_t-vB)\,u_t\\
+&amp;\qquad-\iint u\,((Av)_s-vC)\,u_s .
+\end{aligned}
+\]</span>
+<em>Derivatives of <span class="math" data-tex="\(v\)">\(v\)</span>.</em> Where <span class="math" data-tex="\(\varphi&#x27;(A/(c_1d))\ne0\)">\(\varphi&#x27;(A/(c_1d))\ne0\)</span> we have <span class="math" data-tex="\(A\le c_1d\)">\(A\le c_1d\)</span>. The derivatives of <span class="math" data-tex="\(A/(c_1d)\)">\(A/(c_1d)\)</span> are <span class="math" data-tex="\(A_t/(c_1d)\)">\(A_t/(c_1d)\)</span> and <span class="math" data-tex="\(A_s/(c_1d)+A/(c_1d^2)\)">\(A_s/(c_1d)+A/(c_1d^2)\)</span>, so there they are at most <span class="math" data-tex="\(M_0/(c_1d)\)">\(M_0/(c_1d)\)</span> and <span class="math" data-tex="\((M_0/c_1+1)/d\)">\((M_0/c_1+1)/d\)</span> in absolute value. Since <span class="math" data-tex="\(v\)">\(v\)</span> is <span class="math" data-tex="\(d^{\,p-2}\)">\(d^{\,p-2}\)</span> times the square of <span class="math" data-tex="\(\chi\varphi\)">\(\chi\varphi\)</span>,
+<span class="math math-display" data-tex="\[
+|v_t|+|v_s|\le c_3\sqrt v\;d^{(p-2)/2}\,(1+d^{-1}),
+\]">\[
+|v_t|+|v_s|\le c_3\sqrt v\;d^{(p-2)/2}\,(1+d^{-1}),
+\]</span>
+with <span class="math" data-tex="\(c_3\)">\(c_3\)</span> depending on <span class="math" data-tex="\(p,c_\zeta,M_0,c_1\)">\(p,c_\zeta,M_0,c_1\)</span>; the derivative of <span class="math" data-tex="\(d^{\,p-2}\)">\(d^{\,p-2}\)</span> contributes <span class="math" data-tex="\((p-2)v/d\le(p-2)\sqrt v\,d^{(p-2)/2}d^{-1}\)">\((p-2)v/d\le(p-2)\sqrt v\,d^{(p-2)/2}d^{-1}\)</span>.</p>
+<p><em>The error terms.</em> Where <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>, using <span class="math" data-tex="\(A&gt;\tfrac12c_1d\)">\(A&gt;\tfrac12c_1d\)</span>, <span class="math" data-tex="\(|C|\le(l+2)M_0^2\)">\(|C|\le(l+2)M_0^2\)</span> and <span class="math" data-tex="\(v\le d^{\,p-2}\)">\(v\le d^{\,p-2}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{(v_t-vB)^2}v\\
+&amp;\quad\le2c_3^2d^{\,p-2}(1+d^{-1})^2+2M_0^2d^{\,p-2},\\
+&amp;\frac{((Av)_s-vC)^2}{Av}\\
+&amp;\quad\le\frac{3(A_s^2+C^2)\,v}A+\frac{3A\,v_s^2}v\\
+&amp;\quad\le\frac{6(l+3)^2M_0^4}{c_1}\,d^{\,p-3}\\
+&amp;\qquad+3M_0c_3^2\,d^{\,p-2}(1+d^{-1})^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{(v_t-vB)^2}v\\
+&amp;\quad\le2c_3^2d^{\,p-2}(1+d^{-1})^2+2M_0^2d^{\,p-2},\\
+&amp;\frac{((Av)_s-vC)^2}{Av}\\
+&amp;\quad\le\frac{3(A_s^2+C^2)\,v}A+\frac{3A\,v_s^2}v\\
+&amp;\quad\le\frac{6(l+3)^2M_0^4}{c_1}\,d^{\,p-3}\\
+&amp;\qquad+3M_0c_3^2\,d^{\,p-2}(1+d^{-1})^2 .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(p=8\)">\(p=8\)</span>, all these are bounded on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> by a constant <span class="math" data-tex="\(c_4\)">\(c_4\)</span> depending on <span class="math" data-tex="\(l,M_0,d_{\max},c_1,c_3\)">\(l,M_0,d_{\max},c_1,c_3\)</span>. By the inequality <span class="math" data-tex="\(2xy\le x^2+y^2\)">\(2xy\le x^2+y^2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl|u\bigl((v_t-vB)u_t+((Av)_s-vC)u_s\bigr)\bigr|\\
+&amp;\quad\le\tfrac12v\,(u_t^2+Au_s^2)+c_4u^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl|u\bigl((v_t-vB)u_t+((Av)_s-vC)u_s\bigr)\bigr|\\
+&amp;\quad\le\tfrac12v\,(u_t^2+Au_s^2)+c_4u^2 .
+\end{aligned}
+\]</span>
+Also <span class="math" data-tex="\(|vuf|\le\tfrac12d_{\max}^{\,p-2}(u^2+f^2)\)">\(|vuf|\le\tfrac12d_{\max}^{\,p-2}(u^2+f^2)\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\tfrac12\iint v\,(u_t^2+Au_s^2)\\
+&amp;\quad\le\bigl(c_4+\tfrac12d_{\max}^{\,p-2}\bigr)\bigl(\|u\|^2+\|f\|^2\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\tfrac12\iint v\,(u_t^2+Au_s^2)\\
+&amp;\quad\le\bigl(c_4+\tfrac12d_{\max}^{\,p-2}\bigr)\bigl(\|u\|^2+\|f\|^2\bigr).
+\end{aligned}
+\]</span>
+Where <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> and <span class="math" data-tex="\(A\ge c_1d\)">\(A\ge c_1d\)</span>, we have <span class="math" data-tex="\(v=d^{\,p-2}\ge d^{\,p-1}/d_{\max}\)">\(v=d^{\,p-2}\ge d^{\,p-1}/d_{\max}\)</span> and <span class="math" data-tex="\(vA\ge c_1d^{\,p-1}\)">\(vA\ge c_1d^{\,p-1}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The weight <span class="math" data-tex="\(d^{\,p-2}\)">\(d^{\,p-2}\)</span> lets the ellipticity degenerate at the free edge at the rate <span class="math" data-tex="\(A\ge c_1d\)">\(A\ge c_1d\)</span>.</p>
+<h2 id="5-the-estimate">5. The estimate</h2>
+<p><strong>Theorem 5.1.</strong> Assume (A1), (A2) and (A3), and let <span class="math" data-tex="\(s_1&lt;b_0&lt;b\)">\(s_1&lt;b_0&lt;b\)</span>. There is a constant <span class="math" data-tex="\(C_*\)">\(C_*\)</span>, depending only on the numbers <span class="math" data-tex="\(l,M_0,T,T_1,s_0,s_1,b,b_0,\alpha_0,\varepsilon,a_0,\theta_0\)">\(l,M_0,T,T_1,s_0,s_1,b,b_0,\alpha_0,\varepsilon,a_0,\theta_0\)</span>, such that
+<span class="math math-display" data-tex="\[
+\iint_{\Omega_0}\bigl(u_t^2+u_s^2\bigr)\ \le\ C_*\iint_\Omega\bigl(u^2+f^2\bigr).
+\]">\[
+\iint_{\Omega_0}\bigl(u_t^2+u_s^2\bigr)\ \le\ C_*\iint_\Omega\bigl(u^2+f^2\bigr).
+\]</span></p>
+<p><strong>Proof.</strong> Take <span class="math" data-tex="\(\lambda,c_1,c_2\)">\(\lambda,c_1,c_2\)</span> from Proposition 3.1, and apply Lemma 2.1 with <span class="math" data-tex="\(m=-\zeta W\)">\(m=-\zeta W\)</span> and <span class="math" data-tex="\(n=\varepsilon t\zeta W\)">\(n=\varepsilon t\zeta W\)</span>; they vanish at <span class="math" data-tex="\(s=b\)">\(s=b\)</span> because <span class="math" data-tex="\(W\)">\(W\)</span> does, and near the other edges because <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> does. Differentiating the products shows that the functions of Lemma 2.1 are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q_{tt}&amp;=\zeta Q^W_{tt}-\tfrac12(\zeta_s+\varepsilon t\zeta_t)W,\\
+Q_{ss}&amp;=\zeta Q^W_{ss}+\tfrac12A(\zeta_s+\varepsilon t\zeta_t)W,\\
+Q_{ts}&amp;=\zeta Q^W_{ts}+(\zeta_t-\varepsilon tA\zeta_s)W .
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q_{tt}&amp;=\zeta Q^W_{tt}-\tfrac12(\zeta_s+\varepsilon t\zeta_t)W,\\
+Q_{ss}&amp;=\zeta Q^W_{ss}+\tfrac12A(\zeta_s+\varepsilon t\zeta_t)W,\\
+Q_{ts}&amp;=\zeta Q^W_{ts}+(\zeta_t-\varepsilon tA\zeta_s)W .
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(\Omega_-\)">\(\Omega_-\)</span> be the set of the points of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> with <span class="math" data-tex="\(A&lt;c_1d\)">\(A&lt;c_1d\)</span> and <span class="math" data-tex="\(\Omega_+\)">\(\Omega_+\)</span> the set of those with <span class="math" data-tex="\(A\ge c_1d\)">\(A\ge c_1d\)</span>. The derivatives of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> vanish outside the set where <span class="math" data-tex="\(|t|\ge T_1\)">\(|t|\ge T_1\)</span> or <span class="math" data-tex="\(s\le s_1\)">\(s\le s_1\)</span>; there <span class="math" data-tex="\(A\ge\alpha_0\ge c_1d_{\max}\)">\(A\ge\alpha_0\ge c_1d_{\max}\)</span> by (A2) and the choice of <span class="math" data-tex="\(c_1\)">\(c_1\)</span>. So the terms with derivatives of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> live in <span class="math" data-tex="\(\Omega_+\)">\(\Omega_+\)</span>. On <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, <span class="math" data-tex="\(W\le E_1d^{\,p}\)">\(W\le E_1d^{\,p}\)</span> with <span class="math" data-tex="\(E_1=e^{\lambda(|s_0|+|b|)+TM_0}\)">\(E_1=e^{\lambda(|s_0|+|b|)+TM_0}\)</span>, and <span class="math" data-tex="\(H_0W\le(\lambda d_{\max}+p)E_1d^{\,p-1}\)">\(H_0W\le(\lambda d_{\max}+p)E_1d^{\,p-1}\)</span>. With the formulas of Section 3, all of <span class="math" data-tex="\(|Q^W_{tt}|,|Q^W_{ss}|,|Q^W_{ts}|\)">\(|Q^W_{tt}|,|Q^W_{ss}|,|Q^W_{ts}|\)</span> and the terms with derivatives of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> are at most <span class="math" data-tex="\(c_5d^{\,p-1}\)">\(c_5d^{\,p-1}\)</span>, with a constant <span class="math" data-tex="\(c_5\)">\(c_5\)</span> depending on the numbers of the statement. Lemma 2.1 and Proposition 3.1 give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;c_2\iint_{\Omega_-}\zeta W|\nabla u|^2\\
+&amp;\quad\le\iint_\Omega|f|\,\zeta W(1+T)|\nabla u|\\
+&amp;\qquad+3c_5\iint_{\Omega_+,\ \zeta&gt;0}d^{\,p-1}|\nabla u|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;c_2\iint_{\Omega_-}\zeta W|\nabla u|^2\\
+&amp;\quad\le\iint_\Omega|f|\,\zeta W(1+T)|\nabla u|\\
+&amp;\qquad+3c_5\iint_{\Omega_+,\ \zeta&gt;0}d^{\,p-1}|\nabla u|^2 .
+\end{aligned}
+\]</span>
+In the first integral on the right, the function <span class="math" data-tex="\(|f|W(1+T)|\nabla u|\)">\(|f|W(1+T)|\nabla u|\)</span> is at most
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tfrac12c_2W|\nabla u|^2+\frac{(1+T)^2Wf^2}{2c_2}\quad\text{on }\Omega_-,\\
+d^{\,p-1}|\nabla u|^2+\frac{(1+T)^2W^2f^2}{d^{\,p-1}}\quad\text{on }\Omega_+,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\tfrac12c_2W|\nabla u|^2+\frac{(1+T)^2Wf^2}{2c_2}\quad\text{on }\Omega_-,\\
+d^{\,p-1}|\nabla u|^2+\frac{(1+T)^2W^2f^2}{d^{\,p-1}}\quad\text{on }\Omega_+,
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(W^2/d^{\,p-1}\le E_1^2d_{\max}^{\,p+1}\)">\(W^2/d^{\,p-1}\le E_1^2d_{\max}^{\,p+1}\)</span>. Since <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> where <span class="math" data-tex="\(\zeta&gt;0\)">\(\zeta&gt;0\)</span>, Proposition 4.1 bounds the integrals over <span class="math" data-tex="\(\Omega_+\)">\(\Omega_+\)</span>. So
+<span class="math math-display" data-tex="\[
+\tfrac12c_2\iint_{\Omega_-}\zeta W|\nabla u|^2\le c_6\bigl(\|u\|^2+\|f\|^2\bigr).
+\]">\[
+\tfrac12c_2\iint_{\Omega_-}\zeta W|\nabla u|^2\le c_6\bigl(\|u\|^2+\|f\|^2\bigr).
+\]</span>
+On <span class="math" data-tex="\(\Omega_0\)">\(\Omega_0\)</span> we have <span class="math" data-tex="\(\zeta=\chi=1\)">\(\zeta=\chi=1\)</span>, <span class="math" data-tex="\(d\ge b-b_0\)">\(d\ge b-b_0\)</span> and <span class="math" data-tex="\(W\ge w_0=(b-b_0)^pe^{-\lambda(|s_0|+|b|)-TM_0}\)">\(W\ge w_0=(b-b_0)^pe^{-\lambda(|s_0|+|b|)-TM_0}\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\iint_{\Omega_0}|\nabla u|^2\\
+&amp;\quad\le\frac1{w_0}\iint_{\Omega_-}\zeta W|\nabla u|^2\\
+&amp;\qquad+(b-b_0)^{1-p}\iint_{\Omega_e}d^{\,p-1}|\nabla u|^2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\iint_{\Omega_0}|\nabla u|^2\\
+&amp;\quad\le\frac1{w_0}\iint_{\Omega_-}\zeta W|\nabla u|^2\\
+&amp;\qquad+(b-b_0)^{1-p}\iint_{\Omega_e}d^{\,p-1}|\nabla u|^2,
+\end{aligned}
+\]</span>
+and both terms are bounded by a constant times <span class="math" data-tex="\(\|u\|^2+\|f\|^2\)">\(\|u\|^2+\|f\|^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Verify the formulas for <span class="math" data-tex="\(Q^W_{tt}\)">\(Q^W_{tt}\)</span>, <span class="math" data-tex="\(Q^W_{ss}\)">\(Q^W_{ss}\)</span> and <span class="math" data-tex="\(Q^W_{ts}\)">\(Q^W_{ts}\)</span> of Section 3.</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(A=t^2-\tfrac14-s\)">\(A=t^2-\tfrac14-s\)</span> on <span class="math" data-tex="\(\Omega=[-2,2]\times[-1,\tfrac12]\)">\(\Omega=[-2,2]\times[-1,\tfrac12]\)</span>, so that the equation is elliptic below the parabola <span class="math" data-tex="\(s=t^2-\tfrac14\)">\(s=t^2-\tfrac14\)</span> and hyperbolic above it, and let <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, <span class="math" data-tex="\(C=(l+1)A_s=-(l+1)\)">\(C=(l+1)A_s=-(l+1)\)</span>. Show that (A1), (A2) and (A3) hold, with <span class="math" data-tex="\(T_1=\tfrac32\)">\(T_1=\tfrac32\)</span>, <span class="math" data-tex="\(s_1=-\tfrac12\)">\(s_1=-\tfrac12\)</span> and suitable numbers <span class="math" data-tex="\(M_0,\alpha_0,\varepsilon,a_0,\theta_0\)">\(M_0,\alpha_0,\varepsilon,a_0,\theta_0\)</span>.</p>
+<p><strong>6.3.</strong> In the situation of Exercise 6.2, replace <span class="math" data-tex="\(C\)">\(C\)</span> by <span class="math" data-tex="\(+(l+1)\)">\(+(l+1)\)</span>. Which of the assumptions fails, and where does the proof of Proposition 3.1 break down?</p>
+<p><strong>6.4.</strong> Show that in Lemma 2.1 the assumption that <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> vanish on the edge <span class="math" data-tex="\(s=b\)">\(s=b\)</span> cannot simply be dropped: for <span class="math" data-tex="\(A=-1\)">\(A=-1\)</span>, <span class="math" data-tex="\(B=C=0\)">\(B=C=0\)</span>, find the terms on the edge that appear, and say why they have no sign.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> With <span class="math" data-tex="\(m=-W\)">\(m=-W\)</span>: <span class="math" data-tex="\(m_s=(H_0-I_s)W\)">\(m_s=(H_0-I_s)W\)</span> and <span class="math" data-tex="\(m_t=-BW\)">\(m_t=-BW\)</span>. With <span class="math" data-tex="\(n=\varepsilon tW\)">\(n=\varepsilon tW\)</span>: <span class="math" data-tex="\(n_t=\varepsilon W+\varepsilon tBW\)">\(n_t=\varepsilon W+\varepsilon tBW\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q_{tt}&amp;=\tfrac12(H_0-I_s)W-\tfrac\varepsilon2(1+tB)W\\
+&amp;\quad+\varepsilon tBW .
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q_{tt}&amp;=\tfrac12(H_0-I_s)W-\tfrac\varepsilon2(1+tB)W\\
+&amp;\quad+\varepsilon tBW .
+\end{aligned}
+\]</span>
+Next,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+-\tfrac12(Am)_s&amp;=\tfrac12A_sW-\tfrac12A(H_0-I_s)W,\\
+\tfrac12(An)_t&amp;=\tfrac\varepsilon2(tA_t+A+tAB)W,
+\end{aligned}
+\]">\[
+\begin{aligned}
+-\tfrac12(Am)_s&amp;=\tfrac12A_sW-\tfrac12A(H_0-I_s)W,\\
+\tfrac12(An)_t&amp;=\tfrac\varepsilon2(tA_t+A+tAB)W,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(Cm=-CW\)">\(Cm=-CW\)</span> with <span class="math" data-tex="\(C=(l+1)A_s+A\omega\)">\(C=(l+1)A_s+A\omega\)</span>; the sum of the three is <span class="math" data-tex="\(W\)">\(W\)</span> times
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;-(l+\tfrac12)A_s+\tfrac\varepsilon2tA_t-\tfrac12H_0A\\
+&amp;\quad+A\bigl(\tfrac12I_s+\tfrac\varepsilon2(1+tB)-\omega\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;-(l+\tfrac12)A_s+\tfrac\varepsilon2tA_t-\tfrac12H_0A\\
+&amp;\quad+A\bigl(\tfrac12I_s+\tfrac\varepsilon2(1+tB)-\omega\bigr).
+\end{aligned}
+\]</span>
+Finally <span class="math" data-tex="\(-m_t+Bm=0\)">\(-m_t+Bm=0\)</span>, <span class="math" data-tex="\(-(An)_s=-\varepsilon t(A_s-A(H_0-I_s))W\)">\(-(An)_s=-\varepsilon t(A_s-A(H_0-I_s))W\)</span> and <span class="math" data-tex="\(Cn=\varepsilon tCW\)">\(Cn=\varepsilon tCW\)</span>; the sum is <span class="math" data-tex="\(\varepsilon tW\)">\(\varepsilon tW\)</span> times <span class="math" data-tex="\(lA_s+A\omega+A(H_0-I_s)\)">\(lA_s+A\omega+A(H_0-I_s)\)</span>.</p>
+<p><strong>6.2.</strong> (A1): <span class="math" data-tex="\(\omega=0\)">\(\omega=0\)</span>, and <span class="math" data-tex="\(|A|\le4-\tfrac14+1&lt;5\)">\(|A|\le4-\tfrac14+1&lt;5\)</span>, <span class="math" data-tex="\(|A_t|=|2t|\le4\)">\(|A_t|=|2t|\le4\)</span>, <span class="math" data-tex="\(A_s=-1\)">\(A_s=-1\)</span>, so <span class="math" data-tex="\(M_0=5\)">\(M_0=5\)</span> works. (A2): for <span class="math" data-tex="\(|t|\ge\tfrac32\)">\(|t|\ge\tfrac32\)</span>, <span class="math" data-tex="\(A\ge\tfrac94-\tfrac14-\tfrac12=\tfrac32\)">\(A\ge\tfrac94-\tfrac14-\tfrac12=\tfrac32\)</span>; for <span class="math" data-tex="\(s\le-\tfrac12\)">\(s\le-\tfrac12\)</span>, <span class="math" data-tex="\(A\ge t^2+\tfrac14\ge\tfrac14\)">\(A\ge t^2+\tfrac14\ge\tfrac14\)</span>; so <span class="math" data-tex="\(\alpha_0=\tfrac14\)">\(\alpha_0=\tfrac14\)</span>. (A3): <span class="math" data-tex="\(\Theta=(l+\tfrac12)+\varepsilon t^2\ge l+\tfrac12\)">\(\Theta=(l+\tfrac12)+\varepsilon t^2\ge l+\tfrac12\)</span> at every point, so <span class="math" data-tex="\(\theta_0=l+\tfrac12\)">\(\theta_0=l+\tfrac12\)</span> with any <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, for every <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> with <span class="math" data-tex="\(16\,\varepsilon^2\cdot4\cdot5\le1\)">\(16\,\varepsilon^2\cdot4\cdot5\le1\)</span>, for example <span class="math" data-tex="\(\varepsilon=\tfrac1{18}\)">\(\varepsilon=\tfrac1{18}\)</span>.</p>
+<p><strong>6.3.</strong> For <span class="math" data-tex="\(A=t^2-\tfrac14-s\)">\(A=t^2-\tfrac14-s\)</span> and <span class="math" data-tex="\(C=+(l+1)=-(l+1)A_s\)">\(C=+(l+1)=-(l+1)A_s\)</span>, the decomposition (A1) would need <span class="math" data-tex="\(A\omega=2(l+1)\)">\(A\omega=2(l+1)\)</span>, and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is unbounded near the curve <span class="math" data-tex="\(A=0\)">\(A=0\)</span>. In the proof, the term <span class="math" data-tex="\(Cm\)">\(Cm\)</span> then contributes <span class="math" data-tex="\(-(l+1)W\)">\(-(l+1)W\)</span> instead of <span class="math" data-tex="\(+(l+1)W\)">\(+(l+1)W\)</span> to <span class="math" data-tex="\(Q^W_{ss}\)">\(Q^W_{ss}\)</span>, and <span class="math" data-tex="\(Q^W_{ss}/W\)">\(Q^W_{ss}/W\)</span> is <span class="math" data-tex="\(-(l+\tfrac32)+\varepsilon t^2\)">\(-(l+\tfrac32)+\varepsilon t^2\)</span> plus terms that vanish with <span class="math" data-tex="\(A\)">\(A\)</span>: it is negative on the part of the curve <span class="math" data-tex="\(A=0\)">\(A=0\)</span> with <span class="math" data-tex="\(t^2&lt;(l+\tfrac32)/\varepsilon\)">\(t^2&lt;(l+\tfrac32)/\varepsilon\)</span>. The sign of the first-order term across the curve decides.</p>
+<p><strong>6.4.</strong> For <span class="math" data-tex="\(A=-1\)">\(A=-1\)</span>, <span class="math" data-tex="\(B=C=0\)">\(B=C=0\)</span> the equation is the wave equation <span class="math" data-tex="\(u_{tt}-u_{ss}=f\)">\(u_{tt}-u_{ss}=f\)</span>. The integral of <span class="math" data-tex="\(\partial_s(-\tfrac12mu_t^2+\tfrac12Amu_s^2+Anu_su_t)\)">\(\partial_s(-\tfrac12mu_t^2+\tfrac12Amu_s^2+Anu_su_t)\)</span> contributes on <span class="math" data-tex="\(s=b\)">\(s=b\)</span> the integral over <span class="math" data-tex="\(t\)">\(t\)</span> of <span class="math" data-tex="\(-\tfrac12m(u_t^2+u_s^2)-n\,u_su_t\)">\(-\tfrac12m(u_t^2+u_s^2)-n\,u_su_t\)</span>. Since <span class="math" data-tex="\(|u_su_t|\le\tfrac12(u_t^2+u_s^2)\)">\(|u_su_t|\le\tfrac12(u_t^2+u_s^2)\)</span>, this has the sign of <span class="math" data-tex="\(-m\)">\(-m\)</span> if <span class="math" data-tex="\(|n|\le|m|\)">\(|n|\le|m|\)</span>, and no sign otherwise; and <span class="math" data-tex="\(u\)">\(u\)</span> and its derivatives on that edge are not controlled by anything. In the hyperbolic region an edge can be free only if the multiplier is adapted to it. The weight <span class="math" data-tex="\(d^{\,p}\)">\(d^{\,p}\)</span> avoids the question by vanishing there.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-I] OpenAI, <em>A smooth metric with no local isometric immersion into three-space</em>, OpenAI Math Release preprint, 24 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/A-Smooth-Metric-with-No-Local-Isometric-Immersion-into-Three-Space-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

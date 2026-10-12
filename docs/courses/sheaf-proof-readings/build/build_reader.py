@@ -32,7 +32,7 @@ def convert(args, text):
                             capture_output=True)
     if result.returncode or result.stderr.strip():
         raise RuntimeError(result.stderr.decode('utf-8', errors='replace'))
-    return result.stdout.decode('utf-8')
+    return result.stdout.decode('utf-8').replace('\r\n','\n')
 
 
 def render(body, title, links, heading_ids=None):
@@ -43,8 +43,20 @@ def render(body, title, links, heading_ids=None):
         if node.get('t') in ('Link','Image'):
             url = node['c'][-1][0]
             node['c'][-1][0] = links.get(url, url)
-        elif node.get('t') in ('RawBlock','RawInline') and node['c'][0]=='html':
+        elif node.get('t')=='RawInline' and node['c'][0]=='html':
+            # Keep opening and closing tags separate in the Pandoc inline stream.
+            # Parsing an opening anchor alone would close it before its image.
+            def mapped_attribute(match):
+                url = html.unescape(match[3])
+                if url not in links:
+                    return match[0]
+                return match[1]+match[2]+html.escape(links[url],quote=True)+match[2]
+            node['c'][1] = re.sub(r"(\b(?:href|src)\s*=\s*)([\"'])(.*?)\2",
+                mapped_attribute,node['c'][1])
+        elif node.get('t')=='RawBlock' and node['c'][0]=='html':
             fragment = BeautifulSoup(node['c'][1], 'html.parser')
+            for anchor in fragment.find_all('a',href=True):
+                anchor['href'] = links.get(anchor['href'],anchor['href'])
             for img in fragment.find_all('img',src=True):
                 img['src'] = links.get(img['src'],img['src'])
             node['c'][1] = str(fragment)
@@ -133,6 +145,24 @@ def render(body, title, links, heading_ids=None):
         identity = re.match(r'(SH02-[A-Z0-9-]+)',heading.get_text())
         if identity and not soup.find(id=identity[1]):
             heading.insert_before(soup.new_tag('span',id=identity[1]))
+    # Preserve fragment targets without empty paragraphs or duplicate names.
+    for anchor in list(soup.find_all('a')):
+        marker = anchor.get('name')
+        if marker and not anchor.get_text(strip=True):
+            heading = soup.find(id=marker)
+            published = (heading_ids or {}).get(marker,marker)
+            if (heading is not None and re.fullmatch(r'h[1-6]',heading.name)
+                    and published == marker):
+                parent = anchor.parent
+                anchor.decompose()
+                if parent.name == 'p' and not parent.get_text(strip=True) and not parent.find(True):
+                    parent.decompose()
+                continue
+        parent = anchor.parent
+        if (parent.name == 'p' and not anchor.get_text(strip=True)
+                and len(parent.find_all(recursive=False)) == 1
+                and not parent.get_text(strip=True)):
+            parent.unwrap()
     # Preserve published section URLs when an editorial heading is renamed.
     for generated, published in (heading_ids or {}).items():
         heading = soup.find(id=generated)

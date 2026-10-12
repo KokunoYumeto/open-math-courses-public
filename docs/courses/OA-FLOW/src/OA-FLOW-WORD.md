@@ -9,7 +9,7 @@ A comparison between two weights can be transported to positive operators in one
 
 Let \(M\) be a von Neumann algebra and let \(\mathcal W_0(M)\) denote its faithful normal semifinite weights. No separability, factoriality, proper infiniteness or finiteness of the weights is assumed. Ordinary order means comparison on the entire positive cone, with infinite values allowed.
 
-The real-time cocycle in (WO1) is unitary because both weights are faithful. A nonfaithful denominator requires a separately specified support-corner convention; (WO1) does not define that additional comparison.
+Sections 1–7 concern faithful weights, whose real-time cocycles are unitary. Section 8 defines and proves the corresponding order for arbitrary normal semifinite weights by including support inclusion and a precise partial-cocycle convention.
 
 For the zero algebra there is a single weight, all comparisons below hold, and its cocycle is the sole element of that algebra. This settles that case. In the rest of the proof and the scalar-rescaling diagnostics, assume \(M\ne0\).
 
@@ -317,7 +317,82 @@ The real coordinate plane shows the exact obstruction in (WO24)–(WO25); the da
 
 **6. Why zero frequency is included.** A fixed nonzero \(x\) has constant extension \(F(z)=x\), and its spectral support is \(\{0\}\). The modulation-and-limit step after (WO17) is what permits this endpoint. Replacing either closed half-line in (WO23) by an open one would exclude equal weights.
 
+<a id="wo-supported"></a>
+
+## 8. An explicit comparison for nonfaithful weights
+
+We now extend the definition to all normal semifinite weights, including zero. This extension specifies both the support condition and the derivative convention; it agrees with (WO1) on faithful weights.
+
+Use the intrinsic densities from [SCW1–2](OA-FLOW-SCW.md#scw-1). For weights \(\varphi,\psi\), put \(p=s(\varphi)=s(h_\varphi)\), \(q=s(\psi)=s(h_\psi)\). All imaginary powers in this section are taken on the support and extended by zero. For \(p\leq q\), define
+\[
+ u_{\varphi,\psi}(t)=h_{\varphi,s}^{it}h_{\psi,s}^{-it}.
+ \tag{WO27}
+\]
+This lies in \(M\): the two homogeneous powers acquire opposite scalar factors under \(\theta_s\), so their product is fixed; the full fixed-algebra theorem gives \(C^\theta=M\). SCW1 constructs the powers independently of faithful completions and charts, so (WO27) has the same independence. Its support identities are
+\[
+ u(t)u(t)^*=p,\qquad
+ u(t)^*u(t)=\sigma_t^{\psi_q}(p),\qquad u(0)=p,
+ \tag{WO28}
+\]
+where \(\psi_q\) is the faithful restriction to \(qMq\). Indeed SCW2 implements that modular action by \(h_{\psi,s}^{it}\) on \(qMq\), and \(p\leq q\) lets \(q\) be removed next to each supported power of \(h_\varphi\). The same multiplication proves
+\[
+ u(t+r)=u(t)\,\sigma_t^{\psi_q}(u(r)).
+ \tag{WO29}
+\]
+Thus this is a partial cocycle in \(qMq\). When \(\psi\) is faithful it is the partial cocycle constructed in SCW1 with reference \(\psi\); when both weights are faithful it is exactly the normalized cocycle in (WO7). On a common support corner both weights are faithful there, and the SCW3 core identification gives that corner's normalized cocycle. No arbitrary logarithm at zero is chosen.
+
+For \(a>0\), **define** \(\varphi\preceq_a^s\psi\) to mean \(p\leq q\) together with a contractive holomorphic extension of (WO27) to \(S_a\), jointly intrinsically sigma-strong continuous there. For incomparable supports the relation is false. The supported operator theorem [L158, Section 9](OA-FLOW-L158.md#oa-flow.l158.supported), applied in the common core, proves
+\[
+ \begin{aligned}
+ \varphi\preceq_a^s\psi
+ &\Longleftrightarrow
+ D(h_\psi^a)\subseteq D(h_\varphi^a),\
+ \|h_\varphi^a\xi\|\leq\|h_\psi^a\xi\|
+       \quad(\xi\in D(h_\psi^a))\\
+ &\Longleftrightarrow h_\varphi^{2a}\leq h_\psi^{2a}
+       \quad\text{as complete closed forms}.
+ \end{aligned}\tag{WO30}
+\]
+Here is the algebra-membership step, which a Hilbert-space strip theorem alone does not supply. Given the form inequality, that theorem constructs the unique contractive \(U(z)\in C\). Each \(\theta_s(U(z))\) has the same real boundary values (WO27). Boundary uniqueness therefore makes \(U\) fixed by \(\theta\), hence \(M\)-valued. The normal coefficient identification preserves all normal seminorms. The reverse implication follows by representing an \(M\)-valued extension in \(C\). The extension is unique, norm-holomorphic inside and jointly intrinsically sigma-strong-star continuous on the closed strip. Its lower edge is
+\[
+ U(t-ia)=h_{\varphi,s}^{it}\,T_a\,h_{\psi,s}^{-it},\qquad
+ T_a=\overline{h_\varphi^a h_{\psi,s}^{-a}}\in pMq,\quad
+ \|T_a\|\leq1. \tag{WO31}
+\]
+L158 proves that this product is taken on the full supported inverse-power domain before closure, including the kernel of \(h_\psi\).
+
+The whole-cone density identity SCW2, the complete-form trace-density order isomorphism TD5, and the onto positive test (WO5)–(WO6) apply to nonfaithful weights as well. Consequently
+\[
+ \varphi\preceq_{1/2}^s\psi
+ \Longleftrightarrow h_\varphi\leq h_\psi
+ \Longleftrightarrow\widetilde\varphi\leq\widetilde\psi
+ \Longleftrightarrow\varphi\leq\psi. \tag{WO32}
+\]
+All weight inequalities include infinite values on the entire positive cone.
+
+These are partial orders. Reflexivity has constant extension \(p\). Transitivity follows either from (WO30) and transitivity of complete-form order, or by multiplying strip extensions: for \(p_1\leq p_2\leq p_3\), the intervening supported inverse and positive imaginary powers multiply to \(p_2\), and \(h_{\varphi_1,s}^{it}p_2=h_{\varphi_1,s}^{it}\). This is the exact ordered chain law needed at real times. Products of the bounded extensions are holomorphic and jointly sigma-strong-star continuous. For antisymmetry, the two form inequalities in (WO30) give identical complete closed forms. Their selfadjoint operators coincide; taking the Borel power \(1/(2a)\) gives \(h_\varphi=h_\psi\). Density uniqueness and (WO6) give equality of the original weights, including their supports. Zero is the least weight for every depth. If \(\psi=0\), the support condition forces \(\varphi=0\).
+
+Define \(\preceq_\infty^s\) by requiring every finite depth. L158's supported spectral-order equivalence gives
+\[
+ \varphi\preceq_\infty^s\psi
+ \Longleftrightarrow
+ E_{h_\psi}([0,b])\leq E_{h_\varphi}([0,b])
+ \quad(b\geq0). \tag{WO33}
+\]
+The case \(b=0\) is the support inclusion. The extensions agree on overlaps and define one contractive lower-half-plane function. This is an order comparison of weights; it does not extend the later faithful-weight metric merely by dropping its hypotheses.
+
+**Why zero extension alone is insufficient, even on a properly infinite algebra.** Let \(M=B(\ell^2(\mathbb N))\), let \(p=E_{11}\), \(q=E_{22}\), and take the finite normal weights \(\varphi(x)=\langle xe_1,e_1\rangle\), \(\psi(x)=\langle xe_2,e_2\rangle\). They are normal semifinite, with orthogonal supports. In the faithful trace chart, SCW1 gives \(h_\varphi=p h_{\operatorname{Tr}}\), \(h_\psi=q h_{\operatorname{Tr}}\); both projections commute with the trace generator. Their supported real-time products are therefore zero in both directions, and both zero functions extend to every strip. Yet \(\varphi(p)=1>\psi(p)=0\), with the reverse obstruction on \(q\). The explicit support clause in our definition excludes both comparisons.
+
+The nested three-coordinate model in L158 gives a valid nonfaithful example: trace densities \(\operatorname{diag}(1,0,0)\) and \(\operatorname{diag}(4,9,0)\) satisfy every depth, with exact strip norm \(4^{-a}\). It can be read on \(M_3(\mathbb C)\), or extended by zero to the remaining coordinates of \(B(\ell^2)\). In the latter case the faithful trace chart gives the same supported products. The underlying weights are finite even though the ambient algebra is properly infinite.
+
+
+![Orthogonal supports defeat the bare strip test; a nested-support pair has exact endpoint norm four to the minus strip depth.](../assets/weight-order/supported-order.png)
+
+*Exact models.* In the left panel the two supported products are zero, although evaluating the forms on the first and second coordinate vectors disproves both orders. In the middle and right panels the supports are nested, the complete power inequality holds at every depth, and (WO31) and the diagonal calculation gives the exact norm values \(1,1/2,1/4,1/16\) at depths \(0,1/2,1,2\). The continuous curve samples that proved formula. Zero coordinates remain part of the full domains. [Original renderer](../assets/weight-order/render_supported_order.py), [exact data](../assets/weight-order/supported-order.json), [editable SVG](../assets/weight-order/supported-order.svg), and [terms](../assets/weight-order/TERMS.txt).
+
 <a id="wo-sources"></a>
 ## Further reading
 
 M. Takesaki, *Theory of Operator Algebras II*, Chapter XII, Section 5, Definition 5.1, Lemmas 5.2 and 5.4, Remark 5.3 and Example 5.6(i), printed pp.421–423, treats these weight comparisons. The proof here first reflects order through an explicitly onto averaging map, then applies complete-form interpolation in one core. The half-plane criterion is proved by Poisson kernels, smooth normal filters and a contour estimate, with the Fourier sign fixed by (WO14). The earlier L158 proof supplies both the power-domain theorem and its noncommuting finite-dimensional diagnostics.
+
+Section 8 supplies an explicit supported convention for the general-weight wording of Definition 5.1. The support condition is essential: its orthogonal-support example shows why contractivity of zero-extended products alone cannot recover ordinary weight order. The complete proof uses the local supported interpolation theorem and the earlier whole-cone density and averaging identities.

@@ -2,6 +2,8 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
+*Section 5 comparison and compact-restriction proofs completed by GPT-6 Astra (OpenAI), Ultra, 12 October 2026. Author self-check; independent review not claimed. CC0.*
+
 Sections of a coherent analytic sheaf over an open set form a Fréchet space, and restriction to a relatively compact open subset is a compact operator, by Montel's theorem. L. Schwartz's perturbation theorem turns this compactness into finiteness: if a compact morphism of Fréchet complexes is surjective in cohomology, the target cohomology is finite-dimensional. This lesson builds the topological framework: Fréchet spaces and the open mapping theorem, compact perturbations, an abstract Mittag-Leffler theorem for inverse limits of complexes, the Krull topology on finitely generated modules over \(\mathcal O_n\), and the canonical Fréchet topology on sections of coherent sheaves.
 
 We use [Holomorphic functions of several variables](holomorphic-functions-of-several-variables.md) (Weierstrass convergence and Montel's theorem), [Coherent sheaves and Oka's coherence theorem](coherent-sheaves-and-okas-theorem.md), [Cartan's coherence theorem and complex spaces](cartans-coherence-theorem-and-complex-spaces.md) and [Stein domains in complex space](stein-domains-in-complex-space.md). The Baire category theorem is [Hahn–Banach, Baire and the basic theorems on Banach spaces, Theorem 3.1](course:foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces#OA-FND-HB-03); the Artin–Rees lemma and Krull's intersection theorem are [Stacks, Tags 00IN and 00IP](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-Artin-Rees).
@@ -63,6 +65,10 @@ Here density in cohomology refers to the quotient topology on cocycles modulo co
 
 Let \(E\) be a finitely generated \(\mathcal O_n\)-module, \(\mathfrak m=\mathfrak m_n\). Each \(E/\mathfrak m^kE\) is a finite-dimensional vector space, and by Krull's intersection theorem \(\bigcap_k\mathfrak m^kE=0\) [Stacks, Tag 00IP](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-intersect-powers-ideal-module-zero). So \(E\) embeds into \(\prod_kE/\mathfrak m^kE\); the induced topology is the **Krull topology**. On \(\mathcal O_n\) it is the topology of convergence of each Taylor coefficient. Module homomorphisms are continuous for it, since they induce linear maps on the finite-dimensional quotients.
 
+**Exact programme inputs.** Complete proofs are provided by [Noetherian and Artinian rings, Theorem 5.1 (Artin–Rees)](course:AG-CA/AG-CA-03#5-intersecting-a-filtration-with-a-submodule) and [Theorem 6.1 (Krull intersection)](course:AG-CA/AG-CA-03#6-what-can-survive-every-power). Their finite-generation and polynomial-ring inputs are proved in Sections 1–2 of that lesson. The determinant argument and Nakayama's lemma are proved in [Localization, local properties and support, Lemma 4.1 and Theorem 4.2](course:AG-CA/AG-CA-02#4-finite-generators-near-a-point). The Stacks references above remain the human-source comparisons.
+
+**Application to possibly nonreduced spaces.** For an analytic space and a point \(x\), its local ring \(R=\mathcal O_{X,x}\) is a quotient of a Noetherian local ring of holomorphic germs, and the stalk \(M=\mathcal F_x\) of a coherent sheaf is a finite \(R\)-module. Use the local-ring case of Theorem 6.1 with \(I=\mathfrak m_x=\operatorname{Jac}(R)\): it gives \(\bigcap_{k\geq1}\mathfrak m_x^kM=0\). No reducedness, domain, torsion-freeness or freeness assumption is needed. The same conclusion applies to a finite quotient stalk, as used in Proposition 4.1. In local coordinates, \(R/\mathfrak m_x^k\) is a quotient of the finite-dimensional space of polynomials of degree less than \(k\), so \(M/\mathfrak m_x^kM\) is finite-dimensional too. This proves the finite-jet separation used in Section 5; it does not assert that the module is complete for its ideal-adic topology.
+
 **Proposition 4.1.** If \(E\subset F\) are finitely generated \(\mathcal O_n\)-modules, then \(E\) is closed in \(F\) for the Krull topology of \(F\).
 
 **Proof.** The image of the closure \(\overline E\) in the finite-dimensional space \(F/\mathfrak m^kF\) lies in the closure of the image of \(E\), which is the image itself; so \(\overline E\subset E+\mathfrak m^kF\) for every \(k\). By Krull's intersection theorem applied to \(F/E\), \(\bigcap_k(E+\mathfrak m^kF)=E\). \(\square\)
@@ -82,7 +88,56 @@ is exact, and \(\mathcal Z_0(V)\) is closed by Section 4. Give \(\mathcal S(U)\)
 
 **Proposition 5.1.** This topology does not depend on the choices. For an arbitrary open set \(W\subset X\), the topology on \(\mathcal S(W)\) induced by the injection \(\mathcal S(W)\to\prod_\alpha\mathcal S(U_\alpha)\), for any countable covering of \(W\) by standard open sets, is a Fréchet topology independent of the covering, and it agrees with the previous one when \(W\) is standard.
 
-**Proof.** If \(U'=A\cap V'\) with \(V'\subset V\) a smaller Stein domain, restriction \(\mathcal O(V)^{p_0}\to\mathcal O(V')^{p_0}\) is continuous, so \(\mathcal S(U)\to\mathcal S(U')\) is continuous. A covering of \(U\) by countably many such \(U'_\alpha\) gives an injection of \(\mathcal S(U)\) onto the closed subspace of compatible families in \(\prod\mathcal S(U'_\alpha)\); the induced topology is coarser than the quotient topology and Fréchet, so by Theorem 1.1 the two coincide. Other generators \(H_1,\ldots,H_{p'}\) of \(i_*\mathcal S\) near a point are expressed in terms of the first ones and conversely, on small standard sets, giving continuous maps \(\mathcal O^{p'}\to\mathcal O^{p_0}\) and back compatible with the surjections onto \(\mathcal S\); so the quotient topologies agree there. A change of local embedding is reduced, near each point, to comparing an embedding with its composite with \(\Omega'\hookrightarrow\Omega'\times\mathbf C^{N-d}\), for which the quotient maps correspond under the open restriction \(\mathcal O(V'\times\mathbf C^{N-d})\to\mathcal O(V')\) to the slice. Covering by small standard sets and the closed-subspace argument above then give independence in general. For arbitrary \(W\), the image of \(\mathcal S(W)\) in a countable product is closed (sheaf axiom and continuity of restrictions), hence Fréchet; two coverings have a common refinement, and Theorem 1.1 shows that the topologies coincide. \(\square\)
+**Proof.** We first make the maps between different presentations explicit. We then use finite jets to prove closedness and independence without presupposing continuity of restriction on arbitrary intersections.
+
+**Intrinsic finite jets.** For a standard model \(U=A\cap V\), write \(q_V:\mathcal O(V)^p\twoheadrightarrow\mathcal S(U)\) for (5.1). At \(x\in U\), let \(\mathfrak m_x\) be the maximal ideal of \(\mathcal O_{X,x}\). For every \(k\geq1\), the map
+\[
+j_{x,k}:\mathcal S(U)\longrightarrow
+\mathcal S_x/\mathfrak m_x^k\mathcal S_x,\qquad
+s\longmapsto s_x\bmod\mathfrak m_x^k\mathcal S_x
+\]
+is continuous. Indeed, after composition with \(q_V\), it depends only on the Taylor coefficients of order less than \(k\) of the \(p\) ambient holomorphic functions at the point representing \(x\). The ambient maximal ideal maps onto \(\mathfrak m_x\); multiplication by the chosen section generators therefore gives a well-defined linear map from the finite-dimensional ambient jet space to this quotient. Taylor coefficients are continuous by the Cauchy estimates, and continuity descends through the quotient map \(q_V\). These intrinsic jets separate germs: \(\bigcap_k\mathfrak m_x^k\mathcal S_x=0\) by Krull's intersection theorem, since the analytic local ring is Noetherian and the stalk is finite over it. This argument does not require \(X\) to be reduced.
+
+**Explicit local comparison.** Suppose \(i:U_i\hookrightarrow\Omega\subset\mathbf C^N\) and \(j:U_j\hookrightarrow\Xi\subset\mathbf C^M\) are two closed analytic models around \(x\), equipped with finite generators \(s_1,\ldots,s_p\) and \(t_1,\ldots,t_r\) of \(\mathcal S\). Choose a Stein neighbourhood \(V_j\subset\Xi\) of \(j(x)\) on which the second quotient presentation is valid. Each coordinate section \(j_\ell\) on the common complex-space neighbourhood has, near \(i(x)\), a holomorphic lift \(F_\ell\), by the quotient description of the structure sheaf. Shrink the ambient neighbourhood so that
+\[
+F=(F_1,\ldots,F_M):\Omega_0\longrightarrow V_j
+\]
+is holomorphic and \(A\cap\Omega_0\) lies in the common neighbourhood. The restriction of \(F\) to that complex subspace is the transition morphism \(j\circ i^{-1}\), not just its map on points. To check this on a holomorphic germ \(f\), use its Taylor polynomial of each finite order at \(j(x)\). Both pullbacks agree on the coordinate germs and hence on that polynomial; the remaining difference belongs to every power of \(\mathfrak m_x\), so vanishes by Krull intersection. The same argument at every point after shrinking establishes the sheaf identity.
+
+At \(x\), write \(t_b=\sum_a c_{ab}s_a\) in \(\mathcal S_x\). The finitely many coefficient germs and these finitely many identities extend to a common neighbourhood. Lift the coefficients to holomorphic functions \(\widetilde c_{ab}\) in the first ambient model and choose a sufficiently small Stein ball \(D\subset\Omega_0\) on which all of them are defined. The comparison on presenting spaces is
+\[
+T:\mathcal O(V_j)^r\longrightarrow\mathcal O(D)^p,\qquad
+(Tf)_a=\sum_{b=1}^r\widetilde c_{ab}(f_b\circ F).
+\tag{5.2}
+\]
+This map is continuous: for every compact \(K\subset D\), \(F(K)\) is compact in \(V_j\), and
+\[
+\sup_K |(Tf)_a|
+\leq\sum_{b=1}^r\sup_K|\widetilde c_{ab}|\,
+                  \sup_{F(K)}|f_b|.
+\]
+Let \(U_D=A\cap D\) and let \(R:\mathcal S(j^{-1}(V_j))\to\mathcal S(U_D)\) be restriction, identifying the common models by their actual complex-space morphism. The square commutes in the precise sense
+\[
+q_D T=R q_{V_j}.
+\tag{5.3}
+\]
+The equality follows from the generator identities and the structure-sheaf pullback just proved. Since \(q_{V_j}\) is a quotient surjection, (5.3) proves continuity of \(R\) for the two displayed quotient topologies. Reversing the roles of the embeddings gives the comparison in the other direction on smaller neighbourhoods. Neither equal ambient dimensions nor an invertible ambient map is required. Taking \(F\) to be the identity gives the change-of-generators comparison and nested same-chart restriction as special cases.
+
+The sheaf qualification matters. On the one-point complex space with local ring \(\mathbf C[\varepsilon]/(\varepsilon^2)\), the embeddings given by the coordinate images \(\varepsilon\) and \((\varepsilon,\varepsilon)\) have comparison \(F(z)=(z,z)\). The map \((z,0)\) agrees with it on the underlying point but not on the second coordinate in the structure sheaf. Such a map would not satisfy (5.3).
+
+**Closed compatible families.** Choose a countable standard cover \((U_\alpha)\) of an arbitrary \(W\), with any of the quotient presentations above. In the Fréchet product \(P=\prod_\alpha\mathcal S(U_\alpha)\), define
+\[
+C=\left\{(s_\alpha)\in P:
+ j_{x,k}(s_\alpha)-j_{x,k}(s_\beta)=0
+ \text{ for all }\alpha,\beta,\ x\in U_\alpha\cap U_\beta,\ k\geq1\right\}.
+\]
+Each difference is a continuous linear map to a finite-dimensional Hausdorff space, so \(C\) is an intersection of closed kernels. It is therefore a closed Fréchet subspace of \(P\). The jet-separation statement implies that its families agree as germs on every overlap, hence agree as sections there. The sheaf gluing and uniqueness axioms give a linear bijection \(\mathcal S(W)\to C\). Transport the topology of \(C\) to \(\mathcal S(W)\). This proves completeness and metrizability without any assumption about the topology of the overlaps.
+
+For clarity, the closed-graph consequence of Theorem 1.1 used next needs no extra functional-analytic input. If \(L:E\to F\) is a linear map of Fréchet spaces with closed graph \(G\subset E\times F\), then \(G\) is Fréchet and its first projection \(G\to E\) is a continuous linear bijection. Its inverse is continuous by Theorem 1.1, and composition with the second projection proves that \(L\) is continuous.
+
+Now take two countable standard covers of \(W\), producing spaces \(C\) and \(C'\). They are linearly identified by their glued sections. The graph of this identification is closed: for every member of each cover, every point of their intersection, and every positive jet order, impose equality of the two intrinsic jets. These are closed linear conditions; jet separation and sheaf uniqueness identify their joint solution set with the graph. The preceding closed-graph argument makes the identification continuous, and Theorem 1.1 makes its inverse continuous. If \(W\) itself is standard, apply exactly this argument to its single quotient space and the family space \(C\). It proves agreement with the quotient topology, including when two different models present the same standard open set.
+
+Finally, for any open inclusion \(W'\subset W\), restriction \(\mathcal S(W)\to\mathcal S(W')\) has closed graph by the same jet test, now only at points of \(W'\). Both section spaces are Fréchet by the construction, so restriction is continuous. Countability is used only for the chosen products; the test for closedness may use arbitrarily many closed kernels. The countable-atlas convention for complex spaces in this course supplies these covers. \(\square\)
 
 **Proposition 5.2.** Let \(\mathcal S\) be coherent on \(X\).
 
@@ -90,7 +145,46 @@ is exact, and \(\mathcal Z_0(V)\) is closed by Section 4. Give \(\mathcal S(U)\)
 2. If \(\mathcal S'\subset\mathcal S\) is a coherent subsheaf, \(\mathcal S'(W)\) is closed in \(\mathcal S(W)\). A morphism of coherent sheaves induces continuous maps on sections, and restriction maps are continuous.
 3. If \(W'\subset W\) is open with compact closure \(\overline{W'}\subset W\), the restriction \(\mathcal S(W)\to\mathcal S(W')\) is compact.
 
-**Proof.** (1) On a standard \(U=A\cap V\ni x\), the composite \(\mathcal O(V)^{p_0}\to\mathcal O_x^{p_0}\to\mathcal S_x\) is continuous for the Krull topologies (Section 4), and \(\mathcal S(U)\) carries the quotient topology. (2) The first claim follows from (1) and Proposition 4.1 applied to \(\mathcal S'_x\subset\mathcal S_x\). For a morphism \(\mathcal S\to\mathcal S'\), near each point choose generators of \(\mathcal S'\) extending the images of generators of \(\mathcal S\); on small standard sets the morphism is induced by the inclusion \(\mathcal O^{p_0}\to\mathcal O^{p'_0}\). Continuity of restriction was shown in Proposition 5.1. (3) For standard \(U'=A\cap V'\subset U=A\cap V\) with \(\overline{V'}\) compact in \(V\), restriction \(\mathcal O(V)^{p_0}\to\mathcal O(V')^{p_0}\) is compact by Montel's theorem, hence so is \(\mathcal S(U)\to\mathcal S(U')\). In general cover \(\overline{W'}\) by finitely many standard \(U'_\alpha\) with closures in standard \(U_\alpha\subset W\); then \(\mathcal S(W)\to\mathcal S(W')\) factors as \(\mathcal S(W)\to\prod\mathcal S(U_\alpha)\to\prod\mathcal S(U'_\alpha)\) followed by the topological embedding of \(\mathcal S(W')\) into the product of the \(\mathcal S(W'\cap U'_\alpha)\), and the middle arrow is compact. \(\square\)
+**Proof.** (1) The intrinsic finite-jet maps constructed in Proposition 5.1 are continuous on standard opens. Restricting from \(W\) to one of them proves continuity of every \(\mathcal S(W)\to\mathcal S_x/\mathfrak m_x^k\mathcal S_x\), hence of the map to the stalk with its Krull topology.
+
+(2) Proposition 4.1 applied over the analytic local ring shows that \(\mathcal S'_x\subset\mathcal S_x\) is Krull-closed; equivalently apply its proof to the finite module \(\mathcal S_x/\mathcal S'_x\). The space \(\mathcal S'(W)\) is the intersection, over \(x\in W\), of the inverse images of these closed submodules under the continuous germ maps. It is therefore closed. For a coherent-sheaf morphism \(\phi:\mathcal S\to\mathcal T\), its stalk map induces continuous linear maps on all finite jets. The graph of \(\phi_W:\mathcal S(W)\to\mathcal T(W)\) is the intersection of the conditions
+\[
+t_x-\phi_x(s_x)=0
+   \quad\hbox{in }\mathcal T_x/\mathfrak m_x^k\mathcal T_x
+   \qquad(x\in W,\ k\geq1).
+\]
+It is closed by jet continuity and Krull intersection, so \(\phi_W\) is continuous by the closed-graph argument in Proposition 5.1. More concretely, on a sufficiently small common model write the images of the finitely many generators of \(\mathcal S\) as linear combinations of generators of \(\mathcal T\); lifting the coefficients gives a holomorphic matrix between the two presenting free modules, compatible with the quotient maps. Arbitrary restrictions were proved continuous at the end of Proposition 5.1.
+
+(3) First take \(U=A\cap V\) and \(U'=A\cap V'\), where \(V,V'\) are Stein, \(\overline{V'}\) is compact in \(V\), and both use the same finite presentation. The ambient restriction
+\[
+T:\mathcal O(V)^p\longrightarrow\mathcal O(V')^p
+\]
+is compact: choose a compact neighbourhood of \(\overline{V'}\) in \(V\). A uniform bound there defines a zero-neighbourhood in \(\mathcal O(V)^p\), whose image is locally bounded on \(V'\); Montel's theorem gives compact closure of that image in \(\mathcal O(V')^p\). Write \(q\) and \(q'\) for the two quotient maps and \(R:\mathcal S(U)\to\mathcal S(U')\) for restriction. Then \(Rq=q'T\). If \(N\) is a zero-neighbourhood whose \(T\)-image has compact closure, the open quotient map \(q\) makes \(q(N)\) a zero-neighbourhood and
+\[
+R(q(N))\subset q'\bigl(\overline{T(N)}\bigr).
+\]
+The set on the right is compact, and the target is Hausdorff, so \(R\) is compact. No continuous right inverse or bounded lifting of the quotient map is being assumed.
+
+For general \(W'\Subset W\), choose finitely many nested same-chart standard opens \(U'_\alpha\subset U_\alpha\subset W\), whose ambient Stein domains are relatively compact as above, such that the \(U'_\alpha\) cover \(\overline{W'}\). Such pairs are obtained from nested small balls in distinguished patches at each point of that compact set. Put \(B_\alpha=W'\cap U'_\alpha\). The \(B_\alpha\) need not be standard; their section spaces already have the topology of Proposition 5.1. Define
+\[
+K:\mathcal S(W)\longrightarrow\prod_{\alpha=1}^m\mathcal S(U'_\alpha),
+\qquad K(s)=(s|_{U'_\alpha})_\alpha,
+\]
+and
+\[
+L:\prod_{\alpha=1}^m\mathcal S(U'_\alpha)
+       \longrightarrow P=\prod_{\alpha=1}^m\mathcal S(B_\alpha),
+\qquad L((t_\alpha))=(t_\alpha|_{B_\alpha})_\alpha.
+\]
+Each component of \(K\) factors through the continuous restriction to \(\mathcal S(U_\alpha)\) and the compact restriction to \(\mathcal S(U'_\alpha)\); it is compact. The finite intersection of the resulting zero-neighbourhoods shows that \(K\) is compact, since the product of their finitely many compact image closures is compact. The map \(L\) is continuous.
+
+The compatible-family image \(C\) of
+\(J:\mathcal S(W')\to P\) is closed by the intrinsic jet conditions. The map \(J\) is a continuous bijection onto the Fréchet space \(C\), hence a topological isomorphism by Theorem 1.1. For the desired restriction \(R_W:\mathcal S(W)\to\mathcal S(W')\) we have the correctly directed identity
+\[
+J R_W=L K.
+\tag{5.4}
+\]
+Choose a zero-neighbourhood \(N_W\) whose image under \(LK\) has compact closure in \(P\). Since \(LK(N_W)\subset C\) and \(C\) is closed, that closure is a compact subset of \(C\). Its image under the continuous inverse \(J^{-1}:C\to\mathcal S(W')\) contains \(R_W(N_W)\) and is compact. This proves the asserted compactness. \(\square\)
 
 **Cohomology on manifolds.** Let \(X\) be a complex manifold. A **Leray covering** for \(\mathcal S\) is a countable open covering \(\mathcal W=(W_\alpha)\) of an open set by standard sets, each in a coordinate chart with a finite free resolution of \(\mathcal S\) on the chart. Each finite intersection \(W_{\alpha_0\ldots\alpha_k}\) is a Stein open subset of \(X\) (Proposition 2.2(4) of the lesson on Stein manifolds) contained in the chart of \(W_{\alpha_0}\), hence a Stein domain there, so \(H^j(W_{\alpha_0\ldots\alpha_k},\mathcal S)=0\) for \(j\geq1\) by Theorem 4.1 of the previous lesson. By [Stacks, Tag 01ET](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-cech-spectral-sequence-application), the Čech complex \(C^\bullet(\mathcal W,\mathcal S)\), a complex of Fréchet spaces (countable products of Fréchet spaces) with continuous differentials, computes \(H^\bullet(W,\mathcal S)\). The quotient topology on \(H^q(W,\mathcal S)\) does not depend on the Leray covering, by Remark 2.3 applied to refinement maps, which induce bijections in cohomology. These groups need not be Hausdorff.
 

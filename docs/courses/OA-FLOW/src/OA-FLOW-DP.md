@@ -1,6 +1,6 @@
 # Normal-state orbit diameter at a positive type III parameter
 
-This is an original exposition of the compact-core spectral method, followed by a sharp scalar argument using probability mixtures. The spectral method is reconstructed from the freely readable Haagerup–Størmer paper, §5; its final isometry theorem is **proved below**, not imported. No state-diameter theorem is a premise. The argument concerns the predual norm of finite normal states. It makes no assertion about an extended metric on infinite weights.
+This is an original exposition of the compact-core spectral method, followed by a sharp scalar argument using probability mixtures. The spectral method is reconstructed from the freely readable Haagerup–Størmer paper, §5; its final isometry theorem is **proved below**, not imported. No state-diameter theorem is a premise of the positive-parameter argument in Sections 1–8. Section 9 combines that argument with the earlier endpoint proofs. The argument concerns the predual norm of finite normal states. It makes no assertion about an extended metric on infinite weights.
 
 The positive-parameter theorem is proved at the actual earlier programme proofs linked below. The complete discrete-decomposition existence theorem supplies the periodic weight; no classification premise remains in Section 2. The spectral-family construction in Section 6 is written locally.
 
@@ -805,13 +805,33 @@ For $\lambda=1/4$, $F_\lambda=4/3$, while $F_{\sqrt\lambda}=8/3$ on $[1/4,1/2)$ 
 
 The two shaded areas are each 1/3. Their sum is the distance 2/3. The second panel shows the maximum at phase ratio 2; the endpoint 4 is only a continuous scalar extension. Proof locators: F6, F8 and M4–M8. [Reproduce the original figure](../assets/positive-parameter-diameter/illustrate_profiles.py).
 
-## 9. Exact parameter boundary and proof scope
+<a id="oa-flow.dp.9"></a>
 
-The construction requires $0<\lambda<1$: the compact modular period, trace-scaling generator, tiling fundamental interval, and probability-mixture normalization all use that assumption. Letting the scalar answer tend to $2$ as $\lambda\downarrow0$ does **not** prove that any fixed type III₀ factor has diameter $2$. That boundary requires a different all-state invariant or a new construction in its generally nonperiodic flow. No such proof is supplied here.
+## 9. The complete type III diameter formula
 
-The separately completed III₁ argument concerns the endpoint $\lambda=1$. It is not a premise for this positive-parameter theorem or its III₀ boundary.
+**Corollary.** Let \(M\) be a nonzero factor with separable predual of type
+\(\mathrm{III}_\lambda\), where \(0\le\lambda\le1\). With all normal states and the predual norm as in (D1), the metric space of norm-closed unitary state orbits has diameter
+\[
+ D(M)=\sup_{\phi,\psi\in S_*(M)}\inf_{u\in\mathcal U(M)}
+             \|\phi^u-\psi\|
+     =\frac{2(1-\sqrt\lambda)}{1+\sqrt\lambda}. \tag{D3}
+\]
+The three parameter ranges have different proof mechanisms.
 
-The theorem proved here is exactly the $0<\lambda<1$, separable-predual factor, all-normal-state clause. Its local proof uses complete earlier DD, compact-core, density and descent bodies, together with the elementary local arguments above.
+First, [HC7](OA-FLOW-HC.md#oa-flow.hc.7) proves directly from the unitary isometries that \(d\) is a pseudometric on \(S_*(M)\), is constant on each norm-closed orbit, and vanishes exactly when the two closed orbits coincide. Thus its metric quotient is precisely the space in the statement. Since every state has norm one, \(0\le d\le2\).
+
+For \(0<\lambda<1\), [Section 8](OA-FLOW-DP.md#oa-flow.dp.8) gives the upper bound for all normal states and constructs faithful normal states whose orbit distance equals that bound. This proves (D3) in the open parameter interval. Its compact modular period and spectral-profile normalization require \(0<\lambda<1\).
+
+For \(\lambda=0\), keep this one factor \(M\) fixed. For each \(0<\mu<1\), [Z7](OA-FLOW-Z.md#oa-flow.z.7) constructs faithful normal states \(\phi_\mu,\psi_\mu\) **on \(M\)** with
+\[
+ d(\phi_\mu,\psi_\mu)
+   =2\frac{1-\sqrt\mu}{1+\sqrt\mu}. \tag{D4}
+\]
+The construction first produces arbitrarily wide modular gaps on this factor; the complete [GM6 minimization theorem](OA-FLOW-GM.md#oa-flow.gm.6) then proves the lower bound against every unitary. It is not obtained by varying the type of the algebra. Indeed, the deficit of (D4) from \(2\) is \(4\sqrt\mu/(1+\sqrt\mu)\le4\sqrt\mu\). Given \(\varepsilon>0\), choose \(0<\sqrt\mu<\min(1,\varepsilon/4)\). Then \(D(M)>2-\varepsilon\), and the universal upper bound proves \(D(M)=2\). This proves the zero endpoint in (D3) as a supremum assertion; the argument does not require a pair at distance exactly \(2\).
+
+For \(\lambda=1\), [HC6–HC7](OA-FLOW-HC.md#oa-flow.hc.6) prove that for every pair of normal states and every \(\varepsilon>0\) some unitary satisfies \(\|\phi^u-\psi\|<\varepsilon\). Hence \(d(\phi,\psi)=0\) for all pairs and \(D(M)=0\), the value in (D3). Every unitary state orbit is norm dense in \(S_*(M)\). Density does not assert that one unitary carries any prescribed state exactly to any other.
+
+These cases cover \([0,1]\). The positive-parameter extremal pair realizes the maximum of the orbit distances, while the zero-endpoint proof uses a sequence of pairs in the same factor. Neither assertion by itself claims that every orbit infimum is attained by a unitary. Throughout, these are bounded normal states; no metric on infinite weights is used.
 
 ## Freely readable primary sources used to develop this draft
 

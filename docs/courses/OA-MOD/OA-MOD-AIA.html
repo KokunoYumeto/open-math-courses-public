@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Approximately inner automorphisms of the type III1 factor · Modular theory and weights</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/approximately-inner-automorphisms-of-the-type-iii-one-factor.md">Editable Markdown</a></nav><article class="lesson"><h1 id="approximately-inner-automorphisms-of-the-type-iii₁-factor">Approximately inner automorphisms of the type III₁ factor</h1>
+<p>Every normal automorphism of an approximately finite-dimensional type III₁ factor with separable predual is approximately inner. We prove this by fixing two Powers tensor factors, placing the remaining action in one of countably many identical factors, and moving a state-corrected copy of that action to infinity. The state correction is essential: commuting with every fixed finite tensor block does not imply convergence in predual norm.</p>
+<p>The source theorem is M. Takesaki, <em>Theory of Operator Algebras III</em>, XVIII.4, Theorem 4.29(i), printed page 400, with proof on pages 402–403. The proof below specifies the tensor complements, implements the replica permutations by finite matrix unitaries, and gives the normal-functional estimates and a sequence of inner approximants. Its state-homogeneity input is the complete earlier programme proof built from Connes and Størmer's freely readable paper. The centrally trivial classification in part (ii) is a separate obligation.</p>
+<h2 id="1-topology-transport-and-the-closed-normal-subgroup"><span id="OA-MOD-AIA-01"></span><span id="oa-mod-aia-01"></span>1. Topology, transport and the closed normal subgroup</h2>
+<p>For a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span>, let <span class="math" data-tex="\(\operatorname{Aut}(M)\)">\(\operatorname{Aut}(M)\)</span> denote its normal star automorphisms. We use the <strong>u-topology</strong>:</p>
+<span class="math math-display" data-tex="\[
+\alpha_n\longrightarrow\alpha
+\quad\Longleftrightarrow\quad
+\|\psi\circ\alpha_n-\psi\circ\alpha\|\longrightarrow0
+\quad(\psi\in M_*).
+\tag{AIA.1}
+\]">\[
+\alpha_n\longrightarrow\alpha
+\quad\Longleftrightarrow\quad
+\|\psi\circ\alpha_n-\psi\circ\alpha\|\longrightarrow0
+\quad(\psi\in M_*).
+\tag{AIA.1}
+\]</span>
+<p>Write <span class="math" data-tex="\(\operatorname{Ad}u(x)=uxu^*\)">\(\operatorname{Ad}u(x)=uxu^*\)</span>, and let</p>
+<span class="math math-display" data-tex="\[
+H(M)=\overline{\operatorname{Int}(M)}^{\,u}
+\tag{AIA.2}
+\]">\[
+H(M)=\overline{\operatorname{Int}(M)}^{\,u}
+\tag{AIA.2}
+\]</span>
+<p>inside <span class="math" data-tex="\(\operatorname{Aut}(M)\)">\(\operatorname{Aut}(M)\)</span>. Membership in this closure is approximate innerness.</p>
+<p>The complete topology and implementation proof is <a href="OA-MOD-CL.html#oa-mod-cl-01">The precise topology of a standard implementation</a>. We retain the relevant estimates. Inversion is continuous because</p>
+<span class="math math-display" data-tex="\[
+\|\psi\circ\alpha_n^{-1}-\psi\circ\alpha^{-1}\|
+=\|\psi-\psi\circ\alpha^{-1}\circ\alpha_n\|\longrightarrow0.
+\tag{AIA.3}
+\]">\[
+\|\psi\circ\alpha_n^{-1}-\psi\circ\alpha^{-1}\|
+=\|\psi-\psi\circ\alpha^{-1}\circ\alpha_n\|\longrightarrow0.
+\tag{AIA.3}
+\]</span>
+<p>For products, insert <span class="math" data-tex="\(\psi\circ\alpha\circ\beta_n\)">\(\psi\circ\alpha\circ\beta_n\)</span> between <span class="math" data-tex="\(\psi\circ\alpha_n\circ\beta_n\)">\(\psi\circ\alpha_n\circ\beta_n\)</span> and <span class="math" data-tex="\(\psi\circ\alpha\circ\beta\)">\(\psi\circ\alpha\circ\beta\)</span>; composition with <span class="math" data-tex="\(\beta_n\)">\(\beta_n\)</span> is a predual isometry. These two observations prove continuity of the group operations. Since</p>
+<span class="math math-display" data-tex="\[
+\gamma\circ\operatorname{Ad}u\circ\gamma^{-1}
+=\operatorname{Ad}(\gamma(u)),
+\tag{AIA.4}
+\]">\[
+\gamma\circ\operatorname{Ad}u\circ\gamma^{-1}
+=\operatorname{Ad}(\gamma(u)),
+\tag{AIA.4}
+\]</span>
+<p><span class="math" data-tex="\(H(M)\)">\(H(M)\)</span> is a closed normal subgroup. A normal isomorphism carries it onto the corresponding subgroup of the target: the isometric predual pullback carries every test in (AIA.1) onto a test of the same kind, and (AIA.4) transports inner automorphisms.</p>
+<p>Tensoring an automorphism with the identity defines a normal automorphism of the spatial tensor product. For example its standard implementer from CL-01, tensored with the identity Hilbert unitary, implements the extension and its inverse. If <span class="math" data-tex="\(\alpha_n\to\alpha\)">\(\alpha_n\to\alpha\)</span>, the identity extensions also converge in (AIA.1). On product normal functionals this follows by tensoring the predual difference; finite sums of product functionals are norm dense by <a href="OA-MOD-CP.html#oa-mod-cp-04">Every tensor vector is a summable vector series through The concrete predual and its intrinsic norm</a>. One can see the density directly: approximate both vectors of a coefficient on the tensor Hilbert space by finite sums of elementary tensors, then use the summable vector-coefficient description of CP-06. Common norm bounds extend convergence from this dense family to the entire predual. In particular an approximately inner automorphism extends to an approximately inner automorphism.</p>
+<p>When <span class="math" data-tex="\(M_*\)">\(M_*\)</span> is separable, closure in (AIA.2) is realized by sequences. Choose <span class="math" data-tex="\((\psi_j)\)">\((\psi_j)\)</span> with norm-dense complex span. For each <span class="math" data-tex="\(n\)">\(n\)</span>, the definition of closure supplies an inner automorphism satisfying any prescribed positive error on <span class="math" data-tex="\(\psi_1,\ldots,\psi_n\)">\(\psi_1,\ldots,\psi_n\)</span>. Errors tending to zero, followed by density and the predual isometry bound, give convergence on all of <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. This is a finite-test diagonal argument, not an assumption of norm convergence of the automorphisms as bounded maps.</p>
+<h2 id="2-fix-a-powers-factor-and-retain-the-complement"><span id="OA-MOD-AIA-02"></span><span id="oa-mod-aia-02"></span>2. Fix a Powers factor and retain the complement</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be an AFD factor of type <span class="math" data-tex="\(\mathrm{III}_1\)">\(\mathrm{III}_1\)</span> with separable predual, and let <span class="math" data-tex="\(\alpha\in\operatorname{Aut}(M)\)">\(\alpha\in\operatorname{Aut}(M)\)</span>. Fix <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>. The earlier absorption theorem <a href="OA-MOD-UNI.html#oa-mod-uni-05">5. Strong λ-stability of an AFD type III₁ factor</a> supplies a normal identification</p>
+<span class="math math-display" data-tex="\[
+M=R_\lambda\overline\otimes C,\qquad C\cong M.
+\tag{AIA.5}
+\]">\[
+M=R_\lambda\overline\otimes C,\qquad C\cong M.
+\tag{AIA.5}
+\]</span>
+<p>This is an actual identification, not cancellation of a tensor factor. Take the stationary matrix generators <span class="math" data-tex="\(e_{ij}(k)\)">\(e_{ij}(k)\)</span> of the first factor in the order</p>
+<span class="math math-display" data-tex="\[
+p_1=\frac1{1+\lambda},\quad p_2=\frac\lambda{1+\lambda},
+\qquad
+\|\psi e_{ij}(k)-\lambda^{i-j}e_{ij}(k)\psi\|\longrightarrow0.
+\tag{AIA.6}
+\]">\[
+p_1=\frac1{1+\lambda},\quad p_2=\frac\lambda{1+\lambda},
+\qquad
+\|\psi e_{ij}(k)-\lambda^{i-j}e_{ij}(k)\psi\|\longrightarrow0.
+\tag{AIA.6}
+\]</span>
+<p>The defect statement on the entire ambient predual is proved in <a href="OA-MOD-WMC.html#oa-mod-wmc-07">7. A corrected tensor-factor conjugacy statement</a>: it is exact on sufficiently late legs for local product-state coefficients, and those coefficients and complement functionals have norm-dense span. Our module actions are <span class="math" data-tex="\((x\psi)(z)=\psi(zx)\)">\((x\psi)(z)=\psi(zx)\)</span>, <span class="math" data-tex="\((\psi x)(z)=\psi(xz)\)">\((\psi x)(z)=\psi(xz)\)</span>. Thus the weight in (AIA.6) is <span class="math" data-tex="\(p_i/p_j\)">\(p_i/p_j\)</span>, with no reversal of the two diagonal weights.</p>
+<p>The family <span class="math" data-tex="\(f_{ij}(k)=\alpha(e_{ij}(k))\)">\(f_{ij}(k)=\alpha(e_{ij}(k))\)</span> also satisfies (AIA.6). Indeed pull a test functional back by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and then compose its weighted difference with <span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span>; the norm is unchanged. Each family commutes internally, as required by the <a href="OA-MOD-WMC.html#oa-mod-wmc-01">weighted matching theorem, 1. The weighted matching problem through 5. A two-sided limit is an automorphism</a>. That theorem gives <span class="math" data-tex="\(\sigma\in H(M)\)">\(\sigma\in H(M)\)</span> and indices <span class="math" data-tex="\(k_n\)">\(k_n\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\sigma(e_{ij}(k_n))=\alpha(e_{ij}(k_n)).
+\tag{AIA.7}
+\]">\[
+\sigma(e_{ij}(k_n))=\alpha(e_{ij}(k_n)).
+\tag{AIA.7}
+\]</span>
+<p>We may require <span class="math" data-tex="\(k_n&gt;k_{n-1}+1\)">\(k_n&gt;k_{n-1}+1\)</span>. At every stage WMC-03 selects a coordinate beyond an arbitrary cutoff, and WMC-04–05 preserves all previous matches. Choosing this larger cutoff leaves an infinite complement to <span class="math" data-tex="\(K=\{k_n:n\ge1\}\)">\(K=\{k_n:n\ge1\}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span> be generated by the selected legs. Product reindexing gives the exact complement</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P&amp;\cong R_\lambda,\\
+P&#x27;\cap M&amp;=R_{\lambda,\mathbb N\setminus K}\overline\otimes C
+\cong R_\lambda\overline\otimes C\cong M,\\
+M&amp;=P\overline\otimes(P&#x27;\cap M).
+\end{aligned}
+\tag{AIA.8}
+\]">\[
+\begin{aligned}
+P&amp;\cong R_\lambda,\\
+P&#x27;\cap M&amp;=R_{\lambda,\mathbb N\setminus K}\overline\otimes C
+\cong R_\lambda\overline\otimes C\cong M,\\
+M&amp;=P\overline\otimes(P&#x27;\cap M).
+\end{aligned}
+\tag{AIA.8}
+\]</span>
+<p>For the product isomorphisms, enumerate the two infinite coordinate sets. The maps on finite-support pointed tensors preserve all inner products and have dense range, so they extend to onto Hilbert unitaries and identify the generated von Neumann algebras normally; see <a href="OA-MOD-UNI.html#oa-mod-uni-02">2. The specified Powers product</a> and <span class="unlinked">Units, reference vectors and GNS kernels, Tail expectations and the full commutant</span>. Normal slices separate the tensor factors, so factoriality of <span class="math" data-tex="\(P\)">\(P\)</span> gives the asserted commutant. The last isomorphism in the second line uses (AIA.5) transported through <span class="math" data-tex="\(C\cong M\)">\(C\cong M\)</span>.</p>
+<p>Now <span class="math" data-tex="\(\sigma^{-1}\alpha\)">\(\sigma^{-1}\alpha\)</span> fixes every generator of <span class="math" data-tex="\(P\)">\(P\)</span>, hence fixes <span class="math" data-tex="\(P\)">\(P\)</span> pointwise by normality. It maps <span class="math" data-tex="\(P&#x27;\cap M\)">\(P&#x27;\cap M\)</span> onto itself: apply it and its inverse to the commutation relation with every element of <span class="math" data-tex="\(P\)">\(P\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\sigma^{-1}\alpha=\operatorname{id}_P\otimes\alpha_1
+\quad\text{on }M=P\overline\otimes(P&#x27;\cap M),
+\tag{AIA.9}
+\]">\[
+\sigma^{-1}\alpha=\operatorname{id}_P\otimes\alpha_1
+\quad\text{on }M=P\overline\otimes(P&#x27;\cap M),
+\tag{AIA.9}
+\]</span>
+<p>where <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span> is a normal automorphism of a factor isomorphic to <span class="math" data-tex="\(M\)">\(M\)</span>. Equality follows first on elementary tensors and then on their ultraweakly dense span. This proves the reduction with its complement fully retained. The unrestricted tensor-factor conjugacy claim refuted in WMC-07 is not used.</p>
+<h2 id="3-two-fixed-powers-factors-give-a-fixed-type-iii₁-factor"><span id="OA-MOD-AIA-03"></span><span id="oa-mod-aia-03"></span>3. Two fixed Powers factors give a fixed type III₁ factor</h2>
+<p>Apply Section 2 first with <span class="math" data-tex="\(\lambda=1/2\)">\(\lambda=1/2\)</span>. Apply it again inside <span class="math" data-tex="\(P&#x27;\cap M\cong M\)">\(P&#x27;\cap M\cong M\)</span>, to <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span>, with <span class="math" data-tex="\(\mu=1/3\)">\(\mu=1/3\)</span>. The second approximately inner perturbation extends through the identity on <span class="math" data-tex="\(P\)">\(P\)</span>, by Section 1. We obtain a product decomposition and an element <span class="math" data-tex="\(h\in H(M)\)">\(h\in H(M)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M&amp;=P\overline\otimes Q\overline\otimes C_2,\\
+P&amp;\cong R_{1/2},\quad Q\cong R_{1/3},\quad C_2\cong M,\\
+h\alpha&amp;=\operatorname{id}_{P\overline\otimes Q}\otimes\beta,
+\qquad \beta\in\operatorname{Aut}(C_2).
+\end{aligned}
+\tag{AIA.10}
+\]">\[
+\begin{aligned}
+M&amp;=P\overline\otimes Q\overline\otimes C_2,\\
+P&amp;\cong R_{1/2},\quad Q\cong R_{1/3},\quad C_2\cong M,\\
+h\alpha&amp;=\operatorname{id}_{P\overline\otimes Q}\otimes\beta,
+\qquad \beta\in\operatorname{Aut}(C_2).
+\end{aligned}
+\tag{AIA.10}
+\]</span>
+<p>Specifically, if <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is the matching automorphism in the second application, then <span class="math" data-tex="\(h=(\operatorname{id}_P\otimes\tau^{-1})\sigma^{-1}\)">\(h=(\operatorname{id}_P\otimes\tau^{-1})\sigma^{-1}\)</span>. Both factors lie in <span class="math" data-tex="\(H(M)\)">\(H(M)\)</span>.</p>
+<p>The reference factor</p>
+<span class="math math-display" data-tex="\[
+\mathcal R=R_{1/2}\overline\otimes R_{1/3}
+\tag{AIA.11}
+\]">\[
+\mathcal R=R_{1/2}\overline\otimes R_{1/3}
+\tag{AIA.11}
+\]</span>
+<p>is AFD of type <span class="math" data-tex="\(\mathrm{III}_1\)">\(\mathrm{III}_1\)</span> with separable predual by <a href="OA-MOD-UNI.html#oa-mod-uni-06">6. A reference factor and tracial stability</a>, using the full irrational-product proof given there. The logarithm ratio is irrational: <span class="math" data-tex="\(\log2/\log3=a/b\)">\(\log2/\log3=a/b\)</span> with positive integers would give <span class="math" data-tex="\(2^b=3^a\)">\(2^b=3^a\)</span>, contradicting parity. The uniqueness proof <a href="OA-MOD-UNI.html#oa-mod-uni-11">11. The three-factor comparison and uniqueness</a> identifies <span class="math" data-tex="\(C_2\)">\(C_2\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> normally with <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>.</p>
+<p>It therefore remains to prove that <span class="math" data-tex="\(\operatorname{id}_{\mathcal R}\otimes\beta\)">\(\operatorname{id}_{\mathcal R}\otimes\beta\)</span> is approximately inner on <span class="math" data-tex="\(\mathcal R\overline\otimes\mathcal R\)">\(\mathcal R\overline\otimes\mathcal R\)</span>, for every automorphism <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of the specified <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>. Transport of <span class="math" data-tex="\(H\)">\(H\)</span> through normal isomorphisms will then imply <span class="math" data-tex="\(h\alpha\in H(M)\)">\(h\alpha\in H(M)\)</span>; multiplication by <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span> gives the theorem for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The following sections establish this remaining assertion without presupposing approximate innerness of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>.</p>
+<h2 id="4-an-exact-product-of-identical-replicas"><span id="OA-MOD-AIA-04"></span><span id="oa-mod-aia-04"></span>4. An exact product of identical replicas</h2>
+<p>Pair a matrix leg of <span class="math" data-tex="\(R_{1/2}\)">\(R_{1/2}\)</span> with a matrix leg of <span class="math" data-tex="\(R_{1/3}\)">\(R_{1/3}\)</span>. After a fixed basis permutation, (AIA.11) becomes the stationary product</p>
+<span class="math math-display" data-tex="\[
+(\mathcal R,\rho)
+=\bigotimes_{m\ge1}(M_4,\rho_0),
+\qquad
+\rho_0(x)=\operatorname{Tr}(d x),\quad
+d=\operatorname{diag}\left(\tfrac12,\tfrac14,\tfrac16,\tfrac1{12}\right).
+\tag{AIA.12}
+\]">\[
+(\mathcal R,\rho)
+=\bigotimes_{m\ge1}(M_4,\rho_0),
+\qquad
+\rho_0(x)=\operatorname{Tr}(d x),\quad
+d=\operatorname{diag}\left(\tfrac12,\tfrac14,\tfrac16,\tfrac1{12}\right).
+\tag{AIA.12}
+\]</span>
+<p>The four entries sum to one and are positive; they are the products of <span class="math" data-tex="\((2/3,1/3)\)">\((2/3,1/3)\)</span> and <span class="math" data-tex="\((3/4,1/4)\)">\((3/4,1/4)\)</span>. The pointed tensor construction and normality are given in <span class="unlinked">Units, reference vectors and GNS kernels</span>. <span class="unlinked">Faithful states and maximal modular domains</span> proves faithfulness of the product state: the reference vector is cyclic for the local right algebras, so it is separating for the generated left algebra.</p>
+<p>Make countably many copies <span class="math" data-tex="\((\mathcal R_j,\rho_j)=(\mathcal R,\rho)\)">\((\mathcal R_j,\rho_j)=(\mathcal R,\rho)\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+(\mathcal A,\Phi)=\bigotimes_{j\ge1}(\mathcal R_j,\rho_j).
+\tag{AIA.13}
+\]">\[
+(\mathcal A,\Phi)=\bigotimes_{j\ge1}(\mathcal R_j,\rho_j).
+\tag{AIA.13}
+\]</span>
+<p>Every matrix coordinate is now indexed by <span class="math" data-tex="\((j,m)\in\mathbb N^2\)">\((j,m)\in\mathbb N^2\)</span>, with the same density <span class="math" data-tex="\(d\)">\(d\)</span>. A bijection <span class="math" data-tex="\(\mathbb N^2\to\mathbb N\)">\(\mathbb N^2\to\mathbb N\)</span> induces a state-preserving normal isomorphism <span class="math" data-tex="\((\mathcal A,\Phi)\cong(\mathcal R,\rho)\)">\((\mathcal A,\Phi)\cong(\mathcal R,\rho)\)</span>. Here is the complete passage: flatten a finite-support tensor of local matrix vectors into its enumerated coordinates. It preserves inner products. Such vectors span dense subspaces on both sides, by the pointed product definition, so the map extends to an onto Hilbert unitary. It intertwines every local matrix operator. Taking the generated von Neumann algebras proves the normal isomorphism and its inverse. Applying the same argument to <span class="math" data-tex="\(\{j\ge2\}\times\mathbb N\)">\(\{j\ge2\}\times\mathbb N\)</span> shows that the tail product is also <span class="math" data-tex="\((\mathcal R,\rho)\)">\((\mathcal R,\rho)\)</span>.</p>
+<p>We can thus identify the fixed copy of <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> in Section 3 with the product of replicas <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>, and the copy carrying <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with replica 1. The reduced automorphism becomes</p>
+<span class="math math-display" data-tex="\[
+b=\beta_1:=\beta\otimes\operatorname{id}\otimes\operatorname{id}\otimes\cdots
+\quad\text{on }\mathcal A.
+\tag{AIA.14}
+\]">\[
+b=\beta_1:=\beta\otimes\operatorname{id}\otimes\operatorname{id}\otimes\cdots
+\quad\text{on }\mathcal A.
+\tag{AIA.14}
+\]</span>
+<p>Only one factor is transformed, so the spatial extension of Section 1 defines it normally even if <span class="math" data-tex="\(\beta\)">\(\beta\)</span> fails to preserve <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. No infinite product of non-state-preserving automorphisms is being assumed.</p>
+<h2 id="5-swapping-two-replicas-is-approximately-inner"><span id="OA-MOD-AIA-05"></span><span id="oa-mod-aia-05"></span>5. Swapping two replicas is approximately inner</h2>
+<p>For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, let <span class="math" data-tex="\(s_n\)">\(s_n\)</span> exchange replicas 1 and <span class="math" data-tex="\(n\)">\(n\)</span>, fixing all others. Permuting the pointed tensor vectors gives its state-preserving normal implementation. We prove directly that</p>
+<span class="math math-display" data-tex="\[
+s_n\in H(\mathcal A).
+\tag{AIA.15}
+\]">\[
+s_n\in H(\mathcal A).
+\tag{AIA.15}
+\]</span>
+<p>For fixed <span class="math" data-tex="\(m\)">\(m\)</span>, swap only the first <span class="math" data-tex="\(m\)">\(m\)</span> matrix coordinates of replicas 1 and <span class="math" data-tex="\(n\)">\(n\)</span>. Their head algebras are both <span class="math" data-tex="\(M_{4^m}\)">\(M_{4^m}\)</span>. With matrix units <span class="math" data-tex="\(E_{ab}^{(1,m)}\)">\(E_{ab}^{(1,m)}\)</span> and <span class="math" data-tex="\(E_{ab}^{(n,m)}\)">\(E_{ab}^{(n,m)}\)</span>, the finite swap is implemented by</p>
+<span class="math math-display" data-tex="\[
+v_{n,m}=\sum_{a,b=1}^{4^m}
+E_{ab}^{(1,m)}E_{ba}^{(n,m)}.
+\tag{AIA.16}
+\]">\[
+v_{n,m}=\sum_{a,b=1}^{4^m}
+E_{ab}^{(1,m)}E_{ba}^{(n,m)}.
+\tag{AIA.16}
+\]</span>
+<p>The two head algebras commute. On elementary basis tensors this operator exchanges the basis vectors, so <span class="math" data-tex="\(v_{n,m}=v_{n,m}^*\)">\(v_{n,m}=v_{n,m}^*\)</span>, <span class="math" data-tex="\(v_{n,m}^2=1\)">\(v_{n,m}^2=1\)</span>, and its conjugation exchanges the two head matrices. It lies in the finite full matrix subalgebra of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. The two heads have the same density <span class="math" data-tex="\(d^{\otimes m}\)">\(d^{\otimes m}\)</span>, so the swap preserves their product state and hence preserves <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p>For local matrix tensors <span class="math" data-tex="\(a,c\)">\(a,c\)</span>, define <span class="math" data-tex="\(\Phi_{a,c}(x)=\Phi(c^*xa)\)">\(\Phi_{a,c}(x)=\Phi(c^*xa)\)</span>. If <span class="math" data-tex="\(t\)">\(t\)</span> preserves <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\Phi_{a,c}\circ t
+=\Phi_{t^{-1}(a),t^{-1}(c)}.
+\tag{AIA.17}
+\]">\[
+\Phi_{a,c}\circ t
+=\Phi_{t^{-1}(a),t^{-1}(c)}.
+\tag{AIA.17}
+\]</span>
+<p>For all sufficiently large <span class="math" data-tex="\(m\)">\(m\)</span>, <span class="math" data-tex="\(\operatorname{Ad}v_{n,m}\)">\(\operatorname{Ad}v_{n,m}\)</span> and its inverse agree with <span class="math" data-tex="\(s_n=s_n^{-1}\)">\(s_n=s_n^{-1}\)</span> on both <span class="math" data-tex="\(a,c\)">\(a,c\)</span>. Equation (AIA.17) makes the two pulled-back coefficient functionals exactly equal. These coefficient functionals have norm-dense complex span in <span class="math" data-tex="\(\mathcal A_*\)">\(\mathcal A_*\)</span>, since local vectors are dense and CP-04–06 gives the vector-coefficient error estimates. Since all predual maps have norm one, we obtain</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ad}v_{n,m}\longrightarrow s_n
+\quad\text{in the u-topology as }m\to\infty.
+\tag{AIA.18}
+\]">\[
+\operatorname{Ad}v_{n,m}\longrightarrow s_n
+\quad\text{in the u-topology as }m\to\infty.
+\tag{AIA.18}
+\]</span>
+<p>This proves (AIA.15) separately for each fixed <span class="math" data-tex="\(n\)">\(n\)</span>. We have not claimed that <span class="math" data-tex="\(s_n\)">\(s_n\)</span> is inner, or that the unitaries <span class="math" data-tex="\(v_{n,m}\)">\(v_{n,m}\)</span> converge in the algebra.</p>
+<h2 id="6-correct-the-state-before-moving-the-action-to-infinity"><span id="OA-MOD-AIA-06"></span><span id="oa-mod-aia-06"></span>6. Correct the state before moving the action to infinity</h2>
+<p>The earlier <a href="../OA-FLOW/OA-FLOW-HC.html#equation-hc1">approximate unitary homogeneity theorem, HC1–7</a> proves that for any two normal states on a sigma-finite type <span class="math" data-tex="\(\mathrm{III}_1\)">\(\mathrm{III}_1\)</span> factor and any <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, a unitary conjugate of one is within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of the other in predual norm. Its full proof constructs partial isometries in spectral corners, extends a maximal family, and completes it to a unitary with an explicit state error bound. The actual HC proof, with its named earlier programme inputs, is our prerequisite; its external citation is not used in place of a proof.</p>
+<p>Apply it on <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> to the faithful normal states <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and <span class="math" data-tex="\(\rho\circ\beta^{-1}\)">\(\rho\circ\beta^{-1}\)</span>. Its convention <span class="math" data-tex="\(\rho^v(x)=\rho(v^*xv)\)">\(\rho^v(x)=\rho(v^*xv)\)</span> yields a unitary <span class="math" data-tex="\(a_n=v_n^*\)">\(a_n=v_n^*\)</span> such that, after composition with <span class="math" data-tex="\(\beta\)">\(\beta\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\rho\circ\operatorname{Ad}a_n\circ\beta-\rho\|&lt;2^{-n}
+\qquad(n\ge2).
+\tag{AIA.19}
+\]">\[
+\|\rho\circ\operatorname{Ad}a_n\circ\beta-\rho\|&lt;2^{-n}
+\qquad(n\ge2).
+\tag{AIA.19}
+\]</span>
+<p>The change of orientation here is deliberate. Set <span class="math" data-tex="\(\gamma_n=\operatorname{Ad}a_n\circ\beta\)">\(\gamma_n=\operatorname{Ad}a_n\circ\beta\)</span>, and let <span class="math" data-tex="\(g_n\)">\(g_n\)</span> act by <span class="math" data-tex="\(\gamma_n\)">\(\gamma_n\)</span> on replica <span class="math" data-tex="\(n\)">\(n\)</span> and by the identity on all other replicas. We claim</p>
+<span class="math math-display" data-tex="\[
+g_n\longrightarrow\operatorname{id}_{\mathcal A}
+\quad\text{in the u-topology}.
+\tag{AIA.20}
+\]">\[
+g_n\longrightarrow\operatorname{id}_{\mathcal A}
+\quad\text{in the u-topology}.
+\tag{AIA.20}
+\]</span>
+<p>For a normal state <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on the first <span class="math" data-tex="\(N\)">\(N\)</span> replicas, define the state</p>
+<span class="math math-display" data-tex="\[
+\eta=\chi\otimes\bigotimes_{j&gt;N}\rho_j.
+\tag{AIA.21}
+\]">\[
+\eta=\chi\otimes\bigotimes_{j&gt;N}\rho_j.
+\tag{AIA.21}
+\]</span>
+<p>When <span class="math" data-tex="\(n&gt;N\)">\(n&gt;N\)</span>, only the <span class="math" data-tex="\(n\)">\(n\)</span>-th factor changes, and</p>
+<span class="math math-display" data-tex="\[
+\|\eta\circ g_n-\eta\|
+=\|\rho\circ\gamma_n-\rho\|&lt;2^{-n}.
+\tag{AIA.22}
+\]">\[
+\|\eta\circ g_n-\eta\|
+=\|\rho\circ\gamma_n-\rho\|&lt;2^{-n}.
+\tag{AIA.22}
+\]</span>
+<p>To justify the equality, integrate all factors other than replica <span class="math" data-tex="\(n\)">\(n\)</span> against the fixed state <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and their reference states. This gives a normal unital completely positive slice map <span class="math" data-tex="\(E:\mathcal A\to\mathcal R_n\)">\(E:\mathcal A\to\mathcal R_n\)</span>, with norm one, and the difference on the left is <span class="math" data-tex="\((\rho\gamma_n-\rho)\circ E\)">\((\rho\gamma_n-\rho)\circ E\)</span>. Hence its norm is at most the right side. Testing on the unit ball of the embedded <span class="math" data-tex="\(\mathcal R_n\)">\(\mathcal R_n\)</span>, which <span class="math" data-tex="\(E\)">\(E\)</span> fixes, gives the reverse inequality. The normal slice and expectation construction is <span class="unlinked">Tail expectations and the full commutant</span>.</p>
+<p>States of the form (AIA.21) have norm-dense complex span in <span class="math" data-tex="\(\mathcal A_*\)">\(\mathcal A_*\)</span>. The head expectation from ITP-03 is <span class="math" data-tex="\(E_N=\operatorname{id}_{\le N}\otimes\Phi_{&gt;N}\)">\(E_N=\operatorname{id}_{\le N}\otimes\Phi_{&gt;N}\)</span>, and <span class="math" data-tex="\(\|\psi E_N-\psi\|\to0\)">\(\|\psi E_N-\psi\|\to0\)</span> for every normal functional. Moreover <span class="math" data-tex="\(\psi E_N\)">\(\psi E_N\)</span> is its normal head restriction tensored with <span class="math" data-tex="\(\Phi_{&gt;N}\)">\(\Phi_{&gt;N}\)</span>. The positive functional decomposition in CP-04–06 writes that head restriction as a linear combination of normal states, omitting zero terms. Thus the claimed span is dense.</p>
+<p>Explicitly, approximate a given <span class="math" data-tex="\(\psi\)">\(\psi\)</span> by <span class="math" data-tex="\(\eta_0=\sum_{l=1}^r z_l\eta_l\)">\(\eta_0=\sum_{l=1}^r z_l\eta_l\)</span>, where all <span class="math" data-tex="\(\eta_l\)">\(\eta_l\)</span> have a common head cutoff <span class="math" data-tex="\(N\)">\(N\)</span>. For <span class="math" data-tex="\(n&gt;N\)">\(n&gt;N\)</span>, (AIA.22) gives</p>
+<span class="math math-display" data-tex="\[
+\|\psi\circ g_n-\psi\|
+\le 2\|\psi-\eta_0\|+2^{-n}\sum_{l=1}^r|z_l|.
+\tag{AIA.23}
+\]">\[
+\|\psi\circ g_n-\psi\|
+\le 2\|\psi-\eta_0\|+2^{-n}\sum_{l=1}^r|z_l|.
+\tag{AIA.23}
+\]</span>
+<p>First make the approximation error small, then take <span class="math" data-tex="\(n\)">\(n\)</span> large. This proves (AIA.20) on the entire predual. Inversion continuity (AIA.3) also proves <span class="math" data-tex="\(g_n^{-1}\to\operatorname{id}\)">\(g_n^{-1}\to\operatorname{id}\)</span>.</p>
+<h2 id="7-remove-the-distant-action-and-finish-the-theorem"><span id="OA-MOD-AIA-07"></span><span id="oa-mod-aia-07"></span>7. Remove the distant action and finish the theorem</h2>
+<p>Let <span class="math" data-tex="\(\beta_n=s_n b s_n^{-1}\)">\(\beta_n=s_n b s_n^{-1}\)</span>; it applies <span class="math" data-tex="\(\beta\)">\(\beta\)</span> on replica <span class="math" data-tex="\(n\)">\(n\)</span>. Because <span class="math" data-tex="\(s_n\in H(\mathcal A)\)">\(s_n\in H(\mathcal A)\)</span> and this subgroup is normal, the commutator</p>
+<span class="math math-display" data-tex="\[
+c_n=b s_n b^{-1}s_n^{-1}=b\beta_n^{-1}
+\tag{AIA.24}
+\]">\[
+c_n=b s_n b^{-1}s_n^{-1}=b\beta_n^{-1}
+\tag{AIA.24}
+\]</span>
+<p>belongs to <span class="math" data-tex="\(H(\mathcal A)\)">\(H(\mathcal A)\)</span>. The equality is obtained by substituting <span class="math" data-tex="\(\beta_n^{-1}=s_n b^{-1}s_n^{-1}\)">\(\beta_n^{-1}=s_n b^{-1}s_n^{-1}\)</span>; the two copies of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> act on different replicas. Let <span class="math" data-tex="\(a_n^{(n)}\)">\(a_n^{(n)}\)</span> denote the unitary <span class="math" data-tex="\(a_n\)">\(a_n\)</span> in replica <span class="math" data-tex="\(n\)">\(n\)</span>. By construction,</p>
+<span class="math math-display" data-tex="\[
+g_n=\operatorname{Ad}(a_n^{(n)})\,\beta_n,
+\qquad
+A_n:=b g_n^{-1}
+=c_n\operatorname{Ad}((a_n^{(n)})^*)\in H(\mathcal A).
+\tag{AIA.25}
+\]">\[
+g_n=\operatorname{Ad}(a_n^{(n)})\,\beta_n,
+\qquad
+A_n:=b g_n^{-1}
+=c_n\operatorname{Ad}((a_n^{(n)})^*)\in H(\mathcal A).
+\tag{AIA.25}
+\]</span>
+<p>Both the order and the adjoint in the second identity matter. Section 6 gives <span class="math" data-tex="\(g_n^{-1}\to\operatorname{id}\)">\(g_n^{-1}\to\operatorname{id}\)</span>, so multiplication continuity yields <span class="math" data-tex="\(A_n\to b\)">\(A_n\to b\)</span>. Closedness of <span class="math" data-tex="\(H(\mathcal A)\)">\(H(\mathcal A)\)</span> proves <span class="math" data-tex="\(b\in H(\mathcal A)\)">\(b\in H(\mathcal A)\)</span>.</p>
+<p>There is also a direct sequence of inner implementers. For fixed <span class="math" data-tex="\(n\)">\(n\)</span>, replace <span class="math" data-tex="\(s_n\)">\(s_n\)</span> in (AIA.24) by <span class="math" data-tex="\(\operatorname{Ad}v_{n,m}\)">\(\operatorname{Ad}v_{n,m}\)</span>. Conjugation by <span class="math" data-tex="\(b\)">\(b\)</span> and multiplication are continuous, so</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ad}\left(b(v_{n,m})v_{n,m}^*(a_n^{(n)})^*\right)
+\longrightarrow A_n
+\quad(m\to\infty).
+\tag{AIA.26}
+\]">\[
+\operatorname{Ad}\left(b(v_{n,m})v_{n,m}^*(a_n^{(n)})^*\right)
+\longrightarrow A_n
+\quad(m\to\infty).
+\tag{AIA.26}
+\]</span>
+<p>All three factors inside the parentheses are unitaries in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Choose a sequence <span class="math" data-tex="\((\psi_j)\)">\((\psi_j)\)</span> with norm-dense span in <span class="math" data-tex="\(\mathcal A_*\)">\(\mathcal A_*\)</span>, which is separable by its countable product Hilbert model. Choose <span class="math" data-tex="\(m(n)\)">\(m(n)\)</span> making the differences between the two sides of (AIA.26), tested by <span class="math" data-tex="\(\psi_1,\ldots,\psi_n\)">\(\psi_1,\ldots,\psi_n\)</span>, smaller than <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>. The resulting inner automorphisms converge to <span class="math" data-tex="\(b\)">\(b\)</span> on every <span class="math" data-tex="\(\psi_j\)">\(\psi_j\)</span>, by <span class="math" data-tex="\(A_n\to b\)">\(A_n\to b\)</span>, and hence on the full predual by density. Their inverses converge to <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span> by (AIA.3).</p>
+<p>Return through the normal identifications in Sections 3–4. They show <span class="math" data-tex="\(h\alpha\in H(M)\)">\(h\alpha\in H(M)\)</span>; the factor <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span> is already in <span class="math" data-tex="\(H(M)\)">\(H(M)\)</span>. Thus <span class="math" data-tex="\(\alpha\in H(M)\)">\(\alpha\in H(M)\)</span>. Since <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> was arbitrary, we have proved, for every separable-predual AFD type <span class="math" data-tex="\(\mathrm{III}_1\)">\(\mathrm{III}_1\)</span> factor <span class="math" data-tex="\(M\)">\(M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\operatorname{Aut}(M)=\overline{\operatorname{Int}(M)}^{\,u}}.
+\tag{AIA.27}
+\]">\[
+\boxed{\operatorname{Aut}(M)=\overline{\operatorname{Int}(M)}^{\,u}}.
+\tag{AIA.27}
+\]</span>
+<p>The theorem concerns approximation in the predual topology. It does not assert that every automorphism is itself inner. It is not restricted to state-preserving or modular automorphisms.</p>
+<h2 id="8-the-mechanism-and-three-checks"><span id="OA-MOD-AIA-08"></span><span id="oa-mod-aia-08"></span>8. The mechanism and three checks</h2>
+<p><img src="assets/approximately-inner-replica-mechanism.svg" alt="Two fixed Powers factors and a state-corrected action escaping to a distant replica" /></p>
+<p><em>Figure.</em> Section 2 retains an infinite complement when fixing a Powers factor. Section 3 repeats this with an incommensurable parameter. Sections 4–7 turn the remaining action into a limit of explicit inner approximants. The quantity tending to zero in the lower panel is the normal-state norm defect, not an operator support or an operator-norm distance between automorphisms. The SVG is reproducible and accompanies the complete proof.</p>
+<p><strong>Check 1: why a distant coordinate is not enough.</strong> Let <span class="math" data-tex="\(w\in M_4\)">\(w\in M_4\)</span> exchange the first two basis vectors and fix the other two. For the density in (AIA.12), <span class="math" data-tex="\(\rho_0\circ\operatorname{Ad}w-\rho_0\)">\(\rho_0\circ\operatorname{Ad}w-\rho_0\)</span> has diagonal density difference <span class="math" data-tex="\(\operatorname{diag}(-1/4,1/4,0,0)\)">\(\operatorname{diag}(-1/4,1/4,0,0)\)</span>, whose functional norm is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Indeed, a diagonal selfadjoint density <span class="math" data-tex="\(h\)">\(h\)</span> gives norm at most <span class="math" data-tex="\(\sum_i|h_i|\)">\(\sum_i|h_i|\)</span> by the diagonal-entry bounds on contractions, and its diagonal sign matrix attains equality. Put this swap in the first matrix coordinate of replica <span class="math" data-tex="\(n\)">\(n\)</span>. The resulting automorphism fixes every prescribed finite matrix set eventually, but its defect on <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is always <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, by testing the same coordinate. Hence it does not tend to the identity in the u-topology. Equation (AIA.19) repairs precisely this problem.</p>
+<p><strong>Check 2: why retain infinitely many unselected legs.</strong> The gaps <span class="math" data-tex="\(k_n&gt;k_{n-1}+1\)">\(k_n&gt;k_{n-1}+1\)</span> make the unselected legs an entire stationary Powers product. Formula (AIA.8) then computes the complement as <span class="math" data-tex="\(R_\lambda\overline\otimes C\cong M\)">\(R_\lambda\overline\otimes C\cong M\)</span>. The proof uses this explicit product and the earlier absorption isomorphism. Isomorphism of two tensor subfactors alone would not imply isomorphism of their complements, as the counterexample in WMC-07 shows.</p>
+<p><strong>Check 3: why the commutator has the needed order.</strong> Since <span class="math" data-tex="\(g_n=\operatorname{Ad}(a_n^{(n)})\beta_n\)">\(g_n=\operatorname{Ad}(a_n^{(n)})\beta_n\)</span>, its inverse is <span class="math" data-tex="\(\beta_n^{-1}\operatorname{Ad}((a_n^{(n)})^*)\)">\(\beta_n^{-1}\operatorname{Ad}((a_n^{(n)})^*)\)</span>. Therefore <span class="math" data-tex="\(b g_n^{-1}\)">\(b g_n^{-1}\)</span> is exactly (AIA.25). Replacing the inverse by <span class="math" data-tex="\(\operatorname{Ad}((a_n^{(n)})^*)\beta_n^{-1}\)">\(\operatorname{Ad}((a_n^{(n)})^*)\beta_n^{-1}\)</span> would generally give a different automorphism. The unitary in (AIA.26) follows from multiplying the three inner automorphisms in this order.</p>
+<p>The result proved here is Theorem XVIII.4.29(i). Part (ii), which classifies centrally trivial automorphisms up to an inner automorphism and a modular time, requires additional arguments. Written proof and source coverage for this part do not confer independent review or full recursive prerequisite closure on the course.</p>
+<p>Original lesson and illustration: CC0-1.0 to the extent of rights held. Human sources and earlier authors' texts retain their own rights.</p>
+</article><footer>Draft. Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

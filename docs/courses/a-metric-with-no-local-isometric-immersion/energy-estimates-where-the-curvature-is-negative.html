@@ -1,0 +1,260 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Energy estimates where the curvature is negative</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A metric with no local isometric immersion)</a><a href="regularity-on-a-cap.html">Previous lesson</a><a href="the-oscillating-perturbation.html">Next lesson</a><a href="src/energy-estimates-where-the-curvature-is-negative.md">Editable source</a></nav><main><article><h1 id="energy-estimates-where-the-curvature-is-negative">Energy estimates where the curvature is negative</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Where the curvature is negative the height equation is hyperbolic: it can be solved for the second derivative in one direction, and that direction plays the role of time. This lesson proves the energy estimate for the resulting equations and uses it to carry bounds for all derivatives of a solution from one line <span class="math" data-tex="\(\theta=\theta_0\)">\(\theta=\theta_0\)</span> to the lines <span class="math" data-tex="\(\theta&gt;\theta_0\)">\(\theta&gt;\theta_0\)</span>, as long as the metric has bounds for all its derivatives. In the proof of the patch obstruction, this carries the bounds of the lesson on regularity on a cap through the central region of the model square, up to the edge of a thin strip where the metric oscillates.</p>
+<ul>
+<li>In coordinates <span class="math" data-tex="\(\xi,\theta\)">\(\xi,\theta\)</span> obtained by a shear, the derivatives <span class="math" data-tex="\(v=\partial_\xi^jz\)">\(v=\partial_\xi^jz\)</span> of a solution satisfy an equation <span class="math" data-tex="\(v_{\theta\theta}-P_1v_{\theta\xi}-S_1v_{\xi\xi}=\dots\)">\(v_{\theta\theta}-P_1v_{\theta\xi}-S_1v_{\xi\xi}=\dots\)</span> with <span class="math" data-tex="\(S_1&gt;0\)">\(S_1&gt;0\)</span> (Proposition 1.2).</li>
+<li>The energy inequality on intervals that shrink at the speed of propagation (Lemma 2.1).</li>
+<li>Bounds for all derivatives along <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(z_\theta\)">\(z_\theta\)</span> propagate in <span class="math" data-tex="\(\theta\)">\(\theta\)</span> (Proposition 4.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-I, Section 4, the parts on the bounded solution class and on the propagation to the pulse]. It uses the equation for a derivative of high order from <a href="the-differentiated-height-equation.html">The differentiated height equation</a> and the notion of a pair from <a href="regularity-on-a-cap.html">Regularity on a cap</a>.</p>
+<h2 id="1-sheared-coordinates">1. Sheared coordinates</h2>
+<p>Let <span class="math" data-tex="\((g,z)\)">\((g,z)\)</span> be a pair in the sense of the lesson on regularity on a cap, with the numbers <span class="math" data-tex="\(h,\kappa,M,c\)">\(h,\kappa,M,c\)</span>, and <span class="math" data-tex="\(q=H_{xy}/H_{yy}\)">\(q=H_{xy}/H_{yy}\)</span>, <span class="math" data-tex="\(G=E/H_{yy}^2\)">\(G=E/H_{yy}^2\)</span>, <span class="math" data-tex="\(a=KG\)">\(a=KG\)</span>. Let <span class="math" data-tex="\(q_0\)">\(q_0\)</span> be a real number with <span class="math" data-tex="\(|q_0|\le\tfrac1{20}\)">\(|q_0|\le\tfrac1{20}\)</span>. The <em>sheared coordinates</em> are
+<span class="math math-display" data-tex="\[
+\xi=x,\qquad\theta=y+q_0x .
+\]">\[
+\xi=x,\qquad\theta=y+q_0x .
+\]</span>
+The map <span class="math" data-tex="\(\Psi(\xi,\theta)=(\xi,\theta-q_0\xi)\)">\(\Psi(\xi,\theta)=(\xi,\theta-q_0\xi)\)</span> is affine with the matrix whose columns are <span class="math" data-tex="\((1,-q_0)\)">\((1,-q_0)\)</span> and <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, of determinant <span class="math" data-tex="\(1\)">\(1\)</span>. We pull back <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> as in Lemma 1.2 of the lesson on heights and denote the pulled-back metric and the function <span class="math" data-tex="\(z\circ\Psi\)">\(z\circ\Psi\)</span> again by <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span>, and the functions <span class="math" data-tex="\(K,E,q,a\)">\(K,E,q,a\)</span> composed with <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> by the same letters. The indices <span class="math" data-tex="\(\xi,\theta\)">\(\xi,\theta\)</span> refer to the new coordinates. By that lemma the height equation holds in the new coordinates, with the same <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span>, and the covariant Hessian is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_{\theta\theta}=H_{yy},\qquad H_{\xi\theta}=(q-q_0)\,H_{yy},\\
+H_{\xi\xi}=d_0\,H_{yy},\qquad d_0=(q-q_0)^2+a .
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_{\theta\theta}=H_{yy},\qquad H_{\xi\theta}=(q-q_0)\,H_{yy},\\
+H_{\xi\xi}=d_0\,H_{yy},\qquad d_0=(q-q_0)^2+a .
+\end{gathered}
+\]</span>
+Indeed <span class="math" data-tex="\(H_{\xi\theta}=H_{xy}-q_0H_{yy}\)">\(H_{\xi\theta}=H_{xy}-q_0H_{yy}\)</span> and <span class="math" data-tex="\(H_{\xi\xi}=H_{xx}-2q_0H_{xy}+q_0^2H_{yy}\)">\(H_{\xi\xi}=H_{xx}-2q_0H_{xy}+q_0^2H_{yy}\)</span>, and <span class="math" data-tex="\(H_{xx}=(q^2+a)H_{yy}\)">\(H_{xx}=(q^2+a)H_{yy}\)</span> by the height equation.</p>
+<p>Let <span class="math" data-tex="\(v_*&gt;0\)">\(v_*&gt;0\)</span> and <span class="math" data-tex="\(L=100(1+1/v_*)\)">\(L=100(1+1/v_*)\)</span>. We say that a set in the plane of the coordinates <span class="math" data-tex="\(\xi,\theta\)">\(\xi,\theta\)</span> is <em>hyperbolic for the pair</em> (with <span class="math" data-tex="\(q_0\)">\(q_0\)</span> and <span class="math" data-tex="\(v_*\)">\(v_*\)</span>) if at its points
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K&lt;0,\qquad-a\ge v_*^2,\\
+|q-q_0|\le\frac1{10L}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+K&lt;0,\qquad-a\ge v_*^2,\\
+|q-q_0|\le\frac1{10L}.
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 1.1.</strong> On a hyperbolic set, <span class="math" data-tex="\(d_0\le-\tfrac{99}{100}v_*^2\)">\(d_0\le-\tfrac{99}{100}v_*^2\)</span>. The functions
+<span class="math math-display" data-tex="\[
+P_1=\frac{2(q-q_0)}{d_0},\qquad S_1=-\frac1{d_0}
+\]">\[
+P_1=\frac{2(q-q_0)}{d_0},\qquad S_1=-\frac1{d_0}
+\]</span>
+satisfy <span class="math" data-tex="\(S_1&gt;0\)">\(S_1&gt;0\)</span> and <span class="math" data-tex="\(|P_1|+\sqrt{S_1}\le\tfrac14L\)">\(|P_1|+\sqrt{S_1}\le\tfrac14L\)</span>. There is a controlled number <span class="math" data-tex="\(s_{\min}&gt;0\)">\(s_{\min}&gt;0\)</span> with <span class="math" data-tex="\(S_1\ge s_{\min}\)">\(S_1\ge s_{\min}\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(L\ge100/v_*\)">\(L\ge100/v_*\)</span>, <span class="math" data-tex="\(|q-q_0|\le v_*/1000\)">\(|q-q_0|\le v_*/1000\)</span>, so <span class="math" data-tex="\(d_0\le v_*^2/10^6-v_*^2\)">\(d_0\le v_*^2/10^6-v_*^2\)</span>. Then <span class="math" data-tex="\(S_1\le\tfrac{100}{99}v_*^{-2}\)">\(S_1\le\tfrac{100}{99}v_*^{-2}\)</span>, <span class="math" data-tex="\(\sqrt{S_1}\le1.01/v_*\)">\(\sqrt{S_1}\le1.01/v_*\)</span>, and <span class="math" data-tex="\(|P_1|\le2\cdot\tfrac{v_*}{1000}\cdot\tfrac{100}{99v_*^2}&lt;0.01/v_*\)">\(|P_1|\le2\cdot\tfrac{v_*}{1000}\cdot\tfrac{100}{99v_*^2}&lt;0.01/v_*\)</span>; the sum is less than <span class="math" data-tex="\(2/v_*\le\tfrac14L\)">\(2/v_*\le\tfrac14L\)</span>. Finally <span class="math" data-tex="\(|d_0|\le1+|a|\)">\(|d_0|\le1+|a|\)</span>, and <span class="math" data-tex="\(|a|\)">\(|a|\)</span> is bounded by a controlled number. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 1.2.</strong> Let <span class="math" data-tex="\(j\ge3\)">\(j\ge3\)</span> and <span class="math" data-tex="\(v=\partial_\xi^jz\)">\(v=\partial_\xi^jz\)</span>. On an open hyperbolic set,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;v_{\theta\theta}-P_1\,v_{\theta\xi}-S_1\,v_{\xi\xi}\\
+&amp;\quad=b^\theta v_\theta+b^\xi v_\xi+\tilde R_j,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;v_{\theta\theta}-P_1\,v_{\theta\xi}-S_1\,v_{\xi\xi}\\
+&amp;\quad=b^\theta v_\theta+b^\xi v_\xi+\tilde R_j,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(b^\theta,b^\xi\)">\(b^\theta,b^\xi\)</span> are bounded by controlled numbers, depending also on <span class="math" data-tex="\(j\)">\(j\)</span>, and the remainder <span class="math" data-tex="\(\tilde R_j\)">\(\tilde R_j\)</span> is a sum of terms
+<span class="math math-display" data-tex="\[
+c\cdot\partial_\xi^{k_1}\tilde p_{i_1}\cdots\partial_\xi^{k_n}\tilde p_{i_n},
+\]">\[
+c\cdot\partial_\xi^{k_1}\tilde p_{i_1}\cdots\partial_\xi^{k_n}\tilde p_{i_n},
+\]</span>
+with <span class="math" data-tex="\(\tilde p=(z_\theta,z_\xi,z_{\theta\xi},z_{\xi\xi})\)">\(\tilde p=(z_\theta,z_\xi,z_{\theta\xi},z_{\xi\xi})\)</span>, in which <span class="math" data-tex="\(1\le k_i\le j-1\)">\(1\le k_i\le j-1\)</span>, the sum of the <span class="math" data-tex="\(k_i\)">\(k_i\)</span> is at most <span class="math" data-tex="\(j\)">\(j\)</span>, at most the factors <span class="math" data-tex="\(\partial_\xi^{j-1}z_\theta\)">\(\partial_\xi^{j-1}z_\theta\)</span> and <span class="math" data-tex="\(\partial_\xi^{j-1}z_\xi\)">\(\partial_\xi^{j-1}z_\xi\)</span> have <span class="math" data-tex="\(k_i=j-1\)">\(k_i=j-1\)</span>, and each <span class="math" data-tex="\(c\)">\(c\)</span> is a quotient of polynomials in the derivatives of <span class="math" data-tex="\(g\)">\(g\)</span> of order at most <span class="math" data-tex="\(j+3\)">\(j+3\)</span> and in <span class="math" data-tex="\(\tilde p\)">\(\tilde p\)</span>, with a denominator that is a power of <span class="math" data-tex="\(\det g\)">\(\det g\)</span> and of <span class="math" data-tex="\(H_{\xi\xi}\)">\(H_{\xi\xi}\)</span>.</p>
+<p><strong>Proof.</strong> Exchange the two coordinates: let <span class="math" data-tex="\(\tilde x=\theta\)">\(\tilde x=\theta\)</span> and <span class="math" data-tex="\(\tilde y=\xi\)">\(\tilde y=\xi\)</span>. This is again an affine change of coordinates, so the height equation holds in the coordinates <span class="math" data-tex="\(\tilde x,\tilde y\)">\(\tilde x,\tilde y\)</span>, and <span class="math" data-tex="\(H_{\tilde y\tilde y}=H_{\xi\xi}=d_0H_{yy}\ne0\)">\(H_{\tilde y\tilde y}=H_{\xi\xi}=d_0H_{yy}\ne0\)</span> on a hyperbolic set. So the lesson on the differentiated height equation applies with <span class="math" data-tex="\(\tilde x,\tilde y\)">\(\tilde x,\tilde y\)</span> in the place of <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. Its quantities are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tilde q=\frac{H_{\theta\xi}}{H_{\xi\xi}}=\frac{q-q_0}{d_0},\\
+\tilde G=\frac E{H_{\xi\xi}^2},\qquad\tilde a=K\tilde G=\frac a{d_0^2},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\tilde q=\frac{H_{\theta\xi}}{H_{\xi\xi}}=\frac{q-q_0}{d_0},\\
+\tilde G=\frac E{H_{\xi\xi}^2},\qquad\tilde a=K\tilde G=\frac a{d_0^2},
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(\tilde D=\partial_\theta-\tilde q\,\partial_\xi\)">\(\tilde D=\partial_\theta-\tilde q\,\partial_\xi\)</span>. By Theorem 5.1 of that lesson, for <span class="math" data-tex="\(v=\partial_\xi^jz\)">\(v=\partial_\xi^jz\)</span>,
+<span class="math math-display" data-tex="\[
+\tilde D^2v+\tilde a\,v_{\xi\xi}+\tilde B\,\tilde Dv+\tilde c\,v_\xi=\tilde R_j,
+\]">\[
+\tilde D^2v+\tilde a\,v_{\xi\xi}+\tilde B\,\tilde Dv+\tilde c\,v_\xi=\tilde R_j,
+\]</span>
+with bounded <span class="math" data-tex="\(\tilde B\)">\(\tilde B\)</span> and <span class="math" data-tex="\(\tilde c\)">\(\tilde c\)</span>, and with the remainder described there. Since <span class="math" data-tex="\(\tilde D^2v=v_{\theta\theta}-2\tilde qv_{\theta\xi}+\tilde q^2v_{\xi\xi}-(\tilde D\tilde q)v_\xi\)">\(\tilde D^2v=v_{\theta\theta}-2\tilde qv_{\theta\xi}+\tilde q^2v_{\xi\xi}-(\tilde D\tilde q)v_\xi\)</span>, the second-order part is <span class="math" data-tex="\(v_{\theta\theta}-2\tilde q\,v_{\theta\xi}+(\tilde q^2+\tilde a)v_{\xi\xi}\)">\(v_{\theta\theta}-2\tilde q\,v_{\theta\xi}+(\tilde q^2+\tilde a)v_{\xi\xi}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+2\tilde q=P_1,\\
+\tilde q^2+\tilde a=\frac{(q-q_0)^2+a}{d_0^2}=\frac1{d_0}=-S_1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+2\tilde q=P_1,\\
+\tilde q^2+\tilde a=\frac{(q-q_0)^2+a}{d_0^2}=\frac1{d_0}=-S_1 .
+\end{gathered}
+\]</span>
+The terms of first order give <span class="math" data-tex="\(b^\theta=-\tilde B\)">\(b^\theta=-\tilde B\)</span> and <span class="math" data-tex="\(b^\xi=\tilde B\tilde q+\tilde D\tilde q-\tilde c\)">\(b^\xi=\tilde B\tilde q+\tilde D\tilde q-\tilde c\)</span>. They are formed from derivatives of <span class="math" data-tex="\(g\)">\(g\)</span> of order at most <span class="math" data-tex="\(3\)">\(3\)</span> and of <span class="math" data-tex="\(z\)">\(z\)</span> of order at most <span class="math" data-tex="\(4\)">\(4\)</span>, with denominators that are powers of <span class="math" data-tex="\(\det g\)">\(\det g\)</span>, <span class="math" data-tex="\(H_{yy}\)">\(H_{yy}\)</span> and <span class="math" data-tex="\(d_0\)">\(d_0\)</span>, and <span class="math" data-tex="\(|d_0|\ge\tfrac{99}{100}v_*^2\)">\(|d_0|\ge\tfrac{99}{100}v_*^2\)</span>. The description of the remainder is that of Theorem 5.1 and Lemma 4.1 of the lesson on the differentiated height equation: the two terms <span class="math" data-tex="\(j\,\partial_\xi[\,\cdot\,]\,\partial_\xi^{j-1}z_\theta\)">\(j\,\partial_\xi[\,\cdot\,]\,\partial_\xi^{j-1}z_\theta\)</span> and <span class="math" data-tex="\(j\,\partial_\xi[\,\cdot\,]\,\partial_\xi^{j-1}z_\xi\)">\(j\,\partial_\xi[\,\cdot\,]\,\partial_\xi^{j-1}z_\xi\)</span>, and a sum of terms with <span class="math" data-tex="\(k_i\le j-2\)">\(k_i\le j-2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The roles of the two coordinates are now exchanged with respect to the caps: there the equation was solved for <span class="math" data-tex="\(z_{xx}\)">\(z_{xx}\)</span> and differentiated in <span class="math" data-tex="\(y\)">\(y\)</span>; here it is solved for <span class="math" data-tex="\(z_{\theta\theta}\)">\(z_{\theta\theta}\)</span>, which is possible because <span class="math" data-tex="\(H_{\xi\xi}\ne0\)">\(H_{\xi\xi}\ne0\)</span> where the curvature is negative, and differentiated in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. All the factors <span class="math" data-tex="\(\partial_\xi^k\tilde p_i\)">\(\partial_\xi^k\tilde p_i\)</span> are derivatives along <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of the two functions <span class="math" data-tex="\(z_\xi\)">\(z_\xi\)</span> and <span class="math" data-tex="\(z_\theta\)">\(z_\theta\)</span>.</p>
+<h2 id="2-the-energy-inequality">2. The energy inequality</h2>
+<p>Let <span class="math" data-tex="\(\theta_0&lt;\theta_1\)">\(\theta_0&lt;\theta_1\)</span>, <span class="math" data-tex="\(\xi_*&gt;0\)">\(\xi_*&gt;0\)</span> and <span class="math" data-tex="\(\Lambda&gt;0\)">\(\Lambda&gt;0\)</span> with <span class="math" data-tex="\(\xi_*-\Lambda(\theta_1-\theta_0)&gt;0\)">\(\xi_*-\Lambda(\theta_1-\theta_0)&gt;0\)</span>. Let <span class="math" data-tex="\(\beta(\theta)=\xi_*-\Lambda(\theta-\theta_0)\)">\(\beta(\theta)=\xi_*-\Lambda(\theta-\theta_0)\)</span> and
+<span class="math math-display" data-tex="\[
+\mathcal T=\{(\xi,\theta):\theta_0\le\theta\le\theta_1,\ |\xi|\le\beta(\theta)\},
+\]">\[
+\mathcal T=\{(\xi,\theta):\theta_0\le\theta\le\theta_1,\ |\xi|\le\beta(\theta)\},
+\]</span>
+a trapezoid whose sides move inwards with the speed <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. We write <span class="math" data-tex="\(J_\theta=[-\beta(\theta),\beta(\theta)]\)">\(J_\theta=[-\beta(\theta),\beta(\theta)]\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(P_1,S_1,b^\theta,b^\xi,R,v\)">\(P_1,S_1,b^\theta,b^\xi,R,v\)</span> be smooth functions on a neighbourhood of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;v_{\theta\theta}-P_1\,v_{\theta\xi}-S_1\,v_{\xi\xi}\\
+&amp;\quad=b^\theta v_\theta+b^\xi v_\xi+R .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;v_{\theta\theta}-P_1\,v_{\theta\xi}-S_1\,v_{\xi\xi}\\
+&amp;\quad=b^\theta v_\theta+b^\xi v_\xi+R .
+\end{aligned}
+\]</span>
+Suppose that on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>: <span class="math" data-tex="\(S_1\ge s_{\min}&gt;0\)">\(S_1\ge s_{\min}&gt;0\)</span>, <span class="math" data-tex="\(|P_1|+\sqrt{S_1}\le\Lambda\)">\(|P_1|+\sqrt{S_1}\le\Lambda\)</span>, and <span class="math" data-tex="\(|b^\theta|,|b^\xi|,|\partial_\xi P_1|,|\partial_\xi S_1|,|\partial_\theta S_1|\le\beta_1\)">\(|b^\theta|,|b^\xi|,|\partial_\xi P_1|,|\partial_\xi S_1|,|\partial_\theta S_1|\le\beta_1\)</span>. Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal E(\theta)=\frac12\int_{J_\theta}\bigl(v_\theta^2+S_1v_\xi^2\bigr)\,d\xi,\\
+\varrho(\theta)=\Bigl(\int_{J_\theta}R^2\,d\xi\Bigr)^{1/2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal E(\theta)=\frac12\int_{J_\theta}\bigl(v_\theta^2+S_1v_\xi^2\bigr)\,d\xi,\\
+\varrho(\theta)=\Bigl(\int_{J_\theta}R^2\,d\xi\Bigr)^{1/2}.
+\end{gathered}
+\]</span>
+Then, with <span class="math" data-tex="\(c_E=3\beta_1(1+1/s_{\min})\)">\(c_E=3\beta_1(1+1/s_{\min})\)</span>, for <span class="math" data-tex="\(\theta_0\le\theta\le\theta_1\)">\(\theta_0\le\theta\le\theta_1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sqrt{\mathcal E(\theta)}\le e^{c_E(\theta-\theta_0)}\Bigl(&amp;\sqrt{\mathcal E(\theta_0)}\\
+&amp;+\int_{\theta_0}^\theta\varrho(\theta&#x27;)\,d\theta&#x27;\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sqrt{\mathcal E(\theta)}\le e^{c_E(\theta-\theta_0)}\Bigl(&amp;\sqrt{\mathcal E(\theta_0)}\\
+&amp;+\int_{\theta_0}^\theta\varrho(\theta&#x27;)\,d\theta&#x27;\Bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(e=\tfrac12(v_\theta^2+S_1v_\xi^2)\)">\(e=\tfrac12(v_\theta^2+S_1v_\xi^2)\)</span> and <span class="math" data-tex="\(\jmath=\tfrac12P_1v_\theta^2+S_1v_\xi v_\theta\)">\(\jmath=\tfrac12P_1v_\theta^2+S_1v_\xi v_\theta\)</span>. Carrying out the differentiations,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\partial_\theta e-\partial_\xi\jmath\\
+&amp;\quad=v_\theta\bigl(v_{\theta\theta}-P_1v_{\theta\xi}-S_1v_{\xi\xi}\bigr)\\
+&amp;\qquad+\tfrac12\partial_\theta S_1\,v_\xi^2-\tfrac12\partial_\xi P_1\,v_\theta^2\\
+&amp;\qquad-\partial_\xi S_1\,v_\xi v_\theta .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\partial_\theta e-\partial_\xi\jmath\\
+&amp;\quad=v_\theta\bigl(v_{\theta\theta}-P_1v_{\theta\xi}-S_1v_{\xi\xi}\bigr)\\
+&amp;\qquad+\tfrac12\partial_\theta S_1\,v_\xi^2-\tfrac12\partial_\xi P_1\,v_\theta^2\\
+&amp;\qquad-\partial_\xi S_1\,v_\xi v_\theta .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(|S_1v_\xi v_\theta|\le\sqrt{S_1}\cdot\tfrac12(S_1v_\xi^2+v_\theta^2)\)">\(|S_1v_\xi v_\theta|\le\sqrt{S_1}\cdot\tfrac12(S_1v_\xi^2+v_\theta^2)\)</span>, we have <span class="math" data-tex="\(|\jmath|\le(|P_1|+\sqrt{S_1})\,e\le\Lambda e\)">\(|\jmath|\le(|P_1|+\sqrt{S_1})\,e\le\Lambda e\)</span>. Let <span class="math" data-tex="\(e_+\)">\(e_+\)</span> and <span class="math" data-tex="\(e_-\)">\(e_-\)</span> be the values of <span class="math" data-tex="\(e\)">\(e\)</span> at the two ends <span class="math" data-tex="\(\xi=\pm\beta(\theta)\)">\(\xi=\pm\beta(\theta)\)</span> of the interval. The derivative of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> is
+<span class="math math-display" data-tex="\[
+\mathcal E&#x27;(\theta)=\int_{J_\theta}\partial_\theta e\,d\xi-\Lambda\,(e_++e_-),
+\]">\[
+\mathcal E&#x27;(\theta)=\int_{J_\theta}\partial_\theta e\,d\xi-\Lambda\,(e_++e_-),
+\]</span>
+and <span class="math" data-tex="\(\int_{J_\theta}\partial_\xi\jmath\,d\xi\)">\(\int_{J_\theta}\partial_\xi\jmath\,d\xi\)</span> is the difference of the values of <span class="math" data-tex="\(\jmath\)">\(\jmath\)</span> at the two ends, which is at most <span class="math" data-tex="\(\Lambda(e_++e_-)\)">\(\Lambda(e_++e_-)\)</span>. So the terms at the two ends of the interval are together not positive, and
+<span class="math math-display" data-tex="\[
+\mathcal E&#x27;(\theta)\le\int_{J_\theta}\bigl(\partial_\theta e-\partial_\xi\jmath\bigr)\,d\xi .
+\]">\[
+\mathcal E&#x27;(\theta)\le\int_{J_\theta}\bigl(\partial_\theta e-\partial_\xi\jmath\bigr)\,d\xi .
+\]</span>
+Insert the equation for <span class="math" data-tex="\(v\)">\(v\)</span>. With <span class="math" data-tex="\(v_\xi^2\le S_1v_\xi^2/s_{\min}\)">\(v_\xi^2\le S_1v_\xi^2/s_{\min}\)</span> and <span class="math" data-tex="\(|v_\xi v_\theta|\le\tfrac12(v_\theta^2+v_\xi^2)\)">\(|v_\xi v_\theta|\le\tfrac12(v_\theta^2+v_\xi^2)\)</span>, the terms without <span class="math" data-tex="\(R\)">\(R\)</span> are at most <span class="math" data-tex="\(2c_E\,e\)">\(2c_E\,e\)</span> at every point, and <span class="math" data-tex="\(\int|v_\theta R|\le\sqrt{2\mathcal E}\,\varrho\)">\(\int|v_\theta R|\le\sqrt{2\mathcal E}\,\varrho\)</span>. Hence <span class="math" data-tex="\(\mathcal E&#x27;\le2c_E\mathcal E+\sqrt{2\mathcal E}\,\varrho\)">\(\mathcal E&#x27;\le2c_E\mathcal E+\sqrt{2\mathcal E}\,\varrho\)</span>.</p>
+<p>For <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> the function <span class="math" data-tex="\(w=\sqrt{\mathcal E+\eta}\)">\(w=\sqrt{\mathcal E+\eta}\)</span> is differentiable, and <span class="math" data-tex="\(w&#x27;=\mathcal E&#x27;/(2w)\le c_Ew+\varrho\)">\(w&#x27;=\mathcal E&#x27;/(2w)\le c_Ew+\varrho\)</span>. So <span class="math" data-tex="\((e^{-c_E(\theta-\theta_0)}w)&#x27;\le\varrho\)">\((e^{-c_E(\theta-\theta_0)}w)&#x27;\le\varrho\)</span>, and <span class="math" data-tex="\(w(\theta)\le e^{c_E(\theta-\theta_0)}(w(\theta_0)+\int_{\theta_0}^\theta\varrho)\)">\(w(\theta)\le e^{c_E(\theta-\theta_0)}(w(\theta_0)+\int_{\theta_0}^\theta\varrho)\)</span>. Let <span class="math" data-tex="\(\eta\to0\)">\(\eta\to0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The condition <span class="math" data-tex="\(|P_1|+\sqrt{S_1}\le\Lambda\)">\(|P_1|+\sqrt{S_1}\le\Lambda\)</span> says that the sides of the trapezoid move inwards at least as fast as the equation propagates. Then no information from outside the interval <span class="math" data-tex="\(J_{\theta_0}\)">\(J_{\theta_0}\)</span> is needed.</p>
+<h2 id="3-a-sobolev-inequality-on-an-interval">3. A Sobolev inequality on an interval</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(\phi\)">\(\phi\)</span> be a smooth function on an interval <span class="math" data-tex="\(J\)">\(J\)</span> of length <span class="math" data-tex="\(|J|\)">\(|J|\)</span>. Then for every <span class="math" data-tex="\(x_0\in J\)">\(x_0\in J\)</span>
+<span class="math math-display" data-tex="\[
+\phi(x_0)^2\le\frac2{|J|}\int_J\phi^2+2|J|\int_J\phi&#x27;^2 .
+\]">\[
+\phi(x_0)^2\le\frac2{|J|}\int_J\phi^2+2|J|\int_J\phi&#x27;^2 .
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span>, <span class="math" data-tex="\(\phi(x_0)=\phi(x)-\int_{x_0}^x\phi&#x27;\)">\(\phi(x_0)=\phi(x)-\int_{x_0}^x\phi&#x27;\)</span>, so <span class="math" data-tex="\(\phi(x_0)^2\le2\phi(x)^2+2|J|\int_J\phi&#x27;^2\)">\(\phi(x_0)^2\le2\phi(x)^2+2|J|\int_J\phi&#x27;^2\)</span>. Take the mean over <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-propagation-of-bounds">4. Propagation of bounds</h2>
+<p>For a pair, <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> and <span class="math" data-tex="\(\theta\in[\theta_0,\theta_1]\)">\(\theta\in[\theta_0,\theta_1]\)</span>, let
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal I_j(\theta)=\int_{J_\theta}\bigl(&amp;(\partial_\xi^jz_\theta)^2\\
+&amp;+(\partial_\xi^jz_\xi)^2\bigr)\,d\xi .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal I_j(\theta)=\int_{J_\theta}\bigl(&amp;(\partial_\xi^jz_\theta)^2\\
+&amp;+(\partial_\xi^jz_\xi)^2\bigr)\,d\xi .
+\end{aligned}
+\]</span>
+In this section a family of pairs is given, with a common number <span class="math" data-tex="\(q_0\)">\(q_0\)</span>, and a trapezoid <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> as in Section 2 with <span class="math" data-tex="\(\Lambda=\tfrac14L\)">\(\Lambda=\tfrac14L\)</span>, in the coordinates <span class="math" data-tex="\(\xi,\theta\)">\(\xi,\theta\)</span>, such that:</p>
+<ol>
+<li><span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> lies in a hyperbolic open set of every pair of the family, with common <span class="math" data-tex="\(q_0\)">\(q_0\)</span> and <span class="math" data-tex="\(v_*\)">\(v_*\)</span>;</li>
+<li>for every <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span> there is a number <span class="math" data-tex="\(N_k\)">\(N_k\)</span> such that for every pair the derivatives of the entries of <span class="math" data-tex="\(g\)">\(g\)</span> of order at most <span class="math" data-tex="\(k\)">\(k\)</span> are at most <span class="math" data-tex="\(N_k\)">\(N_k\)</span> in absolute value on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>;</li>
+<li>for every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> there is a number <span class="math" data-tex="\(I_j\)">\(I_j\)</span> such that <span class="math" data-tex="\(\mathcal I_j(\theta_0)\le I_j\)">\(\mathcal I_j(\theta_0)\le I_j\)</span> for every pair;</li>
+<li>the length <span class="math" data-tex="\(2\beta(\theta_1)\)">\(2\beta(\theta_1)\)</span> of the shortest interval is at least <span class="math" data-tex="\(\ell_0&gt;0\)">\(\ell_0&gt;0\)</span>, and <span class="math" data-tex="\(\theta_1-\theta_0\le1\)">\(\theta_1-\theta_0\le1\)</span>.</li>
+</ol>
+<p>A number is called controlled if it depends only on <span class="math" data-tex="\(h,\kappa,M,c,v_*,\ell_0\)">\(h,\kappa,M,c,v_*,\ell_0\)</span>, the numbers <span class="math" data-tex="\(N_k\)">\(N_k\)</span> and <span class="math" data-tex="\(I_j\)">\(I_j\)</span>, and the orders named.</p>
+<p><strong>Proposition 4.1.</strong> For every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> there is a controlled number <span class="math" data-tex="\(I&#x27;_j\)">\(I&#x27;_j\)</span> such that <span class="math" data-tex="\(\mathcal I_j(\theta)\le I&#x27;_j\)">\(\mathcal I_j(\theta)\le I&#x27;_j\)</span> for every pair of the family and every <span class="math" data-tex="\(\theta\in[\theta_0,\theta_1]\)">\(\theta\in[\theta_0,\theta_1]\)</span>.
+Consequently the functions <span class="math" data-tex="\(\partial_\xi^jz_\theta\)">\(\partial_\xi^jz_\theta\)</span> and <span class="math" data-tex="\(\partial_\xi^jz_\xi\)">\(\partial_\xi^jz_\xi\)</span> are bounded on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> by controlled numbers, for every <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>Proof.</strong> The second statement follows from the first by Lemma 3.1, applied on the intervals <span class="math" data-tex="\(J_\theta\)">\(J_\theta\)</span>, whose lengths are between <span class="math" data-tex="\(\ell_0\)">\(\ell_0\)</span> and <span class="math" data-tex="\(2\xi_*\)">\(2\xi_*\)</span>. We prove the first by induction on <span class="math" data-tex="\(j\)">\(j\)</span>. For <span class="math" data-tex="\(j\le6\)">\(j\le6\)</span> the integrands are bounded by controlled numbers, because the derivatives of <span class="math" data-tex="\(z\)">\(z\)</span> of order at most <span class="math" data-tex="\(8\)">\(8\)</span> are bounded by <span class="math" data-tex="\(M\)">\(M\)</span> and the change of coordinates is a fixed shear.</p>
+<p>Let <span class="math" data-tex="\(j\ge7\)">\(j\ge7\)</span>, and suppose the statement holds for all smaller orders. Let <span class="math" data-tex="\(v=\partial_\xi^jz\)">\(v=\partial_\xi^jz\)</span>. By Proposition 1.2 and Lemma 1.1 the assumptions of Lemma 2.1 hold on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, with <span class="math" data-tex="\(\Lambda=\tfrac14L\)">\(\Lambda=\tfrac14L\)</span>, with <span class="math" data-tex="\(R=\tilde R_j\)">\(R=\tilde R_j\)</span> and with controlled <span class="math" data-tex="\(s_{\min}\)">\(s_{\min}\)</span> and <span class="math" data-tex="\(\beta_1\)">\(\beta_1\)</span>; the derivatives of <span class="math" data-tex="\(P_1\)">\(P_1\)</span> and <span class="math" data-tex="\(S_1\)">\(S_1\)</span> are formed from derivatives of <span class="math" data-tex="\(g\)">\(g\)</span> of order at most <span class="math" data-tex="\(3\)">\(3\)</span> and of <span class="math" data-tex="\(z\)">\(z\)</span> of order at most <span class="math" data-tex="\(4\)">\(4\)</span>. We bound <span class="math" data-tex="\(\varrho(\theta)\)">\(\varrho(\theta)\)</span>. Each factor <span class="math" data-tex="\(\partial_\xi^k\tilde p_i\)">\(\partial_\xi^k\tilde p_i\)</span> of a term of <span class="math" data-tex="\(\tilde R_j\)">\(\tilde R_j\)</span> is a derivative along <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of <span class="math" data-tex="\(z_\xi\)">\(z_\xi\)</span> or <span class="math" data-tex="\(z_\theta\)">\(z_\theta\)</span> of order at most <span class="math" data-tex="\(k+1\le j\)">\(k+1\le j\)</span>; the order <span class="math" data-tex="\(j\)">\(j\)</span> occurs only if <span class="math" data-tex="\(k=j-1\)">\(k=j-1\)</span> and <span class="math" data-tex="\(\tilde p_i\)">\(\tilde p_i\)</span> is <span class="math" data-tex="\(z_{\theta\xi}\)">\(z_{\theta\xi}\)</span> or <span class="math" data-tex="\(z_{\xi\xi}\)">\(z_{\xi\xi}\)</span>, which is excluded by Proposition 1.2. So all orders are at most <span class="math" data-tex="\(j-1\)">\(j-1\)</span>. A factor of order <span class="math" data-tex="\(j-1\)">\(j-1\)</span> has <span class="math" data-tex="\(k\ge j-2\)">\(k\ge j-2\)</span>, and two such factors in one term would give a sum of at least <span class="math" data-tex="\(2j-4&gt;j\)">\(2j-4&gt;j\)</span>. So in every term at most one factor has the order <span class="math" data-tex="\(j-1\)">\(j-1\)</span>; its mean square over <span class="math" data-tex="\(J_\theta\)">\(J_\theta\)</span> is at most <span class="math" data-tex="\(I&#x27;_{j-1}\)">\(I&#x27;_{j-1}\)</span>. All other factors have order at most <span class="math" data-tex="\(j-2\)">\(j-2\)</span>, and by Lemma 3.1 and the induction hypothesis for the orders up to <span class="math" data-tex="\(j-1\)">\(j-1\)</span> they are bounded on <span class="math" data-tex="\(J_\theta\)">\(J_\theta\)</span>. The coefficients <span class="math" data-tex="\(c\)">\(c\)</span> are bounded by assumption (2), by the bounds for <span class="math" data-tex="\(\tilde p\)">\(\tilde p\)</span>, and by <span class="math" data-tex="\(|H_{\xi\xi}|\ge\tfrac{99}{100}v_*^2c\)">\(|H_{\xi\xi}|\ge\tfrac{99}{100}v_*^2c\)</span>. So <span class="math" data-tex="\(\varrho(\theta)\le\varrho_j\)">\(\varrho(\theta)\le\varrho_j\)</span> with a controlled <span class="math" data-tex="\(\varrho_j\)">\(\varrho_j\)</span>.</p>
+<p>The energy of <span class="math" data-tex="\(v\)">\(v\)</span> at <span class="math" data-tex="\(\theta_0\)">\(\theta_0\)</span> is at most <span class="math" data-tex="\(\tfrac12(1+S_{\max})I_j\)">\(\tfrac12(1+S_{\max})I_j\)</span>, where <span class="math" data-tex="\(S_{\max}=\tfrac{100}{99}v_*^{-2}\)">\(S_{\max}=\tfrac{100}{99}v_*^{-2}\)</span> bounds <span class="math" data-tex="\(S_1\)">\(S_1\)</span>. By Lemma 2.1 and <span class="math" data-tex="\(\theta_1-\theta_0\le1\)">\(\theta_1-\theta_0\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\sqrt{\mathcal E(\theta)}\le e^{c_E}\Bigl(\sqrt{\tfrac12(1+S_{\max})I_j}+\varrho_j\Bigr),
+\]">\[
+\sqrt{\mathcal E(\theta)}\le e^{c_E}\Bigl(\sqrt{\tfrac12(1+S_{\max})I_j}+\varrho_j\Bigr),
+\]</span>
+and <span class="math" data-tex="\(v_\theta^2+v_\xi^2\le2(1+1/s_{\min})\,e\)">\(v_\theta^2+v_\xi^2\le2(1+1/s_{\min})\,e\)</span>, where <span class="math" data-tex="\(v_\theta=\partial_\xi^jz_\theta\)">\(v_\theta=\partial_\xi^jz_\theta\)</span> and <span class="math" data-tex="\(v_\xi=\partial_\xi^jz_\xi\)">\(v_\xi=\partial_\xi^jz_\xi\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The statement and the proof are the same if <span class="math" data-tex="\(\theta\)">\(\theta\)</span> decreases from <span class="math" data-tex="\(\theta_0\)">\(\theta_0\)</span>: replace <span class="math" data-tex="\(\theta\)">\(\theta\)</span> by <span class="math" data-tex="\(-\theta\)">\(-\theta\)</span>, which changes the sign of <span class="math" data-tex="\(P_1\)">\(P_1\)</span> and leaves <span class="math" data-tex="\(S_1\)">\(S_1\)</span> unchanged.</p>
+<p>Assumption (2) is essential, and it is the reason why the proposition cannot be continued through a region where the metric oscillates rapidly: there the numbers <span class="math" data-tex="\(N_k\)">\(N_k\)</span> grow with the frequency. In the proof of the patch obstruction the propagation is stopped at the edge of such a region, and what happens inside is compared with a solution for a metric without the oscillation.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Verify the identity for <span class="math" data-tex="\(\partial_\theta e-\partial_\xi\jmath\)">\(\partial_\theta e-\partial_\xi\jmath\)</span> in the proof of Lemma 2.1.</p>
+<p><strong>5.2.</strong> For the wave equation <span class="math" data-tex="\(v_{\theta\theta}-v_{\xi\xi}=0\)">\(v_{\theta\theta}-v_{\xi\xi}=0\)</span>, which is the case <span class="math" data-tex="\(P_1=0\)">\(P_1=0\)</span>, <span class="math" data-tex="\(S_1=1\)">\(S_1=1\)</span>, find the smallest <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> allowed in Lemma 2.1, and show by the example <span class="math" data-tex="\(v=\phi(\xi+\theta)\)">\(v=\phi(\xi+\theta)\)</span> that the energy on intervals that shrink more slowly can increase.</p>
+<p><strong>5.3.</strong> Show that on a hyperbolic set the matrix of the Hessian in the sheared coordinates has a negative determinant, and that <span class="math" data-tex="\(H_{\xi\xi}\)">\(H_{\xi\xi}\)</span> and <span class="math" data-tex="\(H_{\theta\theta}\)">\(H_{\theta\theta}\)</span> have opposite signs.</p>
+<p><strong>5.4.</strong> In the proof of Proposition 4.1, why can the induction start only at an order that is covered by the bounds of order eight, and where is <span class="math" data-tex="\(j\ge7\)">\(j\ge7\)</span> used?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> By the product rule,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_\theta e&amp;=v_\theta v_{\theta\theta}+S_1v_\xi v_{\xi\theta}+\tfrac12\partial_\theta S_1\,v_\xi^2,\\
+\partial_\xi\jmath&amp;=\tfrac12\partial_\xi P_1\,v_\theta^2+P_1v_\theta v_{\theta\xi}\\
+&amp;\quad+\partial_\xi S_1\,v_\xi v_\theta+S_1v_{\xi\xi}v_\theta\\
+&amp;\quad+S_1v_\xi v_{\theta\xi}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_\theta e&amp;=v_\theta v_{\theta\theta}+S_1v_\xi v_{\xi\theta}+\tfrac12\partial_\theta S_1\,v_\xi^2,\\
+\partial_\xi\jmath&amp;=\tfrac12\partial_\xi P_1\,v_\theta^2+P_1v_\theta v_{\theta\xi}\\
+&amp;\quad+\partial_\xi S_1\,v_\xi v_\theta+S_1v_{\xi\xi}v_\theta\\
+&amp;\quad+S_1v_\xi v_{\theta\xi}.
+\end{aligned}
+\]</span>
+In the difference the terms <span class="math" data-tex="\(S_1v_\xi v_{\xi\theta}\)">\(S_1v_\xi v_{\xi\theta}\)</span> cancel, and the rest is the right side.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(|P_1|+\sqrt{S_1}=1\)">\(|P_1|+\sqrt{S_1}=1\)</span>, so <span class="math" data-tex="\(\Lambda\ge1\)">\(\Lambda\ge1\)</span> is required. For <span class="math" data-tex="\(v=\phi(\xi+\theta)\)">\(v=\phi(\xi+\theta)\)</span>, <span class="math" data-tex="\(e=\phi&#x27;(\xi+\theta)^2\)">\(e=\phi&#x27;(\xi+\theta)^2\)</span>, and the energy on <span class="math" data-tex="\(|\xi|\le\xi_*-\Lambda\theta\)">\(|\xi|\le\xi_*-\Lambda\theta\)</span> is the integral of <span class="math" data-tex="\(\phi&#x27;^2\)">\(\phi&#x27;^2\)</span> over <span class="math" data-tex="\([-\xi_*+(1+\Lambda)\theta,\ \xi_*+(1-\Lambda)\theta]\)">\([-\xi_*+(1+\Lambda)\theta,\ \xi_*+(1-\Lambda)\theta]\)</span>. For <span class="math" data-tex="\(\Lambda&lt;1\)">\(\Lambda&lt;1\)</span> the right end of this interval moves to the right, and if <span class="math" data-tex="\(\phi&#x27;\)">\(\phi&#x27;\)</span> vanishes on the interval for <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span> and not to the right of it, the energy increases from zero.</p>
+<p><strong>5.3.</strong> The determinant is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_{\xi\xi}H_{\theta\theta}-H_{\xi\theta}^2&amp;=(d_0-(q-q_0)^2)\,H_{yy}^2\\
+&amp;=aH_{yy}^2=KE&lt;0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+H_{\xi\xi}H_{\theta\theta}-H_{\xi\theta}^2&amp;=(d_0-(q-q_0)^2)\,H_{yy}^2\\
+&amp;=aH_{yy}^2=KE&lt;0 .
+\end{aligned}
+\]</span>
+And <span class="math" data-tex="\(H_{\xi\xi}=d_0H_{\theta\theta}\)">\(H_{\xi\xi}=d_0H_{\theta\theta}\)</span> with <span class="math" data-tex="\(d_0&lt;0\)">\(d_0&lt;0\)</span>.</p>
+<p><strong>5.4.</strong> The induction step for the order <span class="math" data-tex="\(j\)">\(j\)</span> uses bounds for the orders up to <span class="math" data-tex="\(j-1\)">\(j-1\)</span> on the whole trapezoid, and the bounds of order eight give them for the derivatives along <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of <span class="math" data-tex="\(z_\xi\)">\(z_\xi\)</span> and <span class="math" data-tex="\(z_\theta\)">\(z_\theta\)</span> up to the order <span class="math" data-tex="\(7\)">\(7\)</span>: a derivative of <span class="math" data-tex="\(z\)">\(z\)</span> of order <span class="math" data-tex="\(8\)">\(8\)</span> can have one differentiation in <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and seven in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. The count <span class="math" data-tex="\(2j-4&gt;j\)">\(2j-4&gt;j\)</span> needs <span class="math" data-tex="\(j&gt;4\)">\(j&gt;4\)</span>, and Proposition 1.2 needs <span class="math" data-tex="\(j\ge3\)">\(j\ge3\)</span>; so any start at an order between <span class="math" data-tex="\(5\)">\(5\)</span> and <span class="math" data-tex="\(7\)">\(7\)</span> works.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-I] OpenAI, <em>A smooth metric with no local isometric immersion into three-space</em>, OpenAI Math Release preprint, 24 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/A-Smooth-Metric-with-No-Local-Isometric-Immersion-into-Three-Space-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

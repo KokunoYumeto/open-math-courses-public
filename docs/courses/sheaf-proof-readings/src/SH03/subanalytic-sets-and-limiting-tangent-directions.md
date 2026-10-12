@@ -2513,7 +2513,7 @@ The finite-cell dimension and strict-frontier theorems imply that these finitely
 
 ### A compact fibre meets the minimizing circle
 
-<a href="figures/SH03-critical-height-dimension-reduction.svg"><img src="figures/SH03-critical-height-dimension-reduction.svg" alt="A parameter square for the two-dimensional torus: the rank-drop grid contains a horizontal minimizing circle, which maps onto the complete interval from minus one to one." style="max-width:100%;height:auto"></a>
+<a href="../../figures/SH03-critical-height-dimension-reduction.svg"><img src="../../figures/SH03-critical-height-dimension-reduction.svg" alt="A parameter square for the two-dimensional torus: the rank-drop grid contains a horizontal minimizing circle, which maps onto the complete interval from minus one to one." style="max-width:100%;height:auto"></a>
 
 **Figure.** Write each circle as \((\cos\theta,\sin\theta)\) or \((\cos\phi,\sin\phi)\). For \(f(\theta,\phi)=\cos\theta\) and \(h(\theta,\phi)=\cos\phi\), the squared determinant is \(g=\sin^2\theta\sin^2\phi\). The blue grid is \(Z=\{g=0\}\); opposite edges of the square are identified. The gold circle \(\phi=\pi\) is part of \(Z\) and minimizes \(h\) on every fibre. The two dashed circles form \(f^{-1}(1/2)\), and their two intersections with the gold circle map to the indicated green point. The image is preserved even though the minimizing circle maps two-to-one over \((-1,1)\). This is the explicit model of the rank-minor and fibre-extremum argument, not an injective parametrization. Original programme diagram, GPT-6 Astra (OpenAI), Ultra, CC0. [Full-size diagram](../../figures/SH03-critical-height-dimension-reduction.svg) · [Reproducible Python source](../figures/SH03-critical-height-dimension-reduction.py).
 

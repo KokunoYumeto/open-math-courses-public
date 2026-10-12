@@ -7,7 +7,7 @@ The balanced matrix construction fixes a change of weight as an actual unitary, 
 <a id="wch-setting"></a>
 ## 1. The weights for which the section is defined
 
-Use the intrinsic core \(C=C(M)\), center \(A=Z(C)\), dual flow \(\theta\), and normal coordinates \(\kappa_\varphi(f)=f(-\log h_\varphi)\) from [Spectral coordinates](OA-FLOW-WCO.md#wc-setting). In this lesson the weights are faithful, so no logarithm is taken at a zero eigenvalue. The positive generator may approach zero continuously and may be unbounded. Its logarithm and all products of commuting spectral operators mean their full spectral domains.
+Use the intrinsic core \(C=C(M)\), center \(A=Z(C)\), dual flow \(\theta\), and normal coordinates \(\kappa_\varphi(f)=f(-\log h_\varphi)\) from [Spectral coordinates](OA-FLOW-WCO.md#wc-setting). The section and balanced comparisons use faithful weights, so no logarithm is taken at a zero eigenvalue. Section 4 also treats nonfaithful weights: there the logarithmic calculus acts on the support and is extended by zero on its complement. The positive generator may approach zero continuously and may be unbounded. Its logarithm and all products of commuting spectral operators mean their full spectral domains.
 
 Call a faithful normal semifinite weight **admissible here** when the multiplication rule extends normally:
 \[
@@ -142,18 +142,27 @@ As an exact sign test, take \(c_s=e^{its}1\). Then
 The last derivative is the ordinary balanced Connes derivative from BC4/CORE5. Thus the character \(e^{-its}\), rather than \(e^{its}\), corresponds to ordinary modular time \(t\) for \(\beta\). For \(\varphi=r\psi\), (WCH13) is \(r^{-it}1\), although the implemented modular automorphisms agree. This example explains why comparing automorphisms alone cannot prove (WCH10).
 
 <a id="wch-scalar-continuity"></a>
-## 4. Homogeneity proves all bounded measurable scalar limits
+## 4. Support convergence controls all bounded measurable scalar limits
 
-**Theorem.** Let \(h_n,h\) be faithful homogeneous core densities, with
-\(\theta_s(h_n)=e^{-s}h_n\), \(\theta_s(h)=e^{-s}h\).
-Suppose \(h_n\to h\) in the strong resolvent sense in a faithful normal representation of \(C\). Then
+**Theorem.** Let \(h_n,h\) be the positive affiliated densities of normal semifinite weights on the same algebra, with
+\(\theta_s(h_n)=e^{-s}h_n\) and \(\theta_s(h)=e^{-s}h\).
+The weights may have kernels or be zero. Suppose \(h_n\to h\) in the strong resolvent sense in a faithful normal representation of \(C\). Write
+\[
+ e_n=s(h_n),\qquad e=s(h),\qquad
+ \kappa_n(1)=e_n,\quad\kappa(1)=e.
+\]
+These are the supported normal coordinates of [SCW5](OA-FLOW-SCW.md#scw-5); a bounded spectral function is zero on the complementary kernel. Then
 \[
  \boxed{\quad
  \kappa_n(f)\longrightarrow\kappa(f)
- \quad\hbox{sigma-strong-star for every }f\in L^\infty(\mathbb R,dq).
+ \ \hbox{sigma-strong-star for every }f\in L^\infty(\mathbb R,dq)
+ \quad\Longleftrightarrow\quad
+ e_n\longrightarrow e\ \hbox{strongly}.
  \quad}\tag{WCH14}
 \]
-The normal coordinates are those supplied by the supported correspondence; they are unital because the densities are faithful. No dominance, finite weight mass, separability or joint tensor map is needed for this theorem. The same proof works in one fixed support corner. It makes no assertion about arbitrary changes of support.
+In particular, the scalar conclusion holds for one fixed support corner. It also holds whenever the limit density is faithful, even if some approximating densities have kernels; the proof below shows that support convergence is then automatic. No dominance, finite weight mass, separability or normal joint tensor map is required.
+
+Necessity follows by taking \(f=1\). For sufficiency assume the support projections converge strongly. On this uniformly bounded family, strong convergence is equivalent to convergence of all normal positive seminorms: the normal vector-series representation of [CP4 and CP6](OA-FLOW-CP.md#oa-flow.cp.4) gives one implication by truncating a summable series, and vector functionals give the other. Adjoint convergence is the same assertion for these selfadjoint projections.
 
 We give the needed uniform absolute continuity, including its dependence on the test functional. Fix \(\omega\in C_*^+\). The path \(s\mapsto\omega\circ\theta_s\) is norm-continuous. One direct proof uses the reference regular core representation, where \(\theta_s\) is implemented by the strongly continuous scalar multipliers \(e^{-isr}\). A vector functional changes in norm by at most
 \((\|U_s\xi\|+\|\xi\|)\|U_s\xi-\xi\|\).
@@ -165,7 +174,7 @@ Choose a nonnegative bounded compactly supported scalar function \(g\) with \(\i
  \qquad \|\omega_g-\omega\|<\varepsilon.
  \tag{WCH15}
 \]
-This is a Bochner integral in the predual: norm-continuity, compact support and boundedness give its existence. For every coordinate \(\kappa_j\), including the limit one, let \(\mu_j(B)=\omega(\kappa_j(1_B))\). These are finite measures, of total mass \(\omega(1)\), and they vanish on Lebesgue-null sets by normality. Equivariance and nonnegative scalar interchange give
+This is a Bochner integral in the predual: norm-continuity, compact support and boundedness give its existence. For every coordinate \(\kappa_j\), including the limit one, let \(\mu_j(B)=\omega(\kappa_j(1_B))\). These are finite measures of total mass \(\mu_j(\mathbb R)=\omega(e_j)\le\omega(1)\), with \(e_\infty=e\). They vanish on Lebesgue-null sets by normality. Equivariance and nonnegative scalar interchange give
 \[
  \begin{aligned}
  \omega_g(\kappa_j(1_B))
@@ -182,12 +191,22 @@ For every prescribed bound \(\delta>0\), first choose \(\varepsilon<\delta/2\), 
 
 If \(v\in C_c(\mathbb R)\), the scalar function \(x\mapsto v(-\log x)\) on \((0,\infty)\), extended by zero at zero, belongs to \(C_0([0,\infty))\). Strong resolvent convergence therefore gives \(\kappa_n(v)\to\kappa(v)\) strongly-star. The functional-calculus step has an explicit approximation proof. Extend \(f(x)=v(-\log x)\) by zero on \(( -\infty,0]\); compact support of \(v\) makes \(f\in C_0(\mathbb R)\). The Cayley unitaries \(U_n=1-2i(h_n+i)^{-1}\) converge strongly to \(U=1-2i(h+i)^{-1}\). Their adjoints converge strongly too, since \((U_n^*-U^*)\xi=U_n^*(U-U_n)U^*\xi\). The Cayley coordinate \(x\mapsto(x-i)/(x+i)\) transports \(f\) to a continuous circle function \(\widehat f\) with \(\widehat f(1)=0\). The [proved Fejér approximation and unitary calculus](OA-FLOW-SF.md#oa-flow.sf.sb1) approximate \(\widehat f\) uniformly by Laurent polynomials. Each polynomial in \(U_n,U_n^*\) converges strongly-star, and the uniform approximation bound is independent of \(n\). Consequently \(f(h_n)=\widehat f(U_n)\to\widehat f(U)=f(h)\) strongly-star, which is exactly the assertion just used. Bounded strong convergence in a faithful normal representation also gives convergence for every normal positive seminorm: express that functional as a summable vector series and control its tail by the common operator bound.
 
-The measures \(\mu_n\) are eventually tight. Given \(\varepsilon>0\), choose \(0\le v\le1\) in \(C_c\) with \(\mu(v)>\omega(1)-\varepsilon\). Such a function exists by increasing compact cutoffs and the unitality of \(\kappa\). The preceding convergence gives \(\mu_n(v)>\omega(1)-2\varepsilon\) for all sufficiently large \(n\). If \(\operatorname{supp}v\subset[-R,R]\), then
+Support convergence gives \(\mu_n(\mathbb R)=\omega(e_n)\to\omega(e)=\mu(\mathbb R)\). The measures are therefore eventually tight. Given \(\varepsilon>0\), choose \(0\le v\le1\) in \(C_c\) with
+\(\mu(v)>\mu(\mathbb R)-\varepsilon\). Increasing compact cutoffs provide such a function, including when \(\mu=0\). For all sufficiently large \(n\), the preceding functional-calculus convergence gives
+\(\mu_n(v)>\mu(v)-\varepsilon\), while
+\(\mu_n(\mathbb R)<\mu(\mathbb R)+\varepsilon\).
+If \(\operatorname{supp}v\subset[-R,R]\), then
 \[
- \mu_n(\mathbb R\setminus[-R,R])<2\varepsilon
+ \mu_n(\mathbb R\setminus[-R,R])<3\varepsilon.
  \tag{WCH18}
 \]
-for those \(n\), and the same bound holds for \(\mu\). If desired, enlarge \(R\) to handle the finitely many earlier measures as well. Faithfulness of the limit is used here through total mass; a kernel at the limit would allow coordinate mass to escape to infinity.
+The limit measure satisfies the same bound. Only this eventual estimate is needed.
+
+This also proves the stated automatic support convergence when \(e=1\), without assuming it in advance. For every \(\omega\in C_*^+\), choose a compact cutoff with
+\(\omega(\kappa(v))>\omega(1)-\varepsilon\). Since
+\(0\le\kappa_n(v)\le e_n\), convergence on this continuous function gives
+\(\limsup_n\omega(1-e_n)\le\varepsilon\).
+Let \(\varepsilon\downarrow0\). Testing vector functionals proves \(e_n\to1\) strongly, so the preceding tightness argument applies.
 
 Now fix \(f\in L^\infty\), represented with \(|f|\le K\). On \([-R,R]\) approximate its values by a finite grid to obtain a simple function within \(\eta\) uniformly. In each of its finitely many measurable level sets choose a compact subset; Lebesgue inner regularity makes the total discarded measure as small as desired. These compact sets are disjoint. Choose disjoint bounded open neighborhoods and continuous bump functions equal to one on the compact sets. The finite sum of the simple values times these bumps is a \(v\in C_c(\mathbb R)\) with \(|v|\le K\), agreeing with the simple function on their union. Consequently \(|f-v|\le\eta\) off a measurable exceptional set \(B\subset[-R,R]\), and \(|B|\) is arbitrarily small.
 
@@ -201,6 +220,41 @@ Equations (WCH17)–(WCH18) give, uniformly for sufficiently large \(n\) and for
  \end{aligned}\tag{WCH19}
 \]
 Here \(\|x\|_\omega=\omega(x^*x)^{1/2}\). First choose the tail bound, then the exceptional measure, then \(\eta\). The right side can be made arbitrarily small. The triangle inequality and the already proved convergence for \(v\) prove convergence for \(f\). Apply the same argument to \(\overline f\) for the adjoint seminorms. This proves (WCH14) with all cutoffs and all normal functionals accounted for.
+
+
+**Why the support condition is necessary.** In the scalar core of [CORE9](OA-FLOW-CORE.md#core-9), use the positive Fourier coordinate \(p\):
+\[
+ C=L^\infty(\mathbb R,dp),\qquad
+ \theta_s f(p)=f(p-s),\qquad
+ \tau(f)=\frac1{2\pi}\int e^{-p}f(p)\,dp.
+\]
+The finite scalar weights \(\varphi_n(1)=1/n\) have densities
+\[
+ h_n(p)=e^p/n,\qquad h(p)=0,\qquad
+ e_n=1,\quad e=0. \tag{WCH14a}
+\]
+Every \(h_n\) is positive, faithful and homogeneous, and its full multiplication domain is dense by compact truncation. The zero limit is the density of the zero normal semifinite weight. On \(L^2(\mathbb R,dp)\), the resolvent multipliers
+\((e^p/n-i)^{-1}\) converge pointwise to \(i\), and their absolute values are at most one. Scalar dominated convergence against each squared Hilbert vector proves strong resolvent convergence to zero. Nevertheless
+\[
+ \kappa_n(f)(p)=f(\log n-p),\qquad
+ \kappa_0(f)=0,\qquad
+ \kappa_n(1)-\kappa_0(1)=1. \tag{WCH14b}
+\]
+Thus even positive homogeneous measurable densities do not give the all-\(L^\infty\) conclusion when their supports fail to converge. The measurability follows also from their finite functional masses in [MGI1](OA-FLOW-MGI.md#gi-finite-cut).
+
+The loss is visible in one normal vector functional. Take the unit vector
+\(\xi=1_{[0,1]}\) and set
+\(\mu_n(B)=\langle\kappa_n(1_B)\xi,\xi\rangle\).
+Substitution \(q=\log n-p\) gives
+\[
+ d\mu_n(q)=1_{[\log n-1,\log n]}(q)\,dq,\qquad
+ \mu_n(\mathbb R)=1,\qquad \mu_0=0. \tag{WCH14c}
+\]
+Every compact coordinate set eventually has zero mass, while total mass stays one. Uniform absolute continuity (WCH17) still holds; tightness fails. These are vector spectral measures, not the canonical core trace.
+
+![Strong resolvent convergence to zero and the spectral mass retained by the nonzero supports.](../assets/canonical-cocycle-sections/support-continuity.png)
+
+*Figure 4.* The left panel shows the exact bounded multipliers \((1+e^p/n)^{-1}\) on a finite window; their strong limit is \(1\). The right panel shows the exact vector spectral measures (WCH14c), each of mass one on a translated unit interval, while the zero weight has mass zero. The full convergence proof is dominated convergence above, not a uniform estimate on the displayed window. Original [renderer](../assets/canonical-cocycle-sections/render_support_continuity.py), [exact data](../assets/canonical-cocycle-sections/support-continuity.json), [editable SVG](../assets/canonical-cocycle-sections/support-continuity.svg) and [terms](../assets/canonical-cocycle-sections/TERMS.md).
 
 <a id="wch-joint-continuity"></a>
 ## 5. A valid additional hypothesis for section continuity
@@ -356,6 +410,6 @@ The conclusion is exact: dominance of every weight and strong resolvent converge
 <a id="wch-reading"></a>
 ## Further reading and exact disposition of the source claim
 
-Masamichi Takesaki, *Theory of Operator Algebras II*, Chapter XII, Exercise 6.10(v)–(vi) and steps (k)–(l), printed pp.458–460, supplies the balanced identity and the proposed continuity implication. The balanced identity is proved above for the actual section wherever (WCH1) holds, in particular for the stated dominant scope. The all-bounded-measurable scalar limit in step (l) is established by (WCH14)–(WCH19). Its proposed conclusion for \(b\) is false under the stated strong resolvent hypothesis, even for the separable type I factor and dominant weights (WCH25). The preceding lesson separately disproves the existence of a continuous homomorphic section for every faithful weight. These are distinct obstructions, with distinct complete counterexamples.
+Masamichi Takesaki, *Theory of Operator Algebras II*, Chapter XII, Exercise 6.10(v)–(vi) and steps (k)–(l), printed pp.458–460, supplies the balanced identity and the proposed continuity implication. The balanced identity is proved above for the actual section wherever (WCH1) holds, in particular for the stated dominant scope. The all-bounded-measurable scalar limit in step (l) is established by (WCH14)–(WCH19) exactly when the support projections converge; (WCH14a)–(WCH14c) show why positive homogeneous densities alone do not suffice at a nonfaithful limit. Its proposed conclusion for \(b\) is false under the stated strong resolvent hypothesis, even for the separable type I factor and dominant weights (WCH25). The preceding lesson separately disproves the existence of a continuous homomorphic section for every faithful weight. These are distinct obstructions, with distinct complete counterexamples.
 
 The finite-mass constant remains \(\varphi(1)/(2\pi\lambda)\), as proved in (WC13). The inspected OA-MOD homogeneous-operator lesson uses a trace rescaled by \(2\pi\), yielding \(\varphi(1)/\lambda\); its conditional density contracts are not used here as proved inputs. The measurable-operator algebra, interpolation, and graded Banach-space construction are outside this lesson's scope.

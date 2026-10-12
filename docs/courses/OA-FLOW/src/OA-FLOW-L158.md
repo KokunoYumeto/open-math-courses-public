@@ -376,4 +376,94 @@ The other coordinates are already square summable. On the full inverse domain \(
 
 **4. All depths do not force commutation.** Take \(h=\operatorname{diag}(1,2),\quad k=\begin{pmatrix}4&1\\1&4\end{pmatrix}\). The latter has eigenvalues 3,5. Hence for every \(p>0\), \(h^p\leq2^pI\leq3^pI\leq k^p\). All depths follow. In this finite-dimensional model \(U(z)=h^{iz}k^{-iz}\), and at \(z=t-is\) its norm is at most \((2/3)^s\) for \(s\geq0\). Nevertheless \(hk-kh=\begin{pmatrix}0&-1\\1&0\end{pmatrix}\) is nonzero. The low-projection order proved in §7 does not assert simultaneous diagonalization.
 
-The complete operator scope, scalar factor \(2a\), both boundary topologies, normal-functional tests, all-powers conclusion and four examples have been preserved. The new necessity proof uses monotone bounded corners, and the new spectral-order converse uses only finite positive sums. The independent development record, exact source hashes and remaining foundational obligations accompany this candidate.
+<a id="oa-flow.l158.supported"></a>
+
+## 9. Kernels: the support condition belongs to the strip test
+
+Let \(h,k\) now be arbitrary positive selfadjoint operators affiliated with \(M\), including zero. Put \(p=s(h)\), \(q=s(k)\). In this section \(h_s^{it}\) means the imaginary power on \(pH\), extended by zero on \((1-p)H\); thus \(h_s^{i0}=p\). Define \(k_s^{it}\) similarly. These families and their adjoints are strongly continuous, by bounded spectral convergence.
+
+**Supported strip theorem.** For \(a>0\), the following conditions are equivalent:
+\[
+ \begin{aligned}
+ &D(k^a)\subseteq D(h^a),\qquad
+   \|h^a\xi\|\leq\|k^a\xi\|\quad(\xi\in D(k^a));\\
+ &p\leq q\quad\hbox{and}\quad
+   t\longmapsto h_s^{it}k_s^{-it}
+   \text{ has a contractive holomorphic extension to }S_a
+   \text{ continuous there in the intrinsic sigma-strong topology}.
+ \end{aligned}\tag{PS16}
+\]
+The extension is unique and is in fact norm-holomorphic inside and jointly intrinsically sigma-strong-star continuous on the closed strip. It satisfies \(U(z)=pU(z)q\). Write \(k_s^{-a}\) for the inverse power on \(qH\), extended by zero on \((1-q)H\), with its complete spectral domain. Then
+\[
+ T_a=\overline{h^a k_s^{-a}},\qquad
+ \|T_a\|\leq1,\qquad T_a=pT_aq,\qquad
+ U(t-ia)=h_s^{it}T_a k_s^{-it}. \tag{PS17}
+\]
+The product before closure is defined on **all** of \(D(k_s^{-a})\). The support condition in (PS16) cannot be discarded.
+
+**Proof.** As in Section 1 put \(H=h^a\), \(K=k^a\) and first work at depth one. If the form inequality holds and \(\xi\in\ker K\), then \(\xi\in D(H)\) and \(\|H\xi\|\leq0\). Therefore \(\ker K\subseteq\ker H\), equivalently \(p\leq q\). Both operators reduce \(qH\): \(K\) by its support, and \(H\) because \(p\leq q\), \(H\) vanishes on \((1-p)H\), and \(q\) acts identically on \(pH\). On \(qH\), \(K\) is injective; \(H\) may still have a kernel.
+
+For \(v\in D(K)\cap qH\), set \(T_0(Kv)=Hv\). This is well defined and contractive. Its domain \(\operatorname{Ran}(K|_{qH})\) is dense in \(qH\), and its range is in \(pH\). Extend it continuously to \(qH\) and put it equal to zero on \((1-q)H\), obtaining \(T=pTq\). The full inverse domain is
+\[
+ D(K_s^{-1})=\operatorname{Ran}(K|_{qH})\oplus(1-q)H. \tag{PS18}
+\]
+Indeed the spectral inverse on \(qH\) maps its domain onto \(D(K)\cap qH\); on the other summand it is zero. Thus \(HK_s^{-1}\) on that entire domain agrees with the restriction of \(T\), and its closure is \(T\). Every commutant unitary preserves these domains and commutes with this product, so density and the commutant-unitary test put \(T\) in \(M\).
+
+Set
+\[
+ A(t)=H_s^{it}K_s^{-it},\qquad B(t)=H_s^{it}T K_s^{-it}.
+\]
+Both are contractions, take values in \(pMq\), and are strongly-star continuous. We give the changes needed in the scalar construction of Sections 3–4; in particular no density assertion about bands avoiding zero is made on the kernel.
+
+The unions of \(K\)-bands \(1_{[1/n,n]}(K)H\) and \(H\)-bands \(1_{[1/m,m]}(H)H\) are dense in \(qH\) and \(pH\), respectively. For \(\xi,\eta\) in these respective bands use exactly
+\[
+ f_{\xi,\eta}(z)=
+ \langle K^{-iz}\xi,H^{-i\overline z}\eta\rangle. \tag{PS19}
+\]
+The band logarithms are bounded. The function is entire, bounded on the width-one strip, and its edge values are the coefficients of \(A(t)\) and \(B(t)\): the bottom identity follows from \(HK^{-1-it}\xi=TK^{-it}\xi\). The rectangle estimate (PS5) therefore gives \(|f_{\xi,\eta}(z)|\leq\|\xi\|\|\eta\|\). Extend the resulting bounded sesquilinear form from \(qH\times pH\), and set it to zero on either complementary summand. Its representing contraction \(V(z)\) satisfies \(V=pVq\).
+
+Band approximation, uniformly in \(z\), proves coefficient continuity and holomorphy. Simultaneous commutant invariance proves \(V(z)\in M\). The Cauchy-coefficient construction after (PS6) gives norm holomorphy in the interior. Its bounded corner identity is again
+\[
+ e_m^H V(z)e_n^K
+ =(H^{iz}e_m^H)(K^{-iz}e_n^K),\qquad
+ e_m^H=1_{[1/m,m]}(H),\ e_n^K=1_{[1/n,n]}(K). \tag{PS20}
+\]
+The scalar Poisson identity and both vector identities (PS10) apply to these \(A,B\). Their proof requires bounded strongly-star continuous boundary curves, not unitary curves. The mass and tail estimates (PS8)–(PS11) therefore give joint strong-star convergence at both edges. The normal vector-series argument of SF2 gives the intrinsic sigma-strong-star statement on the whole Hilbert space, including both zero summands.
+
+Conversely assume the second condition of (PS16). Scalar boundary-interval uniqueness makes \((1-p)V(z)=0\) and \(V(z)(1-q)=0\), since their top-edge coefficients vanish. Thus \(T=V(-i)=pTq\). The same uniqueness applied to (PS19) gives (PS20), without assuming a product domain. For \(\xi\) in a \(K\)-band and \(v=K^{-1}\xi\), the bottom identity reads
+\[
+ H e_m^H v=e_m^H T\xi.
+\]
+The right-hand norms are bounded by \(\|\xi\|\). Monotone convergence in the spectral domain formula proves \(v\in D(H)\); zero spectral mass contributes zero to that formula. Since \(e_m^H\uparrow p\) and \(T=pT\), the limit gives \(Hv=T\xi\). For every \(w\) in a \(K\)-band this yields \(Hw=TKw\). Graph approximation by \(K\)-bands and closedness of \(H\) give this identity for every \(w\in D(K)\cap qH\). Finally \((1-q)H\subseteq\ker H\), by the assumed \(p\leq q\), so the same identity holds on the entire \(D(K)\). This proves the full form inequality. The construction already made is consequently the unique extension, with its stronger boundary continuity.
+
+Rescale by \(H=h^a,K=k^a,U(z)=V(z/a)\). This proves (PS16)–(PS18). If \(q=0\), the support condition forces \(p=0\), and all constructions are zero. If \(p=0\) with arbitrary \(q\), the same zero extension works.
+
+The theorem also transports under normal representations: transport the support projections and bounded spectral corners in (PS20), then repeat its monotone-domain and graph-limit proof. For a representation with a zero complementary summand, all supported powers are zero on that summand. Thus no assertion here depends on a particular faithful representation.
+
+For every positive depth at once, (PS16) and the complete finite-sum argument of Section 7 give
+\[
+ \begin{aligned}
+ &p\leq q\ \text{and every supported strip is contractive}\\
+ &\quad\Longleftrightarrow h^r\leq k^r
+       \ \text{as complete forms for every }r>0\\
+ &\quad\Longleftrightarrow
+       E_k([0,b])\leq E_h([0,b])\quad(b\geq0).
+ \end{aligned}\tag{PS21}
+\]
+For the endpoint \(b=0\), the form inequality on \(\ker k\) gives precisely \(p\leq q\); conversely the spectral-projection condition at zero gives that inclusion. All other steps of Section 7 already allow zero spectral mass. Equal extensions agree on overlapping strips and hence define the same contractive lower-half-plane function.
+
+**A failed test and a valid comparison.** On \(\mathbb C^3\), take
+\(h=\operatorname{diag}(1,0,0)\), \(k=\operatorname{diag}(0,1,0)\).
+Then \(h_s^{it}k_s^{-it}=0=k_s^{it}h_s^{-it}\) for every real \(t\); both zero functions extend contractively to every strip. Nevertheless neither complete form order holds: the first fails on \(e_1\) and the reverse on \(e_2\). The supports are incomparable. This proves why the first condition on the second line of (PS16) is necessary.
+
+For an unequal but nested pair, keep \(h=\operatorname{diag}(1,0,0)\) and set \(k=\operatorname{diag}(4,9,0)\). Now \(p=E_{11}\leq q=E_{11}+E_{22}\), and \(h^{2a}\leq k^{2a}\) for every \(a>0\). Direct spectral multiplication gives
+\[
+ U(z)=4^{-iz}E_{11},\qquad
+ \|U(t-ia)\|=4^{-a},\qquad
+ T_a=4^{-a}E_{11}. \tag{PS22}
+\]
+In particular \(U(0)=p\), not the identity. The third coordinate remains in the kernel of both operators; the second is in \(\ker h\) but not in \(\ker k\).
+
+![Orthogonal supports defeat the bare strip test; a nested-support pair has exact endpoint norm four to the minus strip depth.](../assets/weight-order/supported-order.png)
+
+*Exact models.* In the left panel the two supported products are zero, although evaluating the forms on the first and second coordinate vectors disproves both orders. In the middle and right panels the supports are nested, the complete power inequality holds at every depth, and (PS22) gives the exact norm values \(1,1/2,1/4,1/16\) at depths \(0,1/2,1,2\). The continuous curve samples that proved formula. Zero coordinates remain part of the full domains. [Original renderer](../assets/weight-order/render_supported_order.py), [exact data](../assets/weight-order/supported-order.json), [editable SVG](../assets/weight-order/supported-order.svg), and [terms](../assets/weight-order/TERMS.txt).
