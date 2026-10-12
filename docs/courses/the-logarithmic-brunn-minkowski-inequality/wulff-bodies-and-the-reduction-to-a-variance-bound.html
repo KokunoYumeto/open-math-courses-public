@@ -1,0 +1,261 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wulff bodies and the reduction to a variance bound</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The logarithmic Brunn-Minkowski inequality)</a><a href="src/wulff-bodies-and-the-reduction-to-a-variance-bound.md">Editable source</a></nav><main><article><h1 id="wulff-bodies-and-the-reduction-to-a-variance-bound">Wulff bodies and the reduction to a variance bound</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> be convex bodies in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> that are symmetric about the origin. In every direction <span class="math" data-tex="\(u\)">\(u\)</span> take the geometric mean <span class="math" data-tex="\(h_K(u)^{1-\lambda}h_L(u)^\lambda\)">\(h_K(u)^{1-\lambda}h_L(u)^\lambda\)</span> of their support numbers, and intersect the half-spaces <span class="math" data-tex="\(\langle x,u\rangle\le h_K(u)^{1-\lambda}h_L(u)^\lambda\)">\(\langle x,u\rangle\le h_K(u)^{1-\lambda}h_L(u)^\lambda\)</span>. The <em>logarithmic Brunn-Minkowski inequality</em> says that the volume of this intersection is at least <span class="math" data-tex="\(|K|^{1-\lambda}|L|^\lambda\)">\(|K|^{1-\lambda}|L|^\lambda\)</span>. According to [OpenAI-L] it was conjectured by Böröczky, Lutwak, Yang and Zhang in 2012 and proved by them in the plane. [OpenAI-L] gives a proof in every dimension.</p>
+<p>This lesson states the inequality, proves the facts about support functions that it needs, and reduces it to an inequality between a variance and a mean for explicit smooth probability densities, the <em>variance bound</em>.</p>
+<ul>
+<li>Support functions and Wulff bodies (Lemmas 1.1 and 1.2); boxes, an example with equality (Example 2.1).</li>
+<li>The inequality and the variance bound; the reduction (Theorem 2.2).</li>
+<li>Soft polytopes: the second derivative of the logarithm of an integral (Lemma 3.1).</li>
+<li>From soft polytopes to polytopes and to all bodies (Lemma 4.1 and Section 5).</li>
+<li>The additive inequality for <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span> (Corollary 6.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-L, Sections 1, 2 and 8.1]. It uses the theorems of dominated and monotone convergence for the Lebesgue integral in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>).</p>
+<h2 id="1-support-functions-and-wulff-bodies">1. Support functions and Wulff bodies</h2>
+<p>A <em>convex body</em> in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> is a compact convex set with an interior point. Its <em>support function</em> is
+<span class="math math-display" data-tex="\[
+h_K(u)=\max_{x\in K}\langle x,u\rangle\qquad(u\in\mathbb R^n).
+\]">\[
+h_K(u)=\max_{x\in K}\langle x,u\rangle\qquad(u\in\mathbb R^n).
+\]</span>
+We use it mostly on the unit sphere <span class="math" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span>. The volume of <span class="math" data-tex="\(K\)">\(K\)</span> is written <span class="math" data-tex="\(|K|\)">\(|K|\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> be convex bodies.</p>
+<ol>
+<li><span class="math" data-tex="\(|h_K(u)-h_K(v)|\le\varrho\,|u-v|\)">\(|h_K(u)-h_K(v)|\le\varrho\,|u-v|\)</span>, where <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span> is the largest norm of a point of <span class="math" data-tex="\(K\)">\(K\)</span>. In particular <span class="math" data-tex="\(h_K\)">\(h_K\)</span> is continuous.</li>
+<li><span class="math" data-tex="\(K\)">\(K\)</span> is the set of the <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\langle x,u\rangle\le h_K(u)\)">\(\langle x,u\rangle\le h_K(u)\)</span> for all <span class="math" data-tex="\(u\in S^{n-1}\)">\(u\in S^{n-1}\)</span>.</li>
+<li>If <span class="math" data-tex="\(K=-K\)">\(K=-K\)</span>, then <span class="math" data-tex="\(h_K(-u)=h_K(u)\)">\(h_K(-u)=h_K(u)\)</span>, a ball about <span class="math" data-tex="\(0\)">\(0\)</span> of some radius <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> lies in <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(h_K\ge r\)">\(h_K\ge r\)</span> on the sphere.</li>
+<li><span class="math" data-tex="\(h_{aK+bL}=a\,h_K+b\,h_L\)">\(h_{aK+bL}=a\,h_K+b\,h_L\)</span> for <span class="math" data-tex="\(a,b\ge0\)">\(a,b\ge0\)</span> with <span class="math" data-tex="\(a+b&gt;0\)">\(a+b&gt;0\)</span>, and <span class="math" data-tex="\(aK+bL\)">\(aK+bL\)</span> is a convex body.</li>
+</ol>
+<p><strong>Proof.</strong> (1) If <span class="math" data-tex="\(h_K(u)=\langle x,u\rangle\)">\(h_K(u)=\langle x,u\rangle\)</span>, then <span class="math" data-tex="\(h_K(v)\ge\langle x,v\rangle\ge h_K(u)-\varrho|u-v|\)">\(h_K(v)\ge\langle x,v\rangle\ge h_K(u)-\varrho|u-v|\)</span>; exchange <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>(2) A point of <span class="math" data-tex="\(K\)">\(K\)</span> satisfies the inequalities by the definition of <span class="math" data-tex="\(h_K\)">\(h_K\)</span>. Let <span class="math" data-tex="\(y\notin K\)">\(y\notin K\)</span>, and let <span class="math" data-tex="\(x_0\)">\(x_0\)</span> be a point of <span class="math" data-tex="\(K\)">\(K\)</span> nearest to <span class="math" data-tex="\(y\)">\(y\)</span>. For <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span> and <span class="math" data-tex="\(0&lt;s\le1\)">\(0&lt;s\le1\)</span> the point <span class="math" data-tex="\(x_0+s(x-x_0)\)">\(x_0+s(x-x_0)\)</span> lies in <span class="math" data-tex="\(K\)">\(K\)</span>, so its distance to <span class="math" data-tex="\(y\)">\(y\)</span> is at least <span class="math" data-tex="\(|y-x_0|\)">\(|y-x_0|\)</span>:
+<span class="math math-display" data-tex="\[
+-2s\,\langle y-x_0,x-x_0\rangle+s^2|x-x_0|^2\ge0 .
+\]">\[
+-2s\,\langle y-x_0,x-x_0\rangle+s^2|x-x_0|^2\ge0 .
+\]</span>
+Divide by <span class="math" data-tex="\(s\)">\(s\)</span> and let <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>: <span class="math" data-tex="\(\langle y-x_0,x-x_0\rangle\le0\)">\(\langle y-x_0,x-x_0\rangle\le0\)</span>. With <span class="math" data-tex="\(u=(y-x_0)/|y-x_0|\)">\(u=(y-x_0)/|y-x_0|\)</span> this says <span class="math" data-tex="\(\langle x,u\rangle\le\langle x_0,u\rangle\)">\(\langle x,u\rangle\le\langle x_0,u\rangle\)</span> for all <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>. So <span class="math" data-tex="\(h_K(u)=\langle x_0,u\rangle\)">\(h_K(u)=\langle x_0,u\rangle\)</span>, and this is <span class="math" data-tex="\(\langle y,u\rangle-|y-x_0|&lt;\langle y,u\rangle\)">\(\langle y,u\rangle-|y-x_0|&lt;\langle y,u\rangle\)</span>.</p>
+<p>(3) The first statement follows from <span class="math" data-tex="\(\langle x,-u\rangle=\langle-x,u\rangle\)">\(\langle x,-u\rangle=\langle-x,u\rangle\)</span>. If a ball of radius <span class="math" data-tex="\(r\)">\(r\)</span> about a point <span class="math" data-tex="\(a\)">\(a\)</span> lies in <span class="math" data-tex="\(K\)">\(K\)</span>, then so does the ball of radius <span class="math" data-tex="\(r\)">\(r\)</span> about <span class="math" data-tex="\(-a\)">\(-a\)</span>, and the midpoints of the points of the two balls form the ball of radius <span class="math" data-tex="\(r\)">\(r\)</span> about <span class="math" data-tex="\(0\)">\(0\)</span>. Then <span class="math" data-tex="\(h_K(u)\ge\langle ru,u\rangle=r\)">\(h_K(u)\ge\langle ru,u\rangle=r\)</span>.</p>
+<p>(4) The maximum of <span class="math" data-tex="\(\langle ax+by,u\rangle\)">\(\langle ax+by,u\rangle\)</span> over <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, <span class="math" data-tex="\(y\in L\)">\(y\in L\)</span> is <span class="math" data-tex="\(a\,h_K(u)+b\,h_L(u)\)">\(a\,h_K(u)+b\,h_L(u)\)</span>. The set <span class="math" data-tex="\(aK+bL\)">\(aK+bL\)</span> is compact and convex, and it contains a translate of a ball. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Definition.</strong> For a positive continuous function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span>, the <em>Wulff body</em> <span class="math" data-tex="\(\mathcal W[f]\)">\(\mathcal W[f]\)</span> of <span class="math" data-tex="\(f\)">\(f\)</span> is the set of the <span class="math" data-tex="\(x\in\mathbb R^n\)">\(x\in\mathbb R^n\)</span> with
+<span class="math math-display" data-tex="\[
+\langle x,u\rangle\le f(u)\qquad\text{for all }u\in S^{n-1}.
+\]">\[
+\langle x,u\rangle\le f(u)\qquad\text{for all }u\in S^{n-1}.
+\]</span></p>
+<p><strong>Lemma 1.2.</strong> Let <span class="math" data-tex="\(f,g\)">\(f,g\)</span> be positive continuous functions on the sphere.</p>
+<ol>
+<li><span class="math" data-tex="\(\mathcal W[f]\)">\(\mathcal W[f]\)</span> is a convex body. It contains the ball of radius <span class="math" data-tex="\(\min f\)">\(\min f\)</span> about <span class="math" data-tex="\(0\)">\(0\)</span> and lies in the ball of radius <span class="math" data-tex="\(\max f\)">\(\max f\)</span>.</li>
+<li>If <span class="math" data-tex="\(f\le g\)">\(f\le g\)</span>, then <span class="math" data-tex="\(\mathcal W[f]\subset\mathcal W[g]\)">\(\mathcal W[f]\subset\mathcal W[g]\)</span>. For <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, <span class="math" data-tex="\(\mathcal W[cf]=c\,\mathcal W[f]\)">\(\mathcal W[cf]=c\,\mathcal W[f]\)</span>.</li>
+<li><span class="math" data-tex="\(\mathcal W[h_K]=K\)">\(\mathcal W[h_K]=K\)</span> for a convex body <span class="math" data-tex="\(K\)">\(K\)</span> with <span class="math" data-tex="\(0\)">\(0\)</span> in its interior.</li>
+<li>If <span class="math" data-tex="\(f\)">\(f\)</span> is even, then <span class="math" data-tex="\(\mathcal W[f]\)">\(\mathcal W[f]\)</span> is the set of the <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(|\langle x,u\rangle|\le f(u)\)">\(|\langle x,u\rangle|\le f(u)\)</span> for all <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(\mathcal W[f]=-\mathcal W[f]\)">\(\mathcal W[f]=-\mathcal W[f]\)</span>.</li>
+<li>For convex bodies <span class="math" data-tex="\(K=-K\)">\(K=-K\)</span>, <span class="math" data-tex="\(L=-L\)">\(L=-L\)</span> and <span class="math" data-tex="\(0\le\lambda\le1\)">\(0\le\lambda\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal W\bigl[h_K^{1-\lambda}h_L^\lambda\bigr]\subset(1-\lambda)K+\lambda L .
+\]">\[
+\mathcal W\bigl[h_K^{1-\lambda}h_L^\lambda\bigr]\subset(1-\lambda)K+\lambda L .
+\]</span></li>
+</ol>
+<p><strong>Proof.</strong> (1) An intersection of closed half-spaces is closed and convex. If <span class="math" data-tex="\(|x|\le\min f\)">\(|x|\le\min f\)</span>, then <span class="math" data-tex="\(\langle x,u\rangle\le|x|\le f(u)\)">\(\langle x,u\rangle\le|x|\le f(u)\)</span>. If <span class="math" data-tex="\(x\in\mathcal W[f]\)">\(x\in\mathcal W[f]\)</span> and <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, take <span class="math" data-tex="\(u=x/|x|\)">\(u=x/|x|\)</span>: <span class="math" data-tex="\(|x|\le f(u)\le\max f\)">\(|x|\le f(u)\le\max f\)</span>. (2) is clear from the definition. (3) is Lemma 1.1 (2); here <span class="math" data-tex="\(h_K\)">\(h_K\)</span> is positive because a ball about <span class="math" data-tex="\(0\)">\(0\)</span> lies in <span class="math" data-tex="\(K\)">\(K\)</span>. (4) Apply the condition to <span class="math" data-tex="\(u\)">\(u\)</span> and to <span class="math" data-tex="\(-u\)">\(-u\)</span>. (5) For positive numbers, <span class="math" data-tex="\(a^{1-\lambda}b^\lambda\le(1-\lambda)a+\lambda b\)">\(a^{1-\lambda}b^\lambda\le(1-\lambda)a+\lambda b\)</span>, because the logarithm is concave. So by Lemma 1.1 (4) the function <span class="math" data-tex="\(h_K^{1-\lambda}h_L^\lambda\)">\(h_K^{1-\lambda}h_L^\lambda\)</span> is at most the support function of the convex body <span class="math" data-tex="\((1-\lambda)K+\lambda L\)">\((1-\lambda)K+\lambda L\)</span>, and (2) and (3) apply. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>By the definition, the support function of <span class="math" data-tex="\(\mathcal W[f]\)">\(\mathcal W[f]\)</span> is at most <span class="math" data-tex="\(f\)">\(f\)</span>. It can be smaller: <span class="math" data-tex="\(f\)">\(f\)</span> need not be a support function.</p>
+<h2 id="2-the-inequality-and-the-variance-bound">2. The inequality and the variance bound</h2>
+<p><strong>The logarithmic Brunn-Minkowski inequality in dimension <span class="math" data-tex="\(n\)">\(n\)</span>.</strong> For all convex bodies <span class="math" data-tex="\(K=-K\)">\(K=-K\)</span> and <span class="math" data-tex="\(L=-L\)">\(L=-L\)</span> in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> and all <span class="math" data-tex="\(0\le\lambda\le1\)">\(0\le\lambda\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\Bigl|\mathcal W\bigl[h_K^{1-\lambda}h_L^\lambda\bigr]\Bigr|\ \ge\ |K|^{1-\lambda}\,|L|^\lambda .
+\]">\[
+\Bigl|\mathcal W\bigl[h_K^{1-\lambda}h_L^\lambda\bigr]\Bigr|\ \ge\ |K|^{1-\lambda}\,|L|^\lambda .
+\]</span>
+This statement is called (LBM) below.</p>
+<p>By Lemma 1.2 (5) this is stronger, for symmetric bodies, than the inequality <span class="math" data-tex="\(|(1-\lambda)K+\lambda L|\ge|K|^{1-\lambda}|L|^\lambda\)">\(|(1-\lambda)K+\lambda L|\ge|K|^{1-\lambda}|L|^\lambda\)</span> of Brunn and Minkowski.</p>
+<p><strong>Example 2.1 (boxes).</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be the box of the <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(|x_i|\le a_i\)">\(|x_i|\le a_i\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> the box with <span class="math" data-tex="\(|x_i|\le b_i\)">\(|x_i|\le b_i\)</span>, where <span class="math" data-tex="\(a_i,b_i&gt;0\)">\(a_i,b_i&gt;0\)</span>. Then <span class="math" data-tex="\(h_K(u)=\sum_ia_i|u_i|\)">\(h_K(u)=\sum_ia_i|u_i|\)</span>. Let <span class="math" data-tex="\(B\)">\(B\)</span> be the box with <span class="math" data-tex="\(|x_i|\le a_i^{1-\lambda}b_i^\lambda\)">\(|x_i|\le a_i^{1-\lambda}b_i^\lambda\)</span>. The conditions for the coordinate directions show <span class="math" data-tex="\(\mathcal W[h_K^{1-\lambda}h_L^\lambda]\subset B\)">\(\mathcal W[h_K^{1-\lambda}h_L^\lambda]\subset B\)</span>. Conversely, for <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span> and <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, by Hölder's inequality with the exponents <span class="math" data-tex="\(\tfrac1{1-\lambda}\)">\(\tfrac1{1-\lambda}\)</span> and <span class="math" data-tex="\(\tfrac1\lambda\)">\(\tfrac1\lambda\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle x,u\rangle&amp;\le\sum_i(a_i|u_i|)^{1-\lambda}(b_i|u_i|)^\lambda\\
+&amp;\le h_K(u)^{1-\lambda}\,h_L(u)^\lambda .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle x,u\rangle&amp;\le\sum_i(a_i|u_i|)^{1-\lambda}(b_i|u_i|)^\lambda\\
+&amp;\le h_K(u)^{1-\lambda}\,h_L(u)^\lambda .
+\end{aligned}
+\]</span>
+So the Wulff body is <span class="math" data-tex="\(B\)">\(B\)</span>, and its volume <span class="math" data-tex="\(\prod_i2a_i^{1-\lambda}b_i^\lambda\)">\(\prod_i2a_i^{1-\lambda}b_i^\lambda\)</span> is equal to <span class="math" data-tex="\(|K|^{1-\lambda}|L|^\lambda\)">\(|K|^{1-\lambda}|L|^\lambda\)</span>: for boxes with the same axes (LBM) is an equality.</p>
+<p>For a probability measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> write <span class="math" data-tex="\(\mathbb E_\mu f=\int f\,d\mu\)">\(\mathbb E_\mu f=\int f\,d\mu\)</span> and <span class="math" data-tex="\(\operatorname{Var}_\mu(f)=\mathbb E_\mu(f-\mathbb E_\mu f)^2\)">\(\operatorname{Var}_\mu(f)=\mathbb E_\mu(f-\mathbb E_\mu f)^2\)</span>.</p>
+<p><strong>The variance bound in dimension <span class="math" data-tex="\(n\)">\(n\)</span>.</strong> Let <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, let <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span> be an even integer, <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, <span class="math" data-tex="\(p_1,\dots,p_N\)">\(p_1,\dots,p_N\)</span> nonzero vectors of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> and <span class="math" data-tex="\(h_1,\dots,h_N&gt;0\)">\(h_1,\dots,h_N&gt;0\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\psi_i(x)=\Bigl(\frac{\langle p_i,x\rangle}{h_i}\Bigr)^q,\\
+V(x)=\frac\varepsilon2|x|^2+\sum_{i=1}^N\psi_i(x),\\
+Z=\int_{\mathbb R^n}e^{-V(x)}\,dx,\\
+d\mu=Z^{-1}e^{-V(x)}\,dx .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\psi_i(x)=\Bigl(\frac{\langle p_i,x\rangle}{h_i}\Bigr)^q,\\
+V(x)=\frac\varepsilon2|x|^2+\sum_{i=1}^N\psi_i(x),\\
+Z=\int_{\mathbb R^n}e^{-V(x)}\,dx,\\
+d\mu=Z^{-1}e^{-V(x)}\,dx .
+\end{gathered}
+\]</span>
+Then for all real numbers <span class="math" data-tex="\(b_1,\dots,b_N\)">\(b_1,\dots,b_N\)</span>
+<span class="math math-display" data-tex="\[
+\operatorname{Var}_\mu\Bigl(\sum_{i=1}^Nb_i\psi_i\Bigr)\ \le\ \sum_{i=1}^Nb_i^2\,\mathbb E_\mu\psi_i .
+\]">\[
+\operatorname{Var}_\mu\Bigl(\sum_{i=1}^Nb_i\psi_i\Bigr)\ \le\ \sum_{i=1}^Nb_i^2\,\mathbb E_\mu\psi_i .
+\]</span>
+This statement is called (VB) below.</p>
+<p>The term <span class="math" data-tex="\(\tfrac\varepsilon2|x|^2\)">\(\tfrac\varepsilon2|x|^2\)</span> makes <span class="math" data-tex="\(Z\)">\(Z\)</span> finite, and all polynomials are integrable for <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. In words: the covariance matrix of the functions <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> is at most the diagonal matrix of their means.</p>
+<p><strong>Theorem 2.2.</strong> Let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. If the variance bound holds in dimension <span class="math" data-tex="\(n\)">\(n\)</span>, then the logarithmic Brunn-Minkowski inequality holds in dimension <span class="math" data-tex="\(n\)">\(n\)</span>. In dimension <span class="math" data-tex="\(1\)">\(1\)</span> the inequality (LBM) holds with equality.</p>
+<p>[OpenAI-L, Sections 3 to 7] proves the variance bound in every dimension <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. Sections 3 to 5 of this lesson prove Theorem 2.2.</p>
+<h2 id="3-soft-polytopes">3. Soft polytopes</h2>
+<p>Let <span class="math" data-tex="\(p_1,\dots,p_N\)">\(p_1,\dots,p_N\)</span> be nonzero vectors and <span class="math" data-tex="\(h_i^0,h_i^1&gt;0\)">\(h_i^0,h_i^1&gt;0\)</span>. For real <span class="math" data-tex="\(t\)">\(t\)</span> let
+<span class="math math-display" data-tex="\[
+h_i(t)=(h_i^0)^{1-t}(h_i^1)^t ,
+\]">\[
+h_i(t)=(h_i^0)^{1-t}(h_i^1)^t ,
+\]</span>
+and let <span class="math" data-tex="\(\psi_i(t,\cdot)\)">\(\psi_i(t,\cdot)\)</span>, <span class="math" data-tex="\(V(t,\cdot)\)">\(V(t,\cdot)\)</span>, <span class="math" data-tex="\(Z(t)\)">\(Z(t)\)</span> and <span class="math" data-tex="\(\mu_t\)">\(\mu_t\)</span> be the objects of the variance bound for the widths <span class="math" data-tex="\(h_i(t)\)">\(h_i(t)\)</span>, with fixed <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The density <span class="math" data-tex="\(e^{-V(t,x)}\)">\(e^{-V(t,x)}\)</span> is a smooth replacement of the indicator of the set where <span class="math" data-tex="\(|\langle p_i,x\rangle|\le h_i(t)\)">\(|\langle p_i,x\rangle|\le h_i(t)\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> <span class="math" data-tex="\(Z\)">\(Z\)</span> is twice continuously differentiable, and with <span class="math" data-tex="\(b_i=-q\log(h_i^1/h_i^0)\)">\(b_i=-q\log(h_i^1/h_i^0)\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{d^2}{dt^2}\log Z(t)\\
+&amp;\quad=\operatorname{Var}_{\mu_t}\Bigl(\sum_ib_i\psi_i\Bigr)-\sum_ib_i^2\,\mathbb E_{\mu_t}\psi_i .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{d^2}{dt^2}\log Z(t)\\
+&amp;\quad=\operatorname{Var}_{\mu_t}\Bigl(\sum_ib_i\psi_i\Bigr)-\sum_ib_i^2\,\mathbb E_{\mu_t}\psi_i .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(h_i(t)^{-q}=(h_i^0)^{-q}e^{b_it}\)">\(h_i(t)^{-q}=(h_i^0)^{-q}e^{b_it}\)</span>, we have <span class="math" data-tex="\(\psi_i(t,x)=e^{b_it}\psi_i(0,x)\)">\(\psi_i(t,x)=e^{b_it}\psi_i(0,x)\)</span>. So
+<span class="math math-display" data-tex="\[
+\dot V=\sum_ib_i\psi_i,\qquad\ddot V=\sum_ib_i^2\psi_i ,
+\]">\[
+\dot V=\sum_ib_i\psi_i,\qquad\ddot V=\sum_ib_i^2\psi_i ,
+\]</span>
+where the dots are derivatives in <span class="math" data-tex="\(t\)">\(t\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\partial_te^{-V}=-\dot V\,e^{-V},\\
+\partial_t^2e^{-V}=(\dot V^2-\ddot V)\,e^{-V}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\partial_te^{-V}=-\dot V\,e^{-V},\\
+\partial_t^2e^{-V}=(\dot V^2-\ddot V)\,e^{-V}.
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(t\)">\(t\)</span> in a bounded interval, <span class="math" data-tex="\(|\dot V|\)">\(|\dot V|\)</span>, <span class="math" data-tex="\(\dot V^2\)">\(\dot V^2\)</span> and <span class="math" data-tex="\(|\ddot V|\)">\(|\ddot V|\)</span> are at most a polynomial in <span class="math" data-tex="\(|x|\)">\(|x|\)</span>, and <span class="math" data-tex="\(e^{-V}\le e^{-\varepsilon|x|^2/2}\)">\(e^{-V}\le e^{-\varepsilon|x|^2/2}\)</span>. So the two derivatives of <span class="math" data-tex="\(e^{-V}\)">\(e^{-V}\)</span> have an integrable bound that does not depend on <span class="math" data-tex="\(t\)">\(t\)</span>, and by dominated convergence, applied to the difference quotients, <span class="math" data-tex="\(Z\)">\(Z\)</span> may be differentiated twice under the integral:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Z&#x27;=-\int\dot V\,e^{-V}dx,\\
+Z&#x27;&#x27;=\int(\dot V^2-\ddot V)\,e^{-V}dx .
+\end{gathered}
+\]">\[
+\begin{gathered}
+Z&#x27;=-\int\dot V\,e^{-V}dx,\\
+Z&#x27;&#x27;=\int(\dot V^2-\ddot V)\,e^{-V}dx .
+\end{gathered}
+\]</span>
+Both are continuous in <span class="math" data-tex="\(t\)">\(t\)</span>, again by dominated convergence. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\log Z)&#x27;&#x27;&amp;=\frac{Z&#x27;&#x27;}Z-\Bigl(\frac{Z&#x27;}Z\Bigr)^2\\
+&amp;=\mathbb E_{\mu_t}\dot V^2-\mathbb E_{\mu_t}\ddot V-(\mathbb E_{\mu_t}\dot V)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+(\log Z)&#x27;&#x27;&amp;=\frac{Z&#x27;&#x27;}Z-\Bigl(\frac{Z&#x27;}Z\Bigr)^2\\
+&amp;=\mathbb E_{\mu_t}\dot V^2-\mathbb E_{\mu_t}\ddot V-(\mathbb E_{\mu_t}\dot V)^2 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 3.2.</strong> If the variance bound holds in dimension <span class="math" data-tex="\(n\)">\(n\)</span>, then <span class="math" data-tex="\(\log Z\)">\(\log Z\)</span> is concave, and for <span class="math" data-tex="\(0\le\lambda\le1\)">\(0\le\lambda\le1\)</span>
+<span class="math math-display" data-tex="\[
+Z(\lambda)\ \ge\ Z(0)^{1-\lambda}\,Z(1)^\lambda .
+\]">\[
+Z(\lambda)\ \ge\ Z(0)^{1-\lambda}\,Z(1)^\lambda .
+\]</span></p>
+<p><strong>Proof.</strong> The variance bound for the widths <span class="math" data-tex="\(h_i(t)\)">\(h_i(t)\)</span> says that the right side of Lemma 3.1 is at most <span class="math" data-tex="\(0\)">\(0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-from-soft-polytopes-to-polytopes">4. From soft polytopes to polytopes</h2>
+<p>Let the vectors <span class="math" data-tex="\(p_i\)">\(p_i\)</span> span <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, and let
+<span class="math math-display" data-tex="\[
+P(t)=\bigl\{x:\ |\langle p_i,x\rangle|\le h_i(t)\text{ for all }i\bigr\}.
+\]">\[
+P(t)=\bigl\{x:\ |\langle p_i,x\rangle|\le h_i(t)\text{ for all }i\bigr\}.
+\]</span>
+This set is closed and convex, and it is bounded, because <span class="math" data-tex="\(x\mapsto\max_i|\langle p_i,x\rangle|\)">\(x\mapsto\max_i|\langle p_i,x\rangle|\)</span> is a norm when the <span class="math" data-tex="\(p_i\)">\(p_i\)</span> span.</p>
+<p><strong>Lemma 4.1.</strong> If the variance bound holds in dimension <span class="math" data-tex="\(n\)">\(n\)</span>, then for <span class="math" data-tex="\(0\le\lambda\le1\)">\(0\le\lambda\le1\)</span>
+<span class="math math-display" data-tex="\[
+|P(\lambda)|\ \ge\ |P(0)|^{1-\lambda}\,|P(1)|^\lambda .
+\]">\[
+|P(\lambda)|\ \ge\ |P(0)|^{1-\lambda}\,|P(1)|^\lambda .
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(Z_{q,\varepsilon}(t)\)">\(Z_{q,\varepsilon}(t)\)</span> for the integral <span class="math" data-tex="\(Z(t)\)">\(Z(t)\)</span>. Fix <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>, and let <span class="math" data-tex="\(q\to\infty\)">\(q\to\infty\)</span> through the even integers. If <span class="math" data-tex="\(|\langle p_i,x\rangle|&lt;h_i(t)\)">\(|\langle p_i,x\rangle|&lt;h_i(t)\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>, every <span class="math" data-tex="\(\psi_i(t,x)\)">\(\psi_i(t,x)\)</span> tends to <span class="math" data-tex="\(0\)">\(0\)</span>, and <span class="math" data-tex="\(e^{-V}\)">\(e^{-V}\)</span> tends to <span class="math" data-tex="\(e^{-\varepsilon|x|^2/2}\)">\(e^{-\varepsilon|x|^2/2}\)</span>. If <span class="math" data-tex="\(|\langle p_i,x\rangle|&gt;h_i(t)\)">\(|\langle p_i,x\rangle|&gt;h_i(t)\)</span> for some <span class="math" data-tex="\(i\)">\(i\)</span>, this <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> tends to infinity and <span class="math" data-tex="\(e^{-V}\)">\(e^{-V}\)</span> tends to <span class="math" data-tex="\(0\)">\(0\)</span>. The other points <span class="math" data-tex="\(x\)">\(x\)</span> lie in the finitely many hyperplanes <span class="math" data-tex="\(\langle p_i,x\rangle=\pm h_i(t)\)">\(\langle p_i,x\rangle=\pm h_i(t)\)</span>, a set of measure <span class="math" data-tex="\(0\)">\(0\)</span>. Since <span class="math" data-tex="\(e^{-V}\le e^{-\varepsilon|x|^2/2}\)">\(e^{-V}\le e^{-\varepsilon|x|^2/2}\)</span>, dominated convergence gives
+<span class="math math-display" data-tex="\[
+Z_{q,\varepsilon}(t)\ \longrightarrow\ Z_\varepsilon(t)=\int_{P(t)}e^{-\varepsilon|x|^2/2}\,dx .
+\]">\[
+Z_{q,\varepsilon}(t)\ \longrightarrow\ Z_\varepsilon(t)=\int_{P(t)}e^{-\varepsilon|x|^2/2}\,dx .
+\]</span>
+By Corollary 3.2, <span class="math" data-tex="\(Z_\varepsilon(\lambda)\ge Z_\varepsilon(0)^{1-\lambda}Z_\varepsilon(1)^\lambda\)">\(Z_\varepsilon(\lambda)\ge Z_\varepsilon(0)^{1-\lambda}Z_\varepsilon(1)^\lambda\)</span>. Now let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to <span class="math" data-tex="\(0\)">\(0\)</span>. The integrands increase to the indicator of <span class="math" data-tex="\(P(t)\)">\(P(t)\)</span>, and by monotone convergence <span class="math" data-tex="\(Z_\varepsilon(t)\to|P(t)|\)">\(Z_\varepsilon(t)\to|P(t)|\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-all-directions">5. All directions</h2>
+<p><strong>Proof of Theorem 2.2.</strong> Let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, and let <span class="math" data-tex="\(K=-K\)">\(K=-K\)</span> and <span class="math" data-tex="\(L=-L\)">\(L=-L\)</span> be convex bodies. For <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span> let <span class="math" data-tex="\(f_t=h_K^{1-t}h_L^t\)">\(f_t=h_K^{1-t}h_L^t\)</span>; it is positive, continuous and even, by Lemma 1.1. The sphere has a countable dense subset <span class="math" data-tex="\(u_1,u_2,\dots\)">\(u_1,u_2,\dots\)</span>. Let <span class="math" data-tex="\(D_m\)">\(D_m\)</span> consist of the coordinate vectors <span class="math" data-tex="\(e_1,\dots,e_n\)">\(e_1,\dots,e_n\)</span> and of <span class="math" data-tex="\(u_1,\dots,u_m\)">\(u_1,\dots,u_m\)</span>, and let <span class="math" data-tex="\(P_m(t)\)">\(P_m(t)\)</span> be the set of the <span class="math" data-tex="\(x\)">\(x\)</span> with
+<span class="math math-display" data-tex="\[
+|\langle p,x\rangle|\le f_t(p)\qquad\text{for all }p\in D_m .
+\]">\[
+|\langle p,x\rangle|\le f_t(p)\qquad\text{for all }p\in D_m .
+\]</span>
+This is the set <span class="math" data-tex="\(P(t)\)">\(P(t)\)</span> of Section 4 for the vectors of <span class="math" data-tex="\(D_m\)">\(D_m\)</span>, which span, with the widths <span class="math" data-tex="\(h_K(p)\)">\(h_K(p)\)</span> at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> and <span class="math" data-tex="\(h_L(p)\)">\(h_L(p)\)</span> at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. By Lemma 4.1,
+<span class="math math-display" data-tex="\[
+|P_m(\lambda)|\ \ge\ |P_m(0)|^{1-\lambda}\,|P_m(1)|^\lambda .
+\]">\[
+|P_m(\lambda)|\ \ge\ |P_m(0)|^{1-\lambda}\,|P_m(1)|^\lambda .
+\]</span>
+The sets <span class="math" data-tex="\(P_m(t)\)">\(P_m(t)\)</span> decrease as <span class="math" data-tex="\(m\)">\(m\)</span> grows, and they lie in the bounded set <span class="math" data-tex="\(P_1(t)\)">\(P_1(t)\)</span>. Their intersection is <span class="math" data-tex="\(\mathcal W[f_t]\)">\(\mathcal W[f_t]\)</span>: by Lemma 1.2 (4), <span class="math" data-tex="\(\mathcal W[f_t]\)">\(\mathcal W[f_t]\)</span> lies in every <span class="math" data-tex="\(P_m(t)\)">\(P_m(t)\)</span>; and a point of all the <span class="math" data-tex="\(P_m(t)\)">\(P_m(t)\)</span> satisfies <span class="math" data-tex="\(|\langle x,u\rangle|\le f_t(u)\)">\(|\langle x,u\rangle|\le f_t(u)\)</span> for a dense set of <span class="math" data-tex="\(u\)">\(u\)</span>, hence for all <span class="math" data-tex="\(u\)">\(u\)</span>, because both sides are continuous. So <span class="math" data-tex="\(|P_m(t)|\)">\(|P_m(t)|\)</span> decreases to <span class="math" data-tex="\(|\mathcal W[f_t]|\)">\(|\mathcal W[f_t]|\)</span>, since the measure of a decreasing sequence of sets of finite measure tends to the measure of the intersection. For <span class="math" data-tex="\(t=0\)">\(t=0\)</span> and <span class="math" data-tex="\(t=1\)">\(t=1\)</span> the intersections are <span class="math" data-tex="\(\mathcal W[h_K]=K\)">\(\mathcal W[h_K]=K\)</span> and <span class="math" data-tex="\(\mathcal W[h_L]=L\)">\(\mathcal W[h_L]=L\)</span>, by Lemma 1.2 (3). The limit <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span> of the last display is (LBM).</p>
+<p>In dimension <span class="math" data-tex="\(1\)">\(1\)</span> let <span class="math" data-tex="\(K=[-a,a]\)">\(K=[-a,a]\)</span> and <span class="math" data-tex="\(L=[-b,b]\)">\(L=[-b,b]\)</span>. The sphere consists of <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, <span class="math" data-tex="\(h_K=a\)">\(h_K=a\)</span> and <span class="math" data-tex="\(h_L=b\)">\(h_L=b\)</span>, and the Wulff body is the interval of the radius <span class="math" data-tex="\(a^{1-\lambda}b^\lambda\)">\(a^{1-\lambda}b^\lambda\)</span>. Its length is <span class="math" data-tex="\((2a)^{1-\lambda}(2b)^\lambda\)">\((2a)^{1-\lambda}(2b)^\lambda\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The proof used the variance bound only through Lemma 4.1, for finitely many unit vectors that span.</p>
+<h2 id="6-the-additive-inequality-for-powers-between-0-and-1">6. The additive inequality for powers between 0 and 1</h2>
+<p>For <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span> the geometric mean of the support functions is replaced by the mean <span class="math" data-tex="\(((1-\lambda)h_K^p+\lambda h_L^p)^{1/p}\)">\(((1-\lambda)h_K^p+\lambda h_L^p)^{1/p}\)</span>, which is larger.</p>
+<p><strong>Corollary 6.1.</strong> Let (LBM) hold in dimension <span class="math" data-tex="\(n\)">\(n\)</span>. Let <span class="math" data-tex="\(K=-K\)">\(K=-K\)</span>, <span class="math" data-tex="\(L=-L\)">\(L=-L\)</span> be convex bodies in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span> and <span class="math" data-tex="\(0\le\lambda\le1\)">\(0\le\lambda\le1\)</span>, and let <span class="math" data-tex="\(g=((1-\lambda)h_K^p+\lambda h_L^p)^{1/p}\)">\(g=((1-\lambda)h_K^p+\lambda h_L^p)^{1/p}\)</span>. Then
+<span class="math math-display" data-tex="\[
+|\mathcal W[g]|^{p/n}\ \ge\ (1-\lambda)\,|K|^{p/n}+\lambda\,|L|^{p/n}.
+\]">\[
+|\mathcal W[g]|^{p/n}\ \ge\ (1-\lambda)\,|K|^{p/n}+\lambda\,|L|^{p/n}.
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span> and <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span> both sides are equal. Let <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>. Let <span class="math" data-tex="\(a=|K|^{1/n}\)">\(a=|K|^{1/n}\)</span>, <span class="math" data-tex="\(b=|L|^{1/n}\)">\(b=|L|^{1/n}\)</span>, <span class="math" data-tex="\(K_0=a^{-1}K\)">\(K_0=a^{-1}K\)</span>, <span class="math" data-tex="\(L_0=b^{-1}L\)">\(L_0=b^{-1}L\)</span>; these bodies have the volume <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(h_K=a\,h_{K_0}\)">\(h_K=a\,h_{K_0}\)</span>, <span class="math" data-tex="\(h_L=b\,h_{L_0}\)">\(h_L=b\,h_{L_0}\)</span>. Let
+<span class="math math-display" data-tex="\[
+c=\bigl((1-\lambda)a^p+\lambda b^p\bigr)^{1/p},\qquad\theta=\frac{\lambda b^p}{c^p},
+\]">\[
+c=\bigl((1-\lambda)a^p+\lambda b^p\bigr)^{1/p},\qquad\theta=\frac{\lambda b^p}{c^p},
+\]</span>
+so that <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span> and <span class="math" data-tex="\(1-\theta=(1-\lambda)a^p/c^p\)">\(1-\theta=(1-\lambda)a^p/c^p\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g&amp;=c\,\bigl((1-\theta)h_{K_0}^p+\theta h_{L_0}^p\bigr)^{1/p}\\
+&amp;\ge c\,h_{K_0}^{1-\theta}\,h_{L_0}^\theta ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+g&amp;=c\,\bigl((1-\theta)h_{K_0}^p+\theta h_{L_0}^p\bigr)^{1/p}\\
+&amp;\ge c\,h_{K_0}^{1-\theta}\,h_{L_0}^\theta ,
+\end{aligned}
+\]</span>
+by the inequality between the weighted arithmetic and geometric means of <span class="math" data-tex="\(h_{K_0}^p\)">\(h_{K_0}^p\)</span> and <span class="math" data-tex="\(h_{L_0}^p\)">\(h_{L_0}^p\)</span>. By Lemma 1.2 (2), <span class="math" data-tex="\(\mathcal W[g]\)">\(\mathcal W[g]\)</span> contains <span class="math" data-tex="\(c\,\mathcal W[h_{K_0}^{1-\theta}h_{L_0}^\theta]\)">\(c\,\mathcal W[h_{K_0}^{1-\theta}h_{L_0}^\theta]\)</span>, and by (LBM) the latter has a volume of at least <span class="math" data-tex="\(c^n\)">\(c^n\)</span>. So <span class="math" data-tex="\(|\mathcal W[g]|^{p/n}\ge c^p\)">\(|\mathcal W[g]|^{p/n}\ge c^p\)</span>, and <span class="math" data-tex="\(c^p\)">\(c^p\)</span> is the right side. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> In the plane let <span class="math" data-tex="\(K\)">\(K\)</span> be the box with <span class="math" data-tex="\(|x_1|\le1\)">\(|x_1|\le1\)</span>, <span class="math" data-tex="\(|x_2|\le a\)">\(|x_2|\le a\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> the box with <span class="math" data-tex="\(|x_1|\le a\)">\(|x_1|\le a\)</span>, <span class="math" data-tex="\(|x_2|\le1\)">\(|x_2|\le1\)</span>, where <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span>. Show that <span class="math" data-tex="\(h_K^{1/2}h_L^{1/2}\)">\(h_K^{1/2}h_L^{1/2}\)</span> is not the support function of a convex body.</p>
+<p><strong>7.2.</strong> Let <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, <span class="math" data-tex="\(p_1=1\)">\(p_1=1\)</span>, and take <span class="math" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span> in the definitions of Section 3, so that <span class="math" data-tex="\(Z(t)=\int\exp(-(x/h(t))^q)\,dx\)">\(Z(t)=\int\exp(-(x/h(t))^q)\,dx\)</span>. Show that <span class="math" data-tex="\(\log Z\)">\(\log Z\)</span> is an affine function of <span class="math" data-tex="\(t\)">\(t\)</span>, and deduce that for the probability density proportional to <span class="math" data-tex="\(e^{-y^q}\)">\(e^{-y^q}\)</span> the function <span class="math" data-tex="\(y^q\)">\(y^q\)</span> has the mean <span class="math" data-tex="\(\tfrac1q\)">\(\tfrac1q\)</span> and the variance <span class="math" data-tex="\(\tfrac1q\)">\(\tfrac1q\)</span>. So the variance bound, read for <span class="math" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span>, is an equality here.</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be positive and continuous on the sphere, and <span class="math" data-tex="\(M\)">\(M\)</span> a convex body with <span class="math" data-tex="\(0\)">\(0\)</span> in its interior and <span class="math" data-tex="\(h_M\le f\)">\(h_M\le f\)</span>. Show that <span class="math" data-tex="\(M\subset\mathcal W[f]\)">\(M\subset\mathcal W[f]\)</span>. So <span class="math" data-tex="\(\mathcal W[f]\)">\(\mathcal W[f]\)</span> is the largest such body.</p>
+<p><strong>7.4.</strong> For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and a Borel set <span class="math" data-tex="\(S\)">\(S\)</span> let <span class="math" data-tex="\(\gamma_\varepsilon(S)=\int_Se^{-\varepsilon|x|^2/2}dx\)">\(\gamma_\varepsilon(S)=\int_Se^{-\varepsilon|x|^2/2}dx\)</span>. Show that the variance bound in dimension <span class="math" data-tex="\(n\)">\(n\)</span> implies, with the notation of (LBM) and <span class="math" data-tex="\(f_\lambda=h_K^{1-\lambda}h_L^\lambda\)">\(f_\lambda=h_K^{1-\lambda}h_L^\lambda\)</span>,
+<span class="math math-display" data-tex="\[
+\gamma_\varepsilon\bigl(\mathcal W[f_\lambda]\bigr)\ \ge\ \gamma_\varepsilon(K)^{1-\lambda}\,\gamma_\varepsilon(L)^{\lambda}.
+\]">\[
+\gamma_\varepsilon\bigl(\mathcal W[f_\lambda]\bigr)\ \ge\ \gamma_\varepsilon(K)^{1-\lambda}\,\gamma_\varepsilon(L)^{\lambda}.
+\]</span></p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> Let <span class="math" data-tex="\(f=h_K^{1/2}h_L^{1/2}\)">\(f=h_K^{1/2}h_L^{1/2}\)</span>, so <span class="math" data-tex="\(f(u)^2=(|u_1|+a|u_2|)(a|u_1|+|u_2|)\)">\(f(u)^2=(|u_1|+a|u_2|)(a|u_1|+|u_2|)\)</span>. By Example 2.1, <span class="math" data-tex="\(\mathcal W[f]\)">\(\mathcal W[f]\)</span> is the square with <span class="math" data-tex="\(|x_i|\le\sqrt a\)">\(|x_i|\le\sqrt a\)</span>, whose support function is <span class="math" data-tex="\(\sqrt a\,(|u_1|+|u_2|)\)">\(\sqrt a\,(|u_1|+|u_2|)\)</span>. At <span class="math" data-tex="\(u=(1,1)/\sqrt2\)">\(u=(1,1)/\sqrt2\)</span> this is <span class="math" data-tex="\(\sqrt{2a}\)">\(\sqrt{2a}\)</span>, while <span class="math" data-tex="\(f(u)=(1+a)/\sqrt2\)">\(f(u)=(1+a)/\sqrt2\)</span>, and <span class="math" data-tex="\(1+a&gt;2\sqrt a\)">\(1+a&gt;2\sqrt a\)</span> for <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> were the support function of a convex body <span class="math" data-tex="\(M\)">\(M\)</span>, then by Lemma 1.1 (2) the body <span class="math" data-tex="\(M\)">\(M\)</span> would be the set of the <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\langle x,u\rangle\le f(u)\)">\(\langle x,u\rangle\le f(u)\)</span> for all <span class="math" data-tex="\(u\)">\(u\)</span>, which is <span class="math" data-tex="\(\mathcal W[f]\)">\(\mathcal W[f]\)</span>; but the support function of <span class="math" data-tex="\(\mathcal W[f]\)">\(\mathcal W[f]\)</span> is not <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>7.2.</strong> The substitution <span class="math" data-tex="\(x=h(t)y\)">\(x=h(t)y\)</span> gives <span class="math" data-tex="\(Z(t)=h(t)\int e^{-y^q}dy\)">\(Z(t)=h(t)\int e^{-y^q}dy\)</span>, and <span class="math" data-tex="\(\log h(t)\)">\(\log h(t)\)</span> is affine in <span class="math" data-tex="\(t\)">\(t\)</span>. The computation of Lemma 3.1 applies for <span class="math" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span>, because <span class="math" data-tex="\(e^{-V}\)">\(e^{-V}\)</span> decays faster than every power. With <span class="math" data-tex="\(s=\log(h^1/h^0)\)">\(s=\log(h^1/h^0)\)</span> and <span class="math" data-tex="\(b=-qs\)">\(b=-qs\)</span>: <span class="math" data-tex="\((\log Z)&#x27;=-\mathbb E\dot V=qs\,\mathbb E\psi\)">\((\log Z)&#x27;=-\mathbb E\dot V=qs\,\mathbb E\psi\)</span> must be <span class="math" data-tex="\(s\)">\(s\)</span>, so <span class="math" data-tex="\(\mathbb E\psi=\tfrac1q\)">\(\mathbb E\psi=\tfrac1q\)</span>; and <span class="math" data-tex="\((\log Z)&#x27;&#x27;=b^2(\operatorname{Var}\psi-\mathbb E\psi)\)">\((\log Z)&#x27;&#x27;=b^2(\operatorname{Var}\psi-\mathbb E\psi)\)</span> must be <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(\operatorname{Var}\psi=\tfrac1q\)">\(\operatorname{Var}\psi=\tfrac1q\)</span>. Under <span class="math" data-tex="\(\mu_t\)">\(\mu_t\)</span> the variable <span class="math" data-tex="\(y=x/h(t)\)">\(y=x/h(t)\)</span> has the density proportional to <span class="math" data-tex="\(e^{-y^q}\)">\(e^{-y^q}\)</span>, and <span class="math" data-tex="\(\psi=y^q\)">\(\psi=y^q\)</span>.</p>
+<p><strong>7.3.</strong> By Lemma 1.2 (3) and (2), <span class="math" data-tex="\(M=\mathcal W[h_M]\subset\mathcal W[f]\)">\(M=\mathcal W[h_M]\subset\mathcal W[f]\)</span>.</p>
+<p><strong>7.4.</strong> In the proof of Lemma 4.1 stop before the limit <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span>: <span class="math" data-tex="\(Z_\varepsilon(\lambda)\ge Z_\varepsilon(0)^{1-\lambda}Z_\varepsilon(1)^\lambda\)">\(Z_\varepsilon(\lambda)\ge Z_\varepsilon(0)^{1-\lambda}Z_\varepsilon(1)^\lambda\)</span> for the sets <span class="math" data-tex="\(P_m(t)\)">\(P_m(t)\)</span> of Section 5. The measure with the density <span class="math" data-tex="\(e^{-\varepsilon|x|^2/2}\)">\(e^{-\varepsilon|x|^2/2}\)</span> is finite, so its values on the decreasing sets <span class="math" data-tex="\(P_m(t)\)">\(P_m(t)\)</span> tend to its value on <span class="math" data-tex="\(\mathcal W[f_t]\)">\(\mathcal W[f_t]\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-L] OpenAI, <em>The logarithmic Brunn-Minkowski conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Sections 1, 2 and 8.1. https://github.com/openai/math/tree/main/preprints/The-logarithmic-Brunn-Minkowski-conjecture-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

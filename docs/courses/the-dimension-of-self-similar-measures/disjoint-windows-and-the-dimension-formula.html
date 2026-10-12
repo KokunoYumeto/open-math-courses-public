@@ -1,0 +1,302 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Disjoint windows and the dimension formula</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The dimension of self-similar measures)</a><a href="block-types-and-pairs-at-fine-scales.html">Previous lesson</a><a href="src/disjoint-windows-and-the-dimension-formula.md">Editable source</a></nav><main><article><h1 id="disjoint-windows-and-the-dimension-formula">Disjoint windows and the dimension formula</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the dimension formula for self-similar measures on the line, from the results of the earlier lessons of the course:
+<span class="math math-display" data-tex="\[
+d=\min\Bigl\{1,\frac h\chi\Bigr\}.
+\]">\[
+d=\min\Bigl\{1,\frac h\chi\Bigr\}.
+\]</span>
+The upper bound is known. Suppose that <span class="math" data-tex="\(d&lt;1\)">\(d&lt;1\)</span> and <span class="math" data-tex="\(d\chi&lt;h\)">\(d\chi&lt;h\)</span>. Then the maps of <span class="math" data-tex="\(n\)">\(n\)</span> blocks carry pair capacity of the order <span class="math" data-tex="\(n\)">\(n\)</span> at fine scales, and every pair raises the entropy of the measure in a window of scales by a fixed amount, because the one-bit deficit of a measure of dimension less than one is bounded below. The entropy in a window of scales is bounded. The proof arranges many such gains, for many block lengths, so that at each scale they come from disjoint stretches of blocks and add up to at most the bound, while their number is as large as one likes. This is a contradiction.</p>
+<ul>
+<li>The laws of the tails and the entropy in a window of scales (Lemmas 2.1 and 2.2).</li>
+<li>The gain from the pairs of a stretch of blocks (Proposition 3.1).</li>
+<li>Retained windows are disjoint (Lemma 4.1).</li>
+<li>The dimension formula (Theorem 5.1) and the case without exact overlaps (Corollaries 6.2 and 6.3).</li>
+</ul>
+<p>The lesson follows [OpenAI-S, Sections 5 and 6]. It uses the results of all the earlier lessons of the course, above all <a href="block-types-and-pairs-at-fine-scales.html">Block types and pairs at fine scales</a>, <a href="the-gain-from-a-pair-of-points.html">The gain from a pair of points</a> and <a href="the-one-bit-deficit.html">The one-bit deficit of a self-similar measure</a>.</p>
+<h2 id="1-the-setting">1. The setting</h2>
+<p>Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the self-similar measure of the maps <span class="math" data-tex="\(\varphi_i(x)=r_ix+t_i\)">\(\varphi_i(x)=r_ix+t_i\)</span>, <span class="math" data-tex="\(0&lt;|r_i|&lt;1\)">\(0&lt;|r_i|&lt;1\)</span>, with the weights <span class="math" data-tex="\(p_i&gt;0\)">\(p_i&gt;0\)</span>. Assume that <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is exact dimensional with the dimension <span class="math" data-tex="\(d\)">\(d\)</span>, and, in Sections 1 to 4 and in the proof of Theorem 5.1, that
+<span class="math math-display" data-tex="\[
+d&lt;1\qquad\text{and}\qquad d\chi&lt;h .
+\]">\[
+d&lt;1\qquad\text{and}\qquad d\chi&lt;h .
+\]</span>
+The second assumption is the assumption (1) of the lesson on block types. We use the notation of that lesson: the block length <span class="math" data-tex="\(b\)">\(b\)</span>, the numbers <span class="math" data-tex="\(A&#x27;&lt;A\)">\(A&#x27;&lt;A\)</span>, the types <span class="math" data-tex="\(\omega_0,\omega_1,\dots\)">\(\omega_0,\omega_1,\dots\)</span> of the blocks <span class="math" data-tex="\(W_0,W_1,\dots\)">\(W_0,W_1,\dots\)</span>, the products <span class="math" data-tex="\(R_j\)">\(R_j\)</span> and <span class="math" data-tex="\(\sigma_j=-\log|R_j|\)">\(\sigma_j=-\log|R_j|\)</span>, the laws <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span>, the numbers <span class="math" data-tex="\(a_n=\lceil An\rceil-1\)">\(a_n=\lceil An\rceil-1\)</span>, and the numbers <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, <span class="math" data-tex="\(n_0\)">\(n_0\)</span> and <span class="math" data-tex="\(B_n\ge a_n\)">\(B_n\ge a_n\)</span> of Theorem 5.1 of that lesson. For integers <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> write
+<span class="math math-display" data-tex="\[
+\omega[j,j+n)=(\omega_j,\dots,\omega_{j+n-1}),
+\]">\[
+\omega[j,j+n)=(\omega_j,\dots,\omega_{j+n-1}),
+\]</span>
+and let <span class="math" data-tex="\(\Gamma_{j,n}\)">\(\Gamma_{j,n}\)</span> be the pair capacity of the stretch of blocks <span class="math" data-tex="\(j,\dots,j+n-1\)">\(j,\dots,j+n-1\)</span> in the range from <span class="math" data-tex="\(a_n\)">\(a_n\)</span> to <span class="math" data-tex="\(B_n\)">\(B_n\)</span>, counted only if the stretch does not contract too much:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Gamma_{j,n}&amp;=\mathbf 1_{\{\sigma_{j+n}-\sigma_j\le A&#x27;n\}}\\
+&amp;\quad\times\sum_{\ell=a_n}^{B_n}c_\ell\bigl(\nu_{\omega[j,j+n)}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Gamma_{j,n}&amp;=\mathbf 1_{\{\sigma_{j+n}-\sigma_j\le A&#x27;n\}}\\
+&amp;\quad\times\sum_{\ell=a_n}^{B_n}c_\ell\bigl(\nu_{\omega[j,j+n)}\bigr).
+\end{aligned}
+\]</span>
+The tuple <span class="math" data-tex="\(\omega[j,j+n)\)">\(\omega[j,j+n)\)</span> has the same law as <span class="math" data-tex="\(\Omega_n=\omega[0,n)\)">\(\Omega_n=\omega[0,n)\)</span>, so Theorem 5.1 of that lesson says, for <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E\,\Gamma_{j,n}\ge c\,n. \tag{2}
+\]">\[
+\mathbb E\,\Gamma_{j,n}\ge c\,n. \tag{2}
+\]</span>
+Three more constants are needed. Let
+<span class="math math-display" data-tex="\[
+D=\max_\kappa\bigl(-\log|r(\kappa)|\bigr),
+\]">\[
+D=\max_\kappa\bigl(-\log|r(\kappa)|\bigr),
+\]</span>
+the maximum over the types; so <span class="math" data-tex="\(0&lt;\sigma_{j+1}-\sigma_j\le D\)">\(0&lt;\sigma_{j+1}-\sigma_j\le D\)</span> and <span class="math" data-tex="\(\sigma_j\le Dj\)">\(\sigma_j\le Dj\)</span>. By Theorem 3.5 of the lesson on the one-bit deficit, which uses <span class="math" data-tex="\(d&lt;1\)">\(d&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\delta=\inf_{v&gt;0}\Delta_v(\mu)&gt;0 .
+\]">\[
+\delta=\inf_{v&gt;0}\Delta_v(\mu)&gt;0 .
+\]</span>
+Fix an integer <span class="math" data-tex="\(M&gt;4\)">\(M&gt;4\)</span> with <span class="math" data-tex="\(5/M&lt;\delta/2\)">\(5/M&lt;\delta/2\)</span>.</p>
+<h2 id="2-tails-and-the-entropy-in-a-window">2. Tails and the entropy in a window</h2>
+<p>Fix an integer <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, the number of blocks that are considered. For a tuple <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> of <span class="math" data-tex="\(n\)">\(n\)</span> types let <span class="math" data-tex="\(\lambda_\kappa=\nu_\kappa*\mathsf D_{R_n(\kappa)}\mu\)">\(\lambda_\kappa=\nu_\kappa*\mathsf D_{R_n(\kappa)}\mu\)</span>, and for the empty tuple let <span class="math" data-tex="\(\lambda_\kappa=\mu\)">\(\lambda_\kappa=\mu\)</span>. For <span class="math" data-tex="\(0\le j\le N\)">\(0\le j\le N\)</span> the <em>tail law</em> is
+<span class="math math-display" data-tex="\[
+\tau_j=\mathsf D_{R_j}\,\lambda_{\omega[j,N)} .
+\]">\[
+\tau_j=\mathsf D_{R_j}\,\lambda_{\omega[j,N)} .
+\]</span>
+It is a bounded law that depends on the types <span class="math" data-tex="\(\Omega_N\)">\(\Omega_N\)</span>. In words: <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> is the law of the part of the random point of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> that comes from the blocks <span class="math" data-tex="\(j,\dots,N-1\)">\(j,\dots,N-1\)</span> and from everything after them, when the types of the blocks <span class="math" data-tex="\(0,\dots,N-1\)">\(0,\dots,N-1\)</span> are known.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(0\le j\)">\(0\le j\)</span> and <span class="math" data-tex="\(j+n\le N\)">\(j+n\le N\)</span> with <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(\tau_j=\bigl(\mathsf D_{R_j}\nu_{\omega[j,j+n)}\bigr)*\tau_{j+n}\)">\(\tau_j=\bigl(\mathsf D_{R_j}\nu_{\omega[j,j+n)}\bigr)*\tau_{j+n}\)</span>.</li>
+<li>The mean of <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> over the types <span class="math" data-tex="\(\omega_j,\dots,\omega_{N-1}\)">\(\omega_j,\dots,\omega_{N-1}\)</span>, with <span class="math" data-tex="\(\Omega_j\)">\(\Omega_j\)</span> fixed, is <span class="math" data-tex="\(\mathsf D_{R_j}\mu\)">\(\mathsf D_{R_j}\mu\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) Let <span class="math" data-tex="\(\kappa=\omega[j,N)\)">\(\kappa=\omega[j,N)\)</span>, and number its types <span class="math" data-tex="\(\kappa_j,\dots,\kappa_{N-1}\)">\(\kappa_j,\dots,\kappa_{N-1}\)</span>. Let <span class="math" data-tex="\(W_h\)">\(W_h\)</span> be independent, uniform on the blocks of the type <span class="math" data-tex="\(\kappa_h\)">\(\kappa_h\)</span>, and <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span> independent of them with the law <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. With <span class="math" data-tex="\(P_h=\prod_{j\le i&lt;h}r(\kappa_i)=R_h/R_j\)">\(P_h=\prod_{j\le i&lt;h}r(\kappa_i)=R_h/R_j\)</span>, the law <span class="math" data-tex="\(\lambda_\kappa\)">\(\lambda_\kappa\)</span> is the law of
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{h=j}^{j+n-1}P_h\,\varphi_{W_h}(0)+P_{j+n}\,Z,\\
+&amp;Z=\sum_{h=j+n}^{N-1}\frac{P_h}{P_{j+n}}\,\varphi_{W_h}(0)+\frac{P_N}{P_{j+n}}X&#x27;.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{h=j}^{j+n-1}P_h\,\varphi_{W_h}(0)+P_{j+n}\,Z,\\
+&amp;Z=\sum_{h=j+n}^{N-1}\frac{P_h}{P_{j+n}}\,\varphi_{W_h}(0)+\frac{P_N}{P_{j+n}}X&#x27;.
+\end{aligned}
+\]</span>
+The first sum has the law <span class="math" data-tex="\(\nu_{\omega[j,j+n)}\)">\(\nu_{\omega[j,j+n)}\)</span>. The variable <span class="math" data-tex="\(Z\)">\(Z\)</span> has the law <span class="math" data-tex="\(\lambda_{\omega[j+n,N)}\)">\(\lambda_{\omega[j+n,N)}\)</span> and is independent of the first sum. Multiply by <span class="math" data-tex="\(R_j\)">\(R_j\)</span> and note <span class="math" data-tex="\(R_jP_{j+n}=R_{j+n}\)">\(R_jP_{j+n}=R_{j+n}\)</span>.</p>
+<p>(2) By Lemma 3.1 of the lesson on block types, the mean of <span class="math" data-tex="\(\lambda_\kappa\)">\(\lambda_\kappa\)</span> over the tuples <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> of <span class="math" data-tex="\(N-j\)">\(N-j\)</span> types, with the weights <span class="math" data-tex="\(q_\kappa\)">\(q_\kappa\)</span>, is <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. The types <span class="math" data-tex="\(\omega_j,\dots,\omega_{N-1}\)">\(\omega_j,\dots,\omega_{N-1}\)</span> are independent of <span class="math" data-tex="\(\Omega_j\)">\(\Omega_j\)</span>, and <span class="math" data-tex="\(R_j\)">\(R_j\)</span> is determined by <span class="math" data-tex="\(\Omega_j\)">\(\Omega_j\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For an integer <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span> let <span class="math" data-tex="\(\varrho=2^{-L}\)">\(\varrho=2^{-L}\)</span>, and let
+<span class="math math-display" data-tex="\[
+g_j=G_{\varrho/M,\,M\varrho}(\tau_j)\qquad(0\le j\le N).
+\]">\[
+g_j=G_{\varrho/M,\,M\varrho}(\tau_j)\qquad(0\le j\le N).
+\]</span>
+This is the entropy of the tail between the scales <span class="math" data-tex="\(M\varrho\)">\(M\varrho\)</span> and <span class="math" data-tex="\(\varrho/M\)">\(\varrho/M\)</span>, a window around the scale <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span>. It depends on <span class="math" data-tex="\(L\)">\(L\)</span> and on the types.</p>
+<p><strong>Lemma 2.2.</strong> <span class="math" data-tex="\(0\le g_j\le2\log M\)">\(0\le g_j\le2\log M\)</span>, and <span class="math" data-tex="\(g_j\ge g_{j+1}\)">\(g_j\ge g_{j+1}\)</span> for <span class="math" data-tex="\(j&lt;N\)">\(j&lt;N\)</span>.</p>
+<p><strong>Proof.</strong> The ratio of the two scales is the integer <span class="math" data-tex="\(M^2\)">\(M^2\)</span>, so the first statement is Proposition 2.1 of the lesson on entropy at a scale. By Lemma 2.1 (1) with <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> is the law of a sum of two independent bounded variables, one of them with the law <span class="math" data-tex="\(\tau_{j+1}\)">\(\tau_{j+1}\)</span>; so the second statement is Proposition 2.4 (2) of that lesson. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-gain-from-the-pairs-of-a-stretch-of-blocks">3. The gain from the pairs of a stretch of blocks</h2>
+<p><strong>Proposition 3.1.</strong> Let <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> with <span class="math" data-tex="\(j+n\le N\)">\(j+n\le N\)</span>, and <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span>. Then the mean of <span class="math" data-tex="\(g_j-g_{j+n}\)">\(g_j-g_{j+n}\)</span> over the types <span class="math" data-tex="\(\omega_{j+n},\dots,\omega_{N-1}\)">\(\omega_{j+n},\dots,\omega_{N-1}\)</span>, with <span class="math" data-tex="\(\Omega_{j+n}\)">\(\Omega_{j+n}\)</span> fixed, satisfies
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\bigl[g_j-g_{j+n}\bigm|\Omega_{j+n}\bigr]\\
+&amp;\quad\ge\frac\delta2\;c_{L-\lceil\sigma_j\rceil}\bigl(\nu_{\omega[j,j+n)}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\bigl[g_j-g_{j+n}\bigm|\Omega_{j+n}\bigr]\\
+&amp;\quad\ge\frac\delta2\;c_{L-\lceil\sigma_j\rceil}\bigl(\nu_{\omega[j,j+n)}\bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(\Omega_{j+n}\)">\(\Omega_{j+n}\)</span>. Then <span class="math" data-tex="\(\nu=\nu_{\omega[j,j+n)}\)">\(\nu=\nu_{\omega[j,j+n)}\)</span>, <span class="math" data-tex="\(R_j\)">\(R_j\)</span>, <span class="math" data-tex="\(R_{j+n}\)">\(R_{j+n}\)</span> and <span class="math" data-tex="\(\ell=L-\lceil\sigma_j\rceil\)">\(\ell=L-\lceil\sigma_j\rceil\)</span> are fixed. Choose a feasible family of weights <span class="math" data-tex="\(w_e\)">\(w_e\)</span> on the pairs <span class="math" data-tex="\(e=\{x,y\}\)">\(e=\{x,y\}\)</span> of points of the support of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> with <span class="math" data-tex="\(2^{-\ell}\le|x-y|&lt;2^{1-\ell}\)">\(2^{-\ell}\le|x-y|&lt;2^{1-\ell}\)</span>, with <span class="math" data-tex="\(\sum_ew_e=c_\ell(\nu)\)">\(\sum_ew_e=c_\ell(\nu)\)</span>.</p>
+<p>The law <span class="math" data-tex="\(\mathsf D_{R_j}\nu\)">\(\mathsf D_{R_j}\nu\)</span> gives the point <span class="math" data-tex="\(R_jx\)">\(R_jx\)</span> the mass <span class="math" data-tex="\(\nu(\{x\})\)">\(\nu(\{x\})\)</span>. So the same weights, on the pairs <span class="math" data-tex="\(\{R_jx,R_jy\}\)">\(\{R_jx,R_jy\}\)</span>, satisfy the condition of Theorem 2.3 of the lesson on the gain from a pair of points for the law <span class="math" data-tex="\(\mathsf D_{R_j}\nu\)">\(\mathsf D_{R_j}\nu\)</span>. The size of such a pair is <span class="math" data-tex="\(v_e=|R_j|\,|x-y|\)">\(v_e=|R_j|\,|x-y|\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{v_e}\varrho&amp;=2^{L-\sigma_j}\,|x-y|\\
+&amp;\in\bigl[2^{\lceil\sigma_j\rceil-\sigma_j},\,2^{1+\lceil\sigma_j\rceil-\sigma_j}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{v_e}\varrho&amp;=2^{L-\sigma_j}\,|x-y|\\
+&amp;\in\bigl[2^{\lceil\sigma_j\rceil-\sigma_j},\,2^{1+\lceil\sigma_j\rceil-\sigma_j}\bigr),
+\end{aligned}
+\]</span>
+an interval that lies in <span class="math" data-tex="\([1,4)\)">\([1,4)\)</span>.
+Let <span class="math" data-tex="\(s=\varrho/M\)">\(s=\varrho/M\)</span> and <span class="math" data-tex="\(t=M\varrho\)">\(t=M\varrho\)</span>. Since <span class="math" data-tex="\(M&gt;4\)">\(M&gt;4\)</span>, <span class="math" data-tex="\(s&lt;v_e&lt;t\)">\(s&lt;v_e&lt;t\)</span>, and
+<span class="math math-display" data-tex="\[
+\frac s{v_e}+\frac{v_e}t\le\frac1M+\frac4M=\frac5M .
+\]">\[
+\frac s{v_e}+\frac{v_e}t\le\frac1M+\frac4M=\frac5M .
+\]</span>
+By Lemma 2.1 (1), <span class="math" data-tex="\(\tau_j=(\mathsf D_{R_j}\nu)*\tau_{j+n}\)">\(\tau_j=(\mathsf D_{R_j}\nu)*\tau_{j+n}\)</span>. Theorem 2.3 of that lesson, with <span class="math" data-tex="\(t=M^2s\)">\(t=M^2s\)</span>, gives
+<span class="math math-display" data-tex="\[
+g_j-g_{j+n}\ \ge\ \sum_ew_e\Bigl(\Delta_{v_e}(\tau_{j+n})-\frac5M\Bigr).
+\]">\[
+g_j-g_{j+n}\ \ge\ \sum_ew_e\Bigl(\Delta_{v_e}(\tau_{j+n})-\frac5M\Bigr).
+\]</span>
+Now take the mean over the types <span class="math" data-tex="\(\omega_{j+n},\dots,\omega_{N-1}\)">\(\omega_{j+n},\dots,\omega_{N-1}\)</span>. The <span class="math" data-tex="\(w_e\)">\(w_e\)</span> and <span class="math" data-tex="\(v_e\)">\(v_e\)</span> do not depend on them. By Lemma 2.1 (2) the mean of the laws <span class="math" data-tex="\(\tau_{j+n}\)">\(\tau_{j+n}\)</span> is <span class="math" data-tex="\(\mathsf D_{R_{j+n}}\mu\)">\(\mathsf D_{R_{j+n}}\mu\)</span>. By Proposition 2.4 (3) of the lesson on entropy at a scale, the mean of the deficits is at least the deficit of the mean, and by Lemma 1.1 of that lesson a change of scale of the law is a change of the scale of the grid:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\bigl[\Delta_{v_e}(\tau_{j+n})\bigm|\Omega_{j+n}\bigr]\\
+&amp;\quad\ge\Delta_{v_e}\bigl(\mathsf D_{R_{j+n}}\mu\bigr)\\
+&amp;\quad=\Delta_{v_e/|R_{j+n}|}(\mu)\ \ge\ \delta .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\bigl[\Delta_{v_e}(\tau_{j+n})\bigm|\Omega_{j+n}\bigr]\\
+&amp;\quad\ge\Delta_{v_e}\bigl(\mathsf D_{R_{j+n}}\mu\bigr)\\
+&amp;\quad=\Delta_{v_e/|R_{j+n}|}(\mu)\ \ge\ \delta .
+\end{aligned}
+\]</span>
+So the mean of <span class="math" data-tex="\(g_j-g_{j+n}\)">\(g_j-g_{j+n}\)</span> is at least <span class="math" data-tex="\(\sum_ew_e(\delta-\tfrac5M)\ge\tfrac\delta2\,c_\ell(\nu)\)">\(\sum_ew_e(\delta-\tfrac5M)\ge\tfrac\delta2\,c_\ell(\nu)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>A single tail law <span class="math" data-tex="\(\tau_{j+n}\)">\(\tau_{j+n}\)</span>, for given types, need not have a deficit bounded below. The proof uses the bound for <span class="math" data-tex="\(\mu\)">\(\mu\)</span> itself, and for this it averages over the types after the stretch: their mean is a copy of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<h2 id="4-disjoint-windows">4. Disjoint windows</h2>
+<p>Let <span class="math" data-tex="\(Q\ge1\)">\(Q\ge1\)</span> be an integer. Choose integers <span class="math" data-tex="\(n_0\le n_1&lt;n_2&lt;\dots&lt;n_Q\)">\(n_0\le n_1&lt;n_2&lt;\dots&lt;n_Q\)</span> one after the other such that <span class="math" data-tex="\(a_{n_i}\ge1\)">\(a_{n_i}\ge1\)</span> and, for all <span class="math" data-tex="\(h&lt;i\)">\(h&lt;i\)</span>,
+<span class="math math-display" data-tex="\[
+a_{n_i}-A&#x27;n_i-1&gt;B_{n_h}. \tag{3}
+\]">\[
+a_{n_i}-A&#x27;n_i-1&gt;B_{n_h}. \tag{3}
+\]</span>
+This is possible, because the earlier numbers <span class="math" data-tex="\(B_{n_h}\)">\(B_{n_h}\)</span> are known when <span class="math" data-tex="\(n_i\)">\(n_i\)</span> is chosen, and <span class="math" data-tex="\(a_n-A&#x27;n-1\ge(A-A&#x27;)\,n-2\)">\(a_n-A&#x27;n-1\ge(A-A&#x27;)\,n-2\)</span>, which tends to infinity with <span class="math" data-tex="\(n\)">\(n\)</span>.
+No bound for the size of <span class="math" data-tex="\(B_n\)">\(B_n\)</span> is needed. The integers <span class="math" data-tex="\(\ell\)">\(\ell\)</span> with <span class="math" data-tex="\(a_{n_i}\le\ell\le B_{n_i}\)">\(a_{n_i}\le\ell\le B_{n_i}\)</span> form the <em>band</em> <span class="math" data-tex="\(i\)">\(i\)</span>. By (3) the bands are disjoint, and a band with a larger <span class="math" data-tex="\(i\)">\(i\)</span> consists of larger <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, that is, of finer scales.</p>
+<p>Choose an even integer <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(T/2&gt;B_{n_i}\)">\(T/2&gt;B_{n_i}\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>. For each band let <span class="math" data-tex="\(J_i\)">\(J_i\)</span> be the set of the numbers <span class="math" data-tex="\(k\,n_i\)">\(k\,n_i\)</span>, where <span class="math" data-tex="\(k\)">\(k\)</span> is an integer with <span class="math" data-tex="\(0\le k\le T/(2Dn_i)\)">\(0\le k\le T/(2Dn_i)\)</span>, and let <span class="math" data-tex="\(N\)">\(N\)</span> be at least <span class="math" data-tex="\(j+n_i\)">\(j+n_i\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span> and all <span class="math" data-tex="\(j\in J_i\)">\(j\in J_i\)</span>. For <span class="math" data-tex="\(L\in\{1,\dots,T\}\)">\(L\in\{1,\dots,T\}\)</span>, <span class="math" data-tex="\(1\le i\le Q\)">\(1\le i\le Q\)</span> and <span class="math" data-tex="\(j\in J_i\)">\(j\in J_i\)</span>, the <em>window</em> <span class="math" data-tex="\([j,j+n_i)\)">\([j,j+n_i)\)</span> of block indices is <em>retained</em> for <span class="math" data-tex="\(L\)">\(L\)</span> if
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma_{j+n_i}-\sigma_j\le A&#x27;n_i\quad\text{and}\\
+a_{n_i}\le L-\lceil\sigma_j\rceil\le B_{n_i}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sigma_{j+n_i}-\sigma_j\le A&#x27;n_i\quad\text{and}\\
+a_{n_i}\le L-\lceil\sigma_j\rceil\le B_{n_i}.
+\end{gathered}
+\]</span>
+This is an event <span class="math" data-tex="\(\mathcal A_{i,j,L}\)">\(\mathcal A_{i,j,L}\)</span> that is determined by <span class="math" data-tex="\(\Omega_{j+n_i}\)">\(\Omega_{j+n_i}\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> For all types and every <span class="math" data-tex="\(L\in\{1,\dots,T\}\)">\(L\in\{1,\dots,T\}\)</span>, the windows retained for <span class="math" data-tex="\(L\)">\(L\)</span> are pairwise disjoint, and
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^Q\sum_{j\in J_i}\mathbf 1_{\mathcal A_{i,j,L}}\,\bigl(g_j-g_{j+n_i}\bigr)\le2\log M .
+\]">\[
+\sum_{i=1}^Q\sum_{j\in J_i}\mathbf 1_{\mathcal A_{i,j,L}}\,\bigl(g_j-g_{j+n_i}\bigr)\le2\log M .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(x_j=L-\lceil\sigma_j\rceil\)">\(x_j=L-\lceil\sigma_j\rceil\)</span>. Since <span class="math" data-tex="\(\sigma_j\)">\(\sigma_j\)</span> increases with <span class="math" data-tex="\(j\)">\(j\)</span>, <span class="math" data-tex="\(x_j\)">\(x_j\)</span> does not increase. Let the window <span class="math" data-tex="\([j,j+n_i)\)">\([j,j+n_i)\)</span> of the band <span class="math" data-tex="\(i\)">\(i\)</span> be retained. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\lceil\sigma_{j+n_i}\rceil-\lceil\sigma_j\rceil&amp;\le\sigma_{j+n_i}-\sigma_j+1\\
+&amp;\le A&#x27;n_i+1,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\lceil\sigma_{j+n_i}\rceil-\lceil\sigma_j\rceil&amp;\le\sigma_{j+n_i}-\sigma_j+1\\
+&amp;\le A&#x27;n_i+1,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(x_{j+n_i}\ge a_{n_i}-A&#x27;n_i-1\)">\(x_{j+n_i}\ge a_{n_i}-A&#x27;n_i-1\)</span>. Let <span class="math" data-tex="\([k,k+n_h)\)">\([k,k+n_h)\)</span> be a retained window of a band <span class="math" data-tex="\(h&lt;i\)">\(h&lt;i\)</span>. Then <span class="math" data-tex="\(x_k\le B_{n_h}\)">\(x_k\le B_{n_h}\)</span>, and by (3)
+<span class="math math-display" data-tex="\[
+x_{j+n_i}&gt;B_{n_h}\ge x_k .
+\]">\[
+x_{j+n_i}&gt;B_{n_h}\ge x_k .
+\]</span>
+Because <span class="math" data-tex="\(x\)">\(x\)</span> does not increase, <span class="math" data-tex="\(k&gt;j+n_i\)">\(k&gt;j+n_i\)</span>: the window of the finer band ends before the window of the coarser band begins. Two different windows of the same band begin at different multiples of their length <span class="math" data-tex="\(n_i\)">\(n_i\)</span>, so they are disjoint as well.</p>
+<p>If no window is retained, the sum in the statement is <span class="math" data-tex="\(0\)">\(0\)</span>. Otherwise list the retained windows in their order as <span class="math" data-tex="\([u_1,v_1),\dots,[u_P,v_P)\)">\([u_1,v_1),\dots,[u_P,v_P)\)</span> with <span class="math" data-tex="\(v_z\le u_{z+1}\)">\(v_z\le u_{z+1}\)</span>. By Lemma 2.2, <span class="math" data-tex="\(g_{v_z}\ge g_{u_{z+1}}\)">\(g_{v_z}\ge g_{u_{z+1}}\)</span>, so
+<span class="math math-display" data-tex="\[
+\sum_{z=1}^P\bigl(g_{u_z}-g_{v_z}\bigr)\le g_{u_1}-g_{v_P}\le2\log M .
+\]">\[
+\sum_{z=1}^P\bigl(g_{u_z}-g_{v_z}\bigr)\le g_{u_1}-g_{v_P}\le2\log M .
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So at one scale <span class="math" data-tex="\(\varrho=2^{-L}\)">\(\varrho=2^{-L}\)</span> the retained windows share one bounded amount of entropy. The condition <span class="math" data-tex="\(a_{n_i}\le L-\lceil\sigma_j\rceil\le B_{n_i}\)">\(a_{n_i}\le L-\lceil\sigma_j\rceil\le B_{n_i}\)</span> says that the pairs of the band <span class="math" data-tex="\(i\)">\(i\)</span> in the stretch of blocks beginning at <span class="math" data-tex="\(j\)">\(j\)</span>, contracted by <span class="math" data-tex="\(R_j\)">\(R_j\)</span>, have sizes near <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span>; these are the pairs that Proposition 3.1 uses.</p>
+<h2 id="5-the-dimension-formula">5. The dimension formula</h2>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a self-similar measure on the line, for maps <span class="math" data-tex="\(\varphi_i(x)=r_ix+t_i\)">\(\varphi_i(x)=r_ix+t_i\)</span> with <span class="math" data-tex="\(0&lt;|r_i|&lt;1\)">\(0&lt;|r_i|&lt;1\)</span> and weights <span class="math" data-tex="\(p_i&gt;0\)">\(p_i&gt;0\)</span>, that is exact dimensional with the dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Then
+<span class="math math-display" data-tex="\[
+d=\min\Bigl\{1,\frac h\chi\Bigr\},
+\]">\[
+d=\min\Bigl\{1,\frac h\chi\Bigr\},
+\]</span>
+where <span class="math" data-tex="\(h\)">\(h\)</span> is the entropy rate of the walk of maps and <span class="math" data-tex="\(\chi=-\sum_ip_i\log|r_i|\)">\(\chi=-\sum_ip_i\log|r_i|\)</span>. Under the hypothesis (ED) of the lesson on the one-bit deficit this holds for every self-similar measure on the line.</p>
+<p><strong>Proof.</strong> By Theorem 3.3 of the lesson on the random walk of maps, <span class="math" data-tex="\(d\le\min\{1,h/\chi\}\)">\(d\le\min\{1,h/\chi\}\)</span>. If the inequality is strict, then <span class="math" data-tex="\(d&lt;1\)">\(d&lt;1\)</span> and <span class="math" data-tex="\(d\chi&lt;h\)">\(d\chi&lt;h\)</span>, the assumptions of Section 1. We show that then every integer <span class="math" data-tex="\(Q\ge1\)">\(Q\ge1\)</span> satisfies
+<span class="math math-display" data-tex="\[
+Q\le\frac{8D\log M}{\delta\,c}. \tag{4}
+\]">\[
+Q\le\frac{8D\log M}{\delta\,c}. \tag{4}
+\]</span>
+The right side was fixed before <span class="math" data-tex="\(Q\)">\(Q\)</span>, so this is impossible, and the theorem follows.</p>
+<p>Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be given, and choose the <span class="math" data-tex="\(n_i\)">\(n_i\)</span>, <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(J_i\)">\(J_i\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> as in Section 4. Take the mean over the types in Lemma 4.1 and sum over <span class="math" data-tex="\(L=1,\dots,T\)">\(L=1,\dots,T\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;2T\log M\\
+&amp;\quad\ge\sum_{i,j,L}\mathbb E\bigl[\mathbf 1_{\mathcal A_{i,j,L}}\,(g_j-g_{j+n_i})\bigr],
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;2T\log M\\
+&amp;\quad\ge\sum_{i,j,L}\mathbb E\bigl[\mathbf 1_{\mathcal A_{i,j,L}}\,(g_j-g_{j+n_i})\bigr],
+\end{aligned}
+\]</span>
+where the sum is over <span class="math" data-tex="\(1\le i\le Q\)">\(1\le i\le Q\)</span>, <span class="math" data-tex="\(j\in J_i\)">\(j\in J_i\)</span> and <span class="math" data-tex="\(1\le L\le T\)">\(1\le L\le T\)</span>.
+The event <span class="math" data-tex="\(\mathcal A_{i,j,L}\)">\(\mathcal A_{i,j,L}\)</span> is determined by <span class="math" data-tex="\(\Omega_{j+n_i}\)">\(\Omega_{j+n_i}\)</span>. So in each term one may first take the mean over the later types, and Proposition 3.1 gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\bigl[\mathbf 1_{\mathcal A_{i,j,L}}\,(g_j-g_{j+n_i})\bigr]\\
+&amp;\quad\ge\frac\delta2\,\mathbb E\Bigl[\mathbf 1_{\mathcal A_{i,j,L}}\;c_{L-\lceil\sigma_j\rceil}\bigl(\nu_{\omega[j,j+n_i)}\bigr)\Bigr].
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\bigl[\mathbf 1_{\mathcal A_{i,j,L}}\,(g_j-g_{j+n_i})\bigr]\\
+&amp;\quad\ge\frac\delta2\,\mathbb E\Bigl[\mathbf 1_{\mathcal A_{i,j,L}}\;c_{L-\lceil\sigma_j\rceil}\bigl(\nu_{\omega[j,j+n_i)}\bigr)\Bigr].
+\end{aligned}
+\]</span>
+Fix <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(j\in J_i\)">\(j\in J_i\)</span>. Since <span class="math" data-tex="\(\sigma_j\le Dj\le T/2\)">\(\sigma_j\le Dj\le T/2\)</span> and <span class="math" data-tex="\(T/2\)">\(T/2\)</span> is an integer, <span class="math" data-tex="\(0\le\lceil\sigma_j\rceil\le T/2\)">\(0\le\lceil\sigma_j\rceil\le T/2\)</span>. For every <span class="math" data-tex="\(\ell\)">\(\ell\)</span> with <span class="math" data-tex="\(a_{n_i}\le\ell\le B_{n_i}\)">\(a_{n_i}\le\ell\le B_{n_i}\)</span> the number <span class="math" data-tex="\(L=\ell+\lceil\sigma_j\rceil\)">\(L=\ell+\lceil\sigma_j\rceil\)</span> satisfies <span class="math" data-tex="\(1\le L&lt;T\)">\(1\le L&lt;T\)</span>, because <span class="math" data-tex="\(a_{n_i}\ge1\)">\(a_{n_i}\ge1\)</span> and <span class="math" data-tex="\(B_{n_i}&lt;T/2\)">\(B_{n_i}&lt;T/2\)</span>. So as <span class="math" data-tex="\(L\)">\(L\)</span> runs through <span class="math" data-tex="\(1,\dots,T\)">\(1,\dots,T\)</span>, the number <span class="math" data-tex="\(L-\lceil\sigma_j\rceil\)">\(L-\lceil\sigma_j\rceil\)</span> takes every value of the band <span class="math" data-tex="\(i\)">\(i\)</span> exactly once, and
+<span class="math math-display" data-tex="\[
+\sum_{L=1}^T\mathbf 1_{\mathcal A_{i,j,L}}\;c_{L-\lceil\sigma_j\rceil}\bigl(\nu_{\omega[j,j+n_i)}\bigr)=\Gamma_{j,n_i}.
+\]">\[
+\sum_{L=1}^T\mathbf 1_{\mathcal A_{i,j,L}}\;c_{L-\lceil\sigma_j\rceil}\bigl(\nu_{\omega[j,j+n_i)}\bigr)=\Gamma_{j,n_i}.
+\]</span>
+By (2) the mean of the right side is at least <span class="math" data-tex="\(c\,n_i\)">\(c\,n_i\)</span>. The set <span class="math" data-tex="\(J_i\)">\(J_i\)</span> has at least <span class="math" data-tex="\(T/(2Dn_i)\)">\(T/(2Dn_i)\)</span> elements. Together,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+2T\log M&amp;\ge\frac\delta2\sum_{i=1}^Q|J_i|\,c\,n_i\\
+&amp;\ge\frac\delta2\cdot Q\cdot\frac T{2D}\cdot c ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+2T\log M&amp;\ge\frac\delta2\sum_{i=1}^Q|J_i|\,c\,n_i\\
+&amp;\ge\frac\delta2\cdot Q\cdot\frac T{2D}\cdot c ,
+\end{aligned}
+\]</span>
+which is (4). <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Every band contributes the same amount <span class="math" data-tex="\(\delta cT/(4D)\)">\(\delta cT/(4D)\)</span>, whatever its block length <span class="math" data-tex="\(n_i\)">\(n_i\)</span> is: a longer block has fewer starting points in <span class="math" data-tex="\(J_i\)">\(J_i\)</span> and more pair capacity for each. The bound <span class="math" data-tex="\(2T\log M\)">\(2T\log M\)</span> does not grow with the number of bands, because of Lemma 4.1.</p>
+<h2 id="6-without-exact-overlaps">6. Without exact overlaps</h2>
+<p><strong>Lemma 6.1.</strong> If <span class="math" data-tex="\(\varphi_u=\varphi_v\)">\(\varphi_u=\varphi_v\)</span> for two different nonempty words <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, of any lengths, then there are two different words of the same length that give the same map.</p>
+<p><strong>Proof.</strong> The word <span class="math" data-tex="\(u\)">\(u\)</span> is not a beginning of <span class="math" data-tex="\(v\)">\(v\)</span>: if <span class="math" data-tex="\(v=uw\)">\(v=uw\)</span> with a nonempty word <span class="math" data-tex="\(w\)">\(w\)</span>, then <span class="math" data-tex="\(\varphi_u\circ\varphi_w=\varphi_u\)">\(\varphi_u\circ\varphi_w=\varphi_u\)</span>, and since <span class="math" data-tex="\(\varphi_u\)">\(\varphi_u\)</span> is one-to-one, <span class="math" data-tex="\(\varphi_w\)">\(\varphi_w\)</span> is the identity; but its slope has an absolute value less than <span class="math" data-tex="\(1\)">\(1\)</span>. In the same way <span class="math" data-tex="\(v\)">\(v\)</span> is not a beginning of <span class="math" data-tex="\(u\)">\(u\)</span>. Now <span class="math" data-tex="\(\varphi_{uv}=\varphi_u\circ\varphi_v\)">\(\varphi_{uv}=\varphi_u\circ\varphi_v\)</span> and <span class="math" data-tex="\(\varphi_{vu}=\varphi_v\circ\varphi_u\)">\(\varphi_{vu}=\varphi_v\circ\varphi_u\)</span> are the same map, the square of <span class="math" data-tex="\(\varphi_u=\varphi_v\)">\(\varphi_u=\varphi_v\)</span>. The words <span class="math" data-tex="\(uv\)">\(uv\)</span> and <span class="math" data-tex="\(vu\)">\(vu\)</span> have the same length. If they were equal, then the shorter of <span class="math" data-tex="\(u,v\)">\(u,v\)</span> would be a beginning of the other, or <span class="math" data-tex="\(u=v\)">\(u=v\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So the absence of exact overlaps, defined for words of the same length, means that different words never give the same map.</p>
+<p><strong>Corollary 6.2.</strong> Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be as in Theorem 5.1, and let the maps have no exact overlaps. Then
+<span class="math math-display" data-tex="\[
+d=\min\Bigl\{1,\frac{H(p)}\chi\Bigr\}.
+\]">\[
+d=\min\Bigl\{1,\frac{H(p)}\chi\Bigr\}.
+\]</span></p>
+<p><strong>Proof.</strong> By Proposition 1.2 of the lesson on the random walk of maps, <span class="math" data-tex="\(h=H(p)\)">\(h=H(p)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 6.3.</strong> Let <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, and let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the self-similar measure of maps <span class="math" data-tex="\(x\mapsto\lambda x+t_i\)">\(x\mapsto\lambda x+t_i\)</span>, <span class="math" data-tex="\(i\in\Lambda\)">\(i\in\Lambda\)</span>, with weights <span class="math" data-tex="\(p_i&gt;0\)">\(p_i&gt;0\)</span>. If <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is exact dimensional with the dimension <span class="math" data-tex="\(d\)">\(d\)</span> and the maps have no exact overlaps, then
+<span class="math math-display" data-tex="\[
+d=\min\Bigl\{1,\frac{H(p)}{\log(1/\lambda)}\Bigr\}.
+\]">\[
+d=\min\Bigl\{1,\frac{H(p)}{\log(1/\lambda)}\Bigr\}.
+\]</span>
+This holds in particular for three maps <span class="math" data-tex="\(\lambda x\)">\(\lambda x\)</span>, <span class="math" data-tex="\(\lambda x+1\)">\(\lambda x+1\)</span>, <span class="math" data-tex="\(\lambda x+t\)">\(\lambda x+t\)</span> without exact overlaps and all weights <span class="math" data-tex="\(p_0,p_1,p_2&gt;0\)">\(p_0,p_1,p_2&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> Here <span class="math" data-tex="\(\chi=\log(1/\lambda)\)">\(\chi=\log(1/\lambda)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Example 6.4.</strong> For the maps <span class="math" data-tex="\(\lambda x\)">\(\lambda x\)</span> and <span class="math" data-tex="\(\lambda x+1\)">\(\lambda x+1\)</span>, the word <span class="math" data-tex="\(i_1\cdots i_n\)">\(i_1\cdots i_n\)</span> gives the map <span class="math" data-tex="\(\lambda^nx+\sum_k\lambda^{k-1}i_k\)">\(\lambda^nx+\sum_k\lambda^{k-1}i_k\)</span>. So there is an exact overlap exactly if <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a root of a polynomial, not identically zero, with coefficients in <span class="math" data-tex="\(\{-1,0,1\}\)">\(\{-1,0,1\}\)</span>. For every other <span class="math" data-tex="\(\lambda\in[\tfrac12,1)\)">\(\lambda\in[\tfrac12,1)\)</span> and the weights <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>, Corollary 6.3 gives <span class="math" data-tex="\(d=1\)">\(d=1\)</span> under the hypothesis (ED). For the maps <span class="math" data-tex="\(\tfrac x3\)">\(\tfrac x3\)</span>, <span class="math" data-tex="\(\tfrac x3+1\)">\(\tfrac x3+1\)</span>, <span class="math" data-tex="\(\tfrac x3+3\)">\(\tfrac x3+3\)</span> with equal weights, which have an exact overlap, Theorem 5.1 gives <span class="math" data-tex="\(d=h/\log3\)">\(d=h/\log3\)</span> under the same hypothesis, and <span class="math" data-tex="\(h&lt;1.3607\)">\(h&lt;1.3607\)</span> by Example 3.5 of the lesson on the random walk of maps.</p>
+<p>[OpenAI-S, Section 6] also deduces that the attractor of maps without exact overlaps has the Hausdorff dimension <span class="math" data-tex="\(\min\{1,s_*\}\)">\(\min\{1,s_*\}\)</span>, where <span class="math" data-tex="\(\sum_i|r_i|^{s_*}=1\)">\(\sum_i|r_i|^{s_*}=1\)</span>. This statement about sets needs the Hausdorff dimension and is not part of the course.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> In the proof of Proposition 3.1 the ratio <span class="math" data-tex="\(R_j\)">\(R_j\)</span> may be negative. Check that the family of pairs <span class="math" data-tex="\(\{R_jx,R_jy\}\)">\(\{R_jx,R_jy\}\)</span> with the weights <span class="math" data-tex="\(w_e\)">\(w_e\)</span> is feasible for <span class="math" data-tex="\(\mathsf D_{R_j}\nu\)">\(\mathsf D_{R_j}\nu\)</span>, and say where the proof of Proposition 3.1 uses the absolute value <span class="math" data-tex="\(|R_j|\)">\(|R_j|\)</span> and where the sign is kept.</p>
+<p><strong>7.2.</strong> Let <span class="math" data-tex="\(Q=2\)">\(Q=2\)</span>, <span class="math" data-tex="\(A=2\)">\(A=2\)</span>, <span class="math" data-tex="\(A&#x27;=1\)">\(A&#x27;=1\)</span>, so that <span class="math" data-tex="\(a_n=2n-1\)">\(a_n=2n-1\)</span>, and let <span class="math" data-tex="\(B_{n_1}=a_{n_1}+5\)">\(B_{n_1}=a_{n_1}+5\)</span> for <span class="math" data-tex="\(n_1=2\)">\(n_1=2\)</span>. Find the smallest <span class="math" data-tex="\(n_2\)">\(n_2\)</span> allowed by (3).</p>
+<p><strong>7.3.</strong> Show that <span class="math" data-tex="\(H(G_n)\le n\log m\)">\(H(G_n)\le n\log m\)</span> and <span class="math" data-tex="\(\chi\ge\log(1/r_{\max})\)">\(\chi\ge\log(1/r_{\max})\)</span>, and deduce from Theorem 5.1 that <span class="math" data-tex="\(d&lt;1\)">\(d&lt;1\)</span> whenever <span class="math" data-tex="\(m\,r_{\max}&lt;1\)">\(m\,r_{\max}&lt;1\)</span>.</p>
+<p><strong>7.4.</strong> Let <span class="math" data-tex="\(\lambda=\tfrac{\sqrt5-1}2\)">\(\lambda=\tfrac{\sqrt5-1}2\)</span>, so that <span class="math" data-tex="\(\lambda^2+\lambda=1\)">\(\lambda^2+\lambda=1\)</span>. Find two different words of the same length that give the same map for <span class="math" data-tex="\(\lambda x\)">\(\lambda x\)</span> and <span class="math" data-tex="\(\lambda x+1\)">\(\lambda x+1\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> The law <span class="math" data-tex="\(\mathsf D_{R_j}\nu\)">\(\mathsf D_{R_j}\nu\)</span> has the mass <span class="math" data-tex="\(\nu(\{x\})\)">\(\nu(\{x\})\)</span> at <span class="math" data-tex="\(R_jx\)">\(R_jx\)</span>, and <span class="math" data-tex="\(x\mapsto R_jx\)">\(x\mapsto R_jx\)</span> is one-to-one. So <span class="math" data-tex="\(\tfrac12\sum_{e\ni x}w_e\le\nu(\{x\})\)">\(\tfrac12\sum_{e\ni x}w_e\le\nu(\{x\})\)</span> is the same condition for the pairs <span class="math" data-tex="\(\{R_jx,R_jy\}\)">\(\{R_jx,R_jy\}\)</span> at the point <span class="math" data-tex="\(R_jx\)">\(R_jx\)</span>. The absolute value is used for the sizes <span class="math" data-tex="\(v_e=|R_j||x-y|\)">\(v_e=|R_j||x-y|\)</span> and for the change of scale <span class="math" data-tex="\(\Delta_{v}(\mathsf D_u\mu)=\Delta_{v/|u|}(\mu)\)">\(\Delta_{v}(\mathsf D_u\mu)=\Delta_{v/|u|}(\mu)\)</span>. The sign is kept in the laws <span class="math" data-tex="\(\mathsf D_{R_j}\nu\)">\(\mathsf D_{R_j}\nu\)</span> and <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span>; Theorem 2.3 of the lesson on the gain from a pair of points holds for every law with a feasible family of pairs.</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(a_2=3\)">\(a_2=3\)</span> and <span class="math" data-tex="\(B_2=8\)">\(B_2=8\)</span>. Condition (3) is <span class="math" data-tex="\(2n_2-1-n_2-1&gt;8\)">\(2n_2-1-n_2-1&gt;8\)</span>, that is, <span class="math" data-tex="\(n_2&gt;10\)">\(n_2&gt;10\)</span>. The smallest value is <span class="math" data-tex="\(n_2=11\)">\(n_2=11\)</span>, with <span class="math" data-tex="\(a_{11}=21\)">\(a_{11}=21\)</span>.</p>
+<p><strong>7.3.</strong> <span class="math" data-tex="\(G_n\)">\(G_n\)</span> is a function of a word of length <span class="math" data-tex="\(n\)">\(n\)</span>, which takes <span class="math" data-tex="\(m^n\)">\(m^n\)</span> values, so <span class="math" data-tex="\(H(G_n)\le n\log m\)">\(H(G_n)\le n\log m\)</span> and <span class="math" data-tex="\(h\le\log m\)">\(h\le\log m\)</span>. Every <span class="math" data-tex="\(-\log|r_i|\)">\(-\log|r_i|\)</span> is at least <span class="math" data-tex="\(\log(1/r_{\max})\)">\(\log(1/r_{\max})\)</span>, so <span class="math" data-tex="\(\chi\ge\log(1/r_{\max})\)">\(\chi\ge\log(1/r_{\max})\)</span>. Then <span class="math" data-tex="\(h/\chi\le\log m/\log(1/r_{\max})\)">\(h/\chi\le\log m/\log(1/r_{\max})\)</span>, which is less than <span class="math" data-tex="\(1\)">\(1\)</span> exactly if <span class="math" data-tex="\(m&lt;1/r_{\max}\)">\(m&lt;1/r_{\max}\)</span>. For this conclusion the upper bound, Theorem 3.3 of the lesson on the random walk of maps, is enough.</p>
+<p><strong>7.4.</strong> The word <span class="math" data-tex="\(i_1i_2i_3\)">\(i_1i_2i_3\)</span> gives the translation <span class="math" data-tex="\(i_1+\lambda i_2+\lambda^2i_3\)">\(i_1+\lambda i_2+\lambda^2i_3\)</span>. The words <span class="math" data-tex="\(100\)">\(100\)</span> and <span class="math" data-tex="\(011\)">\(011\)</span> give <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\lambda+\lambda^2=1\)">\(\lambda+\lambda^2=1\)</span>, with the same slope <span class="math" data-tex="\(\lambda^3\)">\(\lambda^3\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-S] OpenAI, <em>The entropy-rate dimension formula for self-similar measures on the line</em>, OpenAI Math Release preprint, 24 September 2026, Sections 5 and 6. https://github.com/openai/math/tree/main/preprints/The-entropy-rate-dimension-formula-for-self-similar-measures-on-the-line-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

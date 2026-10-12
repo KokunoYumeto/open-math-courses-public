@@ -1,0 +1,293 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Block types and pairs at fine scales</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The dimension of self-similar measures)</a><a href="the-random-walk-of-maps-and-the-upper-bound.html">Previous lesson</a><a href="disjoint-windows-and-the-dimension-formula.html">Next lesson</a><a href="src/block-types-and-pairs-at-fine-scales.md">Editable source</a></nav><main><article><h1 id="block-types-and-pairs-at-fine-scales">Block types and pairs at fine scales</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Let a self-similar measure have a dimension <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(d\chi&lt;h\)">\(d\chi&lt;h\)</span>: smaller than the entropy rate of the walk of maps allows. Then the maps composed from <span class="math" data-tex="\(n\)">\(n\)</span> blocks of symbols carry more entropy than the measure can show at the scale that corresponds to them. This lesson proves that this entropy sits in pairs of translations that are very close to each other: the finite laws of these translations have a total pair capacity of the order <span class="math" data-tex="\(n\)">\(n\)</span> at scales finer than <span class="math" data-tex="\(2^{-An}\)">\(2^{-An}\)</span>, for a suitable number <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>The tool is the pair bound for a finite law. It needs laws whose sets of <span class="math" data-tex="\(k\)">\(k\)</span>-fold sums are small. For this the blocks are conditioned on their <em>types</em>, the numbers of occurrences of each symbol. The type of a block fixes its slope, and then the translations of composed maps are sums of terms from fixed finite sets.</p>
+<ul>
+<li>The parameters <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>, <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> (Section 1).</li>
+<li>Blocks, types, and the laws <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span> of the translations for given types (Lemmas 2.1, 2.2, 3.1).</li>
+<li>Conditioning on the types keeps the entropy (Proposition 4.1).</li>
+<li>Pair capacity of the order <span class="math" data-tex="\(n\)">\(n\)</span> in a finite range of scales (Theorem 5.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-S, Section 4]. According to [OpenAI-S], conditioning on the types of blocks goes back to work of Galicer, Saglietti, Shmerkin and Yavicoli. The lesson uses <a href="the-pair-bound-for-a-finite-law.html">The pair bound for a finite law</a>, <a href="the-random-walk-of-maps-and-the-upper-bound.html">The random walk of maps and the upper bound for the dimension</a> and <a href="the-one-bit-deficit.html">The one-bit deficit of a self-similar measure</a>.</p>
+<h2 id="1-the-assumption-and-the-parameters">1. The assumption and the parameters</h2>
+<p>Throughout the lesson, <span class="math" data-tex="\(\varphi_i(x)=r_ix+t_i\)">\(\varphi_i(x)=r_ix+t_i\)</span>, <span class="math" data-tex="\(i\in\Lambda\)">\(i\in\Lambda\)</span>, are maps with <span class="math" data-tex="\(0&lt;|r_i|&lt;1\)">\(0&lt;|r_i|&lt;1\)</span>, <span class="math" data-tex="\(p\)">\(p\)</span> is a law on <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> with all <span class="math" data-tex="\(p_i&gt;0\)">\(p_i&gt;0\)</span>, and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the self-similar measure. The numbers <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(\chi\)">\(\chi\)</span> are those of the lesson on the random walk of maps. We assume that <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is exact dimensional with the dimension <span class="math" data-tex="\(d\)">\(d\)</span>, and that
+<span class="math math-display" data-tex="\[
+d\chi&lt;h. \tag{1}
+\]">\[
+d\chi&lt;h. \tag{1}
+\]</span>
+By Theorem 3.3 of that lesson, <span class="math" data-tex="\(d\chi\le h\)">\(d\chi\le h\)</span> always holds. The dimension formula, Theorem 5.1 of the lesson <a href="disjoint-windows-and-the-dimension-formula.html">Disjoint windows and the dimension formula</a>, says that (1) is possible only for <span class="math" data-tex="\(d=1\)">\(d=1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(m\)">\(m\)</span> be the number of elements of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. By (1), <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>; so <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, since for a single map <span class="math" data-tex="\(G_n\)">\(G_n\)</span> is constant. Choose a number <span class="math" data-tex="\(\alpha&gt;\chi\)">\(\alpha&gt;\chi\)</span> with <span class="math" data-tex="\(d\alpha&lt;h\)">\(d\alpha&lt;h\)</span>, and then an integer <span class="math" data-tex="\(b\ge1\)">\(b\ge1\)</span> with
+<span class="math math-display" data-tex="\[
+m\log(b+1)&lt;b\,(h-d\alpha).
+\]">\[
+m\log(b+1)&lt;b\,(h-d\alpha).
+\]</span>
+Such a <span class="math" data-tex="\(b\)">\(b\)</span> exists because <span class="math" data-tex="\(\log(b+1)/b\to0\)">\(\log(b+1)/b\to0\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=b\alpha,\qquad A&#x27;=\frac{b(\chi+\alpha)}2,\\
+h_b=bh-m\log(b+1),\\
+\gamma=h_b-dA .
+\end{gathered}
+\]">\[
+\begin{gathered}
+A=b\alpha,\qquad A&#x27;=\frac{b(\chi+\alpha)}2,\\
+h_b=bh-m\log(b+1),\\
+\gamma=h_b-dA .
+\end{gathered}
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+b\chi&lt;A&#x27;&lt;A,\qquad\gamma&gt;0 .
+\]">\[
+b\chi&lt;A&#x27;&lt;A,\qquad\gamma&gt;0 .
+\]</span>
+For instance, for <span class="math" data-tex="\(m=3\)">\(m=3\)</span>, <span class="math" data-tex="\(h=\log3\)">\(h=\log3\)</span>, <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>, <span class="math" data-tex="\(d=1\)">\(d=1\)</span> one can take <span class="math" data-tex="\(\alpha=1.3\)">\(\alpha=1.3\)</span>; the smallest <span class="math" data-tex="\(b\)">\(b\)</span> is then <span class="math" data-tex="\(64\)">\(64\)</span>, with <span class="math" data-tex="\(A=83.2\)">\(A=83.2\)</span>, <span class="math" data-tex="\(A&#x27;=73.6\)">\(A&#x27;=73.6\)</span> and <span class="math" data-tex="\(\gamma\approx0.17\)">\(\gamma\approx0.17\)</span>.</p>
+<h2 id="2-blocks-and-types">2. Blocks and types</h2>
+<p>A <em>block</em> is a word <span class="math" data-tex="\(w\in\Lambda^b\)">\(w\in\Lambda^b\)</span>. Its <em>type</em> is the family <span class="math" data-tex="\(\kappa=(\kappa_i)_{i\in\Lambda}\)">\(\kappa=(\kappa_i)_{i\in\Lambda}\)</span>, where <span class="math" data-tex="\(\kappa_i\)">\(\kappa_i\)</span> is the number of the places of <span class="math" data-tex="\(w\)">\(w\)</span> at which the symbol <span class="math" data-tex="\(i\)">\(i\)</span> stands. The types are the families of integers <span class="math" data-tex="\(\kappa_i\ge0\)">\(\kappa_i\ge0\)</span> with the sum <span class="math" data-tex="\(b\)">\(b\)</span>; there are at most <span class="math" data-tex="\((b+1)^m\)">\((b+1)^m\)</span> of them. For a type <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> let <span class="math" data-tex="\(N_\kappa\)">\(N_\kappa\)</span> be the number of the blocks of the type <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Each of them has the probability <span class="math" data-tex="\(\prod_ip_i^{\kappa_i}\)">\(\prod_ip_i^{\kappa_i}\)</span>, so the probability that a random block has the type <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is
+<span class="math math-display" data-tex="\[
+q_\kappa=N_\kappa\prod_ip_i^{\kappa_i}.
+\]">\[
+q_\kappa=N_\kappa\prod_ip_i^{\kappa_i}.
+\]</span>
+Each block of the type <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> has the same slope, with its sign:
+<span class="math math-display" data-tex="\[
+r(\kappa)=\prod_ir_i^{\kappa_i}.
+\]">\[
+r(\kappa)=\prod_ir_i^{\kappa_i}.
+\]</span>
+For a tuple <span class="math" data-tex="\(\kappa=(\kappa_0,\dots,\kappa_{n-1})\)">\(\kappa=(\kappa_0,\dots,\kappa_{n-1})\)</span> of types let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_j(\kappa)=\prod_{h&lt;j}r(\kappa_h)\quad(0\le j\le n),\\
+\sigma_j(\kappa)=-\log|R_j(\kappa)|,\qquad q_\kappa=\prod_{h&lt;n}q_{\kappa_h},
+\end{gathered}
+\]">\[
+\begin{gathered}
+R_j(\kappa)=\prod_{h&lt;j}r(\kappa_h)\quad(0\le j\le n),\\
+\sigma_j(\kappa)=-\log|R_j(\kappa)|,\qquad q_\kappa=\prod_{h&lt;n}q_{\kappa_h},
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(R_0(\kappa)=1\)">\(R_0(\kappa)=1\)</span> and <span class="math" data-tex="\(\sigma_0(\kappa)=0\)">\(\sigma_0(\kappa)=0\)</span>. In this lesson the letter <span class="math" data-tex="\(R\)">\(R\)</span> always denotes these products; the bound for the support of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, which the lesson on the one-bit deficit calls <span class="math" data-tex="\(R_0\)">\(R_0\)</span>, is not used here.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(w_0,\dots,w_{n-1}\)">\(w_0,\dots,w_{n-1}\)</span> be blocks with the types <span class="math" data-tex="\(\kappa_0,\dots,\kappa_{n-1}\)">\(\kappa_0,\dots,\kappa_{n-1}\)</span>. Then, with <span class="math" data-tex="\(R_h=R_h(\kappa)\)">\(R_h=R_h(\kappa)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\varphi_{w_0\cdots w_{n-1}}(x)\\
+&amp;\quad=R_n\,x+\sum_{h=0}^{n-1}R_h\,\varphi_{w_h}(0).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\varphi_{w_0\cdots w_{n-1}}(x)\\
+&amp;\quad=R_n\,x+\sum_{h=0}^{n-1}R_h\,\varphi_{w_h}(0).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> this is <span class="math" data-tex="\(\varphi_{w_0}(x)=r(\kappa_0)x+\varphi_{w_0}(0)\)">\(\varphi_{w_0}(x)=r(\kappa_0)x+\varphi_{w_0}(0)\)</span>. For the step, <span class="math" data-tex="\(\varphi_{w_0\cdots w_{n-1}}=\varphi_{w_0\cdots w_{n-2}}\circ\varphi_{w_{n-1}}\)">\(\varphi_{w_0\cdots w_{n-1}}=\varphi_{w_0\cdots w_{n-2}}\circ\varphi_{w_{n-1}}\)</span>; insert <span class="math" data-tex="\(\varphi_{w_{n-1}}(x)=r(\kappa_{n-1})x+\varphi_{w_{n-1}}(0)\)">\(\varphi_{w_{n-1}}(x)=r(\kappa_{n-1})x+\varphi_{w_{n-1}}(0)\)</span> into the formula for <span class="math" data-tex="\(n-1\)">\(n-1\)</span> blocks. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So among the compositions of <span class="math" data-tex="\(n\)">\(n\)</span> blocks with given types, a map is determined by its translation.</p>
+<p>Let <span class="math" data-tex="\(I_1,I_2,\dots\)">\(I_1,I_2,\dots\)</span> be independent with the law <span class="math" data-tex="\(p\)">\(p\)</span>. The random blocks
+<span class="math math-display" data-tex="\[
+W_h=I_{hb+1}\cdots I_{hb+b},\qquad h=0,1,2,\dots
+\]">\[
+W_h=I_{hb+1}\cdots I_{hb+b},\qquad h=0,1,2,\dots
+\]</span>
+are independent. Let <span class="math" data-tex="\(\omega_h\)">\(\omega_h\)</span> be the type of <span class="math" data-tex="\(W_h\)">\(W_h\)</span>, and <span class="math" data-tex="\(\Omega_n=(\omega_0,\dots,\omega_{n-1})\)">\(\Omega_n=(\omega_0,\dots,\omega_{n-1})\)</span>. The <span class="math" data-tex="\(\omega_h\)">\(\omega_h\)</span> are independent with the law <span class="math" data-tex="\(q\)">\(q\)</span>. We write <span class="math" data-tex="\(R_j\)">\(R_j\)</span> and <span class="math" data-tex="\(\sigma_j\)">\(\sigma_j\)</span> for <span class="math" data-tex="\(R_j(\Omega_j)\)">\(R_j(\Omega_j)\)</span> and <span class="math" data-tex="\(\sigma_j(\Omega_j)\)">\(\sigma_j(\Omega_j)\)</span>. The number <span class="math" data-tex="\(\sigma_j\)">\(\sigma_j\)</span> is a sum of <span class="math" data-tex="\(j\)">\(j\)</span> independent variables <span class="math" data-tex="\(-\log|r(\omega_h)|\)">\(-\log|r(\omega_h)|\)</span>. Each of these is the sum of <span class="math" data-tex="\(-\log|r_i|\)">\(-\log|r_i|\)</span> over the <span class="math" data-tex="\(b\)">\(b\)</span> symbols of a block, so it has the mean <span class="math" data-tex="\(b\chi\)">\(b\chi\)</span> and finitely many values.</p>
+<p><strong>Lemma 2.2.</strong> Given <span class="math" data-tex="\(\Omega_n=\kappa\)">\(\Omega_n=\kappa\)</span>, the blocks <span class="math" data-tex="\(W_0,\dots,W_{n-1}\)">\(W_0,\dots,W_{n-1}\)</span> are independent, and <span class="math" data-tex="\(W_h\)">\(W_h\)</span> is uniform on the <span class="math" data-tex="\(N_{\kappa_h}\)">\(N_{\kappa_h}\)</span> blocks of the type <span class="math" data-tex="\(\kappa_h\)">\(\kappa_h\)</span>.</p>
+<p><strong>Proof.</strong> For blocks <span class="math" data-tex="\(w_h\)">\(w_h\)</span> of the types <span class="math" data-tex="\(\kappa_h\)">\(\kappa_h\)</span>, the probability that <span class="math" data-tex="\(W_h=w_h\)">\(W_h=w_h\)</span> for all <span class="math" data-tex="\(h&lt;n\)">\(h&lt;n\)</span> is the product of the numbers <span class="math" data-tex="\(\prod_ip_i^{\kappa_{h,i}}\)">\(\prod_ip_i^{\kappa_{h,i}}\)</span>, and the probability that <span class="math" data-tex="\(\Omega_n=\kappa\)">\(\Omega_n=\kappa\)</span> is the product of the numbers <span class="math" data-tex="\(N_{\kappa_h}\prod_ip_i^{\kappa_{h,i}}\)">\(N_{\kappa_h}\prod_ip_i^{\kappa_{h,i}}\)</span>. The quotient is <span class="math" data-tex="\(\prod_h1/N_{\kappa_h}\)">\(\prod_h1/N_{\kappa_h}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-laws-of-the-translations">3. The laws of the translations</h2>
+<p><strong>Definition.</strong> For a tuple <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> of <span class="math" data-tex="\(n\)">\(n\)</span> types, <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span> is the law of
+<span class="math math-display" data-tex="\[
+\sum_{h=0}^{n-1}R_h(\kappa)\,\varphi_{W_h}(0),
+\]">\[
+\sum_{h=0}^{n-1}R_h(\kappa)\,\varphi_{W_h}(0),
+\]</span>
+where the <span class="math" data-tex="\(W_h\)">\(W_h\)</span> are independent and <span class="math" data-tex="\(W_h\)">\(W_h\)</span> is uniform on the blocks of the type <span class="math" data-tex="\(\kappa_h\)">\(\kappa_h\)</span>.</p>
+<p>The law <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span> has a finite support with at most <span class="math" data-tex="\(m^{bn}\)">\(m^{bn}\)</span> points. By Lemmas 2.1 and 2.2, <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span> is the conditional law, given <span class="math" data-tex="\(\Omega_n=\kappa\)">\(\Omega_n=\kappa\)</span>, of the translation <span class="math" data-tex="\(G_{bn}(0)\)">\(G_{bn}(0)\)</span> of the map <span class="math" data-tex="\(G_{bn}=\varphi_{W_0\cdots W_{n-1}}\)">\(G_{bn}=\varphi_{W_0\cdots W_{n-1}}\)</span>, whose slope is then <span class="math" data-tex="\(R_n(\kappa)\)">\(R_n(\kappa)\)</span>.</p>
+<p>For a real <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span> and a law <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, let <span class="math" data-tex="\(\mathsf D_u\lambda\)">\(\mathsf D_u\lambda\)</span> be the law of <span class="math" data-tex="\(uX\)">\(uX\)</span>, where <span class="math" data-tex="\(X\)">\(X\)</span> has the law <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The sign of <span class="math" data-tex="\(u\)">\(u\)</span> matters.</p>
+<p><strong>Lemma 3.1.</strong> For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\mu=\sum_\kappa q_\kappa\,\bigl(\nu_\kappa*\mathsf D_{R_n(\kappa)}\mu\bigr),
+\]">\[
+\mu=\sum_\kappa q_\kappa\,\bigl(\nu_\kappa*\mathsf D_{R_n(\kappa)}\mu\bigr),
+\]</span>
+where the sum is over the tuples of <span class="math" data-tex="\(n\)">\(n\)</span> types.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span> have the law <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and be independent of the symbols. By Lemma 3.1 of the lesson on the random walk of maps, <span class="math" data-tex="\(G_{bn}(X&#x27;)\)">\(G_{bn}(X&#x27;)\)</span> has the law <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. By Lemma 2.1,
+<span class="math math-display" data-tex="\[
+G_{bn}(X&#x27;)=\sum_{h&lt;n}R_h\,\varphi_{W_h}(0)+R_n\,X&#x27; .
+\]">\[
+G_{bn}(X&#x27;)=\sum_{h&lt;n}R_h\,\varphi_{W_h}(0)+R_n\,X&#x27; .
+\]</span>
+Given <span class="math" data-tex="\(\Omega_n=\kappa\)">\(\Omega_n=\kappa\)</span>, the sum has the law <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span> and is independent of <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>, and <span class="math" data-tex="\(R_n=R_n(\kappa)\)">\(R_n=R_n(\kappa)\)</span>. So the conditional law of <span class="math" data-tex="\(G_{bn}(X&#x27;)\)">\(G_{bn}(X&#x27;)\)</span> is <span class="math" data-tex="\(\nu_\kappa*\mathsf D_{R_n(\kappa)}\mu\)">\(\nu_\kappa*\mathsf D_{R_n(\kappa)}\mu\)</span>, and the event has the probability <span class="math" data-tex="\(q_\kappa\)">\(q_\kappa\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-conditioning-on-the-types-keeps-the-entropy">4. Conditioning on the types keeps the entropy</h2>
+<p>For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho_n=2^{-\lceil An\rceil},\qquad a_n=\lceil An\rceil-1,\\
+E_n=\{\sigma_n\le A&#x27;n\}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\rho_n=2^{-\lceil An\rceil},\qquad a_n=\lceil An\rceil-1,\\
+E_n=\{\sigma_n\le A&#x27;n\}.
+\end{gathered}
+\]</span>
+The event <span class="math" data-tex="\(E_n\)">\(E_n\)</span> is determined by <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span>. Means over the types are written with <span class="math" data-tex="\(\mathbb E\)">\(\mathbb E\)</span>; for example <span class="math" data-tex="\(\mathbb E\,H(\nu_{\Omega_n})=\sum_\kappa q_\kappa H(\nu_\kappa)\)">\(\mathbb E\,H(\nu_{\Omega_n})=\sum_\kappa q_\kappa H(\nu_\kappa)\)</span>.</p>
+<p><strong>Proposition 4.1.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(\mathbb E\,H(\nu_{\Omega_n})=H(G_{bn}\mid\Omega_n)\ge n\,h_b\)">\(\mathbb E\,H(\nu_{\Omega_n})=H(G_{bn}\mid\Omega_n)\ge n\,h_b\)</span> for all <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>.</li>
+<li><span class="math" data-tex="\(\mathbb E\,H^0_s(\nu_{\Omega_n})\le H^0_s(\mu)+1\)">\(\mathbb E\,H^0_s(\nu_{\Omega_n})\le H^0_s(\mu)+1\)</span> for all <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>.</li>
+<li>Let <span class="math" data-tex="\(\varepsilon=\gamma/4\)">\(\varepsilon=\gamma/4\)</span>. There is an <span class="math" data-tex="\(n_0\)">\(n_0\)</span> such that for all <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>
+<span class="math math-display" data-tex="\[
+\mathbb E\Bigl[\mathbf 1_{E_n}\bigl(H(\nu_{\Omega_n})-H^0_{\rho_n}(\nu_{\Omega_n})\bigr)\Bigr]\ge\varepsilon n .
+\]">\[
+\mathbb E\Bigl[\mathbf 1_{E_n}\bigl(H(\nu_{\Omega_n})-H^0_{\rho_n}(\nu_{\Omega_n})\bigr)\Bigr]\ge\varepsilon n .
+\]</span></li>
+</ol>
+<p><strong>Proof.</strong> (1) Given <span class="math" data-tex="\(\Omega_n=\kappa\)">\(\Omega_n=\kappa\)</span>, the map <span class="math" data-tex="\(G_{bn}\)">\(G_{bn}\)</span> has the slope <span class="math" data-tex="\(R_n(\kappa)\)">\(R_n(\kappa)\)</span>, and its translation has the law <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span>. So the conditional entropy of <span class="math" data-tex="\(G_{bn}\)">\(G_{bn}\)</span> given <span class="math" data-tex="\(\Omega_n=\kappa\)">\(\Omega_n=\kappa\)</span> is <span class="math" data-tex="\(H(\nu_\kappa)\)">\(H(\nu_\kappa)\)</span>, and the mean is <span class="math" data-tex="\(H(G_{bn}\mid\Omega_n)\)">\(H(G_{bn}\mid\Omega_n)\)</span>. By the rules of entropy,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H(G_{bn})&amp;\le H(\Omega_n,G_{bn})\\
+&amp;=H(\Omega_n)+H(G_{bn}\mid\Omega_n).
+\end{aligned}
+\]">\[
+\begin{aligned}
+H(G_{bn})&amp;\le H(\Omega_n,G_{bn})\\
+&amp;=H(\Omega_n)+H(G_{bn}\mid\Omega_n).
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(H(G_{bn})\ge bn\,h\)">\(H(G_{bn})\ge bn\,h\)</span>, because <span class="math" data-tex="\(h\)">\(h\)</span> is the infimum of the numbers <span class="math" data-tex="\(H(G_k)/k\)">\(H(G_k)/k\)</span> (Proposition 1.2 of the lesson on the random walk of maps). And <span class="math" data-tex="\(H(\Omega_n)=nH(\omega_0)\le nm\log(b+1)\)">\(H(\Omega_n)=nH(\omega_0)\le nm\log(b+1)\)</span>, because there are at most <span class="math" data-tex="\((b+1)^m\)">\((b+1)^m\)</span> types. This inequality does not need that <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span> is a function of <span class="math" data-tex="\(G_{bn}\)">\(G_{bn}\)</span>; in general it is not, see Exercise 6.2.</p>
+<p>(2) Fix <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, and let <span class="math" data-tex="\(\lambda_\kappa=\nu_\kappa*\mathsf D_{R_n(\kappa)}\mu\)">\(\lambda_\kappa=\nu_\kappa*\mathsf D_{R_n(\kappa)}\mu\)</span>. It is the law of <span class="math" data-tex="\(S+U\)">\(S+U\)</span>, where <span class="math" data-tex="\(S\)">\(S\)</span> has the law <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span> and <span class="math" data-tex="\(U\)">\(U\)</span> is a bounded variable independent of <span class="math" data-tex="\(S\)">\(S\)</span>, with a law <span class="math" data-tex="\(P_U\)">\(P_U\)</span>. So the law of the label <span class="math" data-tex="\(\lfloor(S+U)/s\rfloor\)">\(\lfloor(S+U)/s\rfloor\)</span> is the mean, over the values <span class="math" data-tex="\(u\)">\(u\)</span> of <span class="math" data-tex="\(U\)">\(U\)</span>, of the laws of the labels <span class="math" data-tex="\(\lfloor(S+u)/s\rfloor\)">\(\lfloor(S+u)/s\rfloor\)</span>. These are laws on a common finite set, and they depend measurably on <span class="math" data-tex="\(u\)">\(u\)</span>. The entropy is a continuous concave function of a law on a finite set (Proposition 4.1 of the lesson on entropy of finite random variables), so by Lemma 2.2 of the lesson on entropy at a scale
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0_s(\lambda_\kappa)&amp;\ge\int H^0_s(S+u)\,dP_U(u)\\
+&amp;\ge H^0_s(\nu_\kappa)-1 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+H^0_s(\lambda_\kappa)&amp;\ge\int H^0_s(S+u)\,dP_U(u)\\
+&amp;\ge H^0_s(\nu_\kappa)-1 ,
+\end{aligned}
+\]</span>
+where the last step is the bound <span class="math" data-tex="\(|H^0_s(S+u)-H^0_s(S)|\le1\)">\(|H^0_s(S+u)-H^0_s(S)|\le1\)</span> of Proposition 1.3 of that lesson. By Lemma 3.1, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the mixture of the <span class="math" data-tex="\(\lambda_\kappa\)">\(\lambda_\kappa\)</span> with the weights <span class="math" data-tex="\(q_\kappa\)">\(q_\kappa\)</span>, and the entropy of the label is concave:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0_s(\mu)&amp;\ge\sum_\kappa q_\kappa\,H^0_s(\lambda_\kappa)\\
+&amp;\ge\sum_\kappa q_\kappa\,H^0_s(\nu_\kappa)-1 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+H^0_s(\mu)&amp;\ge\sum_\kappa q_\kappa\,H^0_s(\lambda_\kappa)\\
+&amp;\ge\sum_\kappa q_\kappa\,H^0_s(\nu_\kappa)-1 .
+\end{aligned}
+\]</span></p>
+<p>(3) Let <span class="math" data-tex="\(V_\kappa=H(\nu_\kappa)-H^0_{\rho_n}(\nu_\kappa)\)">\(V_\kappa=H(\nu_\kappa)-H^0_{\rho_n}(\nu_\kappa)\)</span>. The label is a function of the point, and <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span> has at most <span class="math" data-tex="\(m^{bn}\)">\(m^{bn}\)</span> points, so
+<span class="math math-display" data-tex="\[
+0\le V_\kappa\le H(\nu_\kappa)\le bn\log m .
+\]">\[
+0\le V_\kappa\le H(\nu_\kappa)\le bn\log m .
+\]</span>
+Let <span class="math" data-tex="\(\eta=\gamma/(4A)\)">\(\eta=\gamma/(4A)\)</span>. By Proposition 2.2 of the lesson on the one-bit deficit, for all large <span class="math" data-tex="\(n\)">\(n\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0_{\rho_n}(\mu)&amp;\le(d+\eta)\log\frac1{\rho_n}\\
+&amp;\le(d+\eta)(An+1).
+\end{aligned}
+\]">\[
+\begin{aligned}
+H^0_{\rho_n}(\mu)&amp;\le(d+\eta)\log\frac1{\rho_n}\\
+&amp;\le(d+\eta)(An+1).
+\end{aligned}
+\]</span>
+With (1) and (2), and <span class="math" data-tex="\(h_b-dA=\gamma\)">\(h_b-dA=\gamma\)</span>, <span class="math" data-tex="\(\eta A=\gamma/4\)">\(\eta A=\gamma/4\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,V_{\Omega_n}&amp;\ge n\,h_b-(d+\eta)(An+1)-1\\
+&amp;=\tfrac34\gamma\,n-(d+\eta+1),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,V_{\Omega_n}&amp;\ge n\,h_b-(d+\eta)(An+1)-1\\
+&amp;=\tfrac34\gamma\,n-(d+\eta+1),
+\end{aligned}
+\]</span>
+which is at least <span class="math" data-tex="\(\tfrac12\gamma n\)">\(\tfrac12\gamma n\)</span> for large <span class="math" data-tex="\(n\)">\(n\)</span>. The variable <span class="math" data-tex="\(\sigma_n\)">\(\sigma_n\)</span> is a sum of <span class="math" data-tex="\(n\)">\(n\)</span> independent variables with the mean <span class="math" data-tex="\(b\chi&lt;A&#x27;\)">\(b\chi&lt;A&#x27;\)</span> and a common variance <span class="math" data-tex="\(v\)">\(v\)</span>. As in Lemma 1.3 of the lesson on the random walk of maps,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb P(E_n^c)&amp;=\mathbb P\bigl(\sigma_n-nb\chi&gt;n(A&#x27;-b\chi)\bigr)\\
+&amp;\le\frac v{n\,(A&#x27;-b\chi)^2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb P(E_n^c)&amp;=\mathbb P\bigl(\sigma_n-nb\chi&gt;n(A&#x27;-b\chi)\bigr)\\
+&amp;\le\frac v{n\,(A&#x27;-b\chi)^2},
+\end{aligned}
+\]</span>
+which tends to <span class="math" data-tex="\(0\)">\(0\)</span>. So for large <span class="math" data-tex="\(n\)">\(n\)</span>
+<span class="math math-display" data-tex="\[
+\mathbb E\bigl[\mathbf 1_{E_n^c}V_{\Omega_n}\bigr]\le bn\log m\cdot\mathbb P(E_n^c)\le\tfrac14\gamma\,n ,
+\]">\[
+\mathbb E\bigl[\mathbf 1_{E_n^c}V_{\Omega_n}\bigr]\le bn\log m\cdot\mathbb P(E_n^c)\le\tfrac14\gamma\,n ,
+\]</span>
+and the mean of <span class="math" data-tex="\(\mathbf 1_{E_n}V_{\Omega_n}\)">\(\mathbf 1_{E_n}V_{\Omega_n}\)</span> is at least <span class="math" data-tex="\(\tfrac12\gamma n-\tfrac14\gamma n\)">\(\tfrac12\gamma n-\tfrac14\gamma n\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Statement (3) is the place where the assumption (1) enters. The exact entropy of the translations is at least <span class="math" data-tex="\(nh_b\)">\(nh_b\)</span>, while their cells of length <span class="math" data-tex="\(\rho_n\approx2^{-An}\)">\(\rho_n\approx2^{-An}\)</span> can show at most about <span class="math" data-tex="\(dAn\)">\(dAn\)</span>, the entropy of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> at this scale. The difference <span class="math" data-tex="\(\gamma n\)">\(\gamma n\)</span> is hidden inside the cells.</p>
+<h2 id="5-pairs-in-a-finite-range-of-scales">5. Pairs in a finite range of scales</h2>
+<p><strong>Lemma 5.1.</strong> Let <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> be a tuple of <span class="math" data-tex="\(n\)">\(n\)</span> types, <span class="math" data-tex="\(F\)">\(F\)</span> the support of <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span>, and <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\log|kF|\le n\,m^b\log(k+1).
+\]">\[
+\log|kF|\le n\,m^b\log(k+1).
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> be the set of the numbers <span class="math" data-tex="\(\varphi_w(0)\)">\(\varphi_w(0)\)</span>, <span class="math" data-tex="\(w\in\Lambda^b\)">\(w\in\Lambda^b\)</span>; it has at most <span class="math" data-tex="\(m^b\)">\(m^b\)</span> elements. A sum of <span class="math" data-tex="\(k\)">\(k\)</span> elements of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is determined by the number of times each element occurs, a number between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span>. So the set <span class="math" data-tex="\(k\mathcal D\)">\(k\mathcal D\)</span> of these sums has at most <span class="math" data-tex="\((k+1)^{m^b}\)">\((k+1)^{m^b}\)</span> elements. Every point of <span class="math" data-tex="\(F\)">\(F\)</span> is a sum <span class="math" data-tex="\(\sum_{h&lt;n}R_h(\kappa)x_h\)">\(\sum_{h&lt;n}R_h(\kappa)x_h\)</span> with <span class="math" data-tex="\(x_h\in\mathcal D\)">\(x_h\in\mathcal D\)</span>. A sum of <span class="math" data-tex="\(k\)">\(k\)</span> points of <span class="math" data-tex="\(F\)">\(F\)</span> is therefore <span class="math" data-tex="\(\sum_{h&lt;n}R_h(\kappa)y_h\)">\(\sum_{h&lt;n}R_h(\kappa)y_h\)</span> with <span class="math" data-tex="\(y_h\in k\mathcal D\)">\(y_h\in k\mathcal D\)</span>, and there are at most <span class="math" data-tex="\(|k\mathcal D|^n\)">\(|k\mathcal D|^n\)</span> such numbers. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The lemma would fail without the types: the slopes <span class="math" data-tex="\(R_h\)">\(R_h\)</span> would vary with the words, and the sums could not be collected block by block.</p>
+<p><strong>Theorem 5.1 (pair capacity in bands).</strong> There are a number <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and an integer <span class="math" data-tex="\(n_0\)">\(n_0\)</span> such that for every <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span> there is an integer <span class="math" data-tex="\(B_n\ge a_n\)">\(B_n\ge a_n\)</span> with
+<span class="math math-display" data-tex="\[
+\mathbb E\Bigl[\mathbf 1_{E_n}\sum_{\ell=a_n}^{B_n}c_\ell(\nu_{\Omega_n})\Bigr]\ge c\,n .
+\]">\[
+\mathbb E\Bigl[\mathbf 1_{E_n}\sum_{\ell=a_n}^{B_n}c_\ell(\nu_{\Omega_n})\Bigr]\ge c\,n .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and <span class="math" data-tex="\(n_0\)">\(n_0\)</span> be as in Proposition 4.1 (3). Choose an integer <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> with
+<span class="math math-display" data-tex="\[
+m^b\log(k+1)&lt;\frac{k\varepsilon}2 .
+\]">\[
+m^b\log(k+1)&lt;\frac{k\varepsilon}2 .
+\]</span>
+Let <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span> and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> a tuple of <span class="math" data-tex="\(n\)">\(n\)</span> types. The pair bound, Theorem 1.1 of the lesson on the pair bound for a finite law, for <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span> and <span class="math" data-tex="\(\rho=\rho_n\)">\(\rho=\rho_n\)</span>, together with Lemma 5.1, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;C_k\sum_{\ell:\,2^{-\ell}\le2\rho_n}c_\ell(\nu_\kappa)\\
+&amp;\quad\ge k\,V_\kappa-n\,m^b\log(k+1),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;C_k\sum_{\ell:\,2^{-\ell}\le2\rho_n}c_\ell(\nu_\kappa)\\
+&amp;\quad\ge k\,V_\kappa-n\,m^b\log(k+1),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(V_\kappa\)">\(V_\kappa\)</span> as in the proof of Proposition 4.1. Since <span class="math" data-tex="\(2\rho_n=2^{-a_n}\)">\(2\rho_n=2^{-a_n}\)</span>, the sum is over the <span class="math" data-tex="\(\ell\ge a_n\)">\(\ell\ge a_n\)</span>. Multiply by <span class="math" data-tex="\(\mathbf 1_{E_n}\)">\(\mathbf 1_{E_n}\)</span> and take the mean over the types. By Proposition 4.1 (3),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;C_k\,\mathbb E\Bigl[\mathbf 1_{E_n}\sum_{\ell\ge a_n}c_\ell(\nu_{\Omega_n})\Bigr]\\
+&amp;\quad\ge k\varepsilon n-n\,m^b\log(k+1)\ \ge\ \frac{k\varepsilon n}2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;C_k\,\mathbb E\Bigl[\mathbf 1_{E_n}\sum_{\ell\ge a_n}c_\ell(\nu_{\Omega_n})\Bigr]\\
+&amp;\quad\ge k\varepsilon n-n\,m^b\log(k+1)\ \ge\ \frac{k\varepsilon n}2 .
+\end{aligned}
+\]</span>
+There are finitely many tuples of <span class="math" data-tex="\(n\)">\(n\)</span> types, and each <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span> has only finitely many pair capacities different from <span class="math" data-tex="\(0\)">\(0\)</span>. Let <span class="math" data-tex="\(B_n\ge a_n\)">\(B_n\ge a_n\)</span> be an integer such that <span class="math" data-tex="\(c_\ell(\nu_\kappa)=0\)">\(c_\ell(\nu_\kappa)=0\)</span> for all <span class="math" data-tex="\(\ell&gt;B_n\)">\(\ell&gt;B_n\)</span> and all these <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Then the sum over <span class="math" data-tex="\(\ell\ge a_n\)">\(\ell\ge a_n\)</span> is the sum from <span class="math" data-tex="\(a_n\)">\(a_n\)</span> to <span class="math" data-tex="\(B_n\)">\(B_n\)</span>, and the theorem holds with <span class="math" data-tex="\(c=k\varepsilon/(2C_k)\)">\(c=k\varepsilon/(2C_k)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The numbers <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>, <span class="math" data-tex="\(c\)">\(c\)</span>, <span class="math" data-tex="\(n_0\)">\(n_0\)</span> do not depend on <span class="math" data-tex="\(n\)">\(n\)</span>. Nothing is said about the size of <span class="math" data-tex="\(B_n\)">\(B_n\)</span>: the pairs may lie at scales far below <span class="math" data-tex="\(2^{-An}\)">\(2^{-An}\)</span>. The pairs counted in the theorem have sizes below <span class="math" data-tex="\(2^{1-a_n}\le4\cdot2^{-An}\)">\(2^{1-a_n}\le4\cdot2^{-An}\)</span>, while on the event <span class="math" data-tex="\(E_n\)">\(E_n\)</span> the maps of <span class="math" data-tex="\(n\)">\(n\)</span> blocks contract by <span class="math" data-tex="\(|R_n|\ge2^{-A&#x27;n}\)">\(|R_n|\ge2^{-A&#x27;n}\)</span> only. So the two points of a pair are much closer to each other than the size of the copies of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> that the maps of <span class="math" data-tex="\(n\)">\(n\)</span> blocks attach to them (Exercise 6.4).</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Let <span class="math" data-tex="\(\Lambda=\{0,1,2\}\)">\(\Lambda=\{0,1,2\}\)</span> and <span class="math" data-tex="\(b=2\)">\(b=2\)</span>. List the types with their numbers <span class="math" data-tex="\(N_\kappa\)">\(N_\kappa\)</span> and probabilities <span class="math" data-tex="\(q_\kappa\)">\(q_\kappa\)</span>, and check that the <span class="math" data-tex="\(q_\kappa\)">\(q_\kappa\)</span> add up to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>6.2.</strong> For the maps <span class="math" data-tex="\(\tfrac x3\)">\(\tfrac x3\)</span>, <span class="math" data-tex="\(\tfrac x3+1\)">\(\tfrac x3+1\)</span>, <span class="math" data-tex="\(\tfrac x3+3\)">\(\tfrac x3+3\)</span> with the weights <span class="math" data-tex="\(\tfrac13\)">\(\tfrac13\)</span> and <span class="math" data-tex="\(b=2\)">\(b=2\)</span>, <span class="math" data-tex="\(n=1\)">\(n=1\)</span>: compute the laws <span class="math" data-tex="\(\nu_\kappa\)">\(\nu_\kappa\)</span>, and <span class="math" data-tex="\(H(G_2\mid\Omega_1)\)">\(H(G_2\mid\Omega_1)\)</span>, <span class="math" data-tex="\(H(G_2)\)">\(H(G_2)\)</span>, <span class="math" data-tex="\(H(\Omega_1)\)">\(H(\Omega_1)\)</span>. Show that <span class="math" data-tex="\(\Omega_1\)">\(\Omega_1\)</span> is not a function of <span class="math" data-tex="\(G_2\)">\(G_2\)</span>.</p>
+<p><strong>6.3.</strong> Let all the ratios be equal, <span class="math" data-tex="\(r_i=r\)">\(r_i=r\)</span>. Show that the type of a block is not needed in Lemma 5.1: the support <span class="math" data-tex="\(F\)">\(F\)</span> of the law of <span class="math" data-tex="\(G_{bn}(0)\)">\(G_{bn}(0)\)</span> satisfies <span class="math" data-tex="\(\log|kF|\le n\,m^b\log(k+1)\)">\(\log|kF|\le n\,m^b\log(k+1)\)</span>.</p>
+<p><strong>6.4.</strong> Show that <span class="math" data-tex="\(2^{-\ell}\le2\rho_n\)">\(2^{-\ell}\le2\rho_n\)</span> exactly if <span class="math" data-tex="\(\ell\ge a_n\)">\(\ell\ge a_n\)</span>. Show that on the event <span class="math" data-tex="\(E_n\)">\(E_n\)</span> a pair with <span class="math" data-tex="\(2^{-\ell}\le|x-y|&lt;2^{1-\ell}\)">\(2^{-\ell}\le|x-y|&lt;2^{1-\ell}\)</span> and <span class="math" data-tex="\(\ell\ge a_n\)">\(\ell\ge a_n\)</span> satisfies <span class="math" data-tex="\(|x-y|\le4\cdot2^{-(A-A&#x27;)n}\,|R_n|\)">\(|x-y|\le4\cdot2^{-(A-A&#x27;)n}\,|R_n|\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> With <span class="math" data-tex="\(\kappa=(\kappa_0,\kappa_1,\kappa_2)\)">\(\kappa=(\kappa_0,\kappa_1,\kappa_2)\)</span>: the types <span class="math" data-tex="\((2,0,0)\)">\((2,0,0)\)</span>, <span class="math" data-tex="\((0,2,0)\)">\((0,2,0)\)</span>, <span class="math" data-tex="\((0,0,2)\)">\((0,0,2)\)</span> have <span class="math" data-tex="\(N_\kappa=1\)">\(N_\kappa=1\)</span> and <span class="math" data-tex="\(q_\kappa=p_i^2\)">\(q_\kappa=p_i^2\)</span>; the types <span class="math" data-tex="\((1,1,0)\)">\((1,1,0)\)</span>, <span class="math" data-tex="\((1,0,1)\)">\((1,0,1)\)</span>, <span class="math" data-tex="\((0,1,1)\)">\((0,1,1)\)</span> have <span class="math" data-tex="\(N_\kappa=2\)">\(N_\kappa=2\)</span> and <span class="math" data-tex="\(q_\kappa=2p_ip_j\)">\(q_\kappa=2p_ip_j\)</span>. The sum is <span class="math" data-tex="\((p_0+p_1+p_2)^2=1\)">\((p_0+p_1+p_2)^2=1\)</span>.</p>
+<p><strong>6.2.</strong> With <span class="math" data-tex="\(t_0=0\)">\(t_0=0\)</span>, <span class="math" data-tex="\(t_1=1\)">\(t_1=1\)</span>, <span class="math" data-tex="\(t_2=3\)">\(t_2=3\)</span>, the block <span class="math" data-tex="\(ij\)">\(ij\)</span> has the translation <span class="math" data-tex="\(t_i+t_j/3\)">\(t_i+t_j/3\)</span>. The three types with one block give unit masses at <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(\tfrac43\)">\(\tfrac43\)</span>, <span class="math" data-tex="\(4\)">\(4\)</span>. The type of the blocks <span class="math" data-tex="\(01,10\)">\(01,10\)</span> gives the uniform law on <span class="math" data-tex="\(\{\tfrac13,1\}\)">\(\{\tfrac13,1\}\)</span>; the type of <span class="math" data-tex="\(02,20\)">\(02,20\)</span> the uniform law on <span class="math" data-tex="\(\{1,3\}\)">\(\{1,3\}\)</span>; the type of <span class="math" data-tex="\(12,21\)">\(12,21\)</span> the uniform law on <span class="math" data-tex="\(\{2,\tfrac{10}3\}\)">\(\{2,\tfrac{10}3\}\)</span>. So <span class="math" data-tex="\(H(G_2\mid\Omega_1)=3\cdot\tfrac29\cdot1=\tfrac23\)">\(H(G_2\mid\Omega_1)=3\cdot\tfrac29\cdot1=\tfrac23\)</span>. By Example 3.5 of the lesson on the random walk of maps, <span class="math" data-tex="\(H(G_2)=\log9-\tfrac29\)">\(H(G_2)=\log9-\tfrac29\)</span>. The types have the probabilities <span class="math" data-tex="\(\tfrac19\)">\(\tfrac19\)</span> (three times) and <span class="math" data-tex="\(\tfrac29\)">\(\tfrac29\)</span> (three times), so <span class="math" data-tex="\(H(\Omega_1)=\log9-\tfrac69\)">\(H(\Omega_1)=\log9-\tfrac69\)</span>. The inequality <span class="math" data-tex="\(H(G_2\mid\Omega_1)\ge H(G_2)-H(\Omega_1)\)">\(H(G_2\mid\Omega_1)\ge H(G_2)-H(\Omega_1)\)</span> from the proof of Proposition 4.1 (1) reads <span class="math" data-tex="\(\tfrac23\ge\tfrac49\)">\(\tfrac23\ge\tfrac49\)</span>. The blocks <span class="math" data-tex="\(10\)">\(10\)</span> and <span class="math" data-tex="\(02\)">\(02\)</span> give the same map <span class="math" data-tex="\(\tfrac x9+1\)">\(\tfrac x9+1\)</span> and have different types, so the map does not determine the type.</p>
+<p><strong>6.3.</strong> Every map of <span class="math" data-tex="\(j\)">\(j\)</span> blocks has the slope <span class="math" data-tex="\(r^{bj}\)">\(r^{bj}\)</span>, so by the computation of Lemma 2.1, <span class="math" data-tex="\(G_{bn}(0)=\sum_{h&lt;n}r^{bh}\varphi_{W_h}(0)\)">\(G_{bn}(0)=\sum_{h&lt;n}r^{bh}\varphi_{W_h}(0)\)</span> for all words. The proof of Lemma 5.1 applies with <span class="math" data-tex="\(R_h=r^{bh}\)">\(R_h=r^{bh}\)</span>.</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(2\rho_n=2^{1-\lceil An\rceil}=2^{-a_n}\)">\(2\rho_n=2^{1-\lceil An\rceil}=2^{-a_n}\)</span>, and <span class="math" data-tex="\(2^{-\ell}\le2^{-a_n}\)">\(2^{-\ell}\le2^{-a_n}\)</span> exactly if <span class="math" data-tex="\(\ell\ge a_n\)">\(\ell\ge a_n\)</span>. For such a pair, <span class="math" data-tex="\(|x-y|&lt;2^{1-\ell}\le2^{1-a_n}\)">\(|x-y|&lt;2^{1-\ell}\le2^{1-a_n}\)</span>, and <span class="math" data-tex="\(2^{1-a_n}=2^{2-\lceil An\rceil}\le4\cdot2^{-An}\)">\(2^{1-a_n}=2^{2-\lceil An\rceil}\le4\cdot2^{-An}\)</span>. On <span class="math" data-tex="\(E_n\)">\(E_n\)</span>, <span class="math" data-tex="\(|R_n|=2^{-\sigma_n}\ge2^{-A&#x27;n}\)">\(|R_n|=2^{-\sigma_n}\ge2^{-A&#x27;n}\)</span>, so <span class="math" data-tex="\(2^{-An}\le2^{-(A-A&#x27;)n}|R_n|\)">\(2^{-An}\le2^{-(A-A&#x27;)n}|R_n|\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-S] OpenAI, <em>The entropy-rate dimension formula for self-similar measures on the line</em>, OpenAI Math Release preprint, 24 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/The-entropy-rate-dimension-formula-for-self-similar-measures-on-the-line-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

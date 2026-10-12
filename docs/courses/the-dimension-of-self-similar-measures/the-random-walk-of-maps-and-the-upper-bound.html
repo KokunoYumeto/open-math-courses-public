@@ -1,0 +1,184 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The random walk of maps and the upper bound for the dimension</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The dimension of self-similar measures)</a><a href="the-pair-bound-for-a-finite-law.html">Previous lesson</a><a href="block-types-and-pairs-at-fine-scales.html">Next lesson</a><a href="src/the-random-walk-of-maps-and-the-upper-bound.md">Editable source</a></nav><main><article><h1 id="the-random-walk-of-maps-and-the-upper-bound-for-the-dimension">The random walk of maps and the upper bound for the dimension</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A self-similar measure is built by composing maps chosen at random. After <span class="math" data-tex="\(n\)">\(n\)</span> steps the composed map <span class="math" data-tex="\(G_n\)">\(G_n\)</span> has contracted by about <span class="math" data-tex="\(2^{-n\chi}\)">\(2^{-n\chi}\)</span>, and it carries the entropy <span class="math" data-tex="\(H(G_n)\)">\(H(G_n)\)</span>, which is about <span class="math" data-tex="\(nh\)">\(nh\)</span>. Different words may give the same map, and <span class="math" data-tex="\(h\)">\(h\)</span> counts maps, not words. This lesson defines the two numbers <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and proves that the dimension <span class="math" data-tex="\(d\)">\(d\)</span> of the measure satisfies
+<span class="math math-display" data-tex="\[
+d\le\min\Bigl\{1,\frac h\chi\Bigr\}.
+\]">\[
+d\le\min\Bigl\{1,\frac h\chi\Bigr\}.
+\]</span>
+The dimension formula of [OpenAI-S] says that this is an equality.</p>
+<ul>
+<li>The entropy rate <span class="math" data-tex="\(h\)">\(h\)</span> of the walk of maps and the exponent <span class="math" data-tex="\(\chi\)">\(\chi\)</span> (Proposition 1.2).</li>
+<li>For an exact-dimensional law, the entropy at the scale <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\((d+o(1))\log(1/s)\)">\((d+o(1))\log(1/s)\)</span> (Proposition 2.1).</li>
+<li>The upper bound (Theorem 3.3), with an example in which exact overlaps lower the dimension.</li>
+</ul>
+<p>The lesson follows [OpenAI-S, Section 1]. There the upper bound is proved with coverings and Hausdorff dimension; here it is proved with entropies at a scale. The lesson continues <a href="the-one-bit-deficit.html">The one-bit deficit of a self-similar measure</a>, whose notation for self-similar measures it uses, and uses <a href="entropy-at-a-scale.html">Entropy at a scale</a> and <a href="entropy-of-finite-random-variables.html">Entropy of finite random variables</a>.</p>
+<h2 id="1-the-walk-of-maps">1. The walk of maps</h2>
+<p>Let <span class="math" data-tex="\(\varphi_i(x)=r_ix+t_i\)">\(\varphi_i(x)=r_ix+t_i\)</span>, <span class="math" data-tex="\(i\in\Lambda\)">\(i\in\Lambda\)</span>, with <span class="math" data-tex="\(0&lt;|r_i|&lt;1\)">\(0&lt;|r_i|&lt;1\)</span>, let <span class="math" data-tex="\(p\)">\(p\)</span> be a law on <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> with all <span class="math" data-tex="\(p_i&gt;0\)">\(p_i&gt;0\)</span>, and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> the self-similar measure, as in Section 1 of the lesson on the one-bit deficit. Let <span class="math" data-tex="\(I_1,I_2,\dots\)">\(I_1,I_2,\dots\)</span> be independent with the law <span class="math" data-tex="\(p\)">\(p\)</span>, and
+<span class="math math-display" data-tex="\[
+G_n=\varphi_{I_1}\circ\dots\circ\varphi_{I_n}.
+\]">\[
+G_n=\varphi_{I_1}\circ\dots\circ\varphi_{I_n}.
+\]</span>
+This is a random variable with values in the finite set of the maps <span class="math" data-tex="\(\varphi_w\)">\(\varphi_w\)</span>, <span class="math" data-tex="\(w\in\Lambda^n\)">\(w\in\Lambda^n\)</span>; a map <span class="math" data-tex="\(x\mapsto rx+t\)">\(x\mapsto rx+t\)</span> is given by the pair <span class="math" data-tex="\((r,t)\)">\((r,t)\)</span>. The probability that <span class="math" data-tex="\(G_n\)">\(G_n\)</span> is the map <span class="math" data-tex="\(g\)">\(g\)</span> is the sum of the <span class="math" data-tex="\(p_w\)">\(p_w\)</span> over the words <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(\varphi_w=g\)">\(\varphi_w=g\)</span>. An <em>exact overlap</em> is an equality <span class="math" data-tex="\(\varphi_u=\varphi_v\)">\(\varphi_u=\varphi_v\)</span> for two different words of the same length.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(a_1,a_2,\dots\)">\(a_1,a_2,\dots\)</span> be real numbers with <span class="math" data-tex="\(a_n\ge0\)">\(a_n\ge0\)</span> and <span class="math" data-tex="\(a_{n+m}\le a_n+a_m\)">\(a_{n+m}\le a_n+a_m\)</span> for all <span class="math" data-tex="\(n,m\ge1\)">\(n,m\ge1\)</span>. Then <span class="math" data-tex="\(a_n/n\)">\(a_n/n\)</span> converges to <span class="math" data-tex="\(\inf_{k\ge1}a_k/k\)">\(\inf_{k\ge1}a_k/k\)</span>.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(k\)">\(k\)</span>, and let <span class="math" data-tex="\(c\)">\(c\)</span> be the largest of <span class="math" data-tex="\(a_1,\dots,a_k\)">\(a_1,\dots,a_k\)</span>. Write <span class="math" data-tex="\(n&gt;k\)">\(n&gt;k\)</span> as <span class="math" data-tex="\(n=qk+j\)">\(n=qk+j\)</span> with an integer <span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span> and <span class="math" data-tex="\(1\le j\le k\)">\(1\le j\le k\)</span>. Then <span class="math" data-tex="\(a_n\le q\,a_k+a_j\le\tfrac nk\,a_k+c\)">\(a_n\le q\,a_k+a_j\le\tfrac nk\,a_k+c\)</span>, so <span class="math" data-tex="\(a_n/n\le a_k/k+c/n\)">\(a_n/n\le a_k/k+c/n\)</span>. Hence the upper limit of <span class="math" data-tex="\(a_n/n\)">\(a_n/n\)</span> is at most <span class="math" data-tex="\(a_k/k\)">\(a_k/k\)</span>, for every <span class="math" data-tex="\(k\)">\(k\)</span>, and the lower limit is at least the infimum. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 1.2.</strong> The limit
+<span class="math math-display" data-tex="\[
+h=\lim_{n\to\infty}\frac{H(G_n)}n=\inf_{n\ge1}\frac{H(G_n)}n
+\]">\[
+h=\lim_{n\to\infty}\frac{H(G_n)}n=\inf_{n\ge1}\frac{H(G_n)}n
+\]</span>
+exists, and <span class="math" data-tex="\(0\le h\le H(p)\)">\(0\le h\le H(p)\)</span>. If there are no exact overlaps, then <span class="math" data-tex="\(H(G_n)=nH(p)\)">\(H(G_n)=nH(p)\)</span> for all <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(h=H(p)\)">\(h=H(p)\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(G_{n+m}=G_n\circ G&#x27;\)">\(G_{n+m}=G_n\circ G&#x27;\)</span>, where <span class="math" data-tex="\(G&#x27;=\varphi_{I_{n+1}}\circ\dots\circ\varphi_{I_{n+m}}\)">\(G&#x27;=\varphi_{I_{n+1}}\circ\dots\circ\varphi_{I_{n+m}}\)</span> is independent of <span class="math" data-tex="\(G_n\)">\(G_n\)</span> and has the law of <span class="math" data-tex="\(G_m\)">\(G_m\)</span>. So <span class="math" data-tex="\(G_{n+m}\)">\(G_{n+m}\)</span> is a function of the pair <span class="math" data-tex="\((G_n,G&#x27;)\)">\((G_n,G&#x27;)\)</span>, and by Proposition 2.1 of the lesson on entropy of finite random variables
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H(G_{n+m})&amp;\le H(G_n,G&#x27;)\\
+&amp;=H(G_n)+H(G_m).
+\end{aligned}
+\]">\[
+\begin{aligned}
+H(G_{n+m})&amp;\le H(G_n,G&#x27;)\\
+&amp;=H(G_n)+H(G_m).
+\end{aligned}
+\]</span>
+Lemma 1.1 gives the limit. <span class="math" data-tex="\(G_1\)">\(G_1\)</span> is a function of <span class="math" data-tex="\(I_1\)">\(I_1\)</span>, so <span class="math" data-tex="\(h\le H(G_1)\le H(p)\)">\(h\le H(G_1)\le H(p)\)</span>. Without exact overlaps, <span class="math" data-tex="\(G_n\)">\(G_n\)</span> and the word <span class="math" data-tex="\(I_1\cdots I_n\)">\(I_1\cdots I_n\)</span> determine each other, and the word has the entropy <span class="math" data-tex="\(nH(p)\)">\(nH(p)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The number <span class="math" data-tex="\(h\)">\(h\)</span> is the <em>entropy rate of the walk of maps</em>. The second number is the <em>exponent</em>
+<span class="math math-display" data-tex="\[
+\chi=-\sum_{i\in\Lambda}p_i\log|r_i|&gt;0 .
+\]">\[
+\chi=-\sum_{i\in\Lambda}p_i\log|r_i|&gt;0 .
+\]</span>
+The slope of <span class="math" data-tex="\(G_n\)">\(G_n\)</span> is <span class="math" data-tex="\(r_{I_1}\cdots r_{I_n}\)">\(r_{I_1}\cdots r_{I_n}\)</span>, so <span class="math" data-tex="\(-\log\)">\(-\log\)</span> of its absolute value is a sum of <span class="math" data-tex="\(n\)">\(n\)</span> independent terms with the mean <span class="math" data-tex="\(\chi\)">\(\chi\)</span>.</p>
+<p><strong>Lemma 1.3.</strong> Let <span class="math" data-tex="\(\sigma^2=\sum_ip_i(\log|r_i|+\chi)^2\)">\(\sigma^2=\sum_ip_i(\log|r_i|+\chi)^2\)</span>. For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, the slope <span class="math" data-tex="\(r_{G_n}\)">\(r_{G_n}\)</span> of <span class="math" data-tex="\(G_n\)">\(G_n\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\mathbb P\bigl(|r_{G_n}|&gt;2^{-n(\chi-\varepsilon)}\bigr)\le\frac{\sigma^2}{n\varepsilon^2}.
+\]">\[
+\mathbb P\bigl(|r_{G_n}|&gt;2^{-n(\chi-\varepsilon)}\bigr)\le\frac{\sigma^2}{n\varepsilon^2}.
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\xi_k=-\log|r_{I_k}|-\chi\)">\(\xi_k=-\log|r_{I_k}|-\chi\)</span> and <span class="math" data-tex="\(S=\xi_1+\dots+\xi_n\)">\(S=\xi_1+\dots+\xi_n\)</span>. The <span class="math" data-tex="\(\xi_k\)">\(\xi_k\)</span> are independent with the mean <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(\mathbb E\,\xi_k\xi_l=0\)">\(\mathbb E\,\xi_k\xi_l=0\)</span> for <span class="math" data-tex="\(k\ne l\)">\(k\ne l\)</span> and <span class="math" data-tex="\(\mathbb ES^2=n\sigma^2\)">\(\mathbb ES^2=n\sigma^2\)</span>. The event in the statement is <span class="math" data-tex="\(S&lt;-n\varepsilon\)">\(S&lt;-n\varepsilon\)</span>. On it <span class="math" data-tex="\(S^2&gt;n^2\varepsilon^2\)">\(S^2&gt;n^2\varepsilon^2\)</span>, so its probability is at most <span class="math" data-tex="\(\mathbb ES^2/(n^2\varepsilon^2)\)">\(\mathbb ES^2/(n^2\varepsilon^2)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-entropy-and-dimension">2. Entropy and dimension</h2>
+<p>Proposition 2.2 of the lesson on the one-bit deficit bounds the entropy at small scales of an exact-dimensional law from above. The same number is a lower bound.</p>
+<p><strong>Proposition 2.1.</strong> Let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> be a bounded law that is exact dimensional with the dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Then
+<span class="math math-display" data-tex="\[
+\liminf_{s\to0}\frac{\min\{\mathcal H_s(\nu),H^0_s(\nu)\}}{\log(1/s)}\ge d .
+\]">\[
+\liminf_{s\to0}\frac{\min\{\mathcal H_s(\nu),H^0_s(\nu)\}}{\log(1/s)}\ge d .
+\]</span>
+Together with the upper bound, <span class="math" data-tex="\(\mathcal H_s(\nu)/\log(1/s)\)">\(\mathcal H_s(\nu)/\log(1/s)\)</span> and <span class="math" data-tex="\(H^0_s(\nu)/\log(1/s)\)">\(H^0_s(\nu)/\log(1/s)\)</span> converge to <span class="math" data-tex="\(d\)">\(d\)</span> as <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>. In particular <span class="math" data-tex="\(0\le d\le1\)">\(0\le d\le1\)</span>.</p>
+<p><strong>Proof.</strong> The mass of an interval is at most <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span> by the definition. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span> the first statement holds because entropies are not negative. Let <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> and <span class="math" data-tex="\(0&lt;\eta&lt;d\)">\(0&lt;\eta&lt;d\)</span>. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> let <span class="math" data-tex="\(E_n\)">\(E_n\)</span> be the set of the <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\nu((x-\varrho,x+\varrho))\le\varrho^{d-\eta}\)">\(\nu((x-\varrho,x+\varrho))\le\varrho^{d-\eta}\)</span> for all rational <span class="math" data-tex="\(\varrho\in(0,\tfrac1n)\)">\(\varrho\in(0,\tfrac1n)\)</span>. It is a Borel set, because the mass of an open interval of fixed length is a lower semicontinuous function of its centre. The inequality then holds for all real <span class="math" data-tex="\(\varrho\in(0,\tfrac1n)\)">\(\varrho\in(0,\tfrac1n)\)</span>: take rational <span class="math" data-tex="\(\varrho&#x27;&gt;\varrho\)">\(\varrho&#x27;&gt;\varrho\)</span> tending to <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span>. The sets <span class="math" data-tex="\(E_n\)">\(E_n\)</span> increase, and by the definition of exact dimensionality their union has full measure, since <span class="math" data-tex="\(\log\varrho&lt;0\)">\(\log\varrho&lt;0\)</span>. Choose <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(\nu(E_n)\ge1-\eta\)">\(\nu(E_n)\ge1-\eta\)</span>.</p>
+<p>Take a grid of a length <span class="math" data-tex="\(s&lt;\tfrac1n\)">\(s&lt;\tfrac1n\)</span> with any shift. A cell <span class="math" data-tex="\(C\)">\(C\)</span> that contains a point <span class="math" data-tex="\(x\)">\(x\)</span> of <span class="math" data-tex="\(E_n\)">\(E_n\)</span> lies in <span class="math" data-tex="\((x-s,x+s)\)">\((x-s,x+s)\)</span>, so <span class="math" data-tex="\(\nu(C)\le s^{d-\eta}\)">\(\nu(C)\le s^{d-\eta}\)</span> and <span class="math" data-tex="\(\log(1/\nu(C))\ge(d-\eta)\log(1/s)\)">\(\log(1/\nu(C))\ge(d-\eta)\log(1/s)\)</span>. The cells that meet <span class="math" data-tex="\(E_n\)">\(E_n\)</span> have a total mass of at least <span class="math" data-tex="\(\nu(E_n)\)">\(\nu(E_n)\)</span>. So the entropy of the label is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_C\nu(C)\log\frac1{\nu(C)}\\
+&amp;\quad\ge(d-\eta)\log\frac1s\sum_{C\cap E_n\ne\emptyset}\nu(C)\\
+&amp;\quad\ge(1-\eta)(d-\eta)\log\frac1s .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_C\nu(C)\log\frac1{\nu(C)}\\
+&amp;\quad\ge(d-\eta)\log\frac1s\sum_{C\cap E_n\ne\emptyset}\nu(C)\\
+&amp;\quad\ge(1-\eta)(d-\eta)\log\frac1s .
+\end{aligned}
+\]</span>
+This holds for every shift, hence for <span class="math" data-tex="\(\mathcal H_s(\nu)\)">\(\mathcal H_s(\nu)\)</span> and <span class="math" data-tex="\(H^0_s(\nu)\)">\(H^0_s(\nu)\)</span>. Divide by <span class="math" data-tex="\(\log(1/s)\)">\(\log(1/s)\)</span>, let <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>, and then <span class="math" data-tex="\(\eta\to0\)">\(\eta\to0\)</span>. For the last statement, <span class="math" data-tex="\(H^0_s(\nu)\le\log(2R/s+2)\)">\(H^0_s(\nu)\le\log(2R/s+2)\)</span> if <span class="math" data-tex="\(\nu([-R,R])=1\)">\(\nu([-R,R])=1\)</span>, and this divided by <span class="math" data-tex="\(\log(1/s)\)">\(\log(1/s)\)</span> tends to <span class="math" data-tex="\(1\)">\(1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-upper-bound">3. The upper bound</h2>
+<p><strong>Lemma 3.1.</strong> For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\mu=\sum_{w\in\Lambda^n}p_w\,(\varphi_w)_*\mu .
+\]">\[
+\mu=\sum_{w\in\Lambda^n}p_w\,(\varphi_w)_*\mu .
+\]</span>
+So if <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span> has the law <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and is independent of <span class="math" data-tex="\(I_1,\dots,I_n\)">\(I_1,\dots,I_n\)</span>, then <span class="math" data-tex="\(G_n(X&#x27;)\)">\(G_n(X&#x27;)\)</span> has the law <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> this is the equation of Proposition 1.2 of the lesson on the one-bit deficit. If it holds for <span class="math" data-tex="\(n\)">\(n\)</span>, insert the equation for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> into each term: <span class="math" data-tex="\((\varphi_w)_*\mu=\sum_ip_i(\varphi_w\circ\varphi_i)_*\mu\)">\((\varphi_w)_*\mu=\sum_ip_i(\varphi_w\circ\varphi_i)_*\mu\)</span>. Given <span class="math" data-tex="\(I_1\cdots I_n=w\)">\(I_1\cdots I_n=w\)</span>, the variable <span class="math" data-tex="\(G_n(X&#x27;)=\varphi_w(X&#x27;)\)">\(G_n(X&#x27;)=\varphi_w(X&#x27;)\)</span> has the law <span class="math" data-tex="\((\varphi_w)_*\mu\)">\((\varphi_w)_*\mu\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.2.</strong> For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0_s(\mu)&amp;\le H(G_n)+\log(2R_0+2)\\
+&amp;\quad+\mathbb P\bigl(|r_{G_n}|&gt;s\bigr)\,\log\bigl(2R_0/s+2\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+H^0_s(\mu)&amp;\le H(G_n)+\log(2R_0+2)\\
+&amp;\quad+\mathbb P\bigl(|r_{G_n}|&gt;s\bigr)\,\log\bigl(2R_0/s+2\bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(X=G_n(X&#x27;)\)">\(X=G_n(X&#x27;)\)</span> as in Lemma 3.1 and <span class="math" data-tex="\(Z=\lfloor X/s\rfloor\)">\(Z=\lfloor X/s\rfloor\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0_s(\mu)=H(Z)&amp;\le H(G_n,Z)\\
+&amp;=H(G_n)+H(Z\mid G_n).
+\end{aligned}
+\]">\[
+\begin{aligned}
+H^0_s(\mu)=H(Z)&amp;\le H(G_n,Z)\\
+&amp;=H(G_n)+H(Z\mid G_n).
+\end{aligned}
+\]</span>
+Given <span class="math" data-tex="\(G_n=g\)">\(G_n=g\)</span>, the variable <span class="math" data-tex="\(X\)">\(X\)</span> lies in the image of <span class="math" data-tex="\([-R_0,R_0]\)">\([-R_0,R_0]\)</span> under <span class="math" data-tex="\(g\)">\(g\)</span>, an interval of the length <span class="math" data-tex="\(2R_0|r_g|\)">\(2R_0|r_g|\)</span>. An interval of the length <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> meets at most <span class="math" data-tex="\(\lambda/s+2\)">\(\lambda/s+2\)</span> cells of the length <span class="math" data-tex="\(s\)">\(s\)</span>. If <span class="math" data-tex="\(|r_g|\le s\)">\(|r_g|\le s\)</span>, this is at most <span class="math" data-tex="\(2R_0+2\)">\(2R_0+2\)</span>; in every case <span class="math" data-tex="\(|r_g|&lt;1\)">\(|r_g|&lt;1\)</span> and it is at most <span class="math" data-tex="\(2R_0/s+2\)">\(2R_0/s+2\)</span>. So the conditional entropy of <span class="math" data-tex="\(Z\)">\(Z\)</span> given <span class="math" data-tex="\(G_n=g\)">\(G_n=g\)</span> is at most <span class="math" data-tex="\(\log(2R_0+2)\)">\(\log(2R_0+2)\)</span> in the first case and at most <span class="math" data-tex="\(\log(2R_0/s+2)\)">\(\log(2R_0/s+2)\)</span> in general. The mean over <span class="math" data-tex="\(g\)">\(g\)</span> is <span class="math" data-tex="\(H(Z\mid G_n)\)">\(H(Z\mid G_n)\)</span>, and it is at most <span class="math" data-tex="\(\log(2R_0+2)\)">\(\log(2R_0+2)\)</span> plus <span class="math" data-tex="\(\log(2R_0/s+2)\)">\(\log(2R_0/s+2)\)</span> times the probability that <span class="math" data-tex="\(|r_{G_n}|&gt;s\)">\(|r_{G_n}|&gt;s\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 3.3 (upper bound).</strong> Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a self-similar measure that is exact dimensional with the dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Then
+<span class="math math-display" data-tex="\[
+d\le\min\Bigl\{1,\frac h\chi\Bigr\}.
+\]">\[
+d\le\min\Bigl\{1,\frac h\chi\Bigr\}.
+\]</span></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(d\le1\)">\(d\le1\)</span> by Proposition 2.1. Let <span class="math" data-tex="\(0&lt;\varepsilon&lt;\chi\)">\(0&lt;\varepsilon&lt;\chi\)</span> and <span class="math" data-tex="\(s_n=2^{-n(\chi-\varepsilon)}\)">\(s_n=2^{-n(\chi-\varepsilon)}\)</span>, so that <span class="math" data-tex="\(\log(1/s_n)=n(\chi-\varepsilon)\)">\(\log(1/s_n)=n(\chi-\varepsilon)\)</span> and <span class="math" data-tex="\(s_n\to0\)">\(s_n\to0\)</span>. Since <span class="math" data-tex="\(s_n\le1\)">\(s_n\le1\)</span>, the number <span class="math" data-tex="\(\log(2R_0/s_n+2)\)">\(\log(2R_0/s_n+2)\)</span> is at most <span class="math" data-tex="\(\log(2R_0+2)+n(\chi-\varepsilon)\)">\(\log(2R_0+2)+n(\chi-\varepsilon)\)</span>. By Lemmas 3.2 and 1.3,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0_{s_n}(\mu)&amp;\le H(G_n)+2\log(2R_0+2)\\
+&amp;\quad+\frac{\sigma^2}{n\varepsilon^2}\,n(\chi-\varepsilon).
+\end{aligned}
+\]">\[
+\begin{aligned}
+H^0_{s_n}(\mu)&amp;\le H(G_n)+2\log(2R_0+2)\\
+&amp;\quad+\frac{\sigma^2}{n\varepsilon^2}\,n(\chi-\varepsilon).
+\end{aligned}
+\]</span>
+Divide by <span class="math" data-tex="\(n(\chi-\varepsilon)\)">\(n(\chi-\varepsilon)\)</span> and let <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>. The left side has a lower limit of at least <span class="math" data-tex="\(d\)">\(d\)</span>, by Proposition 2.1. On the right, <span class="math" data-tex="\(H(G_n)/n\to h\)">\(H(G_n)/n\to h\)</span>, and the other two terms, divided by <span class="math" data-tex="\(n\)">\(n\)</span>, tend to <span class="math" data-tex="\(0\)">\(0\)</span>. So <span class="math" data-tex="\(d\le h/(\chi-\varepsilon)\)">\(d\le h/(\chi-\varepsilon)\)</span> for every <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and <span class="math" data-tex="\(d\le h/\chi\)">\(d\le h/\chi\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Example 3.4.</strong> For the two maps <span class="math" data-tex="\(x/3\)">\(x/3\)</span> and <span class="math" data-tex="\(x/3+\tfrac23\)">\(x/3+\tfrac23\)</span> with the weights <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> there are no exact overlaps, so <span class="math" data-tex="\(h=1\)">\(h=1\)</span>, and <span class="math" data-tex="\(\chi=\log3\)">\(\chi=\log3\)</span>. The Cantor measure has <span class="math" data-tex="\(d=\log2/\log3=h/\chi\)">\(d=\log2/\log3=h/\chi\)</span> (Example 3.6 of the lesson on the one-bit deficit). For the maps <span class="math" data-tex="\(x/2\)">\(x/2\)</span> and <span class="math" data-tex="\(x/2+\tfrac12\)">\(x/2+\tfrac12\)</span> with the weights <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>, <span class="math" data-tex="\(h=\chi=1\)">\(h=\chi=1\)</span>, and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the uniform law on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> with <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. In both cases the bound is an equality.</p>
+<p><strong>Example 3.5.</strong> Let <span class="math" data-tex="\(\varphi_0(x)=\tfrac x3\)">\(\varphi_0(x)=\tfrac x3\)</span>, <span class="math" data-tex="\(\varphi_1(x)=\tfrac x3+1\)">\(\varphi_1(x)=\tfrac x3+1\)</span>, <span class="math" data-tex="\(\varphi_2(x)=\tfrac x3+3\)">\(\varphi_2(x)=\tfrac x3+3\)</span>, with the weights <span class="math" data-tex="\(\tfrac13\)">\(\tfrac13\)</span>. Then
+<span class="math math-display" data-tex="\[
+\varphi_1\circ\varphi_0(x)=\frac x9+1=\varphi_0\circ\varphi_2(x),
+\]">\[
+\varphi_1\circ\varphi_0(x)=\frac x9+1=\varphi_0\circ\varphi_2(x),
+\]</span>
+an exact overlap. The nine words of length <span class="math" data-tex="\(2\)">\(2\)</span> give eight maps, one of them with the probability <span class="math" data-tex="\(\tfrac29\)">\(\tfrac29\)</span>, so <span class="math" data-tex="\(H(G_2)=\log9-\tfrac29\)">\(H(G_2)=\log9-\tfrac29\)</span> and
+<span class="math math-display" data-tex="\[
+h\le\frac{H(G_2)}2=\log3-\frac19 .
+\]">\[
+h\le\frac{H(G_2)}2=\log3-\frac19 .
+\]</span>
+With <span class="math" data-tex="\(\chi=\log3\)">\(\chi=\log3\)</span>, Theorem 3.3 gives <span class="math" data-tex="\(d\le1-\tfrac1{9\log3}&lt;0.93\)">\(d\le1-\tfrac1{9\log3}&lt;0.93\)</span> under the hypothesis (ED), while <span class="math" data-tex="\(H(p)/\chi=1\)">\(H(p)/\chi=1\)</span>. An enumeration of the words of length <span class="math" data-tex="\(n\le9\)">\(n\le9\)</span> finds <span class="math" data-tex="\(3,8,21,55,144,377,987,2584,6765\)">\(3,8,21,55,144,377,987,2584,6765\)</span> different maps and <span class="math" data-tex="\(H(G_9)/9&lt;1.3607\)">\(H(G_9)/9&lt;1.3607\)</span>, so <span class="math" data-tex="\(d&lt;0.8585\)">\(d&lt;0.8585\)</span>.</p>
+<p><strong>The dimension formula.</strong> The main theorem of [OpenAI-S] is the equality <span class="math" data-tex="\(d=\min\{1,h/\chi\}\)">\(d=\min\{1,h/\chi\}\)</span> for every self-similar measure on the line, with no assumption on the maps besides <span class="math" data-tex="\(0&lt;|r_i|&lt;1\)">\(0&lt;|r_i|&lt;1\)</span>. By Theorem 3.3 it is equivalent to the statement that the two inequalities
+<span class="math math-display" data-tex="\[
+d&lt;1,\qquad d\chi&lt;h
+\]">\[
+d&lt;1,\qquad d\chi&lt;h
+\]</span>
+do not hold together. This is proved in the lesson <a href="disjoint-windows-and-the-dimension-formula.html">Disjoint windows and the dimension formula</a>. [OpenAI-S] states the formula for the Hausdorff dimension of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, the infimum of the Hausdorff dimensions of the Borel sets of positive measure, and notes that for an exact-dimensional measure this number is <span class="math" data-tex="\(d\)">\(d\)</span>. The course works with <span class="math" data-tex="\(d\)">\(d\)</span> and does not use Hausdorff dimension.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Give a sequence as in Lemma 1.1 for which <span class="math" data-tex="\(a_n/n\)">\(a_n/n\)</span> is not monotone.</p>
+<p><strong>4.2.</strong> For the maps of Example 3.5 with arbitrary weights <span class="math" data-tex="\(p_0,p_1,p_2&gt;0\)">\(p_0,p_1,p_2&gt;0\)</span>, show that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H(G_2)&amp;=2H(p)\\
+&amp;\quad-p_0(p_1+p_2)\,h_2\Bigl(\frac{p_1}{p_1+p_2}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+H(G_2)&amp;=2H(p)\\
+&amp;\quad-p_0(p_1+p_2)\,h_2\Bigl(\frac{p_1}{p_1+p_2}\Bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>4.3.</strong> Let <span class="math" data-tex="\(\varphi_t(x)=\tfrac x2+t\)">\(\varphi_t(x)=\tfrac x2+t\)</span> for <span class="math" data-tex="\(t\in\{0,1,2\}\)">\(t\in\{0,1,2\}\)</span>, with any weights. Show that at most <span class="math" data-tex="\(2^{n+1}-1\)">\(2^{n+1}-1\)</span> different maps <span class="math" data-tex="\(\varphi_w\)">\(\varphi_w\)</span> have the length <span class="math" data-tex="\(n\)">\(n\)</span>, and that <span class="math" data-tex="\(h\le1=\chi\)">\(h\le1=\chi\)</span>.</p>
+<p><strong>4.4.</strong> Let all the ratios be equal: <span class="math" data-tex="\(r_i=r\)">\(r_i=r\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>. Show without Lemma 1.3 that <span class="math" data-tex="\(H^0_{|r|^n}(\mu)\le H(G_n)+\log(2R_0+2)\)">\(H^0_{|r|^n}(\mu)\le H(G_n)+\log(2R_0+2)\)</span>, and deduce Theorem 3.3 for this case.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> Let <span class="math" data-tex="\(a_n=1\)">\(a_n=1\)</span> for odd <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(a_n=2\)">\(a_n=2\)</span> for even <span class="math" data-tex="\(n\)">\(n\)</span>. A sum <span class="math" data-tex="\(a_n+a_m\)">\(a_n+a_m\)</span> is at least <span class="math" data-tex="\(2\)">\(2\)</span>, so <span class="math" data-tex="\(a_{n+m}\le a_n+a_m\)">\(a_{n+m}\le a_n+a_m\)</span>. And <span class="math" data-tex="\(a_3/3=\tfrac13&lt;\tfrac12=a_4/4\)">\(a_3/3=\tfrac13&lt;\tfrac12=a_4/4\)</span>, while <span class="math" data-tex="\(a_n/n\to0\)">\(a_n/n\to0\)</span>.</p>
+<p><strong>4.2.</strong> <span class="math" data-tex="\(\varphi_i\circ\varphi_j(x)=\tfrac x9+t_i+\tfrac{t_j}3\)">\(\varphi_i\circ\varphi_j(x)=\tfrac x9+t_i+\tfrac{t_j}3\)</span> with <span class="math" data-tex="\(t_0=0\)">\(t_0=0\)</span>, <span class="math" data-tex="\(t_1=1\)">\(t_1=1\)</span>, <span class="math" data-tex="\(t_2=3\)">\(t_2=3\)</span>. The nine numbers <span class="math" data-tex="\(t_i+t_j/3\)">\(t_i+t_j/3\)</span> are <span class="math" data-tex="\(0,\tfrac13,1,1,\tfrac43,2,3,\tfrac{10}3,4\)">\(0,\tfrac13,1,1,\tfrac43,2,3,\tfrac{10}3,4\)</span>; only the words <span class="math" data-tex="\(02\)">\(02\)</span> and <span class="math" data-tex="\(10\)">\(10\)</span> give the same map. The word of length <span class="math" data-tex="\(2\)">\(2\)</span> has the entropy <span class="math" data-tex="\(2H(p)\)">\(2H(p)\)</span>. Passing from the word to the map merges the two words of the probabilities <span class="math" data-tex="\(p_0p_2\)">\(p_0p_2\)</span> and <span class="math" data-tex="\(p_1p_0\)">\(p_1p_0\)</span> into one value. By the chain rule the entropy drops by the entropy of the word given the map, which is the probability <span class="math" data-tex="\(p_0(p_1+p_2)\)">\(p_0(p_1+p_2)\)</span> of this value times <span class="math" data-tex="\(h_2\)">\(h_2\)</span> of the conditional probability <span class="math" data-tex="\(p_1/(p_1+p_2)\)">\(p_1/(p_1+p_2)\)</span>.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(\varphi_w(x)=2^{-n}x+\sum_{k=1}^n2^{-(k-1)}t_{i_k}\)">\(\varphi_w(x)=2^{-n}x+\sum_{k=1}^n2^{-(k-1)}t_{i_k}\)</span>, and the sum is <span class="math" data-tex="\(2^{-(n-1)}\)">\(2^{-(n-1)}\)</span> times an integer between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(2(2^n-1)\)">\(2(2^n-1)\)</span>. So there are at most <span class="math" data-tex="\(2^{n+1}-1\)">\(2^{n+1}-1\)</span> maps, <span class="math" data-tex="\(H(G_n)\le n+1\)">\(H(G_n)\le n+1\)</span> and <span class="math" data-tex="\(h\le1\)">\(h\le1\)</span>. Here <span class="math" data-tex="\(\chi=\log2=1\)">\(\chi=\log2=1\)</span>.</p>
+<p><strong>4.4.</strong> Every map of length <span class="math" data-tex="\(n\)">\(n\)</span> has the slope <span class="math" data-tex="\(r^n\)">\(r^n\)</span>, so <span class="math" data-tex="\(\mathbb P(|r_{G_n}|&gt;|r|^n)=0\)">\(\mathbb P(|r_{G_n}|&gt;|r|^n)=0\)</span>, and Lemma 3.2 with <span class="math" data-tex="\(s=|r|^n\)">\(s=|r|^n\)</span> gives the inequality. Divide by <span class="math" data-tex="\(\log(1/s)=n\chi\)">\(\log(1/s)=n\chi\)</span>, where <span class="math" data-tex="\(\chi=-\log|r|\)">\(\chi=-\log|r|\)</span>, and let <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>: by Proposition 2.1 the left side has a lower limit of at least <span class="math" data-tex="\(d\)">\(d\)</span>, and the right side tends to <span class="math" data-tex="\(h/\chi\)">\(h/\chi\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-S] OpenAI, <em>The entropy-rate dimension formula for self-similar measures on the line</em>, OpenAI Math Release preprint, 24 September 2026, Section 1. https://github.com/openai/math/tree/main/preprints/The-entropy-rate-dimension-formula-for-self-similar-measures-on-the-line-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
