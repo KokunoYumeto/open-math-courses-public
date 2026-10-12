@@ -1,0 +1,232 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Entropy at a scale</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The dimension of self-similar measures)</a><a href="entropy-of-finite-random-variables.html">Previous lesson</a><a href="the-one-bit-deficit.html">Next lesson</a><a href="src/entropy-at-a-scale.md">Editable source</a></nav><main><article><h1 id="entropy-at-a-scale">Entropy at a scale</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A probability law on the line, looked at through a grid of intervals of length <span class="math" data-tex="\(s\)">\(s\)</span>, becomes a law on the cells, and this law has an entropy. It tells how many bits are needed to say in which cell a random point lies. The entropy depends a little on the position of the grid; averaging over all positions removes this and gives a quantity <span class="math" data-tex="\(\mathcal H_s\)">\(\mathcal H_s\)</span> with exact rules. The differences <span class="math" data-tex="\(\mathcal H_s-\mathcal H_t\)">\(\mathcal H_s-\mathcal H_t\)</span> measure the information between two scales. This lesson defines these quantities and proves their rules. They are the language of the proof of [OpenAI-S].</p>
+<ul>
+<li>The averaged entropy <span class="math" data-tex="\(\mathcal H_s\)">\(\mathcal H_s\)</span> does not change under translations, and scaling the law by <span class="math" data-tex="\(a\)">\(a\)</span> changes the scale to <span class="math" data-tex="\(s/|a|\)">\(s/|a|\)</span> (Lemma 1.1).</li>
+<li>Entropies for two grids are compared by counting how many cells of one meet a cell of the other (Lemma 1.2, Proposition 1.3).</li>
+<li>If <span class="math" data-tex="\(t/s=N\)">\(t/s=N\)</span> is an integer, <span class="math" data-tex="\(\mathcal H_s-\mathcal H_t\)">\(\mathcal H_s-\mathcal H_t\)</span> is a mean of conditional entropies; it lies between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(\log N\)">\(\log N\)</span>, is concave in the law, and does not decrease under convolution (Propositions 2.1 and 2.4).</li>
+<li>Adding an independent uniform choice among <span class="math" data-tex="\(K\)">\(K\)</span> steps of length <span class="math" data-tex="\(v\)">\(v\)</span> changes the scale from <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(Kv\)">\(Kv\)</span> (Proposition 3.1). So <span class="math" data-tex="\(1-(\mathcal H_v-\mathcal H_{2v})\)">\(1-(\mathcal H_v-\mathcal H_{2v})\)</span> is the information that the cell of <span class="math" data-tex="\(X+vJ\)">\(X+vJ\)</span> gives about a fair bit <span class="math" data-tex="\(J\)">\(J\)</span> (Corollary 3.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-S, Section 2, the lemma on the entropy calculus], which attributes these identities to P. Varjú. The proofs here use sums over cells only; no densities are needed. The lesson continues <a href="entropy-of-finite-random-variables.html">Entropy of finite random variables</a> and uses the Lebesgue integral of bounded functions on an interval (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>).</p>
+<h2 id="1-grids">1. Grids</h2>
+<p>A <em>bounded law</em> is a Borel probability measure <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with <span class="math" data-tex="\(\nu([-R,R])=1\)">\(\nu([-R,R])=1\)</span> for some <span class="math" data-tex="\(R\)">\(R\)</span>. We also say that a random variable <span class="math" data-tex="\(X\)">\(X\)</span> with this law is bounded, and write the quantities below with <span class="math" data-tex="\(X\)">\(X\)</span> or with <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>Let <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> and <span class="math" data-tex="\(0\le u&lt;1\)">\(0\le u&lt;1\)</span>. The <em>grid</em> of length <span class="math" data-tex="\(s\)">\(s\)</span> with the shift <span class="math" data-tex="\(u\)">\(u\)</span> consists of the cells <span class="math" data-tex="\([(j-u)s,(j+1-u)s)\)">\([(j-u)s,(j+1-u)s)\)</span>, <span class="math" data-tex="\(j\in\mathbb Z\)">\(j\in\mathbb Z\)</span>. The point <span class="math" data-tex="\(x\)">\(x\)</span> lies in the cell with the label <span class="math" data-tex="\(\lfloor x/s+u\rfloor\)">\(\lfloor x/s+u\rfloor\)</span>. For a bounded variable <span class="math" data-tex="\(X\)">\(X\)</span> the label <span class="math" data-tex="\(\lfloor X/s+u\rfloor\)">\(\lfloor X/s+u\rfloor\)</span> takes at most <span class="math" data-tex="\(2R/s+2\)">\(2R/s+2\)</span> values. Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_{s,u}(X)=H\bigl(\lfloor X/s+u\rfloor\bigr),\\
+H^0_s(X)=H_{s,0}(X),\\
+\mathcal H_s(X)=\int_0^1H_{s,u}(X)\,du .
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_{s,u}(X)=H\bigl(\lfloor X/s+u\rfloor\bigr),\\
+H^0_s(X)=H_{s,0}(X),\\
+\mathcal H_s(X)=\int_0^1H_{s,u}(X)\,du .
+\end{gathered}
+\]</span>
+The integral exists: the probability of the cell <span class="math" data-tex="\(j\)">\(j\)</span> is a difference of two values of the nondecreasing function <span class="math" data-tex="\(x\mapsto\nu((-\infty,x))\)">\(x\mapsto\nu((-\infty,x))\)</span> at points that depend linearly on <span class="math" data-tex="\(u\)">\(u\)</span>, so it is a Borel function of <span class="math" data-tex="\(u\)">\(u\)</span>; and <span class="math" data-tex="\(H_{s,u}\)">\(H_{s,u}\)</span> is a finite sum of the continuous function <span class="math" data-tex="\(-p\log p\)">\(-p\log p\)</span> of these probabilities, bounded by <span class="math" data-tex="\(\log(2R/s+2)\)">\(\log(2R/s+2)\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> For a bounded variable <span class="math" data-tex="\(X\)">\(X\)</span>, real <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal H_s(X+b)=\mathcal H_s(X),\\
+\mathcal H_s(aX)=\mathcal H_{s/|a|}(X).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal H_s(X+b)=\mathcal H_s(X),\\
+\mathcal H_s(aX)=\mathcal H_{s/|a|}(X).
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(\lfloor(X+b)/s+u\rfloor=\lfloor X/s+u&#x27;\rfloor+k\)">\(\lfloor(X+b)/s+u\rfloor=\lfloor X/s+u&#x27;\rfloor+k\)</span>, where <span class="math" data-tex="\(u+b/s=u&#x27;+k\)">\(u+b/s=u&#x27;+k\)</span> with <span class="math" data-tex="\(0\le u&#x27;&lt;1\)">\(0\le u&#x27;&lt;1\)</span> and an integer <span class="math" data-tex="\(k\)">\(k\)</span>. Adding the constant <span class="math" data-tex="\(k\)">\(k\)</span> to a label does not change the entropy, and <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span> runs through <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> once, with the same length element, when <span class="math" data-tex="\(u\)">\(u\)</span> does. For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(\lfloor aX/s+u\rfloor=\lfloor X/(s/a)+u\rfloor\)">\(\lfloor aX/s+u\rfloor=\lfloor X/(s/a)+u\rfloor\)</span>. It remains to treat <span class="math" data-tex="\(a=-1\)">\(a=-1\)</span>. If <span class="math" data-tex="\(X/s-u\)">\(X/s-u\)</span> is not an integer, then <span class="math" data-tex="\(\lfloor-X/s+u\rfloor=-\lfloor X/s-u\rfloor-1\)">\(\lfloor-X/s+u\rfloor=-\lfloor X/s-u\rfloor-1\)</span>, a one-to-one function of the label <span class="math" data-tex="\(\lfloor X/s+(1-u)\rfloor=\lfloor X/s-u\rfloor+1\)">\(\lfloor X/s+(1-u)\rfloor=\lfloor X/s-u\rfloor+1\)</span>. The probability that <span class="math" data-tex="\(X/s-u\)">\(X/s-u\)</span> is an integer is not zero for at most countably many <span class="math" data-tex="\(u\)">\(u\)</span>, because <span class="math" data-tex="\(X\)">\(X\)</span> has at most countably many atoms. So <span class="math" data-tex="\(H_{s,u}(-X)=H_{s,1-u}(X)\)">\(H_{s,u}(-X)=H_{s,1-u}(X)\)</span> for all but countably many <span class="math" data-tex="\(u\)">\(u\)</span>, and the integrals agree. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 1.2.</strong> Let <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span> be random variables with finitely many values such that, for every value <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(Z\)">\(Z\)</span>, the variable <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span> takes at most <span class="math" data-tex="\(m\)">\(m\)</span> values on the event <span class="math" data-tex="\(Z=z\)">\(Z=z\)</span>. Then <span class="math" data-tex="\(H(Z&#x27;)\le H(Z)+\log m\)">\(H(Z&#x27;)\le H(Z)+\log m\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(H(Z&#x27;)\le H(Z,Z&#x27;)\)">\(H(Z&#x27;)\le H(Z,Z&#x27;)\)</span>, and <span class="math" data-tex="\(H(Z,Z&#x27;)=H(Z)+H(Z&#x27;\mid Z)\)">\(H(Z,Z&#x27;)=H(Z)+H(Z&#x27;\mid Z)\)</span>, where each conditional law of <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span> has at most <span class="math" data-tex="\(m\)">\(m\)</span> values. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 1.3.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be bounded and <span class="math" data-tex="\(z\ge s&gt;0\)">\(z\ge s&gt;0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal H_s(X)-\log\bigl(\tfrac zs+2\bigr)\le\mathcal H_z(X),\\
+\mathcal H_z(X)\le\mathcal H_s(X)+1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal H_s(X)-\log\bigl(\tfrac zs+2\bigr)\le\mathcal H_z(X),\\
+\mathcal H_z(X)\le\mathcal H_s(X)+1 .
+\end{gathered}
+\]</span>
+Moreover <span class="math" data-tex="\(|\mathcal H_s(X)-H^0_s(X)|\le1\)">\(|\mathcal H_s(X)-H^0_s(X)|\le1\)</span> and <span class="math" data-tex="\(|H^0_s(X+b)-H^0_s(X)|\le1\)">\(|H^0_s(X+b)-H^0_s(X)|\le1\)</span> for real <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><strong>Proof.</strong> Take a grid of length <span class="math" data-tex="\(s\)">\(s\)</span> and a grid of length <span class="math" data-tex="\(z\)">\(z\)</span>, with any shifts. A cell of the first is an interval of length <span class="math" data-tex="\(s\le z\)">\(s\le z\)</span>, so it meets at most two cells of the second. A cell of the second, of length <span class="math" data-tex="\(z\)">\(z\)</span>, meets at most <span class="math" data-tex="\(z/s+2\)">\(z/s+2\)</span> cells of the first. By Lemma 1.2, for all shifts <span class="math" data-tex="\(u,u&#x27;\)">\(u,u&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_{z,u&#x27;}(X)\le H_{s,u}(X)+1,\\
+H_{s,u}(X)\le H_{z,u&#x27;}(X)+\log\bigl(\tfrac zs+2\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_{z,u&#x27;}(X)\le H_{s,u}(X)+1,\\
+H_{s,u}(X)\le H_{z,u&#x27;}(X)+\log\bigl(\tfrac zs+2\bigr).
+\end{gathered}
+\]</span>
+Integrating over <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span> gives the first statement. For <span class="math" data-tex="\(z=s\)">\(z=s\)</span> the first line, with <span class="math" data-tex="\(u&#x27;=0\)">\(u&#x27;=0\)</span> or <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, gives <span class="math" data-tex="\(|\mathcal H_s-H^0_s|\le1\)">\(|\mathcal H_s-H^0_s|\le1\)</span>. The label of <span class="math" data-tex="\(X+b\)">\(X+b\)</span> in the grid with the shift <span class="math" data-tex="\(0\)">\(0\)</span> is the label of <span class="math" data-tex="\(X\)">\(X\)</span> in a grid of the same length with another shift, up to a constant; so the last statement is again the first line with <span class="math" data-tex="\(z=s\)">\(z=s\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-two-scales-with-an-integer-ratio">2. Two scales with an integer ratio</h2>
+<p>For <span class="math" data-tex="\(s,t&gt;0\)">\(s,t&gt;0\)</span> let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_{s,t}(X)=\mathcal H_s(X)-\mathcal H_t(X),\\
+\Delta_s(X)=1-G_{s,2s}(X).
+\end{gathered}
+\]">\[
+\begin{gathered}
+G_{s,t}(X)=\mathcal H_s(X)-\mathcal H_t(X),\\
+\Delta_s(X)=1-G_{s,2s}(X).
+\end{gathered}
+\]</span></p>
+<p><strong>Proposition 2.1.</strong> Let <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> be an integer, <span class="math" data-tex="\(X\)">\(X\)</span> bounded, and <span class="math" data-tex="\(F_u=\lfloor X/s+u\rfloor\)">\(F_u=\lfloor X/s+u\rfloor\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;G_{s,Ns}(X)\\
+&amp;\ =\frac1N\sum_{e=0}^{N-1}\int_0^1H\Bigl(F_u\Bigm|\Bigl\lfloor\frac{F_u+e}N\Bigr\rfloor\Bigr)\,du ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;G_{s,Ns}(X)\\
+&amp;\ =\frac1N\sum_{e=0}^{N-1}\int_0^1H\Bigl(F_u\Bigm|\Bigl\lfloor\frac{F_u+e}N\Bigr\rfloor\Bigr)\,du ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(0\le G_{s,Ns}(X)\le\log N\)">\(0\le G_{s,Ns}(X)\le\log N\)</span>. In particular <span class="math" data-tex="\(0\le\Delta_s(X)\le1\)">\(0\le\Delta_s(X)\le1\)</span>.</p>
+<p><strong>Proof.</strong> For an integer <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(0\le e&lt;N\)">\(0\le e&lt;N\)</span> and <span class="math" data-tex="\(0\le u&lt;1\)">\(0\le u&lt;1\)</span>, the number <span class="math" data-tex="\(u&#x27;=(u+e)/N\)">\(u&#x27;=(u+e)/N\)</span> lies in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Bigl\lfloor\frac X{Ns}+u&#x27;\Bigr\rfloor&amp;=\Bigl\lfloor\frac{X/s+u+e}N\Bigr\rfloor\\
+&amp;=\Bigl\lfloor\frac{F_u+e}N\Bigr\rfloor,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Bigl\lfloor\frac X{Ns}+u&#x27;\Bigr\rfloor&amp;=\Bigl\lfloor\frac{X/s+u+e}N\Bigr\rfloor\\
+&amp;=\Bigl\lfloor\frac{F_u+e}N\Bigr\rfloor,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(\lfloor y/N\rfloor=\lfloor\lfloor y\rfloor/N\rfloor\)">\(\lfloor y/N\rfloor=\lfloor\lfloor y\rfloor/N\rfloor\)</span> for real <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(\lfloor X/s+u+e\rfloor=F_u+e\)">\(\lfloor X/s+u+e\rfloor=F_u+e\)</span>. As <span class="math" data-tex="\(u\)">\(u\)</span> runs through <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> through <span class="math" data-tex="\(0,\dots,N-1\)">\(0,\dots,N-1\)</span>, <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span> runs through <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> once, and <span class="math" data-tex="\(du&#x27;=du/N\)">\(du&#x27;=du/N\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal H_{Ns}(X)\\
+&amp;\ =\frac1N\sum_{e=0}^{N-1}\int_0^1H\Bigl(\Bigl\lfloor\frac{F_u+e}N\Bigr\rfloor\Bigr)\,du .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal H_{Ns}(X)\\
+&amp;\ =\frac1N\sum_{e=0}^{N-1}\int_0^1H\Bigl(\Bigl\lfloor\frac{F_u+e}N\Bigr\rfloor\Bigr)\,du .
+\end{aligned}
+\]</span>
+The coarse label is a function of <span class="math" data-tex="\(F_u\)">\(F_u\)</span>, so by the chain rule <span class="math" data-tex="\(H(F_u)\)">\(H(F_u)\)</span> minus its entropy is the conditional entropy in the statement. Given the coarse label, <span class="math" data-tex="\(F_u\)">\(F_u\)</span> takes at most <span class="math" data-tex="\(N\)">\(N\)</span> values. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In words: the cells of a grid of length <span class="math" data-tex="\(Ns\)">\(Ns\)</span> are unions of <span class="math" data-tex="\(N\)">\(N\)</span> consecutive cells of a grid of length <span class="math" data-tex="\(s\)">\(s\)</span>, and <span class="math" data-tex="\(G_{s,Ns}\)">\(G_{s,Ns}\)</span> is the mean, over the positions of both grids, of the uncertainty about the fine cell when the coarse cell is known.</p>
+<p>A family <span class="math" data-tex="\((\nu_\omega)\)">\((\nu_\omega)\)</span> of laws on a common interval <span class="math" data-tex="\([-R,R]\)">\([-R,R]\)</span>, indexed by the points <span class="math" data-tex="\(\omega\)">\(\omega\)</span> of a probability space <span class="math" data-tex="\((\Omega,\mathbb P)\)">\((\Omega,\mathbb P)\)</span>, is <em>measurable</em> if <span class="math" data-tex="\(\omega\mapsto\nu_\omega(B)\)">\(\omega\mapsto\nu_\omega(B)\)</span> is measurable for every interval <span class="math" data-tex="\(B\)">\(B\)</span>. Its <em>mean</em> is the law <span class="math" data-tex="\(\nu(B)=\int\nu_\omega(B)\,d\mathbb P(\omega)\)">\(\nu(B)=\int\nu_\omega(B)\,d\mathbb P(\omega)\)</span>. A finite mixture <span class="math" data-tex="\(\sum_i\lambda_i\nu_i\)">\(\sum_i\lambda_i\nu_i\)</span> is the case of a finite set <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p><strong>Lemma 2.2.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a finite set and <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> a continuous concave function on the set of the laws on <span class="math" data-tex="\(A\)">\(A\)</span>. Let <span class="math" data-tex="\(p\)">\(p\)</span> be a measurable map from a probability space to this set. Then <span class="math" data-tex="\(\Psi\bigl(\int p\,d\mathbb P\bigr)\ge\int\Psi(p)\,d\mathbb P\)">\(\Psi\bigl(\int p\,d\mathbb P\bigr)\ge\int\Psi(p)\,d\mathbb P\)</span>.</p>
+<p><strong>Proof.</strong> For a map <span class="math" data-tex="\(p\)">\(p\)</span> with finitely many values this is the concavity of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, applied repeatedly. In general, let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and divide the set of the laws, a bounded subset of <span class="math" data-tex="\(\mathbb R^A\)">\(\mathbb R^A\)</span>, into finitely many convex Borel pieces of diameter at most <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, for example by cubes. For a piece <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(\mathbb P(p\in Q)&gt;0\)">\(\mathbb P(p\in Q)&gt;0\)</span> let <span class="math" data-tex="\(p_Q\)">\(p_Q\)</span> be the mean of <span class="math" data-tex="\(p\)">\(p\)</span> on the event <span class="math" data-tex="\(p\in Q\)">\(p\in Q\)</span>; it is a law on <span class="math" data-tex="\(A\)">\(A\)</span>, and its distance to every point of <span class="math" data-tex="\(Q\)">\(Q\)</span> is at most <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, because it lies in the closure of the convex set <span class="math" data-tex="\(Q\)">\(Q\)</span>. Let <span class="math" data-tex="\(p_n=p_Q\)">\(p_n=p_Q\)</span> on the event <span class="math" data-tex="\(p\in Q\)">\(p\in Q\)</span>. Then <span class="math" data-tex="\(\int p_n=\int p\)">\(\int p_n=\int p\)</span>, and <span class="math" data-tex="\(p_n\)">\(p_n\)</span> has finitely many values, so <span class="math" data-tex="\(\Psi(\int p)\ge\int\Psi(p_n)\)">\(\Psi(\int p)\ge\int\Psi(p_n)\)</span>. Since <span class="math" data-tex="\(|p_n-p|\le1/n\)">\(|p_n-p|\le1/n\)</span> and <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is uniformly continuous, <span class="math" data-tex="\(\int\Psi(p_n)\to\int\Psi(p)\)">\(\int\Psi(p_n)\to\int\Psi(p)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 2.3.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a finite set and <span class="math" data-tex="\(c\)">\(c\)</span> a function on <span class="math" data-tex="\(A\)">\(A\)</span>. For a law <span class="math" data-tex="\(p\)">\(p\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span>, let <span class="math" data-tex="\(\Psi(p)=H(F\mid c(F))\)">\(\Psi(p)=H(F\mid c(F))\)</span>, where <span class="math" data-tex="\(F\)">\(F\)</span> has the law <span class="math" data-tex="\(p\)">\(p\)</span>. Then <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is continuous and concave.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(\Psi(p)=H(F)-H(c(F))\)">\(\Psi(p)=H(F)-H(c(F))\)</span> is a finite sum of terms <span class="math" data-tex="\(\pm\,q\log q\)">\(\pm\,q\log q\)</span> in which <span class="math" data-tex="\(q\)">\(q\)</span> is a sum of coordinates of <span class="math" data-tex="\(p\)">\(p\)</span>; so it is continuous. Let <span class="math" data-tex="\(p=\lambda p_1+(1-\lambda)p_2\)">\(p=\lambda p_1+(1-\lambda)p_2\)</span>. Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be <span class="math" data-tex="\(1\)">\(1\)</span> with probability <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span> otherwise, and let <span class="math" data-tex="\(F\)">\(F\)</span> have the law <span class="math" data-tex="\(p_i\)">\(p_i\)</span> given <span class="math" data-tex="\(Y=i\)">\(Y=i\)</span>. Then <span class="math" data-tex="\(F\)">\(F\)</span> has the law <span class="math" data-tex="\(p\)">\(p\)</span>, and by Proposition 2.1 (4) of the lesson on entropy of finite random variables, <span class="math" data-tex="\(H(F\mid c(F))\ge H(F\mid c(F),Y)\)">\(H(F\mid c(F))\ge H(F\mid c(F),Y)\)</span>, and the right side is <span class="math" data-tex="\(\lambda\Psi(p_1)+(1-\lambda)\Psi(p_2)\)">\(\lambda\Psi(p_1)+(1-\lambda)\Psi(p_2)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 2.4.</strong> Let <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> be an integer and <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>.</p>
+<ol>
+<li>If <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is the mean of a measurable family <span class="math" data-tex="\((\nu_\omega)\)">\((\nu_\omega)\)</span> of laws on <span class="math" data-tex="\([-R,R]\)">\([-R,R]\)</span>, then
+<span class="math math-display" data-tex="\[
+G_{s,Ns}(\nu)\ \ge\ \int G_{s,Ns}(\nu_\omega)\,d\mathbb P(\omega).
+\]">\[
+G_{s,Ns}(\nu)\ \ge\ \int G_{s,Ns}(\nu_\omega)\,d\mathbb P(\omega).
+\]</span></li>
+<li>If <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> are independent bounded variables, then <span class="math" data-tex="\(G_{s,Ns}(X+Y)\ge G_{s,Ns}(X)\)">\(G_{s,Ns}(X+Y)\ge G_{s,Ns}(X)\)</span>.</li>
+<li>Under the assumption of (1), <span class="math" data-tex="\(\Delta_s(\nu)\le\int\Delta_s(\nu_\omega)\,d\mathbb P(\omega)\)">\(\Delta_s(\nu)\le\int\Delta_s(\nu_\omega)\,d\mathbb P(\omega)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) Fix <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span>. Let <span class="math" data-tex="\(A\)">\(A\)</span> be the finite set of the labels of the cells of the grid of length <span class="math" data-tex="\(s\)">\(s\)</span> with the shift <span class="math" data-tex="\(u\)">\(u\)</span> that meet <span class="math" data-tex="\([-R,R]\)">\([-R,R]\)</span>, and <span class="math" data-tex="\(c(j)=\lfloor(j+e)/N\rfloor\)">\(c(j)=\lfloor(j+e)/N\rfloor\)</span>. The law <span class="math" data-tex="\(p_\omega\)">\(p_\omega\)</span> of the label under <span class="math" data-tex="\(\nu_\omega\)">\(\nu_\omega\)</span> is a measurable map to the laws on <span class="math" data-tex="\(A\)">\(A\)</span>, and its mean is the law of the label under <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Let <span class="math" data-tex="\(p\)">\(p\)</span> be this mean and <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> the function of Lemma 2.3. By Lemmas 2.2 and 2.3,
+<span class="math math-display" data-tex="\[
+\Psi(p)\ \ge\ \int\Psi(p_\omega)\,d\mathbb P(\omega).
+\]">\[
+\Psi(p)\ \ge\ \int\Psi(p_\omega)\,d\mathbb P(\omega).
+\]</span>
+Here <span class="math" data-tex="\(\Psi(p)\)">\(\Psi(p)\)</span> is the conditional entropy <span class="math" data-tex="\(H(F_u\mid\lfloor(F_u+e)/N\rfloor)\)">\(H(F_u\mid\lfloor(F_u+e)/N\rfloor)\)</span> computed for <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, and <span class="math" data-tex="\(\Psi(p_\omega)\)">\(\Psi(p_\omega)\)</span> is the same for <span class="math" data-tex="\(\nu_\omega\)">\(\nu_\omega\)</span>. The integrand is not negative and is a measurable function of <span class="math" data-tex="\((u,\omega)\)">\((u,\omega)\)</span>: the probabilities of the cells are differences of values of <span class="math" data-tex="\((x,\omega)\mapsto\nu_\omega((-\infty,x))\)">\((x,\omega)\mapsto\nu_\omega((-\infty,x))\)</span>, which is nondecreasing and continuous from the left in <span class="math" data-tex="\(x\)">\(x\)</span> and measurable in <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, hence measurable in both. Integrate over <span class="math" data-tex="\(u\)">\(u\)</span>, exchange the two integrals, and take the mean over <span class="math" data-tex="\(e\)">\(e\)</span>. By Proposition 2.1 this is (1).</p>
+<p>(2) The law of <span class="math" data-tex="\(X+Y\)">\(X+Y\)</span> is the mean of the laws of <span class="math" data-tex="\(X+y\)">\(X+y\)</span>, where <span class="math" data-tex="\(y\)">\(y\)</span> is distributed as <span class="math" data-tex="\(Y\)">\(Y\)</span>; this family is measurable and lives on a common bounded interval. By (1), <span class="math" data-tex="\(G_{s,Ns}(X+Y)\ge\int G_{s,Ns}(X+y)\,d\mathbb P_Y(y)\)">\(G_{s,Ns}(X+Y)\ge\int G_{s,Ns}(X+y)\,d\mathbb P_Y(y)\)</span>, and by Lemma 1.1 every <span class="math" data-tex="\(G_{s,Ns}(X+y)\)">\(G_{s,Ns}(X+y)\)</span> is <span class="math" data-tex="\(G_{s,Ns}(X)\)">\(G_{s,Ns}(X)\)</span>.</p>
+<p>(3) is (1) for <span class="math" data-tex="\(N=2\)">\(N=2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The integer ratio is essential in Proposition 2.4: the proof uses that the coarse cell is a function of the fine cell.</p>
+<h2 id="3-uniform-steps">3. Uniform steps</h2>
+<p><strong>Proposition 3.1.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be bounded, <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>, <span class="math" data-tex="\(K\ge1\)">\(K\ge1\)</span> an integer, and <span class="math" data-tex="\(U\)">\(U\)</span> a random variable that is independent of <span class="math" data-tex="\(X\)">\(X\)</span> and uniform on <span class="math" data-tex="\(\{0,1,\dots,K-1\}\)">\(\{0,1,\dots,K-1\}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\mathcal H_v(X+vU)=\mathcal H_{Kv}(X)+\log K .
+\]">\[
+\mathcal H_v(X+vU)=\mathcal H_{Kv}(X)+\log K .
+\]</span></p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(u\)">\(u\)</span>, let <span class="math" data-tex="\(F=\lfloor X/v+u\rfloor\)">\(F=\lfloor X/v+u\rfloor\)</span> and <span class="math" data-tex="\(p_j=\mathbb P(F=j)\)">\(p_j=\mathbb P(F=j)\)</span>. The label of <span class="math" data-tex="\(X+vU\)">\(X+vU\)</span> in the grid of length <span class="math" data-tex="\(v\)">\(v\)</span> with the shift <span class="math" data-tex="\(u\)">\(u\)</span> is <span class="math" data-tex="\(F+U\)">\(F+U\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb P(F+U=j)=\frac1K\,P_j,\\
+P_j=p_j+p_{j-1}+\dots+p_{j-K+1}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb P(F+U=j)=\frac1K\,P_j,\\
+P_j=p_j+p_{j-1}+\dots+p_{j-K+1}.
+\end{gathered}
+\]</span>
+So, since <span class="math" data-tex="\(\sum_jP_j=K\)">\(\sum_jP_j=K\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H(F+U)&amp;=-\sum_j\frac{P_j}K\log\frac{P_j}K\\
+&amp;=\log K-\frac1K\sum_jP_j\log P_j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+H(F+U)&amp;=-\sum_j\frac{P_j}K\log\frac{P_j}K\\
+&amp;=\log K-\frac1K\sum_jP_j\log P_j .
+\end{aligned}
+\]</span>
+On the other hand, for <span class="math" data-tex="\(0\le e&lt;K\)">\(0\le e&lt;K\)</span> the label <span class="math" data-tex="\(\lfloor(F+e)/K\rfloor\)">\(\lfloor(F+e)/K\rfloor\)</span> has the value <span class="math" data-tex="\(i\)">\(i\)</span> with the probability <span class="math" data-tex="\(P_{iK+K-1-e}\)">\(P_{iK+K-1-e}\)</span>, the sum of the <span class="math" data-tex="\(p_j\)">\(p_j\)</span> with <span class="math" data-tex="\(iK\le j+e&lt;iK+K\)">\(iK\le j+e&lt;iK+K\)</span>. As <span class="math" data-tex="\(i\)">\(i\)</span> runs through the integers and <span class="math" data-tex="\(e\)">\(e\)</span> through <span class="math" data-tex="\(0,\dots,K-1\)">\(0,\dots,K-1\)</span>, the index <span class="math" data-tex="\(iK+K-1-e\)">\(iK+K-1-e\)</span> runs through all integers once. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1K\sum_{e=0}^{K-1}H\Bigl(\Bigl\lfloor\frac{F+e}K\Bigr\rfloor\Bigr)\\
+&amp;\quad=-\frac1K\sum_jP_j\log P_j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1K\sum_{e=0}^{K-1}H\Bigl(\Bigl\lfloor\frac{F+e}K\Bigr\rfloor\Bigr)\\
+&amp;\quad=-\frac1K\sum_jP_j\log P_j .
+\end{aligned}
+\]</span>
+Hence <span class="math" data-tex="\(H(F+U)\)">\(H(F+U)\)</span> is <span class="math" data-tex="\(\log K\)">\(\log K\)</span> plus this mean. Integrate over <span class="math" data-tex="\(u\)">\(u\)</span>: the left side gives <span class="math" data-tex="\(\mathcal H_v(X+vU)\)">\(\mathcal H_v(X+vU)\)</span>, and the right side gives <span class="math" data-tex="\(\log K+\mathcal H_{Kv}(X)\)">\(\log K+\mathcal H_{Kv}(X)\)</span> by the formula for <span class="math" data-tex="\(\mathcal H_{Ns}\)">\(\mathcal H_{Ns}\)</span> in the proof of Proposition 2.1. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 3.2.</strong> In the situation of Proposition 3.1, with <span class="math" data-tex="\(F_u=\lfloor X/v+u\rfloor\)">\(F_u=\lfloor X/v+u\rfloor\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\log K-G_{v,Kv}(X)\\
+&amp;\quad=\int_0^1I\bigl(U;F_u+U\bigr)\,du .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\log K-G_{v,Kv}(X)\\
+&amp;\quad=\int_0^1I\bigl(U;F_u+U\bigr)\,du .
+\end{aligned}
+\]</span>
+In particular, for a fair bit <span class="math" data-tex="\(J\)">\(J\)</span> independent of <span class="math" data-tex="\(X\)">\(X\)</span>, with the values <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta_v(X)&amp;=\mathcal H_v(X+vJ)-\mathcal H_v(X)\\
+&amp;=\int_0^1I\bigl(J;F_u+J\bigr)\,du .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta_v(X)&amp;=\mathcal H_v(X+vJ)-\mathcal H_v(X)\\
+&amp;=\int_0^1I\bigl(J;F_u+J\bigr)\,du .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> By Proposition 3.1, <span class="math" data-tex="\(\log K-G_{v,Kv}(X)\)">\(\log K-G_{v,Kv}(X)\)</span> equals <span class="math" data-tex="\(\mathcal H_v(X+vU)-\mathcal H_v(X)\)">\(\mathcal H_v(X+vU)-\mathcal H_v(X)\)</span>. For fixed <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(H(F_u)=H(F_u+U\mid U)\)">\(H(F_u)=H(F_u+U\mid U)\)</span>, because <span class="math" data-tex="\(F_u\)">\(F_u\)</span> and <span class="math" data-tex="\(U\)">\(U\)</span> are independent and adding a constant does not change the entropy; so <span class="math" data-tex="\(H(F_u+U)-H(F_u)\)">\(H(F_u+U)-H(F_u)\)</span> is <span class="math" data-tex="\(I(U;F_u+U)\)">\(I(U;F_u+U)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So <span class="math" data-tex="\(\Delta_v(X)\)">\(\Delta_v(X)\)</span> is small exactly if the cell of <span class="math" data-tex="\(X+vJ\)">\(X+vJ\)</span>, at the scale <span class="math" data-tex="\(v\)">\(v\)</span>, tells almost nothing about <span class="math" data-tex="\(J\)">\(J\)</span>: the law of <span class="math" data-tex="\(X\)">\(X\)</span> looks almost the same as its translate by <span class="math" data-tex="\(v\)">\(v\)</span>, seen through grids of length <span class="math" data-tex="\(v\)">\(v\)</span>. And <span class="math" data-tex="\(\Delta_v(X)=1\)">\(\Delta_v(X)=1\)</span> means that <span class="math" data-tex="\(J\)">\(J\)</span> can be read off, for almost every position of the grid.</p>
+<p><strong>Example 3.3.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be constant. Then <span class="math" data-tex="\(\mathcal H_s(X)=0\)">\(\mathcal H_s(X)=0\)</span> for all <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(G_{s,t}=0\)">\(G_{s,t}=0\)</span> and <span class="math" data-tex="\(\Delta_v(X)=1\)">\(\Delta_v(X)=1\)</span>. Let <span class="math" data-tex="\(X\)">\(X\)</span> be uniform on an interval of length <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and <span class="math" data-tex="\(s\)">\(s\)</span> small against <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. A grid of length <span class="math" data-tex="\(s\)">\(s\)</span> has about <span class="math" data-tex="\(\ell/s\)">\(\ell/s\)</span> cells of probability <span class="math" data-tex="\(s/\ell\)">\(s/\ell\)</span> each, so <span class="math" data-tex="\(\mathcal H_s(X)\)">\(\mathcal H_s(X)\)</span> is <span class="math" data-tex="\(\log(\ell/s)\)">\(\log(\ell/s)\)</span> up to an error that tends to <span class="math" data-tex="\(0\)">\(0\)</span> with <span class="math" data-tex="\(s/\ell\)">\(s/\ell\)</span>. Then <span class="math" data-tex="\(G_{s,2s}\)">\(G_{s,2s}\)</span> is close to <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\Delta_s(X)\)">\(\Delta_s(X)\)</span> is close to <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> take the values <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> with probability <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> each. Show that <span class="math" data-tex="\(\mathcal H_s(X)=\min\{1,d/s\}\)">\(\mathcal H_s(X)=\min\{1,d/s\}\)</span>, and compute <span class="math" data-tex="\(\Delta_v(X)\)">\(\Delta_v(X)\)</span> for <span class="math" data-tex="\(v\ge d\)">\(v\ge d\)</span>.</p>
+<p><strong>4.2.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be uniform on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> a positive integer. Show that <span class="math" data-tex="\(\mathcal H_{1/n}(X)=\log n+\tfrac1{2n\ln2}\)">\(\mathcal H_{1/n}(X)=\log n+\tfrac1{2n\ln2}\)</span>, and compute <span class="math" data-tex="\(\Delta_{1/(2n)}(X)\)">\(\Delta_{1/(2n)}(X)\)</span>.</p>
+<p><strong>4.3.</strong> Show that <span class="math" data-tex="\(G_{s,N_1N_2s}=G_{s,N_1s}+G_{N_1s,N_1N_2s}\)">\(G_{s,N_1N_2s}=G_{s,N_1s}+G_{N_1s,N_1N_2s}\)</span>, and deduce that <span class="math" data-tex="\(G_{s,2^ks}(X)\ge k-\sum_{i&lt;k}\Delta_{2^is}(X)\)">\(G_{s,2^ks}(X)\ge k-\sum_{i&lt;k}\Delta_{2^is}(X)\)</span>.</p>
+<p><strong>4.4.</strong> Verify Proposition 3.1 and Corollary 3.2 directly for the variable <span class="math" data-tex="\(X\)">\(X\)</span> of Exercise 4.1 with <span class="math" data-tex="\(v=d\)">\(v=d\)</span> and <span class="math" data-tex="\(K=2\)">\(K=2\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> The two points lie in one cell exactly if no boundary of the grid falls in <span class="math" data-tex="\((0,d]\)">\((0,d]\)</span>. For <span class="math" data-tex="\(s\le d\)">\(s\le d\)</span> an interval of length <span class="math" data-tex="\(d\)">\(d\)</span> always contains a boundary, so the label takes two values with probability <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> each, and <span class="math" data-tex="\(\mathcal H_s(X)=1\)">\(\mathcal H_s(X)=1\)</span>. For <span class="math" data-tex="\(s&gt;d\)">\(s&gt;d\)</span> a boundary falls in <span class="math" data-tex="\((0,d]\)">\((0,d]\)</span> for a set of shifts of measure <span class="math" data-tex="\(d/s\)">\(d/s\)</span>, and otherwise the label is constant; so <span class="math" data-tex="\(\mathcal H_s(X)=d/s\)">\(\mathcal H_s(X)=d/s\)</span>. For <span class="math" data-tex="\(v\ge d\)">\(v\ge d\)</span>: <span class="math" data-tex="\(G_{v,2v}=\tfrac dv-\tfrac d{2v}=\tfrac d{2v}\)">\(G_{v,2v}=\tfrac dv-\tfrac d{2v}=\tfrac d{2v}\)</span> and <span class="math" data-tex="\(\Delta_v=1-\tfrac d{2v}\)">\(\Delta_v=1-\tfrac d{2v}\)</span>. In particular <span class="math" data-tex="\(\Delta_d=\tfrac12\)">\(\Delta_d=\tfrac12\)</span>.</p>
+<p><strong>4.2.</strong> A grid of length <span class="math" data-tex="\(\tfrac1n\)">\(\tfrac1n\)</span> cuts <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> into <span class="math" data-tex="\(n-1\)">\(n-1\)</span> cells of probability <span class="math" data-tex="\(\tfrac1n\)">\(\tfrac1n\)</span> and two end pieces of probabilities <span class="math" data-tex="\(\tfrac an\)">\(\tfrac an\)</span> and <span class="math" data-tex="\(\tfrac{1-a}n\)">\(\tfrac{1-a}n\)</span>, where <span class="math" data-tex="\(a\)">\(a\)</span> runs through <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> uniformly as the shift does. With <span class="math" data-tex="\(\phi(p)=-p\log p\)">\(\phi(p)=-p\log p\)</span>, <span class="math" data-tex="\(\phi(\tfrac an)+\phi(\tfrac{1-a}n)=\tfrac1n\log n+\tfrac1nh_2(a)\)">\(\phi(\tfrac an)+\phi(\tfrac{1-a}n)=\tfrac1n\log n+\tfrac1nh_2(a)\)</span>, so the entropy is <span class="math" data-tex="\(\log n+\tfrac1nh_2(a)\)">\(\log n+\tfrac1nh_2(a)\)</span>. The mean of <span class="math" data-tex="\(h_2\)">\(h_2\)</span> over <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is <span class="math" data-tex="\(2\int_0^1(-a\log a)\,da=\tfrac1{2\ln2}\)">\(2\int_0^1(-a\log a)\,da=\tfrac1{2\ln2}\)</span>. Hence <span class="math" data-tex="\(G_{1/(2n),1/n}=1+\tfrac1{4n\ln2}-\tfrac1{2n\ln2}\)">\(G_{1/(2n),1/n}=1+\tfrac1{4n\ln2}-\tfrac1{2n\ln2}\)</span> and <span class="math" data-tex="\(\Delta_{1/(2n)}=\tfrac1{4n\ln2}\)">\(\Delta_{1/(2n)}=\tfrac1{4n\ln2}\)</span>.</p>
+<p><strong>4.3.</strong> The first identity is the definition. By induction <span class="math" data-tex="\(G_{s,2^ks}=\sum_{i&lt;k}G_{2^is,2^{i+1}s}\)">\(G_{s,2^ks}=\sum_{i&lt;k}G_{2^is,2^{i+1}s}\)</span>, and the terms are <span class="math" data-tex="\(1-\Delta_{2^is}\)">\(1-\Delta_{2^is}\)</span>; so the stated inequality is an equality.</p>
+<p><strong>4.4.</strong> The variable <span class="math" data-tex="\(X+dJ\)">\(X+dJ\)</span> takes the values <span class="math" data-tex="\(0,d,2d\)">\(0,d,2d\)</span> with the probabilities <span class="math" data-tex="\(\tfrac14,\tfrac12,\tfrac14\)">\(\tfrac14,\tfrac12,\tfrac14\)</span>. Every grid of length <span class="math" data-tex="\(d\)">\(d\)</span> separates them, so <span class="math" data-tex="\(\mathcal H_d(X+dJ)=\tfrac32\)">\(\mathcal H_d(X+dJ)=\tfrac32\)</span>. By Exercise 4.1, <span class="math" data-tex="\(\mathcal H_{2d}(X)=\tfrac12\)">\(\mathcal H_{2d}(X)=\tfrac12\)</span>, and <span class="math" data-tex="\(\tfrac12+\log2=\tfrac32\)">\(\tfrac12+\log2=\tfrac32\)</span>. For the corollary: <span class="math" data-tex="\(F_u\)">\(F_u\)</span> takes two consecutive values with probability <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>, so <span class="math" data-tex="\(H(F_u+J)-H(F_u)=\tfrac32-1=\tfrac12\)">\(H(F_u+J)-H(F_u)=\tfrac32-1=\tfrac12\)</span> for every <span class="math" data-tex="\(u\)">\(u\)</span>, which is <span class="math" data-tex="\(\Delta_d(X)\)">\(\Delta_d(X)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-S] OpenAI, <em>The entropy-rate dimension formula for self-similar measures on the line</em>, OpenAI Math Release preprint, 24 September 2026, Section 2. https://github.com/openai/math/tree/main/preprints/The-entropy-rate-dimension-formula-for-self-similar-measures-on-the-line-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

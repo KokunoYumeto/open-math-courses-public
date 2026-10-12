@@ -1,0 +1,213 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Entropy of finite random variables</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The dimension of self-similar measures)</a><a href="entropy-at-a-scale.html">Next lesson</a><a href="src/entropy-of-finite-random-variables.md">Editable source</a></nav><main><article><h1 id="entropy-of-finite-random-variables">Entropy of finite random variables</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The entropy of a random variable with finitely many values measures, in bits, how uncertain its value is. This lesson proves the rules for computing with entropies that the course uses throughout: the chain rule, the effect of conditioning, mutual information, mixtures, and two estimates for the entropy of a biased coin. In September 2026 OpenAI released a proof of a formula for the dimension of self-similar measures on the line [OpenAI-S]; its argument is a calculation with entropies at different scales, and these rules are its arithmetic.</p>
+<ul>
+<li>Entropy is at most the logarithm of the number of values, with equality for the uniform law (Proposition 1.2).</li>
+<li>The chain rule <span class="math" data-tex="\(H(Y,Z)=H(Y)+H(Z\mid Y)\)">\(H(Y,Z)=H(Y)+H(Z\mid Y)\)</span>, and conditioning does not increase entropy (Proposition 2.1).</li>
+<li>Mutual information is not negative, obeys a chain rule, and does not increase under functions (Proposition 3.1).</li>
+<li>The entropy of a mixture lies between the mean of the entropies and that mean plus the entropy of the weights (Proposition 4.1).</li>
+<li>Two estimates for the binary entropy (Lemmas 5.1 and 5.2).</li>
+</ul>
+<p>The lesson uses only finite sums and the inequality <span class="math" data-tex="\(\ln x\le x-1\)">\(\ln x\le x-1\)</span>. All logarithms in this course are to the base <span class="math" data-tex="\(2\)">\(2\)</span>, written <span class="math" data-tex="\(\log\)">\(\log\)</span>; <span class="math" data-tex="\(\ln\)">\(\ln\)</span> is the natural logarithm.</p>
+<h2 id="1-entropy">1. Entropy</h2>
+<p>A <em>law</em> on a finite set <span class="math" data-tex="\(A\)">\(A\)</span> is a family <span class="math" data-tex="\(p=(p_a)_{a\in A}\)">\(p=(p_a)_{a\in A}\)</span> of numbers <span class="math" data-tex="\(p_a\ge0\)">\(p_a\ge0\)</span> with sum <span class="math" data-tex="\(1\)">\(1\)</span>. Its <em>entropy</em> is
+<span class="math math-display" data-tex="\[
+H(p)=-\sum_{a\in A}p_a\log p_a,
+\]">\[
+H(p)=-\sum_{a\in A}p_a\log p_a,
+\]</span>
+where <span class="math" data-tex="\(0\log0\)">\(0\log0\)</span> is read as <span class="math" data-tex="\(0\)">\(0\)</span>. For a random variable <span class="math" data-tex="\(Z\)">\(Z\)</span> with finitely many values, <span class="math" data-tex="\(H(Z)\)">\(H(Z)\)</span> is the entropy of its law <span class="math" data-tex="\(p_z=\mathbb P(Z=z)\)">\(p_z=\mathbb P(Z=z)\)</span>. Each term <span class="math" data-tex="\(-p_a\log p_a\)">\(-p_a\log p_a\)</span> is at least <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(H\ge0\)">\(H\ge0\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(p,q\)">\(p,q\)</span> be laws on a finite set <span class="math" data-tex="\(A\)">\(A\)</span> such that <span class="math" data-tex="\(q_a&gt;0\)">\(q_a&gt;0\)</span> whenever <span class="math" data-tex="\(p_a&gt;0\)">\(p_a&gt;0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sum_{a:\,p_a&gt;0}p_a\log\frac{p_a}{q_a}\ \ge\ 0,
+\]">\[
+\sum_{a:\,p_a&gt;0}p_a\log\frac{p_a}{q_a}\ \ge\ 0,
+\]</span>
+with equality only if <span class="math" data-tex="\(p=q\)">\(p=q\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, <span class="math" data-tex="\(\ln x\le x-1\)">\(\ln x\le x-1\)</span>, with equality only for <span class="math" data-tex="\(x=1\)">\(x=1\)</span>. So
+<span class="math math-display" data-tex="\[
+\sum_{a:\,p_a&gt;0}p_a\ln\frac{q_a}{p_a}\le\sum_{a:\,p_a&gt;0}(q_a-p_a)\le0 .
+\]">\[
+\sum_{a:\,p_a&gt;0}p_a\ln\frac{q_a}{p_a}\le\sum_{a:\,p_a&gt;0}(q_a-p_a)\le0 .
+\]</span>
+If both inequalities are equalities, then <span class="math" data-tex="\(q_a=p_a\)">\(q_a=p_a\)</span> where <span class="math" data-tex="\(p_a&gt;0\)">\(p_a&gt;0\)</span>, and the sum of these <span class="math" data-tex="\(q_a\)">\(q_a\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(q_a=0=p_a\)">\(q_a=0=p_a\)</span> elsewhere. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 1.2.</strong> If <span class="math" data-tex="\(Z\)">\(Z\)</span> takes at most <span class="math" data-tex="\(N\)">\(N\)</span> values, then <span class="math" data-tex="\(0\le H(Z)\le\log N\)">\(0\le H(Z)\le\log N\)</span>. <span class="math" data-tex="\(H(Z)=0\)">\(H(Z)=0\)</span> exactly if <span class="math" data-tex="\(Z\)">\(Z\)</span> is constant with probability one, and <span class="math" data-tex="\(H(Z)=\log N\)">\(H(Z)=\log N\)</span> exactly if <span class="math" data-tex="\(Z\)">\(Z\)</span> takes <span class="math" data-tex="\(N\)">\(N\)</span> values with probability <span class="math" data-tex="\(\tfrac1N\)">\(\tfrac1N\)</span> each.</p>
+<p><strong>Proof.</strong> A sum of terms <span class="math" data-tex="\(-p\log p\ge0\)">\(-p\log p\ge0\)</span> vanishes only if every <span class="math" data-tex="\(p\)">\(p\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>. For the upper bound apply Lemma 1.1 with <span class="math" data-tex="\(q_a=\tfrac1N\)">\(q_a=\tfrac1N\)</span> on a set of <span class="math" data-tex="\(N\)">\(N\)</span> elements that contains the values: <span class="math" data-tex="\(\sum p_a\log(Np_a)\ge0\)">\(\sum p_a\log(Np_a)\ge0\)</span> is <span class="math" data-tex="\(\log N-H(Z)\ge0\)">\(\log N-H(Z)\ge0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-conditional-entropy">2. Conditional entropy</h2>
+<p>Let <span class="math" data-tex="\(Y,Z\)">\(Y,Z\)</span> be random variables with finitely many values on one probability space. The pair <span class="math" data-tex="\((Y,Z)\)">\((Y,Z)\)</span> is again such a variable, and <span class="math" data-tex="\(H(Y,Z)\)">\(H(Y,Z)\)</span> is its entropy. For a value <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(\mathbb P(Y=y)&gt;0\)">\(\mathbb P(Y=y)&gt;0\)</span>, let <span class="math" data-tex="\(H(Z\mid Y=y)\)">\(H(Z\mid Y=y)\)</span> be the entropy of the conditional law of <span class="math" data-tex="\(Z\)">\(Z\)</span> given <span class="math" data-tex="\(Y=y\)">\(Y=y\)</span>. The <em>conditional entropy</em> is the mean
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;H(Z\mid Y)\\
+&amp;\quad=\sum_{y}\mathbb P(Y=y)\,H(Z\mid Y=y).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;H(Z\mid Y)\\
+&amp;\quad=\sum_{y}\mathbb P(Y=y)\,H(Z\mid Y=y).
+\end{aligned}
+\]</span></p>
+<p><strong>Proposition 2.1.</strong> For random variables <span class="math" data-tex="\(W,Y,Z\)">\(W,Y,Z\)</span> with finitely many values and a function <span class="math" data-tex="\(f\)">\(f\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(H(Y,Z)=H(Y)+H(Z\mid Y)\)">\(H(Y,Z)=H(Y)+H(Z\mid Y)\)</span>;</li>
+<li><span class="math" data-tex="\(0\le H(Z\mid Y)\le H(Z)\)">\(0\le H(Z\mid Y)\le H(Z)\)</span>; the first is an equality exactly if <span class="math" data-tex="\(Z\)">\(Z\)</span> is a function of <span class="math" data-tex="\(Y\)">\(Y\)</span> with probability one, the second exactly if <span class="math" data-tex="\(Y\)">\(Y\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span> are independent;</li>
+<li><span class="math" data-tex="\(H(f(Z))\le H(Z)\)">\(H(f(Z))\le H(Z)\)</span> and <span class="math" data-tex="\(H(f(Z)\mid Y)\le H(Z\mid Y)\)">\(H(f(Z)\mid Y)\le H(Z\mid Y)\)</span>;</li>
+<li><span class="math" data-tex="\(H(Z\mid Y,W)\le H(Z\mid Y)\)">\(H(Z\mid Y,W)\le H(Z\mid Y)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(p(y,z)\)">\(p(y,z)\)</span>, <span class="math" data-tex="\(p(y)\)">\(p(y)\)</span>, <span class="math" data-tex="\(p(z)\)">\(p(z)\)</span> for the probabilities and <span class="math" data-tex="\(p(z\mid y)=p(y,z)/p(y)\)">\(p(z\mid y)=p(y,z)/p(y)\)</span>.</p>
+<p>(1) Since <span class="math" data-tex="\(p(y,z)=p(y)\,p(z\mid y)\)">\(p(y,z)=p(y)\,p(z\mid y)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;-\sum p(y,z)\log p(y,z)\\
+&amp;\quad=-\sum p(y,z)\log p(y)\\
+&amp;\qquad-\sum p(y,z)\log p(z\mid y),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;-\sum p(y,z)\log p(y,z)\\
+&amp;\quad=-\sum p(y,z)\log p(y)\\
+&amp;\qquad-\sum p(y,z)\log p(z\mid y),
+\end{aligned}
+\]</span>
+and the two sums on the right are <span class="math" data-tex="\(H(Y)\)">\(H(Y)\)</span> and <span class="math" data-tex="\(H(Z\mid Y)\)">\(H(Z\mid Y)\)</span>.</p>
+<p>(2) <span class="math" data-tex="\(H(Z\mid Y)\)">\(H(Z\mid Y)\)</span> is a mean of entropies, so it is at least <span class="math" data-tex="\(0\)">\(0\)</span>, and it is <span class="math" data-tex="\(0\)">\(0\)</span> exactly if every conditional law is concentrated on one value. By (1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;H(Z)-H(Z\mid Y)\\
+&amp;\quad=H(Y)+H(Z)-H(Y,Z)\\
+&amp;\quad=\sum p(y,z)\log\frac{p(y,z)}{p(y)p(z)},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;H(Z)-H(Z\mid Y)\\
+&amp;\quad=H(Y)+H(Z)-H(Y,Z)\\
+&amp;\quad=\sum p(y,z)\log\frac{p(y,z)}{p(y)p(z)},
+\end{aligned}
+\]</span>
+which is at least <span class="math" data-tex="\(0\)">\(0\)</span> by Lemma 1.1 for the laws <span class="math" data-tex="\(p(y,z)\)">\(p(y,z)\)</span> and <span class="math" data-tex="\(p(y)p(z)\)">\(p(y)p(z)\)</span> on the set of pairs, with equality exactly if they coincide.</p>
+<p>(3) The pair <span class="math" data-tex="\((Z,f(Z))\)">\((Z,f(Z))\)</span> has the same law as <span class="math" data-tex="\(Z\)">\(Z\)</span> up to renaming the values, so by (1) <span class="math" data-tex="\(H(Z)=H(f(Z))+H(Z\mid f(Z))\)">\(H(Z)=H(f(Z))+H(Z\mid f(Z))\)</span>, which is at least <span class="math" data-tex="\(H(f(Z))\)">\(H(f(Z))\)</span>. The second statement is the first for the conditional laws given <span class="math" data-tex="\(Y=y\)">\(Y=y\)</span>, averaged.</p>
+<p>(4) Apply (2) to the conditional laws given <span class="math" data-tex="\(Y=y\)">\(Y=y\)</span> and average. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Rule (1), applied repeatedly, is the <em>chain rule</em>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;H(Z_1,\dots,Z_n)\\
+&amp;\quad=\sum_iH(Z_i\mid Z_1,\dots,Z_{i-1}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;H(Z_1,\dots,Z_n)\\
+&amp;\quad=\sum_iH(Z_i\mid Z_1,\dots,Z_{i-1}).
+\end{aligned}
+\]</span>
+With (2) it gives <span class="math" data-tex="\(H(Z_1,\dots,Z_n)\le\sum_iH(Z_i)\)">\(H(Z_1,\dots,Z_n)\le\sum_iH(Z_i)\)</span>, with equality for independent variables.</p>
+<h2 id="3-mutual-information">3. Mutual information</h2>
+<p>The <em>mutual information</em> of <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>, and its conditional version, are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(Z;Y)&amp;=H(Z)-H(Z\mid Y),\\
+I(Z;Y\mid W)&amp;=H(Z\mid W)\\
+&amp;\quad-H(Z\mid Y,W).
+\end{aligned}
+\]">\[
+\begin{aligned}
+I(Z;Y)&amp;=H(Z)-H(Z\mid Y),\\
+I(Z;Y\mid W)&amp;=H(Z\mid W)\\
+&amp;\quad-H(Z\mid Y,W).
+\end{aligned}
+\]</span></p>
+<p><strong>Proposition 3.1.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(I(Z;Y)\)">\(I(Z;Y)\)</span> equals <span class="math" data-tex="\(H(Z)+H(Y)-H(Z,Y)\)">\(H(Z)+H(Y)-H(Z,Y)\)</span>; in particular <span class="math" data-tex="\(I(Z;Y)=I(Y;Z)\)">\(I(Z;Y)=I(Y;Z)\)</span>. Both <span class="math" data-tex="\(I(Z;Y)\)">\(I(Z;Y)\)</span> and <span class="math" data-tex="\(I(Z;Y\mid W)\)">\(I(Z;Y\mid W)\)</span> are at least <span class="math" data-tex="\(0\)">\(0\)</span>.</li>
+<li><span class="math" data-tex="\(I(Z;Y)\le H(Z)\)">\(I(Z;Y)\le H(Z)\)</span>.</li>
+<li><span class="math" data-tex="\(I(J;(Z,W))\)">\(I(J;(Z,W))\)</span> is the sum of <span class="math" data-tex="\(I(J;W)\)">\(I(J;W)\)</span> and <span class="math" data-tex="\(I(J;Z\mid W)\)">\(I(J;Z\mid W)\)</span>.</li>
+<li><span class="math" data-tex="\(I(J;f(Z))\le I(J;Z)\)">\(I(J;f(Z))\le I(J;Z)\)</span>, and <span class="math" data-tex="\(I(J;Z)\le I(J;Z\mid W)+H(W)\)">\(I(J;Z)\le I(J;Z\mid W)+H(W)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) and (2) are Proposition 2.1 (1), (2) and (4). (3) Both sides are <span class="math" data-tex="\(H(J)-H(J\mid Z,W)\)">\(H(J)-H(J\mid Z,W)\)</span>, after cancelling <span class="math" data-tex="\(H(J\mid W)\)">\(H(J\mid W)\)</span>. (4) By (3),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(J;Z)&amp;=I(J;(Z,f(Z)))\\
+&amp;=I(J;f(Z))+I(J;Z\mid f(Z))\\
+&amp;\ge I(J;f(Z)).
+\end{aligned}
+\]">\[
+\begin{aligned}
+I(J;Z)&amp;=I(J;(Z,f(Z)))\\
+&amp;=I(J;f(Z))+I(J;Z\mid f(Z))\\
+&amp;\ge I(J;f(Z)).
+\end{aligned}
+\]</span>
+And <span class="math" data-tex="\(I(J;Z)\le I(J;(Z,W))\)">\(I(J;Z)\le I(J;(Z,W))\)</span>, which is <span class="math" data-tex="\(I(J;W)+I(J;Z\mid W)\)">\(I(J;W)+I(J;Z\mid W)\)</span>, where <span class="math" data-tex="\(I(J;W)\le H(W)\)">\(I(J;W)\le H(W)\)</span> by (2) and the symmetry. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The number <span class="math" data-tex="\(I(J;Z)\)">\(I(J;Z)\)</span> measures how much the observation of <span class="math" data-tex="\(Z\)">\(Z\)</span> reduces the uncertainty about <span class="math" data-tex="\(J\)">\(J\)</span>. Rule (4) says that a function of the observation cannot tell more than the observation.</p>
+<h2 id="4-mixtures">4. Mixtures</h2>
+<p><strong>Proposition 4.1.</strong> Let <span class="math" data-tex="\(P_1,\dots,P_n\)">\(P_1,\dots,P_n\)</span> be laws on a finite set and <span class="math" data-tex="\(\lambda=(\lambda_1,\dots,\lambda_n)\)">\(\lambda=(\lambda_1,\dots,\lambda_n)\)</span> a law on the indices. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_i\lambda_iH(P_i)\ \le\ H\Bigl(\sum_i\lambda_iP_i\Bigr),\\
+H\Bigl(\sum_i\lambda_iP_i\Bigr)\ \le\ \sum_i\lambda_iH(P_i)+H(\lambda).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_i\lambda_iH(P_i)\ \le\ H\Bigl(\sum_i\lambda_iP_i\Bigr),\\
+H\Bigl(\sum_i\lambda_iP_i\Bigr)\ \le\ \sum_i\lambda_iH(P_i)+H(\lambda).
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(Y\)">\(Y\)</span> have the law <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and let <span class="math" data-tex="\(Z\)">\(Z\)</span> have the conditional law <span class="math" data-tex="\(P_i\)">\(P_i\)</span> given <span class="math" data-tex="\(Y=i\)">\(Y=i\)</span>. Then the law of <span class="math" data-tex="\(Z\)">\(Z\)</span> is the mixture, and <span class="math" data-tex="\(H(Z\mid Y)=\sum_i\lambda_iH(P_i)\)">\(H(Z\mid Y)=\sum_i\lambda_iH(P_i)\)</span>. By Proposition 2.1, <span class="math" data-tex="\(H(Z\mid Y)\le H(Z)\le H(Y,Z)\)">\(H(Z\mid Y)\le H(Z)\le H(Y,Z)\)</span>, and <span class="math" data-tex="\(H(Y,Z)=H(Y)+H(Z\mid Y)\)">\(H(Y,Z)=H(Y)+H(Z\mid Y)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The first inequality says that the entropy is a concave function of the law.</p>
+<h2 id="5-the-entropy-of-a-coin">5. The entropy of a coin</h2>
+<p>For <span class="math" data-tex="\(0\le u\le1\)">\(0\le u\le1\)</span> let <span class="math" data-tex="\(h_2(u)=-u\log u-(1-u)\log(1-u)\)">\(h_2(u)=-u\log u-(1-u)\log(1-u)\)</span>, the entropy of a variable with two values of probabilities <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(1-u\)">\(1-u\)</span>. It is continuous, <span class="math" data-tex="\(h_2(0)=h_2(1)=0\)">\(h_2(0)=h_2(1)=0\)</span> and <span class="math" data-tex="\(h_2(\tfrac12)=1\)">\(h_2(\tfrac12)=1\)</span>.</p>
+<p><strong>Lemma 5.1.</strong> <span class="math" data-tex="\(h_2(u)\le3\sqrt u\)">\(h_2(u)\le3\sqrt u\)</span> for <span class="math" data-tex="\(0\le u\le1\)">\(0\le u\le1\)</span>.</p>
+<p><strong>Proof.</strong> The function <span class="math" data-tex="\(-\sqrt u\,\ln u\)">\(-\sqrt u\,\ln u\)</span> on <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span> has its maximum <span class="math" data-tex="\(2/e\)">\(2/e\)</span> at <span class="math" data-tex="\(u=e^{-2}\)">\(u=e^{-2}\)</span>, so <span class="math" data-tex="\(-u\log u\le\tfrac{2}{e\ln2}\sqrt u&lt;1.07\sqrt u\)">\(-u\log u\le\tfrac{2}{e\ln2}\sqrt u&lt;1.07\sqrt u\)</span>. And <span class="math" data-tex="\(-\ln(1-u)\le u/(1-u)\)">\(-\ln(1-u)\le u/(1-u)\)</span>, so <span class="math" data-tex="\(-(1-u)\log(1-u)\le u/\ln2&lt;1.45\sqrt u\)">\(-(1-u)\log(1-u)\le u/\ln2&lt;1.45\sqrt u\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 5.2.</strong> For <span class="math" data-tex="\(a,b\in[0,1]\)">\(a,b\in[0,1]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;h_2\bigl(\tfrac{a+b}2\bigr)-\tfrac12h_2(a)-\tfrac12h_2(b)\\
+&amp;\quad\ge\frac{(a-b)^2}{2\ln2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;h_2\bigl(\tfrac{a+b}2\bigr)-\tfrac12h_2(a)-\tfrac12h_2(b)\\
+&amp;\quad\ge\frac{(a-b)^2}{2\ln2}.
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, <span class="math" data-tex="\(h_2&#x27;&#x27;(u)=-1/(\ln2\cdot u(1-u))\le-4/\ln2\)">\(h_2&#x27;&#x27;(u)=-1/(\ln2\cdot u(1-u))\le-4/\ln2\)</span>. So <span class="math" data-tex="\(k(u)=h_2(u)+\tfrac{2}{\ln2}u^2\)">\(k(u)=h_2(u)+\tfrac{2}{\ln2}u^2\)</span> has <span class="math" data-tex="\(k&#x27;&#x27;\le0\)">\(k&#x27;&#x27;\le0\)</span> and is concave on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Hence <span class="math" data-tex="\(k(\tfrac{a+b}2)\ge\tfrac12k(a)+\tfrac12k(b)\)">\(k(\tfrac{a+b}2)\ge\tfrac12k(a)+\tfrac12k(b)\)</span>, and the left side of the lemma is at least
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac2{\ln2}\Bigl(\frac{a^2+b^2}2-\frac{(a+b)^2}4\Bigr)\\
+&amp;\quad=\frac{(a-b)^2}{2\ln2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac2{\ln2}\Bigl(\frac{a^2+b^2}2-\frac{(a+b)^2}4\Bigr)\\
+&amp;\quad=\frac{(a-b)^2}{2\ln2}.
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The left side of Lemma 5.2 is a mutual information: if <span class="math" data-tex="\(J\)">\(J\)</span> is a fair coin and <span class="math" data-tex="\(Z\)">\(Z\)</span> is a variable with two values that is <span class="math" data-tex="\(1\)">\(1\)</span> with probability <span class="math" data-tex="\(a\)">\(a\)</span> when <span class="math" data-tex="\(J=0\)">\(J=0\)</span> and with probability <span class="math" data-tex="\(b\)">\(b\)</span> when <span class="math" data-tex="\(J=1\)">\(J=1\)</span>, then <span class="math" data-tex="\(I(J;Z)=H(Z)-H(Z\mid J)\)">\(I(J;Z)=H(Z)-H(Z\mid J)\)</span> is this expression. So two coins whose biases differ by <span class="math" data-tex="\(|a-b|\)">\(|a-b|\)</span> can be told apart at least to the extent <span class="math" data-tex="\((a-b)^2/(2\ln2)\)">\((a-b)^2/(2\ln2)\)</span> bits.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Let <span class="math" data-tex="\(Z\)">\(Z\)</span> be uniform on a set of <span class="math" data-tex="\(N\)">\(N\)</span> elements and <span class="math" data-tex="\(Y=f(Z)\)">\(Y=f(Z)\)</span>. Show that <span class="math" data-tex="\(H(Z\mid Y)=\sum_y\tfrac{N_y}N\log N_y\)">\(H(Z\mid Y)=\sum_y\tfrac{N_y}N\log N_y\)</span>, where <span class="math" data-tex="\(N_y\)">\(N_y\)</span> is the number of elements with <span class="math" data-tex="\(f=y\)">\(f=y\)</span>.</p>
+<p><strong>6.2.</strong> Give an example of three variables with <span class="math" data-tex="\(I(Z;Y\mid W)&gt;I(Z;Y)\)">\(I(Z;Y\mid W)&gt;I(Z;Y)\)</span>, and one with <span class="math" data-tex="\(I(Z;Y\mid W)&lt;I(Z;Y)\)">\(I(Z;Y\mid W)&lt;I(Z;Y)\)</span>.</p>
+<p><strong>6.3.</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be an event of probability <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(Z,Y\)">\(Z,Y\)</span> variables with finitely many values such that <span class="math" data-tex="\(Z\)">\(Z\)</span> takes at most <span class="math" data-tex="\(N\)">\(N\)</span> values and, outside <span class="math" data-tex="\(E\)">\(E\)</span>, <span class="math" data-tex="\(Z\)">\(Z\)</span> is a function of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Show that <span class="math" data-tex="\(H(Z\mid Y)\le h_2(q)+q\log N\)">\(H(Z\mid Y)\le h_2(q)+q\log N\)</span>.</p>
+<p><strong>6.4.</strong> Show that <span class="math" data-tex="\(H(Y+Z)\ge H(Z)\)">\(H(Y+Z)\ge H(Z)\)</span> for independent real random variables with finitely many values, and that equality holds if <span class="math" data-tex="\(Y\)">\(Y\)</span> is constant.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> Given <span class="math" data-tex="\(Y=y\)">\(Y=y\)</span>, <span class="math" data-tex="\(Z\)">\(Z\)</span> is uniform on <span class="math" data-tex="\(N_y\)">\(N_y\)</span> elements, with entropy <span class="math" data-tex="\(\log N_y\)">\(\log N_y\)</span>, and <span class="math" data-tex="\(\mathbb P(Y=y)=N_y/N\)">\(\mathbb P(Y=y)=N_y/N\)</span>.</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(Y,Z\)">\(Y,Z\)</span> be independent fair coins with values <span class="math" data-tex="\(0,1\)">\(0,1\)</span> and <span class="math" data-tex="\(W=Y+Z\)">\(W=Y+Z\)</span> modulo <span class="math" data-tex="\(2\)">\(2\)</span>. Then <span class="math" data-tex="\(I(Z;Y)=0\)">\(I(Z;Y)=0\)</span>, and given <span class="math" data-tex="\(W\)">\(W\)</span>, <span class="math" data-tex="\(Z\)">\(Z\)</span> is determined by <span class="math" data-tex="\(Y\)">\(Y\)</span>, so <span class="math" data-tex="\(I(Z;Y\mid W)=H(Z\mid W)=1\)">\(I(Z;Y\mid W)=H(Z\mid W)=1\)</span>. For the other direction let <span class="math" data-tex="\(Y=Z=W\)">\(Y=Z=W\)</span> be one fair coin: <span class="math" data-tex="\(I(Z;Y)=1\)">\(I(Z;Y)=1\)</span> and <span class="math" data-tex="\(I(Z;Y\mid W)=0\)">\(I(Z;Y\mid W)=0\)</span>.</p>
+<p><strong>6.3.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be the indicator of <span class="math" data-tex="\(E\)">\(E\)</span>. By Proposition 2.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H(Z\mid Y)&amp;\le H(Z,F\mid Y)\\
+&amp;=H(F\mid Y)+H(Z\mid Y,F)\\
+&amp;\le h_2(q)+H(Z\mid Y,F).
+\end{aligned}
+\]">\[
+\begin{aligned}
+H(Z\mid Y)&amp;\le H(Z,F\mid Y)\\
+&amp;=H(F\mid Y)+H(Z\mid Y,F)\\
+&amp;\le h_2(q)+H(Z\mid Y,F).
+\end{aligned}
+\]</span>
+Given <span class="math" data-tex="\(F=0\)">\(F=0\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\(Z\)">\(Z\)</span> is determined, so these conditional entropies vanish; given <span class="math" data-tex="\(F=1\)">\(F=1\)</span> and <span class="math" data-tex="\(Y=y\)">\(Y=y\)</span> the entropy is at most <span class="math" data-tex="\(\log N\)">\(\log N\)</span>. The mean is at most <span class="math" data-tex="\(q\log N\)">\(q\log N\)</span>.</p>
+<p><strong>6.4.</strong> By Proposition 2.1 (2) and (3), <span class="math" data-tex="\(H(Y+Z)\ge H(Y+Z\mid Y)\)">\(H(Y+Z)\ge H(Y+Z\mid Y)\)</span>, and given <span class="math" data-tex="\(Y=y\)">\(Y=y\)</span> the variable <span class="math" data-tex="\(y+Z\)">\(y+Z\)</span> has the same entropy as <span class="math" data-tex="\(Z\)">\(Z\)</span>, by independence. So <span class="math" data-tex="\(H(Y+Z\mid Y)=H(Z)\)">\(H(Y+Z\mid Y)=H(Z)\)</span>. If <span class="math" data-tex="\(Y\)">\(Y\)</span> is constant, <span class="math" data-tex="\(Y+Z\)">\(Y+Z\)</span> is <span class="math" data-tex="\(Z\)">\(Z\)</span> with the values renamed.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-S] OpenAI, <em>The entropy-rate dimension formula for self-similar measures on the line</em>, OpenAI Math Release preprint, 24 September 2026, Section 2. https://github.com/openai/math/tree/main/preprints/The-entropy-rate-dimension-formula-for-self-similar-measures-on-the-line-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

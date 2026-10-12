@@ -1,0 +1,235 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The one-bit deficit of a self-similar measure</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The dimension of self-similar measures)</a><a href="entropy-at-a-scale.html">Previous lesson</a><a href="the-gain-from-a-pair-of-points.html">Next lesson</a><a href="src/the-one-bit-deficit.md">Editable source</a></nav><main><article><h1 id="the-one-bit-deficit-of-a-self-similar-measure">The one-bit deficit of a self-similar measure</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Halving the scale can add at most one bit to the entropy of a law on the line. The <em>one-bit deficit</em> <span class="math" data-tex="\(\Delta_v=1-(\mathcal H_v-\mathcal H_{2v})\)">\(\Delta_v=1-(\mathcal H_v-\mathcal H_{2v})\)</span> measures how far the law is from gaining the full bit between the scales <span class="math" data-tex="\(2v\)">\(2v\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>. For the uniform law on an interval the deficit tends to <span class="math" data-tex="\(0\)">\(0\)</span> at small scales. This lesson proves that for a self-similar measure of dimension less than one the opposite holds: the deficit is bounded below by a positive constant at all scales at once. The proof of [OpenAI-S] uses this constant to turn every pair of nearby points in the support into a definite gain of entropy.</p>
+<ul>
+<li>Self-similar measures: existence, uniqueness, and the decomposition along stopped words (Proposition 1.2, Lemma 1.3).</li>
+<li>Exact dimensionality, a named hypothesis (ED), and its consequence for the entropy at small scales (Proposition 2.2).</li>
+<li>A small deficit at one scale forces almost full entropy between the scales <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(Kv\)">\(Kv\)</span> (Proposition 3.3).</li>
+<li>Uniform nonsaturation (Theorem 3.5).</li>
+</ul>
+<p>The lesson follows [OpenAI-S, Section 2, the lemmas on entropy and dimension and on uniform nonsaturation]; according to [OpenAI-S], the nonsaturation property was proved for Bernoulli convolutions by E. Breuillard and P. Varjú. The lesson continues <a href="entropy-at-a-scale.html">Entropy at a scale</a> and uses <a href="entropy-of-finite-random-variables.html">Entropy of finite random variables</a>.</p>
+<h2 id="1-self-similar-measures">1. Self-similar measures</h2>
+<p>Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be a finite nonempty set, and for <span class="math" data-tex="\(i\in\Lambda\)">\(i\in\Lambda\)</span> let <span class="math" data-tex="\(\varphi_i(x)=r_ix+t_i\)">\(\varphi_i(x)=r_ix+t_i\)</span> with real <span class="math" data-tex="\(t_i\)">\(t_i\)</span> and <span class="math" data-tex="\(0&lt;|r_i|&lt;1\)">\(0&lt;|r_i|&lt;1\)</span>. Let <span class="math" data-tex="\(p=(p_i)_{i\in\Lambda}\)">\(p=(p_i)_{i\in\Lambda}\)</span> be a law on <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> with all <span class="math" data-tex="\(p_i&gt;0\)">\(p_i&gt;0\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r_{\max}=\max_i|r_i|,\qquad a_*=\min_i|r_i|,\\
+T_0=\max_i|t_i|,\qquad R_0=\frac{T_0}{1-r_{\max}}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+r_{\max}=\max_i|r_i|,\qquad a_*=\min_i|r_i|,\\
+T_0=\max_i|t_i|,\qquad R_0=\frac{T_0}{1-r_{\max}}.
+\end{gathered}
+\]</span>
+For a word <span class="math" data-tex="\(w=i_1\cdots i_n\)">\(w=i_1\cdots i_n\)</span> let <span class="math" data-tex="\(\varphi_w=\varphi_{i_1}\circ\dots\circ\varphi_{i_n}\)">\(\varphi_w=\varphi_{i_1}\circ\dots\circ\varphi_{i_n}\)</span>, <span class="math" data-tex="\(r_w=r_{i_1}\cdots r_{i_n}\)">\(r_w=r_{i_1}\cdots r_{i_n}\)</span> and <span class="math" data-tex="\(p_w=p_{i_1}\cdots p_{i_n}\)">\(p_w=p_{i_1}\cdots p_{i_n}\)</span>; so <span class="math" data-tex="\(\varphi_w(x)=r_wx+\varphi_w(0)\)">\(\varphi_w(x)=r_wx+\varphi_w(0)\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> For every sequence <span class="math" data-tex="\(i=(i_1,i_2,\dots)\)">\(i=(i_1,i_2,\dots)\)</span> of elements of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> the limit <span class="math" data-tex="\(\pi(i)=\lim_n\varphi_{i_1\cdots i_n}(0)\)">\(\pi(i)=\lim_n\varphi_{i_1\cdots i_n}(0)\)</span> exists, <span class="math" data-tex="\(|\pi(i)|\le R_0\)">\(|\pi(i)|\le R_0\)</span>, and for all real <span class="math" data-tex="\(x\)">\(x\)</span>
+<span class="math math-display" data-tex="\[
+|\varphi_{i_1\cdots i_n}(x)-\pi(i)|\le r_{\max}^n\,(|x|+R_0).
+\]">\[
+|\varphi_{i_1\cdots i_n}(x)-\pi(i)|\le r_{\max}^n\,(|x|+R_0).
+\]</span></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(\varphi_{i_1\cdots i_n}(0)=\sum_{k=1}^nr_{i_1\cdots i_{k-1}}t_{i_k}\)">\(\varphi_{i_1\cdots i_n}(0)=\sum_{k=1}^nr_{i_1\cdots i_{k-1}}t_{i_k}\)</span>, and the terms are at most <span class="math" data-tex="\(T_0r_{\max}^{k-1}\)">\(T_0r_{\max}^{k-1}\)</span> in absolute value. So the series converges, its sum is at most <span class="math" data-tex="\(R_0\)">\(R_0\)</span>, and the remainder after <span class="math" data-tex="\(n\)">\(n\)</span> terms is at most <span class="math" data-tex="\(r_{\max}^nR_0\)">\(r_{\max}^nR_0\)</span>. Finally <span class="math" data-tex="\(|\varphi_w(x)-\varphi_w(0)|=|r_w||x|\)">\(|\varphi_w(x)-\varphi_w(0)|=|r_w||x|\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 1.2.</strong> Let <span class="math" data-tex="\(I_1,I_2,\dots\)">\(I_1,I_2,\dots\)</span> be independent with the law <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> the law of <span class="math" data-tex="\(\pi(I_1,I_2,\dots)\)">\(\pi(I_1,I_2,\dots)\)</span>. Then <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is a bounded law, <span class="math" data-tex="\(\mu([-R_0,R_0])=1\)">\(\mu([-R_0,R_0])=1\)</span>, and it is the only Borel probability measure on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with
+<span class="math math-display" data-tex="\[
+\mu=\sum_{i\in\Lambda}p_i\,(\varphi_i)_*\mu,
+\]">\[
+\mu=\sum_{i\in\Lambda}p_i\,(\varphi_i)_*\mu,
+\]</span>
+where <span class="math" data-tex="\((\varphi_i)_*\mu\)">\((\varphi_i)_*\mu\)</span> is the law of <span class="math" data-tex="\(\varphi_i(X)\)">\(\varphi_i(X)\)</span> for <span class="math" data-tex="\(X\)">\(X\)</span> with the law <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\varphi_{i_1}\)">\(\varphi_{i_1}\)</span> is continuous, <span class="math" data-tex="\(\pi(i_1,i_2,\dots)=\varphi_{i_1}(\pi(i_2,i_3,\dots))\)">\(\pi(i_1,i_2,\dots)=\varphi_{i_1}(\pi(i_2,i_3,\dots))\)</span>. The sequence <span class="math" data-tex="\((I_2,I_3,\dots)\)">\((I_2,I_3,\dots)\)</span> is independent of <span class="math" data-tex="\(I_1\)">\(I_1\)</span> and has the same law as <span class="math" data-tex="\((I_1,I_2,\dots)\)">\((I_1,I_2,\dots)\)</span>. So given <span class="math" data-tex="\(I_1=i\)">\(I_1=i\)</span> the law of <span class="math" data-tex="\(\pi(I)\)">\(\pi(I)\)</span> is <span class="math" data-tex="\((\varphi_i)_*\mu\)">\((\varphi_i)_*\mu\)</span>; this is the equation. Let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> be any solution. Applying the equation <span class="math" data-tex="\(n\)">\(n\)</span> times gives <span class="math" data-tex="\(\nu=\sum_{|w|=n}p_w(\varphi_w)_*\nu\)">\(\nu=\sum_{|w|=n}p_w(\varphi_w)_*\nu\)</span>, so for a bounded continuous function <span class="math" data-tex="\(f\)">\(f\)</span>,
+<span class="math math-display" data-tex="\[
+\int f\,d\nu=\mathbb E\int f\bigl(\varphi_{I_1\cdots I_n}(x)\bigr)\,d\nu(x).
+\]">\[
+\int f\,d\nu=\mathbb E\int f\bigl(\varphi_{I_1\cdots I_n}(x)\bigr)\,d\nu(x).
+\]</span>
+By Lemma 1.1 the integrand tends to <span class="math" data-tex="\(f(\pi(I))\)">\(f(\pi(I))\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span> and every sequence, and it is bounded. By dominated convergence <span class="math" data-tex="\(\int f\,d\nu=\mathbb Ef(\pi(I))=\int f\,d\mu\)">\(\int f\,d\nu=\mathbb Ef(\pi(I))=\int f\,d\mu\)</span>. So <span class="math" data-tex="\(\nu=\mu\)">\(\nu=\mu\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the <em>self-similar measure</em> of the maps <span class="math" data-tex="\(\varphi_i\)">\(\varphi_i\)</span> and the weights <span class="math" data-tex="\(p_i\)">\(p_i\)</span>. Different indices may give the same map.</p>
+<p><strong>Lemma 1.3.</strong> Let <span class="math" data-tex="\(0&lt;\varrho&lt;1\)">\(0&lt;\varrho&lt;1\)</span>, and let <span class="math" data-tex="\(\mathcal W_\varrho\)">\(\mathcal W_\varrho\)</span> be the set of the words <span class="math" data-tex="\(w=i_1\cdots i_n\)">\(w=i_1\cdots i_n\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, with <span class="math" data-tex="\(|r_w|\le\varrho&lt;|r_{i_1\cdots i_{n-1}}|\)">\(|r_w|\le\varrho&lt;|r_{i_1\cdots i_{n-1}}|\)</span>. Then <span class="math" data-tex="\(\mathcal W_\varrho\)">\(\mathcal W_\varrho\)</span> is finite, <span class="math" data-tex="\(\varrho a_*&lt;|r_w|\le\varrho\)">\(\varrho a_*&lt;|r_w|\le\varrho\)</span> for <span class="math" data-tex="\(w\in\mathcal W_\varrho\)">\(w\in\mathcal W_\varrho\)</span>, <span class="math" data-tex="\(\sum_{w\in\mathcal W_\varrho}p_w=1\)">\(\sum_{w\in\mathcal W_\varrho}p_w=1\)</span>, and
+<span class="math math-display" data-tex="\[
+\mu=\sum_{w\in\mathcal W_\varrho}p_w\,(\varphi_w)_*\mu .
+\]">\[
+\mu=\sum_{w\in\mathcal W_\varrho}p_w\,(\varphi_w)_*\mu .
+\]</span></p>
+<p><strong>Proof.</strong> Every sequence <span class="math" data-tex="\(i\)">\(i\)</span> has exactly one prefix in <span class="math" data-tex="\(\mathcal W_\varrho\)">\(\mathcal W_\varrho\)</span>: the shortest prefix with <span class="math" data-tex="\(|r|\le\varrho\)">\(|r|\le\varrho\)</span>. Its length is at most <span class="math" data-tex="\(n_0\)">\(n_0\)</span>, where <span class="math" data-tex="\(r_{\max}^{n_0}\le\varrho\)">\(r_{\max}^{n_0}\le\varrho\)</span>; so the set is finite. Its last factor has absolute value at least <span class="math" data-tex="\(a_*\)">\(a_*\)</span>, which gives <span class="math" data-tex="\(|r_w|&gt;\varrho a_*\)">\(|r_w|&gt;\varrho a_*\)</span>. The events that <span class="math" data-tex="\(I\)">\(I\)</span> begins with <span class="math" data-tex="\(w\)">\(w\)</span>, for <span class="math" data-tex="\(w\in\mathcal W_\varrho\)">\(w\in\mathcal W_\varrho\)</span>, are disjoint, cover the sample space, and have the probabilities <span class="math" data-tex="\(p_w\)">\(p_w\)</span>. On the event for a word <span class="math" data-tex="\(w\)">\(w\)</span> of length <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(\pi(I)=\varphi_w(\pi(I_{n+1},I_{n+2},\dots))\)">\(\pi(I)=\varphi_w(\pi(I_{n+1},I_{n+2},\dots))\)</span>, and the sequence <span class="math" data-tex="\((I_{n+1},\dots)\)">\((I_{n+1},\dots)\)</span> is independent of <span class="math" data-tex="\((I_1,\dots,I_n)\)">\((I_1,\dots,I_n)\)</span> with the law of <span class="math" data-tex="\(I\)">\(I\)</span>. So the conditional law of <span class="math" data-tex="\(\pi(I)\)">\(\pi(I)\)</span> on this event is <span class="math" data-tex="\((\varphi_w)_*\mu\)">\((\varphi_w)_*\mu\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-exact-dimensionality-and-entropy-at-small-scales">2. Exact dimensionality and entropy at small scales</h2>
+<p><strong>Definition 2.1.</strong> A Borel probability measure <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> is <em>exact dimensional with the dimension <span class="math" data-tex="\(d\)">\(d\)</span></em> if for <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-almost every <span class="math" data-tex="\(x\)">\(x\)</span>
+<span class="math math-display" data-tex="\[
+\lim_{\varrho\to0}\frac{\log\nu((x-\varrho,x+\varrho))}{\log\varrho}=d .
+\]">\[
+\lim_{\varrho\to0}\frac{\log\nu((x-\varrho,x+\varrho))}{\log\varrho}=d .
+\]</span></p>
+<p>So the mass of a small interval around a typical point behaves like the power <span class="math" data-tex="\(d\)">\(d\)</span> of its length. For the uniform law on an interval <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, and for a law with finitely many atoms <span class="math" data-tex="\(d=0\)">\(d=0\)</span>.</p>
+<p><strong>Hypothesis (ED).</strong> Every self-similar measure in the sense of Section 1 is exact dimensional.</p>
+<p>According to [OpenAI-S, Section 1], this is a theorem of D.-J. Feng and H. Hu (2009), which holds without any separation assumption, for ratios of both signs and for repeated maps. It is not proved in this course. It is the only statement about self-similar measures that the course takes from outside.</p>
+<p><strong>Proposition 2.2.</strong> Let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> be a bounded law that is exact dimensional with the dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Then
+<span class="math math-display" data-tex="\[
+\limsup_{s\to0}\frac{\max\{\mathcal H_s(\nu),H^0_s(\nu)\}}{\log(1/s)}\le d .
+\]">\[
+\limsup_{s\to0}\frac{\max\{\mathcal H_s(\nu),H^0_s(\nu)\}}{\log(1/s)}\le d .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> and <span class="math" data-tex="\(\nu([-R,R])=1\)">\(\nu([-R,R])=1\)</span>. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> let <span class="math" data-tex="\(E_n\)">\(E_n\)</span> be the set of the <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\nu((x-\varrho,x+\varrho))\ge\varrho^{d+\eta}\)">\(\nu((x-\varrho,x+\varrho))\ge\varrho^{d+\eta}\)</span> for all rational <span class="math" data-tex="\(\varrho\in(0,\tfrac1n)\)">\(\varrho\in(0,\tfrac1n)\)</span>. It is a Borel set, because the mass of an open interval of fixed length is a lower semicontinuous function of its centre. The inequality then holds for all real <span class="math" data-tex="\(\varrho\in(0,\tfrac1n)\)">\(\varrho\in(0,\tfrac1n)\)</span>: take rational <span class="math" data-tex="\(\varrho&#x27;&lt;\varrho\)">\(\varrho&#x27;&lt;\varrho\)</span> tending to <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span>. The sets <span class="math" data-tex="\(E_n\)">\(E_n\)</span> increase, and by Definition 2.1 their union has full measure, since <span class="math" data-tex="\(\log\varrho&lt;0\)">\(\log\varrho&lt;0\)</span>. Choose <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(\nu(E_n)\ge1-\eta\)">\(\nu(E_n)\ge1-\eta\)</span>, and let <span class="math" data-tex="\(E=E_n\)">\(E=E_n\)</span>, <span class="math" data-tex="\(\varrho_0=\tfrac1n\)">\(\varrho_0=\tfrac1n\)</span>.</p>
+<p>Take a grid of length <span class="math" data-tex="\(s&lt;2\varrho_0\)">\(s&lt;2\varrho_0\)</span> with any shift, and choose a point of <span class="math" data-tex="\(E\)">\(E\)</span> in every cell that meets <span class="math" data-tex="\(E\)">\(E\)</span>. Two chosen points whose cell labels differ by a multiple of <span class="math" data-tex="\(3\)">\(3\)</span> have a distance larger than <span class="math" data-tex="\(2s\)">\(2s\)</span>, so the open intervals of radius <span class="math" data-tex="\(\tfrac s2\)">\(\tfrac s2\)</span> around the chosen points of one residue class are disjoint. Each has mass at least <span class="math" data-tex="\((s/2)^{d+\eta}\)">\((s/2)^{d+\eta}\)</span>. So each class has at most <span class="math" data-tex="\((2/s)^{d+\eta}\)">\((2/s)^{d+\eta}\)</span> points, and at most <span class="math" data-tex="\(3(2/s)^{d+\eta}\)">\(3(2/s)^{d+\eta}\)</span> cells meet <span class="math" data-tex="\(E\)">\(E\)</span>. At most <span class="math" data-tex="\(2R/s+2\)">\(2R/s+2\)</span> cells meet <span class="math" data-tex="\([-R,R]\)">\([-R,R]\)</span>.</p>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> have the law <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span> its cell label, and <span class="math" data-tex="\(Y\)">\(Y\)</span> the indicator of <span class="math" data-tex="\(X\in E\)">\(X\in E\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H(F)&amp;\le H(Y)+H(F\mid Y)\\
+&amp;\le1+\log\bigl(3(2/s)^{d+\eta}\bigr)\\
+&amp;\quad+\eta\log\bigl(2R/s+2\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+H(F)&amp;\le H(Y)+H(F\mid Y)\\
+&amp;\le1+\log\bigl(3(2/s)^{d+\eta}\bigr)\\
+&amp;\quad+\eta\log\bigl(2R/s+2\bigr).
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(s&lt;1\)">\(s&lt;1\)</span> this is at most <span class="math" data-tex="\((d+2\eta)\log(1/s)+C\)">\((d+2\eta)\log(1/s)+C\)</span> with a number <span class="math" data-tex="\(C\)">\(C\)</span> that does not depend on <span class="math" data-tex="\(s\)">\(s\)</span> and the shift. So the same bound holds for <span class="math" data-tex="\(\mathcal H_s(\nu)\)">\(\mathcal H_s(\nu)\)</span> and <span class="math" data-tex="\(H^0_s(\nu)\)">\(H^0_s(\nu)\)</span>. Divide by <span class="math" data-tex="\(\log(1/s)\)">\(\log(1/s)\)</span>, let <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>, and then <span class="math" data-tex="\(\eta\to0\)">\(\eta\to0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-uniform-nonsaturation">3. Uniform nonsaturation</h2>
+<p>For laws <span class="math" data-tex="\(p,q\)">\(p,q\)</span> on the integers with finitely many values let <span class="math" data-tex="\(\|p-q\|=\max_B|p(B)-q(B)|\)">\(\|p-q\|=\max_B|p(B)-q(B)|\)</span>, the maximum over all sets <span class="math" data-tex="\(B\)">\(B\)</span> of integers; it is equal to <span class="math" data-tex="\(\sum_j(p_j-q_j)_+\)">\(\sum_j(p_j-q_j)_+\)</span>, where <span class="math" data-tex="\(x_+=\max\{x,0\}\)">\(x_+=\max\{x,0\}\)</span>. For a law <span class="math" data-tex="\(p\)">\(p\)</span> let <span class="math" data-tex="\(Tp\)">\(Tp\)</span> be its translate by one step, <span class="math" data-tex="\((Tp)_j=p_{j-1}\)">\((Tp)_j=p_{j-1}\)</span>. Then <span class="math" data-tex="\(\|T^ip-p\|\le i\,\|Tp-p\|\)">\(\|T^ip-p\|\le i\,\|Tp-p\|\)</span> by the triangle inequality.</p>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be a random variable with finitely many integer values and the law <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(J\)">\(J\)</span> an independent fair bit. Then
+<span class="math math-display" data-tex="\[
+\|p-Tp\|^2\le2\ln2\cdot I(J;F+J).
+\]">\[
+\|p-Tp\|^2\le2\ln2\cdot I(J;F+J).
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be a set of integers and <span class="math" data-tex="\(Z\)">\(Z\)</span> the indicator of <span class="math" data-tex="\(F+J\in B\)">\(F+J\in B\)</span>. Given <span class="math" data-tex="\(J=0\)">\(J=0\)</span>, <span class="math" data-tex="\(Z=1\)">\(Z=1\)</span> with the probability <span class="math" data-tex="\(a=p(B)\)">\(a=p(B)\)</span>; given <span class="math" data-tex="\(J=1\)">\(J=1\)</span>, with the probability <span class="math" data-tex="\(b=Tp(B)\)">\(b=Tp(B)\)</span>. By Proposition 3.1 of the lesson on entropy of finite random variables, <span class="math" data-tex="\(I(J;F+J)\ge I(J;Z)\)">\(I(J;F+J)\ge I(J;Z)\)</span>. And <span class="math" data-tex="\(I(J;Z)\)">\(I(J;Z)\)</span> is <span class="math" data-tex="\(h_2(\tfrac{a+b}2)-\tfrac12h_2(a)-\tfrac12h_2(b)\)">\(h_2(\tfrac{a+b}2)-\tfrac12h_2(a)-\tfrac12h_2(b)\)</span>, which is at least <span class="math" data-tex="\((a-b)^2/(2\ln2)\)">\((a-b)^2/(2\ln2)\)</span> by Lemma 5.2 of that lesson. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.2.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be as in Lemma 3.1, <span class="math" data-tex="\(K\ge2\)">\(K\ge2\)</span> an integer, and <span class="math" data-tex="\(U\)">\(U\)</span> independent of <span class="math" data-tex="\(F\)">\(F\)</span> and uniform on <span class="math" data-tex="\(\{0,\dots,K-1\}\)">\(\{0,\dots,K-1\}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;I(U;F+U)\\
+&amp;\quad\le\frac{K(K-1)}2\,\|p-Tp\|\,\log K .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;I(U;F+U)\\
+&amp;\quad\le\frac{K(K-1)}2\,\|p-Tp\|\,\log K .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(U=i\)">\(U=i\)</span>, the variable <span class="math" data-tex="\(Z=F+U\)">\(Z=F+U\)</span> has the law <span class="math" data-tex="\(T^ip\)">\(T^ip\)</span>. Let <span class="math" data-tex="\(m_j=\min_{0\le i&lt;K}(T^ip)_j\)">\(m_j=\min_{0\le i&lt;K}(T^ip)_j\)</span> and <span class="math" data-tex="\(m=\sum_jm_j\)">\(m=\sum_jm_j\)</span>. Since <span class="math" data-tex="\(p_j-m_j\)">\(p_j-m_j\)</span> is the largest of the numbers <span class="math" data-tex="\(p_j-(T^ip)_j\)">\(p_j-(T^ip)_j\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+1-m&amp;=\sum_j(p_j-m_j)\\
+&amp;\le\sum_{i=1}^{K-1}\|p-T^ip\|\\
+&amp;\le\frac{K(K-1)}2\|p-Tp\| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+1-m&amp;=\sum_j(p_j-m_j)\\
+&amp;\le\sum_{i=1}^{K-1}\|p-T^ip\|\\
+&amp;\le\frac{K(K-1)}2\|p-Tp\| .
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(W\)">\(W\)</span> be a random variable with the values <span class="math" data-tex="\(0,1\)">\(0,1\)</span> such that, given <span class="math" data-tex="\(U=i\)">\(U=i\)</span> and <span class="math" data-tex="\(Z=j\)">\(Z=j\)</span>, <span class="math" data-tex="\(W=1\)">\(W=1\)</span> with the probability <span class="math" data-tex="\(m_j/(T^ip)_j\)">\(m_j/(T^ip)_j\)</span>. Then the probability of <span class="math" data-tex="\(W=1\)">\(W=1\)</span> and <span class="math" data-tex="\(Z=j\)">\(Z=j\)</span> given <span class="math" data-tex="\(U=i\)">\(U=i\)</span> is <span class="math" data-tex="\(m_j\)">\(m_j\)</span>, for every <span class="math" data-tex="\(i\)">\(i\)</span>. So <span class="math" data-tex="\(W\)">\(W\)</span> is independent of <span class="math" data-tex="\(U\)">\(U\)</span>, with <span class="math" data-tex="\(\mathbb P(W=1)=m\)">\(\mathbb P(W=1)=m\)</span>, and given <span class="math" data-tex="\(W=1\)">\(W=1\)</span> the law of <span class="math" data-tex="\(Z\)">\(Z\)</span> does not depend on <span class="math" data-tex="\(U\)">\(U\)</span>. By Proposition 3.1 of the lesson on entropy of finite random variables,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(U;Z)&amp;\le I(U;(Z,W))\\
+&amp;=I(U;W)+I(U;Z\mid W).
+\end{aligned}
+\]">\[
+\begin{aligned}
+I(U;Z)&amp;\le I(U;(Z,W))\\
+&amp;=I(U;W)+I(U;Z\mid W).
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(I(U;W)=0\)">\(I(U;W)=0\)</span>, the part of <span class="math" data-tex="\(I(U;Z\mid W)\)">\(I(U;Z\mid W)\)</span> for <span class="math" data-tex="\(W=1\)">\(W=1\)</span> vanishes, and the part for <span class="math" data-tex="\(W=0\)">\(W=0\)</span> is at most <span class="math" data-tex="\((1-m)\log K\)">\((1-m)\log K\)</span>, because <span class="math" data-tex="\(U\)">\(U\)</span> has <span class="math" data-tex="\(K\)">\(K\)</span> values. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 3.3.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be a bounded variable, <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span> and <span class="math" data-tex="\(K\ge2\)">\(K\ge2\)</span> an integer. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\log K-G_{v,Kv}(X)\\
+&amp;\quad\le\frac{K(K-1)}2\,\log K\,\sqrt{2\ln2\cdot\Delta_v(X)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\log K-G_{v,Kv}(X)\\
+&amp;\quad\le\frac{K(K-1)}2\,\log K\,\sqrt{2\ln2\cdot\Delta_v(X)} .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(F_u=\lfloor X/v+u\rfloor\)">\(F_u=\lfloor X/v+u\rfloor\)</span> with the law <span class="math" data-tex="\(p_u\)">\(p_u\)</span>. By Corollary 3.2 of the lesson on entropy at a scale, the left side is <span class="math" data-tex="\(\int_0^1I(U;F_u+U)\,du\)">\(\int_0^1I(U;F_u+U)\,du\)</span>, and <span class="math" data-tex="\(\Delta_v(X)=\int_0^1I(J;F_u+J)\,du\)">\(\Delta_v(X)=\int_0^1I(J;F_u+J)\,du\)</span>. By Lemmas 3.2 and 3.1 and the inequality of Cauchy and Schwarz,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^1I(U;F_u+U)\,du\\
+&amp;\quad\le c_K\int_0^1\sqrt{2\ln2\cdot I(J;F_u+J)}\,du\\
+&amp;\quad\le c_K\sqrt{2\ln2\cdot\Delta_v(X)},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^1I(U;F_u+U)\,du\\
+&amp;\quad\le c_K\int_0^1\sqrt{2\ln2\cdot I(J;F_u+J)}\,du\\
+&amp;\quad\le c_K\sqrt{2\ln2\cdot\Delta_v(X)},
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(c_K=\tfrac12K(K-1)\log K\)">\(c_K=\tfrac12K(K-1)\log K\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So if the deficit at the scale <span class="math" data-tex="\(v\)">\(v\)</span> is small, then the law gains almost the maximal entropy <span class="math" data-tex="\(\log K\)">\(\log K\)</span> between the scales <span class="math" data-tex="\(Kv\)">\(Kv\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>, for every fixed <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Lemma 3.4.</strong> Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a self-similar measure, <span class="math" data-tex="\(K\ge1\)">\(K\ge1\)</span> an integer and <span class="math" data-tex="\(0&lt;s&lt;v\)">\(0&lt;s&lt;v\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_{s,Ks}(\mu)\ge G_{v,Kv}(\mu)-C_*,\\
+C_*=\log\bigl(\tfrac1{a_*}+2\bigr)+1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+G_{s,Ks}(\mu)\ge G_{v,Kv}(\mu)-C_*,\\
+C_*=\log\bigl(\tfrac1{a_*}+2\bigr)+1 .
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> By Lemma 1.3 with <span class="math" data-tex="\(\varrho=s/v\)">\(\varrho=s/v\)</span>, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is a finite mixture of the laws <span class="math" data-tex="\((\varphi_w)_*\mu\)">\((\varphi_w)_*\mu\)</span>, <span class="math" data-tex="\(w\in\mathcal W_\varrho\)">\(w\in\mathcal W_\varrho\)</span>. By Proposition 2.4 and Lemma 1.1 of the lesson on entropy at a scale,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G_{s,Ks}(\mu)&amp;\ge\sum_wp_w\,G_{s,Ks}\bigl((\varphi_w)_*\mu\bigr)\\
+&amp;=\sum_wp_w\,G_{z_w,Kz_w}(\mu),
+\end{aligned}
+\]">\[
+\begin{aligned}
+G_{s,Ks}(\mu)&amp;\ge\sum_wp_w\,G_{s,Ks}\bigl((\varphi_w)_*\mu\bigr)\\
+&amp;=\sum_wp_w\,G_{z_w,Kz_w}(\mu),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(z_w=s/|r_w|\)">\(z_w=s/|r_w|\)</span> lies in <span class="math" data-tex="\([v,v/a_*)\)">\([v,v/a_*)\)</span>. For such <span class="math" data-tex="\(z\)">\(z\)</span>, by Proposition 1.3 of that lesson, <span class="math" data-tex="\(\mathcal H_z(\mu)\ge\mathcal H_v(\mu)-\log(z/v+2)\)">\(\mathcal H_z(\mu)\ge\mathcal H_v(\mu)-\log(z/v+2)\)</span> and <span class="math" data-tex="\(\mathcal H_{Kz}(\mu)\le\mathcal H_{Kv}(\mu)+1\)">\(\mathcal H_{Kz}(\mu)\le\mathcal H_{Kv}(\mu)+1\)</span>. So <span class="math" data-tex="\(G_{z,Kz}(\mu)\ge G_{v,Kv}(\mu)-C_*\)">\(G_{z,Kz}(\mu)\ge G_{v,Kv}(\mu)-C_*\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 3.5 (uniform nonsaturation).</strong> Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a self-similar measure that is exact dimensional with a dimension <span class="math" data-tex="\(d&lt;1\)">\(d&lt;1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\delta=\inf_{v&gt;0}\Delta_v(\mu)&gt;0 .
+\]">\[
+\delta=\inf_{v&gt;0}\Delta_v(\mu)&gt;0 .
+\]</span></p>
+<p><strong>Proof.</strong> Suppose that <span class="math" data-tex="\(\Delta_{v_n}(\mu)\to0\)">\(\Delta_{v_n}(\mu)\to0\)</span> for some numbers <span class="math" data-tex="\(v_n&gt;0\)">\(v_n&gt;0\)</span>. Choose an integer <span class="math" data-tex="\(K\ge2\)">\(K\ge2\)</span> with <span class="math" data-tex="\((1-d)\log K&gt;C_*+2\)">\((1-d)\log K&gt;C_*+2\)</span>. By Proposition 3.3, <span class="math" data-tex="\(G_{v_n,Kv_n}(\mu)\to\log K\)">\(G_{v_n,Kv_n}(\mu)\to\log K\)</span>; choose <span class="math" data-tex="\(v=v_n\)">\(v=v_n\)</span> with <span class="math" data-tex="\(G_{v,Kv}(\mu)&gt;\log K-1\)">\(G_{v,Kv}(\mu)&gt;\log K-1\)</span>. By Lemma 3.4, for every <span class="math" data-tex="\(0&lt;s&lt;v\)">\(0&lt;s&lt;v\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_{s,Ks}(\mu)&gt;\beta,\\
+\beta=\log K-C_*-1&gt;d\log K .
+\end{gathered}
+\]">\[
+\begin{gathered}
+G_{s,Ks}(\mu)&gt;\beta,\\
+\beta=\log K-C_*-1&gt;d\log K .
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(s_k=vK^{-k}\)">\(s_k=vK^{-k}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal H_{s_k}(\mu)-\mathcal H_v(\mu)\\
+&amp;\quad=\sum_{j=1}^kG_{vK^{-j},vK^{-j+1}}(\mu)&gt;k\beta,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal H_{s_k}(\mu)-\mathcal H_v(\mu)\\
+&amp;\quad=\sum_{j=1}^kG_{vK^{-j},vK^{-j+1}}(\mu)&gt;k\beta,
+\end{aligned}
+\]</span>
+while <span class="math" data-tex="\(\log(1/s_k)=k\log K+\log(1/v)\)">\(\log(1/s_k)=k\log K+\log(1/v)\)</span>. So <span class="math" data-tex="\(\mathcal H_{s_k}(\mu)/\log(1/s_k)\)">\(\mathcal H_{s_k}(\mu)/\log(1/s_k)\)</span> has a lower limit of at least <span class="math" data-tex="\(\beta/\log K&gt;d\)">\(\beta/\log K&gt;d\)</span> as <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>. This contradicts Proposition 2.2. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The theorem needs no separation of the maps and no assumption on the signs of the ratios. It uses the self-similarity through Lemma 1.3 only: the measure at the scale <span class="math" data-tex="\(s\)">\(s\)</span> is a mixture of copies of itself at scales between <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(v/a_*\)">\(v/a_*\)</span>.</p>
+<p><strong>Example 3.6.</strong> For the maps <span class="math" data-tex="\(x/3\)">\(x/3\)</span> and <span class="math" data-tex="\(x/3+\tfrac23\)">\(x/3+\tfrac23\)</span> with the weights <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the Cantor measure. It is exact dimensional with <span class="math" data-tex="\(d=\log2/\log3\)">\(d=\log2/\log3\)</span>: the open interval of radius <span class="math" data-tex="\(3^{-k}\)">\(3^{-k}\)</span> around a point of the Cantor set has a mass between <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span> and <span class="math" data-tex="\(2^{1-k}\)">\(2^{1-k}\)</span>, because it contains the interval of the <span class="math" data-tex="\(k\)">\(k\)</span>-th step of the construction through the point and meets at most two such intervals. A numerical evaluation of <span class="math" data-tex="\(\Delta_v(\mu)\)">\(\Delta_v(\mu)\)</span> at thirty scales between <span class="math" data-tex="\(3^{-5}\)">\(3^{-5}\)</span> and <span class="math" data-tex="\(\tfrac23\)">\(\tfrac23\)</span> gives values between <span class="math" data-tex="\(0.36\)">\(0.36\)</span> and <span class="math" data-tex="\(0.40\)">\(0.40\)</span>. For the uniform law on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, which is the self-similar measure of the maps <span class="math" data-tex="\(x/2\)">\(x/2\)</span> and <span class="math" data-tex="\(x/2+\tfrac12\)">\(x/2+\tfrac12\)</span> and has <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(\Delta_{1/(2n)}=1/(4n\ln2)\)">\(\Delta_{1/(2n)}=1/(4n\ln2)\)</span> tends to <span class="math" data-tex="\(0\)">\(0\)</span> (Exercise 4.2 of the lesson on entropy at a scale).</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Show that the self-similar measure of a single map <span class="math" data-tex="\(\varphi(x)=rx+t\)">\(\varphi(x)=rx+t\)</span> is the unit mass at its fixed point, and that for it <span class="math" data-tex="\(\Delta_v=1\)">\(\Delta_v=1\)</span> for all <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>4.2.</strong> Show that <span class="math" data-tex="\(\|p-q\|\)">\(\|p-q\|\)</span> is equal to <span class="math" data-tex="\(\sum_j(p_j-q_j)_+\)">\(\sum_j(p_j-q_j)_+\)</span> and to <span class="math" data-tex="\(\tfrac12\sum_j|p_j-q_j|\)">\(\tfrac12\sum_j|p_j-q_j|\)</span>, for laws <span class="math" data-tex="\(p,q\)">\(p,q\)</span> on a finite set.</p>
+<p><strong>4.3.</strong> In Lemma 3.2, compute both sides for <span class="math" data-tex="\(K=2\)">\(K=2\)</span> and the law <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(p_0=p_1=\tfrac12\)">\(p_0=p_1=\tfrac12\)</span>.</p>
+<p><strong>4.4.</strong> Let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> be the uniform law on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. Show directly that it is exact dimensional with <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, and that the bound of Proposition 2.2 is attained.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> The fixed point is <span class="math" data-tex="\(x_0=t/(1-r)\)">\(x_0=t/(1-r)\)</span>, and the unit mass at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> satisfies the equation of Proposition 1.2, which has only one solution. A constant has <span class="math" data-tex="\(\mathcal H_s=0\)">\(\mathcal H_s=0\)</span> for all <span class="math" data-tex="\(s\)">\(s\)</span>, so <span class="math" data-tex="\(G_{v,2v}=0\)">\(G_{v,2v}=0\)</span> and <span class="math" data-tex="\(\Delta_v=1\)">\(\Delta_v=1\)</span>.</p>
+<p><strong>4.2.</strong> The set <span class="math" data-tex="\(B\)">\(B\)</span> of the <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(p_j&gt;q_j\)">\(p_j&gt;q_j\)</span> maximizes <span class="math" data-tex="\(p(B)-q(B)\)">\(p(B)-q(B)\)</span>, with the value <span class="math" data-tex="\(\sum_j(p_j-q_j)_+\)">\(\sum_j(p_j-q_j)_+\)</span>; exchanging <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> gives <span class="math" data-tex="\(\sum_j(q_j-p_j)_+\)">\(\sum_j(q_j-p_j)_+\)</span> for the maximum of <span class="math" data-tex="\(q(B)-p(B)\)">\(q(B)-p(B)\)</span>. The two sums are equal, because <span class="math" data-tex="\(\sum_j(p_j-q_j)=0\)">\(\sum_j(p_j-q_j)=0\)</span>, and their sum is <span class="math" data-tex="\(\sum_j|p_j-q_j|\)">\(\sum_j|p_j-q_j|\)</span>.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(Tp\)">\(Tp\)</span> has the masses <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> at <span class="math" data-tex="\(1,2\)">\(1,2\)</span>, so <span class="math" data-tex="\(\|p-Tp\|=\tfrac12\)">\(\|p-Tp\|=\tfrac12\)</span> and the right side is <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>. The law of <span class="math" data-tex="\(F+U\)">\(F+U\)</span> has the masses <span class="math" data-tex="\(\tfrac14,\tfrac12,\tfrac14\)">\(\tfrac14,\tfrac12,\tfrac14\)</span>, so <span class="math" data-tex="\(H(F+U)=\tfrac32\)">\(H(F+U)=\tfrac32\)</span> and <span class="math" data-tex="\(I(U;F+U)=H(F+U)-H(F)=\tfrac12\)">\(I(U;F+U)=H(F+U)-H(F)=\tfrac12\)</span>. Both sides are equal.</p>
+<p><strong>4.4.</strong> For <span class="math" data-tex="\(0&lt;x&lt;1\)">\(0&lt;x&lt;1\)</span> and small <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span>, <span class="math" data-tex="\(\nu((x-\varrho,x+\varrho))=2\varrho\)">\(\nu((x-\varrho,x+\varrho))=2\varrho\)</span>, and <span class="math" data-tex="\(\log(2\varrho)/\log\varrho\to1\)">\(\log(2\varrho)/\log\varrho\to1\)</span>. By Exercise 4.2 of the lesson on entropy at a scale, <span class="math" data-tex="\(\mathcal H_{1/n}(\nu)=\log n+\tfrac1{2n\ln2}\)">\(\mathcal H_{1/n}(\nu)=\log n+\tfrac1{2n\ln2}\)</span>, so <span class="math" data-tex="\(\mathcal H_s(\nu)/\log(1/s)\to1\)">\(\mathcal H_s(\nu)/\log(1/s)\to1\)</span> along <span class="math" data-tex="\(s=\tfrac1n\)">\(s=\tfrac1n\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-S] OpenAI, <em>The entropy-rate dimension formula for self-similar measures on the line</em>, OpenAI Math Release preprint, 24 September 2026, Sections 1 and 2. https://github.com/openai/math/tree/main/preprints/The-entropy-rate-dimension-formula-for-self-similar-measures-on-the-line-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
