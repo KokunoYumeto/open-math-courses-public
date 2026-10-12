@@ -62,7 +62,7 @@ We prove the following three assertions.
 
 The proof of the positive-\(\lambda\) clause also works without separable predual, because the inner-period and generalized-trace comparison providers have that full scope. Neither assertion 1 nor assertion 2 is promoted here to that larger scope. Assertion 3 makes no arbitrarily small uniform-distance claim in positive discrete type.
 
-The other inputs are concrete earlier results: [PC3,5,7](OA-FLOW-PC.md#pc-5) for filling isometries and countable projection comparison; [CZ0,1,4,6](OA-FLOW-CZ.md#cz-0) for finite-domain stability and exact centralizer perturbations; [TID, TI7–9](OA-FLOW-TID.md#tid-2) for bounded positive orbit averages; [CGF, CI1 and CI35–39](OA-FLOW-CGF.md#cgf-8) for the stabilized presentation and supported integrability criterion; [MIV4](OA-FLOW-MIV.md#miv-4) for its coefficient center in type III\(_1\); and [PW1–3](OA-FLOW-PW.md#pw-1) together with [DDP2,3,7](OA-FLOW-DDP.md#dd-existence) for periodic correction and its scalar-sensitive comparison.
+The other inputs are concrete earlier results: [PC3,5,7](OA-FLOW-PC.md#pc-5) for filling isometries and countable projection comparison; [CZ0,1,4,6](OA-FLOW-CZ.md#cz-0) for finite-domain stability and exact centralizer perturbations; [TID, TI7–9](OA-FLOW-TID.md#tid-2) for bounded positive orbit averages; [CGF, CI1](OA-FLOW-CGF.md#cgf-1) and [CI35–39](OA-FLOW-CGF.md#cgf-8) for the stabilized presentation and supported integrability criterion; [MIV4](OA-FLOW-MIV.md#miv-4) for its coefficient center in type III\(_1\); and [PW1–3](OA-FLOW-PW.md#pw-1) together with [DDP2,3,7](OA-FLOW-DDP.md#dd-existence) for periodic correction and its scalar-sensitive comparison. The exact inner derivative [GDA34](OA-FLOW-GDA.md#equation-gda34) detects which scalars a periodic weight can absorb.
 
 <a id="ia-domains"></a>
 ## 2. Bounded comparisons preserve the entire finite structure
@@ -347,6 +347,14 @@ Choose the resulting fixed off-diagonal partial isometry \(V=uE_{12}\). Its two 
  \tag{IA39}
 \]
 This is the scalar-sensitive comparison proved in DDP7. Infinite values are included. A scalar \(a=1\) has not been imposed.
+
+The scalar cannot in general be removed. Suppose a generalized trace \(\nu\) satisfies \(\nu\circ\operatorname{Ad}v=c\nu\) for a unitary \(v\) and \(c>0\). The exact inner derivative [GDA34](OA-FLOW-GDA.md#equation-gda34) and the scalar rule (BC24) give
+\[
+ v^*\sigma_t^\nu(v)=c^{it}1.
+ \tag{IA39a}
+\]
+At \(t=P\), the left side is \(1\). Thus \(P\log c\in2\pi\mathbb Z\), or equivalently \(c\in\lambda^{\mathbb Z}\). In particular \(\nu\) and \(\sqrt\lambda\,\nu\) are both infinite generalized traces with identical finite domains, but they are not unitarily equivalent: \(\sqrt\lambda\notin\lambda^{\mathbb Z}\) for \(0<\lambda<1\). This is why the scalar in (IA39) is retained even though it disappears from the domain comparison.
+
 
 Positive scalar multiplication preserves all four finite domains, so (IA37)–(IA39), followed by (IA8), prove (IA6). One can also see the required whole-cone comparison directly:
 \[

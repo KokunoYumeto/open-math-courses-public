@@ -18,7 +18,27 @@ The full pairing on bounded \(x\) and the identity \(\|\phi_h\|=\tau(h)\) are pr
  \qquad \|h+k\|_1=\tau(h)+\tau(k).
  \tag{TT2}
 \]
-The sum in the second formula is the complete positive form sum supplied by [TD7](OA-FLOW-TD.md#oa-flow.td.7). Its finite total trace ensures that it is an ordinary densely defined density. No algebraic difference of unbounded operators is needed to define (TT2).
+The sum in the second formula is the complete positive form sum supplied by [TD7](OA-FLOW-TD.md#oa-flow.td.7). Its finite total trace ensures that it is an ordinary densely defined density.
+
+These norms also have the usual measurable-operator interpretation. The estimate \(R\tau(1_{(R,\infty)}(h))\leq\tau(h)\) makes every integrable positive density \(\tau\)-measurable by [MT11](../../OA-MOD/OA-MOD-MT.html#spectral-tails-characterize-the-resulting-operators). The complete [TI5–6 construction](../../OA-MOD/OA-MOD-TI.html#a-complete-space-of-actual-integrable-operators) gives a linear onto isometry
+\[
+ J:L^1(M,\tau)\longrightarrow M_*,
+ \qquad J(b)(x)=\tau(bx),\qquad
+ \|J(b)\|=\tau(|b|).
+ \tag{TT2a}
+\]
+Here \(L^1(M,\tau)\) consists of actual measurable operators with finite \(\tau(|b|)\), and its algebraic operations are closed operator operations. In particular [MT9](../../OA-MOD/OA-MOD-MT.html#adjoint-addition-and-multiplication-keep-the-domains) proves that
+\[
+ T=\overline{(h-k)|_{D(h)\cap D(k)}}
+ \tag{TT2b}
+\]
+is a densely defined self-adjoint measurable operator; TI5 puts it in \(L^1\). To identify the pairings, use \(h_n=h\wedge n\). The bounded finite-trace pairing gives \(J(h_n)=\phi_{h_n}\). Spectral monotone convergence gives \(\|h-h_n\|_1=\tau(h)-\tau(h_n)\to0\) in the operator \(L^1\) norm, while TD5 and TD8 give the same limit for \(\|\phi_h-\phi_{h_n}\|\). Thus \(J(h)=\phi_h\), and likewise for \(k\). Linearity and (TT2a) now prove
+\[
+ J(T)=\phi_h-\phi_k,\qquad
+ \|h-k\|_1=\tau(|T|).
+ \tag{TT2c}
+\]
+This fixes the difference domain and its closure before any absolute value is used.
 
 Fix the strict-tail convention
 \[
@@ -81,7 +101,7 @@ This is trace monotonicity of \(g\), not operator monotonicity. In particular (T
 <a id="tail-jordan"></a>
 ## 3. The positive and negative parts are normal
 
-We need a decomposition in the predual, rather than a formal absolute value of an unbounded difference. The complete [polar-decomposition theorem and Corollary 2.8](../../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-02) apply to every normal hermitian functional \(\rho\) on an arbitrary von Neumann algebra. Here is the relevant construction and its normality check.
+We first construct the positive and negative parts in the predual, then identify their measurable-operator densities. The complete [polar-decomposition theorem and Corollary 2.8](../../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-02) apply to every normal hermitian functional \(\rho\) on an arbitrary von Neumann algebra. Here is the relevant construction and its normality check.
 
 That theorem constructs a positive normal functional \(\omega=|\rho|\) and a partial isometry \(v\in M\) such that
 \[
@@ -134,7 +154,25 @@ Consequently
  =2\min\{\tau(a):a\geq h,\ a\geq k,\ a\geq0,\ \tau(a)<\infty\}.\ }
  \tag{TT14}
 \]
-The displayed minimum is attained by \(a_0\); no lattice supremum in the operator order is asserted. If \(j\) is TD4's density of \(|\phi_h-\phi_k|\), then \(2a_0=h+k+j\) as complete positive forms. This supplies a rigorous meaning for the familiar common-majorant formula without using an undefined product or difference domain.
+The displayed minimum is attained by \(a_0\); no lattice supremum in the operator order is asserted.
+
+The actual operator formula follows from (TT2b). Write \(T=v|T|\), using the measurable polar calculus proved in [MT12](../../OA-MOD/OA-MOD-MT.html#positivity-square-roots-and-polar-decomposition). Since \(T=T^*\), \(v\) is its sign and \(v^2=s(|T|)\). The cyclic trace factorization in [TI6](../../OA-MOD/OA-MOD-TI.html#the-trace-pairing-fills-the-whole-predual) gives
+\[
+ \rho(x)=J(|T|)(xv).
+ \tag{TT14a}
+\]
+The support of \(J(|T|)\) is exactly \(s(|T|)\). Indeed, let \(r_n=1_{[1/n,n]}(|T|)\). If a projection \(e\) has \(J(|T|)(e)=0\), positivity and \(|T|\geq n^{-1}r_n\) give \(\tau(er_ne)=0\). Faithfulness forces \(r_ne=0\); taking \(n\to\infty\) gives \(s(|T|)e=0\). Conversely \(1-s(|T|)\) is annihilated by every positive spectral cutoff, hence by their normal functional limit. Thus (TT14a) is the normal functional polar decomposition with its required support. Uniqueness in section 3 proves
+\[
+ |\rho|=J(|T|),\qquad
+ \rho_+=J(T_+),\qquad \rho_-=J(T_-).
+ \tag{TT14b}
+\]
+For the last two identities, the sign projections \(e_\pm\) in (TT9) satisfy \(T_\pm=|T|e_\pm\), and the same cyclic trace pairing applies. Consequently
+\[
+ a_0=h+T_-=k+T_+=\frac12\bigl(h+k+|T|\bigr).
+ \tag{TT14c}
+\]
+Each positive sum here is both its closed measurable-operator sum and its complete positive form sum: the closed sums have, under \(J\), the positive functionals specified by (TT11) and (TT14b); TD4 and TD7 identify the unique densities of those functionals with the complete form sums. All three expressions therefore specify the same positive self-adjoint operator on its full domain.
 
 <a id="tail-contraction"></a>
 ## 5. Spectral tails contract the predual distance

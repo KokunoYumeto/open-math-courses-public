@@ -193,7 +193,7 @@ in \([0,\infty]\).
 
 **Proof.** By \((\mathrm G)\) and Theorem 4.2 of the previous lesson, \(\mathcal C\) satisfies the assumption of Theorem 4.1. The equality is Lemma 1.1 of the previous lesson. \(\blacksquare\)
 
-The statement \((\mathrm G)\) is a theorem of [OpenAI-T]: its Sections 2 to 5, with two appendices of verified computations, construct the sharp pairs. With it, Theorem 5.1 is the *universal optimality* of the triangular lattice, the main theorem of [OpenAI-T, Section 1]. In this course \((\mathrm G)\) is a hypothesis; everything else in the proof of Theorem 5.1 is proved in these two lessons and the lessons they cite.
+The statement \((\mathrm G)\) is a theorem of [OpenAI-T]: its Sections 2 to 5, with two appendices of verified computations, construct the sharp pairs. With it, Theorem 5.1 is the *universal optimality* of the triangular lattice, the main theorem of [OpenAI-T, Section 1]. In these two lessons \((\mathrm G)\) is a hypothesis; everything else in the proof of Theorem 5.1 is proved in them and in the lessons they cite. The later lessons of the course prove \((\mathrm G)\): [Shells and Gaussian duality](shells-and-gaussian-duality.md) reduces it to a normalized statement, and that statement is Theorem 4.1 of [The tail and the theorem](the-tail-and-the-theorem.md).
 
 The theorem covers inverse power laws \(g(t)=t^{-s/2}\) for all \(s>0\). For \(s\le2\) the lattice sum diverges, and the statement is that every configuration of density one has infinite energy (Exercise 6.3).
 

@@ -185,7 +185,7 @@ for the interaction \(g(t)=e^{-\pi\alpha t}\).
 
 **Proof.** Let \(f\) be a sharp pair. By Theorem 3.1, \(E_g(\mathcal C)\ge\widehat f(0)-f(0)\). By Proposition 4.1 for \(\Lambda=A\), whose energy is finite, \(\widehat f(0)-f(0)=E_g(A)\). \(\blacksquare\)
 
-*What is known.* [OpenAI-T] constructs, for every \(\alpha>0\), a sharp pair that is a rapidly decreasing radial function (its Theorem on normalized pairs and its lemma on Gaussian duality). The construction is long, and parts of it are verified by exact computer calculations. With it, Theorem 4.2 gives the optimality of the triangular lattice for every Gaussian interaction. This existence statement is used in this course as a hypothesis until it is proved here.
+*What is known.* [OpenAI-T] constructs, for every \(\alpha>0\), a sharp pair that is a rapidly decreasing radial function (its Theorem on normalized pairs and its lemma on Gaussian duality). The construction is long, and parts of it are verified by exact computer calculations. With it, Theorem 4.2 gives the optimality of the triangular lattice for every Gaussian interaction. In this lesson and the next the existence statement is a hypothesis. The later lessons of the course prove it; the last step is Theorem 4.1 of [The tail and the theorem](the-tail-and-the-theorem.md).
 
 *What the theorem does not say.* It gives the least value of the energy and does not describe all configurations that attain it. Removing one point from \(A\) does not change the energy (Exercise 5.3). This is pointed out in [OpenAI-T, Section 1], and for the formal version of the theorem in [Callens].
 

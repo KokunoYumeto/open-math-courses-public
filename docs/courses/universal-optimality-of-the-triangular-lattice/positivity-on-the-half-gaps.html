@@ -1,0 +1,229 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Positivity on the half-gaps</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Universal optimality of the triangular lattice)</a><a href="quotients-on-the-half-gaps.html">Previous lesson</a><a href="the-tail-and-the-theorem.html">Next lesson</a><a href="src/positivity-on-the-half-gaps.md">Editable source</a></nav><main><article><h1 id="positivity-on-the-half-gaps">Positivity on the half-gaps</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><a href="quotients-on-the-half-gaps.html">Quotients on the half-gaps</a> reduces the two sign conditions on the interval <span class="math" data-tex="\([0,89.5]\)">\([0,89.5]\)</span> to the following: for each of the <span class="math" data-tex="\(91\)">\(91\)</span> half-gaps, for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>, and for every <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span>, the polynomial <span class="math" data-tex="\(\Phi_i(x;k)\)">\(\Phi_i(x;k)\)</span> of degree <span class="math" data-tex="\(40\)">\(40\)</span> is at least <span class="math" data-tex="\(0.001\)">\(0.001\)</span> for <span class="math" data-tex="\(0\le x\le1\)">\(0\le x\le1\)</span>. This lesson proves it. The coefficients of <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span> depend on <span class="math" data-tex="\(k\)">\(k\)</span>, which runs through an unbounded interval, and on <span class="math" data-tex="\(x\)">\(x\)</span>. Both dependences are removed by exact inequalities, and what remains is a finite list of <span class="math" data-tex="\(37310\)">\(37310\)</span> inequalities between explicitly defined numbers.</p>
+<ul>
+<li>A linear expression in the ten numbers <span class="math" data-tex="\(q(k)\)">\(q(k)\)</span> is bounded below, for all <span class="math" data-tex="\(k\)">\(k\)</span> between two consecutive endpoints, by its smallest value at the corners of a box that contains the curve <span class="math" data-tex="\(q(k)\)">\(q(k)\)</span> (Lemma 1.1).</li>
+<li>A polynomial on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is at least the smallest of its Bernstein coefficients (Lemma 2.1).</li>
+<li>The resulting lower bounds for the Bernstein coefficients of <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span> are all larger than <span class="math" data-tex="\(0.001\)">\(0.001\)</span> (Proposition 3.1). This is established by a computation with rigorous error bounds, and Section 4 prints the program.</li>
+<li>Hence <span class="math" data-tex="\(T_k-H_1\ge0\)">\(T_k-H_1\ge0\)</span> and <span class="math" data-tex="\(H_2\ge0\)">\(H_2\ge0\)</span> on <span class="math" data-tex="\([0,89.5]\)">\([0,89.5]\)</span> for every <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span> (Theorem 3.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-T, Section 3, the parts on parameter boxes and polynomial rows and the first set of inequalities of the finite certificate, and Section 5, the lemma on the signs on the half-gaps].</p>
+<h2 id="1-parameter-boxes">1. Parameter boxes</h2>
+<p>Recall the column <span class="math" data-tex="\(q(k)\)">\(q(k)\)</span> of the lesson on the reference lists: with <span class="math" data-tex="\(n_1,\dots,n_5=1,3,4,7,9\)">\(n_1,\dots,n_5=1,3,4,7,9\)</span> and <span class="math" data-tex="\(v_j=e^{-k(n_j-1)}\)">\(v_j=e^{-k(n_j-1)}\)</span>, its entries are <span class="math" data-tex="\(v_1,\dots,v_5,v_1/k,\dots,v_5/k\)">\(v_1,\dots,v_5,v_1/k,\dots,v_5/k\)</span>, and <span class="math" data-tex="\(v_1=1\)">\(v_1=1\)</span>. A <em>row</em> is a list <span class="math" data-tex="\(l=(a_1,\dots,a_5,b_1,\dots,b_5)\)">\(l=(a_1,\dots,a_5,b_1,\dots,b_5)\)</span> of ten real numbers, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+l\,q(k)={}&amp;a_1+\frac{b_1}k\\
+&amp;+\sum_{j=2}^5\Bigl(a_j+\frac{b_j}k\Bigr)e^{-k(n_j-1)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+l\,q(k)={}&amp;a_1+\frac{b_1}k\\
+&amp;+\sum_{j=2}^5\Bigl(a_j+\frac{b_j}k\Bigr)e^{-k(n_j-1)} .
+\end{aligned}
+\]</span>
+The <em>endpoints</em> are <span class="math" data-tex="\(2.36\)">\(2.36\)</span>, <span class="math" data-tex="\(2.65\)">\(2.65\)</span>, <span class="math" data-tex="\(3.2\)">\(3.2\)</span>, <span class="math" data-tex="\(4\)">\(4\)</span>, <span class="math" data-tex="\(6\)">\(6\)</span>, <span class="math" data-tex="\(\infty\)">\(\infty\)</span>. For consecutive endpoints <span class="math" data-tex="\(K&lt;J\)">\(K&lt;J\)</span> and a real number <span class="math" data-tex="\(x\)">\(x\)</span> let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_l(x)=a_1+b_1x+\sum_{j=2}^5\mu_j(x),\\
+\mu_j(x)=\min_{H=K,\,J}\ (a_j+b_jx)\,e^{-H(n_j-1)},
+\end{gathered}
+\]">\[
+\begin{gathered}
+G_l(x)=a_1+b_1x+\sum_{j=2}^5\mu_j(x),\\
+\mu_j(x)=\min_{H=K,\,J}\ (a_j+b_jx)\,e^{-H(n_j-1)},
+\end{gathered}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+[l]_{K,J}=\min\bigl(G_l(1/K),\ G_l(1/J)\bigr).
+\]">\[
+[l]_{K,J}=\min\bigl(G_l(1/K),\ G_l(1/J)\bigr).
+\]</span>
+For <span class="math" data-tex="\(J=\infty\)">\(J=\infty\)</span> the conventions are <span class="math" data-tex="\(1/J=0\)">\(1/J=0\)</span> and <span class="math" data-tex="\(e^{-J(n_j-1)}=0\)">\(e^{-J(n_j-1)}=0\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(K&lt;J\)">\(K&lt;J\)</span> be consecutive endpoints and <span class="math" data-tex="\(K\le k\le J\)">\(K\le k\le J\)</span>, or <span class="math" data-tex="\(k\ge K\)">\(k\ge K\)</span> if <span class="math" data-tex="\(J=\infty\)">\(J=\infty\)</span>. Then for every row <span class="math" data-tex="\(l\)">\(l\)</span>
+<span class="math math-display" data-tex="\[
+l\,q(k)\ge[l]_{K,J} .
+\]">\[
+l\,q(k)\ge[l]_{K,J} .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(x=1/k\)">\(x=1/k\)</span> and <span class="math" data-tex="\(w_j=e^{-k(n_j-1)}\)">\(w_j=e^{-k(n_j-1)}\)</span> for <span class="math" data-tex="\(2\le j\le5\)">\(2\le j\le5\)</span>. Then <span class="math" data-tex="\(x\)">\(x\)</span> lies between <span class="math" data-tex="\(1/J\)">\(1/J\)</span> and <span class="math" data-tex="\(1/K\)">\(1/K\)</span>, and <span class="math" data-tex="\(w_j\)">\(w_j\)</span> lies between <span class="math" data-tex="\(e^{-J(n_j-1)}\)">\(e^{-J(n_j-1)}\)</span> and <span class="math" data-tex="\(e^{-K(n_j-1)}\)">\(e^{-K(n_j-1)}\)</span>. For a fixed number <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the product <span class="math" data-tex="\(\alpha w\)">\(\alpha w\)</span> on an interval of values <span class="math" data-tex="\(w\)">\(w\)</span> is smallest at one of the two ends. With <span class="math" data-tex="\(\alpha=a_j+b_jx\)">\(\alpha=a_j+b_jx\)</span> this gives <span class="math" data-tex="\((a_j+b_jx)w_j\ge\mu_j(x)\)">\((a_j+b_jx)w_j\ge\mu_j(x)\)</span>, so <span class="math" data-tex="\(l\,q(k)\ge G_l(x)\)">\(l\,q(k)\ge G_l(x)\)</span>.</p>
+<p>Each <span class="math" data-tex="\(\mu_j\)">\(\mu_j\)</span> is the minimum of two functions of <span class="math" data-tex="\(x\)">\(x\)</span> of the form <span class="math" data-tex="\(\alpha+\beta x\)">\(\alpha+\beta x\)</span>, hence a concave function, and <span class="math" data-tex="\(G_l\)">\(G_l\)</span> is a sum of such functions and of <span class="math" data-tex="\(a_1+b_1x\)">\(a_1+b_1x\)</span>, hence concave. A concave function on an interval is at least the smaller of its values at the two ends. So <span class="math" data-tex="\(G_l(x)\ge[l]_{K,J}\)">\(G_l(x)\ge[l]_{K,J}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The curve <span class="math" data-tex="\(k\mapsto q(k)\)">\(k\mapsto q(k)\)</span> is enclosed in a box of the variables <span class="math" data-tex="\(x,w_2,\dots,w_5\)">\(x,w_2,\dots,w_5\)</span>, and the lower bound is taken over the whole box. The bound is exact arithmetic with finitely many numbers; no values of <span class="math" data-tex="\(k\)">\(k\)</span> are sampled.</p>
+<h2 id="2-bernstein-coefficients">2. Bernstein coefficients</h2>
+<p>For <span class="math" data-tex="\(0\le d\le40\)">\(0\le d\le40\)</span> let
+<span class="math math-display" data-tex="\[
+B_d(x)=\binom{40}d\,x^d\,(1-x)^{40-d}.
+\]">\[
+B_d(x)=\binom{40}d\,x^d\,(1-x)^{40-d}.
+\]</span>
+On <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> these polynomials are nonnegative, and <span class="math" data-tex="\(\sum_dB_d(x)=(x+(1-x))^{40}=1\)">\(\sum_dB_d(x)=(x+(1-x))^{40}=1\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(\Phi(x)=\sum_{r=0}^{40}c_rx^r\)">\(\Phi(x)=\sum_{r=0}^{40}c_rx^r\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi(x)=\sum_{d=0}^{40}\widehat c_d\,B_d(x),\\
+\widehat c_d=\sum_{r=0}^d\omega_{dr}\,c_r,\\
+\omega_{dr}=\binom dr\Big/\binom{40}r .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Phi(x)=\sum_{d=0}^{40}\widehat c_d\,B_d(x),\\
+\widehat c_d=\sum_{r=0}^d\omega_{dr}\,c_r,\\
+\omega_{dr}=\binom dr\Big/\binom{40}r .
+\end{gathered}
+\]</span>
+Consequently <span class="math" data-tex="\(\Phi(x)\ge\min_d\widehat c_d\)">\(\Phi(x)\ge\min_d\widehat c_d\)</span> for <span class="math" data-tex="\(0\le x\le1\)">\(0\le x\le1\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(0\le r\le40\)">\(0\le r\le40\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+x^r&amp;=x^r\,(x+(1-x))^{40-r}\\
+&amp;=\sum_{d=r}^{40}\binom{40-r}{d-r}\,x^d\,(1-x)^{40-d}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+x^r&amp;=x^r\,(x+(1-x))^{40-r}\\
+&amp;=\sum_{d=r}^{40}\binom{40-r}{d-r}\,x^d\,(1-x)^{40-d}.
+\end{aligned}
+\]</span>
+Both <span class="math" data-tex="\(\binom{40}d\binom dr\)">\(\binom{40}d\binom dr\)</span> and <span class="math" data-tex="\(\binom{40}r\binom{40-r}{d-r}\)">\(\binom{40}r\binom{40-r}{d-r}\)</span> are equal to <span class="math" data-tex="\(\tfrac{40!}{r!\,(d-r)!\,(40-d)!}\)">\(\tfrac{40!}{r!\,(d-r)!\,(40-d)!}\)</span>. So <span class="math" data-tex="\(\binom{40-r}{d-r}=\omega_{dr}\binom{40}d\)">\(\binom{40-r}{d-r}=\omega_{dr}\binom{40}d\)</span>, and <span class="math" data-tex="\(x^r=\sum_{d\ge r}\omega_{dr}B_d(x)\)">\(x^r=\sum_{d\ge r}\omega_{dr}B_d(x)\)</span>. Inserting this into <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> and collecting the terms with <span class="math" data-tex="\(B_d\)">\(B_d\)</span> gives the formula. The last statement holds because <span class="math" data-tex="\(\Phi(x)\)">\(\Phi(x)\)</span> is an average of the numbers <span class="math" data-tex="\(\widehat c_d\)">\(\widehat c_d\)</span> with the weights <span class="math" data-tex="\(B_d(x)\)">\(B_d(x)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The numbers <span class="math" data-tex="\(\widehat c_d\)">\(\widehat c_d\)</span> are the <em>Bernstein coefficients</em> of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> of degree <span class="math" data-tex="\(40\)">\(40\)</span>. They depend linearly on the coefficients <span class="math" data-tex="\(c_r\)">\(c_r\)</span>.</p>
+<h2 id="3-the-inequalities">3. The inequalities</h2>
+<p>Fix a half-gap, with centre <span class="math" data-tex="\(m\)">\(m\)</span> and number <span class="math" data-tex="\(y\)">\(y\)</span>, an index <span class="math" data-tex="\(i\in\{1,2\}\)">\(i\in\{1,2\}\)</span>, and consecutive endpoints <span class="math" data-tex="\(K&lt;J\)">\(K&lt;J\)</span>. Recall from the lesson on the quotients the rows <span class="math" data-tex="\(l_{i,r}\)">\(l_{i,r}\)</span>, the numbers <span class="math" data-tex="\(a_r^*\)">\(a_r^*\)</span>, and
+<span class="math math-display" data-tex="\[
+\Phi_i(x;k)=\sum_{r=0}^{40}\bigl(l_{i,r}\,q(k)+\delta_i\,a_r^*\bigr)\,x^r,
+\]">\[
+\Phi_i(x;k)=\sum_{r=0}^{40}\bigl(l_{i,r}\,q(k)+\delta_i\,a_r^*\bigr)\,x^r,
+\]</span>
+with <span class="math" data-tex="\(\delta_1=1\)">\(\delta_1=1\)</span>, <span class="math" data-tex="\(\delta_2=0\)">\(\delta_2=0\)</span>. Define for <span class="math" data-tex="\(0\le d\le40\)">\(0\le d\le40\)</span> the rows
+<span class="math math-display" data-tex="\[
+L_{i,d}=\sum_{r=0}^d\omega_{dr}\,l_{i,r} .
+\]">\[
+L_{i,d}=\sum_{r=0}^d\omega_{dr}\,l_{i,r} .
+\]</span>
+By Lemma 2.1 the Bernstein coefficients of <span class="math" data-tex="\(\Phi_i(\,\cdot\,;k)\)">\(\Phi_i(\,\cdot\,;k)\)</span> are
+<span class="math math-display" data-tex="\[
+L_{i,d}\,q(k)+\delta_i\sum_{r=0}^d\omega_{dr}\,a_r^* .
+\]">\[
+L_{i,d}\,q(k)+\delta_i\sum_{r=0}^d\omega_{dr}\,a_r^* .
+\]</span></p>
+<p><strong>Proposition 3.1.</strong> For each of the <span class="math" data-tex="\(91\)">\(91\)</span> half-gaps, for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>, for each of the five pairs of consecutive endpoints <span class="math" data-tex="\(K&lt;J\)">\(K&lt;J\)</span>, and for <span class="math" data-tex="\(0\le d\le40\)">\(0\le d\le40\)</span>,
+<span class="math math-display" data-tex="\[
+[L_{i,d}]_{K,J}+\delta_i\sum_{r=0}^d\omega_{dr}\,a_r^*&gt;0.001 .
+\]">\[
+[L_{i,d}]_{K,J}+\delta_i\sum_{r=0}^d\omega_{dr}\,a_r^*&gt;0.001 .
+\]</span></p>
+<p><strong>Verification.</strong> These are <span class="math" data-tex="\(91\cdot2\cdot5\cdot41=37310\)">\(91\cdot2\cdot5\cdot41=37310\)</span> inequalities. The left side of each is a finite expression in rational numbers, <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span>, and values of the exponential function and of sine and cosine: the rows <span class="math" data-tex="\(l_{i,r}\)">\(l_{i,r}\)</span> are obtained from the matrices <span class="math" data-tex="\(X_1,X_2\)">\(X_1,X_2\)</span> of the lesson on the reference lists and from the quadrature forms of scaled derivatives, the numbers <span class="math" data-tex="\(\omega_{dr}\)">\(\omega_{dr}\)</span> are rational, and the brackets <span class="math" data-tex="\([\,\cdot\,]_{K,J}\)">\([\,\cdot\,]_{K,J}\)</span> are minima of finitely many such expressions. As for the norms in the lesson on the reference lists, the inequalities were established by a computation in ball arithmetic with <span class="math" data-tex="\(256\)">\(256\)</span> binary digits, in which an inequality is accepted only if it holds for all numbers of the intervals concerned. All <span class="math" data-tex="\(37310\)">\(37310\)</span> inequalities hold. The smallest values of the left side, rounded downwards, are:</p>
+<ul>
+<li>for <span class="math" data-tex="\(K=2.36\)">\(K=2.36\)</span>: <span class="math" data-tex="\(0.3378\)">\(0.3378\)</span> at the centre <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(0.02046\)">\(0.02046\)</span> at the centre <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(0.003472\)">\(0.003472\)</span> at the centres <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(4\)">\(4\)</span>, <span class="math" data-tex="\(0.001206\)">\(0.001206\)</span> at the centres from <span class="math" data-tex="\(7\)">\(7\)</span> to <span class="math" data-tex="\(88\)">\(88\)</span>;</li>
+<li>for <span class="math" data-tex="\(K=2.65\)">\(K=2.65\)</span>: <span class="math" data-tex="\(0.3487\)">\(0.3487\)</span>, <span class="math" data-tex="\(0.01815\)">\(0.01815\)</span>, <span class="math" data-tex="\(0.003882\)">\(0.003882\)</span>, <span class="math" data-tex="\(0.001932\)">\(0.001932\)</span>;</li>
+<li>for <span class="math" data-tex="\(K=3.2\)">\(K=3.2\)</span>: <span class="math" data-tex="\(0.3629\)">\(0.3629\)</span>, <span class="math" data-tex="\(0.03408\)">\(0.03408\)</span>, <span class="math" data-tex="\(0.006369\)">\(0.006369\)</span>, <span class="math" data-tex="\(0.002715\)">\(0.002715\)</span>;</li>
+<li>for <span class="math" data-tex="\(K=4\)">\(K=4\)</span>: <span class="math" data-tex="\(0.3768\)">\(0.3768\)</span>, <span class="math" data-tex="\(0.03754\)">\(0.03754\)</span>, <span class="math" data-tex="\(0.008766\)">\(0.008766\)</span>, <span class="math" data-tex="\(0.003295\)">\(0.003295\)</span>;</li>
+<li>for <span class="math" data-tex="\(K=6\)">\(K=6\)</span>: <span class="math" data-tex="\(0.3955\)">\(0.3955\)</span>, <span class="math" data-tex="\(0.01200\)">\(0.01200\)</span>, <span class="math" data-tex="\(0.01076\)">\(0.01076\)</span>, <span class="math" data-tex="\(0.003956\)">\(0.003956\)</span>.</li>
+</ul>
+<p>The smallest value of all, <span class="math" data-tex="\(0.001206\)">\(0.001206\)</span>, occurs for <span class="math" data-tex="\(K=2.36\)">\(K=2.36\)</span> on the half-gap from <span class="math" data-tex="\(15\)">\(15\)</span> towards <span class="math" data-tex="\(16\)">\(16\)</span>, for <span class="math" data-tex="\(i=2\)">\(i=2\)</span> and <span class="math" data-tex="\(d=40\)">\(d=40\)</span>. Section 4 prints a program for this computation. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 3.2.</strong> Let <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span>, and let <span class="math" data-tex="\(H_1,H_2\)">\(H_1,H_2\)</span> be the functions of Corollary 3.2 of the lesson on exact interpolation. Then
+<span class="math math-display" data-tex="\[
+H_1(s)\le T_k(s),\qquad H_2(s)\ge0
+\]">\[
+H_1(s)\le T_k(s),\qquad H_2(s)\ge0
+\]</span>
+for all <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(0\le s\le89.5\)">\(0\le s\le89.5\)</span>.</p>
+<p><strong>Proof.</strong> Choose consecutive endpoints <span class="math" data-tex="\(K&lt;J\)">\(K&lt;J\)</span> with <span class="math" data-tex="\(K\le k\le J\)">\(K\le k\le J\)</span>, or <span class="math" data-tex="\(k\ge K=6\)">\(k\ge K=6\)</span> if <span class="math" data-tex="\(k\ge6\)">\(k\ge6\)</span>. Fix a half-gap and <span class="math" data-tex="\(i\)">\(i\)</span>. By Lemma 1.1, <span class="math" data-tex="\(L_{i,d}\,q(k)\ge[L_{i,d}]_{K,J}\)">\(L_{i,d}\,q(k)\ge[L_{i,d}]_{K,J}\)</span>. So by Proposition 3.1 every Bernstein coefficient of <span class="math" data-tex="\(\Phi_i(\,\cdot\,;k)\)">\(\Phi_i(\,\cdot\,;k)\)</span> is larger than <span class="math" data-tex="\(0.001\)">\(0.001\)</span>, and by Lemma 2.1, <span class="math" data-tex="\(\Phi_i(x;k)&gt;0.001\)">\(\Phi_i(x;k)&gt;0.001\)</span> for <span class="math" data-tex="\(0\le x\le1\)">\(0\le x\le1\)</span>. This holds for all half-gaps and both <span class="math" data-tex="\(i\)">\(i\)</span>. By Theorem 3.1 of the lesson on the quotients, <span class="math" data-tex="\(F_1=T_k-H_1\)">\(F_1=T_k-H_1\)</span> and <span class="math" data-tex="\(F_2=H_2\)">\(F_2=H_2\)</span> are nonnegative on <span class="math" data-tex="\([0,89.5]\)">\([0,89.5]\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>On each half-gap the quotient <span class="math" data-tex="\(\mathcal D_mF_i\)">\(\mathcal D_mF_i\)</span> is in fact larger than <span class="math" data-tex="\(0.001-0.000112&gt;0.0008\)">\(0.001-0.000112&gt;0.0008\)</span>. So <span class="math" data-tex="\(T_k-H_1\)">\(T_k-H_1\)</span> and <span class="math" data-tex="\(H_2\)">\(H_2\)</span> vanish on <span class="math" data-tex="\([0,89.5]\)">\([0,89.5]\)</span> only at the nodes, and there exactly to second order.</p>
+<h2 id="4-the-program">4. The program</h2>
+<p>The following lines continue the program printed in <a href="the-reference-lists.html">The reference lists</a>, Section 5: they are to be appended to it, and they use its arrays <code>W</code>, <code>X1</code>, <code>X2</code>, <code>t</code>, <code>lam</code>, <code>z</code> and its function <code>dec</code>. For each half-gap the arrays <code>Fm</code> and <code>Gm</code> contain, for the orders <span class="math" data-tex="\(a=\nu,\dots,\nu+40\)">\(a=\nu,\dots,\nu+40\)</span>, the factors <span class="math" data-tex="\(e^{i\pi tm}(i\pi yt)^a/a!\)">\(e^{i\pi tm}(i\pi yt)^a/a!\)</span> and <span class="math" data-tex="\(\lambda(t)e^{i\pi z(t)m}(i\pi yz(t))^a/a!\)">\(\lambda(t)e^{i\pi z(t)m}(i\pi yz(t))^a/a!\)</span> at all frequency points. The rows <span class="math" data-tex="\(l_{i,r}\)">\(l_{i,r}\)</span> are then the real parts of the products with the weights of the columns of <span class="math" data-tex="\(X_i\)">\(X_i\)</span> and of the other matrix, multiplied by <span class="math" data-tex="\(\sigma_iy^{-\nu}\)">\(\sigma_iy^{-\nu}\)</span>. The function <code>box_low</code> computes the bracket <span class="math" data-tex="\([\,\cdot\,]_{K,J}\)">\([\,\cdot\,]_{K,J}\)</span>, and <code>support</code> the numbers <span class="math" data-tex="\(a_r^*\)">\(a_r^*\)</span>.</p>
+<pre><code># Continuation of the program for the reference lists: the Bernstein
+# coefficients of the polynomials on the 91 half-gaps, bounded below
+# on the five parameter intervals.
+from math import comb
+
+WX = [W * acb_mat(X1), W * acb_mat(X2)]
+N0 = [n for n in range(200) if n % 12 in RES]
+gaps = []
+for i, m in enumerate(N0):
+    if m &lt;= 88:
+        gaps.append((m, N0[i + 1]))
+        if m &gt; 0:
+            gaps.append((m, N0[i - 1]))
+omega = [[arb(fmpq(comb(d, r), comb(40, r))) for r in range(d + 1)]
+         for d in range(41)]
+ENDS = [&quot;2.36&quot;, &quot;2.65&quot;, &quot;3.2&quot;, &quot;4&quot;, &quot;6&quot;, None]
+FIVE = [1, 3, 4, 7, 9]
+EXP = {(H, j): (-dec(H) * (FIVE[j] - 1)).exp()
+       for H in ENDS[:5] for j in range(5)}
+
+
+def box_low(row, K, J):
+    # the number [row]_{K,J}, a lower bound for row.q(k) on K &lt;= k &lt;= J
+    best = None
+    for x in (1 / dec(K), 1 / dec(J) if J else arb(0)):
+        val = row[0] + x * row[5]
+        for j in range(1, 5):
+            c = row[j] + x * row[5 + j]
+            val += (c * EXP[K, j]).min(c * EXP[J, j] if J else arb(0))
+        best = val if best is None else best.min(val)
+    return best
+
+
+def support(m, y, K, J):
+    # the numbers a*_r, r = 0 to 40, of the lower support of the target
+    K = dec(K)
+    if m == 0:
+        return [K.exp() / K * (-K * y) ** r / arb(r).fac()
+                for r in range(41)]
+    if m == 1:
+        return [K * (-K * y) ** r / arb(r + 2).fac() for r in range(41)]
+    a = [arb(0)] * 41
+    if m == 3 and J:
+        a[0] = dec(J) / 2 * (-13 * dec(J) / 6).exp()
+    return a
+
+
+smallest, count, R = {}, 0, range(len(t))
+for m, m2 in gaps:
+    y, nu = arb(fmpq(m2 - m, 2)), (0 if m == 0 else 2)
+    f = [(I * PI * t[r] * m).exp() for r in R]
+    g = [lam[r] * (I * PI * z[r] * m).exp() for r in R]
+    Fm, Gm = acb_mat(41, len(t)), acb_mat(41, len(t))
+    for a in range(nu + 41):
+        if a &gt; 0:
+            f = [f[r] * I * PI * y * t[r] / a for r in R]
+            g = [g[r] * I * PI * y * z[r] / a for r in R]
+        if a &gt;= nu:
+            for r in R:
+                Fm[a - nu, r], Gm[a - nu, r] = f[r], g[r]
+    for i in (0, 1):
+        sign = (-1 if i == 0 else 1) / y ** nu
+        rows = (Fm * WX[i] + Gm * WX[1 - i]).real
+        L = [[sign * sum((omega[d][r] * rows[r, c] for r in range(d + 1)),
+                         arb(0)) for c in range(10)] for d in range(41)]
+        for K, J in zip(ENDS, ENDS[1:]):
+            a = support(m, y, K, J) if i == 0 else [arb(0)] * 41
+            for d in range(41):
+                v = box_low(L[d], K, J) + sum(
+                    (omega[d][r] * a[r] for r in range(d + 1)), arb(0))
+                assert v &gt; dec(&quot;0.001&quot;)
+                count += 1
+                group = [0, 1, 2, 2, 2][m] if m &lt; 5 else 3
+                key = (K, group)
+                smallest[key] = min(smallest.get(key, 9.0), float(v.mid()))
+print(count, &quot;inequalities hold&quot;)
+for K in ENDS[:5]:
+    print(K, [round(smallest[key], 6) for key in sorted(smallest)
+              if key[0] == K])
+</code></pre>
+<p>The statement <code>assert</code> stops the program if one of the inequalities is not certain. The program prints the number of inequalities, <span class="math" data-tex="\(37310\)">\(37310\)</span>, and for each <span class="math" data-tex="\(K\)">\(K\)</span> the four smallest values listed in Section 3. Together with the first part it runs for about two minutes.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Compute the Bernstein coefficients of degree <span class="math" data-tex="\(2\)">\(2\)</span> of <span class="math" data-tex="\(\Phi(x)=1-3x+3x^2\)">\(\Phi(x)=1-3x+3x^2\)</span>, with <span class="math" data-tex="\(B_d(x)=\binom2dx^d(1-x)^{2-d}\)">\(B_d(x)=\binom2dx^d(1-x)^{2-d}\)</span> and <span class="math" data-tex="\(\omega_{dr}=\binom dr/\binom2r\)">\(\omega_{dr}=\binom dr/\binom2r\)</span>. What does Lemma 2.1 give, and what is the true minimum of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>?</p>
+<p><strong>5.2.</strong> Let <span class="math" data-tex="\(l=(0,1,0,0,0,\ 0,0,0,0,0)\)">\(l=(0,1,0,0,0,\ 0,0,0,0,0)\)</span>, so that <span class="math" data-tex="\(l\,q(k)=e^{-2k}\)">\(l\,q(k)=e^{-2k}\)</span>. Compute <span class="math" data-tex="\([l]_{K,J}\)">\([l]_{K,J}\)</span> for <span class="math" data-tex="\(K=2.36\)">\(K=2.36\)</span>, <span class="math" data-tex="\(J=2.65\)">\(J=2.65\)</span>, and compare with the smallest value of <span class="math" data-tex="\(l\,q(k)\)">\(l\,q(k)\)</span> on <span class="math" data-tex="\(K\le k\le J\)">\(K\le k\le J\)</span>.</p>
+<p><strong>5.3.</strong> Let <span class="math" data-tex="\(l=(0,0,0,0,0,\ 0,1,0,0,0)\)">\(l=(0,0,0,0,0,\ 0,1,0,0,0)\)</span>, so that <span class="math" data-tex="\(l\,q(k)=e^{-2k}/k\)">\(l\,q(k)=e^{-2k}/k\)</span>. Compute <span class="math" data-tex="\([l]_{K,J}\)">\([l]_{K,J}\)</span> for the same <span class="math" data-tex="\(K,J\)">\(K,J\)</span>, and compare with the smallest value of <span class="math" data-tex="\(l\,q(k)\)">\(l\,q(k)\)</span>.</p>
+<p><strong>5.4.</strong> Why is it not enough, for Theorem 3.2, to check <span class="math" data-tex="\(\Phi_i(x;k)&gt;0.001\)">\(\Phi_i(x;k)&gt;0.001\)</span> at many values of <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span>?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(c_0=1\)">\(c_0=1\)</span>, <span class="math" data-tex="\(c_1=-3\)">\(c_1=-3\)</span>, <span class="math" data-tex="\(c_2=3\)">\(c_2=3\)</span>. The numbers <span class="math" data-tex="\(\omega_{dr}\)">\(\omega_{dr}\)</span> are <span class="math" data-tex="\(\omega_{00}=\omega_{10}=\omega_{20}=1\)">\(\omega_{00}=\omega_{10}=\omega_{20}=1\)</span>, <span class="math" data-tex="\(\omega_{11}=\tfrac12\)">\(\omega_{11}=\tfrac12\)</span>, <span class="math" data-tex="\(\omega_{21}=1\)">\(\omega_{21}=1\)</span>, <span class="math" data-tex="\(\omega_{22}=1\)">\(\omega_{22}=1\)</span>. So <span class="math" data-tex="\(\widehat c_0=1\)">\(\widehat c_0=1\)</span>, <span class="math" data-tex="\(\widehat c_1=1-\tfrac32=-\tfrac12\)">\(\widehat c_1=1-\tfrac32=-\tfrac12\)</span>, <span class="math" data-tex="\(\widehat c_2=1-3+3=1\)">\(\widehat c_2=1-3+3=1\)</span>. Lemma 2.1 gives <span class="math" data-tex="\(\Phi\ge-\tfrac12\)">\(\Phi\ge-\tfrac12\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. The true minimum is <span class="math" data-tex="\(\Phi(\tfrac12)=\tfrac14\)">\(\Phi(\tfrac12)=\tfrac14\)</span>. The bound by Bernstein coefficients is valid but not sharp; it becomes sharper when the degree is raised or the interval is divided.</p>
+<p><strong>5.2.</strong> Only <span class="math" data-tex="\(a_2=1\)">\(a_2=1\)</span> is different from zero, and <span class="math" data-tex="\(n_2-1=2\)">\(n_2-1=2\)</span>. So <span class="math" data-tex="\(\mu_2(x)=\min(e^{-2K},e^{-2J})=e^{-5.3}\)">\(\mu_2(x)=\min(e^{-2K},e^{-2J})=e^{-5.3}\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\([l]_{K,J}=e^{-5.3}\)">\([l]_{K,J}=e^{-5.3}\)</span>, about <span class="math" data-tex="\(0.00499\)">\(0.00499\)</span>. This is the smallest value of <span class="math" data-tex="\(e^{-2k}\)">\(e^{-2k}\)</span> on the interval, attained at <span class="math" data-tex="\(k=J\)">\(k=J\)</span>.</p>
+<p><strong>5.3.</strong> Now <span class="math" data-tex="\(b_2=1\)">\(b_2=1\)</span>, so <span class="math" data-tex="\(\mu_2(x)=x\,e^{-5.3}\)">\(\mu_2(x)=x\,e^{-5.3}\)</span> for <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, and <span class="math" data-tex="\(G_l(x)=x\,e^{-5.3}\)">\(G_l(x)=x\,e^{-5.3}\)</span>. The smaller value at the two ends is <span class="math" data-tex="\(G_l(1/J)=e^{-5.3}/2.65\)">\(G_l(1/J)=e^{-5.3}/2.65\)</span>, about <span class="math" data-tex="\(0.00188\)">\(0.00188\)</span>. This is again the smallest value of <span class="math" data-tex="\(e^{-2k}/k\)">\(e^{-2k}/k\)</span>, attained at <span class="math" data-tex="\(k=J\)">\(k=J\)</span>. In general the bracket can be smaller than the true minimum, because the box contains points that are not on the curve <span class="math" data-tex="\(q(k)\)">\(q(k)\)</span>, for example the corner with <span class="math" data-tex="\(x=1/K\)">\(x=1/K\)</span> and <span class="math" data-tex="\(w_2=e^{-2J}\)">\(w_2=e^{-2J}\)</span>.</p>
+<p><strong>5.4.</strong> A polynomial that is positive at many points can be negative between them, and likewise in <span class="math" data-tex="\(k\)">\(k\)</span>. Finitely many evaluations prove nothing about the other points unless they are combined with a bound on the variation. Lemma 2.1 and Lemma 1.1 are such bounds, in a form that needs only finitely many numbers: the Bernstein coefficients control all <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, and the boxes control all <span class="math" data-tex="\(k\)">\(k\)</span> of a parameter interval, including the unbounded interval <span class="math" data-tex="\(k\ge6\)">\(k\ge6\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-T] OpenAI, <em>Universal optimality of the triangular lattice</em>, OpenAI Math Release preprint, 23 September 2026, Sections 3 and 5. https://github.com/openai/math/tree/main/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

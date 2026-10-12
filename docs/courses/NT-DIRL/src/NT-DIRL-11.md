@@ -396,15 +396,15 @@ the relative errors in both (6.4) and (6.5) tend to zero: each is at most \(O((\
 
 ## 7. A stronger error from the wider zero-free region
 
-The wider Vinogradov–Korobov region assigned to *Zero-free regions and the exceptional zero* has denominator
+Theorem 8.3 of Zero-free regions and the exceptional zero gives the wider Vinogradov–Korobov region with denominator
 
 \[
-\log q+(\log\tau)^{2/3}(\log\log\tau)^{1/3},
+\log(2q)+(\log\tau)^{2/3}(\log\log\tau)^{1/3},
 \qquad \tau=|t|+4.
 \tag{7.1}
 \]
 
-Its proof remains planned within that lesson. Given this precise region, the explicit formula proves, for \(q\le(\log x)^A\),
+That lesson proves the character reduction, growth estimate and zero-free argument from the exact shifted-sum prerequisite in *Growth bounds and wider zero-free regions*. The mean-value and bounded-parameter antecedents of that prerequisite remain assigned to the zeta course. From this character region, the explicit formula gives, for \(q\le(\log x)^A\),
 
 \[
 \psi(x;q,b)=\frac{x}{\varphi(q)}
@@ -425,7 +425,7 @@ The stable explicit formula and the local reciprocal-ordinate bounds from the ze
 \((x^\rho-1)/\rho=\int_1^x u^{\rho-1}du\);
 their contribution is \(O(\sqrt x\log x\log(2q))\). The truncation error \(O(x\log^2(qx)/T)\) has the same required scale.
 
-For the remaining real zero, Siegel with exponent \(1/(5A)\) gives \((1-\beta_1)\log x\gg_A(\log x)^{4/5}\), which eventually dominates \(W\). Average characters as before. The passage to \(\pi\) uses the upper-interval modulus check with parameter \(2A\); on that interval \(W(u)\gg W(x)\), giving the stated error after an absolute decrease of \(c\). This proves the refinement from the exact planned input. \(\square\)
+For the remaining real zero, Siegel with exponent \(1/(5A)\) gives \((1-\beta_1)\log x\gg_A(\log x)^{4/5}\), which eventually dominates \(W\). Average characters as before. The passage to \(\pi\) uses the upper-interval modulus check with parameter \(2A\); on that interval \(W(u)\gg W(x)\), giving the stated error after an absolute decrease of \(c\). This proves the refinement from the preceding character-region theorem. \(\square\)
 
 The Möbius theorem and the classical Theorem 2.1 need only the already written classical region, not this sharper prerequisite.
 
@@ -450,4 +450,4 @@ The truncated Perron error is \(O(x\log(2x)/T)\) at half-integers. Shift the rec
 
 ## References
 
-The theorem goes back to A. Walfisz's 1936 work. D. Koukoulopoulos, *The Distribution of Prime Numbers*, Theorem 12.1 and the discussion after Theorem 12.10, specifies the absolute exponential constant and the ineffective uniformity; Exercise 12.1 gives the Möbius target. Section 7 gives a stronger error scale. Its exact wider-region input remains planned in the preceding zero-free-region lesson. The classical prime and Möbius proofs, the reciprocal bound, both partial-summation range checks, and the solutions are supplied here.
+The theorem goes back to A. Walfisz's 1936 work. D. Koukoulopoulos, *The Distribution of Prime Numbers*, Theorem 12.1 and the discussion after Theorem 12.10, specifies the absolute exponential constant and the ineffective uniformity; Exercise 12.1 gives the Möbius target. Section 7 gives a stronger error scale. The preceding zero-free-region lesson proves its character-region input from the exact shifted-sum prerequisite identified there; the zeta-course antecedents retain their recorded status. The classical prime and Möbius proofs, the reciprocal bound, both partial-summation range checks, and the solutions are supplied here.

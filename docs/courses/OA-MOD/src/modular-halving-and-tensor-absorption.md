@@ -325,6 +325,8 @@ Condition (19) and the individual inequalities (2) are equivalent as qualitative
 
 The separable-predual assumption is used to diagonalize the normal-state tests into the single commuting sequence in Section 3 and to invoke the stated corner and vector results. The absorbed-product implication in Section 5 holds without it. The range \(0<\lambda<1\) is essential to the vector theorem being used: at \(\lambda=1\), choosing \(x=1\) makes (2) automatic, so this formulation supplies no nontrivial absorption criterion.
 
+A type III factor with separable predual satisfying these equivalent conditions is called **strongly \(\lambda\)-stable**. This terminology refers to absorption of the specified factor \(R_\lambda\); the theorem supplies both the predual and the positive-vector tests for that property.
+
 ## Source
 
-Masamichi Takesaki, *Theory of Operator Algebras III*, Chapter XVIII, §4, Theorem 4.1, printed pp.360–362 and 369–370. The proof above uses explicit positive matrix tests, the previously proved weighted splitting theorem, and the earlier programme's full corner and standard-form arguments.
+Masamichi Takesaki, *Theory of Operator Algebras III*, Chapter XVIII, §4, Theorem 4.1 and Definition 4.6, printed pp.360–362 and 369–370. The proof above uses explicit positive matrix tests, the previously proved weighted splitting theorem, and the earlier programme's full corner and standard-form arguments.

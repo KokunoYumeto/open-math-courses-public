@@ -1,0 +1,436 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exact interpolation</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Universal optimality of the triangular lattice)</a><a href="the-reference-lists.html">Previous lesson</a><a href="quotients-on-the-half-gaps.html">Next lesson</a><a href="src/exact-interpolation.md">Editable source</a></nav><main><article><h1 id="exact-interpolation">Exact interpolation</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The interpolation system of <a href="gaussian-damping-and-fourier-pairs.html">Gaussian damping and Fourier pairs</a> asks for two coefficient lists such that the functions <span class="math" data-tex="\(H_1,H_2\)">\(H_1,H_2\)</span> built from them have the right values and first derivatives at all nodes. <a href="the-reference-lists.html">The reference lists</a> are explicit finite lists that solve it approximately. This lesson proves that the system has an exact solution with the same extra entries, that this solution is unique, and that it differs from the reference lists by less than <span class="math" data-tex="\(2\cdot10^{-8}\)">\(2\cdot10^{-8}\)</span>.</p>
+<ul>
+<li>The system is an equation <span class="math" data-tex="\(\mathcal L a=\psi\)">\(\mathcal L a=\psi\)</span> in a space of summable lists. The operator <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> is cut into four blocks by the node <span class="math" data-tex="\(168\)">\(168\)</span> (Section 1).</li>
+<li>The block of the nodes up to <span class="math" data-tex="\(168\)">\(168\)</span> is a matrix with inverse of norm less than <span class="math" data-tex="\(40\)">\(40\)</span>; this uses the computed bounds for the matrix <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span> (Lemma 2.2). The blocks that lead to the nodes beyond <span class="math" data-tex="\(168\)">\(168\)</span> are smaller than <span class="math" data-tex="\(1.1\cdot10^{-14}\)">\(1.1\cdot10^{-14}\)</span>; this uses the tail bound (Lemma 2.3).</li>
+<li>Hence <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> is invertible (Theorem 2.4), and for every <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span> the system has exactly one solution with the prescribed extra entries (Theorem 3.1).</li>
+<li>The solution is within <span class="math" data-tex="\(2\cdot10^{-8}\)">\(2\cdot10^{-8}\)</span> of the reference lists. So the functions <span class="math" data-tex="\(H_1,H_2\)">\(H_1,H_2\)</span> of the exact solution touch <span class="math" data-tex="\(T_k\)">\(T_k\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> at every node (Corollary 3.2), and their coefficient lists are known up to a tiny error.</li>
+</ul>
+<p>The lesson follows [OpenAI-T, Section 4]. What remains after it for the normalized statement are the two sign conditions between the nodes.</p>
+<h2 id="1-the-system-as-an-operator-equation">1. The system as an operator equation</h2>
+<p>Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the space of the lists <span class="math" data-tex="\(a=(c_n,d_n)_{n\in\mathcal N}\)">\(a=(c_n,d_n)_{n\in\mathcal N}\)</span> of real numbers with <span class="math" data-tex="\(\|a\|_1=\sum_n(|c_n|+|d_n|)&lt;\infty\)">\(\|a\|_1=\sum_n(|c_n|+|d_n|)&lt;\infty\)</span>. These are the positive parts of coefficient lists. For a pair <span class="math" data-tex="\((a_1,a_2)\)">\((a_1,a_2)\)</span> we use the norm <span class="math" data-tex="\(\|a_1\|_1+\|a_2\|_1\)">\(\|a_1\|_1+\|a_2\|_1\)</span>. An absolutely convergent series of elements of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> converges entry by entry, and its sum is in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, with norm at most the sum of the norms; this is the exchange of the order of summation in a double series with nonnegative terms.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a linear map of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, or of the space of pairs, into itself with <span class="math" data-tex="\(\|Ax\|_1\le\alpha\|x\|_1\)">\(\|Ax\|_1\le\alpha\|x\|_1\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>, where <span class="math" data-tex="\(\alpha&lt;1\)">\(\alpha&lt;1\)</span>. Then <span class="math" data-tex="\(I-A\)">\(I-A\)</span> is bijective, and <span class="math" data-tex="\(\|(I-A)^{-1}y\|_1\le\|y\|_1/(1-\alpha)\)">\(\|(I-A)^{-1}y\|_1\le\|y\|_1/(1-\alpha)\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\((I-A)x=0\)">\((I-A)x=0\)</span>, then <span class="math" data-tex="\(\|x\|_1=\|Ax\|_1\le\alpha\|x\|_1\)">\(\|x\|_1=\|Ax\|_1\le\alpha\|x\|_1\)</span>, so <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. For given <span class="math" data-tex="\(y\)">\(y\)</span> the series <span class="math" data-tex="\(x=\sum_{j\ge0}A^jy\)">\(x=\sum_{j\ge0}A^jy\)</span> converges absolutely, because <span class="math" data-tex="\(\|A^jy\|_1\le\alpha^j\|y\|_1\)">\(\|A^jy\|_1\le\alpha^j\|y\|_1\)</span>. Its partial sums <span class="math" data-tex="\(x_J\)">\(x_J\)</span> satisfy <span class="math" data-tex="\((I-A)x_J=y-A^{J+1}y\)">\((I-A)x_J=y-A^{J+1}y\)</span>, and <span class="math" data-tex="\(\|A(x-x_J)\|_1\le\alpha\|x-x_J\|_1\to0\)">\(\|A(x-x_J)\|_1\le\alpha\|x-x_J\|_1\to0\)</span>. So <span class="math" data-tex="\((I-A)x=y\)">\((I-A)x=y\)</span>, and <span class="math" data-tex="\(\|x\|_1\le\|y\|_1/(1-\alpha)\)">\(\|x\|_1\le\|y\|_1/(1-\alpha)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The same holds for square matrices with the norm <span class="math" data-tex="\(\|\cdot\|\)">\(\|\cdot\|\)</span> of the lesson on the reference lists.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be the jet operator. For <span class="math" data-tex="\(a\in\mathcal E\)">\(a\in\mathcal E\)</span> we write <span class="math" data-tex="\(Sa\)">\(Sa\)</span> for its value on the list with positive part <span class="math" data-tex="\(a\)">\(a\)</span> and extra entries <span class="math" data-tex="\(0\)">\(0\)</span>, and for <span class="math" data-tex="\(e=(c_0,d_0,C)\in\mathbb R^3\)">\(e=(c_0,d_0,C)\in\mathbb R^3\)</span> we write <span class="math" data-tex="\(S_ee\)">\(S_ee\)</span> for its value on the list with positive part <span class="math" data-tex="\(0\)">\(0\)</span> and extra entries <span class="math" data-tex="\(e\)">\(e\)</span>. By Proposition 4.1 of the lesson on Gaussian damping,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|Sa\|_1\le4000\,\|a\|_1,\\
+\|S_ee\|_1\le4000\,\|e\|_1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|Sa\|_1\le4000\,\|a\|_1,\\
+\|S_ee\|_1\le4000\,\|e\|_1 .
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(\ell_1,\ell_2\)">\(\ell_1,\ell_2\)</span> be two coefficient lists with positive parts <span class="math" data-tex="\(a_1,a_2\)">\(a_1,a_2\)</span> and extra entries <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span>, and <span class="math" data-tex="\(H_1=p_{\ell_1}+K_{p_{\ell_2}}\)">\(H_1=p_{\ell_1}+K_{p_{\ell_2}}\)</span>, <span class="math" data-tex="\(H_2=p_{\ell_2}+K_{p_{\ell_1}}\)">\(H_2=p_{\ell_2}+K_{p_{\ell_1}}\)</span>. Since <span class="math" data-tex="\(S\ell_i=Sa_i+S_ee_i\)">\(S\ell_i=Sa_i+S_ee_i\)</span>, the interpolation system <span class="math" data-tex="\(\mathcal JH_1=\mathcal JT_k\)">\(\mathcal JH_1=\mathcal JT_k\)</span>, <span class="math" data-tex="\(\mathcal JH_2=0\)">\(\mathcal JH_2=0\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_1-Sa_2=\mathcal JT_k+S_ee_2,\\
+a_2-Sa_1=S_ee_1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+a_1-Sa_2=\mathcal JT_k+S_ee_2,\\
+a_2-Sa_1=S_ee_1 .
+\end{gathered}
+\]</span>
+Define the operator <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> on pairs by
+<span class="math math-display" data-tex="\[
+\mathcal L(a_1,a_2)=(a_1-Sa_2,\ a_2-Sa_1).
+\]">\[
+\mathcal L(a_1,a_2)=(a_1-Sa_2,\ a_2-Sa_1).
+\]</span>
+So the system is <span class="math" data-tex="\(\mathcal L(a_1,a_2)=\psi\)">\(\mathcal L(a_1,a_2)=\psi\)</span> with <span class="math" data-tex="\(\psi=(\mathcal JT_k+S_ee_2,\ S_ee_1)\)">\(\psi=(\mathcal JT_k+S_ee_2,\ S_ee_1)\)</span>.</p>
+<p>The right side is a pair of summable lists. Indeed, by Exercise 6.4 of the lesson on the reference lists, the two entries of <span class="math" data-tex="\(\mathcal JT_k\)">\(\mathcal JT_k\)</span> at a node <span class="math" data-tex="\(n\)">\(n\)</span> have absolute values adding up to at most <span class="math" data-tex="\(\tfrac{1+3.12/k}{1.75}e^{-k(n-1)}\)">\(\tfrac{1+3.12/k}{1.75}e^{-k(n-1)}\)</span>. This decreases in <span class="math" data-tex="\(k\)">\(k\)</span>. So for <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|(\mathcal JT_k)_{c,n}|+|(\mathcal JT_k)_{d,n}|\\
+\le c_*\,e^{-2.36(n-1)},\\
+c_*=\frac{1+3.12/2.36}{1.75}=\frac{548}{413}&lt;1.327 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|(\mathcal JT_k)_{c,n}|+|(\mathcal JT_k)_{d,n}|\\
+\le c_*\,e^{-2.36(n-1)},\\
+c_*=\frac{1+3.12/2.36}{1.75}=\frac{548}{413}&lt;1.327 .
+\end{gathered}
+\]</span></p>
+<p>As in the lesson on the reference lists let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be the set of the <span class="math" data-tex="\(84\)">\(84\)</span> nodes <span class="math" data-tex="\(n\le168\)">\(n\le168\)</span>, and let <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> be the set of the nodes <span class="math" data-tex="\(n&gt;168\)">\(n&gt;168\)</span>. A list <span class="math" data-tex="\(a\in\mathcal E\)">\(a\in\mathcal E\)</span> is the sum of its part <span class="math" data-tex="\(a_{\mathcal F}\)">\(a_{\mathcal F}\)</span> at the nodes of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> and its part <span class="math" data-tex="\(a_{\mathcal T}\)">\(a_{\mathcal T}\)</span> at the nodes of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Accordingly <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> has four blocks: <span class="math" data-tex="\(\mathcal L_{\mathcal F\mathcal F}\)">\(\mathcal L_{\mathcal F\mathcal F}\)</span> takes a pair supported on <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> to the part on <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> of its image, <span class="math" data-tex="\(\mathcal L_{\mathcal T\mathcal F}\)">\(\mathcal L_{\mathcal T\mathcal F}\)</span> takes it to the part on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, and <span class="math" data-tex="\(\mathcal L_{\mathcal F\mathcal T}\)">\(\mathcal L_{\mathcal F\mathcal T}\)</span>, <span class="math" data-tex="\(\mathcal L_{\mathcal T\mathcal T}\)">\(\mathcal L_{\mathcal T\mathcal T}\)</span> do the same for a pair supported on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. The equation <span class="math" data-tex="\(\mathcal La=\psi\)">\(\mathcal La=\psi\)</span> is the pair of equations
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal L_{\mathcal F\mathcal F}a_{\mathcal F}+\mathcal L_{\mathcal F\mathcal T}a_{\mathcal T}=\psi_{\mathcal F},\\
+\mathcal L_{\mathcal T\mathcal F}a_{\mathcal F}+\mathcal L_{\mathcal T\mathcal T}a_{\mathcal T}=\psi_{\mathcal T}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal L_{\mathcal F\mathcal F}a_{\mathcal F}+\mathcal L_{\mathcal F\mathcal T}a_{\mathcal T}=\psi_{\mathcal F},\\
+\mathcal L_{\mathcal T\mathcal F}a_{\mathcal F}+\mathcal L_{\mathcal T\mathcal T}a_{\mathcal T}=\psi_{\mathcal T}.
+\end{gathered}
+\]</span></p>
+<h2 id="2-the-four-blocks">2. The four blocks</h2>
+<p>The block <span class="math" data-tex="\(\mathcal L_{\mathcal F\mathcal F}\)">\(\mathcal L_{\mathcal F\mathcal F}\)</span> acts on pairs of columns with <span class="math" data-tex="\(168\)">\(168\)</span> entries. Let <span class="math" data-tex="\(S_{\mathcal F\mathcal F}\)">\(S_{\mathcal F\mathcal F}\)</span> be the square matrix of the first <span class="math" data-tex="\(168\)">\(168\)</span> columns of the matrix <span class="math" data-tex="\(S_{\mathcal F}\)">\(S_{\mathcal F}\)</span> of the lesson on the reference lists. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal L_{\mathcal F\mathcal F}(x,y)\\
+=(x-S_{\mathcal F\mathcal F}\,y,\ y-S_{\mathcal F\mathcal F}\,x).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal L_{\mathcal F\mathcal F}(x,y)\\
+=(x-S_{\mathcal F\mathcal F}\,y,\ y-S_{\mathcal F\mathcal F}\,x).
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(\mathcal L_{\mathbf D}\)">\(\mathcal L_{\mathbf D}\)</span> be the same expression with the quadrature form <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span> in place of <span class="math" data-tex="\(S_{\mathcal F\mathcal F}\)">\(S_{\mathcal F\mathcal F}\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> The matrices <span class="math" data-tex="\(I-\mathbf D\)">\(I-\mathbf D\)</span> and <span class="math" data-tex="\(I+\mathbf D\)">\(I+\mathbf D\)</span> are invertible. With <span class="math" data-tex="\(R_+=(I-\mathbf D)^{-1}\)">\(R_+=(I-\mathbf D)^{-1}\)</span> and <span class="math" data-tex="\(R_-=(I+\mathbf D)^{-1}\)">\(R_-=(I+\mathbf D)^{-1}\)</span>,
+<span class="math math-display" data-tex="\[
+\|R_+\|+\|R_-\|&lt;37 ,
+\]">\[
+\|R_+\|+\|R_-\|&lt;37 ,
+\]</span>
+and <span class="math" data-tex="\(\mathcal L_{\mathbf D}\)">\(\mathcal L_{\mathbf D}\)</span> is invertible with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal L_{\mathbf D}^{-1}(u,v)=(x,y),\\
+x=\tfrac12R_+(u+v)+\tfrac12R_-(u-v),\\
+y=\tfrac12R_+(u+v)-\tfrac12R_-(u-v).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal L_{\mathbf D}^{-1}(u,v)=(x,y),\\
+x=\tfrac12R_+(u+v)+\tfrac12R_-(u-v),\\
+y=\tfrac12R_+(u+v)-\tfrac12R_-(u-v).
+\end{gathered}
+\]</span>
+In particular <span class="math" data-tex="\(\|x\|_1+\|y\|_1&lt;37\,(\|u\|_1+\|v\|_1)\)">\(\|x\|_1+\|y\|_1&lt;37\,(\|u\|_1+\|v\|_1)\)</span>.</p>
+<p><strong>Proof.</strong> By Corollary 4.2 of the lesson on the reference lists, <span class="math" data-tex="\(\|\mathbf D^{512}\|&lt;\eta&lt;10^{-19}\)">\(\|\mathbf D^{512}\|&lt;\eta&lt;10^{-19}\)</span>. By Lemma 1.1 the matrix <span class="math" data-tex="\(I-\mathbf D^{512}\)">\(I-\mathbf D^{512}\)</span> is invertible, and its inverse has norm at most <span class="math" data-tex="\(1/(1-\eta)\)">\(1/(1-\eta)\)</span>. Since <span class="math" data-tex="\((I-\mathbf D)V_+=I-\mathbf D^{512}\)">\((I-\mathbf D)V_+=I-\mathbf D^{512}\)</span>, the matrix <span class="math" data-tex="\(V_+(I-\mathbf D^{512})^{-1}\)">\(V_+(I-\mathbf D^{512})^{-1}\)</span> is a right inverse of the square matrix <span class="math" data-tex="\(I-\mathbf D\)">\(I-\mathbf D\)</span>, hence its inverse. In the same way <span class="math" data-tex="\(R_-=V_-(I-\mathbf D^{512})^{-1}\)">\(R_-=V_-(I-\mathbf D^{512})^{-1}\)</span>. By Proposition 4.1 of that lesson,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|R_+\|+\|R_-\|&amp;\le\frac{\|V_+\|+\|V_-\|}{1-\eta}\\
+&amp;&lt;\frac{36}{1-\eta}&lt;37 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|R_+\|+\|R_-\|&amp;\le\frac{\|V_+\|+\|V_-\|}{1-\eta}\\
+&amp;&lt;\frac{36}{1-\eta}&lt;37 .
+\end{aligned}
+\]</span>
+The equations <span class="math" data-tex="\(x-\mathbf Dy=u\)">\(x-\mathbf Dy=u\)</span>, <span class="math" data-tex="\(y-\mathbf Dx=v\)">\(y-\mathbf Dx=v\)</span> are equivalent to their sum and difference,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(I-\mathbf D)(x+y)=u+v,\\
+(I+\mathbf D)(x-y)=u-v,
+\end{gathered}
+\]">\[
+\begin{gathered}
+(I-\mathbf D)(x+y)=u+v,\\
+(I+\mathbf D)(x-y)=u-v,
+\end{gathered}
+\]</span>
+that is <span class="math" data-tex="\(x+y=R_+(u+v)\)">\(x+y=R_+(u+v)\)</span> and <span class="math" data-tex="\(x-y=R_-(u-v)\)">\(x-y=R_-(u-v)\)</span>. This gives the formulas, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|x\|_1+\|y\|_1\\
+&amp;\quad\le\|R_+(u+v)\|_1+\|R_-(u-v)\|_1\\
+&amp;\quad\le(\|R_+\|+\|R_-\|)(\|u\|_1+\|v\|_1).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|x\|_1+\|y\|_1\\
+&amp;\quad\le\|R_+(u+v)\|_1+\|R_-(u-v)\|_1\\
+&amp;\quad\le(\|R_+\|+\|R_-\|)(\|u\|_1+\|v\|_1).
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 2.2.</strong> The block <span class="math" data-tex="\(\mathcal L_{\mathcal F\mathcal F}\)">\(\mathcal L_{\mathcal F\mathcal F}\)</span> is invertible, and
+<span class="math math-display" data-tex="\[
+\|\mathcal L_{\mathcal F\mathcal F}^{-1}(u,v)\|&lt;40\,(\|u\|_1+\|v\|_1).
+\]">\[
+\|\mathcal L_{\mathcal F\mathcal F}^{-1}(u,v)\|&lt;40\,(\|u\|_1+\|v\|_1).
+\]</span></p>
+<p><strong>Proof.</strong> By Lemma 1.1 of the lesson on the reference lists every entry of <span class="math" data-tex="\(S_{\mathcal F\mathcal F}-\mathbf D\)">\(S_{\mathcal F\mathcal F}-\mathbf D\)</span> is less than <span class="math" data-tex="\(2\cdot10^{-31}\)">\(2\cdot10^{-31}\)</span> in absolute value; a column has <span class="math" data-tex="\(168\)">\(168\)</span> entries, so <span class="math" data-tex="\(\|S_{\mathcal F\mathcal F}-\mathbf D\|&lt;10^{-28}\)">\(\|S_{\mathcal F\mathcal F}-\mathbf D\|&lt;10^{-28}\)</span>. The difference <span class="math" data-tex="\(\mathcal L_{\mathcal F\mathcal F}-\mathcal L_{\mathbf D}\)">\(\mathcal L_{\mathcal F\mathcal F}-\mathcal L_{\mathbf D}\)</span> takes <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> to <span class="math" data-tex="\((-(S_{\mathcal F\mathcal F}-\mathbf D)y,\ -(S_{\mathcal F\mathcal F}-\mathbf D)x)\)">\((-(S_{\mathcal F\mathcal F}-\mathbf D)y,\ -(S_{\mathcal F\mathcal F}-\mathbf D)x)\)</span>, of norm at most <span class="math" data-tex="\(10^{-28}(\|x\|_1+\|y\|_1)\)">\(10^{-28}(\|x\|_1+\|y\|_1)\)</span>. Write
+<span class="math math-display" data-tex="\[
+\mathcal L_{\mathcal F\mathcal F}=\mathcal L_{\mathbf D}\,\bigl(I+\mathcal L_{\mathbf D}^{-1}(\mathcal L_{\mathcal F\mathcal F}-\mathcal L_{\mathbf D})\bigr).
+\]">\[
+\mathcal L_{\mathcal F\mathcal F}=\mathcal L_{\mathbf D}\,\bigl(I+\mathcal L_{\mathbf D}^{-1}(\mathcal L_{\mathcal F\mathcal F}-\mathcal L_{\mathbf D})\bigr).
+\]</span>
+By Lemma 2.1 the map <span class="math" data-tex="\(\mathcal L_{\mathbf D}^{-1}(\mathcal L_{\mathcal F\mathcal F}-\mathcal L_{\mathbf D})\)">\(\mathcal L_{\mathbf D}^{-1}(\mathcal L_{\mathcal F\mathcal F}-\mathcal L_{\mathbf D})\)</span> has the bound <span class="math" data-tex="\(\alpha=37\cdot10^{-28}\)">\(\alpha=37\cdot10^{-28}\)</span>. By Lemma 1.1 the second factor is invertible with a bound <span class="math" data-tex="\(1/(1-\alpha)\)">\(1/(1-\alpha)\)</span> for its inverse. So <span class="math" data-tex="\(\mathcal L_{\mathcal F\mathcal F}\)">\(\mathcal L_{\mathcal F\mathcal F}\)</span> is invertible, with the bound <span class="math" data-tex="\(37/(1-\alpha)&lt;40\)">\(37/(1-\alpha)&lt;40\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Let
+<span class="math math-display" data-tex="\[
+\delta=1.1\cdot10^{-14}.
+\]">\[
+\delta=1.1\cdot10^{-14}.
+\]</span></p>
+<p><strong>Lemma 2.3.</strong> With the function <span class="math" data-tex="\(U_r\)">\(U_r\)</span> of the tail bound, <span class="math" data-tex="\(U_{168}(1,0)&lt;\delta\)">\(U_{168}(1,0)&lt;\delta\)</span> and <span class="math" data-tex="\(U_{168}(5,0.02)&lt;8.25\cdot10^{-14}\)">\(U_{168}(5,0.02)&lt;8.25\cdot10^{-14}\)</span>. For pairs <span class="math" data-tex="\(a\)">\(a\)</span> supported on <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> and pairs <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> supported on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\mathcal L_{\mathcal T\mathcal F}\,a\|\le\delta\,\|a\|,\\
+\|(\mathcal L_{\mathcal T\mathcal T}-I)\,a&#x27;\|\le\delta\,\|a&#x27;\|,\\
+\|\mathcal L_{\mathcal F\mathcal T}\,a&#x27;\|\le4000\,\|a&#x27;\| .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|\mathcal L_{\mathcal T\mathcal F}\,a\|\le\delta\,\|a\|,\\
+\|(\mathcal L_{\mathcal T\mathcal T}-I)\,a&#x27;\|\le\delta\,\|a&#x27;\|,\\
+\|\mathcal L_{\mathcal F\mathcal T}\,a&#x27;\|\le4000\,\|a&#x27;\| .
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> Recall from <a href="the-transformed-function-at-distant-nodes.html">The transformed function at distant nodes</a>, Theorem 3.2,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;U_r(w,c)=800\,(w+c)\,\frac{e^{-0.70r}}{1-e^{-0.70}}\\
+&amp;\quad+5.3\Bigl(\frac{2.54\,w}r+2c\Bigr)\frac{e^{-0.187r}}{1-e^{-0.187}}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;U_r(w,c)=800\,(w+c)\,\frac{e^{-0.70r}}{1-e^{-0.70}}\\
+&amp;\quad+5.3\Bigl(\frac{2.54\,w}r+2c\Bigr)\frac{e^{-0.187r}}{1-e^{-0.187}}.
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(r=168\)">\(r=168\)</span>: <span class="math" data-tex="\(e^{-117.6}&lt;10^{-51}\)">\(e^{-117.6}&lt;10^{-51}\)</span> and <span class="math" data-tex="\(1-e^{-0.70}&gt;0.5\)">\(1-e^{-0.70}&gt;0.5\)</span>, so the first term is less than <span class="math" data-tex="\(10^{-47}\)">\(10^{-47}\)</span> for <span class="math" data-tex="\(w+c\le6\)">\(w+c\le6\)</span>. Further <span class="math" data-tex="\(e^{-31.416}&lt;2.28\cdot10^{-14}\)">\(e^{-31.416}&lt;2.28\cdot10^{-14}\)</span> and <span class="math" data-tex="\(1-e^{-0.187}&gt;0.17\)">\(1-e^{-0.187}&gt;0.17\)</span>, so the last fraction is less than <span class="math" data-tex="\(1.342\cdot10^{-13}\)">\(1.342\cdot10^{-13}\)</span>. For <span class="math" data-tex="\((w,c)=(1,0)\)">\((w,c)=(1,0)\)</span> the factor in front of it is <span class="math" data-tex="\(5.3\cdot2.54/168&lt;0.0802\)">\(5.3\cdot2.54/168&lt;0.0802\)</span>, and the second term is less than <span class="math" data-tex="\(1.08\cdot10^{-14}\)">\(1.08\cdot10^{-14}\)</span>. For <span class="math" data-tex="\((w,c)=(5,0.02)\)">\((w,c)=(5,0.02)\)</span> the factor is <span class="math" data-tex="\(5.3\,(12.7/168+0.04)&lt;0.6127\)">\(5.3\,(12.7/168+0.04)&lt;0.6127\)</span>, and the second term is less than <span class="math" data-tex="\(8.23\cdot10^{-14}\)">\(8.23\cdot10^{-14}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(a=(a_1,a_2)\)">\(a=(a_1,a_2)\)</span> be a pair in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. The part on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> of <span class="math" data-tex="\(\mathcal La\)">\(\mathcal La\)</span> is
+<span class="math math-display" data-tex="\[
+\bigl(a_{1,\mathcal T}-(Sa_2)_{\mathcal T},\ a_{2,\mathcal T}-(Sa_1)_{\mathcal T}\bigr).
+\]">\[
+\bigl(a_{1,\mathcal T}-(Sa_2)_{\mathcal T},\ a_{2,\mathcal T}-(Sa_1)_{\mathcal T}\bigr).
+\]</span>
+The nodes of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> are larger than <span class="math" data-tex="\(168\)">\(168\)</span>. By Theorem 3.2 of the lesson on distant nodes, applied to the two lists with positive parts <span class="math" data-tex="\(a_2\)">\(a_2\)</span> and <span class="math" data-tex="\(a_1\)">\(a_1\)</span> and extra entries <span class="math" data-tex="\(0\)">\(0\)</span>, and because <span class="math" data-tex="\(U_r(w,0)\)">\(U_r(w,0)\)</span> is proportional to <span class="math" data-tex="\(w\)">\(w\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|(Sa_2)_{\mathcal T}\|_1+\|(Sa_1)_{\mathcal T}\|_1\\
+\le U_{168}(1,0)\,\|a\| .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|(Sa_2)_{\mathcal T}\|_1+\|(Sa_1)_{\mathcal T}\|_1\\
+\le U_{168}(1,0)\,\|a\| .
+\end{gathered}
+\]</span>
+This gives the first two inequalities. The third follows from <span class="math" data-tex="\(\|Sa\|_1\le4000\|a\|_1\)">\(\|Sa\|_1\le4000\|a\|_1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The bound of Lemma 2.3 does not depend on where the nonzero entries of <span class="math" data-tex="\(a\)">\(a\)</span> are; this is why the tail bound was proved uniformly in the position of the nodes.</p>
+<p><strong>Theorem 2.4.</strong> The operator <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> is a bijection of the space of pairs in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. For every right side <span class="math" data-tex="\(\psi\)">\(\psi\)</span> the solution of <span class="math" data-tex="\(\mathcal La=\psi\)">\(\mathcal La=\psi\)</span> is given by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a_{\mathcal T}&amp;=\mathcal Q^{-1}\bigl(\psi_{\mathcal T}-\mathcal L_{\mathcal T\mathcal F}\mathcal L_{\mathcal F\mathcal F}^{-1}\psi_{\mathcal F}\bigr),\\
+a_{\mathcal F}&amp;=\mathcal L_{\mathcal F\mathcal F}^{-1}\bigl(\psi_{\mathcal F}-\mathcal L_{\mathcal F\mathcal T}a_{\mathcal T}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+a_{\mathcal T}&amp;=\mathcal Q^{-1}\bigl(\psi_{\mathcal T}-\mathcal L_{\mathcal T\mathcal F}\mathcal L_{\mathcal F\mathcal F}^{-1}\psi_{\mathcal F}\bigr),\\
+a_{\mathcal F}&amp;=\mathcal L_{\mathcal F\mathcal F}^{-1}\bigl(\psi_{\mathcal F}-\mathcal L_{\mathcal F\mathcal T}a_{\mathcal T}\bigr),
+\end{aligned}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+\mathcal Q=\mathcal L_{\mathcal T\mathcal T}-\mathcal L_{\mathcal T\mathcal F}\,\mathcal L_{\mathcal F\mathcal F}^{-1}\,\mathcal L_{\mathcal F\mathcal T}
+\]">\[
+\mathcal Q=\mathcal L_{\mathcal T\mathcal T}-\mathcal L_{\mathcal T\mathcal F}\,\mathcal L_{\mathcal F\mathcal F}^{-1}\,\mathcal L_{\mathcal F\mathcal T}
+\]</span>
+is an invertible operator on the pairs supported on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>.</p>
+<p><strong>Proof.</strong> By Lemma 2.2 the first of the two block equations is equivalent to the formula for <span class="math" data-tex="\(a_{\mathcal F}\)">\(a_{\mathcal F}\)</span>. Inserting it into the second block equation gives
+<span class="math math-display" data-tex="\[
+\mathcal Q\,a_{\mathcal T}=\psi_{\mathcal T}-\mathcal L_{\mathcal T\mathcal F}\,\mathcal L_{\mathcal F\mathcal F}^{-1}\,\psi_{\mathcal F}.
+\]">\[
+\mathcal Q\,a_{\mathcal T}=\psi_{\mathcal T}-\mathcal L_{\mathcal T\mathcal F}\,\mathcal L_{\mathcal F\mathcal F}^{-1}\,\psi_{\mathcal F}.
+\]</span>
+By Lemmas 2.2 and 2.3, <span class="math" data-tex="\(\mathcal Q-I\)">\(\mathcal Q-I\)</span> has the bound
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\delta+\delta\cdot40\cdot4000&amp;=160001\,\delta\\
+&amp;&lt;1.77\cdot10^{-9}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\delta+\delta\cdot40\cdot4000&amp;=160001\,\delta\\
+&amp;&lt;1.77\cdot10^{-9}.
+\end{aligned}
+\]</span>
+By Lemma 1.1, <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> is invertible. So the two block equations have exactly one solution, given by the formulas. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The matrix <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span> has norm larger than <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> cannot be inverted by the series of Lemma 1.1 directly. The proof inverts the finite block by the computed bounds and treats only the small tail blocks by a series.</p>
+<h2 id="3-the-solution-and-the-reference-lists">3. The solution and the reference lists</h2>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span>. There is exactly one pair of coefficient lists <span class="math" data-tex="\(\ell_1,\ell_2\)">\(\ell_1,\ell_2\)</span> with positive parts in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> and extra entries <span class="math" data-tex="\(E_1q(k)\)">\(E_1q(k)\)</span>, <span class="math" data-tex="\(E_2q(k)\)">\(E_2q(k)\)</span> that solves the interpolation system. With the reference lists <span class="math" data-tex="\(\ell_i^{\mathrm{ref}}=X_iq(k)\)">\(\ell_i^{\mathrm{ref}}=X_iq(k)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\ell_1-\ell_1^{\mathrm{ref}}\|_1+\|\ell_2-\ell_2^{\mathrm{ref}}\|_1\\
+&lt;2\cdot10^{-8},\\
+\|\ell_1\|_1+\|\ell_2\|_1&lt;5 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|\ell_1-\ell_1^{\mathrm{ref}}\|_1+\|\ell_2-\ell_2^{\mathrm{ref}}\|_1\\
+&lt;2\cdot10^{-8},\\
+\|\ell_1\|_1+\|\ell_2\|_1&lt;5 .
+\end{gathered}
+\]</span>
+Here <span class="math" data-tex="\(\|\ell\|_1\)">\(\|\ell\|_1\)</span> is the sum of the absolute values of all entries of a list, the extra entries included.</p>
+<p><strong>Proof.</strong> Existence and uniqueness are Theorem 2.4 for the right side <span class="math" data-tex="\(\psi=(\mathcal JT_k+S_ee_2,\ S_ee_1)\)">\(\psi=(\mathcal JT_k+S_ee_2,\ S_ee_1)\)</span> with <span class="math" data-tex="\(e_i=E_iq(k)\)">\(e_i=E_iq(k)\)</span>. Let <span class="math" data-tex="\(a=(a_1,a_2)\)">\(a=(a_1,a_2)\)</span> be the solution, <span class="math" data-tex="\(a^{\mathrm{ref}}\)">\(a^{\mathrm{ref}}\)</span> the pair of the positive parts of the reference lists, and
+<span class="math math-display" data-tex="\[
+r=\psi-\mathcal La^{\mathrm{ref}},\qquad u=a-a^{\mathrm{ref}},
+\]">\[
+r=\psi-\mathcal La^{\mathrm{ref}},\qquad u=a-a^{\mathrm{ref}},
+\]</span>
+so that <span class="math" data-tex="\(\mathcal Lu=r\)">\(\mathcal Lu=r\)</span>. We bound <span class="math" data-tex="\(r\)">\(r\)</span> and then <span class="math" data-tex="\(u\)">\(u\)</span>. By Corollary 4.2 of the lesson on the reference lists, <span class="math" data-tex="\(\|\ell_1^{\mathrm{ref}}\|_1+\|\ell_2^{\mathrm{ref}}\|_1&lt;4.8\)">\(\|\ell_1^{\mathrm{ref}}\|_1+\|\ell_2^{\mathrm{ref}}\|_1&lt;4.8\)</span>, and the entries <span class="math" data-tex="\(C\)">\(C\)</span> of the two lists have absolute values adding up to less than <span class="math" data-tex="\(0.02\)">\(0.02\)</span>.</p>
+<p><em>The part of <span class="math" data-tex="\(r\)">\(r\)</span> on <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>.</em> Since <span class="math" data-tex="\(S\ell_2^{\mathrm{ref}}=Sa_2^{\mathrm{ref}}+S_ee_2\)">\(S\ell_2^{\mathrm{ref}}=Sa_2^{\mathrm{ref}}+S_ee_2\)</span>, the first component of <span class="math" data-tex="\(r\)">\(r\)</span> on <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> is
+<span class="math math-display" data-tex="\[
+(\mathcal JT_k)_{\mathcal F}-a_1^{\mathrm{ref}}+S_{\mathcal F}\,\ell_2^{\mathrm{ref}} .
+\]">\[
+(\mathcal JT_k)_{\mathcal F}-a_1^{\mathrm{ref}}+S_{\mathcal F}\,\ell_2^{\mathrm{ref}} .
+\]</span>
+By Lemma 3.1 of the lesson on the reference lists, multiplied by <span class="math" data-tex="\(q(k)\)">\(q(k)\)</span>, and with <span class="math" data-tex="\(\gamma_i=g_iq(k)\)">\(\gamma_i=g_iq(k)\)</span>,
+<span class="math math-display" data-tex="\[
+a_1^{\mathrm{ref}}=\widetilde S\,\ell_2^{\mathrm{ref}}+Yq(k)-\mathbf D^{512}\gamma_1 ,
+\]">\[
+a_1^{\mathrm{ref}}=\widetilde S\,\ell_2^{\mathrm{ref}}+Yq(k)-\mathbf D^{512}\gamma_1 ,
+\]</span>
+because <span class="math" data-tex="\(\mathbf Da_2^{\mathrm{ref}}+\widetilde S_ee_2=\widetilde S\,\ell_2^{\mathrm{ref}}\)">\(\mathbf Da_2^{\mathrm{ref}}+\widetilde S_ee_2=\widetilde S\,\ell_2^{\mathrm{ref}}\)</span>. So the first component is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl((\mathcal JT_k)_{\mathcal F}-Yq(k)\bigr)\\
+&amp;\quad+(S_{\mathcal F}-\widetilde S)\,\ell_2^{\mathrm{ref}}+\mathbf D^{512}\gamma_1 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl((\mathcal JT_k)_{\mathcal F}-Yq(k)\bigr)\\
+&amp;\quad+(S_{\mathcal F}-\widetilde S)\,\ell_2^{\mathrm{ref}}+\mathbf D^{512}\gamma_1 .
+\end{aligned}
+\]</span>
+In the same way the second component is <span class="math" data-tex="\((S_{\mathcal F}-\widetilde S)\,\ell_1^{\mathrm{ref}}+\mathbf D^{512}\gamma_2\)">\((S_{\mathcal F}-\widetilde S)\,\ell_1^{\mathrm{ref}}+\mathbf D^{512}\gamma_2\)</span>. The three kinds of terms are the target jets that <span class="math" data-tex="\(Y\)">\(Y\)</span> omits, the quadrature error, and the remainder of the finite geometric sums.</p>
+<p>(i) <span class="math" data-tex="\(Yq(k)\)">\(Yq(k)\)</span> agrees with <span class="math" data-tex="\(\mathcal JT_k\)">\(\mathcal JT_k\)</span> at the nodes <span class="math" data-tex="\(1,3,4,7,9\)">\(1,3,4,7,9\)</span> and is <span class="math" data-tex="\(0\)">\(0\)</span> at the other nodes of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, which are at least <span class="math" data-tex="\(12\)">\(12\)</span>. So the first term has norm at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_*\sum_{n\ge12}e^{-2.36(n-1)}&amp;=c_*\,\frac{e^{-25.96}}{1-e^{-2.36}}\\
+&amp;&lt;8\cdot10^{-12},
+\end{aligned}
+\]">\[
+\begin{aligned}
+c_*\sum_{n\ge12}e^{-2.36(n-1)}&amp;=c_*\,\frac{e^{-25.96}}{1-e^{-2.36}}\\
+&amp;&lt;8\cdot10^{-12},
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(e^{-25.96}&lt;5.4\cdot10^{-12}\)">\(e^{-25.96}&lt;5.4\cdot10^{-12}\)</span>, <span class="math" data-tex="\(1-e^{-2.36}&gt;0.9\)">\(1-e^{-2.36}&gt;0.9\)</span> and <span class="math" data-tex="\(c_*&lt;1.327\)">\(c_*&lt;1.327\)</span>.</p>
+<p>(ii) Every column of <span class="math" data-tex="\(S_{\mathcal F}-\widetilde S\)">\(S_{\mathcal F}-\widetilde S\)</span> has <span class="math" data-tex="\(168\)">\(168\)</span> entries of absolute value less than <span class="math" data-tex="\(2\cdot10^{-31}\)">\(2\cdot10^{-31}\)</span>, so the two quadrature terms together have norm less than <span class="math" data-tex="\(4\cdot10^{-29}\cdot4.8&lt;2\cdot10^{-28}\)">\(4\cdot10^{-29}\cdot4.8&lt;2\cdot10^{-28}\)</span>.</p>
+<p>(iii) By definition <span class="math" data-tex="\(\gamma_1=Yq(k)+\widetilde S_ee_2\)">\(\gamma_1=Yq(k)+\widetilde S_ee_2\)</span> and <span class="math" data-tex="\(\gamma_2=\widetilde S_ee_1\)">\(\gamma_2=\widetilde S_ee_1\)</span>. By the bound for <span class="math" data-tex="\(\mathcal JT_k\)">\(\mathcal JT_k\)</span> at the nodes <span class="math" data-tex="\(1,3,4,7,9\)">\(1,3,4,7,9\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|Yq(k)\|_1\le{}&amp;c_*\bigl(1+e^{-4.72}+e^{-7.08}\\
+&amp;+e^{-14.16}+e^{-18.88}\bigr)&lt;1.35
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|Yq(k)\|_1\le{}&amp;c_*\bigl(1+e^{-4.72}+e^{-7.08}\\
+&amp;+e^{-14.16}+e^{-18.88}\bigr)&lt;1.35
+\end{aligned}
+\]</span>
+(Exercise 4.1). The matrix <span class="math" data-tex="\(\widetilde S_e\)">\(\widetilde S_e\)</span> differs from the exact one by less than <span class="math" data-tex="\(10^{-28}\)">\(10^{-28}\)</span> in norm, so <span class="math" data-tex="\(\|\widetilde S_ee_i\|_1&lt;4001\|e_i\|_1\)">\(\|\widetilde S_ee_i\|_1&lt;4001\|e_i\|_1\)</span>, and <span class="math" data-tex="\(\|e_1\|_1+\|e_2\|_1&lt;4.8\)">\(\|e_1\|_1+\|e_2\|_1&lt;4.8\)</span>. Hence <span class="math" data-tex="\(\|\gamma_1\|_1+\|\gamma_2\|_1&lt;20000\)">\(\|\gamma_1\|_1+\|\gamma_2\|_1&lt;20000\)</span>, and the two terms with <span class="math" data-tex="\(\mathbf D^{512}\)">\(\mathbf D^{512}\)</span> have norm less than <span class="math" data-tex="\(20000\,\eta&lt;1.4\cdot10^{-15}\)">\(20000\,\eta&lt;1.4\cdot10^{-15}\)</span>.</p>
+<p>Together, <span class="math" data-tex="\(\|r_{\mathcal F}\|&lt;10^{-11}\)">\(\|r_{\mathcal F}\|&lt;10^{-11}\)</span>.</p>
+<p><em>The part of <span class="math" data-tex="\(r\)">\(r\)</span> on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>.</em> The positive parts of the reference lists vanish on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. So the part of <span class="math" data-tex="\(r\)">\(r\)</span> on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is
+<span class="math math-display" data-tex="\[
+\bigl((\mathcal JT_k)_{\mathcal T}+(S\ell_2^{\mathrm{ref}})_{\mathcal T},\ (S\ell_1^{\mathrm{ref}})_{\mathcal T}\bigr).
+\]">\[
+\bigl((\mathcal JT_k)_{\mathcal T}+(S\ell_2^{\mathrm{ref}})_{\mathcal T},\ (S\ell_1^{\mathrm{ref}})_{\mathcal T}\bigr).
+\]</span>
+By Theorem 3.2 of the lesson on distant nodes, applied to the two reference lists together, the transformed terms have norm at most <span class="math" data-tex="\(U_{168}(5,0.02)&lt;8.25\cdot10^{-14}\)">\(U_{168}(5,0.02)&lt;8.25\cdot10^{-14}\)</span>. The target term has norm at most <span class="math" data-tex="\(c_*e^{-2.36\cdot168}/(1-e^{-2.36})&lt;10^{-170}\)">\(c_*e^{-2.36\cdot168}/(1-e^{-2.36})&lt;10^{-170}\)</span>. So <span class="math" data-tex="\(\|r_{\mathcal T}\|&lt;8.3\cdot10^{-14}\)">\(\|r_{\mathcal T}\|&lt;8.3\cdot10^{-14}\)</span>.</p>
+<p><em>The correction.</em> The block equations for <span class="math" data-tex="\(\mathcal Lu=r\)">\(\mathcal Lu=r\)</span> and Lemmas 2.2 and 2.3 give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|u_{\mathcal F}\|&amp;\le40\,\bigl(10^{-11}+4000\,\|u_{\mathcal T}\|\bigr),\\
+\|u_{\mathcal T}\|&amp;\le8.3\cdot10^{-14}+\delta\,(\|u_{\mathcal F}\|+\|u_{\mathcal T}\|).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|u_{\mathcal F}\|&amp;\le40\,\bigl(10^{-11}+4000\,\|u_{\mathcal T}\|\bigr),\\
+\|u_{\mathcal T}\|&amp;\le8.3\cdot10^{-14}+\delta\,(\|u_{\mathcal F}\|+\|u_{\mathcal T}\|).
+\end{aligned}
+\]</span>
+Inserting the first into the second,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl(1-160001\,\delta\bigr)\|u_{\mathcal T}\|\\
+&amp;\quad\le8.3\cdot10^{-14}+4.4\cdot10^{-24},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl(1-160001\,\delta\bigr)\|u_{\mathcal T}\|\\
+&amp;\quad\le8.3\cdot10^{-14}+4.4\cdot10^{-24},
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(\|u_{\mathcal T}\|&lt;8.31\cdot10^{-14}\)">\(\|u_{\mathcal T}\|&lt;8.31\cdot10^{-14}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|u_{\mathcal F}\|&amp;&lt;40\,\bigl(10^{-11}+3.324\cdot10^{-10}\bigr)\\
+&amp;&lt;1.37\cdot10^{-8}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|u_{\mathcal F}\|&amp;&lt;40\,\bigl(10^{-11}+3.324\cdot10^{-10}\bigr)\\
+&amp;&lt;1.37\cdot10^{-8}.
+\end{aligned}
+\]</span>
+The extra entries of <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span> and <span class="math" data-tex="\(\ell_i^{\mathrm{ref}}\)">\(\ell_i^{\mathrm{ref}}\)</span> are equal. So the lists differ by <span class="math" data-tex="\(\|u\|&lt;2\cdot10^{-8}\)">\(\|u\|&lt;2\cdot10^{-8}\)</span> in total, and <span class="math" data-tex="\(\|\ell_1\|_1+\|\ell_2\|_1&lt;4.8+2\cdot10^{-8}&lt;5\)">\(\|\ell_1\|_1+\|\ell_2\|_1&lt;4.8+2\cdot10^{-8}&lt;5\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 3.2.</strong> Let <span class="math" data-tex="\(k\ge2.36\)">\(k\ge2.36\)</span>, let <span class="math" data-tex="\(\ell_1,\ell_2\)">\(\ell_1,\ell_2\)</span> be the lists of Theorem 3.1, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_1=p_{\ell_1}+K_{p_{\ell_2}},\\
+H_2=p_{\ell_2}+K_{p_{\ell_1}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_1=p_{\ell_1}+K_{p_{\ell_2}},\\
+H_2=p_{\ell_2}+K_{p_{\ell_1}} .
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(H_1\)">\(H_1\)</span> and <span class="math" data-tex="\(H_2\)">\(H_2\)</span> are entire functions, real on the real axis, and for every node <span class="math" data-tex="\(n\in\mathcal N\)">\(n\in\mathcal N\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_1(n)=T_k(n),\qquad H_1&#x27;(n)=T_k&#x27;(n),\\
+H_2(n)=0,\qquad H_2&#x27;(n)=0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_1(n)=T_k(n),\qquad H_1&#x27;(n)=T_k&#x27;(n),\\
+H_2(n)=0,\qquad H_2&#x27;(n)=0 .
+\end{gathered}
+\]</span>
+The function <span class="math" data-tex="\(f(x)=e^{-\pi hs}H_1(s)\)">\(f(x)=e^{-\pi hs}H_1(s)\)</span>, <span class="math" data-tex="\(s=b|x|^2\)">\(s=b|x|^2\)</span>, is an admissible radial function with <span class="math" data-tex="\(\widehat f(x)=e^{-\pi hs}H_2(s)\)">\(\widehat f(x)=e^{-\pi hs}H_2(s)\)</span>. If moreover <span class="math" data-tex="\(H_1(s)\le T_k(s)\)">\(H_1(s)\le T_k(s)\)</span> and <span class="math" data-tex="\(H_2(s)\ge0\)">\(H_2(s)\ge0\)</span> for all <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>, then the normalized statement <span class="math" data-tex="\((\mathrm N_k)\)">\((\mathrm N_k)\)</span> holds.</p>
+<p><strong>Proof.</strong> The system <span class="math" data-tex="\(\mathcal JH_1=\mathcal JT_k\)">\(\mathcal JH_1=\mathcal JT_k\)</span>, <span class="math" data-tex="\(\mathcal JH_2=0\)">\(\mathcal JH_2=0\)</span> says that <span class="math" data-tex="\(H_1\)">\(H_1\)</span> and <span class="math" data-tex="\(T_k\)">\(T_k\)</span>, and <span class="math" data-tex="\(H_2\)">\(H_2\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>, have equal values and equal first derivatives at every node. The rest is Corollary 3.3 of the lesson on Gaussian damping. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So <span class="math" data-tex="\(T_k-H_1\)">\(T_k-H_1\)</span> and <span class="math" data-tex="\(H_2\)">\(H_2\)</span> have zeros of order at least two at every node, including the nodes that are not values of <span class="math" data-tex="\(j^2+jl+l^2\)">\(j^2+jl+l^2\)</span> for integers <span class="math" data-tex="\(j,l\)">\(j,l\)</span>, such as <span class="math" data-tex="\(24\)">\(24\)</span>. The uniqueness in Theorem 3.1 concerns summable lists with the given extra entries and with the values and derivatives prescribed at all nodes of <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Check that <span class="math" data-tex="\(c_*=548/413\)">\(c_*=548/413\)</span>, and that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;c_*\bigl(1+e^{-4.72}+e^{-7.08}\\
+&amp;\quad+e^{-14.16}+e^{-18.88}\bigr)&lt;1.35 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;c_*\bigl(1+e^{-4.72}+e^{-7.08}\\
+&amp;\quad+e^{-14.16}+e^{-18.88}\bigr)&lt;1.35 .
+\end{aligned}
+\]</span></p>
+<p><strong>4.2.</strong> In the proof of Lemma 2.1, why is a right inverse of the square matrix <span class="math" data-tex="\(I-\mathbf D\)">\(I-\mathbf D\)</span> its inverse? Why can the same argument not be used for the operator <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> on the infinite lists?</p>
+<p><strong>4.3.</strong> Show that the solution <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(\mathcal La=\psi\)">\(\mathcal La=\psi\)</span> in Theorem 2.4 satisfies <span class="math" data-tex="\(\|a\|\le41\,\|\psi_{\mathcal F}\|+160002\,\|\psi_{\mathcal T}\|\)">\(\|a\|\le41\,\|\psi_{\mathcal F}\|+160002\,\|\psi_{\mathcal T}\|\)</span>.</p>
+<p><strong>4.4.</strong> Suppose the reference lists had been computed with a matrix <span class="math" data-tex="\(\mathbf D&#x27;\)">\(\mathbf D&#x27;\)</span> in place of <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span> whose entries differ from those of <span class="math" data-tex="\(\mathbf D\)">\(\mathbf D\)</span> by at most <span class="math" data-tex="\(10^{-12}\)">\(10^{-12}\)</span>. Which term in the bound for <span class="math" data-tex="\(r_{\mathcal F}\)">\(r_{\mathcal F}\)</span> changes, and by about how much?</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> <span class="math" data-tex="\(1+3.12/2.36=5.48/2.36\)">\(1+3.12/2.36=5.48/2.36\)</span>, and <span class="math" data-tex="\(5.48/(2.36\cdot1.75)=5.48/4.13\)">\(5.48/(2.36\cdot1.75)=5.48/4.13\)</span>, which is <span class="math" data-tex="\(548/413\)">\(548/413\)</span>, about <span class="math" data-tex="\(1.3269\)">\(1.3269\)</span>. The sum in brackets is less than <span class="math" data-tex="\(1+0.009+0.001+10^{-6}\)">\(1+0.009+0.001+10^{-6}\)</span>, so the product is less than <span class="math" data-tex="\(1.327\cdot1.0101&lt;1.341\)">\(1.327\cdot1.0101&lt;1.341\)</span>.</p>
+<p><strong>4.2.</strong> For square matrices <span class="math" data-tex="\(AB=I\)">\(AB=I\)</span> implies that <span class="math" data-tex="\(A\)">\(A\)</span> is surjective, hence injective, because the dimension is finite; then <span class="math" data-tex="\(B\)">\(B\)</span> is the inverse. For operators on an infinite-dimensional space a right inverse need not be a left inverse, which is why Theorem 2.4 proves injectivity and surjectivity through the block equations and Lemma 1.1.</p>
+<p><strong>4.3.</strong> By Lemma 1.1 the inverse of <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> has the bound <span class="math" data-tex="\(1/(1-1.77\cdot10^{-9})\)">\(1/(1-1.77\cdot10^{-9})\)</span>, and by Lemmas 2.2 and 2.3 the map <span class="math" data-tex="\(\mathcal L_{\mathcal T\mathcal F}\mathcal L_{\mathcal F\mathcal F}^{-1}\)">\(\mathcal L_{\mathcal T\mathcal F}\mathcal L_{\mathcal F\mathcal F}^{-1}\)</span> has the bound <span class="math" data-tex="\(40\,\delta=4.4\cdot10^{-13}\)">\(40\,\delta=4.4\cdot10^{-13}\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|a_{\mathcal T}\|\le\bigl(1+2\cdot10^{-9}\bigr)\,\beta,\\
+\beta=\|\psi_{\mathcal T}\|+4.4\cdot10^{-13}\,\|\psi_{\mathcal F}\|,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|a_{\mathcal T}\|\le\bigl(1+2\cdot10^{-9}\bigr)\,\beta,\\
+\beta=\|\psi_{\mathcal T}\|+4.4\cdot10^{-13}\,\|\psi_{\mathcal F}\|,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(\|a_{\mathcal F}\|\le40\,\|\psi_{\mathcal F}\|+160000\,\|a_{\mathcal T}\|\)">\(\|a_{\mathcal F}\|\le40\,\|\psi_{\mathcal F}\|+160000\,\|a_{\mathcal T}\|\)</span>. Adding, <span class="math" data-tex="\(\|a\|\le40\,\|\psi_{\mathcal F}\|+160001\,\|a_{\mathcal T}\|\)">\(\|a\|\le40\,\|\psi_{\mathcal F}\|+160001\,\|a_{\mathcal T}\|\)</span>, which is at most <span class="math" data-tex="\(41\,\|\psi_{\mathcal F}\|+160002\,\|\psi_{\mathcal T}\|\)">\(41\,\|\psi_{\mathcal F}\|+160002\,\|\psi_{\mathcal T}\|\)</span>. The large factor for the part on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> comes from the crude bound <span class="math" data-tex="\(4000\)">\(4000\)</span> for <span class="math" data-tex="\(\mathcal L_{\mathcal F\mathcal T}\)">\(\mathcal L_{\mathcal F\mathcal T}\)</span>.</p>
+<p><strong>4.4.</strong> The term (ii): the reference lists would satisfy Lemma 3.1 of the lesson on the reference lists with <span class="math" data-tex="\(\mathbf D&#x27;\)">\(\mathbf D&#x27;\)</span>, and <span class="math" data-tex="\(S_{\mathcal F}-\widetilde S\)">\(S_{\mathcal F}-\widetilde S\)</span> would be replaced by a matrix with entries up to about <span class="math" data-tex="\(10^{-12}\)">\(10^{-12}\)</span>, so the term would be of the order <span class="math" data-tex="\(168\cdot10^{-12}\cdot4.8\)">\(168\cdot10^{-12}\cdot4.8\)</span>, about <span class="math" data-tex="\(10^{-9}\)">\(10^{-9}\)</span>. Then <span class="math" data-tex="\(\|r_{\mathcal F}\|\)">\(\|r_{\mathcal F}\|\)</span> would be about <span class="math" data-tex="\(10^{-9}\)">\(10^{-9}\)</span> and the correction about <span class="math" data-tex="\(40\cdot10^{-9}\)">\(40\cdot10^{-9}\)</span>. The theorem would still hold with a larger bound for the distance; the accuracy <span class="math" data-tex="\(10^{-31}\)">\(10^{-31}\)</span> of the quadrature rule is far more than this lesson needs.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-T] OpenAI, <em>Universal optimality of the triangular lattice</em>, OpenAI Math Release preprint, 23 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
