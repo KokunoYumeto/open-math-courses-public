@@ -469,6 +469,260 @@ There are consequently two precise outstanding requirements: prove the stabilize
 
 *Sections 4.7–4.8 and Figure 4.2: GPT-6 Astra (OpenAI), Ultra, 12 October 2026. Independent CC0 exposition; self-checked by the writing AI. The earlier programme proofs and their author credits are retained.*
 
+### 4.9. An actual pseudogroup: stable total images and a necessary domain restriction
+
+Example 4.6 concerned an algebraic tower, without asserting that it was a pseudogroup stabilizer tower. The following computation instead uses actual prolonged transformations of curves. It tests the whole-space image-to-section inference in Kruglikov–Lychagin, [*Global Lie–Tresse theorem*, version 3, Section 2.2, proof of Proposition 4](https://arxiv.org/abs/1111.5480v3). It also proves the proposition's eventual symbol inclusion for this particular action. It is not a counterexample to that proposition or to the general Lie–Tresse theorem.
+
+**Example 4.8 (translations and common scalings).** Work over a field $F$ equal to $\mathbb R$ or $\mathbb C$. On the affine plane $M=\mathbb A^2_F$, with coordinates $(x,u)$, consider the algebraic group
+
+$$
+G=F^\times\ltimes F^2,\qquad
+g_{\lambda,b,c}(x,u)=(\lambda x+b,\lambda u+c).
+$$
+
+The multiplication and inverse, obtained by composing these maps, are
+
+$$
+(\lambda,b,c)(\mu,d,e)=(\lambda\mu,\lambda d+b,\lambda e+c),
+\qquad
+(\lambda,b,c)^{-1}=(\lambda^{-1},-\lambda^{-1}b,-\lambda^{-1}c).
+$$
+
+Thus this is an algebraic action by invertible maps. Translations send any point of $M$ to any other point, so it is transitive. Local restrictions, allowing separate parameters on separate connected components, form a pseudogroup: compositions and inverses have the displayed form locally, and maps that agree on overlaps glue. In transformed coordinates $(X,U)$ its first-order defining equations are
+
+$$
+X_u=0,\qquad U_x=0,\qquad X_x=U_u\ne0.
+$$
+
+These equations give exactly the stated local maps on connected coordinate neighborhoods. Indeed $X$ depends only on $x$, $U$ only on $u$, and differentiating $X_x=U_u$ gives $X_{xx}=U_{ux}=0$ and $U_{uu}=X_{xu}=0$. All second derivatives therefore vanish, and so do all their derivatives. An admissible first jet, with common nonzero derivative $\lambda$ and prescribed image of its base point, consequently has exactly one extension at every higher order: the jet of the corresponding affine map. This proves surjectivity of every prolonged jet projection and formal integrability of these equations; the order-one conditions and all their prolongations are algebraic. No infinite collection of independent transformation parameters has been introduced.
+
+Use the invariant chart of curve jets that are graphs $u=f(x)$. Set $u_j=f^{(j)}(x)$ and
+
+$$
+E^k=\mathbb A^2_F\times\mathbb A^k_F
+=\{(x,u,u_1,\ldots,u_k)\},\qquad
+\pi_{k,k-1}:E^k\longrightarrow E^{k-1}.
+$$
+
+The map $\pi_{k,k-1}$ forgets $u_k$ and is an affine-line bundle. There are no differential equations on the graph, so every finite graph jet extends, and each fiber over a base point is an irreducible affine space. The action preserves this chart because $dX/dx=\lambda\ne0$. The transformed graph has $U(X)=\lambda f((X-b)/\lambda)+c$. Repeated differentiation gives, for every $j\ge1$,
+
+$$
+u'_j=\lambda^{1-j}u_j.
+$$
+
+Differentiating the action at the identity, with infinitesimal parameters $(a,b,c)\in F^3$, gives the vector field and its prolongation
+
+$$
+X_{a,b,c}=(ax+b)\partial_x+(au+c)\partial_u,
+$$
+
+$$
+X_{a,b,c}^{(k)}=(ax+b)\partial_x+(au+c)\partial_u
++\sum_{j=2}^k(1-j)a u_j\partial_{u_j}.
+$$
+
+The missing $j=1$ summand is zero, not an omitted constraint: slopes are unchanged by common scaling.
+
+Fix a base point $p=(x_0,u_0)$ and a first jet of slope $m$, with tangent line
+
+$$
+\tau=F(\partial_x+m\partial_u)\subset T_pM.
+$$
+
+A field fixes $p$ precisely when $b=-ax_0$ and $c=-au_0$. Its derivative at $p$ is $a\,\mathrm{id}_{T_pM}$, which preserves every line and therefore fixes this first jet. For a higher jet $z_k$ above that first jet, its infinitesimal stabilizer and the derivative map are exactly
+
+$$
+\operatorname{st}(z_k)
+=\{a\in F:(j-1)a u_j=0\text{ for }2\le j\le k\},
+\qquad
+\psi_{k,z_k}:\operatorname{st}(z_k)\longrightarrow
+\operatorname{End}_F(\tau),\quad a\longmapsto a\,\mathrm{id}_\tau.
+$$
+
+Here the scalar description of the stabilizer uses the uniquely determined $b,c$ above, and $\psi_{k,z_k}$ is an $F$-linear map. Since $F$ has characteristic zero, for $k\ge2$ this stabilizer is $F$ when $u_2=\cdots=u_k=0$, and is zero otherwise. At order one it is always $F$.
+
+The affine-line graph with this first jet has all higher derivatives zero. Consequently the union of the images of $\psi_{k,z_k}$, as $z_k$ runs through *all* higher extensions of the fixed first jet, is $F\,\mathrm{id}_\tau$ at every order. It is already Zariski closed. Allowing the slope to vary gives the whole endomorphism line bundle over the graph first-jet chart, again at every order. These full-space total images stabilize from the start. In contrast, on the nonempty open set $u_2\ne0$ each individual stabilizer and its image are zero.
+
+There are two distinct failures of the proposed section argument. If the chosen order is one, every first jet has a lift with $u_2=1$; its scalar derivative image drops from $F$ to zero. Thus no nonempty first-order domain makes all its higher lifts preserve that image. If the chosen order is $\ell\ge2$, a rational section of the stabilizer family over a nonempty open set has a rational scalar component $a(z_\ell)$ satisfying $u_2a(z_\ell)=0$. The graph-jet space is irreducible and $u_2$ is a nonzero element of its function field, so $a(z_\ell)=0$. Every rational section is therefore zero wherever defined. No finite collection of such sections can span the full-space total image $F\,\mathrm{id}_\tau$. The same argument applies after fixing $p$ and the slope, since the remaining jet coordinates form an affine space with coordinate $u_2$.
+
+**Rank and scope caution.** This actual stabilizer family jumps in rank along the affine-line jets. It is an algebraic family of vector spaces, not a constant-rank vector bundle over the entire graph-jet space. It is therefore different from the constant-rank tower of Example 4.6. The cited proof takes total images over the whole jet fiber before selecting its section domain. The calculation disproves that literal full-space image-to-section inference. If a preliminary regular-locus restriction is intended instead, its choice and effect on the images must be supplied explicitly. They cannot be deduced from the unchanged full-space total image. The next proposition supplies such a restriction for this action, without claiming to supply it for every pseudogroup.
+
+![The same first jet has a straight lift with scalar stabilizer F and a curved lift with zero stabilizer; the uniform domain excludes zero second derivative.](../figures/lie-tresse-homothety-stabilizers.svg)
+
+*Figure 4.3.* At the origin, $u=0$ and $u=x^2/2$ have the same horizontal tangent. Their second derivatives are respectively zero and one. Scaling by $\lambda=2$ fixes the line but sends the parabola to $U=X^2/4$, whose second derivative is $1/2$. The displayed curves and derivative images are the exact objects used in Example 4.8; the figure is not a claim about the general theorem. Original independently authored diagram and proof: GPT-6 Astra (OpenAI), Ultra; CC0-1.0.
+
+**Proposition 4.9 (a uniform domain proved directly).** For this action the invariant nonempty Zariski open subset
+
+$$
+U^2=\{z_2\in E^2:u_2\ne0\}
+$$
+
+has the following properties. Every higher jet above $U^2$ has zero infinitesimal stabilizer. Its orbit tangent spaces $\Delta_k(z_k)\subset T_{z_k}E^k$ have dimension three for $k\ge2$, and projection induces an isomorphism
+
+$$
+d\pi_{k,k-1}:\Delta_k(z_k)\xrightarrow{\ \sim\ }
+\Delta_{k-1}(z_{k-1}),\qquad k\ge3.
+$$
+
+In particular $\varpi_k=\ker(d\pi_{k,k-1}|_{\Delta_k})=0$ for $k\ge3$, and $\varpi_{k+1}\subset\varpi_k^{(1)}$ for every $k\ge2$ along every infinite jet above $U^2$.
+
+*Proof.* The transformation rule $u'_2=\lambda^{-1}u_2$ proves invariance, and a parabola supplies a point of $U^2$. The stabilizer formula proves its vanishing at every higher lift. Subtracting the translation components from the scaling generator gives the following concrete spanning set for the orbit tangent space:
+
+$$
+\Delta_k(z_k)=\operatorname{span}_F\{\partial_x,\partial_u,V_k\},
+\qquad
+V_k=\sum_{j=2}^k(1-j)u_j\partial_{u_j}.
+$$
+
+The first two vectors are independent base-coordinate vectors. Above $U^2$ the $\partial_{u_2}$ coefficient of $V_k$ is $-u_2\ne0$, so the third vector is independent of them. Projection carries the three displayed vectors to the corresponding three vectors at order $k-1$. For $k\ge3$ these are bases on both sides, proving the claimed isomorphism and zero kernel. At orders zero and one the orbit tangent spaces are spanned by the two translations; hence $\varpi_1=0$, while $\varpi_2=F V_2$ above $U^2$. For $k=2$ the asserted inclusion has zero left side, and for every $k\ge3$ both sides are zero. This proves all orders on one specified finite-level domain. $\square$
+
+The exclusion is mathematically necessary for a uniform conclusion over the full chart. For any $r\ge2$, the graph $u=x^r/r!$ at the origin has $u_2=\cdots=u_{r-1}=0$ and $u_r=1$. At order $r-1$ its orbit tangent space has rank two, and at order $r$ it acquires the nonzero vertical generator $(1-r)\partial_{u_r}$. Thus $\varpi_{r-1}=0$ and $\varpi_r\ne0$, so $\varpi_r\not\subset\varpi_{r-1}^{(1)}$. Such a failure can occur at an arbitrarily high order on the full space. For $r>2$ these jets lie outside the pullback of $U^2$, exactly as Proposition 4.9 requires. For $r=2$ the failure precedes its order-two starting bound. These examples distinguish a uniform finite-level restriction from a bound chosen separately along each infinite jet.
+
+**Remaining general dependency.** For a general algebraic pseudogroup, one must still prove the existence of a suitable common finite-level invariant domain and the required higher-jet stabilizer lifting there, or supply another full-scope route to symbolic stabilization. This example settles neither that existence statement nor the relation-specialization comparison of Section 4.8. All subsequent general dependencies remain as recorded in Sections 4.5–4.8.
+
+### 4.10. Which representative makes the bracket a symbol contraction?
+
+The domain issue of Section 4.9 is not the only input requiring proof. The next step in Kruglikov–Lychagin, [*Global Lie–Tresse theorem*, version 3, Section 2.2, proof of Proposition 4](https://arxiv.org/abs/1111.5480v3), uses a bracket with a tangent-valued infinitesimal transformation to lower the order of an orbit symbol. Its displayed calculation is not justified merely by making the first derivative of the representative vanish. The following example has constant-rank stabilizers and surjective stabilizer projections at every order. Thus its issue is independent of the preceding rank-jumping example.
+
+**Example 4.10 (a lower-order term that the bracket retains).** On the plane over $F=\mathbb R$ or $\mathbb C$, take the local transformations
+
+$$
+T_{f,g}(x,u)=(f(x),u+g(x)),\qquad f'(x)\ne0.
+$$
+
+Here $f,g$ are smooth in the real case and holomorphic in the complex case; all statements below also concern their finite formal jets. Direct composition gives
+
+$$
+T_{f,g}\circ T_{h,t}=T_{f\circ h,\,t+g\circ h},\qquad
+T_{f,g}^{-1}=T_{f^{-1},\,-g\circ f^{-1}}.
+$$
+
+Restrictions and locally agreeing maps glue, so these maps form a pseudogroup. Their equations in target coordinates are $X_u=0$ and $U_u=1$, with $X_x\ne0$. At each higher order the pure $x$ derivatives of $f$ and $g$ are free; the other derivatives are fixed by these equations. Every admissible jet therefore extends by arbitrary choices of the next two pure derivatives. The equations and these projection maps are algebraic, and the projections are surjective smooth bundles. Translations belong to the pseudogroup and prove transitivity on the plane. This verifies finite differential order and formal integrability directly.
+
+Graph jets are an invariant chart because $f'\ne0$. Write
+
+$$
+E^k=\{(x,u,u_1,\ldots,u_k)\},\qquad u_j=h^{(j)}(x)
+$$
+
+for a graph $u=h(x)$. The infinitesimal fields are precisely
+
+$$
+X=\alpha(x)\partial_x+\beta(x)\partial_u.
+$$
+
+Put $\alpha_i=\alpha^{(i)}(x_0)$ and $\beta_i=\beta^{(i)}(x_0)$. The prolonged coefficient in the $u_j$ direction follows by differentiating the transformed graph: it is
+
+$$
+\beta_j-\sum_{i=1}^j {j\choose i}\alpha_i u_{j-i+1},\qquad j\ge1.
+$$
+
+Indeed the first variation at fixed transformed abscissa is $\beta-\alpha h'$. Differentiating it $j$ times and adding $\alpha_0 u_{j+1}$ for motion of the base abscissa cancels precisely the $i=0$ term. The base-coordinate coefficients are $\alpha_0$ and $\beta_0$.
+
+Consequently the stabilizer of a graph jet is given by
+
+$$
+\alpha_0=\beta_0=0,\qquad
+\beta_j=\sum_{i=1}^j {j\choose i}\alpha_i u_{j-i+1}
+\quad(1\le j\le k).
+$$
+
+The $k$ numbers $\alpha_1,\ldots,\alpha_k$ are arbitrary. These equations exhibit a rank-$k$ vector bundle over the whole graph-jet chart. The tangent line is spanned by $\partial_x+u_1\partial_u$; the derivative of $X$ sends this vector to $\alpha_1(\partial_x+u_1\partial_u)$. Its derivative image is therefore the whole scalar endomorphism line at every jet and every order $k\ge1$. A stabilizer at order $k$ lifts to any prescribed next graph jet by choosing $\alpha_{k+1}$ and then the required $\beta_{k+1}$. Both the full stabilizer projection and its derivative image thus lift, not merely at generic jets.
+
+Now fix the flat graph $N=\{u=0\}$ at the origin and an integer $k\ge4$. Consider
+
+$$
+X_*=x^2\partial_x+x^k\partial_u,\qquad
+X_0=x^k\partial_u,\qquad
+Z=X_*-X_0=x^2\partial_x,\qquad
+Y=\partial_x+x\partial_u.
+$$
+
+These are genuine infinitesimal transformations, not just arbitrary formal fields. The flows of $X_0,Y,Z$ are respectively
+
+$$
+(x,u)\mapsto(x,u+t x^k),\qquad
+(x,u)\mapsto(x+t,u+t x+t^2/2),\qquad
+(x,u)\mapsto\left(\frac{x}{1-tx},u\right).
+$$
+
+For $X_*$ the flow is
+
+$$
+(x,u)\mapsto\left(\frac{x}{1-tx},\;
+u+\frac{x^{k-1}}{k-1}\bigl((1-tx)^{1-k}-1\bigr)\right).
+$$
+
+On a neighborhood where $1-tx\ne0$, differentiation in $t$ verifies the displayed generating fields, and parameter $-t$ supplies each inverse. All these maps have the required triangular form. Both $X_*$ and $X_0$ have zero ordinary first jet at the origin. Their prolongations vanish at the flat $(k-1)$-jet, and their common value at its $k$-jet is
+
+$$
+q_k=k!\,\partial_{u_k}\ne0.
+$$
+
+The difference $Z$ stabilizes every flat graph jet: its base coefficient vanishes at the origin and all its vertical prolonged coefficients vanish there. Also $Y(0)=\partial_x\in T_0N$. Nevertheless, direct differentiation of the vector-field coefficients gives
+
+$$
+[Y,X_0]=k x^{k-1}\partial_u,\qquad
+[Y,X_*]=2x\partial_x+(k x^{k-1}-x^2)\partial_u.
+$$
+
+At the flat $(k-1)$-jet the respective prolonged values are
+
+$$
+[Y,X_0]^{(k-1)}=k!\,\partial_{u_{k-1}},\qquad
+[Y,X_*]^{(k-1)}=k!\,\partial_{u_{k-1}}-2\partial_{u_2}.
+$$
+
+Because $k\ge4$, the second term survives projection to order $k-2$. Thus the second vector is not in the orbit symbol $\varpi_{k-1}$, even though the original $q_k$ is in $\varpi_k$ and the stated first-derivative normalization holds. In particular the bracket value is not determined by the class modulo the order-$k$ stabilizer. The difference of the two bracket values is exactly $[Y,Z]^{(k-1)}=-2\partial_{u_2}$.
+
+This does **not** show that no good representative exists: $X_0$ is one. Nor does it refute symbolic stabilization for this pseudogroup. At a graph jet, varying $\beta_0,\ldots,\beta_k$ supplies every vertical jet direction, and varying $\alpha_0$ supplies the base $x$ direction. The orbit tangent space is all of $T E^k$. Hence $\varpi_k$ is the full vertical symbol, and its prolongation is the next full vertical symbol. What fails is the assertion that the indicated first-order normalization alone licenses the displayed bracket calculation. An additional choice or a different argument is required.
+
+![Two fields with the same fourth-order orbit symbol give different third-order bracket values, one retaining a second-order component.](../figures/lie-tresse-bracket-obstruction.svg)
+
+*Figure 4.4.* The case $k=4$ of Example 4.10. Both fields represent $24\partial_{u_4}$ and have zero first jet. Only one of the displayed bracket values lies in $\varpi_3$. The lower panel is the exact sequence of Lemma 4.11, not an identification of its last term with a derivative image. Original diagram and proofs: GPT-6 Astra (OpenAI), Ultra; CC0-1.0.
+
+**Lemma 4.11 (the exact obstruction to a pure transformation-symbol representative).** Let $L_k,L_{k-1}$ be finite-dimensional spaces of admissible infinitesimal transformation jets at a fixed base point, with surjective truncation $p:L_k\to L_{k-1}$. Suppose their action maps at compatible equation jets are
+
+$$
+A_k:L_k\to T_{z_k}E^k,\qquad
+A_{k-1}:L_{k-1}\to T_{z_{k-1}}E^{k-1},
+\qquad d\pi\circ A_k=A_{k-1}\circ p.
+$$
+
+Define $S_i=\ker A_i$, $\Delta_i=\operatorname{im}A_i$, $g_k=\ker p$, and $\varpi_k=\ker(d\pi|_{\Delta_k})$. Then there is a natural exact sequence of $F$-vector spaces
+
+$$
+0\longrightarrow A_k(g_k)\longrightarrow\varpi_k
+\xrightarrow{\,\omega_k\,}S_{k-1}/p(S_k)\longrightarrow0,
+\qquad
+\omega_k(A_kv)=[p(v)].
+$$
+
+*Proof.* Compatibility implies $p(S_k)\subset S_{k-1}$ and $A_k(g_k)\subset\varpi_k$. If $A_kv\in\varpi_k$, then $A_{k-1}p(v)=0$, so the displayed class exists. Two choices for $v$ differ by an element of $S_k$, and hence give the same class. This proves well-definedness and linearity. Every $s\in S_{k-1}$ has a lift $v\in L_k$ because $p$ is onto; compatibility then puts $A_kv$ in $\varpi_k$, proving surjectivity of $\omega_k$. Finally $[p(v)]=0$ means $p(v)=p(w)$ for some $w\in S_k$. Then $v-w\in g_k$ and $A_k(v-w)=A_kv$. Conversely a vector represented in $g_k$ maps to zero. This proves exactness at every term. $\square$
+
+In particular, every orbit symbol has a representative whose entire ordinary $(k-1)$-jet is zero if and only if $p(S_k)=S_{k-1}$. This concerns the full stabilizers, not just their first-derivative images. Equality of images under a linear map does not imply equality of its domain subspaces: in $F^2$, the subspaces $F^2$ and $F(1,0)$ have the same image under $(a,b)\mapsto a$, although their quotient has dimension one. This last observation is linear algebra, not a claimed pseudogroup realization. It explains why replacing full stabilizer lifting by derivative-image lifting requires its own proof.
+
+**Lemma 4.12 (a sufficient normalization, with all its hypotheses).** Let $k\ge2$. Suppose an admissible infinitesimal field $X$ has zero ordinary $(k-1)$-jet at $a$, and its prolonged value at a submanifold $k$-jet $z_k$ is $q_k$. Let $Y$ be another admissible infinitesimal field, with $Y(a)=\xi\in\tau=T_aN$, and assume the admissible fields are closed under Lie brackets. Using symmetric multilinear derivative tensors, define
+
+$$
+(\iota_\xi q_k)(v_1,\ldots,v_{k-1})
+=q_k(\xi,v_1,\ldots,v_{k-1}),\qquad v_i\in\tau.
+$$
+
+Then $[Y,X]$ has zero ordinary $(k-2)$-jet and
+
+$$
+[Y,X]^{(k-1)}_{z_{k-1}}=\iota_\xi q_k\in\varpi_{k-1}.
+$$
+
+*Proof.* Take coordinates $(x^1,\ldots,x^n,u^1,\ldots,u^r)$ centered at $a$ with $\tau=\{u=0\}$, so a representative submanifold is $u=h(x)$ with $h(0)=0$ and $Dh(0)=0$. All Taylor terms of the coefficients of $X$ below degree $k$ vanish. Write its leading homogeneous term as $X_k=(\alpha_k,\beta_k)$. Restricted to $N$, its normal characteristic is $\beta(x,h(x))-Dh(x)\alpha(x,h(x))$. Its degree-$k$ term is exactly $\beta_k(x,0)$: replacing a normal variable by $h(x)$ increases degree, and the second term has degree at least $k+1$. Its $k$th derivative tensor is therefore the normal restriction of $d^kX_a$ to $\tau^k$, which is $q_k$. All lower prolonged coefficients vanish.
+
+In the coordinate convention $[Y,X]=DX\,Y-DY\,X$, the Taylor terms below degree $k-1$ vanish, and the term of degree $k-1$ is $DX_k\,\xi$. Terms involving $Y-Y(a)$ or $DY\,X$ have degree at least $k$. Restriction to $N$ and passage to its normal characteristic now identify the leading term with the directional derivative of $\beta_k(x,0)$ along $\xi$. In multilinear derivative-tensor notation this is precisely $\iota_\xi q_k$; the factorials cancel between the degree-$k$ and degree-$(k-1)$ Taylor conventions. The zero lower ordinary jet gives zero prolonged value at order $k-2$, and bracket closure supplies an admissible transformation. The stated vector therefore lies in $\varpi_{k-1}$. The argument concerns finite Taylor jets and applies equally to compatible formal infinitesimal jets with their jet bracket. $\square$
+
+Lemmas 4.11–4.12 give a correct sufficient route: full stabilizer lifting at the required orders supplies pure transformation-symbol representatives, and their brackets give the contractions. The earlier inclusion $\varpi_k\subset S^k\tau^*\otimes\nu$ then implies $\varpi_k\subset\varpi_{k-1}^{(1)}$, since the first prolongation consists exactly of symmetric tensors whose contractions belong to $\varpi_{k-1}$. This route has a stronger hypothesis than stability of the first-derivative image. Its hypothesis has **not** been proved for the general action, and it is not asserted necessary for the desired inclusion.
+
+**Remaining general dependency.** The general proof still needs both a common finite-level invariant domain and a justified contraction argument on that domain. Full stabilizer lifting would suffice for the latter; alternatively one must supply a weaker, fully justified representative or Spencer-operator construction. Neither equality of total images, equality of first-derivative images, nor the constant-rank hypothesis by itself proves the particular bracket formula used in the cited argument. The original general theorem and all its downstream obligations remain in scope and unfinished.
+
 ## 5. Euclidean curvature
 
 For a graph $y=f(x)$, write $p=f'$, $q=f''$, $r=f'''$. Its oriented tangent is $(1,p)$ and its speed is $\sqrt{1+p^2}$. In the real graph chart with the orientation of increasing $x$, define
@@ -643,6 +897,6 @@ The two mixed terms cancel, leaving $S(f)(y)(y')^2+S(y)$. For Möbius $f$, $a=-2
 - Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*](https://arxiv.org/abs/1111.5480v3), version 3, 13 June 2015, §§0.1–0.2 and 3. Section 4 above distinguishes the finite-generation assertion from the false individual-real-orbit separation inference.
 - Sophus Lie and Friedrich Engel, *Theorie der Transformationsgruppen*, Volume I, Chapters 26–27, for projective and linear homogeneous transformation groups; Volume II for differential equations and contact transformations.
 
-The five original local results retain their complete proofs on the stated regular domains. Proposition 4.2 and Lemma 4.3 supply algebraic inputs; Lemmas 4.5 and 4.7 prove stabilization for a fixed symbolic system and for the specializations of a single relation module. Examples 4.4 and 4.6 refute two inferences used in the cited route, not the general Lie–Tresse theorem. Its uniform stabilizer and relation-specialization comparisons remain unfinished, as specified in Sections 4.5–4.8.
+The five original local results retain their complete proofs on the stated regular domains. Proposition 4.2 and Lemma 4.3 supply algebraic inputs; Lemmas 4.5 and 4.7 prove stabilization for a fixed symbolic system and for the specializations of a single relation module. Examples 4.4 and 4.6 refute two inferences used in the cited route, not the general Lie–Tresse theorem. Its uniform stabilizer and relation-specialization comparisons remain unfinished, as specified in Sections 4.5–4.8. Example 4.8 diagnoses the whole-space image-to-section inference in an actual pseudogroup, and Proposition 4.9 proves the required domain and symbol inclusion for that action only; neither closes the general comparison.
 
 **Lie–Tresse proof inputs:** versioned provider record.

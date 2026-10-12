@@ -1,32 +1,172 @@
 # Fullness, hypercentrality and ultrafilter corners
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. New original exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
-The [central sequence algebra](central-sequence-algebras-and-exact-lifts.md) is finite, but need not be a factor. We now relate its size and commutativity to ordinary sequences. The crucial result is stronger than a single nonzero commutator: if this algebra is noncommutative, every nonzero corner is noncommutative. This gives type \(\mathrm{II}_1\), with its center retained. For the hyperfinite factor we can go further and prove that the central sequence algebra is itself a factor.
+A noncommuting pair does not tell us what happens in every corner of an algebra. Nor does type \(\mathrm{II}_1\) imply a scalar center. We begin by separating those questions, then use the dyadic tensor factor to show how a tail unitary detects distance from the scalars. The final argument carries a commutator into any chosen nonzero corner of a general central sequence algebra.
 
-Throughout Sections 1–4, \(M\) is a factor with separable predual. We use the preceding lesson's notation \(C_\omega,J_\omega,T_\omega,M_\omega,\pi_\omega,\tau_\omega\) and the symmetric faithful-state seminorm \(\|\cdot\|_{\varphi,\#}\). The [fullness theorem](central-sequences-and-free-group-factors.md#theorem-4-1) identifies closedness of \(\operatorname{Int}(M)\) with scalar-triviality of all bounded ordinary centralizing sequences. We also use finite von Neumann algebra type decomposition: a finite algebra has no type I part exactly when it has no nonzero abelian projection. Its general halving theorem applies without a separable-predual assumption on that finite algebra. These are selected projection-type inputs, with earlier prerequisites declared.
-
-## 1. Ordinary and ultrafilter witnesses
-
-Let \(C(M)\) consist of bounded sequences centralizing in the ordinary sense:
+Throughout the general-factor arguments, \(M\) is a nonzero factor with separable predual, \(\varphi\) is a faithful normal state, and \(\omega\) is a free ultrafilter on \(\mathbb N\). The [preceding quotient and lifting lesson](central-sequence-algebras-and-exact-lifts.md) constructs \(C_\omega,J_\omega,T_\omega,M_\omega,\pi_\omega,\tau_\omega\), with a faithful normal quotient trace and exact projection lifts. Its seminorm is
 \[
-\|[x_n,\psi]\|\longrightarrow0,\qquad \psi\in M_*.
+\|x\|_{\varphi,\#}^2=\frac{\varphi(x^*x)+\varphi(xx^*)}{2}.
+\]
+The complete [FH0–5 inputs](../components/fullness-hypercentrality-and-tail-inputs.md) prove trace normality on finite factors, division with the full center retained, unitary displacement, the exact tail map, the nonfactor example, and multiplication estimates for strongly*-zero perturbations.
+
+Scalar-trivial means approaching a bounded scalar sequence strongly*. Hypercentral means commuting strongly* asymptotically with every other bounded centralizing sequence. We fix a countable norm-dense family \((\psi_j)\) of normal states for the general selection arguments. Such a family exists: the separable norm metric of \(M_*\) has a countable base; selecting one state in each nonempty intersection of a basic ball with the state space gives a countable dense family. The normal state space is nonempty because it contains \(\varphi\).
+
+<a id="6-exercises-with-complete-solutions"></a>
+
+## What type does, and does not, say about the center
+
+An abelian projection is one whose corner is commutative. A finite von Neumann algebra is type \(\mathrm{II}_1\) when its abelian part is absent; it can still have a nontrivial center. FH1 constructs this part from central supports and proves the full projection-halving result without a factor or countability assumption.
+
+**Exercise 4.** Exhibit a finite algebra with a noncommuting pair and a nonzero abelian projection. Explain why one noncommuting pair cannot establish type \(\mathrm{II}_1\).
+
+*Solution.* Take \(N=M_2(\mathbb C)\oplus\mathbb C\). Matrix units \(e_{12},e_{21}\) in the first summand have commutator \(e_{11}-e_{22}\ne0\). But the projection \(p=(0,1)\) has corner \(pNp=\mathbb C p\), which is abelian. The algebra is finite because an isometry is a unitary in each of its two finite matrix summands. A noncommuting pair somewhere in \(N\) therefore does not exclude an abelian corner elsewhere. Theorem 4.1 will construct a noncommuting pair inside every prescribed nonzero corner; that is the stronger statement needed to exclude the entire abelian part.
+
+**Exercise 7.** Give a finite type \(\mathrm{II}_1\) algebra with nontrivial center. One candidate is \(L^\infty([0,1])\bar\otimes R\) with its product trace.
+
+*Solution.* Use Lebesgue measure \(\lambda\) and the dyadic factor's normalized trace \(\tau\). FH4 constructs the multiplication algebra \(A=L^\infty([0,1])\) on \(L^2(\lambda)\), proves \(A'=A\), and constructs the spatial product \(N=A\bar\otimes R\) with its faithful normal normalized trace
+\[
+\tau_N(M_f\otimes b)=\left(\int_0^1 f\,d\lambda\right)\tau(b).
+\]
+It proves \(Z(N)=A\otimes1\) by compressing a central operator between first-leg vectors: each resulting second-leg operator commutes with both \(R\) and \(R'\), hence is scalar. The bounded scalar form reconstructs a first-leg multiplier. The characteristic function of \([0,1/2]\) supplies a central projection of trace \(1/2\), so this center is nontrivial.
+
+Here is the type check in the same full construction. If \(p\) were a nonzero abelian projection, FCT3 would give a nonzero central \(w\) filled by \(k\) equivalent copies of \(pw\), for a finite \(k\). Its center-valued trace would be \(w/k\). A unital dyadic matrix stage of size \(d>k\), compressed by \(w\), has equivalent diagonal cells of center-valued trace \(w/d\). FCT7 comparison places one under \(pw\). PC4 makes such a subprojection \(pwt\) for a central projection \(t\leq w\), forcing \(t/k=w/d\). The element \((k/d)w\) is not a projection, a contradiction. Thus \(N\) has no nonzero abelian projection and is type \(\mathrm{II}_1\). This example distinguishes type from factoriality; it does not claim that this particular product is a central sequence algebra. FH4 includes the complete measure, Hilbert, trace, center and comparison proofs.
+
+<a id="5-the-center-of-the-hyperfinite-central-sequence-algebra"></a>
+
+## A tensor-tail unitary detects nonscalar mass
+
+Let \(R\) be the complete dyadic model of FG2, with
+\[
+R=\overline{\bigotimes_{j\geq1}}(M_2,\operatorname{tr}_2),
+\qquad D_r=\bigotimes_{j=1}^rM_2,\qquad N_r=D_r'\cap R.
+\tag{12}
+\]
+FH3 proves that \(N_r\) is exactly the remaining tensor tail and is normally trace-preservingly isomorphic to \(R\). It is therefore a type \(\mathrm{II}_1\) factor. For matrix units \((e_{ij})\) of \(D_r\), \(d=2^r\), the exact normal unital completely positive map onto this tail is
+\[
+E_r(x)=\frac1d\sum_{i,j=1}^d e_{ij}x e_{ji},\qquad
+E_r(x)-x=\frac1d\sum_{i,j}e_{ij}[x,e_{ji}].
+\]
+It preserves the trace and contracts the trace \(2\)-norm. Each displayed difference is a finite sum of fixed-multiplier commutators. Hence for a bounded centralizing sequence,
+\[
+\|E_r(a_n)-a_n\|_{2,\tau}\longrightarrow0
+\tag{13}
+\]
+in the ordinary or ultrafilter sense being used, for each fixed \(r\). There is no Haar-average prerequisite in this formula.
+
+**Lemma 5.1.** If \(N\) is a finite factor with faithful normalized trace and \(\tau(b)=0\), there is a unitary \(u\in N\) such that
+\[
+\|b-ubu^*\|_2\ge\frac12\|b\|_2.
+\tag{14}
+\]
+
+**Proof.** FH0 first proves that the specified normalized trace is the canonical normal trace; normality need not be added to the statement. Take the ultraweakly closed convex hull \(K\) of the unitary orbit of \(b\). It is compact inside its fixed operator-norm ball by CP/CF's complete compact-ball proof.
+
+The trace norm is ultraweakly lower semicontinuous because
+\[
+\|x\|_2=\sup_{\|d\|_2\leq1,\ d\in N}|\tau(d^*x)|.
+\]
+Schwarz gives one inequality and \(d=x/\|x\|_2\) gives equality when \(x\ne0\). Each scalar pairing is normal. Nested closed sublevel sets in compact \(K\) give a minimizer; the parallelogram identity makes it unique, as Exercise 8 checks. Every unitary conjugation preserves \(K\) and its trace norm, so it fixes this minimizer. The four-unitary decomposition makes the minimizer central; factoriality makes it scalar. All points in \(K\) have trace zero by normality, so the minimizer is zero.
+
+For \(b\ne0\), failure of (14) for every unitary would put the orbit in the closed trace ball of radius \(\|b\|_2/2\) about \(b\). This ball is convex and ultraweakly closed by the same scalar formula. It would contain \(K\), hence zero, whose distance from \(b\) is \(\|b\|_2\), a contradiction. At \(b=0\), the identity unitary works. FH2 supplies the whole compactness and scalar-functional argument. \(\square\)
+
+**Exercise 8.** Prove uniqueness of the point of smallest trace \(2\)-norm in the compact convex set used in Lemma 5.1.
+
+*Solution.* Suppose \(x,y\in K\) both have the minimal norm \(m\). Their midpoint is in \(K\). Expanding its Hilbert square gives
+\[
+\left\|\frac{x+y}{2}\right\|_2^2
+=\frac{\|x\|_2^2+\|y\|_2^2}{2}-\frac{\|x-y\|_2^2}{4}
+=m^2-\frac{\|x-y\|_2^2}{4}.
+\]
+If \(x\ne y\), trace faithfulness makes the last subtracted term strictly positive, contradicting minimality. Thus \(x=y\). Existence is supplied separately by the compact sublevel argument, so uniqueness does not presume a Hilbert projection theorem for this convex set.
+
+**Theorem 5.2.** Every ordinary hypercentral sequence in \(R\) is scalar-trivial. For every free ultrafilter, \(R_\omega\) is a factor of type \(\mathrm{II}_1\).
+
+**Proof.** Scalar-trivial sequences are hypercentral by FH5. For the reverse ordinary assertion, take a bounded ordinary centralizing \(a_n\) that is not scalar-trivial. NT2's finite trace topology shows that its scalar-normalized trace distance has positive limsup. Choose \(\delta>0\) and increasing \(k(r)\) satisfying
+\[
+\|a_{k(r)}-\tau(a_{k(r)})1\|_2\geq\delta,\qquad
+\|E_r(a_{k(r)})-a_{k(r)}\|_2\leq2^{-r}.
+\tag{15}
+\]
+The first constraint holds on infinitely many indices; the second holds eventually for each fixed \(r\) by (13). Their intersection permits the next increasing index.
+
+Put \(b_r=E_r(a_{k(r)})-\tau(a_{k(r)})1\in N_r\). It has trace zero by trace preservation. Lemma 5.1 gives \(u_r\in\mathcal U(N_r)\) moving \(b_r\) by at least half its norm. The triangle inequality, twice for the approximation error, yields
+\[
+\|a_{k(r)}-u_ra_{k(r)}u_r^*\|_2
+\geq\tfrac12(\delta-2^{-r})-2^{1-r}.
+\tag{16}
+\]
+Define a sequence on all original indices by \(v_{k(r)}=u_r\) and \(v_n=1\) elsewhere. It is ordinary centralizing: it eventually commutes with each \(D_s\), and finite-stage trace \(2\)-density, followed by the preceding finite-algebra centrality criterion, gives the full claim. Exercise 9 checks this passage on the whole original index set. Its commutator with \(a_n\) has positive limsup by (16), since right multiplication by \(v_n^*\) preserves the trace norm. Thus \(a_n\) is not hypercentral.
+
+For the ultrafilter assertion, suppose a central class \(A=\pi_\omega(a_n)\in Z(R_\omega)\) is not scalar. Subtract the bounded scalar sequence \(\tau(a_n)1\), and retain \(A,a_n\) for the centered class and representatives. This makes \(\tau(a_n)=0\) at every coordinate; its nonscalar centered class has
+\(\delta=\|A\|_{2,\omega}>0\).
+For each \(r\), intersect the large sets for
+\[
+\|a_n\|_2\geq\delta/2,\qquad
+\|E_r(a_n)-a_n\|_2\leq1/r
+\tag{17}
+\]
+with the previously chosen set and \(\{n:n\geq r\}\), obtaining nested \(B_r\in\omega\). The distance limit follows from the quotient trace; the approximation limit follows from (13).
+
+Let \(r(n)\) be the largest \(r\leq n\) with \(n\in B_r\), or zero. For each fixed \(s\), \(B_s\subseteq\{n:r(n)\geq s\}\), so \(r(n)\to_\omega\infty\), without a countable intersection assumption. If \(r(n)>0\), set \(b_n=E_{r(n)}(a_n)\) and choose \(u_n\in\mathcal U(N_{r(n)})\) by Lemma 5.1; otherwise set \(u_n=1\). The first choice has trace zero.
+
+For each fixed \(s\), \(u_n\) commutes with \(D_s\) on the large set where \(r(n)\geq s\). Uniform boundedness and finite-stage trace \(2\)-density prove centrality along \(\omega\), and the full finite-algebra criterion gives predual centralizing. On \(B_1\), the displacement bound and the two approximation errors give
+\[
+\|a_n-u_na_nu_n^*\|_2
+\geq\delta/4-\frac{5}{2r(n)}.
+\tag{18}
+\]
+Exercise 10 derives the coefficient. Its ultralimit is positive, at least \(\delta/4\). But \(u_n\) represents a quotient element, which a central \(A\) must commute with. The quotient zero-ideal criterion and unitary invariance of the trace norm make that same ultralimit zero. This contradiction proves \(Z(R_\omega)=\mathbb C1\).
+
+The matrix units in tensor leg \(n\), regarded as sequences in \(n\), eventually commute with every fixed finite initial stage. The same trace density and finite criterion make them ordinary centralizing. Their exact coordinate relations and diagonal sum \(1\) survive every quotient; their diagonal quotient traces are \(1/2\), so the resulting unital \(M_2\) is nonzero and noncommutative. Theorem 4.1 below, whose proof uses only the general selection argument, gives type \(\mathrm{II}_1\). Together with the center just proved, this gives the whole factor conclusion for every free ultrafilter. \(\square\)
+
+**Exercise 9.** Check that \(v_n\), inserted at the selected indices in (16) and equal to \(1\) elsewhere, is central on its whole original index set and hence centralizing.
+
+*Solution.* Fix \(s\). If \(n=k(r)\) with \(r\geq s\), then \(v_n\in N_r\subseteq D_s'\cap R\). At all other indices it is the identity, except possibly the finitely many selected indices with \(r<s\). Thus it eventually commutes with every \(x_0\in D_s\). For \(x\in R\), approximate it in trace \(2\)-norm by a bounded element \(x_0\) of a finite stage, using FG2's complete density model. Since every \(v_n\) is unitary,
+\[
+\|[v_n,x-x_0]\|_2\leq2\|x-x_0\|_2.
+\]
+Choose the approximation first, then use eventual exact commutation with \(x_0\). This proves trace \(2\)-centrality, and NT2 gives intrinsic bounded strong* centrality. The earlier complete finite-algebra criterion then gives predual centralizing. No original coordinate outside the selected set was discarded.
+
+**Exercise 10.** Derive the constant \(5/2\) in (18) from the approximation error and Lemma 5.1.
+
+*Solution.* Put \(\varepsilon=\|a_n-b_n\|_2\leq1/r(n)\). The triangle inequality gives
+\(\|b_n\|_2\geq\|a_n\|_2-\varepsilon\geq\delta/2-\varepsilon\).
+The chosen unitary therefore moves \(b_n\) by at least \(\delta/4-\varepsilon/2\). Replacing \(b_n\) by \(a_n\) in the first term loses at most \(\varepsilon\); replacing it inside its unitary conjugate loses at most another \(\varepsilon\), because that conjugation preserves the trace norm. The total lower bound is
+\[
+\delta/4-\varepsilon/2-2\varepsilon
+=\delta/4-(5/2)\varepsilon
+\geq\delta/4-\frac5{2r(n)}.
+\]
+The estimate remains valid when its right side is negative at small \(r(n)\); its positive ultralimit is what the proof uses.
+
+<a id="1-ordinary-and-ultrafilter-witnesses"></a>
+
+## Normal tests and two ways to select a witness
+
+Let \(C(M)\) be the bounded ordinary centralizing sequences:
+\[
+\|[x_n,\psi]\|\longrightarrow0\qquad(\psi\in M_*).
 \tag{1}
 \]
-Let \(T(M)\) consist of those sequences approaching bounded scalars strong*. Define their hypercentral subspace by
+Let \(T(M)\) be the sequences approaching bounded scalars strongly*. Set
 \[
-H(M)=\{x\in C(M):[x_n,y_n]\longrightarrow0
-\text{ strong* for every }y\in C(M)\}.
+H(M)=\{x\in C(M):[x_n,y_n]\to0
+\text{ strongly* for every }y\in C(M)\}.
 \tag{2}
 \]
-Use the same definition with ultralimits to obtain \(H_\omega(M)\). The inclusions are
+Replacing ordinary limits by ultralimits defines \(H_\omega(M)\). The quotient lesson already defines \(C_\omega(M)\) and \(T_\omega(M)\). FH5's complete varying-multiplier estimate proves
 \[
-T(M)\subset H(M)\subset C(M),\qquad
-T_\omega(M)\subset H_\omega(M)\subset C_\omega(M).
+T(M)\subseteq H(M)\subseteq C(M),\qquad
+T_\omega(M)\subseteq H_\omega(M)\subseteq C_\omega(M).
 \tag{3}
 \]
 
-There are two distinct selection operations. An ordinary nonvanishing witness can be restricted to an increasing subsequence on which it remains uniformly nonvanishing. An ultrafilter witness can be converted to an ordinary witness by choosing indices satisfying successively larger finite collections of commutator tests.
+The normalization \(x_n-\varphi(x_n)1\) detects scalar-triviality in either mode. If \(x_n-\lambda_n1\) tends strongly* to zero, positive-functional Schwarz gives \(\varphi(x_n)-\lambda_n\to0\), so the normalized difference does too. Conversely, that normalized difference itself supplies the bounded scalar approximation, since \(|\varphi(x_n)|\leq\|x_n\|\).
+
+**Exercise 2.** For a bounded scalar sequence \(\lambda_n1\), identify its quotient image and decide whether its lack of ordinary convergence can contradict fullness.
+
+*Solution.* Compactness of the bounded scalar disk gives \(\lambda=\lim_\omega\lambda_n\). The scalar difference \((\lambda_n-\lambda)1\) has both state square seminorms equal to \(|\lambda_n-\lambda|^2\), so its quotient is zero. The image is \(\lambda1\). All these sequences are scalar-trivial, including alternating or other nonconvergent ordinary scalar sequences. Fullness tests distance from bounded scalars; it does not require the scalar coefficients themselves to converge ordinarily.
 
 **Lemma 1.1.** Let \((\psi_j)\) be norm dense in the normal state space.
 
@@ -38,16 +178,24 @@ If \(x\in C_\omega(M)\) and
 \]
 there is an increasing sequence \(n(k)\) such that \(x_{n(k)}\) is ordinary centralizing and its squared scalar distance is at least \(\delta/2\). If \(x,y\in C_\omega(M)\) and their commutator has positive limiting squared seminorm, the same selection makes both subsequences ordinary centralizing with a uniformly nonvanishing commutator.
 
-**Proof.** For (4), intersect the \(\omega\)-large scalar-distance set with the finitely many sets
+**Proof.** In the scalar case, its squared-distance ultralimit makes the set with squared distance at least \(\delta/2\) large. At step \(k\), intersect it with the finite collection
 \[
-\|[x_n,\psi_j]\|<1/k,\qquad j\le k.
+\{n:\|[x_n,\psi_j]\|<1/k\},\qquad j\leq k.
 \tag{5}
 \]
-That intersection belongs to \(\omega\), hence is infinite. Choose \(n(k)>n(k-1)\) in it. For a pair include the corresponding tests for \(y_n\) and the commutator lower bound instead. Every fixed state commutator tends to zero on the selected subsequence. Uniform boundedness and norm density extend this to all normal functionals. \(\square\)
+Every set is large by centralizing. Intersect also with the cofinite set of indices greater than the previous selected index. The intersection is nonempty, so choose \(n(k)\) there. This gives the increasing sequence and its lower bound.
 
-The scalar normalization in (4) detects triviality. If \(x_n-\lambda_n1\to0\) strong*, Cauchy–Schwarz gives \(\varphi(x_n)-\lambda_n\to0\); thus \(x_n-\varphi(x_n)1\to0\) strong*. The converse is immediate.
+For the pair assertion, take half the positive commutator squared-seminorm limit as the lower bound and include the corresponding \(y_n\)-tests in the same finite intersection. Both sequences are bounded. For every fixed \(\psi_j\), their selected commutator norms tend to zero. The estimate
+\(\|[x,\psi-\psi_j]\|\leq2\|x\|\|\psi-\psi_j\|\)
+extends this to all normal states. NT1's complete four-positive-functional decomposition extends state tests to every normal functional. Thus the selected scalar or pair witnesses are ordinary centralizing, with the required uniformly positive distance or commutator. \(\square\)
 
-## 2. Fullness is independent of the ultrafilter
+**Exercise 1.** Explain why these selected indices can be strictly increasing and why that matters for a witness.
+
+*Solution.* Each finite-test intersection lies in a free ultrafilter and is therefore infinite. The set \(\{1,\ldots,n(k-1)\}\) is finite. Its complement is large, and intersecting with it leaves a large nonempty set from which to choose \(n(k)\). Then \(n(k)>n(k-1)\). In particular no fixed original coordinate is reused indefinitely; every fixed state test is eventually among the finitely imposed tests and its bound tends to zero.
+
+<a id="2-fullness-is-independent-of-the-ultrafilter"></a>
+
+## Scalars and commutators give different tests
 
 **Theorem 2.1.** The following are equivalent:
 
@@ -57,13 +205,23 @@ The scalar normalization in (4) detects triviality. If \(x_n-\lambda_n1\to0\) st
 4. \(M_\omega=\mathbb C\) for some free ultrafilter.
 5. \(M_\omega=\mathbb C\) for every free ultrafilter.
 
-**Proof.** The quotient characterization \(T_\omega=\pi_\omega^{-1}(\mathbb C)\) equates the corresponding sequence and algebra statements. If \(M\) is full but an ultrafilter sequence is not trivial, its quotient has positive distance from the scalar \(\tau_\omega(X)1\); equivalently (4) is positive. Lemma 1.1 gives an ordinary nontrivial centralizing sequence, contradicting the preceding fullness theorem.
+**Proof.** The quotient identity \(T_\omega=\pi_\omega^{-1}(\mathbb C1)\) identifies (2) with (4), and (3) with (5), since \(\pi_\omega\) is onto.
 
-Conversely, if \(M\) is not full, that theorem gives \(x\in C(M)\setminus T(M)\). Its faithful-state scalar distance has positive limsup. Select an ordinary subsequence along which the squared distance is at least a fixed \(\delta>0\). This subsequence remains centralizing and is nontrivial along every free ultrafilter. Hence none of its central sequence algebras is scalar. \(\square\)
+Suppose \(M\) is full. The whole preceding fullness theorem says that every bounded ordinary centralizing sequence is scalar-trivial. If \(x\in C_\omega(M)\) were not scalar-trivial, its quotient \(X\) would be nonscalar. Expanding the state square norms gives
+\[
+\|x_n-\varphi(x_n)1\|_{\varphi,\#}^2
+=\|x_n\|_{\varphi,\#}^2-|\varphi(x_n)|^2.
+\]
+The scalar ultraweak limit and the trace-square identity therefore identify its ultralimit with
+\[
+\tau_\omega(X^*X)-|\tau_\omega(X)|^2
+=\|X-\tau_\omega(X)1\|_{2,\omega}^2>0.
+\]
+Faithfulness supplies strict positivity for the nonscalar centered element. Lemma 1.1 makes an ordinary centralizing sequence with this scalar distance uniformly positive. The scalar-normalization criterion contradicts fullness. This proves the every-ultrafilter assertions, and hence the some-ultrafilter assertions.
 
-This criterion retains the scalar-trivial space \(T_\omega\); fullness does not mean that every centralizing sequence converges to zero.
+If \(M\) is not full, the same complete fullness theorem supplies \(x\in C(M)\setminus T(M)\). The squared normalized faithful-state distance does not tend to zero, so its limsup is positive. Choose an increasing ordinary subsequence on which it is at least a fixed positive \(\delta\). This sequence, now indexed by its subsequence position, remains ordinary centralizing. Along any free ultrafilter its squared normalized distance is still at least \(\delta\), and the displayed quotient identity makes its class nonscalar. Thus no free-ultrafilter quotient is scalar. This contrapositive proves all remaining implications without changing the factor or its faithful-state topology. \(\square\)
 
-## 3. Hypercentrality is also independent of the ultrafilter
+<a id="3-hypercentrality-is-also-independent-of-the-ultrafilter"></a>
 
 **Theorem 3.1.** The following are equivalent:
 
@@ -79,185 +237,92 @@ H_\omega(M)=\pi_\omega^{-1}(Z(M_\omega)).
 \tag{6}
 \]
 
-**Proof.** The commutator of two centralizing sequences is centralizing, and its quotient is their quotient commutator. The zero ideal characterization gives (6) and the equivalence of the respective sequence and algebra conditions.
+**Proof.** Products and commutators of bounded centralizing sequences are centralizing. Their quotient commutator is zero precisely when their coordinate commutator is in \(J_\omega\), that is, strongly*-zero along \(\omega\). Surjectivity of \(\pi_\omega\) therefore gives (6) and identifies each universal hypercentrality assertion with its commutative-quotient assertion.
 
-If two ultrafilter-centralizing sequences have a nonzero quotient commutator, its limiting squared faithful-state seminorm is positive. The pair version of Lemma 1.1 makes them ordinary centralizing sequences with a nonvanishing commutator. Thus ordinary universal hypercentrality implies every ultrafilter version.
+If a quotient is noncommutative, choose two classes with nonzero commutator and bounded centralizing representatives \(x_n,y_n\). Faithfulness of its trace makes the limiting squared faithful-state seminorm of their commutator positive. The pair part of Lemma 1.1 produces two ordinary centralizing sequences with a uniformly nonvanishing commutator. They contradict \(C(M)=H(M)\). Consequently ordinary universal hypercentrality gives the every-ultrafilter version.
 
-If ordinary universal hypercentrality fails, choose a pair in \(C(M)\) whose commutator does not tend strong* to zero. Along a synchronous subsequence its squared seminorm is bounded below by a positive constant. The two restricted sequences remain ordinary centralizing, so their commutator survives every free ultrafilter. Thus no ultrafilter version can be commutative. \(\square\)
+Conversely, if \(C(M)\ne H(M)\), choose \(x,y\in C(M)\) whose commutator does not tend strongly* to zero. Its bounded faithful-state seminorm has positive squared limsup. Restrict both sequences to the same increasing indices on which this square is bounded below by a positive constant. Along every free ultrafilter the two restricted sequences remain centralizing and their quotient commutator has positive squared trace norm. Thus none of the quotients is commutative. This proves the converse from any some-ultrafilter assertion, and completes all five equivalences. \(\square\)
 
-Being commutative is a weaker conclusion than being scalar. Theorem 2.1 and Theorem 3.1 deliberately keep these two tests separate.
+**Exercise 3.** Starting from ordinary failure of hypercentrality, prove noncommutativity of \(M_\omega\) for every free ultrafilter.
 
-## 4. Moving a commutator into every corner
+*Solution.* Failure means that some bounded pair \(x,y\in C(M)\) has a commutator that is not strongly*-zero. Its squared \(\varphi,\#\)-seminorm has positive limsup. Choose a common increasing subsequence on which that square is at least \(\delta>0\), and restrict both members of the pair synchronously. Each restriction remains ordinary centralizing and hence is centralizing along any free ultrafilter. The quotient trace-square formula makes the quotient commutator's squared \(2\)-norm at least \(\delta\). It is nonzero by faithfulness, so the quotient is noncommutative. The synchronous choice preserves the witness pair at each coordinate.
+
+<a id="4-moving-a-commutator-into-every-corner"></a>
+
+## Every nonzero corner receives a commutator
 
 **Theorem 4.1.** If \(M_\omega\) is noncommutative, it has no nonzero abelian projection. Consequently it is type \(\mathrm{II}_1\). The conclusion describes its type and does not assert trivial center.
 
-**Proof.** Theorem 3.1 supplies bounded ordinary centralizing sequences \(x_k,y_k\) with
+**Proof.** By the just-proved pair selection, noncommutativity supplies bounded ordinary centralizing sequences \(x_k,y_k\) with
 \[
-\liminf_{k\to\infty}\|[x_k,y_k]\|_{\varphi,\#}^2>0.
+\liminf_k\|[x_k,y_k]\|_{\varphi,\#}^2>0.
 \tag{7}
 \]
-Put \(c_k=[x_k,y_k]\) and
+Put \(c_k=[x_k,y_k]\). Products, adjoints and commutators remain ordinary centralizing. The scalar trace construction of the preceding quotient lesson gives
 \[
 \kappa=\lim_{k\to\omega}\|c_k\|_{\varphi,\#}^2
-=\tau_\omega(c^*c)>0.
+=\tau_\omega(c^*c)>0,
 \tag{8}
 \]
-Both \(c^*c\) and \(cc^*\) have scalar ultraweak limit \(\kappa1\).
+and both square sequences \(c_k^*c_k,\ c_kc_k^*\) have scalar ultraweak limit \(\kappa1\).
 
-Fix a nonzero projection \(F\in M_\omega\). By exact projection lifting, choose \(f=(f_n)\in C_\omega(M)\) representing it. Let
-\(\beta=\tau_\omega(F)>0\). Since \(\varphi(f_n)\to_\omega\beta\), the set where \(\varphi(f_n)\ge\beta/2\) belongs to \(\omega\). Replace \(f_n\) by \(1\) outside that set, preserving its representative and centralizing property. Thus we may assume the bound holds at every coordinate.
+Fix any nonzero projection \(F\in M_\omega\). Exact lifting gives centralizing coordinate projections \(f_n\) representing \(F\). Faithfulness gives \(\beta=\tau_\omega(F)>0\), and \(\varphi(f_n)\to_\omega\beta\). Replace \(f_n\) by \(1\) off the large set where \(\varphi(f_n)\geq\beta/2\). This keeps the quotient and centralizing class and makes that lower bound hold at every coordinate, as Exercise 6 verifies.
 
-For each fixed \(n\), ordinary centrality gives
-\([f_n,x_k]\to0\) and \([f_n,y_k]\to0\) strong*. Their differences are bounded strong*-null sequences, hence belong to the zero ideal along \(\omega\). Multiplication by a centralizing sequence preserves that ideal. Fixed multiplication by \(f_n\) also preserves strong* convergence. Expanding the commutator therefore gives, as \(k\to\omega\),
+Now fix \(n\) while taking a \(k\)-limit. Ordinary strong* centrality gives \([f_n,x_k]\to0\) and \([f_n,y_k]\to0\) strongly*. The exact expansion is
 \[
 [f_nx_kf_n,f_ny_kf_n]-f_nc_kf_n
-\longrightarrow0\quad\text{strong*}.
+=f_nx_k[f_n,y_k]f_n-f_ny_k[f_n,x_k]f_n.
 \tag{9}
 \]
-Also \([f_n,c_k]\to0\) strong*, so compressing either side of \(c_k\) gives the same limit.
-Consequently
+FH5 controls the products of the varying centralizing \(x_k,y_k\) with these bounded strongly*-zero commutators. Fixed multiplication by \(f_n\) then preserves convergence. Thus (9) tends strongly* to zero, ordinarily and along \(\omega\).
+
+The same argument applies to \([f_n,c_k]\). For example
+\[
+(f_nc_kf_n)^*(f_nc_kf_n)-f_nc_k^*c_kf_n
+=f_nc_k^*[f_n,c_k]f_n
+\]
+is strongly*-zero by FH5. The adjoint square has the corresponding expansion with \(c_k^*\). Pair the two scalar ultraweak square limits with the fixed normal positive functional \(a\mapsto\varphi(f_naf_n)\). This proves both identities
 \[
 \begin{aligned}
-\lim_{k\to\omega}
-\varphi((f_nc_kf_n)^*(f_nc_kf_n))
+\lim_{k\to\omega}\varphi((f_nc_kf_n)^*(f_nc_kf_n))
 &=\kappa\varphi(f_n),\\
-\lim_{k\to\omega}
-\varphi((f_nc_kf_n)(f_nc_kf_n)^*)
+\lim_{k\to\omega}\varphi((f_nc_kf_n)(f_nc_kf_n)^*)
 &=\kappa\varphi(f_n).
 \end{aligned}
 \tag{10}
 \]
-For example, the first expression differs by a vanishing scalar from
-\(\varphi(f_nc_k^*c_kf_n)\), whose limit follows by pairing the scalar ultraweak limit of \(c_k^*c_k\) with the fixed normal functional \(a\mapsto\varphi(f_naf_n)\). This also explains why both halves of the symmetric seminorm are controlled.
+The triangle inequality for the two state square seminorms makes strongly*-small bounded changes preserve their limiting squares, so the compressed commutator in (9) has the same limiting squared symmetric seminorm. It is at least \(\kappa\beta/2\).
 
-For each \(n\), choose \(k(n)\ge n\) so large, within the relevant \(\omega\)-large finite-test sets, that
+For each \(n\), choose \(k(n)\geq n\) in the relevant finite intersection of large sets so that
 \[
 \begin{aligned}
 \|[x_{k(n)},\psi_j]\|+\|[y_{k(n)},\psi_j]\|
-&<1/n&& (j\le n),\\
+&<1/n&&(j\leq n),\\
 \|[f_nx_{k(n)}f_n,f_ny_{k(n)}f_n]\|_{\varphi,\#}^2
-&\ge\kappa\beta/4.
+&\geq\kappa\beta/4.
 \end{aligned}
 \tag{11}
 \]
-The second choice is possible by (9)–(10), whose limit is at least \(\kappa\beta/2\). The first is possible because \(x_k,y_k\) are ordinary centralizing.
+The second set is large by the strictly larger limit in (10); the first tests hold eventually because \(x_k,y_k\) are ordinary centralizing. Normal-state density and NT1's positive-functional decomposition make the reindexed \(x_{k(n)},y_{k(n)}\) ordinary centralizing, with their common uniform bounds.
 
-The reindexed sequences \(x_{k(n)},y_{k(n)}\) are ordinary centralizing by the first line of (11). Multiplying them on both sides by \(f_n\) gives centralizing sequences along \(\omega\). Their images lie in \(FM_\omega F\), and their commutator has positive quotient \(2\)-norm by the second line. Thus every nonzero corner is noncommutative.
+Their products with \(f_n\) are centralizing along \(\omega\), by the sequence C* algebra property. The two quotient images lie in \(FM_\omega F\). Their commutator has squared trace norm at least \(\kappa\beta/4>0\) by (11) and the quotient seminorm identity. Hence this prescribed corner is noncommutative.
 
-A projection is abelian precisely when its corner is commutative. There are therefore no nonzero abelian projections. The finite type decomposition eliminates the type I part; the faithful normalized trace makes the remaining type type \(\mathrm{II}_1\). \(\square\)
+Since \(F\) was arbitrary, there is no nonzero abelian projection. The quotient is finite with a faithful normal normalized trace by its completed construction. FH1's whole-center finite type criterion gives type \(\mathrm{II}_1\), and its full halving proof gives a unital two-by-two matrix system even without a separable predual for the quotient. No assertion of a scalar center has been made here. \(\square\)
 
-By the general projection-halving input, such an algebra contains a unital two-by-two matrix unit system, even if its predual is nonseparable or its center is nontrivial. The [next lesson](strong-stability-and-tensor-absorption.md) uses the exact lifts of that system.
+**Exercise 5.** Identify the normal functional used to evaluate the scalar limit of \(c_k^*c_k\) in (10), and explain which projection is fixed during that limit.
 
-## 5. The center of the hyperfinite central sequence algebra
+*Solution.* For the fixed coordinate \(n\), use \(\psi_n(a)=\varphi(f_naf_n)\). NT1's fixed left and right multiplier maps keep a normal functional normal. Its value at \(1\) is \(\varphi(f_n)\). The scalar ultraweak limit \(c_k^*c_k\to_\omega\kappa1\) therefore gives \(\psi_n(c_k^*c_k)\to_\omega\kappa\varphi(f_n)\). This is the \(k\)-limit with \(f_n\) fixed. Only after that limit supplies a large set is the index \(k(n)\) chosen.
 
-Let
-\[
-R=\overline{\bigotimes_{j\ge1}}(M_2,\operatorname{tr}_2),
-\qquad D_r=\bigotimes_{j=1}^rM_2.
-\tag{12}
-\]
-Its normalized trace is \(\tau\), and \(N_r=D_r'\cap R\) is the remaining tensor tail, itself a \(\mathrm{II}_1\) factor.
-Let \(E_r\) be the compact-unitary average onto \(N_r\). For any bounded centralizing sequence \(a_n\),
-\[
-\|E_r(a_n)-a_n\|_{2,\tau}\longrightarrow0
-\tag{13}
-\]
-ordinarily or along \(\omega\), as appropriate, for each fixed \(r\). Indeed, expand tail averaging using the finitely many matrix units of \(D_r\); its difference from the identity is a finite sum of fixed multiples of commutators. Centrality and bounded strong* convergence give (13).
+**Exercise 6.** Why may the lower bound \(\varphi(f_n)\geq\beta/2\) be imposed at every coordinate without changing \(F\) or its centralizing representative?
 
-**Lemma 5.1.** If \(N\) is a finite factor with faithful normalized trace and \(\tau(b)=0\), there is a unitary \(u\in N\) such that
-\[
-\|b-ubu^*\|_2\ge\frac12\|b\|_2.
-\tag{14}
-\]
+*Solution.* The original projection lift has \(\varphi(f_n)\to_\omega\beta\), so \(S=\{n:\varphi(f_n)\geq\beta/2\}\) is large. Leave it unchanged on \(S\) and use \(1\) off \(S\). The two lifts agree on a large set, so their difference has zero limit in every bounded strong* seminorm. The altered lift still satisfies every predual centralizing test, because its commutator sequence agrees with the original on \(S\). It represents the same quotient projection. Finally \(\beta\leq1\), so \(\varphi(1)=1\geq\beta/2\) at the replaced coordinates too.
 
-**Proof.** Take the ultraweakly closed convex hull \(K\) of the bounded unitary orbit of \(b\). It is compact. The \(2\)-norm is ultraweakly lower semicontinuous: it is the supremum of its scalar pairings against bounded trace vectors of \(2\)-norm at most one. Thus \(K\) has a point of least \(2\)-norm. Strict Hilbert-space convexity and trace faithfulness make it unique. Unitary conjugation preserves \(K\) and the \(2\)-norm, so this point is central, hence scalar. Every point of \(K\) has trace zero by normality, so that scalar is zero.
+The [tensor-absorption lesson](strong-stability-and-tensor-absorption.md) can now use FH1's full matrix system and the preceding exact coordinate lifts. The corner theorem and the separate dyadic center theorem supply their respective type and factor conclusions.
 
-If (14) failed for every unitary, the entire orbit would lie in the \(2\)-ball of radius \(\|b\|_2/2\) centered at \(b\), and so would \(K\), by convexity and the same lower semicontinuity. But \(0\in K\) and its distance from \(b\) is \(\|b\|_2\). This is impossible unless \(b=0\), when every unitary works. \(\square\)
+<a id="references"></a>
 
-**Theorem 5.2.** Every ordinary hypercentral sequence in \(R\) is scalar-trivial. For every free ultrafilter, \(R_\omega\) is a factor of type \(\mathrm{II}_1\).
+## Freely accessible proofs and the corner comparison
 
-**Proof.** First suppose an ordinary centralizing sequence \(a_n\) is not scalar-trivial. Select increasing indices \(k(r)\) with
-\[
-\|a_{k(r)}-\tau(a_{k(r)})1\|_2\ge\delta>0,\qquad
-\|E_r(a_{k(r)})-a_{k(r)}\|_2\le2^{-r}.
-\tag{15}
-\]
-This is possible because scalar distance has positive limsup and (13) holds for each fixed \(r\).
-Put \(b_r=E_r(a_{k(r)})-\tau(a_{k(r)})1\in N_r\). It is trace zero, and choose \(u_r\in\mathcal U(N_r)\) satisfying (14).
-Then
-\[
-\|a_{k(r)}-u_ra_{k(r)}u_r^*\|_2
-\ge\frac12(\delta-2^{-r})-2^{1-r}.
-\tag{16}
-\]
-Define a unitary sequence on the original indices by putting \(v_{k(r)}=u_r\) and \(v_n=1\) elsewhere. For every fixed \(s\), these unitaries eventually commute with \(D_s\): the exceptional finitely many \(k(r)\) with \(r<s\) cause no asymptotic problem. Bounded \(2\)-norm density of the finite stages extends centrality to all of \(R\). In a finite algebra centrality and centralizing coincide. But (16) stays positive on the selected indices. Thus the original \(a_n\) is not hypercentral, proving \(H(R)=T(R)\).
+The whole mathematical route is the completed quotient and ordinary-central-sequence construction together with [FH0–5](../components/fullness-hypercentrality-and-tail-inputs.md). These inputs include the entire Lebesgue/Lp construction for the nonfactor example, canonical finite-factor trace normality, full-center comparison and halving, compact-orbit displacement, the normal finite matrix tail map, and the two-square perturbation estimate. The proofs do not use an unspecified type decomposition, Haar average, direct integral, or omitted similar-argument step.
 
-Now let \(A=\pi_\omega(a_n)\) be a central quotient element that is not scalar. After subtracting the scalar representative \(\tau(a_n)1\), assume \(\tau(a_n)=0\) and
-\(\delta=\|A\|_{2,\omega}>0\).
-For each \(r\), choose nested \(\omega\)-large sets \(B_r\subset\{n\ge r\}\) on which
-\[
-\|a_n\|_2\ge\delta/2,\qquad
-\|E_r(a_n)-a_n\|_2\le1/r.
-\tag{17}
-\]
-This uses (13) and the quotient \(2\)-norm limit. Let \(r(n)\) be the largest \(r\le n\) with \(n\in B_r\), and set \(r(n)=0\) if there is none. Then \(r(n)\to_\omega\infty\).
-
-When \(r(n)>0\), put \(b_n=E_{r(n)}(a_n)\in N_{r(n)}\) and choose \(u_n\) there by (14); otherwise put \(u_n=1\). For each fixed \(s\), \(u_n\) commutes with \(D_s\) on the \(\omega\)-large set where \(r(n)\ge s\). Finite-stage \(2\)-density gives centrality along \(\omega\), and the finite-algebra commutator estimate gives centralizing. On \(B_1\),
-\[
-\|a_n-u_na_nu_n^*\|_2
-\ge\delta/4-\frac{5}{2r(n)}.
-\tag{18}
-\]
-Its ultralimit is at least \(\delta/4>0\). This contradicts centrality of \(A\) in the quotient. Hence \(Z(R_\omega)=\mathbb C\).
-
-Finally, the matrix units in the individual tensor legs of (12) are ordinary centralizing sequences: they commute with every fixed finite initial stage and are uniformly bounded. They give a unital \(M_2\) in every \(R_\omega\), so these algebras are noncommutative. Theorem 4.1 gives type \(\mathrm{II}_1\), now with the trivial center just proved. \(\square\)
-
-## 6. Exercises with complete solutions
-
-**Exercise 1.** In Lemma 1.1, explain why the selected indices may be increasing.
-
-*Solution.* Each finite-test intersection belongs to a free ultrafilter, hence is infinite. Removing the finite set \(\{1,\ldots,n(k-1)\}\) leaves another member of the ultrafilter. Choose \(n(k)\) in that remainder. This also ensures no fixed original coordinate is reused indefinitely.
-
-**Exercise 2.** For bounded scalar sequences \(\lambda_n\), compute the quotient image and decide whether they contradict fullness.
-
-*Solution.* Their quotient image is \((\lim_\omega\lambda_n)1\). They are scalar-trivial, whether or not they converge ordinarily. Fullness requires that all centralizing sequences be equivalent to such scalar sequences, so they satisfy its criterion.
-
-**Exercise 3.** Prove that ordinary nonhypercentrality produces noncommutative quotient algebras for every free ultrafilter.
-
-*Solution.* Choose a centralizing pair whose commutator seminorm has positive limsup. Restrict both to the same increasing subsequence on which the squared seminorm is at least \(\delta>0\). Both remain centralizing in the ordinary sense. Along any free ultrafilter their quotient commutator has squared \(2\)-norm at least \(\delta\), so that quotient is noncommutative.
-
-**Exercise 4.** Why is a fixed noncommuting pair insufficient by itself to prove that a finite algebra is type \(\mathrm{II}_1\)?
-
-*Solution.* The finite algebra \(M_2(\mathbb C)\oplus\mathbb C\) has noncommuting elements in its first summand, yet the projection onto its second summand is abelian. Theorem 4.1 excludes every nonzero abelian corner by constructing a new commutator inside each chosen corner. Merely having one nonzero commutator would not exclude a type I summand.
-
-**Exercise 5.** In (10), identify the normal functional that tests the scalar limit of \(c_k^*c_k\).
-
-*Solution.* For fixed \(n\), it is \(\psi_n(a)=\varphi(f_naf_n)\). Fixed multiplication and normality of \(\varphi\) make it normal. Pairing \(c_k^*c_k\to_\omega\kappa1\) ultraweakly with \(\psi_n\) gives the limit \(\kappa\psi_n(1)=\kappa\varphi(f_n)\). The projection is fixed while this particular \(k\)-limit is taken.
-
-**Exercise 6.** Explain why the positive lower bound on \(\varphi(f_n)\) may be imposed at all coordinates.
-
-*Solution.* The set \(S=\{n:\varphi(f_n)\ge\beta/2\}\) belongs to \(\omega\). Replace \(f_n\) by \(1\) outside \(S\). The original and altered sequences agree on \(S\), so their difference has zero ultralimit in every seminorm and their quotient images agree. Every centralizing limit also agrees because the commutator sequences agree on \(S\).
-
-**Exercise 7.** Give an example of a finite type \(\mathrm{II}_1\) algebra with nontrivial center.
-
-*Solution.* \(L^\infty([0,1])\bar\otimes R\), with product of Lebesgue integration and the normalized trace of \(R\), is finite and has only type II fibers. Its center is \(L^\infty([0,1])\otimes1\). Thus “type \(\mathrm{II}_1\)” alone does not imply “factor.” This example illustrates the type distinction; it is not an assertion that this particular algebra occurs as a central sequence algebra.
-
-**Exercise 8.** In Lemma 5.1, prove uniqueness of the point of least \(2\)-norm.
-
-*Solution.* If distinct \(x,y\in K\) had equal minimum norm \(m\), the parallelogram identity would give
-\(\|(x+y)/2\|_2^2=m^2-\|x-y\|_2^2/4<m^2\).
-Trace faithfulness makes \(\|x-y\|_2>0\). The midpoint lies in the convex set \(K\), a contradiction.
-
-**Exercise 9.** Verify that the sequence \(v_n\) inserted at selected indices in (16) is central.
-
-*Solution.* Fix \(D_s\). For \(n=k(r)\) with \(r\ge s\), \(v_n\in D_r'\cap R\subset D_s'\cap R\); elsewhere \(v_n=1\). Only the finitely many selected indices with \(r<s\) are exceptions. If \(x\in R\), approximate it in \(2\)-norm by a bounded finite-stage element \(x_0\). The bound \(\|[v_n,x-x_0]\|_2\le2\|x-x_0\|_2\), together with eventual commutation with \(x_0\), proves centrality. Finite trace then gives centralizing.
-
-**Exercise 10.** Derive the constant in (18).
-
-*Solution.* Let \(\varepsilon=\|a_n-b_n\|_2\le1/r(n)\). Then \(\|b_n\|_2\ge\|a_n\|_2-\varepsilon\ge\delta/2-\varepsilon\). The unitary chosen by (14) moves \(b_n\) by at least \(\delta/4-\varepsilon/2\). Replacing \(b_n\) by \(a_n\) on both sides loses at most \(2\varepsilon\). The final lower bound is \(\delta/4-(5/2)\varepsilon\), as claimed.
-
-## References
-
-The free sources are Dusa McDuff, [*On the structure of II₁-factors*](https://www.mathnet.ru/php/getFT.phtml?jrnid=rm&option_lang=eng&paperid=5426&what=fullteng), Russian Mathematical Surveys 25(6) (1970), Lemmas 1.1–1.4 and Theorem 1.1, printed pp.32–35 (PDF pp.4–7); and Alain Connes, [*Outer conjugacy classes of automorphisms of factors*](https://www.numdam.org/item/ASENS_1975_4_8_3_383_0/), Theorem 2.2.1, implication (d) ⇒ (e), printed pp.400–401 (PDF pp.19–20).
-
-McDuff works with separable finite factors and the tracial 2-norm. In Theorem 1.1 she proves part (iii), leaving parts (i) and (ii) to a similar argument. Here both ordinary and ultrafilter selections are written out, with the faithful-state seminorms needed for arbitrary factors. The corner argument follows Connes's method and keeps the center: noncommutativity gives type II₁, without asserting factoriality. The hyperfinite tensor-tail argument separately proves triviality of its central sequence algebra's center. The preceding fullness theorem, finite type decomposition and projection halving remain declared inputs whose free prerequisite closure is not yet complete.
+Alain Connes, [*Outer conjugacy classes of automorphisms of factors*](https://www.numdam.org/articles/10.24033/asens.1295/), Theorem 2.2.1, implication (d) \(\Rightarrow\) (e), printed pp.400–401 (PDF pp.19–20), is the freely accessible historical corner-method comparison. Its hypothesis is a factor with separable predual. The argument chooses a new pair for each fixed lifted corner; our proof writes both faithful-state square tests, the fixed-coordinate versus reindexed limits, and the \(\kappa\beta/4\) bound explicitly. Its subsequent implication (e) \(\Rightarrow\) (a) refers to Araki's absorption theorem and is not a premise here.

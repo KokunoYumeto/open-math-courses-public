@@ -136,6 +136,41 @@ fig.text(.5,.031,'R9.10–R9.18, exact sets. Dashed boundary segments are exclud
 fig.tight_layout(rect=(0,.13,1,.87),w_pad=4)
 save(fig,'brown-neighborhood')
 
+
+fig, ax = plt.subplots(figsize=(12.4, 7.2))
+ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis('off')
+box = {'boxstyle':'round,pad=.45', 'fc':'#f5f8fb', 'ec':BLUE, 'lw':1.2}
+nodes = {
+    'nw':(.18,.80,r'$(a,n)$'),
+    'ne':(.78,.80,r'$(\theta_t(a)c_t(n),\,n)$'),
+    'sw':(.18,.40,r'$(g(a)h_g(n),\,gn)$'),
+    'se':(.78,.40,r'$S_g\Theta_t(a,n)=\Theta_tS_g(a,n)$')
+}
+for _, (x,y,label) in nodes.items():
+    ax.text(x,y,label,ha='center',va='center',fontsize=15,bbox=box)
+for start,end,label,where in [
+    ((.27,.80),(.63,.80),r'$\Theta_t$',(.45,.845)),
+    ((.31,.40),(.57,.40),r'$\Theta_t$',(.44,.445)),
+    ((.18,.735),(.18,.47),r'$S_g$',(.22,.60)),
+    ((.78,.735),(.78,.47),r'$S_g$',(.82,.60))]:
+    ax.annotate('',xy=end,xytext=start,
+                arrowprops={'arrowstyle':'->','color':BLUE,'lw':1.8})
+    ax.text(*where,label,ha='center',va='center',fontsize=16,color=BLUE)
+ax.text(.5,.97,'Two commuting actions on the same extension',ha='center',
+        va='center',fontsize=19)
+ax.text(.5,.91,r'Every vertex is $E_m$; $g\in\Gamma$ and $t\in\mathbb{R}$ are arbitrary.',
+        ha='center',fontsize=12,color=GREY)
+ax.text(.5,.235,r'$g(c_t(n))h_g(n)=\theta_t(h_g(n))c_t(gn)$',
+        ha='center',fontsize=17,color=BLUE)
+ax.text(.5,.18,'Equality of the two paths, after cancelling their common coefficient action',
+        ha='center',fontsize=11)
+ax.text(.5,.09,r'$c_t(n)c_t(p)m(n,p)=\theta_t(m(n,p))c_t(np)$',
+        ha='center',fontsize=16)
+ax.text(.5,.035,r'The second condition makes $\Theta_t$ multiplicative.  Exact identities: R10.3–R10.8.',
+        ha='center',fontsize=11,color=GREY)
+fig.tight_layout(pad=1.2)
+save(fig,'restriction-compatibility')
+
 manifest={
  'license':'Original mathematical figure source and model data: CC0-1.0; matplotlib fonts retain their terms.',
  'models':{
@@ -159,6 +194,17 @@ manifest={
     'boundary':'dashed excluded; solid at x=0 and -1/4<a<1/4 included',
     'depiction':'exact planar sets, not samples or schematic bounds'}},
  'outputs':{}
+}
+
+manifest['models']['restriction-compatibility'] = {
+ 'proof':'OA-FLOW-BRL.md R10.3–R10.8, Section 8',
+ 'objects':'Every vertex is the same Polish realization E_m of A times N.',
+ 'horizontal':'Theta_t(a,n)=(theta_t(a)c_t(n),n)',
+ 'vertical':'S_g(a,n)=(g(a)h_g(n),gn)',
+ 'commutation':'g(c_t(n))h_g(n)=theta_t(h_g(n))c_t(gn)',
+ 'multiplicativity':'c_t(n)c_t(p)m(n,p)=theta_t(m(n,p))c_t(np)',
+ 'scope':'Arbitrary g in Gamma and s,t in R, with jointly Borel compatible factors; theorem R10 proves realization.',
+ 'depiction':'Exact commutative diagram; positions are schematic, not geometric data.'
 }
 for stem in manifest['models']:
  for ext in ('png','svg'):

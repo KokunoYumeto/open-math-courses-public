@@ -897,7 +897,7 @@ Every term in \(C_g\) is finite. The elementary exponential series proves the di
 The first panel shows the exact closed supports for \(n=0,2,4\) in (RCC7.y), each with a nonzero marked center; the decay estimate is (RCC7.aa). The second shows only four members of the directed family of finite subsets, not an exhaustion of the uncountable set; (RCC7.l) and (RCC7.n) prove the full net limits. The third records the exact \(-i\) phase at \(t_0\) and the centralizing product (RCC7.h). The fourth uses the exact translation sign and coboundary (RCC7.v)–(RCC7.w). The [reproducible drawing source](../assets/relative-commutants-central-cocycles/render.py), [coordinates and identities](../assets/relative-commutants-central-cocycles/data.json), and [SVG](../assets/relative-commutants-central-cocycles/rcc-models.svg) retain the mathematical data. Original figure and source: CC0; font terms are retained separately.
 
 <a id="rcc-8"></a>
-## 8. Five solved diagnostics
+## 8. Six solved diagnostics
 
 **Diagnostic A: which commutant is being computed?** For the trace-reference factor \(Q=B(K)\), compare the commutant of the coefficient algebra in all bounded operators with its relative commutant in its core. For the translation system (RCC7.p), compare \(N'\cap P\) with \(Z(P)\).
 
@@ -980,6 +980,97 @@ For an explicit positive-support test take \(g_+(r,q)=g(-r,q)\), supported on \(
  \tag{RCC8.h}
 \]
 Forward iteration has a growing marked value. Inverse iteration has the same derivative estimate as (RCC7.aa), with \(g_+\) and \(e^{-nr}\le e^{-n}\). Since \(T^{-1}f(r,q)=e^{-r}f(r,q+r)\) is again a smooth compact test, the assumed invariance applied to \(T^{-1}f\) also gives \(K(T^{-1}f)=K(f)\). Thus inverse iteration proves \(K(g_+)=0\). Negative support uses positive iterates; positive support uses negative iterates. Neither statement turns a finite nonzero test into zero.
+
+<a id="rcc-fixed-tensor"></a>
+**Diagnostic F: what does the fixed-tensor argument actually prove?** Realize a faithful normal semifinite \(\varphi\) on \(M\) in standard form, with modular implementers \(U_t=\Delta_\varphi^{it}\), and write
+\[
+ (\rho_t\xi)(r)=\xi(r+t),\qquad
+ C=M\rtimes_{\sigma^\varphi}\mathbb R.
+\]
+Identify \(C\) inside \(M\overline\otimes B(L^2\mathbb R)\). Then suppose a specified continuous decomposition
+\(M=N\rtimes_\beta\mathbb R\) makes \(\varphi\) its dual trace weight. Determine the inclusion needed to prove \(\pi_\varphi(M)'\cap C=Z(C)\), and decide whether it makes \(Z(C)\) the constant copy \(Z(N)\otimes1\).
+
+**Solution.** The full regular commutant theorem [CCM7](OA-FLOW-CCM.md#ccm-7) gives
+\[
+ C'=\{M'\otimes1,\ U_t\otimes\rho_t:t\in\mathbb R\}''.
+\]
+Taking its commutant, using the arbitrary-matrix tensor identity [TW1](OA-FLOW-TW.md#tw-1), proves the equality of entire represented algebras
+\[
+ C=
+ \bigl(M\overline\otimes B(L^2\mathbb R)\bigr)^{
+          \sigma^\varphi\otimes\operatorname{Ad}\rho}.
+ \tag{RCC8.i}
+\]
+Both inclusions follow from the displayed commutant theorem. Merely checking that the regular generators are fixed would prove only one inclusion. In these coordinates
+\[
+ [\pi_\varphi(x)\xi](r)=\sigma_{-r}^\varphi(x)\xi(r),
+ \qquad \lambda_\varphi(t)=1\otimes\rho_{-t}.
+ \tag{RCC8.j}
+\]
+The minus sign is required by our translation convention. The family
+\(\rho(\mathbb R)\) is nevertheless the same as
+\(\{\lambda_\varphi(t):t\in\mathbb R\}\) on the scalar factor.
+This fixed-tensor realization required no dominant weight.
+
+For the additional decomposition, the given trace satisfies
+\(\tau\beta_s=e^{-s}\tau\). The dual-weight modular formula
+[L18.1](OA-FLOW-L18.md#l18-1) gives \(M_\varphi=N\);
+the distinguished-coefficient theorem (RCC0.d), proved in
+[Section 5](#rcc-5), gives \(N'\cap M=Z(N)\).
+Thus \(\pi_\varphi(n)=n\otimes1\) for \(n\in N\).
+If \(T\in\pi_\varphi(M)'\cap C\), its scalar matrix entries lie in
+\(M\) and commute with \(N\), so lie in \(Z(N)\). Finite matrix
+compressions converge strongly to \(T\) with a common norm bound,
+proving \(T\in Z(N)\overline\otimes B(L^2\mathbb R)\).
+The first action in (RCC8.i) is trivial on this algebra. Fixedness
+therefore implies
+\[
+ \begin{aligned}
+ T&\in
+ \bigl(Z(N)\overline\otimes B(L^2\mathbb R)\bigr)
+           \cap\{1\otimes\rho_t:t\in\mathbb R\}'\\
+  &=Z(N)\overline\otimes\rho(\mathbb R)' .
+ \end{aligned}
+ \tag{RCC8.k}
+\]
+For the last equality, scalar Fourier transform identifies
+\(\rho(\mathbb R)'\) with the full multiplication algebra, by
+[ND's scalar commutant proof](OA-FLOW-ND.md#nd-multiplication).
+The normal slices and dyadic block approximation in
+[CORE9](OA-FLOW-CORE.md#core-9), applied to \(Z(N)\), then recover
+the entire tensor product; no common measurable operator field
+on the coefficient Hilbert space is assumed.
+In particular \(T\) commutes with every \(\lambda_\varphi(t)\).
+It already commutes with \(\pi_\varphi(M)\), so it commutes with
+the algebra these families generate. This is the sufficient
+conclusion \(T\in Z(C)\).
+
+It does not follow that \(Z(C)=Z(N)\otimes1\) in these coordinates.
+Indeed, if \(z\in Z(N)\) and \(\beta_s(z)\ne z\), the coefficient
+\(\pi_\varphi(z)=z\otimes1\) fails to commute with the coefficient
+\(\pi_\varphi(u_s)\), since \(u_szu_s^*=\beta_s(z)\).
+Such examples occur even with a properly infinite centralizer:
+tensor the translation system (RCC7.p) with \(B(\ell^2)\) and its
+usual trace. Reordering its regular Hilbert tensor factors gives
+\[
+ \bigl(L^\infty(\mathbb R)\overline\otimes B(\ell^2)\bigr)
+       \rtimes_{\theta\otimes\mathrm{id}}\mathbb R
+ \cong B(L^2\mathbb R)\overline\otimes B(\ell^2),
+\]
+normally and onto, by the generators in (RCC7.t).
+The coefficient trace still scales by \(e^{-s}\); its dual
+weight has this properly infinite coefficient algebra as
+centralizer, by L18.1. The central coefficient
+\(z=1_{[0,\infty)}\otimes1\) changes under any nonzero translation.
+Consequently it is not central in the core.
+The useful inclusion (RCC8.k) must retain the scalar commutant
+factor and the remaining commutation with \(\pi_\varphi(M)\).
+
+This is a conditional second proof once a continuous
+decomposition is supplied. The state-corner proof in Sections
+1–5 already covers every algebra without that premise.
+For a finite factor, the tracial chart in [CORE9](OA-FLOW-CORE.md#core-9)
+applies directly; a dominant-weight choice is unnecessary.
 
 <a id="rcc-reading"></a>
 ## Further reading

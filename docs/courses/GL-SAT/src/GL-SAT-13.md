@@ -7109,9 +7109,317 @@ This finite dg graph checks the full projection formula; it is not identified wi
 
 Theorem C.43.1.1 proves the exact square and its quasi-isomorphism, including canonical rectification, index maps and unit insertions. Theorem C.43.2.1 proves the full-target unital twisting representative and its actual functor recovery. Theorem C.43.3.1 transfers the whole graph after its prescribed modules, retaining their exact products and all grafting. Exercises C.43.4.1–C.43.4.2 prove the scalar differential and higher graph projection displayed here. Editable SVG source. Related free discussion of scalar correction terms: [Hirsh–Millès, Corrigendum for Curved Koszul duality theory](https://arxiv.org/pdf/2311.05631).
 
+### C.44. Formal unit vertices and finite execution indices
+
+To retain unit comparisons, a nullary operation vertex must be distinguished from an external input leaf. A unary operation vertex is also retained until its identity comparison is recorded. Their contraction index has parallel arrows; replacing it by a poset would remove part of its actual coherence diagram.
+
+#### C.44.1. The complete finite formal tree index
+
+**Lemma C.44.1.1.** Fix \(n\ge0,L\ge1\). Let \(\mathcal T_{n,L}\) have as objects planar rooted trees with \(n\) ordered external input leaves and between one and \(L\) operation vertices. Every operation vertex may have any arity, including zero or one. An external input leaf is a separate kind of endpoint and is never contracted. A morphism remembers a selected set of original edges between operation vertices to contract, with the resulting planar quotient identified with its target.
+
+These data define a finite category. Its only endomorphisms are identities; it can have parallel morphisms. Height \(h(t)=L-V(t)\), with \(V(t)\) its operation-vertex count, strictly increases on every nonidentity morphism. A strict morphism chain has length at most \(L-1\). The \(n\)-corolla is terminal, also for \(n=0,1\), and the augmented normalized nerve is contractible over \(\mathbf Z\). Its linear category over the characteristic-zero coefficient field has the finite relative resolution proved in C.31.2.
+
+**Proof.** A planar rooted tree is specified recursively as an operation vertex with an ordered list of inputs, each an external leaf or another such operation tree. A zero-length list is a nullary operation vertex, not an external leaf. The root is always an operation vertex. External leaves acquire their fixed order from the planar input lists.
+
+Counting all edges except the outgoing root edge gives
+\[
+ \sum_{\text{operation vertices }v}r(v)=n+V-1.
+ \tag{C.44.1}
+\]
+The left side counts their input edges. The right side counts the \(n\) external-leaf edges and the \(V-1\) edges between operation vertices. In particular each arity is at most \(n+L-1\). The full ordinary tree has \(n+V\) nodes, if external leaves are counted as endpoints. There are only finitely many rooted ordered tree shapes with at most \(n+L\) nodes: encode them by their finite preorder lists of incoming arities, each bounded by \(n+L\). Marking which leaf endpoints are external leaves makes only finitely many further choices. Hence there are finitely many objects. A planar rooted tree has no nonidentity planar automorphism, by induction on its ordered child subtrees.
+
+For a selected set \(E\) of operation edges, take the connected components of the subgraph formed by those edges and their incident operation vertices, including isolated vertices. Collapse each component to one operation vertex. Its ordered incoming edges are the old incoming edges whose other endpoints are outside that component, in their inherited planar order. A component containing \(a\) original operation vertices has \(a-1\) selected internal edges; its resulting arity is the sum of their arities minus \(a-1\), a nonnegative integer because it counts exactly those remaining input edges. External leaves are unchanged. The resulting graph is again a planar rooted tree with
+\[
+                    V(t/E)=V(t)-|E|.
+ \tag{C.44.2}
+\]
+It still has at least one operation vertex. Thus its object belongs to the same category. Its planar identification with the chosen target is unique when it exists.
+
+A surviving operation edge in \(t/E\) comes from a unique original edge not in \(E\): the original operation graph is a tree, so two collapsed components cannot be joined by two distinct original edges. Hence a further selected contraction set \(E'\) in the quotient lifts uniquely to a set \(\widetilde E'\) of surviving original edges. Define the composite to be contraction of \(E\cup\widetilde E'\). Its connected components are exactly the components obtained by the two successive collapses. Its external input order is the same. Thus it has the required target.
+
+In a third contraction, lifting each final surviving edge through these quotients recovers that same original edge. In either parenthesization, the composite set is the union of the same three original sets. This proves associativity. The empty set is the identity. There are at most \(2^{V-1}\) contraction sets from any given source, and its targets form a finite object set, so all morphism sets and the category are finite.
+
+Equation (C.44.2) gives \(h(t/E)-h(t)=|E|\). A nonidentity arrow strictly increases height, and no such arrow is an endomorphism. The height range is contained in \(0,\ldots,L-1\); this proves the chain bound. Parallel arrows are not identified: for example, in a chain of three unary operation vertices above one external leaf, contracting either one of the two operation edges gives the same two-unary-vertex shape. These two selected edge sets are different arrows.
+
+Contracting all \(V-1\) operation edges gives a single operation vertex. Formula (C.44.1) gives that vertex arity \(n\), so the quotient is the \(n\)-corolla. This is the only selected set giving one remaining vertex. Thus the arrow to the corolla is unique from every object, proving terminality. For \(n=0\) it is the nullary vertex; for \(n=1\) it is the unary vertex. Neither is erased or identified with an external leaf.
+
+For the augmented normalized nerve, append the unique arrow to the terminal corolla to a strict \(q\)-simplex not already ending there, with coefficient \((-1)^{q+1}\); send a simplex already ending there to zero. In augmented degree minus one send the generator to that terminal vertex. The boundary term deleting the newly appended vertex gives the original simplex. Every other boundary term cancels its counterpart after applying the homotopy to the old boundary, because composing an arrow with the unique terminal arrow is again that unique terminal arrow. If the original simplex ends at the terminal object, deleting that last vertex is the sole term restored by the homotopy. These calculations give \(\partial h+h\partial=1\), including the augmentation. They use uniqueness of the terminal arrow, not uniqueness of all arrows; the parallel morphisms are retained in every simplex. Appending stays in the same finite normalized chain complex because a maximal strict chain already ends at its terminal height.
+
+Finally its endomorphism groups are trivial, its morphism sets are finite, and every nonisomorphism strictly raises the displayed height. It satisfies all the hypotheses of C.31.2, whose complete proof gives the projective relative bar resolution of length at most \(L-1\), with the actual parallel-arrow composition differential. This proves the last assertion. ∎
+
+The lemma supplies the full finite index, including its unit vertices and parallel contractions. The next two theorems construct its actual grafting and native execution diagrams. Nerve contractibility alone is not substituted for those enhanced maps.
+
+#### C.44.2. Grafting retains nullary vertices and unary seams
+
+**Theorem C.44.2.1.** Let \(m\ge0\), \(n_1,\ldots,n_m\ge0\), and let the positive vertex capacities be \(L_0,L_1,\ldots,L_m\). Put \(N=\sum_i n_i\) and \(L=\sum_{i=0}^mL_i\). Literal planar grafting gives a functor
+\[
+ \mathfrak g:
+ \mathcal T_{m,L_0}\times\prod_{i=1}^m\mathcal T_{n_i,L_i}
+                   \longrightarrow\mathcal T_{N,L}.
+ \tag{C.44.3}
+\]
+It sends every nonidentity morphism to a nonidentity morphism, preserves summed endpoint height jumps, and regroups associatively. Its actual reduced index bar map, after the tensor shuffle, is a chain coalgebra map retaining the parallel contractions. The statements and canonical common-input squares of C.42.1–C.43.1 consequently apply to these finite directed categories, even though they are not posets.
+
+Grafting the one-corolla is compared with the identity by its *seam contraction*. It is not an equality of index objects. This comparison is natural and all its successive seam contractions have their original contraction-set coherence. A zero-input operation remains a nullary vertex throughout.
+
+**Proof.** For \(m=0\), there are no inner trees and grafting is the identity on the outer zero-input tree. The empty product, summed height and index-bar map have that same identity interpretation. For \(m\ge1\), replace the \(i\)-th external input leaf of the outer tree by the root output of the \(i\)-th inner tree. The joining edge is an operation edge between its outer parent vertex and that inner root. Retain that seam edge and both its vertices. This is a planar rooted tree with \(N\) external leaves, and
+\[
+ V(\mathfrak g(t_0;t_1,\ldots,t_m))
+                         =\sum_{i=0}^mV(t_i)\le L.
+ \tag{C.44.4}
+\]
+The equality also holds when an inner tree has no external leaves: its operation root is still present and joined by its seam. The result always has an operation root.
+
+Every original operation edge of each factor remains an operation edge in the graft. These embedded edge sets are disjoint from one another and from the new seams. On morphisms, embed each selected contraction set from its factor and take their union in the grafted tree. Collapsing that union gives exactly the graft of the factor quotients: no seam is selected, and each collapsed component lies inside its original factor. The ordered input edges of a quotient component agree before and after joining the seams. Thus this construction has the target asserted in (C.44.3).
+
+For two successive morphisms, each surviving factor edge lifts to the same original factor edge and then to its same embedded graft edge. The union rule for composition in C.44.1 therefore agrees on both sides. Identity sets remain empty. This proves the functor equation, without identifying two different contractions merely because they have the same quotient shape. A nonidentity factor morphism contracts at least one embedded edge, so (C.44.4) shows that its image reduces the total vertex count. It is nonidentity.
+
+With \(h_i=L_i-V(t_i)\) and \(h=L-V(\mathfrak g(t_i))\), (C.44.4) gives \(h=\sum_i h_i\) on the grafted objects. In particular the endpoint height jumps are exactly summed, including zero-size blocks.
+
+Nested grafting in either order attaches the same operation vertices to the same external-input positions. Its original factor edges and its successive joining seams are the same edges, with the same planar order. This proves associativity of the object construction. The selected edge sets from all morphisms also have the same embeddings, so proves it on morphisms.
+
+The linear index functor preserves identity arrows and takes nonidentity arrows to nonidentity arrows. Projection to the scalar identity categories therefore commutes with it on every mapping component. Its reduced bar map applies the functor to each suspended index letter. The original word endpoints remain composable; its coproduct is unchanged word cutting, and its differential composes adjacent arrows with the unchanged suspended signs. Functoriality of composition proves its chain equation. It is thus an actual colored chain coalgebra map, also when distinct source objects acquire the same grafted shape.
+
+Precompose this map with the actual shuffle from the tensor of the factor index bars to the bar of their product category. The shuffle's word and root sign cancellations are C.34.2 and C.42.1; none uses uniqueness of an arrow between two objects. This gives the asserted map from the tensor index cores. A shuffle preserves total suspended degree and grafting preserves the summed height jump, so it preserves the height weight. Its regrouping identities are the original shuffle identities together with the literal associativity just proved.
+
+We verify the stated extension of the common-input results. In each of these finite categories the nonidentity arrow span is an ideal, because every such arrow strictly raises height. The complement is the product of scalar identity lines. Each arrow line has degree zero and every composable nonidentity bar word has length at most the finite height range. These are exactly the properties used in C.42.1's full free-resolution, sign, minimal-model and weight proofs. Parallel arrow lines are separate basis coefficients in those same formulas; merging their letters uses their actual category composition. All those proofs therefore apply with the unchanged maps. C.43.1's canonical-unit naturality and shuffle naturality likewise use only the functor and coproduct identities, which have just been checked. In particular the input restriction remains \(g^{\otimes n}\otimes1_{\!D_{\mathcal T}}\), with no lost contraction label.
+
+Let \(u\) be the one-corolla and \(t\) any formal tree. The tree \(\mathfrak g(u;t)\) has a new unary root and one new seam. Contract that seam to obtain \(t\); this is a nonidentity arrow reducing vertex count by one. Similarly inserting a one-corolla at an external leaf creates a unary vertex and its joining operation edge; contracting that edge removes it. Under any contraction in \(t\), the seam is still a distinct edge until it is selected. The union of the seam and the embedded old contraction set is the same in either order. This proves naturality.
+
+For several inserted one-corollas, their seam edges are distinct. Contracting any selected subset gives the original selected-edge morphism; two orders of seam contraction lift to the same union of original seam edges, by C.44.1. This proves their higher index coherence. The statement is about those actual arrows, not about replacing the arrows by identities on a reduced bar. Their geometric functor images may be identities; C.43.2 retains those scalar outputs. Nullary vertices are neither external leaves nor unary identities and are never removed by the object grafting formula. ∎
+
+#### C.44.3. Finite execution states and the native unit diagram
+
+**Theorem C.44.3.1.** Fix a formal tree \(t\) with \(n\) external leaves and \(V\le L\) operation vertices. Its execution states are the subsets \(J\) of operation vertices closed under operation descendants: a vertex can be executed only after its operation children. They form a finite poset under inclusion, with height \(|J|\), initial empty state and terminal completed state.
+
+The ordered frontier at state \(J\) has
+\[
+ m_J=n+\sum_{v\in J}(1-r(v)),\qquad
+                0\le m_J\le n+|J|\le n+L.
+ \tag{C.44.5}
+\]
+Executing a ready vertex of arity \(r\) changes this frontier by replacing its \(r\) consecutive factors with one, including insertion of the tensor unit when \(r=0\). The state index remains directed when this increases the frontier arity. Its chain length is at most \(V\).
+
+Actual rational ordered convolution gives the coherent enhanced execution diagram on the finite additive envelopes of the categories \(\mathcal G_{\mathbf Q}^{\otimes m_J}\). Its step at that vertex is the corresponding convolution, the identity for \(r=1\), or the original unit functor for \(r=0\), with identity functors on the unchanged factors. Its state comparisons, formal tree contractions, unary seams and grafting maps are the actual finite-frame tensor, proper-composition and unit maps. They retain their higher enhanced components.
+
+Finite input label pools have finite forward image-summand closures in this state diagram. Its represented kernel cohomology is nonnegative, even and degreewise finite on every resulting finite corner. All states with \(m_J=0\) use the genuine empty tensor input. After extending rational coefficients to \(E\), C.29's full enhanced ordered comparison acts coherently on this whole native diagram.
+
+**Proof.** A subset closed under operation descendants is an order ideal of the finite child-before-parent partial order. The family of such subsets, including the empty and full subsets, is finite and closed under its stated inclusions. Each proper inclusion adds a vertex, giving the claimed height and chain bound.
+
+Define its frontier by recursively traversing the original tree. At an already executed vertex, retain its output edge as one frontier factor and stop traversing its children. At an unexecuted vertex, traverse its ordered children. An external input leaf contributes its edge; an unexecuted nullary vertex contributes no factor. This produces an ordered list. It also specifies the insertion slot of a ready nullary vertex, even when the current frontier is empty.
+
+For a ready vertex, each operation child is already executed, so its output edge is a frontier factor; its external-leaf children are frontier factors as well. They occur consecutively in their original input order. Their replacement by the vertex output removes \(r(v)\) factors and adds one. For a nullary vertex this inserts one factor at its traversal slot. Starting from the \(n\) external factors and executing any linear extension of \(J\) therefore proves the equality in (C.44.5). Nonnegativity also follows directly from the frontier definition. Since every \(r(v)\ge0\), that equality gives the upper bound. At the full state the frontier is the root output, so is one; this is also the edge-count identity (C.44.1).
+
+This direction is execution height, not frontier arity. For example, two ready nullary children of a binary root give the successive arities \(0,1,2,1\); all three steps strictly increase \(|J|\). The initial empty input and the creation of unit factors are retained without a graph cycle.
+
+At state \(J\), take its factors in the actual enhanced generator category, keeping their finite additive IC envelopes when a convolution decomposes. Execute a ready vertex by \(F_r\): \(F_1\) is the identity, \(F_0\) selects \(IC_0\), and \(F_r\) for \(r\ge2\) is the original derived ordered convolution. The empty tensor category is the coefficient generator category, with its ordinary perfect envelope; it is not identified with the full endomorphism category of \(IC_0\). The higher equivariant endomorphisms of that output still belong to its represented kernel.
+
+For an inclusion \(J\subset K\), each new frontier output determines the operation subtree made from the vertices of \(K\setminus J\) below it, with frontier edges of \(J\) as its ordered input leaves. A surviving old frontier edge is an identity strand. These components form an ordered forest. Each old frontier input occurs exactly once among them, while a component can have zero inputs. Evaluate the components independently and take their ordered external product. This defines the actual partial functor \(F_{KJ}\) on the state input category.
+
+For \(J\subset K\subset M\), the forest for \(M\setminus J\) is obtained by grafting the forests for \(M\setminus K\) and \(K\setminus J\); identity strands remain identities. Thus its functor comparison is the native grafting comparison. We give its geometric construction, including the zero-input components. The formal contraction comparisons below concern forest functors on their fixed input profiles. They do not assert a functor deleting an arbitrary factor from an intermediate category. A unit-born factor is selected by \(F_0\), while its full target mapping space remains in the represented kernel.
+
+Replace every nullary vertex in that forest by one fixed input labelled \(IC_0\), retaining its position. The remaining positive-arity operations form an ordinary ordered convolution expression, with unary operations acting as identities. If there are \(a\) variable frontier inputs and \(c\) nullary vertices, its expanded ordered chain has \(a+c\) input factors. All endpoints and formal frames can be chosen at finite bounds for these finitely many inputs. The coefficient is the original descended external product, with \(IC_0\) at those fixed positions.
+
+*Convolution and rigidity*, Theorem A.6.2.1 constructs the two unit maps on the identity correspondence and the associativity map from the common chain correspondence. Its proof uses the actual normalized descent, proper base-change and projection mates; in particular the group-dimension shifts cancel for an \(IC_0\) input. C.27.3 and C.33.1 retain those same kernels and maps on their complete enhanced finite envelopes. Consequently the expanded forest evaluation is the proper image of this actual common-chain coefficient, not a new functor chosen only on perverse objects.
+
+If a contraction consumes a nullary child, the corresponding \(IC_0\) modification is trivial on that coefficient's support. The chain with this trivial step is identified with the chain with that step omitted. The normalized unit comparison is the actual identity-correspondence map just proved in Lesson 7; it leaves no residual shift. A unary seam uses the same identity comparison. The other contractions use the original proper-composition and derived tensor associativity maps. Thus every formal contraction in C.44.1, including two distinct contractions giving the same shape, is assigned its actual geometric comparison.
+
+For a finite diagram of contractions, use the expanded chain of its original forest, inserting trivial steps when a quotient omitted them. On that common support the maps are compositions of those same tensor identifications, identity correspondences and proper counits. The source ordered tensor maps and proper-composition mates carry their original all-order coherence, as explicitly retained in C.27.3–C.33.1. Normalized enhanced torsor descent carries the whole diagram and its specified higher components to the generator envelope. This proves coherence for every state chain, interchange of two independent executions, unit seam and forest graft. It is the specified native resolution diagram throughout. No statement that an arbitrary enhanced natural-transformation space is contractible, or that its higher components vanish, is used.
+
+In particular the two executions of independent ready vertices agree through the original tensor interchange comparison. When both are nullary, the final ordered frontier has both fixed \(IC_0\) factors in their original planar slots, regardless of which was created first. Their comparison is still the actual unit/tensor map. Resolving the native diagram records every higher state-chain component; C.31.2 bounds its relative index resolution by \(V\). If a corresponding index arrow has an identity as geometric image, C.43.2 uses its full scalar twisting output. It is not replaced by a reduced zero-arrow map.
+
+Now choose finitely many input tuples. At each state, include the finite simple tuple summands of all already selected source tuples' forward images. Each operation is a perverse convolution on simple inputs, by the proved Satake exactness; the unit is perverse and the identity is exact. Its image is therefore a finite sum of simple IC objects, by C.33.1's arbitrary-characteristic-zero semisimplicity input. There are only finitely many states and inclusions. Their height increases, so this forward construction terminates at the completed state and adds only finitely many labels. It imposes no closure under an arbitrary tensor operation returning to an earlier state.
+
+For a partial forest \(F_{KJ}\), its represented cohomology corner is the original mapping cohomology from \(F_{KJ}(\mathbf P)\) to a selected target tuple. That source is the finite sum just described. The target tensor mappings are finite balanced tensors of the IC mapping groups in C.33.1; their finite-sum and finite-tensor splitting proves they are nonnegative, even and degreewise finite. This applies also when the source tuple is empty: the output of a nullary vertex is \(IC_0\), and its actual higher mappings are retained. It proves the kernel assertion without treating the coefficient input as those larger equivariant endomorphisms.
+
+Finally C.33.1's coefficient extension is the actual extension on these kernels, identity modifications, unit coefficient \(IC_0\), proper maps and coherent resolution diagrams. It therefore identifies the rational execution diagram extended to \(E\) with its native \(E\)-coefficient diagram. Apply C.29.3's full enhanced ordered comparison, with its specified unit, block and higher components, to each of the forests above. Strong ordered coherence gives the comparisons on their states, grafts, contractions and unit seams simultaneously. This establishes an actual enhanced comparison of the native diagram over \(E\). Its realization as one common-core bar coordinate, with complete product and cross-arity equation domains, remains the separate next construction; it is not inferred here from a set of independent one-step comparisons. ∎
+
+#### C.44.4. Parallel unit contractions and changing frontier arity
+
+**Exercise C.44.4.1.** Let a binary root have two nullary operation children and no external leaves. Compute the contraction category on this tree, its one-edge quotients and its terminal quotient. Why must its two one-edge arrows remain distinct even if both geometric functor components are the same unit isomorphism?
+
+**Solution.** There are three operation vertices, two operation edges \(e_{\mathrm L},e_{\mathrm R}\), and external arity zero. Contracting the left edge or the right edge gives in each case a unary operation vertex above one nullary operation vertex. These are two different selected sets and therefore two parallel arrows. Contracting both gives the nullary zero-corolla, the terminal object. On a capacity-three stage their heights are respectively \(0,1,2\).
+
+The source evaluation is \(IC_0*IC_0\); the one-edge evaluations use its left or right unit comparison before the final unary identity comparison. The two arrows retain those different native comparisons and their later coherence. Equality of their object components cannot remove one of the index arrows or its mixed mapping and higher resolution components. C.43.2 retains a scalar functor image for either arrow without identifying their input index letters.
+
+**Exercise C.44.4.2.** For that same tree, list all execution states, their frontier arities and their two paths to the full state. Explain why the unit creation and the later convolution give a directed state graph, despite returning to a one-factor frontier.
+
+**Solution.** Write \(\ell,r\) for the nullary children and \(b\) for the binary root. The states and arities are
+\[
+ \begin{array}{c|ccccc}
+ J&\varnothing&\{\ell\}&\{r\}&\{\ell,r\}&\{\ell,r,b\}\\
+ \hline
+ |J|&0&1&1&2&3\\
+ m_J&0&1&1&2&1 .
+ \end{array}
+ \tag{C.44.6}
+\]
+The paths execute either \(\ell,r,b\) or \(r,\ell,b\). Executing only \(b\) is forbidden until its two operation children have completed. In the right-first path, creating \(\ell\) next inserts its unit factor before the existing right factor, so the final two-factor order is still left then right.
+
+Each step raises \(|J|\) by one. The final state and the one-child states are distinct even though their frontier arity is one. Thus their one-input cores are tagged by different execution states; no reverse arrow is added and no cycle arises. The completed evaluation is the original convolution of the two created units, with its native unit comparison. Its equivalence to a single unit is recorded by that comparison rather than by identifying the execution states.
+
+![Formal nullary and unary vertices retain two different unit contractions with the same quotient shape; directed execution states create units while their frontier arity changes; the original expanded finite-frame unit and proper maps carry the native comparison diagram](assets/formal-unital-tree-indices.png)
+
+Lemma C.44.1.1 proves the actual finite category with its parallel contraction arrows and terminal corollas. Theorem C.44.2.1 proves all-arity noncollapsing grafting, including zero inputs and unary seams. Theorem C.44.3.1 constructs the typed execution forests and their original enhanced unit/grafting diagram. Exercises C.44.4.1–C.44.4.2 give the displayed parallel-arrow relation and frontier diamond. Native unit maps are proved in Convolution and rigidity, Theorem A.6.2.1. Editable SVG source. Free background on the unital higher-component conventions: [Keller, Sections 3.5–3.6](https://arxiv.org/pdf/math/9910179).
+
+### C.45. Canonical cobar projections and contracted kernel lifts
+
+#### C.45.1. Surjectivity and relative lifting on free generators
+
+Write \(C=B\mathcal M\), where \(\mathcal M\) is the strictly unital minimal positive generator category: its reduced mappings have degree at least two and its relative scalar category is split. Put
+\[
+ A_r=C^{\otimes r},\qquad R_r=\Omega A_r,\qquad
+ U=\Omega C,\qquad U_r=U^{\otimes r}.
+ \tag{C.45.1}
+\]
+The zero-fold categories are the coefficient field with its one empty-tuple object. We allow finite additive matrix envelopes, using the relative balancing of C.38.1.
+
+**Theorem C.45.1.1.** The canonical map \(\kappa_r:R_r\to U_r\) of C.41.1 is surjective on graded mappings. Its kernel on each mapping complex is contractible. Suppose an object and scalar assignment and a strict dg functor \(P:R_s\to U_r\) are given. There is a strict dg lift \(\widetilde P:R_s\to R_r\), with the same object and scalar assignment, satisfying
+\[
+ \kappa_r\widetilde P=P.
+ \tag{C.45.2}
+\]
+One may retain a previously given lift on a free dg subcategory generated by a specified, differential-stable collection of source generator summands. This includes previously specified full source corners. The construction can be made successively along nested corners, enlarging finite target pools to contain the previously chosen images. It asserts existence of compatible choices along that exhaustion, rather than naturality of arbitrary splitting choices under all maps.
+
+**Proof.** A target graded monomial is an ordered tensor of words in the individual free generators \(t c_i\) of \(\Omega C\). At the current tuple of objects, the source generator
+\(t(1\otimes\cdots\otimes c_i\otimes\cdots\otimes1)\)
+maps to \(t c_i\) in that factor, with scalar identities in the other factors. Multiply these lifts, taking factor one first, then factor two, and so on. Their image is precisely the ordered pure tensor monomial. The endpoint tuples follow the endpoints of the factor words. Such monomials span every graded mapping, proving surjectivity. The argument retains all intermediate labels, works for matrix entries and is the identity for \(r=0\).
+
+C.41.1 proves that \(\kappa_r\) is a quasi-isomorphism on these mapping complexes. For completeness its surjective kernel \(K\) is acyclic without requiring a long-exact-sequence citation. If \(z\in K\) is closed, injectivity on cohomology gives \(z=dv\) in the source. The element \(\kappa_r v\) is closed. Surjectivity on cohomology gives a closed source element \(w\) with \(\kappa_r v-\kappa_r w=db\). Lift \(b\) graded to \(\widetilde b\). Then \(v-w-d\widetilde b\) belongs to \(K\) and still has differential \(z\). Thus \(K\) is acyclic. The splitting proof of C.30.1 supplies an endpoint and coefficient-linear contraction \(h_K\), with
+\(d h_K+h_Kd=1\) and \(h_K^2=0\). A graded coefficient-linear section \(\sigma\) of \(\kappa_r\) exists by that same splitting proof.
+
+Filter a reduced element of \(A_s\) by the total number \(\ell\) of original bar letters in its \(s\) factors. Every source free generator \(t a\) has \(\ell\ge1\). Since \(\mathcal M\) is minimal, the internal bar differential has no unary term and its nonzero terms reduce \(\ell\). In a proper coproduct split, both factors have strictly smaller total length. Hence the generator differential (C.39.15) is a sum of generators and products of generators already defined at smaller length. This is the needed triangular statement; it does not claim that a split reduces the sum of the lengths of its two factors.
+
+Assume the lift is defined on those lower lengths. For a homogeneous generator \(x\), take \(v=\sigma P(x)\) and form
+\[
+ o_x=dv-\widetilde P(dx)\in K,
+ \qquad \widetilde P(x)=v-h_Ko_x.
+ \tag{C.45.3}
+\]
+It belongs to \(K\) because \(P\) is a chain map and the lower-length lifts already satisfy (C.45.2). It is closed because the lower-length lift is a chain map and \(d^2x=0\). Therefore \(d h_Ko_x=o_x\), proving the required differential equation for the new image. Its projection is still \(P(x)\). These choices are linear on a whole generator summand: its differential, \(\sigma\) and \(h_K\) are linear. Extend multiplicatively from the free relative generators. The chain equation on generators and scalars then proves it on every product by the dg Leibniz rule. Induction defines the lift on the direct-sum cobar; there is no infinite series on an element.
+
+For a prescribed free dg subcategory keep its generator images and perform the construction on a coefficient-linear complement of its generator summands. The differential-stability hypothesis and the same induction establish compatibility. A full source corner, constructed from its own bar category, embeds by retaining precisely its allowed endpoint and intermediate labels. Its generator collection is differential-stable, so it is one of these subcategories. Along a nested exhaustion retain the already assigned images, pass to larger target pools containing them, and repeat. Every earlier generator remains fixed. No independently chosen contractions on unrelated corners are identified. On finite pools the positive bar and cobar degree bounds of C.34.1 and C.39.4 make each degree finite; every chosen image is a finite combination. Extending the chosen rational sections and contractions to a field extension preserves all identities.
+
+When \(s=0\) there are no reduced source generators and the supplied scalar assignment is already the lift. When \(r=0\), \(\kappa_0\) is the identity and the supplied \(P\) is the lift. A nullary convolution with target arity one selects \(IC_0\) in \(U\); it retains that object's full mapping complex. It is not a replacement of \(\operatorname{End}(IC_0)\) by the zero-fold coefficient field. ∎
+
+#### C.45.2. A fixed projection and its entire module kernel
+
+**Theorem C.45.2.1.** Let \(\widetilde P:R_s\to R_r\) be a lift in C.45.1. For tuple or finite additive objects set
+\[
+ M(y,x)=\operatorname{Hom}_{R_r}(\widetilde P x,y),\quad
+ Q(y,x)=\operatorname{Hom}_{U_r}(P x,\kappa_r y),\quad
+ p:M\longrightarrow Q.
+ \tag{C.45.4}
+\]
+Here \(p\) is induced by \(\kappa_r\). Pull their ordinary represented graph modules back to the same left core \(L=A_r\) and right core \(A=A_s\), using the canonical bar units. After undoing the cross suspension by (C.41.6), their cofree bicomodules are \(Y_M=L\otimes M\otimes A\) and \(Y_Q=L\otimes Q\otimes A\), with their full module differentials. The fixed map
+\[
+ \phi=1\otimes p\otimes1:Y_M\longrightarrow Y_Q
+ \tag{C.45.5}
+\]
+is a surjective chain bicomodule map over the identity cores. There are actual chain bicomodule maps \(I_\phi,H_\phi\), of degrees zero and minus one, satisfying
+\[
+ \phi I_\phi=1,\qquad dH_\phi+H_\phi d=1-I_\phi\phi,
+ \qquad H_\phi^2=\phi H_\phi=H_\phi I_\phi=0.
+ \tag{C.45.6}
+\]
+Consequently postcomposition with \(\phi\) on the bicomodule mapping complex out of any dg bicomodule over those fixed cores is split surjective, with contractible kernel. Closed linear comparison data lift; the same chain section preserves every linear relation between them.
+
+The contraction argument also applies to fixed conilpotent relative dg cores whose surrounding-word filtration has the properties used below. Finite directed index bars satisfy them when their index labels are retained. Scalar images of their nonidentity arrows are allowed.
+
+**Proof.** The object assignment is unchanged by \(\kappa_r\). Thus C.45.1 shows that every central \(p\) is a surjective quasi-isomorphism, with acyclic kernel \(K\). In the ordinary dg graph its two actions are multiplication, with source action through \(\widetilde P\) or \(P\). The equalities \(\kappa_r\widetilde P=P\) and multiplicativity of \(\kappa_r\) intertwine those actions. After bar pullback the left input maps satisfy \(B\kappa_r\eta_{A_r}=\operatorname{sh}_r\eta_C^{\otimes r}\), by C.41.2. The right input maps have the same equality with \(P\). These are exact chain equalities, not a naturality assertion for a chosen homotopy inverse. They prove the entire chain equation for (C.45.5), including the higher terms reconstructed by coactions. Its kernel is exactly the cofree bicomodule \(Y_K=L\otimes K\otimes A\), preserved by the full differential.
+
+We first construct a central contraction with projection fixed to be \(p\). Choose a graded section \(\sigma\) and a normalized contraction \(h_K\) of \(K\). With the differential on graded maps given by \(D f=d f-(-1)^{|f|}f d\), the defect \(a=D\sigma\) is a closed degree-one map into \(K\). Postcomposition by \(h_K\) contracts this mapping complex: direct substitution gives \(D(h_K f)+h_K(D f)=f\). Thus
+\(i=\sigma-h_Ka\) is a chain section with \(pi=1\).
+The map \(h=h_K(1-ip)\) obeys \(dh+hd=1-ip\). Since its range is in \(K\), it satisfies \(ph=hi=0\) and \(h^2=0\). These identities use only the prescribed \(p\), not a new projection chosen by transfer.
+
+On the cofree modules let \(d_0\) include both full core differentials and the central differential. Extend \(i,p,h\) by identities on the cores, with the graded tensor sign on \(h\). The resulting \(I_0,\phi,H_0\) satisfy their contraction identities for \(d_0\). On \(Y_K\), \(H_0\) contracts \(d_0\) to zero. Let \(\delta_K\) be the difference between its full differential and \(d_0\). The identical core coderivations cancel, so this difference is a degree-one bicomodule map. Each term consumes a nonempty surrounding core input. Count all original primitive letters in the surrounding tensor cores; with index bars count their index letters too. Such consumption strictly lowers that count, whereas \(H_0\) preserves it. All powers of \(\delta_K H_0\) therefore terminate on each element. The full kernel homotopy is
+\[
+ h_K^{\mathrm{mod}}=H_0(1+\delta_K H_0)^{-1}.
+ \tag{C.45.7}
+\]
+C.35.1's complete finite perturbation calculation, applied with retract zero, gives
+\(d h_K^{\mathrm{mod}}+h_K^{\mathrm{mod}}d=1\) and \((h_K^{\mathrm{mod}})^2=0\) on the kernel. Every term is a bicomodule map. This retains both full core differentials, all consumed-letter actions and all index-arrow scalar outputs. It uses conilpotence rather than an assertion that an index arrow has positive degree.
+
+Now regard \(I_0:Y_Q\to Y_M\) as a graded bicomodule section of the full \(\phi\). Its defect \(a_{\mathrm{mod}}=d I_0-I_0d\) belongs to \(Y_K\), because \(\phi\) is a chain map and \(\phi I_0=1\). It is closed in the bicomodule mapping complex. Define
+\[
+ I_\phi=I_0-h_K^{\mathrm{mod}}a_{\mathrm{mod}},\qquad
+ H_\phi=h_K^{\mathrm{mod}}(1-I_\phi\phi).
+ \tag{C.45.8}
+\]
+The same differential calculation proves that \(I_\phi\) is a chain section. The projection \(1-I_\phi\phi\) is a chain map into the kernel. Formula (C.45.7) gives its homotopy identity, and its square-zero and range properties give every normalized side condition in (C.45.6). At zero surrounding length the module defect vanishes, so these maps retain their chosen bare central \(i,h\). Every correction lowers surrounding length, and hence remains finite. The suspended one-cross statements follow by the exact shift isomorphism C.41.6.
+
+If \(D\) is a dg bicomodule, postcomposition with \(I_\phi\) is a chain section of \(\operatorname{Hom}(D,\phi)\). Its kernel is \(\operatorname{Hom}(D,Y_K)\). Postcomposition by \(h_K^{\mathrm{mod}}\) contracts it: for a map \(f\) of degree \(q\), the two terms containing \(f d_D\) have opposite coefficients \((-1)^q\), and the remaining terms are \((d h_K^{\mathrm{mod}}+h_K^{\mathrm{mod}}d)f=f\). Thus a closed map \(\alpha\) has the closed lift \(I_\phi\alpha\), with exact projection \(\alpha\). A linear equation between several maps remains an equation after this same postcomposition. This conclusion does not impose a multiplicative or grafting equation on separately chosen lifts; those equations require their own full coherent presentation.
+
+All maps keep their endpoint and coefficient blocks, and all finite sums retain the fixed cores. Previously chosen compatible corner data can be retained as in C.45.1; one does not identify arbitrary independent splittings. Extending the actual chosen matrices over the ground field preserves each contraction equation. The zero-fold cores have no reduced letters, so the same proof then has no perturbation terms on that side. ∎
+
+#### C.45.3. Compose the contractions while retaining exact products
+
+**Theorem C.45.3.1.** Let the projection \(\phi:Y_M\to Y_Q\) and its contraction be as in C.45.2. Suppose \(Y_Q\) is the ordinary block-product module of C.41.2, and give it the actual tensor product contraction \((I_\Pi,P_\Pi,H_\Pi)\) onto the prescribed product of its minimal modules. Set
+\[
+ I=I_\phi I_\Pi,\quad P=P_\Pi\phi,\quad
+ H=H_\phi+I_\phi H_\Pi\phi.
+ \tag{C.45.9}
+\]
+These form a normalized fixed-core contraction. In particular
+\[
+ \phi I=I_\Pi,\qquad \phi H=H_\Pi\phi.
+ \tag{C.45.10}
+\]
+For two such systems let a raw product comparison \(T_\Pi:Y_Q\to Y'_Q\) be given over its specified core maps. It has the chain bicomodule lift
+\(T=I'_\phi T_\Pi\phi\), satisfying \(\phi'T=T_\Pi\phi\). Every lift with this latter equality has the same transferred comparison
+\[
+ P'TI=P'_\Pi T_\Pi I_\Pi.
+ \tag{C.45.11}
+\]
+If \(T_\Pi\) is the tensor of the individual raw comparisons, (C.45.11) is exactly the tensor of their individual transferred comparisons, with the one total cross suspension of C.41.4. This includes zero-arity input blocks and the empty product.
+
+**Proof.** All maps in (C.45.9) are bicomodule maps of the indicated degrees. The chain maps give \(PI=P_\Pi\phi I_\phi I_\Pi=P_\Pi I_\Pi=1\). Commuting the differential through the homotopy gives
+\[
+ dH+Hd=(1-I_\phi\phi)
+       +I_\phi(1-I_\Pi P_\Pi)\phi=1-IP.
+ \tag{C.45.12}
+\]
+In \(H^2\), the first square is zero; the two mixed terms contain \(H_\phi I_\phi=0\) or \(\phi H_\phi=0\); the last square is \(I_\phi H_\Pi^2\phi=0\). Also \(PH=0\), by \(\phi H_\phi=0\) and \(P_\Pi H_\Pi=0\), and \(HI=0\), by \(H_\phi I_\phi=0\) and \(H_\Pi I_\Pi=0\). Applying \(\phi\) to (C.45.9) proves both identities (C.45.10).
+
+The stated lift is a chain bicomodule map over the specified core maps: its outside factors have identity core maps and its middle factor has those specified maps. Its projection is \(\phi'I'_\phi T_\Pi\phi=T_\Pi\phi\). For any such lift,
+\[
+ P'TI=P'_\Pi\phi'TI_\phi I_\Pi
+      =P'_\Pi T_\Pi\phi I_\phi I_\Pi
+      =P'_\Pi T_\Pi I_\Pi,
+ \tag{C.45.13}
+\]
+proving the exact equality. The product contraction is the tensor of the already perturbed individual module inclusions and projections, with the ordered homotopy telescope of C.41.8. Hence composing its projection, the tensor comparison and its inclusion gives the tensor of \(P'_iT_iI_i\), by the graded tensor composition rule. The degree-zero maps introduce no extra evaluation sign. Undoing and restoring the cross suspension gives precisely C.41.4's one total suspension, rather than one suspension per block.
+
+For an input block of arity zero, its source core is the coefficient field and its unit functor selects \(IC_0\) in the arity-one target. There are no right-core action letters in that factor. The tensor and shuffle identities of C.41.2 apply verbatim to this empty factor; its central module remains the full mappings from that selected object. For no blocks at all, the ordinary tensor module and its contraction are the coefficient field with identity inclusion/projection and zero homotopy. Restoring the one cross suspension gives that same empty-product convention. Thus no unit endomorphism complex has been discarded.
+
+These contractions may be prescribed on the one-cross sectors of a whole directed graph. C.43.3 then retains them exactly when it transfers the several-cross operations. If a supplied full graph comparison has the projection square used in (C.45.11), its transferred block restrictions are consequently the exact products just proved. The lifted individual module comparisons alone do not supply the several-cross comparison or its grafting and unit equations. In particular this theorem does not deduce a strong monoidal comparison from individual edge lifts. ∎
+
+#### C.45.4. Solved exercises
+
+**Exercise C.45.4.1 (intermediate).** Take two primitive bar elements \(c,d\) of degree one, one in each factor, with zero internal differential. In the common cobar write \(a=t(c\otimes1)\), \(b=t(1\otimes d)\), \(w=t(c\otimes d)\). Compute \(dw\) and explain the kernel correction when the projected image of \(w\) is zero but the lower generator lifts are \(a,b\).
+
+**Solution.** The proper coproduct of \(c\otimes d\) is
+\((c\otimes1)\otimes(1\otimes d)-(1\otimes d)\otimes(c\otimes1)\), since both primitive degrees are odd. Formula C.39.15 gives \(dw=ab-ba\); the two single-factor generators have degree two and \(w\) has degree three. Under \(\kappa_2\), the two degree-two factor images commute, so \(ab-ba\) maps to zero and \(\kappa_2w=0\). In the free common cobar, \(ab\) and \(ba\) are distinct words, so their difference is nonzero. Choose the kernel contraction with \(h_K(ab-ba)=w\) on this two-term acyclic subcomplex, extending by split complements. The provisional image \(v=0\) has defect \(-ab+ba\); (C.45.3) corrects it to \(w\). Sending that mixed generator to zero while keeping the lower lifts would fail the dg equation. The correction retains the prescribed zero image in the tensor quotient.
+
+**Exercise C.45.4.2 (advanced).** Let the left core have one primitive element \(c\) of degree one, with \(dc=0\), and let the right core be the field. Let the central acyclic complex have elements \(x,y,z,w\) of degrees \(2,3,3,4\), with \(dx=y,dz=w\). On its ordinary cofree module add the action term \(\delta(c\otimes x)=w\), zero on all other basis elements. Compute the full kernel homotopy on \(c\otimes y\) and verify the contraction on both \(c\otimes y\) and \(c\otimes x\).
+
+**Solution.** The central homotopy sends \(y\) to \(x\), \(w\) to \(z\), and is zero on \(x,z\). Tensor signs give \(H_0(c\otimes y)=-c\otimes x\). The added term is a degree-one bicomodule map: its output has coaction \(1\otimes w\), equal to the action on the \(1\otimes(c\otimes x)\) part of the input coaction. The other part contains \(\delta(x)=0\). Its square is zero, and \(d_0\delta+\delta d_0=0\) on every displayed basis element. Thus the full differential squares to zero.
+
+Here \((\delta H_0)^2=0\), and (C.45.7) gives
+\[
+ h_K^{\mathrm{mod}}(c\otimes y)=-c\otimes x+z.
+ \tag{C.45.14}
+\]
+Indeed \(H_0\delta H_0(c\otimes y)=-z\). Since
+\(d(c\otimes x)=-c\otimes y+w\) and \(dz=w\), the differential of (C.45.14) is \(c\otimes y\). Conversely the full homotopy sends \(-c\otimes y+w\) to \(c\otimes x-z+z=c\otimes x\). Its differential on \(c\otimes y\) and its homotopy on \(c\otimes x\) are zero, so both contraction identities follow. Dropping the correction \(z\) would leave an uncancelled \(w\). This is an explicit action-dependent contraction, rather than merely the bare central contraction.
+
+![The canonical cobar projection is surjective with contracted kernel; generator defects are corrected there; the full cofree module homotopy retains its action correction, and the composed contraction preserves the exact prescribed product projection](assets/canonical-cobar-kernel-lifts.png)
+
+Theorem C.45.1.1 proves the generator lifting formula. Theorem C.45.2.1 contracts the full module kernel over the fixed cores. Theorem C.45.3.1 proves the displayed exact product comparison square. Exercises C.45.4.1–C.45.4.2 compute the nonzero commutator and action corrections. The earlier complete cut and perturbation proofs are C.39.4.1 and C.35.1.1; the actual canonical projection and product module are proved in C.41.1.1–C.41.2.1. Editable SVG source.
+
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. C.26 proves actual arithmetic-trait specialization of the rootwise enhanced generator diagram: perfect constant compact objects, trace-normalized Hom comparison, the complete action nerve with its coefficient bound, integral pair pavings, both IC perverse tests and ordered wall operations. C.27 proves the genuinely spherical enhanced comparison by the actual flag unit projection and induced root-word retractions. It retains the full coordinate semidirect action and every nerve level, and compares ordered associative convolution with its original kernels, units and full-frame coherences. C.28 proves configuration-arrangement compact constants, same-point flag/wall chain fibre and pair filtrations, and the actual moving enhanced generator comparison. Its complete divisor-frame nerve retains longer jets on collisions, the uniform coefficient bound, and every selected partition and all-distinct restriction diagram. C.29 identifies the actual complex moving IC objects and corrected geometric fusion components, retains supported maps on every partial diagonal, and proves the complex enhanced symmetric comparison by transport of the complete arithmetic coherent diagram through the actual ordered equivalence. It also proves flat field extensions, including complex coefficients after an abstract embedding. C.30 proves split semisimple normalization, finite relative bar coordinate groups and descent of a verified exhaustive multi-operation presentation. C.31 constructs the finite ordered-tree contraction index, its bounded projective relative diagram resolution and the combined positive-degree profile bound with both output suspensions. C.32 proves genuine directed positive-weight coalgebra windows, coordinate and inverse preservation, the coderivation bound and compatible directed relative descent. C.33 proves actual rational Betti coefficient comparison, constructs enhanced functor graphs and the actual ordered-tree convolution graph system, and descends that whole directed graph system over the rationals. Its remaining common-input tensor-power and cross-arity substitution equations are explicit: independently formalized input corners do not constitute a strong monoidal comparison. C.34 constructs a strict positive model retaining the whole IC coderivation, actual tensor bar shuffles and transferred common-input maps. C.35 retains the exact perturbed homotopy, its two-summand transfer square formula and the full graded contraction-cube faces. C.36 proves the actual homotopy coproduct and packages it in a finite dg interval coalgebra and tensor cubes; the transferred square is an original coalgebra-cylinder span through its uncontracted comparison. These nonlinear common-input data have proved invariant finite windows. C.37 retains the actual cross module and both coactions over their shared core cylinders. C.38 constructs the actual nested convolution graph, retains its two-cross grafting and higher module transfer, and descends the complete nested-string graph through common arity/output corners. C.39 constructs actual common-input convolution modules over powers of one core bar, proves their common-core finite coordinate group and the shuffle quasi-isomorphism, and recovers the original convolution by its triangular bar-cobar comparison. C.40–C.42 prove full common-core grafting recovery, exact block-product sectors and native tree-index recovery with finite coordinate domains. C.43 supplies a strictly natural canonical input square, full unital twisting representatives retaining scalar index outputs, and whole-graph transfer preserving prescribed module products and comparison maps. The complete native cross-arity/unit comparison and its marked extension-field point still have to be supplied before rational strong monoidal descent; a supplied full graph comparison is not inferred from its individual module restrictions. Enhanced symmetry and the separate Ran/factorization, renormalized and quantum requirements retain their full scopes. Descent of the full tensor equivalence to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
+The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. C.26 proves actual arithmetic-trait specialization of the rootwise enhanced generator diagram: perfect constant compact objects, trace-normalized Hom comparison, the complete action nerve with its coefficient bound, integral pair pavings, both IC perverse tests and ordered wall operations. C.27 proves the genuinely spherical enhanced comparison by the actual flag unit projection and induced root-word retractions. It retains the full coordinate semidirect action and every nerve level, and compares ordered associative convolution with its original kernels, units and full-frame coherences. C.28 proves configuration-arrangement compact constants, same-point flag/wall chain fibre and pair filtrations, and the actual moving enhanced generator comparison. Its complete divisor-frame nerve retains longer jets on collisions, the uniform coefficient bound, and every selected partition and all-distinct restriction diagram. C.29 identifies the actual complex moving IC objects and corrected geometric fusion components, retains supported maps on every partial diagonal, and proves the complex enhanced symmetric comparison by transport of the complete arithmetic coherent diagram through the actual ordered equivalence. It also proves flat field extensions, including complex coefficients after an abstract embedding. C.30 proves split semisimple normalization, finite relative bar coordinate groups and descent of a verified exhaustive multi-operation presentation. C.31 constructs the finite ordered-tree contraction index, its bounded projective relative diagram resolution and the combined positive-degree profile bound with both output suspensions. C.32 proves genuine directed positive-weight coalgebra windows, coordinate and inverse preservation, the coderivation bound and compatible directed relative descent. C.33 proves actual rational Betti coefficient comparison, constructs enhanced functor graphs and the actual ordered-tree convolution graph system, and descends that whole directed graph system over the rationals. Its remaining common-input tensor-power and cross-arity substitution equations are explicit: independently formalized input corners do not constitute a strong monoidal comparison. C.34 constructs a strict positive model retaining the whole IC coderivation, actual tensor bar shuffles and transferred common-input maps. C.35 retains the exact perturbed homotopy, its two-summand transfer square formula and the full graded contraction-cube faces. C.36 proves the actual homotopy coproduct and packages it in a finite dg interval coalgebra and tensor cubes; the transferred square is an original coalgebra-cylinder span through its uncontracted comparison. These nonlinear common-input data have proved invariant finite windows. C.37 retains the actual cross module and both coactions over their shared core cylinders. C.38 constructs the actual nested convolution graph, retains its two-cross grafting and higher module transfer, and descends the complete nested-string graph through common arity/output corners. C.39 constructs actual common-input convolution modules over powers of one core bar, proves their common-core finite coordinate group and the shuffle quasi-isomorphism, and recovers the original convolution by its triangular bar-cobar comparison. C.40–C.44 supply common-core recovery, indexed unit/grafting bounds and the actual finite coherent execution diagram. C.45 proves surjective canonical cobar lifts, contracted fixed-core module kernels and exact prescribed product comparisons, retaining nullary inputs. A full native several-cross coherence presentation with verified finite domains and simultaneous E-points, followed by rational strong monoidal descent, remains required. Native enhanced symmetry and the separate quantum/rotation, renormalized, singular-support and Ran/factorization scopes remain active. Descent of the full tensor equivalence to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
 
 Free further reading:
 

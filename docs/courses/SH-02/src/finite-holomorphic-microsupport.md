@@ -808,7 +808,7 @@ Its cone is $k^{m-1}$ in degree zero with the convention FH8: subtract the first
 
 ## SH02-FH-ANTECEDENTS — Attribution and the two proof routes
 
-The finite holomorphic equality goes back to Kashiwara's work on systems of microdifferential equations; the micro-support form used here belongs to the theory of M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985). The finite-fibre, localization, cycle-comparison and coefficient-reduction arguments are proved here.
+The classical microsupport and complex-constructible direct-image framework is credited to M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985). Proposition 8.6.1, printed pp. 154–155 (PDF pp. 157–158), gives the direct-image upper inclusions under its own constructibility assumptions. The finite-fibre, localization, cycle-comparison, reverse-inclusion and coefficient-reduction arguments used here are supplied by the programme proofs and their stated providers.
 
 An analytic antecedent for the critical-support theorem is David B. Massey, [*A Little Microlocal Morse Theory*, arXiv:math/0006185v2](https://arxiv.org/abs/math/0006185v2), Corollary 4.15. It is stated over a principal ideal domain, so its field specialization has the required coefficient scope for FH14. Its proof depends on a perverse critical-support theorem and a visible-conormal description.
 

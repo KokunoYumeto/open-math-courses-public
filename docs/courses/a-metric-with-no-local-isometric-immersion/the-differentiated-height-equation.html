@@ -1,0 +1,463 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The differentiated height equation</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A metric with no local isometric immersion)</a><a href="the-metric-and-the-theorem.html">Previous lesson</a><a href="src/the-differentiated-height-equation.md">Editable source</a></nav><main><article><h1 id="the-differentiated-height-equation">The differentiated height equation</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The height equation <span class="math" data-tex="\(H_{xx}H_{yy}-H_{xy}^2=KE\)">\(H_{xx}H_{yy}-H_{xy}^2=KE\)</span> is elliptic where the curvature <span class="math" data-tex="\(K\)">\(K\)</span> is positive and hyperbolic where it is negative. To control a solution across a curve where <span class="math" data-tex="\(K\)">\(K\)</span> changes its sign, the proof of [OpenAI-I] differentiates the equation many times in one direction and studies the linear equation satisfied by the derivative. This lesson derives that linear equation exactly. Its form is the point: in suitable coordinates <span class="math" data-tex="\(t,s\)">\(t,s\)</span> the derivative <span class="math" data-tex="\(u=\partial_y^lz\)">\(u=\partial_y^lz\)</span> satisfies
+<span class="math math-display" data-tex="\[
+u_{tt}+Au_{ss}+Bu_t+Cu_s=R,
+\]">\[
+u_{tt}+Au_{ss}+Bu_t+Cu_s=R,
+\]</span>
+where <span class="math" data-tex="\(A\)">\(A\)</span> is the curvature times a positive function, and the coefficient <span class="math" data-tex="\(C\)">\(C\)</span> of the first derivative across is <span class="math" data-tex="\((l+1)A_s\)">\((l+1)A_s\)</span> up to a multiple of <span class="math" data-tex="\(K\)">\(K\)</span>. So <span class="math" data-tex="\(C\)">\(C\)</span> is tied to the derivative of the curvature, with a factor that grows with the number of differentiations.</p>
+<ul>
+<li>The equation solved for <span class="math" data-tex="\(z_{xx}\)">\(z_{xx}\)</span>, and the derivatives of the right side with respect to the derivatives of <span class="math" data-tex="\(z\)">\(z\)</span> (Lemma 1.1).</li>
+<li>The third derivatives of a function on a surface commute up to the curvature (Lemma 2.2).</li>
+<li>The drift identity: the vector field <span class="math" data-tex="\(D=\partial_x-q\,\partial_y\)">\(D=\partial_x-q\,\partial_y\)</span> along which the Hessian degenerates turns at a rate given by <span class="math" data-tex="\(K_y\)">\(K_y\)</span> (Theorem 3.1).</li>
+<li>The equation for <span class="math" data-tex="\(u=\partial_y^lz\)">\(u=\partial_y^lz\)</span> (Theorem 5.1), and its form in coordinates in which <span class="math" data-tex="\(D=\partial_t\)">\(D=\partial_t\)</span> (Theorem 6.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-I, Section 3, the lemmas on the curvature drift and on the high derivative equation], with the terms that are written <span class="math" data-tex="\(O(K)\)">\(O(K)\)</span> there made explicit. It continues <a href="heights-of-an-immersed-surface.html">Heights of an immersed surface</a> and uses its notation. Nothing in this lesson is an estimate; all statements are identities.</p>
+<h2 id="1-the-solved-equation">1. The solved equation</h2>
+<p>Let <span class="math" data-tex="\(g\)">\(g\)</span> be a metric on an open set <span class="math" data-tex="\(U\)">\(U\)</span> of the plane with the coordinates <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, also numbered <span class="math" data-tex="\(1,2\)">\(1,2\)</span>; indices that occur twice are summed. Let <span class="math" data-tex="\(z\)">\(z\)</span> be a smooth function on <span class="math" data-tex="\(U\)">\(U\)</span> with the covariant Hessian <span class="math" data-tex="\(H_{ij}=z_{ij}-\Gamma^r_{ij}z_r\)">\(H_{ij}=z_{ij}-\Gamma^r_{ij}z_r\)</span>, where <span class="math" data-tex="\(z_i,z_{ij}\)">\(z_i,z_{ij}\)</span> are partial derivatives, and
+<span class="math math-display" data-tex="\[
+E=\det g\,(1-g^{ij}z_iz_j).
+\]">\[
+E=\det g\,(1-g^{ij}z_iz_j).
+\]</span>
+Suppose that <span class="math" data-tex="\(z\)">\(z\)</span> solves the height equation <span class="math" data-tex="\(H_{xx}H_{yy}-H_{xy}^2=KE\)">\(H_{xx}H_{yy}-H_{xy}^2=KE\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> and that <span class="math" data-tex="\(H_{yy}\ne0\)">\(H_{yy}\ne0\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q=\frac{H_{xy}}{H_{yy}},\qquad D=\partial_x-q\,\partial_y,\\
+G=\frac E{H_{yy}^2},\qquad a=KG .
+\end{gathered}
+\]">\[
+\begin{gathered}
+q=\frac{H_{xy}}{H_{yy}},\qquad D=\partial_x-q\,\partial_y,\\
+G=\frac E{H_{yy}^2},\qquad a=KG .
+\end{gathered}
+\]</span>
+For vectors <span class="math" data-tex="\(v,w\)">\(v,w\)</span> let <span class="math" data-tex="\(H(v,w)=H_{ij}v_iw_j\)">\(H(v,w)=H_{ij}v_iw_j\)</span>. We write <span class="math" data-tex="\(D\)">\(D\)</span> also for the vector <span class="math" data-tex="\((1,-q)\)">\((1,-q)\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> for the vector <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. By the definition of <span class="math" data-tex="\(q\)">\(q\)</span> and the height equation,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H(Y,D)=H_{xy}-qH_{yy}=0,\\
+H(D,D)=H_{xx}-q^2H_{yy}=aH_{yy},
+\end{gathered}
+\]">\[
+\begin{gathered}
+H(Y,D)=H_{xy}-qH_{yy}=0,\\
+H(D,D)=H_{xx}-q^2H_{yy}=aH_{yy},
+\end{gathered}
+\]</span>
+and therefore <span class="math" data-tex="\(H(\partial_x,D)\)">\(H(\partial_x,D)\)</span>, which is <span class="math" data-tex="\(H(D,D)+qH(Y,D)\)">\(H(D,D)+qH(Y,D)\)</span>, equals <span class="math" data-tex="\(aH_{yy}\)">\(aH_{yy}\)</span>. So <span class="math" data-tex="\(D\)">\(D\)</span> is the direction in which the Hessian is small where the curvature is small.</p>
+<p>The height equation, solved for <span class="math" data-tex="\(z_{xx}\)">\(z_{xx}\)</span>, is
+<span class="math math-display" data-tex="\[
+z_{xx}=P,\qquad P=\Gamma^r_{xx}z_r+\frac{H_{xy}^2+KE}{H_{yy}} .
+\]">\[
+z_{xx}=P,\qquad P=\Gamma^r_{xx}z_r+\frac{H_{xy}^2+KE}{H_{yy}} .
+\]</span>
+Here <span class="math" data-tex="\(P\)">\(P\)</span> is regarded as a function of the point <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> and of four independent variables <span class="math" data-tex="\(z_x,z_y,z_{xy},z_{yy}\)">\(z_x,z_y,z_{xy},z_{yy}\)</span>, through <span class="math" data-tex="\(H_{xy}=z_{xy}-\Gamma^r_{xy}z_r\)">\(H_{xy}=z_{xy}-\Gamma^r_{xy}z_r\)</span>, <span class="math" data-tex="\(H_{yy}=z_{yy}-\Gamma^r_{yy}z_r\)">\(H_{yy}=z_{yy}-\Gamma^r_{yy}z_r\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span>; it is defined where <span class="math" data-tex="\(H_{yy}\ne0\)">\(H_{yy}\ne0\)</span>. For <span class="math" data-tex="\(i\in\{x,y\}\)">\(i\in\{x,y\}\)</span> let
+<span class="math math-display" data-tex="\[
+\Gamma^i_{DD}=\Gamma^i_{xx}-2q\,\Gamma^i_{xy}+q^2\,\Gamma^i_{yy}.
+\]">\[
+\Gamma^i_{DD}=\Gamma^i_{xx}-2q\,\Gamma^i_{xy}+q^2\,\Gamma^i_{yy}.
+\]</span></p>
+<p><strong>Lemma 1.1.</strong> The partial derivatives of <span class="math" data-tex="\(P\)">\(P\)</span> with respect to its four variables are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P_{z_{xy}}=2q,\qquad P_{z_{yy}}=-q^2-a,\\
+P_{z_i}=\Gamma^i_{DD}+K\Bigl(\frac{E_{z_i}}{H_{yy}}+\frac{E\,\Gamma^i_{yy}}{H_{yy}^2}\Bigr),
+\end{gathered}
+\]">\[
+\begin{gathered}
+P_{z_{xy}}=2q,\qquad P_{z_{yy}}=-q^2-a,\\
+P_{z_i}=\Gamma^i_{DD}+K\Bigl(\frac{E_{z_i}}{H_{yy}}+\frac{E\,\Gamma^i_{yy}}{H_{yy}^2}\Bigr),
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(E_{z_i}=-2\det g\,g^{ij}z_j\)">\(E_{z_i}=-2\det g\,g^{ij}z_j\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(P_{z_{xy}}=2H_{xy}/H_{yy}\)">\(P_{z_{xy}}=2H_{xy}/H_{yy}\)</span> and <span class="math" data-tex="\(P_{z_{yy}}=-(H_{xy}^2+KE)/H_{yy}^2\)">\(P_{z_{yy}}=-(H_{xy}^2+KE)/H_{yy}^2\)</span>. The variable <span class="math" data-tex="\(z_i\)">\(z_i\)</span> occurs in <span class="math" data-tex="\(\Gamma^r_{xx}z_r\)">\(\Gamma^r_{xx}z_r\)</span>, in <span class="math" data-tex="\(H_{xy}\)">\(H_{xy}\)</span> and <span class="math" data-tex="\(H_{yy}\)">\(H_{yy}\)</span> with the derivatives <span class="math" data-tex="\(-\Gamma^i_{xy}\)">\(-\Gamma^i_{xy}\)</span> and <span class="math" data-tex="\(-\Gamma^i_{yy}\)">\(-\Gamma^i_{yy}\)</span>, and in <span class="math" data-tex="\(E\)">\(E\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_{z_i}&amp;=\Gamma^i_{xx}-\frac{2H_{xy}\Gamma^i_{xy}}{H_{yy}}+\frac{KE_{z_i}}{H_{yy}}\\
+&amp;\quad+\frac{(H_{xy}^2+KE)\,\Gamma^i_{yy}}{H_{yy}^2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+P_{z_i}&amp;=\Gamma^i_{xx}-\frac{2H_{xy}\Gamma^i_{xy}}{H_{yy}}+\frac{KE_{z_i}}{H_{yy}}\\
+&amp;\quad+\frac{(H_{xy}^2+KE)\,\Gamma^i_{yy}}{H_{yy}^2},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\((H_{xy}^2+KE)/H_{yy}^2=q^2+KE/H_{yy}^2\)">\((H_{xy}^2+KE)/H_{yy}^2=q^2+KE/H_{yy}^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-third-derivatives">2. Third derivatives</h2>
+<p>For a metric <span class="math" data-tex="\(g\)">\(g\)</span> let
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_{kji}{}^m&amp;=\partial_k\Gamma^m_{ji}-\partial_j\Gamma^m_{ki}\\
+&amp;\quad+\Gamma^m_{kr}\Gamma^r_{ji}-\Gamma^m_{jr}\Gamma^r_{ki}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+R_{kji}{}^m&amp;=\partial_k\Gamma^m_{ji}-\partial_j\Gamma^m_{ki}\\
+&amp;\quad+\Gamma^m_{kr}\Gamma^r_{ji}-\Gamma^m_{jr}\Gamma^r_{ki}.
+\end{aligned}
+\]</span>
+The definition of the curvature in the lesson on heights says <span class="math" data-tex="\(K\det g=g_{1m}R_{122}{}^m\)">\(K\det g=g_{1m}R_{122}{}^m\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> In dimension two, <span class="math" data-tex="\(R_{kji}{}^m=K\bigl(\delta^m_k\,g_{ji}-\delta^m_j\,g_{ki}\bigr)\)">\(R_{kji}{}^m=K\bigl(\delta^m_k\,g_{ji}-\delta^m_j\,g_{ki}\bigr)\)</span>, where <span class="math" data-tex="\(\delta^m_k\)">\(\delta^m_k\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(m=k\)">\(m=k\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(R_{kjis}=g_{sm}R_{kji}{}^m\)">\(R_{kjis}=g_{sm}R_{kji}{}^m\)</span> and <span class="math" data-tex="\(\Gamma_{ki,s}=g_{sm}\Gamma^m_{ki}\)">\(\Gamma_{ki,s}=g_{sm}\Gamma^m_{ki}\)</span>, which is <span class="math" data-tex="\(\tfrac12(\partial_kg_{is}+\partial_ig_{ks}-\partial_sg_{ki})\)">\(\tfrac12(\partial_kg_{is}+\partial_ig_{ks}-\partial_sg_{ki})\)</span>, so that <span class="math" data-tex="\(\partial_kg_{is}=\Gamma_{ki,s}+\Gamma_{ks,i}\)">\(\partial_kg_{is}=\Gamma_{ki,s}+\Gamma_{ks,i}\)</span>. Then <span class="math" data-tex="\(g_{sm}\partial_k\Gamma^m_{ji}=\partial_k\Gamma_{ji,s}-(\Gamma_{ks,m}+\Gamma_{km,s})\Gamma^m_{ji}\)">\(g_{sm}\partial_k\Gamma^m_{ji}=\partial_k\Gamma_{ji,s}-(\Gamma_{ks,m}+\Gamma_{km,s})\Gamma^m_{ji}\)</span>, and inserting this and the same formula with <span class="math" data-tex="\(k,j\)">\(k,j\)</span> exchanged gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_{kjis}&amp;=\partial_k\Gamma_{ji,s}-\partial_j\Gamma_{ki,s}\\
+&amp;\quad-\Gamma_{ks,m}\Gamma^m_{ji}+\Gamma_{js,m}\Gamma^m_{ki}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+R_{kjis}&amp;=\partial_k\Gamma_{ji,s}-\partial_j\Gamma_{ki,s}\\
+&amp;\quad-\Gamma_{ks,m}\Gamma^m_{ji}+\Gamma_{js,m}\Gamma^m_{ki}.
+\end{aligned}
+\]</span>
+Add the same expression with <span class="math" data-tex="\(i,s\)">\(i,s\)</span> exchanged. The first derivatives give <span class="math" data-tex="\(\partial_k\partial_jg_{is}-\partial_j\partial_kg_{is}=0\)">\(\partial_k\partial_jg_{is}-\partial_j\partial_kg_{is}=0\)</span>. The products cancel in pairs, because <span class="math" data-tex="\(\Gamma_{ks,m}\Gamma^m_{ji}=g_{mn}\Gamma^n_{ks}\Gamma^m_{ji}\)">\(\Gamma_{ks,m}\Gamma^m_{ji}=g_{mn}\Gamma^n_{ks}\Gamma^m_{ji}\)</span> is unchanged if the pairs <span class="math" data-tex="\((k,s)\)">\((k,s)\)</span> and <span class="math" data-tex="\((j,i)\)">\((j,i)\)</span> are exchanged. So <span class="math" data-tex="\(R_{kjis}=-R_{kjsi}\)">\(R_{kjis}=-R_{kjsi}\)</span>, and <span class="math" data-tex="\(R_{kjis}=-R_{jkis}\)">\(R_{kjis}=-R_{jkis}\)</span> by the definition. The expression <span class="math" data-tex="\(g_{ks}g_{ji}-g_{js}g_{ki}\)">\(g_{ks}g_{ji}-g_{js}g_{ki}\)</span> has the same two properties. In dimension two, a quantity with four indices that changes its sign under each of these two exchanges is determined by its value for <span class="math" data-tex="\((k,j,i,s)=(1,2,2,1)\)">\((k,j,i,s)=(1,2,2,1)\)</span>. There, <span class="math" data-tex="\(R_{1221}=K\det g\)">\(R_{1221}=K\det g\)</span> and the other expression is <span class="math" data-tex="\(\det g\)">\(\det g\)</span>. So <span class="math" data-tex="\(R_{kjis}=K(g_{ks}g_{ji}-g_{js}g_{ki})\)">\(R_{kjis}=K(g_{ks}g_{ji}-g_{js}g_{ki})\)</span>; multiplying by the inverse matrix of <span class="math" data-tex="\(g\)">\(g\)</span> gives the statement. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For a function <span class="math" data-tex="\(z\)">\(z\)</span> with the covariant Hessian <span class="math" data-tex="\(H\)">\(H\)</span>, let
+<span class="math math-display" data-tex="\[
+T_{ijk}=\partial_kH_{ij}-\Gamma^r_{ki}H_{rj}-\Gamma^r_{kj}H_{ir} .
+\]">\[
+T_{ijk}=\partial_kH_{ij}-\Gamma^r_{ki}H_{rj}-\Gamma^r_{kj}H_{ir} .
+\]</span>
+It is symmetric in <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. For vector fields <span class="math" data-tex="\(v,w\)">\(v,w\)</span> and a vector <span class="math" data-tex="\(e\)">\(e\)</span>, with <span class="math" data-tex="\(\nabla_ev=e_k(\partial_kv_r+\Gamma^r_{km}v_m)\)">\(\nabla_ev=e_k(\partial_kv_r+\Gamma^r_{km}v_m)\)</span> in the component <span class="math" data-tex="\(r\)">\(r\)</span>, the definition gives the rule
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;e_k\partial_k\bigl(H(v,w)\bigr)\\
+&amp;\quad=T_{ijk}v_iw_je_k+H(\nabla_ev,w)\\
+&amp;\qquad+H(v,\nabla_ew).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;e_k\partial_k\bigl(H(v,w)\bigr)\\
+&amp;\quad=T_{ijk}v_iw_je_k+H(\nabla_ev,w)\\
+&amp;\qquad+H(v,\nabla_ew).
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 2.2.</strong> <span class="math" data-tex="\(T_{ijk}-T_{ikj}=K\,(g_{ik}z_j-g_{ij}z_k)\)">\(T_{ijk}-T_{ikj}=K\,(g_{ik}z_j-g_{ij}z_k)\)</span>.</p>
+<p><strong>Proof.</strong> In <span class="math" data-tex="\(T_{ijk}-T_{ikj}\)">\(T_{ijk}-T_{ikj}\)</span> the third derivatives of <span class="math" data-tex="\(z\)">\(z\)</span> cancel, and so do the terms <span class="math" data-tex="\(\Gamma^r_{kj}H_{ir}\)">\(\Gamma^r_{kj}H_{ir}\)</span>. There remain
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;-\partial_k\Gamma^m_{ji}z_m+\partial_j\Gamma^m_{ki}z_m\\
+&amp;\quad-\Gamma^r_{ji}z_{kr}+\Gamma^r_{ki}z_{jr}\\
+&amp;\quad-\Gamma^r_{ki}\bigl(z_{jr}-\Gamma^m_{jr}z_m\bigr)\\
+&amp;\quad+\Gamma^r_{ji}\bigl(z_{kr}-\Gamma^m_{kr}z_m\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;-\partial_k\Gamma^m_{ji}z_m+\partial_j\Gamma^m_{ki}z_m\\
+&amp;\quad-\Gamma^r_{ji}z_{kr}+\Gamma^r_{ki}z_{jr}\\
+&amp;\quad-\Gamma^r_{ki}\bigl(z_{jr}-\Gamma^m_{jr}z_m\bigr)\\
+&amp;\quad+\Gamma^r_{ji}\bigl(z_{kr}-\Gamma^m_{kr}z_m\bigr).
+\end{aligned}
+\]</span>
+The second derivatives of <span class="math" data-tex="\(z\)">\(z\)</span> cancel, and the rest is <span class="math" data-tex="\(-R_{kji}{}^mz_m\)">\(-R_{kji}{}^mz_m\)</span>. By Lemma 2.1 this is <span class="math" data-tex="\(-K(g_{ji}z_k-g_{ki}z_j)\)">\(-K(g_{ji}z_k-g_{ki}z_j)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-drift-identity">3. The drift identity</h2>
+<p><strong>Theorem 3.1.</strong> In the situation of Section 1,
+<span class="math math-display" data-tex="\[
+Dq-q\,\Gamma^x_{DD}-\Gamma^y_{DD}=K_yG+K\rho_1,
+\]">\[
+Dq-q\,\Gamma^x_{DD}-\Gamma^y_{DD}=K_yG+K\rho_1,
+\]</span>
+where <span class="math" data-tex="\(Dq=q_x-qq_y\)">\(Dq=q_x-qq_y\)</span>, <span class="math" data-tex="\(K_y=\partial_yK\)">\(K_y=\partial_yK\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_{yy}\,\rho_1&amp;=\partial_y\Bigl(\frac E{H_{yy}}\Bigr)-\bigl(\Gamma^x_{xy}-q\Gamma^x_{yy}\bigr)\frac E{H_{yy}}\\
+&amp;\quad-g(D,Y)\,Dz+g(D,D)\,z_y .
+\end{aligned}
+\]">\[
+\begin{aligned}
+H_{yy}\,\rho_1&amp;=\partial_y\Bigl(\frac E{H_{yy}}\Bigr)-\bigl(\Gamma^x_{xy}-q\Gamma^x_{yy}\bigr)\frac E{H_{yy}}\\
+&amp;\quad-g(D,Y)\,Dz+g(D,D)\,z_y .
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(g(D,Y)=g_{xy}-qg_{yy}\)">\(g(D,Y)=g_{xy}-qg_{yy}\)</span>, <span class="math" data-tex="\(g(D,D)=g_{xx}-2qg_{xy}+q^2g_{yy}\)">\(g(D,D)=g_{xx}-2qg_{xy}+q^2g_{yy}\)</span> and <span class="math" data-tex="\(Dz=z_x-qz_y\)">\(Dz=z_x-qz_y\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+Dq-P_{z_x}q-P_{z_y}=K_yG+K(\rho_1-\rho_2),
+\]">\[
+Dq-P_{z_x}q-P_{z_y}=K_yG+K(\rho_1-\rho_2),
+\]</span>
+with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\rho_2&amp;=q\Bigl(\frac{E_{z_x}}{H_{yy}}+\frac{E\,\Gamma^x_{yy}}{H_{yy}^2}\Bigr)\\
+&amp;\quad+\frac{E_{z_y}}{H_{yy}}+\frac{E\,\Gamma^y_{yy}}{H_{yy}^2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\rho_2&amp;=q\Bigl(\frac{E_{z_x}}{H_{yy}}+\frac{E\,\Gamma^x_{yy}}{H_{yy}^2}\Bigr)\\
+&amp;\quad+\frac{E_{z_y}}{H_{yy}}+\frac{E\,\Gamma^y_{yy}}{H_{yy}^2}.
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Apply the rule before Lemma 2.2 to <span class="math" data-tex="\(H(Y,D)=0\)">\(H(Y,D)=0\)</span> in the direction <span class="math" data-tex="\(e=D\)">\(e=D\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;=T(Y,D;D)+H(\nabla_DY,D)\\
+&amp;\quad+H(Y,\nabla_DD),
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;=T(Y,D;D)+H(\nabla_DY,D)\\
+&amp;\quad+H(Y,\nabla_DD),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(T(v,w;e)=T_{ijk}v_iw_je_k\)">\(T(v,w;e)=T_{ijk}v_iw_je_k\)</span>. We compute the three terms.</p>
+<p><em>Third term.</em> The component <span class="math" data-tex="\(r\)">\(r\)</span> of <span class="math" data-tex="\(\nabla_DD\)">\(\nabla_DD\)</span> is <span class="math" data-tex="\(D(D_r)+\Gamma^r_{DD}\)">\(D(D_r)+\Gamma^r_{DD}\)</span>, that is <span class="math" data-tex="\(\Gamma^x_{DD}\)">\(\Gamma^x_{DD}\)</span> for <span class="math" data-tex="\(r=x\)">\(r=x\)</span> and <span class="math" data-tex="\(-Dq+\Gamma^y_{DD}\)">\(-Dq+\Gamma^y_{DD}\)</span> for <span class="math" data-tex="\(r=y\)">\(r=y\)</span>. Since <span class="math" data-tex="\(H(Y,\partial_x)=qH_{yy}\)">\(H(Y,\partial_x)=qH_{yy}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;H(Y,\nabla_DD)\\
+&amp;\quad=H_{yy}\bigl(q\,\Gamma^x_{DD}+\Gamma^y_{DD}-Dq\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;H(Y,\nabla_DD)\\
+&amp;\quad=H_{yy}\bigl(q\,\Gamma^x_{DD}+\Gamma^y_{DD}-Dq\bigr).
+\end{aligned}
+\]</span></p>
+<p><em>Second term.</em> <span class="math" data-tex="\(Y\)">\(Y\)</span> is constant, so the component <span class="math" data-tex="\(r\)">\(r\)</span> of <span class="math" data-tex="\(\nabla_DY\)">\(\nabla_DY\)</span> is <span class="math" data-tex="\(\Gamma^r_{xy}-q\Gamma^r_{yy}\)">\(\Gamma^r_{xy}-q\Gamma^r_{yy}\)</span>. Since <span class="math" data-tex="\(H(\partial_y,D)=0\)">\(H(\partial_y,D)=0\)</span> and <span class="math" data-tex="\(H(\partial_x,D)=aH_{yy}\)">\(H(\partial_x,D)=aH_{yy}\)</span>,
+<span class="math math-display" data-tex="\[
+H(\nabla_DY,D)=\bigl(\Gamma^x_{xy}-q\Gamma^x_{yy}\bigr)\,aH_{yy}.
+\]">\[
+H(\nabla_DY,D)=\bigl(\Gamma^x_{xy}-q\Gamma^x_{yy}\bigr)\,aH_{yy}.
+\]</span></p>
+<p><em>First term.</em> By the symmetry of <span class="math" data-tex="\(T\)">\(T\)</span> in its first two indices and by Lemma 2.2,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;T(Y,D;D)-T(D,D;Y)\\
+&amp;\quad=K\bigl(g(D,D)\,z_y-g(D,Y)\,Dz\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;T(Y,D;D)-T(D,D;Y)\\
+&amp;\quad=K\bigl(g(D,D)\,z_y-g(D,Y)\,Dz\bigr).
+\end{aligned}
+\]</span>
+Apply the rule to <span class="math" data-tex="\(H(D,D)=aH_{yy}\)">\(H(D,D)=aH_{yy}\)</span> in the direction <span class="math" data-tex="\(Y\)">\(Y\)</span>. The component <span class="math" data-tex="\(r\)">\(r\)</span> of <span class="math" data-tex="\(\nabla_YD\)">\(\nabla_YD\)</span> is <span class="math" data-tex="\(\partial_y(D_r)+\Gamma^r_{yx}-q\Gamma^r_{yy}\)">\(\partial_y(D_r)+\Gamma^r_{yx}-q\Gamma^r_{yy}\)</span>, and <span class="math" data-tex="\(\partial_y(D_r)\)">\(\partial_y(D_r)\)</span> is not zero only for <span class="math" data-tex="\(r=y\)">\(r=y\)</span>, where <span class="math" data-tex="\(H(\partial_y,D)=0\)">\(H(\partial_y,D)=0\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;T(D,D;Y)\\
+&amp;\ =\partial_y(aH_{yy})-2H(\nabla_YD,D)\\
+&amp;\ =\partial_y(aH_{yy})-2\bigl(\Gamma^x_{xy}-q\Gamma^x_{yy}\bigr)aH_{yy}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;T(D,D;Y)\\
+&amp;\ =\partial_y(aH_{yy})-2H(\nabla_YD,D)\\
+&amp;\ =\partial_y(aH_{yy})-2\bigl(\Gamma^x_{xy}-q\Gamma^x_{yy}\bigr)aH_{yy}.
+\end{aligned}
+\]</span>
+Finally <span class="math" data-tex="\(aH_{yy}=KE/H_{yy}\)">\(aH_{yy}=KE/H_{yy}\)</span>, so <span class="math" data-tex="\(\partial_y(aH_{yy})=K_yE/H_{yy}+K\,\partial_y(E/H_{yy})\)">\(\partial_y(aH_{yy})=K_yE/H_{yy}+K\,\partial_y(E/H_{yy})\)</span>.</p>
+<p>Adding up and dividing by <span class="math" data-tex="\(H_{yy}\)">\(H_{yy}\)</span> gives the first identity. The second follows from Lemma 1.1, since <span class="math" data-tex="\(P_{z_x}q+P_{z_y}=q\Gamma^x_{DD}+\Gamma^y_{DD}+K\rho_2\)">\(P_{z_x}q+P_{z_y}=q\Gamma^x_{DD}+\Gamma^y_{DD}+K\rho_2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>At the points where <span class="math" data-tex="\(K=0\)">\(K=0\)</span> the identity says that <span class="math" data-tex="\(Dq-q\Gamma^x_{DD}-\Gamma^y_{DD}=K_yG\)">\(Dq-q\Gamma^x_{DD}-\Gamma^y_{DD}=K_yG\)</span>. The left side measures how the field <span class="math" data-tex="\(D\)">\(D\)</span> fails to be parallel along itself, in the direction of <span class="math" data-tex="\(y\)">\(y\)</span>; it is governed by the derivative of the curvature across.</p>
+<h2 id="4-derivatives-of-a-composite-function">4. Derivatives of a composite function</h2>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(F(y,p)\)">\(F(y,p)\)</span> be a smooth function of a real variable <span class="math" data-tex="\(y\)">\(y\)</span> and of <span class="math" data-tex="\(p=(p_1,\dots,p_N)\)">\(p=(p_1,\dots,p_N)\)</span>, and let <span class="math" data-tex="\(p(y)\)">\(p(y)\)</span> be a smooth curve in the domain of <span class="math" data-tex="\(F\)">\(F\)</span>. For <span class="math" data-tex="\(l\ge3\)">\(l\ge3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{d^l}{dy^l}F(y,p(y))\\
+&amp;\quad=\sum_iF_{p_i}\,p_i^{(l)}\\
+&amp;\qquad+l\sum_i\frac d{dy}\bigl[F_{p_i}\bigr]\,p_i^{(l-1)}+G_l,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{d^l}{dy^l}F(y,p(y))\\
+&amp;\quad=\sum_iF_{p_i}\,p_i^{(l)}\\
+&amp;\qquad+l\sum_i\frac d{dy}\bigl[F_{p_i}\bigr]\,p_i^{(l-1)}+G_l,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(F_{p_i}\)">\(F_{p_i}\)</span> is taken at <span class="math" data-tex="\((y,p(y))\)">\((y,p(y))\)</span>, <span class="math" data-tex="\(\tfrac d{dy}[F_{p_i}]\)">\(\tfrac d{dy}[F_{p_i}]\)</span> is the derivative of the function <span class="math" data-tex="\(y\mapsto F_{p_i}(y,p(y))\)">\(y\mapsto F_{p_i}(y,p(y))\)</span>, and <span class="math" data-tex="\(G_l\)">\(G_l\)</span> is a sum of terms of the form
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c\cdot p_{i_1}^{(k_1)}\cdots p_{i_n}^{(k_n)},\\
+1\le k_j\le l-2,\qquad k_1+\dots+k_n\le l,
+\end{gathered}
+\]">\[
+\begin{gathered}
+c\cdot p_{i_1}^{(k_1)}\cdots p_{i_n}^{(k_n)},\\
+1\le k_j\le l-2,\qquad k_1+\dots+k_n\le l,
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, in which <span class="math" data-tex="\(c\)">\(c\)</span> is an integer multiple of a partial derivative of <span class="math" data-tex="\(F\)">\(F\)</span> of order at most <span class="math" data-tex="\(l\)">\(l\)</span> at <span class="math" data-tex="\((y,p(y))\)">\((y,p(y))\)</span>.</p>
+<p><strong>Proof.</strong> First, by induction on <span class="math" data-tex="\(l\ge1\)">\(l\ge1\)</span>, the derivative of order <span class="math" data-tex="\(l\)">\(l\)</span> is a sum of terms <span class="math" data-tex="\(c\cdot p_{i_1}^{(k_1)}\cdots p_{i_n}^{(k_n)}\)">\(c\cdot p_{i_1}^{(k_1)}\cdots p_{i_n}^{(k_n)}\)</span> in which <span class="math" data-tex="\(c\)">\(c\)</span> is an integer multiple of a partial derivative of <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> differentiations in <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> in <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(\alpha+k_1+\dots+k_n=l\)">\(\alpha+k_1+\dots+k_n=l\)</span> with all <span class="math" data-tex="\(k_j\ge1\)">\(k_j\ge1\)</span>: differentiating such a term once either raises <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by one, or adds a factor <span class="math" data-tex="\(p_i&#x27;\)">\(p_i&#x27;\)</span>, or raises one <span class="math" data-tex="\(k_j\)">\(k_j\)</span> by one.</p>
+<p>For <span class="math" data-tex="\(l=2\)">\(l=2\)</span> the derivative is <span class="math" data-tex="\(\sum_iF_{p_i}p_i&#x27;&#x27;+G\)">\(\sum_iF_{p_i}p_i&#x27;&#x27;+G\)</span> with <span class="math" data-tex="\(G=F_{yy}+2\sum_iF_{yp_i}p_i&#x27;+\sum_{i,j}F_{p_ip_j}p_i&#x27;p_j&#x27;\)">\(G=F_{yy}+2\sum_iF_{yp_i}p_i&#x27;+\sum_{i,j}F_{p_ip_j}p_i&#x27;p_j&#x27;\)</span>. Differentiating once more, the terms that contain a second derivative of <span class="math" data-tex="\(p\)">\(p\)</span> are <span class="math" data-tex="\(\tfrac d{dy}[F_{p_i}]p_i&#x27;&#x27;\)">\(\tfrac d{dy}[F_{p_i}]p_i&#x27;&#x27;\)</span> from the first sum and <span class="math" data-tex="\(2(F_{yp_i}+\sum_jF_{p_ip_j}p_j&#x27;)p_i&#x27;&#x27;=2\tfrac d{dy}[F_{p_i}]p_i&#x27;&#x27;\)">\(2(F_{yp_i}+\sum_jF_{p_ip_j}p_j&#x27;)p_i&#x27;&#x27;=2\tfrac d{dy}[F_{p_i}]p_i&#x27;&#x27;\)</span> from <span class="math" data-tex="\(G\)">\(G\)</span>. This is the statement for <span class="math" data-tex="\(l=3\)">\(l=3\)</span>. If the statement holds for <span class="math" data-tex="\(l\ge3\)">\(l\ge3\)</span>, differentiate it: the first sum gives <span class="math" data-tex="\(\sum F_{p_i}p_i^{(l+1)}+\sum\tfrac d{dy}[F_{p_i}]p_i^{(l)}\)">\(\sum F_{p_i}p_i^{(l+1)}+\sum\tfrac d{dy}[F_{p_i}]p_i^{(l)}\)</span>; the second gives <span class="math" data-tex="\(l\sum\tfrac d{dy}[F_{p_i}]p_i^{(l)}\)">\(l\sum\tfrac d{dy}[F_{p_i}]p_i^{(l)}\)</span> and terms with derivatives of <span class="math" data-tex="\(p\)">\(p\)</span> of order at most <span class="math" data-tex="\(l-1\)">\(l-1\)</span>; and the derivative of <span class="math" data-tex="\(G_l\)">\(G_l\)</span> has derivatives of <span class="math" data-tex="\(p\)">\(p\)</span> of order at most <span class="math" data-tex="\(l-1\)">\(l-1\)</span>. With the first paragraph this is the statement for <span class="math" data-tex="\(l+1\)">\(l+1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-the-equation-for-a-derivative-of-high-order">5. The equation for a derivative of high order</h2>
+<p><strong>Theorem 5.1.</strong> In the situation of Section 1, let <span class="math" data-tex="\(l\ge3\)">\(l\ge3\)</span> and <span class="math" data-tex="\(u=\partial_y^lz\)">\(u=\partial_y^lz\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;D^2u+a\,u_{yy}+B\,Du\\
+&amp;\quad+\bigl((l+1)K_yG+K\rho\bigr)u_y=R_l,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;D^2u+a\,u_{yy}+B\,Du\\
+&amp;\quad+\bigl((l+1)K_yG+K\rho\bigr)u_y=R_l,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(D^2u=D(Du)\)">\(D^2u=D(Du)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B=-P_{z_x}-2l\,q_y,\\
+\rho=\rho_1-\rho_2+l\,G_y,
+\end{gathered}
+\]">\[
+\begin{gathered}
+B=-P_{z_x}-2l\,q_y,\\
+\rho=\rho_1-\rho_2+l\,G_y,
+\end{gathered}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_l&amp;=l\,\partial_y[P_{z_x}]\,\partial_y^{l-1}z_x\\
+&amp;\quad+l\,\partial_y[P_{z_y}]\,\partial_y^{l-1}z_y+G_l .
+\end{aligned}
+\]">\[
+\begin{aligned}
+R_l&amp;=l\,\partial_y[P_{z_x}]\,\partial_y^{l-1}z_x\\
+&amp;\quad+l\,\partial_y[P_{z_y}]\,\partial_y^{l-1}z_y+G_l .
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(\partial_y[\,\cdot\,]\)">\(\partial_y[\,\cdot\,]\)</span> is the derivative in <span class="math" data-tex="\(y\)">\(y\)</span> of the function of <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> obtained by inserting the solution, and <span class="math" data-tex="\(G_l\)">\(G_l\)</span> is the sum of Lemma 4.1 for <span class="math" data-tex="\(F=P\)">\(F=P\)</span> and <span class="math" data-tex="\(p=(z_x,z_y,z_{xy},z_{yy})\)">\(p=(z_x,z_y,z_{xy},z_{yy})\)</span>, with <span class="math" data-tex="\(x\)">\(x\)</span> as a parameter. In <span class="math" data-tex="\(R_l\)">\(R_l\)</span> all derivatives of <span class="math" data-tex="\(z\)">\(z\)</span> have order at most <span class="math" data-tex="\(l\)">\(l\)</span>.</p>
+<p><strong>Proof.</strong> Differentiate <span class="math" data-tex="\(z_{xx}=P(x,y,z_x,z_y,z_{xy},z_{yy})\)">\(z_{xx}=P(x,y,z_x,z_y,z_{xy},z_{yy})\)</span> <span class="math" data-tex="\(l\)">\(l\)</span> times in <span class="math" data-tex="\(y\)">\(y\)</span> and use Lemma 4.1. The derivatives of order <span class="math" data-tex="\(l\)">\(l\)</span> of the four variables are <span class="math" data-tex="\(u_x,u_y,u_{xy},u_{yy}\)">\(u_x,u_y,u_{xy},u_{yy}\)</span>, and those of order <span class="math" data-tex="\(l-1\)">\(l-1\)</span> are <span class="math" data-tex="\(\partial_y^{l-1}z_x,\partial_y^{l-1}z_y,u_x,u_y\)">\(\partial_y^{l-1}z_x,\partial_y^{l-1}z_y,u_x,u_y\)</span>. With Lemma 1.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_{xx}&amp;=2q\,u_{xy}-(q^2+a)\,u_{yy}\\
+&amp;\quad+P_{z_x}u_x+P_{z_y}u_y+2l\,q_y\,u_x\\
+&amp;\quad-l\,(q^2+a)_y\,u_y+R_l .
+\end{aligned}
+\]">\[
+\begin{aligned}
+u_{xx}&amp;=2q\,u_{xy}-(q^2+a)\,u_{yy}\\
+&amp;\quad+P_{z_x}u_x+P_{z_y}u_y+2l\,q_y\,u_x\\
+&amp;\quad-l\,(q^2+a)_y\,u_y+R_l .
+\end{aligned}
+\]</span>
+For every function <span class="math" data-tex="\(w\)">\(w\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D^2w&amp;=w_{xx}-2q\,w_{xy}+q^2w_{yy}\\
+&amp;\quad-(Dq)\,w_y,
+\end{aligned}
+\]">\[
+\begin{aligned}
+D^2w&amp;=w_{xx}-2q\,w_{xy}+q^2w_{yy}\\
+&amp;\quad-(Dq)\,w_y,
+\end{aligned}
+\]</span>
+by expanding <span class="math" data-tex="\((\partial_x-q\partial_y)(w_x-qw_y)\)">\((\partial_x-q\partial_y)(w_x-qw_y)\)</span>. So <span class="math" data-tex="\(u_{xx}-2qu_{xy}+q^2u_{yy}=D^2u+(Dq)u_y\)">\(u_{xx}-2qu_{xy}+q^2u_{yy}=D^2u+(Dq)u_y\)</span>. Insert this and <span class="math" data-tex="\(u_x=Du+qu_y\)">\(u_x=Du+qu_y\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;D^2u+a\,u_{yy}-(P_{z_x}+2lq_y)\,Du\\
+&amp;\quad+\bigl(Dq-P_{z_x}q-P_{z_y}+l\,a_y\bigr)u_y=R_l .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;D^2u+a\,u_{yy}-(P_{z_x}+2lq_y)\,Du\\
+&amp;\quad+\bigl(Dq-P_{z_x}q-P_{z_y}+l\,a_y\bigr)u_y=R_l .
+\end{aligned}
+\]</span>
+The terms <span class="math" data-tex="\(-2lqq_y\)">\(-2lqq_y\)</span> and <span class="math" data-tex="\(l(q^2)_y\)">\(l(q^2)_y\)</span> have cancelled. By Theorem 3.1 and <span class="math" data-tex="\(a_y=K_yG+KG_y\)">\(a_y=K_yG+KG_y\)</span>, the coefficient of <span class="math" data-tex="\(u_y\)">\(u_y\)</span> is <span class="math" data-tex="\((l+1)K_yG+K(\rho_1-\rho_2+lG_y)\)">\((l+1)K_yG+K(\rho_1-\rho_2+lG_y)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="6-flow-coordinates">6. Flow coordinates</h2>
+<p>Let <span class="math" data-tex="\(W\)">\(W\)</span> be an open rectangle in a plane with the coordinates <span class="math" data-tex="\(t,s\)">\(t,s\)</span> that contains a point with <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, and suppose that there is a smooth function <span class="math" data-tex="\(y(t,s)\)">\(y(t,s)\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span> with
+<span class="math math-display" data-tex="\[
+y_t(t,s)=-q(t,y(t,s)),\qquad y(0,s)=s,
+\]">\[
+y_t(t,s)=-q(t,y(t,s)),\qquad y(0,s)=s,
+\]</span>
+such that <span class="math" data-tex="\(\Phi(t,s)=(t,y(t,s))\)">\(\Phi(t,s)=(t,y(t,s))\)</span> maps <span class="math" data-tex="\(W\)">\(W\)</span> into <span class="math" data-tex="\(U\)">\(U\)</span>. The curves <span class="math" data-tex="\(s=\text{const}\)">\(s=\text{const}\)</span> are the integral curves of <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>Lemma 6.1.</strong> <span class="math" data-tex="\(y_s=\exp\bigl(-\int_0^tq_y(r,y(r,s))\,dr\bigr)&gt;0\)">\(y_s=\exp\bigl(-\int_0^tq_y(r,y(r,s))\,dr\bigr)&gt;0\)</span>, and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is a diffeomorphism from <span class="math" data-tex="\(W\)">\(W\)</span> onto an open subset of <span class="math" data-tex="\(U\)">\(U\)</span>. For a function <span class="math" data-tex="\(w\)">\(w\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, with <span class="math" data-tex="\(\sigma=1/y_s\)">\(\sigma=1/y_s\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_t(w\circ\Phi)&amp;=(Dw)\circ\Phi,\\
+\sigma\,\partial_s(w\circ\Phi)&amp;=w_y\circ\Phi,\\
+w_{yy}\circ\Phi&amp;=\sigma^2\,\partial_s^2(w\circ\Phi)\\
+&amp;\quad+\sigma\sigma_s\,\partial_s(w\circ\Phi).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_t(w\circ\Phi)&amp;=(Dw)\circ\Phi,\\
+\sigma\,\partial_s(w\circ\Phi)&amp;=w_y\circ\Phi,\\
+w_{yy}\circ\Phi&amp;=\sigma^2\,\partial_s^2(w\circ\Phi)\\
+&amp;\quad+\sigma\sigma_s\,\partial_s(w\circ\Phi).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Differentiating the equation for <span class="math" data-tex="\(y\)">\(y\)</span> in <span class="math" data-tex="\(s\)">\(s\)</span> gives <span class="math" data-tex="\((y_s)_t=-q_y(t,y)\,y_s\)">\((y_s)_t=-q_y(t,y)\,y_s\)</span> with <span class="math" data-tex="\(y_s(0,s)=1\)">\(y_s(0,s)=1\)</span>; this linear equation has the stated solution. For fixed <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(s\mapsto y(t,s)\)">\(s\mapsto y(t,s)\)</span> is strictly increasing, so <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is injective; its matrix of first derivatives has the determinant <span class="math" data-tex="\(y_s&gt;0\)">\(y_s&gt;0\)</span>, so it is a diffeomorphism onto an open set. By the chain rule <span class="math" data-tex="\(\partial_t(w\circ\Phi)=(w_x+y_tw_y)\circ\Phi\)">\(\partial_t(w\circ\Phi)=(w_x+y_tw_y)\circ\Phi\)</span>, which is <span class="math" data-tex="\((Dw)\circ\Phi\)">\((Dw)\circ\Phi\)</span>, and <span class="math" data-tex="\(\partial_s(w\circ\Phi)=y_s\,w_y\circ\Phi\)">\(\partial_s(w\circ\Phi)=y_s\,w_y\circ\Phi\)</span>. Applying the second formula twice gives the last one. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In these coordinates <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(\partial_t\)">\(\partial_t\)</span> and <span class="math" data-tex="\(\partial_y\)">\(\partial_y\)</span> is <span class="math" data-tex="\(\sigma\,\partial_s\)">\(\sigma\,\partial_s\)</span>. The function <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is the derivative of <span class="math" data-tex="\(s\)">\(s\)</span> in the direction of <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p><strong>Theorem 6.2.</strong> In the situation of Theorem 5.1, the function <span class="math" data-tex="\(u\circ\Phi\)">\(u\circ\Phi\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span>, again written <span class="math" data-tex="\(u\)">\(u\)</span>, satisfies
+<span class="math math-display" data-tex="\[
+u_{tt}+A\,u_{ss}+B\,u_t+C\,u_s=R_l,
+\]">\[
+u_{tt}+A\,u_{ss}+B\,u_t+C\,u_s=R_l,
+\]</span>
+where <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(R_l\)">\(R_l\)</span> are the functions of Theorem 5.1 composed with <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, and, with <span class="math" data-tex="\(K,G,\rho\)">\(K,G,\rho\)</span> composed with <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=G_1K,\qquad G_1=G\sigma^2,\\
+C=(l+1)A_s+K\rho_3,\\
+\rho_3=\sigma\rho+G\,\sigma\sigma_s-(l+1)(G_1)_s .
+\end{gathered}
+\]">\[
+\begin{gathered}
+A=G_1K,\qquad G_1=G\sigma^2,\\
+C=(l+1)A_s+K\rho_3,\\
+\rho_3=\sigma\rho+G\,\sigma\sigma_s-(l+1)(G_1)_s .
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> By Lemma 6.1, <span class="math" data-tex="\(D^2u=u_{tt}\)">\(D^2u=u_{tt}\)</span>, <span class="math" data-tex="\(Du=u_t\)">\(Du=u_t\)</span>, <span class="math" data-tex="\(u_y=\sigma u_s\)">\(u_y=\sigma u_s\)</span> and <span class="math" data-tex="\(u_{yy}=\sigma^2u_{ss}+\sigma\sigma_su_s\)">\(u_{yy}=\sigma^2u_{ss}+\sigma\sigma_su_s\)</span>. So Theorem 5.1 becomes the stated equation with <span class="math" data-tex="\(A=a\sigma^2=KG\sigma^2\)">\(A=a\sigma^2=KG\sigma^2\)</span> and
+<span class="math math-display" data-tex="\[
+C=KG\,\sigma\sigma_s+\sigma\bigl((l+1)K_yG+K\rho\bigr).
+\]">\[
+C=KG\,\sigma\sigma_s+\sigma\bigl((l+1)K_yG+K\rho\bigr).
+\]</span>
+By Lemma 6.1, <span class="math" data-tex="\(K_y\circ\Phi=\sigma\,\partial_s(K\circ\Phi)\)">\(K_y\circ\Phi=\sigma\,\partial_s(K\circ\Phi)\)</span>. Hence <span class="math" data-tex="\(A_s=G_1K_s+K(G_1)_s\)">\(A_s=G_1K_s+K(G_1)_s\)</span>, which is <span class="math" data-tex="\(G\sigma K_y+K(G_1)_s\)">\(G\sigma K_y+K(G_1)_s\)</span>, so <span class="math" data-tex="\((l+1)\sigma GK_y\)">\((l+1)\sigma GK_y\)</span> equals <span class="math" data-tex="\((l+1)A_s-(l+1)K(G_1)_s\)">\((l+1)A_s-(l+1)K(G_1)_s\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Where <span class="math" data-tex="\(K&gt;0\)">\(K&gt;0\)</span> the operator <span class="math" data-tex="\(\partial_t^2+A\,\partial_s^2\)">\(\partial_t^2+A\,\partial_s^2\)</span> is elliptic, and where <span class="math" data-tex="\(K&lt;0\)">\(K&lt;0\)</span> it is hyperbolic, because <span class="math" data-tex="\(G_1&gt;0\)">\(G_1&gt;0\)</span> as long as <span class="math" data-tex="\(E&gt;0\)">\(E&gt;0\)</span>. On the curve <span class="math" data-tex="\(K=0\)">\(K=0\)</span> the equation reduces to
+<span class="math math-display" data-tex="\[
+u_{tt}+B\,u_t+(l+1)A_s\,u_s=R_l .
+\]">\[
+u_{tt}+B\,u_t+(l+1)A_s\,u_s=R_l .
+\]</span>
+The estimate of [OpenAI-I, Section 3] uses the sign of <span class="math" data-tex="\(A_s\)">\(A_s\)</span> on this curve, which is the sign of <span class="math" data-tex="\(K_y\)">\(K_y\)</span>, and the factor <span class="math" data-tex="\(l+1\)">\(l+1\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Let <span class="math" data-tex="\(g\)">\(g\)</span> be the Euclidean metric <span class="math" data-tex="\(dx^2+dy^2\)">\(dx^2+dy^2\)</span> and <span class="math" data-tex="\(z=\tfrac12y^2\)">\(z=\tfrac12y^2\)</span>. Check that the assumptions of Section 1 hold, and compute <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span>, <span class="math" data-tex="\(P\)">\(P\)</span> and both sides of the identities of Lemma 1.1 and Theorem 3.1.</p>
+<p><strong>7.2.</strong> Show that <span class="math" data-tex="\(D^2w=w_{xx}-2qw_{xy}+q^2w_{yy}-(Dq)w_y\)">\(D^2w=w_{xx}-2qw_{xy}+q^2w_{yy}-(Dq)w_y\)</span> for every function <span class="math" data-tex="\(w\)">\(w\)</span>, and that in the equation of Theorem 5.1 the second-order part is <span class="math" data-tex="\(u_{xx}-2qu_{xy}+(q^2+a)u_{yy}\)">\(u_{xx}-2qu_{xy}+(q^2+a)u_{yy}\)</span>. For which sign of <span class="math" data-tex="\(K\)">\(K\)</span> is this part elliptic?</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(l\ge7\)">\(l\ge7\)</span>. Show that in every term of the sum <span class="math" data-tex="\(G_l\)">\(G_l\)</span> of Lemma 4.1 at most one of the numbers <span class="math" data-tex="\(k_j\)">\(k_j\)</span> is larger than <span class="math" data-tex="\(l/2\)">\(l/2\)</span>, and that at most one is at least <span class="math" data-tex="\(l-3\)">\(l-3\)</span>.</p>
+<p><strong>7.4.</strong> Verify Lemma 2.2 for the metric <span class="math" data-tex="\(dX^2+f^2\,dY^2\)">\(dX^2+f^2\,dY^2\)</span> with <span class="math" data-tex="\(f=\cosh X\)">\(f=\cosh X\)</span> and the function <span class="math" data-tex="\(z=Y\)">\(z=Y\)</span>, for <span class="math" data-tex="\((i,j,k)=(1,1,2)\)">\((i,j,k)=(1,1,2)\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> All Christoffel symbols vanish and <span class="math" data-tex="\(K=0\)">\(K=0\)</span>. <span class="math" data-tex="\(H\)">\(H\)</span> is the matrix of the second derivatives: <span class="math" data-tex="\(H_{yy}=1\)">\(H_{yy}=1\)</span>, the other entries are <span class="math" data-tex="\(0\)">\(0\)</span>. The height equation reads <span class="math" data-tex="\(0=0\)">\(0=0\)</span>. <span class="math" data-tex="\(E=1-y^2\)">\(E=1-y^2\)</span>. <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, <span class="math" data-tex="\(D=\partial_x\)">\(D=\partial_x\)</span>, <span class="math" data-tex="\(G=1-y^2\)">\(G=1-y^2\)</span>, <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, and <span class="math" data-tex="\(P=z_{xy}^2/z_{yy}\)">\(P=z_{xy}^2/z_{yy}\)</span> with <span class="math" data-tex="\(P_{z_{xy}}=2z_{xy}/z_{yy}=0=2q\)">\(P_{z_{xy}}=2z_{xy}/z_{yy}=0=2q\)</span>, <span class="math" data-tex="\(P_{z_{yy}}=-z_{xy}^2/z_{yy}^2=0\)">\(P_{z_{yy}}=-z_{xy}^2/z_{yy}^2=0\)</span>, <span class="math" data-tex="\(P_{z_i}=0\)">\(P_{z_i}=0\)</span>. In Theorem 3.1 both sides are <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><strong>7.2.</strong> Expanding gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(\partial_x-q\partial_y)(w_x-qw_y)\\
+&amp;\quad=w_{xx}-q_xw_y-qw_{xy}\\
+&amp;\qquad-qw_{xy}+qq_yw_y+q^2w_{yy},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(\partial_x-q\partial_y)(w_x-qw_y)\\
+&amp;\quad=w_{xx}-q_xw_y-qw_{xy}\\
+&amp;\qquad-qw_{xy}+qq_yw_y+q^2w_{yy},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(-q_x+qq_y=-Dq\)">\(-q_x+qq_y=-Dq\)</span>. The second-order part of <span class="math" data-tex="\(D^2u+a\,u_{yy}\)">\(D^2u+a\,u_{yy}\)</span> is therefore <span class="math" data-tex="\(u_{xx}-2qu_{xy}+(q^2+a)u_{yy}\)">\(u_{xx}-2qu_{xy}+(q^2+a)u_{yy}\)</span>. Its determinant is <span class="math" data-tex="\((q^2+a)-q^2=a=KG\)">\((q^2+a)-q^2=a=KG\)</span>, so it is elliptic where <span class="math" data-tex="\(K&gt;0\)">\(K&gt;0\)</span>, if <span class="math" data-tex="\(G&gt;0\)">\(G&gt;0\)</span>.</p>
+<p><strong>7.3.</strong> The <span class="math" data-tex="\(k_j\)">\(k_j\)</span> are at least <span class="math" data-tex="\(1\)">\(1\)</span> and their sum is at most <span class="math" data-tex="\(l\)">\(l\)</span>, so two of them cannot both be larger than <span class="math" data-tex="\(l/2\)">\(l/2\)</span>. If two were at least <span class="math" data-tex="\(l-3\)">\(l-3\)</span>, the sum would be at least <span class="math" data-tex="\(2l-6&gt;l\)">\(2l-6&gt;l\)</span> for <span class="math" data-tex="\(l\ge7\)">\(l\ge7\)</span>.</p>
+<p><strong>7.4.</strong> With the coordinates <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> numbered <span class="math" data-tex="\(1,2\)">\(1,2\)</span>: <span class="math" data-tex="\(z_1=0\)">\(z_1=0\)</span>, <span class="math" data-tex="\(z_2=1\)">\(z_2=1\)</span>, <span class="math" data-tex="\(K=-1\)">\(K=-1\)</span>, and the Christoffel symbols of Lemma 3.1 of the lesson on heights are <span class="math" data-tex="\(\Gamma^1_{22}=-ff&#x27;\)">\(\Gamma^1_{22}=-ff&#x27;\)</span>, <span class="math" data-tex="\(\Gamma^2_{12}=f&#x27;/f\)">\(\Gamma^2_{12}=f&#x27;/f\)</span>, <span class="math" data-tex="\(\Gamma^2_{22}=0\)">\(\Gamma^2_{22}=0\)</span>. So <span class="math" data-tex="\(H_{ij}=-\Gamma^2_{ij}\)">\(H_{ij}=-\Gamma^2_{ij}\)</span>: <span class="math" data-tex="\(H_{11}=0\)">\(H_{11}=0\)</span>, <span class="math" data-tex="\(H_{12}=-f&#x27;/f\)">\(H_{12}=-f&#x27;/f\)</span>, <span class="math" data-tex="\(H_{22}=0\)">\(H_{22}=0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_{112}&amp;=\partial_2H_{11}-2\,\Gamma^r_{21}H_{r1}\\
+&amp;=-2\,\Gamma^2_{21}H_{21}=\frac{2f&#x27;^2}{f^2},\\
+T_{121}&amp;=\partial_1H_{12}-\Gamma^r_{11}H_{r2}-\Gamma^r_{12}H_{1r}\\
+&amp;=-\frac{f&#x27;&#x27;f-f&#x27;^2}{f^2}-\Gamma^2_{12}H_{12}\\
+&amp;=-\frac{f&#x27;&#x27;}f+\frac{2f&#x27;^2}{f^2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+T_{112}&amp;=\partial_2H_{11}-2\,\Gamma^r_{21}H_{r1}\\
+&amp;=-2\,\Gamma^2_{21}H_{21}=\frac{2f&#x27;^2}{f^2},\\
+T_{121}&amp;=\partial_1H_{12}-\Gamma^r_{11}H_{r2}-\Gamma^r_{12}H_{1r}\\
+&amp;=-\frac{f&#x27;&#x27;f-f&#x27;^2}{f^2}-\Gamma^2_{12}H_{12}\\
+&amp;=-\frac{f&#x27;&#x27;}f+\frac{2f&#x27;^2}{f^2}.
+\end{aligned}
+\]</span>
+The difference is <span class="math" data-tex="\(T_{112}-T_{121}=f&#x27;&#x27;/f=1\)">\(T_{112}-T_{121}=f&#x27;&#x27;/f=1\)</span>. The right side of Lemma 2.2 for <span class="math" data-tex="\((i,j,k)=(1,1,2)\)">\((i,j,k)=(1,1,2)\)</span> is <span class="math" data-tex="\(K(g_{12}z_1-g_{11}z_2)=-K=1\)">\(K(g_{12}z_1-g_{11}z_2)=-K=1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-I] OpenAI, <em>A smooth metric with no local isometric immersion into three-space</em>, OpenAI Math Release preprint, 24 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/A-Smooth-Metric-with-No-Local-Isometric-Immersion-into-Three-Space-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

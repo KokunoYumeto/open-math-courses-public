@@ -87,16 +87,68 @@ In general let \((A,0)=\bigcup(A_l,0)\) with irreducible \((A_l,0)\). For small 
 
 **Definition 3.1.** A **local model** is a pair \((V,\mathcal O_V)\), where \(V=V(\mathcal J)\) is the zero set of a coherent ideal \(\mathcal J\subset\mathcal O_U\) on an open set \(U\subset\mathbf C^n\) and \(\mathcal O_V=(\mathcal O_U/\mathcal J)|_V\). A **complex space** is a Hausdorff, second countable space \(X\) with a sheaf of local \(\mathbf C\)-algebras \(\mathcal O_X\), locally isomorphic as a locally ringed space to local models. It is **reduced** if all stalks of \(\mathcal O_X\) have no nonzero nilpotents; equivalently, near each point it is isomorphic to a model with \(\mathcal J=\mathcal I_V\). Morphisms of complex spaces are morphisms of locally ringed spaces over \(\mathbf C\).
 
-By the Nullstellensatz [Analytic germs, Theorem 5.1](analytic-germs-local-parametrization-and-the-nullstellensatz.md#5-the-nullstellensatz-and-dimension), the nilpotent germs of \(\mathcal O_U/\mathcal J\) at \(x\) are the classes of germs vanishing on \(V\), so the model is reduced exactly when \(\mathcal J=\mathcal I_V\), and every model has a **reduction** \((V,(\mathcal O_U/\mathcal I_V)|_V)\). For a reduced space, \(\mathcal O_X\) is a sheaf of continuous functions: the value of a section at \(x\) is its image in the residue field \(\mathbf C\), and a section vanishing at every point is nilpotent, hence zero. This agrees with the description of reduced analytic spaces in [Complex analytic spaces and analytification, Section 1](course:AG-QC/complex-analytic-spaces-and-analytification#1-analytic-equations-and-their-sheaves). A morphism of reduced complex spaces is the same as a continuous map that pulls holomorphic functions back to holomorphic functions.
+By the Nullstellensatz [Analytic germs, Theorem 5.1](analytic-germs-local-parametrization-and-the-nullstellensatz.md#5-the-nullstellensatz-and-dimension), the nilpotent germs of \(\mathcal O_U/\mathcal J\) at \(x\) are the classes of germs vanishing on \(V\), so the model is reduced exactly when \(\mathcal J=\mathcal I_V\), and every model has a **reduction** \((V,(\mathcal O_U/\mathcal I_V)|_V)\). For a reduced space, \(\mathcal O_X\) is a sheaf of continuous functions: the value of a section at \(x\) is its image in the residue field \(\mathbf C\), and a section vanishing at every point has a nilpotent germ at every point, hence all its germs are zero and it is zero. This agrees with the description of reduced analytic spaces in [Complex analytic spaces and analytification, Section 1](course:AG-QC/complex-analytic-spaces-and-analytification#1-analytic-equations-and-their-sheaves). A morphism of reduced complex spaces is the same as a continuous map that pulls holomorphic functions back to holomorphic functions.
 
 **Theorem 3.2.** Let \(X\) be a complex space.
 
 1. \(\mathcal O_X\) is a coherent sheaf of rings. Kernels, cokernels, images and extensions of coherent \(\mathcal O_X\)-modules are coherent, and so are their tensor products and internal homomorphisms; supports of coherent modules are analytic subsets of \(X\).
 2. If \(Y\subset X\) is an analytic subset, its ideal sheaf in \(\mathcal O_X\) is coherent.
 3. If \(i:V\hookrightarrow U\) is a local model, a sheaf \(\mathcal S\) of \(\mathcal O_V\)-modules is coherent if and only if \(i_*\mathcal S\) is a coherent \(\mathcal O_U\)-module, and \(H^q(V,\mathcal S)=H^q(U,i_*\mathcal S)\) for all \(q\).
-4. The reduction \(X_{\mathrm{red}}\) is a reduced complex space with the same underlying space, and \(\mathcal O_X\to\mathcal O_{X_{\mathrm{red}}}\) is surjective with coherent nilpotent kernel.
+4. The reduction \(X_{\mathrm{red}}\) is a reduced complex space with the same underlying space, and \(\mathcal O_X\to\mathcal O_{X_{\mathrm{red}}}\) is surjective with coherent locally nilpotent kernel: near each point some fixed power of the kernel vanishes. The exponent may depend on the neighbourhood.
 
 **Proof.** All statements are local, so let \(X=V\) be a model in \(U\). (1) \(\mathcal O_U/\mathcal J\) is coherent over \(\mathcal O_U\) by Oka's theorem, hence coherent over itself by [Stacks, Tag 0HCC](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/modules.html#modules-lemma-coherent-change-rings), and the remaining statements follow from [Coherent sheaves and Oka's coherence theorem, Proposition 1.2 and Theorem 3.1](coherent-sheaves-and-okas-theorem.md#3-the-category-of-coherent-analytic-sheaves) applied over \(\mathcal O_X\) (the proofs of Theorem 3.1(2)–(3) use only finite presentations and a coherent structure sheaf, and the support of a coherent \(\mathcal O_X\)-module is the support of its pushforward to \(U\)). (2) The ideal of \(Y\) in \(\mathcal O_U/\mathcal J\) is \((\mathcal I_Y+\mathcal J)/\mathcal J\), a quotient of coherent sheaves by Theorem 1.1. (3) The first statement is Tag 0HCC together with extension by zero. For cohomology, \(i\) is the inclusion of a closed subset, \(i_*\) is exact and carries injective sheaves to flasque sheaves, and flasque sheaves are acyclic [Stacks, Tag 09SY](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-flasque-acyclic); so an injective resolution of \(\mathcal S\) pushes forward to a flasque resolution (compare [Stacks, Tag 09T0](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-flasque-acyclic-pushforward)) of \(i_*\mathcal S\) with the same global sections. (4) The kernel is \(\mathcal I_V/\mathcal J\), coherent by Theorem 1.1 and nilpotent near each point by the Nullstellensatz, since \(\mathcal I_V\) is finitely generated near each point and each generator has a power in \(\mathcal J\). \(\square\)
+
+### Local powers and the absence of a uniform exponent
+
+**The local exponent in Theorem 3.2(4).** Write \(\mathcal N=\ker(\mathcal O_X\to\mathcal O_{X_{\mathrm{red}}})\), an ideal sheaf of \(\mathcal O_X\). The precise assertion is that for every \(x\in X\) there exist an open neighbourhood \(W\subset X\) of \(x\) and an integer \(N\geq1\) such that \((\mathcal N|_W)^N=0\). Here an ideal-sheaf power is the ideal sheaf generated by products of the indicated number of local sections. It is not asserted that one integer works on all of \(X\).
+
+To complete the exponent argument in the proof, choose a local model \(V\subset U\) at \(x\). By Theorem 1.1, after shrinking the ambient neighbourhood, the ideal sheaf \(\mathcal I_V\) is generated by finitely many holomorphic sections \(f_1,\ldots,f_s\). The analytic Nullstellensatz used above gives integers \(e_i\geq1\) with \((f_i)_x^{e_i}\in\mathcal J_x\). Membership of a germ in an ideal sheaf means that it has a representative in that sheaf on a neighbourhood. Since there are only finitely many generators, shrink once more so that every relation \(f_i^{e_i}\in\mathcal J\) holds on the same neighbourhood. Put
+
+\[
+N=1+\sum_{i=1}^{s}(e_i-1).
+\]
+
+Each product of \(N\) generators contains some \(f_i\) at least \(e_i\) times: otherwise its total number of factors would be at most \(\sum_i(e_i-1)=N-1\). Hence every such product belongs to \(\mathcal J\). Since these products generate \(\mathcal I_V^N\), we obtain \(\mathcal I_V^N\subset\mathcal J\) on this neighbourhood, and therefore \((\mathcal I_V/\mathcal J)^N=0\) on its intersection \(W\) with \(V\). If \(s=0\), the ideal is zero and \(N=1\) suffices. This proves the neighbourhood-wise assertion, including its uniformity on each chosen neighbourhood. \(\square\)
+
+**Example 3.2a (no global exponent).** There is a Hausdorff, second countable complex space whose coherent reduction kernel has no globally vanishing power.
+
+**Proof.** For each integer \(m\geq1\), let \(X_m\) be the one-point local analytic model cut out by \(z^{m+1}\) on a disc about zero in \(\mathbf C\). Its ring is
+
+\[
+A_m=\mathbf C\{z\}/(z^{m+1}).
+\]
+
+The defining ideal is coherent: multiplication by \(z^{m+1}\) identifies it with the coherent sheaf of holomorphic functions on the disc. This multiplication is injective on stalks, since a nonzero holomorphic germ in one variable cannot annihilate another nonzero germ.
+
+Give \(X=\coprod_{m\geq1}X_m\) its disjoint-union topology. More explicitly, for an open subset \(W\subset X\) define
+
+\[
+\mathcal O_X(W)=\prod_{m\in W}A_m,
+\]
+
+with restriction maps the coordinate projections. These rings form a sheaf because compatible coordinate families glue uniquely; the empty product is the zero ring. Its stalk at \(m\) is \(A_m\), a local \(\mathbf C\)-algebra with maximal ideal generated by the class of \(z\). The topology is discrete and Hausdorff, and its countably many singletons form a countable base. Each singleton, with its restricted sheaf, is exactly the analytic model \(X_m\). Thus \(X\) satisfies Definition 3.1; no compactness or bounded-thickness hypothesis has been added.
+
+The reduction has the same underlying set and stalk \(\mathbf C\) at each point. Its structure map is the morphism of sheaves of \(\mathbf C\)-algebras
+
+\[
+\rho:\mathcal O_X\longrightarrow\mathcal O_{X_{\mathrm{red}}},
+\qquad
+(a_m)_{m\in W}\longmapsto(a_m(0))_{m\in W}.
+\]
+
+It is surjective even on sections over each open set, by taking constant representatives. Its kernel \(\mathcal N\) has stalk \(\mathcal N_m=(z)/(z^{m+1})\). This is a coherent ideal sheaf: on each open singleton it is generated by \(z\), with relation ideal \((z^m)\), over the coherent local analytic ring \(A_m\); alternatively it is a coherent image by Theorem 3.2(1). Coherence is local, so the varying value of \(m\) causes no failure of coherence on \(X\).
+
+For each \(m\), \(\mathcal N_m^{m+1}=0\). But for every proposed integer \(r\geq1\), choose \(m\geq r\). Then
+
+\[
+(\mathcal N^r)_m=(z^r)/(z^{m+1})\ne0.
+\]
+
+Indeed a convergent power series divisible by \(z^{m+1}\) has zero coefficients in degrees at most \(m\), whereas \(z^r\) does not. Ideal-sheaf powers commute with taking stalks because their generators are finite products of germs. Consequently \(\mathcal N^r\ne0\) for every \(r\), even though \(\mathcal N\) is nilpotent on a neighbourhood of every point. The global section whose coordinate at \(m\) is the class of \(z\) likewise has a nilpotent germ at every point but has no zero global power. \(\square\)
+
+**Corollary 3.2b (compact spaces).** If \(X\) is compact, its reduction kernel \(\mathcal N\) does satisfy \(\mathcal N^N=0\) for some single integer \(N\geq1\).
+
+**Proof.** Use Theorem 3.2(4) to cover \(X\) by open sets \(W_x\) with \((\mathcal N|_{W_x})^{N_x}=0\). Choose a finite subcover \(W_{x_1},\ldots,W_{x_t}\) and let \(N=\max_i N_{x_i}\). Higher powers of an ideal are contained in lower powers, so \(\mathcal N^N\) restricts to zero on each member of this cover. Every germ of \(\mathcal N^N\) is therefore zero, which implies that the sheaf is zero: a section with zero germs vanishes on neighbourhoods covering its domain and hence vanishes by the sheaf axiom. If \(X\) is empty, take \(N=1\). The example above shows why compactness cannot simply be omitted from this conclusion. \(\square\)
 
 **Theorem 3.3.** Let \(X\) be a reduced complex space. Then \(X_{\mathrm{reg}}\) is a dense open subset of \(X\) whose complement \(X_{\mathrm{sing}}\) is an analytic subset of \(X\).
 

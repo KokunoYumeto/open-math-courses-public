@@ -546,7 +546,207 @@ This is an equality of sets, not an approximation. At \(x=0\) the upper vertical
 
 *The same neighborhood in two coordinate systems.* The left panel plots the exact set (R9.18) with horizontal \(x\) and vertical \(a\). The right panel uses horizontal \(x\) and vertical \(u=a+b(x)\). Dashed boundary segments are excluded and the solid segment is included. This realizes (R9.10) across the jump of R4.1. The group-topology proof is Sections 7.2–7.4; Brown's original general mechanism is on pp.75–77 of the article cited above. The figure and its model source are original.
 
+<a id="real-restriction-pair"></a>
+## 8. The two restrictions and their compatibility
+
+Retain the Polish central-extension data of R9, with
+\(L=\Gamma\times\mathbb R\) and trivial real action on \(N\).
+Write \(\theta_t\) for the action on \(A\). The \(\Gamma\)-action
+commutes with \(\theta\). From a full factor pair put
+\[
+ h_g(n)=\ell_{(g,0)}(n),\qquad
+ c_t(n)=\ell_{(1,t)}(n),\qquad
+ \chi=[m,h]\in\mathscr H_\Gamma(N,A).
+ \tag{R10.1}
+\]
+The groups \(\mathscr H_\Gamma\) and \(\mathscr H_L\) use the
+normalized Borel factors and coboundaries of
+[BEX, Section 3](OA-FLOW-BEX.md#ext-gauge).
+For \(t\in\mathbb R\), act on a \(\Gamma\)-pair by applying
+\(\theta_t\) to both of its values. This preserves all factor
+identities, since \(\theta_t\) commutes with \(\Gamma\).
+It preserves coboundaries as well:
+\(\theta_t(\partial b)=\partial(\theta_t b)\).
+Thus it defines an action on \(\mathscr H_\Gamma(N,A)\).
+
+Let \(Z=Z^1_\theta(\mathbb R,A)\), \(B=\delta_A(A)\), and
+\(H=Z/B\), with the topologies of R5–R6.
+The action \(g[c]=[t\mapsto g(c_t)]\) on \(H\) is well defined.
+Here \(\operatorname{Hom}_\Gamma(N,H)\) denotes the
+\(\Gamma\)-equivariant group homomorphisms; no standard Borel
+structure on a possibly non-Hausdorff \(H\) is assumed.
+
+**Theorem R10 (restriction pair and exact lift criterion).**
+Every full class determines, independently of its representative,
+\[
+ \mathcal R:\mathscr H_{\Gamma\times\mathbb R}(N,A)
+ \longrightarrow
+ \mathscr H_\Gamma(N,A)^{\mathbb R}
+       \times\operatorname{Hom}_\Gamma(N,H),\qquad
+ [m,\ell]\longmapsto(\chi,\nu),\quad
+ \nu(n)=[c_\bullet(n)].
+ \tag{R10.2}
+\]
+This is a homomorphism of abelian groups. Its produced \(\nu\)
+is continuous for the quotient topology on \(H\) and has a
+Borel lift \(n\mapsto c_\bullet(n)\in Z\).
+
+A pair \((\chi,\nu)\) is in its image if and only if there are
+a normalized Borel \(\Gamma\)-pair \((m,h)\) representing \(\chi\)
+and a jointly Borel map \(c:\mathbb R\times N\to A\) such that,
+for every \(n,p\in N\), \(g\in\Gamma\), and \(s,t\in\mathbb R\),
+\[
+ \begin{aligned}
+ c_0(n)&=1,&c_t(1)&=1,&
+ c_{s+t}(n)&=c_s(n)\theta_s(c_t(n)),\\
+ [c_\bullet(n)]&=\nu(n),\\
+ c_t(n)c_t(p)c_t(np)^{-1}
+      &=\theta_t(m(n,p))m(n,p)^{-1},\\
+ g(c_t(n))c_t(gn)^{-1}
+      &=\theta_t(h_g(n))h_g(n)^{-1}.
+ \end{aligned}
+ \tag{R10.3}
+\]
+Each path in this criterion is automatically continuous.
+The requirement is one jointly Borel family satisfying these
+identities at every displayed argument. Separate choices of a
+coboundary for each time do not establish it.
+
+*Proof of the forward statements.* Restricting the full identities
+(EX3) to \(\Gamma\) gives the pair \((m,h)\). Restricting their
+action identity to the real factor gives the first line of
+(R10.3). The [semidirect-product argument in BEX](OA-FLOW-BEX.md#ext-real)
+makes each Borel cocycle path continuous. R6's rational-evaluation
+argument makes \(n\mapsto c_\bullet(n)\) Borel into the Polish
+path group \(Z\).
+
+The mixed identity for the real action, whose action on \(N\)
+is trivial, gives the third line of (R10.3). Compute the factor
+of the same action element in its two commuting orders:
+\[
+ \ell_{(g,t)}(n)
+   =g(c_t(n))h_g(n)
+   =\theta_t(h_g(n))c_t(gn).
+ \tag{R10.4}
+\]
+This gives the last line of (R10.3). These two lines say exactly
+\[
+  (\theta_t m,\theta_t h)=(m,h)^{\,c_t},
+  \qquad c_t:N\to A,\quad c_t(1)=1,
+ \tag{R10.5}
+\]
+where the exponent denotes the gauge formulas (EX8), restricted
+to \(\Gamma\). Each \(c_t\) is Borel. Hence \(\theta_t\chi=\chi\)
+for every \(t\).
+
+The third line of (R10.3) says that the multiplicative defect
+of \(n\mapsto c_\bullet(n)\) is the coboundary
+\(\delta_A(m(n,p))\). Thus \(\nu(np)=\nu(n)\nu(p)\).
+The last line says that \(g(c_\bullet(n))\) and
+\(c_\bullet(gn)\) differ by the coboundary
+\(\delta_A(h_g(n))\), proving \(\Gamma\)-equivariance.
+
+Under a normalized Borel change \(b:N\to A\), (EX8) gives
+\[
+ (m,h)\longmapsto(m,h)^b,\qquad
+ c_t(n)\longmapsto
+ c_t^b(n)=b(n)^{-1}\theta_t(b(n))c_t(n).
+ \tag{R10.6}
+\]
+Both \(\chi\) and \(\nu\) are unchanged. Pointwise multiplication
+of full pairs multiplies both restrictions, which proves that
+\(\mathcal R\) is a homomorphism.
+Finally R9 realizes the full extension as Polish, and R6 gives
+continuous displacement. The composite
+\(E\to Z\to H\) is constant on the cosets of \(A\) and induces
+exactly \(\nu:E/A\to H\). The quotient map \(E\to N\) is open,
+so \(\nu\) is continuous, even when \(H\) is not Hausdorff.
+
+*Proof of sufficiency.* Start with the data in (R10.3).
+The \(\Gamma\)-pair constructs the Borel group \(E_m\) and its
+\(\Gamma\)-action, by (EX5). On this same group define
+\[
+ S_g(a,n)=(g(a)h_g(n),gn),\qquad
+ \Theta_t(a,n)=(\theta_t(a)c_t(n),n).
+ \tag{R10.7}
+\]
+The real cocycle law makes \(\Theta_s\Theta_t=\Theta_{s+t}\);
+normalization makes \(\Theta_0\) the identity. Its inverse is
+therefore \(\Theta_{-t}\).
+The first coordinates of \(\Theta_t((a,n)(b,p))\) and
+\(\Theta_t(a,n)\Theta_t(b,p)\) are respectively
+\[
+ \theta_t(ab)\theta_t(m(n,p))c_t(np),\qquad
+ \theta_t(ab)c_t(n)c_t(p)m(n,p).
+\]
+They agree by (R10.3). Thus each \(\Theta_t\) is an automorphism.
+The first coordinates of \(S_g\Theta_t(a,n)\) and
+\(\Theta_tS_g(a,n)\), after cancelling the common factor
+\(g(\theta_t(a))=\theta_t(g(a))\), are
+\(g(c_t(n))h_g(n)\) and \(\theta_t(h_g(n))c_t(gn)\).
+They agree by the last line of (R10.3). Their second coordinates
+are both \(gn\). Consequently \(S\) and \(\Theta\) commute.
+
+Define the action of \((g,t)\) to be \(S_g\Theta_t\).
+It is jointly Borel, since all its displayed factors are jointly
+Borel. It is an action of the direct product by automorphisms.
+Its full factor is
+\[
+ \ell_{(g,t)}(n)=g(c_t(n))h_g(n).
+ \tag{R10.8}
+\]
+Reading the product and action laws of this constructed group
+through its section \(s(n)=(1,n)\) proves all of (EX3)–(EX4);
+the reconstruction calculations in BEX apply verbatim.
+R9 now supplies the unique compatible Polish topology and
+joint continuity, with the original topologies on \(A,N\).
+The restrictions are the given \((m,h)\) and \(c\), so the
+resulting class maps to \((\chi,\nu)\). This proves sufficiency
+and, with the forward construction, necessity. \(\square\)
+
+![The exact compatibility between the two lifted actions](../assets/borel-extension-realization/restriction-compatibility.png)
+
+*Commuting lifts on the same reconstructed group.*
+Every vertex is \(E_m\). The horizontal maps are \(\Theta_t\);
+the vertical maps are \(S_g\). Equality of the two paths is
+exactly (R10.4), after the common coefficient action is cancelled.
+The displayed multiplication condition is the other compatibility
+equation in (R10.3). The proof is the calculation (R10.7)–(R10.8);
+the diagram asserts no classification of von Neumann algebras.
+
+The criterion does not depend on which representative of \(\chi\)
+is chosen. Given a normalized Borel \(b\), use (R10.6); equivalently,
+transport (R10.7) through the already proved gauge isomorphism
+\(T_b:E_{m^b}\to E_m\). This preserves the action laws and gives
+exactly the two compatibility identities for the changed data.
+The inverse change is \(b^{-1}\). It is the existence of the
+compatible joint lift that is required, not merely
+\(\mathbb R\)-invariance of the restricted class.
+
+For a pair in the image, the full real-displacement requirement
+has the particularly simple form
+\[
+ \delta_E(E)=Z\quad\Longleftrightarrow\quad\nu(N)=H.
+ \tag{R10.9}
+\]
+Indeed, (EX12) gives
+\(\delta_E(E)=\bigcup_{n\in N}B\,c_\bullet(n)\).
+This union is all of \(Z\) exactly when its cosets cover \(Z/B\).
+Density of the image would not suffice. The shear of BEX,
+Section 6, has trivial \(\Gamma\), \(\chi=1\), and
+\(\nu(r)=[t\mapsto e^{irt}]\), which covers all of \(H\).
+Restricting its parameter group to discrete \(\mathbb Q\)
+retains a valid restricted pair but loses (R10.9), as the
+irrational-frequency diagnostic there proves.
+
 <a id="real-reading"></a>
 ## Reading
 
 M. Takesaki, *Theory of Operator Algebras II*, Chapter XII, §6, pp.453–454, formulates the abstract square and its characteristic class. The arguments above separate Borel reconstruction, compatible-topology existence and uniqueness, and the actual closed normalizer realizing the operator-algebra class. Brown's 1971 paper supplies the historical category construction developed in Section 7. PB's proved Borel-injection, coset-section, invariant-metrization, open-mapping and quotient theorems are the exact descriptive-set-theoretic prerequisites. The full converse is proved in R9, including completeness and the original Borel structure; it is not inferred merely from the source's omitted proof.
+
+For the restriction-pair formulation, compare C. E. Sutherland and M. Takesaki,
+[*Actions of discrete amenable groups on injective factors of type III*](https://msp.org/pjm/1989/137-2/pjm-v137-n2-p08-s.pdf),
+Section 2, Theorem 2.2, pp.415–422. Their setup uses an abelian von Neumann
+coefficient algebra and a separable locally compact acting group; part (ii)
+adds ergodicity. R10 instead derives the explicit lift criterion from the
+central factor identities used here, retaining joint Borel measurability.

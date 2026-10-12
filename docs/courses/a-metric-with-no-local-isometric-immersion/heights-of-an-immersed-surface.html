@@ -1,0 +1,281 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Heights of an immersed surface</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A metric with no local isometric immersion)</a><a href="the-metric-and-the-theorem.html">Next lesson</a><a href="src/heights-of-an-immersed-surface.md">Editable source</a></nav><main><article><h1 id="heights-of-an-immersed-surface">Heights of an immersed surface</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A metric on an open set of the plane prescribes the lengths of curves. Is it the metric of a surface in three-dimensional space, at least near a given point? In September 2026 OpenAI released a proof that the answer can be no: there is a smooth metric on a square such that no neighbourhood of the centre has a smooth isometric immersion into <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> [OpenAI-I]. This course presents the proof. The first lesson collects three tools that concern any immersion.</p>
+<ul>
+<li>If a surface is immersed isometrically in space, its height in a fixed direction satisfies one scalar equation of second order, in which only the metric appears (Theorem 2.1).</li>
+<li>Every smooth function of absolute value at most <span class="math" data-tex="\(10^{-3}\)">\(10^{-3}\)</span> on the square is the curvature of a metric of the form <span class="math" data-tex="\(dX^2+f^2\,dY^2\)">\(dX^2+f^2\,dY^2\)</span> (Proposition 3.2).</li>
+<li>If the curvature is negative in a disk and zero on its boundary, and the immersed surface is a graph over a plane, then at some boundary point the second fundamental form has rank one (Proposition 4.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-I, Sections 2 and 5]: the lemma on the height equation, the lemma on prescribing small curvature, and the lemma on a negatively curved disk. It uses the description of a surface in space by its metric and second fundamental form: <a href="../DG-FND/submanifolds-and-hypersurfaces.html#proposition-a-3">Submanifolds and hypersurfaces</a>, Proposition A.3 (course <em>Bundles, curvature and holonomy</em>).</p>
+<h2 id="1-metrics-on-plane-domains">1. Metrics on plane domains</h2>
+<p>Let <span class="math" data-tex="\(U\subseteq\mathbb R^2\)">\(U\subseteq\mathbb R^2\)</span> be open, with the coordinates <span class="math" data-tex="\(x^1,x^2\)">\(x^1,x^2\)</span>; partial derivatives are written <span class="math" data-tex="\(\partial_1,\partial_2\)">\(\partial_1,\partial_2\)</span>. All functions are smooth, that is, infinitely differentiable. A <em>metric</em> on <span class="math" data-tex="\(U\)">\(U\)</span> is a symmetric matrix <span class="math" data-tex="\(g=(g_{ij})\)">\(g=(g_{ij})\)</span> of functions on <span class="math" data-tex="\(U\)">\(U\)</span> that is positive definite at every point. Its inverse matrix is <span class="math" data-tex="\((g^{ij})\)">\((g^{ij})\)</span>. The <em>Christoffel symbols</em> are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Gamma^k_{ij}=\frac12\sum_lg^{kl}\bigl(&amp;\partial_ig_{jl}+\partial_jg_{il}\\
+&amp;-\partial_lg_{ij}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Gamma^k_{ij}=\frac12\sum_lg^{kl}\bigl(&amp;\partial_ig_{jl}+\partial_jg_{il}\\
+&amp;-\partial_lg_{ij}\bigr),
+\end{aligned}
+\]</span>
+and the <em>curvature</em> <span class="math" data-tex="\(K=K_g\)">\(K=K_g\)</span> is the function with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K\det g=\sum_lg_{1l}\Bigl(&amp;\partial_1\Gamma^l_{22}-\partial_2\Gamma^l_{12}\\
+&amp;+\sum_m\Gamma^l_{1m}\Gamma^m_{22}\\
+&amp;-\sum_m\Gamma^l_{2m}\Gamma^m_{12}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+K\det g=\sum_lg_{1l}\Bigl(&amp;\partial_1\Gamma^l_{22}-\partial_2\Gamma^l_{12}\\
+&amp;+\sum_m\Gamma^l_{1m}\Gamma^m_{22}\\
+&amp;-\sum_m\Gamma^l_{2m}\Gamma^m_{12}\Bigr).
+\end{aligned}
+\]</span>
+This is the Gaussian curvature of the Riemannian manifold <span class="math" data-tex="\((U,g)\)">\((U,g)\)</span>, in the coordinate form (A.12) of the lesson on submanifolds and hypersurfaces. The value of <span class="math" data-tex="\(K\)">\(K\)</span> at a point depends only on the values of <span class="math" data-tex="\(g\)">\(g\)</span> and of its derivatives of order at most two at that point.</p>
+<p>For a function <span class="math" data-tex="\(z\)">\(z\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, the <em>covariant Hessian</em> and the squared length of the differential are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_{ij}=\partial_i\partial_jz-\sum_k\Gamma^k_{ij}\,\partial_kz,\\
+|dz|_g^2=\sum_{i,j}g^{ij}\,\partial_iz\,\partial_jz .
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_{ij}=\partial_i\partial_jz-\sum_k\Gamma^k_{ij}\,\partial_kz,\\
+|dz|_g^2=\sum_{i,j}g^{ij}\,\partial_iz\,\partial_jz .
+\end{gathered}
+\]</span></p>
+<p>An <em>isometric immersion</em> of <span class="math" data-tex="\((U,g)\)">\((U,g)\)</span> into <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> is a smooth map <span class="math" data-tex="\(F\colon U\to\mathbb R^3\)">\(F\colon U\to\mathbb R^3\)</span> with
+<span class="math math-display" data-tex="\[
+\langle\partial_iF,\partial_jF\rangle=g_{ij}\qquad(i,j\in\{1,2\}).
+\]">\[
+\langle\partial_iF,\partial_jF\rangle=g_{ij}\qquad(i,j\in\{1,2\}).
+\]</span>
+Since <span class="math" data-tex="\(g\)">\(g\)</span> is positive definite, <span class="math" data-tex="\(\partial_1F\)">\(\partial_1F\)</span> and <span class="math" data-tex="\(\partial_2F\)">\(\partial_2F\)</span> are linearly independent at every point. Let <span class="math" data-tex="\(n\)">\(n\)</span> be the unit normal in the direction of <span class="math" data-tex="\(\partial_1F\times\partial_2F\)">\(\partial_1F\times\partial_2F\)</span>. The <em>second fundamental form</em> is the symmetric matrix <span class="math" data-tex="\(\mathrm{II}_{ij}=\langle\partial_i\partial_jF,n\rangle\)">\(\mathrm{II}_{ij}=\langle\partial_i\partial_jF,n\rangle\)</span>.</p>
+<p><strong>Theorem 1.1 (Gauss).</strong> For an isometric immersion <span class="math" data-tex="\(F\)">\(F\)</span> of <span class="math" data-tex="\((U,g)\)">\((U,g)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\partial_i\partial_jF=\sum_k\Gamma^k_{ij}\,\partial_kF+\mathrm{II}_{ij}\,n,\\
+\det\mathrm{II}=K\det g .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\partial_i\partial_jF=\sum_k\Gamma^k_{ij}\,\partial_kF+\mathrm{II}_{ij}\,n,\\
+\det\mathrm{II}=K\det g .
+\end{gathered}
+\]</span></p>
+<p>This is Proposition A.3 of the lesson on submanifolds and hypersurfaces: formula (A.8) there is the first line and (A.11) the second.</p>
+<p><strong>Lemma 1.2.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be an invertible matrix, <span class="math" data-tex="\(c\in\mathbb R^2\)">\(c\in\mathbb R^2\)</span>, <span class="math" data-tex="\(\Phi(x)=c+Mx\)">\(\Phi(x)=c+Mx\)</span>, and <span class="math" data-tex="\(U&#x27;=\Phi^{-1}(U)\)">\(U&#x27;=\Phi^{-1}(U)\)</span>. The <em>pull-back</em> of <span class="math" data-tex="\(g\)">\(g\)</span> is the metric <span class="math" data-tex="\(g&#x27;=M^{\mathsf T}(g\circ\Phi)M\)">\(g&#x27;=M^{\mathsf T}(g\circ\Phi)M\)</span> on <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(K_{g&#x27;}=K_g\circ\Phi\)">\(K_{g&#x27;}=K_g\circ\Phi\)</span>.</li>
+<li>For a function <span class="math" data-tex="\(z\)">\(z\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, the covariant Hessian of <span class="math" data-tex="\(z\circ\Phi\)">\(z\circ\Phi\)</span> for <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span> is <span class="math" data-tex="\(M^{\mathsf T}(H\circ\Phi)M\)">\(M^{\mathsf T}(H\circ\Phi)M\)</span>, where <span class="math" data-tex="\(H\)">\(H\)</span> is the covariant Hessian of <span class="math" data-tex="\(z\)">\(z\)</span> for <span class="math" data-tex="\(g\)">\(g\)</span>, and <span class="math" data-tex="\(|d(z\circ\Phi)|_{g&#x27;}=|dz|_g\circ\Phi\)">\(|d(z\circ\Phi)|_{g&#x27;}=|dz|_g\circ\Phi\)</span>.</li>
+<li>If <span class="math" data-tex="\(F\)">\(F\)</span> is an isometric immersion of <span class="math" data-tex="\((U,g)\)">\((U,g)\)</span>, then <span class="math" data-tex="\(F\circ\Phi\)">\(F\circ\Phi\)</span> is an isometric immersion of <span class="math" data-tex="\((U&#x27;,g&#x27;)\)">\((U&#x27;,g&#x27;)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> For a function <span class="math" data-tex="\(w\)">\(w\)</span>, <span class="math" data-tex="\(\partial_i(w\circ\Phi)=\sum_aM_{ai}(\partial_aw)\circ\Phi\)">\(\partial_i(w\circ\Phi)=\sum_aM_{ai}(\partial_aw)\circ\Phi\)</span>, and, since <span class="math" data-tex="\(M\)">\(M\)</span> is constant, <span class="math" data-tex="\(\partial_i\partial_j(w\circ\Phi)=\sum_{a,b}M_{ai}M_{bj}(\partial_a\partial_bw)\circ\Phi\)">\(\partial_i\partial_j(w\circ\Phi)=\sum_{a,b}M_{ai}M_{bj}(\partial_a\partial_bw)\circ\Phi\)</span>. (3) follows from the first formula. For (2), let <span class="math" data-tex="\(N=M^{-1}\)">\(N=M^{-1}\)</span>. The inverse of <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span> is <span class="math" data-tex="\(N(g^{-1}\circ\Phi)N^{\mathsf T}\)">\(N(g^{-1}\circ\Phi)N^{\mathsf T}\)</span>, and the first derivatives of <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span> are <span class="math" data-tex="\(\partial_ig&#x27;_{jl}=\sum M_{ai}M_{bj}M_{dl}(\partial_ag_{bd})\circ\Phi\)">\(\partial_ig&#x27;_{jl}=\sum M_{ai}M_{bj}M_{dl}(\partial_ag_{bd})\circ\Phi\)</span>. Inserting this in the definition gives the Christoffel symbols of <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span>:
+<span class="math math-display" data-tex="\[
+\Gamma&#x27;^k_{ij}=\sum_{a,b,c}N_{kc}\,M_{ai}M_{bj}\,\Gamma^c_{ab}\circ\Phi .
+\]">\[
+\Gamma&#x27;^k_{ij}=\sum_{a,b,c}N_{kc}\,M_{ai}M_{bj}\,\Gamma^c_{ab}\circ\Phi .
+\]</span>
+Since <span class="math" data-tex="\(\sum_kN_{kc}M_{ek}\)">\(\sum_kN_{kc}M_{ek}\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(e=c\)">\(e=c\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_k\Gamma&#x27;^k_{ij}\,\partial_k(z\circ\Phi)\\
+&amp;\quad=\sum_{a,b,c}M_{ai}M_{bj}\,(\Gamma^c_{ab}\,\partial_cz)\circ\Phi .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_k\Gamma&#x27;^k_{ij}\,\partial_k(z\circ\Phi)\\
+&amp;\quad=\sum_{a,b,c}M_{ai}M_{bj}\,(\Gamma^c_{ab}\,\partial_cz)\circ\Phi .
+\end{aligned}
+\]</span>
+With the formula for the second derivatives this is the statement on the Hessian. The statement on <span class="math" data-tex="\(|dz|\)">\(|dz|\)</span> follows from the formula for the inverse of <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span>. (1) The map <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is an isometry from <span class="math" data-tex="\((U&#x27;,g&#x27;)\)">\((U&#x27;,g&#x27;)\)</span> to <span class="math" data-tex="\((U,g)\)">\((U,g)\)</span>, and the Gaussian curvature is preserved by isometries (Proposition A.3 of the lesson on submanifolds and hypersurfaces). <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-the-height-equation">2. The height equation</h2>
+<p><strong>Theorem 2.1.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be an isometric immersion of <span class="math" data-tex="\((U,g)\)">\((U,g)\)</span> into <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, let <span class="math" data-tex="\(e\in\mathbb R^3\)">\(e\in\mathbb R^3\)</span> be a unit vector, and <span class="math" data-tex="\(z=\langle F,e\rangle\)">\(z=\langle F,e\rangle\)</span>, the <em>height</em> in the direction <span class="math" data-tex="\(e\)">\(e\)</span>. Let <span class="math" data-tex="\(\nu=\langle n,e\rangle\)">\(\nu=\langle n,e\rangle\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H=\nu\,\mathrm{II},\qquad|dz|_g^2+\nu^2=1,\\
+\det H=K\det g\,\bigl(1-|dz|_g^2\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+H=\nu\,\mathrm{II},\qquad|dz|_g^2+\nu^2=1,\\
+\det H=K\det g\,\bigl(1-|dz|_g^2\bigr).
+\end{gathered}
+\]</span>
+If <span class="math" data-tex="\(e\)">\(e\)</span> is the normal <span class="math" data-tex="\(n(b)\)">\(n(b)\)</span> at a point <span class="math" data-tex="\(b\in U\)">\(b\in U\)</span>, then <span class="math" data-tex="\(dz(b)=0\)">\(dz(b)=0\)</span> and <span class="math" data-tex="\(H(b)=\mathrm{II}(b)\)">\(H(b)=\mathrm{II}(b)\)</span>.</p>
+<p><strong>Proof.</strong> Take the scalar product of the first formula of Theorem 1.1 with <span class="math" data-tex="\(e\)">\(e\)</span>: <span class="math" data-tex="\(\partial_i\partial_jz=\sum_k\Gamma^k_{ij}\partial_kz+\mathrm{II}_{ij}\nu\)">\(\partial_i\partial_jz=\sum_k\Gamma^k_{ij}\partial_kz+\mathrm{II}_{ij}\nu\)</span>, that is <span class="math" data-tex="\(H=\nu\,\mathrm{II}\)">\(H=\nu\,\mathrm{II}\)</span>. Write <span class="math" data-tex="\(e=\sum_ka_k\partial_kF+\nu n\)">\(e=\sum_ka_k\partial_kF+\nu n\)</span>. The scalar product with <span class="math" data-tex="\(\partial_jF\)">\(\partial_jF\)</span> gives <span class="math" data-tex="\(\partial_jz=\sum_ka_kg_{kj}\)">\(\partial_jz=\sum_ka_kg_{kj}\)</span>, so <span class="math" data-tex="\(a_k=\sum_jg^{kj}\partial_jz\)">\(a_k=\sum_jg^{kj}\partial_jz\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+1=|e|^2&amp;=\sum_{k,l}a_ka_lg_{kl}+\nu^2\\
+&amp;=|dz|_g^2+\nu^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+1=|e|^2&amp;=\sum_{k,l}a_ka_lg_{kl}+\nu^2\\
+&amp;=|dz|_g^2+\nu^2 .
+\end{aligned}
+\]</span>
+With the second formula of Theorem 1.1, <span class="math" data-tex="\(\det H=\nu^2\det\mathrm{II}=(1-|dz|_g^2)K\det g\)">\(\det H=\nu^2\det\mathrm{II}=(1-|dz|_g^2)K\det g\)</span>. If <span class="math" data-tex="\(e=n(b)\)">\(e=n(b)\)</span>, then <span class="math" data-tex="\(\partial_jz(b)=\langle\partial_jF(b),n(b)\rangle=0\)">\(\partial_jz(b)=\langle\partial_jF(b),n(b)\rangle=0\)</span> and <span class="math" data-tex="\(\nu(b)=1\)">\(\nu(b)=1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The last equation is the <em>height equation</em>, also called the Darboux equation. It contains the metric and the function <span class="math" data-tex="\(z\)">\(z\)</span>, and nothing else of the immersion. With <span class="math" data-tex="\(E=\det g\,(1-|dz|_g^2)\)">\(E=\det g\,(1-|dz|_g^2)\)</span> it reads
+<span class="math math-display" data-tex="\[
+H_{11}H_{22}-H_{12}^2=KE .
+\]">\[
+H_{11}H_{22}-H_{12}^2=KE .
+\]</span>
+So an isometric immersion gives, for every direction <span class="math" data-tex="\(e\)">\(e\)</span>, a solution of this equation with <span class="math" data-tex="\(|dz|_g\le1\)">\(|dz|_g\le1\)</span>. The course uses only this consequence of an immersion.</p>
+<h2 id="3-a-metric-with-a-given-small-curvature">3. A metric with a given small curvature</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a positive function on an open set of the plane with the coordinates <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>. The curvature of the metric with <span class="math" data-tex="\(g_{11}=1\)">\(g_{11}=1\)</span>, <span class="math" data-tex="\(g_{12}=0\)">\(g_{12}=0\)</span>, <span class="math" data-tex="\(g_{22}=f^2\)">\(g_{22}=f^2\)</span>, written <span class="math" data-tex="\(dX^2+f^2\,dY^2\)">\(dX^2+f^2\,dY^2\)</span>, is
+<span class="math math-display" data-tex="\[
+K=-\frac{f_{XX}}f .
+\]">\[
+K=-\frac{f_{XX}}f .
+\]</span></p>
+<p><strong>Proof.</strong> The inverse matrix has the entries <span class="math" data-tex="\(1,0,f^{-2}\)">\(1,0,f^{-2}\)</span>. From the definition, the Christoffel symbols that are not zero are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma^1_{22}=-ff_X,\qquad\Gamma^2_{22}=\frac{f_Y}f,\\
+\Gamma^2_{12}=\Gamma^2_{21}=\frac{f_X}f .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Gamma^1_{22}=-ff_X,\qquad\Gamma^2_{22}=\frac{f_Y}f,\\
+\Gamma^2_{12}=\Gamma^2_{21}=\frac{f_X}f .
+\end{gathered}
+\]</span>
+In the formula for <span class="math" data-tex="\(K\det g\)">\(K\det g\)</span> only <span class="math" data-tex="\(l=1\)">\(l=1\)</span> contributes, because <span class="math" data-tex="\(g_{12}=0\)">\(g_{12}=0\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K\det g&amp;=\partial_1\Gamma^1_{22}-\Gamma^1_{22}\Gamma^2_{12}\\
+&amp;=-(f_X^2+ff_{XX})+f_X^2\\
+&amp;=-ff_{XX}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+K\det g&amp;=\partial_1\Gamma^1_{22}-\Gamma^1_{22}\Gamma^2_{12}\\
+&amp;=-(f_X^2+ff_{XX})+f_X^2\\
+&amp;=-ff_{XX}.
+\end{aligned}
+\]</span>
+Divide by <span class="math" data-tex="\(\det g=f^2\)">\(\det g=f^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For example <span class="math" data-tex="\(f=\cos X\)">\(f=\cos X\)</span> gives <span class="math" data-tex="\(K=1\)">\(K=1\)</span> where <span class="math" data-tex="\(\cos X&gt;0\)">\(\cos X&gt;0\)</span>, and <span class="math" data-tex="\(f=\cosh X\)">\(f=\cosh X\)</span> gives <span class="math" data-tex="\(K=-1\)">\(K=-1\)</span>.</p>
+<p><strong>Proposition 3.2.</strong> Let <span class="math" data-tex="\(Q=(-1,1)^2\)">\(Q=(-1,1)^2\)</span>, with the coordinates <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, and let <span class="math" data-tex="\(K_0\)">\(K_0\)</span> be a smooth function on <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(|K_0|\le10^{-3}\)">\(|K_0|\le10^{-3}\)</span>. There is a smooth function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_{XX}=-K_0f,\\
+f(0,Y)=1,\qquad f_X(0,Y)=0,
+\end{gathered}
+\]">\[
+\begin{gathered}
+f_{XX}=-K_0f,\\
+f(0,Y)=1,\qquad f_X(0,Y)=0,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(|f-1|&lt;10^{-3}\)">\(|f-1|&lt;10^{-3}\)</span>. The metric <span class="math" data-tex="\(\bar g=dX^2+f^2\,dY^2\)">\(\bar g=dX^2+f^2\,dY^2\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span> has the curvature <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, and <span class="math" data-tex="\(0.99\,|v|^2\le\bar g(v,v)\le1.01\,|v|^2\)">\(0.99\,|v|^2\le\bar g(v,v)\le1.01\,|v|^2\)</span> for all vectors <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(f_0=1\)">\(f_0=1\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;f_{n+1}(X,Y)\\
+&amp;\ =-\int_0^X(X-u)K_0(u,Y)f_n(u,Y)\,du .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;f_{n+1}(X,Y)\\
+&amp;\ =-\int_0^X(X-u)K_0(u,Y)f_n(u,Y)\,du .
+\end{aligned}
+\]</span>
+Each <span class="math" data-tex="\(f_n\)">\(f_n\)</span> is smooth. By induction <span class="math" data-tex="\(|f_n|\le10^{-3n}X^{2n}/(2n)!\)">\(|f_n|\le10^{-3n}X^{2n}/(2n)!\)</span>, because <span class="math" data-tex="\(\int_0^{|X|}(|X|-u)\,u^{2n}\,du\)">\(\int_0^{|X|}(|X|-u)\,u^{2n}\,du\)</span> is <span class="math" data-tex="\(|X|^{2n+2}\)">\(|X|^{2n+2}\)</span> divided by <span class="math" data-tex="\((2n+1)(2n+2)\)">\((2n+1)(2n+2)\)</span>. So the series <span class="math" data-tex="\(f=\sum_nf_n\)">\(f=\sum_nf_n\)</span> converges uniformly on <span class="math" data-tex="\(Q\)">\(Q\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;f(X,Y)\\
+&amp;\ =1-\int_0^X(X-u)K_0(u,Y)f(u,Y)\,du .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;f(X,Y)\\
+&amp;\ =1-\int_0^X(X-u)K_0(u,Y)f(u,Y)\,du .
+\end{aligned}
+\]</span>
+Hence <span class="math" data-tex="\(f\)">\(f\)</span> is twice differentiable in <span class="math" data-tex="\(X\)">\(X\)</span>, with <span class="math" data-tex="\(f_X=-\int_0^XK_0f\,du\)">\(f_X=-\int_0^XK_0f\,du\)</span> and <span class="math" data-tex="\(f_{XX}=-K_0f\)">\(f_{XX}=-K_0f\)</span>, and the two conditions at <span class="math" data-tex="\(X=0\)">\(X=0\)</span> hold. The sum of the bounds for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> is at most <span class="math" data-tex="\(\sum_{n\ge1}10^{-3n}/2&lt;10^{-3}\)">\(\sum_{n\ge1}10^{-3n}/2&lt;10^{-3}\)</span>, so <span class="math" data-tex="\(|f-1|&lt;10^{-3}\)">\(|f-1|&lt;10^{-3}\)</span>.</p>
+<p><em>Smoothness.</em> Fix <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span> and <span class="math" data-tex="\(b\ge0\)">\(b\ge0\)</span>, and let <span class="math" data-tex="\(c\)">\(c\)</span> be <span class="math" data-tex="\(2^b\)">\(2^b\)</span> times the maximum, over <span class="math" data-tex="\([-r,r]^2\)">\([-r,r]^2\)</span> and over <span class="math" data-tex="\(b&#x27;\le b\)">\(b&#x27;\le b\)</span>, of <span class="math" data-tex="\(|\partial_Y^{b&#x27;}K_0|\)">\(|\partial_Y^{b&#x27;}K_0|\)</span>. We show by induction on <span class="math" data-tex="\(n\)">\(n\)</span> that on <span class="math" data-tex="\([-r,r]^2\)">\([-r,r]^2\)</span>
+<span class="math math-display" data-tex="\[
+|\partial_Y^{b&#x27;}f_n|\le\frac{c^n|X|^{2n}}{(2n)!}\qquad(b&#x27;\le b).
+\]">\[
+|\partial_Y^{b&#x27;}f_n|\le\frac{c^n|X|^{2n}}{(2n)!}\qquad(b&#x27;\le b).
+\]</span>
+For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> this is clear. By the rule of Leibniz, <span class="math" data-tex="\(\partial_Y^{b&#x27;}(K_0f_n)\)">\(\partial_Y^{b&#x27;}(K_0f_n)\)</span> is a sum of <span class="math" data-tex="\(2^{b&#x27;}\)">\(2^{b&#x27;}\)</span> products of a derivative of <span class="math" data-tex="\(K_0\)">\(K_0\)</span> and a derivative of <span class="math" data-tex="\(f_n\)">\(f_n\)</span>, of orders at most <span class="math" data-tex="\(b\)">\(b\)</span>, so <span class="math" data-tex="\(|\partial_Y^{b&#x27;}(K_0f_n)|\le c\cdot c^n|u|^{2n}/(2n)!\)">\(|\partial_Y^{b&#x27;}(K_0f_n)|\le c\cdot c^n|u|^{2n}/(2n)!\)</span> at the point <span class="math" data-tex="\((u,Y)\)">\((u,Y)\)</span>. Differentiating under the integral and using the same integral as in the first step gives the bound for <span class="math" data-tex="\(f_{n+1}\)">\(f_{n+1}\)</span>. In the same way <span class="math" data-tex="\(|\partial_X\partial_Y^{b&#x27;}f_{n+1}|\le c^{n+1}|X|^{2n+1}/(2n+1)!\)">\(|\partial_X\partial_Y^{b&#x27;}f_{n+1}|\le c^{n+1}|X|^{2n+1}/(2n+1)!\)</span>. So the series of the derivatives <span class="math" data-tex="\(\partial_Y^{b&#x27;}f_n\)">\(\partial_Y^{b&#x27;}f_n\)</span> and <span class="math" data-tex="\(\partial_X\partial_Y^{b&#x27;}f_n\)">\(\partial_X\partial_Y^{b&#x27;}f_n\)</span> converge uniformly on <span class="math" data-tex="\([-r,r]^2\)">\([-r,r]^2\)</span>, and <span class="math" data-tex="\(f\)">\(f\)</span> has the continuous derivatives <span class="math" data-tex="\(\partial_Y^{b&#x27;}f\)">\(\partial_Y^{b&#x27;}f\)</span> and <span class="math" data-tex="\(\partial_X\partial_Y^{b&#x27;}f\)">\(\partial_X\partial_Y^{b&#x27;}f\)</span> for all <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>. Moreover <span class="math" data-tex="\(\partial_X^2\partial_Y^{b&#x27;}f_{n+1}=-\partial_Y^{b&#x27;}(K_0f_n)\)">\(\partial_X^2\partial_Y^{b&#x27;}f_{n+1}=-\partial_Y^{b&#x27;}(K_0f_n)\)</span>, and these series converge uniformly as well, so <span class="math" data-tex="\(\partial_X^2\partial_Y^{b&#x27;}f=-\partial_Y^{b&#x27;}(K_0f)\)">\(\partial_X^2\partial_Y^{b&#x27;}f=-\partial_Y^{b&#x27;}(K_0f)\)</span>. By induction on <span class="math" data-tex="\(a\ge2\)">\(a\ge2\)</span>, the derivative <span class="math" data-tex="\(\partial_X^a\partial_Y^{b&#x27;}f=-\partial_X^{a-2}\partial_Y^{b&#x27;}(K_0f)\)">\(\partial_X^a\partial_Y^{b&#x27;}f=-\partial_X^{a-2}\partial_Y^{b&#x27;}(K_0f)\)</span> exists and is continuous. So <span class="math" data-tex="\(f\)">\(f\)</span> is smooth.</p>
+<p>The curvature of <span class="math" data-tex="\(\bar g\)">\(\bar g\)</span> is <span class="math" data-tex="\(-f_{XX}/f=K_0\)">\(-f_{XX}/f=K_0\)</span> by Lemma 3.1. For <span class="math" data-tex="\(v=(v_1,v_2)\)">\(v=(v_1,v_2)\)</span>, <span class="math" data-tex="\(\bar g(v,v)=v_1^2+f^2v_2^2\)">\(\bar g(v,v)=v_1^2+f^2v_2^2\)</span> and <span class="math" data-tex="\(0.99&lt;f^2&lt;1.01\)">\(0.99&lt;f^2&lt;1.01\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-a-disk-of-negative-curvature">4. A disk of negative curvature</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be an isometric immersion of <span class="math" data-tex="\((U,g)\)">\((U,g)\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> a unit vector. Choose an orthonormal basis <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> of the plane orthogonal to <span class="math" data-tex="\(e\)">\(e\)</span>, and let <span class="math" data-tex="\(\psi=(\langle F,e_1\rangle,\langle F,e_2\rangle)\colon U\to\mathbb R^2\)">\(\psi=(\langle F,e_1\rangle,\langle F,e_2\rangle)\colon U\to\mathbb R^2\)</span>. We say that <span class="math" data-tex="\(F\)">\(F\)</span> is a <em>graph over the plane orthogonal to <span class="math" data-tex="\(e\)">\(e\)</span></em> if <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a diffeomorphism from <span class="math" data-tex="\(U\)">\(U\)</span> onto an open subset of <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>. Then <span class="math" data-tex="\(u=\langle F,e\rangle\circ\psi^{-1}\)">\(u=\langle F,e\rangle\circ\psi^{-1}\)</span> is a smooth function on <span class="math" data-tex="\(\psi(U)\)">\(\psi(U)\)</span>, and <span class="math" data-tex="\(F=G\circ\psi\)">\(F=G\circ\psi\)</span> with <span class="math" data-tex="\(G(\xi)=\xi_1e_1+\xi_2e_2+u(\xi)e\)">\(G(\xi)=\xi_1e_1+\xi_2e_2+u(\xi)e\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> In this situation, let <span class="math" data-tex="\(D^2u\)">\(D^2u\)</span> be the matrix of the second derivatives of <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(Du\)">\(Du\)</span> its gradient, and <span class="math" data-tex="\(J\)">\(J\)</span> the matrix of the first derivatives of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Then, for the normal <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(\langle n,e\rangle&gt;0\)">\(\langle n,e\rangle&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathrm{II}=J^{\mathsf T}\Bigl(\frac{D^2u}{\sqrt{1+|Du|^2}}\circ\psi\Bigr)J,\\
+K=\frac{\det D^2u}{(1+|Du|^2)^2}\circ\psi .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathrm{II}=J^{\mathsf T}\Bigl(\frac{D^2u}{\sqrt{1+|Du|^2}}\circ\psi\Bigr)J,\\
+K=\frac{\det D^2u}{(1+|Du|^2)^2}\circ\psi .
+\end{gathered}
+\]</span>
+In particular <span class="math" data-tex="\(K(p)\)">\(K(p)\)</span> and <span class="math" data-tex="\(\det D^2u(\psi(p))\)">\(\det D^2u(\psi(p))\)</span> have the same sign, and <span class="math" data-tex="\(\mathrm{II}(p)\)">\(\mathrm{II}(p)\)</span> and <span class="math" data-tex="\(D^2u(\psi(p))\)">\(D^2u(\psi(p))\)</span> have the same rank.</p>
+<p><strong>Proof.</strong> The vectors <span class="math" data-tex="\(\partial_1G=e_1+u_1e\)">\(\partial_1G=e_1+u_1e\)</span> and <span class="math" data-tex="\(\partial_2G=e_2+u_2e\)">\(\partial_2G=e_2+u_2e\)</span> are orthogonal to <span class="math" data-tex="\(m=(-u_1e_1-u_2e_2+e)/\sqrt{1+|Du|^2}\)">\(m=(-u_1e_1-u_2e_2+e)/\sqrt{1+|Du|^2}\)</span>, a unit vector with <span class="math" data-tex="\(\langle m,e\rangle&gt;0\)">\(\langle m,e\rangle&gt;0\)</span>. Since <span class="math" data-tex="\(F=G\circ\psi\)">\(F=G\circ\psi\)</span>, the tangent plane of <span class="math" data-tex="\(F\)">\(F\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span> is spanned by <span class="math" data-tex="\(\partial_1G,\partial_2G\)">\(\partial_1G,\partial_2G\)</span> at <span class="math" data-tex="\(\psi(p)\)">\(\psi(p)\)</span>, so <span class="math" data-tex="\(n=m\circ\psi\)">\(n=m\circ\psi\)</span>. By the chain rule,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_i\partial_jF&amp;=\sum_{a,b}\partial_i\psi_a\,\partial_j\psi_b\,(\partial_a\partial_bG)\circ\psi\\
+&amp;\quad+\sum_a\partial_i\partial_j\psi_a\,(\partial_aG)\circ\psi .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_i\partial_jF&amp;=\sum_{a,b}\partial_i\psi_a\,\partial_j\psi_b\,(\partial_a\partial_bG)\circ\psi\\
+&amp;\quad+\sum_a\partial_i\partial_j\psi_a\,(\partial_aG)\circ\psi .
+\end{aligned}
+\]</span>
+The last sum is orthogonal to <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(\langle\partial_a\partial_bG,m\rangle=u_{ab}/\sqrt{1+|Du|^2}\)">\(\langle\partial_a\partial_bG,m\rangle=u_{ab}/\sqrt{1+|Du|^2}\)</span>. This is the first formula. The metric is <span class="math" data-tex="\(g=J^{\mathsf T}(\gamma\circ\psi)J\)">\(g=J^{\mathsf T}(\gamma\circ\psi)J\)</span> with <span class="math" data-tex="\(\gamma_{ab}=\langle\partial_aG,\partial_bG\rangle\)">\(\gamma_{ab}=\langle\partial_aG,\partial_bG\rangle\)</span>, the unit matrix plus the matrix <span class="math" data-tex="\((u_au_b)\)">\((u_au_b)\)</span>, and <span class="math" data-tex="\(\det\gamma=1+|Du|^2\)">\(\det\gamma=1+|Du|^2\)</span>. By Theorem 1.1,
+<span class="math math-display" data-tex="\[
+K=\frac{\det\mathrm{II}}{\det g}=\frac{\det D^2u}{(1+|Du|^2)\det\gamma}\circ\psi .
+\]">\[
+K=\frac{\det\mathrm{II}}{\det g}=\frac{\det D^2u}{(1+|Du|^2)\det\gamma}\circ\psi .
+\]</span>
+The matrix <span class="math" data-tex="\(J\)">\(J\)</span> is invertible, which gives the statement on the rank. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 4.2.</strong> Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> be an open round disk whose closure lies in <span class="math" data-tex="\(U\)">\(U\)</span>. Suppose that <span class="math" data-tex="\(K&lt;0\)">\(K&lt;0\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> and <span class="math" data-tex="\(K=0\)">\(K=0\)</span> on the boundary circle <span class="math" data-tex="\(\partial\mathcal D\)">\(\partial\mathcal D\)</span>, and that <span class="math" data-tex="\(F\)">\(F\)</span> is an isometric immersion of <span class="math" data-tex="\((U,g)\)">\((U,g)\)</span> that is a graph over a plane. Then there is a point <span class="math" data-tex="\(b\in\partial\mathcal D\)">\(b\in\partial\mathcal D\)</span> at which <span class="math" data-tex="\(\mathrm{II}(b)\)">\(\mathrm{II}(b)\)</span> has rank one.</p>
+<p><strong>Proof.</strong> Use the notation above. The set <span class="math" data-tex="\(\Omega=\psi(\mathcal D)\)">\(\Omega=\psi(\mathcal D)\)</span> is open and bounded, its closure is the compact set <span class="math" data-tex="\(\psi(\overline{\mathcal D})\)">\(\psi(\overline{\mathcal D})\)</span>, and its boundary is the closed curve <span class="math" data-tex="\(\psi(\partial\mathcal D)\)">\(\psi(\partial\mathcal D)\)</span>, parametrized by a smooth map <span class="math" data-tex="\(\beta\)">\(\beta\)</span> on the circle. By Lemma 4.1, <span class="math" data-tex="\(\det D^2u&lt;0\)">\(\det D^2u&lt;0\)</span> in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p>Suppose that <span class="math" data-tex="\(\mathrm{II}\)">\(\mathrm{II}\)</span> vanishes at every point of <span class="math" data-tex="\(\partial\mathcal D\)">\(\partial\mathcal D\)</span>. By Lemma 4.1, <span class="math" data-tex="\(D^2u=0\)">\(D^2u=0\)</span> at every point of the curve <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Then the derivative of <span class="math" data-tex="\(Du\circ\beta\)">\(Du\circ\beta\)</span> along the circle is <span class="math" data-tex="\(D^2u(\beta)\beta&#x27;=0\)">\(D^2u(\beta)\beta&#x27;=0\)</span>, so <span class="math" data-tex="\(Du\)">\(Du\)</span> is a constant vector <span class="math" data-tex="\(a\)">\(a\)</span> on the curve. Then the derivative of <span class="math" data-tex="\(u\circ\beta-\langle a,\beta\rangle\)">\(u\circ\beta-\langle a,\beta\rangle\)</span> is <span class="math" data-tex="\(\langle Du(\beta)-a,\beta&#x27;\rangle=0\)">\(\langle Du(\beta)-a,\beta&#x27;\rangle=0\)</span>, so <span class="math" data-tex="\(u(\xi)=\langle a,\xi\rangle+c\)">\(u(\xi)=\langle a,\xi\rangle+c\)</span> on the curve, with a constant <span class="math" data-tex="\(c\)">\(c\)</span>. Let
+<span class="math math-display" data-tex="\[
+v(\xi)=u(\xi)-\langle a,\xi\rangle-c .
+\]">\[
+v(\xi)=u(\xi)-\langle a,\xi\rangle-c .
+\]</span>
+Then <span class="math" data-tex="\(v=0\)">\(v=0\)</span> on the boundary of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, and <span class="math" data-tex="\(\det D^2v=\det D^2u&lt;0\)">\(\det D^2v=\det D^2u&lt;0\)</span> in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. The function <span class="math" data-tex="\(v\)">\(v\)</span> is not identically zero in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, because its Hessian is not zero there. So the continuous function <span class="math" data-tex="\(v\)">\(v\)</span> on the compact set <span class="math" data-tex="\(\overline\Omega\)">\(\overline\Omega\)</span> has a positive maximum or a negative minimum, attained at a point of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. At an interior maximum the Hessian is negative semidefinite, at an interior minimum positive semidefinite; in both cases its determinant is not negative. This contradicts <span class="math" data-tex="\(\det D^2v&lt;0\)">\(\det D^2v&lt;0\)</span>.</p>
+<p>So <span class="math" data-tex="\(\mathrm{II}(b)\ne0\)">\(\mathrm{II}(b)\ne0\)</span> for some <span class="math" data-tex="\(b\in\partial\mathcal D\)">\(b\in\partial\mathcal D\)</span>. By Theorem 1.1, <span class="math" data-tex="\(\det\mathrm{II}(b)=K(b)\det g(b)=0\)">\(\det\mathrm{II}(b)=K(b)\det g(b)=0\)</span>. A symmetric matrix with two rows that is not zero and has determinant zero has rank one. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>According to [OpenAI-I, Section 5], this observation is the third step of Section 2 of N. Nadirashvili and Y. Yuan, <em>Counterexamples for local isometric embedding</em> (2002), https://arxiv.org/abs/math/0208127.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Let <span class="math" data-tex="\(u\)">\(u\)</span> be a function on an open set of the plane and <span class="math" data-tex="\(F(x)=(x_1,x_2,u(x))\)">\(F(x)=(x_1,x_2,u(x))\)</span>, with the metric <span class="math" data-tex="\(g_{ij}=\delta_{ij}+u_iu_j\)">\(g_{ij}=\delta_{ij}+u_iu_j\)</span>. For the height <span class="math" data-tex="\(z=u\)">\(z=u\)</span> in the direction <span class="math" data-tex="\(e=(0,0,1)\)">\(e=(0,0,1)\)</span>, compute <span class="math" data-tex="\(H\)">\(H\)</span>, <span class="math" data-tex="\(|dz|_g^2\)">\(|dz|_g^2\)</span> and both sides of the height equation.</p>
+<p><strong>5.2.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be an isometric immersion of <span class="math" data-tex="\((U,g)\)">\((U,g)\)</span> and <span class="math" data-tex="\(K&gt;0\)">\(K&gt;0\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>. Show that for every unit vector <span class="math" data-tex="\(e\)">\(e\)</span> the height <span class="math" data-tex="\(\langle F,e\rangle\)">\(\langle F,e\rangle\)</span> has only nondegenerate critical points: where its differential vanishes, the determinant of the matrix of its second derivatives is positive.</p>
+<p><strong>5.3.</strong> Let <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span> be a constant. Show that <span class="math" data-tex="\(K_{\lambda^2g}=\lambda^{-2}K_g\)">\(K_{\lambda^2g}=\lambda^{-2}K_g\)</span>.</p>
+<p><strong>5.4.</strong> In Proposition 3.2, show that the curves <span class="math" data-tex="\(Y=\text{const}\)">\(Y=\text{const}\)</span> have the length <span class="math" data-tex="\(|X_1-X_0|\)">\(|X_1-X_0|\)</span> between the parameters <span class="math" data-tex="\(X_0\)">\(X_0\)</span> and <span class="math" data-tex="\(X_1\)">\(X_1\)</span>, and that <span class="math" data-tex="\(f\)">\(f\)</span> is determined by <span class="math" data-tex="\(K_0\)">\(K_0\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> Here <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is the identity, <span class="math" data-tex="\(\nu=1/\sqrt{1+|Du|^2}\)">\(\nu=1/\sqrt{1+|Du|^2}\)</span>, and by Lemma 4.1 and Theorem 2.1
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H=\nu\,\mathrm{II}=\frac{D^2u}{1+|Du|^2},\\
+|dz|_g^2=1-\nu^2=\frac{|Du|^2}{1+|Du|^2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+H=\nu\,\mathrm{II}=\frac{D^2u}{1+|Du|^2},\\
+|dz|_g^2=1-\nu^2=\frac{|Du|^2}{1+|Du|^2}.
+\end{gathered}
+\]</span>
+The left side of the height equation is <span class="math" data-tex="\(\det D^2u/(1+|Du|^2)^2\)">\(\det D^2u/(1+|Du|^2)^2\)</span>. On the right side, <span class="math" data-tex="\(K=\det D^2u/(1+|Du|^2)^2\)">\(K=\det D^2u/(1+|Du|^2)^2\)</span>, <span class="math" data-tex="\(\det g=1+|Du|^2\)">\(\det g=1+|Du|^2\)</span> and <span class="math" data-tex="\(1-|dz|_g^2=1/(1+|Du|^2)\)">\(1-|dz|_g^2=1/(1+|Du|^2)\)</span>; the product is the same.</p>
+<p><strong>5.2.</strong> At a critical point <span class="math" data-tex="\(b\)">\(b\)</span> of <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(dz(b)=0\)">\(dz(b)=0\)</span>, so <span class="math" data-tex="\(H(b)\)">\(H(b)\)</span> is the matrix of the second derivatives of <span class="math" data-tex="\(z\)">\(z\)</span> at <span class="math" data-tex="\(b\)">\(b\)</span>, and by the height equation its determinant is <span class="math" data-tex="\(K(b)\det g(b)&gt;0\)">\(K(b)\det g(b)&gt;0\)</span>.</p>
+<p><strong>5.3.</strong> Multiplying <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(\lambda^2\)">\(\lambda^2\)</span> multiplies the inverse by <span class="math" data-tex="\(\lambda^{-2}\)">\(\lambda^{-2}\)</span> and leaves the Christoffel symbols unchanged. In the formula for <span class="math" data-tex="\(K\det g\)">\(K\det g\)</span> the right side is multiplied by <span class="math" data-tex="\(\lambda^2\)">\(\lambda^2\)</span>, and <span class="math" data-tex="\(\det g\)">\(\det g\)</span> by <span class="math" data-tex="\(\lambda^4\)">\(\lambda^4\)</span>.</p>
+<p><strong>5.4.</strong> Along <span class="math" data-tex="\(Y=\text{const}\)">\(Y=\text{const}\)</span> the velocity is <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, of length <span class="math" data-tex="\(\sqrt{g_{11}}=1\)">\(\sqrt{g_{11}}=1\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(\tilde f\)">\(\tilde f\)</span> both satisfy the three conditions, <span class="math" data-tex="\(d=f-\tilde f\)">\(d=f-\tilde f\)</span> satisfies <span class="math" data-tex="\(d(X,Y)=-\int_0^X(X-u)K_0d\,du\)">\(d(X,Y)=-\int_0^X(X-u)K_0d\,du\)</span>. If <span class="math" data-tex="\(m\)">\(m\)</span> is the supremum of <span class="math" data-tex="\(|d|\)">\(|d|\)</span> on the segment from <span class="math" data-tex="\((0,Y)\)">\((0,Y)\)</span> to <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span>, this gives <span class="math" data-tex="\(m\le10^{-3}m/2\)">\(m\le10^{-3}m/2\)</span>, so <span class="math" data-tex="\(m=0\)">\(m=0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-I] OpenAI, <em>A smooth metric with no local isometric immersion into three-space</em>, OpenAI Math Release preprint, 24 September 2026, Sections 1, 2 and 5. https://github.com/openai/math/tree/main/preprints/A-Smooth-Metric-with-No-Local-Isometric-Immersion-into-Three-Space-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -389,6 +389,26 @@ Only finitely many atomic labels are drawn; the operator in (CS24) has all real 
 
 For a semifinite factor, the actual tracial-core model identifies its center with \(L^\infty(\mathbb R)\) and its action with translation. The complete transfer-function proof in [TCC3–5](OA-FLOW-TCC.md#tcc-3) gives every continuous unitary cocycle as a coboundary. It constructs a joint measurable representative, uses a generic Fubini slice rather than evaluation at a predetermined point, and extends the resulting almost-everywhere-in-time identity by strong continuity. Reflection changes its positive translation convention to ours. Thus \(H=0\), for every semifinite factor.
 
+In particular, for every semifinite factor, including a finite one,
+\[
+ C(\alpha)\text{ is inner}\quad\Longleftrightarrow\quad
+ \alpha\text{ is inner}.
+ \tag{CS26a}
+\]
+Here is the direct proof, without choosing a dominant weight.
+If \(C(\alpha)=\operatorname{Ad}w\), restriction to \(M\) puts
+\(w\) in \(E\), and the central-defect lemma makes
+\(c=\delta(w)\) a continuous central cocycle.
+The translation theorem just proved gives \(b\in\mathcal U(Z(C))\)
+with \(c_s=b\theta_s(b^*)\). Put \(a=b^*\); then \(\delta(a)=c\).
+Consequently \(v=wa^*\) is fixed by \(\theta\), so \(v\in\mathcal U(M)\).
+Since \(a\) is central, \(\operatorname{Ad}w=\operatorname{Ad}v\)
+on the entire core, and \(\alpha=\operatorname{Ad}v|_M\).
+Conversely, for \(v\in\mathcal U(M)\), (CS6) identifies the canonical
+extension of \(\operatorname{Ad}v|_M\) with \(\operatorname{Ad}v\).
+Thus the finite-factor conclusion uses the actual trace chart and
+transfer-function proof, with no missing dominant-weight hypothesis.
+
 For type \(\mathrm{III}_1\), the full center-kernel and all-weight spectrum theorem [MIV1–4](OA-FLOW-MIV.md#miv-4) gives \(Z(C)=\mathbb C\). Hence \(B=1\) and
 \[
  Z=H=\{s\mapsto e^{-its}:t\in\mathbb R\}\cong\mathbb R .

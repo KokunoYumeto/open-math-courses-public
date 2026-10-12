@@ -1,4 +1,4 @@
-"""Reproduce the proved normalization mechanism and its exact open identity."""
+"""Reproduce full normalization and the proved universal conductor-index identity."""
 from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
@@ -46,16 +46,16 @@ box(7.15, 'δ = 2d − i₄ − Σ fⱼℓⱼ − 2 + ν/2\n'
     'Inertia orbits and the earlier finite-order Swan proof\n'
     'ν is even; nontrivial wild E[3] action gives ν = 0',
     '6.0P.5: NF22–NF23; no general conductor theorem imported', '#eaf7ef')
-box(3.75, 'OPEN for the remaining preparations\n'
+box(3.75, 'Universal identity proved by the coherent comparison\n'
     'i₄ + Σ fⱼℓⱼ = d + M − 1 + ν/2\n'
-    'Equivalent to d = M + 1 + δ = −Art(X/R)',
-    '6.0P.6: NF24; computing the terms does not prove this value', '#fff3da')
+    'Ordinary degree, logarithmic Swan and regular-point correction',
+    '6.0BI: JM1–JM32; the original full-field scope', '#eaf7ef')
 for top, bottom in [(17.3,16.45),(13.9,13.05),(10.5,9.65)]:
     arrow(top,bottom)
-arrow(7.1,6.25,True)
-ax.text(5.05,6.67,'Unproved universal equality',fontsize=11,
-        va='center',color='#7a5820')
-ax.text(4.5,2.9,'The complete remaining scope',ha='center',
+arrow(7.1,6.25)
+ax.text(5.05,6.67,'JM28–JM32: comparison closes the gap',fontsize=10,
+        va='center',color='#365675')
+ax.text(4.5,2.9,'All original residual preparations now covered',ha='center',
         fontsize=16,fontweight='bold')
 ax.text(4.5,1.65,
         'Even star rows 2 ≤ r ≤ 2g − 3, including r < g\n'
@@ -66,6 +66,6 @@ ax.text(4.5,1.65,
 ax.text(4.5,.45,'All allowed higher coefficients and infinite lower-bound valuations remain included.',
         ha='center',fontsize=10)
 destination=Path(__file__).resolve().parents[1]/'assets/full-normalization-proof-map.png'
-fig.savefig(destination,dpi=100,metadata={'Title':'Full normalization procedures and the open conductor-index equality'})
+fig.savefig(destination,dpi=100,metadata={'Title':'Full normalization procedures and the proved conductor-index equality'})
 plt.close(fig)
 print(destination.name)

@@ -269,6 +269,26 @@ To verify it, substitute \(g^{-1}n,g^{-1}p\) into the third line of (EX3) and re
 
 **5. Does the class classify factors?** The theorem in Section 3 classifies existing equivariant central extensions over specified acting data. It makes no assertion that two von Neumann algebras with equivalent such data are normally isomorphic. The [normal-isomorphism argument](OA-FLOW-BRL.md#real-intrinsic) proves only that an isomorphism transports the invariant.
 
+**6. Does the displacement condition force a closed central kernel?**
+No. Give \(E=\mathbb T\) the trivial real action and let \(A\)
+be its subgroup of all roots of unity, with the subspace topology.
+It is central and invariant. It is countable and dense, since
+the rational angles are dense in the real line, and it is proper
+because the circle is uncountable. Every continuous map from
+\(\mathbb R\) into \(A\) is constant: if its connected image had
+two different points, distance from one of them would have a
+nontrivial interval as its image, contradicting countability.
+Consequently \(Z^1(\mathbb R,A)=1\), and every such cocycle is the
+displacement of an element of \(E\). But \(\mathbb T/A\) is not
+Hausdorff. Indeed, each nonempty open saturated subset of
+\(\mathbb T\) is all of \(\mathbb T\): every translate of the
+dense subgroup meets any given nonempty open set. The quotient
+has more than one point and only the empty and full open sets.
+Thus the displacement condition alone does not justify Polish
+quotients or Borel sections. The closed-kernel hypothesis in
+(EX1) supplies the topological assertion; the kernel calculations
+in (EX17) themselves are algebraic.
+
 <a id="ext-reading"></a>
 ## Reading
 
