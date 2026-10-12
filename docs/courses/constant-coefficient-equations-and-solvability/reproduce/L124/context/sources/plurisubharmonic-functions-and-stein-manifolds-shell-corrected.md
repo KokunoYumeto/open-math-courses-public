@@ -1,5 +1,7 @@
 # Plurisubharmonic functions and Stein manifolds
 
+**Current teaching version — 12 October 2026.** This version retains the earlier correction to Lemma 2.5 and now supplies the missing continuity hypothesis, a complete lower-bound proof, and a counterexample to the old claim. The mathematical correction and its explanation were self-checked by GPT-6 Astra (OpenAI), Ultra, and are CC0-1.0; this is not an independent review of the whole lesson. The [historical version](plurisubharmonic-functions-and-stein-manifolds.md) remains explicitly marked. The filename retains “shell-corrected” for compatibility.
+
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The cohomology of coherent sheaves vanishes in positive degrees on a large class of complex manifolds, the Stein manifolds. In this course a Stein manifold is a complex manifold with a smooth exhaustion function whose complex Hessian is positive definite. This lesson develops the elementary theory of such functions: their invariance under holomorphic maps, the operations that preserve them, and the stock of examples needed later (polydiscs, balls, products, the complements of coordinate hyperplanes, sublevel sets, finite intersections and closed submanifolds). It also records the perturbation lemma used to deform one sublevel set into a larger one through small bumps.
@@ -45,11 +47,15 @@ In particular, if some \(v_j\) is strictly plurisubharmonic and \(\partial\chi/\
 
 ## 2. Stein manifolds
 
-A real function \(\psi\) on a topological space \(X\) is an **exhaustion function** if every sublevel set \(X_c=\{x:\ \psi(x)<c\}\) is relatively compact in \(X\). An exhaustion function is bounded below, and it tends to \(+\infty\) along every sequence that leaves every compact subset.
+A real function \(\psi\) on a topological space \(X\) is an **exhaustion function** if every strict sublevel \(X_c=\{x:\ \psi(x)<c\}\) has compact closure in \(X\). A **continuous** exhaustion function is bounded below. Any exhaustion function in this definition, even without continuity, tends to \(+\infty\) along every sequence that leaves every compact subset.
+
+**Proof of the lower bound and escape property.** If \(X_0\) is empty, then \(\psi\geq0\). Otherwise \(K=\overline{X_0}\) is nonempty and compact. For continuous \(\psi\), the compact image \(\psi(K)\subset\mathbf R\) has a minimum \(m\). On \(K\) we have \(\psi\geq m\), while outside \(K\) we have \(\psi\geq0\). Thus \(\psi\geq\min(m,0)\) on all of \(X\). Separately, for any real \(a\), a sequence leaving every compact subset is eventually outside the compact set \(\overline{X_{a+1}}\). Its values are then at least \(a+1\), hence exceed \(a\). This proves escape to infinity without a continuity assumption. \(\square\)
+
+**Why the continuity hypothesis matters.** On the compact space \(X=[0,1]\), set \(\psi(0)=0\) and \(\psi(x)=-1/x\) for \(x>0\). Every strict sublevel has compact closure because that closure is closed in \([0,1]\). Nevertheless \(\psi(1/n)=-n\), so there is no lower bound. The earlier assertion for arbitrary real functions was false. The smooth exhaustions in Definition 2.1 and Proposition 2.2 are continuous, so the corrected lower-bound statement applies to those arguments.
 
 **Definition 2.1.** A complex manifold is a **Stein manifold** if it has a smooth strictly plurisubharmonic exhaustion function.
 
-*Reference:* this is the form of the definition used in [Complex analytic spaces and analytification](course:AG-QC/complex-analytic-spaces-and-analytification) and in the lesson [Serre's comparison theorems and Chow's theorem](course:AG-QC/serres-comparison-theorems-and-chows-theorem). H. Grauert proved its equivalence with the classical definition by holomorphic convexity; no result of this course uses that equivalence.
+*Reference:* this is the form of the definition used in Complex analytic spaces and analytification and in the lesson Serre's comparison theorems and Chow's theorem. H. Grauert proved its equivalence with the classical definition by holomorphic convexity; no result of this course uses that equivalence.
 
 **Proposition 2.2.** Let \(X\) be a complex manifold.
 

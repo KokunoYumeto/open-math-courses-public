@@ -138,14 +138,49 @@ The pairwise balanced comparison above and [PC7's source-countable comparison](O
 \]
 For the second assertion use projection Cantor–Bernstein in the common balanced centralizer. These assertions include zero.
 
-To prove surjectivity, let \(a\in\operatorname{Proj}_\sigma(\mathcal A)\). Take a maximal orthogonal family of nonzero carrier projections \(p_M(\phi_i)\le a\). It is countable, since a faithful normal state on \(\mathcal A a\) is strictly positive on each family member. Put \(p_i=s(\phi_i)\), \(z_i=z_M(p_i)\). Proper infiniteness of \(M_{\phi_i}\) implies proper infiniteness of \(p_i\) in \(M\). PC7 gives \(p_i\sim z_i\): \(z_i\) is countably decomposable, has the same central support, and \(p_i\) is a properly infinite target.
-
-Choose a countable orthogonal filling family of isometries in \(M\), and relocate \(p_i\) to \(e_i=v_i z_i v_i^*\), using partial isometries with initial \(e_i\) and final \(p_i\). The transported weights \(\psi_i\sim\phi_i\) have orthogonal supports. Their sum \(\psi\) has infinite multiplicity by Section 2. Inside the \(\psi\)-diagonal, the fixed projections corresponding to \(e_i\) sum strongly to \(d_\psi\); each is balanced-equivalent to \(d_{\psi_i}\). Therefore
+**Realizing a prescribed central projection.** We first record how to cut a carrier. If \(c\le p_M(\phi)\) is central in \(Q\), then \(cd_\phi\) corresponds under the diagonal corner identification to a central projection \(h\in M_\phi\). The supported weight \(\phi_h\) has centralizer \(hM_\phi h\), which is properly infinite when \(h\ne0\): compress two orthogonal isometries of \(M_\phi\) by the central \(h\). The balanced comparison identifies \(d_{\phi_h}\) with \(cd_\phi\), and hence
 \[
- p_M(\psi)=\bigvee_i p_M(\phi_i)\le a.
+ p_M(\phi_h)=z_Q(cd_\phi)=c\,z_Q(d_\phi)=c.
+ \tag{CI10a}
+\]
+The same identity holds for \(c=0\), using the zero weight. This supplies actual weights for all central cuts before any countable selection.
+
+Now fix a nonzero \(a\in\operatorname{Proj}_\sigma(\mathcal A)\) and a faithful normal state \(\nu\) on \(\mathcal A a\), as supplied by [PC7's equivalent sigma-finiteness criteria](OA-FLOW-PC.md#pc-7). Since the diagonal projections sum to \(S=1_Q\), their central supports have join \(1_{\mathcal A}\). Thus the finite joins
+\[
+ b_F=a\bigvee_{\phi\in F}p_M(\phi),
+ \qquad F\subset W_\infty(M)\text{ finite},
+ \qquad b_F\uparrow a
+ \tag{CI10b}
+\]
+satisfy \(\nu(b_F)\uparrow1\). Choose finite sets \(F_n\), increasing after replacing each by the union of its predecessors, such that \(\nu(a-b_{F_n})<2^{-n}\). Normality and faithfulness give \(\bigvee_n b_{F_n}=a\). Enumerate the countable union of the \(F_n\) without repetition as \((\phi_j)\); the enumeration may be finite. Put
+\[
+ c_j=a\,p_M(\phi_j)\prod_{k<j}(1-p_M(\phi_k)).
+ \tag{CI10c}
+\]
+These are pairwise orthogonal central projections with \(\bigvee_jc_j=a\). Indeed the first \(m\) terms sum to \(a\bigvee_{j\le m}p_M(\phi_j)\); taking their supremum gives the asserted join. Discard zero terms. Equation (CI10a) now gives weights \(\chi_j\in W_\infty(M)\) with \(p_M(\chi_j)=c_j\).
+
+We realize this countable disjoint central cover by a single weight on \(M\). Set \(q_j=s(\chi_j)\) and \(z_j=z_M(q_j)\). The corner \(M_{\chi_j}\) supplies two orthogonal isometries with initial projection \(q_j\), so \(q_j\) is properly infinite in \(M\). The faithful normal state of \(M\) makes \(z_j\) countably decomposable. [PC7](OA-FLOW-PC.md#pc-7) therefore gives \(z_j\precsim q_j\); inclusion gives the reverse comparison, and [PC3](OA-FLOW-PC.md#pc-3) gives \(q_j\sim z_j\).
+
+Choose partial isometries \(r_j\) with \(r_j^*r_j=z_j\), \(r_jr_j^*=q_j\), and use [PC5's filling family](OA-FLOW-PC.md#pc-5) to choose isometries \(v_j\) with orthogonal ranges in \(M\). Define
+\[
+ e_j=v_jz_jv_j^*,\qquad
+ t_j=r_jv_j^*,\qquad
+ t_j^*t_j=e_j,\quad t_jt_j^*=q_j,\qquad
+ \eta_j(x)=\chi_j(t_jxt_j^*)\quad(x\ge0).
+ \tag{CI10d}
+\]
+Then \(\eta_j\sim\chi_j\), its support is \(e_j\), and the \(e_j\) are orthogonal even when the original central supports \(z_j\) overlap. Section 2 proves that \(\psi=\sum_j\eta_j\) is normal semifinite, has support \(\sum_je_j\), and has properly infinite support centralizer. It also proves that its cut at \(e_j\) is exactly \(\eta_j\), including infinite positive values.
+
+In the \(\psi\)-diagonal of \(Q\), the modular-fixed projections corresponding to \(e_j\) sum to \(d_\psi\). Each is balanced-equivalent to \(d_{\eta_j}\). Central support preserves this join: a central projection dominates all the summands exactly when it dominates their sum. Consequently
+\[
+ p_M(\psi)=\bigvee_jp_M(\eta_j)=\bigvee_jc_j=a.
  \tag{CI11}
 \]
-If the residual \(r=a-p_M(\psi)\) is nonzero, some coordinate satisfies \(b=r p_M(\phi)\ne0\), because \(\bigvee_\phi z_Q(d_\phi)=1\). The projection \(bd_\phi\) corresponds to a nonzero central projection \(h\in Z(M_\phi)\). The weight \(\phi_h\) has centralizer \(hM_\phi h\), still properly infinite. Its diagonal is equivalent to \(bd_\phi\), so its carrier is exactly \(b\). This contradicts maximality. Thus \(p_M\) is onto. For \(a=0\) choose the empty family.
+For \(a=0\), use \(\psi=0\). This proves surjectivity, including finite selected families and weights supported on proper central summands of \(M\).
+
+![Carrier assembly: a faithful state selects a countable central cover; disjoint central cuts become weights, their supports are relocated to orthogonal corners of M, and the sum has carrier a.](../assets/global-flow/carrier-assembly.svg)
+
+The diagram shows the maps in (CI10a)–(CI11). The pieces are schematic central projections; their drawn sizes do not represent a trace or a weight value. The selected family may be finite or countably infinite. The [editable vector source](../assets/global-flow/carrier-assembly.svg) is original and dedicated to CC0.
 
 Here is the Boolean reconstruction proof, rather than an unnamed reconstruction input. Let \(f:\operatorname{Proj}_\sigma(A)\to\operatorname{Proj}_\sigma(B)\) be an order isomorphism of sigma-finite projections of two abelian von Neumann algebras. Every projection is the join of its sigma-finite subprojections: a nonzero remainder is detected by a normal positive functional, whose support supplies such a subprojection. Define
 \[
@@ -159,7 +194,7 @@ A countable join of sigma-finite projections is sigma-finite: sum faithful norma
 \]
 Indeed the left side is the join of \(f(pq)\), all bounded by \(f(eq)\), and the term \(p=eq\) attains that bound. Also \(F(1)=1\): a nonzero complement would contain a nonzero sigma-finite \(f(q)\), contrary to its definition. Construct \(G\) from \(f^{-1}\) in the same way. Applying (CI13) twice and testing against every sigma-finite \(q\) gives \(GF(e)=e\) and \(FG(b)=b\). Hence \(F\) is an order isomorphism of complete projection lattices; it preserves complements and arbitrary joins.
 
-Extend it to finite linear combinations of orthogonal projections. Preservation of their products, adjoints and nonzero supports makes this extension an isometric star homomorphism. Spectral step approximations are norm dense in the abelian algebra, so it extends uniquely to a star isomorphism. It is normal: the star isomorphism and its inverse preserve positivity, so they form an order isomorphism of the positive cones. Upper bounds pull back to upper bounds; consequently bounded increasing suprema are preserved in both directions. This proves uniqueness of the carrier from (CI10).
+Extend it to finite linear combinations of orthogonal projections. Preservation of their products, adjoints and nonzero supports makes this extension an isometric star homomorphism. [Spectral step approximations](OA-FLOW-SF.md#oa-flow.sf1.spectral-calculus) are norm dense in the abelian algebra, so it extends uniquely to a star isomorphism. It is normal: the star isomorphism and its inverse preserve positivity, so they form an order isomorphism of the positive cones. Upper bounds pull back to upper bounds; consequently bounded increasing suprema are preserved in both directions. This proves uniqueness of the carrier from (CI10).
 
 Scaling leaves supports and modular groups unchanged and preserves (CI6). Therefore Boolean reconstruction defines normal automorphisms
 \[
@@ -274,6 +309,26 @@ Finally choose a normal positive functional \(\nu_a\) on \(\mathcal A\), support
  \tag{NS11}
 \]
 A countable dense subset cannot meet all the disjoint radius \(1/3\) balls around these functionals. Hence \(\mathcal A_*\) is nonseparable. This proves nonseparability from the carrier's actual central projections, not from the size of an auxiliary Hilbert space.
+
+### The universal index set has exactly continuum cardinality
+
+The size of the indexing set in (CI9) can also be determined. Use the faithful normal representation on the separable GNS space \(H_\omega\) above, and let \(\xi_\omega\) be its cyclic unit vector. Cyclicity for \(M\) makes \(\xi_\omega\) separating for \(M'\): an \(x'\in M'\) with \(x'\xi_\omega=0\) vanishes on the dense set \(M\xi_\omega\). Thus \(\kappa(x')=\langle x'\xi_\omega,\xi_\omega\rangle\) is a faithful normal state on \(M'\).
+
+The [spatial construction and exact weight recovery](../../OA-MOD/OA-MOD-SX.html#the-core-supplies-semifiniteness-and-the-exact-derivative) assign to each normal semifinite weight \(\phi\) a positive selfadjoint \(A_\phi=d\phi/d\kappa\), and equality of these operators implies equality of weights. Encode it by the bounded resolvent
+\[
+ R_\phi=(1+A_\phi)^{-1},\qquad
+ D(A_\phi)=\operatorname{Ran}R_\phi,\qquad
+ A_\phi R_\phi\xi=\xi-R_\phi\xi.
+ \tag{NS12}
+\]
+The spectral calculus proves these identities, so the resolvent determines the operator with its domain. A bounded operator on a separable Hilbert space is determined by its matrix entries in a countable orthonormal basis. There are at most \(|\mathbb C^{\mathbb N\times\mathbb N}|=2^{\aleph_0}\) such arrays. Each entry is determined by the rational cuts of its real and imaginary parts; all these cuts together are coded by a subset of one countable set. Hence there are at most continuum many normal semifinite weights on \(M\).
+
+For the reverse bound use the weight \(\rho\) and finite projection \(f_1\) of (NS4). Multiplication by \(\lambda>0\) leaves its finite ideal unchanged and multiplies its GNS inner product by \(\lambda\). The resulting scalar GNS unitary intertwines the Tomita operators, so the modular action and its centralizer are unchanged. Therefore \(\lambda\rho\in W_\infty(M)\), while \((\lambda\rho)(f_1)=\lambda\). Distinct positive scalars give distinct weights, proving
+\[
+ |W_\infty(M)|=2^{\aleph_0}.
+ \tag{NS13}
+\]
+This cardinality statement is separate from the nonseparability of \(\mathcal A_*\), which was proved using the actual orthogonal carriers in (NS10).
 
 <a id="cgf-5"></a>
 ## 5. The centralizer center and the continuous projection sector

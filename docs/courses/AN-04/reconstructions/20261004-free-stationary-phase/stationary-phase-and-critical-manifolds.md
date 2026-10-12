@@ -4,7 +4,7 @@ A rapidly oscillating integral cancels where its phase changes to first order. N
 
 The precise prerequisites are the earlier proof companions. [Quadratic stationary phase, Q1–Q9](quadratic-stationary-phase.md) proves the analytic identities; [Morse reduction, M1–M2](parameter-morse-reduction.md) proves the smooth coordinate construction; [change of variables, P19–P21](change-of-variables-prerequisite-completions.md) proves substitution and its measure prerequisites. Their exact earlier-programme proof bindings retain Jiří Lebl's freely accessible *Basic Analysis*, version 6.3, and supply the used omitted exercises locally. Appendix A below proves the sharper Plancherel estimate needed here, the finite cutoffs, and the density and localization facts for critical manifolds.
 
-The complete mathematical proof chain of this lesson is recorded in the accompanying full-stationary proof bindings.
+The proof index records the main proof and its earlier dependencies. The alternative complex-analytic argument below also links its identity theorem.
 
 For a human account of stationary phase, see [Guillemin–Sternberg, Chapter 14](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf) and [Bates–Weinstein, Appendix B](https://math.berkeley.edu/~alanw/GofQ.pdf). The estimates below include uniform parameter derivatives, differentiated symbol remainders and the quotient density of a clean critical manifold.
 
@@ -112,6 +112,12 @@ At \(q=0\), the positive Gaussian integral in Appendix A gives \(J(0)=(2\pi/\var
 F_z(\xi)=\int e^{-zx^2/2-i\xi x}\,dx.
 \]
 Integrating the derivative of \(e^{-zx^2/2-i\xi x}\) gives \(F_z'(\xi)=-\xi z^{-1}F_z(\xi)\). Multiplication by \(e^{\xi^2/(2z)}\) shows that \(F_z(\xi)=F_z(0)e^{-\xi^2/(2z)}\). This proves (3.2) for every \(z\) in the right half-plane, without requiring a complex-analytic continuation theorem.
+
+**Alternative complex-analytic proof of (3.2).** For positive real \(z\), the Gaussian integral and differentiation with respect to \(\xi\) prove (3.2). Fix real \(\xi\). On a compact subset of the right half-plane choose \(\delta>0\) with \(\operatorname{Re}z\geq\delta\). The parameter derivative of the integrand is bounded by \(\tfrac12x^2e^{-\delta x^2/2}\); after decreasing \(\delta\), the same integrable bound controls nearby complex difference quotients. Q1's compact-plus-tail argument therefore permits differentiation under the integral, so the left side is holomorphic. The continuous square root \(r(z)\) with positive real part, constructed in P16.3, satisfies
+\[
+\frac{r(z+h)-r(z)}{h}=\frac{1}{r(z+h)+r(z)}\longrightarrow\frac{1}{2r(z)}.
+\]
+It is nonzero and holomorphic, so the right side of (3.2) is holomorphic as well. The positive real axis has an accumulation point inside this connected half-plane. The identity theorem, Theorem 3.7, with its power-series proof in Theorem 3.2 extends the equality to the whole half-plane. The square root is positive on the positive real axis, agreeing with the real-parameter normalization above.
 
 For an eigenvalue \(h_j\neq0\), use \(z=\varepsilon-i\lambda h_j\). As \(\varepsilon\downarrow0\), its inverse square root tends to \((\lambda|h_j|)^{-1/2}e^{i\pi\operatorname{sign}(h_j)/4}\). The exponential on the right of (3.2) has absolute value at most one for real \(\xi\), so dominated convergence against Schwartz functions proves the transformed limit. The original damped functions also converge as tempered distributions, since their absolute values are at most one. Multiply the scalar formulas. The orthogonal substitution is P21.4, the spectral decomposition is Q5, and the root limits and signs are P16.3. Q1 supplies the compact-plus-tail justification of each limit and parameter derivative, and Appendix A.2 defines the distributional transpose. ∎
 
@@ -569,6 +575,8 @@ If \(r=0\), the normal integral is evaluation, the quadratic prefactor is one, a
 For the families in Theorem 7.2, use the stipulated smooth adapted charts over compact parameter neighborhoods, common compact coordinate supports, and the stated normal-inverse and far-gradient bounds. Treat \((y,s)\) as the parameter in M1. M2 bounds inverse-coordinate derivatives on their compact images. Finite parameter covers, products of the cutoffs of A.4, and finite maxima of the bounds give uniform constants; take the union of the finitely many amplitude seminorm requirements. The critical value \(c(s)\) is independent of \(y\) on the component just proved constant. Remove \(e^{i\lambda c(s)}\) before applying the differentiated estimate. Corollary 6.1 then gives each scale derivative with its stated decrease in order; compact tangential integration preserves the bound. This proves all the uniformity assertions of the clean theorem without importing composition of Fourier integral operators.
 
 ## References
+
+- [Hörmander I] Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition (1990), Springer, 2003 reprint, §7.7, Lemma 7.7.3 and Theorems 7.7.5–7.7.6, pp. 218–222.
 
 - [Guillemin–Sternberg] Victor Guillemin and Shlomo Sternberg, *Semi-classical Analysis*, author draft, 13 January 2010, Chapter 14 and §8.14. [Online reading](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf).
 - [Bates–Weinstein] Sean Bates and Alan Weinstein, *Lectures on the Geometry of Quantization*, author-posted draft, Appendix A (ordinary densities and the exact sequence) and Appendix B (nonstationary integration and the invariant leading coefficient). The Gaussian calculation used here is proved locally from the independently checked free route in Q2 and Q6. [Online reading](https://math.berkeley.edu/~alanw/GofQ.pdf).

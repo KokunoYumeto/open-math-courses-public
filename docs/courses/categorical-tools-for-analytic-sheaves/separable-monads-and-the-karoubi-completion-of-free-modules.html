@@ -1,0 +1,385 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Separable monads and the Karoubi completion of free modules</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="separable-monads-and-the-karoubi-completion-of-free-modules">Separable monads and the Karoubi completion of free modules</h1>
+<p><em>Original text public domain (CC0).</em></p>
+<p>A free module is often easier to describe than a general module. Separability provides a natural retraction from a free module onto every module. We prove the abstract monad version, identify the corresponding completion of the free-module category, and retain the maps on morphisms and natural transformations. The examples distinguish a natural splitting from the mere existence of enough free objects.</p>
+<h2 id="1-monad-modules-and-the-kleisli-category">1. Monad modules and the Kleisli category</h2>
+<p>Fix universes for the categories, Hom sets and choices used below. Let <span class="math" data-tex="\(T:\mathcal C\to\mathcal C\)">\(T:\mathcal C\to\mathcal C\)</span> have natural unit <span class="math" data-tex="\(\eta:1\to T\)">\(\eta:1\to T\)</span> and multiplication <span class="math" data-tex="\(\mu:T^2\to T\)">\(\mu:T^2\to T\)</span>, satisfying
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\mu_XT\eta_X=1_{TX}=\mu_X\eta_{TX},
+\qquad \mu_XT\mu_X=\mu_X\mu_{TX}.
+\tag{1.1}
+\]">\[
+\mu_XT\eta_X=1_{TX}=\mu_X\eta_{TX},
+\qquad \mu_XT\mu_X=\mu_X\mu_{TX}.
+\tag{1.1}
+\]</span>
+A <span class="math" data-tex="\(T\)">\(T\)</span>-module is <span class="math" data-tex="\((X,a)\)">\((X,a)\)</span>, where <span class="math" data-tex="\(a:TX\to X\)">\(a:TX\to X\)</span>, <span class="math" data-tex="\(a\eta_X=1\)">\(a\eta_X=1\)</span> and <span class="math" data-tex="\(aTa=a\mu_X\)">\(aTa=a\mu_X\)</span>. Its maps satisfy <span class="math" data-tex="\(fa=bTf\)">\(fa=bTf\)</span>. Write <span class="math" data-tex="\(\mathcal C^T\)">\(\mathcal C^T\)</span> for this category, <span class="math" data-tex="\(U\)">\(U\)</span> for its forgetful functor, and <span class="math" data-tex="\(F(X)=(TX,\mu_X)\)">\(F(X)=(TX,\mu_X)\)</span>.</p>
+<p><a href="tensor-actions-and-absolute-algebra-presentations.html#2-algebra-objects-become-monads">Tensor actions and absolute algebra presentations, Section 2</a> proves <span class="math" data-tex="\(F\dashv U\)">\(F\dashv U\)</span>. The inverse Hom rules are <span class="math" data-tex="\(g\mapsto g\eta_X\)">\(g\mapsto g\eta_X\)</span> and <span class="math" data-tex="\(f\mapsto aTf\)">\(f\mapsto aTf\)</span>. Its counit at <span class="math" data-tex="\((X,a)\)">\((X,a)\)</span> is <span class="math" data-tex="\(a:FUX\to X\)">\(a:FUX\to X\)</span>, a module map.</p>
+<p>Define <span class="math" data-tex="\(\operatorname{Kl}(T)\)">\(\operatorname{Kl}(T)\)</span> to have the objects of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, and maps <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> given by underlying maps <span class="math" data-tex="\(f:X\to TY\)">\(f:X\to TY\)</span>. Its identity is <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span>; write its composition as
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+g\star f=\mu_ZTg\,f\quad
+(f:X\to TY,\ g:Y\to TZ).
+\tag{1.2}
+\]">\[
+g\star f=\mu_ZTg\,f\quad
+(f:X\to TY,\ g:Y\to TZ).
+\tag{1.2}
+\]</span>
+The two units follow from (1.1) and naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. For associativity, both <span class="math" data-tex="\((h\star g)\star f\)">\((h\star g)\star f\)</span> and <span class="math" data-tex="\(h\star(g\star f)\)">\(h\star(g\star f)\)</span> reduce to
+<span class="math" data-tex="\(\mu_WT\mu_WT^2h\,Tg\,f\)">\(\mu_WT\mu_WT^2h\,Tg\,f\)</span>.
+For the latter first use naturality
+<span class="math" data-tex="\(Th\,\mu_Z=\mu_{TW}T^2h\)">\(Th\,\mu_Z=\mu_{TW}T^2h\)</span>, then
+<span class="math" data-tex="\(\mu_W\mu_{TW}=\mu_WT\mu_W\)">\(\mu_W\mu_{TW}=\mu_WT\mu_W\)</span>. This verifies the category laws explicitly.</p>
+<p><strong>Proposition 1.1.</strong> The functor
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+J:\operatorname{Kl}(T)\longrightarrow\mathcal C^T,
+\quad JX=FX,\quad Jf=\mu_YTf
+\tag{1.3}
+\]">\[
+J:\operatorname{Kl}(T)\longrightarrow\mathcal C^T,
+\quad JX=FX,\quad Jf=\mu_YTf
+\tag{1.3}
+\]</span>
+is fully faithful, with image the free modules.</p>
+<p><strong>Proof.</strong> The displayed map is a module map by the associativity and naturality of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, equivalently by the free-module Hom rule. Its inverse on Hom sets sends <span class="math" data-tex="\(g:FX\to FY\)">\(g:FX\to FY\)</span> to <span class="math" data-tex="\(g\eta_X\)">\(g\eta_X\)</span>. One composite is
+<span class="math" data-tex="\(\mu_YTf\,\eta_X=\mu_Y\eta_{TY}f=f\)">\(\mu_YTf\,\eta_X=\mu_Y\eta_{TY}f=f\)</span>.
+The other is
+<span class="math" data-tex="\(\mu_YTg\,T\eta_X=g\mu_XT\eta_X=g\)">\(\mu_YTg\,T\eta_X=g\mu_XT\eta_X=g\)</span>,
+using the module-map equation for <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p>It takes the Kleisli identity to <span class="math" data-tex="\(\mu_XT\eta_X=1_{TX}\)">\(\mu_XT\eta_X=1_{TX}\)</span>. Moreover
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\mu_ZT(\mu_ZTg\,f)
+=\mu_ZT\mu_ZT^2g\,Tf
+=\mu_ZTg\,\mu_YTf,
+\]">\[
+\mu_ZT(\mu_ZTg\,f)
+=\mu_ZT\mu_ZT^2g\,Tf
+=\mu_ZTg\,\mu_YTf,
+\]</span>
+where the final equality uses monad associativity and naturality for <span class="math" data-tex="\(g:Y\to TZ\)">\(g:Y\to TZ\)</span>. Thus it preserves composition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-separable-multiplication-gives-a-natural-free-retraction">2. Separable multiplication gives a natural free retraction</h2>
+<p>The monad is <strong>separable</strong> if there is a natural <span class="math" data-tex="\(\sigma:T\to T^2\)">\(\sigma:T\to T^2\)</span> with
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+\mu_X\sigma_X=1,\qquad
+T\mu_X\,\sigma_{TX}
+=\sigma_X\mu_X
+=\mu_{TX}T\sigma_X.
+\tag{2.1}
+\]">\[
+\mu_X\sigma_X=1,\qquad
+T\mu_X\,\sigma_{TX}
+=\sigma_X\mu_X
+=\mu_{TX}T\sigma_X.
+\tag{2.1}
+\]</span>
+The last two equations are the two module-linearity equations for its multiplication section. No monoidal structure on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is required.</p>
+<p><strong>Theorem 2.1.</strong> For every module <span class="math" data-tex="\((X,a)\)">\((X,a)\)</span>, the map
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\xi_{(X,a)}=Ta\,\sigma_X\eta_X:X\longrightarrow TX
+\tag{2.2}
+\]">\[
+\xi_{(X,a)}=Ta\,\sigma_X\eta_X:X\longrightarrow TX
+\tag{2.2}
+\]</span>
+is a module map to <span class="math" data-tex="\(FUX\)">\(FUX\)</span>, natural in module maps, and <span class="math" data-tex="\(a\xi_{(X,a)}=1_X\)">\(a\xi_{(X,a)}=1_X\)</span>.</p>
+<p><strong>Proof.</strong> The splitting equation is
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+a\xi=aTa\,\sigma_X\eta_X
+=a\mu_X\sigma_X\eta_X=a\eta_X=1.
+\]">\[
+a\xi=aTa\,\sigma_X\eta_X
+=a\mu_X\sigma_X\eta_X=a\eta_X=1.
+\]</span>
+For module linearity compare <span class="math" data-tex="\(\xi a\)">\(\xi a\)</span> and <span class="math" data-tex="\(\mu_XT\xi\)">\(\mu_XT\xi\)</span>. Naturality of <span class="math" data-tex="\(\eta,\sigma\)">\(\eta,\sigma\)</span>, the module equation for <span class="math" data-tex="\(a\)">\(a\)</span>, and then (2.1) give
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\xi a
+&amp;=Ta\,\sigma_XTa\,\eta_{TX}\\
+&amp;=Ta\,T^2a\,\sigma_{TX}\eta_{TX}\\
+&amp;=Ta\,T\mu_X\,\sigma_{TX}\eta_{TX}\\
+&amp;=Ta\,\sigma_X\mu_X\eta_{TX}
+=Ta\,\sigma_X.
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+\xi a
+&amp;=Ta\,\sigma_XTa\,\eta_{TX}\\
+&amp;=Ta\,T^2a\,\sigma_{TX}\eta_{TX}\\
+&amp;=Ta\,T\mu_X\,\sigma_{TX}\eta_{TX}\\
+&amp;=Ta\,\sigma_X\mu_X\eta_{TX}
+=Ta\,\sigma_X.
+\end{aligned}
+\tag{2.3}
+\]</span>
+The other route gives
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\mu_XT\xi
+&amp;=\mu_XT^2a\,T\sigma_XT\eta_X\\
+&amp;=Ta\,\mu_{TX}T\sigma_XT\eta_X\\
+&amp;=Ta\,\sigma_X\mu_XT\eta_X
+=Ta\,\sigma_X.
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+\mu_XT\xi
+&amp;=\mu_XT^2a\,T\sigma_XT\eta_X\\
+&amp;=Ta\,\mu_{TX}T\sigma_XT\eta_X\\
+&amp;=Ta\,\sigma_X\mu_XT\eta_X
+=Ta\,\sigma_X.
+\end{aligned}
+\tag{2.4}
+\]</span>
+Here the second line is naturality of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> for <span class="math" data-tex="\(a:TX\to X\)">\(a:TX\to X\)</span>. Thus <span class="math" data-tex="\(\xi a=\mu_XT\xi\)">\(\xi a=\mu_XT\xi\)</span>.</p>
+<p>For a module map <span class="math" data-tex="\(f:(X,a)\to(Y,b)\)">\(f:(X,a)\to(Y,b)\)</span>, substitute <span class="math" data-tex="\(fa=bTf\)">\(fa=bTf\)</span> into
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\xi_Yf=Tb\,\sigma_Y\eta_Yf
+=Tb\,T^2f\,\sigma_X\eta_X
+=Tf\,Ta\,\sigma_X\eta_X
+=Tf\,\xi_X.
+\]">\[
+\xi_Yf=Tb\,\sigma_Y\eta_Yf
+=Tb\,T^2f\,\sigma_X\eta_X
+=Tf\,Ta\,\sigma_X\eta_X
+=Tf\,\xi_X.
+\]</span>
+This proves naturality and completes the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently every module is a retract of its specified free module <span class="math" data-tex="\(FUX\)">\(FUX\)</span>, with inclusion <span class="math" data-tex="\(\xi_X\)">\(\xi_X\)</span> and quotient <span class="math" data-tex="\(a\)">\(a\)</span>. The associated free-module projector is <span class="math" data-tex="\(\xi_Xa:TX\to TX\)">\(\xi_Xa:TX\to TX\)</span>.</p>
+<p>For a tensor monad <span class="math" data-tex="\(T=A\otimes-\)">\(T=A\otimes-\)</span>, <a href="separable-algebra-objects-and-absolute-balanced-tensor.html#5-averaging-maps-and-splitting-the-free-module-counit">Separable algebra objects and absolute balanced tensor, Sections 2 and 5</a> constructs exactly these sections from the multiplication section of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="3-the-converse-uses-natural-hom-retractions">3. The converse uses natural Hom retractions</h2>
+<p>A functor <span class="math" data-tex="\(G:\mathcal D\to\mathcal C\)">\(G:\mathcal D\to\mathcal C\)</span> is <strong>separable</strong> if its maps on Hom sets have retractions <span class="math" data-tex="\(H_{A,B}\)">\(H_{A,B}\)</span> which are natural under morphisms in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Precisely,
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+H(Gf)=f,\qquad
+H(Gb\,h\,Ga)=bH(h)a.
+\tag{3.1}
+\]">\[
+H(Gf)=f,\qquad
+H(Gb\,h\,Ga)=bH(h)a.
+\tag{3.1}
+\]</span>
+Here <span class="math" data-tex="\(h:GA\to GB\)">\(h:GA\to GB\)</span> can be any underlying morphism, while <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are morphisms of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. This does not require <span class="math" data-tex="\(H\)">\(H\)</span> to preserve composition of arbitrary underlying morphisms.</p>
+<p><strong>Lemma 3.1.</strong> For an adjunction <span class="math" data-tex="\(F\dashv G\)">\(F\dashv G\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span> is separable if and only if its counit has a natural section in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>.</p>
+<p><strong>Proof.</strong> Given a section <span class="math" data-tex="\(\xi_A:A\to FGA\)">\(\xi_A:A\to FGA\)</span> of <span class="math" data-tex="\(\varepsilon_A\)">\(\varepsilon_A\)</span>, put
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+H(h)=\varepsilon_BFh\,\xi_A.
+\tag{3.2}
+\]">\[
+H(h)=\varepsilon_BFh\,\xi_A.
+\tag{3.2}
+\]</span>
+Naturality of <span class="math" data-tex="\(\xi,\varepsilon\)">\(\xi,\varepsilon\)</span> gives (3.1); for a morphism <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, it gives <span class="math" data-tex="\(H(Gf)=f\varepsilon_A\xi_A=f\)">\(H(Gf)=f\varepsilon_A\xi_A=f\)</span>.</p>
+<p>Conversely define
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+\xi_A=H_{A,FGA}(\eta_{GA}).
+\tag{3.3}
+\]">\[
+\xi_A=H_{A,FGA}(\eta_{GA}).
+\tag{3.3}
+\]</span>
+By naturality in the second Hom variable and the adjunction triangle,
+<span class="math" data-tex="\(\varepsilon_A\xi_A=H(G\varepsilon_A\,\eta_{GA})=H(1_{GA})=1_A\)">\(\varepsilon_A\xi_A=H(G\varepsilon_A\,\eta_{GA})=H(1_{GA})=1_A\)</span>.
+For <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, naturality of <span class="math" data-tex="\(H\)">\(H\)</span> in both variables and naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> give
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+FGf\,\xi_A
+=H(GFGf\,\eta_{GA})
+=H(\eta_{GB}Gf)
+=\xi_Bf.
+\]">\[
+FGf\,\xi_A
+=H(GFGf\,\eta_{GA})
+=H(\eta_{GB}Gf)
+=\xi_Bf.
+\]</span>
+Thus the section is natural. The unit, counit and their triangles are those proved in <span class="unlinked">Passing maps across an adjunction, Section 2</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2.</strong> A monad is separable if and only if <span class="math" data-tex="\(U:\mathcal C^T\to\mathcal C\)">\(U:\mathcal C^T\to\mathcal C\)</span> is separable. Multiplication sections and natural sections of the free-module counit correspond bijectively.</p>
+<p><strong>Proof.</strong> Theorem 2.1 and Lemma 3.1 prove one direction. Conversely a natural section <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of the counit defines
+<span class="math" data-tex="\(\sigma_X=U(\xi_{FX}):TX\to T^2X\)">\(\sigma_X=U(\xi_{FX}):TX\to T^2X\)</span>.
+It is natural because <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is natural on the free maps <span class="math" data-tex="\(Ff\)">\(Ff\)</span>. Its splitting equation is <span class="math" data-tex="\(\mu_X\sigma_X=1\)">\(\mu_X\sigma_X=1\)</span>.</p>
+<p>The fact that <span class="math" data-tex="\(\xi_{FX}\)">\(\xi_{FX}\)</span> is a module map gives
+<span class="math" data-tex="\(\sigma_X\mu_X=\mu_{TX}T\sigma_X\)">\(\sigma_X\mu_X=\mu_{TX}T\sigma_X\)</span>.
+Naturality of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> on the module counit
+<span class="math" data-tex="\(\mu_X:F(TX)\to FX\)">\(\mu_X:F(TX)\to FX\)</span> gives the other equation
+<span class="math" data-tex="\(\sigma_X\mu_X=T\mu_X\,\sigma_{TX}\)">\(\sigma_X\mu_X=T\mu_X\,\sigma_{TX}\)</span>.
+These are all of (2.1).</p>
+<p>To verify the inverse correspondences, start with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and evaluate (2.2) at <span class="math" data-tex="\(FX=(TX,\mu_X)\)">\(FX=(TX,\mu_X)\)</span>. Its value is
+<span class="math" data-tex="\(T\mu_X\,\sigma_{TX}\eta_{TX}=\sigma_X\mu_X\eta_{TX}=\sigma_X\)">\(T\mu_X\,\sigma_{TX}\eta_{TX}=\sigma_X\mu_X\eta_{TX}=\sigma_X\)</span>.
+In the other direction naturality on <span class="math" data-tex="\(a:FUX\to(X,a)\)">\(a:FUX\to(X,a)\)</span> says
+<span class="math" data-tex="\(\xi_Xa=Ta\,\sigma_X\)">\(\xi_Xa=Ta\,\sigma_X\)</span>.
+Precompose with <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span> and use <span class="math" data-tex="\(a\eta_X=1\)">\(a\eta_X=1\)</span> to recover exactly (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-completing-a-category-by-retracts">4. Completing a category by retracts</h2>
+<p>For any category <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, define <span class="math" data-tex="\(\operatorname{Kar}(\mathcal D)\)">\(\operatorname{Kar}(\mathcal D)\)</span> to have objects <span class="math" data-tex="\((X,p)\)">\((X,p)\)</span> with <span class="math" data-tex="\(p^2=p\)">\(p^2=p\)</span>. A morphism to <span class="math" data-tex="\((Y,q)\)">\((Y,q)\)</span> is an arrow <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> with <span class="math" data-tex="\(qf=f=fp\)">\(qf=f=fp\)</span>. Composition is the original composition, and the identity at <span class="math" data-tex="\((X,p)\)">\((X,p)\)</span> is <span class="math" data-tex="\(p\)">\(p\)</span>. These equations check closure under composition and the identity laws. The embedding <span class="math" data-tex="\(I(X)=(X,1_X)\)">\(I(X)=(X,1_X)\)</span> is fully faithful.</p>
+<p>The arrows both represented by <span class="math" data-tex="\(p\)">\(p\)</span> exhibit <span class="math" data-tex="\((X,p)\)">\((X,p)\)</span> as a retract of <span class="math" data-tex="\(IX\)">\(IX\)</span>. An idempotent <span class="math" data-tex="\(e\)">\(e\)</span> on <span class="math" data-tex="\((X,p)\)">\((X,p)\)</span> satisfies <span class="math" data-tex="\(pe=e=ep\)">\(pe=e=ep\)</span>; it splits through <span class="math" data-tex="\((X,e)\)">\((X,e)\)</span>, using <span class="math" data-tex="\(e\)">\(e\)</span> in both directions. Hence <span class="math" data-tex="\(\operatorname{Kar}(\mathcal D)\)">\(\operatorname{Kar}(\mathcal D)\)</span> is idempotent complete. The same corner descriptions occur in <a href="retracts-and-stabilization-of-formal-objects.html#3-the-compact-part-is-the-idempotent-completion">Retracts and stabilization of formal objects, Sections 1 and 3</a>; here we also prove the functorial universal property.</p>
+<p><strong>Theorem 4.1.</strong> For idempotent-complete <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, restriction along <span class="math" data-tex="\(I\)">\(I\)</span> is an equivalence of functor categories
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Fun}(\operatorname{Kar}(\mathcal D),\mathcal E)
+\simeq\operatorname{Fun}(\mathcal D,\mathcal E).
+\tag{4.1}
+\]">\[
+\operatorname{Fun}(\operatorname{Kar}(\mathcal D),\mathcal E)
+\simeq\operatorname{Fun}(\mathcal D,\mathcal E).
+\tag{4.1}
+\]</span>
+This includes all natural transformations.</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(H:\mathcal D\to\mathcal E\)">\(H:\mathcal D\to\mathcal E\)</span>, choose splittings
+<span class="math" data-tex="\(HX\xrightarrow{q_p}E_p\xrightarrow{i_p}HX\)">\(HX\xrightarrow{q_p}E_p\xrightarrow{i_p}HX\)</span> of <span class="math" data-tex="\(H(p)\)">\(H(p)\)</span>. For <span class="math" data-tex="\(p=1_X\)">\(p=1_X\)</span> choose the identity splitting. Define
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\overline H(X,p)=E_p,\qquad
+\overline H(f)=q_qH(f)i_p.
+\tag{4.2}
+\]">\[
+\overline H(X,p)=E_p,\qquad
+\overline H(f)=q_qH(f)i_p.
+\tag{4.2}
+\]</span>
+The identity is <span class="math" data-tex="\(q_pH(p)i_p=q_pi_p=1\)">\(q_pH(p)i_p=q_pi_p=1\)</span>. For composable corner maps, inserting <span class="math" data-tex="\(i_qq_q=H(q)\)">\(i_qq_q=H(q)\)</span> does not change their composite, since <span class="math" data-tex="\(gq=g\)">\(gq=g\)</span> and <span class="math" data-tex="\(qf=f\)">\(qf=f\)</span>. This proves functoriality and gives an extension of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>For a natural transformation <span class="math" data-tex="\(\theta:H\to K\)">\(\theta:H\to K\)</span>, its extension has component
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\overline\theta_{(X,p)}
+=q_p^K\theta_Xi_p^H.
+\tag{4.3}
+\]">\[
+\overline\theta_{(X,p)}
+=q_p^K\theta_Xi_p^H.
+\tag{4.3}
+\]</span>
+Naturality of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> for <span class="math" data-tex="\(p\)">\(p\)</span> says <span class="math" data-tex="\(K(p)\theta_X=\theta_XH(p)\)">\(K(p)\theta_X=\theta_XH(p)\)</span>. Substitution in (4.2) verifies the naturality square for every corner map <span class="math" data-tex="\(f\)">\(f\)</span>. The same splitting equations prove preservation of identities and vertical composition of transformations.</p>
+<p>Conversely any functor on the completion sends the two formal retract arrows to a splitting of its value on <span class="math" data-tex="\(p\)">\(p\)</span>. A transformation between two such functors is determined by its components on <span class="math" data-tex="\(IX\)">\(IX\)</span>: naturality for the inclusion and projection forces (4.3), using those image splittings. That formula also constructs the unique extension of every transformation on the restriction. Thus restriction is fully faithful. Construction (4.2) proves essential surjectivity, giving (4.1). Different splitting choices identify by the unique splitting isomorphisms, naturally in all corner maps; their three-choice comparisons compose. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-splitting-a-module-projector">5. Splitting a module projector</h2>
+<p><strong>Proposition 5.1.</strong> If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is idempotent complete, so is <span class="math" data-tex="\(\mathcal C^T\)">\(\mathcal C^T\)</span>, for any monad <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(p:(X,a)\to(X,a)\)">\(p:(X,a)\to(X,a)\)</span> be an idempotent module map, and split its underlying map as <span class="math" data-tex="\(p=iq,qi=1_Y\)">\(p=iq,qi=1_Y\)</span>. Define
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+b=q\,a\,Ti:TY\longrightarrow Y.
+\tag{5.1}
+\]">\[
+b=q\,a\,Ti:TY\longrightarrow Y.
+\tag{5.1}
+\]</span>
+Since <span class="math" data-tex="\(pa=aTp\)">\(pa=aTp\)</span>, we have
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+ib=paTi=aTi,\qquad
+bTq=qaTp=qa.
+\tag{5.2}
+\]">\[
+ib=paTi=aTi,\qquad
+bTq=qaTp=qa.
+\tag{5.2}
+\]</span>
+The equality <span class="math" data-tex="\(qaTp=qa\)">\(qaTp=qa\)</span> follows by composing <span class="math" data-tex="\(pa=aTp\)">\(pa=aTp\)</span> with <span class="math" data-tex="\(q\)">\(q\)</span> and using <span class="math" data-tex="\(qp=q\)">\(qp=q\)</span>.</p>
+<p>Naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives <span class="math" data-tex="\(ib\eta_Y=a\eta_Xi=i\)">\(ib\eta_Y=a\eta_Xi=i\)</span>; cancel the split monomorphism <span class="math" data-tex="\(i\)">\(i\)</span> to get <span class="math" data-tex="\(b\eta_Y=1\)">\(b\eta_Y=1\)</span>. Also
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ibTb=aTiTb=aT(ib)=aTa\,T^2i
+=a\mu_XT^2i=aTi\,\mu_Y=ib\mu_Y.
+\]">\[
+ibTb=aTiTb=aT(ib)=aTa\,T^2i
+=a\mu_XT^2i=aTi\,\mu_Y=ib\mu_Y.
+\]</span>
+Cancel <span class="math" data-tex="\(i\)">\(i\)</span> again. Thus <span class="math" data-tex="\(b\)">\(b\)</span> is a module action. Equations (5.2) say exactly that <span class="math" data-tex="\(i,q\)">\(i,q\)</span> are module maps. They split <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(\mathcal C^T\)">\(\mathcal C^T\)</span>. No preservation of kernels, images or chosen splittings by <span class="math" data-tex="\(T\)">\(T\)</span> was assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-all-modules-are-the-completed-free-category">6. All modules are the completed free category</h2>
+<p><strong>Theorem 6.1.</strong> For a separable monad on any <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, the fully faithful free-module functor induces an equivalence
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+\operatorname{Kar}(\operatorname{Kl}(T))
+\simeq\operatorname{Kar}(\mathcal C^T).
+\tag{6.1}
+\]">\[
+\operatorname{Kar}(\operatorname{Kl}(T))
+\simeq\operatorname{Kar}(\mathcal C^T).
+\tag{6.1}
+\]</span>
+If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is idempotent complete, it gives
+<span class="math" data-tex="\(\operatorname{Kar}(\operatorname{Kl}(T))\simeq\mathcal C^T\)">\(\operatorname{Kar}(\operatorname{Kl}(T))\simeq\mathcal C^T\)</span>.</p>
+<p><strong>Proof.</strong> A fully faithful functor remains fully faithful on Karoubi completions: its Hom bijection restricts to exactly the corner equations for the two projectors. Every module is a retract of a free one by Theorem 2.1. An object of <span class="math" data-tex="\(\operatorname{Kar}(\mathcal C^T)\)">\(\operatorname{Kar}(\mathcal C^T)\)</span> is in turn a formal retract of a module. Compose the two retract inclusions and the two projections. Their quotient-inclusion composite is the identity, so it is a retract of a free object. Its free-object idempotent is transported to a unique Kleisli idempotent by full faithfulness of <span class="math" data-tex="\(J\)">\(J\)</span>. Splitting that formal idempotent gives the required object in the source of (6.1), proving essential surjectivity. Proposition 5.1 and Theorem 4.1 identify the second completion with <span class="math" data-tex="\(\mathcal C^T\)">\(\mathcal C^T\)</span> when <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is idempotent complete. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here are actual maps for the comparison. The arrow <span class="math" data-tex="\(\xi_X:X\to TX\)">\(\xi_X:X\to TX\)</span> is a Kleisli idempotent:
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\xi_X\star\xi_X=\mu_XT\xi_X\,\xi_X
+=\xi_Xa\xi_X=\xi_X.
+\tag{6.2}
+\]">\[
+\xi_X\star\xi_X=\mu_XT\xi_X\,\xi_X
+=\xi_Xa\xi_X=\xi_X.
+\tag{6.2}
+\]</span>
+It corresponds under <span class="math" data-tex="\(J\)">\(J\)</span> to the free-module projector <span class="math" data-tex="\(\xi_Xa\)">\(\xi_Xa\)</span>. Define
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+K(X,a)=(X,\xi_X),\qquad
+K(f)=\xi_Yf:X\longrightarrow TY.
+\tag{6.3}
+\]">\[
+K(X,a)=(X,\xi_X),\qquad
+K(f)=\xi_Yf:X\longrightarrow TY.
+\tag{6.3}
+\]</span>
+Its target and source corner equations follow from
+<span class="math" data-tex="\(\mu_YT\xi_Y=\xi_Yb\)">\(\mu_YT\xi_Y=\xi_Yb\)</span>, <span class="math" data-tex="\(fa=bTf\)">\(fa=bTf\)</span>, and <span class="math" data-tex="\(a\xi_X=b\xi_Y=1\)">\(a\xi_X=b\xi_Y=1\)</span>. Explicitly
+<span class="math" data-tex="\(\xi_Y\star K(f)=K(f)\)">\(\xi_Y\star K(f)=K(f)\)</span> and
+<span class="math" data-tex="\(K(f)\star\xi_X=\xi_YbTf\,\xi_X=\xi_Yfa\xi_X=K(f)\)">\(K(f)\star\xi_X=\xi_YbTf\,\xi_X=\xi_Yfa\xi_X=K(f)\)</span>.
+The identity is <span class="math" data-tex="\(K(1_X)=\xi_X\)">\(K(1_X)=\xi_X\)</span>, the identity of its Karoubi object. For <span class="math" data-tex="\(f:X\to Y,g:Y\to Z\)">\(f:X\to Y,g:Y\to Z\)</span>,
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+K(g)\star K(f)
+=\xi_ZcTg\,\xi_Yf
+=\xi_Zgb\xi_Yf
+=\xi_Zgf=K(gf).
+\]">\[
+K(g)\star K(f)
+=\xi_ZcTg\,\xi_Yf
+=\xi_Zgb\xi_Yf
+=\xi_Zgf=K(gf).
+\]</span>
+Thus <span class="math" data-tex="\(K\)">\(K\)</span> is a functor. The maps <span class="math" data-tex="\(a,\xi_X\)">\(a,\xi_X\)</span> identify its completed free image with <span class="math" data-tex="\((X,a)\)">\((X,a)\)</span>, naturally in module maps. These formulas also describe the inverse comparison after formal retract completion; they retain the chosen natural section rather than forgetting the corner projectors.</p>
+<h2 id="7-choices-and-the-limits-of-the-criterion">7. Choices and the limits of the criterion</h2>
+<p>Two separability sections give two counit sections <span class="math" data-tex="\(\xi,\xi&#x27;\)">\(\xi,\xi&#x27;\)</span> and hence two functors <span class="math" data-tex="\(K,K&#x27;\)">\(K,K&#x27;\)</span>. At a module <span class="math" data-tex="\((X,a)\)">\((X,a)\)</span>, the underlying Kleisli arrow <span class="math" data-tex="\(\xi&#x27;_X\)">\(\xi&#x27;_X\)</span> is an isomorphism
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+(X,\xi_X)\longrightarrow(X,\xi&#x27;_X),
+\tag{7.1}
+\]">\[
+(X,\xi_X)\longrightarrow(X,\xi&#x27;_X),
+\tag{7.1}
+\]</span>
+with inverse <span class="math" data-tex="\(\xi_X\)">\(\xi_X\)</span>. Indeed
+<span class="math" data-tex="\(\xi_X\star\xi&#x27;_X=\xi_Xa\xi&#x27;_X=\xi_X\)">\(\xi_X\star\xi&#x27;_X=\xi_Xa\xi&#x27;_X=\xi_X\)</span> and
+<span class="math" data-tex="\(\xi&#x27;_X\star\xi_X=\xi&#x27;_X\)">\(\xi&#x27;_X\star\xi_X=\xi&#x27;_X\)</span>, exactly the two corner identities. It satisfies the corner equations by the same calculation. Naturality on <span class="math" data-tex="\(f\)">\(f\)</span> is the equation
+<span class="math" data-tex="\(\xi&#x27;_Y\star(\xi_Yf)=(\xi&#x27;_Yf)\star\xi_X=\xi&#x27;_Yf\)">\(\xi&#x27;_Y\star(\xi_Yf)=(\xi&#x27;_Yf)\star\xi_X=\xi&#x27;_Yf\)</span>.
+For a third section the two successive comparisons compose to its own <span class="math" data-tex="\(\xi&#x27;&#x27;_X\)">\(\xi&#x27;&#x27;_X\)</span>, so the comparisons are coherent.</p>
+<p>The converse to Theorem 6.1 is not asserted. Having enough free retracts does not produce a natural section of the specified counit. In Theorem 3.2 that natural section is essential.</p>
+<p>For clarity, let <span class="math" data-tex="\(R\)">\(R\)</span> be a commutative ring and <span class="math" data-tex="\(A\)">\(A\)</span> a unital central <span class="math" data-tex="\(R\)">\(R\)</span>-algebra. On <span class="math" data-tex="\(\operatorname{Mod}(R)\)">\(\operatorname{Mod}(R)\)</span> the tensor monad <span class="math" data-tex="\(A\otimes_R-\)">\(A\otimes_R-\)</span> is separable if and only if <span class="math" data-tex="\(A\)">\(A\)</span> is separable. A multiplication section of <span class="math" data-tex="\(A\)">\(A\)</span> supplies the monad section by tensoring with <span class="math" data-tex="\(1_M\)">\(1_M\)</span>. Conversely, given a natural monad section, its value on <span class="math" data-tex="\(R\)">\(R\)</span> is an <span class="math" data-tex="\(R\)">\(R\)</span>-linear map <span class="math" data-tex="\(s:A\to A\otimes_R A\)">\(s:A\to A\otimes_R A\)</span>. For each <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span>, naturality on <span class="math" data-tex="\(R\to M,1\mapsto m\)">\(R\to M,1\mapsto m\)</span> gives
+<span class="math" data-tex="\(\sigma_M(a\otimes m)=s(a)\otimes m\)">\(\sigma_M(a\otimes m)=s(a)\otimes m\)</span>. Pure tensors generate, so this determines the section. Its splitting equation on <span class="math" data-tex="\(R\)">\(R\)</span> is <span class="math" data-tex="\(ms=1\)">\(ms=1\)</span>, and its two equations (2.1), evaluated on <span class="math" data-tex="\(R\)">\(R\)</span>, are precisely the left and right <span class="math" data-tex="\(A\)">\(A\)</span>-linearity of <span class="math" data-tex="\(s\)">\(s\)</span>. This proves the equivalence with its actual maps. It does not require base flatness.</p>
+<h2 id="8-four-graded-exercises-with-complete-solutions">8. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-8-1-an-idempotent-rational-localization-monad-intermediate">Exercise 8.1 — An idempotent rational-localization monad (intermediate)</h3>
+<p>On abelian groups take <span class="math" data-tex="\(T(M)=\mathbb Q\otimes_{\mathbb Z}M\)">\(T(M)=\mathbb Q\otimes_{\mathbb Z}M\)</span>, with its usual unit and multiplication. Prove its multiplication invertible, identify its modules and explain why every module is already free.</p>
+<p><strong>Solution.</strong> Multiplication <span class="math" data-tex="\(\mathbb Q\otimes\mathbb Q\to\mathbb Q\)">\(\mathbb Q\otimes\mathbb Q\to\mathbb Q\)</span> has inverse <span class="math" data-tex="\(q\mapsto q\otimes1\)">\(q\mapsto q\otimes1\)</span>. To check this on <span class="math" data-tex="\(q\otimes s/n\)">\(q\otimes s/n\)</span>, multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> on the tensor is invertible through its first rational factor. Both <span class="math" data-tex="\(q\otimes s/n\)">\(q\otimes s/n\)</span> and <span class="math" data-tex="\(qs/n\otimes1\)">\(qs/n\otimes1\)</span> become <span class="math" data-tex="\(qs\otimes1\)">\(qs\otimes1\)</span> after multiplying by <span class="math" data-tex="\(n\)">\(n\)</span>, hence are equal. Pure tensors generate, proving the inverse equation. Tensoring with <span class="math" data-tex="\(M\)">\(M\)</span> proves <span class="math" data-tex="\(\mu_M\)">\(\mu_M\)</span> invertible.</p>
+<p>More generally, if <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is invertible, both monad unit maps <span class="math" data-tex="\(T\eta_X,\eta_{TX}\)">\(T\eta_X,\eta_{TX}\)</span> equal <span class="math" data-tex="\(\mu_X^{-1}\)">\(\mu_X^{-1}\)</span>. For a module action <span class="math" data-tex="\(a\)">\(a\)</span>, the equation <span class="math" data-tex="\(Ta\,T\eta_X=1\)">\(Ta\,T\eta_X=1\)</span> then gives <span class="math" data-tex="\(Ta=\mu_X\)">\(Ta=\mu_X\)</span>. Naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives
+<span class="math" data-tex="\(\eta_Xa=Ta\,\eta_{TX}=\mu_X\mu_X^{-1}=1\)">\(\eta_Xa=Ta\,\eta_{TX}=\mu_X\mu_X^{-1}=1\)</span>.
+Thus <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span> are inverse. The action is an isomorphism from <span class="math" data-tex="\(FUX\)">\(FUX\)</span>, so every module is free. For separability put <span class="math" data-tex="\(\sigma=\mu^{-1}\)">\(\sigma=\mu^{-1}\)</span>. Cancelling the invertible <span class="math" data-tex="\(\mu_X\)">\(\mu_X\)</span> from associativity gives <span class="math" data-tex="\(T\mu_X=\mu_{TX}\)">\(T\mu_X=\mu_{TX}\)</span>. Hence
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+T\mu_X\,\sigma_{TX}=1_{T^2X}
+=\sigma_X\mu_X
+=\mu_{TX}T\sigma_X,
+\]">\[
+T\mu_X\,\sigma_{TX}=1_{T^2X}
+=\sigma_X\mu_X
+=\mu_{TX}T\sigma_X,
+\]</span>
+which proves both linearity equations for this section.</p>
+<p>For this particular monad its modules are exactly uniquely divisible abelian groups, or rational vector spaces. An action gives multiplication by <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, inverse to multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>, using its unit and associativity; hence division is unique. Conversely define rational scalar multiplication on a uniquely divisible group by the unique solution of <span class="math" data-tex="\(ny=sx\)">\(ny=sx\)</span>. Common denominators verify addition and composition of scalars and give the action on <span class="math" data-tex="\(\mathbb Q\otimes M\)">\(\mathbb Q\otimes M\)</span>. Maps are exactly rational-linear maps. The free comparison is consequently already an equivalence, before adding retracts.</p>
+<h3 id="exercise-8-2-a-separable-monad-can-have-a-nonfree-module-intermediate">Exercise 8.2 — A separable monad can have a nonfree module (intermediate)</h3>
+<p>On <span class="math" data-tex="\(\operatorname{Vect}_k\)">\(\operatorname{Vect}_k\)</span>, let <span class="math" data-tex="\(T=(k\times k)\otimes_k-\)">\(T=(k\times k)\otimes_k-\)</span>. Construct a module which is a retract of a free module but is not free, and exhibit its Kleisli idempotent.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(A=k\times k\)">\(A=k\times k\)</span>, with orthogonal units <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span>. The tensor
+<span class="math" data-tex="\(e_1\otimes e_1+e_2\otimes e_2\)">\(e_1\otimes e_1+e_2\otimes e_2\)</span> has product <span class="math" data-tex="\(e_1+e_2=1\)">\(e_1+e_2=1\)</span>, and commutes with each algebra factor in the central equation. Thus <span class="math" data-tex="\(A\)">\(A\)</span>, and by Section 7 the tensor monad, is separable.</p>
+<p>An <span class="math" data-tex="\(A\)">\(A\)</span>-module is the pair <span class="math" data-tex="\((e_1M,e_2M)\)">\((e_1M,e_2M)\)</span>: the two idempotents give <span class="math" data-tex="\(M=e_1M\oplus e_2M\)">\(M=e_1M\oplus e_2M\)</span>, and the scalar action and maps are componentwise. A free module <span class="math" data-tex="\(A\otimes V\)">\(A\otimes V\)</span> has pair <span class="math" data-tex="\((V,V)\)">\((V,V)\)</span>. The module <span class="math" data-tex="\((k,0)\)">\((k,0)\)</span> cannot be such a pair, since a common <span class="math" data-tex="\(V\)">\(V\)</span> would have to be both nonzero and zero.</p>
+<p>It is the image of multiplication by <span class="math" data-tex="\(e_1\)">\(e_1\)</span> on <span class="math" data-tex="\(Fk=A\)">\(Fk=A\)</span>. In the Kleisli category the corresponding map is <span class="math" data-tex="\(p:k\to A\otimes k\)">\(p:k\to A\otimes k\)</span>, <span class="math" data-tex="\(p(1)=e_1\)">\(p(1)=e_1\)</span>. Its Kleisli square is <span class="math" data-tex="\(e_1^2=e_1\)">\(e_1^2=e_1\)</span>; its Kleisli identity is <span class="math" data-tex="\(1=e_1+e_2\)">\(1=e_1+e_2\)</span>. The object <span class="math" data-tex="\((k,p)\)">\((k,p)\)</span> in the completion therefore gives precisely this missing module. The underlying vector-space category is already idempotent complete, but its free-module category is not.</p>
+<h3 id="exercise-8-3-enough-free-modules-do-not-characterize-separability-advanced">Exercise 8.3 — Enough free modules do not characterize separability (advanced)</h3>
+<p>Use <span class="math" data-tex="\(k=\mathbb F_p(u^p)\subset L=\mathbb F_p(u)\)">\(k=\mathbb F_p(u^p)\subset L=\mathbb F_p(u)\)</span>. For the tensor monad <span class="math" data-tex="\(L\otimes_k-\)">\(L\otimes_k-\)</span>, prove that its Kleisli/free comparison is an equivalence, although its forgetful functor has no natural Hom retraction.</p>
+<p><strong>Solution.</strong> Every <span class="math" data-tex="\(L\)">\(L\)</span>-module has a basis indexed by some set <span class="math" data-tex="\(I\)">\(I\)</span>, so is isomorphic to <span class="math" data-tex="\(L^{(I)}\)">\(L^{(I)}\)</span>. The vector space <span class="math" data-tex="\(k^{(I)}\)">\(k^{(I)}\)</span> has free image <span class="math" data-tex="\(L\otimes_k k^{(I)}\simeq L^{(I)}\)">\(L\otimes_k k^{(I)}\simeq L^{(I)}\)</span>: the isomorphism takes a tensor with each basis vector to its indicated finitely supported coordinate. Thus every module is free. Proposition 1.1 makes <span class="math" data-tex="\(J\)">\(J\)</span> fully faithful, so it is an equivalence here.</p>
+<p><a href="separable-algebra-objects-and-absolute-balanced-tensor.html#exercise-8-3-a-field-can-be-semisimple-without-being-separable-advanced">Separable algebra objects and absolute balanced tensor, Exercise 8.3</a> proves completely that <span class="math" data-tex="\(L\)">\(L\)</span> has degree <span class="math" data-tex="\(p\)">\(p\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span> and is not a separable <span class="math" data-tex="\(k\)">\(k\)</span>-algebra: <span class="math" data-tex="\(L\otimes_kL\simeq L[z]/(z^p)\)">\(L\otimes_kL\simeq L[z]/(z^p)\)</span>, the central equation forces <span class="math" data-tex="\(ze=0\)">\(ze=0\)</span>, and multiplication kills <span class="math" data-tex="\(\operatorname{ann}(z)=Lz^{p-1}\)">\(\operatorname{ann}(z)=Lz^{p-1}\)</span>, contradicting product one.</p>
+<p>Section 7 therefore says that this tensor monad is not separable. Theorem 3.2 then excludes a natural Hom retraction for its specified forgetful functor. The abstract equivalence with the free category depended on separately chosen module bases; it did not provide the missing natural counit section. This is the stated failure of the converse completion criterion.</p>
+<h3 id="exercise-8-4-the-dual-number-module-missing-from-the-completion-advanced">Exercise 8.4 — The dual-number module missing from the completion (advanced)</h3>
+<p>On <span class="math" data-tex="\(\operatorname{Vect}_k\)">\(\operatorname{Vect}_k\)</span>, take <span class="math" data-tex="\(A=k[\epsilon]/(\epsilon^2)\)">\(A=k[\epsilon]/(\epsilon^2)\)</span> and <span class="math" data-tex="\(T=A\otimes_k-\)">\(T=A\otimes_k-\)</span>. Show that <span class="math" data-tex="\(S=A/(\epsilon)\)">\(S=A/(\epsilon)\)</span> is not a retract of any free <span class="math" data-tex="\(T\)">\(T\)</span>-module, and hence is absent from the essential image of the completed free comparison.</p>
+<p><strong>Solution.</strong> A free <span class="math" data-tex="\(T\)">\(T\)</span>-module is <span class="math" data-tex="\(A\otimes_k V\simeq A^{(I)}\)">\(A\otimes_k V\simeq A^{(I)}\)</span>, choosing a basis <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span>. Its elements annihilated by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> are exactly <span class="math" data-tex="\(\epsilon A^{(I)}\)">\(\epsilon A^{(I)}\)</span>: in a finitely supported vector of coefficients <span class="math" data-tex="\(a_i+b_i\epsilon\)">\(a_i+b_i\epsilon\)</span>, multiplication by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> is zero exactly when each <span class="math" data-tex="\(a_i=0\)">\(a_i=0\)</span>.</p>
+<p>For an <span class="math" data-tex="\(A\)">\(A\)</span>-linear map <span class="math" data-tex="\(f:S\to A^{(I)}\)">\(f:S\to A^{(I)}\)</span>, the generator <span class="math" data-tex="\(1\)">\(1\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span> is annihilated by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, so the entire image lies in <span class="math" data-tex="\(\epsilon A^{(I)}\)">\(\epsilon A^{(I)}\)</span>. Any <span class="math" data-tex="\(A\)">\(A\)</span>-linear map <span class="math" data-tex="\(g:A^{(I)}\to S\)">\(g:A^{(I)}\to S\)</span> kills that submodule. Thus <span class="math" data-tex="\(gf=0\)">\(gf=0\)</span>, which cannot be <span class="math" data-tex="\(1_S\)">\(1_S\)</span>. No free retraction exists, even with an infinite-dimensional <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>Every object in the Karoubi free category maps to a retract of a free module, since the module category is idempotent complete by Proposition 5.1. It therefore cannot give <span class="math" data-tex="\(S\)">\(S\)</span>. In particular this monad cannot be separable, by Theorem 2.1. Concretely its counit at <span class="math" data-tex="\(S\)">\(S\)</span> is the quotient <span class="math" data-tex="\(A\to S\)">\(A\to S\)</span>. It has a vector-space section sending <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>, but no module section: the image of a possible section is annihilated by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> and therefore maps to zero in <span class="math" data-tex="\(S\)">\(S\)</span>. This checks the obstruction on the actual counit.</p>
+<h2 id="freely-accessible-references">Freely accessible references</h2>
+<ul>
+<li>Emily Riehl, <a href="https://emilyriehl.github.io/files/context.pdf">Category Theory in Context, author-hosted edition</a>, Section 5.2, for the Kleisli and free-module comparison.</li>
+<li>Paul Balmer, <a href="https://www.math.ucla.edu/~balmer/Pubfile/Sep-Triang.pdf">Separability and triangulated categories, author manuscript</a>, Section 3, for separable monads and separable forgetful functors.</li>
+</ul>
+</main></body></html>

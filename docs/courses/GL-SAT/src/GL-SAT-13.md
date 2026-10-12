@@ -5820,9 +5820,572 @@ The span proves nonlinear compatibility for this transferred shuffle square and 
 
 Theorems C.34.1.1-C.34.3.1 construct the actual positive tensor models and transferred shuffle maps. Lemma C.35.1.1 and Theorems C.35.2.1-C.35.3.1 give the perturbed homotopy, its two-summand square formula and all contraction-cube face identities. Lemma C.36.1.1 proves the nonlinear coproduct identity; Theorems C.36.2.1-C.36.3.1 construct the displayed actual interval and shuffle-cylinder span. Exercises C.35.4.1-C.35.4.2 check the tensor signs and a nonzero selected homotopy of a strictly commuting square. Editable SVG source.
 
+### C.37. The functor graph's module contraction and shared cores
+
+The cross arrows in a functor graph are a module, with the full source and target actions. A contraction of its underlying complex alone would not retain those actions. We use the entire two-level bar coalgebra, so its same contraction also controls both coactions of the cross-arrow sector.
+
+#### C.37.1. A strict graph model with its actual cross module
+
+**Theorem C.37.1.1.** Let \(\mathcal L\) be a finite full two-level corner of one actual minimal convolution graph from C.33.2–C.33.3, retaining its source and target cores and no reverse arrows. Its reduced core morphisms have degree at least two, and its cross morphisms have degree at least zero. The strict replacement
+\[
+ \mathcal U_{\mathcal L}=\Omega_S B_S\mathcal L
+ \tag{C.37.1}
+\]
+is a two-level dg category with the same objects. Its reduced core morphisms still have degree at least two; its cross morphisms have degree at least zero and may have degree one. Each degree is finite-dimensional. Its two cores are exactly the bar-cobar replacements of the original cores. Its cross corner, with its genuine dg left and right core actions, retains the original enhanced functor graph under the bar-cobar equivalence. All assertions restrict to full finite label corners.
+
+**Proof.** Apply the construction of C.34.1 relative to the scalar identity algebra \(S\). A composable reduced word either stays in one core or contains exactly one cross arrow. Both the bar differential and the cobar splitting retain its initial and final labels. In particular neither can introduce a reverse arrow or change a pure core word into a cross word. The strict model therefore has the asserted two levels and its core subcategories are exactly their own bar-cobar constructions.
+
+There is no reduced operation with output in \(S\). For a word staying in one core the degree argument of C.34.1 applies. A crossed word has distinct levels at its endpoints, so its output cannot be an identity. Thus the reduced relative construction is legitimate.
+
+A cobar word is a composable sequence of nonempty bar blocks. If its underlying word has \(r\) letters and its number of blocks is \(v\), its unsuspended degree is
+\[
+ \sum_{i=1}^{r}|a_i|-r+v.
+ \tag{C.37.2}
+\]
+For a pure core word this is at least \(r+v\ge2\), as before. For a crossed word, the other \(r-1\) letters are core letters of degree at least two and the cross letter has degree at least zero. Consequently its degree is at least
+\[
+ 2(r-1)-r+v=r+v-2\ge0.
+ \tag{C.37.3}
+\]
+Degree zero is possible only for \(r=v=1\), with an original degree-zero cross letter. Such a letter is closed: minimality kills its unary differential and a one-letter block has no splitting. The lower bound also proves finiteness in each degree. At fixed degree it bounds \(r\) and \(v\); (C.37.2) then bounds every underlying letter degree, and the original finite corner has degreewise finite mapping spaces.
+
+The canonical bar-cobar comparison is the consecutive-block map of C.34.1. The fixed-underlying-word cut contraction used there applies unchanged to a crossed word: its \(r-1\) possible cuts form the same exterior cube, regardless of the letters' degrees. At \(r\ge2\) the first-cut contraction makes that cube acyclic; at \(r=1\) its surviving block is the original letter. For each bounded output degree (C.37.3) gives a finite filtration by underlying length. The original bar operations lower that length, while the splitting differential preserves it. The finite filtered argument of C.34.1 therefore proves the comparison is a quasi-isomorphism on the cross corner as well as the cores.
+
+The comparison is a map of the full relative bar coalgebras, not separate unrelated maps on the three mapping spaces. Its crossed-word components are precisely the higher left and right module components; the chain coalgebra equation is their entire module identity. Thus its restriction compares the genuine dg cross module of \(\mathcal U_{\mathcal L}\) with the original enhanced cross module. Recovery of the functor on the finite envelope is C.33.2's represented-module evaluation. This retains the actual convolution functor's graph, including its higher source action.
+
+Finally all words, cuts and operations use only their existing intermediate and endpoint labels. A full finite corner includes every original mapping space between its selected labels. Restriction of these formulas is therefore the same construction in that corner. Choose the original minimal models and contractions once on the countable graph system as in C.33.3; their shared cores and these full-corner restrictions remain shared in (C.37.1). No independent copy of an output comparison is introduced. ∎
+
+#### C.37.2. The cylinder satisfies both cross-module coactions
+
+**Theorem C.37.2.1.** In the reduced relative bar of the strict graph (C.37.1), let \(C_o,C_i\) be the target and source core bars, and let \(Z\) be the sector of words containing exactly one cross arrow. Deconcatenation gives commuting left and right coactions
+\[
+ \lambda:Z\longrightarrow C_o\otimes_S Z,\qquad
+ \rho:Z\longrightarrow Z\otimes_S C_i .
+ \tag{C.37.4}
+\]
+Transfer the entire graph using mapping-complex contractions chosen once on its cores. The perturbed retract \(E=I_\infty P_\infty\) and homotopy \(H=H_\infty\) preserve these three sectors. With restrictions \(E_o,E_i,E_Z\) and \(H_o,H_i,H_Z\), the actual cross-module homotopy satisfies
+\[
+ \begin{aligned}
+ \lambda H_Z&=(H_o\otimes1+E_o\otimes H_Z)\lambda,\\
+ \rho H_Z&=(H_Z\otimes1+E_Z\otimes H_i)\rho .
+ \end{aligned}
+ \tag{C.37.5}
+\]
+The whole-graph cylinder \(\Psi:J\otimes B_S\mathcal U_{\mathcal L}\to B_S\mathcal U_{\mathcal L}\) restricts to an actual simultaneous module cylinder on \(Z\), over its same source and target core cylinders. It retains the transferred higher module actions as well as these nonlinear coactions.
+
+**Proof.** Order a bar word in composition order, so target-core letters are on the left of its single cross letter and source-core letters are on the right. Cutting it produces either a target-core prefix followed by a crossed suffix or a crossed prefix followed by a source-core suffix. These are exactly the two maps in (C.37.4). Cutting twice proves both individual coassociativity identities. Cutting once on each side of the cross letter proves
+\((1\otimes\rho)\lambda=(\lambda\otimes1)\rho\),
+with the tensor associativity identification. The bar coderivation commutes with both coactions in the usual differential rule, because it is the coderivation of the whole graph. In particular all terms merging a cross letter with neighbouring core letters are retained. Those terms are its module actions.
+
+Choose contractions on each mapping complex and use the normalized tensor-bar contraction A.3.1.1. A tensor homotopy changes one letter within its same mapping complex and projects preceding letters there; it cannot move a letter's endpoints or remove a cross letter. The unary differential has the same property. The multiplication perturbation merges adjacent arrows; when the block includes the cross arrow its output is still a cross arrow, and all other merges stay in one core. The finite perturbation sums consequently preserve the three sectors. On a pure core their formulas are exactly the chosen core formulas. This proves the shared-core and sector assertions for \(I_\infty,P_\infty,E,H\).
+
+The proof of C.36.1 uses the normalized tensor-bar coproduct, the coderivation identity for the perturbation and the nilpotent length recursion. It does not use positivity. It therefore applies to this full graph bar and gives
+\[
+ \Delta H=(H\otimes1+E\otimes H)\Delta.
+ \tag{C.37.6}
+\]
+Restrict (C.37.6) first to the target-core/cross summand of the coproduct and then to its cross/source-core summand. These two projections are (C.37.5), with all tensor signs unchanged. Similarly, the coalgebra identity for \(E\) projects to
+\(\lambda E_Z=(E_o\otimes E_Z)\lambda\)
+and
+\(\rho E_Z=(E_Z\otimes E_i)\rho\).
+
+C.36.2 now gives the full dg coalgebra cylinder. Write its sector restrictions as \(\Psi_o,\Psi_i,\Psi_Z\). On \(J\otimes Z\) its left-coaction identity is the equality of the following two actual maps:
+\[
+ \lambda\Psi_Z
+  =(\Psi_o\otimes\Psi_Z)\,
+       \tau\,(\Delta_J\otimes\lambda),
+ \tag{C.37.7}
+\]
+where \(\tau\) moves the second \(J\)-factor past the first core factor using the Koszul sign. Its right identity is
+\[
+ \rho\Psi_Z
+  =(\Psi_Z\otimes\Psi_i)\,
+       \tau\,(\Delta_J\otimes\rho).
+ \tag{C.37.8}
+\]
+These are restrictions of the whole-graph coalgebra equation. At either vertex they are the corresponding retract or identity equations. On the edge, the two terms in
+\(\Delta e=e\otimes v_1+v_0\otimes e\)
+give exactly the two terms on each line of (C.37.5). Thus the same interval parameter controls the cross sector and each adjacent core. Replacing those parameters by independent unspecified homotopies would lose (C.37.7)–(C.37.8).
+
+Finally \(I_\infty,P_\infty\) intertwine the full bar coderivations. Their restriction to crossed words consequently includes every transferred operation having a cross input, with all source and target blocks. That is the complete enhanced module identity; its higher terms are not dropped when the underlying mapping complex is replaced by its cohomology. Together with (C.37.7)–(C.37.8) this proves the simultaneous module-cylinder assertion. ∎
+
+#### C.37.3. Finite windows include the degree-zero cross arrow
+
+**Theorem C.37.3.1.** For the strict two-level graph above, assign a bar word the weight
+\[
+ W(w)=|w|+\chi(w),\qquad
+ \chi(w)=
+ \begin{cases}1&\text{if \(w\) is crossed},\\0&\text{if \(w\) stays in one core}.
+ \end{cases}
+ \tag{C.37.9}
+\]
+Coaugmentations have weight zero. At a finite label corner, words of \(W\le D\) span a finite subcoalgebra for each \(D\ge0\). A pure core word has length at most \(D\); a crossed word has length at most \(D+1\). The bar coderivation raises \(W\) by one. The transfer inclusions, projections and retracts preserve \(W\); the homotopy lowers \(W\) by one. Its interval and tensor-cube cell with \(q\) edges lowers summed weight by \(q\).
+
+These are actual invariant windows for relative degree-zero coalgebra coordinates and their inverses, and for parameterized marked maps between these bars once their degree and graph-sector types are fixed. Their restriction and covariance equations are finite polynomial equations. This supplies the module-cylinder window input; it does not itself supply the full cross-arity marked comparison over an extension field.
+
+**Proof.** A core letter has suspended degree at least one. In a crossed word the single cross letter has suspended degree at least minus one; adding the one in (C.37.9) makes its weight its unsuspended degree, which is at least zero. Thus \(W\) is the sum of nonnegative letter weights, with every core letter contributing at least one. If the word has \(r\) letters, a pure core word has \(W\ge r\), while a crossed word has \(W\ge r-1\). This proves the length bounds.
+
+Each cut divides the one cross indicator between its two pieces, so their weights sum exactly to the input weight. Both pieces have nonnegative weight. Deconcatenation therefore stays in the window in each tensor factor. The degree of each letter is bounded by \(D+1\); C.37.1's degreewise finiteness and the length bound give a finite-dimensional window. Its cross sector includes the actual suspended degree-zero cross arrow: that letter has cohomological degree minus one and weight zero. It is retained, not removed by a positivity convention.
+
+Every coderivation term retains the word's endpoints and hence its cross indicator, and has degree one. Its output weight is therefore \(W+1\). The transfer maps retain that same indicator and have degree zero, giving exact weight preservation between strict and minimal graph bars when both use (C.37.9). A homotopy term has degree minus one and retains the indicator, so its output weight is \(W-1\). Terms whose required weight is negative vanish. Tensor products give the summed-weight and \(q\)-edge claims, with their already fixed graded evaluation signs.
+
+A relative degree-zero coalgebra coordinate map preserves labels and endpoints, so it preserves each word's cross indicator. Homogeneity then proves exact preservation of (C.37.9), including on its finite length-recursive inverse. A normalized coordinate with identity one-letter component is unitriangular in a basis ordered by length: every other component merges a nonempty block to a shorter output. Its coalgebra conditions are polynomial on the finite matrices of each window; inverse and composition are their finite matrix operations. Consequently these coordinates form reduced closed subgroups of finite unitriangular groups. Full label restriction and smaller-weight restriction are actual group homomorphisms.
+
+More generally retain a parameterized map
+\(T:J^{\otimes r}\otimes\bigotimes_j B_j\to B_o\)
+with a fixed graph-sector type. For a basis parameter having \(q\) edges, its coefficient map has degree minus \(q\). If its output cross indicator is \(\chi_o\) and its input indicators are \(\chi_j\), every output term has
+\[
+ W_o=\sum_j W_j-q+\chi_o-\sum_j\chi_j.
+ \tag{C.37.10}
+\]
+This exact formula, with a separately specified sector type, bounds all output windows. For the graph cylinder the indicator difference is zero. For (C.37.7)–(C.37.8), the coproduct distributes exactly one cross indicator, so it is zero again. The cylinder and its module-coaction equations therefore use precisely the retained windows just proved.
+
+For any selected finite family of such maps, impose covariance
+\[
+ g_oT=T^0(1_{J^{\otimes r}}\otimes\bigotimes_jg_j)
+ \tag{C.37.11}
+\]
+on the specified finite input windows, retaining the output bound (C.37.10). Matrix entries of both sides are polynomials in the finite coordinate entries; \(J^{\otimes r}\) has \(3^r\) basis parameters. Inputs stay in their windows under every \(g_j\) and inverse. Restricting to smaller full label and weight windows consequently retains the same equations, without an unverified tensor closure of the label set.
+
+For two solutions \(g,h\), substitute (C.37.11) for \(g\), then for \(h\). On these invariant domains it gives
+\[
+ a_o T^0=T^0(1_{J^{\otimes r}}\otimes\bigotimes_j a_j),
+ \qquad a_j=h_jg_j^{-1}.
+ \tag{C.37.12}
+\]
+The converse substitution shows that such a target stabilizer sends solutions to solutions. Composition and inverse preserve (C.37.12) by that same finite-domain calculation. If a complete selected presentation has a solution, its reduced solution variety is thus a torsor under the closed unitriangular stabilizer, as in C.30.3. This is a verified equation-domain statement for the maps actually retained; constructing all convolution-module grafting and cross-arity maps and their complete extension-field solution remains necessary before applying it to finish tensor descent. ∎
+
+#### C.37.4. The shared parameter and the smallest cross window
+
+**Exercise C.37.4.1.** Take a graph with a source and a target object, reduced core arrows \(a,b\) of degree two, and a cross arrow \(z\) of degree zero. Assume the reduced core squares vanish and \(bz=za=0\). Describe the crossed words of weight at most one and both coactions of the word \(sz|sa\). Can this word be removed from the finite module window on the ground that it has cohomological degree zero?
+
+**Solution.** Suspended \(a,b\) have degree one and suspended \(z\) has degree minus one. The crossed words of weight at most one are exactly
+\[
+ sz,\qquad sb|sz,\qquad sz|sa.
+ \tag{C.37.13}
+\]
+Their cohomological degrees are minus one, zero and zero; their weights are zero, one and one. Using the endpoint coaugmentations,
+\[
+ \lambda(sz|sa)=1_o\otimes(sz|sa),\qquad
+ \rho(sz|sa)=(sz|sa)\otimes1_i+sz\otimes sa.
+ \tag{C.37.14}
+\]
+The last term is an actual right-coaction term in the retained weight window. Deleting the degree-zero word would remove part of this module domain. The finite construction bounds positive core letters together with the single cross letter; it does not assert that every crossed bar letter or word has positive cohomological degree.
+
+**Exercise C.37.4.2.** Write the edge value of (C.37.7) on a homogeneous cross word \(z'\) whose left coaction is \(\sum c\otimes z''\). Identify why giving the cross and target core homotopies unrelated interval parameters fails to specify this equation.
+
+**Solution.** The \(e\otimes v_1\) term contributes \(H_oc\otimes z''\). The \(v_0\otimes e\) term moves its degree-minus-one edge past \(c\), and therefore contributes \((-1)^{|c|}E_oc\otimes H_Zz''\). The equation is
+\[
+ \lambda H_Zz'
+    =\sum\bigl(H_oc\otimes z''
+                 +(-1)^{|c|}E_oc\otimes H_Zz''\bigr).
+ \tag{C.37.15}
+\]
+These are the graded evaluations of the two terms on the first line of (C.37.5). Both terms arise from the coproduct of one common edge. Two independent edges have no specified diagonal parameter map and no specified pair of endpoints giving this coproduct, so their separate chain-homotopy equations do not imply (C.37.15). The whole-graph cylinder supplies exactly that missing simultaneous data.
+
+### C.38. Nested convolution modules and their actual grafting
+
+To compose two represented graph modules, the bar must retain words with two cross arrows. A pair of separately transferred modules omits the operation merging those arrows. The following three-level graph retains that operation, its higher transfers and their common core restrictions.
+
+#### C.38.1. The strict three-level graph of a nested convolution
+
+**Theorem C.38.1.1.** Fix two enhanced ordered convolution operations
+\(F:\mathcal A\to\mathcal B\) and
+\(G:\mathcal B\to\mathcal C\), where \(\mathcal A,\mathcal B\) are actual finite-arity IC input categories and \(\mathcal C\) is an IC input or output category. For example, \(F\) convolves the blocks of a selected ordered partition, and \(G\) convolves its resulting tuple. They admit compatible strict dg representatives \(F^\sharp,G^\sharp\) on the positive bar-cobar cores. There is a genuine three-level dg graph with cross modules
+\[
+ \begin{aligned}
+ M_{10}(b,a)&=\operatorname{Hom}_{\mathcal U_{\mathcal B}}(F^\sharp a,b),\\
+ M_{21}(c,b)&=\operatorname{Hom}_{\mathcal U_{\mathcal C}}(G^\sharp b,c),\\
+ M_{20}(c,a)&=\operatorname{Hom}_{\mathcal U_{\mathcal C}}(G^\sharp F^\sharp a,c).
+ \end{aligned}
+ \tag{C.38.1}
+\]
+Its actual cross composition is
+\[
+ M_{21}(c,b)\otimes M_{10}(b,a)\longrightarrow M_{20}(c,a),
+ \qquad m\otimes n\longmapsto m\,G^\sharp(n).
+ \tag{C.38.2}
+\]
+It represents the original nested convolution. Its core reduced degrees are at least two and its cross mapping complexes have degrees at least zero. Each degree in every selected finite corner is finite-dimensional.
+
+**Proof.** Use the fixed normalized minimal models and represented functor actions of C.33.2–C.33.3. The object images of these ordered convolutions are perverse finite sums of simple IC objects. Choose their actual degree-zero decompositions in the finite additive IC envelope and their actual enhanced equivalences to those sums. Transporting a functor through the chosen mapping contractions gives its whole \(A_\infty\) functor: in bars it is the composite of the inclusion, the original functor bar map and the projection. Their chain coalgebra equations prove its functor equation. The fixed object equivalences provide the same construction when an image is a finite sum. Scalar identities are normalized as in A.3.1.1; finite multiplicity matrices use C.30.1's relative bimodule splitting. Thus the two functors share one chosen minimal model on \(\mathcal B\).
+
+The finite sums are kept in the additive envelopes; the graph cores can still be labelled by the original simple objects. The relative bar-cobar construction commutes with these finite multiplicity matrices. To check this, write a multiplicity block as
+\(\operatorname{Hom}_k(V_j,V_i)\otimes M_{ij}\)
+and use the full matrix algebras on the intermediate multiplicity spaces as the coefficient algebra. In a balanced tensor of composable blocks, expand each matrix in elementary units. If \(\beta\ne\gamma\), balancing through \(E_{\beta\beta}\) gives
+\(E_{\alpha\beta}\otimes E_{\gamma\delta}=0\).
+If \(\beta=\gamma\), for any fixed intermediate index \(r\) balancing gives
+\[
+ E_{\alpha\beta}\otimes E_{\beta\delta}
+   =(E_{\alpha r}E_{r\beta})\otimes E_{\beta\delta}
+   =E_{\alpha r}\otimes E_{r\delta}.
+\]
+Matrix multiplication consequently identifies this tensor product with the outer rectangular matrix space; its inverse inserts \(r\), and the displayed relation proves independence of that choice. Repeating this at all intervening multiplicity blocks leaves exactly the outer matrix unit and the balanced word of original simple mapping blocks. This verifies the identification on every nonempty bar block and every cobar word. Cutting or merging a block is matrix multiplication with the same intermediate index, so both differentials agree. Empty blocks give the multiplicity identities. Thus the additive relative construction is the finite-matrix extension of the positive simple core construction, and using it introduces no extra reduced degree-zero core arrows.
+
+For a normalized bar functor \(f:B\mathcal M\to B\mathcal N\), its cobar map is a strict dg functor, allowing this finite-matrix interpretation for its object images. On a free cobar generator it is \(s^{-1}c\mapsto s^{-1}f(c)\), extended multiplicatively and with its prescribed object and coefficient maps. The coderivation equation for \(f\) makes this extension commute with the internal bar differential; its coproduct equation makes it commute with the splitting differential. These are the two summands of the cobar differential, so it is a dg functor. Applying the construction twice gives
+\(\Omega(gf)=(\Omega g)(\Omega f)\)
+on generators and hence everywhere. Naturality of the consecutive-block comparison from C.34.1 follows by applying \(f\) to each same block; the sums before and after it are the same coalgebra-composition sum. Consequently the resulting \(F^\sharp,G^\sharp\), and their strict composite represent \(F,G,GF\) under the core equivalences.
+
+Take the graph cores to be these dg categories, with no arrows down a level. Define the three cross modules by (C.38.1), using precomposition with the indicated strict functor for a right action and ordinary composition for a left action. Define the remaining possible two-cross product by (C.38.2). Strict functoriality gives
+\[
+ (m\,G^\sharp(n))\,G^\sharp F^\sharp(a)
+      =m\,G^\sharp(nF^\sharp(a)),\qquad
+ c(m\,G^\sharp(n))=(cm)\,G^\sharp(n).
+ \tag{C.38.3}
+\]
+The middle-core identity is
+\((mG^\sharp(b))G^\sharp(n)=mG^\sharp(bn)\).
+Together with ordinary core associativity these check every composable triple: a string can make at most the two strict level increases. The dg Leibniz rule holds because \(G^\sharp\) is a dg functor and target composition has that rule. Units act by the actual represented identity maps. This proves it is a dg category, including the grafting product.
+
+The core bar-cobar equivalences compare its modules with the original represented enhanced functors. The naturality just proved compares (C.38.2) with their original enhanced composition: it is evaluation after applying \(G\) to the first represented arrow. C.33.2's graph recovery therefore recovers the nested functor, not only its action on mapping cohomology.
+
+C.34.1 gives reduced core degree at least two. Finite additive sums introduce only the prescribed degree-zero multiplicity maps; after passing to their relative coefficient algebra no degree-one reduced core term appears. Each cross mapping complex is a finite matrix of mappings in a positive target core between finite IC sums. It is nonnegative and degreewise finite. Their cohomology is likewise nonnegative and even by C.33.1 and finite direct sums. These arguments use only finitely many object images for a chosen finite corner, and hence retain degreewise finiteness there. ∎
+
+#### C.38.2. Full graph cylinders retain the merging of two cross arrows
+
+**Theorem C.38.2.1.** For the graph of C.38.1, the full normalized bar transfer retains the grafting operation and all its higher module compatibilities. Its whole-graph interval cylinder has the same coproduct equation at every intermediate level, including the middle core. Assign heights \(0,1,2\) to its source, middle and target levels. For a composable bar word \(w\), put
+\[
+ W_h(w)=|w|+h(\text{left endpoint})-h(\text{right endpoint}).
+ \tag{C.38.4}
+\]
+Then \(W_h\le D\) is a finite subcoalgebra at every finite corner, with word length at most \(D+2\). Its coordinate maps and inverses preserve this weight, its coderivation raises it by one, and its contraction homotopy lowers it by one. These bounds also hold with \(D+H\) for a finite directed graph of height range \(H\) and the same reduced core/cross degree bounds.
+
+**Proof.** Apply A.3.1.1 to the entire dg graph. Choose its core contractions once; on each cross mapping complex choose its own normalized contraction to mapping cohomology. Tensor extension followed by the finite length-lowering perturbation supplies the full bar inclusion, projection, homotopy and transferred coderivation.
+
+Here it is essential to retain the full bar. In its coderivation the term on two consecutive cross arrows is, with the suspended multiplication sign of A.3,
+\[
+ b_2(sm|sn)=(-1)^{|sm|}\,s\!\left(mG^\sharp(n)\right).
+ \tag{C.38.5}
+\]
+It sends a word through the middle level to a direct source-to-target cross letter. The recursion consequently mixes these two kinds of words. We impose no assertion that their separate word counts are invariant. It preserves their endpoints and their whole graph corner. The transferred coderivation on that corner includes (C.38.5) and all the perturbation terms obtained by grafting with intervening core and cross homotopies. Its square is zero by A.3.1.1; projecting that identity to a word of any chosen source/middle/target pattern gives exactly its higher module-grafting identities. Thus they are the operations of the actual full transfer.
+
+C.36.1's proof again applies without a positivity requirement and gives
+\(\Delta H=(H\otimes1+E\otimes H)\Delta\).
+Project this equation to the cut through any particular intermediate object, including one in the middle core. It is the same simultaneous equation on the corresponding two graph corners. It includes the cancellations where a perturbation has merged the two cross arrows. C.36.2 gives the full interval-cylinder map, and its projected coproduct equations retain those same cancellations. On a pure core this cylinder restricts to its one chosen core cylinder. Hence the modules and their grafting share those core data.
+
+For the finite bound, a pure core letter contributes its suspended degree, at least one, to (C.38.4). A cross letter contributes its suspended degree plus its positive height jump. Its unsuspended degree is at least zero, so this contribution is nonnegative. The total number of cross letters is at most the height range \(H\). A word of weight \(W_h\) therefore has at most \(W_h\) core letters and at most \(H\) cross letters, giving length at most \(W_h+H\). At fixed weight the suspended degree of a letter is bounded above by \(D\), and below by minus one. Degreewise finiteness of each mapping space gives a finite number of basis words.
+
+A cut distributes the endpoint height difference additively, and all piece weights are nonnegative. It therefore defines a finite subcoalgebra. Every operation term retains endpoints. Homogeneous degree zero then preserves \(W_h\), degree one raises it by one and degree minus one lowers it by one. This proves the claims for coordinates, their length-recursive inverses, the coderivation and the transfer homotopy. The inclusion and projection between strict and minimal graph bars use the same height formula and preserve it exactly. In particular merging two degree-zero, height-one cross arrows has input cohomological degree minus two and weight zero; its degree-one output is a direct cross letter of suspended degree minus one and height jump two, of weight one. Both sides of this actual grafting differential lie in the required successive windows. The general height-range assertion follows from the same calculation. ∎
+
+#### C.38.3. Rational descent includes the nested module actions
+
+**Theorem C.38.3.1.** There is a countable compatible rational system of graph comparisons retaining all selected finite-arity nested ordered convolution modules, their actual grafting products and the higher module operations transferred from their full directed graphs. Its formality coordinates have identity leading component. The comparisons share the same output corner and the same corner for each input arity.
+
+This compares the nested represented operations along their input-corner comparisons. It still requires the coherent common-input identifications \(g_n\simeq g_1^{\otimes n}\), with their complete marked unit, permutation and substitution relations, before it is a strong monoidal comparison.
+
+**Proof.** For a fixed maximum arity, retain the actual functors which convolve the blocks of each selected ordered partition and the final ordered convolution to the output category. Omit the all-singleton partition as a strict arity-decreasing edge; its functor is the identity and is kept as a unit identification. A nontrivial block partition decreases arity, so assign height minus \(n\) to input arity \(n\) and height zero to the shared output. Every retained nonidentity edge raises height.
+
+First use the strict representatives of C.38.1. Retain every composable string of these edges as a labelled functor, represented by its strict composite. Different strings remain different labels even when a geometric associativity map identifies their functors; no unsupported strict equality between those maps is imposed. There are finitely many strings for a fixed maximum arity, since each input edge strictly decreases arity. Between two levels take the direct sum of the represented cross modules for the strings with those endpoints. Compose by concatenating the strings and the evaluation formula (C.38.2). Strict composition of the functors makes concatenation associative; (C.38.3) verifies its module actions. This gives a finite directed graph of the nested operations, with one common core at each arity and one output core.
+
+At a stage retain finitely many source tuples and target simple labels. Include the finitely many simple summands of all images needed along the selected strings, in order to keep their representing objects in the finite envelope. This enlargement is finite because the maximum arity, number of strings and each individual IC decomposition are finite. It does not require closure under arbitrary additional tensor products. Take full corners of the resulting cores and full represented cross mapping spaces. Choose their contractions once on the countable original spaces, retaining the shared cores, and restrict them to these corners.
+
+Transfer the full graph as in C.38.2. Its minimal core cohomology has reduced degrees at least two and its cross cohomology is nonnegative, even and degreewise finite; its degree-zero reduced cross arrows strictly raise height. Hence it satisfies C.32.1–C.32.3. Full-corner embeddings retain all existing words and their intermediate labels. C.38.2 also gives the direct height-weight verification of the actual strict graph's module and grafting windows. Both descriptions retain the same entire bar operations; neither replaces the two-cross part by two independent graph modules.
+
+Extend coefficients to C.29's finite \(E/\mathbf Q_\ell\). C.33.1 compares the actual rational operation diagrams with their \(E\)-coefficient versions. C.29's complete enhanced symmetric equivalence carries all the selected original functors to the corresponding ordinary tensor functors on free graded \(\operatorname{Sym}_E(\mathfrak h[-2])\)-modules. It carries their strict composites, represented actions and evaluations to the corresponding composites, actions and evaluations. Their graded core and cross mapping spaces have zero differential. Concatenation of string labels is retained, so the simultaneous graph comparison preserves the grafting products, including those in (C.38.2).
+
+Transport through the fixed graph contractions. The resulting relative \(A_\infty\) comparison with the ordinary graded graph has an invertible leading graded graph functor. Compose with that graded functor's inverse to make the leading component the identity. The inverse preserves the level, object and string labels and all ordinary graded graph products. Normalization preserves the coefficient identities.
+
+Retain the string labels also in the coordinate restrictions. Give a pure core word the empty string, and a crossed word the concatenation of its cross-letter string labels in composition order. The original differential, all chosen mapping contractions and the transferred bar coderivation preserve this string grade; a cut divides it into the two corresponding strings. On a finite window impose that every coordinate component has the input word's concatenated string as its output grade. These are linear zero-entry equations on the finite matrices. Composition preserves the grade and the length-recursive inverse does too, so they define closed subgroups of the same unitriangular coordinate groups. The extension-field graph comparison just constructed respects these labels and their concatenation. Its inverse and normalization consequently respect this grade. The difference of two such solutions remains in this subgroup; the intertwining torsor calculation and the compatible-point proof of C.32.3 therefore apply verbatim within it. This prevents a higher coordinate from silently replacing one represented string by a different one.
+
+C.32.3 now descends this whole string-graded directed graph over \(\mathbf Q\). Enumerate all arities, partitions, finite strings, input tuples and target labels; include the previous finite stage's labels at each enlargement. The degree-zero heights are globally compatible, and each finite stage has finite height range. The fixed word formulas, contractions, string grading and full-corner embeddings give the compatible restriction maps required there. Its compatible torsor points yield one comparison on the countable entire graph. Its restriction to every shared core is consequently the same coordinate map wherever that core occurs. Graph recovery C.33.2 identifies the represented nested functors and their transferred grafting data along those core comparisons.
+
+The source corner at arity \(n\) is still compared by its map \(g_n\). Descent of this entire graph does not force \(g_n\) to be the tensor power of \(g_1\); the counterexample in C.33.5 still shows why that further condition matters. Moreover a retained string label is not automatically identified with a different flattened label by the required geometric natural transformation. Those common-input, unit, permutation and substitution identifications, with their higher compatibility, are the remaining marked system. The theorem proves the actual nested module-grafting part and its rational comparison, without substituting it for that full marked tensor comparison. ∎
+
+#### C.38.4. A two-cross graft and its directed weight
+
+**Exercise C.38.4.1.** Take \(F=G=1\) on the one-object dg category with only its scalar identity. Write its three-level graph's reduced arrows \(z_{10},z_{21},z_{20}\). Compute the reduced bar differential of \(sz_{21}|sz_{10}\), its height weight and the weight of its output.
+
+**Solution.** All three arrows have degree zero and
+\(z_{21}z_{10}=z_{20}\) by (C.38.2). All other reduced products are zero by their endpoints. The suspended arrows have degree minus one. Formula (C.38.5) gives
+\[
+ b_2(sz_{21}|sz_{10})=-sz_{20}.
+ \tag{C.38.6}
+\]
+The input has degree minus two and total height jump two, so weight zero. Its output has degree minus one and the same total height jump two, so weight one. Removing the two-cross word, or demanding that its differential stay in its weight-zero window, would omit this actual grafting operation. The valid coderivation equation uses input window \(D-1\) and output window \(D\).
+
+**Exercise C.38.4.2.** For a four-level scalar identity graph, check the square-zero bar identity on \(sz_{32}|sz_{21}|sz_{10}\), keeping the signs and the two different intermediate products.
+
+**Solution.** The differential is
+\[
+ -sz_{31}|sz_{10}+sz_{32}|sz_{20}.
+ \tag{C.38.7}
+\]
+The first merge has sign minus one. For the second, the preceding suspended arrow and the first arrow of the merged block each have degree minus one, so their sum gives sign plus one. Applying the differential again gives \(+sz_{30}-sz_{30}=0\), by ordinary graph associativity. Each height-one letter has weight zero; the two outputs of (C.38.7) have weight one and the final direct letter has weight two. Thus this nested identity involves three successive windows. Its two cancelling terms are the two genuine grafts through different intermediate levels, and both are retained in the whole directed bar.
+
+![One interval parameter controls both source and target module coactions; a three-level functor graph retains the actual nested convolution product m G(n), its two-cross bar merge and the endpoint-height finite windows](assets/shared-core-module-grafting.png)
+
+Theorems C.37.1.1-C.37.3.1 prove the actual strict functor graph, simultaneous shared-core module cylinder and finite crossed-word windows. Theorems C.38.1.1-C.38.3.1 construct nested convolution grafting, its whole directed bar transfer and rational nested-string graph descent. Exercises C.37.4.1-C.38.4.2 retain the degree-zero cross arrow, common parameter signs and two-/three-cross merging identities. Editable SVG source.
+
+### C.39. Common-input modules over tensor products of one bar
+
+The common-input condition can be built into the module coordinates. Instead of choosing an independent comparison on each arity core, pull its represented module back to the tensor product of the single chosen IC bar. The following constructions retain actual module differentials; their completed geometric substitution presentation still has to be verified.
+
+#### C.39.1. Actual pullback of a cofree graph module
+
+**Lemma C.39.1.1.** Let \(C,B,A\) be counital dg coalgebras, with compatible relative coefficient algebras, and let \(f:A\to B\) be a chain coalgebra map. Suppose \(Z=C\otimes N\otimes B\) is a dg bicomodule whose graded coactions are the cofree left and right coactions. Its differential may have all the higher module terms. Then its cotensor pullback
+\[
+ Z_f=Z\square_B A
+ =\ker\bigl(\rho_Z\otimes1-1_Z\otimes(f\otimes1)\Delta_A\bigr)
+       \ \subset Z\otimes A
+ \tag{C.39.1}
+\]
+is canonically the graded bicomodule \(C\otimes N\otimes A\), with an actual induced differential retaining those higher terms.
+
+For the transferred convolution graph, take \(C=B\mathcal M\), \(B=B\mathcal M_n\), \(A=(B\mathcal M)^{\otimes n}\), and \(f=\sigma_n\) from C.34.3. This gives its actual module over tensor powers of the one rational core bar. No independent arity coordinate map is needed to define that module.
+
+**Proof.** The left \(B\)-coaction on \(A\) is \((f\otimes1)\Delta_A\). Its chain, counit and coassociativity identities follow directly from those for \(f\) and \(\Delta_A\). Define
+\[
+ \iota(c\otimes n\otimes a)
+       =\sum c\otimes n\otimes f(a_{(1)})\otimes a_{(2)} .
+ \tag{C.39.2}
+\]
+Coassociativity of \(A\) and the coalgebra equation for \(f\) show that this lies in the equalizer (C.39.1). Define \(\pi\) on that equalizer by applying the counit to its \(B\)-factor. Counitality gives \(\pi\iota=1\).
+
+Conversely, write an element of the equalizer as a finite sum of tensors in \(C\otimes N\otimes B\otimes A\). Apply the counit to the first \(B\)-factor in its equalizer equation, whose ambient space is \(C\otimes N\otimes B\otimes B\otimes A\). On the right-coaction side this recovers the original tensor. On the other side it gives exactly \(\iota\pi\). Thus \(\iota\pi=1\), proving the claimed graded isomorphism. This is a cofree-comodule calculation, not an assertion that arbitrary cotensor pullback is exact.
+
+Both arrows defining (C.39.1) are chain maps for the tensor differential on \(Z\otimes A\), by the dg right-coaction identity for \(Z\) and the dg left-coaction identity for \(A\). Their equalizer is therefore a subcomplex. Transport that differential through the proved graded isomorphism \(\iota\); it is square zero. The left \(C\)-coaction and right \(A\)-coaction preserve the equalizer, by the two coassociativity identities and the commuting bicomodule coactions. They remain chain maps, so this is an actual dg bicomodule.
+
+In particular its differential is obtained by applying the full original \(Z\)-differential to the \(f(a_{(1)})\) terms in (C.39.2), adding the differential of \(a_{(2)}\), and then applying \(\pi\). This retains every higher source and target module operation of \(Z\) and every component of \(f\). It is not the differential obtained by taking only their leading maps.
+
+The crossed-word sector of a transferred minimal functor graph has graded form
+\(B\mathcal M\otimes sM_n\otimes B\mathcal M_n\);
+its coderivation supplies precisely such a dg bicomodule. C.34.3 proved that \(\sigma_n\) is an actual chain coalgebra map. Substitution into (C.39.1) consequently produces the stated rational common-input module. All maps retain coefficient and endpoint labels. The lemma constructs that pullback; a claim that it alone recovers the full geometric strong monoidal comparison still requires the tensor-input comparison and complete higher grafting presentation. ∎
+
+#### C.39.2. A finite coordinate group with only one core comparison
+
+**Theorem C.39.2.1.** Let \(C=B\mathcal M\) be the reduced rational IC bar, with its nonempty letters in positive suspended degrees and each degree finite at a finite label corner. For each selected arity let
+\[
+ Z_n=C\otimes sM_n\otimes C^{\otimes n}
+ \tag{C.39.3}
+\]
+be one common-input module as in C.39.1, where the unsuspended \(M_n\) is nonnegative and degreewise finite. The relative degree-zero coordinate pairs consist of one normalized core coalgebra coordinate \(g\) and invertible module coordinates \(T_n\), over \(g\) on the left and \(g^{\otimes n}\) on the right, whose component with no surrounding bar letters is the identity of \(M_n\).
+
+At a finite label and weight window these pairs form a reduced closed subgroup of a finite unitriangular group. Their composition, inverse and restrictions are genuine coordinate-group operations. Every selected source/target module differential equation, on input weight at most \(D-1\), has finite polynomial coefficients in output weight at most \(D\). Nonempty simultaneous solution varieties are torsors under their target stabilizers. Additional covariance equations have that assertion when their actual operation domains and output windows are retained.
+
+**Proof.** For \(c\otimes sm\otimes a\), where \(a\) is a tensor of \(n\) bar words, put
+\[
+ W=|c|+|sm|+|a|+1=|c|+|m|+|a|.
+ \tag{C.39.4}
+\]
+All contributions on the last expression are nonnegative. Every surrounding core letter contributes at least one. Therefore a weight-\(D\) window has at most \(D\) surrounding letters and bounds the degree of \(m\) by \(D\); finite labels and degreewise finiteness make it finite-dimensional. Its two coactions cut the surrounding words and distribute their weights additively. They stay in finite windows. The analogous core window is finite by C.30.2.
+
+Write \(g_n=g^{\otimes n}\), restricted to the selected factor-label corners. A bicomodule map \(T_n\) over \(g,g_n\) is determined by the central Taylor map
+\(t_n=(\varepsilon_C\otimes1\otimes\varepsilon_{C^{\otimes n}})T_n\).
+Indeed applying its two coaction identities and then their outer counits gives
+\[
+ T_n(c\otimes sm\otimes a)
+   =\sum g(c_{(1)})\otimes
+       t_n(c_{(2)}\otimes sm\otimes a_{(1)})
+                        \otimes g_n(a_{(2)}).
+ \tag{C.39.5}
+\]
+The factors already occur in this order, so no omitted interchange sign is required for these degree-zero maps. Conversely this formula is a bicomodule map by coassociativity. Its no-surrounding-letter term is fixed to be \(sm\).
+
+Order a finite module basis by its number of surrounding bar letters, with the core basis ordered by length. The core \(g\) has identity one-letter component and every other Taylor term merges a block. In (C.39.5), a nonleading central term consumes at least one surrounding letter. The remaining terms apply those core merges. Thus every coordinate pair is unitriangular in these bases. Homogeneity of degree zero preserves (C.39.4), and inverse is the finite unitriangular recursion, which preserves the same windows.
+
+The coalgebra equations for \(g\), the fixed leading entries, and
+\[
+ \lambda T_n=(g\otimes T_n)\lambda,\qquad
+ \rho T_n=(T_n\otimes g^{\otimes n})\rho
+ \tag{C.39.6}
+\]
+are polynomial equations in the finite matrices. Equation (C.39.5), proved using cuts wholly retained in the window, also shows that their finite solutions have the asserted triangular shape. Their composition is
+\[
+ (h,\{U_n\})(g,\{T_n\})
+       =(hg,\{U_nT_n\}).
+ \tag{C.39.7}
+\]
+The right core in this product is exactly
+\(h^{\otimes n}g^{\otimes n}=(hg)^{\otimes n}\).
+Multiplying (C.39.6) by the finite inverses gives the same identities for \(g^{-1},T_n^{-1}\). Hence the reduced equations define a closed subgroup of the finite unitriangular group, with one shared core coordinate. This avoids defining the group law by a transferred map whose composition would insert an extra \(IP\).
+
+Any module differential has degree one and retains one central cross factor. Therefore it raises (C.39.4) by one, regardless of the lengths of its higher module terms. Core differentials raise their core weight by one. Impose
+\[
+ gb=b^0g,\qquad T_nD_n=D_n^0T_n
+ \tag{C.39.8}
+\]
+only on input weights at most \(D-1\), retaining their output windows through \(D\). All coordinate and inverse substitutions preserve those inputs. The equations are finite polynomials, and the difference of two solutions is the coordinate pair (C.39.7) with their inverses, commuting with the target differentials on exactly those retained domains. Conversely such a target stabilizer sends every solution to another solution. This proves the torsor assertion as in C.30.3, now within the explicit common-core group (C.39.6). Any further verified covariance maps use the same substitution calculation once their stated input and output windows are retained.
+
+For restrictions, keep a finite pool of selected input factor labels and finitely many arities, and include the finite output summands of their selected tuples in the common core's finite label corner. Newly included output labels need not themselves be convolved again at that stage. Coordinate blocks preserve endpoints and use only labels already occurring in the input word; their actual restrictions therefore preserve the selected input pool, tuple domains and output corners. A smaller weight window is preserved as proved above. Composition and inverse restrict to the same operations. Increasing such finite stages exhausts every specified tuple and core label without demanding an infinite tensor-closed label set.
+
+This supplies the actual common-input coordinate group and differential equation windows. To apply its torsor tower to the full tensor theorem, the remaining geometric unit, permutation, flattened-string and higher grafting operations must be put on these modules, with their domains and complete extension-field comparison proved. ∎
+
+#### C.39.3. The actual tensor bar shuffle is a quasi-isomorphism
+
+**Theorem C.39.3.1.** For the positive augmented dg cores \(\mathcal U\) of C.34.1, the actual shuffle
+\[
+ \mathrm{sh}_n:(B\mathcal U)^{\otimes n}
+                   \longrightarrow B(\mathcal U^{\otimes n})
+ \tag{C.39.9}
+\]
+is a quasi-isomorphism. Consequently the transferred map \(\sigma_n\) of C.34.3 is a quasi-isomorphism of chain coalgebras. The statement retains the original shuffle, its signs and its regrouping maps.
+
+**Proof.** Work first at a finite relative coefficient corner. Write \(R=S\oplus\bar R\) for its augmented dg algebra, where \(S\) is split semisimple and \(\bar R\) has degrees at least two. Its free left bar resolution is
+\[
+ P_R=R\otimes_S B_SR.
+ \tag{C.39.10}
+\]
+In the bar convention used throughout, \(b_1(sa)=s(da)\) and
+\(b_2(sa|sb)=(-1)^{|a|-1}s(ab)\).
+Besides the tensor differential \(d_R\otimes1+1\otimes b\), the resolution differential has its first-letter term
+\[
+ a_0\otimes(sa_1|\cdots|sa_r)
+ \longmapsto
+ (-1)^{|a_0|+|a_1|}
+     a_0a_1\otimes(sa_2|\cdots|sa_r).
+ \tag{C.39.11}
+\]
+Its square is zero. Terms within the remaining word cancel by \(b^2=0\). The first-letter term and the unary differentials cancel by the dg Leibniz rule; their two coefficients for \(da_0a_1\) differ by one sign, as do those for \(a_0da_1\). Two first-letter merges cancel the merge of the first two bar letters: their respective coefficients are \((-1)^{|a_2|}\) and \((-1)^{|a_2|-1}\). Disjoint merges cancel by the tensor differential sign. These are every remaining type of term.
+
+The augmentation \(P_R\to S\) kills nonempty words and applies the augmentation of \(R\) to empty words. It has the explicit \(S\)-linear contraction
+\[
+ h(a_0\otimes w)=(-1)^{|a_0|}\,
+             1\otimes(s\bar a_0|w),\qquad
+ \bar a_0=a_0-\epsilon(a_0),
+ \tag{C.39.12}
+\]
+where the formula is zero when \(\bar a_0=0\). This is well defined on balanced tensors: projection to \(\bar R\) is an \(S\)-bimodule map, and any intervening coefficient balances into the following word.
+
+We check \(dh+hd=1-\eta\epsilon\). On the inserted first letter the root merge in \(dh\) gives \(\bar a_0\otimes w\), since the two factors \((-1)^{|a_0|}\) cancel. Its merge with the next bar letter has coefficient minus one. The corresponding insertion after the root merge in \(hd\) has coefficient plus one, so those terms cancel; if \(a_0\) lies in \(S\), that latter term instead recovers \(a_0\otimes w\). The two unary terms on \(a_0\) cancel because its degree increases by one. Every differential in the old word cancels between the two orders: the new suspended prefix changes its sign by one. For a nonempty word these leave the identity; on an empty word they leave \(a_0-\epsilon(a_0)\). This proves the contraction.
+
+We also verify that this free resolution can be used before taking the derived augmentation tensor. Filter \(P_R\) by bar length at most \(r\). Its successive quotient is the free \(R\)-module on the coefficient complex \((s\bar R)^{\otimes_S r}\), with its unary differential. For an acyclic \(R\)-module \(N\), the mapping complex out of this quotient is acyclic. Indeed the underlying acyclic \(S\)-complex \(N\) has an \(S\)-linear contraction by C.30.1, and postcomposition with it contracts the coefficient mapping complex, with the usual Hom differential signs.
+
+Restriction \(\operatorname{Hom}_R(P_{\le r},N)\to\operatorname{Hom}_R(P_{\le r-1},N)\) is surjective in each degree, because the filtration splits as graded free modules. Its kernel is the acyclic quotient mapping complex just checked. Each finite stage is therefore acyclic. The infinite mapping complex is acyclic too: given a compatible cycle, first solve its boundary equation at stage zero; lift that primitive to the next stage, correct its remaining cycle in the acyclic kernel, and repeat. This constructs compatible primitives at all stages. Thus \(P_R\) is homotopically projective, with this explicit reason for passage through the unbounded length filtration.
+
+For two cores \(R,T\), the tensor \(P_R\otimes P_T\) is similarly homotopically projective over \(R\otimes T\), using total bar length. The tensor of the two contractions proves its augmentation to \(S_R\otimes S_T\) is a quasi-isomorphism. The resolution \(P_{R\otimes T}\) has the same properties.
+
+Extend the actual shuffle of C.34.2 to the left coefficients, using the graded regrouping
+\[
+ P_R\otimes P_T
+   \cong(R\otimes T)\otimes_{S_R\otimes S_T}(B_SR\otimes B_ST).
+ \tag{C.39.13}
+\]
+It is a chain map of the two resolutions. C.34.2 already verifies its word differential. For the root differential, a shuffle's first letter belongs to exactly one input factor. If it belongs to \(R\), the sign moving the left \(T\)-coefficient across the shortened \(R\)-word agrees with its previous regrouping sign plus the tensor multiplication sign. If it belongs to \(T\), moving that letter past the \(R\)-word contributes its suspended degree times the word degree, exactly the root tensor-differential sign. For instance, writing that \(R\)-word degree as \(p\), the latter two exponents are
+\[
+ |t_0|p+(|t_1|-1)p+|r_0|+|t_0|+|t_1|
+ \quad\hbox{and}\quad
+ |r_0|+p+|t_0|+|t_1|+(|t_0|+|t_1|)p;
+ \tag{C.39.14}
+\]
+they agree modulo two. The analogous first-factor exponents agree by subtracting \(|r_1|-1\) from the shortened word degree. Hence all root terms agree. The map is the identity on their augmentations.
+
+The two augmentations are quasi-isomorphisms, so this chain map is a quasi-isomorphism. Its cone is acyclic and homotopically projective. Applying its defining mapping property to that cone itself makes its identity a boundary; equivalently its cone has an \(R\otimes T\)-linear contraction. Tensoring that contraction with the augmentation module preserves it. Therefore applying
+\((S_R\otimes S_T)\otimes_{R\otimes T}-\)
+to the map of resolutions gives a quasi-isomorphism. The resulting map is exactly the reduced shuffle (C.39.9). Induct on the finite number of factors, retaining C.34.2's actual regrouping identity, to prove it for \(n\).
+
+The bar inclusions and projections in C.34.3 are quasi-isomorphisms because C.35.1 supplies their actual contraction. Tensoring the inclusions over the field preserves this assertion. Thus their composite
+\(\sigma_n=P_n\mathrm{sh}_n I_1^{\otimes n}\)
+is a quasi-isomorphism. Full-corner maps and these word formulas agree on overlaps; every finite word occurs in a finite corner. The proof consequently applies to the original locally finite labelled cores as well. ∎
+
+#### C.39.4. Cobar preserves the needed coalgebra comparisons
+
+**Lemma C.39.4.1.** Let \(K,L\) be conilpotent relative dg coalgebras over a split semisimple coefficient algebra. Suppose their reduced parts have positive degrees. A quasi-isomorphism \(f:K\to L\) retaining the coaugmentation induces a quasi-isomorphism
+\(\Omega f:\Omega K\to\Omega L\).
+The natural unit \(K\to B\Omega K\) is a quasi-isomorphism.
+
+Both assertions also hold for a two-level triangular coalgebra whose reduced core sectors have positive degrees and whose sole cross sector has degree at least minus one, with no composable pair of cross sectors. They then hold on each graph corner and retain the cores.
+
+**Proof.** Write \(t=s^{-1}\), of degree one. In the present convention the cobar generator differential is
+\[
+ d_\Omega(tc)=t(dc)
+       -\sum_{\bar\Delta c}(-1)^{|c_{(1)}|}
+                           tc_{(1)}\,tc_{(2)}.
+ \tag{C.39.15}
+\]
+Extend it by the dg Leibniz rule. The two internal/splitting orders cancel by the coderivation equation for \(d\), and the two iterated splits cancel by coassociativity. For a triple, their coefficients are respectively
+\((-1)^{|c_{(2)}|}\) and \(-(-1)^{|c_{(2)}|}\).
+This proves square zero and fixes the signs.
+
+Filter the cobar algebra by word length at least \(r\). The internal differential preserves length and splitting increases it. On its associated length-\(r\) quotient, \(\Omega f\) is the \(r\)-fold balanced tensor of the shifted reduced map \(f\). It is a quasi-isomorphism: an acyclic coefficient complex over the split semisimple algebra is contractible by C.30.1, and tensoring such a contraction proves the finite tensor assertion.
+
+Every pure-core cobar generator has degree at least two. In the triangular case a cross generator has degree at least zero and can occur at most once, by endpoints. A word of degree \(q\) consequently has length at most \(q/2+1\), with the obvious integral rounding; the pure-core bound is \(q/2\). Thus the length filtration has finitely many pieces in each fixed degree and its incoming degree. To avoid any convergence assumption, apply the same filtration to the comparison cone. A cycle has a least nonzero length component; associated acyclicity supplies a primitive for it. Subtract its differential and repeat at the next length. The finite degree bound makes this terminate. Hence the comparison cone is acyclic and \(\Omega f\) is a quasi-isomorphism.
+
+For the unit, use its explicit cofree-bar formula
+\[
+ \eta_K(c)=\sum_{r\ge1}
+   s(tc_{(1)})|\cdots|s(tc_{(r)}),
+ \qquad
+ \bar\Delta^{(r-1)}c=\sum c_{(1)}\otimes\cdots\otimes c_{(r)}.
+ \tag{C.39.16}
+\]
+It is finite by conilpotence and is a coalgebra map by the iterated-coproduct equation. Its chain equation can be checked on the one-letter bar projection: the splitting term in (C.39.15) cancels precisely the two-letter bar multiplication of (C.39.16), leaving \(s(tdc)\). A coderivation along a map into a cofree conilpotent bar is determined by that projection, by induction on the coproduct length. This proves the whole chain equation. The formula is natural under coalgebra maps.
+
+Filter \(B\Omega K\) by its number \(r\) of original \(K\)-elements, before dividing them into its nonempty cobar blocks. Cobar splitting increases \(r\); the internal differential and the bar merge of blocks preserve it. For a fixed underlying tensor of \(r\) elements, a term with \(v\) blocks has degree
+\[
+ \sum_i|c_i|+r-v.
+ \tag{C.39.17}
+\]
+The \(r-1\) possible cuts are the exterior cut complex, now with differential removing a cut. For clarity its contraction is explicit. If the first cut is already present, set the homotopy to zero. If it is absent and \(r\ge2\), divide the first cobar block after its first original element \(tc_1\), multiplying the result by \((-1)^{|c_1|}\). Merging that new first cut has the same sign, so gives the identity. Every other merge cancels between the two orders because the extra preceding suspended block changes its sign by one. The unary differential on \(c_1\) changes the homotopy coefficient by one sign, and every later unary differential acquires the extra preceding block sign; thus all unary terms cancel as well. This proves \(dh+hd=1\) on the full fixed-\(r\) quotient at \(r\ge2\). Equivalently it is exterior multiplication by the first cut vector paired with the cut-removal contraction. At \(r=1\) the surviving term is exactly \(K\) with its differential.
+
+Reduced core elements have degree at least one. In a triangular tensor there is at most one cross element of degree at least minus one, so \(\sum_i|c_i|\ge r-2\). Formula (C.39.17) therefore bounds \(r\le q+2\) in any fixed degree \(q\); for a pure core it bounds \(r\le q\). The descending \(r\)-filtration is finite in each degree. The unit has identity leading component at \(r=1\), while the \(r\ge2\) quotients are the contracted cut complexes. The same finite cone-elimination argument proves that it is a quasi-isomorphism. All constructions preserve endpoints, so the triangular statement holds corner by corner and on each core. ∎
+
+#### C.39.5. The common-input module recovers the actual convolution
+
+**Theorem C.39.5.1.** For the rational convolution graph and its pullback in C.39.1, the triangular coalgebra
+\[
+ \mathcal L_n^{\mathrm{common}}
+       =C\oplus A_n\oplus Z_{\sigma_n},
+ \qquad C=B\mathcal M,\quad A_n=C^{\otimes n},
+ \tag{C.39.18}
+\]
+has comultiplication on the cross sector given by its two coactions. Its cobar is a genuine strict dg functor graph, representing the original ordered convolution on a quasi-equivalent input core \(\Omega A_n\). Its output core is the one fixed \(\Omega C\). Thus these are actual common-input convolution modules, with their entire higher differential retained.
+
+**Proof.** Let \(\mathcal L_n=C\oplus B\mathcal M_n\oplus Z_n\) be the original transferred minimal convolution graph bar. The differential on its central cross mapping space is zero; its remaining cross differential consists of its complete module operations. Its graded cross sector is
+\(Z_n=C\otimes sM_n\otimes B\mathcal M_n\).
+
+Define the differential and coproduct of (C.39.18) using its two core differentials and the pullback differential of C.39.1. The two coassociativity equations and the commuting left/right coactions prove coassociativity on the cross sector; the dg coaction equations prove its coderivation identity. Counits vanish on the cross sector and are the actual core counits. Reduced cuts of a cross word use one cross factor and otherwise positive core factors. Hence conilpotence and the degree bounds in C.39.4 hold.
+
+There is an actual chain coalgebra map
+\[
+ Q_n:\mathcal L_n^{\mathrm{common}}\longrightarrow\mathcal L_n,
+ \quad
+ Q_n|_C=1,\quad Q_n|_{A_n}=\sigma_n,\quad
+ Q_n(c\otimes sm\otimes a)=c\otimes sm\otimes\sigma_n(a).
+ \tag{C.39.19}
+\]
+For the cross chain equation, this last map is the cotensor inclusion (C.39.2) followed by the counit of its extra \(A_n\)-factor. Both are chain maps on their stated domains. Its two coaction identities are the coalgebra equation for \(\sigma_n\). Thus (C.39.19) is the full triangular coalgebra map.
+
+We prove it is a quasi-isomorphism on the cross corner, where the higher module differential must be retained. Filter the cross complexes by the ordinary degree of \(m\), at least \(p\). Core differential terms preserve that degree. A nonunary module term consumes a positive-degree reduced core input; as its total degree is one, it increases the ordinary central degree by that input degree plus one, at least two. The unary central differential is zero by minimality. The pullback along \(\sigma_n\) has the same property because this degree-zero reduced coalgebra map preserves positive total core degree. Thus these are actual descending subcomplex filtrations.
+
+Their associated degree-\(p\) map is the graded tensor
+\[
+ C\otimes sM_n^p\otimes A_n
+       \xrightarrow{\ 1\otimes1\otimes\sigma_n\ }
+ C\otimes sM_n^p\otimes B\mathcal M_n,
+ \tag{C.39.20}
+\]
+with only the core differentials and their tensor signs. It is a quasi-isomorphism by C.39.3 and the split coefficient tensor argument of C.30.1. In cohomological degree \(q\), the central degree is at most \(q+1\), since the two surrounding core degrees are nonnegative and \(sm\) has degree \(|m|-1\). The filtration therefore has finitely many pieces in each degree and its incoming degree. Finite cone elimination as in C.39.4 proves that (C.39.19) is a quasi-isomorphism on the cross corner. It is already a quasi-isomorphism on the input core by C.39.3, and the identity on the output core.
+
+C.39.4 now makes \(\Omega Q_n\) a quasi-equivalence on each actual graph corner. Its cores are \(\Omega A_n\to\Omega B\mathcal M_n\) and the identity of \(\Omega C\). The former is a quasi-equivalence of the actual input cores; C.34.1 and C.33.1 identify the latter input model with the original \(n\)-fold input generator envelope. The target strict graph \(\Omega\mathcal L_n\) is C.37.1's bar-cobar realization of the original convolution graph. It retains its represented module and recovers the original ordered convolution by C.33.2.
+
+The quasi-equivalence \(\Omega Q_n\) transports that represented module back to the quasi-equivalent source \(\Omega A_n\), with the same output core and the same finite image objects. Its natural bar unit is C.39.4's actual map (C.39.16); all unit and cross comparisons commute with (C.39.19). Thus it recovers that original functor, including its higher module actions. It is not merely an abstract comparison of the cross mapping ranks.
+
+Finally the source core in (C.39.18) is literally \(C^{\otimes n}\). A common coordinate \(g\) acts there by \(g^{\otimes n}\), and its cobar functor is \(\Omega(g^{\otimes n})\). These tensor powers compose strictly and are natural in all the maps just constructed. C.39.2 therefore supplies the correct finite common-core coordinate group for these actual modules. Their full geometric unit, permutation and substitution maps, and the complete simultaneous extension-field comparison, still have to be incorporated before applying it to conclude the strong monoidal descent theorem. ∎
+
+#### C.39.6. Root signs and the mixed bar input
+
+**Exercise C.39.6.1.** In an augmented dg algebra with a closed homogeneous element \(a\) of degree two, evaluate \(dh+hd\) on \(a\otimes1\) in (C.39.10). What root coefficient would fail this identity?
+
+**Solution.** Formula (C.39.12) gives \(h(a\otimes1)=1\otimes sa\). Its root differential (C.39.11) has coefficient \((-1)^2=1\), so \(dh(a\otimes1)=a\otimes1\); all unary terms vanish and \(hd=0\). Replacing the root coefficient by minus one gives minus the identity on this element, contradicting the claimed contraction. The sign on the unsuspension and the root term must be fixed together.
+
+**Exercise C.39.6.2.** Take square-zero augmented algebras on closed degree-two elements \(a,b\). Compute the binary shuffle on \(sa\otimes sb\) and the two one-letter products in its target bar differential.
+
+**Solution.** The two suspended letters are odd, so
+\[
+ \mathrm{sh}_2(sa\otimes sb)
+     =s(a\otimes1)|s(1\otimes b)
+          -s(1\otimes b)|s(a\otimes1).
+ \tag{C.39.21}
+\]
+The binary bar differential of its first word is \(-s(a\otimes b)\). In its second word it is also \(-s(a\otimes b)\), because the ordinary degree-two factors commute in the tensor algebra. The preceding minus sign cancels these two terms. Thus the shuffle is a cycle. This calculation retains the mixed tensor arrow in the target bar; omitting that arrow would not be the bar of the actual tensor-product input.
+
+![One IC core supplies every tensor bar input; the actual cofree convolution module pulls back along the transferred shuffle; its triangular coalgebra maps by a quasi-isomorphism to the original graph and the common-core coordinate group composes with literal tensor powers](assets/common-input-module-recovery.png)
+
+Lemma C.39.1.1 and Theorem C.39.2.1 prove the actual module pullback and shared-core coordinate group. Theorem C.39.3.1 proves the original shuffle is a quasi-isomorphism using its explicit free bar-resolution contraction. Lemma C.39.4.1 gives the positive and triangular bar-cobar comparison; Theorem C.39.5.1 recovers the original convolution from the displayed common-input graph. Exercises C.39.6.1-C.39.6.2 check the root and mixed tensor shuffle signs. Editable SVG source. Related free reading: [Hess, Parent and Scott, A chain coalgebra model for the James map, Appendix A](https://arxiv.org/pdf/math/0609444).
+
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. C.26 proves actual arithmetic-trait specialization of the rootwise enhanced generator diagram: perfect constant compact objects, trace-normalized Hom comparison, the complete action nerve with its coefficient bound, integral pair pavings, both IC perverse tests and ordered wall operations. C.27 proves the genuinely spherical enhanced comparison by the actual flag unit projection and induced root-word retractions. It retains the full coordinate semidirect action and every nerve level, and compares ordered associative convolution with its original kernels, units and full-frame coherences. C.28 proves configuration-arrangement compact constants, same-point flag/wall chain fibre and pair filtrations, and the actual moving enhanced generator comparison. Its complete divisor-frame nerve retains longer jets on collisions, the uniform coefficient bound, and every selected partition and all-distinct restriction diagram. C.29 identifies the actual complex moving IC objects and corrected geometric fusion components, retains supported maps on every partial diagonal, and proves the complex enhanced symmetric comparison by transport of the complete arithmetic coherent diagram through the actual ordered equivalence. It also proves flat field extensions, including complex coefficients after an abstract embedding. C.30 proves split semisimple normalization, finite relative bar coordinate groups and descent of a verified exhaustive multi-operation presentation. C.31 constructs the finite ordered-tree contraction index, its bounded projective relative diagram resolution and the combined positive-degree profile bound with both output suspensions. C.32 proves genuine directed positive-weight coalgebra windows, coordinate and inverse preservation, the coderivation bound and compatible directed relative descent. C.33 proves actual rational Betti coefficient comparison, constructs enhanced functor graphs and the actual ordered-tree convolution graph system, and descends that whole directed graph system over the rationals. Its remaining common-input tensor-power and cross-arity substitution equations are explicit: independently formalized input corners do not constitute a strong monoidal comparison. C.34 constructs a strict positive model retaining the whole IC coderivation, actual tensor bar shuffles and transferred common-input maps. C.35 retains the exact perturbed homotopy, its two-summand transfer square formula and the full graded contraction-cube faces. C.36 proves the actual homotopy coproduct and packages it in a finite dg interval coalgebra and tensor cubes; the transferred square is an original coalgebra-cylinder span through its uncontracted comparison. These nonlinear common-input data have proved invariant finite windows. The full convolution-module grafting and cross-arity substitution relations, and the complete marked extension-field comparison, remain required before full tensor descent is concluded. Descent of the full tensor equivalence to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
+The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. C.26 proves actual arithmetic-trait specialization of the rootwise enhanced generator diagram: perfect constant compact objects, trace-normalized Hom comparison, the complete action nerve with its coefficient bound, integral pair pavings, both IC perverse tests and ordered wall operations. C.27 proves the genuinely spherical enhanced comparison by the actual flag unit projection and induced root-word retractions. It retains the full coordinate semidirect action and every nerve level, and compares ordered associative convolution with its original kernels, units and full-frame coherences. C.28 proves configuration-arrangement compact constants, same-point flag/wall chain fibre and pair filtrations, and the actual moving enhanced generator comparison. Its complete divisor-frame nerve retains longer jets on collisions, the uniform coefficient bound, and every selected partition and all-distinct restriction diagram. C.29 identifies the actual complex moving IC objects and corrected geometric fusion components, retains supported maps on every partial diagonal, and proves the complex enhanced symmetric comparison by transport of the complete arithmetic coherent diagram through the actual ordered equivalence. It also proves flat field extensions, including complex coefficients after an abstract embedding. C.30 proves split semisimple normalization, finite relative bar coordinate groups and descent of a verified exhaustive multi-operation presentation. C.31 constructs the finite ordered-tree contraction index, its bounded projective relative diagram resolution and the combined positive-degree profile bound with both output suspensions. C.32 proves genuine directed positive-weight coalgebra windows, coordinate and inverse preservation, the coderivation bound and compatible directed relative descent. C.33 proves actual rational Betti coefficient comparison, constructs enhanced functor graphs and the actual ordered-tree convolution graph system, and descends that whole directed graph system over the rationals. Its remaining common-input tensor-power and cross-arity substitution equations are explicit: independently formalized input corners do not constitute a strong monoidal comparison. C.34 constructs a strict positive model retaining the whole IC coderivation, actual tensor bar shuffles and transferred common-input maps. C.35 retains the exact perturbed homotopy, its two-summand transfer square formula and the full graded contraction-cube faces. C.36 proves the actual homotopy coproduct and packages it in a finite dg interval coalgebra and tensor cubes; the transferred square is an original coalgebra-cylinder span through its uncontracted comparison. These nonlinear common-input data have proved invariant finite windows. C.37 retains the actual cross module and both coactions over their shared core cylinders. C.38 constructs the actual nested convolution graph, retains its two-cross grafting and higher module transfer, and descends the complete nested-string graph through common arity/output corners. C.39 constructs actual common-input convolution modules over powers of one core bar, proves their common-core finite coordinate group and the shuffle quasi-isomorphism, and recovers the original convolution by its triangular bar-cobar comparison. The complete geometric flattened-string, unit, permutation and higher substitution presentation and its simultaneous extension-field comparison remain required for full tensor descent. Descent of the full tensor equivalence to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
 
 Free further reading:
 

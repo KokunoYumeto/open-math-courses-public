@@ -2,7 +2,9 @@
 
 An oscillatory kernel carries information about position and frequency together. Its phase determines a geometric relation between those variables; changing a phase can leave that relation unchanged. This lesson develops the geometry needed to recognize the relation, to find useful phase coordinates, and to tell a clean family from a singular one.
 
-We assume differential forms, smooth flows, the inverse and implicit function theorems, and finite-dimensional linear algebra. [Stationary phase and critical manifolds](stationary-phase-and-critical-manifolds.md) explains why normal rank and signature matter analytically. Basic references are [Guillemin–Sternberg] and [Hörmander III]. All the local arguments used here are proved below.
+The exact earlier proofs are finite linear algebra and inverse/implicit maps P2–P4, continuous-integral calculus in Lemma 0.3, the integral Taylor formula P12.6, smooth compact-parameter integration P12.7, and the constant-rank coordinate argument in PH:F1. That coordinate argument applies to any smooth map of constant rank. The companion finite-coordinate flow proof, imported from AN-03, proves existence, uniqueness, all smooth parameter derivatives and local inverse flows. Differential forms and flow pullbacks proves the form identities and fixed-time neighborhood assertion used below. Their proof locators and complete dependencies are recorded in the proof map.
+
+Stationary phase and critical manifolds explains the analytic use of normal rank and signature. The mathematical references include the author draft [Guillemin–Sternberg] and the edition [Hörmander III]. These readings support the exposition; the earlier proofs and their dependencies are identified above and in the proof map.
 
 ## 1. Signs fixed by the cotangent pairing
 
@@ -136,9 +138,9 @@ Write \(\dim V=2n\), \(\dim A=a\), and \(k=\dim(L\cap A)\). The map \(L\to A^*\)
 \gamma_x(v)=\int_0^1t\,\beta_{tx}(x,v)\,dt.
 \]
 
-The radial homotopy formula gives \(d\gamma=\beta\). To verify it, differentiate the pullbacks of \(\beta\) by \(x\mapsto tx\), use Cartan's formula, and integrate from zero to one; the pullback at zero vanishes for a two-form and \(d\beta=0\). Since \(\beta(0)=0\), \(\gamma=O(|x|^2)\).
+The radial homotopy formula, proved in companion F3, gives \(d\gamma=\beta\). To verify it, differentiate the pullbacks of \(\beta\) by \(x\mapsto tx\), use Cartan's formula, and integrate from zero to one; the pullback at zero vanishes for a two-form and \(d\beta=0\). Since \(\beta(0)=0\), \(\gamma=O(|x|^2)\).
 
-All forms \(\omega_t=\omega_0+t\beta\), \(0\leq t\leq1\), are nondegenerate on a sufficiently small common neighborhood. Define \(V_t\) by \(\iota_{V_t}\omega_t=-\gamma\). Its local flow \(\Psi_t\) exists through time one after shrinking the neighborhood, and fixes the origin. Then
+All forms \(\omega_t=\omega_0+t\beta\), \(0\leq t\leq1\), are nondegenerate on a sufficiently small common neighborhood. Define \(V_t\) by \(\iota_{V_t}\omega_t=-\gamma\). Its local flow \(\Psi_t\) exists through time one on a common neighborhood by companion F4, and fixes the origin. Then
 
 \[
 \frac d{dt}\Psi_t^*\omega_t
@@ -165,6 +167,8 @@ Suppose a free smooth dilation action \(m_t\), \(t>0\), satisfies \(m_t^*\omega=
 \]
 
 Indeed, \(\mathcal L_E\omega=\omega\), and Cartan's formula proves the middle identity. On a cotangent bundle, \(E=\sum\xi_j\partial_{\xi_j}\), so this recovers \(\alpha=\sum\xi_jdx_j\).
+
+The field \(E\) is nonzero: if it vanished at a point, uniqueness for its flow would make that orbit locally constant, contradicting the free action. Choose a coordinate hyperplane transverse to \(E\). The map \((u,y)\mapsto m_{e^u}(y)\) has invertible derivative at \((0,y)\), so P3 gives the local slice coordinates used below. In particular this case has \(n\geq1\).
 
 **Proposition 4.1.** If \(\Lambda\) is conic and Lagrangian, then \(\alpha|_\Lambda=0\). On a local slice \(Y\) transverse to the dilation orbits, \(\beta=\alpha|_Y\) is a contact form:
 
@@ -222,7 +226,7 @@ has constant rank \(n=\dim X\), with fibers locally of dimension \(e\). Each loc
 
 The stacked matrix in these equations is the transpose of \(d(\phi_\theta')\); symmetry of the Hessian is essential here. It has rank \(N-e\), so its kernel has dimension \(e\). The clean tangent condition shows that these are exactly the kernel vectors in \(TC_\phi\). Thus the critical map has rank \((n+e)-e=n\).
 
-The constant-rank theorem gives a local smooth image. On the critical set,
+The constant-rank coordinate proof in PH:F1 gives a local smooth image. In the homogeneous setting choose a small neighborhood transverse to the radial direction and saturate it by positive dilation; this gives the conic local branch meant here. On the critical set,
 
 \[
 \kappa_\phi^*\alpha=d\phi|_{C_\phi},
@@ -387,5 +391,6 @@ The base image is the unit sphere. The derivative of \(\theta\mapsto\theta/|\the
 
 - [Guillemin–Sternberg] Victor Guillemin and Shlomo Sternberg, *Semi-classical Analysis*, January 13, 2010. [Online reading](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf).
 - [Hörmander III] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, Springer, 1994.
+- Lars Hörmander, *Fourier integral operators. I*, Acta Mathematica 127 (1971), Section 3.1, especially the generating-function results used in the programme's earlier geometry companion. [Free primary-source reading](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf).
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restored and checked against the exact programme prerequisites by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original lesson and restoration additions: CC0. The separately linked AN-03 flow companion is also original CC0 text.*

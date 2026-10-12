@@ -2,7 +2,11 @@
 
 A rapidly oscillating integral cancels where its phase changes to first order. Near a critical point, the quadratic part controls the size and the complex phase of the answer. When critical points form a manifold, cancellation acts only in its normal directions. This lesson develops those three mechanisms with estimates that remain useful when the phase and amplitude vary.
 
-We assume multivariable calculus, the inverse and implicit function theorems, smooth partitions of unity, and the Fourier inversion and Plancherel conventions in Fourier transforms, finite spectra and convex separation. The uniform Fourier multiplier estimate in Quadratic Fourier multipliers at a moving scale supplies one estimate below. Basic references are [Hörmander I] and [Guillemin–Sternberg]. The proofs here use only the stated prerequisites.
+The precise prerequisites are the earlier proof companions. Quadratic stationary phase, Q1–Q9 proves the analytic identities; Morse reduction, M1–M2 proves the smooth coordinate construction; change of variables, P19–P21 proves substitution and its measure prerequisites. Their exact earlier-programme proof bindings retain Jiří Lebl's freely accessible *Basic Analysis*, version 6.3, and supply the used omitted exercises locally. Appendix A below proves the sharper Plancherel estimate needed here, the finite cutoffs, and the density and localization facts for critical manifolds.
+
+The proof index records the main proof and its earlier dependencies. The alternative complex-analytic argument below also links its identity theorem.
+
+For a human account of stationary phase, see [Guillemin–Sternberg, Chapter 14](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf) and [Bates–Weinstein, Appendix B](https://math.berkeley.edu/~alanw/GofQ.pdf). The estimates below include uniform parameter derivatives, differentiated symbol remainders and the quotient density of a clean critical manifold.
 
 ## 1. What a uniform estimate means
 
@@ -25,6 +29,8 @@ b(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}\widehat b(\xi)\,d\xi,
 \]
 
 The signature of a real symmetric invertible matrix is its number of positive eigenvalues minus its number of negative eigenvalues.
+
+All integrals here are compact Riemann integrals or absolutely convergent improper integrals as constructed in P17–P21. A zero-dimensional integral is evaluation, the empty determinant is one, and the empty signature is zero. The zero-dimensional quadratic identity is therefore immediate; calculations with a radial variable below concern positive dimension.
 
 ## 2. Cancellation away from critical points
 
@@ -92,9 +98,28 @@ c_H(\lambda)=\left(\frac{2\pi}{\lambda}\right)^{d/2}
 \tag{3.2}
 \]
 
-For positive real \(z\), the Gaussian integral and differentiation with respect to \(\xi\) prove (3.2). Both sides are holomorphic in the connected right half-plane; dominated differentiation on compact subsets and the identity theorem extend the identity there. Choose the square root positive on the positive real axis.
+Here is a direct real-parameter justification of (3.2). Write \(z=\varepsilon-iq\), with \(\varepsilon>0\), \(q\in\mathbb R\), and
+\[
+J(q)=\int_{\mathbb R}e^{-(\varepsilon-iq)x^2/2}\,dx.
+\]
+Differentiation in \(q\) is allowed by the integrable Gaussian bounds. Integration of the derivative of \(x e^{-zx^2/2}\) gives
+\[
+\int x^2e^{-zx^2/2}\,dx=z^{-1}J(q),\qquad
+J'(q)=\frac{i}{2z}J(q).
+\]
+At \(q=0\), the positive Gaussian integral in Appendix A gives \(J(0)=(2\pi/\varepsilon)^{1/2}\). The function \((2\pi)^{1/2}z^{-1/2}\), with the continuous square root positive at \(q=0\), satisfies the same first-order equation and initial value. The quotient of \(J(q)\) by the displayed nonvanishing candidate has derivative zero and initial value one, so they agree. This does not assume in advance that \(J\) is nonzero. For fixed \(z\), put
+\[
+F_z(\xi)=\int e^{-zx^2/2-i\xi x}\,dx.
+\]
+Integrating the derivative of \(e^{-zx^2/2-i\xi x}\) gives \(F_z'(\xi)=-\xi z^{-1}F_z(\xi)\). Multiplication by \(e^{\xi^2/(2z)}\) shows that \(F_z(\xi)=F_z(0)e^{-\xi^2/(2z)}\). This proves (3.2) for every \(z\) in the right half-plane, without requiring a complex-analytic continuation theorem.
 
-For an eigenvalue \(h_j\neq0\), use \(z=\varepsilon-i\lambda h_j\). As \(\varepsilon\downarrow0\), its inverse square root tends to \((\lambda|h_j|)^{-1/2}e^{i\pi\operatorname{sign}(h_j)/4}\). The exponential on the right of (3.2) has absolute value at most one for real \(\xi\), so dominated convergence against Schwartz functions proves the transformed limit. The original damped functions also converge as tempered distributions, since their absolute values are at most one. Multiply the scalar formulas. ∎
+**Alternative complex-analytic proof of (3.2).** For positive real \(z\), the Gaussian integral and differentiation with respect to \(\xi\) prove (3.2). Fix real \(\xi\). On a compact subset of the right half-plane choose \(\delta>0\) with \(\operatorname{Re}z\geq\delta\). The parameter derivative of the integrand is bounded by \(\tfrac12x^2e^{-\delta x^2/2}\); after decreasing \(\delta\), the same integrable bound controls nearby complex difference quotients. Q1's compact-plus-tail argument therefore permits differentiation under the integral, so the left side is holomorphic. The continuous square root \(r(z)\) with positive real part, constructed in P16.3, satisfies
+\[
+\frac{r(z+h)-r(z)}{h}=\frac{1}{r(z+h)+r(z)}\longrightarrow\frac{1}{2r(z)}.
+\]
+It is nonzero and holomorphic, so the right side of (3.2) is holomorphic as well. The positive real axis has an accumulation point inside this connected half-plane. The identity theorem, Theorem 3.7, with its power-series proof in Theorem 3.2 extends the equality to the whole half-plane. The square root is positive on the positive real axis, agreeing with the real-parameter normalization above.
+
+For an eigenvalue \(h_j\neq0\), use \(z=\varepsilon-i\lambda h_j\). As \(\varepsilon\downarrow0\), its inverse square root tends to \((\lambda|h_j|)^{-1/2}e^{i\pi\operatorname{sign}(h_j)/4}\). The exponential on the right of (3.2) has absolute value at most one for real \(\xi\), so dominated convergence against Schwartz functions proves the transformed limit. The original damped functions also converge as tempered distributions, since their absolute values are at most one. Multiply the scalar formulas. The orthogonal substitution is P21.4, the spectral decomposition is Q5, and the root limits and signs are P16.3. Q1 supplies the compact-plus-tail justification of each limit and parameter derivative, and Appendix A.2 defines the distributional transpose. ∎
 
 **Theorem 3.2 (quadratic expansion).** Let \(b\in C_c^\infty(\mathbb R^d)\), and let \(\ell>d/2\) be an integer. For every integer \(N\geq0\),
 
@@ -118,7 +143,7 @@ where, on a fixed compact support,
 \tag{3.4}
 \]
 
-For \(N=0\) the sum is empty and the matrix factor is one.
+For \(N=0\) the sum is empty and the matrix factor is one; the unexpanded exponential in (3.5) has absolute value one.
 
 **Proof.** The pairing version of (3.1), followed by Fourier inversion, gives the bracket in (3.3) as
 
@@ -138,7 +163,7 @@ For the remainder, take the absolute integral and use
 \sum_{|\alpha|\leq2N+\ell}\|\partial^\alpha b\|_{L^2}.
 \]
 
-This is Cauchy–Schwarz with the integrable weight \(\langle\xi\rangle^{-2\ell}\), then Plancherel. It is precisely the Fourier estimate used in Theorem 2.1 of Quadratic Fourier multipliers at a moving scale. The fixed support bounds each \(L^2\) norm by its supremum times the square root of the support volume. ∎
+This is Cauchy–Schwarz with the integrable weight \(\langle\xi\rangle^{-2\ell}\), then Plancherel. Appendix A.3 proves this estimate with the derivative count displayed here. The fixed support bounds each \(L^2\) norm by its supremum times the square root of its outer measure, as proved in Appendix A.3; no Jordan measurability of an arbitrary compact support is assumed. ∎
 
 The estimate is for the bracket. The error in the integral has the additional factor \(\lambda^{-d/2}|\det H|^{-1/2}\).
 
@@ -160,7 +185,7 @@ The signature of \(J\) is that of \(H(s)=\phi_{xx}''(x_c(s),s)\), and
 \tag{4.2}
 \]
 
-**Proof.** The implicit function theorem applied to \(\phi_x'\) gives \(x_c(s)\). Translate this point to zero. Make a fixed real linear change of variables so that the first diagonal entry of the Hessian is nonzero. Such a direction exists because a symmetric form with zero quadratic value on every vector is zero, whereas this Hessian is invertible.
+**Proof.** The smooth inverse and implicit function theorems are P3; the full argument including its induction is also M1. Smooth differentiation of the integral remainder is P12.7, the Schur calculation is P4, and congruence of signatures is P5. The implicit function theorem applied to \(\phi_x'\) gives \(x_c(s)\). Translate this point to zero. Make a fixed real linear change of variables so that the first diagonal entry of the Hessian is nonzero. Such a direction exists because a symmetric form with zero quadratic value on every vector is zero, whereas this Hessian is invertible.
 
 Write \(x=(x_1,x')\). The implicit function theorem gives \(x_1=h(x',s)\) solving \(\partial_{x_1}\phi=0\). Taylor's formula with integral remainder gives
 
@@ -176,7 +201,7 @@ The Hessian of \(g\) at its critical point is the Schur complement of the first 
 
 Differentiating (4.1) twice at \(z=0\) gives \(F_z'^THF_z'=J\), because the first derivative of \(\phi\) vanishes there. Congruence preserves the numbers of positive and negative directions. Taking absolute determinants gives (4.2). ∎
 
-Every coordinate change and its inverse has bounded derivatives on a sufficiently small fixed compact neighborhood. This is the quantitative fact needed below; the argument does not claim a neighborhood of fixed size when the Hessian approaches singularity.
+Every coordinate change has bounded derivatives on a sufficiently small fixed compact neighborhood; its inverse has bounded derivatives on the corresponding compact image inside its inverse domain (M2). This is the quantitative fact needed below; the argument does not claim a neighborhood of fixed size when the Hessian approaches singularity.
 
 ## 5. One critical point and a full expansion
 
@@ -201,7 +226,7 @@ where \(\sigma=\operatorname{sgn}H\) is constant on each connected parameter com
 
 where \(p_{N,r}\) is a finite amplitude seminorm. The constants also depend on finitely many phase and coordinate derivatives and the lower bounds just specified. The derivatives in (5.2) act on the remainder after the oscillatory factor in (5.1) has been removed.
 
-**Proof.** Choose a smooth cutoff equal to one on a fixed smaller neighborhood of \(x_c(s)\), and split the amplitude into its near and far parts. Proposition 2.1 makes the far integral smaller than every inverse power of \(\lambda\), with any fixed number of parameter derivatives. Multiplying it by \(e^{-i\lambda c(s)}\lambda^{d/2}\) costs only finitely many powers, which that proposition can absorb.
+**Proof.** Work first in one parameter neighborhood and shrink to precompact coordinate and parameter domains. Appendix A.4 supplies a smooth cutoff in their product, equal to one on a fixed smaller neighborhood of the critical graph. Its support has a compact inverse image strictly inside the Morse chart (M2). Split the amplitude into its near and far parts. Proposition 2.1 makes the far integral smaller than every inverse power of \(\lambda\), with any fixed number of parameter derivatives. Multiplying it by \(e^{-i\lambda c(s)}\lambda^{d/2}\) costs only finitely many powers, which that proposition can absorb.
 
 For the near part use Lemma 4.1 and define
 
@@ -209,7 +234,7 @@ For the near part use Lemma 4.1 and define
 b(z,s)=a(F(z,s),s)|\det F_z'(z,s)|
 \]
 
-with the cutoff included. Extend \(b\) by zero outside the fixed coordinate neighborhood. Theorem 3.2 with \(H=J\) gives (5.1) with
+with the cutoff included. Compact chart substitution is P21.4. The precompact support just chosen makes extension of \(b\) by zero smooth, with a common compact support in \(z\) for the parameter neighborhood (P17.4). Theorem 3.2 with \(H=J\) gives (5.1) with
 
 \[
 C_ja(s)=\frac{|\det H(s)|^{1/2}}{j!}
@@ -221,7 +246,9 @@ The cutoff is one near zero, so its derivatives do not enter these coefficients.
 
 After the critical value has been factored out, the quadratic phase and \(J\) do not depend on \(s\). Thus parameter derivatives act only on \(b\) and the smooth determinant factor. Apply (3.4) to those derivatives. For the near integral it is enough to bound the corresponding mixed derivatives of \(b\) through order \(2N+\ell+r\); the far integral may require a larger finite seminorm. This proves (5.2).
 
-Although (5.3) uses a coordinate choice, the coefficients do not depend on that choice. Two such expansions approximate the same normalized integral. Their first different coefficient, multiplied by its power of \(\lambda\) and followed by \(\lambda\to\infty\), would have to be both zero and nonzero. Induction on \(j\) proves equality of every coefficient. ∎
+Although (5.3) uses a coordinate choice, the coefficients do not depend on that choice. Two such expansions approximate the same normalized integral. If their coefficients below order \(j\) agree, subtract the expansions through order \(j\), using \(N=j+1\). Multiplication by \(\lambda^j\) gives the difference of the order-\(j\) coefficients plus \(O(\lambda^{-1})\). Taking \(\lambda\to\infty\) makes that difference zero. Starting at \(j=0\) proves equality of every coefficient.
+
+Morse coordinates need only exist locally in the parameter. Cover the specified compact parameter set by finitely many neighborhoods on each of which Lemma 4.1 provides coordinates and a fixed signature. Prove the expansion and all its differentiated estimates on each neighborhood as above. The uniqueness argument identifies the local coefficient functions on overlaps; they therefore define the same smooth coefficients wherever the critical branch is defined. Take the maximum of the finitely many remainder constants and the union of their finite seminorm requirements. This yields the stated uniform bounds without assuming a global signed Morse frame. ∎
 
 The assertion remains valid for smooth amplitudes with values in a finite-dimensional vector space: apply it component by component. Its constants can be chosen uniformly on bounded sets in that space.
 
@@ -273,7 +300,7 @@ This corollary concerns a large real parameter and compact integration variables
 
 At a critical point the Hessian is a bilinear form independent of coordinates. Condition (7.1) says that it induces a nondegenerate form on the normal quotient \(T_xU/T_xC\). Let \(r=d-\dim C\).
 
-**Theorem 7.2 (clean stationary phase).** Suppose the critical set near the support of a compactly supported smooth amplitude is clean, and work on one connected critical component \(C\). Then \(\phi|_C=c\) is constant. There are coefficients \(A_j\), with
+**Theorem 7.2 (clean stationary phase).** Suppose the critical set near the support of a compactly supported smooth amplitude is clean, and first localize the amplitude so that its support meets only one connected critical component \(C\). Then \(\phi|_C=c\) is constant. There are coefficients \(A_j\), with
 
 \[
 \int_U e^{i\lambda\phi}a\,dx
@@ -291,13 +318,13 @@ A_0=\int_C
 \tag{7.3}
 \]
 
-Here \(H_\perp\) is the restriction of the Hessian to an orthonormal normal frame. Only the portion met by the support contributes. The formula also holds for an arbitrary smooth density in place of \(a\,dx\), using the quotient density described below. Multiple components contribute separate terms of the form (7.2). For smooth compact parameter families with fixed clean charts and uniformly invertible normal Hessians, the normalized remainder has the parameter and symbol estimates of Theorem 5.1 and Corollary 6.1.
+Here \(H_\perp\) is the restriction of the Hessian to an orthonormal normal frame. Only the portion met by the support contributes. The formula also holds for an arbitrary smooth density in place of \(a\,dx\), using the quotient density described below. Multiple components contribute separate terms of the form (7.2). For smooth compact parameter families with fixed adapted clean charts, common compact coordinate supports, uniformly invertible normal Hessians, and a positive gradient lower bound on the remaining support, the normalized remainder has the parameter and symbol estimates of Theorem 5.1 and Corollary 6.1. These are the same uniform localization requirements as in the isolated case.
 
-**Proof.** Since \(d\phi=0\) on \(C\), its restriction is locally constant and hence constant on the connected component. Choose coordinates \((y,z)\) with \(C=\{z=0\}\). The normal Hessian in the \(z\) variables is invertible. Apply Lemma 4.1 to those variables with \(y\) as a parameter. This gives \(\phi=c+z^TJz/2\) in new coordinates. Use a partition of unity on the compact part of the support met by \(C\), and Proposition 2.1 away from \(C\).
+**Proof.** Appendix A.5 proves the coordinate and quotient-density assertions, and A.6 supplies the finite localization, including zero normal dimension. Since \(d\phi=0\) on \(C\), its restriction is locally constant and hence constant on the connected component. Choose coordinates \((y,z)\) with \(C=\{z=0\}\). The normal Hessian in the \(z\) variables is invertible. Apply Lemma 4.1 to those variables with \(y\) as a parameter. This gives \(\phi=c+z^TJz/2\) in new coordinates. Use a partition of unity on the compact part of the support met by \(C\), and Proposition 2.1 away from \(C\).
 
 In each chart apply Theorem 3.2 to the normal integral and then integrate the coefficients in \(y\). The uniform remainder estimate can be integrated because the tangential support is fixed and compact. The leading coefficient is the original density on \(U\) divided by the density on the normal quotient whose coordinate expression is \(|\det H_\perp|^{1/2}|dz|\).
 
-To check independence, change a normal frame by a matrix \(B\). The Hessian changes to \(B^TH_\perp B\), so its determinant square root changes by \(|\det B|\), exactly the density transformation factor. Dividing the ambient density by this normal density gives a well-defined density on \(C\). In orthonormal frames for the Euclidean metric this is (7.3). The same calculation proves the arbitrary-density assertion. The parameter and symbol estimates follow chart by chart from the already proved estimates, using a finite partition of unity. ∎
+To check independence, change a normal frame by a matrix \(B\). The Hessian changes to \(B^TH_\perp B\), so its determinant square root changes by \(|\det B|\), exactly the density transformation factor. In arbitrary adapted coordinates, if the original density is \(m(y,z)|dy\,dz|\), the leading density on \(C\) is \(m(y,0)|\det\phi_{zz}''(y,0)|^{-1/2}|dy|\). Changing the transverse complement does not change the induced normal-quotient form, since the Hessian annihilates \(T C\); the density transformation in the exact sequence \(0\to T C\to T U|_C\to T U|_C/T C\to0\) cancels the normal determinant factor. Thus dividing the ambient density by this normal density gives a well-defined density on \(C\). In orthonormal frames for the Euclidean metric this is (7.3). The same calculation proves the arbitrary-density assertion. The parameter and symbol estimates follow chart by chart from the already proved estimates, using the finite partition and compact tangential integration in A.6. Apply the parameter Morse lemma to \(z\) with \((y,s)\) as parameter; the critical value is independent of \(y\) on each connected critical component. This proof does not invoke a later Fourier-integral composition theorem. ∎
 
 The decay power depends on the normal dimension. If there are \(e\) critical directions among \(d\) variables, the power is \(\lambda^{-(d-e)/2}\). The extra factor \(\lambda^{e/2}\), relative to an isolated point, is the analytic origin of the excess correction in clean Fourier-integral composition.
 
@@ -389,9 +416,170 @@ I(\lambda)=(-1)^M(i\lambda)^{-M}
 
 and hence \(I=O(\lambda^{-M})\) for every \(M\). A stationary quadratic part in two variables does not suffice when another integration variable has a nonzero phase derivative.
 
+## Appendix A. The analytic prerequisites used in the proof
+
+### A.1. Gaussian integral and Fourier inversion
+
+The Schwartz space \(\mathcal S(\mathbb R^d)\) consists of smooth functions \(b\) for which \(x^\alpha\partial^\beta b\) is bounded for every pair of multi-indices. Equivalently, every \((1+|x|)^m|\partial^\beta b(x)|\) is bounded. One direction follows from \(|x^\alpha|\leq(1+|x|)^{|\alpha|}\). For the other use \(|x|\leq\sum_j|x_j|\) and expand the integer power of \(1+\sum_j|x_j|\) into finitely many monomials. The rectangular-shell decay estimate P18.3 now proves integrability of these functions and all their derivatives. The Fourier convention is that of Section 1.
+
+First,
+\[
+\left(\int_{\mathbb R}e^{-x^2/2}\,dx\right)^2
+=\int_{\mathbb R^2}e^{-(x^2+y^2)/2}\,dx\,dy
+=2\pi\int_0^\infty e^{-r^2/2}r\,dr=2\pi.
+\tag{A1}
+\]
+The absolute product Fubini theorem P18.4 and the complete polar exhaustion P21.5 justify these equalities and the limits of the bounded integrals. Rescaling gives the Gaussian integral at every positive real scale. For \(t>0\), define
+\[
+g_t(x)=(2\pi t)^{-d/2}e^{-|x|^2/(2t)}.
+\]
+Integration by parts in one variable gives the differential equation
+\(\partial_{\xi_j}\widehat g_t=-t\xi_j\widehat g_t\).
+Since \(\widehat g_t(0)=1\), solving these scalar equations gives
+\[
+\widehat g_t(\xi)=e^{-t|\xi|^2/2}.
+\tag{A2}
+\]
+All integrations and differentiations have integrable Gaussian majorants.
+
+If \(b\in\mathcal S\), repeated integration by parts shows
+\[
+\xi^\alpha\partial_\xi^\beta\widehat b(\xi)
+=(-i)^{|\beta|}\,\widehat{D^\alpha(x^\beta b)}(\xi),
+\qquad D_j=-i\partial_{x_j}.
+\tag{A3}
+\]
+The functions on the right are bounded by the \(L^1\) norms of their integrands. Consequently \(\widehat b\) is also a Schwartz function and is integrable. Fubini and the positive Gaussian transform give
+\[
+(2\pi)^{-d}\int e^{ix\cdot\xi}e^{-t|\xi|^2/2}
+       \widehat b(\xi)\,d\xi
+=\int g_t(x-y)b(y)\,dy.
+\tag{A4}
+\]
+For the left side, absolute integrability follows from
+\(\|b\|_{L^1}\int e^{-t|\xi|^2/2}\,d\xi<\infty\).
+For the right side, substitute \(y=x-\sqrt t\,z\). The resulting integrand is \(g_1(z)b(x-\sqrt t\,z)\), bounded by \(\|b\|_\infty g_1(z)\), and converges pointwise to \(g_1(z)b(x)\). On a fixed compact \(z\) box the convergence is uniform by continuity of \(b\); outside that box the Gaussian tail is uniformly small. Q1 therefore proves convergence of the integral to \(b(x)\). The left side tends, by the integrability of \(\widehat b\), to its undamped inverse transform. This proves Fourier inversion for every Schwartz function.
+
+### A.2. Plancherel and the pairing calculation
+
+For \(b,c\in\mathcal S\), insert the inversion formula for \(c\) into \(\int b\overline c\). The product of \(|b(x)|\) and \(|\widehat c(\xi)|\) is integrable on the product space. Hence
+\[
+\int b(x)\overline{c(x)}\,dx
+=(2\pi)^{-d}\int\widehat b(\xi)\,
+                  \overline{\widehat c(\xi)}\,d\xi.
+\tag{A5}
+\]
+Taking \(c=b\) proves exactly the Plancherel identity needed below. No extension to arbitrary \(L^2\) functions is needed for this lesson.
+
+The pairing step in (3.5) can also be performed before taking a distributional limit. Insert the inversion formula for \(b\) into
+\(\int e^{i\lambda Q_H(x)}e^{-\varepsilon|x|^2/2}b(x)\,dx\).
+For each \(\varepsilon>0\), Fubini is legitimate. Apply the damped Gaussian transform from Lemma 3.1 with Fourier variable \(-\xi\). Its matrix exponential has absolute value at most one, and its prefactor is bounded as \(\varepsilon\downarrow0\), because \(H\) is invertible. Dominated convergence against \(|\widehat b|\) then gives (3.5). On the original side, convergence follows from the compact support of \(b\). Thus only ordinary Gaussian integrals and the Schwartz inversion just proved are required.
+
+For the distributional wording of Lemma 3.1, a bounded function \(f\) defines the continuous functional \(b\mapsto\int f b\) on \(\mathcal S\): choose any integer \(k>d/2\) and bound the absolute integral by \(\|f\|_\infty\int\langle x\rangle^{-2k}\,dx\) times \(\sup_x\langle x\rangle^{2k}|b(x)|\). Formula (A3) bounds every Schwartz seminorm of \(\widehat b\) by finitely many seminorms of \(b\), so the Fourier transform is continuous on \(\mathcal S\). Define its action on tempered distributions by transposition. The two dominated-convergence arguments in Lemma 3.1 then prove exactly the asserted identity in that dual space.
+
+### A.3. The weighted estimate with its precise derivative count
+
+First prove the integral Cauchy–Schwarz inequality in the setting used here. If continuous \(u,v\) have finite square integrals, then \(2|u\overline v|\leq |u|^2+|v|^2\) proves absolute convergence of their product. Set \(A=\int|u|^2\), \(B=\int|v|^2\), and \(C=\int u\overline v\). Positivity and linearity, first on compact boxes and then by the absolute tail limits P18.1–P18.2, give
+\[
+0\leq\int|u-zv|^2=A-2\operatorname{Re}(\overline z C)+|z|^2B.
+\tag{A8}
+\]
+If \(B>0\), take \(z=C/B\) to obtain \(|C|^2\leq AB\). If \(B=0\) and \(C\neq0\), taking \(z=tC\) and \(t\to+\infty\) contradicts (A8); thus \(C=0\) and the same inequality holds.
+
+Let \(N\geq0\), and let the integer \(\ell>d/2\). Apply this inequality to \(u(\xi)=\langle\xi\rangle^{-\ell}\) and \(v(\xi)=|\xi|^{2N}\langle\xi\rangle^\ell|\widehat b(\xi)|\). Both square integrals converge by P18.3 and the Schwartz bounds. Since \(|\xi|^{4N}\leq\langle\xi\rangle^{4N}\), it gives
+\[
+\int |\xi|^{2N}|\widehat b(\xi)|\,d\xi
+\leq\left(\int\langle\xi\rangle^{-2\ell}\,d\xi\right)^{1/2}
+ \left(\int\langle\xi\rangle^{4N+2\ell}
+                   |\widehat b(\xi)|^2\,d\xi\right)^{1/2}.
+\tag{A6}
+\]
+The first integral is finite by the rectangular-shell estimate P18.3 with exponent \(2\ell>d\), using the comparable weights \(\langle\xi\rangle=(1+|\xi|^2)^{1/2}\) and \(1+|\xi|\). No additional spherical integration theorem is used. Because \(2N+\ell\) is an integer, the multinomial expansion of
+\((1+\xi_1^2+\cdots+\xi_d^2)^{2N+\ell}\)
+is a finite sum of positive constants times \(|\xi^\alpha|^2\), with \(|\alpha|\leq2N+\ell\). Apply (A5) to \(D^\alpha b\), using
+\(\widehat{D^\alpha b}=\xi^\alpha\widehat b\), and take square roots. This proves
+\[
+\int |\xi|^{2N}|\widehat b(\xi)|\,d\xi
+\leq C_{d,N,\ell}
+       \sum_{|\alpha|\leq2N+\ell}\|\partial^\alpha b\|_{L^2}.
+\tag{A7}
+\]
+Here \(|K|\) denotes the outer measure \(m^*(K)\) of P19. For any \(\varepsilon>0\), cover \(K\) by open rectangles with sum of volumes at most \(m^*(K)+\varepsilon\); compactness gives a finite subcover with no larger sum. Their union is Jordan measurable by P20.3. For continuous \(u\) supported in \(K\), positivity, finite additivity and null-overlap subdivision give
+\(\int|u|^2\leq\|u\|_\infty^2(m^*(K)+\varepsilon)\).
+Let \(\varepsilon\downarrow0\). Thus on this fixed compact support each norm is bounded by
+\(|K|^{1/2}\|\partial^\alpha b\|_\infty\), including when \(K\) itself is not a Jordan set.
+The same argument applies after any fixed parameter or scale derivative. This proves the bound used in (3.4) and (6.2) with no derivative loss beyond their stated finite seminorms.
+
+### A.4. Finite smooth cutoffs
+
+Put \(h(t)=e^{-1/t}\) for \(t>0\), and \(h(t)=0\) for \(t\leq0\). Every right derivative is a polynomial in \(t^{-1}\) times \(e^{-1/t}\), which tends to zero at the origin: \(v^m e^{-v}\to0\) as \(v\to\infty\). The flatness and smoothness, including all derivatives at zero, are proved in P14.3. The function
+\[
+\theta(t)=\frac{h(t)}{h(t)+h(1-t)}
+\]
+is smooth, equals zero for \(t\leq0\) and one for \(t\geq1\). Composing it with affine functions of \(|x-x_0|^2\) gives a cutoff equal to one on a closed ball and supported in any prescribed larger ball.
+
+Given a compact set covered by coordinate neighborhoods, choose finitely many such smaller balls that cover it, with cutoffs \(b_j\) supported in their assigned neighborhoods. On a neighborhood of the compact set, \(S=\sum_jb_j>0\). Choose a further cutoff \(\chi\), equal to one near the compact set, whose support lies where \(S>0\), using a finite cover by balls inside that open set. For example, if the associated cutoffs are \(c_k\), then \(1-\prod_k(1-c_k)\) provides such a \(\chi\). The functions \(\chi b_j/S\), extended by zero, form a smooth partition with sum one near the compact set. This gives the precise finite partitions used in Sections 5 and 7. With parameters in a compact set, perform the construction in the product coordinate neighborhoods; compactness keeps every derivative needed in a fixed estimate bounded.
+
+### A.5. Hessians and quotient densities in full
+
+A smooth \(k\)-dimensional submanifold means a subset with smooth adapted coordinate charts \((y,z)\) in which it is \(z=0\), \(y\in\mathbb R^k\), \(z\in\mathbb R^r\). This is the chart definition; no unproved constant-rank theorem is needed. At a critical point, the chain rule for a coordinate map \(F\) gives
+\[
+(\phi\circ F)''=F'^T\phi''F',
+\]
+because its other terms contain first derivatives of \(\phi\), which vanish. If \(\ker H=W=T_xC\), the rule
+\(\overline H([v],[w])=H(v,w)\) is independent of the lifts, since \(H\) annihilates \(W\). If its pairing with every quotient vector vanishes, then \(v\in\ker H=W\); hence \(\overline H\) is nondegenerate.
+
+An ordinary density on an \(n\)-dimensional vector space assigns a number to each ordered basis, with transformation rule
+\(\mu(vB)=|\det B|\mu(v)\). We allow complex-valued amplitudes multiplying these ordinary densities. For a nondegenerate real symmetric form \(H\), define the positive density
+\[
+\nu_H(v_1,\ldots,v_n)=
+\left|\det\bigl(H(v_i,v_j)\bigr)\right|^{1/2}.
+\]
+Indeed the matrix under a basis change is \(B^THB\), and determinant multiplication shows that its absolute square root is multiplied by \(|\det B|\). Only ordinary densities and this positive square root are used.
+
+Let \(W\subset V\), let \(\mu\) be a density on \(V\), and let \(\nu\) be a positive density on \(V/W\). If \(t\) is a basis of \(W\), \(q\) a basis of \(V/W\), and \(v\) any lifts of \(q\), set
+\[
+(\mu/\nu)(t)=\frac{\mu(t,v)}{\nu(q)}.
+\]
+Changing lifts adds tangent vectors to \(v\); the combined change matrix is block upper triangular with identity diagonal, so it has determinant one. Changing \(q\) by \(B\) multiplies numerator and denominator by \(|\det B|\). Changing \(t\) by \(P\) multiplies the quotient by \(|\det P|\), exactly the density rule on \(W\). To justify the block determinant used here, expand the determinant by permutations: a nonzero term cannot send a lower row to an upper-block column because the lower-left block is zero; counting columns then forces each block to use its own columns, and the sum factors into the two block determinants. This proves lift and frame independence.
+
+Apply this construction with \(V=T_xU\), \(W=T_xC\), and \(\nu=\nu_{\overline H}\). For ambient density \(m(y,z)|dy\,dz|\), its quotient is
+\[
+\frac{m(y,0)}{|\det\phi''_{zz}(y,0)|^{1/2}}\,|dy|.
+\tag{A9}
+\]
+The \(z\) classes form a quotient basis and the \(y\) vectors a tangent basis, so this follows directly from the definition. The critical kernel condition makes the \(z\) block invertible.
+
+Integration of a compactly supported density on \(C\) is defined with finitely many adapted charts and the cutoffs of A.4 restricted to \(C\). It is independent of these choices: refine two such partitions by their products. On each common chart overlap, the coordinate transition is a smooth diffeomorphism and P21.4 cancels the density factor with the absolute Jacobian in the integral. Finite additivity identifies both sums. A zero-dimensional compact support gives a finite sum of point values, since every point has a one-point chart and compactness gives a finite cover.
+
+Finally, let \(T\) be the matrix of the tangent coordinate frame. Its Gram matrix \(T^TT\) is positive definite, since \(v^TT^TTv=|Tv|^2>0\) for \(v\neq0\). The orthogonal projection onto the tangent space is \(T(T^TT)^{-1}T^T\), smooth by P2. Project a fixed normal basis at one point using the complementary projection; linear independence persists nearby by the nonzero Gram determinant. Gram–Schmidt, with the positive square roots proved in P8 and the construction P9.4, gives a smooth orthonormal normal frame \(n\). In the combined frame \((T,n)\), the Gram matrix is block diagonal with blocks \(T^TT\) and the identity. Hence
+\[
+|\det(T,n)|=\sqrt{\det(T^TT)}.
+\]
+The Euclidean density restricted in this combined frame is therefore the induced tangent volume density. Dividing by \(\nu_{\overline H}(n)=|\det H_\perp|^{1/2}\) proves (7.3). The empty tangent or normal blocks obey the dimension-zero conventions stated in Section 1. This also proves that the Euclidean expression represents the intrinsic quotient (A9).
+
+The ordinary density and exact-sequence viewpoint is described in the freely posted Bates–Weinstein Appendix A. The transformation and integration arguments required here have been given in full.
+
+### A.6. Finite clean localization and its uniform bounds
+
+Intersect the critical set with the compact amplitude support \(K\). This is compact: it is the zero set of the continuous gradient inside \(K\). At each point choose a smaller adapted product chart with connected tangent zero section and precompact closure in a larger adapted chart. Its critical points form that connected zero section, so the chart meets only one critical component. Compactness gives finitely many such smaller charts covering the critical subset. In particular only finitely many critical components meet \(K\), and the amplitude may be split among them.
+
+On the critical set, the derivative in every tangent direction of \(\phi|_C\) is zero. In a small convex tangent coordinate box, the fundamental theorem along each segment proves constancy. Thus the restriction is locally constant. On a connected component the set on which it equals a chosen value and its complement are both open; connectedness forces the complement to be empty. The same reasoning applies to the locally constant normal signature furnished by the signed Morse reduction and P5.
+
+Before constructing cutoffs, refine this cover by the parameter Morse charts for the normal variables, and choose smaller precompact charts inside them. Compactness again gives a finite cover. Construct the finite cutoffs of A.4 in these charts, with their sum one near the compact critical subset. Subtract their sum from one on the amplitude support. The remaining amplitude has compact support disjoint from the critical set, so continuity and the extreme-value theorem give a positive minimum of \(|\nabla\phi|\) there. Proposition 2.1 applies to that remaining part.
+
+On each near chart use the resulting normal Morse coordinates, with \(y\) as parameter. The supports chosen in the preceding paragraph make each localized amplitude and its transformed version compactly supported inside its respective chart; P21.4 justifies substitution and smooth extension by zero. Compact Fubini P17.5 orders the tangential and normal integrals. Theorem 3.2 gives a normal remainder bounded by a constant times \(\lambda^{-N}\), uniformly in \(y\) on a fixed compact set. Its tangential integral is bounded by that supremum times the volume of a containing tangent rectangle. The same argument integrates every coefficient and every fixed parameter derivative, using P12.7. A.5 identifies the leading coefficient after summing the cutoffs. Equality of higher coefficients under different cutoffs follows from the subtraction-and-limit argument in Section 5, applied to the localized component.
+
+If \(r=0\), the normal integral is evaluation, the quadratic prefactor is one, and the phase is constant on each such chart. Its expansion is exact with \(A_j=0\) for \(j>0\); any far contribution is rapidly decreasing. No positive-dimensional Fresnel calculation is being applied to this case.
+
+For the families in Theorem 7.2, use the stipulated smooth adapted charts over compact parameter neighborhoods, common compact coordinate supports, and the stated normal-inverse and far-gradient bounds. Treat \((y,s)\) as the parameter in M1. M2 bounds inverse-coordinate derivatives on their compact images. Finite parameter covers, products of the cutoffs of A.4, and finite maxima of the bounds give uniform constants; take the union of the finitely many amplitude seminorm requirements. The critical value \(c(s)\) is independent of \(y\) on the component just proved constant. Remove \(e^{i\lambda c(s)}\) before applying the differentiated estimate. Corollary 6.1 then gives each scale derivative with its stated decrease in order; compact tangential integration preserves the bound. This proves all the uniformity assertions of the clean theorem without importing composition of Fourier integral operators.
+
 ## References
 
-- [Guillemin–Sternberg] Victor Guillemin and Shlomo Sternberg, *Semi-classical Analysis*, lecture notes. [Online reading](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf).
-- [Hörmander I] Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, Springer, 1983.
+- [Hörmander I] Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition (1990), Springer, 2003 reprint, §7.7, Lemma 7.7.3 and Theorems 7.7.5–7.7.6, pp. 218–222.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).*
+- [Guillemin–Sternberg] Victor Guillemin and Shlomo Sternberg, *Semi-classical Analysis*, author draft, 13 January 2010, Chapter 14 and §8.14. [Online reading](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf).
+- [Bates–Weinstein] Sean Bates and Alan Weinstein, *Lectures on the Geometry of Quantization*, author-posted draft, Appendix A (ordinary densities and the exact sequence) and Appendix B (nonstationary integration and the invariant leading coefficient). The Gaussian calculation used here is proved locally from the independently checked free route in Q2 and Q6. [Online reading](https://math.berkeley.edu/~alanw/GofQ.pdf).
+- [Lebl] Jiří Lebl, *Basic Analysis I–II*, version 6.3, 15 May 2026, selected elementary prerequisites and §§8.3–8.6 and 10.7. [Author edition](https://www.jirka.org/ra/). The exact programme versions and completed prerequisite proofs are bound in this receiving edition.
+
+*Retained original text by GPT-6.1 Sol (OpenAI), Ultra, September 2026, with its 3 October 2026 analytic revision: CC0. Free-source proof reconciliation and additional prerequisite, density and localization arguments by GPT-6 Astra (OpenAI), Ultra, 4 October 2026. Original text: public domain (CC0); linked prerequisite components retain their own notices. Self-checked by the writing AI.*

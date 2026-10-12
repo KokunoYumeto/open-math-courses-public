@@ -12,7 +12,7 @@ The original conditional statements below are retained as historical source text
 
 The finite-chain H argument is available over an arbitrary associative unital coefficient ring. The oriented Thom and homological tube statements retain their own coefficient and orientation hypotheses. The original compact-support alternative is preserved in full. They do not identify a rational or integral connecting map merely by scalar extension, and do not supply rational spanning or form completeness.
 
-Read the complete programme readings, exact source downloads and component terms, including the full original PSH alternative and its separately marked shell wording correction. The reproduction guide retains every original figure source and the exact corrected proof. The proof keeps affine/projective orientation, multiplicity, the reduced-zero exception, the C8 comparison and full component constancy as separate entries. The figures explain the radial section, degree ledger and actual product period; they do not prove those remaining general interfaces.
+Read the complete programme readings, exact source downloads and component terms, including the complete corrected PSH teaching version and its explicitly marked historical alternative. The correction restores the continuity hypothesis for the lower bound and the exact shell sublevel; the original TP041 proof is not retroactively certified by this change. The reproduction guide retains every original figure source and the exact corrected proof. The proof keeps affine/projective orientation, multiplicity, the reduced-zero exception, the C8 comparison and full component constancy as separate entries. The figures explain the radial section, degree ledger and actual product period; they do not prove those remaining general interfaces.
 
 ---
 
@@ -108,7 +108,7 @@ Define the globally continuous function
 
 which is compact and lies inside \(U\). This proves properness and exhaustion. Adding a constant makes \(\rho\) nonnegative if desired without changing its Levi form. The argument applies to singular or nonreduced removed hypersurfaces because no differentiation occurs at their zeros. \(\square\)
 
-This directly supplies the **exhaustion-definition** of Stein used by the new [plurisubharmonic lesson](../reproduce/L124/context/providers/plurisubharmonic-functions-and-stein-manifolds.html). We do not use the equivalence with another definition of Stein. We also do not infer homology vanishing from this definition alone. The same exhaustion restricts properly and strictly plurisubharmonically to \(Y\), since it is closed in \(U\) and its inclusion is a holomorphic immersion. The vanishing needed below is the one on \(U\), in complex dimension \(d\).
+This directly supplies the **exhaustion-definition** of Stein used by the new [plurisubharmonic lesson](../reproduce/L124/context/providers/plurisubharmonic-functions-and-stein-manifolds-shell-corrected.html). We do not use the equivalence with another definition of Stein. We also do not infer homology vanishing from this definition alone. The same exhaustion restricts properly and strictly plurisubharmonically to \(Y\), since it is closed in \(U\) and its inclusion is a holomorphic immersion. The vanishing needed below is the one on \(U\), in complex dimension \(d\).
 
 ![Exact projective exhaustion on the punctured projective line.](../reproduce/L124/context/figures/projective-exhaustion.png)
 

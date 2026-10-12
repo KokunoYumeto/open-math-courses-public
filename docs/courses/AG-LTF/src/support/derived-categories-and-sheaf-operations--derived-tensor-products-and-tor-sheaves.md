@@ -256,6 +256,39 @@ Formula (3.4) computes only the first two groups without extra information on \(
 
 ## 4. Two geometric calculations
 
+### Holomorphic coordinate germs
+
+For the holomorphic examples here and in the later Hom and perfect-complex lessons, use the definition in the earlier programme reading *Holomorphic functions of several variables*, Definition 1.1 and Theorem 1.2. Its Theorem 2.1 and Proposition 2.2 prove the precise analytic input: every holomorphic germ has a unique Taylor expansion, absolutely convergent on a sufficiently small polydisc, with Cauchy coefficient estimates; and a convergent power series defines a holomorphic function. The following proves the coordinate algebra needed in those examples.
+
+**Lemma (holomorphic coordinate germs).** Put \(R_1=\mathcal O_{\mathbf C,a}\), with coordinate \(w=z-a\), and \(R_2=\mathcal O_{\mathbf C^2,0}\), with coordinates \(x,y\). Multiplication by \(w\) on \(R_1\) and by \(x\) on \(R_2\) is injective. Evaluation gives \(R_1/(w)=\mathbf C\), restriction to \(x=0\) gives
+\[
+R_2/(x)\cong\mathcal O_{\mathbf C,0},
+\]
+with the coordinate on the right equal to \(y\), and multiplication by \(y\) on this quotient is injective. Consequently \(R_2/(x,y)=\mathbf C\), by evaluation at the origin. At a point where one of these coordinate functions is nonzero, it is a unit in the holomorphic stalk.
+
+**Proof.** Represent a germ in \(R_1\) by \(f=\sum_{n\geq0}c_nw^n\). Choose a closed disc inside its domain of holomorphy. The earlier Taylor theorem gives radii and a bound \(|c_n|\leq Mr^{-n}\). The coefficients of \(wf\) are zero in degree zero and \(c_n\) in degree \(n+1\). Uniqueness of Taylor coefficients therefore makes multiplication by \(w\) injective. Evaluation is \(c_0\) and is onto by constant functions. If \(c_0=0\), put \(g=\sum_{n\geq0}c_{n+1}w^n\). For \(0<\rho<r\),
+\[
+\sum_{n\geq0}|c_{n+1}|\rho^n
+\leq\frac{M}{r}\sum_{n\geq0}(\rho/r)^n
+=\frac{M}{r(1-\rho/r)}.
+\]
+Thus \(g\) converges on a smaller disc, is holomorphic by the earlier Proposition 2.2, and \(f=wg\). Conversely a multiple of \(w\) evaluates to zero. This proves the one-variable assertions.
+
+Now write \(f\in R_2\) as \(\sum_{m,n\geq0}c_{mn}x^my^n\), with \(|c_{mn}|\leq Mr_x^{-m}r_y^{-n}\) on chosen radii. Multiplication by \(x\) shifts the first coefficient index, so uniqueness again proves injectivity. Restriction to \(x=0\) is the germ \(\sum_n c_{0n}y^n\); it is holomorphic by Definition 1.1. It is onto: any holomorphic germ \(h(y)\) extends as the function \(h(y)\) independent of \(x\), which is continuous and holomorphic in each coordinate. Its kernel consists exactly of germs with every \(c_{0n}=0\), by the one-variable coefficient uniqueness. For such a germ the shifted series
+\[
+g=\sum_{m,n\geq0}c_{m+1,n}x^my^n
+\]
+converges absolutely and uniformly on smaller closed polydiscs, since
+\[
+\sum_{m,n\geq0}|c_{m+1,n}|\rho_x^m\rho_y^n
+\leq\frac{M}{r_x}
+\frac1{(1-\rho_x/r_x)(1-\rho_y/r_y)}
+\qquad(0<\rho_j<r_j).
+\]
+The tails of the product geometric majorant also bound the series tails uniformly on each such closed polydisc. Proposition 2.2 makes \(g\) holomorphic, and \(f=xg\). This identifies the restriction kernel with \((x)\) and proves the displayed quotient isomorphism as an isomorphism of rings. Multiplication by \(y\) there is the one-variable injective map already proved. Quotienting once more by \(y\) gives \(\mathbf C\). Explicitly, if \(f(0,0)=c_{00}=0\), its terms with positive \(x\)-exponent give \(xg\) as above, and the remaining terms are \(yh(y)\), with \(h=\sum_{n\geq0}c_{0,n+1}y^n\); the same one-variable estimate makes \(h\) holomorphic. Hence the evaluation kernel is exactly \((x,y)\).
+
+Finally, near a point where a coordinate \(u\) is nonzero, \(1/u\) is continuous. Its difference quotient in that coordinate is \(-1/(u(u+h))\), tending to \(-u^{-2}\), and it is constant in any other coordinate. Definition 1.1 therefore makes \(1/u\) holomorphic. This proves the unit assertion. \(\square\)
+
 ### Skyscrapers on a smooth one-dimensional local model
 
 Take \(X=\mathbb R\) with \(\mathcal O\) the sheaf of real analytic functions, and let \(k_a=a_*\mathbb R\), with the action given by evaluation at \(a\). Multiplication by \(t-a\) gives an exact sequence
@@ -300,7 +333,17 @@ I_Z\cap I_{Z'}=I_ZI_{Z'}.
 \tag{4.3}
 \]
 
-Indeed, for a real continuous function \(f\) vanishing on both axes, put \(h=\sqrt{|f|}\) and define \(g=f/\sqrt{|f|}\) where \(f\ne0\), with \(g=0\) on its zero set. Both functions are continuous: at the zero set their absolute values are \(\sqrt{|f|}\), which tends to zero. Both vanish on each axis and \(f=gh\). This proves inclusion into the product on every germ; the reverse inclusion follows from vanishing. Lemma 3.4 gives
+The square-root facts needed here follow from the earlier programme intermediate value theorem, Theorem 6. The function \(t\mapsto t^2\) is continuous: for \(|t-s|<1\),
+\[
+|t^2-s^2|\leq(2|s|+1)|t-s|.
+\]
+For \(a\geq0\), the number \(a\) lies between its values \(0\) and \((a+1)^2\) on \([0,a+1]\), so the intermediate value theorem supplies a nonnegative \(u\) with \(u^2=a\). This \(u\) is unique, since \(v^2-u^2=(v-u)(v+u)>0\) for \(0\leq u<v\); write it as \(\sqrt a\). If \(a\geq b\geq0\), then \(u=\sqrt a\geq v=\sqrt b\), and
+\[
+(u-v)^2\leq(u-v)(u+v)=a-b.
+\]
+Interchanging \(a,b\) gives \((\sqrt a-\sqrt b)^2\leq|a-b|\) in all cases. Thus \(|a-b|<\varepsilon^2\) implies \(|\sqrt a-\sqrt b|<\varepsilon\), proving continuity of the nonnegative square root.
+
+Now, for a real continuous function \(f\) vanishing on both axes, put \(h=\sqrt{|f|}\) and define \(g=f/\sqrt{|f|}\) where \(f\ne0\), with \(g=0\) on its zero set. The inequality \(\bigl||s|-|t|\bigr|\leq|s-t|\) makes absolute value continuous, so \(h\) is continuous by composition. Near a nonzero value of \(f\), its sign is fixed by continuity and \(g\) equals either \(h\) or \(-h\), so \(g\) is continuous there. At a zero, continuity of \(f\) gives \(|f|<\varepsilon^2\) nearby, hence \(|h|=|g|=\sqrt{|f|}<\varepsilon\). Thus both functions are continuous everywhere. Both vanish on each axis and \(f=gh\). This proves inclusion into the product on every germ; the reverse inclusion follows from vanishing. Lemma 3.4 gives
 
 \[
 \operatorname{Tor}_1(\mathcal O_Z,\mathcal O_{Z'})=0.
@@ -338,6 +381,18 @@ On a one-point space put \(R=k[\varepsilon]/(\varepsilon^2)\) and view \(k=R/(\v
 
 has its last \(R\) in degree zero. In each negative degree the kernel and image of multiplication by \(\varepsilon\) are the same ideal \((\varepsilon)\), and the degree-zero cokernel is \(k\). It is a bounded-above free resolution, hence K-flat. Tensoring with \(k\) kills every differential, so \(\operatorname{Tor}_p^R(k,k)=k\) for every \(p\ge0\). Even two sheaves in degree zero can therefore have derived tensor with infinitely many negative cohomology sheaves. The perfect-complex lesson later proves the finite bounds furnished by a finite locally free model.
 
+For the Hom computations over a one-point ringed space, define
+\[
+\operatorname{Ext}_R^i(M,L)=
+\operatorname{Hom}_{D(R)}(M[0],L[i])\qquad(i\geq0).
+\]
+If \(P\to M[0]\) is a semifree resolution, Theorem 3.4 of *Flat modules and K-flat resolutions* and the Hom-complex formula of the common reading give
+\[
+\operatorname{Ext}_R^i(M,L)=
+H^i\operatorname{Hom}_R^\bullet(P,L[0]).
+\]
+In particular, every bounded-above free resolution has this property. Choose a basis in each degree, put the basis of the top degree in stage zero, and then add the bases in successively lower degrees. Each differential raises degree and is a finite linear combination in the basis of the next degree, so this is a semifree filtration. This proves the needed Hom computation by the theorem already established, for associative unital \(R\) as well as commutative \(R\).
+
 ### Koszul models for several equations
 
 The one-equation calculations extend to a finite regular sequence. The elementary Koszul argument is treated in Pierre Schapira's [*Algebra and Topology*, §4.7](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/AlTo.pdf). The following uses the cohomological degrees and tensor signs fixed in this course.
@@ -347,7 +402,7 @@ The one-equation calculations extend to a finite regular sequence. The elementar
 K_R(a_1,\ldots,a_r)=\bigotimes_{i=1}^r
 \bigl[R\xrightarrow{a_i}R\bigr],
 \]
-with each two-term factor in degrees \(-1,0\). This is a bounded complex of finite free modules, hence K-flat and perfect. If multiplication by \(a_i\) is injective on \(M/(a_1,\ldots,a_{i-1})M\) for every \(i\), then
+with each two-term factor in degrees \(-1,0\). This is a bounded complex of finite free modules, hence K-flat. If multiplication by \(a_i\) is injective on \(M/(a_1,\ldots,a_{i-1})M\) for every \(i\), then
 \[
 H^q(K_R(a_1,\ldots,a_r)\otimes_R M)=
 \begin{cases}
@@ -357,7 +412,7 @@ M/(a_1,\ldots,a_r)M,&q=0,\\
 \]
 If the sequence is regular on \(R\), \(K_R(a_1,\ldots,a_r)\) resolves \(R/(a_1,\ldots,a_r)\). For every module \(N\), with no regularity assumption on \(N\), it consequently computes all \(\operatorname{Tor}_i^R(R/(a_1,\ldots,a_r),N)\).
 
-**Proof.** Write the basis vector attached to \(a_i\) as \(e_i\) in degree \(-1\). On an ordered exterior basis,
+**Proof.** Write the basis vector attached to \(a_i\) as \(e_i\) in degree \(-1\). The degree-\(-s\) term of the tensor product has one basis vector for each \(s\)-element subset: use \(e_i\) in the chosen factors and the degree-zero unit in all other factors. We write that basis vector as \(e_{i_1}\wedge\cdots\wedge e_{i_s}\), with \(i_1<\cdots<i_s\). Define \(\bigwedge^s R^r\) to be the quotient of \((R^r)^{\otimes s}\) by the submodule generated by tensors with two equal entries. By the tensor universal property, maps from this quotient are precisely alternating multilinear maps. Expanding the relation with those two entries equal to \(u+v\) gives the adjacent-interchange rule \(u\wedge v=-v\wedge u\), with the other entries fixed. Expand any wedge in the basis of \(R^r\) and apply this rule to order the entries. Repeated entries make the wedge zero, so the ordered wedges span. This identifies the term with \(\bigwedge^s R^r\) once independence is checked. For each ordered subset, the alternating multilinear function given by the corresponding coordinate determinant descends to an \(R\)-linear functional on the exterior power and has value one on its matching ordered wedge and zero on the others. (In the determinant expansion, interchanging two entries pairs terms with opposite signs, and equal entries cancel those terms.) These functionals prove linear independence, over any commutative ring and also in characteristic two. On this ordered basis,
 \[
 d(e_{i_1}\wedge\cdots\wedge e_{i_s})=
 \sum_{j=1}^s(-1)^{j-1}a_{i_j}
@@ -367,14 +422,19 @@ Removing a pair \(i_j,i_l\) in either order gives opposite signs and the same pr
 
 For \(r=1\), its tensor with \(M\) has kernel of multiplication in degree \(-1\) and cokernel in degree zero. The asserted injectivity gives the result. Suppose the result holds for \(r-1\). That tensor complex is quasi-isomorphic to \(M/(a_1,\ldots,a_{r-1})M\) in degree zero. Tensor with the last two-term free complex preserves this quasi-isomorphism by K-flatness. Its cohomology is again the kernel and cokernel of multiplication by \(a_r\), and regularity gives the assertion. Induction proves the formula. Every term of \(K_R\) is finite free and there are only \(r+1\) nonzero terms; bounded-above flatness proves K-flatness. Its augmentation onto the quotient is the asserted quasi-isomorphism when \(M=R\), so the derived tensor construction proves the final claim. \(\square\)
 
-For \(R=k[x_1,\ldots,x_r]\) and \(a_i=x_i\), the quotient at each step is a polynomial ring in the remaining variables, so the injectivity hypothesis holds over any field. Tensoring the resolution with \(k=R/(x_1,\ldots,x_r)\) makes every differential zero. Therefore
+For \(R=k[x_1,\ldots,x_r]\) and \(a_i=x_i\), setting the first \(i-1\) variables to zero identifies the quotient at step \(i\) with the polynomial ring \(k[x_i,\ldots,x_r]\): the kernel consists exactly of the monomials divisible by one of those first variables. Multiplication by \(x_i\) increases its exponent in each monomial and sends distinct monomials to distinct monomials. Uniqueness of polynomial coefficients therefore proves injectivity, over any field. Thus the required regularity holds. Tensoring the resolution with \(k=R/(x_1,\ldots,x_r)\) makes every differential zero. Therefore
 \[
 \operatorname{Tor}_i^R(k,k)=\bigwedge\nolimits^i k^r
 \quad(0\leq i\leq r),\qquad
 \operatorname{Tor}_i^R(k,k)=0\quad(i>r).
 \]
-Applying Hom to the same finite free resolution gives
-\(\operatorname{Ext}_R^i(k,k)=\operatorname{Hom}_k(\bigwedge^i k^r,k)\) as vector spaces. The dimensions are \(\binom ri\). This calculation asserts groups and vector spaces; an assertion about the Yoneda multiplication would require its additional comparison.
+The same finite free resolution is semifree by the degree filtration just proved, so it computes the Ext groups defined above. Applying \(\operatorname{Hom}_R(-,k)\) makes every differential zero: each differential entry is a signed \(x_j\), and \(x_j\) acts as zero on \(k\). In degree \(i\) its Hom complex is
+\[
+\operatorname{Hom}_R(\bigwedge^i R^r,k)
+\cong\operatorname{Hom}_k(\bigwedge^i k^r,k),
+\]
+where both sides assign one independent value in \(k\) to each ordered \(i\)-element subset. Consequently
+\(\operatorname{Ext}_R^i(k,k)=\operatorname{Hom}_k(\bigwedge^i k^r,k)\) as vector spaces for \(0\leq i\leq r\), and it is zero for \(i>r\). The ordered subset basis has \(\binom ri\) elements, proving the stated dimensions. This calculation asserts groups and vector spaces; an assertion about the Yoneda multiplication would require its additional comparison.
 
 ### A bar model without commutativity
 

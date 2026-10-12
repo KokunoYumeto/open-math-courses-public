@@ -9,3 +9,8 @@ The figures are generated independently by the included CC0 `make_figures.py` us
 The delivery verification reruns the renderer into a fresh local output, compares exact figure/geometry bytes and PNG RGBA, checks all source downloads and ordered prose/math, and exercises the actual browser at widths1100 and390. Any wider expression has a focusable horizontal scroll control; use the left/right keys after focusing it. The exact source TeX remains in the HTML.
 
 New prose, diagrams and renderer are CC0-1.0; source author/component credits remain with every reading. MathJax and figure font licenses are included separately. No source-book scan, book prose or runtime filesystem path is included in this packet.
+
+## Stein prerequisite correction, 12 October 2026
+
+Use `sources/plurisubharmonic-functions-and-stein-manifolds-shell-corrected.md` and its paired reader for the current exhaustion definition and exact shell lemma. The continuity hypothesis, lower-bound proof and counterexample are supplied there. The other version retains its earlier mathematical body under an explicit historical warning. This change does not certify TP041 or close the packet's remaining prerequisites.
+

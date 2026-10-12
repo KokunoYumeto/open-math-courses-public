@@ -1,19 +1,49 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Stationary phase and critical manifolds</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><span class="unlinked">Constant-coefficient equations and solvability</span> · <a href="index.html">Prerequisites</a></nav><h1 id="stationary-phase-and-critical-manifolds">Stationary phase and critical manifolds</h1>
-<p>A rapidly oscillating integral cancels where its phase changes to first order. Near a critical point, the quadratic part controls the size and the complex phase of the answer. When critical points form a manifold, cancellation acts only in its normal directions. This lesson develops those three mechanisms with estimates that remain useful when the phase and amplitude vary.</p>
-<p>We assume multivariable calculus, the inverse and implicit function theorems, smooth partitions of unity, and the Fourier inversion and Plancherel conventions in <a href="prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a>. The uniform Fourier multiplier estimate in <a href="gauss-transform-estimates.html">Quadratic Fourier multipliers at a moving scale</a> supplies one estimate below. Basic references are [Hörmander I] and [Guillemin–Sternberg]. The proofs here use only the stated prerequisites.</p>
+<p>A rapidly oscillating integral cancels where its phase changes to
+first order. Near a critical point, the quadratic part controls the size
+and the complex phase of the answer. When critical points form a
+manifold, cancellation acts only in its normal directions. This lesson
+develops those three mechanisms with estimates that remain useful when
+the phase and amplitude vary.</p>
+<p>The precise prerequisites are the earlier proof companions. <span class="unlinked">Quadratic
+stationary phase, Q1–Q9</span> proves the analytic identities; <span class="unlinked">Morse
+reduction, M1–M2</span> proves the smooth coordinate construction; <span class="unlinked">change
+of variables, P19–P21</span> proves substitution and its measure
+prerequisites. Their exact earlier-programme proof bindings retain Jiří
+Lebl’s freely accessible <em>Basic Analysis</em>, version 6.3, and
+supply the used omitted exercises locally. Appendix A below proves the
+sharper Plancherel estimate needed here, the finite cutoffs, and the
+density and localization facts for critical manifolds.</p>
+<p>The <span class="unlinked">proof
+index</span> records the main proof and its earlier dependencies. The
+alternative complex-analytic argument below also links its identity
+theorem.</p>
+<p>For a human account of stationary phase, see <a
+href="https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf">Guillemin–Sternberg,
+Chapter 14</a> and <a
+href="https://math.berkeley.edu/~alanw/GofQ.pdf">Bates–Weinstein,
+Appendix B</a>. The estimates below include uniform parameter
+derivatives, differentiated symbol remainders and the quotient density
+of a clean critical manifold.</p>
 <h2 id="what-a-uniform-estimate-means"><span id="1-what-a-uniform-estimate-means"></span><span id="section-1"></span>1. What a uniform estimate means</h2>
-<p>Let <span class="math" data-tex="\(U\subset\mathbb R^d\)">\(U\subset\mathbb R^d\)</span> be open, <span class="math" data-tex="\(K\Subset U\)">\(K\Subset U\)</span>, and let <span class="math" data-tex="\(s\)">\(s\)</span> vary in an open set <span class="math" data-tex="\(S\subset\mathbb R^p\)">\(S\subset\mathbb R^p\)</span>. For a real smooth phase <span class="math" data-tex="\(\phi(x,s)\)">\(\phi(x,s)\)</span> and an amplitude <span class="math" data-tex="\(a(x,s)\)">\(a(x,s)\)</span> supported in <span class="math" data-tex="\(K\)">\(K\)</span> in the <span class="math" data-tex="\(x\)">\(x\)</span> variable, set</p>
-<span class="math math-display" data-tex="\[
+<p>Let <span class="math" data-tex="\(U\subset\mathbb R^d\)">\(U\subset\mathbb R^d\)</span> be open,
+<span class="math" data-tex="\(K\Subset U\)">\(K\Subset U\)</span>, and let <span class="math" data-tex="\(s\)">\(s\)</span> vary in an open set <span class="math" data-tex="\(S\subset\mathbb R^p\)">\(S\subset\mathbb R^p\)</span>. For a real smooth
+phase <span class="math" data-tex="\(\phi(x,s)\)">\(\phi(x,s)\)</span> and an amplitude
+<span class="math" data-tex="\(a(x,s)\)">\(a(x,s)\)</span> supported in <span class="math" data-tex="\(K\)">\(K\)</span> in the <span class="math" data-tex="\(x\)">\(x\)</span> variable, set</p>
+<p><span class="math-display" data-tex="\[
 I(\lambda,s)=\int_U e^{i\lambda\phi(x,s)}a(x,s)\,dx,
 \qquad \lambda\geq1.
 \]">\[
 I(\lambda,s)=\int_U e^{i\lambda\phi(x,s)}a(x,s)\,dx,
 \qquad \lambda\geq1.
-\]</span>
-<p>Uniformity will always refer to <span class="math" data-tex="\(s\)">\(s\)</span> in a specified compact set <span class="math" data-tex="\(S_0\Subset S\)">\(S_0\Subset S\)</span>, fixed supports, finitely many bounds on derivatives, and positive lower bounds for the geometric quantities used in the proof. Pointwise nondegeneracy alone does not give a uniform bound across a family.</p>
+\]</span></p>
+<p>Uniformity will always refer to <span class="math" data-tex="\(s\)">\(s\)</span> in a specified compact set <span class="math" data-tex="\(S_0\Subset S\)">\(S_0\Subset S\)</span>, fixed supports, finitely
+many bounds on derivatives, and positive lower bounds for the geometric
+quantities used in the proof. Pointwise nondegeneracy alone does not
+give a uniform bound across a family.</p>
 <p>Our convention is</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math-display" data-tex="\[
 \widehat b(\xi)=\int e^{-ix\cdot\xi}b(x)\,dx,
 \qquad
 b(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}\widehat b(\xi)\,d\xi,
@@ -23,11 +53,21 @@ b(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}\widehat b(\xi)\,d\xi,
 \qquad
 b(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}\widehat b(\xi)\,d\xi,
 \qquad D_j=-i\partial_{x_j}.
-\]</span>
-<p>The signature of a real symmetric invertible matrix is its number of positive eigenvalues minus its number of negative eigenvalues.</p>
+\]</span></p>
+<p>The signature of a real symmetric invertible matrix is its number of
+positive eigenvalues minus its number of negative eigenvalues.</p>
+<p>All integrals here are compact Riemann integrals or absolutely
+convergent improper integrals as constructed in P17–P21. A
+zero-dimensional integral is evaluation, the empty determinant is one,
+and the empty signature is zero. The zero-dimensional quadratic identity
+is therefore immediate; calculations with a radial variable below
+concern positive dimension.</p>
 <h2 id="cancellation-away-from-critical-points"><span id="2-cancellation-away-from-critical-points"></span><span id="section-2"></span>2. Cancellation away from critical points</h2>
-<p><strong>Proposition 2.1 (nonstationary estimate).</strong> Suppose <span class="math" data-tex="\(|\nabla_x\phi|\geq c&gt;0\)">\(|\nabla_x\phi|\geq c&gt;0\)</span> on a fixed neighborhood of <span class="math" data-tex="\(K\times S_0\)">\(K\times S_0\)</span>. For all integers <span class="math" data-tex="\(M,r\geq0\)">\(M,r\geq0\)</span>,</p>
-<span class="math math-display" data-tex="\[
+<p><strong>Proposition 2.1 (nonstationary estimate).</strong> Suppose
+<span class="math" data-tex="\(|\nabla_x\phi|\geq c&gt;0\)">\(|\nabla_x\phi|\geq c&gt;0\)</span> on a
+fixed neighborhood of <span class="math" data-tex="\(K\times S_0\)">\(K\times S_0\)</span>.
+For all integers <span class="math" data-tex="\(M,r\geq0\)">\(M,r\geq0\)</span>,</p>
+<p><span class="math-display" data-tex="\[
 \|I(\lambda,\cdot)\|_{C^r(S_0)}
 \leq C_{M,r}\lambda^{-M}
 \max_{|\alpha|+|\beta|\leq M+2r}
@@ -39,18 +79,21 @@ b(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}\widehat b(\xi)\,d\xi,
 \max_{|\alpha|+|\beta|\leq M+2r}
 \sup_{K\times S_0}|\partial_x^\alpha\partial_s^\beta a|.
 \tag{2.1}
-\]</span>
-<p>The constant depends on the fixed support, <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span>, and finitely many phase derivatives on that neighborhood. Increasing the displayed amplitude seminorm is harmless.</p>
+\]</span></p>
+<p>The constant depends on the fixed support, <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span>, and finitely many phase
+derivatives on that neighborhood. Increasing the displayed amplitude
+seminorm is harmless.</p>
 <p><strong>Proof.</strong> Define</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math-display" data-tex="\[
 L=\frac{\nabla_x\phi\cdot\nabla_x}
 {i\lambda|\nabla_x\phi|^2}.
 \]">\[
 L=\frac{\nabla_x\phi\cdot\nabla_x}
 {i\lambda|\nabla_x\phi|^2}.
-\]</span>
-<p>Then <span class="math" data-tex="\(Le^{i\lambda\phi}=e^{i\lambda\phi}\)">\(Le^{i\lambda\phi}=e^{i\lambda\phi}\)</span>. Its formal transpose for the bilinear integral pairing is</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>Then <span class="math" data-tex="\(Le^{i\lambda\phi}=e^{i\lambda\phi}\)">\(Le^{i\lambda\phi}=e^{i\lambda\phi}\)</span>. Its
+formal transpose for the bilinear integral pairing is</p>
+<p><span class="math-display" data-tex="\[
 L^tb=-\frac1{i\lambda}
 \operatorname{div}_x\left(
 \frac{b\nabla_x\phi}{|\nabla_x\phi|^2}\right).
@@ -58,13 +101,31 @@ L^tb=-\frac1{i\lambda}
 L^tb=-\frac1{i\lambda}
 \operatorname{div}_x\left(
 \frac{b\nabla_x\phi}{|\nabla_x\phi|^2}\right).
-\]</span>
-<p>Integrating by parts <span class="math" data-tex="\(M\)">\(M\)</span> times gives <span class="math" data-tex="\(I=\int e^{i\lambda\phi}(L^t)^Ma\,dx\)">\(I=\int e^{i\lambda\phi}(L^t)^Ma\,dx\)</span>. Each iteration contributes <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>, differentiates the amplitude at most once, and differentiates a coefficient whose denominator is bounded away from zero. Compact support removes all boundary terms. This proves the estimate for <span class="math" data-tex="\(r=0\)">\(r=0\)</span>.</p>
-<p>A derivative of order at most <span class="math" data-tex="\(r\)">\(r\)</span> in <span class="math" data-tex="\(s\)">\(s\)</span> produces a finite sum of integrals with amplitudes <span class="math" data-tex="\(\lambda^q b_q\)">\(\lambda^q b_q\)</span>, <span class="math" data-tex="\(q\leq r\)">\(q\leq r\)</span>, where <span class="math" data-tex="\(b_q\)">\(b_q\)</span> is a product of phase derivatives and derivatives of <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(s\)">\(s\)</span>. Apply <span class="math" data-tex="\(M+r\)">\(M+r\)</span> integrations by parts to each. The derivatives of <span class="math" data-tex="\(a\)">\(a\)</span> needed have total order at most <span class="math" data-tex="\(M+2r\)">\(M+2r\)</span>. This proves (2.1). ∎</p>
-<p>For each fixed number of derivatives, the estimate still decays faster than every power. It does not assert that differentiating the phase has no cost.</p>
+\]</span></p>
+<p>Integrating by parts <span class="math" data-tex="\(M\)">\(M\)</span> times
+gives <span class="math" data-tex="\(I=\int
+e^{i\lambda\phi}(L^t)^Ma\,dx\)">\(I=\int
+e^{i\lambda\phi}(L^t)^Ma\,dx\)</span>. Each iteration contributes <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>, differentiates the
+amplitude at most once, and differentiates a coefficient whose
+denominator is bounded away from zero. Compact support removes all
+boundary terms. This proves the estimate for <span class="math" data-tex="\(r=0\)">\(r=0\)</span>.</p>
+<p>A derivative of order at most <span class="math" data-tex="\(r\)">\(r\)</span>
+in <span class="math" data-tex="\(s\)">\(s\)</span> produces a finite sum of
+integrals with amplitudes <span class="math" data-tex="\(\lambda^q
+b_q\)">\(\lambda^q
+b_q\)</span>, <span class="math" data-tex="\(q\leq r\)">\(q\leq r\)</span>, where <span class="math" data-tex="\(b_q\)">\(b_q\)</span> is a product of phase derivatives and
+derivatives of <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(s\)">\(s\)</span>. Apply <span class="math" data-tex="\(M+r\)">\(M+r\)</span> integrations by parts to each. The
+derivatives of <span class="math" data-tex="\(a\)">\(a\)</span> needed have total
+order at most <span class="math" data-tex="\(M+2r\)">\(M+2r\)</span>. This proves
+(2.1). ∎</p>
+<p>For each fixed number of derivatives, the estimate still decays
+faster than every power. It does not assert that differentiating the
+phase has no cost.</p>
 <h2 id="the-quadratic-calculation-with-its-sign"><span id="3-the-quadratic-calculation-with-its-sign"></span><span id="section-3"></span>3. The quadratic calculation with its sign</h2>
-<p>For a real symmetric invertible <span class="math" data-tex="\(d\times d\)">\(d\times d\)</span> matrix <span class="math" data-tex="\(H\)">\(H\)</span>, put</p>
-<span class="math math-display" data-tex="\[
+<p>For a real symmetric invertible <span class="math" data-tex="\(d\times
+d\)">\(d\times
+d\)</span> matrix <span class="math" data-tex="\(H\)">\(H\)</span>, put</p>
+<p><span class="math-display" data-tex="\[
 Q_H(x)=\tfrac12x^THx,
 \qquad
 \Delta_H=\sum_{j,k}(H^{-1})_{jk}\partial_{x_j}\partial_{x_k}.
@@ -72,9 +133,10 @@ Q_H(x)=\tfrac12x^THx,
 Q_H(x)=\tfrac12x^THx,
 \qquad
 \Delta_H=\sum_{j,k}(H^{-1})_{jk}\partial_{x_j}\partial_{x_k}.
-\]</span>
-<p><strong>Lemma 3.1 (Fresnel transform).</strong> As a tempered distribution,</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p><strong>Lemma 3.1 (Fresnel transform).</strong> As a tempered
+distribution,</p>
+<p><span class="math-display" data-tex="\[
 \mathcal F(e^{i\lambda Q_H})(\xi)
 =c_H(\lambda)
 \exp\left(-\frac{i}{2\lambda}\xi^TH^{-1}\xi\right),
@@ -90,9 +152,11 @@ c_H(\lambda)=\left(\frac{2\pi}{\lambda}\right)^{d/2}
 c_H(\lambda)=\left(\frac{2\pi}{\lambda}\right)^{d/2}
 \frac{e^{i\pi\operatorname{sgn}H/4}}{|\det H|^{1/2}}.
 \tag{3.1}
-\]</span>
-<p><strong>Proof.</strong> First multiply the left side by <span class="math" data-tex="\(e^{-\varepsilon|x|^2/2}\)">\(e^{-\varepsilon|x|^2/2}\)</span>, <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, so its Fourier transform is an ordinary integral. Orthogonal diagonalization reduces the calculation to</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p><strong>Proof.</strong> First multiply the left side by <span class="math" data-tex="\(e^{-\varepsilon|x|^2/2}\)">\(e^{-\varepsilon|x|^2/2}\)</span>, <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, so its Fourier
+transform is an ordinary integral. Orthogonal diagonalization reduces
+the calculation to</p>
+<p><span class="math-display" data-tex="\[
 \int_{\mathbb R}e^{-zx^2/2-i\xi x}\,dx
 =(2\pi)^{1/2}z^{-1/2}e^{-\xi^2/(2z)},
 \qquad \operatorname{Re}z&gt;0.
@@ -102,11 +166,75 @@ c_H(\lambda)=\left(\frac{2\pi}{\lambda}\right)^{d/2}
 =(2\pi)^{1/2}z^{-1/2}e^{-\xi^2/(2z)},
 \qquad \operatorname{Re}z&gt;0.
 \tag{3.2}
-\]</span>
-<p>For positive real <span class="math" data-tex="\(z\)">\(z\)</span>, the Gaussian integral and differentiation with respect to <span class="math" data-tex="\(\xi\)">\(\xi\)</span> prove (3.2). Both sides are holomorphic in the connected right half-plane; dominated differentiation on compact subsets and the identity theorem extend the identity there. Choose the square root positive on the positive real axis.</p>
-<p>For an eigenvalue <span class="math" data-tex="\(h_j\neq0\)">\(h_j\neq0\)</span>, use <span class="math" data-tex="\(z=\varepsilon-i\lambda h_j\)">\(z=\varepsilon-i\lambda h_j\)</span>. As <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, its inverse square root tends to <span class="math" data-tex="\((\lambda|h_j|)^{-1/2}e^{i\pi\operatorname{sign}(h_j)/4}\)">\((\lambda|h_j|)^{-1/2}e^{i\pi\operatorname{sign}(h_j)/4}\)</span>. The exponential on the right of (3.2) has absolute value at most one for real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, so dominated convergence against Schwartz functions proves the transformed limit. The original damped functions also converge as tempered distributions, since their absolute values are at most one. Multiply the scalar formulas. ∎</p>
-<p><strong>Theorem 3.2 (quadratic expansion).</strong> Let <span class="math" data-tex="\(b\in C_c^\infty(\mathbb R^d)\)">\(b\in C_c^\infty(\mathbb R^d)\)</span>, and let <span class="math" data-tex="\(\ell&gt;d/2\)">\(\ell&gt;d/2\)</span> be an integer. For every integer <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>,</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>Here is a direct real-parameter justification of (3.2). Write <span class="math" data-tex="\(z=\varepsilon-iq\)">\(z=\varepsilon-iq\)</span>, with <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, <span class="math" data-tex="\(q\in\mathbb R\)">\(q\in\mathbb R\)</span>, and <span class="math-display" data-tex="\[
+J(q)=\int_{\mathbb R}e^{-(\varepsilon-iq)x^2/2}\,dx.
+\]">\[
+J(q)=\int_{\mathbb R}e^{-(\varepsilon-iq)x^2/2}\,dx.
+\]</span> Differentiation in <span class="math" data-tex="\(q\)">\(q\)</span> is
+allowed by the integrable Gaussian bounds. Integration of the derivative
+of <span class="math" data-tex="\(x e^{-zx^2/2}\)">\(x e^{-zx^2/2}\)</span> gives <span class="math-display" data-tex="\[
+\int x^2e^{-zx^2/2}\,dx=z^{-1}J(q),\qquad
+J&#x27;(q)=\frac{i}{2z}J(q).
+\]">\[
+\int x^2e^{-zx^2/2}\,dx=z^{-1}J(q),\qquad
+J&#39;(q)=\frac{i}{2z}J(q).
+\]</span> At <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, the positive
+Gaussian integral in Appendix A gives <span class="math" data-tex="\(J(0)=(2\pi/\varepsilon)^{1/2}\)">\(J(0)=(2\pi/\varepsilon)^{1/2}\)</span>. The
+function <span class="math" data-tex="\((2\pi)^{1/2}z^{-1/2}\)">\((2\pi)^{1/2}z^{-1/2}\)</span>, with
+the continuous square root positive at <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, satisfies the same first-order
+equation and initial value. The quotient of <span class="math" data-tex="\(J(q)\)">\(J(q)\)</span> by the displayed nonvanishing
+candidate has derivative zero and initial value one, so they agree. This
+does not assume in advance that <span class="math" data-tex="\(J\)">\(J\)</span>
+is nonzero. For fixed <span class="math" data-tex="\(z\)">\(z\)</span>, put <span class="math-display" data-tex="\[
+F_z(\xi)=\int e^{-zx^2/2-i\xi x}\,dx.
+\]">\[
+F_z(\xi)=\int e^{-zx^2/2-i\xi x}\,dx.
+\]</span> Integrating the derivative of <span class="math" data-tex="\(e^{-zx^2/2-i\xi x}\)">\(e^{-zx^2/2-i\xi x}\)</span> gives <span class="math" data-tex="\(F_z&#x27;(\xi)=-\xi z^{-1}F_z(\xi)\)">\(F_z&#39;(\xi)=-\xi z^{-1}F_z(\xi)\)</span>.
+Multiplication by <span class="math" data-tex="\(e^{\xi^2/(2z)}\)">\(e^{\xi^2/(2z)}\)</span>
+shows that <span class="math" data-tex="\(F_z(\xi)=F_z(0)e^{-\xi^2/(2z)}\)">\(F_z(\xi)=F_z(0)e^{-\xi^2/(2z)}\)</span>. This
+proves (3.2) for every <span class="math" data-tex="\(z\)">\(z\)</span> in the
+right half-plane, without requiring a complex-analytic continuation
+theorem.</p>
+<p><strong>Alternative complex-analytic proof of (3.2).</strong> For
+positive real <span class="math" data-tex="\(z\)">\(z\)</span>, the Gaussian
+integral and differentiation with respect to <span class="math" data-tex="\(\xi\)">\(\xi\)</span> prove (3.2). Fix real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. On a compact subset of the right
+half-plane choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> with
+<span class="math" data-tex="\(\operatorname{Re}z\geq\delta\)">\(\operatorname{Re}z\geq\delta\)</span>. The
+parameter derivative of the integrand is bounded by <span class="math" data-tex="\(\tfrac12x^2e^{-\delta x^2/2}\)">\(\tfrac12x^2e^{-\delta x^2/2}\)</span>; after
+decreasing <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, the same
+integrable bound controls nearby complex difference quotients. Q1’s
+compact-plus-tail argument therefore permits differentiation under the
+integral, so the left side is holomorphic. The continuous square root
+<span class="math" data-tex="\(r(z)\)">\(r(z)\)</span> with positive real part,
+constructed in P16.3, satisfies <span class="math-display" data-tex="\[
+\frac{r(z+h)-r(z)}{h}=\frac{1}{r(z+h)+r(z)}\longrightarrow\frac{1}{2r(z)}.
+\]">\[
+\frac{r(z+h)-r(z)}{h}=\frac{1}{r(z+h)+r(z)}\longrightarrow\frac{1}{2r(z)}.
+\]</span> It is nonzero and holomorphic, so the right side of (3.2) is
+holomorphic as well. The positive real axis has an accumulation point
+inside this connected half-plane. The <span class="unlinked">identity
+theorem, Theorem 3.7, with its power-series proof in Theorem 3.2</span>
+extends the equality to the whole half-plane. The square root is
+positive on the positive real axis, agreeing with the real-parameter
+normalization above.</p>
+<p>For an eigenvalue <span class="math" data-tex="\(h_j\neq0\)">\(h_j\neq0\)</span>, use
+<span class="math" data-tex="\(z=\varepsilon-i\lambda h_j\)">\(z=\varepsilon-i\lambda h_j\)</span>. As
+<span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, its inverse
+square root tends to <span class="math" data-tex="\((\lambda|h_j|)^{-1/2}e^{i\pi\operatorname{sign}(h_j)/4}\)">\((\lambda|h_j|)^{-1/2}e^{i\pi\operatorname{sign}(h_j)/4}\)</span>.
+The exponential on the right of (3.2) has absolute value at most one for
+real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, so dominated convergence
+against Schwartz functions proves the transformed limit. The original
+damped functions also converge as tempered distributions, since their
+absolute values are at most one. Multiply the scalar formulas. The
+orthogonal substitution is P21.4, the spectral decomposition is Q5, and
+the root limits and signs are P16.3. Q1 supplies the compact-plus-tail
+justification of each limit and parameter derivative, and Appendix A.2
+defines the distributional transpose. ∎</p>
+<p><strong>Theorem 3.2 (quadratic expansion).</strong> Let <span class="math" data-tex="\(b\in C_c^\infty(\mathbb R^d)\)">\(b\in C_c^\infty(\mathbb R^d)\)</span>, and let
+<span class="math" data-tex="\(\ell&gt;d/2\)">\(\ell&gt;d/2\)</span> be an integer. For
+every integer <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>,</p>
+<p><span class="math-display" data-tex="\[
 \int e^{i\lambda Q_H(x)}b(x)\,dx
 =c_H(\lambda)
 \left[
@@ -124,9 +252,9 @@ c_H(\lambda)=\left(\frac{2\pi}{\lambda}\right)^{d/2}
 \Delta_H^jb(0)+R_N(\lambda)
 \right],
 \tag{3.3}
-\]</span>
+\]</span></p>
 <p>where, on a fixed compact support,</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math-display" data-tex="\[
 |R_N(\lambda)|
 \leq C_{d,\ell,N,K}\lambda^{-N}\|H^{-1}\|^N
 \sum_{|\alpha|\leq2N+\ell}\|\partial^\alpha b\|_{L^\infty}.
@@ -136,10 +264,13 @@ c_H(\lambda)=\left(\frac{2\pi}{\lambda}\right)^{d/2}
 \leq C_{d,\ell,N,K}\lambda^{-N}\|H^{-1}\|^N
 \sum_{|\alpha|\leq2N+\ell}\|\partial^\alpha b\|_{L^\infty}.
 \tag{3.4}
-\]</span>
-<p>For <span class="math" data-tex="\(N=0\)">\(N=0\)</span> the sum is empty and the matrix factor is one.</p>
-<p><strong>Proof.</strong> The pairing version of (3.1), followed by Fourier inversion, gives the bracket in (3.3) as</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>For <span class="math" data-tex="\(N=0\)">\(N=0\)</span> the sum is empty and the
+matrix factor is one; the unexpanded exponential in (3.5) has absolute
+value one.</p>
+<p><strong>Proof.</strong> The pairing version of (3.1), followed by
+Fourier inversion, gives the bracket in (3.3) as</p>
+<p><span class="math-display" data-tex="\[
 (2\pi)^{-d}\int
 e^{-i\xi^TH^{-1}\xi/(2\lambda)}\widehat b(\xi)\,d\xi.
 \tag{3.5}
@@ -147,10 +278,14 @@ e^{-i\xi^TH^{-1}\xi/(2\lambda)}\widehat b(\xi)\,d\xi.
 (2\pi)^{-d}\int
 e^{-i\xi^TH^{-1}\xi/(2\lambda)}\widehat b(\xi)\,d\xi.
 \tag{3.5}
-\]</span>
-<p>Taylor's formula on the real axis bounds the exponential remainder by <span class="math" data-tex="\(|\xi^TH^{-1}\xi|^N/(2^NN!\lambda^N)\)">\(|\xi^TH^{-1}\xi|^N/(2^NN!\lambda^N)\)</span>. Fourier inversion identifies the polynomial terms: multiplication by <span class="math" data-tex="\(\xi_j\xi_k\)">\(\xi_j\xi_k\)</span> corresponds to <span class="math" data-tex="\(-\partial_{x_j}\partial_{x_k}\)">\(-\partial_{x_j}\partial_{x_k}\)</span>, giving the positive <span class="math" data-tex="\(i\)">\(i\)</span> in (3.3).</p>
+\]</span></p>
+<p>Taylor’s formula on the real axis bounds the exponential remainder by
+<span class="math" data-tex="\(|\xi^TH^{-1}\xi|^N/(2^NN!\lambda^N)\)">\(|\xi^TH^{-1}\xi|^N/(2^NN!\lambda^N)\)</span>.
+Fourier inversion identifies the polynomial terms: multiplication by
+<span class="math" data-tex="\(\xi_j\xi_k\)">\(\xi_j\xi_k\)</span> corresponds to <span class="math" data-tex="\(-\partial_{x_j}\partial_{x_k}\)">\(-\partial_{x_j}\partial_{x_k}\)</span>, giving the
+positive <span class="math" data-tex="\(i\)">\(i\)</span> in (3.3).</p>
 <p>For the remainder, take the absolute integral and use</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math-display" data-tex="\[
 \int|\xi|^{2N}|\widehat b(\xi)|\,d\xi
 \leq C_{d,\ell,N}
 \sum_{|\alpha|\leq2N+\ell}\|\partial^\alpha b\|_{L^2}.
@@ -158,12 +293,26 @@ e^{-i\xi^TH^{-1}\xi/(2\lambda)}\widehat b(\xi)\,d\xi.
 \int|\xi|^{2N}|\widehat b(\xi)|\,d\xi
 \leq C_{d,\ell,N}
 \sum_{|\alpha|\leq2N+\ell}\|\partial^\alpha b\|_{L^2}.
-\]</span>
-<p>This is Cauchy–Schwarz with the integrable weight <span class="math" data-tex="\(\langle\xi\rangle^{-2\ell}\)">\(\langle\xi\rangle^{-2\ell}\)</span>, then Plancherel. It is precisely the Fourier estimate used in Theorem 2.1 of <a href="gauss-transform-estimates.html">Quadratic Fourier multipliers at a moving scale</a>. The fixed support bounds each <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm by its supremum times the square root of the support volume. ∎</p>
-<p>The estimate is for the bracket. The error in the integral has the additional factor <span class="math" data-tex="\(\lambda^{-d/2}|\det H|^{-1/2}\)">\(\lambda^{-d/2}|\det H|^{-1/2}\)</span>.</p>
+\]</span></p>
+<p>This is Cauchy–Schwarz with the integrable weight <span class="math" data-tex="\(\langle\xi\rangle^{-2\ell}\)">\(\langle\xi\rangle^{-2\ell}\)</span>, then
+Plancherel. Appendix A.3 proves this estimate with the derivative count
+displayed here. The fixed support bounds each <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm by its supremum times the square
+root of its outer measure, as proved in Appendix A.3; no Jordan
+measurability of an arbitrary compact support is assumed. ∎</p>
+<p>The estimate is for the bracket. The error in the integral has the
+additional factor <span class="math" data-tex="\(\lambda^{-d/2}|\det
+H|^{-1/2}\)">\(\lambda^{-d/2}|\det
+H|^{-1/2}\)</span>.</p>
 <h2 id="a-quadratic-coordinate-system-that-varies-smoothly"><span id="4-a-quadratic-coordinate-system-that-varies-smoothly"></span><span id="section-4"></span>4. A quadratic coordinate system that varies smoothly</h2>
-<p><strong>Lemma 4.1 (Morse coordinates with parameters).</strong> Suppose <span class="math" data-tex="\(\nabla_x\phi(x_0,s_0)=0\)">\(\nabla_x\phi(x_0,s_0)=0\)</span> and <span class="math" data-tex="\(H_0=\phi_{xx}&#x27;&#x27;(x_0,s_0)\)">\(H_0=\phi_{xx}&#x27;&#x27;(x_0,s_0)\)</span> is invertible. After shrinking neighborhoods, there are a smooth critical point <span class="math" data-tex="\(x_c(s)\)">\(x_c(s)\)</span>, a local diffeomorphism <span class="math" data-tex="\(x=F(z,s)\)">\(x=F(z,s)\)</span>, and a diagonal matrix <span class="math" data-tex="\(J\)">\(J\)</span> with entries <span class="math" data-tex="\(+1\)">\(+1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span> such that</p>
-<span class="math math-display" data-tex="\[
+<p><strong>Lemma 4.1 (Morse coordinates with parameters).</strong>
+Suppose <span class="math" data-tex="\(\nabla_x\phi(x_0,s_0)=0\)">\(\nabla_x\phi(x_0,s_0)=0\)</span> and
+<span class="math" data-tex="\(H_0=\phi_{xx}&#x27;&#x27;(x_0,s_0)\)">\(H_0=\phi_{xx}&#39;&#39;(x_0,s_0)\)</span> is
+invertible. After shrinking neighborhoods, there are a smooth critical
+point <span class="math" data-tex="\(x_c(s)\)">\(x_c(s)\)</span>, a local
+diffeomorphism <span class="math" data-tex="\(x=F(z,s)\)">\(x=F(z,s)\)</span>, and a
+diagonal matrix <span class="math" data-tex="\(J\)">\(J\)</span> with entries
+<span class="math" data-tex="\(+1\)">\(+1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span> such that</p>
+<p><span class="math-display" data-tex="\[
 F(0,s)=x_c(s),\qquad
 \phi(F(z,s),s)=c(s)+\tfrac12z^TJz,
 \qquad c(s)=\phi(x_c(s),s).
@@ -173,33 +322,67 @@ F(0,s)=x_c(s),\qquad
 \phi(F(z,s),s)=c(s)+\tfrac12z^TJz,
 \qquad c(s)=\phi(x_c(s),s).
 \tag{4.1}
-\]</span>
-<p>The signature of <span class="math" data-tex="\(J\)">\(J\)</span> is that of <span class="math" data-tex="\(H(s)=\phi_{xx}&#x27;&#x27;(x_c(s),s)\)">\(H(s)=\phi_{xx}&#x27;&#x27;(x_c(s),s)\)</span>, and</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>The signature of <span class="math" data-tex="\(J\)">\(J\)</span> is that of
+<span class="math" data-tex="\(H(s)=\phi_{xx}&#x27;&#x27;(x_c(s),s)\)">\(H(s)=\phi_{xx}&#39;&#39;(x_c(s),s)\)</span>,
+and</p>
+<p><span class="math-display" data-tex="\[
 |\det F_z&#x27;(0,s)|=|\det H(s)|^{-1/2}.
 \tag{4.2}
 \]">\[
-|\det F_z&#x27;(0,s)|=|\det H(s)|^{-1/2}.
+|\det F_z&#39;(0,s)|=|\det H(s)|^{-1/2}.
 \tag{4.2}
-\]</span>
-<p><strong>Proof.</strong> The implicit function theorem applied to <span class="math" data-tex="\(\phi_x&#x27;\)">\(\phi_x&#x27;\)</span> gives <span class="math" data-tex="\(x_c(s)\)">\(x_c(s)\)</span>. Translate this point to zero. Make a fixed real linear change of variables so that the first diagonal entry of the Hessian is nonzero. Such a direction exists because a symmetric form with zero quadratic value on every vector is zero, whereas this Hessian is invertible.</p>
-<p>Write <span class="math" data-tex="\(x=(x_1,x&#x27;)\)">\(x=(x_1,x&#x27;)\)</span>. The implicit function theorem gives <span class="math" data-tex="\(x_1=h(x&#x27;,s)\)">\(x_1=h(x&#x27;,s)\)</span> solving <span class="math" data-tex="\(\partial_{x_1}\phi=0\)">\(\partial_{x_1}\phi=0\)</span>. Taylor's formula with integral remainder gives</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p><strong>Proof.</strong> The smooth inverse and implicit function
+theorems are P3; the full argument including its induction is also M1.
+Smooth differentiation of the integral remainder is P12.7, the Schur
+calculation is P4, and congruence of signatures is P5. The implicit
+function theorem applied to <span class="math" data-tex="\(\phi_x&#x27;\)">\(\phi_x&#39;\)</span> gives <span class="math" data-tex="\(x_c(s)\)">\(x_c(s)\)</span>. Translate this point to zero.
+Make a fixed real linear change of variables so that the first diagonal
+entry of the Hessian is nonzero. Such a direction exists because a
+symmetric form with zero quadratic value on every vector is zero,
+whereas this Hessian is invertible.</p>
+<p>Write <span class="math" data-tex="\(x=(x_1,x&#x27;)\)">\(x=(x_1,x&#39;)\)</span>. The
+implicit function theorem gives <span class="math" data-tex="\(x_1=h(x&#x27;,s)\)">\(x_1=h(x&#39;,s)\)</span> solving <span class="math" data-tex="\(\partial_{x_1}\phi=0\)">\(\partial_{x_1}\phi=0\)</span>. Taylor’s formula
+with integral remainder gives</p>
+<p><span class="math-display" data-tex="\[
 \phi(h+v,x&#x27;,s)=g(x&#x27;,s)+\tfrac12v^2A(v,x&#x27;,s),
 \qquad
 A=2\int_0^1(1-t)\partial_{x_1}^2\phi(h+tv,x&#x27;,s)\,dt.
 \]">\[
-\phi(h+v,x&#x27;,s)=g(x&#x27;,s)+\tfrac12v^2A(v,x&#x27;,s),
+\phi(h+v,x&#39;,s)=g(x&#39;,s)+\tfrac12v^2A(v,x&#39;,s),
 \qquad
-A=2\int_0^1(1-t)\partial_{x_1}^2\phi(h+tv,x&#x27;,s)\,dt.
-\]</span>
-<p>The smooth function <span class="math" data-tex="\(A\)">\(A\)</span> is nonzero near the origin. Its sign <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is fixed there. The coordinate <span class="math" data-tex="\(z_1=v|A|^{1/2}\)">\(z_1=v|A|^{1/2}\)</span> is valid by the inverse function theorem and changes this expression into <span class="math" data-tex="\(g(x&#x27;,s)+\sigma z_1^2/2\)">\(g(x&#x27;,s)+\sigma z_1^2/2\)</span>.</p>
-<p>The Hessian of <span class="math" data-tex="\(g\)">\(g\)</span> at its critical point is the Schur complement of the first pivot in the original Hessian. Block elimination shows that its determinant is the original determinant divided by that pivot, so it is invertible. Induct on the remaining variables, keeping <span class="math" data-tex="\(s\)">\(s\)</span> as a parameter. This proves (4.1).</p>
-<p>Differentiating (4.1) twice at <span class="math" data-tex="\(z=0\)">\(z=0\)</span> gives <span class="math" data-tex="\(F_z&#x27;^THF_z&#x27;=J\)">\(F_z&#x27;^THF_z&#x27;=J\)</span>, because the first derivative of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> vanishes there. Congruence preserves the numbers of positive and negative directions. Taking absolute determinants gives (4.2). ∎</p>
-<p>Every coordinate change and its inverse has bounded derivatives on a sufficiently small fixed compact neighborhood. This is the quantitative fact needed below; the argument does not claim a neighborhood of fixed size when the Hessian approaches singularity.</p>
+A=2\int_0^1(1-t)\partial_{x_1}^2\phi(h+tv,x&#39;,s)\,dt.
+\]</span></p>
+<p>The smooth function <span class="math" data-tex="\(A\)">\(A\)</span> is nonzero
+near the origin. Its sign <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is
+fixed there. The coordinate <span class="math" data-tex="\(z_1=v|A|^{1/2}\)">\(z_1=v|A|^{1/2}\)</span> is valid by the inverse
+function theorem and changes this expression into <span class="math" data-tex="\(g(x&#x27;,s)+\sigma z_1^2/2\)">\(g(x&#39;,s)+\sigma z_1^2/2\)</span>.</p>
+<p>The Hessian of <span class="math" data-tex="\(g\)">\(g\)</span> at its critical
+point is the Schur complement of the first pivot in the original
+Hessian. Block elimination shows that its determinant is the original
+determinant divided by that pivot, so it is invertible. Induct on the
+remaining variables, keeping <span class="math" data-tex="\(s\)">\(s\)</span> as a
+parameter. This proves (4.1).</p>
+<p>Differentiating (4.1) twice at <span class="math" data-tex="\(z=0\)">\(z=0\)</span> gives <span class="math" data-tex="\(F_z&#x27;^THF_z&#x27;=J\)">\(F_z&#39;^THF_z&#39;=J\)</span>, because the first
+derivative of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> vanishes there.
+Congruence preserves the numbers of positive and negative directions.
+Taking absolute determinants gives (4.2). ∎</p>
+<p>Every coordinate change has bounded derivatives on a sufficiently
+small fixed compact neighborhood; its inverse has bounded derivatives on
+the corresponding compact image inside its inverse domain (M2). This is
+the quantitative fact needed below; the argument does not claim a
+neighborhood of fixed size when the Hessian approaches singularity.</p>
 <h2 id="one-critical-point-and-a-full-expansion"><span id="5-one-critical-point-and-a-full-expansion"></span><span id="section-5"></span>5. One critical point and a full expansion</h2>
-<p><strong>Theorem 5.1 (uniform real stationary phase).</strong> Suppose <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> are smooth, the <span class="math" data-tex="\(x\)">\(x\)</span> support of <span class="math" data-tex="\(a\)">\(a\)</span> lies in a fixed compact set, and, near that support, <span class="math" data-tex="\(\phi(\cdot,s)\)">\(\phi(\cdot,s)\)</span> has one critical point <span class="math" data-tex="\(x_c(s)\)">\(x_c(s)\)</span> with invertible Hessian <span class="math" data-tex="\(H(s)\)">\(H(s)\)</span>. Fix a compact parameter set on which these hypotheses hold with uniform neighborhoods, a uniformly invertible Hessian, and a positive gradient lower bound outside a fixed neighborhood of the critical point. Then</p>
-<span class="math math-display" data-tex="\[
+<p><strong>Theorem 5.1 (uniform real stationary phase).</strong> Suppose
+<span class="math" data-tex="\(\phi\)">\(\phi\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> are smooth, the <span class="math" data-tex="\(x\)">\(x\)</span> support of <span class="math" data-tex="\(a\)">\(a\)</span> lies in a fixed compact set, and, near
+that support, <span class="math" data-tex="\(\phi(\cdot,s)\)">\(\phi(\cdot,s)\)</span> has one
+critical point <span class="math" data-tex="\(x_c(s)\)">\(x_c(s)\)</span> with
+invertible Hessian <span class="math" data-tex="\(H(s)\)">\(H(s)\)</span>. Fix a
+compact parameter set on which these hypotheses hold with uniform
+neighborhoods, a uniformly invertible Hessian, and a positive gradient
+lower bound outside a fixed neighborhood of the critical point. Then</p>
+<p><span class="math-display" data-tex="\[
 I(\lambda,s)=e^{i\lambda c(s)}
 \left(\frac{2\pi}{\lambda}\right)^{d/2}
 \frac{e^{i\pi\sigma/4}}{|\det H(s)|^{1/2}}
@@ -213,9 +396,12 @@ I(\lambda,s)=e^{i\lambda c(s)}
 \left[\sum_{j=0}^{N-1}\lambda^{-j}C_j a(s)
 +\mathcal R_N(\lambda,s)\right],
 \tag{5.1}
-\]</span>
-<p>where <span class="math" data-tex="\(\sigma=\operatorname{sgn}H\)">\(\sigma=\operatorname{sgn}H\)</span> is constant on each connected parameter component, <span class="math" data-tex="\(C_0a(s)=a(x_c(s),s)\)">\(C_0a(s)=a(x_c(s),s)\)</span>, and <span class="math" data-tex="\(C_ja\)">\(C_ja\)</span> depends only on derivatives of the amplitude in <span class="math" data-tex="\(x\)">\(x\)</span> of order at most <span class="math" data-tex="\(2j\)">\(2j\)</span> at <span class="math" data-tex="\(x_c(s)\)">\(x_c(s)\)</span>. For every <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>,</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>where <span class="math" data-tex="\(\sigma=\operatorname{sgn}H\)">\(\sigma=\operatorname{sgn}H\)</span>
+is constant on each connected parameter component, <span class="math" data-tex="\(C_0a(s)=a(x_c(s),s)\)">\(C_0a(s)=a(x_c(s),s)\)</span>, and <span class="math" data-tex="\(C_ja\)">\(C_ja\)</span> depends only on derivatives of the
+amplitude in <span class="math" data-tex="\(x\)">\(x\)</span> of order at most
+<span class="math" data-tex="\(2j\)">\(2j\)</span> at <span class="math" data-tex="\(x_c(s)\)">\(x_c(s)\)</span>. For every <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>,</p>
+<p><span class="math-display" data-tex="\[
 \|\mathcal R_N(\lambda,\cdot)\|_{C^r}
 \leq C_{N,r}\lambda^{-N}p_{N,r}(a),
 \tag{5.2}
@@ -223,17 +409,32 @@ I(\lambda,s)=e^{i\lambda c(s)}
 \|\mathcal R_N(\lambda,\cdot)\|_{C^r}
 \leq C_{N,r}\lambda^{-N}p_{N,r}(a),
 \tag{5.2}
-\]</span>
-<p>where <span class="math" data-tex="\(p_{N,r}\)">\(p_{N,r}\)</span> is a finite amplitude seminorm. The constants also depend on finitely many phase and coordinate derivatives and the lower bounds just specified. The derivatives in (5.2) act on the remainder after the oscillatory factor in (5.1) has been removed.</p>
-<p><strong>Proof.</strong> Choose a smooth cutoff equal to one on a fixed smaller neighborhood of <span class="math" data-tex="\(x_c(s)\)">\(x_c(s)\)</span>, and split the amplitude into its near and far parts. Proposition 2.1 makes the far integral smaller than every inverse power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, with any fixed number of parameter derivatives. Multiplying it by <span class="math" data-tex="\(e^{-i\lambda c(s)}\lambda^{d/2}\)">\(e^{-i\lambda c(s)}\lambda^{d/2}\)</span> costs only finitely many powers, which that proposition can absorb.</p>
+\]</span></p>
+<p>where <span class="math" data-tex="\(p_{N,r}\)">\(p_{N,r}\)</span> is a finite
+amplitude seminorm. The constants also depend on finitely many phase and
+coordinate derivatives and the lower bounds just specified. The
+derivatives in (5.2) act on the remainder after the oscillatory factor
+in (5.1) has been removed.</p>
+<p><strong>Proof.</strong> Work first in one parameter neighborhood and
+shrink to precompact coordinate and parameter domains. Appendix A.4
+supplies a smooth cutoff in their product, equal to one on a fixed
+smaller neighborhood of the critical graph. Its support has a compact
+inverse image strictly inside the Morse chart (M2). Split the amplitude
+into its near and far parts. Proposition 2.1 makes the far integral
+smaller than every inverse power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, with any fixed number of
+parameter derivatives. Multiplying it by <span class="math" data-tex="\(e^{-i\lambda c(s)}\lambda^{d/2}\)">\(e^{-i\lambda c(s)}\lambda^{d/2}\)</span> costs
+only finitely many powers, which that proposition can absorb.</p>
 <p>For the near part use Lemma 4.1 and define</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math-display" data-tex="\[
 b(z,s)=a(F(z,s),s)|\det F_z&#x27;(z,s)|
 \]">\[
-b(z,s)=a(F(z,s),s)|\det F_z&#x27;(z,s)|
-\]</span>
-<p>with the cutoff included. Extend <span class="math" data-tex="\(b\)">\(b\)</span> by zero outside the fixed coordinate neighborhood. Theorem 3.2 with <span class="math" data-tex="\(H=J\)">\(H=J\)</span> gives (5.1) with</p>
-<span class="math math-display" data-tex="\[
+b(z,s)=a(F(z,s),s)|\det F_z&#39;(z,s)|
+\]</span></p>
+<p>with the cutoff included. Compact chart substitution is P21.4. The
+precompact support just chosen makes extension of <span class="math" data-tex="\(b\)">\(b\)</span> by zero smooth, with a common compact
+support in <span class="math" data-tex="\(z\)">\(z\)</span> for the parameter
+neighborhood (P17.4). Theorem 3.2 with <span class="math" data-tex="\(H=J\)">\(H=J\)</span> gives (5.1) with</p>
+<p><span class="math-display" data-tex="\[
 C_ja(s)=\frac{|\det H(s)|^{1/2}}{j!}
 \left(\frac i2\right)^j\Delta_J^jb(0,s).
 \tag{5.3}
@@ -241,15 +442,42 @@ C_ja(s)=\frac{|\det H(s)|^{1/2}}{j!}
 C_ja(s)=\frac{|\det H(s)|^{1/2}}{j!}
 \left(\frac i2\right)^j\Delta_J^jb(0,s).
 \tag{5.3}
-\]</span>
-<p>The cutoff is one near zero, so its derivatives do not enter these coefficients. The chain rule shows that no more than <span class="math" data-tex="\(2j\)">\(2j\)</span> derivatives of <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(x\)">\(x\)</span> occur. Formula (4.2) gives <span class="math" data-tex="\(C_0a=a(x_c,s)\)">\(C_0a=a(x_c,s)\)</span>.</p>
-<p>After the critical value has been factored out, the quadratic phase and <span class="math" data-tex="\(J\)">\(J\)</span> do not depend on <span class="math" data-tex="\(s\)">\(s\)</span>. Thus parameter derivatives act only on <span class="math" data-tex="\(b\)">\(b\)</span> and the smooth determinant factor. Apply (3.4) to those derivatives. For the near integral it is enough to bound the corresponding mixed derivatives of <span class="math" data-tex="\(b\)">\(b\)</span> through order <span class="math" data-tex="\(2N+\ell+r\)">\(2N+\ell+r\)</span>; the far integral may require a larger finite seminorm. This proves (5.2).</p>
-<p>Although (5.3) uses a coordinate choice, the coefficients do not depend on that choice. Two such expansions approximate the same normalized integral. Their first different coefficient, multiplied by its power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and followed by <span class="math" data-tex="\(\lambda\to\infty\)">\(\lambda\to\infty\)</span>, would have to be both zero and nonzero. Induction on <span class="math" data-tex="\(j\)">\(j\)</span> proves equality of every coefficient. ∎</p>
-<p>The assertion remains valid for smooth amplitudes with values in a finite-dimensional vector space: apply it component by component. Its constants can be chosen uniformly on bounded sets in that space.</p>
-<p>For several isolated nondegenerate critical points separated uniformly on the support, use disjoint cutoffs and add their expansions. Each contribution has its own critical value, Hessian and signature.</p>
+\]</span></p>
+<p>The cutoff is one near zero, so its derivatives do not enter these
+coefficients. The chain rule shows that no more than <span class="math" data-tex="\(2j\)">\(2j\)</span> derivatives of <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(x\)">\(x\)</span> occur. Formula (4.2) gives <span class="math" data-tex="\(C_0a=a(x_c,s)\)">\(C_0a=a(x_c,s)\)</span>.</p>
+<p>After the critical value has been factored out, the quadratic phase
+and <span class="math" data-tex="\(J\)">\(J\)</span> do not depend on <span class="math" data-tex="\(s\)">\(s\)</span>. Thus parameter derivatives act only on
+<span class="math" data-tex="\(b\)">\(b\)</span> and the smooth determinant
+factor. Apply (3.4) to those derivatives. For the near integral it is
+enough to bound the corresponding mixed derivatives of <span class="math" data-tex="\(b\)">\(b\)</span> through order <span class="math" data-tex="\(2N+\ell+r\)">\(2N+\ell+r\)</span>; the far integral may require a
+larger finite seminorm. This proves (5.2).</p>
+<p>Although (5.3) uses a coordinate choice, the coefficients do not
+depend on that choice. Two such expansions approximate the same
+normalized integral. If their coefficients below order <span class="math" data-tex="\(j\)">\(j\)</span> agree, subtract the expansions through
+order <span class="math" data-tex="\(j\)">\(j\)</span>, using <span class="math" data-tex="\(N=j+1\)">\(N=j+1\)</span>. Multiplication by <span class="math" data-tex="\(\lambda^j\)">\(\lambda^j\)</span> gives the difference of the
+order-<span class="math" data-tex="\(j\)">\(j\)</span> coefficients plus <span class="math" data-tex="\(O(\lambda^{-1})\)">\(O(\lambda^{-1})\)</span>. Taking <span class="math" data-tex="\(\lambda\to\infty\)">\(\lambda\to\infty\)</span> makes that difference
+zero. Starting at <span class="math" data-tex="\(j=0\)">\(j=0\)</span> proves
+equality of every coefficient.</p>
+<p>Morse coordinates need only exist locally in the parameter. Cover the
+specified compact parameter set by finitely many neighborhoods on each
+of which Lemma 4.1 provides coordinates and a fixed signature. Prove the
+expansion and all its differentiated estimates on each neighborhood as
+above. The uniqueness argument identifies the local coefficient
+functions on overlaps; they therefore define the same smooth
+coefficients wherever the critical branch is defined. Take the maximum
+of the finitely many remainder constants and the union of their finite
+seminorm requirements. This yields the stated uniform bounds without
+assuming a global signed Morse frame. ∎</p>
+<p>The assertion remains valid for smooth amplitudes with values in a
+finite-dimensional vector space: apply it component by component. Its
+constants can be chosen uniformly on bounded sets in that space.</p>
+<p>For several isolated nondegenerate critical points separated
+uniformly on the support, use disjoint cutoffs and add their expansions.
+Each contribution has its own critical value, Hessian and signature.</p>
 <h2 id="amplitudes-that-are-symbols-in-the-large-parameter"><span id="6-amplitudes-that-are-symbols-in-the-large-parameter"></span><span id="section-6"></span>6. Amplitudes that are symbols in the large parameter</h2>
-<p>A family <span class="math" data-tex="\(a_\lambda(x,s)\)">\(a_\lambda(x,s)\)</span>, supported in the same compact set, is a symbol of order <span class="math" data-tex="\(\mu\)">\(\mu\)</span> in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> if, for all <span class="math" data-tex="\(k,\alpha,\beta\)">\(k,\alpha,\beta\)</span>,</p>
-<span class="math math-display" data-tex="\[
+<p>A family <span class="math" data-tex="\(a_\lambda(x,s)\)">\(a_\lambda(x,s)\)</span>,
+supported in the same compact set, is a symbol of order <span class="math" data-tex="\(\mu\)">\(\mu\)</span> in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> if, for all <span class="math" data-tex="\(k,\alpha,\beta\)">\(k,\alpha,\beta\)</span>,</p>
+<p><span class="math-display" data-tex="\[
 |\partial_\lambda^k\partial_x^\alpha\partial_s^\beta
 a_\lambda(x,s)|\leq C_{k,\alpha,\beta}\lambda^{\mu-k}.
 \tag{6.1}
@@ -257,9 +485,12 @@ a_\lambda(x,s)|\leq C_{k,\alpha,\beta}\lambda^{\mu-k}.
 |\partial_\lambda^k\partial_x^\alpha\partial_s^\beta
 a_\lambda(x,s)|\leq C_{k,\alpha,\beta}\lambda^{\mu-k}.
 \tag{6.1}
-\]</span>
-<p><strong>Corollary 6.1 (symbol remainder).</strong> Under the geometric hypotheses of Theorem 5.1, replace <span class="math" data-tex="\(a\)">\(a\)</span> by a family satisfying (6.1), and apply <span class="math" data-tex="\(C_j\)">\(C_j\)</span> to that family without expanding it further. The normalized remainder satisfies</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p><strong>Corollary 6.1 (symbol remainder).</strong> Under the
+geometric hypotheses of Theorem 5.1, replace <span class="math" data-tex="\(a\)">\(a\)</span> by a family satisfying (6.1), and apply
+<span class="math" data-tex="\(C_j\)">\(C_j\)</span> to that family without
+expanding it further. The normalized remainder satisfies</p>
+<p><span class="math-display" data-tex="\[
 |\partial_\lambda^k\partial_s^\beta\mathcal R_N(\lambda,s)|
 \leq C_{N,k,\beta}\lambda^{\mu-N-k}.
 \tag{6.2}
@@ -267,10 +498,16 @@ a_\lambda(x,s)|\leq C_{k,\alpha,\beta}\lambda^{\mu-k}.
 |\partial_\lambda^k\partial_s^\beta\mathcal R_N(\lambda,s)|
 \leq C_{N,k,\beta}\lambda^{\mu-N-k}.
 \tag{6.2}
-\]</span>
-<p>If <span class="math" data-tex="\(a_\lambda\sim\sum_{l\geq0}\lambda^{\mu-l}a_l\)">\(a_\lambda\sim\sum_{l\geq0}\lambda^{\mu-l}a_l\)</span> with remainders satisfying (6.1) in the appropriate lower orders, then the coefficient at total degree <span class="math" data-tex="\(\lambda^{\mu-q}\)">\(\lambda^{\mu-q}\)</span> in the bracket is <span class="math" data-tex="\(\sum_{j+l=q}C_ja_l\)">\(\sum_{j+l=q}C_ja_l\)</span>.</p>
-<p><strong>Proof.</strong> The Morse coordinates are independent of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, so the transformed amplitude also satisfies (6.1). In (3.5), subtract the first <span class="math" data-tex="\(N\)">\(N\)</span> terms of the exponential. With <span class="math" data-tex="\(q=\xi^TJ^{-1}\xi/2\)">\(q=\xi^TJ^{-1}\xi/2\)</span>, the Taylor remainder is <span class="math" data-tex="\(E_N(q/\lambda)\)">\(E_N(q/\lambda)\)</span>. Taylor's integral formula implies</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>If <span class="math" data-tex="\(a_\lambda\sim\sum_{l\geq0}\lambda^{\mu-l}a_l\)">\(a_\lambda\sim\sum_{l\geq0}\lambda^{\mu-l}a_l\)</span>
+with remainders satisfying (6.1) in the appropriate lower orders, then
+the coefficient at total degree <span class="math" data-tex="\(\lambda^{\mu-q}\)">\(\lambda^{\mu-q}\)</span> in the bracket is <span class="math" data-tex="\(\sum_{j+l=q}C_ja_l\)">\(\sum_{j+l=q}C_ja_l\)</span>.</p>
+<p><strong>Proof.</strong> The Morse coordinates are independent of
+<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, so the transformed
+amplitude also satisfies (6.1). In (3.5), subtract the first <span class="math" data-tex="\(N\)">\(N\)</span> terms of the exponential. With <span class="math" data-tex="\(q=\xi^TJ^{-1}\xi/2\)">\(q=\xi^TJ^{-1}\xi/2\)</span>, the Taylor remainder
+is <span class="math" data-tex="\(E_N(q/\lambda)\)">\(E_N(q/\lambda)\)</span>. Taylor’s
+integral formula implies</p>
+<p><span class="math-display" data-tex="\[
 |\partial_\lambda^k E_N(q/\lambda)|
 \leq C_{N,k}\lambda^{-N-k}
 \bigl(1+|q|\bigr)^{N+k},\qquad \lambda\geq1.
@@ -280,22 +517,46 @@ a_\lambda(x,s)|\leq C_{k,\alpha,\beta}\lambda^{\mu-k}.
 \leq C_{N,k}\lambda^{-N-k}
 \bigl(1+|q|\bigr)^{N+k},\qquad \lambda\geq1.
 \tag{6.3}
-\]</span>
-<p>Indeed, write <span class="math" data-tex="\(E_N(t)=t^N\int_0^1e^{-iut}(1-u)^{N-1}(-i)^N\,du/(N-1)!\)">\(E_N(t)=t^N\int_0^1e^{-iut}(1-u)^{N-1}(-i)^N\,du/(N-1)!\)</span> for <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>, and differentiate; each <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> derivative introduces <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span> and at most one additional factor <span class="math" data-tex="\(t\)">\(t\)</span>. For <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, differentiate <span class="math" data-tex="\(e^{-it}\)">\(e^{-it}\)</span> directly. Since <span class="math" data-tex="\(\lambda\geq1\)">\(\lambda\geq1\)</span>, the resulting powers of <span class="math" data-tex="\(|q|/\lambda\)">\(|q|/\lambda\)</span> are bounded as in (6.3).</p>
-<p>Use the product rule and weighted Fourier <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bounds for derivatives of the transformed amplitude. Each term has order <span class="math" data-tex="\(\lambda^{\mu-N-k}\)">\(\lambda^{\mu-N-k}\)</span>. Parameter derivatives act only on amplitudes and smooth factors, as in Theorem 5.1. The far integral is rapidly decreasing with all these derivatives: each fixed derivative creates only a fixed polynomial power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, absorbed by sufficiently many integrations by parts. This proves (6.2). Substituting the amplitude expansion and collecting pairs <span class="math" data-tex="\((j,l)\)">\((j,l)\)</span> proves the last assertion. ∎</p>
-<p>This corollary concerns a large real parameter and compact integration variables. Symbol estimates in noncompact phase variables, including two-index classes with derivative losses, require additional statements.</p>
+\]</span></p>
+<p>Indeed, write <span class="math" data-tex="\(E_N(t)=t^N\int_0^1e^{-iut}(1-u)^{N-1}(-i)^N\,du/(N-1)!\)">\(E_N(t)=t^N\int_0^1e^{-iut}(1-u)^{N-1}(-i)^N\,du/(N-1)!\)</span>
+for <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>, and differentiate; each
+<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> derivative introduces <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span> and at most one additional
+factor <span class="math" data-tex="\(t\)">\(t\)</span>. For <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, differentiate <span class="math" data-tex="\(e^{-it}\)">\(e^{-it}\)</span> directly. Since <span class="math" data-tex="\(\lambda\geq1\)">\(\lambda\geq1\)</span>, the resulting powers of
+<span class="math" data-tex="\(|q|/\lambda\)">\(|q|/\lambda\)</span> are bounded as in
+(6.3).</p>
+<p>Use the product rule and weighted Fourier <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bounds for derivatives of the
+transformed amplitude. Each term has order <span class="math" data-tex="\(\lambda^{\mu-N-k}\)">\(\lambda^{\mu-N-k}\)</span>. Parameter derivatives
+act only on amplitudes and smooth factors, as in Theorem 5.1. The far
+integral is rapidly decreasing with all these derivatives: each fixed
+derivative creates only a fixed polynomial power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, absorbed by sufficiently many
+integrations by parts. This proves (6.2). Substituting the amplitude
+expansion and collecting pairs <span class="math" data-tex="\((j,l)\)">\((j,l)\)</span> proves the last assertion. ∎</p>
+<p>This corollary concerns a large real parameter and compact
+integration variables. Symbol estimates in noncompact phase variables,
+including two-index classes with derivative losses, require additional
+statements.</p>
 <h2 id="cancellation-normal-to-a-critical-manifold"><span id="7-cancellation-normal-to-a-critical-manifold"></span><span id="section-7"></span>7. Cancellation normal to a critical manifold</h2>
-<p><strong>Definition 7.1 (clean critical manifold).</strong> A smooth submanifold <span class="math" data-tex="\(C\subset U\)">\(C\subset U\)</span> is clean for a real smooth function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> if <span class="math" data-tex="\(d\phi=0\)">\(d\phi=0\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span> and</p>
-<span class="math math-display" data-tex="\[
+<p><strong>Definition 7.1 (clean critical manifold).</strong> A smooth
+submanifold <span class="math" data-tex="\(C\subset U\)">\(C\subset U\)</span> is clean for
+a real smooth function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> if
+<span class="math" data-tex="\(d\phi=0\)">\(d\phi=0\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span> and</p>
+<p><span class="math-display" data-tex="\[
 \ker\phi&#x27;&#x27;(x)=T_xC,\qquad x\in C.
 \tag{7.1}
 \]">\[
-\ker\phi&#x27;&#x27;(x)=T_xC,\qquad x\in C.
+\ker\phi&#39;&#39;(x)=T_xC,\qquad x\in C.
 \tag{7.1}
-\]</span>
-<p>At a critical point the Hessian is a bilinear form independent of coordinates. Condition (7.1) says that it induces a nondegenerate form on the normal quotient <span class="math" data-tex="\(T_xU/T_xC\)">\(T_xU/T_xC\)</span>. Let <span class="math" data-tex="\(r=d-\dim C\)">\(r=d-\dim C\)</span>.</p>
-<p><strong>Theorem 7.2 (clean stationary phase).</strong> Suppose the critical set near the support of a compactly supported smooth amplitude is clean, and work on one connected critical component <span class="math" data-tex="\(C\)">\(C\)</span>. Then <span class="math" data-tex="\(\phi|_C=c\)">\(\phi|_C=c\)</span> is constant. There are coefficients <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, with</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>At a critical point the Hessian is a bilinear form independent of
+coordinates. Condition (7.1) says that it induces a nondegenerate form
+on the normal quotient <span class="math" data-tex="\(T_xU/T_xC\)">\(T_xU/T_xC\)</span>.
+Let <span class="math" data-tex="\(r=d-\dim C\)">\(r=d-\dim C\)</span>.</p>
+<p><strong>Theorem 7.2 (clean stationary phase).</strong> Suppose the
+critical set near the support of a compactly supported smooth amplitude
+is clean, and first localize the amplitude so that its support meets
+only one connected critical component <span class="math" data-tex="\(C\)">\(C\)</span>. Then <span class="math" data-tex="\(\phi|_C=c\)">\(\phi|_C=c\)</span> is constant. There are
+coefficients <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, with</p>
+<p><span class="math-display" data-tex="\[
 \int_U e^{i\lambda\phi}a\,dx
 =e^{i\lambda c}\left(\frac{2\pi}{\lambda}\right)^{r/2}
 e^{i\pi\sigma/4}
@@ -307,9 +568,11 @@ e^{i\pi\sigma/4}
 e^{i\pi\sigma/4}
 \left[\sum_{j&lt;N}\lambda^{-j}A_j+O(\lambda^{-N})\right],
 \tag{7.2}
-\]</span>
-<p>where <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is the signature of the normal Hessian, constant on that component. With the Euclidean metric used only to express the answer,</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>where <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is the signature of
+the normal Hessian, constant on that component. With the Euclidean
+metric used only to express the answer,</p>
+<p><span class="math-display" data-tex="\[
 A_0=\int_C
 \frac{a(x)}{|\det H_\perp(x)|^{1/2}}\,d\operatorname{vol}_C(x).
 \tag{7.3}
@@ -317,15 +580,63 @@ A_0=\int_C
 A_0=\int_C
 \frac{a(x)}{|\det H_\perp(x)|^{1/2}}\,d\operatorname{vol}_C(x).
 \tag{7.3}
-\]</span>
-<p>Here <span class="math" data-tex="\(H_\perp\)">\(H_\perp\)</span> is the restriction of the Hessian to an orthonormal normal frame. Only the portion met by the support contributes. The formula also holds for an arbitrary smooth density in place of <span class="math" data-tex="\(a\,dx\)">\(a\,dx\)</span>, using the quotient density described below. Multiple components contribute separate terms of the form (7.2). For smooth compact parameter families with fixed clean charts and uniformly invertible normal Hessians, the normalized remainder has the parameter and symbol estimates of Theorem 5.1 and Corollary 6.1.</p>
-<p><strong>Proof.</strong> Since <span class="math" data-tex="\(d\phi=0\)">\(d\phi=0\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>, its restriction is locally constant and hence constant on the connected component. Choose coordinates <span class="math" data-tex="\((y,z)\)">\((y,z)\)</span> with <span class="math" data-tex="\(C=\{z=0\}\)">\(C=\{z=0\}\)</span>. The normal Hessian in the <span class="math" data-tex="\(z\)">\(z\)</span> variables is invertible. Apply Lemma 4.1 to those variables with <span class="math" data-tex="\(y\)">\(y\)</span> as a parameter. This gives <span class="math" data-tex="\(\phi=c+z^TJz/2\)">\(\phi=c+z^TJz/2\)</span> in new coordinates. Use a partition of unity on the compact part of the support met by <span class="math" data-tex="\(C\)">\(C\)</span>, and Proposition 2.1 away from <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
-<p>In each chart apply Theorem 3.2 to the normal integral and then integrate the coefficients in <span class="math" data-tex="\(y\)">\(y\)</span>. The uniform remainder estimate can be integrated because the tangential support is fixed and compact. The leading coefficient is the original density on <span class="math" data-tex="\(U\)">\(U\)</span> divided by the density on the normal quotient whose coordinate expression is <span class="math" data-tex="\(|\det H_\perp|^{1/2}|dz|\)">\(|\det H_\perp|^{1/2}|dz|\)</span>.</p>
-<p>To check independence, change a normal frame by a matrix <span class="math" data-tex="\(B\)">\(B\)</span>. The Hessian changes to <span class="math" data-tex="\(B^TH_\perp B\)">\(B^TH_\perp B\)</span>, so its determinant square root changes by <span class="math" data-tex="\(|\det B|\)">\(|\det B|\)</span>, exactly the density transformation factor. Dividing the ambient density by this normal density gives a well-defined density on <span class="math" data-tex="\(C\)">\(C\)</span>. In orthonormal frames for the Euclidean metric this is (7.3). The same calculation proves the arbitrary-density assertion. The parameter and symbol estimates follow chart by chart from the already proved estimates, using a finite partition of unity. ∎</p>
-<p>The decay power depends on the normal dimension. If there are <span class="math" data-tex="\(e\)">\(e\)</span> critical directions among <span class="math" data-tex="\(d\)">\(d\)</span> variables, the power is <span class="math" data-tex="\(\lambda^{-(d-e)/2}\)">\(\lambda^{-(d-e)/2}\)</span>. The extra factor <span class="math" data-tex="\(\lambda^{e/2}\)">\(\lambda^{e/2}\)</span>, relative to an isolated point, is the analytic origin of the excess correction in clean Fourier-integral composition.</p>
+\]</span></p>
+<p>Here <span class="math" data-tex="\(H_\perp\)">\(H_\perp\)</span> is the restriction
+of the Hessian to an orthonormal normal frame. Only the portion met by
+the support contributes. The formula also holds for an arbitrary smooth
+density in place of <span class="math" data-tex="\(a\,dx\)">\(a\,dx\)</span>, using
+the quotient density described below. Multiple components contribute
+separate terms of the form (7.2). For smooth compact parameter families
+with fixed adapted clean charts, common compact coordinate supports,
+uniformly invertible normal Hessians, and a positive gradient lower
+bound on the remaining support, the normalized remainder has the
+parameter and symbol estimates of Theorem 5.1 and Corollary 6.1. These
+are the same uniform localization requirements as in the isolated
+case.</p>
+<p><strong>Proof.</strong> Appendix A.5 proves the coordinate and
+quotient-density assertions, and A.6 supplies the finite localization,
+including zero normal dimension. Since <span class="math" data-tex="\(d\phi=0\)">\(d\phi=0\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>, its restriction is locally constant
+and hence constant on the connected component. Choose coordinates <span class="math" data-tex="\((y,z)\)">\((y,z)\)</span> with <span class="math" data-tex="\(C=\{z=0\}\)">\(C=\{z=0\}\)</span>. The normal Hessian in the
+<span class="math" data-tex="\(z\)">\(z\)</span> variables is invertible. Apply
+Lemma 4.1 to those variables with <span class="math" data-tex="\(y\)">\(y\)</span>
+as a parameter. This gives <span class="math" data-tex="\(\phi=c+z^TJz/2\)">\(\phi=c+z^TJz/2\)</span> in new coordinates. Use a
+partition of unity on the compact part of the support met by <span class="math" data-tex="\(C\)">\(C\)</span>, and Proposition 2.1 away from <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>In each chart apply Theorem 3.2 to the normal integral and then
+integrate the coefficients in <span class="math" data-tex="\(y\)">\(y\)</span>.
+The uniform remainder estimate can be integrated because the tangential
+support is fixed and compact. The leading coefficient is the original
+density on <span class="math" data-tex="\(U\)">\(U\)</span> divided by the density
+on the normal quotient whose coordinate expression is <span class="math" data-tex="\(|\det H_\perp|^{1/2}|dz|\)">\(|\det H_\perp|^{1/2}|dz|\)</span>.</p>
+<p>To check independence, change a normal frame by a matrix <span class="math" data-tex="\(B\)">\(B\)</span>. The Hessian changes to <span class="math" data-tex="\(B^TH_\perp B\)">\(B^TH_\perp B\)</span>, so its determinant square
+root changes by <span class="math" data-tex="\(|\det B|\)">\(|\det B|\)</span>, exactly
+the density transformation factor. In arbitrary adapted coordinates, if
+the original density is <span class="math" data-tex="\(m(y,z)|dy\,dz|\)">\(m(y,z)|dy\,dz|\)</span>, the leading density on
+<span class="math" data-tex="\(C\)">\(C\)</span> is <span class="math" data-tex="\(m(y,0)|\det\phi_{zz}&#x27;&#x27;(y,0)|^{-1/2}|dy|\)">\(m(y,0)|\det\phi_{zz}&#39;&#39;(y,0)|^{-1/2}|dy|\)</span>.
+Changing the transverse complement does not change the induced
+normal-quotient form, since the Hessian annihilates <span class="math" data-tex="\(T C\)">\(T C\)</span>; the density transformation in the
+exact sequence <span class="math" data-tex="\(0\to T C\to T U|_C\to T
+U|_C/T C\to0\)">\(0\to T C\to T U|_C\to T
+U|_C/T C\to0\)</span> cancels the normal determinant factor. Thus
+dividing the ambient density by this normal density gives a well-defined
+density on <span class="math" data-tex="\(C\)">\(C\)</span>. In orthonormal frames
+for the Euclidean metric this is (7.3). The same calculation proves the
+arbitrary-density assertion. The parameter and symbol estimates follow
+chart by chart from the already proved estimates, using the finite
+partition and compact tangential integration in A.6. Apply the parameter
+Morse lemma to <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\((y,s)\)">\((y,s)\)</span> as parameter; the critical value is
+independent of <span class="math" data-tex="\(y\)">\(y\)</span> on each connected
+critical component. This proof does not invoke a later Fourier-integral
+composition theorem. ∎</p>
+<p>The decay power depends on the normal dimension. If there are <span class="math" data-tex="\(e\)">\(e\)</span> critical directions among <span class="math" data-tex="\(d\)">\(d\)</span> variables, the power is <span class="math" data-tex="\(\lambda^{-(d-e)/2}\)">\(\lambda^{-(d-e)/2}\)</span>. The extra factor
+<span class="math" data-tex="\(\lambda^{e/2}\)">\(\lambda^{e/2}\)</span>, relative to an
+isolated point, is the analytic origin of the excess correction in clean
+Fourier-integral composition.</p>
 <h2 id="three-models-worth-remembering"><span id="8-three-models-worth-remembering"></span><span id="section-8"></span>8. Three models worth remembering</h2>
-<p><strong>An indefinite critical point.</strong> Let <span class="math" data-tex="\(\phi(x,y)=x^2-3y^2/2\)">\(\phi(x,y)=x^2-3y^2/2\)</span>, and let <span class="math" data-tex="\(a\)">\(a\)</span> be smooth and compactly supported near zero. The Hessian is <span class="math" data-tex="\(\operatorname{diag}(2,-3)\)">\(\operatorname{diag}(2,-3)\)</span>, with determinant <span class="math" data-tex="\(-6\)">\(-6\)</span> and signature zero. Therefore</p>
-<span class="math math-display" data-tex="\[
+<p><strong>An indefinite critical point.</strong> Let <span class="math" data-tex="\(\phi(x,y)=x^2-3y^2/2\)">\(\phi(x,y)=x^2-3y^2/2\)</span>, and let <span class="math" data-tex="\(a\)">\(a\)</span> be smooth and compactly supported near
+zero. The Hessian is <span class="math" data-tex="\(\operatorname{diag}(2,-3)\)">\(\operatorname{diag}(2,-3)\)</span>, with
+determinant <span class="math" data-tex="\(-6\)">\(-6\)</span> and signature zero.
+Therefore</p>
+<p><span class="math-display" data-tex="\[
 I(\lambda)=\frac{2\pi}{\lambda\sqrt6}
 \left[a(0,0)+\frac{i}{2\lambda}
 \left(\tfrac12\partial_x^2-\tfrac13\partial_y^2\right)a(0,0)
@@ -335,19 +646,24 @@ I(\lambda)=\frac{2\pi}{\lambda\sqrt6}
 \left[a(0,0)+\frac{i}{2\lambda}
 \left(\tfrac12\partial_x^2-\tfrac13\partial_y^2\right)a(0,0)
 +O(\lambda^{-2})\right].
-\]</span>
-<p>Opposite signs cancel the signature factor, while the determinant remains in the size.</p>
-<p><strong>A stationary line.</strong> For <span class="math" data-tex="\(\phi(x,y,z)=(x^2-y^2)/2\)">\(\phi(x,y,z)=(x^2-y^2)/2\)</span>, the critical set is <span class="math" data-tex="\(x=y=0\)">\(x=y=0\)</span>, with two normal directions. For compactly supported <span class="math" data-tex="\(a\)">\(a\)</span>,</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>Opposite signs cancel the signature factor, while the determinant
+remains in the size.</p>
+<p><strong>A stationary line.</strong> For <span class="math" data-tex="\(\phi(x,y,z)=(x^2-y^2)/2\)">\(\phi(x,y,z)=(x^2-y^2)/2\)</span>, the critical set
+is <span class="math" data-tex="\(x=y=0\)">\(x=y=0\)</span>, with two normal
+directions. For compactly supported <span class="math" data-tex="\(a\)">\(a\)</span>,</p>
+<p><span class="math-display" data-tex="\[
 I(\lambda)=\frac{2\pi}{\lambda}
 \left[\int_{\mathbb R}a(0,0,z)\,dz+O(\lambda^{-1})\right].
 \]">\[
 I(\lambda)=\frac{2\pi}{\lambda}
 \left[\int_{\mathbb R}a(0,0,z)\,dz+O(\lambda^{-1})\right].
-\]</span>
+\]</span></p>
 <p>There is no cancellation along the line.</p>
-<p><strong>Two critical points approaching each other.</strong> Let <span class="math" data-tex="\(\phi_t(x)=x^3/3-tx\)">\(\phi_t(x)=x^3/3-tx\)</span>. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the critical points are <span class="math" data-tex="\(\pm\sqrt t\)">\(\pm\sqrt t\)</span>, with Hessians <span class="math" data-tex="\(\pm2\sqrt t\)">\(\pm2\sqrt t\)</span>. For <span class="math" data-tex="\(t\)">\(t\)</span> in a compact interval bounded away from zero, an amplitude supported near the two points has leading term</p>
-<span class="math math-display" data-tex="\[
+<p><strong>Two critical points approaching each other.</strong> Let
+<span class="math" data-tex="\(\phi_t(x)=x^3/3-tx\)">\(\phi_t(x)=x^3/3-tx\)</span>. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the critical points are <span class="math" data-tex="\(\pm\sqrt t\)">\(\pm\sqrt t\)</span>, with Hessians <span class="math" data-tex="\(\pm2\sqrt t\)">\(\pm2\sqrt t\)</span>. For <span class="math" data-tex="\(t\)">\(t\)</span> in a compact interval bounded away from
+zero, an amplitude supported near the two points has leading term</p>
+<p><span class="math-display" data-tex="\[
 \left(\frac{2\pi}{\lambda}\right)^{1/2}
 \frac1{(2\sqrt t)^{1/2}}
 \left[
@@ -361,58 +677,485 @@ a(\sqrt t,t)e^{-2i\lambda t^{3/2}/3+i\pi/4}
 a(\sqrt t,t)e^{-2i\lambda t^{3/2}/3+i\pi/4}
 +a(-\sqrt t,t)e^{2i\lambda t^{3/2}/3-i\pi/4}
 \right].
-\]</span>
-<p>The stated remainder is <span class="math" data-tex="\(O(\lambda^{-3/2})\)">\(O(\lambda^{-3/2})\)</span> uniformly on that interval. As <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>, the Hessians degenerate and this expansion loses uniformity. A different scaling is needed at the collision.</p>
+\]</span></p>
+<p>The stated remainder is <span class="math" data-tex="\(O(\lambda^{-3/2})\)">\(O(\lambda^{-3/2})\)</span> uniformly on that
+interval. As <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>, the
+Hessians degenerate and this expansion loses uniformity. A different
+scaling is needed at the collision.</p>
 <h2 id="exercises-with-complete-solutions"><span id="9-exercises-with-complete-solutions"></span><span id="section-9"></span>9. Exercises with complete solutions</h2>
-<p><strong>Exercise 9.1 (first correction; introductory).</strong> Let <span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R)\)">\(\chi\in C_c^\infty(\mathbb R)\)</span> be one near zero and supported sufficiently close to zero. For fixed real <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, find the expansion through order <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span> inside the stationary-phase bracket for</p>
-<span class="math math-display" data-tex="\[
+<p><strong>Exercise 9.1 (first correction; introductory).</strong> Let
+<span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R)\)">\(\chi\in C_c^\infty(\mathbb R)\)</span> be
+one near zero and supported sufficiently close to zero. For fixed real
+<span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, find the expansion through
+order <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span> inside the
+stationary-phase bracket for</p>
+<p><span class="math-display" data-tex="\[
 \int e^{i\lambda(x^2/2+\kappa x^4/4)}\chi(x)\,dx.
 \]">\[
 \int e^{i\lambda(x^2/2+\kappa x^4/4)}\chi(x)\,dx.
-\]</span>
-<p><strong>Solution.</strong> Near zero set <span class="math" data-tex="\(z=x\sqrt{1+\kappa x^2/2}\)">\(z=x\sqrt{1+\kappa x^2/2}\)</span>. This is a valid smooth coordinate with <span class="math" data-tex="\(z=x+\kappa x^3/4+O(x^5)\)">\(z=x+\kappa x^3/4+O(x^5)\)</span> and inverse <span class="math" data-tex="\(x=z-\kappa z^3/4+O(z^5)\)">\(x=z-\kappa z^3/4+O(z^5)\)</span>. The transformed amplitude is <span class="math" data-tex="\(b(z)=1-3\kappa z^2/4+O(z^4)\)">\(b(z)=1-3\kappa z^2/4+O(z^4)\)</span> near zero. Thus <span class="math" data-tex="\(b(0)=1\)">\(b(0)=1\)</span> and <span class="math" data-tex="\(b&#x27;&#x27;(0)=-3\kappa/2\)">\(b&#x27;&#x27;(0)=-3\kappa/2\)</span>. Formula (3.3) gives</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p><strong>Solution.</strong> Near zero set <span class="math" data-tex="\(z=x\sqrt{1+\kappa x^2/2}\)">\(z=x\sqrt{1+\kappa x^2/2}\)</span>. This is a valid
+smooth coordinate with <span class="math" data-tex="\(z=x+\kappa
+x^3/4+O(x^5)\)">\(z=x+\kappa
+x^3/4+O(x^5)\)</span> and inverse <span class="math" data-tex="\(x=z-\kappa
+z^3/4+O(z^5)\)">\(x=z-\kappa
+z^3/4+O(z^5)\)</span>. The transformed amplitude is <span class="math" data-tex="\(b(z)=1-3\kappa z^2/4+O(z^4)\)">\(b(z)=1-3\kappa z^2/4+O(z^4)\)</span> near zero.
+Thus <span class="math" data-tex="\(b(0)=1\)">\(b(0)=1\)</span> and <span class="math" data-tex="\(b&#x27;&#x27;(0)=-3\kappa/2\)">\(b&#39;&#39;(0)=-3\kappa/2\)</span>. Formula (3.3)
+gives</p>
+<p><span class="math-display" data-tex="\[
 \left(\frac{2\pi}{\lambda}\right)^{1/2}e^{i\pi/4}
 \left[1-\frac{3i\kappa}{4\lambda}+O(\lambda^{-2})\right].
 \]">\[
 \left(\frac{2\pi}{\lambda}\right)^{1/2}e^{i\pi/4}
 \left[1-\frac{3i\kappa}{4\lambda}+O(\lambda^{-2})\right].
-\]</span>
-<p>Shrinking the support ensures that <span class="math" data-tex="\(x(1+\kappa x^2)=0\)">\(x(1+\kappa x^2)=0\)</span> has only the critical point zero there, including when <span class="math" data-tex="\(\kappa&lt;0\)">\(\kappa&lt;0\)</span>.</p>
-<p><strong>Exercise 9.2 (parameter derivatives; intermediate).</strong> For <span class="math" data-tex="\(\phi(x,t)=t+x^2/2\)">\(\phi(x,t)=t+x^2/2\)</span> and a fixed amplitude <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near zero, explain why the <span class="math" data-tex="\(t\)">\(t\)</span> derivative of the integral need not be <span class="math" data-tex="\(O(\lambda^{-1/2})\)">\(O(\lambda^{-1/2})\)</span>, even though the integral is of that order.</p>
-<p><strong>Solution.</strong> The integral is <span class="math" data-tex="\(e^{i\lambda t}J(\lambda)\)">\(e^{i\lambda t}J(\lambda)\)</span>, where <span class="math" data-tex="\(J(\lambda)\sim(2\pi/\lambda)^{1/2}e^{i\pi/4}\)">\(J(\lambda)\sim(2\pi/\lambda)^{1/2}e^{i\pi/4}\)</span>. Its <span class="math" data-tex="\(t\)">\(t\)</span> derivative is <span class="math" data-tex="\(i\lambda e^{i\lambda t}J(\lambda)\)">\(i\lambda e^{i\lambda t}J(\lambda)\)</span>, of size <span class="math" data-tex="\(\lambda^{1/2}\)">\(\lambda^{1/2}\)</span>. Removing <span class="math" data-tex="\(e^{i\lambda t}\)">\(e^{i\lambda t}\)</span> leaves a function independent of <span class="math" data-tex="\(t\)">\(t\)</span>. This is why the normalized remainder, rather than the original integral, has uniform parameter estimates of the same order.</p>
-<p><strong>Exercise 9.3 (failure of uniform nondegeneracy; intermediate).</strong> Let <span class="math" data-tex="\(\chi\geq0\)">\(\chi\geq0\)</span> be smooth, compactly supported, with positive integral. Show that</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>Shrinking the support ensures that <span class="math" data-tex="\(x(1+\kappa x^2)=0\)">\(x(1+\kappa x^2)=0\)</span> has only the critical
+point zero there, including when <span class="math" data-tex="\(\kappa&lt;0\)">\(\kappa&lt;0\)</span>.</p>
+<p><strong>Exercise 9.2 (parameter derivatives; intermediate).</strong>
+For <span class="math" data-tex="\(\phi(x,t)=t+x^2/2\)">\(\phi(x,t)=t+x^2/2\)</span> and a fixed
+amplitude <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near
+zero, explain why the <span class="math" data-tex="\(t\)">\(t\)</span> derivative
+of the integral need not be <span class="math" data-tex="\(O(\lambda^{-1/2})\)">\(O(\lambda^{-1/2})\)</span>, even though the
+integral is of that order.</p>
+<p><strong>Solution.</strong> The integral is <span class="math" data-tex="\(e^{i\lambda t}J(\lambda)\)">\(e^{i\lambda t}J(\lambda)\)</span>, where <span class="math" data-tex="\(J(\lambda)\sim(2\pi/\lambda)^{1/2}e^{i\pi/4}\)">\(J(\lambda)\sim(2\pi/\lambda)^{1/2}e^{i\pi/4}\)</span>.
+Its <span class="math" data-tex="\(t\)">\(t\)</span> derivative is <span class="math" data-tex="\(i\lambda e^{i\lambda t}J(\lambda)\)">\(i\lambda e^{i\lambda t}J(\lambda)\)</span>, of
+size <span class="math" data-tex="\(\lambda^{1/2}\)">\(\lambda^{1/2}\)</span>. Removing <span class="math" data-tex="\(e^{i\lambda t}\)">\(e^{i\lambda t}\)</span> leaves a function
+independent of <span class="math" data-tex="\(t\)">\(t\)</span>. This is why the
+normalized remainder, rather than the original integral, has uniform
+parameter estimates of the same order.</p>
+<p><strong>Exercise 9.3 (failure of uniform nondegeneracy;
+intermediate).</strong> Let <span class="math" data-tex="\(\chi\geq0\)">\(\chi\geq0\)</span> be smooth, compactly supported,
+with positive integral. Show that</p>
+<p><span class="math-display" data-tex="\[
 \int e^{i\lambda t x^2/2}\chi(x)\,dx
 \]">\[
 \int e^{i\lambda t x^2/2}\chi(x)\,dx
-\]</span>
+\]</span></p>
 <p>cannot have a bound <span class="math" data-tex="\(C\lambda^{-1/2}\)">\(C\lambda^{-1/2}\)</span> with <span class="math" data-tex="\(C\)">\(C\)</span> independent of <span class="math" data-tex="\(0&lt;t\leq1\)">\(0&lt;t\leq1\)</span>.</p>
-<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(t=\lambda^{-2}\)">\(t=\lambda^{-2}\)</span>. The phase factor converges uniformly to one on the support, so the integral converges to <span class="math" data-tex="\(\int\chi&gt;0\)">\(\int\chi&gt;0\)</span>. The proposed bound tends to zero. Each fixed positive <span class="math" data-tex="\(t\)">\(t\)</span> has a nondegenerate Hessian, but its inverse and determinant factor are not uniformly bounded as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>.</p>
-<p><strong>Exercise 9.4 (clean density; advanced).</strong> On <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, take <span class="math" data-tex="\(\phi(x,y)=x^2h(y)/2\)">\(\phi(x,y)=x^2h(y)/2\)</span>, with smooth <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> near the compact support of <span class="math" data-tex="\(a\)">\(a\)</span>. Determine the leading term, and recover it by the coordinate change <span class="math" data-tex="\(z=x\sqrt{h(y)}\)">\(z=x\sqrt{h(y)}\)</span>.</p>
-<p><strong>Solution.</strong> The critical set near the support is <span class="math" data-tex="\(x=0\)">\(x=0\)</span>; the normal Hessian is <span class="math" data-tex="\(h(y)\)">\(h(y)\)</span>, with signature one. Thus the leading term is</p>
-<span class="math math-display" data-tex="\[
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(t=\lambda^{-2}\)">\(t=\lambda^{-2}\)</span>. The phase factor
+converges uniformly to one on the support, so the integral converges to
+<span class="math" data-tex="\(\int\chi&gt;0\)">\(\int\chi&gt;0\)</span>. The proposed bound
+tends to zero. Each fixed positive <span class="math" data-tex="\(t\)">\(t\)</span> has a nondegenerate Hessian, but its
+inverse and determinant factor are not uniformly bounded as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>.</p>
+<p><strong>Exercise 9.4 (clean density; advanced).</strong> On <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, take <span class="math" data-tex="\(\phi(x,y)=x^2h(y)/2\)">\(\phi(x,y)=x^2h(y)/2\)</span>, with smooth <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> near the compact support of <span class="math" data-tex="\(a\)">\(a\)</span>. Determine the leading term, and
+recover it by the coordinate change <span class="math" data-tex="\(z=x\sqrt{h(y)}\)">\(z=x\sqrt{h(y)}\)</span>.</p>
+<p><strong>Solution.</strong> The critical set near the support is <span class="math" data-tex="\(x=0\)">\(x=0\)</span>; the normal Hessian is <span class="math" data-tex="\(h(y)\)">\(h(y)\)</span>, with signature one. Thus the
+leading term is</p>
+<p><span class="math-display" data-tex="\[
 e^{i\pi/4}\left(\frac{2\pi}{\lambda}\right)^{1/2}
 \int a(0,y)h(y)^{-1/2}\,dy.
 \]">\[
 e^{i\pi/4}\left(\frac{2\pi}{\lambda}\right)^{1/2}
 \int a(0,y)h(y)^{-1/2}\,dy.
-\]</span>
-<p>The coordinate change has <span class="math" data-tex="\(dx\,dy=h(y)^{-1/2}dz\,dy\)">\(dx\,dy=h(y)^{-1/2}dz\,dy\)</span>; its phase is <span class="math" data-tex="\(z^2/2\)">\(z^2/2\)</span>. The quadratic formula gives exactly the same density. The next error is <span class="math" data-tex="\(O(\lambda^{-3/2})\)">\(O(\lambda^{-3/2})\)</span>, since <span class="math" data-tex="\(h\)">\(h\)</span> is bounded away from zero on the compact tangential support.</p>
-<p><strong>Exercise 9.5 (an absent critical direction; advanced).</strong> Let <span class="math" data-tex="\(a\in C_c^\infty(\mathbb R^3)\)">\(a\in C_c^\infty(\mathbb R^3)\)</span> and <span class="math" data-tex="\(\phi=(x^2-y^2)/2+z\)">\(\phi=(x^2-y^2)/2+z\)</span>. Compare its decay to the stationary-line example.</p>
-<p><strong>Solution.</strong> Now <span class="math" data-tex="\(\partial_z\phi=1\)">\(\partial_z\phi=1\)</span>, so there are no critical points. Repeated integration by parts in <span class="math" data-tex="\(z\)">\(z\)</span> gives</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>The coordinate change has <span class="math" data-tex="\(dx\,dy=h(y)^{-1/2}dz\,dy\)">\(dx\,dy=h(y)^{-1/2}dz\,dy\)</span>; its phase is
+<span class="math" data-tex="\(z^2/2\)">\(z^2/2\)</span>. The quadratic formula gives
+exactly the same density. The next error is <span class="math" data-tex="\(O(\lambda^{-3/2})\)">\(O(\lambda^{-3/2})\)</span>, since <span class="math" data-tex="\(h\)">\(h\)</span> is bounded away from zero on the
+compact tangential support.</p>
+<p><strong>Exercise 9.5 (an absent critical direction;
+advanced).</strong> Let <span class="math" data-tex="\(a\in
+C_c^\infty(\mathbb R^3)\)">\(a\in
+C_c^\infty(\mathbb R^3)\)</span> and <span class="math" data-tex="\(\phi=(x^2-y^2)/2+z\)">\(\phi=(x^2-y^2)/2+z\)</span>. Compare its decay to
+the stationary-line example.</p>
+<p><strong>Solution.</strong> Now <span class="math" data-tex="\(\partial_z\phi=1\)">\(\partial_z\phi=1\)</span>, so there are no
+critical points. Repeated integration by parts in <span class="math" data-tex="\(z\)">\(z\)</span> gives</p>
+<p><span class="math-display" data-tex="\[
 I(\lambda)=(-1)^M(i\lambda)^{-M}
 \int e^{i\lambda\phi}\partial_z^Ma\,dx\,dy\,dz,
 \]">\[
 I(\lambda)=(-1)^M(i\lambda)^{-M}
 \int e^{i\lambda\phi}\partial_z^Ma\,dx\,dy\,dz,
-\]</span>
-<p>and hence <span class="math" data-tex="\(I=O(\lambda^{-M})\)">\(I=O(\lambda^{-M})\)</span> for every <span class="math" data-tex="\(M\)">\(M\)</span>. A stationary quadratic part in two variables does not suffice when another integration variable has a nonzero phase derivative.</p>
+\]</span></p>
+<p>and hence <span class="math" data-tex="\(I=O(\lambda^{-M})\)">\(I=O(\lambda^{-M})\)</span> for
+every <span class="math" data-tex="\(M\)">\(M\)</span>. A stationary quadratic
+part in two variables does not suffice when another integration variable
+has a nonzero phase derivative.</p>
+<h2
+id="appendix-a.-the-analytic-prerequisites-used-in-the-proof">Appendix
+A. The analytic prerequisites used in the proof</h2>
+<h3 id="a.1.-gaussian-integral-and-fourier-inversion">A.1. Gaussian
+integral and Fourier inversion</h3>
+<p>The Schwartz space <span class="math" data-tex="\(\mathcal S(\mathbb
+R^d)\)">\(\mathcal S(\mathbb
+R^d)\)</span> consists of smooth functions <span class="math" data-tex="\(b\)">\(b\)</span> for which <span class="math" data-tex="\(x^\alpha\partial^\beta b\)">\(x^\alpha\partial^\beta b\)</span> is bounded for
+every pair of multi-indices. Equivalently, every <span class="math" data-tex="\((1+|x|)^m|\partial^\beta b(x)|\)">\((1+|x|)^m|\partial^\beta b(x)|\)</span> is
+bounded. One direction follows from <span class="math" data-tex="\(|x^\alpha|\leq(1+|x|)^{|\alpha|}\)">\(|x^\alpha|\leq(1+|x|)^{|\alpha|}\)</span>. For the
+other use <span class="math" data-tex="\(|x|\leq\sum_j|x_j|\)">\(|x|\leq\sum_j|x_j|\)</span> and
+expand the integer power of <span class="math" data-tex="\(1+\sum_j|x_j|\)">\(1+\sum_j|x_j|\)</span> into finitely many
+monomials. The rectangular-shell decay estimate P18.3 now proves
+integrability of these functions and all their derivatives. The Fourier
+convention is that of Section 1.</p>
+<p>First, <span class="math-display" data-tex="\[
+\left(\int_{\mathbb R}e^{-x^2/2}\,dx\right)^2
+=\int_{\mathbb R^2}e^{-(x^2+y^2)/2}\,dx\,dy
+=2\pi\int_0^\infty e^{-r^2/2}r\,dr=2\pi.
+\tag{A1}
+\]">\[
+\left(\int_{\mathbb R}e^{-x^2/2}\,dx\right)^2
+=\int_{\mathbb R^2}e^{-(x^2+y^2)/2}\,dx\,dy
+=2\pi\int_0^\infty e^{-r^2/2}r\,dr=2\pi.
+\tag{A1}
+\]</span> The absolute product Fubini theorem P18.4 and the complete
+polar exhaustion P21.5 justify these equalities and the limits of the
+bounded integrals. Rescaling gives the Gaussian integral at every
+positive real scale. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>,
+define <span class="math-display" data-tex="\[
+g_t(x)=(2\pi t)^{-d/2}e^{-|x|^2/(2t)}.
+\]">\[
+g_t(x)=(2\pi t)^{-d/2}e^{-|x|^2/(2t)}.
+\]</span> Integration by parts in one variable gives the differential
+equation <span class="math" data-tex="\(\partial_{\xi_j}\widehat
+g_t=-t\xi_j\widehat g_t\)">\(\partial_{\xi_j}\widehat
+g_t=-t\xi_j\widehat g_t\)</span>. Since <span class="math" data-tex="\(\widehat g_t(0)=1\)">\(\widehat g_t(0)=1\)</span>, solving these scalar
+equations gives <span class="math-display" data-tex="\[
+\widehat g_t(\xi)=e^{-t|\xi|^2/2}.
+\tag{A2}
+\]">\[
+\widehat g_t(\xi)=e^{-t|\xi|^2/2}.
+\tag{A2}
+\]</span> All integrations and differentiations have integrable Gaussian
+majorants.</p>
+<p>If <span class="math" data-tex="\(b\in\mathcal S\)">\(b\in\mathcal S\)</span>, repeated
+integration by parts shows <span class="math-display" data-tex="\[
+\xi^\alpha\partial_\xi^\beta\widehat b(\xi)
+=(-i)^{|\beta|}\,\widehat{D^\alpha(x^\beta b)}(\xi),
+\qquad D_j=-i\partial_{x_j}.
+\tag{A3}
+\]">\[
+\xi^\alpha\partial_\xi^\beta\widehat b(\xi)
+=(-i)^{|\beta|}\,\widehat{D^\alpha(x^\beta b)}(\xi),
+\qquad D_j=-i\partial_{x_j}.
+\tag{A3}
+\]</span> The functions on the right are bounded by the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norms of their integrands.
+Consequently <span class="math" data-tex="\(\widehat b\)">\(\widehat b\)</span> is also a
+Schwartz function and is integrable. Fubini and the positive Gaussian
+transform give <span class="math-display" data-tex="\[
+(2\pi)^{-d}\int e^{ix\cdot\xi}e^{-t|\xi|^2/2}
+       \widehat b(\xi)\,d\xi
+=\int g_t(x-y)b(y)\,dy.
+\tag{A4}
+\]">\[
+(2\pi)^{-d}\int e^{ix\cdot\xi}e^{-t|\xi|^2/2}
+       \widehat b(\xi)\,d\xi
+=\int g_t(x-y)b(y)\,dy.
+\tag{A4}
+\]</span> For the left side, absolute integrability follows from <span class="math" data-tex="\(\|b\|_{L^1}\int
+e^{-t|\xi|^2/2}\,d\xi&lt;\infty\)">\(\|b\|_{L^1}\int
+e^{-t|\xi|^2/2}\,d\xi&lt;\infty\)</span>. For the right side, substitute
+<span class="math" data-tex="\(y=x-\sqrt t\,z\)">\(y=x-\sqrt t\,z\)</span>. The resulting
+integrand is <span class="math" data-tex="\(g_1(z)b(x-\sqrt t\,z)\)">\(g_1(z)b(x-\sqrt t\,z)\)</span>,
+bounded by <span class="math" data-tex="\(\|b\|_\infty g_1(z)\)">\(\|b\|_\infty g_1(z)\)</span>, and
+converges pointwise to <span class="math" data-tex="\(g_1(z)b(x)\)">\(g_1(z)b(x)\)</span>.
+On a fixed compact <span class="math" data-tex="\(z\)">\(z\)</span> box the
+convergence is uniform by continuity of <span class="math" data-tex="\(b\)">\(b\)</span>; outside that box the Gaussian tail is
+uniformly small. Q1 therefore proves convergence of the integral to
+<span class="math" data-tex="\(b(x)\)">\(b(x)\)</span>. The left side tends, by the
+integrability of <span class="math" data-tex="\(\widehat b\)">\(\widehat b\)</span>, to its
+undamped inverse transform. This proves Fourier inversion for every
+Schwartz function.</p>
+<h3 id="a.2.-plancherel-and-the-pairing-calculation">A.2. Plancherel and
+the pairing calculation</h3>
+<p>For <span class="math" data-tex="\(b,c\in\mathcal S\)">\(b,c\in\mathcal S\)</span>, insert the
+inversion formula for <span class="math" data-tex="\(c\)">\(c\)</span> into <span class="math" data-tex="\(\int b\overline c\)">\(\int b\overline c\)</span>. The product of <span class="math" data-tex="\(|b(x)|\)">\(|b(x)|\)</span> and <span class="math" data-tex="\(|\widehat c(\xi)|\)">\(|\widehat c(\xi)|\)</span> is integrable on the
+product space. Hence <span class="math-display" data-tex="\[
+\int b(x)\overline{c(x)}\,dx
+=(2\pi)^{-d}\int\widehat b(\xi)\,
+                  \overline{\widehat c(\xi)}\,d\xi.
+\tag{A5}
+\]">\[
+\int b(x)\overline{c(x)}\,dx
+=(2\pi)^{-d}\int\widehat b(\xi)\,
+                  \overline{\widehat c(\xi)}\,d\xi.
+\tag{A5}
+\]</span> Taking <span class="math" data-tex="\(c=b\)">\(c=b\)</span> proves exactly
+the Plancherel identity needed below. No extension to arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> functions is needed for this
+lesson.</p>
+<p>The pairing step in (3.5) can also be performed before taking a
+distributional limit. Insert the inversion formula for <span class="math" data-tex="\(b\)">\(b\)</span> into <span class="math" data-tex="\(\int
+e^{i\lambda Q_H(x)}e^{-\varepsilon|x|^2/2}b(x)\,dx\)">\(\int
+e^{i\lambda Q_H(x)}e^{-\varepsilon|x|^2/2}b(x)\,dx\)</span>. For each
+<span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, Fubini is
+legitimate. Apply the damped Gaussian transform from Lemma 3.1 with
+Fourier variable <span class="math" data-tex="\(-\xi\)">\(-\xi\)</span>. Its matrix
+exponential has absolute value at most one, and its prefactor is bounded
+as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, because
+<span class="math" data-tex="\(H\)">\(H\)</span> is invertible. Dominated
+convergence against <span class="math" data-tex="\(|\widehat b|\)">\(|\widehat b|\)</span>
+then gives (3.5). On the original side, convergence follows from the
+compact support of <span class="math" data-tex="\(b\)">\(b\)</span>. Thus only
+ordinary Gaussian integrals and the Schwartz inversion just proved are
+required.</p>
+<p>For the distributional wording of Lemma 3.1, a bounded function <span class="math" data-tex="\(f\)">\(f\)</span> defines the continuous functional <span class="math" data-tex="\(b\mapsto\int f b\)">\(b\mapsto\int f b\)</span> on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>: choose any integer <span class="math" data-tex="\(k&gt;d/2\)">\(k&gt;d/2\)</span> and bound the absolute integral
+by <span class="math" data-tex="\(\|f\|_\infty\int\langle
+x\rangle^{-2k}\,dx\)">\(\|f\|_\infty\int\langle
+x\rangle^{-2k}\,dx\)</span> times <span class="math" data-tex="\(\sup_x\langle x\rangle^{2k}|b(x)|\)">\(\sup_x\langle x\rangle^{2k}|b(x)|\)</span>.
+Formula (A3) bounds every Schwartz seminorm of <span class="math" data-tex="\(\widehat b\)">\(\widehat b\)</span> by finitely many seminorms of
+<span class="math" data-tex="\(b\)">\(b\)</span>, so the Fourier transform is
+continuous on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Define
+its action on tempered distributions by transposition. The two
+dominated-convergence arguments in Lemma 3.1 then prove exactly the
+asserted identity in that dual space.</p>
+<h3
+id="a.3.-the-weighted-estimate-with-its-precise-derivative-count">A.3.
+The weighted estimate with its precise derivative count</h3>
+<p>First prove the integral Cauchy–Schwarz inequality in the setting
+used here. If continuous <span class="math" data-tex="\(u,v\)">\(u,v\)</span> have
+finite square integrals, then <span class="math" data-tex="\(2|u\overline
+v|\leq |u|^2+|v|^2\)">\(2|u\overline
+v|\leq |u|^2+|v|^2\)</span> proves absolute convergence of their
+product. Set <span class="math" data-tex="\(A=\int|u|^2\)">\(A=\int|u|^2\)</span>, <span class="math" data-tex="\(B=\int|v|^2\)">\(B=\int|v|^2\)</span>, and <span class="math" data-tex="\(C=\int u\overline v\)">\(C=\int u\overline v\)</span>. Positivity and
+linearity, first on compact boxes and then by the absolute tail limits
+P18.1–P18.2, give <span class="math-display" data-tex="\[
+0\leq\int|u-zv|^2=A-2\operatorname{Re}(\overline z C)+|z|^2B.
+\tag{A8}
+\]">\[
+0\leq\int|u-zv|^2=A-2\operatorname{Re}(\overline z C)+|z|^2B.
+\tag{A8}
+\]</span> If <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>, take <span class="math" data-tex="\(z=C/B\)">\(z=C/B\)</span> to obtain <span class="math" data-tex="\(|C|^2\leq AB\)">\(|C|^2\leq AB\)</span>. If <span class="math" data-tex="\(B=0\)">\(B=0\)</span> and <span class="math" data-tex="\(C\neq0\)">\(C\neq0\)</span>, taking <span class="math" data-tex="\(z=tC\)">\(z=tC\)</span> and <span class="math" data-tex="\(t\to+\infty\)">\(t\to+\infty\)</span> contradicts (A8); thus <span class="math" data-tex="\(C=0\)">\(C=0\)</span> and the same inequality holds.</p>
+<p>Let <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>, and let the integer
+<span class="math" data-tex="\(\ell&gt;d/2\)">\(\ell&gt;d/2\)</span>. Apply this inequality
+to <span class="math" data-tex="\(u(\xi)=\langle\xi\rangle^{-\ell}\)">\(u(\xi)=\langle\xi\rangle^{-\ell}\)</span>
+and <span class="math" data-tex="\(v(\xi)=|\xi|^{2N}\langle\xi\rangle^\ell|\widehat
+b(\xi)|\)">\(v(\xi)=|\xi|^{2N}\langle\xi\rangle^\ell|\widehat
+b(\xi)|\)</span>. Both square integrals converge by P18.3 and the
+Schwartz bounds. Since <span class="math" data-tex="\(|\xi|^{4N}\leq\langle\xi\rangle^{4N}\)">\(|\xi|^{4N}\leq\langle\xi\rangle^{4N}\)</span>, it
+gives <span class="math-display" data-tex="\[
+\int |\xi|^{2N}|\widehat b(\xi)|\,d\xi
+\leq\left(\int\langle\xi\rangle^{-2\ell}\,d\xi\right)^{1/2}
+\left(\int\langle\xi\rangle^{4N+2\ell}
+                   |\widehat b(\xi)|^2\,d\xi\right)^{1/2}.
+\tag{A6}
+\]">\[
+\int |\xi|^{2N}|\widehat b(\xi)|\,d\xi
+\leq\left(\int\langle\xi\rangle^{-2\ell}\,d\xi\right)^{1/2}
+\left(\int\langle\xi\rangle^{4N+2\ell}
+                   |\widehat b(\xi)|^2\,d\xi\right)^{1/2}.
+\tag{A6}
+\]</span> The first integral is finite by the rectangular-shell estimate
+P18.3 with exponent <span class="math" data-tex="\(2\ell&gt;d\)">\(2\ell&gt;d\)</span>,
+using the comparable weights <span class="math" data-tex="\(\langle\xi\rangle=(1+|\xi|^2)^{1/2}\)">\(\langle\xi\rangle=(1+|\xi|^2)^{1/2}\)</span> and
+<span class="math" data-tex="\(1+|\xi|\)">\(1+|\xi|\)</span>. No additional spherical
+integration theorem is used. Because <span class="math" data-tex="\(2N+\ell\)">\(2N+\ell\)</span> is an integer, the multinomial
+expansion of <span class="math" data-tex="\((1+\xi_1^2+\cdots+\xi_d^2)^{2N+\ell}\)">\((1+\xi_1^2+\cdots+\xi_d^2)^{2N+\ell}\)</span> is a
+finite sum of positive constants times <span class="math" data-tex="\(|\xi^\alpha|^2\)">\(|\xi^\alpha|^2\)</span>, with <span class="math" data-tex="\(|\alpha|\leq2N+\ell\)">\(|\alpha|\leq2N+\ell\)</span>. Apply (A5) to <span class="math" data-tex="\(D^\alpha b\)">\(D^\alpha b\)</span>, using <span class="math" data-tex="\(\widehat{D^\alpha b}=\xi^\alpha\widehat
+b\)">\(\widehat{D^\alpha b}=\xi^\alpha\widehat
+b\)</span>, and take square roots. This proves <span class="math-display" data-tex="\[
+\int |\xi|^{2N}|\widehat b(\xi)|\,d\xi
+\leq C_{d,N,\ell}
+       \sum_{|\alpha|\leq2N+\ell}\|\partial^\alpha b\|_{L^2}.
+\tag{A7}
+\]">\[
+\int |\xi|^{2N}|\widehat b(\xi)|\,d\xi
+\leq C_{d,N,\ell}
+       \sum_{|\alpha|\leq2N+\ell}\|\partial^\alpha b\|_{L^2}.
+\tag{A7}
+\]</span> Here <span class="math" data-tex="\(|K|\)">\(|K|\)</span> denotes the
+outer measure <span class="math" data-tex="\(m^*(K)\)">\(m^*(K)\)</span> of P19. For
+any <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, cover <span class="math" data-tex="\(K\)">\(K\)</span> by open rectangles with sum of volumes
+at most <span class="math" data-tex="\(m^*(K)+\varepsilon\)">\(m^*(K)+\varepsilon\)</span>;
+compactness gives a finite subcover with no larger sum. Their union is
+Jordan measurable by P20.3. For continuous <span class="math" data-tex="\(u\)">\(u\)</span> supported in <span class="math" data-tex="\(K\)">\(K\)</span>, positivity, finite additivity and
+null-overlap subdivision give <span class="math" data-tex="\(\int|u|^2\leq\|u\|_\infty^2(m^*(K)+\varepsilon)\)">\(\int|u|^2\leq\|u\|_\infty^2(m^*(K)+\varepsilon)\)</span>.
+Let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Thus on
+this fixed compact support each norm is bounded by <span class="math" data-tex="\(|K|^{1/2}\|\partial^\alpha b\|_\infty\)">\(|K|^{1/2}\|\partial^\alpha b\|_\infty\)</span>,
+including when <span class="math" data-tex="\(K\)">\(K\)</span> itself is not a
+Jordan set. The same argument applies after any fixed parameter or scale
+derivative. This proves the bound used in (3.4) and (6.2) with no
+derivative loss beyond their stated finite seminorms.</p>
+<h3 id="a.4.-finite-smooth-cutoffs">A.4. Finite smooth cutoffs</h3>
+<p>Put <span class="math" data-tex="\(h(t)=e^{-1/t}\)">\(h(t)=e^{-1/t}\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, and <span class="math" data-tex="\(h(t)=0\)">\(h(t)=0\)</span> for <span class="math" data-tex="\(t\leq0\)">\(t\leq0\)</span>. Every right derivative is a
+polynomial in <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> times <span class="math" data-tex="\(e^{-1/t}\)">\(e^{-1/t}\)</span>, which tends to zero at the
+origin: <span class="math" data-tex="\(v^m e^{-v}\to0\)">\(v^m e^{-v}\to0\)</span> as <span class="math" data-tex="\(v\to\infty\)">\(v\to\infty\)</span>. The flatness and smoothness,
+including all derivatives at zero, are proved in P14.3. The function
+<span class="math-display" data-tex="\[
+\theta(t)=\frac{h(t)}{h(t)+h(1-t)}
+\]">\[
+\theta(t)=\frac{h(t)}{h(t)+h(1-t)}
+\]</span> is smooth, equals zero for <span class="math" data-tex="\(t\leq0\)">\(t\leq0\)</span> and one for <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>. Composing it with affine
+functions of <span class="math" data-tex="\(|x-x_0|^2\)">\(|x-x_0|^2\)</span> gives a
+cutoff equal to one on a closed ball and supported in any prescribed
+larger ball.</p>
+<p>Given a compact set covered by coordinate neighborhoods, choose
+finitely many such smaller balls that cover it, with cutoffs <span class="math" data-tex="\(b_j\)">\(b_j\)</span> supported in their assigned
+neighborhoods. On a neighborhood of the compact set, <span class="math" data-tex="\(S=\sum_jb_j&gt;0\)">\(S=\sum_jb_j&gt;0\)</span>. Choose a further cutoff
+<span class="math" data-tex="\(\chi\)">\(\chi\)</span>, equal to one near the compact
+set, whose support lies where <span class="math" data-tex="\(S&gt;0\)">\(S&gt;0\)</span>, using a finite cover by balls
+inside that open set. For example, if the associated cutoffs are <span class="math" data-tex="\(c_k\)">\(c_k\)</span>, then <span class="math" data-tex="\(1-\prod_k(1-c_k)\)">\(1-\prod_k(1-c_k)\)</span> provides such a <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. The functions <span class="math" data-tex="\(\chi b_j/S\)">\(\chi b_j/S\)</span>, extended by zero, form a
+smooth partition with sum one near the compact set. This gives the
+precise finite partitions used in Sections 5 and 7. With parameters in a
+compact set, perform the construction in the product coordinate
+neighborhoods; compactness keeps every derivative needed in a fixed
+estimate bounded.</p>
+<h3 id="a.5.-hessians-and-quotient-densities-in-full">A.5. Hessians and
+quotient densities in full</h3>
+<p>A smooth <span class="math" data-tex="\(k\)">\(k\)</span>-dimensional
+submanifold means a subset with smooth adapted coordinate charts <span class="math" data-tex="\((y,z)\)">\((y,z)\)</span> in which it is <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, <span class="math" data-tex="\(y\in\mathbb R^k\)">\(y\in\mathbb R^k\)</span>, <span class="math" data-tex="\(z\in\mathbb R^r\)">\(z\in\mathbb R^r\)</span>. This is the chart
+definition; no unproved constant-rank theorem is needed. At a critical
+point, the chain rule for a coordinate map <span class="math" data-tex="\(F\)">\(F\)</span> gives <span class="math-display" data-tex="\[
+(\phi\circ F)&#x27;&#x27;=F&#x27;^T\phi&#x27;&#x27;F&#x27;,
+\]">\[
+(\phi\circ F)&#39;&#39;=F&#39;^T\phi&#39;&#39;F&#39;,
+\]</span> because its other terms contain first derivatives of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, which vanish. If <span class="math" data-tex="\(\ker H=W=T_xC\)">\(\ker H=W=T_xC\)</span>, the rule <span class="math" data-tex="\(\overline H([v],[w])=H(v,w)\)">\(\overline H([v],[w])=H(v,w)\)</span> is
+independent of the lifts, since <span class="math" data-tex="\(H\)">\(H\)</span>
+annihilates <span class="math" data-tex="\(W\)">\(W\)</span>. If its pairing with
+every quotient vector vanishes, then <span class="math" data-tex="\(v\in\ker H=W\)">\(v\in\ker H=W\)</span>; hence <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span> is nondegenerate.</p>
+<p>An ordinary density on an <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional vector space assigns a
+number to each ordered basis, with transformation rule <span class="math" data-tex="\(\mu(vB)=|\det B|\mu(v)\)">\(\mu(vB)=|\det B|\mu(v)\)</span>. We allow
+complex-valued amplitudes multiplying these ordinary densities. For a
+nondegenerate real symmetric form <span class="math" data-tex="\(H\)">\(H\)</span>, define the positive density <span class="math-display" data-tex="\[
+\nu_H(v_1,\ldots,v_n)=
+\left|\det\bigl(H(v_i,v_j)\bigr)\right|^{1/2}.
+\]">\[
+\nu_H(v_1,\ldots,v_n)=
+\left|\det\bigl(H(v_i,v_j)\bigr)\right|^{1/2}.
+\]</span> Indeed the matrix under a basis change is <span class="math" data-tex="\(B^THB\)">\(B^THB\)</span>, and determinant multiplication
+shows that its absolute square root is multiplied by <span class="math" data-tex="\(|\det B|\)">\(|\det B|\)</span>. Only ordinary densities and
+this positive square root are used.</p>
+<p>Let <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span>, let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a density on <span class="math" data-tex="\(V\)">\(V\)</span>, and let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> be a positive density on <span class="math" data-tex="\(V/W\)">\(V/W\)</span>. If <span class="math" data-tex="\(t\)">\(t\)</span> is a basis of <span class="math" data-tex="\(W\)">\(W\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span>
+a basis of <span class="math" data-tex="\(V/W\)">\(V/W\)</span>, and <span class="math" data-tex="\(v\)">\(v\)</span> any lifts of <span class="math" data-tex="\(q\)">\(q\)</span>, set <span class="math-display" data-tex="\[
+(\mu/\nu)(t)=\frac{\mu(t,v)}{\nu(q)}.
+\]">\[
+(\mu/\nu)(t)=\frac{\mu(t,v)}{\nu(q)}.
+\]</span> Changing lifts adds tangent vectors to <span class="math" data-tex="\(v\)">\(v\)</span>; the combined change matrix is block
+upper triangular with identity diagonal, so it has determinant one.
+Changing <span class="math" data-tex="\(q\)">\(q\)</span> by <span class="math" data-tex="\(B\)">\(B\)</span> multiplies numerator and denominator by
+<span class="math" data-tex="\(|\det B|\)">\(|\det B|\)</span>. Changing <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(P\)">\(P\)</span> multiplies the quotient by <span class="math" data-tex="\(|\det P|\)">\(|\det P|\)</span>, exactly the density rule on
+<span class="math" data-tex="\(W\)">\(W\)</span>. To justify the block determinant
+used here, expand the determinant by permutations: a nonzero term cannot
+send a lower row to an upper-block column because the lower-left block
+is zero; counting columns then forces each block to use its own columns,
+and the sum factors into the two block determinants. This proves lift
+and frame independence.</p>
+<p>Apply this construction with <span class="math" data-tex="\(V=T_xU\)">\(V=T_xU\)</span>, <span class="math" data-tex="\(W=T_xC\)">\(W=T_xC\)</span>, and <span class="math" data-tex="\(\nu=\nu_{\overline H}\)">\(\nu=\nu_{\overline H}\)</span>. For ambient
+density <span class="math" data-tex="\(m(y,z)|dy\,dz|\)">\(m(y,z)|dy\,dz|\)</span>, its
+quotient is <span class="math-display" data-tex="\[
+\frac{m(y,0)}{|\det\phi&#x27;&#x27;_{zz}(y,0)|^{1/2}}\,|dy|.
+\tag{A9}
+\]">\[
+\frac{m(y,0)}{|\det\phi&#39;&#39;_{zz}(y,0)|^{1/2}}\,|dy|.
+\tag{A9}
+\]</span> The <span class="math" data-tex="\(z\)">\(z\)</span> classes form a
+quotient basis and the <span class="math" data-tex="\(y\)">\(y\)</span> vectors a
+tangent basis, so this follows directly from the definition. The
+critical kernel condition makes the <span class="math" data-tex="\(z\)">\(z\)</span> block invertible.</p>
+<p>Integration of a compactly supported density on <span class="math" data-tex="\(C\)">\(C\)</span> is defined with finitely many adapted
+charts and the cutoffs of A.4 restricted to <span class="math" data-tex="\(C\)">\(C\)</span>. It is independent of these choices:
+refine two such partitions by their products. On each common chart
+overlap, the coordinate transition is a smooth diffeomorphism and P21.4
+cancels the density factor with the absolute Jacobian in the integral.
+Finite additivity identifies both sums. A zero-dimensional compact
+support gives a finite sum of point values, since every point has a
+one-point chart and compactness gives a finite cover.</p>
+<p>Finally, let <span class="math" data-tex="\(T\)">\(T\)</span> be the matrix of
+the tangent coordinate frame. Its Gram matrix <span class="math" data-tex="\(T^TT\)">\(T^TT\)</span> is positive definite, since <span class="math" data-tex="\(v^TT^TTv=|Tv|^2&gt;0\)">\(v^TT^TTv=|Tv|^2&gt;0\)</span> for <span class="math" data-tex="\(v\neq0\)">\(v\neq0\)</span>. The orthogonal projection onto
+the tangent space is <span class="math" data-tex="\(T(T^TT)^{-1}T^T\)">\(T(T^TT)^{-1}T^T\)</span>, smooth by P2. Project a
+fixed normal basis at one point using the complementary projection;
+linear independence persists nearby by the nonzero Gram determinant.
+Gram–Schmidt, with the positive square roots proved in P8 and the
+construction P9.4, gives a smooth orthonormal normal frame <span class="math" data-tex="\(n\)">\(n\)</span>. In the combined frame <span class="math" data-tex="\((T,n)\)">\((T,n)\)</span>, the Gram matrix is block diagonal
+with blocks <span class="math" data-tex="\(T^TT\)">\(T^TT\)</span> and the identity.
+Hence <span class="math-display" data-tex="\[
+|\det(T,n)|=\sqrt{\det(T^TT)}.
+\]">\[
+|\det(T,n)|=\sqrt{\det(T^TT)}.
+\]</span> The Euclidean density restricted in this combined frame is
+therefore the induced tangent volume density. Dividing by <span class="math" data-tex="\(\nu_{\overline H}(n)=|\det H_\perp|^{1/2}\)">\(\nu_{\overline H}(n)=|\det H_\perp|^{1/2}\)</span>
+proves (7.3). The empty tangent or normal blocks obey the dimension-zero
+conventions stated in Section 1. This also proves that the Euclidean
+expression represents the intrinsic quotient (A9).</p>
+<p>The ordinary density and exact-sequence viewpoint is described in the
+freely posted Bates–Weinstein Appendix A. The transformation and
+integration arguments required here have been given in full.</p>
+<h3 id="a.6.-finite-clean-localization-and-its-uniform-bounds">A.6.
+Finite clean localization and its uniform bounds</h3>
+<p>Intersect the critical set with the compact amplitude support <span class="math" data-tex="\(K\)">\(K\)</span>. This is compact: it is the zero set of
+the continuous gradient inside <span class="math" data-tex="\(K\)">\(K\)</span>.
+At each point choose a smaller adapted product chart with connected
+tangent zero section and precompact closure in a larger adapted chart.
+Its critical points form that connected zero section, so the chart meets
+only one critical component. Compactness gives finitely many such
+smaller charts covering the critical subset. In particular only finitely
+many critical components meet <span class="math" data-tex="\(K\)">\(K\)</span>,
+and the amplitude may be split among them.</p>
+<p>On the critical set, the derivative in every tangent direction of
+<span class="math" data-tex="\(\phi|_C\)">\(\phi|_C\)</span> is zero. In a small convex
+tangent coordinate box, the fundamental theorem along each segment
+proves constancy. Thus the restriction is locally constant. On a
+connected component the set on which it equals a chosen value and its
+complement are both open; connectedness forces the complement to be
+empty. The same reasoning applies to the locally constant normal
+signature furnished by the signed Morse reduction and P5.</p>
+<p>Before constructing cutoffs, refine this cover by the parameter Morse
+charts for the normal variables, and choose smaller precompact charts
+inside them. Compactness again gives a finite cover. Construct the
+finite cutoffs of A.4 in these charts, with their sum one near the
+compact critical subset. Subtract their sum from one on the amplitude
+support. The remaining amplitude has compact support disjoint from the
+critical set, so continuity and the extreme-value theorem give a
+positive minimum of <span class="math" data-tex="\(|\nabla\phi|\)">\(|\nabla\phi|\)</span>
+there. Proposition 2.1 applies to that remaining part.</p>
+<p>On each near chart use the resulting normal Morse coordinates, with
+<span class="math" data-tex="\(y\)">\(y\)</span> as parameter. The supports chosen
+in the preceding paragraph make each localized amplitude and its
+transformed version compactly supported inside its respective chart;
+P21.4 justifies substitution and smooth extension by zero. Compact
+Fubini P17.5 orders the tangential and normal integrals. Theorem 3.2
+gives a normal remainder bounded by a constant times <span class="math" data-tex="\(\lambda^{-N}\)">\(\lambda^{-N}\)</span>, uniformly in <span class="math" data-tex="\(y\)">\(y\)</span> on a fixed compact set. Its tangential
+integral is bounded by that supremum times the volume of a containing
+tangent rectangle. The same argument integrates every coefficient and
+every fixed parameter derivative, using P12.7. A.5 identifies the
+leading coefficient after summing the cutoffs. Equality of higher
+coefficients under different cutoffs follows from the
+subtraction-and-limit argument in Section 5, applied to the localized
+component.</p>
+<p>If <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, the normal integral is
+evaluation, the quadratic prefactor is one, and the phase is constant on
+each such chart. Its expansion is exact with <span class="math" data-tex="\(A_j=0\)">\(A_j=0\)</span> for <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>; any far contribution is rapidly
+decreasing. No positive-dimensional Fresnel calculation is being applied
+to this case.</p>
+<p>For the families in Theorem 7.2, use the stipulated smooth adapted
+charts over compact parameter neighborhoods, common compact coordinate
+supports, and the stated normal-inverse and far-gradient bounds. Treat
+<span class="math" data-tex="\((y,s)\)">\((y,s)\)</span> as the parameter in M1. M2
+bounds inverse-coordinate derivatives on their compact images. Finite
+parameter covers, products of the cutoffs of A.4, and finite maxima of
+the bounds give uniform constants; take the union of the finitely many
+amplitude seminorm requirements. The critical value <span class="math" data-tex="\(c(s)\)">\(c(s)\)</span> is independent of <span class="math" data-tex="\(y\)">\(y\)</span> on the component just proved constant.
+Remove <span class="math" data-tex="\(e^{i\lambda c(s)}\)">\(e^{i\lambda c(s)}\)</span> before
+applying the differentiated estimate. Corollary 6.1 then gives each
+scale derivative with its stated decrease in order; compact tangential
+integration preserves the bound. This proves all the uniformity
+assertions of the clean theorem without importing composition of Fourier
+integral operators.</p>
 <h2 id="references">References</h2>
 <ul>
-<li>[Guillemin–Sternberg] Victor Guillemin and Shlomo Sternberg, <em>Semi-classical Analysis</em>, lecture notes. <a href="https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf">Online reading</a>.</li>
-<li>[Hörmander I] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li><p>[Hörmander I] Lars Hörmander, <em>The Analysis of Linear Partial
+Differential Operators I: Distribution Theory and Fourier Analysis</em>,
+second edition (1990), Springer, 2003 reprint, §7.7, Lemma 7.7.3 and
+Theorems 7.7.5–7.7.6, pp. 218–222.</p></li>
+<li><p>[Guillemin–Sternberg] Victor Guillemin and Shlomo Sternberg,
+<em>Semi-classical Analysis</em>, author draft, 13 January 2010, Chapter
+14 and §8.14. <a
+href="https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf">Online
+reading</a>.</p></li>
+<li><p>[Bates–Weinstein] Sean Bates and Alan Weinstein, <em>Lectures on
+the Geometry of Quantization</em>, author-posted draft, Appendix A
+(ordinary densities and the exact sequence) and Appendix B
+(nonstationary integration and the invariant leading coefficient). The
+Gaussian calculation used here is proved locally from the independently
+checked free route in Q2 and Q6. <a
+href="https://math.berkeley.edu/~alanw/GofQ.pdf">Online
+reading</a>.</p></li>
+<li><p>[Lebl] Jiří Lebl, <em>Basic Analysis I–II</em>, version 6.3, 15
+May 2026, selected elementary prerequisites and §§8.3–8.6 and 10.7. <a
+href="https://www.jirka.org/ra/">Author edition</a>. The exact programme
+versions and completed prerequisite proofs are bound in this receiving
+edition.</p></li>
 </ul>
-<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).</em></p>
-<footer><p>Original text: CC0.</p><p><a href="src/stationary-phase-and-critical-manifolds.md">Editable original Markdown</a>. Source commit 39ee5c0c073550633578b12a80111fc27c86d250.</p></footer></main></body></html>
+<p><em>Retained original text by GPT-6.1 Sol (OpenAI), Ultra, September
+2026, with its 3 October 2026 analytic revision: CC0. Free-source proof
+reconciliation and additional prerequisite, density and localization
+arguments by GPT-6 Astra (OpenAI), Ultra, 4 October 2026. Original text:
+public domain (CC0); linked prerequisite components retain their own
+notices. Self-checked by the writing AI.</em></p>
+<footer><p>Original text: CC0.</p><p><a href="src/stationary-phase-and-critical-manifolds.md">Editable original Markdown</a>. </p></footer></main></body></html>

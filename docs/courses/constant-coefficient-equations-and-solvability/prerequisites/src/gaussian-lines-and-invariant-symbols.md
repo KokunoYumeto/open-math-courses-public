@@ -2,7 +2,15 @@
 
 An amplitude attached to a phase is not yet an invariant symbol. A change of phase can alter its Jacobian and its complex phase. The Jacobian belongs to a half density on the Lagrangian; the remaining phase belongs to a locally constant complex line bundle. We construct those two factors from linear Gaussian distributions, then prove the principal-symbol isomorphism for ordinary Lagrangian distributions.
 
-We use the symplectic conventions and common-complement lemma of [Phase space and generating families](phase-space-and-generating-families.md), the quadratic Fourier factors in [Stationary phase and critical manifolds](stationary-phase-and-critical-manifolds.md), the phase representations and intrinsic criterion of [Recognizing a Lagrangian distribution intrinsically](intrinsic-lagrangian-regularity.md), and the models in Tangent zooms and quadratic models. The properly supported localization and summation tools are those of the linked AN-03 prerequisites. The source authorities are [Hörmander III, §21.6] and [Hörmander IV, §25.1].
+The exact earlier programme proofs are:
+
+- The restored phase-space lesson, including its symplectic basis and common-complement proofs; the restored intrinsic-regularity lesson, including both prescribed-phase converses; and the restored tangent-zoom lesson, including singular Gaussian evaluation.
+- Quadratic stationary phase, Q1–Q6, finite calculus and inverse maps, and convergent series, P13. The [stationary lesson's Appendix A.4–A.6](stationary-phase-and-critical-manifolds.md) supplies compact bumps, quotient densities and fiber integration.
+- Completed measure and product integration, M0–M4, coordinate and wavefront transport, and conic parametrices and full-symbol cutoffs, K0–K7.
+- The geometric Maslov line, M0–M7, the global principal-symbol proof, PS0–PS6, and symbols on conic bundles. PS5 proves the partition with supports locally finite over the base; PS6 proves global gluing and the exact kernel. Their phase-coordinate conventions are identified explicitly with the geometric Gaussian line in M6 and PS28–PS29.
+- The restored oscillatory lesson supplies clean Fourier reduction with the normalization used here. The restored phase-equivalence lesson supplies the exact homogeneous stabilization used in Exercise 9.3.
+
+The proof map binds each use to its exact source and complete dependency chain. The primary sources are the exact reprints of Hörmander III, corrected second printing (1994), Section 21.6 and Hörmander IV, corrected second printing (1994), Section 25.1. This lesson retains its independent exposition and exercises. The earlier programme alternatives and their reproducible figures remain available through the links above. Manifolds used for the global construction are Hausdorff and second countable, as in PS0.
 
 Our symplectic form is \(\omega=\sum d\xi_j\wedge dx_j\). The distinguished vertical plane is \(\lambda_0=\{x=0\}\), and \(D=-i\partial\). The signature of a real symmetric form counts positive eigenvalues minus negative eigenvalues; zero eigenvalues count zero.
 
@@ -27,7 +35,9 @@ then on this plane \(y=(P+QC)x\). Wherever \(P+QC\) is invertible, its new symme
 (R+TC)(P+QC)^{-1}.
 \tag{1.1}
 \]
-Thus the transitions are rational, with nonzero denominators on the chart overlaps. The charts cover every plane, because every Lagrangian has a complementary Lagrangian. ∎
+Thus the transitions are rational, with nonzero denominators on the chart overlaps. To check real analyticity directly at \(C_0\), set \(M_0=P+QC_0\) and \(Z=M_0^{-1}Q(C-C_0)\). For small matrix entries of \(C-C_0\), the inverse is the convergent matrix series \((P+QC)^{-1}=\sum_{j\geq0}(-Z)^jM_0^{-1}\). Each summand is a homogeneous polynomial of degree \(j\) in those entries. Choosing their absolute values sufficiently small bounds the sum of absolute monomial contributions by a geometric series. The finite geometric identity has remainder tending to zero, so this series is the actual inverse and is a convergent real power series. Multiplication by \(R+TC\) proves the claimed analytic transition. The charts cover every plane, because every Lagrangian has a complementary Lagrangian. ∎
+
+For the topology, choose a Euclidean inner product on \(S\) and send a plane with basis-column matrix \(V\) to its orthogonal projection \(P_\lambda=V(V^TV)^{-1}V^T\). This is independent of the basis and determines the plane as its range. It varies continuously in every graph chart. Conversely, near a fixed rank-\(n\) projection, select \(n\) of its columns that are independent there; they remain independent nearby, and the graph coefficients are obtained continuously by an invertible minor. Thus the chart topology is exactly the subspace topology in the finite-dimensional space of matrices. It is Hausdorff and second countable by the rational-ball basis of that space.
 
 **Proposition 1.2.** For fixed \(\mu\), the stratum \(\dim(\lambda\cap\mu)=k\) is a smooth submanifold of codimension \(k(k+1)/2\). In particular any countable collection of Lagrangian planes has a common Lagrangian complement.
 
@@ -37,7 +47,9 @@ Thus the transitions are rational, with nonzero denominators on the chart overla
 \]
 It has rank \(n-k\) exactly when \(E=D^TC^{-1}D\), by block elimination. These are \(k(k+1)/2\) independent smooth equations: the entries of the symmetric block \(E\) are free coordinates before imposing them. This proves the stratum assertion, including the endpoints \(k=0,n\).
 
-The nontransverse set is the finite union of the strata with \(k\geq1\), hence has measure zero in every chart. Here any smooth positive chart volume may be used; a positive-codimension smooth submanifold is locally a coordinate plane and has zero volume by change of variables and Fubini. A countable union of these null sets cannot cover a nonempty chart. A plane outside that union is transverse to every plane in the given countable collection. ∎
+Here is the measure argument with its countability made explicit. In a Euclidean chart of dimension \(d=n(n+1)/2\), a positive-codimension smooth submanifold is locally a smooth graph over \(\mathbb R^l\), with \(l<d\), by the inverse theorem. On a compact parameter box inside such a graph domain, all first derivatives are bounded. Divide that box into cubes of side at most \(\delta\). There are at most \(C\delta^{-l}\) cubes, and the graph above each has diameter at most \(C'\delta\), by the segment fundamental theorem. Its image lies in a \(d\)-dimensional cube of volume at most \(C''\delta^d\). The total covering volume tends to zero as \(\delta^{d-l}\). For \(l=0\) the graph is one point and the same conclusion follows from a single shrinking cube. The outer-measure construction M2 therefore makes each compact graph patch null.
+
+Rational boxes exhaust each open parameter domain countably. The ambient Euclidean chart has a countable rational-ball basis, so its submanifold admits a countable subcover of these graph neighborhoods: for each basis member lying in one neighborhood choose one such neighborhood; these choices cover every point. Thus the whole stratum in that chart is null. Smooth positive chart densities are bounded on compact subcharts and preserve this conclusion. The nontransverse set is the finite union of the strata with \(k\geq1\). For a countable collection of fixed planes, the union of their nontransverse sets is consequently null in any one nonempty chart, and cannot contain a coordinate box of positive volume. A plane outside that union is a common complement. If \(n=0\), the unique zero plane is already such a complement. ∎
 
 ## 2. The Gaussian line determined by a plane
 
@@ -61,9 +73,9 @@ u_B(x)=c(2\pi)^{-3n/4}
 
 The formula remains meaningful for singular \(B\).
 
-**Proof.** First assume this transverse representation. The equations are \((x_j-(BD)_j)u=0\). Diagonalize \(B\) orthogonally, separating its nonzero eigenvalues from its kernel. The kernel equations \(z_j u=0\) force a simple layer \(\delta_0(z)\otimes v(y)\), with no normal derivatives. To verify that assertion directly, decompose a compact test function into its value on \(z=0\), times a compact cutoff equal to one there, and a sum of terms \(z_jg_j\), by Taylor's formula and cutoffs. The annihilation equations remove those latter terms and identify the distribution on the remaining \(y\) variables.
+**Proof.** First assume this transverse representation. The equations are \((x_j-(BD)_j)u=0\). Diagonalize \(B\) orthogonally, separating its nonzero eigenvalues from its kernel. The kernel equations \(z_j u=0\) force a simple layer \(\delta_0(z)\otimes v(y)\), with no normal derivatives. To verify this directly, fix \(\chi\in C_c^\infty\) in the \(z\) variables, equal to one near zero. For a compact test \(f\), put \(F(y,z)=f(y,z)-\chi(z)f(y,0)\). The segment fundamental theorem gives \(F(y,z)=\sum_j z_j\int_0^1\partial_{z_j}F(y,tz)\,dt\). Multiply the integrals by one compact smooth cutoff equal to one on \(\operatorname{supp}F\); this makes every resulting \(g_j\) compactly supported while retaining the equality \(F=\sum_jz_jg_j\). The equations \(z_j u=0\) kill these terms. The functional \(v(h)=u(h(y)\chi(z))\) has a finite-order bound on each compact \(y\)-support, hence is a distribution, and \(u(f)=v(f(\cdot,0))\). This proves the simple-layer assertion and excludes normal derivatives.
 
-For each nonzero eigenvalue \(\beta_j\), the remaining equation is \((y_j-\beta_jD_j)v=0\). Multiplying by \(\exp(-i\sum y_j^2/(2\beta_j))\) turns it into \(\partial_{y_j}w=0\). A distribution with all first derivatives zero is constant: any compact smooth test of integral zero is a sum of compact first derivatives. One constructs that sum by subtracting successive one-variable marginals times compact functions of integral one; each remainder has zero integral in that variable and thus a compact primitive. This proves the constant assertion by testing against those derivatives.
+For each nonzero eigenvalue \(\beta_j\), the remaining equation is \((y_j-\beta_jD_j)v=0\). Multiplying by \(\exp(-i\sum y_j^2/(2\beta_j))\) turns it into \(\partial_{y_j}w=0\). A distribution with all first derivatives zero is constant. Here is the compact-primitive argument. In the \(k\) remaining variables choose compact smooth \(\rho_j\) of integral one. For a test \(f\), let \(M_jf\) be its integral in the first \(j\) variables, with \(M_0f=f\). Telescoping writes \(f-(\prod_j\rho_j)\int f\) as the sum, for \(j=1,\ldots,k\), of \((\prod_{i<j}\rho_i)(M_{j-1}f-\rho_jM_jf)\). Each bracket has integral zero in variable \(j\). Its primitive from \(-\infty\) to that variable is smooth and compactly supported, since it vanishes on both tails; all other variables also have common compact support. Thus each summand is a compact first derivative. The equations \(\partial_jw=0\) annihilate their sum, giving \(w(f)=c\int f\), with \(c=w(\prod_j\rho_j)\). For \(k=0\), the test space is already one-dimensional. Compact parameter integration and product integration justify all marginals and derivatives. This proves the constant assertion without assuming temperedness.
 
 Every solution is consequently a constant Gaussian times a simple layer, hence is tempered. Fourier transformation is now justified without assuming temperedness at the outset. Its equations give
 \[
@@ -192,7 +204,7 @@ Let \(Q(x,\theta)\) be a real quadratic form on \(\mathbb R^n\times\mathbb R^N\)
 \[
 \lambda=\{(x,Q_x):Q_\theta=0\}.
 \]
-The bijection follows from the critical-map proof for a nondegenerate phase, applied to linear equations.
+Indeed \(C\) has dimension \(n\), because its \(N\) defining linear equations are independent. If \((x,Q_x)=0\) on \(C\), then \(x=0\) and both components of the full Hessian applied to \((0,\theta)\) vanish. The phase nondegeneracy condition forces \(\theta=0\), proving injectivity. For two vectors of \(C\), the symplectic pairing of their images is zero: symmetry of the full Hessian equates the two full bilinear pairings, and their phase-gradient terms vanish on \(C\). The image is therefore isotropic of dimension \(n\), hence Lagrangian. This direct linear proof also covers an empty phase-variable block.
 
 The integral
 \[
@@ -290,7 +302,7 @@ In a base chart making \(\Lambda\) a frequency graph, its representative is
 \]
 in the Maslov frame determined by that chart's horizontal tangent planes and a local frame of \(E\).
 
-**Proof of well-definedness.** Compactly localize \(u\) with a proper microlocal cutoff elliptic at the point and with microsupport in the graph chart. Two decompositions that agree microlocally have a wavefront-regular difference on the smaller cone. Their compact Fourier transforms, and all fixed frequency derivatives, are rapidly decreasing there. Thus (7.2) is independent of that decomposition even modulo \(S^{-\infty}\).
+**Proof of well-definedness.** Choose a compact proper microlocal cutoff whose full symbol is one modulo \(S^{-\infty}\) on a smaller cone about the point, with microsupport inside the graph chart. K7 and PS3 construct such a cutoff. Its output \(u_1\) differs from \(u\) by a distribution \(u_2\) regular on that smaller cone; apply (7.2) to \(u_1\). Two such decompositions have a wavefront-regular difference there. Their compact Fourier transforms, and all fixed frequency derivatives, are rapidly decreasing there. Thus (7.2) is independent of that decomposition even modulo \(S^{-\infty}\).
 
 For a nondegenerate phase representation with amplitude \(a\), Fourier reduction gives
 \[
@@ -319,7 +331,7 @@ A change of frame of \(E\) is multiplication by a smooth matrix \(g(x)\). Fourie
 
 For surjectivity, first take a symbol section supported inside a compactly generated graph cone. Its local scalar coefficient is a symbol of order \(\nu-n/2=m-n/4\). The normalized inverse phase integral (1.2) of the previous lesson, multiplied by a base cutoff equal to one near the graph's base image, has that coefficient modulo one lower order. Fourier reduction proves the last assertion, and the intrinsic converse puts the distribution in \(I^m\).
 
-For a general section, choose a locally finite cover of the cosphere of \(\Lambda\) by such chart cones and a homogeneous degree-zero partition of unity. Take the cover in relatively compact base/direction boxes, with closures still inside their graph domains, locally finite in the ambient cosphere. Over a compact base set its cosphere is compact, so only finitely many boxes meet it. Construct a local distribution for each symbol piece, with its compact base support in the corresponding base box. Their sum is locally finite as a distribution and has the prescribed symbol class by (7.3) and the transition laws. This proves surjectivity and (7.1). ∎
+For a general section, use the explicit construction in PS5: a precompact base exhaustion, a locally finite base partition, a homogeneous positive frequency norm, finite phase charts above each compact base support, and their degree-zero partition. This gives a locally finite cover of the cosphere of \(\Lambda\) by the required chart cones. Take the cover in relatively compact base/direction boxes, with closures still inside their graph domains, locally finite in the ambient cosphere. Over a compact base set its cosphere is compact, so only finitely many boxes meet it. Construct a local distribution for each symbol piece, with its compact base support in the corresponding base box. Their sum is locally finite as a distribution and has the prescribed symbol class by (7.3) and the transition laws. This proves surjectivity and (7.1). ∎
 
 For two nondegenerate representations of the same \(u\) in fixed base coordinates, the explicit consequence is
 \[
@@ -340,7 +352,7 @@ e^{i\pi\operatorname{sgn}G'/4}
 \quad\bmod S^{\nu-1}.
 \tag{7.5}
 \]
-This follows from the proved clean reduction and normalization (1.1); no \(2\pi\) factor remains. The normal-density change proved in clean stationary phase makes the expression independent of the chosen fiber/normal split. Its order is \(\nu\): the scalar amplitude contributes \(m+(n-2N-2e)/4\), the determinant contributes \(-(n-N+e)/2\), the fiber measure contributes \(e\), and \(|d\xi|^{1/2}\) contributes \(n/2\). Adding them gives \(m+n/4\). Compact fiber support is part of this local statement; a global fiber integral requires its own properness hypothesis.
+This follows from the proved clean reduction and the normalized coefficient in (7.2); no \(2\pi\) factor remains. Here the clean oscillatory integral uses the prefactor \((2\pi)^{-(n+2N-2e)/4}\) from the restored intrinsic lesson, equation (4.2). Its stated conversion to the earlier companion's fixed prefactor must be included when comparing amplitude formulas. The normal-density change proved in clean stationary phase makes the expression independent of the chosen fiber/normal split. Its order is \(\nu\): the scalar amplitude contributes \(m+(n-2N-2e)/4\), the determinant contributes \(-(n-N+e)/2\), the fiber measure contributes \(e\), and \(|d\xi|^{1/2}\) contributes \(n/2\). Adding them gives \(m+n/4\). Compact fiber support is part of this local statement; a global fiber integral requires its own properness hypothesis.
 
 ## 8. Conjugation reflects the covector and the Maslov phase
 
@@ -382,6 +394,6 @@ For the bundle identification, \(\iota\) reverses the symplectic form. In the ma
 ## References
 
 - [Hörmander III, §21.6] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, Springer, 1994, §21.6.
-- [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, 1985, §25.1.
+- [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing, Springer, 1994, §25.1.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Self-checked by the writing AI. Original text: public domain (CC0).*

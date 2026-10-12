@@ -227,16 +227,16 @@ More generally this holds for any orthogonal-support family \((\omega_i)\) whose
 <a id="bfc-6"></a>
 ## 6. Amplify a bounded functional to infinite multiplicity
 
-Now assume that \(M\ne0\) has properly infinite identity. Choose a filling family \((v_n)_{n\ge1}\) from [PC5](OA-FLOW-PC.md#pc-5):
+Now assume that \(M\ne0\) has properly infinite identity. Let \((v_n)_{n\ge1}\) be any countably infinite family of isometries with orthogonal ranges, and write \(r_v\) for their range sum. [PC5](OA-FLOW-PC.md#pc-5) supplies such a family with \(r_v=1\), but a proper range projection is allowed:
 \[
  v_n^*v_m=\delta_{nm}1,\qquad
- \sum_{n\ge1}v_nv_n^*=1\quad\text{strongly}.
+ \sum_{n\ge1}v_nv_n^*=r_v\le1\quad\text{strongly}.
  \tag{BFC24}
 \]
 On a faithful representation \(M\subseteq B(H)\), the map
-\((\xi_n)\mapsto\sum_n v_n\xi_n\) is a unitary \(H\otimes\ell^2\to H\): orthogonality proves its isometry, and the filling identity proves surjectivity. Conjugation by this unitary defines the normal isomorphism with normal inverse
+\((\xi_n)\mapsto\sum_n v_n\xi_n\) is a unitary \(H\otimes\ell^2\to r_vH\): orthogonality proves its isometry, and the definition of \(r_v\) proves surjectivity onto that closed subspace. Conjugation by this unitary defines the normal isomorphism with normal inverse
 \[
- A_v:M\bar\otimes B(\ell^2)\longrightarrow M,\qquad
+ A_v:M\bar\otimes B(\ell^2)\longrightarrow r_vMr_v,\qquad
  A_v(x\otimes e_{mn})=v_mxv_n^*,\qquad
  (A_v^{-1}(x))_{mn}=v_m^*xv_n.
  \tag{BFC25}
@@ -249,7 +249,7 @@ For \(\omega\in M_*^+\), define
  P_{\omega,v}=s(\dot\omega_v)=A_v(p_\omega\otimes1).
  \tag{BFC26}
 \]
-The formula is \(A_v\)-transport of the tensor weight \(\omega\bar\otimes\operatorname{Tr}\), with rank-one trace normalized to one. On its support it is the faithful tensor weight of \(\omega|_{p_\omega Mp_\omega}\), constructed in [TW2–3](OA-FLOW-TW.md#tw-2); it is extended by zero via its support compression. The same finite diagonal-contraction argument as in Section 1 proves normal semifiniteness on the entire algebra. The [full tensor modular formula](OA-FLOW-TW.md#tw-5), followed by [normal isomorphism covariance](OA-FLOW-BC.md#bc-5), gives
+On \(r_vMr_v\), the formula is \(A_v\)-transport of the tensor weight \(\omega\bar\otimes\operatorname{Tr}\), with rank-one trace normalized to one. On all of \(M_+\), the value depends only on \(r_vxr_v\), because \(r_vv_n=v_n\). On its support it is the faithful tensor weight of \(\omega|_{p_\omega Mp_\omega}\), constructed in [TW2–3](OA-FLOW-TW.md#tw-2); it is extended by zero via its support compression. The same finite diagonal-contraction argument as in Section 1 proves normal semifiniteness on the entire algebra. The [full tensor modular formula](OA-FLOW-TW.md#tw-5), followed by [normal isomorphism covariance](OA-FLOW-BC.md#bc-5), gives
 \[
  M_{\dot\omega_v}
    \cong M_\omega\bar\otimes B(\ell^2).
@@ -264,15 +264,15 @@ The assignment \(\omega\mapsto\dot\omega_v\) is injective as a map of actual wei
 \]
 This matters when its values are used as distinct labels in a universal balanced sum.
 
-For another filling family \(v_n'\), [PC1](OA-FLOW-PC.md#pc-1) gives a unitary
+For another such family \(v_n'\), with range sum \(r_{v'}\), [PC1](OA-FLOW-PC.md#pc-1) gives a partial isometry
 \[
  w=\sum_{n\ge1}v_n'v_n^*\quad\text{strongly-*},\qquad
  A_{v'}=\operatorname{Ad}(w)\circ A_v,\qquad
  \dot\omega_{v'}(x)=\dot\omega_v(w^*xw).
  \tag{BFC29}
 \]
-Both initial and final projection sums are one, which verifies unitarity. The last identity follows term by term from \(w^*v_n'=v_n\) on all positive elements, including infinite values. Hence \(P_{\omega,v'}=wP_{\omega,v}w^*\), and the partial isometry \(wP_{\omega,v}\) implements
-\(\dot\omega_v\sim\dot\omega_{v'}\) in the orientation (BFC1). The equivalence class is independent of the chosen filling family.
+The initial and final projection sums give \(w^*w=r_v\) and \(ww^*=r_{v'}\). Thus \(\operatorname{Ad}(w)\) is an isomorphism from \(r_vMr_v\) onto \(r_{v'}Mr_{v'}\); it is an automorphism of \(M\) when both families fill the identity. The last identity follows term by term from \(w^*v_n'=v_n\) on all positive elements, including infinite values. Hence \(P_{\omega,v'}=wP_{\omega,v}w^*\), and the partial isometry \(wP_{\omega,v}\) implements
+\(\dot\omega_v\sim\dot\omega_{v'}\) in the orientation (BFC1). The equivalence class is independent of the chosen family and of its range sum.
 
 <a id="bfc-7"></a>
 ## 7. Identify the associated global center summand
@@ -308,7 +308,7 @@ To construct it, first permute the \(J\) and \(\mathbb N\) Hilbert coordinates, 
        \omega(X_{(\omega,n),(\omega,n)}).
  \tag{BFC33}
 \]
-Both sides are the supremum over all finite sets of pairs; no integrability or finite total mass is needed. Thus the map transports \(\Omega\bar\otimes\operatorname{Tr}\) to \(\dot\Omega_v\) on their full support corners. Its source centralizer is \(\mathcal F\bar\otimes B(\ell^2)\), by the full tensor modular formula and the same matrix-entry fixedness argument as (BFC27). This proves (BFC32).
+Both sides are the supremum over all finite sets of pairs; no integrability or finite total mass is needed. Thus the map transports \(\Omega\bar\otimes\operatorname{Tr}\) to \(\dot\Omega_v\) on their full support corners. Its source centralizer is \(\mathcal F\bar\otimes B(\ell^2)\), by the full tensor modular formula and the same matrix-entry fixedness argument as (BFC27). For a proper \(r_v\), the entrywise map has range in the \(r_v\)-matrix corner; its diagonal support projections are precisely \(P_{\omega,v}=A_v(p_\omega\otimes1)\). It therefore maps onto the entire support corner of \(\dot\Omega_v\), with inverse obtained entrywise from \(A_v^{-1}\). This proves (BFC32) in that case as well.
 
 The center of \(\mathcal F\bar\otimes B(\ell^2)\) is \(\mathcal C\otimes1\): commuting with all matrix units forces a constant diagonal array, and commuting with \(\mathcal F\otimes1\) puts its entry in \(\mathcal C\). The complete [corner-center isomorphism PC4](OA-FLOW-PC.md#pc-4) identifies \(Z(e_vQe_v)\) normally with \(\mathcal A a_v\) by compression and its normal inverse. Consequently there is a normal isomorphism onto a direct summand,
 \[
@@ -327,7 +327,7 @@ In particular it preserves the exact carrier labels:
 \]
 Indeed the central support of \(q_\omega\otimes1\) in the source of \(\beta_v\) is \(z_{\mathcal F}(q_\omega)\otimes1\). Its image is the central support of \(d_{\dot\omega_v}\) in \(e_vQe_v\). Under PC4, that support is the compression of \(z_Q(d_{\dot\omega_v})\), so (BFC35) follows.
 
-Independence of the center embedding requires a coherent transport of whole corners, not just equality of a list of carrier projections. The unitary \(w\) from (BFC29) supplies it. In the universal balanced algebra, put
+Independence of the center embedding requires a coherent transport of whole corners, not just equality of a list of carrier projections. The partial isometry \(w\) from (BFC29), with \(P_{\omega,v}\le r_v=w^*w\), supplies it. In the universal balanced algebra, put
 \[
  T=\sum_{\omega\in J}
       wP_{\omega,v}\otimes
@@ -360,7 +360,7 @@ For \(c\in\mathcal C\), centrality of \(\iota_v(c)\) in \(Q a_v\) now gives
   =\iota_{v'}(c)e_{v'}.
  \tag{BFC39}
 \]
-Compression of \(\mathcal A a_v\) to \(e_{v'}\) is injective by PC4. Thus \(\iota_v=\iota_{v'}\) on all of \(\mathcal C\). We may write \(\iota\) and \(a\) without a choice of filling family. Equations (BFC13) and (BFC35) also identify the support of the transported center measure:
+Compression of \(\mathcal A a_v\) to \(e_{v'}\) is injective by PC4. Thus \(\iota_v=\iota_{v'}\) on all of \(\mathcal C\). We may write \(\iota\) and \(a\) without a choice of family or range projection. Equations (BFC13) and (BFC35) also identify the support of the transported center measure:
 \[
  \iota\bigl(s_{\mathcal C}(\mu_\omega)\bigr)=p_M(\dot\omega).
  \tag{BFC40}

@@ -90,7 +90,7 @@ Define the globally continuous function
 
 which is compact and lies inside \(U\). This proves properness and exhaustion. Adding a constant makes \(\rho\) nonnegative if desired without changing its Levi form. The argument applies to singular or nonreduced removed hypersurfaces because no differentiation occurs at their zeros. \(\square\)
 
-This directly supplies the **exhaustion-definition** of Stein used by the new [plurisubharmonic lesson](providers/plurisubharmonic-functions-and-stein-manifolds.html). We do not use the equivalence with another definition of Stein. We also do not infer homology vanishing from this definition alone. The same exhaustion restricts properly and strictly plurisubharmonically to \(Y\), since it is closed in \(U\) and its inclusion is a holomorphic immersion. The vanishing needed below is the one on \(U\), in complex dimension \(d\).
+This directly supplies the **exhaustion-definition** of Stein used by the new [plurisubharmonic lesson](providers/plurisubharmonic-functions-and-stein-manifolds-shell-corrected.html). We do not use the equivalence with another definition of Stein. We also do not infer homology vanishing from this definition alone. The same exhaustion restricts properly and strictly plurisubharmonically to \(Y\), since it is closed in \(U\) and its inclusion is a holomorphic immersion. The vanishing needed below is the one on \(U\), in complex dimension \(d\).
 
 ![Exact projective exhaustion on the punctured projective line.](figures/projective-exhaustion.png)
 

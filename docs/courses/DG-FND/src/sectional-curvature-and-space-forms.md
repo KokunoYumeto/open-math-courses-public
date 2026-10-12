@@ -65,7 +65,28 @@ The expression on the right of (A.3) satisfies all four algebraic identities: it
 c\bigl(\langle y,z\rangle\langle x,w\rangle
        -\langle x,z\rangle\langle y,w\rangle\bigr);
 \]
-skewness and pair interchange follow by interchanging the factors, and the six terms of its cyclic sum cancel in pairs. Its diagonal value is \(c\) times the denominator of (A.2). The uniqueness just proved establishes (A.3) and its converse. □
+skewness and pair interchange follow by interchanging the factors, and the six terms of its cyclic sum cancel in pairs. Its diagonal value is \(c\) times the denominator of (A.2). The uniqueness just proved establishes (A.3) and its converse.
+
+
+The same result describes the **curvature operator** on \(\Lambda^2V\). To construct it explicitly, choose an orthonormal basis \(e_i\), take the symbols \(e_i\wedge e_j\), \(i<j\), as an orthonormal basis, and define
+\[
+x\wedge y=\sum_{i<j}(x_i y_j-x_j y_i)e_i\wedge e_j.
+\]
+Expanding the finite sum gives
+\[
+\langle x\wedge y,z\wedge w\rangle
+=\langle x,z\rangle\langle y,w\rangle
+ -\langle x,w\rangle\langle y,z\rangle.
+\]
+Define the linear operator by its matrix entries
+\[
+\langle\mathcal R(e_i\wedge e_j),e_k\wedge e_l\rangle
+=A(e_i,e_j,e_l,e_k),\qquad i<j,\ k<l.
+\]
+Multilinearity and skewness extend this to
+\(\langle\mathcal R(x\wedge y),z\wedge w\rangle=A(x,y,w,z)\).
+The displayed inner product and operator formula are unchanged by an orthogonal change of basis, since decomposable wedges span. Pair interchange and both skewness identities give
+\(A(x,y,w,z)=A(z,w,y,x)\), so the matrix is symmetric. Its quadratic value on a unit simple bivector is the sectional curvature. Formula (A.3) gives \(\mathcal R=cI\) when all sectional curvatures equal \(c\); conversely this operator identity gives that constant value on every plane. More generally the operator is determined by its values on these simple bivectors, because the polarization argument above determines every entry of \(A\). No assertion that every bivector is simple is needed. □
 
 Define the Ricci form and scalar curvature by
 \[
@@ -131,7 +152,15 @@ Finally (A.3) gives
 &=(n-1)c\langle y,z\rangle .
 \end{aligned}
 \]
-Tracing once more gives (A.8). □
+Tracing once more gives (A.8).
+
+
+For any unit vector \(v=e_1\) in an orthonormal basis, the same trace definition also gives the useful formula
+\[
+\operatorname{Ric}(v,v)
+=\sum_{a=2}^n K(\operatorname{span}\{v,e_a\}).
+\]
+Indeed the \(a=1\) summand vanishes by first-pair skewness, and for \(a\geq2\) the pair \(e_a,v\) is orthonormal, so its Gram determinant is one. This identity does not require constant sectional curvature. □
 
 **Theorem A.3 (the dimension restriction in Schur's theorem).** Suppose \(M\) is connected and \(n\geq3\). If \(\operatorname{Ric}=\lambda g\) pointwise for a function \(\lambda\), then \(\lambda\) is constant. In particular, if at every point all tangent planes have the same sectional curvature \(c(p)\), then \(c\) is constant.
 
@@ -164,7 +193,12 @@ r(e_2,e_2)&=k_{12}+k_{23},\\
 r(e_3,e_3)&=k_{13}+k_{23}.
 \end{aligned}
 \]
-Their sum is \(s=2(k_{12}+k_{13}+k_{23})\). Subtracting the last equality gives (A.10). It applies to every plane because an orthonormal basis can be chosen with its given unit normal. Thus \(r\), which also determines \(s\), determines every sectional curvature; A.1 determines the full tensor. On the specified manifold A.3 makes \(\lambda\) constant, and \(s=3\lambda\). Equation (A.10) then makes every sectional curvature \(\lambda/2\), the same constant at every point. □
+Their sum is \(s=2(k_{12}+k_{13}+k_{23})\). Subtracting the last equality gives (A.10). It applies to every plane because an orthonormal basis can be chosen with its given unit normal. Thus \(r\), which also determines \(s\), determines every sectional curvature; A.1 determines the full tensor. On the specified manifold A.3 makes \(\lambda\) constant, and \(s=3\lambda\). Equation (A.10) then makes every sectional curvature \(\lambda/2\), the same constant at every point.
+
+
+The corresponding Einstein implication fails in dimension four. On \(S^2\times S^2\) put \(g=a^2(g_{S^2}\oplus g_{S^2})\), where the two sphere metrics have unit radius and \(a>0\). [Geodesics F.3](geodesics-normal-coordinates-and-curvature.md#example-f-3) proves that each unit sphere has curvature one. Multiplying a metric by the constant \(a^2\) leaves its Levi-Civita connection unchanged: it is still metric compatible and torsion free, so [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1) applies. The curvature operator on tangent vectors is unchanged; its four-tensor gains a factor \(a^2\) and its sectional denominator gains \(a^4\). Each factor therefore has sectional curvature \(a^{-2}\).
+
+On the product, the connection whose coefficients are those of the two factors in their separate coordinate blocks is metric compatible and torsion free; mixed derivatives of the metric blocks are zero. The same uniqueness theorem identifies it as the Levi-Civita connection. Substitution in the curvature definition shows that its curvature acts separately on the two factors and vanishes on mixed arguments. Tracing in an orthonormal basis consisting of two vectors in each factor, and using A.2 in dimension two, gives \(\operatorname{Ric}=a^{-2}g\). A plane tangent to either factor has sectional curvature \(a^{-2}\), while a plane spanned by one unit vector in each factor has curvature zero. Thus the Einstein condition does not force constant sectional curvature in dimension four. □
 
 **Exercise A.5 (a complete surface with both curvature signs).** On \(\mathbb R^2\) put
 \[
@@ -206,7 +240,16 @@ K=-\frac{u''}{f^2}
 \tag{A.14}
 \]
 It is positive at \(x=0\) and negative at \(x=\pi\).
-At every point of a surface there is only one tangent two-plane, so the pointwise isotropy hypothesis holds automatically. Moreover (A.8) in dimension two gives \(\operatorname{Ric}=K g\). This example satisfies both pointwise hypotheses with a nonconstant coefficient. In dimension two equation (A.7) reduces to an identity and forces no derivative to vanish, exactly explaining the dimension restriction. □
+At every point of a surface there is only one tangent two-plane, so the pointwise isotropy hypothesis holds automatically. Moreover (A.8) in dimension two gives \(\operatorname{Ric}=K g\). This example satisfies both pointwise hypotheses with a nonconstant coefficient. In dimension two equation (A.7) reduces to an identity and forces no derivative to vanish, exactly explaining the dimension restriction.
+
+
+A second complete counterexample, with strictly negative nonconstant curvature, is
+\[
+g_0=e^{2x^2}(dx^2+dy^2).
+\]
+The coefficient calculation (A.13) used only \(g=e^{2u(x)}(dx^2+dy^2)\); setting \(u=x^2\) in it gives
+\(K_0=-e^{-2x^2}u''=-2e^{-2x^2}\).
+Since \(e^{x^2}\geq1\), one has \(d_{g_0}(p,q)\geq|p-q|\). A \(d_{g_0}\)-Cauchy sequence therefore has a Euclidean limit \(p\). In a fixed Euclidean ball about \(p\), the continuous positive function \(e^{x^2}\) has a finite upper bound \(C\), by compactness of its closed ball and Local tools 0.1. Eventually the sequence lies in that ball, and the straight segments to \(p\) stay there. Their lengths give \(d_{g_0}(p_j,p)\leq C|p_j-p|\to0\). This proves metric completeness; Hopf–Rinow B.2 gives geodesic completeness. It supplies the same two-dimensional failure of the constancy conclusions with curvature of one sign. □
 
 ## B. Geodesic variations and the radial metric
 
@@ -309,7 +352,16 @@ g(dE(\partial_t),dE(\xi))&=0,\\
 g(dE(\xi),dE(\eta))&=S_c(t)^2\langle\xi,\eta\rangle .
 \end{aligned}
 \]
-These are exactly (B.10); no step assumes injectivity of \(dE\). When \(t>0\), its domain and target tangent spaces both have dimension \(n\). If \(S_c(t)\ne0\), the displayed form is positive definite, so the differential has zero kernel and is invertible. If \(S_c(t)=0\) and \(n\geq2\), (B.9) kills every angular vector, and a nonzero one exists. In dimension one every \(\xi\perp v\) is zero and the angular tangent space is zero, so (B.9) is the zero identity and (B.10) consists solely of the unit radial derivative. That derivative is invertible. The inverse function theorem, [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), gives a local diffeomorphism at every invertible differential. □
+These are exactly (B.10); no step assumes injectivity of \(dE\). When \(t>0\), its domain and target tangent spaces both have dimension \(n\). If \(S_c(t)\ne0\), the displayed form is positive definite, so the differential has zero kernel and is invertible. If \(S_c(t)=0\) and \(n\geq2\), (B.9) kills every angular vector, and a nonzero one exists. In dimension one every \(\xi\perp v\) is zero and the angular tangent space is zero, so (B.9) is the zero identity and (B.10) consists solely of the unit radial derivative. That derivative is invertible. The inverse function theorem, [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), gives a local diffeomorphism at every invertible differential.
+
+
+This determines all conjugate times on the interval where the unit geodesic exists. A positive time \(t\) is **conjugate to zero** if a nonzero Jacobi field vanishes at both zero and \(t\); its multiplicity is the dimension of the space of such fields. Write arbitrary initial derivative as \(b=av+\xi\), with \(\xi\perp v\). The field
+\[
+J(t)=at\,\dot\gamma_v(t)+S_c(t)P_t\xi
+\]
+has value zero and derivative \(b\) at zero and solves (B.1): the first summand has zero second covariant derivative and zero curvature term, while the second was checked above. B.1 makes this the unique field for those data. Orthogonality of the summands and \(t>0\) show that \(J(t)=0\) requires \(a=0\) and \(S_c(t)\xi=0\).
+
+For \(c\leq0\), B.2 gives no positive zero of \(S_c\), so there are no conjugate times. For \(c>0\), its positive zeros are exactly \(k\pi/\sqrt c\), \(k=1,2,\ldots\). Indeed \(\sin u=0\) means the unit complex number \(\exp(iu)\) is \(1\) or \(-1\); its square is one, and the kernel formula for the exponential in [Connections E.1](connections-and-parallel-transport.md#lemma-e-1) gives \(u\in\pi\mathbb Z\). Conversely its group law and \(\exp(i\pi)=-1\) give zero sine at every such integer multiple. Thus when \(n\geq2\) the listed times in the geodesic domain are precisely the conjugate times, each of multiplicity \(n-1\); the first, if reached, is \(\pi/\sqrt c\). When \(n=1\), the normal space is zero, so there are no conjugate times for any \(c\). These are differential and Jacobi-field assertions, not a claim of global injectivity of the exponential. □
 
 ## C. The complete models
 
@@ -502,7 +554,20 @@ For the second assertion fix \(v\in S(V)\). The splittings
 V=\mathbb Rv\oplus v^\perp,\qquad
 W=\mathbb Rj(v)\oplus j(v)^\perp
 \]
-identify the second summands with the two sphere tangent spaces. Define \(L(v)=j(v)\) and \(L|_{v^\perp}=dj_v\), extending linearly. These are orthogonal splittings and \(dj_v\) is an isometry onto the target tangent space, so \(L\) is an orthogonal isomorphism. Both \(j\) and \(L|_{S(V)}\) are local isometries with the same value and differential at \(v\). The sphere is connected, as proved by its explicit geodesics in C.2–C.3, also when it is a circle. The first assertion makes them equal everywhere. □
+identify the second summands with the two sphere tangent spaces. Define \(L(v)=j(v)\) and \(L|_{v^\perp}=dj_v\), extending linearly. These are orthogonal splittings and \(dj_v\) is an isometry onto the target tangent space, so \(L\) is an orthogonal isomorphism. Both \(j\) and \(L|_{S(V)}\) are local isometries with the same value and differential at \(v\). The sphere is connected, as proved by its explicit geodesics in C.2–C.3, also when it is a circle. The first assertion makes them equal everywhere.
+
+
+This also determines all isometries of the three complete models. Every Euclidean isometry has the form \(x\mapsto Ax+b\), \(A\in\mathrm O(n)\): take \(b=F(0)\), \(A=dF_0\); the resulting affine map is an isometry with the same value and tangent map as \(F\), so the first assertion identifies them. Conversely every such affine map preserves the Euclidean metric.
+
+On \(S_a^n\), a sphere isometry \(F\) is the restriction of an ambient orthogonal map. At a chosen \(p\), define that linear map by \(Lp=F(p)\) and \(L|_{p^\perp}=dF_p\). The two orthogonal decompositions into the normal line and tangent space show that \(L\) preserves the Euclidean inner product. Its restriction to the sphere is an isometry agreeing with \(F\) to first order at \(p\), so it agrees everywhere. Conversely an ambient orthogonal map preserves the sphere and its induced metric.
+
+For the hyperboloid, all isometries are restrictions of linear maps preserving \(\eta\) and the upper sheet. To prove exhaustiveness, set \(o=(0,a)\), \(q=F(o)\), and define \(Lo=q\), \(L|_{o^\perp}=dF_o\). In each decomposition the normal vector has squared length \(-a^2\), the tangent form is positive definite by C.1, and the summands are orthogonal. Therefore \(L\) preserves \(\eta\) and is invertible. It maps the hyperboloid into the same upper sheet: that sheet is connected by (C.4), the time coordinate of any image cannot vanish, and the image of \(o\) has positive time coordinate. The same argument for \(L^{-1}\), starting at \(q\), makes its restriction a bijective isometry. It has the same first-order data as \(F\), so the first assertion again proves equality. The converse follows immediately from the induced metric.
+
+Explicitly, on the plane spanned by a spatial unit vector \(e\) and the time direction, the matrix
+\[
+\begin{pmatrix}\cosh r&\sinh r\\\sinh r&\cosh r\end{pmatrix}
+\]
+and the identity on the other spatial directions preserve \(\eta\), by \(\cosh^2r-\sinh^2r=1\). They preserve the upper sheet by the same continuity argument and send \(o\) to \((a\sinh r\,e,a\cosh r)\). Formula (C.10) and its surjectivity show that these points exhaust the upper hyperboloid. This gives an explicit family realizing its transitivity without an unproved assertion about a Lorentz group. □
 
 **Theorem D.2 (the complete constant-curvature classification).** Let \(M\) be a space form of dimension \(n\geq2\) and curvature \(c\). Define
 \[
@@ -527,7 +592,12 @@ For \(c\leq0\), C.2 makes the chart all of \(X_c^n\). For \(c>0\), its domain is
 
 Their common domain is connected. In fact stereographic projection (C.12) from one removed point identifies it with \(\mathbb R^n\) minus one point. In dimension at least two this complement is path connected: for two given points choose an intermediate point outside the two lines through the omitted point and those endpoints; the resulting two line segments avoid the omitted point. Such an intermediate point exists, since a circle in an affine two-plane meets each of the two lines in at most two points and has more than four points. The intersection bound follows by substituting a line into the circle's quadratic equation. D.1 therefore makes \(F=\widetilde F\) on the common domain. Their union is a smooth local isometry on the entire sphere.
 
-In either curvature sign, the model is connected and complete by C.2. Hopf–Rinow E.4 now makes the global \(F\) a surjective smooth covering. The model is simply connected by C.3. If \(M\) is simply connected too, [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) identifies every connected covering with the cover belonging to the trivial subgroup of its trivial fundamental group; this is the identity covering. Thus \(F\) is a diffeomorphism. Its local metric equality then makes it a global isometry. □
+In either curvature sign, the model is connected and complete by C.2. Hopf–Rinow E.4 now makes the global \(F\) a surjective smooth covering. The model is simply connected by C.3. If \(M\) is simply connected too, [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) identifies every connected covering with the cover belonging to the trivial subgroup of its trivial fundamental group; this is the identity covering. Thus \(F\) is a diffeomorphism. Its local metric equality then makes it a global isometry.
+
+
+Completeness is essential. The open Euclidean unit ball is simply connected by linear contraction, and its ordinary derivative has zero curvature. The points \((1-1/j)e_1\), \(j\geq2\), form a Cauchy sequence for its Riemannian distance, because straight segments stay in the ball and realize Euclidean distance. Their only Euclidean limit is the missing boundary point \(e_1\), so the ball is incomplete and cannot be isometric to the complete model. In dimension two this theorem assumes curvature is constant; A.5 shows that pointwise isotropy does not imply that hypothesis.
+
+In dimension three, A.4 shows that a connected Einstein manifold with \(\operatorname{Ric}=\lambda g\) has constant sectional curvature \(\lambda/2\). If it is also complete and simply connected, the theorem therefore identifies it with \(X_{\lambda/2}^3\). The four-dimensional product in A.4 explains why this deduction cannot be made from the Einstein condition in that dimension. □
 
 A group \(\Gamma\) of isometries acts **freely** if no nonidentity element fixes a point. We call its action **properly discontinuous** if
 \[
@@ -563,7 +633,19 @@ For the isometry assertion, let \(\phi:X/\Gamma\to X/\Gamma'\) be an isometry. T
 \tag{D.6}
 \]
 In sheet charts it is a smooth local isometry. The covering isomorphism has a smooth inverse, so it is a global model isometry. For \(\gamma\in\Gamma\), equation (D.6) makes
-\(\widetilde\phi\gamma\widetilde\phi^{-1}\) a deck map of \(\pi'\). This proves inclusion in \(\Gamma'\), and using \(\phi^{-1}\) proves equality. Conversely a model isometry conjugating the groups sends orbits to orbits, descends through their charts to an isometry, and its inverse descends in the same way. □
+\(\widetilde\phi\gamma\widetilde\phi^{-1}\) a deck map of \(\pi'\). This proves inclusion in \(\Gamma'\), and using \(\phi^{-1}\) proves equality. Conversely a model isometry conjugating the groups sends orbits to orbits, descends through their charts to an isometry, and its inverse descends in the same way.
+
+
+In positive curvature the deck group is finite: the sphere is closed and bounded in Euclidean space, hence compact by Local tools 0.1, and (D.4) applied to that whole sphere counts every group element. Its quotient is compact, as the continuous image of a compact space.
+
+In dimension one there are no tangent two-planes, but the separate complete classification is the real line and circles. For a nonempty connected complete one-dimensional manifold, start a unit geodesic at any point. Hopf–Rinow B.2 makes it a smooth map \(\gamma:\mathbb R\to M\) for all real time. Metric compatibility keeps its speed one; thus its differential is everywhere an isometry. Hopf–Rinow E.4 makes it a surjective covering local isometry. The real line is simply connected by C.3, so the universal-cover and deck arguments just proved give \(M=\mathbb R/\Gamma\), with a free properly discontinuous group of line isometries.
+
+By D.1 a line isometry is \(t\mapsto\varepsilon t+b\), \(\varepsilon=\pm1\). A map with \(\varepsilon=-1\) fixes \(b/2\), so freeness excludes it. The translation parameters form an additive subgroup \(B\subset\mathbb R\). For any \(R>0\), each parameter in \([-R,R]\) translates \([-R,R]\) to a set meeting itself. Proper discontinuity therefore makes \(B\cap[-R,R]\) finite. If \(B\ne\{0\}\), choose a positive element \(b\); the finite nonempty set \(B\cap(0,b]\) has a least element \(\ell>0\), which is also least among all positive elements of \(B\). For any \(x\in B\), subtracting \(\lfloor x/\ell\rfloor\ell\) leaves an element of \(B\cap[0,\ell)\), necessarily zero. Thus \(B=\ell\mathbb Z\). The case \(B=\{0\}\) gives the line. Otherwise the map
+\[
+t\longmapsto\frac{\ell}{2\pi}
+\bigl(\cos(2\pi t/\ell),\sin(2\pi t/\ell)\bigr)
+\]
+has unit speed and identifies precisely the parameters differing by \(\ell\mathbb Z\), by the circle exponential of [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). It descends to a bijective local isometry onto the round circle of circumference \(\ell\), and hence to an isometry. Conversely the line and these circles are complete by C.2 or the quotient completeness argument above. □
 
 **Theorem D.4 (lens examples and even-dimensional spherical quotients).** For integers \(p\geq1\) and \(q_1,\ldots,q_m\) each relatively prime to \(p\), put \(\zeta=\exp(2\pi i/p)\). The cyclic action on the unit sphere in \(\mathbb C^m\) generated by
 \[
@@ -573,7 +655,7 @@ In sheet charts it is a smooth local isometry. The covering isomorphism has a sm
 \]
 is free, has order \(p\), and gives a complete constant-curvature quotient. When \(2m-1\geq2\) it is a space form in the dimension range of D.3. For every even \(n\geq2\), the only spherical space forms of curvature \(a^{-2}\) are \(S_a^n\) and \(S_a^n/\{I,-I\}\), the round real projective space.
 
-**Proof.** [Connections E.1](connections-and-parallel-transport.md#lemma-e-1) proves that \(\exp(it)=1\) exactly for \(t\in2\pi\mathbb Z\). Hence \(\zeta^k=1\) exactly when \(p\) divides \(k\). If a power \(k\) of (D.7) fixes a sphere point, at least one coordinate \(z_j\ne0\), so \(p\mid kq_j\). Coprimality gives integers \(a,b\) with \(a q_j+b p=1\), and multiplying by \(k\) shows \(p\mid k\). The asserted integer relation follows from the Euclidean division algorithm: its successive remainders are integer combinations of \(q_j,p\), its strictly decreasing positive remainders terminate, and the last nonzero remainder is their greatest common divisor, here one. Thus no nonidentity group element fixes a point, and the group has exactly \(p\) elements. Its diagonal operators preserve the standard real metric. A finite group satisfies (D.4) automatically. The quotient construction and completeness proof in D.3 apply; their converse part only needs connectedness and completeness of the source, so it also applies to the circle when \(m=1\). The name for these quotients is **lens spaces**.
+**Proof.** [Connections E.1](connections-and-parallel-transport.md#lemma-e-1) proves that \(\exp(it)=1\) exactly for \(t\in2\pi\mathbb Z\). Hence \(\zeta^k=1\) exactly when \(p\) divides \(k\). If a power \(k\) of (D.7) fixes a sphere point, at least one coordinate \(z_j\ne0\), so \(p\mid kq_j\). Coprimality gives integers \(a,b\) with \(a q_j+b p=1\), and multiplying by \(k\) shows \(p\mid k\). The asserted integer relation follows from the Euclidean division algorithm: its successive remainders are integer combinations of \(q_j,p\), its strictly decreasing positive remainders terminate, and the last nonzero remainder is their greatest common divisor, here one. Thus no nonidentity group element fixes a point, and the group has exactly \(p\) elements. Its diagonal operators preserve the standard real metric. A finite group satisfies (D.4) automatically. The quotient construction and completeness proof in D.3 apply; their converse part only needs connectedness and completeness of the source, so it also applies to the circle when \(m=1\). The name for these quotients is **lens spaces**. The same diagonal action on the sphere of radius \(a>0\) is free with the same order and gives curvature \(a^{-2}\), by C.1 and the identical quotient construction. When \(m\geq2\), the covering sphere is simply connected by C.3; [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) identifies the quotient fundamental group with its deck group, here the cyclic group \(\mathbb Z/p\mathbb Z\). This fundamental-group conclusion is not asserted for \(m=1\), where the quotient is a circle.
 
 Now let \(n\) be even. By D.2–D.3 any spherical space form has a group \(\Gamma\) of free properly discontinuous sphere isometries. D.1 makes every sphere isometry the restriction of an orthogonal map of \(\mathbb R^{n+1}\): scale to unit radius and apply its direction-sphere assertion with \(\dim V=n+1\). Moreover \(\Gamma\) is finite, by applying (D.4) to the compact whole sphere.
 An orthogonal map in odd real dimension has a real eigenvalue: its real characteristic polynomial has odd degree, hence opposite signs for sufficiently large positive and negative inputs; the intermediate value theorem, [Local tools 0.0](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), supplies a real root. The singular matrix at that root has a nonzero real kernel vector. Orthogonality forces the eigenvalue to have absolute value one, so it is \(1\) or \(-1\).
@@ -697,7 +779,10 @@ The \(p\) residues \(r^{-j}\) are distinct, since \(r\) has order \(p\), and the
 w=v+bv+\cdots+b^{p-1}v\ne0.
 \tag{E.9}
 \]
-But \(b^p=1\), and therefore \(bw=w\). This contradicts freeness, because \(b\ne1\). The noncommuting case is impossible. Every subgroup of the stated order is cyclic. □
+But \(b^p=1\), and therefore \(bw=w\). This contradicts freeness, because \(b\ne1\). The noncommuting case is impossible. Every subgroup of the stated order is cyclic.
+
+
+For example, this excludes \(C_p\times C_p\): it has order \(p^2\), but every element has order dividing \(p\), so it cannot be cyclic of order \(p^2\). It also excludes every nonabelian group of order \(pq\). These are necessary subgroup restrictions, not a classification of all finite spherical deck groups. □
 
 ## F. Which spherical quotients are homogeneous?
 
@@ -856,7 +941,20 @@ Finally, if \(n\) is even then \(n+1\) is odd, excluding the complex and quatern
 (z_1+z_2j,\ldots,z_{2m-1}+z_{2m}j)
 \tag{F.15}
 \]
-carries common left complex multiplication to common left quaternionic multiplication by that same complex scalar. The norm identity follows from the real basis \(1,i,j,k\) in [De Rham Y.1](holonomy-and-the-de-rham-decomposition-theorem.md#lemma-y-1), and the intertwining identity follows by distributing \(\lambda(z_1+z_2j)\). This proves the final inclusions and completes the classification. □
+carries common left complex multiplication to common left quaternionic multiplication by that same complex scalar. The norm identity follows from the real basis \(1,i,j,k\) in [De Rham Y.1](holonomy-and-the-de-rham-decomposition-theorem.md#lemma-y-1), and the intertwining identity follows by distributing \(\lambda(z_1+z_2j)\). This proves the final inclusions and completes the classification.
+
+
+The distinction from a general lens space is concrete. Put \(\zeta=e^{2\pi i/5}\). On the unit sphere in \(\mathbb C^2\), the group generated by \((z_1,z_2)\mapsto(\zeta z_1,\zeta z_2)\) has a homogeneous quotient by the complex scalar case. In contrast, let
+\[
+\gamma(z_1,z_2)=(\zeta z_1,\zeta^2z_2).
+\]
+Its cyclic group has order five and acts freely by D.4, because both weights are relatively prime to five. Suppose its quotient were homogeneous. F.1 would make its orthogonal centralizer transitive. But the real-valued function
+\[
+f(x)=\langle x,\gamma x\rangle
+\]
+is constant on every centralizer orbit: for an orthogonal \(U\) commuting with \(\gamma\),
+\(f(Ux)=\langle Ux,U\gamma x\rangle=f(x)\).
+At \((1,0)\) and \((0,1)\) its values are respectively \(\cos(2\pi/5)\) and \(\cos(4\pi/5)\). They are different because B.2 proves that cosine strictly decreases on \((0,\pi)\). Thus the centralizer is not transitive, a contradiction. This lens space has local constant curvature and fails to be homogeneous. □
 
 ## G. Affine-flat coordinates and complete quotients
 
@@ -900,7 +998,10 @@ Let \(f\) be the transition map between two zero-coefficient charts. Preservatio
 \]
 Indeed the derivative of the coefficients of \(f_*\partial_j\) in direction \(f_*\partial_i\) is precisely the left side, while the pushforward of \(\nabla_{\partial_i}\partial_j\) is zero. Each first derivative is constant on every sufficiently small ball, by integration on straight segments and [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). A locally constant function on a connected set is constant: the set where it has one chosen value and its complement are both open. Thus \(df=A\) is constant on a connected overlap, and the same argument applied to \(f(x)-Ax\) gives \(f(x)=Ax+b\). The matrix \(A\) is invertible because \(f\) is a chart transition. Conversely such a map has zero Hessian, and the same calculation proves that it preserves \(\nabla^0\).
 
-A Levi-Civita connection has zero torsion by [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1). If \(R=0\), choose the initial parallel frame above orthonormally. Metric compatibility preserves its pairings, so the coordinates (G.1) have metric coefficients \(\delta_{ij}\). They are Euclidean isometry charts. Conversely a Euclidean isometry chart preserves the Levi-Civita connection by [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3) and hence gives zero coefficients and zero curvature. □
+A Levi-Civita connection has zero torsion by [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1). If \(R=0\), choose the initial parallel frame above orthonormally. Metric compatibility preserves its pairings, so the coordinates (G.1) have metric coefficients \(\delta_{ij}\). They are Euclidean isometry charts. Conversely a Euclidean isometry chart preserves the Levi-Civita connection by [Riemannian connections A.3](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-3) and hence gives zero coefficients and zero curvature.
+
+
+For an affine-flat connection the full normalized affine holonomy group has dimension zero in its immersed Lie-group topology. Indeed its restricted group is trivial by item 3, and [Curvature C.5](curvature-and-holonomy-groups.md#theorem-c-5) constructs the full group as countably many open cosets of that restricted group. Here those cosets are singletons. This describes the intrinsic holonomy topology; it does not imply discreteness of its image in the ambient affine group. □
 
 **Theorem G.2 (complete affine-flat manifolds).** A connected geodesically complete affine-flat \(n\)-manifold is affinely diffeomorphic to
 \[
@@ -937,7 +1038,31 @@ with each restriction of \(\pi\) a homeomorphism onto \(\pi U\).
 
 For two distinct orbits choose compact neighbourhoods \(K_x,K_y\) of representatives. Proper discontinuity applied to \(K_x\cup K_y\) leaves only finitely many \(\gamma\) which could send \(K_x\) to meet \(K_y\). None sends \(x\) to \(y\). Shrink neighbourhoods of \(x,y\) to eliminate these finitely many intersections. Their images separate the two orbits, proving Hausdorffness. Images of a countable Euclidean basis form a countable basis of the quotient, by openness of \(\pi\). The charts (G.6) therefore give a Hausdorff second-countable smooth manifold. Their transitions locally come from a fixed \(\gamma\), so are affine by hypothesis. G.1's Hessian calculation makes the zero-coefficient connections agree on overlaps. They define an affine-flat quotient connection. Every initial vector downstairs lifts to a vector \((x,v)\) upstairs, and \(\pi(x+tv)\) is a geodesic defined for all real \(t\). Local uniqueness of the geodesic equation in [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1) proves completeness. Connectedness follows by projecting Euclidean paths.
 
-Finally choose \(x\in U\) in a covering chart as in (G.6), either for the universal cover or for the constructed quotient. If \(\gamma x\in U\), then \(U\cap\gamma U\ne\varnothing\), so \(\gamma=e\). Evaluation at \(x\) is continuous on \(\operatorname{Aff}(n,\mathbb R)\); the condition \(Ax+b\in U\) is an open neighbourhood of the identity meeting \(\Gamma\) only there. Left translation by any group element gives an isolating neighbourhood for every element of \(\Gamma\). This proves discreteness in the stated ambient topology. □
+Finally choose \(x\in U\) in a covering chart as in (G.6), either for the universal cover or for the constructed quotient. If \(\gamma x\in U\), then \(U\cap\gamma U\ne\varnothing\), so \(\gamma=e\). Evaluation at \(x\) is continuous on \(\operatorname{Aff}(n,\mathbb R)\); the condition \(Ax+b\in U\) is an open neighbourhood of the identity meeting \(\Gamma\) only there. Left translation by any group element gives an isolating neighbourhood for every element of \(\Gamma\). This proves discreteness in the stated ambient topology.
+
+
+Compactness does not replace geodesic completeness for an affine-flat connection. On \(\mathbb R/\mathbb Z\), let \(U\) be the nowhere-zero field induced by \(\partial_u\), and set
+\[
+\nabla_{fU}(hU)=f\bigl(U(h)+h\bigr)U.
+\]
+The connection rules follow directly by differentiation. Integer translations preserve this formula, so it defines a smooth connection on the quotient. That quotient is the compact circle: [Connections E.1](connections-and-parallel-transport.md#lemma-e-1) gives its identification by \(u\mapsto e^{2\pi i u}\), and the interval \([0,1]\) maps onto it. Curvature and torsion are alternating in two vector inputs and hence vanish in dimension one. A lifted geodesic satisfies \(u''+(u')^2=0\). For \(v_0>0\) the function
+\[
+u(t)=u_0+\log(1+v_0t),\qquad t>-1/v_0,
+\]
+has initial velocity \(v_0\) and satisfies that equation, by the logarithm derivative proved in [Geodesics A.4](geodesics-normal-coordinates-and-curvature.md#example-a-4). Its projected velocity has coefficient \(v_0/(1+v_0t)\) in the global field \(U\). This coefficient diverges at the finite left endpoint. Any smooth extended geodesic would have a continuous finite coefficient in that same global frame, which is impossible. Thus the compact connection is incomplete. The coordinate \(x=e^u\) also gives \(\nabla_{\partial_x}\partial_x=0\): since \(\partial_x=e^{-u}U\), the two terms from differentiating \(e^{-u}\) and from \(\nabla_UU=U\) cancel. Integer shifts of \(u\) become the dilations \(x\mapsto e^k x\) of the positive ray.
+
+Return now to the complete quotient (G.4), and choose zero as the initial lifted point. Write each deck map as \(\gamma(x)=A_\gamma x+b_\gamma\). A based loop lifting from zero to \(\gamma(0)=b_\gamma\) has linear return transport \(A_\gamma^{-1}\). In fact the lifted parallel vector has constant coordinates; to compare its terminal tangent space with the initial one downstairs, use \(d\pi_{b_\gamma}A_\gamma=d\pi_0\). Its development is \(b_\gamma\): in the constant lifted frame the integral defining development is the integral of the lifted velocity, hence its endpoint minus its starting point. Therefore [Linear connections F.1](linear-and-affine-connections.md#theorem-f-1) gives the normalized affine return map
+\[
+F_{\mathrm{loop}}(v)
+=A_\gamma^{-1}(v-b_\gamma)=\gamma^{-1}(v).
+\]
+Every \(\gamma\) occurs, by projecting a path from zero to \(b_\gamma\). Thus the full affine holonomy is exactly \(\Gamma\) as a set of affine maps, since inversion permutes the group; its linear holonomy is the linear-part image. The inverse in the displayed formula records the return-transport convention and is not to be discarded for individual loops.
+
+Let
+\[
+\Lambda=\{b\in\mathbb R^n:(I,b)\in\Gamma\}.
+\]
+The translations indexed by \(\Lambda\) form the kernel of the linear-part homomorphism. Thus \(\Lambda\) is additive and discrete, the latter by the ambient discreteness just proved. The cover \(\mathbb R^n/\Lambda\to M\) has trivial linear holonomy. More precisely, [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) represents every based connected cover as \(\mathbb R^n/K\), for a subgroup \(K\leq\Gamma\). The return-transport formula shows that this cover has trivial linear holonomy exactly when every element of \(K\) is a translation, namely \(K\leq\Lambda\). In that case the natural projection \(\mathbb R^n/K\to\mathbb R^n/\Lambda\), given by sending the \(K\)-orbit of a point to its \(\Lambda\)-orbit, is well defined and is a covering map in the disjoint-sheet charts. It factors the cover of \(M\). The same formula shows that affine holonomy is trivial exactly when \(K\) is the identity subgroup. Hence the connected cover with trivial affine holonomy is the universal affine space itself. □
 
 **Theorem G.3 (discrete translation groups).** A discrete additive subgroup \(L\subset\mathbb R^n\) has a basis over \(\mathbb Z\) consisting of real-linearly independent vectors \(v_1,\ldots,v_k\), where \(0\leq k\leq n\). Its translation action is free and properly discontinuous, and
 \[
@@ -973,7 +1098,10 @@ x_{k+1},\ldots,x_n\bigr).
 \]
 [Connections E.1](connections-and-parallel-transport.md#lemma-e-1) proves the period, surjectivity and local smooth circle charts of the exponential. Thus (G.9) is onto and has precisely \(\mathbb Z^k\times0\) as its fibre differences. Its local inverses are obtained by choosing a circle angle on each of the first \(k\) factors, leaving the remaining coordinates unchanged. These inverses and the quotient charts prove (G.7).
 
-If \(k=n\), the compact cube \([0,1]^n\) maps onto the quotient by taking each coordinate modulo an integer; its continuous image is compact. If \(k<n\), (G.7) gives a continuous surjection of the quotient onto \(\mathbb R^{n-k}\). A compact domain would have compact image, whereas this Euclidean space is unbounded and thus not compact by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). This proves the last assertion, including the point quotient when \(n=0\). □
+If \(k=n\), the compact cube \([0,1]^n\) maps onto the quotient by taking each coordinate modulo an integer; its continuous image is compact. If \(k<n\), (G.7) gives a continuous surjection of the quotient onto \(\mathbb R^{n-k}\). A compact domain would have compact image, whereas this Euclidean space is unbounded and thus not compact by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). This proves the last assertion, including the point quotient when \(n=0\).
+
+
+Applied to the translation kernel \(\Lambda\) in G.2, this proves that the cover which removes linear holonomy is an affine cylinder. Its universal affine coordinates differ from a lattice basis by an invertible linear map. Choose a constant positive inner product making the lattice basis and its chosen complementary basis orthonormal. Translations preserve this inner product, so it descends to a Euclidean cylinder metric with the same affine connection; zero coefficients are metric compatible and torsion free, and Riemannian connections A.1 identifies the Levi-Civita connection. For it to descend further to the original quotient, every \(A_\gamma\) must preserve that inner product: this is exactly the pullback condition for a constant metric under \(x\mapsto A_\gamma x+b_\gamma\). No such invariance is required in G.2, so the cylinder metric is asserted on this cover only. □
 
 ## H. Affine tori and rotational linear parts
 
@@ -1061,7 +1189,10 @@ Finally consider
 \left(R_{-2\pi\alpha z}v,\,e^{2\pi i z}\right).
 \tag{H.9}
 \]
-It is invariant under (H.7). If two images agree, equality of the circle coordinates gives \(z'=z+k\) for an integer \(k\), and equality of the first coordinates then gives \(v'=R_{2\pi\alpha k}v\). Thus its fibres are exactly the orbits. It is onto: for \((w,\zeta)\), choose a real lift \(z\) of the circle point \(\zeta\), and take \(v=R_{2\pi\alpha z}w\). In each circle angle chart this formula is smooth and inverse to the induced map on the quotient. Changing the angle lift changes \((v,z)\) by (H.7), so these local inverses agree there. This proves the stated diffeomorphism. □
+It is invariant under (H.7). If two images agree, equality of the circle coordinates gives \(z'=z+k\) for an integer \(k\), and equality of the first coordinates then gives \(v'=R_{2\pi\alpha k}v\). Thus its fibres are exactly the orbits. It is onto: for \((w,\zeta)\), choose a real lift \(z\) of the circle point \(\zeta\), and take \(v=R_{2\pi\alpha z}w\). In each circle angle chart this formula is smooth and inverse to the induced map on the quotient. Changing the angle lift changes \((v,z)\) by (H.7), so these local inverses agree there. This proves the stated diffeomorphism.
+
+
+The return-map computation in G.2 identifies this discrete affine group with the full normalized affine holonomy, and identifies its linear-part image with full linear holonomy. Both restricted groups are trivial by G.1 and the projection formula there. In the intrinsic immersed topology described by Curvature C.5, each full holonomy group therefore has dimension zero and is discrete. The linear image is nevertheless dense in the rotation circle in its ambient matrix topology, as already proved above. This separates the two topologies in an explicit complete Riemannian example. □
 
 ## I. Small rotations and commuting motions
 
@@ -1091,7 +1222,15 @@ P_\lambda=
 \prod_{\mu\ne\lambda}\frac{A-\mu I}{\lambda-\mu}
 \tag{I.2}
 \]
-acts as the identity on the \(\lambda\)-eigenspace and as zero on every other eigenspace. Thus it is exactly the orthogonal projection to that eigenspace. If there is only one eigenvalue, the empty product is \(I\). An \(A\)-invariant complex subspace \(W\) is invariant under every polynomial in \(A\), so \(P_\lambda W\subset W\). Decomposing each \(w\in W\) as \(\sum_\lambda P_\lambda w\) proves the final assertion. Dimension zero has the empty decomposition. □
+acts as the identity on the \(\lambda\)-eigenspace and as zero on every other eigenspace. Thus it is exactly the orthogonal projection to that eigenspace. If there is only one eigenvalue, the empty product is \(I\). An \(A\)-invariant complex subspace \(W\) is invariant under every polynomial in \(A\), so \(P_\lambda W\subset W\). Decomposing each \(w\in W\) as \(\sum_\lambda P_\lambda w\) proves the final assertion. Dimension zero has the empty decomposition.
+
+
+More generally, any commuting family \(\mathcal A\) of unitary operators, even an infinite family, has a common orthogonal eigenspace decomposition. Start with the one-block decomposition of \(\mathbb C^n\). If some \(T\in\mathcal A\) is not scalar on one of the current nonzero blocks, split that block into its distinct eigenspaces by the theorem just proved. Every other member preserves these eigenspaces by commutation. Its restriction is unitary: it preserves inner products and is onto the invariant finite-dimensional block because it is injective there. Thus the same step remains available on every refined block. Each proper refinement increases the number of nonzero blocks, which cannot exceed \(n\). After at most \(n-1\) such steps, every member is scalar on every block, giving
+\[
+\mathbb C^n=\bigoplus_j W_j,\qquad
+T|_{W_j}=\lambda_j(T)I\quad(T\in\mathcal A).
+\]
+This argument chooses only finitely many operators from the family. The zero-dimensional space has the empty decomposition. □
 
 **Lemma I.2 (the small-rotation lemma).** Let \(A,B\) be unitary matrices. If \(\|B-I\|<1\) and \(A\) commutes with \([A,B]\), then \(A\) commutes with \(B\).
 
@@ -1209,7 +1348,10 @@ Finally let \(H\leq\Gamma\) have finite index. Choose representatives for its fi
 \[
 H\left(\bigcup_{i=1}^m\gamma_i K\right)=\mathbb R^n.
 \]
-The finite union in parentheses is compact. Applying the already proved equivalence to \(H\), which is discrete as a subgroup of \(\Gamma\), gives its cocompactness. □
+The finite union in parentheses is compact. Applying the already proved equivalence to \(H\), which is discrete as a subgroup of \(\Gamma\), gives its cocompactness.
+
+
+The same finiteness statement also shows that \(\Gamma\) is closed in the Euclidean motion group. A convergent sequence of its elements has bounded translation coordinates, and hence takes values in a finite subset of \(\Gamma\). Its limit belongs to that finite set. The ambient group is a metric subspace of matrix space times Euclidean space; if a point were in the closure but outside \(\Gamma\), choosing a group element within distance \(1/j\) for each positive integer \(j\) would contradict the preceding conclusion. Thus all closure points belong to \(\Gamma\). □
 
 **Theorem J.2 (a normal abelian subgroup of bounded index).** For each \(n\) there is a finite integer \(N(n)\) such that every discrete group \(\Gamma\) of Euclidean motions of \(\mathbb R^n\) has a normal abelian subgroup \(\Gamma_*\) of index at most \(N(n)\). One may take \(\Gamma_*\) to be the subgroup generated by
 \[
@@ -1277,13 +1419,24 @@ To verify the covering assertion, choose a neighbourhood \(U\) in \(\mathbb R^n\
 
 Normality makes \(\Gamma/\Lambda\) act on the torus by \([x]\mapsto[\gamma x]\). If \([\gamma x]=[x]\), there is an \(\ell\in\Lambda\) with \(\gamma x=\ell x\); freeness of \(\Gamma\) forces \(\ell^{-1}\gamma=e\). Thus the quotient group acts freely, and it is transitive on each fibre of (J.2) by the orbit description. These are deck transformations. Every deck transformation is determined by its value at one point, by the unique path lifting in [Flat connections D.1](flat-connections-and-infinitesimal-holonomy.md#lemma-d-1) and connectedness of the torus. Transitivity therefore shows that they are all the deck transformations. The covering is regular with the stated deck group.
 
-Finally let \(M\) be connected, compact and flat Riemannian. Hopf–Rinow B.3 makes its Levi-Civita connection geodesically complete; it is torsion-free by [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1) and has zero curvature by flatness. Apply G.2. In that proof choose the initial parallel frame on the universal cover orthonormally for the lifted metric. Metric compatibility preserves all its pairings, so the auxiliary metric constructed there is exactly the lifted metric. The resulting identification of the universal cover with \(\mathbb R^n\) is consequently an isometry. Its deck group is free, properly discontinuous and affine by G.2, and it preserves this metric. In affine coordinates, metric preservation says \(A^{\mathsf T}A=I\); hence it is a discrete group of Euclidean motions. Its quotient is \(M\), which is compact. The first part of the theorem now supplies (J.2). This includes dimension one; dimension zero consists of a point with the trivial covering. □
+Finally let \(M\) be connected, compact and flat Riemannian. Hopf–Rinow B.3 makes its Levi-Civita connection geodesically complete; it is torsion-free by [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1) and has zero curvature by flatness. Apply G.2. In that proof choose the initial parallel frame on the universal cover orthonormally for the lifted metric. Metric compatibility preserves all its pairings, so the auxiliary metric constructed there is exactly the lifted metric. The resulting identification of the universal cover with \(\mathbb R^n\) is consequently an isometry. Its deck group is free, properly discontinuous and affine by G.2, and it preserves this metric. In affine coordinates, metric preservation says \(A^{\mathsf T}A=I\); hence it is a discrete group of Euclidean motions. Its quotient is \(M\), which is compact. The first part of the theorem now supplies (J.2). This includes dimension one; dimension zero consists of a point with the trivial covering.
+
+
+There is an equivalent algebraic freeness condition. Every finite group \(F\) of Euclidean motions has a common fixed point: for any \(x\), set
+\[
+z=\frac1{|F|}\sum_{\gamma\in F}\gamma x.
+\]
+An affine map preserves this average, since the coefficients sum to one. For \(g\in F\), left multiplication permutes the elements of \(F\), so \(gz=z\). In particular, an element of finite order generates a finite group with a fixed point. A free action therefore has no nonidentity element of finite order; that is, its group is **torsion-free**.
+
+Conversely suppose a discrete Euclidean motion group is torsion-free. If \(\gamma=(A,p)\) fixes a point \(x\), then \(p=x-Ax\), so \(|p|\leq2|x|\). The same estimate holds for every element of the stabilizer of \(x\). J.1 makes that stabilizer finite. The powers of \(\gamma\) consequently repeat, and cancellation gives a positive power equal to the identity. Torsion-freeness forces \(\gamma=e\). Thus a discrete Euclidean motion group acts freely if and only if it is torsion-free; cocompactness is not needed for this equivalence.
+
+In the cocompact case above, the subgroup \(H=\Gamma_*\) is exactly \(\Lambda\): it was proved to consist of translations, and J.2 says it contains every translation in \(\Gamma\). Consequently the number of sheets of the torus cover is at most the dimension-dependent bound \(N(n)\) constructed in J.2. None of these conclusions assumes that the initial linear-part image is closed; the finite packing is in the full compact orthogonal group, and the commutator convergence uses discreteness of the full motion group. □
 
 ## K. Affine rigidity of compact flat quotients
 
 A discrete cocompact group of Euclidean motions is called a **crystallographic group**. We allow torsion in this definition. By J.3 its subgroup of translations is a full lattice of finite index. We first identify that subgroup using only the abstract group structure.
 
-**Lemma K.1 (recognizing translations abstractly).** In a crystallographic group \(\Gamma\), the translation subgroup \(\Lambda\) consists exactly of the elements whose conjugacy classes in \(\Gamma\) are finite. Consequently every abstract isomorphism between crystallographic groups carries their translation subgroups onto one another.
+**Lemma K.1 (recognizing translations abstractly).** In a crystallographic group \(\Gamma\), the translation subgroup \(\Lambda\) consists exactly of the elements whose conjugacy classes in \(\Gamma\) are finite. Consequently every abstract isomorphism between crystallographic groups carries their translation subgroups onto one another. The subgroup \(\Lambda\) is characteristic, is the unique largest abelian normal subgroup of \(\Gamma\), and is maximal among all abelian subgroups of \(\Gamma\).
 
 **Proof.** Write \(\tau_v(x)=x+v\). For \(\gamma=(A,p)\), the formula (J.4) gives
 \[
@@ -1300,7 +1453,18 @@ Conversely, suppose \(\gamma=(A,p)\) is not a translation, so \(A\ne I\). The ve
 \]
 Distinct integers give distinct translation parts, and hence distinct conjugates. The conjugacy class of \(\gamma\) is infinite.
 
-An isomorphism \(\phi:\Gamma_1\to\Gamma_2\) maps the conjugacy class of \(\gamma\) bijectively onto that of \(\phi(\gamma)\): apply \(\phi\) to \(h\gamma h^{-1}\), and use surjectivity for the reverse inclusion and injectivity for bijectivity. It therefore preserves precisely the elements just characterized. In dimension zero the group and its translation subgroup are both trivial, so the same conclusion holds. □
+An isomorphism \(\phi:\Gamma_1\to\Gamma_2\) maps the conjugacy class of \(\gamma\) bijectively onto that of \(\phi(\gamma)\): apply \(\phi\) to \(h\gamma h^{-1}\), and use surjectivity for the reverse inclusion and injectivity for bijectivity. It therefore preserves precisely the elements just characterized. In dimension zero the group and its translation subgroup are both trivial, so the same conclusion holds.
+
+
+There is also a useful maximality characterization. Let \(N\) be any abelian normal subgroup of \(\Gamma\), and choose \(h=(A,p)\in N\). For every lattice translation \(\tau_v\), normality puts \(\tau_vh^{-1}\tau_{-v}\) in \(N\), so the product with \(h\) belongs to \(N\). By (K.1) this product is
+\[
+h\tau_vh^{-1}\tau_{-v}=\tau_{(A-I)v}\in N.
+\]
+Since \(N\) is abelian, \(h\) commutes with this translation. Applying (K.1) once more gives \((A-I)^2v=0\). Put \(w=(A-I)v\); then \(Aw=w\). Orthogonality gives \(A^{-1}w=w\), and therefore
+\(\langle w,w\rangle=\langle(A-I)v,w\rangle=\langle v,(A^{-1}-I)w\rangle=0\).
+Thus \((A-I)v=0\) for every lattice vector. Their real span is the whole space, so \(A=I\). Every element of \(N\) is consequently a translation. Because \(\Lambda\) itself is abelian and normal by J.3, it is the unique largest abelian normal subgroup: it contains every such subgroup.
+
+Even without a normality assumption, any element \(h=(A,p)\) that commutes with all of \(\Lambda\) satisfies \(Av=v\) for every lattice vector by (K.1), so it lies in \(\Lambda\). Conversely translations commute with each other. Hence the centralizer of \(\Lambda\) in \(\Gamma\) is exactly \(\Lambda\). An abelian subgroup containing \(\Lambda\) lies in this centralizer and therefore equals \(\Lambda\); this is maximality among all abelian subgroups. Finally the isomorphism assertion already proved, applied to automorphisms, makes \(\Lambda\) characteristic, meaning invariant under every automorphism of \(\Gamma\). □
 
 **Lemma K.2 (finite averaging).** Let \(F\) be a finite group, \(V\) a finite-dimensional real vector space, and \(\rho:F\to\operatorname{GL}(V)\) a representation. Suppose \(c:F\to V\) satisfies
 \[
@@ -1413,7 +1577,14 @@ d_a([x],[y])=\min_{k\in\mathbb Z}|y-x+ka|.
 \]
 Indeed a piecewise smooth path from \([x]\) to \([y]\) lifts, starting at \(x\), to a path ending at \(y+ka\) for some integer \(k\), by [Flat connections D.1](flat-connections-and-infinitesimal-holonomy.md#lemma-d-1). The lift is piecewise smooth in inverse covering charts and has the same length, since those charts are local isometries. Its Euclidean length is at least its endpoint displacement: integrate its derivative, and apply the triangle inequality for integrals proved in [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) on each smooth piece. This gives the lower bound in (K.9). Conversely each straight segment from \(x\) to \(y+ka\) projects to a path with that length. The minimum exists, since \(|y-x+ka|\) tends to infinity as \(|k|\) does, leaving finitely many candidates below any fixed candidate value.
 
-Subtracting an integer multiple of \(a\) from \(y-x\) places it in \([-a/2,a/2]\): take the integer part of \((y-x)/a+1/2\). Thus every distance is at most \(a/2\), and the pair \([0],[a/2]\) has distance exactly \(a/2\). The diameter of \(C_a\) is \(a/2\). A Riemannian isometry preserves lengths of curves and hence distances and diameter. Therefore \(C_a\) and \(C_b\) are not isometric when \(a\ne b\), despite their affine equivalence and isomorphic fundamental groups. □
+Subtracting an integer multiple of \(a\) from \(y-x\) places it in \([-a/2,a/2]\): take the integer part of \((y-x)/a+1/2\). Thus every distance is at most \(a/2\), and the pair \([0],[a/2]\) has distance exactly \(a/2\). The diameter of \(C_a\) is \(a/2\). A Riemannian isometry preserves lengths of curves and hence distances and diameter. Therefore \(C_a\) and \(C_b\) are not isometric when \(a\ne b\), despite their affine equivalence and isomorphic fundamental groups.
+
+
+The same distinction occurs among rectangular two-dimensional tori. For \(a,b>0\), give \(T_{a,b}=\mathbb R^2/(a\mathbb Z\oplus b\mathbb Z)\) its quotient Euclidean metric. Rescaling the two coordinates separately gives an affine diffeomorphism between any two of these tori. If \((s,t)\) is the displacement between two lifted points, the path-lifting and length argument used for (K.9) gives the distance as the minimum of \(\sqrt{(s+ka)^2+(t+\ell b)^2}\) over integers \(k,\ell\). Each coordinate can be minimized independently by choosing a nearest integer multiple of its period; the straight segment to that lattice translate attains the bound. The minimized coordinate magnitudes are at most \(a/2\) and \(b/2\), respectively. Both bounds are attained together by the classes of \((0,0)\) and \((a/2,b/2)\). Therefore
+\[
+\operatorname{diam}T_{a,b}=\frac12\sqrt{a^2+b^2}.
+\]
+For example, \(T_{1,1}\) and \(T_{2,1/2}\) have different side ratios and diameters \(\sqrt2/2\) and \(\sqrt{17}/4\). They are affinely diffeomorphic but cannot be isometric. This gives the rectangular-torus example without assuming any classification of flat-torus isometries. □
 
 ## L. When an affine-flat connection comes from a metric
 

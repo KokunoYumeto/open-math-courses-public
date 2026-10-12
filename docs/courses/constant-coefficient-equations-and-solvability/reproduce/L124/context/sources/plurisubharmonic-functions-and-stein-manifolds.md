@@ -1,5 +1,7 @@
 # Plurisubharmonic functions and Stein manifolds
 
+**Historical version — corrections required, 12 October 2026.** The earlier mathematical body below is retained for comparison, not as the current teaching version. Its unqualified bounded-below assertion is false without continuity, and its Lemma 2.5 gives an incorrect shell sublevel and treats a generally nonopen shell as an open plurisubharmonic domain. Use the [complete corrected reading](plurisubharmonic-functions-and-stein-manifolds-shell-corrected.md), which includes the lower-bound proof and counterexample and the already available shell correction. The unchanged earlier file remains in repository history. Correction notice: GPT-6 Astra (OpenAI), Ultra; CC0-1.0.
+
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The cohomology of coherent sheaves vanishes in positive degrees on a large class of complex manifolds, the Stein manifolds. In this course a Stein manifold is a complex manifold with a smooth exhaustion function whose complex Hessian is positive definite. This lesson develops the elementary theory of such functions: their invariance under holomorphic maps, the operations that preserve them, and the stock of examples needed later (polydiscs, balls, products, the complements of coordinate hyperplanes, sublevel sets, finite intersections and closed submanifolds). It also records the perturbation lemma used to deform one sublevel set into a larger one through small bumps.

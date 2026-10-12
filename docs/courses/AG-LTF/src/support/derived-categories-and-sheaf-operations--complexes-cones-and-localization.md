@@ -66,9 +66,22 @@ For the first assertion, apply the Snake Lemma to the exact rows
 \ker d_B^n\longrightarrow\ker d_C^n,
 \]
 
-whose vertical maps are induced by \(d^{n-1}\). The kernels of these vertical maps are \(H^{n-1}\); their cokernels are \(H^n\). The first row is right exact by the cokernel part of the Snake Lemma applied to the degreewise exact diagram with vertical maps \(d^{n-2}\); the second is left exact by its kernel part for \(d^n\). Thus the new Snake Lemma sequence joins \(H^{n-1}(C)\) to \(H^n(A)\) and gives exactly the six consecutive terms of the cohomology sequence. Varying \(n\) joins the sequences. Naturality follows from the naturality of the Snake Lemma construction by kernels, cokernels and pullbacks.
+whose vertical maps are induced by \(d^{n-1}\). The kernels of these vertical maps are \(H^{n-1}\); their cokernels are \(H^n\). The first row is right exact by the cokernel part of the Snake Lemma applied to the degreewise exact diagram with vertical maps \(d^{n-2}\); the second is left exact by its kernel part for \(d^n\). Thus the new Snake Lemma sequence joins \(H^{n-1}(C)\) to \(H^n(A)\) and gives exactly the six consecutive terms of the cohomology sequence. Varying \(n\) joins the sequences. We verify naturality of its boundary below.
 
-In modules, its boundary has the familiar precise description: lift a cocycle \(c\) to \(b\), write \(d_Bb=a(a')\), and send \([c]\) to \([a']\). A changed lift adds a boundary, and a changed cocycle by a boundary also changes \(a'\) by a boundary. In an arbitrary abelian category these lifts are performed after pullback along an epimorphism, as in the exactness criterion in the prerequisite; the kernel and cokernel description just given supplies the resulting canonical morphism. \(\square\)
+In modules, its boundary has the familiar precise description: lift a cocycle \(c\) to \(b\), write \(d_Bb=a(a')\), and send \([c]\) to \([a']\). A changed lift adds a boundary, and a changed cocycle by a boundary also changes \(a'\) by a boundary. Here is the construction and its naturality in an arbitrary abelian category, using pullbacks.
+
+Write \(Z^nC=\ker d_C^n\) and form \(L^n=B^n\times_{C^n}Z^nC\), with projections \(\ell:L^n\to B^n\) and \(p:L^n\to Z^nC\). The pullback of the epimorphism \(b^n\) is epic, so \(p\) is epic. The composite \(d_B\ell\) is killed by \(b^{n+1}\), and hence factors uniquely as \(a^{n+1}t\), with \(t:L^n\to A^{n+1}\). Since \(a^{n+2}d_At=d_B^2\ell=0\) and \(a^{n+2}\) is monic, \(t\) lands in \(Z^{n+1}A\); regard \(t\) as a map into this kernel. Its composite \(k:L^n\to H^{n+1}A\) vanishes on \(\ker p\): that kernel identifies with \(A^n\), and \(t\) restricts there to \(d_A^n\). Therefore \(k\) descends uniquely to \(\delta_0:Z^nC\to H^{n+1}A\). There is also a map \(B^{n-1}\to L^n\) with first component \(d_B^{n-1}\) and second component \(d_C^{n-1}b^{n-1}\). Its composite with \(t\) is zero by \(d_B^2=0\) and monicity of \(a\). Thus \(\delta_0d_C^{n-1}b^{n-1}=0\); cancellation of the epic \(b^{n-1}\) gives \(\delta_0d_C^{n-1}=0\). It descends to a morphism \(\delta:H^nC\to H^{n+1}A\). These are precisely the lift, kernel and quotient maps defining the Snake boundary above, so the two constructions agree.
+
+For a morphism \((u_A,u_B,u_C)\) between two short exact sequences of complexes, the pullback property gives \(v:L^n\to L'^n\) with first component \(u_B\ell\) and second component \(Z^n(u_C)p\). The equations for a morphism of complexes give
+\[
+p'v=Z^n(u_C)p,\qquad
+t'v=Z^{n+1}(u_A)t.
+\]
+For the second equality, compose both sides with the monomorphism \(Z^{n+1}A'\to B'^{n+1}\); both composites are \(d_{B'}u_B\ell=u_Bd_B\ell\), so they agree before that monomorphism as well. Passing to cohomology gives \(k'v=H^{n+1}(u_A)k\). Descend first along \(p\) and then along the epimorphism \(Z^nC\to H^nC\). Uniqueness of these factorizations proves
+\[
+\delta' H^n(u_C)=H^{n+1}(u_A)\delta.
+\]
+The other squares of the long exact sequence commute by the induced kernel, image and quotient maps. This proves its full naturality. \(\square\)
 
 A **quasi-isomorphism** is a map inducing an isomorphism on every cohomology object. A complex is **acyclic** when all its cohomology objects vanish. A homotopy equivalence is a quasi-isomorphism by Lemma 1.2, but an acyclic complex need not be contractible.
 
@@ -245,6 +258,20 @@ Every \(H^n\) inverts quasi-isomorphisms and therefore descends by Theorem 4.2. 
 **Proof.** For \(0\to A\xrightarrow fB\xrightarrow gC\to0\), the map \(r:C(f)\to C\), \((b,a')\mapsto g(b)\), is a chain map. Its kernel is \(C(1_A)\), under the identification \(\ker g=A\), and is contractible. Lemma 1.2 makes \(r\) a quasi-isomorphism. Thus the cone triangle identifies with \(A\to B\to C\to A[1]\) in \(D\), with boundary \((-p)r^{-1}\). When the original sequence splits degreewise, Lemma 2.2 identifies this boundary with its positive Snake Lemma boundary. In general the same agreement follows from the lift formula in Lemma 1.2, or from its naturality applied to \(0\to A\to B\to C\to0\) and the cone construction.
 
 For the last assertion use the good truncation \(\tau_{\ge a}K\): it is zero below \(a\), equals \(K^a/\operatorname{im}d_K^{a-1}\) in degree \(a\), and equals \(K^n\) above \(a\). The outgoing differential factors through this quotient because \(d^2=0\). The natural map from \(K\) is an isomorphism on cohomology at and above \(a\), by kernels and images, and both cohomologies vanish below \(a\). It is the required quasi-isomorphism. The dual good truncation uses \(\ker d_K^b\) at the top degree \(b\). \(\square\)
+
+**Lemma 5.3 (the good-truncation triangle).** For any complex \(K\) and integer \(q\), the natural truncation maps give a distinguished triangle
+\[
+\tau_{\le q}K\longrightarrow K\longrightarrow
+\tau_{\ge q+1}K\longrightarrow(\tau_{\le q}K)[1].
+\]
+It is natural in chain maps of \(K\).
+
+**Proof.** Set \(A=\tau_{\le q}K\), the subcomplex equal to \(K\) below \(q\), to \(\ker d_K^q\) in degree \(q\), and to zero above \(q\). Put \(B=K/A\). This quotient vanishes below \(q\), has \(K^q/\ker d_K^q\) in degree \(q\), and agrees with \(K\) above \(q\). Its degree-\(q\) differential identifies \(K^q/\ker d_K^q\) with \(\operatorname{im}d_K^q\) and then includes that image in \(K^{q+1}\). Define \(r:B\to\tau_{\ge q+1}K\) to be zero in degree \(q\), the quotient by \(\operatorname{im}d_K^q\) in degree \(q+1\), and the identity above. It is a termwise epimorphic chain map. Its kernel identifies with
+\[
+\operatorname{im}d_K^q\xrightarrow{1}
+\operatorname{im}d_K^q
+\]
+in degrees \(q,q+1\), and is zero elsewhere. The identity map from the upper term to the lower term contracts this kernel. Lemma 1.2 therefore makes \(r\) a quasi-isomorphism. Proposition 5.2 turns \(0\to A\to K\to B\to0\) into a distinguished triangle; transport its third object through \(Q(r)\) to obtain the displayed triangle. A chain map preserves cycles and boundaries, so it induces maps of all these subcomplexes, quotients and kernels, commuting with \(r\). To check the last triangle square itself, let \(\rho:C(A\to K)\to B\) be the cone-to-quotient quasi-isomorphism from Proposition 5.2. A morphism of these short exact sequences induces the cone map of Lemma 2.1 with zero homotopy. That map commutes strictly with the cone inclusions, the negative projections, and \(\rho\), because the first two sequence squares commute as chain maps. The derived boundary of the quotient triangle is \(Q(-p)Q(\rho)^{-1}\); its square therefore commutes after inverting \(Q(\rho)\). The truncation triangle's boundary is \(Q(-p)Q(\rho)^{-1}Q(r)^{-1}\), so commutation with \(r\) proves the last square for that triangle as well. This proves naturality of the derived triangle before taking cohomology. \(\square\)
 
 We write \(D^+(\mathcal A)\) for the full subcategory whose cohomology vanishes sufficiently far below zero, and similarly \(D^-\) and \(D^b\). They are triangulated: shifts preserve the relevant bounds, and the long exact sequence bounds the cohomology of a cone whenever its first two objects have those bounds. Proposition 5.2 provides bounded representatives where needed. It is cohomological boundedness, rather than the terms of a particular representative, that defines these subcategories.
 
