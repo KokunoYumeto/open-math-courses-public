@@ -43,7 +43,9 @@ The domains are transported by the graph unitary, so this is an equality of the 
 
 A von Neumann algebra with separable predual is countably decomposable. Indeed, choose a unit vector in the range of each member of an orthogonal family of nonzero projections. Their vector states are normal by [CP-4](OA-FLOW-CP.md#oa-flow.cp.4). Any two states are at norm distance at least one, by evaluation on the first projection. A countable dense subset of the predual gives a cover by balls of radius one third, each containing at most one of these states. Hence the orthogonal family is countable.
 
-Now let $M$ be a type III factor with separable predual and $0\ne p\in M$. The complete countably decomposable comparison proof [PC-8](OA-FLOW-PC.md#oa-flow.projection.pc8) gives $v^*v=1$, $vv^*=p$. The map $x\mapsto vxv^*$ is a normal unital star isomorphism from $M$ onto $pMp$; its inverse is $y\mapsto v^*yv$. The graph calculation proves $S(pMp)=S(M)$. Thus a type III1 factor, defined by $S(M)=[0,\infty)$, has the same type in every nonzero corner.
+More generally, sigma-finiteness means countable decomposability. [PC-7](OA-FLOW-PC.md#oa-flow.projection.pc7) proves its equivalence to having a faithful normal state: in one direction every nonzero orthogonal projection has positive mass and only finitely many have mass at least $1/n$; in the other, a countable maximal family of state supports yields a faithful convex combination. Thus the following corner argument applies on any sigma-finite algebra.
+
+Now let $M$ be a sigma-finite type III factor and $0\ne p\in M$. The complete countably decomposable comparison proof [PC-8](OA-FLOW-PC.md#oa-flow.projection.pc8) gives $v^*v=1$, $vv^*=p$. The map $x\mapsto vxv^*$ is a normal unital star isomorphism from $M$ onto $pMp$; its inverse is $y\mapsto v^*yv$. The graph calculation proves $S(pMp)=S(M)$. Thus a type III1 factor, defined by $S(M)=[0,\infty)$, has the same type in every nonzero corner.
 
 <a id="finite-matrix-amplification"></a>
 
@@ -60,7 +62,7 @@ $$
  \Theta^{-1}(x)=[v_i^*xv_j]_{i,j=1}^2
 $$
 
-are normal, mutually inverse, unital star homomorphisms. Multiplication follows by inserting $v_i^*v_j=\delta_{ij}1$; the inverse identity follows from $\sum_i v_iv_i^*=1$. The graph calculation again gives $S(M_2(M))=S(M)$. In particular, the exact matrix algebra used for the balanced homogeneity functional is type III1.
+are normal, mutually inverse, unital star homomorphisms. Multiplication follows by inserting $v_i^*v_j=\delta_{ij}1$; the inverse identity follows from $\sum_i v_iv_i^*=1$. The graph calculation again gives $S(M_2(M))=S(M)$. The displayed isomorphism preserves orthogonal projection families, so $M_2(M)$ is sigma-finite whenever $M$ is. In particular, the exact matrix algebra used for the balanced homogeneity functional is type III1.
 
 The argument proves the stated corner and matrix invariance from the earlier proofs linked above. The earlier NC/CR/MC lessons supply the natural-cone construction. The following TS lesson proves the specific type III1 spectral passage; the full homogeneity theorem and general S/Gamma intersection identity remain separate.
 

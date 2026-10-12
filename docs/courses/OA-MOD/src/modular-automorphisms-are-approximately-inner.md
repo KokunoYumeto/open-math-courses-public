@@ -8,7 +8,7 @@ The spectral argument below retains the domain of the modular square root. It al
 
 **Theorem 1.1.** Let \(M\) be an approximately finite-dimensional factor of type III₁ with separable predual. For every faithful normal state \(\psi\) and every \(\tau\in\mathbb R\), the automorphism \(\sigma_\tau^\psi\) is approximately inner. More generally, the conclusion holds for a semidiscrete factor of type III₁ with separable predual.
 
-Here approximately finite-dimensional means that an increasing directed family of finite-dimensional unital subalgebras generates \(M\) as a von Neumann algebra. The separable-predual hypothesis is retained throughout. Approximate innerness means that there are unitaries \(u_n\in M\) such that
+Here approximately finite-dimensional means that an increasing directed family of finite-dimensional unital subalgebras generates \(M\) as a von Neumann algebra. In Theorem 1.1 the predual is separable, so approximate innerness can be expressed by a sequence of unitaries \(u_n\in M\) such that
 
 \[
  \|\omega\circ\operatorname{Ad}(u_n)^{-1}
@@ -19,14 +19,16 @@ Here approximately finite-dimensional means that an increasing directed family o
 
 The sequence may depend on \(\psi\) and \(\tau\).
 
+We will also prove a conditional version with no separable-predual assumption: if a type III factor has a faithful normal state, satisfies the minimal-tensor multiplication bound, and has scalar bicentralizer for every faithful normal state, then every modular automorphism of each such state is approximately inner. In this version the implementing unitaries form a net. The proof below applies to this general setting; injectivity and separable predual will supply the bicentralizer hypothesis for Theorem 1.1.
+
 We use the following earlier proofs at their stated generalities.
 
 - QV01 supplies the minimal-tensor multiplication bound for semidiscrete algebras, including the approximately finite-dimensional case.
-- The bicentralizer theorem, Theorem 6.1 proves \(\mathrm B(M,\varphi)=\mathbb C1\) for **every** faithful normal state on a type III₁ factor with separable predual. Its proof passes through the eight lessons of that course; it is not an additional assumption on \(\varphi\).
+- The injective-factor bicentralizer theorem, BSI06–07, proves \(\mathrm B(M,\varphi)=\mathbb C1\) for every faithful normal state on an injective type III₁ factor with separable predual. Its proof uses finite-dimensional averages in the dominant centralizer and the earlier finite injective-factor theorem. The class in Theorem 1.1 meets its injectivity hypothesis: Corollary 5.2 of the averaging lesson proves this for an increasing directed finite-dimensional family, and Theorem 4.2 of the finite-model lesson proves it for every semidiscrete algebra. The latter extends the incoming completely positive matrix maps to the ambient operator algebra and takes a point-ultraweak limit of the resulting completely positive maps. The limit fixes the algebra and is a retraction; normality of that retraction is not needed.
 - CV05–CV08 construct the coefficient and integrated C*-algebras and their modular covariance under those two hypotheses.
-- IU06 proves the local criterion for approximate innerness on a type III factor with separable predual.
+- DQI07 proves the local criterion for approximate innerness on every type III factor with a faithful normal state. IU06 supplies the sequence specialization when the predual is separable.
 
-We work in a standard form \((M,H,J,P)\). Write \(\zeta a=Ja^*J\zeta\) for the right action. For an automorphism \(\theta\), write \(\theta\zeta\) for its canonical action on the cone. The criterion in IU06 asks: for every finite family \(\xi_1,\ldots,\xi_m\in P\) and every \(\varepsilon>0\), find a nonzero \(x\in M\) such that
+We work in a standard form \((M,H,J,P)\). Write \(\zeta a=Ja^*J\zeta\) for the right action. For an automorphism \(\theta\), write \(\theta\zeta\) for its canonical action on the cone. The criterion in DQI07 asks: for every finite family \(\xi_1,\ldots,\xi_m\in P\) and every \(\varepsilon>0\), find a nonzero \(x\in M\) such that
 
 \[
  \left(\sum_j\|x\xi_j-(\theta\xi_j)x\|^2\right)^{1/2}
@@ -322,15 +324,17 @@ Choose
 
 The first bound in (26) is then at most \(\varepsilon/2\), strictly before the comparison, while the second is greater than \(1/2\). This proves (2) for \(\gamma\); (7) proves it for \(\theta\). Undoing the common normalization preserves that inequality. The proper-support case was already settled in Section 2.
 
-Thus every finite test family satisfies the local criterion. IU06 applies because \(M\) is a type III factor with separable predual, and supplies the unitaries in (1). This proves Theorem 1.1. No sign restriction was placed on \(\tau\). \(\square\)
+Thus every finite test family satisfies the local criterion. DQI07 applies because \(M\) is a type III factor with a faithful normal state. It supplies an implementing net. If the predual is separable, choose a norm-dense sequence of functionals, and for each \(n\) choose an implementing unitary with error less than \(1/n\) on its first \(n\) terms. Both predual actions are isometric, so approximation of an arbitrary functional by a dense test bounds its additional error by twice that norm distance. The resulting sequence satisfies (1). This proves Theorem 1.1 and the conditional version stated in Section 1. No sign restriction was placed on \(\tau\). \(\square\)
 
-The argument has a useful intermediate form: a type III factor with separable predual satisfies the same conclusion if it has the multiplication bound and scalar bicentralizer for every faithful normal state. Theorem 1.1 verifies both inputs for the stated class through the earlier programme proofs.
+The conditional conclusion uses neither a separable predual nor a type III₁ hypothesis. It requires the multiplication bound and scalar bicentralizer for every faithful normal state, as well as a faithful normal state to apply DQI07. The unconditional class in Theorem 1.1 is the separable-predual semidiscrete type III₁ class for which Section 1 verifies these inputs.
 
 ## 7. Faithful semifinite weights and finite families of times
 
 **Corollary 7.1.** Under the hypotheses of Theorem 1.1, every modular automorphism of a faithful normal semifinite weight is approximately inner.
 
-**Proof.** Choose a faithful normal state \(\varphi\), which exists because the predual is separable, as proved in IU01. If \(\chi\) is the weight, SI14 gives
+The same conclusion holds under the conditional hypotheses of Section 1, with a net in place of a sequence.
+
+**Proof.** Choose a faithful normal state \(\varphi\). In Theorem 1.1 it exists because the predual is separable, as proved in IU01; in the conditional version its existence is a hypothesis. If \(\chi\) is the weight, SI14 gives
 
 \[
  \sigma_\tau^\chi
@@ -338,7 +342,7 @@ The argument has a useful intermediate form: a type III factor with separable pr
  \tag{28}
 \]
 
-Let \(u_n\) implement the approximation for \(\sigma_\tau^\varphi\), and put \(w=[D\chi:D\varphi]_\tau\). Then \(wu_n\) implements the approximation for (28): for every \(\omega\in M_*\), the norm of the difference of the two predual values is unchanged by their final composition with the isometry \(\operatorname{Ad}(w)^{-1}\). \(\square\)
+Let \((u_i)\) implement the approximation for \(\sigma_\tau^\varphi\), and put \(w=[D\chi:D\varphi]_\tau\). Then \((wu_i)\) implements the approximation for (28): for every \(\omega\in M_*\), the norm of the difference of the two predual values is unchanged by their final composition with the isometry \(\operatorname{Ad}(w)^{-1}\). The same calculation applies to a sequence or a net. \(\square\)
 
 For a fixed \(\chi\), a finite set of times \(\tau_1,\ldots,\tau_q\), a finite set of normal functionals, and a positive tolerance, (1) supplies one unitary for each time satisfying all those functional tests. No compatibility between these finitely many chosen unitaries has been proved. In particular, pointwise approximate innerness does not by this argument give a single one-parameter unitary group or convergence uniform in time.
 
@@ -352,4 +356,4 @@ For a fixed \(\chi\), a finite set of times \(\tau_1,\ldots,\tau_q\), a finite s
 
 **Finite matrix check.** In the Hilbert–Schmidt standard form of \(M_n(\mathbb C)\), let \(\varphi\) be the normalized trace and \(\xi=n^{-1/2}I\). Then \(\Delta=I\), \(\gamma=\mathrm{id}\), \(r=0\), and \(\eta=\xi\) makes (20) exact. Taking \(y=1\) makes every error zero. For another faithful state with density \(d>0\), its modular automorphism is already \(\operatorname{Ad}(d^{i\tau})\), in agreement with the cocycle transport. This checks the formulas, without applying the type III criterion to a finite algebra.
 
-**Reference.** M. Takesaki, *Theory of Operator Algebras III*, Chapter XVIII, Section 4, Theorem 4.12, printed p.381 and proof on pp.387–389. The covariant-algebra preparation is proved in CV; the bicentralizer input is the earlier programme theorem linked in Section 1. The proof above states the separable-predual scope explicitly and includes the support reduction, the integral-algebra membership, the squared-error choice, and the Tomita graph approximation.
+**Reference.** M. Takesaki, *Theory of Operator Algebras III*, Chapter XVIII, Section 4, Theorem 4.12, printed p.381 and proof on pp.386–389. The covariant-algebra preparation is proved in CV; BSI06–07 supplies the injective-factor bicentralizer input. The proof above includes the support reduction, the integral-algebra membership, the squared-error choice, and the Tomita graph approximation. DQI07 extends its conditional conclusion to faithful-state type III factors without a separable predual. The unconditional application retains the separable-predual hypothesis of the injective bicentralizer theorem.

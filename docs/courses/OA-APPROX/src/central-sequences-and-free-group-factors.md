@@ -1,140 +1,276 @@
 # Central sequences, fullness and free group factors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. New original exposition: CC0-1.0 to the extent of rights held. Human comparison sources retain their own terms.*
 
-In the [hyperfinite finite factor](hyperfinite-finite-factors.md), a trace-zero operator can move farther and farther into the tensor tail and almost commute with every fixed operator. A free group factor has the opposite behavior: commutation with just two generators controls the entire distance from the scalars. We first develop the topological criterion that turns this estimate into closedness of the inner automorphism group.
+How much can two commutators reveal about an operator? In a free-group factor they bound its entire distance from the scalars. In the dyadic tensor factor \(R\), a unitary can instead escape into a later tensor position, commute asymptotically with every fixed operator, and stay a definite distance from every scalar.
 
-Foundational inputs are normal functional decomposition, faithful normal state GNS representations, Kaplansky density, center-valued traces on finite algebras and the intrinsic strong* topology. The only descriptive-set-theory input is the Lusin–Souslin theorem: a continuous injection between Polish spaces carries Borel sets to Borel sets. Its selected full proof is compared with the foundations producer, with topology refinement and separation retained as prerequisites. Baire's theorem for complete metric spaces is also used. General modular or expectation theory is not developed here.
+We compute these examples first. We then relate their behavior to the topology of automorphism groups, retaining the whole center for algebras that are not factors. The original result and problem numbers are stable labels for those connections.
 
-## 1. Two meanings of almost commuting
+<a id="7-exercises-with-complete-solutions"></a>
 
-For \(\omega\in M_*\) put
+The problems are interleaved with the arguments they test. Every problem has its complete solution immediately below it. The [foundations](../components/central-sequence-foundations.md) prove the normal-functional, faithful-state, metric, Borel-image and phase constructions, and the two factor constructions used here.
+
+<a id="5-an-explicit-free-group-gap"></a>
+
+## Two generators control the distance from the scalars
+
+Let \(\Gamma=\mathbb F_n\), \(2\leq n\leq\infty\), and choose distinct generators \(a,b\). Its reduced words give the group operations; the [free-word construction](free-group-norm-averaging.md#free-word-and-operator-inputs) establishes the cancellation and uniqueness rules for every generator set. Put \(L(\Gamma)=\lambda(\Gamma)''\), where
+\(\lambda_g\delta_h=\delta_{gh}\) on \(\ell^2(\Gamma)\).
+
+[FG1](../components/central-sequence-foundations.md#fg1-countable-group-von-neumann) constructs the faithful normal trace
+\(\tau(x)=\langle\delta_e,x\delta_e\rangle\), proves separability of the predual, and proves the coefficient identity
+\[
+\|x-\tau(x)1\|_2^2=\sum_{g\ne e}|\widehat x(g)|^2,
+\qquad
+\widehat x(g)=\langle\delta_g,x\delta_e\rangle.
+\tag{21}
+\]
+It also proves that an infinite countable ICC group gives a factor of type \(\mathrm{II}_1\).
+
+Here is the required ICC check. If \(g\ne e\) is not an \(a\)-power, strip its maximal initial and final \(a\)-runs to write \(g=a^rwa^s\), where \(w\) is nonempty and neither endpoint is an \(a\)-letter. For all sufficiently large positive \(k\), the conjugate
+\(a^kga^{-k}=a^{k+r}wa^{s-k}\)
+has initial run of length \(k+r\) and final negative run of length \(k-s\). Distinct such \(k\) give distinct reduced words. If \(g\) is a nonzero \(a\)-power, its conjugates by positive \(b\)-powers are distinct instead. Every nonidentity conjugacy class is therefore infinite.
+
+**Theorem 5.1.** For every \(x\in L(\Gamma)\),
+\[
+\|x-\tau(x)1\|_2
+\le14\max\{\|[x,\lambda_a]\|_2,\|[x,\lambda_b]\|_2\}.
+\tag{22}
+\]
+
+**Proof.** We turn the coefficients into a finite measure
+\[
+\mu(A)=\sum_{g\in A}|\widehat x(g)|^2
+\quad(A\subseteq\Gamma\setminus\{e\}),\qquad
+k=\mu(\Gamma\setminus\{e\}).
+\]
+Write \(\delta=\max(\|[x,\lambda_a]\|_2,\|[x,\lambda_b]\|_2)\).
+Conjugation permutes the coefficient vector. The vector of
+\(\lambda_hx\lambda_h^*-x\) is its difference from that permutation, and traciality identifies its norm with \(\|[x,\lambda_h]\|_2\). For \(h=b^{-1}\) the same norm equals that for \(b\), by conjugating the commutator. Restricting the two vectors to any set and using the reverse triangle inequality gives
+\[
+|\sqrt{\mu(hAh^{-1})}-\sqrt{\mu(A)}|\leq\delta
+\quad(h=a,b,b^{-1}).
+\]
+Both restricted norms are at most \(\sqrt k\). Factoring the difference of their squares yields
+\[
+|\mu(hAh^{-1})-\mu(A)|\leq2\sqrt k\,\delta.
+\tag{25}
+\]
+
+Choose \(S\) to consist of the nonidentity words ending in \(a\) or \(a^{-1}\). A word outside \(S\) ends in a different letter; conjugating it by \(a^{-1}\) leaves an \(a\) at the right endpoint. Thus
+\[
+S\cup aSa^{-1}=\Gamma\setminus\{e\}.
+\tag{23}
+\]
+There can be overlap, so the useful assertion is subadditivity:
+\[
+k\leq\mu(S)+\mu(aSa^{-1})
+\leq2\mu(S)+2\sqrt k\,\delta.
+\]
+It follows that \(\mu(S)\geq k/2-\sqrt k\,\delta\).
+By contrast the three sets
+\[
+S,\qquad bSb^{-1},\qquad b^{-1}Sb
+\tag{24}
+\]
+are disjoint. In the last two sets the terminal \(a\)-letter prevents right cancellation, leaving respectively a final \(b^{-1}\)-run and a final \(b\)-run of length one. Left cancellation cannot pass that \(a\)-letter. Their measures are each at least \(\mu(S)-2\sqrt k\,\delta\). Consequently
+\[
+k\geq\mu(S)+\mu(bSb^{-1})+\mu(b^{-1}Sb)
+\geq\frac32k-7\sqrt k\,\delta.
+\tag{27}
+\]
+For \(k>0\), rearrange and divide by \(\sqrt k/2\) to obtain
+\(\sqrt k\leq14\delta\). For \(k=0\) the desired distance is already zero. Equation (21) proves the assertion. \(\square\)
+
+**Exercise 7.** Decide whether the cover (23) needs disjoint sets. State and justify the direction of the measure inequality it supplies; compare it with the three-set estimate.
+
+*Solution.* The word \(a\) lies in \(S\) and also in \(aSa^{-1}\), because conjugating \(a\) by \(a\) leaves it unchanged. This overlap is allowed. The cover gives
+\[
+k=\mu(S\cup aSa^{-1})\leq\mu(S)+\mu(aSa^{-1}),
+\]
+so it bounds \(\mu(S)\) from below after applying (25). The three sets in (24) are pairwise disjoint subsets of the total space. Their measures therefore add without overlap, and their sum is at most \(k\). These are the two distinct inequality directions used in the proof.
+
+**Exercise 8.** Suppose the \(a\)-commutator has \(2\)-norm at most \(10^{-3}\), and the \(b\)-commutator has \(2\)-norm at most \(2\cdot10^{-3}\). Find the certified scalar approximation, including its error, and prove that its scalar minimizes the \(2\)-norm distance.
+
+*Solution.* The larger commutator bound is \(0.002\), hence (22) gives
+\(\|x-\tau(x)1\|_2\leq14(0.002)=0.028\).
+For every \(c\in\mathbb C\), expanding the trace and using
+\(\tau(x-\tau(x)1)=0\) gives
+\[
+\|x-c1\|_2^2
+=\|x-\tau(x)1\|_2^2+|c-\tau(x)|^2.
+\]
+The second term has its unique minimum at \(c=\tau(x)\). Equivalently, this is orthogonal projection onto \(\mathbb C1\) in the trace Hilbert space.
+
+## A tensor tail defeats any scalar approximation
+
+[FG2](../components/central-sequence-foundations.md#fg2-tracial-dyadic-product) constructs \(R\) from \(M_{2^n}\), their normalized traces and their tracial Hilbert completion. It proves trace faithfulness, factoriality, type \(\mathrm{II}_1\), separable predual and the bounded approximation
+\(\|E_n(x)-x\|_2\to0\) by the first \(n\) tensor positions. These properties follow from the local matrix construction itself.
+
+Let \(z_m\) put \(\operatorname{diag}(1,-1)\) at position \(m\). If \(m>n\), it commutes with \(E_n(x)\), so
+\[
+\|[z_m,x]\|_2\leq2\|x-E_n(x)\|_2.
+\]
+Given \(x\), first choose \(n\) to make the right side small and then take \(m>n\). Also \(\tau(z_m)=0\) and \(z_m\) is unitary, whence
+\[
+\|z_m-c1\|_2^2=1+|c|^2.
+\tag{28}
+\]
+This gives the opposite of the free-group estimate. Below we show why the distinction is exactly a failure of fullness.
+
+**Exercise 9.** Allow the scalar approximant to vary with \(m\). Prove that the tensor-tail unitaries still form a nontrivial sequence, including the passage from \(2\)-norm to bounded strong* convergence.
+
+*Solution.* The trace of each \(z_m\) is zero, and
+\(\tau(z_m^*z_m)=1\). Thus any choice \(c_m\in\mathbb C\) satisfies
+\(\|z_m-c_m1\|_2^2=1+|c_m|^2\geq1\).
+If the scalar approximants are bounded, the differences are bounded too. NT2 proves that bounded intrinsic strong* convergence forces trace \(2\)-norm convergence, by using the trace as a test; the latter is impossible here. Since FG2 proves \(Z(R)=\mathbb C1\), this excludes every allowed bounded central approximating sequence.
+
+<a id="1-two-meanings-of-almost-commuting"></a>
+
+## Which commutators test a sequence?
+
+For \(\omega\in M_*\), fix the module convention
 \[
 (x\omega)(y)=\omega(yx),\qquad
 (\omega x)(y)=\omega(xy),\qquad
 [x,\omega]=x\omega-\omega x.
 \tag{1}
 \]
-For \(\psi\in M_*^+\), write \(\|x\|_\psi=\psi(x^*x)^{1/2}\). Strong* convergence on bounded sets is convergence of both \(\|x\|_\psi\) and \(\|x^*\|_\psi\) for every such \(\psi\).
-
-A norm-bounded sequence \((x_n)\) is **central** if \([x_n,a]\to0\) strong* for every \(a\in M\). It is **centralizing** if \(\|[x_n,\omega]\|\to0\) for every \(\omega\in M_*\). A sequence is **trivial** if \(x_n-z_n\to0\) strong* for some bounded sequence \(z_n\in Z(M)\).
+A norm-bounded sequence is **centralizing** when
+\(\|[x_n,\omega]\|\to0\) for every \(\omega\in M_*\).
+It is **central** when \([x_n,a]\to0\) intrinsic strong* for every \(a\in M\). Here intrinsic strong* on bounded sets tests both
+\(\|x\|_\psi=\psi(x^*x)^{1/2}\) and \(\|x^*\|_\psi\) for every positive normal \(\psi\).
+A sequence is **trivial** when \(x_n-a_n\to0\) in that topology for a bounded sequence \(a_n\in Z(M)\).
 
 **Lemma 1.1.** Every centralizing sequence is central. If \(M\) has a faithful normal state \(\varphi\), a central sequence is centralizing whenever \(\|[x_n,\varphi]\|\to0\).
 
-**Proof.** For \(x,a\in M\) and \(\psi\ge0\), expansion and insertion of two intermediate terms give
+**Proof.** For fixed \(x,a\) and positive normal \(\psi\), put \(c=xa-ax\). Expanding (1) gives the exact identity
+\[
+\psi(c^*c)
+=[x,a\psi](a^*x^*-x^*a^*)
+ +[x,\psi](x^*a^*a-a^*x^*a).
+\]
+The first test variable has norm at most \(2\|a\|\|x\|\), and the second at most \(2\|a\|^2\|x\|\). Therefore
 \[
 \psi([x,a]^*[x,a])
-\le 2\|x\|\|a\|\|[x,a\psi]\|
+\leq2\|x\|\|a\|\|[x,a\psi]\|
  +2\|x\|\|a\|^2\|[x,\psi]\|.
 \tag{2}
 \]
-Here \(a\psi(y)=\psi(ya)\). To check the expansion, write the left side as
-\(\psi(a^*x^*[x,a])-\psi(x^*a^*[x,a])\). The first term has absolute value at most
+NT1 supplies the bounded module functionals appearing here. If the sequence is centralizing and bounded, both terms tend to zero. The functional involution
+\(\omega^*(y)=\overline{\omega(y^*)}\) satisfies
 \[
-|[x,a\psi](a^*x^*)|+|[x,\psi](a^*x^*a)|,
-\]
-after inserting \(\psi(xa^*x^*a)\). For the second insert \(\psi(xx^*a^*a)\), giving
-\[
-|[x,a\psi](x^*a^*)|+|[x,\psi](x^*a^*a)|.
-\]
-These bounds prove (2).
-
-If \(x_n\) is centralizing, the right side tends to zero. The identity
-\[
-\|[x^*,\omega]\|=\|[x,\omega^*]\|,
-\qquad \omega^*(y)=\overline{\omega(y^*)},
+[x,\omega]^*=-[x^*,\omega^*],
+\qquad \|[x^*,\omega]\|=\|[x,\omega^*]\|.
 \tag{3}
 \]
-shows that \(x_n^*\) is also centralizing. Applying (2) to \(x_n^*,a^*\) gives the adjoint seminorm. This proves centrality for arbitrary \(M\).
+It follows that \(x_n^*\) is centralizing as well. Apply (2) with \(x_n^*,a^*\) to obtain the adjoint seminorm of the original commutator. Both tests now vanish.
 
-For the converse under the state hypothesis, \(M\varphi=\{a\varphi:a\in M\}\) is norm dense in \(M_*\). Indeed, its annihilator in \(M=(M_*)^*\) consists of \(y\) with \(\varphi(ya)=0\) for every \(a\); taking \(a=y^*\) and using faithfulness gives \(y=0\). Hahn–Banach proves the density. Now
+For the state converse, NT1 proves that \(M\varphi\) is norm dense in \(M_*\) when \(\varphi\) is faithful. The identity
 \[
-[x_n,a\varphi]=[x_n,a]\varphi+a[x_n,\varphi],
+[x_n,a\varphi]=[x_n,a]\varphi+a[x_n,\varphi]
 \tag{4}
 \]
-and Cauchy–Schwarz gives
+reduces the dense family to the assumed two kinds of convergence. Indeed Schwarz gives
 \[
-\|b\varphi\|\le\varphi(1)^{1/2}\|b\|_\varphi.
+\|b\varphi\|\leq\varphi(1)^{1/2}\|b\|_\varphi.
 \tag{5}
 \]
-Both terms in (4) tend to zero. The uniform bound \(\|[x_n,\omega]\|\le2C\|\omega\|\), where \(\|x_n\|\le C\), extends the conclusion to every functional. \(\square\)
+Centrality makes the first term of (4) tend to zero; the stated state-commutator assumption controls the second. If \(\sup_n\|x_n\|=C\), the estimate
+\(\|[x_n,\omega]\|\leq2C\|\omega\|\) extends convergence from \(M\varphi\) to its norm closure. \(\square\)
+
+**Exercise 1.** Prove the product rule for convention (1). Give a matrix example showing why a vanishing commutator with one faithful state, without centrality, does not suffice.
+
+*Solution.* At a test element \(t\),
+\[
+\begin{aligned}
+x[y,\omega](t)&=\omega(txy)-\omega(ytx),\\
+[x,\omega]y(t)&=\omega(ytx)-\omega(xyt).
+\end{aligned}
+\]
+Adding cancels the middle values and gives
+\[
+[xy,\omega]=x[y,\omega]+[x,\omega]y.
+\tag{7}
+\]
+In \(M_2(\mathbb C)\), take \(x=\operatorname{diag}(1,-1)\) and the faithful normalized trace. Traciality makes \([x,\tau]=0\), but \(xe_{12}-e_{12}x=2e_{12}\ne0\). The constant sequence \(x_n=x\) is not central. Lemma 1.1's first implication then shows it is not centralizing either. The state test alone misses this obstruction.
+
+**Exercise 2.** Show that \(M\varphi\) is norm dense for a faithful normal state. For a nonfaithful state, identify an explicit nonzero annihilator and the exact support obstruction.
+
+*Solution.* The concrete duality \(M=(M_*)^*\) is proved in CP. A dual element \(y\) annihilating \(M\varphi\) obeys \(\varphi(ya)=0\) for all \(a\in M\). Testing \(a=y^*\) gives \(\varphi(yy^*)=0\), so faithfulness gives \(y=0\). If the norm closure were proper, Hahn–Banach would supply a nonzero annihilator; thus the closure is all of \(M_*\).
+For a nonfaithful \(\varphi\), NT4 constructs \(p=s(\varphi)\ne1\) with \(\varphi(1-p)=0\). Schwarz gives \(\varphi((1-p)a)=0\) for every \(a\). Hence \(y=1-p\ne0\) annihilates \(M\varphi\), and the norm closure is proper. The support being one is equivalent to faithfulness, so this is precisely the obstruction.
 
 **Corollary 1.2.** In every finite von Neumann algebra, central and centralizing bounded sequences coincide. No separability or countable decomposition is required.
 
-**Proof.** If there is a faithful normal tracial state, its commutator in (1) is zero and Lemma 1.1 applies. For an arbitrary finite algebra let \(T_Z:M\to Z(M)\) be its faithful normal center-valued trace. Given a nonzero \(\psi\in M_*^+\), let \(z\) be the support of \(\psi|_{Z(M)}\). On \(Mz\),
+**Proof.** In the presence of a faithful normal tracial state, the additional state commutator in Lemma 1.1 is zero, so centrality implies centralizing. For the general finite case, the complete [FCT0–7 construction](../components/central-finite-trace-inputs.md#retained-fct-complete-inputs) gives the faithful normal center-valued trace \(T_Z:M\to Z(M)\). Its projection and central-corner inputs [PC0–7](../components/central-finite-trace-inputs.md#retained-pc-complete-inputs) are retained in the same component; neither proof requires countable decomposition. Fix \(0\ne\psi\in M_*^+\) and use NT4 on the center to obtain \(z=s(\psi|_{Z(M)})\). The functional
 \[
-\tau_z(x)=\frac{\psi(T_Z(x))}{\psi(z)}
+\tau_z(x)=\frac{\psi(T_Z(x))}{\psi(z)},\qquad x\in Mz,
 \tag{6}
 \]
-is a faithful normal tracial state: \(\psi|_{Z(M)z}\) and \(T_Z|_{Mz}\) are faithful. The central sequence \(zx_n\) is centralizing there by the first case. Since \(\psi(1-z)=0\), Cauchy–Schwarz gives \(\psi(y)=\psi(zyz)\), and its commutators on \(M\) are precisely the corresponding commutators on \(Mz\). Thus \(\|[x_n,\psi]\|\to0\). Decomposing an arbitrary normal functional into four positive ones finishes the proof. \(\square\)
+is normal and tracial. It is faithful because both the trace map and \(\psi|_{Z(M)z}\) are faithful. Its value at the corner unit \(z\) is one. The bounded central sequence \(zx_n\) is therefore centralizing in \(Mz\), by the state case.
+NT4 also gives \(\psi(y)=\psi(zyz)\). Since \(z\) is central, evaluating the predual commutator against \(y\) is the same as evaluating the corner commutator against \(zyz\); this compression has norm at most \(\|y\|\). Thus \(\|[x_n,\psi]\|\to0\). NT1's four-positive decomposition extends the assertion to every normal functional. Lemma 1.1 gives the reverse implication on any algebra. \(\square\)
 
-Centralizing sequences form a unital \(C^*\)-subalgebra of \(\ell^\infty(\mathbb N,M)\). Adjoints are covered by (3), products by
+Before using unitary sequences, note that centralizing bounded sequences form a unital C-star algebra in \(\ell^\infty(\mathbb N,M)\). Equation (3) handles adjoints, (7) handles products, and the \(2C\)-commutator estimate handles norm limits. CF's continuous calculus therefore stays inside this algebra. For a centralizing self-adjoint contraction \(h_n\),
 \[
-[xy,\omega]=x[y,\omega]+[x,\omega]y,
-\tag{7}
-\]
-and closure by the uniform commutator bound. Continuous functional calculus on a fixed spectral interval follows by polynomial approximation. Every self-adjoint contraction \(h_n\) in this algebra is the real part of the centralizing unitary
-\[
-w_n=h_n+i(1-h_n^2)^{1/2}.
+w_n=h_n+i(1-h_n^2)^{1/2}
 \tag{8}
 \]
-Real and imaginary parts therefore reduce arbitrary bounded centralizing sequences to linear combinations of four unitary sequences.
+is a centralizing unitary with real part \(h_n\). Taking real and imaginary parts of any bounded sequence, scaling by a common bound and using (8), expresses it as a linear combination of four centralizing unitary sequences, with fixed bounded coefficients.
 
-## 2. Complete metrics for the relevant groups
+<a id="2-complete-metrics-for-the-relevant-groups"></a>
 
-Here and throughout Sections 2–4, \(M\) has separable predual. Its unit is nonzero. Choose a faithful normal state \(\varphi\): a norm-dense countable family of positive normal functionals separates positive elements, and a summable positive combination, normalized at \(1\), is faithful.
+## Automorphisms and their implementing cosets
 
-Let \(\operatorname{Isom}(X)\) denote the surjective linear isometries of a separable Banach space \(X\). If \((\xi_j)\) is dense in its unit ball, the metric
+Assume \(M_*\) is separable and \(M\ne0\). NT2 constructs a faithful normal state \(\varphi\) and proves that its two bounded seminorms give intrinsic strong*. For an arbitrary separable Banach space \(X\), choose \((\xi_j)\) dense in its unit ball. On its surjective linear isometries use
 \[
-d(S,T)=\sum_{j\ge1}2^{-j}
-\bigl(\|S\xi_j-T\xi_j\|+\|S^{-1}\xi_j-T^{-1}\xi_j\|\bigr)
+d(S,T)=\sum_{j\geq1}2^{-j}
+\bigl(\|S\xi_j-T\xi_j\|+\|S^{-1}\xi_j-T^{-1}\xi_j\|\bigr).
 \tag{9}
 \]
-is complete and induces pointwise norm convergence. For completeness, a Cauchy sequence and its inverses have pointwise isometric limits \(S,R\). The identity
-\[
-\|S_nR\xi-\xi\|=\|R\xi-S_n^{-1}\xi\|\to0
-\]
-gives \(SR=1\), and similarly \(RS=1\). The coordinate embedding in \((X\times X)^\mathbb N\) makes the topology separable. Multiplication is continuous by the isometry estimate, and
-\[
-\|T_n^{-1}\xi-T^{-1}\xi\|
-=\|T\xi'-T_n\xi'\|,\qquad \xi'=T^{-1}\xi,
-\]
-proves continuity of inversion.
+The sum is finite, and its coordinates separate the maps. Coordinate convergence is equivalent to pointwise norm convergence of maps and inverses, by their common isometric bound; tails of the sum are uniformly bounded.
 
-Give \(\operatorname{Aut}(M)\) the **\(u\)-topology**:
+A Cauchy sequence has pointwise isometric limits \(S,R\) for the maps and inverses. The equality
+\(\|S_nR\xi-\xi\|=\|R\xi-S_n^{-1}\xi\|\)
+and passage to the limit give \(SR=1\); exchanging the roles gives \(RS=1\). Thus (9) is complete. Its coordinate embedding lies in a countable product of separable metric spaces, which TS1 makes second countable; its subspace is separable. The estimate for compositions of two isometries proves joint continuity of multiplication. If \(S_n\to S\) pointwise and \(S\) is onto,
+\(\|S_n^{-1}\xi-S^{-1}\xi\|=\|\xi-S_nS^{-1}\xi\|\to0\),
+which also proves continuity of inversion. The isometry group is Polish.
+
+Give \(\operatorname{Aut}(M)\) its \(u\)-topology,
 \[
-\alpha_n\to\alpha
-\quad\Longleftrightarrow\quad
+\alpha_n\to\alpha\ \Longleftrightarrow\
 \|\omega\circ\alpha_n-\omega\circ\alpha\|\to0
 \quad(\omega\in M_*).
 \tag{10}
 \]
-The map \(T_\alpha\omega=\omega\circ\alpha^{-1}\) is an injective homomorphism into \(\operatorname{Isom}(M_*)\).
+For \(T_\alpha\omega=\omega\circ\alpha^{-1}\), composition shows \(T_{\alpha\beta}=T_\alpha T_\beta\). The map is injective and takes values in the isometry group of \(M_*\).
 
 **Lemma 2.1.** This image is closed. Consequently \(\operatorname{Aut}(M)\) is a Polish group, with a complete metric obtained from (9).
 
-**Proof.** Suppose \(T_{\alpha_n}\to T\) in \(\operatorname{Isom}(M_*)\). The adjoints \(\beta=(T^{-1})^*\) and \(\gamma=T^*\) are inverse normal linear maps on \(M\), and \(\alpha_n(x)\to\beta(x)\), \(\alpha_n^{-1}(x)\to\gamma(x)\) ultraweakly. Matrix-level positivity passes to these limits, so both maps are unital completely positive. Schwarz gives
+**Proof.** Suppose \(T_{\alpha_n}\) converges to a surjective isometry \(T\). Its inverse also converges pointwise. Put
+\(\beta=(T^{-1})^*\), \(\gamma=T^*\). Concrete predual duality makes these inverse normal linear maps on \(M\). Their pointwise ultraweak limits are respectively \(\alpha_n,\alpha_n^{-1}\). Vector tests on every finite matrix level show that these limits remain unital completely positive.
+NT1 proves Schwarz from a positive \(2\times2\) block. Applying it successively gives
 \[
-\beta(x^*x)\ge\beta(x)^*\beta(x).
+x^*x=\gamma\beta(x^*x)
+\geq\gamma(\beta(x)^*\beta(x))
+\geq x^*x.
 \]
-Apply \(\gamma\) and then its own Schwarz inequality:
-\[
-x^*x\ge\gamma(\beta(x)^*\beta(x))\ge x^*x.
-\]
-Both inequalities are equalities. Injectivity of \(\gamma\) gives equality in Schwarz for \(\beta\). Polarization yields \(\beta(x^*y)=\beta(x)^*\beta(y)\), and positivity preserves adjoints, so \(\beta\) is multiplicative. It is a normal automorphism with inverse \(\gamma\), and \(T=T_\beta\). The topology agrees with (10) by continuity of inversion in the isometry group. \(\square\)
+The two positive differences vanish. Injectivity of \(\gamma\) forces
+\(\beta(x^*x)=\beta(x)^*\beta(x)\).
+Polarize this equality using \(x+y\) and \(x+iy\) to get
+\(\beta(x^*y)=\beta(x)^*\beta(y)\).
+Positivity preserves adjoints, so \(\beta\) is a star homomorphism; \(\gamma\) is its normal inverse. Thus \(T=T_\beta\), proving closedness. A closed subspace of the complete metric space is complete. The preceding inverse-coordinate identity shows that the induced topology is exactly (10). \(\square\)
 
-On \(\mathcal U(M)\) put
+For the unitaries put
 \[
 D(u,v)=\|u-v\|_\varphi+\|u^*-v^*\|_\varphi.
 \tag{11}
 \]
-In the faithful state GNS representation, \(\Omega\) is separating, so \(M'\Omega\) is dense. A bounded family tending to zero on \(\Omega\) therefore tends strongly to zero on every vector, by commuting with \(M'\). Applied to the family and its adjoint, this shows that (11) gives strong* convergence on the unitary group. Strong convergence to a unitary also implies convergence of adjoints, since
+Faithfulness makes this a metric, and NT2 identifies its topology with bounded intrinsic strong*. In the faithful GNS representation, a bounded family converging on \(\Omega\) converges strongly on the dense orbit \(M'\Omega\), by commutation, and hence on the whole Hilbert space. This justifies both seminorm tests. For a unitary limit, strong convergence alone also controls adjoints:
 \[
 (u_n^*-u^*)\xi=u_n^*(u-u_n)u^*\xi.
 \tag{12}
 \]
-
-The GNS Hilbert space is separable. One way to see this is to take a countable ultraweakly dense subset of the unit ball of \(M\), which is compact metrizable because the predual is separable. Its vectors \(x\Omega\) are weakly dense in the corresponding convex image; rational convex combinations are norm dense by Hahn–Banach. These vectors span a dense subspace of the cyclic GNS space. The strong* topology on bounded operators on that space embeds into a countable product of separable Hilbert spaces. Thus the unitary group is separable.
+NT2 proves separability of this GNS Hilbert space. Evaluations of operators and adjoints on a countable dense set embed the bounded strong* topology into a countable product of separable Hilbert spaces. The unitary group is consequently separable.
 
 **Lemma 2.2.** Metric (11) is complete, and
 \[
@@ -148,38 +284,57 @@ is a Polish group with the complete quotient metric
 \tag{14}
 \]
 
-**Proof.** A \(D\)-Cauchy sequence gives Cauchy vectors \(u_n\Omega,u_n^*\Omega\). Commutation with \(M'\) and uniform boundedness give strong limits \(u,w\in M\) on all vectors. The pairing identity gives \(w=u^*\); strong convergence of products gives \(u^*u=uu^*=1\). This proves completeness.
+**Proof.** A \(D\)-Cauchy sequence gives Cauchy values \(u_n\Omega,u_n^*\Omega\). Commuting with \(M'\) extends these to Cauchy vectors on its dense orbit; the norm-one bound extends the limits to all vectors. Strong closedness puts the bounded limits \(u,w\) in \(M\). Passing to the Hilbert pairing shows \(w=u^*\). Strong continuity of multiplication on bounded sets then gives \(u^*u=uu^*=1\), so the limit is unitary and the metric complete.
 
-Central unitary multiplication preserves \(D\): it cancels in \(x^*x\), and centrality cancels it in \(xx^*\). Thus (14) is independent of representatives, symmetric and satisfies the triangle inequality by aligning representatives with two successive central unitaries. If its value is zero, \(vz_n\to u\) strong*, hence \(z_n\to v^*u\) strong*, and the closed central unitary group contains this limit. Therefore the two cosets agree.
+Right multiplication by a central unitary preserves both terms of \(D\): for a difference \(x\), it leaves \(x^*x\) and \(xx^*\) unchanged. Consequently (14) does not depend on representatives. Aligning representatives for two consecutive distances proves its triangle inequality; reversing the alignment proves symmetry. If \(\rho=0\), choose \(z_n\) with \(vz_n\to u\) strong*. Then \(z_n\to v^*u\), and the strong* closed central unitary group contains this limit. Thus the cosets are equal.
+The image of a \(D\)-ball is exactly the corresponding \(\rho\)-ball; the quotient map is open because its full preimage is the union of central translates of that ball. Hence this is the quotient topology. From a \(\rho\)-Cauchy sequence choose a subsequence whose consecutive distances are less than \(2^{-j-2}\). Successive central adjustments give representatives with \(D\)-increments less than \(2^{-j-1}\). Completeness gives a representative limit, then a coset limit. The entire Cauchy sequence converges by the triangle inequality. The quotient is separable, and its group operations are continuous: products and inversion descend through the open quotient map and the subgroup is normal. \(\square\)
 
-An open \(\rho\)-ball is the image of an open \(D\)-ball, so (14) induces the quotient topology. From a \(\rho\)-Cauchy sequence choose a subsequence with successive distances less than \(2^{-n}\); choose its representatives successively so that their \(D\)-distances are also summable. Their \(D\)-limit gives the quotient limit. The full Cauchy sequence then converges. Separability passes to the quotient, and group operations are continuous because the subgroup is closed and normal. \(\square\)
+The same argument applies to a complete metric invariant under right multiplication by any closed subgroup, with left cosets as its orbits. Completeness of an arbitrary compatible metric does not itself specify a left, right or two-sided group uniformity.
 
-The same representative argument proves the general coset lemma: if a complete compatible metric on a group is invariant under right multiplication by a closed subgroup, its infimum metric makes the left coset space complete and induces the quotient topology. Triangle inequalities come from the right-invariance and aligned representatives; arbitrary distances between closed sets need not satisfy that inequality.
+**Exercise 3.** Construct unitaries converging strongly to a nonunitary on \(\ell^2(\mathbb N_0)\). Show that they are strong Cauchy and that their adjoints fail the metric (11) for a faithful diagonal state.
 
-For \(u\in\mathcal U(M)\),
+*Solution.* Let \(u_n\) cycle \(e_0,\ldots,e_n\) forward, taking \(e_n\) to \(e_0\), and fix \(e_j\) for \(j>n\). On each fixed finite-support vector, eventually this agrees with the unilateral shift \(S e_j=e_{j+1}\). The norm-one bound extends the convergence to every vector, so \(u_n\to S\) strongly and is strong Cauchy. The range of \(S\) omits \(e_0\), so the limit is not unitary. However \(u_n^*e_0=e_n\). For \(n\ne m\) these vectors have squared distance two. For the faithful normal state
+\(\varphi(x)=\sum_{j\geq0}2^{-j-1}\langle e_j,xe_j\rangle\),
+the adjoint term satisfies
+\(\|u_n^*-u_m^*\|_\varphi^2\geq2^{-1}\|e_n-e_m\|^2=1\).
+Thus the sequence fails to be \(D\)-Cauchy. Both convergence tests are necessary for completeness.
+
+**Exercise 4.** Explain the role of centrality in the quotient metric. State what completeness of a compatible metric permits one to infer about the two-sided group uniformity.
+
+*Solution.* If \(z\) is central unitary and \(x=u-v\), then
+\((xz)^*(xz)=x^*x\) and \((xz)(xz)^*=xx^*\).
+For a noncentral right multiplier, the first expression becomes \(z^*x^*xz\); a general faithful state changes under this conjugation. For a left multiplier the other square instead changes. Thus central multipliers give the simultaneous invariance used to align representatives. Metric completeness alone proves convergence of metric-Cauchy sequences; it does not assert completeness for either invariant group uniformity or for their two-sided combination. The proof below uses actual summable increments in both state seminorms.
+
+For implementers, the module convention gives
 \[
 \|\omega\circ\operatorname{Ad}u-\omega\|=\|[u,\omega]\|.
 \tag{15}
 \]
-To verify this, multiply the functional \(u^*\omega u-\omega\) by \(u\) on the left; this is an isometry of the predual and gives \(\omega u-u\omega\). Estimates (5) and its adjoint version show that \(u\mapsto\operatorname{Ad}u\) is continuous for the strong* and \(u\)-topologies. Its kernel is \(\mathcal U(Z)\).
+Indeed \(\omega\circ\operatorname{Ad}u=u^*\omega u\); left multiplication by \(u\) is a predual isometry and turns its difference from \(\omega\) into \(\omega u-u\omega\).
+The map \(u\mapsto\operatorname{Ad}u\) is continuous. At one, Schwarz bounds \([u,\varphi]\) by
+\(\varphi(1)^{1/2}(\|u-1\|_\varphi+\|u^*-1\|_\varphi)\).
+Equation (4) treats \(a\varphi\), and their norm density and uniform module bound treat every normal functional. Translation proves continuity everywhere. Its kernel consists exactly of the central unitaries.
 
-## 3. The needed open mapping theorem
+<a id="3-the-needed-open-mapping-theorem"></a>
+
+## Why the quotient map has a continuous inverse when its image is closed
 
 **Lemma 3.1.** If \(A\) is nonmeager and has the Baire property in a Polish group \(K\), then \(AA^{-1}\) contains a neighborhood of \(1\).
 
-**Proof.** There is a nonempty open \(O\) such that \(O\setminus A\) is meager. Choose \(a_0\in O\). For \(k\in Oa_0^{-1}\), the set \(O\cap kO\) is nonempty and open, hence is not meager. Outside a meager subset it belongs to both \(A\) and \(kA\). Choose \(a=kb\) in this intersection, with \(a,b\in A\); then \(k=ab^{-1}\). \(\square\)
+**Proof.** The Baire property gives a nonempty open \(O\) on which \(A\) is comeager. Choose \(a_0\in O\). For \(k\in Oa_0^{-1}\), the point \(ka_0\) lies in \(O\cap kO\), so this intersection is nonempty and open. TS5 proves that a nonempty open subset of a Polish space is not meager. The exceptions to membership in \(A\) and in \(kA\) form a meager set there. Some point therefore has the form \(a=kb\), with \(a,b\in A\). Then \(k=ab^{-1}\), and the open neighborhood \(Oa_0^{-1}\) of one lies in \(AA^{-1}\). \(\square\)
 
 **Theorem 3.2.** A continuous bijective homomorphism between Polish groups is a homeomorphism.
 
-**Proof.** Let \(f:G\to K\) be such a map. For a neighborhood \(V\) of \(1\), choose open \(W\) with \(WW^{-1}\subset V\). Countably many left translates of \(W\) cover \(G\), by separability. Their images cover \(K\), so the Baire theorem says \(f(W)\) is nonmeager. The Lusin–Souslin prerequisite says \(f(W)\) is Borel; Borel sets have the Baire property because the sets agreeing with open sets modulo meager sets form a sigma-algebra containing the open sets. Lemma 3.1 gives
-\[
-f(V)\supset f(W)f(W)^{-1}
-\]
-containing a neighborhood of \(1\). Translation proves that \(f\) is open everywhere. A bijective open continuous map has continuous inverse. \(\square\)
+**Proof.** For a neighborhood \(V\) of one in \(G\), continuity of group operations provides an open neighborhood \(W\) with \(WW^{-1}\subset V\). Separability gives a countable translate cover of \(G\) by \(W\): a dense set meets every translate of \(W^{-1}\). Its images cover \(K\). TS5's Baire theorem excludes all those translates being meager, so \(f(W)\) is nonmeager.
+TS4 proves the Borel-image theorem for an injective Borel map on any Polish domain; apply it to this continuous bijection and the open Borel set \(W\). Thus \(f(W)\) is Borel, and TS5 proves that it has the Baire property. Lemma 3.1 gives a neighborhood of one inside
+\(f(W)f(W)^{-1}\subset f(V)\).
+Translating proves that \(f\) is open. Bijectivity then turns openness into continuity of the inverse. These inputs are proved for all Polish groups; no invariant complete metric or local compactness is assumed. \(\square\)
 
-## 4. Fullness, with the center retained
+<a id="4-fullness-with-the-center-retained"></a>
 
-Call \(M\) **full** when \(\operatorname{Int}(M)\), the inner automorphisms, is closed in \(\operatorname{Aut}(M)\) for (10).
+## Lifting convergent inner automorphisms
+
+An algebra is **full** if its inner automorphism group \(\operatorname{Int}(M)\) is closed in \(\operatorname{Aut}(M)\) for (10).
 
 **Theorem 4.1.** For every von Neumann algebra with separable predual, the following are equivalent:
 
@@ -187,206 +342,137 @@ Call \(M\) **full** when \(\operatorname{Int}(M)\), the inner automorphisms, is 
 2. Every bounded centralizing sequence is trivial.
 3. Whenever \(\operatorname{Ad}u_n\to\mathrm{id}\), there are central unitaries \(z_n\) with \(D(u_n,z_n)\to0\).
 
-**Proof.** The zero algebra satisfies all three assertions trivially; suppose \(M\ne0\), as in Sections 2–3. If the inner subgroup is closed, it is Polish by Lemma 2.1. The induced map from (13) onto it is a continuous bijective homomorphism, hence a homeomorphism by Theorem 3.2. Convergence to the identity in the quotient is precisely that the infimum in (14) tends to zero. Choosing approximate minimizers proves 3.
+**Proof.** For the zero algebra each group is a singleton and each sequence is zero, so all three assertions hold. Suppose \(M\ne0\).
+If the inner subgroup is closed, Lemma 2.1 makes it Polish. Lemma 2.2 gives a Polish domain for the induced continuous bijection
+\(\mathcal U(M)/\mathcal U(Z(M))\to\operatorname{Int}(M)\).
+Theorem 3.2 makes this bijection a homeomorphism. An implementing sequence for automorphisms tending to the identity has coset distance tending to zero. Choose central unitaries within an error \(1/n\) of those infima to obtain assertion 3.
 
-By (15), the unitary sequences in 3 are exactly the centralizing unitary sequences. Formula (8), applied to the real and imaginary parts of a general bounded centralizing sequence, expresses it using four such sequences with fixed bounded coefficients. Replacing each by its central unitary approximant gives a bounded central approximant. This proves 3 implies 2.
+Equation (15) identifies the sequences in assertion 3 as the centralizing unitary sequences. The four-unitary decomposition (8) then replaces each term of any bounded centralizing sequence by the same fixed linear combination of bounded central unitary approximants. The errors tend to zero in both seminorms, proving assertion 2.
 
-Suppose 2 holds and \(u_n\) is a centralizing unitary sequence. Choose bounded \(a_n\in Z(M)\) with \(u_n-a_n\to0\) strong*. Let \(z_n\) be the phase of \(a_n\), with phase \(1\) on its zero spectral projection. The abelian von Neumann algebra generated by the normal operator \(u_n\) and \(a_n\) permits the scalar inequality
+Conversely, assertion 2 gives bounded \(a_n\in Z(M)\) with \(u_n-a_n\to0\) intrinsic strong* whenever \(u_n\) is centralizing and unitary. NT3 constructs the central phase \(z_n\), taking phase one on the zero support, and proves both squared operator inequalities from the scalar bound
 \[
-|\operatorname{phase}(a)-w|\le2|a-w|
-\qquad(|w|=1)
+|\operatorname{phase}(a)-w|\leq2|a-w|\qquad(|w|=1).
 \tag{16}
 \]
-to be applied by joint functional calculus. Both squares of \(u_n-z_n\) are at most four times the corresponding squares of \(u_n-a_n\). Thus \(D(u_n,z_n)\to0\). This proves 2 implies 3.
+It does so by bounded polar operators and continuous approximants, including the zero-support case. Applying \(\varphi\) gives \(D(u_n,z_n)\to0\), which is assertion 3.
 
-It remains to show 3 implies closedness. Since both group topologies are metrizable, 3 says that the inverse of the induced bijection (13) onto \(\operatorname{Int}(M)\) is continuous at the identity, hence everywhere. In particular, for any faithful normal positive functional \(\psi\) and any \(\varepsilon>0\), there is a \(u\)-neighborhood \(\mathcal W\) of the identity such that
+To finish, assume assertion 3 and let \(\theta\) be in the closure of the inner subgroup. Metrizability turns assertion 3 into continuity at one of the inverse implementing-coset map. In particular, for a faithful positive normal functional \(\psi\) and \(\varepsilon>0\), there is an identity neighborhood \(\mathcal W\) in the \(u\)-topology such that
 \[
 \operatorname{Ad}v\in\mathcal W
 \ \Longrightarrow\
-\inf_{z\in\mathcal U(Z)}
-\bigl(\|v-z\|_\psi+\|v^*-z^*\|_\psi\bigr)<\varepsilon.
+\inf_{z\in\mathcal U(Z(M))}
+(\|v-z\|_\psi+\|v^*-z^*\|_\psi)<\varepsilon.
 \tag{17}
 \]
-Otherwise a decreasing countable neighborhood base would give a sequence contradicting 3. A faithful \(\psi\) gives the same bounded strong* topology as \(\varphi\).
+If no such neighborhood existed, a decreasing countable base would give a sequence contradicting assertion 3, because NT2 identifies the bounded topology for both faithful functionals.
 
-Let \(\theta\) lie in the closure of \(\operatorname{Int}(M)\), and put \(\psi=\varphi+\varphi\circ\theta\). Choose implementing unitaries \(v_n\), after passing to a subsequence, so that \(\operatorname{Ad}v_n\to\theta\), their successive differences belong to the neighborhoods from (17) with \(\varepsilon=2^{-n}\), and
+Set \(\psi=\varphi+\varphi\circ\theta\). Choose a sequence \(\operatorname{Ad}v_n\to\theta\) whose consecutive relative automorphisms lie in the neighborhoods for \(\varepsilon=2^{-n}\), and also satisfy
 \[
 \|\varphi\circ\operatorname{Ad}v_{n+1}-\varphi\circ\theta\|<4^{-n}.
 \tag{18}
 \]
-This simultaneous choice is possible because the automorphisms converge and group operations are continuous. More explicitly, for each chosen neighborhood both indices of \((\operatorname{Ad}v_m)^{-1}\operatorname{Ad}v_l\) can be made sufficiently large.
+For precision, start with any convergent implementing sequence. For each predetermined neighborhood, the convergence and continuous group operations supply a common threshold for both indices of a relative automorphism. Choose the \(n\)-th subsequence index above the thresholds for neighborhoods \(n-1,n\), and above the functional threshold for \(4^{-(n-1)}\). This makes all successive choices simultaneous.
 
-Choose \(c_n\in\mathcal U(Z)\) with
+Choose central \(c_n\) with
 \[
 y_n=c_n-v_{n+1}^*v_n,\qquad
 \|y_n\|_\psi+\|y_n^*\|_\psi<2^{-n}.
 \]
-Set \(\gamma_1=1\), \(\gamma_{n+1}=c_n\gamma_n\) and \(u_n=v_n\gamma_n\). Then
-\[
-u_{n+1}-u_n=v_{n+1}y_n\gamma_n.
-\]
-Centrality of \(\gamma_n\) gives
+Define \(\gamma_1=1\), \(\gamma_{n+1}=c_n\gamma_n\), and \(u_n=v_n\gamma_n\). Its difference is \(v_{n+1}y_n\gamma_n\). The central unitary \(\gamma_n\) cancels from both squared seminorms. Thus
 \[
 \|u_{n+1}-u_n\|_\varphi^2
 =\varphi(y_n^*y_n)<4^{-n}.
 \tag{19}
 \]
-For the adjoint seminorm, (18) and \(\|y_n\|\le2\) give
+For the other square use (18), \(\|y_n\|\leq2\), and the \(\varphi\circ\theta\) part of \(\psi\):
 \[
 \|(u_{n+1}-u_n)^*\|_\varphi^2
 =(\varphi\circ\operatorname{Ad}v_{n+1})(y_ny_n^*)
 <5\cdot4^{-n}.
 \tag{20}
 \]
-The \(D\)-increments are summable, so Lemma 2.2 gives a unitary limit \(u\). Continuity of \(\operatorname{Ad}\) gives \(\operatorname{Ad}u=\theta\), because \(\operatorname{Ad}u_n=\operatorname{Ad}v_n\). Thus the inner subgroup is closed. \(\square\)
+Both increment norms are summable. Lemma 2.2 gives a unitary limit \(u\). Continuity of implementation gives
+\(\operatorname{Ad}u=\theta\), since the central adjustments leave every implemented automorphism unchanged. This proves closedness and assertion 1. \(\square\)
 
-For a factor, “trivial” means asymptotically scalar. For a finite factor Corollary 1.2 allows “central” in Theorem 4.1 as well. An abelian algebra is full: its inner automorphism group is \(\{\mathrm{id}\}\), and every sequence already lies in its center. The center is therefore essential in the general formulation.
+**Exercise 5.** Establish (16) also at zero. Then construct a bounded central unitary approximation from a bounded central approximation to any unitary sequence, proving both intrinsic strong* estimates.
 
-## 5. An explicit free group gap
-
-Let \(\Gamma=\mathbb F_n\), \(2\le n\le\infty\), with distinguished generators \(a,b\). Let \(\lambda\) be its left regular representation on \(\ell^2(\Gamma)\), and set \(L(\Gamma)=\lambda(\Gamma)''\).
-
-The vector state \(\tau(x)=\langle\delta_e,x\delta_e\rangle\) is a faithful normal trace. For completeness, \(\delta_e\) is separating because the commuting right regular representation has a cyclic orbit through it. To check the trace on arbitrary \(x,y\), first note that
-\(\tau(x\lambda_g)=\tau(\lambda_gx)\): the vector \(\lambda_g\delta_e=\delta_g\) is also a right-translate of \(\delta_e\), so commutation with the right representation gives the same coefficient. Extend linearly to group polynomials and then ultraweakly in the second variable; each expression is a normal functional. This proves traciality without interchanging infinite Fourier series.
-
-The coefficients
+*Solution.* For \(a=r\zeta\ne0\), with \(r>0\) and \(|\zeta|=1\),
+\(|1-r|\leq|a-w|\) by the reverse triangle inequality, and
+\(|\zeta-w|\leq|\zeta-a|+|a-w|\leq2|a-w|\).
+At \(a=0\) choose phase one; \(|1-w|\leq2=2|0-w|\).
+For a central operator \(a\), NT3 constructs its polar operator inside the center and extends it by one on the kernel to a central unitary \(z\). Its continuous regularizations commute with the unitary \(u\), and their characterwise scalar inequalities pass to bounded strong* limits. This proves
 \[
-\widehat x(g)=\langle\delta_g,x\delta_e\rangle
+(z-u)^*(z-u)\leq4(a-u)^*(a-u),\qquad
+(z-u)(z-u)^*\leq4(a-u)(a-u)^*.
 \]
-belong to \(\ell^2(\Gamma)\), and
-\[
-\|x-\tau(x)1\|_2^2=\sum_{g\ne e}|\widehat x(g)|^2.
-\tag{21}
-\]
-Every nonidentity conjugacy class is infinite. Indeed, if a reduced word \(g\) is not a power of \(a\), write \(g=a^rwa^s\) with \(w\) beginning and ending in letters other than \(a^{\pm1}\). The distinct words \(a^kg a^{-k}=a^{k+r}wa^{s-k}\) are distinguished by their initial and terminal \(a\)-runs, including runs of length zero. If \(g\) is a nontrivial power of \(a\), conjugate instead by powers of \(b\). A central operator has coefficients constant on conjugacy classes, so square summability makes all its nonidentity coefficients zero. Since \(\delta_e\) is separating, the operator is scalar. Thus \(L(\Gamma)\) is a factor. It is infinite-dimensional, has a finite faithful trace, and therefore is of type \(\mathrm{II}_1\).
-
-**Theorem 5.1.** For every \(x\in L(\Gamma)\),
-\[
-\|x-\tau(x)1\|_2
-\le14\max\{\|[x,\lambda_a]\|_2,\|[x,\lambda_b]\|_2\}.
-\tag{22}
-\]
-
-**Proof.** Let \(S\) be the nonidentity reduced words whose last letter is \(a\) or \(a^{-1}\). Then
-\[
-S\cup aSa^{-1}=\Gamma\setminus\{e\},
-\tag{23}
-\]
-since a word not ending in an \(a\)-letter, conjugated by \(a^{-1}\), ends in \(a\). Also
-\[
-S,\quad bSb^{-1},\quad b^{-1}Sb
-\tag{24}
-\]
-are pairwise disjoint. Words in the latter two sets end in \(b^{-1}\) and \(b\), respectively: the terminal \(a\)-letter prevents cancellation with the appended \(b\)-letter. Left cancellation cannot remove this terminal part. More generally the sets \(b^jSb^{-j}\), \(j\in\mathbb Z\), are pairwise disjoint because their terminal \(b\)-run is \(-j\), with \(j=0\) corresponding to \(S\).
-
-Put \(\xi=(\widehat x(g))_{g\ne e}\), \(k=\|\xi\|_2^2\), and let \(\delta\) be the maximum on the right of (22) before multiplication by \(14\). Conjugation of coefficients by \(a\) or \(b\) moves \(\xi\) by distance at most \(\delta\); the same holds for their inverses. For \(\mu(A)=\sum_{g\in A}|\widehat x(g)|^2\), restriction and the reverse triangle inequality give
-\[
-|\sqrt{\mu(hAh^{-1})}-\sqrt{\mu(A)}|\le\delta
-\quad(h=a,b,b^{-1}).
-\]
-Both square roots are at most \(\sqrt k\), so
-\[
-|\mu(hAh^{-1})-\mu(A)|\le2\sqrt k\,\delta.
-\tag{25}
-\]
-The cover (23) gives
-\[
-k\le2\mu(S)+2\sqrt k\,\delta,
-\qquad \mu(S)\ge k/2-\sqrt k\,\delta.
-\tag{26}
-\]
-Each of the two other sets in (24) has measure at least \(k/2-3\sqrt k\,\delta\), by (25). Disjointness therefore gives
-\[
-k\ge\mu(S)+\mu(bSb^{-1})+\mu(b^{-1}Sb)
-\ge3k/2-7\sqrt k\,\delta.
-\tag{27}
-\]
-If \(k>0\), division by \(\sqrt k/2\) yields \(\sqrt k\le14\delta\). If \(k=0\), the assertion is immediate. \(\square\)
+For every positive normal \(\psi\), the two seminorms of \(z-u\) are at most twice the corresponding ones of \(a-u\). Apply this construction at every index. The phases have norm one, and both errors tend to zero, including indices at which the central approximant is zero.
 
 **Corollary 5.2.** Every \(L(\mathbb F_n)\), \(2\le n\le\infty\), is full and is not isomorphic to \(R\).
 
-**Proof.** A bounded central sequence has both commutators in (22) tending to zero in \(2\)-norm. Thus \(x_m-\tau(x_m)1\to0\) in \(2\)-norm, hence strong* on bounded sets by the finite-trace topology argument in the preceding lesson. The scalar approximants are bounded. Corollary 1.2 and Theorem 4.1 prove fullness; the group is countable, so the predual is separable.
+**Proof.** A bounded centralizing sequence in \(L(\mathbb F_n)\) is central by Lemma 1.1. Use its faithful trace as a seminorm test: the two fixed commutators in (22) tend to zero in \(2\)-norm. Hence
+\(\|x_m-\tau(x_m)1\|_2\to0\).
+The scalar approximants are bounded by \(\sup_m\|x_m\|\). NT2 gives bounded intrinsic strong* convergence, and FG1 gives separable predual. Theorem 4.1 therefore proves fullness.
+In \(R\), FG2's tensor-tail sequence is central, and its commutator with the faithful trace is zero. Lemma 1.1 makes it centralizing. Equation (28) and the scalar center make it nontrivial, so Theorem 4.1 proves that \(R\) is not full. A normal isomorphism preserves centralizing sequences, both intrinsic seminorms and the center, as verified in Exercise 10. It thus preserves fullness, and cannot identify these factors. \(\square\)
 
-In \(R\), let \(z_m\) be the trace-zero diagonal unitary \(Z\) in tensor leg \(m\). The tail argument in the [outer-action lesson](finite-outer-actions.md#3-an-explicit-outer-finite-action) makes it central, but
+This conclusion applies to every rank in the stated range. It does not compare the isomorphism classes of free-group factors of different ranks.
+
+**Exercise 6.** Prove fullness for every abelian von Neumann algebra with separable predual. Give a concrete example showing that the sequence criterion in that case requires its full center.
+
+*Solution.* In an abelian algebra every inner conjugation is the identity. The inner subgroup is the closed singleton in the Hausdorff automorphism group, so the algebra is full. A bounded sequence is trivial by choosing its central approximant equal to itself. In \(\mathbb C^2\), the constant sequence \((1,0)\) is nonscalar and stays a positive distance from the scalar diagonal, although it lies in the center. Thus replacing central approximants by scalar ones would change the criterion.
+
+**Exercise 10.** Prove invariance under a normal isomorphism. Include the predual norms, boundedness, the center, and each of the two strong* seminorms.
+
+*Solution.* Let \(\theta:M\to N\) be a normal star isomorphism. Its normal inverse makes pullback \(\omega\mapsto\omega\circ\theta\) an onto isometry of preduals, and \(\theta\) preserves operator norms. Evaluating against \(\theta(y)\) gives
 \[
-\inf_{c\in\mathbb C}\|z_m-c1\|_2^2
-=\inf_c(1+|c|^2)=1.
-\tag{28}
+[\theta(x),\omega]\circ\theta=[x,\omega\circ\theta].
 \]
-It is nontrivial, so \(R\) is not full. Normal isomorphisms preserve predual commutators, bounded strong* convergence, centers and fullness. The two factors cannot be isomorphic. \(\square\)
+Thus predual-commutator convergence is equivalent in both algebras. For every positive normal \(\psi\) on \(N\),
+\[
+\|\theta(x)\|_\psi=\|x\|_{\psi\circ\theta},\qquad
+\|\theta(x)^*\|_\psi=\|x^*\|_{\psi\circ\theta}.
+\]
+The onto positive pullback gives both directions of bounded strong* convergence. An element commutes with all of \(M\) exactly when its image commutes with all of \(N\), so \(\theta(Z(M))=Z(N)\). Bounded central approximating sequences transport with identical seminorm errors. Finally the preduals are isomorphic, hence separability transports; Theorem 4.1 gives invariance of fullness.
 
-This distinguishes these group factors from the AFD finite factor. It makes no assertion about isomorphisms between free group factors with different numbers of generators.
+<a id="6-a-group-algebra-that-is-hyperfinite"></a>
 
-## 6. A group algebra that is hyperfinite
+## Finite group stages and the permutation factor
 
-Let \(S_{\mathrm{fin}}\) be the permutations of \(\mathbb N\) that fix all but finitely many points. The finite symmetric group \(S_m\), acting on \(\{1,\ldots,m\}\), embeds by fixing the remaining points, and
+Let \(S_{\mathrm{fin}}\) be the group of permutations of \(\mathbb N\) with finite support. Write \(S_m\) for the permutations of the first \(m\) points, fixing the rest. Then
 \[
 S_{\mathrm{fin}}=\bigcup_m S_m.
 \tag{29}
 \]
+This countable union of finite sets is countable; the group is infinite.
 
 **Proposition 6.1.** The algebra \(L(S_{\mathrm{fin}})\) is an AFD factor of type \(\mathrm{II}_1\), hence is isomorphic to \(R\).
 
-**Proof.** Every nonidentity permutation \(g\) has infinite conjugacy class. Choose a moved point \(i\) and, for each \(j\) outside its finite support, conjugate by the transposition \((i\ j)\). The resulting support is
+**Proof.** If \(g\ne e\), choose a point \(i\) moved by \(g\). For each \(j\) outside its finite support, conjugation by \((i\ j)\) changes that support to
 \[
 (\operatorname{supp}g\setminus\{i\})\cup\{j\}.
 \]
-These supports are distinct as \(j\) varies, so the conjugates are distinct. The trace and coefficient argument at the start of Section 5 applies to any countable discrete group; the infinite-conjugacy-class argument therefore makes \(L(S_{\mathrm{fin}})\) a factor. It is finite with faithful trace and infinite-dimensional, hence has type \(\mathrm{II}_1\).
+The supports are distinct, so the conjugacy class is infinite. FG1 now supplies the faithful normal trace, scalar center, separable predual and type \(\mathrm{II}_1\).
+The spans
+\(D_m=\operatorname{span}\{\lambda_g:g\in S_m\}\)
+are increasing unital finite-dimensional star algebras: finite group multiplication and inversion close them under products and adjoints. Their union contains every group unitary. BD1–5 gives bounded strong density of the norm closure of that union in its bicommutant, so these stages provide the AFD approximation. Equivalently their generated von Neumann algebra is all of \(L(S_{\mathrm{fin}})\). The complete [AF1–5 proof of finite AFD uniqueness](../components/central-afd-uniqueness-inputs.md#af5-full-finite-afd-uniqueness) now identifies it with \(R\), including the initial direct-sum finite algebras and the exact dyadic-containment construction. \(\square\)
 
-The linear spans of \(\{\lambda_g:g\in S_m\}\) are increasing unital finite-dimensional star algebras. Each is already ultraweakly closed, and their union contains every group unitary by (29). They generate \(L(S_{\mathrm{fin}})\), proving AFD. The group is countable, giving separable predual, so finite AFD uniqueness applies. \(\square\)
+The finite stages may be direct sums of matrix algebras. Their centers can disappear when later group elements are added, as the next calculation shows. AF1–5 turns those finite approximations into a compatible dyadic chain; FG2 identifies its tracial completion with \(R\).
 
-These finite approximants are generally direct sums of matrix algebras. Their finite-dimensional centers do not force a center in the limit. Conversely the free group gap shows that finite approximants of this kind cannot exist for \(L(\mathbb F_n)\).
+**Exercise 11.** Describe the algebra generated by \(S_2\), including its two minimal projections. Exhibit a later group unitary that prevents its nonscalar central element from being central in \(L(S_{\mathrm{fin}})\).
 
-## 7. Exercises with complete solutions
+*Solution.* Put \(t=(1\ 2)\). The two group operators \(1,\lambda_t\) are linearly independent on \(\delta_e\), and \(\lambda_t=\lambda_t^*\), \(\lambda_t^2=1\). Thus
+\[
+p_+=(1+\lambda_t)/2,\qquad p_-=(1-\lambda_t)/2
+\]
+are nonzero orthogonal projections summing to one. Their spans give an isomorphism of this two-dimensional algebra with \(\mathbb C\oplus\mathbb C\); it is abelian and is not a factor. Take \(s=(2\ 3)\in S_3\). The permutations \(st,ts\) are different, hence
+\(\lambda_s\lambda_t\delta_e=\delta_{st}\ne\delta_{ts}=\lambda_t\lambda_s\delta_e\).
+So \(\lambda_t\), central in the \(S_2\) stage, is not central after the \(S_3\) stage is included. Centrality in a finite approximant need not survive in the generated algebra.
 
-**Exercise 1.** Verify (7) with the convention (1), and explain why checking only one faithful state is insufficient without centrality.
+<a id="references"></a>
 
-*Solution.* At a test variable \(t\), \(x[y,\omega](t)=\omega(txy)-\omega(ytx)\), and \([x,\omega]y(t)=\omega(ytx)-\omega(xyt)\). Their sum is \(\omega(txy)-\omega(xyt)=[xy,\omega](t)\). In \(M_2\), the normalized trace commutes with every \(x\), while the constant sequence of a nonscalar matrix fails to commute with some fixed matrix. Its commutator with the trace alone vanishes; it is not centralizing.
+## Free comparisons and prerequisite proofs
 
-**Exercise 2.** Prove the norm density of \(M\varphi\) when \(\varphi\) is faithful, and identify the precise obstruction when it is not.
+Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft, Theorem 15.3.2, printed 266–267 (PDF 272–273), proves the finite-factor fullness route. Section 15.4 on those and the following page gives the free-word cover and disjoint conjugates, and the trace-zero tensor-tail example. Those methods are credited here. The coefficient calculation proves the particular constant 14; the state estimates prove the greater general-center criterion.
 
-*Solution.* A functional annihilator \(y\in M\) satisfies \(\varphi(ya)=0\) for every \(a\). Taking \(a=y^*\) gives \(\varphi(yy^*)=0\), so faithfulness gives \(y=0\) and Hahn–Banach gives density. If \(p=s(\varphi)\ne1\), \(y=1-p\) is nonzero and \(\varphi(ya)=0\) for all \(a\), by the support and Cauchy–Schwarz. Thus the annihilator is nonzero and density fails.
+Christian Rosendal's [author version of *Automatic continuity of group homomorphisms*](https://homepages.math.uic.edu/~rosendal/PapersWebsite/AutomaticContinuity06.pdf), November 2008, Section 2.1, Lemma 2.1 and Theorem 2.2, p.4, gives the category argument. Anush Tserunyan's [author-hosted descriptive-set-theory notes](https://www.math.mcgill.ca/atserunyan/Teaching_notes/dst_lectures.pdf), 26 November 2025, Theorem 12.6 p.48 and Theorem 13.3 pp.51–52, provide complete separation and Borel-image comparisons. TS1–6 proves their metric, refinement and category inputs locally on all Polish domains.
 
-**Exercise 3.** Give a strong Cauchy sequence of unitaries with a nonunitary strong limit, and explain why (11) detects the problem.
-
-*Solution.* On \(\ell^2(\mathbb N_0)\), let \(u_n\) cyclically permute \(e_0,\ldots,e_n\) by \(e_j\mapsto e_{j+1}\) for \(j<n\), \(e_n\mapsto e_0\), and fix the rest. On each fixed basis vector, \(u_n\) eventually agrees with the unilateral shift \(S\). Hence \(u_n\to S\) strongly, and \(S\) is not unitary. But \(u_n^*e_0=e_n\) is not Cauchy. The adjoint seminorm in (11), for a faithful diagonal normal state on \(B(\ell^2)\), includes a positive multiple of this vector distance, so the sequence is not \(D\)-Cauchy.
-
-**Exercise 4.** Why does the quotient metric require central unitaries, and what does completeness alone say about the two-sided group uniformity?
-
-*Solution.* For \(z\) central, \((xz)(xz)^*=xx^*\) as well as \((xz)^*(xz)=x^*x\), giving simultaneous invariance of both seminorms. A general unitary preserves the first expression under the appropriate side of translation, but conjugates the second, and a general faithful state need not be invariant under that conjugation. Completeness of a compatible metric by itself identifies no left or right invariant uniformity. The closedness proof in Theorem 4.1 instead constructs representatives with summable \(D\)-increments, as (19)–(20) explicitly show.
-
-**Exercise 5.** Prove (16), including \(a=0\), and deduce a bounded central unitary approximant from any central approximant to a unitary.
-
-*Solution.* For \(a\ne0\), write \(a=r\zeta\), \(r>0\), \(|\zeta|=1\). The reverse triangle inequality gives \(|r-1|\le|a-w|\). Therefore \(|\zeta-w|\le|\zeta-a|+|a-w|\le2|a-w|\). For \(a=0\), choosing phase \(1\) gives \(|1-w|\le2=2|a-w|\). A unitary commutes with every central approximant, so the abelian joint spectral calculus gives the corresponding squared operator inequalities. Applying a positive normal functional to either square proves bounded strong* approximation by central phases.
-
-**Exercise 6.** Show that every abelian von Neumann algebra with separable predual is full, and that the centralizing criterion is not a criterion for asymptotic scalarness in that setting.
-
-*Solution.* Inner conjugation is the identity in an abelian algebra, so the inner automorphism subgroup is the closed singleton. Every bounded sequence belongs to the center and is trivial with \(z_n=x_n\). If the algebra is \(\mathbb C^2\), a constant nonscalar element illustrates that triviality need not imply approach to scalar multiples of the unit.
-
-**Exercise 7.** In the cover (23), do the sets have to be disjoint? Explain the direction of the measure inequality actually used.
-
-*Solution.* They may overlap. For example \(a\) belongs to both \(S\) and \(aSa^{-1}\). Subadditivity gives \(k=\mu(S\cup aSa^{-1})\le\mu(S)+\mu(aSa^{-1})\), which is the direction required for (26). The three sets in (24), used for the lower bound on \(k\), are disjoint and give an actual sum of their measures inside the total.
-
-**Exercise 8.** An element \(x\) satisfies \(\|[x,\lambda_a]\|_2\le10^{-3}\) and \(\|[x,\lambda_b]\|_2\le2\cdot10^{-3}\). Give the scalar approximation certified by (22), and explain why its scalar is optimal.
-
-*Solution.* The estimate gives \(\|x-\tau(x)1\|_2\le0.028\). Orthogonal projection onto the one-dimensional subspace \(\mathbb C1\) of \(L^2\) is \(x\mapsto\tau(x)1\); equivalently \(\|x-c1\|_2^2=\|x-\tau(x)1\|_2^2+|c-\tau(x)|^2\). Hence this scalar minimizes the distance.
-
-**Exercise 9.** Why does the tail-unitary argument in \(R\) prove nontriviality even if the allowed scalar approximants vary with the index?
-
-*Solution.* For every \(m\) and every scalar \(c_m\), trace zero and squared norm \(1\) give \(\|z_m-c_m1\|_2^2=1+|c_m|^2\ge1\). No choice of a scalar sequence makes the distance tend to zero. For bounded approximants the finite-trace equivalence of \(2\)-norm and strong* makes this exactly the required obstruction.
-
-**Exercise 10.** Prove the criterion is invariant under normal isomorphisms, keeping the center and both strong* seminorms.
-
-*Solution.* Let \(\theta:M\to N\) be a normal isomorphism. For \(\omega\in N_*\), evaluating at \(\theta(y)\) shows \([\theta(x),\omega]\circ\theta=[x,\omega\circ\theta]\). Pullback is isometric and onto on preduals, so centralizing is preserved in both directions. For \(\psi\in N_*^+\), \(\|\theta(x)\|_\psi=\|x\|_{\psi\circ\theta}\), with the same identity for adjoints. Thus bounded strong* equivalence is preserved. Finally \(\theta(Z(M))=Z(N)\), so bounded central approximants transport exactly. Theorem 4.1 now transports fullness.
-
-**Exercise 11.** In \(L(S_{\mathrm{fin}})\), why is the finite-dimensional algebra from \(S_2\) not a factor, and why does its nonscalar central element cease to be central in the whole algebra?
-
-*Solution.* If \(t=(1\ 2)\), then \(\lambda_t^2=1\) and the span of \(1,\lambda_t\) is \(\mathbb C^2\), with minimal projections \((1\pm\lambda_t)/2\). It is abelian, hence not a factor. But \(s=(2\ 3)\) does not commute with \(t\), and \(\lambda_s\lambda_t\delta_e=\delta_{st}\ne\delta_{ts}=\lambda_t\lambda_s\delta_e\). Thus \(\lambda_t\) fails to commute with a later group unitary. Centers of successive approximants are not an increasing family of central elements of the generated algebra.
-
-## References
-
-Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft, Theorem 15.3.2, printed pp.266–267 (PDF pp.272–273), proves the fullness criterion in the separable finite-factor setting. The complete group metrics and the proof in Section 4 here retain general von Neumann algebras with separable predual and their centers; that greater scope is established locally. Section 15.4, printed pp.267–268 (PDF pp.273–274), supplies the free-word cover and disjoint conjugates. Section 5 gives every coefficient estimate and proves the particular constant 14 directly, without invoking an unproved equivalence with property Gamma.
-
-Christian Rosendal, [*Automatic continuity of group homomorphisms*](https://homepages.math.uic.edu/~rosendal/PapersWebsite/AutomaticContinuity06.pdf), author version dated November 2008, Section 2.1, Lemma 2.1 and Theorem 2.2, p.4, gives the full category argument. Sections 2–3 here prove the complete metrics, closed automorphism image, central-unitary quotient and Pettis step explicitly. The Lusin–Souslin Borel-image theorem is a separate prerequisite: the Anantharaman–Popa draft's Appendix B.3–B.4, printed p.315 (PDF p.321), states these descriptive-set-theory results by reference and does not prove them. Their exact freely accessible proof chain remains pending.
-
-The Anantharaman–Popa draft's Section 1.3.2, printed p.10 (PDF p.16), gives the increasing finite group algebras for the finitely supported permutation group. Its Exercise 1.7, printed p.25 (PDF p.31), poses the conjugacy calculation. Proposition 6.1 supplies that calculation completely and retains direct sums in the finite approximants; its final identification with R uses the separately recorded finite AFD uniqueness proof. The normal-functional, bounded strong* topology and center-valued-trace foundations remain explicit dependencies. No source expression is imported.
+NT1–4 and FG1–2 provide the functional decomposition, faithful-state topology, bounded phase construction, support localization and the two factor constructions. Their exact earlier CF, CP, GNS, bounded-density and normal-range proofs are linked in the foundations. The complete retained PC0–7/FCT0–7 arguments supply Corollary 1.2's general finite center-valued trace. Their method comparison is Jesse Peterson's [author-hosted *Notes on operator algebras*](https://math.vanderbilt.edu/peters10/teaching/spring2020/OperatorAlgebras.pdf), 27 April 2020, Section 6.4, printed/PDF 102–106. AF1–5 proves the whole finite AFD uniqueness input for Proposition 6.1. Its freely accessible method comparison is Anantharaman–Popa, Lemma 11.2.1 and Theorem 11.2.2, printed 185–188 (PDF 191–194); its local exact-containment argument supplies the nesting step directly.

@@ -13,7 +13,7 @@ Use the established convention
                  \operatorname{Sp}(\Delta_\rho).
  \tag{TS1}
 \]
-A type III₁ factor here means a type III factor with \(S(N)=[0,\infty)\). The complete local corner/type provider proves \(S(pNp)=S(N)\) for every nonzero projection in a separable-predual type III factor, and \(S(M_2(N))=S(N)\), by actual normal isomorphisms and full n.s.f. GNS graph transport. No \(S/\Gamma\) theorem is an input.
+A type III₁ factor here means a type III factor with \(S(N)=[0,\infty)\). The complete local corner/type provider proves \(S(pNp)=S(N)\) for every nonzero projection in a sigma-finite type III factor, and \(S(M_2(N))=S(N)\), by actual normal isomorphisms and full n.s.f. GNS graph transport. No \(S/\Gamma\) theorem is an input.
 
 Exact individual earlier proof locators: [OA-FLOW.AL.2](OA-FLOW-AL.md#oa-flow.al.2), [OA-FLOW.AL.3](OA-FLOW-AL.md#oa-flow.al.3), [OA-FLOW.AL.5](OA-FLOW-AL.md#oa-flow.al.5), [OA-FLOW.AL.6](OA-FLOW-AL.md#oa-flow.al.6), [OA-FLOW.RF.5](OA-FLOW-RF.md#oa-flow.rf.5), [OA-FLOW.CZ.5](OA-FLOW-CZ.md#oa-flow.cz.5), [OA-FLOW.BC.1](OA-FLOW-BC.md#oa-flow.bc.1), [OA-FLOW.SC.4](OA-FLOW-SC.md#sc-04), [OA-FLOW.SF.SF1](OA-FLOW-SF.md#oa-flow.sf.sf1), [OA-FLOW.SF.SF2](OA-FLOW-SF.md#oa-flow.sf.sf2). The CZ input is its centralizer-corner restriction argument; no trace conversion or general S/Gamma identity is a premise.
 
@@ -67,7 +67,7 @@ This identity concerns one faithful finite functional and its own action. It is 
 
 ## TS-2. The defining intersection forces full spectrum in each invariant corner
 
-Let \(M\) be a nonzero type III₁ factor with separable predual, let \(\varphi\) be a faithful finite normal positive functional, and let \(0\ne p\in M\) be fixed by \(\sigma^\varphi\). The normal functional
+Let \(M\) be a nonzero type III₁ factor that is sigma-finite, let \(\varphi\) be a faithful finite normal positive functional, and let \(0\ne p\in M\) be fixed by \(\sigma^\varphi\). The normal functional
 \(\psi=\varphi|_{pMp}\) is finite and faithful. It is normal and semifinite, and is therefore one of the weights in ([TS1](OA-FLOW-TS.md#equation-ts1)) for \(N=pMp\).
 
 The exact local corner/type proof gives
@@ -145,7 +145,7 @@ The full modular vector support and domain conclusion of [AL-5](OA-FLOW-AL.md#oa
 Here \(I_\varphi(x)=\frac12\|x\xi_\varphi-Jx^*J\xi_\varphi\|^2\) and
 \(q_\varphi(x)^2=\varphi(x^*x+xx^*)\), exactly as in the consumer. The sharper half-width in ([TS11](OA-FLOW-TS.md#equation-ts11)) is retained; ([TS12](OA-FLOW-TS.md#equation-ts12)) is the stated weaker bound required there.
 
-The same conclusion applies to the balanced homogeneity functional on \(M_2(M)\). The actual matrix/type proof constructs the normal isomorphism \(M_2(M)\cong M\) from two orthogonal isometries with range projections summing to \(1\), and transports the entire n.s.f. spectral intersection. Thus \(M_2(M)\) is again a type III₁ factor with separable predual. For faithful finite normal \(\varphi_1,\varphi_2\), the functional
+The same conclusion applies to the balanced homogeneity functional on \(M_2(M)\). The actual matrix/type proof constructs the normal isomorphism \(M_2(M)\cong M\) from two orthogonal isometries with range projections summing to \(1\), and transports the entire n.s.f. spectral intersection. Thus \(M_2(M)\) is again a type III₁ factor that is sigma-finite. For faithful finite normal \(\varphi_1,\varphi_2\), the functional
 \(\Psi([x_{ij}])=\varphi_1(x_{11})+\varphi_2(x_{22})\)
 is faithful, finite and normal by [BC-1](OA-FLOW-BC.md#oa-flow.bc.1)'s full balanced construction. Apply [TS-2](OA-FLOW-TS.md#oa-flow.ts.2) to \(N=M_2(M)\) and \(\Psi\), then [AL-6](OA-FLOW-AL.md#oa-flow.al.6)/[AL22](OA-FLOW-AL.md#equation-al22). Its cone vector and all nonfaithful later support reductions are the separate proved NC/CR/MC statements; this step does not pretend that a nonfaithful \(\Psi\) is faithful on the entire matrix algebra.
 
@@ -157,7 +157,7 @@ This completes the specific type-to-full-corner-spectrum implication used by the
 
 The [native PNG](../assets/iii1-spectral/assets/iii1-direct-spectrum.png), [SVG](../assets/iii1-spectral/assets/iii1-direct-spectrum.svg) and [renderer](../assets/iii1-spectral/render_iii1_spectrum.py) illustrate the complete proof in [TS-1–3](OA-FLOW-TS.md#oa-flow.ts.1). This is an implication diagram and spectral-band schematic, not a finite-dimensional example of a III₁ factor. The human source context for the annihilator-hull spectrum is [Connes (1973), printed pp.170–174](https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=39); the direct local route drawn here does not import that paper's general \(S/\Gamma\) theorem.
 
-Assume exactly the displayed hypotheses: \(M\) is a nonzero separable-predual type III₁ factor, \(\varphi\) is faithful, finite and normal, and \(0\ne p\) is fixed by \(\sigma^\varphi\). Put \(\psi=\varphi|_{pMp}\).
+For the displayed separable-predual special case, assume exactly the labelled hypotheses: \(M\) is a nonzero separable-predual type III₁ factor, \(\varphi\) is faithful, finite and normal, and \(0\ne p\) is fixed by \(\sigma^\varphi\). Put \(\psi=\varphi|_{pMp}\).
 
 The first arrow is the definition of an intersection, after the actual normal corner isomorphism has supplied \(S(pMp)=S(M)\): since \(\psi\) is one of the faithful n.s.f. weights, \(S(pMp)\subseteq\operatorname{Sp}(\Delta_\psi)\). The second arrow contains the explicit projection and density argument below together with [CZ26](OA-FLOW-CZ.md#equation-cz26)'s equality of the two corner actions. These are [TS6](OA-FLOW-TS.md#equation-ts6)–[TS10](OA-FLOW-TS.md#equation-ts10), not an unproved spectral-classification arrow.
 

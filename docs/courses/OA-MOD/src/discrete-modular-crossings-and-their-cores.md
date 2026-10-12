@@ -40,7 +40,7 @@ It sends the coefficient copy of \(x\in M\) to \(x\otimes1\), the real core unit
  \tag{4}
 \]
 
-Its least positive flow period is \(2\pi/T\), rather than the modular sampling time \(T\).
+Its least positive flow period is \(2\pi/T\). The inner modular-period group of \(N\) is exactly \(T\mathbb Z\), as proved in Section 6. These are two distinct invariants with reciprocal time scales.
 
 Here are the precise earlier inputs.
 
@@ -58,6 +58,7 @@ Here are the precise earlier inputs.
   \]
 
   The intersection is over all faithful normal semifinite weights. The dual-centre kernel theorem, L115, K43 identifies \(\Gamma(\sigma^\omega)\) with the kernel of the dual flow on the whole core centre. Neither result assumes that the factor is already type III.
+- MIV Section 5, equation MIV5.c, proves that inner modular times of a type III factor are precisely the positive-sign eigenfrequencies of its core-centre flow. Section 6 computes those eigenfrequencies here by circle Fourier coefficients.
 - The finite-corner trace construction, L18 Section 6 proves that a factor with a nonzero finite projection has a faithful normal semifinite trace. This is the step needed to deduce type III, as opposed to computing only a positive spectral intersection.
 
 These are previously written mathematical proofs. The source context is Takesaki, *Theory of Operator Algebras III*, XVIII.4, Lemma 4.17(i), printed pages 389–390. The regular-coordinate proof below also establishes (3) without a dominant-weight reduction.
@@ -330,7 +331,7 @@ Each full modular spectrum is closed and contains \(\lambda^n\) for all positive
 
 It remains to justify that \(N\) has no nonzero finite projection. If it had one, the finite-corner trace theorem L18 Section 6 would produce a faithful normal semifinite trace \(\tau\) on this factor. For a trace, the GNS involution is isometric on its dense finite-star domain; its closure has modular operator \(1\). Thus \(\operatorname{Sp}\Delta_\tau=\{1\}\), contradicting (31), since \(0<\lambda<1\). Consequently \(N\) is type III, and (32) is exactly its subtype \(\mathrm{III}_\lambda\). This proves Theorem 1.1.
 
-## 6. Changing weight and the visible inner time
+## 6. Changing weight and the exact inner-period group
 
 The particular faithful state does not affect the isomorphism type of the discrete crossing. More generally let \(\chi\) be any faithful normal semifinite weight on the same \(M\). The normalized cocycle theorem SI14 gives
 
@@ -361,7 +362,26 @@ There is a useful direct check on the two time scales. Formula (17) shows that
  \tag{35}
 \]
 
-They agree on \(M\), and both fix \(V\). This is an inner modular time of \(N\), not the period \(2\pi/T\) of its core centre flow. The dual flow fixes \(V\), while it multiplies the compensating real unitary \(\ell_{-T}\) by \(e^{isT}\). That distinction explains (4) without changing either convention.
+They agree on \(M\), and both fix \(V\). In fact the complete group of inner modular times is
+
+\[
+ T(N):=\{p\in\mathbb R:\sigma_p^\psi\text{ is inner}\}
+       =T\mathbb Z.
+ \tag{35a}
+\]
+
+To prove that there are no additional times, use MIV5.c: \(p\in T(N)\) exactly when the full core centre has a unitary eigenvector of frequency \(p\). By (26)–(28) this is a function \(f\in L^\infty(\mathbb T,h)\), with \(|f|=1\) almost everywhere, satisfying
+
+\[
+ f(e^{isT}z)=e^{isp}f(z)\quad\text{in }L^\infty(\mathbb T,h)
+             \quad(s\in\mathbb R).
+ \tag{35b}
+\]
+
+Since \(h\) is a probability measure, \(f\in L^2\) and \(\|f\|_2=1\). Completeness of the circle characters gives an integer \(n\) with \(\widehat f(n)\ne0\). Taking that Fourier coefficient in (35b) yields
+\(e^{insT}\widehat f(n)=e^{isp}\widehat f(n)\) for every real \(s\). Thus \(e^{is(nT-p)}=1\) for every \(s\), forcing \(p=nT\). Conversely \(z\mapsto z^n\) is an eigenunitary of frequency \(nT\); equivalently, (35) gives \(\sigma_{nT}^\psi=\operatorname{Ad}(V^n)\). This proves (35a). The cocycle covariance in (33) makes the same group valid for every faithful normal semifinite weight on \(N\).
+
+The dual flow has period group \((2\pi/T)\mathbb Z\), while its eigenfrequency group, and hence the inner modular-period group, is \(T\mathbb Z\). The dual flow fixes \(V\), while it multiplies the compensating real unitary \(\ell_{-T}\) by \(e^{isT}\). This identifies both time scales with their exact signs.
 
 ## 7. Three exact checks
 
@@ -378,4 +398,4 @@ Its centre is the full circle algebra. It is not a factor. The general core isom
 
 **Why the shear contains \(nT\).** Replacing \(r=t+nT\) by \(r=t-nT\) in (19) would turn the first line of (18) into a coefficient depending on \(r+2nT\), rather than on \(r\) alone. The correct shear removes the discrete coordinate from every coefficient, sends \(V\) to \(\ell_T\otimes S\), and leaves the centre coordinate \(\ell_{-T}V\). These three simultaneous checks determine its sign.
 
-The result supplies the discrete modular-crossing step in the classification of approximately finite-dimensional type III₁ factors. The tensor-product circle crossing in Lemma 4.17(ii), classification of its actions, and the final uniqueness argument require their own proofs.
+The opposite dual-circle lesson constructs the tensor-product circle crossing in Lemma 4.17(ii). The type III action-classification lesson proves the integer and circle classifications, and the Powers-model lesson assembles the uniqueness argument. Those later proofs retain their own hypotheses and inputs.

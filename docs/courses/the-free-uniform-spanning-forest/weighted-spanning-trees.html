@@ -1,0 +1,199 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Weighted spanning trees</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The free uniform spanning forest)</a><a href="the-forest-as-a-limit-of-trees.html">Next lesson</a><a href="src/weighted-spanning-trees.md">Editable source</a></nav><main><article><h1 id="weighted-spanning-trees">Weighted spanning trees</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Choose a spanning tree of a finite connected graph at random, with probability proportional to the product of positive weights on its edges. How does the probability that a given edge belongs to the tree change when the weights are changed? This lesson proves a bound that depends neither on the graph nor on the weights: if the logarithms of all weights change by at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, then every such probability changes by at most <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. In September 2026 OpenAI released a proof that the free uniform spanning forest of every infinite connected graph is a factor of independent labels [OpenAI-F]; this bound is the estimate on which that proof rests.</p>
+<ul>
+<li>The weighted number of spanning trees is the determinant of the reduced weighted Laplacian (Theorem 3.1); the proof uses the formula of Cauchy and Binet (Lemma 2.1).</li>
+<li>The probability <span class="math" data-tex="\(p_e\)">\(p_e\)</span> that an edge <span class="math" data-tex="\(e\)">\(e\)</span> is in the tree, and the covariances of the indicators of two edges, are given by the inverse of this matrix (Proposition 4.2). The covariance of two different edges is never positive.</li>
+<li>Because every spanning tree has the same number of edges, the absolute values of the covariances of one edge with all edges add up to <span class="math" data-tex="\(2p_e(1-p_e)\le\tfrac12\)">\(2p_e(1-p_e)\le\tfrac12\)</span> (Theorem 5.1). This gives the bound for changes of the weights (Corollary 5.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-F, Section 2, the lemma on the response of weighted trees]; the determinant formulas are classical and go back to G. Kirchhoff. The lesson uses determinants and inverse matrices (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B40">Linear Algebra</a>).</p>
+<h2 id="1-graphs-trees-and-incidence-vectors">1. Graphs, trees and incidence vectors</h2>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be a finite graph with vertex set <span class="math" data-tex="\(V\)">\(V\)</span> and edge set <span class="math" data-tex="\(E\)">\(E\)</span>; an edge is a set of two different vertices. A <em>cycle</em> is a closed walk of at least three edges that visits no vertex twice. A graph without cycles is a <em>forest</em>, and a connected forest is a <em>tree</em>. A <em>spanning tree</em> of <span class="math" data-tex="\(H\)">\(H\)</span> is a set <span class="math" data-tex="\(T\subseteq E\)">\(T\subseteq E\)</span> such that the graph <span class="math" data-tex="\((V,T)\)">\((V,T)\)</span> is a tree. Let <span class="math" data-tex="\(\mathcal T(H)\)">\(\mathcal T(H)\)</span> be the set of the spanning trees of <span class="math" data-tex="\(H\)">\(H\)</span>; it is not empty if <span class="math" data-tex="\(H\)">\(H\)</span> is connected. We use two standard facts.</p>
+<ul>
+<li>A tree with at least two vertices has at least two <em>leaves</em>, vertices that lie on exactly one edge: the two ends of a longest path are leaves.</li>
+<li>A tree with <span class="math" data-tex="\(v\)">\(v\)</span> vertices has <span class="math" data-tex="\(v-1\)">\(v-1\)</span> edges, by induction, removing a leaf with its edge. Hence a forest with <span class="math" data-tex="\(v\)">\(v\)</span> vertices and <span class="math" data-tex="\(c\)">\(c\)</span> connected components has <span class="math" data-tex="\(v-c\)">\(v-c\)</span> edges, and a forest <span class="math" data-tex="\((V,F)\)">\((V,F)\)</span> with <span class="math" data-tex="\(|F|=|V|-1\)">\(|F|=|V|-1\)</span> is a tree.</li>
+</ul>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be connected with at least two vertices, and <span class="math" data-tex="\(r=|V|-1\)">\(r=|V|-1\)</span>. Choose for every edge one of its two directions, and fix a vertex <span class="math" data-tex="\(v_0\)">\(v_0\)</span>. For an edge <span class="math" data-tex="\(f\)">\(f\)</span> directed from <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(w\)">\(w\)</span>, let <span class="math" data-tex="\(a_f\)">\(a_f\)</span> be the vector with a coordinate for every vertex other than <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, which is <span class="math" data-tex="\(+1\)">\(+1\)</span> at <span class="math" data-tex="\(w\)">\(w\)</span>, <span class="math" data-tex="\(-1\)">\(-1\)</span> at <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere; the coordinate of <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, if <span class="math" data-tex="\(u\)">\(u\)</span> or <span class="math" data-tex="\(w\)">\(w\)</span> is <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, is left out. These are the <em>reduced incidence vectors</em>; they have <span class="math" data-tex="\(r\)">\(r\)</span> coordinates.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(F\subseteq E\)">\(F\subseteq E\)</span> with <span class="math" data-tex="\(|F|=r\)">\(|F|=r\)</span>. The determinant of the matrix with the columns <span class="math" data-tex="\(a_f\)">\(a_f\)</span>, <span class="math" data-tex="\(f\in F\)">\(f\in F\)</span>, is <span class="math" data-tex="\(+1\)">\(+1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span> if <span class="math" data-tex="\(F\)">\(F\)</span> is a spanning tree, and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(F\)">\(F\)</span> is not a spanning tree, the graph <span class="math" data-tex="\((V,F)\)">\((V,F)\)</span> is not a tree, so by the second fact it contains a cycle. Go once around the cycle and add the vectors <span class="math" data-tex="\(a_f\)">\(a_f\)</span> of its edges, with the sign <span class="math" data-tex="\(+\)">\(+\)</span> if the edge is traversed in its direction and <span class="math" data-tex="\(-\)">\(-\)</span> otherwise. Each vertex of the cycle is entered once and left once, so the sum is <span class="math" data-tex="\(0\)">\(0\)</span>. The columns are linearly dependent, and the determinant is <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a spanning tree. We use induction on <span class="math" data-tex="\(r\)">\(r\)</span>. For <span class="math" data-tex="\(r=1\)">\(r=1\)</span> the matrix has the one entry <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. For <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span> the tree has a leaf <span class="math" data-tex="\(u\ne v_0\)">\(u\ne v_0\)</span>. The row of <span class="math" data-tex="\(u\)">\(u\)</span> has exactly one entry different from <span class="math" data-tex="\(0\)">\(0\)</span>, namely <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> in the column of the edge <span class="math" data-tex="\(f_0\)">\(f_0\)</span> at <span class="math" data-tex="\(u\)">\(u\)</span>. Expanding the determinant along this row gives <span class="math" data-tex="\(\pm\)">\(\pm\)</span> the determinant of the matrix for the tree <span class="math" data-tex="\(F\setminus\{f_0\}\)">\(F\setminus\{f_0\}\)</span> on <span class="math" data-tex="\(V\setminus\{u\}\)">\(V\setminus\{u\}\)</span>, with the same vertex <span class="math" data-tex="\(v_0\)">\(v_0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-the-formula-of-cauchy-and-binet">2. The formula of Cauchy and Binet</h2>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a matrix with <span class="math" data-tex="\(r\)">\(r\)</span> rows and <span class="math" data-tex="\(n\)">\(n\)</span> columns and <span class="math" data-tex="\(B\)">\(B\)</span> a matrix with <span class="math" data-tex="\(n\)">\(n\)</span> rows and <span class="math" data-tex="\(r\)">\(r\)</span> columns. For a set <span class="math" data-tex="\(F\)">\(F\)</span> of <span class="math" data-tex="\(r\)">\(r\)</span> column indices let <span class="math" data-tex="\(A_F\)">\(A_F\)</span> be the square matrix of the columns of <span class="math" data-tex="\(A\)">\(A\)</span> with index in <span class="math" data-tex="\(F\)">\(F\)</span>, and <span class="math" data-tex="\(B^F\)">\(B^F\)</span> the square matrix of the rows of <span class="math" data-tex="\(B\)">\(B\)</span> with index in <span class="math" data-tex="\(F\)">\(F\)</span>. Then
+<span class="math math-display" data-tex="\[
+\det(AB)=\sum_{|F|=r}\det(A_F)\,\det(B^F).
+\]">\[
+\det(AB)=\sum_{|F|=r}\det(A_F)\,\det(B^F).
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(A_1,\dots,A_n\)">\(A_1,\dots,A_n\)</span> be the columns of <span class="math" data-tex="\(A\)">\(A\)</span>. The column <span class="math" data-tex="\(k\)">\(k\)</span> of <span class="math" data-tex="\(AB\)">\(AB\)</span> is <span class="math" data-tex="\(\sum_jb_{jk}A_j\)">\(\sum_jb_{jk}A_j\)</span>. The determinant is linear in each column, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\det(AB)\\
+&amp;\ =\sum_{j_1,\dots,j_r}b_{j_11}\cdots b_{j_rr}\,\det(A_{j_1},\dots,A_{j_r}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\det(AB)\\
+&amp;\ =\sum_{j_1,\dots,j_r}b_{j_11}\cdots b_{j_rr}\,\det(A_{j_1},\dots,A_{j_r}).
+\end{aligned}
+\]</span>
+The terms in which two of the indices are equal vanish. In the others, <span class="math" data-tex="\(j_1,\dots,j_r\)">\(j_1,\dots,j_r\)</span> are the elements of a set <span class="math" data-tex="\(F\)">\(F\)</span> in some order, that is <span class="math" data-tex="\(j_k=\sigma(k)\)">\(j_k=\sigma(k)\)</span> for a bijection <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> from <span class="math" data-tex="\(\{1,\dots,r\}\)">\(\{1,\dots,r\}\)</span> to <span class="math" data-tex="\(F\)">\(F\)</span>; and <span class="math" data-tex="\(\det(A_{\sigma(1)},\dots,A_{\sigma(r)})\)">\(\det(A_{\sigma(1)},\dots,A_{\sigma(r)})\)</span> is <span class="math" data-tex="\(\det(A_F)\)">\(\det(A_F)\)</span> times the sign of the permutation that sorts the indices. Summing over <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> for fixed <span class="math" data-tex="\(F\)">\(F\)</span> gives <span class="math" data-tex="\(\det(A_F)\)">\(\det(A_F)\)</span> times the sum that defines <span class="math" data-tex="\(\det(B^F)\)">\(\det(B^F)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-matrix-tree-theorem">3. The matrix-tree theorem</h2>
+<p>Give every edge <span class="math" data-tex="\(f\)">\(f\)</span> a weight <span class="math" data-tex="\(c_f&gt;0\)">\(c_f&gt;0\)</span>. The <em>reduced weighted Laplacian</em> is the symmetric matrix with <span class="math" data-tex="\(r\)">\(r\)</span> rows and columns
+<span class="math math-display" data-tex="\[
+L=\sum_{f\in E}c_f\,a_fa_f^{\mathsf T},
+\]">\[
+L=\sum_{f\in E}c_f\,a_fa_f^{\mathsf T},
+\]</span>
+where <span class="math" data-tex="\(a_fa_f^{\mathsf T}\)">\(a_fa_f^{\mathsf T}\)</span> is the matrix with the entries <span class="math" data-tex="\((a_f)_x(a_f)_y\)">\((a_f)_x(a_f)_y\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> <span class="math" data-tex="\(\det L=\sum_{T\in\mathcal T(H)}\prod_{f\in T}c_f\)">\(\det L=\sum_{T\in\mathcal T(H)}\prod_{f\in T}c_f\)</span>. In particular <span class="math" data-tex="\(\det L&gt;0\)">\(\det L&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be the matrix with the columns <span class="math" data-tex="\(a_f\)">\(a_f\)</span>, <span class="math" data-tex="\(f\in E\)">\(f\in E\)</span>, and <span class="math" data-tex="\(B\)">\(B\)</span> the matrix with the rows <span class="math" data-tex="\(c_fa_f^{\mathsf T}\)">\(c_fa_f^{\mathsf T}\)</span>. Then <span class="math" data-tex="\(L=AB\)">\(L=AB\)</span>, and <span class="math" data-tex="\(\det(B^F)=\det(A_F)\prod_{f\in F}c_f\)">\(\det(B^F)=\det(A_F)\prod_{f\in F}c_f\)</span>. By Lemma 2.1,
+<span class="math math-display" data-tex="\[
+\det L=\sum_{|F|=r}\det(A_F)^2\prod_{f\in F}c_f,
+\]">\[
+\det L=\sum_{|F|=r}\det(A_F)^2\prod_{f\in F}c_f,
+\]</span>
+and by Lemma 1.1, <span class="math" data-tex="\(\det(A_F)^2\)">\(\det(A_F)^2\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(F\)">\(F\)</span> is a spanning tree and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. A connected graph has a spanning tree, so the sum is positive. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>We write <span class="math" data-tex="\(Z\)">\(Z\)</span> for this number, the <em>weighted number of spanning trees</em>. Neither <span class="math" data-tex="\(Z\)">\(Z\)</span> nor the results below depend on the choice of the directions and of <span class="math" data-tex="\(v_0\)">\(v_0\)</span>: the right side of Theorem 3.1 does not.</p>
+<h2 id="4-the-random-spanning-tree">4. The random spanning tree</h2>
+<p>For <span class="math" data-tex="\(h\in\mathbb R^E\)">\(h\in\mathbb R^E\)</span> let <span class="math" data-tex="\(c_f=e^{h_f}\)">\(c_f=e^{h_f}\)</span>. Let <span class="math" data-tex="\(T\)">\(T\)</span> be a random spanning tree with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb P_h(T=T_0)=\frac1{Z(h)}\prod_{f\in T_0}c_f,\\
+Z(h)=\sum_{T_0\in\mathcal T(H)}\ \prod_{f\in T_0}c_f .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb P_h(T=T_0)=\frac1{Z(h)}\prod_{f\in T_0}c_f,\\
+Z(h)=\sum_{T_0\in\mathcal T(H)}\ \prod_{f\in T_0}c_f .
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(h=0\)">\(h=0\)</span> this is the <em>uniform spanning tree</em>. Let <span class="math" data-tex="\(\xi_e\)">\(\xi_e\)</span> be <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(e\in T\)">\(e\in T\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise, and <span class="math" data-tex="\(p_e(h)=\mathbb E_h\xi_e\)">\(p_e(h)=\mathbb E_h\xi_e\)</span> the probability that <span class="math" data-tex="\(e\)">\(e\)</span> belongs to <span class="math" data-tex="\(T\)">\(T\)</span>. The covariance of two random variables is <span class="math" data-tex="\(\operatorname{Cov}(X,Y)=\mathbb E(XY)-\mathbb E X\,\mathbb E Y\)">\(\operatorname{Cov}(X,Y)=\mathbb E(XY)-\mathbb E X\,\mathbb E Y\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> For all edges <span class="math" data-tex="\(e,f\)">\(e,f\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{\partial\log Z}{\partial h_e}=p_e,\\
+\frac{\partial p_e}{\partial h_f}=\operatorname{Cov}_h(\xi_e,\xi_f).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{\partial\log Z}{\partial h_e}=p_e,\\
+\frac{\partial p_e}{\partial h_f}=\operatorname{Cov}_h(\xi_e,\xi_f).
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> The weight <span class="math" data-tex="\(W(T_0)=\exp(\sum_{f\in T_0}h_f)\)">\(W(T_0)=\exp(\sum_{f\in T_0}h_f)\)</span> has the derivative <span class="math" data-tex="\(\xi_e(T_0)W(T_0)\)">\(\xi_e(T_0)W(T_0)\)</span> with respect to <span class="math" data-tex="\(h_e\)">\(h_e\)</span>. So
+<span class="math math-display" data-tex="\[
+\frac{\partial Z}{\partial h_e}=\sum_{T_0}\xi_e(T_0)\,W(T_0)=Z\,p_e .
+\]">\[
+\frac{\partial Z}{\partial h_e}=\sum_{T_0}\xi_e(T_0)\,W(T_0)=Z\,p_e .
+\]</span>
+Differentiating <span class="math" data-tex="\(p_e=Z^{-1}\sum_{T_0}\xi_e(T_0)W(T_0)\)">\(p_e=Z^{-1}\sum_{T_0}\xi_e(T_0)W(T_0)\)</span> with respect to <span class="math" data-tex="\(h_f\)">\(h_f\)</span> gives <span class="math" data-tex="\(\mathbb E_h(\xi_e\xi_f)-p_ep_f\)">\(\mathbb E_h(\xi_e\xi_f)-p_ep_f\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 4.2.</strong> Let <span class="math" data-tex="\(L=L(h)\)">\(L=L(h)\)</span> be the reduced weighted Laplacian for the weights <span class="math" data-tex="\(c_f=e^{h_f}\)">\(c_f=e^{h_f}\)</span>. Then</p>
+<ol>
+<li><span class="math" data-tex="\(p_e=c_e\,a_e^{\mathsf T}L^{-1}a_e\)">\(p_e=c_e\,a_e^{\mathsf T}L^{-1}a_e\)</span> for every edge <span class="math" data-tex="\(e\)">\(e\)</span>;</li>
+<li>for all edges <span class="math" data-tex="\(e\ne f\)">\(e\ne f\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Cov}_h(\xi_e,\xi_f)&amp;=-c_ec_f\,\bigl(a_e^{\mathsf T}L^{-1}a_f\bigr)^2\\
+&amp;\le0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Cov}_h(\xi_e,\xi_f)&amp;=-c_ec_f\,\bigl(a_e^{\mathsf T}L^{-1}a_f\bigr)^2\\
+&amp;\le0 .
+\end{aligned}
+\]</span></li>
+</ol>
+<p><strong>Proof.</strong> (1) For vectors <span class="math" data-tex="\(x,y\)">\(x,y\)</span> with <span class="math" data-tex="\(r\)">\(r\)</span> coordinates, <span class="math" data-tex="\(\det(I+xy^{\mathsf T})=1+y^{\mathsf T}x\)">\(\det(I+xy^{\mathsf T})=1+y^{\mathsf T}x\)</span>: this is clear for <span class="math" data-tex="\(x=0\)">\(x=0\)</span>; otherwise, in a basis that starts with <span class="math" data-tex="\(x\)">\(x\)</span>, the map <span class="math" data-tex="\(z\mapsto z+x\,(y^{\mathsf T}z)\)">\(z\mapsto z+x\,(y^{\mathsf T}z)\)</span> has a triangular matrix with the diagonal entries <span class="math" data-tex="\(1+y^{\mathsf T}x,1,\dots,1\)">\(1+y^{\mathsf T}x,1,\dots,1\)</span>. Hence for a real number <span class="math" data-tex="\(\delta\)">\(\delta\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\det(L+\delta\,a_ea_e^{\mathsf T})\\
+&amp;\quad=\det L\cdot\bigl(1+\delta\,a_e^{\mathsf T}L^{-1}a_e\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\det(L+\delta\,a_ea_e^{\mathsf T})\\
+&amp;\quad=\det L\cdot\bigl(1+\delta\,a_e^{\mathsf T}L^{-1}a_e\bigr).
+\end{aligned}
+\]</span>
+The left side is, by Theorem 3.1, the weighted number of spanning trees when the weight <span class="math" data-tex="\(c_e\)">\(c_e\)</span> is replaced by <span class="math" data-tex="\(c_e+\delta\)">\(c_e+\delta\)</span>. So <span class="math" data-tex="\(\partial Z/\partial c_e=Z\,a_e^{\mathsf T}L^{-1}a_e\)">\(\partial Z/\partial c_e=Z\,a_e^{\mathsf T}L^{-1}a_e\)</span>, and by Lemma 4.1
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p_e=\frac{\partial\log Z}{\partial h_e}&amp;=c_e\,\frac{\partial\log Z}{\partial c_e}\\
+&amp;=c_e\,a_e^{\mathsf T}L^{-1}a_e .
+\end{aligned}
+\]">\[
+\begin{aligned}
+p_e=\frac{\partial\log Z}{\partial h_e}&amp;=c_e\,\frac{\partial\log Z}{\partial c_e}\\
+&amp;=c_e\,a_e^{\mathsf T}L^{-1}a_e .
+\end{aligned}
+\]</span></p>
+<p>(2) The entries of <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span> are quotients of polynomials in the weights, so they are differentiable. Differentiating <span class="math" data-tex="\(LL^{-1}=I\)">\(LL^{-1}=I\)</span> with respect to <span class="math" data-tex="\(h_f\)">\(h_f\)</span>, where <span class="math" data-tex="\(\partial L/\partial h_f=c_fa_fa_f^{\mathsf T}\)">\(\partial L/\partial h_f=c_fa_fa_f^{\mathsf T}\)</span>, gives
+<span class="math math-display" data-tex="\[
+\frac{\partial L^{-1}}{\partial h_f}=-c_f\,L^{-1}a_fa_f^{\mathsf T}L^{-1}.
+\]">\[
+\frac{\partial L^{-1}}{\partial h_f}=-c_f\,L^{-1}a_fa_f^{\mathsf T}L^{-1}.
+\]</span>
+For <span class="math" data-tex="\(f\ne e\)">\(f\ne e\)</span> the factor <span class="math" data-tex="\(c_e\)">\(c_e\)</span> in (1) does not depend on <span class="math" data-tex="\(h_f\)">\(h_f\)</span>, so by Lemma 4.1
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\operatorname{Cov}_h(\xi_e,\xi_f)=\frac{\partial p_e}{\partial h_f}\\
+&amp;\quad=-c_ec_f\,(a_e^{\mathsf T}L^{-1}a_f)(a_f^{\mathsf T}L^{-1}a_e),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\operatorname{Cov}_h(\xi_e,\xi_f)=\frac{\partial p_e}{\partial h_f}\\
+&amp;\quad=-c_ec_f\,(a_e^{\mathsf T}L^{-1}a_f)(a_f^{\mathsf T}L^{-1}a_e),
+\end{aligned}
+\]</span>
+and the two factors in brackets are equal because <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span> is symmetric. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So the presence of one edge in the random spanning tree makes the presence of every other edge less likely, or leaves it unchanged, for all weights.</p>
+<h2 id="5-the-response-identity">5. The response identity</h2>
+<p><strong>Theorem 5.1.</strong> For every <span class="math" data-tex="\(h\in\mathbb R^E\)">\(h\in\mathbb R^E\)</span> and every edge <span class="math" data-tex="\(e\)">\(e\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{f\in E}\Bigl|\frac{\partial p_e}{\partial h_f}\Bigr|=2\,p_e(1-p_e)\le\frac12 .
+\]">\[
+\sum_{f\in E}\Bigl|\frac{\partial p_e}{\partial h_f}\Bigr|=2\,p_e(1-p_e)\le\frac12 .
+\]</span></p>
+<p><strong>Proof.</strong> Every spanning tree has exactly <span class="math" data-tex="\(r\)">\(r\)</span> edges, so <span class="math" data-tex="\(\sum_f\xi_f=r\)">\(\sum_f\xi_f=r\)</span> is constant, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{f\in E}\operatorname{Cov}_h(\xi_e,\xi_f)&amp;=\operatorname{Cov}_h\Bigl(\xi_e,\sum_f\xi_f\Bigr)\\
+&amp;=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{f\in E}\operatorname{Cov}_h(\xi_e,\xi_f)&amp;=\operatorname{Cov}_h\Bigl(\xi_e,\sum_f\xi_f\Bigr)\\
+&amp;=0 .
+\end{aligned}
+\]</span>
+The term with <span class="math" data-tex="\(f=e\)">\(f=e\)</span> is the variance <span class="math" data-tex="\(p_e-p_e^2\)">\(p_e-p_e^2\)</span>. The other terms are not positive by Proposition 4.2, so the sum of their absolute values is <span class="math" data-tex="\(p_e(1-p_e)\)">\(p_e(1-p_e)\)</span>. With Lemma 4.1 the sum of all absolute values is <span class="math" data-tex="\(2p_e(1-p_e)\)">\(2p_e(1-p_e)\)</span>, and <span class="math" data-tex="\(p(1-p)\le\tfrac14\)">\(p(1-p)\le\tfrac14\)</span> for <span class="math" data-tex="\(0\le p\le1\)">\(0\le p\le1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 5.2.</strong> For all <span class="math" data-tex="\(h,h&#x27;\in\mathbb R^E\)">\(h,h&#x27;\in\mathbb R^E\)</span> and every edge <span class="math" data-tex="\(e\)">\(e\)</span>,
+<span class="math math-display" data-tex="\[
+|p_e(h)-p_e(h&#x27;)|\le\frac12\max_{f\in E}|h_f-h&#x27;_f| .
+\]">\[
+|p_e(h)-p_e(h&#x27;)|\le\frac12\max_{f\in E}|h_f-h&#x27;_f| .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\varphi(\tau)=p_e(h+\tau(h&#x27;-h))\)">\(\varphi(\tau)=p_e(h+\tau(h&#x27;-h))\)</span> for <span class="math" data-tex="\(0\le\tau\le1\)">\(0\le\tau\le1\)</span>. Then <span class="math" data-tex="\(\varphi&#x27;(\tau)\)">\(\varphi&#x27;(\tau)\)</span> is the sum of <span class="math" data-tex="\(\tfrac{\partial p_e}{\partial h_f}\,(h&#x27;_f-h_f)\)">\(\tfrac{\partial p_e}{\partial h_f}\,(h&#x27;_f-h_f)\)</span> over <span class="math" data-tex="\(f\)">\(f\)</span>, taken at the point <span class="math" data-tex="\(h+\tau(h&#x27;-h)\)">\(h+\tau(h&#x27;-h)\)</span>. By Theorem 5.1 its absolute value is at most <span class="math" data-tex="\(\tfrac12\max_f|h&#x27;_f-h_f|\)">\(\tfrac12\max_f|h&#x27;_f-h_f|\)</span>, and <span class="math" data-tex="\(p_e(h&#x27;)-p_e(h)=\int_0^1\varphi&#x27;(\tau)\,d\tau\)">\(p_e(h&#x27;)-p_e(h)=\int_0^1\varphi&#x27;(\tau)\,d\tau\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The constant <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> does not depend on the graph, on the number of edges, or on the weights. For an edge <span class="math" data-tex="\(e\)">\(e\)</span> whose removal disconnects the graph, <span class="math" data-tex="\(p_e=1\)">\(p_e=1\)</span> and all the derivatives vanish. The same bound holds if only some of the <span class="math" data-tex="\(h_f\)">\(h_f\)</span> are changed, with the maximum over those edges.</p>
+<p><strong>Example 5.3.</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be a triangle with the edges <span class="math" data-tex="\(1,2,3\)">\(1,2,3\)</span> and the weights <span class="math" data-tex="\(c_1,c_2,c_3\)">\(c_1,c_2,c_3\)</span>. The spanning trees are the three pairs of edges, so <span class="math" data-tex="\(Z=c_1c_2+c_1c_3+c_2c_3\)">\(Z=c_1c_2+c_1c_3+c_2c_3\)</span> and <span class="math" data-tex="\(p_1=c_1(c_2+c_3)/Z\)">\(p_1=c_1(c_2+c_3)/Z\)</span>. For equal weights <span class="math" data-tex="\(p_1=\tfrac23\)">\(p_1=\tfrac23\)</span>, the probability that both edges <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span> are in the tree is <span class="math" data-tex="\(\tfrac13\)">\(\tfrac13\)</span>, and <span class="math" data-tex="\(\operatorname{Cov}(\xi_1,\xi_2)=\tfrac13-\tfrac49=-\tfrac19\)">\(\operatorname{Cov}(\xi_1,\xi_2)=\tfrac13-\tfrac49=-\tfrac19\)</span>. The sum of the absolute values in Theorem 5.1 is <span class="math" data-tex="\(\tfrac29+\tfrac19+\tfrac19=\tfrac49\)">\(\tfrac29+\tfrac19+\tfrac19=\tfrac49\)</span>, which is <span class="math" data-tex="\(2\cdot\tfrac23\cdot\tfrac13\)">\(2\cdot\tfrac23\cdot\tfrac13\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be a cycle with <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span> edges, with equal weights. Compute <span class="math" data-tex="\(p_e\)">\(p_e\)</span> and the covariances, and check Theorem 5.1.</p>
+<p><strong>6.2.</strong> For the triangle with the weights <span class="math" data-tex="\(c_1,c_2,c_3\)">\(c_1,c_2,c_3\)</span>, compute <span class="math" data-tex="\(L\)">\(L\)</span> for a choice of directions and of <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, and check Theorem 3.1 and Proposition 4.2(1) for the edge <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>6.3.</strong> Let a random subset of <span class="math" data-tex="\(E\)">\(E\)</span> contain each edge independently with probability <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>. Compute the sum of the absolute values of the covariances of the indicator of one edge with those of all edges, and compare it with <span class="math" data-tex="\(2p(1-p)\)">\(2p(1-p)\)</span>. Give a random subset of <span class="math" data-tex="\(E\)">\(E\)</span> for which this sum is <span class="math" data-tex="\(|E|/4\)">\(|E|/4\)</span>. Which two properties of spanning trees does the proof of Theorem 5.1 use?</p>
+<p><strong>6.4.</strong> Let <span class="math" data-tex="\(e\)">\(e\)</span> be an edge of <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> obtained from <span class="math" data-tex="\(h\)">\(h\)</span> by adding a number <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(h_e\)">\(h_e\)</span> only. Show that <span class="math" data-tex="\(p_e(h&#x27;)\)">\(p_e(h&#x27;)\)</span> is <span class="math" data-tex="\(\dfrac{p\,e^s}{1-p+p\,e^s}\)">\(\dfrac{p\,e^s}{1-p+p\,e^s}\)</span> with <span class="math" data-tex="\(p=p_e(h)\)">\(p=p_e(h)\)</span>, and compare the derivative at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> with Theorem 5.1.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> The spanning trees are the <span class="math" data-tex="\(n\)">\(n\)</span> sets of <span class="math" data-tex="\(n-1\)">\(n-1\)</span> edges. So <span class="math" data-tex="\(p_e=\tfrac{n-1}n\)">\(p_e=\tfrac{n-1}n\)</span>, and for <span class="math" data-tex="\(e\ne f\)">\(e\ne f\)</span> the probability that both are in the tree is <span class="math" data-tex="\(\tfrac{n-2}n\)">\(\tfrac{n-2}n\)</span>. The covariance is <span class="math" data-tex="\(\tfrac{n-2}n-\tfrac{(n-1)^2}{n^2}=-\tfrac1{n^2}\)">\(\tfrac{n-2}n-\tfrac{(n-1)^2}{n^2}=-\tfrac1{n^2}\)</span>. The sum of the absolute values is <span class="math" data-tex="\(\tfrac{n-1}{n^2}+\tfrac{n-1}{n^2}\)">\(\tfrac{n-1}{n^2}+\tfrac{n-1}{n^2}\)</span>, the first term from <span class="math" data-tex="\(f=e\)">\(f=e\)</span> and the second from the other <span class="math" data-tex="\(n-1\)">\(n-1\)</span> edges. This is <span class="math" data-tex="\(2\cdot\tfrac{n-1}n\cdot\tfrac1n\)">\(2\cdot\tfrac{n-1}n\cdot\tfrac1n\)</span>.</p>
+<p><strong>6.2.</strong> Let the vertices be <span class="math" data-tex="\(v_0,v_1,v_2\)">\(v_0,v_1,v_2\)</span>, the edge <span class="math" data-tex="\(1\)">\(1\)</span> from <span class="math" data-tex="\(v_0\)">\(v_0\)</span> to <span class="math" data-tex="\(v_1\)">\(v_1\)</span>, the edge <span class="math" data-tex="\(2\)">\(2\)</span> from <span class="math" data-tex="\(v_1\)">\(v_1\)</span> to <span class="math" data-tex="\(v_2\)">\(v_2\)</span>, the edge <span class="math" data-tex="\(3\)">\(3\)</span> from <span class="math" data-tex="\(v_2\)">\(v_2\)</span> to <span class="math" data-tex="\(v_0\)">\(v_0\)</span>. In the coordinates <span class="math" data-tex="\((v_1,v_2)\)">\((v_1,v_2)\)</span>: <span class="math" data-tex="\(a_1=(1,0)\)">\(a_1=(1,0)\)</span>, <span class="math" data-tex="\(a_2=(-1,1)\)">\(a_2=(-1,1)\)</span>, <span class="math" data-tex="\(a_3=(0,-1)\)">\(a_3=(0,-1)\)</span>. So
+<span class="math math-display" data-tex="\[
+L=\begin{pmatrix}c_1+c_2&amp;-c_2\\-c_2&amp;c_2+c_3\end{pmatrix},
+\]">\[
+L=\begin{pmatrix}c_1+c_2&amp;-c_2\\-c_2&amp;c_2+c_3\end{pmatrix},
+\]</span>
+with <span class="math" data-tex="\(\det L=c_1c_2+c_1c_3+c_2c_3\)">\(\det L=c_1c_2+c_1c_3+c_2c_3\)</span>. The entry of <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span> at the place <span class="math" data-tex="\((v_1,v_1)\)">\((v_1,v_1)\)</span> is <span class="math" data-tex="\((c_2+c_3)/\det L\)">\((c_2+c_3)/\det L\)</span>, so <span class="math" data-tex="\(c_1a_1^{\mathsf T}L^{-1}a_1=c_1(c_2+c_3)/Z=p_1\)">\(c_1a_1^{\mathsf T}L^{-1}a_1=c_1(c_2+c_3)/Z=p_1\)</span>.</p>
+<p><strong>6.3.</strong> For independent edges all covariances of different edges are <span class="math" data-tex="\(0\)">\(0\)</span>, and the variance is <span class="math" data-tex="\(\tfrac14\)">\(\tfrac14\)</span>. So the sum is <span class="math" data-tex="\(\tfrac14\)">\(\tfrac14\)</span>, while <span class="math" data-tex="\(2p(1-p)=\tfrac12\)">\(2p(1-p)=\tfrac12\)</span>: the identity of Theorem 5.1 fails, because the number of chosen edges is not constant. For the second question take the random set that is empty or all of <span class="math" data-tex="\(E\)">\(E\)</span>, each with probability <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>: every covariance is <span class="math" data-tex="\(\tfrac14\)">\(\tfrac14\)</span>, and the sum is <span class="math" data-tex="\(|E|/4\)">\(|E|/4\)</span>. The proof of Theorem 5.1 uses that the covariances of different edges are not positive, and that the number of edges of the random set is constant.</p>
+<p><strong>6.4.</strong> Let <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span> be the weighted number of the spanning trees that contain <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span> that of the others, for <span class="math" data-tex="\(h\)">\(h\)</span>; so <span class="math" data-tex="\(p=Z_1/(Z_0+Z_1)\)">\(p=Z_1/(Z_0+Z_1)\)</span>. For <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span>, <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span> is multiplied by <span class="math" data-tex="\(e^s\)">\(e^s\)</span> and <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span> is unchanged, so <span class="math" data-tex="\(p_e(h&#x27;)=Z_1e^s/(Z_0+Z_1e^s)\)">\(p_e(h&#x27;)=Z_1e^s/(Z_0+Z_1e^s)\)</span>; dividing by <span class="math" data-tex="\(Z_0+Z_1\)">\(Z_0+Z_1\)</span> gives the formula. Its derivative at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> is <span class="math" data-tex="\(p(1-p)\)">\(p(1-p)\)</span>, the term with <span class="math" data-tex="\(f=e\)">\(f=e\)</span> in Theorem 5.1.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-F] OpenAI, <em>The free uniform spanning forest is a factor of IID</em>, OpenAI Math Release preprint, 25 September 2026, Section 2. https://github.com/openai/math/tree/main/preprints/The-free-uniform-spanning-forest-is-a-factor-of-IID-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

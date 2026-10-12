@@ -367,6 +367,29 @@ D_N(y_i)=D_N(x),\qquad
 
 This estimate is uniform for the fixed finite family. Its tolerance may depend on the chosen coefficient \(x\), as the proof permits.
 
+**Proposition 6.1 (equality of the optimal local errors).** Let \(M\) be any nonzero von Neumann algebra, let \(\theta\) be approximately inner, and let the finite positive family \((\varphi_j)\) have faithful sum. For \(N=M\rtimes_\theta\mathbb Z\), lift this family by the coefficient expectation and define \(Q,D\) as in (DAS.3). Then
+
+\[
+ \inf_{0\ne y\in M}\frac{Q_M(y)}{D_M(y)}
+   =\inf_{0\ne X\in N}\frac{Q_N(X)}{D_N(X)}.
+ \tag{DAS.30a}
+\]
+
+All denominators are strictly positive. This assertion requires neither a type III hypothesis, separable predual, nor tensor absorption.
+
+**Proof.** Normalize the sum of the given functionals to obtain the faithful normal state used in Sections 2–4. Its lift is faithful, so every nonzero operator on either side has positive mass. The inclusion \(M\subset N\) and (DAS.13) show that the right-hand infimum is at most the left-hand one.
+
+For the reverse inequality, fix \(X\ne0\) and put \(d=Q_N(X)/D_N(X)\). The Parseval selection in (DAS.18) gives a nonzero coefficient \(x=X_q\) with \(Q_N(x)/D_N(x)\le d\). The elements \(y_i=u_ix\) from (DAS.25) are nonzero, belong to \(M\), and have the same positive mass as \(x\). Dividing (DAS.30) by \(\sqrt{D_N(x)}\), then taking the upper limit, gives
+
+\[
+ \limsup_i\frac{Q_M(y_i)}{D_M(y_i)}
+   \le\frac{Q_N(x)}{D_N(x)}\le d.
+ \tag{DAS.30b}
+\]
+
+The standard-form comparison justifies the subscript \(M\) here. Hence the left-hand infimum is at most the ratio of every nonzero \(X\in N\), proving (DAS.30a). The approximately inner implementers may form a net; selecting one sufficiently accurate index for each fixed tolerance is all the argument needs. \(\square\)
+
+
 ## 7. The full absorption conclusion
 
 Let \(\varphi_1,\ldots,\varphi_m\in M_*^+\) and \(\varepsilon>0\) be arbitrary. Empty families impose no condition. For a nonempty family put
@@ -458,4 +481,4 @@ The mass is positive for every nonzero \(y\). Therefore arbitrarily small relati
 
 ## Source
 
-Masamichi Takesaki, *Theory of Operator Algebras III*, Chapter XVIII, Section 4, Lemma 4.20, printed pp.391–393. The proof above makes the conditional-expectation standard-form comparison, the finite-family Parseval identity and the positive denominator explicit. With the circle convention (DAS.7), the correcting unitary \(v_iU^{-q}\) has degree \(-q\). The formulation by the specified product \(R_\lambda\) also proves descent when the crossing itself is not a factor.
+Masamichi Takesaki, *Theory of Operator Algebras III*, Chapter XVIII, Section 4, Lemma 4.20, printed pp.391–393. The proof above makes the conditional-expectation standard-form comparison, the finite-family Parseval identity and the positive denominator explicit. With the circle convention (DAS.7), the correcting unitary \(v_iU^{-q}\) has degree \(-q\). The formulation by the specified product \(R_\lambda\) also proves descent when the crossing itself is not a factor. Proposition 6.1 isolates the exact local-error equality behind that descent.

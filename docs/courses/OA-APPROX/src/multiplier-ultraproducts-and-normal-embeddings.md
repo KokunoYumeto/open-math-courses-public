@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
-The central sequence algebra uses sequences that asymptotically commute with normal functionals. A larger construction uses every bounded sequence that preserves the sequences vanishing strong*. This multiplier condition is essential for a nontracial algebra. We will prove that the resulting quotient is a von Neumann algebra, with normal copies of the original algebra and its central sequence algebra.
+The [central sequence algebra](central-sequence-algebras-and-exact-lifts.md) uses sequences that asymptotically commute with normal functionals. A larger construction uses every bounded sequence that preserves the sequences vanishing strong*. This multiplier condition is essential for a nontracial algebra. We will prove that the resulting quotient is a von Neumann algebra, with normal copies of the original algebra and its central sequence algebra.
 
 Let \(M\ne0\) have a faithful normal state \(\varphi\), and let \(\omega\) be a free ultrafilter on \(\mathbb N\). Sections 1–4 and 6–7 use only this hypothesis; equivalently, \(M\) is countably decomposable. Section 5 assumes separable predual for its central sequence algebra. No factor hypothesis is imposed until the type I example. Inputs are faithful normal state GNS representations, the bounded strong* topology, \(C^*\)-functional calculus and quotients, the definition of a multiplier by its two multiplication maps, and Kaplansky density.
 

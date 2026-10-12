@@ -60,7 +60,7 @@ such that
 \tag{ECA.3}
 \]
 
-The conclusion is conjugacy of actions, with no cocycle perturbation. Neither factoriality nor an a priori tensor-absorption assumption on \(M\) is necessary.
+The conclusion is conjugacy of actions, with no cocycle perturbation. Neither factoriality nor an a priori tensor-absorption assumption on \(M\) is necessary. Section 8 proves an equivalent criterion in which the square-zero and full-support identities need hold only asymptotically; the Fourier degree remains exact.
 
 The proof uses the earlier bounded functional-to-vector equivalence, AI04, standard form and its positive representatives, SF04–07 and SF10–11, concrete predual calculations, CP04–07, and the complete summable tensor-splitting theorem, TS01–06. All circle-equivariant rounding and complement-filling arguments are proved below.
 
@@ -488,6 +488,34 @@ x\longmapsto\tau(a x b)
 \]
 
 with \(a,b\) in a fixed finite head. Every later \(u_n\) commutes with \(a,b\), and traciality gives an exactly zero functional commutator. Their span is norm dense in \(R_*\): in the faithful trace GNS representation finite-head vectors are dense, rank-one vector coefficients approximate general summable coefficients in norm, and CP04–06 identifies their restrictions with the predual. The uniform bound \(\|u_n\|=1\) extends convergence to every normal functional.
+
+**Proposition 8.1 (the approximate equivariant criterion).** For a nonzero algebra \(M\) with separable predual and a continuous circle action \(\theta\), the following are equivalent:
+
+1. There is a normal conjugacy \((M,\theta)\cong(M\bar\otimes R,\theta\otimes\beta)\).
+2. There is a centralizing sequence of full degree-one halving units as in (ECA.2).
+3. There are centralizing contractions \(x_n\) of exact degree one such that
+
+   \[
+   x_n^2\longrightarrow0,\qquad
+   x_n^*x_n+x_nx_n^*\longrightarrow1
+   \quad\hbox{strongly*}.
+   \tag{ECA.30a}
+   \]
+
+
+**Proof.** Condition 2 implies 3 immediately, and Sections 5–7 prove 2 implies 1. For 3 implies 2, apply the rounding and invariant-complement filling in Sections 3–4. They produce full degree-one halving units \(v_n\) with \(v_n-x_n\to0\) strongly*. The small-error predual estimate (ECA.4) makes \(v_n\) centralizing on the whole algebra. No factoriality or previously known tracial absorption is used.
+
+For 1 implies 2, in \(M\bar\otimes R\) use \(1\otimes e_{12}^{(n)}\). These satisfy the halving relations and have degree one under \(\theta\otimes\beta\). For an elementary normal functional \(\eta\otimes\chi\), its commutator norm is at most
+
+\[
+\|\eta\|\,\|\chi e_{12}^{(n)}-e_{12}^{(n)}\chi\|
+\longrightarrow0
+\tag{ECA.30b}
+\]
+
+by the preceding model calculation. Finite sums of product normal functionals are norm dense in the tensor-product predual: in a faithful tensor representation, approximate each vector by a finite sum of elementary tensor vectors, use the vector-coefficient norm estimate from Section 7, and then truncate the summable vector-coefficient representation of CP04–06. The same coefficient construction gives \(\|\eta\otimes\chi\|\le\|\eta\|\|\chi\|\). Since the commutator maps have norm at most two, (ECA.30b) extends to every normal functional. Pull the units back through the assumed normal conjugacy. Its predual map is an onto isometry, so centrality, exact degree and the halving identities all transfer. This proves the equivalence. \(\square\)
+
+The approximation in condition 3 concerns the two algebraic relations. A small state mass for the missing support alone is insufficient without centrality, and this criterion does not replace exact Fourier degree by an unstated uniform approximation.
 
 **Compression need not preserve ambient centrality.** Let \(M=M_2\bar\otimes R\), let \(u_n=1\otimes e_{12}^{(n)}\), and put \(f=e_{11}\otimes1\). This is a centralizing sequence before compression. Set
 

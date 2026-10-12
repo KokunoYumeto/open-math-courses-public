@@ -4,7 +4,7 @@
 
 An approximately central matrix algebra is a small piece of the hyperfinite factor. Repeatedly placing such pieces in exact relative commutants creates mutually commuting matrix algebras. A summable commutator estimate then forces their infinite product to split off as a spatial tensor factor. This is the mechanism behind strong stability.
 
-We use the central sequence algebra and exact lifting theorem, the [noncommutative-corner theorem](fullness-hypercentrality-and-ultrafilter-corners.md), and the tracial infinite product and [AFD uniqueness](hyperfinite-finite-factors.md) proofs. Other inputs are compact-unitary Haar averaging, finite matrix coordinates and normal state GNS representations. The general theory of weights and conditional expectations stays with its designated prerequisite producer; the finite matrix averages used here are constructed explicitly.
+We use the [central sequence algebra and exact lifting theorem](central-sequence-algebras-and-exact-lifts.md), the [noncommutative-corner theorem](fullness-hypercentrality-and-ultrafilter-corners.md), and the tracial infinite product and [AFD uniqueness](hyperfinite-finite-factors.md) proofs. Other inputs are compact-unitary Haar averaging, finite matrix coordinates and normal state GNS representations. The general theory of weights and conditional expectations stays with its designated prerequisite producer; the finite matrix averages used here are constructed explicitly.
 
 ## 1. Stable and strongly stable factors
 

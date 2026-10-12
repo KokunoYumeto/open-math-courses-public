@@ -459,7 +459,7 @@ is a finite-dimensional unital star subalgebra of their spatial tensor product. 
 
 Let \(C\) be the von Neumann algebra it generates. For each fixed \(j\), unitality gives \(A_i\otimes1\subset C_{i,j}\), for every \(i\). The normal coefficient embedding sends the ultraweak closure of \(\bigcup_iA_i\) into the ultraweakly closed algebra \(C\). Thus \(F_\lambda\otimes1\subset C\). The same reasoning gives \(1\otimes F_\mu\subset C\). These two commuting algebras generate the whole spatial tensor product, so \(C=F_\lambda\bar\otimes F_\mu\). This proves approximate finite dimensionality. If the input approximations are increasing sequences, the diagonal sequence \(A_n\otimes B_n\) has the same generating property.
 
-This establishes the tensor-product assertion without presupposing uniqueness of the approximately finite-dimensional type III₁ factor. That uniqueness is a subsequent theorem.
+This establishes the tensor-product assertion without presupposing uniqueness of the approximately finite-dimensional type III₁ factor. The Powers-model lesson proves that uniqueness separately, with the separable-predual scope stated there.
 
 ## 8. Checks on the circle, the operator factor and irrationality
 

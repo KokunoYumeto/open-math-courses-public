@@ -2,7 +2,7 @@
 
 *CC0-1.0 to the extent of rights held.*
 
-Let \(M\ne0\) be a type \(\mathrm{III}_1\) factor with separable predual. Given normal states \(\phi_0,\psi_0\) and \(\varepsilon>0\), we prove that some unitary \(u\in M\) satisfies
+Let \(M\ne0\) be a type \(\mathrm{III}_1\) factor that is sigma-finite. Given normal states \(\phi_0,\psi_0\) and \(\varepsilon>0\), we prove that some unitary \(u\in M\) satisfies
 
 <a id="equation-hc1"></a>
 
@@ -73,6 +73,19 @@ If \(x\) commutes with \(e\), both \(L_x\) and \(R_x\) commute with \(T_e\). The
 I_{\phi'}(x)\le I_\phi(x).
 \tag{HC6}
 \]
+**Off-diagonal compression.** The same norm contraction holds for any \(x\in M\) with \(x=(1-e)xe\), including the partial isometries used in a complementary corner. Put \(Q=L_{1-e}R_e\). Its two factors are commuting orthogonal projections, so \(Q\) is an orthogonal projection. Direct expansion of \(T_e\) and the two support identities for \(x\) give
+\[
+ x\xi'-\xi'x=x\xi e-(1-e)\xi x
+ =Q(x\xi-\xi x).
+\]
+Consequently
+<a id="equation-hc6b"></a>
+\[
+ \|x\xi'-\xi'x\|\leq\|x\xi-\xi x\|.
+ \tag{HC6b}
+\]
+This uses the Hilbert-space projection onto the off-diagonal block; it requires neither faithfulness nor normalization of the cone vector.
+
 Also, if a projection \(a\) satisfies \(a\xi=\xi a\) and \(ae=0\), then
 
 <a id="equation-hc7"></a>
@@ -102,7 +115,7 @@ Two corner details will be needed. If \(p=s(\phi)\), then \(\xi=p\xi p\), and CR
 
 ## HC3. A small partial isometry between prescribed centralizer corners
 
-Let \(\phi\) be faithful and finite on a type \(\mathrm{III}_1\) factor with separable predual, with cone vector \(\xi\). Let \(e',f'\) be nonzero projections fixed by \(\sigma^\phi\). The complete TS/AL argument provides, for every \(h>0\), a nonzero
+Let \(\phi\) be faithful and finite on a type \(\mathrm{III}_1\) factor that is sigma-finite, with cone vector \(\xi\). Let \(e',f'\) be nonzero projections fixed by \(\sigma^\phi\). The complete TS/AL argument provides, for every \(h>0\), a nonzero
 
 <a id="equation-hc9"></a>
 
@@ -141,9 +154,17 @@ I_\phi(u^*u)\le\tau\phi(u^*u),\qquad
 I_\phi(uu^*)\le\tau\phi(uu^*).
 \tag{HC11}
 \]
-This reparameterization is part of the proof. No membership of \(u\) in the centralizer is asserted.
+This reparameterization is part of the proof.
 
-The same statement holds for a finite positive \(\phi\) on its faithful support, provided \(e',f'\le s(\phi)\) and their restrictions commute with the restricted functional. HC2 gives the unchanged cone norms, CZ0 puts the projections in that restricted modular centralizer, and CT makes the nonzero support corner a type \(\mathrm{III}_1\) factor with separable predual. These facts justify application of the faithful case. TS3 and MC give the identical statement in every required balanced \(2\times2\) matrix corner.
+For the unsquared commutator formulation, given \(\varepsilon>0\), choose \(0<\zeta\leq\min(1/3,\varepsilon/\sqrt6)\) in the same construction. Then
+\[
+ c_\phi(u)\leq\varepsilon s_\phi(u),\qquad
+ c_\phi(e)\leq\varepsilon\phi(e)^{1/2},\qquad
+ c_\phi(f)\leq\varepsilon\phi(f)^{1/2}.
+\]
+Indeed \(c_\phi(u)\leq\zeta s_\phi(u)\), while HC10 gives \(c_\phi(e)^2=2I_\phi(e)\leq6\zeta^2p\) and the corresponding bound with \(r\) for \(f\). Faithfulness and the positive cutoff mass make \(u,e,f\) nonzero. The conclusion places \(u\) in \(f'Me'\); it does not place \(u\) in the centralizer.
+
+The same statement holds for a finite positive \(\phi\) on its faithful support, provided \(e',f'\le s(\phi)\) and their restrictions commute with the restricted functional. HC2 gives the unchanged cone norms, CZ0 puts the projections in that restricted modular centralizer, and CT makes the nonzero support corner a type \(\mathrm{III}_1\) factor that is sigma-finite. These facts justify application of the faithful case. TS3 and MC give the identical statement in every required balanced \(2\times2\) matrix corner.
 
 <a id="oa-flow.hc.4"></a>
 
@@ -181,7 +202,9 @@ The zero triple qualifies. Order these triples by requiring \(w'=w+v\), where \(
 \end{gathered}
 \tag{HC13}
 \]
-In particular \(a\le a'\), \(b\le b'\). This is a partial order: two successive increments have orthogonal initial and final projections, and their vector increments have orthogonal left supports. Thus squared vector norms and state budgets add, proving transitivity. If both directions hold then the supports coincide, the partial-isometry increment is zero, and both norm budgets are zero; the triples coincide.
+Equivalently, the operator extension conditions are \(w'a=w\) and \(w'^*b=w^*\). The supported-increment definition implies them immediately. Conversely those two equations give \(w'^*w=a=w^*w'\) and \(w'w^*=b=ww'^*\), hence \(a'a=a\) and \(b'b=b\). Thus \(a\le a'\), \(b\le b'\), and \(v=w'-w\) satisfies \(v^*v=a'-a,\ vv^*=b'-b\), as required. Since both defect vectors already have their respective left supports, the increment condition \((a'-a)(\alpha'-\alpha)=\alpha'-\alpha\) is equivalent to \(a(\alpha'-\alpha)=0\); the same argument applies to \(\beta\).
+
+This is a partial order: two successive increments have orthogonal initial and final projections, and their vector increments have orthogonal left supports. Thus squared vector norms and state budgets add, proving transitivity. If both directions hold then the supports coincide, the partial-isometry increment is zero, and both norm budgets are zero; the triples coincide.
 
 Here is the full chain argument. Along a chain, strict extension strictly increases \(\phi_0(a)\): equality of these numbers gives \(a=a'\) by faithfulness, hence equality of triples. If a nonempty chain has no maximum, write \(s\) for the supremum of its numbers and choose successively an increasing sequence of chain elements with numbers larger than \(s-1/n\); take the larger of the preceding choice and the new choice at each step. Every chain element has number strictly below \(s\), since an element attaining \(s\) would be a maximum. The sequence is therefore cofinal.
 
@@ -195,6 +218,12 @@ For this sequence \(a_n\uparrow a\), \(b_n\uparrow b\) strongly by PC1, and for 
 \tag{HC14}
 \]
 Thus \(w_n\to w\) and \(w_n^*\to w^*\) strongly, with \(w\in M\), \(w^*w=a\), \(ww^*=b\). The bounded strong product passage follows, for example, by adding and subtracting \(w_n^*wh\); \(M\) is strongly closed. Normality in HC13 makes \(\alpha_n,\beta_n\) norm Cauchy. Let their limits be \(\alpha,\beta\). Norm-closedness of \(P\), strong convergence of the bounded left actions and \(R_{w_n}=Jw_n^*J\), and the vector norm estimates pass every line of HC12 to the limit. The budgets use \(\phi_0(a_n)\uparrow\phi_0(a)\) and its analogue for \(b_n\).
+
+The convergence of \(w_n\) is also sigma-strong-star. For a square-summable family \((h_j)\), the bound \(\|w_n-w\|\le2\) gives
+\[
+ \sum_j\|(w_n-w)h_j\|^2\longrightarrow0:
+\]
+first keep finitely many terms, which tend to zero by strong convergence, and then bound the remaining sum by \(4\sum_{\rm tail}\|h_j\|^2\). Apply the identical argument to the adjoints. These are the defining vector-family seminorms of the sigma-strong-star topology. [CP6](OA-FLOW-CP.md#oa-flow.cp.6) also makes the assertion intrinsic: its square-summable vector-series formula, with the same finite-head and uniformly bounded tail argument, gives \(f((w_n-w)^*(w_n-w))\to0\) and \(f((w_n-w)(w_n-w)^*)\to0\) for every normal positive \(f\).
 
 For each fixed index the same limits in HC13 prove that this limit triple dominates that index. Cofinality and transitivity then dominate the whole chain. A chain with a maximum already has an upper bound, and the empty chain is bounded by the zero triple. CF1's maximal principle supplies a maximal triple.
 
@@ -220,7 +249,7 @@ E_2=\operatorname{diag}(0,f).
 \]
 The restricted functional on \(E_0NE_0\) is faithful: zero value of a positive matrix forces both positive diagonal entries to vanish, by the just-proved faithfulness. Its off-diagonal entry is then zero too, since for a positive operator \(X\), a diagonal vector of zero quadratic value is killed by \(X^{1/2}\). Its representing vector in the corner standard form is \(E_0\Omega E_0\). This corner functional, extended by compression to \(N\), has support exactly \(E_0\); no such support claim is made about \(\Theta\) on all of \(N\).
 
-The projections \(E_1,E_2\) commute with this corner vector, so CZ0 makes them centralizer projections for the faithful restriction. CT makes the corner a type \(\mathrm{III}_1\) factor with separable predual. Apply HC11 there with
+The projections \(E_1,E_2\) commute with this corner vector, so CZ0 makes them centralizer projections for the faithful restriction. CT makes the corner a type \(\mathrm{III}_1\) factor that is sigma-finite. Apply HC11 there with
 \[
 \tau=\frac{\delta}{2(1+\delta)}.
 \]
@@ -289,6 +318,19 @@ I_{\Theta'}(W+U)
 \tag{HC20}
 \]
 because \(\tau/(1-\tau)=\delta/(2+\delta)\le\delta\). Thus HC17 is an admissible strict extension satisfying HC13, a contradiction. A maximal triple has \(a=1\) or \(b=1\).
+
+**Independent error budgets.** We will also use the construction with positive constants \(d,k\): replace \(\delta\) by \(d\) in both defect-vector budgets of HC12 and in HC13, and by \(k\) in the commutator budget of HC12. The zero triple, partial order, cofinal sequence and all chain limits have the same proofs. For the extension choose
+\[
+ \tau=\min\left(\frac d2,\frac{k}{2(1+k)}\right).
+\]
+Then \(\tau\le d\) proves HC18 with budget \(d\), and \(\tau/(1-\tau)\le k/(2+k)\le k\) proves HC20 with budget \(k\). Thus this exact two-budget ordered set also has a maximal triple with \(a=1\) or \(b=1\).
+
+For \(\Theta=\phi\oplus\psi\), set \(\|Z\|_\Theta^\#=q_\Theta(Z)/\sqrt2\). Since \(c_\Theta(Z)^2=2I_\Theta(Z)\), the commutator budget is
+\[
+ c_\Theta(w\otimes E_{21})^2
+ \le 4k\|w\otimes E_{21}\|_\Theta^{\#\,2}.
+\]
+In particular \(d=r,\ k=r/4\) gives defect budgets \(r\) and the symmetric-norm commutator budget \(r\) simultaneously. This changes the two parameters of the construction, rather than identifying two differently normalized admissible sets.
 
 <a id="oa-flow.hc.6"></a>
 
@@ -366,6 +408,43 @@ Choose \(n\) making this last error smaller than \(\sqrt\delta\). Insert \(\phi^
 <(4+1+4+8+4)\sqrt\delta=21\sqrt\delta .
 \tag{HC27}
 \]
+**Quantitative completion on two vectors.** One can also bound the adjoint error on \(\eta\) explicitly. Use the two-budget construction with \(0<r<1/16\), \(d=r,\ k=r/4\), and assume \(a=1\). Its vector defects satisfy
+\[
+ \|\xi_0-\xi\|,\|\eta_0-\eta\|\le2\sqrt r,\qquad
+ c:=\|w\xi-\eta w\|\le\sqrt r,
+\]
+because \(\|w\otimes E_{21}\|_\Theta^{\#\,2}=(\phi(1)+\psi(b))/2\le1\). Thus
+\[
+ \sqrt{\psi(b)}=\|\eta w\|
+ \ge\|\xi\|-c\ge1-3\sqrt r>0,\qquad
+ \psi(1-b)\le1-(1-3\sqrt r)^2\le6\sqrt r.
+\]
+Using the same nonzero tail projections as above, choose \(e\ne0\) with \(\phi(e)<r\) and \(\psi(wew^*)<r\); both normal functionals tend to zero on those tails. Put \(f=1-b+wew^*\), choose \(v^*v=e,\ vv^*=f\) by PC8, and put \(u=w(1-e)+v\). Orthogonality of the initial and final supports again makes \(u\) unitary, and
+\[
+ \psi(f)\le6\sqrt r+r,\qquad
+ \|(u-w)\xi\|\le2\sqrt{\phi(e)}<2\sqrt r.
+\]
+Since \(u^*-w^*=v^*-ew^*\),
+<a id="equation-hc27b"></a>
+\[
+ \|(u^*-w^*)\eta\|
+ \le\sqrt{\psi(f)}+\sqrt{\psi(wew^*)}
+ \le2\sqrt{6\sqrt r+r}.
+ \tag{HC27b}
+\]
+Here the second summand is the norm of \(ew^*\eta\). Applying \(J\) shows that the left side equals \(\|\eta(u-w)\|\); this estimate concerns this particular vector and does not assert strong convergence of adjoints.
+
+The vectors \(u\xi,\eta u\) have norm at most one and represent \(\phi^u,\psi\), because the right action of a unitary is unitary and commutes with the left algebra. HC3 bounds their functional difference by twice their vector difference. Adding the two state errors, each at most \(4\sqrt r\), proves
+<a id="equation-hc27c"></a>
+\[
+ \|\phi_0^u-\psi_0\|
+ \le8\sqrt r+2\|u\xi-\eta u\|
+ <14\sqrt r+4\sqrt{6\sqrt r+r}
+ <25r^{1/4}.
+ \tag{HC27c}
+\]
+For the last inequality set \(t=r^{1/4}<1/2\); after division by \(t\) the middle bound is \(14t+4\sqrt{6+t^2}<7+10=17<25\). Choosing also \(r<(\varepsilon/25)^4\) gives the desired error. The estimate HC27 is sharper when only the functional error is needed; HC27b additionally controls the adjoint on the specified vector.
+
 If \(b=1\) instead, exchange \((w,\alpha,\beta,\xi,\eta)\) with \((w^*,\beta,\alpha,\eta,\xi)\). HC12 is preserved, because applying \(J\) to its commutator changes its sign and adjoints it as in FP2. The isometry case yields \(v\) with \(\|\psi_0^v-\phi_0\|<21\sqrt\delta\). Conjugation by \(v^*\) gives HC27 with \(u=v^*\). Taking \(\delta<\min(1/16,(\varepsilon/21)^2)\) proves HC1 for faithful states.
 
 <a id="oa-flow.hc.7"></a>
@@ -385,7 +464,7 @@ For arbitrary normal states \(\phi_0,\psi_0\) and \(0<r<1\), define
 \psi_r=(1-r)\psi_0+r\omega .
 \tag{HC28}
 \]
-Both are faithful and \(\|\phi_r-\phi_0\|,\|\psi_r-\psi_0\|\le2r\). Thus faithful normal states are norm dense whenever a faithful normal state exists. For HC1 choose \(0<r<\min(1,\varepsilon/4)\), and apply the faithful result with error \(\varepsilon-4r\); two triangle inequalities finish the proof. The homogeneity theorem retains its separable-predual type-\(\mathrm{III}_1\) hypotheses.
+Both are faithful and \(\|\phi_r-\phi_0\|,\|\psi_r-\psi_0\|\le2r\). Thus faithful normal states are norm dense whenever a faithful normal state exists. For HC1 choose \(0<r<\min(1,\varepsilon/4)\), and apply the faithful result with error \(\varepsilon-4r\); two triangle inequalities finish the proof. The homogeneity theorem has the sigma-finite type-\(\mathrm{III}_1\) hypotheses.
 
 For any nonzero von Neumann algebra let \(S_*(M)\) be its normal state space and \(\mathcal O_\phi=\{\phi^u:u\in\mathcal U(M)\}\). Define
 
