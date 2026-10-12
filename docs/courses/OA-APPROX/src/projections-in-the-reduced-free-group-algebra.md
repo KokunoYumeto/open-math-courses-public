@@ -2,36 +2,130 @@
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
 
-The reduced \(C^*\)-algebra \(A=C_r^*(\mathbb F(a,b))\) has only two projections: \(0\) and \(1\). Its von Neumann closure is a factor of type \(\mathrm{II}_1\) with many projections, so the assertion concerns the norm-closed algebra. We prove it by comparing two representations that differ by trace-class operators on a dense algebra.
+For the rank-two free group \(\Gamma=\mathbb F(a,b)\), the norm-closed algebra \(A=C_r^*(\Gamma)\) has only the projections \(0,1\). The mechanism is an integer trace: a projection can be moved into a dense algebra where its canonical trace is the trace of a trace-class difference of two projections. All eigenvalues of that difference except \(1,-1\) cancel in equal-multiplicity pairs.
 
-We use the faithful canonical trace from the [group factor lesson](central-sequences-and-free-group-factors.md) and the [norm-averaging result](free-group-norm-averaging.md). Foundational prerequisites are the compact self-adjoint spectral theorem, trace-class completeness and its two-sided ideal bound, absolute diagonal summation for the trace, and the holomorphic functional calculus with surrounding cycles. The exact foundational proof scopes remain prerequisites; selected free trace-class methods are identified below. The representation comparison, trace-class closure, projection perturbation and integer trace calculation are proved below.
+The [complete free-word, arbitrary-index Hilbert-space and faithful-trace construction](free-group-norm-averaging.md#free-word-and-operator-inputs) supplies \(A\) and its trace \(\tau\); its norm-averaging theorem is not required here. The [complete analytic module](../components/free-group-projection-analytic-inputs.md) supplies compact spectral decomposition, the Banach trace ideal and its absolute diagonal trace, and general holomorphic contour calculus, including different representation units. We develop the integer mechanism first and then construct the representation difference and its domain.
 
-Write \(\Gamma=\mathbb F(a,b)\), \(H=\ell^2(\Gamma)\), \(P\) for the projection onto \(\mathbb C\delta_e\), and \(p=1-P\). Inner products are linear in the second variable.
+Put \(H=\ell^2(\Gamma)\), let \(P\) project onto \(\mathbb C\delta_e\), and write \(p=1-P\). Inner products are linear in the second variable.
 
-## 1. Removing the identity from the regular representation
+## 0. The integer-trace target
 
-On \(H'=pH\), define two permutations of its basis by
+**Theorem 5.2.** Every projection \(e\in C_r^*(\mathbb F(a,b))\) has integer canonical trace. Consequently the only projections are \(0\) and \(1\).
+
+**Proof.** Lemma 5.1 below gives a unitary \(u\in A\) and a projection \(q\in A_0\) with \(ueu^*=q\). Lemma 4.1 identifies \(\tau(q)\) with the trace of \(\pi(q)-\rho(q)\). Both terms are projections, and their difference is trace class by the definition of \(A_0\). Lemma 4.2 makes its trace an integer. Traciality gives \(\tau(e)=\tau(q)\), while positivity and normalization place \(\tau(e)\) in \([0,1]\). If the integer is zero, faithfulness gives \(e=0\); if it is one, faithfulness applied to \(1-e\) gives \(e=1\). The lemmas are proved in full below, and the analytic inputs in the linked module. \(\square\)
+
+This statement concerns \(A\) itself. The projection \(\operatorname{diag}(1,0)\in M_2(A)\) is nontrivial, and its unnormalized matrix trace is \(1\) even though the matrix unit has trace \(2\). Passing to the von Neumann closure is another operation; the argument here makes no projection-absence assertion there.
+
+## 1. Move a projection into the trace-class domain
+
+<a id="5-bringing-every-projection-into-the-dense-algebra"></a>
+
+The dense domain \(A_0=\{x:\pi(x)-\rho(x)\in\mathcal S_1(H)\}\) will be constructed in Section 4. Its polynomials, completeness and full holomorphic closure are proved there and in Section 5. They suffice for the following local spectral-gap construction.
+
+**Lemma 5.1.** Every projection \(e\in A\) is unitarily conjugate within \(A\) to a projection \(q\in A_0\).
+
+**Proof.** Approximate \(e=e^*\) by a group polynomial and average that polynomial with its adjoint. We obtain a self-adjoint polynomial \(h\in A_0\) with \(\delta=\|h-e\|<1/4\). For a real \(z\) whose distance to \(\{0,1\}\) exceeds \(\delta\), the continuous calculus of \(e\) and the Neumann perturbation formula make \(z-h\) invertible. The self-adjoint spectrum is real, so
+\[
+\operatorname{Sp}_A(h)\subset[-\delta,\delta]\cup[1-\delta,1+\delta].
+\tag{18}
+\]
+Choose a function \(f\) equal to zero near the first cluster and one near the second. Its domain is the disjoint union of those neighborhoods, and it is holomorphic there. The complete Theorem 3.1 below gives \(q=f(h)\in A_0\). Agreement of holomorphic and continuous calculus in [PA4](../components/free-group-projection-analytic-inputs.md#pa-holomorphic-calculus) makes \(q=q^*=q^2\).
+
+The circle \(|z-1|=1/2\) encloses just the second cluster. Choose the constant-one neighborhood to include this circle; a disjoint smaller neighborhood of the zero cluster still contains that cluster. PA3–4 prove the exact circle Riesz formula and its length \(\pi\). On the circle \(\|(z-e)^{-1}\|\leq2\), and the Neumann perturbation bound gives \(\|(z-h)^{-1}\|\leq(1/2-\delta)^{-1}\). The resolvent difference is
+\((z-h)^{-1}(h-e)(z-e)^{-1}\).
+Subtracting the two Riesz integrals and using the length bound consequently gives
+\[
+\|q-e\|\leq\frac{\delta}{1/2-\delta}<1.
+\tag{19}
+\]
+
+Define \(v=qe+(1-q)(1-e)\). Expanding the products yields
+\[
+ve=qv,\qquad v^*v=vv^*=1-(e-q)^2=:d.
+\]
+The identity \((e-q)^2e=e(e-q)^2=e-eqe\), and its version with \(q\), show that \(d\) commutes with \(e,q\), and therefore with \(v\). Its spectrum is bounded below by \(1-\|e-q\|^2>0\), so the full continuous positive calculus gives \(d^{-1/2}\in A\). Thus
+\[
+u=v\bigl(1-(e-q)^2\bigr)^{-1/2}\in A
+\tag{20}
+\]
+satisfies \(u^*u=uu^*=1\) and \(ue=qu\). It is a unitary with \(ueu^*=q\), as required. This constructs an actual nearby projection and an actual unitary, rather than treating norm density as continuity of the unbounded trace. \(\square\)
+
+## 2. Why the projection difference has an integer trace
+
+<a id="4-recovering-the-canonical-trace"></a>
+
+**Lemma 4.2.** If \(E,F\) are projections on any Hilbert space and \(E-F\) is trace class, then
+\[
+\operatorname{Tr}(E-F)
+=\dim(EH\cap\ker F)-\dim(FH\cap\ker E)\in\mathbb Z.
+\tag{15}
+\]
+
+**Proof.** Set \(B=E-F\), \(C=E+F-1\). Expansion using \(E^2=E,F^2=F\) gives
+\[
+BC=-CB,\qquad B^2+C^2=1.
+\tag{16}
+\]
+Since \(B\) is self-adjoint trace class, [PA1–2](../components/free-group-projection-analytic-inputs.md#pa-compact-spectral) supply its complete compact eigenspace decomposition and absolutely summable eigenvalues. The order inequalities \(-1\leq B\leq1\) put all those eigenvalues in \([-1,1]\).
+
+For \(B\xi=t\xi\) with \(0<|t|<1\), anticommutation gives \(B(C\xi)=-tC\xi\). On that eigenspace \(C^2=(1-t^2)1\), so \(C/\sqrt{1-t^2}\) is an isometry onto the opposite eigenspace, with the same map as its inverse. These finite-dimensional eigenspaces therefore have equal dimensions. Their \(t,-t\) contributions cancel in the absolutely convergent trace sum.
+
+For the endpoint \(t=1\), the equality
+\(\langle\xi,B\xi\rangle=\|E\xi\|^2-\|F\xi\|^2=\|\xi\|^2\)
+forces \(E\xi=\xi,F\xi=0\), and these conditions conversely give \(B\xi=\xi\). Hence this eigenspace is \(EH\cap\ker F\). Exchanging \(E,F\) identifies the \(-1\) eigenspace. Each endpoint has finite multiplicity by compactness; the zero eigenspace contributes zero, even if it has arbitrary dimension. Only the difference of the two endpoint dimensions remains, proving the displayed formula and its integrality. \(\square\)
+
+<a id="paired-projection-spectrum"></a>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="350" viewBox="0 0 780 350" role="img" aria-labelledby="projection-pair-title projection-pair-desc" style="display:block;min-width:780px;background:#f8fafc">
+<title id="projection-pair-title">The paired spectrum and the two finite endpoint defects</title>
+<desc id="projection-pair-desc">For B equal to E minus F and C equal to E plus F minus one, eigenvalues t and minus t with zero less than t less than one have equal finite multiplicities through C divided by the square root of one minus t squared. Their absolute trace sum cancels. The eigenvalue plus one is E H intersect kernel F, and minus one is F H intersect kernel E. Both dimensions are finite. The trace is their dimension difference; the arbitrary-dimensional zero eigenspace contributes zero.</desc>
+<defs><marker id="projection-pair-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#334155"/></marker></defs>
+<g fill="#fff" stroke="#64748b" stroke-width="1.5"><rect x="24" y="42" width="232" height="82" rx="8"/><rect x="516" y="42" width="240" height="82" rx="8"/><rect x="24" y="198" width="330" height="80" rx="8"/><rect x="426" y="198" width="330" height="80" rx="8"/></g>
+<g font-family="Arial,sans-serif" font-size="19" fill="#0f172a" text-anchor="middle"><text x="140" y="74">ker(B − t), 0 &lt; t &lt; 1</text><text x="140" y="105">finite dimension m</text><text x="636" y="74">ker(B + t)</text><text x="636" y="105">same dimension m</text><text x="189" y="230">ker(B − 1) = EH ∩ ker F</text><text x="189" y="258">finite dimension n₊</text><text x="591" y="230">ker(B + 1) = FH ∩ ker E</text><text x="591" y="258">finite dimension n₋</text><text x="390" y="158">mt + m(−t) = 0; all such pairs are absolutely summable.</text><text x="390" y="319">Tr(E − F) = n₊ − n₋ ∈ ℤ; ker B contributes 0.</text></g>
+<path d="M266 82H505" stroke="#334155" stroke-width="2" marker-end="url(#projection-pair-arrow)"/>
+<g font-family="Arial,sans-serif" font-size="16" fill="#0f172a" text-anchor="middle"><text x="390" y="52">C / √(1 − t²)</text><text x="390" y="115">onto isometry, its own inverse</text><text x="390" y="24">B = E − F; C = E + F − 1</text></g>
+</svg>
+
+The diagram depicts the exact finite-dimensional eigenspaces in Lemma 4.2, with their multiplicities left as variables. Trace-class absolute summation justifies cancellation of all the interior pairs.
+
+**Lemma 4.1.** For every \(x\in A_0\),
+\[
+\operatorname{Tr}D(x)=\tau(x).
+\tag{14}
+\]
+
+**Proof.** Every diagonal coefficient of the regular representation \(\pi\) equals \(\tau(x)\). For a polynomial this follows by checking whether left multiplication fixes a basis word; uniform polynomial approximation extends it to any \(x\in A\). Section 3's unitary realizes \(\rho\) on \(pH\) as two regular copies and maps regular basis vectors to the actual basis vectors of \(pH\). Each of its diagonals away from \(e\) is therefore also \(\tau(x)\), whereas its diagonal at \(e\) is zero because \(\rho\) is supported on \(p\).
+
+Thus \(D(x)=\pi(x)-\rho(x)\) has diagonal zero away from \(e\), and diagonal \(\tau(x)\) at \(e\). For \(x\in A_0\), PA2's complete absolute diagonal formula applies to this actual trace-class operator and gives the assertion. The argument never approximates its trace by operator-norm approximants. In particular a projection \(q\in A_0\) satisfies
+\[
+\tau(q)=\operatorname{Tr}\bigl(\pi(q)-\rho(q)\bigr)\in\mathbb Z.
+\tag{17}
+\]
+Here \(\rho(q)\) is an orthogonal projection on all of \(H\), with zero action on \(PH\); a representation need not have full unit in order to preserve a projection. \(\square\)
+
+## 3. Construct the representation with one missing basis vector
+
+<a id="1-removing-the-identity-from-the-regular-representation"></a>
+
+On \(H'=pH\), use
 \[
 T_s\delta_g=\begin{cases}
 \delta_s,&g=s^{-1},\\
 \delta_{sg},&g\ne s^{-1},
-\end{cases}
-\qquad s=a,b,\quad g\ne e.
+\end{cases}\qquad s=a,b,\quad g\ne e.
 \tag{1}
 \]
-The ordinary left translation would send \(\delta_{s^{-1}}\) to the missing vector \(\delta_e\); formula (1) sends it to \(\delta_s\), which had the missing predecessor \(e\). This is a bijection of the remaining basis. Its inverse has the same formula with \(s\) replaced by \(s^{-1}\). The free generators therefore define a unitary representation \(\lambda'\) of \(\Gamma\) on \(H'\).
+Ordinary left multiplication loses the step \(s^{-1}\mapsto e\) and the predecessor \(e\mapsto s\) when \(e\) is removed. Joining them into \(s^{-1}\mapsto s\) makes a basis bijection. Its inverse joins \(s\mapsto s^{-1}\) instead, which is the same formula for \(s^{-1}\). The free universal property proved in the earlier word construction gives a unitary group representation \(\lambda'\) on \(H'\).
 
-We need more than a representation of the abstract group: we must show it extends to the reduced norm.
-
-For \(c=a,b\), define a bijection \(\phi_c:\Gamma\to\Gamma_c\), where \(\Gamma_c\) is the set of words ending in \(c\) or \(c^{-1}\), by
+For \(c=a,b\), let \(\Gamma_c\) be the nonempty words whose final letter is \(c\) or \(c^{-1}\). The maps
 \[
 \phi_c(w)=\begin{cases}
 w,&w\text{ ends in }c^{-1},\\
-wc,&\text{otherwise}.
+wc,&\text{otherwise}
 \end{cases}
 \tag{2}
 \]
-In the second case appending \(c\) causes no cancellation. Words ending in \(c^{-1}\) are their own preimage; words ending in \(c\) have preimage obtained by removing their last \(c\). These two rules prove bijectivity.
+are bijections from \(\Gamma\) onto \(\Gamma_c\). The second line causes no cancellation. A word ending in \(c^{-1}\) is its own inverse image; from a word ending in \(c\), remove its last letter to recover the unique inverse image.
 
 **Lemma 1.1.** The map
 \[
@@ -42,56 +136,54 @@ U:H\oplus H\longrightarrow H',
 \]
 is unitary and intertwines \(\lambda\oplus\lambda\) with \(\lambda'\).
 
-**Proof.** The disjoint sets \(\Gamma_a,\Gamma_b\) partition the nonidentity words, so (3) sends an orthonormal basis bijectively onto an orthonormal basis. For each letter \(s=a^{\pm1},b^{\pm1}\), direct reduction gives
+**Proof.** The two terminal-letter sets partition the nonidentity words, so the displayed map is a basis bijection and extends to a unitary. It remains to check the action for each letter \(s=a^{\pm1},b^{\pm1}\):
 \[
 T_s\delta_{\phi_c(w)}=\delta_{\phi_c(sw)}.
 \tag{4}
 \]
-Here \(T_{s^{-1}}=T_s^*\). Away from \(w=e\) and \(w=s^{-1}\), multiplication on the left preserves the terminal letter, so (4) is ordinary concatenation and reduction. The exceptional modified step can occur only when \(\phi_c(w)=s^{-1}\), which means \(w=e,s=c^{-1}\), or \(w=c^{-1},s=c\); these are among the two boundary cases. They give respectively \(\phi_c(c^{-1})=c^{-1}\) and \(\phi_c(e)=c\), exactly as (1) requires. In the other boundary cases, cancelling \(s^{-1}\) against \(s\) leaves the appended \(c\), again \(\phi_c(e)\). Thus (4) holds for every letter, and hence every word. \(\square\)
+If \(w\) has length at least two, left multiplication can remove at most its first letter and does not change its final letter. Appending \(c\), or leaving a terminal \(c^{-1}\) unchanged, therefore commutes with that step. For a one-letter word, the only change of terminal letter occurs at \(w=s^{-1}\). If \(c\) is not the underlying generator of \(s\), the appended \(c\) remains after the cancellation and equals \(\phi_c(e)\). If \(s=c\), the modified step sends \(c^{-1}\) to \(c=\phi_c(e)\). If \(s=c^{-1}\), the ordinary step sends \(c^2\) to \(c=\phi_c(e)\).
 
-Consequently \(\lambda'\) extends isometrically to a representation of \(A\). On \(H\) let \(\rho(x)\) denote this representation extended by zero on \(\mathbb C\delta_e\). It is a star homomorphism supported on \(p\), with
+For \(w=e\), \(\phi_c(e)=c\). If \(s=c^{-1}\), the modified step sends \(c\) to \(c^{-1}=\phi_c(c^{-1})\). Every other letter gives the ordinary word \(sc=\phi_c(s)\). These cases exhaust the possible boundary cancellations and prove the formula. Composing the letter identities proves intertwining for every group word. \(\square\)
+
+Thus \(\lambda'\) extends isometrically to the reduced norm, since a direct sum of two regular copies has precisely the original operator norm. Extend it by zero on \(PH\), obtaining a \*-homomorphism \(\rho:A\to B(H)\) with
 \[
 \rho(1)=p,\qquad \rho(x)P=P\rho(x)=0.
 \tag{5}
 \]
-The original representation is \(\pi(x)=x\). Define
+Let \(\pi(x)=x\) and
 \[
-D(x)=\pi(x)-\rho(x).
+D(x)=\pi(x)-\rho(x),\qquad D(1)=P.
 \tag{6}
 \]
-In particular \(D(1)=P\), rather than zero.
 
-## 2. Finite differences and a dense algebra
+## 4. A dense graph algebra with a complete trace norm
 
-For vectors \(\xi,\eta\), put \(\theta_{\xi,\eta}\zeta=\xi\langle\eta,\zeta\rangle\). Formula (1), also for inverse letters, gives
+<a id="2-finite-differences-and-a-dense-algebra"></a>
+
+For each generator or inverse letter, its two changed basis columns give
 \[
-D(\lambda_s)
-=\theta_{\delta_s,\delta_e}
+D(\lambda_s)=\theta_{\delta_s,\delta_e}
  +\theta_{\delta_e-\delta_s,\delta_{s^{-1}}}.
 \tag{7}
 \]
-It vanishes on every other basis vector and has rank \(2\). For arbitrary \(x,y\in A\), multiplicativity gives the exact identity
+It has rank two. Multiplicativity and adjoints give
 \[
-D(xy)=\pi(x)D(y)+D(x)\rho(y),
-\qquad D(x^*)=D(x)^*.
+D(xy)=\pi(x)D(y)+D(x)\rho(y),\qquad D(x^*)=D(x)^*.
 \tag{8}
 \]
-Thus \(D(\lambda_g)\) has finite rank for every group element, by induction on word length; for \(g\ne e\) its rank is at most \(2\ell(g)\).
-
-Let \(\mathcal S_1(H)\) be the trace-class operators and define
+Finite induction on word length makes every \(D(\lambda_g)\) finite rank; for \(g\ne e\), its rank is at most \(2\ell(g)\). The identity is a separate rank-one difference. Put
 \[
 A_0=\{x\in A:D(x)\in\mathcal S_1(H)\}.
 \tag{9}
 \]
-Recall the prerequisite inequalities and trace formula:
+The complete PA2 construction supplies
 \[
-\|BTC\|_1\le\|B\|\|T\|_1\|C\|,
-\qquad |\operatorname{Tr}T|\le\|T\|_1,
-\qquad
-\operatorname{Tr}T=\sum_g\langle\delta_g,T\delta_g\rangle,
+\|BTC\|_1\leq\|B\|\|T\|_1\|C\|,\qquad
+|\operatorname{Tr}T|\leq\|T\|_1,\qquad
+\operatorname{Tr}T=\sum_g\langle\delta_g,T\delta_g\rangle
 \tag{10}
 \]
-where the last sum is absolutely convergent.
+with an absolutely convergent final sum.
 
 **Lemma 2.1.** The set \(A_0\) is a norm-dense unital star subalgebra of \(A\). It is complete in the graph norm
 \[
@@ -99,128 +191,64 @@ where the last sum is absolutely convergent.
 \tag{11}
 \]
 
-**Proof.** The ideal inequality and (8) give closure under products and adjoints; \(D(1)=P\) is trace class. Finite group polynomials belong to \(A_0\) by (7)–(8), so it is norm dense. Also (8) bounds the graph norm of a product by the product of the graph norms. If \(x_n\) is graph-norm Cauchy, then \(x_n\to x\) in \(A\) and \(D(x_n)\to T\) in trace norm. Since \(D:A\to B(H)\) is operator-norm bounded and trace norm dominates operator norm, \(D(x)=T\). Thus \(x\in A_0\), proving completeness. \(\square\)
+**Proof.** The product identity and the proved ideal bound place products in \(A_0\); the adjoint isometry places adjoints there. The unit belongs because \(P\) is trace class. Every group polynomial belongs by the finite-rank induction, giving operator-norm density. The product identity also gives
+\[
+\|D(xy)\|_1\leq\|x\|\|D(y)\|_1+\|D(x)\|_1\|y\|,
+\]
+so the graph norm is submultiplicative.
 
-Density alone does not show that every element of \(A\) has trace-class difference. We will use a spectral-gap projection construction inside \(A_0\).
+For a graph-norm Cauchy sequence, completeness of \(A\) gives \(x_n\to x\) in operator norm and PA2's Banach completeness gives \(D(x_n)\to T\) in trace norm. The bound \(\|D(z)\|\leq2\|z\|\) makes its operator-norm limit \(D(x)\); domination of operator norm by trace norm makes that same limit \(T\). Thus \(D(x)=T\in\mathcal S_1\), and convergence holds in the graph norm as well. \(\square\)
 
-## 3. Holomorphic closure with the missing unit retained
+## 5. Preserve the whole holomorphic domain
+
+<a id="3-holomorphic-closure-with-the-missing-unit-retained"></a>
 
 **Theorem 3.1.** If \(x\in A_0\) and \(f\) is holomorphic on a neighborhood of \(\operatorname{Sp}_A(x)\), then \(f(x)\in A_0\).
 
-**Proof.** For \(z\notin\operatorname{Sp}_A(x)\), put
+**Proof.** PA3–4 construct surrounding cycles inside the given neighborhood and prove holomorphic calculus for every \(x\), with no normality assumption. Use
 \[
-R(z)=\pi((z1-x)^{-1}),\qquad
-R'(z)=\rho((z1-x)^{-1}).
+R(z)=\pi((z1-x)^{-1}),\qquad R'(z)=\rho((z1-x)^{-1}).
 \]
-The latter is the resolvent on \(pH\), extended by zero. Its corner identities are
+The latter belongs to the unital corner \(pB(H)p\), and has corner unit \(p\). The actual resolvent identities imply
 \[
-\rho(x)R'(z)=zR'(z)-p.
-\]
-Together with \(\pi(x)R(z)=zR(z)-1\), they give
-\[
-R(z)-R'(z)
-=R(z)P+R(z)D(x)R'(z).
+R(z)-R'(z)=R(z)P+R(z)D(x)R'(z).
 \tag{12}
 \]
-Indeed the second term is \(R(z)p-R'(z)\); adding the first gives the claimed difference. The rank-one term is essential because the representations have different units.
+To check the equality, the second term is \(R(z)p-R'(z)\), since \(R(z)\pi(x)=zR(z)-1\) and \(\rho(x)R'(z)=zR'(z)-p\). Adding \(R(z)P\) gives the required difference.
 
-The right side is trace class by (10), and is continuous in trace norm along every compact resolvent contour. Let \(\mathcal C\) be a surrounding cycle within the domain of \(f\). Computing the functional calculus in \(B(H)\) and in the unital corner \(B(pH)\) gives
+The first term has finite rank and the second is trace class by PA2. PA5 proves their trace-norm continuity and convergence of the contour Riemann sums in the complete trace ideal. Naturality of the calculus into each actual unital codomain gives
 \[
-D(f(x))
-=\frac1{2\pi i}\int_{\mathcal C}
-f(z)\bigl(R(z)P+R(z)D(x)R'(z)\bigr)\,dz.
+D(f(x))=\frac1{2\pi i}\int_{\mathcal C}
+ f(z)\bigl(R(z)P+R(z)D(x)R'(z)\bigr)\,dz
 \tag{13}
 \]
-This is a trace-norm integral in the Banach space \(\mathcal S_1(H)\). It lies in that space, proving the theorem. No division by \(z\) is used, so the formula is valid even if a contour passes through \(0\) outside the spectrum. \(\square\)
+in \(\mathcal S_1(H)\). Hence \(f(x)\in A_0\). The full given holomorphic domain is retained, including disconnected domains. The derivation introduces no \(z^{-1}\), so a contour point at zero causes no problem when it is outside the spectrum. \(\square\)
 
-## 4. Recovering the canonical trace
+## 6. Worked checks by mechanism
 
-**Lemma 4.1.** For every \(x\in A_0\),
-\[
-\operatorname{Tr}D(x)=\tau(x).
-\tag{14}
-\]
+<a id="6-exercises-with-complete-solutions"></a>
 
-**Proof.** Every basis diagonal of \(\pi(x)\) equals \(\tau(x)\): this holds for group polynomials and extends by operator-norm continuity. Lemma 1.1 makes \(\rho\) the sum of two regular representations on \(pH\), with every basis vector corresponding to a regular basis vector. Thus
-\[
-\langle\delta_g,\rho(x)\delta_g\rangle=\tau(x)\quad(g\ne e),
-\qquad
-\langle\delta_e,\rho(x)\delta_e\rangle=0.
-\]
-The diagonal of \(D(x)\) is zero except at \(e\), where it is \(\tau(x)\). Absolute diagonal summation in (10) proves (14). This avoids an unjustified trace-norm limit of arbitrary polynomial approximants. \(\square\)
+The original exercise numbers retain the complete tasks. Their solutions are grouped by the part of the argument they test.
 
-**Lemma 4.2.** If \(E,F\) are projections on any Hilbert space and \(E-F\) is trace class, then
-\[
-\operatorname{Tr}(E-F)
-=\dim(EH\cap\ker F)-\dim(FH\cap\ker E)\in\mathbb Z.
-\tag{15}
-\]
+### Spectral pairing and the projection boundary
 
-**Proof.** Put \(B=E-F\), \(C=E+F-1\). Multiplication gives
-\[
-BC=-CB,\qquad B^2+C^2=1.
-\tag{16}
-\]
-The self-adjoint operator \(B\) is compact, and \(-1\le B\le1\). Its nonzero eigenvalues have finite multiplicities. If \(B\xi=t\xi\), \(0<|t|<1\), then
-\[
-B(C\xi)=-t\,C\xi,\qquad C^2\xi=(1-t^2)\xi.
-\]
-Hence \(C/\sqrt{1-t^2}\) identifies the eigenspaces for \(t\) and \(-t\) isometrically. Their dimensions agree. The trace-class condition permits absolute summation of the eigenvalues, so all these pairs cancel.
+**Exercise 7.** Compute (15) for two rank-one projections whose ranges make an angle \(0<\theta<\pi/2\).
 
-The eigenspace for \(1\) is \(EH\cap\ker F\): equality in
-\[
-\langle\xi,B\xi\rangle=\|E\xi\|^2-\|F\xi\|^2\le\|\xi\|^2
-\]
-forces \(E\xi=\xi,F\xi=0\). The eigenspace for \(-1\) is obtained by exchanging \(E,F\). Both are finite-dimensional by compactness. Only their dimension difference remains in the trace, giving (15). \(\square\)
+*Solution.* Choose unit vectors \(e_1\) and \(\cos\theta\,e_1+\sin\theta\,e_2\). On their two-dimensional span the projection difference has trace zero and determinant \(-\sin^2\theta\), so its eigenvalues are \(\pm\sin\theta\). There is no \(1\) or \(-1\) eigenspace. The generic pair cancels, giving trace zero. Adding an orthogonal one-dimensional summand to the range of the first projection adds one unmatched \(1\) eigenvalue and changes the trace to \(1\).
 
-Thus every projection \(q\in A_0\) satisfies
-\[
-\tau(q)=\operatorname{Tr}(\pi(q)-\rho(q))\in\mathbb Z.
-\tag{17}
-\]
-Both \(\pi(q)\) and \(\rho(q)\) are genuine orthogonal projections on \(H\), even though the latter representation is supported on \(p\).
+**Exercise 8.** Show that compactness, or even the Hilbert–Schmidt condition, cannot replace trace class in the trace calculation for projection differences.
 
-## 5. Bringing every projection into the dense algebra
+*Solution.* Take the direct sum of the rank-one pairs from Exercise 7 with \(\sin\theta_n=1/n\), \(n\ge2\). The difference has eigenvalues \(\pm1/n\), so is compact and Hilbert–Schmidt because \(\sum_n2/n^2<\infty\). It is not trace class because \(\sum_n2/n=\infty\). The formal paired sum zero is not an absolutely convergent trace. Thus the trace in (15) would be undefined.
 
-**Lemma 5.1.** Every projection \(e\in A\) is unitarily conjugate within \(A\) to a projection \(q\in A_0\).
+**Exercise 9.** With \(\|h-e\|=0.1\), estimate the projection error and explain why (20) stays inside \(A\).
 
-**Proof.** Choose a self-adjoint group polynomial \(h\) with
-\[
-\delta=\|h-e\|<1/4.
-\]
-Such a polynomial is obtained by symmetrizing a polynomial approximant. For real \(z\) at distance greater than \(\delta\) from \(\{0,1\}\), the resolvent identity and Neumann series show \(z-h\) invertible. Since \(h\) is self-adjoint,
-\[
-\operatorname{Sp}_A(h)\subset[-\delta,\delta]\cup[1-\delta,1+\delta].
-\tag{18}
-\]
-Choose \(f\) equal to \(0\) on a neighborhood of the first interval and \(1\) on a disjoint neighborhood of the second. This function is holomorphic on their disconnected union. Theorem 3.1 gives \(q=f(h)\in A_0\), and the functional calculus makes \(q\) a self-adjoint projection.
+*Solution.* Formula (19) gives \(\|q-e\|\le0.1/(0.5-0.1)=0.25\). Thus \(1-(e-q)^2\) is positive with spectrum in \([1-0.25^2,1]\), so its inverse square root is obtained by the continuous functional calculus in \(A\). Multiplying it by \(v\in A\) gives \(u\in A\). The algebraic identities in the proof make this operator a unitary that aligns the projections.
 
-The circle \(|z-1|=1/2\) isolates the second spectral cluster. The Riesz formulas for \(q,e\) and their resolvent difference give
-\[
-\|q-e\|
-\le\frac{\delta}{1/2-\delta}<1:
-\tag{19}
-\]
-the circle has length \(\pi\), the resolvent of \(e\) has norm at most \(2\) there, and that of \(h\) has norm at most \((1/2-\delta)^{-1}\).
+**Exercise 10.** Explain why the projection \(\operatorname{diag}(1,0)\) in \(M_2(A)\) does not contradict Theorem 5.2.
 
-Set \(v=qe+(1-q)(1-e)\). Direct multiplication gives
-\[
-ve=qv,\qquad v^*v=vv^*=1-(e-q)^2.
-\]
-The last operator is invertible by (19) and commutes with \(e,q,v\). Therefore
-\[
-u=v\bigl(1-(e-q)^2\bigr)^{-1/2}\in A
-\tag{20}
-\]
-is unitary and \(ueu^*=q\). \(\square\)
+*Solution.* The theorem concerns projections in \(A\). In \(M_2(A)\), the indicated matrix is a nonzero projection different from the matrix identity. Its unnormalized matrix trace composed with \(\tau\) is \(1\), an integer, while its normalized trace is \(1/2\). Matrix amplification changes the unit's unnormalized trace from \(1\) to \(2\), so integrality no longer forces a projection to be \(0\) or the unit.
 
-**Theorem 5.2.** Every projection \(e\in C_r^*(\mathbb F(a,b))\) has integer canonical trace. Consequently the only projections are \(0\) and \(1\).
-
-**Proof.** Lemma 5.1 and traciality give \(\tau(e)=\tau(q)\), which is integer by (17). Since \(0\le\tau(e)\le1\), it is \(0\) or \(1\). Faithfulness gives \(e=0\) in the first case and \(1-e=0\) in the second. \(\square\)
-
-This says nothing comparable about projections in matrix algebras over \(A\): \(\operatorname{diag}(1,0)\in M_2(A)\) is already a nontrivial projection. Nor does it exclude projections in the von Neumann closure. The norm density and spectral-gap step above explain why the assertion concerns \(A\) itself.
-
-## 6. Exercises with complete solutions
+### Basis comparison and finite differences
 
 **Exercise 1.** Check that the modified generator \(T_a\) is a permutation, including its exceptional inverse step.
 
@@ -242,6 +270,8 @@ Its eigenvalues are \((3\pm\sqrt5)/2\), with sum \(3\) and product \(1\). The tw
 
 *Solution.* Formula (8) expresses the difference for a product of two words as bounded operators multiplying their two differences. Finite-rank operators form a two-sided ideal, so induction on the finite word length proves the claim. The same formula bounds the rank by the sum of the generator difference ranks, hence \(2\ell(g)\) for a nonempty reduced word. The identity has difference \(P\), of rank \(1\).
 
+### Actual units and the trace topology
+
 **Exercise 5.** Test (12) with \(x=1\). What error would omitting the term \(R(z)P\) cause?
 
 *Solution.* For \(z\ne1\), \(R(z)=(z-1)^{-1}1\), \(R'(z)=(z-1)^{-1}p\), and their difference is \((z-1)^{-1}P\). Since \(D(1)=P\) and \(Pp=0\), the product \(R(z)D(1)R'(z)\) is zero. The first term in (12) gives the entire difference. Omitting it would incorrectly identify the different units of the two representations.
@@ -250,26 +280,8 @@ Its eigenvalues are \((3\pm\sqrt5)/2\), with sum \(3\) and product \(1\). The tw
 
 *Solution.* No. The trace is continuous for trace norm, and operator-norm convergence does not control that norm. Rank-\(N\) projections divided by \(N\) have operator norm \(1/N\) but trace \(1\). The proof instead computes every diagonal of the actual trace-class difference \(D(x)\), and uses its absolute diagonal sum.
 
-**Exercise 7.** Compute (15) for two rank-one projections whose ranges make an angle \(0<\theta<\pi/2\).
-
-*Solution.* Choose unit vectors \(e_1\) and \(\cos\theta\,e_1+\sin\theta\,e_2\). On their two-dimensional span the projection difference has trace zero and determinant \(-\sin^2\theta\), so its eigenvalues are \(\pm\sin\theta\). There is no \(1\) or \(-1\) eigenspace. The generic pair cancels, giving trace zero. Adding an orthogonal one-dimensional summand to the range of the first projection adds one unmatched \(1\) eigenvalue and changes the trace to \(1\).
-
-**Exercise 8.** Show that compactness, or even the Hilbert–Schmidt condition, cannot replace trace class in the trace calculation for projection differences.
-
-*Solution.* Take the direct sum of the rank-one pairs from Exercise 7 with \(\sin\theta_n=1/n\), \(n\ge2\). The difference has eigenvalues \(\pm1/n\), so is compact and Hilbert–Schmidt because \(\sum_n2/n^2<\infty\). It is not trace class because \(\sum_n2/n=\infty\). The formal paired sum zero is not an absolutely convergent trace. Thus the trace in (15) would be undefined.
-
-**Exercise 9.** With \(\|h-e\|=0.1\), estimate the projection error and explain why (20) stays inside \(A\).
-
-*Solution.* Formula (19) gives \(\|q-e\|\le0.1/(0.5-0.1)=0.25\). Thus \(1-(e-q)^2\) is positive with spectrum in \([1-0.25^2,1]\), so its inverse square root is obtained by the continuous functional calculus in \(A\). Multiplying it by \(v\in A\) gives \(u\in A\). The algebraic identities in the proof make this operator a unitary that aligns the projections.
-
-**Exercise 10.** Explain why the projection \(\operatorname{diag}(1,0)\) in \(M_2(A)\) does not contradict Theorem 5.2.
-
-*Solution.* The theorem concerns projections in \(A\). In \(M_2(A)\), the indicated matrix is a nonzero projection different from the matrix identity. Its unnormalized matrix trace composed with \(\tau\) is \(1\), an integer, while its normalized trace is \(1/2\). Matrix amplification changes the unit's unnormalized trace from \(1\) to \(2\), so integrality no longer forces a projection to be \(0\) or the unit.
-
 ## Reading and attribution
 
-Thomas Schick, [*The trace on the K-theory of group C\*-algebras*, arXiv:math/9907121v5](https://arxiv.org/pdf/math/9907121v5), Lemmas 2.6, 2.8 and 2.9, pp.7–11, supplies the actually read diagonal trace, nonunital resolvent and projection-difference methods. The source cites trace ideal facts and holomorphic-density K-theory results by reference. Here the full ordinary-Hilbert-space argument includes the explicit basis intertwiner, graph-norm closure, missing-unit resolvent term, absolute diagonal trace, eigenvalue pairing and unitary alignment of nearby projections. It does not require a K-theory computation.
+Thomas Schick, [*The trace on the K-theory of group C\*-algebras*, arXiv:math/9907121v5](https://arxiv.org/pdf/math/9907121v5), the complete Lemma 2.6 proof on pp.7–8, Lemma 2.8 on pp.8–10 and Lemma 2.9 on pp.10–11, gives freely readable comparisons for the diagonal trace and different-unit resolvent method. Its trace-ideal facts and dense holomorphic K-theory equivalence are cited there by reference. The argument here uses the complete ordinary-Hilbert analytic module, the explicit two-copy basis unitary, spectral pairing and nearby-projection unitary instead of those imported premises. It does not assert the source's general Hilbert-module relative theorem or a K-theory computation.
 
-Mihai Pimsner and Dan Voiculescu, [*K-groups of reduced crossed products by free groups*](https://www.theta.ro/jot/archive/1982-008-001/1982-008-001-006.pdf), *Journal of Operator Theory* 8(1) (1982), 131–156, introduction pp.131–132, states projection absence. Those pages were actually visually read; its full K-theory proof is not claimed read or used here. The source distinguishes this published paper from an earlier preprint with a false key lemma.
-
-The proof concerns projections in \(C_r^*(\mathbb F(a,b))\) itself. Section 5 supplies the full spectral-gap and conjugacy argument, so mere norm density is not used as trace-norm continuity. Matrix projections and von Neumann projections remain distinct. Complete freely accessible compact spectral, trace-class and holomorphic functional calculus foundations are still pending; no source expression was imported.
+All original conclusions retain their stated scope: the final projection-absence assertion is in the rank-two reduced algebra itself; the projection-difference trace formula allows arbitrary Hilbert spaces; holomorphic closure allows general elements and arbitrary given neighborhoods. The human paper retains its own distribution terms, and its text and PDF are not redistributed or assigned the programme's CC0 terms.

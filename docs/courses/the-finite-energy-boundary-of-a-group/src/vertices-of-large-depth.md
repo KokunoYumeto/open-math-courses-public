@@ -8,7 +8,7 @@
 - The vertices of depth at least \(m\) form a set \(I_m\). Away from \(A\), the vertices outside \(I_m\) do not accumulate on \(L\), so there is a component label \(Q_m\) on \(L\setminus A\) (Section 4).
 - Let \(g_n\) have depth at least \(m_n\), with \(m_n\to\infty\). Then any two points \(z,z'\) of \(L\) other than \(q\) have translates \(g_nz\), \(g_nz'\) with the same label \(Q_{m_n+1}\), for all large \(n\) (Theorem 6.1).
 
-These statements are the preparation for the proof that \(L\) is locally connected. The lesson follows the first half of Section 9 of [OpenAI-S].
+These statements are the preparation for the proof that \(L\) is locally connected, in [The continuum is locally connected](the-continuum-is-locally-connected.md). The lesson follows the first half of Section 9 of [OpenAI-S].
 
 ## 1. The setting
 

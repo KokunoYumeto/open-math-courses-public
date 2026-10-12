@@ -22,7 +22,7 @@ The hypotheses on the group are:
 - (c) every infinite subgroup of \(\Gamma\) contains an element of infinite order;
 - (z) \(\Gamma\) fixes a point of the dendrite quotient \(D_P(B)\).
 
-Condition (z) holds if \(D_P(B)\) is a single point. In the application mentioned above, the group is finitely presented, has one end, has no elements of finite order, and does not split over a finite or two-ended subgroup; then (b) holds by the theorem quoted in the lesson on trees, and \(D_P(B)\) is a point by a theorem on convergence actions on dendrites ([Bowditch 2], Lemma 1.4), whose proof uses the theory of group actions on real trees. Neither theorem is proved in this course; here (b) and (z) are hypotheses.
+Condition (z) holds if \(D_P(B)\) is a single point. In the application mentioned above, the group is finitely presented, has one end, has no elements of finite order, and does not split over a finite or two-ended subgroup; then (b) holds by Theorem 5.1 of [The fixed-point property for groups with one end](the-fixed-point-property-for-groups-with-one-end.md), and \(D_P(B)\) is a point by a theorem on convergence actions on dendrites ([Bowditch 2], Lemma 1.4), whose proof uses the theory of group actions on real trees. That theorem is not proved in this course; here (z) is a hypothesis.
 
 A *tree* is, as in the lesson on trees, a nonempty discrete median pretree; its edges are the pairs of adjacent points. A *subtree* of a tree is a nonempty full subset.
 

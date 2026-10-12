@@ -19,7 +19,7 @@ Let a group \(\Gamma\) act on a tree \(S\) by automorphisms of the pretree. Writ
 
 **Definition 1.1.** A group \(\Gamma\) has the *fixed-point property for trees with finite edge stabilizers* if every action of \(\Gamma\) on a tree, without inversions and such that the stabilizer of every edge is finite, fixes a point of the tree.
 
-The group of integers does not have this property (Exercise 4.2). Finitely generated groups with one end have it; this is Lemma 6.6 of [Bowditch], and its proof uses the structure theory of groups acting on trees, which is not part of this course. In this lesson and the next the property is a hypothesis on the group.
+The group of integers does not have this property (Exercise 4.2). A group with a finite generating set whose Cayley graph has one end has it; this is Lemma 6.6 of [Bowditch], and it is proved in [The fixed-point property for groups with one end](the-fixed-point-property-for-groups-with-one-end.md). In this lesson and the next the property is a hypothesis on the group.
 
 ## 2. Contracting edges
 

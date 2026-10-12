@@ -132,6 +132,13 @@ U\cap\overline A=\varnothing.
 
 Since \(U\) is open dense in \(F\), the closed subset (2) is nowhere dense, proving the theorem. If \(M\) has codimension zero, \(F\) is a single zero covector; its only open dense subset is itself, so (2) is empty. This case has not been discarded by removing the zero section.
 
+<a id="all-normals-zero"></a>
+<a id="the-generic-step-forces-every-normal-to-vanish-all-normals-zero"></a>
+
+### The generic step forces every normal to vanish
+
+The two restrictions in the argument concern different coordinates. For the fixed fibre \(F=\{z=z_0\}\subset L\), its tangent directions vary \(a\). Thus conormality to \(F\) means that \(K(v,w)=w\,dz-v\,da\) annihilates every \(\partial_a\), forcing \(v=0\). Only then does (5) force \(w=0\). Consequently the whole normal-cone fibre lies in \(\{0\}\); the proof does not merely exhibit a zero normal in that fibre. If points outside \(L\) nevertheless approached this point, division of their transverse coordinates by their Euclidean lengths would produce a unit normal after passage to a subsequence, contradicting that whole-fibre assertion. No subanalyticity is needed in this final normalization step. If the normal space has dimension zero, \(L\) is already a neighborhood locally, and off-\(L\) approach is impossible directly.
+
 ## A covector that belongs only to one stratum
 
 Let \(\mathcal S=(S_a)\) be a μ-stratification of \(X\). For each stratum,
@@ -359,3 +366,45 @@ In the general construction, each stratum in a fixed-dimensional layer is open t
 ## Passing from strata to functions
 
 The unshared-direction theorem separates each stratum from conormal limits of the others. The filtration theorem keeps the same approaching-direction control while collecting strata of equal dimension into smooth layers. We next choose squared-distance functions whose differential graphs avoid lower-dimensional singular cotangent pieces and meet the smooth pieces transversely.
+
+## An exact curved model
+
+<a id="unshared-parabola"></a>
+<a id="unshared-covectors-for-a-punctured-parabola-unshared-parabola"></a>
+
+### Unshared covectors for a punctured parabola
+
+*Difficulty: Advanced.*
+
+Let \(X=\mathbb R^2\), \(M=\{(0,0)\}\), and \(S=\{(s,s^2):s\ne0\}\). Put \(A=T_S^*X\) and \(L=T_M^*X\). Find all covectors of \(L\) which avoid \(\overline A\), and compute the normal cone responsible for that avoidance.
+
+**Solution.** Write a covector as \(\xi\,dx+\eta\,dy\). The exact parametrization is
+
+\[
+A=\{(s,s^2;-2s\eta,\eta):s\ne0,\ \eta\in\mathbb R\},
+\qquad \overline A\cap L=\{\xi=0\}\subset L.
+\tag{U1}
+\]
+
+Indeed, convergence to a finite covector above the origin forces \(s\to0\) and bounded \(\eta\), whence \(\xi=-2s\eta\to0\). Every \((0,\eta)\) occurs by fixing \(\eta\) and letting \(s\to0\). The set is semialgebraic and positive-conic, and the canonical one-form on its parameters is \(-2s\eta\,ds+\eta\,d(s^2)=0\), proving isotropy directly. It misses \(L\). The limiting-sum hypothesis over \(M\) holds automatically because \(\pi^{-1}(M)=L\).
+
+For the normal deformation, divide the base coordinates by \(t>0\). A finite limit satisfies \(s/t\to v_x\) and \(s^2/t=s(s/t)\to0\). Thus
+
+\[
+C_L(A)=\{\xi=0,\ v_y=0\},\qquad
+K(v_x,v_y)=-v_x\,d\xi-v_y\,d\eta,
+\qquad K(C_L(A))=T^*_{\{\xi=0\}}L.
+\tag{U2}
+\]
+
+For completeness, when \(v_x\ne0\), take \(s=t v_x\) with \(\eta\) fixed; when \(v_x=0\), take \(s=t^2\). These are valid points of the punctured parabola and realize every indicated cone element, including its zero normal. This specializes the curved-conormal calculation in [Boundary forms and Lagrangian normal cones](boundary-forms-and-lagrangian-normal-cones.md#the-normal-cone-of-a-curved-conormal-at-a-fibre), now with the original intersection with \(L\) removed.
+
+The unshared covectors are exactly \(\{\xi\ne0\}\), an open dense subset of the full fibre \(L\). Over those points the normal-cone fibre is empty. Over every shared point \((0,\eta)\), (U2) instead supplies nonzero normals: the existence of a zero normal there does not imply avoidance. The sign in (U2) sends the normal \((v_x,v_y)=(1,0)\) to \(-d\xi\).
+
+<figure>
+<div class="figure-scroll" role="region" tabindex="0" aria-label="Scrollable illustration: punctured parabola and its exact conormal limit" style="max-width:100%;overflow-x:auto;">
+<img src="../../assets/unshared-parabola.svg" alt="The punctured parabola and the shared line in its conormal fibre" style="display:block;max-width:none;width:720px;height:auto;">
+</div>
+</figure>
+
+**Figure.** Schematic of the punctured parabola and its exact conormal limit, (U1)–(U2). Covector arrows are drawn using the Euclidean dual coordinates; their displayed lengths are scaled for legibility. The vertical line \(\xi=0\) is the entire shared subset of the fibre. The arrow \(-d\xi\) belongs to its transported conormal and records the sign of \(K\). Proof: “Unshared covectors for a punctured parabola”; general argument: (4)–(12).
