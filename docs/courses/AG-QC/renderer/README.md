@@ -5,3 +5,5 @@ The three Python modules preserve TeX mathematics while rendering CommonMark wit
 The course-specific portable builder is `../build.py`. Install `markdown-it-py==4.0.0` and Pandoc, then run that builder from the source archive. Its output uses the included MathJax 3.2.2 files, whose own copyright and font notices are retained.
 
 The catalogue's `programme_links` array explicitly permits sibling-course reader paths of the form `../course-slug/lesson-slug.html`. The prerequisite record supplies the exact statements, source identities and theorem anchors. These routes keep the programme connected without copying a second edition of each prerequisite into this course. A single-course archive needs the corresponding sibling courses for offline cross-course navigation. Local and remote source paths remain rejected by the renderer.
+
+Source-relative lesson links can use `source_reader_links` to project onto existing allowed reader routes. The projection preserves fragments and rejects unknown destinations or conflicting aliases.

@@ -4925,9 +4925,240 @@ The differential becomes zero because \(u_l-u_r\) acts by zero on the diagonal. 
 
 For homogeneous open coefficients of degrees \(a,b,c\), regrouping the ordered list \((1,2,3)\) into \((1,3,2)\) crosses only the second and third factors and gives sign \((-1)^{bc}\). Independent-disc gluing supplies this actual shuffle before any collision. The corrected symmetry further supplies the same component-parity factor as Fusion and the commutativity constraint, C.5, when the indicated factors are in specified components. Both paths retain that shuffle and the supported composition. Once the intermediate extensions and their actual supported maps are identified, (C.29.3) agrees on further collisions. Matching the integers alone would not have checked the shuffle or the supported map.
 
+### C.30. Relative degree-zero normalization for tensor descent
+
+The remaining coefficient problem must retain the whole tensor diagram. We first remove a specific obstruction to a finite bar argument: convolution words have matrix spaces in degree zero, whereas C.24.3 assumed scalar identities on distinct simple generators. The following relative normalization is a proved algebraic input. It does not yet encode or descend the full geometric tensor coherence.
+
+#### C.30.1. Splittings over a split semisimple coefficient algebra
+
+**Lemma C.30.1.1.** Let \(k\) have characteristic zero and let
+\(S=\prod_{\lambda=1}^m M_{d_\lambda}(k)\).
+Every surjection of \(S\)-bimodules has an \(S\)-bimodule section. If a cochain complex \(C\) of \(S\)-bimodules contains \(S\) in its degree-zero cycles and that inclusion identifies \(S\) with \(H^0(C)\), then it has an \(S\)-bimodule contraction onto its cohomology whose degree-zero cohomology inclusion is that specified inclusion of \(S\). The contraction, its side conditions and all its chosen matrices remain a contraction under any field extension.
+
+**Proof.** Write \(e^\lambda_{ij}\) for the matrix units of a factor, viewed as elements of \(S\). The finite sum
+\[
+ e=\sum_{\lambda=1}^m\frac1{d_\lambda}
+      \sum_{i,j=1}^{d_\lambda}
+         e^\lambda_{ij}\otimes e^\lambda_{ji}
+      =\sum_\alpha a_\alpha\otimes b_\alpha
+ \tag{C.30.1}
+\]
+satisfies \(\sum_\alpha a_\alpha b_\alpha=1\) and
+\(\sum_\alpha s a_\alpha\otimes b_\alpha
+ =\sum_\alpha a_\alpha\otimes b_\alpha s\).
+Check the second identity on a matrix unit \(s=e^\lambda_{pq}\): both sides are
+\(d_\lambda^{-1}\sum_j e^\lambda_{pj}\otimes e^\lambda_{jq}\).
+Different factors have product zero. For the first, each fixed \(i\) has \(d_\lambda\) summands \(e^\lambda_{ii}\); summing over \(i,\lambda\) gives the unit.
+
+Let \(q:M\to N\) be a surjection of bimodules. Choose a \(k\)-linear section \(t\), by lifting a basis of \(N\). First average its left action:
+\[
+ t_l(n)=\sum_\alpha a_\alpha t(b_\alpha n).
+ \tag{C.30.2}
+\]
+The second identity for \(e\) gives \(t_l(sn)=s t_l(n)\); applying \(q\) gives \(q t_l(n)=n\). Next average the right action:
+\[
+ t_{lr}(n)=\sum_\alpha t_l(n a_\alpha)b_\alpha .
+ \tag{C.30.3}
+\]
+The same tensor identity gives \(t_{lr}(ns)=t_{lr}(n)s\). It remains left linear because \(t_l\) was left linear and left and right actions commute. Applying \(q\) again gives \(q t_{lr}(n)=n\). Thus it is the desired bimodule section. In particular every submodule of a bimodule has a bimodule complement, by splitting its quotient.
+
+For the complex write \(B^r=\operatorname{im}(d:C^{r-1}\to C^r)\) and
+\(Z^r=\ker(d:C^r\to C^{r+1})\).
+The first assertion splits both \(B^r\subset Z^r\) and \(Z^r\subset C^r\). Choose
+\[
+ C^r=B^r\oplus H^r\oplus L^r,\qquad
+ Z^r=B^r\oplus H^r,\qquad d:L^r\xrightarrow{\sim}B^{r+1}.
+ \tag{C.30.4}
+\]
+At degree zero choose \(H^0\) to be exactly the given \(S\): it meets \(B^0\) in zero and its image fills \(Z^0/B^0\), by the hypothesis, so it is already a bimodule complement. Let \(i:H\to C\) be inclusion, \(p:C\to H\) projection, and let \(h:C^r\to C^{r-1}\) be the inverse of the last isomorphism on \(B^r\), zero on \(H^r\oplus L^r\). On the three summands in (C.30.4) direct calculation gives
+\[
+ dh+hd=1-ip,\qquad pi=1,\qquad
+ h^2=hi=ph=0.
+ \tag{C.30.5}
+\]
+These are bimodule maps and retain the specified degree-zero unit and matrix inclusions. Tensoring the direct sums, the displayed isomorphisms and the identities with any extension field preserves each assertion. In particular the very same contraction is available before and after coefficient extension. ∎
+
+#### C.30.2. Finite positive-degree relative bar stages
+
+**Lemma C.30.2.1.** Let \(M\) be a graded \(S\)-bimodule, with \(S\) as in C.30.1, concentrated in degrees at least two and finite-dimensional in every degree. Give \(sM\) the suspension lowering degrees by one. The relative tensor coalgebra
+\[
+ B_S(M)=S\oplus\bigoplus_{r\ge1}(sM)^{\otimes_S r}
+ \tag{C.30.6}
+\]
+has finite-dimensional subcoalgebras of total suspended degree at most \(D\). Their coalgebra automorphisms preserving degree and the \(S\)-bimodule structure, fixing \(S\) and inducing the identity on their one-letter quotient, form reduced closed subgroups of finite unitriangular groups. This remains true when a finite collection of additional polynomial compatibility equations, satisfied by the identity and stable under composition and inverse, is imposed.
+
+**Proof.** Each letter has suspended degree at least one, so a word in the selected stage has length at most \(D\); all of its letters have degrees at most \(D\). There are only finitely many compositions of an integer at most \(D\) into positive integers. Each summand for a composition is a quotient of a finite tensor product of finite-dimensional \(k\)-spaces, hence finite-dimensional. Adding \(S\), which is finite-dimensional, proves stage finiteness. Deconcatenation splits a word into two subwords of no greater degree and gives the coalgebra structure over \(S\); thus it restricts to this stage.
+
+The one-letter projection of a coalgebra map determines its higher components: for a word, each output word is obtained by partitioning its consecutive letters into nonempty blocks and applying the chosen one-letter component to each block. This formula is verified by deconcatenation, or inductively by taking the first cut. Fixing the component on one-letter words to be the identity leaves the leading length unchanged, and every other component lowers length. Order a basis by length. Such a map is therefore unitriangular, with each nonidentity entry strictly lowering length. Conversely its inverse is the finite sum for a length-lowering endomorphism, and the inverse of a bijective coalgebra map is a coalgebra map by applying its inverse to the coalgebra equation.
+
+Commuting with the coproduct, with the left and right \(S\)-actions, and with the degree projections imposes finitely many polynomial equations on this finite matrix. Fixing \(S\) and the leading quotient imposes further linear equations. Their solution scheme is a closed subgroup of the indicated unitriangular group; take its reduced closed subgroup, as in C.24.1. Additional polynomial equations with the stated composition and inverse stability cut out a reduced closed subgroup there as well. This proves the assertion.
+
+Positive degree, not omission of only the overall identity, is essential. For \(S=M_2(k)\), the matrix unit \(e_{12}\) is a degree-zero nonidentity. If it were left as a letter in an ordinary suspended bar construction, its suspension would have degree \(-1\), and an arbitrary string of copies would defeat this positive-degree length bound. The relative construction places all matrix operations in \(S\), rather than pretending they are positive letters. It has exactly the finiteness used above. ∎
+
+#### C.30.3. Descent of a verified filtered multi-operation presentation
+
+**Theorem C.30.3.1.** Suppose a countable structured comparison over \(k\) has the following presentation. At stage \(D\) there is a finite-dimensional graded space \(V_D\), a reduced closed unitriangular coordinate group \(U_D\), and finitely many pairs of prescribed multilinear operations \(\mu_{D,i},\nu_{D,i}\). An operation can have several inputs and several outputs. Its input and output subspaces in the tensor powers of \(V_D\) are invariant under \(U_D\). The coordinate changes satisfy
+\[
+ g^{\otimes s_i}\mu_{D,i}
+      =\nu_{D,i}g^{\otimes r_i}
+ \tag{C.30.7}
+\]
+on those input subspaces. Allow \(r_i=0\) for a specified unit. Assume that the stage restrictions are homomorphisms \(U_{D+1}\to U_D\), send solutions of every displayed equation to solutions of the preceding equations, and exhaust the coordinate entries and operation equations of the original comparison. If an extension field gives a compatible solution with the prescribed leading coordinate components, there is a compatible solution over \(k\).
+
+For this statement, the presentation includes every operation and higher compatibility datum required by the comparison. Supplying just its composition operations proves only a composition comparison.
+
+**Proof.** The tensors in (C.30.7) are finite matrices, and every entry of a tensor power of \(g\) is a polynomial in its entries. These equations cut out a closed solution scheme in \(U_D\). Let \(T_D\) be its reduction. Its geometric nonemptiness follows from the extension solution.
+
+Let \(G_D\) be the reduced closed subgroup of \(U_D\) defined by
+\[
+ a^{\otimes s_i}\nu_{D,i}
+       =\nu_{D,i}a^{\otimes r_i}
+ \tag{C.30.8}
+\]
+for all operations at that stage. The equations are closed polynomial equations. The identity satisfies them. Composing two solutions of (C.30.8) gives a solution, and multiplying the equation on both sides by the tensor powers of \(a^{-1}\) proves it for the inverse. Invariance of the designated input and output subspaces makes these restrictions legitimate.
+
+The left action of \(G_D\) preserves \(T_D\). If \(g,h\) are two geometric solutions of (C.30.7), then
+\[
+ (hg^{-1})^{\otimes s_i}\nu_{D,i}
+ =h^{\otimes s_i}\mu_{D,i}(g^{-1})^{\otimes r_i}
+ =\nu_{D,i}(hg^{-1})^{\otimes r_i}.
+ \tag{C.30.9}
+\]
+Thus \(hg^{-1}\in G_D\), and it is the unique group element carrying \(g\) to \(h\). This verifies the torsor scheme assertion as well as transitivity on points: after choosing a geometric \(g\), the polynomial isomorphism \(a\mapsto ag\), with inverse \(h\mapsto hg^{-1}\), changes the defining equations (C.30.8) into exactly (C.30.7). Taking reductions preserves this isomorphism. Hence \(T_D\) is a geometrically nonempty finite-type torsor under \(G_D\).
+
+The restrictions in the hypothesis induce \(G_{D+1}\to G_D\) and \(T_{D+1}\to T_D\) and are equivariant. Theorem C.24.2.1 now supplies compatible \(k\)-points. Every fixed original coordinate appears at a stage and is retained by further restriction. Define that coordinate to be its value in the compatible system. Every original operation equation is finite at its designated stage, so it holds for these limiting coordinates. If the coordinate groups arise from C.30.2, their inverses are defined on each finite word by the finite length-lowering recursion; the compatible limiting map therefore has its compatible inverse. In any other verified presentation the same conclusion is exactly its stipulated exhaustion of coordinate maps and inverses. The resulting map is the required structured comparison over \(k\).
+
+This theorem permits tensor, permutation, unit and multi-output compatibility equations in one tower. It does not assert that a given geometric tensor category has such a presentation. That construction must prove stage finiteness, invariant equation domains, genuine coordinate-group restrictions, and exhaustiveness of the full higher diagram. C.30.1–C.30.2 provide its relative algebra ingredients; C.29 provides an extension-field solution. The missing geometric presentation is still a separate proof obligation. ∎
+
+### C.31. Finite ordered-tree indices and coherence degree bounds
+
+An ordered tensor construction has two sources of higher data: its input mapping complexes and its associativity diagrams. A positive input degree bounds the former. A finite tree index bounds the latter. We prove those bounds with the relative resolutions that retain the actual diagrams. They will be used to build the full tensor presentation; its coordinate groups and comparison equations must still be verified.
+
+#### C.31.1. Trees, contractions and the terminal corolla
+
+**Lemma C.31.1.1.** Let \(n\ge2\). The category \(T_n\) of planar rooted trees with \(n\) leaves in their fixed order and with every internal vertex of arity at least two is a finite poset under internal-edge contraction. It has terminal object the \(n\)-corolla. A strict chain of contractions has length at most \(n-2\). Its augmented normalized nerve chains are contractible by a homotopy of that same finite complex, over \(\mathbf Z\).
+
+**Proof.** Every subtree occupies an interval of the ordered leaves. Associate to each internal edge its proper leaf interval of length at least two. These intervals form a nested or disjoint collection. Conversely a collection of proper intervals with this property determines the tree: include the full interval as root and the singleton leaves; attach each interval to its smallest strictly containing interval. Order its children by their least leaves. A proper child cannot be its parent's only child, since it omits at least one leaf of that parent. Thus every internal vertex has at least two children. The constructions are inverse. There are only finitely many possible intervals and hence finitely many trees.
+
+Contracting an internal edge deletes its proper interval. Keeping a selected subset of the original intervals produces the corresponding contraction tree, with its ordered leaves. Thus two different contractions with the same result have deleted the same intervals. There is at most one morphism between two objects, and contraction corresponds to reverse inclusion of their interval collections. This makes \(T_n\) the claimed poset. The empty collection is its terminal corolla.
+
+If the internal vertices have arities \(r_1,\ldots,r_v\), then counting edges gives
+\[
+ \sum_{j=1}^v(r_j-1)=n-1.
+ \tag{C.31.1}
+\]
+Indeed the number of edges is \(n+v-1\), also \(\sum_jr_j\). Since each \(r_j-1\ge1\), \(v\le n-1\). There are \(v-1\) internal edges, so at most \(n-2\) strict contraction steps. The same bound follows by counting proper intervals.
+
+Write \(c_n\) for the terminal corolla. A normalized degree-\(q\) simplex is a strict chain
+\([t_0\to\cdots\to t_q]\).
+If its last object is not \(c_n\), append the unique map to \(c_n\) and multiply by \((-1)^{q+1}\); if it already ends there, send it to zero. In augmented degree \(-1\), send the generator to \([c_n]\). This defines a homotopy \(h\). In the boundary of the appended chain, deleting its last vertex gives the original chain with coefficient one. All other deletions cancel the corresponding terms in \(h\partial\). For a chain already ending at \(c_n\), only the deletion of that last vertex contributes to \(h\partial\), again giving the original chain. In degree zero the augmentation and the chosen \([c_n]\) give the same calculation. Consequently
+\(\partial h+h\partial=1\).
+Appending the corolla adds at most one contraction; any chain already of maximal length ends at the corolla, so the homotopy stays within the finite normalized complex. This proves all assertions integrally. ∎
+
+#### C.31.2. A bounded relative resolution for a directed index
+
+**Theorem C.31.2.1.** Let \(I\) be a finite skeletal category, with finite morphism sets. Suppose each endomorphism is invertible and every nonisomorphism strictly increases an integer height whose range has length \(H\). Let \(k\) have characteristic zero. A \(k\)-linear diagram on \(I\) has a projective relative bar resolution of length at most \(H\). The same resolution computes mapping complexes between strict complex-valued diagrams, retaining all their diagram compatibilities. For \(I=T_n\), one can take \(H=n-2\).
+
+**Proof.** Let \(A=k[I]\), with multiplication given by composition when endpoints match and zero otherwise. Its unit is the sum of the identity arrows. Let \(S\) be the subalgebra spanned by the endomorphisms and let \(R\) be the span of all nonisomorphisms. Because the category is skeletal, its only isomorphisms are endomorphisms. Therefore
+\[
+ S=\prod_{x\in I} k[\operatorname{Aut}_I(x)],
+ \qquad A=S\oplus R.
+ \tag{C.31.2}
+\]
+Left or right multiplication of a nonisomorphism by an automorphism preserves its endpoints and its strictly increasing height. A composite containing a nonisomorphism is still a nonisomorphism, by height. Thus \(R\) is an ideal and an \(S\)-bimodule, and projection \(A\to S\) is an algebra map.
+
+Every \(S\)-module is projective. For each finite automorphism group \(\Gamma\), average a vector-space section \(t\) of a surjection by
+\[
+ t_\Gamma(v)=|\Gamma|^{-1}\sum_{g\in\Gamma}g\,t(g^{-1}v).
+ \tag{C.31.3}
+\]
+It remains a section and is equivariant: translating the sum just reindexes it. Decompose a module into the finitely many object-idempotent components and apply this argument there. The same argument for the two commuting groups proves the bimodule version. It works for infinite-dimensional modules as well because the sums are finite.
+
+A covariant diagram is a left \(A\)-module \(M\): its object component is \(1_xM\) and each arrow acts by the prescribed map. Conversely these components and actions recover the diagram and its composition identities. Set
+\[
+ P_q(M)=A\otimes_S R^{\otimes_S q}\otimes_S M
+       \quad(q\ge0).
+ \tag{C.31.4}
+\]
+The augmentation \(P_0(M)\to M\) is action. The differential multiplies adjacent factors, with the alternating signs, including first the action of the first \(R\)-factor on the left \(A\)-factor and finally the action of the last \(R\)-factor on \(M\). Associativity cancels the two possible orders of each multiplication, so its square is zero. Each term is induced from an \(S\)-module and is projective over \(A\): a section of a surjection to its coefficient module lifts by projectivity over \(S\), and the induced \(A\)-map is then defined by the left action. Equivalently \(\operatorname{Hom}_A(A\otimes_SN,-)=\operatorname{Hom}_S(N,-)\), which is exact.
+
+We verify exactness without assuming it from a bar citation. Write \(a=\epsilon(a)+\bar a\) using (C.31.2). In augmented degree \(-1\) send \(m\) to \(1\otimes m\). At degree \(q\ge0\) send
+\[
+ a\otimes r_1\otimes\cdots\otimes r_q\otimes m
+ \longmapsto
+ 1\otimes\bar a\otimes r_1\otimes\cdots\otimes r_q\otimes m .
+ \tag{C.31.5}
+\]
+These are well-defined \(S\)-linear maps on the balanced tensors: projection to \(R\) is an \(S\)-bimodule map. Multiplying the first inserted factor gives \(\bar a\) back; all successive multiplication terms cancel in \(\partial h+h\partial\). The remaining projection term is \(1\otimes\epsilon(a)\) balanced into the next factor, which equals that part of the original tensor. For \(q=0\), the calculation is explicitly
+\[
+ \bar a\otimes m-1\otimes\bar a m+1\otimes a m
+       =a\otimes m.
+ \tag{C.31.6}
+\]
+For \(q>0\) the same cancellation uses that \(\epsilon(r_1)=0\). Thus (C.31.5) contracts the augmented complex as \(S\)-modules and proves it exact.
+
+Tensoring over the object idempotents forces adjacent arrow endpoints to match. A tensor of \(q\) nonisomorphisms therefore lies on a path with \(q\) strict height increases. There is none for \(q>H\). Quotienting further by the endomorphism-group relations does not create such a path. Consequently \(R^{\otimes_Sq}=0\) for \(q>H\), giving the bound.
+
+For a strict diagram \(F\) of cochain complexes, apply (C.31.4) in every internal degree and totalize the finite resolution with its standard internal differential signs. Formula (C.31.5) remains a contracting homotopy of the augmented total complex, so it is equivalent to \(F\). Its terms are induced complexes from \(S\). They are suitable for derived Hom: an acyclic complex of \(S\)-modules is contractible by the splitting proof above, so applying \(\operatorname{Hom}_S(N,-)\) for any coefficient complex \(N\) preserves acyclicity by that contraction. The finite resolution therefore computes the derived \(A\)-mapping complex. Its ordinary differential records internal maps; its relative bar differential records all diagram compatibility and its successive homotopies. No deletion of those higher compatibility terms is made.
+
+Finally for \(T_n\), use height \(n-2\) minus the number of its proper intervals. Each strict contraction increases it, by C.31.1, and its range is from zero to \(n-2\). This gives the asserted tree bound. ∎
+
+#### C.31.3. Positive mapping degrees combined with a finite diagram
+
+**Lemma C.31.3.1.** Consider finitely many object labels, with reduced mapping spaces \(M(X,Y)\) concentrated in degrees at least two and finite-dimensional in each degree. Let an additional directed diagram index have maximum nonidentity chain length \(H\). Suppose a component is a homogeneous map from a relative suspended input bar to an output mapping complex suspended by \(\epsilon\), where \(\epsilon=0\) or \(1\) and suspension lowers degree. If its total mapping degree is \(h\), its input word has total suspended degree \(w\), and its diagram bar term has degree \(q\), the output's ordinary degree is
+\[
+ d=w+h-q+\epsilon,\qquad 0\le q\le H.
+ \tag{C.31.7}
+\]
+If outputs are retained only in ordinary degrees at most \(D\), then \(w\le D+H-h-\epsilon\). There are finitely many coordinate slots for these components, provided each of the finitely many output mapping spaces is degreewise finite-dimensional. The same assertion holds for several input relative bars, with \(w\) their summed suspended degree.
+
+**Proof.** In the normalized mapping bar, a letter of ordinary degree \(a\) has suspended degree \(a-1\). Its word has degree \(w\). A homogeneous map of internal degree \(p\) sends that word to an element of degree \(w+p\) in the suspended output complex, so that element's ordinary degree is \(w+p+\epsilon\). The additional diagram bar term contributes cochain degree \(q\) in the derived mapping totalization of C.31.2. Thus a component of total degree \(h\) has \(p=h-q\), proving (C.31.7). In unsuspended Taylor notation with \(r\) input letters, this component has degree \(h+\epsilon-r-q\). The case \(\epsilon=1\) retains the extra degree for a suspended functor component; it must not be confused with the unsuspended output convention for a natural transformation.
+
+The inequality \(d\le D\) and \(q\le H\) give \(w\le D+H-h-\epsilon\). Each letter has suspended degree at least one, so word length is at most that integer, and each individual letter's suspended degree is bounded by it too. With finitely many labels and degreewise finite mapping spaces, there are only finitely many labelled degree profiles, each with finite-dimensional coefficients. The index has finitely many objects and arrows and its relative resolution has only the finitely many terms \(q\le H\). There are therefore finitely many component-coordinate slots. With several bars each letter still adds at least one to their sum, so the same reasoning bounds their total number of letters and all their profiles.
+
+For ordered \(n\)-input tensor comparisons the additional tree index contributes \(H=n-2\), by C.31.2. Thus, for a fixed finite list of input labels, fixed \(n\) and fixed \(D,h\), there is an actual finite coefficient range. This observation bounds the profile spaces; it does not by itself construct a compatible finite coordinate-group quotient of the whole infinite tensor presentation. Such a quotient must also retain the domains of composition and inverse and all required equations, as C.30.3 specifies. ∎
+
+![The relative degree-zero matrix algebra is separated from positive bar letters; the actual three-leaf trees contract to their common corolla; the finite diagram bound and output suspension determine the retained mapping profiles](assets/tensor-coherence-bounds.png)
+
+Lemma C.30.1.1 proves the matrix averaging and fixed-unit contraction. Lemma C.30.2.1 bounds positive relative bar stages, and Theorem C.30.3.1 descends every operation of a verified filtered presentation. Lemma C.31.1.1 gives the displayed actual tree contractions; Theorem C.31.2.1 proves the finite projective diagram resolution. Lemma C.31.3.1 proves the profile bound with both output suspension conventions. Editable SVG source.
+
+#### C.31.4. Two finite-index tests
+
+**Exercise C.31.4.1.** Describe \(T_3\) and the relative resolution of its constant \(k\)-diagram. For \(n=3\), \(D=2\), \(h=0\), compute the possible suspended input-degree range for unsuspended and suspended output conventions in C.31.3.
+
+**Solution.** The three trees are
+\[
+ a=((12)3),\qquad b=(1(23)),\qquad c=(123),
+ \tag{C.31.8}
+\]
+with only the nonidentity arrows \(a\to c\) and \(b\to c\). Hence \(H=1\). In the constant diagram each arrow acts by the identity. The \(P_0\)-basis in C.31.2 consists of its three identity arrows and two nonidentity arrows, tensored by the source's constant generator, so \(\dim P_0=5\). The \(P_1\)-basis consists of those two nonidentity arrows with the outer factor \(1_c\), so \(\dim P_1=2\). Higher terms vanish. Its differential sends each nonidentity-arrow basis vector to that arrow's \(P_0\)-basis vector minus \(1_c\)'s vector. Augmentation sends any arrow to the constant generator at its target. These two columns are independent and span the two-dimensional augmentation kernel, proving the exact projective resolution
+\[
+ 0\longrightarrow k^2\longrightarrow k^5
+       \longrightarrow k^3\longrightarrow0
+ \tag{C.31.9}
+\]
+with its specified diagram actions.
+
+For \(\epsilon=0\), the profile bound is \(w\le3\). More precisely at \(q=0\) it is \(w\le2\), and at \(q=1\) it is \(w\le3\). For \(\epsilon=1\) the ranges are \(w\le1\) and \(w\le2\), respectively. For example a degree-two ordinary input letter has \(w=1\); at \(q=0\) its unsuspended degree-zero component lands in ordinary output degree one, whereas its suspended-output component lands in degree two. If that degree-one output mapping space vanishes, the former coordinate is absent. Counting both conventions identically would insert the wrong coordinate slots into the formality equations.
+
+**Exercise C.31.4.2.** Why is characteristic zero essential to the bounded projective-resolution assertion in C.31.2, even if the index has no nonisomorphisms?
+
+**Solution.** Let \(k\) have characteristic \(p>0\), and let the index have one object with automorphism group \(C_p\). It has no nonisomorphisms and would have \(H=0\). Its category algebra is
+\[
+ A=k[C_p]=k[t]/t^p,\qquad t=g-1.
+ \tag{C.31.10}
+\]
+The equality follows from \((g-1)^p=g^p-1=0\), and the \(p\) basis elements give the inverse presentation. Its trivial module \(k=A/(t)\) has the free resolution with alternating maps
+\[
+ \cdots\xrightarrow{\,t\,}A\xrightarrow{\,t^{p-1}\,}A
+       \xrightarrow{\,t\,}A\longrightarrow k\longrightarrow0.
+ \tag{C.31.11}
+\]
+In the basis \(1,t,\ldots,t^{p-1}\), multiplication by \(t\) has kernel \(kt^{p-1}\) and image \((t)\); multiplication by \(t^{p-1}\) has kernel \((t)\) and image \(kt^{p-1}\). Thus the complex is exact. Applying \(\operatorname{Hom}_A(-,k)\) makes every differential zero, and gives \(\operatorname{Ext}_A^r(k,k)=k\) for every \(r\ge0\). In particular the trivial module is not projective and no length-zero projective resolution computes its mapping complex. The missing step is exactly averaging (C.31.3): \(p\) is not invertible. Its degree-zero relative resolution over \(S=A\) is exact but not projective, so cannot replace the displayed derived resolution. Finiteness of the tree index alone never licenses dropping automorphism-group cohomology without the stated coefficient hypothesis.
+
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. C.26 proves actual arithmetic-trait specialization of the rootwise enhanced generator diagram: perfect constant compact objects, trace-normalized Hom comparison, the complete action nerve with its coefficient bound, integral pair pavings, both IC perverse tests and ordered wall operations. C.27 proves the genuinely spherical enhanced comparison by the actual flag unit projection and induced root-word retractions. It retains the full coordinate semidirect action and every nerve level, and compares ordered associative convolution with its original kernels, units and full-frame coherences. C.28 proves configuration-arrangement compact constants, same-point flag/wall chain fibre and pair filtrations, and the actual moving enhanced generator comparison. Its complete divisor-frame nerve retains longer jets on collisions, the uniform coefficient bound, and every selected partition and all-distinct restriction diagram. C.29 identifies the actual complex moving IC objects and corrected geometric fusion components, retains supported maps on every partial diagonal, and proves the complex enhanced symmetric comparison by transport of the complete arithmetic coherent diagram through the actual ordered equivalence. It also proves flat field extensions, including complex coefficients after an abstract embedding. Descent of the full symmetric tensor structure to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
+The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. C.26 proves actual arithmetic-trait specialization of the rootwise enhanced generator diagram: perfect constant compact objects, trace-normalized Hom comparison, the complete action nerve with its coefficient bound, integral pair pavings, both IC perverse tests and ordered wall operations. C.27 proves the genuinely spherical enhanced comparison by the actual flag unit projection and induced root-word retractions. It retains the full coordinate semidirect action and every nerve level, and compares ordered associative convolution with its original kernels, units and full-frame coherences. C.28 proves configuration-arrangement compact constants, same-point flag/wall chain fibre and pair filtrations, and the actual moving enhanced generator comparison. Its complete divisor-frame nerve retains longer jets on collisions, the uniform coefficient bound, and every selected partition and all-distinct restriction diagram. C.29 identifies the actual complex moving IC objects and corrected geometric fusion components, retains supported maps on every partial diagonal, and proves the complex enhanced symmetric comparison by transport of the complete arithmetic coherent diagram through the actual ordered equivalence. It also proves flat field extensions, including complex coefficients after an abstract embedding. C.30 proves split semisimple normalization, finite relative bar coordinate groups and descent of a verified exhaustive multi-operation presentation. C.31 constructs the finite ordered-tree contraction index, its bounded projective relative diagram resolution and the combined positive-degree profile bound with both output suspensions. These inputs do not by themselves provide the full geometric tensor presentation: its compatible finite coordinate-group quotients and exhaustive higher equations still need proof. Descent of the full tensor equivalence to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
 
 Free further reading:
 
