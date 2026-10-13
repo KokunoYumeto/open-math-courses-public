@@ -1,0 +1,261 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A rank measure from differentiation and multiplication</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Depth-five circuits for iterated matrix multiplication)</a><a href="iterated-matrix-multiplication-and-depth-five-circuits.html">Previous lesson</a><a href="the-rank-of-a-depth-five-circuit.html">Next lesson</a><a href="src/a-rank-measure-from-differentiation-and-multiplication.md">Editable source</a></nav><main><article><h1 id="a-rank-measure-from-differentiation-and-multiplication">A rank measure from differentiation and multiplication</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The lower bound of this course compares two estimates of one number <span class="math" data-tex="\(R(g)\)">\(R(g)\)</span>, which is defined for a homogeneous polynomial <span class="math" data-tex="\(g\)">\(g\)</span>. The variables are divided into two groups, <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(U\)">\(U\)</span>. In <span class="math" data-tex="\(g\)">\(g\)</span>, every variable of <span class="math" data-tex="\(V\)">\(V\)</span> is replaced by the partial derivative in that variable, and every variable of <span class="math" data-tex="\(U\)">\(U\)</span> by the multiplication with it. This turns <span class="math" data-tex="\(g\)">\(g\)</span> into a linear map between spaces of polynomials, and <span class="math" data-tex="\(R(g)\)">\(R(g)\)</span> is its rank. This lesson defines the map, proves that the rank of a product of polynomials is small when the degrees of the factors do not fit a certain proportion, and fixes the numbers that the rest of the course uses.</p>
+<ul>
+<li>The operators <span class="math" data-tex="\(T_Q\)">\(T_Q\)</span> and their product rule (Lemma 1.1).</li>
+<li>The map <span class="math" data-tex="\(F_g\)">\(F_g\)</span> and the measure <span class="math" data-tex="\(R(g)\)">\(R(g)\)</span> (Section 2).</li>
+<li>The rank of a product, through intermediate spaces (Lemma 3.2).</li>
+<li>The numbers of the proof and their estimates (Lemma 4.1).</li>
+<li>The product bound <span class="math" data-tex="\(R(Q_1\cdots Q_r)\le2D\prod_jH_{e_j}\)">\(R(Q_1\cdots Q_r)\le2D\prod_jH_{e_j}\)</span> (Proposition 5.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-D, Sections 2 and 3.1]. It continues <a href="iterated-matrix-multiplication-and-depth-five-circuits.html">Iterated matrix multiplication and depth-five circuits</a> and needs linear algebra and binomial coefficients.</p>
+<h2 id="1-derivatives-and-multiplications">1. Derivatives and multiplications</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a field, and let <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(U\)">\(U\)</span> be two disjoint finite sets of variables, with <span class="math" data-tex="\(v\ge1\)">\(v\ge1\)</span> and <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span> elements. Let <span class="math" data-tex="\(K[V,U]\)">\(K[V,U]\)</span> be the ring of the polynomials in all these variables. For <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span> let <span class="math" data-tex="\(\partial_x\)">\(\partial_x\)</span> be the formal partial derivative in <span class="math" data-tex="\(x\)">\(x\)</span>, and for <span class="math" data-tex="\(y\in U\)">\(y\in U\)</span> let <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> be the multiplication by <span class="math" data-tex="\(y\)">\(y\)</span>; both are linear maps from <span class="math" data-tex="\(K[V,U]\)">\(K[V,U]\)</span> to itself.</p>
+<p>All these maps commute with each other: two partial derivatives commute, two multiplications commute, and <span class="math" data-tex="\(\partial_x(yf)=y\,\partial_xf\)">\(\partial_x(yf)=y\,\partial_xf\)</span> because <span class="math" data-tex="\(y\)">\(y\)</span> is not the variable <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><strong>Definition.</strong> For a polynomial <span class="math" data-tex="\(Q\in K[V,U]\)">\(Q\in K[V,U]\)</span>, let <span class="math" data-tex="\(T_Q\)">\(T_Q\)</span> be the linear map from <span class="math" data-tex="\(K[V,U]\)">\(K[V,U]\)</span> to itself that is obtained from <span class="math" data-tex="\(Q\)">\(Q\)</span> by writing <span class="math" data-tex="\(\partial_x\)">\(\partial_x\)</span> for every variable <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span> and <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> for every variable <span class="math" data-tex="\(y\in U\)">\(y\in U\)</span>. So for a monomial <span class="math" data-tex="\(Q=\prod_xx^{\alpha_x}\prod_yy^{\gamma_y}\)">\(Q=\prod_xx^{\alpha_x}\prod_yy^{\gamma_y}\)</span>, <span class="math" data-tex="\(T_Q\)">\(T_Q\)</span> is the composition of the maps <span class="math" data-tex="\(\partial_x^{\alpha_x}\)">\(\partial_x^{\alpha_x}\)</span> and <span class="math" data-tex="\(\mu_y^{\gamma_y}\)">\(\mu_y^{\gamma_y}\)</span>, and for a sum of monomials with coefficients it is the corresponding sum.</p>
+<p><strong>Lemma 1.1.</strong> <span class="math" data-tex="\(T_{Q_1+Q_2}=T_{Q_1}+T_{Q_2}\)">\(T_{Q_1+Q_2}=T_{Q_1}+T_{Q_2}\)</span>, <span class="math" data-tex="\(T_{cQ}=c\,T_Q\)">\(T_{cQ}=c\,T_Q\)</span> for <span class="math" data-tex="\(c\in K\)">\(c\in K\)</span>, and
+<span class="math math-display" data-tex="\[
+T_{Q_1Q_2}=T_{Q_1}\circ T_{Q_2}=T_{Q_2}\circ T_{Q_1}.
+\]">\[
+T_{Q_1Q_2}=T_{Q_1}\circ T_{Q_2}=T_{Q_2}\circ T_{Q_1}.
+\]</span></p>
+<p><strong>Proof.</strong> The first two statements are the definition. For two monomials the third holds because all the maps <span class="math" data-tex="\(\partial_x\)">\(\partial_x\)</span> and <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> commute; for sums it follows by linearity. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>A polynomial has the <em>bidegree</em> <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> if every one of its monomials has the degree <span class="math" data-tex="\(i\)">\(i\)</span> in the variables of <span class="math" data-tex="\(V\)">\(V\)</span> and the degree <span class="math" data-tex="\(j\)">\(j\)</span> in the variables of <span class="math" data-tex="\(U\)">\(U\)</span>. Let <span class="math" data-tex="\(\mathcal H(i,j)\)">\(\mathcal H(i,j)\)</span> be the space of these polynomials, for <span class="math" data-tex="\(i,j\ge0\)">\(i,j\ge0\)</span>. Its dimension is the product of the numbers of the monomials of degree <span class="math" data-tex="\(i\)">\(i\)</span> in <span class="math" data-tex="\(v\)">\(v\)</span> variables and of degree <span class="math" data-tex="\(j\)">\(j\)</span> in <span class="math" data-tex="\(u\)">\(u\)</span> variables:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\dim\mathcal H(i,j)=h(v,i)\,h(u,j),\\
+h(r,t)=\binom{r+t-1}{t}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\dim\mathcal H(i,j)=h(v,i)\,h(u,j),\\
+h(r,t)=\binom{r+t-1}{t}.
+\end{gathered}
+\]</span>
+If <span class="math" data-tex="\(Q\)">\(Q\)</span> has the bidegree <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>, then <span class="math" data-tex="\(T_Q\)">\(T_Q\)</span> maps <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span> into <span class="math" data-tex="\(\mathcal H(a-i,b+j)\)">\(\mathcal H(a-i,b+j)\)</span> for <span class="math" data-tex="\(a\ge i\)">\(a\ge i\)</span>, and it is <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span> for <span class="math" data-tex="\(a&lt;i\)">\(a&lt;i\)</span>.</p>
+<h2 id="2-the-measure">2. The measure</h2>
+<p>Fix integers <span class="math" data-tex="\(k,m\ge0\)">\(k,m\ge0\)</span>, <span class="math" data-tex="\(a\ge k\)">\(a\ge k\)</span> and <span class="math" data-tex="\(b\ge0\)">\(b\ge0\)</span>, and put <span class="math" data-tex="\(n=k+m\)">\(n=k+m\)</span>. A homogeneous polynomial <span class="math" data-tex="\(g\)">\(g\)</span> of degree <span class="math" data-tex="\(n\)">\(n\)</span> is the sum of its <em>components</em> <span class="math" data-tex="\(g_{[i,n-i]}\)">\(g_{[i,n-i]}\)</span> of the bidegrees <span class="math" data-tex="\((i,n-i)\)">\((i,n-i)\)</span>, <span class="math" data-tex="\(0\le i\le n\)">\(0\le i\le n\)</span>.</p>
+<p><strong>Definition.</strong> For a polynomial <span class="math" data-tex="\(g\in K[V,U]\)">\(g\in K[V,U]\)</span> that is <span class="math" data-tex="\(0\)">\(0\)</span> or homogeneous of degree <span class="math" data-tex="\(n\)">\(n\)</span>, let
+<span class="math math-display" data-tex="\[
+F_g:\ \mathcal H(a,b)\longrightarrow\mathcal H(a-k,\,b+m)
+\]">\[
+F_g:\ \mathcal H(a,b)\longrightarrow\mathcal H(a-k,\,b+m)
+\]</span>
+be the restriction of <span class="math" data-tex="\(T_{g_{[k,m]}}\)">\(T_{g_{[k,m]}}\)</span> to <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R(g)=\operatorname{rank}F_g,\\
+D=\dim\mathcal H(a,b)=h(v,a)\,h(u,b).
+\end{gathered}
+\]">\[
+\begin{gathered}
+R(g)=\operatorname{rank}F_g,\\
+D=\dim\mathcal H(a,b)=h(v,a)\,h(u,b).
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> <span class="math" data-tex="\(R(g)\le D\)">\(R(g)\le D\)</span>; <span class="math" data-tex="\(R(g_1+g_2)\le R(g_1)+R(g_2)\)">\(R(g_1+g_2)\le R(g_1)+R(g_2)\)</span>; and <span class="math" data-tex="\(R(cg)=R(g)\)">\(R(cg)=R(g)\)</span> for <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, <span class="math" data-tex="\(R(0)=0\)">\(R(0)=0\)</span>.</p>
+<p><strong>Proof.</strong> The component <span class="math" data-tex="\(g_{[k,m]}\)">\(g_{[k,m]}\)</span> and the map <span class="math" data-tex="\(T\)">\(T\)</span> depend linearly on <span class="math" data-tex="\(g\)">\(g\)</span>, so <span class="math" data-tex="\(F_{g_1+g_2}=F_{g_1}+F_{g_2}\)">\(F_{g_1+g_2}=F_{g_1}+F_{g_2}\)</span> and <span class="math" data-tex="\(F_{cg}=cF_g\)">\(F_{cg}=cF_g\)</span>. The rank of a sum of two linear maps is at most the sum of the ranks, and the rank of <span class="math" data-tex="\(F_g\)">\(F_g\)</span> is at most the dimension <span class="math" data-tex="\(D\)">\(D\)</span> of the space <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span> on which it is defined. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The map <span class="math" data-tex="\(g\mapsto F_g\)">\(g\mapsto F_g\)</span> does not turn products into compositions, because it takes one component only. To estimate <span class="math" data-tex="\(R\)">\(R\)</span> for a product, the product is first split into its components.</p>
+<h2 id="3-the-rank-of-a-product">3. The rank of a product</h2>
+<p><strong>Lemma 3.1.</strong> For integers <span class="math" data-tex="\(0\le I\le a\)">\(0\le I\le a\)</span> and <span class="math" data-tex="\(J\ge0\)">\(J\ge0\)</span>, and <span class="math" data-tex="\(b\ge1\)">\(b\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{h(v,a-I)}{h(v,a)}\le\Bigl(\frac{a}{a+v-1}\Bigr)^I,\\
+\frac{h(u,b+J)}{h(u,b)}\le\Bigl(\frac{b+u}{b}\Bigr)^J .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{h(v,a-I)}{h(v,a)}\le\Bigl(\frac{a}{a+v-1}\Bigr)^I,\\
+\frac{h(u,b+J)}{h(u,b)}\le\Bigl(\frac{b+u}{b}\Bigr)^J .
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> From <span class="math" data-tex="\(h(r,t)=\binom{r+t-1}t\)">\(h(r,t)=\binom{r+t-1}t\)</span>, for <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{h(r,t-1)}{h(r,t)}=\frac{t}{r+t-1} .
+\]">\[
+\frac{h(r,t-1)}{h(r,t)}=\frac{t}{r+t-1} .
+\]</span>
+So the first ratio is the product of the numbers <span class="math" data-tex="\(\frac{a-i}{a+v-1-i}\)">\(\frac{a-i}{a+v-1-i}\)</span> for <span class="math" data-tex="\(0\le i&lt;I\)">\(0\le i&lt;I\)</span>, and each is at most <span class="math" data-tex="\(\frac{a}{a+v-1}\)">\(\frac{a}{a+v-1}\)</span>, because <span class="math" data-tex="\(x/(x+v-1)\)">\(x/(x+v-1)\)</span> does not decrease in <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>. The second ratio is the product of the numbers <span class="math" data-tex="\(\frac{b+u+i-1}{b+i}\)">\(\frac{b+u+i-1}{b+i}\)</span> for <span class="math" data-tex="\(1\le i\le J\)">\(1\le i\le J\)</span>, and
+<span class="math math-display" data-tex="\[
+\frac{b+u+i-1}{b+i}\le\frac{b+u}{b}
+\]">\[
+\frac{b+u+i-1}{b+i}\le\frac{b+u}{b}
+\]</span>
+because <span class="math" data-tex="\(b(b+u+i-1)\le(b+u)(b+i)\)">\(b(b+u+i-1)\le(b+u)(b+i)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Let <span class="math" data-tex="\(Q_1,\dots,Q_r\in K[V,U]\)">\(Q_1,\dots,Q_r\in K[V,U]\)</span> be homogeneous of the degrees <span class="math" data-tex="\(e_1,\dots,e_r\ge1\)">\(e_1,\dots,e_r\ge1\)</span> with <span class="math" data-tex="\(e_1+\dots+e_r=n\)">\(e_1+\dots+e_r=n\)</span>, and put <span class="math" data-tex="\(\lambda=k/n\)">\(\lambda=k/n\)</span>. An <em>assignment</em> is a sequence <span class="math" data-tex="\(\mathbf i=(i_1,\dots,i_r)\)">\(\mathbf i=(i_1,\dots,i_r)\)</span> of integers with <span class="math" data-tex="\(0\le i_j\le e_j\)">\(0\le i_j\le e_j\)</span> and <span class="math" data-tex="\(i_1+\dots+i_r=k\)">\(i_1+\dots+i_r=k\)</span>. For an assignment put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\delta_j=i_j-\lambda e_j,\qquad I(\mathbf i)=\sum_{j:\ \delta_j&gt;0}i_j,\\
+J(\mathbf i)=\sum_{j:\ \delta_j&gt;0}(e_j-i_j).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\delta_j=i_j-\lambda e_j,\qquad I(\mathbf i)=\sum_{j:\ \delta_j&gt;0}i_j,\\
+J(\mathbf i)=\sum_{j:\ \delta_j&gt;0}(e_j-i_j).
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(\lambda n=k\)">\(\lambda n=k\)</span>, the numbers <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span> add up to <span class="math" data-tex="\(0\)">\(0\)</span>. The number <span class="math" data-tex="\(\lambda e_j\)">\(\lambda e_j\)</span> is the share of the degree <span class="math" data-tex="\(e_j\)">\(e_j\)</span> that falls on <span class="math" data-tex="\(V\)">\(V\)</span> if the degrees <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> are divided among the factors in proportion; <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span> says how far the factor <span class="math" data-tex="\(j\)">\(j\)</span> is from its share.</p>
+<p><strong>Lemma 3.2.</strong> With these notations,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;R(Q_1\cdots Q_r)\\
+&amp;\quad\le\sum_{\mathbf i}h(v,a-I(\mathbf i))\,h(u,b+J(\mathbf i)),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;R(Q_1\cdots Q_r)\\
+&amp;\quad\le\sum_{\mathbf i}h(v,a-I(\mathbf i))\,h(u,b+J(\mathbf i)),
+\end{aligned}
+\]</span>
+where the sum runs over all assignments.</p>
+<p><strong>Proof.</strong> The component of the product is the sum of the products of components,
+<span class="math math-display" data-tex="\[
+(Q_1\cdots Q_r)_{[k,m]}=\sum_{\mathbf i}\ \prod_{j=1}^r(Q_j)_{[i_j,\,e_j-i_j]} .
+\]">\[
+(Q_1\cdots Q_r)_{[k,m]}=\sum_{\mathbf i}\ \prod_{j=1}^r(Q_j)_{[i_j,\,e_j-i_j]} .
+\]</span>
+By Lemma 1.1, <span class="math" data-tex="\(F\)">\(F\)</span> of the product is the sum, over the assignments, of the restrictions to <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span> of the maps
+<span class="math math-display" data-tex="\[
+\prod_{j=1}^rT_j,\qquad T_j=T_{(Q_j)_{[i_j,e_j-i_j]}},
+\]">\[
+\prod_{j=1}^rT_j,\qquad T_j=T_{(Q_j)_{[i_j,e_j-i_j]}},
+\]</span>
+and the <span class="math" data-tex="\(T_j\)">\(T_j\)</span> may be composed in any order. Fix an assignment, and apply first the <span class="math" data-tex="\(T_j\)">\(T_j\)</span> with <span class="math" data-tex="\(\delta_j&gt;0\)">\(\delta_j&gt;0\)</span>, then the others. The first group maps <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span> into <span class="math" data-tex="\(\mathcal H(a-I,b+J)\)">\(\mathcal H(a-I,b+J)\)</span> with <span class="math" data-tex="\(I=I(\mathbf i)\)">\(I=I(\mathbf i)\)</span>, <span class="math" data-tex="\(J=J(\mathbf i)\)">\(J=J(\mathbf i)\)</span>; here <span class="math" data-tex="\(I\le k\le a\)">\(I\le k\le a\)</span>. So the map of this assignment is a composition of two linear maps through the space <span class="math" data-tex="\(\mathcal H(a-I,b+J)\)">\(\mathcal H(a-I,b+J)\)</span>, and its rank is at most the dimension <span class="math" data-tex="\(h(v,a-I)h(u,b+J)\)">\(h(v,a-I)h(u,b+J)\)</span> of this space. The rank of a sum is at most the sum of the ranks. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The intermediate space is small when the first group contains much differentiation and little multiplication: differentiation in <span class="math" data-tex="\(V\)">\(V\)</span> lowers the dimension, multiplication in <span class="math" data-tex="\(U\)">\(U\)</span> raises it. The numbers of the next section are chosen so that the two effects cancel exactly for a factor that has its proportional share, and so that every deviation from the share costs a factor.</p>
+<h2 id="4-the-numbers-of-the-proof">4. The numbers of the proof</h2>
+<p>From here on <span class="math" data-tex="\(n\)">\(n\)</span> is the degree and the width of <span class="math" data-tex="\(\operatorname{IMM}_{n,n}\)">\(\operatorname{IMM}_{n,n}\)</span>. The <span class="math" data-tex="\(n\)">\(n\)</span> layers are divided into <span class="math" data-tex="\(k\)">\(k\)</span> layers whose <span class="math" data-tex="\(kn^2\)">\(kn^2\)</span> variables form <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> layers whose <span class="math" data-tex="\(mn^2\)">\(mn^2\)</span> variables form <span class="math" data-tex="\(U\)">\(U\)</span>; which layers go where is fixed later. Let <span class="math" data-tex="\(s\)">\(s\)</span> be the largest integer with <span class="math" data-tex="\(s\le\sqrt n\)">\(s\le\sqrt n\)</span> and <span class="math" data-tex="\(n-s\)">\(n-s\)</span> even, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k=\frac{n-s}2,\qquad m=\frac{n+s}2,\\
+\rho=\frac km,\qquad \lambda=\frac kn,\\
+v=kn^2,\qquad u=mn^2,\\
+a=\Bigl\lceil\frac{v}{\sqrt n-1}\Bigr\rceil,\quad \alpha=\frac a{a+v},\\
+b=\Bigl\lceil\frac{u\,\alpha^\rho}{1-\alpha^\rho}\Bigr\rceil,\quad \beta=\frac b{b+u},\\
+q=\alpha^{(1+\rho)/2},\\
+D=h(v,a)\,h(u,b).
+\end{gathered}
+\]">\[
+\begin{gathered}
+k=\frac{n-s}2,\qquad m=\frac{n+s}2,\\
+\rho=\frac km,\qquad \lambda=\frac kn,\\
+v=kn^2,\qquad u=mn^2,\\
+a=\Bigl\lceil\frac{v}{\sqrt n-1}\Bigr\rceil,\quad \alpha=\frac a{a+v},\\
+b=\Bigl\lceil\frac{u\,\alpha^\rho}{1-\alpha^\rho}\Bigr\rceil,\quad \beta=\frac b{b+u},\\
+q=\alpha^{(1+\rho)/2},\\
+D=h(v,a)\,h(u,b).
+\end{gathered}
+\]</span>
+Note <span class="math" data-tex="\(\lambda=\rho/(1+\rho)\)">\(\lambda=\rho/(1+\rho)\)</span>, since <span class="math" data-tex="\(k+m=n\)">\(k+m=n\)</span>.</p>
+<p>The number <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is the factor by which one differentiation in <span class="math" data-tex="\(V\)">\(V\)</span> lowers the dimension, and <span class="math" data-tex="\(\beta^{-1}\)">\(\beta^{-1}\)</span> the factor by which one multiplication in <span class="math" data-tex="\(U\)">\(U\)</span> raises it (Lemma 3.1). Without the rounding in <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> one would have <span class="math" data-tex="\(\alpha=n^{-1/2}\)">\(\alpha=n^{-1/2}\)</span> and <span class="math" data-tex="\(\beta=\alpha^\rho\)">\(\beta=\alpha^\rho\)</span>, hence <span class="math" data-tex="\(\alpha^k\beta^{-m}=1\)">\(\alpha^k\beta^{-m}=1\)</span>: <span class="math" data-tex="\(k\)">\(k\)</span> differentiations and <span class="math" data-tex="\(m\)">\(m\)</span> multiplications leave the dimension unchanged. The difference <span class="math" data-tex="\(m-k=s\)">\(m-k=s\)</span>, of the order <span class="math" data-tex="\(\sqrt n\)">\(\sqrt n\)</span>, makes <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> a little smaller than <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>; this is used in the next lesson.</p>
+<p><strong>Lemma 4.1.</strong> There is a number <span class="math" data-tex="\(n_0\)">\(n_0\)</span> such that for all <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(\sqrt n-2&lt;s\le\sqrt n\)">\(\sqrt n-2&lt;s\le\sqrt n\)</span> and <span class="math" data-tex="\(s\ge\tfrac12\sqrt n\)">\(s\ge\tfrac12\sqrt n\)</span>; <span class="math" data-tex="\(\lambda=\tfrac12-\tfrac s{2n}\ge\tfrac38\)">\(\lambda=\tfrac12-\tfrac s{2n}\ge\tfrac38\)</span>; <span class="math" data-tex="\(0&lt;\rho&lt;1\)">\(0&lt;\rho&lt;1\)</span> and <span class="math" data-tex="\(1-\rho\le\tfrac2{\sqrt n}\)">\(1-\rho\le\tfrac2{\sqrt n}\)</span>; <span class="math" data-tex="\(k\le\tfrac n2\)">\(k\le\tfrac n2\)</span>.</li>
+<li><span class="math" data-tex="\(\tfrac14n^3\le v\le u\le n^3\)">\(\tfrac14n^3\le v\le u\le n^3\)</span>; <span class="math" data-tex="\(\ \tfrac14n^{5/2}\le a\le n^{5/2}\)">\(\ \tfrac14n^{5/2}\le a\le n^{5/2}\)</span> and <span class="math" data-tex="\(\tfrac14n^{5/2}\le b\le4n^{5/2}\)">\(\tfrac14n^{5/2}\le b\le4n^{5/2}\)</span>; <span class="math" data-tex="\(a\ge k\)">\(a\ge k\)</span> and <span class="math" data-tex="\(4n\le\min\{a,b\}\)">\(4n\le\min\{a,b\}\)</span>.</li>
+<li><span class="math" data-tex="\(n^{-1/2}\le\alpha\le n^{-1/2}\exp(4/n^{5/2})\)">\(n^{-1/2}\le\alpha\le n^{-1/2}\exp(4/n^{5/2})\)</span>; in particular <span class="math" data-tex="\(\alpha^{-1}\le\sqrt n\)">\(\alpha^{-1}\le\sqrt n\)</span>.</li>
+<li><span class="math" data-tex="\(\alpha^\rho\le\beta\le\alpha^\rho \exp(2/b)\)">\(\alpha^\rho\le\beta\le\alpha^\rho \exp(2/b)\)</span> and <span class="math" data-tex="\(\beta\le\tfrac2{\sqrt n}\)">\(\beta\le\tfrac2{\sqrt n}\)</span>.</li>
+<li><span class="math" data-tex="\(n^{-1/2}\le q\)">\(n^{-1/2}\le q\)</span> and <span class="math" data-tex="\(q\le n^{-1/2}\exp\bigl(\tfrac{\log n}{\sqrt n}+\tfrac4{n^{5/2}}\bigr)\)">\(q\le n^{-1/2}\exp\bigl(\tfrac{\log n}{\sqrt n}+\tfrac4{n^{5/2}}\bigr)\)</span>; in particular <span class="math" data-tex="\(q\le\tfrac2{\sqrt n}\le n^{-2/5}\)">\(q\le\tfrac2{\sqrt n}\le n^{-2/5}\)</span> and <span class="math" data-tex="\(q\le\tfrac12\)">\(q\le\tfrac12\)</span>.</li>
+<li><span class="math" data-tex="\(\bigl(1-\tfrac1{a+v}\bigr)^{-n}\le2\)">\(\bigl(1-\tfrac1{a+v}\bigr)^{-n}\le2\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) One of the two integers <span class="math" data-tex="\(\lfloor\sqrt n\rfloor\)">\(\lfloor\sqrt n\rfloor\)</span>, <span class="math" data-tex="\(\lfloor\sqrt n\rfloor-1\)">\(\lfloor\sqrt n\rfloor-1\)</span> has the parity of <span class="math" data-tex="\(n\)">\(n\)</span>. The rest follows from <span class="math" data-tex="\(k=\tfrac{n-s}2\)">\(k=\tfrac{n-s}2\)</span>, <span class="math" data-tex="\(m=\tfrac{n+s}2\ge\tfrac n2\)">\(m=\tfrac{n+s}2\ge\tfrac n2\)</span> and <span class="math" data-tex="\(1-\rho=\tfrac sm\)">\(1-\rho=\tfrac sm\)</span>.</p>
+<p>(2) By (1), <span class="math" data-tex="\(k\ge\tfrac{n-\sqrt n}2\ge\tfrac n4\)">\(k\ge\tfrac{n-\sqrt n}2\ge\tfrac n4\)</span> and <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span>. Let <span class="math" data-tex="\(a_0=v/(\sqrt n-1)\)">\(a_0=v/(\sqrt n-1)\)</span>, so that <span class="math" data-tex="\(a_0\le a&lt;a_0+1\)">\(a_0\le a&lt;a_0+1\)</span>. Then <span class="math" data-tex="\(a_0\ge v/\sqrt n\ge\tfrac14n^{5/2}\)">\(a_0\ge v/\sqrt n\ge\tfrac14n^{5/2}\)</span> and <span class="math" data-tex="\(a_0\le\tfrac12n^3/(\sqrt n-1)\)">\(a_0\le\tfrac12n^3/(\sqrt n-1)\)</span>, which gives the bounds for <span class="math" data-tex="\(a\)">\(a\)</span> for large <span class="math" data-tex="\(n\)">\(n\)</span>. The bounds for <span class="math" data-tex="\(b\)">\(b\)</span> are shown with (4).</p>
+<p>(3) <span class="math" data-tex="\(a_0/(a_0+v)=1/\sqrt n\)">\(a_0/(a_0+v)=1/\sqrt n\)</span>. The function <span class="math" data-tex="\(x/(x+v)\)">\(x/(x+v)\)</span> increases, and the derivative of its logarithm is <span class="math" data-tex="\(\tfrac v{x(x+v)}\le\tfrac1x\)">\(\tfrac v{x(x+v)}\le\tfrac1x\)</span>. So
+<span class="math math-display" data-tex="\[
+\log(\alpha\sqrt n)\le\frac{a-a_0}{a_0}\le\frac1{a_0}\le\frac4{n^{5/2}},
+\]">\[
+\log(\alpha\sqrt n)\le\frac{a-a_0}{a_0}\le\frac1{a_0}\le\frac4{n^{5/2}},
+\]</span>
+and <span class="math" data-tex="\(\log(\alpha\sqrt n)\ge0\)">\(\log(\alpha\sqrt n)\ge0\)</span>.</p>
+<p>(4) By (1) and (3), since <span class="math" data-tex="\(\alpha^{-1}\le\sqrt n\)">\(\alpha^{-1}\le\sqrt n\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha\le\alpha^\rho&amp;=\alpha\cdot\alpha^{-(1-\rho)}\le\alpha\,n^{(1-\rho)/2}\\
+&amp;\le\alpha\exp\Bigl(\frac{\log n}{\sqrt n}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha\le\alpha^\rho&amp;=\alpha\cdot\alpha^{-(1-\rho)}\le\alpha\,n^{(1-\rho)/2}\\
+&amp;\le\alpha\exp\Bigl(\frac{\log n}{\sqrt n}\Bigr).
+\end{aligned}
+\]</span>
+We refer to this chain as (4.1).
+So <span class="math" data-tex="\(\alpha^\rho\sqrt n\to1\)">\(\alpha^\rho\sqrt n\to1\)</span> as <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>, and <span class="math" data-tex="\(\alpha^\rho\le\tfrac32n^{-1/2}\)">\(\alpha^\rho\le\tfrac32n^{-1/2}\)</span> for large <span class="math" data-tex="\(n\)">\(n\)</span>. Let <span class="math" data-tex="\(b_0=u\alpha^\rho/(1-\alpha^\rho)\)">\(b_0=u\alpha^\rho/(1-\alpha^\rho)\)</span>, so that <span class="math" data-tex="\(b_0\le b&lt;b_0+1\)">\(b_0\le b&lt;b_0+1\)</span> and <span class="math" data-tex="\(b_0/(b_0+u)=\alpha^\rho\)">\(b_0/(b_0+u)=\alpha^\rho\)</span>. From <span class="math" data-tex="\(u\alpha^\rho\le b_0\le2u\alpha^\rho\)">\(u\alpha^\rho\le b_0\le2u\alpha^\rho\)</span> and the bounds for <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(\alpha^\rho\)">\(\alpha^\rho\)</span> follow the bounds for <span class="math" data-tex="\(b\)">\(b\)</span> in (2). As in (3),
+<span class="math math-display" data-tex="\[
+0\le\log\frac{\beta}{\alpha^\rho}\le\frac1{b_0}\le\frac2b ,
+\]">\[
+0\le\log\frac{\beta}{\alpha^\rho}\le\frac1{b_0}\le\frac2b ,
+\]</span>
+because <span class="math" data-tex="\(b&lt;b_0+1\le2b_0\)">\(b&lt;b_0+1\le2b_0\)</span>. For large <span class="math" data-tex="\(n\)">\(n\)</span> this gives <span class="math" data-tex="\(\beta\le\tfrac32n^{-1/2}\exp(2/b)\le2n^{-1/2}\)">\(\beta\le\tfrac32n^{-1/2}\exp(2/b)\le2n^{-1/2}\)</span>.</p>
+<p>(5) Since <span class="math" data-tex="\(0&lt;\alpha&lt;1\)">\(0&lt;\alpha&lt;1\)</span> and <span class="math" data-tex="\(\rho\le\tfrac{1+\rho}2\le1\)">\(\rho\le\tfrac{1+\rho}2\le1\)</span>, we have <span class="math" data-tex="\(\alpha\le q\le\alpha^\rho\)">\(\alpha\le q\le\alpha^\rho\)</span>. Use (3) and (4.1). The right side is <span class="math" data-tex="\(n^{-1/2}\)">\(n^{-1/2}\)</span> times a factor that tends to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>(6) <span class="math" data-tex="\(a+v\ge\tfrac14n^3\)">\(a+v\ge\tfrac14n^3\)</span>, so <span class="math" data-tex="\((1-\tfrac1{a+v})^{-n}\le\exp(\tfrac{2n}{a+v})\)">\((1-\tfrac1{a+v})^{-n}\le\exp(\tfrac{2n}{a+v})\)</span>, and this is at most <span class="math" data-tex="\(\exp(8/n^2)\le2\)">\(\exp(8/n^2)\le2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In the following lessons &quot;for large <span class="math" data-tex="\(n\)">\(n\)</span>&quot; means: for all <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>, with a number <span class="math" data-tex="\(n_0\)">\(n_0\)</span> that is enlarged finitely many times and never depends on the field, on a circuit, or on the choice of the layers.</p>
+<h2 id="5-the-product-bound">5. The product bound</h2>
+<p>For an integer <span class="math" data-tex="\(e\ge1\)">\(e\ge1\)</span> put
+<span class="math math-display" data-tex="\[
+H_e=\sum_{i=0}^eq^{|i-\lambda e|} .
+\]">\[
+H_e=\sum_{i=0}^eq^{|i-\lambda e|} .
+\]</span></p>
+<p><strong>Proposition 5.1</strong> ([OpenAI-D]). Let <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>, with the numbers of Section 4 and any division of the layers into <span class="math" data-tex="\(k\)">\(k\)</span> layers for <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> layers for <span class="math" data-tex="\(U\)">\(U\)</span>. Let <span class="math" data-tex="\(Q_1,\dots,Q_r\in K[V,U]\)">\(Q_1,\dots,Q_r\in K[V,U]\)</span> be homogeneous of the degrees <span class="math" data-tex="\(e_1,\dots,e_r\ge1\)">\(e_1,\dots,e_r\ge1\)</span> with <span class="math" data-tex="\(e_1+\dots+e_r=n\)">\(e_1+\dots+e_r=n\)</span>. Then
+<span class="math math-display" data-tex="\[
+R(Q_1\cdots Q_r)\le2D\prod_{j=1}^rH_{e_j} .
+\]">\[
+R(Q_1\cdots Q_r)\le2D\prod_{j=1}^rH_{e_j} .
+\]</span></p>
+<p><strong>Proof.</strong> By Lemma 3.2 it is enough to show, for every assignment <span class="math" data-tex="\(\mathbf i\)">\(\mathbf i\)</span> with <span class="math" data-tex="\(I=I(\mathbf i)\)">\(I=I(\mathbf i)\)</span>, <span class="math" data-tex="\(J=J(\mathbf i)\)">\(J=J(\mathbf i)\)</span>,
+<span class="math math-display" data-tex="\[
+h(v,a-I)\,h(u,b+J)\le2D\prod_jq^{|\delta_j|}.
+\]">\[
+h(v,a-I)\,h(u,b+J)\le2D\prod_jq^{|\delta_j|}.
+\]</span>
+We refer to this inequality as (5.1). It is enough, because the sum of the right sides over the assignments is at most the sum over all sequences <span class="math" data-tex="\((i_1,\dots,i_r)\)">\((i_1,\dots,i_r)\)</span> with <span class="math" data-tex="\(0\le i_j\le e_j\)">\(0\le i_j\le e_j\)</span>, without the condition on their sum, and that sum is the product of the <span class="math" data-tex="\(H_{e_j}\)">\(H_{e_j}\)</span>.</p>
+<p>By Lemma 3.1, and by <span class="math" data-tex="\(\beta\ge\alpha^\rho\)">\(\beta\ge\alpha^\rho\)</span> (Lemma 4.1(4)),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{h(v,a-I)\,h(u,b+J)}{D}\\
+&amp;\qquad\le\Bigl(\frac a{a+v-1}\Bigr)^I\beta^{-J}\\
+&amp;\qquad\le\alpha^{I-\rho J}\Bigl(1-\frac1{a+v}\Bigr)^{-I} ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{h(v,a-I)\,h(u,b+J)}{D}\\
+&amp;\qquad\le\Bigl(\frac a{a+v-1}\Bigr)^I\beta^{-J}\\
+&amp;\qquad\le\alpha^{I-\rho J}\Bigl(1-\frac1{a+v}\Bigr)^{-I} ,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(\frac a{a+v-1}=\alpha\,(1-\frac1{a+v})^{-1}\)">\(\frac a{a+v-1}=\alpha\,(1-\frac1{a+v})^{-1}\)</span>. The last factor is at most <span class="math" data-tex="\(2\)">\(2\)</span> by Lemma 4.1(6), since <span class="math" data-tex="\(I\le k\le n\)">\(I\le k\le n\)</span>. For the exponent, write <span class="math" data-tex="\(i_j=\lambda e_j+\delta_j\)">\(i_j=\lambda e_j+\delta_j\)</span> and <span class="math" data-tex="\(e_j-i_j=(1-\lambda)e_j-\delta_j\)">\(e_j-i_j=(1-\lambda)e_j-\delta_j\)</span>. Then <span class="math" data-tex="\(i_j-\rho(e_j-i_j)\)">\(i_j-\rho(e_j-i_j)\)</span> is <span class="math" data-tex="\(\bigl(\lambda-\rho(1-\lambda)\bigr)e_j+(1+\rho)\delta_j\)">\(\bigl(\lambda-\rho(1-\lambda)\bigr)e_j+(1+\rho)\delta_j\)</span>. From <span class="math" data-tex="\(\lambda=\rho/(1+\rho)\)">\(\lambda=\rho/(1+\rho)\)</span> we get <span class="math" data-tex="\(\lambda-\rho(1-\lambda)=0\)">\(\lambda-\rho(1-\lambda)=0\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I-\rho J&amp;=\sum_{j:\ \delta_j&gt;0}\bigl(i_j-\rho(e_j-i_j)\bigr)\\
+&amp;=(1+\rho)\sum_{j:\ \delta_j&gt;0}\delta_j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+I-\rho J&amp;=\sum_{j:\ \delta_j&gt;0}\bigl(i_j-\rho(e_j-i_j)\bigr)\\
+&amp;=(1+\rho)\sum_{j:\ \delta_j&gt;0}\delta_j .
+\end{aligned}
+\]</span>
+Since the <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span> add up to <span class="math" data-tex="\(0\)">\(0\)</span>, the sum of the positive ones is half the sum of all <span class="math" data-tex="\(|\delta_j|\)">\(|\delta_j|\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\alpha^{I-\rho J}=\alpha^{\frac{1+\rho}2\sum_j|\delta_j|}=\prod_jq^{|\delta_j|} .
+\]">\[
+\alpha^{I-\rho J}=\alpha^{\frac{1+\rho}2\sum_j|\delta_j|}=\prod_jq^{|\delta_j|} .
+\]</span>
+This is (5.1). <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Each factor <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> contributes <span class="math" data-tex="\(H_{e_j}\)">\(H_{e_j}\)</span>, a sum over the possible degrees <span class="math" data-tex="\(i\)">\(i\)</span> of its part in <span class="math" data-tex="\(V\)">\(V\)</span>, weighted by <span class="math" data-tex="\(q^{|i-\lambda e_j|}\)">\(q^{|i-\lambda e_j|}\)</span>. Since <span class="math" data-tex="\(q\)">\(q\)</span> is about <span class="math" data-tex="\(n^{-1/2}\)">\(n^{-1/2}\)</span>, the weight is small unless <span class="math" data-tex="\(i\)">\(i\)</span> is close to the share <span class="math" data-tex="\(\lambda e_j\)">\(\lambda e_j\)</span>. But <span class="math" data-tex="\(i\)">\(i\)</span> is an integer. If <span class="math" data-tex="\(\lambda e_j\)">\(\lambda e_j\)</span> is far from every integer, every term of <span class="math" data-tex="\(H_{e_j}\)">\(H_{e_j}\)</span> is small. The next lesson makes this precise.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Let <span class="math" data-tex="\(V=\{x\}\)">\(V=\{x\}\)</span>, <span class="math" data-tex="\(U=\{y\}\)">\(U=\{y\}\)</span>, <span class="math" data-tex="\(Q=xy\)">\(Q=xy\)</span>. Compute <span class="math" data-tex="\(T_Q(x^2y)\)">\(T_Q(x^2y)\)</span> and <span class="math" data-tex="\(T_{Q^2}(x^2y)\)">\(T_{Q^2}(x^2y)\)</span>, and check <span class="math" data-tex="\(T_{Q^2}=T_Q\circ T_Q\)">\(T_{Q^2}=T_Q\circ T_Q\)</span> on this polynomial.</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(v=u=2\)">\(v=u=2\)</span>, <span class="math" data-tex="\(k=m=1\)">\(k=m=1\)</span>, <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, and <span class="math" data-tex="\(g=x_1y_1+x_2y_2\)">\(g=x_1y_1+x_2y_2\)</span> with <span class="math" data-tex="\(V=\{x_1,x_2\}\)">\(V=\{x_1,x_2\}\)</span>, <span class="math" data-tex="\(U=\{y_1,y_2\}\)">\(U=\{y_1,y_2\}\)</span>. Find <span class="math" data-tex="\(D\)">\(D\)</span>, the matrix of <span class="math" data-tex="\(F_g\)">\(F_g\)</span> in the bases of the monomials, and <span class="math" data-tex="\(R(g)\)">\(R(g)\)</span>.</p>
+<p><strong>6.3.</strong> Show that <span class="math" data-tex="\(R(g)\le D\)">\(R(g)\le D\)</span> and <span class="math" data-tex="\(R(g)\le h(v,a-k)\,h(u,b+m)\)">\(R(g)\le h(v,a-k)\,h(u,b+m)\)</span>, and that for a product <span class="math" data-tex="\(g=Q_1Q_2\)">\(g=Q_1Q_2\)</span> in which <span class="math" data-tex="\(Q_1\)">\(Q_1\)</span> contains only variables of <span class="math" data-tex="\(V\)">\(V\)</span> and has the degree <span class="math" data-tex="\(k\)">\(k\)</span>, the map <span class="math" data-tex="\(F_g\)">\(F_g\)</span> is a composition through <span class="math" data-tex="\(\mathcal H(a-k,b)\)">\(\mathcal H(a-k,b)\)</span>.</p>
+<p><strong>6.4.</strong> In Lemma 3.2 let <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, <span class="math" data-tex="\(e_1=e_2=1\)">\(e_1=e_2=1\)</span>, <span class="math" data-tex="\(k=m=1\)">\(k=m=1\)</span> (so <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(\lambda=\tfrac12\)">\(\lambda=\tfrac12\)</span>). List the assignments with their <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span>, <span class="math" data-tex="\(I\)">\(I\)</span>, <span class="math" data-tex="\(J\)">\(J\)</span> and the intermediate spaces.</p>
+<p><strong>6.5.</strong> Check <span class="math" data-tex="\(\lambda-\rho(1-\lambda)=0\)">\(\lambda-\rho(1-\lambda)=0\)</span> and <span class="math" data-tex="\(\alpha^k\beta^{-m}=1\)">\(\alpha^k\beta^{-m}=1\)</span> under the assumption <span class="math" data-tex="\(\beta=\alpha^\rho\)">\(\beta=\alpha^\rho\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(T_Q=\partial_x\circ\mu_y\)">\(T_Q=\partial_x\circ\mu_y\)</span>: <span class="math" data-tex="\(T_Q(x^2y)=\partial_x(x^2y^2)=2xy^2\)">\(T_Q(x^2y)=\partial_x(x^2y^2)=2xy^2\)</span>. <span class="math" data-tex="\(T_{Q^2}=\partial_x^2\circ\mu_y^2\)">\(T_{Q^2}=\partial_x^2\circ\mu_y^2\)</span>: <span class="math" data-tex="\(T_{Q^2}(x^2y)=\partial_x^2(x^2y^3)=2y^3\)">\(T_{Q^2}(x^2y)=\partial_x^2(x^2y^3)=2y^3\)</span>. And <span class="math" data-tex="\(T_Q(T_Q(x^2y))=T_Q(2xy^2)\)">\(T_Q(T_Q(x^2y))=T_Q(2xy^2)\)</span>, which is <span class="math" data-tex="\(\partial_x(2xy^3)=2y^3\)">\(\partial_x(2xy^3)=2y^3\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(D=h(2,1)h(2,0)=2\)">\(D=h(2,1)h(2,0)=2\)</span>: the space <span class="math" data-tex="\(\mathcal H(1,0)\)">\(\mathcal H(1,0)\)</span> has the basis <span class="math" data-tex="\(x_1,x_2\)">\(x_1,x_2\)</span>. The space <span class="math" data-tex="\(\mathcal H(0,1)\)">\(\mathcal H(0,1)\)</span>, into which <span class="math" data-tex="\(F_g\)">\(F_g\)</span> maps, has the basis <span class="math" data-tex="\(y_1,y_2\)">\(y_1,y_2\)</span>. <span class="math" data-tex="\(F_g=\partial_{x_1}\mu_{y_1}+\partial_{x_2}\mu_{y_2}\)">\(F_g=\partial_{x_1}\mu_{y_1}+\partial_{x_2}\mu_{y_2}\)</span> maps <span class="math" data-tex="\(x_1\)">\(x_1\)</span> to <span class="math" data-tex="\(y_1\)">\(y_1\)</span> and <span class="math" data-tex="\(x_2\)">\(x_2\)</span> to <span class="math" data-tex="\(y_2\)">\(y_2\)</span>. The matrix is the unit matrix, and <span class="math" data-tex="\(R(g)=2\)">\(R(g)=2\)</span>.</p>
+<p><strong>6.3.</strong> The rank of a linear map from a space <span class="math" data-tex="\(X\)">\(X\)</span> to a space <span class="math" data-tex="\(Y\)">\(Y\)</span> is at most the dimension of <span class="math" data-tex="\(X\)">\(X\)</span> and at most the dimension of <span class="math" data-tex="\(Y\)">\(Y\)</span>. For <span class="math" data-tex="\(g=Q_1Q_2\)">\(g=Q_1Q_2\)</span> as stated, <span class="math" data-tex="\(g_{[k,m]}=Q_1\cdot(Q_2)_{[0,m]}\)">\(g_{[k,m]}=Q_1\cdot(Q_2)_{[0,m]}\)</span>, so <span class="math" data-tex="\(F_g=T_{(Q_2)_{[0,m]}}\circ T_{Q_1}\)">\(F_g=T_{(Q_2)_{[0,m]}}\circ T_{Q_1}\)</span>, and <span class="math" data-tex="\(T_{Q_1}\)">\(T_{Q_1}\)</span> maps <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span> into <span class="math" data-tex="\(\mathcal H(a-k,b)\)">\(\mathcal H(a-k,b)\)</span>.</p>
+<p><strong>6.4.</strong> The assignments are <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. For <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>: <span class="math" data-tex="\(\delta_1=\tfrac12\)">\(\delta_1=\tfrac12\)</span>, <span class="math" data-tex="\(\delta_2=-\tfrac12\)">\(\delta_2=-\tfrac12\)</span>; the first group is the factor <span class="math" data-tex="\(1\)">\(1\)</span>, with <span class="math" data-tex="\(I=1\)">\(I=1\)</span>, <span class="math" data-tex="\(J=0\)">\(J=0\)</span>; the intermediate space is <span class="math" data-tex="\(\mathcal H(a-1,b)\)">\(\mathcal H(a-1,b)\)</span>. For <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> the same with the two factors exchanged. So <span class="math" data-tex="\(R(Q_1Q_2)\le2\,h(v,a-1)h(u,b)\)">\(R(Q_1Q_2)\le2\,h(v,a-1)h(u,b)\)</span>.</p>
+<p><strong>6.5.</strong> <span class="math" data-tex="\(1-\lambda=\tfrac1{1+\rho}\)">\(1-\lambda=\tfrac1{1+\rho}\)</span>, so <span class="math" data-tex="\(\rho(1-\lambda)=\tfrac\rho{1+\rho}=\lambda\)">\(\rho(1-\lambda)=\tfrac\rho{1+\rho}=\lambda\)</span>. And <span class="math" data-tex="\(\alpha^k\beta^{-m}=\alpha^{k-\rho m}=\alpha^0\)">\(\alpha^k\beta^{-m}=\alpha^{k-\rho m}=\alpha^0\)</span>, because <span class="math" data-tex="\(\rho m=k\)">\(\rho m=k\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-D] OpenAI, <em>Homogeneous depth-five lower bounds for iterated matrix multiplication</em>, OpenAI Math Release preprint, 25 September 2026, Sections 2 and 3.1. https://github.com/openai/math/tree/main/preprints/Homogeneous-depth-five-lower-bounds-for-iterated-matrix-multiplication-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

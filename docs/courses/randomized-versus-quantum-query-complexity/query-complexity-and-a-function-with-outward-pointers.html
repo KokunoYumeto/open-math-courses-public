@@ -1,0 +1,223 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Query complexity and a function with outward pointers</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Randomized versus quantum query complexity)</a><a href="the-quantum-query-model.html">Next lesson</a><a href="src/query-complexity-and-a-function-with-outward-pointers.md">Editable source</a></nav><main><article><h1 id="query-complexity-and-a-function-with-outward-pointers">Query complexity and a function with outward pointers</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Boolean function of <span class="math" data-tex="\(n\)">\(n\)</span> bits can be computed by reading input bits one at a time, each choice depending on the bits read before. The least number of bits that must be read in the worst case is a measure of the difficulty of the function. It depends on the kind of algorithm: deterministic, randomized, or quantum. For functions that are defined on all inputs, the three numbers are related by polynomial inequalities, and the best known one for the randomized number <span class="math" data-tex="\(R\)">\(R\)</span> and the quantum number <span class="math" data-tex="\(Q\)">\(Q\)</span> is <span class="math" data-tex="\(R(f)\le C\,(1+Q(f))^4\)">\(R(f)\le C\,(1+Q(f))^4\)</span>. [OpenAI-Q] shows that the exponent <span class="math" data-tex="\(4\)">\(4\)</span> cannot be lowered. It constructs functions <span class="math" data-tex="\(F_{k,m}\)">\(F_{k,m}\)</span> with <span class="math" data-tex="\(Q\)">\(Q\)</span> about <span class="math" data-tex="\(\sqrt m\)">\(\sqrt m\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> about <span class="math" data-tex="\(m^{2-1/k}\)">\(m^{2-1/k}\)</span>.</p>
+<p>This lesson defines the deterministic and the randomized numbers, states the theorems of the course, and constructs the functions <span class="math" data-tex="\(F_{k,m}\)">\(F_{k,m}\)</span>. The quantum number is defined in the next lesson.</p>
+<ul>
+<li>Decision trees, <span class="math" data-tex="\(D(f)\)">\(D(f)\)</span> and <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span> (Section 1).</li>
+<li>The theorems of the course and the hypothesis (BS) (Sections 2 and 3).</li>
+<li>The Forrelation function and an exact circuit for it (Lemma 4.1).</li>
+<li>The function <span class="math" data-tex="\(F_{k,m}\)">\(F_{k,m}\)</span>: columns, addresses, cells, pointers, winners (Section 5).</li>
+<li>A winner at a given address is recognized by local tests (Lemma 6.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-Q, Sections 1 and 2]. It needs only finite probability and matrices.</p>
+<h2 id="1-decision-trees">1. Decision trees</h2>
+<p>An <em>input</em> is a string <span class="math" data-tex="\(x=(x_1,\dots,x_n)\in\{0,1\}^n\)">\(x=(x_1,\dots,x_n)\in\{0,1\}^n\)</span>. A <em>partial Boolean function</em> is a function <span class="math" data-tex="\(f:\mathcal D\to\{0,1\}\)">\(f:\mathcal D\to\{0,1\}\)</span> on a subset <span class="math" data-tex="\(\mathcal D\subseteq\{0,1\}^n\)">\(\mathcal D\subseteq\{0,1\}^n\)</span>, its <em>domain</em>. It is <em>total</em> if <span class="math" data-tex="\(\mathcal D=\{0,1\}^n\)">\(\mathcal D=\{0,1\}^n\)</span>.</p>
+<p>A <em>decision tree</em> is a finite rooted tree in which every inner vertex carries a position <span class="math" data-tex="\(j\in\{1,\dots,n\}\)">\(j\in\{1,\dots,n\}\)</span> and has two children, one for each value of <span class="math" data-tex="\(x_j\)">\(x_j\)</span>, and every leaf carries an output. On an input <span class="math" data-tex="\(x\)">\(x\)</span> the tree is followed from the root: at an inner vertex with the position <span class="math" data-tex="\(j\)">\(j\)</span> the bit <span class="math" data-tex="\(x_j\)">\(x_j\)</span> is read (a <em>query</em>), and the path continues to the child for this value. The output of the leaf that is reached is the output <span class="math" data-tex="\(A(x)\)">\(A(x)\)</span> of the tree <span class="math" data-tex="\(A\)">\(A\)</span>. The <em>depth</em> of the tree is the largest number of queries on a path. A decision tree is the same as a deterministic algorithm that reads bits adaptively; the outputs may be bits or elements of any set.</p>
+<p><strong>Definition.</strong> <span class="math" data-tex="\(D(f)\)">\(D(f)\)</span> is the least depth of a decision tree <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(A(x)=f(x)\)">\(A(x)=f(x)\)</span> for all <span class="math" data-tex="\(x\in\mathcal D\)">\(x\in\mathcal D\)</span>.</p>
+<p>A <em>randomized algorithm of cost <span class="math" data-tex="\(T\)">\(T\)</span></em> is a probability distribution on a finite set of decision trees of depth at most <span class="math" data-tex="\(T\)">\(T\)</span>. On an input it draws a tree and runs it. It <em>computes <span class="math" data-tex="\(f\)">\(f\)</span> with error at most <span class="math" data-tex="\(\tfrac13\)">\(\tfrac13\)</span></em> if for every <span class="math" data-tex="\(x\in\mathcal D\)">\(x\in\mathcal D\)</span> the probability of the output <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> is at least <span class="math" data-tex="\(\tfrac23\)">\(\tfrac23\)</span>.</p>
+<p><strong>Definition.</strong> <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span> is the least cost of a randomized algorithm that computes <span class="math" data-tex="\(f\)">\(f\)</span> with error at most <span class="math" data-tex="\(\tfrac13\)">\(\tfrac13\)</span>.</p>
+<p>A single tree is a randomized algorithm, so <span class="math" data-tex="\(R(f)\le D(f)\le n\)">\(R(f)\le D(f)\le n\)</span>. The cost is a worst case over the inputs and over the random choices. For a partial function nothing is required outside the domain.</p>
+<p>The quantum number <span class="math" data-tex="\(Q(f)\)">\(Q(f)\)</span> is defined in <a href="the-quantum-query-model.html">The quantum query model</a>: the least number of queries of a quantum algorithm that computes <span class="math" data-tex="\(f\)">\(f\)</span> with error at most <span class="math" data-tex="\(\tfrac13\)">\(\tfrac13\)</span> on every input of the domain.</p>
+<h2 id="2-the-theorems-of-the-course">2. The theorems of the course</h2>
+<p><strong>Theorem 2.1</strong> (Aaronson, Ben-David, Kothari, Rao and Tal, with Huang's theorem). There is a number <span class="math" data-tex="\(C\)">\(C\)</span> such that for every <span class="math" data-tex="\(n\)">\(n\)</span> and every total function <span class="math" data-tex="\(f:\{0,1\}^n\to\{0,1\}\)">\(f:\{0,1\}^n\to\{0,1\}\)</span>,
+<span class="math math-display" data-tex="\[
+R(f)\le D(f)\le C\,(1+Q(f))^4 .
+\]">\[
+R(f)\le D(f)\le C\,(1+Q(f))^4 .
+\]</span></p>
+<p>It is proved in <a href="the-quartic-upper-bound-and-the-optimal-exponent.html">The quartic upper bound and the optimal exponent</a>, with <span class="math" data-tex="\(C=1.5\cdot10^6\)">\(C=1.5\cdot10^6\)</span>.</p>
+<p><strong>Theorem 2.2</strong> ([OpenAI-Q]). For every integer <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> and every power of four <span class="math" data-tex="\(m\)">\(m\)</span> there is a total Boolean function <span class="math" data-tex="\(F_{k,m}\)">\(F_{k,m}\)</span>, defined in Section 5, with the following properties.</p>
+<ol>
+<li>There is a number <span class="math" data-tex="\(C_k\)">\(C_k\)</span> with
+<span class="math math-display" data-tex="\[
+Q(F_{k,m})\le C_k\sqrt m\,(\log_2m)^4
+\]">\[
+Q(F_{k,m})\le C_k\sqrt m\,(\log_2m)^4
+\]</span>
+for all <span class="math" data-tex="\(m\)">\(m\)</span>.</li>
+<li>Assume the hypothesis (BS) of Section 3. Then for all large <span class="math" data-tex="\(m\)">\(m\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R(F_{k,m})&gt;\Bigl\lfloor\frac{mL}{100}\Bigr\rfloor,\\
+L=\Bigl\lfloor\frac{m^{1-1/k}}{(\log_2m)^2}\Bigr\rfloor .
+\end{gathered}
+\]">\[
+\begin{gathered}
+R(F_{k,m})&gt;\Bigl\lfloor\frac{mL}{100}\Bigr\rfloor,\\
+L=\Bigl\lfloor\frac{m^{1-1/k}}{(\log_2m)^2}\Bigr\rfloor .
+\end{gathered}
+\]</span></li>
+</ol>
+<p>Part 1 is proved in <a href="a-tournament-with-probabilistic-comparisons.html">A tournament with probabilistic comparisons</a>, Part 2 in <a href="the-randomized-lower-bound.html">The randomized lower bound</a>. Part 1 uses no hypothesis.</p>
+<p><strong>Corollary 2.3</strong> (the optimal exponent). Assume (BS). Let <span class="math" data-tex="\(\alpha&lt;4\)">\(\alpha&lt;4\)</span>. Then there is no number <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(R(f)\le C\,(1+Q(f))^\alpha\)">\(R(f)\le C\,(1+Q(f))^\alpha\)</span> for all total Boolean functions <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> with <span class="math" data-tex="\(2-\tfrac1k&gt;\tfrac\alpha2\)">\(2-\tfrac1k&gt;\tfrac\alpha2\)</span>. By Theorem 2.2, for large <span class="math" data-tex="\(m\)">\(m\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{R(F_{k,m})}{(1+Q(F_{k,m}))^\alpha}\ge c\,\frac{m^{2-1/k-\alpha/2}}{(\log_2m)^{2+4\alpha}}
+\]">\[
+\frac{R(F_{k,m})}{(1+Q(F_{k,m}))^\alpha}\ge c\,\frac{m^{2-1/k-\alpha/2}}{(\log_2m)^{2+4\alpha}}
+\]</span>
+with a number <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> that depends on <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> only. The right side tends to infinity with <span class="math" data-tex="\(m\)">\(m\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So <span class="math" data-tex="\(4\)">\(4\)</span> is the least exponent for which an inequality <span class="math" data-tex="\(R(f)\le C(1+Q(f))^\alpha\)">\(R(f)\le C(1+Q(f))^\alpha\)</span> holds for all total functions: Theorem 2.1 gives it for <span class="math" data-tex="\(\alpha=4\)">\(\alpha=4\)</span>, and Corollary 2.3 excludes every smaller one, under (BS). An inequality with the exponent <span class="math" data-tex="\(3\)">\(3\)</span> had been conjectured.</p>
+<h2 id="3-forrelation-and-the-hypothesis">3. Forrelation and the hypothesis</h2>
+<p>Let <span class="math" data-tex="\(m=2^\ell\)">\(m=2^\ell\)</span>. Index the coordinates of <span class="math" data-tex="\(\mathbb R^m\)">\(\mathbb R^m\)</span> by the strings <span class="math" data-tex="\(a\in\{0,1\}^\ell\)">\(a\in\{0,1\}^\ell\)</span>, and let <span class="math" data-tex="\(H\)">\(H\)</span> be the matrix with the entries
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_{a,b}=m^{-1/2}(-1)^{a\cdot b},\\
+a\cdot b=a_1b_1+\dots+a_\ell b_\ell .
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_{a,b}=m^{-1/2}(-1)^{a\cdot b},\\
+a\cdot b=a_1b_1+\dots+a_\ell b_\ell .
+\end{gathered}
+\]</span>
+It is symmetric, and <span class="math" data-tex="\(H^2=I\)">\(H^2=I\)</span>: the entry of <span class="math" data-tex="\(H^2\)">\(H^2\)</span> at <span class="math" data-tex="\((a,c)\)">\((a,c)\)</span> is <span class="math" data-tex="\(m^{-1}\sum_b(-1)^{(a+c)\cdot b}\)">\(m^{-1}\sum_b(-1)^{(a+c)\cdot b}\)</span>, which is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(a=c\)">\(a=c\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. So <span class="math" data-tex="\(H\)">\(H\)</span> is an orthogonal matrix. Let <span class="math" data-tex="\(u=m^{-1/2}(1,\dots,1)\)">\(u=m^{-1/2}(1,\dots,1)\)</span>; it is a unit vector, and <span class="math" data-tex="\(u=He_0\)">\(u=He_0\)</span> for the basis vector <span class="math" data-tex="\(e_0\)">\(e_0\)</span> of the string <span class="math" data-tex="\(0\dots0\)">\(0\dots0\)</span>.</p>
+<p>A string <span class="math" data-tex="\(z\in\{0,1\}^m\)">\(z\in\{0,1\}^m\)</span> is also read as the vector of the signs <span class="math" data-tex="\((-1)^{z_a}\)">\((-1)^{z_a}\)</span>; let <span class="math" data-tex="\(D_z\)">\(D_z\)</span> be the diagonal matrix with these signs. For <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> strings <span class="math" data-tex="\(z=(z_1,\dots,z_k)\)">\(z=(z_1,\dots,z_k)\)</span> put
+<span class="math math-display" data-tex="\[
+\Phi(z)=u^{\mathsf T}D_{z_1}HD_{z_2}H\cdots HD_{z_k}u .
+\]">\[
+\Phi(z)=u^{\mathsf T}D_{z_1}HD_{z_2}H\cdots HD_{z_k}u .
+\]</span>
+Since <span class="math" data-tex="\(u\)">\(u\)</span> is a unit vector and all the matrices are orthogonal, <span class="math" data-tex="\(|\Phi|\le1\)">\(|\Phi|\le1\)</span>. Put <span class="math" data-tex="\(\delta=2^{-5k}\)">\(\delta=2^{-5k}\)</span>.</p>
+<p><strong>Definition.</strong> The <em>Forrelation function</em> <span class="math" data-tex="\(P=P_{k,m}\)">\(P=P_{k,m}\)</span> is the partial Boolean function on <span class="math" data-tex="\(km\)">\(km\)</span> bits with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(z)=1\quad\text{if }\Phi(z)\ge\delta,\\
+P(z)=0\quad\text{if }|\Phi(z)|\le\delta/2,
+\end{gathered}
+\]">\[
+\begin{gathered}
+P(z)=1\quad\text{if }\Phi(z)\ge\delta,\\
+P(z)=0\quad\text{if }|\Phi(z)|\le\delta/2,
+\end{gathered}
+\]</span>
+and not defined for the other inputs <span class="math" data-tex="\(z=(z_1,\dots,z_k)\)">\(z=(z_1,\dots,z_k)\)</span>.</p>
+<p><strong>Hypothesis (BS)</strong> (Bansal and Sinha [BS, Corollary 1.4]). For every integer <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> there are numbers <span class="math" data-tex="\(c_k&gt;0\)">\(c_k&gt;0\)</span> and <span class="math" data-tex="\(m_k\)">\(m_k\)</span> such that for all powers of two <span class="math" data-tex="\(m\ge m_k\)">\(m\ge m_k\)</span>,
+<span class="math math-display" data-tex="\[
+R(P_{k,m})\ge c_k\Bigl(\frac m{\log_2(km)}\Bigr)^{1-1/k}.
+\]">\[
+R(P_{k,m})\ge c_k\Bigl(\frac m{\log_2(km)}\Bigr)^{1-1/k}.
+\]</span></p>
+<p>This is a theorem of [BS], with <span class="math" data-tex="\(c_k\)">\(c_k\)</span> a constant times <span class="math" data-tex="\(k^{-29}\)">\(k^{-29}\)</span>. Its proof uses Gaussian interpolation and bounds for Fourier coefficients of decision trees, and it is not given in this course: the course uses it as a named hypothesis. The function, the normalization of <span class="math" data-tex="\(H\)">\(H\)</span> and the two thresholds <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span> with <span class="math" data-tex="\(\delta=2^{-5k}\)">\(\delta=2^{-5k}\)</span> are those of [BS, (1.2), (1.3) and Theorem 1.3].</p>
+<p>Quantum algorithms compute <span class="math" data-tex="\(P_{k,m}\)">\(P_{k,m}\)</span> with a number of queries that does not depend on <span class="math" data-tex="\(m\)">\(m\)</span> (<a href="amplitude-amplification-and-the-forrelation-test.html">Amplitude amplification and the Forrelation test</a>). So <span class="math" data-tex="\(P_{k,m}\)">\(P_{k,m}\)</span> separates <span class="math" data-tex="\(R\)">\(R\)</span> from <span class="math" data-tex="\(Q\)">\(Q\)</span> very strongly, but it is a partial function. The construction of Section 5 turns it into a total function and keeps a part of the separation.</p>
+<h2 id="4-an-exact-circuit">4. An exact circuit</h2>
+<p>A <em>Boolean circuit</em> is a finite sequence of <em>gates</em>. Each gate computes a Boolean function of at most two earlier values; an earlier value is an input bit, a constant, or the value of an earlier gate. The <em>size</em> is the number of the gates. Some gates are marked as outputs.</p>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. There is a number <span class="math" data-tex="\(C_k&#x27;\)">\(C_k&#x27;\)</span> such that for every power of four <span class="math" data-tex="\(m\)">\(m\)</span> there is a Boolean circuit <span class="math" data-tex="\(C_{k,m}\)">\(C_{k,m}\)</span> on <span class="math" data-tex="\(km\)">\(km\)</span> input bits of a size
+<span class="math math-display" data-tex="\[
+S=S_{k,m}\le C_k&#x27;\,m\,(\log_2m)^2
+\]">\[
+S=S_{k,m}\le C_k&#x27;\,m\,(\log_2m)^2
+\]</span>
+with two output gates <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> such that on every input: <span class="math" data-tex="\(d=1\)">\(d=1\)</span> if and only if <span class="math" data-tex="\(P_{k,m}\)">\(P_{k,m}\)</span> is defined, and if <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, then <span class="math" data-tex="\(b=P_{k,m}\)">\(b=P_{k,m}\)</span>.</p>
+<p><strong>Proof.</strong> <em>Integers.</em> Let <span class="math" data-tex="\(W=\sqrt m\,H\)">\(W=\sqrt m\,H\)</span>, a matrix with the entries <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, and let <span class="math" data-tex="\(\mathbf 1\)">\(\mathbf 1\)</span> be the vector of ones. Put
+<span class="math math-display" data-tex="\[
+N=z_1^{\mathsf T}\,W D_{z_2}W\cdots WD_{z_k}\mathbf 1,
+\]">\[
+N=z_1^{\mathsf T}\,W D_{z_2}W\cdots WD_{z_k}\mathbf 1,
+\]</span>
+where <span class="math" data-tex="\(z_1\)">\(z_1\)</span> is read as a vector of signs. This is an integer, and
+<span class="math math-display" data-tex="\[
+\Phi=\frac NM,\qquad M=m\,(\sqrt m)^{k-1},
+\]">\[
+\Phi=\frac NM,\qquad M=m\,(\sqrt m)^{k-1},
+\]</span>
+because <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> contains <span class="math" data-tex="\(k-1\)">\(k-1\)</span> factors <span class="math" data-tex="\(H=W/\sqrt m\)">\(H=W/\sqrt m\)</span> and twice the factor <span class="math" data-tex="\(m^{-1/2}\)">\(m^{-1/2}\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span>. Since <span class="math" data-tex="\(m\)">\(m\)</span> is a power of four, <span class="math" data-tex="\(M\)">\(M\)</span> is an integer. The two conditions of the definition of <span class="math" data-tex="\(P\)">\(P\)</span> are
+<span class="math math-display" data-tex="\[
+2^{5k}N\ge M\qquad\text{and}\qquad2^{5k+1}|N|\le M .
+\]">\[
+2^{5k}N\ge M\qquad\text{and}\qquad2^{5k+1}|N|\le M .
+\]</span></p>
+<p><em>The computation.</em> Put <span class="math" data-tex="\(y_k=D_{z_k}\mathbf 1\)">\(y_k=D_{z_k}\mathbf 1\)</span> and <span class="math" data-tex="\(y_j=D_{z_j}Wy_{j+1}\)">\(y_j=D_{z_j}Wy_{j+1}\)</span> for <span class="math" data-tex="\(j=k-1,\dots,2\)">\(j=k-1,\dots,2\)</span>; then <span class="math" data-tex="\(N=z_1^{\mathsf T}Wy_2\)">\(N=z_1^{\mathsf T}Wy_2\)</span>. All entries of the vectors <span class="math" data-tex="\(y_j\)">\(y_j\)</span> and <span class="math" data-tex="\(Wy_j\)">\(Wy_j\)</span> are integers of absolute value at most <span class="math" data-tex="\(m^k\)">\(m^k\)</span>. They and the numbers in the two comparisons are written in binary, with a sign, with <span class="math" data-tex="\(B=\lceil k\log_2m\rceil+5k+3\)">\(B=\lceil k\log_2m\rceil+5k+3\)</span> bits.</p>
+<p>The product <span class="math" data-tex="\(Wy\)">\(Wy\)</span> for a vector <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(m=2^\ell\)">\(m=2^\ell\)</span> entries is computed in <span class="math" data-tex="\(\ell\)">\(\ell\)</span> rounds: by <span class="math" data-tex="\(W_{2m&#x27;}=\begin{pmatrix}W_{m&#x27;}&amp;W_{m&#x27;}\\W_{m&#x27;}&amp;-W_{m&#x27;}\end{pmatrix}\)">\(W_{2m&#x27;}=\begin{pmatrix}W_{m&#x27;}&amp;W_{m&#x27;}\\W_{m&#x27;}&amp;-W_{m&#x27;}\end{pmatrix}\)</span>, the transform of a vector <span class="math" data-tex="\((y&#x27;,y&#x27;&#x27;)\)">\((y&#x27;,y&#x27;&#x27;)\)</span> is <span class="math" data-tex="\((W_{m&#x27;}y&#x27;+W_{m&#x27;}y&#x27;&#x27;,\ W_{m&#x27;}y&#x27;-W_{m&#x27;}y&#x27;&#x27;)\)">\((W_{m&#x27;}y&#x27;+W_{m&#x27;}y&#x27;&#x27;,\ W_{m&#x27;}y&#x27;-W_{m&#x27;}y&#x27;&#x27;)\)</span>, so the transform of length <span class="math" data-tex="\(2m&#x27;\)">\(2m&#x27;\)</span> needs two transforms of length <span class="math" data-tex="\(m&#x27;\)">\(m&#x27;\)</span> and <span class="math" data-tex="\(2m&#x27;\)">\(2m&#x27;\)</span> additions or subtractions. In all, <span class="math" data-tex="\(Wy\)">\(Wy\)</span> needs <span class="math" data-tex="\(m\ell\)">\(m\ell\)</span> additions or subtractions.</p>
+<p><em>Gates.</em> Two integers of <span class="math" data-tex="\(B\)">\(B\)</span> bits are added or subtracted by a circuit of at most <span class="math" data-tex="\(c_0B\)">\(c_0B\)</span> gates with two inputs each, for an absolute constant <span class="math" data-tex="\(c_0\)">\(c_0\)</span>: one bit after the other, with a carry. The same holds for changing the sign of an integer if a given bit is <span class="math" data-tex="\(1\)">\(1\)</span>, and for comparing two integers. So the <span class="math" data-tex="\(k-1\)">\(k-1\)</span> products with <span class="math" data-tex="\(W\)">\(W\)</span>, the <span class="math" data-tex="\(k-1\)">\(k-1\)</span> products with the matrices <span class="math" data-tex="\(D_{z_j}\)">\(D_{z_j}\)</span>, the sum <span class="math" data-tex="\(z_1^{\mathsf T}(Wy_2)\)">\(z_1^{\mathsf T}(Wy_2)\)</span> of <span class="math" data-tex="\(m\)">\(m\)</span> terms and the two comparisons need at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;c_0B\,\bigl(k\,m\ell+k\,m+m+2\bigr)\\
+&amp;\qquad\le C_k&#x27;\,m\,(\log_2m)^2
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;c_0B\,\bigl(k\,m\ell+k\,m+m+2\bigr)\\
+&amp;\qquad\le C_k&#x27;\,m\,(\log_2m)^2
+\end{aligned}
+\]</span>
+gates. Let <span class="math" data-tex="\(b\)">\(b\)</span> be the gate of the first comparison and <span class="math" data-tex="\(d\)">\(d\)</span> the gate that computes &quot;the first or the second comparison holds&quot;. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The circuit does not help to compute <span class="math" data-tex="\(P\)">\(P\)</span> with few queries: it reads all its inputs. Its role is different. A list of the values of all gates, a <em>transcript</em>, can be checked gate by gate, and each check reads three bits. A correct transcript proves what the value of <span class="math" data-tex="\(P\)">\(P\)</span> is, or that <span class="math" data-tex="\(P\)">\(P\)</span> is not defined.</p>
+<h2 id="5-the-function-f_-k-m">5. The function <span class="math" data-tex="\(F_{k,m}\)">\(F_{k,m}\)</span></h2>
+<p>Fix <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> and a power of four <span class="math" data-tex="\(m\ge4\)">\(m\ge4\)</span>. Put
+<span class="math math-display" data-tex="\[
+\ell=\log_2m,\qquad r=\lceil20\log_2m\rceil ,
+\]">\[
+\ell=\log_2m,\qquad r=\lceil20\log_2m\rceil ,
+\]</span>
+and let <span class="math" data-tex="\(S=S_{k,m}\)">\(S=S_{k,m}\)</span> be the size of the circuit of Lemma 4.1. The input of <span class="math" data-tex="\(F_{k,m}\)">\(F_{k,m}\)</span> consists of <span class="math" data-tex="\(m\)">\(m\)</span> <em>columns</em>. The column <span class="math" data-tex="\(i\in\{1,\dots,m\}\)">\(i\in\{1,\dots,m\}\)</span> contains:</p>
+<ol>
+<li>a string <span class="math" data-tex="\(X_i\in\{0,1\}^m\)">\(X_i\in\{0,1\}^m\)</span>;</li>
+<li>strings <span class="math" data-tex="\(A_{i,1},\dots,A_{i,r}\in\{0,1\}^{km}\)">\(A_{i,1},\dots,A_{i,r}\in\{0,1\}^{km}\)</span>, each an input of the Forrelation function;</li>
+<li>for every <em>address</em> <span class="math" data-tex="\(s\in\{0,1\}^r\)">\(s\in\{0,1\}^r\)</span> a <em>cell</em> <span class="math" data-tex="\(B_{i,s}\)">\(B_{i,s}\)</span>. The cell contains, for every <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>, a <em>pointer</em> <span class="math" data-tex="\(p_{i,s,j}\in\{1,\dots,m\}\)">\(p_{i,s,j}\in\{1,\dots,m\}\)</span>, written with <span class="math" data-tex="\(\ell\)">\(\ell\)</span> bits; and for every <span class="math" data-tex="\(h\in\{1,\dots,r\}\)">\(h\in\{1,\dots,r\}\)</span> a string of <span class="math" data-tex="\(S\)">\(S\)</span> bits, the <em>transcript</em> for <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span>, one bit for every gate of <span class="math" data-tex="\(C_{k,m}\)">\(C_{k,m}\)</span>.</li>
+</ol>
+<p>So a column has <span class="math" data-tex="\(n_1\)">\(n_1\)</span> bits and the input has <span class="math" data-tex="\(n\)">\(n\)</span> bits, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+n_1=m+rkm+2^r\bigl((m-1)\ell+rS\bigr),\\
+n=m\,n_1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+n_1=m+rkm+2^r\bigl((m-1)\ell+rS\bigr),\\
+n=m\,n_1 .
+\end{gathered}
+\]</span>
+The number <span class="math" data-tex="\(n\)">\(n\)</span> is very large, of the order <span class="math" data-tex="\(m^{22}\)">\(m^{22}\)</span> up to logarithms, because there are <span class="math" data-tex="\(2^r\ge m^{20}\)">\(2^r\ge m^{20}\)</span> cells in every column.</p>
+<p><strong>Definition.</strong> The column <span class="math" data-tex="\(i\)">\(i\)</span> is a <em>winner</em> if:</p>
+<ol>
+<li><span class="math" data-tex="\(X_i\)">\(X_i\)</span> consists of ones only;</li>
+<li><span class="math" data-tex="\(P(A_{i,h})\)">\(P(A_{i,h})\)</span> is defined for every <span class="math" data-tex="\(h\)">\(h\)</span>; the address <span class="math" data-tex="\(s_i=(P(A_{i,1}),\dots,P(A_{i,r}))\)">\(s_i=(P(A_{i,1}),\dots,P(A_{i,r}))\)</span> is the <em>true address</em> of the column;</li>
+<li>in the cell <span class="math" data-tex="\(B_{i,s_i}\)">\(B_{i,s_i}\)</span>, the transcript for every <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span> is the list of the values of the gates of <span class="math" data-tex="\(C_{k,m}\)">\(C_{k,m}\)</span> on the input <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span>;</li>
+<li>in the cell <span class="math" data-tex="\(B_{i,s_i}\)">\(B_{i,s_i}\)</span>, every pointer points to a zero: <span class="math" data-tex="\(X_j[p_{i,s_i,j}]=0\)">\(X_j[p_{i,s_i,j}]=0\)</span> for all <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>.</li>
+</ol>
+<p><span class="math" data-tex="\(F_{k,m}(x)=1\)">\(F_{k,m}(x)=1\)</span> if the input <span class="math" data-tex="\(x\)">\(x\)</span> has a winner, and <span class="math" data-tex="\(F_{k,m}(x)=0\)">\(F_{k,m}(x)=0\)</span> otherwise.</p>
+<p>Here <span class="math" data-tex="\(X_j[p]\)">\(X_j[p]\)</span> is the bit of <span class="math" data-tex="\(X_j\)">\(X_j\)</span> at the position <span class="math" data-tex="\(p\)">\(p\)</span>. The function is total: nothing is assumed about the strings <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span>, the pointers or the transcripts. If some <span class="math" data-tex="\(P(A_{i,h})\)">\(P(A_{i,h})\)</span> is not defined, the column <span class="math" data-tex="\(i\)">\(i\)</span> is not a winner.</p>
+<p><strong>Lemma 5.1.</strong> An input has at most one winner.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(i\)">\(i\)</span> is a winner and <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>, the pointer <span class="math" data-tex="\(p_{i,s_i,j}\)">\(p_{i,s_i,j}\)</span> shows a zero of <span class="math" data-tex="\(X_j\)">\(X_j\)</span>. So <span class="math" data-tex="\(X_j\)">\(X_j\)</span> does not consist of ones only, and <span class="math" data-tex="\(j\)">\(j\)</span> is not a winner. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The pointers of a column point outward, into the other columns. A winner holds, in one cell, a proof against every other column. No cell of another column can hold a proof against the winner, because the winner's string has no zero. The quantum algorithm of the course uses this to compare two columns cheaply: a winner beats every other column in such a comparison.</p>
+<p>The cell of the true address is one of <span class="math" data-tex="\(2^r\)">\(2^r\)</span> cells. To find it, the <span class="math" data-tex="\(r\)">\(r\)</span> values <span class="math" data-tex="\(P(A_{i,h})\)">\(P(A_{i,h})\)</span> must be known. A quantum algorithm computes them with few queries, if they are defined. A randomized algorithm needs more than <span class="math" data-tex="\(L\)">\(L\)</span> queries for one of them, by (BS), and cannot guess <span class="math" data-tex="\(r\)">\(r\)</span> of them.</p>
+<h2 id="6-local-tests">6. Local tests</h2>
+<p>For a column <span class="math" data-tex="\(i\)">\(i\)</span> and an address <span class="math" data-tex="\(s\in\{0,1\}^r\)">\(s\in\{0,1\}^r\)</span> we say that <em><span class="math" data-tex="\(i\)">\(i\)</span> wins at <span class="math" data-tex="\(s\)">\(s\)</span></em> if <span class="math" data-tex="\(i\)">\(i\)</span> is a winner and <span class="math" data-tex="\(s=s_i\)">\(s=s_i\)</span>.</p>
+<p>Fix <span class="math" data-tex="\((i,s)\)">\((i,s)\)</span>. Consider the following <em>tests</em>, each a condition on a few input bits:</p>
+<ul>
+<li>for every position <span class="math" data-tex="\(j\)">\(j\)</span> of <span class="math" data-tex="\(X_i\)">\(X_i\)</span>: the bit <span class="math" data-tex="\(X_i[j]\)">\(X_i[j]\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> (<span class="math" data-tex="\(m\)">\(m\)</span> tests, one query each);</li>
+<li>for every <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>: the pointer <span class="math" data-tex="\(p=p_{i,s,j}\)">\(p=p_{i,s,j}\)</span> of the cell <span class="math" data-tex="\(B_{i,s}\)">\(B_{i,s}\)</span> satisfies <span class="math" data-tex="\(X_j[p]=0\)">\(X_j[p]=0\)</span> (<span class="math" data-tex="\(m-1\)">\(m-1\)</span> tests, <span class="math" data-tex="\(\ell+1\)">\(\ell+1\)</span> queries each: the <span class="math" data-tex="\(\ell\)">\(\ell\)</span> bits of the pointer and one bit of <span class="math" data-tex="\(X_j\)">\(X_j\)</span>);</li>
+<li>for every <span class="math" data-tex="\(h\)">\(h\)</span> and every gate of <span class="math" data-tex="\(C_{k,m}\)">\(C_{k,m}\)</span>: the bit of this gate in the transcript for <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span> in <span class="math" data-tex="\(B_{i,s}\)">\(B_{i,s}\)</span> is the value that the gate computes from its at most two earlier values, where the value of an earlier gate is read from the same transcript and an input bit is read from <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span> (<span class="math" data-tex="\(rS\)">\(rS\)</span> tests, at most three queries each);</li>
+<li>for every <span class="math" data-tex="\(h\)">\(h\)</span>: the bit of the output gate <span class="math" data-tex="\(d\)">\(d\)</span> in the transcript for <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, and the bit of the output gate <span class="math" data-tex="\(b\)">\(b\)</span> is <span class="math" data-tex="\(s_h\)">\(s_h\)</span> (<span class="math" data-tex="\(2r\)">\(2r\)</span> tests, one query each).</li>
+</ul>
+<p>Their number is
+<span class="math math-display" data-tex="\[
+K=m+(m-1)+r(S+2),
+\]">\[
+K=m+(m-1)+r(S+2),
+\]</span>
+the same for all <span class="math" data-tex="\((i,s)\)">\((i,s)\)</span>, and <span class="math" data-tex="\(K\le C_k&#x27;&#x27;\,m\,(\log_2m)^3\)">\(K\le C_k&#x27;&#x27;\,m\,(\log_2m)^3\)</span> by Lemma 4.1.</p>
+<p><strong>Lemma 6.1.</strong> The column <span class="math" data-tex="\(i\)">\(i\)</span> wins at the address <span class="math" data-tex="\(s\)">\(s\)</span> if and only if all <span class="math" data-tex="\(K\)">\(K\)</span> tests for <span class="math" data-tex="\((i,s)\)">\((i,s)\)</span> pass.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(h\)">\(h\)</span>. If all gate tests for <span class="math" data-tex="\(h\)">\(h\)</span> pass, then by induction along the sequence of the gates every bit of the transcript is the value of its gate on the input <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span>: the earlier values that the test of a gate uses are input bits or, by induction, correct values. Conversely the list of the true values passes all gate tests. So the gate tests for <span class="math" data-tex="\(h\)">\(h\)</span> pass if and only if the transcript is the true one. If it is, the two output tests say <span class="math" data-tex="\(d=1\)">\(d=1\)</span> and <span class="math" data-tex="\(b=s_h\)">\(b=s_h\)</span> for the true values, that is, by Lemma 4.1: <span class="math" data-tex="\(P(A_{i,h})\)">\(P(A_{i,h})\)</span> is defined and equal to <span class="math" data-tex="\(s_h\)">\(s_h\)</span>.</p>
+<p>So the tests of the last two kinds pass for all <span class="math" data-tex="\(h\)">\(h\)</span> if and only if <span class="math" data-tex="\(s\)">\(s\)</span> is the true address of <span class="math" data-tex="\(i\)">\(i\)</span> and the transcripts in <span class="math" data-tex="\(B_{i,s}\)">\(B_{i,s}\)</span> are correct. The tests of the first two kinds are the conditions 1 and 4 of a winner for the cell <span class="math" data-tex="\(B_{i,s}\)">\(B_{i,s}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 6.2.</strong> <span class="math" data-tex="\(F_{k,m}(x)=1\)">\(F_{k,m}(x)=1\)</span> if and only if there are a column <span class="math" data-tex="\(i\)">\(i\)</span> and an address <span class="math" data-tex="\(s\)">\(s\)</span> for which all tests pass. A column that is not a winner fails a test at every address.</p>
+<p>So a proposed pair <span class="math" data-tex="\((i,s)\)">\((i,s)\)</span> can be checked against the definition, whatever the input is. If the pair is wrong, at least one of <span class="math" data-tex="\(K\)">\(K\)</span> tests fails; to find a failing test among <span class="math" data-tex="\(K\)">\(K\)</span> is a search problem, which a quantum algorithm solves with about <span class="math" data-tex="\(\sqrt K\)">\(\sqrt K\)</span> queries.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Let <span class="math" data-tex="\(\mathrm{OR}_n(x)=1\)">\(\mathrm{OR}_n(x)=1\)</span> if <span class="math" data-tex="\(x\ne0\dots0\)">\(x\ne0\dots0\)</span>. Show <span class="math" data-tex="\(D(\mathrm{OR}_n)=n\)">\(D(\mathrm{OR}_n)=n\)</span>.</p>
+<p><strong>7.2.</strong> Show <span class="math" data-tex="\(\Phi(z_1,\dots,z_k)=m^{-1/2}\)">\(\Phi(z_1,\dots,z_k)=m^{-1/2}\)</span> if all <span class="math" data-tex="\(z_j\)">\(z_j\)</span> are the string <span class="math" data-tex="\(0\dots0\)">\(0\dots0\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> is even, and compute it for odd <span class="math" data-tex="\(k\)">\(k\)</span>. For which <span class="math" data-tex="\(m\)">\(m\)</span> is <span class="math" data-tex="\(P_{2,m}(0,0)\)">\(P_{2,m}(0,0)\)</span> defined?</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(m=4\)">\(m=4\)</span>. Compute <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> for <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, <span class="math" data-tex="\(z_1=0000\)">\(z_1=0000\)</span>, <span class="math" data-tex="\(z_2=0110\)">\(z_2=0110\)</span>, with the strings <span class="math" data-tex="\(a\in\{0,1\}^2\)">\(a\in\{0,1\}^2\)</span> in the order <span class="math" data-tex="\(00,01,10,11\)">\(00,01,10,11\)</span>.</p>
+<p><strong>7.4.</strong> Show <span class="math" data-tex="\(n\le m^{24}\)">\(n\le m^{24}\)</span> for the number of the input bits of <span class="math" data-tex="\(F_{k,m}\)">\(F_{k,m}\)</span>, for all large <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>7.5.</strong> An input has the column <span class="math" data-tex="\(1\)">\(1\)</span> with <span class="math" data-tex="\(X_1\)">\(X_1\)</span> all ones, all <span class="math" data-tex="\(P(A_{1,h})\)">\(P(A_{1,h})\)</span> defined, a correct cell at the true address, but one pointer of this cell, for <span class="math" data-tex="\(j=2\)">\(j=2\)</span>, points to a one of <span class="math" data-tex="\(X_2\)">\(X_2\)</span>. The string <span class="math" data-tex="\(X_2\)">\(X_2\)</span> has a zero elsewhere. Is the column <span class="math" data-tex="\(1\)">\(1\)</span> a winner? Can the column <span class="math" data-tex="\(2\)">\(2\)</span> be a winner?</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(D\le n\)">\(D\le n\)</span> always. Let a tree of depth less than <span class="math" data-tex="\(n\)">\(n\)</span> be given. Follow the path on which every answer is <span class="math" data-tex="\(0\)">\(0\)</span>. It reads fewer than <span class="math" data-tex="\(n\)">\(n\)</span> positions, so the inputs <span class="math" data-tex="\(0\dots0\)">\(0\dots0\)</span> and the input with a single one at a position that is not read reach the same leaf. They have different values of <span class="math" data-tex="\(\mathrm{OR}_n\)">\(\mathrm{OR}_n\)</span>.</p>
+<p><strong>7.2.</strong> For the zero strings all <span class="math" data-tex="\(D_{z_j}=I\)">\(D_{z_j}=I\)</span>, so <span class="math" data-tex="\(\Phi=u^{\mathsf T}H^{k-1}u\)">\(\Phi=u^{\mathsf T}H^{k-1}u\)</span>. For even <span class="math" data-tex="\(k\)">\(k\)</span> the power is <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(u^{\mathsf T}Hu=u^{\mathsf T}e_0=m^{-1/2}\)">\(u^{\mathsf T}Hu=u^{\mathsf T}e_0=m^{-1/2}\)</span>. For odd <span class="math" data-tex="\(k\)">\(k\)</span> the power is <span class="math" data-tex="\(I\)">\(I\)</span>, and <span class="math" data-tex="\(\Phi=1\)">\(\Phi=1\)</span>. For <span class="math" data-tex="\(k=2\)">\(k=2\)</span>: <span class="math" data-tex="\(\delta=2^{-10}\)">\(\delta=2^{-10}\)</span>; <span class="math" data-tex="\(P\)">\(P\)</span> is defined if <span class="math" data-tex="\(m^{-1/2}\ge2^{-10}\)">\(m^{-1/2}\ge2^{-10}\)</span> or <span class="math" data-tex="\(m^{-1/2}\le2^{-11}\)">\(m^{-1/2}\le2^{-11}\)</span>, that is for <span class="math" data-tex="\(m\le2^{20}\)">\(m\le2^{20}\)</span> (value <span class="math" data-tex="\(1\)">\(1\)</span>) and for <span class="math" data-tex="\(m\ge2^{22}\)">\(m\ge2^{22}\)</span> (value <span class="math" data-tex="\(0\)">\(0\)</span>); for <span class="math" data-tex="\(m=2^{21}\)">\(m=2^{21}\)</span> it is not defined.</p>
+<p><strong>7.3.</strong> <span class="math" data-tex="\(y_2=D_{z_2}\mathbf 1=(1,-1,-1,1)\)">\(y_2=D_{z_2}\mathbf 1=(1,-1,-1,1)\)</span>. The rows of <span class="math" data-tex="\(W\)">\(W\)</span> are <span class="math" data-tex="\((1,1,1,1)\)">\((1,1,1,1)\)</span>, <span class="math" data-tex="\((1,-1,1,-1)\)">\((1,-1,1,-1)\)</span>, <span class="math" data-tex="\((1,1,-1,-1)\)">\((1,1,-1,-1)\)</span>, <span class="math" data-tex="\((1,-1,-1,1)\)">\((1,-1,-1,1)\)</span>, so <span class="math" data-tex="\(Wy_2=(0,0,0,4)\)">\(Wy_2=(0,0,0,4)\)</span>. With <span class="math" data-tex="\(z_1=(1,1,1,1)\)">\(z_1=(1,1,1,1)\)</span> as signs, <span class="math" data-tex="\(N=4\)">\(N=4\)</span>, <span class="math" data-tex="\(M=4\cdot2=8\)">\(M=4\cdot2=8\)</span> and <span class="math" data-tex="\(\Phi=\tfrac12\)">\(\Phi=\tfrac12\)</span>.</p>
+<p><strong>7.4.</strong> <span class="math" data-tex="\(2^r&lt;2m^{20}\)">\(2^r&lt;2m^{20}\)</span>, <span class="math" data-tex="\(r\le20\ell+1\)">\(r\le20\ell+1\)</span>, <span class="math" data-tex="\(S\le C_k&#x27;m\ell^2\)">\(S\le C_k&#x27;m\ell^2\)</span>. So <span class="math" data-tex="\(n\le m\bigl(m+rkm+2m^{20}(m\ell+rS)\bigr)\)">\(n\le m\bigl(m+rkm+2m^{20}(m\ell+rS)\bigr)\)</span>, which is at most a constant times <span class="math" data-tex="\(m^{22}\ell^3\)">\(m^{22}\ell^3\)</span>, and this is below <span class="math" data-tex="\(m^{24}\)">\(m^{24}\)</span> for large <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>7.5.</strong> The column <span class="math" data-tex="\(1\)">\(1\)</span> is not a winner: condition 4 fails for <span class="math" data-tex="\(j=2\)">\(j=2\)</span>, although <span class="math" data-tex="\(X_2\)">\(X_2\)</span> has a zero. The pointer itself must show a zero. The column <span class="math" data-tex="\(2\)">\(2\)</span> is not a winner either, because <span class="math" data-tex="\(X_2\)">\(X_2\)</span> has a zero. So <span class="math" data-tex="\(F_{k,m}=0\)">\(F_{k,m}=0\)</span> unless another column wins, and no other column can win, because <span class="math" data-tex="\(X_1\)">\(X_1\)</span> has no zero to point to.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-Q] OpenAI, <em>A Nearly Quartic Separation Between Randomized and Quantum Query Complexity</em>, OpenAI Math Release preprint, 5 October 2026, Sections 1 and 2. https://github.com/openai/math/tree/main/preprints/A-Nearly-Quartic-Separation-Between-Randomized-and-Quantum-Query-Complexity-October-5-2026</li>
+<li>[BS] N. Bansal and M. Sinha, <em>k-Forrelation optimally separates quantum and classical query complexity</em>, arXiv:2008.07003, version 3, Theorem 1.3 and Corollary 1.4. https://arxiv.org/abs/2008.07003</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

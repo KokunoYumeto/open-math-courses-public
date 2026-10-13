@@ -1,0 +1,192 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Amplitude amplification and the Forrelation test</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Randomized versus quantum query complexity)</a><a href="the-quantum-query-model.html">Previous lesson</a><a href="a-tournament-with-probabilistic-comparisons.html">Next lesson</a><a href="src/amplitude-amplification-and-the-forrelation-test.md">Editable source</a></nav><main><article><h1 id="amplitude-amplification-and-the-forrelation-test">Amplitude amplification and the Forrelation test</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Suppose a quantum computation succeeds with a small probability <span class="math" data-tex="\(p\)">\(p\)</span>, and success is marked by a bit. Repeating it about <span class="math" data-tex="\(1/p\)">\(1/p\)</span> times finds a success. Amplitude amplification finds one with about <span class="math" data-tex="\(1/\sqrt p\)">\(1/\sqrt p\)</span> repetitions. This lesson proves it in the form needed later: the state that is obtained in the case of success is always the same state, whatever the number of repetitions was. The lesson also gives the quantum algorithm for the Forrelation function, which needs a number of queries that does not depend on the length <span class="math" data-tex="\(m\)">\(m\)</span>, and the algorithm that computes the address of a column.</p>
+<ul>
+<li>A rotation in a plane (Lemma 1.1).</li>
+<li>Amplification with a fixed successful state (Lemma 1.2).</li>
+<li>The Forrelation test: success probability <span class="math" data-tex="\(\Phi^2\)">\(\Phi^2\)</span> with <span class="math" data-tex="\(2k\)">\(2k\)</span> queries (Lemma 2.1).</li>
+<li>The value of the Forrelation function with error <span class="math" data-tex="\(\eta\)">\(\eta\)</span> (Lemma 2.2).</li>
+<li>The address of a column (Lemma 2.3).</li>
+</ul>
+<p>The lesson follows [OpenAI-Q, Lemma 2.1(2) and Section 3.1]. It uses query circuits, read and phase queries, and the two rules for probabilities from <a href="the-quantum-query-model.html">The quantum query model</a>, and the Forrelation function from <a href="query-complexity-and-a-function-with-outward-pointers.html">Query complexity and a function with outward pointers</a>.</p>
+<h2 id="1-amplification">1. Amplification</h2>
+<p><strong>Definition.</strong> A <em>preparation</em> is a query circuit <span class="math" data-tex="\(A\)">\(A\)</span> on some registers, one of which has the labels <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span> and is called the <em>success bit</em>. All registers start in the basis state <span class="math" data-tex="\(|0\rangle\)">\(|0\rangle\)</span>. For an input <span class="math" data-tex="\(x\)">\(x\)</span> put
+<span class="math math-display" data-tex="\[
+\varphi=A|0\rangle=\varphi_1+\varphi_0,
+\]">\[
+\varphi=A|0\rangle=\varphi_1+\varphi_0,
+\]</span>
+where <span class="math" data-tex="\(\varphi_1\)">\(\varphi_1\)</span> is the part of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> with the success bit <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span> the part with the success bit <span class="math" data-tex="\(0\)">\(0\)</span>. The <em>success probability</em> is <span class="math" data-tex="\(p=\|\varphi_1\|^2\)">\(p=\|\varphi_1\|^2\)</span>. If <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, the <em>successful state</em> is <span class="math" data-tex="\(g=\varphi_1/\|\varphi_1\|\)">\(g=\varphi_1/\|\varphi_1\|\)</span>.</p>
+<p>So <span class="math" data-tex="\(p\)">\(p\)</span> is the probability that a measurement of the success bit gives <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(g\)">\(g\)</span> is the state after this outcome. Both depend on <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be the map that multiplies the basis states with the success bit <span class="math" data-tex="\(1\)">\(1\)</span> by <span class="math" data-tex="\(-1\)">\(-1\)</span> and leaves the others unchanged, and let <span class="math" data-tex="\(S_0\)">\(S_0\)</span> be the map that leaves <span class="math" data-tex="\(|0\rangle\)">\(|0\rangle\)</span> unchanged and multiplies all other basis states by <span class="math" data-tex="\(-1\)">\(-1\)</span>. Both are unitary and do not depend on <span class="math" data-tex="\(x\)">\(x\)</span>. Put
+<span class="math math-display" data-tex="\[
+G=A\,S_0\,A^{-1}\,S .
+\]">\[
+G=A\,S_0\,A^{-1}\,S .
+\]</span>
+If <span class="math" data-tex="\(A\)">\(A\)</span> has <span class="math" data-tex="\(c\)">\(c\)</span> queries, <span class="math" data-tex="\(G\)">\(G\)</span> is a query circuit with <span class="math" data-tex="\(2c\)">\(2c\)</span> queries.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>. Let <span class="math" data-tex="\(b=\varphi_0/\|\varphi_0\|\)">\(b=\varphi_0/\|\varphi_0\|\)</span> and <span class="math" data-tex="\(0&lt;\theta&lt;\tfrac\pi2\)">\(0&lt;\theta&lt;\tfrac\pi2\)</span> with <span class="math" data-tex="\(\sin\theta=\sqrt p\)">\(\sin\theta=\sqrt p\)</span>, so that <span class="math" data-tex="\(\varphi=\sin\theta\,g+\cos\theta\,b\)">\(\varphi=\sin\theta\,g+\cos\theta\,b\)</span>. Then for all integers <span class="math" data-tex="\(l\ge0\)">\(l\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G^l\varphi={}&amp;\sin((2l+1)\theta)\,g\\
+&amp;+\cos((2l+1)\theta)\,b .
+\end{aligned}
+\]">\[
+\begin{aligned}
+G^l\varphi={}&amp;\sin((2l+1)\theta)\,g\\
+&amp;+\cos((2l+1)\theta)\,b .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(S_0\psi=2\langle|0\rangle,\psi\rangle|0\rangle-\psi\)">\(S_0\psi=2\langle|0\rangle,\psi\rangle|0\rangle-\psi\)</span>, so
+<span class="math math-display" data-tex="\[
+A\,S_0\,A^{-1}\psi=2\langle\varphi,\psi\rangle\,\varphi-\psi ,
+\]">\[
+A\,S_0\,A^{-1}\psi=2\langle\varphi,\psi\rangle\,\varphi-\psi ,
+\]</span>
+because <span class="math" data-tex="\(\langle|0\rangle,A^{-1}\psi\rangle=\langle A|0\rangle,\psi\rangle\)">\(\langle|0\rangle,A^{-1}\psi\rangle=\langle A|0\rangle,\psi\rangle\)</span>. Also <span class="math" data-tex="\(Sg=-g\)">\(Sg=-g\)</span> and <span class="math" data-tex="\(Sb=b\)">\(Sb=b\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Gg&amp;=-2\sin\theta\,\varphi+g\\
+&amp;=\cos2\theta\,g-\sin2\theta\,b,\\
+Gb&amp;=2\cos\theta\,\varphi-b\\
+&amp;=\sin2\theta\,g+\cos2\theta\,b .
+\end{aligned}
+\]">\[
+\begin{aligned}
+Gg&amp;=-2\sin\theta\,\varphi+g\\
+&amp;=\cos2\theta\,g-\sin2\theta\,b,\\
+Gb&amp;=2\cos\theta\,\varphi-b\\
+&amp;=\sin2\theta\,g+\cos2\theta\,b .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(G\)">\(G\)</span> maps <span class="math" data-tex="\(\sin\alpha\,g+\cos\alpha\,b\)">\(\sin\alpha\,g+\cos\alpha\,b\)</span> to <span class="math" data-tex="\(\sin(\alpha+2\theta)\,g+\cos(\alpha+2\theta)\,b\)">\(\sin(\alpha+2\theta)\,g+\cos(\alpha+2\theta)\,b\)</span>, by the addition formulas. Start with <span class="math" data-tex="\(\alpha=\theta\)">\(\alpha=\theta\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In the plane of <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>, the map <span class="math" data-tex="\(G\)">\(G\)</span> is a rotation by the angle <span class="math" data-tex="\(2\theta\)">\(2\theta\)</span>. Each application moves the state toward <span class="math" data-tex="\(g\)">\(g\)</span> by this angle, until it passes <span class="math" data-tex="\(g\)">\(g\)</span>. The part with the success bit <span class="math" data-tex="\(1\)">\(1\)</span> is always a multiple of the same vector <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p><strong>Lemma 1.2</strong> (amplification). Let <span class="math" data-tex="\(A\)">\(A\)</span> be a preparation with <span class="math" data-tex="\(c\)">\(c\)</span> queries, and let <span class="math" data-tex="\(0&lt;\gamma\le\tfrac12\)">\(0&lt;\gamma\le\tfrac12\)</span> and <span class="math" data-tex="\(0&lt;\eta&lt;\tfrac12\)">\(0&lt;\eta&lt;\tfrac12\)</span>. There is a procedure with at most
+<span class="math math-display" data-tex="\[
+88\,c\,\gamma^{-1/2}\log_2(1/\eta)
+\]">\[
+88\,c\,\gamma^{-1/2}\log_2(1/\eta)
+\]</span>
+queries on every path that ends with <em>success</em> or with <em>failure</em> and has the following properties, for every input.</p>
+<ol>
+<li>If <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, it ends with failure.</li>
+<li>If <span class="math" data-tex="\(p\ge\gamma\)">\(p\ge\gamma\)</span>, it ends with failure with a probability of at most <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</li>
+<li>If it ends with success, it holds registers in the state <span class="math" data-tex="\(g\)">\(g\)</span>, up to a factor of absolute value <span class="math" data-tex="\(1\)">\(1\)</span>: if these registers are then measured, the probability of success together with the outcome <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is the probability of success times <span class="math" data-tex="\(|g_\beta|^2\)">\(|g_\beta|^2\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(M=\lceil10/\sqrt\gamma\rceil\)">\(M=\lceil10/\sqrt\gamma\rceil\)</span> and <span class="math" data-tex="\(N=\lceil\log(1/\eta)/\log(40/31)\rceil\)">\(N=\lceil\log(1/\eta)/\log(40/31)\rceil\)</span>.</p>
+<p><em>The procedure.</em> Make at most <span class="math" data-tex="\(N\)">\(N\)</span> <em>trials</em>. A trial uses new registers in the state <span class="math" data-tex="\(|0\rangle\)">\(|0\rangle\)</span>. It chooses an integer <span class="math" data-tex="\(l\)">\(l\)</span> at random: with the probability <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> it takes <span class="math" data-tex="\(l=0\)">\(l=0\)</span>, and with the probability <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> it takes <span class="math" data-tex="\(l\)">\(l\)</span> uniformly from <span class="math" data-tex="\(\{0,\dots,M-1\}\)">\(\{0,\dots,M-1\}\)</span>. It applies <span class="math" data-tex="\(G^lA\)">\(G^lA\)</span> and measures the success bit. If the outcome is <span class="math" data-tex="\(1\)">\(1\)</span>, the procedure ends with success and holds the registers of this trial. If all <span class="math" data-tex="\(N\)">\(N\)</span> trials give <span class="math" data-tex="\(0\)">\(0\)</span>, it ends with failure.</p>
+<p><em>The state.</em> Let <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>. By Lemma 1.1 a trial with the number <span class="math" data-tex="\(l\)">\(l\)</span> gives the outcome <span class="math" data-tex="\(1\)">\(1\)</span> with the probability <span class="math" data-tex="\(\sin^2((2l+1)\theta)\)">\(\sin^2((2l+1)\theta)\)</span>, and then the state of its registers is <span class="math" data-tex="\(g\)">\(g\)</span> or <span class="math" data-tex="\(-g\)">\(-g\)</span>. For <span class="math" data-tex="\(p=1\)">\(p=1\)</span> we have <span class="math" data-tex="\(\varphi=g\)">\(\varphi=g\)</span>, <span class="math" data-tex="\(G\varphi=-\varphi\)">\(G\varphi=-\varphi\)</span>, and every trial succeeds with the state <span class="math" data-tex="\(\pm g\)">\(\pm g\)</span>. For <span class="math" data-tex="\(p=0\)">\(p=0\)</span> we have <span class="math" data-tex="\(\varphi=\varphi_0\)">\(\varphi=\varphi_0\)</span>, <span class="math" data-tex="\(G\varphi=\varphi\)">\(G\varphi=\varphi\)</span>, and no trial succeeds. This proves 1 and 3: the registers of the earlier trials are separate from those of the successful one, so they do not influence its measurement (Rule 6.2 of the lesson on the model).</p>
+<p><em>The probability of a trial.</em> Let <span class="math" data-tex="\(\gamma\le p\)">\(\gamma\le p\)</span>, and let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be the probability that one trial succeeds. If <span class="math" data-tex="\(p\ge\tfrac12\)">\(p\ge\tfrac12\)</span>, the choice <span class="math" data-tex="\(l=0\)">\(l=0\)</span> alone gives <span class="math" data-tex="\(\pi\ge\tfrac12p\ge\tfrac14\)">\(\pi\ge\tfrac12p\ge\tfrac14\)</span>. Let <span class="math" data-tex="\(p&lt;\tfrac12\)">\(p&lt;\tfrac12\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sin2\theta=2\sqrt{p(1-p)}\ge\sqrt{2p}\ge\sqrt\gamma .
+\]">\[
+\sin2\theta=2\sqrt{p(1-p)}\ge\sqrt{2p}\ge\sqrt\gamma .
+\]</span>
+From
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;2\sin2\theta\cos((4l+2)\theta)\\
+&amp;\quad=\sin((4l+4)\theta)-\sin(4l\theta)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;2\sin2\theta\cos((4l+2)\theta)\\
+&amp;\quad=\sin((4l+4)\theta)-\sin(4l\theta)
+\end{aligned}
+\]</span>
+we get <span class="math" data-tex="\(\sum_{l=0}^{M-1}\cos((4l+2)\theta)=\frac{\sin(4M\theta)}{2\sin2\theta}\)">\(\sum_{l=0}^{M-1}\cos((4l+2)\theta)=\frac{\sin(4M\theta)}{2\sin2\theta}\)</span>, and so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1M\sum_{l=0}^{M-1}\sin^2((2l+1)\theta)\\
+&amp;\quad=\frac12-\frac{\sin(4M\theta)}{4M\sin2\theta}\\
+&amp;\quad\ge\frac12-\frac1{4M\sqrt\gamma}\ge\frac{19}{40}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1M\sum_{l=0}^{M-1}\sin^2((2l+1)\theta)\\
+&amp;\quad=\frac12-\frac{\sin(4M\theta)}{4M\sin2\theta}\\
+&amp;\quad\ge\frac12-\frac1{4M\sqrt\gamma}\ge\frac{19}{40}.
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(\pi\ge\tfrac12\cdot\tfrac{19}{40}\)">\(\pi\ge\tfrac12\cdot\tfrac{19}{40}\)</span>. In both cases <span class="math" data-tex="\(\pi\ge\tfrac9{40}\)">\(\pi\ge\tfrac9{40}\)</span>.</p>
+<p><em>Failure.</em> The trials use separate registers and separate random choices, so they are independent, and all <span class="math" data-tex="\(N\)">\(N\)</span> fail with the probability <span class="math" data-tex="\((1-\pi)^N\le(31/40)^N\le\eta\)">\((1-\pi)^N\le(31/40)^N\le\eta\)</span>. This is 2.</p>
+<p><em>Queries.</em> A trial makes at most <span class="math" data-tex="\(c+2c(M-1)\le2cM\)">\(c+2c(M-1)\le2cM\)</span> queries. Since <span class="math" data-tex="\(\gamma\le\tfrac12\)">\(\gamma\le\tfrac12\)</span> and <span class="math" data-tex="\(\eta&lt;\tfrac12\)">\(\eta&lt;\tfrac12\)</span>, <span class="math" data-tex="\(M\le11/\sqrt\gamma\)">\(M\le11/\sqrt\gamma\)</span> and <span class="math" data-tex="\(N\le4\log_2(1/\eta)\)">\(N\le4\log_2(1/\eta)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Two points of the lemma are used later. The bound for the queries holds on every path and for every <span class="math" data-tex="\(p\)">\(p\)</span>, also when <span class="math" data-tex="\(p\)">\(p\)</span> is positive and smaller than <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>; in that case nothing is said about the probability of failure. And property 3 holds for every <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>: whenever the procedure succeeds, the state is <span class="math" data-tex="\(g\)">\(g\)</span>. Amplification changes how often a sample is obtained, not how the sample is distributed.</p>
+<h2 id="2-the-forrelation-test">2. The Forrelation test</h2>
+<p>Let <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> and <span class="math" data-tex="\(m=2^\ell\)">\(m=2^\ell\)</span>. Let the strings <span class="math" data-tex="\(z_1,\dots,z_k\in\{0,1\}^m\)">\(z_1,\dots,z_k\in\{0,1\}^m\)</span> be parts of the input <span class="math" data-tex="\(x\)">\(x\)</span>: the bit of <span class="math" data-tex="\(z_h\)">\(z_h\)</span> at the position <span class="math" data-tex="\(a\in\{0,1\}^\ell\)">\(a\in\{0,1\}^\ell\)</span> is the input bit at the position <span class="math" data-tex="\(\mathrm{loc}(h,a)\)">\(\mathrm{loc}(h,a)\)</span>. Recall
+<span class="math math-display" data-tex="\[
+\Phi=u^{\mathsf T}D_{z_1}HD_{z_2}H\cdots HD_{z_k}u .
+\]">\[
+\Phi=u^{\mathsf T}D_{z_1}HD_{z_2}H\cdots HD_{z_k}u .
+\]</span></p>
+<p><strong>Lemma 2.1</strong> (the test). There is a preparation with <span class="math" data-tex="\(2k\)">\(2k\)</span> queries whose success probability is <span class="math" data-tex="\(\Phi(z_1,\dots,z_k)^2\)">\(\Phi(z_1,\dots,z_k)^2\)</span>.</p>
+<p><strong>Proof.</strong> Use a register with the labels <span class="math" data-tex="\(\{0,1\}^\ell\)">\(\{0,1\}^\ell\)</span> and a success bit. The matrix <span class="math" data-tex="\(H\)">\(H\)</span> is real and orthogonal, so it defines a unitary map of the register, and <span class="math" data-tex="\(H|0\dots0\rangle=u\)">\(H|0\dots0\rangle=u\)</span>. The phase query with the function <span class="math" data-tex="\(a\mapsto\mathrm{loc}(h,a)\)">\(a\mapsto\mathrm{loc}(h,a)\)</span> is the map <span class="math" data-tex="\(D_{z_h}\)">\(D_{z_h}\)</span>. Apply to <span class="math" data-tex="\(|0\dots0\rangle\)">\(|0\dots0\rangle\)</span>, in this order,
+<span class="math math-display" data-tex="\[
+H,\ D_{z_k},\ H,\ D_{z_{k-1}},\ \dots,\ H,\ D_{z_1},\ H .
+\]">\[
+H,\ D_{z_k},\ H,\ D_{z_{k-1}},\ \dots,\ H,\ D_{z_1},\ H .
+\]</span>
+The result is <span class="math" data-tex="\(H\xi\)">\(H\xi\)</span> with <span class="math" data-tex="\(\xi=D_{z_1}H\cdots HD_{z_k}u\)">\(\xi=D_{z_1}H\cdots HD_{z_k}u\)</span>. Its entry at the label <span class="math" data-tex="\(0\dots0\)">\(0\dots0\)</span> is
+<span class="math math-display" data-tex="\[
+\langle e_0,H\xi\rangle=\langle He_0,\xi\rangle=\langle u,\xi\rangle=\Phi,
+\]">\[
+\langle e_0,H\xi\rangle=\langle He_0,\xi\rangle=\langle u,\xi\rangle=\Phi,
+\]</span>
+because <span class="math" data-tex="\(H\)">\(H\)</span> is symmetric and <span class="math" data-tex="\(He_0=u\)">\(He_0=u\)</span>. Last, a permutation map sets the success bit to <span class="math" data-tex="\(1\)">\(1\)</span> if the register contains <span class="math" data-tex="\(0\dots0\)">\(0\dots0\)</span>. There are <span class="math" data-tex="\(k\)">\(k\)</span> phase queries, each of two queries by Lemma 4.2 of the lesson on the model. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>If <span class="math" data-tex="\(P(z_1,\dots,z_k)=1\)">\(P(z_1,\dots,z_k)=1\)</span>, the success probability is at least <span class="math" data-tex="\(\delta^2\)">\(\delta^2\)</span>; if <span class="math" data-tex="\(P=0\)">\(P=0\)</span>, it is at most <span class="math" data-tex="\(\delta^2/4\)">\(\delta^2/4\)</span>, with <span class="math" data-tex="\(\delta=2^{-5k}\)">\(\delta=2^{-5k}\)</span>. The two cases are told apart by repeating the test. The number of queries of one test does not depend on <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Lemma 2.2.</strong> Let <span class="math" data-tex="\(0&lt;\eta&lt;\tfrac12\)">\(0&lt;\eta&lt;\tfrac12\)</span>. There is a query circuit with at most
+<span class="math math-display" data-tex="\[
+c_k\log_2(1/\eta),\qquad c_k=384\,k\,2^{10k},
+\]">\[
+c_k\log_2(1/\eta),\qquad c_k=384\,k\,2^{10k},
+\]</span>
+queries and with a register with the labels <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>, the <em>answer bit</em>, such that: if <span class="math" data-tex="\(P(z_1,\dots,z_k)\)">\(P(z_1,\dots,z_k)\)</span> is defined, a measurement of the answer bit gives <span class="math" data-tex="\(P(z_1,\dots,z_k)\)">\(P(z_1,\dots,z_k)\)</span> with a probability of at least <span class="math" data-tex="\(1-\eta\)">\(1-\eta\)</span>.</p>
+<p><strong>Proof.</strong> <em>A block.</em> Put <span class="math" data-tex="\(N_0=64\cdot2^{10k}=64/\delta^2\)">\(N_0=64\cdot2^{10k}=64/\delta^2\)</span>. A block consists of <span class="math" data-tex="\(N_0\)">\(N_0\)</span> tests of Lemma 2.1 in separate registers, and a permutation map that sets a <em>block bit</em> to <span class="math" data-tex="\(1\)">\(1\)</span> if at least <span class="math" data-tex="\(40\)">\(40\)</span> of the <span class="math" data-tex="\(N_0\)">\(N_0\)</span> success bits are <span class="math" data-tex="\(1\)">\(1\)</span>. By the two rules for probabilities, the block bit is distributed as follows: let <span class="math" data-tex="\(Y\)">\(Y\)</span> be the number of successes in <span class="math" data-tex="\(N_0\)">\(N_0\)</span> independent trials with the success probability <span class="math" data-tex="\(p=\Phi^2\)">\(p=\Phi^2\)</span>; the block bit is <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(Y\ge40\)">\(Y\ge40\)</span>. The mean of <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\(N_0p\)">\(N_0p\)</span>, and its variance is <span class="math" data-tex="\(N_0p(1-p)\le N_0p\)">\(N_0p(1-p)\le N_0p\)</span>.</p>
+<p>If <span class="math" data-tex="\(P=1\)">\(P=1\)</span>, then <span class="math" data-tex="\(N_0p\ge64\)">\(N_0p\ge64\)</span>, so <span class="math" data-tex="\(40\le\tfrac58N_0p\)">\(40\le\tfrac58N_0p\)</span>, and by Chebyshev's inequality
+<span class="math math-display" data-tex="\[
+\Pr(Y&lt;40)\le\frac{N_0p}{(\tfrac38N_0p)^2}=\frac{64}{9N_0p}\le\frac19 .
+\]">\[
+\Pr(Y&lt;40)\le\frac{N_0p}{(\tfrac38N_0p)^2}=\frac{64}{9N_0p}\le\frac19 .
+\]</span>
+If <span class="math" data-tex="\(P=0\)">\(P=0\)</span>, then <span class="math" data-tex="\(N_0p\le16\)">\(N_0p\le16\)</span>, and
+<span class="math math-display" data-tex="\[
+\Pr(Y\ge40)\le\frac{16}{24^2}=\frac1{36}.
+\]">\[
+\Pr(Y\ge40)\le\frac{16}{24^2}=\frac1{36}.
+\]</span>
+So the block bit differs from <span class="math" data-tex="\(P\)">\(P\)</span> with a probability of at most <span class="math" data-tex="\(\tfrac19\)">\(\tfrac19\)</span>.</p>
+<p><em>Majority.</em> Put <span class="math" data-tex="\(r_0=\lceil\log(1/\eta)/\log(3/2)\rceil\)">\(r_0=\lceil\log(1/\eta)/\log(3/2)\rceil\)</span>. Use <span class="math" data-tex="\(r_0\)">\(r_0\)</span> blocks in separate registers, and a permutation map that sets the answer bit to <span class="math" data-tex="\(1\)">\(1\)</span> if more than half of the block bits are <span class="math" data-tex="\(1\)">\(1\)</span>. The answer is wrong only if at least <span class="math" data-tex="\(r_0/2\)">\(r_0/2\)</span> of the block bits are wrong. The block bits are independent, so this has a probability of at most
+<span class="math math-display" data-tex="\[
+\sum_{j\ge r_0/2}\binom{r_0}j\Bigl(\frac19\Bigr)^j\le2^{r_0}\,3^{-r_0}\le\eta .
+\]">\[
+\sum_{j\ge r_0/2}\binom{r_0}j\Bigl(\frac19\Bigr)^j\le2^{r_0}\,3^{-r_0}\le\eta .
+\]</span></p>
+<p><em>Queries.</em> <span class="math" data-tex="\(2k\cdot N_0\cdot r_0\)">\(2k\cdot N_0\cdot r_0\)</span>, and <span class="math" data-tex="\(r_0\le3\log_2(1/\eta)\)">\(r_0\le3\log_2(1/\eta)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Outside the domain of <span class="math" data-tex="\(P\)">\(P\)</span> the circuit still produces an answer bit, with some distribution. No measurement is made inside the circuit, and all registers are kept. So the circuit can be applied to a superposition and can be inverted.</p>
+<p>The lemma is applied to the strings <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span> of the function <span class="math" data-tex="\(F_{k,m}\)">\(F_{k,m}\)</span>. The column <span class="math" data-tex="\(i\)">\(i\)</span> and the number <span class="math" data-tex="\(h\)">\(h\)</span> are then contents of registers, and the function <span class="math" data-tex="\(\mathrm{loc}\)">\(\mathrm{loc}\)</span> of the phase queries depends on them: <span class="math" data-tex="\(\mathrm{loc}(i,h,h&#x27;,a)\)">\(\mathrm{loc}(i,h,h&#x27;,a)\)</span> is the position of the bit <span class="math" data-tex="\(a\)">\(a\)</span> of the <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span>-th string of <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span>. The circuit is then controlled by these registers.</p>
+<p><strong>Lemma 2.3</strong> (the address of a column). Let <span class="math" data-tex="\(0&lt;\varepsilon&lt;\tfrac12\)">\(0&lt;\varepsilon&lt;\tfrac12\)</span>. There is a query circuit <span class="math" data-tex="\(\mathrm{Adr}_\varepsilon\)">\(\mathrm{Adr}_\varepsilon\)</span> with at most
+<span class="math math-display" data-tex="\[
+r\,c_k\log_2(r/\varepsilon)
+\]">\[
+r\,c_k\log_2(r/\varepsilon)
+\]</span>
+queries, controlled by a register with the labels <span class="math" data-tex="\(\{1,\dots,m\}\)">\(\{1,\dots,m\}\)</span>, the <em>column register</em>, and with an <em>address register</em> with the labels <span class="math" data-tex="\(\{0,1\}^r\)">\(\{0,1\}^r\)</span>, such that for every column <span class="math" data-tex="\(i\)">\(i\)</span>: if <span class="math" data-tex="\(P(A_{i,h})\)">\(P(A_{i,h})\)</span> is defined for all <span class="math" data-tex="\(h\)">\(h\)</span>, a measurement of the address register after <span class="math" data-tex="\(\mathrm{Adr}_\varepsilon|i\rangle|0\rangle\)">\(\mathrm{Adr}_\varepsilon|i\rangle|0\rangle\)</span> gives the true address <span class="math" data-tex="\(s_i\)">\(s_i\)</span> with a probability of at least <span class="math" data-tex="\(1-\varepsilon\)">\(1-\varepsilon\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(h=1,\dots,r\)">\(h=1,\dots,r\)</span> apply the circuit of Lemma 2.2 for the strings of <span class="math" data-tex="\(A_{i,h}\)">\(A_{i,h}\)</span>, with <span class="math" data-tex="\(\eta=\varepsilon/r\)">\(\eta=\varepsilon/r\)</span>, in separate registers; its answer bit is the bit <span class="math" data-tex="\(h\)">\(h\)</span> of the address register. The probability that some bit is wrong is at most <span class="math" data-tex="\(r\cdot\varepsilon/r\)">\(r\cdot\varepsilon/r\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For a column in which some <span class="math" data-tex="\(P(A_{i,h})\)">\(P(A_{i,h})\)</span> is not defined, <span class="math" data-tex="\(\mathrm{Adr}_\varepsilon\)">\(\mathrm{Adr}_\varepsilon\)</span> still produces addresses, with some distribution. The algorithm of the next lesson cannot know whether an address is meaningful. It does not need to: a wrong address leads to a cell that fails the tests.</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1.</strong> Let <span class="math" data-tex="\(p=\tfrac14\)">\(p=\tfrac14\)</span>. Show that one application of <span class="math" data-tex="\(G\)">\(G\)</span> gives a state with the success probability <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>3.2.</strong> Let <span class="math" data-tex="\(p=\sin^2\theta\)">\(p=\sin^2\theta\)</span> be small. About how many applications of <span class="math" data-tex="\(G\)">\(G\)</span> bring the success probability close to <span class="math" data-tex="\(1\)">\(1\)</span>? Compare with the number of repetitions of <span class="math" data-tex="\(A\)">\(A\)</span> alone that are needed for one success on average.</p>
+<p><strong>3.3.</strong> Check the identity <span class="math" data-tex="\(\tfrac1M\sum_{l&lt;M}\sin^2((2l+1)\theta)=\tfrac12-\tfrac{\sin(4M\theta)}{4M\sin2\theta}\)">\(\tfrac1M\sum_{l&lt;M}\sin^2((2l+1)\theta)=\tfrac12-\tfrac{\sin(4M\theta)}{4M\sin2\theta}\)</span> for <span class="math" data-tex="\(M=1\)">\(M=1\)</span>.</p>
+<p><strong>3.4.</strong> For <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, <span class="math" data-tex="\(m=4\)">\(m=4\)</span>, <span class="math" data-tex="\(z_1=0000\)">\(z_1=0000\)</span>, <span class="math" data-tex="\(z_2=0110\)">\(z_2=0110\)</span>, find the success probability of the test of Lemma 2.1. (Use Exercise 7.3 of the first lesson.)</p>
+<p><strong>3.5.</strong> How many blocks does Lemma 2.2 use for <span class="math" data-tex="\(\eta=2^{-20}\)">\(\eta=2^{-20}\)</span>, and how many tests in all for <span class="math" data-tex="\(k=2\)">\(k=2\)</span>?</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> <span class="math" data-tex="\(\sin\theta=\tfrac12\)">\(\sin\theta=\tfrac12\)</span>, <span class="math" data-tex="\(\theta=\tfrac\pi6\)">\(\theta=\tfrac\pi6\)</span>, and <span class="math" data-tex="\(G\varphi=\sin(3\theta)g+\cos(3\theta)b=g\)">\(G\varphi=\sin(3\theta)g+\cos(3\theta)b=g\)</span>.</p>
+<p><strong>3.2.</strong> The success probability after <span class="math" data-tex="\(l\)">\(l\)</span> applications is <span class="math" data-tex="\(\sin^2((2l+1)\theta)\)">\(\sin^2((2l+1)\theta)\)</span>, which is close to <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\((2l+1)\theta\)">\((2l+1)\theta\)</span> close to <span class="math" data-tex="\(\tfrac\pi2\)">\(\tfrac\pi2\)</span>, that is <span class="math" data-tex="\(l\)">\(l\)</span> about <span class="math" data-tex="\(\tfrac\pi{4\theta}\)">\(\tfrac\pi{4\theta}\)</span>, about <span class="math" data-tex="\(\tfrac\pi{4\sqrt p}\)">\(\tfrac\pi{4\sqrt p}\)</span>. Repeating <span class="math" data-tex="\(A\)">\(A\)</span> alone needs <span class="math" data-tex="\(1/p\)">\(1/p\)</span> repetitions on average. If <span class="math" data-tex="\(p\)">\(p\)</span> is not known, a fixed <span class="math" data-tex="\(l\)">\(l\)</span> may overshoot; this is why Lemma 1.2 chooses <span class="math" data-tex="\(l\)">\(l\)</span> at random.</p>
+<p><strong>3.3.</strong> For <span class="math" data-tex="\(M=1\)">\(M=1\)</span> the left side is <span class="math" data-tex="\(\sin^2\theta\)">\(\sin^2\theta\)</span>. The right side is <span class="math" data-tex="\(\tfrac12-\tfrac{\sin4\theta}{4\sin2\theta}=\tfrac12-\tfrac{\cos2\theta}2=\sin^2\theta\)">\(\tfrac12-\tfrac{\sin4\theta}{4\sin2\theta}=\tfrac12-\tfrac{\cos2\theta}2=\sin^2\theta\)</span>.</p>
+<p><strong>3.4.</strong> <span class="math" data-tex="\(\Phi=\tfrac12\)">\(\Phi=\tfrac12\)</span>, so the success probability is <span class="math" data-tex="\(\tfrac14\)">\(\tfrac14\)</span>.</p>
+<p><strong>3.5.</strong> <span class="math" data-tex="\(r_0=\lceil20/\log_2(3/2)\rceil=\lceil34.2\rceil=35\)">\(r_0=\lceil20/\log_2(3/2)\rceil=\lceil34.2\rceil=35\)</span> blocks; each has <span class="math" data-tex="\(N_0=64\cdot2^{20}\)">\(N_0=64\cdot2^{20}\)</span> tests, so there are <span class="math" data-tex="\(35\cdot64\cdot2^{20}\)">\(35\cdot64\cdot2^{20}\)</span>, about <span class="math" data-tex="\(2.3\cdot10^9\)">\(2.3\cdot10^9\)</span>, tests. The number does not depend on <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-Q] OpenAI, <em>A Nearly Quartic Separation Between Randomized and Quantum Query Complexity</em>, OpenAI Math Release preprint, 5 October 2026, Sections 2.1 and 3.1. https://github.com/openai/math/tree/main/preprints/A-Nearly-Quartic-Separation-Between-Randomized-and-Quantum-Query-Complexity-October-5-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

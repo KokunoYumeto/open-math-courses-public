@@ -1,0 +1,253 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The rank of a depth-five circuit</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Depth-five circuits for iterated matrix multiplication)</a><a href="a-rank-measure-from-differentiation-and-multiplication.html">Previous lesson</a><a href="trace-moments-and-paths.html">Next lesson</a><a href="src/the-rank-of-a-depth-five-circuit.md">Editable source</a></nav><main><article><h1 id="the-rank-of-a-depth-five-circuit">The rank of a depth-five circuit</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A syntactically homogeneous circuit with five layers computes a sum of products <span class="math" data-tex="\(Q_1\cdots Q_r\)">\(Q_1\cdots Q_r\)</span> of homogeneous polynomials. The measure <span class="math" data-tex="\(R\)">\(R\)</span> of such a product is at most <span class="math" data-tex="\(2D\prod_jH_{e_j}\)">\(2D\prod_jH_{e_j}\)</span>, where <span class="math" data-tex="\(e_j\)">\(e_j\)</span> is the degree of <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> and <span class="math" data-tex="\(H_e=\sum_{i=0}^eq^{|i-\lambda e|}\)">\(H_e=\sum_{i=0}^eq^{|i-\lambda e|}\)</span>. This lesson estimates the numbers <span class="math" data-tex="\(H_e\)">\(H_e\)</span> and proves that <span class="math" data-tex="\(R(g)\)">\(R(g)\)</span> is much smaller than <span class="math" data-tex="\(D\)">\(D\)</span> for every polynomial <span class="math" data-tex="\(g\)">\(g\)</span> that a small circuit computes.</p>
+<ul>
+<li><span class="math" data-tex="\(H_e\)">\(H_e\)</span> is governed by the distance from <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> to the integers (Lemma 1.1).</li>
+<li>Degrees below <span class="math" data-tex="\(n/(4s)\)">\(n/(4s)\)</span>: the distance is known exactly (Lemmas 2.1 and 2.2).</li>
+<li>The bound <span class="math" data-tex="\(R(g)\le2S^2D\,\exp(11\sqrt n)\,n^{-\sqrt n/100}\)">\(R(g)\le2S^2D\,\exp(11\sqrt n)\,n^{-\sqrt n/100}\)</span> for a circuit of size <span class="math" data-tex="\(S\)">\(S\)</span> (Proposition 3.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-D, Sections 3.2 and 3.3]. It uses the measure <span class="math" data-tex="\(R\)">\(R\)</span>, the numbers <span class="math" data-tex="\(s,k,m,\lambda,q,D\)">\(s,k,m,\lambda,q,D\)</span> and the product bound (Proposition 5.1) from <a href="a-rank-measure-from-differentiation-and-multiplication.html">A rank measure from differentiation and multiplication</a>, and the description of a circuit from <a href="iterated-matrix-multiplication-and-depth-five-circuits.html">Iterated matrix multiplication and depth-five circuits</a>. Of the estimates of the numbers (Lemma 4.1 of the lesson on the rank measure) the following are used, for large <span class="math" data-tex="\(n\)">\(n\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tfrac12\sqrt n\le s\le\sqrt n,\\
+\lambda=\tfrac12-\tfrac s{2n}\ge\tfrac38,\\
+n^{-1/2}\le q\le n^{-2/5},\\
+q\le\tfrac2{\sqrt n},\qquad q\le\tfrac12,\\
+q\le n^{-1/2}\exp\Bigl(\frac{\log n}{\sqrt n}+\frac4{n^{5/2}}\Bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\tfrac12\sqrt n\le s\le\sqrt n,\\
+\lambda=\tfrac12-\tfrac s{2n}\ge\tfrac38,\\
+n^{-1/2}\le q\le n^{-2/5},\\
+q\le\tfrac2{\sqrt n},\qquad q\le\tfrac12,\\
+q\le n^{-1/2}\exp\Bigl(\frac{\log n}{\sqrt n}+\frac4{n^{5/2}}\Bigr).
+\end{gathered}
+\]</span></p>
+<p>Throughout, <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>, and <span class="math" data-tex="\(n_0\)">\(n_0\)</span> is enlarged finitely many times. The division of the <span class="math" data-tex="\(n\)">\(n\)</span> layers into <span class="math" data-tex="\(k\)">\(k\)</span> layers for <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> layers for <span class="math" data-tex="\(U\)">\(U\)</span> is arbitrary in this lesson.</p>
+<h2 id="1-the-sums-h_e">1. The sums <span class="math" data-tex="\(H_e\)">\(H_e\)</span></h2>
+<p>For an integer <span class="math" data-tex="\(e\ge1\)">\(e\ge1\)</span> let
+<span class="math math-display" data-tex="\[
+d_e=\operatorname{dist}(\lambda e,\mathbb Z)
+\]">\[
+d_e=\operatorname{dist}(\lambda e,\mathbb Z)
+\]</span>
+be the distance from <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> to the nearest integer. So <span class="math" data-tex="\(0\le d_e\le\tfrac12\)">\(0\le d_e\le\tfrac12\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> For every integer <span class="math" data-tex="\(e\ge1\)">\(e\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+H_e\le q^{d_e}\bigl(1+4q^{1-2d_e}\bigr)\le5 .
+\]">\[
+H_e\le q^{d_e}\bigl(1+4q^{1-2d_e}\bigr)\le5 .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(i_0\)">\(i_0\)</span> be an integer with <span class="math" data-tex="\(|i_0-\lambda e|=d_e\)">\(|i_0-\lambda e|=d_e\)</span>. Every other integer is <span class="math" data-tex="\(i_0+j\)">\(i_0+j\)</span> with <span class="math" data-tex="\(j\ne0\)">\(j\ne0\)</span>, and <span class="math" data-tex="\(|i_0+j-\lambda e|\ge|j|-d_e\)">\(|i_0+j-\lambda e|\ge|j|-d_e\)</span>. The sum that defines <span class="math" data-tex="\(H_e\)">\(H_e\)</span> runs over some of the integers, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_e&amp;\le q^{d_e}+2\sum_{j\ge1}q^{j-d_e}\\
+&amp;=q^{d_e}+\frac{2q^{1-d_e}}{1-q}\\
+&amp;\le q^{d_e}+4q^{1-d_e},
+\end{aligned}
+\]">\[
+\begin{aligned}
+H_e&amp;\le q^{d_e}+2\sum_{j\ge1}q^{j-d_e}\\
+&amp;=q^{d_e}+\frac{2q^{1-d_e}}{1-q}\\
+&amp;\le q^{d_e}+4q^{1-d_e},
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(q\le\tfrac12\)">\(q\le\tfrac12\)</span>. This is the first inequality. The second holds because <span class="math" data-tex="\(0&lt;q&lt;1\)">\(0&lt;q&lt;1\)</span> and <span class="math" data-tex="\(0\le d_e\le\tfrac12\)">\(0\le d_e\le\tfrac12\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So <span class="math" data-tex="\(H_e\)">\(H_e\)</span> is about <span class="math" data-tex="\(q^{d_e}\)">\(q^{d_e}\)</span>, and <span class="math" data-tex="\(q\)">\(q\)</span> is about <span class="math" data-tex="\(n^{-1/2}\)">\(n^{-1/2}\)</span>. A factor <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> of the degree <span class="math" data-tex="\(e\)">\(e\)</span> lowers the bound for the rank by about <span class="math" data-tex="\(n^{-d_e/2}\)">\(n^{-d_e/2}\)</span>. If <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> is an integer, it lowers nothing.</p>
+<h2 id="2-small-degrees">2. Small degrees</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+t_0=\frac n{4s}.
+\]">\[
+t_0=\frac n{4s}.
+\]</span>
+By <span class="math" data-tex="\(\tfrac12\sqrt n\le s\le\sqrt n\)">\(\tfrac12\sqrt n\le s\le\sqrt n\)</span> we have <span class="math" data-tex="\(\tfrac14\sqrt n\le t_0\le\tfrac12\sqrt n\)">\(\tfrac14\sqrt n\le t_0\le\tfrac12\sqrt n\)</span>, and <span class="math" data-tex="\(t_0&gt;2\)">\(t_0&gt;2\)</span> for large <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(1\le e&lt;t_0\)">\(1\le e&lt;t_0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d_e=\frac{se}{2n}\ \text{ if }e\text{ is even},\\
+d_e=\frac12-\frac{se}{2n}\ \text{ if }e\text{ is odd},
+\end{gathered}
+\]">\[
+\begin{gathered}
+d_e=\frac{se}{2n}\ \text{ if }e\text{ is even},\\
+d_e=\frac12-\frac{se}{2n}\ \text{ if }e\text{ is odd},
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(d_e\ge\tfrac{se}{2n}\)">\(d_e\ge\tfrac{se}{2n}\)</span> in both cases. Moreover:</p>
+<ul>
+<li>if <span class="math" data-tex="\(e\)">\(e\)</span> is odd, then <span class="math" data-tex="\(d_e\ge\tfrac38\)">\(d_e\ge\tfrac38\)</span> and <span class="math" data-tex="\(H_e\le q^{d_e/2}\)">\(H_e\le q^{d_e/2}\)</span>;</li>
+<li>if <span class="math" data-tex="\(e\)">\(e\)</span> is even, then <span class="math" data-tex="\(H_e\le q^{d_e}\exp\bigl(4q^{1-se/n}\bigr)\)">\(H_e\le q^{d_e}\exp\bigl(4q^{1-se/n}\bigr)\)</span>.</li>
+</ul>
+<p><strong>Proof.</strong> From <span class="math" data-tex="\(\lambda=\tfrac12-\tfrac s{2n}\)">\(\lambda=\tfrac12-\tfrac s{2n}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda e=\frac e2-\frac{se}{2n},\\
+0&lt;\frac{se}{2n}&lt;\frac{st_0}{2n}=\frac18 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\lambda e=\frac e2-\frac{se}{2n},\\
+0&lt;\frac{se}{2n}&lt;\frac{st_0}{2n}=\frac18 .
+\end{gathered}
+\]</span>
+For even <span class="math" data-tex="\(e\)">\(e\)</span> the nearest integer is <span class="math" data-tex="\(\tfrac e2\)">\(\tfrac e2\)</span>. For odd <span class="math" data-tex="\(e\)">\(e\)</span> it is <span class="math" data-tex="\(\tfrac{e-1}2\)">\(\tfrac{e-1}2\)</span>, at the distance <span class="math" data-tex="\(\tfrac12-\tfrac{se}{2n}&gt;\tfrac38\)">\(\tfrac12-\tfrac{se}{2n}&gt;\tfrac38\)</span>. This gives the formula, and <span class="math" data-tex="\(d_e\ge\tfrac{se}{2n}\)">\(d_e\ge\tfrac{se}{2n}\)</span> in both cases because <span class="math" data-tex="\(\tfrac38&gt;\tfrac18\)">\(\tfrac38&gt;\tfrac18\)</span>.</p>
+<p>Let <span class="math" data-tex="\(e\)">\(e\)</span> be odd. By <span class="math" data-tex="\(q\le n^{-2/5}\)">\(q\le n^{-2/5}\)</span>,
+<span class="math math-display" data-tex="\[
+q^{-d_e/2}\ge n^{d_e/5}\ge n^{3/40}\ge5
+\]">\[
+q^{-d_e/2}\ge n^{d_e/5}\ge n^{3/40}\ge5
+\]</span>
+for large <span class="math" data-tex="\(n\)">\(n\)</span>. With Lemma 1.1, <span class="math" data-tex="\(H_e\le5q^{d_e}\le q^{d_e/2}\)">\(H_e\le5q^{d_e}\le q^{d_e/2}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(e\)">\(e\)</span> be even. Then <span class="math" data-tex="\(1-2d_e=1-\tfrac{se}n\)">\(1-2d_e=1-\tfrac{se}n\)</span>, and Lemma 1.1 with <span class="math" data-tex="\(1+x\le\exp(x)\)">\(1+x\le\exp(x)\)</span> gives the bound. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For an odd degree the share <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> is close to a half-integer, and the factor gains a fixed power of <span class="math" data-tex="\(q\)">\(q\)</span>. For an even degree <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> is close to the integer <span class="math" data-tex="\(\tfrac e2\)">\(\tfrac e2\)</span>; the gain <span class="math" data-tex="\(q^{se/(2n)}\)">\(q^{se/(2n)}\)</span> is small, and it exists only because <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is not exactly <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>. The difference <span class="math" data-tex="\(m-k=s\)">\(m-k=s\)</span> was introduced for this. For these factors the correction <span class="math" data-tex="\(\exp(4q^{1-se/n})\)">\(\exp(4q^{1-se/n})\)</span> cannot be estimated by a constant for each factor, since there may be <span class="math" data-tex="\(\tfrac n2\)">\(\tfrac n2\)</span> factors. The corrections are estimated together.</p>
+<p><strong>Lemma 2.2.</strong> For large <span class="math" data-tex="\(n\)">\(n\)</span> and every finite list of integers <span class="math" data-tex="\(e_1,\dots,e_r\ge1\)">\(e_1,\dots,e_r\ge1\)</span> with <span class="math" data-tex="\(e_1+\dots+e_r\le n\)">\(e_1+\dots+e_r\le n\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{\substack{j:\ e_j&lt;t_0\\ e_j\ \mathrm{even}}}q^{1-se_j/n}\le\sqrt n .
+\]">\[
+\sum_{\substack{j:\ e_j&lt;t_0\\ e_j\ \mathrm{even}}}q^{1-se_j/n}\le\sqrt n .
+\]</span></p>
+<p><strong>Proof.</strong> We show <span class="math" data-tex="\(q^{1-se/n}\le\tfrac e{\sqrt n}\)">\(q^{1-se/n}\le\tfrac e{\sqrt n}\)</span> for every even <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(2\le e&lt;t_0\)">\(2\le e&lt;t_0\)</span>; the sum of the <span class="math" data-tex="\(e_j\)">\(e_j\)</span> is at most <span class="math" data-tex="\(n\)">\(n\)</span>. For real <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\(2\le z\le t_0\)">\(2\le z\le t_0\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(z)=\frac{q^{1-sz/n}}z,\\
+\log f(z)=\Bigl(1-\frac{sz}n\Bigr)\log q-\log z .
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(z)=\frac{q^{1-sz/n}}z,\\
+\log f(z)=\Bigl(1-\frac{sz}n\Bigr)\log q-\log z .
+\end{gathered}
+\]</span>
+The second derivative of <span class="math" data-tex="\(\log f\)">\(\log f\)</span> is <span class="math" data-tex="\(z^{-2}&gt;0\)">\(z^{-2}&gt;0\)</span>. So <span class="math" data-tex="\(\log f\)">\(\log f\)</span> is convex, and <span class="math" data-tex="\(f(z)\le\max\{f(2),f(t_0)\}\)">\(f(z)\le\max\{f(2),f(t_0)\}\)</span>.</p>
+<p><em>At <span class="math" data-tex="\(z=2\)">\(z=2\)</span>.</em> By <span class="math" data-tex="\(q^{-1}\le\sqrt n\)">\(q^{-1}\le\sqrt n\)</span> and <span class="math" data-tex="\(s\le\sqrt n\)">\(s\le\sqrt n\)</span> we have <span class="math" data-tex="\(q^{-2s/n}\le n^{s/n}\le \exp(\log n/\sqrt n)\)">\(q^{-2s/n}\le n^{s/n}\le \exp(\log n/\sqrt n)\)</span>. With the upper bound for <span class="math" data-tex="\(q\)">\(q\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(2)&amp;\le\frac1{2\sqrt n}\exp\Bigl(\frac{2\log n}{\sqrt n}+\frac4{n^{5/2}}\Bigr)\\
+&amp;\le\frac1{\sqrt n}
+\end{aligned}
+\]">\[
+\begin{aligned}
+f(2)&amp;\le\frac1{2\sqrt n}\exp\Bigl(\frac{2\log n}{\sqrt n}+\frac4{n^{5/2}}\Bigr)\\
+&amp;\le\frac1{\sqrt n}
+\end{aligned}
+\]</span>
+for large <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><em>At <span class="math" data-tex="\(z=t_0\)">\(z=t_0\)</span>.</em> Here <span class="math" data-tex="\(1-\tfrac{st_0}n=\tfrac34\)">\(1-\tfrac{st_0}n=\tfrac34\)</span>, and <span class="math" data-tex="\(q\le\tfrac2{\sqrt n}\)">\(q\le\tfrac2{\sqrt n}\)</span>:
+<span class="math math-display" data-tex="\[
+f(t_0)=\frac{4s}n\,q^{3/4}\le\frac4{\sqrt n}\cdot\frac2{n^{3/8}}\le\frac1{\sqrt n}
+\]">\[
+f(t_0)=\frac{4s}n\,q^{3/4}\le\frac4{\sqrt n}\cdot\frac2{n^{3/8}}\le\frac1{\sqrt n}
+\]</span>
+for <span class="math" data-tex="\(n\ge8^{8/3}=256\)">\(n\ge8^{8/3}=256\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-bound-for-a-circuit">3. The bound for a circuit</h2>
+<p><strong>Proposition 3.1</strong> ([OpenAI-D]). There is a number <span class="math" data-tex="\(n_0\)">\(n_0\)</span> with the following property. Let <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>, with the numbers of the lesson on the rank measure and any division of the layers into <span class="math" data-tex="\(k\)">\(k\)</span> layers for <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> layers for <span class="math" data-tex="\(U\)">\(U\)</span>. Let <span class="math" data-tex="\(K\)">\(K\)</span> be a field, and let <span class="math" data-tex="\(g\in K[V,U]\)">\(g\in K[V,U]\)</span> be <span class="math" data-tex="\(0\)">\(0\)</span> or homogeneous of degree <span class="math" data-tex="\(n\)">\(n\)</span>. If <span class="math" data-tex="\(g\)">\(g\)</span> is computed by a syntactically homogeneous <span class="math" data-tex="\(\Sigma\Pi\Sigma\Pi\Sigma\)">\(\Sigma\Pi\Sigma\Pi\Sigma\)</span> circuit of size <span class="math" data-tex="\(S\)">\(S\)</span>, then
+<span class="math math-display" data-tex="\[
+R(g)\le2S^2D\,\exp(11\sqrt n)\,n^{-\sqrt n/100}.
+\]">\[
+R(g)\le2S^2D\,\exp(11\sqrt n)\,n^{-\sqrt n/100}.
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(g=0\)">\(g=0\)</span>, then <span class="math" data-tex="\(R(g)=0\)">\(R(g)=0\)</span>. Let <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span>. The polynomial of the output is <span class="math" data-tex="\(0\)">\(0\)</span> or homogeneous of the formal degree of the output, so this formal degree is <span class="math" data-tex="\(n\)">\(n\)</span>. By Lemma 4.1 of the first lesson, <span class="math" data-tex="\(g\)">\(g\)</span> is a sum of at most <span class="math" data-tex="\(S\)">\(S\)</span> polynomials <span class="math" data-tex="\(c\,G\)">\(c\,G\)</span> with <span class="math" data-tex="\(c\in K\)">\(c\in K\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G=Q_1\cdots Q_r,\\
+\deg Q_j=e_j\ge1,\qquad e_1+\dots+e_r=n,
+\end{gathered}
+\]">\[
+\begin{gathered}
+G=Q_1\cdots Q_r,\\
+\deg Q_j=e_j\ge1,\qquad e_1+\dots+e_r=n,
+\end{gathered}
+\]</span>
+where every <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> is a sum of at most <span class="math" data-tex="\(S\)">\(S\)</span> polynomials, each an element of <span class="math" data-tex="\(K\)">\(K\)</span> times a product of <span class="math" data-tex="\(e_j\)">\(e_j\)</span> linear forms. Since <span class="math" data-tex="\(R(cG)\le R(G)\)">\(R(cG)\le R(G)\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> of a sum is at most the sum, it is enough to show
+<span class="math math-display" data-tex="\[
+R(G)\le2SD\exp(11\sqrt n)\,n^{-\sqrt n/100}
+\]">\[
+R(G)\le2SD\exp(11\sqrt n)\,n^{-\sqrt n/100}
+\]</span>
+for every such <span class="math" data-tex="\(G\)">\(G\)</span>. We refer to this inequality as (3.1). There are two cases.</p>
+<p><em>Case 1: every <span class="math" data-tex="\(e_j\)">\(e_j\)</span> is smaller than <span class="math" data-tex="\(t_0\)">\(t_0\)</span>.</em> Put <span class="math" data-tex="\(\Delta=\sum_jd_{e_j}\)">\(\Delta=\sum_jd_{e_j}\)</span>, and let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be the sum of the numbers <span class="math" data-tex="\(q^{1-se_j/n}\)">\(q^{1-se_j/n}\)</span> over the <span class="math" data-tex="\(j\)">\(j\)</span> with even <span class="math" data-tex="\(e_j\)">\(e_j\)</span>. By the product bound and Lemma 2.1, where for even degrees <span class="math" data-tex="\(q^{d_e}\le q^{d_e/2}\)">\(q^{d_e}\le q^{d_e/2}\)</span> is used,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(G)&amp;\le2D\prod_jH_{e_j}\\
+&amp;\le2D\,q^{\Delta/2}\exp(4\Sigma).
+\end{aligned}
+\]">\[
+\begin{aligned}
+R(G)&amp;\le2D\prod_jH_{e_j}\\
+&amp;\le2D\,q^{\Delta/2}\exp(4\Sigma).
+\end{aligned}
+\]</span>
+By Lemma 2.1, <span class="math" data-tex="\(\Delta\ge\tfrac s{2n}\sum_je_j=\tfrac s2\)">\(\Delta\ge\tfrac s{2n}\sum_je_j=\tfrac s2\)</span>. By Lemma 2.2, <span class="math" data-tex="\(\Sigma\le\sqrt n\)">\(\Sigma\le\sqrt n\)</span>. With <span class="math" data-tex="\(q\le n^{-2/5}\)">\(q\le n^{-2/5}\)</span> and <span class="math" data-tex="\(s\ge\tfrac12\sqrt n\)">\(s\ge\tfrac12\sqrt n\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(G)&amp;\le2D\exp(4\sqrt n)\,q^{s/4}\\
+&amp;\le2D\exp(4\sqrt n)\,n^{-\sqrt n/20}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+R(G)&amp;\le2D\exp(4\sqrt n)\,q^{s/4}\\
+&amp;\le2D\exp(4\sqrt n)\,n^{-\sqrt n/20}.
+\end{aligned}
+\]</span></p>
+<p><em>Case 2: one factor, say <span class="math" data-tex="\(Q_{j_0}\)">\(Q_{j_0}\)</span>, has a degree <span class="math" data-tex="\(e=e_{j_0}\ge t_0\)">\(e=e_{j_0}\ge t_0\)</span>.</em> By Lemma 4.2 of the first lesson, <span class="math" data-tex="\(G\)">\(G\)</span> is a sum of at most <span class="math" data-tex="\(S\)">\(S\)</span> polynomials
+<span class="math math-display" data-tex="\[
+c&#x27;\,\ell_1\ell_2\cdots\ell_e\prod_{j\ne j_0}Q_j
+\]">\[
+c&#x27;\,\ell_1\ell_2\cdots\ell_e\prod_{j\ne j_0}Q_j
+\]</span>
+with <span class="math" data-tex="\(c&#x27;\in K\)">\(c&#x27;\in K\)</span> and linear forms <span class="math" data-tex="\(\ell_1,\dots,\ell_e\)">\(\ell_1,\dots,\ell_e\)</span>. If one of the <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>, the term is <span class="math" data-tex="\(0\)">\(0\)</span>. Otherwise it is <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span> times a product of <span class="math" data-tex="\(e\)">\(e\)</span> polynomials of degree <span class="math" data-tex="\(1\)">\(1\)</span> and of the <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> with <span class="math" data-tex="\(j\ne j_0\)">\(j\ne j_0\)</span>, and the degrees add up to <span class="math" data-tex="\(n\)">\(n\)</span>. The product bound gives for its measure at most
+<span class="math math-display" data-tex="\[
+2D\,H_1^{\,e}\prod_{j\ne j_0}H_{e_j}.
+\]">\[
+2D\,H_1^{\,e}\prod_{j\ne j_0}H_{e_j}.
+\]</span>
+We estimate the factors.</p>
+<ul>
+<li><em>The linear forms.</em> Since <span class="math" data-tex="\(1&lt;t_0\)">\(1&lt;t_0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> is odd, Lemma 2.1 gives <span class="math" data-tex="\(d_1=\tfrac12-\tfrac s{2n}=\lambda\)">\(d_1=\tfrac12-\tfrac s{2n}=\lambda\)</span> and <span class="math" data-tex="\(H_1\le q^{\lambda/2}\)">\(H_1\le q^{\lambda/2}\)</span>. So <span class="math" data-tex="\(H_1^{\,e}\le q^{\lambda e/2}\le q^{\lambda t_0/2}\)">\(H_1^{\,e}\le q^{\lambda e/2}\le q^{\lambda t_0/2}\)</span>.</li>
+<li><em>Other factors of a degree <span class="math" data-tex="\(\ge t_0\)">\(\ge t_0\)</span>.</em> The degrees add up to <span class="math" data-tex="\(n\)">\(n\)</span>, so there are at most <span class="math" data-tex="\(n/t_0=4s\)">\(n/t_0=4s\)</span> of them. Each has <span class="math" data-tex="\(H_{e_j}\le5\)">\(H_{e_j}\le5\)</span> by Lemma 1.1.</li>
+<li><em>Factors of an odd degree <span class="math" data-tex="\(&lt;t_0\)">\(&lt;t_0\)</span>.</em> <span class="math" data-tex="\(H_{e_j}\le q^{d_{e_j}/2}\le1\)">\(H_{e_j}\le q^{d_{e_j}/2}\le1\)</span>.</li>
+<li><em>Factors of an even degree <span class="math" data-tex="\(&lt;t_0\)">\(&lt;t_0\)</span>.</em> <span class="math" data-tex="\(H_{e_j}\le\exp(4q^{1-se_j/n})\)">\(H_{e_j}\le\exp(4q^{1-se_j/n})\)</span>, and by Lemma 2.2 the product of these numbers is at most <span class="math" data-tex="\(\exp(4\sqrt n)\)">\(\exp(4\sqrt n)\)</span>.</li>
+</ul>
+<p>With <span class="math" data-tex="\(q\le n^{-2/5}\)">\(q\le n^{-2/5}\)</span>, <span class="math" data-tex="\(\lambda\ge\tfrac38\)">\(\lambda\ge\tfrac38\)</span> and <span class="math" data-tex="\(t_0\ge\tfrac14\sqrt n\)">\(t_0\ge\tfrac14\sqrt n\)</span> we get <span class="math" data-tex="\(q^{\lambda t_0/2}\le n^{-\lambda t_0/5}\le n^{-3\sqrt n/160}\)">\(q^{\lambda t_0/2}\le n^{-\lambda t_0/5}\le n^{-3\sqrt n/160}\)</span>. Adding over the at most <span class="math" data-tex="\(S\)">\(S\)</span> terms,
+<span class="math math-display" data-tex="\[
+R(G)\le2SD\cdot5^{4s}\exp(4\sqrt n)\,n^{-3\sqrt n/160},
+\]">\[
+R(G)\le2SD\cdot5^{4s}\exp(4\sqrt n)\,n^{-3\sqrt n/160},
+\]</span>
+and <span class="math" data-tex="\(5^{4s}\le\exp(4\log5\cdot\sqrt n)\)">\(5^{4s}\le\exp(4\log5\cdot\sqrt n)\)</span>.</p>
+<p>In both cases (3.1) holds, because <span class="math" data-tex="\(4+4\log5&lt;11\)">\(4+4\log5&lt;11\)</span>, <span class="math" data-tex="\(\tfrac1{20}&gt;\tfrac1{100}\)">\(\tfrac1{20}&gt;\tfrac1{100}\)</span> and <span class="math" data-tex="\(\tfrac3{160}&gt;\tfrac1{100}\)">\(\tfrac3{160}&gt;\tfrac1{100}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-remarks-on-the-proof">4. Remarks on the proof</h2>
+<p><strong>Which properties of the circuit are used.</strong> Only the description of Lemma 4.1 of the first lesson: <span class="math" data-tex="\(g\)">\(g\)</span> is a sum of at most <span class="math" data-tex="\(S\)">\(S\)</span> products, and every factor is a sum of at most <span class="math" data-tex="\(S\)">\(S\)</span> products of linear forms. The linear forms may contain any number of variables, and the number of the edges plays no role. The number <span class="math" data-tex="\(S\)">\(S\)</span> enters twice: once for the terms of the output, once for the terms of the one factor that is expanded. This is the exponent <span class="math" data-tex="\(2\)">\(2\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Why one factor is expanded.</strong> A factor of a degree <span class="math" data-tex="\(e\ge t_0\)">\(e\ge t_0\)</span> may lie exactly on its share: <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> may be an integer, and then <span class="math" data-tex="\(H_e\ge1\)">\(H_e\ge1\)</span> (Exercise 5.2). Such a factor gives no gain in the product bound. But a factor of a large degree consists of many linear forms, and each linear form is as far from its share as possible, <span class="math" data-tex="\(d_1=\lambda\)">\(d_1=\lambda\)</span>. Its <span class="math" data-tex="\(e\ge\tfrac14\sqrt n\)">\(e\ge\tfrac14\sqrt n\)</span> linear forms together gain <span class="math" data-tex="\(q^{\lambda e/2}\)">\(q^{\lambda e/2}\)</span>. The other factors of large degree are not expanded; they are few, and each costs at most the factor <span class="math" data-tex="\(5\)">\(5\)</span>.</p>
+<p><strong>Why all factors may be small.</strong> If no factor has a degree <span class="math" data-tex="\(\ge t_0\)">\(\ge t_0\)</span>, the gain comes from all factors together: the distances <span class="math" data-tex="\(d_{e_j}\)">\(d_{e_j}\)</span> add up to at least <span class="math" data-tex="\(\tfrac s2\)">\(\tfrac s2\)</span>, whatever the degrees are, because <span class="math" data-tex="\(d_e\ge\tfrac{se}{2n}\)">\(d_e\ge\tfrac{se}{2n}\)</span> and the degrees add up to <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>The fifth layer.</strong> With more layers, a factor of large degree would be a sum of products of polynomials of unknown degrees, and the expansion would not lead to linear forms. The argument uses that below the middle sums there is only one layer of products.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Let <span class="math" data-tex="\(n=100\)">\(n=100\)</span>. Find <span class="math" data-tex="\(s,k,m,\lambda\)">\(s,k,m,\lambda\)</span> and <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, and compute <span class="math" data-tex="\(d_e\)">\(d_e\)</span> for <span class="math" data-tex="\(e=1,2,3,4,5,10,20\)">\(e=1,2,3,4,5,10,20\)</span>.</p>
+<p><strong>5.2.</strong> Show <span class="math" data-tex="\(H_e\ge q^{d_e}\)">\(H_e\ge q^{d_e}\)</span> for every <span class="math" data-tex="\(e\ge1\)">\(e\ge1\)</span>. Conclude that <span class="math" data-tex="\(H_e\ge1\)">\(H_e\ge1\)</span> if <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> is an integer, and that this happens for <span class="math" data-tex="\(e=n\)">\(e=n\)</span>.</p>
+<p><strong>5.3.</strong> Let <span class="math" data-tex="\(G=\ell_1\cdots\ell_n\)">\(G=\ell_1\cdots\ell_n\)</span> be a product of <span class="math" data-tex="\(n\)">\(n\)</span> linear forms. Which bound for <span class="math" data-tex="\(R(G)\)">\(R(G)\)</span> follows from the product bound and Lemma 2.1?</p>
+<p><strong>5.4.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be a positive function on an interval <span class="math" data-tex="\([x_0,x_1]\)">\([x_0,x_1]\)</span> whose logarithm is convex. Show <span class="math" data-tex="\(F(x)\le\max\{F(x_0),F(x_1)\}\)">\(F(x)\le\max\{F(x_0),F(x_1)\}\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span> in the interval.</p>
+<p><strong>5.5.</strong> In Case 2 of the proof the degree <span class="math" data-tex="\(e\)">\(e\)</span> of the expanded factor may be as large as <span class="math" data-tex="\(n\)">\(n\)</span>. What are then the other factors, and which bound does the proof give?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(s\)">\(s\)</span> is the largest integer <span class="math" data-tex="\(\le10\)">\(\le10\)</span> with <span class="math" data-tex="\(100-s\)">\(100-s\)</span> even: <span class="math" data-tex="\(s=10\)">\(s=10\)</span>. So <span class="math" data-tex="\(k=45\)">\(k=45\)</span>, <span class="math" data-tex="\(m=55\)">\(m=55\)</span>, <span class="math" data-tex="\(\lambda=0.45\)">\(\lambda=0.45\)</span>, <span class="math" data-tex="\(t_0=2.5\)">\(t_0=2.5\)</span>. The numbers <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> are <span class="math" data-tex="\(0.45,\ 0.9,\ 1.35,\ 1.8,\ 2.25,\ 4.5,\ 9\)">\(0.45,\ 0.9,\ 1.35,\ 1.8,\ 2.25,\ 4.5,\ 9\)</span>. So <span class="math" data-tex="\(d_1=0.45\)">\(d_1=0.45\)</span>, <span class="math" data-tex="\(d_2=0.1\)">\(d_2=0.1\)</span>, <span class="math" data-tex="\(d_3=0.35\)">\(d_3=0.35\)</span>, <span class="math" data-tex="\(d_4=0.2\)">\(d_4=0.2\)</span>, <span class="math" data-tex="\(d_5=0.25\)">\(d_5=0.25\)</span>, <span class="math" data-tex="\(d_{10}=0.5\)">\(d_{10}=0.5\)</span>, <span class="math" data-tex="\(d_{20}=0\)">\(d_{20}=0\)</span>. For <span class="math" data-tex="\(e=1,2\)">\(e=1,2\)</span> (the degrees below <span class="math" data-tex="\(t_0\)">\(t_0\)</span>) these are the values <span class="math" data-tex="\(\tfrac12-\tfrac{se}{2n}\)">\(\tfrac12-\tfrac{se}{2n}\)</span> and <span class="math" data-tex="\(\tfrac{se}{2n}\)">\(\tfrac{se}{2n}\)</span> of Lemma 2.1.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(0\le\lambda e\le e\)">\(0\le\lambda e\le e\)</span>, so an integer <span class="math" data-tex="\(i_0\)">\(i_0\)</span> nearest to <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> lies in <span class="math" data-tex="\(\{0,\dots,e\}\)">\(\{0,\dots,e\}\)</span>, and its term <span class="math" data-tex="\(q^{d_e}\)">\(q^{d_e}\)</span> is one of the terms of <span class="math" data-tex="\(H_e\)">\(H_e\)</span>. If <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> is an integer, <span class="math" data-tex="\(d_e=0\)">\(d_e=0\)</span> and <span class="math" data-tex="\(H_e\ge1\)">\(H_e\ge1\)</span>. For <span class="math" data-tex="\(e=n\)">\(e=n\)</span>: <span class="math" data-tex="\(\lambda n=k\)">\(\lambda n=k\)</span>.</p>
+<p><strong>5.3.</strong> All degrees are <span class="math" data-tex="\(1&lt;t_0\)">\(1&lt;t_0\)</span>, so <span class="math" data-tex="\(R(G)\le2DH_1^{\,n}\le2D\,q^{\lambda n/2}=2D\,q^{k/2}\)">\(R(G)\le2DH_1^{\,n}\le2D\,q^{\lambda n/2}=2D\,q^{k/2}\)</span>. With <span class="math" data-tex="\(q\le n^{-2/5}\)">\(q\le n^{-2/5}\)</span> and <span class="math" data-tex="\(k\ge\tfrac n4\)">\(k\ge\tfrac n4\)</span> this is at most <span class="math" data-tex="\(2D\,n^{-n/20}\)">\(2D\,n^{-n/20}\)</span>. A product of linear forms has a very small measure.</p>
+<p><strong>5.4.</strong> Every <span class="math" data-tex="\(x\)">\(x\)</span> in the interval is <span class="math" data-tex="\((1-\theta)x_0+\theta x_1\)">\((1-\theta)x_0+\theta x_1\)</span> with <span class="math" data-tex="\(0\le\theta\le1\)">\(0\le\theta\le1\)</span>. Put <span class="math" data-tex="\(L=\log F\)">\(L=\log F\)</span>. By convexity,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(x)&amp;\le(1-\theta)L(x_0)+\theta L(x_1)\\
+&amp;\le\max\{L(x_0),L(x_1)\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+L(x)&amp;\le(1-\theta)L(x_0)+\theta L(x_1)\\
+&amp;\le\max\{L(x_0),L(x_1)\}.
+\end{aligned}
+\]</span></p>
+<p><strong>5.5.</strong> Then <span class="math" data-tex="\(r=1\)">\(r=1\)</span> and <span class="math" data-tex="\(G=Q_1\)">\(G=Q_1\)</span> is one middle sum of the degree <span class="math" data-tex="\(n\)">\(n\)</span>: there are no other factors. The proof expands it into at most <span class="math" data-tex="\(S\)">\(S\)</span> products of <span class="math" data-tex="\(n\)">\(n\)</span> linear forms, and by Exercise 5.3 gives <span class="math" data-tex="\(R(G)\le2SD\,q^{k/2}\)">\(R(G)\le2SD\,q^{k/2}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-D] OpenAI, <em>Homogeneous depth-five lower bounds for iterated matrix multiplication</em>, OpenAI Math Release preprint, 25 September 2026, Sections 3.2 and 3.3. https://github.com/openai/math/tree/main/preprints/Homogeneous-depth-five-lower-bounds-for-iterated-matrix-multiplication-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

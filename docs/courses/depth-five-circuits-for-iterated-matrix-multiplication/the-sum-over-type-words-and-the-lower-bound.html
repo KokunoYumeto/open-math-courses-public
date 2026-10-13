@@ -1,0 +1,266 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The sum over type words and the lower bound</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Depth-five circuits for iterated matrix multiplication)</a><a href="trace-moments-and-paths.html">Previous lesson</a><a href="src/the-sum-over-type-words-and-the-lower-bound.md">Editable source</a></nav><main><article><h1 id="the-sum-over-type-words-and-the-lower-bound">The sum over type words and the lower bound</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The second trace of the map <span class="math" data-tex="\(F_f\)">\(F_f\)</span> for <span class="math" data-tex="\(f=\operatorname{IMM}_{n,n}\)">\(f=\operatorname{IMM}_{n,n}\)</span> was bounded by a sum of numbers <span class="math" data-tex="\(W(\tau)\)">\(W(\tau)\)</span> over all words <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of length <span class="math" data-tex="\(n\)">\(n\)</span> in the two letters <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> and <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. This lesson shows that the sum is at most <span class="math" data-tex="\(e^{3\sqrt n}\)">\(e^{3\sqrt n}\)</span>. It follows that the measure of <span class="math" data-tex="\(f\)">\(f\)</span> is at least <span class="math" data-tex="\(D\,e^{-6\sqrt n}\)">\(D\,e^{-6\sqrt n}\)</span>, and the comparison with the bound for circuits proves the theorem of the course.</p>
+<ul>
+<li>The <span class="math" data-tex="\(V\)">\(V\)</span> layers are evenly spread (Lemma 1.1).</li>
+<li>Isolated positions are removed (Lemma 2.1).</li>
+<li>The sum over the runs of the letter <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> (Lemma 3.1).</li>
+<li><span class="math" data-tex="\(R(\operatorname{IMM}_{n,n})\ge D\,e^{-6\sqrt n}\)">\(R(\operatorname{IMM}_{n,n})\ge D\,e^{-6\sqrt n}\)</span> (Proposition 4.1).</li>
+<li>The theorem over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> and over every field of characteristic zero (Section 5).</li>
+<li>What the constants of the proof give (Section 6).</li>
+</ul>
+<p>The lesson follows [OpenAI-D, Sections 5 and 6]. It continues <a href="trace-moments-and-paths.html">Trace moments and paths</a> and uses its notation: the division of the layers into the chunks <span class="math" data-tex="\(V\,U^{l_i}\)">\(V\,U^{l_i}\)</span>, the numbers <span class="math" data-tex="\(w(\tau)\)">\(w(\tau)\)</span>, <span class="math" data-tex="\(d_V(\tau)\)">\(d_V(\tau)\)</span>, <span class="math" data-tex="\(d_U(\tau)\)">\(d_U(\tau)\)</span>, <span class="math" data-tex="\(h_t\)">\(h_t\)</span>, the set <span class="math" data-tex="\(N_V(\tau)\)">\(N_V(\tau)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W(\tau)={}&amp;n^{-w(\tau)}\,\alpha^{-d_V(\tau)}\,\beta^{d_U(\tau)}\\
+&amp;\cdot\prod_{t\in N_V(\tau)}\bigl(1+\alpha^{-1}n^{-h_t}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+W(\tau)={}&amp;n^{-w(\tau)}\,\alpha^{-d_V(\tau)}\,\beta^{d_U(\tau)}\\
+&amp;\cdot\prod_{t\in N_V(\tau)}\bigl(1+\alpha^{-1}n^{-h_t}\bigr).
+\end{aligned}
+\]</span>
+The numbers <span class="math" data-tex="\(\alpha,\beta,\rho\)">\(\alpha,\beta,\rho\)</span> and their estimates are those of <a href="a-rank-measure-from-differentiation-and-multiplication.html">A rank measure from differentiation and multiplication</a>. Throughout, <span class="math" data-tex="\(n\)">\(n\)</span> is large.</p>
+<h2 id="1-the-v-layers-are-evenly-spread">1. The <span class="math" data-tex="\(V\)">\(V\)</span> layers are evenly spread</h2>
+<p>For a set <span class="math" data-tex="\(I\)">\(I\)</span> of consecutive layers (an <em>interval</em>) let <span class="math" data-tex="\(V(I)\)">\(V(I)\)</span> and <span class="math" data-tex="\(U(I)\)">\(U(I)\)</span> be the numbers of its <span class="math" data-tex="\(V\)">\(V\)</span> layers and of its <span class="math" data-tex="\(U\)">\(U\)</span> layers, and
+<span class="math math-display" data-tex="\[
+\operatorname{disc}(I)=V(I)-\rho\,U(I).
+\]">\[
+\operatorname{disc}(I)=V(I)-\rho\,U(I).
+\]</span>
+Since <span class="math" data-tex="\(\rho=k/m\)">\(\rho=k/m\)</span>, the interval of all layers has <span class="math" data-tex="\(\operatorname{disc}=k-\rho m=0\)">\(\operatorname{disc}=k-\rho m=0\)</span>. The number <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is the proportion of the <span class="math" data-tex="\(V\)">\(V\)</span> layers to the <span class="math" data-tex="\(U\)">\(U\)</span> layers in the whole, and <span class="math" data-tex="\(\operatorname{disc}(I)\)">\(\operatorname{disc}(I)\)</span> says by how much the interval <span class="math" data-tex="\(I\)">\(I\)</span> has more <span class="math" data-tex="\(V\)">\(V\)</span> layers than its proportion.</p>
+<p><strong>Lemma 1.1.</strong> For every interval <span class="math" data-tex="\(I\)">\(I\)</span>, <span class="math" data-tex="\(\operatorname{disc}(I)\le1+\rho\)">\(\operatorname{disc}(I)\le1+\rho\)</span>.</p>
+<p><strong>Proof.</strong> <em>Complete chunks.</em> Let <span class="math" data-tex="\(I\)">\(I\)</span> consist of the chunks <span class="math" data-tex="\(j+1,\dots,j+c\)">\(j+1,\dots,j+c\)</span>, with <span class="math" data-tex="\(c\ge0\)">\(c\ge0\)</span>. It has <span class="math" data-tex="\(c\)">\(c\)</span> layers of <span class="math" data-tex="\(V\)">\(V\)</span>, and the number of its <span class="math" data-tex="\(U\)">\(U\)</span> layers is <span class="math" data-tex="\(\sum_{i=j+1}^{j+c}l_i=c+E\)">\(\sum_{i=j+1}^{j+c}l_i=c+E\)</span> with
+<span class="math math-display" data-tex="\[
+E=\Bigl\lfloor\frac{(j+c)s}k\Bigr\rfloor-\Bigl\lfloor\frac{js}k\Bigr\rfloor .
+\]">\[
+E=\Bigl\lfloor\frac{(j+c)s}k\Bigr\rfloor-\Bigl\lfloor\frac{js}k\Bigr\rfloor .
+\]</span>
+Here <span class="math" data-tex="\(E&gt;\tfrac{cs}k-1\)">\(E&gt;\tfrac{cs}k-1\)</span>, because <span class="math" data-tex="\(\lfloor x\rfloor-\lfloor y\rfloor&gt;x-y-1\)">\(\lfloor x\rfloor-\lfloor y\rfloor&gt;x-y-1\)</span> for all real <span class="math" data-tex="\(x,y\)">\(x,y\)</span>.
+From <span class="math" data-tex="\(m=k+s\)">\(m=k+s\)</span> we get <span class="math" data-tex="\(1-\rho=\tfrac sm=\rho\,\tfrac sk\)">\(1-\rho=\tfrac sm=\rho\,\tfrac sk\)</span>, and so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{disc}(I)&amp;=c(1-\rho)-\rho E\\
+&amp;=\rho\Bigl(\frac{cs}k-E\Bigr)&lt;\rho .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{disc}(I)&amp;=c(1-\rho)-\rho E\\
+&amp;=\rho\Bigl(\frac{cs}k-E\Bigr)&lt;\rho .
+\end{aligned}
+\]</span></p>
+<p><em>The general case.</em> An interval that lies in one chunk contains at most one <span class="math" data-tex="\(V\)">\(V\)</span> layer, so its <span class="math" data-tex="\(\operatorname{disc}\)">\(\operatorname{disc}\)</span> is at most <span class="math" data-tex="\(1\)">\(1\)</span>. Every other interval consists of an end part of a chunk, then complete chunks (possibly none), then a beginning part of a chunk. The end part, if it is not a complete chunk, contains only <span class="math" data-tex="\(U\)">\(U\)</span> layers: <span class="math" data-tex="\(\operatorname{disc}\le0\)">\(\operatorname{disc}\le0\)</span>. The beginning part contains one <span class="math" data-tex="\(V\)">\(V\)</span> layer: <span class="math" data-tex="\(\operatorname{disc}\le1\)">\(\operatorname{disc}\le1\)</span>. The function <span class="math" data-tex="\(\operatorname{disc}\)">\(\operatorname{disc}\)</span> is additive, so <span class="math" data-tex="\(\operatorname{disc}(I)\le0+\rho+1\)">\(\operatorname{disc}(I)\le0+\rho+1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-isolated-positions">2. Isolated positions</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W_0(\tau)=n^{-w(\tau)}\,\alpha^{-d_V(\tau)}\,\beta^{d_U(\tau)},\\
+Z=\sum_\tau W_0(\tau),
+\end{gathered}
+\]">\[
+\begin{gathered}
+W_0(\tau)=n^{-w(\tau)}\,\alpha^{-d_V(\tau)}\,\beta^{d_U(\tau)},\\
+Z=\sum_\tau W_0(\tau),
+\end{gathered}
+\]</span>
+where the sum runs over all words <span class="math" data-tex="\(\tau\in\{\mathcal N,\mathcal D\}^n\)">\(\tau\in\{\mathcal N,\mathcal D\}^n\)</span>.
+So <span class="math" data-tex="\(W(\tau)\)">\(W(\tau)\)</span> is <span class="math" data-tex="\(W_0(\tau)\)">\(W_0(\tau)\)</span> times the factors <span class="math" data-tex="\(1+\alpha^{-1}n^{-h_t}\)">\(1+\alpha^{-1}n^{-h_t}\)</span> of the <span class="math" data-tex="\(V\)">\(V\)</span> layers of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. Such a factor is harmless if <span class="math" data-tex="\(h_t\ge1\)">\(h_t\ge1\)</span>: then it is at most <span class="math" data-tex="\(1+n^{-1/2}\)">\(1+n^{-1/2}\)</span>, because <span class="math" data-tex="\(\alpha^{-1}\le\sqrt n\)">\(\alpha^{-1}\le\sqrt n\)</span>. It is large, about <span class="math" data-tex="\(\sqrt n\)">\(\sqrt n\)</span>, if <span class="math" data-tex="\(h_t=0\)">\(h_t=0\)</span>. For a <span class="math" data-tex="\(V\)">\(V\)</span> layer <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span> this happens exactly if both neighbours <span class="math" data-tex="\(t-1\)">\(t-1\)</span> and <span class="math" data-tex="\(t+1\)">\(t+1\)</span> have the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. (The layer <span class="math" data-tex="\(n\)">\(n\)</span> is a <span class="math" data-tex="\(U\)">\(U\)</span> layer, so a <span class="math" data-tex="\(V\)">\(V\)</span> layer <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span> has two neighbours, and both are <span class="math" data-tex="\(U\)">\(U\)</span> layers.)</p>
+<p><strong>Definition.</strong> A position <span class="math" data-tex="\(t\)">\(t\)</span> is <em>isolated</em> in <span class="math" data-tex="\(\tau\)">\(\tau\)</span> if <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span> is a <span class="math" data-tex="\(V\)">\(V\)</span> layer, <span class="math" data-tex="\(\tau_t=\mathcal N\)">\(\tau_t=\mathcal N\)</span>, and <span class="math" data-tex="\(\tau_{t-1}=\tau_{t+1}=\mathcal D\)">\(\tau_{t-1}=\tau_{t+1}=\mathcal D\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For large <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_\tau W(\tau)\le e^{\sqrt n}\,Z .
+\]">\[
+\sum_\tau W(\tau)\le e^{\sqrt n}\,Z .
+\]</span></p>
+<p><strong>Proof.</strong> <em>The map <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</em> For a word <span class="math" data-tex="\(\tau\)">\(\tau\)</span> let <span class="math" data-tex="\(\Phi(\tau)\)">\(\Phi(\tau)\)</span> be the word in which all isolated positions of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> are changed to <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. The neighbours of a <span class="math" data-tex="\(V\)">\(V\)</span> layer are <span class="math" data-tex="\(U\)">\(U\)</span> layers and are not changed. So <span class="math" data-tex="\(\Phi(\tau)\)">\(\Phi(\tau)\)</span> has no isolated position, and for the <span class="math" data-tex="\(V\)">\(V\)</span> layers of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> in <span class="math" data-tex="\(\Phi(\tau)\)">\(\Phi(\tau)\)</span> the numbers <span class="math" data-tex="\(h_t\)">\(h_t\)</span> are the same as in <span class="math" data-tex="\(\tau\)">\(\tau\)</span>.</p>
+<p><em>The ratio.</em> Suppose <span class="math" data-tex="\(j\)">\(j\)</span> positions are changed. At each of them, the two switches at its two sides disappear; switches at different positions are different. Its factor <span class="math" data-tex="\(1+\alpha^{-1}\)">\(1+\alpha^{-1}\)</span> (here <span class="math" data-tex="\(h_t=0\)">\(h_t=0\)</span>) disappears, and <span class="math" data-tex="\(d_V\)">\(d_V\)</span> increases by <span class="math" data-tex="\(1\)">\(1\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{W(\tau)}{W(\Phi(\tau))}&amp;=\Bigl(\frac{n^{-2}(1+\alpha^{-1})}{\alpha^{-1}}\Bigr)^j\\
+&amp;=\Bigl(\frac{1+\alpha}{n^2}\Bigr)^j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{W(\tau)}{W(\Phi(\tau))}&amp;=\Bigl(\frac{n^{-2}(1+\alpha^{-1})}{\alpha^{-1}}\Bigr)^j\\
+&amp;=\Bigl(\frac{1+\alpha}{n^2}\Bigr)^j .
+\end{aligned}
+\]</span></p>
+<p><em>The words with a given image.</em> Let <span class="math" data-tex="\(y\)">\(y\)</span> be a word without isolated positions, and let <span class="math" data-tex="\(E(y)\)">\(E(y)\)</span> be the set of the <span class="math" data-tex="\(V\)">\(V\)</span> layers <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span> with <span class="math" data-tex="\(y_{t-1}=y_t=y_{t+1}=\mathcal D\)">\(y_{t-1}=y_t=y_{t+1}=\mathcal D\)</span>. The words <span class="math" data-tex="\(\tau\)">\(\tau\)</span> with <span class="math" data-tex="\(\Phi(\tau)=y\)">\(\Phi(\tau)=y\)</span> are exactly the words obtained from <span class="math" data-tex="\(y\)">\(y\)</span> by changing the positions of a subset <span class="math" data-tex="\(X\)">\(X\)</span> of <span class="math" data-tex="\(E(y)\)">\(E(y)\)</span> to <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. Indeed, such a word has the isolated positions <span class="math" data-tex="\(X\)">\(X\)</span> and no others, because a further isolated position would be isolated in <span class="math" data-tex="\(y\)">\(y\)</span>; and conversely the isolated positions of a word <span class="math" data-tex="\(\tau\)">\(\tau\)</span> with <span class="math" data-tex="\(\Phi(\tau)=y\)">\(\Phi(\tau)=y\)</span> lie in <span class="math" data-tex="\(E(y)\)">\(E(y)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{\tau:\ \Phi(\tau)=y}W(\tau)&amp;=W(y)\Bigl(1+\frac{1+\alpha}{n^2}\Bigr)^{|E(y)|}\\
+&amp;\le W(y)\Bigl(1+\frac2{n^2}\Bigr)^k .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{\tau:\ \Phi(\tau)=y}W(\tau)&amp;=W(y)\Bigl(1+\frac{1+\alpha}{n^2}\Bigr)^{|E(y)|}\\
+&amp;\le W(y)\Bigl(1+\frac2{n^2}\Bigr)^k .
+\end{aligned}
+\]</span></p>
+<p><em>Words without isolated positions.</em> In such a word <span class="math" data-tex="\(y\)">\(y\)</span>, every <span class="math" data-tex="\(V\)">\(V\)</span> layer <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span> of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> has a neighbour of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, and the position between them is an inner position; so <span class="math" data-tex="\(h_t\ge1\)">\(h_t\ge1\)</span>. For the layer <span class="math" data-tex="\(1\)">\(1\)</span> only <span class="math" data-tex="\(h_1\ge0\)">\(h_1\ge0\)</span> is known. So
+<span class="math math-display" data-tex="\[
+W(y)\le W_0(y)\,(1+\alpha^{-1})\Bigl(1+\frac{\alpha^{-1}}n\Bigr)^k .
+\]">\[
+W(y)\le W_0(y)\,(1+\alpha^{-1})\Bigl(1+\frac{\alpha^{-1}}n\Bigr)^k .
+\]</span></p>
+<p><em>The sum.</em> Adding over all <span class="math" data-tex="\(y\)">\(y\)</span> without isolated positions, and then enlarging the sum of the <span class="math" data-tex="\(W_0(y)\)">\(W_0(y)\)</span> to all words,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_\tau W(\tau)\le{}&amp;\Bigl(1+\frac2{n^2}\Bigr)^k(1+\alpha^{-1})\\
+&amp;\cdot\Bigl(1+\frac{\alpha^{-1}}n\Bigr)^kZ .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_\tau W(\tau)\le{}&amp;\Bigl(1+\frac2{n^2}\Bigr)^k(1+\alpha^{-1})\\
+&amp;\cdot\Bigl(1+\frac{\alpha^{-1}}n\Bigr)^kZ .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(\alpha^{-1}\le\sqrt n\)">\(\alpha^{-1}\le\sqrt n\)</span> and <span class="math" data-tex="\(k\le\tfrac n2\)">\(k\le\tfrac n2\)</span>, the logarithm of the factor before <span class="math" data-tex="\(Z\)">\(Z\)</span> is at most
+<span class="math math-display" data-tex="\[
+\frac1n+\log(1+\sqrt n)+\frac{\sqrt n}2\le\sqrt n
+\]">\[
+\frac1n+\log(1+\sqrt n)+\frac{\sqrt n}2\le\sqrt n
+\]</span>
+for large <span class="math" data-tex="\(n\)">\(n\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-runs">3. Runs</h2>
+<p>A <em>run</em> of a word is a maximal interval of positions of the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> For large <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(Z\le e^{2\sqrt n}\)">\(Z\le e^{2\sqrt n}\)</span>.</p>
+<p><strong>Proof.</strong> <em>The weight of a run.</em> For a run <span class="math" data-tex="\(I\)">\(I\)</span>, the layers of <span class="math" data-tex="\(I\)">\(I\)</span> contribute to <span class="math" data-tex="\(W_0\)">\(W_0\)</span> the factor
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha^{-V(I)}\beta^{U(I)}&amp;\le\alpha^{-V(I)+\rho U(I)}\,e^{2U(I)/b}\\
+&amp;=\alpha^{-\operatorname{disc}(I)}\,e^{2U(I)/b},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha^{-V(I)}\beta^{U(I)}&amp;\le\alpha^{-V(I)+\rho U(I)}\,e^{2U(I)/b}\\
+&amp;=\alpha^{-\operatorname{disc}(I)}\,e^{2U(I)/b},
+\end{aligned}
+\]</span>
+by <span class="math" data-tex="\(\beta\le\alpha^\rho e^{2/b}\)">\(\beta\le\alpha^\rho e^{2/b}\)</span>. If <span class="math" data-tex="\(\operatorname{disc}(I)\le0\)">\(\operatorname{disc}(I)\le0\)</span>, then <span class="math" data-tex="\(\alpha^{-\operatorname{disc}(I)}\le1\)">\(\alpha^{-\operatorname{disc}(I)}\le1\)</span>. Otherwise, by Lemma 1.1, <span class="math" data-tex="\(\alpha^{-1}\le\sqrt n\)">\(\alpha^{-1}\le\sqrt n\)</span> and <span class="math" data-tex="\(\rho&lt;1\)">\(\rho&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\alpha^{-\operatorname{disc}(I)}\le\alpha^{-(1+\rho)}\le n^{(1+\rho)/2}\le n .
+\]">\[
+\alpha^{-\operatorname{disc}(I)}\le\alpha^{-(1+\rho)}\le n^{(1+\rho)/2}\le n .
+\]</span>
+So every run contributes at most <span class="math" data-tex="\(n\,e^{2U(I)/b}\)">\(n\,e^{2U(I)/b}\)</span>. The runs are disjoint, so the factors <span class="math" data-tex="\(e^{2U(I)/b}\)">\(e^{2U(I)/b}\)</span> of all runs multiply to at most <span class="math" data-tex="\(e^{2m/b}\)">\(e^{2m/b}\)</span>.</p>
+<p><em>The two constant words.</em> The word <span class="math" data-tex="\(\mathcal N^n\)">\(\mathcal N^n\)</span> has <span class="math" data-tex="\(W_0=1\)">\(W_0=1\)</span>. The word <span class="math" data-tex="\(\mathcal D^n\)">\(\mathcal D^n\)</span> is one run, the interval of all layers, with <span class="math" data-tex="\(\operatorname{disc}=0\)">\(\operatorname{disc}=0\)</span>: <span class="math" data-tex="\(W_0\le e^{2m/b}\)">\(W_0\le e^{2m/b}\)</span>.</p>
+<p><em>Mixed words.</em> Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> contain both letters. Let <span class="math" data-tex="\(c\)">\(c\)</span> be the number of its runs that contain neither the layer <span class="math" data-tex="\(1\)">\(1\)</span> nor the layer <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(c&#x27;\in\{0,1,2\}\)">\(c&#x27;\in\{0,1,2\}\)</span> the number of its runs that contain one of them; no run contains both. A run of the first kind has a switch at each of its two sides, a run of the second kind at one side, and every switch is at the side of exactly one run. So <span class="math" data-tex="\(w(\tau)=2c+c&#x27;\)">\(w(\tau)=2c+c&#x27;\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W_0(\tau)&amp;\le n^{-(2c+c&#x27;)}\cdot n^{c+c&#x27;}\,e^{2m/b}\\
+&amp;=n^{-c}\,e^{2m/b}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+W_0(\tau)&amp;\le n^{-(2c+c&#x27;)}\cdot n^{c+c&#x27;}\,e^{2m/b}\\
+&amp;=n^{-c}\,e^{2m/b}.
+\end{aligned}
+\]</span>
+A run in the interior pays <span class="math" data-tex="\(n^{-2}\)">\(n^{-2}\)</span> for its two switches and gains at most <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><em>Counting.</em> A word is determined by its first letter and the set of its switches. So there are <span class="math" data-tex="\(2\binom{n-1}w\)">\(2\binom{n-1}w\)</span> words with <span class="math" data-tex="\(w\)">\(w\)</span> switches, and at most <span class="math" data-tex="\(2\binom{n-1}{2c+c&#x27;}\)">\(2\binom{n-1}{2c+c&#x27;}\)</span> mixed words with given <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span>. For each <span class="math" data-tex="\(c&#x27;\in\{0,1,2\}\)">\(c&#x27;\in\{0,1,2\}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{c\ge0}\binom{n-1}{2c+c&#x27;}n^{-c}&amp;\le\sum_{c\ge0}\frac{n^{c+c&#x27;}}{(2c+c&#x27;)!}\\
+&amp;\le n^2\sum_{c\ge0}\frac{(\sqrt n)^{2c}}{(2c)!}\\
+&amp;\le n^2e^{\sqrt n}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{c\ge0}\binom{n-1}{2c+c&#x27;}n^{-c}&amp;\le\sum_{c\ge0}\frac{n^{c+c&#x27;}}{(2c+c&#x27;)!}\\
+&amp;\le n^2\sum_{c\ge0}\frac{(\sqrt n)^{2c}}{(2c)!}\\
+&amp;\le n^2e^{\sqrt n}.
+\end{aligned}
+\]</span></p>
+<p><em>Together.</em>
+<span class="math math-display" data-tex="\[
+Z\le e^{2m/b}\bigl(2+6n^2e^{\sqrt n}\bigr).
+\]">\[
+Z\le e^{2m/b}\bigl(2+6n^2e^{\sqrt n}\bigr).
+\]</span>
+By <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span> and <span class="math" data-tex="\(b\ge\tfrac14n^{5/2}\)">\(b\ge\tfrac14n^{5/2}\)</span> we have <span class="math" data-tex="\(\tfrac{2m}b\le8n^{-3/2}\le1\)">\(\tfrac{2m}b\le8n^{-3/2}\le1\)</span>, and <span class="math" data-tex="\(e\cdot(2+6n^2e^{\sqrt n})\le e^{2\sqrt n}\)">\(e\cdot(2+6n^2e^{\sqrt n})\le e^{2\sqrt n}\)</span> for large <span class="math" data-tex="\(n\)">\(n\)</span>; here <span class="math" data-tex="\(e\)">\(e\)</span> is Euler's number. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The even spread of the <span class="math" data-tex="\(V\)">\(V\)</span> layers is used in the weight of a run. A run with <span class="math" data-tex="\(i\)">\(i\)</span> more <span class="math" data-tex="\(V\)">\(V\)</span> layers than its proportion would contribute about <span class="math" data-tex="\(n^{i/2}\)">\(n^{i/2}\)</span>. If the <span class="math" data-tex="\(V\)">\(V\)</span> layers were bunched together, a single run could gain much more than its two switches cost.</p>
+<h2 id="4-the-lower-bound-for-the-measure">4. The lower bound for the measure</h2>
+<p><strong>Proposition 4.1</strong> ([OpenAI-D]). Let <span class="math" data-tex="\(K=\mathbb C\)">\(K=\mathbb C\)</span>, and let the layers be divided as in the lesson on trace moments. For large <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+R(\operatorname{IMM}_{n,n})\ge D\,e^{-6\sqrt n}.
+\]">\[
+R(\operatorname{IMM}_{n,n})\ge D\,e^{-6\sqrt n}.
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(f=\operatorname{IMM}_{n,n}\)">\(f=\operatorname{IMM}_{n,n}\)</span>. By Lemmas 2.1 and 3.1, <span class="math" data-tex="\(\sum_\tau W(\tau)\le e^{3\sqrt n}\)">\(\sum_\tau W(\tau)\le e^{3\sqrt n}\)</span>. By <span class="math" data-tex="\(\beta\le\tfrac2{\sqrt n}\)">\(\beta\le\tfrac2{\sqrt n}\)</span> and <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span>, <span class="math" data-tex="\((1+\beta)^m\le e^{\beta m}\le e^{2\sqrt n}\)">\((1+\beta)^m\le e^{\beta m}\le e^{2\sqrt n}\)</span>. So Proposition 7.1 of the lesson on trace moments gives
+<span class="math math-display" data-tex="\[
+T_2\le D\,n^{2(n-1)}\,\mu^2\,e^{5\sqrt n},
+\]">\[
+T_2\le D\,n^{2(n-1)}\,\mu^2\,e^{5\sqrt n},
+\]</span>
+and Proposition 5.1 there gives <span class="math" data-tex="\(T\ge D\,n^{n-1}\mu\,e^{-6/\sqrt n}&gt;0\)">\(T\ge D\,n^{n-1}\mu\,e^{-6/\sqrt n}&gt;0\)</span>. By the lemma on the two traces,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(f)=\operatorname{rank}F_f&amp;\ge\frac{T^2}{T_2}\ge D\,e^{-12/\sqrt n-5\sqrt n}\\
+&amp;\ge D\,e^{-6\sqrt n}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+R(f)=\operatorname{rank}F_f&amp;\ge\frac{T^2}{T_2}\ge D\,e^{-12/\sqrt n-5\sqrt n}\\
+&amp;\ge D\,e^{-6\sqrt n}.
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Since <span class="math" data-tex="\(R(f)\le D\)">\(R(f)\le D\)</span>, the map <span class="math" data-tex="\(F_f\)">\(F_f\)</span> has almost the full rank on the scale of the proof, on which factors <span class="math" data-tex="\(e^{O(\sqrt n)}\)">\(e^{O(\sqrt n)}\)</span> do not matter and factors <span class="math" data-tex="\(n^{\sqrt n/100}\)">\(n^{\sqrt n/100}\)</span> do.</p>
+<h2 id="5-the-theorem">5. The theorem</h2>
+<p><strong>Theorem 5.1</strong> ([OpenAI-D]). There is a number <span class="math" data-tex="\(n_0\)">\(n_0\)</span> such that for every <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span> and every field <span class="math" data-tex="\(K\)">\(K\)</span> of characteristic zero, every syntactically homogeneous <span class="math" data-tex="\(\Sigma\Pi\Sigma\Pi\Sigma\)">\(\Sigma\Pi\Sigma\Pi\Sigma\)</span> circuit over <span class="math" data-tex="\(K\)">\(K\)</span> that computes <span class="math" data-tex="\(\operatorname{IMM}_{n,n}\)">\(\operatorname{IMM}_{n,n}\)</span> has a size of at least <span class="math" data-tex="\(n^{\sqrt n/400}\)">\(n^{\sqrt n/400}\)</span>.</p>
+<p>This is Theorem 3.1 of <a href="iterated-matrix-multiplication-and-depth-five-circuits.html">Iterated matrix multiplication and depth-five circuits</a>.</p>
+<p><strong>Proof for <span class="math" data-tex="\(K=\mathbb C\)">\(K=\mathbb C\)</span>.</strong> Let a circuit of this kind and of size <span class="math" data-tex="\(S\)">\(S\)</span> compute <span class="math" data-tex="\(f=\operatorname{IMM}_{n,n}\)">\(f=\operatorname{IMM}_{n,n}\)</span>. Divide the layers as in the lesson on trace moments. By Proposition 4.1 and by Proposition 3.1 of <a href="the-rank-of-a-depth-five-circuit.html">The rank of a depth-five circuit</a>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D\,e^{-6\sqrt n}&amp;\le R(f)\\
+&amp;\le2S^2D\,e^{11\sqrt n}\,n^{-\sqrt n/100}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+D\,e^{-6\sqrt n}&amp;\le R(f)\\
+&amp;\le2S^2D\,e^{11\sqrt n}\,n^{-\sqrt n/100}.
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+S\ge2^{-1/2}\,e^{-\frac{17}2\sqrt n}\,n^{\sqrt n/200}. \tag{5.1}
+\]">\[
+S\ge2^{-1/2}\,e^{-\frac{17}2\sqrt n}\,n^{\sqrt n/200}. \tag{5.1}
+\]</span>
+The right side is at least <span class="math" data-tex="\(n^{\sqrt n/400}\)">\(n^{\sqrt n/400}\)</span> as soon as <span class="math" data-tex="\(\tfrac{\sqrt n}{400}\log n\ge\tfrac{17}2\sqrt n+\tfrac12\log2\)">\(\tfrac{\sqrt n}{400}\log n\ge\tfrac{17}2\sqrt n+\tfrac12\log2\)</span>, which holds for <span class="math" data-tex="\(\log n\ge3401\)">\(\log n\ge3401\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For the other fields we compare ranks.</p>
+<p><strong>Lemma 5.2.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a matrix with entries in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and let <span class="math" data-tex="\(K\)">\(K\)</span> be a field of characteristic zero. The rank of <span class="math" data-tex="\(A\)">\(A\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span> is equal to its rank over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>.</p>
+<p><strong>Proof.</strong> The rank of a matrix over a field is the largest number <span class="math" data-tex="\(r\)">\(r\)</span> such that some square submatrix with <span class="math" data-tex="\(r\)">\(r\)</span> rows has a determinant <span class="math" data-tex="\(\ne0\)">\(\ne0\)</span>. The determinants of the submatrices of <span class="math" data-tex="\(A\)">\(A\)</span> are integers, computed by the same formula over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and over <span class="math" data-tex="\(K\)">\(K\)</span>. Since <span class="math" data-tex="\(K\)">\(K\)</span> has the characteristic zero, the image in <span class="math" data-tex="\(K\)">\(K\)</span> of an integer <span class="math" data-tex="\(\ne0\)">\(\ne0\)</span> is <span class="math" data-tex="\(\ne0\)">\(\ne0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proof of Theorem 5.1 for a field <span class="math" data-tex="\(K\)">\(K\)</span> of characteristic zero.</strong> For every field, the monomials are bases of <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span> and <span class="math" data-tex="\(\mathcal H(a-k,b+m)\)">\(\mathcal H(a-k,b+m)\)</span>. A partial derivative maps a monomial to an integer multiple of a monomial or to <span class="math" data-tex="\(0\)">\(0\)</span>, a multiplication by a variable maps a monomial to a monomial, and <span class="math" data-tex="\(f\)">\(f\)</span> has the coefficients <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. So the matrix of <span class="math" data-tex="\(F_f\)">\(F_f\)</span> in the monomial bases has entries in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and it is the same matrix for every field. By Lemma 5.2, used for <span class="math" data-tex="\(K\)">\(K\)</span> and for <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, its rank over <span class="math" data-tex="\(K\)">\(K\)</span> is its rank over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The rank over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> does not depend on the bases. So Proposition 4.1 holds over <span class="math" data-tex="\(K\)">\(K\)</span>, with the same number <span class="math" data-tex="\(D\)">\(D\)</span>. Proposition 3.1 on circuits holds over every field. So (5.1) holds over <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="6-what-the-proof-gives">6. What the proof gives</h2>
+<p><strong>No outside theorem is used.</strong> The proof uses linear algebra (rank, trace, adjoint, determinants), binomial coefficients and power series, and elementary estimates. Every step is proved in the five lessons of this course.</p>
+<p><strong>The size of <span class="math" data-tex="\(n_0\)">\(n_0\)</span>.</strong> [OpenAI-D] states the theorem with a number <span class="math" data-tex="\(n_0\)">\(n_0\)</span> and gives no value for it. With the constants found in this course, the last step, from (5.1) to the bound <span class="math" data-tex="\(n^{\sqrt n/400}\)">\(n^{\sqrt n/400}\)</span>, needs <span class="math" data-tex="\(\log n\ge3401\)">\(\log n\ge3401\)</span>, that is <span class="math" data-tex="\(n\ge e^{3401}\)">\(n\ge e^{3401}\)</span>, a number with <span class="math" data-tex="\(1478\)">\(1478\)</span> digits. The other conditions on <span class="math" data-tex="\(n\)">\(n\)</span> in the lessons are far weaker; the course does not compute them. The right side of (5.1) is smaller than <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(\log n\le1700\)">\(\log n\le1700\)</span>: for such <span class="math" data-tex="\(n\)">\(n\)</span> the inequality says nothing. The constants <span class="math" data-tex="\(11\)">\(11\)</span> and <span class="math" data-tex="\(6\)">\(6\)</span> in the exponents were not optimized here, and better constants would lower these thresholds; but the method compares a gain <span class="math" data-tex="\(n^{-\sqrt n/100}=e^{-\sqrt n\log n/100}\)">\(n^{-\sqrt n/100}=e^{-\sqrt n\log n/100}\)</span> with losses <span class="math" data-tex="\(e^{O(\sqrt n)}\)">\(e^{O(\sqrt n)}\)</span>, and such a comparison needs <span class="math" data-tex="\(\log n\)">\(\log n\)</span> to be large compared with <span class="math" data-tex="\(100\)">\(100\)</span> times the constant of the losses. The theorem is a statement about very large <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>How much the estimates lose.</strong> The sum <span class="math" data-tex="\(\sum_\tau W(\tau)\)">\(\sum_\tau W(\tau)\)</span> can be computed exactly by a program that goes through the layers and keeps the last two letters. For <span class="math" data-tex="\(n=10^3,10^4,10^5\)">\(n=10^3,10^4,10^5\)</span> its logarithm is <span class="math" data-tex="\(7.0\)">\(7.0\)</span>, <span class="math" data-tex="\(14.3\)">\(14.3\)</span> and <span class="math" data-tex="\(32.1\)">\(32.1\)</span>; the bound <span class="math" data-tex="\(3\sqrt n\)">\(3\sqrt n\)</span> of this lesson is <span class="math" data-tex="\(95\)">\(95\)</span>, <span class="math" data-tex="\(300\)">\(300\)</span> and <span class="math" data-tex="\(949\)">\(949\)</span>. So the lower bound for the rank is better than <span class="math" data-tex="\(D\,e^{-6\sqrt n}\)">\(D\,e^{-6\sqrt n}\)</span> in these cases. The larger losses are in the bound for circuits, in the factors <span class="math" data-tex="\(5^{4s}\)">\(5^{4s}\)</span> and <span class="math" data-tex="\(\exp(4\sqrt n)\)">\(\exp(4\sqrt n)\)</span>.</p>
+<p><strong>Fields of positive characteristic.</strong> Proposition 3.1 on circuits holds over every field. The lower bound for the rank of <span class="math" data-tex="\(F_f\)">\(F_f\)</span> was proved over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> and transferred by Lemma 5.2, which fails in positive characteristic: the rank of an integer matrix can drop modulo a prime (Exercise 7.4). The course proves nothing for these fields.</p>
+<p><strong>Lower and upper bound.</strong> Proposition 5.1 of the first lesson gives circuits of the size <span class="math" data-tex="\(n^{\sqrt n+4}\)">\(n^{\sqrt n+4}\)</span> over every field. So the least size of a syntactically homogeneous <span class="math" data-tex="\(\Sigma\Pi\Sigma\Pi\Sigma\)">\(\Sigma\Pi\Sigma\Pi\Sigma\)</span> circuit for <span class="math" data-tex="\(\operatorname{IMM}_{n,n}\)">\(\operatorname{IMM}_{n,n}\)</span> over a field of characteristic zero is between <span class="math" data-tex="\(n^{\sqrt n/400}\)">\(n^{\sqrt n/400}\)</span> and <span class="math" data-tex="\(n^{\sqrt n+4}\)">\(n^{\sqrt n+4}\)</span> for <span class="math" data-tex="\(n\ge n_0\)">\(n\ge n_0\)</span>. The two exponents of <span class="math" data-tex="\(n\)">\(n\)</span> differ by a factor of about <span class="math" data-tex="\(400\)">\(400\)</span>.</p>
+<p><strong>The choice of <span class="math" data-tex="\(s\)">\(s\)</span>.</strong> The number <span class="math" data-tex="\(s=m-k\)">\(s=m-k\)</span> enters the bound for circuits in two opposite ways. If all factors of a product have degrees below <span class="math" data-tex="\(t_0=\tfrac n{4s}\)">\(t_0=\tfrac n{4s}\)</span>, the gain is <span class="math" data-tex="\(q^{s/4}\)">\(q^{s/4}\)</span>, which is about <span class="math" data-tex="\(n^{-s/8}\)">\(n^{-s/8}\)</span>. If one factor has a degree of at least <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, the gain is <span class="math" data-tex="\(q^{\lambda t_0/2}\)">\(q^{\lambda t_0/2}\)</span>, which is about <span class="math" data-tex="\(n^{-n/(32s)}\)">\(n^{-n/(32s)}\)</span>. A larger <span class="math" data-tex="\(s\)">\(s\)</span> improves the first and spoils the second. With <span class="math" data-tex="\(s\)">\(s\)</span> about <span class="math" data-tex="\(\sqrt n\)">\(\sqrt n\)</span> both are <span class="math" data-tex="\(n^{-c\sqrt n}\)">\(n^{-c\sqrt n}\)</span> with a fixed <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. The upper bound of the first lesson has the same form for a similar reason: blocks of the length <span class="math" data-tex="\(\sqrt n\)">\(\sqrt n\)</span> balance the cost inside a block against the cost of combining the blocks.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> For <span class="math" data-tex="\(n=12\)">\(n=12\)</span>, <span class="math" data-tex="\(s=2\)">\(s=2\)</span>, <span class="math" data-tex="\(k=5\)">\(k=5\)</span>, <span class="math" data-tex="\(m=7\)">\(m=7\)</span> the division is <span class="math" data-tex="\(VU\,VU\,VUU\,VU\,VUU\)">\(VU\,VU\,VUU\,VU\,VUU\)</span>. Compute <span class="math" data-tex="\(\operatorname{disc}\)">\(\operatorname{disc}\)</span> for the intervals of the layers <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(3\)">\(3\)</span>, <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(5\)">\(5\)</span> and <span class="math" data-tex="\(6\)">\(6\)</span> to <span class="math" data-tex="\(7\)">\(7\)</span>, and compare with <span class="math" data-tex="\(1+\rho\)">\(1+\rho\)</span>.</p>
+<p><strong>7.2.</strong> Show that there are exactly <span class="math" data-tex="\(2\binom{n-1}w\)">\(2\binom{n-1}w\)</span> words of length <span class="math" data-tex="\(n\)">\(n\)</span> in two letters with <span class="math" data-tex="\(w\)">\(w\)</span> switches, and check <span class="math" data-tex="\(\sum_w2\binom{n-1}w=2^n\)">\(\sum_w2\binom{n-1}w=2^n\)</span>.</p>
+<p><strong>7.3.</strong> For the division <span class="math" data-tex="\(VU\,VU\,VUU\)">\(VU\,VU\,VUU\)</span> of seven layers and the word <span class="math" data-tex="\(\tau=\mathcal D\mathcal D\mathcal N\mathcal D\mathcal D\mathcal D\mathcal D\)">\(\tau=\mathcal D\mathcal D\mathcal N\mathcal D\mathcal D\mathcal D\mathcal D\)</span>, find the isolated positions, <span class="math" data-tex="\(W(\tau)\)">\(W(\tau)\)</span>, <span class="math" data-tex="\(\Phi(\tau)\)">\(\Phi(\tau)\)</span>, <span class="math" data-tex="\(W(\Phi(\tau))\)">\(W(\Phi(\tau))\)</span> and the ratio.</p>
+<p><strong>7.4.</strong> (a) Give a matrix with entries in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> whose rank over the field with two elements is smaller than its rank over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. (b) Let <span class="math" data-tex="\(V=\{x\}\)">\(V=\{x\}\)</span>, <span class="math" data-tex="\(U=\{y\}\)">\(U=\{y\}\)</span>, <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, <span class="math" data-tex="\(a=2\)">\(a=2\)</span>, <span class="math" data-tex="\(b=0\)">\(b=0\)</span> and <span class="math" data-tex="\(g=x^2\)">\(g=x^2\)</span>. Compute <span class="math" data-tex="\(R(g)\)">\(R(g)\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and over the field with two elements.</p>
+<p><strong>7.5.</strong> Suppose that Proposition 3.1 on circuits held with <span class="math" data-tex="\(n^{-\sqrt n/2}\)">\(n^{-\sqrt n/2}\)</span> in place of <span class="math" data-tex="\(n^{-\sqrt n/100}\)">\(n^{-\sqrt n/100}\)</span>, with the same other constants. For which <span class="math" data-tex="\(n\)">\(n\)</span> would (5.1) then be larger than <span class="math" data-tex="\(1\)">\(1\)</span>?</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(\rho=\tfrac57\)">\(\rho=\tfrac57\)</span> and <span class="math" data-tex="\(1+\rho=\tfrac{12}7\)">\(1+\rho=\tfrac{12}7\)</span>. Layers <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(3\)">\(3\)</span> are <span class="math" data-tex="\(VUV\)">\(VUV\)</span>: <span class="math" data-tex="\(\operatorname{disc}=2-\tfrac57=\tfrac97\)">\(\operatorname{disc}=2-\tfrac57=\tfrac97\)</span>. Layers <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(5\)">\(5\)</span> are <span class="math" data-tex="\(VUVUV\)">\(VUVUV\)</span>: <span class="math" data-tex="\(3-\tfrac{10}7=\tfrac{11}7\)">\(3-\tfrac{10}7=\tfrac{11}7\)</span>. Layers <span class="math" data-tex="\(6\)">\(6\)</span> to <span class="math" data-tex="\(7\)">\(7\)</span> are <span class="math" data-tex="\(UU\)">\(UU\)</span>: <span class="math" data-tex="\(-\tfrac{10}7\)">\(-\tfrac{10}7\)</span>. All are at most <span class="math" data-tex="\(\tfrac{12}7\)">\(\tfrac{12}7\)</span>; the second is the largest value among all intervals of this division.</p>
+<p><strong>7.2.</strong> A word is determined by its first letter (2 choices) and by the set of the positions <span class="math" data-tex="\(t\in\{1,\dots,n-1\}\)">\(t\in\{1,\dots,n-1\}\)</span> with <span class="math" data-tex="\(\tau_t\ne\tau_{t+1}\)">\(\tau_t\ne\tau_{t+1}\)</span> (<span class="math" data-tex="\(\binom{n-1}w\)">\(\binom{n-1}w\)</span> sets with <span class="math" data-tex="\(w\)">\(w\)</span> elements); every choice gives a word. The sum over <span class="math" data-tex="\(w\)">\(w\)</span> is <span class="math" data-tex="\(2\cdot2^{n-1}\)">\(2\cdot2^{n-1}\)</span>.</p>
+<p><strong>7.3.</strong> The <span class="math" data-tex="\(V\)">\(V\)</span> layers are <span class="math" data-tex="\(1,3,5\)">\(1,3,5\)</span>. The position <span class="math" data-tex="\(3\)">\(3\)</span> is isolated: <span class="math" data-tex="\(\tau_3=\mathcal N\)">\(\tau_3=\mathcal N\)</span>, <span class="math" data-tex="\(\tau_2=\tau_4=\mathcal D\)">\(\tau_2=\tau_4=\mathcal D\)</span>. The word has <span class="math" data-tex="\(w=2\)">\(w=2\)</span>, <span class="math" data-tex="\(d_V=2\)">\(d_V=2\)</span>, <span class="math" data-tex="\(d_U=4\)">\(d_U=4\)</span>, <span class="math" data-tex="\(N_V=\{3\}\)">\(N_V=\{3\}\)</span>, <span class="math" data-tex="\(h_3=0\)">\(h_3=0\)</span>:
+<span class="math math-display" data-tex="\[
+W(\tau)=n^{-2}\alpha^{-2}\beta^4(1+\alpha^{-1}).
+\]">\[
+W(\tau)=n^{-2}\alpha^{-2}\beta^4(1+\alpha^{-1}).
+\]</span>
+<span class="math" data-tex="\(\Phi(\tau)=\mathcal D^7\)">\(\Phi(\tau)=\mathcal D^7\)</span> with <span class="math" data-tex="\(W=\alpha^{-3}\beta^4\)">\(W=\alpha^{-3}\beta^4\)</span>. The ratio is <span class="math" data-tex="\(n^{-2}(1+\alpha^{-1})\alpha=\tfrac{1+\alpha}{n^2}\)">\(n^{-2}(1+\alpha^{-1})\alpha=\tfrac{1+\alpha}{n^2}\)</span>.</p>
+<p><strong>7.4.</strong> (a) The matrix <span class="math" data-tex="\((2)\)">\((2)\)</span> with one row and one column: rank <span class="math" data-tex="\(1\)">\(1\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, rank <span class="math" data-tex="\(0\)">\(0\)</span> over the field with two elements. (b) <span class="math" data-tex="\(\mathcal H(2,0)\)">\(\mathcal H(2,0)\)</span> has the basis <span class="math" data-tex="\(x^2\)">\(x^2\)</span>, and <span class="math" data-tex="\(\mathcal H(0,0)\)">\(\mathcal H(0,0)\)</span> the basis <span class="math" data-tex="\(1\)">\(1\)</span>; <span class="math" data-tex="\(D=1\)">\(D=1\)</span>. <span class="math" data-tex="\(F_g=\partial_x^2\)">\(F_g=\partial_x^2\)</span> maps <span class="math" data-tex="\(x^2\)">\(x^2\)</span> to <span class="math" data-tex="\(2\)">\(2\)</span>. So <span class="math" data-tex="\(R(g)=1\)">\(R(g)=1\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and <span class="math" data-tex="\(R(g)=0\)">\(R(g)=0\)</span> over the field with two elements. The matrix of <span class="math" data-tex="\(F_g\)">\(F_g\)</span> in the monomial bases is the matrix <span class="math" data-tex="\((2)\)">\((2)\)</span> of (a).</p>
+<p><strong>7.5.</strong> Then (5.1) would read <span class="math" data-tex="\(S\ge2^{-1/2}e^{-\frac{17}2\sqrt n}\,n^{\sqrt n/4}\)">\(S\ge2^{-1/2}e^{-\frac{17}2\sqrt n}\,n^{\sqrt n/4}\)</span>. The right side is larger than <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(\tfrac{\sqrt n}4\log n&gt;\tfrac{17}2\sqrt n+\tfrac12\log2\)">\(\tfrac{\sqrt n}4\log n&gt;\tfrac{17}2\sqrt n+\tfrac12\log2\)</span>, which holds for <span class="math" data-tex="\(\log n\ge35\)">\(\log n\ge35\)</span>, that is <span class="math" data-tex="\(n\ge e^{35}\approx1.6\cdot10^{15}\)">\(n\ge e^{35}\approx1.6\cdot10^{15}\)</span>. The threshold depends strongly on the constant in the exponent of <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-D] OpenAI, <em>Homogeneous depth-five lower bounds for iterated matrix multiplication</em>, OpenAI Math Release preprint, 25 September 2026, Sections 5 and 6. https://github.com/openai/math/tree/main/preprints/Homogeneous-depth-five-lower-bounds-for-iterated-matrix-multiplication-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

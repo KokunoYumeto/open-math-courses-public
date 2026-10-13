@@ -1,0 +1,457 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trace moments and paths</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Depth-five circuits for iterated matrix multiplication)</a><a href="the-rank-of-a-depth-five-circuit.html">Previous lesson</a><a href="the-sum-over-type-words-and-the-lower-bound.html">Next lesson</a><a href="src/trace-moments-and-paths.md">Editable source</a></nav><main><article><h1 id="trace-moments-and-paths">Trace moments and paths</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson begins the proof that the measure <span class="math" data-tex="\(R\)">\(R\)</span> of <span class="math" data-tex="\(f=\operatorname{IMM}_{n,n}\)">\(f=\operatorname{IMM}_{n,n}\)</span> is almost as large as it can be: <span class="math" data-tex="\(R(f)\ge D\,e^{-6\sqrt n}\)">\(R(f)\ge D\,e^{-6\sqrt n}\)</span>. The rank of the map <span class="math" data-tex="\(F_f\)">\(F_f\)</span> is estimated from below by two traces, <span class="math" data-tex="\(T=\operatorname{tr}(F_f^*F_f)\)">\(T=\operatorname{tr}(F_f^*F_f)\)</span> and <span class="math" data-tex="\(T_2=\operatorname{tr}((F_f^*F_f)^2)\)">\(T_2=\operatorname{tr}((F_f^*F_f)^2)\)</span>. In a suitable basis the matrix of <span class="math" data-tex="\(F_f\)">\(F_f\)</span> is described by the paths of the polynomial. The first trace is a sum over paths, and the second is a sum over certain quadruples of paths. The lesson computes the first and reduces the second to a sum over words in two letters, which the last lesson estimates.</p>
+<ul>
+<li>The division of the layers into <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(U\)">\(U\)</span> (Section 1).</li>
+<li><span class="math" data-tex="\(\operatorname{rank}F\ge T^2/T_2\)">\(\operatorname{rank}F\ge T^2/T_2\)</span> (Lemma 2.1).</li>
+<li>The matrix of <span class="math" data-tex="\(F_f\)">\(F_f\)</span> and the first trace as a sum over paths (Lemma 3.1).</li>
+<li>Moments of a random composition and of geometric variables (Lemmas 4.1 and 4.2).</li>
+<li><span class="math" data-tex="\(T\ge D\,n^{n-1}\mu\,e^{-6/\sqrt n}\)">\(T\ge D\,n^{n-1}\mu\,e^{-6/\sqrt n}\)</span> (Proposition 5.1).</li>
+<li>Four paths, the two types of a layer, and the reduction of <span class="math" data-tex="\(T_2\)">\(T_2\)</span> (Proposition 7.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-D, Section 4]. It uses the numbers and the map <span class="math" data-tex="\(F_g\)">\(F_g\)</span> from <a href="a-rank-measure-from-differentiation-and-multiplication.html">A rank measure from differentiation and multiplication</a>, and the adjoint, the trace and orthogonal projections from linear algebra (<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B40">Linear Algebra</a>, core course). In this lesson and the next the field is <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<h2 id="1-the-division-of-the-layers">1. The division of the layers</h2>
+<p>The numbers <span class="math" data-tex="\(s,k,m\)">\(s,k,m\)</span> satisfy <span class="math" data-tex="\(k+m=n\)">\(k+m=n\)</span> and <span class="math" data-tex="\(m=k+s\)">\(m=k+s\)</span>, and <span class="math" data-tex="\(0&lt;s&lt;k\)">\(0&lt;s&lt;k\)</span> for large <span class="math" data-tex="\(n\)">\(n\)</span>. For <span class="math" data-tex="\(1\le i\le k\)">\(1\le i\le k\)</span> put
+<span class="math math-display" data-tex="\[
+l_i=1+\Bigl\lfloor\frac{is}k\Bigr\rfloor-\Bigl\lfloor\frac{(i-1)s}k\Bigr\rfloor .
+\]">\[
+l_i=1+\Bigl\lfloor\frac{is}k\Bigr\rfloor-\Bigl\lfloor\frac{(i-1)s}k\Bigr\rfloor .
+\]</span>
+Since <span class="math" data-tex="\(0&lt;\tfrac sk&lt;1\)">\(0&lt;\tfrac sk&lt;1\)</span>, every <span class="math" data-tex="\(l_i\)">\(l_i\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(l_1+\dots+l_k=k+s=m\)">\(l_1+\dots+l_k=k+s=m\)</span>. The layers <span class="math" data-tex="\(1,\dots,n\)">\(1,\dots,n\)</span> are divided into <span class="math" data-tex="\(k\)">\(k\)</span> <em>chunks</em> of consecutive layers; the chunk <span class="math" data-tex="\(i\)">\(i\)</span> consists of one layer for <span class="math" data-tex="\(V\)">\(V\)</span> followed by <span class="math" data-tex="\(l_i\)">\(l_i\)</span> layers for <span class="math" data-tex="\(U\)">\(U\)</span>:
+<span class="math math-display" data-tex="\[
+V\,U^{l_1}\ V\,U^{l_2}\ \cdots\ V\,U^{l_k}.
+\]">\[
+V\,U^{l_1}\ V\,U^{l_2}\ \cdots\ V\,U^{l_k}.
+\]</span>
+All <span class="math" data-tex="\(n^2\)">\(n^2\)</span> variables of a layer belong to the group of the layer. So <span class="math" data-tex="\(V\)">\(V\)</span> has <span class="math" data-tex="\(v=kn^2\)">\(v=kn^2\)</span> variables and <span class="math" data-tex="\(U\)">\(U\)</span> has <span class="math" data-tex="\(u=mn^2\)">\(u=mn^2\)</span>. We say <em><span class="math" data-tex="\(V\)">\(V\)</span> layer</em> and <em><span class="math" data-tex="\(U\)">\(U\)</span> layer</em>.</p>
+<p>Three properties are used: the layer <span class="math" data-tex="\(1\)">\(1\)</span> is a <span class="math" data-tex="\(V\)">\(V\)</span> layer and the layer <span class="math" data-tex="\(n\)">\(n\)</span> is a <span class="math" data-tex="\(U\)">\(U\)</span> layer; no two <span class="math" data-tex="\(V\)">\(V\)</span> layers are adjacent; and the <span class="math" data-tex="\(V\)">\(V\)</span> layers are spread evenly, which is made precise and used in the last lesson.</p>
+<p>Put <span class="math" data-tex="\(f=\operatorname{IMM}_{n,n}\)">\(f=\operatorname{IMM}_{n,n}\)</span>. Every monomial of <span class="math" data-tex="\(f\)">\(f\)</span> contains one variable of each layer, so <span class="math" data-tex="\(f\)">\(f\)</span> has the bidegree <span class="math" data-tex="\((k,m)\)">\((k,m)\)</span>, and <span class="math" data-tex="\(F_f\)">\(F_f\)</span> is the restriction of <span class="math" data-tex="\(T_f\)">\(T_f\)</span> to <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span>. By the definition of <span class="math" data-tex="\(T\)">\(T\)</span> and by the sum over the paths,
+<span class="math math-display" data-tex="\[
+T_f=\sum_P\prod_{t\in L_V}\partial_{E_t(P)}\prod_{t\in L_U}\mu_{E_t(P)},
+\]">\[
+T_f=\sum_P\prod_{t\in L_V}\partial_{E_t(P)}\prod_{t\in L_U}\mu_{E_t(P)},
+\]</span>
+where <span class="math" data-tex="\(L_V\)">\(L_V\)</span> is the set of the <span class="math" data-tex="\(V\)">\(V\)</span> layers and <span class="math" data-tex="\(L_U\)">\(L_U\)</span> the set of the <span class="math" data-tex="\(U\)">\(U\)</span> layers. We refer to this formula as (1.1).</p>
+<h2 id="2-two-traces-bound-the-rank">2. Two traces bound the rank</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> be finite-dimensional complex vector spaces with inner products, and <span class="math" data-tex="\(F:X\to Y\)">\(F:X\to Y\)</span> a linear map with the adjoint <span class="math" data-tex="\(F^*:Y\to X\)">\(F^*:Y\to X\)</span>. Put
+<span class="math math-display" data-tex="\[
+T=\operatorname{tr}(F^*F),\qquad T_2=\operatorname{tr}\bigl((F^*F)^2\bigr).
+\]">\[
+T=\operatorname{tr}(F^*F),\qquad T_2=\operatorname{tr}\bigl((F^*F)^2\bigr).
+\]</span>
+If <span class="math" data-tex="\((F_{yx})\)">\((F_{yx})\)</span> is the matrix of <span class="math" data-tex="\(F\)">\(F\)</span> in orthonormal bases of <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>, then <span class="math" data-tex="\(F^*F\)">\(F^*F\)</span> has the entries <span class="math" data-tex="\(\sum_y\overline{F_{yx}}F_{yx&#x27;}\)">\(\sum_y\overline{F_{yx}}F_{yx&#x27;}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T=\sum_{x,y}|F_{yx}|^2,\\
+T_2=\sum_{x,x&#x27;}\Bigl|\sum_y\overline{F_{yx}}F_{yx&#x27;}\Bigr|^2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+T=\sum_{x,y}|F_{yx}|^2,\\
+T_2=\sum_{x,x&#x27;}\Bigl|\sum_y\overline{F_{yx}}F_{yx&#x27;}\Bigr|^2 .
+\end{gathered}
+\]</span>
+We refer to these two formulas as (2.1). The second formula holds because <span class="math" data-tex="\(F^*F\)">\(F^*F\)</span> is self-adjoint: the trace of the square of a self-adjoint matrix is the sum of the squares of the absolute values of its entries.</p>
+<p><strong>Lemma 2.1.</strong> If <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>, then
+<span class="math math-display" data-tex="\[
+\operatorname{rank}F\ge\frac{T^2}{T_2}.
+\]">\[
+\operatorname{rank}F\ge\frac{T^2}{T_2}.
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(H=F^*F\)">\(H=F^*F\)</span>. Then <span class="math" data-tex="\(\langle Hx,x\rangle=\|Fx\|^2\)">\(\langle Hx,x\rangle=\|Fx\|^2\)</span>, so <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> have the same kernel and the same rank <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Let <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> be the orthogonal projection of <span class="math" data-tex="\(X\)">\(X\)</span> onto the image of <span class="math" data-tex="\(H\)">\(H\)</span>. Then <span class="math" data-tex="\(\Pi H=H\)">\(\Pi H=H\)</span>, <span class="math" data-tex="\(\Pi^*=\Pi=\Pi^2\)">\(\Pi^*=\Pi=\Pi^2\)</span> and <span class="math" data-tex="\(\operatorname{tr}\Pi=\rho\)">\(\operatorname{tr}\Pi=\rho\)</span>. On the linear maps from <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(\langle A,B\rangle=\operatorname{tr}(A^*B)\)">\(\langle A,B\rangle=\operatorname{tr}(A^*B)\)</span> is an inner product; in an orthonormal basis it is <span class="math" data-tex="\(\sum_{i,j}\overline{A_{ij}}B_{ij}\)">\(\sum_{i,j}\overline{A_{ij}}B_{ij}\)</span>. By the Cauchy–Schwarz inequality for it,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T&amp;=\operatorname{tr}(\Pi^*H)\\
+&amp;\le\sqrt{\operatorname{tr}(\Pi^*\Pi)}\,\sqrt{\operatorname{tr}(H^*H)}\\
+&amp;=\sqrt\rho\,\sqrt{T_2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+T&amp;=\operatorname{tr}(\Pi^*H)\\
+&amp;\le\sqrt{\operatorname{tr}(\Pi^*\Pi)}\,\sqrt{\operatorname{tr}(H^*H)}\\
+&amp;=\sqrt\rho\,\sqrt{T_2}.
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(T_2&gt;0\)">\(T_2&gt;0\)</span> because <span class="math" data-tex="\(H\ne0\)">\(H\ne0\)</span>. So <span class="math" data-tex="\(\rho\ge T^2/T_2\)">\(\rho\ge T^2/T_2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>If <span class="math" data-tex="\(H\)">\(H\)</span> has <span class="math" data-tex="\(\rho\)">\(\rho\)</span> eigenvalues that are all equal, and the others <span class="math" data-tex="\(0\)">\(0\)</span>, the lemma holds with equality. The lemma gives a good bound when the eigenvalues of <span class="math" data-tex="\(F^*F\)">\(F^*F\)</span> are of the same order.</p>
+<h2 id="3-the-matrix-of-f_f">3. The matrix of <span class="math" data-tex="\(F_f\)">\(F_f\)</span></h2>
+<p>An <em>index</em> is a function <span class="math" data-tex="\(M\)">\(M\)</span> that assigns to every variable <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(V\cup U\)">\(V\cup U\)</span> an integer <span class="math" data-tex="\(M_z\ge0\)">\(M_z\ge0\)</span>, with the sum <span class="math" data-tex="\(a\)">\(a\)</span> over the variables of <span class="math" data-tex="\(V\)">\(V\)</span> and the sum <span class="math" data-tex="\(b\)">\(b\)</span> over the variables of <span class="math" data-tex="\(U\)">\(U\)</span>. There are <span class="math" data-tex="\(D\)">\(D\)</span> indices. For an index put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+z^M=\prod_zz^{M_z},\qquad M!=\prod_zM_z!,\\
+b_M=\frac{z^M}{\sqrt{M!}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+z^M=\prod_zz^{M_z},\qquad M!=\prod_zM_z!,\\
+b_M=\frac{z^M}{\sqrt{M!}} .
+\end{gathered}
+\]</span>
+The <span class="math" data-tex="\(b_M\)">\(b_M\)</span> are a basis of <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span>. We give <span class="math" data-tex="\(\mathcal H(a,b)\)">\(\mathcal H(a,b)\)</span> the inner product for which they are orthonormal, and we do the same for <span class="math" data-tex="\(\mathcal H(a-k,b+m)\)">\(\mathcal H(a-k,b+m)\)</span>, whose indices have the sums <span class="math" data-tex="\(a-k\)">\(a-k\)</span> and <span class="math" data-tex="\(b+m\)">\(b+m\)</span>. For a variable <span class="math" data-tex="\(z\)">\(z\)</span> let <span class="math" data-tex="\(\mathbf e_z\)">\(\mathbf e_z\)</span> be the function that is <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\partial_z\,b_M=\sqrt{M_z}\ b_{M-\mathbf e_z},\\
+z\cdot b_M=\sqrt{M_z+1}\ b_{M+\mathbf e_z},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\partial_z\,b_M=\sqrt{M_z}\ b_{M-\mathbf e_z},\\
+z\cdot b_M=\sqrt{M_z+1}\ b_{M+\mathbf e_z},
+\end{gathered}
+\]</span>
+where the first expression means <span class="math" data-tex="\(0\)">\(0\)</span> if <span class="math" data-tex="\(M_z=0\)">\(M_z=0\)</span>. We refer to these two formulas as (3.1). Indeed <span class="math" data-tex="\(\partial_zz^M=M_zz^{M-\mathbf e_z}\)">\(\partial_zz^M=M_zz^{M-\mathbf e_z}\)</span> and <span class="math" data-tex="\(M!=M_z\cdot(M-\mathbf e_z)!\)">\(M!=M_z\cdot(M-\mathbf e_z)!\)</span>; and <span class="math" data-tex="\((M+\mathbf e_z)!=(M_z+1)\,M!\)">\((M+\mathbf e_z)!=(M_z+1)\,M!\)</span>.</p>
+<p>For a path <span class="math" data-tex="\(P\)">\(P\)</span> put
+<span class="math math-display" data-tex="\[
+\epsilon_P=-\sum_{t\in L_V}\mathbf e_{E_t(P)}+\sum_{t\in L_U}\mathbf e_{E_t(P)},
+\]">\[
+\epsilon_P=-\sum_{t\in L_V}\mathbf e_{E_t(P)}+\sum_{t\in L_U}\mathbf e_{E_t(P)},
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\phi_P(M)={}&amp;\prod_{t\in L_V}M_{E_t(P)}\\
+&amp;\cdot\prod_{t\in L_U}\bigl(M_{E_t(P)}+1\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\phi_P(M)={}&amp;\prod_{t\in L_V}M_{E_t(P)}\\
+&amp;\cdot\prod_{t\in L_U}\bigl(M_{E_t(P)}+1\bigr),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(c_P(M)=\phi_P(M)^{1/2}\)">\(c_P(M)=\phi_P(M)^{1/2}\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> (1) For every index <span class="math" data-tex="\(M\)">\(M\)</span>,
+<span class="math math-display" data-tex="\[
+F_f\,b_M=\sum_Pc_P(M)\,b_{M+\epsilon_P},
+\]">\[
+F_f\,b_M=\sum_Pc_P(M)\,b_{M+\epsilon_P},
+\]</span>
+where a term with <span class="math" data-tex="\(c_P(M)=0\)">\(c_P(M)=0\)</span> is left out.</p>
+<p>(2) Different paths have different <span class="math" data-tex="\(\epsilon_P\)">\(\epsilon_P\)</span>. So the entry of the matrix of <span class="math" data-tex="\(F_f\)">\(F_f\)</span> at <span class="math" data-tex="\((M&#x27;,M)\)">\((M&#x27;,M)\)</span> is <span class="math" data-tex="\(c_P(M)\)">\(c_P(M)\)</span> if <span class="math" data-tex="\(M&#x27;=M+\epsilon_P\)">\(M&#x27;=M+\epsilon_P\)</span> for a path <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> if there is no such path.</p>
+<p>(3) Let <span class="math" data-tex="\(\mathbb E\)">\(\mathbb E\)</span> be the mean over the <span class="math" data-tex="\(D\)">\(D\)</span> indices <span class="math" data-tex="\(M\)">\(M\)</span>. Then
+<span class="math math-display" data-tex="\[
+T=D\sum_P\mathbb E\,\phi_P(M).
+\]">\[
+T=D\sum_P\mathbb E\,\phi_P(M).
+\]</span></p>
+<p><strong>Proof.</strong> (1) The coordinates <span class="math" data-tex="\(E_t(P)\)">\(E_t(P)\)</span> of a path in different layers are different variables. So by (3.1) the term of <span class="math" data-tex="\(P\)">\(P\)</span> in (1.1) maps <span class="math" data-tex="\(b_M\)">\(b_M\)</span> to <span class="math" data-tex="\(c_P(M)\,b_{M+\epsilon_P}\)">\(c_P(M)\,b_{M+\epsilon_P}\)</span>; if <span class="math" data-tex="\(M_{E_t(P)}=0\)">\(M_{E_t(P)}=0\)</span> for a <span class="math" data-tex="\(V\)">\(V\)</span> layer <span class="math" data-tex="\(t\)">\(t\)</span>, both sides are <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p>(2) <span class="math" data-tex="\(\epsilon_P\)">\(\epsilon_P\)</span> determines the coordinate <span class="math" data-tex="\(E_t(P)\)">\(E_t(P)\)</span> of the path in every layer, and the coordinates determine the path.</p>
+<p>(3) By (2.1) and (2), <span class="math" data-tex="\(T=\sum_M\sum_Pc_P(M)^2\)">\(T=\sum_M\sum_Pc_P(M)^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Under the uniform distribution on the indices, the restriction of <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\(V\)">\(V\)</span> is uniformly distributed among the functions on <span class="math" data-tex="\(V\)">\(V\)</span> with the sum <span class="math" data-tex="\(a\)">\(a\)</span>, the restriction to <span class="math" data-tex="\(U\)">\(U\)</span> among those on <span class="math" data-tex="\(U\)">\(U\)</span> with the sum <span class="math" data-tex="\(b\)">\(b\)</span>, and the two restrictions are independent.</p>
+<h2 id="4-moments-of-compositions">4. Moments of compositions</h2>
+<p>A <em>composition</em> of an integer <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> into <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> parts is a sequence <span class="math" data-tex="\((M_1,\dots,M_r)\)">\((M_1,\dots,M_r)\)</span> of integers <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span> with the sum <span class="math" data-tex="\(t\)">\(t\)</span>. There are <span class="math" data-tex="\(\binom{t+r-1}t\)">\(\binom{t+r-1}t\)</span> of them. For integers <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span> write
+<span class="math math-display" data-tex="\[
+(z)_d=z(z-1)\cdots(z-d+1),
+\]">\[
+(z)_d=z(z-1)\cdots(z-d+1),
+\]</span>
+the <em>falling factorial</em>, with <span class="math" data-tex="\((z)_0=1\)">\((z)_0=1\)</span>. For integers <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> and <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> write
+<span class="math math-display" data-tex="\[
+r^{\overline h}=r(r+1)\cdots(r+h-1),
+\]">\[
+r^{\overline h}=r(r+1)\cdots(r+h-1),
+\]</span>
+with <span class="math" data-tex="\(r^{\overline 0}=1\)">\(r^{\overline 0}=1\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be uniformly distributed among the compositions of <span class="math" data-tex="\(t\)">\(t\)</span> into <span class="math" data-tex="\(r\)">\(r\)</span> parts. For integers <span class="math" data-tex="\(d_1,\dots,d_r\ge0\)">\(d_1,\dots,d_r\ge0\)</span> with the sum <span class="math" data-tex="\(h\)">\(h\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E\prod_{i=1}^r(M_i)_{d_i}=\frac{(t)_h}{r^{\overline h}}\prod_{i=1}^rd_i! .
+\]">\[
+\mathbb E\prod_{i=1}^r(M_i)_{d_i}=\frac{(t)_h}{r^{\overline h}}\prod_{i=1}^rd_i! .
+\]</span></p>
+<p><strong>Proof.</strong> In formal power series in <span class="math" data-tex="\(y\)">\(y\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{j\ge0}(j)_d\,y^j=\frac{d!\,y^d}{(1-y)^{d+1}} ,
+\]">\[
+\sum_{j\ge0}(j)_d\,y^j=\frac{d!\,y^d}{(1-y)^{d+1}} ,
+\]</span>
+because <span class="math" data-tex="\((j)_d=d!\binom jd\)">\((j)_d=d!\binom jd\)</span> and <span class="math" data-tex="\(\sum_{j\ge d}\binom jdy^j=y^d(1-y)^{-(d+1)}\)">\(\sum_{j\ge d}\binom jdy^j=y^d(1-y)^{-(d+1)}\)</span>.
+Multiply these series for <span class="math" data-tex="\(d=d_1,\dots,d_r\)">\(d=d_1,\dots,d_r\)</span>. The coefficient of <span class="math" data-tex="\(y^t\)">\(y^t\)</span> in the product is the sum of <span class="math" data-tex="\(\prod_i(M_i)_{d_i}\)">\(\prod_i(M_i)_{d_i}\)</span> over all compositions of <span class="math" data-tex="\(t\)">\(t\)</span>; on the other side it is the coefficient of <span class="math" data-tex="\(y^{t-h}\)">\(y^{t-h}\)</span> in <span class="math" data-tex="\(\prod_id_i!\cdot(1-y)^{-(h+r)}\)">\(\prod_id_i!\cdot(1-y)^{-(h+r)}\)</span>, which is <span class="math" data-tex="\(\prod_id_i!\cdot\binom{t+r-1}{t-h}\)">\(\prod_id_i!\cdot\binom{t+r-1}{t-h}\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> if <span class="math" data-tex="\(h&gt;t\)">\(h&gt;t\)</span>. Dividing by <span class="math" data-tex="\(\binom{t+r-1}t\)">\(\binom{t+r-1}t\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\binom{t+r-1}{t-h}}{\binom{t+r-1}t}&amp;=\frac{t!\,(r-1)!}{(t-h)!\,(r+h-1)!}\\
+&amp;=\frac{(t)_h}{r^{\overline h}}
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\binom{t+r-1}{t-h}}{\binom{t+r-1}t}&amp;=\frac{t!\,(r-1)!}{(t-h)!\,(r+h-1)!}\\
+&amp;=\frac{(t)_h}{r^{\overline h}}
+\end{aligned}
+\]</span>
+for <span class="math" data-tex="\(h\le t\)">\(h\le t\)</span>; for <span class="math" data-tex="\(h&gt;t\)">\(h&gt;t\)</span> both sides of the lemma are <span class="math" data-tex="\(0\)">\(0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>A random variable <span class="math" data-tex="\(Z\)">\(Z\)</span> with values in the integers <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span> is <em>geometric with the mean <span class="math" data-tex="\(G&gt;0\)">\(G&gt;0\)</span></em> if
+<span class="math math-display" data-tex="\[
+\Pr(Z=j)=\frac1{1+G}\Bigl(\frac G{1+G}\Bigr)^j
+\]">\[
+\Pr(Z=j)=\frac1{1+G}\Bigl(\frac G{1+G}\Bigr)^j
+\]</span>
+for all integers <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>.
+With <span class="math" data-tex="\(y=\tfrac G{1+G}\)">\(y=\tfrac G{1+G}\)</span>, so that <span class="math" data-tex="\(\tfrac y{1-y}=G\)">\(\tfrac y{1-y}=G\)</span>, the series above gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E(Z)_d&amp;=(1-y)\frac{d!\,y^d}{(1-y)^{d+1}}\\
+&amp;=d!\,G^d .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E(Z)_d&amp;=(1-y)\frac{d!\,y^d}{(1-y)^{d+1}}\\
+&amp;=d!\,G^d .
+\end{aligned}
+\]</span>
+We refer to this formula as (4.1). In particular <span class="math" data-tex="\(\mathbb EZ=G\)">\(\mathbb EZ=G\)</span> and <span class="math" data-tex="\(\mathbb EZ^2=\mathbb E(Z)_2+\mathbb EZ=2G^2+G\)">\(\mathbb EZ^2=\mathbb E(Z)_2+\mathbb EZ=2G^2+G\)</span>.</p>
+<p>A polynomial <span class="math" data-tex="\(p(z_1,\dots,z_r)\)">\(p(z_1,\dots,z_r)\)</span> is <em>factorially positive</em> if it is a sum of products <span class="math" data-tex="\(\prod_i(z_i)_{d_i}\)">\(\prod_i(z_i)_{d_i}\)</span> with coefficients <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>. The largest number <span class="math" data-tex="\(d_1+\dots+d_r\)">\(d_1+\dots+d_r\)</span> that occurs is its <em>order</em>. Sums and products of factorially positive polynomials in disjoint sets of variables are factorially positive. Examples in one variable:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+z=(z)_1,\qquad z+1=(z)_1+1,\\
+z^2=(z)_2+(z)_1,\\
+(z+1)^2=(z)_2+3(z)_1+1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+z=(z)_1,\qquad z+1=(z)_1+1,\\
+z^2=(z)_2+(z)_1,\\
+(z+1)^2=(z)_2+3(z)_1+1 .
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 4.2.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be as in Lemma 4.1 with <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, and let <span class="math" data-tex="\(Z_1,\dots,Z_r\)">\(Z_1,\dots,Z_r\)</span> be independent geometric variables with the mean <span class="math" data-tex="\(G=t/r\)">\(G=t/r\)</span>. Let <span class="math" data-tex="\(p\)">\(p\)</span> be factorially positive. Then
+<span class="math math-display" data-tex="\[
+\mathbb E\,p(M)\le\mathbb E\,p(Z).
+\]">\[
+\mathbb E\,p(M)\le\mathbb E\,p(Z).
+\]</span>
+If the order of <span class="math" data-tex="\(p\)">\(p\)</span> is at most <span class="math" data-tex="\(h_0\)">\(h_0\)</span> and <span class="math" data-tex="\(h_0\le t/2\)">\(h_0\le t/2\)</span>, then also
+<span class="math math-display" data-tex="\[
+\mathbb E\,p(M)\ge\exp\Bigl(-\frac{h_0^2}t-\frac{h_0^2}{2r}\Bigr)\,\mathbb E\,p(Z).
+\]">\[
+\mathbb E\,p(M)\ge\exp\Bigl(-\frac{h_0^2}t-\frac{h_0^2}{2r}\Bigr)\,\mathbb E\,p(Z).
+\]</span></p>
+<p><strong>Proof.</strong> It is enough to treat <span class="math" data-tex="\(p=\prod_i(z_i)_{d_i}\)">\(p=\prod_i(z_i)_{d_i}\)</span> with <span class="math" data-tex="\(h=\sum_id_i\)">\(h=\sum_id_i\)</span>. By (4.1) and the independence, <span class="math" data-tex="\(\mathbb Ep(Z)=\prod_id_i!\cdot(t/r)^h\)">\(\mathbb Ep(Z)=\prod_id_i!\cdot(t/r)^h\)</span>. By Lemma 4.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\mathbb E\,p(M)}{\mathbb E\,p(Z)}&amp;=\frac{(t)_h\,r^h}{t^h\,r^{\overline h}}\\
+&amp;=\prod_{j=0}^{h-1}\frac{1-j/t}{1+j/r} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\mathbb E\,p(M)}{\mathbb E\,p(Z)}&amp;=\frac{(t)_h\,r^h}{t^h\,r^{\overline h}}\\
+&amp;=\prod_{j=0}^{h-1}\frac{1-j/t}{1+j/r} .
+\end{aligned}
+\]</span>
+Every factor lies between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> (for <span class="math" data-tex="\(h&gt;t\)">\(h&gt;t\)</span> one factor is <span class="math" data-tex="\(0\)">\(0\)</span>). This is the first statement. For <span class="math" data-tex="\(h\le h_0\le t/2\)">\(h\le h_0\le t/2\)</span> use <span class="math" data-tex="\(\log(1-x)\ge-2x\)">\(\log(1-x)\ge-2x\)</span> for <span class="math" data-tex="\(0\le x\le\tfrac12\)">\(0\le x\le\tfrac12\)</span> and <span class="math" data-tex="\(\log(1+x)\le x\)">\(\log(1+x)\le x\)</span>: the logarithm of the product is at least
+<span class="math math-display" data-tex="\[
+-\sum_{j=0}^{h-1}\Bigl(\frac{2j}t+\frac jr\Bigr)\ge-\frac{h^2}t-\frac{h^2}{2r}. \qquad\blacksquare
+\]">\[
+-\sum_{j=0}^{h-1}\Bigl(\frac{2j}t+\frac jr\Bigr)\ge-\frac{h^2}t-\frac{h^2}{2r}. \qquad\blacksquare
+\]</span></p>
+<p>The parts of a random composition are not independent. The lemma compares them with independent variables only for the means of factorially positive polynomials.</p>
+<h2 id="5-the-first-trace">5. The first trace</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=\frac av,\qquad B=\frac bu,\\
+\mu=A^k(1+B)^m .
+\end{gathered}
+\]">\[
+\begin{gathered}
+A=\frac av,\qquad B=\frac bu,\\
+\mu=A^k(1+B)^m .
+\end{gathered}
+\]</span>
+From <span class="math" data-tex="\(\alpha=\tfrac a{a+v}\)">\(\alpha=\tfrac a{a+v}\)</span> and <span class="math" data-tex="\(\beta=\tfrac b{b+u}\)">\(\beta=\tfrac b{b+u}\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{A+1}A=\alpha^{-1},\qquad\frac B{B+1}=\beta .
+\]">\[
+\frac{A+1}A=\alpha^{-1},\qquad\frac B{B+1}=\beta .
+\]</span>
+We refer to these two equations as (5.1).</p>
+<p><strong>Proposition 5.1.</strong> For large <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+T\ge D\,n^{n-1}\,\mu\,e^{-6/\sqrt n}&gt;0 .
+\]">\[
+T\ge D\,n^{n-1}\,\mu\,e^{-6/\sqrt n}&gt;0 .
+\]</span></p>
+<p><strong>Proof.</strong> Fix a path <span class="math" data-tex="\(P\)">\(P\)</span>. The polynomial <span class="math" data-tex="\(\phi_P\)">\(\phi_P\)</span> of Lemma 3.1 is a product <span class="math" data-tex="\(p_V\cdot p_U\)">\(p_V\cdot p_U\)</span>. The factor <span class="math" data-tex="\(p_V\)">\(p_V\)</span> is the product of <span class="math" data-tex="\(k\)">\(k\)</span> different variables of <span class="math" data-tex="\(V\)">\(V\)</span>; it is factorially positive of the order <span class="math" data-tex="\(k\)">\(k\)</span>. The factor <span class="math" data-tex="\(p_U\)">\(p_U\)</span> is the product of <span class="math" data-tex="\(z+1\)">\(z+1\)</span> over <span class="math" data-tex="\(m\)">\(m\)</span> different variables of <span class="math" data-tex="\(U\)">\(U\)</span>; it is factorially positive of the order <span class="math" data-tex="\(m\)">\(m\)</span>. By the independence of the two restrictions of <span class="math" data-tex="\(M\)">\(M\)</span>, the mean of the product is the product of the means. For independent geometric variables with the means <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, the means are <span class="math" data-tex="\(A^k\)">\(A^k\)</span> and <span class="math" data-tex="\((1+B)^m\)">\((1+B)^m\)</span>. By Lemma 4.2, applied to the compositions of <span class="math" data-tex="\(a\)">\(a\)</span> into <span class="math" data-tex="\(v\)">\(v\)</span> parts and of <span class="math" data-tex="\(b\)">\(b\)</span> into <span class="math" data-tex="\(u\)">\(u\)</span> parts, <span class="math" data-tex="\(\mathbb E[p_Vp_U]\ge\mu\,e^{-\theta}\)">\(\mathbb E[p_Vp_U]\ge\mu\,e^{-\theta}\)</span> with
+<span class="math math-display" data-tex="\[
+\theta=\frac{k^2}a+\frac{k^2}{2v}+\frac{m^2}b+\frac{m^2}{2u}.
+\]">\[
+\theta=\frac{k^2}a+\frac{k^2}{2v}+\frac{m^2}b+\frac{m^2}{2u}.
+\]</span>
+The conditions <span class="math" data-tex="\(k\le\tfrac a2\)">\(k\le\tfrac a2\)</span> and <span class="math" data-tex="\(m\le\tfrac b2\)">\(m\le\tfrac b2\)</span> hold because <span class="math" data-tex="\(4n\le\min\{a,b\}\)">\(4n\le\min\{a,b\}\)</span> (Lemma 4.1 of the lesson on the rank measure, also for the next estimates). With <span class="math" data-tex="\(k\le\tfrac n2\)">\(k\le\tfrac n2\)</span>, <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span>, <span class="math" data-tex="\(a,b\ge\tfrac14n^{5/2}\)">\(a,b\ge\tfrac14n^{5/2}\)</span> and <span class="math" data-tex="\(v,u\ge\tfrac14n^3\)">\(v,u\ge\tfrac14n^3\)</span>, the four terms of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> are at most <span class="math" data-tex="\(n^{-1/2}\)">\(n^{-1/2}\)</span>, <span class="math" data-tex="\(\tfrac1{2n}\)">\(\tfrac1{2n}\)</span>, <span class="math" data-tex="\(4n^{-1/2}\)">\(4n^{-1/2}\)</span> and <span class="math" data-tex="\(\tfrac2n\)">\(\tfrac2n\)</span>; so <span class="math" data-tex="\(\theta\le6n^{-1/2}\)">\(\theta\le6n^{-1/2}\)</span>. There are <span class="math" data-tex="\(n^{n-1}\)">\(n^{n-1}\)</span> paths. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="6-four-paths">6. Four paths</h2>
+<p>By (2.1) and Lemma 3.1(2), the entry of <span class="math" data-tex="\(F_f^*F_f\)">\(F_f^*F_f\)</span> at <span class="math" data-tex="\((M,M&#x27;)\)">\((M,M&#x27;)\)</span> is the sum of <span class="math" data-tex="\(c_P(M)\,c_Q(M&#x27;)\)">\(c_P(M)\,c_Q(M&#x27;)\)</span> over the pairs of paths <span class="math" data-tex="\((P,Q)\)">\((P,Q)\)</span> with <span class="math" data-tex="\(M+\epsilon_P=M&#x27;+\epsilon_Q\)">\(M+\epsilon_P=M&#x27;+\epsilon_Q\)</span>. Squaring and adding,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_2=\sum_M\ \sum_{(P,Q,R,S)}&amp;c_P(M)\,c_Q(M&#x27;)\\
+&amp;\cdot c_R(M)\,c_S(M&#x27;),
+\end{aligned}
+\]">\[
+\begin{aligned}
+T_2=\sum_M\ \sum_{(P,Q,R,S)}&amp;c_P(M)\,c_Q(M&#x27;)\\
+&amp;\cdot c_R(M)\,c_S(M&#x27;),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(M&#x27;=M+\epsilon_P-\epsilon_Q\)">\(M&#x27;=M+\epsilon_P-\epsilon_Q\)</span>, and the inner sum runs over the quadruples of paths with
+<span class="math math-display" data-tex="\[
+\epsilon_P-\epsilon_Q=\epsilon_R-\epsilon_S
+\]">\[
+\epsilon_P-\epsilon_Q=\epsilon_R-\epsilon_S
+\]</span>
+for which <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> is an index, that is, has no negative value. We refer to the formula for <span class="math" data-tex="\(T_2\)">\(T_2\)</span> as (6.1) and to the condition on the four paths as (6.2). The quadruples with (6.2) are called <em>compatible</em>.</p>
+<p><strong>Lemma 6.1.</strong> A quadruple is compatible if and only if every layer <span class="math" data-tex="\(t\)">\(t\)</span> has one of the following two types:</p>
+<ul>
+<li>type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>: <span class="math" data-tex="\(E_t(P)=E_t(Q)\)">\(E_t(P)=E_t(Q)\)</span> and <span class="math" data-tex="\(E_t(R)=E_t(S)\)">\(E_t(R)=E_t(S)\)</span>;</li>
+<li>type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>: <span class="math" data-tex="\(E_t(P)=E_t(R)\)">\(E_t(P)=E_t(R)\)</span> and <span class="math" data-tex="\(E_t(Q)=E_t(S)\)">\(E_t(Q)=E_t(S)\)</span>, and <span class="math" data-tex="\(E_t(P)\ne E_t(Q)\)">\(E_t(P)\ne E_t(Q)\)</span>.</li>
+</ul>
+<p>The two types exclude each other.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(c_1,c_2,c_3,c_4\)">\(c_1,c_2,c_3,c_4\)</span> be the coordinates of <span class="math" data-tex="\(P,Q,R,S\)">\(P,Q,R,S\)</span> in the layer <span class="math" data-tex="\(t\)">\(t\)</span>. The variables of different layers are different, so (6.2) holds if and only if <span class="math" data-tex="\(\mathbf e_{c_1}-\mathbf e_{c_2}=\mathbf e_{c_3}-\mathbf e_{c_4}\)">\(\mathbf e_{c_1}-\mathbf e_{c_2}=\mathbf e_{c_3}-\mathbf e_{c_4}\)</span> in every layer. If this function is <span class="math" data-tex="\(0\)">\(0\)</span>, then <span class="math" data-tex="\(c_1=c_2\)">\(c_1=c_2\)</span> and <span class="math" data-tex="\(c_3=c_4\)">\(c_3=c_4\)</span>. Otherwise <span class="math" data-tex="\(c_1\ne c_2\)">\(c_1\ne c_2\)</span>, the function is <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(c_1\)">\(c_1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> at <span class="math" data-tex="\(c_2\)">\(c_2\)</span>, and so <span class="math" data-tex="\(c_3=c_1\)">\(c_3=c_1\)</span> and <span class="math" data-tex="\(c_4=c_2\)">\(c_4=c_2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So a compatible quadruple has a <em>type word</em> <span class="math" data-tex="\(\tau\in\{\mathcal N,\mathcal D\}^n\)">\(\tau\in\{\mathcal N,\mathcal D\}^n\)</span>. In a layer of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> let <span class="math" data-tex="\(i\)">\(i\)</span> be the common coordinate of <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> the common coordinate of <span class="math" data-tex="\(R,S\)">\(R,S\)</span>. In a layer of the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> let <span class="math" data-tex="\(i\)">\(i\)</span> be the common coordinate of <span class="math" data-tex="\(P,R\)">\(P,R\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> the common coordinate of <span class="math" data-tex="\(Q,S\)">\(Q,S\)</span>.</p>
+<p><strong>Lemma 6.2.</strong> Let <span class="math" data-tex="\((P,Q,R,S)\)">\((P,Q,R,S)\)</span> be a compatible quadruple and <span class="math" data-tex="\(M\)">\(M\)</span> an index. If <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> is an index, the product of the four numbers in (6.1) is the product over the layers of the following polynomials in <span class="math" data-tex="\(M_i\)">\(M_i\)</span> and <span class="math" data-tex="\(M_j\)">\(M_j\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span></th>
+<th>type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(V\)">\(V\)</span> layer</td>
+<td><span class="math" data-tex="\(M_iM_j\)">\(M_iM_j\)</span></td>
+<td><span class="math" data-tex="\(M_i(M_j+1)\)">\(M_i(M_j+1)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(U\)">\(U\)</span> layer</td>
+<td><span class="math" data-tex="\((M_i+1)(M_j+1)\)">\((M_i+1)(M_j+1)\)</span></td>
+<td><span class="math" data-tex="\((M_i+1)M_j\)">\((M_i+1)M_j\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>If <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> has a negative value, the product of these polynomials is <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><strong>Proof.</strong> Each of the four numbers is the square root of a product over the layers, and the factor of a layer depends only on the value of <span class="math" data-tex="\(M\)">\(M\)</span> or <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> at the coordinate of the path in this layer. In a layer of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> agree on the variables of the layer. So <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> both give <span class="math" data-tex="\(\sqrt{M_i}\)">\(\sqrt{M_i}\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> both give <span class="math" data-tex="\(\sqrt{M_j}\)">\(\sqrt{M_j}\)</span>, in a <span class="math" data-tex="\(V\)">\(V\)</span> layer; in a <span class="math" data-tex="\(U\)">\(U\)</span> layer they give <span class="math" data-tex="\(\sqrt{M_i+1}\)">\(\sqrt{M_i+1}\)</span> and <span class="math" data-tex="\(\sqrt{M_j+1}\)">\(\sqrt{M_j+1}\)</span>. In a <span class="math" data-tex="\(V\)">\(V\)</span> layer of the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, <span class="math" data-tex="\(M&#x27;=M-\mathbf e_i+\mathbf e_j\)">\(M&#x27;=M-\mathbf e_i+\mathbf e_j\)</span> on the variables of the layer; <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> give <span class="math" data-tex="\(\sqrt{M_i}\)">\(\sqrt{M_i}\)</span> each, and <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> give <span class="math" data-tex="\(\sqrt{M&#x27;_j}=\sqrt{M_j+1}\)">\(\sqrt{M&#x27;_j}=\sqrt{M_j+1}\)</span> each. In a <span class="math" data-tex="\(U\)">\(U\)</span> layer of the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, <span class="math" data-tex="\(M&#x27;=M+\mathbf e_i-\mathbf e_j\)">\(M&#x27;=M+\mathbf e_i-\mathbf e_j\)</span>; <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> give <span class="math" data-tex="\(\sqrt{M_i+1}\)">\(\sqrt{M_i+1}\)</span>, and <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> give <span class="math" data-tex="\(\sqrt{M&#x27;_j+1}=\sqrt{M_j}\)">\(\sqrt{M&#x27;_j+1}=\sqrt{M_j}\)</span>.</p>
+<p><span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> can have a negative value only in a layer of the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>: the value <span class="math" data-tex="\(M_i-1\)">\(M_i-1\)</span> in a <span class="math" data-tex="\(V\)">\(V\)</span> layer with <span class="math" data-tex="\(M_i=0\)">\(M_i=0\)</span>, or the value <span class="math" data-tex="\(M_j-1\)">\(M_j-1\)</span> in a <span class="math" data-tex="\(U\)">\(U\)</span> layer with <span class="math" data-tex="\(M_j=0\)">\(M_j=0\)</span>. In both cases the polynomial of the table is <span class="math" data-tex="\(0\)">\(0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So (6.1) becomes
+<span class="math math-display" data-tex="\[
+T_2=D\ \mathbb E\sum_{\mathrm{compatible}}\ \prod_{t=1}^n\pi_t(M),
+\]">\[
+T_2=D\ \mathbb E\sum_{\mathrm{compatible}}\ \prod_{t=1}^n\pi_t(M),
+\]</span>
+where the sum runs over the compatible quadruples and <span class="math" data-tex="\(\pi_t\)">\(\pi_t\)</span> is the polynomial of the table for the layer <span class="math" data-tex="\(t\)">\(t\)</span>. We refer to this formula as (6.3).</p>
+<p><strong>Lemma 6.3.</strong> For a compatible quadruple,
+<span class="math math-display" data-tex="\[
+\mathbb E\prod_t\pi_t(M)\le\mu^2\prod_t\omega_t,
+\]">\[
+\mathbb E\prod_t\pi_t(M)\le\mu^2\prod_t\omega_t,
+\]</span>
+with the following numbers <span class="math" data-tex="\(\omega_t\)">\(\omega_t\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span></th>
+<th>type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, <span class="math" data-tex="\(i=j\)">\(i=j\)</span></th>
+<th>type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(V\)">\(V\)</span> layer</td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(1+\alpha^{-1}\)">\(1+\alpha^{-1}\)</span></td>
+<td><span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(U\)">\(U\)</span> layer</td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(1+\beta\)">\(1+\beta\)</span></td>
+<td><span class="math" data-tex="\(\beta\)">\(\beta\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Proof.</strong> The polynomials of different layers contain different variables. Each <span class="math" data-tex="\(\pi_t\)">\(\pi_t\)</span> is factorially positive: for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span> it is a product of <span class="math" data-tex="\(z\)">\(z\)</span> or <span class="math" data-tex="\(z+1\)">\(z+1\)</span> in two different variables, and for <span class="math" data-tex="\(i=j\)">\(i=j\)</span>, which occurs only in the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, it is <span class="math" data-tex="\(z^2\)">\(z^2\)</span> or <span class="math" data-tex="\((z+1)^2\)">\((z+1)^2\)</span>. So the product over the <span class="math" data-tex="\(V\)">\(V\)</span> layers and the product over the <span class="math" data-tex="\(U\)">\(U\)</span> layers are factorially positive, and by Lemma 4.2, used for <span class="math" data-tex="\(V\)">\(V\)</span> and for <span class="math" data-tex="\(U\)">\(U\)</span>, the mean is at most the mean for independent geometric variables with the means <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>. That mean is the product over the layers of</p>
+<ul>
+<li><span class="math" data-tex="\(A^2\)">\(A^2\)</span>, <span class="math" data-tex="\(2A^2+A\)">\(2A^2+A\)</span>, <span class="math" data-tex="\(A(A+1)\)">\(A(A+1)\)</span> in a <span class="math" data-tex="\(V\)">\(V\)</span> layer, for the three columns of the table;</li>
+<li><span class="math" data-tex="\((1+B)^2\)">\((1+B)^2\)</span>, <span class="math" data-tex="\(2B^2+3B+1\)">\(2B^2+3B+1\)</span>, <span class="math" data-tex="\((B+1)B\)">\((B+1)B\)</span> in a <span class="math" data-tex="\(U\)">\(U\)</span> layer.</li>
+</ul>
+<p>Here <span class="math" data-tex="\(\mathbb E(Z+1)^2=2B^2+B+2B+1\)">\(\mathbb E(Z+1)^2=2B^2+B+2B+1\)</span>. Divide by <span class="math" data-tex="\(A^2\)">\(A^2\)</span> in the <span class="math" data-tex="\(V\)">\(V\)</span> layers and by <span class="math" data-tex="\((1+B)^2\)">\((1+B)^2\)</span> in the <span class="math" data-tex="\(U\)">\(U\)</span> layers, and use (5.1): <span class="math" data-tex="\(\tfrac{2A^2+A}{A^2}=1+\tfrac{A+1}A\)">\(\tfrac{2A^2+A}{A^2}=1+\tfrac{A+1}A\)</span>, and <span class="math" data-tex="\(\tfrac{2B^2+3B+1}{(1+B)^2}=\tfrac{2B+1}{B+1}=1+\tfrac B{B+1}\)">\(\tfrac{2B^2+3B+1}{(1+B)^2}=\tfrac{2B+1}{B+1}=1+\tfrac B{B+1}\)</span>. The divisors multiply to <span class="math" data-tex="\(A^{2k}(1+B)^{2m}=\mu^2\)">\(A^{2k}(1+B)^{2m}=\mu^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>A layer of the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span> costs the factor <span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span>, about <span class="math" data-tex="\(\sqrt n\)">\(\sqrt n\)</span>; in <span class="math" data-tex="\(U\)">\(U\)</span> it gains the factor <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, about <span class="math" data-tex="\(n^{-1/2}\)">\(n^{-1/2}\)</span> to the power <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. A layer of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> is neutral, except when the two coordinates agree.</p>
+<h2 id="7-type-words">7. Type words</h2>
+<p>We count the compatible quadruples of a given type word, together with their numbers <span class="math" data-tex="\(\omega_t\)">\(\omega_t\)</span>.</p>
+<p>For a path <span class="math" data-tex="\(P\)">\(P\)</span> write <span class="math" data-tex="\(P(t)\)">\(P(t)\)</span> for its value at the position <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(0\le t\le n\)">\(0\le t\le n\)</span>, so that <span class="math" data-tex="\(E_t(P)=x^{(t)}_{P(t-1),P(t)}\)">\(E_t(P)=x^{(t)}_{P(t-1),P(t)}\)</span>. Two paths have the same coordinate in the layer <span class="math" data-tex="\(t\)">\(t\)</span> if and only if they agree at the positions <span class="math" data-tex="\(t-1\)">\(t-1\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>. The positions <span class="math" data-tex="\(1,\dots,n-1\)">\(1,\dots,n-1\)</span> are the <em>inner</em> positions; at the positions <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> all paths have the value <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>For a word <span class="math" data-tex="\(\tau\in\{\mathcal N,\mathcal D\}^n\)">\(\tau\in\{\mathcal N,\mathcal D\}^n\)</span>, a quadruple is <em><span class="math" data-tex="\(\tau\)">\(\tau\)</span>-admissible</em> if in every layer of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> in <span class="math" data-tex="\(\tau\)">\(\tau\)</span> the paths <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> have the same coordinate and <span class="math" data-tex="\(R,S\)">\(R,S\)</span> have the same coordinate, and in every layer of the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> the paths <span class="math" data-tex="\(P,R\)">\(P,R\)</span> have the same coordinate and <span class="math" data-tex="\(Q,S\)">\(Q,S\)</span> have the same coordinate. A compatible quadruple is admissible for its type word. The condition <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span> of the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is dropped, so a <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-admissible quadruple need not have the type word <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. To a <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-admissible quadruple and a layer <span class="math" data-tex="\(t\)">\(t\)</span> we assign the number <span class="math" data-tex="\(\omega_t^\tau\)">\(\omega_t^\tau\)</span> of the table of Lemma 6.3 for the type <span class="math" data-tex="\(\tau_t\)">\(\tau_t\)</span>, with <span class="math" data-tex="\(i=E_t(P)\)">\(i=E_t(P)\)</span> and <span class="math" data-tex="\(j=E_t(R)\)">\(j=E_t(R)\)</span> in the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. For a compatible quadruple with the type word <span class="math" data-tex="\(\tau\)">\(\tau\)</span> these are the numbers <span class="math" data-tex="\(\omega_t\)">\(\omega_t\)</span>.</p>
+<p>Let <span class="math" data-tex="\(w(\tau)\)">\(w(\tau)\)</span> be the number of the <em>switches</em> of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>: the positions <span class="math" data-tex="\(t\in\{1,\dots,n-1\}\)">\(t\in\{1,\dots,n-1\}\)</span> with <span class="math" data-tex="\(\tau_t\ne\tau_{t+1}\)">\(\tau_t\ne\tau_{t+1}\)</span>.</p>
+<p><strong>Lemma 7.1.</strong> The <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-admissible quadruples are obtained by choosing independently at every inner position <span class="math" data-tex="\(t\)">\(t\)</span>:</p>
+<ul>
+<li>if <span class="math" data-tex="\(\tau_t=\tau_{t+1}=\mathcal N\)">\(\tau_t=\tau_{t+1}=\mathcal N\)</span>: values with <span class="math" data-tex="\(P(t)=Q(t)\)">\(P(t)=Q(t)\)</span> and <span class="math" data-tex="\(R(t)=S(t)\)">\(R(t)=S(t)\)</span> (<span class="math" data-tex="\(n^2\)">\(n^2\)</span> choices);</li>
+<li>if <span class="math" data-tex="\(\tau_t=\tau_{t+1}=\mathcal D\)">\(\tau_t=\tau_{t+1}=\mathcal D\)</span>: values with <span class="math" data-tex="\(P(t)=R(t)\)">\(P(t)=R(t)\)</span> and <span class="math" data-tex="\(Q(t)=S(t)\)">\(Q(t)=S(t)\)</span> (<span class="math" data-tex="\(n^2\)">\(n^2\)</span> choices);</li>
+<li>if <span class="math" data-tex="\(\tau_t\ne\tau_{t+1}\)">\(\tau_t\ne\tau_{t+1}\)</span>: values with <span class="math" data-tex="\(P(t)=Q(t)=R(t)=S(t)\)">\(P(t)=Q(t)=R(t)=S(t)\)</span> (<span class="math" data-tex="\(n\)">\(n\)</span> choices).</li>
+</ul>
+<p>Their number is <span class="math" data-tex="\(n^{2(n-1)-w(\tau)}\)">\(n^{2(n-1)-w(\tau)}\)</span>.</p>
+<p><strong>Proof.</strong> The condition of a layer <span class="math" data-tex="\(t\)">\(t\)</span> is a condition at its two end positions <span class="math" data-tex="\(t-1\)">\(t-1\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>: the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> requires there that <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> agree and that <span class="math" data-tex="\(R,S\)">\(R,S\)</span> agree, the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> that <span class="math" data-tex="\(P,R\)">\(P,R\)</span> agree and that <span class="math" data-tex="\(Q,S\)">\(Q,S\)</span> agree. At the positions <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> this holds for all paths. An inner position <span class="math" data-tex="\(t\)">\(t\)</span> is an end position of the layers <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(t+1\)">\(t+1\)</span>, and it receives the conditions of both. There are <span class="math" data-tex="\(w(\tau)\)">\(w(\tau)\)</span> inner positions with <span class="math" data-tex="\(n\)">\(n\)</span> choices and <span class="math" data-tex="\(n-1-w(\tau)\)">\(n-1-w(\tau)\)</span> with <span class="math" data-tex="\(n^2\)">\(n^2\)</span> choices. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For a layer <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(\tau_t=\mathcal N\)">\(\tau_t=\mathcal N\)</span> let <span class="math" data-tex="\(h_t\)">\(h_t\)</span> be the number of its end positions that are inner positions and whose other layer also has the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> in <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. So <span class="math" data-tex="\(h_t\in\{0,1,2\}\)">\(h_t\in\{0,1,2\}\)</span>.</p>
+<p><strong>Lemma 7.2.</strong> Choose a <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-admissible quadruple uniformly at random, and let <span class="math" data-tex="\(t\)">\(t\)</span> be a layer with <span class="math" data-tex="\(\tau_t=\mathcal N\)">\(\tau_t=\mathcal N\)</span>. Then <span class="math" data-tex="\(E_t(P)=E_t(R)\)">\(E_t(P)=E_t(R)\)</span> with the probability <span class="math" data-tex="\(n^{-h_t}\)">\(n^{-h_t}\)</span>. For layers no two of which are adjacent, these events are independent.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(E_t(P)=E_t(R)\)">\(E_t(P)=E_t(R)\)</span> means that <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> agree at both end positions of the layer. At an end position <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(n\)">\(n\)</span>, and at an inner end position whose other layer has the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, this holds for all admissible quadruples (Lemma 7.1). At an inner end position whose other layer has the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, the values of <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> are independent and uniformly distributed, so they agree with the probability <span class="math" data-tex="\(\tfrac1n\)">\(\tfrac1n\)</span>. By Lemma 7.1 the choices at different positions are independent, and layers that are not adjacent have no common end position. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For a word <span class="math" data-tex="\(\tau\)">\(\tau\)</span> let <span class="math" data-tex="\(d_V(\tau)\)">\(d_V(\tau)\)</span> and <span class="math" data-tex="\(d_U(\tau)\)">\(d_U(\tau)\)</span> be the numbers of the <span class="math" data-tex="\(V\)">\(V\)</span> layers and of the <span class="math" data-tex="\(U\)">\(U\)</span> layers of the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, and <span class="math" data-tex="\(N_V(\tau)\)">\(N_V(\tau)\)</span> the set of the <span class="math" data-tex="\(V\)">\(V\)</span> layers of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W(\tau)={}&amp;n^{-w(\tau)}\,\alpha^{-d_V(\tau)}\,\beta^{d_U(\tau)}\\
+&amp;\cdot\prod_{t\in N_V(\tau)}\bigl(1+\alpha^{-1}n^{-h_t}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+W(\tau)={}&amp;n^{-w(\tau)}\,\alpha^{-d_V(\tau)}\,\beta^{d_U(\tau)}\\
+&amp;\cdot\prod_{t\in N_V(\tau)}\bigl(1+\alpha^{-1}n^{-h_t}\bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>Proposition 7.1</strong> ([OpenAI-D]). For large <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+T_2\le D\,n^{2(n-1)}\,\mu^2\,(1+\beta)^m\sum_\tau W(\tau),
+\]">\[
+T_2\le D\,n^{2(n-1)}\,\mu^2\,(1+\beta)^m\sum_\tau W(\tau),
+\]</span>
+where the sum runs over all words <span class="math" data-tex="\(\tau\in\{\mathcal N,\mathcal D\}^n\)">\(\tau\in\{\mathcal N,\mathcal D\}^n\)</span>.</p>
+<p><strong>Proof.</strong> By (6.3) and Lemma 6.3,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{T_2}{D\mu^2}&amp;\le\sum_{\mathrm{compatible}}\ \prod_t\omega_t\\
+&amp;\le\sum_\tau\ \sum_{\tau\text{-admissible}}\ \prod_t\omega_t^\tau ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{T_2}{D\mu^2}&amp;\le\sum_{\mathrm{compatible}}\ \prod_t\omega_t\\
+&amp;\le\sum_\tau\ \sum_{\tau\text{-admissible}}\ \prod_t\omega_t^\tau ,
+\end{aligned}
+\]</span>
+because every compatible quadruple occurs on the right side for its type word, with the same numbers, and all other terms are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>. Fix <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. The inner sum is the number <span class="math" data-tex="\(n^{2(n-1)-w(\tau)}\)">\(n^{2(n-1)-w(\tau)}\)</span> of the <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-admissible quadruples times the mean of <span class="math" data-tex="\(\prod_t\omega^\tau_t\)">\(\prod_t\omega^\tau_t\)</span> for a uniformly chosen one. In this product the layers of the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> give <span class="math" data-tex="\(\alpha^{-d_V(\tau)}\beta^{d_U(\tau)}\)">\(\alpha^{-d_V(\tau)}\beta^{d_U(\tau)}\)</span>. Every <span class="math" data-tex="\(U\)">\(U\)</span> layer of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> gives at most <span class="math" data-tex="\(1+\beta\)">\(1+\beta\)</span>, and there are at most <span class="math" data-tex="\(m\)">\(m\)</span> of them. A <span class="math" data-tex="\(V\)">\(V\)</span> layer <span class="math" data-tex="\(t\)">\(t\)</span> of the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> gives <span class="math" data-tex="\(1+\alpha^{-1}\)">\(1+\alpha^{-1}\)</span> if <span class="math" data-tex="\(E_t(P)=E_t(R)\)">\(E_t(P)=E_t(R)\)</span>, and <span class="math" data-tex="\(1\)">\(1\)</span> otherwise. No two <span class="math" data-tex="\(V\)">\(V\)</span> layers are adjacent, so by Lemma 7.2 the mean of the product of these factors is
+<span class="math math-display" data-tex="\[
+\prod_{t\in N_V(\tau)}\bigl(1+\alpha^{-1}n^{-h_t}\bigr). \qquad\blacksquare
+\]">\[
+\prod_{t\in N_V(\tau)}\bigl(1+\alpha^{-1}n^{-h_t}\bigr). \qquad\blacksquare
+\]</span></p>
+<p>The sum of the <span class="math" data-tex="\(W(\tau)\)">\(W(\tau)\)</span> is estimated in <a href="the-sum-over-type-words-and-the-lower-bound.html">The sum over type words and the lower bound</a>. For the word <span class="math" data-tex="\(\mathcal N^n\)">\(\mathcal N^n\)</span>, in which every layer has the type <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, the layer <span class="math" data-tex="\(1\)">\(1\)</span> has <span class="math" data-tex="\(h_1=1\)">\(h_1=1\)</span> and the other <span class="math" data-tex="\(V\)">\(V\)</span> layers have <span class="math" data-tex="\(h_t=2\)">\(h_t=2\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W(\mathcal N^n)={}&amp;\bigl(1+\alpha^{-1}n^{-1}\bigr)\\
+&amp;\cdot\bigl(1+\alpha^{-1}n^{-2}\bigr)^{k-1},
+\end{aligned}
+\]">\[
+\begin{aligned}
+W(\mathcal N^n)={}&amp;\bigl(1+\alpha^{-1}n^{-1}\bigr)\\
+&amp;\cdot\bigl(1+\alpha^{-1}n^{-2}\bigr)^{k-1},
+\end{aligned}
+\]</span>
+which is close to <span class="math" data-tex="\(1\)">\(1\)</span>. The last lesson shows that the sum over all <span class="math" data-tex="\(2^n\)">\(2^n\)</span> words is at most <span class="math" data-tex="\(e^{3\sqrt n}\)">\(e^{3\sqrt n}\)</span>.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>8.1.</strong> Let <span class="math" data-tex="\(n=12\)">\(n=12\)</span>, <span class="math" data-tex="\(s=2\)">\(s=2\)</span>, <span class="math" data-tex="\(k=5\)">\(k=5\)</span>, <span class="math" data-tex="\(m=7\)">\(m=7\)</span>. Compute <span class="math" data-tex="\(l_1,\dots,l_5\)">\(l_1,\dots,l_5\)</span> and write down the division of the layers.</p>
+<p><strong>8.2.</strong> Check (3.1) for one variable: <span class="math" data-tex="\(\partial_z\)">\(\partial_z\)</span> and the multiplication by <span class="math" data-tex="\(z\)">\(z\)</span> on the polynomials in <span class="math" data-tex="\(z\)">\(z\)</span> with the orthonormal basis <span class="math" data-tex="\(z^j/\sqrt{j!}\)">\(z^j/\sqrt{j!}\)</span>. Show that the multiplication by <span class="math" data-tex="\(z\)">\(z\)</span> is the adjoint of <span class="math" data-tex="\(\partial_z\)">\(\partial_z\)</span>.</p>
+<p><strong>8.3.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be uniformly distributed among the compositions of <span class="math" data-tex="\(t=2\)">\(t=2\)</span> into <span class="math" data-tex="\(r=2\)">\(r=2\)</span> parts. Compute <span class="math" data-tex="\(\mathbb EM_1\)">\(\mathbb EM_1\)</span>, <span class="math" data-tex="\(\mathbb EM_1M_2\)">\(\mathbb EM_1M_2\)</span> and <span class="math" data-tex="\(\mathbb E(M_1)_2\)">\(\mathbb E(M_1)_2\)</span> directly and with Lemma 4.1, and compare with the geometric variables of Lemma 4.2.</p>
+<p><strong>8.4.</strong> Give an example of a linear map <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(\operatorname{rank}F=2\)">\(\operatorname{rank}F=2\)</span> and <span class="math" data-tex="\(T^2/T_2\)">\(T^2/T_2\)</span> as close to <span class="math" data-tex="\(1\)">\(1\)</span> as you like.</p>
+<p><strong>8.5.</strong> For <span class="math" data-tex="\(n=3\)">\(n=3\)</span> and the word <span class="math" data-tex="\(\tau=\mathcal N\mathcal D\mathcal N\)">\(\tau=\mathcal N\mathcal D\mathcal N\)</span>, describe the <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-admissible quadruples and count them. Which of them are compatible with the type word <span class="math" data-tex="\(\tau\)">\(\tau\)</span>?</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>8.1.</strong> <span class="math" data-tex="\(\lfloor2i/5\rfloor\)">\(\lfloor2i/5\rfloor\)</span> for <span class="math" data-tex="\(i=0,\dots,5\)">\(i=0,\dots,5\)</span> is <span class="math" data-tex="\(0,0,0,1,1,2\)">\(0,0,0,1,1,2\)</span>. So <span class="math" data-tex="\(l=(1,1,2,1,2)\)">\(l=(1,1,2,1,2)\)</span>, with the sum <span class="math" data-tex="\(7\)">\(7\)</span>, and the division is <span class="math" data-tex="\(VU\,VU\,VUU\,VU\,VUU\)">\(VU\,VU\,VUU\,VU\,VUU\)</span>.</p>
+<p><strong>8.2.</strong> <span class="math" data-tex="\(\partial_z\tfrac{z^j}{\sqrt{j!}}=\tfrac{j\,z^{j-1}}{\sqrt{j!}}=\sqrt j\,\tfrac{z^{j-1}}{\sqrt{(j-1)!}}\)">\(\partial_z\tfrac{z^j}{\sqrt{j!}}=\tfrac{j\,z^{j-1}}{\sqrt{j!}}=\sqrt j\,\tfrac{z^{j-1}}{\sqrt{(j-1)!}}\)</span> and <span class="math" data-tex="\(z\cdot\tfrac{z^j}{\sqrt{j!}}=\sqrt{j+1}\,\tfrac{z^{j+1}}{\sqrt{(j+1)!}}\)">\(z\cdot\tfrac{z^j}{\sqrt{j!}}=\sqrt{j+1}\,\tfrac{z^{j+1}}{\sqrt{(j+1)!}}\)</span>. The matrix of <span class="math" data-tex="\(\partial_z\)">\(\partial_z\)</span> has the entry <span class="math" data-tex="\(\sqrt j\)">\(\sqrt j\)</span> at (row <span class="math" data-tex="\(j-1\)">\(j-1\)</span>, column <span class="math" data-tex="\(j\)">\(j\)</span>), the matrix of the multiplication has the entry <span class="math" data-tex="\(\sqrt{j+1}\)">\(\sqrt{j+1}\)</span> at (row <span class="math" data-tex="\(j+1\)">\(j+1\)</span>, column <span class="math" data-tex="\(j\)">\(j\)</span>), that is <span class="math" data-tex="\(\sqrt j\)">\(\sqrt j\)</span> at (row <span class="math" data-tex="\(j\)">\(j\)</span>, column <span class="math" data-tex="\(j-1\)">\(j-1\)</span>). The two matrices are transposes of each other and real.</p>
+<p><strong>8.3.</strong> The compositions are <span class="math" data-tex="\((2,0),(1,1),(0,2)\)">\((2,0),(1,1),(0,2)\)</span>. <span class="math" data-tex="\(\mathbb EM_1=1\)">\(\mathbb EM_1=1\)</span>, <span class="math" data-tex="\(\mathbb EM_1M_2=\tfrac13\)">\(\mathbb EM_1M_2=\tfrac13\)</span>, <span class="math" data-tex="\(\mathbb E(M_1)_2=\tfrac23\)">\(\mathbb E(M_1)_2=\tfrac23\)</span>. Lemma 4.1: <span class="math" data-tex="\(\tfrac{(2)_1}2=1\)">\(\tfrac{(2)_1}2=1\)</span>; <span class="math" data-tex="\(\tfrac{(2)_2}{2\cdot3}\cdot1=\tfrac13\)">\(\tfrac{(2)_2}{2\cdot3}\cdot1=\tfrac13\)</span>; <span class="math" data-tex="\(\tfrac{(2)_2}{2\cdot3}\cdot2!=\tfrac23\)">\(\tfrac{(2)_2}{2\cdot3}\cdot2!=\tfrac23\)</span>. Geometric variables with the mean <span class="math" data-tex="\(G=1\)">\(G=1\)</span>: <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>. The means for the composition are smaller, by the factors <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(\tfrac13\)">\(\tfrac13\)</span>, <span class="math" data-tex="\(\tfrac13\)">\(\tfrac13\)</span>, which are <span class="math" data-tex="\(\prod_{j&lt;h}\tfrac{1-j/2}{1+j/2}\)">\(\prod_{j&lt;h}\tfrac{1-j/2}{1+j/2}\)</span> for <span class="math" data-tex="\(h=1,2,2\)">\(h=1,2,2\)</span>.</p>
+<p><strong>8.4.</strong> The diagonal matrix with the entries <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>: <span class="math" data-tex="\(T=1+\varepsilon^2\)">\(T=1+\varepsilon^2\)</span>, <span class="math" data-tex="\(T_2=1+\varepsilon^4\)">\(T_2=1+\varepsilon^4\)</span>, and <span class="math" data-tex="\(T^2/T_2\to1\)">\(T^2/T_2\to1\)</span> for <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span>.</p>
+<p><strong>8.5.</strong> The inner positions are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, and both are switches. So the four paths agree at the positions <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>: all four paths are equal, and there are <span class="math" data-tex="\(n^2=9\)">\(n^2=9\)</span> admissible quadruples, in agreement with <span class="math" data-tex="\(n^{2\cdot2-2}\)">\(n^{2\cdot2-2}\)</span>. In the layer <span class="math" data-tex="\(2\)">\(2\)</span> the paths <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> have the same coordinate, so none of the quadruples has the type <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> there; none is compatible with the type word <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Their type word is <span class="math" data-tex="\(\mathcal N\mathcal N\mathcal N\)">\(\mathcal N\mathcal N\mathcal N\)</span>. The relaxation counts them for <span class="math" data-tex="\(\tau\)">\(\tau\)</span> as well, with the weight <span class="math" data-tex="\(\beta\)">\(\beta\)</span> or <span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span> of the middle layer.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-D] OpenAI, <em>Homogeneous depth-five lower bounds for iterated matrix multiplication</em>, OpenAI Math Release preprint, 25 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Homogeneous-depth-five-lower-bounds-for-iterated-matrix-multiplication-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
