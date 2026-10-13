@@ -1,0 +1,252 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lipschitz functions on a torus: extension, juntas and influences</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Large independent sets in three-colorable graphs)</a><a href="label-cover-and-the-graph-of-the-reduction.html">Previous lesson</a><a href="from-an-independent-set-to-lists-of-answers.html">Next lesson</a><a href="src/lipschitz-functions-on-a-torus-extension-juntas-and-influences.md">Editable source</a></nav><main><article><h1 id="lipschitz-functions-on-a-torus-extension-juntas-and-influences">Lipschitz functions on a torus: extension, juntas and influences</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The proof of [OpenAI-I] turns an independent set of the graph of the first lesson into functions on the sets <span class="math" data-tex="\(\mathbb T^M\)">\(\mathbb T^M\)</span> of families of phases. These functions have values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, they are Lipschitz for the sup distance with a constant that does not depend on the number of the phases, and they change their sign under the half shift. This lesson proves what the course needs about such functions, and states a theorem of T. Austin that is proved in another course: a Lipschitz function of many variables is close to a function of a bounded number of them.</p>
+<ul>
+<li>Extension of a Lipschitz function from a finite set (Lemma 1.1).</li>
+<li>The mean over one coordinate, and the decomposition of a function (Lemmas 2.1 to 2.3).</li>
+<li>Functions of few coordinates and Theorem (J) (Section 3).</li>
+<li>Influences: a coordinate with a large influence exists, and there are few of them (Proposition 4.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-I, Section 2]; the extension formula is used in [OpenAI-I, Section 4]. It uses the notation of <a href="label-cover-and-the-graph-of-the-reduction.html">Label Cover and the graph of the reduction</a> for phases and families of phases. It needs the Lebesgue integral on a cube and Fubini's theorem (<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">core course <em>Measure and Integration</em></a>).</p>
+<h2 id="1-lipschitz-functions-and-their-extension">1. Lipschitz functions and their extension</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a finite nonempty set. A real function <span class="math" data-tex="\(f\)">\(f\)</span> on a subset <span class="math" data-tex="\(S\)">\(S\)</span> of <span class="math" data-tex="\(\mathbb T^M\)">\(\mathbb T^M\)</span> is <em><span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz</em>, for a number <span class="math" data-tex="\(L\ge0\)">\(L\ge0\)</span>, if for all <span class="math" data-tex="\(x,y\in S\)">\(x,y\in S\)</span>
+<span class="math math-display" data-tex="\[
+|f(x)-f(y)|\le L\,d_\infty(x,y).
+\]">\[
+|f(x)-f(y)|\le L\,d_\infty(x,y).
+\]</span>
+If the half shift <span class="math" data-tex="\(T\)">\(T\)</span> maps <span class="math" data-tex="\(S\)">\(S\)</span> to itself, <span class="math" data-tex="\(f\)">\(f\)</span> is <em>odd</em> if <span class="math" data-tex="\(f(Tx)=-f(x)\)">\(f(Tx)=-f(x)\)</span> for all <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (extension). Let <span class="math" data-tex="\(S\subset\mathbb T^M\)">\(S\subset\mathbb T^M\)</span> be a finite nonempty set with <span class="math" data-tex="\(T(S)=S\)">\(T(S)=S\)</span>, and let <span class="math" data-tex="\(f:S\to[-1,1]\)">\(f:S\to[-1,1]\)</span> be <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz and odd. Then there is a function <span class="math" data-tex="\(F:\mathbb T^M\to[-1,1]\)">\(F:\mathbb T^M\to[-1,1]\)</span> that is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz and odd and agrees with <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Proof.</strong> <em>A Lipschitz extension.</em> For <span class="math" data-tex="\(x\in\mathbb T^M\)">\(x\in\mathbb T^M\)</span> put
+<span class="math math-display" data-tex="\[
+g(x)=\min_{y\in S}\bigl(f(y)+L\,d_\infty(x,y)\bigr).
+\]">\[
+g(x)=\min_{y\in S}\bigl(f(y)+L\,d_\infty(x,y)\bigr).
+\]</span>
+For <span class="math" data-tex="\(x,x&#x27;\)">\(x,x&#x27;\)</span> and every <span class="math" data-tex="\(y\in S\)">\(y\in S\)</span>, the triangle inequality gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(y)+L\,d_\infty(x,y)\le{}&amp;f(y)+L\,d_\infty(x&#x27;,y)\\
+&amp;+L\,d_\infty(x,x&#x27;).
+\end{aligned}
+\]">\[
+\begin{aligned}
+f(y)+L\,d_\infty(x,y)\le{}&amp;f(y)+L\,d_\infty(x&#x27;,y)\\
+&amp;+L\,d_\infty(x,x&#x27;).
+\end{aligned}
+\]</span>
+Taking the minimum over <span class="math" data-tex="\(y\)">\(y\)</span> on both sides, <span class="math" data-tex="\(g(x)\le g(x&#x27;)+L\,d_\infty(x,x&#x27;)\)">\(g(x)\le g(x&#x27;)+L\,d_\infty(x,x&#x27;)\)</span>. So <span class="math" data-tex="\(g\)">\(g\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz. For <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span>, the term with <span class="math" data-tex="\(y=x\)">\(y=x\)</span> is <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>, and every term is at least <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> because <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz. So <span class="math" data-tex="\(g=f\)">\(g=f\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><em>Values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>.</em> Let <span class="math" data-tex="\(\tilde g(x)=\max\{-1,\min\{1,g(x)\}\}\)">\(\tilde g(x)=\max\{-1,\min\{1,g(x)\}\}\)</span>. The map <span class="math" data-tex="\(u\mapsto\max\{-1,\min\{1,u\}\}\)">\(u\mapsto\max\{-1,\min\{1,u\}\}\)</span> of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> does not increase distances and fixes <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. So <span class="math" data-tex="\(\tilde g\)">\(\tilde g\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz, has values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> and agrees with <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><em>Oddness.</em> Put
+<span class="math math-display" data-tex="\[
+F(x)=\tfrac12\bigl(\tilde g(x)-\tilde g(Tx)\bigr).
+\]">\[
+F(x)=\tfrac12\bigl(\tilde g(x)-\tilde g(Tx)\bigr).
+\]</span>
+Since <span class="math" data-tex="\(d_\infty(Tx,Ty)=d_\infty(x,y)\)">\(d_\infty(Tx,Ty)=d_\infty(x,y)\)</span>, the function <span class="math" data-tex="\(x\mapsto\tilde g(Tx)\)">\(x\mapsto\tilde g(Tx)\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz, and so is <span class="math" data-tex="\(F\)">\(F\)</span>. Its values lie in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. From <span class="math" data-tex="\(T(Tx)=x\)">\(T(Tx)=x\)</span> follows <span class="math" data-tex="\(F(Tx)=-F(x)\)">\(F(Tx)=-F(x)\)</span>. For <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span> also <span class="math" data-tex="\(Tx\in S\)">\(Tx\in S\)</span>, and <span class="math" data-tex="\(F(x)=\tfrac12(f(x)-f(Tx))=f(x)\)">\(F(x)=\tfrac12(f(x)-f(Tx))=f(x)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The formula for <span class="math" data-tex="\(g\)">\(g\)</span> is due to E. J. McShane. The extension is not unique; the lemma is used with one fixed choice.</p>
+<h2 id="2-the-mean-over-one-coordinate">2. The mean over one coordinate</h2>
+<p>Let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. The set <span class="math" data-tex="\(\mathbb T^n\)">\(\mathbb T^n\)</span> of the families <span class="math" data-tex="\((x_1,\dots,x_n)\)">\((x_1,\dots,x_n)\)</span> of phases is identified with <span class="math" data-tex="\([0,1)^n\)">\([0,1)^n\)</span> by taking representatives, and carries the Lebesgue measure of the cube, which has the total mass <span class="math" data-tex="\(1\)">\(1\)</span>. Let <span class="math" data-tex="\(\mathcal B_n\)">\(\mathcal B_n\)</span> be the space of the bounded Borel functions <span class="math" data-tex="\(f:[0,1)^n\to\mathbb R\)">\(f:[0,1)^n\to\mathbb R\)</span>. For <span class="math" data-tex="\(f,g\in\mathcal B_n\)">\(f,g\in\mathcal B_n\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E f=\int f,\qquad \langle f,g\rangle=\mathbb E(fg),\\
+\|f\|_2=\langle f,f\rangle^{1/2},\qquad \|f\|_1=\mathbb E|f| .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E f=\int f,\qquad \langle f,g\rangle=\mathbb E(fg),\\
+\|f\|_2=\langle f,f\rangle^{1/2},\qquad \|f\|_1=\mathbb E|f| .
+\end{gathered}
+\]</span>
+A function on the closed cube <span class="math" data-tex="\([0,1]^n\)">\([0,1]^n\)</span> is treated in the same way; the boundary has measure <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><strong>Definition.</strong> Let <span class="math" data-tex="\(1\le i\le n\)">\(1\le i\le n\)</span> and <span class="math" data-tex="\(f\in\mathcal B_n\)">\(f\in\mathcal B_n\)</span>. For a point <span class="math" data-tex="\(x\)">\(x\)</span> and a number <span class="math" data-tex="\(w\in[0,1)\)">\(w\in[0,1)\)</span> let <span class="math" data-tex="\(x^{w}\)">\(x^{w}\)</span> be the point <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(w\)">\(w\)</span> in place of the coordinate <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. The <em>mean over the coordinate <span class="math" data-tex="\(i\)">\(i\)</span></em> is
+<span class="math math-display" data-tex="\[
+(E_if)(x)=\int_0^1 f(x^{w})\,dw ,
+\]">\[
+(E_if)(x)=\int_0^1 f(x^{w})\,dw ,
+\]</span>
+and <span class="math" data-tex="\(Q_if=f-E_if\)">\(Q_if=f-E_if\)</span>. By Fubini's theorem <span class="math" data-tex="\(E_if\)">\(E_if\)</span> is again a bounded Borel function. It does not depend on <span class="math" data-tex="\(x_i\)">\(x_i\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For <span class="math" data-tex="\(f,g\in\mathcal B_n\)">\(f,g\in\mathcal B_n\)</span> and coordinates <span class="math" data-tex="\(i,j\)">\(i,j\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(E_iE_if=E_if\)">\(E_iE_if=E_if\)</span> and <span class="math" data-tex="\(E_iE_jf=E_jE_if\)">\(E_iE_jf=E_jE_if\)</span>;</li>
+<li><span class="math" data-tex="\(\langle E_if,g\rangle=\langle f,E_ig\rangle\)">\(\langle E_if,g\rangle=\langle f,E_ig\rangle\)</span>;</li>
+<li><span class="math" data-tex="\(E_iQ_if=Q_iE_if=0\)">\(E_iQ_if=Q_iE_if=0\)</span>, <span class="math" data-tex="\(Q_iQ_if=Q_if\)">\(Q_iQ_if=Q_if\)</span>, <span class="math" data-tex="\(\langle Q_if,g\rangle=\langle f,Q_ig\rangle\)">\(\langle Q_if,g\rangle=\langle f,Q_ig\rangle\)</span>, and the <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> commute with each other and with the <span class="math" data-tex="\(E_j\)">\(E_j\)</span>;</li>
+<li><span class="math" data-tex="\(\|f\|_2^2=\|E_if\|_2^2+\|Q_if\|_2^2\)">\(\|f\|_2^2=\|E_if\|_2^2+\|Q_if\|_2^2\)</span>; in particular <span class="math" data-tex="\(\|Q_if\|_2\le\|f\|_2\)">\(\|Q_if\|_2\le\|f\|_2\)</span> and <span class="math" data-tex="\(\|E_if\|_2\le\|f\|_2\)">\(\|E_if\|_2\le\|f\|_2\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) <span class="math" data-tex="\(E_if\)">\(E_if\)</span> does not depend on <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, so its mean over <span class="math" data-tex="\(x_i\)">\(x_i\)</span> is itself. The second equation is Fubini's theorem for the two variables at the positions <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span>. (2) By Fubini's theorem both sides are equal to the integral of <span class="math" data-tex="\(f(x^{w})\,g(x^{w&#x27;})\)">\(f(x^{w})\,g(x^{w&#x27;})\)</span> over <span class="math" data-tex="\(w\)">\(w\)</span>, <span class="math" data-tex="\(w&#x27;\)">\(w&#x27;\)</span> and the coordinates of <span class="math" data-tex="\(x\)">\(x\)</span> other than <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. (3) follows from (1), (2) and <span class="math" data-tex="\(Q_i=\mathrm{id}-E_i\)">\(Q_i=\mathrm{id}-E_i\)</span>. (4) <span class="math" data-tex="\(\langle E_if,Q_if\rangle=\langle f,E_iQ_if\rangle=0\)">\(\langle E_if,Q_if\rangle=\langle f,E_iQ_if\rangle=0\)</span> by (2) and (3), and <span class="math" data-tex="\(f=E_if+Q_if\)">\(f=E_if+Q_if\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For a set <span class="math" data-tex="\(S\subset[n]\)">\(S\subset[n]\)</span> let
+<span class="math math-display" data-tex="\[
+E_S=\prod_{i\notin S}E_i ,
+\]">\[
+E_S=\prod_{i\notin S}E_i ,
+\]</span>
+the mean over all coordinates outside <span class="math" data-tex="\(S\)">\(S\)</span>; the order of the factors does not matter. The function <span class="math" data-tex="\(E_Sf\)">\(E_Sf\)</span> depends only on the coordinates in <span class="math" data-tex="\(S\)">\(S\)</span>. In particular <span class="math" data-tex="\(E_{[n]}f=f\)">\(E_{[n]}f=f\)</span>, and <span class="math" data-tex="\(E_\varnothing f\)">\(E_\varnothing f\)</span> is the constant <span class="math" data-tex="\(\mathbb Ef\)">\(\mathbb Ef\)</span>.</p>
+<p><strong>Lemma 2.2</strong> (the nearest function of the coordinates in <span class="math" data-tex="\(S\)">\(S\)</span>). Let <span class="math" data-tex="\(f\in\mathcal B_n\)">\(f\in\mathcal B_n\)</span> and <span class="math" data-tex="\(S\subset[n]\)">\(S\subset[n]\)</span>. If <span class="math" data-tex="\(g\in\mathcal B_n\)">\(g\in\mathcal B_n\)</span> depends only on the coordinates in <span class="math" data-tex="\(S\)">\(S\)</span>, then
+<span class="math math-display" data-tex="\[
+\|f-g\|_2^2=\|f-E_Sf\|_2^2+\|E_Sf-g\|_2^2 .
+\]">\[
+\|f-g\|_2^2=\|f-E_Sf\|_2^2+\|E_Sf-g\|_2^2 .
+\]</span>
+In particular <span class="math" data-tex="\(\|f-E_Sf\|_2\le\|f-g\|_2\)">\(\|f-E_Sf\|_2\le\|f-g\|_2\)</span>, and <span class="math" data-tex="\(\|f\|_2^2=\|E_Sf\|_2^2+\|f-E_Sf\|_2^2\)">\(\|f\|_2^2=\|E_Sf\|_2^2+\|f-E_Sf\|_2^2\)</span>.</p>
+<p><strong>Proof.</strong> By Lemma 2.1, <span class="math" data-tex="\(E_SE_S=E_S\)">\(E_SE_S=E_S\)</span> and <span class="math" data-tex="\(\langle E_Sa,b\rangle=\langle a,E_Sb\rangle\)">\(\langle E_Sa,b\rangle=\langle a,E_Sb\rangle\)</span> for all <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. A function <span class="math" data-tex="\(h\)">\(h\)</span> that depends only on the coordinates in <span class="math" data-tex="\(S\)">\(S\)</span> satisfies <span class="math" data-tex="\(E_ih=h\)">\(E_ih=h\)</span> for <span class="math" data-tex="\(i\notin S\)">\(i\notin S\)</span>, so <span class="math" data-tex="\(E_Sh=h\)">\(E_Sh=h\)</span>. For such <span class="math" data-tex="\(h\)">\(h\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle f-E_Sf,h\rangle&amp;=\langle f-E_Sf,E_Sh\rangle\\
+&amp;=\langle E_Sf-E_SE_Sf,h\rangle=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle f-E_Sf,h\rangle&amp;=\langle f-E_Sf,E_Sh\rangle\\
+&amp;=\langle E_Sf-E_SE_Sf,h\rangle=0 .
+\end{aligned}
+\]</span>
+Apply this with <span class="math" data-tex="\(h=E_Sf-g\)">\(h=E_Sf-g\)</span> and expand <span class="math" data-tex="\(\|(f-E_Sf)+(E_Sf-g)\|_2^2\)">\(\|(f-E_Sf)+(E_Sf-g)\|_2^2\)</span>. The last statement is the case <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 2.3</strong> (decomposition). For <span class="math" data-tex="\(f\in\mathcal B_n\)">\(f\in\mathcal B_n\)</span> and <span class="math" data-tex="\(A\subset[n]\)">\(A\subset[n]\)</span> put
+<span class="math math-display" data-tex="\[
+f_A=\prod_{i\in A}Q_i\prod_{i\notin A}E_i\,f .
+\]">\[
+f_A=\prod_{i\in A}Q_i\prod_{i\notin A}E_i\,f .
+\]</span></p>
+<ol>
+<li><span class="math" data-tex="\(f=\sum_{A\subset[n]}f_A\)">\(f=\sum_{A\subset[n]}f_A\)</span>, and <span class="math" data-tex="\(f_\varnothing=\mathbb Ef\)">\(f_\varnothing=\mathbb Ef\)</span>.</li>
+<li><span class="math" data-tex="\(\langle f_A,f_{A&#x27;}\rangle=0\)">\(\langle f_A,f_{A&#x27;}\rangle=0\)</span> for <span class="math" data-tex="\(A\ne A&#x27;\)">\(A\ne A&#x27;\)</span>.</li>
+<li><span class="math" data-tex="\(Q_if=\sum_{A\ni i}f_A\)">\(Q_if=\sum_{A\ni i}f_A\)</span> and <span class="math" data-tex="\(\|Q_if\|_2^2=\sum_{A\ni i}\|f_A\|_2^2\)">\(\|Q_if\|_2^2=\sum_{A\ni i}\|f_A\|_2^2\)</span>.</li>
+<li><span class="math" data-tex="\(E_Sf=\sum_{A\subset S}f_A\)">\(E_Sf=\sum_{A\subset S}f_A\)</span> and <span class="math" data-tex="\(\|E_Sf\|_2^2=\sum_{A\subset S}\|f_A\|_2^2\)">\(\|E_Sf\|_2^2=\sum_{A\subset S}\|f_A\|_2^2\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) The product of the operators <span class="math" data-tex="\(E_i+Q_i=\mathrm{id}\)">\(E_i+Q_i=\mathrm{id}\)</span> over all <span class="math" data-tex="\(i\)">\(i\)</span> is the identity; multiply out, using that all these operators commute. (2) Let <span class="math" data-tex="\(i\)">\(i\)</span> be in one of the two sets and not in the other, say <span class="math" data-tex="\(i\in A\)">\(i\in A\)</span>, <span class="math" data-tex="\(i\notin A&#x27;\)">\(i\notin A&#x27;\)</span>. Then <span class="math" data-tex="\(f_A=Q_ia\)">\(f_A=Q_ia\)</span> and <span class="math" data-tex="\(f_{A&#x27;}=E_ib\)">\(f_{A&#x27;}=E_ib\)</span> for some <span class="math" data-tex="\(a,b\in\mathcal B_n\)">\(a,b\in\mathcal B_n\)</span>, and <span class="math" data-tex="\(\langle Q_ia,E_ib\rangle=\langle a,Q_iE_ib\rangle=0\)">\(\langle Q_ia,E_ib\rangle=\langle a,Q_iE_ib\rangle=0\)</span>. (3) <span class="math" data-tex="\(Q_if_A=f_A\)">\(Q_if_A=f_A\)</span> if <span class="math" data-tex="\(i\in A\)">\(i\in A\)</span>, since <span class="math" data-tex="\(Q_iQ_i=Q_i\)">\(Q_iQ_i=Q_i\)</span>, and <span class="math" data-tex="\(Q_if_A=0\)">\(Q_if_A=0\)</span> if <span class="math" data-tex="\(i\notin A\)">\(i\notin A\)</span>, since <span class="math" data-tex="\(Q_iE_i=0\)">\(Q_iE_i=0\)</span>. Apply <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> to (1); the norm follows from (2). (4) In the same way <span class="math" data-tex="\(E_if_A=0\)">\(E_if_A=0\)</span> if <span class="math" data-tex="\(i\in A\)">\(i\in A\)</span> and <span class="math" data-tex="\(E_if_A=f_A\)">\(E_if_A=f_A\)</span> if <span class="math" data-tex="\(i\notin A\)">\(i\notin A\)</span>. So <span class="math" data-tex="\(E_S\)">\(E_S\)</span> keeps the terms with <span class="math" data-tex="\(A\subset S\)">\(A\subset S\)</span> and removes the others. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Example 2.4.</strong> Let <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(c_k(x)=\cos(2\pi x_k)\)">\(c_k(x)=\cos(2\pi x_k)\)</span> and <span class="math" data-tex="\(f=c_1+c_1c_2\)">\(f=c_1+c_1c_2\)</span>. Then <span class="math" data-tex="\(f_{\{1\}}=c_1\)">\(f_{\{1\}}=c_1\)</span>, <span class="math" data-tex="\(f_{\{1,2\}}=c_1c_2\)">\(f_{\{1,2\}}=c_1c_2\)</span>, and <span class="math" data-tex="\(f_\varnothing=f_{\{2\}}=0\)">\(f_\varnothing=f_{\{2\}}=0\)</span>. So <span class="math" data-tex="\(\|Q_1f\|_2^2=\tfrac12+\tfrac14\)">\(\|Q_1f\|_2^2=\tfrac12+\tfrac14\)</span> and <span class="math" data-tex="\(\|Q_2f\|_2^2=\tfrac14\)">\(\|Q_2f\|_2^2=\tfrac14\)</span>.</p>
+<h2 id="3-functions-of-few-coordinates">3. Functions of few coordinates</h2>
+<p>A function on <span class="math" data-tex="\([0,1]^N\)">\([0,1]^N\)</span> or on <span class="math" data-tex="\(\mathbb T^n\)">\(\mathbb T^n\)</span> that depends only on the coordinates in a set <span class="math" data-tex="\(S\)">\(S\)</span> is called a <em>junta on <span class="math" data-tex="\(S\)">\(S\)</span></em>. The following statement says that a function that is Lipschitz for the sup distance is close to a junta on a set whose size is bounded independently of the number of the coordinates.</p>
+<p><strong>Theorem (J)</strong> (T. Austin). For every <span class="math" data-tex="\(L\ge0\)">\(L\ge0\)</span> and every <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span> there is an integer <span class="math" data-tex="\(J(L,\tau)\ge1\)">\(J(L,\tau)\ge1\)</span> with the following property. Let <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, and let <span class="math" data-tex="\(f:[0,1]^N\to[-1,1]\)">\(f:[0,1]^N\to[-1,1]\)</span> satisfy, for all <span class="math" data-tex="\(x,y\in[0,1]^N\)">\(x,y\in[0,1]^N\)</span>,
+<span class="math math-display" data-tex="\[
+|f(x)-f(y)|\le L\max_{1\le k\le N}|x_k-y_k| .
+\]">\[
+|f(x)-f(y)|\le L\max_{1\le k\le N}|x_k-y_k| .
+\]</span>
+Then there is a set <span class="math" data-tex="\(S\subset[N]\)">\(S\subset[N]\)</span> with at most <span class="math" data-tex="\(J(L,\tau)\)">\(J(L,\tau)\)</span> elements such that
+<span class="math math-display" data-tex="\[
+\|f-E_Sf\|_2&lt;\tau .
+\]">\[
+\|f-E_Sf\|_2&lt;\tau .
+\]</span></p>
+<p>This is the case of the interval <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> with the Lebesgue measure, and of functions with a Lipschitz condition, of [Austin, Theorem 1.1]. That theorem gives a set <span class="math" data-tex="\(S\)">\(S\)</span> of bounded size with <span class="math" data-tex="\(\|f-E_Sf\|_1&lt;\tau^2/2\)">\(\|f-E_Sf\|_1&lt;\tau^2/2\)</span>; since <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(E_Sf\)">\(E_Sf\)</span> have values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, the difference <span class="math" data-tex="\(h=f-E_Sf\)">\(h=f-E_Sf\)</span> satisfies <span class="math" data-tex="\(|h|\le2\)">\(|h|\le2\)</span>, so <span class="math" data-tex="\(\|h\|_2^2\le2\,\|h\|_1&lt;\tau^2\)">\(\|h\|_2^2\le2\,\|h\|_1&lt;\tau^2\)</span>.</p>
+<p>Theorem (J) is proved, in exactly this form and with an explicit number <span class="math" data-tex="\(J(L,\tau)\)">\(J(L,\tau)\)</span>, in the lesson <a href="../hypercontractivity-on-a-torus-and-juntas/lipschitz-functions-are-close-to-juntas.html">Lipschitz functions are close to juntas</a> (Hypercontractivity on a torus and juntas for Lipschitz functions), Theorem 4.1. The proof there uses the heat equation on a torus and a hypercontractive inequality, and it needs nothing from this course. Here the theorem is used as stated.</p>
+<p>By Lemma 2.2, <span class="math" data-tex="\(E_Sf\)">\(E_Sf\)</span> is the junta on <span class="math" data-tex="\(S\)">\(S\)</span> nearest to <span class="math" data-tex="\(f\)">\(f\)</span>. So the conclusion of (J) holds as soon as some junta <span class="math" data-tex="\(g\)">\(g\)</span> on a set of at most <span class="math" data-tex="\(J(L,\tau)\)">\(J(L,\tau)\)</span> coordinates has <span class="math" data-tex="\(\|f-g\|_2&lt;\tau\)">\(\|f-g\|_2&lt;\tau\)</span>.</p>
+<p>The condition is on the sup distance, and the bound does not depend on <span class="math" data-tex="\(N\)">\(N\)</span>. For example, the mean <span class="math" data-tex="\(\tfrac1N(x_1+\dots+x_N)\)">\(\tfrac1N(x_1+\dots+x_N)\)</span> satisfies the condition with <span class="math" data-tex="\(L=1\)">\(L=1\)</span>; it is close to the constant <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>, a junta on the empty set (Exercise 5.3).</p>
+<p><strong>Lemma 3.1</strong> (Theorem (J) on a torus). Let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and let <span class="math" data-tex="\(H:\mathbb T^n\to[-1,1]\)">\(H:\mathbb T^n\to[-1,1]\)</span> be <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz for the sup distance. Then for every <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span> there is a set <span class="math" data-tex="\(S\subset[n]\)">\(S\subset[n]\)</span> with at most <span class="math" data-tex="\(J(L,\tau)\)">\(J(L,\tau)\)</span> elements and <span class="math" data-tex="\(\|H-E_SH\|_2&lt;\tau\)">\(\|H-E_SH\|_2&lt;\tau\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(f(x)=H(x \bmod 1)\)">\(f(x)=H(x \bmod 1)\)</span> for <span class="math" data-tex="\(x\in[0,1]^n\)">\(x\in[0,1]^n\)</span>, where <span class="math" data-tex="\(x\bmod1\)">\(x\bmod1\)</span> is the family of the phases of the coordinates. For real numbers <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, <span class="math" data-tex="\(\|a-b\|\le|a-b|\)">\(\|a-b\|\le|a-b|\)</span>. So <span class="math" data-tex="\(d_\infty(x\bmod1,y\bmod1)\le\max_k|x_k-y_k|\)">\(d_\infty(x\bmod1,y\bmod1)\le\max_k|x_k-y_k|\)</span>, and <span class="math" data-tex="\(f\)">\(f\)</span> satisfies the condition of (J). On <span class="math" data-tex="\([0,1)^n\)">\([0,1)^n\)</span>, <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\(H\)">\(H\)</span> in the identification of this section, and the means over coordinates are the same. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-influences">4. Influences</h2>
+<p><strong>Definition.</strong> For <span class="math" data-tex="\(H\in\mathcal B_n\)">\(H\in\mathcal B_n\)</span> and a coordinate <span class="math" data-tex="\(i\)">\(i\)</span>, the <em>influence</em> of <span class="math" data-tex="\(i\)">\(i\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> is
+<span class="math math-display" data-tex="\[
+D_i(H)=\|Q_iH\|_2=\|H-E_iH\|_2 .
+\]">\[
+D_i(H)=\|Q_iH\|_2=\|H-E_iH\|_2 .
+\]</span>
+It is <span class="math" data-tex="\(0\)">\(0\)</span> if <span class="math" data-tex="\(H\)">\(H\)</span> does not depend on <span class="math" data-tex="\(x_i\)">\(x_i\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> For every <span class="math" data-tex="\(L\ge0\)">\(L\ge0\)</span> and every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there are a number <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span> and an integer <span class="math" data-tex="\(K\ge1\)">\(K\ge1\)</span>, which depend only on <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, with the following properties for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and every function <span class="math" data-tex="\(H:\mathbb T^n\to[-1,1]\)">\(H:\mathbb T^n\to[-1,1]\)</span> that is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz for the sup distance.</p>
+<ol>
+<li>If <span class="math" data-tex="\(\mathbb EH=0\)">\(\mathbb EH=0\)</span> and <span class="math" data-tex="\(\mathbb E(H^2)&gt;\varepsilon\)">\(\mathbb E(H^2)&gt;\varepsilon\)</span>, then <span class="math" data-tex="\(D_i(H)\ge\beta\)">\(D_i(H)\ge\beta\)</span> for some coordinate <span class="math" data-tex="\(i\)">\(i\)</span>.</li>
+<li>At most <span class="math" data-tex="\(K\)">\(K\)</span> coordinates <span class="math" data-tex="\(i\)">\(i\)</span> have <span class="math" data-tex="\(D_i(H)\ge\beta/2\)">\(D_i(H)\ge\beta/2\)</span>.</li>
+</ol>
+<p>One can take <span class="math" data-tex="\(\beta=\sqrt{\varepsilon/(4J)}\)">\(\beta=\sqrt{\varepsilon/(4J)}\)</span> with <span class="math" data-tex="\(J=J(L,\sqrt\varepsilon/2)\)">\(J=J(L,\sqrt\varepsilon/2)\)</span>, and <span class="math" data-tex="\(K=J(L,\beta/2)\)">\(K=J(L,\beta/2)\)</span>.</p>
+<p><strong>Proof.</strong> (1) By Lemma 3.1 there is a set <span class="math" data-tex="\(S\)">\(S\)</span> with at most <span class="math" data-tex="\(J\)">\(J\)</span> elements such that <span class="math" data-tex="\(G=E_SH\)">\(G=E_SH\)</span> has <span class="math" data-tex="\(\|H-G\|_2&lt;\sqrt\varepsilon/2\)">\(\|H-G\|_2&lt;\sqrt\varepsilon/2\)</span>. By Lemma 2.2,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|G\|_2^2&amp;=\|H\|_2^2-\|H-G\|_2^2\\
+&amp;&gt;\varepsilon-\tfrac\varepsilon4=\tfrac{3\varepsilon}4 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|G\|_2^2&amp;=\|H\|_2^2-\|H-G\|_2^2\\
+&amp;&gt;\varepsilon-\tfrac\varepsilon4=\tfrac{3\varepsilon}4 .
+\end{aligned}
+\]</span>
+By Lemma 2.3(4), <span class="math" data-tex="\(G=\sum_{A\subset S}H_A\)">\(G=\sum_{A\subset S}H_A\)</span>, and <span class="math" data-tex="\(H_\varnothing=\mathbb EH=0\)">\(H_\varnothing=\mathbb EH=0\)</span>. Every nonempty <span class="math" data-tex="\(A\subset S\)">\(A\subset S\)</span> contains some <span class="math" data-tex="\(i\in S\)">\(i\in S\)</span>. With Lemma 2.3(3),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|G\|_2^2&amp;=\sum_{\varnothing\ne A\subset S}\|H_A\|_2^2\\
+&amp;\le\sum_{i\in S}\sum_{A\ni i}\|H_A\|_2^2\\
+&amp;=\sum_{i\in S}D_i(H)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|G\|_2^2&amp;=\sum_{\varnothing\ne A\subset S}\|H_A\|_2^2\\
+&amp;\le\sum_{i\in S}\sum_{A\ni i}\|H_A\|_2^2\\
+&amp;=\sum_{i\in S}D_i(H)^2 .
+\end{aligned}
+\]</span>
+The left side is positive, so <span class="math" data-tex="\(S\)">\(S\)</span> is not empty, and some <span class="math" data-tex="\(i\in S\)">\(i\in S\)</span> has
+<span class="math math-display" data-tex="\[
+D_i(H)^2\ge\frac{\|G\|_2^2}{|S|}&gt;\frac{3\varepsilon}{4J}\ge\beta^2 .
+\]">\[
+D_i(H)^2\ge\frac{\|G\|_2^2}{|S|}&gt;\frac{3\varepsilon}{4J}\ge\beta^2 .
+\]</span></p>
+<p>(2) By Lemma 3.1 there is a set <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> with at most <span class="math" data-tex="\(K=J(L,\beta/2)\)">\(K=J(L,\beta/2)\)</span> elements such that <span class="math" data-tex="\(G&#x27;=E_{S&#x27;}H\)">\(G&#x27;=E_{S&#x27;}H\)</span> has <span class="math" data-tex="\(\|H-G&#x27;\|_2&lt;\beta/2\)">\(\|H-G&#x27;\|_2&lt;\beta/2\)</span>. For <span class="math" data-tex="\(i\notin S&#x27;\)">\(i\notin S&#x27;\)</span> the function <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span> does not depend on <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, so <span class="math" data-tex="\(Q_iG&#x27;=0\)">\(Q_iG&#x27;=0\)</span>, and by Lemma 2.1(4)
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_i(H)&amp;=\|Q_i(H-G&#x27;)\|_2\\
+&amp;\le\|H-G&#x27;\|_2&lt;\tfrac\beta2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+D_i(H)&amp;=\|Q_i(H-G&#x27;)\|_2\\
+&amp;\le\|H-G&#x27;\|_2&lt;\tfrac\beta2 .
+\end{aligned}
+\]</span>
+So every coordinate with <span class="math" data-tex="\(D_i(H)\ge\beta/2\)">\(D_i(H)\ge\beta/2\)</span> lies in <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The two numbers do not depend on <span class="math" data-tex="\(n\)">\(n\)</span>. In the last lesson of the course the number of the coordinates is chosen after <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span>, and it depends on them.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> In the situation of Lemma 1.1 let <span class="math" data-tex="\(g&#x27;(x)=\max_{y\in S}\bigl(f(y)-L\,d_\infty(x,y)\bigr)\)">\(g&#x27;(x)=\max_{y\in S}\bigl(f(y)-L\,d_\infty(x,y)\bigr)\)</span>. Show that <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz, agrees with <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, and that every <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz function <span class="math" data-tex="\(e\)">\(e\)</span> on <span class="math" data-tex="\(\mathbb T^M\)">\(\mathbb T^M\)</span> with <span class="math" data-tex="\(e=f\)">\(e=f\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span> satisfies <span class="math" data-tex="\(g&#x27;\le e\le g\)">\(g&#x27;\le e\le g\)</span>.</p>
+<p><strong>5.2.</strong> Let <span class="math" data-tex="\(f\in\mathcal B_n\)">\(f\in\mathcal B_n\)</span>. Show that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{i=1}^nD_i(f)^2&amp;=\sum_A|A|\,\|f_A\|_2^2\\
+&amp;\ge\|f\|_2^2-(\mathbb Ef)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{i=1}^nD_i(f)^2&amp;=\sum_A|A|\,\|f_A\|_2^2\\
+&amp;\ge\|f\|_2^2-(\mathbb Ef)^2 .
+\end{aligned}
+\]</span></p>
+<p><strong>5.3.</strong> Let <span class="math" data-tex="\(f(x)=\tfrac1N(x_1+\dots+x_N)\)">\(f(x)=\tfrac1N(x_1+\dots+x_N)\)</span> and <span class="math" data-tex="\(g(x)=\tfrac1{\sqrt N}(x_1+\dots+x_N)\)">\(g(x)=\tfrac1{\sqrt N}(x_1+\dots+x_N)\)</span> on <span class="math" data-tex="\([0,1]^N\)">\([0,1]^N\)</span>. (a) Show that <span class="math" data-tex="\(|f(x)-f(y)|\le\max_k|x_k-y_k|\)">\(|f(x)-f(y)|\le\max_k|x_k-y_k|\)</span> and <span class="math" data-tex="\(\|f-\tfrac12\|_2^2=\tfrac1{12N}\)">\(\|f-\tfrac12\|_2^2=\tfrac1{12N}\)</span>. (b) Show that <span class="math" data-tex="\(\|g-E_Sg\|_2^2=\tfrac{N-|S|}{12N}\)">\(\|g-E_Sg\|_2^2=\tfrac{N-|S|}{12N}\)</span> for every <span class="math" data-tex="\(S\subset[N]\)">\(S\subset[N]\)</span>, and find the least <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(|g(x)-g(y)|\le L\max_k|x_k-y_k|\)">\(|g(x)-g(y)|\le L\max_k|x_k-y_k|\)</span>.</p>
+<p><strong>5.4.</strong> Let <span class="math" data-tex="\(H(z)=1-4\|z_1\|\)">\(H(z)=1-4\|z_1\|\)</span> for <span class="math" data-tex="\(z\in\mathbb T^n\)">\(z\in\mathbb T^n\)</span>. Show that <span class="math" data-tex="\(H\)">\(H\)</span> is <span class="math" data-tex="\(4\)">\(4\)</span>-Lipschitz and odd, and compute <span class="math" data-tex="\(D_1(H)\)">\(D_1(H)\)</span> and <span class="math" data-tex="\(D_i(H)\)">\(D_i(H)\)</span> for <span class="math" data-tex="\(i\ne1\)">\(i\ne1\)</span>.</p>
+<p><strong>5.5.</strong> Show that the function <span class="math" data-tex="\(E_Sf\)">\(E_Sf\)</span> of Theorem (J) has values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> and satisfies the same Lipschitz condition as <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> The proofs for <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span> are those for <span class="math" data-tex="\(g\)">\(g\)</span> in Lemma 1.1, with the inequalities reversed and with the distances subtracted: the term for <span class="math" data-tex="\(y\)">\(y\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> is at least the term for <span class="math" data-tex="\(y\)">\(y\)</span> at <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span> minus <span class="math" data-tex="\(L\,d_\infty(x,x&#x27;)\)">\(L\,d_\infty(x,x&#x27;)\)</span>, and for <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span> the term with <span class="math" data-tex="\(y=x\)">\(y=x\)</span> is <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> and every term is at most <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>. If <span class="math" data-tex="\(e\)">\(e\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz with <span class="math" data-tex="\(e=f\)">\(e=f\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, then for every <span class="math" data-tex="\(y\in S\)">\(y\in S\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(y)-L\,d_\infty(x,y)&amp;\le e(x)\\
+&amp;\le f(y)+L\,d_\infty(x,y) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+f(y)-L\,d_\infty(x,y)&amp;\le e(x)\\
+&amp;\le f(y)+L\,d_\infty(x,y) ,
+\end{aligned}
+\]</span>
+and the maximum of the left sides is <span class="math" data-tex="\(g&#x27;(x)\)">\(g&#x27;(x)\)</span>, the minimum of the right sides <span class="math" data-tex="\(g(x)\)">\(g(x)\)</span>.</p>
+<p><strong>5.2.</strong> By Lemma 2.3(3), <span class="math" data-tex="\(D_i(f)^2=\sum_{A\ni i}\|f_A\|_2^2\)">\(D_i(f)^2=\sum_{A\ni i}\|f_A\|_2^2\)</span>. In the sum over <span class="math" data-tex="\(i\)">\(i\)</span>, the term <span class="math" data-tex="\(\|f_A\|_2^2\)">\(\|f_A\|_2^2\)</span> occurs once for every <span class="math" data-tex="\(i\in A\)">\(i\in A\)</span>. By Lemma 2.3(1) and (2), <span class="math" data-tex="\(\|f\|_2^2=\sum_A\|f_A\|_2^2\)">\(\|f\|_2^2=\sum_A\|f_A\|_2^2\)</span>, and <span class="math" data-tex="\(\|f_\varnothing\|_2^2=(\mathbb Ef)^2\)">\(\|f_\varnothing\|_2^2=(\mathbb Ef)^2\)</span>. Since <span class="math" data-tex="\(|A|\ge1\)">\(|A|\ge1\)</span> for <span class="math" data-tex="\(A\ne\varnothing\)">\(A\ne\varnothing\)</span>, the claim follows.</p>
+<p><strong>5.3.</strong> (a) <span class="math" data-tex="\(|f(x)-f(y)|\le\tfrac1N\sum_k|x_k-y_k|\)">\(|f(x)-f(y)|\le\tfrac1N\sum_k|x_k-y_k|\)</span>, and this mean is at most <span class="math" data-tex="\(\max_k|x_k-y_k|\)">\(\max_k|x_k-y_k|\)</span>. The functions <span class="math" data-tex="\(x_k-\tfrac12\)">\(x_k-\tfrac12\)</span> have the mean <span class="math" data-tex="\(0\)">\(0\)</span>, are orthogonal to each other, and <span class="math" data-tex="\(\int_0^1(w-\tfrac12)^2dw=\tfrac1{12}\)">\(\int_0^1(w-\tfrac12)^2dw=\tfrac1{12}\)</span>. So <span class="math" data-tex="\(\|f-\tfrac12\|_2^2=\tfrac1{N^2}\cdot N\cdot\tfrac1{12}\)">\(\|f-\tfrac12\|_2^2=\tfrac1{N^2}\cdot N\cdot\tfrac1{12}\)</span>. (b) <span class="math" data-tex="\(E_i\)">\(E_i\)</span> replaces <span class="math" data-tex="\(x_i\)">\(x_i\)</span> by <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>. So <span class="math" data-tex="\(g-E_Sg=\tfrac1{\sqrt N}\sum_{k\notin S}(x_k-\tfrac12)\)">\(g-E_Sg=\tfrac1{\sqrt N}\sum_{k\notin S}(x_k-\tfrac12)\)</span>, with the square of the norm <span class="math" data-tex="\(\tfrac1N(N-|S|)\tfrac1{12}\)">\(\tfrac1N(N-|S|)\tfrac1{12}\)</span>. For <span class="math" data-tex="\(x=(1,\dots,1)\)">\(x=(1,\dots,1)\)</span>, <span class="math" data-tex="\(y=0\)">\(y=0\)</span>: <span class="math" data-tex="\(g(x)-g(y)=\sqrt N\)">\(g(x)-g(y)=\sqrt N\)</span> and <span class="math" data-tex="\(\max_k|x_k-y_k|=1\)">\(\max_k|x_k-y_k|=1\)</span>; and <span class="math" data-tex="\(|g(x)-g(y)|\le\tfrac1{\sqrt N}\cdot N\max_k|x_k-y_k|\)">\(|g(x)-g(y)|\le\tfrac1{\sqrt N}\cdot N\max_k|x_k-y_k|\)</span>. So the least <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\(\sqrt N\)">\(\sqrt N\)</span>. The function <span class="math" data-tex="\(g\)">\(g\)</span> stays far from every junta on a bounded number of coordinates, and its Lipschitz constant for the sup distance is not bounded.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(|\,\|a\|-\|b\|\,|\le\|a-b\|\)">\(|\,\|a\|-\|b\|\,|\le\|a-b\|\)</span>, so <span class="math" data-tex="\(|H(z)-H(z&#x27;)|\le4\|z_1-z_1&#x27;\|\)">\(|H(z)-H(z&#x27;)|\le4\|z_1-z_1&#x27;\|\)</span>, which is at most <span class="math" data-tex="\(4\,d_\infty(z,z&#x27;)\)">\(4\,d_\infty(z,z&#x27;)\)</span>. From <span class="math" data-tex="\(\|z_1+\tfrac12\|=\tfrac12-\|z_1\|\)">\(\|z_1+\tfrac12\|=\tfrac12-\|z_1\|\)</span>: <span class="math" data-tex="\(H(Tz)=1-2+4\|z_1\|=-H(z)\)">\(H(Tz)=1-2+4\|z_1\|=-H(z)\)</span>. <span class="math" data-tex="\(H\)">\(H\)</span> does not depend on <span class="math" data-tex="\(z_i\)">\(z_i\)</span> for <span class="math" data-tex="\(i\ne1\)">\(i\ne1\)</span>, so <span class="math" data-tex="\(D_i(H)=0\)">\(D_i(H)=0\)</span>. <span class="math" data-tex="\(E_1H=\int_0^1(1-4\|w\|)\,dw\)">\(E_1H=\int_0^1(1-4\|w\|)\,dw\)</span>, which is <span class="math" data-tex="\(1-4\cdot\tfrac14=0\)">\(1-4\cdot\tfrac14=0\)</span>. So <span class="math" data-tex="\(D_1(H)^2=\|H\|_2^2\)">\(D_1(H)^2=\|H\|_2^2\)</span>, and <span class="math" data-tex="\(\|H\|_2^2=2\int_0^{1/2}(1-4w)^2dw=\tfrac13\)">\(\|H\|_2^2=2\int_0^{1/2}(1-4w)^2dw=\tfrac13\)</span>. Hence <span class="math" data-tex="\(D_1(H)=1/\sqrt3\)">\(D_1(H)=1/\sqrt3\)</span>.</p>
+<p><strong>5.5.</strong> A mean of numbers in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> lies in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. For one coordinate,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|E_if(x)&amp;-E_if(y)|\\
+&amp;\le\int_0^1|f(x^{w})-f(y^{w})|\,dw\\
+&amp;\le L\max_k|x_k-y_k| ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+|E_if(x)&amp;-E_if(y)|\\
+&amp;\le\int_0^1|f(x^{w})-f(y^{w})|\,dw\\
+&amp;\le L\max_k|x_k-y_k| ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(x^w\)">\(x^w\)</span>, <span class="math" data-tex="\(y^w\)">\(y^w\)</span> have <span class="math" data-tex="\(w\)">\(w\)</span> at the position <span class="math" data-tex="\(i\)">\(i\)</span>; the two points <span class="math" data-tex="\(x^w,y^w\)">\(x^w,y^w\)</span> agree at the position <span class="math" data-tex="\(i\)">\(i\)</span> and differ elsewhere as <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> do. Repeat this for the coordinates outside <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-I] OpenAI, <em>Hardness of finding large independent sets in three-colorable graphs</em>, OpenAI Math Release preprint, 24 September 2026, Sections 2 and 4. https://github.com/openai/math/tree/main/preprints/Hardness-of-finding-large-independent-sets-in-three-colorable-graphs-September-24-2026</li>
+<li>[Austin] T. Austin, <em>On the failure of concentration for the <span class="math" data-tex="\(\ell_\infty\)">\(\ell_\infty\)</span>-ball</em>, arXiv:1309.3315, version 4, Theorem 1.1 and Section 2. https://arxiv.org/abs/1309.3315</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

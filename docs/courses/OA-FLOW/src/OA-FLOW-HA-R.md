@@ -4,7 +4,7 @@
 
 The Hilbert space is arbitrary. Inner products are linear in the first variable. The inputs are [CI-1–3](OA-FLOW-CI.md#oa-flow.ci.1), [BD-1–4](OA-FLOW-BD.md#oa-flow.bd.1), their exact spectral inputs, and only the closed-form representation proved in [FF-4](OA-FLOW-FF.md#oa-flow.ff.5). In particular the Fourier and modular parts of those later applications are not inputs here. The earlier Hilbert facts are [SF-0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0) and [SB-0](OA-FLOW-SF.md#OA-FLOW.SF.SB0); the full spectral-domain proof is [SB-1–SB-6](OA-FLOW-SF.md#OA-FLOW.SF.SB1). Scalar spectral convergence uses [SC-04–05](OA-FLOW-SC.md#sc-04).
 
-A free human development route is [Boey's institutional thesis, Definitions 4.1/4.3 and Lemmas 4.6–4.10, printed pp.25–31](https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/245c2a41-48ee-4c8d-ad38-95a8353dc3d1/content#page=31). The proof below supplies the graph-core, closed-range-support, cutoff membership and full-domain arguments needed by the modular application. 
+A free human development route is [Boey's institutional thesis, Definitions 4.1/4.3 and Lemmas 4.6–4.10, printed pp.25–31](https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/245c2a41-48ee-4c8d-ad38-95a8353dc3d1/content#page=31). The bounded-vector construction has this mathematical antecedent. Here the graph-core proof uses an explicit pair of resolvents and an adjoint-product calculation; the compact-cutoff identities are then derived for the later modular application.
 
 <a id="oa-flow.ha-r.1"></a>
 
@@ -127,45 +127,97 @@ If \(T\) is affiliated with \(N\), every unitary of \(N'\) commutes with \(T,T^*
 
 <a id="oa-flow.ha-r.5"></a>
 
-## HA-R5. Cutoffs, their actual algebra membership and the graph core
+## HA-R5. Resolvent pairs give the graph core
 
-Apply HA-R4 to \(T=T_\eta\), where \(\eta\in D(F)\). Let \(f\in C_c((0,\infty))\), extended to be zero at zero. All bounded functions of \(h,k\) used below lie in \(N\). For \(a\in\mathcal A\), commutation with \(\lambda_a\), (HR8), and (HR13) give
+Fix \(\eta\in D(F)\), and use HA-R4 for \(T=T_\eta=uh=ku\). We first record a bounded multiplier calculation. If \(\phi\) is a bounded Borel function on \([0,\infty)\) and \(t\phi(t)\) is bounded, then
 \[
-\begin{split}
-\lambda_a f(k)\eta&=k f(k)u a,\\
-\lambda_a f(h)F\eta&=h f(h)u^*a.
-\end{split}
-\qquad
-\begin{split}
-R_{f(k)\eta}&=k f(k)u,\\
-R_{f(h)F\eta}&=h f(h)u^*.
-\end{split}
-\tag{HR14}
+ R_{\phi(k)\eta}=k\phi(k)u,\qquad
+ R_{\phi(h)F\eta}=h\phi(h)u^*.
+ \tag{HR14}
 \]
-The left formulas are first tested on \(\mathcal A\); the boundedness of the right operators proves the asserted right boundedness and then their equality everywhere. No identity between two unbounded adjoints beyond (HR8) is assumed.
+In particular both vectors are right bounded. To prove this, commute the bounded operator \(\phi(k)\) past \(\lambda_a\), for \(a\in\mathcal A\), and use (HR8): \(\lambda_a\phi(k)\eta=\phi(k)T a=k\phi(k)u a\). The other formula uses \(T^*a=\lambda_a F\eta\), only on its already proved test domain. This calculation makes no assertion about \(F\phi(k)\eta\); that domain statement comes next.
 
-It follows that \(hf(h)=u^*R_{f(k)\eta}\) and \(kf(k)=uR_{f(h)F\eta}\) belong to \(I\). Choose \(g\in C_c((0,\infty))\) with \(g(t)=1/t\) on \(\operatorname{supp}f\). Then \(f(h)=g(h)hf(h)\in I\), and likewise \(f(k)\in I\). Choose real \(f_1\in C_c((0,\infty))\) equal to one on \(\operatorname{supp}f\), and write \(f=\overline{f_1}f_2\), \(f_2=f\). The factors \(f_j(h)\) and \(f_j(k)\) lie in \(I\), so
-\(f(h),f(k)\in I^*I\subseteq R(\mathcal D)\).
-Factoring once more, with the two factors already in the \*-algebra \(R(\mathcal D)\), also puts them in \(R(\mathcal D^2)\).
-
-The vector membership needed for the involution formula is equally essential. Factor \(f=\overline{f_1}f_2\) as above. By (HR14),
-\(R_{f(h)F\eta}=f_1(h)^*R_{f_2(h)F\eta}\in I^*I\).
-Injectivity of \(R\) therefore gives \(f(h)F\eta\in\mathcal D\), and the same argument gives \(f(k)\eta\in\mathcal D\). Repeat the factorization, now with the vector factor already in \(\mathcal D\) and the operator factor in \(R(\mathcal D)\). The product convention (HR4) then yields
-\(f(h)F\eta,f(k)\eta\in\mathcal D^2\).
-For real \(f\), taking adjoints in (HR14), using (HR13), and then (HR3) proves
+**Two resolvents and one adjoint pairing.** For \(\epsilon,\delta>0\), put
 \[
-F(f(k)\eta)=f(h)F\eta.
-\tag{HR15}
+ r(t)=\frac1{1+\epsilon t^2},\qquad
+ s(t)=\frac1{\delta+t^2},\qquad
+ \chi(t)=t^2r(t)s(t).
+ \tag{HR-R1}
 \]
-All vectors in this formula have already been proved to lie in its domains.
-
-Define \(g(t)=1\) for \(0<t\leq1\), \(g(t)=2-t\) for \(1\leq t\leq2\), and \(g(t)=0\) for \(t\geq2\). Let \(f_n(t)=g(t/n)g(1/(nt))\). Then \(f_n\in C_c((0,\infty))\), with support in \([1/(2n),2n]\); \(0\leq f_n\leq1\), and \(f_n(t)\uparrow1\) for every \(t>0\). Formula (HR10) says exactly that the relevant vectors have zero spectral mass at zero. Spectral dominated convergence and (HR15) give
+The functions \(r,s,ts\), as well as their products with \(t\), are bounded. Define three right-bounded vectors
 \[
-f_n(k)\eta\longrightarrow\eta,\qquad
-F(f_n(k)\eta)=f_n(h)F\eta\longrightarrow F\eta.
-\tag{HR16}
+ a=u r(h)F\eta,\qquad b=u s(h)F\eta,\qquad c=k s(k)\eta .
 \]
-The approximants lie in \(\mathcal D^2\). Thus both \(\mathcal D^2\) and \(\mathcal D\) are graph cores for \(F\). In particular they are dense in \(H\). No separability of \(H\) was used: the single sequence is constructed separately for each \(\eta\) by scalar functional calculus.
+Equations (HR1), (HR13) and (HR14) give
+\[
+ R_a=k r(k),\qquad R_b=k s(k),\qquad R_c=k^2s(k)u.
+\]
+All operators displayed here are bounded; in transporting \(h\) and \(k\), the scalar functions being transported vanish at zero. Now apply (HR2), rather than assume that \(F\) commutes with a spectral multiplier:
+\[
+ R_a^*c=\chi(k)\eta\in\mathcal D,\qquad
+ F(\chi(k)\eta)=R_c^*a=\chi(h)F\eta .
+ \tag{HR-R2}
+\]
+For the last equality, substitute the three bounded formulas to obtain
+\(u^*k^2s(k)u r(h)F\eta=h^2s(h)r(h)F\eta\).
+Also
+\(R_a^*R_b=\chi(k)\in I^*I\subseteq R(\mathcal D)\).
+The vectors \(u^*r(k)\eta,u^*s(k)\eta\) have multipliers \(hr(h),hs(h)\), respectively. Their adjoint product similarly proves \(\chi(h)\in R(\mathcal D)\).
+
+Thus \(\chi(k)^2\eta\) is a product of two members of \(\mathcal D\): one application of \(\chi(k)\) puts the vector in \(\mathcal D\), and the second is multiplication by a represented member of \(\mathcal D\). The same holds for \(\chi(h)^2F\eta\). Their bounded right multipliers, computed by (HR14), are adjoints:
+\[
+ \big(k\chi(k)^2u\big)^*=h\chi(h)^2u^* .
+\]
+Using (HR3) and injectivity of \(R\), we obtain the full-domain identity
+\[
+ \chi(k)^2\eta\in\mathcal D^2,\qquad
+ F(\chi(k)^2\eta)=\chi(h)^2F\eta .
+ \tag{HR-R3}
+\]
+
+Choose \(\epsilon=\delta=1/n\), and denote the resulting function by
+\[
+ \chi_n(t)=\frac{t^2}{(t^2+1/n)(1+t^2/n)}.
+\]
+For \(t>0\), both factors \(t^2/(t^2+1/n)\) and \(1/(1+t^2/n)\) increase to one; hence \(0\leq\chi_n(t)\uparrow1\). At zero, \(\chi_n(0)=0\). By (HR10), \(\eta\) is in the support of \(k\) and \(F\eta\) is in the support of \(h\). Spectral dominated convergence therefore gives
+\[
+ \big(\chi_n(k)^2\eta,\ F(\chi_n(k)^2\eta)\big)
+ \longrightarrow(\eta,F\eta).
+ \tag{HR-R4}
+\]
+This proves that \(\mathcal D^2\), and consequently \(\mathcal D\), are graph cores for \(F\). In particular they are dense in \(H\). The sequence depends on the fixed vector \(\eta\); it imposes no separability assumption on \(H\).
+
+**Compact cutoffs for the later modular argument.** We also prove the precise compact-cutoff statements used downstream. Let \(f\in C_c((0,\infty))\), extended by zero. Set
+\[
+ v(t)=\frac{(1+t^2)f(t)}{t^2},\qquad
+ w(t)=\frac{(1+t^2)f(t)}t,
+\]
+with value zero at zero. Both functions are bounded and supported away from zero, and so are \(tv\) and \(tw\). The right-bounded vectors
+\[
+ a=u(1+h^2)^{-1}F\eta,\qquad b=u v(h)F\eta,\qquad c=w(k)\eta
+\]
+have multipliers \(k(1+k^2)^{-1},kv(k),kw(k)u\). Consequently
+\[
+ R_a^*R_b=f(k)\in R(\mathcal D),\qquad
+ R_a^*c=f(k)\eta\in\mathcal D,\qquad
+ F(f(k)\eta)=R_c^*a=\overline f(h)F\eta .
+\]
+The symmetric operator calculation, using \(u^*(1+k^2)^{-1}\eta\) and \(u^*v(k)\eta\), gives \(f(h)\in R(\mathcal D)\).
+Choose a real compactly supported \(f_1\) equal to one on the support of \(f\). Then \(f(k)\eta=f_1(k)[f(k)\eta]\in\mathcal D^2\). The same reasoning gives \(\overline f(h)F\eta\in\mathcal D^2\). It also gives \(f(h),f(k)\in R(\mathcal D^2)\), by factoring \(f=f_1 f\) within the represented algebra. In particular, for real \(f\),
+\[
+ F(f(k)\eta)=f(h)F\eta .
+ \tag{HR15}
+\]
+Every vector in this equality has already been placed in its domain.
+
+For an explicit compact family, define \(g(t)=1\) on \(0<t\leq1\), \(g(t)=2-t\) on \(1\leq t\leq2\), and \(g(t)=0\) on \(t\geq2\). Set \(f_n(t)=g(t/n)g(1/(nt))\). These functions have support in \([1/(2n),2n]\), satisfy \(0\leq f_n\uparrow1\) on \((0,\infty)\), and give
+\[
+ f_n(k)\eta\in\mathcal D^2,\qquad
+ f_n(k)\eta\longrightarrow\eta,\qquad
+ F(f_n(k)\eta)=f_n(h)F\eta\longrightarrow F\eta .
+ \tag{HR16}
+\]
+This supplies the compact family as a consequence of the explicit adjoint-pairing calculation; the graph-core proof above already follows from the resolvents.
 
 <a id="oa-flow.ha-r.6"></a>
 
@@ -222,4 +274,4 @@ These constructions do not assert that an arbitrary n.s.f. weight's finite-star 
 
 ![Exact graph spectrum and cutoff functions](../assets/modular-ancestry/assets/graph-polar-cutoff.png)
 
-Original CC0 illustration. The left panel shows the reciprocal scalar spectrum in CI-2–3; the right panel shows the exact compact cutoff functions of HA-R5, HR14–HR16. The bottom row retains both Hilbert spaces and the full graph-domain identities. The sampled curves illustrate the proved formulas. [Reproduction source](../assets/modular-ancestry/render_graph_polar_cutoff.py) and [editable SVG](../assets/modular-ancestry/assets/graph-polar-cutoff.svg).
+Original CC0 illustration. The left panel shows the reciprocal scalar spectrum in CI-2–3; the upper-right panel shows the exact compact cutoff functions of HA-R5, HR14–HR16; the middle row shows the squared rational regularizers and adjoint-pairing mechanism of HR-R1–HR-R4. The bottom row retains both Hilbert spaces and the full graph-domain identities. The sampled curves illustrate the proved formulas. [Reproduction source](../assets/modular-ancestry/render_graph_polar_cutoff.py) and [editable SVG](../assets/modular-ancestry/assets/graph-polar-cutoff.svg).

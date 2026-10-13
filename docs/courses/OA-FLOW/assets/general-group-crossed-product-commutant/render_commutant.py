@@ -57,21 +57,21 @@ c.text(.05,.21,'Full ideal identities force the two orthogonal',fontsize=16,colo
 c.text(.05,.15,'test vectors to vanish on both map ranges.',fontsize=16,color='#46566a')
 c.text(.05,.06,'CCM2 + compact paired density + CCM3 give '+r'$R^{\prime}=Q$.',fontsize=16,color='#15243c')
 
-d=panel([.51,.065,.455,.43],'4  Compact inversion pairs')
-d.text(.045,.82,r'$K=[-1,1],\quad V=(-2.1,2.1),\quad t^{-1}=-t$',fontsize=17,color='#46566a')
+d=panel([.51,.065,.455,.43],'4  Normalized inversion and averaging')
+d.text(.045,.82,r'$J_0\xi(t)=\Delta(t)^{-1/2}\xi(t^{-1}),\quad J_0^2=1$',fontsize=17,color='#46566a')
 plot=fig.add_axes([.56,.22,.36,.16]);plot.set_facecolor('white')
 t=np.linspace(-2.2,2.2,881);w=np.maximum(0,np.minimum(1,2-np.abs(t)));g1=w*(2-t)/4;g2=w*(2+t)/4
 plot.axvspan(-1,1,color='#dfe8f3',alpha=.6);plot.plot(t,g1,color=blue,lw=2.4,label=r'$g_1(t)$');plot.plot(t,g2,color=red,lw=2.4,label=r'$g_2(t)=g_1(-t)$');plot.plot(t,w,color=green,lw=2,ls='--',label=r'$g_1+g_2=w$')
 plot.set_xlim(-2.2,2.2);plot.set_ylim(-.035,1.1);plot.set_xticks([-2,-1,0,1,2]);plot.set_yticks([0,.5,1]);plot.tick_params(labelsize=13);plot.legend(loc='upper right',fontsize=12,framealpha=.95)
 plot.spines[['top','right']].set_visible(False)
-d.text(.045,.23,r'$\Xi(t)=\sum_j[g_j(t)\Psi_j(t)+g_j(t^{-1})X_j(t^{-1})]$',fontsize=15,color='#15243c')
-d.text(.045,.14,r'$\|2\Phi-\Xi\|_2\leq6\varepsilon\mu(V)^{1/2}$',fontsize=18,color=green)
-d.text(.045,.055,'General CCM6 uses finite covers; the plotted cutoffs are only on '+r'$\mathbb{R}$.',fontsize=14,color='#46566a')
+d.text(.045,.23,r'$\mathcal{A}(F,G)=\frac{1}{2}(F+J_0G),\quad H_{\Phi}=(\Phi,J_0\Phi)$',fontsize=15,color='#15243c')
+d.text(.045,.14,r'$\|\mathcal{A}Q-\Phi\|_2\leq\|Q-H_{\Phi}\|/\sqrt{2}$',fontsize=18,color=green)
+d.text(.045,.055,'Finite partitions in the direct sum; plot: an example on '+r'$\mathbb{R}$.',fontsize=14,color='#46566a')
 
 fig.text(.04,.025,'CCM1–8: full proof and exact domains accompany this diagram.  Original CC0 illustration; 3400 × 2400 pixels.',fontsize=14,color='#526176')
 fig.savefig(ASSETS/'crossed-product-commutant.png',dpi=200,metadata={'Software':'OA-FLOW original reproducible diagram'})
 fig.savefig(ASSETS/'crossed-product-commutant.svg',metadata={'Date':None,'Creator':'OA-FLOW original reproducible diagram'})
 plt.close(fig)
-data={'finite_example':{'group':'Z/2Z','coordinate_order':['t=0,e1','t=0,e2','t=1,e1','t=1,e2'],'pi_diagonal':['a','b','b','a'],'b_diagonal':['c','d','c','d'],'lambda_permutation':[3,4,1,2],'rho_permutation':[4,3,2,1],'left_complex_dimension':4,'right_complex_dimension':4},'cutoffs':{'group':'R additive','K':[-1,1],'V':[-2.1,2.1],'w':'max(0,min(1,2-|t|))','g1':'w(t)(2-t)/4','g2':'w(t)(2+t)/4','t':t.tolist(),'g1_values':g1.tolist(),'g2_values':g2.tolist(),'w_values':w.tolist()},'general_bound':'||2 Phi-Xi||_2 <= 6 epsilon sqrt(mu(V))','projection_identity':'||r* zeta1||^2 = -k ||r zeta2||^2, k>0','native_pixels':[3400,2400],'license':'CC0-1.0 to the extent of rights held'}
+data={'finite_example':{'group':'Z/2Z','coordinate_order':['t=0,e1','t=0,e2','t=1,e1','t=1,e2'],'pi_diagonal':['a','b','b','a'],'b_diagonal':['c','d','c','d'],'lambda_permutation':[3,4,1,2],'rho_permutation':[4,3,2,1],'left_complex_dimension':4,'right_complex_dimension':4},'cutoffs':{'group':'R additive','K':[-1,1],'V':[-2.1,2.1],'w':'max(0,min(1,2-|t|))','g1':'w(t)(2-t)/4','g2':'w(t)(2+t)/4','t':t.tolist(),'g1_values':g1.tolist(),'g2_values':g2.tolist(),'w_values':w.tolist()},'general_bound':'||A Q-Phi||_2 <= ||Q-(Phi,J0 Phi)||/sqrt(2) <= epsilon sqrt(mu(V)/2)','averaging':{'J0':'J0 f(t)=Delta(t)^(-1/2) f(t^(-1))','J0_linear_unitary_involution':True,'A':'A(F,G)=(F+J0 G)/2','operator_norm_bound':'1/sqrt(2)','target':'(Phi,J0 Phi)','symmetric_cutoff_neighborhood_required':False},'projection_identity':'||r* zeta1||^2 = -k ||r zeta2||^2, k>0','native_pixels':[3400,2400],'license':'CC0-1.0 to the extent of rights held'}
 (ASSETS/'crossed-product-commutant-data.json').write_text(json.dumps(data,indent=2)+'\n',encoding='utf-8')
 print('Rendered original PNG, SVG and exact data.')

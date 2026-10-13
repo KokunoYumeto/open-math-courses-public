@@ -1,0 +1,37 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "one-tape-time-in-two-fifths-power-space",
+  "title": "One-tape time in two-fifths-power space",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-13",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "An exposition of OpenAI's proof (2026) that the outcome of T steps of a deterministic machine with one writable tape can be computed in O(T^(2/5) polylog T) bits of working storage, with unrestricted running time; the exponent 1/2 was the classical one. The main theorem is proved in full, with no hypothesis from the literature. The first lesson cuts the tape into blocks, defines visits and controllers, and proves that a proposed list of controllers can be checked block by block (local replay). The second lesson gives the algebra: fields of characteristic two by repeated quadratic extensions, extensions of Boolean functions to polynomials that are homogeneous in each word, and the extraction of the top coefficient. The third lesson proves the evaluator: a procedure that adds a wanted word to one register of a shared pool and restores all other registers, for ordinary rules and for history rules (a sum over guesses of a product of tests), with the storage on the stack counted by weighted paths. The fourth lesson applies it: epochs and rounds of visits, checkpoints of the blocks, the round as a history rule, the weight of a path, the theorem, and why the exponent is 2/5. The fifth lesson shows where the argument stops for two writable tapes, proves the bound O~(sqrt T) for any fixed number of writable tapes, and derives a lower bound for time on machines with one writable tape from the space hierarchy theorem, which is a named hypothesis.",
+  "prerequisites": [
+    "core course Mathematical Logic, Set Theory, and Computability (C80): Turing machines",
+    "polynomials over a field; finite fields are constructed in the second lesson",
+    "the lessons prove every other fact they use, except the named hypothesis (SH) of the fifth lesson, which is used only for Corollary 3.1 there"
+  ],
+  "lessons": [
+    "one-tape-machines-blocks-and-visits",
+    "polynomials-for-boolean-functions",
+    "an-evaluator-with-one-pool-of-registers",
+    "histories-checkpoints-and-the-theorem",
+    "several-writable-tapes-and-lower-bounds-for-time"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "reading": "The manuscript 'Simulating One-Tape Time in Two-Fifths-Power Space' (OpenAI, 25 Sep 2026, in the revision of the repository on 13 Oct 2026; five sections, one figure, about 60 KB of TeX) was read in full on 13 Oct 2026, and every step of its argument for the main theorem was derived again while the lessons were written: the averaging over offsets; the total maps sel and Visit on raw controllers and blocks with the confinement |q| <= tau; the local replay lemma; the field tower; the homogeneous lookup extensions with the augmentation coordinate; the top-coefficient formula; the Add contract for base, ordinary and history vertices on one pool; the stack accounting by weighted paths; the words A_(e,i) and H_(e,j) with the extraction, checkpoint and round rules; the weight bound; the parameters and the unknown-time clause; the balance of the three scales. No error found. Section 4 (several writable tapes, O~(sqrt T)) was derived again and is proved in the fifth lesson. Of Section 5, the first corollary (DSPACE(s) is not contained in one-writable-tape TIME(s^(5/2-eps))) is proved from the space hierarchy theorem, stated as the named hypothesis (SH) in its textbook form (a language decided in space O(s) and not in space o(s)); with this form the manuscript's passage from an exact-cell theorem to bit bounds is not needed. The second corollary (a bounded-space halting language, complete for linear space) is relayed in one paragraph and not proved. Differences of presentation, none a correction: the weight bound is proved by an induction over the epochs with the explicit constant E(k + kc + 2); the system for several tapes is written out with its incoming vertices and a lemma that all checks pass exactly for the reference list; the simulator's notion of space is stated as a convention (bits of working storage of an algorithm described in words). Checked by the programs plan/checks_20261013/ot_check_evaluator.py (the field tower with 4, 16, 256 elements; lookup extensions; the top coefficient; the Add contract from random pool contents on ordinary chains of width 3 and on history rules of width 2 over the field with 16 elements, including a history vertex above a history vertex with a checkpoint-like child, and a rule with three passing guesses: 9.3 million calls of Add) and ot_check_visits.py (300 random toy machines: crossing counts per offset, visits against the direct simulation, replay; exhaustively over 262,144 raw suffixes for three machines: exactly one suffix passes, the true one). Both passed at the first run. An end-to-end run of the algorithm on a real instance is not possible: its running time is astronomically large by design.",
+    "layout": "Measured on 13 Oct 2026 in the staged reader at 1100, 768, 543 and 375 px: lessons 1 to 5 have 342, 306, 381, 318 and 277 formulas, 0 rendering errors, 0 wide formulas, no sideways page scroll. After the first measurement 24 formulas were stacked or moved into the text, after the second 1."
+  },
+  "open_obligations": [
+    "The notion of space of the simulating algorithm is a convention of the course (bits of working storage of an algorithm described in words; storage of finished subroutines is reused). The translation of the algorithms into Turing machines with a read-only input tape and work tapes, with the same space up to constant factors, is standard and is not carried out. All space claims for local computations (field arithmetic, lookup extensions, visits, replay) are argued at this level.",
+    "Named hypothesis (SH) of the fifth lesson, the space hierarchy theorem (Stearns, Hartmanis and Lewis), in the form 'for every space-constructible s there is a language decided in space O(s) and not in space o(s)'. Not proved in the programme; the manuscript cites Ladner and Lynch (1976) for a variant, which was not read. Only Corollary 3.1 of the fifth lesson depends on it. A foundation lesson on space-bounded computation (simulation of a machine by a universal one within a constant factor of space; the diagonal argument) would remove it.",
+    "Not in the course: the second corollary of the manuscript (the bounded-space halting language is complete for DSPACE(n) and is not in one-writable-tape TIME(N^(5/2-eps))); the remark on one bit of an output is stated without a detailed proof; the simulation of several tapes by one tape in quadratic time is mentioned as the usual construction and not proved (it is used only in a comparison).",
+    "Attributions without a checked reference: the idea of the shared-register evaluator is attributed to Cook and Mertz and the multitape bound O(sqrt(T log T)) to R. Williams on the authority of the manuscript's introduction; their papers were not read for this course.",
+    "The lessons were written and checked by one model in one session; they have not been checked by a second reader."
+  ],
+  "free_sources": [
+    "OpenAI, Simulating One-Tape Time in Two-Fifths-Power Space (OpenAI Math Release preprint, 25 Sep 2026)"
+  ]
+}

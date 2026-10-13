@@ -312,4 +312,42 @@ Orthogonality instead gives the bound \(\|y\|_\varphi+\|z\|_\varphi\leq\sqrt2\|x
 
 **Solution.** Apply CPI05 to the finite family enlarged by all adjoints. Expectations and pinching preserve adjoints, and \(E_Q(x^*)=E_Q(x)^*\). Add the two squared inequalities. For the absolute-error approximation CPI06, request tolerance \(\varepsilon/\sqrt2\) for both \(x\) and \(x^*\); the resulting \(\#\)-error is less than \(\varepsilon\).
 
-The results above do not assume separable predual and do not assert the subsequent construction or regularity of a maximal abelian subalgebra in a prescribed factor. Those additional conclusions require the further arguments of XIV.5.
+### From partitions to maximal abelian algebras
+
+The partition results above do not require separable predual. The further existence theorems use separability to build a generating sequence. Their complete proofs are in the earlier programme lessons below.
+
+For a maximal abelian algebra \(A\subset N\), put
+
+\[
+ \mathcal N_N(A)=\{u\in\mathcal U(N):uAu^*=A\}.
+\]
+
+It is **regular** when \(\mathcal N_N(A)''=N\), and **semiregular** when \(\mathcal N_N(A)''\) is a factor. These are different conclusions. In MASAs in expected semifinite subfactors, Theorems 2.1 and 3.1, a semifinite subfactor \(N\) of a separable-predual factor \(M\), with \(N'\cap M=\mathbb C1\) and a **normal** expectation \(M\to N\), contains an algebra \(A\) that is maximal abelian in \(M\) and semiregular in \(N\). If \(N\) is approximately finite dimensional, \(A\) can be regular in \(N\). Lemma 1.1 there proves faithfulness of the expectation; the construction treats type I, \(\mathrm{II}_1\) and \(\mathrm{II}_\infty\) separately. The finite construction propagates one corner partition through every old matrix row, retaining the normalization of the corner state. The semifinite construction uses the same matrix units in both algebras.
+
+The centralizer corollary, Corollary 4.1, applies to a faithful normal state with \((M_\varphi)'\cap M=\mathbb C1\). Its centralizer is a finite factor: the restricted state is tracial, and its center lies in the displayed relative commutant. Its preserving expectation supplies the hypothesis of the preceding theorem. This is an existence statement under the irreducibility hypothesis; it does not apply to every state centralizer.
+
+Semiregular MASAs and scalar pinching, Theorem 2.2, starts with a given semiregular MASA \(A\) of a separable-predual \(\mathrm{II}_1\) factor \(N\). It constructs an approximately finite-dimensional factor \(R\) with \(A\subset R\subset N\) and \(R'\cap N=\mathbb C1\). The preceding matching lemmas prove that equal-trace projections of \(A\) can be matched by its own partial normalizers. The partitions are chosen in the current corner and transported across the old rows, which preserves compatibility at every stage.
+
+Theorem 3.1 of that lesson proves simultaneous scalar pinching for every irreducible inclusion \(N\subset M\) of separable-predual \(\mathrm{II}_1\) factors: a finite partition in \(N\) makes the sum of squared errors
+
+\[
+ \sum_{x\in F}\left\|\sum_i e_i x e_i-\tau(x)1\right\|_2^2
+\]
+
+arbitrarily small. Neither given factor is assumed approximately finite dimensional. The proof first controls the part inside an auxiliary irreducible approximately finite-dimensional factor, then refines corners to remove the orthogonal remainder. The decreasing-factor input is used inside that auxiliary factor, where its relative commutant is known.
+
+### Group examples and the hypotheses behind multiplicity
+
+Group MASAs and singular affine examples, Theorem 2.1, proves that an abelian subgroup \(H\) gives a maximal abelian \(L(H)\subset L(G)\) exactly when every \(H\)-conjugacy orbit outside \(H\) is infinite. Proposition 3.1 and Lemmas 4.1–4.2 there verify the affine-group hypotheses and the finite-support coefficient inequality. Theorem 5.1 then proves singularity for dilations by any infinite subgroup of a countably infinite field's multiplicative group. Its Fourier truncations converge in \(L^2\); no uniform operator-norm bound on them is assumed.
+
+Double cosets and intrinsic MASA multiplicity, Lemma 1.1 and Theorems 3.1–4.1, computes the left/right commutant and proves its invariance under isomorphisms of the embedded pairs. Here \(H\) is **infinite** and abelian, and its off-subgroup double-coset action has trivial stabilizers. The projection onto \(L^2(H)\) belongs to the left/right generated algebra; this central separation is proved, rather than inferred from a reducing-subspace decomposition. The number \(n\) of nontrivial double cosets is the homogeneous type \(\mathrm I_n\) multiplicity on the complementary block. Infinitude matters: for \(H=\{e\}\subset\mathbb F_2\), the stabilizer condition holds, but \(L(H)=\mathbb C1\) is not maximal abelian and its rank-one trace-space projection is not central in \(B(\ell^2(\mathbb F_2))\).
+
+Finite-field towers and prescribed MASA multiplicities, Sections 0–5, gives every positive finite multiplicity, including \(n=1\). The fields are nested by choosing successively divisible degrees, relatively prime to \(n\). For a prime \(p\equiv1\pmod n\), the compatible direct factor has order
+
+\[
+ d=\prod_{\ell\mid n}\ell^{v_\ell(p-1)},
+\]
+
+the full part supported on primes dividing \(n\). The largest power \(n^s\) dividing \(p-1\) need not itself be a direct-factor order: at \(n=6,p=13\), the order-six subgroup of the cyclic group of order twelve has no complement. The corrected construction uses its order-twelve primary factor and takes a quotient of order six. The lesson proves existence of the fields and prime, compatibility of both primary factors and complements, and the exact index-to-multiplicity calculation.
+
+These programme results supply the remaining numbered statements and five exercises of Takesaki III, XIV.5. The infinite-subgroup qualification in Exercise 3 and the corrected direct-factor construction in Exercise 5 are essential; their unqualified intermediate claims are not used.

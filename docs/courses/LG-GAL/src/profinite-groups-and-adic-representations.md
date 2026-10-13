@@ -610,9 +610,754 @@ The distinctness hypothesis gives integral eigenspace projectors. It is precisel
 
 **Solution.** Use the two integral projectors of \(\rho(g_0)\), form the ideals of the two off-diagonal families, and scale the first eigenvector by the generator \(\pi^b\) of the upper-right ideal. The calculations in Theorem 4.1 make the upper-right ideal a unit ideal and the lower-left ideal a subset of \(\pi\mathcal O\). Hence the reduction is upper triangular with characters \(\chi_1,\chi_2\), and it does not split because its only possible \(g_0\)-stable complement is not \(G\)-stable. If all lower-left entries were zero before scaling, \(Ee_1\) would be an invariant line over \(E\). If all upper-right entries were zero, \(Ee_2\) would be one. Either contradicts irreducibility. These observations justify finiteness of both valuations used in the scaling.
 
+## 5A. Sheaf cohomology from local lifting
+
+This section supplies the abstract sheaf arguments needed in Section 6. Its proofs apply to a small site with finite limits. They do not assume geometric points, Noetherian rings, or an already constructed cohomology theory. An application to an étale basis must still prove that the chosen category and coverings have these properties. In particular, the algebraic local form, openness, finite-presentation descent and strict-local identifications required in Section 6 are separate geometric obligations.
+
+A site here is a category \(\mathcal C\) equipped with covering families, including identities, stable under pullback and composition. A sheaf of abelian groups \(F\) assigns groups and restriction maps to objects, and a section over a covered object is exactly a family of sections agreeing on all fibre products. All constructions take place in one fixed universe. Covering families can be replaced by their covering sieves, namely the sets of arrows they generate; hence the indexing data below form sets. Set-theoretic choice, including Zorn's lemma, is the background convention.
+
+### 5A.1. Matching families and exact sheafification
+
+**SH1.** Every abelian presheaf \(P\) has a sheafification \(P^\#\). Sheafification is an exact left adjoint to inclusion of sheaves. A presheaf section becomes zero after sheafification if and only if it is zero on a covering. Every section of \(P^\#\) is locally represented by sections of \(P\).
+
+*Proof.* For each object \(U\), form \(P^+(U)\) from matching families on coverings of \(U\). Identify two families when their restrictions agree on a common covering refinement. A common refinement exists by pulling back the two coverings and composing coverings. Addition is defined after such a refinement. Restrictions are obtained by pulling back the covering. These rules give an abelian presheaf and a map \(P\to P^+\).
+
+If a matching family defines zero in \(P^+(U)\), its entries vanish on a refinement, by the defining equivalence. Consequently a section of \(P(U)\) maps to zero precisely when it vanishes on a covering. Also \(P^+\) is separated: equality after restriction to a covering can be witnessed by refinements on its members, and their composite is a refinement over \(U\).
+
+For a separated presheaf \(Q\), the presheaf \(Q^+\) is a sheaf. To glue a family of its sections, choose a representing covering on each member of the original covering. Agreement on overlaps says that the representing entries agree on refinements. Separatedness of \(Q\) then makes them agree on the whole overlap, because equality can be tested on its covering. Thus the entries are one matching family on the composite covering. This gives a glued section; separatedness proves uniqueness. Applying this to \(Q=P^+\) gives
+\[
+ P^\#=(P^+)^+.
+ \tag{SC1}
+\]
+The two local representation steps compose. The zero criterion for the original section follows by composing the coverings witnessing its zero at the two steps.
+
+A map \(P\to F\) into a sheaf sends a matching family to its unique glued section in \(F\). This extends the map uniquely over \(P^+\), then over (SC1). Conversely an extension restricts to the original map. This proves the adjunction.
+
+Finite products and kernels commute with sheafification. For products, represent finitely many sections on one common refinement. For a kernel, represent a section locally in \(P\); the assertion that its image is zero can be witnessed after a further refinement, so it is locally a section of the presheaf kernel. The same refinements prove injectivity of these identifications. A presheaf surjection remains locally surjective after sheafification: locally represent the target section, and lift its representing section. Sheafification preserves cokernels by its adjunction, or by the same local description of quotient sections. These facts prove exactness. \(\square\)
+
+Kernels of maps of sheaves are computed section by section. Cokernels are sheafifications of presheaf cokernels. The natural coimage-to-image map is an isomorphism because this holds for groups locally, and SH1 identifies both sheafifications. Thus abelian sheaves form an abelian category. In particular,
+\[
+ F\longrightarrow G\longrightarrow H
+ \text{ is exact at }G
+ \quad\Longleftrightarrow\quad
+ \begin{gathered}
+ s\in G(U),\ s\mapsto0\\
+ \text{lifts locally to }F.
+ \end{gathered}
+ \tag{SC2}
+\]
+Here and below “locally” means on a covering in the site, rather than on an assumed topological space.
+
+### 5A.2. Colimits and the distinction between local and global lifting
+
+**SH2.** Products and all other limits of abelian sheaves are computed section by section. Colimits are sheafifications of presheaf colimits. Filtered colimits and arbitrary direct sums of abelian sheaves are exact.
+
+*Proof.* A limit of sheaves is a sheaf: a matching family is glued in every component, and the component gluing maps respect every arrow of the limit diagram by uniqueness. The adjunction in SH1 gives the colimit assertion.
+
+For groups, a filtered colimit consists of stage representatives, with two representatives equal when their images agree at a common later stage. This description also holds for a filtered category: finitely many objects and arrows have a common receiving object, and finitely many parallel arrows can be equalized later. It proves that filtered colimits of groups commute with finite products and kernels, and preserve exact sequences of groups.
+
+A short exact sequence of sheaves need not be surjective on sections. Nevertheless filtered sheaf colimits are exact. A representative of a target section lifts locally at its own stage by (SC2). If a middle representative has zero image after sheafification of the group colimit, SH1 first gives a covering on which that image is zero in the group colimit. On each member it is already zero at some later stage; (SC2) then lifts it after another covering. Composite coverings give exactness at the middle. Monomorphisms remain monomorphisms because they are sectionwise injective, filtered group colimits preserve that property, and SH1 is exact. This proves the assertion without claiming that an arbitrary filtered colimit is already a sheaf.
+
+For direct sums, every presheaf section has finite support. Finitely many locally required lifts or zero relations can be handled on a common refinement. The same argument and SH1 prove exactness. \(\square\)
+
+If the site has a basis whose coverings admit finite refinements, a filtered colimit of sheaves on that basis is already a sheaf: the finite equalizer for a covering commutes with the filtered group colimit, by the representative argument just given. This is the additional finiteness needed for the sectionwise comparison in Lemma 6.3; it is not an assertion about all sites.
+
+### 5A.3. Enough injectives without an assumption about points
+
+A sheaf \(J\) is injective if every map \(A\to J\) extends over every monomorphism \(A\hookrightarrow B\). Define
+\[
+ P_U=\bigl(V\longmapsto
+       \mathbb Z[\operatorname{Hom}_{\mathcal C}(V,U)]\bigr)^\#.
+ \qquad
+ \operatorname{Hom}(P_U,F)=F(U).
+ \tag{SC3}
+\]
+The group in brackets is the free abelian group on the displayed set. The equality follows directly: the image of the identity arrow determines a natural map on all generators, and the adjunction SH1 extends it uniquely to \(P_U\). The \(P_U\) generate sheaves, since all sections of a sheaf give a surjection from a direct sum of these sheaves.
+
+**SH3.** Every abelian sheaf embeds in an injective abelian sheaf.
+
+*Proof.* First we prove an extension criterion. Suppose \(J\) has the extension property only for all subobjects \(K\subset P_U\), for all \(U\). Given \(A\subset B\) and a map \(A\to J\), order its extensions to intermediate subobjects of \(B\) by inclusion. A chain has an upper bound: take its sheaf colimit, which remains a subobject of \(B\) by SH2, and glue the compatible maps. The subobjects and maps involved form a set. Zorn gives a maximal extension \(C\to J\). If \(C\ne B\), choose \(b\in B(U)\setminus C(U)\). Let \(p:P_U\to B\) be its map (SC3), and put \(K=p^{-1}(C)\). Extend \(K\to C\to J\) to \(t:P_U\to J\). The map
+\[
+ C\oplus P_U\longrightarrow J,\qquad
+ (c,v)\longmapsto \phi(c)+t(v)
+ \tag{SC4}
+\]
+kills the kernel of \((c,v)\mapsto c+p(v)\): that kernel consists of \((-p(k),k)\) for \(k\in K\). Thus (SC4) factors through the sheaf image \(C+\operatorname{im}p\). It extends \(\phi\) over a strictly larger subobject, since that subobject contains \(b\). This contradicts maximality. The criterion is proved.
+
+We construct a sheaf satisfying the criterion. Fix representatives of all \(K\subset P_U\). This is a set: a subsheaf is specified by subsets of the component section sets, with their restriction maps. Choose an infinite cardinal \(\lambda\) bounding the objects and arrows of the site, all these sheaves' total section sets, and all arrows in a covering sieve. Choose an ordinal \(\kappa\) with cofinality greater than \(\lambda\); the initial ordinal of the successor cardinal \(\lambda^+\) works. Indeed at most \(\lambda\) ordinals below it each have cardinality at most \(\lambda\), so their union still has cardinality at most \(\lambda\) and cannot be cofinal.
+
+Start with \(F_0=F\). For each successor step, take every pair \((K\subset P_U,\phi:K\to F_\alpha)\) and form the pushout
+\[
+ F_{\alpha+1}=
+ \operatorname{coker}\left[
+ \bigoplus_{(K,U,\phi)}K
+ \longrightarrow
+ F_\alpha\oplus\bigoplus_{(K,U,\phi)}P_U
+ \right],
+ \qquad k\longmapsto(\phi(k),-k).
+ \tag{SC5}
+\]
+The arrow \(F_\alpha\to F_{\alpha+1}\) is injective. In fact the map from the direct sum of the \(K\) to the direct sum of the \(P_U\) is injective by SH2, so a relation with zero second component has zero first component as well. Each map \(\phi\) extends over its \(P_U\) in (SC5). At a limit step take the sheaf colimit. SH2 keeps every transition injective.
+
+At the final limit \(\kappa\), this colimit is sectionwise. To see this, a matching family on a covering sieve has at most \(\lambda\) entries and compatibility equations. Choose their stage representatives, then stages where all equations hold. Cofinality makes one stage suffice. The sheaf condition at that stage gives a glued representative. Equality is verified in the same way. Hence the sectionwise colimit is itself a sheaf.
+
+Any map \(K\to F_\kappa\) factors through one \(F_\alpha\), \(\alpha<\kappa\). Choose representatives for every image section of \(K\), then a stage where all restriction equations hold. There are at most \(\lambda\) sections and equations, so again cofinality supplies one stage. At the next step (SC5) extends the map over \(P_U\). Its composite into \(F_\kappa\) proves the extension criterion. Thus \(F\hookrightarrow F_\kappa\) is the required embedding. This argument uses no assertion that sheafification takes an injective presheaf to an injective sheaf. \(\square\)
+
+### 5A.4. Resolutions, comparison and local vanishing
+
+**SH4.** The groups \(H^n(U,F)\) are well defined by taking an injective resolution \(F\to I^\bullet\) and the cohomology of \(I^\bullet(U)\). Positive-degree classes become zero on a covering of \(U\).
+
+*Proof.* Apply SH3 to \(F\), then to each successive cokernel. This constructs an exact augmented resolution. To extend a map \(F\to G\) to resolutions, first extend \(F\to G\to J^0\) over \(I^0\). After a chain map has been constructed through degree \(r\), its next required map is defined on the image of \(d:I^r\to I^{r+1}\), because the preceding chain identity makes it zero on the kernel. Extend it over \(I^{r+1}\) using injectivity of \(J^{r+1}\).
+
+Two such chain maps are homotopic. Their degree-zero difference kills \(F\), so it factors through the image of \(I^0\to I^1\); extend that factor into \(J^0\) over \(I^1\). Subtract its homotopy boundary. The new difference is zero in degree zero, and the same argument in each degree gives the remaining homotopy. Comparison maps for the identity in both directions have composites homotopic to the identity. They therefore induce inverse cohomology isomorphisms, independent of choices.
+
+For an exact sequence \(0\to F\to G\to H\to0\), embed \(F,H\) into injectives \(I_F,I_H\). Extend \(F\to I_F\) over \(G\), and combine it with \(G\to H\to I_H\). The resulting map \(G\to I_F\oplus I_H\) is injective: an element in its kernel first lies in \(F\), where the first component is injective. The three cokernels form another short exact sequence, as follows by lifting a cokernel representative and checking its kernel. Repeating gives split exact rows of injective resolutions. A closed section of the quotient resolution lifts to the middle resolution; its boundary lifts uniquely to the subresolution. This defines the connecting map, and the same lifting calculation proves exactness of the long cohomology sequence. Comparison and homotopy prove naturality.
+
+Finally a class of positive degree \(n\) is represented by \(z\in I^n(U)\) with \(dz=0\). Exactness of the resolution says that \(I^{n-1}\to\ker(d:I^n\to I^{n+1})\) is an epimorphism of sheaves. By (SC2), \(z\) is locally a boundary. This proves local vanishing without a spectral sequence. \(\square\)
+
+### 5A.5. Why slice restriction preserves injectives
+
+Let \(\mathcal C/U\) have objects arrows \(V\to U\), and coverings inherited from \(\mathcal C\). Restriction is
+\[
+ r_UF(V\to U)=F(V).
+ \tag{SC6}
+\]
+It is exact: kernels are sectionwise, and local lifts in (SC2) are coverings of that same slice object.
+
+**SH5.** Restriction \(r_U\) has an exact left adjoint and therefore takes injective sheaves to injective sheaves.
+
+*Proof.* For a sheaf \(G\) on the slice, form
+\[
+ j_{U!}G=
+ \left(V\longmapsto
+   \bigoplus_{\phi:V\to U}G(V,\phi)\right)^\#.
+ \tag{SC7}
+\]
+Restriction along \(W\to V\) sends the summand indexed by \(\phi\) to the summand indexed by its composite. A map from this presheaf to \(F\) is exactly a family of maps \(G(V,\phi)\to F(V)\) compatible with slice arrows. By SH1, this is a map \(G\to r_UF\), proving the adjunction.
+
+For an exact sequence of slice sheaves, monomorphisms remain injective in the presheaf direct sums. A section requiring a lift, or a section mapping to zero, involves only finitely many summands. For each summand (SC2) supplies a covering; pull back these finitely many coverings to one common refinement. The required lift or kernel witness is then valid in their direct sum. SH1 gives exactness of (SC7).
+
+Given a monomorphism \(A\to B\) on the slice and a map \(A\to r_UI\), the adjunction gives a map \(j_{U!}A\to I\). Exactness makes \(j_{U!}A\to j_{U!}B\) injective; injectivity of \(I\) extends the map. The adjunction brings it back to \(B\to r_UI\). Thus \(r_UI\) is injective. Since restriction is exact, it restricts an injective resolution to an injective resolution. Consequently the definition in SH4 agrees with cohomology on the slice. \(\square\)
+
+### 5A.6. An exact inverse image and the higher-image presheaf
+
+**SH6.** Let \(a:\mathcal C\to\mathcal D\) preserve finite limits and covering families. There is an adjunction \(f^{-1}\dashv f_*\) on abelian sheaves, with exact \(f^{-1}\), and
+\[
+ (f_*G)(V)=G(aV),\qquad
+ R^nf_*G=
+ \bigl(V\longmapsto H^n(aV,G)\bigr)^\#.
+ \tag{SC8}
+\]
+
+*Proof.* The first rule gives a sheaf because \(a\) preserves the fibre products in the sheaf equalizer and sends coverings to coverings. Before sheafification define the inverse image by
+\[
+ (L_aF)(W)=
+ \varinjlim_{(V,\beta:W\to aV)} F(V).
+ \tag{SC9}
+\]
+The colimit uses refinements: \(V'\to V\) and \(\beta':W\to aV'\) with \(a(V'\to V)\beta'=\beta\) send a section to its restriction. This indexing category is filtered in the direction of these restriction maps. It is nonempty by the terminal object. Products give common refinements; equalizers give refinements equalizing parallel arrows, since \(a\) preserves them. Thus (SC9) preserves finite limits of presheaves by the filtered-representative proof in SH2.
+
+A map from \(L_aF\) to a presheaf \(G\) on \(\mathcal D\) is equivalent to maps \(F(V)\to G(aV)\): restrict the latter along each \(\beta\), and use (SC9); in the reverse direction take \(\beta=\operatorname{id}_{aV}\). These operations are inverse. Sheafifying (SC9) and using SH1 proves the adjunction. The functor \(f^{-1}\) preserves kernels by the finite-limit calculation and SH1, and preserves cokernels by its adjunction. It is additive, so it is exact.
+
+An exact left adjoint makes its right adjoint preserve injectives, by the extension argument in SH5. To compute \(R^nf_*G\), choose \(G\to I^\bullet\). In each object \(V\), the complex \(f_*I^\bullet\) is \(I^\bullet(aV)\). The sheaf cohomology of this complex is the sheafification of its presheaf cohomology: kernels are sectionwise and images are sheafified images by SH1. SH4 and SH5 identify that presheaf with the one in (SC8). This proves the higher-image formula before using any continuity theorem. Compositions of inverse images have their canonical identification because they have the same right adjoint; the adjunction bijections also make these identifications associative. \(\square\)
+
+### 5A.7. Stalks of a point functor and their precise hypothesis
+
+A point functor is a functor \(\tau:\mathcal C\to\mathrm{Sets}\) preserving finite limits such that every covering induces a surjection \(\coprod\tau(U_i)\to\tau(U)\). Its neighbourhoods are pairs \((U,u)\), \(u\in\tau(U)\). Define
+\[
+ F_\tau=\varinjlim_{(U,u)}F(U),
+ \tag{SC10}
+\]
+using arrows preserving the chosen element, in the refinement direction.
+
+**SH7.** The neighbourhood index for (SC10) is filtered. Sheafification leaves (SC10) unchanged, and this stalk functor is exact and commutes with colimits. For a conservative family of such functors, exactness of sheaf complexes is equivalent to exactness of their stalk complexes.
+
+*Proof.* The terminal object gives a neighbourhood, products give common refinements, and equalizers equalize parallel neighbourhood arrows. Their chosen elements exist because \(\tau\) preserves these finite limits. Thus filtered group representatives apply.
+
+A matching family at a neighbourhood is represented in the stalk by one of its entries: lift its chosen element to a covering member using the covering-surjectivity condition. Equality or zero in sheafification is witnessed on a covering by SH1, and the same lifting chooses a neighbourhood witnessing that equality or zero in (SC10). Apply this twice to (SC1). Hence sheafification leaves the stalk unchanged. Filtered group colimits preserve exact sequences of presheaves, and (SC2) supplies local lifts at a covering member over the chosen element for exact sequences of sheaves. This proves exactness. The colimit assertion follows either from representatives or from SH2 and the unchanged-sheafification assertion.
+
+“Conservative” means that a map inducing isomorphisms at every stated stalk is an isomorphism of sheaves. A sheaf with all stalks zero is then zero, by applying this definition to its map to the zero sheaf. Exactness of stalks identifies the stalks of the cohomology sheaf of a complex with its group cohomology at each stalk. Consequently zero stalk cohomology forces that cohomology sheaf to be zero. This proves the criterion. It does not assert that a proposed geometric family is conservative; that geometric assertion needs its own proof.
+
+In particular (SC8) gives the stalk formula
+\[
+ (R^nf_*G)_\tau
+ =\varinjlim_{(V,v)}H^n(aV,G).
+ \tag{SC11}
+\]
+This is a presheaf-and-stalk statement. Identifying its right side with cohomology of an inverse-limit scheme is the additional continuity theorem, not part of the definition of a stalk. \(\square\)
+
+### 5A.8. The full covering nerve and the injective contraction
+
+For a cover \(\mathcal U=\{U_i\to U\}\), put
+\[
+ U_{i_0\ldots i_p}=U_{i_0}\times_U\cdots\times_U U_{i_p},
+ \qquad
+ \check C^p(\mathcal U,F)=
+       \prod_{(i_0,\ldots,i_p)}F(U_{i_0\ldots i_p}).
+ \tag{SC12}
+\]
+All ordered tuples occur, including repeated indices. The differential is the alternating sum of restrictions along deletion of one entry. Two deletions occur twice with opposite signs, so its square is zero.
+
+**SH8.** If \(I\) is injective, its augmented complex \(I(U)\to\check C^\bullet(\mathcal U,I)\) is exact.
+
+*Proof.* Work on \(\mathcal C/U\). Take the augmented chain complex of free abelian sheaves on the covering nerve, with degree \(p\) equal to the direct sum of the free sheaves on the objects \(U_{i_0\ldots i_p}\), and degree \(-1\) the free sheaf on the terminal object. Its boundary deletes entries with alternating signs. This complex is exact locally: on a covering member there is a chosen lift of its structure arrow to one of the \(U_i\). Insert that chosen lift as the first entry. If \(\partial\) is the boundary and \(s\) this insertion, then
+\[
+ \partial s+s\partial=1,
+ \qquad s_{-1}(1)=\text{the chosen lift}.
+ \tag{SC13}
+\]
+Indeed the first deletion of the inserted entry returns the original tuple. Every other deletion cancels with the corresponding term of \(s\partial\). To apply this to sheaf sections, first represent a section locally by a finite sum of free generators, using SH1; choose covering lifts for the finitely many terminal arrows involved and refine their coverings together. The same contraction then witnesses local exactness for every cycle. Equation (SC2) proves exactness of the sheaf chain complex.
+
+SH5 makes \(r_UI\) injective. Apply \(\operatorname{Hom}(-,r_UI)\) to the exact chain complex. This remains exact: a map defined on a cycle subobject extends to the preceding free sheaf by injectivity, which is precisely the required cochain-boundary witness. Formula (SC3) identifies the resulting complex with (SC12), including its augmentation. This proves the assertion. \(\square\)
+
+The requirement to keep the full nerve matters even for a covering consisting of one map. Its self-fibre products need not equal the covering object. Deleting all positive degrees because there is only one index changes the complex.
+
+### 5A.9. Derived comparison using only finite diagonals
+
+**SH9.** For an injective resolution \(F\to I^\bullet\), the augmentation is a cohomology isomorphism
+\[
+ I^\bullet(U)\longrightarrow
+ \operatorname{Tot}\check C^\bullet(\mathcal U,I^\bullet),
+ \quad
+ d=d_h+(-1)^p d_v\text{ in bidegree }(p,q).
+ \tag{SC14}
+\]
+In every total degree only finitely many bidegrees occur. No convergence assumption for an unbounded filtration is required.
+
+*Proof.* The horizontal and vertical differentials commute, so the two mixed terms in \(d^2\) cancel; their separate squares are zero. Each augmented horizontal row is exact by SH8. Take a total cocycle of degree \(n\). Its component of largest positive horizontal degree \(p\) is horizontally closed: the next horizontal component of its boundary has no other contributor. Row exactness expresses that component as \(d_hb\). Subtract \(db\); this removes it and creates components only at smaller horizontal degrees. After finitely many repetitions, the cocycle has horizontal degree zero only. It is horizontally closed, so it is the augmentation of a section in \(I^n(U)\); the vertical cycle identity says that this section is closed.
+
+For injectivity, if an augmented cocycle is a total boundary, perform the same elimination on the primitive, starting with its largest positive horizontal degree. Since the boundary has horizontal degree zero only, its largest component is horizontally closed. After the finite elimination the primitive is horizontally closed in degree zero, and therefore is the augmentation of a section in \(I^{n-1}(U)\). The original cocycle was already a boundary there. For degree zero the absence of negative-degree primitives gives injectivity directly. This proves (SC14).
+
+In a fixed column the vertical complex is a product of the restricted injective resolutions on the objects in (SC12). SH5 computes its cohomology as the corresponding product of \(H^q(U_{i_0\ldots i_p},F)\). Products of groups are exact: lifts across surjections can be chosen independently in every component. For a finite cover, the products at each degree are finite, so SH2 also justifies commuting them with filtered colimits. Together SH4, SH8 and (SC14) supply the exact row, local-vanishing and finite-diagonal arguments used in Lemma 6.5. \(\square\)
+
+The free reference material is the Stacks project authors' [abelian-sheaf constructions](https://stacks.math.columbia.edu/tag/03CM), [injective existence theorem](https://stacks.math.columbia.edu/tag/01DL), [point criteria](https://stacks.math.columbia.edu/tag/00YJ), and [cohomology-on-sites chapter](https://stacks.math.columbia.edu/download/sites-cohomology.pdf). SH1–SH9 give the proofs used here; in particular SH3 constructs its injective extension directly, and SH9 supplies the finite elimination. These references are reading material, not substitutes for any step. The geometric hypotheses needed to apply them to the étale basis of Section 6 remain separately specified there.
+
+### 5A.10. Graded exercise: local lifts, slices and one covering map
+
+**Exercise 5A.1 (100 points).** Work on the sites and with the definitions of SH1–SH9.
+
+1. **(10 points)** Prove the zero criterion for the original presheaf map \(P\to P^\#\). Explain why a surjection of sheaves need not be surjective on sections.
+2. **(10 points)** Prove exactness of a filtered colimit of sheaf short exact sequences without assuming the colimit is sectionwise.
+3. **(10 points)** Verify the kernel calculation in (SC4) and injectivity of the first arrow into (SC5).
+4. **(10 points)** Identify both cardinal bounds needed at the last limit in SH3. Explain why bounding only the sections of the extension domains is insufficient.
+5. **(10 points)** Verify the adjunction (SC7) and prove its exactness by a finite-support lifting argument.
+6. **(10 points)** In (SC9), construct a common refinement and an equalizer refinement. Explain which direction the restriction maps have.
+7. **(10 points)** Derive (SC8) and (SC11) without applying a continuity theorem.
+8. **(10 points)** Prove (SC13), including degree \(-1\), and check the sign in (SC14).
+9. **(10 points)** Let \(G=\{1,s\}\), \(s^2=1\). On the site of finite left \(G\)-sets with jointly surjective covers, let \(F(V)\) be the \(G\)-invariant functions \(V\to\mathbb F_2\). For the single covering map \(G\to\{*\}\), compute its first Čech cohomology with the full nerve.
+10. **(10 points)** Explain why the preceding calculation invalidates the “distinct indices only” truncation for that cover. State precisely which étale prerequisites SH1–SH9 do and do not prove.
+
+*Full solution.*
+
+1. SH1 first says that a section maps to zero in \(P^+\) exactly when it vanishes on a covering. If its image vanishes in \((P^+)^+\), restrict to a covering where it is zero in \(P^+\), then to the coverings witnessing those zeros in \(P\). The composite is a covering of the original object. Conversely restriction-zero sections clearly become zero in both plus steps. A sheaf epimorphism means every section lifts on a covering by (SC2); the local lifts can differ on overlaps by kernel sections and therefore need not glue to a global lift. The epimorphism assertion alone provides no compatible choice of lifts.
+
+2. A target representative at stage \(i\) lifts locally at stage \(i\). A middle representative with zero image in the sheafified colimit is, by SH1, zero in the group colimit after a covering. On each member it becomes zero at a later stage; exactness there supplies another covering with lifts from the left sheaf. Compose those coverings. The left colimit is injective because all stage maps on sections are injective, filtered group representatives preserve injectivity, and SH1 preserves it under sheafification. This gives all three exactness assertions.
+
+3. If \(c+p(v)=0\), then \(p(v)=-c\in C\), so \(v\in K\), and the pair is \((-p(v),v)\). Conversely each such pair is in the kernel. On it (SC4) is \(-\phi(p(v))+t(v)=0\) by the extension condition. In (SC5), a relation whose second component is zero comes from an element of the direct sum of the \(K\) whose image in the direct sum of the \(P_U\) is zero. That inclusion is injective by SH2, so the relation is zero. Consequently the map from \(F_\alpha\) is injective.
+
+4. First bound the entries and compatibility equations of covering sieves; this makes the final pointwise colimit a sheaf. Second bound all sections and restriction equations of every \(K\subset P_U\); this makes a map out of \(K\) factor through one stage. The first assertion is required before the second can use section representatives in the final colimit. Without a bound on covering size, a matching family could require stages cofinal in the last ordinal and fail to have a representative at any earlier stage. This is why a bound on extension-domain sections alone is insufficient.
+
+5. A presheaf map out of the direct sum in (SC7) is a map on each summand \(G(V,\phi)\), natural for every arrow over \(U\). These are exactly a slice map into \(r_UF\). SH1 supplies and uniquely determines its sheaf extension. For exactness, a presheaf section has finitely many summands. Lift or kill each one on a slice covering, then use successive fibre products for a common refinement. Its underlying covering in \(\mathcal C\) supplies the required witness after sheafification. Monomorphisms remain injective on every summand, and SH1 preserves their injection. Thus this is an exact left adjoint, so SH5's extension argument really proves preservation of injectives by slice restriction.
+
+6. For \((V,\beta)\) and \((V',\beta')\), take \(V\times V'\); finite-limit preservation gives its map from \(W\), with the two given components. For two parallel refinements, take their equalizer in \(\mathcal C\). Its image under \(a\) is the equalizer, so the chosen map from \(W\) factors through it. A refinement arrow goes from the smaller source neighbourhood to the larger one; the contravariant presheaf restriction goes in the reverse direction and is the colimit transition. The terminal object ensures this category is nonempty. These are exactly the filtered axioms in the direction used by (SC9).
+
+7. Evaluate \(f_*I^\bullet\) on \(V\). It is the complex \(I^\bullet(aV)\); SH5 says restriction to that slice preserves its injective resolution. Its group cohomology is \(H^n(aV,G)\). SH1 turns the presheaf cohomology into the sheaf cohomology, proving (SC8). SH7 says stalks are the filtered neighbourhood colimit and that sheafification leaves them unchanged; applying it to (SC8) proves (SC11). Neither step identifies a cohomology group with that of a limit scheme.
+
+8. In degree \(p\geq0\), the first term in the boundary of an inserted tuple returns the original tuple. Its remaining \(p+1\) terms cancel with insertion after the corresponding deletions, because their signs differ by one exponent. In degree \(-1\), the augmentation of the chosen lift is \(1\). These prove (SC13) at every augmented degree. The mixed terms of the total differential on bidegree \((p,q)\) have coefficients \((-1)^{p+1}\) and \((-1)^p\); they cancel since \(d_h\) and \(d_v\) commute. Their individual squares vanish, so the total differential has square zero.
+
+9. Invariant functions form a sheaf: a jointly surjective cover supplies the values everywhere; equality on pairwise fibre products makes those values independent of the lift; equivariance descends because all covering maps are equivariant. The diagonal \(G\)-action on \(G^{p+1}\) has orbit coordinates given by successive ratios, so the first three Čech groups are
+\[
+ \check C^0=\mathbb F_2,\qquad
+ \check C^1=\operatorname{Map}(G,\mathbb F_2),\qquad
+ \check C^2=\operatorname{Map}(G^2,\mathbb F_2).
+ \tag{SCT1}
+\]
+The first differential is zero, and the next one is
+\[
+ (dc)(g,h)=c(h)-c(gh)+c(g).
+ \tag{SCT2}
+\]
+Evaluate at \((1,1)\): a cocycle has \(c(1)=0\). At \((s,s)\) the condition is \(2c(s)-c(1)=0\), automatically satisfied in \(\mathbb F_2\). The pairs \((1,s)\) and \((s,1)\) give the same already satisfied condition. Thus \(c(s)\) is arbitrary, and there are no nonzero boundaries:
+\[
+ \check H^1(G\to\{*\},F)=\mathbb F_2.
+ \tag{SCT3}
+\]
+This is a Čech computation; no identification with derived cohomology is needed for the counterexample.
+
+10. A distinct-indices truncation would have no positive terms for this single-map cover, and would incorrectly make the group in (SCT3) zero. A repeated index represents a genuine self-fibre product here, not a redundant copy of the same open set. SH1–SH9 prove abstract sheafification, exact colimits, enough injectives, derived comparison, local vanishing, exact slice restriction, the finite-limit site adjunction, its higher-image presheaf, abstract point stalks, and the full covering contraction. They do not prove the algebraic étale local form, flatness, open images, geometric conservativity, finite-data scheme descent or the identification of a neighbourhood ring with a strict henselization. Those remain explicit prerequisites for the geometric application in Section 6. \(\square\)
+
+## 5B. The algebra and geometry of the étale site
+
+This section proves the geometric inputs used by Section 6. All base rings are commutative with identity, and no Noetherian hypothesis is imposed on an étale base ring. Noetherian completion is an intermediate tool whose hypotheses are proved and checked below. The local presentations are square-Jacobian presentations; a monic one-variable presentation is one special case. The continuity proof only requires the square-Jacobian form and the open-image theorem proved here.
+
+The reading order is the following. Basic module and finite-presentation arguments come first. They lead to finite field fibres and a complete-local lifting calculation. That calculation proves flatness of every square-Jacobian chart, including over an arbitrary base. We then prove the full étale criterion, open images, the finite-cover basis, and the conservative geometric stalks. The final construction gives the actual local étale neighbourhood ring used in Corollary 6.8.
+
+### 5B.1. Fractions, finite modules and principal patching
+
+**EA1.** Localization of modules is exact. Tensor product is right exact and commutes with colimits. A module is zero if all its prime localizations are zero. A finitely generated module over a local ring satisfies Nakayama's lemma.
+
+*Proof.* In \(S^{-1}M\), a fraction \(m/s\) is zero exactly when some \(t\in S\) kills \(m\). This tests kernels and images in any localized exact sequence, and representatives lift across a surjection. Tensor product is the abelian group generated by symbols \(m\otimes n\), modulo additivity and scalar-balancing relations. Quotienting one factor therefore quotients the tensor product by exactly the corresponding relations; this proves right exactness. The same presentation proves commutation with colimits. In a filtered colimit any element or equality involves only finitely many representatives and relations, so occurs at one common stage.
+
+If \(0\ne m\in M\), choose a maximal ideal containing its proper annihilator. The element \(m/1\) cannot be zero at that ideal, because an element outside the ideal cannot belong to the annihilator. This proves the localization test. It also proves the useful finite witness: if a finite module \(M\) has \(M_{\mathfrak p}=0\), choose one denominator outside \(\mathfrak p\) killing each of its finitely many generators; their product kills the whole module.
+
+For Nakayama, let \(M=JM\), with generators \(m_1,\ldots,m_r\) and \(J\) contained in the maximal ideal of a local ring \(R\). Write \(m_i=\sum_j a_{ij}m_j\), \(a_{ij}\in J\). Multiplying by the adjugate of \(1-(a_{ij})\) shows that its determinant kills every generator. The adjugate identity follows from the determinant expansion: an off-diagonal entry is the determinant with two equal rows and is zero, while each diagonal entry is the determinant. The determinant is congruent to \(1\) modulo the maximal ideal, so is a unit. Hence \(M=0\). Applying this to a finite quotient also shows that elements generating \(M/JM\) lift to generators of \(M\). \(\square\)
+
+For later use, tensoring \(0\to K\to P\to B\to0\) with any module remains exact on the left if \(B\) is flat. Here is an elementary proof. Present the module as \(N=F/L\), with \(F\) free. If an element of \(K\otimes F\) maps into the image of \(P\otimes L\), choose such a representative there. Its image in \(B\otimes L\) maps to zero in \(B\otimes F\); flatness makes that map injective. Right exactness then lifts the representative from \(K\otimes L\). Since \(K\otimes F\to P\otimes F\) is injective for a free \(F\), the original element already vanishes in \(K\otimes N\). Thus
+\[
+ 0\longrightarrow K\otimes N\longrightarrow P\otimes N
+ \longrightarrow B\otimes N\longrightarrow0
+ \quad\text{if }B\text{ is flat}.
+ \tag{ET1}
+\]
+
+**EA2.** A finite principal cover of \(\operatorname{Spec}R\) gives the usual gluing of modules and rings. Its existence and inclusions of principal opens have finite power witnesses.
+
+*Proof.* We first prove the prime test used in the topology. If \(f\) is not in the radical of an ideal \(J\), the powers of \(f\) avoid \(J\). A maximal ideal among ideals containing \(J\) and avoiding these powers exists by Zorn. It is prime: if neither \(a\) nor \(b\) belongs to it, each of the enlarged ideals meets the powers of \(f\); multiplying the two witnessing equations shows that \(ab\) cannot belong to the original ideal. This produces a prime containing \(J\) and avoiding \(f\). Consequently
+\[
+ D(f)\subset\bigcup_iD(g_i)
+ \quad\Longleftrightarrow\quad
+ f^N=\sum_i c_i g_i
+ \quad\text{for some finite sum and }N.
+ \tag{ET2}
+\]
+In particular principal opens cover the whole spectrum exactly when their elements generate the unit ideal. Every cover of an affine spectrum by principal opens has a finite subcover: the equation for \(1\) is finite. The nilradical is the intersection of the prime ideals, by the same test.
+
+Suppose \(D(c_1),\ldots,D(c_r)\) cover. For any common sufficiently large exponent \(N\), their powers still generate the unit ideal, by (ET2), so choose \(\sum_i a_i c_i^N=1\). If elements \(m_i\in M_{c_i}\) agree on overlaps, clear the finitely many denominators and overlap witnesses until \(c_i^N m_i\) is represented by \(n_i\in M\) and \(n_i=c_i^N m_j\) in every \(M_{c_j}\). Then
+\[
+ m=\sum_i a_i n_i
+ \tag{ET3}
+\]
+restricts to each \(m_j\). If a global element is zero on all members, sufficiently large powers of all the \(c_i\) kill it; the unit equation kills it. This proves uniqueness. Taking \(M=R\) gives ring gluing, since addition and multiplication can be checked on the cover. It constructs the structure sheaf on principal opens with sections \(R_f\); its stalk at \(\mathfrak p\) is \(R_{\mathfrak p}\).
+
+A ring map \(A\to B\) gives a map of these affine schemes by inverse images of primes and the maps on fractions. Conversely a morphism of affine schemes gives a map on global sections; the unit test in local rings identifies its inverse images of \(D(a)\), and hence its point map and all maps on fractions. Thus affine scheme maps correspond to ring maps. Affine fibre products are spectra of tensor products: maps out of the tensor product correspond exactly to pairs of compatible ring maps. For general schemes these affine constructions glue on common refinements. Gluing along open isomorphisms satisfying a cocycle consists of the quotient of the disjoint union by these identifications, with the section sheaf glued by (ET3); each chart remains an open affine chart. Compatible chart maps glue uniquely. These constructions also verify the stated fibre-product universal property. \(\square\)
+
+**EA3.** Finite presentation is local on a finite principal cover of the source.
+
+*Proof.* Let \(B\) be an \(A\)-algebra and suppose \(B_{b_i}\) is finitely presented over \(A\) for a finite principal cover of \(\operatorname{Spec}B\). Choose finite algebra generators in each localization, with their numerators in \(B\), and choose coefficients of a unit equation in the \(b_i\). Let \(C\subset B\) be the \(A\)-subalgebra generated by these finitely many numerators, coefficients and elements \(b_i\). The same unit equation holds in \(C\), and \(C_{b_i}\to B_{b_i}\) is surjective. The \(C\)-module \(B/C\) is therefore zero at each \(b_i\). For each of its elements, finitely many localization witnesses and a unit equation as in EA2 show it is zero. Thus \(C=B\), so \(B\) is finitely generated over \(A\).
+
+Choose a surjection \(P=A[Z_1,\ldots,Z_t]\to B\), with kernel \(J\). We need its relations to be finite. The following comparison verifies independence of a finite presentation from the chosen generators. If \(B=A[Y_1,\ldots,Y_s]/(r_1,\ldots,r_e)\), write \(Y_i=p_i(Z)\) and \(Z_j=q_j(Y)\) in \(B\). Then
+\[
+ J=(r_i(p(Z)),\ Z_j-q_j(p(Z))).
+ \tag{ET4}
+\]
+The two substitution maps give inverse maps between the quotient on the right and \(B\); the relations \(Y_i-p_i(q(Y))\) already hold modulo the \(r_i\). This proves (ET4). The same reasoning, adding one generator for an inverse, applies to a localized polynomial algebra.
+
+Lift \(b_i\) to \(\widetilde b_i\in P\). The localized ideals \(J_{\widetilde b_i}\) are consequently finite. Choose finitely many elements of \(J\) generating them after localization. Add to their ideal \(J_0\) a lift of the unit equation \(1-\sum_i c_i b_i^N\). In \(P/J_0\) the \(\widetilde b_i\) now generate the unit ideal and \((J/J_0)_{\widetilde b_i}=0\) for every \(i\). EA2 again gives \(J/J_0=0\). Thus \(J\) is finitely generated. This proves finite presentation. \(\square\)
+
+Localization \(A\to A_f\) is finitely presented by adjoining an inverse with relation \(fZ-1\). Composition of finitely presented algebra maps is finitely presented: combine the two finite lists of generators and lift the second list of relations to the first polynomial presentation. Base change preserves finite presentation by applying the same presentation to the new coefficient ring.
+
+### 5B.2. Noetherian algebra and finite field extensions
+
+**EA4.** Polynomial rings over Noetherian rings, their quotients and localizations are Noetherian. Finite modules over a Noetherian ring have finite submodules. A Noetherian spectrum has finitely many irreducible components.
+
+*Proof.* For a submodule of \(A^r\), project to its last coordinate. The image is an ideal, and the kernel is a submodule of \(A^{r-1}\). Induction supplies finite generators for both and hence for the original submodule. Presenting a finite module as a quotient of \(A^r\) gives the assertion for all finite modules.
+
+For an ideal \(J\subset A[T]\), its leading coefficients form an ideal of \(A\): align degrees by powers of \(T\) before adding, and scalar multiplication preserves a leading coefficient unless it becomes zero. Choose finitely many polynomials of \(J\) whose leading coefficients generate that ideal, and let \(d\) bound their degrees. Every polynomial of degree at least \(d\) can have its leading term canceled by multiples of these chosen polynomials; repetition leaves degree less than \(d\). The elements of \(J\) of degree less than \(d\) form an \(A\)-submodule of \(A^d\), so are finitely generated by the preceding paragraph. These two lists generate \(J\). Iteration gives several variables. Ideals of a quotient lift to ideals; ideals of a localization are extensions of their contractions. Both therefore stay finite. The integers are Noetherian because a nonzero ideal is generated by its least positive element, using division with remainder. In particular every finitely generated subring generated from the integers is Noetherian.
+
+Closed subsets form a descending-chain-finite collection because their radical ideals form ascending chains. A minimal closed set failing to be a finite union of irreducible closed sets could be decomposed into two proper closed subsets, each a finite union by minimality. This is a contradiction. An irreducible closed set is \(V(\mathfrak p)\) for a prime \(\mathfrak p\): if a product belongs to its radical but neither factor does, its two vanishing subsets give a forbidden decomposition; the converse follows because nonempty principal opens in a prime spectrum intersect. Its generic point is \(\mathfrak p\). This proves the component assertion and the Noetherian closed-subset induction used later. \(\square\)
+
+**EA5.** Every finitely generated domain over a field is finite over a polynomial subalgebra. Every field finitely generated as an algebra over a field is a finite algebraic extension.
+
+*Proof.* Write the domain as \(k[x_1,\ldots,x_n]\). If the generators are algebraically independent, there is nothing to prove. Otherwise choose a nonzero polynomial relation whose exponents are at most \(D\), and put \(b=D+1\). For \(i<n\), make the polynomial substitution
+\[
+ X_i=Y_i+X_n^{b^i}.
+ \tag{ET5}
+\]
+The powers of \(X_n\) contributed by the leading substitutions of distinct monomials are distinct, because their exponents are the distinct base-\(b\) integers \(a_n+\sum_{i<n}a_i b^i\). Thus the transformed relation has a unique highest \(X_n\)-term with nonzero constant coefficient. Divide by this coefficient to make it monic. Hence \(x_n\) is integral over \(k[y_1,\ldots,y_{n-1}]\), and the original generators are polynomials in \(x_n\) and these \(y_i\). A monic equation bounds the necessary powers of \(x_n\), so the domain is a finite module over that smaller generated domain. Induct on the number of generators. Finiteness is transitive because products of two finite generating lists generate the composite module. This proves the first assertion in every characteristic.
+
+If the domain is itself a field \(L\), its polynomial subalgebra must be a field as well. Indeed in a finite extension every element is integral: write multiplication on a finite generating tuple and apply the adjugate to the matrix \(TI-M\), then apply the resulting monic relation to the element \(1\). In particular \(a^{-1}\in L\) is integral for each nonzero \(a\) in the subalgebra. Multiplying its monic equation by \(a^{n-1}\) expresses \(a^{-1}\) in that subalgebra. A polynomial algebra in a positive number of variables is not a field, since quotienting by one variable gives a nonzero ring. Thus there are no variables and \(L/k\) is finite.
+
+We will also use finite lying over in this specific scope. If \(R\hookrightarrow C\) is an injective finite algebra map and \(\mathfrak p\) is a prime of \(R\), then \(C_{\mathfrak p}\) is a nonzero finite \(R_{\mathfrak p}\)-module. Nakayama prevents \(C_{\mathfrak p}/\mathfrak pC_{\mathfrak p}\) from being zero. A maximal ideal of this nonzero algebra gives a prime of \(C\) over \(\mathfrak p\). \(\square\)
+
+Polynomial division over a field cancels the leading term at each step and ends at smaller degree. The Euclidean algorithm therefore computes a greatest common divisor; tracing its successive remainder equations expresses that divisor as a combination of the original polynomials. In particular coprimality gives a Bézout equation. We use this elementary polynomial test for the factor equations below.
+
+
+A finite separable field extension has a primitive element. Over an infinite base, combine two generators as \(\alpha+c\beta\), avoiding the finitely many scalars at which two embeddings coincide; Lemma 0B.1 shows that the number of distinct embeddings then forces this element to generate. Induct on the generator list. Over a finite base, a finite extension is a finite field whose multiplicative group is cyclic: in a finite abelian group, products of elements of relatively prime orders have the product order, so combining their prime-power parts realizes the exponent as an element order. In a field the polynomial with that exponent has at most that many roots, so the group order is at most the exponent and hence equals it. A generator of the multiplicative group generates the field. This proves the primitive-element fact in both cases without a cardinality restriction on the base.
+
+### 5B.3. Completion, including the flatness proof
+
+**EA6.** Let \(A\) be Noetherian, \(I\subset A\), and \(N\subset M\) finite modules. There is \(c\) such that
+\[
+ N\cap I^nM=I^{n-c}(N\cap I^cM)\qquad(n\geq c).
+ \tag{ET6}
+\]
+Completion is exact on finite modules, and
+\[
+ \widehat M=\widehat A\otimes_A M.
+ \tag{ET7}
+\]
+
+*Proof.* The Rees algebra \(A[It]\) is generated by finitely many \(a_it\), so is Noetherian by EA4. The graded module \(\bigoplus_{n\geq0}I^nM\,t^n\) is finite over it, generated in degree zero. Its submodule \(\bigoplus(N\cap I^nM)t^n\) is finite. Split its finite generators into homogeneous parts, and bound their degrees by \(c\). Raising each smaller degree to \(c\) gives exactly (ET6); the reverse inclusion follows by multiplying elements already in the intersection.
+
+For \(0\to N\to M\to Q\to0\), the exact quotient sequences have left term \(N/(N\cap I^nM)\). Their transition maps on these left terms are surjective. A compatible element on the right has compatible middle lifts: after choosing a lift at level \(n+1\), subtract a lift of its discrepancy in the left term at level \(n\). Induction constructs all levels. Kernels are identified level by level. Thus their inverse limit is exact. The two filtrations on \(N\) are cofinal by (ET6), so the left limit is \(\widehat N\), proving exact completion.
+
+A finite presentation \(A^s\to A^r\to M\to0\) exists by EA4. Its completed cokernel is the cokernel of \(\widehat A^s\to\widehat A^r\). Right exactness of tensor product identifies this with \(\widehat A\otimes_A M\), proving (ET7). \(\square\)
+
+**EA7.** The completion of a Noetherian ring is Noetherian and flat. The maximal-ideal completion of a Noetherian local ring is local and faithfully flat, has the same residue field, and is separated and complete for its extended maximal ideal.
+
+*Proof.* Equations (ET6)–(ET7) show that tensoring with \(\widehat A\) preserves injections between finite \(A\)-modules. This implies flatness on all modules, not only on finite ones. Given any injection \(M'\subset M\), write \(M\) as the filtered union of its finite submodules \(M_j\). Each intersection \(M'\cap M_j\) is finite by EA4, and these intersections exhaust \(M'\). The corresponding finite injections remain injective after tensoring. Filtered colimits of groups are exact by their finite-representative description, and tensor product commutes with them by EA1. Hence the original injection remains injective.
+
+For every \(n\), exact completion of \(0\to I^n\to A\to A/I^n\to0\) gives
+\[
+ \widehat A/I^n\widehat A=A/I^n.
+ \tag{ET8}
+\]
+The image of \(\widehat{I^n}=\widehat A\otimes I^n\) is exactly \(I^n\widehat A\), and the completion of the right module is itself. Thus \(\widehat A\) is complete and separated for \(I\widehat A\), with the same associated graded ring. That graded ring is a quotient of a polynomial algebra over \(A/I\), on the initial classes of finite generators of \(I\), and is Noetherian by EA4.
+
+To prove that \(\widehat A\) is Noetherian, let \(J\) be any ideal. Its graded ideal of initial forms has a finite list of homogeneous generators represented by \(g_j\in J\) of orders \(d_j\). They may be chosen from actual initial forms: a finite generating list of the ideal involves only finitely many of those forms. For \(x\in J\), cancel its initial form by a combination of the \(g_j\), choosing the coefficients in \(I^{\max(0,n-d_j)}\widehat A\) when the remainder has order \(n\). The remainder's order rises by at least one. The coefficients accumulated for each \(g_j\) are Cauchy and converge in the complete ring. Separatedness gives \(x=\sum_j a_jg_j\) at the limit. Thus these finitely many elements generate the actual ideal, without assuming it is closed.
+
+For a local ring with \(I=\mathfrak m\), (ET8) gives residue field \(k\). An element with nonzero residue is a unit: multiply by a lift of the residue inverse, then invert \(1-u\), \(u\in\mathfrak m\widehat A\), by the convergent series \(\sum_{r\geq0}u^r\). This proves that \(\widehat A\) is local. Its flatness is already proved. For a nonzero module, a nonzero element gives an injection \(A/J\hookrightarrow M\) with \(J\) proper and hence contained in \(\mathfrak m\). Tensoring preserves that injection, and \(\widehat A/J\widehat A\) maps onto the nonzero residue field. Consequently tensoring cannot kill a nonzero module. This is faithful flatness. \(\square\)
+
+Here is the complete-local vector lifting used below. If \(R\) is complete and separated for its maximal ideal, a polynomial system \(F=(F_1,\ldots,F_n)\) and a residue solution \(a\) with invertible Jacobian determinant have exactly one lift with that residue. Choose an initial lift and repeatedly set
+\[
+ a_{\mathrm{new}}=a-J_F(a)^{-1}F(a).
+ \tag{ET9}
+\]
+The polynomial Taylor formula has remainder in the square of the correction ideal; this follows by expanding monomials, with no division by factorials. The errors successively belong to \(\mathfrak m,\mathfrak m^2,\mathfrak m^4,\ldots\), and the Jacobian stays invertible because its reduction stays fixed. Completeness gives a root. If two roots differ by a vector in \(\mathfrak m^r\), the same Taylor formula and the inverse Jacobian put their difference in \(\mathfrak m^{2r}\). Separatedness proves uniqueness. This extends the one-variable proof of Lemma 0D.1.
+
+### 5B.4. Differentials and infinitesimal lifting
+
+For an \(A\)-algebra \(B\), define \(\Omega_{B/A}\) as the \(B\)-module on symbols \(db\), modulo additivity, the product rule and \(da=0\) for \(a\in A\). A map from it to a \(B\)-module is exactly an \(A\)-derivation, by its presentation. For \(P=A[X_1,\ldots,X_n]\), polynomial expansion proves that a derivation is determined freely by the \(dX_i\). If \(B=P/K\), descending a derivation is exactly killing the derivatives of elements of \(K\), so
+\[
+ K/K^2\xrightarrow{\alpha} B^n\longrightarrow\Omega_{B/A}
+ \longrightarrow0,\qquad
+ \alpha(f)=(\partial_1f,\ldots,\partial_nf).
+ \tag{ET10}
+\]
+The product rule makes \(\alpha\) well defined. Differentials commute with localization and base change: derivations of a fraction use \(d(s^{-1})=-s^{-2}ds\), and the universal generators after scalar extension give the same presentation. These explicit rules prove the assertions.
+
+A ring map is formally étale if, for every \(A\)-algebra \(C\) and ideal \(J\) with \(J^2=0\), every \(A\)-map \(B\to C/J\) has a unique lift to \(C\). A square-Jacobian chart is
+\[
+ B=\left(A[X_1,\ldots,X_n]/(F_1,\ldots,F_n)\right)_{h\Delta},
+ \qquad
+ \Delta=\det(\partial_jF_i).
+ \tag{ET11}
+\]
+The case \(n=0\) is a localization.
+
+**EA8.** Each chart (ET11) is formally étale and has zero differentials.
+
+*Proof.* Lift the images of the \(X_i\) arbitrarily to \(C\). The errors \(F_i(a)\) lie in \(J\), and the Jacobian is invertible: an element invertible modulo a nilpotent ideal is invertible, since a lifted inverse differs from an inverse by a finite geometric-series correction. The correction \(-J_F(a)^{-1}F(a)\) belongs to \(J^n\). Taylor expansion has zero remainder because \(J^2=0\), so it gives an exact root. Any two lifts differ by such a vector, and their difference is killed by the invertible Jacobian; hence it is zero. The inverted element stays a unit and its inverse is uniquely determined. Formula (ET10) gives \(\Omega=0\). Iterating the square-zero lift through the quotients \(C/J^r\) proves unique lifting for every nilpotent \(J\). \(\square\)
+
+**EA9.** A finitely presented formally étale algebra is covered by principal charts of the form (ET11).
+
+*Proof.* Write \(B=P/K\) with \(K\) finite. Uniqueness applied to the square-zero ring \(B\oplus M\) makes every derivation to \(M\) zero: the two maps \(b\mapsto(b,0)\) and \(b\mapsto(b,db)\) would otherwise differ. Taking \(M=\Omega_{B/A}\) gives \(\Omega=0\), so (ET10) makes \(\alpha\) surjective.
+
+Existence supplies a section \(s:B\to P/K^2\). The difference \(p\mapsto p-s(\bar p)\) is a derivation into \(K/K^2\), with the \(B\)-action, and restricts to the identity on that module. Thus it gives \(\beta:B^n\to K/K^2\) with \(\beta\alpha=1\). Surjectivity makes \(\alpha\) an isomorphism. Choose \(f_1,\ldots,f_n\in K\) whose derivative vectors are the standard basis modulo \(K\). Then they generate \(K/K^2\), and their Jacobian determinant is \(1\) modulo \(K\).
+
+At a prime \(Q\) of \(P\) containing \(K\), the finite module \(K_Q/(f_1,\ldots,f_n)_Q\) equals \(K_Q\) times itself. Nakayama gives zero. EA1 gives an element \(h\notin Q\) where \(K_h=(f_1,\ldots,f_n)_h\). Inverting also the Jacobian determinant therefore gives the required chart around the image point. These principal charts cover \(\operatorname{Spec}B\); EA2 gives a finite subcover. \(\square\)
+
+### 5B.5. The field fibre and its infinitesimal structure
+
+**EA10.** A finite-type algebra over a field with zero differentials is a finite product of finite separable field extensions. These products are formally étale.
+
+*Proof.* First extend scalars from \(k\) to an algebraic closure \(\overline k\); the differentials stay zero by (ET10). The resulting algebra \(D\) is Noetherian by EA4. At a maximal ideal its residue field is \(\overline k\) by EA5. For the local algebra \(L=D_{\mathfrak n}\), the residue map splits its \(\overline k\)-structure and gives
+\[
+ \mathfrak nL/(\mathfrak nL)^2
+       \simeq\Omega_{L/\overline k}\otimes_L\overline k.
+ \tag{ET12}
+\]
+Indeed \(b\mapsto b-\bar b\) modulo the square is a derivation into the left module, and \(u\mapsto du\) gives the inverse on generators. The product rule verifies the first map because the product of the two differences vanishes modulo the square. Thus (ET12) is zero. Nakayama applied to the finite maximal ideal makes it zero, so every such local ring is a field.
+
+Every prime is contained in a maximal ideal. Localizing there now shows that the prime equals that maximal ideal. EA4 therefore makes the spectrum a finite set of maximal ideals. The algebra is reduced: a nilpotent element vanishes in all its local fields and hence is zero by EA1. The finite maximal ideals are pairwise comaximal and their intersection is zero by EA2. Chinese remaindering gives \(D\simeq\overline k^{\,r}\). To check that remaindering, for \(I+J=R\) choose \(a+b=1\), \(a\in I,b\in J\); the element \(x b+y a\) has the prescribed residues \(x,y\), and the kernel is \(I\cap J=IJ\). Induction gives the finite product.
+
+Independent vectors over \(k\) remain independent after a field extension, by extending them to a vector-space basis. Thus the original algebra has finite dimension, since its scalar extension has dimension \(r\). It is reduced for the same scalar-extension reason, and decomposes into finite field factors by the same prime and remainder argument. Every factor \(K\) is separable: if some element had an inseparable minimal polynomial \(f\), then \(\overline k[T]/(f)\) would have a nonzero nilpotent, from its repeated roots. This algebra injects into \(\overline k\otimes_k K\), because field scalar extension preserves injections. That contradicts its reducedness. Conversely the primitive-element result after EA5 identifies a separable factor with \(k[T]/(f)\), \(f'\) invertible, so it is a chart (ET11) and is formally étale by EA8.
+
+For a product of these factors we must also lift the idempotents. If \(J^2=0\), lift an idempotent to \(u\in C\), put \(\delta=u^2-u\in J\), and note that \((2u-1)^2=1+4\delta\) is a unit. Then
+\[
+ e=u-(2u-1)^{-1}\delta,\qquad e^2=e.
+ \tag{ET13}
+\]
+If two idempotents differ by \(a\in J\), their equation gives \((2e-1)a=0\); since \((2e-1)^2=1\), they coincide. No inversion of \(2\) was used. The lifted product idempotents are orthogonal: their pairwise products are idempotents lifting zero and so are zero. Their sum is an idempotent lifting \(1\) and so is \(1\). They split \(C\) into its corresponding factor rings. Lift each separable field map in that factor using EA8, then combine the maps. The idempotents and field lifts are unique. This proves the product assertion. \(\square\)
+
+For any square-Jacobian chart, (ET10) gives zero differentials on each field fibre. EA10 therefore makes every nonempty fibre a finite disjoint union of separable points. In particular a point \(\mathfrak q\) over \(\mathfrak p\) has a finite separable residue extension, and
+\[
+ \mathfrak pB_{\mathfrak q}=\mathfrak qB_{\mathfrak q}.
+ \tag{ET14}
+\]
+The local fibre is a field; the equality follows by taking its maximal ideal. This assertion precedes, and is not obtained by assuming, flatness.
+
+### 5B.6. Flatness of the square-Jacobian chart over every base
+
+**EA11.** Every chart (ET11) is flat over \(A\), including when \(A\) is not Noetherian.
+
+*Proof.* Suppose first \(A\) is Noetherian. Its chart algebra is Noetherian by EA4. Fix \(\mathfrak q\), with contraction \(\mathfrak p\), and complete the local rings:
+\[
+ R=\widehat{A_{\mathfrak p}},\qquad
+ S=\widehat{B_{\mathfrak q}}.
+ \tag{ET15}
+\]
+EA7 constructs their complete local structures and residue fields. The base map extends to \(R\to S\): maximal-ideal powers in the first ring map into those in the second, so a Cauchy sequence has a unique image limit.
+
+Choose a primitive element \(\theta\) of the finite separable residue extension \(K/k\) in EA10 and a monic lift \(f\) of its minimal polynomial to \(A_{\mathfrak p}[T]\). Put \(R'=R[T]/(f)\). Monic division gives a free \(R\)-module with basis \(1,T,\ldots,T^{d-1}\): a nonzero multiple of a monic polynomial cannot have degree below \(d\), even when coefficients have zero divisors. Thus \(R'\) is complete and separated coordinate by coordinate and has residue field \(K\). Its maximal ideal is \(\mathfrak m_RR'\); an element with nonzero residue has an inverse by the geometric series from EA7. It is Noetherian by EA4.
+
+The images of the chart coordinates in \(K\) solve its equations with invertible Jacobian. Formula (ET9) gives their unique lifts to \(R'\); the inverted element has nonzero residue, so is a unit. This defines a local map \(B_{\mathfrak q}\to R'\), because every element outside \(\mathfrak q\) still has nonzero residue. It extends continuously to \(S\to R'\).
+
+In the other direction lift \(\theta\) to \(S\) and use Lemma 0D.1 to lift the simple root of \(f\). This gives \(R'\to S\). The composite on \(R'\) fixes \(R\) and sends \(T\) to a root with its prescribed residue, so uniqueness of the simple-root lift makes it the identity. The other composite fixes the chart coordinates by the vector uniqueness in (ET9), and therefore fixes \(B_{\mathfrak q}\), including all its denominators. Continuity and density make it the identity on \(S\). We have proved, as rings,
+\[
+ S\simeq R[T]/(f),
+ \quad\text{finite free of rank }[K:k]\text{ over }R.
+ \tag{ET16}
+\]
+This statement does not assert that the original chart is finite over \(A\).
+
+EA7 makes \(R\) flat over \(A_{\mathfrak p}\), so \(S\) is flat over it. The same lemma makes \(S\) faithfully flat over \(B_{\mathfrak q}\). For any injection of \(A_{\mathfrak p}\)-modules, the kernel after tensoring with \(B_{\mathfrak q}\) becomes zero after tensoring with \(S\), and faithful flatness forces that kernel to be zero. Thus \(B_{\mathfrak q}\) is flat over \(A_{\mathfrak p}\). Localizing a proposed tensor kernel on \(\operatorname{Spec}B\) now gives zero everywhere; EA1 forces it to be zero. This proves flatness of \(B\) over the Noetherian \(A\).
+
+For an arbitrary \(A\), put all finitely many coefficients of \(F_i,h\) into the subring \(A_0\) generated by them and the integers. EA4 makes \(A_0\) Noetherian. Define exactly the same chart over it, inverting \(h\Delta\); the preceding proof makes that chart \(B_0\) flat over \(A_0\). Polynomial quotient and localization commute with base change by their generator-and-inverse presentations, so \(B=A\otimes_{A_0}B_0\). Tensor associativity identifies \(B\)-tensoring of \(A\)-modules with \(B_0\)-tensoring of their underlying \(A_0\)-modules. Hence it preserves injections and is flat. This proves the assertion over every base ring. \(\square\)
+
+### 5B.7. The full étale criterion, stability and diagonal
+
+**EA12.** For a finitely presented \(A\)-algebra \(B\), the following conditions are equivalent:
+
+1. \(B\) is flat over \(A\) and \(\Omega_{B/A}=0\).
+2. \(B\) is formally étale.
+3. \(\operatorname{Spec}B\) has a cover by square-Jacobian charts (ET11).
+
+*Proof.* Condition 2 implies 3 by EA9. A chart satisfies 1 by EA8 and EA11. If charts cover, the tensor kernel of an injection and the differential module vanish after localization on all charts, so they vanish by EA1. Thus 3 implies 1.
+
+Assume 1 and write \(B=P/K\) with \(K\) finite. At \(\mathfrak q\) over \(\mathfrak p\), scalar extension to \(k=\kappa(\mathfrak p)\) identifies the fibre ideal with \(K\otimes_A k\), by (ET1) applied to the flat quotient \(B\). The fibre has zero differentials and is a finite product of separable fields by EA10, and is therefore formally étale. Apply the proof of EA9 to its specified polynomial presentation. It supplies \(n\) fibre equations whose derivative vectors are the standard basis modulo the fibre ideal and which generate that ideal at the chosen point. Lift these equations to \(K\) after localizing the base at \(\mathfrak p\).
+
+In \(P_Q\), where \(Q\) is the prime above the point, the finite quotient \(K_Q/(f_1,\ldots,f_n)_Q\) is zero modulo \(\mathfrak p\). Thus it equals \(\mathfrak p\) times itself and is zero by Nakayama. Clear the finitely many base denominators and the finite annihilator witnesses of EA1. This gives a principal neighbourhood where \(K=(f_1,\ldots,f_n)\) and the Jacobian is invertible. It is (ET11), proving 3 without assuming a Noetherian base.
+
+To prove 3 implies 2 globally, uniqueness needs no gluing assumption: two lifts across \(J^2=0\) differ by an \(A\)-derivation \(B\to J\), with the action induced by \(B\to C/J\). The product rule follows by expanding the difference, and \(\Omega=0\) makes it zero. For existence take a finite principal chart cover, pull back its elements to \(C/J\), and lift them to \(C\). They still cover because a lifted unit equation differs from \(1\) by a nilpotent. EA8 lifts the map on each localization. Uniqueness just proved makes the local maps agree on overlaps. EA2 glues them to an \(A\)-algebra map \(B\to C\). This proves condition 2 and all equivalences. \(\square\)
+
+We call these algebras étale. Equivalently they are finitely presented, flat and formally unramified: uniqueness of lifts is exactly \(\Omega=0\), by the difference-of-lifts calculation and the square-zero test \(B\oplus M\). No perfection or characteristic restriction is part of the definition.
+
+**EA13.** Étale maps are stable under composition, base change and localization. Any \(A\)-map between two finitely presented étale \(A\)-algebras is étale. The diagonal of an étale morphism is an open immersion.
+
+*Proof.* For composition, lift the intermediate algebra first, then the second algebra; uniqueness at both stages proves formal étaleness. Finite presentation composes by EA3. For base change, a map from \(B\otimes_A A'\) to an \(A'\)-algebra is exactly a \(B\)-map compatible with its specified \(A'\)-structure. The unique \(A\)-lift extends to the tensor product. Finite presentation is preserved, so EA12 applies. Localization of the source preserves unique lifting because an element invertible modulo a nilpotent ideal lifts to a unit. A principal localization has finite presentation; base localization is the already proved base-change case.
+
+If \(B=A[X]/(f)\) and \(C=A[Y]/(g)\) are finitely presented and the images of \(X_i\) in \(C\) are \(p_i(Y)\), then
+\[
+ C\simeq B[Y]/(g(Y),X_i-p_i(Y)).
+ \tag{ET17}
+\]
+The evident substitution maps are inverse; the relations \(f(p(Y))\) already belong to the ideal \((g)\). Thus the given map is finitely presented. Its unique \(A\)-lift is a \(B\)-lift, because its restriction to \(B\) agrees with the specified \(B\)-structure by the unique lifting property of \(B\). Hence it is étale by EA12.
+
+For the diagonal put \(T=B\otimes_A B\), with multiplication \(\mu:T\to B\) and kernel \(J\). The ideal \(J\) is generated by the finitely many differences of the algebra generators. The map
+\[
+ b\longmapsto b\otimes1-1\otimes b
+ \quad\text{gives}\quad
+ J/J^2\simeq\Omega_{B/A}.
+ \tag{ET18}
+\]
+To verify the identification, the displayed difference satisfies the derivation rules modulo \(J^2\) and generates \(J/J^2\). For a derivation \(d:B\to M\), the rule \(b\otimes c\mapsto (bc,c\,d(b))\) is an \(A\)-algebra map to the square-zero ring \(B\oplus M\). Its restriction to \(J\) kills \(J^2\) and sends the displayed difference to \(db\). These two maps are inverse on generators, proving (ET18).
+
+Thus \(J=J^2\). At a prime \(Q\) containing \(J\), Nakayama kills the finite ideal \(J_Q\). EA1 provides \(h\notin Q\) with \(J_h=0\). On this open the quotient map identifies \(T_h\) with \(B_{\mu(h)}\). These opens cover the diagonal image, making the diagonal an isomorphism onto an open subset. The scheme assertion follows on affine charts around each diagonal point; the affine identifications agree on overlaps by their maps. \(\square\)
+
+### 5B.8. Open images, including the arbitrary-ring step
+
+**EA14.** Every étale morphism has open image, universally under base change.
+
+*Proof.* We first prove the needed constructibility result over a Noetherian affine base. For an injective finite-type map of domains \(A\to B\), let \(K=\operatorname{Frac}A\). EA5 makes \(B\otimes_A K\) finite over a polynomial subalgebra \(K[z_1,\ldots,z_r]\). Clear denominators of the \(z_i\) and of the monic equations for the finitely many algebra generators of \(B\). For one nonzero \(a\in A\) this gives
+\[
+ A_a[z_1,\ldots,z_r]\hookrightarrow B_a
+ \quad\text{a finite algebra map}.
+ \tag{ET19}
+\]
+The left map is injective by algebraic independence over \(K\). Finite lying over in EA5 and the prime \(\mathfrak p[z_1,\ldots,z_r]\) for each base prime show that the image contains \(D(a)\).
+
+Here is the Noetherian induction that gives constructibility for any finite-type algebra. Induct on closed subsets \(Y\) of the target, proving the assertion for all finite-type maps into each such subset. If \(Y\) is reducible, its finitely many proper irreducible components reduce the assertion to the induction hypothesis, by taking inverse images. If it is irreducible, the source has finitely many irreducible components by EA4. A component whose image closure is proper is handled on that smaller closed subset. A component dominating \(Y\) is a finite-type domain over the reduced domain of \(Y\), with an injective map; (ET19) puts a dense principal open of \(Y\) in its image. Its image on the remaining proper closed subset is the image of the finite-type base change there, so is constructible by induction. The finite union of these component images is constructible. Passing to reduced components does not change point images, and their quotient maps stay finite type. This proves the assertion, with no dimension bound.
+
+For a flat map \(A\to B\), the image is stable under generization. At \(\mathfrak q\) over \(\mathfrak p\), the local map \(A_{\mathfrak p}\to B_{\mathfrak q}\) is faithfully flat. Indeed for a nonzero module choose a cyclic submodule \(A_{\mathfrak p}/J\); flatness preserves its injection, and its tensor quotient is nonzero because \(JB_{\mathfrak q}\) lies in the maximal ideal. For \(\mathfrak p'\subset\mathfrak p\), tensoring \(\kappa(\mathfrak p')\) therefore gives a nonzero ring. A prime of this ring gives a prime of \(B_{\mathfrak q}\) contracting to \(\mathfrak p'\), as quotienting by \(\mathfrak p'\) and inverting its complement describes that tensor ring. This is the desired generization.
+
+A constructible generization-stable subset of a Noetherian spectrum is open. Its complement \(C\) is constructible and specialization-stable. In the closure of \(C\), each irreducible component's generic point lies in \(C\): a finite union of locally closed pieces is dense, so some piece has dense intersection with that component; its open part then contains the generic point. Specialization stability includes the entire component, so \(C\) equals its closure. This proves openness. Thus every flat finite-type map over a Noetherian base has open image. Restricting to a principal source open preserves flatness and finite type, so the map is open on every open set.
+
+For a chart over arbitrary \(A\), use exactly the finite coefficient ring \(A_0\) and flat chart \(B_0\) of EA11. Its image is open by the Noetherian argument. The image after base change is its inverse image as a set: the fibre over \(\mathfrak p\) is the fibre over its contraction tensored with the field \(\kappa(\mathfrak p)\). A nonzero algebra over a field remains nonzero after field extension, since independent vectors remain independent; a nonzero ring has a prime. Therefore a fibre is nonempty before this extension exactly when it is nonempty afterwards. The inverse image of the open image is open.
+
+Every étale affine chart is covered by the charts of EA12. The image of an arbitrary source open is the union of images of such smaller charts. All are open by the argument just given, and affine target covers give the scheme assertion. Base change is étale by EA13, so the same proof establishes universal openness. This is the general open-image proof; it does not assume a one-variable local form. \(\square\)
+
+### 5B.9. Schemes, the finite-cover basis and geometric stalks
+
+A scheme morphism is étale if it is affine-locally given by the equivalent conditions in EA12. The local condition agrees with locally finite presentation, flatness and zero relative differentials. Indeed fractions localize the differential presentation, and vanishing at every prime implies vanishing by EA1. For flatness, localize any proposed tensor kernel at source primes; local flatness over the contracted base local ring makes each localization zero, so EA1 makes the kernel zero. Finite presentation on an affine source can be patched by EA3. Thus these conditions really are local conditions on source and target.
+
+Recall the following conventions. A morphism is quasi-compact if inverse images of affine opens are quasi-compact, and quasi-separated if its relative diagonal is quasi-compact. Finite presentation means locally finite presentation together with these two conditions. A scheme is quasi-separated precisely when intersections of affine opens are quasi-compact: pull back its diagonal on products of affine charts; its inverse image is their intersection. These are the qcqs conditions used in Section 6.
+
+**EA15.** Over a qcqs scheme \(T\), the finite-presentation étale objects form a basis \(\mathcal B_T\) with finite limits and finite covering refinements. Base change preserves its finite limits and covers. The slice over an étale object is its étale site.
+
+*Proof.* Quasi-compactness is stable under base change: over an affine base, cover its quasi-compact inverse image by finitely many affine charts, whose pullbacks to an affine new base are the affine tensor products of EA2. They still give a finite cover. Composition is checked by covering a quasi-compact inverse image by finitely many affine opens and using finite covers of their inverse images. The relative diagonal of a base change is the base change of the relative diagonal. The diagonal of a composite factors through the diagonal of the first morphism and a base change of the second one. These descriptions prove the same stability for quasi-separatedness. Local finite-presentation ring equations and EA3 prove its stability under base change and composition.
+
+In particular a finite-presentation object over qcqs \(T\) has qcqs source: quasi-compactness follows by composition, and its absolute diagonal factors through its relative diagonal and a base change of the base diagonal. Identity and fibre products are therefore in \(\mathcal B_T\), by EA13 and the preceding stability. For parallel maps \(V\rightrightarrows W\), their equalizer is the inverse image of the open diagonal of \(W/T\). That diagonal is quasi-compact by finite presentation. A quasi-compact open immersion is finitely presented: over an affine target its open source is a finite union of principal opens, each given by adjoining an inverse, and EA3 gives the affine-local finite presentation; its diagonal is an isomorphism. Thus this equalizer is again in the basis. Terminal objects, products and equalizers construct all finite limits.
+
+Every étale object has a cover by affine source charts over affine target charts with finite algebraic presentations. A smaller principal source chart suffices around any chosen point. If \(T\) is quasi-separated, an affine target open maps to \(T\) by a quasi-compact open immersion: its intersections with other affine target opens are quasi-compact. Thus these small charts really are finite-presentation objects over \(T\), using composition. Every cover of a basis object can now be refined by such charts. EA14 makes their images open; the quasi-compact source of the covered object selects finitely many images covering it. This proves finite refinement.
+
+Maps between étale objects are themselves étale. On affine charts this is the algebra assertion in EA13. For two finite-presentation objects the map is also finitely presented globally: its graph is a base change of the quasi-compact open diagonal of the target object, and its projection is a base change of the source object's map to \(T\). Both are finitely presented. Consequently the coverings and their iterated fibre products used in Section 6 remain in the basis. Joint surjectivity is preserved by base change: a nonempty field fibre stays nonempty after residue field extension, by the vector-space argument in EA14. Finite limits commute with base change by their fibre-product and equalizer universal properties. This proves the base-change assertion.
+
+For an étale \(U\to T\), an étale object over \(U\) composes to one over \(T\). Conversely an object étale over \(T\) with a map to \(U\) is étale over \(U\), by the maps-between-objects assertion. The arrows and jointly surjective covers are identical under these two constructions. They give the slice equivalence; for finite-presentation objects its finite-presentation assertions follow from the graph argument above.
+
+For completeness, the sites can be presented by small categories. Affine finite presentations over the affine target charts have a set of coefficient lists and maps. For qcqs \(T\), finite affine covers, finite principal overlap covers and their gluing equations encode all basis objects by a set of finite data. In general start with \(T\) and that set of affine étale charts, and close under finite limits; these are still a set of objects. They cover every étale object. Their matching families determine sheaves on the whole site: refine two covers by fibre products, identify their matching families by the sheaf equalizer, and glue on a composite cover. The same argument extends a sheaf from the small presentation and restricts it back, giving inverse constructions. When comparing a set of scheme maps, include the set of their base-change objects and again close under finite limits. This leaves the matching-family sheaves unchanged and makes the base-change functors the finite-limit, cover-preserving functors of SH6. Thus the inverse-image and slice arguments apply without an assumption about the size of a class of schemes. \(\square\)
+
+**EA16.** Geometric points give conservative point functors on the étale site. Their stalks, and exactness tested on those stalks, are the stalks of SH7.
+
+*Proof.* Choose for every point \(x\) an algebraic closure \(\Omega_x\) of \(\kappa(x)\) and its map \(\bar x:\operatorname{Spec}\Omega_x\to T\). On an object \(V\), set
+\[
+ \tau_{\bar x}(V)=
+       \operatorname{Hom}_T(\operatorname{Spec}\Omega_x,V).
+ \tag{ET20}
+\]
+It preserves finite limits by their universal property. It lifts coverings: pull a covering back along the chosen lift to \(\operatorname{Spec}\Omega_x\). It remains jointly surjective by EA15. Every nonempty étale chart over this algebraically closed field has an \(\Omega_x\)-point, since its field algebra is a product of copies of \(\Omega_x\) by EA10. One such point gives the required covering lift. Hence this is a point functor in the precise sense of SH7.
+
+We prove conservativity, not just the point axioms. Every ordinary point \(v\) of an étale \(V\) over \(x\) admits a lift from \(\Omega_x\): on its affine field-fibre chart, EA10 makes \(\kappa(v)/\kappa(x)\) finite separable, so it embeds in \(\Omega_x\). Suppose a section of a sheaf is zero in every geometric stalk over its object \(V\). For each \(v\), choose such a lift. The filtered representative test of SH7 gives a refinement \(W\to V\) carrying that lift on which the section is zero. The images of these refinements cover \(V\), because each contains its corresponding \(v\); the sheaf condition gives zero on \(V\). Applied to kernel sections, this proves injectivity of a map that is injective on all geometric stalks.
+
+If a map \(F\to G\) is stalkwise surjective, take \(s\in G(V)\) and the same lifts at all \(v\). Stalk surjectivity gives a representative preimage on a neighbourhood; common refinement with \(V\), followed by a refinement witnessing equality, gives a local preimage of \(s\) on \(W\to V\) through that lift. Again these maps cover \(V\). Thus the map is an epimorphism by (SC2). Stalkwise bijectivity is therefore an isomorphism. This proves conservativity, and SH7 now proves the exact-complex stalk criterion. \(\square\)
+
+The geometric inverse-image stalk formula is also an actual consequence of these constructions. For a scheme map \(p:T'\to T\) and a geometric \(\bar t'\), let \(\bar t\) be its composite into \(T\), using the same algebraically closed field. Then
+\[
+ (p^{-1}F)_{\bar t'}\simeq F_{\bar t}.
+ \tag{ET21}
+\]
+The point-functor argument above applies to that field even if it is not algebraic over \(\kappa(t)\). To prove the formula, the free sheaf \(P_V\) of (SC3) has stalk \(\mathbb Z[\tau_{\bar t}(V)]\). Indeed a germ of an arrow into \(V\) maps to its chosen lift; every lift is represented by the identity of \(V\), and two representations with equal lifts agree on their fibre-product refinement over \(V\). Free abelian groups commute with these colimits by their finite-generator presentation, and SH7 removes sheafification. The adjunction SH6 and (SC3) identify \(p^{-1}P_V\) with the free sheaf on \(V\times_TT'\): they represent the same maps to any sheaf. Its lifts are exactly the lifts of \(V\) after composing \(\bar t'\) with \(p\). Thus (ET21) holds on these free sheaves and their sums. Every sheaf has a presentation by two such sums: use all its sections for a surjection and then all sections of its kernel. Both stalk functors and inverse image are exact and commute with colimits by SH2, SH6 and SH7, so taking the cokernel proves (ET21) for the sheaf. The construction on arrows makes it natural.
+
+
+**EA17.** Pointed affine étale neighbourhoods are cofinal for a geometric stalk, and their opposite category is filtered without a poset assumption.
+
+*Proof.* A chosen lift lies in an affine source chart mapping into an affine target chart. Shrink to a finite-presentation principal chart there; its chosen lift still factors through it. Thus affine neighbourhoods suffice. Fibre products give common neighbourhoods, followed by the same affine shrinking. For two parallel neighbourhood arrows, their equalizer is the inverse image of the open diagonal from EA13. It contains the chosen lift. An affine neighbourhood inside that open equalizes the arrows. These are exactly the common-refinement and equalization axioms. Ring maps go in the reverse direction, giving the filtered colimit. Restricting to a fixed affine target neighbourhood is cofinal by intersecting with its inverse image. \(\square\)
+
+### 5B.10. The actual strict local neighbourhood ring
+
+**EA18.** Fix \(T=\operatorname{Spec}A\), a prime \(\mathfrak p\), and an algebraic closure \(\Omega\) of its residue field \(k\). Let \(R\) be the ring colimit of its pointed affine étale neighbourhoods. Then \(R\) is faithfully flat over \(A_{\mathfrak p}\) and local, with residue the separable closure \(k^{\mathrm{sep}}\) inside \(\Omega\). Every finite-presentation étale \(R\)-algebra with a prescribed residue point has a unique \(R\)-section lifting it. The ring is strictly Henselian and is the local-neighbourhood construction \(A_{\mathfrak p}^{\mathrm{sh}}\) with that chosen residue closure.
+
+*Proof.* The index is filtered by EA17. Every stage has its chosen map into \(\Omega\), and the maps induce \(\rho:R\to\Omega\). Its image is contained in \(k^{\mathrm{sep}}\): every stage value lies in the finite separable residue field of its fibre point, by EA10. All fractions from \(A\setminus\mathfrak p\) occur by principal target neighbourhoods, so the image contains \(k\). It contains every finite separable extension in \(\Omega\) as well. Choose its primitive element and separable monic polynomial over \(k\), lift the finitely many coefficients to \(A_a\), \(a\notin\mathfrak p\), and take the chart obtained by quotienting by that polynomial and inverting its derivative. The chosen root gives a pointed neighbourhood whose residue contains the element. Hence the image is exactly \(k^{\mathrm{sep}}\).
+
+If a stage element has nonzero value under \(\rho\), its principal source localization is another pointed étale neighbourhood. It is therefore invertible in \(R\). If its value is zero, it belongs to the chosen prime of the stage. Localizing at that prime and applying (ET14) puts its image in \(\mathfrak pR\), because all those local denominators are already units in \(R\). Hence the maximal ideal equals \(\mathfrak pR\). Thus
+\[
+ \mathfrak m_R=\mathfrak pR=\ker\rho,\qquad R/\mathfrak m_R=k^{\mathrm{sep}}.
+ \tag{ET22}
+\]
+The residue field is separably closed. To verify this, a separable polynomial and its coprimality witness with its derivative use only finitely many coefficients in \(k^{\mathrm{sep}}\), hence belong to a finite separable extension of \(k\). Its roots are separable over that finite field and therefore over \(k\). The latter transitivity follows from EA10: after tensoring with an algebraic closure, a finite separable extension splits into copies of that closure, and a further separable extension does so in each factor; the resulting reduced tensor algebra excludes an inseparable element by the test in EA10. All the roots thus belong to \(k^{\mathrm{sep}}\).
+
+Each pointed affine stage is flat over \(A\) by EA12. EA1 makes their filtered colimit flat as well. All elements of \(A\setminus\mathfrak p\) are units in \(R\), so it is flat over \(A_{\mathfrak p}\). This map is local by (ET22), and the flat local faithfulness proof in EA14 makes it faithfully flat.
+
+
+Consider an étale \(R\)-algebra with its chosen residue point. Choose a square-Jacobian chart around that point by EA12. Its coefficients, and elements representing the finitely many residue coordinate values, come from one pointed stage \(B\) by filteredness. Use the identical Jacobian equations over \(B\), with the indicated values in \(\Omega\). They define another pointed étale \(A\)-neighbourhood, by EA13. Its coordinate images in \(R\) solve the equations exactly and give an \(R\)-section of the chart, hence of the original algebra. This proves existence with the prescribed residue.
+
+Two sections with the same residue point coincide. Pull back the open diagonal of that étale algebra along the pair of sections. The resulting open of \(\operatorname{Spec}R\) contains its closed point. Any open containing the closed point of a local spectrum is the whole spectrum: one of its principal neighbourhoods has an element outside the maximal ideal, hence a unit. Thus the two sections agree everywhere. This proves uniqueness without assuming that \(R\) is Noetherian or complete.
+
+Here is also the usual factor-lifting test for Henselianity, proved directly. For a monic polynomial whose residue factors as two coprime monic polynomials \(g,h\) of degrees \(r,s\), write equations for the \(r+s\) coefficients of the two monic lifts. Their Jacobian at the residue factorization is the linear map
+\[
+ (u,v)\longmapsto uh+gv,\qquad
+ k^{\mathrm{sep}}[T]_{<r}\oplus k^{\mathrm{sep}}[T]_{<s}
+ \longrightarrow k^{\mathrm{sep}}[T]_{<r+s}.
+ \tag{ET23}
+\]
+Its kernel is zero: coprimality makes \(g\) divide \(u\), so the degree bound gives \(u=0\), then \(v=0\). The spaces have the same finite dimension, so the determinant is nonzero. The square-Jacobian chart and the section property just proved give the unique lifted factors. This is the monic coprime-factor definition of a Henselian local ring; together with (ET22) it proves strict Henselianity.
+
+The local-neighbourhood construction can use stage local rings \(B_{\mathfrak q}\) instead of the affine rings \(B\). Every denominator outside the chosen \(\mathfrak q\) becomes a unit by a principal pointed refinement. The maps from these local rings to \(R\) and from the affine colimit to their colimit are consequently inverse. They also allow the base to be replaced by \(A_{\mathfrak p}\): refine a pointed presentation over it to a square-Jacobian chart by EA12; its finitely many coefficients and denominators come from an \(A_a\), \(a\notin\mathfrak p\), while their chosen residue maps are unchanged. This proves the asserted construction of \(A_{\mathfrak p}^{\mathrm{sh}}\) rather than assuming its identification with the neighbourhood colimit.
+
+Equivalently the affine index consists of triples \((B,\mathfrak q,\iota)\), where \(B\) is étale over \(A\), \(\mathfrak q\) lies over \(\mathfrak p\), and \(\iota:\kappa(\mathfrak q)\hookrightarrow k^{\mathrm{sep}}\) extends the residue embedding. A map from \(B\) to \(\Omega\) determines its kernel and that field embedding; the finite separable field-fibre result makes its image lie in \(k^{\mathrm{sep}}\). Conversely each such triple gives exactly that chosen geometric lift. Arrows preserve the lift exactly when they preserve this residue embedding. Thus the colimit is the strict-henselization construction by pointed étale local algebras with the specified residue closure, with all its local, flat and lifting assertions proved above.
+
+
+
+One useful universal property is explicit in the proof. If a local \(A\)-algebra \(S\) is equipped with the chosen residue embedding and has the same étale residue-section property, every pointed stage has a unique compatible map into \(S\). Their colimit gives the unique local map \(R\to S\) with those residue maps. No universal property for rings lacking that stated lifting hypothesis is being imported. \(\square\)
+
+The freely accessible primary reading is the Stacks project authors' [Noetherian completion](https://stacks.math.columbia.edu/tag/0BNH), [formal étaleness](https://stacks.math.columbia.edu/tag/00UP), [normalization](https://stacks.math.columbia.edu/tag/00OX), [étale morphisms](https://stacks.math.columbia.edu/tag/03PA), [geometric stalks](https://stacks.math.columbia.edu/tag/03PN), and [strict local construction](https://stacks.math.columbia.edu/tag/0BSK). EA1–EA18 supply the arguments actually used by this lesson. In particular, (ET16) is proved before flatness, EA11 gives the arbitrary-base step, and EA15–EA17 prove the point and finite-cover hypotheses rather than treating those hypotheses as citations. These are foundations for the continuity proof; they do not by themselves prove the later curve Kummer, Brauer, duality, nilpotent-site or finite-pushforward results.
+
+### 5B.11. Graded exercise: the algebra behind a geometric stalk
+
+**Exercise 5B.1 (100 points).** Each part is worth 10 points. Use the constructions of EA1–EA18, proving the stated calculations rather than inferring étaleness from a missing hypothesis.
+
+1. Let \(A=k[t]\), \(I=(t)\), and \(N=t^rA\subset A\), \(r\geq1\). Determine a sharp Artin–Rees bound, identify the completion, and explain the difference between its flatness over \(A\) and faithful flatness over \(A_{(t)}\).
+2. Apply (ET5) to \(k[X,T]/(X^2+T^3)\), with \(Y=X-T^4\). Exhibit its finite free module over \(k[Y]\), in every characteristic.
+3. Starting from a section \(B=P/K\to P/K^2\), prove the splitting of (ET10). With zero differentials, explain exactly where finite generation and Nakayama produce a square-Jacobian chart.
+4. Let \(A=k[t]\) and \(B=A/(t)\). Compute the relative differential module, disprove flatness, and construct a square-zero lifting diagram with no lift.
+5. Let \(f=T^2+T+1\), \(\delta=2T+1\), and \(B=(\mathbb Z[T]/(f))_\delta\). Compute the multiplication matrix of \(\delta\), the image in \(\operatorname{Spec}\mathbb Z\), the fibres at \(2,3,7\), and the completion at its point over \(2\).
+6. For \(F_1=X^2+Y-a\), \(F_2=Y^2+X-b\), compute a square-zero Newton correction from errors \(e_1,e_2\). State the required inverted element and show why the proof works without dividing by \(2\).
+7. For \(k=\mathbb F_p(s)\) and \(K=k[u]/(u^p-s)\), prove that \(K\) is a field, compute \(\Omega_{K/k}\), and give two distinct lifts across a square-zero ideal. Explain why flatness of this extension does not make it étale.
+8. Prove covering lift and conservativity for the geometric point functor. Then prove the inverse-image stalk formula using free sheaves and their presentations.
+9. Verify the idempotent correction (ET13) in characteristic \(2\). For the residue factors \(g=T^2+aT+b\), \(h=T+c\), compute the coefficient Jacobian determinant in (ET23) and interpret its nonvanishing.
+10. Let \(E=\bigcup_{n\geq1}\mathbb F_{p^{n!}}\) inside an algebraic closure. Prove that \(E/\mathbb F_p\) is formally étale and flat but is not finitely presented. Explain what the new foundations still leave to prove in the later curve-cohomology calculation.
+
+*Full solution.*
+
+1. Direct divisibility gives
+\[
+ N\cap I^nA=t^{\max(r,n)}A.
+ \tag{ETX1}
+\]
+For \(n\geq r\), this is \(t^{n-r}(N\cap I^rA)=t^nA\). Thus \(c=r\) works. If \(c<r\), take \(n=r\): the right side of (ET6) would be \(t^{2r-c}A\), strictly smaller than \(t^rA\). This proves sharpness. A compatible sequence of polynomials modulo \(t^n\) determines, and is determined by, its successive coefficients, so the completion is \(k[[t]]\). EA7 makes it flat over \(A\). It is not faithfully flat over this nonlocal \(A\): the nonzero module \(A/(t-1)\) is killed after tensoring, since \(1-t\) is invertible by its geometric series in \(k[[t]]\). For \(A_{(t)}\), the completion has the same quotients and is faithfully flat by the local assertion EA7. The distinction is the local, proper-maximal-ideal hypothesis, not a failure of completion exactness on finite modules.
+
+2. The substitution gives
+\[
+ T^8+2YT^4+T^3+Y^2=0.
+ \tag{ETX2}
+\]
+The substitution and its inverse \(X=Y+T^4\) identify the algebra with the quotient of \(k[Y,T]\) by this monic degree-eight polynomial. Monic division gives a unique remainder of degree less than eight, so the basis is
+\[
+ 1,T,T^2,\ldots,T^7.
+ \tag{ETX3}
+\]
+Uniqueness follows because multiplication of a nonzero polynomial by a monic degree-eight polynomial has its leading nonzero coefficient in degree at least eight. In characteristic \(2\) the middle coefficient in (ETX2) disappears, but the degree-eight monic coefficient and the proof are unchanged. No separability or domain assertion is needed for this module calculation.
+
+3. Define \(d(p)=p-s(\bar p)\) in \(K/K^2\). Expanding a product and using the square-zero ideal proves that this is a derivation, with \(d(f)=f\bmod K^2\) for \(f\in K\). The free polynomial differential module gives \(\beta:B^n\to K/K^2\), with \(\beta\alpha=1\). If \(\Omega=0\), \(\alpha\) is also surjective by (ET10), hence is an isomorphism. Choose actual equations mapping to its basis. They generate \(K/K^2\); the finite quotient by them therefore equals \(K\) times itself at a prime containing \(K\). Nakayama makes that local quotient zero. The finitely many ideal generators then give one denominator witnessing zero on a principal open, by EA1. Its Jacobian determinant is \(1\) modulo \(K\) and can also be inverted. This is the exact local chart step; neither a basis for the original ideal nor a Noetherian base was assumed.
+
+4. Every element of \(B\) comes from \(A\), so all its relative differential generators are zero:
+\[
+ \Omega_{B/A}=0.
+ \tag{ETX4}
+\]
+Multiplication by \(t\) is injective on \(A\) but becomes the zero map on the nonzero module \(B\), disproving flatness. Take \(C=A/(t^2)\), \(J=(t)/(t^2)\). Then \(J^2=0\) and \(C/J=B\). The identity map to \(C/J\) cannot lift as an \(A\)-map \(B\to C\): the element \(t\) is zero in the source but its specified base image in \(C\) is nonzero. Thus the lifting existence and flatness hypotheses are both essential; finite presentation and zero differentials alone do not suffice.
+
+5. On the basis \(1,T\), use \(T^2=-T-1\). The matrix is
+\[
+ M_\delta=
+ \begin{pmatrix}1&-2\\2&-1\end{pmatrix},
+ \qquad M_\delta^2=-3\,1,\qquad
+ \det(Z\,1-M_\delta)=Z^2+3.
+ \tag{ETX5}
+\]
+Thus \(\delta^2=-3\) in the algebra, and inverting \(\delta\) is exactly inverting \(3\). One implication follows from this square identity; for the other, \(\delta^{-1}=-\delta/3\). The algebra is finite free of rank two over \(\mathbb Z[1/3]\), so its fibre over every prime there is nonzero. Its image is \(D(3)\).
+
+At \(2\), \(f\) has no root in \(\mathbb F_2\) and is irreducible of degree two; its derivative is \(1\), so the fibre is \(\mathbb F_4\). At \(3\), \(f=(T-1)^2\) and \(\delta=2(T-1)\) is nilpotent; its localization is the zero ring, so the fibre is empty. At \(7\), the distinct roots are \(2,4\), with nonzero derivatives; remaindering gives \(\mathbb F_7\times\mathbb F_7\). At the unique point over \(2\), (ET16) identifies the completed local ring with
+\[
+ \mathbb Z_2[T]/(T^2+T+1),
+ \quad\text{free of rank two over }\mathbb Z_2.
+ \tag{ETX6}
+\]
+Here \(\mathbb Z_2=\varprojlim\mathbb Z/2^n\): odd denominators in \(\mathbb Z_{(2)}\) are already units modulo every \(2^n\), so this is the completion in (ET15). This describes a local completion, not finiteness over the original \(\mathbb Z\).
+
+6. At a tuple \((x,y)\), put \(\Delta=4xy-1\). The Jacobian and correction are
+\[
+ J_F=
+ \begin{pmatrix}2x&1\\1&2y\end{pmatrix},\qquad
+ d_x=\frac{e_2-2ye_1}{\Delta},\qquad
+ d_y=\frac{e_1-2xe_2}{\Delta}.
+ \tag{ETX7}
+\]
+The linear corrections are \(-e_1,-e_2\). The new errors are consequently \(d_x^2,d_y^2\), which vanish when the errors belong to a square-zero ideal. Inverting \(\Delta\) is the required chart condition; no inversion of \(2\) occurs. In characteristic \(2\), \(\Delta=-1\) and the same formulas solve the system. For a general nilpotent ideal repeat this lift through its successive square-zero quotients, as in EA8.
+
+7. The element \(s\) is not a \(p\)-th power in \(\mathbb F_p(s)\). The order at \(s=0\) of a \(p\)-th power of a rational function is divisible by \(p\), while that of \(s\) is \(1\); the order is defined by counting powers of \(s\) in numerator and denominator. In an algebraic closure \(T^p-s=(T-\alpha)^p\). A proper monic factor of degree \(0<r<p\) would be \((T-\alpha)^r\); its next coefficient \(-r\alpha\) would put \(\alpha\) in \(k\), a contradiction. Hence the polynomial is irreducible and \(K\) is a field. Its relative derivative is zero, so (ET10) gives
+\[
+ \Omega_{K/k}=K\,du.
+ \tag{ETX8}
+\]
+In \(K[\epsilon]/(\epsilon^2)\), both \(u\mapsto u\) and \(u\mapsto u+\epsilon\) are \(k\)-maps lifting the identity, since \((u+\epsilon)^p=u^p\). They are distinct. The extension is flat because vector spaces have bases and tensoring with a field extension preserves injections, but the nonzero differential module and lifting nonuniqueness exclude étaleness.
+
+8. Finite limits are preserved by maps from \(\operatorname{Spec}\Omega\), by their universal property. Pull a cover back to this algebraically closed field. Joint surjectivity survives field extension, and a nonempty étale chart has a point with that same field by EA10. Thus the chosen lift reaches a covering member. If all germs of a section vanish, for each ordinary point choose its residue embedding into the fixed closure. A refinement through that lift witnesses vanishing, by SH7. These refinements cover the object, so the section is zero. For a target section under a stalkwise surjection, represent its preimage germ and refine until the image equality holds; the same covering argument gives local preimages. This proves injectivity, epimorphy and hence conservativity.
+
+For inverse image, a free sheaf on \(V\) has stalk the free group on the geometric lifts of \(V\): existence is the identity representative, and equality is witnessed by the fibre product over \(V\). The adjunction identifies its inverse image with the free sheaf on \(V\times_TT'\). These lifts are the same after composing the chosen point with \(p\). A two-term presentation by sums of free sheaves exists by (SC3). Exactness and preservation of those sums give (ET21) for its cokernel, naturally. This does not infer a higher-cohomology limit theorem merely from a stalk definition.
+
+9. In characteristic \(2\), \(2u-1=1\), so (ET13) is \(e=u+(u^2-u)=u^2\). The square-zero condition on \(\delta=u^2-u\) gives \(u^4-u^2=0\), proving \(e^2=e\). Its difference from \(u\) is in the nil ideal. If another lift differs by \(a\) in that ideal, its idempotent equation gives \((2e-1)a=a=0\), proving uniqueness.
+
+Write the coefficient variations of \(g,h\) as \(u=u_0+u_1T\), \(v=v_0\). The coefficients of \(uh+gv\) give
+\[
+ \begin{pmatrix}
+ c&0&b\\
+ 1&c&a\\
+ 0&1&1
+ \end{pmatrix},
+ \qquad
+ \det=c^2-ac+b=g(-c).
+ \tag{ETX9}
+\]
+This is nonzero exactly when the linear factor \(h\) does not divide \(g\), hence when they are coprime. Over the strict local residue field, its invertibility defines the Jacobian chart for lifting the factors. EA18 gives its unique section. The calculation works in every characteristic.
+
+10. The finite fields are nested because \(n!\) divides \((n+1)!\): iterating the corresponding Frobenius identity puts each smaller field inside the next. Lemma 0F.1 supplies their sizes and degrees. Each is separable, since its elements are roots of \(T^{p^{n!}}-T\), whose derivative is \(-1\), and is étale by the primitive-element chart of EA10. Across a square-zero ideal, lift the map on every finite stage. Uniqueness makes these lifts compatible, so they define one unique lift on the union. This proves formal étaleness. It is also flat as a field extension, or as a filtered colimit of flat modules by EA1.
+
+Any finite list of elements of \(E\) belongs to one finite stage; the algebra it generates remains in that finite field. Since the stage degrees \(n!\) are unbounded, the whole union cannot be finitely generated, and hence cannot be finitely presented. Thus formal étaleness need not itself be étaleness without the finite-presentation hypothesis. The new foundations prove the geometric site and continuity inputs in Lesson 1. They do not establish the later curve Kummer/degree and higher-vanishing calculations, nilpotent-site equivalence, closed-support equivalence or exact finite pushforward. Those require their own complete programme proofs; a citation or this field example cannot replace them. \(\square\)
+
 ## 6. A higher-cohomological continuity foundation
 
-Later lessons use etale cohomology in the elliptic Euler-characteristic and curve trace calculations. For those uses, this section proves the higher-continuity comparison at its full coefficient scope, including its strict-local, filtered-coefficient and pro-etale applications. It uses the actual earlier programme sheaf and local-etale proof interfaces specified below. Thus the continuity theorem is available in this first lesson before any later course use.
+Later lessons use étale cohomology in the elliptic Euler-characteristic and curve trace calculations. SH1–SH9 supply the abstract sheaf foundations, and EA1–EA18 supply their algebraic and geometric étale inputs over arbitrary base rings. Sections6.2–6.6 now prove higher continuity at its full abelian coefficient scope;Sections6.7–6.8 derive filtered-coefficient,strict-local and pro-étale applications. The proof uses the actual square-Jacobian local presentations and open-image theorem established in this lesson.
 
 ### 6.1. Scope and actual earlier interfaces
 
@@ -628,13 +1373,13 @@ compatible with identities and composition. Set
 \]
 Associativity of fibre products and inverse image is always interpreted through its canonical identifications. The compatibility in (HC1) includes those identifications; it does not assume that pullback functors are literally equal under composition.
 
-The actual inspected earlier proofs are these. *Topoi, morphisms and points*, Sections 2--3, constructs the inverse-image and slice adjunctions. *Cohomology on sites*, Proposition 1.1, proves exact sheafification, exact filtered sheaf colimits and enough injectives; Proposition 2.1 proves exact slice restriction and local vanishing of positive-degree classes; Lemma 3.1 and Theorem 3.2 prove the injective Cech contraction and the Cech-to-cohomology spectral sequence; Theorem 4.1 proves its simultaneous vanishing induction. 6.5 below supplies its own finite double-complex proof of the required vanishing, without invoking spectral-sequence convergence. *The etale site and its points*, Section 2, proves the pointed-neighbourhood, sheafification-stalk and geometric-stalk criteria. Its Theorem 4.1 proves the identification of the neighbourhood ring colimit with the earlier strict-henselization construction. *Pushforward, pullback and finite morphisms*, Section 1 and Lemma 2.1, proves exact inverse image, its direct-image adjoint and the direct-image cohomology presheaf formula before importing continuity.
+The actual abstract proof bindings in this lesson are SH1–SH2 for exact sheafification and filtered colimits,SH3–SH4 for injective resolutions and local vanishing,SH5 for exact slice restriction preserving injectives,SH6 for the exact inverse-image adjunction and higher-image cohomology presheaf,SH7 for the stalk of a point functor,and SH8–SH9 for the full covering contraction and finite-diagonal comparison. Section6.5 gives the remaining simultaneous vanishing induction. None of these proofs depends on a separately named diagnostic lesson. EA15–EA17 now prove the finite-cover basis,slice equivalence and conservative geometric stalks;EA18 constructs and identifies the strict local neighbourhood ring.
 
-For geometry, *Formally smooth, unramified and etale ring maps*, Sections 4--5, proves stability and the finite square-Jacobian local presentations. *Etale morphisms and their local structure*, Theorem 3.1 and Corollary 3.2, actually writes the monic standard-etale local-form proof, including its algebraic Zariski input. We use that written local-form theorem, rather than treating the stated local form in *The etale site and its points* as a proof. Its algebraic-Zariski prerequisites remain required. All finite limit and covering arguments needed from that local form are written in 6.2.
+The actual geometric proof bindings are EA1–EA3 for localization,affine gluing,finite witnesses and finite-presentation patching;EA4–EA7 for the Noetherian algebra,normalization and exact faithful local completion used in the flatness proof;EA8–EA12 for square-Jacobian lifting,finite separable field fibres and the full arbitrary-base étale criterion;EA13 for stability,maps between étale objects and the open diagonal;EA14 for universal open images;EA15 for finite limits,finite covering refinements,base-change functors and the slice equivalence;EA16–EA17 for conservative geometric points,exact stalks and affine pointed refinements;and EA18 for the actual strict local construction. Section6.2 supplies the finite-data scheme-limit and covering descent proof using these square-Jacobian charts. None of these inputs is discharged by a diagnostic lesson or a source citation.
 
 ### 6.2. Finite etale data on an affine-transition limit
 
-Use the basis \(\mathcal B_T\) of etale morphisms of finite presentation \(V\to T\) for a qcqs scheme \(T\). Their sources are qcqs. The identity is in this basis; finite fibre products stay in it. Every etale object has a cover by members of this basis: take affine source charts over affine target charts and their finitely presented local etale equations. Covers of a basis object have a finite refinement by basis objects. Indeed etale maps have open images, as proved below, and the target is quasi-compact. Choosing finitely many small affine charts whose images cover produces the refinement. Thus sheaves on this basis, with these finite coverings, determine sheaves on the whole small etale site. Explicitly their sections on another object are matching families on a basis cover; refining two covers and using the sheaf equalizer identifies these families independently of the chosen cover.
+EA15 supplies the following basis and covering facts. Use the basis \(\mathcal B_T\) of etale morphisms of finite presentation \(V\to T\) for a qcqs scheme \(T\). Their sources are qcqs. The identity is in this basis; finite fibre products stay in it. Every etale object has a cover by members of this basis: take affine source charts over affine target charts and their finitely presented local etale equations. Covers of a basis object have a finite refinement by basis objects. Indeed etale maps have open images, as proved below, and the target is quasi-compact. Choosing finitely many small affine charts whose images cover produces the refinement. Thus sheaves on this basis, with these finite coverings, determine sheaves on the whole small etale site. Explicitly their sections on another object are matching families on a basis cover; refining two covers and using the sheaf equalizer identifies these families independently of the chosen cover.
 
 **Lemma 6.2.** Each \(V\in\mathcal B_X\) is the base change of some \(V_i\in\mathcal B_{X_i}\). Morphisms between such objects, equality of morphisms, and every finite covering descend to a sufficiently late stage. In particular every finite covering and its finite iterated fibre products can be used at one common stage.
 
@@ -656,15 +1401,15 @@ We will also need the same assertion for quasi-compact opens. In an affine schem
 \]
 is a finite ring identity. To justify the equivalence, the inclusion says that every prime containing the \(h_b\) contains \(g\). If \(g\) were outside their radical, a maximal ideal disjoint from its powers in the quotient ring, obtained by Zorn, would give a contrary prime. Radical membership is exactly the power identity. Thus inclusions and equality of finite-union opens hold at some later stage whenever they hold on the limit. A finite affine cover gives the identical conclusion on any qcqs scheme already descended. Intersections of its affine opens are quasi-compact by quasi-separatedness, so only finitely many principal charts and identities are needed.
 
-An object \(V\to X\) of the stated basis has a finite affine cover whose members map into the pulled-back base charts. Each algebra is finitely presented. Refine further by finitely many principal standard-etale charts supplied by the inspected local-form proof. Their monic equations, their inverted elements and the equations witnessing invertibility of their derivatives are finite data. They descend to etale charts: the earlier square-zero root-lifting proof establishes that these same standard presentations are etale over each stage ring.
+An object \(V\to X\) of the stated basis has a finite affine cover whose members map into the pulled-back base charts. Each algebra is finitely presented. Refine further by finitely many principal square-Jacobian charts from EA12. Their polynomial equations and inverted products of the principal element with the Jacobian determinant are finite coefficient data. At a common stage use the identical presentations. EA8 and EA11 prove their unique lifting and flatness over that stage ring,so EA12 makes them étale. This gives the actual chart descent over arbitrary rings.
 
 For clarity, the gluing of these charts also descends. A pairwise overlap is a quasi-compact open in each source chart and hence a finite union of principal opens. Descend those principal elements first. On finitely many principal refinements, the overlap identifications are maps between finite-presentation algebras; descend their finitely many generator images and relations. Their inverse identities descend by the affine equality assertion. The equality of the domains on each triple overlap is an equality of quasi-compact opens, governed by (HC4), and the cocycle identities are finitely many equalities of maps on principal charts. Choose one later stage where all of these identities hold. Glue the affine charts there along these open isomorphisms. The quotient of their disjoint union by the open identifications has the stated chart topology, and the structure sheaves glue by the cocycle identity. This constructs a scheme and its map to \(X_i\); its base change is \(V\). The map is etale on the charts. It is quasi-compact and quasi-separated because the chart list and all overlaps are finite and quasi-compact, and consequently it is of finite presentation. This proves object descent.
 
 Maps between two descended objects have the same finite description. Preimages of a finite affine target cover are quasi-compact opens of the source. One useful verification of this claim is that any map from a quasi-compact scheme to a quasi-separated scheme is quasi-compact: its graph is a base change of the quasi-compact target diagonal, and projection from the product is quasi-compact. Descend these preimage opens by (HC4), choose finite principal source refinements mapping into the target charts, and descend the corresponding algebra maps. Their agreement on overlaps, and equality of two entire maps, are finite identities on these refinements. Thus map descent and eventual equality are proved without a separate scheme-limit theorem.
 
-Here is also an elementary open-image calculation. On a standard etale chart write \(B=(A[T]/(f))_g\), with \(f\) monic of degree \(d\), and absorb \(f'\) into the inverted element if necessary. Put \(B_0=A[T]/(f)\), a free \(A\)-module of rank \(d\). A prime \(\mathfrak p\) is in the image of \(\operatorname{Spec}(B_0)_g\) exactly when \(g\) is not nilpotent in \(B_0\otimes_A\kappa(\mathfrak p)\). Multiplication by \(g\) on this finite-dimensional algebra is nilpotent exactly when its characteristic polynomial is \(T^d\). For the forward implication, choose a basis adapted to the filtration by the kernels of its powers; the matrix is strictly triangular. For the reverse implication the adjugate polynomial identity \((TI-M)\operatorname{adj}(TI-M)=\det(TI-M)I\) gives the characteristic-polynomial identity at \(M\): expand in powers of \(T\), compare coefficients and multiply successively by powers of \(M\); the adjacent terms telescope. Thus \(M^d=0\). The image is consequently a finite union of principal opens given by the nonleading characteristic-polynomial coefficients. General etale images are unions of these opens; a quasi-compact source gives a quasi-compact image. Images of scheme morphisms commute setwise with field base change here: a nonempty fibre remains nonempty after extending its residue field, since a nonzero vector in its nonzero coordinate algebra stays nonzero under field scalar extension.
+Here is also an elementary open-image calculation. On a standard etale chart write \(B=(A[T]/(f))_g\), with \(f\) monic of degree \(d\), and absorb \(f'\) into the inverted element if necessary. Put \(B_0=A[T]/(f)\), a free \(A\)-module of rank \(d\). A prime \(\mathfrak p\) is in the image of \(\operatorname{Spec}(B_0)_g\) exactly when \(g\) is not nilpotent in \(B_0\otimes_A\kappa(\mathfrak p)\). Multiplication by \(g\) on this finite-dimensional algebra is nilpotent exactly when its characteristic polynomial is \(T^d\). For the forward implication, choose a basis adapted to the filtration by the kernels of its powers; the matrix is strictly triangular. For the reverse implication the adjugate polynomial identity \((TI-M)\operatorname{adj}(TI-M)=\det(TI-M)I\) gives the characteristic-polynomial identity at \(M\): expand in powers of \(T\), compare coefficients and multiply successively by powers of \(M\); the adjacent terms telescope. Thus \(M^d=0\). The image is consequently a finite union of principal opens given by the nonleading characteristic-polynomial coefficients. For general square-Jacobian charts,EA14 proves open images;their unions give general étale images,and a quasi-compact source gives a quasi-compact image. The monic calculation above is an explicit special case. Images of scheme morphisms commute setwise with field base change here: a nonempty fibre remains nonempty after extending its residue field, since a nonzero vector in its nonzero coordinate algebra stays nonzero under field scalar extension.
 
-Now descend a finite covering \(W_b\to V\) and its maps to one stage. The maps there are etale, since maps between etale objects are etale by the actual lifting proof of Proposition 7.4 of the ring-map lesson. Their images have union a quasi-compact open \(O_i\subset V_i\), and its inverse image on the limit is all of \(V\). On finitely many affine charts its closed complement is \(V(h_1,\ldots,h_m)\). Emptiness after (HC3) gives an identity \(1=\sum c_ah_a\) in the limit ring. That finite identity holds at a later stage. Taking a common stage for the finite chart list makes the complement empty, so the family is a covering there. Fibre products are formed by the same finite presentations and commute with base change. This proves every assertion. \(\square\)
+Now descend a finite covering \(W_b\to V\) and its maps to one stage. The maps there are etale, by the actual algebra and graph proofs EA13 and EA15. Their images have union a quasi-compact open \(O_i\subset V_i\), and its inverse image on the limit is all of \(V\). On finitely many affine charts its closed complement is \(V(h_1,\ldots,h_m)\). Emptiness after (HC3) gives an identity \(1=\sum c_ah_a\) in the limit ring. That finite identity holds at a later stage. Taking a common stage for the finite chart list makes the complement empty, so the family is a covering there. Fibre products are formed by the same finite presentations and commute with base change. This proves every assertion. \(\square\)
 
 ### 6.3. The degree-zero comparison for a general coefficient system
 
@@ -743,7 +1488,7 @@ The augmented horizontal rows \(K^b(V)\to D^{0,b}\to D^{1,b}\to\cdots\) are exac
 
 Represent \(\xi\) by a closed section \(z\in K^n(V)\). Its restrictions are boundaries, so its augmentation \(z_0\in D^{0,n}\) is \(d_vb_0\) for some \(b_0\in D^{0,n-1}\). Successively for \(1\leq a\leq n-1\), choose \(b_a\in D^{a,n-1-a}\) such that
 \(d_vb_a=(-1)^{a+1}d_hb_{a-1}\).
-The right-hand side is vertically closed: for \(a=1\) use \(d_hz_0=0\), and subsequently use \(d_h^2=0\). Its vertical degree is \(n-a\), strictly between zero and \(n\). The induction hypothesis on all iterated intersections makes it a vertical boundary, so the choices exist. Products here are finite, and slice restriction of \(K^\bullet\) is an injective resolution by the inspected slice proof.
+The right-hand side is vertically closed: for \(a=1\) use \(d_hz_0=0\), and subsequently use \(d_h^2=0\). Its vertical degree is \(n-a\), strictly between zero and \(n\). The induction hypothesis on all iterated intersections makes it a vertical boundary, so the choices exist. Products here are finite, and slice restriction of \(K^\bullet\) is an injective resolution by SH5 and the actual étale/slice equivalence EA15.
 
 The only remaining component of \(d(\sum b_a)\) besides \(z_0\) is \(d_hb_{n-1}\in D^{n,0}\). It is vertically closed, hence is a Cech cochain of \(E\), and it is horizontally closed. Positive Cech vanishing in (HC10) writes it as \(d_hw\) for \(w\in\check C^{n-1}(\mathcal U,E)\). Replace \(b_{n-1}\) by \(b_{n-1}-w\); its vertical differential is unchanged, and now \(d(\sum b_a)=z_0\). The injectivity of the augmentation just proved gives \(\xi=0\). For \(n=1\) this argument uses only \(b_0\) and \(w\), with no intermediate choices. This proves the simultaneous induction in every degree. \(\square\)
 
@@ -757,7 +1502,7 @@ The only remaining component of \(d(\sum b_a)\) besides \(z_0\) is \(d_hb_{n-1}\
 \]
 The comparison is natural in morphisms of systems, commutes with connecting homomorphisms and with restriction to any descended basis object. No torsion, finite generation, constructibility or cartesian-coefficient hypothesis is required.
 
-*Proof.* Resolve the system in \(\mathcal A\) as \(F\to J^\bullet\) by 6.4. At every index this is an injective resolution. The functor \(L\) is exact: all inverse images are exact and filtered colimits of abelian sheaves are exact by the inspected sheafification proof. Hence \(L(F)\to L(J^\bullet)\) is a resolution. Each term is sections-acyclic by 6.5, including on the final basis object \(X\).
+*Proof.* Resolve the system in \(\mathcal A\) as \(F\to J^\bullet\) by 6.4. At every index this is an injective resolution. The functor \(L\) is exact: all inverse images are exact and filtered colimits of abelian sheaves are exact by SH1–SH2 and SH6,applied to the site functors constructed in EA15. Hence \(L(F)\to L(J^\bullet)\) is a resolution. Each term is sections-acyclic by 6.5, including on the final basis object \(X\).
 
 An acyclic resolution computes derived sections for the following explicit reason. If \(F\to E^\bullet\) is such a resolution, put \(Z^0=F\) and \(Z^{a+1}=\operatorname{coker}(Z^a\hookrightarrow E^a)\). In
 \(0\to Z^a\to E^a\to Z^{a+1}\to0\), acyclicity gives \(H^b(Z^{a+1})=H^{b+1}(Z^a)\) for \(b>0\). The group of degree-\(n\) cocycles in \(\Gamma(E^\bullet)\) is \(\Gamma(Z^n)\); its quotient by the previous boundaries is \(H^1(Z^{n-1})=H^n(F)\). Degree zero is \(\Gamma(F)\) by left exactness. Thus the resolution above really computes the target of (HC12).
@@ -794,7 +1539,7 @@ If \(f:S\to T\) is qcqs, with arbitrary target \(T\), then
 
 *Proof.* For (HC14), set every scheme in 6.6 equal to \(T\) and every transition map equal to its identity. This also proves the assertion for any qcqs etale object, so in particular it supplies filtered coefficient continuity on all the intersections used in the closed-support calculation.
 
-For (HC15), work on the affine etale basis of the target. Its inverse image under a qcqs \(f\) is a qcqs scheme. The direct-image presheaf proof in the earlier Lemma 2.1 computes the degree-\(n\) higher-image sheaf by sheafifying \(V\mapsto H^n(S\times_TV,F_i)\). Equation (HC14) compares the filtered colimit of these presheaves with the cohomology presheaf of the colimit sheaf. Sheafification is a left adjoint and commutes with colimits. Sheafifying that comparison proves (HC15). \(\square\)
+For (HC15), work on the affine etale basis of the target. Its inverse image under a qcqs \(f\) is a qcqs scheme. The actual higher-image presheaf proof SH6,with the site constructions EA15,computes the degree-\(n\) higher-image sheaf by sheafifying \(V\mapsto H^n(S\times_TV,F_i)\). Equation (HC14) compares the filtered colimit of these presheaves with the cohomology presheaf of the colimit sheaf. Sheafification is a left adjoint and commutes with colimits. Sheafifying that comparison proves (HC15). \(\square\)
 
 ### 6.8. Strict localizations and pro-etale changes of base
 
@@ -810,7 +1555,7 @@ If \(T'=\varprojlim_\lambda T_\lambda\to T\) is a limit of qcqs etale \(T\)-sche
  \tag{HC17}
 \]
 
-*Proof.* The neighbourhood category is cofiltered by the actual geometric-neighbourhood proof: fibre products give common refinements, and the open diagonal of an etale morphism equalizes arrows near the chosen lift. Its affine subcategory suffices. Maps between affine neighbourhoods are affine. Each \(S\times_TV\) is qcqs, and their inverse limit is the scheme in (HC16). The direct-image stalk formula (2.2) is proved from slice restriction and injective resolutions before continuity is used; its left side is the colimit of their cohomology groups. Apply 6.6 to that actual cofiltered system, with the pulled-back coefficients. This proves (HC16) without replacing a filtered category by a poset. Theorem 4.1 of *The etale site and its points*, with its specified separable residue-field closure, identifies \(R\) with the strict henselization of \(\mathcal O_{T,t}\).
+*Proof.* The actual pointed-neighbourhood proof EA17 makes the category cofiltered: fibre products give common refinements, and the open diagonal of an etale morphism equalizes arrows near the chosen lift. Its affine subcategory suffices. Maps between affine neighbourhoods are affine. Each \(S\times_TV\) is qcqs, and their inverse limit is the scheme in (HC16). The direct-image stalk formula SC11 is proved in SH7 from SH6 before continuity is used; its left side is the colimit of their cohomology groups. Apply 6.6 to that actual cofiltered system, with the pulled-back coefficients. This proves (HC16) without replacing a filtered category by a poset. The actual construction EA18,with the specified separable residue-field closure,identifies \(R\) with the strict henselization of \(\mathcal O_{T,t}\).
 
 For (HC17), etale restriction at a finite stage is slice localization: the two direct-image presheaves are identical on the slice, and slice restriction is exact and preserves injectives. Hence its canonical comparison is an isomorphism at every etale stage.
 
@@ -823,21 +1568,21 @@ Here is the passage to the limit as an explicit stalk computation. A pointed fin
 \]
 Here an inequality denotes the corresponding coslice if the index is a filtered category. To verify the neighbourhood colimit carefully, consider the category of pairs \((\lambda,V_\lambda)\), with \(V_\lambda\to T_\lambda\) a basis object and a lift of \(\bar t'\) to it. Refinements are maps from later-stage basis objects into the base changes of earlier ones, preserving the chosen lifts. This category is cofiltered: choose a common receiving stage, form fibre products for common refinements, and equalize parallel arrows by the open etale diagonal and an affine neighbourhood of the chosen point. Parallel stage arrows can first be equalized by filteredness.
 
-Base change of these pairs to \(T'\) supplies all pointed basis neighbourhoods there, by 6.2. Their arrows and equalities are supplied after refinement by the same descent lemma. Consequently their cohomology colimit is the right-side stalk in (HC17), by formula (2.2). Equation (HC18) says that each class on such a limit neighbourhood is represented at a later-stage pair, and each equality of two stage classes is realized after a later-stage refinement. Thus replacing these limit-neighbourhood groups by the finite-stage groups in (HC18) changes neither classes nor their equality relations in that stalk colimit.
+Base change of these pairs to \(T'\) supplies all pointed basis neighbourhoods there, by 6.2. Their arrows and equalities are supplied after refinement by the same descent lemma. Consequently their cohomology colimit is the right-side stalk in (HC17), by SC11 and the geometric stalk proof EA16. Equation (HC18) says that each class on such a limit neighbourhood is represented at a later-stage pair, and each equality of two stage classes is realized after a later-stage refinement. Thus replacing these limit-neighbourhood groups by the finite-stage groups in (HC18) changes neither classes nor their equality relations in that stalk colimit.
 
-The same pairs suffice for the neighbourhood colimit at \(\bar t=p\bar t'\) on \(T\). Indeed any pointed neighbourhood \(W\to T\) is refined by an affine neighbourhood of the paired lift in \(W\times_TT_\lambda\); over qcqs \(T_\lambda\) that affine etale neighbourhood is a finite-presentation basis object. Two arrows from a pair to \(W\) are equalized near the lift by the open diagonal of \(W/T\); take an affine neighbourhood in that equalizer. Common refinements use fibre products at a common stage. These statements give the actual representatives and equality relations of the pointed-neighbourhood colimit; they do not assume a cofinal poset. Formula (2.2) therefore identifies the finite-stage colimit with \((R^nf_*F)_{\bar t}\). The inverse-image stalk formula identifies this with the stalk of the left side of (HC17). All the identifications use canonical restrictions and the finite-stage slice comparison, so their composite is the stalk of its canonical base-change map. Every stalk comparison is an isomorphism. Geometric stalks detect isomorphisms, proving (HC17). This includes the generic-point pro-etale restriction used in the surface coordinate argument. \(\square\)
+The same pairs suffice for the neighbourhood colimit at \(\bar t=p\bar t'\) on \(T\). Indeed any pointed neighbourhood \(W\to T\) is refined by an affine neighbourhood of the paired lift in \(W\times_TT_\lambda\); over qcqs \(T_\lambda\) that affine etale neighbourhood is a finite-presentation basis object. Two arrows from a pair to \(W\) are equalized near the lift by the open diagonal of \(W/T\); take an affine neighbourhood in that equalizer. Common refinements use fibre products at a common stage. These statements give the actual representatives and equality relations of the pointed-neighbourhood colimit; they do not assume a cofinal poset. SC11 and EA16 therefore identify the finite-stage colimit with \((R^nf_*F)_{\bar t}\). The actual inverse-image stalk formula ET21 identifies this with the stalk of the left side of (HC17). All the identifications use canonical restrictions and the finite-stage slice comparison, so their composite is the stalk of its canonical base-change map. Every stalk comparison is an isomorphism. The conservative geometric stalk proof EA16 detects isomorphisms,proving (HC17). This includes the generic-point pro-etale restriction used in the surface coordinate argument. \(\square\)
 
 The base-ring version follows directly too: if \(B=\varinjlim B_i\), \(S\to\operatorname{Spec}A\) is qcqs and the coefficients are pulled from \(S\), apply 6.6 to \(S\times_A\operatorname{Spec}B_i\). These are qcqs with affine transitions, and their limit coefficients are the pullback sheaf by the inverse-image universal property. This is the full comparison formerly imported as (2.3), with its filtered-coefficient special case and the natural maps required in the curve argument.
 
 ### 6.9. Proof and source boundary
 
-The former higher-continuity premise is now proved in 6.6, including arbitrary abelian and noncartesian coefficient systems; 6.7 and 6.8 derive its exact applications. The proof uses the actually written elementary sheaf/cohomology interfaces of 6.1 and the local-standard etale theorem inspected there. It does not infer higher cohomology from a degree-zero sections argument: 6.4--6.6 provide the compatible resolutions and the separate acyclicity argument that make that step valid.
+The higher-continuity theorem6.6 now has its actual prerequisite proofs in this lesson:SH1–SH9 and EA1–EA18,followed by the finite-data descent in6.2. Its scope includes arbitrary abelian and noncartesian coefficient systems. Sections6.7–6.8 prove its filtered-coefficient,higher-image,strict-local and pro-étale applications. These author proofs do not certify the remaining arithmetic dependencies elsewhere in the lesson or an independent whole-lesson review.
 
-The proof of 6.5 is a finite double-complex calculation, and 6.4 and 6.6 write the required comparison, homotopy, exact-sequence and acyclic-resolution arguments. Ordinary scheme gluing and the finite-presentation local etale theorem remain the named earlier programme interfaces. In particular the inspected local-standard proof invokes its written algebraic Zariski theorem, flatness, finite-fibre algebra, the primitive-element theorem and Nakayama. These earlier results remain prerequisites. The earlier sheafification, enough-injectives, geometric-stalk and strict-henselization results remain hypotheses; (HC16) may instead be read with the neighbourhood ring colimit \(R\), without a strict-henselization identification. Those named foundation premises are distinct from the higher-cohomology comparison proved here.
+The proof of6.5 is a finite double-complex calculation. SH3–SH6 and6.4–6.6 supply existence,comparison,homotopy,exact-sequence and acyclic-resolution arguments. EA2–EA3 supplies affine gluing and finite-presentation patching;EA8–EA14 supplies full local Jacobian presentations,flatness,stability and universal open images;EA15–EA17 supplies finite covering refinements,exact site functors and conservative geometric stalks. SC11 computes the higher-image stalk before continuity,ET21 gives the inverse-image stalk formula,and EA18 constructs the strict local ring \(R\) used inHC16. The finite-data scheme-limit and covering argument is the actual6.2 proof. Later curve nilpotent,finite-pushforward,closed-support,Kummer and higher-vanishing arguments remain separate requirements.
 
 ## Proof register and unresolved arithmetic dependencies
 
-The representation core has proofs in this lesson. Lemmas 0A.1–0A.2 supply DVR freeness, commensurability, composition series and additivity. Lemmas 0B.1–0B.2 and Proposition 0C.1 supply the Galois facts actually used. Lemmas 0D.1–0D.2 and Proposition 0E.1 establish lifting, finite coefficient fields and unique complete valuations. Lemma 0F.1 and Proposition 0F.2 construct unramified fields and Frobenius. Lemma 3.0 proves cyclotomic surjectivity. Theorems 1.2, 2.1, 2.2, 2.4, Proposition 3.1 and Theorem 4.1 therefore have their dependencies available before use. All four exercise solutions use these proofs. Section 6 supplies the full higher-cohomological continuity foundation for later lessons. Its stated earlier sheaf, local-etale and strict-henselization prerequisites remain required, as recorded in Section 6.9.
+The representation core has proofs in this lesson. Lemmas 0A.1–0A.2 supply DVR freeness, commensurability, composition series and additivity. Lemmas 0B.1–0B.2 and Proposition 0C.1 supply the Galois facts actually used. Lemmas 0D.1–0D.2 and Proposition 0E.1 establish lifting, finite coefficient fields and unique complete valuations. Lemma 0F.1 and Proposition 0F.2 construct unramified fields and Frobenius. Lemma 3.0 proves cyclotomic surjectivity. Theorems 1.2, 2.1, 2.2, 2.4, Proposition 3.1 and Theorem 4.1 therefore have their dependencies available before use. All four exercise solutions use these proofs. SH1–SH9 and EA1–EA18 supply the abstract and geometric étale foundations. Section6 proves higher continuity and its filtered,strict-local and pro-étale applications with actual in-lesson prerequisites. The other recorded arithmetic dependencies and independent whole-lesson review remain required.
 
 Lemma 3.3 and Example 3.4 supply the torsion pairing, explicit degree-five isogeny, rational Tate-module identification and full residual inertia comparison before any use. The earlier geometric proofs used in that construction are identified at the start of §3A and were read in their current programme edition. The stated earlier geometric prerequisites remain required. The written Kronecker–Weber provider, Theorem 20.2 and Proposition 20.5 of the named class-field lesson, uses the earlier ray-field theorem and its prerequisites. The elliptic construction and class-field classification depend on those earlier results. Citations identify reading materials and actual providers; their presence alone does not close a proof obligation.
 

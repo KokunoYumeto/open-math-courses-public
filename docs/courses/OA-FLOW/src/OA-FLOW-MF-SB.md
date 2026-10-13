@@ -133,19 +133,19 @@ $$
 
 which tends to zero by the Gaussian concentration theorem and the elementary exponential estimate. Thus $(f*g_r)(t)\to f(t)$, so $f(t)=0$. This holds for every $t$, with no assumption that a continuous $L^1$ function is globally bounded.
 
-The same conclusion holds for a continuous $F:\mathbb R\to H$ with integrable norm and vanishing vector Fourier integrals: apply the scalar proof to $f(t)=\langle F(t),q\rangle$ for each $q$ in $H$, using SB-1 to commute the pairing with the integral. Hilbert pairings separate vectors, giving $F(t)=0$ for every $t$. No Banach-valued Fourier theorem or Hahn–Banach extension is needed for that conclusion.
+The same conclusion holds for a continuous $F:\mathbb R\to H$ with integrable norm and vanishing vector Fourier integrals: apply the scalar proof to $f(t)=\langle F(t),q\rangle$ for each $q$ in $H$, using [SB-1](#oa-flow.mf-sb.2) to commute the pairing with the integral. Hilbert pairings separate vectors, giving $F(t)=0$ for every $t$. No Banach-valued Fourier theorem or Hahn–Banach extension is needed for that conclusion.
 
 <a id="oa-flow.mf-sb.5"></a>
 
 ## SB-4. The exact Fourier use in MF-06
 
-If $A(t)$ and $B(t)$ are continuous $H$-valued functions bounded in norm, and
+Use the kernel of [SB-2](#oa-flow.mf-sb.3). If $A(t)$ and $B(t)$ are continuous $H$-valued functions bounded in norm, and
 
 $$
  \int k_s(t)(A(t)-B(t))\,dt=0\quad\hbox{for every }s>0,
 $$
 
-write $s=e^r$ and cancel the scalar $e^{-r/2}$. The continuous integrable function $F(t)=(A(t)-B(t))/(2\cosh(\pi t))$ has zero Fourier transform at every $r$. SB-3 gives $A(t)=B(t)$ for every $t$. This is exactly the passage from MF (MF-R1) to (MF-R2). In that application $A(t)=U_tR_wU_{-t}Jz$ and $B(t)=(JR_zJ)U_tw$, which are norm continuous as Hilbert vectors and bounded; $JR_zJ$ is complex-linear, so SB-1 applies with no scalar-conjugation change.
+write $s=e^r$ and cancel the scalar $e^{-r/2}$. The continuous integrable function $F(t)=(A(t)-B(t))/(2\cosh(\pi t))$ has zero Fourier transform at every $r$. [SB-3](#oa-flow.mf-sb.4) gives $A(t)=B(t)$ for every $t$. This is exactly the passage from MF (MF-R1) to (MF-R2). In that application $A(t)=U_tR_wU_{-t}Jz$ and $B(t)=(JR_zJ)U_tw$, which are norm continuous as Hilbert vectors and bounded; $JR_zJ$ is complex-linear, so [SB-1](#oa-flow.mf-sb.2) applies with no scalar-conjugation change.
 
 <a id="oa-flow.mf-sb.7"></a>
 

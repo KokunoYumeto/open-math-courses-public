@@ -1,0 +1,293 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lipschitz functions are close to juntas</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Hypercontractivity on a torus and juntas for Lipschitz functions)</a><a href="hypercontractivity-of-the-heat-operators.html">Previous lesson</a><a href="src/lipschitz-functions-are-close-to-juntas.md">Editable source</a></nav><main><article><h1 id="lipschitz-functions-are-close-to-juntas">Lipschitz functions are close to juntas</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A <em>junta</em> is a function of many variables that depends only on a few of them. This lesson proves a theorem of T. Austin [Austin]: a function on the cube <span class="math" data-tex="\([0,1]^N\)">\([0,1]^N\)</span> with values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> that is Lipschitz for the sup distance is close, in the mean square, to a junta on a set of coordinates whose size is bounded in terms of the Lipschitz constant and the allowed error only. The number <span class="math" data-tex="\(N\)">\(N\)</span> of the variables does not enter.</p>
+<p>The proof takes the coordinates in which the function has a large derivative, in the mean. That the other coordinates can be averaged out follows from the three inequalities of the earlier lessons: the heat operator <span class="math" data-tex="\(P_{2t}\)">\(P_{2t}\)</span> changes the function little, the Poincaré inequality bounds the error of averaging by derivatives, and hypercontractivity makes the derivatives of <span class="math" data-tex="\(P_{2t}f\)">\(P_{2t}f\)</span> in the coordinates with a small derivative small in the mean square.</p>
+<ul>
+<li>The theorem for trigonometric polynomials on a torus (Theorem 1.1), with its key estimate (Lemma 2.1).</li>
+<li>Lipschitz functions on a torus (Theorem 3.2).</li>
+<li>Lipschitz functions on a cube (Theorem 4.1).</li>
+<li>The size of the bound (Section 5).</li>
+</ul>
+<p>The lesson follows [Austin, Section 2]. It uses all three earlier lessons of the course: <a href="trigonometric-polynomials-and-the-heat-operators.html">Trigonometric polynomials and the heat operators on a torus</a>, <a href="a-logarithmic-sobolev-inequality-on-the-circle.html">A logarithmic Sobolev inequality on the circle</a> for the constant <span class="math" data-tex="\(c_0=\tfrac74\)">\(c_0=\tfrac74\)</span>, and <a href="hypercontractivity-of-the-heat-operators.html">Hypercontractivity of the heat operators</a>.</p>
+<h2 id="1-the-theorem-on-a-torus">1. The theorem on a torus</h2>
+<p>Recall that <span class="math" data-tex="\(E_S\)">\(E_S\)</span> is the mean over the coordinates outside <span class="math" data-tex="\(S\)">\(S\)</span>, and that <span class="math" data-tex="\(E_Sf\)">\(E_Sf\)</span> is a junta on <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t=\frac{\varepsilon^2}{100},\qquad b=\tanh\frac{2t}{c_0},\\
+a=1-b,\qquad \eta=\Bigl(\frac\varepsilon2\,(2e\,t)^{a/2}\Bigr)^{2/b},\\
+q(\varepsilon)=\Bigl\lfloor\frac1\eta\Bigr\rfloor .
+\end{gathered}
+\]">\[
+\begin{gathered}
+t=\frac{\varepsilon^2}{100},\qquad b=\tanh\frac{2t}{c_0},\\
+a=1-b,\qquad \eta=\Bigl(\frac\varepsilon2\,(2e\,t)^{a/2}\Bigr)^{2/b},\\
+q(\varepsilon)=\Bigl\lfloor\frac1\eta\Bigr\rfloor .
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(0&lt;b&lt;1\)">\(0&lt;b&lt;1\)</span>, and <span class="math" data-tex="\(0&lt;\eta&lt;1\)">\(0&lt;\eta&lt;1\)</span> because <span class="math" data-tex="\(\tfrac\varepsilon2&lt;1\)">\(\tfrac\varepsilon2&lt;1\)</span> and <span class="math" data-tex="\(2et&lt;1\)">\(2et&lt;1\)</span>. These numbers depend only on <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> Let <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span> and <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>. Let <span class="math" data-tex="\(f\)">\(f\)</span> be a real trigonometric polynomial on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{n=1}^N\|\partial_nf\|_1\le1,\\
+\Bigl\|f-\int f\Bigr\|_2\le1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{n=1}^N\|\partial_nf\|_1\le1,\\
+\Bigl\|f-\int f\Bigr\|_2\le1 .
+\end{gathered}
+\]</span>
+Then the set <span class="math" data-tex="\(S=\{n:\ \|\partial_nf\|_1\ge\eta\}\)">\(S=\{n:\ \|\partial_nf\|_1\ge\eta\}\)</span> has at most <span class="math" data-tex="\(q(\varepsilon)\)">\(q(\varepsilon)\)</span> elements, and
+<span class="math math-display" data-tex="\[
+\|f-E_Sf\|_1&lt;\varepsilon .
+\]">\[
+\|f-E_Sf\|_1&lt;\varepsilon .
+\]</span></p>
+<p>The first condition bounds the sum of the mean sizes of the partial derivatives. For a function that is <span class="math" data-tex="\(1\)">\(1\)</span>-Lipschitz for the sup distance it holds (Lemma 3.1). It does not hold for functions that are only Lipschitz for the Euclidean distance.</p>
+<h2 id="2-proof-of-theorem-1-1">2. Proof of Theorem 1.1</h2>
+<p><strong>Lemma 2.1</strong> (the key estimate). Let <span class="math" data-tex="\(f\)">\(f\)</span> be a real trigonometric polynomial on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> with <span class="math" data-tex="\(\sum_n\|\partial_nf\|_1\le1\)">\(\sum_n\|\partial_nf\|_1\le1\)</span> and <span class="math" data-tex="\(\|f\|_2\le1\)">\(\|f\|_2\le1\)</span>. Let <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(b=\tanh(2t/c_0)\)">\(b=\tanh(2t/c_0)\)</span>, <span class="math" data-tex="\(a=1-b\)">\(a=1-b\)</span>, <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> and <span class="math" data-tex="\(S=\{n:\|\partial_nf\|_1\ge\eta\}\)">\(S=\{n:\|\partial_nf\|_1\ge\eta\}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\|P_{2t}f-E_SP_{2t}f\|_2\le(2e\,t)^{-a/2}\,\eta^{\,b/2} .
+\]">\[
+\|P_{2t}f-E_SP_{2t}f\|_2\le(2e\,t)^{-a/2}\,\eta^{\,b/2} .
+\]</span></p>
+<p><strong>Proof.</strong> For every <span class="math" data-tex="\(n\)">\(n\)</span> let <span class="math" data-tex="\(g_n=\partial_nP_tf=P_t\partial_nf\)">\(g_n=\partial_nP_tf=P_t\partial_nf\)</span>, a real trigonometric polynomial (Corollary 3.3 of the first lesson). Then
+<span class="math math-display" data-tex="\[
+\partial_nP_{2t}f=\partial_nP_tP_tf=P_tg_n .
+\]">\[
+\partial_nP_{2t}f=\partial_nP_tP_tf=P_tg_n .
+\]</span>
+By the Poincaré inequality (Lemma 1.1 of the first lesson) for the trigonometric polynomial <span class="math" data-tex="\(P_{2t}f\)">\(P_{2t}f\)</span>, and by hypercontractivity in the form of Corollary 3.1 of the third lesson,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|P_{2t}f-E_SP_{2t}f\|_2^2\le\sum_{n\notin S}\|P_tg_n\|_2^2\\
+&amp;\quad\le\sum_{n\notin S}\bigl(\|g_n\|_1^2\bigr)^b\bigl(\|g_n\|_2^2\bigr)^a .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|P_{2t}f-E_SP_{2t}f\|_2^2\le\sum_{n\notin S}\|P_tg_n\|_2^2\\
+&amp;\quad\le\sum_{n\notin S}\bigl(\|g_n\|_1^2\bigr)^b\bigl(\|g_n\|_2^2\bigr)^a .
+\end{aligned}
+\]</span>
+By Hölder's inequality for sums with the exponents <span class="math" data-tex="\(\tfrac1b\)">\(\tfrac1b\)</span> and <span class="math" data-tex="\(\tfrac1a\)">\(\tfrac1a\)</span>, the right side is at most
+<span class="math math-display" data-tex="\[
+\Bigl(\sum_{n\notin S}\|g_n\|_1^2\Bigr)^b\Bigl(\sum_{n\notin S}\|g_n\|_2^2\Bigr)^a .
+\]">\[
+\Bigl(\sum_{n\notin S}\|g_n\|_1^2\Bigr)^b\Bigl(\sum_{n\notin S}\|g_n\|_2^2\Bigr)^a .
+\]</span>
+<em>The first factor.</em> <span class="math" data-tex="\(\|g_n\|_1=\|P_t\partial_nf\|_1\le\|\partial_nf\|_1\)">\(\|g_n\|_1=\|P_t\partial_nf\|_1\le\|\partial_nf\|_1\)</span>, and this is less than <span class="math" data-tex="\(\eta\)">\(\eta\)</span> for <span class="math" data-tex="\(n\notin S\)">\(n\notin S\)</span>. So
+<span class="math math-display" data-tex="\[
+\sum_{n\notin S}\|g_n\|_1^2\le\eta\sum_n\|\partial_nf\|_1\le\eta .
+\]">\[
+\sum_{n\notin S}\|g_n\|_1^2\le\eta\sum_n\|\partial_nf\|_1\le\eta .
+\]</span>
+<em>The second factor.</em> By Lemma 4.2 of the first lesson,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_n\|g_n\|_2^2&amp;=\sum_n\|\partial_nP_tf\|_2^2\\
+&amp;\le\frac{\|f\|_2^2}{2et}\le\frac1{2et} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_n\|g_n\|_2^2&amp;=\sum_n\|\partial_nP_tf\|_2^2\\
+&amp;\le\frac{\|f\|_2^2}{2et}\le\frac1{2et} .
+\end{aligned}
+\]</span>
+Together, <span class="math" data-tex="\(\|P_{2t}f-E_SP_{2t}f\|_2^2\le\eta^b(2et)^{-a}\)">\(\|P_{2t}f-E_SP_{2t}f\|_2^2\le\eta^b(2et)^{-a}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The lemma is where the three tools meet. The derivatives in the coordinates outside <span class="math" data-tex="\(S\)">\(S\)</span> are small in the norm <span class="math" data-tex="\(\|\cdot\|_1\)">\(\|\cdot\|_1\)</span>, by the choice of <span class="math" data-tex="\(S\)">\(S\)</span>. All derivatives of <span class="math" data-tex="\(P_tf\)">\(P_tf\)</span> together are bounded in the norm <span class="math" data-tex="\(\|\cdot\|_2\)">\(\|\cdot\|_2\)</span>. Hypercontractivity turns the two facts into a bound in the norm <span class="math" data-tex="\(\|\cdot\|_2\)">\(\|\cdot\|_2\)</span> that is small for small <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p><strong>Proof of Theorem 1.1.</strong> Since <span class="math" data-tex="\(\eta\,|S|\le\sum_n\|\partial_nf\|_1\le1\)">\(\eta\,|S|\le\sum_n\|\partial_nf\|_1\le1\)</span>, the set <span class="math" data-tex="\(S\)">\(S\)</span> has at most <span class="math" data-tex="\(1/\eta\)">\(1/\eta\)</span> elements.</p>
+<p>Subtracting the constant <span class="math" data-tex="\(\int f\)">\(\int f\)</span> from <span class="math" data-tex="\(f\)">\(f\)</span> changes neither the derivatives nor <span class="math" data-tex="\(f-E_Sf\)">\(f-E_Sf\)</span>. So we may assume <span class="math" data-tex="\(\int f=0\)">\(\int f=0\)</span> and <span class="math" data-tex="\(\|f\|_2\le1\)">\(\|f\|_2\le1\)</span>. With the number <span class="math" data-tex="\(t\)">\(t\)</span> of Section 1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f-E_Sf={}&amp;(f-P_{2t}f)\\
+&amp;+(P_{2t}f-E_SP_{2t}f)\\
+&amp;+E_S(P_{2t}f-f) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+f-E_Sf={}&amp;(f-P_{2t}f)\\
+&amp;+(P_{2t}f-E_SP_{2t}f)\\
+&amp;+E_S(P_{2t}f-f) .
+\end{aligned}
+\]</span>
+The operator <span class="math" data-tex="\(E_S\)">\(E_S\)</span> does not increase the norm <span class="math" data-tex="\(\|\cdot\|_1\)">\(\|\cdot\|_1\)</span>, and <span class="math" data-tex="\(\|\cdot\|_1\le\|\cdot\|_2\)">\(\|\cdot\|_1\le\|\cdot\|_2\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|f-E_Sf\|_1\le{}&amp;2\,\|f-P_{2t}f\|_1\\
+&amp;+\|P_{2t}f-E_SP_{2t}f\|_2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|f-E_Sf\|_1\le{}&amp;2\,\|f-P_{2t}f\|_1\\
+&amp;+\|P_{2t}f-E_SP_{2t}f\|_2 .
+\end{aligned}
+\]</span>
+By Lemma 4.1 of the first lesson, <span class="math" data-tex="\(\|f-P_{2t}f\|_1\le\sqrt{4t}=2\sqrt t\)">\(\|f-P_{2t}f\|_1\le\sqrt{4t}=2\sqrt t\)</span>. By Lemma 2.1 and the definition of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>,
+<span class="math math-display" data-tex="\[
+\|P_{2t}f-E_SP_{2t}f\|_2\le(2et)^{-a/2}\eta^{b/2}=\frac\varepsilon2 .
+\]">\[
+\|P_{2t}f-E_SP_{2t}f\|_2\le(2et)^{-a/2}\eta^{b/2}=\frac\varepsilon2 .
+\]</span>
+Since <span class="math" data-tex="\(4\sqrt t=\tfrac4{10}\varepsilon\)">\(4\sqrt t=\tfrac4{10}\varepsilon\)</span>, this gives <span class="math" data-tex="\(\|f-E_Sf\|_1\le\tfrac4{10}\varepsilon+\tfrac12\varepsilon&lt;\varepsilon\)">\(\|f-E_Sf\|_1\le\tfrac4{10}\varepsilon+\tfrac12\varepsilon&lt;\varepsilon\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-lipschitz-functions-on-a-torus">3. Lipschitz functions on a torus</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a real trigonometric polynomial on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> that is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz for the sup distance. Then <span class="math" data-tex="\(\sum_n|\partial_nf(x)|\le L\)">\(\sum_n|\partial_nf(x)|\le L\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, and so <span class="math" data-tex="\(\sum_n\|\partial_nf\|_1\le L\)">\(\sum_n\|\partial_nf\|_1\le L\)</span>.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(x\)">\(x\)</span>, and let <span class="math" data-tex="\(\sigma_n\)">\(\sigma_n\)</span> be <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(\partial_nf(x)\ge0\)">\(\partial_nf(x)\ge0\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise. For <span class="math" data-tex="\(0&lt;h&lt;\tfrac12\)">\(0&lt;h&lt;\tfrac12\)</span> the point <span class="math" data-tex="\(x+h\sigma\)">\(x+h\sigma\)</span> has the sup distance <span class="math" data-tex="\(h\)">\(h\)</span> from <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(f(x+h\sigma)-f(x)\le Lh\)">\(f(x+h\sigma)-f(x)\le Lh\)</span>. Divide by <span class="math" data-tex="\(h\)">\(h\)</span> and let <span class="math" data-tex="\(h\to0\)">\(h\to0\)</span>: the left side tends to <span class="math" data-tex="\(\sum_n\sigma_n\partial_nf(x)=\sum_n|\partial_nf(x)|\)">\(\sum_n\sigma_n\partial_nf(x)=\sum_n|\partial_nf(x)|\)</span>. Integrate over <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For <span class="math" data-tex="\(L\ge0\)">\(L\ge0\)</span> and <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varepsilon_{L,\tau}=\min\Bigl\{1,\frac{\tau^2}{8\max\{L,1\}}\Bigr\},\\
+J_{\mathbb T}(L,\tau)=q(\varepsilon_{L,\tau}) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\varepsilon_{L,\tau}=\min\Bigl\{1,\frac{\tau^2}{8\max\{L,1\}}\Bigr\},\\
+J_{\mathbb T}(L,\tau)=q(\varepsilon_{L,\tau}) .
+\end{gathered}
+\]</span>
+This is an integer <span class="math" data-tex="\(\ge1\)">\(\ge1\)</span>.</p>
+<p><strong>Theorem 3.2.</strong> Let <span class="math" data-tex="\(L\ge0\)">\(L\ge0\)</span>, <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span> and <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>. Let <span class="math" data-tex="\(H:\mathbb T^N\to[-1,1]\)">\(H:\mathbb T^N\to[-1,1]\)</span> be <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz for the sup distance. Then there is a set <span class="math" data-tex="\(S\)">\(S\)</span> of at most <span class="math" data-tex="\(J_{\mathbb T}(L,\tau)\)">\(J_{\mathbb T}(L,\tau)\)</span> coordinates with
+<span class="math math-display" data-tex="\[
+\|H-E_SH\|_2&lt;\tau .
+\]">\[
+\|H-E_SH\|_2&lt;\tau .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L&#x27;=\max\{L,1\}\)">\(L&#x27;=\max\{L,1\}\)</span> and <span class="math" data-tex="\(\varepsilon=\varepsilon_{L,\tau}\)">\(\varepsilon=\varepsilon_{L,\tau}\)</span>, so that <span class="math" data-tex="\(\varepsilon\le\tau^2/(8L&#x27;)\)">\(\varepsilon\le\tau^2/(8L&#x27;)\)</span>.</p>
+<p><em>A trigonometric polynomial.</em> First let <span class="math" data-tex="\(H\)">\(H\)</span> be, in addition, a trigonometric polynomial, and <span class="math" data-tex="\(f=H/L&#x27;\)">\(f=H/L&#x27;\)</span>. By Lemma 3.1, <span class="math" data-tex="\(\sum_n\|\partial_nf\|_1\le L/L&#x27;\le1\)">\(\sum_n\|\partial_nf\|_1\le L/L&#x27;\le1\)</span>. The constant <span class="math" data-tex="\(\int f\)">\(\int f\)</span> is the constant nearest to <span class="math" data-tex="\(f\)">\(f\)</span> in the norm <span class="math" data-tex="\(\|\cdot\|_2\)">\(\|\cdot\|_2\)</span>, so <span class="math" data-tex="\(\|f-\int f\|_2\le\|f\|_2\le1\)">\(\|f-\int f\|_2\le\|f\|_2\le1\)</span>. Theorem 1.1 gives a set <span class="math" data-tex="\(S\)">\(S\)</span> with at most <span class="math" data-tex="\(q(\varepsilon)\)">\(q(\varepsilon)\)</span> elements and <span class="math" data-tex="\(\|f-E_Sf\|_1&lt;\varepsilon\)">\(\|f-E_Sf\|_1&lt;\varepsilon\)</span>, that is, <span class="math" data-tex="\(\|H-E_SH\|_1&lt;L&#x27;\varepsilon\)">\(\|H-E_SH\|_1&lt;L&#x27;\varepsilon\)</span>. The function <span class="math" data-tex="\(H-E_SH\)">\(H-E_SH\)</span> has absolute values of at most <span class="math" data-tex="\(2\)">\(2\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|H-E_SH\|_2^2&amp;\le2\,\|H-E_SH\|_1\\
+&amp;&lt;2L&#x27;\varepsilon\le\frac{\tau^2}4 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|H-E_SH\|_2^2&amp;\le2\,\|H-E_SH\|_1\\
+&amp;&lt;2L&#x27;\varepsilon\le\frac{\tau^2}4 .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(\|H-E_SH\|_2&lt;\tau/2\)">\(\|H-E_SH\|_2&lt;\tau/2\)</span>.</p>
+<p><em>The general case.</em> <span class="math" data-tex="\(H\)">\(H\)</span> is continuous. Let <span class="math" data-tex="\(H_m\)">\(H_m\)</span> be its Fejér means. By Lemma 2.2 of the first lesson, <span class="math" data-tex="\(H_m\)">\(H_m\)</span> is a real trigonometric polynomial with values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> that is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz for the sup distance, and <span class="math" data-tex="\(H_m\to H\)">\(H_m\to H\)</span> uniformly. Take <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(\sup|H-H_m|\le\tau/4\)">\(\sup|H-H_m|\le\tau/4\)</span>, and the set <span class="math" data-tex="\(S\)">\(S\)</span> of the first part for <span class="math" data-tex="\(H_m\)">\(H_m\)</span>. Since <span class="math" data-tex="\(E_S\)">\(E_S\)</span> does not increase the norm,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|H-E_SH\|_2\le{}&amp;\|H-H_m\|_2\\
+&amp;+\|H_m-E_SH_m\|_2\\
+&amp;+\|E_S(H_m-H)\|_2\\
+&lt;{}&amp;\frac\tau4+\frac\tau2+\frac\tau4 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|H-E_SH\|_2\le{}&amp;\|H-H_m\|_2\\
+&amp;+\|H_m-E_SH_m\|_2\\
+&amp;+\|E_S(H_m-H)\|_2\\
+&lt;{}&amp;\frac\tau4+\frac\tau2+\frac\tau4 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-lipschitz-functions-on-a-cube">4. Lipschitz functions on a cube</h2>
+<p>For a bounded Borel function <span class="math" data-tex="\(f\)">\(f\)</span> on the cube <span class="math" data-tex="\([0,1]^N\)">\([0,1]^N\)</span>, the means <span class="math" data-tex="\(E_nf\)">\(E_nf\)</span> and <span class="math" data-tex="\(E_Sf\)">\(E_Sf\)</span> and the norms are defined as on the torus, with the Lebesgue measure of the cube.</p>
+<p><strong>Theorem 4.1</strong> (T. Austin). For every <span class="math" data-tex="\(L\ge0\)">\(L\ge0\)</span> and every <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span> there is an integer <span class="math" data-tex="\(J(L,\tau)\ge1\)">\(J(L,\tau)\ge1\)</span> with the following property. Let <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, and let <span class="math" data-tex="\(f:[0,1]^N\to[-1,1]\)">\(f:[0,1]^N\to[-1,1]\)</span> satisfy, for all <span class="math" data-tex="\(x,y\in[0,1]^N\)">\(x,y\in[0,1]^N\)</span>,
+<span class="math math-display" data-tex="\[
+|f(x)-f(y)|\le L\max_{1\le k\le N}|x_k-y_k| .
+\]">\[
+|f(x)-f(y)|\le L\max_{1\le k\le N}|x_k-y_k| .
+\]</span>
+Then there is a set <span class="math" data-tex="\(S\subset\{1,\dots,N\}\)">\(S\subset\{1,\dots,N\}\)</span> with at most <span class="math" data-tex="\(J(L,\tau)\)">\(J(L,\tau)\)</span> elements such that
+<span class="math math-display" data-tex="\[
+\|f-E_Sf\|_2&lt;\tau .
+\]">\[
+\|f-E_Sf\|_2&lt;\tau .
+\]</span>
+One can take <span class="math" data-tex="\(J(L,\tau)=J_{\mathbb T}(2L,\tau)\)">\(J(L,\tau)=J_{\mathbb T}(2L,\tau)\)</span>.</p>
+<p><strong>Proof.</strong> <em>The fold.</em> For a real number <span class="math" data-tex="\(\theta\)">\(\theta\)</span> let <span class="math" data-tex="\(\|\theta\|\)">\(\|\theta\|\)</span> be its distance to the nearest integer. The function <span class="math" data-tex="\(\theta\mapsto2\|\theta\|\)">\(\theta\mapsto2\|\theta\|\)</span> has the period <span class="math" data-tex="\(1\)">\(1\)</span> and values in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>; on <span class="math" data-tex="\([0,\tfrac12]\)">\([0,\tfrac12]\)</span> it is <span class="math" data-tex="\(2\theta\)">\(2\theta\)</span>, and on <span class="math" data-tex="\([\tfrac12,1]\)">\([\tfrac12,1]\)</span> it is <span class="math" data-tex="\(2-2\theta\)">\(2-2\theta\)</span>. It satisfies <span class="math" data-tex="\(|2\|\theta\|-2\|\theta&#x27;\||\le2\|\theta-\theta&#x27;\|\)">\(|2\|\theta\|-2\|\theta&#x27;\||\le2\|\theta-\theta&#x27;\|\)</span>. For a bounded Borel function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_0^1\varphi(2\|\theta\|)\,d\theta&amp;=\int_0^{1/2}\varphi(2\theta)\,d\theta\\
+&amp;\quad+\int_{1/2}^1\varphi(2-2\theta)\,d\theta\\
+&amp;=\int_0^1\varphi .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_0^1\varphi(2\|\theta\|)\,d\theta&amp;=\int_0^{1/2}\varphi(2\theta)\,d\theta\\
+&amp;\quad+\int_{1/2}^1\varphi(2-2\theta)\,d\theta\\
+&amp;=\int_0^1\varphi .
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(\Phi:\mathbb T^N\to[0,1]^N\)">\(\Phi:\mathbb T^N\to[0,1]^N\)</span> be the map <span class="math" data-tex="\(\Phi(x)=(2\|x_1\|,\dots,2\|x_N\|)\)">\(\Phi(x)=(2\|x_1\|,\dots,2\|x_N\|)\)</span>. Applying the last formula in one coordinate, and then in all, gives for every bounded Borel function <span class="math" data-tex="\(k\)">\(k\)</span> on the cube
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_n(k\circ\Phi)=(E_nk)\circ\Phi,\\
+\int_{\mathbb T^N}k\circ\Phi=\int_{[0,1]^N}k .
+\end{gathered}
+\]">\[
+\begin{gathered}
+E_n(k\circ\Phi)=(E_nk)\circ\Phi,\\
+\int_{\mathbb T^N}k\circ\Phi=\int_{[0,1]^N}k .
+\end{gathered}
+\]</span></p>
+<p><em>The function on the torus.</em> Let <span class="math" data-tex="\(H=f\circ\Phi\)">\(H=f\circ\Phi\)</span>. It has values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|H(x)&amp;-H(x&#x27;)|\\
+&amp;\le L\max_n\bigl|2\|x_n\|-2\|x&#x27;_n\|\bigr|\\
+&amp;\le2L\,d_\infty(x,x&#x27;) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|H(x)&amp;-H(x&#x27;)|\\
+&amp;\le L\max_n\bigl|2\|x_n\|-2\|x&#x27;_n\|\bigr|\\
+&amp;\le2L\,d_\infty(x,x&#x27;) .
+\end{aligned}
+\]</span>
+By Theorem 3.2 there is a set <span class="math" data-tex="\(S\)">\(S\)</span> with at most <span class="math" data-tex="\(J_{\mathbb T}(2L,\tau)\)">\(J_{\mathbb T}(2L,\tau)\)</span> elements and <span class="math" data-tex="\(\|H-E_SH\|_2&lt;\tau\)">\(\|H-E_SH\|_2&lt;\tau\)</span>. By the two formulas for <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, <span class="math" data-tex="\(E_SH=(E_Sf)\circ\Phi\)">\(E_SH=(E_Sf)\circ\Phi\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|f-E_Sf\|_2&amp;=\|(f-E_Sf)\circ\Phi\|_2\\
+&amp;=\|H-E_SH\|_2&lt;\tau .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|f-E_Sf\|_2&amp;=\|(f-E_Sf)\circ\Phi\|_2\\
+&amp;=\|H-E_SH\|_2&lt;\tau .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Theorem 4.1 is the case of the interval <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> with the Lebesgue measure, and of functions with a Lipschitz condition, of [Austin, Theorem 1.1]. That theorem holds for products of a compact metric space whose measure has a connected and locally connected support, and for functions with any given modulus of continuity; this generality is not proved here.</p>
+<h2 id="5-the-size-of-the-bound">5. The size of the bound</h2>
+<p>The proof gives the bound <span class="math" data-tex="\(q(\varepsilon)=\lfloor1/\eta\rfloor\)">\(q(\varepsilon)=\lfloor1/\eta\rfloor\)</span> with
+<span class="math math-display" data-tex="\[
+\log\frac1\eta=\frac2b\Bigl(\log\frac2\varepsilon+\frac a2\log\frac1{2et}\Bigr),
+\]">\[
+\log\frac1\eta=\frac2b\Bigl(\log\frac2\varepsilon+\frac a2\log\frac1{2et}\Bigr),
+\]</span>
+where <span class="math" data-tex="\(t=\varepsilon^2/100\)">\(t=\varepsilon^2/100\)</span>, <span class="math" data-tex="\(b=\tanh(2t/c_0)\)">\(b=\tanh(2t/c_0)\)</span> and <span class="math" data-tex="\(a=1-b\)">\(a=1-b\)</span> as in Section 1.
+For small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> is about <span class="math" data-tex="\(2t/c_0=\varepsilon^2/(50c_0)\)">\(2t/c_0=\varepsilon^2/(50c_0)\)</span>. So <span class="math" data-tex="\(\log q(\varepsilon)\)">\(\log q(\varepsilon)\)</span> grows like <span class="math" data-tex="\(\varepsilon^{-2}\log\tfrac1\varepsilon\)">\(\varepsilon^{-2}\log\tfrac1\varepsilon\)</span>: the bound is finite and explicit, and very large. For <span class="math" data-tex="\(\varepsilon=1\)">\(\varepsilon=1\)</span> the number <span class="math" data-tex="\(q(\varepsilon)\)">\(q(\varepsilon)\)</span> has <span class="math" data-tex="\(163\)">\(163\)</span> decimal digits, and for <span class="math" data-tex="\(\varepsilon=\tfrac1{10}\)">\(\varepsilon=\tfrac1{10}\)</span> about <span class="math" data-tex="\(51{,}000\)">\(51{,}000\)</span>. In Theorem 4.1, <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is <span class="math" data-tex="\(\tau^2/(8\max\{2L,1\})\)">\(\tau^2/(8\max\{2L,1\})\)</span> for small <span class="math" data-tex="\(\tau\)">\(\tau\)</span>.</p>
+<p>A better constant <span class="math" data-tex="\(c_0\)">\(c_0\)</span> in the logarithmic Sobolev inequality improves the bound, but not its form. For particular functions far fewer coordinates suffice (Exercises 6.1 and 6.4).</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Let <span class="math" data-tex="\(f(x)=\tfrac1{4N}\sum_{n=1}^N\cos(2\pi x_n)\)">\(f(x)=\tfrac1{4N}\sum_{n=1}^N\cos(2\pi x_n)\)</span> on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span>. Show that <span class="math" data-tex="\(f\)">\(f\)</span> satisfies the conditions of Theorem 1.1, find the set <span class="math" data-tex="\(S\)">\(S\)</span> for a given <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, and compute <span class="math" data-tex="\(\|f-E_Sf\|_2\)">\(\|f-E_Sf\|_2\)</span>.</p>
+<p><strong>6.2.</strong> In the proof of Theorem 1.1, where is each of the two conditions on <span class="math" data-tex="\(f\)">\(f\)</span> used?</p>
+<p><strong>6.3.</strong> For <span class="math" data-tex="\(N=1\)">\(N=1\)</span> and <span class="math" data-tex="\(k(w)=w\)">\(k(w)=w\)</span>, compute <span class="math" data-tex="\(k\circ\Phi\)">\(k\circ\Phi\)</span> and check <span class="math" data-tex="\(\int_{\mathbb T}k\circ\Phi=\int_0^1k\)">\(\int_{\mathbb T}k\circ\Phi=\int_0^1k\)</span>.</p>
+<p><strong>6.4.</strong> Let <span class="math" data-tex="\(f(x)=\max_nx_n\)">\(f(x)=\max_nx_n\)</span> on <span class="math" data-tex="\([0,1]^N\)">\([0,1]^N\)</span>. Show that <span class="math" data-tex="\(f\)">\(f\)</span> satisfies the condition of Theorem 4.1 with <span class="math" data-tex="\(L=1\)">\(L=1\)</span>, that <span class="math" data-tex="\(\|f-1\|_2^2=\tfrac2{(N+1)(N+2)}\)">\(\|f-1\|_2^2=\tfrac2{(N+1)(N+2)}\)</span>, and that for <span class="math" data-tex="\(\tau=\tfrac1{10}\)">\(\tau=\tfrac1{10}\)</span> and every <span class="math" data-tex="\(N\)">\(N\)</span> there is a set <span class="math" data-tex="\(S\)">\(S\)</span> of at most <span class="math" data-tex="\(12\)">\(12\)</span> coordinates with <span class="math" data-tex="\(\|f-E_Sf\|_2&lt;\tau\)">\(\|f-E_Sf\|_2&lt;\tau\)</span>.</p>
+<p><strong>6.5.</strong> Let <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>. Derive from Theorem 4.1: a function <span class="math" data-tex="\(f:[0,1]^N\to[-M,M]\)">\(f:[0,1]^N\to[-M,M]\)</span> with the Lipschitz condition of the theorem has a set <span class="math" data-tex="\(S\)">\(S\)</span> of at most <span class="math" data-tex="\(J(L/M,\tau/M)\)">\(J(L/M,\tau/M)\)</span> coordinates with <span class="math" data-tex="\(\|f-E_Sf\|_2&lt;\tau\)">\(\|f-E_Sf\|_2&lt;\tau\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(\partial_nf=-\tfrac{2\pi}{4N}\sin(2\pi x_n)\)">\(\partial_nf=-\tfrac{2\pi}{4N}\sin(2\pi x_n)\)</span>, and <span class="math" data-tex="\(\int_0^1|\sin2\pi u|\,du=\tfrac2\pi\)">\(\int_0^1|\sin2\pi u|\,du=\tfrac2\pi\)</span>. So <span class="math" data-tex="\(\|\partial_nf\|_1=\tfrac1N\)">\(\|\partial_nf\|_1=\tfrac1N\)</span>, and the sum over <span class="math" data-tex="\(n\)">\(n\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. Also <span class="math" data-tex="\(\int f=0\)">\(\int f=0\)</span> and <span class="math" data-tex="\(\|f\|_2^2=\tfrac1{16N^2}\cdot N\cdot\tfrac12\le1\)">\(\|f\|_2^2=\tfrac1{16N^2}\cdot N\cdot\tfrac12\le1\)</span>. If <span class="math" data-tex="\(\eta\le\tfrac1N\)">\(\eta\le\tfrac1N\)</span>, then <span class="math" data-tex="\(S\)">\(S\)</span> is the set of all coordinates and <span class="math" data-tex="\(f-E_Sf=0\)">\(f-E_Sf=0\)</span>. If <span class="math" data-tex="\(\eta&gt;\tfrac1N\)">\(\eta&gt;\tfrac1N\)</span>, then <span class="math" data-tex="\(S\)">\(S\)</span> is empty, <span class="math" data-tex="\(E_Sf=0\)">\(E_Sf=0\)</span>, and <span class="math" data-tex="\(\|f-E_Sf\|_2=\|f\|_2=(32N)^{-1/2}\)">\(\|f-E_Sf\|_2=\|f\|_2=(32N)^{-1/2}\)</span>, which is small because <span class="math" data-tex="\(N&gt;1/\eta\)">\(N&gt;1/\eta\)</span> is large.</p>
+<p><strong>6.2.</strong> The condition on the derivatives is used three times: for the number of the elements of <span class="math" data-tex="\(S\)">\(S\)</span>; in Lemma 4.1 of the first lesson, for <span class="math" data-tex="\(\|f-P_{2t}f\|_1\le2\sqrt t\)">\(\|f-P_{2t}f\|_1\le2\sqrt t\)</span>; and in the first factor of Lemma 2.1. The condition on the norm is used in the second factor of Lemma 2.1, through Lemma 4.2 of the first lesson.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(k\circ\Phi(x)=2\|x\|\)">\(k\circ\Phi(x)=2\|x\|\)</span>, which is <span class="math" data-tex="\(2x\)">\(2x\)</span> on <span class="math" data-tex="\([0,\tfrac12]\)">\([0,\tfrac12]\)</span> and <span class="math" data-tex="\(2-2x\)">\(2-2x\)</span> on <span class="math" data-tex="\([\tfrac12,1]\)">\([\tfrac12,1]\)</span>. Its integral is <span class="math" data-tex="\(\tfrac14+\tfrac14=\tfrac12=\int_0^1w\,dw\)">\(\tfrac14+\tfrac14=\tfrac12=\int_0^1w\,dw\)</span>.</p>
+<p><strong>6.4.</strong> If <span class="math" data-tex="\(|x_n-y_n|\le\epsilon\)">\(|x_n-y_n|\le\epsilon\)</span> for all <span class="math" data-tex="\(n\)">\(n\)</span>, then <span class="math" data-tex="\(\max_nx_n\le\max_ny_n+\epsilon\)">\(\max_nx_n\le\max_ny_n+\epsilon\)</span>, and the same with <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> exchanged. The largest coordinate <span class="math" data-tex="\(V\)">\(V\)</span> of a uniform point has <span class="math" data-tex="\(\Pr(V\le u)=u^N\)">\(\Pr(V\le u)=u^N\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|f-1\|_2^2&amp;=\int_0^1(1-u)^2Nu^{N-1}\,du\\
+&amp;=\frac{2}{(N+1)(N+2)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|f-1\|_2^2&amp;=\int_0^1(1-u)^2Nu^{N-1}\,du\\
+&amp;=\frac{2}{(N+1)(N+2)} .
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(N\ge13\)">\(N\ge13\)</span> this is at most <span class="math" data-tex="\(\tfrac2{210}&lt;\tfrac1{100}\)">\(\tfrac2{210}&lt;\tfrac1{100}\)</span>; since <span class="math" data-tex="\(E_\varnothing f=\int f\)">\(E_\varnothing f=\int f\)</span> is the constant nearest to <span class="math" data-tex="\(f\)">\(f\)</span>, the empty set does it. For <span class="math" data-tex="\(N\le12\)">\(N\le12\)</span> take all coordinates.</p>
+<p><strong>6.5.</strong> The function <span class="math" data-tex="\(f/M\)">\(f/M\)</span> has values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> and satisfies the condition with <span class="math" data-tex="\(L/M\)">\(L/M\)</span>. Theorem 4.1 for <span class="math" data-tex="\(f/M\)">\(f/M\)</span> with <span class="math" data-tex="\(\tau/M\)">\(\tau/M\)</span> gives <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(\|f/M-E_S(f/M)\|_2&lt;\tau/M\)">\(\|f/M-E_S(f/M)\|_2&lt;\tau/M\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Austin] T. Austin, <em>On the failure of concentration for the <span class="math" data-tex="\(\ell_\infty\)">\(\ell_\infty\)</span>-ball</em>, arXiv:1309.3315, version 4, Theorems 1.1, 1.2 and 2.1 and Section 2. https://arxiv.org/abs/1309.3315</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

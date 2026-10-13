@@ -136,7 +136,7 @@ The integral is over the straight complex segment. Every iterate has spatial nor
 
 Every iterate is jointly holomorphic. To verify the integration step, write the integral as
 \(s\int_0^1 V(t_0+\theta s,u_k(\theta s,a,t_0,\lambda),\lambda)\,d\theta\).
-On each smaller closed parameter polydisc the integrand is uniformly continuous in \(\theta\); the Riemann sums are holomorphic and converge uniformly. The [holomorphic convergence theorem, Theorem 3.1](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/complex-analytic-spaces-and-coherent-sheaves/src/holomorphic-functions-of-several-variables.md#3-limits-the-space-of-holomorphic-functions-and-montels-theorem), makes the integral holomorphic.
+On each smaller closed parameter polydisc the integrand is uniformly continuous in \(\theta\); the Riemann sums are holomorphic and converge uniformly. The holomorphic convergence theorem, Theorem 3.1, makes the integral holomorphic.
 
 Take suprema over the entire smaller data product and \(|s|<\rho\). The spatial estimate gives
 \[

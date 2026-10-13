@@ -1,0 +1,292 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trigonometric polynomials and the heat operators on a torus</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Hypercontractivity on a torus and juntas for Lipschitz functions)</a><a href="a-logarithmic-sobolev-inequality-on-the-circle.html">Next lesson</a><a href="src/trigonometric-polynomials-and-the-heat-operators.md">Editable source</a></nav><main><article><h1 id="trigonometric-polynomials-and-the-heat-operators-on-a-torus">Trigonometric polynomials and the heat operators on a torus</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This course proves a theorem of T. Austin [Austin]: a function of many variables that is Lipschitz for the sup distance is close to a function of a bounded number of the variables, and the bound does not depend on the number of the variables. The proof uses the heat operators on a torus and one inequality for them, hypercontractivity, which the course proves from a logarithmic Sobolev inequality on the circle.</p>
+<p>This first lesson collects the tools: trigonometric polynomials on a torus, their approximation of continuous functions, the heat operators, and three inequalities for the heat operators that are proved with Fourier coefficients.</p>
+<ul>
+<li>Trigonometric polynomials, means over coordinates, and the Poincaré inequality (Lemma 1.1).</li>
+<li>Fejér means: approximation that keeps bounds and Lipschitz constants (Lemma 2.2).</li>
+<li>The heat operators <span class="math" data-tex="\(P_t\)">\(P_t\)</span> (Lemmas 3.1, 3.2 and Corollary 3.3).</li>
+<li><span class="math" data-tex="\(P_t\)">\(P_t\)</span> moves a function slowly (Lemma 4.1) and makes it smooth (Lemma 4.2).</li>
+</ul>
+<p>The lesson needs the Lebesgue integral with Fubini's theorem and Jensen's inequality (<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">core course <em>Measure and Integration</em></a>) and calculus. The plan of the proof and the two lemmas of Section 4 follow [Austin, Section 2].</p>
+<h2 id="1-functions-on-a-torus">1. Functions on a torus</h2>
+<p>Let <span class="math" data-tex="\(\mathbb T=\mathbb R/\mathbb Z\)">\(\mathbb T=\mathbb R/\mathbb Z\)</span> and <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>. A function on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> is the same as a function on <span class="math" data-tex="\(\mathbb R^N\)">\(\mathbb R^N\)</span> that has the period <span class="math" data-tex="\(1\)">\(1\)</span> in every coordinate. Its integral <span class="math" data-tex="\(\int f\)">\(\int f\)</span> is the integral over the cube <span class="math" data-tex="\([0,1)^N\)">\([0,1)^N\)</span>; it does not change if <span class="math" data-tex="\(f\)">\(f\)</span> is translated: <span class="math" data-tex="\(\int f(x+y)\,dx=\int f(x)\,dx\)">\(\int f(x+y)\,dx=\int f(x)\,dx\)</span>. For <span class="math" data-tex="\(1\le p&lt;\infty\)">\(1\le p&lt;\infty\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|f\|_p=\Bigl(\int|f|^p\Bigr)^{1/p},\\
+\langle f,h\rangle=\int f\,\overline h .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|f\|_p=\Bigl(\int|f|^p\Bigr)^{1/p},\\
+\langle f,h\rangle=\int f\,\overline h .
+\end{gathered}
+\]</span>
+Since the total mass is <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(\|f\|_p\le\|f\|_q\)">\(\|f\|_p\le\|f\|_q\)</span> for <span class="math" data-tex="\(p\le q\)">\(p\le q\)</span>. The <em>sup distance</em> of two points of <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> is <span class="math" data-tex="\(d_\infty(x,y)=\max_n\|x_n-y_n\|\)">\(d_\infty(x,y)=\max_n\|x_n-y_n\|\)</span>, where <span class="math" data-tex="\(\|u\|\)">\(\|u\|\)</span> is the distance of a real number <span class="math" data-tex="\(u\)">\(u\)</span> to the nearest integer.</p>
+<p><strong>Characters.</strong> For <span class="math" data-tex="\(k\in\mathbb Z^N\)">\(k\in\mathbb Z^N\)</span> let
+<span class="math math-display" data-tex="\[
+e_k(x)=e^{2\pi i(k_1x_1+\dots+k_Nx_N)} .
+\]">\[
+e_k(x)=e^{2\pi i(k_1x_1+\dots+k_Nx_N)} .
+\]</span>
+Then <span class="math" data-tex="\(e_ke_l=e_{k+l}\)">\(e_ke_l=e_{k+l}\)</span>, <span class="math" data-tex="\(\overline{e_k}=e_{-k}\)">\(\overline{e_k}=e_{-k}\)</span>, and <span class="math" data-tex="\(\int e_k\)">\(\int e_k\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(k=0\)">\(k=0\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. So <span class="math" data-tex="\(\langle e_k,e_l\rangle\)">\(\langle e_k,e_l\rangle\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(k=l\)">\(k=l\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise.</p>
+<p>A <em>trigonometric polynomial</em> is a finite sum <span class="math" data-tex="\(f=\sum_kc_ke_k\)">\(f=\sum_kc_ke_k\)</span> with complex numbers <span class="math" data-tex="\(c_k\)">\(c_k\)</span>. The coefficients are determined by <span class="math" data-tex="\(f\)">\(f\)</span>: <span class="math" data-tex="\(c_k=\langle f,e_k\rangle\)">\(c_k=\langle f,e_k\rangle\)</span>. The function <span class="math" data-tex="\(f\)">\(f\)</span> is real if and only if <span class="math" data-tex="\(c_{-k}=\overline{c_k}\)">\(c_{-k}=\overline{c_k}\)</span> for all <span class="math" data-tex="\(k\)">\(k\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|f\|_2^2=\sum_k|c_k|^2,\\
+\partial_nf=\sum_k2\pi i\,k_n\,c_k\,e_k ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|f\|_2^2=\sum_k|c_k|^2,\\
+\partial_nf=\sum_k2\pi i\,k_n\,c_k\,e_k ,
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\partial_n\)">\(\partial_n\)</span> is the partial derivative in the coordinate <span class="math" data-tex="\(x_n\)">\(x_n\)</span>. The derivatives of a real trigonometric polynomial are real trigonometric polynomials.</p>
+<p><strong>Means over coordinates.</strong> For a bounded Borel function <span class="math" data-tex="\(f\)">\(f\)</span> and a coordinate <span class="math" data-tex="\(n\)">\(n\)</span> let <span class="math" data-tex="\(E_nf\)">\(E_nf\)</span> be the mean of <span class="math" data-tex="\(f\)">\(f\)</span> over the coordinate <span class="math" data-tex="\(x_n\)">\(x_n\)</span>: with <span class="math" data-tex="\(x^{w}\)">\(x^{w}\)</span> for the point <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(w\)">\(w\)</span> in place of <span class="math" data-tex="\(x_n\)">\(x_n\)</span>,
+<span class="math math-display" data-tex="\[
+(E_nf)(x)=\int_0^1f(x^{w})\,dw .
+\]">\[
+(E_nf)(x)=\int_0^1f(x^{w})\,dw .
+\]</span>
+For a set <span class="math" data-tex="\(S\subset\{1,\dots,N\}\)">\(S\subset\{1,\dots,N\}\)</span> let <span class="math" data-tex="\(E_S\)">\(E_S\)</span> be the product of the operators <span class="math" data-tex="\(E_n\)">\(E_n\)</span> with <span class="math" data-tex="\(n\notin S\)">\(n\notin S\)</span>, in any order. The function <span class="math" data-tex="\(E_Sf\)">\(E_Sf\)</span> depends only on the coordinates in <span class="math" data-tex="\(S\)">\(S\)</span>; a function with this property is a <em>junta on <span class="math" data-tex="\(S\)">\(S\)</span></em>. By Jensen's inequality and Fubini's theorem, <span class="math" data-tex="\(\|E_nf\|_p\le\|f\|_p\)">\(\|E_nf\|_p\le\|f\|_p\)</span>, and so <span class="math" data-tex="\(\|E_Sf\|_p\le\|f\|_p\)">\(\|E_Sf\|_p\le\|f\|_p\)</span>.</p>
+<p>For a character, <span class="math" data-tex="\(E_ne_k=e_k\)">\(E_ne_k=e_k\)</span> if <span class="math" data-tex="\(k_n=0\)">\(k_n=0\)</span>, and <span class="math" data-tex="\(E_ne_k=0\)">\(E_ne_k=0\)</span> otherwise. So for a trigonometric polynomial
+<span class="math math-display" data-tex="\[
+E_Sf=\sum_{k:\ k_n=0\text{ for all }n\notin S}c_ke_k .
+\]">\[
+E_Sf=\sum_{k:\ k_n=0\text{ for all }n\notin S}c_ke_k .
+\]</span></p>
+<p><strong>Lemma 1.1</strong> (Poincaré inequality). For a trigonometric polynomial <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> and a set <span class="math" data-tex="\(S\)">\(S\)</span> of coordinates,
+<span class="math math-display" data-tex="\[
+\|f-E_Sf\|_2^2\le\frac1{4\pi^2}\sum_{n\notin S}\|\partial_nf\|_2^2 .
+\]">\[
+\|f-E_Sf\|_2^2\le\frac1{4\pi^2}\sum_{n\notin S}\|\partial_nf\|_2^2 .
+\]</span></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(f-E_Sf\)">\(f-E_Sf\)</span> is the sum of the terms <span class="math" data-tex="\(c_ke_k\)">\(c_ke_k\)</span> over the set <span class="math" data-tex="\(Z\)">\(Z\)</span> of the <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(k_n\ne0\)">\(k_n\ne0\)</span> for some <span class="math" data-tex="\(n\notin S\)">\(n\notin S\)</span>. For <span class="math" data-tex="\(k\in Z\)">\(k\in Z\)</span>, <span class="math" data-tex="\(\sum_{n\notin S}k_n^2\ge1\)">\(\sum_{n\notin S}k_n^2\ge1\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|f-E_Sf\|_2^2&amp;=\sum_{k\in Z}|c_k|^2\\
+&amp;\le\sum_k\sum_{n\notin S}k_n^2|c_k|^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|f-E_Sf\|_2^2&amp;=\sum_{k\in Z}|c_k|^2\\
+&amp;\le\sum_k\sum_{n\notin S}k_n^2|c_k|^2 ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\|\partial_nf\|_2^2=\sum_k4\pi^2k_n^2|c_k|^2\)">\(\|\partial_nf\|_2^2=\sum_k4\pi^2k_n^2|c_k|^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-approximation-by-trigonometric-polynomials">2. Approximation by trigonometric polynomials</h2>
+<p>For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-tex="\(u\in\mathbb T\)">\(u\in\mathbb T\)</span> the <em>Fejér kernel</em> is
+<span class="math math-display" data-tex="\[
+F_m(u)=\sum_{|k|&lt;m}\Bigl(1-\frac{|k|}m\Bigr)e_k(u) .
+\]">\[
+F_m(u)=\sum_{|k|&lt;m}\Bigl(1-\frac{|k|}m\Bigr)e_k(u) .
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> (1) <span class="math" data-tex="\(F_m(u)=\tfrac1m\bigl|\sum_{j=0}^{m-1}e_j(u)\bigr|^2\ge0\)">\(F_m(u)=\tfrac1m\bigl|\sum_{j=0}^{m-1}e_j(u)\bigr|^2\ge0\)</span>. (2) <span class="math" data-tex="\(\int F_m=1\)">\(\int F_m=1\)</span>. (3) If <span class="math" data-tex="\(0&lt;\delta\le\tfrac12\)">\(0&lt;\delta\le\tfrac12\)</span> and <span class="math" data-tex="\(\|u\|\ge\delta\)">\(\|u\|\ge\delta\)</span>, then <span class="math" data-tex="\(F_m(u)\le\dfrac1{m\sin^2(\pi\delta)}\)">\(F_m(u)\le\dfrac1{m\sin^2(\pi\delta)}\)</span>.</p>
+<p><strong>Proof.</strong> (1) <span class="math" data-tex="\(\bigl|\sum_{j&lt;m}e_j\bigr|^2=\sum_{j,l&lt;m}e_{j-l}\)">\(\bigl|\sum_{j&lt;m}e_j\bigr|^2=\sum_{j,l&lt;m}e_{j-l}\)</span>, and <span class="math" data-tex="\(k=j-l\)">\(k=j-l\)</span> occurs <span class="math" data-tex="\(m-|k|\)">\(m-|k|\)</span> times. (2) The coefficient of <span class="math" data-tex="\(e_0\)">\(e_0\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. (3) For <span class="math" data-tex="\(u\notin\mathbb Z\)">\(u\notin\mathbb Z\)</span>, the sum of the geometric progression is
+<span class="math math-display" data-tex="\[
+\Bigl|\sum_{j=0}^{m-1}e^{2\pi iju}\Bigr|=\frac{|e^{2\pi imu}-1|}{|e^{2\pi iu}-1|}\le\frac{2}{2|\sin\pi u|} ,
+\]">\[
+\Bigl|\sum_{j=0}^{m-1}e^{2\pi iju}\Bigr|=\frac{|e^{2\pi imu}-1|}{|e^{2\pi iu}-1|}\le\frac{2}{2|\sin\pi u|} ,
+\]</span>
+and <span class="math" data-tex="\(|\sin\pi u|\ge\sin\pi\delta\)">\(|\sin\pi u|\ge\sin\pi\delta\)</span> for <span class="math" data-tex="\(\|u\|\ge\delta\)">\(\|u\|\ge\delta\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>On <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> let <span class="math" data-tex="\(K_m(y)=F_m(y_1)\cdots F_m(y_N)\)">\(K_m(y)=F_m(y_1)\cdots F_m(y_N)\)</span>. For a bounded Borel function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span>, its <em><span class="math" data-tex="\(m\)">\(m\)</span>-th Fejér mean</em> is
+<span class="math math-display" data-tex="\[
+f_m(x)=\int f(x-y)\,K_m(y)\,dy .
+\]">\[
+f_m(x)=\int f(x-y)\,K_m(y)\,dy .
+\]</span></p>
+<p><strong>Lemma 2.2.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a bounded Borel function on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(f_m\)">\(f_m\)</span> is a trigonometric polynomial; it is real if <span class="math" data-tex="\(f\)">\(f\)</span> is real.</li>
+<li>If <span class="math" data-tex="\(a\le f\le b\)">\(a\le f\le b\)</span> for real numbers <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, then <span class="math" data-tex="\(a\le f_m\le b\)">\(a\le f_m\le b\)</span>.</li>
+<li>If <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz for the sup distance, so is <span class="math" data-tex="\(f_m\)">\(f_m\)</span>.</li>
+<li><span class="math" data-tex="\((E_Sf)_m=E_S(f_m)\)">\((E_Sf)_m=E_S(f_m)\)</span> for every set <span class="math" data-tex="\(S\)">\(S\)</span> of coordinates.</li>
+<li>If <span class="math" data-tex="\(f\)">\(f\)</span> is continuous, then <span class="math" data-tex="\(f_m\to f\)">\(f_m\to f\)</span> uniformly as <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(K_m\ge0\)">\(K_m\ge0\)</span> and <span class="math" data-tex="\(\int K_m=1\)">\(\int K_m=1\)</span> by Lemma 2.1. This gives (2). It also gives (3): <span class="math" data-tex="\(|f(x-y)-f(x&#x27;-y)|\le L\,d_\infty(x,x&#x27;)\)">\(|f(x-y)-f(x&#x27;-y)|\le L\,d_\infty(x,x&#x27;)\)</span> for every <span class="math" data-tex="\(y\)">\(y\)</span>, and <span class="math" data-tex="\(f_m(x)-f_m(x&#x27;)\)">\(f_m(x)-f_m(x&#x27;)\)</span> is the mean of these differences with the weight <span class="math" data-tex="\(K_m\)">\(K_m\)</span>.
+(1) <span class="math" data-tex="\(K_m=\sum_k\kappa_ke_k\)">\(K_m=\sum_k\kappa_ke_k\)</span> with <span class="math" data-tex="\(\kappa_k=\prod_n(1-|k_n|/m)\)">\(\kappa_k=\prod_n(1-|k_n|/m)\)</span> for the <span class="math" data-tex="\(k\)">\(k\)</span> with all <span class="math" data-tex="\(|k_n|&lt;m\)">\(|k_n|&lt;m\)</span>. The substitution <span class="math" data-tex="\(z=x-y\)">\(z=x-y\)</span> gives <span class="math" data-tex="\(\int f(x-y)e_k(y)\,dy=\langle f,e_k\rangle\,e_k(x)\)">\(\int f(x-y)e_k(y)\,dy=\langle f,e_k\rangle\,e_k(x)\)</span>. So
+<span class="math math-display" data-tex="\[
+f_m=\sum_k\kappa_k\,\langle f,e_k\rangle\,e_k .
+\]">\[
+f_m=\sum_k\kappa_k\,\langle f,e_k\rangle\,e_k .
+\]</span>
+If <span class="math" data-tex="\(f\)">\(f\)</span> is real, <span class="math" data-tex="\(f_m\)">\(f_m\)</span> is real because <span class="math" data-tex="\(K_m\)">\(K_m\)</span> is real. (4) By Fubini's theorem, <span class="math" data-tex="\(\langle E_nf,e_k\rangle\)">\(\langle E_nf,e_k\rangle\)</span> is <span class="math" data-tex="\(\langle f,e_k\rangle\)">\(\langle f,e_k\rangle\)</span> if <span class="math" data-tex="\(k_n=0\)">\(k_n=0\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. With the formula in (1) for <span class="math" data-tex="\(E_Sf\)">\(E_Sf\)</span> and the formula for <span class="math" data-tex="\(E_S\)">\(E_S\)</span> on trigonometric polynomials, both sides of (4) are <span class="math" data-tex="\(\sum\kappa_k\langle f,e_k\rangle e_k\)">\(\sum\kappa_k\langle f,e_k\rangle e_k\)</span> over the <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(k_n=0\)">\(k_n=0\)</span> for all <span class="math" data-tex="\(n\notin S\)">\(n\notin S\)</span>.</p>
+<p>(5) Let <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>. Since <span class="math" data-tex="\(f\)">\(f\)</span> is uniformly continuous, there is <span class="math" data-tex="\(\delta\in(0,\tfrac12]\)">\(\delta\in(0,\tfrac12]\)</span> with <span class="math" data-tex="\(|f(x-y)-f(x)|\le\epsilon\)">\(|f(x-y)-f(x)|\le\epsilon\)</span> whenever <span class="math" data-tex="\(d_\infty(y,0)\le\delta\)">\(d_\infty(y,0)\le\delta\)</span>. The set of the <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(d_\infty(y,0)&gt;\delta\)">\(d_\infty(y,0)&gt;\delta\)</span> is contained in the union of the <span class="math" data-tex="\(N\)">\(N\)</span> sets <span class="math" data-tex="\(\{\|y_n\|&gt;\delta\}\)">\(\{\|y_n\|&gt;\delta\}\)</span>, and by Lemma 2.1 the integral of <span class="math" data-tex="\(K_m\)">\(K_m\)</span> over each of them is at most <span class="math" data-tex="\(1/(m\sin^2\pi\delta)\)">\(1/(m\sin^2\pi\delta)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|f_m(x)&amp;-f(x)|\\
+&amp;\le\int|f(x-y)-f(x)|\,K_m(y)\,dy\\
+&amp;\le\epsilon+\frac{2N\sup|f|}{m\sin^2(\pi\delta)} ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+|f_m(x)&amp;-f(x)|\\
+&amp;\le\int|f(x-y)-f(x)|\,K_m(y)\,dy\\
+&amp;\le\epsilon+\frac{2N\sup|f|}{m\sin^2(\pi\delta)} ,
+\end{aligned}
+\]</span>
+which is at most <span class="math" data-tex="\(2\epsilon\)">\(2\epsilon\)</span> for large <span class="math" data-tex="\(m\)">\(m\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-heat-operators">3. The heat operators</h2>
+<p>Let <span class="math" data-tex="\(g(z)=(2\pi)^{-1/2}e^{-z^2/2}\)">\(g(z)=(2\pi)^{-1/2}e^{-z^2/2}\)</span> be the density of the standard Gaussian law on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. It is even, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int g=1,\qquad \int z\,g(z)\,dz=0,\\
+\int z^2g(z)\,dz=1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int g=1,\qquad \int z\,g(z)\,dz=0,\\
+\int z^2g(z)\,dz=1 .
+\end{gathered}
+\]</span>
+Write <span class="math" data-tex="\(g_N(z)=g(z_1)\cdots g(z_N)\)">\(g_N(z)=g(z_1)\cdots g(z_N)\)</span> for <span class="math" data-tex="\(z\in\mathbb R^N\)">\(z\in\mathbb R^N\)</span>.</p>
+<p><strong>Definition.</strong> For <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> and a bounded Borel function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span>, put
+<span class="math math-display" data-tex="\[
+(P_tf)(x)=\int_{\mathbb R^N}f\bigl(x+\sqrt{2t}\,z\bigr)\,g_N(z)\,dz .
+\]">\[
+(P_tf)(x)=\int_{\mathbb R^N}f\bigl(x+\sqrt{2t}\,z\bigr)\,g_N(z)\,dz .
+\]</span>
+So <span class="math" data-tex="\(P_tf(x)\)">\(P_tf(x)\)</span> is the mean of <span class="math" data-tex="\(f\)">\(f\)</span> at a point that is moved away from <span class="math" data-tex="\(x\)">\(x\)</span> by a Gaussian vector, each coordinate with the variance <span class="math" data-tex="\(2t\)">\(2t\)</span>. <span class="math" data-tex="\(P_0f=f\)">\(P_0f=f\)</span>. The operators <span class="math" data-tex="\(P_t\)">\(P_t\)</span> are the <em>heat operators</em>.</p>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(f,h\)">\(f,h\)</span> be bounded real Borel functions on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> and <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(P_t\)">\(P_t\)</span> is linear; <span class="math" data-tex="\(P_tf\ge0\)">\(P_tf\ge0\)</span> if <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span>; <span class="math" data-tex="\(P_t1=1\)">\(P_t1=1\)</span>; <span class="math" data-tex="\(|P_tf|\le P_t|f|\)">\(|P_tf|\le P_t|f|\)</span>; and <span class="math" data-tex="\(P_tf\)">\(P_tf\)</span> is continuous if <span class="math" data-tex="\(f\)">\(f\)</span> is.</li>
+<li><span class="math" data-tex="\(\int P_tf=\int f\)">\(\int P_tf=\int f\)</span>, <span class="math" data-tex="\(\ \|P_tf\|_p\le\|f\|_p\)">\(\ \|P_tf\|_p\le\|f\|_p\)</span> for <span class="math" data-tex="\(1\le p&lt;\infty\)">\(1\le p&lt;\infty\)</span>, and <span class="math" data-tex="\(\sup|P_tf|\le\sup|f|\)">\(\sup|P_tf|\le\sup|f|\)</span>.</li>
+<li><span class="math" data-tex="\(\langle P_tf,h\rangle=\langle f,P_th\rangle\)">\(\langle P_tf,h\rangle=\langle f,P_th\rangle\)</span>.</li>
+<li>Let <span class="math" data-tex="\(P_t&#x27;\)">\(P_t&#x27;\)</span> be the heat operator in the first coordinate alone and <span class="math" data-tex="\(P_t&#x27;&#x27;\)">\(P_t&#x27;&#x27;\)</span> the heat operator in the other <span class="math" data-tex="\(N-1\)">\(N-1\)</span> coordinates, each applied with the remaining coordinates fixed. Then <span class="math" data-tex="\(P_t=P_t&#x27;P_t&#x27;&#x27;=P_t&#x27;&#x27;P_t&#x27;\)">\(P_t=P_t&#x27;P_t&#x27;&#x27;=P_t&#x27;&#x27;P_t&#x27;\)</span>. Also <span class="math" data-tex="\(P_tE_S=E_SP_t\)">\(P_tE_S=E_SP_t\)</span> for every set <span class="math" data-tex="\(S\)">\(S\)</span> of coordinates.</li>
+</ol>
+<p><strong>Proof.</strong> (1) is clear from the definition; continuity follows from the theorem on dominated convergence. (2) By Fubini's theorem and the invariance of the integral under translations,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int P_tf&amp;=\int g_N(z)\int f(x+\sqrt{2t}\,z)\,dx\,dz\\
+&amp;=\int f .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int P_tf&amp;=\int g_N(z)\int f(x+\sqrt{2t}\,z)\,dx\,dz\\
+&amp;=\int f .
+\end{aligned}
+\]</span>
+By Jensen's inequality for the probability density <span class="math" data-tex="\(g_N\)">\(g_N\)</span>, <span class="math" data-tex="\(|P_tf|^p\le P_t(|f|^p)\)">\(|P_tf|^p\le P_t(|f|^p)\)</span>; integrate. (3) By Fubini's theorem and the substitution <span class="math" data-tex="\(x&#x27;=x+\sqrt{2t}\,z\)">\(x&#x27;=x+\sqrt{2t}\,z\)</span>, the left side is <span class="math" data-tex="\(\int g_N(z)\int f(x&#x27;)\,h(x&#x27;-\sqrt{2t}\,z)\,dx&#x27;\,dz\)">\(\int g_N(z)\int f(x&#x27;)\,h(x&#x27;-\sqrt{2t}\,z)\,dx&#x27;\,dz\)</span>, and <span class="math" data-tex="\(g_N(-z)=g_N(z)\)">\(g_N(-z)=g_N(z)\)</span>. (4) is Fubini's theorem. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.2.</strong> <span class="math" data-tex="\(P_te_k=e^{-4\pi^2|k|^2t}\,e_k\)">\(P_te_k=e^{-4\pi^2|k|^2t}\,e_k\)</span> for every <span class="math" data-tex="\(k\in\mathbb Z^N\)">\(k\in\mathbb Z^N\)</span>, where <span class="math" data-tex="\(|k|^2=k_1^2+\dots+k_N^2\)">\(|k|^2=k_1^2+\dots+k_N^2\)</span>.</p>
+<p><strong>Proof.</strong> The definition (applied to the real and the imaginary part) gives <span class="math" data-tex="\(P_te_k(x)=e_k(x)\prod_n\varphi(2\pi k_n\sqrt{2t})\)">\(P_te_k(x)=e_k(x)\prod_n\varphi(2\pi k_n\sqrt{2t})\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varphi(\xi)&amp;=\int e^{i\xi z}g(z)\,dz\\
+&amp;=\int\cos(\xi z)\,g(z)\,dz ;
+\end{aligned}
+\]">\[
+\begin{aligned}
+\varphi(\xi)&amp;=\int e^{i\xi z}g(z)\,dz\\
+&amp;=\int\cos(\xi z)\,g(z)\,dz ;
+\end{aligned}
+\]</span>
+the part with the sine vanishes because <span class="math" data-tex="\(g\)">\(g\)</span> is even. Differentiate under the integral, which is allowed since <span class="math" data-tex="\(|z|g(z)\)">\(|z|g(z)\)</span> is integrable, use <span class="math" data-tex="\(g&#x27;(z)=-z\,g(z)\)">\(g&#x27;(z)=-z\,g(z)\)</span>, and integrate by parts:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varphi&#x27;(\xi)&amp;=-\int z\sin(\xi z)\,g(z)\,dz\\
+&amp;=\int\sin(\xi z)\,g&#x27;(z)\,dz=-\xi\,\varphi(\xi).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\varphi&#x27;(\xi)&amp;=-\int z\sin(\xi z)\,g(z)\,dz\\
+&amp;=\int\sin(\xi z)\,g&#x27;(z)\,dz=-\xi\,\varphi(\xi).
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(\varphi(0)=1\)">\(\varphi(0)=1\)</span> this gives <span class="math" data-tex="\(\varphi(\xi)=e^{-\xi^2/2}\)">\(\varphi(\xi)=e^{-\xi^2/2}\)</span>, and <span class="math" data-tex="\(\tfrac12(2\pi k_n)^2\cdot2t=4\pi^2k_n^2t\)">\(\tfrac12(2\pi k_n)^2\cdot2t=4\pi^2k_n^2t\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Corollary 3.3.</strong> Let <span class="math" data-tex="\(f=\sum_kc_ke_k\)">\(f=\sum_kc_ke_k\)</span> be a trigonometric polynomial.</p>
+<ol>
+<li><span class="math" data-tex="\(P_tf=\sum_ke^{-4\pi^2|k|^2t}c_ke_k\)">\(P_tf=\sum_ke^{-4\pi^2|k|^2t}c_ke_k\)</span>. It is a trigonometric polynomial, real if <span class="math" data-tex="\(f\)">\(f\)</span> is real, and <span class="math" data-tex="\(P_sP_tf=P_{s+t}f\)">\(P_sP_tf=P_{s+t}f\)</span>.</li>
+<li><span class="math" data-tex="\(\partial_nP_tf=P_t\partial_nf\)">\(\partial_nP_tf=P_t\partial_nf\)</span> for every coordinate <span class="math" data-tex="\(n\)">\(n\)</span>.</li>
+<li>The function <span class="math" data-tex="\(u(t,x)=P_tf(x)\)">\(u(t,x)=P_tf(x)\)</span> is infinitely differentiable in <span class="math" data-tex="\((t,x)\)">\((t,x)\)</span>, and it solves the heat equation
+<span class="math math-display" data-tex="\[
+\partial_tu=\partial_1^2u+\dots+\partial_N^2u .
+\]">\[
+\partial_tu=\partial_1^2u+\dots+\partial_N^2u .
+\]</span></li>
+<li><span class="math" data-tex="\(P_tf\to f\)">\(P_tf\to f\)</span> uniformly as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) is Lemma 3.2 and linearity. The rest is read from the finite sum in (1): <span class="math" data-tex="\(\partial_n\)">\(\partial_n\)</span> multiplies the term of <span class="math" data-tex="\(e_k\)">\(e_k\)</span> by <span class="math" data-tex="\(2\pi ik_n\)">\(2\pi ik_n\)</span>, and <span class="math" data-tex="\(\partial_t\)">\(\partial_t\)</span> by <span class="math" data-tex="\(-4\pi^2|k|^2\)">\(-4\pi^2|k|^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-two-inequalities">4. Two inequalities</h2>
+<p><strong>Lemma 4.1</strong> (<span class="math" data-tex="\(P_t\)">\(P_t\)</span> moves a function slowly). For a real trigonometric polynomial <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> and <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\|f-P_tf\|_1\le\sqrt{2t}\,\sum_{n=1}^N\|\partial_nf\|_1 .
+\]">\[
+\|f-P_tf\|_1\le\sqrt{2t}\,\sum_{n=1}^N\|\partial_nf\|_1 .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(c=\sqrt{2t}\)">\(c=\sqrt{2t}\)</span>, and for <span class="math" data-tex="\(z\in\mathbb R^N\)">\(z\in\mathbb R^N\)</span> let <span class="math" data-tex="\(d_z=\sum_nz_n\,\partial_nf\)">\(d_z=\sum_nz_n\,\partial_nf\)</span>, a real trigonometric polynomial. For <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span>,
+<span class="math math-display" data-tex="\[
+f(x+cz)-f(x)=c\int_0^1d_z(x+scz)\,ds .
+\]">\[
+f(x+cz)-f(x)=c\int_0^1d_z(x+scz)\,ds .
+\]</span>
+The function <span class="math" data-tex="\(P_tf-f\)">\(P_tf-f\)</span> is the mean of the left side over <span class="math" data-tex="\(z\)">\(z\)</span>. For fixed <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span>, the integral of <span class="math" data-tex="\(|d_z(x+scz)|\)">\(|d_z(x+scz)|\)</span> over <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(\|d_z\|_1\)">\(\|d_z\|_1\)</span>, because the integral does not change under translations. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|f-P_tf\|_1\le c\int g_N(z)\,\|d_z\|_1\,dz\\
+&amp;\quad=c\int\Bigl(\int|d_z(x)|\,g_N(z)\,dz\Bigr)dx .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|f-P_tf\|_1\le c\int g_N(z)\,\|d_z\|_1\,dz\\
+&amp;\quad=c\int\Bigl(\int|d_z(x)|\,g_N(z)\,dz\Bigr)dx .
+\end{aligned}
+\]</span>
+Fix <span class="math" data-tex="\(x\)">\(x\)</span> and write <span class="math" data-tex="\(a_n=\partial_nf(x)\)">\(a_n=\partial_nf(x)\)</span>, so that <span class="math" data-tex="\(d_z(x)=\sum_nz_na_n\)">\(d_z(x)=\sum_nz_na_n\)</span>. By the Cauchy–Schwarz inequality, and because <span class="math" data-tex="\(\int z_nz_{n&#x27;}g_N(z)\,dz\)">\(\int z_nz_{n&#x27;}g_N(z)\,dz\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(n=n&#x27;\)">\(n=n&#x27;\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int|d_z(x)|\,g_N(z)\,dz\\
+&amp;\quad\le\Bigl(\int d_z(x)^2\,g_N(z)\,dz\Bigr)^{1/2}\\
+&amp;\quad=\Bigl(\sum_na_n^2\Bigr)^{1/2}\le\sum_n|a_n| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int|d_z(x)|\,g_N(z)\,dz\\
+&amp;\quad\le\Bigl(\int d_z(x)^2\,g_N(z)\,dz\Bigr)^{1/2}\\
+&amp;\quad=\Bigl(\sum_na_n^2\Bigr)^{1/2}\le\sum_n|a_n| .
+\end{aligned}
+\]</span>
+Integrate over <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 4.2</strong> (<span class="math" data-tex="\(P_t\)">\(P_t\)</span> makes a function smooth). For a trigonometric polynomial <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{n=1}^N\|\partial_nP_tf\|_2^2\le\frac{\|f\|_2^2}{2e\,t} .
+\]">\[
+\sum_{n=1}^N\|\partial_nP_tf\|_2^2\le\frac{\|f\|_2^2}{2e\,t} .
+\]</span></p>
+<p><strong>Proof.</strong> By Corollary 3.3, the coefficient of <span class="math" data-tex="\(e_k\)">\(e_k\)</span> in <span class="math" data-tex="\(\partial_nP_tf\)">\(\partial_nP_tf\)</span> is <span class="math" data-tex="\(2\pi ik_ne^{-4\pi^2|k|^2t}c_k\)">\(2\pi ik_ne^{-4\pi^2|k|^2t}c_k\)</span>. So, with <span class="math" data-tex="\(v_k=4\pi^2|k|^2\)">\(v_k=4\pi^2|k|^2\)</span>, the left side is
+<span class="math math-display" data-tex="\[
+\sum_kv_k\,e^{-2tv_k}\,|c_k|^2 .
+\]">\[
+\sum_kv_k\,e^{-2tv_k}\,|c_k|^2 .
+\]</span>
+The function <span class="math" data-tex="\(v\mapsto ve^{-2tv}\)">\(v\mapsto ve^{-2tv}\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> has its largest value at <span class="math" data-tex="\(v=\tfrac1{2t}\)">\(v=\tfrac1{2t}\)</span>, where it is <span class="math" data-tex="\(\tfrac1{2et}\)">\(\tfrac1{2et}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The two lemmas work against each other in the proof of the main theorem: for a small <span class="math" data-tex="\(t\)">\(t\)</span>, the function <span class="math" data-tex="\(P_tf\)">\(P_tf\)</span> is still close to <span class="math" data-tex="\(f\)">\(f\)</span>, and its derivatives are already controlled in the norm <span class="math" data-tex="\(\|\cdot\|_2\)">\(\|\cdot\|_2\)</span>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Let <span class="math" data-tex="\(N=1\)">\(N=1\)</span>. Write <span class="math" data-tex="\(F_2\)">\(F_2\)</span> and <span class="math" data-tex="\(F_3\)">\(F_3\)</span> as real trigonometric polynomials, and compute the Fejér mean <span class="math" data-tex="\(f_2\)">\(f_2\)</span> of <span class="math" data-tex="\(f(u)=\cos(2\pi u)+\cos(4\pi u)\)">\(f(u)=\cos(2\pi u)+\cos(4\pi u)\)</span>.</p>
+<p><strong>5.2.</strong> Compute <span class="math" data-tex="\(P_tf\)">\(P_tf\)</span> for <span class="math" data-tex="\(f(x)=\cos(2\pi x_1)\cos(2\pi x_2)+\sin(6\pi x_1)\)">\(f(x)=\cos(2\pi x_1)\cos(2\pi x_2)+\sin(6\pi x_1)\)</span> on <span class="math" data-tex="\(\mathbb T^2\)">\(\mathbb T^2\)</span>, and <span class="math" data-tex="\(E_{\{1\}}P_tf\)">\(E_{\{1\}}P_tf\)</span>.</p>
+<p><strong>5.3.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a trigonometric polynomial. Show that <span class="math" data-tex="\(\|P_tf-\int f\|_2\le e^{-4\pi^2t}\|f-\int f\|_2\)">\(\|P_tf-\int f\|_2\le e^{-4\pi^2t}\|f-\int f\|_2\)</span>.</p>
+<p><strong>5.4.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a real trigonometric polynomial with <span class="math" data-tex="\(f\ge\delta\)">\(f\ge\delta\)</span> for a number <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Show that <span class="math" data-tex="\(P_tf\ge\delta\)">\(P_tf\ge\delta\)</span> for all <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>.</p>
+<p><strong>5.5.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a real trigonometric polynomial on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> that is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz for the sup distance. Show that <span class="math" data-tex="\(\sum_n|\partial_nf(x)|\le L\)">\(\sum_n|\partial_nf(x)|\le L\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. (This is used in the last lesson.)</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(F_2=1+\tfrac12(e_1+e_{-1})\)">\(F_2=1+\tfrac12(e_1+e_{-1})\)</span>, that is <span class="math" data-tex="\(F_2(u)=1+\cos(2\pi u)\)">\(F_2(u)=1+\cos(2\pi u)\)</span>, and <span class="math" data-tex="\(F_3(u)=1+\tfrac43\cos(2\pi u)+\tfrac23\cos(4\pi u)\)">\(F_3(u)=1+\tfrac43\cos(2\pi u)+\tfrac23\cos(4\pi u)\)</span>. By Lemma 2.2(1), <span class="math" data-tex="\(f_2\)">\(f_2\)</span> multiplies the coefficient of <span class="math" data-tex="\(e_k\)">\(e_k\)</span> by <span class="math" data-tex="\(1-|k|/2\)">\(1-|k|/2\)</span> for <span class="math" data-tex="\(|k|&lt;2\)">\(|k|&lt;2\)</span> and removes the others: <span class="math" data-tex="\(f_2(u)=\tfrac12\cos(2\pi u)\)">\(f_2(u)=\tfrac12\cos(2\pi u)\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(\cos(2\pi x_1)\cos(2\pi x_2)\)">\(\cos(2\pi x_1)\cos(2\pi x_2)\)</span> is a sum of the four characters with <span class="math" data-tex="\(k=(\pm1,\pm1)\)">\(k=(\pm1,\pm1)\)</span>, <span class="math" data-tex="\(|k|^2=2\)">\(|k|^2=2\)</span>, and <span class="math" data-tex="\(\sin(6\pi x_1)\)">\(\sin(6\pi x_1)\)</span> of the two with <span class="math" data-tex="\(k=(\pm3,0)\)">\(k=(\pm3,0)\)</span>, <span class="math" data-tex="\(|k|^2=9\)">\(|k|^2=9\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_tf={}&amp;e^{-8\pi^2t}\cos(2\pi x_1)\cos(2\pi x_2)\\
+&amp;+e^{-36\pi^2t}\sin(6\pi x_1),
+\end{aligned}
+\]">\[
+\begin{aligned}
+P_tf={}&amp;e^{-8\pi^2t}\cos(2\pi x_1)\cos(2\pi x_2)\\
+&amp;+e^{-36\pi^2t}\sin(6\pi x_1),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(E_{\{1\}}\)">\(E_{\{1\}}\)</span> keeps the characters with <span class="math" data-tex="\(k_2=0\)">\(k_2=0\)</span>: <span class="math" data-tex="\(E_{\{1\}}P_tf=e^{-36\pi^2t}\sin(6\pi x_1)\)">\(E_{\{1\}}P_tf=e^{-36\pi^2t}\sin(6\pi x_1)\)</span>.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(P_tf-\int f=\sum_{k\ne0}e^{-4\pi^2|k|^2t}c_ke_k\)">\(P_tf-\int f=\sum_{k\ne0}e^{-4\pi^2|k|^2t}c_ke_k\)</span>, and <span class="math" data-tex="\(|k|^2\ge1\)">\(|k|^2\ge1\)</span> for <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>. So the square of its norm is at most <span class="math" data-tex="\(e^{-8\pi^2t}\sum_{k\ne0}|c_k|^2\)">\(e^{-8\pi^2t}\sum_{k\ne0}|c_k|^2\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(f-\delta\ge0\)">\(f-\delta\ge0\)</span>, so <span class="math" data-tex="\(P_t(f-\delta)\ge0\)">\(P_t(f-\delta)\ge0\)</span> by Lemma 3.1(1), and <span class="math" data-tex="\(P_t\delta=\delta\)">\(P_t\delta=\delta\)</span>.</p>
+<p><strong>5.5.</strong> Fix <span class="math" data-tex="\(x\)">\(x\)</span>, and let <span class="math" data-tex="\(\sigma_n\)">\(\sigma_n\)</span> be <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(\partial_nf(x)\ge0\)">\(\partial_nf(x)\ge0\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise. For <span class="math" data-tex="\(0&lt;h&lt;\tfrac12\)">\(0&lt;h&lt;\tfrac12\)</span> the point <span class="math" data-tex="\(x+h\sigma\)">\(x+h\sigma\)</span> has the sup distance <span class="math" data-tex="\(h\)">\(h\)</span> from <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(f(x+h\sigma)-f(x)\le Lh\)">\(f(x+h\sigma)-f(x)\le Lh\)</span>. Divide by <span class="math" data-tex="\(h\)">\(h\)</span> and let <span class="math" data-tex="\(h\to0\)">\(h\to0\)</span>: the left side tends to <span class="math" data-tex="\(\sum_n\sigma_n\partial_nf(x)=\sum_n|\partial_nf(x)|\)">\(\sum_n\sigma_n\partial_nf(x)=\sum_n|\partial_nf(x)|\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Austin] T. Austin, <em>On the failure of concentration for the <span class="math" data-tex="\(\ell_\infty\)">\(\ell_\infty\)</span>-ball</em>, arXiv:1309.3315, version 4, Section 2. https://arxiv.org/abs/1309.3315</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

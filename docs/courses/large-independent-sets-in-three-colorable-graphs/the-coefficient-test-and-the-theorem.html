@@ -1,0 +1,301 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The coefficient test and the theorem</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Large independent sets in three-colorable graphs)</a><a href="order-invariant-arrays-and-the-common-index.html">Previous lesson</a><a href="src/the-coefficient-test-and-the-theorem.md">Editable source</a></nav><main><article><h1 id="the-coefficient-test-and-the-theorem">The coefficient test and the theorem</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson finishes the proof of the theorem of [OpenAI-I]: for every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> it is NP-hard to tell graphs with a proper coloring by three colors from graphs in which every independent set has fewer than <span class="math" data-tex="\(\delta\,|V|\)">\(\delta\,|V|\)</span> vertices. What is left is a bound for one chain and one set <span class="math" data-tex="\(B\)">\(B\)</span> of layers that are aligned: the vertex of the experiment then lies in a given independent set only with a small probability. The proof adds one auxiliary phase for every layer of <span class="math" data-tex="\(B\)">\(B\)</span> and studies the influence of these phases. A layer with the coefficient <span class="math" data-tex="\(0\)">\(0\)</span> has a small influence because of the alignment; a layer with a positive coefficient rarely has a large influence because the law of the coefficients falls geometrically; and a function without a coordinate of large influence has a small mean square.</p>
+<ul>
+<li>The bound for an aligned pair (Proposition 1.1), proved in Sections 2 to 5.</li>
+<li>The order in which the numbers of the construction are chosen (Section 6).</li>
+<li>The theorem (Theorem 7.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-I, Sections 6 and 7]. It uses all earlier lessons of the course: the graph (<a href="label-cover-and-the-graph-of-the-reduction.html">Label Cover and the graph of the reduction</a>), influences (<a href="lipschitz-functions-on-a-torus-extension-juntas-and-influences.html">Lipschitz functions on a torus: extension, juntas and influences</a>), the functions <span class="math" data-tex="\(F_{\mathbf q}\)">\(F_{\mathbf q}\)</span>, <span class="math" data-tex="\(h_{I,t}\)">\(h_{I,t}\)</span> and the lists (<a href="from-an-independent-set-to-lists-of-answers.html">From an independent set to lists of answers</a>), and aligned pairs (<a href="order-invariant-arrays-and-the-common-index.html">Order-invariant arrays and the common index</a>).</p>
+<h2 id="1-the-bound-for-an-aligned-pair">1. The bound for an aligned pair</h2>
+<p><strong>The setting.</strong> <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is a Label Cover instance; <span class="math" data-tex="\(r\ge s\ge2\)">\(r\ge s\ge2\)</span>, <span class="math" data-tex="\(m\)">\(m\)</span>, <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> are the numbers of the construction and <span class="math" data-tex="\(D=mP\)">\(D=mP\)</span>; the first branch does not occur; <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a nonempty independent set of <span class="math" data-tex="\(G(\mathcal C)\)">\(G(\mathcal C)\)</span>. The functions <span class="math" data-tex="\(F_{\mathbf q}\)">\(F_{\mathbf q}\)</span> are fixed as in the third lesson, and the lists are formed with a number <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>. Let <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and let <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span> and <span class="math" data-tex="\(K\ge1\)">\(K\ge1\)</span> be the numbers of Proposition 4.1 of the second lesson for the Lipschitz constant <span class="math" data-tex="\(64\)">\(64\)</span> and for <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p><strong>The conditions.</strong> Let <span class="math" data-tex="\(p_m\)">\(p_m\)</span> be the probability of the coefficient <span class="math" data-tex="\(1\)">\(1\)</span>. Assume</p>
+<ul>
+<li>(P1) <span class="math" data-tex="\(64/m&lt;\beta/2\)">\(64/m&lt;\beta/2\)</span>;</li>
+<li>(P2) <span class="math" data-tex="\(\lambda K&lt;\varepsilon\)">\(\lambda K&lt;\varepsilon\)</span>;</li>
+<li>(P3) <span class="math" data-tex="\((1-p_m)^s&lt;\varepsilon\)">\((1-p_m)^s&lt;\varepsilon\)</span>;</li>
+<li>(P4) <span class="math" data-tex="\(4s\gamma^2/\beta^2&lt;\varepsilon\)">\(4s\gamma^2/\beta^2&lt;\varepsilon\)</span>;</li>
+<li>(P5) <span class="math" data-tex="\(64/D&lt;\gamma\)">\(64/D&lt;\gamma\)</span>;</li>
+<li>(P6) <span class="math" data-tex="\(128\,s/P&lt;\varepsilon\)">\(128\,s/P&lt;\varepsilon\)</span>.</li>
+</ul>
+<p><strong>Proposition 1.1.</strong> Assume (P1) to (P6). Let a chain and a set <span class="math" data-tex="\(B\)">\(B\)</span> form an aligned pair. Then the probability that the vertex of the experiment lies in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, given this chain and this <span class="math" data-tex="\(B\)">\(B\)</span>, is less than <span class="math" data-tex="\(6\varepsilon\)">\(6\varepsilon\)</span>.</p>
+<p>Sections 2 to 5 prove this. <strong>Fix an aligned pair</strong> of a chain and a set <span class="math" data-tex="\(B\)">\(B\)</span>, and a map <span class="math" data-tex="\(a:M_r\to B\)">\(a:M_r\to B\)</span> with <span class="math" data-tex="\(a(A_I)\subset I\)">\(a(A_I)\subset I\)</span> for all nonempty <span class="math" data-tex="\(I\subset B\)">\(I\subset B\)</span>. Let <span class="math" data-tex="\(b=\min B\)">\(b=\min B\)</span>. The random objects are</p>
+<ul>
+<li>the coefficients <span class="math" data-tex="\(t=(t_j)_{j\in B}\)">\(t=(t_j)_{j\in B}\)</span>, independent with the law of the coefficients;</li>
+<li>real rotations <span class="math" data-tex="\(\theta=(\theta_{j,\ell})\)">\(\theta=(\theta_{j,\ell})\)</span>, <span class="math" data-tex="\(j\in B\)">\(j\in B\)</span>, <span class="math" data-tex="\(\ell\in M_j\)">\(\ell\in M_j\)</span>, independent and uniform in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>;</li>
+<li>auxiliary phases <span class="math" data-tex="\(z=(z_i)_{i\in B}\)">\(z=(z_i)_{i\in B}\)</span>, independent and uniform in <span class="math" data-tex="\(\mathbb T=[0,1)\)">\(\mathbb T=[0,1)\)</span>;</li>
+</ul>
+<p>all independent of each other. Means over them are written <span class="math" data-tex="\(\mathbb E_t\)">\(\mathbb E_t\)</span>, <span class="math" data-tex="\(\mathbb E_\theta\)">\(\mathbb E_\theta\)</span>, <span class="math" data-tex="\(\mathbb E_z\)">\(\mathbb E_z\)</span>. The auxiliary phases are not part of the experiment; they are removed again in Section 5.</p>
+<h2 id="2-auxiliary-phases">2. Auxiliary phases</h2>
+<p>For <span class="math" data-tex="\(\kappa\in M_b\)">\(\kappa\in M_b\)</span> put <span class="math" data-tex="\(\alpha(\kappa)=a(\pi_{br}(\kappa))\in B\)">\(\alpha(\kappa)=a(\pi_{br}(\kappa))\in B\)</span>. Define the family of phases <span class="math" data-tex="\(\Psi(t,\theta,z)\in\mathbb T^{M_b}\)">\(\Psi(t,\theta,z)\in\mathbb T^{M_b}\)</span> and the function <span class="math" data-tex="\(H\)">\(H\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Psi(t,\theta,z)_\kappa=z_{\alpha(\kappa)}+\sum_{j\in B}t_j\,\theta_{j,\pi_{bj}(\kappa)} ,\\
+H(t,\theta;z)=F_b\bigl(\Psi(t,\theta,z)\bigr),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Psi(t,\theta,z)_\kappa=z_{\alpha(\kappa)}+\sum_{j\in B}t_j\,\theta_{j,\pi_{bj}(\kappa)} ,\\
+H(t,\theta;z)=F_b\bigl(\Psi(t,\theta,z)\bigr),
+\end{gathered}
+\]</span>
+where the sum in the first line is read as a phase.
+Without the term <span class="math" data-tex="\(z_{\alpha(\kappa)}\)">\(z_{\alpha(\kappa)}\)</span> this is the family <span class="math" data-tex="\(\Phi_{B,t}(\theta)\)">\(\Phi_{B,t}(\theta)\)</span> of the third lesson. For fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the function <span class="math" data-tex="\(H\)">\(H\)</span> is continuous in <span class="math" data-tex="\((\theta,z)\)">\((\theta,z)\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For fixed <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, the function <span class="math" data-tex="\(z\mapsto H(t,\theta;z)\)">\(z\mapsto H(t,\theta;z)\)</span> on <span class="math" data-tex="\(\mathbb T^B\)">\(\mathbb T^B\)</span> has values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, is <span class="math" data-tex="\(64\)">\(64\)</span>-Lipschitz for the sup distance, and <span class="math" data-tex="\(\mathbb E_zH(t,\theta;z)=0\)">\(\mathbb E_zH(t,\theta;z)=0\)</span>.</p>
+<p><strong>Proof.</strong> Every phase of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> contains exactly one of the <span class="math" data-tex="\(z_i\)">\(z_i\)</span>, with the coefficient <span class="math" data-tex="\(1\)">\(1\)</span>. So <span class="math" data-tex="\(d_\infty(\Psi(t,\theta,z),\Psi(t,\theta,z&#x27;))\le d_\infty(z,z&#x27;)\)">\(d_\infty(\Psi(t,\theta,z),\Psi(t,\theta,z&#x27;))\le d_\infty(z,z&#x27;)\)</span>, and <span class="math" data-tex="\(F_b\)">\(F_b\)</span> is <span class="math" data-tex="\(64\)">\(64\)</span>-Lipschitz. If <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> is added to every <span class="math" data-tex="\(z_i\)">\(z_i\)</span>, then <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> is added to every phase of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>: <span class="math" data-tex="\(\Psi(t,\theta,Tz)=T\Psi(t,\theta,z)\)">\(\Psi(t,\theta,Tz)=T\Psi(t,\theta,z)\)</span>. Since <span class="math" data-tex="\(F_b\)">\(F_b\)</span> is odd, <span class="math" data-tex="\(H(t,\theta;Tz)=-H(t,\theta;z)\)">\(H(t,\theta;Tz)=-H(t,\theta;z)\)</span>. The map <span class="math" data-tex="\(z\mapsto Tz\)">\(z\mapsto Tz\)</span> preserves the Lebesgue measure, so <span class="math" data-tex="\(\mathbb E_zH=-\mathbb E_zH\)">\(\mathbb E_zH=-\mathbb E_zH\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For <span class="math" data-tex="\(i\in B\)">\(i\in B\)</span> let <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> be the operator of the second lesson for the coordinate <span class="math" data-tex="\(z_i\)">\(z_i\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_i(t,\theta)=\bigl\|Q_iH(t,\theta;\cdot)\bigr\|_2,\\
+X(t,\theta)=\mathbb E_z\,H(t,\theta;z)^2 ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+D_i(t,\theta)=\bigl\|Q_iH(t,\theta;\cdot)\bigr\|_2,\\
+X(t,\theta)=\mathbb E_z\,H(t,\theta;z)^2 ,
+\end{gathered}
+\]</span>
+with the norm of the functions of <span class="math" data-tex="\(z\)">\(z\)</span>. By Lemma 2.1 and Proposition 4.1 of the second lesson, applied to the <span class="math" data-tex="\(s\)">\(s\)</span> coordinates <span class="math" data-tex="\(z_i\)">\(z_i\)</span>, for all <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>:</p>
+<ul>
+<li>(2.1) if <span class="math" data-tex="\(X(t,\theta)&gt;\varepsilon\)">\(X(t,\theta)&gt;\varepsilon\)</span>, then <span class="math" data-tex="\(D_i(t,\theta)\ge\beta\)">\(D_i(t,\theta)\ge\beta\)</span> for some <span class="math" data-tex="\(i\in B\)">\(i\in B\)</span>;</li>
+<li>(2.2) at most <span class="math" data-tex="\(K\)">\(K\)</span> indices <span class="math" data-tex="\(i\in B\)">\(i\in B\)</span> have <span class="math" data-tex="\(D_i(t,\theta)\ge\beta/2\)">\(D_i(t,\theta)\ge\beta/2\)</span>.</li>
+</ul>
+<p>Both numbers <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span> do not depend on <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<h2 id="3-layers-with-the-coefficient-0">3. Layers with the coefficient 0</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(t\)">\(t\)</span> be such that <span class="math" data-tex="\(t_j=1\)">\(t_j=1\)</span> for some <span class="math" data-tex="\(j\in B\)">\(j\in B\)</span>, and let <span class="math" data-tex="\(i\in B\)">\(i\in B\)</span> have <span class="math" data-tex="\(t_i=0\)">\(t_i=0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\mathbb E_\theta\,D_i(t,\theta)^2&lt;4\gamma^2 .
+\]">\[
+\mathbb E_\theta\,D_i(t,\theta)^2&lt;4\gamma^2 .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(I=B\setminus\{i\}\)">\(I=B\setminus\{i\}\)</span>; it contains <span class="math" data-tex="\(j\)">\(j\)</span>. Let <span class="math" data-tex="\(c=\min I\ge b\)">\(c=\min I\ge b\)</span> and <span class="math" data-tex="\(t&#x27;=(t_k)_{k\in I}\)">\(t&#x27;=(t_k)_{k\in I}\)</span>. Recall the function <span class="math" data-tex="\(h_{I,t&#x27;}=F_c\circ\Phi_{I,t&#x27;}\)">\(h_{I,t&#x27;}=F_c\circ\Phi_{I,t&#x27;}\)</span> of the rotations of the layers in <span class="math" data-tex="\(I\)">\(I\)</span>, and the function <span class="math" data-tex="\(g_{I,t&#x27;}\)">\(g_{I,t&#x27;}\)</span> with <span class="math" data-tex="\(\|h_{I,t&#x27;}-g_{I,t&#x27;}\|_2&lt;\gamma\)">\(\|h_{I,t&#x27;}-g_{I,t&#x27;}\|_2&lt;\gamma\)</span> that depends only on the rotations <span class="math" data-tex="\(\theta_{k,\ell}\)">\(\theta_{k,\ell}\)</span> with <span class="math" data-tex="\(\ell\in S_I^k\)">\(\ell\in S_I^k\)</span> (Lemma 4.1 of the third lesson).</p>
+<p><em>Shifted rotations.</em> For given <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span> define rotations <span class="math" data-tex="\(\theta&#x27;\)">\(\theta&#x27;\)</span> of the layers in <span class="math" data-tex="\(I\)">\(I\)</span>: for <span class="math" data-tex="\(\ell\in M_j\)">\(\ell\in M_j\)</span>, and for <span class="math" data-tex="\(k\in I\)">\(k\in I\)</span> with <span class="math" data-tex="\(k\ne j\)">\(k\ne j\)</span> and <span class="math" data-tex="\(\ell\in M_k\)">\(\ell\in M_k\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\theta&#x27;_{j,\ell}=\theta_{j,\ell}+z_{a(\pi_{jr}(\ell))}\ \bmod1,\\
+\theta&#x27;_{k,\ell}=\theta_{k,\ell},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\theta&#x27;_{j,\ell}=\theta_{j,\ell}+z_{a(\pi_{jr}(\ell))}\ \bmod1,\\
+\theta&#x27;_{k,\ell}=\theta_{k,\ell},
+\end{gathered}
+\]</span>
+with representatives in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. Only the layer <span class="math" data-tex="\(j\)">\(j\)</span> is changed.</p>
+<p><em>Step 1: an identity.</em> For every <span class="math" data-tex="\(\kappa\in M_b\)">\(\kappa\in M_b\)</span>,
+<span class="math math-display" data-tex="\[
+\Phi_{I,t&#x27;}(\theta&#x27;)_{\pi_{bc}(\kappa)}=\Psi(t,\theta,z)_\kappa .
+\]">\[
+\Phi_{I,t&#x27;}(\theta&#x27;)_{\pi_{bc}(\kappa)}=\Psi(t,\theta,z)_\kappa .
+\]</span>
+Indeed, since <span class="math" data-tex="\(\pi_{ck}\circ\pi_{bc}=\pi_{bk}\)">\(\pi_{ck}\circ\pi_{bc}=\pi_{bk}\)</span>, the left side is the phase of <span class="math" data-tex="\(\sum_{k\in I}t_k\theta&#x27;_{k,\pi_{bk}(\kappa)}\)">\(\sum_{k\in I}t_k\theta&#x27;_{k,\pi_{bk}(\kappa)}\)</span>. The term with <span class="math" data-tex="\(k=j\)">\(k=j\)</span> has the coefficient <span class="math" data-tex="\(1\)">\(1\)</span> and is the phase
+<span class="math math-display" data-tex="\[
+\theta_{j,\pi_{bj}(\kappa)}+z_{a(\pi_{jr}(\pi_{bj}(\kappa)))}=\theta_{j,\pi_{bj}(\kappa)}+z_{\alpha(\kappa)} ,
+\]">\[
+\theta_{j,\pi_{bj}(\kappa)}+z_{a(\pi_{jr}(\pi_{bj}(\kappa)))}=\theta_{j,\pi_{bj}(\kappa)}+z_{\alpha(\kappa)} ,
+\]</span>
+because <span class="math" data-tex="\(\pi_{jr}\circ\pi_{bj}=\pi_{br}\)">\(\pi_{jr}\circ\pi_{bj}=\pi_{br}\)</span>. The other terms are those of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, and the term of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> with <span class="math" data-tex="\(k=i\)">\(k=i\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>. So <span class="math" data-tex="\(\Psi(t,\theta,z)=\Phi_{I,t&#x27;}(\theta&#x27;)\circ\pi_{bc}\)">\(\Psi(t,\theta,z)=\Phi_{I,t&#x27;}(\theta&#x27;)\circ\pi_{bc}\)</span>.</p>
+<p><em>Step 2: from the layer <span class="math" data-tex="\(b\)">\(b\)</span> to the layer <span class="math" data-tex="\(c\)">\(c\)</span>.</em> By Step 1, <span class="math" data-tex="\(H(t,\theta;z)=F_b(x\circ\pi_{bc})\)">\(H(t,\theta;z)=F_b(x\circ\pi_{bc})\)</span> with <span class="math" data-tex="\(x=\Phi_{I,t&#x27;}(\theta&#x27;)\)">\(x=\Phi_{I,t&#x27;}(\theta&#x27;)\)</span>, while <span class="math" data-tex="\(h_{I,t&#x27;}(\theta&#x27;)=F_c(x)\)">\(h_{I,t&#x27;}(\theta&#x27;)=F_c(x)\)</span>. By the compatibility of the functions <span class="math" data-tex="\(F\)">\(F\)</span> along a chain (Lemma 2.1 of the third lesson) and (P5),
+<span class="math math-display" data-tex="\[
+\bigl|H(t,\theta;z)-h_{I,t&#x27;}(\theta&#x27;)\bigr|\le\frac{64}D&lt;\gamma .
+\]">\[
+\bigl|H(t,\theta;z)-h_{I,t&#x27;}(\theta&#x27;)\bigr|\le\frac{64}D&lt;\gamma .
+\]</span></p>
+<p><em>Step 3: the shift preserves the measure.</em> For fixed <span class="math" data-tex="\(z\)">\(z\)</span>, the map <span class="math" data-tex="\(\theta\mapsto\theta&#x27;\)">\(\theta\mapsto\theta&#x27;\)</span> adds a fixed phase to every rotation of the layer <span class="math" data-tex="\(j\)">\(j\)</span> and leaves the other rotations of the layers in <span class="math" data-tex="\(I\)">\(I\)</span> unchanged. Such a map preserves the Lebesgue measure of the cube. So for every <span class="math" data-tex="\(z\)">\(z\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E_\theta\bigl(h_{I,t&#x27;}(\theta&#x27;)&amp;-g_{I,t&#x27;}(\theta&#x27;)\bigr)^2\\
+&amp;=\|h_{I,t&#x27;}-g_{I,t&#x27;}\|_2^2&lt;\gamma^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E_\theta\bigl(h_{I,t&#x27;}(\theta&#x27;)&amp;-g_{I,t&#x27;}(\theta&#x27;)\bigr)^2\\
+&amp;=\|h_{I,t&#x27;}-g_{I,t&#x27;}\|_2^2&lt;\gamma^2 .
+\end{aligned}
+\]</span></p>
+<p><em>Step 4: the alignment.</em> The function <span class="math" data-tex="\((\theta,z)\mapsto g_{I,t&#x27;}(\theta&#x27;)\)">\((\theta,z)\mapsto g_{I,t&#x27;}(\theta&#x27;)\)</span> does not depend on <span class="math" data-tex="\(z_i\)">\(z_i\)</span>. Indeed, <span class="math" data-tex="\(g_{I,t&#x27;}\)">\(g_{I,t&#x27;}\)</span> depends only on the rotations <span class="math" data-tex="\(\theta&#x27;_{k,\ell}\)">\(\theta&#x27;_{k,\ell}\)</span> with <span class="math" data-tex="\(\ell\in S_I^k\)">\(\ell\in S_I^k\)</span>. For <span class="math" data-tex="\(k\ne j\)">\(k\ne j\)</span> these do not contain <span class="math" data-tex="\(z\)">\(z\)</span>. For <span class="math" data-tex="\(k=j\)">\(k=j\)</span> and <span class="math" data-tex="\(\ell\in S_I^j\)">\(\ell\in S_I^j\)</span>, the rotation <span class="math" data-tex="\(\theta&#x27;_{j,\ell}\)">\(\theta&#x27;_{j,\ell}\)</span> contains the phase <span class="math" data-tex="\(z_{a(\pi_{jr}(\ell))}\)">\(z_{a(\pi_{jr}(\ell))}\)</span>, and <span class="math" data-tex="\(\pi_{jr}(\ell)\)">\(\pi_{jr}(\ell)\)</span> lies in the list <span class="math" data-tex="\(A_I\)">\(A_I\)</span>. Since the pair is aligned, <span class="math" data-tex="\(a(A_I)\subset I\)">\(a(A_I)\subset I\)</span>, so this is not the phase <span class="math" data-tex="\(z_i\)">\(z_i\)</span>.</p>
+<p><em>Step 5.</em> Consider <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(G=g_{I,t&#x27;}(\theta&#x27;)\)">\(G=g_{I,t&#x27;}(\theta&#x27;)\)</span> as bounded Borel functions of all the variables <span class="math" data-tex="\((\theta,z)\)">\((\theta,z)\)</span>, with the norm <span class="math" data-tex="\(\|\cdot\|\)">\(\|\cdot\|\)</span> of these functions, and <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> as the operator for the coordinate <span class="math" data-tex="\(z_i\)">\(z_i\)</span> among them. By Step 4, <span class="math" data-tex="\(Q_iG=0\)">\(Q_iG=0\)</span>. By Steps 2 and 3, <span class="math" data-tex="\(\|H-G\|&lt;\gamma+\gamma\)">\(\|H-G\|&lt;\gamma+\gamma\)</span>. Since <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> does not increase the norm,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E_\theta\,D_i(t,\theta)^2&amp;=\|Q_iH\|^2\\
+&amp;=\|Q_i(H-G)\|^2\\
+&amp;\le\|H-G\|^2&lt;4\gamma^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E_\theta\,D_i(t,\theta)^2&amp;=\|Q_iH\|^2\\
+&amp;=\|Q_i(H-G)\|^2\\
+&amp;\le\|H-G\|^2&lt;4\gamma^2 .
+\end{aligned}
+\]</span>
+The first equation is Fubini's theorem. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In Step 1 the coefficient <span class="math" data-tex="\(1\)">\(1\)</span> is essential. With a coefficient <span class="math" data-tex="\(t_j&lt;1\)">\(t_j&lt;1\)</span>, the product <span class="math" data-tex="\(t_j\theta&#x27;_{j,\ell}\)">\(t_j\theta&#x27;_{j,\ell}\)</span> is not the phase of <span class="math" data-tex="\(t_j\theta_{j,\ell}+t_jz\)">\(t_j\theta_{j,\ell}+t_jz\)</span> (Exercise 8.1), and the phase <span class="math" data-tex="\(z\)">\(z\)</span> would not enter with the coefficient <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Corollary 3.2.</strong> The probability, over <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, that some coefficient is <span class="math" data-tex="\(1\)">\(1\)</span> and some <span class="math" data-tex="\(i\in B\)">\(i\in B\)</span> has <span class="math" data-tex="\(t_i=0\)">\(t_i=0\)</span> and <span class="math" data-tex="\(D_i(t,\theta)\ge\beta\)">\(D_i(t,\theta)\ge\beta\)</span>, is at most <span class="math" data-tex="\(4s\gamma^2/\beta^2&lt;\varepsilon\)">\(4s\gamma^2/\beta^2&lt;\varepsilon\)</span>.</p>
+<p><strong>Proof.</strong> For a fixed <span class="math" data-tex="\(t\)">\(t\)</span> with some coefficient <span class="math" data-tex="\(1\)">\(1\)</span> and a fixed <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(t_i=0\)">\(t_i=0\)</span>, Lemma 3.1 and Markov's inequality give <span class="math" data-tex="\(\Pr_\theta(D_i\ge\beta)\le4\gamma^2/\beta^2\)">\(\Pr_\theta(D_i\ge\beta)\le4\gamma^2/\beta^2\)</span>. There are at most <span class="math" data-tex="\(s\)">\(s\)</span> such <span class="math" data-tex="\(i\)">\(i\)</span>. Take the mean over <span class="math" data-tex="\(t\)">\(t\)</span>, and use (P4). <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-layers-with-a-positive-coefficient">4. Layers with a positive coefficient</h2>
+<p><strong>Lemma 4.1.</strong> The probability, over <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, that some <span class="math" data-tex="\(i\in B\)">\(i\in B\)</span> has <span class="math" data-tex="\(t_i&gt;0\)">\(t_i&gt;0\)</span> and <span class="math" data-tex="\(D_i(t,\theta)\ge\beta\)">\(D_i(t,\theta)\ge\beta\)</span>, is at most <span class="math" data-tex="\(\lambda K&lt;\varepsilon\)">\(\lambda K&lt;\varepsilon\)</span>.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(i\in B\)">\(i\in B\)</span>, the rotations <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and the coefficients <span class="math" data-tex="\(t_j\)">\(t_j\)</span>, <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>. For <span class="math" data-tex="\(0\le k\le m\)">\(0\le k\le m\)</span> let <span class="math" data-tex="\(H_k\)">\(H_k\)</span> be the function <span class="math" data-tex="\(z\mapsto H(t,\theta;z)\)">\(z\mapsto H(t,\theta;z)\)</span> with <span class="math" data-tex="\(t_i=k/m\)">\(t_i=k/m\)</span>, and <span class="math" data-tex="\(d_k=\|Q_iH_k\|_2\)">\(d_k=\|Q_iH_k\|_2\)</span>.</p>
+<p>Passing from <span class="math" data-tex="\(t_i=(k-1)/m\)">\(t_i=(k-1)/m\)</span> to <span class="math" data-tex="\(t_i=k/m\)">\(t_i=k/m\)</span> adds to every phase of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> the phase of <span class="math" data-tex="\(\theta_{i,\ell}/m\)">\(\theta_{i,\ell}/m\)</span> for some <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, a number in <span class="math" data-tex="\([0,\tfrac1m)\)">\([0,\tfrac1m)\)</span>. So the two families of phases have a sup distance of at most <span class="math" data-tex="\(\tfrac1m\)">\(\tfrac1m\)</span>, and <span class="math" data-tex="\(|H_k-H_{k-1}|\le64/m\)">\(|H_k-H_{k-1}|\le64/m\)</span> at every <span class="math" data-tex="\(z\)">\(z\)</span>. Since <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> does not increase the norm, and by (P1), for <span class="math" data-tex="\(1\le k\le m\)">\(1\le k\le m\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|d_k-d_{k-1}|&amp;\le\|Q_i(H_k-H_{k-1})\|_2\\
+&amp;\le\frac{64}m&lt;\frac\beta2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+|d_k-d_{k-1}|&amp;\le\|Q_i(H_k-H_{k-1})\|_2\\
+&amp;\le\frac{64}m&lt;\frac\beta2 .
+\end{aligned}
+\]</span>
+Hence <span class="math" data-tex="\(d_k\ge\beta\)">\(d_k\ge\beta\)</span> implies <span class="math" data-tex="\(d_{k-1}\ge\beta/2\)">\(d_{k-1}\ge\beta/2\)</span>. With <span class="math" data-tex="\(p_k=\lambda p_{k-1}\)">\(p_k=\lambda p_{k-1}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{k=1}^mp_k\,[d_k\ge\beta]&amp;\le\lambda\sum_{k=1}^mp_{k-1}\,[d_{k-1}\ge\tfrac\beta2]\\
+&amp;\le\lambda\sum_{h=0}^mp_h\,[d_h\ge\tfrac\beta2],
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{k=1}^mp_k\,[d_k\ge\beta]&amp;\le\lambda\sum_{k=1}^mp_{k-1}\,[d_{k-1}\ge\tfrac\beta2]\\
+&amp;\le\lambda\sum_{h=0}^mp_h\,[d_h\ge\tfrac\beta2],
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\([\,\cdot\,]\)">\([\,\cdot\,]\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> if the condition holds and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. In words: for fixed <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(t_j\)">\(t_j\)</span>, <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>,
+<span class="math math-display" data-tex="\[
+\Pr_{t_i}\bigl(t_i&gt;0,\ D_i\ge\beta\bigr)\le\lambda\,\Pr_{t_i}\bigl(D_i\ge\tfrac\beta2\bigr).
+\]">\[
+\Pr_{t_i}\bigl(t_i&gt;0,\ D_i\ge\beta\bigr)\le\lambda\,\Pr_{t_i}\bigl(D_i\ge\tfrac\beta2\bigr).
+\]</span>
+Take the mean over <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and the other coefficients, and add over <span class="math" data-tex="\(i\in B\)">\(i\in B\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Pr\bigl(\exists\,i:{}&amp;\ t_i&gt;0,\ D_i\ge\beta\bigr)\\
+&amp;\le\lambda\sum_{i\in B}\Pr\bigl(D_i\ge\tfrac\beta2\bigr)\\
+&amp;=\lambda\,\mathbb E\,\#\{i:D_i\ge\tfrac\beta2\}\le\lambda K ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Pr\bigl(\exists\,i:{}&amp;\ t_i&gt;0,\ D_i\ge\beta\bigr)\\
+&amp;\le\lambda\sum_{i\in B}\Pr\bigl(D_i\ge\tfrac\beta2\bigr)\\
+&amp;=\lambda\,\mathbb E\,\#\{i:D_i\ge\tfrac\beta2\}\le\lambda K ,
+\end{aligned}
+\]</span>
+by (2.2). The last inequality of the lemma is (P2). <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Lowering <span class="math" data-tex="\(t_i\)">\(t_i\)</span> by one step can remove the only coefficient <span class="math" data-tex="\(1\)">\(1\)</span>. This does no harm: (2.2) holds for all <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<h2 id="5-the-mean-square-and-the-vertices">5. The mean square and the vertices</h2>
+<p>Let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be the event that some coefficient <span class="math" data-tex="\(t_j\)">\(t_j\)</span>, <span class="math" data-tex="\(j\in B\)">\(j\in B\)</span>, is <span class="math" data-tex="\(1\)">\(1\)</span>. Its complement has the probability <span class="math" data-tex="\((1-p_m)^s&lt;\varepsilon\)">\((1-p_m)^s&lt;\varepsilon\)</span> by (P3).</p>
+<p><strong>Lemma 5.1.</strong> <span class="math" data-tex="\(\mathbb E_{t,\theta,z}\,H(t,\theta;z)^2&lt;4\varepsilon\)">\(\mathbb E_{t,\theta,z}\,H(t,\theta;z)^2&lt;4\varepsilon\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(X(t,\theta)&gt;\varepsilon\)">\(X(t,\theta)&gt;\varepsilon\)</span>. By (2.1) some <span class="math" data-tex="\(i\in B\)">\(i\in B\)</span> has <span class="math" data-tex="\(D_i(t,\theta)\ge\beta\)">\(D_i(t,\theta)\ge\beta\)</span>. Then <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> fails, or <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> holds and <span class="math" data-tex="\(t_i=0\)">\(t_i=0\)</span>, or <span class="math" data-tex="\(t_i&gt;0\)">\(t_i&gt;0\)</span>. By (P3), Corollary 3.2 and Lemma 4.1 each of the three cases has a probability of less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. So <span class="math" data-tex="\(\Pr(X&gt;\varepsilon)&lt;3\varepsilon\)">\(\Pr(X&gt;\varepsilon)&lt;3\varepsilon\)</span>, and since <span class="math" data-tex="\(0\le X\le1\)">\(0\le X\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E_{t,\theta}X\le\varepsilon+\Pr(X&gt;\varepsilon)&lt;4\varepsilon .
+\]">\[
+\mathbb E_{t,\theta}X\le\varepsilon+\Pr(X&gt;\varepsilon)&lt;4\varepsilon .
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 5.2</strong> (the phases are absorbed). For every <span class="math" data-tex="\(t\)">\(t\)</span> in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E_{\theta,z}\,H(t,\theta;z)^2=\mathbb E_\theta\,F_b\bigl(\Phi_{B,t}(\theta)\bigr)^2 .
+\]">\[
+\mathbb E_{\theta,z}\,H(t,\theta;z)^2=\mathbb E_\theta\,F_b\bigl(\Phi_{B,t}(\theta)\bigr)^2 .
+\]</span></p>
+<p><strong>Proof.</strong> Take <span class="math" data-tex="\(j\in B\)">\(j\in B\)</span> with <span class="math" data-tex="\(t_j=1\)">\(t_j=1\)</span>, and let <span class="math" data-tex="\(\theta&#x27;&#x27;\)">\(\theta&#x27;&#x27;\)</span> be <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with the rotations of the layer <span class="math" data-tex="\(j\)">\(j\)</span> shifted: <span class="math" data-tex="\(\theta&#x27;&#x27;_{j,\ell}=\theta_{j,\ell}+z_{a(\pi_{jr}(\ell))}\bmod1\)">\(\theta&#x27;&#x27;_{j,\ell}=\theta_{j,\ell}+z_{a(\pi_{jr}(\ell))}\bmod1\)</span>. As in Step 1 of Lemma 3.1, now with all layers of <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(\Phi_{B,t}(\theta&#x27;&#x27;)=\Psi(t,\theta,z)\)">\(\Phi_{B,t}(\theta&#x27;&#x27;)=\Psi(t,\theta,z)\)</span>, so <span class="math" data-tex="\(H(t,\theta;z)=F_b(\Phi_{B,t}(\theta&#x27;&#x27;))\)">\(H(t,\theta;z)=F_b(\Phi_{B,t}(\theta&#x27;&#x27;))\)</span>. For every fixed <span class="math" data-tex="\(z\)">\(z\)</span> the map <span class="math" data-tex="\(\theta\mapsto\theta&#x27;&#x27;\)">\(\theta\mapsto\theta&#x27;&#x27;\)</span> preserves the Lebesgue measure, so <span class="math" data-tex="\(\mathbb E_\theta H(t,\theta;z)^2=\mathbb E_\theta F_b(\Phi_{B,t}(\theta))^2\)">\(\mathbb E_\theta H(t,\theta;z)^2=\mathbb E_\theta F_b(\Phi_{B,t}(\theta))^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proof of Proposition 1.1.</strong> By Lemmas 5.2 and 5.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E_{t,\theta}\Bigl([t\in\mathcal F]\,F_b\bigl(\Phi_{B,t}(\theta)\bigr)^2\Bigr)&amp;\le\mathbb E_{t,\theta,z}H^2\\
+&amp;&lt;4\varepsilon .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E_{t,\theta}\Bigl([t\in\mathcal F]\,F_b\bigl(\Phi_{B,t}(\theta)\bigr)^2\Bigr)&amp;\le\mathbb E_{t,\theta,z}H^2\\
+&amp;&lt;4\varepsilon .
+\end{aligned}
+\]</span>
+<em>From real rotations to the rotations of the experiment.</em> Put
+<span class="math math-display" data-tex="\[
+\widehat\theta_{j,\ell}=\frac{\lfloor P\,\theta_{j,\ell}\rfloor}P .
+\]">\[
+\widehat\theta_{j,\ell}=\frac{\lfloor P\,\theta_{j,\ell}\rfloor}P .
+\]</span>
+If the <span class="math" data-tex="\(\theta_{j,\ell}\)">\(\theta_{j,\ell}\)</span> are independent and uniform in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, the <span class="math" data-tex="\(\widehat\theta_{j,\ell}\)">\(\widehat\theta_{j,\ell}\)</span> are independent and uniform in <span class="math" data-tex="\(\{0,\tfrac1P,\dots,\tfrac{P-1}P\}\)">\(\{0,\tfrac1P,\dots,\tfrac{P-1}P\}\)</span>, as in the experiment. Every rotation changes by less than <span class="math" data-tex="\(\tfrac1P\)">\(\tfrac1P\)</span>, so every phase of <span class="math" data-tex="\(\Phi_{B,t}\)">\(\Phi_{B,t}\)</span> changes by the phase of a number of absolute value at most <span class="math" data-tex="\(\sum_jt_j/P\le s/P\)">\(\sum_jt_j/P\le s/P\)</span>. For numbers <span class="math" data-tex="\(u,v\in[-1,1]\)">\(u,v\in[-1,1]\)</span>, <span class="math" data-tex="\(|u^2-v^2|\le2|u-v|\)">\(|u^2-v^2|\le2|u-v|\)</span>. With (P6),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bigl|F_b(\Phi_{B,t}(\theta))^2-{}&amp;F_b(\Phi_{B,t}(\widehat\theta))^2\bigr|\\
+&amp;\le2\cdot64\cdot\frac sP&lt;\varepsilon .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\bigl|F_b(\Phi_{B,t}(\theta))^2-{}&amp;F_b(\Phi_{B,t}(\widehat\theta))^2\bigr|\\
+&amp;\le2\cdot64\cdot\frac sP&lt;\varepsilon .
+\end{aligned}
+\]</span>
+Together with <span class="math" data-tex="\(\Pr(t\notin\mathcal F)&lt;\varepsilon\)">\(\Pr(t\notin\mathcal F)&lt;\varepsilon\)</span> and <span class="math" data-tex="\(F_b^2\le1\)">\(F_b^2\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E_{t,\widehat\theta}\,F_b\bigl(\Phi_{B,t}(\widehat\theta)\bigr)^2&lt;\varepsilon+(4\varepsilon+\varepsilon)=6\varepsilon .
+\]">\[
+\mathbb E_{t,\widehat\theta}\,F_b\bigl(\Phi_{B,t}(\widehat\theta)\bigr)^2&lt;\varepsilon+(4\varepsilon+\varepsilon)=6\varepsilon .
+\]</span>
+<em>The vertices.</em> Given the chain and <span class="math" data-tex="\(B\)">\(B\)</span>, the outcome of the experiment consists of <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(\widehat\theta\)">\(\widehat\theta\)</span> with the laws used here, and its location is the point <span class="math" data-tex="\(\xi=(\mathbf q_b,\Phi_{B,t}(\widehat\theta))\)">\(\xi=(\mathbf q_b,\Phi_{B,t}(\widehat\theta))\)</span> of <span class="math" data-tex="\(\mathscr X\)">\(\mathscr X\)</span>. There <span class="math" data-tex="\(F_b\)">\(F_b\)</span> agrees with the function <span class="math" data-tex="\(f\)">\(f\)</span> of the independent set: <span class="math" data-tex="\(F_b(\Phi_{B,t}(\widehat\theta))=f(\xi)\)">\(F_b(\Phi_{B,t}(\widehat\theta))=f(\xi)\)</span>. If the vertex of the experiment, a copy of the outcome, lies in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, then <span class="math" data-tex="\(\xi\in A\)">\(\xi\in A\)</span> and <span class="math" data-tex="\(f(\xi)=1\)">\(f(\xi)=1\)</span>. So the probability that the vertex lies in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is at most the mean of <span class="math" data-tex="\(f(\xi)^2\)">\(f(\xi)^2\)</span>, which is less than <span class="math" data-tex="\(6\varepsilon\)">\(6\varepsilon\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="6-the-numbers">6. The numbers</h2>
+<p>Let <span class="math" data-tex="\(\delta\)">\(\delta\)</span> be a rational number with <span class="math" data-tex="\(0&lt;\delta&lt;\tfrac13\)">\(0&lt;\delta&lt;\tfrac13\)</span>. The numbers are chosen in the following order; each choice is possible and depends only on the earlier ones.</p>
+<ol>
+<li>A rational <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> with <span class="math" data-tex="\(0&lt;\varepsilon&lt;\delta/8\)">\(0&lt;\varepsilon&lt;\delta/8\)</span>.</li>
+<li>The numbers <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span> and <span class="math" data-tex="\(K\ge1\)">\(K\ge1\)</span> of Proposition 4.1 of the second lesson for the Lipschitz constant <span class="math" data-tex="\(64\)">\(64\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</li>
+<li>An integer <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> with <span class="math" data-tex="\(64/m&lt;\beta/2\)">\(64/m&lt;\beta/2\)</span>. This is (P1).</li>
+<li>A rational <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span> and <span class="math" data-tex="\(\lambda K&lt;\varepsilon\)">\(\lambda K&lt;\varepsilon\)</span>. This is (P2). The law of the coefficients is fixed by <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and <span class="math" data-tex="\(p_m&gt;0\)">\(p_m&gt;0\)</span>.</li>
+<li>An integer <span class="math" data-tex="\(s\ge2\)">\(s\ge2\)</span> with <span class="math" data-tex="\((1-p_m)^s&lt;\varepsilon\)">\((1-p_m)^s&lt;\varepsilon\)</span>. This is (P3).</li>
+<li>A number <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span> with <span class="math" data-tex="\(4s\gamma^2/\beta^2&lt;\varepsilon\)">\(4s\gamma^2/\beta^2&lt;\varepsilon\)</span>. This is (P4).</li>
+<li>An even integer <span class="math" data-tex="\(P\ge2\)">\(P\ge2\)</span> with <span class="math" data-tex="\(64/(mP)&lt;\gamma\)">\(64/(mP)&lt;\gamma\)</span> and <span class="math" data-tex="\(128\,s/P&lt;\varepsilon\)">\(128\,s/P&lt;\varepsilon\)</span>. These are (P5) and (P6); <span class="math" data-tex="\(D=mP\)">\(D=mP\)</span>.</li>
+<li>The bound <span class="math" data-tex="\(d=J(64s,\gamma)\,(m+1)^s\)">\(d=J(64s,\gamma)\,(m+1)^s\)</span> for the lists.</li>
+<li>The integer <span class="math" data-tex="\(r\ge s\)">\(r\ge s\)</span> and the law <span class="math" data-tex="\(\mu\)">\(\mu\)</span> with rational values that the alignment theorem gives for <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(\eta=\varepsilon\)">\(\eta=\varepsilon\)</span>.</li>
+<li>A number <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span> with <span class="math" data-tex="\(4^rd^2\sigma&lt;\varepsilon\)">\(4^rd^2\sigma&lt;\varepsilon\)</span>.</li>
+<li>The sets of answers <span class="math" data-tex="\(\Sigma_L\)">\(\Sigma_L\)</span>, <span class="math" data-tex="\(\Sigma_R\)">\(\Sigma_R\)</span> and the map <span class="math" data-tex="\(\varphi\mapsto\mathcal C_\varphi\)">\(\varphi\mapsto\mathcal C_\varphi\)</span> of Theorem 2.1 of the first lesson for this <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>; and <span class="math" data-tex="\(k_\delta=\lfloor1/\delta\rfloor+1\)">\(k_\delta=\lfloor1/\delta\rfloor+1\)</span>.</li>
+</ol>
+<p>The order matters at three places. The numbers <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span> do not depend on the number <span class="math" data-tex="\(s\)">\(s\)</span> of the coordinates, so <span class="math" data-tex="\(s\)">\(s\)</span> can be chosen after them, and it depends on them through <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The bound <span class="math" data-tex="\(d\)">\(d\)</span> for the lists does not depend on the number <span class="math" data-tex="\(r\)">\(r\)</span> of the layers, so the alignment theorem can be applied after <span class="math" data-tex="\(d\)">\(d\)</span> is known. And no number depends on the sizes of the sets of answers, which are chosen last and can be very large when <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is small.</p>
+<p>The numbers <span class="math" data-tex="\(r,s,m,P,\lambda,\mu,k_\delta\)">\(r,s,m,P,\lambda,\mu,k_\delta\)</span> and the sets of answers are constants of the map <span class="math" data-tex="\(\varphi\mapsto G_\varphi\)">\(\varphi\mapsto G_\varphi\)</span> for the given <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The proof shows that suitable constants exist. It gives no bound for them, because the alignment theorem gives none for <span class="math" data-tex="\(r\)">\(r\)</span>. The numbers <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, <span class="math" data-tex="\(d\)">\(d\)</span>, <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, the functions <span class="math" data-tex="\(F_{\mathbf q}\)">\(F_{\mathbf q}\)</span>, the lists and the maps <span class="math" data-tex="\(a\)">\(a\)</span> occur only in the proof.</p>
+<h2 id="7-the-theorem">7. The theorem</h2>
+<p><strong>Theorem 7.1</strong> ([OpenAI-I]). Assume (PCP) and (PR). For every real number <span class="math" data-tex="\(\delta\)">\(\delta\)</span> with <span class="math" data-tex="\(0&lt;\delta&lt;\tfrac13\)">\(0&lt;\delta&lt;\tfrac13\)</span> there is a map, computable in polynomial time, from Boolean formulas <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> in conjunctive normal form with three literals per clause to graphs <span class="math" data-tex="\(G_\varphi\)">\(G_\varphi\)</span> such that</p>
+<ul>
+<li>if <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is satisfiable, then <span class="math" data-tex="\(G_\varphi\)">\(G_\varphi\)</span> has a proper coloring with three colors;</li>
+<li>if <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is not satisfiable, then every independent set of <span class="math" data-tex="\(G_\varphi\)">\(G_\varphi\)</span> has fewer than <span class="math" data-tex="\(\delta\,|V(G_\varphi)|\)">\(\delta\,|V(G_\varphi)|\)</span> vertices.</li>
+</ul>
+<p><strong>Proof.</strong> As noted in the first lesson, we may take <span class="math" data-tex="\(\delta\)">\(\delta\)</span> rational. Choose the numbers as in Section 6, and let <span class="math" data-tex="\(G_\varphi=G(\mathcal C_\varphi)\)">\(G_\varphi=G(\mathcal C_\varphi)\)</span> be the graph of the first lesson for the instance <span class="math" data-tex="\(\mathcal C_\varphi\)">\(\mathcal C_\varphi\)</span>. It is computed in polynomial time: the instance by Theorem 2.1 of the first lesson, the graph from the instance by Proposition 4.2 there.</p>
+<p><em><span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> satisfiable.</em> Then <span class="math" data-tex="\(\operatorname{val}(\mathcal C_\varphi)=1\)">\(\operatorname{val}(\mathcal C_\varphi)=1\)</span>, and by Theorem 5.2 of the first lesson the graph has a proper coloring with three colors.</p>
+<p><em><span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> not satisfiable.</em> Then <span class="math" data-tex="\(\operatorname{val}(\mathcal C_\varphi)\le\sigma\)">\(\operatorname{val}(\mathcal C_\varphi)\le\sigma\)</span>. In the first branch the graph is the complete graph on <span class="math" data-tex="\(k_\delta\)">\(k_\delta\)</span> vertices; its independent sets have one vertex, and <span class="math" data-tex="\(1&lt;\delta k_\delta\)">\(1&lt;\delta k_\delta\)</span>. Otherwise let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be an independent set; we may assume that it is not empty. Form the functions <span class="math" data-tex="\(F_{\mathbf q}\)">\(F_{\mathbf q}\)</span> and the lists for <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, with the number <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. A vertex drawn uniformly is a copy of the outcome of the experiment. By Proposition 4.1 of the previous lesson and the choice of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, the pair of the chain and the set <span class="math" data-tex="\(B\)">\(B\)</span> of the experiment fails to be aligned with a probability of at most
+<span class="math math-display" data-tex="\[
+4^rd^2\sigma+\varepsilon&lt;2\varepsilon .
+\]">\[
+4^rd^2\sigma+\varepsilon&lt;2\varepsilon .
+\]</span>
+For every aligned pair, Proposition 1.1 bounds the probability that the vertex lies in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> by <span class="math" data-tex="\(6\varepsilon\)">\(6\varepsilon\)</span>; its conditions (P1) to (P6) hold by the choice of the numbers. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{|\mathcal A|}{|V(G_\varphi)|}&amp;=\Pr\bigl(\text{the vertex lies in }\mathcal A\bigr)\\
+&amp;&lt;2\varepsilon+6\varepsilon=8\varepsilon&lt;\delta .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{|\mathcal A|}{|V(G_\varphi)|}&amp;=\Pr\bigl(\text{the vertex lies in }\mathcal A\bigr)\\
+&amp;&lt;2\varepsilon+6\varepsilon=8\varepsilon&lt;\delta .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>What the proof rests on.</strong> Two theorems of the literature are hypotheses of this course and are not proved in it: (PCP) and (PR), the PCP theorem and the parallel repetition theorem, which give the Label Cover instances of value <span class="math" data-tex="\(1\)">\(1\)</span> or at most <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> (first lesson, Theorem 2.1).</p>
+<p>The theorem of T. Austin that a function on a cube that is Lipschitz for the sup distance is close to a function of a bounded number of coordinates (Theorem (J) of the second lesson) is used twice: for the numbers <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span>, and for the lists. It is proved in <a href="../hypercontractivity-on-a-torus-and-juntas/lipschitz-functions-are-close-to-juntas.html">Lipschitz functions are close to juntas</a> (Hypercontractivity on a torus and juntas for Lipschitz functions).</p>
+<p>Everything else is proved in the six lessons, including the minimax theorem and Ramsey's theorem, which enter the alignment theorem.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>8.1.</strong> Let <span class="math" data-tex="\(t_j=\tfrac12\)">\(t_j=\tfrac12\)</span>, <span class="math" data-tex="\(\theta=0.6\)">\(\theta=0.6\)</span>, <span class="math" data-tex="\(z=0.6\)">\(z=0.6\)</span>, and let <span class="math" data-tex="\(\theta&#x27;\)">\(\theta&#x27;\)</span> be the representative of <span class="math" data-tex="\(\theta+z\)">\(\theta+z\)</span> in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. Compare the phases of <span class="math" data-tex="\(t_j\theta&#x27;\)">\(t_j\theta&#x27;\)</span> and of <span class="math" data-tex="\(t_j\theta+t_jz\)">\(t_j\theta+t_jz\)</span>. What is the phase of <span class="math" data-tex="\(t_j\theta&#x27;-t_j\theta\)">\(t_j\theta&#x27;-t_j\theta\)</span> for <span class="math" data-tex="\(t_j=1\)">\(t_j=1\)</span>?</p>
+<p><strong>8.2.</strong> Let <span class="math" data-tex="\(m=2\)">\(m=2\)</span> and <span class="math" data-tex="\(\lambda=\tfrac12\)">\(\lambda=\tfrac12\)</span>. Compute the law of the coefficients, and find the least <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\((1-p_m)^s&lt;\tfrac1{100}\)">\((1-p_m)^s&lt;\tfrac1{100}\)</span>.</p>
+<p><strong>8.3.</strong> Show that <span class="math" data-tex="\(D_i(t,\theta)=0\)">\(D_i(t,\theta)=0\)</span> if <span class="math" data-tex="\(i\)">\(i\)</span> is not a value of the map <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Conclude that in (2.1) the layer <span class="math" data-tex="\(i\)">\(i\)</span> can be taken in the image of <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><strong>8.4.</strong> In the proof of Lemma 3.1, which steps use that <span class="math" data-tex="\(t_i=0\)">\(t_i=0\)</span>, that <span class="math" data-tex="\(t_j=1\)">\(t_j=1\)</span>, and that the pair is aligned? What does the argument give for a pair that is not aligned?</p>
+<p><strong>8.5.</strong> Suppose that the law of the coefficients were uniform on <span class="math" data-tex="\(\{0,\tfrac1m,\dots,1\}\)">\(\{0,\tfrac1m,\dots,1\}\)</span>. Which statement of Section 4 would the same argument give, and why is it not enough?</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>8.1.</strong> <span class="math" data-tex="\(\theta+z=1.2\)">\(\theta+z=1.2\)</span>, so <span class="math" data-tex="\(\theta&#x27;=0.2\)">\(\theta&#x27;=0.2\)</span> and <span class="math" data-tex="\(t_j\theta&#x27;=0.1\)">\(t_j\theta&#x27;=0.1\)</span>. But <span class="math" data-tex="\(t_j\theta+t_jz=0.6\)">\(t_j\theta+t_jz=0.6\)</span>. The two phases differ by <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>. The reason is that <span class="math" data-tex="\(\theta&#x27;=\theta+z-1\)">\(\theta&#x27;=\theta+z-1\)</span>, and <span class="math" data-tex="\(t_j\cdot1=\tfrac12\)">\(t_j\cdot1=\tfrac12\)</span> is not an integer. For <span class="math" data-tex="\(t_j=1\)">\(t_j=1\)</span> the difference <span class="math" data-tex="\(\theta&#x27;-\theta\)">\(\theta&#x27;-\theta\)</span> is <span class="math" data-tex="\(z\)">\(z\)</span> or <span class="math" data-tex="\(z-1\)">\(z-1\)</span>, and its phase is <span class="math" data-tex="\(z\)">\(z\)</span>, for every <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><strong>8.2.</strong> <span class="math" data-tex="\(1+\lambda+\lambda^2=\tfrac74\)">\(1+\lambda+\lambda^2=\tfrac74\)</span>, so <span class="math" data-tex="\(p_0=\tfrac47\)">\(p_0=\tfrac47\)</span>, <span class="math" data-tex="\(p_1=\tfrac27\)">\(p_1=\tfrac27\)</span>, <span class="math" data-tex="\(p_2=\tfrac17\)">\(p_2=\tfrac17\)</span>. <span class="math" data-tex="\((\tfrac67)^s&lt;\tfrac1{100}\)">\((\tfrac67)^s&lt;\tfrac1{100}\)</span> means <span class="math" data-tex="\(s&gt;\log100/\log\tfrac76\approx29.9\)">\(s&gt;\log100/\log\tfrac76\approx29.9\)</span>. The least <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\(30\)">\(30\)</span>.</p>
+<p><strong>8.3.</strong> If no <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> has <span class="math" data-tex="\(\alpha(\kappa)=i\)">\(\alpha(\kappa)=i\)</span>, no phase of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> contains <span class="math" data-tex="\(z_i\)">\(z_i\)</span>, so <span class="math" data-tex="\(H\)">\(H\)</span> does not depend on <span class="math" data-tex="\(z_i\)">\(z_i\)</span> and <span class="math" data-tex="\(Q_iH=0\)">\(Q_iH=0\)</span>. Every value of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a value of <span class="math" data-tex="\(a\)">\(a\)</span>. In (2.1) the index <span class="math" data-tex="\(i\)">\(i\)</span> has <span class="math" data-tex="\(D_i\ge\beta&gt;0\)">\(D_i\ge\beta&gt;0\)</span>, so it is a value of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p><strong>8.4.</strong> Step 1 uses <span class="math" data-tex="\(t_i=0\)">\(t_i=0\)</span> (the term of the layer <span class="math" data-tex="\(i\)">\(i\)</span> is missing in <span class="math" data-tex="\(\Phi_{I,t&#x27;}\)">\(\Phi_{I,t&#x27;}\)</span>) and <span class="math" data-tex="\(t_j=1\)">\(t_j=1\)</span> (the shift of the layer <span class="math" data-tex="\(j\)">\(j\)</span> produces exactly the phase <span class="math" data-tex="\(z_{\alpha(\kappa)}\)">\(z_{\alpha(\kappa)}\)</span>). Step 4 uses the alignment. Without it, Steps 1 to 3 still show that <span class="math" data-tex="\(H\)">\(H\)</span> is within <span class="math" data-tex="\(2\gamma\)">\(2\gamma\)</span> of <span class="math" data-tex="\(G=g_{I,t&#x27;}(\theta&#x27;)\)">\(G=g_{I,t&#x27;}(\theta&#x27;)\)</span> in the norm, but <span class="math" data-tex="\(G\)">\(G\)</span> may depend on <span class="math" data-tex="\(z_i\)">\(z_i\)</span> through a rotation <span class="math" data-tex="\(\theta&#x27;_{j,\ell}\)">\(\theta&#x27;_{j,\ell}\)</span> with <span class="math" data-tex="\(\ell\in S_I^j\)">\(\ell\in S_I^j\)</span> and <span class="math" data-tex="\(a(\pi_{jr}(\ell))=i\)">\(a(\pi_{jr}(\ell))=i\)</span>; then <span class="math" data-tex="\(Q_iG\ne0\)">\(Q_iG\ne0\)</span> is possible and nothing follows for <span class="math" data-tex="\(D_i\)">\(D_i\)</span>.</p>
+<p><strong>8.5.</strong> With <span class="math" data-tex="\(p_k=p_{k-1}\)">\(p_k=p_{k-1}\)</span> the same steps give <span class="math" data-tex="\(\Pr(t_i&gt;0,\ D_i\ge\beta)\le\Pr(D_i\ge\beta/2)\)">\(\Pr(t_i&gt;0,\ D_i\ge\beta)\le\Pr(D_i\ge\beta/2)\)</span> and, after adding over <span class="math" data-tex="\(i\)">\(i\)</span>, the bound <span class="math" data-tex="\(K\)">\(K\)</span> for the expected number of layers with <span class="math" data-tex="\(t_i&gt;0\)">\(t_i&gt;0\)</span> and <span class="math" data-tex="\(D_i\ge\beta\)">\(D_i\ge\beta\)</span>. This is the bound (2.2) again and says nothing about the probability, which must be small. The factor <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of the geometric law is what makes it small. The price is that the coefficient <span class="math" data-tex="\(1\)">\(1\)</span> has the small probability <span class="math" data-tex="\(p_m\)">\(p_m\)</span>, and this is made up for by the number <span class="math" data-tex="\(s\)">\(s\)</span> of the layers.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-I] OpenAI, <em>Hardness of finding large independent sets in three-colorable graphs</em>, OpenAI Math Release preprint, 24 September 2026, Sections 6 and 7. https://github.com/openai/math/tree/main/preprints/Hardness-of-finding-large-independent-sets-in-three-colorable-graphs-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

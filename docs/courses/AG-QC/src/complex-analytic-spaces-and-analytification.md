@@ -8,7 +8,7 @@ Throughout, \(X\) is a scheme locally of finite type over \(\mathbf C\). It may 
 
 ## 1. Analytic equations and their sheaves
 
-For an open set \(W\subset\mathbf C^n\), let \(\mathcal O_W\) be the sheaf of holomorphic functions. Iterated Cauchy integrals on polydiscs give Taylor expansions; see [Holomorphic functions of several variables, Theorems 1.2 and 2.1](../../complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html#1-polydiscs-and-the-definition-of-holomorphy) for the integral and coefficient proofs. Demailly's freely available *Complex Analytic and Differential Geometry* is additional reading. At the origin its stalk is
+For an open set \(W\subset\mathbf C^n\), let \(\mathcal O_W\) be the sheaf of holomorphic functions. Iterated Cauchy integrals on polydiscs give Taylor expansions; see Holomorphic functions of several variables, Theorems 1.2 and 2.1 for the integral and coefficient proofs. Demailly's freely available *Complex Analytic and Differential Geometry* is additional reading. At the origin its stalk is
 
 \[
 H_n=\mathbf C\{z_1,\ldots,z_n\},
@@ -67,7 +67,7 @@ P=w^r+a_1(z')w^{r-1}+\cdots+a_r(z'),\qquad a_j\in H_{n-1},\quad a_j(0)=0 .
 
 Moreover, every \(g\in H_n\) can be written in exactly one way as \(g=fq+R\), with \(q\in H_n\) and \(R\in H_{n-1}[w]\) of degree less than \(r\) in \(w\).
 
-**Proof.** Holomorphy in several variables means continuity together with holomorphy in each variable separately, as in [Holomorphic functions of several variables, Definition 1.1](../../complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html#1-polydiscs-and-the-definition-of-holomorphy). The one-variable facts used below are proved in [Cauchy's theorem for cycles and its consequences](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html): interchange of integrals over compact parameter intervals ([Lemma 0.1](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-07)), Goursat's theorem, Cauchy's theorem and Cauchy's formula on discs ([Theorems 2.1–2.3](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-02)), and Taylor expansion, Morera's theorem and the identity theorem ([Theorems 3.2, 3.4 and 3.7](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-03)).
+**Proof.** Holomorphy in several variables means continuity together with holomorphy in each variable separately, as in Holomorphic functions of several variables, Definition 1.1. The one-variable facts used below are proved in [Cauchy's theorem for cycles and its consequences](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html): interchange of integrals over compact parameter intervals ([Lemma 0.1](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-07)), Goursat's theorem, Cauchy's theorem and Cauchy's formula on discs ([Theorems 2.1–2.3](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-02)), and Taylor expansion, Morera's theorem and the identity theorem ([Theorems 3.2, 3.4 and 3.7](../../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-03)).
 
 If \(r=0\), then \(f\) is a unit; take \(P=1\), \(u=f\), \(q=g/f\) and \(R=0\). Let \(r\geq1\).
 

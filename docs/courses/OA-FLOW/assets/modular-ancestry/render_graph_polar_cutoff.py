@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-plt.rcParams["svg.hashsalt"] = "oa-flow-modular-ancestry-20261009-v1"
+plt.rcParams["svg.hashsalt"] = "oa-flow-modular-ancestry-20261013-v2"
 from matplotlib.ticker import FixedLocator, FixedFormatter
 
 out = Path(__file__).resolve().parent / "assets"
@@ -12,8 +12,8 @@ out.mkdir(exist_ok=True)
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 12,
                     "axes.titlesize": 15, "axes.labelsize": 12,
                     "svg.fonttype": "none"})
-fig = plt.figure(figsize=(13.5, 8.3), layout="constrained", facecolor="#fbfcfe")
-grid = fig.add_gridspec(2, 2, height_ratios=[3.2, 1.2])
+fig = plt.figure(figsize=(13.5, 12.1), layout="constrained", facecolor="#fbfcfe")
+grid = fig.add_gridspec(3, 2, height_ratios=[3.2, 2.6, 1.2])
 ax = fig.add_subplot(grid[0,0])
 t = np.linspace(.04,.96,2000)
 ax.plot(t,(1-t)/t,color="#1f589e",linewidth=2.6,label=r"$L(t)=(1-t)/t$")
@@ -54,7 +54,28 @@ ax.legend(loc="lower center",frameon=True,facecolor="white",framealpha=.92)
 ax.grid(alpha=.14,which="both")
 ax.spines[["top","right"]].set_visible(False)
 
-ax=fig.add_subplot(grid[1,:]);ax.axis("off")
+
+ax=fig.add_subplot(grid[1,0])
+for n,c in zip([1,4,16],colors):
+    chi=x*x/((x*x+1/n)*(1+x*x/n))
+    ax.plot(x,chi**2,color=c,linewidth=2.4,label=rf"$\chi_{{{n}}}(t)^2$")
+ax.set_xscale("log",base=2);ax.set_xlim(1/10,10);ax.set_ylim(-.04,1.04)
+ax.xaxis.set_major_locator(FixedLocator(ticks))
+ax.xaxis.set_major_formatter(FixedFormatter(["1/8","1/4","1/2","1","2","4","8"]))
+ax.set_xlabel(r"Positive spectral parameter $t$ of $h$ or $k$")
+ax.set_ylabel("Squared resolvent regularizer")
+ax.set_title("C. Resolvent pairs already give a graph core\nHA-R5, (HR-R1)–(HR-R4)",loc="left",pad=17)
+ax.legend(loc="upper right",frameon=False);ax.grid(alpha=.14,which="both")
+ax.spines[["top","right"]].set_visible(False)
+ax=fig.add_subplot(grid[1,1]);ax.axis("off")
+ax.set_title("D. The adjoint pairing proves membership\nHA-R5, (HR-R2)–(HR-R3)",loc="left",pad=17)
+ax.text(.01,.97,r"$\chi_n(t)=\dfrac{t^2}{(t^2+1/n)(1+t^2/n)}$",fontsize=17,va="top",color="#24466e")
+ax.text(.01,.70,r"$R_a^*c=\chi_n(k)\eta\in\mathcal{D}$",fontsize=17,va="top",color="#28664f")
+ax.text(.01,.50,r"$F(R_a^*c)=R_c^*a=\chi_n(h)F\eta$",fontsize=16,va="top",color="#28664f")
+ax.text(.01,.30,r"$\chi_n(k)\in R(\mathcal{D})\ \Longrightarrow\ \chi_n(k)^2\eta\in\mathcal{D}^2$",fontsize=14.5,va="top",color="#28664f")
+ax.text(.01,.11,"The graph converges in both coordinates.\nThe zero spectral subspaces contribute no mass.",fontsize=11.5,va="top",color="#4d596c")
+
+ax=fig.add_subplot(grid[2,:]);ax.axis("off")
 ax.text(.015,.95,r"$V=D(S),\quad U:V\to H,\quad R=j^*j,\quad U R^{1/2}=j,\quad J=UKU^*,\quad\Delta=ULU^*$",
         fontsize=16,va="top",color="#24466e")
 ax.text(.015,.67,r"$D(\Delta^{1/2})=D(S),\qquad S=J\Delta^{1/2},\qquad J\Delta J=\Delta^{-1}$",

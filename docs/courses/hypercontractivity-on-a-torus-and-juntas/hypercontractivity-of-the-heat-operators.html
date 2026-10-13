@@ -1,0 +1,224 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hypercontractivity of the heat operators</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Hypercontractivity on a torus and juntas for Lipschitz functions)</a><a href="a-logarithmic-sobolev-inequality-on-the-circle.html">Previous lesson</a><a href="lipschitz-functions-are-close-to-juntas.html">Next lesson</a><a href="src/hypercontractivity-of-the-heat-operators.md">Editable source</a></nav><main><article><h1 id="hypercontractivity-of-the-heat-operators">Hypercontractivity of the heat operators</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The heat operators <span class="math" data-tex="\(P_t\)">\(P_t\)</span> do not increase any of the norms <span class="math" data-tex="\(\|\cdot\|_p\)">\(\|\cdot\|_p\)</span>. This lesson proves more: <span class="math" data-tex="\(P_t\)">\(P_t\)</span> maps functions with a finite norm <span class="math" data-tex="\(\|\cdot\|_p\)">\(\|\cdot\|_p\)</span> to functions whose norm <span class="math" data-tex="\(\|\cdot\|_q\)">\(\|\cdot\|_q\)</span>, for an exponent <span class="math" data-tex="\(q&gt;p\)">\(q&gt;p\)</span> that depends on <span class="math" data-tex="\(t\)">\(t\)</span>, is not larger, with the constant <span class="math" data-tex="\(1\)">\(1\)</span>. This is <em>hypercontractivity</em>. The constant <span class="math" data-tex="\(1\)">\(1\)</span> is what allows the passage from the circle to a torus of any dimension without a loss. The proof on the circle differentiates the norm along the heat equation and uses the logarithmic Sobolev inequality of the previous lesson; this method is due to L. Gross.</p>
+<ul>
+<li>Hypercontractivity on the circle (Theorem 1.1).</li>
+<li>An inequality for norms in two groups of variables (Lemma 2.1) and hypercontractivity on a torus (Theorem 2.2).</li>
+<li>The form used in the last lesson (Corollary 3.1).</li>
+</ul>
+<p>The lesson uses the heat operators and the Fejér means of <a href="trigonometric-polynomials-and-the-heat-operators.html">Trigonometric polynomials and the heat operators on a torus</a>, and Theorem 5.1 of <a href="a-logarithmic-sobolev-inequality-on-the-circle.html">A logarithmic Sobolev inequality on the circle</a>, with its constant <span class="math" data-tex="\(c_0=\tfrac74\)">\(c_0=\tfrac74\)</span>. It needs Hölder's inequality and Fubini's theorem (<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">core course <em>Measure and Integration</em></a>). For the place of the inequality in the proof of the main theorem see [Austin, Section 2].</p>
+<h2 id="1-the-circle">1. The circle</h2>
+<p><strong>Theorem 1.1.</strong> Let <span class="math" data-tex="\(1&lt;p\le q&lt;\infty\)">\(1&lt;p\le q&lt;\infty\)</span> and <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> with
+<span class="math math-display" data-tex="\[
+\frac{q-1}{p-1}\le e^{4t/c_0} .
+\]">\[
+\frac{q-1}{p-1}\le e^{4t/c_0} .
+\]</span>
+Then <span class="math" data-tex="\(\|P_tf\|_q\le\|f\|_p\)">\(\|P_tf\|_q\le\|f\|_p\)</span> for every real continuous function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. In particular
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|P_tf\|_2\le\|f\|_{p(t)},\\
+p(t)=1+e^{-4t/c_0} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|P_tf\|_2\le\|f\|_{p(t)},\\
+p(t)=1+e^{-4t/c_0} .
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> <em>Step 1: a trigonometric polynomial with <span class="math" data-tex="\(f\ge\delta&gt;0\)">\(f\ge\delta&gt;0\)</span>, and equality in the condition.</em> Let <span class="math" data-tex="\(T\ge0\)">\(T\ge0\)</span> be the number with <span class="math" data-tex="\(q-1=(p-1)e^{4T/c_0}\)">\(q-1=(p-1)e^{4T/c_0}\)</span>, and for <span class="math" data-tex="\(0\le t\le T\)">\(0\le t\le T\)</span> put
+<span class="math math-display" data-tex="\[
+q(t)=1+(p-1)\,e^{4t/c_0} .
+\]">\[
+q(t)=1+(p-1)\,e^{4t/c_0} .
+\]</span>
+Then <span class="math" data-tex="\(q&#x27;(t)=4\,(q(t)-1)/c_0\)">\(q&#x27;(t)=4\,(q(t)-1)/c_0\)</span>.
+Let <span class="math" data-tex="\(u(t,x)=P_tf(x)\)">\(u(t,x)=P_tf(x)\)</span>. By Corollary 3.3 of the first lesson, <span class="math" data-tex="\(u\)">\(u\)</span> is infinitely differentiable in <span class="math" data-tex="\((t,x)\)">\((t,x)\)</span> and <span class="math" data-tex="\(\partial_tu=\partial_x^2u\)">\(\partial_tu=\partial_x^2u\)</span>; and <span class="math" data-tex="\(u\ge\delta\)">\(u\ge\delta\)</span>, because <span class="math" data-tex="\(P_t(f-\delta)\ge0\)">\(P_t(f-\delta)\ge0\)</span>. Hence <span class="math" data-tex="\((t,x)\mapsto u(t,x)^{q(t)}\)">\((t,x)\mapsto u(t,x)^{q(t)}\)</span> is continuously differentiable, and
+<span class="math math-display" data-tex="\[
+\Lambda(t)=\int_0^1u(t,x)^{q(t)}\,dx
+\]">\[
+\Lambda(t)=\int_0^1u(t,x)^{q(t)}\,dx
+\]</span>
+can be differentiated under the integral. Write <span class="math" data-tex="\(q,q&#x27;,u\)">\(q,q&#x27;,u\)</span> for <span class="math" data-tex="\(q(t),q&#x27;(t),u(t,\cdot)\)">\(q(t),q&#x27;(t),u(t,\cdot)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\Lambda&#x27;=q&#x27;\int u^q\log u+q\int u^{q-1}\,\partial_tu .
+\]">\[
+\Lambda&#x27;=q&#x27;\int u^q\log u+q\int u^{q-1}\,\partial_tu .
+\]</span>
+With the heat equation and an integration by parts over a period,
+<span class="math math-display" data-tex="\[
+\int u^{q-1}\partial_x^2u=-(q-1)\int u^{q-2}(\partial_xu)^2 .
+\]">\[
+\int u^{q-1}\partial_x^2u=-(q-1)\int u^{q-2}(\partial_xu)^2 .
+\]</span>
+Let <span class="math" data-tex="\(v=u^{q/2}\)">\(v=u^{q/2}\)</span>, a continuously differentiable positive function with <span class="math" data-tex="\(v^2=u^q\)">\(v^2=u^q\)</span> and <span class="math" data-tex="\((\partial_xv)^2=\tfrac{q^2}4u^{q-2}(\partial_xu)^2\)">\((\partial_xv)^2=\tfrac{q^2}4u^{q-2}(\partial_xu)^2\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+q\,\Lambda&#x27;={}&amp;q&#x27;\int v^2\log v^2\\
+&amp;-4(q-1)\int(\partial_xv)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+q\,\Lambda&#x27;={}&amp;q&#x27;\int v^2\log v^2\\
+&amp;-4(q-1)\int(\partial_xv)^2 .
+\end{aligned}
+\]</span>
+Now let <span class="math" data-tex="\(\mathcal N(t)=\Lambda(t)^{1/q(t)}=\|P_tf\|_{q(t)}\)">\(\mathcal N(t)=\Lambda(t)^{1/q(t)}=\|P_tf\|_{q(t)}\)</span>. From <span class="math" data-tex="\(\log\mathcal N=\tfrac1q\log\Lambda\)">\(\log\mathcal N=\tfrac1q\log\Lambda\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;q^2\Lambda\,\frac{\mathcal N&#x27;}{\mathcal N}=q\Lambda&#x27;-q&#x27;\Lambda\log\Lambda\\
+&amp;\quad=q&#x27;\operatorname{Ent}(v^2)-4(q-1)\int(\partial_xv)^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;q^2\Lambda\,\frac{\mathcal N&#x27;}{\mathcal N}=q\Lambda&#x27;-q&#x27;\Lambda\log\Lambda\\
+&amp;\quad=q&#x27;\operatorname{Ent}(v^2)-4(q-1)\int(\partial_xv)^2 ,
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(\Lambda=\int v^2\)">\(\Lambda=\int v^2\)</span>. By the logarithmic Sobolev inequality, <span class="math" data-tex="\(\operatorname{Ent}(v^2)\le c_0\int(\partial_xv)^2\)">\(\operatorname{Ent}(v^2)\le c_0\int(\partial_xv)^2\)</span>, and <span class="math" data-tex="\(q&#x27;\ge0\)">\(q&#x27;\ge0\)</span>. So the right side is at most
+<span class="math math-display" data-tex="\[
+\bigl(q&#x27;c_0-4(q-1)\bigr)\int(\partial_xv)^2=0 .
+\]">\[
+\bigl(q&#x27;c_0-4(q-1)\bigr)\int(\partial_xv)^2=0 .
+\]</span>
+Hence <span class="math" data-tex="\(\mathcal N&#x27;\le0\)">\(\mathcal N&#x27;\le0\)</span> on <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>, and <span class="math" data-tex="\(\|P_Tf\|_q=\mathcal N(T)\le\mathcal N(0)=\|f\|_p\)">\(\|P_Tf\|_q=\mathcal N(T)\le\mathcal N(0)=\|f\|_p\)</span>.</p>
+<p><em>Step 2: the same <span class="math" data-tex="\(f\)">\(f\)</span>, and <span class="math" data-tex="\(t\ge T\)">\(t\ge T\)</span>.</em> By Step 1 and since <span class="math" data-tex="\(P_{t-T}\)">\(P_{t-T}\)</span> does not increase the norm <span class="math" data-tex="\(\|\cdot\|_q\)">\(\|\cdot\|_q\)</span> (Lemma 3.1 and Corollary 3.3 of the first lesson), <span class="math" data-tex="\(\|P_tf\|_q=\|P_{t-T}P_Tf\|_q\le\|P_Tf\|_q\)">\(\|P_tf\|_q=\|P_{t-T}P_Tf\|_q\le\|P_Tf\|_q\)</span>, and this is at most <span class="math" data-tex="\(\|f\|_p\)">\(\|f\|_p\)</span>. So the theorem holds for trigonometric polynomials <span class="math" data-tex="\(f\ge\delta&gt;0\)">\(f\ge\delta&gt;0\)</span>.</p>
+<p><em>Step 3: a continuous function <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span>.</em> Let <span class="math" data-tex="\(f_m\)">\(f_m\)</span> be the Fejér means of <span class="math" data-tex="\(f\)">\(f\)</span>. By Lemma 2.2 of the first lesson, <span class="math" data-tex="\(f_m\)">\(f_m\)</span> is a real trigonometric polynomial with <span class="math" data-tex="\(f_m\ge0\)">\(f_m\ge0\)</span>, and <span class="math" data-tex="\(f_m\to f\)">\(f_m\to f\)</span> uniformly. For <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, Step 2 gives <span class="math" data-tex="\(\|P_t(f_m+\delta)\|_q\le\|f_m+\delta\|_p\)">\(\|P_t(f_m+\delta)\|_q\le\|f_m+\delta\|_p\)</span>. Since <span class="math" data-tex="\(\sup|P_th|\le\sup|h|\)">\(\sup|P_th|\le\sup|h|\)</span>, also <span class="math" data-tex="\(P_tf_m\to P_tf\)">\(P_tf_m\to P_tf\)</span> uniformly. Let <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span> and then <span class="math" data-tex="\(\delta\to0\)">\(\delta\to0\)</span>: <span class="math" data-tex="\(\|P_tf\|_q\le\|f\|_p\)">\(\|P_tf\|_q\le\|f\|_p\)</span>.</p>
+<p><em>Step 4: a real continuous function.</em> <span class="math" data-tex="\(|P_tf|\le P_t|f|\)">\(|P_tf|\le P_t|f|\)</span>, and <span class="math" data-tex="\(|f|\)">\(|f|\)</span> is continuous and <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>. So <span class="math" data-tex="\(\|P_tf\|_q\le\|P_t|f|\|_q\le\|f\|_p\)">\(\|P_tf\|_q\le\|P_t|f|\|_q\le\|f\|_p\)</span>.</p>
+<p>The last statement is the case <span class="math" data-tex="\(q=2\)">\(q=2\)</span>: then <span class="math" data-tex="\((q-1)/(p-1)=e^{4t/c_0}\)">\((q-1)/(p-1)=e^{4t/c_0}\)</span> for <span class="math" data-tex="\(p=p(t)\)">\(p=p(t)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The condition of the theorem is not the best possible one. Exercise 4.2 shows that <span class="math" data-tex="\((q-1)/(p-1)\le e^{8\pi^2t}\)">\((q-1)/(p-1)\le e^{8\pi^2t}\)</span> is necessary.</p>
+<h2 id="2-several-coordinates">2. Several coordinates</h2>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(1\le p\le2\)">\(1\le p\le2\)</span>, and let <span class="math" data-tex="\(h\)">\(h\)</span> be a real continuous function on <span class="math" data-tex="\(\mathbb T^a\times\mathbb T^b\)">\(\mathbb T^a\times\mathbb T^b\)</span>, with the points <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int\Bigl(\int|h(x,y)|^p\,dx\Bigr)^{2/p}dy\\
+&amp;\qquad\le\Bigl(\int\Bigl(\int|h(x,y)|^2\,dy\Bigr)^{p/2}dx\Bigr)^{2/p} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int\Bigl(\int|h(x,y)|^p\,dx\Bigr)^{2/p}dy\\
+&amp;\qquad\le\Bigl(\int\Bigl(\int|h(x,y)|^2\,dy\Bigr)^{p/2}dx\Bigr)^{2/p} .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(r=2/p\ge1\)">\(r=2/p\ge1\)</span>, <span class="math" data-tex="\(k=|h|^p\)">\(k=|h|^p\)</span> and <span class="math" data-tex="\(G(y)=\int k(x,y)\,dx\)">\(G(y)=\int k(x,y)\,dx\)</span>. The claim is
+<span class="math math-display" data-tex="\[
+\|G\|_r\le\int\|k(x,\cdot)\|_r\,dx ,
+\]">\[
+\|G\|_r\le\int\|k(x,\cdot)\|_r\,dx ,
+\]</span>
+with the norms of functions of <span class="math" data-tex="\(y\)">\(y\)</span>: the left side of the lemma is <span class="math" data-tex="\(\|G\|_r^r\)">\(\|G\|_r^r\)</span>, and <span class="math" data-tex="\(\|k(x,\cdot)\|_r=(\int|h(x,y)|^2dy)^{p/2}\)">\(\|k(x,\cdot)\|_r=(\int|h(x,y)|^2dy)^{p/2}\)</span>. For <span class="math" data-tex="\(r=1\)">\(r=1\)</span> the claim is Fubini's theorem. Let <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span> and <span class="math" data-tex="\(r&#x27;=r/(r-1)\)">\(r&#x27;=r/(r-1)\)</span>. If <span class="math" data-tex="\(\|G\|_r=0\)">\(\|G\|_r=0\)</span> there is nothing to prove. Otherwise let <span class="math" data-tex="\(\psi=G^{r-1}/\|G\|_r^{r-1}\)">\(\psi=G^{r-1}/\|G\|_r^{r-1}\)</span>. Then <span class="math" data-tex="\(\psi\ge0\)">\(\psi\ge0\)</span>, <span class="math" data-tex="\(\int\psi^{r&#x27;}=1\)">\(\int\psi^{r&#x27;}=1\)</span> and <span class="math" data-tex="\(\int G\psi=\|G\|_r\)">\(\int G\psi=\|G\|_r\)</span>. By Fubini's theorem and Hölder's inequality,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|G\|_r&amp;=\int\!\!\int k(x,y)\,\psi(y)\,dy\,dx\\
+&amp;\le\int\|k(x,\cdot)\|_r\,\|\psi\|_{r&#x27;}\,dx\\
+&amp;=\int\|k(x,\cdot)\|_r\,dx .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|G\|_r&amp;=\int\!\!\int k(x,y)\,\psi(y)\,dy\,dx\\
+&amp;\le\int\|k(x,\cdot)\|_r\,\|\psi\|_{r&#x27;}\,dx\\
+&amp;=\int\|k(x,\cdot)\|_r\,dx .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Theorem 2.2</strong> (hypercontractivity on a torus). Let <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> and <span class="math" data-tex="\(p=1+e^{-4t/c_0}\)">\(p=1+e^{-4t/c_0}\)</span>. Then for every real continuous function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span>
+<span class="math math-display" data-tex="\[
+\|P_tf\|_2\le\|f\|_p .
+\]">\[
+\|P_tf\|_2\le\|f\|_p .
+\]</span></p>
+<p><strong>Proof.</strong> By induction on <span class="math" data-tex="\(N\)">\(N\)</span>; the case <span class="math" data-tex="\(N=1\)">\(N=1\)</span> is Theorem 1.1. Let <span class="math" data-tex="\(N\ge2\)">\(N\ge2\)</span>, and write the points of <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span> as <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> with <span class="math" data-tex="\(x\in\mathbb T\)">\(x\in\mathbb T\)</span> and <span class="math" data-tex="\(y\in\mathbb T^{N-1}\)">\(y\in\mathbb T^{N-1}\)</span>. By Lemma 3.1(4) of the first lesson, <span class="math" data-tex="\(P_t=P_t&#x27;P_t&#x27;&#x27;\)">\(P_t=P_t&#x27;P_t&#x27;&#x27;\)</span>, where <span class="math" data-tex="\(P_t&#x27;\)">\(P_t&#x27;\)</span> acts on <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(P_t&#x27;&#x27;\)">\(P_t&#x27;&#x27;\)</span> on <span class="math" data-tex="\(y\)">\(y\)</span>. Let <span class="math" data-tex="\(h=P_t&#x27;&#x27;f\)">\(h=P_t&#x27;&#x27;f\)</span>, a continuous function.</p>
+<p>For every fixed <span class="math" data-tex="\(y\)">\(y\)</span>, <span class="math" data-tex="\(P_tf(\cdot,y)=P_t&#x27;\bigl(h(\cdot,y)\bigr)\)">\(P_tf(\cdot,y)=P_t&#x27;\bigl(h(\cdot,y)\bigr)\)</span>, and Theorem 1.1 gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int|P_tf(x,y)|^2&amp;\,dx\\
+&amp;\le\Bigl(\int|h(x,y)|^p\,dx\Bigr)^{2/p} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int|P_tf(x,y)|^2&amp;\,dx\\
+&amp;\le\Bigl(\int|h(x,y)|^p\,dx\Bigr)^{2/p} .
+\end{aligned}
+\]</span>
+Integrate over <span class="math" data-tex="\(y\)">\(y\)</span> and apply Lemma 2.1:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|P_tf\|_2^2\\
+&amp;\quad\le\Bigl(\int\Bigl(\int|h(x,y)|^2\,dy\Bigr)^{p/2}dx\Bigr)^{2/p} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|P_tf\|_2^2\\
+&amp;\quad\le\Bigl(\int\Bigl(\int|h(x,y)|^2\,dy\Bigr)^{p/2}dx\Bigr)^{2/p} .
+\end{aligned}
+\]</span>
+For every fixed <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(h(x,\cdot)=P_t&#x27;&#x27;\bigl(f(x,\cdot)\bigr)\)">\(h(x,\cdot)=P_t&#x27;&#x27;\bigl(f(x,\cdot)\bigr)\)</span> with the heat operator on <span class="math" data-tex="\(\mathbb T^{N-1}\)">\(\mathbb T^{N-1}\)</span>, and the induction hypothesis gives
+<span class="math math-display" data-tex="\[
+\Bigl(\int|h(x,y)|^2\,dy\Bigr)^{p/2}\le\int|f(x,y)|^p\,dy .
+\]">\[
+\Bigl(\int|h(x,y)|^2\,dy\Bigr)^{p/2}\le\int|f(x,y)|^p\,dy .
+\]</span>
+So <span class="math" data-tex="\(\|P_tf\|_2^2\le\bigl(\int\!\!\int|f|^p\,dy\,dx\bigr)^{2/p}=\|f\|_p^2\)">\(\|P_tf\|_2^2\le\bigl(\int\!\!\int|f|^p\,dy\,dx\bigr)^{2/p}=\|f\|_p^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The induction works because the constant in Theorem 1.1 is <span class="math" data-tex="\(1\)">\(1\)</span>: a constant <span class="math" data-tex="\(C&gt;1\)">\(C&gt;1\)</span> on the circle would become <span class="math" data-tex="\(C^N\)">\(C^N\)</span> on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span>. The exponent <span class="math" data-tex="\(p\)">\(p\)</span> does not depend on <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<h2 id="3-the-form-used-in-the-last-lesson">3. The form used in the last lesson</h2>
+<p><strong>Corollary 3.1.</strong> Let <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, and
+<span class="math math-display" data-tex="\[
+b=\tanh\frac{2t}{c_0},\qquad a=1-b .
+\]">\[
+b=\tanh\frac{2t}{c_0},\qquad a=1-b .
+\]</span>
+Then <span class="math" data-tex="\(0&lt;b&lt;1\)">\(0&lt;b&lt;1\)</span>, and for every real continuous function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T^N\)">\(\mathbb T^N\)</span>
+<span class="math math-display" data-tex="\[
+\|P_tf\|_2\le\|f\|_1^{\,b}\,\|f\|_2^{\,a} .
+\]">\[
+\|P_tf\|_2\le\|f\|_1^{\,b}\,\|f\|_2^{\,a} .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(p=1+e^{-4t/c_0}\)">\(p=1+e^{-4t/c_0}\)</span>, so <span class="math" data-tex="\(1&lt;p&lt;2\)">\(1&lt;p&lt;2\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{2-p}p=\frac{1-e^{-4t/c_0}}{1+e^{-4t/c_0}}=\tanh\frac{2t}{c_0}=b,\\
+\frac{2(p-1)}p=1-b=a .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{2-p}p=\frac{1-e^{-4t/c_0}}{1+e^{-4t/c_0}}=\tanh\frac{2t}{c_0}=b,\\
+\frac{2(p-1)}p=1-b=a .
+\end{gathered}
+\]</span>
+Write <span class="math" data-tex="\(|f|^p=|f|^{pb}\,|f|^{pa}\)">\(|f|^p=|f|^{pb}\,|f|^{pa}\)</span>. Since <span class="math" data-tex="\(pb+\tfrac{pa}2=(2-p)+(p-1)=1\)">\(pb+\tfrac{pa}2=(2-p)+(p-1)=1\)</span>, Hölder's inequality with the exponents <span class="math" data-tex="\(\tfrac1{pb}\)">\(\tfrac1{pb}\)</span> and <span class="math" data-tex="\(\tfrac2{pa}\)">\(\tfrac2{pa}\)</span> gives
+<span class="math math-display" data-tex="\[
+\int|f|^p\le\Bigl(\int|f|\Bigr)^{pb}\Bigl(\int|f|^2\Bigr)^{pa/2} ,
+\]">\[
+\int|f|^p\le\Bigl(\int|f|\Bigr)^{pb}\Bigl(\int|f|^2\Bigr)^{pa/2} ,
+\]</span>
+that is, <span class="math" data-tex="\(\|f\|_p\le\|f\|_1^b\|f\|_2^a\)">\(\|f\|_p\le\|f\|_1^b\|f\|_2^a\)</span>. Now apply Theorem 2.2. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For a function with a small norm <span class="math" data-tex="\(\|f\|_1\)">\(\|f\|_1\)</span> and a norm <span class="math" data-tex="\(\|f\|_2\)">\(\|f\|_2\)</span> of ordinary size, the corollary says that <span class="math" data-tex="\(P_tf\)">\(P_tf\)</span> is small in the norm <span class="math" data-tex="\(\|\cdot\|_2\)">\(\|\cdot\|_2\)</span>. Without the heat operator there is no such statement: a function that is large on a small set has a small norm <span class="math" data-tex="\(\|\cdot\|_1\)">\(\|\cdot\|_1\)</span> and a large norm <span class="math" data-tex="\(\|\cdot\|_2\)">\(\|\cdot\|_2\)</span>.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> For which <span class="math" data-tex="\(t\)">\(t\)</span> does Theorem 1.1 give <span class="math" data-tex="\(\|P_tf\|_4\le\|f\|_2\)">\(\|P_tf\|_4\le\|f\|_2\)</span>? For which <span class="math" data-tex="\(t\)">\(t\)</span> does it give <span class="math" data-tex="\(\|P_tf\|_2\le\|f\|_{3/2}\)">\(\|P_tf\|_2\le\|f\|_{3/2}\)</span>?</p>
+<p><strong>4.2.</strong> Let <span class="math" data-tex="\(f=1+\epsilon\cos(2\pi x)\)">\(f=1+\epsilon\cos(2\pi x)\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. Show that <span class="math" data-tex="\(\|f\|_p^2=1+\tfrac{p-1}2\epsilon^2+O(\epsilon^3)\)">\(\|f\|_p^2=1+\tfrac{p-1}2\epsilon^2+O(\epsilon^3)\)</span> for every <span class="math" data-tex="\(p&gt;1\)">\(p&gt;1\)</span>, and conclude that an inequality <span class="math" data-tex="\(\|P_tf\|_q\le\|f\|_p\)">\(\|P_tf\|_q\le\|f\|_p\)</span> for all continuous <span class="math" data-tex="\(f\)">\(f\)</span> implies <span class="math" data-tex="\((q-1)e^{-8\pi^2t}\le p-1\)">\((q-1)e^{-8\pi^2t}\le p-1\)</span>.</p>
+<p><strong>4.3.</strong> Show that for no <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> the inequality <span class="math" data-tex="\(\|P_tf\|_2\le\|f\|_1\)">\(\|P_tf\|_2\le\|f\|_1\)</span> holds for all continuous <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. So the exponent <span class="math" data-tex="\(p\)">\(p\)</span> in Theorem 1.1 cannot be <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>4.4.</strong> Let <span class="math" data-tex="\(f(x,y)=\phi(x)\chi(y)\)">\(f(x,y)=\phi(x)\chi(y)\)</span> on <span class="math" data-tex="\(\mathbb T^2\)">\(\mathbb T^2\)</span> with continuous <span class="math" data-tex="\(\phi,\chi\)">\(\phi,\chi\)</span>. Show directly that Theorem 2.2 for <span class="math" data-tex="\(f\)">\(f\)</span> follows from Theorem 1.1.</p>
+<p><strong>4.5.</strong> In the proof of Lemma 2.1, check that <span class="math" data-tex="\(\int\psi^{r&#x27;}=1\)">\(\int\psi^{r&#x27;}=1\)</span> and <span class="math" data-tex="\(\int G\psi=\|G\|_r\)">\(\int G\psi=\|G\|_r\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> With <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(q=4\)">\(q=4\)</span>: <span class="math" data-tex="\(3\le e^{4t/c_0}\)">\(3\le e^{4t/c_0}\)</span>, that is <span class="math" data-tex="\(t\ge\tfrac{c_0}4\log3=\tfrac7{16}\log3\approx0.48\)">\(t\ge\tfrac{c_0}4\log3=\tfrac7{16}\log3\approx0.48\)</span>. With <span class="math" data-tex="\(p=\tfrac32\)">\(p=\tfrac32\)</span>, <span class="math" data-tex="\(q=2\)">\(q=2\)</span>: <span class="math" data-tex="\(2\le e^{4t/c_0}\)">\(2\le e^{4t/c_0}\)</span>, that is <span class="math" data-tex="\(t\ge\tfrac7{16}\log2\approx0.30\)">\(t\ge\tfrac7{16}\log2\approx0.30\)</span>.</p>
+<p><strong>4.2.</strong> For small <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(1+\epsilon c)^p={}&amp;1+p\epsilon c+\tfrac{p(p-1)}2\epsilon^2c^2\\
+&amp;+O(\epsilon^3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+(1+\epsilon c)^p={}&amp;1+p\epsilon c+\tfrac{p(p-1)}2\epsilon^2c^2\\
+&amp;+O(\epsilon^3)
+\end{aligned}
+\]</span>
+uniformly for <span class="math" data-tex="\(|c|\le1\)">\(|c|\le1\)</span>. With <span class="math" data-tex="\(c=\cos(2\pi x)\)">\(c=\cos(2\pi x)\)</span>, <span class="math" data-tex="\(\int c=0\)">\(\int c=0\)</span> and <span class="math" data-tex="\(\int c^2=\tfrac12\)">\(\int c^2=\tfrac12\)</span>: <span class="math" data-tex="\(\int f^p=1+\tfrac{p(p-1)}4\epsilon^2+O(\epsilon^3)\)">\(\int f^p=1+\tfrac{p(p-1)}4\epsilon^2+O(\epsilon^3)\)</span>, and the power <span class="math" data-tex="\(\tfrac2p\)">\(\tfrac2p\)</span> of this is <span class="math" data-tex="\(1+\tfrac{p-1}2\epsilon^2+O(\epsilon^3)\)">\(1+\tfrac{p-1}2\epsilon^2+O(\epsilon^3)\)</span>. By Corollary 3.3 of the first lesson, <span class="math" data-tex="\(P_tf=1+\epsilon e^{-4\pi^2t}\cos(2\pi x)\)">\(P_tf=1+\epsilon e^{-4\pi^2t}\cos(2\pi x)\)</span>, so <span class="math" data-tex="\(\|P_tf\|_q^2=1+\tfrac{q-1}2\epsilon^2e^{-8\pi^2t}+O(\epsilon^3)\)">\(\|P_tf\|_q^2=1+\tfrac{q-1}2\epsilon^2e^{-8\pi^2t}+O(\epsilon^3)\)</span>. The inequality for all small <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> gives <span class="math" data-tex="\((q-1)e^{-8\pi^2t}\le p-1\)">\((q-1)e^{-8\pi^2t}\le p-1\)</span>.</p>
+<p><strong>4.3.</strong> Let <span class="math" data-tex="\(f=1+\cos(2\pi x)\ge0\)">\(f=1+\cos(2\pi x)\ge0\)</span>. Then <span class="math" data-tex="\(\|f\|_1=\int f=1\)">\(\|f\|_1=\int f=1\)</span>. By Corollary 3.3 of the first lesson, <span class="math" data-tex="\(P_tf=1+e^{-4\pi^2t}\cos(2\pi x)\)">\(P_tf=1+e^{-4\pi^2t}\cos(2\pi x)\)</span>, and <span class="math" data-tex="\(\|P_tf\|_2^2=1+\tfrac12e^{-8\pi^2t}&gt;1\)">\(\|P_tf\|_2^2=1+\tfrac12e^{-8\pi^2t}&gt;1\)</span>.</p>
+<p><strong>4.4.</strong> <span class="math" data-tex="\(P_tf(x,y)=(P_t&#x27;\phi)(x)\,(P_t&#x27;&#x27;\chi)(y)\)">\(P_tf(x,y)=(P_t&#x27;\phi)(x)\,(P_t&#x27;&#x27;\chi)(y)\)</span>, so <span class="math" data-tex="\(\|P_tf\|_2=\|P_t\phi\|_2\|P_t\chi\|_2\)">\(\|P_tf\|_2=\|P_t\phi\|_2\|P_t\chi\|_2\)</span> with the heat operators on the circle, and this is at most <span class="math" data-tex="\(\|\phi\|_p\|\chi\|_p=\|f\|_p\)">\(\|\phi\|_p\|\chi\|_p=\|f\|_p\)</span>.</p>
+<p><strong>4.5.</strong> <span class="math" data-tex="\(\psi^{r&#x27;}=G^{(r-1)r&#x27;}/\|G\|_r^{(r-1)r&#x27;}=G^r/\|G\|_r^r\)">\(\psi^{r&#x27;}=G^{(r-1)r&#x27;}/\|G\|_r^{(r-1)r&#x27;}=G^r/\|G\|_r^r\)</span>, whose integral is <span class="math" data-tex="\(1\)">\(1\)</span>. And <span class="math" data-tex="\(G\psi=G^r/\|G\|_r^{r-1}\)">\(G\psi=G^r/\|G\|_r^{r-1}\)</span>, whose integral is <span class="math" data-tex="\(\|G\|_r^r/\|G\|_r^{r-1}\)">\(\|G\|_r^r/\|G\|_r^{r-1}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Austin] T. Austin, <em>On the failure of concentration for the <span class="math" data-tex="\(\ell_\infty\)">\(\ell_\infty\)</span>-ball</em>, arXiv:1309.3315, version 4, Section 2. https://arxiv.org/abs/1309.3315</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

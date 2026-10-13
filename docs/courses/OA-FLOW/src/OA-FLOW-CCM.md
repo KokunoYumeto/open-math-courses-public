@@ -79,6 +79,8 @@ Put \(E=\overline{\eta(A)}\), \(F=\overline{\eta'(B)}\). These also equal the cl
 
 ## CCM2. The two-system projection lemma, proved locally
 
+The paired-density statement and graph-projection method are due to Rousseau and Van Daele, [Propositions 4.4–4.5, pp.14–17](https://gdz.sub.uni-goettingen.de/id/PPN235181684_0239?tify=%7B%22pages%22%3A%5B20%5D%7D). We prove the needed version with the whole-ideal and domain details explicit.
+
 We need the preceding full-system properties for two systems \((A,B,\eta,\eta')\) and \((C,D,\gamma,\gamma')\) on the same \(H\), with \(A''=C''=M\), \(B''=D''=M'\). Their left ideals have the characterization (CCM5), their maps respect left multiplication, and each algebra has a bounded strong* approximate identity. The systems constructed in CCM1 and any unitary transport of them have all these properties.
 
 For \(k>0\), work in \(H\oplus\overline H\), where the second scalar product is reversed. The linear spans of the pairs
@@ -161,6 +163,8 @@ This follows by taking \(C=\beta(A),D=\operatorname{Ad}(u)(B)\), \(\gamma(\beta(
 <a id="ccm-3"></a>
 
 ## CCM3. A bounded commutation criterion with both inclusions
+
+This criterion is Van Daele’s [Theorem 2.3 and Remark 2.4, pp.293–295](https://www.numdam.org/item/BSMF_1978__106__289_0.pdf). The argument below includes the square approximation and both polarization steps.
 
 Let \(A_1,B_1\) be commuting nondegenerate algebras closed under adjoint on \(K\), with linear maps \(v,w\) satisfying
 
@@ -478,54 +482,84 @@ The first range projection is \(b(P_E)\in Q\), since \(P_E\in M'\). The second i
 
 <a id="ccm-6"></a>
 
-## CCM6. Real density by simultaneous inversion pairs
+## CCM6. Real density through normalized inversion
 
-It suffices, by (CCM25), to approximate every
-
+Let \(\mathcal V\) be the real linear span of \(v((A_1)_{\rm sa})+i w((B_1)_{\rm sa})\). By (CCM25), it is enough to place each field
 <a id="equation-ccm26"></a>
-
 \[
  \Phi(t)=f(t)\eta(a)+\Delta(t)^{-1/2}h(t^{-1})U_t^*\eta'(b),
- \qquad a\in A,b\in B,f,h\in C_c(G),                  \tag{CCM26}
+ \qquad a\in A,\ b\in B,\ f,h\in C_c(G),                 \tag{CCM26}
 \]
-in the closed real span of \(v((A_1)_{\rm sa})+i w((B_1)_{\rm sa})\). Fix \(s\in G\). Apply (CCM11) with \(\beta=\alpha_{s^{-1}}\), \(u=U_s^*\), \(k=\Delta(s)\). Its target contains \((\Phi(s),\Phi(s^{-1}))\). Hence, to any prescribed error \(\varepsilon>0\), finite sums of the following continuous pairs approximate those two values:
+in \(\overline{\mathcal V}\). We use the paired approximation of CCM2, whose mathematical antecedent is Rousseau and Van Daele, [Propositions 4.4–4.5](https://gdz.sub.uni-goettingen.de/id/PPN235181684_0239?tify=%7B%22pages%22%3A%5B20%5D%7D). The passage from pairs to fields will be a bounded Hilbert-space operation.
 
+**A contraction that joins the two coordinates.** On \(K=L^2(G,H)\), define
+\[
+ (J_0\xi)(t)=\Delta(t)^{-1/2}\xi(t^{-1}),\qquad
+ \mathcal A(\xi,\zeta)=\tfrac12(\xi+J_0\zeta).
+\]
+Here \(J_0\) is linear. Haar inversion gives
+\[
+ \|J_0\xi\|_2^2
+ =\int_G\Delta(t)^{-1}\|\xi(t^{-1})\|^2\,dt
+ =\|\xi\|_2^2,\qquad J_0^2=1.
+\]
+These equalities hold first on compact continuous fields and then on their completion. Thus
+\[
+ \|\mathcal A(\xi,\zeta)\|_2
+ \le 2^{-1/2}(\|\xi\|_2^2+\|\zeta\|_2^2)^{1/2},
+ \qquad \mathcal A(\Phi,J_0\Phi)=\Phi.                  \tag{CCM-A}
+\]
+We shall approximate the compact continuous pair \(H_\Phi=(\Phi,J_0\Phi)\). The conjugate scalar structure in CCM2 is used only in obtaining the pointwise pairs; the present normed direct sum and \(\mathcal A\) may be regarded as real Hilbert spaces and a bounded real-linear map.
+
+**Local generators whose averages are in \(\mathcal V\).** Choose finite lists \(a_j,c_j\in A\), \(b_l,d_l\in B\), and write
 <a id="equation-ccm27"></a>
-
 \[
  \begin{split}
- \Psi_s(t)&=\sum_j\alpha_{t^{-1}}(a_j^*)\eta(c_j)
+ \Psi(t)&=\sum_j\alpha_{t^{-1}}(a_j^*)\eta(c_j)
                   +\sum_l d_l^*U_t^*\eta'(b_l),\\
- X_s(t)&=\sum_j\Delta(t)\alpha_t(c_j^*)\eta(a_j)
-                  -\sum_l b_l^*U_t\eta'(d_l).
+ X(t)&=\sum_j\Delta(t)\alpha_t(c_j^*)\eta(a_j)
+                  -\sum_l b_l^*U_t\eta'(d_l),\\
+ q(t)&=(\Psi(t),\Delta(t)^{-1/2}X(t)).
  \end{split}                                                     \tag{CCM27}
 \]
-The finite sums in the two lines are paired, with \(a_j,c_j\in A\), \(b_l,d_l\in B\). Complex coefficients in the conjugate-space span are absorbed into one member of each pair; this multiplies its first component by the coefficient and its second by the conjugate coefficient. Thus (CCM27) represents every finite combination required by (CCM11).
-
-For any \(g\in C_c(G)\), the field
-
+These fields are continuous; no global integrability is claimed before a compact cutoff is applied. For every real \(g\in C_c(G)\),
 <a id="equation-ccm28"></a>
-
 \[
- g(t)\Psi_s(t)+\overline{g(t^{-1})}X_s(t^{-1})          \tag{CCM28}
+ 2\mathcal A(gq)(t)=g(t)\Psi(t)+g(t^{-1})X(t^{-1})
+ \quad\hbox{belongs to }\mathcal V.                    \tag{CCM28}
 \]
-belongs to the required real span. Its first part comes from \(L_x+L_x^*\), with \(x(t)=g(t)\alpha_{t^{-1}}(a_j^*)c_j\), by (CCM18). Its second part comes from \(ZL'_yZ-(ZL'_yZ)^*\), with
+Indeed the terms with \(a_j,c_j\) are \(v(L_x+L_x^*)\), with \(x(t)=g(t)\alpha_{t^{-1}}(a_j^*)c_j\), by (CCM18). For the terms with \(b_l,d_l\), put
 \[
  y(r)=\Delta(r)^{-1/2}g(r^{-1})\alpha'_{r^{-1}}(d_l^*)b_l.
 \]
-Indeed \(Z\eta'(y)(t)=g(t)d_l^*U_t^*\eta'(b_l)\), whereas \(Z\eta'(y^\#)(t)=\overline{g(t^{-1})}b_l^*U_t^*\eta'(d_l)\). Both \(y,y^\#\in P'\) by (CCM18). An operator minus its adjoint is \(i\) times a self-adjoint operator, which proves the assertion with the correct sign.
-
-Here is the full compact passage. Choose a symmetric compact \(K_0\) containing the support of \(\Phi\), and a symmetric relatively compact open \(V\supseteq K_0\). For every \(s\in K_0\), continuity gives an open \(V_s\subseteq V\) such that throughout \(V_s\) the errors in the first approximation at \(t\) and the second at \(t^{-1}\) are less than \(3\varepsilon\). Choose a finite subcover and nonnegative compact continuous functions \(g_j\), supported in its members, with \(\sum g_j=1\) on \(K_0\) and \(0\leq\sum g_j\leq1\) everywhere. The earlier topology/HR proof supplies these finite partitions for arbitrary locally compact Hausdorff spaces.
-
-Sum (CCM28) with these real \(g_j\). The resulting \(\Xi\) is in the real span and satisfies
-
-<a id="equation-ccm29"></a>
-
+Both \(y,y^\#\) belong to \(P'\). Direct substitution gives
 \[
- \|2\Phi(t)-\Xi(t)\|\leq6\varepsilon\,1_V(t),\qquad
- \|2\Phi-\Xi\|_2\leq6\varepsilon\mu(V)^{1/2}.         \tag{CCM29}
+ Z\eta'(y)(t)=g(t)d_l^*U_t^*\eta'(b_l),\qquad
+ Z\eta'(y^\#)(t)=g(t^{-1})b_l^*U_t^*\eta'(d_l).
 \]
-The two partition sums both equal one on the support of \(\Phi\), because \(K_0\) is symmetric. Outside \(V\), both sums vanish because \(V=V^{-1}\). These observations justify the bound even outside \(K_0\); no exhaustions, measurable-net dominated convergence, or countable cover is used. Letting \(\varepsilon\downarrow0\), then dividing by two, proves the last condition in (CCM12).
+Their difference is \(w(B-B^*)\) for \(B=ZL'_yZ\). Since \(B-B^*=i[-i(B-B^*)]\) and the expression in brackets is self-adjoint, this difference is in \(i w((B_1)_{\rm sa})\). This proves (CCM28), including its sign and both modular factors.
+
+**Approximation in the direct sum.** At a fixed \(s\in G\), use (CCM11) with \(\beta=\alpha_{s^{-1}}\), \(u=U_s^*\), and \(k=\Delta(s)\). The two target spaces contain \(\Phi(s)\) and \(\Phi(s^{-1})\), respectively. Multiplying the second coordinate by the positive number \(\Delta(s)^{-1/2}\) therefore shows that values \(q(s)\) from (CCM27) approximate \(H_\Phi(s)\) in \(H\oplus H\). Complex coefficients in the conjugate-space span are absorbed into the coefficient lists: scaling one vector parameter scales the first entry by that number and the second entry by its conjugate. Real-valued partitions will suffice from this point on.
+
+Choose once and for all a relatively compact open \(V\) containing the compact support \(C\) of \(H_\Phi\). Given \(\varepsilon>0\), for each \(s\in C\) choose a field \(q_s\) as above with
+\(\|q_s(s)-H_\Phi(s)\|<\varepsilon/2\).
+Continuity gives an open neighborhood \(O_s\subseteq V\) on which this error is less than \(\varepsilon\). A finite subcover and [H0's finite compact partition](OA-FLOW-TOPOLOGY.md#l138-h0) give nonnegative \(g_j\in C_c(O_{s_j})\) with \(\sum_jg_j=1\) on \(C\) and \(0\le\sum_jg_j\le1\) everywhere. Set \(Q_\varepsilon=\sum_j g_jq_{s_j}\). Since \(H_\Phi\) vanishes outside \(C\), the identity
+\[
+ Q_\varepsilon-H_\Phi
+   =\sum_jg_j(q_{s_j}-H_\Phi)
+\]
+holds everywhere, including outside \(C\). Consequently
+\[
+ \|Q_\varepsilon-H_\Phi\|_{K\oplus K}
+       \le\varepsilon\mu(V)^{1/2}.
+\]
+Each \(\mathcal A(g_jq_{s_j})\) is in \(\mathcal V\) by (CCM28). Applying the contraction (CCM-A) now yields
+<a id="equation-ccm29"></a>
+\[
+ \|\mathcal A(Q_\varepsilon)-\Phi\|_2
+       \le\varepsilon\sqrt{\mu(V)/2}\longrightarrow0.    \tag{CCM29}
+\]
+This proves the real density required in (CCM12). The cutoff set \(V\) need not be invariant under inversion: \(J_0\) handles inversion on the complete Hilbert space with norm one. The construction uses a finite cover of a single compact support, so it needs neither a countable cover of \(G\) nor a separability hypothesis on \(H\).
 
 <a id="ccm-7"></a>
 
@@ -598,7 +632,7 @@ The left invariant subspaces spanned by coordinates \((1,3)\), \((2,4)\) carry t
 
 1. Check (CCM20) directly, including the modular function. **Solution.** In \(Z\pi'(y)Z\), the factors \(\Delta(t)^{-1/2}\Delta(t^{-1})^{-1/2}\) cancel and \(U_t^*\alpha'_t(y)U_t=y\). For \(Z\lambda_sZ\), the second argument is \(s^{-1}t^{-1}=(ts)^{-1}\); its scalar factor is \(\Delta(t)^{-1/2}\Delta(ts)^{1/2}=\Delta(s)^{1/2}\), and \(U_t^*U_{ts}=U_s\). These give exactly (CCM20).
 
-2. Why is a symmetric open \(V\) used in (CCM29)? **Solution.** The second partition term is supported in \(V^{-1}\). Taking \(V=V^{-1}\) bounds both terms on the same finite-measure set. An unsymmetrized \(V\) would require the bound on \(V\cup V^{-1}\), not on \(V\) alone.
+2. Why does the averaging map in CCM6 include the modular half power? **Solution.** Inversion sends left Haar measure to the density \(\Delta(t)^{-1}\); therefore \(J_0\xi(t)=\Delta(t)^{-1/2}\xi(t^{-1})\) is an isometry and satisfies \(J_0^2=1\). Cauchy--Schwarz then gives \(\|\mathcal A(F,G)\|_2\le(\|F\|_2^2+\|G\|_2^2)^{1/2}/\sqrt2\), even when the compact cutoff neighborhood is not symmetric.
 
 3. In (CCM34), solve the commutant equations directly. **Solution.** Commutation with all \(\pi(a,b)\) leaves matrix entries only within equal-label coordinate classes \(\{1,4\}\), \(\{2,3\}\). Commutation with \(\lambda_1\) identifies the corresponding entries under \(1\leftrightarrow3\), \(2\leftrightarrow4\). The four independent resulting matrices are \(b(E_{11}),b(E_{22}),b(E_{11})\rho_1,b(E_{22})\rho_1\). They are precisely the right algebra in (CCM34).
 
@@ -632,21 +666,26 @@ The exact whole-ideal vector identities, including their proved Hilbert norm ext
 \]
 Thus both norms vanish. The remaining projection equations force \(\zeta_1\) and \(\zeta_2\) to be orthogonal to each of the two respective map ranges. This proves paired density in \(H\oplus\overline H\) at exactly those range closures. It does not assume a cyclic or separating vector for \(M\).
 
-The lower right panel illustrates [CCM6](OA-FLOW-CCM.md#ccm-6)'s simultaneous inversion partition on the additive real group, where inversion is \(t\mapsto-t\). Its exact numerical choices are
+The lower right panel shows the bounded operation used in [CCM6](OA-FLOW-CCM.md#ccm-6):
 \[
- K=[-1,1],\quad V=(-2.1,2.1),\quad
- w(t)=\max(0,\min(1,2-|t|)),\quad
- g_1(t)=\frac{2-t}{4}w(t),\quad
- g_2(t)=\frac{2+t}{4}w(t).
+ J_0\xi(t)=\Delta(t)^{-1/2}\xi(t^{-1}),\qquad
+ \mathcal A(F,G)=\tfrac12(F+J_0G),\qquad
+ \|\mathcal A\|\le1/\sqrt2 .
 \]
-Both functions are nonnegative, are supported in \([-2,2]\subset V\), and satisfy \(g_1+g_2=w\), \(0\leq w\leq1\), \(w=1\) on \(K\), and \(g_1(-t)=g_2(t)\). The plotted two functions demonstrate the symmetric-support step; the general proof chooses as many finite compact cutoffs as its given open cover requires. It neither assumes two cutoffs suffice for an arbitrary cover nor treats general group inversion as negation.
+The target pair is \(H_\Phi=(\Phi,J_0\Phi)\), so \(\mathcal A H_\Phi=\Phi\). Finite compact partitions approximate this pair by \(Q_\varepsilon\); equation (CCM28) places every averaged summand in the required real span. Equation (CCM29) then gives
+\[
+ \|\mathcal A Q_\varepsilon-\Phi\|_2
+ \le 2^{-1/2}\|Q_\varepsilon-H_\Phi\|_{K\oplus K}
+ \le\varepsilon\sqrt{\mu(V)/2}.
+\]
+This is a norm estimate for the general group, including nonunimodular groups.
 
-For the actual general proof, the paired field is
+The small plot gives an exact partition example on the additive real group. Here \(J_0\xi(t)=\xi(-t)\), \(C=[-1,1]\), \(V=(-2.1,2.1)\), and
 \[
- \Xi(t)=\sum_j\bigl(g_j(t)\Psi_j(t)+g_j(t^{-1})X_j(t^{-1})\bigr),
- \qquad
- \|2\Phi-\Xi\|_2\leq6\varepsilon\mu(V)^{1/2}.
+ w(t)=\max(0,\min(1,2-|t|)),\qquad
+ g_1(t)=\tfrac{2-t}{4}w(t),\qquad
+ g_2(t)=\tfrac{2+t}{4}w(t).
 \]
-Here the \(g_j\) are real, \(K=K^{-1}\), \(V=V^{-1}\), and \(\Phi\) is supported in \(K\). Each pair comes from a self-adjoint left integral and \(i\) times a self-adjoint right integral, with the signs proved in (CCM28). This supplies the real density needed by [CCM3](OA-FLOW-CCM.md#ccm-3)'s commutation criterion and completes the reverse inclusion.
+Both functions are nonnegative, supported in \([-2,2]\subset V\), and satisfy \(g_1+g_2=w\), \(0\le w\le1\), and \(w=1\) on \(C\). The identity \(g_2(t)=g_1(-t)\) is a feature of this example; the general proof permits any finite subordinate partition and does not require a symmetric \(V\).
 
 Related treatments are Van Daele, [*A framework to study commutation problems*](https://www.numdam.org/item/BSMF_1978__106__289_0.pdf) (1978), Rousseau and Van Daele, [*Crossed products of commutation systems*](https://gdz.sub.uni-goettingen.de/id/PPN235181684_0239?tify=%7B%22pages%22%3A%5B13%5D%7D) (1979), and Haagerup, [*On the dual weights for crossed products of von Neumann algebras I*](https://journals.msp.org/mscand/article/view/1879) (1978), Theorem 2.1. The diagram and exact cutoff example are original CC0-1.0 expression to the extent of rights held. Native PNG: 3400×2400; [editable SVG](../assets/general-group-crossed-product-commutant/assets/crossed-product-commutant.svg), [exact data](../assets/general-group-crossed-product-commutant/assets/crossed-product-commutant-data.json), and [reproduction source](../assets/general-group-crossed-product-commutant/render_commutant.py).

@@ -1,0 +1,244 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A logarithmic Sobolev inequality on the circle</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Hypercontractivity on a torus and juntas for Lipschitz functions)</a><a href="trigonometric-polynomials-and-the-heat-operators.html">Previous lesson</a><a href="hypercontractivity-of-the-heat-operators.html">Next lesson</a><a href="src/a-logarithmic-sobolev-inequality-on-the-circle.md">Editable source</a></nav><main><article><h1 id="a-logarithmic-sobolev-inequality-on-the-circle">A logarithmic Sobolev inequality on the circle</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The entropy of a function <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> measures how far <span class="math" data-tex="\(h\)">\(h\)</span> is from a constant, with a logarithmic weight on its large values. A logarithmic Sobolev inequality bounds the entropy of <span class="math" data-tex="\(f^2\)">\(f^2\)</span> by the mean square of the derivative of <span class="math" data-tex="\(f\)">\(f\)</span>. This lesson proves such an inequality on the circle with the constant <span class="math" data-tex="\(\tfrac74\)">\(\tfrac74\)</span>. The constant is not the best one; what matters for the course is that there is no additional term on the right side. The inequality is the input for the next lesson, <a href="hypercontractivity-of-the-heat-operators.html">Hypercontractivity of the heat operators</a>.</p>
+<ul>
+<li>Entropy and Gibbs' inequality (Lemma 1.1).</li>
+<li>The largest value of a function on the circle (Lemma 2.1).</li>
+<li>An inequality with a defect (Lemma 3.1).</li>
+<li>Rothaus's lemma, which removes the defect (Lemma 4.1).</li>
+<li>The logarithmic Sobolev inequality (Theorem 5.1).</li>
+</ul>
+<p>The lesson needs calculus and the Lebesgue integral (<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">core course <em>Measure and Integration</em></a>). Lemma 4.1 is due to O. S. Rothaus. The inequality with the best constant, which this course does not need, is a theorem of F. Weissler; see [Austin, Section 2] for references.</p>
+<h2 id="1-entropy">1. Entropy</h2>
+<p>Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a probability measure, and write <span class="math" data-tex="\(\int h\)">\(\int h\)</span> for <span class="math" data-tex="\(\int h\,d\mu\)">\(\int h\,d\mu\)</span>. In this lesson <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the Lebesgue measure on the circle <span class="math" data-tex="\(\mathbb T=\mathbb R/\mathbb Z\)">\(\mathbb T=\mathbb R/\mathbb Z\)</span>, except in Lemmas 1.1 and 4.1, which hold for every probability measure.</p>
+<p><strong>Definition.</strong> For a bounded Borel function <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span>, the <em>entropy</em> of <span class="math" data-tex="\(h\)">\(h\)</span> is
+<span class="math math-display" data-tex="\[
+\operatorname{Ent}(h)=\int h\log h-\Bigl(\int h\Bigr)\log\Bigl(\int h\Bigr),
+\]">\[
+\operatorname{Ent}(h)=\int h\log h-\Bigl(\int h\Bigr)\log\Bigl(\int h\Bigr),
+\]</span>
+with <span class="math" data-tex="\(0\log0=0\)">\(0\log0=0\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> be a bounded Borel function.</p>
+<ol>
+<li>(Gibbs' inequality.) If <span class="math" data-tex="\(p\ge0\)">\(p\ge0\)</span> is a bounded Borel function with <span class="math" data-tex="\(\int p=1\)">\(\int p=1\)</span>, then
+<span class="math math-display" data-tex="\[
+\int h\log p\le\operatorname{Ent}(h),
+\]">\[
+\int h\log p\le\operatorname{Ent}(h),
+\]</span>
+where <span class="math" data-tex="\(h\log p\)">\(h\log p\)</span> is read as <span class="math" data-tex="\(0\)">\(0\)</span> at the points with <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, and the left side may be <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>.</li>
+<li><span class="math" data-tex="\(\operatorname{Ent}(h)\ge0\)">\(\operatorname{Ent}(h)\ge0\)</span>, and <span class="math" data-tex="\(\operatorname{Ent}(c\,h)=c\operatorname{Ent}(h)\)">\(\operatorname{Ent}(c\,h)=c\operatorname{Ent}(h)\)</span> for every number <span class="math" data-tex="\(c\ge0\)">\(c\ge0\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) Let <span class="math" data-tex="\(m=\int h\)">\(m=\int h\)</span>. If <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, both sides are <span class="math" data-tex="\(0\)">\(0\)</span>. Let <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>. At a point with <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, the inequality <span class="math" data-tex="\(\log v\le v-1\)">\(\log v\le v-1\)</span>, for <span class="math" data-tex="\(v=pm/h\ge0\)">\(v=pm/h\ge0\)</span> (with <span class="math" data-tex="\(\log0=-\infty\)">\(\log0=-\infty\)</span>), gives
+<span class="math math-display" data-tex="\[
+h\log p+h\log m-h\log h\le pm-h .
+\]">\[
+h\log p+h\log m-h\log h\le pm-h .
+\]</span>
+Integrate over the set where <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>: the right side gives at most <span class="math" data-tex="\(m\int p-m=0\)">\(m\int p-m=0\)</span>. (2) The first statement is (1) with <span class="math" data-tex="\(p=1\)">\(p=1\)</span>. The second follows from <span class="math" data-tex="\(\log(ch)=\log c+\log h\)">\(\log(ch)=\log c+\log h\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Example 1.2.</strong> Let <span class="math" data-tex="\(h\)">\(h\)</span> be <span class="math" data-tex="\(1\)">\(1\)</span> on a set of measure <span class="math" data-tex="\(\alpha\in(0,1]\)">\(\alpha\in(0,1]\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere. Then <span class="math" data-tex="\(\operatorname{Ent}(h)=\alpha\log\tfrac1\alpha\)">\(\operatorname{Ent}(h)=\alpha\log\tfrac1\alpha\)</span>. A constant function has the entropy <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<h2 id="2-the-largest-value-of-a-function-on-the-circle">2. The largest value of a function on the circle</h2>
+<p>A function on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> is <em>continuously differentiable</em> if it is so as a function on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with the period <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a real continuously differentiable function on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(\sup f^2\le\|f\|_2^2+2\,\|f\|_2\,\|f&#x27;\|_2\)">\(\sup f^2\le\|f\|_2^2+2\,\|f\|_2\,\|f&#x27;\|_2\)</span>.</li>
+<li>If <span class="math" data-tex="\(\int f=0\)">\(\int f=0\)</span>, then <span class="math" data-tex="\(\sup|f|\le\tfrac12\|f&#x27;\|_1\le\tfrac12\|f&#x27;\|_2\)">\(\sup|f|\le\tfrac12\|f&#x27;\|_1\le\tfrac12\|f&#x27;\|_2\)</span>. In particular <span class="math" data-tex="\(\|f\|_2\le\tfrac12\|f&#x27;\|_2\)">\(\|f\|_2\le\tfrac12\|f&#x27;\|_2\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) The continuous function <span class="math" data-tex="\(f^2\)">\(f^2\)</span> takes its mean value: there is <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(f(y)^2=\|f\|_2^2\)">\(f(y)^2=\|f\|_2^2\)</span>. For every <span class="math" data-tex="\(x\in[y,y+1]\)">\(x\in[y,y+1]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(x)^2-f(y)^2&amp;=\int_y^x2ff&#x27;\le2\int_0^1|ff&#x27;|\\
+&amp;\le2\,\|f\|_2\|f&#x27;\|_2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+f(x)^2-f(y)^2&amp;=\int_y^x2ff&#x27;\le2\int_0^1|ff&#x27;|\\
+&amp;\le2\,\|f\|_2\|f&#x27;\|_2 ,
+\end{aligned}
+\]</span>
+by the Cauchy–Schwarz inequality. (2) Since <span class="math" data-tex="\(\int f=0\)">\(\int f=0\)</span>, there is <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(f(y)=0\)">\(f(y)=0\)</span>. Let <span class="math" data-tex="\(x\in[y,y+1]\)">\(x\in[y,y+1]\)</span>. Then <span class="math" data-tex="\(|f(x)|=|f(x)-f(y)|\le\int_y^x|f&#x27;|\)">\(|f(x)|=|f(x)-f(y)|\le\int_y^x|f&#x27;|\)</span>, and also <span class="math" data-tex="\(|f(x)|=|f(y+1)-f(x)|\le\int_x^{y+1}|f&#x27;|\)">\(|f(x)|=|f(y+1)-f(x)|\le\int_x^{y+1}|f&#x27;|\)</span>. The two integrals add up to <span class="math" data-tex="\(\|f&#x27;\|_1\)">\(\|f&#x27;\|_1\)</span>, so one of them is at most <span class="math" data-tex="\(\tfrac12\|f&#x27;\|_1\)">\(\tfrac12\|f&#x27;\|_1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-an-inequality-with-a-defect">3. An inequality with a defect</h2>
+<p><strong>Lemma 3.1.</strong> For every real continuously differentiable function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Ent}(f^2)\le\|f&#x27;\|_2^2+\|f\|_2^2 .
+\]">\[
+\operatorname{Ent}(f^2)\le\|f&#x27;\|_2^2+\|f\|_2^2 .
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(f=0\)">\(f=0\)</span> there is nothing to prove. Both sides are multiplied by <span class="math" data-tex="\(c^2\)">\(c^2\)</span> if <span class="math" data-tex="\(f\)">\(f\)</span> is multiplied by <span class="math" data-tex="\(c\)">\(c\)</span> (Lemma 1.1(2)), so we may assume <span class="math" data-tex="\(\|f\|_2=1\)">\(\|f\|_2=1\)</span>. Then <span class="math" data-tex="\(\int f^2=1\)">\(\int f^2=1\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Ent}(f^2)&amp;=\int f^2\log f^2\\
+&amp;\le\log\bigl(\sup f^2\bigr)\int f^2\\
+&amp;=\log\sup f^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Ent}(f^2)&amp;=\int f^2\log f^2\\
+&amp;\le\log\bigl(\sup f^2\bigr)\int f^2\\
+&amp;=\log\sup f^2 .
+\end{aligned}
+\]</span>
+By Lemma 2.1(1), <span class="math" data-tex="\(\sup f^2\le1+2\|f&#x27;\|_2\)">\(\sup f^2\le1+2\|f&#x27;\|_2\)</span>. With <span class="math" data-tex="\(\log(1+v)\le v\)">\(\log(1+v)\le v\)</span> and <span class="math" data-tex="\(2v\le v^2+1\)">\(2v\le v^2+1\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Ent}(f^2)\le2\|f&#x27;\|_2\le\|f&#x27;\|_2^2+1 .
+\]">\[
+\operatorname{Ent}(f^2)\le2\|f&#x27;\|_2\le\|f&#x27;\|_2^2+1 .
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The term <span class="math" data-tex="\(\|f\|_2^2\)">\(\|f\|_2^2\)</span> on the right is the <em>defect</em>. With it, the inequality says nothing for a constant function, whose entropy is <span class="math" data-tex="\(0\)">\(0\)</span> and whose derivative is <span class="math" data-tex="\(0\)">\(0\)</span>. The next section shows how to pass from <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(f\)">\(f\)</span> minus its mean, for which the defect can be bounded by the derivative.</p>
+<h2 id="4-rothaus-s-lemma">4. Rothaus's lemma</h2>
+<p><strong>Lemma 4.1</strong> (Rothaus). Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a probability measure, <span class="math" data-tex="\(g\)">\(g\)</span> a bounded real Borel function and <span class="math" data-tex="\(a\)">\(a\)</span> a real number. Then
+<span class="math math-display" data-tex="\[
+\operatorname{Ent}\bigl((a+g)^2\bigr)\le\operatorname{Ent}(g^2)+2\int g^2 .
+\]">\[
+\operatorname{Ent}\bigl((a+g)^2\bigr)\le\operatorname{Ent}(g^2)+2\int g^2 .
+\]</span></p>
+<p><strong>Proof.</strong> <em>Reduction.</em> For <span class="math" data-tex="\(a=0\)">\(a=0\)</span> the statement is clear. For <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, <span class="math" data-tex="\((a+g)^2=a^2(1+g/a)^2\)">\((a+g)^2=a^2(1+g/a)^2\)</span>, and both sides are multiplied by <span class="math" data-tex="\(a^2\)">\(a^2\)</span> when <span class="math" data-tex="\(g/a\)">\(g/a\)</span> is put in place of <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> in place of <span class="math" data-tex="\(a\)">\(a\)</span>. So it is enough to prove <span class="math" data-tex="\(F(t)\le0\)">\(F(t)\le0\)</span> for every bounded <span class="math" data-tex="\(g\)">\(g\)</span> and every real <span class="math" data-tex="\(t\)">\(t\)</span>, where
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F(t)={}&amp;\operatorname{Ent}\bigl((1+tg)^2\bigr)\\
+&amp;-t^2\Bigl(\operatorname{Ent}(g^2)+2\int g^2\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+F(t)={}&amp;\operatorname{Ent}\bigl((1+tg)^2\bigr)\\
+&amp;-t^2\Bigl(\operatorname{Ent}(g^2)+2\int g^2\Bigr).
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(\int g^2=0\)">\(\int g^2=0\)</span>, then <span class="math" data-tex="\(g=0\)">\(g=0\)</span> almost everywhere and <span class="math" data-tex="\(F=0\)">\(F=0\)</span>. If <span class="math" data-tex="\(1+t_0g=0\)">\(1+t_0g=0\)</span> almost everywhere for some <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, then <span class="math" data-tex="\(g\)">\(g\)</span> is almost everywhere a constant, the first term of <span class="math" data-tex="\(F\)">\(F\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>, and <span class="math" data-tex="\(F\le0\)">\(F\le0\)</span>. Exclude these cases. Then, for all <span class="math" data-tex="\(t\)">\(t\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+m(t)&amp;=\int(1+tg)^2\\
+&amp;=1+2t\int g+t^2\int g^2&gt;0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+m(t)&amp;=\int(1+tg)^2\\
+&amp;=1+2t\int g+t^2\int g^2&gt;0 .
+\end{aligned}
+\]</span></p>
+<p><em>The function <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</em> Let <span class="math" data-tex="\(\phi(u)=u^2\log(u^2)\)">\(\phi(u)=u^2\log(u^2)\)</span> for <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span> and <span class="math" data-tex="\(\phi(0)=0\)">\(\phi(0)=0\)</span>. It is continuously differentiable on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, with <span class="math" data-tex="\(\phi&#x27;(u)=2u\log(u^2)+2u\)">\(\phi&#x27;(u)=2u\log(u^2)+2u\)</span> for <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span> and <span class="math" data-tex="\(\phi&#x27;(0)=0\)">\(\phi&#x27;(0)=0\)</span>. For <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>, <span class="math" data-tex="\(\phi&#x27;&#x27;(u)=2\log(u^2)+6\)">\(\phi&#x27;&#x27;(u)=2\log(u^2)+6\)</span>. This function is integrable over every bounded interval, and <span class="math" data-tex="\(\phi&#x27;(v)-\phi&#x27;(u)=\int_u^v\phi&#x27;&#x27;\)">\(\phi&#x27;(v)-\phi&#x27;(u)=\int_u^v\phi&#x27;&#x27;\)</span> for all <span class="math" data-tex="\(u&lt;v\)">\(u&lt;v\)</span>.</p>
+<p><em>First derivative.</em> Let <span class="math" data-tex="\(A(t)=\int\phi(1+tg)\)">\(A(t)=\int\phi(1+tg)\)</span>, so that <span class="math" data-tex="\(\operatorname{Ent}((1+tg)^2)=A(t)-m(t)\log m(t)\)">\(\operatorname{Ent}((1+tg)^2)=A(t)-m(t)\log m(t)\)</span>. Since <span class="math" data-tex="\(g\)">\(g\)</span> is bounded and <span class="math" data-tex="\(\phi&#x27;\)">\(\phi&#x27;\)</span> is continuous, <span class="math" data-tex="\(A\)">\(A\)</span> is differentiable with <span class="math" data-tex="\(A&#x27;(t)=\int g\,\phi&#x27;(1+tg)\)">\(A&#x27;(t)=\int g\,\phi&#x27;(1+tg)\)</span>. Hence <span class="math" data-tex="\(F\)">\(F\)</span> is differentiable, with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F(0)&amp;=\phi(1)-1\cdot\log1=0,\\
+F&#x27;(0)&amp;=\int g\,\phi&#x27;(1)\\
+&amp;\quad-m&#x27;(0)\bigl(\log m(0)+1\bigr)\\
+&amp;=2\int g-2\int g=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+F(0)&amp;=\phi(1)-1\cdot\log1=0,\\
+F&#x27;(0)&amp;=\int g\,\phi&#x27;(1)\\
+&amp;\quad-m&#x27;(0)\bigl(\log m(0)+1\bigr)\\
+&amp;=2\int g-2\int g=0 .
+\end{aligned}
+\]</span></p>
+<p><em><span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> does not increase.</em> Let <span class="math" data-tex="\(t_1&lt;t_2\)">\(t_1&lt;t_2\)</span>. At a point with <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g\,\phi&#x27;(1+t_2g)&amp;-g\,\phi&#x27;(1+t_1g)\\
+&amp;=\int_{t_1}^{t_2}g^2\,\phi&#x27;&#x27;(1+sg)\,ds ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+g\,\phi&#x27;(1+t_2g)&amp;-g\,\phi&#x27;(1+t_1g)\\
+&amp;=\int_{t_1}^{t_2}g^2\,\phi&#x27;&#x27;(1+sg)\,ds ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\int_{t_1}^{t_2}|g|\,|\phi&#x27;&#x27;(1+sg)|\,ds\)">\(\int_{t_1}^{t_2}|g|\,|\phi&#x27;&#x27;(1+sg)|\,ds\)</span> is the integral of <span class="math" data-tex="\(|\phi&#x27;&#x27;|\)">\(|\phi&#x27;&#x27;|\)</span> over the interval between <span class="math" data-tex="\(1+t_1g\)">\(1+t_1g\)</span> and <span class="math" data-tex="\(1+t_2g\)">\(1+t_2g\)</span>, which is bounded by a constant <span class="math" data-tex="\(C\)">\(C\)</span> that depends only on <span class="math" data-tex="\(t_1,t_2\)">\(t_1,t_2\)</span> and <span class="math" data-tex="\(\sup|g|\)">\(\sup|g|\)</span>. So <span class="math" data-tex="\(g^2|\phi&#x27;&#x27;(1+sg)|\)">\(g^2|\phi&#x27;&#x27;(1+sg)|\)</span> is integrable in both variables, and Fubini's theorem gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A&#x27;(t_2)&amp;-A&#x27;(t_1)\\
+&amp;=\int_{t_1}^{t_2}\Bigl(\int g^2\,\phi&#x27;&#x27;(1+sg)\Bigr)ds .
+\end{aligned}
+\]">\[
+\begin{aligned}
+A&#x27;(t_2)&amp;-A&#x27;(t_1)\\
+&amp;=\int_{t_1}^{t_2}\Bigl(\int g^2\,\phi&#x27;&#x27;(1+sg)\Bigr)ds .
+\end{aligned}
+\]</span>
+The function <span class="math" data-tex="\(m\log m\)">\(m\log m\)</span> has the second derivative <span class="math" data-tex="\(m&#x27;&#x27;(\log m+1)+m&#x27;^2/m\)">\(m&#x27;&#x27;(\log m+1)+m&#x27;^2/m\)</span>, with <span class="math" data-tex="\(m&#x27;&#x27;=2\int g^2\)">\(m&#x27;&#x27;=2\int g^2\)</span>. Together,
+<span class="math math-display" data-tex="\[
+F&#x27;(t_2)-F&#x27;(t_1)=\int_{t_1}^{t_2}G(s)\,ds ,
+\]">\[
+F&#x27;(t_2)-F&#x27;(t_1)=\int_{t_1}^{t_2}G(s)\,ds ,
+\]</span>
+where, after collecting the terms with <span class="math" data-tex="\(\int g^2\)">\(\int g^2\)</span>, and with <span class="math" data-tex="\(p_s=(1+sg)^2/m(s)\)">\(p_s=(1+sg)^2/m(s)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G(s)={}&amp;2\Bigl(\int g^2\log p_s-\operatorname{Ent}(g^2)\Bigr)\\
+&amp;-\frac{m&#x27;(s)^2}{m(s)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+G(s)={}&amp;2\Bigl(\int g^2\log p_s-\operatorname{Ent}(g^2)\Bigr)\\
+&amp;-\frac{m&#x27;(s)^2}{m(s)} .
+\end{aligned}
+\]</span>
+The function <span class="math" data-tex="\(p_s\)">\(p_s\)</span> is bounded, <span class="math" data-tex="\(p_s\ge0\)">\(p_s\ge0\)</span> and <span class="math" data-tex="\(\int p_s=1\)">\(\int p_s=1\)</span>. By Gibbs' inequality (Lemma 1.1) with <span class="math" data-tex="\(h=g^2\)">\(h=g^2\)</span> and <span class="math" data-tex="\(p=p_s\)">\(p=p_s\)</span>, the bracket is <span class="math" data-tex="\(\le0\)">\(\le0\)</span>. So <span class="math" data-tex="\(G\le0\)">\(G\le0\)</span>, and <span class="math" data-tex="\(F&#x27;(t_2)\le F&#x27;(t_1)\)">\(F&#x27;(t_2)\le F&#x27;(t_1)\)</span>.</p>
+<p><em>Conclusion.</em> <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> does not increase and <span class="math" data-tex="\(F&#x27;(0)=0\)">\(F&#x27;(0)=0\)</span>. So <span class="math" data-tex="\(F&#x27;\ge0\)">\(F&#x27;\ge0\)</span> on <span class="math" data-tex="\((-\infty,0]\)">\((-\infty,0]\)</span> and <span class="math" data-tex="\(F&#x27;\le0\)">\(F&#x27;\le0\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, and <span class="math" data-tex="\(F(t)\le F(0)=0\)">\(F(t)\le F(0)=0\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Here is the computation of <span class="math" data-tex="\(G\)">\(G\)</span> in detail. The second derivative of <span class="math" data-tex="\(A\)">\(A\)</span> contributes <span class="math" data-tex="\(\int g^2(2\log(1+sg)^2+6)\)">\(\int g^2(2\log(1+sg)^2+6)\)</span>, the second derivative of <span class="math" data-tex="\(m\log m\)">\(m\log m\)</span> contributes <span class="math" data-tex="\(-2\int g^2(\log m+1)-m&#x27;^2/m\)">\(-2\int g^2(\log m+1)-m&#x27;^2/m\)</span>, and the last term of <span class="math" data-tex="\(F\)">\(F\)</span> contributes <span class="math" data-tex="\(-2\operatorname{Ent}(g^2)-4\int g^2\)">\(-2\operatorname{Ent}(g^2)-4\int g^2\)</span>. The terms <span class="math" data-tex="\(6\int g^2\)">\(6\int g^2\)</span>, <span class="math" data-tex="\(-2\int g^2\)">\(-2\int g^2\)</span> and <span class="math" data-tex="\(-4\int g^2\)">\(-4\int g^2\)</span> cancel.</p>
+<h2 id="5-the-inequality">5. The inequality</h2>
+<p><strong>Theorem 5.1</strong> (a logarithmic Sobolev inequality on the circle). For every real continuously differentiable function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Ent}(f^2)\le\frac74\,\|f&#x27;\|_2^2 .
+\]">\[
+\operatorname{Ent}(f^2)\le\frac74\,\|f&#x27;\|_2^2 .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(a=\int f\)">\(a=\int f\)</span> and <span class="math" data-tex="\(g=f-a\)">\(g=f-a\)</span>. Then <span class="math" data-tex="\(g\)">\(g\)</span> is continuously differentiable, <span class="math" data-tex="\(\int g=0\)">\(\int g=0\)</span> and <span class="math" data-tex="\(g&#x27;=f&#x27;\)">\(g&#x27;=f&#x27;\)</span>. By Lemma 4.1, Lemma 3.1 for <span class="math" data-tex="\(g\)">\(g\)</span>, and Lemma 2.1(2) for <span class="math" data-tex="\(g\)">\(g\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Ent}(f^2)&amp;\le\operatorname{Ent}(g^2)+2\|g\|_2^2\\
+&amp;\le\|g&#x27;\|_2^2+3\|g\|_2^2\\
+&amp;\le\|f&#x27;\|_2^2+\tfrac34\|f&#x27;\|_2^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Ent}(f^2)&amp;\le\operatorname{Ent}(g^2)+2\|g\|_2^2\\
+&amp;\le\|g&#x27;\|_2^2+3\|g\|_2^2\\
+&amp;\le\|f&#x27;\|_2^2+\tfrac34\|f&#x27;\|_2^2 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Throughout the course we write
+<span class="math math-display" data-tex="\[
+c_0=\tfrac74
+\]">\[
+c_0=\tfrac74
+\]</span>
+for the constant of this theorem. The following lessons use only the statement of the theorem, so a better constant would improve all later bounds.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Compute <span class="math" data-tex="\(\operatorname{Ent}(h)\)">\(\operatorname{Ent}(h)\)</span> for <span class="math" data-tex="\(h(u)=1+\cos(2\pi u)\)">\(h(u)=1+\cos(2\pi u)\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. (Use <span class="math" data-tex="\(\int_0^1\log(1+\cos2\pi u)\,du=-\log2\)">\(\int_0^1\log(1+\cos2\pi u)\,du=-\log2\)</span> and <span class="math" data-tex="\(\int_0^1\cos(2\pi u)\log(1+\cos2\pi u)\,du=1\)">\(\int_0^1\cos(2\pi u)\log(1+\cos2\pi u)\,du=1\)</span>.)</p>
+<p><strong>6.2.</strong> Show that an inequality <span class="math" data-tex="\(\operatorname{Ent}(f^2)\le c\,\|f&#x27;\|_2^2\)">\(\operatorname{Ent}(f^2)\le c\,\|f&#x27;\|_2^2\)</span> for all continuously differentiable <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> implies <span class="math" data-tex="\(\|g\|_2^2\le\tfrac c2\|g&#x27;\|_2^2\)">\(\|g\|_2^2\le\tfrac c2\|g&#x27;\|_2^2\)</span> for all continuously differentiable <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(\int g=0\)">\(\int g=0\)</span>. Conclude that <span class="math" data-tex="\(c\ge\tfrac1{2\pi^2}\)">\(c\ge\tfrac1{2\pi^2}\)</span>.</p>
+<p><strong>6.3.</strong> Check Rothaus's lemma directly for <span class="math" data-tex="\(g\)">\(g\)</span> with the two values <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>, each on a set of measure <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>, and <span class="math" data-tex="\(a=1\)">\(a=1\)</span>.</p>
+<p><strong>6.4.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be continuously differentiable on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> with <span class="math" data-tex="\(f&gt;0\)">\(f&gt;0\)</span>, and <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>. Show that <span class="math" data-tex="\(v=f^{q/2}\)">\(v=f^{q/2}\)</span> is continuously differentiable and
+<span class="math math-display" data-tex="\[
+\operatorname{Ent}(f^q)\le\frac{c_0\,q^2}{4}\int f^{q-2}f&#x27;^2 .
+\]">\[
+\operatorname{Ent}(f^q)\le\frac{c_0\,q^2}{4}\int f^{q-2}f&#x27;^2 .
+\]</span></p>
+<p><strong>6.5.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a bounded Borel function on a probability space with <span class="math" data-tex="\(\int f^2=1\)">\(\int f^2=1\)</span> and <span class="math" data-tex="\(\sup f^2=M\)">\(\sup f^2=M\)</span>. Show that <span class="math" data-tex="\(\operatorname{Ent}(f^2)\le\log M\)">\(\operatorname{Ent}(f^2)\le\log M\)</span>, and that equality holds if <span class="math" data-tex="\(f^2\)">\(f^2\)</span> has only the values <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>. (This is the first step of the proof of Lemma 3.1.)</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(\int h=1\)">\(\int h=1\)</span>, so <span class="math" data-tex="\(\operatorname{Ent}(h)=\int h\log h\)">\(\operatorname{Ent}(h)=\int h\log h\)</span>. With <span class="math" data-tex="\(c=\cos(2\pi u)\)">\(c=\cos(2\pi u)\)</span> this is <span class="math" data-tex="\(\int\log(1+c)+\int c\log(1+c)\)">\(\int\log(1+c)+\int c\log(1+c)\)</span>, which is <span class="math" data-tex="\(-\log2+1\approx0.307\)">\(-\log2+1\approx0.307\)</span>.</p>
+<p><strong>6.2.</strong> Apply the inequality to <span class="math" data-tex="\(f=1+\epsilon g\)">\(f=1+\epsilon g\)</span> with a small <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Since <span class="math" data-tex="\(g\)">\(g\)</span> is bounded, for small <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(1+\epsilon g)^2&amp;\log(1+\epsilon g)^2\\
+&amp;=2\epsilon g+3\epsilon^2g^2+O(\epsilon^3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+(1+\epsilon g)^2&amp;\log(1+\epsilon g)^2\\
+&amp;=2\epsilon g+3\epsilon^2g^2+O(\epsilon^3)
+\end{aligned}
+\]</span>
+uniformly, so <span class="math" data-tex="\(\int f^2\log f^2=3\epsilon^2\int g^2+O(\epsilon^3)\)">\(\int f^2\log f^2=3\epsilon^2\int g^2+O(\epsilon^3)\)</span>. Also <span class="math" data-tex="\(\int f^2=1+\epsilon^2\int g^2\)">\(\int f^2=1+\epsilon^2\int g^2\)</span>, whose product with its logarithm is <span class="math" data-tex="\(\epsilon^2\int g^2+O(\epsilon^4)\)">\(\epsilon^2\int g^2+O(\epsilon^4)\)</span>. So <span class="math" data-tex="\(\operatorname{Ent}(f^2)=2\epsilon^2\int g^2+O(\epsilon^3)\)">\(\operatorname{Ent}(f^2)=2\epsilon^2\int g^2+O(\epsilon^3)\)</span>, while the right side is <span class="math" data-tex="\(c\,\epsilon^2\|g&#x27;\|_2^2\)">\(c\,\epsilon^2\|g&#x27;\|_2^2\)</span>. Divide by <span class="math" data-tex="\(\epsilon^2\)">\(\epsilon^2\)</span> and let <span class="math" data-tex="\(\epsilon\to0\)">\(\epsilon\to0\)</span>. For <span class="math" data-tex="\(g(u)=\cos(2\pi u)\)">\(g(u)=\cos(2\pi u)\)</span>: <span class="math" data-tex="\(\|g\|_2^2=\tfrac12\)">\(\|g\|_2^2=\tfrac12\)</span> and <span class="math" data-tex="\(\|g&#x27;\|_2^2=2\pi^2\)">\(\|g&#x27;\|_2^2=2\pi^2\)</span>, so <span class="math" data-tex="\(\tfrac12\le\tfrac c2\cdot2\pi^2\)">\(\tfrac12\le\tfrac c2\cdot2\pi^2\)</span>.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\((1+g)^2\)">\((1+g)^2\)</span> is <span class="math" data-tex="\(4\)">\(4\)</span> or <span class="math" data-tex="\(0\)">\(0\)</span>, each with measure <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>. Its integral is <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(\int(1+g)^2\log(1+g)^2\)">\(\int(1+g)^2\log(1+g)^2\)</span> is <span class="math" data-tex="\(\tfrac12\cdot4\log4=4\log2\)">\(\tfrac12\cdot4\log4=4\log2\)</span>. So the entropy is <span class="math" data-tex="\(4\log2-2\log2=2\log2\approx1.39\)">\(4\log2-2\log2=2\log2\approx1.39\)</span>. On the right, <span class="math" data-tex="\(g^2=1\)">\(g^2=1\)</span>, so <span class="math" data-tex="\(\operatorname{Ent}(g^2)=0\)">\(\operatorname{Ent}(g^2)=0\)</span> and <span class="math" data-tex="\(2\int g^2=2\)">\(2\int g^2=2\)</span>. Indeed <span class="math" data-tex="\(2\log2\le2\)">\(2\log2\le2\)</span>.</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(v=f^{q/2}\)">\(v=f^{q/2}\)</span> is a composition of continuously differentiable functions because <span class="math" data-tex="\(f&gt;0\)">\(f&gt;0\)</span>, with <span class="math" data-tex="\(v&#x27;=\tfrac q2f^{q/2-1}f&#x27;\)">\(v&#x27;=\tfrac q2f^{q/2-1}f&#x27;\)</span>. So <span class="math" data-tex="\(v^2=f^q\)">\(v^2=f^q\)</span> and <span class="math" data-tex="\(v&#x27;^2=\tfrac{q^2}4f^{q-2}f&#x27;^2\)">\(v&#x27;^2=\tfrac{q^2}4f^{q-2}f&#x27;^2\)</span>. Apply Theorem 5.1 to <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>6.5.</strong> Since <span class="math" data-tex="\(\int f^2=1\)">\(\int f^2=1\)</span>, <span class="math" data-tex="\(\operatorname{Ent}(f^2)=\int f^2\log f^2\)">\(\operatorname{Ent}(f^2)=\int f^2\log f^2\)</span>, and <span class="math" data-tex="\(\log f^2\le\log M\)">\(\log f^2\le\log M\)</span> wherever <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>. So <span class="math" data-tex="\(\operatorname{Ent}(f^2)\le\log M\int f^2=\log M\)">\(\operatorname{Ent}(f^2)\le\log M\int f^2=\log M\)</span>. If <span class="math" data-tex="\(f^2\)">\(f^2\)</span> has only the values <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>, it is <span class="math" data-tex="\(M\)">\(M\)</span> on a set of measure <span class="math" data-tex="\(\tfrac1M\)">\(\tfrac1M\)</span>, and <span class="math" data-tex="\(\int f^2\log f^2=\tfrac1M\cdot M\log M\)">\(\int f^2\log f^2=\tfrac1M\cdot M\log M\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Austin] T. Austin, <em>On the failure of concentration for the <span class="math" data-tex="\(\ell_\infty\)">\(\ell_\infty\)</span>-ball</em>, arXiv:1309.3315, version 4, Section 2. https://arxiv.org/abs/1309.3315</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
