@@ -7417,9 +7417,356 @@ Indeed \(H_0\delta H_0(c\otimes y)=-z\). Since
 
 Theorem C.45.1.1 proves the generator lifting formula. Theorem C.45.2.1 contracts the full module kernel over the fixed cores. Theorem C.45.3.1 proves the displayed exact product comparison square. Exercises C.45.4.1–C.45.4.2 compute the nonzero commutator and action corrections. The earlier complete cut and perturbation proofs are C.39.4.1 and C.35.1.1; the actual canonical projection and product module are proved in C.41.1.1–C.41.2.1. Editable SVG source.
 
+### C.46. Whole comparison squares and strict state resolutions
+
+#### C.46.1. Relative lifting on every cross sector
+
+Fix a finite directed set of levels, with strictly increasing height along
+each cross edge. Fix a conilpotent relative dg core at each level. A labelled
+cross module is cofree over its outside cores. A path sector is the cotensor
+of its consecutive cross modules, retaining its intermediate cores, endpoint
+labels and ordered string. The path coalgebra has every consecutive cut,
+including cuts inside a core run. At most \(H\) crosses can occur on a path.
+
+Let \(X,Y,X',Y'\) be such cofree path coalgebras with square-zero
+coderivations. Each differential is its pure-core and one-cross module
+differential plus terms that merge at least two crosses into one. Any allowed
+merge retains its specified ordered composite label. Distinct flattened
+strings, unit seams and comparison labels are not silently identified.
+
+Suppose actual chain coalgebra maps
+\[
+ P:X\longrightarrow Y,\qquad P':X'\longrightarrow Y'
+ \tag{C.46.1}
+\]
+have identity pure-core restrictions. Their one-cross restrictions are the
+specified projections \(\phi_e,\phi'_e\). Suppose these are surjective
+chain bicomodule maps with the full normalized kernel contractions constructed
+in C.45.2. The maps \(P,P'\) retain all labels and every allowed path sector;
+their higher-cross components are given data, not suppressed. Module-first
+transfer in C.43.3 provides maps of this kind when its prescribed one-cross
+projections are C.45's actual projections and the whole raw graph is given.
+
+Suppose a **full** chain coalgebra map \(S:Y\to Y'\) is supplied, with
+specified pure-core maps \(q_v\). On each one-cross sector prescribe a chain
+bicomodule map \(T_e:X_e\to X'_e\), over the corresponding \(q\)'s,
+satisfying
+\[
+ \phi'_e T_e=S_e\phi_e.
+ \tag{C.46.2}
+\]
+The desired conclusion is a full chain coalgebra lift \(T:X\to X'\) with
+those exact restrictions and \(P'T=SP\). This is a relative lifting
+problem for a supplied full comparison. It does not construct \(S\) from
+its individual edge restrictions.
+
+**Theorem C.46.1.1.** Under the hypotheses above, that
+lift exists. The construction terminates in cross count, preserves the pure
+cores and all the prescribed one-cross maps, and works over the same field.
+
+**Proof.** A graded map from the path coalgebra to another such cofree path
+coalgebra, over specified core maps, is determined by its central cross
+Taylor components. Reconstruct it by summing all consecutive partitions of
+each input cross string. Apply the specified core maps to the outside and
+intermediate core pieces and apply the central Taylor component to each
+partition block. Include all cuts inside boundary core runs through the
+cofree bicomodule formula (C.39.5). Each sum is finite by conilpotence and the
+finite cross count. Cutting a partition gives exactly the two reconstructed
+pieces. Hence this reconstruction is a coalgebra map. Conversely, cut
+identities and outer counits recover those same Taylor components, as in
+C.40.1 and C.43.3. There is no quotient by string labels in this formula.
+
+Use the prescribed core and one-cross restrictions to start the
+reconstruction. Induct on cross count \(r\), from two to \(H\). Assume
+the chain equation and comparison square hold below \(r\). Set the
+currently unknown \(r\)-cross central component to zero and reconstruct a
+graded coalgebra map \(T^{(0)}\); higher as yet undefined components can
+also be zero. Define its degree-one defect and the degree-zero square defect
+by
+\[
+ E=d_{X'}T^{(0)}-T^{(0)}d_X,\qquad
+ N=SP-P'T^{(0)}.
+ \tag{C.46.3}
+\]
+Both vanish on pure cores and on inputs with fewer than \(r\) crosses.
+
+The differential defect is a coderivation along \(T^{(0)}\). Its cut
+identity follows by substituting the coderivation identities for both
+differentials in the coalgebra equation for \(T^{(0)}\). At an inside
+cross cut the two resulting terms contain a defect on a shorter input and
+vanish. The difference of the two coalgebra maps in \(N\) has that same
+shorter-input property in its cut equation, since the two maps already agree
+on every shorter input. The iterated cut separating all cross positions is
+injective on a cofree path sector, as proved in C.40.3: a labelled path is
+recovered by its consecutive factors and the outside coactions. Any output
+with two or more crosses would have a nonzero such cut, while its cut equation
+here is zero. Thus on the \(r\)-cross sector both defects have only a
+one-cross output. Their boundary core cuts give their bicomodule
+equations over the prescribed \(q\)'s. Neither can have a pure-core output:
+the input has a strict increase of level and the maps retain its endpoints.
+Write these restrictions as \(e_r,n_r\).
+
+Let \(D_r\) be the \(r\)-cross input sector, with its full
+cross-preserving module differential. Terms that merge crosses are excluded
+from this differential but are included in the defects just defined. The
+cross-preserving differential is the cotensor differential of the actual
+one-cross modules and pure cores, and squares to zero by C.43.3. The target
+one-cross output has its full module differential. On the graded bicomodule
+mapping complex use
+\[
+ \partial f=d_{X',1}f-(-1)^{|f|}f d_{D_r}.
+ \tag{C.46.4}
+\]
+Core maps \(q_v\) are chain maps. Equivalently push the outside source
+coactions along those maps; this is a dg bicomodule over the target cores.
+This allows the exact fixed-core mapping-complex contraction of C.45.2 to
+be applied, without choosing an inverse to a core map.
+
+The identity \(d_{X'}E+E d_X=0\) follows by expanding it and using
+both square-zero identities. On \(D_r\), the merging terms hit shorter
+inputs on which \(E\) vanishes; a one-cross output has no merging term.
+Therefore \(\partial e_r=0\). Likewise the maps \(SP,P'\) are chain
+maps, so
+\[
+ \partial n_r=-\phi'_e e_r.
+ \tag{C.46.5}
+\]
+Here \(e\) is the designated output label of the given input path. If
+several output labels are allowed, perform this equation in their direct
+sum, with its prescribed projection and kernel contraction.
+
+Choose a graded bicomodule preimage \(t_0\) of \(n_r\) under
+postcomposition by \(\phi'_e\). The chain section \(I'_{\phi,e}\)
+of C.45.2 gives the explicit choice \(t_0=I'_{\phi,e}n_r\); it does
+not require \(n_r\) to be closed. Its remaining chain defect
+\[
+ o=\partial t_0+e_r
+ \tag{C.46.6}
+\]
+belongs to the mapping complex into \(\ker\phi'_e\), by the previous
+equation, and is closed since \(\partial e_r=0\). Let \(\mathsf h\)
+be postcomposition with that kernel's full module contraction. C.45.2 proves
+\(\partial\mathsf h+\mathsf h\partial=1\) on this exact mapping
+complex, including its source differential. Set
+\[
+ t_r=t_0-\mathsf h o.
+ \tag{C.46.7}
+\]
+Then \(\phi'_e t_r=n_r\) and \(\partial t_r=-e_r\).
+
+Insert this Taylor component in the reconstruction. On an input with
+\(r\) crosses, its change is exactly the one-cross map \(t_r\): all
+partitions with more than one output block use only earlier components.
+The chain defect changes by \(\partial t_r\); the square defect changes
+by \(-\phi'_e t_r\). Both become zero. All shorter inputs are
+unchanged. This proves the induction step. There are no inputs above
+cross count \(H\), so the last step is the full chain equation and the
+full exact comparison square.
+
+Every map and contraction in the construction preserves endpoints and its
+specified output string. The boundary core maps remain \(q_v\), and the
+one-cross maps remain exactly those originally prescribed. All operations
+take place over the given field. With fixed finite label and weight windows,
+the formula retains the complete incoming differential domains and outgoing
+weight windows of C.42; the defect has degree one, its kernel correction has
+degree minus one, and the resulting comparison has degree zero. The finite
+consumed-letter sums from C.45.2 and the finite cross induction introduce no
+completed infinite series. This proves the proposition. ∎
+
+
+#### C.46.2. Retain the unary generator complex
+
+**Theorem C.46.2.1.** Let \(R=T_S(V)\)
+be a free relative graded category, with a direct-sum generator filtration
+\(V=\bigoplus_{\ell\ge1}V_\ell\). Its differential on \(V_\ell\)
+is \(d_1+\delta\), where \(d_1\) is a differential on that generator
+complex and \(\delta\) takes its values in the algebra generated at smaller
+length. Assume the whole derivation squares to zero. Let \(p:E\to D\)
+be a strict dg functor, with a fixed object/scalar assignment, surjective and
+a quasi-isomorphism on the relevant mapping complexes. Given a strict dg
+functor \(F:R\to D\), it lifts to \(\widetilde F:R\to E\) with
+\(p\widetilde F=F\). Retain any previously prescribed lift on a
+differential-stable collection of free generator subcomplexes. All coefficient
+categories and their bimodule splittings are split as in C.30.1.
+
+**Proof.** The central mapping kernels of \(p\) are acyclic and have
+normalized coefficient-linear contractions by the full argument in C.45.1.
+Suppose the lift has been defined at all lengths below \(\ell\). Choose
+a graded coefficient-linear lift \(v\) of \(F|_{V_\ell}\). On the
+mapping complex out of \((V_\ell,d_1)\), use
+\(\partial f=d_E f-(-1)^{|f|}f d_1\). Its chain defect is
+\[
+ o=\partial v-\widetilde F\delta.
+ \tag{C.46.8}
+\]
+It takes values in the kernel because the projected functor \(F\) is a
+chain map and the lower-length lift has the required projection. Applying the
+square-zero equation of the source derivation to a generator gives
+\[
+ d_{R,<\ell}\delta+\delta d_1=0.
+ \tag{C.46.9}
+\]
+The lower-length lift is a chain map, so
+\(\partial(\widetilde F\delta)=d_E\widetilde F\delta+
+\widetilde F\delta d_1=0\). Thus \(\partial o=0\). Postcomposition
+with the kernel contraction \(h\) contracts this exact Hom complex:
+\(\partial(h f)+h\partial f=f\), including its source unary
+differential and degree signs. The corrected generator map
+\(v-h o\) therefore has the required projection and satisfies
+\(\partial(v-h o)=\widetilde F\delta\). Extending multiplicatively
+establishes the dg equation on the whole new algebra. Induction terminates
+on every finite generator length, and every element is a finite word.
+
+For the relative assertion choose the graded extension \(v\) to agree
+with the prescribed lift on its generator subcomplex \(W_\ell\).
+The defect vanishes there, including any differential components already
+assigned in \(W_\ell\). It is consequently a closed map from the quotient
+complex \(V_\ell/W_\ell\) to the kernel. Postcomposition with \(h\)
+contracts this quotient Hom complex too; the correction remains zero on
+\(W_\ell\). This retains every prescribed generator and proves the
+relative assertion. No zero unary differential has been assumed.
+∎
+
+
+#### C.46.3. Canonical state models and their common inputs
+
+For the strict positive dg category \(U=\Omega C\), put
+\[
+ U_m=U^{\otimes m},\qquad Q_m=\Omega B U_m.
+ \tag{C.46.10}
+\]
+The scalar augmentation of \(U_m\) is retained, including its finite
+additive relative matrix form. For \(m=0\) these categories are the
+coefficient field.
+
+**Theorem C.46.3.1.** The bar-cobar counit
+\(\epsilon_m:Q_m\to U_m\) is a strict dg functor, surjective on graded
+mappings and a quasi-equivalence. Its generator complexes satisfy C.46.2's
+nonminimal lifting hypotheses. With the actual shuffle map of C.41.2 set
+\[
+ \psi_m=\operatorname{sh}_m\eta_C^{\otimes m}:
+ C^{\otimes m}\longrightarrow B U_m,
+ \qquad \xi_m=\Omega\psi_m:R_m\longrightarrow Q_m.
+ \tag{C.46.11}
+\]
+Then \(\xi_m\) is a quasi-equivalence and
+\(\epsilon_m\xi_m=\kappa_m\). For a core chain coalgebra map
+\(g:C\to C'\), with \(q=\Omega g\), the state maps are strictly
+natural:
+\[
+ \epsilon'_m\Omega B(q^{\otimes m})
+     =q^{\otimes m}\epsilon_m,\qquad
+ \Omega B(q^{\otimes m})\xi_m
+     =\xi'_m\Omega(g^{\otimes m}).
+ \tag{C.46.12}
+\]
+All zero-fold maps are identities. This fixes one strict resolution per state
+arity; it does not by itself choose the full native coherence cells.
+
+**Proof.** The universal twisting cochain \(B U_m\to U_m\) sends a
+one-letter suspended mapping to that mapping and sends a word with at least
+two letters to zero. Its chain equation on one letter is the original unary
+differential; on two letters its bar multiplication and twisting product
+cancel with the suspension signs of C.39.15; on longer words both central
+terms are zero. These checks prove the full twisting equation by the
+consecutive-cut formula. The induced strict cobar functor is
+\(\epsilon_m\): it kills a free generator whose bar block has length
+greater than one, sends a single-letter block to its mapping, and extends
+multiplicatively. This proves it is a dg functor and is graded-surjective,
+retaining endpoint and matrix labels.
+
+Here is a complete cut proof of the quasi-isomorphism. Filter the source
+increasingly by the total number \(r\) of original \(U_m\)-letters
+before they are grouped into nonempty cobar blocks. Unary differentials and
+cobar splits preserve \(r\), and the bar multiplication inside a block
+reduces it. For fixed original letters, the associated quotient is the
+exterior cut complex on its \(r-1\) possible block boundaries. Its cut
+differential wedges by the sum of the cut vectors, after the same graded
+basis rescaling as C.34.1. An explicit contraction avoids any assumption about
+that rescaling's unary terms. If the first boundary is present, remove it,
+merging the first one-letter block with its next block, with coefficient
+\((-1)^{|u_1|}\). If it is absent, set the contraction to zero. Inserting
+that first boundary in the cobar differential has the same coefficient, by
+C.39.15, so their product is one. Every other insertion cancels between the
+two orders: removing the first boundary changes the number of preceding
+desuspended blocks by one. This proves the cut identity \(dh+hd=1\) at
+\(r\ge2\). A unary differential on \(u_1\) changes the contraction
+coefficient by one sign; a unary differential on a later letter changes the
+preceding tensor sign by one when the first boundary is removed. Their two
+orders therefore cancel too. Thus the full associated
+\(r\)-quotient, not just the part with zero unary differential, is acyclic.
+At \(r=1\) it is the original mapping complex of \(U_m\); at zero it
+is the specified scalar coefficient category.
+
+Give the target filtration its scalar part at zero and all of \(U_m\)
+at every stage \(r\ge1\). The counit is filtered, is the identity on
+the associated zero and one pieces, and maps each higher contracted piece to
+zero. Its filtered cone is therefore acyclic: a cycle has a finite maximum
+original length; a primitive in the acyclic highest associated quotient
+removes that component, and repetition reduces the maximum until it is zero.
+This uses the increasing finite-element filtration; it does not assume a
+spectral-sequence convergence theorem. It proves the quasi-equivalence.
+
+On a generator of \(\Omega B U_m\), the differential consists of the
+unary generator-complex differential, binary bar multiplications at smaller
+original length, and proper coproduct splits into products of generators of
+smaller individual lengths. These are precisely C.46.2's hypotheses. The
+reduced mappings of \(U_m\) have degree at least two, so their suspended
+bar letters have degree at least one. At finite label pools every fixed
+degree consequently has finite word length and finite dimension. The
+resolution preserves the positive pure-core bounds and admits the relative
+lifting construction without applying another bar-cobar functor to its own
+output.
+
+C.41.2 proves the exact canonical shuffle identity and proves that
+\(\psi_m\) is a quasi-isomorphism. Its source and target reduced coalgebra
+degrees are positive. C.39.4's complete cobar comparison proof therefore gives
+that \(\xi_m\) is a quasi-equivalence. On a free generator, the composite
+\(\epsilon_m\Omega\psi_m\) takes the shuffle's one-letter projection.
+That projection is exactly the sum of the one-factor twisting cochains with
+the other factors counited. It is the defining generator formula for
+\(\kappa_m\), proving the equality everywhere.
+
+The counit generator formula plainly commutes with a strict dg functor
+\(q^{\otimes m}\), proving the first naturality equation. The second
+follows by applying \(\Omega\) to the strictly natural canonical shuffle
+square proved in C.43.1. All formulas retain the empty products and fixed
+coefficient categories, so the zero-fold statement follows as well.
+∎
+
+
+#### C.46.4. Solved exercises
+
+**Exercise C.46.4.1 (advanced).** Take scalar-core levels \(0<1<2\) and closed source arrows \(b:0\to1,a:1\to2,z:0\to2\) of degrees \(0,2,2\), with \(ab=z\). In the target add arrows \(x,y:0\to2\) of degrees \(1,2\), with \(dx=y\), and put \(a'b'=z'+y\). The quotient kills \(x,y\). Keep the one-cross maps \(a\mapsto a',b\mapsto b',z\mapsto z'\). Construct the full bar comparison over the identity quotient.
+
+**Solution.** Both graphs are dg categories: the only two-cross product is the displayed one, it obeys Leibniz, and a three-cross product is impossible. The kernel pair is acyclic, with \(h(y)=x\). The prescribed one-cross maps are chain maps but fail strict multiplicativity by the nonzero closed kernel element \(y\). In the graph-bar convention of C.38 and C.39, the unary differential is \(b_1(sx)=s(dx)\) and the product is \(b_2(sa|sb)=(-1)^{|sa|}s(ab)\). Thus define
+\[
+ T(sa|sb)=sa'|sb'+sx,\qquad T(sa)=sa',\quad T(sb)=sb',\quad T(sz)=sz'.
+ \tag{C.46.EX1}
+\]
+The higher output has the right degree: \(sa|sb\) and \(sx\) both have degree zero. It has only the outside core cuts, so this formula preserves the entire coproduct, including the cut between \(sa\) and \(sb\). On the two-cross input,
+\[
+ b'T(sa|sb)=-s(z'+y)+sy=-sz'=T b(sa|sb).
+ \tag{C.46.EX2}
+\]
+The pure and one-cross chain equations hold too, and there are no further composable cross inputs. Applying the quotient kills \(sx\), so the full square is exactly the identity raw comparison. Dropping that higher component leaves the uncancelled term \(-sy\). This is a supplied full raw square with a necessary higher lift, not an inference from its individual edge maps.
+
+**Exercise C.46.4.2 (intermediate).** In a free relative dg source let \(u,v\) have degrees two and three, with \(du=v,dv=0\). Let the target quotient have the same generator images \(u_0,v_0\), and let a surjective target extension have an acyclic square-zero kernel \(x,y\), with \(dx=y\) in degrees two and three. Positive quotient elements act as zero on the kernel. A provisional graded generator lift sends \(u\) to \(u_0+x\) and \(v\) to \(v_0\). Correct it, retaining its quotient images.
+
+**Solution.** The generator complex has a nonzero unary differential. Its Hom defect on \(u\) is
+\[
+ o(u)=d(u_0+x)-(v_0)=y,\qquad o(v)=0.
+ \tag{C.46.EX3}
+\]
+It is a closed kernel-valued degree-one map. The kernel homotopy sends \(y\) to \(x\), so subtracting its postcomposition sends the corrected \(u\) to \(u_0\) and leaves \(v\) at \(v_0\). It now obeys \(d\widetilde F(u)=\widetilde F(v)\), and its quotient is unchanged. Considering \(d(u_0+x)\) alone would give \(v_0+y\), which is not in the kernel. The incoming generator differential must be retained in the correction complex. Extending multiplicatively gives the dg lift on every source word.
+
+![A full relative path comparison square retains its exact prescribed edges; higher defects are corrected in the contracted kernel. The incoming unary generator differential is retained, and one canonical strict state resolution commutes with the common input](assets/whole-native-comparison-lifts.png)
+
+Theorem C.46.1.1 proves the complete relative square, given its full raw comparison. Theorem C.46.2.1 proves the unary-sensitive lifting formula. Theorem C.46.3.1 proves the canonical state counit, common input and strict naturality. Exercises C.46.4.1–C.46.4.2 compute the nonzero higher and unary corrections. The complete prerequisite cut, core and kernel proofs are C.40.1.1, C.43.1.1 and C.45.2.1. Editable SVG source.
+
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. C.26 proves actual arithmetic-trait specialization of the rootwise enhanced generator diagram: perfect constant compact objects, trace-normalized Hom comparison, the complete action nerve with its coefficient bound, integral pair pavings, both IC perverse tests and ordered wall operations. C.27 proves the genuinely spherical enhanced comparison by the actual flag unit projection and induced root-word retractions. It retains the full coordinate semidirect action and every nerve level, and compares ordered associative convolution with its original kernels, units and full-frame coherences. C.28 proves configuration-arrangement compact constants, same-point flag/wall chain fibre and pair filtrations, and the actual moving enhanced generator comparison. Its complete divisor-frame nerve retains longer jets on collisions, the uniform coefficient bound, and every selected partition and all-distinct restriction diagram. C.29 identifies the actual complex moving IC objects and corrected geometric fusion components, retains supported maps on every partial diagonal, and proves the complex enhanced symmetric comparison by transport of the complete arithmetic coherent diagram through the actual ordered equivalence. It also proves flat field extensions, including complex coefficients after an abstract embedding. C.30 proves split semisimple normalization, finite relative bar coordinate groups and descent of a verified exhaustive multi-operation presentation. C.31 constructs the finite ordered-tree contraction index, its bounded projective relative diagram resolution and the combined positive-degree profile bound with both output suspensions. C.32 proves genuine directed positive-weight coalgebra windows, coordinate and inverse preservation, the coderivation bound and compatible directed relative descent. C.33 proves actual rational Betti coefficient comparison, constructs enhanced functor graphs and the actual ordered-tree convolution graph system, and descends that whole directed graph system over the rationals. Its remaining common-input tensor-power and cross-arity substitution equations are explicit: independently formalized input corners do not constitute a strong monoidal comparison. C.34 constructs a strict positive model retaining the whole IC coderivation, actual tensor bar shuffles and transferred common-input maps. C.35 retains the exact perturbed homotopy, its two-summand transfer square formula and the full graded contraction-cube faces. C.36 proves the actual homotopy coproduct and packages it in a finite dg interval coalgebra and tensor cubes; the transferred square is an original coalgebra-cylinder span through its uncontracted comparison. These nonlinear common-input data have proved invariant finite windows. C.37 retains the actual cross module and both coactions over their shared core cylinders. C.38 constructs the actual nested convolution graph, retains its two-cross grafting and higher module transfer, and descends the complete nested-string graph through common arity/output corners. C.39 constructs actual common-input convolution modules over powers of one core bar, proves their common-core finite coordinate group and the shuffle quasi-isomorphism, and recovers the original convolution by its triangular bar-cobar comparison. C.40–C.44 supply common-core recovery, indexed unit/grafting bounds and the actual finite coherent execution diagram. C.45 proves surjective canonical cobar lifts, contracted fixed-core module kernels and exact prescribed product comparisons, retaining nullary inputs. A full native several-cross coherence presentation with verified finite domains and simultaneous E-points, followed by rational strong monoidal descent, remains required. Native enhanced symmetry and the separate quantum/rotation, renormalized, singular-support and Ran/factorization scopes remain active. Descent of the full tensor equivalence to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
+The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. Appendix A proves arithmetic stabilizer cohomology, actual equivariant Ext purity, minimal-model transfer, nonresonant Frobenius formality and the actual spherical generator envelope; it also proves the one-sided-weight counterexample. Appendix B proves the polynomial Kostant slice, the full smooth universal centralizer, extension across the nonregular locus, exact equivariant coherent restriction and a composition-preserving graded comparison on every free dual polynomial generator. Its rank-one and rank-two examples retain finite centres and nilpotent parameter algebras. Appendix C proves cellular Euler localization, opposite-loop open charts on all parameter algebras, their actual contraction comparison, and the integral Ext-to-Hom cell criterion preserving composition. Its general weight implication retains its explicit compact-support hypothesis. C.12–C.16 instead prove actual whole-Grassmannian restriction, finite-jet and constant-group comparison, Weyl descent and unconditional spherical IC stalk surjectivity, giving the original generator Ext-to-module-Hom map. C.17–C.20 construct the actual graded cohomology tensor functor, an augmentation-preserving tensor frame, the full determinant cup operator, its regularity and actual adjoint quotient. C.21 constructs the higher primitive cup operators, identifies all full centralizer gradients and geometric Kostant modules, and proves the actual graded generator morphism comparison with composition. C.22 proves the actual graded symmetric tensor comparison and enhanced arithmetic finite-envelope equivalence, scalar normalized IC cohomology and identity tensor multiplicities, and a multiplicative weight model under explicit strict locally finite cochain hypotheses. C.23 constructs the derived primary replacement and its coherent tensor inverse, formalizes the actual complete Weil convolution diagram, and proves the arithmetic enhanced symmetric monoidal Satake equivalence through the finite envelope. C.24 proves composition-formality descent through compatible unipotent torsors. C.25 proves actual compact toric-cell and trace comparison, repairs the classical adjoint over integral coefficients, and compares the rootwise complex generator mapping complexes, the complete Iwahori nerve, coherent IC retracts and ordered wall operations. C.26 proves actual arithmetic-trait specialization of the rootwise enhanced generator diagram: perfect constant compact objects, trace-normalized Hom comparison, the complete action nerve with its coefficient bound, integral pair pavings, both IC perverse tests and ordered wall operations. C.27 proves the genuinely spherical enhanced comparison by the actual flag unit projection and induced root-word retractions. It retains the full coordinate semidirect action and every nerve level, and compares ordered associative convolution with its original kernels, units and full-frame coherences. C.28 proves configuration-arrangement compact constants, same-point flag/wall chain fibre and pair filtrations, and the actual moving enhanced generator comparison. Its complete divisor-frame nerve retains longer jets on collisions, the uniform coefficient bound, and every selected partition and all-distinct restriction diagram. C.29 identifies the actual complex moving IC objects and corrected geometric fusion components, retains supported maps on every partial diagonal, and proves the complex enhanced symmetric comparison by transport of the complete arithmetic coherent diagram through the actual ordered equivalence. It also proves flat field extensions, including complex coefficients after an abstract embedding. C.30 proves split semisimple normalization, finite relative bar coordinate groups and descent of a verified exhaustive multi-operation presentation. C.31 constructs the finite ordered-tree contraction index, its bounded projective relative diagram resolution and the combined positive-degree profile bound with both output suspensions. C.32 proves genuine directed positive-weight coalgebra windows, coordinate and inverse preservation, the coderivation bound and compatible directed relative descent. C.33 proves actual rational Betti coefficient comparison, constructs enhanced functor graphs and the actual ordered-tree convolution graph system, and descends that whole directed graph system over the rationals. Its remaining common-input tensor-power and cross-arity substitution equations are explicit: independently formalized input corners do not constitute a strong monoidal comparison. C.34 constructs a strict positive model retaining the whole IC coderivation, actual tensor bar shuffles and transferred common-input maps. C.35 retains the exact perturbed homotopy, its two-summand transfer square formula and the full graded contraction-cube faces. C.36 proves the actual homotopy coproduct and packages it in a finite dg interval coalgebra and tensor cubes; the transferred square is an original coalgebra-cylinder span through its uncontracted comparison. These nonlinear common-input data have proved invariant finite windows. C.37 retains the actual cross module and both coactions over their shared core cylinders. C.38 constructs the actual nested convolution graph, retains its two-cross grafting and higher module transfer, and descends the complete nested-string graph through common arity/output corners. C.39 constructs actual common-input convolution modules over powers of one core bar, proves their common-core finite coordinate group and the shuffle quasi-isomorphism, and recovers the original convolution by its triangular bar-cobar comparison. C.40–C.45 supply the native finite execution diagram, canonical core comparisons and contracted exact product projections. C.46 proves whole relative comparison lifting, including its higher-cross corrections, and one strictly natural state resolution retaining the unary differential. Constructing the actual native raw geometric coherence graph and its full enhanced comparison with exact product restrictions, complete finite marked domains and a simultaneous E-point, then descending rational strong monoidal equivalence, remains required. The quantum/rotation, renormalized, singular-support and Ran/factorization scopes remain active. Descent of the full tensor equivalence to arbitrary characteristic-zero coefficients, and the quantum, renormalized, singular-support and factorization theorems of §8 remain necessary.
 
 Free further reading:
 

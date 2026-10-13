@@ -1,0 +1,319 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Periodic Riesz and logarithmic energies</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Universal optimality of the triangular lattice)</a><a href="the-tail-and-the-theorem.html">Previous lesson</a><a href="src/periodic-riesz-and-logarithmic-energies.md">Editable source</a></nav><main><article><h1 id="periodic-riesz-and-logarithmic-energies">Periodic Riesz and logarithmic energies</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>For the interaction <span class="math" data-tex="\(|x|^{-s}\)">\(|x|^{-s}\)</span> with <span class="math" data-tex="\(0&lt;s\le2\)">\(0&lt;s\le2\)</span>, and for <span class="math" data-tex="\(-\log|x|\)">\(-\log|x|\)</span>, the energy of a lattice in the sense of this course is infinite or has no meaning: the sum over the lattice diverges. For such interactions one neutralizes the points by a uniform background of the opposite charge. For a configuration that is periodic this has a simple form: the interaction is replaced by the periodic function with mean zero that has the same singularity, and the energy per point is a finite number. This lesson defines this energy for <span class="math" data-tex="\(0\le s&lt;2\)">\(0\le s&lt;2\)</span> and proves that the triangular lattice has the least energy among all periodic configurations of density one, whatever their period lattice is.</p>
+<p>The proof writes the energy as an integral of Gaussian energies over all widths of the Gaussian, with a positive weight. For each width the theorem of the course applies.</p>
+<ul>
+<li>Periodic configurations and their Gaussian energies (Lemmas 1.1 and 1.2).</li>
+<li>The periodic heat kernel (Lemma 2.1).</li>
+<li>The periodic kernel of order <span class="math" data-tex="\(s\)">\(s\)</span>, its Fourier coefficients and its singular part (Propositions 3.1 to 3.3).</li>
+<li>The energy as an integral over Gaussian energies (Theorem 4.1) and the comparison of two configurations (Corollary 4.2).</li>
+<li>The triangular lattice has the least energy (Theorem 5.1).</li>
+</ul>
+<p>The lesson follows a part of [OpenAI-T, Section 8]; according to [OpenAI-T], the passage from Gaussians to these energies by the heat kernel is due to M. Petrache and S. Serfaty. It uses Theorem 4.2 of <a href="the-tail-and-the-theorem.html">The tail and the theorem</a>, the notions of <a href="energy-density-and-the-linear-programming-bound.html">Energy, density and the linear programming bound</a>, the Fourier transform of the Gaussian from <a href="shells-and-gaussian-duality.html">Shells and Gaussian duality</a>, and the Poisson summation formula for a lattice of the course on harmonic analysis on locally compact abelian groups.</p>
+<h2 id="1-periodic-configurations">1. Periodic configurations</h2>
+<p>A <em>periodic configuration of density one</em> is a set
+<span class="math math-display" data-tex="\[
+\mathcal C=\bigcup_{i=1}^N(a_i+L),
+\]">\[
+\mathcal C=\bigcup_{i=1}^N(a_i+L),
+\]</span>
+where <span class="math" data-tex="\(L\)">\(L\)</span> is a lattice of covolume <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> and <span class="math" data-tex="\(a_1,\dots,a_N\in\mathbb R^2\)">\(a_1,\dots,a_N\in\mathbb R^2\)</span> are points no two of which differ by an element of <span class="math" data-tex="\(L\)">\(L\)</span>. The pair of <span class="math" data-tex="\(L\)">\(L\)</span> and the points is a <em>representation</em> of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>; a configuration has many representations, for example with <span class="math" data-tex="\(2L\)">\(2L\)</span> and <span class="math" data-tex="\(4N\)">\(4N\)</span> points. A lattice of covolume one is the case <span class="math" data-tex="\(N=1\)">\(N=1\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> A periodic configuration <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of density one is a configuration of density one. For every interaction <span class="math" data-tex="\(g\)">\(g\)</span>,
+<span class="math math-display" data-tex="\[
+E_g(\mathcal C)=\frac1N\sum_{i=1}^N\ \sum_{y\in\mathcal C,\ y\ne a_i}g(|a_i-y|^2).
+\]">\[
+E_g(\mathcal C)=\frac1N\sum_{i=1}^N\ \sum_{y\in\mathcal C,\ y\ne a_i}g(|a_i-y|^2).
+\]</span></p>
+<p><strong>Proof.</strong> By the proof of Lemma 1.1 of the lesson on the linear programming bound, applied to the lattice <span class="math" data-tex="\(L\)">\(L\)</span> with its cells of area <span class="math" data-tex="\(N\)">\(N\)</span>, the number <span class="math" data-tex="\(N^{(i)}_R\)">\(N^{(i)}_R\)</span> of the points of <span class="math" data-tex="\(a_i+L\)">\(a_i+L\)</span> in the disk <span class="math" data-tex="\(B_R\)">\(B_R\)</span> lies between <span class="math" data-tex="\(\pi(R-\rho)^2/N\)">\(\pi(R-\rho)^2/N\)</span> and <span class="math" data-tex="\(\pi(R+\rho)^2/N\)">\(\pi(R+\rho)^2/N\)</span> for a fixed <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. So <span class="math" data-tex="\(N^{(i)}_R/(\pi R^2)\to1/N\)">\(N^{(i)}_R/(\pi R^2)\to1/N\)</span>, the configuration has density one, and <span class="math" data-tex="\(N^{(i)}_R/N_R\to1/N\)">\(N^{(i)}_R/N_R\to1/N\)</span>.</p>
+<p>For <span class="math" data-tex="\(x\in a_i+L\)">\(x\in a_i+L\)</span> the sum <span class="math" data-tex="\(S_i=\sum_{y\in\mathcal C,\,y\ne x}g(|x-y|^2)\)">\(S_i=\sum_{y\in\mathcal C,\,y\ne x}g(|x-y|^2)\)</span> does not depend on <span class="math" data-tex="\(x\)">\(x\)</span>, because <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is invariant under translations by <span class="math" data-tex="\(L\)">\(L\)</span>. <em>Upper bound.</em> For <span class="math" data-tex="\(x\in\mathcal C_R\)">\(x\in\mathcal C_R\)</span> of the class <span class="math" data-tex="\(a_i+L\)">\(a_i+L\)</span>, the sum over the <span class="math" data-tex="\(y\in\mathcal C_R\)">\(y\in\mathcal C_R\)</span>, <span class="math" data-tex="\(y\ne x\)">\(y\ne x\)</span>, is at most <span class="math" data-tex="\(S_i\)">\(S_i\)</span>. So the average in the definition of the energy is at most <span class="math" data-tex="\(\sum_i(N^{(i)}_R/N_R)S_i\)">\(\sum_i(N^{(i)}_R/N_R)S_i\)</span>, which tends to <span class="math" data-tex="\(\tfrac1N\sum_iS_i\)">\(\tfrac1N\sum_iS_i\)</span> if all <span class="math" data-tex="\(S_i\)">\(S_i\)</span> are finite; if one of them is infinite, the lower bound suffices. <em>Lower bound.</em> For every <span class="math" data-tex="\(i\)">\(i\)</span> let <span class="math" data-tex="\(F_i\)">\(F_i\)</span> be a finite set of nonzero vectors <span class="math" data-tex="\(y-a_i\)">\(y-a_i\)</span>, <span class="math" data-tex="\(y\in\mathcal C\)">\(y\in\mathcal C\)</span>, and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> the largest length of these vectors. For <span class="math" data-tex="\(x\in(a_i+L)\cap B_{R-\sigma}\)">\(x\in(a_i+L)\cap B_{R-\sigma}\)</span> all points <span class="math" data-tex="\(x+f\)">\(x+f\)</span>, <span class="math" data-tex="\(f\in F_i\)">\(f\in F_i\)</span>, lie in <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span>. So the double sum is at least <span class="math" data-tex="\(\sum_iN^{(i)}_{R-\sigma}\sum_{f\in F_i}g(|f|^2)\)">\(\sum_iN^{(i)}_{R-\sigma}\sum_{f\in F_i}g(|f|^2)\)</span>. Divide by <span class="math" data-tex="\(N_R\)">\(N_R\)</span> and let <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>: the energy is at least <span class="math" data-tex="\(\tfrac1N\sum_i\sum_{f\in F_i}g(|f|^2)\)">\(\tfrac1N\sum_i\sum_{f\in F_i}g(|f|^2)\)</span> for all finite sets <span class="math" data-tex="\(F_i\)">\(F_i\)</span>, hence at least <span class="math" data-tex="\(\tfrac1N\sum_iS_i\)">\(\tfrac1N\sum_iS_i\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>The heat kernel.</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> let
+<span class="math math-display" data-tex="\[
+\Psi_t(x)=\frac1{4\pi t}\,e^{-|x|^2/(4t)}\qquad(x\in\mathbb R^2).
+\]">\[
+\Psi_t(x)=\frac1{4\pi t}\,e^{-|x|^2/(4t)}\qquad(x\in\mathbb R^2).
+\]</span>
+Its integral over the plane is <span class="math" data-tex="\(1\)">\(1\)</span>. For a lattice <span class="math" data-tex="\(L\)">\(L\)</span> let
+<span class="math math-display" data-tex="\[
+P_{t,L}(x)=\sum_{v\in L}\Psi_t(x-v),
+\]">\[
+P_{t,L}(x)=\sum_{v\in L}\Psi_t(x-v),
+\]</span>
+a function with the periods <span class="math" data-tex="\(L\)">\(L\)</span>. For a periodic configuration with the representation <span class="math" data-tex="\(L\)">\(L\)</span>, <span class="math" data-tex="\(a_1,\dots,a_N\)">\(a_1,\dots,a_N\)</span> let
+<span class="math math-display" data-tex="\[
+H_{\mathcal C}(t)=\frac1N\sum_{i,j=1}^NP_{t,L}(a_i-a_j)-\Psi_t(0).
+\]">\[
+H_{\mathcal C}(t)=\frac1N\sum_{i,j=1}^NP_{t,L}(a_i-a_j)-\Psi_t(0).
+\]</span>
+The subtracted term removes, for every point, its interaction with itself; its interactions with its own translates remain.</p>
+<p><strong>Lemma 1.2.</strong> Let <span class="math" data-tex="\(g_t(u)=e^{-u/(4t)}\)">\(g_t(u)=e^{-u/(4t)}\)</span>. For every periodic configuration <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of density one and every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+H_{\mathcal C}(t)=\frac1{4\pi t}\,E_{g_t}(\mathcal C).
+\]">\[
+H_{\mathcal C}(t)=\frac1{4\pi t}\,E_{g_t}(\mathcal C).
+\]</span>
+So <span class="math" data-tex="\(H_{\mathcal C}\)">\(H_{\mathcal C}\)</span> depends only on the set <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, not on its representation. For the triangular lattice <span class="math" data-tex="\(A\)">\(A\)</span> of covolume one and every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+H_{\mathcal C}(t)\ \ge\ H_A(t)=\sum_{a\in A\setminus\{0\}}\Psi_t(a).
+\]">\[
+H_{\mathcal C}(t)\ \ge\ H_A(t)=\sum_{a\in A\setminus\{0\}}\Psi_t(a).
+\]</span></p>
+<p><strong>Proof.</strong> The points <span class="math" data-tex="\(y\ne a_i\)">\(y\ne a_i\)</span> of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> are the points <span class="math" data-tex="\(a_j+v\)">\(a_j+v\)</span> with <span class="math" data-tex="\((j,v)\ne(i,0)\)">\((j,v)\ne(i,0)\)</span>. So in Lemma 1.1, <span class="math" data-tex="\(\tfrac1{4\pi t}S_i=\sum_jP_{t,L}(a_i-a_j)-\Psi_t(0)\)">\(\tfrac1{4\pi t}S_i=\sum_jP_{t,L}(a_i-a_j)-\Psi_t(0)\)</span>, because <span class="math" data-tex="\(\Psi_t\)">\(\Psi_t\)</span> is even and <span class="math" data-tex="\(L=-L\)">\(L=-L\)</span>. The mean over <span class="math" data-tex="\(i\)">\(i\)</span> is <span class="math" data-tex="\(H_{\mathcal C}(t)\)">\(H_{\mathcal C}(t)\)</span>. The function <span class="math" data-tex="\(g_t\)">\(g_t\)</span> is completely monotone, so <span class="math" data-tex="\(E_{g_t}(\mathcal C)\ge E_{g_t}(A)\)">\(E_{g_t}(\mathcal C)\ge E_{g_t}(A)\)</span> by Theorem 4.2 of the lesson on the tail. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-the-periodic-heat-kernel">2. The periodic heat kernel</h2>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be a lattice of covolume <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(L^*\)">\(L^*\)</span> its dual lattice, and <span class="math" data-tex="\(\lambda_\xi=4\pi^2|\xi|^2\)">\(\lambda_\xi=4\pi^2|\xi|^2\)</span> for <span class="math" data-tex="\(\xi\in L^*\)">\(\xi\in L^*\)</span>. Let <span class="math" data-tex="\(\lambda_1&gt;0\)">\(\lambda_1&gt;0\)</span> be the smallest of the numbers <span class="math" data-tex="\(\lambda_\xi\)">\(\lambda_\xi\)</span> with <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>.</p>
+<p><strong>Lemma 2.1.</strong></p>
+<ol>
+<li>For all <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-tex="\(x\in\mathbb R^2\)">\(x\in\mathbb R^2\)</span>,
+<span class="math math-display" data-tex="\[
+P_{t,L}(x)=\frac1N\sum_{\xi\in L^*}e^{-\lambda_\xi t}\,e^{2\pi i\xi\cdot x}.
+\]">\[
+P_{t,L}(x)=\frac1N\sum_{\xi\in L^*}e^{-\lambda_\xi t}\,e^{2\pi i\xi\cdot x}.
+\]</span></li>
+<li>There is a number <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(|P_{t,L}(x)-\tfrac1N|\le Ce^{-\lambda_1t}\)">\(|P_{t,L}(x)-\tfrac1N|\le Ce^{-\lambda_1t}\)</span> for all <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> and all <span class="math" data-tex="\(x\)">\(x\)</span>.</li>
+<li>For every <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> there is a number <span class="math" data-tex="\(C_\rho\)">\(C_\rho\)</span> such that for <span class="math" data-tex="\(0&lt;t\le1\)">\(0&lt;t\le1\)</span> and all <span class="math" data-tex="\(x\in\mathbb R^2\)">\(x\in\mathbb R^2\)</span> the sum of <span class="math" data-tex="\(\Psi_t(x-v)\)">\(\Psi_t(x-v)\)</span> over the <span class="math" data-tex="\(v\in L\)">\(v\in L\)</span> with <span class="math" data-tex="\(|x-v|\ge\rho\)">\(|x-v|\ge\rho\)</span> is at most
+<span class="math math-display" data-tex="\[
+\frac{C_\rho}t\,e^{-\rho^2/(8t)} .
+\]">\[
+\frac{C_\rho}t\,e^{-\rho^2/(8t)} .
+\]</span></li>
+<li>The integral of <span class="math" data-tex="\(P_{t,L}\)">\(P_{t,L}\)</span> over a cell of <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, and for <span class="math" data-tex="\(\xi\in L^*\)">\(\xi\in L^*\)</span> the integral of <span class="math" data-tex="\(P_{t,L}(x)e^{-2\pi i\xi\cdot x}\)">\(P_{t,L}(x)e^{-2\pi i\xi\cdot x}\)</span> over a cell is <span class="math" data-tex="\(e^{-\lambda_\xi t}\)">\(e^{-\lambda_\xi t}\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) <span class="math" data-tex="\(\Psi_t=\tfrac1{4\pi t}G_\beta\)">\(\Psi_t=\tfrac1{4\pi t}G_\beta\)</span> with <span class="math" data-tex="\(G_\beta(x)=e^{-\pi\beta|x|^2}\)">\(G_\beta(x)=e^{-\pi\beta|x|^2}\)</span> and <span class="math" data-tex="\(\beta=1/(4\pi t)\)">\(\beta=1/(4\pi t)\)</span>. By Lemma 3.1 of the lesson on shells and Gaussian duality its Fourier transform is <span class="math" data-tex="\(\tfrac1{4\pi t}\beta^{-1}G_{1/\beta}(\xi)=e^{-4\pi^2t|\xi|^2}\)">\(\tfrac1{4\pi t}\beta^{-1}G_{1/\beta}(\xi)=e^{-4\pi^2t|\xi|^2}\)</span>. The Poisson summation formula for the lattice <span class="math" data-tex="\(L\)">\(L\)</span> of covolume <span class="math" data-tex="\(N\)">\(N\)</span> (<a href="../HA-LCA/src/the-poisson-summation-formula.html">The Poisson summation formula</a>, Corollary 2.2) gives the claim.</p>
+<p>(2) By (1), <span class="math" data-tex="\(|P_{t,L}(x)-\tfrac1N|\le\tfrac1N\sum_{\xi\ne0}e^{-\lambda_\xi t}\)">\(|P_{t,L}(x)-\tfrac1N|\le\tfrac1N\sum_{\xi\ne0}e^{-\lambda_\xi t}\)</span>. For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, <span class="math" data-tex="\(e^{-\lambda_\xi t}\le e^{-\lambda_1(t-1)}e^{-\lambda_\xi}\)">\(e^{-\lambda_\xi t}\le e^{-\lambda_1(t-1)}e^{-\lambda_\xi}\)</span>, and <span class="math" data-tex="\(\sum_\xi e^{-\lambda_\xi}\)">\(\sum_\xi e^{-\lambda_\xi}\)</span> is finite.</p>
+<p>(3) For <span class="math" data-tex="\(|x-v|\ge\rho\)">\(|x-v|\ge\rho\)</span> and <span class="math" data-tex="\(t\le1\)">\(t\le1\)</span>,
+<span class="math math-display" data-tex="\[
+e^{-|x-v|^2/(4t)}\le e^{-\rho^2/(8t)}\,e^{-|x-v|^2/8}.
+\]">\[
+e^{-|x-v|^2/(4t)}\le e^{-\rho^2/(8t)}\,e^{-|x-v|^2/8}.
+\]</span>
+The sum <span class="math" data-tex="\(\sum_{v\in L}e^{-|x-v|^2/8}\)">\(\sum_{v\in L}e^{-|x-v|^2/8}\)</span> is a continuous function of <span class="math" data-tex="\(x\)">\(x\)</span> with the periods <span class="math" data-tex="\(L\)">\(L\)</span> (Lemma 2.0 of the lesson on the Poisson summation formula), hence bounded.</p>
+<p>(4) Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be a cell of <span class="math" data-tex="\(L\)">\(L\)</span>; the plane is the disjoint union of the sets <span class="math" data-tex="\(Q-v\)">\(Q-v\)</span>, <span class="math" data-tex="\(v\in L\)">\(v\in L\)</span>. For <span class="math" data-tex="\(\xi\in L^*\)">\(\xi\in L^*\)</span> the function <span class="math" data-tex="\(e^{-2\pi i\xi\cdot x}\)">\(e^{-2\pi i\xi\cdot x}\)</span> has the periods <span class="math" data-tex="\(L\)">\(L\)</span>. So the integral over <span class="math" data-tex="\(Q\)">\(Q\)</span> of <span class="math" data-tex="\(\sum_v\Psi_t(x-v)e^{-2\pi i\xi\cdot x}\)">\(\sum_v\Psi_t(x-v)e^{-2\pi i\xi\cdot x}\)</span> is the integral of <span class="math" data-tex="\(\Psi_t(x)e^{-2\pi i\xi\cdot x}\)">\(\Psi_t(x)e^{-2\pi i\xi\cdot x}\)</span> over the plane, which is <span class="math" data-tex="\(e^{-\lambda_\xi t}\)">\(e^{-\lambda_\xi t}\)</span>; for <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> it is <span class="math" data-tex="\(1\)">\(1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-the-periodic-kernel">3. The periodic kernel</h2>
+<p>Let <span class="math" data-tex="\(0\le s&lt;2\)">\(0\le s&lt;2\)</span> and
+<span class="math math-display" data-tex="\[
+\sigma=1-\frac s2\in(0,1].
+\]">\[
+\sigma=1-\frac s2\in(0,1].
+\]</span>
+Let <span class="math" data-tex="\(\Gamma(z)=\int_0^\infty u^{z-1}e^{-u}\,du\)">\(\Gamma(z)=\int_0^\infty u^{z-1}e^{-u}\,du\)</span> for <span class="math" data-tex="\(z&gt;0\)">\(z&gt;0\)</span>; then <span class="math" data-tex="\(\int_0^\infty t^{z-1}e^{-\lambda t}\,dt=\Gamma(z)\lambda^{-z}\)">\(\int_0^\infty t^{z-1}e^{-\lambda t}\,dt=\Gamma(z)\lambda^{-z}\)</span> for <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>.</p>
+<p><strong>Definition.</strong> For a lattice <span class="math" data-tex="\(L\)">\(L\)</span> of covolume <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(x\notin L\)">\(x\notin L\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;K_{s,L}(x)\\
+&amp;\quad=\frac1{\Gamma(\sigma)}\int_0^\infty\Bigl(P_{t,L}(x)-\frac1N\Bigr)\,t^{\sigma-1}\,dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;K_{s,L}(x)\\
+&amp;\quad=\frac1{\Gamma(\sigma)}\int_0^\infty\Bigl(P_{t,L}(x)-\frac1N\Bigr)\,t^{\sigma-1}\,dt .
+\end{aligned}
+\]</span></p>
+<p><strong>Proposition 3.1.</strong> The integral converges absolutely. The function <span class="math" data-tex="\(K_{s,L}\)">\(K_{s,L}\)</span> has the periods <span class="math" data-tex="\(L\)">\(L\)</span>, is even, and is continuous outside <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(x\notin L\)">\(x\notin L\)</span> and <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> the distance of <span class="math" data-tex="\(x\)">\(x\)</span> from <span class="math" data-tex="\(L\)">\(L\)</span>. For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> the integrand is at most <span class="math" data-tex="\(Ce^{-\lambda_1t}t^{\sigma-1}\)">\(Ce^{-\lambda_1t}t^{\sigma-1}\)</span> by Lemma 2.1 (2). For <span class="math" data-tex="\(t\le1\)">\(t\le1\)</span> it is at most <span class="math" data-tex="\((C_\rho t^{-1}e^{-\rho^2/(8t)}+\tfrac1N)\,t^{\sigma-1}\)">\((C_\rho t^{-1}e^{-\rho^2/(8t)}+\tfrac1N)\,t^{\sigma-1}\)</span> by Lemma 2.1 (3), and <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>. These bounds hold uniformly for the points at a distance of at least <span class="math" data-tex="\(\rho\)">\(\rho\)</span> from <span class="math" data-tex="\(L\)">\(L\)</span>, which gives the continuity by dominated convergence. The symmetries are those of <span class="math" data-tex="\(P_{t,L}\)">\(P_{t,L}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 3.2.</strong> The function <span class="math" data-tex="\(K_{s,L}\)">\(K_{s,L}\)</span> is integrable over a cell <span class="math" data-tex="\(Q\)">\(Q\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>, and for <span class="math" data-tex="\(\xi\in L^*\)">\(\xi\in L^*\)</span>
+<span class="math math-display" data-tex="\[
+\int_QK_{s,L}(x)\,e^{-2\pi i\xi\cdot x}\,dx=\begin{cases}\lambda_\xi^{-\sigma},&amp;\xi\ne0,\\0,&amp;\xi=0.\end{cases}
+\]">\[
+\int_QK_{s,L}(x)\,e^{-2\pi i\xi\cdot x}\,dx=\begin{cases}\lambda_\xi^{-\sigma},&amp;\xi\ne0,\\0,&amp;\xi=0.\end{cases}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(t\le1\)">\(t\le1\)</span>, <span class="math" data-tex="\(|P_{t,L}-\tfrac1N|\le P_{t,L}+\tfrac1N\)">\(|P_{t,L}-\tfrac1N|\le P_{t,L}+\tfrac1N\)</span>, whose integral over <span class="math" data-tex="\(Q\)">\(Q\)</span> is <span class="math" data-tex="\(2\)">\(2\)</span> by Lemma 2.1 (4); for <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> use Lemma 2.1 (2). So the integral of <span class="math" data-tex="\(|P_{t,L}(x)-\tfrac1N|\,t^{\sigma-1}\)">\(|P_{t,L}(x)-\tfrac1N|\,t^{\sigma-1}\)</span> over <span class="math" data-tex="\(Q\times(0,\infty)\)">\(Q\times(0,\infty)\)</span> is finite, and by Fubini's theorem the integration over <span class="math" data-tex="\(x\)">\(x\)</span> can be carried out first. By Lemma 2.1 (4) it gives <span class="math" data-tex="\(e^{-\lambda_\xi t}\)">\(e^{-\lambda_\xi t}\)</span> for <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span> and <span class="math" data-tex="\(1-1=0\)">\(1-1=0\)</span> for <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>. Then <span class="math" data-tex="\(\tfrac1{\Gamma(\sigma)}\int_0^\infty e^{-\lambda_\xi t}t^{\sigma-1}\,dt=\lambda_\xi^{-\sigma}\)">\(\tfrac1{\Gamma(\sigma)}\int_0^\infty e^{-\lambda_\xi t}t^{\sigma-1}\,dt=\lambda_\xi^{-\sigma}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Since <span class="math" data-tex="\(\lambda_\xi\)">\(\lambda_\xi\)</span> is the factor by which <span class="math" data-tex="\(-\Delta\)">\(-\Delta\)</span> multiplies <span class="math" data-tex="\(e^{2\pi i\xi\cdot x}\)">\(e^{2\pi i\xi\cdot x}\)</span>, the proposition says that <span class="math" data-tex="\(K_{s,L}\)">\(K_{s,L}\)</span> is the periodic function with mean zero that the operator <span class="math" data-tex="\((-\Delta)^\sigma\)">\((-\Delta)^\sigma\)</span> sends to a unit point charge at the points of <span class="math" data-tex="\(L\)">\(L\)</span> minus the uniform charge <span class="math" data-tex="\(1/N\)">\(1/N\)</span>. For <span class="math" data-tex="\(s=0\)">\(s=0\)</span> this is the equation <span class="math" data-tex="\(-\Delta K=\delta-1/N\)">\(-\Delta K=\delta-1/N\)</span> of electrostatics in the plane.</p>
+<p><strong>The singular part.</strong> Let <span class="math" data-tex="\(g_s(x)=|x|^{-s}\)">\(g_s(x)=|x|^{-s}\)</span> for <span class="math" data-tex="\(0&lt;s&lt;2\)">\(0&lt;s&lt;2\)</span> and <span class="math" data-tex="\(g_0(x)=-\log|x|\)">\(g_0(x)=-\log|x|\)</span>. Let <span class="math" data-tex="\(q_0=2\pi\)">\(q_0=2\pi\)</span> and, for <span class="math" data-tex="\(0&lt;s&lt;2\)">\(0&lt;s&lt;2\)</span>,
+<span class="math math-display" data-tex="\[
+q_s=\frac{2^{2-s}\,\pi\,\Gamma(1-s/2)}{\Gamma(s/2)} .
+\]">\[
+q_s=\frac{2^{2-s}\,\pi\,\Gamma(1-s/2)}{\Gamma(s/2)} .
+\]</span>
+Let <span class="math" data-tex="\(P^*_{t,L}(x)=P_{t,L}(x)-\Psi_t(x)\)">\(P^*_{t,L}(x)=P_{t,L}(x)-\Psi_t(x)\)</span> be the sum over the <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, and let <span class="math" data-tex="\(e_0\)">\(e_0\)</span> be the number
+<span class="math math-display" data-tex="\[
+e_0=\int_0^1\frac{e^{-u}-1}u\,du+\int_1^\infty\frac{e^{-u}}u\,du .
+\]">\[
+e_0=\int_0^1\frac{e^{-u}-1}u\,du+\int_1^\infty\frac{e^{-u}}u\,du .
+\]</span></p>
+<p><strong>Proposition 3.3.</strong> The limit
+<span class="math math-display" data-tex="\[
+r_{s,L}=\lim_{x\to0}\Bigl(K_{s,L}(x)-\frac{g_s(x)}{q_s}\Bigr)
+\]">\[
+r_{s,L}=\lim_{x\to0}\Bigl(K_{s,L}(x)-\frac{g_s(x)}{q_s}\Bigr)
+\]</span>
+exists. For <span class="math" data-tex="\(0&lt;s&lt;2\)">\(0&lt;s&lt;2\)</span>,
+<span class="math math-display" data-tex="\[
+r_{s,L}=\frac1{\Gamma(\sigma)}\int_0^\infty\Bigl(P^*_{t,L}(0)-\frac1N\Bigr)t^{\sigma-1}\,dt .
+\]">\[
+r_{s,L}=\frac1{\Gamma(\sigma)}\int_0^\infty\Bigl(P^*_{t,L}(0)-\frac1N\Bigr)t^{\sigma-1}\,dt .
+\]</span>
+For <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, with <span class="math" data-tex="\(c_0=(\log4+e_0)/(4\pi)\)">\(c_0=(\log4+e_0)/(4\pi)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r_{0,L}=c_0&amp;+\int_0^1\Bigl(P^*_{t,L}(0)-\frac1N\Bigr)dt\\
+&amp;+\int_1^\infty\Bigl(P_{t,L}(0)-\frac1N\Bigr)dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+r_{0,L}=c_0&amp;+\int_0^1\Bigl(P^*_{t,L}(0)-\frac1N\Bigr)dt\\
+&amp;+\int_1^\infty\Bigl(P_{t,L}(0)-\frac1N\Bigr)dt .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> <em>The case <span class="math" data-tex="\(0&lt;s&lt;2\)">\(0&lt;s&lt;2\)</span>.</em> With <span class="math" data-tex="\(u=|x|^2/(4t)\)">\(u=|x|^2/(4t)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^\infty\Psi_t(x)\,t^{\sigma-1}\,dt\\
+&amp;\quad=\frac1{4\pi}\int_0^\infty t^{\sigma-2}e^{-|x|^2/(4t)}\,dt\\
+&amp;\quad=\frac1{4\pi}\Bigl(\frac{|x|^2}4\Bigr)^{\sigma-1}\int_0^\infty u^{-\sigma}e^{-u}\,du\\
+&amp;\quad=\frac{\Gamma(1-\sigma)}{4\pi}\,2^{s}\,|x|^{-s},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^\infty\Psi_t(x)\,t^{\sigma-1}\,dt\\
+&amp;\quad=\frac1{4\pi}\int_0^\infty t^{\sigma-2}e^{-|x|^2/(4t)}\,dt\\
+&amp;\quad=\frac1{4\pi}\Bigl(\frac{|x|^2}4\Bigr)^{\sigma-1}\int_0^\infty u^{-\sigma}e^{-u}\,du\\
+&amp;\quad=\frac{\Gamma(1-\sigma)}{4\pi}\,2^{s}\,|x|^{-s},
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(2\sigma-2=-s\)">\(2\sigma-2=-s\)</span>. Divided by <span class="math" data-tex="\(\Gamma(\sigma)\)">\(\Gamma(\sigma)\)</span> this is <span class="math" data-tex="\(|x|^{-s}/q_s\)">\(|x|^{-s}/q_s\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;K_{s,L}(x)-\frac{g_s(x)}{q_s}\\
+&amp;\quad=\frac1{\Gamma(\sigma)}\int_0^\infty\Bigl(P^*_{t,L}(x)-\frac1N\Bigr)t^{\sigma-1}\,dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;K_{s,L}(x)-\frac{g_s(x)}{q_s}\\
+&amp;\quad=\frac1{\Gamma(\sigma)}\int_0^\infty\Bigl(P^*_{t,L}(x)-\frac1N\Bigr)t^{\sigma-1}\,dt .
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be half the smallest length of a nonzero element of <span class="math" data-tex="\(L\)">\(L\)</span>, and <span class="math" data-tex="\(|x|\le\rho\)">\(|x|\le\rho\)</span>. For <span class="math" data-tex="\(t\le1\)">\(t\le1\)</span>, <span class="math" data-tex="\(P^*_{t,L}(x)\le C_\rho t^{-1}e^{-\rho^2/(8t)}\)">\(P^*_{t,L}(x)\le C_\rho t^{-1}e^{-\rho^2/(8t)}\)</span> by Lemma 2.1 (3). For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, <span class="math" data-tex="\(|P^*_{t,L}(x)-\tfrac1N|\le Ce^{-\lambda_1t}+\tfrac1{4\pi t}\)">\(|P^*_{t,L}(x)-\tfrac1N|\le Ce^{-\lambda_1t}+\tfrac1{4\pi t}\)</span>, and <span class="math" data-tex="\(t^{\sigma-2}\)">\(t^{\sigma-2}\)</span> is integrable at infinity because <span class="math" data-tex="\(\sigma&lt;1\)">\(\sigma&lt;1\)</span>. By dominated convergence the integral tends to its value at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(s=0\)">\(s=0\)</span>.</em> Here <span class="math" data-tex="\(\sigma=1\)">\(\sigma=1\)</span>. With the same substitution,
+<span class="math math-display" data-tex="\[
+\int_0^1\Psi_t(x)\,dt=\frac1{4\pi}\int_{|x|^2/4}^\infty\frac{e^{-u}}u\,du .
+\]">\[
+\int_0^1\Psi_t(x)\,dt=\frac1{4\pi}\int_{|x|^2/4}^\infty\frac{e^{-u}}u\,du .
+\]</span>
+For <span class="math" data-tex="\(0&lt;z&lt;1\)">\(0&lt;z&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_z^\infty\frac{e^{-u}}u\,du\\
+&amp;\quad=-\log z+\int_z^1\frac{e^{-u}-1}u\,du\\
+&amp;\qquad+\int_1^\infty\frac{e^{-u}}u\,du ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_z^\infty\frac{e^{-u}}u\,du\\
+&amp;\quad=-\log z+\int_z^1\frac{e^{-u}-1}u\,du\\
+&amp;\qquad+\int_1^\infty\frac{e^{-u}}u\,du ,
+\end{aligned}
+\]</span>
+and the last two terms tend to <span class="math" data-tex="\(e_0\)">\(e_0\)</span> as <span class="math" data-tex="\(z\to0\)">\(z\to0\)</span>. So, as <span class="math" data-tex="\(x\to0\)">\(x\to0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_0^1\Psi_t(x)\,dt&amp;=-\frac1{2\pi}\log|x|\\
+&amp;\quad+c_0+o(1).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_0^1\Psi_t(x)\,dt&amp;=-\frac1{2\pi}\log|x|\\
+&amp;\quad+c_0+o(1).
+\end{aligned}
+\]</span>
+The rest of <span class="math" data-tex="\(K_{0,L}(x)\)">\(K_{0,L}(x)\)</span> is the sum of <span class="math" data-tex="\(\int_0^1(P^*_{t,L}(x)-\tfrac1N)\,dt\)">\(\int_0^1(P^*_{t,L}(x)-\tfrac1N)\,dt\)</span> and <span class="math" data-tex="\(\int_1^\infty(P_{t,L}(x)-\tfrac1N)\,dt\)">\(\int_1^\infty(P_{t,L}(x)-\tfrac1N)\,dt\)</span>, which tends to its value at <span class="math" data-tex="\(x=0\)">\(x=0\)</span> by the same bounds. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So <span class="math" data-tex="\(q_sK_{s,L}(x)=g_s(x)+q_sr_{s,L}+o(1)\)">\(q_sK_{s,L}(x)=g_s(x)+q_sr_{s,L}+o(1)\)</span> at the origin: the function <span class="math" data-tex="\(q_sK_{s,L}\)">\(q_sK_{s,L}\)</span> is the interaction <span class="math" data-tex="\(g_s\)">\(g_s\)</span>, made periodic with the mean zero.</p>
+<h2 id="4-the-energy">4. The energy</h2>
+<p><strong>Definition.</strong> Let <span class="math" data-tex="\(0\le s&lt;2\)">\(0\le s&lt;2\)</span>, and let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a periodic configuration of density one with the representation <span class="math" data-tex="\(L\)">\(L\)</span>, <span class="math" data-tex="\(a_1,\dots,a_N\)">\(a_1,\dots,a_N\)</span>. Its <em>periodic energy of order <span class="math" data-tex="\(s\)">\(s\)</span></em> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;V_s(\mathcal C)\\
+&amp;\quad=q_s\Bigl[\frac1N\sum_{i\ne j}K_{s,L}(a_i-a_j)+r_{s,L}\Bigr].
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;V_s(\mathcal C)\\
+&amp;\quad=q_s\Bigl[\frac1N\sum_{i\ne j}K_{s,L}(a_i-a_j)+r_{s,L}\Bigr].
+\end{aligned}
+\]</span></p>
+<p>The first term is the energy per point of the interactions of the different points of a cell through the periodic kernel; it contains the interactions with all translates. The second term is the energy of a point with its own translates and with the background. The next theorem shows that the number does not depend on the representation.</p>
+<p><strong>Theorem 4.1.</strong> For <span class="math" data-tex="\(0&lt;s&lt;2\)">\(0&lt;s&lt;2\)</span>,
+<span class="math math-display" data-tex="\[
+V_s(\mathcal C)=\frac{q_s}{\Gamma(\sigma)}\int_0^\infty\bigl(H_{\mathcal C}(t)-1\bigr)\,t^{-s/2}\,dt ,
+\]">\[
+V_s(\mathcal C)=\frac{q_s}{\Gamma(\sigma)}\int_0^\infty\bigl(H_{\mathcal C}(t)-1\bigr)\,t^{-s/2}\,dt ,
+\]</span>
+and for <span class="math" data-tex="\(s=0\)">\(s=0\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+V_0(\mathcal C)&amp;=q_0c_0+q_0\int_0^1\bigl(H_{\mathcal C}(t)-1\bigr)\,dt\\
+&amp;\quad+q_0\int_1^\infty\Bigl(H_{\mathcal C}(t)-1+\frac1{4\pi t}\Bigr)dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+V_0(\mathcal C)&amp;=q_0c_0+q_0\int_0^1\bigl(H_{\mathcal C}(t)-1\bigr)\,dt\\
+&amp;\quad+q_0\int_1^\infty\Bigl(H_{\mathcal C}(t)-1+\frac1{4\pi t}\Bigr)dt .
+\end{aligned}
+\]</span>
+The integrals converge absolutely. In particular <span class="math" data-tex="\(V_s(\mathcal C)\)">\(V_s(\mathcal C)\)</span> depends only on the set <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(0&lt;s&lt;2\)">\(0&lt;s&lt;2\)</span>. By the definition of <span class="math" data-tex="\(K_{s,L}\)">\(K_{s,L}\)</span> and Proposition 3.3, the bracket in the definition of <span class="math" data-tex="\(V_s\)">\(V_s\)</span> is <span class="math" data-tex="\(\tfrac1{\Gamma(\sigma)}\int_0^\infty I(t)\,t^{\sigma-1}dt\)">\(\tfrac1{\Gamma(\sigma)}\int_0^\infty I(t)\,t^{\sigma-1}dt\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(t)&amp;=\frac1N\sum_{i\ne j}\Bigl(P_{t,L}(a_i-a_j)-\frac1N\Bigr)\\
+&amp;\quad+P_{t,L}(0)-\Psi_t(0)-\frac1N\\
+&amp;=\frac1N\sum_{i,j}P_{t,L}(a_i-a_j)-\Psi_t(0)\\
+&amp;\quad-\frac{N-1}N-\frac1N\\
+&amp;=H_{\mathcal C}(t)-1 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+I(t)&amp;=\frac1N\sum_{i\ne j}\Bigl(P_{t,L}(a_i-a_j)-\frac1N\Bigr)\\
+&amp;\quad+P_{t,L}(0)-\Psi_t(0)-\frac1N\\
+&amp;=\frac1N\sum_{i,j}P_{t,L}(a_i-a_j)-\Psi_t(0)\\
+&amp;\quad-\frac{N-1}N-\frac1N\\
+&amp;=H_{\mathcal C}(t)-1 .
+\end{aligned}
+\]</span>
+Here the <span class="math" data-tex="\(N\)">\(N\)</span> terms with <span class="math" data-tex="\(i=j\)">\(i=j\)</span> of the double sum are <span class="math" data-tex="\(P_{t,L}(0)\)">\(P_{t,L}(0)\)</span> each, and there are <span class="math" data-tex="\(N(N-1)\)">\(N(N-1)\)</span> pairs <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. Each of the finitely many integrals converges absolutely by Propositions 3.1 and 3.3. For <span class="math" data-tex="\(s=0\)">\(s=0\)</span> the same computation applies for <span class="math" data-tex="\(t\le1\)">\(t\le1\)</span>; for <span class="math" data-tex="\(t&gt;1\)">\(t&gt;1\)</span> the term <span class="math" data-tex="\(r_{0,L}\)">\(r_{0,L}\)</span> contributes <span class="math" data-tex="\(P_{t,L}(0)-\tfrac1N\)">\(P_{t,L}(0)-\tfrac1N\)</span> in place of <span class="math" data-tex="\(P^*_{t,L}(0)-\tfrac1N\)">\(P^*_{t,L}(0)-\tfrac1N\)</span>, so <span class="math" data-tex="\(I(t)=H_{\mathcal C}(t)-1+\Psi_t(0)\)">\(I(t)=H_{\mathcal C}(t)-1+\Psi_t(0)\)</span>, and <span class="math" data-tex="\(\Psi_t(0)=1/(4\pi t)\)">\(\Psi_t(0)=1/(4\pi t)\)</span>. By Lemma 1.2 the function <span class="math" data-tex="\(H_{\mathcal C}\)">\(H_{\mathcal C}\)</span> depends only on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In the formula, <span class="math" data-tex="\(H_{\mathcal C}(t)\)">\(H_{\mathcal C}(t)\)</span> is the Gaussian energy of the points and <span class="math" data-tex="\(-1\)">\(-1\)</span> is the background. As <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>, <span class="math" data-tex="\(H_{\mathcal C}(t)=1-1/(4\pi t)\)">\(H_{\mathcal C}(t)=1-1/(4\pi t)\)</span> up to an exponentially small term, by Lemma 2.1 (2).</p>
+<p><strong>Corollary 4.2.</strong> Let <span class="math" data-tex="\(0\le s&lt;2\)">\(0\le s&lt;2\)</span>, and let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> be periodic configurations of density one, with any period lattices, and <span class="math" data-tex="\(\Delta(t)=H_{\mathcal C}(t)-H_{\mathcal D}(t)\)">\(\Delta(t)=H_{\mathcal C}(t)-H_{\mathcal D}(t)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;V_s(\mathcal C)-V_s(\mathcal D)\\
+&amp;\quad=\frac{q_s}{\Gamma(1-s/2)}\int_0^\infty\Delta(t)\,t^{-s/2}\,dt ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;V_s(\mathcal C)-V_s(\mathcal D)\\
+&amp;\quad=\frac{q_s}{\Gamma(1-s/2)}\int_0^\infty\Delta(t)\,t^{-s/2}\,dt ,
+\end{aligned}
+\]</span>
+and the integral converges absolutely.</p>
+<p><strong>Proof.</strong> Subtract the formulas of Theorem 4.1; for <span class="math" data-tex="\(s=0\)">\(s=0\)</span> the terms <span class="math" data-tex="\(q_0c_0\)">\(q_0c_0\)</span> and <span class="math" data-tex="\(1/(4\pi t)\)">\(1/(4\pi t)\)</span> cancel, and <span class="math" data-tex="\(\Gamma(1)=1\)">\(\Gamma(1)=1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-the-triangular-lattice-has-the-least-energy">5. The triangular lattice has the least energy</h2>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(0\le s&lt;2\)">\(0\le s&lt;2\)</span>, and let <span class="math" data-tex="\(A\)">\(A\)</span> be the triangular lattice of covolume one. Every periodic configuration <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of density one in the plane satisfies
+<span class="math math-display" data-tex="\[
+V_s(\mathcal C)\ \ge\ V_s(A).
+\]">\[
+V_s(\mathcal C)\ \ge\ V_s(A).
+\]</span></p>
+<p><strong>Proof.</strong> By Corollary 4.2 with <span class="math" data-tex="\(\mathcal D=A\)">\(\mathcal D=A\)</span>, the difference is the integral of <span class="math" data-tex="\(H_{\mathcal C}(t)-H_A(t)\)">\(H_{\mathcal C}(t)-H_A(t)\)</span> with the positive weight <span class="math" data-tex="\(q_s\,t^{-s/2}/\Gamma(1-s/2)\)">\(q_s\,t^{-s/2}/\Gamma(1-s/2)\)</span>. By Lemma 1.2 the integrand is not negative. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For example, for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>: among all sets of <span class="math" data-tex="\(n^2\)">\(n^2\)</span> points on the torus <span class="math" data-tex="\(\mathbb R^2/nA\)">\(\mathbb R^2/nA\)</span>, the <span class="math" data-tex="\(n^2\)">\(n^2\)</span> points of <span class="math" data-tex="\(A\)">\(A\)</span> have the least energy for the periodic kernel of order <span class="math" data-tex="\(s\)">\(s\)</span> of this torus. The theorem compares configurations with different period lattices as well. For the square lattice <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span> the inequality is strict (Exercise 6.6).</p>
+<p><strong>What is not in this lesson.</strong> [OpenAI-T, Section 8] goes further. It defines energies through fields in the plane, or in a space with one more coordinate for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>: for <span class="math" data-tex="\(N\)">\(N\)</span> points on a torus an energy that it shows to be <span class="math" data-tex="\(\kappa_sV_s\)">\(\kappa_sV_s\)</span>, with <span class="math" data-tex="\(\kappa_0=2\pi\)">\(\kappa_0=2\pi\)</span> and <span class="math" data-tex="\(\kappa_s=4\pi\)">\(\kappa_s=4\pi\)</span> for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, and an energy <span class="math" data-tex="\(W_s\)">\(W_s\)</span> for configurations that need not be periodic. From an approximation of the infimum of <span class="math" data-tex="\(W_s\)">\(W_s\)</span> by periodic configurations it derives that <span class="math" data-tex="\(A\)">\(A\)</span> minimizes <span class="math" data-tex="\(W_s\)">\(W_s\)</span> among all configurations, and from theorems on the thermodynamic limit that the least energy per point of <span class="math" data-tex="\(N\)">\(N\)</span> points in a square with a uniform background tends to <span class="math" data-tex="\(V_s(A)\)">\(V_s(A)\)</span>. These steps use theorems of the literature that this course does not have: the theory of the renormalized energy of Petrache and Serfaty, the thermodynamic limits of M. Lewin, E. Lieb and R. Seiringer and of A. Lauritsen, and a minimum principle for degenerate elliptic equations of E. Fabes, C. Kenig and R. Serapioni. They are not proved in the course.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Compute <span class="math" data-tex="\(q_1\)">\(q_1\)</span>. What does Proposition 3.2 say for <span class="math" data-tex="\(s=1\)">\(s=1\)</span>?</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be a lattice of covolume one. Write <span class="math" data-tex="\(H_\Lambda(t)\)">\(H_\Lambda(t)\)</span> and, for <span class="math" data-tex="\(0&lt;s&lt;2\)">\(0&lt;s&lt;2\)</span>, <span class="math" data-tex="\(V_s(\Lambda)\)">\(V_s(\Lambda)\)</span> as an integral.</p>
+<p><strong>6.3.</strong> Let <span class="math" data-tex="\(\mathcal C=\mathbb Z^2\)">\(\mathcal C=\mathbb Z^2\)</span>. Compute <span class="math" data-tex="\(H_{\mathcal C}(t)\)">\(H_{\mathcal C}(t)\)</span> from the representation with <span class="math" data-tex="\(L=2\mathbb Z^2\)">\(L=2\mathbb Z^2\)</span> and the four points <span class="math" data-tex="\((0,0),(1,0),(0,1),(1,1)\)">\((0,0),(1,0),(0,1),(1,1)\)</span>, and check that it is the same as from <span class="math" data-tex="\(L=\mathbb Z^2\)">\(L=\mathbb Z^2\)</span>, <span class="math" data-tex="\(N=1\)">\(N=1\)</span>.</p>
+<p><strong>6.4.</strong> Show that <span class="math" data-tex="\(H_{\mathcal C}(t)\to0\)">\(H_{\mathcal C}(t)\to0\)</span> as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>, and that <span class="math" data-tex="\(H_{\mathcal C}(t)\to1\)">\(H_{\mathcal C}(t)\to1\)</span> as <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>.</p>
+<p><strong>6.5.</strong> Why does the proof of Theorem 5.1 need the theorem of the course for all Gaussians, and not only for one?</p>
+<p><strong>6.6.</strong> Show that <span class="math" data-tex="\(V_s(\mathbb Z^2)&gt;V_s(A)\)">\(V_s(\mathbb Z^2)&gt;V_s(A)\)</span> for <span class="math" data-tex="\(0\le s&lt;2\)">\(0\le s&lt;2\)</span>. Use that the shortest nonzero vectors of <span class="math" data-tex="\(A\)">\(A\)</span> have the squared length <span class="math" data-tex="\(1/b=2/\sqrt3&gt;1\)">\(1/b=2/\sqrt3&gt;1\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(q_1=2\pi\,\Gamma(\tfrac12)/\Gamma(\tfrac12)=2\pi\)">\(q_1=2\pi\,\Gamma(\tfrac12)/\Gamma(\tfrac12)=2\pi\)</span>, and <span class="math" data-tex="\(\sigma=\tfrac12\)">\(\sigma=\tfrac12\)</span>. The periodic kernel <span class="math" data-tex="\(K_{1,L}\)">\(K_{1,L}\)</span> has the Fourier coefficients <span class="math" data-tex="\(\lambda_\xi^{-1/2}=1/(2\pi|\xi|)\)">\(\lambda_\xi^{-1/2}=1/(2\pi|\xi|)\)</span>, and <span class="math" data-tex="\(2\pi K_{1,L}(x)=|x|^{-1}+2\pi r_{1,L}+o(1)\)">\(2\pi K_{1,L}(x)=|x|^{-1}+2\pi r_{1,L}+o(1)\)</span>: it is the Coulomb interaction of three-dimensional space between points of the plane, made periodic.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(H_\Lambda(t)=\sum_{v\in\Lambda\setminus\{0\}}\Psi_t(v)\)">\(H_\Lambda(t)=\sum_{v\in\Lambda\setminus\{0\}}\Psi_t(v)\)</span>, and
+<span class="math math-display" data-tex="\[
+V_s(\Lambda)=\frac{q_s}{\Gamma(\sigma)}\int_0^\infty\bigl(H_\Lambda(t)-1\bigr)\,t^{-s/2}\,dt .
+\]">\[
+V_s(\Lambda)=\frac{q_s}{\Gamma(\sigma)}\int_0^\infty\bigl(H_\Lambda(t)-1\bigr)\,t^{-s/2}\,dt .
+\]</span></p>
+<p><strong>6.3.</strong> For <span class="math" data-tex="\(N=4\)">\(N=4\)</span>: <span class="math" data-tex="\(\tfrac14\sum_{i,j}P_{t,2\mathbb Z^2}(a_i-a_j)\)">\(\tfrac14\sum_{i,j}P_{t,2\mathbb Z^2}(a_i-a_j)\)</span>. For a fixed <span class="math" data-tex="\(i\)">\(i\)</span> the differences <span class="math" data-tex="\(a_i-a_j\)">\(a_i-a_j\)</span> run through the four classes of <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span> modulo <span class="math" data-tex="\(2\mathbb Z^2\)">\(2\mathbb Z^2\)</span>, so <span class="math" data-tex="\(\sum_jP_{t,2\mathbb Z^2}(a_i-a_j)=P_{t,\mathbb Z^2}(0)\)">\(\sum_jP_{t,2\mathbb Z^2}(a_i-a_j)=P_{t,\mathbb Z^2}(0)\)</span>. The mean over <span class="math" data-tex="\(i\)">\(i\)</span> is <span class="math" data-tex="\(P_{t,\mathbb Z^2}(0)\)">\(P_{t,\mathbb Z^2}(0)\)</span>, and <span class="math" data-tex="\(H_{\mathcal C}(t)=P_{t,\mathbb Z^2}(0)-\Psi_t(0)\)">\(H_{\mathcal C}(t)=P_{t,\mathbb Z^2}(0)-\Psi_t(0)\)</span>, as for <span class="math" data-tex="\(N=1\)">\(N=1\)</span>.</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(H_{\mathcal C}(t)\)">\(H_{\mathcal C}(t)\)</span> is a mean of sums of <span class="math" data-tex="\(\Psi_t\)">\(\Psi_t\)</span> over the nonzero differences of points of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>; these have a length of at least some <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, and Lemma 2.1 (3) gives the bound <span class="math" data-tex="\(C t^{-1}e^{-\rho^2/(8t)}\to0\)">\(C t^{-1}e^{-\rho^2/(8t)}\to0\)</span>. As <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>, <span class="math" data-tex="\(\tfrac1N\sum_{i,j}P_{t,L}(a_i-a_j)\to\tfrac1N\cdot N^2\cdot\tfrac1N=1\)">\(\tfrac1N\sum_{i,j}P_{t,L}(a_i-a_j)\to\tfrac1N\cdot N^2\cdot\tfrac1N=1\)</span> by Lemma 2.1 (2), and <span class="math" data-tex="\(\Psi_t(0)\to0\)">\(\Psi_t(0)\to0\)</span>.</p>
+<p><strong>6.5.</strong> The energy <span class="math" data-tex="\(V_s\)">\(V_s\)</span> is an integral over all <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> of the Gaussian energies for <span class="math" data-tex="\(g_t\)">\(g_t\)</span>. The inequality between the integrands is needed for every <span class="math" data-tex="\(t\)">\(t\)</span>; a configuration that is better than <span class="math" data-tex="\(A\)">\(A\)</span> for some widths could have a smaller integral. This is the reason why the notion of universal optimality asks for all Gaussians.</p>
+<p><strong>6.6.</strong> <span class="math" data-tex="\(H_{\mathbb Z^2}(t)\ge4\Psi_t((1,0))=\tfrac1{\pi t}e^{-1/(4t)}\)">\(H_{\mathbb Z^2}(t)\ge4\Psi_t((1,0))=\tfrac1{\pi t}e^{-1/(4t)}\)</span>. For <span class="math" data-tex="\(a\in A\setminus\{0\}\)">\(a\in A\setminus\{0\}\)</span> and <span class="math" data-tex="\(t\le1\)">\(t\le1\)</span>, <span class="math" data-tex="\(|a|^2\ge1/b\)">\(|a|^2\ge1/b\)</span> gives <span class="math" data-tex="\(e^{-|a|^2/(4t)}\le e^{-1/(4bt)}e^{-(|a|^2-1/b)/4}\)">\(e^{-|a|^2/(4t)}\le e^{-1/(4bt)}e^{-(|a|^2-1/b)/4}\)</span>, so <span class="math" data-tex="\(H_A(t)\le\tfrac{C}{4\pi t}e^{-1/(4bt)}\)">\(H_A(t)\le\tfrac{C}{4\pi t}e^{-1/(4bt)}\)</span> with the finite number <span class="math" data-tex="\(C=\sum_{a\ne0}e^{-(|a|^2-1/b)/4}\)">\(C=\sum_{a\ne0}e^{-(|a|^2-1/b)/4}\)</span>. The quotient <span class="math" data-tex="\(H_{\mathbb Z^2}(t)/H_A(t)\)">\(H_{\mathbb Z^2}(t)/H_A(t)\)</span> is at least <span class="math" data-tex="\(\tfrac4Ce^{(1/b-1)/(4t)}\)">\(\tfrac4Ce^{(1/b-1)/(4t)}\)</span>, which tends to infinity as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>. So <span class="math" data-tex="\(H_{\mathbb Z^2}(t)&gt;H_A(t)\)">\(H_{\mathbb Z^2}(t)&gt;H_A(t)\)</span> for all small <span class="math" data-tex="\(t\)">\(t\)</span>. The integrand in Corollary 4.2 is not negative, and it is positive for all small <span class="math" data-tex="\(t\)">\(t\)</span>; so the integral is positive.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-T] OpenAI, <em>Universal optimality of the triangular lattice</em>, OpenAI Math Release preprint, 23 September 2026, Section 8. https://github.com/openai/math/tree/main/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

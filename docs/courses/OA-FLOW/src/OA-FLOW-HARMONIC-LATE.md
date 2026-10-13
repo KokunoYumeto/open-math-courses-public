@@ -105,7 +105,7 @@ Let \(m_P\) be the Haar measure on \(P\) paired with \(\widehat m\) by [the dual
  =F_G^{-1}\phi(-x).
 \tag{H4.1}
 \]
-Reflection preserves abelian Haar measure, by the inversion formula in [L24](OA-FLOW-L24.md#oa-flow.grp.haarconventions) and unimodularity. [Plancherel on both groups](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p3) yields
+Reflection preserves abelian Haar measure, by the inversion formula in [L24](OA-FLOW-L24.md#oa-flow.grp.translations) and unimodularity. [Plancherel on both groups](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p3) yields
 \[
  \|\phi\|_2^2=\|F_\Gamma\phi\|_{L^2(P,m_P)}^2
  =c\|F_G^{-1}\phi\|_{L^2(G,m)}^2=c\|\phi\|_2^2.

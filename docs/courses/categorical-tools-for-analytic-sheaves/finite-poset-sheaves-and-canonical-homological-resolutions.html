@@ -1,0 +1,242 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite-poset sheaves and canonical homological resolutions</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="finite-poset-sheaves-and-canonical-homological-resolutions">Finite-poset sheaves and canonical homological resolutions</h1>
+<p>A finite poset gives a sheaf category in which every object has explicit finite injective and projective resolutions. Their terms are indexed by strict chains. Their differentials retain the coefficient maps, and their exactness follows from concrete contractions at each point. These resolutions compute higher sections and every Ext group. A commuting diamond, a long chain and a cycle show why the resulting height bound is not always the actual homological dimension.</p>
+<p>Prerequisites: <a href="modules-and-tensor-functors-over-small-preadditive-categories.html">Modules and tensor functors over small preadditive categories</a>, §§1–2, proves pointwise exactness and the representable evaluation maps. <a href="augmented-finite-orders-and-contracting-coface-complexes.html">Augmented finite orders and contracting coface complexes</a>, §4, proves signed face cancellation and the augmented homotopy test. <a href="derived-hom-and-bounded-resolution-pairs.html">Derived Hom and bounded resolution pairs</a>, §6, proves that the indicated bounded resolutions compute all Ext groups, including their comparison maps. <a href="injective-tests-and-finite-homological-dimension.html">Injective tests and finite homological dimension</a>, §§2–4, gives the dimension criteria. All vector spaces below may be infinite-dimensional.</p>
+<h2 id="1-recover-every-sheaf-and-every-map-from-its-point-diagram">1. Recover every sheaf and every map from its point diagram</h2>
+<p>Fix a field <span class="math" data-tex="\(k\)">\(k\)</span>, a universe and choice. Let <span class="math" data-tex="\(P\)">\(P\)</span> be a finite poset. Give it the upper Alexandrov topology: an open set contains every point above any of its points. Put <span class="math" data-tex="\(U_x=\{y:x\le y\}\)">\(U_x=\{y:x\le y\}\)</span>. A sheaf of <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces gives a covariant diagram</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+M(x)=F(U_x),\qquad M_{xy}:M(x)\longrightarrow M(y)
+\quad(x\le y),
+\tag{1.1}
+\]">\[
+M(x)=F(U_x),\qquad M_{xy}:M(x)\longrightarrow M(y)
+\quad(x\le y),
+\tag{1.1}
+\]</span>
+<p>by restriction. The equations are <span class="math" data-tex="\(M_{xx}=1\)">\(M_{xx}=1\)</span> and <span class="math" data-tex="\(M_{yz}M_{xy}=M_{xz}\)">\(M_{yz}M_{xy}=M_{xz}\)</span>. In particular maps along two paths through a diamond must agree.</p>
+<p>Conversely, for such a diagram define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+F_M(O)=\{(m_x)_{x\in O}:M_{xy}m_x=m_y\text{ for }x\le y\text{ in }O\}.
+\tag{1.2}
+\]">\[
+F_M(O)=\{(m_x)_{x\in O}:M_{xy}m_x=m_y\text{ for }x\le y\text{ in }O\}.
+\tag{1.2}
+\]</span>
+<p>Restriction forgets coordinates; the empty value is zero. Compatible sections on an open cover supply a unique value at each point. If <span class="math" data-tex="\(x\le y\)">\(x\le y\)</span>, any cover member containing <span class="math" data-tex="\(x\)">\(x\)</span> also contains <span class="math" data-tex="\(y\)">\(y\)</span>, so that value satisfies the required equation. This proves existence and uniqueness of gluing for every cover.</p>
+<p>Projection to <span class="math" data-tex="\(x\)">\(x\)</span> identifies <span class="math" data-tex="\(F_M(U_x)\)">\(F_M(U_x)\)</span> with <span class="math" data-tex="\(M(x)\)">\(M(x)\)</span>; its inverse is <span class="math" data-tex="\(m\mapsto(M_{xy}m)_{y\ge x}\)">\(m\mapsto(M_{xy}m)_{y\ge x}\)</span>. Both inverse equations follow from the diagram laws. For a sheaf <span class="math" data-tex="\(F\)">\(F\)</span>, restrict a section on <span class="math" data-tex="\(O\)">\(O\)</span> to every <span class="math" data-tex="\(U_x\)">\(U_x\)</span>, <span class="math" data-tex="\(x\in O\)">\(x\in O\)</span>. Conversely a tuple in (1.2) gives those local sections. On <span class="math" data-tex="\(U_x\cap U_y\)">\(U_x\cap U_y\)</span> their restrictions agree on every <span class="math" data-tex="\(U_z\)">\(U_z\)</span> with <span class="math" data-tex="\(z\ge x,y\)">\(z\ge x,y\)</span>; these minimal opens cover the intersection, so separatedness gives agreement there. They therefore glue uniquely on <span class="math" data-tex="\(O\)">\(O\)</span>. These are inverse comparisons with the original sheaf.</p>
+<p>A sheaf map gives linear maps on the <span class="math" data-tex="\(U_x\)">\(U_x\)</span> commuting with (1.1). A commuting family defines a map on (1.2) coordinatewise. The two constructions are inverse on all maps and natural in the objects. Thus the sheaf category is the full category <span class="math" data-tex="\(\mathsf D_P=\mathsf{Fun}(P,\mathsf{Vect}_k)\)">\(\mathsf D_P=\mathsf{Fun}(P,\mathsf{Vect}_k)\)</span>. Kernels, cokernels and exactness in this category are pointwise, either by their direct diagram constructions or by the preadditive-module prerequisite applied to the <span class="math" data-tex="\(k\)">\(k\)</span>-linearized opposite poset. Global sections are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\Gamma(M)=\{(m_x)_{x\in P}:M_{xy}m_x=m_y\},
+\tag{1.3}
+\]">\[
+\Gamma(M)=\{(m_x)_{x\in P}:M_{xy}m_x=m_y\},
+\tag{1.3}
+\]</span>
+<p>and equal <span class="math" data-tex="\(\operatorname{Hom}_{\mathsf D_P}(k_P,M)\)">\(\operatorname{Hom}_{\mathsf D_P}(k_P,M)\)</span>, where <span class="math" data-tex="\(k_P\)">\(k_P\)</span> has value <span class="math" data-tex="\(k\)">\(k\)</span> everywhere and identity transitions. The two maps take a transformation's value at 1 at every point, and send a compatible tuple to scalar multiplication by its coordinates.</p>
+<h2 id="2-both-evaluation-adjoints-with-their-hom-inverses">2. Both evaluation adjoints, with their Hom inverses</h2>
+<p>For <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span> and a vector space <span class="math" data-tex="\(V\)">\(V\)</span>, define diagrams</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+L_x(V)(y)=\begin{cases}V&amp;x\le y,\\0&amp;\text{otherwise},\end{cases}
+\qquad
+I_x(V)(y)=\begin{cases}V&amp;y\le x,\\0&amp;\text{otherwise}.\end{cases}
+\tag{2.1}
+\]">\[
+L_x(V)(y)=\begin{cases}V&amp;x\le y,\\0&amp;\text{otherwise},\end{cases}
+\qquad
+I_x(V)(y)=\begin{cases}V&amp;y\le x,\\0&amp;\text{otherwise}.\end{cases}
+\tag{2.1}
+\]</span>
+<p>An arrow inside a displayed support acts as identity; every other arrow acts as zero. Transitivity makes these functors. There are inverse natural bijections</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}(L_x(V),M)\simeq\operatorname{Hom}_k(V,M(x)),
+\qquad
+\operatorname{Hom}(M,I_x(V))\simeq\operatorname{Hom}_k(M(x),V).
+\tag{2.2}
+\]">\[
+\operatorname{Hom}(L_x(V),M)\simeq\operatorname{Hom}_k(V,M(x)),
+\qquad
+\operatorname{Hom}(M,I_x(V))\simeq\operatorname{Hom}_k(M(x),V).
+\tag{2.2}
+\]</span>
+<p>For the first, evaluate a map at <span class="math" data-tex="\(x\)">\(x\)</span>. Its inverse sends <span class="math" data-tex="\(a:V\to M(x)\)">\(a:V\to M(x)\)</span> to <span class="math" data-tex="\(M_{xy}a\)">\(M_{xy}a\)</span> when <span class="math" data-tex="\(x\le y\)">\(x\le y\)</span>, and to zero elsewhere. For the second, evaluate at <span class="math" data-tex="\(x\)">\(x\)</span>; the inverse for <span class="math" data-tex="\(b:M(x)\to V\)">\(b:M(x)\to V\)</span> has component <span class="math" data-tex="\(bM_{yx}\)">\(bM_{yx}\)</span> when <span class="math" data-tex="\(y\le x\)">\(y\le x\)</span>, and zero elsewhere. Naturality forces those same formulas in the reverse directions, proving both inverse identities. They commute with precomposition, postcomposition and the coefficient maps.</p>
+<p>Every vector space is both projective and injective: choose lifts of basis vectors through a surjection, and extend a basis of a subspace to a basis of its ambient space. Therefore (2.2) and pointwise exactness make <span class="math" data-tex="\(L_x(V)\)">\(L_x(V)\)</span> projective and <span class="math" data-tex="\(I_x(V)\)">\(I_x(V)\)</span> injective. Finite sums or products retain those properties by lifting or extending all their coordinates. Also</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\Gamma(I_x(V))\simeq V.
+\tag{2.3}
+\]">\[
+\Gamma(I_x(V))\simeq V.
+\tag{2.3}
+\]</span>
+<p>The inverse of projection at <span class="math" data-tex="\(x\)">\(x\)</span> assigns the same vector at every <span class="math" data-tex="\(y\le x\)">\(y\le x\)</span> and zero elsewhere. The arrow equations hold, and any compatible tuple is forced to have these coordinates.</p>
+<h2 id="3-the-normalized-injective-resolution-and-its-actual-contraction">3. The normalized injective resolution and its actual contraction</h2>
+<p>Let <span class="math" data-tex="\(h\)">\(h\)</span> be the largest number of strict arrows in a chain of <span class="math" data-tex="\(P\)">\(P\)</span>. For a nonempty poset, <span class="math" data-tex="\(0\le h\le |P|-1\)">\(0\le h\le |P|-1\)</span>. Set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+J^n(M)=\prod_{x_0&lt;\cdots&lt;x_n}I_{x_0}(M(x_n))\quad(n\ge0).
+\tag{3.1}
+\]">\[
+J^n(M)=\prod_{x_0&lt;\cdots&lt;x_n}I_{x_0}(M(x_n))\quad(n\ge0).
+\tag{3.1}
+\]</span>
+<p>These are finite products of injectives and are zero for <span class="math" data-tex="\(n&gt;h\)">\(n&gt;h\)</span>. A map of diagrams acts on each terminal coefficient, defining <span class="math" data-tex="\(J^n\)">\(J^n\)</span> on all morphisms. At a point <span class="math" data-tex="\(y\)">\(y\)</span>, a coordinate of <span class="math" data-tex="\(J^n(M)(y)\)">\(J^n(M)(y)\)</span> is indexed by <span class="math" data-tex="\(y\le x_0&lt;\cdots&lt;x_n\)">\(y\le x_0&lt;\cdots&lt;x_n\)</span> and lies in <span class="math" data-tex="\(M(x_n)\)">\(M(x_n)\)</span>.</p>
+<p>The augmentation <span class="math" data-tex="\(a:M\to J^0(M)\)">\(a:M\to J^0(M)\)</span> sends <span class="math" data-tex="\(m\in M(y)\)">\(m\in M(y)\)</span> to <span class="math" data-tex="\((M_{yx}m)_{x\ge y}\)">\((M_{yx}m)_{x\ge y}\)</span>. For an output coordinate <span class="math" data-tex="\(x_0&lt;\cdots&lt;x_{n+1}\)">\(x_0&lt;\cdots&lt;x_{n+1}\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+(d^ns)_{x_0\ldots x_{n+1}}
+=\sum_{i=0}^{n}(-1)^i s_{x_0\ldots\widehat{x_i}\ldots x_{n+1}}
+ +(-1)^{n+1}M_{x_nx_{n+1}}s_{x_0\ldots x_n}.
+\tag{3.2}
+\]">\[
+(d^ns)_{x_0\ldots x_{n+1}}
+=\sum_{i=0}^{n}(-1)^i s_{x_0\ldots\widehat{x_i}\ldots x_{n+1}}
++(-1)^{n+1}M_{x_nx_{n+1}}s_{x_0\ldots x_n}.
+\tag{3.2}
+\]</span>
+<p>The first omission uses the natural map <span class="math" data-tex="\(I_{x_1}(V)\to I_{x_0}(V)\)">\(I_{x_1}(V)\to I_{x_0}(V)\)</span>, identity at points below <span class="math" data-tex="\(x_0\)">\(x_0\)</span> and zero elsewhere. The middle omissions keep the first support and last coefficient. The last omission uses the displayed coefficient map. This describes each summand of a genuine diagram morphism, including at points outside its support. The construction commutes with every map <span class="math" data-tex="\(M\to N\)">\(M\to N\)</span>.</p>
+<p>The augmentation is killed by <span class="math" data-tex="\(d^0\)">\(d^0\)</span>: the coordinate at <span class="math" data-tex="\(x_0&lt;x_1\)">\(x_0&lt;x_1\)</span>, evaluated below <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, is the difference of the two equal composite restriction maps. In <span class="math" data-tex="\(d^{n+1}d^n\)">\(d^{n+1}d^n\)</span>, every double omission occurs twice with opposite signs. The map attached to the two omissions agrees in either order: support inclusions compose by transitivity, terminal coefficient maps compose by the diagram law, and an inclusion commutes with a coefficient map. Thus all terms cancel. This proves the complex equation with the coefficient maps included.</p>
+<p>Here is a contraction of the augmented complex at every fixed <span class="math" data-tex="\(y\)">\(y\)</span>. Let <span class="math" data-tex="\(b_y^0:J^0(M)(y)\to M(y)\)">\(b_y^0:J^0(M)(y)\to M(y)\)</span> be its coordinate at <span class="math" data-tex="\(y\)">\(y\)</span>. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+(b_y^ns)_{x_0\ldots x_{n-1}}
+=\begin{cases}s_{y,x_0,\ldots,x_{n-1}}&amp;y&lt;x_0,\\0&amp;y=x_0.\end{cases}
+\tag{3.3}
+\]">\[
+(b_y^ns)_{x_0\ldots x_{n-1}}
+=\begin{cases}s_{y,x_0,\ldots,x_{n-1}}&amp;y&lt;x_0,\\0&amp;y=x_0.\end{cases}
+\tag{3.3}
+\]</span>
+<p>Then <span class="math" data-tex="\(b_y^0a_y=1\)">\(b_y^0a_y=1\)</span>. In degree zero, at <span class="math" data-tex="\(x&gt;y\)">\(x&gt;y\)</span>, <span class="math" data-tex="\(b_y^1d^0(s)\)">\(b_y^1d^0(s)\)</span> is <span class="math" data-tex="\(s_x-M_{yx}s_y\)">\(s_x-M_{yx}s_y\)</span>, while <span class="math" data-tex="\(a_yb_y^0(s)\)">\(a_yb_y^0(s)\)</span> is <span class="math" data-tex="\(M_{yx}s_y\)">\(M_{yx}s_y\)</span>. At <span class="math" data-tex="\(x=y\)">\(x=y\)</span>, the first term is zero and the second is <span class="math" data-tex="\(s_y\)">\(s_y\)</span>. Their sum is identity.</p>
+<p>In higher degree, a coordinate beginning with <span class="math" data-tex="\(x_0&gt;y\)">\(x_0&gt;y\)</span> has in <span class="math" data-tex="\(b_y^{n+1}d^n(s)\)">\(b_y^{n+1}d^n(s)\)</span> the term <span class="math" data-tex="\(s_{x_0\ldots x_n}\)">\(s_{x_0\ldots x_n}\)</span> obtained by deleting the prepended <span class="math" data-tex="\(y\)">\(y\)</span>. Every other deletion, including the terminal coefficient term, cancels the corresponding term of <span class="math" data-tex="\(d^{n-1}b_y^n(s)\)">\(d^{n-1}b_y^n(s)\)</span>; inserting <span class="math" data-tex="\(y\)">\(y\)</span> shifts that deletion's sign by one. If <span class="math" data-tex="\(x_0=y\)">\(x_0=y\)</span>, the first composite is zero, and in the second composite only deletion of that first point survives, giving exactly <span class="math" data-tex="\(s_{x_0\ldots x_n}\)">\(s_{x_0\ldots x_n}\)</span>. Hence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+b_y^{n+1}d^n+d^{n-1}b_y^n=1\quad(n\ge1).
+\tag{3.4}
+\]">\[
+b_y^{n+1}d^n+d^{n-1}b_y^n=1\quad(n\ge1).
+\tag{3.4}
+\]</span>
+<p>These contractions establish pointwise exactness. They are not asserted to be natural as <span class="math" data-tex="\(y\)">\(y\)</span> varies; exactness does not require that assertion. We have a functorial finite injective resolution</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+0\longrightarrow M\xrightarrow a J^0(M)\longrightarrow\cdots
+\longrightarrow J^h(M)\longrightarrow0.
+\tag{3.5}
+\]">\[
+0\longrightarrow M\xrightarrow a J^0(M)\longrightarrow\cdots
+\longrightarrow J^h(M)\longrightarrow0.
+\tag{3.5}
+\]</span>
+<h2 id="4-a-projective-resolution-with-the-opposite-endpoint">4. A projective resolution with the opposite endpoint</h2>
+<p>Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+Q_n(M)=\bigoplus_{x_0&lt;\cdots&lt;x_n}L_{x_n}(M(x_0))\quad(n\ge0).
+\tag{4.1}
+\]">\[
+Q_n(M)=\bigoplus_{x_0&lt;\cdots&lt;x_n}L_{x_n}(M(x_0))\quad(n\ge0).
+\tag{4.1}
+\]</span>
+<p>Every term is projective and terms above <span class="math" data-tex="\(h\)">\(h\)</span> are zero. The augmentation <span class="math" data-tex="\(e:Q_0(M)\to M\)">\(e:Q_0(M)\to M\)</span>, at <span class="math" data-tex="\(y\)">\(y\)</span>, sends the summand <span class="math" data-tex="\(m\in M(x)\)">\(m\in M(x)\)</span>, <span class="math" data-tex="\(x\le y\)">\(x\le y\)</span>, to <span class="math" data-tex="\(M_{xy}m\)">\(M_{xy}m\)</span>.</p>
+<p>For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, the face deleting <span class="math" data-tex="\(x_0\)">\(x_0\)</span> uses <span class="math" data-tex="\(M_{x_0x_1}\)">\(M_{x_0x_1}\)</span>, the faces deleting an interior point keep the coefficient and last support, and the face deleting <span class="math" data-tex="\(x_n\)">\(x_n\)</span> uses the natural map <span class="math" data-tex="\(L_{x_n}(V)\to L_{x_{n-1}}(V)\)">\(L_{x_n}(V)\to L_{x_{n-1}}(V)\)</span>. Sum these faces with signs <span class="math" data-tex="\((-1)^i\)">\((-1)^i\)</span>, <span class="math" data-tex="\(0\le i\le n\)">\(0\le i\le n\)</span>, to define <span class="math" data-tex="\(\partial_n:Q_n\to Q_{n-1}\)">\(\partial_n:Q_n\to Q_{n-1}\)</span>. On a coordinate at <span class="math" data-tex="\(y\)">\(y\)</span>, this is the rule on a labelled vector</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\partial_n[x_0&lt;\cdots&lt;x_n;m]
+=[x_1&lt;\cdots&lt;x_n;M_{x_0x_1}m]
+ +\sum_{i=1}^{n}(-1)^i[x_0&lt;\cdots&lt;\widehat{x_i}&lt;\cdots&lt;x_n;m].
+\tag{4.2}
+\]">\[
+\partial_n[x_0&lt;\cdots&lt;x_n;m]
+=[x_1&lt;\cdots&lt;x_n;M_{x_0x_1}m]
++\sum_{i=1}^{n}(-1)^i[x_0&lt;\cdots&lt;\widehat{x_i}&lt;\cdots&lt;x_n;m].
+\tag{4.2}
+\]</span>
+<p>All chains in this formula end at a point at most <span class="math" data-tex="\(y\)">\(y\)</span>. The support and coefficient maps are natural and their composites commute. Double omission therefore cancels with opposite signs, proving <span class="math" data-tex="\(\partial_{n-1}\partial_n=0\)">\(\partial_{n-1}\partial_n=0\)</span>. The two terms for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> have equal images under <span class="math" data-tex="\(e\)">\(e\)</span>, so <span class="math" data-tex="\(e\partial_1=0\)">\(e\partial_1=0\)</span>. These constructions commute with all coefficient-diagram maps.</p>
+<p>At <span class="math" data-tex="\(y\)">\(y\)</span>, embed <span class="math" data-tex="\(M(y)\)">\(M(y)\)</span> in the summand <span class="math" data-tex="\([y;m]\)">\([y;m]\)</span> of <span class="math" data-tex="\(Q_0(M)(y)\)">\(Q_0(M)(y)\)</span>. For <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, define on each labelled vector</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+t_{n,y}[x_0&lt;\cdots&lt;x_n;m]
+=\begin{cases}(-1)^{n+1}[x_0&lt;\cdots&lt;x_n&lt;y;m]&amp;x_n&lt;y,\\0&amp;x_n=y.\end{cases}
+\tag{4.3}
+\]">\[
+t_{n,y}[x_0&lt;\cdots&lt;x_n;m]
+=\begin{cases}(-1)^{n+1}[x_0&lt;\cdots&lt;x_n&lt;y;m]&amp;x_n&lt;y,\\0&amp;x_n=y.\end{cases}
+\tag{4.3}
+\]</span>
+<p>The augmentation composed with its section is identity. In degree zero, if <span class="math" data-tex="\(x&lt;y\)">\(x&lt;y\)</span>, <span class="math" data-tex="\(\partial_1t_{0,y}[x;m]=[x;m]-[y;M_{xy}m]\)">\(\partial_1t_{0,y}[x;m]=[x;m]-[y;M_{xy}m]\)</span>; the augmentation section supplies the missing second term. If <span class="math" data-tex="\(x=y\)">\(x=y\)</span>, the latter already gives identity. In higher degree with <span class="math" data-tex="\(x_n&lt;y\)">\(x_n&lt;y\)</span>, the face deleting the newly appended <span class="math" data-tex="\(y\)">\(y\)</span> in <span class="math" data-tex="\(\partial_{n+1}t_{n,y}\)">\(\partial_{n+1}t_{n,y}\)</span> has sign <span class="math" data-tex="\((-1)^{n+1}(-1)^{n+1}=1\)">\((-1)^{n+1}(-1)^{n+1}=1\)</span> and gives the original vector. All other faces cancel those in <span class="math" data-tex="\(t_{n-1,y}\partial_n\)">\(t_{n-1,y}\partial_n\)</span>, since their outside signs differ by one. If <span class="math" data-tex="\(x_n=y\)">\(x_n=y\)</span>, only the face deleting <span class="math" data-tex="\(x_n\)">\(x_n\)</span> can be appended back; its two signs are <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>, so its composite also gives the original vector. Thus these are the complete augmented contraction equations. Pointwise exactness gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+0\longrightarrow Q_h(M)\longrightarrow\cdots\longrightarrow Q_0(M)
+\xrightarrow e M\longrightarrow0.
+\tag{4.4}
+\]">\[
+0\longrightarrow Q_h(M)\longrightarrow\cdots\longrightarrow Q_0(M)
+\xrightarrow e M\longrightarrow0.
+\tag{4.4}
+\]</span>
+<p>Again the pointwise contractions are used for exactness, not as a contraction in the diagram category.</p>
+<h2 id="5-the-signed-complex-computing-every-higher-section">5. The signed complex computing every higher section</h2>
+<p>Apply global sections to (3.5) and use (2.3). Its actual complex is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+C^n(P,M)=\prod_{x_0&lt;\cdots&lt;x_n}M(x_n),
+\tag{5.1}
+\]">\[
+C^n(P,M)=\prod_{x_0&lt;\cdots&lt;x_n}M(x_n),
+\tag{5.1}
+\]</span>
+<p>with differential (3.2). All comparison maps are the maps on terminal coefficients. In degree zero, its kernel is exactly (1.3), since <span class="math" data-tex="\((d^0s)_{xy}=s_y-M_{xy}s_x\)">\((d^0s)_{xy}=s_y-M_{xy}s_x\)</span>. The injective-resolution computation in the prerequisite now gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+R^n\Gamma(M)=H^n(C^\bullet(P,M)),\qquad R^n\Gamma(M)=0\quad(n&gt;h).
+\tag{5.2}
+\]">\[
+R^n\Gamma(M)=H^n(C^\bullet(P,M)),\qquad R^n\Gamma(M)=0\quad(n&gt;h).
+\tag{5.2}
+\]</span>
+<p>Likewise (4.4), placed in nonpositive cochain degrees, computes every <span class="math" data-tex="\(\operatorname{Ext}^n(A,B)\)">\(\operatorname{Ext}^n(A,B)\)</span> by the complex <span class="math" data-tex="\(\operatorname{Hom}(Q_n(A),B)\)">\(\operatorname{Hom}(Q_n(A),B)\)</span>, with differential precomposition by <span class="math" data-tex="\(\partial_{n+1}\)">\(\partial_{n+1}\)</span>. Alternatively (3.5) for <span class="math" data-tex="\(B\)">\(B\)</span> computes it by <span class="math" data-tex="\(\operatorname{Hom}(A,J^n(B))\)">\(\operatorname{Hom}(A,J^n(B))\)</span>. The bounded Hom comparison of the prerequisite identifies these computations naturally, including the maps in both inputs. Both complexes are zero above <span class="math" data-tex="\(h\)">\(h\)</span>. Thus <span class="math" data-tex="\(\mathsf D_P\)">\(\mathsf D_P\)</span> has homological dimension at most <span class="math" data-tex="\(h\)">\(h\)</span>, and every object has projective and injective dimension at most <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> is empty, its diagram and sheaf categories are zero, all the displayed terms are zero and all Hom and derived section groups vanish. Set <span class="math" data-tex="\(h=-1\)">\(h=-1\)</span> in that case. For nonempty <span class="math" data-tex="\(P\)">\(P\)</span>, the bound is only an upper bound: relations and the coefficient diagram determine the actual groups.</p>
+<h2 id="6-four-graded-exercises-with-complete-solutions">6. Four graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (grade 2).</strong> Let <span class="math" data-tex="\(P=\{0,a,b,1\}\)">\(P=\{0,a,b,1\}\)</span> be the diamond <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, <span class="math" data-tex="\(0&lt;b&lt;1\)">\(0&lt;b&lt;1\)</span>, with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> incomparable. Let <span class="math" data-tex="\(S_x\)">\(S_x\)</span> be the diagram with value <span class="math" data-tex="\(k\)">\(k\)</span> only at <span class="math" data-tex="\(x\)">\(x\)</span>. Compute <span class="math" data-tex="\(\operatorname{Ext}^2(S_0,S_1)\)">\(\operatorname{Ext}^2(S_0,S_1)\)</span> and the homological dimension. Explain why global sections nevertheless have no positive derived groups.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(P_x=L_x(k)\)">\(P_x=L_x(k)\)</span>. The evaluation quotient <span class="math" data-tex="\(P_0\to S_0\)">\(P_0\to S_0\)</span> is identity at 0 and zero at the other points. Its kernel has value zero at 0 and <span class="math" data-tex="\(k\)">\(k\)</span> at <span class="math" data-tex="\(a,b,1\)">\(a,b,1\)</span>, with both maps to 1 identity. The natural inclusions from <span class="math" data-tex="\(P_a,P_b\)">\(P_a,P_b\)</span> onto this kernel are identity at <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and the sum map <span class="math" data-tex="\(k^2\to k\)">\(k^2\to k\)</span> at 1. Its kernel is supported at 1, with vectors <span class="math" data-tex="\((t,-t)\)">\((t,-t)\)</span>. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+0\longrightarrow P_1\xrightarrow{(1,-1)}P_a\oplus P_b
+\xrightarrow{(1,1)}P_0\longrightarrow S_0\longrightarrow0
+\tag{6.1}
+\]">\[
+0\longrightarrow P_1\xrightarrow{(1,-1)}P_a\oplus P_b
+\xrightarrow{(1,1)}P_0\longrightarrow S_0\longrightarrow0
+\tag{6.1}
+\]</span>
+<p>is exact at every point; all maps commute with the diamond relations. Applying <span class="math" data-tex="\(\operatorname{Hom}(-,S_1)\)">\(\operatorname{Hom}(-,S_1)\)</span> and (2.2) gives zero in degrees zero and one and <span class="math" data-tex="\(k\)">\(k\)</span> in degree two. Hence <span class="math" data-tex="\(\operatorname{Ext}^2(S_0,S_1)=k\)">\(\operatorname{Ext}^2(S_0,S_1)=k\)</span>. The height is 2, so the upper bound is sharp and the homological dimension is exactly 2.</p>
+<p>Every compatible tuple for any diagram is determined by its value at the least point 0, with inverse <span class="math" data-tex="\(m\mapsto(M_{0x}m)_x\)">\(m\mapsto(M_{0x}m)_x\)</span>. Thus <span class="math" data-tex="\(\Gamma(M)=M(0)\)">\(\Gamma(M)=M(0)\)</span> naturally. This is an exact evaluation functor and has zero positive derived groups. Equivalently, <span class="math" data-tex="\(k_P=P_0\)">\(k_P=P_0\)</span> is projective. Nonzero Ext for another source is compatible with exactness of Hom from this particular source.</p>
+<p><strong>Exercise 2 (grade 2).</strong> For the chain <span class="math" data-tex="\(0&lt;1&lt;\cdots&lt;m\)">\(0&lt;1&lt;\cdots&lt;m\)</span>, build a projective resolution of every diagram of length at most one, even when <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>. Determine its homological dimension.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(V_i=M(i)\)">\(V_i=M(i)\)</span>, <span class="math" data-tex="\(f_i=M_{i,i+1}\)">\(f_i=M_{i,i+1}\)</span> and <span class="math" data-tex="\(f_{ij}=M_{ij}\)">\(f_{ij}=M_{ij}\)</span>. There is the exact row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+0\longrightarrow\bigoplus_{i&lt;m}L_{i+1}(V_i)
+\xrightarrow{\delta}\bigoplus_{i\le m}L_i(V_i)
+\xrightarrow{\epsilon}M\longrightarrow0.
+\tag{6.2}
+\]">\[
+0\longrightarrow\bigoplus_{i&lt;m}L_{i+1}(V_i)
+\xrightarrow{\delta}\bigoplus_{i\le m}L_i(V_i)
+\xrightarrow{\epsilon}M\longrightarrow0.
+\tag{6.2}
+\]</span>
+<p>The <span class="math" data-tex="\(i\)">\(i\)</span>-summand of <span class="math" data-tex="\(\delta\)">\(\delta\)</span> has components <span class="math" data-tex="\(+v\)">\(+v\)</span> in the <span class="math" data-tex="\(i\)">\(i\)</span>-summand and <span class="math" data-tex="\(-f_i(v)\)">\(-f_i(v)\)</span> in the <span class="math" data-tex="\((i+1)\)">\((i+1)\)</span>-summand. Their natural support maps define a diagram map. At <span class="math" data-tex="\(j\)">\(j\)</span>, <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> sends <span class="math" data-tex="\((v_0,\ldots,v_j)\)">\((v_0,\ldots,v_j)\)</span> to <span class="math" data-tex="\(\sum_{i\le j}f_{ij}v_i\)">\(\sum_{i\le j}f_{ij}v_i\)</span>, and is onto using the final summand. It kills <span class="math" data-tex="\(\delta\)">\(\delta\)</span> by composition of the <span class="math" data-tex="\(f_i\)">\(f_i\)</span>.</p>
+<p>At <span class="math" data-tex="\(j\)">\(j\)</span>, the coordinates of <span class="math" data-tex="\(\delta(w_0,\ldots,w_{j-1})\)">\(\delta(w_0,\ldots,w_{j-1})\)</span> are <span class="math" data-tex="\(w_0\)">\(w_0\)</span>, <span class="math" data-tex="\(w_i-f_{i-1}w_{i-1}\)">\(w_i-f_{i-1}w_{i-1}\)</span> for <span class="math" data-tex="\(0&lt;i&lt;j\)">\(0&lt;i&lt;j\)</span>, and <span class="math" data-tex="\(-f_{j-1}w_{j-1}\)">\(-f_{j-1}w_{j-1}\)</span>. They determine every <span class="math" data-tex="\(w_i\)">\(w_i\)</span> uniquely, so <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is injective. Conversely, for a tuple in <span class="math" data-tex="\(\ker\epsilon\)">\(\ker\epsilon\)</span>, set <span class="math" data-tex="\(w_0=v_0\)">\(w_0=v_0\)</span> and recursively <span class="math" data-tex="\(w_i=v_i+f_{i-1}w_{i-1}\)">\(w_i=v_i+f_{i-1}w_{i-1}\)</span>. The final equation <span class="math" data-tex="\(\sum f_{ij}v_i=0\)">\(\sum f_{ij}v_i=0\)</span> is precisely <span class="math" data-tex="\(v_j=-f_{j-1}w_{j-1}\)">\(v_j=-f_{j-1}w_{j-1}\)</span>. This gives the unique preimage and proves exactness, also at <span class="math" data-tex="\(j=0\)">\(j=0\)</span>.</p>
+<p>Both terms are projective by (2.2). If <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, the resolution <span class="math" data-tex="\(0\to P_1\to P_0\to S_0\to0\)">\(0\to P_1\to P_0\to S_0\to0\)</span>, tested against <span class="math" data-tex="\(S_1\)">\(S_1\)</span>, gives <span class="math" data-tex="\(\operatorname{Ext}^1(S_0,S_1)=k\)">\(\operatorname{Ext}^1(S_0,S_1)=k\)</span>. Hence the homological dimension is exactly 1, although the strict-chain height is <span class="math" data-tex="\(m\)">\(m\)</span>. If <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, the category is vector spaces and has dimension 0. No finite-dimensional value assumption entered the argument.</p>
+<p><strong>Exercise 3 (grade 3).</strong> Let <span class="math" data-tex="\(L\)">\(L\)</span> be the poset of nonempty proper subsets of <span class="math" data-tex="\(\{0,1,2\}\)">\(\{0,1,2\}\)</span>, ordered by inclusion. Compute all higher sections of its constant diagram <span class="math" data-tex="\(k_L\)">\(k_L\)</span>, with an explicit coordinate on the nonzero positive group.</p>
+<p><strong>Solution.</strong> Write the three singletons as <span class="math" data-tex="\(v_0,v_1,v_2\)">\(v_0,v_1,v_2\)</span> and the three pairs as <span class="math" data-tex="\(e_{01},e_{12},e_{20}\)">\(e_{01},e_{12},e_{20}\)</span>. The six strict arrows, in order, are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+v_0&lt;e_{01},\quad v_1&lt;e_{01},\quad v_1&lt;e_{12},\quad
+v_2&lt;e_{12},\quad v_2&lt;e_{20},\quad v_0&lt;e_{20}.
+\tag{6.3}
+\]">\[
+v_0&lt;e_{01},\quad v_1&lt;e_{01},\quad v_1&lt;e_{12},\quad
+v_2&lt;e_{12},\quad v_2&lt;e_{20},\quad v_0&lt;e_{20}.
+\tag{6.3}
+\]</span>
+<p>There is no strict chain with two arrows, so (5.1) is <span class="math" data-tex="\(k^6\xrightarrow d k^6\)">\(k^6\xrightarrow d k^6\)</span> in degrees zero and one. For each arrow its component is target value minus source value. A tuple in <span class="math" data-tex="\(\ker d\)">\(\ker d\)</span> has the same value on adjacent points of this six-cycle. Successively following (6.3) forces all six values equal; conversely a constant tuple is killed. Thus <span class="math" data-tex="\(H^0=k\)">\(H^0=k\)</span> and <span class="math" data-tex="\(\operatorname{rank}d=5\)">\(\operatorname{rank}d=5\)</span>.</p>
+<p>For arrow coordinates <span class="math" data-tex="\((c_0,\ldots,c_5)\)">\((c_0,\ldots,c_5)\)</span>, set <span class="math" data-tex="\(\lambda(c)=c_0-c_1+c_2-c_3+c_4-c_5\)">\(\lambda(c)=c_0-c_1+c_2-c_3+c_4-c_5\)</span>. Substituting the target-minus-source formulas cancels all six point values, so <span class="math" data-tex="\(\lambda d=0\)">\(\lambda d=0\)</span>. The functional is onto, since it sends the first coordinate vector to 1. Its kernel has dimension 5 and equals <span class="math" data-tex="\(\operatorname{im}d\)">\(\operatorname{im}d\)</span>. Hence <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> induces an isomorphism <span class="math" data-tex="\(H^1\to k\)">\(H^1\to k\)</span>, whose inverse sends a scalar to that first coordinate class. Higher groups are zero. The signs also work in characteristic two.</p>
+<p><strong>Exercise 4 (grade 4).</strong> For <span class="math" data-tex="\(z\)">\(z\)</span> in a finite poset <span class="math" data-tex="\(P\)">\(P\)</span>, identify all higher sections of <span class="math" data-tex="\(S_z\)">\(S_z\)</span> in terms of the strict lower poset <span class="math" data-tex="\(L_z=\{x:x&lt;z\}\)">\(L_z=\{x:x&lt;z\}\)</span>. Apply this to the poset obtained by adjoining a greatest point <span class="math" data-tex="\(z\)">\(z\)</span> to the six-point poset <span class="math" data-tex="\(L\)">\(L\)</span> of Exercise 3. Exhibit a nonzero second derived section.</p>
+<p><strong>Solution.</strong> Define the reduced order-complex cochains of <span class="math" data-tex="\(L_z\)">\(L_z\)</span> by one copy of <span class="math" data-tex="\(k\)">\(k\)</span> for each strict chain of <span class="math" data-tex="\(r+1\)">\(r+1\)</span> points in degree <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>, with the usual alternating omission differential, and by <span class="math" data-tex="\(k\)">\(k\)</span> in degree minus one mapping to the constant degree-zero tuple. If <span class="math" data-tex="\(L_z\)">\(L_z\)</span> is empty, only this degree-minus-one term remains. This defines <span class="math" data-tex="\(\widetilde H^r\)">\(\widetilde H^r\)</span> algebraically, without a geometric comparison theorem.</p>
+<p>In (5.1) for <span class="math" data-tex="\(S_z\)">\(S_z\)</span>, only chains ending in <span class="math" data-tex="\(z\)">\(z\)</span> contribute. The chain <span class="math" data-tex="\((z)\)">\((z)\)</span> gives <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero. In degree <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, remove the final <span class="math" data-tex="\(z\)">\(z\)</span> to obtain a strict chain of <span class="math" data-tex="\(n\)">\(n\)</span> points of <span class="math" data-tex="\(L_z\)">\(L_z\)</span>. This gives inverse coordinate identifications with the reduced complex in degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. The terminal term of (3.2) is zero, since its preceding point has zero <span class="math" data-tex="\(S_z\)">\(S_z\)</span>-value. Every other omission is exactly the reduced omission differential; the degree-zero map assigns the same scalar to every chain <span class="math" data-tex="\(x&lt;z\)">\(x&lt;z\)</span>. Therefore these identifications commute with every differential, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+R^n\Gamma(S_z)\simeq\widetilde H^{n-1}(L_z;k)\quad(n\ge0).
+\tag{6.4}
+\]">\[
+R^n\Gamma(S_z)\simeq\widetilde H^{n-1}(L_z;k)\quad(n\ge0).
+\tag{6.4}
+\]</span>
+<p>For the seven-point example the actual complex is <span class="math" data-tex="\(k\to k^6\to k^6\)">\(k\to k^6\to k^6\)</span>, in degrees zero, one and two. The first arrow is the constant tuple inclusion and the second is the map <span class="math" data-tex="\(d\)">\(d\)</span> of Exercise 3. Their ranks are 1 and 5. Hence degree-zero and degree-one cohomology vanish, while degree two is <span class="math" data-tex="\(k\)">\(k\)</span>, identified by the same <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Its inverse takes the class of the first flag <span class="math" data-tex="\(v_0&lt;e_{01}&lt;z\)">\(v_0&lt;e_{01}&lt;z\)</span>. There are no higher terms. Thus the maximal-point sheaf has a genuine nonzero <span class="math" data-tex="\(R^2\Gamma\)">\(R^2\Gamma\)</span>, despite having only one nonzero point value. This example reaches the height bound 2 for global sections themselves.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Adam Brown and Ondrej Draganov, <a href="https://arxiv.org/pdf/2112.02609v2">Computing Minimal Injective Resolutions of Sheaves on Finite Posets</a>, §4.1, discusses order-complex injective resolutions for finite-dimensional diagrams. The resolutions above allow arbitrary vector-space values; no minimality is required. Original lesson text: CC0-1.0.</p>
+</main></body></html>

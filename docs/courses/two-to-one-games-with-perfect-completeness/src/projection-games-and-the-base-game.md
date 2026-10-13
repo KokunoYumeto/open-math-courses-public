@@ -35,7 +35,7 @@ A *2-to-1 game* has the answer sets \(L_u=\{1,\dots,2q\}\) and \(R_v=\{1,\dots,q
 
 **The theorem of [OpenAI-G].** For every rational \(\delta\in(0,1)\) there are an integer \(q\ge2\) and a map, computable in polynomial time, from Boolean formulas in conjunctive normal form with three literals per clause to 2-to-1 games with the answer sets \(\{1,\dots,2q\}\) and \(\{1,\dots,q\}\) and the uniform law on an explicit list of edges, such that a satisfiable formula gives a game of value \(1\) and an unsatisfiable formula a game of value at most \(\delta\).
 
-This lesson does not prove it. It prepares the starting point of the proof.
+This lesson does not prove it. It prepares the starting point of the proof. The course proves the theorem in its last lesson, [The parameters and the theorem](the-parameters-and-the-theorem.md), from three theorems of the literature that are stated as hypotheses: (PR) and (PCP) of this lesson, and a hypothesis (GE) on Grassmann graphs.
 
 ## 2. Repetition
 

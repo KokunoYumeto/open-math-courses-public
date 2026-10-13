@@ -1,6 +1,6 @@
 # Full left-Hilbert-algebra domains and the unchanged closed involution
 
-Original OA-FLOW proof candidate, written for the authorized course publisher. The mixed-product and fullness proofs below retain the complete domains on an arbitrary Hilbert space. Their precise earlier inputs and P514 selection obligations are recorded separately.
+The second dual of a left Hilbert algebra is full and has the same closed involution. The mixed-product identity holds for all bounded left and right vectors on an arbitrary Hilbert space.
 
 <a id="oa-flow.wh04.1"></a>
 
@@ -13,7 +13,7 @@ Let $\mathcal A\subseteq H$ be a left Hilbert algebra, let $L_a$ denote left mul
 - **[HA-R5–6](OA-FLOW-HA-R.md#oa-flow.ha-r.5):** the first dual algebra $\mathcal D=\mathcal B_r\cap D(F)$ is a right Hilbert algebra, its closed involution is exactly $F$, and $R(\mathcal D)''=M'$. These results apply equally to the opposite of any right Hilbert algebra. **[HA-R7](OA-FLOW-HA-R.md#oa-flow.ha-r.7):** the multipliers of that dual algebra are precisely the bounded multiplication ideal intersected with its adjoint ideal.
 - **[BD-3](OA-FLOW-BD.md#oa-flow.bd.3):** a net of positive contractions in the represented involutive algebra $R(\mathcal D)$ converges strongly to $I$. The proof explicitly includes algebras that are neither norm closed nor unital, with the actual support corner and nondegeneracy accounted for.
 
-These are actual logical premises. A bibliography entry or a public statement of RD does not replace its earlier proof. The dual-algebra theorem is not the modular commutant theorem $JMJ=M'$ and uses no modular automorphism group.
+The dual-algebra theorem is not the modular commutant theorem $JMJ=M'$ and uses no modular automorphism group.
 
 Here $\mathcal B_r$ consists of all $\eta\in H$ for which $a\mapsto L_a\eta$ is bounded in the Hilbert norm of $a\in\mathcal A$; $R_\eta$ is its bounded extension. Define $\mathcal B_l$ using the complete first dual algebra:
 
@@ -108,7 +108,7 @@ No vector in $H$ is cyclic for $M$: each square-summable vector has countable su
 
 <a id="oa-flow.wh04.7"></a>
 
-## FLOW-WH04-07 — Scope and publication status
+## FLOW-WH04-07 — Sources and applications
 
 The freely readable [Boey thesis](https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/245c2a41-48ee-4c8d-ad38-95a8353dc3d1/content) contains the general dual-algebra construction in Theorem 4.5 and Lemmas 4.6–4.10, printed pp.27–31 (PDF pp.33–37), and abbreviates second-dual fullness on printed p.32 (PDF p.38). It is comparison evidence, not a substitute for the programme proofs. This note supplies the exact mixed-product and fullness argument and the closed-domain bridge in original prose.
 

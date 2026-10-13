@@ -57,7 +57,7 @@ For empty $F$ use zero. Its $L^p$ error from $1_E$ is at most $\varepsilon^{1/p}
 
 Translations $T_tf(s)=f(s-t)$ are isometries on each of these spaces, by scalar change of variables. For a compactly supported continuous function, uniform continuity and a common bounded support for small translations give $\|T_tf-f\|_p\to0$. Approximation and the isometry extend this to every $f\in L^p$.
 
-We calculate the Gaussian normalization without a planar change-of-variables theorem. Put $I=\int_{\mathbb R}e^{-x^2}\,dx$, finite by comparison outside a compact interval with $e^{-|x|}$. The scalar interchange theorem gives
+We calculate the Gaussian normalization without a planar change-of-variables theorem. Put $I=\int_{\mathbb R}e^{-x^2}\,dx$, finite by comparison outside a compact interval with $e^{-|x|}$. The [scalar interchange theorem](#oa-flow.ff.1) gives
 $$
 I^2=\int_{\mathbb R^2}e^{-(x^2+y^2)}\,dx\,dy
 =\int_0^1 |\{(x,y):x^2+y^2<-\log t\}|\,dt.
@@ -99,12 +99,12 @@ $$
 \mathcal F_+f(r)=(2\pi)^{-1/2}\int e^{irs}f(s)\,ds,
 \qquad \mathcal F_-f(r)=(2\pi)^{-1/2}\int e^{-irs}f(s)\,ds.
 $$
-They are bounded continuous functions by DCT. Formula (FF1) implies the explicit identity
+They are bounded continuous functions by DCT. Formula (FF1) in [FF-1](#oa-flow.ff.2) implies the explicit identity
 $$
 \gamma_\varepsilon(t)=\frac1{2\pi}\int e^{-\varepsilon r^2}e^{irt}\,dr.
 \tag{FF3}
 $$
-If either sign of the Fourier integral of $f\in L^1$ is identically zero, substitute (FF3) in $f*\gamma_\varepsilon$. The double absolute integral is bounded by $\|f\|_1(2\pi)^{-1}\int e^{-\varepsilon r^2}\,dr<\infty$. Scalar interchange shows $f*\gamma_\varepsilon=0$ everywhere; (FF2) then gives $f=0$ in $L^1$. This proves Fourier uniqueness, not only its continuous-function special case.
+If either sign of the Fourier integral of $f\in L^1$ is identically zero, substitute (FF3) in $f*\gamma_\varepsilon$. The double absolute integral is bounded by $\|f\|_1(2\pi)^{-1}\int e^{-\varepsilon r^2}\,dr<\infty$. [Scalar interchange](#oa-flow.ff.1) shows $f*\gamma_\varepsilon=0$ everywhere; (FF2) then gives $f=0$ in $L^1$. This proves Fourier uniqueness, not only its continuous-function special case.
 
 For $f\in C_c(\mathbb R)$, direct expansion and (FF3) give
 $$
@@ -152,7 +152,7 @@ No general Fourier inversion theorem was assumed to obtain these identities.
 
 ## FF-3. Vector and predual integrals used in the core
 
-For a separable Hilbert space $H$ with orthonormal basis $(v_n)$, measurable $H$-valued functions have measurable coordinates; conversely measurable coordinates with square-summable values define a measurable vector function by their finite coordinate sums. Their $L^2$ norm is the sum of their coordinate $L^2$ norms, by MCT. The complete scalar $L^2$ spaces and the complete Hilbert direct sum therefore prove vector $L^2$ completeness. Applying FF-2 coordinatewise gives a unitary Fourier transform on $L^2(\mathbb R,H)$. Countable nonnegative interchange shows that its norm is the scalar sum of the coordinate norms. For an integrable square-integrable vector function the transform agrees with its vector integral: approximate by finite coordinates and then simple integrable functions, using the integral norm bound below. Thus the vector Plancherel identity used later has been proved from scalar results.
+For a separable Hilbert space $H$ with orthonormal basis $(v_n)$, measurable $H$-valued functions have measurable coordinates; conversely measurable coordinates with square-summable values define a measurable vector function by their finite coordinate sums. Their $L^2$ norm is the sum of their coordinate $L^2$ norms, by MCT. The complete scalar $L^2$ spaces and the complete Hilbert direct sum therefore prove vector $L^2$ completeness. Applying [FF-2](#oa-flow.ff.3) coordinatewise gives a unitary Fourier transform on $L^2(\mathbb R,H)$. Countable nonnegative interchange shows that its norm is the scalar sum of the coordinate norms. For an integrable square-integrable vector function the transform agrees with its vector integral: approximate by finite coordinates and then simple integrable functions, using the integral norm bound below. Thus the vector Plancherel identity used later has been proved from scalar results.
 
 For completeness, a strongly measurable vector function $F$ with $\int\|F\|<\infty$ is integrated as follows. It has simple approximants converging pointwise with norm error tending to zero and dominated by an integrable function, after first truncating its support and values. This follows from a countable dense subset of the separable range and measurable nearest-point choices. Their vector integrals are Cauchy because the norm of a simple integral is at most the integral of its norm; DCT passes to the limit. The result is independent of the approximants, has the same norm bound, and commutes with bounded linear maps. For continuous functions on compact intervals it agrees with Riemann integration, because both use uniform step approximation. For a continuous function with integrable norm it agrees with the limit of its compact integrals.
 
@@ -198,13 +198,13 @@ h_n=\min(A,n)\ \text{ on }H_0,\qquad h_n=nI\ \text{ on }H_0^\perp.
 $$
 If a form is initially known to be lower semicontinuous, its graph norm is complete. A graph-Cauchy sequence $v_n$ converges in Hilbert norm to $v$; lower semicontinuity applied to $v_n-v_m$, with $m\to\infty$, gives $q(v_n-v)$ bounded by the graph-Cauchy tail. It follows that $v\in D_q$ and $v_n\to v$ in graph norm. Thus either characterization of closedness is available.
 
-For the integral form $q(v)=\int\|T_t v\|^2\,dt$, where each $T_t$ is bounded and the vector functions are measurable, graph completeness follows directly. A graph-Cauchy sequence gives a Hilbert limit $v$ and a vector $L^2$ limit $F$. The a.e. subsequence result of FF-3 identifies $F(t)=T_tv$, since $T_t v_n\to T_tv$ for each fixed $t$. This proves completeness and retains the possible infinite part.
+For the integral form $q(v)=\int\|T_t v\|^2\,dt$, where each $T_t$ is bounded and the vector functions are measurable, graph completeness follows directly. A graph-Cauchy sequence gives a Hilbert limit $v$ and a vector $L^2$ limit $F$. The a.e. subsequence result of [FF-3](#oa-flow.ff.4) identifies $F(t)=T_tv$, since $T_t v_n\to T_tv$ for each fixed $t$. This proves completeness and retains the possible infinite part.
 
 <a id="oa-flow.ff.6"></a>
 
 ## FF-5. The concrete extended-positive cone and its covariance
 
-For a concrete von Neumann algebra $N$, define its extended-positive spectral elements to be the pairs of FF-4 whose finite-part spectral projections and infinite-part projection belong to $N$. Equivalently their closed forms are invariant under every unitary in $N'$: one direction follows by spectral cutoffs, and the other follows because invariance gives a unitary on the graph Hilbert space, intertwines its inclusion, and therefore commutes with $jj^*$ and all its spectral projections. The unitary-span and bicommutant argument is proved in SB-6.
+For a concrete von Neumann algebra $N$, define its extended-positive spectral elements to be the pairs of [FF-4](#oa-flow.ff.5) whose finite-part spectral projections and infinite-part projection belong to $N$. Equivalently their closed forms are invariant under every unitary in $N'$: one direction follows by spectral cutoffs, and the other follows because invariance gives a unitary on the graph Hilbert space, intertwines its inclusion, and therefore commutes with $jj^*$ and all its spectral projections. The unitary-span and bicommutant argument is proved in SB-6.
 
 Here are proofs that this cone has the required order, sum, sandwich and supremum operations and that faithful normal isomorphisms preserve them. They remove the unproved intrinsic-cone premise from the selected lesson. Regard
 $$
