@@ -4,6 +4,8 @@
 
 This chapter proves the normal regular construction, its faithful-representation independence and cocycle transport for every locally compact Hausdorff group. It does not prove the crossed-product commutant theorem, closed-subgroup imprimitivity, disintegration, or the induced-system converse.
 
+For \(M=\{0\}\), a unital representation has zero Hilbert space, since its identity is \(\rho(0)=0\). Thus \(L^2(G,H)=\{0\}\), the regular crossed product is \(\{0\}\), and each standard implementation, representation comparison and cocycle transport is the unique map on the zero space. Every asserted continuity and intertwining identity holds there. The remaining proof treats the nonzero case.
+
 Let \(M\ne0\) be a von Neumann algebra and \(G\) a locally compact Hausdorff group. Assume that \(\alpha:G\to\operatorname{Aut}(M)\) is a homomorphism into normal star automorphisms and
 
 <a id="equation-nr0"></a>
