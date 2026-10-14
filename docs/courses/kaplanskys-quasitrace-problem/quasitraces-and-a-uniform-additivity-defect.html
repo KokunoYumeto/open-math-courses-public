@@ -1,0 +1,211 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quasitraces and a uniform additivity defect</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Kaplansky&#x27;s quasitrace problem)</a><a href="expanding-maps-and-a-continuous-normalization.html">Next lesson</a><a href="src/quasitraces-and-a-uniform-additivity-defect.md">Editable source</a></nav><main><article><h1 id="quasitraces-and-a-uniform-additivity-defect">Quasitraces and a uniform additivity defect</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A <em>tracial state</em> on a unital C*-algebra is a positive linear functional <span class="math" data-tex="\(\tau\)">\(\tau\)</span> with <span class="math" data-tex="\(\tau(1)=1\)">\(\tau(1)=1\)</span> and <span class="math" data-tex="\(\tau(x^*x)=\tau(xx^*)\)">\(\tau(x^*x)=\tau(xx^*)\)</span>. A <em>quasitrace</em> keeps the positivity and the identity <span class="math" data-tex="\(\tau(x^*x)=\tau(xx^*)\)">\(\tau(x^*x)=\tau(xx^*)\)</span>, but it is required to be linear only on commutative C*-subalgebras. The <em>quasitrace problem</em>, going back to Kaplansky's question on <span class="math" data-tex="\(AW^*\)">\(AW^*\)</span>-factors, asks whether every normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace is linear, that is, a tracial state. [OpenAI-QT] answers it in the negative: there are a separable unital C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> and positive contractions <span class="math" data-tex="\(a,b\in A\)">\(a,b\in A\)</span> such that every normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace <span class="math" data-tex="\(\tau\)">\(\tau\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\tau(a+b)-\tau(a)-\tau(b)\ge\frac1{144} ,
+\]">\[
+\tau(a+b)-\tau(a)-\tau(b)\ge\frac1{144} ,
+\]</span>
+and <span class="math" data-tex="\(A\)">\(A\)</span> has such quasitraces. This course gives the proof.</p>
+<p>This lesson defines quasitraces, proves the additivity defect from two relations between <span class="math" data-tex="\(24\)">\(24\)</span> elements, and reduces the theorem to the construction of an algebra in which these relations hold and no matrix algebra contains two isometries with orthogonal ranges. The construction occupies the other three lessons.</p>
+<ul>
+<li>Quasitraces and their basic properties (Section 1).</li>
+<li>Proper infiniteness, and the existence theorem for quasitraces as a named hypothesis (Section 2).</li>
+<li>The theorem and the construction theorem (Section 3).</li>
+<li>The defect lemma (Lemma 4.1).</li>
+<li>Proof of the theorem (Section 5), and consequences quoted from the literature (Section 6).</li>
+</ul>
+<p>The lesson follows [OpenAI-QT, Sections 1, 2 and 5]. It uses unital C*-algebras, positivity and the continuous functional calculus, as in the lesson <a href="../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">Order, local units and quotients of C*-algebras</a> (course <em>Foundations of von Neumann algebras</em>).</p>
+<h2 id="1-quasitraces">1. Quasitraces</h2>
+<p>All C*-algebras are complex. For a unital C*-algebra <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(M_n(C)\)">\(M_n(C)\)</span> is the C*-algebra of the <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> matrices over <span class="math" data-tex="\(C\)">\(C\)</span>. A self-adjoint element <span class="math" data-tex="\(h\)">\(h\)</span> is <em>positive</em>, <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span>, if its spectrum lies in <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>; the positive elements are the elements <span class="math" data-tex="\(y^*y\)">\(y^*y\)</span>.</p>
+<p><strong>Definition.</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be a unital C*-algebra. A <em><span class="math" data-tex="\(1\)">\(1\)</span>-quasitrace</em> on <span class="math" data-tex="\(C\)">\(C\)</span> is a function <span class="math" data-tex="\(\tau\colon C\to\mathbb C\)">\(\tau\colon C\to\mathbb C\)</span> such that</p>
+<ol>
+<li><span class="math" data-tex="\(\tau(x^*x)=\tau(xx^*)\ge0\)">\(\tau(x^*x)=\tau(xx^*)\ge0\)</span> for every <span class="math" data-tex="\(x\in C\)">\(x\in C\)</span>;</li>
+<li><span class="math" data-tex="\(\tau(h+ik)=\tau(h)+i\,\tau(k)\)">\(\tau(h+ik)=\tau(h)+i\,\tau(k)\)</span> for all self-adjoint <span class="math" data-tex="\(h,k\in C\)">\(h,k\in C\)</span>;</li>
+<li>the restriction of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to every commutative C*-subalgebra of <span class="math" data-tex="\(C\)">\(C\)</span> is complex linear.</li>
+</ol>
+<p>It is a <em><span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace</em> if there is a <span class="math" data-tex="\(1\)">\(1\)</span>-quasitrace <span class="math" data-tex="\(\tilde\tau\)">\(\tilde\tau\)</span> on <span class="math" data-tex="\(M_2(C)\)">\(M_2(C)\)</span> with <span class="math" data-tex="\(\tilde\tau\bigl(\begin{smallmatrix}x&amp;0\\0&amp;0\end{smallmatrix}\bigr)=\tau(x)\)">\(\tilde\tau\bigl(\begin{smallmatrix}x&amp;0\\0&amp;0\end{smallmatrix}\bigr)=\tau(x)\)</span> for all <span class="math" data-tex="\(x\in C\)">\(x\in C\)</span>. It is <em>normalized</em> if <span class="math" data-tex="\(\tau(1)=1\)">\(\tau(1)=1\)</span>.</p>
+<p>A <em>tracial state</em> is a linear functional <span class="math" data-tex="\(\tau\)">\(\tau\)</span> with <span class="math" data-tex="\(\tau(1)=1\)">\(\tau(1)=1\)</span> and <span class="math" data-tex="\(\tau(x^*x)=\tau(xx^*)\ge0\)">\(\tau(x^*x)=\tau(xx^*)\ge0\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be a <span class="math" data-tex="\(1\)">\(1\)</span>-quasitrace on <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(\tau(0)=0\)">\(\tau(0)=0\)</span>, and <span class="math" data-tex="\(\tau(h)\ge0\)">\(\tau(h)\ge0\)</span> for every positive <span class="math" data-tex="\(h\)">\(h\)</span>.</li>
+<li>If <span class="math" data-tex="\(h,k\)">\(h,k\)</span> are commuting self-adjoint elements with <span class="math" data-tex="\(h\le k\)">\(h\le k\)</span>, then <span class="math" data-tex="\(\tau(h)\le\tau(k)\)">\(\tau(h)\le\tau(k)\)</span>.</li>
+<li>If <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace, then every <span class="math" data-tex="\(1\)">\(1\)</span>-quasitrace <span class="math" data-tex="\(\tilde\tau\)">\(\tilde\tau\)</span> on <span class="math" data-tex="\(M_2(C)\)">\(M_2(C)\)</span> that extends it has <span class="math" data-tex="\(\tilde\tau(1)=2\)">\(\tilde\tau(1)=2\)</span>.</li>
+<li>Every tracial state is a normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace.</li>
+</ol>
+<p><strong>Proof.</strong> <em>Part 1.</em> <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> is a commutative subalgebra, and a positive <span class="math" data-tex="\(h\)">\(h\)</span> is <span class="math" data-tex="\(y^*y\)">\(y^*y\)</span> with <span class="math" data-tex="\(y=h^{1/2}\)">\(y=h^{1/2}\)</span>. <em>Part 2.</em> <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> generate a commutative C*-subalgebra, on which <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is linear; <span class="math" data-tex="\(k-h\)">\(k-h\)</span> is positive, so <span class="math" data-tex="\(\tau(k)-\tau(h)=\tau(k-h)\ge0\)">\(\tau(k)-\tau(h)=\tau(k-h)\ge0\)</span>. <em>Part 3.</em> The diagonal matrix units <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span> and <span class="math" data-tex="\(e_{22}\)">\(e_{22}\)</span> are <span class="math" data-tex="\(t^*t\)">\(t^*t\)</span> and <span class="math" data-tex="\(tt^*\)">\(tt^*\)</span> for the matrix unit <span class="math" data-tex="\(t=e_{12}\)">\(t=e_{12}\)</span>, so <span class="math" data-tex="\(\tilde\tau(e_{11})=\tilde\tau(e_{22})\)">\(\tilde\tau(e_{11})=\tilde\tau(e_{22})\)</span>; they commute, so <span class="math" data-tex="\(\tilde\tau(1)=\tilde\tau(e_{11})+\tilde\tau(e_{22})=2\tau(1)\)">\(\tilde\tau(1)=\tilde\tau(e_{11})+\tilde\tau(e_{22})=2\tau(1)\)</span>. <em>Part 4.</em> For a tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, put <span class="math" data-tex="\(\tilde\tau(x)=\tau(x_{11})+\tau(x_{22})\)">\(\tilde\tau(x)=\tau(x_{11})+\tau(x_{22})\)</span> on <span class="math" data-tex="\(M_2(C)\)">\(M_2(C)\)</span>. It is linear, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tilde\tau(x^*x)&amp;=\sum_{k,l}\tau(x_{lk}^*x_{lk})\\
+&amp;=\sum_{k,l}\tau(x_{lk}x_{lk}^*)=\tilde\tau(xx^*)\ge0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tilde\tau(x^*x)&amp;=\sum_{k,l}\tau(x_{lk}^*x_{lk})\\
+&amp;=\sum_{k,l}\tau(x_{lk}x_{lk}^*)=\tilde\tau(xx^*)\ge0 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So a quasitrace is linear on each commutative subalgebra, and a tracial state is a quasitrace that is linear everywhere. The question is whether the conditions force linearity.</p>
+<h2 id="2-proper-infiniteness">2. Proper infiniteness</h2>
+<p><strong>Definition.</strong> A unital C*-algebra <span class="math" data-tex="\(C\)">\(C\)</span> is <em>properly infinite</em> if it contains two isometries <span class="math" data-tex="\(s_1,s_2\)">\(s_1,s_2\)</span> with orthogonal ranges, that is,
+<span class="math math-display" data-tex="\[
+s_i^*s_j=\delta_{ij}\,1\qquad(i,j\in\{1,2\}) .
+\]">\[
+s_i^*s_j=\delta_{ij}\,1\qquad(i,j\in\{1,2\}) .
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> A properly infinite unital C*-algebra has no normalized <span class="math" data-tex="\(1\)">\(1\)</span>-quasitrace.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(s_1,s_2\)">\(s_1,s_2\)</span> be as in the definition and <span class="math" data-tex="\(p_i=s_is_i^*\)">\(p_i=s_is_i^*\)</span>. These are commuting projections with <span class="math" data-tex="\(p_1p_2=s_1(s_1^*s_2)s_2^*=0\)">\(p_1p_2=s_1(s_1^*s_2)s_2^*=0\)</span>, so <span class="math" data-tex="\(p_1+p_2\le1\)">\(p_1+p_2\le1\)</span>. For a normalized <span class="math" data-tex="\(1\)">\(1\)</span>-quasitrace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, <span class="math" data-tex="\(\tau(p_i)=\tau(s_i^*s_i)=\tau(1)=1\)">\(\tau(p_i)=\tau(s_i^*s_i)=\tau(1)=1\)</span>, and on the commutative subalgebra generated by <span class="math" data-tex="\(1,p_1,p_2\)">\(1,p_1,p_2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+1=\tau(1)&amp;\ge\tau(p_1+p_2)\\
+&amp;=\tau(p_1)+\tau(p_2)=2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+1=\tau(1)&amp;\ge\tau(p_1+p_2)\\
+&amp;=\tau(p_1)+\tau(p_2)=2 ,
+\end{aligned}
+\]</span>
+which is false. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The converse, applied to all matrix algebras, is a theorem that is not proved in this course.</p>
+<p><strong>Hypothesis (CBH)</strong> (Cuntz; Blackadar and Handelman; in the form [MR, Theorem 2.3]). Let <span class="math" data-tex="\(C\)">\(C\)</span> be a unital C*-algebra such that <span class="math" data-tex="\(M_m(C)\)">\(M_m(C)\)</span> is not properly infinite for any <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>. Then <span class="math" data-tex="\(C\)">\(C\)</span> admits a normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace.</p>
+<p>This statement is not proved in the programme. It is used once, in Section 5, to show that the algebra of the theorem has a quasitrace at all. The defect inequality and the absence of tracial states are proved without it.</p>
+<h2 id="3-the-theorem">3. The theorem</h2>
+<p><strong>Theorem 3.1</strong> ([OpenAI-QT, Section 1]). Assume (CBH). There are a separable unital C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> that admits a normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace, and positive contractions <span class="math" data-tex="\(a,b\in A\)">\(a,b\in A\)</span>, such that every normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace <span class="math" data-tex="\(\tau\)">\(\tau\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\tau(a+b)-\tau(a)-\tau(b)\ge\frac1{144} .
+\]">\[
+\tau(a+b)-\tau(a)-\tau(b)\ge\frac1{144} .
+\]</span></p>
+<p>In particular such a <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is not linear, and <span class="math" data-tex="\(A\)">\(A\)</span> has no tracial state. The algebra is <span class="math" data-tex="\(A=M_{48}(B)\)">\(A=M_{48}(B)\)</span> for an algebra <span class="math" data-tex="\(B\)">\(B\)</span> given by the following theorem, whose proof occupies <a href="expanding-maps-and-a-continuous-normalization.html">Expanding maps and a continuous normalization</a>, <a href="bundle-tests-with-a-chern-class-obstruction.html">Bundle tests with a Chern class obstruction</a> and <a href="weighted-shifts-and-the-construction.html">Weighted shifts and the construction</a>.</p>
+<p><strong>Theorem 3.2</strong> (construction; [OpenAI-QT, Section 5]). There is a separable unital C*-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, generated by <span class="math" data-tex="\(1\)">\(1\)</span> and elements <span class="math" data-tex="\(x_1,\dots,x_{24}\)">\(x_1,\dots,x_{24}\)</span>, such that
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^{24}x_i^*x_i=1,\qquad\sum_{i=1}^{24}x_ix_i^*\le\tfrac23\cdot1 ,
+\]">\[
+\sum_{i=1}^{24}x_i^*x_i=1,\qquad\sum_{i=1}^{24}x_ix_i^*\le\tfrac23\cdot1 ,
+\]</span>
+and <span class="math" data-tex="\(M_m(B)\)">\(M_m(B)\)</span> is not properly infinite for any <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>.</p>
+<p>Theorem 3.2 rests on the named hypothesis (SM) on smooth manifolds, stated in <a href="expanding-maps-and-a-continuous-normalization.html">Expanding maps and a continuous normalization</a>; it does not use (CBH).</p>
+<p>The two relations alone exclude tracial states: a tracial state would give <span class="math" data-tex="\(1=\tau(\sum x_i^*x_i)=\tau(\sum x_ix_i^*)\le\tfrac23\)">\(1=\tau(\sum x_i^*x_i)=\tau(\sum x_ix_i^*)\le\tfrac23\)</span>. The next lemma turns them into a fixed additivity defect for every quasitrace.</p>
+<h2 id="4-the-defect-lemma">4. The defect lemma</h2>
+<p><strong>Lemma 4.1</strong> ([OpenAI-QT, Section 5]). Let <span class="math" data-tex="\(B\)">\(B\)</span> be a unital C*-algebra, <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, and <span class="math" data-tex="\(x_1,\dots,x_N\in B\)">\(x_1,\dots,x_N\in B\)</span> with
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^Nx_i^*x_i=1,\qquad\sum_{i=1}^Nx_ix_i^*\le c\cdot1
+\]">\[
+\sum_{i=1}^Nx_i^*x_i=1,\qquad\sum_{i=1}^Nx_ix_i^*\le c\cdot1
+\]</span>
+for a number <span class="math" data-tex="\(0\le c&lt;1\)">\(0\le c&lt;1\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_i=x_i^*x_i,\qquad v_i=x_ix_i^*,\\
+H_i=u_1+\dots+u_i,\\
+J_i=v_1+\dots+v_i ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+u_i=x_i^*x_i,\qquad v_i=x_ix_i^*,\\
+H_i=u_1+\dots+u_i,\\
+J_i=v_1+\dots+v_i ,
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(H_0=J_0=0\)">\(H_0=J_0=0\)</span>, and let <span class="math" data-tex="\(a,b\in M_{2N}(B)\)">\(a,b\in M_{2N}(B)\)</span> be the diagonal matrices
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a&amp;=\operatorname{diag}(H_0,\dots,H_{N-1},\\
+&amp;\qquad\quad1-J_0,\dots,1-J_{N-1}),\\
+b&amp;=\operatorname{diag}(u_1,\dots,u_N,\\
+&amp;\qquad\quad1-v_1,\dots,1-v_N).
+\end{aligned}
+\]">\[
+\begin{aligned}
+a&amp;=\operatorname{diag}(H_0,\dots,H_{N-1},\\
+&amp;\qquad\quad1-J_0,\dots,1-J_{N-1}),\\
+b&amp;=\operatorname{diag}(u_1,\dots,u_N,\\
+&amp;\qquad\quad1-v_1,\dots,1-v_N).
+\end{aligned}
+\]</span>
+Then <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> are positive contractions, and every normalized <span class="math" data-tex="\(1\)">\(1\)</span>-quasitrace <span class="math" data-tex="\(\tau\)">\(\tau\)</span> on <span class="math" data-tex="\(M_{2N}(B)\)">\(M_{2N}(B)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\tau(a+b)-\tau(a)-\tau(b)\ge\frac{1-c}{2N} .
+\]">\[
+\tau(a+b)-\tau(a)-\tau(b)\ge\frac{1-c}{2N} .
+\]</span></p>
+<p><strong>Proof.</strong> <em>The entries.</em> <span class="math" data-tex="\(0\le H_i\le H_N=1\)">\(0\le H_i\le H_N=1\)</span>, <span class="math" data-tex="\(0\le u_i\le1\)">\(0\le u_i\le1\)</span>, and <span class="math" data-tex="\(0\le v_i\le J_i\le J_N\le c\cdot1\)">\(0\le v_i\le J_i\le J_N\le c\cdot1\)</span>. So all diagonal entries of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> lie between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. The diagonal entries of <span class="math" data-tex="\(a+b\)">\(a+b\)</span> are <span class="math" data-tex="\(H_i=H_{i-1}+u_i\)">\(H_i=H_{i-1}+u_i\)</span> and <span class="math" data-tex="\(2-J_i=(1-J_{i-1})+(1-v_i)\)">\(2-J_i=(1-J_{i-1})+(1-v_i)\)</span>, for <span class="math" data-tex="\(1\le i\le N\)">\(1\le i\le N\)</span>.</p>
+<p><em>Corners.</em> For <span class="math" data-tex="\(z\in B\)">\(z\in B\)</span> and <span class="math" data-tex="\(1\le k\le2N\)">\(1\le k\le2N\)</span> let <span class="math" data-tex="\(\iota_k(z)\)">\(\iota_k(z)\)</span> be the matrix with <span class="math" data-tex="\(z\)">\(z\)</span> at the place <span class="math" data-tex="\((k,k)\)">\((k,k)\)</span> and zeros elsewhere, and put <span class="math" data-tex="\(\varphi(z)=\tau(\iota_1(z))\)">\(\varphi(z)=\tau(\iota_1(z))\)</span>. For <span class="math" data-tex="\(z\ge0\)">\(z\ge0\)</span> and <span class="math" data-tex="\(k,l\le2N\)">\(k,l\le2N\)</span> let <span class="math" data-tex="\(t\)">\(t\)</span> be the matrix with <span class="math" data-tex="\(z^{1/2}\)">\(z^{1/2}\)</span> at the place <span class="math" data-tex="\((k,l)\)">\((k,l)\)</span>. Then <span class="math" data-tex="\(t^*t=\iota_l(z)\)">\(t^*t=\iota_l(z)\)</span> and <span class="math" data-tex="\(tt^*=\iota_k(z)\)">\(tt^*=\iota_k(z)\)</span>, so <span class="math" data-tex="\(\tau(\iota_k(z))=\tau(\iota_l(z))\)">\(\tau(\iota_k(z))=\tau(\iota_l(z))\)</span>. Hence <span class="math" data-tex="\(\tau(\iota_k(z))=\varphi(z)\)">\(\tau(\iota_k(z))=\varphi(z)\)</span> for all <span class="math" data-tex="\(k\)">\(k\)</span> and all <span class="math" data-tex="\(z\ge0\)">\(z\ge0\)</span>.</p>
+<p>Self-adjoint elements in different diagonal places commute, so for positive <span class="math" data-tex="\(z_1,\dots,z_{2N}\)">\(z_1,\dots,z_{2N}\)</span> the linearity of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> on the commutative subalgebra they generate gives
+<span class="math math-display" data-tex="\[
+\tau\bigl(\operatorname{diag}(z_1,\dots,z_{2N})\bigr)=\sum_{k=1}^{2N}\varphi(z_k) .
+\]">\[
+\tau\bigl(\operatorname{diag}(z_1,\dots,z_{2N})\bigr)=\sum_{k=1}^{2N}\varphi(z_k) .
+\]</span>
+With all <span class="math" data-tex="\(z_k=1\)">\(z_k=1\)</span> this gives <span class="math" data-tex="\(\varphi(1)=1/(2N)\)">\(\varphi(1)=1/(2N)\)</span>. Further <span class="math" data-tex="\(\varphi(u_i)=\varphi(v_i)\)">\(\varphi(u_i)=\varphi(v_i)\)</span>, because <span class="math" data-tex="\(\iota_1(x_i)^*\iota_1(x_i)=\iota_1(u_i)\)">\(\iota_1(x_i)^*\iota_1(x_i)=\iota_1(u_i)\)</span> and <span class="math" data-tex="\(\iota_1(x_i)\iota_1(x_i)^*=\iota_1(v_i)\)">\(\iota_1(x_i)\iota_1(x_i)^*=\iota_1(v_i)\)</span>. Finally, <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is linear on every commutative C*-subalgebra of <span class="math" data-tex="\(B\)">\(B\)</span>, because <span class="math" data-tex="\(\iota_1\)">\(\iota_1\)</span> maps it onto a commutative C*-subalgebra of <span class="math" data-tex="\(M_{2N}(B)\)">\(M_{2N}(B)\)</span>.</p>
+<p><em>The defect.</em> By the formula for diagonal matrices,
+<span class="math math-display" data-tex="\[
+\tau(a+b)-\tau(a)-\tau(b)=\Sigma_1+\Sigma_2 ,
+\]">\[
+\tau(a+b)-\tau(a)-\tau(b)=\Sigma_1+\Sigma_2 ,
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Sigma_1&amp;=\sum_{i=1}^N\bigl(\varphi(H_i)-\varphi(H_{i-1})\\
+&amp;\qquad-\varphi(u_i)\bigr),\\
+\Sigma_2&amp;=\sum_{i=1}^N\bigl(\varphi(2-J_i)-\varphi(1-J_{i-1})\\
+&amp;\qquad-\varphi(1-v_i)\bigr) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Sigma_1&amp;=\sum_{i=1}^N\bigl(\varphi(H_i)-\varphi(H_{i-1})\\
+&amp;\qquad-\varphi(u_i)\bigr),\\
+\Sigma_2&amp;=\sum_{i=1}^N\bigl(\varphi(2-J_i)-\varphi(1-J_{i-1})\\
+&amp;\qquad-\varphi(1-v_i)\bigr) .
+\end{aligned}
+\]</span>
+In <span class="math" data-tex="\(\Sigma_2\)">\(\Sigma_2\)</span> each term involves one self-adjoint element together with the unit: <span class="math" data-tex="\(\varphi(2-J_i)=2\varphi(1)-\varphi(J_i)\)">\(\varphi(2-J_i)=2\varphi(1)-\varphi(J_i)\)</span> by linearity on the commutative subalgebra generated by <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(J_i\)">\(J_i\)</span>, and likewise for the other two terms. So the <span class="math" data-tex="\(i\)">\(i\)</span>-th term of <span class="math" data-tex="\(\Sigma_2\)">\(\Sigma_2\)</span> is <span class="math" data-tex="\(-\varphi(J_i)+\varphi(J_{i-1})+\varphi(v_i)\)">\(-\varphi(J_i)+\varphi(J_{i-1})+\varphi(v_i)\)</span>. In <span class="math" data-tex="\(\Sigma_1\)">\(\Sigma_1\)</span> nothing is simplified. Summing and telescoping,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Sigma_1+\Sigma_2&amp;=\varphi(H_N)-\varphi(H_0)\\
+&amp;\quad-\varphi(J_N)+\varphi(J_0)\\
+&amp;\quad-\sum_{i=1}^N\varphi(u_i)+\sum_{i=1}^N\varphi(v_i)\\
+&amp;=\varphi(1)-\varphi(J_N) ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Sigma_1+\Sigma_2&amp;=\varphi(H_N)-\varphi(H_0)\\
+&amp;\quad-\varphi(J_N)+\varphi(J_0)\\
+&amp;\quad-\sum_{i=1}^N\varphi(u_i)+\sum_{i=1}^N\varphi(v_i)\\
+&amp;=\varphi(1)-\varphi(J_N) ,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(H_N=1\)">\(H_N=1\)</span>, <span class="math" data-tex="\(H_0=J_0=0\)">\(H_0=J_0=0\)</span> and <span class="math" data-tex="\(\varphi(u_i)=\varphi(v_i)\)">\(\varphi(u_i)=\varphi(v_i)\)</span>. On the commutative subalgebra generated by <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(J_N\)">\(J_N\)</span>, <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is positive and linear, and <span class="math" data-tex="\(c\cdot1-J_N\ge0\)">\(c\cdot1-J_N\ge0\)</span>; so <span class="math" data-tex="\(\varphi(J_N)\le c\,\varphi(1)\)">\(\varphi(J_N)\le c\,\varphi(1)\)</span>. Hence the defect is at least <span class="math" data-tex="\((1-c)\,\varphi(1)=(1-c)/(2N)\)">\((1-c)\,\varphi(1)=(1-c)/(2N)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The lemma uses linearity only on commutative subalgebras. The two halves of the defect have a meaning. Telescoping alone gives <span class="math" data-tex="\(\Sigma_1=\varphi(1)-\sum_i\varphi(u_i)\)">\(\Sigma_1=\varphi(1)-\sum_i\varphi(u_i)\)</span>: it measures how far <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is from being additive on <span class="math" data-tex="\(u_1,\dots,u_N\)">\(u_1,\dots,u_N\)</span>, whose sum is <span class="math" data-tex="\(1\)">\(1\)</span>. The computation above gives <span class="math" data-tex="\(\Sigma_2=\sum_i\varphi(v_i)-\varphi(J_N)\)">\(\Sigma_2=\sum_i\varphi(v_i)-\varphi(J_N)\)</span>: the same for <span class="math" data-tex="\(v_1,\dots,v_N\)">\(v_1,\dots,v_N\)</span>, with the opposite sign. Since <span class="math" data-tex="\(\varphi(u_i)=\varphi(v_i)\)">\(\varphi(u_i)=\varphi(v_i)\)</span>, the halves add up to <span class="math" data-tex="\(\varphi(1)-\varphi(J_N)\ge(1-c)\,\varphi(1)\)">\(\varphi(1)-\varphi(J_N)\ge(1-c)\,\varphi(1)\)</span>. For a linear functional both halves vanish, which is impossible; this is the trace argument of Section 3 again. For a quasitrace at least one of the two halves is at least <span class="math" data-tex="\((1-c)/(4N)\)">\((1-c)/(4N)\)</span>.</p>
+<h2 id="5-proof-of-the-theorem">5. Proof of the theorem</h2>
+<p><strong>Proof of Theorem 3.1.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(x_1,\dots,x_{24}\)">\(x_1,\dots,x_{24}\)</span> be as in Theorem 3.2, and <span class="math" data-tex="\(A=M_{48}(B)\)">\(A=M_{48}(B)\)</span>. It is separable and unital. For every <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, <span class="math" data-tex="\(M_k(A)\)">\(M_k(A)\)</span> is <span class="math" data-tex="\(M_{48k}(B)\)">\(M_{48k}(B)\)</span>, which is not properly infinite. By (CBH), <span class="math" data-tex="\(A\)">\(A\)</span> admits a normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace. Lemma 4.1 with <span class="math" data-tex="\(N=24\)">\(N=24\)</span> and <span class="math" data-tex="\(c=\tfrac23\)">\(c=\tfrac23\)</span> gives positive contractions <span class="math" data-tex="\(a,b\in A\)">\(a,b\in A\)</span> such that every normalized <span class="math" data-tex="\(1\)">\(1\)</span>-quasitrace on <span class="math" data-tex="\(A\)">\(A\)</span>, in particular every normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace, satisfies the inequality with the constant <span class="math" data-tex="\((1-\tfrac23)/48=1/144\)">\((1-\tfrac23)/48=1/144\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Without (CBH) the proof still shows: every normalized <span class="math" data-tex="\(1\)">\(1\)</span>-quasitrace on <span class="math" data-tex="\(A\)">\(A\)</span> has the defect at least <span class="math" data-tex="\(1/144\)">\(1/144\)</span>, and <span class="math" data-tex="\(A\)">\(A\)</span> has no tracial state. The hypothesis is needed only to know that the set of normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitraces on <span class="math" data-tex="\(A\)">\(A\)</span> is not empty.</p>
+<p>The constant <span class="math" data-tex="\(1/144\)">\(1/144\)</span> is not the best that the construction gives. With seven generators in place of twenty-four, and a bound <span class="math" data-tex="\(c&gt;\tfrac12\)">\(c&gt;\tfrac12\)</span> in place of <span class="math" data-tex="\(\tfrac23\)">\(\tfrac23\)</span>, every constant below <span class="math" data-tex="\(1/28\)">\(1/28\)</span> occurs (Corollary 6.1 of <a href="weighted-shifts-and-the-construction.html">Weighted shifts and the construction</a>).</p>
+<h2 id="6-kaplansky-s-question-and-consequences">6. Kaplansky's question and consequences</h2>
+<p>The following statements are quoted from [OpenAI-QT, Sections 1 and 7] and the literature named there; they are not proved in this course.</p>
+<ul>
+<li>Every normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace on every unital C*-algebra is a tracial state if and only if every <span class="math" data-tex="\(AW^*\)">\(AW^*\)</span>-factor of type <span class="math" data-tex="\(\mathrm{II}_1\)">\(\mathrm{II}_1\)</span> is a von Neumann algebra (an abstract <span class="math" data-tex="\(W^*\)">\(W^*\)</span>-algebra). This is the form of Kaplansky's question; with Theorem 3.1 the answer is negative.</li>
+<li>By a theorem of Haagerup, every normalized <span class="math" data-tex="\(2\)">\(2\)</span>-quasitrace on a unital <em>exact</em> C*-algebra is a tracial state. So the algebra <span class="math" data-tex="\(A\)">\(A\)</span> is not exact.</li>
+<li>The theorem gives two unital simple stably finite C*-algebras whose minimal tensor product is properly infinite, one of them the reduced C*-algebra of the free group on two generators; an explicit separable algebra <span class="math" data-tex="\(B\)">\(B\)</span> with a quasitrace whose tensor product with that reduced group algebra is properly infinite and has none; and a separable unital stably finite C*-algebra without a tracial state.</li>
+</ul>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Let <span class="math" data-tex="\(s_1,s_2\)">\(s_1,s_2\)</span> be isometries in a unital C*-algebra whose range projections <span class="math" data-tex="\(s_1s_1^*\)">\(s_1s_1^*\)</span> and <span class="math" data-tex="\(s_2s_2^*\)">\(s_2s_2^*\)</span> are orthogonal. Show that <span class="math" data-tex="\(s_1^*s_2=0\)">\(s_1^*s_2=0\)</span>.</p>
+<p><strong>7.2.</strong> Show that in a matrix algebra <span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span> there are no elements <span class="math" data-tex="\(x_1,\dots,x_N\)">\(x_1,\dots,x_N\)</span> with <span class="math" data-tex="\(\sum x_i^*x_i=1\)">\(\sum x_i^*x_i=1\)</span> and <span class="math" data-tex="\(\sum x_ix_i^*\le c\cdot1\)">\(\sum x_ix_i^*\le c\cdot1\)</span> for some <span class="math" data-tex="\(c&lt;1\)">\(c&lt;1\)</span>.</p>
+<p><strong>7.3.</strong> Show that the hypothesis of Lemma 4.1 cannot hold with <span class="math" data-tex="\(N=1\)">\(N=1\)</span>.</p>
+<p><strong>7.4.</strong> Write out <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(a+b\)">\(a+b\)</span> for <span class="math" data-tex="\(N=2\)">\(N=2\)</span>.</p>
+<p><strong>7.5.</strong> Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be a normalized <span class="math" data-tex="\(1\)">\(1\)</span>-quasitrace on <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> self-adjoint with <span class="math" data-tex="\(m\le h\le M\)">\(m\le h\le M\)</span>. Show that <span class="math" data-tex="\(m\le\tau(h)\le M\)">\(m\le\tau(h)\le M\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> Let <span class="math" data-tex="\(p_i=s_is_i^*\)">\(p_i=s_is_i^*\)</span>. Then <span class="math" data-tex="\(s_i=p_is_i\)">\(s_i=p_is_i\)</span>, so <span class="math" data-tex="\(s_1^*s_2=s_1^*p_1p_2s_2=0\)">\(s_1^*s_2=s_1^*p_1p_2s_2=0\)</span>.</p>
+<p><strong>7.2.</strong> The normalized trace <span class="math" data-tex="\(\operatorname{tr}\)">\(\operatorname{tr}\)</span> of <span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span> satisfies <span class="math" data-tex="\(\operatorname{tr}(x^*x)=\operatorname{tr}(xx^*)\)">\(\operatorname{tr}(x^*x)=\operatorname{tr}(xx^*)\)</span>. Applied to the two relations it gives <span class="math" data-tex="\(1\le c\)">\(1\le c\)</span>.</p>
+<p><strong>7.3.</strong> With <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, <span class="math" data-tex="\(x_1^*x_1=1\)">\(x_1^*x_1=1\)</span>, so <span class="math" data-tex="\(p=x_1x_1^*\)">\(p=x_1x_1^*\)</span> satisfies <span class="math" data-tex="\(p^2=x_1(x_1^*x_1)x_1^*=p\)">\(p^2=x_1(x_1^*x_1)x_1^*=p\)</span>: it is a projection, and <span class="math" data-tex="\(p\ne0\)">\(p\ne0\)</span> because <span class="math" data-tex="\(\|p\|=\|x_1\|^2=1\)">\(\|p\|=\|x_1\|^2=1\)</span>. So <span class="math" data-tex="\(\|x_1x_1^*\|=1\)">\(\|x_1x_1^*\|=1\)</span>, and <span class="math" data-tex="\(x_1x_1^*\le c\cdot1\)">\(x_1x_1^*\le c\cdot1\)</span> forces <span class="math" data-tex="\(c\ge1\)">\(c\ge1\)</span>.</p>
+<p><strong>7.4.</strong> <span class="math" data-tex="\(a=\operatorname{diag}(0,\ u_1,\ 1,\ 1-v_1)\)">\(a=\operatorname{diag}(0,\ u_1,\ 1,\ 1-v_1)\)</span>, <span class="math" data-tex="\(b=\operatorname{diag}(u_1,\ u_2,\ 1-v_1,\ 1-v_2)\)">\(b=\operatorname{diag}(u_1,\ u_2,\ 1-v_1,\ 1-v_2)\)</span>, <span class="math" data-tex="\(a+b=\operatorname{diag}(u_1,1,2-v_1,2-v_1-v_2)\)">\(a+b=\operatorname{diag}(u_1,1,2-v_1,2-v_1-v_2)\)</span>, using <span class="math" data-tex="\(u_1+u_2=1\)">\(u_1+u_2=1\)</span>.</p>
+<p><strong>7.5.</strong> <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(m\cdot1\)">\(m\cdot1\)</span> and <span class="math" data-tex="\(M\cdot1\)">\(M\cdot1\)</span> lie in the commutative subalgebra generated by <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span>, on which <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is positive and linear, with <span class="math" data-tex="\(\tau(1)=1\)">\(\tau(1)=1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-QT] OpenAI, <em>A counterexample to Kaplansky's quasitrace conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Sections 1, 2, 5 and 7. https://github.com/openai/math/tree/main/preprints/A-counterexample-to-Kaplanskys-quasitrace-conjecture-September-23-2026</li>
+<li>[MR] H. O. Milhøj and M. Rørdam, <em>Around traces and quasitraces</em>, arXiv:2309.17412, version 2, Section 2 and Theorem 2.3. https://arxiv.org/abs/2309.17412</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

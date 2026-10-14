@@ -1,0 +1,363 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bundle tests with a Chern class obstruction</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Kaplansky&#x27;s quasitrace problem)</a><a href="expanding-maps-and-a-continuous-normalization.html">Previous lesson</a><a href="weighted-shifts-and-the-construction.html">Next lesson</a><a href="src/bundle-tests-with-a-chern-class-obstruction.md">Editable source</a></nav><main><article><h1 id="bundle-tests-with-a-chern-class-obstruction">Bundle tests with a Chern class obstruction</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The algebra of the course is built from a sequence of Hermitian vector bundles <span class="math" data-tex="\(E_0,E_1,\dots\)">\(E_0,E_1,\dots\)</span> over a compact manifold and <span class="math" data-tex="\(24\)">\(24\)</span> maps between successive bundles that satisfy
+<span class="math math-display" data-tex="\[
+\sum_iX_i^*X_i=I,\qquad\sum_iX_iX_i^*\le\tfrac23\,I .
+\]">\[
+\sum_iX_i^*X_i=I,\qquad\sum_iX_iX_i^*\le\tfrac23\,I .
+\]</span>
+This lesson constructs such a sequence for every matrix size <span class="math" data-tex="\(m\)">\(m\)</span> and every degree bound <span class="math" data-tex="\(R\)">\(R\)</span>, with <span class="math" data-tex="\(E_0\)">\(E_0\)</span> trivial of rank <span class="math" data-tex="\(d_0\)">\(d_0\)</span>, together with an obstruction: the sum of <span class="math" data-tex="\(m\)">\(m\)</span> copies of <span class="math" data-tex="\(E_0\oplus\dots\oplus E_R\)">\(E_0\oplus\dots\oplus E_R\)</span> contains no trivial subbundle of rank <span class="math" data-tex="\(2md_0\)">\(2md_0\)</span>. In <a href="weighted-shifts-and-the-construction.html">Weighted shifts and the construction</a> a pair of isometries with orthogonal ranges in <span class="math" data-tex="\(M_m(B)\)">\(M_m(B)\)</span> is turned into exactly such a subbundle. The obstruction is a Chern class; the maps come from the two lemmas of <a href="expanding-maps-and-a-continuous-normalization.html">Expanding maps and a continuous normalization</a>.</p>
+<ul>
+<li>Subbundles and orthogonal complements (Lemma 1.1).</li>
+<li>Chern classes, products of projective spaces (Lemma 2.1), and an obstruction for sums of line bundles (Proposition 2.2).</li>
+<li>The ranks and multiplicities (Lemma 3.1) and the bundles (Section 4).</li>
+<li>Maps that double dimensions: sixteen for small subspaces, eight for large ones (Lemma 5.1).</li>
+<li>The bundle tests (Theorem 6.1), and seven maps in place of twenty-four (Remark 6.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-QT, Section 4]. Obstructions of this kind, by characteristic classes of vector bundles, were used by Villadsen [V, Section 3], over products of projective spaces, to construct simple C*-algebras of every stable rank, and by Rørdam [R, Section 3], over products of two-spheres, to construct a simple C*-algebra with a finite and an infinite projection. The Chern classes are taken from the lessons <a href="../DG-CHAR/DG-CHAR-09.html">Chern classes and the integral universal ring</a> and <a href="../DG-CHAR/DG-CHAR-08.html">The Gysin sequence and projective splitting</a> (course <em>Characteristic classes</em>). The maps use Lemmas 4.1 and 6.1 of <a href="expanding-maps-and-a-continuous-normalization.html">Expanding maps and a continuous normalization</a>, and through Lemma 4.1 the hypothesis (SM) on smooth manifolds stated there.</p>
+<h2 id="1-subbundles-and-complements">1. Subbundles and complements</h2>
+<p>The conventions are those of Section 1 of <a href="expanding-maps-and-a-continuous-normalization.html">Expanding maps and a continuous normalization</a>: vector bundles are complex, of finite rank, over a compact Hausdorff space, with Hermitian metrics, and a <em>subbundle</em> is a family of subspaces of the fibers whose orthogonal projections form a bundle map. A <em>trivial subbundle of rank <span class="math" data-tex="\(k\)">\(k\)</span></em> is a subbundle that is isomorphic to the trivial bundle <span class="math" data-tex="\(Y\times\mathbb C^k\)">\(Y\times\mathbb C^k\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be a Hermitian vector bundle over a compact Hausdorff space <span class="math" data-tex="\(Y\)">\(Y\)</span>, and <span class="math" data-tex="\(p\)">\(p\)</span> a bundle map of <span class="math" data-tex="\(G\)">\(G\)</span> such that every <span class="math" data-tex="\(p(y)\)">\(p(y)\)</span> is an orthogonal projection. Then the images of the <span class="math" data-tex="\(p(y)\)">\(p(y)\)</span> form a vector bundle <span class="math" data-tex="\(\operatorname{ran}p\)">\(\operatorname{ran}p\)</span>, the images of the <span class="math" data-tex="\(I-p(y)\)">\(I-p(y)\)</span> form a vector bundle <span class="math" data-tex="\(\operatorname{ran}(I-p)\)">\(\operatorname{ran}(I-p)\)</span>, and <span class="math" data-tex="\((u,w)\mapsto u+w\)">\((u,w)\mapsto u+w\)</span> is an isomorphism <span class="math" data-tex="\(\operatorname{ran}p\oplus\operatorname{ran}(I-p)\to G\)">\(\operatorname{ran}p\oplus\operatorname{ran}(I-p)\to G\)</span>.</p>
+<p><strong>Proof.</strong> The rank of <span class="math" data-tex="\(p(y)\)">\(p(y)\)</span> is its trace, a continuous function with integer values, hence locally constant. Fix <span class="math" data-tex="\(y_0\)">\(y_0\)</span>, let <span class="math" data-tex="\(k\)">\(k\)</span> be the rank of <span class="math" data-tex="\(p(y_0)\)">\(p(y_0)\)</span>, and let <span class="math" data-tex="\(\sigma_1,\dots,\sigma_n\)">\(\sigma_1,\dots,\sigma_n\)</span> be a local frame of <span class="math" data-tex="\(G\)">\(G\)</span> near <span class="math" data-tex="\(y_0\)">\(y_0\)</span>. The vectors <span class="math" data-tex="\(p(y_0)\sigma_l(y_0)\)">\(p(y_0)\sigma_l(y_0)\)</span> span the image of <span class="math" data-tex="\(p(y_0)\)">\(p(y_0)\)</span>; choose <span class="math" data-tex="\(k\)">\(k\)</span> of them that form a basis. The corresponding sections <span class="math" data-tex="\(p\sigma_l\)">\(p\sigma_l\)</span> of <span class="math" data-tex="\(\operatorname{ran}p\)">\(\operatorname{ran}p\)</span> are continuous, and their Gram determinant is continuous and nonzero at <span class="math" data-tex="\(y_0\)">\(y_0\)</span>. So they are linearly independent near <span class="math" data-tex="\(y_0\)">\(y_0\)</span>, and where the rank is <span class="math" data-tex="\(k\)">\(k\)</span> they span the image of <span class="math" data-tex="\(p(y)\)">\(p(y)\)</span>. The coefficients of a vector of <span class="math" data-tex="\(\operatorname{ran}p\)">\(\operatorname{ran}p\)</span> in this frame are obtained from its inner products with the frame by the inverse Gram matrix, so they are continuous. Hence <span class="math" data-tex="\(\operatorname{ran}p\)">\(\operatorname{ran}p\)</span> is a vector bundle. The same applies to <span class="math" data-tex="\(I-p\)">\(I-p\)</span>. The map <span class="math" data-tex="\((u,w)\mapsto u+w\)">\((u,w)\mapsto u+w\)</span> is a continuous bundle map, bijective in each fiber because <span class="math" data-tex="\(G_y\)">\(G_y\)</span> is the orthogonal sum of the two images, with the continuous inverse <span class="math" data-tex="\(v\mapsto(pv,(I-p)v)\)">\(v\mapsto(pv,(I-p)v)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-chern-classes-and-products-of-projective-spaces">2. Chern classes and products of projective spaces</h2>
+<p>Cohomology is singular cohomology with integer coefficients and the cup product. The lesson <a href="../DG-CHAR/DG-CHAR-09.html">Chern classes and the integral universal ring</a> (course <em>Characteristic classes</em>) constructs, for a complex vector bundle <span class="math" data-tex="\(V\)">\(V\)</span> of rank <span class="math" data-tex="\(r\)">\(r\)</span> over a Hausdorff space <span class="math" data-tex="\(B\)">\(B\)</span>, Chern classes <span class="math" data-tex="\(c_k(V)\in H^{2k}(B;\mathbb Z)\)">\(c_k(V)\in H^{2k}(B;\mathbb Z)\)</span> for <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>, with <span class="math" data-tex="\(c_0(V)=1\)">\(c_0(V)=1\)</span> and total class <span class="math" data-tex="\(c(V)=c_0(V)+c_1(V)+\dots\)">\(c(V)=c_0(V)+c_1(V)+\dots\)</span>. We use:</p>
+<ul>
+<li><strong>(C1)</strong> <span class="math" data-tex="\(c_k(V)=0\)">\(c_k(V)=0\)</span> for <span class="math" data-tex="\(k&gt;r\)">\(k&gt;r\)</span>, and <span class="math" data-tex="\(c_1(L)=e(L_{\mathbb R})\)">\(c_1(L)=e(L_{\mathbb R})\)</span> for a line bundle <span class="math" data-tex="\(L\)">\(L\)</span>, the Euler class of the underlying oriented real plane bundle (definition (1.2) there);</li>
+<li><strong>(C2)</strong> the classes are natural under pullbacks and isomorphisms, and <span class="math" data-tex="\(c(V\oplus\varepsilon^k)=c(V)\)">\(c(V\oplus\varepsilon^k)=c(V)\)</span> for the trivial bundle <span class="math" data-tex="\(\varepsilon^k=B\times\mathbb C^k\)">\(\varepsilon^k=B\times\mathbb C^k\)</span> (Proposition 1.1 there); in particular <span class="math" data-tex="\(c(\varepsilon^k)=1\)">\(c(\varepsilon^k)=1\)</span>;</li>
+<li><strong>(C3)</strong> <span class="math" data-tex="\(c(V\oplus W)=c(V)\,c(W)\)">\(c(V\oplus W)=c(V)\,c(W)\)</span> when <span class="math" data-tex="\(B\)">\(B\)</span> is paracompact Hausdorff, for instance compact Hausdorff (Theorem 2.2 there).</li>
+</ul>
+<p>Let <span class="math" data-tex="\(\mathbb{CP}^K\)">\(\mathbb{CP}^K\)</span> be the space of complex lines in <span class="math" data-tex="\(\mathbb C^{K+1}\)">\(\mathbb C^{K+1}\)</span>, and <span class="math" data-tex="\(\gamma_K\subseteq\mathbb{CP}^K\times\mathbb C^{K+1}\)">\(\gamma_K\subseteq\mathbb{CP}^K\times\mathbb C^{K+1}\)</span> the tautological line bundle, whose fiber at a line <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. The lesson <a href="../DG-CHAR/DG-CHAR-08.html">The Gysin sequence and projective splitting</a> (same course) proves the following, with <span class="math" data-tex="\(x=-e((\gamma_K)_{\mathbb R})=-c_1(\gamma_K)\)">\(x=-e((\gamma_K)_{\mathbb R})=-c_1(\gamma_K)\)</span>.</p>
+<ul>
+<li><span class="math" data-tex="\(H^*(\mathbb{CP}^K;\mathbb Z)=\mathbb Z[x]/(x^{K+1})\)">\(H^*(\mathbb{CP}^K;\mathbb Z)=\mathbb Z[x]/(x^{K+1})\)</span> (Theorem 3.2 there).</li>
+<li><em>Projective-bundle module theorem</em> (Theorem 4.1 there). Let <span class="math" data-tex="\(V\)">\(V\)</span> be a complex vector bundle of rank <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> over a Hausdorff space <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(p\colon P(V)\to B\)">\(p\colon P(V)\to B\)</span> its bundle of lines, and <span class="math" data-tex="\(S\subseteq p^*V\)">\(S\subseteq p^*V\)</span> the tautological line. Every class in <span class="math" data-tex="\(H^*(P(V);\mathbb Z)\)">\(H^*(P(V);\mathbb Z)\)</span> can be written uniquely as <span class="math" data-tex="\(\sum_{k=0}^{n-1}p^*(b_k)\,z^k\)">\(\sum_{k=0}^{n-1}p^*(b_k)\,z^k\)</span> with <span class="math" data-tex="\(b_k\in H^*(B;\mathbb Z)\)">\(b_k\in H^*(B;\mathbb Z)\)</span>, where <span class="math" data-tex="\(z=-e(S_{\mathbb R})\)">\(z=-e(S_{\mathbb R})\)</span>.</li>
+</ul>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(K_1,\dots,K_R\ge1\)">\(K_1,\dots,K_R\ge1\)</span>, <span class="math" data-tex="\(Y=\mathbb{CP}^{K_1}\times\dots\times\mathbb{CP}^{K_R}\)">\(Y=\mathbb{CP}^{K_1}\times\dots\times\mathbb{CP}^{K_R}\)</span> with the projections <span class="math" data-tex="\(\mathrm{pr}_i\colon Y\to\mathbb{CP}^{K_i}\)">\(\mathrm{pr}_i\colon Y\to\mathbb{CP}^{K_i}\)</span>, <span class="math" data-tex="\(L_i=\mathrm{pr}_i^*\gamma_{K_i}\)">\(L_i=\mathrm{pr}_i^*\gamma_{K_i}\)</span>, and <span class="math" data-tex="\(x_i=-c_1(L_i)\)">\(x_i=-c_1(L_i)\)</span>. Then the monomials <span class="math" data-tex="\(x_1^{e_1}\cdots x_R^{e_R}\)">\(x_1^{e_1}\cdots x_R^{e_R}\)</span> with <span class="math" data-tex="\(0\le e_i\le K_i\)">\(0\le e_i\le K_i\)</span> form a basis of the abelian group <span class="math" data-tex="\(H^*(Y;\mathbb Z)\)">\(H^*(Y;\mathbb Z)\)</span>. In particular <span class="math" data-tex="\(x_1^{K_1}\cdots x_R^{K_R}\ne0\)">\(x_1^{K_1}\cdots x_R^{K_R}\ne0\)</span>.</p>
+<p><strong>Proof.</strong> Induction on <span class="math" data-tex="\(R\)">\(R\)</span>, starting with <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, where <span class="math" data-tex="\(Y\)">\(Y\)</span> is a point and <span class="math" data-tex="\(H^*(Y;\mathbb Z)=\mathbb Z\)">\(H^*(Y;\mathbb Z)=\mathbb Z\)</span> has the basis <span class="math" data-tex="\(1\)">\(1\)</span>. Let <span class="math" data-tex="\(R\ge1\)">\(R\ge1\)</span>, let <span class="math" data-tex="\(B\)">\(B\)</span> be the product of the first <span class="math" data-tex="\(R-1\)">\(R-1\)</span> factors, and <span class="math" data-tex="\(V=B\times\mathbb C^{K_R+1}\)">\(V=B\times\mathbb C^{K_R+1}\)</span>. Its bundle of lines is <span class="math" data-tex="\(B\times\mathbb{CP}^{K_R}=Y\)">\(B\times\mathbb{CP}^{K_R}=Y\)</span>, with <span class="math" data-tex="\(p\)">\(p\)</span> the projection to <span class="math" data-tex="\(B\)">\(B\)</span>, and its tautological line is <span class="math" data-tex="\(L_R\)">\(L_R\)</span>. So <span class="math" data-tex="\(z=-c_1(L_R)=x_R\)">\(z=-c_1(L_R)=x_R\)</span>, and every class on <span class="math" data-tex="\(Y\)">\(Y\)</span> is uniquely <span class="math" data-tex="\(\sum_{k=0}^{K_R}p^*(b_k)\,x_R^k\)">\(\sum_{k=0}^{K_R}p^*(b_k)\,x_R^k\)</span>. By induction, each <span class="math" data-tex="\(b_k\)">\(b_k\)</span> is uniquely an integer combination of the monomials in the classes <span class="math" data-tex="\(x_1,\dots,x_{R-1}\)">\(x_1,\dots,x_{R-1}\)</span> formed on <span class="math" data-tex="\(B\)">\(B\)</span>. The line bundles <span class="math" data-tex="\(L_1,\dots,L_{R-1}\)">\(L_1,\dots,L_{R-1}\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span> are the pullbacks along <span class="math" data-tex="\(p\)">\(p\)</span> of the corresponding line bundles on <span class="math" data-tex="\(B\)">\(B\)</span>, so by (C2) and because <span class="math" data-tex="\(p^*\)">\(p^*\)</span> is a ring homomorphism, <span class="math" data-tex="\(p^*\)">\(p^*\)</span> maps these monomials to the monomials in <span class="math" data-tex="\(x_1,\dots,x_{R-1}\)">\(x_1,\dots,x_{R-1}\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>. Existence and uniqueness of the expansion in the monomials on <span class="math" data-tex="\(Y\)">\(Y\)</span> follow. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 2.2.</strong> Let <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\(L_i\)">\(L_i\)</span> and <span class="math" data-tex="\(x_i\)">\(x_i\)</span> be as in Lemma 2.1, <span class="math" data-tex="\(L_0=Y\times\mathbb C\)">\(L_0=Y\times\mathbb C\)</span>, <span class="math" data-tex="\(h_0\ge0\)">\(h_0\ge0\)</span>, and let <span class="math" data-tex="\(G\)">\(G\)</span> be a Hermitian vector bundle over <span class="math" data-tex="\(Y\)">\(Y\)</span> isomorphic to
+<span class="math math-display" data-tex="\[
+L_0^{\oplus h_0}\oplus L_1^{\oplus K_1}\oplus\dots\oplus L_R^{\oplus K_R} .
+\]">\[
+L_0^{\oplus h_0}\oplus L_1^{\oplus K_1}\oplus\dots\oplus L_R^{\oplus K_R} .
+\]</span>
+Then <span class="math" data-tex="\(G\)">\(G\)</span> contains no trivial subbundle of rank greater than <span class="math" data-tex="\(h_0\)">\(h_0\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\kappa=K_1+\dots+K_R\)">\(\kappa=K_1+\dots+K_R\)</span>. By (C1), (C2) and (C3),
+<span class="math math-display" data-tex="\[
+c(G)=\prod_{i=1}^R(1-x_i)^{K_i} .
+\]">\[
+c(G)=\prod_{i=1}^R(1-x_i)^{K_i} .
+\]</span>
+Expanding the product gives integer multiples of monomials <span class="math" data-tex="\(x_1^{e_1}\cdots x_R^{e_R}\)">\(x_1^{e_1}\cdots x_R^{e_R}\)</span> with <span class="math" data-tex="\(0\le e_i\le K_i\)">\(0\le e_i\le K_i\)</span>, of degree <span class="math" data-tex="\(2(e_1+\dots+e_R)\)">\(2(e_1+\dots+e_R)\)</span>. The degree is <span class="math" data-tex="\(2\kappa\)">\(2\kappa\)</span> only if every <span class="math" data-tex="\(e_i=K_i\)">\(e_i=K_i\)</span>, so
+<span class="math math-display" data-tex="\[
+c_\kappa(G)=(-1)^\kappa\,x_1^{K_1}\cdots x_R^{K_R}\ne0
+\]">\[
+c_\kappa(G)=(-1)^\kappa\,x_1^{K_1}\cdots x_R^{K_R}\ne0
+\]</span>
+by Lemma 2.1. Suppose that <span class="math" data-tex="\(T\subseteq G\)">\(T\subseteq G\)</span> is a subbundle isomorphic to <span class="math" data-tex="\(\varepsilon^k\)">\(\varepsilon^k\)</span> with <span class="math" data-tex="\(k&gt;h_0\)">\(k&gt;h_0\)</span>. By Lemma 1.1, applied to the orthogonal projection onto <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span> is isomorphic to <span class="math" data-tex="\(T\oplus T&#x27;\)">\(T\oplus T&#x27;\)</span>, where <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> is the orthogonal complement, of rank <span class="math" data-tex="\(h_0+\kappa-k&lt;\kappa\)">\(h_0+\kappa-k&lt;\kappa\)</span>. By (C2) and (C3), <span class="math" data-tex="\(c(G)=c(T)\,c(T&#x27;)=c(T&#x27;)\)">\(c(G)=c(T)\,c(T&#x27;)=c(T&#x27;)\)</span>, so <span class="math" data-tex="\(c_\kappa(G)=c_\kappa(T&#x27;)=0\)">\(c_\kappa(G)=c_\kappa(T&#x27;)=0\)</span> by (C1). This contradicts <span class="math" data-tex="\(c_\kappa(G)\ne0\)">\(c_\kappa(G)\ne0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The subbundle <span class="math" data-tex="\(T\)">\(T\)</span> may lie in any position relative to the line summands. The bundle <span class="math" data-tex="\(G\)">\(G\)</span> has rank <span class="math" data-tex="\(h_0+\kappa\)">\(h_0+\kappa\)</span> and contains the trivial summand <span class="math" data-tex="\(L_0^{\oplus h_0}\)">\(L_0^{\oplus h_0}\)</span>, but no trivial subbundle of larger rank: the top Chern class of <span class="math" data-tex="\(G\)">\(G\)</span> is the class of the top degree of <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<h2 id="3-ranks-and-multiplicities">3. Ranks and multiplicities</h2>
+<p>Fix integers <span class="math" data-tex="\(m,R\ge1\)">\(m,R\ge1\)</span>. Put
+<span class="math math-display" data-tex="\[
+d_0=64m4^R,\qquad d_j=4^jd_0
+\]">\[
+d_0=64m4^R,\qquad d_j=4^jd_0
+\]</span>
+for <span class="math" data-tex="\(0\le j\le R\)">\(0\le j\le R\)</span>, the multiplicities
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_{0,j}=64m4^{R-j},\\
+a_{i,j}=960m4^{R+2i-j-2}
+\end{gathered}
+\]">\[
+\begin{gathered}
+a_{0,j}=64m4^{R-j},\\
+a_{i,j}=960m4^{R+2i-j-2}
+\end{gathered}
+\]</span>
+for <span class="math" data-tex="\(0\le j\le R\)">\(0\le j\le R\)</span> and <span class="math" data-tex="\(1\le i\le j\le R\)">\(1\le i\le j\le R\)</span>, and the numbers
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_i&amp;=m\sum_{j=i}^Ra_{i,j}&amp;&amp;(1\le i\le R),\\
+h_0&amp;=m\sum_{j=0}^Ra_{0,j},\\
+\eta_j&amp;=K_1+\dots+K_{j+1}&amp;&amp;(0\le j&lt;R).
+\end{aligned}
+\]">\[
+\begin{aligned}
+K_i&amp;=m\sum_{j=i}^Ra_{i,j}&amp;&amp;(1\le i\le R),\\
+h_0&amp;=m\sum_{j=0}^Ra_{0,j},\\
+\eta_j&amp;=K_1+\dots+K_{j+1}&amp;&amp;(0\le j&lt;R).
+\end{aligned}
+\]</span>
+In passing from level <span class="math" data-tex="\(j\)">\(j\)</span> to level <span class="math" data-tex="\(j+1\)">\(j+1\)</span>, every multiplicity <span class="math" data-tex="\(a_{i,j}\)">\(a_{i,j}\)</span> with <span class="math" data-tex="\(i\le j\)">\(i\le j\)</span> is divided by four, <span class="math" data-tex="\(a_{i,j+1}=a_{i,j}/4\)">\(a_{i,j+1}=a_{i,j}/4\)</span>, and a new multiplicity <span class="math" data-tex="\(a_{j+1,j+1}=960m4^{R+j-1}=\tfrac{15}4d_j\)">\(a_{j+1,j+1}=960m4^{R+j-1}=\tfrac{15}4d_j\)</span> appears.</p>
+<p><strong>Lemma 3.1.</strong></p>
+<ol>
+<li>All <span class="math" data-tex="\(a_{i,j}\)">\(a_{i,j}\)</span> are positive integers. For <span class="math" data-tex="\(j&lt;R\)">\(j&lt;R\)</span> and <span class="math" data-tex="\(i\le j\)">\(i\le j\)</span>, <span class="math" data-tex="\(a_{i,j}\)">\(a_{i,j}\)</span> is divisible by <span class="math" data-tex="\(4\)">\(4\)</span> and at least <span class="math" data-tex="\(256m\)">\(256m\)</span>.</li>
+<li><span class="math" data-tex="\(a_{0,j}+a_{1,j}+\dots+a_{j,j}=d_j\)">\(a_{0,j}+a_{1,j}+\dots+a_{j,j}=d_j\)</span> for <span class="math" data-tex="\(0\le j\le R\)">\(0\le j\le R\)</span>.</li>
+<li><span class="math" data-tex="\(K_i=320m^24^{2i-2}\bigl(4^{R-i+1}-1\bigr)\)">\(K_i=320m^24^{2i-2}\bigl(4^{R-i+1}-1\bigr)\)</span>, a positive integer.</li>
+<li><span class="math" data-tex="\(h_0=\tfrac43md_0\bigl(1-4^{-(R+1)}\bigr)&lt;2md_0\)">\(h_0=\tfrac43md_0\bigl(1-4^{-(R+1)}\bigr)&lt;2md_0\)</span>.</li>
+<li><span class="math" data-tex="\(\eta_j&lt;\tfrac53md_0\bigl(4^{j+1}-1\bigr)&lt;\tfrac{20}3md_j\)">\(\eta_j&lt;\tfrac53md_0\bigl(4^{j+1}-1\bigr)&lt;\tfrac{20}3md_j\)</span> for <span class="math" data-tex="\(0\le j&lt;R\)">\(0\le j&lt;R\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> <em>Part 1.</em> The exponent <span class="math" data-tex="\(R-j\)">\(R-j\)</span> is nonnegative, and <span class="math" data-tex="\(R+2i-j-2\ge R+2-R-2=0\)">\(R+2i-j-2\ge R+2-R-2=0\)</span> for <span class="math" data-tex="\(i\ge1\)">\(i\ge1\)</span> and <span class="math" data-tex="\(j\le R\)">\(j\le R\)</span>. For <span class="math" data-tex="\(j\le R-1\)">\(j\le R-1\)</span> the exponents are at least <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(a_{0,j}\ge256m\)">\(a_{0,j}\ge256m\)</span> and <span class="math" data-tex="\(a_{i,j}\ge3840m\)">\(a_{i,j}\ge3840m\)</span>; both are divisible by <span class="math" data-tex="\(4\)">\(4\)</span>, since <span class="math" data-tex="\(64\)">\(64\)</span> and <span class="math" data-tex="\(960\)">\(960\)</span> are.</p>
+<p><em>Part 2.</em> For <span class="math" data-tex="\(j=0\)">\(j=0\)</span> the sum is <span class="math" data-tex="\(a_{0,0}=64m4^R=d_0\)">\(a_{0,0}=64m4^R=d_0\)</span>. If the sum is <span class="math" data-tex="\(d_j\)">\(d_j\)</span> at level <span class="math" data-tex="\(j&lt;R\)">\(j&lt;R\)</span>, then at level <span class="math" data-tex="\(j+1\)">\(j+1\)</span> it is <span class="math" data-tex="\(\tfrac14d_j+\tfrac{15}4d_j=4d_j=d_{j+1}\)">\(\tfrac14d_j+\tfrac{15}4d_j=4d_j=d_{j+1}\)</span>.</p>
+<p><em>Part 3.</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{j=i}^R4^{R+2i-j-2}&amp;=4^{2i-2}\sum_{j=i}^R4^{R-j}\\
+&amp;=4^{2i-2}\bigl(4^{R-i+1}-1\bigr)/3 ;
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{j=i}^R4^{R+2i-j-2}&amp;=4^{2i-2}\sum_{j=i}^R4^{R-j}\\
+&amp;=4^{2i-2}\bigl(4^{R-i+1}-1\bigr)/3 ;
+\end{aligned}
+\]</span>
+multiply by <span class="math" data-tex="\(960m^2\)">\(960m^2\)</span>.</p>
+<p><em>Part 4.</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{j=0}^R64m4^{R-j}&amp;=d_0\sum_{j=0}^R4^{-j}\\
+&amp;=\tfrac43d_0\bigl(1-4^{-(R+1)}\bigr) ;
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{j=0}^R64m4^{R-j}&amp;=d_0\sum_{j=0}^R4^{-j}\\
+&amp;=\tfrac43d_0\bigl(1-4^{-(R+1)}\bigr) ;
+\end{aligned}
+\]</span>
+multiply by <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><em>Part 5.</em> <span class="math" data-tex="\(a_{i,j}=a_{i,i}4^{-(j-i)}\)">\(a_{i,j}=a_{i,i}4^{-(j-i)}\)</span>, so <span class="math" data-tex="\(K_i&lt;\tfrac43ma_{i,i}=5md_{i-1}\)">\(K_i&lt;\tfrac43ma_{i,i}=5md_{i-1}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\eta_j&amp;&lt;5m\bigl(d_0+\dots+d_j\bigr)\\
+&amp;=\tfrac53md_0\bigl(4^{j+1}-1\bigr)\\
+&amp;&lt;\tfrac53md_04^{j+1}=\tfrac{20}3md_j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\eta_j&amp;&lt;5m\bigl(d_0+\dots+d_j\bigr)\\
+&amp;=\tfrac53md_0\bigl(4^{j+1}-1\bigr)\\
+&amp;&lt;\tfrac53md_04^{j+1}=\tfrac{20}3md_j .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-the-bundles">4. The bundles</h2>
+<p>Let <span class="math" data-tex="\(Y=\mathbb{CP}^{K_1}\times\dots\times\mathbb{CP}^{K_R}\)">\(Y=\mathbb{CP}^{K_1}\times\dots\times\mathbb{CP}^{K_R}\)</span>, <span class="math" data-tex="\(L_0=Y\times\mathbb C\)">\(L_0=Y\times\mathbb C\)</span>, and <span class="math" data-tex="\(L_i=\mathrm{pr}_i^*\gamma_{K_i}\)">\(L_i=\mathrm{pr}_i^*\gamma_{K_i}\)</span> with the Hermitian metric of <span class="math" data-tex="\(\mathbb C^{K_i+1}\)">\(\mathbb C^{K_i+1}\)</span>. For <span class="math" data-tex="\(0\le j\le R\)">\(0\le j\le R\)</span> let
+<span class="math math-display" data-tex="\[
+E_j=\bigoplus_{i=0}^jL_i^{\oplus a_{i,j}} ,
+\]">\[
+E_j=\bigoplus_{i=0}^jL_i^{\oplus a_{i,j}} ,
+\]</span>
+an orthogonal direct sum. By Lemma 3.1, <span class="math" data-tex="\(E_j\)">\(E_j\)</span> has rank <span class="math" data-tex="\(d_j\)">\(d_j\)</span>, and <span class="math" data-tex="\(E_0=L_0^{\oplus d_0}\)">\(E_0=L_0^{\oplus d_0}\)</span> is trivial of rank <span class="math" data-tex="\(d_0\)">\(d_0\)</span>. The line bundle <span class="math" data-tex="\(L_i\)">\(L_i\)</span> occurs in <span class="math" data-tex="\(E_j\)">\(E_j\)</span> with multiplicity <span class="math" data-tex="\(a_{i,j}\)">\(a_{i,j}\)</span> for <span class="math" data-tex="\(i\le j\)">\(i\le j\)</span>, so in
+<span class="math math-display" data-tex="\[
+G=\bigl(E_0\oplus\dots\oplus E_R\bigr)^{\oplus m}
+\]">\[
+G=\bigl(E_0\oplus\dots\oplus E_R\bigr)^{\oplus m}
+\]</span>
+it occurs <span class="math" data-tex="\(K_i\)">\(K_i\)</span> times for <span class="math" data-tex="\(i\ge1\)">\(i\ge1\)</span> and <span class="math" data-tex="\(h_0\)">\(h_0\)</span> times for <span class="math" data-tex="\(i=0\)">\(i=0\)</span>. By Proposition 2.2 and part 4 of Lemma 3.1, <span class="math" data-tex="\(G\)">\(G\)</span> contains no trivial subbundle of rank <span class="math" data-tex="\(2md_0\)">\(2md_0\)</span>.</p>
+<p>The numbers <span class="math" data-tex="\(K_i\)">\(K_i\)</span> are chosen as the total multiplicities of the <span class="math" data-tex="\(L_i\)">\(L_i\)</span> in <span class="math" data-tex="\(G\)">\(G\)</span>, so that the top Chern class of <span class="math" data-tex="\(G\)">\(G\)</span> is the top class of <span class="math" data-tex="\(Y\)">\(Y\)</span>. The trivial line <span class="math" data-tex="\(L_0\)">\(L_0\)</span> occurs only <span class="math" data-tex="\(h_0&lt;2md_0\)">\(h_0&lt;2md_0\)</span> times in <span class="math" data-tex="\(G\)">\(G\)</span>, because its multiplicity is divided by four at every level, although the <span class="math" data-tex="\(m\)">\(m\)</span> copies of <span class="math" data-tex="\(E_0\)">\(E_0\)</span> alone contain <span class="math" data-tex="\(md_0\)">\(md_0\)</span> trivial lines.</p>
+<p><em>Smooth structure.</em> The sets <span class="math" data-tex="\(U_k\)">\(U_k\)</span> of the lines <span class="math" data-tex="\(\mathbb Cz\)">\(\mathbb Cz\)</span> with <span class="math" data-tex="\(z_k\ne0\)">\(z_k\ne0\)</span> are open and cover <span class="math" data-tex="\(\mathbb{CP}^K\)">\(\mathbb{CP}^K\)</span>, and <span class="math" data-tex="\(\mathbb Cz\mapsto(z_l/z_k)_{l\ne k}\)">\(\mathbb Cz\mapsto(z_l/z_k)_{l\ne k}\)</span> identifies <span class="math" data-tex="\(U_k\)">\(U_k\)</span> with <span class="math" data-tex="\(\mathbb C^K\)">\(\mathbb C^K\)</span>; the changes of charts are smooth. Over <span class="math" data-tex="\(U_k\)">\(U_k\)</span>, <span class="math" data-tex="\(\mathbb Cz\mapsto z/z_k\)">\(\mathbb Cz\mapsto z/z_k\)</span> is a nowhere-zero section of <span class="math" data-tex="\(\gamma_K\)">\(\gamma_K\)</span> whose coordinates are the chart coordinates and <span class="math" data-tex="\(1\)">\(1\)</span>. So <span class="math" data-tex="\(\mathbb{CP}^K\)">\(\mathbb{CP}^K\)</span> is a compact smooth manifold of real dimension <span class="math" data-tex="\(2K\)">\(2K\)</span>, <span class="math" data-tex="\(\gamma_K\)">\(\gamma_K\)</span> is a smooth line subbundle of <span class="math" data-tex="\(\mathbb{CP}^K\times\mathbb C^{K+1}\)">\(\mathbb{CP}^K\times\mathbb C^{K+1}\)</span>, and the metric of <span class="math" data-tex="\(\mathbb C^{K+1}\)">\(\mathbb C^{K+1}\)</span> is smooth on it. Products, pullbacks along the smooth projections and orthogonal direct sums preserve smoothness. So <span class="math" data-tex="\(Y\)">\(Y\)</span> is a compact smooth manifold and the <span class="math" data-tex="\(E_j\)">\(E_j\)</span> are smooth Hermitian bundles.</p>
+<p><em>Smaller bases.</em> For <span class="math" data-tex="\(0\le j&lt;R\)">\(0\le j&lt;R\)</span> let <span class="math" data-tex="\(Y_{j+1}=\mathbb{CP}^{K_1}\times\dots\times\mathbb{CP}^{K_{j+1}}\)">\(Y_{j+1}=\mathbb{CP}^{K_1}\times\dots\times\mathbb{CP}^{K_{j+1}}\)</span>, of complex dimension <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span>. The bundles <span class="math" data-tex="\(E_j\)">\(E_j\)</span> and <span class="math" data-tex="\(E_{j+1}\)">\(E_{j+1}\)</span> involve only <span class="math" data-tex="\(L_0,\dots,L_{j+1}\)">\(L_0,\dots,L_{j+1}\)</span>, so they are the pullbacks along the projection <span class="math" data-tex="\(Y\to Y_{j+1}\)">\(Y\to Y_{j+1}\)</span> of the bundles defined by the same formulas on <span class="math" data-tex="\(Y_{j+1}\)">\(Y_{j+1}\)</span>; these are denoted by the same letters.</p>
+<h2 id="5-maps-that-double-dimensions">5. Maps that double dimensions</h2>
+<p><strong>Lemma 5.1.</strong> Let <span class="math" data-tex="\(0\le j&lt;R\)">\(0\le j&lt;R\)</span>. There are continuous bundle maps <span class="math" data-tex="\(X_1,\dots,X_{24}\colon E_j\to E_{j+1}\)">\(X_1,\dots,X_{24}\colon E_j\to E_{j+1}\)</span> over <span class="math" data-tex="\(Y\)">\(Y\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{i=1}^{24}X_i^*X_i=I_{E_j},\\
+\sum_{i=1}^{24}X_iX_i^*\le\tfrac23\,I_{E_{j+1}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{i=1}^{24}X_i^*X_i=I_{E_j},\\
+\sum_{i=1}^{24}X_iX_i^*\le\tfrac23\,I_{E_{j+1}} .
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> We work over <span class="math" data-tex="\(Y_{j+1}\)">\(Y_{j+1}\)</span> and write <span class="math" data-tex="\(d=d_j\)">\(d=d_j\)</span>. Decompose <span class="math" data-tex="\(E_{j+1}=F_{\mathrm{old}}\oplus F_{\mathrm{new}}\)">\(E_{j+1}=F_{\mathrm{old}}\oplus F_{\mathrm{new}}\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F_{\mathrm{old}}=\bigoplus_{i=0}^jL_i^{\oplus a_{i,j}/4},\\
+F_{\mathrm{new}}=L_{j+1}^{\oplus a_{j+1,j+1}} ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+F_{\mathrm{old}}=\bigoplus_{i=0}^jL_i^{\oplus a_{i,j}/4},\\
+F_{\mathrm{new}}=L_{j+1}^{\oplus a_{j+1,j+1}} ,
+\end{gathered}
+\]</span>
+of ranks <span class="math" data-tex="\(d/4\)">\(d/4\)</span> and <span class="math" data-tex="\(\tfrac{15}4d\)">\(\tfrac{15}4d\)</span>.</p>
+<p><em>Sixteen maps for small subspaces.</em> Fix <span class="math" data-tex="\(i\le j\)">\(i\le j\)</span> and put <span class="math" data-tex="\(D=a_{i,j}\)">\(D=a_{i,j}\)</span>, which is divisible by <span class="math" data-tex="\(4\)">\(4\)</span> and at least <span class="math" data-tex="\(256m\)">\(256m\)</span> by Lemma 3.1. Apply Lemma 4.1 of <a href="expanding-maps-and-a-continuous-normalization.html">Expanding maps and a continuous normalization</a> over a point, with <span class="math" data-tex="\(q=16\)">\(q=16\)</span>, source <span class="math" data-tex="\(\mathbb C^D\)">\(\mathbb C^D\)</span>, target <span class="math" data-tex="\(\mathbb C^{D/4}\)">\(\mathbb C^{D/4}\)</span> and the pairs <span class="math" data-tex="\((s,2s)\)">\((s,2s)\)</span> for <span class="math" data-tex="\(1\le s\le m\)">\(1\le s\le m\)</span>. Here <span class="math" data-tex="\(2s\le2m&lt;D/4\)">\(2s\le2m&lt;D/4\)</span>, and, using <span class="math" data-tex="\(D\ge64m\)">\(D\ge64m\)</span> and <span class="math" data-tex="\(s\le m\)">\(s\le m\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(16s-2s)\bigl(\tfrac D4-2s\bigr)-s(D-s)\\
+&amp;\quad=\tfrac52sD-27s^2\\
+&amp;\quad\ge160ms-27ms=133ms&gt;0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(16s-2s)\bigl(\tfrac D4-2s\bigr)-s(D-s)\\
+&amp;\quad=\tfrac52sD-27s^2\\
+&amp;\quad\ge160ms-27ms=133ms&gt;0 .
+\end{aligned}
+\]</span>
+So there are linear maps <span class="math" data-tex="\(A^{(i)}_1,\dots,A^{(i)}_{16}\colon\mathbb C^D\to\mathbb C^{D/4}\)">\(A^{(i)}_1,\dots,A^{(i)}_{16}\colon\mathbb C^D\to\mathbb C^{D/4}\)</span> such that for every subspace <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(1\le\dim S\le m\)">\(1\le\dim S\le m\)</span> the images <span class="math" data-tex="\(A^{(i)}_kS\)">\(A^{(i)}_kS\)</span> span a space of dimension greater than <span class="math" data-tex="\(2\dim S\)">\(2\dim S\)</span>. Since <span class="math" data-tex="\(L_i^{\oplus D}=L_i\otimes\mathbb C^D\)">\(L_i^{\oplus D}=L_i\otimes\mathbb C^D\)</span>, the maps <span class="math" data-tex="\(\mathrm{id}\otimes A^{(i)}_k\colon L_i^{\oplus D}\to L_i^{\oplus D/4}\)">\(\mathrm{id}\otimes A^{(i)}_k\colon L_i^{\oplus D}\to L_i^{\oplus D/4}\)</span> are smooth bundle maps; in a fiber, a nonzero vector of the line identifies them with the <span class="math" data-tex="\(A^{(i)}_k\)">\(A^{(i)}_k\)</span>. For <span class="math" data-tex="\(1\le k\le16\)">\(1\le k\le16\)</span> let <span class="math" data-tex="\(T_k\colon E_j\to E_{j+1}\)">\(T_k\colon E_j\to E_{j+1}\)</span> be the block diagonal map with the blocks <span class="math" data-tex="\(\mathrm{id}\otimes A^{(i)}_k\)">\(\mathrm{id}\otimes A^{(i)}_k\)</span>, <span class="math" data-tex="\(0\le i\le j\)">\(0\le i\le j\)</span>, into <span class="math" data-tex="\(F_{\mathrm{old}}\)">\(F_{\mathrm{old}}\)</span>, and with zero component in <span class="math" data-tex="\(F_{\mathrm{new}}\)">\(F_{\mathrm{new}}\)</span>.</p>
+<p><em>The flag argument.</em> We show that <span class="math" data-tex="\(\dim\sum_{k=1}^{16}T_kS\ge2\dim S\)">\(\dim\sum_{k=1}^{16}T_kS\ge2\dim S\)</span> for every subspace <span class="math" data-tex="\(S\)">\(S\)</span> of a fiber of <span class="math" data-tex="\(E_j\)">\(E_j\)</span> with <span class="math" data-tex="\(\dim S\le m\)">\(\dim S\le m\)</span>. Write the fiber of <span class="math" data-tex="\(E_j\)">\(E_j\)</span> as <span class="math" data-tex="\(V_0\oplus\dots\oplus V_j\)">\(V_0\oplus\dots\oplus V_j\)</span> and the fiber of <span class="math" data-tex="\(F_{\mathrm{old}}\)">\(F_{\mathrm{old}}\)</span> as <span class="math" data-tex="\(F_0\oplus\dots\oplus F_j\)">\(F_0\oplus\dots\oplus F_j\)</span>, following the line bundles, and <span class="math" data-tex="\(T_k=\bigoplus_iT_{k,i}\)">\(T_k=\bigoplus_iT_{k,i}\)</span> with <span class="math" data-tex="\(T_{k,i}\colon V_i\to F_i\)">\(T_{k,i}\colon V_i\to F_i\)</span>. Put <span class="math" data-tex="\(V_{\le i}=V_0\oplus\dots\oplus V_i\)">\(V_{\le i}=V_0\oplus\dots\oplus V_i\)</span> and <span class="math" data-tex="\(F_{\le i}=F_0\oplus\dots\oplus F_i\)">\(F_{\le i}=F_0\oplus\dots\oplus F_i\)</span>, both zero for <span class="math" data-tex="\(i=-1\)">\(i=-1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W=\sum_{k=1}^{16}T_kS,\\
+S_i=S\cap V_{\le i},\qquad W_i=W\cap F_{\le i} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+W=\sum_{k=1}^{16}T_kS,\\
+S_i=S\cap V_{\le i},\qquad W_i=W\cap F_{\le i} .
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(\pi_i\colon V_{\le i}\to V_i\)">\(\pi_i\colon V_{\le i}\to V_i\)</span> and <span class="math" data-tex="\(\pi_i&#x27;\colon F_{\le i}\to F_i\)">\(\pi_i&#x27;\colon F_{\le i}\to F_i\)</span> be the projections onto the last summand. The kernel of <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span> on <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is <span class="math" data-tex="\(S_{i-1}\)">\(S_{i-1}\)</span>, so <span class="math" data-tex="\(\dim\pi_i(S_i)=\dim S_i-\dim S_{i-1}\)">\(\dim\pi_i(S_i)=\dim S_i-\dim S_{i-1}\)</span>; likewise <span class="math" data-tex="\(\dim\pi_i&#x27;(W_i)=\dim W_i-\dim W_{i-1}\)">\(\dim\pi_i&#x27;(W_i)=\dim W_i-\dim W_{i-1}\)</span>. Since <span class="math" data-tex="\(T_k\)">\(T_k\)</span> is block diagonal, <span class="math" data-tex="\(T_kS_i\subseteq W\cap F_{\le i}=W_i\)">\(T_kS_i\subseteq W\cap F_{\le i}=W_i\)</span> and <span class="math" data-tex="\(\pi_i&#x27;T_k=T_{k,i}\pi_i\)">\(\pi_i&#x27;T_k=T_{k,i}\pi_i\)</span> on <span class="math" data-tex="\(V_{\le i}\)">\(V_{\le i}\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{k=1}^{16}T_{k,i}\bigl(\pi_iS_i\bigr)&amp;=\pi_i&#x27;\Bigl(\sum_{k=1}^{16}T_kS_i\Bigr)\\
+&amp;\subseteq\pi_i&#x27;(W_i) .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{k=1}^{16}T_{k,i}\bigl(\pi_iS_i\bigr)&amp;=\pi_i&#x27;\Bigl(\sum_{k=1}^{16}T_kS_i\Bigr)\\
+&amp;\subseteq\pi_i&#x27;(W_i) .
+\end{aligned}
+\]</span>
+The subspace <span class="math" data-tex="\(\pi_i(S_i)\)">\(\pi_i(S_i)\)</span> of <span class="math" data-tex="\(V_i\)">\(V_i\)</span> has dimension at most <span class="math" data-tex="\(\dim S\le m\)">\(\dim S\le m\)</span>, so the left side has dimension at least <span class="math" data-tex="\(2\dim\pi_i(S_i)\)">\(2\dim\pi_i(S_i)\)</span>. As <span class="math" data-tex="\(W\subseteq F_{\le j}\)">\(W\subseteq F_{\le j}\)</span>, summing over <span class="math" data-tex="\(i\)">\(i\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\dim W&amp;=\sum_{i=0}^j\bigl(\dim W_i-\dim W_{i-1}\bigr)\\
+&amp;\ge2\sum_{i=0}^j\bigl(\dim S_i-\dim S_{i-1}\bigr)\\
+&amp;=2\dim S .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\dim W&amp;=\sum_{i=0}^j\bigl(\dim W_i-\dim W_{i-1}\bigr)\\
+&amp;\ge2\sum_{i=0}^j\bigl(\dim S_i-\dim S_{i-1}\bigr)\\
+&amp;=2\dim S .
+\end{aligned}
+\]</span></p>
+<p><em>Eight maps for large subspaces.</em> Apply Lemma 4.1 of <a href="expanding-maps-and-a-continuous-normalization.html">Expanding maps and a continuous normalization</a> over <span class="math" data-tex="\(Y_{j+1}\)">\(Y_{j+1}\)</span>, of real dimension <span class="math" data-tex="\(2\eta_j\)">\(2\eta_j\)</span>, to the bundles <span class="math" data-tex="\(E_j\)">\(E_j\)</span> and <span class="math" data-tex="\(F_{\mathrm{new}}\)">\(F_{\mathrm{new}}\)</span>, of ranks <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(\tfrac{15}4d\)">\(\tfrac{15}4d\)</span>, with <span class="math" data-tex="\(q=8\)">\(q=8\)</span> and the pairs <span class="math" data-tex="\((s,2s)\)">\((s,2s)\)</span> for <span class="math" data-tex="\(m&lt;s\le d\)">\(m&lt;s\le d\)</span>. Here <span class="math" data-tex="\(2s\le2d&lt;\tfrac{15}4d\)">\(2s\le2d&lt;\tfrac{15}4d\)</span>, and, using <span class="math" data-tex="\(s\le d\)">\(s\le d\)</span>, <span class="math" data-tex="\(s&gt;m\)">\(s&gt;m\)</span> and part 5 of Lemma 3.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(8s-2s)\bigl(\tfrac{15}4d-2s\bigr)-s(d-s)\\
+&amp;\quad=\tfrac{43}2sd-11s^2\\
+&amp;\quad\ge\tfrac{21}2sd&gt;\tfrac{20}3md&gt;\eta_j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(8s-2s)\bigl(\tfrac{15}4d-2s\bigr)-s(d-s)\\
+&amp;\quad=\tfrac{43}2sd-11s^2\\
+&amp;\quad\ge\tfrac{21}2sd&gt;\tfrac{20}3md&gt;\eta_j .
+\end{aligned}
+\]</span>
+This gives smooth bundle maps <span class="math" data-tex="\(T_{17},\dots,T_{24}\colon E_j\to F_{\mathrm{new}}\subseteq E_{j+1}\)">\(T_{17},\dots,T_{24}\colon E_j\to F_{\mathrm{new}}\subseteq E_{j+1}\)</span> such that <span class="math" data-tex="\(\dim\sum_{k=17}^{24}T_kS&gt;2\dim S\)">\(\dim\sum_{k=17}^{24}T_kS&gt;2\dim S\)</span> for every subspace <span class="math" data-tex="\(S\)">\(S\)</span> of a fiber with <span class="math" data-tex="\(m&lt;\dim S\le d\)">\(m&lt;\dim S\le d\)</span>.</p>
+<p><em>Normalization.</em> Adding maps does not decrease the span of the images. So <span class="math" data-tex="\(\dim\sum_{k=1}^{24}T_kS\ge2\dim S\)">\(\dim\sum_{k=1}^{24}T_kS\ge2\dim S\)</span> for every subspace <span class="math" data-tex="\(S\)">\(S\)</span> of every fiber of <span class="math" data-tex="\(E_j\)">\(E_j\)</span>: the first sixteen maps suffice when <span class="math" data-tex="\(\dim S\le m\)">\(\dim S\le m\)</span>, the last eight when <span class="math" data-tex="\(\dim S&gt;m\)">\(\dim S&gt;m\)</span>. Lemma 6.1 of <a href="expanding-maps-and-a-continuous-normalization.html">Expanding maps and a continuous normalization</a>, over <span class="math" data-tex="\(Y_{j+1}\)">\(Y_{j+1}\)</span>, gives bundle maps <span class="math" data-tex="\(X_1,\dots,X_{24}\colon E_j\to E_{j+1}\)">\(X_1,\dots,X_{24}\colon E_j\to E_{j+1}\)</span> with the two relations. Their pullbacks to <span class="math" data-tex="\(Y\)">\(Y\)</span> have the same relations. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The two lists have different tasks. Large subspaces cannot be doubled inside <span class="math" data-tex="\(F_{\mathrm{old}}\)">\(F_{\mathrm{old}}\)</span>, whose rank <span class="math" data-tex="\(d/4\)">\(d/4\)</span> is less than <span class="math" data-tex="\(2\dim S\)">\(2\dim S\)</span> as soon as <span class="math" data-tex="\(\dim S&gt;d/8\)">\(\dim S&gt;d/8\)</span>. Small subspaces cannot be treated by the incidence lemma over the large base <span class="math" data-tex="\(Y_{j+1}\)">\(Y_{j+1}\)</span>: for a line, <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, and <span class="math" data-tex="\(q\)">\(q\)</span> maps into <span class="math" data-tex="\(F_{\mathrm{new}}\)">\(F_{\mathrm{new}}\)</span> its expression is <span class="math" data-tex="\(\bigl(\tfrac{15}4(q-2)-1\bigr)d-(2q-5)\)">\(\bigl(\tfrac{15}4(q-2)-1\bigr)d-(2q-5)\)</span>, while for <span class="math" data-tex="\(j=0\)">\(j=0\)</span> the base has complex dimension <span class="math" data-tex="\(\eta_0=K_1=5md_0\bigl(1-4^{-R}\bigr)\)">\(\eta_0=K_1=5md_0\bigl(1-4^{-R}\bigr)\)</span>, which grows with <span class="math" data-tex="\(m\)">\(m\)</span>. The number of maps has to be the same for all <span class="math" data-tex="\(m\)">\(m\)</span>, because the algebra of <a href="weighted-shifts-and-the-construction.html">Weighted shifts and the construction</a> has a fixed number of generators. So small subspaces are handled by maps that are constant on each block, for which the dimension count takes place over a point.</p>
+<h2 id="6-the-bundle-tests">6. The bundle tests</h2>
+<p><strong>Theorem 6.1</strong> (bundle tests; [OpenAI-QT, Section 4]). Let <span class="math" data-tex="\(m,R\ge1\)">\(m,R\ge1\)</span> and <span class="math" data-tex="\(d_0=64m4^R\)">\(d_0=64m4^R\)</span>. There are a compact smooth manifold <span class="math" data-tex="\(Y\)">\(Y\)</span>, Hermitian vector bundles <span class="math" data-tex="\(E_j\)">\(E_j\)</span> over <span class="math" data-tex="\(Y\)">\(Y\)</span> for <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, and continuous bundle maps <span class="math" data-tex="\(X_i^{(j)}\colon E_j\to E_{j+1}\)">\(X_i^{(j)}\colon E_j\to E_{j+1}\)</span> for <span class="math" data-tex="\(1\le i\le24\)">\(1\le i\le24\)</span> and <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, with the following three properties. (1) <span class="math" data-tex="\(E_0\)">\(E_0\)</span> is trivial of rank <span class="math" data-tex="\(d_0\)">\(d_0\)</span>. (2) For every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{i=1}^{24}X_i^{(j)*}X_i^{(j)}=I_{E_j},\\
+\sum_{i=1}^{24}X_i^{(j)}X_i^{(j)*}\le\tfrac23\,I_{E_{j+1}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{i=1}^{24}X_i^{(j)*}X_i^{(j)}=I_{E_j},\\
+\sum_{i=1}^{24}X_i^{(j)}X_i^{(j)*}\le\tfrac23\,I_{E_{j+1}} .
+\end{gathered}
+\]</span>
+(3) <span class="math" data-tex="\(\bigl(E_0\oplus\dots\oplus E_R\bigr)^{\oplus m}\)">\(\bigl(E_0\oplus\dots\oplus E_R\bigr)^{\oplus m}\)</span> contains no trivial subbundle of rank <span class="math" data-tex="\(2md_0\)">\(2md_0\)</span>.</p>
+<p><strong>Proof.</strong> Take <span class="math" data-tex="\(Y\)">\(Y\)</span> and <span class="math" data-tex="\(E_0,\dots,E_R\)">\(E_0,\dots,E_R\)</span> from Section 4; parts 1 and 3 were shown there. For <span class="math" data-tex="\(j&lt;R\)">\(j&lt;R\)</span> take the maps of Lemma 5.1. For <span class="math" data-tex="\(j\ge R\)">\(j\ge R\)</span> put <span class="math" data-tex="\(E_{j+1}=E_j\oplus E_j\)">\(E_{j+1}=E_j\oplus E_j\)</span>, with the two inclusions <span class="math" data-tex="\(\iota_1,\iota_2\)">\(\iota_1,\iota_2\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X_1^{(j)}=2^{-1/2}\iota_1,\qquad X_2^{(j)}=2^{-1/2}\iota_2,\\
+X_i^{(j)}=0\quad(3\le i\le24) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+X_1^{(j)}=2^{-1/2}\iota_1,\qquad X_2^{(j)}=2^{-1/2}\iota_2,\\
+X_i^{(j)}=0\quad(3\le i\le24) .
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(\sum_iX_i^{(j)*}X_i^{(j)}=\tfrac12\bigl(\iota_1^*\iota_1+\iota_2^*\iota_2\bigr)=I_{E_j}\)">\(\sum_iX_i^{(j)*}X_i^{(j)}=\tfrac12\bigl(\iota_1^*\iota_1+\iota_2^*\iota_2\bigr)=I_{E_j}\)</span> and <span class="math" data-tex="\(\sum_iX_i^{(j)}X_i^{(j)*}=\tfrac12\bigl(\iota_1\iota_1^*+\iota_2\iota_2^*\bigr)=\tfrac12I_{E_{j+1}}\)">\(\sum_iX_i^{(j)}X_i^{(j)*}=\tfrac12\bigl(\iota_1\iota_1^*+\iota_2\iota_2^*\bigr)=\tfrac12I_{E_{j+1}}\)</span>. The bundles beyond level <span class="math" data-tex="\(R\)">\(R\)</span> do not enter part 3. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In <a href="weighted-shifts-and-the-construction.html">Weighted shifts and the construction</a> the test with parameters <span class="math" data-tex="\((m,R)\)">\((m,R)\)</span> is used as follows: words of length at most <span class="math" data-tex="\(R\)">\(R\)</span> in the maps and their adjoints, applied to <span class="math" data-tex="\(E_0\)">\(E_0\)</span>, stay in <span class="math" data-tex="\(E_0\oplus\dots\oplus E_R\)">\(E_0\oplus\dots\oplus E_R\)</span>. So a pair of isometries with orthogonal ranges in <span class="math" data-tex="\(M_m(B)\)">\(M_m(B)\)</span>, approximated by matrices of polynomials of degree at most <span class="math" data-tex="\(R\)">\(R\)</span>, would produce a trivial subbundle of rank <span class="math" data-tex="\(2md_0\)">\(2md_0\)</span> in <span class="math" data-tex="\(\bigl(E_0\oplus\dots\oplus E_R\bigr)^{\oplus m}\)">\(\bigl(E_0\oplus\dots\oplus E_R\bigr)^{\oplus m}\)</span>.</p>
+<p><strong>Remark 6.2</strong> (seven maps). Theorem 6.1 holds with seven maps in place of twenty-four. First, seven maps suffice in each list of Lemma 5.1. Over a point, with <span class="math" data-tex="\(D\ge64m\)">\(D\ge64m\)</span> and <span class="math" data-tex="\(1\le s\le m\)">\(1\le s\le m\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(7s-2s)\bigl(\tfrac D4-2s\bigr)-s(D-s)\\
+&amp;\quad=\tfrac14sD-9s^2\\
+&amp;\quad\ge16ms-9ms=7ms&gt;0 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(7s-2s)\bigl(\tfrac D4-2s\bigr)-s(D-s)\\
+&amp;\quad=\tfrac14sD-9s^2\\
+&amp;\quad\ge16ms-9ms=7ms&gt;0 ,
+\end{aligned}
+\]</span>
+and over <span class="math" data-tex="\(Y_{j+1}\)">\(Y_{j+1}\)</span>, with <span class="math" data-tex="\(m&lt;s\le d\)">\(m&lt;s\le d\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(7s-2s)\bigl(\tfrac{15}4d-2s\bigr)-s(d-s)\\
+&amp;\quad=\tfrac{71}4sd-9s^2\\
+&amp;\quad\ge\tfrac{35}4sd&gt;\tfrac{20}3md&gt;\eta_j .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(7s-2s)\bigl(\tfrac{15}4d-2s\bigr)-s(d-s)\\
+&amp;\quad=\tfrac{71}4sd-9s^2\\
+&amp;\quad\ge\tfrac{35}4sd&gt;\tfrac{20}3md&gt;\eta_j .
+\end{aligned}
+\]</span>
+Second, the two lists can be merged. Let <span class="math" data-tex="\(A_1,\dots,A_7\colon E_j\to F_{\mathrm{old}}\)">\(A_1,\dots,A_7\colon E_j\to F_{\mathrm{old}}\)</span> be block diagonal maps as in the first list and <span class="math" data-tex="\(B_1,\dots,B_7\colon E_j\to F_{\mathrm{new}}\)">\(B_1,\dots,B_7\colon E_j\to F_{\mathrm{new}}\)</span> maps as in the second, and put <span class="math" data-tex="\(T_k=A_k+B_k\colon E_j\to F_{\mathrm{old}}\oplus F_{\mathrm{new}}\)">\(T_k=A_k+B_k\colon E_j\to F_{\mathrm{old}}\oplus F_{\mathrm{new}}\)</span>. For a subspace <span class="math" data-tex="\(S\)">\(S\)</span> of a fiber, the projection of <span class="math" data-tex="\(\sum_kT_kS\)">\(\sum_kT_kS\)</span> to <span class="math" data-tex="\(F_{\mathrm{old}}\)">\(F_{\mathrm{old}}\)</span> is <span class="math" data-tex="\(\sum_kA_kS\)">\(\sum_kA_kS\)</span>, and its projection to <span class="math" data-tex="\(F_{\mathrm{new}}\)">\(F_{\mathrm{new}}\)</span> is <span class="math" data-tex="\(\sum_kB_kS\)">\(\sum_kB_kS\)</span>. A subspace is at least as large as each of its projections. So <span class="math" data-tex="\(\dim\sum_kT_kS\ge2\dim S\)">\(\dim\sum_kT_kS\ge2\dim S\)</span> for every <span class="math" data-tex="\(S\)">\(S\)</span>, by the flag argument when <span class="math" data-tex="\(\dim S\le m\)">\(\dim S\le m\)</span> and by the second list when <span class="math" data-tex="\(\dim S&gt;m\)">\(\dim S&gt;m\)</span>, and Lemma 6.1 of <a href="expanding-maps-and-a-continuous-normalization.html">Expanding maps and a continuous normalization</a> applies to <span class="math" data-tex="\(T_1,\dots,T_7\)">\(T_1,\dots,T_7\)</span>. The continuation beyond level <span class="math" data-tex="\(R\)">\(R\)</span> uses two maps. The consequence for the additivity defect is drawn at the end of <a href="weighted-shifts-and-the-construction.html">Weighted shifts and the construction</a>.</p>
+<p>Six maps would not be enough for this dimension count: for <span class="math" data-tex="\(q=6\)">\(q=6\)</span> the expression over a point is <span class="math" data-tex="\(4s\bigl(\tfrac D4-2s\bigr)-s(D-s)=-7s^2&lt;0\)">\(4s\bigl(\tfrac D4-2s\bigr)-s(D-s)=-7s^2&lt;0\)</span> (Exercise 7.4).</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> For <span class="math" data-tex="\(m=R=1\)">\(m=R=1\)</span>, compute <span class="math" data-tex="\(d_0\)">\(d_0\)</span>, <span class="math" data-tex="\(d_1\)">\(d_1\)</span>, the multiplicities, <span class="math" data-tex="\(K_1\)">\(K_1\)</span>, <span class="math" data-tex="\(h_0\)">\(h_0\)</span> and <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span>, and describe <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\(E_0\)">\(E_0\)</span>, <span class="math" data-tex="\(E_1\)">\(E_1\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>7.2.</strong> Let <span class="math" data-tex="\(\gamma_K^\perp\subseteq\mathbb{CP}^K\times\mathbb C^{K+1}\)">\(\gamma_K^\perp\subseteq\mathbb{CP}^K\times\mathbb C^{K+1}\)</span>, <span class="math" data-tex="\(K\ge1\)">\(K\ge1\)</span>, be the orthogonal complement of the tautological line bundle. Show that <span class="math" data-tex="\(c(\gamma_K^\perp)=1+x+\dots+x^K\)">\(c(\gamma_K^\perp)=1+x+\dots+x^K\)</span>, and conclude that <span class="math" data-tex="\(\gamma_K^\perp\)">\(\gamma_K^\perp\)</span> has no nowhere-zero continuous section.</p>
+<p><strong>7.3.</strong> Over a point, let <span class="math" data-tex="\(V=V_1\oplus V_2\)">\(V=V_1\oplus V_2\)</span> and <span class="math" data-tex="\(F=F_1\oplus F_2\)">\(F=F_1\oplus F_2\)</span>, and let <span class="math" data-tex="\(A_k=A_k^{(1)}\oplus A_k^{(2)}\)">\(A_k=A_k^{(1)}\oplus A_k^{(2)}\)</span>, <span class="math" data-tex="\(1\le k\le q\)">\(1\le k\le q\)</span>, be block diagonal maps <span class="math" data-tex="\(V\to F\)">\(V\to F\)</span> such that for <span class="math" data-tex="\(b=1,2\)">\(b=1,2\)</span> the maps <span class="math" data-tex="\(A_k^{(b)}\)">\(A_k^{(b)}\)</span> send every nonzero vector of <span class="math" data-tex="\(V_b\)">\(V_b\)</span> to vectors spanning a space of dimension at least <span class="math" data-tex="\(2\)">\(2\)</span>. Show directly that the maps <span class="math" data-tex="\(A_k\)">\(A_k\)</span> send every nonzero vector of <span class="math" data-tex="\(V\)">\(V\)</span> to vectors spanning a space of dimension at least <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p><strong>7.4.</strong> Verify the identities
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(16s-2s)\bigl(\tfrac D4-2s\bigr)-s(D-s)\\
+&amp;\qquad=\tfrac52sD-27s^2,\\
+&amp;(8s-2s)\bigl(\tfrac{15}4d-2s\bigr)-s(d-s)\\
+&amp;\qquad=\tfrac{43}2sd-11s^2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(16s-2s)\bigl(\tfrac D4-2s\bigr)-s(D-s)\\
+&amp;\qquad=\tfrac52sD-27s^2,\\
+&amp;(8s-2s)\bigl(\tfrac{15}4d-2s\bigr)-s(d-s)\\
+&amp;\qquad=\tfrac{43}2sd-11s^2,
+\end{aligned}
+\]</span>
+and show that the first expression with <span class="math" data-tex="\(16\)">\(16\)</span> replaced by <span class="math" data-tex="\(6\)">\(6\)</span> is negative for every <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>.</p>
+<p><strong>7.5.</strong> Suppose that the multiplicity of <span class="math" data-tex="\(L_0\)">\(L_0\)</span> were not divided by four, that is, <span class="math" data-tex="\(a_{0,j}=d_0\)">\(a_{0,j}=d_0\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>. Show that then <span class="math" data-tex="\(G\)">\(G\)</span> would contain a trivial subbundle of rank <span class="math" data-tex="\(2md_0\)">\(2md_0\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(d_0=256\)">\(d_0=256\)</span>, <span class="math" data-tex="\(d_1=1024\)">\(d_1=1024\)</span>; <span class="math" data-tex="\(a_{0,0}=256\)">\(a_{0,0}=256\)</span>, <span class="math" data-tex="\(a_{0,1}=64\)">\(a_{0,1}=64\)</span>, <span class="math" data-tex="\(a_{1,1}=960\)">\(a_{1,1}=960\)</span>; <span class="math" data-tex="\(K_1=960\)">\(K_1=960\)</span>, <span class="math" data-tex="\(h_0=320\)">\(h_0=320\)</span> and <span class="math" data-tex="\(\eta_0=960\)">\(\eta_0=960\)</span>, which is less than <span class="math" data-tex="\(\tfrac{20}3\cdot256\)">\(\tfrac{20}3\cdot256\)</span>. So <span class="math" data-tex="\(Y=\mathbb{CP}^{960}\)">\(Y=\mathbb{CP}^{960}\)</span>, <span class="math" data-tex="\(E_0=L_0^{\oplus256}\)">\(E_0=L_0^{\oplus256}\)</span>, <span class="math" data-tex="\(E_1=L_0^{\oplus64}\oplus L_1^{\oplus960}\)">\(E_1=L_0^{\oplus64}\oplus L_1^{\oplus960}\)</span>, and <span class="math" data-tex="\(G=E_0\oplus E_1\cong L_0^{\oplus320}\oplus L_1^{\oplus960}\)">\(G=E_0\oplus E_1\cong L_0^{\oplus320}\oplus L_1^{\oplus960}\)</span>, of rank <span class="math" data-tex="\(1280\)">\(1280\)</span>. By Proposition 2.2 it contains no trivial subbundle of rank greater than <span class="math" data-tex="\(320\)">\(320\)</span>, in particular none of rank <span class="math" data-tex="\(2md_0=512\)">\(2md_0=512\)</span>.</p>
+<p><strong>7.2.</strong> By Lemma 1.1, <span class="math" data-tex="\(\gamma_K\oplus\gamma_K^\perp\)">\(\gamma_K\oplus\gamma_K^\perp\)</span> is isomorphic to the trivial bundle of rank <span class="math" data-tex="\(K+1\)">\(K+1\)</span>. By (C1), (C2) and (C3), <span class="math" data-tex="\((1-x)\,c(\gamma_K^\perp)=1\)">\((1-x)\,c(\gamma_K^\perp)=1\)</span>, and in <span class="math" data-tex="\(\mathbb Z[x]/(x^{K+1})\)">\(\mathbb Z[x]/(x^{K+1})\)</span> the inverse of <span class="math" data-tex="\(1-x\)">\(1-x\)</span> is <span class="math" data-tex="\(1+x+\dots+x^K\)">\(1+x+\dots+x^K\)</span>. So <span class="math" data-tex="\(c_K(\gamma_K^\perp)=x^K\ne0\)">\(c_K(\gamma_K^\perp)=x^K\ne0\)</span>. A nowhere-zero section <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> spans a trivial line subbundle: its projections <span class="math" data-tex="\(\sigma\sigma^*/\|\sigma\|^2\)">\(\sigma\sigma^*/\|\sigma\|^2\)</span> are continuous, and <span class="math" data-tex="\((y,\lambda)\mapsto\lambda\sigma(y)\)">\((y,\lambda)\mapsto\lambda\sigma(y)\)</span> is an isomorphism from the trivial line bundle. Its orthogonal complement in <span class="math" data-tex="\(\gamma_K^\perp\)">\(\gamma_K^\perp\)</span> has rank <span class="math" data-tex="\(K-1\)">\(K-1\)</span>, and as in the proof of Proposition 2.2 this would force <span class="math" data-tex="\(c_K(\gamma_K^\perp)=0\)">\(c_K(\gamma_K^\perp)=0\)</span>.</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(v=v_1+v_2\ne0\)">\(v=v_1+v_2\ne0\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span> the span of the <span class="math" data-tex="\(A_kv\)">\(A_kv\)</span>. If <span class="math" data-tex="\(v_2\ne0\)">\(v_2\ne0\)</span>, the projection of <span class="math" data-tex="\(W\)">\(W\)</span> to <span class="math" data-tex="\(F_2\)">\(F_2\)</span> is the span of the <span class="math" data-tex="\(A_k^{(2)}v_2\)">\(A_k^{(2)}v_2\)</span>, of dimension at least <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(W\)">\(W\)</span> is at least as large as its projection. If <span class="math" data-tex="\(v_2=0\)">\(v_2=0\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span> is the span of the <span class="math" data-tex="\(A_k^{(1)}v_1\)">\(A_k^{(1)}v_1\)</span>. This is the flag argument of Lemma 5.1 for lines.</p>
+<p><strong>7.4.</strong> Expanding the products,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;14s\cdot\tfrac D4-28s^2-sD+s^2\\
+&amp;\qquad=\tfrac52sD-27s^2,\\
+&amp;6s\cdot\tfrac{15}4d-12s^2-sd+s^2\\
+&amp;\qquad=\tfrac{43}2sd-11s^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;14s\cdot\tfrac D4-28s^2-sD+s^2\\
+&amp;\qquad=\tfrac52sD-27s^2,\\
+&amp;6s\cdot\tfrac{15}4d-12s^2-sd+s^2\\
+&amp;\qquad=\tfrac{43}2sd-11s^2 .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(6\)">\(6\)</span> in place of <span class="math" data-tex="\(16\)">\(16\)</span>: <span class="math" data-tex="\(4s\cdot\tfrac D4-8s^2-sD+s^2=-7s^2\)">\(4s\cdot\tfrac D4-8s^2-sD+s^2=-7s^2\)</span>.</p>
+<p><strong>7.5.</strong> Then <span class="math" data-tex="\(L_0\)">\(L_0\)</span> occurs <span class="math" data-tex="\(m(R+1)d_0\ge2md_0\)">\(m(R+1)d_0\ge2md_0\)</span> times in <span class="math" data-tex="\(G\)">\(G\)</span>, and <span class="math" data-tex="\(L_0^{\oplus2md_0}\)">\(L_0^{\oplus2md_0}\)</span> is itself a trivial subbundle of rank <span class="math" data-tex="\(2md_0\)">\(2md_0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-QT] OpenAI, <em>A counterexample to Kaplansky's quasitrace conjecture</em>, OpenAI Math Release preprint, 23 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/A-counterexample-to-Kaplanskys-quasitrace-conjecture-September-23-2026</li>
+<li>[R] M. Rørdam, <em>A simple C*-algebra with a finite and an infinite projection</em>, Acta Math. 191 (2003), 109–142. https://arxiv.org/abs/math/0204339</li>
+<li>[V] J. Villadsen, <em>On the stable rank of simple C*-algebras</em>, J. Amer. Math. Soc. 12 (1999), 1091–1102. https://doi.org/10.1090/S0894-0347-99-00314-8</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

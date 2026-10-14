@@ -1,0 +1,203 @@
+# Quasitraces and a uniform additivity defect
+
+*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+
+A *tracial state* on a unital C\*-algebra is a positive linear functional \(\tau\) with \(\tau(1)=1\) and \(\tau(x^*x)=\tau(xx^*)\). A *quasitrace* keeps the positivity and the identity \(\tau(x^*x)=\tau(xx^*)\), but it is required to be linear only on commutative C\*-subalgebras. The *quasitrace problem*, going back to Kaplansky's question on \(AW^*\)-factors, asks whether every normalized \(2\)-quasitrace is linear, that is, a tracial state. [OpenAI-QT] answers it in the negative: there are a separable unital C\*-algebra \(A\) and positive contractions \(a,b\in A\) such that every normalized \(2\)-quasitrace \(\tau\) on \(A\) satisfies
+\[
+\tau(a+b)-\tau(a)-\tau(b)\ge\frac1{144} ,
+\]
+and \(A\) has such quasitraces. This course gives the proof.
+
+This lesson defines quasitraces, proves the additivity defect from two relations between \(24\) elements, and reduces the theorem to the construction of an algebra in which these relations hold and no matrix algebra contains two isometries with orthogonal ranges. The construction occupies the other three lessons.
+
+- Quasitraces and their basic properties (Section 1).
+- Proper infiniteness, and the existence theorem for quasitraces as a named hypothesis (Section 2).
+- The theorem and the construction theorem (Section 3).
+- The defect lemma (Lemma 4.1).
+- Proof of the theorem (Section 5), and consequences quoted from the literature (Section 6).
+
+The lesson follows [OpenAI-QT, Sections 1, 2 and 5]. It uses unital C\*-algebras, positivity and the continuous functional calculus, as in the lesson [Order, local units and quotients of C\*-algebras](course:foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones) (course *Foundations of von Neumann algebras*).
+
+## 1. Quasitraces
+
+All C\*-algebras are complex. For a unital C\*-algebra \(C\) and \(n\ge1\), \(M_n(C)\) is the C\*-algebra of the \(n\times n\) matrices over \(C\). A self-adjoint element \(h\) is *positive*, \(h\ge0\), if its spectrum lies in \([0,\infty)\); the positive elements are the elements \(y^*y\).
+
+**Definition.** Let \(C\) be a unital C\*-algebra. A *\(1\)-quasitrace* on \(C\) is a function \(\tau\colon C\to\mathbb C\) such that
+
+1. \(\tau(x^*x)=\tau(xx^*)\ge0\) for every \(x\in C\);
+2. \(\tau(h+ik)=\tau(h)+i\,\tau(k)\) for all self-adjoint \(h,k\in C\);
+3. the restriction of \(\tau\) to every commutative C\*-subalgebra of \(C\) is complex linear.
+
+It is a *\(2\)-quasitrace* if there is a \(1\)-quasitrace \(\tilde\tau\) on \(M_2(C)\) with \(\tilde\tau\bigl(\begin{smallmatrix}x&0\\0&0\end{smallmatrix}\bigr)=\tau(x)\) for all \(x\in C\). It is *normalized* if \(\tau(1)=1\).
+
+A *tracial state* is a linear functional \(\tau\) with \(\tau(1)=1\) and \(\tau(x^*x)=\tau(xx^*)\ge0\) for all \(x\).
+
+**Lemma 1.1.** Let \(\tau\) be a \(1\)-quasitrace on \(C\).
+
+1. \(\tau(0)=0\), and \(\tau(h)\ge0\) for every positive \(h\).
+2. If \(h,k\) are commuting self-adjoint elements with \(h\le k\), then \(\tau(h)\le\tau(k)\).
+3. If \(\tau\) is a normalized \(2\)-quasitrace, then every \(1\)-quasitrace \(\tilde\tau\) on \(M_2(C)\) that extends it has \(\tilde\tau(1)=2\).
+4. Every tracial state is a normalized \(2\)-quasitrace.
+
+**Proof.** *Part 1.* \(\{0\}\) is a commutative subalgebra, and a positive \(h\) is \(y^*y\) with \(y=h^{1/2}\). *Part 2.* \(h\), \(k\) and \(1\) generate a commutative C\*-subalgebra, on which \(\tau\) is linear; \(k-h\) is positive, so \(\tau(k)-\tau(h)=\tau(k-h)\ge0\). *Part 3.* The diagonal matrix units \(e_{11}\) and \(e_{22}\) are \(t^*t\) and \(tt^*\) for the matrix unit \(t=e_{12}\), so \(\tilde\tau(e_{11})=\tilde\tau(e_{22})\); they commute, so \(\tilde\tau(1)=\tilde\tau(e_{11})+\tilde\tau(e_{22})=2\tau(1)\). *Part 4.* For a tracial state \(\tau\), put \(\tilde\tau(x)=\tau(x_{11})+\tau(x_{22})\) on \(M_2(C)\). It is linear, and
+\[
+\begin{aligned}
+\tilde\tau(x^*x)&=\sum_{k,l}\tau(x_{lk}^*x_{lk})\\
+&=\sum_{k,l}\tau(x_{lk}x_{lk}^*)=\tilde\tau(xx^*)\ge0 .
+\end{aligned}
+\]
+\(\blacksquare\)
+
+So a quasitrace is linear on each commutative subalgebra, and a tracial state is a quasitrace that is linear everywhere. The question is whether the conditions force linearity.
+
+## 2. Proper infiniteness
+
+**Definition.** A unital C\*-algebra \(C\) is *properly infinite* if it contains two isometries \(s_1,s_2\) with orthogonal ranges, that is,
+\[
+s_i^*s_j=\delta_{ij}\,1\qquad(i,j\in\{1,2\}) .
+\]
+
+**Lemma 2.1.** A properly infinite unital C\*-algebra has no normalized \(1\)-quasitrace.
+
+**Proof.** Let \(s_1,s_2\) be as in the definition and \(p_i=s_is_i^*\). These are commuting projections with \(p_1p_2=s_1(s_1^*s_2)s_2^*=0\), so \(p_1+p_2\le1\). For a normalized \(1\)-quasitrace \(\tau\), \(\tau(p_i)=\tau(s_i^*s_i)=\tau(1)=1\), and on the commutative subalgebra generated by \(1,p_1,p_2\),
+\[
+\begin{aligned}
+1=\tau(1)&\ge\tau(p_1+p_2)\\
+&=\tau(p_1)+\tau(p_2)=2 ,
+\end{aligned}
+\]
+which is false. \(\blacksquare\)
+
+The converse, applied to all matrix algebras, is a theorem that is not proved in this course.
+
+**Hypothesis (CBH)** (Cuntz; Blackadar and Handelman; in the form [MR, Theorem 2.3]). Let \(C\) be a unital C\*-algebra such that \(M_m(C)\) is not properly infinite for any \(m\ge1\). Then \(C\) admits a normalized \(2\)-quasitrace.
+
+This statement is not proved in the programme. It is used once, in Section 5, to show that the algebra of the theorem has a quasitrace at all. The defect inequality and the absence of tracial states are proved without it.
+
+## 3. The theorem
+
+**Theorem 3.1** ([OpenAI-QT, Section 1]). Assume (CBH). There are a separable unital C\*-algebra \(A\) that admits a normalized \(2\)-quasitrace, and positive contractions \(a,b\in A\), such that every normalized \(2\)-quasitrace \(\tau\) on \(A\) satisfies
+\[
+\tau(a+b)-\tau(a)-\tau(b)\ge\frac1{144} .
+\]
+
+In particular such a \(\tau\) is not linear, and \(A\) has no tracial state. The algebra is \(A=M_{48}(B)\) for an algebra \(B\) given by the following theorem, whose proof occupies [Expanding maps and a continuous normalization](expanding-maps-and-a-continuous-normalization.md), [Bundle tests with a Chern class obstruction](bundle-tests-with-a-chern-class-obstruction.md) and [Weighted shifts and the construction](weighted-shifts-and-the-construction.md).
+
+**Theorem 3.2** (construction; [OpenAI-QT, Section 5]). There is a separable unital C\*-algebra \(B\), generated by \(1\) and elements \(x_1,\dots,x_{24}\), such that
+\[
+\sum_{i=1}^{24}x_i^*x_i=1,\qquad\sum_{i=1}^{24}x_ix_i^*\le\tfrac23\cdot1 ,
+\]
+and \(M_m(B)\) is not properly infinite for any \(m\ge1\).
+
+Theorem 3.2 rests on the named hypothesis (SM) on smooth manifolds, stated in [Expanding maps and a continuous normalization](expanding-maps-and-a-continuous-normalization.md); it does not use (CBH).
+
+The two relations alone exclude tracial states: a tracial state would give \(1=\tau(\sum x_i^*x_i)=\tau(\sum x_ix_i^*)\le\tfrac23\). The next lemma turns them into a fixed additivity defect for every quasitrace.
+
+## 4. The defect lemma
+
+**Lemma 4.1** ([OpenAI-QT, Section 5]). Let \(B\) be a unital C\*-algebra, \(N\ge1\), and \(x_1,\dots,x_N\in B\) with
+\[
+\sum_{i=1}^Nx_i^*x_i=1,\qquad\sum_{i=1}^Nx_ix_i^*\le c\cdot1
+\]
+for a number \(0\le c<1\). Put
+\[
+\begin{gathered}
+u_i=x_i^*x_i,\qquad v_i=x_ix_i^*,\\
+H_i=u_1+\dots+u_i,\\
+J_i=v_1+\dots+v_i ,
+\end{gathered}
+\]
+with \(H_0=J_0=0\), and let \(a,b\in M_{2N}(B)\) be the diagonal matrices
+\[
+\begin{aligned}
+a&=\operatorname{diag}(H_0,\dots,H_{N-1},\\
+&\qquad\quad1-J_0,\dots,1-J_{N-1}),\\
+b&=\operatorname{diag}(u_1,\dots,u_N,\\
+&\qquad\quad1-v_1,\dots,1-v_N).
+\end{aligned}
+\]
+Then \(a\) and \(b\) are positive contractions, and every normalized \(1\)-quasitrace \(\tau\) on \(M_{2N}(B)\) satisfies
+\[
+\tau(a+b)-\tau(a)-\tau(b)\ge\frac{1-c}{2N} .
+\]
+
+**Proof.** *The entries.* \(0\le H_i\le H_N=1\), \(0\le u_i\le1\), and \(0\le v_i\le J_i\le J_N\le c\cdot1\). So all diagonal entries of \(a\) and \(b\) lie between \(0\) and \(1\). The diagonal entries of \(a+b\) are \(H_i=H_{i-1}+u_i\) and \(2-J_i=(1-J_{i-1})+(1-v_i)\), for \(1\le i\le N\).
+
+*Corners.* For \(z\in B\) and \(1\le k\le2N\) let \(\iota_k(z)\) be the matrix with \(z\) at the place \((k,k)\) and zeros elsewhere, and put \(\varphi(z)=\tau(\iota_1(z))\). For \(z\ge0\) and \(k,l\le2N\) let \(t\) be the matrix with \(z^{1/2}\) at the place \((k,l)\). Then \(t^*t=\iota_l(z)\) and \(tt^*=\iota_k(z)\), so \(\tau(\iota_k(z))=\tau(\iota_l(z))\). Hence \(\tau(\iota_k(z))=\varphi(z)\) for all \(k\) and all \(z\ge0\).
+
+Self-adjoint elements in different diagonal places commute, so for positive \(z_1,\dots,z_{2N}\) the linearity of \(\tau\) on the commutative subalgebra they generate gives
+\[
+\tau\bigl(\operatorname{diag}(z_1,\dots,z_{2N})\bigr)=\sum_{k=1}^{2N}\varphi(z_k) .
+\]
+With all \(z_k=1\) this gives \(\varphi(1)=1/(2N)\). Further \(\varphi(u_i)=\varphi(v_i)\), because \(\iota_1(x_i)^*\iota_1(x_i)=\iota_1(u_i)\) and \(\iota_1(x_i)\iota_1(x_i)^*=\iota_1(v_i)\). Finally, \(\varphi\) is linear on every commutative C\*-subalgebra of \(B\), because \(\iota_1\) maps it onto a commutative C\*-subalgebra of \(M_{2N}(B)\).
+
+*The defect.* By the formula for diagonal matrices,
+\[
+\tau(a+b)-\tau(a)-\tau(b)=\Sigma_1+\Sigma_2 ,
+\]
+where
+\[
+\begin{aligned}
+\Sigma_1&=\sum_{i=1}^N\bigl(\varphi(H_i)-\varphi(H_{i-1})\\
+&\qquad-\varphi(u_i)\bigr),\\
+\Sigma_2&=\sum_{i=1}^N\bigl(\varphi(2-J_i)-\varphi(1-J_{i-1})\\
+&\qquad-\varphi(1-v_i)\bigr) .
+\end{aligned}
+\]
+In \(\Sigma_2\) each term involves one self-adjoint element together with the unit: \(\varphi(2-J_i)=2\varphi(1)-\varphi(J_i)\) by linearity on the commutative subalgebra generated by \(1\) and \(J_i\), and likewise for the other two terms. So the \(i\)-th term of \(\Sigma_2\) is \(-\varphi(J_i)+\varphi(J_{i-1})+\varphi(v_i)\). In \(\Sigma_1\) nothing is simplified. Summing and telescoping,
+\[
+\begin{aligned}
+\Sigma_1+\Sigma_2&=\varphi(H_N)-\varphi(H_0)\\
+&\quad-\varphi(J_N)+\varphi(J_0)\\
+&\quad-\sum_{i=1}^N\varphi(u_i)+\sum_{i=1}^N\varphi(v_i)\\
+&=\varphi(1)-\varphi(J_N) ,
+\end{aligned}
+\]
+because \(H_N=1\), \(H_0=J_0=0\) and \(\varphi(u_i)=\varphi(v_i)\). On the commutative subalgebra generated by \(1\) and \(J_N\), \(\varphi\) is positive and linear, and \(c\cdot1-J_N\ge0\); so \(\varphi(J_N)\le c\,\varphi(1)\). Hence the defect is at least \((1-c)\,\varphi(1)=(1-c)/(2N)\). \(\blacksquare\)
+
+The lemma uses linearity only on commutative subalgebras. The two halves of the defect have a meaning. Telescoping alone gives \(\Sigma_1=\varphi(1)-\sum_i\varphi(u_i)\): it measures how far \(\varphi\) is from being additive on \(u_1,\dots,u_N\), whose sum is \(1\). The computation above gives \(\Sigma_2=\sum_i\varphi(v_i)-\varphi(J_N)\): the same for \(v_1,\dots,v_N\), with the opposite sign. Since \(\varphi(u_i)=\varphi(v_i)\), the halves add up to \(\varphi(1)-\varphi(J_N)\ge(1-c)\,\varphi(1)\). For a linear functional both halves vanish, which is impossible; this is the trace argument of Section 3 again. For a quasitrace at least one of the two halves is at least \((1-c)/(4N)\).
+
+## 5. Proof of the theorem
+
+**Proof of Theorem 3.1.** Let \(B\) and \(x_1,\dots,x_{24}\) be as in Theorem 3.2, and \(A=M_{48}(B)\). It is separable and unital. For every \(k\ge1\), \(M_k(A)\) is \(M_{48k}(B)\), which is not properly infinite. By (CBH), \(A\) admits a normalized \(2\)-quasitrace. Lemma 4.1 with \(N=24\) and \(c=\tfrac23\) gives positive contractions \(a,b\in A\) such that every normalized \(1\)-quasitrace on \(A\), in particular every normalized \(2\)-quasitrace, satisfies the inequality with the constant \((1-\tfrac23)/48=1/144\). \(\blacksquare\)
+
+Without (CBH) the proof still shows: every normalized \(1\)-quasitrace on \(A\) has the defect at least \(1/144\), and \(A\) has no tracial state. The hypothesis is needed only to know that the set of normalized \(2\)-quasitraces on \(A\) is not empty.
+
+The constant \(1/144\) is not the best that the construction gives. With seven generators in place of twenty-four, and a bound \(c>\tfrac12\) in place of \(\tfrac23\), every constant below \(1/28\) occurs (Corollary 6.1 of [Weighted shifts and the construction](weighted-shifts-and-the-construction.md)).
+
+## 6. Kaplansky's question and consequences
+
+The following statements are quoted from [OpenAI-QT, Sections 1 and 7] and the literature named there; they are not proved in this course.
+
+- Every normalized \(2\)-quasitrace on every unital C\*-algebra is a tracial state if and only if every \(AW^*\)-factor of type \(\mathrm{II}_1\) is a von Neumann algebra (an abstract \(W^*\)-algebra). This is the form of Kaplansky's question; with Theorem 3.1 the answer is negative.
+- By a theorem of Haagerup, every normalized \(2\)-quasitrace on a unital *exact* C\*-algebra is a tracial state. So the algebra \(A\) is not exact.
+- The theorem gives two unital simple stably finite C\*-algebras whose minimal tensor product is properly infinite, one of them the reduced C\*-algebra of the free group on two generators; an explicit separable algebra \(B\) with a quasitrace whose tensor product with that reduced group algebra is properly infinite and has none; and a separable unital stably finite C\*-algebra without a tracial state.
+
+## 7. Exercises
+
+**7.1.** Let \(s_1,s_2\) be isometries in a unital C\*-algebra whose range projections \(s_1s_1^*\) and \(s_2s_2^*\) are orthogonal. Show that \(s_1^*s_2=0\).
+
+**7.2.** Show that in a matrix algebra \(M_n(\mathbb C)\) there are no elements \(x_1,\dots,x_N\) with \(\sum x_i^*x_i=1\) and \(\sum x_ix_i^*\le c\cdot1\) for some \(c<1\).
+
+**7.3.** Show that the hypothesis of Lemma 4.1 cannot hold with \(N=1\).
+
+**7.4.** Write out \(a\), \(b\) and \(a+b\) for \(N=2\).
+
+**7.5.** Let \(\tau\) be a normalized \(1\)-quasitrace on \(C\) and \(h\) self-adjoint with \(m\le h\le M\). Show that \(m\le\tau(h)\le M\).
+
+## 8. Solutions
+
+**7.1.** Let \(p_i=s_is_i^*\). Then \(s_i=p_is_i\), so \(s_1^*s_2=s_1^*p_1p_2s_2=0\).
+
+**7.2.** The normalized trace \(\operatorname{tr}\) of \(M_n(\mathbb C)\) satisfies \(\operatorname{tr}(x^*x)=\operatorname{tr}(xx^*)\). Applied to the two relations it gives \(1\le c\).
+
+**7.3.** With \(N=1\), \(x_1^*x_1=1\), so \(p=x_1x_1^*\) satisfies \(p^2=x_1(x_1^*x_1)x_1^*=p\): it is a projection, and \(p\ne0\) because \(\|p\|=\|x_1\|^2=1\). So \(\|x_1x_1^*\|=1\), and \(x_1x_1^*\le c\cdot1\) forces \(c\ge1\).
+
+**7.4.** \(a=\operatorname{diag}(0,\ u_1,\ 1,\ 1-v_1)\), \(b=\operatorname{diag}(u_1,\ u_2,\ 1-v_1,\ 1-v_2)\), \(a+b=\operatorname{diag}(u_1,1,2-v_1,2-v_1-v_2)\), using \(u_1+u_2=1\).
+
+**7.5.** \(h\), \(m\cdot1\) and \(M\cdot1\) lie in the commutative subalgebra generated by \(1\) and \(h\), on which \(\tau\) is positive and linear, with \(\tau(1)=1\).
+
+## References
+
+- [OpenAI-QT] OpenAI, *A counterexample to Kaplansky's quasitrace conjecture*, OpenAI Math Release preprint, 23 September 2026, Sections 1, 2, 5 and 7. https://github.com/openai/math/tree/main/preprints/A-counterexample-to-Kaplanskys-quasitrace-conjecture-September-23-2026
+- [MR] H. O. Milhøj and M. Rørdam, *Around traces and quasitraces*, arXiv:2309.17412, version 2, Section 2 and Theorem 2.3. https://arxiv.org/abs/2309.17412
