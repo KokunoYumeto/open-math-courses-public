@@ -1,0 +1,235 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A contracting block</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Unitary synthesis from a Boolean oracle)</a><a href="programmable-slots.html">Previous lesson</a><a href="fourier-fields-for-a-smaller-unitary.html">Next lesson</a><a href="src/a-contracting-block.md">Editable source</a></nav><main><article><h1 id="a-contracting-block">A contracting block</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The reduction of the next lessons removes a small group of coordinates from the synthesis problem. Its geometric series converge fast only if the corresponding diagonal block of the unitary has norm bounded away from one. This lesson obtains such a block with permutations, diagonal signs and Walsh–Hadamard transforms, all of which take few slots. Random signs make the block small: a moment estimate for sums of matrices with random signs (Lemma 1.2) bounds its norm on average, so some choice of signs works (Proposition 2.1). The removed block is large enough that fewer than <span class="math" data-tex="\(8M(n+1)\)">\(8M(n+1)\)</span> reductions reach dimension one (Lemma 2.2).</p>
+<ul>
+<li>Gaussian integration by parts and a matrix sign estimate (Lemmas 1.1 and 1.2).</li>
+<li>A block of small norm (Proposition 2.1) and the number of reductions (Lemma 2.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-US, Section 3]. It uses the slots of <a href="programmable-slots.html">Programmable slots</a> and the spectral theorem of <a href="oracle-circuits-and-the-synthesis-theorem.html">Oracle circuits and the synthesis theorem</a>, Lemma 3.1.</p>
+<h2 id="1-a-matrix-sign-estimate">1. A matrix sign estimate</h2>
+<p>A <em>Rademacher variable</em> takes the values <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> with probability <span class="math" data-tex="\(1/2\)">\(1/2\)</span> each. A <em>standard Gaussian</em> has the density <span class="math" data-tex="\(e^{-x^2/2}/\sqrt{2\pi}\)">\(e^{-x^2/2}/\sqrt{2\pi}\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (Gaussian integration by parts). Let <span class="math" data-tex="\(g_1,\dots,g_q\)">\(g_1,\dots,g_q\)</span> be independent standard Gaussians and <span class="math" data-tex="\(P\)">\(P\)</span> a polynomial in <span class="math" data-tex="\(q\)">\(q\)</span> variables. Then
+<span class="math math-display" data-tex="\[
+\mathbb E[g_iP(g)]=\mathbb E[\partial_iP(g)] .
+\]">\[
+\mathbb E[g_iP(g)]=\mathbb E[\partial_iP(g)] .
+\]</span></p>
+<p><em>Proof.</em> By independence and Fubini's theorem it suffices to treat one variable. Integration by parts, with <span class="math" data-tex="\(xe^{-x^2/2}=-\frac{d}{dx}e^{-x^2/2}\)">\(xe^{-x^2/2}=-\frac{d}{dx}e^{-x^2/2}\)</span> and boundary terms that vanish because <span class="math" data-tex="\(P\)">\(P\)</span> grows polynomially, gives
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}xP(x)e^{-x^2/2}dx=\int_{\mathbb R}P&#x27;(x)e^{-x^2/2}dx .
+\]">\[
+\int_{\mathbb R}xP(x)e^{-x^2/2}dx=\int_{\mathbb R}P&#x27;(x)e^{-x^2/2}dx .
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 1.2</strong> (a matrix sign estimate; [OpenAI-US, Lemma 3.1]). Let <span class="math" data-tex="\(L_1,\dots,L_q\)">\(L_1,\dots,L_q\)</span> be Hermitian <span class="math" data-tex="\(h\times h\)">\(h\times h\)</span> matrices, <span class="math" data-tex="\(\varepsilon_1,\dots,\varepsilon_q\)">\(\varepsilon_1,\dots,\varepsilon_q\)</span> independent Rademacher variables, and
+<span class="math math-display" data-tex="\[
+v=\Bigl\|\sum_iL_i^2\Bigr\| .
+\]">\[
+v=\Bigl\|\sum_iL_i^2\Bigr\| .
+\]</span>
+For every integer <span class="math" data-tex="\(a\ge1\)">\(a\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E\Bigl\|\sum_i\varepsilon_iL_i\Bigr\|\le2h^{1/(2a)}\sqrt{(2a-1)v} .
+\]">\[
+\mathbb E\Bigl\|\sum_i\varepsilon_iL_i\Bigr\|\le2h^{1/(2a)}\sqrt{(2a-1)v} .
+\]</span></p>
+<p><em>Proof.</em> <em>Gaussian coefficients.</em> Let <span class="math" data-tex="\(g_i\)">\(g_i\)</span> be independent standard Gaussians and <span class="math" data-tex="\(X=\sum_ig_iL_i\)">\(X=\sum_ig_iL_i\)</span>. Write the first factor of <span class="math" data-tex="\(X^{2a}\)">\(X^{2a}\)</span> as <span class="math" data-tex="\(\sum_ig_iL_i\)">\(\sum_ig_iL_i\)</span>; by Lemma 1.1, applied to the polynomial <span class="math" data-tex="\(\operatorname{Tr}(L_iX^{2a-1})\)">\(\operatorname{Tr}(L_iX^{2a-1})\)</span>, and the product rule for <span class="math" data-tex="\(\partial_iX^{2a-1}\)">\(\partial_iX^{2a-1}\)</span> with <span class="math" data-tex="\(\partial_iX=L_i\)">\(\partial_iX=L_i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\operatorname{Tr}X^{2a}\\
+&amp;\quad=\sum_{i=1}^q\sum_{l=0}^{2a-2}\mathbb E\operatorname{Tr}\bigl(L_iX^lL_iX^{m-l}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\operatorname{Tr}X^{2a}\\
+&amp;\quad=\sum_{i=1}^q\sum_{l=0}^{2a-2}\mathbb E\operatorname{Tr}\bigl(L_iX^lL_iX^{m-l}\bigr),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(m=2a-2\)">\(m=2a-2\)</span>. Fix <span class="math" data-tex="\(X\)">\(X\)</span> and diagonalize it with real eigenvalues <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> (Lemma 3.1 of the first lesson). In this basis, as <span class="math" data-tex="\(L_i\)">\(L_i\)</span> is Hermitian,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\operatorname{Tr}\bigl(L_iX^lL_iX^{m-l}\bigr)\\
+&amp;\quad=\sum_{j,k}|(L_i)_{jk}|^2\lambda_k^l\lambda_j^{m-l}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\operatorname{Tr}\bigl(L_iX^lL_iX^{m-l}\bigr)\\
+&amp;\quad=\sum_{j,k}|(L_i)_{jk}|^2\lambda_k^l\lambda_j^{m-l}.
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, the weighted inequality of arithmetic and geometric means gives
+<span class="math math-display" data-tex="\[
+\bigl|\lambda_k^l\lambda_j^{m-l}\bigr|\le\tfrac lm|\lambda_k|^m+\tfrac{m-l}m|\lambda_j|^m ,
+\]">\[
+\bigl|\lambda_k^l\lambda_j^{m-l}\bigr|\le\tfrac lm|\lambda_k|^m+\tfrac{m-l}m|\lambda_j|^m ,
+\]</span>
+and since <span class="math" data-tex="\(\sum_j|(L_i)_{jk}|^2=(L_i^2)_{kk}\)">\(\sum_j|(L_i)_{jk}|^2=(L_i^2)_{kk}\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> is even, the sum is at most <span class="math" data-tex="\(\operatorname{Tr}(L_i^2X^m)\)">\(\operatorname{Tr}(L_i^2X^m)\)</span>; for <span class="math" data-tex="\(m=0\)">\(m=0\)</span> it equals it. As <span class="math" data-tex="\(X^m\)">\(X^m\)</span> is positive semidefinite and <span class="math" data-tex="\(\sum_iL_i^2\le vI\)">\(\sum_iL_i^2\le vI\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E\operatorname{Tr}X^{2a}\le(2a-1)v\,\mathbb E\operatorname{Tr}X^{2a-2} .
+\]">\[
+\mathbb E\operatorname{Tr}X^{2a}\le(2a-1)v\,\mathbb E\operatorname{Tr}X^{2a-2} .
+\]</span>
+Iterating down to <span class="math" data-tex="\(\operatorname{Tr}I=h\)">\(\operatorname{Tr}I=h\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\operatorname{Tr}X^{2a}\\
+&amp;\quad\le h(2a-1)(2a-3)\cdots1\cdot v^a\\
+&amp;\quad\le h(2a-1)^av^a .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\operatorname{Tr}X^{2a}\\
+&amp;\quad\le h(2a-1)(2a-3)\cdots1\cdot v^a\\
+&amp;\quad\le h(2a-1)^av^a .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(\|X\|^{2a}\)">\(\|X\|^{2a}\)</span> is the largest eigenvalue of <span class="math" data-tex="\(X^{2a}\)">\(X^{2a}\)</span>, it is at most <span class="math" data-tex="\(\operatorname{Tr}X^{2a}\)">\(\operatorname{Tr}X^{2a}\)</span>, and Jensen's inequality for <span class="math" data-tex="\(y\mapsto y^{2a}\)">\(y\mapsto y^{2a}\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\|X\|&amp;\le\bigl(\mathbb E\operatorname{Tr}X^{2a}\bigr)^{1/(2a)}\\
+&amp;\le h^{1/(2a)}\sqrt{(2a-1)v} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\|X\|&amp;\le\bigl(\mathbb E\operatorname{Tr}X^{2a}\bigr)^{1/(2a)}\\
+&amp;\le h^{1/(2a)}\sqrt{(2a-1)v} .
+\end{aligned}
+\]</span></p>
+<p><em>Back to signs.</em> Write <span class="math" data-tex="\(g_i=\varepsilon_it_i\)">\(g_i=\varepsilon_it_i\)</span> with <span class="math" data-tex="\(t_i=|g_i|\)">\(t_i=|g_i|\)</span>. By the symmetry of the Gaussian density, the signs <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span> are independent Rademacher variables, independent of the <span class="math" data-tex="\(t_i\)">\(t_i\)</span>, and <span class="math" data-tex="\(\mathbb Et_i=\mu=\sqrt{2/\pi}\)">\(\mathbb Et_i=\mu=\sqrt{2/\pi}\)</span>. For fixed signs, the norm of an average is at most the average of the norms:
+<span class="math math-display" data-tex="\[
+\mu\Bigl\|\sum_i\varepsilon_iL_i\Bigr\|\le\mathbb E_t\Bigl\|\sum_i\varepsilon_it_iL_i\Bigr\| .
+\]">\[
+\mu\Bigl\|\sum_i\varepsilon_iL_i\Bigr\|\le\mathbb E_t\Bigl\|\sum_i\varepsilon_it_iL_i\Bigr\| .
+\]</span>
+Averaging over the signs, <span class="math" data-tex="\(\mu\,\mathbb E\|\sum_i\varepsilon_iL_i\|\le\mathbb E\|X\|\)">\(\mu\,\mathbb E\|\sum_i\varepsilon_iL_i\|\le\mathbb E\|X\|\)</span>, and <span class="math" data-tex="\(\mu^{-1}=\sqrt{\pi/2}&lt;2\)">\(\mu^{-1}=\sqrt{\pi/2}&lt;2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>This is a finite-dimensional form of the noncommutative Khintchine inequality, with the constants used below.</p>
+<h2 id="2-a-block-of-small-norm">2. A block of small norm</h2>
+<p>Fix
+<span class="math math-display" data-tex="\[
+M=4096(n+1)^2,\qquad r=\frac34 .
+\]">\[
+M=4096(n+1)^2,\qquad r=\frac34 .
+\]</span>
+For an integer <span class="math" data-tex="\(2\le d\le2^n\)">\(2\le d\le2^n\)</span>, let <span class="math" data-tex="\(q\)">\(q\)</span> be the largest power of two with <span class="math" data-tex="\(q\le d\)">\(q\le d\)</span>, and put
+<span class="math math-display" data-tex="\[
+s=\max\{1,\lfloor q/M\rfloor\},\qquad k=d-s .
+\]">\[
+s=\max\{1,\lfloor q/M\rfloor\},\qquad k=d-s .
+\]</span>
+The first <span class="math" data-tex="\(k\)">\(k\)</span> coordinates of <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> are the <em>ports</em> and the last <span class="math" data-tex="\(s\)">\(s\)</span> the <em>internal</em> coordinates; both groups are nonempty.</p>
+<p><strong>Proposition 2.1</strong> (a block of small norm; [OpenAI-US, Proposition 3.2]). For every unitary <span class="math" data-tex="\(U\)">\(U\)</span> on <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> there are unitaries <span class="math" data-tex="\(P_{\mathrm L}\)">\(P_{\mathrm L}\)</span> and <span class="math" data-tex="\(P_{\mathrm R}\)">\(P_{\mathrm R}\)</span> on <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> with
+<span class="math math-display" data-tex="\[
+V=P_{\mathrm L}UP_{\mathrm R}=\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix},\qquad\|D\|\le r,
+\]">\[
+V=P_{\mathrm L}UP_{\mathrm R}=\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix},\qquad\|D\|\le r,
+\]</span>
+where <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(s\times s\)">\(s\times s\)</span>. The maps <span class="math" data-tex="\(P_{\mathrm L}\)">\(P_{\mathrm L}\)</span>, <span class="math" data-tex="\(P_{\mathrm R}\)">\(P_{\mathrm R}\)</span> and their inverses are implemented exactly by <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span> slots with <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span> workspace qubits, on a skeleton determined by <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(d\)">\(d\)</span>; the same skeleton serves every family <span class="math" data-tex="\(U_\lambda\)">\(U_\lambda\)</span>, with the labels among the controls.</p>
+<p><em>Proof.</em> <em>The case <span class="math" data-tex="\(s=1\)">\(s=1\)</span>.</em> The last column of <span class="math" data-tex="\(U\)">\(U\)</span> is a unit vector in <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>, so one of its entries has modulus at most <span class="math" data-tex="\(1/\sqrt d\)">\(1/\sqrt d\)</span>. A permutation of the rows moves this entry to the last position, and then <span class="math" data-tex="\(\|D\|\le1/\sqrt d\le1/\sqrt2&lt;3/4\)">\(\|D\|\le1/\sqrt d\le1/\sqrt2&lt;3/4\)</span>. Take this permutation as <span class="math" data-tex="\(P_{\mathrm L}\)">\(P_{\mathrm L}\)</span> and <span class="math" data-tex="\(P_{\mathrm R}=I\)">\(P_{\mathrm R}=I\)</span>; Lemma 2.2 of <a href="programmable-slots.html">Programmable slots</a> implements it with <span class="math" data-tex="\(5n\)">\(5n\)</span> slots and <span class="math" data-tex="\(n\)">\(n\)</span> workspace qubits.</p>
+<p><em>The case <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span>.</em> Then <span class="math" data-tex="\(q\ge2M\)">\(q\ge2M\)</span>. Let <span class="math" data-tex="\(M_0\)">\(M_0\)</span> be the <span class="math" data-tex="\(q\times q\)">\(q\times q\)</span> block of <span class="math" data-tex="\(U\)">\(U\)</span> in its last <span class="math" data-tex="\(q\)">\(q\)</span> rows and columns; it is a contraction. Let <span class="math" data-tex="\(H_q=H^{\otimes\log_2q}\)">\(H_q=H^{\otimes\log_2q}\)</span>, a real orthogonal symmetric matrix with entries <span class="math" data-tex="\(\pm1/\sqrt q\)">\(\pm1/\sqrt q\)</span>, and <span class="math" data-tex="\(W\)">\(W\)</span> its last <span class="math" data-tex="\(s\)">\(s\)</span> columns, which are orthonormal. For diagonal sign matrices <span class="math" data-tex="\(E_1\)">\(E_1\)</span>, <span class="math" data-tex="\(E_2\)">\(E_2\)</span> on <span class="math" data-tex="\(\mathbb C^q\)">\(\mathbb C^q\)</span>, let <span class="math" data-tex="\(P_{\mathrm L}\)">\(P_{\mathrm L}\)</span> act as <span class="math" data-tex="\(H_qE_1\)">\(H_qE_1\)</span> and <span class="math" data-tex="\(P_{\mathrm R}\)">\(P_{\mathrm R}\)</span> as <span class="math" data-tex="\(E_2H_q\)">\(E_2H_q\)</span> on the last <span class="math" data-tex="\(q\)">\(q\)</span> coordinates, and as the identity on the first <span class="math" data-tex="\(d-q\)">\(d-q\)</span>. The last <span class="math" data-tex="\(s\)">\(s\)</span> rows of <span class="math" data-tex="\(H_qE_1\)">\(H_qE_1\)</span> form <span class="math" data-tex="\(W^*E_1\)">\(W^*E_1\)</span>, so
+<span class="math math-display" data-tex="\[
+D=W^*E_1C&#x27;,\qquad C&#x27;=M_0E_2W .
+\]">\[
+D=W^*E_1C&#x27;,\qquad C&#x27;=M_0E_2W .
+\]</span>
+We choose <span class="math" data-tex="\(E_2\)">\(E_2\)</span> to make the entries of <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> small, and then <span class="math" data-tex="\(E_1\)">\(E_1\)</span> to make <span class="math" data-tex="\(\|D\|\)">\(\|D\|\)</span> small.</p>
+<p><em>The entries of <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span>.</em> With independent random signs on the diagonal of <span class="math" data-tex="\(E_2\)">\(E_2\)</span>, each entry of <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> is a sum <span class="math" data-tex="\(S=\sum_j\varepsilon_j\alpha_j\)">\(S=\sum_j\varepsilon_j\alpha_j\)</span> with <span class="math" data-tex="\(\sum_j|\alpha_j|^2\le1/q\)">\(\sum_j|\alpha_j|^2\le1/q\)</span>, because the rows of <span class="math" data-tex="\(M_0\)">\(M_0\)</span> have norm at most <span class="math" data-tex="\(1\)">\(1\)</span> and the entries of <span class="math" data-tex="\(W\)">\(W\)</span> have modulus <span class="math" data-tex="\(1/\sqrt q\)">\(1/\sqrt q\)</span>. For real coefficients <span class="math" data-tex="\(a_j\)">\(a_j\)</span> with <span class="math" data-tex="\(\sum_ja_j^2\le1/q\)">\(\sum_ja_j^2\le1/q\)</span> and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, since <span class="math" data-tex="\(\cosh x\le e^{x^2/2}\)">\(\cosh x\le e^{x^2/2}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\exp\Bigl(t\sum_j\varepsilon_ja_j\Bigr)&amp;=\prod_j\cosh(ta_j)\\
+&amp;\le e^{t^2/(2q)},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\exp\Bigl(t\sum_j\varepsilon_ja_j\Bigr)&amp;=\prod_j\cosh(ta_j)\\
+&amp;\le e^{t^2/(2q)},
+\end{aligned}
+\]</span>
+and Markov's inequality with <span class="math" data-tex="\(t=qu\)">\(t=qu\)</span> bounds the probability that <span class="math" data-tex="\(|\sum_j\varepsilon_ja_j|\ge u\)">\(|\sum_j\varepsilon_ja_j|\ge u\)</span> by <span class="math" data-tex="\(2e^{-qu^2/2}\)">\(2e^{-qu^2/2}\)</span>. Applied to the real and the imaginary parts of <span class="math" data-tex="\(S\)">\(S\)</span>, each at least <span class="math" data-tex="\(u/\sqrt2\)">\(u/\sqrt2\)</span> in modulus when <span class="math" data-tex="\(|S|\ge u\)">\(|S|\ge u\)</span>,
+<span class="math math-display" data-tex="\[
+\Pr\bigl(|S|\ge u\bigr)\le4e^{-qu^2/4}.
+\]">\[
+\Pr\bigl(|S|\ge u\bigr)\le4e^{-qu^2/4}.
+\]</span>
+There are <span class="math" data-tex="\(qs\le4^n\)">\(qs\le4^n\)</span> entries. For <span class="math" data-tex="\(u=4\sqrt{(n+1)/q}\)">\(u=4\sqrt{(n+1)/q}\)</span> the probability that some entry is at least <span class="math" data-tex="\(u\)">\(u\)</span> is at most
+<span class="math math-display" data-tex="\[
+4^{n+1}e^{-4(n+1)}&lt;1 .
+\]">\[
+4^{n+1}e^{-4(n+1)}&lt;1 .
+\]</span>
+Fix such an <span class="math" data-tex="\(E_2\)">\(E_2\)</span>: every entry of <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> has modulus at most <span class="math" data-tex="\(4\sqrt{(n+1)/q}\)">\(4\sqrt{(n+1)/q}\)</span>, and <span class="math" data-tex="\(\|C&#x27;\|\le1\)">\(\|C&#x27;\|\le1\)</span>.</p>
+<p><em>The norm of <span class="math" data-tex="\(D\)">\(D\)</span>.</em> Let <span class="math" data-tex="\(h_i\)">\(h_i\)</span> and <span class="math" data-tex="\(c_i\)">\(c_i\)</span> be the <span class="math" data-tex="\(i\)">\(i\)</span>-th rows of <span class="math" data-tex="\(W\)">\(W\)</span> and <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span>, as row vectors. Then <span class="math" data-tex="\(\|h_i\|^2=s/q\)">\(\|h_i\|^2=s/q\)</span> and
+<span class="math math-display" data-tex="\[
+\|c_i\|^2\le v:=\frac{16s(n+1)}q .
+\]">\[
+\|c_i\|^2\le v:=\frac{16s(n+1)}q .
+\]</span>
+With independent random signs <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span> on the diagonal of <span class="math" data-tex="\(E_1\)">\(E_1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D=\sum_i\varepsilon_ih_i^*c_i ,\\
+L_i=\begin{pmatrix}0&amp;h_i^*c_i\\c_i^*h_i&amp;0\end{pmatrix}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+D=\sum_i\varepsilon_ih_i^*c_i ,\\
+L_i=\begin{pmatrix}0&amp;h_i^*c_i\\c_i^*h_i&amp;0\end{pmatrix}.
+\end{gathered}
+\]</span>
+The Hermitian matrices <span class="math" data-tex="\(L_i\)">\(L_i\)</span> have size <span class="math" data-tex="\(2s\)">\(2s\)</span>, and <span class="math" data-tex="\(\|\sum_i\varepsilon_iL_i\|=\|D\|\)">\(\|\sum_i\varepsilon_iL_i\|=\|D\|\)</span>. The two diagonal blocks of <span class="math" data-tex="\(\sum_iL_i^2\)">\(\sum_iL_i^2\)</span> are
+<span class="math math-display" data-tex="\[
+\sum_i\|c_i\|^2h_i^*h_i\le v\,W^*W=vI_s
+\]">\[
+\sum_i\|c_i\|^2h_i^*h_i\le v\,W^*W=vI_s
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\sum_i\|h_i\|^2c_i^*c_i=\tfrac sqC&#x27;^*C&#x27;\le\tfrac sqI_s\le vI_s .
+\]">\[
+\sum_i\|h_i\|^2c_i^*c_i=\tfrac sqC&#x27;^*C&#x27;\le\tfrac sqI_s\le vI_s .
+\]</span>
+Lemma 1.2 with <span class="math" data-tex="\(h=2s\)">\(h=2s\)</span> and <span class="math" data-tex="\(a=n+1\)">\(a=n+1\)</span>, and <span class="math" data-tex="\((2s)^{1/(2n+2)}\le\sqrt2\)">\((2s)^{1/(2n+2)}\le\sqrt2\)</span> because <span class="math" data-tex="\(2s\le2^{n+1}\)">\(2s\le2^{n+1}\)</span>, give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\|D\|&amp;\le2\sqrt2\sqrt{2(n+1)v}\\
+&amp;=16(n+1)\sqrt{s/q}\le\tfrac14 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\|D\|&amp;\le2\sqrt2\sqrt{2(n+1)v}\\
+&amp;=16(n+1)\sqrt{s/q}\le\tfrac14 ,
+\end{aligned}
+\]</span>
+the last step because <span class="math" data-tex="\(s\le q/M\)">\(s\le q/M\)</span>. Some choice of <span class="math" data-tex="\(E_1\)">\(E_1\)</span> has <span class="math" data-tex="\(\|D\|\le1/4\le r\)">\(\|D\|\le1/4\le r\)</span>.</p>
+<p><em>Slots.</em> A permutation of the <span class="math" data-tex="\(n\)">\(n\)</span>-bit index register moves the last <span class="math" data-tex="\(q\)">\(q\)</span> valid indices to the first <span class="math" data-tex="\(q\)">\(q\)</span> indices, an aligned block whose higher <span class="math" data-tex="\(n-\log_2q\)">\(n-\log_2q\)</span> bits are zero (Lemma 2.2 of <a href="programmable-slots.html">Programmable slots</a>, with <span class="math" data-tex="\(5n\)">\(5n\)</span> slots and <span class="math" data-tex="\(n\)">\(n\)</span> workspace qubits). On that block, <span class="math" data-tex="\(H_q\)">\(H_q\)</span> is <span class="math" data-tex="\(\log_2q\le n\)">\(\log_2q\le n\)</span> Hadamard slots controlled by the higher bits, with the table <span class="math" data-tex="\(H\)">\(H\)</span> when they are zero and <span class="math" data-tex="\(I\)">\(I\)</span> otherwise; each sign matrix is one diagonal slot. Then the permutation is undone. These operations preserve the valid subspace <span class="math" data-tex="\(\mathcal H_d\)">\(\mathcal H_d\)</span> and act unitarily on the unused basis states. A family <span class="math" data-tex="\(U_\lambda\)">\(U_\lambda\)</span> changes only the tables of the row permutation or of the signs, which depend on the label through the controls. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The random signs only prove that suitable tables exist; each label may use its own choice, and the circuit itself is deterministic.</p>
+<p><strong>Lemma 2.2</strong> (the number of reductions; [OpenAI-US, Lemma 3.3]). With these parameters, <span class="math" data-tex="\(s\ge d/(4M)\)">\(s\ge d/(4M)\)</span>. Starting at any <span class="math" data-tex="\(d\le2^n\)">\(d\le2^n\)</span> and replacing <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span> by <span class="math" data-tex="\(d-s\)">\(d-s\)</span> repeatedly, one reaches <span class="math" data-tex="\(d=1\)">\(d=1\)</span> in fewer than
+<span class="math math-display" data-tex="\[
+J=8M(n+1)
+\]">\[
+J=8M(n+1)
+\]</span>
+steps.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(q/M\ge2\)">\(q/M\ge2\)</span>, then <span class="math" data-tex="\(s=\lfloor q/M\rfloor\ge q/(2M)&gt;d/(4M)\)">\(s=\lfloor q/M\rfloor\ge q/(2M)&gt;d/(4M)\)</span>, because <span class="math" data-tex="\(d&lt;2q\)">\(d&lt;2q\)</span>. If <span class="math" data-tex="\(q/M&lt;2\)">\(q/M&lt;2\)</span>, then <span class="math" data-tex="\(s=1\)">\(s=1\)</span> and <span class="math" data-tex="\(d&lt;2q&lt;4M\)">\(d&lt;2q&lt;4M\)</span>, so again <span class="math" data-tex="\(s&gt;d/(4M)\)">\(s&gt;d/(4M)\)</span>. So every step multiplies the order by at most <span class="math" data-tex="\(1-1/(4M)\)">\(1-1/(4M)\)</span>. After <span class="math" data-tex="\(J\)">\(J\)</span> steps the order would be at most
+<span class="math math-display" data-tex="\[
+2^n\Bigl(1-\frac1{4M}\Bigr)^J\le2^ne^{-2(n+1)}&lt;1,
+\]">\[
+2^n\Bigl(1-\frac1{4M}\Bigr)^J\le2^ne^{-2(n+1)}&lt;1,
+\]</span>
+which is impossible for a positive integer. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>3.1.</strong> Show that <span class="math" data-tex="\(\cosh x\le e^{x^2/2}\)">\(\cosh x\le e^{x^2/2}\)</span> by comparing the Taylor series term by term.</p>
+<p><strong>3.2.</strong> Check Lemma 1.1 for <span class="math" data-tex="\(P(x)=x^3\)">\(P(x)=x^3\)</span>: compute <span class="math" data-tex="\(\mathbb E g^4\)">\(\mathbb E g^4\)</span> in two ways.</p>
+<p><strong>3.3.</strong> Show that the norm of the Hermitian matrix <span class="math" data-tex="\(\left(\begin{smallmatrix}0&amp;D\\D^*&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}0&amp;D\\D^*&amp;0\end{smallmatrix}\right)\)</span> is <span class="math" data-tex="\(\|D\|\)">\(\|D\|\)</span>.</p>
+<p><strong>3.4.</strong> For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> and <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, find <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(k\)">\(k\)</span>, and the block <span class="math" data-tex="\(D\)">\(D\)</span> of Proposition 2.1 for <span class="math" data-tex="\(U=H\)">\(U=H\)</span>.</p>
+<p><strong>3.5.</strong> Why does the proof of Proposition 2.1 choose <span class="math" data-tex="\(E_2\)">\(E_2\)</span> before <span class="math" data-tex="\(E_1\)">\(E_1\)</span>?</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>3.1.</strong> <span class="math" data-tex="\(\cosh x=\sum_kx^{2k}/(2k)!\)">\(\cosh x=\sum_kx^{2k}/(2k)!\)</span> and <span class="math" data-tex="\(e^{x^2/2}=\sum_kx^{2k}/(2^kk!)\)">\(e^{x^2/2}=\sum_kx^{2k}/(2^kk!)\)</span>, and <span class="math" data-tex="\((2k)!\ge2^kk!\)">\((2k)!\ge2^kk!\)</span> because <span class="math" data-tex="\((2k)!/k!=(k+1)(k+2)\cdots(2k)\ge2^k\)">\((2k)!/k!=(k+1)(k+2)\cdots(2k)\ge2^k\)</span>.</p>
+<p><strong>3.2.</strong> <span class="math" data-tex="\(\mathbb E[g\cdot g^3]=\mathbb E[3g^2]=3\)">\(\mathbb E[g\cdot g^3]=\mathbb E[3g^2]=3\)</span>, and directly <span class="math" data-tex="\(\mathbb Eg^4=3\)">\(\mathbb Eg^4=3\)</span>.</p>
+<p><strong>3.3.</strong> Its square is <span class="math" data-tex="\(\operatorname{diag}(DD^*,D^*D)\)">\(\operatorname{diag}(DD^*,D^*D)\)</span>, of norm <span class="math" data-tex="\(\|D\|^2\)">\(\|D\|^2\)</span>, and the norm of a Hermitian matrix is the square root of the norm of its square.</p>
+<p><strong>3.4.</strong> <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, <span class="math" data-tex="\(M=16384&gt;q\)">\(M=16384&gt;q\)</span>, so <span class="math" data-tex="\(s=1\)">\(s=1\)</span> and <span class="math" data-tex="\(k=1\)">\(k=1\)</span>. The last column of <span class="math" data-tex="\(H\)">\(H\)</span> has entries <span class="math" data-tex="\(\pm1/\sqrt2\)">\(\pm1/\sqrt2\)</span>; with <span class="math" data-tex="\(P_{\mathrm L}=P_{\mathrm R}=I\)">\(P_{\mathrm L}=P_{\mathrm R}=I\)</span>, <span class="math" data-tex="\(D=-1/\sqrt2\)">\(D=-1/\sqrt2\)</span> and <span class="math" data-tex="\(\|D\|&lt;3/4\)">\(\|D\|&lt;3/4\)</span>.</p>
+<p><strong>3.5.</strong> The bound on <span class="math" data-tex="\(\|c_i\|\)">\(\|c_i\|\)</span> needed for <span class="math" data-tex="\(v\)">\(v\)</span> uses the entries of <span class="math" data-tex="\(C&#x27;=M_0E_2W\)">\(C&#x27;=M_0E_2W\)</span>, which depend on <span class="math" data-tex="\(E_2\)">\(E_2\)</span> only; once <span class="math" data-tex="\(E_2\)">\(E_2\)</span> is fixed, <span class="math" data-tex="\(D\)">\(D\)</span> is a sum of fixed matrices with the random signs of <span class="math" data-tex="\(E_1\)">\(E_1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-US] OpenAI, <em>Polynomial-Time Unitary Synthesis from a Boolean Oracle</em>, OpenAI Math Release preprint, 5 October 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

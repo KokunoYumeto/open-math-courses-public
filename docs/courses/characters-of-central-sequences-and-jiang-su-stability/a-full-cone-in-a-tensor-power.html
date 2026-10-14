@@ -1,0 +1,193 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A full cone in a tensor power</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Characters of central sequences and Jiang–Su stability)</a><a href="labels-that-survive-representations.html">Previous lesson</a><a href="from-the-cone-to-the-dimension-drop-algebra.html">Next lesson</a><a href="src/a-full-cone-in-a-tensor-power.md">Editable source</a></nav><main><article><h1 id="a-full-cone-in-a-tensor-power">A full cone in a tensor power</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> be a nonzero unital C*-algebra without characters. This lesson finds, in a finite maximal tensor power <span class="math" data-tex="\(P\)">\(P\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span>, a full element <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(w^2=0\)">\(w^2=0\)</span> (Lemma 2.4), and turns it into a unital homomorphism from the matrix cone
+<span class="math math-display" data-tex="\[
+C=\{f\in C([0,1],M_2):f(0)\in\mathbb C1\}
+\]">\[
+C=\{f\in C([0,1],M_2):f(0)\in\mathbb C1\}
+\]</span>
+into <span class="math" data-tex="\(P\)">\(P\)</span> whose first matrix corner is full (Proposition 3.1). The last lesson, <a href="from-the-cone-to-the-dimension-drop-algebra.html">From the cone to the dimension-drop algebra</a>, turns this into a homomorphism from <span class="math" data-tex="\(I(2,3)\)">\(I(2,3)\)</span>.</p>
+<ul>
+<li>Full elements (Lemma 1.1).</li>
+<li>A full square-zero element (Lemmas 2.1 to 2.4).</li>
+<li>The cone homomorphism (Proposition 3.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-KRC, Sections 4.3 and 4.4]. Kirchberg and Rørdam combine finitely many elements by orthogonal full tensor labels [KR, Proposition 6.1]; here the labels of <a href="labels-that-survive-representations.html">Labels that survive representations</a> do this through linear independence. All tensor products are maximal, <span class="math" data-tex="\(D^{\otimes k}\)">\(D^{\otimes k}\)</span> is the maximal tensor power, and <span class="math" data-tex="\(\iota\in C\)">\(\iota\in C\)</span> is the function <span class="math" data-tex="\(\iota(t)=t\)">\(\iota(t)=t\)</span>, times <span class="math" data-tex="\(1\)">\(1\)</span> or times a matrix unit as indicated.</p>
+<h2 id="1-full-elements">1. Full elements</h2>
+<p>An element <span class="math" data-tex="\(x\)">\(x\)</span> of a unital C*-algebra <span class="math" data-tex="\(P\)">\(P\)</span> is <em>full</em> if the closed two-sided ideal generated by <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> For <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span> the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(x\)">\(x\)</span> is full;</li>
+<li>there are <span class="math" data-tex="\(h_1,\dots,h_N,l_1,\dots,l_N\in P\)">\(h_1,\dots,h_N,l_1,\dots,l_N\in P\)</span> with <span class="math" data-tex="\(\bigl\|1-\sum_ih_ixl_i\bigr\|&lt;1\)">\(\bigl\|1-\sum_ih_ixl_i\bigr\|&lt;1\)</span>;</li>
+<li><span class="math" data-tex="\(\pi(x)\ne0\)">\(\pi(x)\ne0\)</span> for every irreducible representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(2): the elements <span class="math" data-tex="\(\sum_ih_ixl_i\)">\(\sum_ih_ixl_i\)</span> form a dense subset of the closed ideal, which is <span class="math" data-tex="\(P\)">\(P\)</span>. (2)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(3): <span class="math" data-tex="\(y=\sum_ih_ixl_i\)">\(y=\sum_ih_ixl_i\)</span> is invertible, and an irreducible <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is unital, so <span class="math" data-tex="\(\pi(y)\pi(y^{-1})=1\ne0\)">\(\pi(y)\pi(y^{-1})=1\ne0\)</span> and <span class="math" data-tex="\(\pi(x)\ne0\)">\(\pi(x)\ne0\)</span>. (3)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(1): if the closed ideal <span class="math" data-tex="\(I\)">\(I\)</span> generated by <span class="math" data-tex="\(x\)">\(x\)</span> is proper, <span class="math" data-tex="\(P/I\)">\(P/I\)</span> is a nonzero C*-algebra (<a href="../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">Order, local units and quotients of C*-algebras</a>, Theorem 15.1). It has an irreducible representation, because norms are attained in irreducible representations (<a href="../foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html">Building representations from positive functionals</a>, Theorem 8.5). Composed with the quotient map, it is an irreducible representation of <span class="math" data-tex="\(P\)">\(P\)</span> that vanishes at <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-a-full-square-zero-element">2. A full square-zero element</h2>
+<p>Fix the space <span class="math" data-tex="\(V\subseteq D_{\mathrm{sa}}\)">\(V\subseteq D_{\mathrm{sa}}\)</span> of <a href="labels-that-survive-representations.html">Labels that survive representations</a>, Lemma 3.1, with a real basis <span class="math" data-tex="\(v_1,\dots,v_m\)">\(v_1,\dots,v_m\)</span>, and labels <span class="math" data-tex="\(x_1,\dots,x_m\in D^{\otimes n}\)">\(x_1,\dots,x_m\in D^{\otimes n}\)</span> from Corollary 5.1 there, for <span class="math" data-tex="\(r=m\)">\(r=m\)</span>. In
+<span class="math math-display" data-tex="\[
+P_0=D\otimes D^{\otimes n}\otimes D^{\otimes n}=D^{\otimes(2n+1)}
+\]">\[
+P_0=D\otimes D^{\otimes n}\otimes D^{\otimes n}=D^{\otimes(2n+1)}
+\]</span>
+put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+s=\sum_{i=1}^mv_i\otimes x_i\otimes1,\\
+t=\sum_{i=1}^mv_i\otimes1\otimes x_i .
+\end{gathered}
+\]">\[
+\begin{gathered}
+s=\sum_{i=1}^mv_i\otimes x_i\otimes1,\\
+t=\sum_{i=1}^mv_i\otimes1\otimes x_i .
+\end{gathered}
+\]</span>
+Both are self-adjoint.</p>
+<p><strong>Lemma 2.1.</strong> <span class="math" data-tex="\(\pi([s,t])\ne0\)">\(\pi([s,t])\ne0\)</span> for every irreducible representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(P_0\)">\(P_0\)</span>.</p>
+<p><em>Proof.</em> Since the second and third blocks commute,
+<span class="math math-display" data-tex="\[
+[s,t]=\sum_{i,j=1}^m[v_i,v_j]\otimes x_i\otimes x_j .
+\]">\[
+[s,t]=\sum_{i,j=1}^m[v_i,v_j]\otimes x_i\otimes x_j .
+\]</span>
+Let <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> be the restriction of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> to the first leg, <span class="math" data-tex="\(X_i=\pi(1\otimes x_i\otimes1)\)">\(X_i=\pi(1\otimes x_i\otimes1)\)</span> and <span class="math" data-tex="\(Y_j=\pi(1\otimes1\otimes x_j)\)">\(Y_j=\pi(1\otimes1\otimes x_j)\)</span>. The von Neumann algebras <span class="math" data-tex="\(N_0\)">\(N_0\)</span>, <span class="math" data-tex="\(N_L\)">\(N_L\)</span>, <span class="math" data-tex="\(N_R\)">\(N_R\)</span> generated by the images of the three blocks are pairwise commuting factors (Lemma 2.1 of the previous lesson). The <span class="math" data-tex="\(X_i\in N_L\)">\(X_i\in N_L\)</span> are linearly independent, and so are the <span class="math" data-tex="\(Y_j\in N_R\)">\(Y_j\in N_R\)</span> (Corollary 5.1 there). By Lemma 1.1(2) there, the products <span class="math" data-tex="\(X_iY_j\)">\(X_iY_j\)</span> are linearly independent; they lie in <span class="math" data-tex="\(N_0&#x27;\)">\(N_0&#x27;\)</span>. If
+<span class="math math-display" data-tex="\[
+\pi([s,t])=\sum_{i,j}\pi_0([v_i,v_j])\,X_iY_j=0,
+\]">\[
+\pi([s,t])=\sum_{i,j}\pi_0([v_i,v_j])\,X_iY_j=0,
+\]</span>
+Lemma 1.1(1) there gives <span class="math" data-tex="\(\pi_0([v_i,v_j])=0\)">\(\pi_0([v_i,v_j])=0\)</span> for all <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. Then <span class="math" data-tex="\(\pi_0(V)\)">\(\pi_0(V)\)</span> is commutative, while <span class="math" data-tex="\(\pi_0\)">\(\pi_0\)</span> is a unital representation on a nonzero space, which contradicts Lemma 3.1 there. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 2.2.</strong> The self-adjoint element <span class="math" data-tex="\(z=[s,[s,t]]\)">\(z=[s,[s,t]]\)</span> has full positive and negative parts <span class="math" data-tex="\(z_+\)">\(z_+\)</span> and <span class="math" data-tex="\(z_-\)">\(z_-\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be an irreducible representation on <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(S=\pi(s)\)">\(S=\pi(s)\)</span>, <span class="math" data-tex="\(T=\pi(t)\)">\(T=\pi(t)\)</span>. The exponential series shows that <span class="math" data-tex="\(\lambda\mapsto e^{i\lambda S}Te^{-i\lambda S}\)">\(\lambda\mapsto e^{i\lambda S}Te^{-i\lambda S}\)</span> is differentiable in norm, with derivative <span class="math" data-tex="\(e^{i\lambda S}\,i[S,T]\,e^{-i\lambda S}\)">\(e^{i\lambda S}\,i[S,T]\,e^{-i\lambda S}\)</span>; here <span class="math" data-tex="\(i[S,T]\)">\(i[S,T]\)</span> is self-adjoint. For <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>, the real function
+<span class="math math-display" data-tex="\[
+f_\xi(\lambda)=\bigl\langle e^{i\lambda S}Te^{-i\lambda S}\xi,\xi\bigr\rangle\qquad(\lambda\in\mathbb R)
+\]">\[
+f_\xi(\lambda)=\bigl\langle e^{i\lambda S}Te^{-i\lambda S}\xi,\xi\bigr\rangle\qquad(\lambda\in\mathbb R)
+\]</span>
+is bounded by <span class="math" data-tex="\(\|T\|\|\xi\|^2\)">\(\|T\|\|\xi\|^2\)</span> and twice differentiable, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_\xi&#x27;(0)=\langle i[S,T]\xi,\xi\rangle,\\
+f_\xi&#x27;&#x27;(\lambda)=-\bigl\langle\pi(z)\,e^{-i\lambda S}\xi,\,e^{-i\lambda S}\xi\bigr\rangle .
+\end{gathered}
+\]">\[
+\begin{gathered}
+f_\xi&#x27;(0)=\langle i[S,T]\xi,\xi\rangle,\\
+f_\xi&#x27;&#x27;(\lambda)=-\bigl\langle\pi(z)\,e^{-i\lambda S}\xi,\,e^{-i\lambda S}\xi\bigr\rangle .
+\end{gathered}
+\]</span>
+Suppose <span class="math" data-tex="\(\pi(z)\ge0\)">\(\pi(z)\ge0\)</span>. Then <span class="math" data-tex="\(f_\xi&#x27;&#x27;\le0\)">\(f_\xi&#x27;&#x27;\le0\)</span>, so <span class="math" data-tex="\(f_\xi&#x27;\)">\(f_\xi&#x27;\)</span> is nonincreasing. A bounded function on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with nonincreasing derivative has derivative <span class="math" data-tex="\(0\)">\(0\)</span>: if <span class="math" data-tex="\(f_\xi&#x27;(\lambda_0)&gt;0\)">\(f_\xi&#x27;(\lambda_0)&gt;0\)</span>, the mean value theorem gives <span class="math" data-tex="\(f_\xi(\lambda)\le f_\xi(\lambda_0)-f_\xi&#x27;(\lambda_0)(\lambda_0-\lambda)\)">\(f_\xi(\lambda)\le f_\xi(\lambda_0)-f_\xi&#x27;(\lambda_0)(\lambda_0-\lambda)\)</span> for <span class="math" data-tex="\(\lambda&lt;\lambda_0\)">\(\lambda&lt;\lambda_0\)</span>, which tends to <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>; a negative value is excluded in the same way as <span class="math" data-tex="\(\lambda\to+\infty\)">\(\lambda\to+\infty\)</span>. So <span class="math" data-tex="\(\langle i[S,T]\xi,\xi\rangle=0\)">\(\langle i[S,T]\xi,\xi\rangle=0\)</span> for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and the self-adjoint operator <span class="math" data-tex="\(i[S,T]\)">\(i[S,T]\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>, contradicting Lemma 2.1. If <span class="math" data-tex="\(\pi(z)\le0\)">\(\pi(z)\le0\)</span>, the same argument applies to <span class="math" data-tex="\(-f_\xi\)">\(-f_\xi\)</span>. So <span class="math" data-tex="\(\pi(z)\)">\(\pi(z)\)</span> is neither positive nor negative, that is, <span class="math" data-tex="\(\pi(z_+)=\pi(z)_+\ne0\)">\(\pi(z_+)=\pi(z)_+\ne0\)</span> and <span class="math" data-tex="\(\pi(z_-)=\pi(z)_-\ne0\)">\(\pi(z_-)=\pi(z)_-\ne0\)</span>. By Lemma 1.1, <span class="math" data-tex="\(z_+\)">\(z_+\)</span> and <span class="math" data-tex="\(z_-\)">\(z_-\)</span> are full. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 2.3</strong> (bridges). There are <span class="math" data-tex="\(d_1,\dots,d_r\in P_0\)">\(d_1,\dots,d_r\in P_0\)</span> such that the elements <span class="math" data-tex="\(c_i=z_-d_iz_+\)">\(c_i=z_-d_iz_+\)</span> satisfy <span class="math" data-tex="\(c_ic_j=0\)">\(c_ic_j=0\)</span> for all <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, and <span class="math" data-tex="\(\bigl\|1-\sum_ih_ic_il_i\bigr\|&lt;1\)">\(\bigl\|1-\sum_ih_ic_il_i\bigr\|&lt;1\)</span> for some <span class="math" data-tex="\(h_i,l_i\in P_0\)">\(h_i,l_i\in P_0\)</span>.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(z_\pm\)">\(z_\pm\)</span> is full (Lemma 2.2), the elements <span class="math" data-tex="\(\sum_kh_kz_\pm l_k\)">\(\sum_kh_kz_\pm l_k\)</span> are dense in <span class="math" data-tex="\(P_0\)">\(P_0\)</span>; choose <span class="math" data-tex="\(y_\pm=\sum_kh^\pm_kz_\pm l^\pm_k\)">\(y_\pm=\sum_kh^\pm_kz_\pm l^\pm_k\)</span> with <span class="math" data-tex="\(\|1-y_\pm\|&lt;1/4\)">\(\|1-y_\pm\|&lt;1/4\)</span>. Then <span class="math" data-tex="\(\|y_-\|\le5/4\)">\(\|y_-\|\le5/4\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|1-y_-y_+\|\\
+&amp;\quad\le\|1-y_-\|+\|y_-\|\,\|1-y_+\|\\
+&amp;\quad&lt;\tfrac14+\tfrac5{16}&lt;1 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|1-y_-y_+\|\\
+&amp;\quad\le\|1-y_-\|+\|y_-\|\,\|1-y_+\|\\
+&amp;\quad&lt;\tfrac14+\tfrac5{16}&lt;1 .
+\end{aligned}
+\]</span>
+Expanding <span class="math" data-tex="\(y_-y_+\)">\(y_-y_+\)</span> gives a sum of terms <span class="math" data-tex="\(h^-_k\bigl(z_-(l^-_kh^+_{k&#x27;})z_+\bigr)l^+_{k&#x27;}\)">\(h^-_k\bigl(z_-(l^-_kh^+_{k&#x27;})z_+\bigr)l^+_{k&#x27;}\)</span>, of the required form with <span class="math" data-tex="\(d_i=l^-_kh^+_{k&#x27;}\)">\(d_i=l^-_kh^+_{k&#x27;}\)</span>. Finally <span class="math" data-tex="\(c_ic_j=z_-d_i(z_+z_-)d_jz_+=0\)">\(c_ic_j=z_-d_i(z_+z_-)d_jz_+=0\)</span>, since <span class="math" data-tex="\(z_+z_-=0\)">\(z_+z_-=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 2.4</strong> (full square-zero element; [OpenAI-KRC, Lemma 4.6]). Some finite maximal tensor power <span class="math" data-tex="\(P\)">\(P\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span> contains a full element <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(w^2=0\)">\(w^2=0\)</span> and <span class="math" data-tex="\(\|w\|=1\)">\(\|w\|=1\)</span>.</p>
+<p><em>Proof.</em> Take labels <span class="math" data-tex="\(x_1&#x27;,\dots,x_r&#x27;\in D^{\otimes n&#x27;}\)">\(x_1&#x27;,\dots,x_r&#x27;\in D^{\otimes n&#x27;}\)</span> from Corollary 5.1 of the previous lesson, for the number <span class="math" data-tex="\(r\)">\(r\)</span> of bridges in Lemma 2.3. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P=P_0\otimes D^{\otimes n&#x27;}=D^{\otimes(2n+1+n&#x27;)},\\
+w_0=\sum_{i=1}^rc_i\otimes x_i&#x27; .
+\end{gathered}
+\]">\[
+\begin{gathered}
+P=P_0\otimes D^{\otimes n&#x27;}=D^{\otimes(2n+1+n&#x27;)},\\
+w_0=\sum_{i=1}^rc_i\otimes x_i&#x27; .
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(w_0^2=\sum_{i,j}c_ic_j\otimes x_i&#x27;x_j&#x27;=0\)">\(w_0^2=\sum_{i,j}c_ic_j\otimes x_i&#x27;x_j&#x27;=0\)</span>. Let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be an irreducible representation of <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> its restriction to <span class="math" data-tex="\(P_0\otimes1\)">\(P_0\otimes1\)</span>, a unital representation of <span class="math" data-tex="\(P_0\)">\(P_0\)</span>. The von Neumann algebra <span class="math" data-tex="\(N\)">\(N\)</span> generated by <span class="math" data-tex="\(\rho(P_0\otimes1)\)">\(\rho(P_0\otimes1)\)</span> is a factor, and the operators <span class="math" data-tex="\(B_i=\rho(1\otimes x_i&#x27;)\in N&#x27;\)">\(B_i=\rho(1\otimes x_i&#x27;)\in N&#x27;\)</span> are linearly independent (Lemma 2.1 and Corollary 5.1 of the previous lesson). If <span class="math" data-tex="\(\rho(w_0)=\sum_i\rho_0(c_i)B_i=0\)">\(\rho(w_0)=\sum_i\rho_0(c_i)B_i=0\)</span>, Lemma 1.1(1) there gives <span class="math" data-tex="\(\rho_0(c_i)=0\)">\(\rho_0(c_i)=0\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>. Then <span class="math" data-tex="\(\rho_0\bigl(\sum_ih_ic_il_i\bigr)=0\)">\(\rho_0\bigl(\sum_ih_ic_il_i\bigr)=0\)</span>, although this element is invertible and <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> is unital. So <span class="math" data-tex="\(\rho(w_0)\ne0\)">\(\rho(w_0)\ne0\)</span>, and <span class="math" data-tex="\(w_0\)">\(w_0\)</span> is full by Lemma 1.1; in particular <span class="math" data-tex="\(w_0\ne0\)">\(w_0\ne0\)</span>. Put <span class="math" data-tex="\(w=w_0/\|w_0\|\)">\(w=w_0/\|w_0\|\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The exponents <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(n&#x27;\)">\(n&#x27;\)</span>, hence the exponent of <span class="math" data-tex="\(P\)">\(P\)</span>, depend on <span class="math" data-tex="\(D\)">\(D\)</span> through the space <span class="math" data-tex="\(V\)">\(V\)</span> and the number of bridges. Two full orthogonal positive elements in a finite maximal tensor power were found earlier in [OpenAI-ND, Theorem 1.4].</p>
+<h2 id="3-the-cone-homomorphism">3. The cone homomorphism</h2>
+<p><span class="math" data-tex="\(C\)">\(C\)</span> is the unitization of <span class="math" data-tex="\(C_0((0,1],M_2)\)">\(C_0((0,1],M_2)\)</span>: every <span class="math" data-tex="\(F\in C\)">\(F\in C\)</span> is <span class="math" data-tex="\(F(0)\)">\(F(0)\)</span> plus a function vanishing at <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><strong>Proposition 3.1</strong> ([OpenAI-KRC, Proposition 4.7]). For every nonzero unital C*-algebra <span class="math" data-tex="\(D\)">\(D\)</span> without characters there are <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(\eta\colon C\to P=D^{\otimes m}\)">\(\eta\colon C\to P=D^{\otimes m}\)</span> such that <span class="math" data-tex="\(\eta(\iota e_{11})\)">\(\eta(\iota e_{11})\)</span> is full in <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><em>Proof.</em> Take <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> from Lemma 2.4, and the polar decomposition <span class="math" data-tex="\(w=u|w|\)">\(w=u|w|\)</span> in <span class="math" data-tex="\(P^{**}\)">\(P^{**}\)</span>, as in <a href="cuntz-comparison-and-order-zero-maps.html">Cuntz comparison and order-zero maps</a>: <span class="math" data-tex="\(u^*u=e_1=s(|w|)\)">\(u^*u=e_1=s(|w|)\)</span>, <span class="math" data-tex="\(uu^*=e_2=s(|w^*|)\)">\(uu^*=e_2=s(|w^*|)\)</span>, <span class="math" data-tex="\(|w^*|=u|w|u^*\)">\(|w^*|=u|w|u^*\)</span>, and <span class="math" data-tex="\(u=ue_1=e_2u\)">\(u=ue_1=e_2u\)</span>. Since <span class="math" data-tex="\(w^2=0\)">\(w^2=0\)</span>, <span class="math" data-tex="\(|w|^2|w^*|^2=w^*(ww)w^*=0\)">\(|w|^2|w^*|^2=w^*(ww)w^*=0\)</span>. For positive <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with <span class="math" data-tex="\(ab=0\)">\(ab=0\)</span>, <span class="math" data-tex="\(a(a+\tau)^{-1}b=0\)">\(a(a+\tau)^{-1}b=0\)</span> for <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>, so <span class="math" data-tex="\(s(a)b=0\)">\(s(a)b=0\)</span>, and then <span class="math" data-tex="\(s(a)s(b)=0\)">\(s(a)s(b)=0\)</span>. As <span class="math" data-tex="\(s(|w|)=s(|w|^2)\)">\(s(|w|)=s(|w|^2)\)</span> and <span class="math" data-tex="\(s(|w^*|)=s(|w^*|^2)\)">\(s(|w^*|)=s(|w^*|^2)\)</span>, <span class="math" data-tex="\(e_1e_2=0\)">\(e_1e_2=0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_{11}=e_1,\quad E_{22}=e_2,\\
+E_{21}=u,\quad E_{12}=u^*
+\end{gathered}
+\]">\[
+\begin{gathered}
+E_{11}=e_1,\quad E_{22}=e_2,\\
+E_{21}=u,\quad E_{12}=u^*
+\end{gathered}
+\]</span>
+are matrix units in <span class="math" data-tex="\(P^{**}\)">\(P^{**}\)</span>; for instance <span class="math" data-tex="\(E_{21}E_{21}=ue_1e_2u=0\)">\(E_{21}E_{21}=ue_1e_2u=0\)</span>.</p>
+<p>Put <span class="math" data-tex="\(h=|w|+|w^*|\in P\)">\(h=|w|+|w^*|\in P\)</span>. Its two summands are positive with orthogonal supports <span class="math" data-tex="\(e_1\)">\(e_1\)</span> and <span class="math" data-tex="\(e_2\)">\(e_2\)</span>, so <span class="math" data-tex="\(\|h\|=\|w\|=1\)">\(\|h\|=\|w\|=1\)</span>. Using <span class="math" data-tex="\(|w|u=|w|e_1e_2u=0\)">\(|w|u=|w|e_1e_2u=0\)</span>, <span class="math" data-tex="\(|w^*|u=u|w|\)">\(|w^*|u=u|w|\)</span> and their adjoints,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+hE_{11}=E_{11}h=|w|,\\
+hE_{22}=E_{22}h=|w^*|,\\
+hE_{21}=E_{21}h=w,\\
+hE_{12}=E_{12}h=w^* .
+\end{gathered}
+\]">\[
+\begin{gathered}
+hE_{11}=E_{11}h=|w|,\\
+hE_{22}=E_{22}h=|w^*|,\\
+hE_{21}=E_{21}h=w,\\
+hE_{12}=E_{12}h=w^* .
+\end{gathered}
+\]</span>
+So <span class="math" data-tex="\(h\)">\(h\)</span> commutes with the matrix units, and so does every continuous function of <span class="math" data-tex="\(h\)">\(h\)</span>. The formula
+<span class="math math-display" data-tex="\[
+\varphi\Bigl(\sum_{i,j}f_{ij}e_{ij}\Bigr)=\sum_{i,j}f_{ij}(h)E_{ij}
+\]">\[
+\varphi\Bigl(\sum_{i,j}f_{ij}e_{ij}\Bigr)=\sum_{i,j}f_{ij}(h)E_{ij}
+\]</span>
+defines a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(\varphi\colon C_0((0,1],M_2)\to P^{**}\)">\(\varphi\colon C_0((0,1],M_2)\to P^{**}\)</span>, by the matrix-unit relations. Its values lie in <span class="math" data-tex="\(P\)">\(P\)</span>: each <span class="math" data-tex="\(f\in C([0,1])\)">\(f\in C([0,1])\)</span> with <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span> is a uniform limit of polynomials without constant term, and <span class="math" data-tex="\(h^kE_{ij}=h^{k-1}(hE_{ij})\in P\)">\(h^kE_{ij}=h^{k-1}(hE_{ij})\in P\)</span> for <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>. Its unitization
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta(F)=\varphi\bigl(F-F(0)\bigr)+c_F1_P,\\
+F(0)=c_F1,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\eta(F)=\varphi\bigl(F-F(0)\bigr)+c_F1_P,\\
+F(0)=c_F1,
+\end{gathered}
+\]</span>
+is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(C\to P\)">\(C\to P\)</span>, with <span class="math" data-tex="\(\eta(\iota e_{21})=hE_{21}=w\)">\(\eta(\iota e_{21})=hE_{21}=w\)</span> and <span class="math" data-tex="\(\eta(\iota e_{11})=hE_{11}=|w|\)">\(\eta(\iota e_{11})=hE_{11}=|w|\)</span>.</p>
+<p>Finally, <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(|w|\)">\(|w|\)</span> generate the same closed ideal. The ideal of <span class="math" data-tex="\(w\)">\(w\)</span> contains <span class="math" data-tex="\(w^*w\)">\(w^*w\)</span> and its square root <span class="math" data-tex="\(|w|\)">\(|w|\)</span>. Conversely, with <span class="math" data-tex="\(g_\varepsilon(t)=\varepsilon/(t+\varepsilon)\)">\(g_\varepsilon(t)=\varepsilon/(t+\varepsilon)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl\|w-w|w|(|w|+\varepsilon)^{-1}\bigr\|^2\\
+&amp;\quad=\bigl\|g_\varepsilon(|w|)\,|w|^2g_\varepsilon(|w|)\bigr\|\le\varepsilon^2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl\|w-w|w|(|w|+\varepsilon)^{-1}\bigr\|^2\\
+&amp;\quad=\bigl\|g_\varepsilon(|w|)\,|w|^2g_\varepsilon(|w|)\bigr\|\le\varepsilon^2,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(w\)">\(w\)</span> lies in the closed ideal of <span class="math" data-tex="\(|w|\)">\(|w|\)</span>. As <span class="math" data-tex="\(w\)">\(w\)</span> is full, <span class="math" data-tex="\(\eta(\iota e_{11})=|w|\)">\(\eta(\iota e_{11})=|w|\)</span> is full. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The partial isometry <span class="math" data-tex="\(u\)">\(u\)</span> need not lie in <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(e_1+e_2\)">\(e_1+e_2\)</span> need not be <span class="math" data-tex="\(1\)">\(1\)</span>; neither is needed.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Show that in <span class="math" data-tex="\(P=M_2\)">\(P=M_2\)</span> the element <span class="math" data-tex="\(e_{21}\)">\(e_{21}\)</span> is full and square-zero, and compute the homomorphism <span class="math" data-tex="\(\eta\)">\(\eta\)</span> of Proposition 3.1 for <span class="math" data-tex="\(w=e_{21}\)">\(w=e_{21}\)</span>.</p>
+<p><strong>4.2.</strong> Show that a nonzero element of a simple unital C*-algebra is full.</p>
+<p><strong>4.3.</strong> Let <span class="math" data-tex="\(z\)">\(z\)</span> be a self-adjoint element of <span class="math" data-tex="\(M_n\)">\(M_n\)</span> of the form <span class="math" data-tex="\([s,[s,t]]\)">\([s,[s,t]]\)</span> with <span class="math" data-tex="\(s,t\)">\(s,t\)</span> self-adjoint. Show that the trace of <span class="math" data-tex="\(z\)">\(z\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>, and deduce directly that <span class="math" data-tex="\(z\)">\(z\)</span> is neither positive nor negative unless <span class="math" data-tex="\(z=0\)">\(z=0\)</span>.</p>
+<p><strong>4.4.</strong> Why does the proof of Lemma 2.4 need labels, rather than the plain sum <span class="math" data-tex="\(\sum_ic_i\)">\(\sum_ic_i\)</span>?</p>
+<p><strong>4.5.</strong> Show that <span class="math" data-tex="\(\|h\|=\max\{\|a\|,\|b\|\}\)">\(\|h\|=\max\{\|a\|,\|b\|\}\)</span> for positive <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with <span class="math" data-tex="\(ab=0\)">\(ab=0\)</span> and <span class="math" data-tex="\(h=a+b\)">\(h=a+b\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> <span class="math" data-tex="\(e_{21}^2=0\)">\(e_{21}^2=0\)</span>, and <span class="math" data-tex="\(M_2\)">\(M_2\)</span> is simple, so <span class="math" data-tex="\(e_{21}\)">\(e_{21}\)</span> is full. Here <span class="math" data-tex="\(|w|=e_{11}\)">\(|w|=e_{11}\)</span>, <span class="math" data-tex="\(|w^*|=e_{22}\)">\(|w^*|=e_{22}\)</span>, <span class="math" data-tex="\(u=e_{21}\)">\(u=e_{21}\)</span>, <span class="math" data-tex="\(h=1\)">\(h=1\)</span>, and <span class="math" data-tex="\(\eta(F)=F(1)\)">\(\eta(F)=F(1)\)</span>: evaluation at <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>4.2.</strong> The closed ideal generated by a nonzero element is a nonzero closed ideal, hence the whole algebra.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(\operatorname{tr}[s,y]=0\)">\(\operatorname{tr}[s,y]=0\)</span> for every <span class="math" data-tex="\(y\)">\(y\)</span>, with <span class="math" data-tex="\(y=[s,t]\)">\(y=[s,t]\)</span>. A positive matrix with trace <span class="math" data-tex="\(0\)">\(0\)</span> has all eigenvalues <span class="math" data-tex="\(0\)">\(0\)</span>, hence is <span class="math" data-tex="\(0\)">\(0\)</span>; similarly for a negative one.</p>
+<p><strong>4.4.</strong> The sum <span class="math" data-tex="\(\sum_ic_i\)">\(\sum_ic_i\)</span> also squares to zero, but it may vanish in some irreducible representation even though some <span class="math" data-tex="\(c_i\)">\(c_i\)</span> does not: the images of different <span class="math" data-tex="\(c_i\)">\(c_i\)</span> can cancel. With labels, Lemma 1.1(1) of the previous lesson rules out such a cancellation.</p>
+<p><strong>4.5.</strong> <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> commute and generate a commutative C*-algebra <span class="math" data-tex="\(C_0(\Omega)\)">\(C_0(\Omega)\)</span>, in which they are functions with disjoint supports; the norm of <span class="math" data-tex="\(a+b\)">\(a+b\)</span> is the maximum of the two suprema.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-KRC] OpenAI, <em>The Kirchberg–Rørdam character criterion</em>, OpenAI Math Release preprint, 25 September 2026, Sections 4.3 and 4.4. https://github.com/openai/math/tree/main/preprints/The-Kirchberg-Rordam-character-criterion-September-25-2026</li>
+<li>[OpenAI-ND] OpenAI, <em>Nuclear dimension and Jiang–Su stability without elementary subquotients</em>, OpenAI Math Release preprint, 23 September 2026, Theorem 1.4. https://github.com/openai/math/tree/main/preprints/Nuclear-dimension-and-Jiang-Su-stability-without-elementary-subquotients-September-23-2026</li>
+<li>[KR] E. Kirchberg and M. Rørdam, <em>When central sequence C*-algebras have characters</em>, arXiv:1409.1395v2, Proposition 6.1. https://arxiv.org/abs/1409.1395</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

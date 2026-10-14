@@ -1,0 +1,284 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fourier fields for a smaller unitary</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Unitary synthesis from a Boolean oracle)</a><a href="a-contracting-block.html">Previous lesson</a><a href="encoders-and-the-recursion.html">Next lesson</a><a href="src/fourier-fields-for-a-smaller-unitary.md">Editable source</a></nav><main><article><h1 id="fourier-fields-for-a-smaller-unitary">Fourier fields for a smaller unitary</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Let a unitary <span class="math" data-tex="\(V\)">\(V\)</span> on <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> have the block form of <a href="a-contracting-block.html">A contracting block</a>, Proposition 2.1, with a small internal block <span class="math" data-tex="\(D\)">\(D\)</span>. Feeding the internal output of <span class="math" data-tex="\(V\)">\(V\)</span> back into its internal input through a diagonal phase <span class="math" data-tex="\(Z\)">\(Z\)</span> leaves a unitary <span class="math" data-tex="\(F\)">\(F\)</span> on the ports (Lemma 1.1). This lesson attaches to <span class="math" data-tex="\(V\)">\(V\)</span> a family of such unitaries <span class="math" data-tex="\(F(z)\)">\(F(z)\)</span>, indexed by a phase label <span class="math" data-tex="\(z\)">\(z\)</span>, and two maps <span class="math" data-tex="\(\mathcal E_L\)">\(\mathcal E_L\)</span> and <span class="math" data-tex="\(\mathcal R_L\)">\(\mathcal R_L\)</span> from <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> into port-valued functions of <span class="math" data-tex="\(z\)">\(z\)</span>. They are nearly isometric and intertwine <span class="math" data-tex="\(V\)">\(V\)</span> with the controlled application of <span class="math" data-tex="\(F(z)\)">\(F(z)\)</span> (Proposition 2.1), and in Fourier coordinates every row of their matrices has at most <span class="math" data-tex="\(L\)">\(L\)</span> nonzero entries (Proposition 3.2). The next lesson implements them with slots.</p>
+<ul>
+<li>Closing the internal coordinates (Lemma 1.1).</li>
+<li>Truncation and averaging (Proposition 2.1).</li>
+<li>Few input indices at each frequency (Lemma 3.1, Proposition 3.2).</li>
+</ul>
+<p>The lesson follows [OpenAI-US, Section 4].</p>
+<p>Throughout, <span class="math" data-tex="\(d=k+s\le2^n\)">\(d=k+s\le2^n\)</span> with <span class="math" data-tex="\(k,s\ge1\)">\(k,s\ge1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V=\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}\in U(d),\\
+\|D\|\le r&lt;1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+V=\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}\in U(d),\\
+\|D\|\le r&lt;1 .
+\end{gathered}
+\]</span>
+The first <span class="math" data-tex="\(k\)">\(k\)</span> coordinates are the ports, the last <span class="math" data-tex="\(s\)">\(s\)</span> the internal coordinates. Since <span class="math" data-tex="\(V\)">\(V\)</span> is unitary, <span class="math" data-tex="\(VV^*=I\)">\(VV^*=I\)</span> and <span class="math" data-tex="\(V^*V=I\)">\(V^*V=I\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+CC^*+DD^*=I_s,\\
+B^*B+D^*D=I_s ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+CC^*+DD^*=I_s,\\
+B^*B+D^*D=I_s ,
+\end{gathered}
+\]</span>
+and every block of <span class="math" data-tex="\(V\)">\(V\)</span> has norm at most <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="1-closing-the-internal-coordinates">1. Closing the internal coordinates</h2>
+<p>Let <span class="math" data-tex="\(Z\)">\(Z\)</span> be a diagonal unitary of order <span class="math" data-tex="\(s\)">\(s\)</span>. For a port input <span class="math" data-tex="\(u\in\mathbb C^k\)">\(u\in\mathbb C^k\)</span>, feed the internal output <span class="math" data-tex="\(x\in\mathbb C^s\)">\(x\in\mathbb C^s\)</span> back into the internal input through <span class="math" data-tex="\(Z\)">\(Z\)</span>: the equation <span class="math" data-tex="\(V(u,Zx)=(y,x)\)">\(V(u,Zx)=(y,x)\)</span> reads
+<span class="math math-display" data-tex="\[
+y=Au+BZx,\qquad x=Cu+DZx .
+\]">\[
+y=Au+BZx,\qquad x=Cu+DZx .
+\]</span>
+As <span class="math" data-tex="\(\|DZ\|\le r&lt;1\)">\(\|DZ\|\le r&lt;1\)</span>, the second equation has the unique solution <span class="math" data-tex="\(x=Xu\)">\(x=Xu\)</span>, and then <span class="math" data-tex="\(y=Fu\)">\(y=Fu\)</span>, where
+<span class="math math-display" data-tex="\[
+X=(I-DZ)^{-1}C,\qquad F=A+BZX .
+\]">\[
+X=(I-DZ)^{-1}C,\qquad F=A+BZX .
+\]</span>
+Put
+<span class="math math-display" data-tex="\[
+E=\begin{pmatrix}I_k\\ ZX\end{pmatrix},\qquad O=\begin{pmatrix}F\\ X\end{pmatrix},
+\]">\[
+E=\begin{pmatrix}I_k\\ ZX\end{pmatrix},\qquad O=\begin{pmatrix}F\\ X\end{pmatrix},
+\]</span>
+the full input and output of <span class="math" data-tex="\(V\)">\(V\)</span> after the internal coordinates are closed. For a scalar phase <span class="math" data-tex="\(Z=zI\)">\(Z=zI\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span> is the transfer function of the unitary block matrix.</p>
+<p><strong>Lemma 1.1</strong> ([OpenAI-US, Lemma 4.1]). The matrix <span class="math" data-tex="\(F\)">\(F\)</span> is unitary. With
+<span class="math math-display" data-tex="\[
+Y=XF^*,\qquad R=OF^*=\begin{pmatrix}I_k\\ Y\end{pmatrix},
+\]">\[
+Y=XF^*,\qquad R=OF^*=\begin{pmatrix}I_k\\ Y\end{pmatrix},
+\]</span>
+we have
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+FE^*=R^*V,\\
+Y=(I-Z^*D^*)^{-1}Z^*B^* .
+\end{gathered}
+\]">\[
+\begin{gathered}
+FE^*=R^*V,\\
+Y=(I-Z^*D^*)^{-1}Z^*B^* .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> By definition <span class="math" data-tex="\(VE=O\)">\(VE=O\)</span>: its lower block is <span class="math" data-tex="\(C+DZX=(I-DZ)X+DZX=X\)">\(C+DZX=(I-DZ)X+DZX=X\)</span>. As <span class="math" data-tex="\(V\)">\(V\)</span> is unitary,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I_k+X^*X&amp;=E^*E=O^*O\\
+&amp;=F^*F+X^*X ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+I_k+X^*X&amp;=E^*E=O^*O\\
+&amp;=F^*F+X^*X ,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(F^*F=I_k\)">\(F^*F=I_k\)</span>, and the square matrix <span class="math" data-tex="\(F\)">\(F\)</span> is unitary. Then <span class="math" data-tex="\(OF^*\)">\(OF^*\)</span> has the upper block <span class="math" data-tex="\(FF^*=I_k\)">\(FF^*=I_k\)</span>, and <span class="math" data-tex="\(V^*R=V^*OF^*=EF^*\)">\(V^*R=V^*OF^*=EF^*\)</span>; taking adjoints gives <span class="math" data-tex="\(FE^*=R^*V\)">\(FE^*=R^*V\)</span>. The lower blocks of <span class="math" data-tex="\(V^*R=EF^*\)">\(V^*R=EF^*\)</span> give <span class="math" data-tex="\(B^*+D^*Y=ZY\)">\(B^*+D^*Y=ZY\)</span>. Multiplying by <span class="math" data-tex="\(Z^*\)">\(Z^*\)</span> and using <span class="math" data-tex="\(\|Z^*D^*\|\le r&lt;1\)">\(\|Z^*D^*\|\le r&lt;1\)</span> gives the formula for <span class="math" data-tex="\(Y\)">\(Y\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-truncation-and-averaging">2. Truncation and averaging</h2>
+<p>Fix an integer <em>truncation length</em> <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span> and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b=nL+\lceil\log_2(L+1)\rceil,\\
+\mathcal G=(\mathbb Z/2^b)^{L+1}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+b=nL+\lceil\log_2(L+1)\rceil,\\
+\mathcal G=(\mathbb Z/2^b)^{L+1}.
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(w,z\in\mathcal G\)">\(w,z\in\mathcal G\)</span> write <span class="math" data-tex="\(\chi_w(z)=\exp(2\pi i\,w\cdot z/2^b)\)">\(\chi_w(z)=\exp(2\pi i\,w\cdot z/2^b)\)</span>. Number the internal coordinates <span class="math" data-tex="\(i=1,\dots,s\)">\(i=1,\dots,s\)</span>, and put
+<span class="math math-display" data-tex="\[
+v_i=(1,i,i^2,\dots,i^L)\in\mathcal G,
+\]">\[
+v_i=(1,i,i^2,\dots,i^L)\in\mathcal G,
+\]</span>
+<span class="math math-display" data-tex="\[
+Z(z)=\operatorname{diag}\bigl(\chi_{v_1}(z),\dots,\chi_{v_s}(z)\bigr).
+\]">\[
+Z(z)=\operatorname{diag}\bigl(\chi_{v_1}(z),\dots,\chi_{v_s}(z)\bigr).
+\]</span>
+The constant first coordinate of the <span class="math" data-tex="\(v_i\)">\(v_i\)</span> gives all diagonal entries of <span class="math" data-tex="\(Z(z)\)">\(Z(z)\)</span> a common phase when the first coordinate of <span class="math" data-tex="\(z\)">\(z\)</span> varies; averaging this phase separates terms of different lengths below. The other coordinates record power sums, so that a frequency remembers a multiset of internal indices (Lemma 3.1).</p>
+<p>Lemma 1.1 at each <span class="math" data-tex="\(z\)">\(z\)</span> gives <span class="math" data-tex="\(F(z)\)">\(F(z)\)</span>, <span class="math" data-tex="\(E(z)\)">\(E(z)\)</span> and <span class="math" data-tex="\(R(z)\)">\(R(z)\)</span>. Truncate the two series
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+ZX=\sum_{\ell\ge0}Z(DZ)^\ell C,\\
+Y=\sum_{\ell\ge0}(Z^*D^*)^\ell Z^*B^*
+\end{gathered}
+\]">\[
+\begin{gathered}
+ZX=\sum_{\ell\ge0}Z(DZ)^\ell C,\\
+Y=\sum_{\ell\ge0}(Z^*D^*)^\ell Z^*B^*
+\end{gathered}
+\]</span>
+after <span class="math" data-tex="\(L\)">\(L\)</span> terms: let <span class="math" data-tex="\(E_L(z)\)">\(E_L(z)\)</span> and <span class="math" data-tex="\(R_L(z)\)">\(R_L(z)\)</span> have the upper block <span class="math" data-tex="\(I_k\)">\(I_k\)</span> and the lower blocks
+<span class="math math-display" data-tex="\[
+\sum_{\ell=0}^{L-1}Z(DZ)^\ell C,\qquad\sum_{\ell=0}^{L-1}(Z^*D^*)^\ell Z^*B^*,
+\]">\[
+\sum_{\ell=0}^{L-1}Z(DZ)^\ell C,\qquad\sum_{\ell=0}^{L-1}(Z^*D^*)^\ell Z^*B^*,
+\]</span>
+all factors evaluated at the same <span class="math" data-tex="\(z\)">\(z\)</span>. As <span class="math" data-tex="\(\|D\|\le r\)">\(\|D\|\le r\)</span> and <span class="math" data-tex="\(\|B\|,\|C\|\le1\)">\(\|B\|,\|C\|\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|E_L(z)-E(z)\|\le\tau,\\
+\|R_L(z)-R(z)\|\le\tau,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|E_L(z)-E(z)\|\le\tau,\\
+\|R_L(z)-R(z)\|\le\tau,
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(\tau=r^L/(1-r)\)">\(\tau=r^L/(1-r)\)</span>. The <em>field maps</em> <span class="math" data-tex="\(\mathcal E_L,\mathcal R_L\colon\mathbb C^d\to\mathbb C^{\mathcal G}\otimes\mathbb C^k\)">\(\mathcal E_L,\mathcal R_L\colon\mathbb C^d\to\mathbb C^{\mathcal G}\otimes\mathbb C^k\)</span> are
+<span class="math math-display" data-tex="\[
+\mathcal E_Lx=\frac1{\sqrt{|\mathcal G|}}\sum_{z\in\mathcal G}|z\rangle\otimes E_L(z)^*x,
+\]">\[
+\mathcal E_Lx=\frac1{\sqrt{|\mathcal G|}}\sum_{z\in\mathcal G}|z\rangle\otimes E_L(z)^*x,
+\]</span>
+<span class="math math-display" data-tex="\[
+\mathcal R_Lx=\frac1{\sqrt{|\mathcal G|}}\sum_{z\in\mathcal G}|z\rangle\otimes R_L(z)^*x .
+\]">\[
+\mathcal R_Lx=\frac1{\sqrt{|\mathcal G|}}\sum_{z\in\mathcal G}|z\rangle\otimes R_L(z)^*x .
+\]</span>
+Let <span class="math" data-tex="\(\widetilde F=\sum_z|z\rangle\langle z|\otimes F(z)\)">\(\widetilde F=\sum_z|z\rangle\langle z|\otimes F(z)\)</span> apply <span class="math" data-tex="\(F(z)\)">\(F(z)\)</span> to the port register, controlled by the phase label <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><strong>Proposition 2.1</strong> ([OpenAI-US, Proposition 4.2]). For <span class="math" data-tex="\(\mathcal T=\mathcal E_L\)">\(\mathcal T=\mathcal E_L\)</span> and for <span class="math" data-tex="\(\mathcal T=\mathcal R_L\)">\(\mathcal T=\mathcal R_L\)</span>,
+<span class="math math-display" data-tex="\[
+(1-r^{2L})I_d\le\mathcal T^*\mathcal T\le I_d ,
+\]">\[
+(1-r^{2L})I_d\le\mathcal T^*\mathcal T\le I_d ,
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\|\widetilde F\mathcal E_L-\mathcal R_LV\|\le2\tau .
+\]">\[
+\|\widetilde F\mathcal E_L-\mathcal R_LV\|\le2\tau .
+\]</span></p>
+<p><em>Proof.</em> <em>The Gram matrix of <span class="math" data-tex="\(\mathcal E_L\)">\(\mathcal E_L\)</span></em> is <span class="math" data-tex="\(\mathcal E_L^*\mathcal E_L=|\mathcal G|^{-1}\sum_zE_L(z)E_L(z)^*\)">\(\mathcal E_L^*\mathcal E_L=|\mathcal G|^{-1}\sum_zE_L(z)E_L(z)^*\)</span>. Fix all coordinates of <span class="math" data-tex="\(z\)">\(z\)</span> but the first, and let the first run through <span class="math" data-tex="\(\mathbb Z/2^b\)">\(\mathbb Z/2^b\)</span>. Then <span class="math" data-tex="\(Z(z)=\omega Z&#x27;\)">\(Z(z)=\omega Z&#x27;\)</span>, where <span class="math" data-tex="\(\omega=e^{2\pi iz_0/2^b}\)">\(\omega=e^{2\pi iz_0/2^b}\)</span> runs uniformly through the <span class="math" data-tex="\(2^b\)">\(2^b\)</span>-th roots of unity and <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span> is fixed. With <span class="math" data-tex="\(W=DZ&#x27;\)">\(W=DZ&#x27;\)</span>, the lower block of <span class="math" data-tex="\(E_L(z)\)">\(E_L(z)\)</span> is
+<span class="math math-display" data-tex="\[
+S=\sum_{\ell=0}^{L-1}\omega^{\ell+1}Z&#x27;W^\ell C .
+\]">\[
+S=\sum_{\ell=0}^{L-1}\omega^{\ell+1}Z&#x27;W^\ell C .
+\]</span>
+The average of <span class="math" data-tex="\(\omega^p\)">\(\omega^p\)</span> over the roots of unity is <span class="math" data-tex="\(0\)">\(0\)</span> unless <span class="math" data-tex="\(2^b\)">\(2^b\)</span> divides <span class="math" data-tex="\(p\)">\(p\)</span>. The degrees in <span class="math" data-tex="\(S\)">\(S\)</span> lie between <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(L&lt;2^b\)">\(L&lt;2^b\)</span>, and those in <span class="math" data-tex="\(SS^*\)">\(SS^*\)</span> are differences <span class="math" data-tex="\(\ell-\ell&#x27;\)">\(\ell-\ell&#x27;\)</span> with <span class="math" data-tex="\(|\ell-\ell&#x27;|&lt;L\)">\(|\ell-\ell&#x27;|&lt;L\)</span>. So the average of <span class="math" data-tex="\(E_LE_L^*\)">\(E_LE_L^*\)</span> over <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is block diagonal, with the upper block <span class="math" data-tex="\(I_k\)">\(I_k\)</span> and the lower block
+<span class="math math-display" data-tex="\[
+Z&#x27;\Bigl(\sum_{\ell=0}^{L-1}W^\ell CC^*(W^*)^\ell\Bigr)(Z&#x27;)^* .
+\]">\[
+Z&#x27;\Bigl(\sum_{\ell=0}^{L-1}W^\ell CC^*(W^*)^\ell\Bigr)(Z&#x27;)^* .
+\]</span>
+Now <span class="math" data-tex="\(CC^*=I-DD^*=I-WW^*\)">\(CC^*=I-DD^*=I-WW^*\)</span>, and the sum telescopes:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\ell=0}^{L-1}W^\ell(I-WW^*)(W^*)^\ell\\
+&amp;\quad=I-W^L(W^*)^L .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\ell=0}^{L-1}W^\ell(I-WW^*)(W^*)^\ell\\
+&amp;\quad=I-W^L(W^*)^L .
+\end{aligned}
+\]</span>
+As <span class="math" data-tex="\(\|W\|\le r\)">\(\|W\|\le r\)</span>, the lower block lies between <span class="math" data-tex="\((1-r^{2L})I_s\)">\((1-r^{2L})I_s\)</span> and <span class="math" data-tex="\(I_s\)">\(I_s\)</span>. Averaging over the remaining coordinates of <span class="math" data-tex="\(z\)">\(z\)</span> keeps these bounds.</p>
+<p><em>The Gram matrix of <span class="math" data-tex="\(\mathcal R_L\)">\(\mathcal R_L\)</span>.</em> Now put <span class="math" data-tex="\(W=(Z&#x27;)^*D^*\)">\(W=(Z&#x27;)^*D^*\)</span> and <span class="math" data-tex="\(C_0=(Z&#x27;)^*B^*\)">\(C_0=(Z&#x27;)^*B^*\)</span>; the lower block of <span class="math" data-tex="\(R_L(z)\)">\(R_L(z)\)</span> is <span class="math" data-tex="\(\sum_\ell\omega^{-(\ell+1)}W^\ell C_0\)">\(\sum_\ell\omega^{-(\ell+1)}W^\ell C_0\)</span>, with degrees between <span class="math" data-tex="\(-L\)">\(-L\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_0C_0^*&amp;=(Z&#x27;)^*(I-D^*D)Z&#x27;\\
+&amp;=I-WW^* .
+\end{aligned}
+\]">\[
+\begin{aligned}
+C_0C_0^*&amp;=(Z&#x27;)^*(I-D^*D)Z&#x27;\\
+&amp;=I-WW^* .
+\end{aligned}
+\]</span>
+The same computation applies.</p>
+<p><em>Intertwining.</em> Put <span class="math" data-tex="\(\Delta(z)=F(z)E_L(z)^*-R_L(z)^*V\)">\(\Delta(z)=F(z)E_L(z)^*-R_L(z)^*V\)</span>. By Lemma 1.1, <span class="math" data-tex="\(F(z)E(z)^*=R(z)^*V\)">\(F(z)E(z)^*=R(z)^*V\)</span>, so at each <span class="math" data-tex="\(z\)">\(z\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\Delta(z)\|&amp;\le\|E_L(z)-E(z)\|\\
+&amp;\quad+\|R_L(z)-R(z)\|\le2\tau ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\Delta(z)\|&amp;\le\|E_L(z)-E(z)\|\\
+&amp;\quad+\|R_L(z)-R(z)\|\le2\tau ,
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(\|F(z)\|=\|V\|=1\)">\(\|F(z)\|=\|V\|=1\)</span>. For <span class="math" data-tex="\(x\in\mathbb C^d\)">\(x\in\mathbb C^d\)</span>,
+<span class="math math-display" data-tex="\[
+\|(\widetilde F\mathcal E_L-\mathcal R_LV)x\|^2=\frac1{|\mathcal G|}\sum_z\|\Delta(z)x\|^2,
+\]">\[
+\|(\widetilde F\mathcal E_L-\mathcal R_LV)x\|^2=\frac1{|\mathcal G|}\sum_z\|\Delta(z)x\|^2,
+\]</span>
+which is at most <span class="math" data-tex="\((2\tau)^2\|x\|^2\)">\((2\tau)^2\|x\|^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>In particular both field maps are contractions, although a single matrix <span class="math" data-tex="\(E_L(z)^*\)">\(E_L(z)^*\)</span> need not be one.</p>
+<h2 id="3-few-input-indices-at-each-frequency">3. Few input indices at each frequency</h2>
+<p>Use for the first output register of the field maps the <em>Fourier basis</em>
+<span class="math math-display" data-tex="\[
+|\widehat w\rangle=\frac1{\sqrt{|\mathcal G|}}\sum_{z\in\mathcal G}\chi_w(z)|z\rangle,\qquad w\in\mathcal G .
+\]">\[
+|\widehat w\rangle=\frac1{\sqrt{|\mathcal G|}}\sum_{z\in\mathcal G}\chi_w(z)|z\rangle,\qquad w\in\mathcal G .
+\]</span>
+A row of the matrix of <span class="math" data-tex="\(\mathcal E_L\)">\(\mathcal E_L\)</span> or <span class="math" data-tex="\(\mathcal R_L\)">\(\mathcal R_L\)</span> in these coordinates is indexed by a frequency <span class="math" data-tex="\(w\)">\(w\)</span> and a port <span class="math" data-tex="\(a\in\{1,\dots,k\}\)">\(a\in\{1,\dots,k\}\)</span>, and its columns are the <span class="math" data-tex="\(d\)">\(d\)</span> input coordinates; its entries are the Fourier coefficients at <span class="math" data-tex="\(w\)">\(w\)</span> of the entries of row <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(E_L(z)^*\)">\(E_L(z)^*\)</span>, respectively <span class="math" data-tex="\(R_L(z)^*\)">\(R_L(z)^*\)</span>, as functions of <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (power sums). Let <span class="math" data-tex="\(i_1,\dots,i_m\in\{1,\dots,s\}\)">\(i_1,\dots,i_m\in\{1,\dots,s\}\)</span> with <span class="math" data-tex="\(1\le m\le L\)">\(1\le m\le L\)</span>. The multiset <span class="math" data-tex="\(\{i_1,\dots,i_m\}\)">\(\{i_1,\dots,i_m\}\)</span> is determined by the element <span class="math" data-tex="\(v_{i_1}+\dots+v_{i_m}\)">\(v_{i_1}+\dots+v_{i_m}\)</span> of <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>.</p>
+<p><em>Proof.</em> As integers, the coordinates of this sum are <span class="math" data-tex="\(m\)">\(m\)</span> and the power sums <span class="math" data-tex="\(p_j=\sum_ti_t^j\)">\(p_j=\sum_ti_t^j\)</span>, <span class="math" data-tex="\(1\le j\le L\)">\(1\le j\le L\)</span>. They are at most <span class="math" data-tex="\(L\,s^L\le L\,2^{nL}&lt;2^b\)">\(L\,s^L\le L\,2^{nL}&lt;2^b\)</span>, so they are determined by their residues modulo <span class="math" data-tex="\(2^b\)">\(2^b\)</span>. The first coordinate gives <span class="math" data-tex="\(m\)">\(m\)</span>. The elementary symmetric functions <span class="math" data-tex="\(e_j\)">\(e_j\)</span> of <span class="math" data-tex="\(i_1,\dots,i_m\)">\(i_1,\dots,i_m\)</span>, defined by
+<span class="math math-display" data-tex="\[
+\prod_{t=1}^m(1+i_tx)=\sum_{j=0}^me_jx^j ,
+\]">\[
+\prod_{t=1}^m(1+i_tx)=\sum_{j=0}^me_jx^j ,
+\]</span>
+satisfy, for <span class="math" data-tex="\(1\le j\le m\)">\(1\le j\le m\)</span>, <em>Newton's identities</em>
+<span class="math math-display" data-tex="\[
+je_j=\sum_{t=1}^j(-1)^{t-1}e_{j-t}\,p_t ,
+\]">\[
+je_j=\sum_{t=1}^j(-1)^{t-1}e_{j-t}\,p_t ,
+\]</span>
+with <span class="math" data-tex="\(e_0=1\)">\(e_0=1\)</span>, so <span class="math" data-tex="\(e_1,\dots,e_m\)">\(e_1,\dots,e_m\)</span> are computed successively from <span class="math" data-tex="\(p_1,\dots,p_m\)">\(p_1,\dots,p_m\)</span>. To prove the identities, work with formal power series over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, in which each <span class="math" data-tex="\(1+i_tx\)">\(1+i_tx\)</span> is invertible. Logarithmic differentiation of the product gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\sum_jje_jx^{j-1}}{\sum_je_jx^j}&amp;=\sum_{t=1}^m\frac{i_t}{1+i_tx}\\
+&amp;=\sum_{k\ge0}(-1)^kp_{k+1}x^k ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\sum_jje_jx^{j-1}}{\sum_je_jx^j}&amp;=\sum_{t=1}^m\frac{i_t}{1+i_tx}\\
+&amp;=\sum_{k\ge0}(-1)^kp_{k+1}x^k ,
+\end{aligned}
+\]</span>
+and comparing the coefficients of <span class="math" data-tex="\(x^{j-1}\)">\(x^{j-1}\)</span> after multiplying by <span class="math" data-tex="\(\sum_je_jx^j\)">\(\sum_je_jx^j\)</span> gives the identities. The <span class="math" data-tex="\(e_j\)">\(e_j\)</span> determine the polynomial <span class="math" data-tex="\(\prod_t(T-i_t)\)">\(\prod_t(T-i_t)\)</span>, which equals <span class="math" data-tex="\(T^m-e_1T^{m-1}+\dots+(-1)^me_m\)">\(T^m-e_1T^{m-1}+\dots+(-1)^me_m\)</span>. A monic polynomial determines the multiset of its roots: if <span class="math" data-tex="\(\prod_t(T-i_t)=\prod_t(T-i&#x27;_t)\)">\(\prod_t(T-i_t)=\prod_t(T-i&#x27;_t)\)</span>, then <span class="math" data-tex="\(i_1\)">\(i_1\)</span> is a root of the right side, so <span class="math" data-tex="\(i_1=i&#x27;_t\)">\(i_1=i&#x27;_t\)</span> for some <span class="math" data-tex="\(t\)">\(t\)</span>, and the two products remain equal after cancelling this factor. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 3.2</strong> ([OpenAI-US, Proposition 4.3]). In these Fourier coordinates, every row of <span class="math" data-tex="\(\mathcal E_L\)">\(\mathcal E_L\)</span> and of <span class="math" data-tex="\(\mathcal R_L\)">\(\mathcal R_L\)</span> has at most <span class="math" data-tex="\(L\)">\(L\)</span> nonzero entries.</p>
+<p><em>Proof.</em> <em>Port inputs.</em> The upper block of <span class="math" data-tex="\(E_L(z)\)">\(E_L(z)\)</span> and of <span class="math" data-tex="\(R_L(z)\)">\(R_L(z)\)</span> is <span class="math" data-tex="\(I_k\)">\(I_k\)</span>, so an input port <span class="math" data-tex="\(j\)">\(j\)</span> contributes only to the output port <span class="math" data-tex="\(j\)">\(j\)</span>, at frequency <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><em>Internal inputs.</em> The columns of <span class="math" data-tex="\(E_L(z)^*\)">\(E_L(z)^*\)</span> and <span class="math" data-tex="\(R_L(z)^*\)">\(R_L(z)^*\)</span> at an internal coordinate <span class="math" data-tex="\(i\)">\(i\)</span> are those of
+<span class="math math-display" data-tex="\[
+\sum_{\ell=0}^{L-1}C^*(Z^*D^*)^\ell Z^*,\qquad\sum_{\ell=0}^{L-1}BZ(DZ)^\ell .
+\]">\[
+\sum_{\ell=0}^{L-1}C^*(Z^*D^*)^\ell Z^*,\qquad\sum_{\ell=0}^{L-1}BZ(DZ)^\ell .
+\]</span>
+In both, the rightmost factor <span class="math" data-tex="\(Z^*\)">\(Z^*\)</span>, respectively <span class="math" data-tex="\(Z\)">\(Z\)</span>, acts first on the input <span class="math" data-tex="\(i\)">\(i\)</span>. Expanding the products of matrices entry by entry, each term is a coefficient times <span class="math" data-tex="\(\chi_{-\sigma}(z)\)">\(\chi_{-\sigma}(z)\)</span>, respectively <span class="math" data-tex="\(\chi_\sigma(z)\)">\(\chi_\sigma(z)\)</span>, where <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is the sum of the <span class="math" data-tex="\(v_j\)">\(v_j\)</span> over a multiset of between <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> internal indices containing <span class="math" data-tex="\(i\)">\(i\)</span>. For example, in <span class="math" data-tex="\(BZDZ\)">\(BZDZ\)</span> the entry in row <span class="math" data-tex="\(a\)">\(a\)</span> and column <span class="math" data-tex="\(i\)">\(i\)</span> is <span class="math" data-tex="\(\sum_jB_{aj}D_{ji}\chi_{v_j+v_i}(z)\)">\(\sum_jB_{aj}D_{ji}\chi_{v_j+v_i}(z)\)</span>.</p>
+<p><em>Counting.</em> Such a term has nonzero frequency, because the first coordinate of <span class="math" data-tex="\(\pm\sigma\)">\(\pm\sigma\)</span> is <span class="math" data-tex="\(\pm m\)">\(\pm m\)</span> with <span class="math" data-tex="\(1\le m\le L&lt;2^b\)">\(1\le m\le L&lt;2^b\)</span>. Fix a nonzero frequency <span class="math" data-tex="\(w\)">\(w\)</span> and an output port. For <span class="math" data-tex="\(\mathcal E_L\)">\(\mathcal E_L\)</span> replace <span class="math" data-tex="\(w\)">\(w\)</span> by <span class="math" data-tex="\(-w\)">\(-w\)</span>. By Lemma 3.1, all terms of this frequency come from one multiset <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of at most <span class="math" data-tex="\(L\)">\(L\)</span> internal indices, and an input <span class="math" data-tex="\(i\)">\(i\)</span> contributes only through terms whose multiset contains <span class="math" data-tex="\(i\)">\(i\)</span>. So the nonzero entries of the row lie in the at most <span class="math" data-tex="\(L\)">\(L\)</span> columns of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>; the order of the indices in a term changes its coefficient but not this set of columns. At frequency <span class="math" data-tex="\(0\)">\(0\)</span> only port inputs contribute, and a row has the single nonzero column of its port. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>So a frequency remembers an unordered list of internal visits, and it allows only a short list of input indices. The next lesson uses this list to erase the input register coherently.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> For <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, <span class="math" data-tex="\(k=s=1\)">\(k=s=1\)</span> and <span class="math" data-tex="\(V=\left(\begin{smallmatrix}a&amp;b\\c&amp;e\end{smallmatrix}\right)\)">\(V=\left(\begin{smallmatrix}a&amp;b\\c&amp;e\end{smallmatrix}\right)\)</span> unitary with <span class="math" data-tex="\(|e|&lt;1\)">\(|e|&lt;1\)</span>, compute <span class="math" data-tex="\(F\)">\(F\)</span> for <span class="math" data-tex="\(Z=z\in U(1)\)">\(Z=z\in U(1)\)</span>, and check that <span class="math" data-tex="\(|F|=1\)">\(|F|=1\)</span>.</p>
+<p><strong>4.2.</strong> Verify Newton's identities for <span class="math" data-tex="\(m=2\)">\(m=2\)</span>: <span class="math" data-tex="\(e_1=p_1\)">\(e_1=p_1\)</span> and <span class="math" data-tex="\(2e_2=e_1p_1-p_2\)">\(2e_2=e_1p_1-p_2\)</span>.</p>
+<p><strong>4.3.</strong> Show that the multisets <span class="math" data-tex="\(\{1,4\}\)">\(\{1,4\}\)</span> and <span class="math" data-tex="\(\{2,3\}\)">\(\{2,3\}\)</span> have the same first power sum, and find the smallest <span class="math" data-tex="\(j\)">\(j\)</span> for which their power sums differ.</p>
+<p><strong>4.4.</strong> Why does the proof of Proposition 2.1 need <span class="math" data-tex="\(L&lt;2^b\)">\(L&lt;2^b\)</span>?</p>
+<p><strong>4.5.</strong> Show that <span class="math" data-tex="\(\|E_L(z)\|\)">\(\|E_L(z)\|\)</span> can exceed <span class="math" data-tex="\(1\)">\(1\)</span> for a single <span class="math" data-tex="\(z\)">\(z\)</span>: take <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, <span class="math" data-tex="\(k=s=1\)">\(k=s=1\)</span>, <span class="math" data-tex="\(L=1\)">\(L=1\)</span> and <span class="math" data-tex="\(C\ne0\)">\(C\ne0\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> <span class="math" data-tex="\(F=a+bz(1-ez)^{-1}c\)">\(F=a+bz(1-ez)^{-1}c\)</span>, that is, <span class="math" data-tex="\(F=(a-(ae-bc)z)/(1-ez)\)">\(F=(a-(ae-bc)z)/(1-ez)\)</span>. The determinant of <span class="math" data-tex="\(V\)">\(V\)</span> has modulus one, <span class="math" data-tex="\(ae-bc=\det V\)">\(ae-bc=\det V\)</span>, and unitarity gives <span class="math" data-tex="\(a=\overline e\det V\)">\(a=\overline e\det V\)</span>; so <span class="math" data-tex="\(F=\det V\,(\overline e-z)/(1-ez)\)">\(F=\det V\,(\overline e-z)/(1-ez)\)</span>, a Blaschke factor at the point <span class="math" data-tex="\(z\)">\(z\)</span> of the unit circle, of modulus <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>4.2.</strong> For <span class="math" data-tex="\(j=1\)">\(j=1\)</span>: <span class="math" data-tex="\(e_1=e_0p_1=p_1\)">\(e_1=e_0p_1=p_1\)</span>. For <span class="math" data-tex="\(j=2\)">\(j=2\)</span>: <span class="math" data-tex="\(2e_2=e_1p_1-e_0p_2\)">\(2e_2=e_1p_1-e_0p_2\)</span>; with <span class="math" data-tex="\(e_1=i_1+i_2\)">\(e_1=i_1+i_2\)</span>, <span class="math" data-tex="\(p_2=i_1^2+i_2^2\)">\(p_2=i_1^2+i_2^2\)</span>, the right side is <span class="math" data-tex="\((i_1+i_2)^2-i_1^2-i_2^2=2i_1i_2\)">\((i_1+i_2)^2-i_1^2-i_2^2=2i_1i_2\)</span>.</p>
+<p><strong>4.3.</strong> Both have <span class="math" data-tex="\(p_1=5\)">\(p_1=5\)</span>; <span class="math" data-tex="\(p_2=17\)">\(p_2=17\)</span> and <span class="math" data-tex="\(13\)">\(13\)</span> differ, so <span class="math" data-tex="\(j=2\)">\(j=2\)</span>.</p>
+<p><strong>4.4.</strong> The averaging over the roots of unity of order <span class="math" data-tex="\(2^b\)">\(2^b\)</span> removes exactly the powers <span class="math" data-tex="\(\omega^p\)">\(\omega^p\)</span> with <span class="math" data-tex="\(2^b\nmid p\)">\(2^b\nmid p\)</span>; the degrees <span class="math" data-tex="\(1,\dots,L\)">\(1,\dots,L\)</span> and the differences <span class="math" data-tex="\(\ell-\ell&#x27;\neq0\)">\(\ell-\ell&#x27;\neq0\)</span> must not be multiples of <span class="math" data-tex="\(2^b\)">\(2^b\)</span>.</p>
+<p><strong>4.5.</strong> For <span class="math" data-tex="\(L=1\)">\(L=1\)</span>, <span class="math" data-tex="\(E_L(z)\)">\(E_L(z)\)</span> is the column <span class="math" data-tex="\((1,zc)\)">\((1,zc)\)</span>, of norm <span class="math" data-tex="\(\sqrt{1+|c|^2}&gt;1\)">\(\sqrt{1+|c|^2}&gt;1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-US] OpenAI, <em>Polynomial-Time Unitary Synthesis from a Boolean Oracle</em>, OpenAI Math Release preprint, 5 October 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

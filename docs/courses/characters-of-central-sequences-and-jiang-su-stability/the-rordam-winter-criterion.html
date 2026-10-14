@@ -1,0 +1,513 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Rørdam–Winter criterion</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Characters of central sequences and Jiang–Su stability)</a><a href="cuntz-comparison-and-order-zero-maps.html">Previous lesson</a><a href="labels-that-survive-representations.html">Next lesson</a><a href="src/the-rordam-winter-criterion.md">Editable source</a></nav><main><article><h1 id="the-rørdam-winter-criterion">The Rørdam–Winter criterion</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The finite theorem of <a href="central-sequences-and-the-character-criterion.html">Central sequences and the character criterion</a> (Theorem 2.2 there) asks for a unital homomorphism from the dimension-drop algebra <span class="math" data-tex="\(I(2,3)\)">\(I(2,3)\)</span>. This lesson proves a criterion of Rørdam and Winter for the existence of such a homomorphism (Proposition 1.1). Its hypothesis is a pair of orthogonal positive elements <span class="math" data-tex="\(a_1=w^*w\)">\(a_1=w^*w\)</span> and <span class="math" data-tex="\(a_2=ww^*\)">\(a_2=ww^*\)</span>, together with a Cuntz comparison: the remainder <span class="math" data-tex="\(1-a_1-a_2\)">\(1-a_1-a_2\)</span> is dominated by a cut-down of <span class="math" data-tex="\(a_1\)">\(a_1\)</span>. The proof constructs maps on <span class="math" data-tex="\(M_3\)">\(M_3\)</span> and <span class="math" data-tex="\(M_2\)">\(M_2\)</span> as in Lemma 4.1 of <a href="cuntz-comparison-and-order-zero-maps.html">Cuntz comparison and order-zero maps</a>. It works in every unital C*-algebra; support projections and polar decompositions are taken in the bidual.</p>
+<ul>
+<li>The criterion (Proposition 1.1).</li>
+<li>Exact relations (Lemmas 2.1 to 2.3).</li>
+<li>Two orthogonal copies of the defect (Lemmas 3.1 and 3.2).</li>
+<li>Section algebras and a unitary in the bidual (Lemmas 4.1 to 4.3).</li>
+<li>The weighted flip and the proof (Lemmas 5.1 to 5.4).</li>
+</ul>
+<p>The lesson follows [OpenAI-KRC, Proposition 2.1 and Section 3]. The notation is that of <a href="cuntz-comparison-and-order-zero-maps.html">Cuntz comparison and order-zero maps</a>: <span class="math" data-tex="\(B\)">\(B\)</span> is a unital C*-algebra, <span class="math" data-tex="\(B^{**}\)">\(B^{**}\)</span> its universal enveloping von Neumann algebra acting on the Hilbert space <span class="math" data-tex="\(H_u\)">\(H_u\)</span> of the universal representation, <span class="math" data-tex="\(s(T)\)">\(s(T)\)</span> the support projection of a positive <span class="math" data-tex="\(T\in B^{**}\)">\(T\in B^{**}\)</span>, and <span class="math" data-tex="\(\operatorname{Her}(b)\)">\(\operatorname{Her}(b)\)</span> the norm closure of <span class="math" data-tex="\(b^{1/2}Bb^{1/2}\)">\(b^{1/2}Bb^{1/2}\)</span>, a C*-subalgebra of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><em>Facts used.</em> <span class="math" data-tex="\(B^{**}\)">\(B^{**}\)</span> is the closure of <span class="math" data-tex="\(B\)">\(B\)</span> in the strong operator topology of <span class="math" data-tex="\(B(H_u)\)">\(B(H_u)\)</span>, because <span class="math" data-tex="\(B\)">\(B\)</span> contains the identity operator (<a href="../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html">The double commutant theorem</a>, Theorem 4.4); so a strong limit of elements of <span class="math" data-tex="\(B\)">\(B\)</span> lies in <span class="math" data-tex="\(B^{**}\)">\(B^{**}\)</span>. Every <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism between C*-algebras is contractive, and the continuous functional calculus commutes with <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphisms for functions vanishing at <span class="math" data-tex="\(0\)">\(0\)</span> (<a href="../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">Order, local units and quotients of C*-algebras</a>, Theorem 4.2 and Corollary 5.4). If <span class="math" data-tex="\(x\in B^{**}\)">\(x\in B^{**}\)</span> commutes with every term of a sequence converging strongly to <span class="math" data-tex="\(y\)">\(y\)</span>, then <span class="math" data-tex="\(x\)">\(x\)</span> commutes with <span class="math" data-tex="\(y\)">\(y\)</span>; in particular <span class="math" data-tex="\(s(T)\)">\(s(T)\)</span>, the strong limit of <span class="math" data-tex="\(T(T+\tau)^{-1}\)">\(T(T+\tau)^{-1}\)</span>, commutes with every element commuting with <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<h2 id="1-the-criterion">1. The criterion</h2>
+<p><strong>Proposition 1.1</strong> (Rørdam–Winter; [RW, Proposition 5.1, (ii)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(iv), with <span class="math" data-tex="\(n=2\)">\(n=2\)</span>]; [OpenAI-KRC, Proposition 2.1]). Let <span class="math" data-tex="\(B\)">\(B\)</span> be a unital C*-algebra and <span class="math" data-tex="\(a_1,a_2\in B\)">\(a_1,a_2\in B\)</span> orthogonal positive contractions with <span class="math" data-tex="\(a_1=w^*w\)">\(a_1=w^*w\)</span> and <span class="math" data-tex="\(a_2=ww^*\)">\(a_2=ww^*\)</span> for some <span class="math" data-tex="\(w\in B\)">\(w\in B\)</span>. If, for some <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+1_B-a_1-a_2\precsim(a_1-\varepsilon)_+,
+\]">\[
+1_B-a_1-a_2\precsim(a_1-\varepsilon)_+,
+\]</span>
+then there is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(I(2,3)\to B\)">\(I(2,3)\to B\)</span>.</p>
+<p>Rørdam and Winter state their Proposition 5.1 for algebras of stable rank one and note that this hypothesis is used only in another implication; the proof below uses no such hypothesis.</p>
+<p>Since <span class="math" data-tex="\(a_1a_2=0=a_2a_1\)">\(a_1a_2=0=a_2a_1\)</span>, the elements <span class="math" data-tex="\(1,a_1,a_2\)">\(1,a_1,a_2\)</span> generate a commutative C*-algebra, which is <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> for a compact space <span class="math" data-tex="\(X\)">\(X\)</span> by Gelfand's theorem. There <span class="math" data-tex="\(a_1,a_2\)">\(a_1,a_2\)</span> are functions with values in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> whose product vanishes, so at each point at most one of them is nonzero. Hence <span class="math" data-tex="\(a_1+a_2\le1\)">\(a_1+a_2\le1\)</span>, and
+<span class="math math-display" data-tex="\[
+c=1-a_1-a_2
+\]">\[
+c=1-a_1-a_2
+\]</span>
+is positive. The same pointwise reasoning is used below for continuous functions of <span class="math" data-tex="\(a_1\)">\(a_1\)</span> and <span class="math" data-tex="\(a_2\)">\(a_2\)</span>.</p>
+<p><em>The idea of the proof.</em> The elements <span class="math" data-tex="\(s_1,s_2\)">\(s_1,s_2\)</span> of Lemma 2.2 behave like the two diagonal positions of a copy of <span class="math" data-tex="\(M_2\)">\(M_2\)</span>. Their map <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(M_2\)">\(M_2\)</span> has the unit <span class="math" data-tex="\(d=1-a\)">\(d=1-a\)</span>, where the <em>defect</em> <span class="math" data-tex="\(a\)">\(a\)</span> is a cut-down of <span class="math" data-tex="\(c\)">\(c\)</span>. The comparison moves the defect, through an element <span class="math" data-tex="\(v\)">\(v\)</span>, under <span class="math" data-tex="\(s_1\)">\(s_1\)</span>, and two copies <span class="math" data-tex="\(r_1,r_2\)">\(r_1,r_2\)</span> of the defect appear inside the range of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> (Lemma 3.1). The defect and its two copies give three orthogonal positions of an <span class="math" data-tex="\(M_3\)">\(M_3\)</span>, hence a map <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on <span class="math" data-tex="\(M_3\)">\(M_3\)</span>; the map <span class="math" data-tex="\(\beta\)">\(\beta\)</span> on <span class="math" data-tex="\(M_2\)">\(M_2\)</span> is <span class="math" data-tex="\(\rho\)">\(\rho\)</span> cut down to the rest <span class="math" data-tex="\(1-\alpha(1)\)">\(1-\alpha(1)\)</span>. A path of unitaries from <span class="math" data-tex="\(1\)">\(1\)</span> to the flip of <span class="math" data-tex="\(M_2\otimes M_2\)">\(M_2\otimes M_2\)</span>, applied where both maps are partly present, makes their ranges commute (Lemma 5.4).</p>
+<h2 id="2-exact-relations">2. Exact relations</h2>
+<p>Fix the data of Proposition 1.1. We may assume <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>. Indeed, for <span class="math" data-tex="\(0&lt;\varepsilon&#x27;&lt;\varepsilon\)">\(0&lt;\varepsilon&#x27;&lt;\varepsilon\)</span>, the element <span class="math" data-tex="\(b=(a_1-\varepsilon&#x27;)_+\)">\(b=(a_1-\varepsilon&#x27;)_+\)</span> satisfies <span class="math" data-tex="\((b-(\varepsilon-\varepsilon&#x27;))_+=(a_1-\varepsilon)_+\)">\((b-(\varepsilon-\varepsilon&#x27;))_+=(a_1-\varepsilon)_+\)</span>. With the continuous function <span class="math" data-tex="\(k\)">\(k\)</span> given by <span class="math" data-tex="\(k(t)=(t-\varepsilon+\varepsilon&#x27;)_+/t\)">\(k(t)=(t-\varepsilon+\varepsilon&#x27;)_+/t\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-tex="\(k(0)=0\)">\(k(0)=0\)</span>, the element <span class="math" data-tex="\(x=k(b)^{1/2}\)">\(x=k(b)^{1/2}\)</span> satisfies <span class="math" data-tex="\(x^*bx=(a_1-\varepsilon)_+\)">\(x^*bx=(a_1-\varepsilon)_+\)</span>. So <span class="math" data-tex="\(c\precsim(a_1-\varepsilon&#x27;)_+\)">\(c\precsim(a_1-\varepsilon&#x27;)_+\)</span> by Lemma 1.2(1) of <a href="cuntz-comparison-and-order-zero-maps.html">Cuntz comparison and order-zero maps</a>.</p>
+<p>Define continuous functions on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(t)=\min\{t/\varepsilon,1\},\\
+q(t)=\varepsilon^{-1/2}\ (t\le\varepsilon),\\
+q(t)=t^{-1/2}\ (t\ge\varepsilon).
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(t)=\min\{t/\varepsilon,1\},\\
+q(t)=\varepsilon^{-1/2}\ (t\le\varepsilon),\\
+q(t)=t^{-1/2}\ (t\ge\varepsilon).
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, <span class="math" data-tex="\(f=1\)">\(f=1\)</span> on <span class="math" data-tex="\([\varepsilon,\infty)\)">\([\varepsilon,\infty)\)</span>, and <span class="math" data-tex="\(tq(t)^2=f(t)\)">\(tq(t)^2=f(t)\)</span> for all <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (intertwining). For every continuous function <span class="math" data-tex="\(r\)">\(r\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w^*r(a_2)=r(a_1)w^*,\\
+wr(a_1)=r(a_2)w,\\
+w^*r(a_1)=r(0)w^*,\\
+wr(a_2)=r(0)w.
+\end{gathered}
+\]">\[
+\begin{gathered}
+w^*r(a_2)=r(a_1)w^*,\\
+wr(a_1)=r(a_2)w,\\
+w^*r(a_1)=r(0)w^*,\\
+wr(a_2)=r(0)w.
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> <span class="math" data-tex="\(w^*a_2=w^*ww^*=a_1w^*\)">\(w^*a_2=w^*ww^*=a_1w^*\)</span>, so <span class="math" data-tex="\(w^*P(a_2)=P(a_1)w^*\)">\(w^*P(a_2)=P(a_1)w^*\)</span> for polynomials <span class="math" data-tex="\(P\)">\(P\)</span>, and for continuous <span class="math" data-tex="\(r\)">\(r\)</span> by uniform approximation on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, which contains both spectra. The second identity is the adjoint of the first, applied to <span class="math" data-tex="\(\bar r\)">\(\bar r\)</span>. Next, <span class="math" data-tex="\(\|w^*a_1\|^2=\|a_1ww^*a_1\|=\|a_1a_2a_1\|=0\)">\(\|w^*a_1\|^2=\|a_1ww^*a_1\|=\|a_1a_2a_1\|=0\)</span>, so <span class="math" data-tex="\(w^*a_1=0\)">\(w^*a_1=0\)</span> and <span class="math" data-tex="\(w^*P(a_1)=P(0)w^*\)">\(w^*P(a_1)=P(0)w^*\)</span> for polynomials. Similarly <span class="math" data-tex="\(\|wa_2\|^2=\|a_2w^*wa_2\|=\|a_2a_1a_2\|=0\)">\(\|wa_2\|^2=\|a_2w^*wa_2\|=\|a_2a_1a_2\|=0\)</span>. Approximate again. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 2.2</strong> (exact relations). Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+s_1=f(a_1)^{1/2},\qquad s_2=w^*q(a_2),\\
+d=f(a_1)+f(a_2),\qquad a=1-d.
+\end{gathered}
+\]">\[
+\begin{gathered}
+s_1=f(a_1)^{1/2},\qquad s_2=w^*q(a_2),\\
+d=f(a_1)+f(a_2),\qquad a=1-d.
+\end{gathered}
+\]</span>
+Then:</p>
+<ol>
+<li><span class="math" data-tex="\(s_is_j^*=\delta_{ij}f(a_1)\)">\(s_is_j^*=\delta_{ij}f(a_1)\)</span> for <span class="math" data-tex="\(i,j\in\{1,2\}\)">\(i,j\in\{1,2\}\)</span>, and <span class="math" data-tex="\(s_1^*s_1+s_2^*s_2=d\)">\(s_1^*s_1+s_2^*s_2=d\)</span>;</li>
+<li><span class="math" data-tex="\(0\le d\le1\)">\(0\le d\le1\)</span> and <span class="math" data-tex="\(a=\varepsilon^{-1}(c-(1-\varepsilon))_+\)">\(a=\varepsilon^{-1}(c-(1-\varepsilon))_+\)</span>;</li>
+<li><span class="math" data-tex="\(s_id=ds_i=f(a_1)s_i\)">\(s_id=ds_i=f(a_1)s_i\)</span> for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>; hence <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> commute with <span class="math" data-tex="\(s_1,s_2,s_1^*,s_2^*\)">\(s_1,s_2,s_1^*,s_2^*\)</span>;</li>
+<li>there is <span class="math" data-tex="\(v\in B\)">\(v\in B\)</span> with <span class="math" data-tex="\(v^*v=a\)">\(v^*v=a\)</span>, <span class="math" data-tex="\(s_1v=v\)">\(s_1v=v\)</span>, <span class="math" data-tex="\(s_2v=0\)">\(s_2v=0\)</span>, <span class="math" data-tex="\(dv=v\)">\(dv=v\)</span> and <span class="math" data-tex="\(av=0\)">\(av=0\)</span>.</li>
+</ol>
+<p><em>Proof.</em> By Lemma 2.1, <span class="math" data-tex="\(s_2=q(a_1)w^*\)">\(s_2=q(a_1)w^*\)</span> and <span class="math" data-tex="\(s_2^*=wq(a_1)\)">\(s_2^*=wq(a_1)\)</span>.</p>
+<p>(1) <span class="math" data-tex="\(s_1s_1^*=f(a_1)\)">\(s_1s_1^*=f(a_1)\)</span> and <span class="math" data-tex="\(s_2s_2^*=q(a_1)w^*wq(a_1)\)">\(s_2s_2^*=q(a_1)w^*wq(a_1)\)</span>, which is <span class="math" data-tex="\(q(a_1)a_1q(a_1)=f(a_1)\)">\(q(a_1)a_1q(a_1)=f(a_1)\)</span>. Next, <span class="math" data-tex="\(f(a_1)^{1/2}w=(w^*f(a_1)^{1/2})^*=0\)">\(f(a_1)^{1/2}w=(w^*f(a_1)^{1/2})^*=0\)</span> by Lemma 2.1, since <span class="math" data-tex="\(f^{1/2}\)">\(f^{1/2}\)</span> vanishes at <span class="math" data-tex="\(0\)">\(0\)</span>; so <span class="math" data-tex="\(s_1s_2^*=f(a_1)^{1/2}wq(a_1)=0\)">\(s_1s_2^*=f(a_1)^{1/2}wq(a_1)=0\)</span>, and <span class="math" data-tex="\(s_2s_1^*=(s_1s_2^*)^*=0\)">\(s_2s_1^*=(s_1s_2^*)^*=0\)</span>. Finally <span class="math" data-tex="\(s_1^*s_1=f(a_1)\)">\(s_1^*s_1=f(a_1)\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+s_2^*s_2&amp;=wq(a_1)^2w^*\\
+&amp;=q(a_2)^2ww^*=f(a_2).
+\end{aligned}
+\]">\[
+\begin{aligned}
+s_2^*s_2&amp;=wq(a_1)^2w^*\\
+&amp;=q(a_2)^2ww^*=f(a_2).
+\end{aligned}
+\]</span></p>
+<p>(2) Compute pointwise in <span class="math" data-tex="\(C^*(1,a_1,a_2)\)">\(C^*(1,a_1,a_2)\)</span>. Where <span class="math" data-tex="\(a_2=0\)">\(a_2=0\)</span>, <span class="math" data-tex="\(d=f(a_1)\le1\)">\(d=f(a_1)\le1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+1-d&amp;=\varepsilon^{-1}(\varepsilon-a_1)_+\\
+&amp;=\varepsilon^{-1}(c-(1-\varepsilon))_+,
+\end{aligned}
+\]">\[
+\begin{aligned}
+1-d&amp;=\varepsilon^{-1}(\varepsilon-a_1)_+\\
+&amp;=\varepsilon^{-1}(c-(1-\varepsilon))_+,
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(c=1-a_1\)">\(c=1-a_1\)</span> there. The points where <span class="math" data-tex="\(a_1=0\)">\(a_1=0\)</span> are treated symmetrically.</p>
+<p>(3) <span class="math" data-tex="\(f(a_1)^{1/2}f(a_2)=0\)">\(f(a_1)^{1/2}f(a_2)=0\)</span>, since both functions vanish at <span class="math" data-tex="\(0\)">\(0\)</span>; so <span class="math" data-tex="\(s_1d=ds_1=f(a_1)s_1\)">\(s_1d=ds_1=f(a_1)s_1\)</span>. For <span class="math" data-tex="\(s_2\)">\(s_2\)</span>: by Lemma 2.1, <span class="math" data-tex="\(f(a_2)w^*=(wf(a_2))^*=0\)">\(f(a_2)w^*=(wf(a_2))^*=0\)</span> and <span class="math" data-tex="\(w^*f(a_1)=0\)">\(w^*f(a_1)=0\)</span>. Hence <span class="math" data-tex="\(ds_2=f(a_1)s_2\)">\(ds_2=f(a_1)s_2\)</span>, and, since the first term below vanishes,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+s_2d&amp;=q(a_1)w^*f(a_1)+w^*q(a_2)f(a_2)\\
+&amp;=w^*f(a_2)q(a_2)=f(a_1)w^*q(a_2)\\
+&amp;=f(a_1)s_2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+s_2d&amp;=q(a_1)w^*f(a_1)+w^*q(a_2)f(a_2)\\
+&amp;=w^*f(a_2)q(a_2)=f(a_1)w^*q(a_2)\\
+&amp;=f(a_1)s_2 .
+\end{aligned}
+\]</span>
+Taking adjoints, <span class="math" data-tex="\(d\)">\(d\)</span> commutes with <span class="math" data-tex="\(s_i^*\)">\(s_i^*\)</span> as well, and so does <span class="math" data-tex="\(a=1-d\)">\(a=1-d\)</span>.</p>
+<p>(4) Apply the exact cut (<a href="cuntz-comparison-and-order-zero-maps.html">Cuntz comparison and order-zero maps</a>, Lemma 2.1) to <span class="math" data-tex="\(c\precsim(a_1-\varepsilon)_+\)">\(c\precsim(a_1-\varepsilon)_+\)</span> with <span class="math" data-tex="\(\delta=1-\varepsilon\)">\(\delta=1-\varepsilon\)</span>. It gives <span class="math" data-tex="\(z\in B\)">\(z\in B\)</span> with <span class="math" data-tex="\(zz^*\in\operatorname{Her}((a_1-\varepsilon)_+)\)">\(zz^*\in\operatorname{Her}((a_1-\varepsilon)_+)\)</span> and
+<span class="math math-display" data-tex="\[
+z^*z=(c-(1-\varepsilon))_+=\varepsilon a .
+\]">\[
+z^*z=(c-(1-\varepsilon))_+=\varepsilon a .
+\]</span>
+Put <span class="math" data-tex="\(v=\varepsilon^{-1/2}z\)">\(v=\varepsilon^{-1/2}z\)</span>, so <span class="math" data-tex="\(v^*v=a\)">\(v^*v=a\)</span>. As <span class="math" data-tex="\(f^{1/2}=1\)">\(f^{1/2}=1\)</span> on <span class="math" data-tex="\([\varepsilon,\infty)\)">\([\varepsilon,\infty)\)</span>, <span class="math" data-tex="\(s_1(a_1-\varepsilon)_+^{1/2}=(a_1-\varepsilon)_+^{1/2}\)">\(s_1(a_1-\varepsilon)_+^{1/2}=(a_1-\varepsilon)_+^{1/2}\)</span>; hence <span class="math" data-tex="\(s_1y=y\)">\(s_1y=y\)</span> for all <span class="math" data-tex="\(y\in\operatorname{Her}((a_1-\varepsilon)_+)\)">\(y\in\operatorname{Her}((a_1-\varepsilon)_+)\)</span>, and in particular <span class="math" data-tex="\(s_1vv^*=vv^*\)">\(s_1vv^*=vv^*\)</span>. Then <span class="math" data-tex="\((1-s_1)vv^*(1-s_1)=0\)">\((1-s_1)vv^*(1-s_1)=0\)</span>, so <span class="math" data-tex="\((1-s_1)v=0\)">\((1-s_1)v=0\)</span>. Next <span class="math" data-tex="\(s_2v=s_2s_1^*v=0\)">\(s_2v=s_2s_1^*v=0\)</span> by (1), <span class="math" data-tex="\(dv=s_1^2v+s_2^*s_2v=v\)">\(dv=s_1^2v+s_2^*s_2v=v\)</span>, and <span class="math" data-tex="\(av=0\)">\(av=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 2.3</strong> (the map <span class="math" data-tex="\(\rho\)">\(\rho\)</span>). The family <span class="math" data-tex="\((s_1,s_2)\)">\((s_1,s_2)\)</span> satisfies the hypotheses of Lemma 3.1 of <a href="cuntz-comparison-and-order-zero-maps.html">Cuntz comparison and order-zero maps</a> with <span class="math" data-tex="\(h=f(a_1)\)">\(h=f(a_1)\)</span>. Its Gram map <span class="math" data-tex="\(\rho\colon M_2\to B\)">\(\rho\colon M_2\to B\)</span>, <span class="math" data-tex="\(\rho(e_{ij})=s_i^*s_j\)">\(\rho(e_{ij})=s_i^*s_j\)</span>, has <span class="math" data-tex="\(\rho(1_2)=d\)">\(\rho(1_2)=d\)</span>, and its supporting homomorphism <span class="math" data-tex="\(\sigma\colon M_2\to B^{**}\)">\(\sigma\colon M_2\to B^{**}\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho(x)=d\sigma(x)=\sigma(x)d,\\
+\sigma(1_2)=p:=s(d).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\rho(x)=d\sigma(x)=\sigma(x)d,\\
+\sigma(1_2)=p:=s(d).
+\end{gathered}
+\]</span>
+Every continuous function of <span class="math" data-tex="\(d\)">\(d\)</span> commutes with <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span> and with <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\((1-p)g(d)=g(0)(1-p)\)">\((1-p)g(d)=g(0)(1-p)\)</span> for every <span class="math" data-tex="\(g\in C([0,1])\)">\(g\in C([0,1])\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\|s_i\|^2=\|s_is_i^*\|=\|f(a_1)\|\le1\)">\(\|s_i\|^2=\|s_is_i^*\|=\|f(a_1)\|\le1\)</span>, and Lemma 2.2(1) gives the relations <span class="math" data-tex="\(s_is_j^*=\delta_{ij}f(a_1)\)">\(s_is_j^*=\delta_{ij}f(a_1)\)</span>. Lemma 3.1 of the previous lesson gives <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and the displayed identities, with <span class="math" data-tex="\(\rho(1_2)=s_1^*s_1+s_2^*s_2=d\)">\(\rho(1_2)=s_1^*s_1+s_2^*s_2=d\)</span>. So <span class="math" data-tex="\(d\)">\(d\)</span> commutes with <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span>, and so do polynomials in <span class="math" data-tex="\(d\)">\(d\)</span> and their norm limits; <span class="math" data-tex="\(p\)">\(p\)</span> commutes with them as a strong limit of functions of <span class="math" data-tex="\(d\)">\(d\)</span>. Since <span class="math" data-tex="\(p\)">\(p\)</span> is the projection onto the closure of the range of <span class="math" data-tex="\(d\)">\(d\)</span>, <span class="math" data-tex="\((1-p)d=0\)">\((1-p)d=0\)</span>, so <span class="math" data-tex="\((1-p)P(d)=P(0)(1-p)\)">\((1-p)P(d)=P(0)(1-p)\)</span> for polynomials <span class="math" data-tex="\(P\)">\(P\)</span>, and the last claim follows by approximation. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-two-orthogonal-copies-of-the-defect">3. Two orthogonal copies of the defect</h2>
+<p>Let <span class="math" data-tex="\(v=ua^{1/2}\)">\(v=ua^{1/2}\)</span> be the polar decomposition of <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(B^{**}\)">\(B^{**}\)</span>, so <span class="math" data-tex="\(|v|=(v^*v)^{1/2}=a^{1/2}\)">\(|v|=(v^*v)^{1/2}=a^{1/2}\)</span>, and put <span class="math" data-tex="\(e=u^*u=s(a)\)">\(e=u^*u=s(a)\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> Put <span class="math" data-tex="\(r_i=s_i^*u\in B^{**}\)">\(r_i=s_i^*u\in B^{**}\)</span> for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span> and <span class="math" data-tex="\(R=r_1r_1^*+r_2r_2^*\)">\(R=r_1r_1^*+r_2r_2^*\)</span>. Then:</p>
+<ol>
+<li><span class="math" data-tex="\(u=ue\)">\(u=ue\)</span>, <span class="math" data-tex="\(s_1u=du=u\)">\(s_1u=du=u\)</span> and <span class="math" data-tex="\(au=eu=0\)">\(au=eu=0\)</span>; <span class="math" data-tex="\(e\)">\(e\)</span> commutes with <span class="math" data-tex="\(s_i\)">\(s_i\)</span>, <span class="math" data-tex="\(s_i^*\)">\(s_i^*\)</span>, <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span>;</li>
+<li><span class="math" data-tex="\(r_i=\sigma(e_{i1})u\)">\(r_i=\sigma(e_{i1})u\)</span> and <span class="math" data-tex="\(\sigma(e_{jk})r_i=\delta_{ki}r_j\)">\(\sigma(e_{jk})r_i=\delta_{ki}r_j\)</span>;</li>
+<li><span class="math" data-tex="\(r_i^*r_j=\delta_{ij}e\)">\(r_i^*r_j=\delta_{ij}e\)</span>, <span class="math" data-tex="\(r_ie=r_i\)">\(r_ie=r_i\)</span>, <span class="math" data-tex="\(dr_i=pr_i=r_i\)">\(dr_i=pr_i=r_i\)</span> and <span class="math" data-tex="\(er_i=0\)">\(er_i=0\)</span>;</li>
+<li><span class="math" data-tex="\(R\)">\(R\)</span> is a projection with <span class="math" data-tex="\(R\le p\)">\(R\le p\)</span> and <span class="math" data-tex="\(Re=eR=0\)">\(Re=eR=0\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> commutes with <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) <span class="math" data-tex="\(u=ue\)">\(u=ue\)</span> holds for the partial isometry of a polar decomposition. From <span class="math" data-tex="\(s_1v=v\)">\(s_1v=v\)</span>, <span class="math" data-tex="\((s_1u-u)a^{1/2}=0\)">\((s_1u-u)a^{1/2}=0\)</span>, so <span class="math" data-tex="\(s_1u-u\)">\(s_1u-u\)</span> vanishes on the range of <span class="math" data-tex="\(a^{1/2}\)">\(a^{1/2}\)</span>, which is dense in the range of <span class="math" data-tex="\(e\)">\(e\)</span>; with <span class="math" data-tex="\(u=ue\)">\(u=ue\)</span> this gives <span class="math" data-tex="\(s_1u=u\)">\(s_1u=u\)</span>. In the same way <span class="math" data-tex="\(dv=v\)">\(dv=v\)</span> and <span class="math" data-tex="\(av=0\)">\(av=0\)</span> give <span class="math" data-tex="\(du=u\)">\(du=u\)</span> and <span class="math" data-tex="\(au=0\)">\(au=0\)</span>. As <span class="math" data-tex="\(e\)">\(e\)</span> is the strong limit of <span class="math" data-tex="\(a(a+\tau)^{-1}\)">\(a(a+\tau)^{-1}\)</span>, <span class="math" data-tex="\(eu=0\)">\(eu=0\)</span>, and <span class="math" data-tex="\(e\)">\(e\)</span> commutes with every element commuting with <span class="math" data-tex="\(a\)">\(a\)</span>: with <span class="math" data-tex="\(s_i,s_i^*\)">\(s_i,s_i^*\)</span> (Lemma 2.2(3)), with <span class="math" data-tex="\(d\)">\(d\)</span>, and with <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span> (Lemma 2.3).</p>
+<p>(2) By (1) and Lemma 2.3, <span class="math" data-tex="\(r_i=s_i^*s_1u=\rho(e_{i1})u\)">\(r_i=s_i^*s_1u=\rho(e_{i1})u\)</span>, and this is <span class="math" data-tex="\(\sigma(e_{i1})du=\sigma(e_{i1})u\)">\(\sigma(e_{i1})du=\sigma(e_{i1})u\)</span>. Then <span class="math" data-tex="\(\sigma(e_{jk})r_i=\sigma(e_{jk}e_{i1})u=\delta_{ki}r_j\)">\(\sigma(e_{jk})r_i=\sigma(e_{jk}e_{i1})u=\delta_{ki}r_j\)</span>.</p>
+<p>(3) <span class="math" data-tex="\(r_i^*r_j=u^*s_is_j^*u=\delta_{ij}u^*s_1^2u\)">\(r_i^*r_j=u^*s_is_j^*u=\delta_{ij}u^*s_1^2u\)</span>, which is <span class="math" data-tex="\(\delta_{ij}u^*u=\delta_{ij}e\)">\(\delta_{ij}u^*u=\delta_{ij}e\)</span>, and <span class="math" data-tex="\(r_ie=s_i^*ue=r_i\)">\(r_ie=s_i^*ue=r_i\)</span>. Next <span class="math" data-tex="\(dr_i=s_i^*du=r_i\)">\(dr_i=s_i^*du=r_i\)</span>, and <span class="math" data-tex="\((1-p)r_i=(1-p)dr_i=0\)">\((1-p)r_i=(1-p)dr_i=0\)</span>. Finally <span class="math" data-tex="\(er_i=s_i^*eu=0\)">\(er_i=s_i^*eu=0\)</span>.</p>
+<p>(4) By (3), <span class="math" data-tex="\((r_ir_i^*)^2=r_ier_i^*=r_ir_i^*\)">\((r_ir_i^*)^2=r_ier_i^*=r_ir_i^*\)</span>, and <span class="math" data-tex="\(r_1r_1^*r_2r_2^*=r_1(r_1^*r_2)r_2^*=0\)">\(r_1r_1^*r_2r_2^*=r_1(r_1^*r_2)r_2^*=0\)</span>; so <span class="math" data-tex="\(R\)">\(R\)</span> is a projection. <span class="math" data-tex="\(pR=R\)">\(pR=R\)</span> by (3), so <span class="math" data-tex="\(R\le p\)">\(R\le p\)</span>. <span class="math" data-tex="\(eR=\sum_ier_ir_i^*=0\)">\(eR=\sum_ier_ir_i^*=0\)</span> and <span class="math" data-tex="\(Re=(eR)^*=0\)">\(Re=(eR)^*=0\)</span>. By (2),
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma(e_{jk})R=\sum_i\sigma(e_{jk})r_ir_i^*=r_jr_k^*,\\
+R\sigma(e_{jk})=\sum_ir_i\bigl(\sigma(e_{kj})r_i\bigr)^*=r_jr_k^* .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sigma(e_{jk})R=\sum_i\sigma(e_{jk})r_ir_i^*=r_jr_k^*,\\
+R\sigma(e_{jk})=\sum_ir_i\bigl(\sigma(e_{kj})r_i\bigr)^*=r_jr_k^* .
+\end{gathered}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 3.2</strong> (the copy map). Every <span class="math" data-tex="\(b\in\operatorname{Her}(a)\)">\(b\in\operatorname{Her}(a)\)</span> satisfies <span class="math" data-tex="\(eb=be=b\)">\(eb=be=b\)</span>, and <span class="math" data-tex="\(ubu^*\)">\(ubu^*\)</span> and <span class="math" data-tex="\(ub\)">\(ub\)</span> belong to <span class="math" data-tex="\(B\)">\(B\)</span>. The formula
+<span class="math math-display" data-tex="\[
+\varphi(b)=r_1br_1^*+r_2br_2^*
+\]">\[
+\varphi(b)=r_1br_1^*+r_2br_2^*
+\]</span>
+defines a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(\varphi\colon\operatorname{Her}(a)\to B\)">\(\varphi\colon\operatorname{Her}(a)\to B\)</span>, and for <span class="math" data-tex="\(b,b&#x27;\in\operatorname{Her}(a)\)">\(b,b&#x27;\in\operatorname{Her}(a)\)</span> and <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(\varphi(b)r_i=r_ib\)">\(\varphi(b)r_i=r_ib\)</span>;</li>
+<li><span class="math" data-tex="\(d\varphi(b)=\varphi(b)d=\varphi(b)\)">\(d\varphi(b)=\varphi(b)d=\varphi(b)\)</span> and <span class="math" data-tex="\(R\varphi(b)=\varphi(b)R=\varphi(b)\)">\(R\varphi(b)=\varphi(b)R=\varphi(b)\)</span>;</li>
+<li><span class="math" data-tex="\(\varphi(b)\)">\(\varphi(b)\)</span> commutes with <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span>;</li>
+<li><span class="math" data-tex="\(\varphi(b)b&#x27;=b&#x27;\varphi(b)=0\)">\(\varphi(b)b&#x27;=b&#x27;\varphi(b)=0\)</span>.</li>
+</ol>
+<p><em>Proof.</em> <span class="math" data-tex="\(ea^{1/2}=a^{1/2}=a^{1/2}e\)">\(ea^{1/2}=a^{1/2}=a^{1/2}e\)</span>, so <span class="math" data-tex="\(eb=be=b\)">\(eb=be=b\)</span> for <span class="math" data-tex="\(b\in a^{1/2}Ba^{1/2}\)">\(b\in a^{1/2}Ba^{1/2}\)</span>, and by continuity on <span class="math" data-tex="\(\operatorname{Her}(a)\)">\(\operatorname{Her}(a)\)</span>. For <span class="math" data-tex="\(b=a^{1/2}b_0a^{1/2}\)">\(b=a^{1/2}b_0a^{1/2}\)</span> with <span class="math" data-tex="\(b_0\in B\)">\(b_0\in B\)</span>, <span class="math" data-tex="\(ubu^*=vb_0v^*\)">\(ubu^*=vb_0v^*\)</span> and <span class="math" data-tex="\(ub=vb_0a^{1/2}\)">\(ub=vb_0a^{1/2}\)</span> lie in <span class="math" data-tex="\(B\)">\(B\)</span>; by continuity this holds on <span class="math" data-tex="\(\operatorname{Her}(a)\)">\(\operatorname{Her}(a)\)</span>. So <span class="math" data-tex="\(\varphi(b)=\sum_is_i^*(ubu^*)s_i\in B\)">\(\varphi(b)=\sum_is_i^*(ubu^*)s_i\in B\)</span>. The map <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is linear and preserves adjoints, and by Lemma 3.1(3)
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varphi(b)\varphi(b&#x27;)&amp;=\sum_{i,j}r_ibr_i^*r_jb&#x27;r_j^*\\
+&amp;=\sum_ir_ibeb&#x27;r_i^*=\varphi(bb&#x27;).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\varphi(b)\varphi(b&#x27;)&amp;=\sum_{i,j}r_ibr_i^*r_jb&#x27;r_j^*\\
+&amp;=\sum_ir_ibeb&#x27;r_i^*=\varphi(bb&#x27;).
+\end{aligned}
+\]</span>
+(1) <span class="math" data-tex="\(\varphi(b)r_i=\sum_jr_jbr_j^*r_i=r_ibe=r_ib\)">\(\varphi(b)r_i=\sum_jr_jbr_j^*r_i=r_ibe=r_ib\)</span>. (2) <span class="math" data-tex="\(dr_i=r_i\)">\(dr_i=r_i\)</span> gives <span class="math" data-tex="\(d\varphi(b)=\varphi(b)\)">\(d\varphi(b)=\varphi(b)\)</span>, and <span class="math" data-tex="\(\varphi(b)d=(d\varphi(b^*))^*=\varphi(b)\)">\(\varphi(b)d=(d\varphi(b^*))^*=\varphi(b)\)</span>. <span class="math" data-tex="\(Rr_i=\sum_jr_jr_j^*r_i=r_ie=r_i\)">\(Rr_i=\sum_jr_jr_j^*r_i=r_ie=r_i\)</span> gives <span class="math" data-tex="\(R\varphi(b)=\varphi(b)\)">\(R\varphi(b)=\varphi(b)\)</span>, and <span class="math" data-tex="\(\varphi(b)R=(R\varphi(b^*))^*=\varphi(b)\)">\(\varphi(b)R=(R\varphi(b^*))^*=\varphi(b)\)</span>. (3) By Lemma 3.1(2), <span class="math" data-tex="\(\sigma(e_{jk})\varphi(b)=r_jbr_k^*\)">\(\sigma(e_{jk})\varphi(b)=r_jbr_k^*\)</span> and <span class="math" data-tex="\(\varphi(b)\sigma(e_{jk})=\sum_ir_ib(\sigma(e_{kj})r_i)^*=r_jbr_k^*\)">\(\varphi(b)\sigma(e_{jk})=\sum_ir_ib(\sigma(e_{kj})r_i)^*=r_jbr_k^*\)</span>. (4) <span class="math" data-tex="\(r_i^*b&#x27;=r_i^*eb&#x27;=(er_i)^*b&#x27;=0\)">\(r_i^*b&#x27;=r_i^*eb&#x27;=(er_i)^*b&#x27;=0\)</span>, so <span class="math" data-tex="\(\varphi(b)b&#x27;=0\)">\(\varphi(b)b&#x27;=0\)</span>, and <span class="math" data-tex="\(b&#x27;\varphi(b)=(\varphi(b^*)b&#x27;^*)^*=0\)">\(b&#x27;\varphi(b)=(\varphi(b^*)b&#x27;^*)^*=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-section-algebras-and-a-unitary-in-the-bidual">4. Section algebras and a unitary in the bidual</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_1=\{F\in{}&amp;C([0,1],M_2):\\
+&amp;F(0)\in\mathbb C1_2,\ F(1)=0\},
+\end{aligned}
+\]">\[
+\begin{aligned}
+D_1=\{F\in{}&amp;C([0,1],M_2):\\
+&amp;F(0)\in\mathbb C1_2,\ F(1)=0\},
+\end{aligned}
+\]</span>
+and write <span class="math" data-tex="\(F(0)=c_F1_2\)">\(F(0)=c_F1_2\)</span>. For <span class="math" data-tex="\(f\in C([0,1])\)">\(f\in C([0,1])\)</span> and <span class="math" data-tex="\(x\in M_2\)">\(x\in M_2\)</span>, <span class="math" data-tex="\(fx\)">\(fx\)</span> denotes the section <span class="math" data-tex="\(t\mapsto f(t)x\)">\(t\mapsto f(t)x\)</span>.</p>
+<p><strong>Lemma 4.1</strong> (the map <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>). The formula
+<span class="math math-display" data-tex="\[
+\lambda(F)=\sum_{i,j}F_{ij}(d)\sigma(e_{ij})+c_F(1-p)
+\]">\[
+\lambda(F)=\sum_{i,j}F_{ij}(d)\sigma(e_{ij})+c_F(1-p)
+\]</span>
+defines a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(\lambda\colon D_1\to\operatorname{Her}(a)\)">\(\lambda\colon D_1\to\operatorname{Her}(a)\)</span>. If <span class="math" data-tex="\(f\in C([0,1])\)">\(f\in C([0,1])\)</span> and <span class="math" data-tex="\(f(1)=0\)">\(f(1)=0\)</span>, then <span class="math" data-tex="\(\lambda(f1_2)=f(d)\)">\(\lambda(f1_2)=f(d)\)</span>; if moreover <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, then <span class="math" data-tex="\(\lambda(fx)=f(d)\sigma(x)\)">\(\lambda(fx)=f(d)\sigma(x)\)</span> for <span class="math" data-tex="\(x\in M_2\)">\(x\in M_2\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(g\mapsto g(d)\)">\(g\mapsto g(d)\)</span> is a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(C([0,1])\to B\)">\(C([0,1])\to B\)</span>, since the spectrum of <span class="math" data-tex="\(d\)">\(d\)</span> lies in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, and its range commutes with <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span> (Lemma 2.3). Hence <span class="math" data-tex="\(\bar\lambda(F)=\sum_{i,j}F_{ij}(d)\sigma(e_{ij})\)">\(\bar\lambda(F)=\sum_{i,j}F_{ij}(d)\sigma(e_{ij})\)</span> defines a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(\bar\lambda\colon C([0,1],M_2)\to B^{**}\)">\(\bar\lambda\colon C([0,1],M_2)\to B^{**}\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bar\lambda(F)\bar\lambda(G)&amp;=\sum_{i,j,l}(F_{ij}G_{jl})(d)\sigma(e_{il})\\
+&amp;=\bar\lambda(FG),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\bar\lambda(F)\bar\lambda(G)&amp;=\sum_{i,j,l}(F_{ij}G_{jl})(d)\sigma(e_{il})\\
+&amp;=\bar\lambda(FG),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\bar\lambda(F)^*=\bar\lambda(F^*)\)">\(\bar\lambda(F)^*=\bar\lambda(F^*)\)</span>. Since <span class="math" data-tex="\(\sigma(e_{ij})=p\sigma(e_{ij})p\)">\(\sigma(e_{ij})=p\sigma(e_{ij})p\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> commutes with functions of <span class="math" data-tex="\(d\)">\(d\)</span>, <span class="math" data-tex="\(\bar\lambda(F)=p\bar\lambda(F)p\)">\(\bar\lambda(F)=p\bar\lambda(F)p\)</span>. As <span class="math" data-tex="\(F\mapsto c_F\)">\(F\mapsto c_F\)</span> is a character of <span class="math" data-tex="\(D_1\)">\(D_1\)</span>, the cross terms vanish, and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism. If <span class="math" data-tex="\(f(1)=0\)">\(f(1)=0\)</span>, then <span class="math" data-tex="\(\lambda(f1_2)=f(d)p+f(0)(1-p)=f(d)\)">\(\lambda(f1_2)=f(d)p+f(0)(1-p)=f(d)\)</span> by Lemma 2.3. If also <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, then <span class="math" data-tex="\(\lambda(fx)=\sum_{i,j}x_{ij}f(d)\sigma(e_{ij})=f(d)\sigma(x)\)">\(\lambda(fx)=\sum_{i,j}x_{ij}f(d)\sigma(e_{ij})=f(d)\sigma(x)\)</span>.</p>
+<p>It remains to see <span class="math" data-tex="\(\lambda(D_1)\subseteq\operatorname{Her}(a)\)">\(\lambda(D_1)\subseteq\operatorname{Her}(a)\)</span>. The C*-algebra <span class="math" data-tex="\(G\)">\(G\)</span> generated by <span class="math" data-tex="\((1-t)1_2\)">\((1-t)1_2\)</span> and the sections <span class="math" data-tex="\(t(1-t)x\)">\(t(1-t)x\)</span>, <span class="math" data-tex="\(x\in M_2\)">\(x\in M_2\)</span>, is <span class="math" data-tex="\(D_1\)">\(D_1\)</span>. Indeed, <span class="math" data-tex="\(G\)">\(G\)</span> contains <span class="math" data-tex="\(P(1-t)1_2\)">\(P(1-t)1_2\)</span> for polynomials <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(P(0)=0\)">\(P(0)=0\)</span>, hence, by the Weierstrass theorem, <span class="math" data-tex="\(f1_2\)">\(f1_2\)</span> for every <span class="math" data-tex="\(f\in C([0,1])\)">\(f\in C([0,1])\)</span> with <span class="math" data-tex="\(f(1)=0\)">\(f(1)=0\)</span>. It then contains the products <span class="math" data-tex="\(f(t)\,t(1-t)x\)">\(f(t)\,t(1-t)x\)</span>. Every continuous function with compact support in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> has the form <span class="math" data-tex="\(f(t)\,t(1-t)\)">\(f(t)\,t(1-t)\)</span> with such an <span class="math" data-tex="\(f\)">\(f\)</span>, and these functions are uniformly dense among the continuous functions vanishing at <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. So <span class="math" data-tex="\(G\)">\(G\)</span> contains every section vanishing at both endpoints, and every <span class="math" data-tex="\(F\in D_1\)">\(F\in D_1\)</span> is <span class="math" data-tex="\(c_F(1-t)1_2\)">\(c_F(1-t)1_2\)</span> plus such a section. Now
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\lambda((1-t)1_2)&amp;=1-d=a,\\
+\lambda(t(1-t)x)&amp;=d(1-d)\sigma(x)\\
+&amp;=a^{1/2}\rho(x)a^{1/2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\lambda((1-t)1_2)&amp;=1-d=a,\\
+\lambda(t(1-t)x)&amp;=d(1-d)\sigma(x)\\
+&amp;=a^{1/2}\rho(x)a^{1/2},
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(a\)">\(a\)</span> commutes with <span class="math" data-tex="\(\rho(x)=d\sigma(x)\)">\(\rho(x)=d\sigma(x)\)</span>. Both lie in <span class="math" data-tex="\(\operatorname{Her}(a)\)">\(\operatorname{Her}(a)\)</span>. Since <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is contractive and <span class="math" data-tex="\(\operatorname{Her}(a)\)">\(\operatorname{Her}(a)\)</span> is a C*-subalgebra, <span class="math" data-tex="\(\lambda(D_1)\subseteq\operatorname{Her}(a)\)">\(\lambda(D_1)\subseteq\operatorname{Her}(a)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Let
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_2=\{F\in{}&amp;C([0,1],M_2\otimes M_2):\\
+&amp;F(0)\in\mathbb C1_4,\ F(1)=0\},
+\end{aligned}
+\]">\[
+\begin{aligned}
+D_2=\{F\in{}&amp;C([0,1],M_2\otimes M_2):\\
+&amp;F(0)\in\mathbb C1_4,\ F(1)=0\},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(F(0)=c_F1_4\)">\(F(0)=c_F1_4\)</span>. Write <span class="math" data-tex="\(F=\sum_{j,k}F_{jk}\otimes e_{jk}\)">\(F=\sum_{j,k}F_{jk}\otimes e_{jk}\)</span> with <span class="math" data-tex="\(F_{jk}\in C([0,1],M_2)\)">\(F_{jk}\in C([0,1],M_2)\)</span>: the first tensor factor carries the values of sections of <span class="math" data-tex="\(D_1\)">\(D_1\)</span>, and the second is a copy index. For <span class="math" data-tex="\(F\in D_2\)">\(F\in D_2\)</span>, every <span class="math" data-tex="\(F_{jk}\)">\(F_{jk}\)</span> lies in <span class="math" data-tex="\(D_1\)">\(D_1\)</span>, with <span class="math" data-tex="\(c_{F_{jk}}=\delta_{jk}c_F\)">\(c_{F_{jk}}=\delta_{jk}c_F\)</span>.</p>
+<p><strong>Lemma 4.2</strong> (the map <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>). The formula
+<span class="math math-display" data-tex="\[
+\gamma(F)=\sum_{j,k}\varphi\bigl(\lambda(F_{jk})\bigr)\sigma(e_{jk})
+\]">\[
+\gamma(F)=\sum_{j,k}\varphi\bigl(\lambda(F_{jk})\bigr)\sigma(e_{jk})
+\]</span>
+defines a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(\gamma\colon D_2\to B\)">\(\gamma\colon D_2\to B\)</span> with the following properties.</p>
+<ol>
+<li><span class="math" data-tex="\(\gamma(F)=R\gamma(F)=\gamma(F)R\)">\(\gamma(F)=R\gamma(F)=\gamma(F)R\)</span> for <span class="math" data-tex="\(F\in D_2\)">\(F\in D_2\)</span>.</li>
+<li><span class="math" data-tex="\(\gamma(f1_4)=\varphi(f(d))\)">\(\gamma(f1_4)=\varphi(f(d))\)</span> for <span class="math" data-tex="\(f\in C([0,1])\)">\(f\in C([0,1])\)</span> with <span class="math" data-tex="\(f(1)=0\)">\(f(1)=0\)</span>.</li>
+<li>For <span class="math" data-tex="\(f\in C([0,1])\)">\(f\in C([0,1])\)</span> with <span class="math" data-tex="\(f(0)=f(1)=0\)">\(f(0)=f(1)=0\)</span> and <span class="math" data-tex="\(y\in M_2\)">\(y\in M_2\)</span>, <span class="math" data-tex="\(\gamma(f(1_2\otimes y))=\varphi(f(d))\sigma(y)\)">\(\gamma(f(1_2\otimes y))=\varphi(f(d))\sigma(y)\)</span> and <span class="math" data-tex="\(\gamma(f(y\otimes1_2))=\varphi(f(d)\sigma(y))\)">\(\gamma(f(y\otimes1_2))=\varphi(f(d)\sigma(y))\)</span>.</li>
+<li>For <span class="math" data-tex="\(g_n(t)=\min\{1,n(1-t)\}\)">\(g_n(t)=\min\{1,n(1-t)\}\)</span>, <span class="math" data-tex="\(\gamma(g_n1_4)\to R\)">\(\gamma(g_n1_4)\to R\)</span> strongly as <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>.</li>
+</ol>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(\kappa=\varphi\circ\lambda\colon D_1\to B\)">\(\kappa=\varphi\circ\lambda\colon D_1\to B\)</span>, a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism whose range commutes with <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span> (Lemma 3.2(3)). Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\gamma(F)\gamma(G)\\
+&amp;\quad=\sum_{j,k,l,m}\kappa(F_{jk})\kappa(G_{lm})\sigma(e_{jk}e_{lm})\\
+&amp;\quad=\sum_{j,k,m}\kappa(F_{jk}G_{km})\sigma(e_{jm})=\gamma(FG),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\gamma(F)\gamma(G)\\
+&amp;\quad=\sum_{j,k,l,m}\kappa(F_{jk})\kappa(G_{lm})\sigma(e_{jk}e_{lm})\\
+&amp;\quad=\sum_{j,k,m}\kappa(F_{jk}G_{km})\sigma(e_{jm})=\gamma(FG),
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\((FG)_{jm}=\sum_kF_{jk}G_{km}\)">\((FG)_{jm}=\sum_kF_{jk}G_{km}\)</span>, and <span class="math" data-tex="\(\gamma(F)^*=\sum_{j,k}\kappa(F_{jk}^*)\sigma(e_{kj})=\gamma(F^*)\)">\(\gamma(F)^*=\sum_{j,k}\kappa(F_{jk}^*)\sigma(e_{kj})=\gamma(F^*)\)</span>, since <span class="math" data-tex="\((F^*)_{kj}=F_{jk}^*\)">\((F^*)_{kj}=F_{jk}^*\)</span>. By Lemma 3.2(2), <span class="math" data-tex="\(\kappa(F_{jk})\sigma(e_{jk})=\kappa(F_{jk})d\sigma(e_{jk})\)">\(\kappa(F_{jk})\sigma(e_{jk})=\kappa(F_{jk})d\sigma(e_{jk})\)</span>, which is <span class="math" data-tex="\(\kappa(F_{jk})\rho(e_{jk})\in B\)">\(\kappa(F_{jk})\rho(e_{jk})\in B\)</span>.</p>
+<p>(1) follows from Lemma 3.2(2) and Lemma 3.1(4). (2) <span class="math" data-tex="\(f1_4=\sum_jf1_2\otimes e_{jj}\)">\(f1_4=\sum_jf1_2\otimes e_{jj}\)</span>, so <span class="math" data-tex="\(\gamma(f1_4)=\varphi(f(d))p=\varphi(f(d))\)">\(\gamma(f1_4)=\varphi(f(d))p=\varphi(f(d))\)</span>, because <span class="math" data-tex="\(\varphi(b)(1-p)=\varphi(b)d(1-p)=0\)">\(\varphi(b)(1-p)=\varphi(b)d(1-p)=0\)</span>. (3) <span class="math" data-tex="\(f(1_2\otimes y)=\sum_{j,k}y_{jk}f1_2\otimes e_{jk}\)">\(f(1_2\otimes y)=\sum_{j,k}y_{jk}f1_2\otimes e_{jk}\)</span> gives <span class="math" data-tex="\(\sum_{j,k}y_{jk}\varphi(f(d))\sigma(e_{jk})=\varphi(f(d))\sigma(y)\)">\(\sum_{j,k}y_{jk}\varphi(f(d))\sigma(e_{jk})=\varphi(f(d))\sigma(y)\)</span>, and <span class="math" data-tex="\(f(y\otimes1_2)=\sum_jfy\otimes e_{jj}\)">\(f(y\otimes1_2)=\sum_jfy\otimes e_{jj}\)</span> gives <span class="math" data-tex="\(\varphi(\lambda(fy))p=\varphi(f(d)\sigma(y))\)">\(\varphi(\lambda(fy))p=\varphi(f(d)\sigma(y))\)</span> by Lemma 4.1.</p>
+<p>(4) With <span class="math" data-tex="\(m_n(t)=\min\{1,nt\}\)">\(m_n(t)=\min\{1,nt\}\)</span>, <span class="math" data-tex="\(g_n(d)=m_n(1-d)=m_n(a)\)">\(g_n(d)=m_n(1-d)=m_n(a)\)</span>, so <span class="math" data-tex="\(\gamma(g_n1_4)=\varphi(m_n(a))=\sum_ir_im_n(a)r_i^*\)">\(\gamma(g_n1_4)=\varphi(m_n(a))=\sum_ir_im_n(a)r_i^*\)</span> by (2). For <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, <span class="math" data-tex="\(t/(t+1/n)\le m_n(t)\le1\)">\(t/(t+1/n)\le m_n(t)\le1\)</span>, and <span class="math" data-tex="\(m_n(0)=0\)">\(m_n(0)=0\)</span>; so <span class="math" data-tex="\(m_n(a)=m_n(a)e\le e\)">\(m_n(a)=m_n(a)e\le e\)</span>, and
+<span class="math math-display" data-tex="\[
+0\le e-m_n(a)\le e-a(a+1/n)^{-1},
+\]">\[
+0\le e-m_n(a)\le e-a(a+1/n)^{-1},
+\]</span>
+which tends to <span class="math" data-tex="\(0\)">\(0\)</span> strongly. For an operator <span class="math" data-tex="\(0\le X\le1\)">\(0\le X\le1\)</span>, <span class="math" data-tex="\(\|X\xi\|^2=\langle X^2\xi,\xi\rangle\le\langle X\xi,\xi\rangle\)">\(\|X\xi\|^2=\langle X^2\xi,\xi\rangle\le\langle X\xi,\xi\rangle\)</span>. Hence <span class="math" data-tex="\(e-m_n(a)\to0\)">\(e-m_n(a)\to0\)</span> strongly, and <span class="math" data-tex="\(\gamma(g_n1_4)\to\sum_ir_ier_i^*=R\)">\(\gamma(g_n1_4)\to\sum_ir_ier_i^*=R\)</span> strongly. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be the set of <span class="math" data-tex="\(F\in C([0,1],M_2\otimes M_2)\)">\(F\in C([0,1],M_2\otimes M_2)\)</span> with <span class="math" data-tex="\(F(0)\in\mathbb C1_4\)">\(F(0)\in\mathbb C1_4\)</span>. It is a unital C*-algebra, and <span class="math" data-tex="\(D_2\)">\(D_2\)</span> is a closed two-sided ideal of <span class="math" data-tex="\(E\)">\(E\)</span> (Exercise 6.5).</p>
+<p><strong>Lemma 4.3</strong> (a unitary in the bidual). For every unitary <span class="math" data-tex="\(U\in E\)">\(U\in E\)</span> there is a unitary <span class="math" data-tex="\(W\in B^{**}\)">\(W\in B^{**}\)</span> with <span class="math" data-tex="\(W(1-R)=(1-R)W=1-R\)">\(W(1-R)=(1-R)W=1-R\)</span> and, for <span class="math" data-tex="\(F\in D_2\)">\(F\in D_2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W\gamma(F)=\gamma(UF),\quad\gamma(F)W=\gamma(FU),\\
+W^*\gamma(F)=\gamma(U^*F),\\
+\gamma(F)W^*=\gamma(FU^*).
+\end{gathered}
+\]">\[
+\begin{gathered}
+W\gamma(F)=\gamma(UF),\quad\gamma(F)W=\gamma(FU),\\
+W^*\gamma(F)=\gamma(U^*F),\\
+\gamma(F)W^*=\gamma(FU^*).
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(e_n=g_n1_4\in D_2\)">\(e_n=g_n1_4\in D_2\)</span> with <span class="math" data-tex="\(g_n\)">\(g_n\)</span> as in Lemma 4.2(4). For <span class="math" data-tex="\(F\in D_2\)">\(F\in D_2\)</span>, <span class="math" data-tex="\(g_n=1\)">\(g_n=1\)</span> on <span class="math" data-tex="\([0,1-1/n]\)">\([0,1-1/n]\)</span> and <span class="math" data-tex="\(F(1)=0\)">\(F(1)=0\)</span>, so
+<span class="math math-display" data-tex="\[
+\|e_nF-F\|\le\sup_{t\ge1-1/n}\|F(t)\|\longrightarrow0 .
+\]">\[
+\|e_nF-F\|\le\sup_{t\ge1-1/n}\|F(t)\|\longrightarrow0 .
+\]</span>
+Hence <span class="math" data-tex="\(\gamma(Ue_n)\gamma(F)\xi=\gamma(Ue_nF)\xi\to\gamma(UF)\xi\)">\(\gamma(Ue_n)\gamma(F)\xi=\gamma(Ue_nF)\xi\to\gamma(UF)\xi\)</span> for <span class="math" data-tex="\(\xi\in H_u\)">\(\xi\in H_u\)</span>. Also <span class="math" data-tex="\(\gamma(Ue_n)(1-R)=0\)">\(\gamma(Ue_n)(1-R)=0\)</span> by Lemma 4.2(1). The vectors <span class="math" data-tex="\(\gamma(F)\xi\)">\(\gamma(F)\xi\)</span> and <span class="math" data-tex="\((1-R)\xi\)">\((1-R)\xi\)</span> span a dense subspace of <span class="math" data-tex="\(H_u\)">\(H_u\)</span>, because <span class="math" data-tex="\(R\xi=\lim_n\gamma(e_n)\xi\)">\(R\xi=\lim_n\gamma(e_n)\xi\)</span> (Lemma 4.2(4)). The operators <span class="math" data-tex="\(\gamma(Ue_n)\)">\(\gamma(Ue_n)\)</span> have norm at most <span class="math" data-tex="\(1\)">\(1\)</span> and converge on this dense subspace; so they converge strongly: if <span class="math" data-tex="\(\|\zeta-\zeta&#x27;\|&lt;\eta\)">\(\|\zeta-\zeta&#x27;\|&lt;\eta\)</span> with <span class="math" data-tex="\(\zeta&#x27;\)">\(\zeta&#x27;\)</span> in the subspace, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\gamma(Ue_n)\zeta-\gamma(Ue_m)\zeta\|\\
+&amp;\quad\le2\eta+\|\gamma(Ue_n)\zeta&#x27;-\gamma(Ue_m)\zeta&#x27;\| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\gamma(Ue_n)\zeta-\gamma(Ue_m)\zeta\|\\
+&amp;\quad\le2\eta+\|\gamma(Ue_n)\zeta&#x27;-\gamma(Ue_m)\zeta&#x27;\| .
+\end{aligned}
+\]</span>
+The strong limit <span class="math" data-tex="\(w_0\)">\(w_0\)</span> lies in <span class="math" data-tex="\(B^{**}\)">\(B^{**}\)</span>.</p>
+<p>By construction <span class="math" data-tex="\(w_0\gamma(F)=\gamma(UF)\)">\(w_0\gamma(F)=\gamma(UF)\)</span> and <span class="math" data-tex="\(w_0=Rw_0=w_0R\)">\(w_0=Rw_0=w_0R\)</span>. For <span class="math" data-tex="\(\zeta=\sum_k\gamma(F_k)\xi_k\)">\(\zeta=\sum_k\gamma(F_k)\xi_k\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|w_0\zeta\|^2&amp;=\sum_{k,l}\langle\gamma(F_l^*U^*UF_k)\xi_k,\xi_l\rangle\\
+&amp;=\|\zeta\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|w_0\zeta\|^2&amp;=\sum_{k,l}\langle\gamma(F_l^*U^*UF_k)\xi_k,\xi_l\rangle\\
+&amp;=\|\zeta\|^2 .
+\end{aligned}
+\]</span>
+These vectors are dense in <span class="math" data-tex="\(RH_u\)">\(RH_u\)</span>, so <span class="math" data-tex="\(w_0\)">\(w_0\)</span> is isometric on <span class="math" data-tex="\(RH_u\)">\(RH_u\)</span>, and <span class="math" data-tex="\(w_0^*w_0=R\)">\(w_0^*w_0=R\)</span>. The range of <span class="math" data-tex="\(w_0\)">\(w_0\)</span> contains <span class="math" data-tex="\(\gamma(UF)\xi\)">\(\gamma(UF)\xi\)</span> for all <span class="math" data-tex="\(F\in D_2\)">\(F\in D_2\)</span>, hence all <span class="math" data-tex="\(\gamma(F&#x27;)\xi\)">\(\gamma(F&#x27;)\xi\)</span>, since <span class="math" data-tex="\(F&#x27;=U(U^*F&#x27;)\)">\(F&#x27;=U(U^*F&#x27;)\)</span> with <span class="math" data-tex="\(U^*F&#x27;\in D_2\)">\(U^*F&#x27;\in D_2\)</span>. As the range of the isometry <span class="math" data-tex="\(w_0|_{RH_u}\)">\(w_0|_{RH_u}\)</span> is closed, it is <span class="math" data-tex="\(RH_u\)">\(RH_u\)</span>, and <span class="math" data-tex="\(w_0w_0^*=R\)">\(w_0w_0^*=R\)</span>. So <span class="math" data-tex="\(W=w_0+1-R\)">\(W=w_0+1-R\)</span> is unitary, because <span class="math" data-tex="\(w_0^*(1-R)=0=(1-R)w_0\)">\(w_0^*(1-R)=0=(1-R)w_0\)</span>. Then <span class="math" data-tex="\(W\gamma(F)=w_0\gamma(F)=\gamma(UF)\)">\(W\gamma(F)=w_0\gamma(F)=\gamma(UF)\)</span>. Applying <span class="math" data-tex="\(w_0^*\)">\(w_0^*\)</span> to <span class="math" data-tex="\(w_0\gamma(U^*F)=\gamma(F)\)">\(w_0\gamma(U^*F)=\gamma(F)\)</span> gives <span class="math" data-tex="\(\gamma(U^*F)=w_0^*\gamma(F)=W^*\gamma(F)\)">\(\gamma(U^*F)=w_0^*\gamma(F)=W^*\gamma(F)\)</span>, because <span class="math" data-tex="\((1-R)\gamma(F)=0\)">\((1-R)\gamma(F)=0\)</span>. The other two identities are the adjoints of these two, applied to <span class="math" data-tex="\(F^*\)">\(F^*\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-the-weighted-flip-and-the-proof">5. The weighted flip and the proof</h2>
+<p>Let <span class="math" data-tex="\(S\in M_2\otimes M_2\)">\(S\in M_2\otimes M_2\)</span> be the flip, <span class="math" data-tex="\(S(\xi\otimes\eta)=\eta\otimes\xi\)">\(S(\xi\otimes\eta)=\eta\otimes\xi\)</span>; it is a self-adjoint unitary with <span class="math" data-tex="\(S(x\otimes y)S=y\otimes x\)">\(S(x\otimes y)S=y\otimes x\)</span>. Choose a continuous <span class="math" data-tex="\(\theta\colon[0,1]\to[0,1]\)">\(\theta\colon[0,1]\to[0,1]\)</span> with <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span> on <span class="math" data-tex="\([0,1/3]\)">\([0,1/3]\)</span> and <span class="math" data-tex="\(\theta=1\)">\(\theta=1\)</span> on <span class="math" data-tex="\([2/3,1]\)">\([2/3,1]\)</span>, and put
+<span class="math math-display" data-tex="\[
+U(t)=\tfrac12(1+S)+e^{i\pi\theta(t)}\tfrac12(1-S).
+\]">\[
+U(t)=\tfrac12(1+S)+e^{i\pi\theta(t)}\tfrac12(1-S).
+\]</span>
+As <span class="math" data-tex="\(\frac12(1\pm S)\)">\(\frac12(1\pm S)\)</span> are complementary projections, each <span class="math" data-tex="\(U(t)\)">\(U(t)\)</span> is unitary; <span class="math" data-tex="\(U(t)=1\)">\(U(t)=1\)</span> for <span class="math" data-tex="\(t\le1/3\)">\(t\le1/3\)</span> and <span class="math" data-tex="\(U(t)=S\)">\(U(t)=S\)</span> for <span class="math" data-tex="\(t\ge2/3\)">\(t\ge2/3\)</span>. So <span class="math" data-tex="\(U\)">\(U\)</span> is a unitary of <span class="math" data-tex="\(E\)">\(E\)</span>. From now on <span class="math" data-tex="\(W\)">\(W\)</span> is the unitary of Lemma 4.3 for this <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(W=w_0+1-R\)">\(W=w_0+1-R\)</span> as in its proof.</p>
+<p>Let <span class="math" data-tex="\(g(t)=1\)">\(g(t)=1\)</span> for <span class="math" data-tex="\(0\le t\le2/3\)">\(0\le t\le2/3\)</span> and <span class="math" data-tex="\(g(t)=3(1-t)\)">\(g(t)=3(1-t)\)</span> for <span class="math" data-tex="\(2/3\le t\le1\)">\(2/3\le t\le1\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h=g(d),\qquad k=\varphi(h),\\
+l=1-h-k .
+\end{gathered}
+\]">\[
+\begin{gathered}
+h=g(d),\qquad k=\varphi(h),\\
+l=1-h-k .
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(g(1)=0\)">\(g(1)=0\)</span>, <span class="math" data-tex="\(h=\lambda(g1_2)\in\operatorname{Her}(a)\)">\(h=\lambda(g1_2)\in\operatorname{Her}(a)\)</span> (Lemma 4.1), so <span class="math" data-tex="\(k\)">\(k\)</span> is defined.</p>
+<p><strong>Lemma 5.1.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(h,k,l\)">\(h,k,l\)</span> are positive elements of <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(hk=kh=0\)">\(hk=kh=0\)</span>, <span class="math" data-tex="\(h+k+l=1\)">\(h+k+l=1\)</span> and <span class="math" data-tex="\(l\le d\)">\(l\le d\)</span>; they commute with <span class="math" data-tex="\(d\)">\(d\)</span> and with <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span>.</li>
+<li><span class="math" data-tex="\(Rh=hR=0\)">\(Rh=hR=0\)</span>, <span class="math" data-tex="\(Wh^{1/2}=h^{1/2}\)">\(Wh^{1/2}=h^{1/2}\)</span> and <span class="math" data-tex="\(h^{1/2}r_i=0\)">\(h^{1/2}r_i=0\)</span> for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>.</li>
+<li><span class="math" data-tex="\(kW=Wk\)">\(kW=Wk\)</span>, and <span class="math" data-tex="\(k^\beta W=\gamma(g^\beta U)\in B\)">\(k^\beta W=\gamma(g^\beta U)\in B\)</span> for every <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span>.</li>
+<li>Let <span class="math" data-tex="\(j(t)=\min\{1/t,3/2\}\)">\(j(t)=\min\{1/t,3/2\}\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-tex="\(j(0)=3/2\)">\(j(0)=3/2\)</span>. Then <span class="math" data-tex="\(l=lj(d)d\)">\(l=lj(d)d\)</span>, <span class="math" data-tex="\(lp=pl=l\)">\(lp=pl=l\)</span>, and <span class="math" data-tex="\(l\sigma(y)=lj(d)\rho(y)\in B\)">\(l\sigma(y)=lj(d)\rho(y)\in B\)</span> for <span class="math" data-tex="\(y\in M_2\)">\(y\in M_2\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) <span class="math" data-tex="\(h\)">\(h\)</span> is a function of <span class="math" data-tex="\(d\)">\(d\)</span>, <span class="math" data-tex="\(k=\varphi(h)\ge0\)">\(k=\varphi(h)\ge0\)</span>, and <span class="math" data-tex="\(hk=kh=0\)">\(hk=kh=0\)</span> by Lemma 3.2(4). They commute with <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span> by Lemma 2.3 and Lemma 3.2(2),(3). <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> are commuting orthogonal positive contractions (<span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is contractive), so <span class="math" data-tex="\(h+k\le1\)">\(h+k\le1\)</span>, computed pointwise in the commutative C*-algebra they generate; hence <span class="math" data-tex="\(l\ge0\)">\(l\ge0\)</span>. As <span class="math" data-tex="\(g(t)\ge1-t\)">\(g(t)\ge1-t\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, <span class="math" data-tex="\(h\ge1-d=a\)">\(h\ge1-d=a\)</span>, and <span class="math" data-tex="\(l\le1-h\le1-a=d\)">\(l\le1-h\le1-a=d\)</span>.</p>
+<p>(2) <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(h^{1/2}\)">\(h^{1/2}\)</span> lie in <span class="math" data-tex="\(\operatorname{Her}(a)\)">\(\operatorname{Her}(a)\)</span>, as <span class="math" data-tex="\(g^{1/2}(1)=0\)">\(g^{1/2}(1)=0\)</span>. So <span class="math" data-tex="\(Rh^{1/2}=Reh^{1/2}=0\)">\(Rh^{1/2}=Reh^{1/2}=0\)</span> by Lemma 3.2 and Lemma 3.1(4), and likewise <span class="math" data-tex="\(Rh=0\)">\(Rh=0\)</span> and <span class="math" data-tex="\(hR=(Rh)^*=0\)">\(hR=(Rh)^*=0\)</span>. Hence <span class="math" data-tex="\(Wh^{1/2}=w_0Rh^{1/2}+(1-R)h^{1/2}=h^{1/2}\)">\(Wh^{1/2}=w_0Rh^{1/2}+(1-R)h^{1/2}=h^{1/2}\)</span>. Since <span class="math" data-tex="\(dr_i=r_i\)">\(dr_i=r_i\)</span>, <span class="math" data-tex="\(P(d)r_i=P(1)r_i\)">\(P(d)r_i=P(1)r_i\)</span> for polynomials, hence for continuous functions, and <span class="math" data-tex="\(h^{1/2}r_i=g(1)^{1/2}r_i=0\)">\(h^{1/2}r_i=g(1)^{1/2}r_i=0\)</span>.</p>
+<p>(3) By Lemma 4.2(2), <span class="math" data-tex="\(\gamma(g1_4)=\varphi(g(d))=k\)">\(\gamma(g1_4)=\varphi(g(d))=k\)</span>, and for <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span>, <span class="math" data-tex="\(\gamma(g^\beta1_4)=\varphi(h^\beta)=\varphi(h)^\beta=k^\beta\)">\(\gamma(g^\beta1_4)=\varphi(h^\beta)=\varphi(h)^\beta=k^\beta\)</span>. Since <span class="math" data-tex="\(g^\beta U\in D_2\)">\(g^\beta U\in D_2\)</span>, Lemma 4.3 gives <span class="math" data-tex="\(k^\beta W=\gamma(g^\beta1_4)W=\gamma(g^\beta U)\in B\)">\(k^\beta W=\gamma(g^\beta1_4)W=\gamma(g^\beta U)\in B\)</span>. The scalar function <span class="math" data-tex="\(g\)">\(g\)</span> commutes with <span class="math" data-tex="\(U\)">\(U\)</span>, so <span class="math" data-tex="\(kW=\gamma(gU)=\gamma(Ug)=Wk\)">\(kW=\gamma(gU)=\gamma(Ug)=Wk\)</span>.</p>
+<p>(4) The function <span class="math" data-tex="\(m(t)=tj(t)=\min\{1,3t/2\}\)">\(m(t)=tj(t)=\min\{1,3t/2\}\)</span> is continuous, <span class="math" data-tex="\(m(0)=0\)">\(m(0)=0\)</span>, and <span class="math" data-tex="\(m=1\)">\(m=1\)</span> on <span class="math" data-tex="\([2/3,1]\)">\([2/3,1]\)</span>. Now <span class="math" data-tex="\((1-h)(1-m(d))\)">\((1-h)(1-m(d))\)</span> is <span class="math" data-tex="\(((1-g)(1-m))(d)=0\)">\(((1-g)(1-m))(d)=0\)</span>, since <span class="math" data-tex="\(1-g\)">\(1-g\)</span> vanishes on <span class="math" data-tex="\([0,2/3]\)">\([0,2/3]\)</span> and <span class="math" data-tex="\(1-m\)">\(1-m\)</span> on <span class="math" data-tex="\([2/3,1]\)">\([2/3,1]\)</span>. Also <span class="math" data-tex="\(k(1-m(d))=(1-m(1))k=0\)">\(k(1-m(d))=(1-m(1))k=0\)</span>, because <span class="math" data-tex="\(kd=k\)">\(kd=k\)</span> (Lemma 3.2(2)) gives <span class="math" data-tex="\(kP(d)=P(1)k\)">\(kP(d)=P(1)k\)</span>. So <span class="math" data-tex="\(l(1-m(d))=0\)">\(l(1-m(d))=0\)</span>, that is, <span class="math" data-tex="\(l=lm(d)=lj(d)d\)">\(l=lm(d)=lj(d)d\)</span>. Since <span class="math" data-tex="\(m(0)=0\)">\(m(0)=0\)</span>, <span class="math" data-tex="\(m(d)p=m(d)\)">\(m(d)p=m(d)\)</span> by Lemma 2.3, so <span class="math" data-tex="\(lp=l\)">\(lp=l\)</span>, and <span class="math" data-tex="\(pl=(lp)^*=l\)">\(pl=(lp)^*=l\)</span>. Finally <span class="math" data-tex="\(l\sigma(y)=lj(d)d\sigma(y)=lj(d)\rho(y)\)">\(l\sigma(y)=lj(d)d\sigma(y)=lj(d)\rho(y)\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x_i=h^{1/2}r_i^*W\quad(i=1,2),\\
+x_3=h^{1/2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+x_i=h^{1/2}r_i^*W\quad(i=1,2),\\
+x_3=h^{1/2}.
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 5.2</strong> (the map <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>). <span class="math" data-tex="\(x_1,x_2,x_3\)">\(x_1,x_2,x_3\)</span> are contractions in <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(x_ix_j^*=\delta_{ij}h\)">\(x_ix_j^*=\delta_{ij}h\)</span>. Their Gram map <span class="math" data-tex="\(\alpha\colon M_3\to B\)">\(\alpha\colon M_3\to B\)</span>, <span class="math" data-tex="\(\alpha(e_{ij})=x_i^*x_j\)">\(\alpha(e_{ij})=x_i^*x_j\)</span>, satisfies <span class="math" data-tex="\(\alpha(1_3)=h+k\)">\(\alpha(1_3)=h+k\)</span>, and for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>
+<span class="math math-display" data-tex="\[
+C_i:=\alpha(e_{i3})=W^*r_ih=kW^*r_i .
+\]">\[
+C_i:=\alpha(e_{i3})=W^*r_ih=kW^*r_i .
+\]</span></p>
+<p><em>Proof.</em> By Lemma 3.2(1), <span class="math" data-tex="\(r_ib=\varphi(b)r_i\)">\(r_ib=\varphi(b)r_i\)</span> for <span class="math" data-tex="\(b\in\operatorname{Her}(a)\)">\(b\in\operatorname{Her}(a)\)</span>; with <span class="math" data-tex="\(b=h^{1/2}\)">\(b=h^{1/2}\)</span> and <span class="math" data-tex="\(b=h^{1/4}\)">\(b=h^{1/4}\)</span> this gives <span class="math" data-tex="\(r_ih^{1/2}=k^{1/2}r_i\)">\(r_ih^{1/2}=k^{1/2}r_i\)</span> and <span class="math" data-tex="\(r_ih^{1/4}=k^{1/4}r_i\)">\(r_ih^{1/4}=k^{1/4}r_i\)</span>. So, for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>,
+<span class="math math-display" data-tex="\[
+x_i=r_i^*k^{1/2}W=(r_i^*k^{1/4})(k^{1/4}W).
+\]">\[
+x_i=r_i^*k^{1/2}W=(r_i^*k^{1/4})(k^{1/4}W).
+\]</span>
+Here <span class="math" data-tex="\(r_i^*k^{1/4}=(r_ih^{1/4})^*=(s_i^*uh^{1/4})^*\)">\(r_i^*k^{1/4}=(r_ih^{1/4})^*=(s_i^*uh^{1/4})^*\)</span> lies in <span class="math" data-tex="\(B\)">\(B\)</span> by Lemma 3.2, and <span class="math" data-tex="\(k^{1/4}W\in B\)">\(k^{1/4}W\in B\)</span> by Lemma 5.1(3). So <span class="math" data-tex="\(x_i\in B\)">\(x_i\in B\)</span>. For <span class="math" data-tex="\(i,j\le2\)">\(i,j\le2\)</span>, <span class="math" data-tex="\(x_ix_j^*=h^{1/2}r_i^*WW^*r_jh^{1/2}\)">\(x_ix_j^*=h^{1/2}r_i^*WW^*r_jh^{1/2}\)</span>, which is <span class="math" data-tex="\(\delta_{ij}h^{1/2}eh^{1/2}=\delta_{ij}h\)">\(\delta_{ij}h^{1/2}eh^{1/2}=\delta_{ij}h\)</span>. For <span class="math" data-tex="\(i\le2\)">\(i\le2\)</span>, by Lemma 5.1(2),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+x_ix_3^*&amp;=h^{1/2}r_i^*Wh^{1/2}\\
+&amp;=h^{1/2}\bigl(h^{1/2}r_i\bigr)^*=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+x_ix_3^*&amp;=h^{1/2}r_i^*Wh^{1/2}\\
+&amp;=h^{1/2}\bigl(h^{1/2}r_i\bigr)^*=0 .
+\end{aligned}
+\]</span>
+Also <span class="math" data-tex="\(x_3x_3^*=h\)">\(x_3x_3^*=h\)</span>, and <span class="math" data-tex="\(\|x_i\|^2=\|x_ix_i^*\|=\|h\|\le1\)">\(\|x_i\|^2=\|x_ix_i^*\|=\|h\|\le1\)</span>. So Lemma 3.1 of <a href="cuntz-comparison-and-order-zero-maps.html">Cuntz comparison and order-zero maps</a> applies, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha(1_3)&amp;=\sum_{i\le2}W^*r_ihr_i^*W+h\\
+&amp;=W^*kW+h=k+h
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha(1_3)&amp;=\sum_{i\le2}W^*r_ihr_i^*W+h\\
+&amp;=W^*kW+h=k+h
+\end{aligned}
+\]</span>
+by Lemma 5.1(3). Finally <span class="math" data-tex="\(C_i=x_i^*x_3=W^*r_ih=W^*kr_i=kW^*r_i\)">\(C_i=x_i^*x_3=W^*r_ih=W^*kr_i=kW^*r_i\)</span>, since <span class="math" data-tex="\(W^*k=kW^*\)">\(W^*k=kW^*\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 5.3</strong> (the map <span class="math" data-tex="\(\beta\)">\(\beta\)</span>). The formula <span class="math" data-tex="\(\beta(y)=l\sigma(y)\)">\(\beta(y)=l\sigma(y)\)</span> defines a linear map <span class="math" data-tex="\(\beta\colon M_2\to B\)">\(\beta\colon M_2\to B\)</span> preserving adjoints, with <span class="math" data-tex="\(\beta(1_2)=l\)">\(\beta(1_2)=l\)</span>, <span class="math" data-tex="\(\beta(x)\beta(y)=\beta(1_2)\beta(xy)\)">\(\beta(x)\beta(y)=\beta(1_2)\beta(xy)\)</span>, and <span class="math" data-tex="\(\alpha(1_3)+\beta(1_2)=1_B\)">\(\alpha(1_3)+\beta(1_2)=1_B\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\beta(y)\in B\)">\(\beta(y)\in B\)</span> by Lemma 5.1(4). As <span class="math" data-tex="\(l\)">\(l\)</span> is self-adjoint and commutes with <span class="math" data-tex="\(\sigma(M_2)\)">\(\sigma(M_2)\)</span>, <span class="math" data-tex="\(\beta(y)^*=\beta(y^*)\)">\(\beta(y)^*=\beta(y^*)\)</span>. Next <span class="math" data-tex="\(\beta(1_2)=lp=l\)">\(\beta(1_2)=lp=l\)</span>, and <span class="math" data-tex="\(\beta(x)\beta(y)=l^2\sigma(xy)=\beta(1_2)\beta(xy)\)">\(\beta(x)\beta(y)=l^2\sigma(xy)=\beta(1_2)\beta(xy)\)</span>. Finally <span class="math" data-tex="\(\alpha(1_3)+\beta(1_2)=h+k+l=1\)">\(\alpha(1_3)+\beta(1_2)=h+k+l=1\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Lemma 5.4</strong> (the weighted flip). Let <span class="math" data-tex="\(Q=g(1-g)\)">\(Q=g(1-g)\)</span>. Then <span class="math" data-tex="\(Q(d)=h(1-h)\)">\(Q(d)=h(1-h)\)</span>, and for <span class="math" data-tex="\(y\in M_2\)">\(y\in M_2\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;k(1-k)\sigma(y)W^*\\
+&amp;\quad=W^*\varphi\bigl(Q(d)\sigma(y)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;k(1-k)\sigma(y)W^*\\
+&amp;\quad=W^*\varphi\bigl(Q(d)\sigma(y)\bigr).
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <span class="math" data-tex="\(Q\)">\(Q\)</span> vanishes on <span class="math" data-tex="\([0,2/3]\)">\([0,2/3]\)</span>, where <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, and at <span class="math" data-tex="\(1\)">\(1\)</span>, where <span class="math" data-tex="\(g=0\)">\(g=0\)</span>; on <span class="math" data-tex="\([2/3,1]\)">\([2/3,1]\)</span>, <span class="math" data-tex="\(U(t)=S\)">\(U(t)=S\)</span>. Since <span class="math" data-tex="\(S(1\otimes y)S=y\otimes1\)">\(S(1\otimes y)S=y\otimes1\)</span> and <span class="math" data-tex="\(S=S^*\)">\(S=S^*\)</span>,
+for <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;Q(t)(1\otimes y)U(t)^*\\
+&amp;\quad=U(t)^*Q(t)(y\otimes1),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;Q(t)(1\otimes y)U(t)^*\\
+&amp;\quad=U(t)^*Q(t)(y\otimes1),
+\end{aligned}
+\]</span>
+and both sides are elements of <span class="math" data-tex="\(D_2\)">\(D_2\)</span>. Apply <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. By Lemma 4.3 and Lemma 4.2(3), the left side gives <span class="math" data-tex="\(\gamma(Q(1\otimes y))W^*=\varphi(Q(d))\sigma(y)W^*\)">\(\gamma(Q(1\otimes y))W^*=\varphi(Q(d))\sigma(y)W^*\)</span>, and the right side gives <span class="math" data-tex="\(W^*\gamma(Q(y\otimes1))=W^*\varphi(Q(d)\sigma(y))\)">\(W^*\gamma(Q(y\otimes1))=W^*\varphi(Q(d)\sigma(y))\)</span>. Finally <span class="math" data-tex="\(Q(d)=h-h^2\)">\(Q(d)=h-h^2\)</span> and <span class="math" data-tex="\(\varphi(Q(d))=k-k^2\)">\(\varphi(Q(d))=k-k^2\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><em>Proof of Proposition 1.1.</em> The maps <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> preserve adjoints, <span class="math" data-tex="\(\alpha(1_3)\)">\(\alpha(1_3)\)</span> and <span class="math" data-tex="\(\beta(1_2)\)">\(\beta(1_2)\)</span> are positive with sum <span class="math" data-tex="\(1_B\)">\(1_B\)</span>, and both satisfy <span class="math" data-tex="\(\psi(x)\psi(y)=\psi(1)\psi(xy)\)">\(\psi(x)\psi(y)=\psi(1)\psi(xy)\)</span> (Lemma 3.1(3) of the previous lesson and Lemma 5.3). It remains to show that their ranges commute. For <span class="math" data-tex="\(y\in M_2\)">\(y\in M_2\)</span> and <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>, Lemmas 5.1, 5.2, 5.4 and 3.2(1) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\beta(y)C_i&amp;=l\sigma(y)kW^*r_i\\
+&amp;=(k-k^2)\sigma(y)W^*r_i\\
+&amp;=W^*\varphi\bigl(Q(d)\sigma(y)\bigr)r_i\\
+&amp;=W^*r_iQ(d)\sigma(y)\\
+&amp;=W^*r_ih(1-h-k)\sigma(y)\\
+&amp;=C_i\beta(y).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\beta(y)C_i&amp;=l\sigma(y)kW^*r_i\\
+&amp;=(k-k^2)\sigma(y)W^*r_i\\
+&amp;=W^*\varphi\bigl(Q(d)\sigma(y)\bigr)r_i\\
+&amp;=W^*r_iQ(d)\sigma(y)\\
+&amp;=W^*r_ih(1-h-k)\sigma(y)\\
+&amp;=C_i\beta(y).
+\end{aligned}
+\]</span>
+In the second line, <span class="math" data-tex="\(l\)">\(l\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> commute with <span class="math" data-tex="\(\sigma(y)\)">\(\sigma(y)\)</span> and <span class="math" data-tex="\(lk=k-hk-k^2=k-k^2\)">\(lk=k-hk-k^2=k-k^2\)</span>; the fourth line uses <span class="math" data-tex="\(Q(d)\sigma(y)=\lambda(Qy)\in\operatorname{Her}(a)\)">\(Q(d)\sigma(y)=\lambda(Qy)\in\operatorname{Her}(a)\)</span> (Lemma 4.1); the fifth uses <span class="math" data-tex="\(hk=0\)">\(hk=0\)</span>. Replacing <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(y^*\)">\(y^*\)</span> and taking adjoints gives <span class="math" data-tex="\(C_i^*\beta(y)=\beta(y)C_i^*\)">\(C_i^*\beta(y)=\beta(y)C_i^*\)</span>. So <span class="math" data-tex="\(\beta(M_2)\)">\(\beta(M_2)\)</span> commutes with the unital C*-algebra <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> generated by <span class="math" data-tex="\(C_1,C_2\)">\(C_1,C_2\)</span>.</p>
+<p><span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> contains <span class="math" data-tex="\(\alpha(M_3)\)">\(\alpha(M_3)\)</span>. Indeed, <span class="math" data-tex="\(C_1^*C_1=hr_1^*WW^*r_1h=heh=h^2\)">\(C_1^*C_1=hr_1^*WW^*r_1h=heh=h^2\)</span>, so <span class="math" data-tex="\(\alpha(e_{33})=x_3^*x_3=h\in\mathcal C\)">\(\alpha(e_{33})=x_3^*x_3=h\in\mathcal C\)</span>. For <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>, <span class="math" data-tex="\(\alpha(e_{ii})=W^*r_ihr_i^*W\ge0\)">\(\alpha(e_{ii})=W^*r_ihr_i^*W\ge0\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha(e_{ii})^2&amp;=W^*r_iheh\,r_i^*W\\
+&amp;=W^*r_ih^2r_i^*W=C_iC_i^*,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha(e_{ii})^2&amp;=W^*r_iheh\,r_i^*W\\
+&amp;=W^*r_ih^2r_i^*W=C_iC_i^*,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(\alpha(e_{ii})\in\mathcal C\)">\(\alpha(e_{ii})\in\mathcal C\)</span> and <span class="math" data-tex="\(A_0:=\alpha(1_3)\in\mathcal C\)">\(A_0:=\alpha(1_3)\in\mathcal C\)</span>. Also <span class="math" data-tex="\(\alpha(e_{i3})=C_i\)">\(\alpha(e_{i3})=C_i\)</span> and <span class="math" data-tex="\(\alpha(e_{3i})=C_i^*\)">\(\alpha(e_{3i})=C_i^*\)</span>. For <span class="math" data-tex="\(i,j\le2\)">\(i,j\le2\)</span>, <span class="math" data-tex="\(C_iC_j^*=\alpha(e_{i3})\alpha(e_{3j})=A_0\alpha(e_{ij})\)">\(C_iC_j^*=\alpha(e_{i3})\alpha(e_{3j})=A_0\alpha(e_{ij})\)</span> by Lemma 3.1(3) of the previous lesson. Its supporting homomorphism <span class="math" data-tex="\(\bar\alpha\)">\(\bar\alpha\)</span> gives <span class="math" data-tex="\(\alpha(e_{ij})=A_0\bar\alpha(e_{ij})\)">\(\alpha(e_{ij})=A_0\bar\alpha(e_{ij})\)</span>, so for <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl\|\alpha(e_{ij})-(A_0+\tau)^{-1}C_iC_j^*\bigr\|\\
+&amp;\quad=\bigl\|\tau(A_0+\tau)^{-1}A_0\bar\alpha(e_{ij})\bigr\|\le\tau ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl\|\alpha(e_{ij})-(A_0+\tau)^{-1}C_iC_j^*\bigr\|\\
+&amp;\quad=\bigl\|\tau(A_0+\tau)^{-1}A_0\bar\alpha(e_{ij})\bigr\|\le\tau ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\((A_0+\tau)^{-1}C_iC_j^*\in\mathcal C\)">\((A_0+\tau)^{-1}C_iC_j^*\in\mathcal C\)</span>. Hence <span class="math" data-tex="\(\alpha(e_{ij})\in\mathcal C\)">\(\alpha(e_{ij})\in\mathcal C\)</span>. So the ranges of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> commute, and Lemma 4.1 of <a href="cuntz-comparison-and-order-zero-maps.html">Cuntz comparison and order-zero maps</a> gives a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(I(2,3)\to B\)">\(I(2,3)\to B\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> In <span class="math" data-tex="\(B=M_5\)">\(B=M_5\)</span>, let <span class="math" data-tex="\(w=e_{31}+e_{42}\)">\(w=e_{31}+e_{42}\)</span>, <span class="math" data-tex="\(a_1=w^*w\)">\(a_1=w^*w\)</span> and <span class="math" data-tex="\(a_2=ww^*\)">\(a_2=ww^*\)</span>. Verify the hypothesis of Proposition 1.1 with <span class="math" data-tex="\(\varepsilon=1/2\)">\(\varepsilon=1/2\)</span>, and write down a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(I(2,3)\to M_5\)">\(I(2,3)\to M_5\)</span> directly.</p>
+<p><strong>6.2.</strong> Show that the hypothesis of Proposition 1.1 never holds in <span class="math" data-tex="\(B=\mathbb C\)">\(B=\mathbb C\)</span>, and explain why this is consistent with the conclusion.</p>
+<p><strong>6.3.</strong> Follow the proof when <span class="math" data-tex="\(a_1+a_2=1_B\)">\(a_1+a_2=1_B\)</span>. Show that <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, <span class="math" data-tex="\(W=1\)">\(W=1\)</span>, <span class="math" data-tex="\(h=k=0\)">\(h=k=0\)</span>, <span class="math" data-tex="\(l=1\)">\(l=1\)</span>, <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, and that <span class="math" data-tex="\(\beta=\sigma\)">\(\beta=\sigma\)</span> is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(M_2\to B\)">\(M_2\to B\)</span>.</p>
+<p><strong>6.4.</strong> Why can Section 5 not use the constant function <span class="math" data-tex="\(U=S\)">\(U=S\)</span> in place of the path <span class="math" data-tex="\(U(t)\)">\(U(t)\)</span>?</p>
+<p><strong>6.5.</strong> Show that <span class="math" data-tex="\(E\)">\(E\)</span> is a unital C*-algebra and that <span class="math" data-tex="\(D_2\)">\(D_2\)</span> is a closed two-sided ideal of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(a_1=e_{11}+e_{22}\)">\(a_1=e_{11}+e_{22}\)</span> and <span class="math" data-tex="\(a_2=e_{33}+e_{44}\)">\(a_2=e_{33}+e_{44}\)</span> are orthogonal projections, <span class="math" data-tex="\(c=e_{55}\)">\(c=e_{55}\)</span> and <span class="math" data-tex="\((a_1-1/2)_+=\frac12(e_{11}+e_{22})\)">\((a_1-1/2)_+=\frac12(e_{11}+e_{22})\)</span>. The element <span class="math" data-tex="\(x=\sqrt2\,e_{15}\)">\(x=\sqrt2\,e_{15}\)</span> gives <span class="math" data-tex="\(x^*(a_1-1/2)_+x=e_{55}\)">\(x^*(a_1-1/2)_+x=e_{55}\)</span>. A homomorphism: write <span class="math" data-tex="\(F(0)=X\otimes1_3\)">\(F(0)=X\otimes1_3\)</span> and <span class="math" data-tex="\(F(1)=1_2\otimes Y\)">\(F(1)=1_2\otimes Y\)</span>; then <span class="math" data-tex="\(F\mapsto\operatorname{diag}(X,Y)\)">\(F\mapsto\operatorname{diag}(X,Y)\)</span> is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(I(2,3)\to M_2\oplus M_3\subseteq M_5\)">\(I(2,3)\to M_2\oplus M_3\subseteq M_5\)</span>.</p>
+<p><strong>6.2.</strong> In <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, <span class="math" data-tex="\(a_1a_2=|w|^4=0\)">\(a_1a_2=|w|^4=0\)</span> forces <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, so <span class="math" data-tex="\(a_1=a_2=0\)">\(a_1=a_2=0\)</span>, <span class="math" data-tex="\(c=1\)">\(c=1\)</span> and <span class="math" data-tex="\((a_1-\varepsilon)_+=0\)">\((a_1-\varepsilon)_+=0\)</span>; but <span class="math" data-tex="\(x^*0x=0\)">\(x^*0x=0\)</span> cannot approximate <span class="math" data-tex="\(1\)">\(1\)</span>. The conclusion would compose with the identity character of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> to give a character of <span class="math" data-tex="\(I(2,3)\)">\(I(2,3)\)</span>, which has none (Lemma 4.1 of <a href="central-sequences-and-the-character-criterion.html">Central sequences and the character criterion</a>).</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(c=0\)">\(c=0\)</span> gives <span class="math" data-tex="\(a=\varepsilon^{-1}(c-(1-\varepsilon))_+=0\)">\(a=\varepsilon^{-1}(c-(1-\varepsilon))_+=0\)</span>, so <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, <span class="math" data-tex="\(r_i=0\)">\(r_i=0\)</span>, <span class="math" data-tex="\(R=0\)">\(R=0\)</span> and <span class="math" data-tex="\(\operatorname{Her}(a)=0\)">\(\operatorname{Her}(a)=0\)</span>. Then <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span>, <span class="math" data-tex="\(w_0=0\)">\(w_0=0\)</span> and <span class="math" data-tex="\(W=1\)">\(W=1\)</span>; <span class="math" data-tex="\(h=g(1)=0\)">\(h=g(1)=0\)</span>, <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, <span class="math" data-tex="\(l=1\)">\(l=1\)</span>, all <span class="math" data-tex="\(x_i=0\)">\(x_i=0\)</span>, so <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, and <span class="math" data-tex="\(\beta(y)=\sigma(y)\)">\(\beta(y)=\sigma(y)\)</span> with <span class="math" data-tex="\(\sigma(1_2)=p=1\)">\(\sigma(1_2)=p=1\)</span>.</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(S\)">\(S\)</span> is not a scalar matrix, so for <span class="math" data-tex="\(F\in D_2\)">\(F\in D_2\)</span> with <span class="math" data-tex="\(c_F\ne0\)">\(c_F\ne0\)</span> the value <span class="math" data-tex="\((SF)(0)=c_FS\)">\((SF)(0)=c_FS\)</span> is not in <span class="math" data-tex="\(\mathbb C1_4\)">\(\mathbb C1_4\)</span>: <span class="math" data-tex="\(SF\notin D_2\)">\(SF\notin D_2\)</span>, and <span class="math" data-tex="\(\gamma(SF)\)">\(\gamma(SF)\)</span> is not defined. Lemma 4.3 needs a unitary of <span class="math" data-tex="\(E\)">\(E\)</span>; the path starts at the scalar <span class="math" data-tex="\(1\)">\(1\)</span> and reaches <span class="math" data-tex="\(S\)">\(S\)</span> only on <span class="math" data-tex="\([2/3,1]\)">\([2/3,1]\)</span>, where the weight <span class="math" data-tex="\(Q\)">\(Q\)</span> lives.</p>
+<p><strong>6.5.</strong> <span class="math" data-tex="\(E\)">\(E\)</span> is closed in <span class="math" data-tex="\(C([0,1],M_4)\)">\(C([0,1],M_4)\)</span> under sums, products, adjoints and uniform limits, and contains <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(G\in E\)">\(G\in E\)</span> and <span class="math" data-tex="\(F\in D_2\)">\(F\in D_2\)</span>, <span class="math" data-tex="\((GF)(0)=G(0)F(0)\in\mathbb C1_4\)">\((GF)(0)=G(0)F(0)\in\mathbb C1_4\)</span> and <span class="math" data-tex="\((GF)(1)=0\)">\((GF)(1)=0\)</span>, and similarly for <span class="math" data-tex="\(FG\)">\(FG\)</span>; <span class="math" data-tex="\(D_2\)">\(D_2\)</span> is closed under uniform limits.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-KRC] OpenAI, <em>The Kirchberg–Rørdam character criterion</em>, OpenAI Math Release preprint, 25 September 2026, Proposition 2.1 and Section 3. https://github.com/openai/math/tree/main/preprints/The-Kirchberg-Rordam-character-criterion-September-25-2026</li>
+<li>[RW] M. Rørdam and W. Winter, <em>The Jiang–Su algebra revisited</em>, author manuscript, 27 January 2009, Proposition 5.1. https://web.math.ku.dk/~rordam/manus/jiang-su-revisited.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

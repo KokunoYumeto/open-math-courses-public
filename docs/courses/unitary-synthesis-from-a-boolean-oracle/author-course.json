@@ -1,0 +1,40 @@
+{
+  "schema": "claude-bridge-course/v1",
+  "id": "unitary-synthesis-from-a-boolean-oracle",
+  "title": "Unitary synthesis from a Boolean oracle",
+  "author": "Claude Opus 5.5 (Anthropic)",
+  "written": "2026-10-14",
+  "status": "Self-checked by the writing AI",
+  "licence": "CC0-1.0",
+  "description": "An exposition of OpenAI's proof (2026) of the constant-error form of the Aaronson-Kuperberg unitary synthesis problem: one quantum oracle circuit, generated in polynomial time from n alone, with polynomially many qubits, gates H, T, T*, CNOT and oracle calls of polynomial length, approximates every n-qubit unitary within diamond-norm distance 1/2 once a suitable Boolean oracle is chosen. The first lesson fixes the model, states the theorem and proves the facts on the trace norm and the passage from operator-norm to diamond-norm errors. The second treats programmable slots: state preparation, permutations of the basis and Fourier transforms. The third makes a diagonal block of norm at most 3/4 with random signs and Walsh-Hadamard transforms, through a moment estimate for sums of matrices with random signs. The fourth closes the internal coordinates through diagonal phases and builds two nearly isometric field maps intertwining the unitary with a smaller one, whose rows have few nonzero Fourier coefficients. The fifth implements them by amplitude amplification and assembles the recursion. The sixth compiles every slot into words in H, T, T* read from one oracle, keeping the phases, and proves the theorem.",
+  "prerequisites": [
+    "core course Real Analysis II (Lebl, Basic Analysis II): the inverse function theorem (Theorem 8.5.1); compactness and continuity in finite dimensions",
+    "linear algebra over the complex numbers: inner products, operator norms, unitary and Hermitian matrices, tensor products",
+    "probability on finite sets and Gaussian integrals: independence, expectation, Markov's and Jensen's inequalities, Fubini's theorem, integration by parts"
+  ],
+  "lessons": [
+    "oracle-circuits-and-the-synthesis-theorem",
+    "programmable-slots",
+    "a-contracting-block",
+    "fourier-fields-for-a-smaller-unitary",
+    "encoders-and-the-recursion",
+    "compilation-into-one-boolean-oracle"
+  ],
+  "checks": {
+    "paid_citations": 0,
+    "reading": "The manuscript 'Polynomial-Time Unitary Synthesis from a Boolean Oracle' (OpenAI, 5 Oct 2026; main.tex and seven section files of 168, 133, 217, 248, 186, 163 and 268 lines) was read in full on 14 Oct 2026, and every step of its argument was derived again while the lessons were written: the slot constructions (state preparation, permutations, Fourier transforms); the matrix sign estimate by Gaussian integration by parts and the weighted mean inequality, and the return to signs; the choice of the two sign matrices, with the sub-Gaussian tail and the union bound, and the norm of the internal block; the number of reductions; the transfer function, its unitarity and the identity FE* = R*V; the truncations, the averaging over the common phase and the telescoping Gram sums; the power-sum phases, Newton's identities and the row bound; the block encoding, the reflections and the error of the amplified map; the field encoders; one synthesis step and the recursion with its error and resources; the density of determinant-one words, the commutator refinement and the length bound; the phase qubit, the oracle lookup and the exact controlled symbols; the final error. No error found. Differences of presentation, none a correction: the spectral theorem for Hermitian matrices, the trace-norm facts, Gaussian integration by parts, the bound cosh x <= exp(x^2/2), Newton's identities and the recovery of a multiset from its monic polynomial are proved in the lessons; the singular vectors of the encoded map are obtained from the spectral theorem; the irrationality of the rotation angle of (HTH)T is proved with the polynomials P_m(2 cos t) = 2 cos(mt) and a parity argument, instead of algebraic integers; the commutator refinement is carried out with explicit constants (84 and 94 times eps^(3/2)), and K_w is the length of the initial net; the final accounting gives clean-workspace error below 1/50 and diamond-norm error below 1/25, inside the manuscript's 1/10 and 1/5. Free sources read on 14 Oct 2026: Aaronson-Kuperberg, arXiv:quant-ph/0604056 (Section 7, Problem (4), the question); Brassard-Hoyer-Mosca-Tapp, arXiv:quant-ph/0005055 (section structure: Section 2 is amplitude amplification). Checked by the program plan/checks_20261014/us_check.py (nine parts: the trace-norm facts and Proposition 4.2 of the first lesson on random near-unitary circuits; state preparation, permutations and Fourier transforms simulated slot by slot; the trace inequality and Monte Carlo means of the sign estimate; the number of reductions for n = 1 to 64 computed exactly; the transfer function identities; the Gram bounds and the intertwining with exact averaging over the roots of unity; Newton recovery and the row bound by symbolic expansion of the monomials; the encoder built from its three steps with the amplification error; the gate identities, the polynomials P_m and the commutator estimates). Run a failed two gate identities in part i because sympy did not simplify exact products of matrices to zero; numerically, to 40 digits, they hold, and run b, comparing to 40 digits, passes all nine parts (output us_check_run_20261014b.txt).",
+    "layout": "Measured on 14 Oct 2026 in the staged reader at 1100, 768, 543 and 375 px: lessons 1 to 6 have 241, 158, 239, 280, 287 and 401 formulas, 0 rendering errors, 0 wide formulas, no sideways page scroll. After the first measurement 42 formulas were stacked or split (script fix_usw1.py): side-by-side displays became stacked rows, long chains of inequalities were broken after a relation, the intertwining estimate of the fourth lesson uses an abbreviation Delta(z), and an exercise of the sixth lesson refers to the parity identity instead of repeating it."
+  },
+  "open_obligations": [
+    "Background from the core courses is used without numbered references in the lessons: compactness of the unit sphere, Fubini's theorem, Markov's and Jensen's inequalities, integration by parts. The inverse function theorem is cited with its number (Lebl, Basic Analysis II, Theorem 8.5.1).",
+    "The integer K_w of the compilation lemma is shown to exist, as the length of a finite net of words; its value is not computed, and the generating algorithm of the theorem contains it as a constant, as in the manuscript. The theorem gives no efficient procedure to construct the oracle.",
+    "The context quoted in the first lesson (earlier state-synthesis results, lower bounds, other synthesis constructions) is not used; only the Aaronson-Kuperberg question and the amplitude amplification section of Brassard-Hoyer-Mosca-Tapp were read.",
+    "The lessons were written and checked by one model in one session; they have not been checked by a second reader."
+  ],
+  "free_sources": [
+    "OpenAI, Polynomial-Time Unitary Synthesis from a Boolean Oracle (OpenAI Math Release preprint, 5 Oct 2026)",
+    "S. Aaronson, G. Kuperberg, Quantum versus classical proofs and advice, arXiv:quant-ph/0604056",
+    "G. Brassard, P. Hoyer, M. Mosca, A. Tapp, Quantum amplitude amplification and estimation, arXiv:quant-ph/0005055",
+    "J. Lebl, Basic Analysis II, version 6.3 (core course Real Analysis II)"
+  ]
+}

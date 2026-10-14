@@ -1,0 +1,226 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Encoders and the recursion</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Unitary synthesis from a Boolean oracle)</a><a href="fourier-fields-for-a-smaller-unitary.html">Previous lesson</a><a href="compilation-into-one-boolean-oracle.html">Next lesson</a><a href="src/encoders-and-the-recursion.md">Editable source</a></nav><main><article><h1 id="encoders-and-the-recursion">Encoders and the recursion</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A matrix with few nonzero entries in each row can be applied by slots: prepare each column while keeping its input index, then erase the index, conditionally on the output row, with an amplitude that depends only on the maximal row size, and amplify the result by reflections. When the matrix is nearly isometric, all its singular directions need nearly the same amplification angle (Lemma 1.1). Applied to the field maps of the previous lesson this gives two encoders (Proposition 2.1). One call of a circuit for the smaller unitaries <span class="math" data-tex="\(F(z)\)">\(F(z)\)</span>, between the two encoders, synthesizes <span class="math" data-tex="\(V\)">\(V\)</span> (Lemma 3.1), and the recursion over the dimension gives a programmable circuit of polynomial size for every family of unitaries, with error below <span class="math" data-tex="\(1/100\)">\(1/100\)</span> (Proposition 4.1).</p>
+<ul>
+<li>Row-sparse nearly isometric maps (Lemma 1.1).</li>
+<li>The field encoders (Proposition 2.1).</li>
+<li>One synthesis step (Lemma 3.1).</li>
+<li>The recursion (Proposition 4.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-US, Sections 5 and 6]. It uses <a href="programmable-slots.html">Programmable slots</a>, <a href="a-contracting-block.html">A contracting block</a> and <a href="fourier-fields-for-a-smaller-unitary.html">Fourier fields for a smaller unitary</a>. The reflection argument is amplitude amplification [BHMT, Section 2].</p>
+<h2 id="1-row-sparse-nearly-isometric-maps">1. Row-sparse nearly isometric maps</h2>
+<p>Let <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> be a set of <em>rows</em>, encoded in a register of <span class="math" data-tex="\(w\)">\(w\)</span> qubits, and let <span class="math" data-tex="\(T\colon\mathbb C^d\to\mathbb C^{\mathcal R}\)">\(T\colon\mathbb C^d\to\mathbb C^{\mathcal R}\)</span>, with <span class="math" data-tex="\(d\le2^n\)">\(d\le2^n\)</span>, have the entries <span class="math" data-tex="\(a_{ui}\)">\(a_{ui}\)</span>. Fix an integer <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span>, and suppose that every row has at most <span class="math" data-tex="\(L\)">\(L\)</span> nonzero entries and
+<span class="math math-display" data-tex="\[
+(1-\varepsilon)I_d\le T^*T\le I_d,\qquad0\le\varepsilon&lt;1 .
+\]">\[
+(1-\varepsilon)I_d\le T^*T\le I_d,\qquad0\le\varepsilon&lt;1 .
+\]</span>
+These data may depend on a label register, with the same sizes and bounds for every label.</p>
+<p><em>Layout.</em> Extend the <span class="math" data-tex="\(n\)">\(n\)</span>-qubit input index by <span class="math" data-tex="\(h=\lceil\log_2(L+1)\rceil\)">\(h=\lceil\log_2(L+1)\rceil\)</span> higher bits, and add the row register and two one-qubit <em>flags</em>. Let <span class="math" data-tex="\(\iota\)">\(\iota\)</span> embed <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> as the valid input indices with all new qubits zero, and let <span class="math" data-tex="\(\jmath\)">\(\jmath\)</span> embed <span class="math" data-tex="\(\mathbb C^{\mathcal R}\)">\(\mathbb C^{\mathcal R}\)</span> with the extended index zero, the row in the row register, and both flags equal to one. Put <span class="math" data-tex="\(P_0=\iota\iota^*\)">\(P_0=\iota\iota^*\)</span> and <span class="math" data-tex="\(Q=\jmath\jmath^*\)">\(Q=\jmath\jmath^*\)</span>; the range of <span class="math" data-tex="\(Q\)">\(Q\)</span> is the <em>good subspace</em>.</p>
+<p><strong>Lemma 1.1</strong> ([OpenAI-US, Lemma 5.1]). There is a slot circuit <span class="math" data-tex="\(\mathsf U_T\)">\(\mathsf U_T\)</span> with
+<span class="math math-display" data-tex="\[
+\|\mathsf U_T\iota-\jmath T\|\le5\varepsilon .
+\]">\[
+\|\mathsf U_T\iota-\jmath T\|\le5\varepsilon .
+\]</span>
+It uses <span class="math" data-tex="\(O(L(n+w+h))\)">\(O(L(n+w+h))\)</span> slots and <span class="math" data-tex="\(w+h+2\)">\(w+h+2\)</span> fresh qubits; its skeleton depends only on the sizes, <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span>, and it works coherently for families indexed by labels.</p>
+<p><em>Proof.</em> <em>A block encoding.</em> Put
+<span class="math math-display" data-tex="\[
+\theta=\frac\pi{4L+2},\qquad t_0=\sin\theta .
+\]">\[
+\theta=\frac\pi{4L+2},\qquad t_0=\sin\theta .
+\]</span>
+We first build a unitary <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> with
+<span class="math math-display" data-tex="\[
+\jmath^*\mathsf B\iota=t_0T .
+\]">\[
+\jmath^*\mathsf B\iota=t_0T .
+\]</span>
+(i) For each valid input <span class="math" data-tex="\(i\)">\(i\)</span>, the column <span class="math" data-tex="\(Te_i\)">\(Te_i\)</span> has norm at most <span class="math" data-tex="\(1\)">\(1\)</span>. Conditionally on <span class="math" data-tex="\(i\)">\(i\)</span>, prepare in the row register and the first flag (Lemma 2.1 of <a href="programmable-slots.html">Programmable slots</a>) a unit vector whose flag-one part is <span class="math" data-tex="\(\sum_ua_{ui}|u\rangle|1\rangle\)">\(\sum_ua_{ui}|u\rangle|1\rangle\)</span>, the remaining norm lying in the flag-zero part; the input index is not changed. (ii) For each row <span class="math" data-tex="\(u\)">\(u\)</span>, choose a list <span class="math" data-tex="\(I_u\)">\(I_u\)</span> of exactly <span class="math" data-tex="\(L\)">\(L\)</span> distinct extended indices containing every <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(a_{ui}\ne0\)">\(a_{ui}\ne0\)</span>; this is possible since there are <span class="math" data-tex="\(2^{n+h}\ge2^n(L+1)&gt;L\)">\(2^{n+h}\ge2^n(L+1)&gt;L\)</span> extended indices, valid or not. Conditionally on the row, apply the inverse of a state preparation of <span class="math" data-tex="\(L^{-1/2}\sum_{i\in I_u}|i\rangle\)">\(L^{-1/2}\sum_{i\in I_u}|i\rangle\)</span> on the extended index register; its matrix element from <span class="math" data-tex="\(|i\rangle\)">\(|i\rangle\)</span>, <span class="math" data-tex="\(i\in I_u\)">\(i\in I_u\)</span>, to <span class="math" data-tex="\(|0\rangle\)">\(|0\rangle\)</span> is <span class="math" data-tex="\(1/\sqrt L\)">\(1/\sqrt L\)</span>. (iii) Rotate the second flag from <span class="math" data-tex="\(|0\rangle\)">\(|0\rangle\)</span> to a unit vector with amplitude <span class="math" data-tex="\(t_0\sqrt L\)">\(t_0\sqrt L\)</span> at <span class="math" data-tex="\(|1\rangle\)">\(|1\rangle\)</span>; this is possible because
+<span class="math math-display" data-tex="\[
+t_0\sqrt L\le\theta\sqrt L\le\frac{\pi\sqrt L}{4L+2}&lt;1 .
+\]">\[
+t_0\sqrt L\le\theta\sqrt L\le\frac{\pi\sqrt L}{4L+2}&lt;1 .
+\]</span>
+Unitary extensions for invalid indices and rows are arbitrary. Projecting onto the extended index zero and both flags one multiplies each <span class="math" data-tex="\(a_{ui}\)">\(a_{ui}\)</span> by <span class="math" data-tex="\((1/\sqrt L)\,t_0\sqrt L=t_0\)">\((1/\sqrt L)\,t_0\sqrt L=t_0\)</span>, which proves the block identity.</p>
+<p><em>Amplification.</em> Let
+<span class="math math-display" data-tex="\[
+\mathsf U_T=\bigl[(2\mathsf BP_0\mathsf B^*-I)(I-2Q)\bigr]^L\mathsf B .
+\]">\[
+\mathsf U_T=\bigl[(2\mathsf BP_0\mathsf B^*-I)(I-2Q)\bigr]^L\mathsf B .
+\]</span>
+Here <span class="math" data-tex="\(2\mathsf BP_0\mathsf B^*-I=\mathsf B(2P_0-I)\mathsf B^*\)">\(2\mathsf BP_0\mathsf B^*-I=\mathsf B(2P_0-I)\mathsf B^*\)</span>, and <span class="math" data-tex="\(2P_0-I\)">\(2P_0-I\)</span> and <span class="math" data-tex="\(I-2Q\)">\(I-2Q\)</span> are reflections in spans of computational basis vectors, one slot each. By Lemma 3.1 of <a href="oracle-circuits-and-the-synthesis-theorem.html">Oracle circuits and the synthesis theorem</a>, applied to <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span>, there is an orthonormal basis <span class="math" data-tex="\(v_j\)">\(v_j\)</span> of <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> with <span class="math" data-tex="\(T^*Tv_j=\sigma_j^2v_j\)">\(T^*Tv_j=\sigma_j^2v_j\)</span>, where
+<span class="math math-display" data-tex="\[
+\sqrt{1-\varepsilon}\le\sigma_j\le1 ,
+\]">\[
+\sqrt{1-\varepsilon}\le\sigma_j\le1 ,
+\]</span>
+and the vectors <span class="math" data-tex="\(e_j=Tv_j/\sigma_j\)">\(e_j=Tv_j/\sigma_j\)</span> are orthonormal, since <span class="math" data-tex="\(\langle Tv_j,Tv_k\rangle=\langle v_j,T^*Tv_k\rangle\)">\(\langle Tv_j,Tv_k\rangle=\langle v_j,T^*Tv_k\rangle\)</span>. Identify <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> and <span class="math" data-tex="\(\mathbb C^{\mathcal R}\)">\(\mathbb C^{\mathcal R}\)</span> with their images under <span class="math" data-tex="\(\iota\)">\(\iota\)</span> and <span class="math" data-tex="\(\jmath\)">\(\jmath\)</span>. As <span class="math" data-tex="\(Q\mathsf Bv_j=\jmath t_0Tv_j=t_0\sigma_je_j\)">\(Q\mathsf Bv_j=\jmath t_0Tv_j=t_0\sigma_je_j\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathsf Bv_j=\sin\beta_j\,e_j+\cos\beta_j\,e_j&#x27;,\\
+\beta_j=\arcsin(t_0\sigma_j),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathsf Bv_j=\sin\beta_j\,e_j+\cos\beta_j\,e_j&#x27;,\\
+\beta_j=\arcsin(t_0\sigma_j),
+\end{gathered}
+\]</span>
+with a unit vector <span class="math" data-tex="\(e_j&#x27;\)">\(e_j&#x27;\)</span> in the kernel of <span class="math" data-tex="\(Q\)">\(Q\)</span>; note <span class="math" data-tex="\(\cos\beta_j&gt;0\)">\(\cos\beta_j&gt;0\)</span>. The <span class="math" data-tex="\(e_j&#x27;\)">\(e_j&#x27;\)</span> are orthonormal: for <span class="math" data-tex="\(j\ne k\)">\(j\ne k\)</span>, <span class="math" data-tex="\(0=\langle\mathsf Bv_j,\mathsf Bv_k\rangle=\cos\beta_j\cos\beta_k\langle e_j&#x27;,e_k&#x27;\rangle\)">\(0=\langle\mathsf Bv_j,\mathsf Bv_k\rangle=\cos\beta_j\cos\beta_k\langle e_j&#x27;,e_k&#x27;\rangle\)</span>. And every <span class="math" data-tex="\(e_j&#x27;\)">\(e_j&#x27;\)</span> is orthogonal to every <span class="math" data-tex="\(e_k\)">\(e_k\)</span>. So the planes <span class="math" data-tex="\(\Pi_j=\operatorname{span}\{e_j,e_j&#x27;\}\)">\(\Pi_j=\operatorname{span}\{e_j,e_j&#x27;\}\)</span> are mutually orthogonal.</p>
+<p>The first reflection is the reflection in the range of <span class="math" data-tex="\(\mathsf BP_0\)">\(\mathsf BP_0\)</span>, which is spanned by the <span class="math" data-tex="\(\mathsf Bv_k\)">\(\mathsf Bv_k\)</span>. The vector <span class="math" data-tex="\(\cos\beta_j\,e_j-\sin\beta_j\,e_j&#x27;\)">\(\cos\beta_j\,e_j-\sin\beta_j\,e_j&#x27;\)</span> of <span class="math" data-tex="\(\Pi_j\)">\(\Pi_j\)</span> is orthogonal to all <span class="math" data-tex="\(\mathsf Bv_k\)">\(\mathsf Bv_k\)</span>, so on <span class="math" data-tex="\(\Pi_j\)">\(\Pi_j\)</span> this reflection fixes <span class="math" data-tex="\(\mathsf Bv_j\)">\(\mathsf Bv_j\)</span> and negates the orthogonal direction. The second changes the sign of <span class="math" data-tex="\(e_j\)">\(e_j\)</span> and fixes <span class="math" data-tex="\(e_j&#x27;\)">\(e_j&#x27;\)</span>. Writing <span class="math" data-tex="\(\Pi_j\ni\sin\alpha\,e_j+\cos\alpha\,e_j&#x27;\)">\(\Pi_j\ni\sin\alpha\,e_j+\cos\alpha\,e_j&#x27;\)</span> by its angle <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the second reflection sends <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(-\alpha\)">\(-\alpha\)</span> and the first sends <span class="math" data-tex="\(-\alpha\)">\(-\alpha\)</span> to <span class="math" data-tex="\(2\beta_j+\alpha\)">\(2\beta_j+\alpha\)</span>. So each round adds <span class="math" data-tex="\(2\beta_j\)">\(2\beta_j\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathsf U_Tv_j=\sin\varphi_j\,e_j+\cos\varphi_j\,e_j&#x27;,\\
+\varphi_j=(2L+1)\beta_j .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathsf U_Tv_j=\sin\varphi_j\,e_j+\cos\varphi_j\,e_j&#x27;,\\
+\varphi_j=(2L+1)\beta_j .
+\end{gathered}
+\]</span></p>
+<p><em>The error.</em> As <span class="math" data-tex="\((2L+1)\theta=\pi/2\)">\((2L+1)\theta=\pi/2\)</span> and <span class="math" data-tex="\(\varphi_j\le\pi/2\)">\(\varphi_j\le\pi/2\)</span>, the distance from <span class="math" data-tex="\(\mathsf U_Tv_j\)">\(\mathsf U_Tv_j\)</span> to <span class="math" data-tex="\(e_j\)">\(e_j\)</span> is <span class="math" data-tex="\(2\sin\bigl((\pi/2-\varphi_j)/2\bigr)\le(2L+1)(\theta-\beta_j)\)">\(2\sin\bigl((\pi/2-\varphi_j)/2\bigr)\le(2L+1)(\theta-\beta_j)\)</span>, and so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\mathsf U_Tv_j-\sigma_je_j\|&amp;\le(2L+1)(\theta-\beta_j)\\
+&amp;\quad+(1-\sigma_j).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\mathsf U_Tv_j-\sigma_je_j\|&amp;\le(2L+1)(\theta-\beta_j)\\
+&amp;\quad+(1-\sigma_j).
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(t_0\le\sin(\pi/6)=1/2\)">\(t_0\le\sin(\pi/6)=1/2\)</span>, the derivative of <span class="math" data-tex="\(\arcsin\)">\(\arcsin\)</span> is at most <span class="math" data-tex="\(2\)">\(2\)</span> on <span class="math" data-tex="\([0,t_0]\)">\([0,t_0]\)</span>, so <span class="math" data-tex="\(\theta-\beta_j\le2t_0(1-\sigma_j)\le2\theta(1-\sigma_j)\)">\(\theta-\beta_j\le2t_0(1-\sigma_j)\le2\theta(1-\sigma_j)\)</span>, and <span class="math" data-tex="\((2L+1)\,2\theta=\pi\)">\((2L+1)\,2\theta=\pi\)</span>. With <span class="math" data-tex="\(1-\sigma_j\le1-\sqrt{1-\varepsilon}\le\varepsilon\)">\(1-\sigma_j\le1-\sqrt{1-\varepsilon}\le\varepsilon\)</span>,
+<span class="math math-display" data-tex="\[
+\|\mathsf U_Tv_j-\sigma_je_j\|\le(\pi+1)\varepsilon\le5\varepsilon .
+\]">\[
+\|\mathsf U_Tv_j-\sigma_je_j\|\le(\pi+1)\varepsilon\le5\varepsilon .
+\]</span>
+The error vectors <span class="math" data-tex="\(\mathsf U_Tv_j-\sigma_je_j\)">\(\mathsf U_Tv_j-\sigma_je_j\)</span> lie in the mutually orthogonal planes <span class="math" data-tex="\(\Pi_j\)">\(\Pi_j\)</span>, so for <span class="math" data-tex="\(x=\sum_jc_jv_j\)">\(x=\sum_jc_jv_j\)</span> the error has norm at most <span class="math" data-tex="\(5\varepsilon\|x\|\)">\(5\varepsilon\|x\|\)</span>.</p>
+<p><em>Resources.</em> Step (i) is a state preparation on <span class="math" data-tex="\(w+1\)">\(w+1\)</span> qubits and step (ii) one on <span class="math" data-tex="\(n+h\)">\(n+h\)</span> qubits, each with additional controls; so <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> takes <span class="math" data-tex="\(O(n+w+h)\)">\(O(n+w+h)\)</span> slots. The circuit has <span class="math" data-tex="\(2L+1\)">\(2L+1\)</span> copies of <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> or <span class="math" data-tex="\(\mathsf B^*\)">\(\mathsf B^*\)</span> and <span class="math" data-tex="\(2L\)">\(2L\)</span> reflections, and the fresh qubits are the <span class="math" data-tex="\(h\)">\(h\)</span> higher index bits, the <span class="math" data-tex="\(w\)">\(w\)</span> row qubits and the two flags. All tables can be chosen for each label separately at the same positions, the labels being added to the controls; the maps are block diagonal in the labels, so the bound holds for superpositions of labels. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-the-field-encoders">2. The field encoders</h2>
+<p>Apply Lemma 1.1 to the field maps of <a href="fourier-fields-for-a-smaller-unitary.html">Fourier fields for a smaller unitary</a>, with the notation there. A row is a frequency <span class="math" data-tex="\(w\in\mathcal G\)">\(w\in\mathcal G\)</span> and a port. Put
+<span class="math math-display" data-tex="\[
+K=b(L+1),\qquad h=\lceil\log_2(L+1)\rceil ,
+\]">\[
+K=b(L+1),\qquad h=\lceil\log_2(L+1)\rceil ,
+\]</span>
+encode the frequency in <span class="math" data-tex="\(K\)">\(K\)</span> qubits and the port in <span class="math" data-tex="\(n\)">\(n\)</span> qubits, using the first <span class="math" data-tex="\(k\)">\(k\)</span> port states. Both field maps have this row space, so they use the same output embedding <span class="math" data-tex="\(\jmath\)">\(\jmath\)</span>: extended input index zero, both flags one, a valid port. This shared layout allows the second encoding to be reversed after the recursive call.</p>
+<p><strong>Proposition 2.1</strong> ([OpenAI-US, Proposition 5.2]). There are slot circuits <span class="math" data-tex="\(\mathsf U_E\)">\(\mathsf U_E\)</span> and <span class="math" data-tex="\(\mathsf U_R\)">\(\mathsf U_R\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\mathsf U_E\iota-\jmath\mathcal E_L\|\le5r^{2L},\\
+\|\mathsf U_R\iota-\jmath\mathcal R_L\|\le5r^{2L}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|\mathsf U_E\iota-\jmath\mathcal E_L\|\le5r^{2L},\\
+\|\mathsf U_R\iota-\jmath\mathcal R_L\|\le5r^{2L}.
+\end{gathered}
+\]</span>
+Each uses <span class="math" data-tex="\(O(L(K+n+h)+K)\)">\(O(L(K+n+h)+K)\)</span> slots and <span class="math" data-tex="\(K+n+h+2\)">\(K+n+h+2\)</span> fresh qubits, with a skeleton independent of <span class="math" data-tex="\(V\)">\(V\)</span>, and works coherently with any further label register.</p>
+<p><em>Proof.</em> Write either field map in the Fourier coordinates of Section 3 of the previous lesson: the coefficient map <span class="math" data-tex="\(T\)">\(T\)</span> has at most <span class="math" data-tex="\(L\)">\(L\)</span> nonzero entries in each row by Proposition 3.2 there, and <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> is the Gram matrix of the field map, because the Fourier basis is orthonormal, so <span class="math" data-tex="\((1-r^{2L})I\le T^*T\le I\)">\((1-r^{2L})I\le T^*T\le I\)</span> by Proposition 2.1 there. Lemma 1.1 with <span class="math" data-tex="\(w=K+n\)">\(w=K+n\)</span> and <span class="math" data-tex="\(\varepsilon=r^{2L}\)">\(\varepsilon=r^{2L}\)</span> gives a circuit with error at most <span class="math" data-tex="\(5r^{2L}\)">\(5r^{2L}\)</span> for <span class="math" data-tex="\(T\)">\(T\)</span>. Then apply the Fourier transform <span class="math" data-tex="\(F_b\)">\(F_b\)</span> of <a href="programmable-slots.html">Programmable slots</a>, Lemma 2.3, to each of the <span class="math" data-tex="\(L+1\)">\(L+1\)</span> factors of the frequency register; it sends <span class="math" data-tex="\(|w\rangle\)">\(|w\rangle\)</span> to <span class="math" data-tex="\(|\mathcal G|^{-1/2}\sum_z\chi_w(z)|z\rangle=|\widehat w\rangle\)">\(|\mathcal G|^{-1/2}\sum_z\chi_w(z)|z\rangle=|\widehat w\rangle\)</span>, so the register now holds the phase label <span class="math" data-tex="\(z\)">\(z\)</span> instead of the frequency <span class="math" data-tex="\(w\)">\(w\)</span>, and the coefficient map becomes the field map. These transforms take <span class="math" data-tex="\(O(K)\)">\(O(K)\)</span> slots, preserve the good subspace, since every frequency is allowed there and the index, flags and port are unchanged, and are unitary, so the error bound is kept. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="3-one-synthesis-step">3. One synthesis step</h2>
+<p><strong>Lemma 3.1</strong> (one synthesis step; [OpenAI-US, Lemma 6.1]). Let <span class="math" data-tex="\(V\)">\(V\)</span> be a unitary on <span class="math" data-tex="\(\mathbb C^{k+s}\)">\(\mathbb C^{k+s}\)</span> in the block form above, with <span class="math" data-tex="\(\|D\|\le r&lt;1\)">\(\|D\|\le r&lt;1\)</span>, and use the fields and encoders with truncation length <span class="math" data-tex="\(L\)">\(L\)</span>. Suppose that a slot circuit <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> solves the controlled task of the family <span class="math" data-tex="\(F(z)\)">\(F(z)\)</span> of <span class="math" data-tex="\(k\)">\(k\)</span>-dimensional unitaries, with the phase label <span class="math" data-tex="\(z\)">\(z\)</span> as label, with clean-workspace error <span class="math" data-tex="\(\delta&#x27;\)">\(\delta&#x27;\)</span>. Then <span class="math" data-tex="\(\mathsf U_R^*\,\mathsf C\,\mathsf U_E\)">\(\mathsf U_R^*\,\mathsf C\,\mathsf U_E\)</span> implements <span class="math" data-tex="\(V\)">\(V\)</span> with clean-workspace error at most
+<span class="math math-display" data-tex="\[
+\delta&#x27;+\frac{2r^L}{1-r}+10r^{2L}.
+\]">\[
+\delta&#x27;+\frac{2r^L}{1-r}+10r^{2L}.
+\]</span>
+The same holds coherently for a family <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>, with <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> controlled by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\iota\)">\(\iota\)</span> embed the input space into the whole layout with all working qubits zero, including the fresh workspace of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>, and let <span class="math" data-tex="\(\jmath\)">\(\jmath\)</span> embed <span class="math" data-tex="\(\mathbb C^{\mathcal G}\otimes\mathbb C^k\)">\(\mathbb C^{\mathcal G}\otimes\mathbb C^k\)</span> into the good subspace, again with the workspace of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> zero. The circuit <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> acts on the port register, the phase register and its own workspace, and as the identity elsewhere; in the good subspace the port is valid, so its guarantee gives
+<span class="math math-display" data-tex="\[
+\|\mathsf C\jmath-\jmath\widetilde F\|\le\delta&#x27; .
+\]">\[
+\|\mathsf C\jmath-\jmath\widetilde F\|\le\delta&#x27; .
+\]</span>
+Put <span class="math" data-tex="\(\tau=r^L/(1-r)\)">\(\tau=r^L/(1-r)\)</span>. The field maps are contractions with <span class="math" data-tex="\(\|\widetilde F\mathcal E_L-\mathcal R_LV\|\le2\tau\)">\(\|\widetilde F\mathcal E_L-\mathcal R_LV\|\le2\tau\)</span> (Proposition 2.1 of the previous lesson), and the encoders satisfy the bounds of Proposition 2.1. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\mathsf C\mathsf U_E\iota-\mathsf U_R\iota V\|\\
+&amp;\quad\le\|\mathsf C(\mathsf U_E\iota-\jmath\mathcal E_L)\|\\
+&amp;\qquad+\|(\mathsf C\jmath-\jmath\widetilde F)\mathcal E_L\|\\
+&amp;\qquad+\|\jmath(\widetilde F\mathcal E_L-\mathcal R_LV)\|\\
+&amp;\qquad+\|(\jmath\mathcal R_L-\mathsf U_R\iota)V\|\\
+&amp;\quad\le5r^{2L}+\delta&#x27;+2\tau+5r^{2L}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\mathsf C\mathsf U_E\iota-\mathsf U_R\iota V\|\\
+&amp;\quad\le\|\mathsf C(\mathsf U_E\iota-\jmath\mathcal E_L)\|\\
+&amp;\qquad+\|(\mathsf C\jmath-\jmath\widetilde F)\mathcal E_L\|\\
+&amp;\qquad+\|\jmath(\widetilde F\mathcal E_L-\mathcal R_LV)\|\\
+&amp;\qquad+\|(\jmath\mathcal R_L-\mathsf U_R\iota)V\|\\
+&amp;\quad\le5r^{2L}+\delta&#x27;+2\tau+5r^{2L}.
+\end{aligned}
+\]</span>
+Multiplying by the unitary <span class="math" data-tex="\(\mathsf U_R^*\)">\(\mathsf U_R^*\)</span> gives the claim. The guarantee of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is used only on the ideal encoded state <span class="math" data-tex="\(\jmath\mathcal E_Lx\)">\(\jmath\mathcal E_Lx\)</span>, of norm at most <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span>; the part of the actual encoded state outside the good subspace is in the first error term and is not enlarged by the unitary <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. For labels <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, all maps are block diagonal in the label basis, and the bounds are uniform in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>The amplification inside <span class="math" data-tex="\(\mathsf U_E\)">\(\mathsf U_E\)</span> and <span class="math" data-tex="\(\mathsf U_R\)">\(\mathsf U_R\)</span> repeats only their own state preparations, never <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>: the smaller circuit is called once.</p>
+<h2 id="4-the-recursion">4. The recursion</h2>
+<p>Keep <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(r=3/4\)">\(r=3/4\)</span> and <span class="math" data-tex="\(J=8M(n+1)\)">\(J=8M(n+1)\)</span> from <a href="a-contracting-block.html">A contracting block</a>, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L=10000J,\qquad K=b(L+1),\\
+b=nL+\lceil\log_2(L+1)\rceil .
+\end{gathered}
+\]">\[
+\begin{gathered}
+L=10000J,\qquad K=b(L+1),\\
+b=nL+\lceil\log_2(L+1)\rceil .
+\end{gathered}
+\]</span></p>
+<p><strong>Proposition 4.1</strong> (uniform programmable synthesis; [OpenAI-US, Proposition 6.2]). Let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(1\le d\le2^n\)">\(1\le d\le2^n\)</span> and <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>. There is a skeleton, determined by <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>, with the following property: for every family <span class="math" data-tex="\((U_\lambda)_{\lambda\in\{0,1\}^t}\)">\((U_\lambda)_{\lambda\in\{0,1\}^t}\)</span> of unitaries on <span class="math" data-tex="\(\mathcal H_d\)">\(\mathcal H_d\)</span>, some choice of tables solves its controlled task with clean-workspace error less than <span class="math" data-tex="\(1/100\)">\(1/100\)</span>. The skeleton has <span class="math" data-tex="\(t+O((n+1)^{10})\)">\(t+O((n+1)^{10})\)</span> qubits and <span class="math" data-tex="\(O((n+1)^{13})\)">\(O((n+1)^{13})\)</span> slots, and it is generated, with the ordered control list of every slot, by a deterministic algorithm in time polynomial in <span class="math" data-tex="\(n+t\)">\(n+t\)</span>.</p>
+<p><em>Proof.</em> <em>The construction</em>, by recursion on <span class="math" data-tex="\(d\)">\(d\)</span>, with <span class="math" data-tex="\(n\)">\(n\)</span>-qubit index and port registers at every level. If <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, each <span class="math" data-tex="\(U_\lambda\)">\(U_\lambda\)</span> is a scalar <span class="math" data-tex="\(e^{i\varphi_\lambda}\)">\(e^{i\varphi_\lambda}\)</span> on <span class="math" data-tex="\(\mathcal H_1=\operatorname{span}\{|0\rangle\}\)">\(\mathcal H_1=\operatorname{span}\{|0\rangle\}\)</span>, applied exactly by one slot with an index qubit as target, which is zero on the valid input, and the labels as controls. If <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>, Proposition 2.1 of <a href="a-contracting-block.html">A contracting block</a> gives <span class="math" data-tex="\(V_\lambda=P_{\mathrm L,\lambda}U_\lambda P_{\mathrm R,\lambda}\)">\(V_\lambda=P_{\mathrm L,\lambda}U_\lambda P_{\mathrm R,\lambda}\)</span> with internal order <span class="math" data-tex="\(s\)">\(s\)</span>, port order <span class="math" data-tex="\(k=d-s\)">\(k=d-s\)</span> and <span class="math" data-tex="\(\|D_\lambda\|\le r\)">\(\|D_\lambda\|\le r\)</span>. Apply Lemma 3.1, taking for <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> the circuit of order <span class="math" data-tex="\(k\)">\(k\)</span> given by the recursion for the family <span class="math" data-tex="\(F_\lambda(z)\)">\(F_\lambda(z)\)</span>, with the labels <span class="math" data-tex="\((\lambda,z)\)">\((\lambda,z)\)</span> and fresh workspace. To implement <span class="math" data-tex="\(U_\lambda=P_{\mathrm L,\lambda}^*V_\lambda P_{\mathrm R,\lambda}^*\)">\(U_\lambda=P_{\mathrm L,\lambda}^*V_\lambda P_{\mathrm R,\lambda}^*\)</span>, apply <span class="math" data-tex="\(P_{\mathrm R,\lambda}^*\)">\(P_{\mathrm R,\lambda}^*\)</span> first and <span class="math" data-tex="\(P_{\mathrm L,\lambda}^*\)">\(P_{\mathrm L,\lambda}^*\)</span> last; they are exact slot circuits and add no error.</p>
+<p><em>The error.</em> At each level Lemma 3.1 adds at most
+<span class="math math-display" data-tex="\[
+\frac{2r^L}{1-r}+10r^{2L}=8r^L+10r^{2L}\le18r^L
+\]">\[
+\frac{2r^L}{1-r}+10r^{2L}=8r^L+10r^{2L}\le18r^L
+\]</span>
+to the error of the smaller circuit. There are fewer than <span class="math" data-tex="\(J\)">\(J\)</span> levels (Lemma 2.2 of <a href="a-contracting-block.html">A contracting block</a>). Bernoulli's inequality gives <span class="math" data-tex="\((4/3)^L\ge1+L/3\)">\((4/3)^L\ge1+L/3\)</span>, hence <span class="math" data-tex="\(r^L\le3/L\)">\(r^L\le3/L\)</span>, and the total error is at most
+<span class="math math-display" data-tex="\[
+18Jr^L\le\frac{54J}L=\frac{54}{10000}&lt;\frac1{100}.
+\]">\[
+18Jr^L\le\frac{54J}L=\frac{54}{10000}&lt;\frac1{100}.
+\]</span>
+In particular all working qubits, also those of the inner levels, return to zero in the ideal comparison map.</p>
+<p><em>Resources.</em> Write <span class="math" data-tex="\(N=n+1\)">\(N=n+1\)</span>. Then <span class="math" data-tex="\(J,L=O(N^3)\)">\(J,L=O(N^3)\)</span>, <span class="math" data-tex="\(b=O(N^4)\)">\(b=O(N^4)\)</span>, <span class="math" data-tex="\(K=O(N^7)\)">\(K=O(N^7)\)</span> and <span class="math" data-tex="\(h=O(N)\)">\(h=O(N)\)</span>. A pair of encoders uses <span class="math" data-tex="\(O(K+n+h)\)">\(O(K+n+h)\)</span> fresh qubits and <span class="math" data-tex="\(O(L(K+n+h)+K)\)">\(O(L(K+n+h)+K)\)</span> slots; the pre- and post-processing <span class="math" data-tex="\(P_{\mathrm R}^*\)">\(P_{\mathrm R}^*\)</span>, <span class="math" data-tex="\(P_{\mathrm L}^*\)">\(P_{\mathrm L}^*\)</span> adds <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span> qubits and slots. All registers of an outer level stay allocated during the inner call, including the phase labels, so over the fewer than <span class="math" data-tex="\(J\)">\(J\)</span> levels there are
+<span class="math math-display" data-tex="\[
+t+O(J(K+n+h))=t+O(N^{10})
+\]">\[
+t+O(J(K+n+h))=t+O(N^{10})
+\]</span>
+qubits and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;O\bigl(J[L(K+n+h)+K+n]\bigr)\\
+&amp;\quad=O(N^{13})
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;O\bigl(J[L(K+n+h)+K+n]\bigr)\\
+&amp;\quad=O(N^{13})
+\end{aligned}
+\]</span>
+slots. These sums are enough because each level calls the next one only once.</p>
+<p><em>Uniformity.</em> The skeleton is generated without computing any table. The successive orders <span class="math" data-tex="\(d\)">\(d\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(k\)">\(k\)</span> have <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span>-bit descriptions and are computed in polynomial time; the register layout, the order of the state preparations, the Fourier transforms, the reflections and the <span class="math" data-tex="\(L\)">\(L\)</span> amplification rounds depend only on these numbers. Everything that depends on <span class="math" data-tex="\(U_\lambda\)">\(U_\lambda\)</span> (the signs, the permutations, the amplitudes of the state preparations, the lists <span class="math" data-tex="\(I_u\)">\(I_u\)</span> and the recursively prescribed unitaries) changes only tables. A control list has at most <span class="math" data-tex="\(t+O(N^{10})\)">\(t+O(N^{10})\)</span> entries, so writing the lists of all <span class="math" data-tex="\(O(N^{13})\)">\(O(N^{13})\)</span> slots takes polynomial time in <span class="math" data-tex="\(n+t\)">\(n+t\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> In Lemma 1.1 with <span class="math" data-tex="\(L=1\)">\(L=1\)</span>, compute <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, <span class="math" data-tex="\(t_0\)">\(t_0\)</span> and the amplification angle, and check that one round sends the angle <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of a direction with <span class="math" data-tex="\(\sigma=1\)">\(\sigma=1\)</span> to <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span>.</p>
+<p><strong>5.2.</strong> Show that <span class="math" data-tex="\(2\sin(x/2)\le x\)">\(2\sin(x/2)\le x\)</span> for <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>, as used for the distance on the unit circle.</p>
+<p><strong>5.3.</strong> Where would the proof of Lemma 1.1 fail if the rows of <span class="math" data-tex="\(T\)">\(T\)</span> had more than <span class="math" data-tex="\(L\)">\(L\)</span> nonzero entries?</p>
+<p><strong>5.4.</strong> Check the arithmetic of the error bound: <span class="math" data-tex="\(8r^L+10r^{2L}\le18r^L\)">\(8r^L+10r^{2L}\le18r^L\)</span> and <span class="math" data-tex="\(18J\cdot3/(10000J)&lt;1/100\)">\(18J\cdot3/(10000J)&lt;1/100\)</span>.</p>
+<p><strong>5.5.</strong> Why may the label register grow by <span class="math" data-tex="\(K\)">\(K\)</span> qubits at every level without destroying the polynomial bounds?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(\theta=\pi/6\)">\(\theta=\pi/6\)</span>, <span class="math" data-tex="\(t_0=1/2\)">\(t_0=1/2\)</span>; for <span class="math" data-tex="\(\sigma=1\)">\(\sigma=1\)</span>, <span class="math" data-tex="\(\beta=\arcsin(1/2)=\pi/6\)">\(\beta=\arcsin(1/2)=\pi/6\)</span>, and one round gives <span class="math" data-tex="\(3\beta=\pi/2\)">\(3\beta=\pi/2\)</span>: the vector is exactly <span class="math" data-tex="\(e_j\)">\(e_j\)</span>.</p>
+<p><strong>5.2.</strong> The function <span class="math" data-tex="\(x-2\sin(x/2)\)">\(x-2\sin(x/2)\)</span> vanishes at <span class="math" data-tex="\(0\)">\(0\)</span> and has derivative <span class="math" data-tex="\(1-\cos(x/2)\ge0\)">\(1-\cos(x/2)\ge0\)</span>.</p>
+<p><strong>5.3.</strong> In step (ii) a row <span class="math" data-tex="\(u\)">\(u\)</span> needs a list <span class="math" data-tex="\(I_u\)">\(I_u\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span> indices containing all <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(a_{ui}\ne0\)">\(a_{ui}\ne0\)</span>; with more than <span class="math" data-tex="\(L\)">\(L\)</span> of them the amplitude <span class="math" data-tex="\(1/\sqrt L\)">\(1/\sqrt L\)</span> of the inverse state preparation cannot reach all columns of the row, and a smaller amplitude would change <span class="math" data-tex="\(t_0\)">\(t_0\)</span> row by row.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(r^{2L}\le r^L\)">\(r^{2L}\le r^L\)</span>, and <span class="math" data-tex="\(18\cdot3/10000=0.0054&lt;0.01\)">\(18\cdot3/10000=0.0054&lt;0.01\)</span>.</p>
+<p><strong>5.5.</strong> There are fewer than <span class="math" data-tex="\(J=O(N^3)\)">\(J=O(N^3)\)</span> levels, each adding <span class="math" data-tex="\(K=O(N^7)\)">\(K=O(N^7)\)</span> label qubits, so the labels add <span class="math" data-tex="\(O(N^{10})\)">\(O(N^{10})\)</span> qubits in all, and the control lists stay of polynomial length.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-US] OpenAI, <em>Polynomial-Time Unitary Synthesis from a Boolean Oracle</em>, OpenAI Math Release preprint, 5 October 2026, Sections 5 and 6. https://github.com/openai/math/tree/main/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026</li>
+<li>[BHMT] G. Brassard, P. Høyer, M. Mosca and A. Tapp, <em>Quantum amplitude amplification and estimation</em>, arXiv:quant-ph/0005055. https://arxiv.org/abs/quant-ph/0005055</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,0 +1,180 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oracle circuits and the synthesis theorem</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Unitary synthesis from a Boolean oracle)</a><a href="programmable-slots.html">Next lesson</a><a href="src/oracle-circuits-and-the-synthesis-theorem.md">Editable source</a></nav><main><article><h1 id="oracle-circuits-and-the-synthesis-theorem">Oracle circuits and the synthesis theorem</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A unitary on <span class="math" data-tex="\(n\)">\(n\)</span> qubits is a <span class="math" data-tex="\(2^n\times2^n\)">\(2^n\times2^n\)</span> matrix, so a classical description of it is exponentially long. Aaronson and Kuperberg asked whether every such unitary can nevertheless be performed in quantum polynomial time when a suitable classical description is available through coherent queries to a Boolean function [AK, Section 7, Problem (4)]. This course proves the theorem of [OpenAI-US]: in the constant-error form, the answer is yes. One circuit, generated in polynomial time from <span class="math" data-tex="\(n\)">\(n\)</span> alone, with polynomially many qubits, gates and oracle calls of polynomial length, approximates every <span class="math" data-tex="\(n\)">\(n\)</span>-qubit unitary within diamond-norm distance <span class="math" data-tex="\(1/2\)">\(1/2\)</span> once a suitable Boolean oracle is chosen. The oracle depends on the unitary, and the theorem does not say how to compute it.</p>
+<p>This lesson fixes the model, states the theorem, and proves the facts about norms used at the end of the course.</p>
+<ul>
+<li>Qubits, gates and oracle circuits (Section 1).</li>
+<li>The theorem (Theorem 2.1).</li>
+<li>Hermitian matrices and the trace norm (Lemmas 3.1 and 3.2).</li>
+<li>Clean-workspace errors (Definition 4.1, Proposition 4.2).</li>
+<li>The plan of the course (Section 5).</li>
+</ul>
+<p>The course follows [OpenAI-US].</p>
+<h2 id="1-qubits-gates-and-oracle-circuits">1. Qubits, gates and oracle circuits</h2>
+<p>A <em>register</em> of <span class="math" data-tex="\(N\)">\(N\)</span> qubits is the Hilbert space <span class="math" data-tex="\((\mathbb C^2)^{\otimes N}=\mathbb C^{2^N}\)">\((\mathbb C^2)^{\otimes N}=\mathbb C^{2^N}\)</span> with its <em>computational basis</em> <span class="math" data-tex="\(|x\rangle=|x_1\rangle\otimes\cdots\otimes|x_N\rangle\)">\(|x\rangle=|x_1\rangle\otimes\cdots\otimes|x_N\rangle\)</span>, <span class="math" data-tex="\(x\in\{0,1\}^N\)">\(x\in\{0,1\}^N\)</span>. We also read <span class="math" data-tex="\(x\)">\(x\)</span> as the integer with binary digits <span class="math" data-tex="\(x_1\dots x_N\)">\(x_1\dots x_N\)</span>, the first being the most significant, and write
+<span class="math math-display" data-tex="\[
+\mathcal H_d=\operatorname{span}\{|0\rangle,\dots,|d-1\rangle\}
+\]">\[
+\mathcal H_d=\operatorname{span}\{|0\rangle,\dots,|d-1\rangle\}
+\]</span>
+for <span class="math" data-tex="\(1\le d\le2^N\)">\(1\le d\le2^N\)</span>. Vector norms are Euclidean, <span class="math" data-tex="\(\|A\|\)">\(\|A\|\)</span> is the operator norm of a linear map, and <span class="math" data-tex="\(A^*\)">\(A^*\)</span> is its adjoint. A scalar phase is never divided out: <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(e^{i\varphi}U\)">\(e^{i\varphi}U\)</span> are different maps.</p>
+<p>The <em>elementary gates</em> are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H=\frac1{\sqrt2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix},\\
+T=\begin{pmatrix}1&amp;0\\0&amp;e^{i\pi/4}\end{pmatrix},
+\end{gathered}
+\]">\[
+\begin{gathered}
+H=\frac1{\sqrt2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix},\\
+T=\begin{pmatrix}1&amp;0\\0&amp;e^{i\pi/4}\end{pmatrix},
+\end{gathered}
+\]</span>
+<span class="math" data-tex="\(T^*\)">\(T^*\)</span>, and <span class="math" data-tex="\(\mathrm{CNOT}\)">\(\mathrm{CNOT}\)</span>, which maps <span class="math" data-tex="\(|a,b\rangle\)">\(|a,b\rangle\)</span> to <span class="math" data-tex="\(|a,a\oplus b\rangle\)">\(|a,a\oplus b\rangle\)</span>. A gate applied to some qubits of a register acts as the tensor product of the gate with the identity on the other qubits. A <em>Boolean oracle</em> <span class="math" data-tex="\(f\colon\{0,1\}^m\to\{0,1\}\)">\(f\colon\{0,1\}^m\to\{0,1\}\)</span> supplies the gate
+<span class="math math-display" data-tex="\[
+O_f|x,b\rangle=|x,b\oplus f(x)\rangle
+\]">\[
+O_f|x,b\rangle=|x,b\oplus f(x)\rangle
+\]</span>
+on <span class="math" data-tex="\(m+1\)">\(m+1\)</span> qubits, a permutation of the computational basis that is its own inverse.</p>
+<p>A <em>quantum oracle circuit</em> consists of a register of <span class="math" data-tex="\(N\)">\(N\)</span> qubits, of which <span class="math" data-tex="\(n\)">\(n\)</span> are designated <em>input qubits</em> and the others are <em>workspace</em>, and a finite sequence of elementary gates and oracle calls on chosen qubits. For an oracle <span class="math" data-tex="\(f\)">\(f\)</span> it defines a unitary <span class="math" data-tex="\(C^f\)">\(C^f\)</span> on the register. Its <em>output channel</em> is
+<span class="math math-display" data-tex="\[
+\Phi(\rho)=\operatorname{Tr}_W\bigl[C^f(\rho\otimes|0\rangle\langle0|_W)(C^f)^*\bigr],
+\]">\[
+\Phi(\rho)=\operatorname{Tr}_W\bigl[C^f(\rho\otimes|0\rangle\langle0|_W)(C^f)^*\bigr],
+\]</span>
+for operators <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on the input qubits, where <span class="math" data-tex="\(W\)">\(W\)</span> is the workspace, initialized to zero, and the input qubits are read out at the end. Here the <em>partial trace</em> <span class="math" data-tex="\(\operatorname{Tr}_W\)">\(\operatorname{Tr}_W\)</span> of an operator <span class="math" data-tex="\(X\)">\(X\)</span> on <span class="math" data-tex="\(V\otimes W\)">\(V\otimes W\)</span> is the operator on <span class="math" data-tex="\(V\)">\(V\)</span> characterized by
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}\bigl(M\operatorname{Tr}_WX\bigr)=\operatorname{Tr}\bigl((M\otimes I_W)X\bigr)
+\]">\[
+\operatorname{Tr}\bigl(M\operatorname{Tr}_WX\bigr)=\operatorname{Tr}\bigl((M\otimes I_W)X\bigr)
+\]</span>
+for all operators <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>; it maps <span class="math" data-tex="\(A\otimes B\)">\(A\otimes B\)</span> to <span class="math" data-tex="\((\operatorname{Tr}B)A\)">\((\operatorname{Tr}B)A\)</span>, and positive semidefinite operators to positive semidefinite ones.</p>
+<p>The <em>trace norm</em> of a matrix is <span class="math" data-tex="\(\|X\|_1=\operatorname{Tr}\sqrt{X^*X}\)">\(\|X\|_1=\operatorname{Tr}\sqrt{X^*X}\)</span>. For a unitary <span class="math" data-tex="\(U\)">\(U\)</span> on <span class="math" data-tex="\(n\)">\(n\)</span> qubits write <span class="math" data-tex="\(\mathcal U(\rho)=U\rho U^*\)">\(\mathcal U(\rho)=U\rho U^*\)</span>. The distance of channels <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> and <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> on <span class="math" data-tex="\(n\)">\(n\)</span> qubits is measured in the <em>diamond norm</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\Phi-\Psi\|_\diamond\\
+&amp;\quad=\sup_\rho\bigl\|\bigl((\Phi-\Psi)\otimes\mathrm{id}_R\bigr)(\rho)\bigr\|_1 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\Phi-\Psi\|_\diamond\\
+&amp;\quad=\sup_\rho\bigl\|\bigl((\Phi-\Psi)\otimes\mathrm{id}_R\bigr)(\rho)\bigr\|_1 ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(R\)">\(R\)</span> is a reference register of <span class="math" data-tex="\(n\)">\(n\)</span> qubits and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> runs over the density operators on the input qubits and <span class="math" data-tex="\(R\)">\(R\)</span>. This norm has no factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span>; the distance of two channels is at most <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<h2 id="2-the-theorem">2. The theorem</h2>
+<p><strong>Theorem 2.1</strong> (polynomial-time unitary synthesis; [OpenAI-US, Theorem 1.1]). There are a polynomial <span class="math" data-tex="\(p\)">\(p\)</span> and a deterministic classical algorithm which, on input <span class="math" data-tex="\(1^n\)">\(1^n\)</span> for an integer <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, outputs in time at most <span class="math" data-tex="\(p(n)\)">\(p(n)\)</span> a quantum oracle circuit <span class="math" data-tex="\(A_n\)">\(A_n\)</span> with the following properties. It uses the gates <span class="math" data-tex="\(H\)">\(H\)</span>, <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(T^*\)">\(T^*\)</span>, <span class="math" data-tex="\(\mathrm{CNOT}\)">\(\mathrm{CNOT}\)</span> and one Boolean oracle of input length <span class="math" data-tex="\(m(n)\le p(n)\)">\(m(n)\le p(n)\)</span>, and its numbers of qubits, elementary gates and oracle calls are each at most <span class="math" data-tex="\(p(n)\)">\(p(n)\)</span>. For every unitary <span class="math" data-tex="\(U\in U(2^n)\)">\(U\in U(2^n)\)</span> there is a function <span class="math" data-tex="\(f\colon\{0,1\}^{m(n)}\to\{0,1\}\)">\(f\colon\{0,1\}^{m(n)}\to\{0,1\}\)</span> for which the output channel <span class="math" data-tex="\(\Phi_{n,f}\)">\(\Phi_{n,f}\)</span> of <span class="math" data-tex="\(A_n^{f}\)">\(A_n^{f}\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\|\Phi_{n,f}-\mathcal U\|_\diamond\le\frac12 .
+\]">\[
+\|\Phi_{n,f}-\mathcal U\|_\diamond\le\frac12 .
+\]</span></p>
+<p>The order of the quantifiers matters. The circuit and its resources depend on <span class="math" data-tex="\(n\)">\(n\)</span> only; the oracle depends on <span class="math" data-tex="\(U\)">\(U\)</span>. Nothing is required of <span class="math" data-tex="\(f\)">\(f\)</span> beyond its existence: its truth table may be arbitrary, and no efficient procedure to compute it from a description of <span class="math" data-tex="\(U\)">\(U\)</span> is claimed. The error bound holds for all inputs, including inputs entangled with a reference system.</p>
+<p>The theorem is proved in the last lesson, <a href="compilation-into-one-boolean-oracle.html">Compilation into one Boolean oracle</a>, Theorem 4.2.</p>
+<h2 id="3-hermitian-matrices-and-the-trace-norm">3. Hermitian matrices and the trace norm</h2>
+<p><strong>Lemma 3.1</strong> (spectral theorem). Every Hermitian matrix <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> has an orthonormal basis of eigenvectors, with real eigenvalues.</p>
+<p><em>Proof.</em> By induction on <span class="math" data-tex="\(d\)">\(d\)</span>; the case <span class="math" data-tex="\(d=0\)">\(d=0\)</span> is empty. The function <span class="math" data-tex="\(x\mapsto\langle x,Ax\rangle\)">\(x\mapsto\langle x,Ax\rangle\)</span> is real and continuous on the compact unit sphere; let <span class="math" data-tex="\(x\)">\(x\)</span> be a point where it is largest. For <span class="math" data-tex="\(y\perp x\)">\(y\perp x\)</span> and real <span class="math" data-tex="\(t\)">\(t\)</span>, the quotient
+<span class="math math-display" data-tex="\[
+g(t)=\frac{\langle x+ty,A(x+ty)\rangle}{1+t^2\|y\|^2}
+\]">\[
+g(t)=\frac{\langle x+ty,A(x+ty)\rangle}{1+t^2\|y\|^2}
+\]</span>
+is largest at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, and its derivative there is <span class="math" data-tex="\(2\operatorname{Re}\langle y,Ax\rangle\)">\(2\operatorname{Re}\langle y,Ax\rangle\)</span>. So <span class="math" data-tex="\(\operatorname{Re}\langle y,Ax\rangle=0\)">\(\operatorname{Re}\langle y,Ax\rangle=0\)</span> for every <span class="math" data-tex="\(y\perp x\)">\(y\perp x\)</span>, and replacing <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(iy\)">\(iy\)</span> gives <span class="math" data-tex="\(\langle y,Ax\rangle=0\)">\(\langle y,Ax\rangle=0\)</span>. Hence <span class="math" data-tex="\(Ax=\lambda x\)">\(Ax=\lambda x\)</span> with <span class="math" data-tex="\(\lambda=\langle x,Ax\rangle\)">\(\lambda=\langle x,Ax\rangle\)</span> real. The orthogonal complement of <span class="math" data-tex="\(x\)">\(x\)</span> is invariant, since <span class="math" data-tex="\(\langle x,Ay\rangle=\langle Ax,y\rangle=\lambda\langle x,y\rangle\)">\(\langle x,Ay\rangle=\langle Ax,y\rangle=\lambda\langle x,y\rangle\)</span>, and <span class="math" data-tex="\(A\)">\(A\)</span> restricted to it is Hermitian; apply the induction hypothesis. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>For a Hermitian matrix <span class="math" data-tex="\(X=\sum_i\lambda_iv_iv_i^*\)">\(X=\sum_i\lambda_iv_iv_i^*\)</span> in such a basis, <span class="math" data-tex="\(\sqrt{X^*X}=\sum_i|\lambda_i|v_iv_i^*\)">\(\sqrt{X^*X}=\sum_i|\lambda_i|v_iv_i^*\)</span>, so <span class="math" data-tex="\(\|X\|_1=\sum_i|\lambda_i|\)">\(\|X\|_1=\sum_i|\lambda_i|\)</span>. With
+<span class="math math-display" data-tex="\[
+X_\pm=\sum_{\pm\lambda_i&gt;0}\pm\lambda_iv_iv_i^*
+\]">\[
+X_\pm=\sum_{\pm\lambda_i&gt;0}\pm\lambda_iv_iv_i^*
+\]</span>
+we have <span class="math" data-tex="\(X=X_+-X_-\)">\(X=X_+-X_-\)</span>, both positive semidefinite, and <span class="math" data-tex="\(\|X\|_1=\operatorname{Tr}X_++\operatorname{Tr}X_-\)">\(\|X\|_1=\operatorname{Tr}X_++\operatorname{Tr}X_-\)</span>. For Hermitian <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(-I\le M\le I\)">\(-I\le M\le I\)</span> means <span class="math" data-tex="\(|\langle v,Mv\rangle|\le\|v\|^2\)">\(|\langle v,Mv\rangle|\le\|v\|^2\)</span> for all <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Lemma 3.2</strong> (the trace norm of Hermitian matrices). Let <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> be Hermitian.</p>
+<ol>
+<li><span class="math" data-tex="\(\|X\|_1\)">\(\|X\|_1\)</span> is the largest value of <span class="math" data-tex="\(\operatorname{Tr}(MX)\)">\(\operatorname{Tr}(MX)\)</span> over Hermitian <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(-I\le M\le I\)">\(-I\le M\le I\)</span>.</li>
+<li><span class="math" data-tex="\(\|X+Y\|_1\le\|X\|_1+\|Y\|_1\)">\(\|X+Y\|_1\le\|X\|_1+\|Y\|_1\)</span>.</li>
+<li>If <span class="math" data-tex="\(X\)">\(X\)</span> acts on <span class="math" data-tex="\(V\otimes W\)">\(V\otimes W\)</span>, then <span class="math" data-tex="\(\|\operatorname{Tr}_WX\|_1\le\|X\|_1\)">\(\|\operatorname{Tr}_WX\|_1\le\|X\|_1\)</span>.</li>
+<li>For unit vectors <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|aa^*-bb^*\|_1&amp;=2\sqrt{1-|\langle a,b\rangle|^2}\\
+&amp;\le2\|a-b\| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|aa^*-bb^*\|_1&amp;=2\sqrt{1-|\langle a,b\rangle|^2}\\
+&amp;\le2\|a-b\| .
+\end{aligned}
+\]</span></li>
+</ol>
+<p><em>Proof.</em> (1) The matrix <span class="math" data-tex="\(M=\sum_i\operatorname{sign}(\lambda_i)v_iv_i^*\)">\(M=\sum_i\operatorname{sign}(\lambda_i)v_iv_i^*\)</span> satisfies <span class="math" data-tex="\(-I\le M\le I\)">\(-I\le M\le I\)</span> and <span class="math" data-tex="\(\operatorname{Tr}(MX)=\sum_i|\lambda_i|\)">\(\operatorname{Tr}(MX)=\sum_i|\lambda_i|\)</span>. Conversely, write <span class="math" data-tex="\(X_+=\sum_k\mu_kw_kw_k^*\)">\(X_+=\sum_k\mu_kw_kw_k^*\)</span> with <span class="math" data-tex="\(\mu_k\ge0\)">\(\mu_k\ge0\)</span>; then <span class="math" data-tex="\(\operatorname{Tr}(MX_+)=\sum_k\mu_k\langle w_k,Mw_k\rangle\)">\(\operatorname{Tr}(MX_+)=\sum_k\mu_k\langle w_k,Mw_k\rangle\)</span>, which is at most <span class="math" data-tex="\(\operatorname{Tr}X_+\)">\(\operatorname{Tr}X_+\)</span>, likewise <span class="math" data-tex="\(-\operatorname{Tr}(MX_-)\le\operatorname{Tr}X_-\)">\(-\operatorname{Tr}(MX_-)\le\operatorname{Tr}X_-\)</span>, and so <span class="math" data-tex="\(\operatorname{Tr}(MX)\le\|X\|_1\)">\(\operatorname{Tr}(MX)\le\|X\|_1\)</span>.</p>
+<p>(2) follows from (1), since <span class="math" data-tex="\(\operatorname{Tr}(M(X+Y))=\operatorname{Tr}(MX)+\operatorname{Tr}(MY)\)">\(\operatorname{Tr}(M(X+Y))=\operatorname{Tr}(MX)+\operatorname{Tr}(MY)\)</span>.</p>
+<p>(3) <span class="math" data-tex="\(\operatorname{Tr}_WX\)">\(\operatorname{Tr}_WX\)</span> is Hermitian, and <span class="math" data-tex="\(\operatorname{Tr}(M\operatorname{Tr}_WX)=\operatorname{Tr}((M\otimes I_W)X)\)">\(\operatorname{Tr}(M\operatorname{Tr}_WX)=\operatorname{Tr}((M\otimes I_W)X)\)</span>, where <span class="math" data-tex="\(-I\le M\otimes I_W\le I\)">\(-I\le M\otimes I_W\le I\)</span> whenever <span class="math" data-tex="\(-I\le M\le I\)">\(-I\le M\le I\)</span>. Apply (1) twice.</p>
+<p>(4) The matrix <span class="math" data-tex="\(Z=aa^*-bb^*\)">\(Z=aa^*-bb^*\)</span> is Hermitian of rank at most <span class="math" data-tex="\(2\)">\(2\)</span> and trace <span class="math" data-tex="\(0\)">\(0\)</span>, so its nonzero eigenvalues are <span class="math" data-tex="\(\pm\lambda\)">\(\pm\lambda\)</span> for some <span class="math" data-tex="\(\lambda\ge0\)">\(\lambda\ge0\)</span>, and
+<span class="math math-display" data-tex="\[
+2\lambda^2=\operatorname{Tr}Z^2=2-2|\langle a,b\rangle|^2 .
+\]">\[
+2\lambda^2=\operatorname{Tr}Z^2=2-2|\langle a,b\rangle|^2 .
+\]</span>
+So <span class="math" data-tex="\(\|Z\|_1=2\lambda=2\sqrt{1-|\langle a,b\rangle|^2}\)">\(\|Z\|_1=2\lambda=2\sqrt{1-|\langle a,b\rangle|^2}\)</span>. With <span class="math" data-tex="\(c=|\langle a,b\rangle|\le1\)">\(c=|\langle a,b\rangle|\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+1-c^2&amp;=(1-c)(1+c)\le2(1-c)\\
+&amp;\le2-2\operatorname{Re}\langle a,b\rangle=\|a-b\|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+1-c^2&amp;=(1-c)(1+c)\le2(1-c)\\
+&amp;\le2-2\operatorname{Re}\langle a,b\rangle=\|a-b\|^2 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-clean-workspace-errors">4. Clean-workspace errors</h2>
+<p>The circuits of this course are compared with their targets on inputs whose workspace is zero, and they must return the workspace to zero.</p>
+<p><strong>Definition 4.1.</strong> Let <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> be a subspace of a register and <span class="math" data-tex="\(w\ge0\)">\(w\ge0\)</span>. Write <span class="math" data-tex="\(\iota\colon\mathcal V\to\mathcal V\otimes(\mathbb C^2)^{\otimes w}\)">\(\iota\colon\mathcal V\to\mathcal V\otimes(\mathbb C^2)^{\otimes w}\)</span> for the map <span class="math" data-tex="\(v\mapsto v\otimes|0^w\rangle\)">\(v\mapsto v\otimes|0^w\rangle\)</span> appending <span class="math" data-tex="\(w\)">\(w\)</span> workspace qubits in the zero state. A unitary <span class="math" data-tex="\(C\)">\(C\)</span> on the enlarged register <em>implements</em> a linear map <span class="math" data-tex="\(\mathcal U\colon\mathcal V\to\mathcal V\)">\(\mathcal U\colon\mathcal V\to\mathcal V\)</span> with <em>clean-workspace error</em> <span class="math" data-tex="\(\delta\)">\(\delta\)</span> if
+<span class="math math-display" data-tex="\[
+\|C\iota-\iota\,\mathcal U\|\le\delta .
+\]">\[
+\|C\iota-\iota\,\mathcal U\|\le\delta .
+\]</span></p>
+<p>The estimate includes the return of the workspace to zero. It is unchanged when both sides are tensored with the identity of a further register: for an operator <span class="math" data-tex="\(A\)">\(A\)</span> and an orthonormal basis <span class="math" data-tex="\(e_r\)">\(e_r\)</span> of that register, a vector <span class="math" data-tex="\(v=\sum_rv_r\otimes e_r\)">\(v=\sum_rv_r\otimes e_r\)</span> has <span class="math" data-tex="\(\|(A\otimes I)v\|^2=\sum_r\|Av_r\|^2\le\|A\|^2\|v\|^2\)">\(\|(A\otimes I)v\|^2=\sum_r\|Av_r\|^2\le\|A\|^2\|v\|^2\)</span>, with equality approached on product vectors.</p>
+<p><strong>Proposition 4.2.</strong> Let a quantum oracle circuit with <span class="math" data-tex="\(n\)">\(n\)</span> input qubits and <span class="math" data-tex="\(w\)">\(w\)</span> workspace qubits have the unitary <span class="math" data-tex="\(C\)">\(C\)</span>, and let <span class="math" data-tex="\(U\)">\(U\)</span> be a unitary on the input qubits with <span class="math" data-tex="\(\|C\iota-\iota U\|\le\delta\)">\(\|C\iota-\iota U\|\le\delta\)</span>. Then the output channel satisfies <span class="math" data-tex="\(\|\Phi-\mathcal U\|_\diamond\le2\delta\)">\(\|\Phi-\mathcal U\|_\diamond\le2\delta\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be a unit vector of the input qubits and <span class="math" data-tex="\(R\)">\(R\)</span>, and put
+<span class="math math-display" data-tex="\[
+a=(C\iota\otimes I_R)\psi,\qquad b=(\iota U\otimes I_R)\psi .
+\]">\[
+a=(C\iota\otimes I_R)\psi,\qquad b=(\iota U\otimes I_R)\psi .
+\]</span>
+Both are unit vectors, and <span class="math" data-tex="\(\|a-b\|\le\delta\)">\(\|a-b\|\le\delta\)</span> by the remark above. The vector <span class="math" data-tex="\(b\)">\(b\)</span> is <span class="math" data-tex="\((U\otimes I_R)\psi\)">\((U\otimes I_R)\psi\)</span> followed by <span class="math" data-tex="\(|0^w\rangle\)">\(|0^w\rangle\)</span>, so the partial trace over the workspace of <span class="math" data-tex="\(bb^*\)">\(bb^*\)</span> is <span class="math" data-tex="\((\mathcal U\otimes\mathrm{id}_R)(\psi\psi^*)\)">\((\mathcal U\otimes\mathrm{id}_R)(\psi\psi^*)\)</span>, while that of <span class="math" data-tex="\(aa^*\)">\(aa^*\)</span> is <span class="math" data-tex="\((\Phi\otimes\mathrm{id}_R)(\psi\psi^*)\)">\((\Phi\otimes\mathrm{id}_R)(\psi\psi^*)\)</span>. By Lemma 3.2, parts 3 and 4,
+<span class="math math-display" data-tex="\[
+\bigl\|\bigl((\Phi-\mathcal U)\otimes\mathrm{id}_R\bigr)(\psi\psi^*)\bigr\|_1\le2\delta .
+\]">\[
+\bigl\|\bigl((\Phi-\mathcal U)\otimes\mathrm{id}_R\bigr)(\psi\psi^*)\bigr\|_1\le2\delta .
+\]</span>
+A density operator is <span class="math" data-tex="\(\rho=\sum_kp_k\psi_k\psi_k^*\)">\(\rho=\sum_kp_k\psi_k\psi_k^*\)</span> with <span class="math" data-tex="\(p_k\ge0\)">\(p_k\ge0\)</span>, <span class="math" data-tex="\(\sum_kp_k=1\)">\(\sum_kp_k=1\)</span> (Lemma 3.1), and part 2 of Lemma 3.2 gives the same bound for <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="5-the-plan-of-the-course">5. The plan of the course</h2>
+<p>The construction replaces the synthesis of a unitary of order <span class="math" data-tex="\(d\)">\(d\)</span> by the synthesis of one smaller, coherently controlled unitary, removing at each step a fraction at least <span class="math" data-tex="\(1/\operatorname{poly}(n)\)">\(1/\operatorname{poly}(n)\)</span> of the dimension, and using the smaller circuit exactly once.</p>
+<ol>
+<li><a href="programmable-slots.html">Programmable slots</a>: circuits whose one-qubit gates are read from arbitrary tables, controlled by other qubits; state preparation, permutations of the basis and Fourier transforms take few slots.</li>
+<li><a href="a-contracting-block.html">A contracting block</a>: after permutations, diagonal signs and Walsh–Hadamard transforms, a unitary has the block form <span class="math" data-tex="\(\left(\begin{smallmatrix}A&amp;B\\C&amp;D\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}A&amp;B\\C&amp;D\end{smallmatrix}\right)\)</span> with <span class="math" data-tex="\(\|D\|\le3/4\)">\(\|D\|\le3/4\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> not too small, by a moment estimate for random signs.</li>
+<li><a href="fourier-fields-for-a-smaller-unitary.html">Fourier fields for a smaller unitary</a>: feeding the lower output back through a diagonal phase <span class="math" data-tex="\(Z\)">\(Z\)</span> gives the unitary <span class="math" data-tex="\(F=A+BZ(I-DZ)^{-1}C\)">\(F=A+BZ(I-DZ)^{-1}C\)</span>; truncated series give two nearly isometric maps intertwining <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(F\)">\(F\)</span>, with few nonzero entries in each row of their Fourier coefficients.</li>
+<li><a href="encoders-and-the-recursion.html">Encoders and the recursion</a>: a reflection argument implements such maps; one call of the smaller circuit between two encoders synthesizes <span class="math" data-tex="\(V\)">\(V\)</span>, and the recursion gives a programmable circuit of polynomial size with error below <span class="math" data-tex="\(1/100\)">\(1/100\)</span>.</li>
+<li><a href="compilation-into-one-boolean-oracle.html">Compilation into one Boolean oracle</a>: every slot is replaced by words in <span class="math" data-tex="\(H\)">\(H\)</span>, <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(T^*\)">\(T^*\)</span> read from one oracle, with the phases kept; this proves Theorem 2.1.</li>
+</ol>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show that <span class="math" data-tex="\(O_f\)">\(O_f\)</span> is a permutation matrix and its own inverse, and compute <span class="math" data-tex="\(O_f\)">\(O_f\)</span> for the constant function <span class="math" data-tex="\(f=1\)">\(f=1\)</span> with <span class="math" data-tex="\(m=1\)">\(m=1\)</span>.</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(U\)">\(U\)</span> be a unitary on one qubit and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> real. Show that <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> and the channel of <span class="math" data-tex="\(e^{i\varphi}U\)">\(e^{i\varphi}U\)</span> are equal, but the controlled unitaries <span class="math" data-tex="\(|0\rangle\langle0|\otimes I+|1\rangle\langle1|\otimes U\)">\(|0\rangle\langle0|\otimes I+|1\rangle\langle1|\otimes U\)</span> and <span class="math" data-tex="\(|0\rangle\langle0|\otimes I+|1\rangle\langle1|\otimes e^{i\varphi}U\)">\(|0\rangle\langle0|\otimes I+|1\rangle\langle1|\otimes e^{i\varphi}U\)</span> differ unless <span class="math" data-tex="\(e^{i\varphi}=1\)">\(e^{i\varphi}=1\)</span>.</p>
+<p><strong>6.3.</strong> Compute <span class="math" data-tex="\(\|aa^*-bb^*\|_1\)">\(\|aa^*-bb^*\|_1\)</span> for <span class="math" data-tex="\(a=|0\rangle\)">\(a=|0\rangle\)</span> and <span class="math" data-tex="\(b=\cos t\,|0\rangle+\sin t\,|1\rangle\)">\(b=\cos t\,|0\rangle+\sin t\,|1\rangle\)</span>, and compare with <span class="math" data-tex="\(2\|a-b\|\)">\(2\|a-b\|\)</span>.</p>
+<p><strong>6.4.</strong> Show that <span class="math" data-tex="\(\|\Phi-\Psi\|_\diamond\le2\)">\(\|\Phi-\Psi\|_\diamond\le2\)</span> for any two channels, that is, linear maps sending density operators of the input qubits and <span class="math" data-tex="\(R\)">\(R\)</span>, after tensoring with <span class="math" data-tex="\(\mathrm{id}_R\)">\(\mathrm{id}_R\)</span>, to density operators.</p>
+<p><strong>6.5.</strong> Show that <span class="math" data-tex="\(\|\operatorname{Tr}_WX\|_1\le\|X\|_1\)">\(\|\operatorname{Tr}_WX\|_1\le\|X\|_1\)</span> can be strict: take <span class="math" data-tex="\(X=|00\rangle\langle00|-|01\rangle\langle01|\)">\(X=|00\rangle\langle00|-|01\rangle\langle01|\)</span> on two qubits and trace out the second.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(O_f\)">\(O_f\)</span> maps the basis vector <span class="math" data-tex="\(|x,b\rangle\)">\(|x,b\rangle\)</span> to the basis vector <span class="math" data-tex="\(|x,b\oplus f(x)\rangle\)">\(|x,b\oplus f(x)\rangle\)</span>, and <span class="math" data-tex="\((b\oplus f(x))\oplus f(x)=b\)">\((b\oplus f(x))\oplus f(x)=b\)</span>. For <span class="math" data-tex="\(f=1\)">\(f=1\)</span> and <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, <span class="math" data-tex="\(O_f=I\otimes X_p\)">\(O_f=I\otimes X_p\)</span>, where <span class="math" data-tex="\(X_p\)">\(X_p\)</span> exchanges <span class="math" data-tex="\(|0\rangle\)">\(|0\rangle\)</span> and <span class="math" data-tex="\(|1\rangle\)">\(|1\rangle\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(e^{i\varphi}U\rho\,(e^{i\varphi}U)^*=U\rho U^*\)">\(e^{i\varphi}U\rho\,(e^{i\varphi}U)^*=U\rho U^*\)</span>. The controlled unitaries differ by the block <span class="math" data-tex="\(|1\rangle\langle1|\otimes(e^{i\varphi}-1)U\)">\(|1\rangle\langle1|\otimes(e^{i\varphi}-1)U\)</span>, which is zero only when <span class="math" data-tex="\(e^{i\varphi}=1\)">\(e^{i\varphi}=1\)</span>.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(\langle a,b\rangle=\cos t\)">\(\langle a,b\rangle=\cos t\)</span>, so <span class="math" data-tex="\(\|aa^*-bb^*\|_1=2|\sin t|\)">\(\|aa^*-bb^*\|_1=2|\sin t|\)</span>, while <span class="math" data-tex="\(2\|a-b\|=2\sqrt{2-2\cos t}=4|\sin(t/2)|\)">\(2\|a-b\|=2\sqrt{2-2\cos t}=4|\sin(t/2)|\)</span>, which is at least <span class="math" data-tex="\(2|\sin t|\)">\(2|\sin t|\)</span>.</p>
+<p><strong>6.4.</strong> For a density operator <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, both images are density operators, of trace norm <span class="math" data-tex="\(1\)">\(1\)</span>, and Lemma 3.2(2) gives at most <span class="math" data-tex="\(2\)">\(2\)</span> for their difference.</p>
+<p><strong>6.5.</strong> The eigenvalues of <span class="math" data-tex="\(X\)">\(X\)</span> are <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(-1\)">\(-1\)</span>, <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(\|X\|_1=2\)">\(\|X\|_1=2\)</span>, while <span class="math" data-tex="\(\operatorname{Tr}_WX=|0\rangle\langle0|-|0\rangle\langle0|=0\)">\(\operatorname{Tr}_WX=|0\rangle\langle0|-|0\rangle\langle0|=0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-US] OpenAI, <em>Polynomial-Time Unitary Synthesis from a Boolean Oracle</em>, OpenAI Math Release preprint, 5 October 2026. https://github.com/openai/math/tree/main/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026</li>
+<li>[AK] S. Aaronson and G. Kuperberg, <em>Quantum versus classical proofs and advice</em>, Theory of Computing 3 (2007), 129–157; arXiv:quant-ph/0604056, Section 7, Problem (4). https://arxiv.org/abs/quant-ph/0604056</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
